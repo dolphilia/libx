@@ -1,0 +1,63 @@
+{
+  "method": "browser-display-review",
+  "status": "passed",
+  "checkedAt": "2026-10-01T14:08:51.606Z",
+  "scope": [
+    "04-reference/01-initialization-version-error.md",
+    "04-reference/03-window-reference.md"
+  ],
+  "results": [
+    "window/initそれぞれ英日desktop1280×720/mobile390×844を実画面確認して8枚保存。ページ幅1265/375とscroll一致、全18/6fragmentとcode行/補足のoverflow0。",
+    "実際の計算字体は全code行ui-monospace。型補足はdisplay:blockを保持しborder-top1pxで区別。原文コード/tooltip本文/リンクを削除・非表示にしない。",
+    "GLFW固有CSSだけで適用、72本文/変換器/共通CSSはSHA不変。別パスで完成CSSの全宣言と既存変数定義を読み直して適用範囲を確認。",
+    "console error/warn0、一時タブ15を閉じviewportを解除。"
+  ],
+  "correctedAttempt": "最初のCSSでStarlight変数が本アプリに未定義とcomputedStyleで検知。既存variables.cssのfont-family-mono/font-size-sm/color-border-default/color-bg-secondaryへ置換し再build・再表示。最初の字体/境界未反映を合格にしない。",
+  "limits": [
+    "未レビューmonitor/input/nativeのfragmentにも適用される。これらの全文・表示は未確認のまま。",
+    "全pixel・全コードコンパイル・ダークテーマ実画面は未検証。",
+    "windowの他表示はcycle17証拠を保持しCSS変更範囲のfragmentだけ再確認。"
+  ],
+  "artifacts": [
+    {
+      "path": "apps/glfw/src/styles/global.css",
+      "sha256": "3ba0f1ba320bd57e793b0da847ce97fd4437aa9d03c7f607ffebe3906d219486"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/browser-metrics.json",
+      "sha256": "e8292733b4217fcf3b9d1a91bea341a90704b6503918fb33fec07c2fbd5f6f09"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/window-ja-desktop.jpg",
+      "sha256": "0331ad08bca631d2b73c6ca575218664f7f62477df504810c7dda459375c783f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/window-ja-mobile.jpg",
+      "sha256": "b70f300fcf926240da3ec4e7085c6b39732d19ee91d92947c6f1235043068025"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/window-en-desktop.jpg",
+      "sha256": "8394504062ff501a1c64f1d8c998c0c6bbb6f7cc2ef0856f8524df7fc8724024"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/window-en-mobile.jpg",
+      "sha256": "6d09d204ec6c6d66d54206fd8144eae6cbdcc011aea5b7e90de4710e77931daa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/init-ja-desktop.jpg",
+      "sha256": "b317b34006b2ac9d9279d7d60b13ae51c70fb29fa178b3869bd55bdb8491add1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/init-ja-mobile.jpg",
+      "sha256": "552f0c68e3bb3fd9308cb91d10147f347c6883b94d09f7d2a9050436806286b7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/init-en-desktop.jpg",
+      "sha256": "55162baafe3b791a96cd2d706c9567e90350c12b6e677e637c42e17ee04595b0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-018/init-en-mobile.jpg",
+      "sha256": "31da3a07b61f0083821ffa82b204083dc2839a61cf27d33d07ed19f4746d87bf"
+    }
+  ]
+}

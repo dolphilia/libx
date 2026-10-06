@@ -1,0 +1,132 @@
+1: ---
+2: title: "コンテキストリファレンス"
+3: description: "GLFW 3.5.1 コンテキストリファレンス"
+4: ---
+8: ## 説明
+10: これは、OpenGL および OpenGL ES コンテキスト関連関数のリファレンスドキュメントです。作業手順を中心とした情報については、コンテキストガイドを参照してください。
+19: 型定義
+22: typedef void(*
+23: GLFWglproc) (void)
+27: クライアント API 関数のポインター型。
+43: 関数
+46: void
+47: glfwMakeContextCurrent (GLFWwindow *window)
+51: 指定されたウィンドウのコンテキストを、呼び出し元スレッドでカレントにします。
+58: GLFWwindow *
+59: glfwGetCurrentContext (void)
+63: 呼び出し元スレッドでコンテキストがカレントになっているウィンドウを返します。
+70: void
+71: glfwSwapInterval (int interval)
+75: カレントコンテキストのスワップ間隔を設定します。
+82: int
+83: glfwExtensionSupported (const char *extension)
+87: 指定された拡張が利用可能かを返します。
+94: GLFWglproc
+95: glfwGetProcAddress (const char *procname)
+99: カレントコンテキストについて、指定された関数のアドレスを返します。
+108: ## 型定義の詳細
+112: ## [◆ ](#ga3d47c2d2fbe0be9c505d0e04e91a133c)GLFWglproc
+120: | typedef void(\* GLFWglproc) (void) |
+126: 通常のポインターからのキャストを強制せずに、クライアント API 関数のポインターを返すために使用する汎用関数ポインターです。
+128: 関連項目
+129: OpenGL および OpenGL ES の拡張
+131: glfwGetProcAddress
+135: 導入バージョン
+136: バージョン 3.0 で追加されました。
+142: ## 関数の詳細
+146: ## [◆ ](#ga1c04dc242268f827290fe40aa1c91157)glfwMakeContextCurrent()
+154: | void glfwMakeContextCurrent | ( | GLFWwindow \*  | *window* | ) |  |
+160: この関数は、指定されたウィンドウの OpenGL または OpenGL ES コンテキストを、呼び出し元スレッドでカレントにします。`NULL` を渡すことで、新しいコンテキストをカレントにせず、呼び出し元スレッドからカレントコンテキストを切り離すこともできます。
+162: 1つのコンテキストを同時にカレントにできるのは1つのスレッドだけであり、各スレッドで同時にカレントにできるコンテキストも1つだけです。コンテキストをカレントにすると、呼び出し元スレッドで以前カレントだったコンテキストは切り離されます。
+164: コンテキストをスレッド間で移動するときは、新しいスレッドでカレントにする前に、元のスレッドで切り離して（非カレントにして）おかなければなりません。
+166: 既定では、コンテキストを非カレントにすると、暗黙にパイプラインのフラッシュが強制されます。`GL_KHR_context_flush_control` をサポートするマシンでは、GLFW_CONTEXT_RELEASE_BEHAVIOR ヒントを設定することで、コンテキストがこのフラッシュを実行するかを制御できます。
+168: 指定されたウィンドウは、OpenGL または OpenGL ES コンテキストを持っていなければなりません。コンテキストのないウィンドウを指定すると、GLFW_NO_WINDOW_CONTEXT エラーが発生します。
+170: 引数
+173: | \[in\] | window | コンテキストをカレントにするウィンドウ。カレントコンテキストを切り離す場合は `NULL`。 |
+177: 備考
+178: 以前のカレントコンテキストが、この関数へ渡されたものとは異なるコンテキスト作成 API で作成されていた場合でも、GLFW は新しいコンテキストをカレントにする前に、以前のコンテキストをその API から切り離します。
+182: エラー
+183: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT、および GLFW_PLATFORM_ERROR があります。
+187: スレッドセーフ性
+188: この関数は、任意のスレッドから呼び出せます。
+192: 関連項目
+193: カレントコンテキスト
+195: glfwGetCurrentContext
+199: 導入バージョン
+200: バージョン 3.0 で追加されました。
+208: ## [◆ ](#gad94e80185397a6cf5fe2ab30567af71c)glfwGetCurrentContext()
+216: | GLFWwindow \* glfwGetCurrentContext | ( | void  |  | ) |  |
+222: この関数は、呼び出し元スレッドで OpenGL または OpenGL ES コンテキストがカレントになっているウィンドウを返します。
+224: 戻り値
+225: コンテキストがカレントになっているウィンドウ。どのウィンドウのコンテキストもカレントでない場合は `NULL`。
+229: エラー
+230: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+234: スレッドセーフ性
+235: この関数は、任意のスレッドから呼び出せます。
+239: 関連項目
+240: カレントコンテキスト
+242: glfwMakeContextCurrent
+246: 導入バージョン
+247: バージョン 3.0 で追加されました。
+255: ## [◆ ](#ga6d4e0cdf151b5e579bd67f13202994ed)glfwSwapInterval()
+263: | void glfwSwapInterval | (   | int  | *interval* | )   |     |
+269: この関数は、カレントの OpenGL または OpenGL ES コンテキストのスワップ間隔を設定します。これは、glfwSwapBuffers が呼び出されてから、バッファを交換して戻るまでに待機する画面更新の回数です。これは、*垂直同期*、*垂直帰線同期*、または単に *vsync* と呼ばれることがあります。
+271: `WGL_EXT_swap_control_tear` または `GLX_EXT_swap_control_tear` 拡張のいずれかをサポートするコンテキストでは、*負*のスワップ間隔も受け付けます。これにより、フレームの到着が少し遅れた場合でも、ドライバーが直ちに交換できます。これらの拡張は glfwExtensionSupported で確認できます。
+273: 呼び出し元スレッドでコンテキストがカレントになっていなければなりません。カレントコンテキストなしでこの関数を呼び出すと、GLFW_NO_CURRENT_CONTEXT エラーが発生します。
+275: この関数は Vulkan には適用されません。Vulkan でレンダリングする場合は、代わりにスワップチェーンのプレゼントモードを参照してください。
+277: 引数
+280: | \[in\] | interval | glfwSwapBuffers によってバッファが交換されるまでに待機する、画面更新の最小回数。 |
+284: エラー
+285: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_CURRENT_CONTEXT、および GLFW_PLATFORM_ERROR があります。
+289: 備考
+290: この関数はコンテキスト作成中には呼び出されず、スワップ間隔はその API の既定値のままになります。GLFW が使用する一部のスワップ間隔拡張では、スワップ間隔をゼロ以外の値に設定した後でゼロへ戻せないためです。
+292: 一部の GPU ドライバーは、アプリケーションの要求を上書きするユーザー設定やドライバーの不具合により、要求されたスワップ間隔に従いません。
+296: スレッドセーフ性
+297: この関数は、任意のスレッドから呼び出せます。
+301: 関連項目
+302: バッファの交換
+304: glfwSwapBuffers
+308: 導入バージョン
+309: バージョン 1.0 で追加されました。
+317: ## [◆ ](#ga87425065c011cef1ebd6aac75e059dfa)glfwExtensionSupported()
+325: | int glfwExtensionSupported | (   | const char \*  | *extension* | )   |     |
+331: この関数は、指定された API 拡張が、カレントの OpenGL または OpenGL ES コンテキストでサポートされているかを返します。クライアント API 拡張とコンテキスト作成 API 拡張の両方を検索します。
+333: 呼び出し元スレッドでコンテキストがカレントになっていなければなりません。カレントコンテキストなしでこの関数を呼び出すと、GLFW_NO_CURRENT_CONTEXT エラーが発生します。
+335: この関数は呼び出すたびに1つ以上の拡張文字列を取得して検索するため、頻繁に使用する場合は結果をキャッシュすることを推奨します。拡張文字列はコンテキストの有効期間中に変化しないため、キャッシュしても問題ありません。
+337: この関数は Vulkan には適用されません。Vulkan を使用する場合は、代わりに glfwGetRequiredInstanceExtensions、`vkEnumerateInstanceExtensionProperties`、`vkEnumerateDeviceExtensionProperties` を参照してください。
+339: 引数
+342: | \[in\] | extension | ASCII でエンコードされた拡張名。 |
+346: 戻り値
+347: 拡張が利用可能な場合は `GLFW_TRUE`、それ以外の場合は `GLFW_FALSE`。
+351: エラー
+352: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_CURRENT_CONTEXT、GLFW_INVALID_VALUE、および GLFW_PLATFORM_ERROR があります。
+356: スレッドセーフ性
+357: この関数は、任意のスレッドから呼び出せます。
+361: 関連項目
+362: OpenGL および OpenGL ES の拡張
+364: glfwGetProcAddress
+368: 導入バージョン
+369: バージョン 1.0 で追加されました。
+377: ## [◆ ](#ga35f1837e6f666781842483937612f163)glfwGetProcAddress()
+385: | GLFWglproc glfwGetProcAddress | ( | const char \*  | *procname* | ) |  |
+391: この関数は、指定された OpenGL または OpenGL ES のコア関数または拡張関数がカレントコンテキストでサポートされている場合、そのアドレスを返します。
+393: 呼び出し元スレッドでコンテキストがカレントになっていなければなりません。カレントコンテキストなしでこの関数を呼び出すと、GLFW_NO_CURRENT_CONTEXT エラーが発生します。
+395: この関数は Vulkan には適用されません。Vulkan でレンダリングする場合は、代わりに glfwGetInstanceProcAddress、`vkGetInstanceProcAddr`、`vkGetDeviceProcAddr` を参照してください。
+397: 引数
+400: | \[in\] | procname | ASCII でエンコードされた関数名。 |
+404: 戻り値
+405: 関数のアドレス。エラーが発生した場合は `NULL`。
+409: エラー
+410: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_CURRENT_CONTEXT、および GLFW_PLATFORM_ERROR があります。
+414: 備考
+415: ある関数のアドレスが、コンテキスト間で同じであることは保証されません。
+417: 関連するバージョンまたは拡張が利用できない場合でも、この関数が `NULL` でないアドレスを返すことがあります。必ず先にコンテキストのバージョンまたは拡張文字列を確認してください。
+421: ポインターの有効期間
+422: 返された関数ポインターは、コンテキストが破棄されるか、ライブラリが終了するまで有効です。
+426: スレッドセーフ性
+427: この関数は、任意のスレッドから呼び出せます。
+431: 関連項目
+432: OpenGL および OpenGL ES の拡張
+434: glfwExtensionSupported
+438: 導入バージョン
+439: バージョン 1.0 で追加されました。

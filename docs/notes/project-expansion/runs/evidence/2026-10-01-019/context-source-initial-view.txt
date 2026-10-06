@@ -1,0 +1,107 @@
+78: This is the reference documentation for OpenGL and OpenGL ES context related functions. For more task-oriented information, see the Context guide.
+81: Typedefs
+82: typedef void(* GLFWglproc) (void)
+83: Client API function pointer type.
+87: Functions
+88: void glfwMakeContextCurrent (GLFWwindow *window)
+89: Makes the context of the specified window current for the calling thread.
+91: GLFWwindow * glfwGetCurrentContext (void)
+92: Returns the window whose context is current on the calling thread.
+94: void glfwSwapInterval (int interval)
+95: Sets the swap interval for the current context.
+97: int glfwExtensionSupported (const char *extension)
+98: Returns whether the specified extension is available.
+100: GLFWglproc glfwGetProcAddress (const char *procname)
+101: Returns the address of the specified function for the current context.
+104: Typedef Documentation
+106: ◆ GLFWglproc
+112: typedef void(* GLFWglproc) (void)
+116: Generic function pointer used for returning client API function pointers without forcing a cast from a regular pointer.
+117: See alsoOpenGL and OpenGL ES extensions
+119: glfwGetProcAddress
+120: SinceAdded in version 3.0.
+124: Function Documentation
+126: ◆ glfwMakeContextCurrent()
+132: void glfwMakeContextCurrent
+133: (
+134: GLFWwindow *
+135: window)
+140: This function makes the OpenGL or OpenGL ES context of the specified window current on the calling thread. It can also detach the current context from the calling thread without making a new one current by passing in NULL.
+141: A context must only be made current on a single thread at a time and each thread can have only a single current context at a time. Making a context current detaches any previously current context on the calling thread.
+142: When moving a context between threads, you must detach it (make it non-current) on the old thread before making it current on the new one.
+143: By default, making a context non-current implicitly forces a pipeline flush. On machines that support GL_KHR_context_flush_control, you can control whether a context performs this flush by setting the GLFW_CONTEXT_RELEASE_BEHAVIOR hint.
+144: The specified window must have an OpenGL or OpenGL ES context. Specifying a window without a context will generate a GLFW_NO_WINDOW_CONTEXT error.
+145: Parameters
+147: [in]windowThe window whose context to make current, or NULL to detach the current context.
+151: RemarksIf the previously current context was created via a different context creation API than the one passed to this function, GLFW will still detach the previous one from its API before making the new one current.
+152: ErrorsPossible errors include GLFW_NOT_INITIALIZED, GLFW_NO_WINDOW_CONTEXT and GLFW_PLATFORM_ERROR.
+153: Thread safetyThis function may be called from any thread.
+154: See alsoCurrent context
+156: glfwGetCurrentContext
+157: SinceAdded in version 3.0.
+162: ◆ glfwGetCurrentContext()
+168: GLFWwindow * glfwGetCurrentContext
+169: (
+170: void
+171: )
+176: This function returns the window whose OpenGL or OpenGL ES context is current on the calling thread.
+177: ReturnsThe window whose context is current, or NULL if no window's context is current.
+178: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+179: Thread safetyThis function may be called from any thread.
+180: See alsoCurrent context
+182: glfwMakeContextCurrent
+183: SinceAdded in version 3.0.
+188: ◆ glfwSwapInterval()
+194: void glfwSwapInterval
+195: (
+196: int
+197: interval)
+202: This function sets the swap interval for the current OpenGL or OpenGL ES context, i.e. the number of screen updates to wait from the time glfwSwapBuffers was called before swapping the buffers and returning. This is sometimes called vertical synchronization, vertical retrace synchronization or just vsync.
+203: A context that supports either of the WGL_EXT_swap_control_tear and GLX_EXT_swap_control_tear extensions also accepts negative swap intervals, which allows the driver to swap immediately even if a frame arrives a little bit late. You can check for these extensions with glfwExtensionSupported.
+204: A context must be current on the calling thread. Calling this function without a current context will cause a GLFW_NO_CURRENT_CONTEXT error.
+205: This function does not apply to Vulkan. If you are rendering with Vulkan, see the present mode of your swapchain instead.
+206: Parameters
+208: [in]intervalThe minimum number of screen updates to wait for until the buffers are swapped by glfwSwapBuffers.
+212: ErrorsPossible errors include GLFW_NOT_INITIALIZED, GLFW_NO_CURRENT_CONTEXT and GLFW_PLATFORM_ERROR.
+213: RemarksThis function is not called during context creation, leaving the swap interval set to whatever is the default for that API. This is done because some swap interval extensions used by GLFW do not allow the swap interval to be reset to zero once it has been set to a non-zero value.
+215: Some GPU drivers do not honor the requested swap interval, either because of a user setting that overrides the application's request or due to bugs in the driver.
+216: Thread safetyThis function may be called from any thread.
+217: See alsoBuffer swapping
+219: glfwSwapBuffers
+220: SinceAdded in version 1.0.
+225: ◆ glfwExtensionSupported()
+231: int glfwExtensionSupported
+232: (
+233: const char *
+234: extension)
+239: This function returns whether the specified API extension is supported by the current OpenGL or OpenGL ES context. It searches both for client API extension and context creation API extensions.
+240: A context must be current on the calling thread. Calling this function without a current context will cause a GLFW_NO_CURRENT_CONTEXT error.
+241: As this functions retrieves and searches one or more extension strings each call, it is recommended that you cache its results if it is going to be used frequently. The extension strings will not change during the lifetime of a context, so there is no danger in doing this.
+242: This function does not apply to Vulkan. If you are using Vulkan, see glfwGetRequiredInstanceExtensions, vkEnumerateInstanceExtensionProperties and vkEnumerateDeviceExtensionProperties instead.
+243: Parameters
+245: [in]extensionThe ASCII encoded name of the extension.
+249: ReturnsGLFW_TRUE if the extension is available, or GLFW_FALSE otherwise.
+250: ErrorsPossible errors include GLFW_NOT_INITIALIZED, GLFW_NO_CURRENT_CONTEXT, GLFW_INVALID_VALUE and GLFW_PLATFORM_ERROR.
+251: Thread safetyThis function may be called from any thread.
+252: See alsoOpenGL and OpenGL ES extensions
+254: glfwGetProcAddress
+255: SinceAdded in version 1.0.
+260: ◆ glfwGetProcAddress()
+266: GLFWglproc glfwGetProcAddress
+267: (
+268: const char *
+269: procname)
+274: This function returns the address of the specified OpenGL or OpenGL ES core or extension function, if it is supported by the current context.
+275: A context must be current on the calling thread. Calling this function without a current context will cause a GLFW_NO_CURRENT_CONTEXT error.
+276: This function does not apply to Vulkan. If you are rendering with Vulkan, see glfwGetInstanceProcAddress, vkGetInstanceProcAddr and vkGetDeviceProcAddr instead.
+277: Parameters
+279: [in]procnameThe ASCII encoded name of the function.
+283: ReturnsThe address of the function, or NULL if an error occurred.
+284: ErrorsPossible errors include GLFW_NOT_INITIALIZED, GLFW_NO_CURRENT_CONTEXT and GLFW_PLATFORM_ERROR.
+285: RemarksThe address of a given function is not guaranteed to be the same between contexts.
+287: This function may return a non-NULL address despite the associated version or extension not being available. Always check the context version or extension string first.
+288: Pointer lifetimeThe returned function pointer is valid until the context is destroyed or the library is terminated.
+289: Thread safetyThis function may be called from any thread.
+290: See alsoOpenGL and OpenGL ES extensions
+292: glfwExtensionSupported
+293: SinceAdded in version 1.0.

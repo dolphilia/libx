@@ -1,0 +1,1637 @@
+1: ---
+2: title: "ウィンドウリファレンス"
+3: description: "GLFW 3.5.1のウィンドウリファレンス"
+4: ---
+6: # ウィンドウリファレンス
+10: ## 説明
+12: これは、作成、削除、イベントのポーリングを含む、ウィンドウ関連の関数と型に関するリファレンスドキュメントです。作業手順を中心とした情報については、ウィンドウガイドを参照してください。
+21:  マクロ
+24: #define 
+25: GLFW_FOCUSED   0x00020001
+29: 入力フォーカスのウィンドウヒントおよび属性。
+36: #define 
+37: GLFW_ICONIFIED   0x00020002
+41: ウィンドウのアイコン化に関するウィンドウ属性。
+48: #define 
+49: GLFW_RESIZABLE   0x00020003
+53: ウィンドウのサイズ変更可否に関するウィンドウヒントおよび属性。
+60: #define 
+61: GLFW_VISIBLE   0x00020004
+65: ウィンドウの表示状態に関するウィンドウヒントおよび属性。
+72: #define 
+73: GLFW_DECORATED   0x00020005
+77: ウィンドウ装飾に関するウィンドウヒントおよび属性。
+84: #define 
+85: GLFW_AUTO_ICONIFY   0x00020006
+89: ウィンドウの自動アイコン化に関するウィンドウヒントおよび属性。
+96: #define 
+97: GLFW_FLOATING   0x00020007
+101: ウィンドウ装飾に関するウィンドウヒントおよび属性。
+108: #define 
+109: GLFW_MAXIMIZED   0x00020008
+113: ウィンドウの最大化に関するウィンドウヒントおよび属性。
+120: #define 
+121: GLFW_CENTER_CURSOR   0x00020009
+125: カーソルの中央配置に関するウィンドウヒント。
+132: #define 
+133: GLFW_TRANSPARENT_FRAMEBUFFER   0x0002000A
+137: ウィンドウフレームバッファの透過性に関するヒントおよび属性。
+144: #define 
+145: GLFW_HOVERED   0x0002000B
+149: マウスカーソルのホバーに関するウィンドウ属性。
+156: #define 
+157: GLFW_FOCUS_ON_SHOW   0x0002000C
+161: ウィンドウ表示時の入力フォーカスに関するウィンドウヒントおよび属性。
+168: #define 
+169: GLFW_MOUSE_PASSTHROUGH   0x0002000D
+173: マウス入力の透過に関するウィンドウヒントおよび属性。
+180: #define 
+181: GLFW_POSITION_X   0x0002000E
+185: 初期位置のx座標に関するウィンドウヒント。
+192: #define 
+193: GLFW_POSITION_Y   0x0002000F
+197: 初期位置のy座標に関するウィンドウヒント。
+204: #define 
+205: GLFW_RED_BITS   0x00021001
+209: フレームバッファのビット深度に関するヒント。
+216: #define 
+217: GLFW_GREEN_BITS   0x00021002
+221: フレームバッファのビット深度に関するヒント。
+228: #define 
+229: GLFW_BLUE_BITS   0x00021003
+233: フレームバッファのビット深度に関するヒント。
+240: #define 
+241: GLFW_ALPHA_BITS   0x00021004
+245: フレームバッファのビット深度に関するヒント。
+252: #define 
+253: GLFW_DEPTH_BITS   0x00021005
+257: フレームバッファのビット深度に関するヒント。
+264: #define 
+265: GLFW_STENCIL_BITS   0x00021006
+269: フレームバッファのビット深度に関するヒント。
+276: #define 
+277: GLFW_ACCUM_RED_BITS   0x00021007
+281: フレームバッファのビット深度に関するヒント。
+288: #define 
+289: GLFW_ACCUM_GREEN_BITS   0x00021008
+293: フレームバッファのビット深度に関するヒント。
+300: #define 
+301: GLFW_ACCUM_BLUE_BITS   0x00021009
+305: フレームバッファのビット深度に関するヒント。
+312: #define 
+313: GLFW_ACCUM_ALPHA_BITS   0x0002100A
+317: フレームバッファのビット深度に関するヒント。
+324: #define 
+325: GLFW_AUX_BUFFERS   0x0002100B
+329: フレームバッファの補助バッファに関するヒント。
+336: #define 
+337: GLFW_STEREO   0x0002100C
+341: OpenGLのステレオレンダリングに関するヒント。
+348: #define 
+349: GLFW_SAMPLES   0x0002100D
+353: フレームバッファのMSAAサンプル数に関するヒント。
+360: #define 
+361: GLFW_SRGB_CAPABLE   0x0002100E
+365: フレームバッファのsRGB対応に関するヒント。
+372: #define 
+373: GLFW_REFRESH_RATE   0x0002100F
+377: モニターのリフレッシュレートに関するヒント。
+384: #define 
+385: GLFW_DOUBLEBUFFER   0x00021010
+389: フレームバッファのダブルバッファリングに関するヒントおよび属性。
+396: #define 
+397: GLFW_CLIENT_API   0x00022001
+401: コンテキストのクライアントAPIに関するヒントおよび属性。
+408: #define 
+409: GLFW_CONTEXT_VERSION_MAJOR   0x00022002
+413: コンテキストのクライアントAPIのメジャーバージョンに関するヒントおよび属性。
+420: #define 
+421: GLFW_CONTEXT_VERSION_MINOR   0x00022003
+425: コンテキストのクライアントAPIのマイナーバージョンに関するヒントおよび属性。
+432: #define 
+433: GLFW_CONTEXT_REVISION   0x00022004
+437: コンテキストのクライアントAPIのリビジョン番号に関する属性。
+444: #define 
+445: GLFW_CONTEXT_ROBUSTNESS   0x00022005
+449: コンテキストの堅牢性に関するヒントおよび属性。
+456: #define 
+457: GLFW_OPENGL_FORWARD_COMPAT   0x00022006
+461: OpenGLの前方互換性に関するヒントおよび属性。
+468: #define 
+469: GLFW_CONTEXT_DEBUG   0x00022007
+473: デバッグモードのコンテキストヒントおよび属性。
+480: #define 
+481: GLFW_OPENGL_DEBUG_CONTEXT   GLFW_CONTEXT_DEBUG
+485: 互換性のための旧名称。
+492: #define 
+493: GLFW_OPENGL_PROFILE   0x00022008
+497: OpenGLプロファイルに関するヒントおよび属性。
+504: #define 
+505: GLFW_CONTEXT_RELEASE_BEHAVIOR   0x00022009
+509: コンテキスト解放時のフラッシュに関するヒントおよび属性。
+516: #define 
+517: GLFW_CONTEXT_NO_ERROR   0x0002200A
+521: コンテキストのエラー抑制に関するヒントおよび属性。
+528: #define 
+529: GLFW_CONTEXT_CREATION_API   0x0002200B
+533: コンテキスト作成APIに関するヒントおよび属性。
+540: #define 
+541: GLFW_SCALE_TO_MONITOR   0x0002200C
+545: ウィンドウのコンテンツ領域のスケーリングに関するウィンドウヒント。
+552: #define 
+553: GLFW_SCALE_FRAMEBUFFER   0x0002200D
+557: ウィンドウフレームバッファのスケーリングに関するウィンドウヒント。
+564: #define 
+565: GLFW_COCOA_RETINA_FRAMEBUFFER   0x00023001
+569: 互換性のための旧名称。
+576: #define 
+577: GLFW_COCOA_FRAME_NAME   0x00023002
+581: macOS固有のウィンドウヒント。
+588: #define 
+589: GLFW_COCOA_GRAPHICS_SWITCHING   0x00023003
+593: macOS固有のウィンドウヒント。
+600: #define 
+601: GLFW_X11_CLASS_NAME   0x00024001
+605: X11固有のウィンドウヒント。
+612: #define 
+613: GLFW_X11_INSTANCE_NAME   0x00024002
+617: X11固有のウィンドウヒント。
+624: #define 
+625: GLFW_WIN32_KEYBOARD_MENU   0x00025001
+631: #define 
+632: GLFW_WIN32_SHOWDEFAULT   0x00025002
+636: Win32固有のウィンドウヒント。
+643: #define 
+644: GLFW_WAYLAND_APP_ID   0x00026001
+648: Wayland固有のウィンドウヒント。
+664:  型定義
+667: typedef struct GLFWwindow 
+668: GLFWwindow
+672: 不透明なウィンドウオブジェクト。
+679: typedef void(* 
+680: GLFWwindowposfun) (GLFWwindow *window, int xpos, int ypos)
+684: ウィンドウ位置コールバックの関数ポインター型。
+691: typedef void(* 
+692: GLFWwindowsizefun) (GLFWwindow *window, int width, int height)
+696: ウィンドウサイズコールバックの関数ポインター型。
+703: typedef void(* 
+704: GLFWwindowclosefun) (GLFWwindow *window)
+708: ウィンドウクローズコールバックの関数ポインター型。
+715: typedef void(* 
+716: GLFWwindowrefreshfun) (GLFWwindow *window)
+720: ウィンドウ内容の再描画コールバックの関数ポインター型。
+727: typedef void(* 
+728: GLFWwindowfocusfun) (GLFWwindow *window, int focused)
+732: ウィンドウフォーカスコールバックの関数ポインター型。
+739: typedef void(* 
+740: GLFWwindowiconifyfun) (GLFWwindow *window, int iconified)
+744: ウィンドウアイコン化コールバックの関数ポインター型。
+751: typedef void(* 
+752: GLFWwindowmaximizefun) (GLFWwindow *window, int maximized)
+756: ウィンドウ最大化コールバックの関数ポインター型。
+763: typedef void(* 
+764: GLFWframebuffersizefun) (GLFWwindow *window, int width, int height)
+768: フレームバッファサイズコールバックの関数ポインター型。
+775: typedef void(* 
+776: GLFWwindowcontentscalefun) (GLFWwindow *window, float xscale, float yscale)
+780: ウィンドウのコンテンツスケールコールバックの関数ポインター型。
+787: typedef struct GLFWimage 
+788: GLFWimage
+792: 画像データ。
+808:  関数
+811: void 
+812: glfwDefaultWindowHints (void)
+816: すべてのウィンドウヒントを既定値へ戻します。
+823: void 
+824: glfwWindowHint (int hint, int value)
+828: 指定したウィンドウヒントを目的の値に設定します。
+835: void 
+836: glfwWindowHintString (int hint, const char *value)
+840: 指定したウィンドウヒントを目的の値に設定します。
+847: GLFWwindow * 
+848: glfwCreateWindow (int width, int height, const char *title, GLFWmonitor *monitor, GLFWwindow *share)
+852: ウィンドウとそれに関連付けられたコンテキストを作成します。
+859: void 
+860: glfwDestroyWindow (GLFWwindow *window)
+864: 指定したウィンドウとそのコンテキストを破棄します。
+871: int 
+872: glfwWindowShouldClose (GLFWwindow *window)
+876: 指定したウィンドウのクローズフラグを確認します。
+883: void 
+884: glfwSetWindowShouldClose (GLFWwindow *window, int value)
+888: 指定したウィンドウのクローズフラグを設定します。
+895: const char * 
+896: glfwGetWindowTitle (GLFWwindow *window)
+900: 指定したウィンドウのタイトルを返します。
+907: void 
+908: glfwSetWindowTitle (GLFWwindow *window, const char *title)
+912: 指定したウィンドウのタイトルを設定します。
+919: void 
+920: glfwSetWindowIcon (GLFWwindow *window, int count, const GLFWimage *images)
+924: 指定したウィンドウのアイコンを設定します。
+931: void 
+932: glfwGetWindowPos (GLFWwindow *window, int *xpos, int *ypos)
+936: 指定したウィンドウのコンテンツ領域の位置を取得します。
+943: void 
+944: glfwSetWindowPos (GLFWwindow *window, int xpos, int ypos)
+948: 指定したウィンドウのコンテンツ領域の位置を設定します。
+955: void 
+956: glfwGetWindowSize (GLFWwindow *window, int *width, int *height)
+960: 指定したウィンドウのコンテンツ領域のサイズを取得します。
+967: void 
+968: glfwSetWindowSizeLimits (GLFWwindow *window, int minwidth, int minheight, int maxwidth, int maxheight)
+972: 指定したウィンドウのサイズ制限を設定します。
+979: void 
+980: glfwSetWindowAspectRatio (GLFWwindow *window, int numer, int denom)
+984: 指定したウィンドウのアスペクト比を設定します。
+991: void 
+992: glfwSetWindowSize (GLFWwindow *window, int width, int height)
+996: 指定したウィンドウのコンテンツ領域のサイズを設定します。
+1003: void 
+1004: glfwGetFramebufferSize (GLFWwindow *window, int *width, int *height)
+1008: 指定したウィンドウのフレームバッファサイズを取得します。
+1015: void 
+1016: glfwGetWindowFrameSize (GLFWwindow *window, int *left, int *top, int *right, int *bottom)
+1020: ウィンドウフレームのサイズを取得します。
+1027: void 
+1028: glfwGetWindowContentScale (GLFWwindow *window, float *xscale, float *yscale)
+1032: 指定したウィンドウのコンテンツスケールを取得します。
+1039: float 
+1040: glfwGetWindowOpacity (GLFWwindow *window)
+1044: ウィンドウ全体の不透明度を返します。
+1051: void 
+1052: glfwSetWindowOpacity (GLFWwindow *window, float opacity)
+1056: ウィンドウ全体の不透明度を設定します。
+1063: void 
+1064: glfwIconifyWindow (GLFWwindow *window)
+1068: 指定したウィンドウをアイコン化します。
+1075: void 
+1076: glfwRestoreWindow (GLFWwindow *window)
+1080: 指定したウィンドウを復元します。
+1087: void 
+1088: glfwMaximizeWindow (GLFWwindow *window)
+1092: 指定したウィンドウを最大化します。
+1099: void 
+1100: glfwShowWindow (GLFWwindow *window)
+1104: 指定したウィンドウを表示します。
+1111: void 
+1112: glfwHideWindow (GLFWwindow *window)
+1116: 指定したウィンドウを非表示にします。
+1123: void 
+1124: glfwFocusWindow (GLFWwindow *window)
+1128: 指定したウィンドウを前面へ移動し、入力フォーカスを設定します。
+1135: void 
+1136: glfwRequestWindowAttention (GLFWwindow *window)
+1140: 指定したウィンドウへユーザーの注意を引くよう要求します。
+1147: GLFWmonitor * 
+1148: glfwGetWindowMonitor (GLFWwindow *window)
+1152: ウィンドウがフルスクリーンモードで使用するモニターを返します。
+1159: void 
+1160: glfwSetWindowMonitor (GLFWwindow *window, GLFWmonitor *monitor, int xpos, int ypos, int width, int height, int refreshRate)
+1164: ウィンドウのモード、モニター、ビデオモード、配置を設定します。
+1171: int 
+1172: glfwGetWindowAttrib (GLFWwindow *window, int attrib)
+1176: 指定したウィンドウの属性を返します。
+1183: void 
+1184: glfwSetWindowAttrib (GLFWwindow *window, int attrib, int value)
+1188: 指定したウィンドウの属性を設定します。
+1195: void 
+1196: glfwSetWindowUserPointer (GLFWwindow *window, void *pointer)
+1200: 指定したウィンドウのユーザーポインターを設定します。
+1207: void * 
+1208: glfwGetWindowUserPointer (GLFWwindow *window)
+1212: 指定したウィンドウのユーザーポインターを返します。
+1219: GLFWwindowposfun 
+1220: glfwSetWindowPosCallback (GLFWwindow *window, GLFWwindowposfun callback)
+1224: 指定したウィンドウの位置コールバックを設定します。
+1231: GLFWwindowsizefun 
+1232: glfwSetWindowSizeCallback (GLFWwindow *window, GLFWwindowsizefun callback)
+1236: 指定したウィンドウのサイズコールバックを設定します。
+1243: GLFWwindowclosefun 
+1244: glfwSetWindowCloseCallback (GLFWwindow *window, GLFWwindowclosefun callback)
+1248: 指定したウィンドウのクローズコールバックを設定します。
+1255: GLFWwindowrefreshfun 
+1256: glfwSetWindowRefreshCallback (GLFWwindow *window, GLFWwindowrefreshfun callback)
+1260: 指定したウィンドウの再描画コールバックを設定します。
+1267: GLFWwindowfocusfun 
+1268: glfwSetWindowFocusCallback (GLFWwindow *window, GLFWwindowfocusfun callback)
+1272: 指定したウィンドウのフォーカスコールバックを設定します。
+1279: GLFWwindowiconifyfun 
+1280: glfwSetWindowIconifyCallback (GLFWwindow *window, GLFWwindowiconifyfun callback)
+1284: 指定したウィンドウのアイコン化コールバックを設定します。
+1291: GLFWwindowmaximizefun 
+1292: glfwSetWindowMaximizeCallback (GLFWwindow *window, GLFWwindowmaximizefun callback)
+1296: 指定したウィンドウの最大化コールバックを設定します。
+1303: GLFWframebuffersizefun 
+1304: glfwSetFramebufferSizeCallback (GLFWwindow *window, GLFWframebuffersizefun callback)
+1308: 指定したウィンドウのフレームバッファサイズ変更コールバックを設定します。
+1315: GLFWwindowcontentscalefun 
+1316: glfwSetWindowContentScaleCallback (GLFWwindow *window, GLFWwindowcontentscalefun callback)
+1320: 指定したウィンドウのコンテンツスケールコールバックを設定します。
+1327: void 
+1328: glfwPollEvents (void)
+1332: 保留中のすべてのイベントを処理します。
+1339: void 
+1340: glfwWaitEvents (void)
+1344: イベントがキューへ追加されるまで待機し、それらを処理します。
+1351: void 
+1352: glfwWaitEventsTimeout (double timeout)
+1356: タイムアウト付きでイベントがキューへ追加されるまで待機し、それらを処理します。
+1363: void 
+1364: glfwPostEmptyEvent (void)
+1368: 空のイベントをイベントキューへ送ります。
+1375: void 
+1376: glfwSwapBuffers (GLFWwindow *window)
+1380: 指定したウィンドウのフロントバッファとバックバッファを交換します。
+1389: ## マクロ定義の解説
+1393: ## [◆ ](#ga54ddb14825a1541a56e22afb5f832a9e)GLFW_FOCUSED
+1401: | \#define GLFW_FOCUSED   0x00020001 |
+1407: 入力フォーカスに関するウィンドウヒントまたはウィンドウ属性です。
+1415: ## [◆ ](#ga39d44b7c056e55e581355a92d240b58a)GLFW_ICONIFIED
+1423: | \#define GLFW_ICONIFIED   0x00020002 |
+1429: ウィンドウのアイコン化に関するウィンドウ属性です。
+1437: ## [◆ ](#gadba13c7a1b3aa40831eb2beedbd5bd1d)GLFW_RESIZABLE
+1445: | \#define GLFW_RESIZABLE   0x00020003 |
+1451: ウィンドウのサイズ変更可否に関するウィンドウヒントおよびウィンドウ属性です。
+1459: ## [◆ ](#gafb3cdc45297e06d8f1eb13adc69ca6c4)GLFW_VISIBLE
+1467: | \#define GLFW_VISIBLE   0x00020004 |
+1473: ウィンドウの表示状態に関するウィンドウヒントおよびウィンドウ属性です。
+1481: ## [◆ ](#ga21b854d36314c94d65aed84405b2f25e)GLFW_DECORATED
+1489: | \#define GLFW_DECORATED   0x00020005 |
+1495: ウィンドウ装飾に関するウィンドウヒントおよびウィンドウ属性です。
+1503: ## [◆ ](#ga9d9874fc928200136a6dcdad726aa252)GLFW_AUTO_ICONIFY
+1511: | \#define GLFW_AUTO_ICONIFY   0x00020006 |
+1517: ウィンドウの自動アイコン化に関するウィンドウヒントおよびウィンドウ属性です。
+1525: ## [◆ ](#ga7fb0be51407783b41adbf5bec0b09d80)GLFW_FLOATING
+1533: | \#define GLFW_FLOATING   0x00020007 |
+1539: ウィンドウ装飾に関するウィンドウヒントおよびウィンドウ属性です。
+1541: > **Libx参照注記（GLFW 3.5.1）:** 原文の一覧と詳細は `GLFW_FLOATING` を装飾の設定と説明しています。[固定版のウィンドウガイド](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L211-L216)は、通常のウィンドウより上に表示される状態（topmost、always-on-top）を説明し、[固定版のヒント実装](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L360-L362)もフローティングの設定を保存します。ウィンドウ装飾は別の `GLFW_DECORATED` で制御します。上では原文の表現を保っています。
+1549: ## [◆ ](#gad8ccb396253ad0b72c6d4c917eb38a03)GLFW_MAXIMIZED
+1557: | \#define GLFW_MAXIMIZED   0x00020008 |
+1563: ウィンドウの最大化に関するウィンドウヒントおよびウィンドウ属性です。
+1571: ## [◆ ](#ga5ac0847c0aa0b3619f2855707b8a7a77)GLFW_CENTER_CURSOR
+1579: | \#define GLFW_CENTER_CURSOR   0x00020009 |
+1585: カーソルの中央配置に関するウィンドウヒントです。
+1593: ## [◆ ](#ga60a0578c3b9449027d683a9c6abb9f14)GLFW_TRANSPARENT_FRAMEBUFFER
+1601: | \#define GLFW_TRANSPARENT_FRAMEBUFFER   0x0002000A |
+1607: ウィンドウフレームバッファの透過性に関するウィンドウヒントおよびウィンドウ属性です。
+1615: ## [◆ ](#ga8665c71c6fa3d22425c6a0e8a3f89d8a)GLFW_HOVERED
+1623: | \#define GLFW_HOVERED   0x0002000B |
+1629: マウスカーソルのホバーに関するウィンドウ属性です。
+1637: ## [◆ ](#gafa94b1da34bfd6488c0d709761504dfc)GLFW_FOCUS_ON_SHOW
+1645: | \#define GLFW_FOCUS_ON_SHOW   0x0002000C |
+1651: 入力フォーカスに関するウィンドウヒントまたはウィンドウ属性です。
+1659: ## [◆ ](#ga88981797d29800808ec242274ab5c03a)GLFW_MOUSE_PASSTHROUGH
+1667: | \#define GLFW_MOUSE_PASSTHROUGH   0x0002000D |
+1673: マウス入力の透過に関するウィンドウヒントまたはウィンドウ属性です。
+1681: ## [◆ ](#gaededa6b208b8e31343da56bb349c6fb2)GLFW_POSITION_X
+1689: | \#define GLFW_POSITION_X   0x0002000E |
+1695: 初期位置のx座標に関するウィンドウヒントです。
+1703: ## [◆ ](#ga6b3ccf63683c81f479e2a98f5027200e)GLFW_POSITION_Y
+1711: | \#define GLFW_POSITION_Y   0x0002000F |
+1717: 初期位置のy座標に関するウィンドウヒントです。
+1725: ## [◆ ](#gaf78ed8e417dbcc1e354906cc2708c982)GLFW_RED_BITS
+1733: | \#define GLFW_RED_BITS   0x00021001 |
+1739: フレームバッファのビット深度に関するヒントです。
+1747: ## [◆ ](#gafba3b72638c914e5fb8a237dd4c50d4d)GLFW_GREEN_BITS
+1755: | \#define GLFW_GREEN_BITS   0x00021002 |
+1761: フレームバッファのビット深度に関するヒントです。
+1769: ## [◆ ](#gab292ea403db6d514537b515311bf9ae3)GLFW_BLUE_BITS
+1777: | \#define GLFW_BLUE_BITS   0x00021003 |
+1783: フレームバッファのビット深度に関するヒントです。
+1791: ## [◆ ](#gafed79a3f468997877da86c449bd43e8c)GLFW_ALPHA_BITS
+1799: | \#define GLFW_ALPHA_BITS   0x00021004 |
+1805: フレームバッファのビット深度に関するヒントです。
+1813: ## [◆ ](#ga318a55eac1fee57dfe593b6d38149d07)GLFW_DEPTH_BITS
+1821: | \#define GLFW_DEPTH_BITS   0x00021005 |
+1827: フレームバッファのビット深度に関するヒントです。
+1835: ## [◆ ](#ga5339890a45a1fb38e93cb9fcc5fd069d)GLFW_STENCIL_BITS
+1843: | \#define GLFW_STENCIL_BITS   0x00021006 |
+1849: フレームバッファのビット深度に関するヒントです。
+1857: ## [◆ ](#gaead34a9a683b2bc20eecf30ba738bfc6)GLFW_ACCUM_RED_BITS
+1865: | \#define GLFW_ACCUM_RED_BITS   0x00021007 |
+1871: フレームバッファのビット深度に関するヒントです。
+1879: ## [◆ ](#ga65713cee1326f8e9d806fdf93187b471)GLFW_ACCUM_GREEN_BITS
+1887: | \#define GLFW_ACCUM_GREEN_BITS   0x00021008 |
+1893: フレームバッファのビット深度に関するヒントです。
+1901: ## [◆ ](#ga22bbe9104a8ce1f8b88fb4f186aa36ce)GLFW_ACCUM_BLUE_BITS
+1909: | \#define GLFW_ACCUM_BLUE_BITS   0x00021009 |
+1915: フレームバッファのビット深度に関するヒントです。
+1923: ## [◆ ](#gae829b55591c18169a40ab4067a041b1f)GLFW_ACCUM_ALPHA_BITS
+1931: | \#define GLFW_ACCUM_ALPHA_BITS   0x0002100A |
+1937: フレームバッファのビット深度に関するヒントです。
+1945: ## [◆ ](#gab05108c5029443b371112b031d1fa174)GLFW_AUX_BUFFERS
+1953: | \#define GLFW_AUX_BUFFERS   0x0002100B |
+1959: フレームバッファの補助バッファに関するヒントです。
+1967: ## [◆ ](#ga83d991efca02537e2d69969135b77b03)GLFW_STEREO
+1975: | \#define GLFW_STEREO   0x0002100C |
+1981: OpenGLのステレオレンダリングに関するヒントです。
+1989: ## [◆ ](#ga2cdf86fdcb7722fb8829c4e201607535)GLFW_SAMPLES
+1997: | \#define GLFW_SAMPLES   0x0002100D |
+2003: フレームバッファのMSAAサンプル数に関するヒントです。
+2011: ## [◆ ](#ga444a8f00414a63220591f9fdb7b5642b)GLFW_SRGB_CAPABLE
+2019: | \#define GLFW_SRGB_CAPABLE   0x0002100E |
+2025: フレームバッファのsRGB対応に関するヒントです。
+2033: ## [◆ ](#ga0f20825e6e47ee8ba389024519682212)GLFW_REFRESH_RATE
+2041: | \#define GLFW_REFRESH_RATE   0x0002100F |
+2047: モニターのリフレッシュレートに関するヒントです。
+2055: ## [◆ ](#ga714a5d569e8a274ea58fdfa020955339)GLFW_DOUBLEBUFFER
+2063: | \#define GLFW_DOUBLEBUFFER   0x00021010 |
+2069: フレームバッファのダブルバッファリングに関するヒントおよび属性です。
+2077: ## [◆ ](#ga649309cf72a3d3de5b1348ca7936c95b)GLFW_CLIENT_API
+2085: | \#define GLFW_CLIENT_API   0x00022001 |
+2091: コンテキストのクライアントAPIに関するヒントおよび属性です。
+2099: ## [◆ ](#gafe5e4922de1f9932d7e9849bb053b0c0)GLFW_CONTEXT_VERSION_MAJOR
+2107: | \#define GLFW_CONTEXT_VERSION_MAJOR   0x00022002 |
+2113: コンテキストのクライアントAPIのメジャーバージョンに関するヒントおよび属性です。
+2121: ## [◆ ](#ga31aca791e4b538c4e4a771eb95cc2d07)GLFW_CONTEXT_VERSION_MINOR
+2129: | \#define GLFW_CONTEXT_VERSION_MINOR   0x00022003 |
+2135: コンテキストのクライアントAPIのマイナーバージョンに関するヒントおよび属性です。
+2143: ## [◆ ](#gafb9475071aa77c6fb05ca5a5c8678a08)GLFW_CONTEXT_REVISION
+2151: | \#define GLFW_CONTEXT_REVISION   0x00022004 |
+2157: コンテキストのクライアントAPIのリビジョン番号に関する属性です。
+2165: ## [◆ ](#gade3593916b4c507900aa2d6844810e00)GLFW_CONTEXT_ROBUSTNESS
+2173: | \#define GLFW_CONTEXT_ROBUSTNESS   0x00022005 |
+2179: コンテキストのクライアントAPIのリビジョン番号に関するヒントおよび属性です。
+2181: > **Libx参照注記（GLFW 3.5.1）:** 原文の詳細説明はリビジョン番号と述べています。[固定版のウィンドウガイド](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L442-L447)は、このヒントをコンテキストの堅牢性戦略として定義し、[固定版のヒント実装](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L412-L414)も `context.robustness` に保存します。これは `GLFW_CONTEXT_REVISION` 属性とは別です。上では原文の詳細説明を保っています。
+2189: ## [◆ ](#ga13d24b12465da8b28985f46c8557925b)GLFW_OPENGL_FORWARD_COMPAT
+2197: | \#define GLFW_OPENGL_FORWARD_COMPAT   0x00022006 |
+2203: OpenGLの前方互換性に関するヒントおよび属性です。
+2211: ## [◆ ](#ga8d55e3afec73c7de0509c3b7ad1d9e3f)GLFW_CONTEXT_DEBUG
+2219: | \#define GLFW_CONTEXT_DEBUG   0x00022007 |
+2225: デバッグモードのコンテキストに関するヒントおよび属性です。
+2233: ## [◆ ](#ga87ec2df0b915201e950ca42d5d0831e1)GLFW_OPENGL_DEBUG_CONTEXT
+2241: | \#define GLFW_OPENGL_DEBUG_CONTEXT   GLFW_CONTEXT_DEBUG |
+2247: これは、以前のバージョンとの互換性のための別名です。
+2255: ## [◆ ](#ga44f3a6b4261fbe351e0b950b0f372e12)GLFW_OPENGL_PROFILE
+2263: | \#define GLFW_OPENGL_PROFILE   0x00022008 |
+2269: OpenGLプロファイルに関するヒントおよび属性です。
+2277: ## [◆ ](#ga72b648a8378fe3310c7c7bbecc0f7be6)GLFW_CONTEXT_RELEASE_BEHAVIOR
+2285: | \#define GLFW_CONTEXT_RELEASE_BEHAVIOR   0x00022009 |
+2291: コンテキスト解放時のフラッシュに関するヒントおよび属性です。
+2299: ## [◆ ](#ga5a52fdfd46d8249c211f923675728082)GLFW_CONTEXT_NO_ERROR
+2307: | \#define GLFW_CONTEXT_NO_ERROR   0x0002200A |
+2313: コンテキストのエラー抑制に関するヒントおよび属性です。
+2321: ## [◆ ](#ga5154cebfcd831c1cc63a4d5ac9bb4486)GLFW_CONTEXT_CREATION_API
+2329: | \#define GLFW_CONTEXT_CREATION_API   0x0002200B |
+2335: コンテキスト作成APIに関するヒントおよび属性です。
+2343: ## [◆ ](#ga620bc4280c7eab81ac9f02204500ed47)GLFW_SCALE_TO_MONITOR
+2351: | \#define GLFW_SCALE_TO_MONITOR   0x0002200C |
+2363: ## [◆ ](#gaa5a9c6b4722670fd33d6e8a88f2e21bc)GLFW_SCALE_FRAMEBUFFER
+2371: | \#define GLFW_SCALE_FRAMEBUFFER   0x0002200D |
+2383: ## [◆ ](#gab6ef2d02eb55800d249ccf1af253c35e)GLFW_COCOA_RETINA_FRAMEBUFFER
+2391: | \#define GLFW_COCOA_RETINA_FRAMEBUFFER   0x00023001 |
+2397: これは、以前のバージョンとの互換性のために用意された、GLFW_SCALE_FRAMEBUFFER ウィンドウヒントの別名です。
+2405: ## [◆ ](#ga70fa0fbc745de6aa824df79a580e84b5)GLFW_COCOA_FRAME_NAME
+2413: | \#define GLFW_COCOA_FRAME_NAME   0x00023002 |
+2425: ## [◆ ](#ga53c84ed2ddd94e15bbd44b1f6f7feafc)GLFW_COCOA_GRAPHICS_SWITCHING
+2433: | \#define GLFW_COCOA_GRAPHICS_SWITCHING   0x00023003 |
+2445: ## [◆ ](#gae5a9ea2fccccd92edbd343fc56461114)GLFW_X11_CLASS_NAME
+2453: | \#define GLFW_X11_CLASS_NAME   0x00024001 |
+2465: ## [◆ ](#ga494c3c0d911e4b860b946530a3e389e8)GLFW_X11_INSTANCE_NAME
+2473: | \#define GLFW_X11_INSTANCE_NAME   0x00024002 |
+2485: ## [◆ ](#gaf65ea8dafdc0edb07b821b9a336d5043)GLFW_WIN32_KEYBOARD_MENU
+2493: | \#define GLFW_WIN32_KEYBOARD_MENU   0x00025001 |
+2505: ## [◆ ](#gace10f3846571de62243b46f75d978487)GLFW_WIN32_SHOWDEFAULT
+2513: | \#define GLFW_WIN32_SHOWDEFAULT   0x00025002 |
+2525: ## [◆ ](#gafbf1ce7a4362c75e602a4df9e1bdecd3)GLFW_WAYLAND_APP_ID
+2533: | \#define GLFW_WAYLAND_APP_ID   0x00026001 |
+2539: Waylandのapp_idを指定できるようにします。
+2545: ## 型定義の解説
+2549: ## [◆ ](#ga3c96d80d363e67d13a41b5d1821f3242)GLFWwindow
+2557: | typedef struct GLFWwindow GLFWwindow |
+2563: 不透明なウィンドウオブジェクトです。
+2565: 関連項目  
+2566: ウィンドウオブジェクト
+2570: 導入バージョン  
+2571: バージョン3.0で追加。
+2579: ## [◆ ](#gabe287973a21a8f927cde4db06b8dcbe9)GLFWwindowposfun
+2587: | typedef void(\* GLFWwindowposfun) (GLFWwindow \*window, int xpos, int ypos) |
+2593: これは、ウィンドウ位置コールバックの関数ポインター型です。ウィンドウ位置コールバック関数は、次のシグネチャを持ちます。
+2599: void callback_name(GLFWwindow\* window, int xpos, int ypos)
+2607: [GLFWwindow](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga3c96d80d363e67d13a41b5d1821f3242)
+2613: struct GLFWwindow GLFWwindow
+2619: 不透明なウィンドウオブジェクトです。
+2625: **定義** glfw3.h:1408
+2633: 引数  
+2636: | \[in\] | window | 移動したウィンドウ。 |
+2637: | \[in\] | xpos | ウィンドウのコンテンツ領域の左上隅について、新しいスクリーン座標系のx座標。 |
+2638: | \[in\] | ypos | ウィンドウのコンテンツ領域の左上隅について、新しいスクリーン座標系のy座標。 |
+2642: 関連項目  
+2643: ウィンドウの位置
+2645: glfwSetWindowPosCallback
+2649: 導入バージョン  
+2650: バージョン3.0で追加。
+2658: ## [◆ ](#gaec0282944bb810f6f3163ec02da90350)GLFWwindowsizefun
+2666: | typedef void(\* GLFWwindowsizefun) (GLFWwindow \*window, int width, int height) |
+2672: これは、ウィンドウサイズコールバックの関数ポインター型です。ウィンドウサイズコールバック関数は、次のシグネチャを持ちます。
+2678: void callback_name(GLFWwindow\* window, int width, int height)
+2684: 引数  
+2687: | \[in\] | window | サイズが変更されたウィンドウ。 |
+2688: | \[in\] | width  | ウィンドウの新しい幅（スクリーン座標単位）。 |
+2689: | \[in\] | height | ウィンドウの新しい高さ（スクリーン座標単位）。 |
+2693: 関連項目  
+2694: ウィンドウサイズ
+2696: glfwSetWindowSizeCallback
+2700: 導入バージョン  
+2701: バージョン1.0で追加。**GLFW 3:** ウィンドウハンドル引数を追加。
+2709: ## [◆ ](#gabf859b936d80961b7d39013a9694cc3e)GLFWwindowclosefun
+2717: | typedef void(\* GLFWwindowclosefun) (GLFWwindow \*window) |
+2723: これは、ウィンドウクローズコールバックの関数ポインター型です。ウィンドウクローズコールバック関数は、次のシグネチャを持ちます。
+2729: void function_name(GLFWwindow\* window)
+2735: 引数  
+2738: | \[in\] | window | ユーザーが閉じようとしたウィンドウ。 |
+2742: 関連項目  
+2743: ウィンドウを閉じる操作とクローズフラグ
+2745: glfwSetWindowCloseCallback
+2749: 導入バージョン  
+2750: バージョン2.5で追加。**GLFW 3:** ウィンドウハンドル引数を追加。
+2758: ## [◆ ](#ga431663a1427d2eb3a273bc398b6737b5)GLFWwindowrefreshfun
+2766: | typedef void(\* GLFWwindowrefreshfun) (GLFWwindow \*window) |
+2772: これは、ウィンドウ内容の再描画コールバックの関数ポインター型です。ウィンドウ内容の再描画コールバック関数は、次のシグネチャを持ちます。
+2778: void function_name(GLFWwindow\* window);
+2784: 引数  
+2787: | \[in\] | window | 内容を再描画する必要があるウィンドウ。 |
+2791: 関連項目  
+2792: ウィンドウの損傷と再描画
+2794: glfwSetWindowRefreshCallback
+2798: 導入バージョン  
+2799: バージョン2.5で追加。**GLFW 3:** ウィンドウハンドル引数を追加。
+2807: ## [◆ ](#gabc58c47e9d93f6eb1862d615c3680f46)GLFWwindowfocusfun
+2815: | typedef void(\* GLFWwindowfocusfun) (GLFWwindow \*window, int focused) |
+2821: これは、ウィンドウフォーカスコールバックの関数ポインター型です。ウィンドウフォーカスコールバック関数は、次のシグネチャを持ちます。
+2827: void function_name(GLFWwindow\* window, int focused)
+2833: 引数  
+2836: | \[in\] | window | 入力フォーカスを獲得または喪失したウィンドウ。 |
+2837: | \[in\] | focused | ウィンドウへ入力フォーカスが与えられた場合は `GLFW_TRUE`、失った場合は `GLFW_FALSE`。 |
+2841: 関連項目  
+2842: ウィンドウの入力フォーカス
+2844: glfwSetWindowFocusCallback
+2848: 導入バージョン  
+2849: バージョン3.0で追加。
+2857: ## [◆ ](#ga35c658cccba236f26e7adee0e25f6a4f)GLFWwindowiconifyfun
+2865: | typedef void(\* GLFWwindowiconifyfun) (GLFWwindow \*window, int iconified) |
+2871: これは、ウィンドウアイコン化コールバックの関数ポインター型です。ウィンドウアイコン化コールバック関数は、次のシグネチャを持ちます。
+2877: void function_name(GLFWwindow\* window, int iconified)
+2883: 引数  
+2886: | \[in\] | window | アイコン化または復元されたウィンドウ。 |
+2887: | \[in\] | iconified | ウィンドウがアイコン化された場合は `GLFW_TRUE`、復元された場合は `GLFW_FALSE`。 |
+2891: 関連項目  
+2892: ウィンドウのアイコン化
+2894: glfwSetWindowIconifyCallback
+2898: 導入バージョン  
+2899: バージョン3.0で追加。
+2907: ## [◆ ](#ga3017196fdaec33ac3e095765176c2a90)GLFWwindowmaximizefun
+2915: | typedef void(\* GLFWwindowmaximizefun) (GLFWwindow \*window, int maximized) |
+2921: これは、ウィンドウ最大化コールバックの関数ポインター型です。ウィンドウ最大化コールバック関数は、次のシグネチャを持ちます。
+2927: void function_name(GLFWwindow\* window, int maximized)
+2933: 引数  
+2936: | \[in\] | window | 最大化または復元されたウィンドウ。 |
+2937: | \[in\] | maximized | ウィンドウが最大化された場合は `GLFW_TRUE`、復元された場合は `GLFW_FALSE`。 |
+2941: 関連項目  
+2942: ウィンドウの最大化
+2944: glfwSetWindowMaximizeCallback
+2948: 導入バージョン  
+2949: バージョン3.3で追加。
+2957: ## [◆ ](#gae18026e294dde685ed2e5f759533144d)GLFWframebuffersizefun
+2965: | typedef void(\* GLFWframebuffersizefun) (GLFWwindow \*window, int width, int height) |
+2971: これは、フレームバッファサイズコールバックの関数ポインター型です。フレームバッファサイズコールバック関数は、次のシグネチャを持ちます。
+2977: void function_name(GLFWwindow\* window, int width, int height)
+2983: 引数  
+2986: | \[in\] | window | フレームバッファのサイズが変更されたウィンドウ。 |
+2987: | \[in\] | width  | フレームバッファの新しい幅（ピクセル単位）。 |
+2988: | \[in\] | height | フレームバッファの新しい高さ（ピクセル単位）。 |
+2992: 関連項目  
+2993: フレームバッファサイズ
+2995: glfwSetFramebufferSizeCallback
+2999: 導入バージョン  
+3000: バージョン3.0で追加。
+3008: ## [◆ ](#ga77f288a2d04bb3c77c7d9615d08cf70e)GLFWwindowcontentscalefun
+3016: | typedef void(\* GLFWwindowcontentscalefun) (GLFWwindow \*window, float xscale, float yscale) |
+3022: これは、ウィンドウのコンテンツスケールコールバックの関数ポインター型です。ウィンドウのコンテンツスケールコールバック関数は、次のシグネチャを持ちます。
+3028: void function_name(GLFWwindow\* window, float xscale, float yscale)
+3034: 引数  
+3037: | \[in\] | window | コンテンツスケールが変更されたウィンドウ。 |
+3038: | \[in\] | xscale | ウィンドウの新しいx軸方向のコンテンツスケール。 |
+3039: | \[in\] | yscale | ウィンドウの新しいy軸方向のコンテンツスケール。 |
+3043: 関連項目  
+3044: ウィンドウのコンテンツスケール
+3046: glfwSetWindowContentScaleCallback
+3050: 導入バージョン  
+3051: バージョン3.3で追加。
+3059: ## [◆ ](#ga7cc0a09de172fa7250872046f8c4d2ca)GLFWimage
+3067: | typedef struct GLFWimage GLFWimage |
+3073: これは1枚の2D画像を表します。要求されるピクセルフォーマットについては、関連する各関数のドキュメントを参照してください。
+3075: 関連項目  
+3076: カスタムカーソルの作成
+3078: ウィンドウアイコン
+3082: 導入バージョン  
+3083: バージョン2.1で追加。**GLFW 3:** フォーマットおよびピクセル当たりのバイト数を表すメンバーを削除。
+3089: ## 関数の解説
+3093: ## [◆ ](#gaa77c4898dfb83344a6b4f76aa16b9a4a)glfwDefaultWindowHints()
+3101: | void glfwDefaultWindowHints | (   | void  |     | )   |     |
+3107: この関数は、すべてのウィンドウヒントを既定値へ戻します。
+3109: エラー  
+3110: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3114: スレッドセーフ性  
+3115: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3119: 関連項目  
+3120: ウィンドウ作成ヒント
+3122: glfwWindowHint
+3124: glfwWindowHintString
+3128: 導入バージョン  
+3129: バージョン3.0で追加。
+3137: ## [◆ ](#ga7d9c8c62384b1e2821c4dc48952d2033)glfwWindowHint()
+3145: | void glfwWindowHint | (   | int  | *hint*,  |
+3146: |                     |     | int  | *value*  |
+3147: |                     | )   |      |          |
+3153: この関数は、次に glfwCreateWindow を呼び出す際のヒントを設定します。一度設定されたヒントは、この関数または glfwDefaultWindowHints の呼び出しによって変更されるか、ライブラリが終了するまで値を保持します。
+3155: この関数で設定できるのは整数値のヒントだけです。文字列値のヒントは glfwWindowHintString で設定します。
+3157: この関数は、指定したヒント値が有効かどうかを確認しません。ヒントに無効な値を設定した場合、次に glfwCreateWindow を呼び出したときに報告されます。
+3159: 一部のヒントはプラットフォーム固有です。これらはどのプラットフォームでも設定できますが、該当するプラットフォームにだけ影響します。ほかのプラットフォームでは無視されます。これらのヒントを設定するために、プラットフォーム固有のヘッダーや関数は必要ありません。
+3161: 引数  
+3164: | \[in\] | hint | 設定するウィンドウヒント。 |
+3165: | \[in\] | value | ウィンドウヒントの新しい値。 |
+3169: エラー  
+3170: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_INVALID_ENUM があります。
+3174: スレッドセーフ性  
+3175: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3179: 関連項目  
+3180: ウィンドウ作成ヒント
+3182: glfwWindowHintString
+3184: glfwDefaultWindowHints
+3188: 導入バージョン  
+3189: バージョン3.0で追加。`glfwOpenWindowHint` を置き換えます。
+3197: ## [◆ ](#ga8cb2782861c9d997bcf2dea97f363e5f)glfwWindowHintString()
+3205: | void glfwWindowHintString | (   | int            | *hint*,  |
+3206: |                           |     | const char \*  | *value*  |
+3207: |                           | )   |                |          |
+3213: この関数は、次に glfwCreateWindow を呼び出す際のヒントを設定します。一度設定されたヒントは、この関数または glfwDefaultWindowHints の呼び出しによって変更されるか、ライブラリが終了するまで値を保持します。
+3215: この関数で設定できるのは文字列型のヒントだけです。整数値のヒントは glfwWindowHint で設定します。
+3217: この関数は、指定したヒント値が有効かどうかを確認しません。ヒントに無効な値を設定した場合、次に glfwCreateWindow を呼び出したときに報告されます。
+3219: 一部のヒントはプラットフォーム固有です。これらはどのプラットフォームでも設定できますが、該当するプラットフォームにだけ影響します。ほかのプラットフォームでは無視されます。これらのヒントを設定するために、プラットフォーム固有のヘッダーや関数は必要ありません。
+3221: 引数  
+3224: | \[in\] | hint | 設定するウィンドウヒント。 |
+3225: | \[in\] | value | ウィンドウヒントの新しい値。 |
+3229: エラー  
+3230: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_INVALID_ENUM があります。
+3234: ポインターの有効期間  
+3235: 指定された文字列は、この関数が戻る前にコピーされます。
+3239: スレッドセーフ性  
+3240: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3244: 関連項目  
+3245: ウィンドウ作成ヒント
+3247: glfwWindowHint
+3249: glfwDefaultWindowHints
+3253: 導入バージョン  
+3254: バージョン3.3で追加。
+3262: ## [◆ ](#ga3555a418df92ad53f917597fe2f64aeb)glfwCreateWindow()
+3270: | GLFWwindow \* glfwCreateWindow | ( | int  | *width*, |
+3271: |  |  | int  | *height*, |
+3272: |  |  | const char \*  | *title*, |
+3273: |  |  | GLFWmonitor \*  | *monitor*, |
+3274: |  |  | GLFWwindow \*  | *share*  |
+3275: |  | ) |  |  |
+3281: この関数は、ウィンドウと、それに関連付けられたOpenGLまたはOpenGL ESコンテキストを作成します。ウィンドウとコンテキストの作成方法を制御するオプションの大部分は、ウィンドウヒントで指定します。
+3283: 作成に成功しても、どのコンテキストがカレントかは変わりません。新しく作成したコンテキストを使用する前に、そのコンテキストをカレントにする必要があります。`share` 引数については、コンテキストオブジェクトの共有を参照してください。
+3285: すべての引数とヒントが厳密な制約ではないため、作成されたウィンドウ、フレームバッファ、コンテキストは要求したものと異なる場合があります。特にフルスクリーンウィンドウでは、ウィンドウサイズもこれに含まれます。作成されたウィンドウ、フレームバッファ、コンテキストの実際の属性を照会するには、glfwGetWindowAttrib、glfwGetWindowSize、glfwGetFramebufferSize を参照してください。
+3287: フルスクリーンウィンドウを作成するには、ウィンドウが覆うモニターを指定する必要があります。モニターを指定しない場合、ウィンドウはウィンドウモードになります。ユーザーが特定のモニターを選択できる仕組みがない限り、プライマリモニターを選ぶことを推奨します。接続されているモニターの照会方法については、モニターの取得を参照してください。
+3289: フルスクリーンウィンドウでは、指定したサイズがウィンドウの*希望するビデオモード*の解像度になります。フルスクリーンウィンドウがアイコン化されていない間は、希望するビデオモードにもっとも近い、サポート対象のビデオモードが指定したモニターへ設定されます。いわゆる*ウィンドウフルスクリーン*または*ボーダーレスフルスクリーン*ウィンドウの作成を含む、フルスクリーンウィンドウの詳細については、「ウィンドウフルスクリーン」ウィンドウを参照してください。
+3291: ウィンドウを作成した後は、glfwSetWindowMonitor を使って、ウィンドウモードとフルスクリーンモードを切り替えられます。この操作は、ウィンドウのOpenGLまたはOpenGL ESコンテキストに影響しません。
+3293: 既定では、新しく作成されるウィンドウは、ウィンドウシステムが推奨する配置を使用します。特定の位置にウィンドウを作成するには、作成前に GLFW_POSITION_X と GLFW_POSITION_Y ウィンドウヒントを設定します。既定の動作へ戻すには、一方または両方のヒントを `GLFW_ANY_POSITION` へ戻します。
+3295: 少なくとも1つのフルスクリーンウィンドウがアイコン化されていない間は、スクリーンセーバーの起動が禁止されます。
+3297: ウィンドウシステムはウィンドウサイズに制限を設けています。極端に大きい、または小さいウィンドウの寸法は、作成時にウィンドウシステムによって上書きされる場合があります。作成後に実際のサイズを確認してください。
+3299: スワップ間隔はウィンドウ作成時には設定されず、初期値はドライバーの設定や既定値によって異なる場合があります。
+3301: 引数  
+3304: | \[in\] | width | ウィンドウの希望する幅（スクリーン座標単位）。0より大きくなければなりません。 |
+3305: | \[in\] | height | ウィンドウの希望する高さ（スクリーン座標単位）。0より大きくなければなりません。 |
+3306: | \[in\] | title | UTF-8でエンコードされたウィンドウの初期タイトル。 |
+3307: | \[in\] | monitor | フルスクリーンモードで使用するモニター。ウィンドウモードの場合は `NULL`。 |
+3308: | \[in\] | share | リソースを共有するコンテキストを持つウィンドウ。リソースを共有しない場合は `NULL`。 |
+3312: 戻り値  
+3313: 作成されたウィンドウのハンドル。エラーが発生した場合は `NULL`。
+3317: エラー  
+3318: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_INVALID_VALUE、GLFW_API_UNAVAILABLE、GLFW_VERSION_UNAVAILABLE、GLFW_FORMAT_UNAVAILABLE、GLFW_NO_WINDOW_CONTEXT、GLFW_PLATFORM_ERROR があります。
+3322: 備考  
+3323: **Win32:** Microsoft GDIソフトウェアOpenGL実装しか利用できない場合、ウィンドウの作成は失敗します。
+3325: **Win32:** 実行ファイルに `GLFW_ICON,` という名前のアイコンリソースがある場合、それがウィンドウの初期アイコンとして設定されます。そのようなアイコンがない場合は、代わりに `IDI_APPLICATION` アイコンが使用されます。別のアイコンを設定する方法については、glfwSetWindowIcon を参照してください。
+3327: > **Libx参照注記（GLFW 3.5.1）:** 上では、原文のコード表記 `GLFW_ICON,` に含まれるカンマを保っています。[固定版のWin32実装](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L1294-L1297)が検索するリソース名は、カンマを含まない `GLFW_ICON` です。
+3329: **Win32:** リソース共有元のコンテキストは、ほかのどのスレッドでもカレントであってはなりません。
+3331: **macOS:** OSがサポートするOpenGL 3.2以降のコンテキストは、コアプロファイルコンテキストだけです。OpenGL 3.2以降のコンテキストを作成する前に、GLFW_OPENGL_PROFILE ヒントをそれに応じて設定しなければなりません。macOSはOpenGL 3.0および3.1のコンテキストをまったくサポートしていません。
+3333: **macOS:** GLFWウィンドウはドキュメントウィンドウではないためアイコンを持ちませんが、Dockアイコンはアプリケーションバンドルのアイコンと同じになります。バンドルの詳細については、Mac Developer Libraryの[Bundle Programming Guide](https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/)を参照してください。
+3335: **macOS:** GLFW_SCALE_FRAMEBUFFER ヒントが `GLFW_TRUE` であり、アプリケーションバンドルの `Info.plist` で `NSHighResolutionCapable` キーが有効になっていない限り、Retinaディスプレイでウィンドウフレームはフル解像度で描画されません。詳細については、Mac Developer Libraryの[High Resolution Guidelines for OS X](https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html)を参照してください。GLFWのテストおよびサンプルプログラムは、このためにカスタム `Info.plist` テンプレートを使用しています。これはソースツリーの `CMake/Info.plist.in` にあります。
+3337: **macOS:** GLFW_COCOA_FRAME_NAME でフレームの自動保存を有効にすると、指定したウィンドウサイズと位置が以前保存された値によって上書きされる場合があります。
+3339: **Wayland:** GLFWは、利用できる場合、ウィンドウ装飾の作成に[libdecor](https://gitlab.freedesktop.org/libdecor/libdecor)を使用します。libdecorは、利用できる場合はサーバー側のXDG装飾を使用し、GNOMEなどのコンポジターでは高品質なクライアント側装飾を提供します。XDG装飾とlibdecorの両方を利用できない場合、GLFWは、移動、サイズ変更、ウィンドウマネージャーの右クリックメニューだけをサポートする非常に簡素なウィンドウ装飾へフォールバックします。
+3341: **X11:** 一部のウィンドウマネージャーは、初期状態で非表示のウィンドウについて、指定された配置を尊重しません。
+3343: **X11:** X11は非同期で動作するため、ウィンドウが要求された状態へ到達するまで少し時間がかかる場合があります。このため、ウィンドウの作成直後には、最終的なサイズ、位置、その他の属性を照会できないことがあります。
+3345: **X11:** `WM_CLASS` ウィンドウプロパティのclass部分には、既定でこの関数へ渡されたウィンドウタイトルが設定されます。instance部分には、`RESOURCE_NAME` 環境変数が存在し、空でなければその内容が使われ、それ以外の場合はウィンドウタイトルへフォールバックします。この動作を上書きするには、GLFW_X11_CLASS_NAME と GLFW_X11_INSTANCE_NAME ウィンドウヒントを設定します。
+3349: スレッドセーフ性  
+3350: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3354: 関連項目  
+3355: ウィンドウの作成
+3357: glfwDestroyWindow
+3361: 導入バージョン  
+3362: バージョン3.0で追加。`glfwOpenWindow` を置き換えます。
+3370: ## [◆ ](#gacdf43e51376051d2c091662e9fe3d7b2)glfwDestroyWindow()
+3378: | void glfwDestroyWindow | ( | GLFWwindow \*  | *window* | ) |  |
+3384: この関数は、指定したウィンドウとそのコンテキストを破棄します。この関数を呼び出すと、そのウィンドウについて以後コールバックは呼び出されません。
+3386: 指定したウィンドウのコンテキストがメインスレッドでカレントになっている場合は、破棄される前に切り離されます。
+3388: 引数  
+3391: | \[in\] | window | 破棄するウィンドウ。 |
+3395: エラー  
+3396: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+3400: 注記  
+3401: この関数を呼び出すとき、指定したウィンドウのコンテキストは、ほかのどのスレッドでもカレントであってはなりません。
+3405: 再入可能性  
+3406: この関数はコールバックから呼び出してはなりません。
+3410: スレッドセーフ性  
+3411: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3415: 関連項目  
+3416: ウィンドウの作成
+3418: glfwCreateWindow
+3422: 導入バージョン  
+3423: バージョン3.0で追加。`glfwCloseWindow` を置き換えます。
+3431: ## [◆ ](#ga24e02fbfefbb81fc45320989f8140ab5)glfwWindowShouldClose()
+3439: | int glfwWindowShouldClose | ( | GLFWwindow \*  | *window* | ) |  |
+3445: この関数は、指定したウィンドウのクローズフラグの値を返します。
+3447: 引数  
+3450: | \[in\] | window | 照会するウィンドウ。 |
+3454: 戻り値  
+3455: クローズフラグの値。
+3459: エラー  
+3460: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3464: スレッドセーフ性  
+3465: この関数はどのスレッドからでも呼び出せます。アクセスは同期されません。
+3469: 関連項目  
+3470: ウィンドウを閉じる操作とクローズフラグ
+3474: 導入バージョン  
+3475: バージョン3.0で追加。
+3483: ## [◆ ](#ga49c449dde2a6f87d996f4daaa09d6708)glfwSetWindowShouldClose()
+3491: | void glfwSetWindowShouldClose | ( | GLFWwindow \*  | *window*, |
+3492: |  |  | int  | *value*  |
+3493: |  | ) |  |  |
+3499: この関数は、指定したウィンドウのクローズフラグの値を設定します。ユーザーがウィンドウを閉じようとした操作を取り消したり、ウィンドウを閉じるべきことを通知したりするために使用できます。
+3501: 引数  
+3504: | \[in\] | window | フラグを変更するウィンドウ。 |
+3505: | \[in\] | value  | 新しい値。 |
+3509: エラー  
+3510: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3514: スレッドセーフ性  
+3515: この関数はどのスレッドからでも呼び出せます。アクセスは同期されません。
+3519: 関連項目  
+3520: ウィンドウを閉じる操作とクローズフラグ
+3524: 導入バージョン  
+3525: バージョン3.0で追加。
+3533: ## [◆ ](#gac6151765c54b789c4fe66c6bc6215953)glfwGetWindowTitle()
+3541: | const char \* glfwGetWindowTitle | ( | GLFWwindow \*  | *window* | ) |  |
+3547: この関数は、指定したウィンドウのUTF-8でエンコードされたタイトルを返します。これは、以前に glfwCreateWindow または glfwSetWindowTitle で設定されたタイトルです。
+3549: 引数  
+3552: | \[in\] | window | 照会するウィンドウ。 |
+3556: 戻り値  
+3557: UTF-8でエンコードされたウィンドウタイトル。エラーが発生した場合は `NULL`。
+3561: エラー  
+3562: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3566: 備考  
+3567: 現在返されるタイトルは、glfwCreateWindow または glfwSetWindowTitle で最後に設定されたタイトルのコピーです。プラットフォームまたは別のプログラムによって追加される可能性のある文字列は含まれません。
+3571: ポインターの有効期間  
+3572: 返される文字列はGLFWによって割り当ておよび解放されます。自身で解放するべきではありません。次に glfwGetWindowTitle または glfwSetWindowTitle が呼び出されるか、ライブラリが終了するまで有効です。
+3576: スレッドセーフ性  
+3577: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3581: 関連項目  
+3582: ウィンドウタイトル
+3584: glfwSetWindowTitle
+3588: 導入バージョン  
+3589: バージョン3.4で追加。
+3597: ## [◆ ](#ga5d877f09e968cef7a360b513306f17ff)glfwSetWindowTitle()
+3605: | void glfwSetWindowTitle | ( | GLFWwindow \*  | *window*, |
+3606: |  |  | const char \*  | *title*  |
+3607: |  | ) |  |  |
+3613: この関数は、指定したウィンドウのタイトルをUTF-8でエンコードされた文字列で設定します。
+3615: 引数  
+3618: | \[in\] | window | タイトルを変更するウィンドウ。 |
+3619: | \[in\] | title  | UTF-8でエンコードされたウィンドウタイトル。 |
+3623: エラー  
+3624: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+3628: 備考  
+3629: **macOS:** ウィンドウタイトルは、次にイベントを処理するまで更新されません。
+3633: スレッドセーフ性  
+3634: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3638: 関連項目  
+3639: ウィンドウタイトル
+3641: glfwGetWindowTitle
+3645: 導入バージョン  
+3646: バージョン1.0で追加。**GLFW 3:** ウィンドウハンドル引数を追加。
+3654: ## [◆ ](#gadd7ccd39fe7a7d1f0904666ae5932dc5)glfwSetWindowIcon()
+3662: | void glfwSetWindowIcon | ( | GLFWwindow \*  | *window*, |
+3663: |  |  | int  | *count*, |
+3664: |  |  | const GLFWimage \*  | *images*  |
+3665: |  | ) |  |  |
+3671: この関数は、指定したウィンドウのアイコンを設定します。候補画像の配列を渡すと、システムが要求するサイズ、またはそれにもっとも近いサイズの画像が選択されます。画像を指定しない場合、ウィンドウは既定のアイコンへ戻ります。
+3673: ピクセルは32ビット、リトルエンディアン、乗算済みではないRGBA形式です。つまり、各チャンネルが8ビットで、赤チャンネルが先頭です。左上隅から始まる、連続した行を詰めた標準的な形式で配置します。
+3675: 要求される画像サイズは、プラットフォームとシステム設定によって異なります。選択された画像は必要に応じて拡大縮小されます。適切なサイズには、16x16、32x32、48x48があります。
+3677: 引数  
+3680: | \[in\] | window | アイコンを設定するウィンドウ。 |
+3681: | \[in\] | count | 指定した配列内の画像数。既定のウィンドウアイコンへ戻す場合は0。 |
+3682: | \[in\] | images | アイコンの作成元となる画像。countが0の場合は無視されます。 |
+3686: エラー  
+3687: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE、GLFW_PLATFORM_ERROR、GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+3691: ポインターの有効期間  
+3692: 指定された画像データは、この関数が戻る前にコピーされます。
+3696: 備考  
+3697: **macOS:** macOSの通常のウィンドウはアイコンを持ちません。この関数は GLFW_FEATURE_UNAVAILABLE を発生させます。Dockアイコンはアプリケーションバンドルのアイコンと同じになります。バンドルの詳細については、Mac Developer Libraryの[Bundle Programming Guide](https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/)を参照してください。
+3699: **Wayland:** アイコンを変更する既存のプロトコルがないため、ウィンドウはアプリケーションのdesktopファイルに定義されたアイコンを継承します。この関数は GLFW_FEATURE_UNAVAILABLE を発生させます。
+3703: スレッドセーフ性  
+3704: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3708: 関連項目  
+3709: ウィンドウアイコン
+3713: 導入バージョン  
+3714: バージョン3.2で追加。
+3722: ## [◆ ](#ga73cb526c000876fd8ddf571570fdb634)glfwGetWindowPos()
+3730: | void glfwGetWindowPos | ( | GLFWwindow \*  | *window*, |
+3731: |  |  | int \*  | *xpos*, |
+3732: |  |  | int \*  | *ypos*  |
+3733: |  | ) |  |  |
+3739: この関数は、指定したウィンドウのコンテンツ領域の左上隅について、スクリーン座標系の位置を取得します。
+3741: 位置引数は、その一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` ではないすべての位置引数が0に設定されます。
+3743: 引数  
+3746: | \[in\] | window | 照会するウィンドウ。 |
+3747: | \[out\] | xpos | コンテンツ領域の左上隅のx座標の格納先、または `NULL`。 |
+3748: | \[out\] | ypos | コンテンツ領域の左上隅のy座標の格納先、または `NULL`。 |
+3752: エラー  
+3753: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR、GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+3757: 備考  
+3758: **Wayland:** 現在、ウィンドウ位置は一般的なWaylandプロトコルのどれにも含まれていないため、この関数は実装できず、GLFW_FEATURE_UNAVAILABLE を発生させます。
+3762: スレッドセーフ性  
+3763: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3767: 関連項目  
+3768: ウィンドウの位置
+3770: glfwSetWindowPos
+3774: 導入バージョン  
+3775: バージョン3.0で追加。
+3783: ## [◆ ](#ga1abb6d690e8c88e0c8cd1751356dbca8)glfwSetWindowPos()
+3791: | void glfwSetWindowPos | ( | GLFWwindow \*  | *window*, |
+3792: |  |  | int  | *xpos*, |
+3793: |  |  | int  | *ypos*  |
+3794: |  | ) |  |  |
+3800: この関数は、指定したウィンドウモードのウィンドウについて、コンテンツ領域の左上隅の位置をスクリーン座標系で設定します。ウィンドウがフルスクリーンウィンドウの場合、この関数は何も行いません。
+3802: そうするための十分な理由がない限り、すでに表示されているウィンドウを移動するために、**この関数を使用してはなりません**。ユーザーを混乱させ、不快にさせるためです。
+3804: ウィンドウマネージャーは、許可される位置に制限を設ける場合があります。GLFWはこれらの制限を上書きできず、上書きするべきでもありません。
+3806: 引数  
+3809: | \[in\] | window | 照会するウィンドウ。 |
+3810: | \[in\] | xpos | コンテンツ領域の左上隅のx座標。 |
+3811: | \[in\] | ypos | コンテンツ領域の左上隅のy座標。 |
+3813: > **Libx参照注記（GLFW 3.5.1）:** 原文の引数表は `window` を照会するウィンドウと説明しています。[固定版のsetter実装](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L596-L607)は、ウィンドウモードの場合、このウィンドウをプラットフォームの位置設定関数へ渡します。ここで `window` は位置を設定するウィンドウを指定します。上記のフルスクリーン時には何もしないという条件は変わりません。上では原文の引数表を保っています。
+3817: エラー  
+3818: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR、GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+3822: 備考  
+3823: **Wayland:** 現在、ウィンドウ位置は一般的なWaylandプロトコルのどれにも含まれていないため、この関数は実装できず、GLFW_FEATURE_UNAVAILABLE を発生させます。
+3827: スレッドセーフ性  
+3828: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3832: 関連項目  
+3833: ウィンドウの位置
+3835: glfwGetWindowPos
+3839: 導入バージョン  
+3840: バージョン1.0で追加。**GLFW 3:** ウィンドウハンドル引数を追加。
+3848: ## [◆ ](#gaeea7cbc03373a41fb51cfbf9f2a5d4c6)glfwGetWindowSize()
+3856: | void glfwGetWindowSize | ( | GLFWwindow \*  | *window*, |
+3857: |  |  | int \*  | *width*, |
+3858: |  |  | int \*  | *height*  |
+3859: |  | ) |  |  |
+3865: この関数は、指定したウィンドウのコンテンツ領域のサイズをスクリーン座標単位で取得します。ウィンドウのフレームバッファサイズをピクセル単位で取得する場合は、glfwGetFramebufferSize を参照してください。
+3867: サイズ引数は、その一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` ではないすべてのサイズ引数が0に設定されます。
+3869: 引数  
+3872: | \[in\] | window | サイズを取得するウィンドウ。 |
+3873: | \[out\] | width | コンテンツ領域の幅（スクリーン座標単位）の格納先、または `NULL`。 |
+3874: | \[out\] | height | コンテンツ領域の高さ（スクリーン座標単位）の格納先、または `NULL`。 |
+3878: エラー  
+3879: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+3883: スレッドセーフ性  
+3884: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3888: 関連項目  
+3889: ウィンドウサイズ
+3891: glfwSetWindowSize
+3895: 導入バージョン  
+3896: バージョン1.0で追加。**GLFW 3:** ウィンドウハンドル引数を追加。
+3904: ## [◆ ](#gac314fa6cec7d2d307be9963e2709cc90)glfwSetWindowSizeLimits()
+3912: | void glfwSetWindowSizeLimits | ( | GLFWwindow \*  | *window*, |
+3913: |  |  | int  | *minwidth*, |
+3914: |  |  | int  | *minheight*, |
+3915: |  |  | int  | *maxwidth*, |
+3916: |  |  | int  | *maxheight*  |
+3917: |  | ) |  |  |
+3923: この関数は、指定したウィンドウのコンテンツ領域のサイズ制限を設定します。ウィンドウがフルスクリーンの場合、サイズ制限はウィンドウモードになってから有効になります。ウィンドウのサイズを変更できない場合、この関数は何も行いません。
+3925: サイズ制限はウィンドウモードのウィンドウへ直ちに適用され、ウィンドウのサイズが変更される場合があります。
+3927: 最大寸法は最小寸法以上でなければならず、すべての寸法が0以上でなければなりません。
+3929: 引数  
+3932: | \[in\] | window | 制限を設定するウィンドウ。 |
+3933: | \[in\] | minwidth | コンテンツ領域の最小幅（スクリーン座標単位）、または `GLFW_DONT_CARE`。 |
+3934: | \[in\] | minheight | コンテンツ領域の最小高さ（スクリーン座標単位）、または `GLFW_DONT_CARE`。 |
+3935: | \[in\] | maxwidth | コンテンツ領域の最大幅（スクリーン座標単位）、または `GLFW_DONT_CARE`。 |
+3936: | \[in\] | maxheight | コンテンツ領域の最大高さ（スクリーン座標単位）、または `GLFW_DONT_CARE`。 |
+3940: エラー  
+3941: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE、GLFW_PLATFORM_ERROR があります。
+3945: 備考  
+3946: 互いに矛盾するサイズ制限とアスペクト比を設定した場合、結果は未定義です。
+3948: **Wayland:** サイズ制限は、ユーザーまたはコンポジターによってウィンドウのサイズが実際に変更されるまで適用されません。
+3952: スレッドセーフ性  
+3953: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3957: 関連項目  
+3958: ウィンドウのサイズ制限
+3960: glfwSetWindowAspectRatio
+3964: 導入バージョン  
+3965: バージョン3.2で追加。
+3973: ## [◆ ](#ga72ac8cb1ee2e312a878b55153d81b937)glfwSetWindowAspectRatio()
+3981: | void glfwSetWindowAspectRatio | ( | GLFWwindow \*  | *window*, |
+3982: |  |  | int  | *numer*, |
+3983: |  |  | int  | *denom*  |
+3984: |  | ) |  |  |
+3990: この関数は、指定したウィンドウのコンテンツ領域に要求するアスペクト比を設定します。ウィンドウがフルスクリーンの場合、アスペクト比はウィンドウモードになってから有効になります。ウィンドウのサイズを変更できない場合、この関数は何も行いません。
+3992: アスペクト比は分子と分母で指定し、どちらの値も0より大きくなければなりません。たとえば、一般的な16:9のアスペクト比は、それぞれ16と9で指定します。
+3994: 分子と分母を `GLFW_DONT_CARE` に設定すると、アスペクト比の制限は無効になります。
+3996: アスペクト比はウィンドウモードのウィンドウへ直ちに適用され、ウィンドウのサイズが変更される場合があります。
+3998: 引数  
+4001: | \[in\] | window | 制限を設定するウィンドウ。 |
+4002: | \[in\] | numer | 希望するアスペクト比の分子、または `GLFW_DONT_CARE`。 |
+4003: | \[in\] | denom | 希望するアスペクト比の分母、または `GLFW_DONT_CARE`。 |
+4007: エラー  
+4008: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE、GLFW_PLATFORM_ERROR があります。
+4012: 備考  
+4013: 互いに矛盾するサイズ制限とアスペクト比を設定した場合、結果は未定義です。
+4015: **Wayland:** アスペクト比は、ユーザーまたはコンポジターによってウィンドウのサイズが実際に変更されるまで適用されません。
+4019: スレッドセーフ性  
+4020: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4024: 関連項目  
+4025: ウィンドウのサイズ制限
+4027: glfwSetWindowSizeLimits
+4031: 導入バージョン  
+4032: バージョン3.2で追加。
+4040: ## [◆ ](#ga371911f12c74c504dd8d47d832d095cb)glfwSetWindowSize()
+4048: | void glfwSetWindowSize | ( | GLFWwindow \*  | *window*, |
+4049: |  |  | int  | *width*, |
+4050: |  |  | int  | *height*  |
+4051: |  | ) |  |  |
+4057: この関数は、指定されたウィンドウのコンテンツ領域の大きさをスクリーン座標で設定します。
+4059: フルスクリーンウィンドウの場合、この関数はウィンドウが要求するビデオモードの解像度を更新し、ウィンドウのコンテキストに影響を与えることなく、最も近いビデオモードへ切り替えます。コンテキストは影響を受けないため、フレームバッファのビット深度は変わりません。
+4061: 要求するビデオモードの解像度に加えてリフレッシュレートも更新する場合は、glfwSetWindowMonitor を参照してください。
+4063: ウィンドウマネージャーによって、許可される大きさが制限されることがあります。GLFW はこれらの制限を上書きできず、また上書きすべきでもありません。
+4065: 引数  
+4068: | \[in\] | window | 大きさを変更するウィンドウ。 |
+4069: | \[in\] | width | ウィンドウのコンテンツ領域に要求する幅（スクリーン座標）。 |
+4070: | \[in\] | height | ウィンドウのコンテンツ領域に要求する高さ（スクリーン座標）。 |
+4074: エラー  
+4075: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4079: スレッドセーフ性  
+4080: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4084: 関連項目  
+4085: ウィンドウの大きさ
+4087: glfwGetWindowSize
+4089: glfwSetWindowMonitor
+4093: 導入バージョン  
+4094: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルの引数が追加されました。
+4102: ## [◆ ](#ga0e2637a4161afb283f5300c7f94785c9)glfwGetFramebufferSize()
+4110: | void glfwGetFramebufferSize | ( | GLFWwindow \*  | *window*, |
+4111: |  |  | int \*  | *width*, |
+4112: |  |  | int \*  | *height*  |
+4113: |  | ) |  |  |
+4119: この関数は、指定されたウィンドウのフレームバッファの大きさをピクセル単位で取得します。ウィンドウの大きさをスクリーン座標で取得する場合は、glfwGetWindowSize を参照してください。
+4121: 大きさを受け取る引数は、一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` でない大きさの引数はすべてゼロに設定されます。
+4123: 引数  
+4126: | \[in\] | window | フレームバッファを照会するウィンドウ。 |
+4127: | \[out\] | width | フレームバッファの幅をピクセル単位で格納する場所、または `NULL`。 |
+4128: | \[out\] | height | フレームバッファの高さをピクセル単位で格納する場所、または `NULL`。 |
+4132: エラー  
+4133: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4137: スレッドセーフ性  
+4138: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4142: 関連項目  
+4143: フレームバッファの大きさ
+4145: glfwSetFramebufferSizeCallback
+4149: 導入バージョン  
+4150: バージョン 3.0 で追加されました。
+4158: ## [◆ ](#ga1a9fd382058c53101b21cf211898f1f1)glfwGetWindowFrameSize()
+4166: | void glfwGetWindowFrameSize | ( | GLFWwindow \*  | *window*, |
+4167: |  |  | int \*  | *left*, |
+4168: |  |  | int \*  | *top*, |
+4169: |  |  | int \*  | *right*, |
+4170: |  |  | int \*  | *bottom*  |
+4171: |  | ) |  |  |
+4177: この関数は、指定されたウィンドウのフレームの各辺の大きさをスクリーン座標で取得します。ウィンドウにタイトルバーがある場合、この大きさにはタイトルバーも含まれます。フレームの大きさは、ウィンドウの作成に使用したウィンドウ関連のヒントによって異なることがあります。
+4179: この関数が取得するのはウィンドウフレームの各辺の大きさであり、特定の座標軸に沿ったオフセットではないため、取得される値は常にゼロ以上です。
+4181: 大きさを受け取る引数は、一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` でない大きさの引数はすべてゼロに設定されます。
+4183: 引数  
+4186: | \[in\] | window | フレームの大きさを照会するウィンドウ。 |
+4187: | \[out\] | left | ウィンドウフレームの左辺の大きさをスクリーン座標で格納する場所、または `NULL`。 |
+4188: | \[out\] | top | ウィンドウフレームの上辺の大きさをスクリーン座標で格納する場所、または `NULL`。 |
+4189: | \[out\] | right | ウィンドウフレームの右辺の大きさをスクリーン座標で格納する場所、または `NULL`。 |
+4190: | \[out\] | bottom | ウィンドウフレームの下辺の大きさをスクリーン座標で格納する場所、または `NULL`。 |
+4194: エラー  
+4195: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4199: スレッドセーフ性  
+4200: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4204: 関連項目  
+4205: ウィンドウの大きさ
+4209: 導入バージョン  
+4210: バージョン 3.1 で追加されました。
+4218: ## [◆ ](#gaf5d31de9c19c4f994facea64d2b3106c)glfwGetWindowContentScale()
+4226: | void glfwGetWindowContentScale | ( | GLFWwindow \*  | *window*, |
+4227: |  |  | float \*  | *xscale*, |
+4228: |  |  | float \*  | *yscale*  |
+4229: |  | ) |  |  |
+4235: この関数は、指定されたウィンドウのコンテンツスケールを取得します。コンテンツスケールは、現在の DPI とプラットフォームの既定の DPI との比率です。これは、テキストやあらゆる UI 要素で特に重要です。この値で拡大縮小した UI のピクセル寸法が使用中のマシンで適切に見えるなら、他のマシンでも、その DPI やスケーリング設定にかかわらず妥当な大きさで表示されるはずです。これは、システムの DPI とスケーリング設定がある程度正しいことを前提とします。
+4237: モニターごとに固有のコンテンツスケールを設定できるプラットフォームでは、ウィンドウのコンテンツスケールは、そのウィンドウがどのモニター上にあるとシステムが判断するかによって決まります。
+4239: 引数  
+4242: | \[in\]  | window | 照会するウィンドウ。                                |
+4243: | \[out\] | xscale | X 軸方向のコンテンツスケールを格納する場所、または `NULL`。 |
+4244: | \[out\] | yscale | Y 軸方向のコンテンツスケールを格納する場所、または `NULL`。 |
+4248: エラー  
+4249: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4253: スレッドセーフ性  
+4254: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4258: 関連項目  
+4259: ウィンドウのコンテンツスケール
+4261: glfwSetWindowContentScaleCallback
+4263: glfwGetMonitorContentScale
+4267: 導入バージョン  
+4268: バージョン 3.3 で追加されました。
+4276: ## [◆ ](#gad09f0bd7a6307c4533b7061828480a84)glfwGetWindowOpacity()
+4284: | float glfwGetWindowOpacity | ( | GLFWwindow \*  | *window* | ) |  |
+4290: この関数は、装飾を含むウィンドウの不透明度を返します。
+4292: 不透明度（アルファ）値はゼロから 1 までの正の有限数で、ゼロは完全な透明、1 は完全な不透明を表します。システムがウィンドウ全体の透過をサポートしていない場合、この関数は常に 1 を返します。
+4294: > **Libx参照注記（GLFW 3.5.1）:** 原文のpositive（正の）という語は、明示されているゼロの端点と整合しません。[固定版の不透明度setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796)は、0以上1以下の有限値であることを検査し、ゼロも範囲に含めます。ウィンドウ全体の透過がサポートされるかは、引き続きプラットフォームに依存します。上では原文の表現を保っています。
+4296: 新しく作成されたウィンドウの初期不透明度は 1 です。
+4298: 引数  
+4301: | \[in\] | window | 照会するウィンドウ。 |
+4305: 戻り値  
+4306: 指定されたウィンドウの不透明度。
+4310: エラー  
+4311: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4315: スレッドセーフ性  
+4316: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4320: 関連項目  
+4321: ウィンドウの透過
+4323: glfwSetWindowOpacity
+4327: 導入バージョン  
+4328: バージョン 3.3 で追加されました。
+4336: ## [◆ ](#gac31caeb3d1088831b13d2c8a156802e9)glfwSetWindowOpacity()
+4344: | void glfwSetWindowOpacity | ( | GLFWwindow \*  | *window*, |
+4345: |  |  | float  | *opacity*  |
+4346: |  | ) |  |  |
+4352: この関数は、装飾を含むウィンドウの不透明度を設定します。
+4354: 不透明度（アルファ）値はゼロから 1 までの正の有限数で、ゼロは完全な透明、1 は完全な不透明を表します。
+4356: > **Libx参照注記（GLFW 3.5.1）:** 原文のpositive（正の）という語は、明示されているゼロの端点と整合しません。[固定版の不透明度setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796)は、0以上1以下の有限値であることを検査し、ゼロも範囲に含めます。ウィンドウ全体の透過がサポートされるかは、引き続きプラットフォームに依存します。上では原文の表現を保っています。
+4358: 新しく作成されたウィンドウの初期不透明度は 1 です。
+4360: フレームバッファ透過を有効にして作成したウィンドウでは、ウィンドウ全体の透過を使用してはなりません。これを行った場合の結果は未定義です。
+4362: 引数  
+4365: | \[in\] | window  | 不透明度を設定するウィンドウ。           |
+4366: | \[in\] | opacity | 指定されたウィンドウに要求する不透明度。 |
+4370: エラー  
+4371: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR、および GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+4375: 備考  
+4376: **Wayland:** ウィンドウの不透明度係数を設定する方法はありません。この関数は GLFW_FEATURE_UNAVAILABLE を発生させます。
+4380: スレッドセーフ性  
+4381: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4385: 関連項目  
+4386: ウィンドウの透過
+4388: glfwGetWindowOpacity
+4392: 導入バージョン  
+4393: バージョン 3.3 で追加されました。
+4401: ## [◆ ](#ga1bb559c0ebaad63c5c05ad2a066779c4)glfwIconifyWindow()
+4409: | void glfwIconifyWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4415: この関数は、指定されたウィンドウが復元状態であれば、アイコン化（最小化）します。ウィンドウがすでにアイコン化されている場合、この関数は何もしません。
+4417: 指定されたウィンドウがフルスクリーンウィンドウの場合、GLFW はモニターの元のビデオモードを復元します。ウィンドウを復元すると、ウィンドウが要求するビデオモードが再び設定されます。
+4419: 引数  
+4422: | \[in\] | window | アイコン化するウィンドウ。 |
+4426: エラー  
+4427: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4431: スレッドセーフ性  
+4432: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4436: 関連項目  
+4437: ウィンドウのアイコン化
+4439: glfwRestoreWindow
+4441: glfwMaximizeWindow
+4445: 導入バージョン  
+4446: バージョン 2.1 で追加されました。**GLFW 3:** ウィンドウハンドルの引数が追加されました。
+4454: ## [◆ ](#ga52527a5904b47d802b6b4bb519cdebc7)glfwRestoreWindow()
+4462: | void glfwRestoreWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4468: この関数は、指定されたウィンドウがアイコン化（最小化）または最大化されていれば復元します。ウィンドウがすでに復元されている場合、この関数は何もしません。
+4470: 指定されたウィンドウがアイコン化されたフルスクリーンウィンドウの場合、ウィンドウを復元すると、そのモニターに要求するビデオモードが再び設定されます。
+4472: 引数  
+4475: | \[in\] | window | 復元するウィンドウ。 |
+4479: エラー  
+4480: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4484: 備考  
+4485: **Wayland:** 最大化されたウィンドウの復元は、現在、共通の Wayland プロトコルには含まれていないため、この関数が復元できるのは最大化されたウィンドウに限られます。
+4487: > **Libx参照注記（GLFW 3.5.1）:** 原文の備考は、最大化からの復元について自己矛盾しています。[固定版のWayland実装](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L2688-L2710)のコメントは最小化を解除できないと述べ、ウィンドウモードの分岐ではlibdecorまたはxdg-toplevelで最大化を解除するか、保存された最大化フラグをクリアします。これは固定版3.5.1の動作の説明であり、現在のWaylandプロトコルの機能を確定するものではありません。上では原文の備考を保っています。
+4491: スレッドセーフ性  
+4492: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4496: 関連項目  
+4497: ウィンドウのアイコン化
+4499: glfwIconifyWindow
+4501: glfwMaximizeWindow
+4505: 導入バージョン  
+4506: バージョン 2.1 で追加されました。**GLFW 3:** ウィンドウハンドルの引数が追加されました。
+4514: ## [◆ ](#ga3f541387449d911274324ae7f17ec56b)glfwMaximizeWindow()
+4522: | void glfwMaximizeWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4528: この関数は、指定されたウィンドウが最大化されていなければ最大化します。ウィンドウがすでに最大化されている場合、この関数は何もしません。
+4530: 指定されたウィンドウがフルスクリーンウィンドウの場合、この関数は何もしません。
+4532: 引数  
+4535: | \[in\] | window | 最大化するウィンドウ。 |
+4539: エラー  
+4540: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4544: スレッドセーフ性  
+4545: この関数は、メインスレッドからのみ呼び出せます。
+4549: 関連項目  
+4550: ウィンドウのアイコン化
+4552: glfwIconifyWindow
+4554: glfwRestoreWindow
+4558: 導入バージョン  
+4559: GLFW 3.2 で追加されました。
+4567: ## [◆ ](#ga61be47917b72536a148300f46494fc66)glfwShowWindow()
+4575: | void glfwShowWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4581: この関数は、指定されたウィンドウが非表示であれば表示します。ウィンドウがすでに表示されている場合、またはフルスクリーンモードの場合、この関数は何もしません。
+4583: 既定では、ウィンドウモードのウィンドウは表示時にフォーカスされます。新しく作成するすべてのウィンドウについてこの動作を変更するには、ウィンドウヒント GLFW_FOCUS_ON_SHOW を設定します。既存のウィンドウについては、glfwSetWindowAttrib で動作を変更できます。
+4585: 引数  
+4588: | \[in\] | window | 表示するウィンドウ。 |
+4592: エラー  
+4593: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4597: 備考  
+4598: **Wayland:** Wayland はデスクトップの各フレームが完全であることを求めるため、この関数はウィンドウを即座には表示しません。代わりに、この呼び出し後にウィンドウのフレームバッファが次に更新されたときに表示されます。
+4602: スレッドセーフ性  
+4603: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4607: 関連項目  
+4608: ウィンドウの表示状態
+4610: glfwHideWindow
+4614: 導入バージョン  
+4615: バージョン 3.0 で追加されました。
+4623: ## [◆ ](#ga49401f82a1ba5f15db5590728314d47c)glfwHideWindow()
+4631: | void glfwHideWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4637: この関数は、指定されたウィンドウが表示されていれば非表示にします。ウィンドウがすでに非表示の場合、またはフルスクリーンモードの場合、この関数は何もしません。
+4639: 引数  
+4642: | \[in\] | window | 非表示にするウィンドウ。 |
+4646: エラー  
+4647: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4651: スレッドセーフ性  
+4652: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4656: 関連項目  
+4657: ウィンドウの表示状態
+4659: glfwShowWindow
+4663: 導入バージョン  
+4664: バージョン 3.0 で追加されました。
+4672: ## [◆ ](#ga873780357abd3f3a081d71a40aae45a1)glfwFocusWindow()
+4680: | void glfwFocusWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4686: この関数は、指定されたウィンドウを前面へ移動し、入力フォーカスを設定します。ウィンドウはすでに表示され、アイコン化されていない必要があります。
+4688: 既定では、ウィンドウモードとフルスクリーンモードのどちらのウィンドウも、最初の作成時にフォーカスされます。この動作を無効にするには、GLFW_FOCUSED を設定します。
+4690: また既定では、ウィンドウモードのウィンドウは glfwShowWindow で表示したときにフォーカスされます。この動作を無効にするには、GLFW_FOCUS_ON_SHOW を設定します。
+4692: ユーザーがそれを望んでいると確信できる場合を除き、他のアプリケーションからフォーカスを奪うために**この関数を使用しないでください**。フォーカスの奪取は、ユーザーの作業を著しく妨げることがあります。
+4694: ユーザーの注意をより穏当な方法で引くには、注意要求を参照してください。
+4696: 引数  
+4699: | \[in\] | window | 入力フォーカスを与えるウィンドウ。 |
+4703: エラー  
+4704: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4708: 備考  
+4709: **Wayland:** 同じアプリケーションが作成した別のウィンドウがすでに入力フォーカスを持っている場合を除き、コンポジターはフォーカス要求を無視する可能性があります。
+4713: スレッドセーフ性  
+4714: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4718: 関連項目  
+4719: ウィンドウの入力フォーカス
+4721: ウィンドウの注意要求
+4725: 導入バージョン  
+4726: バージョン 3.2 で追加されました。
+4734: ## [◆ ](#ga2f8d59323fc4692c1d54ba08c863a703)glfwRequestWindowAttention()
+4742: | void glfwRequestWindowAttention | ( | GLFWwindow \*  | *window* | ) |  |
+4748: この関数は、指定されたウィンドウへユーザーの注意を引くよう要求します。これがサポートされていないプラットフォームでは、アプリケーション全体に対して注意を要求します。
+4750: 通常はウィンドウまたはアプリケーションをフォーカスすることでユーザーが注意を向けると、システムは要求を自動的に終了します。
+4752: 引数  
+4755: | \[in\] | window | 注意を要求するウィンドウ。 |
+4759: エラー  
+4760: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4764: 備考  
+4765: **macOS:** 特定のウィンドウではなく、アプリケーション全体に対して注意を要求します。
+4769: スレッドセーフ性  
+4770: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4774: 関連項目  
+4775: ウィンドウの注意要求
+4779: 導入バージョン  
+4780: バージョン 3.3 で追加されました。
+4788: ## [◆ ](#ga4d766499ac02c60f02221a9dfab87299)glfwGetWindowMonitor()
+4796: | GLFWmonitor \* glfwGetWindowMonitor | ( | GLFWwindow \*  | *window* | ) |  |
+4802: この関数は、指定されたウィンドウがフルスクリーン表示されているモニターのハンドルを返します。
+4804: 引数  
+4807: | \[in\] | window | 照会するウィンドウ。 |
+4811: 戻り値  
+4812: モニター。ウィンドウがウィンドウモードの場合、またはエラーが発生した場合は `NULL`。
+4816: エラー  
+4817: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+4821: スレッドセーフ性  
+4822: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4826: 関連項目  
+4827: ウィンドウのモニター
+4829: glfwSetWindowMonitor
+4833: 導入バージョン  
+4834: バージョン 3.0 で追加されました。
+4842: ## [◆ ](#ga81c76c418af80a1cce7055bccb0ae0a7)glfwSetWindowMonitor()
+4850: | void glfwSetWindowMonitor | ( | GLFWwindow \*  | *window*, |
+4851: |  |  | GLFWmonitor \*  | *monitor*, |
+4852: |  |  | int  | *xpos*, |
+4853: |  |  | int  | *ypos*, |
+4854: |  |  | int  | *width*, |
+4855: |  |  | int  | *height*, |
+4856: |  |  | int  | *refreshRate*  |
+4857: |  | ) |  |  |
+4863: この関数は、ウィンドウがフルスクリーンモードで使用するモニターを設定します。モニターが `NULL` の場合は、ウィンドウモードにします。
+4865: モニターを設定すると、この関数は要求するビデオモードの幅、高さ、リフレッシュレートを更新し、それに最も近いビデオモードへ切り替えます。モニターを設定する場合、ウィンドウ位置は無視されます。
+4867: モニターが `NULL` の場合、位置、幅、高さを使用してウィンドウのコンテンツ領域を配置します。モニターが指定されていない場合、リフレッシュレートは無視されます。
+4869: フルスクリーンウィンドウの解像度、またはウィンドウモードのウィンドウの大きさだけを更新する場合は、glfwSetWindowSize を参照してください。
+4871: ウィンドウがフルスクリーンからウィンドウモードへ移行するとき、この関数は、装飾、フローティング、サイズ変更の可否、大きさやアスペクト比の制限など、以前のウィンドウ設定を復元します。
+4873: 引数  
+4876: | \[in\] | window | モニター、大きさ、またはビデオモードを設定するウィンドウ。 |
+4877: | \[in\] | monitor | 要求するモニター。ウィンドウモードにする場合は `NULL`。 |
+4878: | \[in\] | xpos | コンテンツ領域の左上隅に要求する X 座標。 |
+4879: | \[in\] | ypos | コンテンツ領域の左上隅に要求する Y 座標。 |
+4880: | \[in\] | width | コンテンツ領域またはビデオモードに要求する幅（スクリーン座標）。 |
+4881: | \[in\] | height | コンテンツ領域またはビデオモードに要求する高さ（スクリーン座標）。 |
+4882: | \[in\] | refreshRate | ビデオモードに要求するリフレッシュレート（Hz）、または `GLFW_DONT_CARE`。 |
+4886: エラー  
+4887: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+4891: 備考  
+4892: 大きさの変更やモードの切り替えによって OpenGL または OpenGL ES コンテキストが破棄されたり、その他の影響を受けたりすることはありません。ただし、フレームバッファの大きさが変わった場合は、ビューポートを更新する必要になる場合があります。
+4894: **Wayland:** ウィンドウ位置は、現在、共通の Wayland プロトコルには含まれていません。ウィンドウ位置の引数は無視されます。
+4898: スレッドセーフ性  
+4899: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4903: 関連項目  
+4904: ウィンドウのモニター
+4906: フルスクリーンウィンドウ
+4908: glfwGetWindowMonitor
+4910: glfwSetWindowSize
+4914: 導入バージョン  
+4915: バージョン 3.2 で追加されました。
+4923: ## [◆ ](#gacccb29947ea4b16860ebef42c2cb9337)glfwGetWindowAttrib()
+4931: | int glfwGetWindowAttrib | ( | GLFWwindow \*  | *window*, |
+4932: |  |  | int  | *attrib*  |
+4933: |  | ) |  |  |
+4939: この関数は、指定されたウィンドウ、またはその OpenGL もしくは OpenGL ES コンテキストの属性値を返します。
+4941: 引数  
+4944: | \[in\] | window | 照会するウィンドウ。 |
+4945: | \[in\] | attrib | 値を返すウィンドウ属性。 |
+4949: 戻り値  
+4950: 属性の値。エラーが発生した場合はゼロ。
+4954: エラー  
+4955: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、および GLFW_PLATFORM_ERROR があります。
+4959: 備考  
+4960: フレームバッファ関連のヒントはウィンドウ属性ではありません。詳しくは、フレームバッファ関連の属性を参照してください。
+4962: 多くのウィンドウおよびコンテキスト関連属性ではゼロが有効な値であるため、戻り値のゼロをエラーの目印として使用することはできません。ただし、有効な引数を渡し、ライブラリが初期化されている限り、この関数は失敗しないはずです。
+4964: **Wayland:** ウィンドウがアイコン化されているかの確認は、現在、共通の Wayland プロトコルには含まれていません。そのため、GLFW_ICONIFIED 属性は実装できず、常に `GLFW_FALSE` です。
+4968: スレッドセーフ性  
+4969: この関数は、メインスレッドからのみ呼び出さなければなりません。
+4973: 関連項目  
+4974: ウィンドウ属性
+4976: glfwSetWindowAttrib
+4980: 導入バージョン  
+4981: バージョン 3.0 で追加されました。`glfwGetWindowParam` と `glfwGetGLVersion` を置き換えます。
+4989: ## [◆ ](#gace2afda29b4116ec012e410a6819033e)glfwSetWindowAttrib()
+4997: | void glfwSetWindowAttrib | ( | GLFWwindow \*  | *window*, |
+4998: |  |  | int  | *attrib*, |
+4999: |  |  | int  | *value*  |
+5000: |  | ) |  |  |
+5006: この関数は、指定されたウィンドウの属性値を設定します。
+5008: サポートされる属性は、GLFW_DECORATED、GLFW_RESIZABLE、GLFW_FLOATING、GLFW_AUTO_ICONIFY、GLFW_FOCUS_ON_SHOW、および GLFW_MOUSE_PASSTHROUGH です。
+5010: これらの属性の一部は、フルスクリーンウィンドウでは無視されます。後でウィンドウモードにすると、新しい値が有効になります。
+5012: これらの属性の一部は、ウィンドウモードのウィンドウでは無視されます。後でフルスクリーンにすると、新しい値が有効になります。
+5014: 引数  
+5017: | \[in\] | window | 属性を設定するウィンドウ。 |
+5018: | \[in\] | attrib | サポートされるウィンドウ属性。        |
+5019: | \[in\] | value  | `GLFW_TRUE` または `GLFW_FALSE`。         |
+5023: エラー  
+5024: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_INVALID_VALUE、GLFW_PLATFORM_ERROR、および GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+5028: 備考  
+5029: glfwGetWindowAttrib を呼び出すと、その値が現在のウィンドウモードで無視されている場合でも、常に最新の値が返されます。
+5031: **Wayland:** ウィンドウ属性 GLFW_FLOATING はサポートされていません。これを設定すると、GLFW_FEATURE_UNAVAILABLE が発生します。
+5035: スレッドセーフ性  
+5036: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5040: 関連項目  
+5041: ウィンドウ属性
+5043: glfwGetWindowAttrib
+5047: 導入バージョン  
+5048: バージョン 3.3 で追加されました。
+5056: ## [◆ ](#ga3d2fc6026e690ab31a13f78bc9fd3651)glfwSetWindowUserPointer()
+5064: | void glfwSetWindowUserPointer | ( | GLFWwindow \*  | *window*, |
+5065: |  |  | void \*  | *pointer*  |
+5066: |  | ) |  |  |
+5072: この関数は、指定されたウィンドウのユーザー定義ポインターを設定します。現在の値は、ウィンドウが破棄されるまで保持されます。初期値は `NULL` です。
+5074: 引数  
+5077: | \[in\] | window  | ポインターを設定するウィンドウ。 |
+5078: | \[in\] | pointer | 新しい値。                   |
+5082: エラー  
+5083: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5087: スレッドセーフ性  
+5088: この関数は、任意のスレッドから呼び出せます。アクセスは同期されません。
+5092: 関連項目  
+5093: ユーザーポインター
+5095: glfwGetWindowUserPointer
+5099: 導入バージョン  
+5100: バージョン 3.0 で追加されました。
+5108: ## [◆ ](#gae77a4add0d2023ca21ff1443ced01653)glfwGetWindowUserPointer()
+5116: | void \* glfwGetWindowUserPointer | ( | GLFWwindow \*  | *window* | ) |  |
+5122: この関数は、指定されたウィンドウのユーザー定義ポインターの現在値を返します。初期値は `NULL` です。
+5124: 引数  
+5127: | \[in\] | window | ポインターを返すウィンドウ。 |
+5131: エラー  
+5132: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5136: スレッドセーフ性  
+5137: この関数は、任意のスレッドから呼び出せます。アクセスは同期されません。
+5141: 関連項目  
+5142: ユーザーポインター
+5144: glfwSetWindowUserPointer
+5148: 導入バージョン  
+5149: バージョン 3.0 で追加されました。
+5157: ## [◆ ](#ga08bdfbba88934f9c4f92fd757979ac74)glfwSetWindowPosCallback()
+5165: | GLFWwindowposfun glfwSetWindowPosCallback | ( | GLFWwindow \*  | *window*, |
+5166: |  |  | GLFWwindowposfun  | *callback*  |
+5167: |  | ) |  |  |
+5173: この関数は、指定されたウィンドウの位置コールバックを設定します。このコールバックは、ウィンドウが移動したときに呼び出されます。コールバックには、ウィンドウのコンテンツ領域の左上隅の位置がスクリーン座標で渡されます。
+5175: 引数  
+5178: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5179: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5183: 戻り値  
+5184: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5188: コールバックのシグネチャ  
+5193: void function_name(GLFWwindow\* window, int xpos, int ypos)
+5199: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5203: エラー  
+5204: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5208: 備考  
+5209: **Wayland:** このコールバックは呼び出されません。Wayland プロトコルには、ウィンドウの移動を通知する方法がありません。
+5213: スレッドセーフ性  
+5214: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5218: 関連項目  
+5219: ウィンドウ位置
+5223: 導入バージョン  
+5224: バージョン 3.0 で追加されました。
+5232: ## [◆ ](#gad91b8b047a0c4c6033c38853864c34f8)glfwSetWindowSizeCallback()
+5240: | GLFWwindowsizefun glfwSetWindowSizeCallback | ( | GLFWwindow \*  | *window*, |
+5241: |  |  | GLFWwindowsizefun  | *callback*  |
+5242: |  | ) |  |  |
+5248: この関数は、指定されたウィンドウの大きさコールバックを設定します。このコールバックは、ウィンドウの大きさが変更されたときに呼び出されます。コールバックには、ウィンドウのコンテンツ領域の大きさがスクリーン座標で渡されます。
+5250: 引数  
+5253: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5254: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5258: 戻り値  
+5259: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5263: コールバックのシグネチャ  
+5268: void function_name(GLFWwindow\* window, int width, int height)
+5274: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5278: エラー  
+5279: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5283: スレッドセーフ性  
+5284: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5288: 関連項目  
+5289: ウィンドウの大きさ
+5293: 導入バージョン  
+5294: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルの引数と戻り値が追加されました。
+5302: ## [◆ ](#gada646d775a7776a95ac000cfc1885331)glfwSetWindowCloseCallback()
+5310: | GLFWwindowclosefun glfwSetWindowCloseCallback | ( | GLFWwindow \*  | *window*, |
+5311: |  |  | GLFWwindowclosefun  | *callback*  |
+5312: |  | ) |  |  |
+5318: この関数は、指定されたウィンドウの終了コールバックを設定します。このコールバックは、たとえばタイトルバーの閉じるウィジェットをクリックするなど、ユーザーがウィンドウを閉じようとしたときに呼び出されます。
+5320: 終了フラグは、このコールバックが呼び出される前に設定されますが、glfwSetWindowShouldClose を使用すればいつでも変更できます。
+5322: glfwDestroyWindow では、終了コールバックは呼び出されません。
+5324: 引数  
+5327: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5328: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5332: 戻り値  
+5333: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5337: コールバックのシグネチャ  
+5342: void function_name(GLFWwindow\* window)
+5348: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5352: エラー  
+5353: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5357: 備考  
+5358: **macOS:** アプリケーションメニューから「終了」を選択すると、すべてのウィンドウの終了コールバックが呼び出されます。
+5362: スレッドセーフ性  
+5363: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5367: 関連項目  
+5368: ウィンドウの終了と終了フラグ
+5372: 導入バージョン  
+5373: バージョン 2.5 で追加されました。**GLFW 3:** ウィンドウハンドルの引数と戻り値が追加されました。
+5381: ## [◆ ](#ga1c5c7eb889c33c7f4d10dd35b327654e)glfwSetWindowRefreshCallback()
+5389: | GLFWwindowrefreshfun glfwSetWindowRefreshCallback | ( | GLFWwindow \*  | *window*, |
+5390: |  |  | GLFWwindowrefreshfun  | *callback*  |
+5391: |  | ) |  |  |
+5397: この関数は、指定されたウィンドウの再描画コールバックを設定します。このコールバックは、たとえば別のウィンドウに覆われていたウィンドウが露出した場合など、ウィンドウのコンテンツ領域を再描画する必要があるときに呼び出されます。
+5399: Aero、Compiz、Aqua、Wayland など、ウィンドウの内容が画面外に保存されるコンポジット型ウィンドウシステムでは、このコールバックはごくまれにしか呼び出されないか、まったく呼び出されないことがあります。
+5401: 引数  
+5404: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5405: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5409: 戻り値  
+5410: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5414: コールバックのシグネチャ  
+5419: void function_name(GLFWwindow\* window);
+5425: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5429: エラー  
+5430: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5434: スレッドセーフ性  
+5435: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5439: 関連項目  
+5440: ウィンドウの損傷と再描画
+5444: 導入バージョン  
+5445: バージョン 2.5 で追加されました。**GLFW 3:** ウィンドウハンドルの引数と戻り値が追加されました。
+5453: ## [◆ ](#gac2d83c4a10f071baf841f6730528e66c)glfwSetWindowFocusCallback()
+5461: | GLFWwindowfocusfun glfwSetWindowFocusCallback | ( | GLFWwindow \*  | *window*, |
+5462: |  |  | GLFWwindowfocusfun  | *callback*  |
+5463: |  | ) |  |  |
+5469: この関数は、指定されたウィンドウのフォーカスコールバックを設定します。このコールバックは、ウィンドウが入力フォーカスを得たとき、または失ったときに呼び出されます。
+5471: 入力フォーカスを失ったウィンドウについてフォーカスコールバックが呼び出された後、押されていたすべてのキーとマウスボタンに対して、合成された解放イベントが生成されます。詳しくは、glfwSetKeyCallback と glfwSetMouseButtonCallback を参照してください。
+5473: 引数  
+5476: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5477: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5481: 戻り値  
+5482: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5486: コールバックのシグネチャ  
+5491: void function_name(GLFWwindow\* window, int focused)
+5497: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5501: エラー  
+5502: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5506: スレッドセーフ性  
+5507: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5511: 関連項目  
+5512: ウィンドウの入力フォーカス
+5516: 導入バージョン  
+5517: バージョン 3.0 で追加されました。
+5525: ## [◆ ](#gac793e9efd255567b5fb8b445052cfd3e)glfwSetWindowIconifyCallback()
+5533: | GLFWwindowiconifyfun glfwSetWindowIconifyCallback | ( | GLFWwindow \*  | *window*, |
+5534: |  |  | GLFWwindowiconifyfun  | *callback*  |
+5535: |  | ) |  |  |
+5541: この関数は、指定されたウィンドウのアイコン化コールバックを設定します。このコールバックは、ウィンドウがアイコン化または復元されたときに呼び出されます。
+5543: 引数  
+5546: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5547: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5551: 戻り値  
+5552: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5556: コールバックのシグネチャ  
+5561: void function_name(GLFWwindow\* window, int iconified)
+5567: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5571: エラー  
+5572: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5576: 備考  
+5577: **Wayland:** このコールバックは呼び出されません。Wayland プロトコルには、ウィンドウのアイコン化を通知する方法も、ウィンドウが現在アイコン化されているかを確認する方法もありません。
+5581: スレッドセーフ性  
+5582: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5586: 関連項目  
+5587: ウィンドウのアイコン化
+5591: 導入バージョン  
+5592: バージョン 3.0 で追加されました。
+5600: ## [◆ ](#gacbe64c339fbd94885e62145563b6dc93)glfwSetWindowMaximizeCallback()
+5608: | GLFWwindowmaximizefun glfwSetWindowMaximizeCallback | ( | GLFWwindow \*  | *window*, |
+5609: |  |  | GLFWwindowmaximizefun  | *callback*  |
+5610: |  | ) |  |  |
+5616: この関数は、指定されたウィンドウの最大化コールバックを設定します。このコールバックは、ウィンドウが最大化または復元されたときに呼び出されます。
+5618: 引数  
+5621: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5622: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5626: 戻り値  
+5627: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5631: コールバックのシグネチャ  
+5636: void function_name(GLFWwindow\* window, int maximized)
+5642: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5646: エラー  
+5647: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5651: スレッドセーフ性  
+5652: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5656: 関連項目  
+5657: ウィンドウの最大化
+5661: 導入バージョン  
+5662: バージョン 3.3 で追加されました。
+5670: ## [◆ ](#gab3fb7c3366577daef18c0023e2a8591f)glfwSetFramebufferSizeCallback()
+5678: | GLFWframebuffersizefun glfwSetFramebufferSizeCallback | ( | GLFWwindow \*  | *window*, |
+5679: |  |  | GLFWframebuffersizefun  | *callback*  |
+5680: |  | ) |  |  |
+5686: この関数は、指定されたウィンドウのフレームバッファサイズ変更コールバックを設定します。このコールバックは、指定されたウィンドウのフレームバッファの大きさが変更されたときに呼び出されます。
+5688: 引数  
+5691: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5692: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5696: 戻り値  
+5697: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5701: コールバックのシグネチャ  
+5706: void function_name(GLFWwindow\* window, int width, int height)
+5712: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5716: エラー  
+5717: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5721: スレッドセーフ性  
+5722: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5726: 関連項目  
+5727: フレームバッファの大きさ
+5731: 導入バージョン  
+5732: バージョン 3.0 で追加されました。
+5740: ## [◆ ](#gaf2832ebb5aa6c252a2d261de002c92d6)glfwSetWindowContentScaleCallback()
+5748: | GLFWwindowcontentscalefun glfwSetWindowContentScaleCallback | ( | GLFWwindow \*  | *window*, |
+5749: |  |  | GLFWwindowcontentscalefun  | *callback*  |
+5750: |  | ) |  |  |
+5756: この関数は、指定されたウィンドウのコンテンツスケールコールバックを設定します。このコールバックは、指定されたウィンドウのコンテンツスケールが変化したときに呼び出されます。
+5758: 引数  
+5761: | \[in\] | window | コールバックを設定するウィンドウ。 |
+5762: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+5766: 戻り値  
+5767: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+5771: コールバックのシグネチャ  
+5776: void function_name(GLFWwindow\* window, float xscale, float yscale)
+5782: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+5786: エラー  
+5787: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+5791: スレッドセーフ性  
+5792: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5796: 関連項目  
+5797: ウィンドウのコンテンツスケール
+5799: glfwGetWindowContentScale
+5803: 導入バージョン  
+5804: バージョン 3.3 で追加されました。
+5812: ## [◆ ](#ga37bd57223967b4211d60ca1a0bf3c832)glfwPollEvents()
+5820: | void glfwPollEvents | (   | void  |     | )   |     |
+5826: この関数は、イベントキューにすでに入っているイベントだけを処理し、直ちに戻ります。イベントを処理すると、それらのイベントに関連付けられたウィンドウおよび入力コールバックが呼び出されます。
+5828: 一部のプラットフォームでは、ウィンドウの移動、大きさの変更、またはメニュー操作によって、イベント処理がブロックされます。これは、それらのプラットフォームにおけるイベント処理の設計によるものです。このような操作中に必要に応じてウィンドウの内容を再描画するには、ウィンドウ再描画コールバックを使用できます。
+5830: 設定したコールバックが、この関数のようなイベント処理関数への応答として*のみ*呼び出されるとは想定しないでください。イベントをポーリングする必要はありますが、GLFW 自身のコールバック登録を必要とするウィンドウシステムでは、多くのウィンドウシステム関数の呼び出しに応じて GLFW へイベントが渡されることがあります。GLFW は戻る前に、それらのイベントをアプリケーションのコールバックへ渡します。
+5832: ジョイスティック入力を受け取るためにイベント処理は必要ありません。ジョイスティック入力関数またはゲームパッド入力関数が呼び出されたときに、ジョイスティックの状態がポーリングされます。
+5834: エラー  
+5835: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+5839: 再入可能性  
+5840: この関数は、コールバックから呼び出してはなりません。
+5844: スレッドセーフ性  
+5845: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5849: 関連項目  
+5850: イベント処理
+5852: glfwWaitEvents
+5854: glfwWaitEventsTimeout
+5858: 導入バージョン  
+5859: バージョン 1.0 で追加されました。
+5867: ## [◆ ](#ga554e37d781f0a997656c26b2c56c835e)glfwWaitEvents()
+5875: | void glfwWaitEvents | (   | void  |     | )   |     |
+5881: この関数は、イベントキューで少なくとも1つのイベントが利用可能になるまで、呼び出し元スレッドをスリープさせます。1つ以上のイベントが利用可能になると、glfwPollEvents とまったく同じように動作します。つまり、キュー内のイベントを処理した後、関数は直ちに戻ります。イベントを処理すると、それらのイベントに関連付けられたウィンドウおよび入力コールバックが呼び出されます。
+5883: すべてのイベントがコールバックに関連付けられているわけではないため、すべてのコールバックを監視していても、コールバックが呼び出されないままこの関数が戻ることがあります。
+5885: 一部のプラットフォームでは、ウィンドウの移動、大きさの変更、またはメニュー操作によって、イベント処理がブロックされます。これは、それらのプラットフォームにおけるイベント処理の設計によるものです。このような操作中に必要に応じてウィンドウの内容を再描画するには、ウィンドウ再描画コールバックを使用できます。
+5887: 設定したコールバックが、この関数のようなイベント処理関数への応答として*のみ*呼び出されるとは想定しないでください。イベントをポーリングする必要はありますが、GLFW 自身のコールバック登録を必要とするウィンドウシステムでは、多くのウィンドウシステム関数の呼び出しに応じて GLFW へイベントが渡されることがあります。GLFW は戻る前に、それらのイベントをアプリケーションのコールバックへ渡します。
+5889: ジョイスティック入力を受け取るためにイベント処理は必要ありません。ジョイスティック入力関数またはゲームパッド入力関数が呼び出されたときに、ジョイスティックの状態がポーリングされます。
+5891: エラー  
+5892: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+5896: 再入可能性  
+5897: この関数は、コールバックから呼び出してはなりません。
+5901: スレッドセーフ性  
+5902: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5906: 関連項目  
+5907: イベント処理
+5909: glfwPollEvents
+5911: glfwWaitEventsTimeout
+5915: 導入バージョン  
+5916: バージョン 2.5 で追加されました。
+5924: ## [◆ ](#ga605a178db92f1a7f1a925563ef3ea2cf)glfwWaitEventsTimeout()
+5932: | void glfwWaitEventsTimeout | (   | double  | *timeout* | )   |     |
+5938: この関数は、イベントキューで少なくとも1つのイベントが利用可能になるか、指定されたタイムアウトに達するまで、呼び出し元スレッドをスリープさせます。1つ以上のイベントが利用可能になると、glfwPollEvents とまったく同じように動作します。つまり、キュー内のイベントを処理した後、関数は直ちに戻ります。イベントを処理すると、それらのイベントに関連付けられたウィンドウおよび入力コールバックが呼び出されます。
+5940: タイムアウト値は、正の有限数でなければなりません。
+5942: すべてのイベントがコールバックに関連付けられているわけではないため、すべてのコールバックを監視していても、コールバックが呼び出されないままこの関数が戻ることがあります。
+5944: 一部のプラットフォームでは、ウィンドウの移動、大きさの変更、またはメニュー操作によって、イベント処理がブロックされます。これは、それらのプラットフォームにおけるイベント処理の設計によるものです。このような操作中に必要に応じてウィンドウの内容を再描画するには、ウィンドウ再描画コールバックを使用できます。
+5946: 設定したコールバックが、この関数のようなイベント処理関数への応答として*のみ*呼び出されるとは想定しないでください。イベントをポーリングする必要はありますが、GLFW 自身のコールバック登録を必要とするウィンドウシステムでは、多くのウィンドウシステム関数の呼び出しに応じて GLFW へイベントが渡されることがあります。GLFW は戻る前に、それらのイベントをアプリケーションのコールバックへ渡します。
+5948: ジョイスティック入力を受け取るためにイベント処理は必要ありません。ジョイスティック入力関数またはゲームパッド入力関数が呼び出されたときに、ジョイスティックの状態がポーリングされます。
+5950: 引数  
+5953: | \[in\] | timeout | 待機する最大時間（秒）。 |
+5957: エラー  
+5958: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE、および GLFW_PLATFORM_ERROR があります。
+5962: 再入可能性  
+5963: この関数は、コールバックから呼び出してはなりません。
+5967: スレッドセーフ性  
+5968: この関数は、メインスレッドからのみ呼び出さなければなりません。
+5972: 関連項目  
+5973: イベント処理
+5975: glfwPollEvents
+5977: glfwWaitEvents
+5981: 導入バージョン  
+5982: バージョン 3.2 で追加されました。
+5990: ## [◆ ](#gab5997a25187e9fd5c6f2ecbbc8dfd7e9)glfwPostEmptyEvent()
+5998: | void glfwPostEmptyEvent | (   | void  |     | )   |     |
+6004: この関数は、現在のスレッドからイベントキューへ空のイベントを送信し、glfwWaitEvents または glfwWaitEventsTimeout を戻らせます。
+6006: エラー  
+6007: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+6011: スレッドセーフ性  
+6012: この関数は、任意のスレッドから呼び出せます。
+6016: 関連項目  
+6017: イベント処理
+6019: glfwWaitEvents
+6021: glfwWaitEventsTimeout
+6025: 導入バージョン  
+6026: バージョン 3.1 で追加されました。
+6034: ## [◆ ](#ga15a5a1ee5b3c2ca6b15ca209a12efd14)glfwSwapBuffers()
+6042: | void glfwSwapBuffers | ( | GLFWwindow \*  | *window* | ) |  |
+6048: この関数は、OpenGL または OpenGL ES でレンダリングするとき、指定されたウィンドウのフロントバッファとバックバッファを交換します。スワップ間隔がゼロより大きい場合、GPU ドライバーは指定された回数の画面更新を待ってからバッファを交換します。
+6050: 指定されたウィンドウは、OpenGL または OpenGL ES コンテキストを持っていなければなりません。コンテキストのないウィンドウを指定すると、GLFW_NO_WINDOW_CONTEXT エラーが発生します。
+6052: この関数は Vulkan には適用されません。Vulkan でレンダリングする場合は、代わりに `vkQueuePresentKHR` を参照してください。
+6054: 引数  
+6057: | \[in\] | window | バッファを交換するウィンドウ。 |
+6061: エラー  
+6062: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT、および GLFW_PLATFORM_ERROR があります。
+6066: 備考  
+6067: **Wayland:** スワップ間隔がゼロより大きく、ウィンドウが表示範囲内にない場合、この関数が戻るまでに数ミリ秒余分にかかることがあります。
+6069: **EGL:** 指定されたウィンドウのコンテキストは、呼び出し元スレッドでカレントになっていなければなりません。
+6073: スレッドセーフ性  
+6074: この関数は、任意のスレッドから呼び出せます。
+6078: 関連項目  
+6079: バッファの交換
+6081: glfwSwapInterval
+6085: 導入バージョン  
+6086: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルの引数が追加されました。

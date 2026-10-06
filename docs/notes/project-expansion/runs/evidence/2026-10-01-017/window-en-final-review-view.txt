@@ -1,0 +1,1637 @@
+1: ---
+2: title: "Window reference"
+3: description: "GLFW 3.5.1 Window reference"
+4: ---
+6: # Window reference
+10: ## Description
+12: This is the reference documentation for window related functions and types, including creation, deletion and event polling. For more task-oriented information, see the Window guide.
+21:  Macros
+24: #define 
+25: GLFW_FOCUSED   0x00020001
+29: Input focus window hint and attribute.
+36: #define 
+37: GLFW_ICONIFIED   0x00020002
+41: Window iconification window attribute.
+48: #define 
+49: GLFW_RESIZABLE   0x00020003
+53: Window resize-ability window hint and attribute.
+60: #define 
+61: GLFW_VISIBLE   0x00020004
+65: Window visibility window hint and attribute.
+72: #define 
+73: GLFW_DECORATED   0x00020005
+77: Window decoration window hint and attribute.
+84: #define 
+85: GLFW_AUTO_ICONIFY   0x00020006
+89: Window auto-iconification window hint and attribute.
+96: #define 
+97: GLFW_FLOATING   0x00020007
+101: Window decoration window hint and attribute.
+108: #define 
+109: GLFW_MAXIMIZED   0x00020008
+113: Window maximization window hint and attribute.
+120: #define 
+121: GLFW_CENTER_CURSOR   0x00020009
+125: Cursor centering window hint.
+132: #define 
+133: GLFW_TRANSPARENT_FRAMEBUFFER   0x0002000A
+137: Window framebuffer transparency hint and attribute.
+144: #define 
+145: GLFW_HOVERED   0x0002000B
+149: Mouse cursor hover window attribute.
+156: #define 
+157: GLFW_FOCUS_ON_SHOW   0x0002000C
+161: Input focus on calling show window hint and attribute.
+168: #define 
+169: GLFW_MOUSE_PASSTHROUGH   0x0002000D
+173: Mouse input transparency window hint and attribute.
+180: #define 
+181: GLFW_POSITION_X   0x0002000E
+185: Initial position x-coordinate window hint.
+192: #define 
+193: GLFW_POSITION_Y   0x0002000F
+197: Initial position y-coordinate window hint.
+204: #define 
+205: GLFW_RED_BITS   0x00021001
+209: Framebuffer bit depth hint.
+216: #define 
+217: GLFW_GREEN_BITS   0x00021002
+221: Framebuffer bit depth hint.
+228: #define 
+229: GLFW_BLUE_BITS   0x00021003
+233: Framebuffer bit depth hint.
+240: #define 
+241: GLFW_ALPHA_BITS   0x00021004
+245: Framebuffer bit depth hint.
+252: #define 
+253: GLFW_DEPTH_BITS   0x00021005
+257: Framebuffer bit depth hint.
+264: #define 
+265: GLFW_STENCIL_BITS   0x00021006
+269: Framebuffer bit depth hint.
+276: #define 
+277: GLFW_ACCUM_RED_BITS   0x00021007
+281: Framebuffer bit depth hint.
+288: #define 
+289: GLFW_ACCUM_GREEN_BITS   0x00021008
+293: Framebuffer bit depth hint.
+300: #define 
+301: GLFW_ACCUM_BLUE_BITS   0x00021009
+305: Framebuffer bit depth hint.
+312: #define 
+313: GLFW_ACCUM_ALPHA_BITS   0x0002100A
+317: Framebuffer bit depth hint.
+324: #define 
+325: GLFW_AUX_BUFFERS   0x0002100B
+329: Framebuffer auxiliary buffer hint.
+336: #define 
+337: GLFW_STEREO   0x0002100C
+341: OpenGL stereoscopic rendering hint.
+348: #define 
+349: GLFW_SAMPLES   0x0002100D
+353: Framebuffer MSAA samples hint.
+360: #define 
+361: GLFW_SRGB_CAPABLE   0x0002100E
+365: Framebuffer sRGB hint.
+372: #define 
+373: GLFW_REFRESH_RATE   0x0002100F
+377: Monitor refresh rate hint.
+384: #define 
+385: GLFW_DOUBLEBUFFER   0x00021010
+389: Framebuffer double buffering hint and attribute.
+396: #define 
+397: GLFW_CLIENT_API   0x00022001
+401: Context client API hint and attribute.
+408: #define 
+409: GLFW_CONTEXT_VERSION_MAJOR   0x00022002
+413: Context client API major version hint and attribute.
+420: #define 
+421: GLFW_CONTEXT_VERSION_MINOR   0x00022003
+425: Context client API minor version hint and attribute.
+432: #define 
+433: GLFW_CONTEXT_REVISION   0x00022004
+437: Context client API revision number attribute.
+444: #define 
+445: GLFW_CONTEXT_ROBUSTNESS   0x00022005
+449: Context robustness hint and attribute.
+456: #define 
+457: GLFW_OPENGL_FORWARD_COMPAT   0x00022006
+461: OpenGL forward-compatibility hint and attribute.
+468: #define 
+469: GLFW_CONTEXT_DEBUG   0x00022007
+473: Debug mode context hint and attribute.
+480: #define 
+481: GLFW_OPENGL_DEBUG_CONTEXT   GLFW_CONTEXT_DEBUG
+485: Legacy name for compatibility.
+492: #define 
+493: GLFW_OPENGL_PROFILE   0x00022008
+497: OpenGL profile hint and attribute.
+504: #define 
+505: GLFW_CONTEXT_RELEASE_BEHAVIOR   0x00022009
+509: Context flush-on-release hint and attribute.
+516: #define 
+517: GLFW_CONTEXT_NO_ERROR   0x0002200A
+521: Context error suppression hint and attribute.
+528: #define 
+529: GLFW_CONTEXT_CREATION_API   0x0002200B
+533: Context creation API hint and attribute.
+540: #define 
+541: GLFW_SCALE_TO_MONITOR   0x0002200C
+545: Window content area scaling window window hint.
+552: #define 
+553: GLFW_SCALE_FRAMEBUFFER   0x0002200D
+557: Window framebuffer scaling window hint.
+564: #define 
+565: GLFW_COCOA_RETINA_FRAMEBUFFER   0x00023001
+569: Legacy name for compatibility.
+576: #define 
+577: GLFW_COCOA_FRAME_NAME   0x00023002
+581: macOS specific window hint.
+588: #define 
+589: GLFW_COCOA_GRAPHICS_SWITCHING   0x00023003
+593: macOS specific window hint.
+600: #define 
+601: GLFW_X11_CLASS_NAME   0x00024001
+605: X11 specific window hint.
+612: #define 
+613: GLFW_X11_INSTANCE_NAME   0x00024002
+617: X11 specific window hint.
+624: #define 
+625: GLFW_WIN32_KEYBOARD_MENU   0x00025001
+631: #define 
+632: GLFW_WIN32_SHOWDEFAULT   0x00025002
+636: Win32 specific window hint.
+643: #define 
+644: GLFW_WAYLAND_APP_ID   0x00026001
+648: Wayland specific window hint.
+664:  Typedefs
+667: typedef struct GLFWwindow 
+668: GLFWwindow
+672: Opaque window object.
+679: typedef void(* 
+680: GLFWwindowposfun) (GLFWwindow *window, int xpos, int ypos)
+684: The function pointer type for window position callbacks.
+691: typedef void(* 
+692: GLFWwindowsizefun) (GLFWwindow *window, int width, int height)
+696: The function pointer type for window size callbacks.
+703: typedef void(* 
+704: GLFWwindowclosefun) (GLFWwindow *window)
+708: The function pointer type for window close callbacks.
+715: typedef void(* 
+716: GLFWwindowrefreshfun) (GLFWwindow *window)
+720: The function pointer type for window content refresh callbacks.
+727: typedef void(* 
+728: GLFWwindowfocusfun) (GLFWwindow *window, int focused)
+732: The function pointer type for window focus callbacks.
+739: typedef void(* 
+740: GLFWwindowiconifyfun) (GLFWwindow *window, int iconified)
+744: The function pointer type for window iconify callbacks.
+751: typedef void(* 
+752: GLFWwindowmaximizefun) (GLFWwindow *window, int maximized)
+756: The function pointer type for window maximize callbacks.
+763: typedef void(* 
+764: GLFWframebuffersizefun) (GLFWwindow *window, int width, int height)
+768: The function pointer type for framebuffer size callbacks.
+775: typedef void(* 
+776: GLFWwindowcontentscalefun) (GLFWwindow *window, float xscale, float yscale)
+780: The function pointer type for window content scale callbacks.
+787: typedef struct GLFWimage 
+788: GLFWimage
+792: Image data.
+808:  Functions
+811: void 
+812: glfwDefaultWindowHints (void)
+816: Resets all window hints to their default values.
+823: void 
+824: glfwWindowHint (int hint, int value)
+828: Sets the specified window hint to the desired value.
+835: void 
+836: glfwWindowHintString (int hint, const char *value)
+840: Sets the specified window hint to the desired value.
+847: GLFWwindow * 
+848: glfwCreateWindow (int width, int height, const char *title, GLFWmonitor *monitor, GLFWwindow *share)
+852: Creates a window and its associated context.
+859: void 
+860: glfwDestroyWindow (GLFWwindow *window)
+864: Destroys the specified window and its context.
+871: int 
+872: glfwWindowShouldClose (GLFWwindow *window)
+876: Checks the close flag of the specified window.
+883: void 
+884: glfwSetWindowShouldClose (GLFWwindow *window, int value)
+888: Sets the close flag of the specified window.
+895: const char * 
+896: glfwGetWindowTitle (GLFWwindow *window)
+900: Returns the title of the specified window.
+907: void 
+908: glfwSetWindowTitle (GLFWwindow *window, const char *title)
+912: Sets the title of the specified window.
+919: void 
+920: glfwSetWindowIcon (GLFWwindow *window, int count, const GLFWimage *images)
+924: Sets the icon for the specified window.
+931: void 
+932: glfwGetWindowPos (GLFWwindow *window, int *xpos, int *ypos)
+936: Retrieves the position of the content area of the specified window.
+943: void 
+944: glfwSetWindowPos (GLFWwindow *window, int xpos, int ypos)
+948: Sets the position of the content area of the specified window.
+955: void 
+956: glfwGetWindowSize (GLFWwindow *window, int *width, int *height)
+960: Retrieves the size of the content area of the specified window.
+967: void 
+968: glfwSetWindowSizeLimits (GLFWwindow *window, int minwidth, int minheight, int maxwidth, int maxheight)
+972: Sets the size limits of the specified window.
+979: void 
+980: glfwSetWindowAspectRatio (GLFWwindow *window, int numer, int denom)
+984: Sets the aspect ratio of the specified window.
+991: void 
+992: glfwSetWindowSize (GLFWwindow *window, int width, int height)
+996: Sets the size of the content area of the specified window.
+1003: void 
+1004: glfwGetFramebufferSize (GLFWwindow *window, int *width, int *height)
+1008: Retrieves the size of the framebuffer of the specified window.
+1015: void 
+1016: glfwGetWindowFrameSize (GLFWwindow *window, int *left, int *top, int *right, int *bottom)
+1020: Retrieves the size of the frame of the window.
+1027: void 
+1028: glfwGetWindowContentScale (GLFWwindow *window, float *xscale, float *yscale)
+1032: Retrieves the content scale for the specified window.
+1039: float 
+1040: glfwGetWindowOpacity (GLFWwindow *window)
+1044: Returns the opacity of the whole window.
+1051: void 
+1052: glfwSetWindowOpacity (GLFWwindow *window, float opacity)
+1056: Sets the opacity of the whole window.
+1063: void 
+1064: glfwIconifyWindow (GLFWwindow *window)
+1068: Iconifies the specified window.
+1075: void 
+1076: glfwRestoreWindow (GLFWwindow *window)
+1080: Restores the specified window.
+1087: void 
+1088: glfwMaximizeWindow (GLFWwindow *window)
+1092: Maximizes the specified window.
+1099: void 
+1100: glfwShowWindow (GLFWwindow *window)
+1104: Makes the specified window visible.
+1111: void 
+1112: glfwHideWindow (GLFWwindow *window)
+1116: Hides the specified window.
+1123: void 
+1124: glfwFocusWindow (GLFWwindow *window)
+1128: Brings the specified window to front and sets input focus.
+1135: void 
+1136: glfwRequestWindowAttention (GLFWwindow *window)
+1140: Requests user attention to the specified window.
+1147: GLFWmonitor * 
+1148: glfwGetWindowMonitor (GLFWwindow *window)
+1152: Returns the monitor that the window uses for full screen mode.
+1159: void 
+1160: glfwSetWindowMonitor (GLFWwindow *window, GLFWmonitor *monitor, int xpos, int ypos, int width, int height, int refreshRate)
+1164: Sets the mode, monitor, video mode and placement of a window.
+1171: int 
+1172: glfwGetWindowAttrib (GLFWwindow *window, int attrib)
+1176: Returns an attribute of the specified window.
+1183: void 
+1184: glfwSetWindowAttrib (GLFWwindow *window, int attrib, int value)
+1188: Sets an attribute of the specified window.
+1195: void 
+1196: glfwSetWindowUserPointer (GLFWwindow *window, void *pointer)
+1200: Sets the user pointer of the specified window.
+1207: void * 
+1208: glfwGetWindowUserPointer (GLFWwindow *window)
+1212: Returns the user pointer of the specified window.
+1219: GLFWwindowposfun 
+1220: glfwSetWindowPosCallback (GLFWwindow *window, GLFWwindowposfun callback)
+1224: Sets the position callback for the specified window.
+1231: GLFWwindowsizefun 
+1232: glfwSetWindowSizeCallback (GLFWwindow *window, GLFWwindowsizefun callback)
+1236: Sets the size callback for the specified window.
+1243: GLFWwindowclosefun 
+1244: glfwSetWindowCloseCallback (GLFWwindow *window, GLFWwindowclosefun callback)
+1248: Sets the close callback for the specified window.
+1255: GLFWwindowrefreshfun 
+1256: glfwSetWindowRefreshCallback (GLFWwindow *window, GLFWwindowrefreshfun callback)
+1260: Sets the refresh callback for the specified window.
+1267: GLFWwindowfocusfun 
+1268: glfwSetWindowFocusCallback (GLFWwindow *window, GLFWwindowfocusfun callback)
+1272: Sets the focus callback for the specified window.
+1279: GLFWwindowiconifyfun 
+1280: glfwSetWindowIconifyCallback (GLFWwindow *window, GLFWwindowiconifyfun callback)
+1284: Sets the iconify callback for the specified window.
+1291: GLFWwindowmaximizefun 
+1292: glfwSetWindowMaximizeCallback (GLFWwindow *window, GLFWwindowmaximizefun callback)
+1296: Sets the maximize callback for the specified window.
+1303: GLFWframebuffersizefun 
+1304: glfwSetFramebufferSizeCallback (GLFWwindow *window, GLFWframebuffersizefun callback)
+1308: Sets the framebuffer resize callback for the specified window.
+1315: GLFWwindowcontentscalefun 
+1316: glfwSetWindowContentScaleCallback (GLFWwindow *window, GLFWwindowcontentscalefun callback)
+1320: Sets the window content scale callback for the specified window.
+1327: void 
+1328: glfwPollEvents (void)
+1332: Processes all pending events.
+1339: void 
+1340: glfwWaitEvents (void)
+1344: Waits until events are queued and processes them.
+1351: void 
+1352: glfwWaitEventsTimeout (double timeout)
+1356: Waits with timeout until events are queued and processes them.
+1363: void 
+1364: glfwPostEmptyEvent (void)
+1368: Posts an empty event to the event queue.
+1375: void 
+1376: glfwSwapBuffers (GLFWwindow *window)
+1380: Swaps the front and back buffers of the specified window.
+1389: ## Macro Definition Documentation
+1393: ## [◆ ](#ga54ddb14825a1541a56e22afb5f832a9e)GLFW_FOCUSED
+1401: | \#define GLFW_FOCUSED   0x00020001 |
+1407: Input focus window hint or window attribute.
+1415: ## [◆ ](#ga39d44b7c056e55e581355a92d240b58a)GLFW_ICONIFIED
+1423: | \#define GLFW_ICONIFIED   0x00020002 |
+1429: Window iconification window attribute.
+1437: ## [◆ ](#gadba13c7a1b3aa40831eb2beedbd5bd1d)GLFW_RESIZABLE
+1445: | \#define GLFW_RESIZABLE   0x00020003 |
+1451: Window resize-ability window hint and window attribute.
+1459: ## [◆ ](#gafb3cdc45297e06d8f1eb13adc69ca6c4)GLFW_VISIBLE
+1467: | \#define GLFW_VISIBLE   0x00020004 |
+1473: Window visibility window hint and window attribute.
+1481: ## [◆ ](#ga21b854d36314c94d65aed84405b2f25e)GLFW_DECORATED
+1489: | \#define GLFW_DECORATED   0x00020005 |
+1495: Window decoration window hint and window attribute.
+1503: ## [◆ ](#ga9d9874fc928200136a6dcdad726aa252)GLFW_AUTO_ICONIFY
+1511: | \#define GLFW_AUTO_ICONIFY   0x00020006 |
+1517: Window auto-iconification window hint and window attribute.
+1525: ## [◆ ](#ga7fb0be51407783b41adbf5bec0b09d80)GLFW_FLOATING
+1533: | \#define GLFW_FLOATING   0x00020007 |
+1539: Window decoration window hint and window attribute.
+1541: > **Libx reference note (GLFW 3.5.1):** The upstream brief and detailed descriptions call `GLFW_FLOATING` a decoration setting. The [fixed window guide](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L211-L216) describes floating above other regular windows, also called topmost or always-on-top, and the [fixed hint implementation](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L360-L362) stores the floating setting. Window decorations are controlled separately by `GLFW_DECORATED`. The upstream wording is preserved above.
+1549: ## [◆ ](#gad8ccb396253ad0b72c6d4c917eb38a03)GLFW_MAXIMIZED
+1557: | \#define GLFW_MAXIMIZED   0x00020008 |
+1563: Window maximization window hint and window attribute.
+1571: ## [◆ ](#ga5ac0847c0aa0b3619f2855707b8a7a77)GLFW_CENTER_CURSOR
+1579: | \#define GLFW_CENTER_CURSOR   0x00020009 |
+1585: Cursor centering window hint.
+1593: ## [◆ ](#ga60a0578c3b9449027d683a9c6abb9f14)GLFW_TRANSPARENT_FRAMEBUFFER
+1601: | \#define GLFW_TRANSPARENT_FRAMEBUFFER   0x0002000A |
+1607: Window framebuffer transparency window hint and window attribute.
+1615: ## [◆ ](#ga8665c71c6fa3d22425c6a0e8a3f89d8a)GLFW_HOVERED
+1623: | \#define GLFW_HOVERED   0x0002000B |
+1629: Mouse cursor hover window attribute.
+1637: ## [◆ ](#gafa94b1da34bfd6488c0d709761504dfc)GLFW_FOCUS_ON_SHOW
+1645: | \#define GLFW_FOCUS_ON_SHOW   0x0002000C |
+1651: Input focus window hint or window attribute.
+1659: ## [◆ ](#ga88981797d29800808ec242274ab5c03a)GLFW_MOUSE_PASSTHROUGH
+1667: | \#define GLFW_MOUSE_PASSTHROUGH   0x0002000D |
+1673: Mouse input transparency window hint or window attribute.
+1681: ## [◆ ](#gaededa6b208b8e31343da56bb349c6fb2)GLFW_POSITION_X
+1689: | \#define GLFW_POSITION_X   0x0002000E |
+1695: Initial position x-coordinate window hint.
+1703: ## [◆ ](#ga6b3ccf63683c81f479e2a98f5027200e)GLFW_POSITION_Y
+1711: | \#define GLFW_POSITION_Y   0x0002000F |
+1717: Initial position y-coordinate window hint.
+1725: ## [◆ ](#gaf78ed8e417dbcc1e354906cc2708c982)GLFW_RED_BITS
+1733: | \#define GLFW_RED_BITS   0x00021001 |
+1739: Framebuffer bit depth hint.
+1747: ## [◆ ](#gafba3b72638c914e5fb8a237dd4c50d4d)GLFW_GREEN_BITS
+1755: | \#define GLFW_GREEN_BITS   0x00021002 |
+1761: Framebuffer bit depth hint.
+1769: ## [◆ ](#gab292ea403db6d514537b515311bf9ae3)GLFW_BLUE_BITS
+1777: | \#define GLFW_BLUE_BITS   0x00021003 |
+1783: Framebuffer bit depth hint.
+1791: ## [◆ ](#gafed79a3f468997877da86c449bd43e8c)GLFW_ALPHA_BITS
+1799: | \#define GLFW_ALPHA_BITS   0x00021004 |
+1805: Framebuffer bit depth hint.
+1813: ## [◆ ](#ga318a55eac1fee57dfe593b6d38149d07)GLFW_DEPTH_BITS
+1821: | \#define GLFW_DEPTH_BITS   0x00021005 |
+1827: Framebuffer bit depth hint.
+1835: ## [◆ ](#ga5339890a45a1fb38e93cb9fcc5fd069d)GLFW_STENCIL_BITS
+1843: | \#define GLFW_STENCIL_BITS   0x00021006 |
+1849: Framebuffer bit depth hint.
+1857: ## [◆ ](#gaead34a9a683b2bc20eecf30ba738bfc6)GLFW_ACCUM_RED_BITS
+1865: | \#define GLFW_ACCUM_RED_BITS   0x00021007 |
+1871: Framebuffer bit depth hint.
+1879: ## [◆ ](#ga65713cee1326f8e9d806fdf93187b471)GLFW_ACCUM_GREEN_BITS
+1887: | \#define GLFW_ACCUM_GREEN_BITS   0x00021008 |
+1893: Framebuffer bit depth hint.
+1901: ## [◆ ](#ga22bbe9104a8ce1f8b88fb4f186aa36ce)GLFW_ACCUM_BLUE_BITS
+1909: | \#define GLFW_ACCUM_BLUE_BITS   0x00021009 |
+1915: Framebuffer bit depth hint.
+1923: ## [◆ ](#gae829b55591c18169a40ab4067a041b1f)GLFW_ACCUM_ALPHA_BITS
+1931: | \#define GLFW_ACCUM_ALPHA_BITS   0x0002100A |
+1937: Framebuffer bit depth hint.
+1945: ## [◆ ](#gab05108c5029443b371112b031d1fa174)GLFW_AUX_BUFFERS
+1953: | \#define GLFW_AUX_BUFFERS   0x0002100B |
+1959: Framebuffer auxiliary buffer hint.
+1967: ## [◆ ](#ga83d991efca02537e2d69969135b77b03)GLFW_STEREO
+1975: | \#define GLFW_STEREO   0x0002100C |
+1981: OpenGL stereoscopic rendering hint.
+1989: ## [◆ ](#ga2cdf86fdcb7722fb8829c4e201607535)GLFW_SAMPLES
+1997: | \#define GLFW_SAMPLES   0x0002100D |
+2003: Framebuffer MSAA samples hint.
+2011: ## [◆ ](#ga444a8f00414a63220591f9fdb7b5642b)GLFW_SRGB_CAPABLE
+2019: | \#define GLFW_SRGB_CAPABLE   0x0002100E |
+2025: Framebuffer sRGB hint.
+2033: ## [◆ ](#ga0f20825e6e47ee8ba389024519682212)GLFW_REFRESH_RATE
+2041: | \#define GLFW_REFRESH_RATE   0x0002100F |
+2047: Monitor refresh rate hint.
+2055: ## [◆ ](#ga714a5d569e8a274ea58fdfa020955339)GLFW_DOUBLEBUFFER
+2063: | \#define GLFW_DOUBLEBUFFER   0x00021010 |
+2069: Framebuffer double buffering hint and attribute.
+2077: ## [◆ ](#ga649309cf72a3d3de5b1348ca7936c95b)GLFW_CLIENT_API
+2085: | \#define GLFW_CLIENT_API   0x00022001 |
+2091: Context client API hint and attribute.
+2099: ## [◆ ](#gafe5e4922de1f9932d7e9849bb053b0c0)GLFW_CONTEXT_VERSION_MAJOR
+2107: | \#define GLFW_CONTEXT_VERSION_MAJOR   0x00022002 |
+2113: Context client API major version hint and attribute.
+2121: ## [◆ ](#ga31aca791e4b538c4e4a771eb95cc2d07)GLFW_CONTEXT_VERSION_MINOR
+2129: | \#define GLFW_CONTEXT_VERSION_MINOR   0x00022003 |
+2135: Context client API minor version hint and attribute.
+2143: ## [◆ ](#gafb9475071aa77c6fb05ca5a5c8678a08)GLFW_CONTEXT_REVISION
+2151: | \#define GLFW_CONTEXT_REVISION   0x00022004 |
+2157: Context client API revision number attribute.
+2165: ## [◆ ](#gade3593916b4c507900aa2d6844810e00)GLFW_CONTEXT_ROBUSTNESS
+2173: | \#define GLFW_CONTEXT_ROBUSTNESS   0x00022005 |
+2179: Context client API revision number hint and attribute.
+2181: > **Libx reference note (GLFW 3.5.1):** The upstream detailed description above says revision number. The [fixed window guide](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L442-L447) defines this hint as the context robustness strategy, and the [fixed hint implementation](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L412-L414) stores `context.robustness`. It is separate from the `GLFW_CONTEXT_REVISION` attribute. The upstream detailed wording is preserved above.
+2189: ## [◆ ](#ga13d24b12465da8b28985f46c8557925b)GLFW_OPENGL_FORWARD_COMPAT
+2197: | \#define GLFW_OPENGL_FORWARD_COMPAT   0x00022006 |
+2203: OpenGL forward-compatibility hint and attribute.
+2211: ## [◆ ](#ga8d55e3afec73c7de0509c3b7ad1d9e3f)GLFW_CONTEXT_DEBUG
+2219: | \#define GLFW_CONTEXT_DEBUG   0x00022007 |
+2225: Debug mode context hint and attribute.
+2233: ## [◆ ](#ga87ec2df0b915201e950ca42d5d0831e1)GLFW_OPENGL_DEBUG_CONTEXT
+2241: | \#define GLFW_OPENGL_DEBUG_CONTEXT   GLFW_CONTEXT_DEBUG |
+2247: This is an alias for compatibility with earlier versions.
+2255: ## [◆ ](#ga44f3a6b4261fbe351e0b950b0f372e12)GLFW_OPENGL_PROFILE
+2263: | \#define GLFW_OPENGL_PROFILE   0x00022008 |
+2269: OpenGL profile hint and attribute.
+2277: ## [◆ ](#ga72b648a8378fe3310c7c7bbecc0f7be6)GLFW_CONTEXT_RELEASE_BEHAVIOR
+2285: | \#define GLFW_CONTEXT_RELEASE_BEHAVIOR   0x00022009 |
+2291: Context flush-on-release hint and attribute.
+2299: ## [◆ ](#ga5a52fdfd46d8249c211f923675728082)GLFW_CONTEXT_NO_ERROR
+2307: | \#define GLFW_CONTEXT_NO_ERROR   0x0002200A |
+2313: Context error suppression hint and attribute.
+2321: ## [◆ ](#ga5154cebfcd831c1cc63a4d5ac9bb4486)GLFW_CONTEXT_CREATION_API
+2329: | \#define GLFW_CONTEXT_CREATION_API   0x0002200B |
+2335: Context creation API hint and attribute.
+2343: ## [◆ ](#ga620bc4280c7eab81ac9f02204500ed47)GLFW_SCALE_TO_MONITOR
+2351: | \#define GLFW_SCALE_TO_MONITOR   0x0002200C |
+2363: ## [◆ ](#gaa5a9c6b4722670fd33d6e8a88f2e21bc)GLFW_SCALE_FRAMEBUFFER
+2371: | \#define GLFW_SCALE_FRAMEBUFFER   0x0002200D |
+2383: ## [◆ ](#gab6ef2d02eb55800d249ccf1af253c35e)GLFW_COCOA_RETINA_FRAMEBUFFER
+2391: | \#define GLFW_COCOA_RETINA_FRAMEBUFFER   0x00023001 |
+2397: This is an alias for the GLFW_SCALE_FRAMEBUFFER window hint for compatibility with earlier versions.
+2405: ## [◆ ](#ga70fa0fbc745de6aa824df79a580e84b5)GLFW_COCOA_FRAME_NAME
+2413: | \#define GLFW_COCOA_FRAME_NAME   0x00023002 |
+2425: ## [◆ ](#ga53c84ed2ddd94e15bbd44b1f6f7feafc)GLFW_COCOA_GRAPHICS_SWITCHING
+2433: | \#define GLFW_COCOA_GRAPHICS_SWITCHING   0x00023003 |
+2445: ## [◆ ](#gae5a9ea2fccccd92edbd343fc56461114)GLFW_X11_CLASS_NAME
+2453: | \#define GLFW_X11_CLASS_NAME   0x00024001 |
+2465: ## [◆ ](#ga494c3c0d911e4b860b946530a3e389e8)GLFW_X11_INSTANCE_NAME
+2473: | \#define GLFW_X11_INSTANCE_NAME   0x00024002 |
+2485: ## [◆ ](#gaf65ea8dafdc0edb07b821b9a336d5043)GLFW_WIN32_KEYBOARD_MENU
+2493: | \#define GLFW_WIN32_KEYBOARD_MENU   0x00025001 |
+2505: ## [◆ ](#gace10f3846571de62243b46f75d978487)GLFW_WIN32_SHOWDEFAULT
+2513: | \#define GLFW_WIN32_SHOWDEFAULT   0x00025002 |
+2525: ## [◆ ](#gafbf1ce7a4362c75e602a4df9e1bdecd3)GLFW_WAYLAND_APP_ID
+2533: | \#define GLFW_WAYLAND_APP_ID   0x00026001 |
+2539: Allows specification of the Wayland app_id.
+2545: ## Typedef Documentation
+2549: ## [◆ ](#ga3c96d80d363e67d13a41b5d1821f3242)GLFWwindow
+2557: | typedef struct GLFWwindow GLFWwindow |
+2563: Opaque window object.
+2565: See also  
+2566: Window objects
+2570: Since  
+2571: Added in version 3.0.
+2579: ## [◆ ](#gabe287973a21a8f927cde4db06b8dcbe9)GLFWwindowposfun
+2587: | typedef void(\* GLFWwindowposfun) (GLFWwindow \*window, int xpos, int ypos) |
+2593: This is the function pointer type for window position callbacks. A window position callback function has the following signature:
+2599: void callback_name(GLFWwindow\* window, int xpos, int ypos)
+2607: [GLFWwindow](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga3c96d80d363e67d13a41b5d1821f3242)
+2613: struct GLFWwindow GLFWwindow
+2619: Opaque window object.
+2625: **Definition** glfw3.h:1408
+2633: Parameters  
+2636: | \[in\] | window | The window that was moved. |
+2637: | \[in\] | xpos | The new x-coordinate, in screen coordinates, of the upper-left corner of the content area of the window. |
+2638: | \[in\] | ypos | The new y-coordinate, in screen coordinates, of the upper-left corner of the content area of the window. |
+2642: See also  
+2643: Window position
+2645: glfwSetWindowPosCallback
+2649: Since  
+2650: Added in version 3.0.
+2658: ## [◆ ](#gaec0282944bb810f6f3163ec02da90350)GLFWwindowsizefun
+2666: | typedef void(\* GLFWwindowsizefun) (GLFWwindow \*window, int width, int height) |
+2672: This is the function pointer type for window size callbacks. A window size callback function has the following signature:
+2678: void callback_name(GLFWwindow\* window, int width, int height)
+2684: Parameters  
+2687: | \[in\] | window | The window that was resized.                          |
+2688: | \[in\] | width  | The new width, in screen coordinates, of the window.  |
+2689: | \[in\] | height | The new height, in screen coordinates, of the window. |
+2693: See also  
+2694: Window size
+2696: glfwSetWindowSizeCallback
+2700: Since  
+2701: Added in version 1.0. **GLFW 3:** Added window handle parameter.
+2709: ## [◆ ](#gabf859b936d80961b7d39013a9694cc3e)GLFWwindowclosefun
+2717: | typedef void(\* GLFWwindowclosefun) (GLFWwindow \*window) |
+2723: This is the function pointer type for window close callbacks. A window close callback function has the following signature:
+2729: void function_name(GLFWwindow\* window)
+2735: Parameters  
+2738: | \[in\] | window | The window that the user attempted to close. |
+2742: See also  
+2743: Window closing and close flag
+2745: glfwSetWindowCloseCallback
+2749: Since  
+2750: Added in version 2.5. **GLFW 3:** Added window handle parameter.
+2758: ## [◆ ](#ga431663a1427d2eb3a273bc398b6737b5)GLFWwindowrefreshfun
+2766: | typedef void(\* GLFWwindowrefreshfun) (GLFWwindow \*window) |
+2772: This is the function pointer type for window content refresh callbacks. A window content refresh callback function has the following signature:
+2778: void function_name(GLFWwindow\* window);
+2784: Parameters  
+2787: | \[in\] | window | The window whose content needs to be refreshed. |
+2791: See also  
+2792: Window damage and refresh
+2794: glfwSetWindowRefreshCallback
+2798: Since  
+2799: Added in version 2.5. **GLFW 3:** Added window handle parameter.
+2807: ## [◆ ](#gabc58c47e9d93f6eb1862d615c3680f46)GLFWwindowfocusfun
+2815: | typedef void(\* GLFWwindowfocusfun) (GLFWwindow \*window, int focused) |
+2821: This is the function pointer type for window focus callbacks. A window focus callback function has the following signature:
+2827: void function_name(GLFWwindow\* window, int focused)
+2833: Parameters  
+2836: | \[in\] | window | The window that gained or lost input focus. |
+2837: | \[in\] | focused | `GLFW_TRUE` if the window was given input focus, or `GLFW_FALSE` if it lost it. |
+2841: See also  
+2842: Window input focus
+2844: glfwSetWindowFocusCallback
+2848: Since  
+2849: Added in version 3.0.
+2857: ## [◆ ](#ga35c658cccba236f26e7adee0e25f6a4f)GLFWwindowiconifyfun
+2865: | typedef void(\* GLFWwindowiconifyfun) (GLFWwindow \*window, int iconified) |
+2871: This is the function pointer type for window iconify callbacks. A window iconify callback function has the following signature:
+2877: void function_name(GLFWwindow\* window, int iconified)
+2883: Parameters  
+2886: | \[in\] | window | The window that was iconified or restored. |
+2887: | \[in\] | iconified | `GLFW_TRUE` if the window was iconified, or `GLFW_FALSE` if it was restored. |
+2891: See also  
+2892: Window iconification
+2894: glfwSetWindowIconifyCallback
+2898: Since  
+2899: Added in version 3.0.
+2907: ## [◆ ](#ga3017196fdaec33ac3e095765176c2a90)GLFWwindowmaximizefun
+2915: | typedef void(\* GLFWwindowmaximizefun) (GLFWwindow \*window, int maximized) |
+2921: This is the function pointer type for window maximize callbacks. A window maximize callback function has the following signature:
+2927: void function_name(GLFWwindow\* window, int maximized)
+2933: Parameters  
+2936: | \[in\] | window | The window that was maximized or restored. |
+2937: | \[in\] | maximized | `GLFW_TRUE` if the window was maximized, or `GLFW_FALSE` if it was restored. |
+2941: See also  
+2942: Window maximization
+2944: glfwSetWindowMaximizeCallback
+2948: Since  
+2949: Added in version 3.3.
+2957: ## [◆ ](#gae18026e294dde685ed2e5f759533144d)GLFWframebuffersizefun
+2965: | typedef void(\* GLFWframebuffersizefun) (GLFWwindow \*window, int width, int height) |
+2971: This is the function pointer type for framebuffer size callbacks. A framebuffer size callback function has the following signature:
+2977: void function_name(GLFWwindow\* window, int width, int height)
+2983: Parameters  
+2986: | \[in\] | window | The window whose framebuffer was resized.      |
+2987: | \[in\] | width  | The new width, in pixels, of the framebuffer.  |
+2988: | \[in\] | height | The new height, in pixels, of the framebuffer. |
+2992: See also  
+2993: Framebuffer size
+2995: glfwSetFramebufferSizeCallback
+2999: Since  
+3000: Added in version 3.0.
+3008: ## [◆ ](#ga77f288a2d04bb3c77c7d9615d08cf70e)GLFWwindowcontentscalefun
+3016: | typedef void(\* GLFWwindowcontentscalefun) (GLFWwindow \*window, float xscale, float yscale) |
+3022: This is the function pointer type for window content scale callbacks. A window content scale callback function has the following signature:
+3028: void function_name(GLFWwindow\* window, float xscale, float yscale)
+3034: Parameters  
+3037: | \[in\] | window | The window whose content scale changed.     |
+3038: | \[in\] | xscale | The new x-axis content scale of the window. |
+3039: | \[in\] | yscale | The new y-axis content scale of the window. |
+3043: See also  
+3044: Window content scale
+3046: glfwSetWindowContentScaleCallback
+3050: Since  
+3051: Added in version 3.3.
+3059: ## [◆ ](#ga7cc0a09de172fa7250872046f8c4d2ca)GLFWimage
+3067: | typedef struct GLFWimage GLFWimage |
+3073: This describes a single 2D image. See the documentation for each related function what the expected pixel format is.
+3075: See also  
+3076: Custom cursor creation
+3078: Window icon
+3082: Since  
+3083: Added in version 2.1. **GLFW 3:** Removed format and bytes-per-pixel members.
+3089: ## Function Documentation
+3093: ## [◆ ](#gaa77c4898dfb83344a6b4f76aa16b9a4a)glfwDefaultWindowHints()
+3101: | void glfwDefaultWindowHints | (   | void  |     | )   |     |
+3107: This function resets all window hints to their default values.
+3109: Errors  
+3110: Possible errors include GLFW_NOT_INITIALIZED.
+3114: Thread safety  
+3115: This function must only be called from the main thread.
+3119: See also  
+3120: Window creation hints
+3122: glfwWindowHint
+3124: glfwWindowHintString
+3128: Since  
+3129: Added in version 3.0.
+3137: ## [◆ ](#ga7d9c8c62384b1e2821c4dc48952d2033)glfwWindowHint()
+3145: | void glfwWindowHint | (   | int  | *hint*,  |
+3146: |                     |     | int  | *value*  |
+3147: |                     | )   |      |          |
+3153: This function sets hints for the next call to glfwCreateWindow. The hints, once set, retain their values until changed by a call to this function or glfwDefaultWindowHints, or until the library is terminated.
+3155: Only integer value hints can be set with this function. String value hints are set with glfwWindowHintString.
+3157: This function does not check whether the specified hint values are valid. If you set hints to invalid values this will instead be reported by the next call to glfwCreateWindow.
+3159: Some hints are platform specific. These may be set on any platform but they will only affect their specific platform. Other platforms will ignore them. Setting these hints requires no platform specific headers or functions.
+3161: Parameters  
+3164: | \[in\] | hint | The window hint to set. |
+3165: | \[in\] | value | The new value of the window hint. |
+3169: Errors  
+3170: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+3174: Thread safety  
+3175: This function must only be called from the main thread.
+3179: See also  
+3180: Window creation hints
+3182: glfwWindowHintString
+3184: glfwDefaultWindowHints
+3188: Since  
+3189: Added in version 3.0. Replaces `glfwOpenWindowHint`.
+3197: ## [◆ ](#ga8cb2782861c9d997bcf2dea97f363e5f)glfwWindowHintString()
+3205: | void glfwWindowHintString | (   | int            | *hint*,  |
+3206: |                           |     | const char \*  | *value*  |
+3207: |                           | )   |                |          |
+3213: This function sets hints for the next call to glfwCreateWindow. The hints, once set, retain their values until changed by a call to this function or glfwDefaultWindowHints, or until the library is terminated.
+3215: Only string type hints can be set with this function. Integer value hints are set with glfwWindowHint.
+3217: This function does not check whether the specified hint values are valid. If you set hints to invalid values this will instead be reported by the next call to glfwCreateWindow.
+3219: Some hints are platform specific. These may be set on any platform but they will only affect their specific platform. Other platforms will ignore them. Setting these hints requires no platform specific headers or functions.
+3221: Parameters  
+3224: | \[in\] | hint | The window hint to set. |
+3225: | \[in\] | value | The new value of the window hint. |
+3229: Errors  
+3230: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+3234: Pointer lifetime  
+3235: The specified string is copied before this function returns.
+3239: Thread safety  
+3240: This function must only be called from the main thread.
+3244: See also  
+3245: Window creation hints
+3247: glfwWindowHint
+3249: glfwDefaultWindowHints
+3253: Since  
+3254: Added in version 3.3.
+3262: ## [◆ ](#ga3555a418df92ad53f917597fe2f64aeb)glfwCreateWindow()
+3270: | GLFWwindow \* glfwCreateWindow | ( | int  | *width*, |
+3271: |  |  | int  | *height*, |
+3272: |  |  | const char \*  | *title*, |
+3273: |  |  | GLFWmonitor \*  | *monitor*, |
+3274: |  |  | GLFWwindow \*  | *share*  |
+3275: |  | ) |  |  |
+3281: This function creates a window and its associated OpenGL or OpenGL ES context. Most of the options controlling how the window and its context should be created are specified with window hints.
+3283: Successful creation does not change which context is current. Before you can use the newly created context, you need to make it current. For information about the `share` parameter, see Context object sharing.
+3285: The created window, framebuffer and context may differ from what you requested, as not all parameters and hints are hard constraints. This includes the size of the window, especially for full screen windows. To query the actual attributes of the created window, framebuffer and context, see glfwGetWindowAttrib, glfwGetWindowSize and glfwGetFramebufferSize.
+3287: To create a full screen window, you need to specify the monitor the window will cover. If no monitor is specified, the window will be windowed mode. Unless you have a way for the user to choose a specific monitor, it is recommended that you pick the primary monitor. For more information on how to query connected monitors, see Retrieving monitors.
+3289: For full screen windows, the specified size becomes the resolution of the window's *desired video mode*. As long as a full screen window is not iconified, the supported video mode most closely matching the desired video mode is set for the specified monitor. For more information about full screen windows, including the creation of so called *windowed full screen* or *borderless full screen* windows, see "Windowed full screen" windows.
+3291: Once you have created the window, you can switch it between windowed and full screen mode with glfwSetWindowMonitor. This will not affect its OpenGL or OpenGL ES context.
+3293: By default, newly created windows use the placement recommended by the window system. To create the window at a specific position, set the GLFW_POSITION_X and GLFW_POSITION_Y window hints before creation. To restore the default behavior, set either or both hints back to `GLFW_ANY_POSITION`.
+3295: As long as at least one full screen window is not iconified, the screensaver is prohibited from starting.
+3297: Window systems put limits on window sizes. Very large or very small window dimensions may be overridden by the window system on creation. Check the actual size after creation.
+3299: The swap interval is not set during window creation and the initial value may vary depending on driver settings and defaults.
+3301: Parameters  
+3304: | \[in\] | width | The desired width, in screen coordinates, of the window. This must be greater than zero. |
+3305: | \[in\] | height | The desired height, in screen coordinates, of the window. This must be greater than zero. |
+3306: | \[in\] | title | The initial, UTF-8 encoded window title. |
+3307: | \[in\] | monitor | The monitor to use for full screen mode, or `NULL` for windowed mode. |
+3308: | \[in\] | share | The window whose context to share resources with, or `NULL` to not share resources. |
+3312: Returns  
+3313: The handle of the created window, or `NULL` if an error occurred.
+3317: Errors  
+3318: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM, GLFW_INVALID_VALUE, GLFW_API_UNAVAILABLE, GLFW_VERSION_UNAVAILABLE, GLFW_FORMAT_UNAVAILABLE, GLFW_NO_WINDOW_CONTEXT and GLFW_PLATFORM_ERROR.
+3322: Remarks  
+3323: **Win32:** Window creation will fail if the Microsoft GDI software OpenGL implementation is the only one available.
+3325: **Win32:** If the executable has an icon resource named `GLFW_ICON,` it will be set as the initial icon for the window. If no such icon is present, the `IDI_APPLICATION` icon will be used instead. To set a different icon, see glfwSetWindowIcon.
+3327: > **Libx reference note (GLFW 3.5.1):** The comma in the upstream code-formatted name `GLFW_ICON,` is preserved above. The [fixed Win32 implementation](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L1294-L1297) looks up the resource name `GLFW_ICON`, without a comma.
+3329: **Win32:** The context to share resources with must not be current on any other thread.
+3331: **macOS:** The OS only supports core profile contexts for OpenGL versions 3.2 and later. Before creating an OpenGL context of version 3.2 or later you must set the GLFW_OPENGL_PROFILE hint accordingly. OpenGL 3.0 and 3.1 contexts are not supported at all on macOS.
+3333: **macOS:** The GLFW window has no icon, as it is not a document window, but the dock icon will be the same as the application bundle's icon. For more information on bundles, see the [Bundle Programming Guide](https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/) in the Mac Developer Library.
+3335: **macOS:** The window frame will not be rendered at full resolution on Retina displays unless the GLFW_SCALE_FRAMEBUFFER hint is `GLFW_TRUE` and the `NSHighResolutionCapable` key is enabled in the application bundle's `Info.plist`. For more information, see [High Resolution Guidelines for OS X](https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html) in the Mac Developer Library. The GLFW test and example programs use a custom `Info.plist` template for this, which can be found as `CMake/Info.plist.in` in the source tree.
+3337: **macOS:** When activating frame autosaving with GLFW_COCOA_FRAME_NAME, the specified window size and position may be overridden by previously saved values.
+3339: **Wayland:** GLFW uses [libdecor](https://gitlab.freedesktop.org/libdecor/libdecor) where available to create its window decorations. This in turn uses server-side XDG decorations where available and provides high quality client-side decorations on compositors like GNOME. If both XDG decorations and libdecor are unavailable, GLFW falls back to a very simple set of window decorations that only support moving, resizing and the window manager's right-click menu.
+3341: **X11:** Some window managers will not respect the placement of initially hidden windows.
+3343: **X11:** Due to the asynchronous nature of X11, it may take a moment for a window to reach its requested state. This means you may not be able to query the final size, position or other attributes directly after window creation.
+3345: **X11:** The class part of the `WM_CLASS` window property will by default be set to the window title passed to this function. The instance part will use the contents of the `RESOURCE_NAME` environment variable, if present and not empty, or fall back to the window title. Set the GLFW_X11_CLASS_NAME and GLFW_X11_INSTANCE_NAME window hints to override this.
+3349: Thread safety  
+3350: This function must only be called from the main thread.
+3354: See also  
+3355: Window creation
+3357: glfwDestroyWindow
+3361: Since  
+3362: Added in version 3.0. Replaces `glfwOpenWindow`.
+3370: ## [◆ ](#gacdf43e51376051d2c091662e9fe3d7b2)glfwDestroyWindow()
+3378: | void glfwDestroyWindow | ( | GLFWwindow \*  | *window* | ) |  |
+3384: This function destroys the specified window and its context. On calling this function, no further callbacks will be called for that window.
+3386: If the context of the specified window is current on the main thread, it is detached before being destroyed.
+3388: Parameters  
+3391: | \[in\] | window | The window to destroy. |
+3395: Errors  
+3396: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+3400: Note  
+3401: The context of the specified window must not be current on any other thread when this function is called.
+3405: Reentrancy  
+3406: This function must not be called from a callback.
+3410: Thread safety  
+3411: This function must only be called from the main thread.
+3415: See also  
+3416: Window creation
+3418: glfwCreateWindow
+3422: Since  
+3423: Added in version 3.0. Replaces `glfwCloseWindow`.
+3431: ## [◆ ](#ga24e02fbfefbb81fc45320989f8140ab5)glfwWindowShouldClose()
+3439: | int glfwWindowShouldClose | ( | GLFWwindow \*  | *window* | ) |  |
+3445: This function returns the value of the close flag of the specified window.
+3447: Parameters  
+3450: | \[in\] | window | The window to query. |
+3454: Returns  
+3455: The value of the close flag.
+3459: Errors  
+3460: Possible errors include GLFW_NOT_INITIALIZED.
+3464: Thread safety  
+3465: This function may be called from any thread. Access is not synchronized.
+3469: See also  
+3470: Window closing and close flag
+3474: Since  
+3475: Added in version 3.0.
+3483: ## [◆ ](#ga49c449dde2a6f87d996f4daaa09d6708)glfwSetWindowShouldClose()
+3491: | void glfwSetWindowShouldClose | ( | GLFWwindow \*  | *window*, |
+3492: |  |  | int  | *value*  |
+3493: |  | ) |  |  |
+3499: This function sets the value of the close flag of the specified window. This can be used to override the user's attempt to close the window, or to signal that it should be closed.
+3501: Parameters  
+3504: | \[in\] | window | The window whose flag to change. |
+3505: | \[in\] | value  | The new value.                   |
+3509: Errors  
+3510: Possible errors include GLFW_NOT_INITIALIZED.
+3514: Thread safety  
+3515: This function may be called from any thread. Access is not synchronized.
+3519: See also  
+3520: Window closing and close flag
+3524: Since  
+3525: Added in version 3.0.
+3533: ## [◆ ](#gac6151765c54b789c4fe66c6bc6215953)glfwGetWindowTitle()
+3541: | const char \* glfwGetWindowTitle | ( | GLFWwindow \*  | *window* | ) |  |
+3547: This function returns the window title, encoded as UTF-8, of the specified window. This is the title set previously by glfwCreateWindow or glfwSetWindowTitle.
+3549: Parameters  
+3552: | \[in\] | window | The window to query. |
+3556: Returns  
+3557: The UTF-8 encoded window title, or `NULL` if an error occurred.
+3561: Errors  
+3562: Possible errors include GLFW_NOT_INITIALIZED.
+3566: Remarks  
+3567: The returned title is currently a copy of the title last set by glfwCreateWindow or glfwSetWindowTitle. It does not include any additional text which may be appended by the platform or another program.
+3571: Pointer lifetime  
+3572: The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the next call to glfwGetWindowTitle or glfwSetWindowTitle, or until the library is terminated.
+3576: Thread safety  
+3577: This function must only be called from the main thread.
+3581: See also  
+3582: Window title
+3584: glfwSetWindowTitle
+3588: Since  
+3589: Added in version 3.4.
+3597: ## [◆ ](#ga5d877f09e968cef7a360b513306f17ff)glfwSetWindowTitle()
+3605: | void glfwSetWindowTitle | ( | GLFWwindow \*  | *window*, |
+3606: |  |  | const char \*  | *title*  |
+3607: |  | ) |  |  |
+3613: This function sets the window title, encoded as UTF-8, of the specified window.
+3615: Parameters  
+3618: | \[in\] | window | The window whose title to change. |
+3619: | \[in\] | title  | The UTF-8 encoded window title.   |
+3623: Errors  
+3624: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+3628: Remarks  
+3629: **macOS:** The window title will not be updated until the next time you process events.
+3633: Thread safety  
+3634: This function must only be called from the main thread.
+3638: See also  
+3639: Window title
+3641: glfwGetWindowTitle
+3645: Since  
+3646: Added in version 1.0. **GLFW 3:** Added window handle parameter.
+3654: ## [◆ ](#gadd7ccd39fe7a7d1f0904666ae5932dc5)glfwSetWindowIcon()
+3662: | void glfwSetWindowIcon | ( | GLFWwindow \*  | *window*, |
+3663: |  |  | int  | *count*, |
+3664: |  |  | const GLFWimage \*  | *images*  |
+3665: |  | ) |  |  |
+3671: This function sets the icon of the specified window. If passed an array of candidate images, those of or closest to the sizes desired by the system are selected. If no images are specified, the window reverts to its default icon.
+3673: The pixels are 32-bit, little-endian, non-premultiplied RGBA, i.e. eight bits per channel with the red channel first. They are arranged canonically as packed sequential rows, starting from the top-left corner.
+3675: The desired image sizes varies depending on platform and system settings. The selected images will be rescaled as needed. Good sizes include 16x16, 32x32 and 48x48.
+3677: Parameters  
+3680: | \[in\] | window | The window whose icon to set. |
+3681: | \[in\] | count | The number of images in the specified array, or zero to revert to the default window icon. |
+3682: | \[in\] | images | The images to create the icon from. This is ignored if count is zero. |
+3686: Errors  
+3687: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_VALUE, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+3691: Pointer lifetime  
+3692: The specified image data is copied before this function returns.
+3696: Remarks  
+3697: **macOS:** Regular windows do not have icons on macOS. This function will emit GLFW_FEATURE_UNAVAILABLE. The dock icon will be the same as the application bundle's icon. For more information on bundles, see the [Bundle Programming Guide](https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/) in the Mac Developer Library.
+3699: **Wayland:** There is no existing protocol to change an icon, the window will thus inherit the one defined in the application's desktop file. This function will emit GLFW_FEATURE_UNAVAILABLE.
+3703: Thread safety  
+3704: This function must only be called from the main thread.
+3708: See also  
+3709: Window icon
+3713: Since  
+3714: Added in version 3.2.
+3722: ## [◆ ](#ga73cb526c000876fd8ddf571570fdb634)glfwGetWindowPos()
+3730: | void glfwGetWindowPos | ( | GLFWwindow \*  | *window*, |
+3731: |  |  | int \*  | *xpos*, |
+3732: |  |  | int \*  | *ypos*  |
+3733: |  | ) |  |  |
+3739: This function retrieves the position, in screen coordinates, of the upper-left corner of the content area of the specified window.
+3741: Any or all of the position arguments may be `NULL`. If an error occurs, all non-`NULL` position arguments will be set to zero.
+3743: Parameters  
+3746: | \[in\] | window | The window to query. |
+3747: | \[out\] | xpos | Where to store the x-coordinate of the upper-left corner of the content area, or `NULL`. |
+3748: | \[out\] | ypos | Where to store the y-coordinate of the upper-left corner of the content area, or `NULL`. |
+3752: Errors  
+3753: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+3757: Remarks  
+3758: **Wayland:** Window positions are not currently part of any common Wayland protocol, so this function cannot be implemented and will emit GLFW_FEATURE_UNAVAILABLE.
+3762: Thread safety  
+3763: This function must only be called from the main thread.
+3767: See also  
+3768: Window position
+3770: glfwSetWindowPos
+3774: Since  
+3775: Added in version 3.0.
+3783: ## [◆ ](#ga1abb6d690e8c88e0c8cd1751356dbca8)glfwSetWindowPos()
+3791: | void glfwSetWindowPos | ( | GLFWwindow \*  | *window*, |
+3792: |  |  | int  | *xpos*, |
+3793: |  |  | int  | *ypos*  |
+3794: |  | ) |  |  |
+3800: This function sets the position, in screen coordinates, of the upper-left corner of the content area of the specified windowed mode window. If the window is a full screen window, this function does nothing.
+3802: **Do not use this function** to move an already visible window unless you have very good reasons for doing so, as it will confuse and annoy the user.
+3804: The window manager may put limits on what positions are allowed. GLFW cannot and should not override these limits.
+3806: Parameters  
+3809: | \[in\] | window | The window to query. |
+3810: | \[in\] | xpos | The x-coordinate of the upper-left corner of the content area. |
+3811: | \[in\] | ypos | The y-coordinate of the upper-left corner of the content area. |
+3813: > **Libx reference note (GLFW 3.5.1):** The upstream parameter table calls `window` a window to query. The [fixed setter implementation](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L596-L607) passes this window to the platform position setter when it is windowed. Here `window` identifies the window whose position is to be set; the full-screen no-op described above still applies. The upstream table is preserved above.
+3817: Errors  
+3818: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+3822: Remarks  
+3823: **Wayland:** Window positions are not currently part of any common Wayland protocol, so this function cannot be implemented and will emit GLFW_FEATURE_UNAVAILABLE.
+3827: Thread safety  
+3828: This function must only be called from the main thread.
+3832: See also  
+3833: Window position
+3835: glfwGetWindowPos
+3839: Since  
+3840: Added in version 1.0. **GLFW 3:** Added window handle parameter.
+3848: ## [◆ ](#gaeea7cbc03373a41fb51cfbf9f2a5d4c6)glfwGetWindowSize()
+3856: | void glfwGetWindowSize | ( | GLFWwindow \*  | *window*, |
+3857: |  |  | int \*  | *width*, |
+3858: |  |  | int \*  | *height*  |
+3859: |  | ) |  |  |
+3865: This function retrieves the size, in screen coordinates, of the content area of the specified window. If you wish to retrieve the size of the framebuffer of the window in pixels, see glfwGetFramebufferSize.
+3867: Any or all of the size arguments may be `NULL`. If an error occurs, all non-`NULL` size arguments will be set to zero.
+3869: Parameters  
+3872: | \[in\] | window | The window whose size to retrieve. |
+3873: | \[out\] | width | Where to store the width, in screen coordinates, of the content area, or `NULL`. |
+3874: | \[out\] | height | Where to store the height, in screen coordinates, of the content area, or `NULL`. |
+3878: Errors  
+3879: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+3883: Thread safety  
+3884: This function must only be called from the main thread.
+3888: See also  
+3889: Window size
+3891: glfwSetWindowSize
+3895: Since  
+3896: Added in version 1.0. **GLFW 3:** Added window handle parameter.
+3904: ## [◆ ](#gac314fa6cec7d2d307be9963e2709cc90)glfwSetWindowSizeLimits()
+3912: | void glfwSetWindowSizeLimits | ( | GLFWwindow \*  | *window*, |
+3913: |  |  | int  | *minwidth*, |
+3914: |  |  | int  | *minheight*, |
+3915: |  |  | int  | *maxwidth*, |
+3916: |  |  | int  | *maxheight*  |
+3917: |  | ) |  |  |
+3923: This function sets the size limits of the content area of the specified window. If the window is full screen, the size limits only take effect once it is made windowed. If the window is not resizable, this function does nothing.
+3925: The size limits are applied immediately to a windowed mode window and may cause it to be resized.
+3927: The maximum dimensions must be greater than or equal to the minimum dimensions and all must be greater than or equal to zero.
+3929: Parameters  
+3932: | \[in\] | window | The window to set limits for. |
+3933: | \[in\] | minwidth | The minimum width, in screen coordinates, of the content area, or `GLFW_DONT_CARE`. |
+3934: | \[in\] | minheight | The minimum height, in screen coordinates, of the content area, or `GLFW_DONT_CARE`. |
+3935: | \[in\] | maxwidth | The maximum width, in screen coordinates, of the content area, or `GLFW_DONT_CARE`. |
+3936: | \[in\] | maxheight | The maximum height, in screen coordinates, of the content area, or `GLFW_DONT_CARE`. |
+3940: Errors  
+3941: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_VALUE and GLFW_PLATFORM_ERROR.
+3945: Remarks  
+3946: If you set size limits and an aspect ratio that conflict, the results are undefined.
+3948: **Wayland:** The size limits will not be applied until the window is actually resized, either by the user or by the compositor.
+3952: Thread safety  
+3953: This function must only be called from the main thread.
+3957: See also  
+3958: Window size limits
+3960: glfwSetWindowAspectRatio
+3964: Since  
+3965: Added in version 3.2.
+3973: ## [◆ ](#ga72ac8cb1ee2e312a878b55153d81b937)glfwSetWindowAspectRatio()
+3981: | void glfwSetWindowAspectRatio | ( | GLFWwindow \*  | *window*, |
+3982: |  |  | int  | *numer*, |
+3983: |  |  | int  | *denom*  |
+3984: |  | ) |  |  |
+3990: This function sets the required aspect ratio of the content area of the specified window. If the window is full screen, the aspect ratio only takes effect once it is made windowed. If the window is not resizable, this function does nothing.
+3992: The aspect ratio is specified as a numerator and a denominator and both values must be greater than zero. For example, the common 16:9 aspect ratio is specified as 16 and 9, respectively.
+3994: If the numerator and denominator is set to `GLFW_DONT_CARE` then the aspect ratio limit is disabled.
+3996: The aspect ratio is applied immediately to a windowed mode window and may cause it to be resized.
+3998: Parameters  
+4001: | \[in\] | window | The window to set limits for. |
+4002: | \[in\] | numer | The numerator of the desired aspect ratio, or `GLFW_DONT_CARE`. |
+4003: | \[in\] | denom | The denominator of the desired aspect ratio, or `GLFW_DONT_CARE`. |
+4007: Errors  
+4008: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_VALUE and GLFW_PLATFORM_ERROR.
+4012: Remarks  
+4013: If you set size limits and an aspect ratio that conflict, the results are undefined.
+4015: **Wayland:** The aspect ratio will not be applied until the window is actually resized, either by the user or by the compositor.
+4019: Thread safety  
+4020: This function must only be called from the main thread.
+4024: See also  
+4025: Window size limits
+4027: glfwSetWindowSizeLimits
+4031: Since  
+4032: Added in version 3.2.
+4040: ## [◆ ](#ga371911f12c74c504dd8d47d832d095cb)glfwSetWindowSize()
+4048: | void glfwSetWindowSize | ( | GLFWwindow \*  | *window*, |
+4049: |  |  | int  | *width*, |
+4050: |  |  | int  | *height*  |
+4051: |  | ) |  |  |
+4057: This function sets the size, in screen coordinates, of the content area of the specified window.
+4059: For full screen windows, this function updates the resolution of its desired video mode and switches to the video mode closest to it, without affecting the window's context. As the context is unaffected, the bit depths of the framebuffer remain unchanged.
+4061: If you wish to update the refresh rate of the desired video mode in addition to its resolution, see glfwSetWindowMonitor.
+4063: The window manager may put limits on what sizes are allowed. GLFW cannot and should not override these limits.
+4065: Parameters  
+4068: | \[in\] | window | The window to resize. |
+4069: | \[in\] | width | The desired width, in screen coordinates, of the window content area. |
+4070: | \[in\] | height | The desired height, in screen coordinates, of the window content area. |
+4074: Errors  
+4075: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4079: Thread safety  
+4080: This function must only be called from the main thread.
+4084: See also  
+4085: Window size
+4087: glfwGetWindowSize
+4089: glfwSetWindowMonitor
+4093: Since  
+4094: Added in version 1.0. **GLFW 3:** Added window handle parameter.
+4102: ## [◆ ](#ga0e2637a4161afb283f5300c7f94785c9)glfwGetFramebufferSize()
+4110: | void glfwGetFramebufferSize | ( | GLFWwindow \*  | *window*, |
+4111: |  |  | int \*  | *width*, |
+4112: |  |  | int \*  | *height*  |
+4113: |  | ) |  |  |
+4119: This function retrieves the size, in pixels, of the framebuffer of the specified window. If you wish to retrieve the size of the window in screen coordinates, see glfwGetWindowSize.
+4121: Any or all of the size arguments may be `NULL`. If an error occurs, all non-`NULL` size arguments will be set to zero.
+4123: Parameters  
+4126: | \[in\] | window | The window whose framebuffer to query. |
+4127: | \[out\] | width | Where to store the width, in pixels, of the framebuffer, or `NULL`. |
+4128: | \[out\] | height | Where to store the height, in pixels, of the framebuffer, or `NULL`. |
+4132: Errors  
+4133: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4137: Thread safety  
+4138: This function must only be called from the main thread.
+4142: See also  
+4143: Framebuffer size
+4145: glfwSetFramebufferSizeCallback
+4149: Since  
+4150: Added in version 3.0.
+4158: ## [◆ ](#ga1a9fd382058c53101b21cf211898f1f1)glfwGetWindowFrameSize()
+4166: | void glfwGetWindowFrameSize | ( | GLFWwindow \*  | *window*, |
+4167: |  |  | int \*  | *left*, |
+4168: |  |  | int \*  | *top*, |
+4169: |  |  | int \*  | *right*, |
+4170: |  |  | int \*  | *bottom*  |
+4171: |  | ) |  |  |
+4177: This function retrieves the size, in screen coordinates, of each edge of the frame of the specified window. This size includes the title bar, if the window has one. The size of the frame may vary depending on the window-related hints used to create it.
+4179: Because this function retrieves the size of each window frame edge and not the offset along a particular coordinate axis, the retrieved values will always be zero or positive.
+4181: Any or all of the size arguments may be `NULL`. If an error occurs, all non-`NULL` size arguments will be set to zero.
+4183: Parameters  
+4186: | \[in\] | window | The window whose frame size to query. |
+4187: | \[out\] | left | Where to store the size, in screen coordinates, of the left edge of the window frame, or `NULL`. |
+4188: | \[out\] | top | Where to store the size, in screen coordinates, of the top edge of the window frame, or `NULL`. |
+4189: | \[out\] | right | Where to store the size, in screen coordinates, of the right edge of the window frame, or `NULL`. |
+4190: | \[out\] | bottom | Where to store the size, in screen coordinates, of the bottom edge of the window frame, or `NULL`. |
+4194: Errors  
+4195: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4199: Thread safety  
+4200: This function must only be called from the main thread.
+4204: See also  
+4205: Window size
+4209: Since  
+4210: Added in version 3.1.
+4218: ## [◆ ](#gaf5d31de9c19c4f994facea64d2b3106c)glfwGetWindowContentScale()
+4226: | void glfwGetWindowContentScale | ( | GLFWwindow \*  | *window*, |
+4227: |  |  | float \*  | *xscale*, |
+4228: |  |  | float \*  | *yscale*  |
+4229: |  | ) |  |  |
+4235: This function retrieves the content scale for the specified window. The content scale is the ratio between the current DPI and the platform's default DPI. This is especially important for text and any UI elements. If the pixel dimensions of your UI scaled by this look appropriate on your machine then it should appear at a reasonable size on other machines regardless of their DPI and scaling settings. This relies on the system DPI and scaling settings being somewhat correct.
+4237: On platforms where each monitors can have its own content scale, the window content scale will depend on which monitor the system considers the window to be on.
+4239: Parameters  
+4242: | \[in\]  | window | The window to query.                                |
+4243: | \[out\] | xscale | Where to store the x-axis content scale, or `NULL`. |
+4244: | \[out\] | yscale | Where to store the y-axis content scale, or `NULL`. |
+4248: Errors  
+4249: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4253: Thread safety  
+4254: This function must only be called from the main thread.
+4258: See also  
+4259: Window content scale
+4261: glfwSetWindowContentScaleCallback
+4263: glfwGetMonitorContentScale
+4267: Since  
+4268: Added in version 3.3.
+4276: ## [◆ ](#gad09f0bd7a6307c4533b7061828480a84)glfwGetWindowOpacity()
+4284: | float glfwGetWindowOpacity | ( | GLFWwindow \*  | *window* | ) |  |
+4290: This function returns the opacity of the window, including any decorations.
+4292: The opacity (or alpha) value is a positive finite number between zero and one, where zero is fully transparent and one is fully opaque. If the system does not support whole window transparency, this function always returns one.
+4294: > **Libx reference note (GLFW 3.5.1):** The upstream word positive conflicts with the explicit zero endpoint. The [fixed opacity setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796) checks for a finite value in the inclusive range 0 to 1; zero is included. Whether whole-window transparency is supported still depends on the platform. The upstream wording is preserved above.
+4296: The initial opacity value for newly created windows is one.
+4298: Parameters  
+4301: | \[in\] | window | The window to query. |
+4305: Returns  
+4306: The opacity value of the specified window.
+4310: Errors  
+4311: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4315: Thread safety  
+4316: This function must only be called from the main thread.
+4320: See also  
+4321: Window transparency
+4323: glfwSetWindowOpacity
+4327: Since  
+4328: Added in version 3.3.
+4336: ## [◆ ](#gac31caeb3d1088831b13d2c8a156802e9)glfwSetWindowOpacity()
+4344: | void glfwSetWindowOpacity | ( | GLFWwindow \*  | *window*, |
+4345: |  |  | float  | *opacity*  |
+4346: |  | ) |  |  |
+4352: This function sets the opacity of the window, including any decorations.
+4354: The opacity (or alpha) value is a positive finite number between zero and one, where zero is fully transparent and one is fully opaque.
+4356: > **Libx reference note (GLFW 3.5.1):** The upstream word positive conflicts with the explicit zero endpoint. The [fixed opacity setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796) checks for a finite value in the inclusive range 0 to 1; zero is included. Whether whole-window transparency is supported still depends on the platform. The upstream wording is preserved above.
+4358: The initial opacity value for newly created windows is one.
+4360: A window created with framebuffer transparency may not use whole window transparency. The results of doing this are undefined.
+4362: Parameters  
+4365: | \[in\] | window  | The window to set the opacity for.           |
+4366: | \[in\] | opacity | The desired opacity of the specified window. |
+4370: Errors  
+4371: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+4375: Remarks  
+4376: **Wayland:** There is no way to set an opacity factor for a window. This function will emit GLFW_FEATURE_UNAVAILABLE.
+4380: Thread safety  
+4381: This function must only be called from the main thread.
+4385: See also  
+4386: Window transparency
+4388: glfwGetWindowOpacity
+4392: Since  
+4393: Added in version 3.3.
+4401: ## [◆ ](#ga1bb559c0ebaad63c5c05ad2a066779c4)glfwIconifyWindow()
+4409: | void glfwIconifyWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4415: This function iconifies (minimizes) the specified window if it was previously restored. If the window is already iconified, this function does nothing.
+4417: If the specified window is a full screen window, GLFW restores the original video mode of the monitor. The window's desired video mode is set again when the window is restored.
+4419: Parameters  
+4422: | \[in\] | window | The window to iconify. |
+4426: Errors  
+4427: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4431: Thread safety  
+4432: This function must only be called from the main thread.
+4436: See also  
+4437: Window iconification
+4439: glfwRestoreWindow
+4441: glfwMaximizeWindow
+4445: Since  
+4446: Added in version 2.1. **GLFW 3:** Added window handle parameter.
+4454: ## [◆ ](#ga52527a5904b47d802b6b4bb519cdebc7)glfwRestoreWindow()
+4462: | void glfwRestoreWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4468: This function restores the specified window if it was previously iconified (minimized) or maximized. If the window is already restored, this function does nothing.
+4470: If the specified window is an iconified full screen window, its desired video mode is set again for its monitor when the window is restored.
+4472: Parameters  
+4475: | \[in\] | window | The window to restore. |
+4479: Errors  
+4480: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4484: Remarks  
+4485: **Wayland:** Restoring a window from maximization is not currently part of any common Wayland protocol, so this function can only restore windows from maximization.
+4487: > **Libx reference note (GLFW 3.5.1):** The upstream remark contradicts itself about restoring from maximization. In the [fixed Wayland implementation](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L2688-L2710), the comment says that minimization cannot be unset, while the windowed branch unsets maximization through libdecor or xdg-toplevel, or clears the stored maximized flag. This explains the fixed 3.5.1 behavior and does not establish the capabilities of current Wayland protocols. The upstream remark is preserved above.
+4491: Thread safety  
+4492: This function must only be called from the main thread.
+4496: See also  
+4497: Window iconification
+4499: glfwIconifyWindow
+4501: glfwMaximizeWindow
+4505: Since  
+4506: Added in version 2.1. **GLFW 3:** Added window handle parameter.
+4514: ## [◆ ](#ga3f541387449d911274324ae7f17ec56b)glfwMaximizeWindow()
+4522: | void glfwMaximizeWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4528: This function maximizes the specified window if it was previously not maximized. If the window is already maximized, this function does nothing.
+4530: If the specified window is a full screen window, this function does nothing.
+4532: Parameters  
+4535: | \[in\] | window | The window to maximize. |
+4539: Errors  
+4540: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4544: Thread Safety  
+4545: This function may only be called from the main thread.
+4549: See also  
+4550: Window iconification
+4552: glfwIconifyWindow
+4554: glfwRestoreWindow
+4558: Since  
+4559: Added in GLFW 3.2.
+4567: ## [◆ ](#ga61be47917b72536a148300f46494fc66)glfwShowWindow()
+4575: | void glfwShowWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4581: This function makes the specified window visible if it was previously hidden. If the window is already visible or is in full screen mode, this function does nothing.
+4583: By default, windowed mode windows are focused when shown Set the GLFW_FOCUS_ON_SHOW window hint to change this behavior for all newly created windows, or change the behavior for an existing window with glfwSetWindowAttrib.
+4585: Parameters  
+4588: | \[in\] | window | The window to make visible. |
+4592: Errors  
+4593: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4597: Remarks  
+4598: **Wayland:** Because Wayland wants every frame of the desktop to be complete, this function does not immediately make the window visible. Instead it will become visible the next time the window framebuffer is updated after this call.
+4602: Thread safety  
+4603: This function must only be called from the main thread.
+4607: See also  
+4608: Window visibility
+4610: glfwHideWindow
+4614: Since  
+4615: Added in version 3.0.
+4623: ## [◆ ](#ga49401f82a1ba5f15db5590728314d47c)glfwHideWindow()
+4631: | void glfwHideWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4637: This function hides the specified window if it was previously visible. If the window is already hidden or is in full screen mode, this function does nothing.
+4639: Parameters  
+4642: | \[in\] | window | The window to hide. |
+4646: Errors  
+4647: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4651: Thread safety  
+4652: This function must only be called from the main thread.
+4656: See also  
+4657: Window visibility
+4659: glfwShowWindow
+4663: Since  
+4664: Added in version 3.0.
+4672: ## [◆ ](#ga873780357abd3f3a081d71a40aae45a1)glfwFocusWindow()
+4680: | void glfwFocusWindow | ( | GLFWwindow \*  | *window* | ) |  |
+4686: This function brings the specified window to front and sets input focus. The window should already be visible and not iconified.
+4688: By default, both windowed and full screen mode windows are focused when initially created. Set the GLFW_FOCUSED to disable this behavior.
+4690: Also by default, windowed mode windows are focused when shown with glfwShowWindow. Set the GLFW_FOCUS_ON_SHOW to disable this behavior.
+4692: **Do not use this function** to steal focus from other applications unless you are certain that is what the user wants. Focus stealing can be extremely disruptive.
+4694: For a less disruptive way of getting the user's attention, see attention requests.
+4696: Parameters  
+4699: | \[in\] | window | The window to give input focus. |
+4703: Errors  
+4704: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4708: Remarks  
+4709: **Wayland:** The compositor will likely ignore focus requests unless another window created by the same application already has input focus.
+4713: Thread safety  
+4714: This function must only be called from the main thread.
+4718: See also  
+4719: Window input focus
+4721: Window attention request
+4725: Since  
+4726: Added in version 3.2.
+4734: ## [◆ ](#ga2f8d59323fc4692c1d54ba08c863a703)glfwRequestWindowAttention()
+4742: | void glfwRequestWindowAttention | ( | GLFWwindow \*  | *window* | ) |  |
+4748: This function requests user attention to the specified window. On platforms where this is not supported, attention is requested to the application as a whole.
+4750: Once the user has given attention, usually by focusing the window or application, the system will end the request automatically.
+4752: Parameters  
+4755: | \[in\] | window | The window to request attention to. |
+4759: Errors  
+4760: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4764: Remarks  
+4765: **macOS:** Attention is requested to the application as a whole, not the specific window.
+4769: Thread safety  
+4770: This function must only be called from the main thread.
+4774: See also  
+4775: Window attention request
+4779: Since  
+4780: Added in version 3.3.
+4788: ## [◆ ](#ga4d766499ac02c60f02221a9dfab87299)glfwGetWindowMonitor()
+4796: | GLFWmonitor \* glfwGetWindowMonitor | ( | GLFWwindow \*  | *window* | ) |  |
+4802: This function returns the handle of the monitor that the specified window is in full screen on.
+4804: Parameters  
+4807: | \[in\] | window | The window to query. |
+4811: Returns  
+4812: The monitor, or `NULL` if the window is in windowed mode or an error occurred.
+4816: Errors  
+4817: Possible errors include GLFW_NOT_INITIALIZED.
+4821: Thread safety  
+4822: This function must only be called from the main thread.
+4826: See also  
+4827: Window monitor
+4829: glfwSetWindowMonitor
+4833: Since  
+4834: Added in version 3.0.
+4842: ## [◆ ](#ga81c76c418af80a1cce7055bccb0ae0a7)glfwSetWindowMonitor()
+4850: | void glfwSetWindowMonitor | ( | GLFWwindow \*  | *window*, |
+4851: |  |  | GLFWmonitor \*  | *monitor*, |
+4852: |  |  | int  | *xpos*, |
+4853: |  |  | int  | *ypos*, |
+4854: |  |  | int  | *width*, |
+4855: |  |  | int  | *height*, |
+4856: |  |  | int  | *refreshRate*  |
+4857: |  | ) |  |  |
+4863: This function sets the monitor that the window uses for full screen mode or, if the monitor is `NULL`, makes it windowed mode.
+4865: When setting a monitor, this function updates the width, height and refresh rate of the desired video mode and switches to the video mode closest to it. The window position is ignored when setting a monitor.
+4867: When the monitor is `NULL`, the position, width and height are used to place the window content area. The refresh rate is ignored when no monitor is specified.
+4869: If you only wish to update the resolution of a full screen window or the size of a windowed mode window, see glfwSetWindowSize.
+4871: When a window transitions from full screen to windowed mode, this function restores any previous window settings such as whether it is decorated, floating, resizable, has size or aspect ratio limits, etc.
+4873: Parameters  
+4876: | \[in\] | window | The window whose monitor, size or video mode to set. |
+4877: | \[in\] | monitor | The desired monitor, or `NULL` to set windowed mode. |
+4878: | \[in\] | xpos | The desired x-coordinate of the upper-left corner of the content area. |
+4879: | \[in\] | ypos | The desired y-coordinate of the upper-left corner of the content area. |
+4880: | \[in\] | width | The desired with, in screen coordinates, of the content area or video mode. |
+4881: | \[in\] | height | The desired height, in screen coordinates, of the content area or video mode. |
+4882: | \[in\] | refreshRate | The desired refresh rate, in Hz, of the video mode, or `GLFW_DONT_CARE`. |
+4886: Errors  
+4887: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+4891: Remarks  
+4892: The OpenGL or OpenGL ES context will not be destroyed or otherwise affected by any resizing or mode switching, although you may need to update your viewport if the framebuffer size has changed.
+4894: **Wayland:** Window positions are not currently part of any common Wayland protocol. The window position arguments are ignored.
+4898: Thread safety  
+4899: This function must only be called from the main thread.
+4903: See also  
+4904: Window monitor
+4906: Full screen windows
+4908: glfwGetWindowMonitor
+4910: glfwSetWindowSize
+4914: Since  
+4915: Added in version 3.2.
+4923: ## [◆ ](#gacccb29947ea4b16860ebef42c2cb9337)glfwGetWindowAttrib()
+4931: | int glfwGetWindowAttrib | ( | GLFWwindow \*  | *window*, |
+4932: |  |  | int  | *attrib*  |
+4933: |  | ) |  |  |
+4939: This function returns the value of an attribute of the specified window or its OpenGL or OpenGL ES context.
+4941: Parameters  
+4944: | \[in\] | window | The window to query. |
+4945: | \[in\] | attrib | The window attribute whose value to return. |
+4949: Returns  
+4950: The value of the attribute, or zero if an error occurred.
+4954: Errors  
+4955: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+4959: Remarks  
+4960: Framebuffer related hints are not window attributes. See Framebuffer related attributes for more information.
+4962: Zero is a valid value for many window and context related attributes so you cannot use a return value of zero as an indication of errors. However, this function should not fail as long as it is passed valid arguments and the library has been initialized.
+4964: **Wayland:** Checking whether a window is iconified is not currently part of any common Wayland protocol, so the GLFW_ICONIFIED attribute cannot be implemented and is always `GLFW_FALSE`.
+4968: Thread safety  
+4969: This function must only be called from the main thread.
+4973: See also  
+4974: Window attributes
+4976: glfwSetWindowAttrib
+4980: Since  
+4981: Added in version 3.0. Replaces `glfwGetWindowParam` and `glfwGetGLVersion`.
+4989: ## [◆ ](#gace2afda29b4116ec012e410a6819033e)glfwSetWindowAttrib()
+4997: | void glfwSetWindowAttrib | ( | GLFWwindow \*  | *window*, |
+4998: |  |  | int  | *attrib*, |
+4999: |  |  | int  | *value*  |
+5000: |  | ) |  |  |
+5006: This function sets the value of an attribute of the specified window.
+5008: The supported attributes are GLFW_DECORATED, GLFW_RESIZABLE, GLFW_FLOATING, GLFW_AUTO_ICONIFY and GLFW_FOCUS_ON_SHOW. GLFW_MOUSE_PASSTHROUGH
+5010: Some of these attributes are ignored for full screen windows. The new value will take effect if the window is later made windowed.
+5012: Some of these attributes are ignored for windowed mode windows. The new value will take effect if the window is later made full screen.
+5014: Parameters  
+5017: | \[in\] | window | The window to set the attribute for. |
+5018: | \[in\] | attrib | A supported window attribute.        |
+5019: | \[in\] | value  | `GLFW_TRUE` or `GLFW_FALSE`.         |
+5023: Errors  
+5024: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM, GLFW_INVALID_VALUE, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+5028: Remarks  
+5029: Calling glfwGetWindowAttrib will always return the latest value, even if that value is ignored by the current mode of the window.
+5031: **Wayland:** The GLFW_FLOATING window attribute is not supported. Setting this will emit GLFW_FEATURE_UNAVAILABLE.
+5035: Thread safety  
+5036: This function must only be called from the main thread.
+5040: See also  
+5041: Window attributes
+5043: glfwGetWindowAttrib
+5047: Since  
+5048: Added in version 3.3.
+5056: ## [◆ ](#ga3d2fc6026e690ab31a13f78bc9fd3651)glfwSetWindowUserPointer()
+5064: | void glfwSetWindowUserPointer | ( | GLFWwindow \*  | *window*, |
+5065: |  |  | void \*  | *pointer*  |
+5066: |  | ) |  |  |
+5072: This function sets the user-defined pointer of the specified window. The current value is retained until the window is destroyed. The initial value is `NULL`.
+5074: Parameters  
+5077: | \[in\] | window  | The window whose pointer to set. |
+5078: | \[in\] | pointer | The new value.                   |
+5082: Errors  
+5083: Possible errors include GLFW_NOT_INITIALIZED.
+5087: Thread safety  
+5088: This function may be called from any thread. Access is not synchronized.
+5092: See also  
+5093: User pointer
+5095: glfwGetWindowUserPointer
+5099: Since  
+5100: Added in version 3.0.
+5108: ## [◆ ](#gae77a4add0d2023ca21ff1443ced01653)glfwGetWindowUserPointer()
+5116: | void \* glfwGetWindowUserPointer | ( | GLFWwindow \*  | *window* | ) |  |
+5122: This function returns the current value of the user-defined pointer of the specified window. The initial value is `NULL`.
+5124: Parameters  
+5127: | \[in\] | window | The window whose pointer to return. |
+5131: Errors  
+5132: Possible errors include GLFW_NOT_INITIALIZED.
+5136: Thread safety  
+5137: This function may be called from any thread. Access is not synchronized.
+5141: See also  
+5142: User pointer
+5144: glfwSetWindowUserPointer
+5148: Since  
+5149: Added in version 3.0.
+5157: ## [◆ ](#ga08bdfbba88934f9c4f92fd757979ac74)glfwSetWindowPosCallback()
+5165: | GLFWwindowposfun glfwSetWindowPosCallback | ( | GLFWwindow \*  | *window*, |
+5166: |  |  | GLFWwindowposfun  | *callback*  |
+5167: |  | ) |  |  |
+5173: This function sets the position callback of the specified window, which is called when the window is moved. The callback is provided with the position, in screen coordinates, of the upper-left corner of the content area of the window.
+5175: Parameters  
+5178: | \[in\] | window | The window whose callback to set. |
+5179: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5183: Returns  
+5184: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5188: Callback signature  
+5193: void function_name(GLFWwindow\* window, int xpos, int ypos)
+5199: For more information about the callback parameters, see the function pointer type.
+5203: Errors  
+5204: Possible errors include GLFW_NOT_INITIALIZED.
+5208: Remarks  
+5209: **Wayland:** This callback will not be called. The Wayland protocol provides no way to be notified of when a window is moved.
+5213: Thread safety  
+5214: This function must only be called from the main thread.
+5218: See also  
+5219: Window position
+5223: Since  
+5224: Added in version 3.0.
+5232: ## [◆ ](#gad91b8b047a0c4c6033c38853864c34f8)glfwSetWindowSizeCallback()
+5240: | GLFWwindowsizefun glfwSetWindowSizeCallback | ( | GLFWwindow \*  | *window*, |
+5241: |  |  | GLFWwindowsizefun  | *callback*  |
+5242: |  | ) |  |  |
+5248: This function sets the size callback of the specified window, which is called when the window is resized. The callback is provided with the size, in screen coordinates, of the content area of the window.
+5250: Parameters  
+5253: | \[in\] | window | The window whose callback to set. |
+5254: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5258: Returns  
+5259: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5263: Callback signature  
+5268: void function_name(GLFWwindow\* window, int width, int height)
+5274: For more information about the callback parameters, see the function pointer type.
+5278: Errors  
+5279: Possible errors include GLFW_NOT_INITIALIZED.
+5283: Thread safety  
+5284: This function must only be called from the main thread.
+5288: See also  
+5289: Window size
+5293: Since  
+5294: Added in version 1.0. **GLFW 3:** Added window handle parameter and return value.
+5302: ## [◆ ](#gada646d775a7776a95ac000cfc1885331)glfwSetWindowCloseCallback()
+5310: | GLFWwindowclosefun glfwSetWindowCloseCallback | ( | GLFWwindow \*  | *window*, |
+5311: |  |  | GLFWwindowclosefun  | *callback*  |
+5312: |  | ) |  |  |
+5318: This function sets the close callback of the specified window, which is called when the user attempts to close the window, for example by clicking the close widget in the title bar.
+5320: The close flag is set before this callback is called, but you can modify it at any time with glfwSetWindowShouldClose.
+5322: The close callback is not triggered by glfwDestroyWindow.
+5324: Parameters  
+5327: | \[in\] | window | The window whose callback to set. |
+5328: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5332: Returns  
+5333: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5337: Callback signature  
+5342: void function_name(GLFWwindow\* window)
+5348: For more information about the callback parameters, see the function pointer type.
+5352: Errors  
+5353: Possible errors include GLFW_NOT_INITIALIZED.
+5357: Remarks  
+5358: **macOS:** Selecting Quit from the application menu will trigger the close callback for all windows.
+5362: Thread safety  
+5363: This function must only be called from the main thread.
+5367: See also  
+5368: Window closing and close flag
+5372: Since  
+5373: Added in version 2.5. **GLFW 3:** Added window handle parameter and return value.
+5381: ## [◆ ](#ga1c5c7eb889c33c7f4d10dd35b327654e)glfwSetWindowRefreshCallback()
+5389: | GLFWwindowrefreshfun glfwSetWindowRefreshCallback | ( | GLFWwindow \*  | *window*, |
+5390: |  |  | GLFWwindowrefreshfun  | *callback*  |
+5391: |  | ) |  |  |
+5397: This function sets the refresh callback of the specified window, which is called when the content area of the window needs to be redrawn, for example if the window has been exposed after having been covered by another window.
+5399: On compositing window systems such as Aero, Compiz, Aqua or Wayland, where the window contents are saved off-screen, this callback may be called only very infrequently or never at all.
+5401: Parameters  
+5404: | \[in\] | window | The window whose callback to set. |
+5405: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5409: Returns  
+5410: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5414: Callback signature  
+5419: void function_name(GLFWwindow\* window);
+5425: For more information about the callback parameters, see the function pointer type.
+5429: Errors  
+5430: Possible errors include GLFW_NOT_INITIALIZED.
+5434: Thread safety  
+5435: This function must only be called from the main thread.
+5439: See also  
+5440: Window damage and refresh
+5444: Since  
+5445: Added in version 2.5. **GLFW 3:** Added window handle parameter and return value.
+5453: ## [◆ ](#gac2d83c4a10f071baf841f6730528e66c)glfwSetWindowFocusCallback()
+5461: | GLFWwindowfocusfun glfwSetWindowFocusCallback | ( | GLFWwindow \*  | *window*, |
+5462: |  |  | GLFWwindowfocusfun  | *callback*  |
+5463: |  | ) |  |  |
+5469: This function sets the focus callback of the specified window, which is called when the window gains or loses input focus.
+5471: After the focus callback is called for a window that lost input focus, synthetic key and mouse button release events will be generated for all such that had been pressed. For more information, see glfwSetKeyCallback and glfwSetMouseButtonCallback.
+5473: Parameters  
+5476: | \[in\] | window | The window whose callback to set. |
+5477: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5481: Returns  
+5482: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5486: Callback signature  
+5491: void function_name(GLFWwindow\* window, int focused)
+5497: For more information about the callback parameters, see the function pointer type.
+5501: Errors  
+5502: Possible errors include GLFW_NOT_INITIALIZED.
+5506: Thread safety  
+5507: This function must only be called from the main thread.
+5511: See also  
+5512: Window input focus
+5516: Since  
+5517: Added in version 3.0.
+5525: ## [◆ ](#gac793e9efd255567b5fb8b445052cfd3e)glfwSetWindowIconifyCallback()
+5533: | GLFWwindowiconifyfun glfwSetWindowIconifyCallback | ( | GLFWwindow \*  | *window*, |
+5534: |  |  | GLFWwindowiconifyfun  | *callback*  |
+5535: |  | ) |  |  |
+5541: This function sets the iconification callback of the specified window, which is called when the window is iconified or restored.
+5543: Parameters  
+5546: | \[in\] | window | The window whose callback to set. |
+5547: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5551: Returns  
+5552: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5556: Callback signature  
+5561: void function_name(GLFWwindow\* window, int iconified)
+5567: For more information about the callback parameters, see the function pointer type.
+5571: Errors  
+5572: Possible errors include GLFW_NOT_INITIALIZED.
+5576: Remarks  
+5577: **Wayland:** This callback will not be called. The Wayland protocol provides no way to be notified of when a window is iconified, and no way to check whether a window is currently iconified.
+5581: Thread safety  
+5582: This function must only be called from the main thread.
+5586: See also  
+5587: Window iconification
+5591: Since  
+5592: Added in version 3.0.
+5600: ## [◆ ](#gacbe64c339fbd94885e62145563b6dc93)glfwSetWindowMaximizeCallback()
+5608: | GLFWwindowmaximizefun glfwSetWindowMaximizeCallback | ( | GLFWwindow \*  | *window*, |
+5609: |  |  | GLFWwindowmaximizefun  | *callback*  |
+5610: |  | ) |  |  |
+5616: This function sets the maximization callback of the specified window, which is called when the window is maximized or restored.
+5618: Parameters  
+5621: | \[in\] | window | The window whose callback to set. |
+5622: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5626: Returns  
+5627: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5631: Callback signature  
+5636: void function_name(GLFWwindow\* window, int maximized)
+5642: For more information about the callback parameters, see the function pointer type.
+5646: Errors  
+5647: Possible errors include GLFW_NOT_INITIALIZED.
+5651: Thread safety  
+5652: This function must only be called from the main thread.
+5656: See also  
+5657: Window maximization
+5661: Since  
+5662: Added in version 3.3.
+5670: ## [◆ ](#gab3fb7c3366577daef18c0023e2a8591f)glfwSetFramebufferSizeCallback()
+5678: | GLFWframebuffersizefun glfwSetFramebufferSizeCallback | ( | GLFWwindow \*  | *window*, |
+5679: |  |  | GLFWframebuffersizefun  | *callback*  |
+5680: |  | ) |  |  |
+5686: This function sets the framebuffer resize callback of the specified window, which is called when the framebuffer of the specified window is resized.
+5688: Parameters  
+5691: | \[in\] | window | The window whose callback to set. |
+5692: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5696: Returns  
+5697: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5701: Callback signature  
+5706: void function_name(GLFWwindow\* window, int width, int height)
+5712: For more information about the callback parameters, see the function pointer type.
+5716: Errors  
+5717: Possible errors include GLFW_NOT_INITIALIZED.
+5721: Thread safety  
+5722: This function must only be called from the main thread.
+5726: See also  
+5727: Framebuffer size
+5731: Since  
+5732: Added in version 3.0.
+5740: ## [◆ ](#gaf2832ebb5aa6c252a2d261de002c92d6)glfwSetWindowContentScaleCallback()
+5748: | GLFWwindowcontentscalefun glfwSetWindowContentScaleCallback | ( | GLFWwindow \*  | *window*, |
+5749: |  |  | GLFWwindowcontentscalefun  | *callback*  |
+5750: |  | ) |  |  |
+5756: This function sets the window content scale callback of the specified window, which is called when the content scale of the specified window changes.
+5758: Parameters  
+5761: | \[in\] | window | The window whose callback to set. |
+5762: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+5766: Returns  
+5767: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+5771: Callback signature  
+5776: void function_name(GLFWwindow\* window, float xscale, float yscale)
+5782: For more information about the callback parameters, see the function pointer type.
+5786: Errors  
+5787: Possible errors include GLFW_NOT_INITIALIZED.
+5791: Thread safety  
+5792: This function must only be called from the main thread.
+5796: See also  
+5797: Window content scale
+5799: glfwGetWindowContentScale
+5803: Since  
+5804: Added in version 3.3.
+5812: ## [◆ ](#ga37bd57223967b4211d60ca1a0bf3c832)glfwPollEvents()
+5820: | void glfwPollEvents | (   | void  |     | )   |     |
+5826: This function processes only those events that are already in the event queue and then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+5828: On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the window refresh callback to redraw the contents of your window when necessary during such operations.
+5830: Do not assume that callbacks you set will *only* be called in response to event processing functions like this one. While it is necessary to poll for events, window systems that require GLFW to register callbacks of its own can pass events to GLFW in response to many window system function calls. GLFW will pass those events on to the application callbacks before returning.
+5832: Event processing is not required to receive joystick input. Joystick state is polled when a joystick input or gamepad input function is called.
+5834: Errors  
+5835: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+5839: Reentrancy  
+5840: This function must not be called from a callback.
+5844: Thread safety  
+5845: This function must only be called from the main thread.
+5849: See also  
+5850: Event processing
+5852: glfwWaitEvents
+5854: glfwWaitEventsTimeout
+5858: Since  
+5859: Added in version 1.0.
+5867: ## [◆ ](#ga554e37d781f0a997656c26b2c56c835e)glfwWaitEvents()
+5875: | void glfwWaitEvents | (   | void  |     | )   |     |
+5881: This function puts the calling thread to sleep until at least one event is available in the event queue. Once one or more events are available, it behaves exactly like glfwPollEvents, i.e. the events in the queue are processed and the function then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+5883: Since not all events are associated with callbacks, this function may return without a callback having been called even if you are monitoring all callbacks.
+5885: On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the window refresh callback to redraw the contents of your window when necessary during such operations.
+5887: Do not assume that callbacks you set will *only* be called in response to event processing functions like this one. While it is necessary to poll for events, window systems that require GLFW to register callbacks of its own can pass events to GLFW in response to many window system function calls. GLFW will pass those events on to the application callbacks before returning.
+5889: Event processing is not required to receive joystick input. Joystick state is polled when a joystick input or gamepad input function is called.
+5891: Errors  
+5892: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+5896: Reentrancy  
+5897: This function must not be called from a callback.
+5901: Thread safety  
+5902: This function must only be called from the main thread.
+5906: See also  
+5907: Event processing
+5909: glfwPollEvents
+5911: glfwWaitEventsTimeout
+5915: Since  
+5916: Added in version 2.5.
+5924: ## [◆ ](#ga605a178db92f1a7f1a925563ef3ea2cf)glfwWaitEventsTimeout()
+5932: | void glfwWaitEventsTimeout | (   | double  | *timeout* | )   |     |
+5938: This function puts the calling thread to sleep until at least one event is available in the event queue, or until the specified timeout is reached. If one or more events are available, it behaves exactly like glfwPollEvents, i.e. the events in the queue are processed and the function then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+5940: The timeout value must be a positive finite number.
+5942: Since not all events are associated with callbacks, this function may return without a callback having been called even if you are monitoring all callbacks.
+5944: On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the window refresh callback to redraw the contents of your window when necessary during such operations.
+5946: Do not assume that callbacks you set will *only* be called in response to event processing functions like this one. While it is necessary to poll for events, window systems that require GLFW to register callbacks of its own can pass events to GLFW in response to many window system function calls. GLFW will pass those events on to the application callbacks before returning.
+5948: Event processing is not required to receive joystick input. Joystick state is polled when a joystick input or gamepad input function is called.
+5950: Parameters  
+5953: | \[in\] | timeout | The maximum amount of time, in seconds, to wait. |
+5957: Errors  
+5958: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_VALUE and GLFW_PLATFORM_ERROR.
+5962: Reentrancy  
+5963: This function must not be called from a callback.
+5967: Thread safety  
+5968: This function must only be called from the main thread.
+5972: See also  
+5973: Event processing
+5975: glfwPollEvents
+5977: glfwWaitEvents
+5981: Since  
+5982: Added in version 3.2.
+5990: ## [◆ ](#gab5997a25187e9fd5c6f2ecbbc8dfd7e9)glfwPostEmptyEvent()
+5998: | void glfwPostEmptyEvent | (   | void  |     | )   |     |
+6004: This function posts an empty event from the current thread to the event queue, causing glfwWaitEvents or glfwWaitEventsTimeout to return.
+6006: Errors  
+6007: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+6011: Thread safety  
+6012: This function may be called from any thread.
+6016: See also  
+6017: Event processing
+6019: glfwWaitEvents
+6021: glfwWaitEventsTimeout
+6025: Since  
+6026: Added in version 3.1.
+6034: ## [◆ ](#ga15a5a1ee5b3c2ca6b15ca209a12efd14)glfwSwapBuffers()
+6042: | void glfwSwapBuffers | ( | GLFWwindow \*  | *window* | ) |  |
+6048: This function swaps the front and back buffers of the specified window when rendering with OpenGL or OpenGL ES. If the swap interval is greater than zero, the GPU driver waits the specified number of screen updates before swapping the buffers.
+6050: The specified window must have an OpenGL or OpenGL ES context. Specifying a window without a context will generate a GLFW_NO_WINDOW_CONTEXT error.
+6052: This function does not apply to Vulkan. If you are rendering with Vulkan, see `vkQueuePresentKHR` instead.
+6054: Parameters  
+6057: | \[in\] | window | The window whose buffers to swap. |
+6061: Errors  
+6062: Possible errors include GLFW_NOT_INITIALIZED, GLFW_NO_WINDOW_CONTEXT and GLFW_PLATFORM_ERROR.
+6066: Remarks  
+6067: **Wayland:** When the swap interval is greater than zero and the window is not in view, this function may take a few extra milliseconds to return.
+6069: **EGL:** The context of the specified window must be current on the calling thread.
+6073: Thread safety  
+6074: This function may be called from any thread.
+6078: See also  
+6079: Buffer swapping
+6081: glfwSwapInterval
+6085: Since  
+6086: Added in version 1.0. **GLFW 3:** Added window handle parameter.
