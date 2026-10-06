@@ -1,0 +1,246 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import DocLayout from '../../../layouts/DocLayout.astro';
+import type { GetStaticPathsResult } from 'astro';
+import { getLocaleDirection } from '@docs/i18n/locales';
+import type { LocaleKey } from '@docs/i18n/locales';
+import { MobileTableOfContents, TableOfContents, Pagination } from '@docs/ui/components';
+import { getProjectConfig } from '@docs/project-config';
+import {
+  loadGroupPages,
+  resolveGroupPagination,
+  resolveGroupDocumentLink,
+} from '@docs/project-config/group-pages';
+import { mergePagination, type PageLink } from '@docs/versioning/utils';
+
+import {
+  buildTableOfContents,
+  checkFileExists,
+  countTableOfContentsItems,
+  generateFileBasedPagination,
+} from '@docs/content-utils';
+
+// 設定を初期化
+const projectConfig = await getProjectConfig();
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  // ドキュメントコレクションを取得
+  const docs = await getCollection('docs');
+
+  // 結果を生成
+  const result = docs.map((entry: CollectionEntry<'docs'>) => {
+    // スラグからパスパラメータを抽出
+    // 例: "v1/en/01-guide/01-getting-started" → { version: "v1", lang: "en", slug: ["01-guide", "01-getting-started"] }
+    const pathParts = entry.slug.split('/');
+
+    if (pathParts.length < 3) {
+      console.warn(`Invalid entry slug format: ${entry.slug}`);
+      return null;
+    }
+
+    const version = pathParts[0]; // "v1"
+    const lang = pathParts[1]; // "en"
+    const slugParts = pathParts.slice(2); // ["01-guide", "01-getting-started"]
+    const slug = slugParts.join('/'); // "01-guide/01-getting-started"
+
+    return {
+      params: { version, lang, slug },
+      props: { entry },
+    };
+  });
+
+  // nullを除外
+  const filteredResult = result.filter((item): item is NonNullable<typeof item> => item !== null);
+
+  // ドキュメント数をログ出力
+  return filteredResult;
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+const { Content, headings: markdownHeadings } = await entry.render();
+// Optional app metadata registers headings from preserved raw HTML.
+const headingModules = import.meta.glob('../../../data/document-headings.json', {
+  eager: true,
+  import: 'default',
+});
+const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<
+  string,
+  typeof markdownHeadings
+>;
+const extraModules = import.meta.glob('../../../data/document-extras.json', {
+  eager: true,
+  import: 'default',
+});
+const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<
+  string,
+  {
+    downloads?: Array<{
+      url: string;
+      labels: Record<string, string>;
+      notices: Record<string, string>;
+    }>;
+  }
+>;
+const rawHeadings = headingMap[entry.slug] ?? [];
+const trailingIndex = markdownHeadings.findIndex((heading) =>
+  ['source-and-notices', '出典と通知'].includes(heading.slug)
+);
+const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
+const headings = [
+  ...markdownHeadings.slice(0, splitIndex),
+  ...rawHeadings,
+  ...markdownHeadings.slice(splitIndex),
+];
+
+// バージョンと言語をパラメータから取得
+const { version: versionParam, lang: langParam } = Astro.params;
+const version = String(versionParam || 'v1');
+const lang = (langParam || 'en') as LocaleKey;
+const dir = getLocaleDirection(lang);
+
+// ファイルベースのページネーション生成
+const groupCatalog = loadGroupPages(process.cwd(), { cache: import.meta.env.PROD });
+let autoPagination = {};
+if (groupCatalog) {
+  autoPagination = resolveGroupPagination(groupCatalog, Astro.url.pathname);
+} else {
+  try {
+    // entry.slug から情報を抽出 (例: "v1/en/01-guide/01-getting-started")
+    const slugParts = entry.slug.split('/');
+    const currentSection = slugParts[2]; // "01-guide"
+    const currentFile = slugParts[3]; // "01-getting-started"
+    const currentSlug = currentFile.replace(/^\d+-/, ''); // "getting-started"
+
+    // ファイル構造ベースのページネーションを生成
+    autoPagination = await generateFileBasedPagination(
+      lang,
+      version,
+      currentSection,
+      currentSlug,
+      projectConfig.paths.baseUrl
+    );
+  } catch (error) {
+    console.error('[File-Based Pagination] Error generating pagination:', error);
+  }
+}
+
+// 手動設定のページネーション情報を取得（存在するファイルのみ）
+let manualPrev: PageLink | undefined = undefined;
+let manualNext: PageLink | undefined = undefined;
+
+if (entry.data.prev) {
+  const target = groupCatalog
+    ? resolveGroupDocumentLink(groupCatalog, entry.data.prev.link, Astro.url.pathname)
+    : null;
+  const prevExists = target || (await checkFileExists(entry.data.prev.link));
+  if (prevExists) {
+    manualPrev = {
+      title: entry.data.prev.text,
+      url: target?.url ?? projectConfig.paths.baseUrl + entry.data.prev.link,
+    };
+  } else {
+    console.warn(`[Manual Pagination] Previous page file does not exist: ${entry.data.prev.link}`);
+  }
+}
+
+if (entry.data.next) {
+  const target = groupCatalog
+    ? resolveGroupDocumentLink(groupCatalog, entry.data.next.link, Astro.url.pathname)
+    : null;
+  const nextExists = target || (await checkFileExists(entry.data.next.link));
+  if (nextExists) {
+    manualNext = {
+      title: entry.data.next.text,
+      url: target?.url ?? projectConfig.paths.baseUrl + entry.data.next.link,
+    };
+  } else {
+    console.warn(`[Manual Pagination] Next page file does not exist: ${entry.data.next.link}`);
+  }
+}
+
+// 手動設定と自動生成を統合（手動設定を優先）
+const finalPagination = mergePagination(manualPrev, manualNext, autoPagination);
+const tocMinLevel = entry.data.toc?.minLevel ?? 2;
+const tocMaxLevel = entry.data.toc?.maxLevel ?? 3;
+const tocItems = buildTableOfContents(headings, {
+  minLevel: tocMinLevel,
+  maxLevel: tocMaxLevel,
+  maxItems: entry.data.toc?.maxItems,
+});
+const hasToc = countTableOfContentsItems(tocItems) > 0;
+---
+
+<DocLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  licenseSource={entry.data.licenseSource}
+  hasToc={hasToc}
+  lang={lang}
+  version={version}
+>
+  <MobileTableOfContents
+    headings={tocItems}
+    minLevel={tocMinLevel}
+    maxLevel={tocMaxLevel}
+    lang={lang}
+    dir={dir}
+    slot="mobile-toc"
+  />
+  <Content />
+  {
+    (documentExtras[version]?.downloads ?? []).map((download) => (
+      <aside aria-label={download.labels[lang] ?? download.labels.en}>
+        <p>
+          <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
+        </p>
+        <p>{download.notices[lang] ?? download.notices.en}</p>
+      </aside>
+    ))
+  }
+
+  {/* ページナビゲーション */}
+  <div class="navigation-container">
+    <Pagination prev={finalPagination.prev} next={finalPagination.next} lang={lang} dir={dir} />
+  </div>
+
+  {/* 目次は DocLayout のスロットに渡す */}
+  <TableOfContents
+    headings={tocItems}
+    minLevel={tocMinLevel}
+    maxLevel={tocMaxLevel}
+    lang={lang}
+    dir={dir}
+    slot="toc"
+  />
+</DocLayout>
+
+<script>
+  import '../../../scripts-gperf-code-copy.js';
+</script>
+
+<style is:global>
+  .gperf-copy-status {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>
+
+<style>
+  .navigation-container {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+  }
+
+  /* モバイル対応の改善 */
+  @media (max-width: 768px) {
+    .navigation-container {
+      margin-top: 2rem;
+      padding-top: 1rem;
+    }
+  }
+</style>

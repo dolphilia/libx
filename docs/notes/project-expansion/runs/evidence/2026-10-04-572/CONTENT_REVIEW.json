@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "scope": [
+    "01-guide/01-user-guide.md",
+    "01-guide/02-cli.md"
+  ],
+  "completedPages": 1,
+  "unreviewedPages": 1,
+  "pages": [
+    {
+      "id": "01-guide/01-user-guide.md",
+      "status": "pending",
+      "remaining": "SEC18〜SEC28/表題目次原通知/GPL掲載の最終照合と全体coverage。"
+    },
+    {
+      "id": "01-guide/02-cli.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-03T23:03:16.819Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/gperf/3.3/sources/gperf-3.3/doc/gperf.1",
+        "sha256": "02bfec00bb7fa820b68e88fb67d1b88c23d5531e71db8bffa53be2e3e6d62aa2",
+        "coverage": [
+          [
+            1,
+            220
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-572/pages/en/02-cli.md",
+        "sha256": "d91b1e82892efa31bcb26e383569421871208fd91208e9e6d1ab1ea2ab10b6b9",
+        "coverage": [
+          [
+            1,
+            131
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-572/pages/ja/02-cli.md",
+        "sha256": "a00c8de44774e30a0c0e288ea89a1cc0e5de0bd305ced22080807aa85c1fe42c",
+        "coverage": [
+          [
+            1,
+            131
+          ]
+        ]
+      },
+      "findings": [
+        {
+          "id": "cli-option-coverage",
+          "status": "passed",
+          "detail": "固定man全220行を今回全文読解し、英日全35定義/追加output-file/書式/著者/報告/権利/See Alsoを照合。全数値・既定値・限定条件を保持。"
+        },
+        {
+          "id": "original-jump-difference",
+          "status": "passed-with-preserved-source-difference",
+          "detail": "奇数必須は原man通り訳し、guideの切上げとの差を原コードoptions.cc853〜865へたどる別注記で説明。0ランダム動作は実行確認済みにしない。"
+        },
+        {
+          "id": "original-GPL",
+          "status": "passed-original-English",
+          "detail": "固定COPYING全文（序文/0〜17/適用方法/例/終端）を今回全量読解。英日本文のGPL preは同一全文を原英語で保持。原copyright/license/warrantyも全量保持。"
+        },
+        {
+          "id": "dated-modification-and-editorial-parity",
+          "status": "fixed-and-rechecked",
+          "detail": "変更日不足と英語CLIの編集注記欠落を修正。2026-10-04(JST)を明記し、CLI全体GPL-3.0-or-laterの条件と非公式変更を両言語で示す。修正後の英日導入・原通知・全注記を再読解。"
+        },
+        {
+          "id": "whole-page-review-not-publication",
+          "status": "passed-with-final-gates-pending",
+          "detail": "本内容reviewは現行英日2本文のSHAに束縛。対応sourcearchive/UIと全サイト参照/表示/統合検証は未完、公開を許可する完了記録ではない。後続本文変更では影響範囲のreviewを再実施。"
+        },
+        {
+          "id": "original-parameter-type-difference",
+          "status": "passed-with-source-difference-annotation",
+          "detail": "同じ固定guide4.2の導入char*/intと掲載prototype const char*/size_tの差を英日別注記で明示。追加全文を今回読解、旧CLI全文prefix同一をSHA/文字列で確認。コード実行済みや原文修正とは主張しない。",
+          "evidence": [
+            {
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-572/CLI_REVIEW_DELTA.json",
+              "sha256": "8772efa27c5d0b4234eadc104298ca6a58a8974542464db7b3726b1defa4b1f8"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
