@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "scope": [
+    "01-specification/01-introduction.md",
+    "01-specification/02-frames.md",
+    "01-specification/03-blocks.md",
+    "01-specification/04-sequences.md",
+    "01-specification/05-skippable-frames.md",
+    "01-specification/06-fse.md",
+    "01-specification/07-huffman.md",
+    "01-specification/08-dictionary.md",
+    "01-specification/09-appendices.md"
+  ],
+  "completedPages": 5,
+  "unreviewedPages": 4,
+  "pages": [
+    {
+      "id": "01-specification/01-introduction.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T12:14:05.394Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/source/parts/01-introduction.md",
+        "sha256": "ae7202a95a31c1a940c7e4c7b4a46536ca4d34ef9ba4bf8ad8c76f5ee7c327e4",
+        "coverage": [
+          [
+            1,
+            94
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/canonical/en/01-specification/01-introduction.md",
+        "sha256": "d22f7b31a951605dd91d66eefdec337b11acd9527aaad51fadf0d3dbabcfcba3",
+        "coverage": [
+          [
+            1,
+            128
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/translations/ja/01-specification/01-introduction.md",
+        "sha256": "85a4ad139a068275b0d23b94e058a7612a364b8a72afab872299271061f137f2",
+        "coverage": [
+          [
+            1,
+            84
+          ]
+        ]
+      },
+      "findings": [
+        "原通知英語全文と明示日本語訳、版0.4.3、入力独立性・中間記憶上限・ランダムアクセス非対応を対照。",
+        "圧縮器のmust/選択肢対応不要、展開器の少なくとも1組/任意checksum/unsupported error説明を保持。定義のframe独立とblock依存/streaming、目次全11参照を照合。"
+      ],
+      "passDescription": "作成後に別パスで原文/定本/訳文を全文読解。構造検査は内容レビューの代用にしていない。"
+    },
+    {
+      "id": "01-specification/02-frames.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T12:14:05.394Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/source/parts/02-frames.md",
+        "sha256": "f7b1236d29ced7aa69db4d1a9232647a4d428ade64598aa9d05d35873369fe8f",
+        "coverage": [
+          [
+            1,
+            225
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/canonical/en/01-specification/02-frames.md",
+        "sha256": "d61bbc107cf232504a8c1dc4ee254eaaf60f88dec8ee19b6fa53a5c6f1064dbe",
+        "coverage": [
+          [
+            1,
+            259
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/translations/ja/01-specification/02-frames.md",
+        "sha256": "f08fcf931bac20fda3b80e1eb059dfaa74719dea159a59d052065f76e563eb20",
+        "coverage": [
+          [
+            1,
+            170
+          ]
+        ]
+      },
+      "findings": [
+        "全7表のbit7→0、FCS/DID分岐とサイズ・数値範囲、checksum seed0/lower4、辞書ID0の意味を全文対照。",
+        "Single_Segmentの必須連続領域/size、Unused禁止解釈・Reserved必須zeroを区別。8MBは推奨、拒否許可とWindow公式4行コード保持。FCS2byteのみ+256と任意compatible variant保持。",
+        "原文inlineコードのBlocksはAPI識別子ではなく章名で、日本語リンクラベルへ訳す。"
+      ],
+      "passDescription": "作成後に別パスで原文/定本/訳文を全文読解。構造検査は内容レビューの代用にしていない。"
+    },
+    {
+      "id": "01-specification/03-blocks.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T12:14:05.394Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/source/parts/03-blocks.md",
+        "sha256": "280d030c2a31f404f42d007ec4d3161fc2cc59c6394ec001f6c0ad8295ed28e4",
+        "coverage": [
+          [
+            1,
+            293
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/canonical/en/01-specification/03-blocks.md",
+        "sha256": "537fa6b26fa1995fd25b988d69325109dcd78a0f3b4e672a76fbc00593e972e3",
+        "coverage": [
+          [
+            1,
+            333
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/translations/ja/01-specification/03-blocks.md",
+        "sha256": "f5b5ee1653f1d326c3bfa8f0dba1b581adf963f772f8e3f8151980bc0ea6f278",
+        "coverage": [
+          [
+            1,
+            222
+          ]
+        ]
+      },
+      "findings": [
+        "全6表・全4blocktype、21bitサイズ、RLE1byteと反復回数、128KB/Windowの小さい方、圧縮/展開両方の上限を全文対照。",
+        "過去データ/offset/Huffman/FSE前提とdictionary来源、4literals modesと不正Treeless条件、Size_Formatの全分岐/式/値を保持。",
+        "stream1/4、Compressed_Sizeにtreeサイズ含む・zero不可・4stream>=10、>1KB必須/256実用推奨、jumpTable6byte・各streamサイズ/last3byte差・Stream4>=1と破損条件を保持。"
+      ],
+      "passDescription": "作成後に別パスで原文/定本/訳文を全文読解。構造検査は内容レビューの代用にしていない。"
+    },
+    {
+      "id": "01-specification/04-sequences.md",
+      "status": "pending",
+      "findings": [
+        "未翻訳・別パス全文レビュー未実施"
+      ]
+    },
+    {
+      "id": "01-specification/05-skippable-frames.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T12:14:05.394Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/source/parts/05-skippable-frames.md",
+        "sha256": "4f73882d0f7284a71ae2bcfe422c08a584883ad31afdec75a1f3e92a8bd64811",
+        "coverage": [
+          [
+            1,
+            43
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/canonical/en/01-specification/05-skippable-frames.md",
+        "sha256": "9c8c05221c43018d3513d5b6d5a4feafff22a74ea55956f88152ec870526aded",
+        "coverage": [
+          [
+            1,
+            64
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/translations/ja/01-specification/05-skippable-frames.md",
+        "sha256": "a84ee96b724389e4526d2be40220b277e3d56f61149323dd418e9d0e5d450490",
+        "coverage": [
+          [
+            1,
+            36
+          ]
+        ]
+      },
+      "findings": [
+        "LZ4互換・skip内容ignore/後から再開・追跡透かしと分析除去推奨を全文対照。16magic値0x184D2A50–5F、32bit unsigned/size除外/2^32-1上限を保持。"
+      ],
+      "passDescription": "作成後に別パスで原文/定本/訳文を全文読解。構造検査は内容レビューの代用にしていない。"
+    },
+    {
+      "id": "01-specification/06-fse.md",
+      "status": "pending",
+      "findings": [
+        "未翻訳・別パス全文レビュー未実施"
+      ]
+    },
+    {
+      "id": "01-specification/07-huffman.md",
+      "status": "pending",
+      "findings": [
+        "未翻訳・別パス全文レビュー未実施"
+      ]
+    },
+    {
+      "id": "01-specification/08-dictionary.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T12:14:05.394Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/source/parts/08-dictionary.md",
+        "sha256": "71cca537c3f9d6bd692adf72ea9e6b7ea7a560c9554572643df0779996f90baa",
+        "coverage": [
+          [
+            1,
+            64
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/canonical/en/01-specification/08-dictionary.md",
+        "sha256": "14ed95e5d61297f1f25f67f279cb5f8785cb069b10faed1d293b632bd3dd9a1e",
+        "coverage": [
+          [
+            1,
+            85
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/zstd/v1-5-7/translations/ja/01-specification/08-dictionary.md",
+        "sha256": "7edafb6d7018198280fb79e7ff2d13b115d5fab874cbd5db61daed82c74082c9",
+        "coverage": [
+          [
+            1,
+            46
+          ]
+        ]
+      },
+      "findings": [
+        "raw辞書最低8byteとformatted Content相当、zstd --train・ID0禁止・public予約2範囲を全文対照。原indented codeをfenced codeへ移してcode値一致を確認。",
+        "Huffman literals→FSE offsets→match lengths→literal lengthsの順、原Repeat Stats/Repeat distributionの表現保持、3offset/4byte/12byte/内容size以下/zero不可を保持。",
+        "Window_Size以下で辞書のより遠い部分も参照可能、超過後参照禁止、外部辞書untrusted/慎重ロードを保持。原参照切れはCompressed Blocksの同source見出しへ補正しフッター明示。"
+      ],
+      "passDescription": "作成後に別パスで原文/定本/訳文を全文読解。構造検査は内容レビューの代用にしていない。"
+    },
+    {
+      "id": "01-specification/09-appendices.md",
+      "status": "pending",
+      "findings": [
+        "未翻訳・別パス全文レビュー未実施"
+      ]
+    }
+  ]
+}
