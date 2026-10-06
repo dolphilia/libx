@@ -1,0 +1,3177 @@
+{
+  "source": {
+    "name": "FAQ.md",
+    "source": "/Users/dolphilia/github/libx/docs/notes/project-expansion/runs/evidence/2026-10-03-378/wiki/FAQ.md",
+    "sourceSHA256": "01d50982fbc9dd49f285ec67a2147bc5155979979c69f8da96093b7f74e7fc87",
+    "slug": "09-faq",
+    "trial": "/private/tmp/libx-spdlog-trial-20261003/apps/spdlog-trial/src/content/docs/v1/en/01-guide/09-faq.md",
+    "bytes": 6955,
+    "wholeBodyKept": true
+  },
+  "children": [
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "The log file remains empty",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 4,
+              "offset": 439
+            },
+            "end": {
+              "line": 5,
+              "column": 30,
+              "offset": 465
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 436
+        },
+        "end": {
+          "line": 5,
+          "column": 30,
+          "offset": 465
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For performance reasons, log entries are not flushed to files immediately, but only after BUFSIZ bytes have been logged (as defined in libc).",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 467
+            },
+            "end": {
+              "line": 7,
+              "column": 142,
+              "offset": 608
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 467
+        },
+        "end": {
+          "line": 7,
+          "column": 142,
+          "offset": 608
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Use any of the following methods to force flush:",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 610
+            },
+            "end": {
+              "line": 9,
+              "column": 49,
+              "offset": 658
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 610
+        },
+        "end": {
+          "line": 9,
+          "column": 49,
+          "offset": 658
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "my_logger->flush();                            // flush now\nmy_logger->flush_on(spdlog::level::info);      // auto flush when \"info\" or higher message is logged\nspdlog::flush_on(spdlog::level::info);         // auto flush when \"info\" or higher message is logged on all loggers\nspdlog::flush_every(std::chrono::seconds(5));  // flush periodically every 5 seconds (caution: must be _mt logger)",
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1,
+          "offset": 659
+        },
+        "end": {
+          "line": 15,
+          "column": 4,
+          "offset": 1061
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "See the ",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1,
+              "offset": 1062
+            },
+            "end": {
+              "line": 16,
+              "column": 9,
+              "offset": 1070
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "/docs/spdlog-trial/v1/en/01-guide/10-flush-policy/",
+          "children": [
+            {
+              "type": "text",
+              "value": "flush policy",
+              "position": {
+                "start": {
+                  "line": 16,
+                  "column": 10,
+                  "offset": 1071
+                },
+                "end": {
+                  "line": 16,
+                  "column": 22,
+                  "offset": 1083
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 9,
+              "offset": 1070
+            },
+            "end": {
+              "line": 16,
+              "column": 78,
+              "offset": 1139
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " for details.",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 78,
+              "offset": 1139
+            },
+            "end": {
+              "line": 16,
+              "column": 91,
+              "offset": 1152
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 16,
+          "column": 1,
+          "offset": 1062
+        },
+        "end": {
+          "line": 16,
+          "column": 91,
+          "offset": 1152
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "How to remove all debug statements at compile time ?",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 4,
+              "offset": 1157
+            },
+            "end": {
+              "line": 18,
+              "column": 56,
+              "offset": 1209
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1,
+          "offset": 1154
+        },
+        "end": {
+          "line": 18,
+          "column": 56,
+          "offset": 1209
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Define ",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1,
+              "offset": 1210
+            },
+            "end": {
+              "line": 19,
+              "column": 8,
+              "offset": 1217
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_ACTIVE_LEVEL",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 8,
+              "offset": 1217
+            },
+            "end": {
+              "line": 19,
+              "column": 33,
+              "offset": 1242
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " to the desired log level before including spdlog.h and use the SPDLOG_ macros:",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 33,
+              "offset": 1242
+            },
+            "end": {
+              "line": 19,
+              "column": 112,
+              "offset": 1321
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1,
+          "offset": 1210
+        },
+        "end": {
+          "line": 19,
+          "column": 112,
+          "offset": 1321
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO // All DEBUG/TRACE statements will be removed by the pre-processor\n#include \"spdlog/spdlog.h\"\n...\nSPDLOG_DEBUG(\"debug message to default logger\"); // removed at compile time\nSPDLOG_LOGGER_TRACE(my_logger, \"trace message\"); // removed at compile time\nSPDLOG_INFO(\"info message to default logger\");   // included",
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1,
+          "offset": 1323
+        },
+        "end": {
+          "line": 28,
+          "column": 4,
+          "offset": 1690
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Note that this removes the debug statements at compile time, but you still need to set the desired log level at\nruntime to be able to see them.",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 1,
+              "offset": 1692
+            },
+            "end": {
+              "line": 31,
+              "column": 32,
+              "offset": 1836
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1,
+          "offset": 1692
+        },
+        "end": {
+          "line": 31,
+          "column": 32,
+          "offset": 1836
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "How to use external fmt library instead of the bundled?",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 4,
+              "offset": 1841
+            },
+            "end": {
+              "line": 33,
+              "column": 59,
+              "offset": 1896
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1,
+          "offset": 1838
+        },
+        "end": {
+          "line": 33,
+          "column": 59,
+          "offset": 1896
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To use external fmt library, ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 1,
+              "offset": 1898
+            },
+            "end": {
+              "line": 35,
+              "column": 30,
+              "offset": 1927
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 30,
+              "offset": 1927
+            },
+            "end": {
+              "line": 35,
+              "column": 55,
+              "offset": 1952
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " macro must be defined.",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 55,
+              "offset": 1952
+            },
+            "end": {
+              "line": 35,
+              "column": 78,
+              "offset": 1975
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1,
+          "offset": 1898
+        },
+        "end": {
+          "line": 35,
+          "column": 78,
+          "offset": 1975
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you build spdlog with CMake, you must define CMake variable ",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 1,
+              "offset": 1977
+            },
+            "end": {
+              "line": 37,
+              "column": 64,
+              "offset": 2040
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 64,
+              "offset": 2040
+            },
+            "end": {
+              "line": 37,
+              "column": 89,
+              "offset": 2065
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " or ",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 89,
+              "offset": 2065
+            },
+            "end": {
+              "line": 37,
+              "column": 93,
+              "offset": 2069
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL_HO",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 93,
+              "offset": 2069
+            },
+            "end": {
+              "line": 37,
+              "column": 121,
+              "offset": 2097
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " (header-only fmt).\n",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 121,
+              "offset": 2097
+            },
+            "end": {
+              "line": 38,
+              "column": 1,
+              "offset": 2117
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL",
+          "position": {
+            "start": {
+              "line": 38,
+              "column": 1,
+              "offset": 2117
+            },
+            "end": {
+              "line": 38,
+              "column": 26,
+              "offset": 2142
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " macro is automatically defined in spdlog added by CMake.",
+          "position": {
+            "start": {
+              "line": 38,
+              "column": 26,
+              "offset": 2142
+            },
+            "end": {
+              "line": 38,
+              "column": 83,
+              "offset": 2199
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1,
+          "offset": 1977
+        },
+        "end": {
+          "line": 38,
+          "column": 83,
+          "offset": 2199
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Format string compile-time check does not work when there are no args",
+          "position": {
+            "start": {
+              "line": 40,
+              "column": 4,
+              "offset": 2204
+            },
+            "end": {
+              "line": 40,
+              "column": 73,
+              "offset": 2273
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 40,
+          "column": 1,
+          "offset": 2201
+        },
+        "end": {
+          "line": 40,
+          "column": 73,
+          "offset": 2273
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If only the format string is passed, the compile-time check does not work.\nThis is because the design does not use a formatter for performance is such case (",
+          "position": {
+            "start": {
+              "line": 42,
+              "column": 1,
+              "offset": 2275
+            },
+            "end": {
+              "line": 43,
+              "column": 83,
+              "offset": 2432
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/3056",
+          "children": [
+            {
+              "type": "text",
+              "value": "#3056",
+              "position": {
+                "start": {
+                  "line": 43,
+                  "column": 84,
+                  "offset": 2433
+                },
+                "end": {
+                  "line": 43,
+                  "column": 89,
+                  "offset": 2438
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 83,
+              "offset": 2432
+            },
+            "end": {
+              "line": 43,
+              "column": 136,
+              "offset": 2485
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ").",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 136,
+              "offset": 2485
+            },
+            "end": {
+              "line": 43,
+              "column": 138,
+              "offset": 2487
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 42,
+          "column": 1,
+          "offset": 2275
+        },
+        "end": {
+          "line": 43,
+          "column": 138,
+          "offset": 2487
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::info(\"{}{}\", 1, 2); // OK\nspdlog::info(\"{}{}{}\", 1, 2); // Compile error.\n\nspdlog::info(\"{}\"); // OK.",
+      "position": {
+        "start": {
+          "line": 45,
+          "column": 1,
+          "offset": 2489
+        },
+        "end": {
+          "line": 50,
+          "column": 4,
+          "offset": 2609
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Asynchronous logging hangs on application exit under Windows",
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 4,
+              "offset": 2614
+            },
+            "end": {
+              "line": 52,
+              "column": 64,
+              "offset": 2674
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 52,
+          "column": 1,
+          "offset": 2611
+        },
+        "end": {
+          "line": 52,
+          "column": 64,
+          "offset": 2674
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "At the end of main, call  ",
+          "position": {
+            "start": {
+              "line": 54,
+              "column": 1,
+              "offset": 2676
+            },
+            "end": {
+              "line": 54,
+              "column": 27,
+              "offset": 2702
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::shutdown();",
+          "position": {
+            "start": {
+              "line": 54,
+              "column": 27,
+              "offset": 2702
+            },
+            "end": {
+              "line": 54,
+              "column": 52,
+              "offset": 2727
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 54,
+          "column": 1,
+          "offset": 2676
+        },
+        "end": {
+          "line": 54,
+          "column": 52,
+          "offset": 2727
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Asynchronous logging hangs under Windows dll",
+          "position": {
+            "start": {
+              "line": 56,
+              "column": 4,
+              "offset": 2732
+            },
+            "end": {
+              "line": 56,
+              "column": 48,
+              "offset": 2776
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 56,
+          "column": 1,
+          "offset": 2729
+        },
+        "end": {
+          "line": 56,
+          "column": 48,
+          "offset": 2776
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Make sure you don't create the async logger (or the thread pool) inside ",
+          "position": {
+            "start": {
+              "line": 58,
+              "column": 1,
+              "offset": 2778
+            },
+            "end": {
+              "line": 58,
+              "column": 73,
+              "offset": 2850
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "DllMain",
+              "position": {
+                "start": {
+                  "line": 58,
+                  "column": 75,
+                  "offset": 2852
+                },
+                "end": {
+                  "line": 58,
+                  "column": 82,
+                  "offset": 2859
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 58,
+              "column": 73,
+              "offset": 2850
+            },
+            "end": {
+              "line": 58,
+              "column": 84,
+              "offset": 2861
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " (e.g. by using static logger variable inside the dll).",
+          "position": {
+            "start": {
+              "line": 58,
+              "column": 84,
+              "offset": 2861
+            },
+            "end": {
+              "line": 58,
+              "column": 139,
+              "offset": 2916
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 58,
+          "column": 1,
+          "offset": 2778
+        },
+        "end": {
+          "line": 58,
+          "column": 140,
+          "offset": 2917
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "How to use spdlog in shared library?",
+          "position": {
+            "start": {
+              "line": 60,
+              "column": 4,
+              "offset": 2922
+            },
+            "end": {
+              "line": 60,
+              "column": 40,
+              "offset": 2958
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 60,
+          "column": 1,
+          "offset": 2919
+        },
+        "end": {
+          "line": 60,
+          "column": 40,
+          "offset": 2958
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "See ",
+          "position": {
+            "start": {
+              "line": 62,
+              "column": 1,
+              "offset": 2960
+            },
+            "end": {
+              "line": 62,
+              "column": 5,
+              "offset": 2964
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "/docs/spdlog-trial/v1/en/01-guide/12-how-to-use-spdlog-in-dlls/",
+          "children": [
+            {
+              "type": "text",
+              "value": "How to use spdlog in DLLs",
+              "position": {
+                "start": {
+                  "line": 62,
+                  "column": 6,
+                  "offset": 2965
+                },
+                "end": {
+                  "line": 62,
+                  "column": 31,
+                  "offset": 2990
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 62,
+              "column": 5,
+              "offset": 2964
+            },
+            "end": {
+              "line": 62,
+              "column": 97,
+              "offset": 3056
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " for details.",
+          "position": {
+            "start": {
+              "line": 62,
+              "column": 97,
+              "offset": 3056
+            },
+            "end": {
+              "line": 62,
+              "column": 110,
+              "offset": 3069
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 62,
+          "column": 1,
+          "offset": 2960
+        },
+        "end": {
+          "line": 62,
+          "column": 110,
+          "offset": 3069
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Memory leak detected when using inside a shared library",
+          "position": {
+            "start": {
+              "line": 64,
+              "column": 4,
+              "offset": 3074
+            },
+            "end": {
+              "line": 64,
+              "column": 59,
+              "offset": 3129
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 64,
+          "column": 1,
+          "offset": 3071
+        },
+        "end": {
+          "line": 64,
+          "column": 59,
+          "offset": 3129
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The async logger and ",
+          "position": {
+            "start": {
+              "line": 66,
+              "column": 1,
+              "offset": 3131
+            },
+            "end": {
+              "line": 66,
+              "column": 22,
+              "offset": 3152
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::flush_every()",
+          "position": {
+            "start": {
+              "line": 66,
+              "column": 22,
+              "offset": 3152
+            },
+            "end": {
+              "line": 66,
+              "column": 49,
+              "offset": 3179
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " create a worker thread.",
+          "position": {
+            "start": {
+              "line": 66,
+              "column": 49,
+              "offset": 3179
+            },
+            "end": {
+              "line": 66,
+              "column": 73,
+              "offset": 3203
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 66,
+          "column": 1,
+          "offset": 3131
+        },
+        "end": {
+          "line": 66,
+          "column": 73,
+          "offset": 3203
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "When using these in a shared library, you must call ",
+          "position": {
+            "start": {
+              "line": 68,
+              "column": 1,
+              "offset": 3205
+            },
+            "end": {
+              "line": 68,
+              "column": 53,
+              "offset": 3257
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::shutdown();",
+          "position": {
+            "start": {
+              "line": 68,
+              "column": 53,
+              "offset": 3257
+            },
+            "end": {
+              "line": 68,
+              "column": 78,
+              "offset": 3282
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " before the shared library is unloaded from memory.\nOtherwise, the objects associated with the thread may not be released.",
+          "position": {
+            "start": {
+              "line": 68,
+              "column": 78,
+              "offset": 3282
+            },
+            "end": {
+              "line": 69,
+              "column": 71,
+              "offset": 3404
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 68,
+          "column": 1,
+          "offset": 3205
+        },
+        "end": {
+          "line": 69,
+          "column": 71,
+          "offset": 3404
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Colors do not appear when using custom format",
+          "position": {
+            "start": {
+              "line": 72,
+              "column": 4,
+              "offset": 3410
+            },
+            "end": {
+              "line": 72,
+              "column": 49,
+              "offset": 3455
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 72,
+          "column": 1,
+          "offset": 3407
+        },
+        "end": {
+          "line": 72,
+          "column": 49,
+          "offset": 3455
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You need enclose the colored part you want with ",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 1,
+              "offset": 3457
+            },
+            "end": {
+              "line": 74,
+              "column": 49,
+              "offset": 3505
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%^ ",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 49,
+              "offset": 3505
+            },
+            "end": {
+              "line": 74,
+              "column": 58,
+              "offset": 3514
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " and ",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 58,
+              "offset": 3514
+            },
+            "end": {
+              "line": 74,
+              "column": 63,
+              "offset": 3519
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%$",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 63,
+              "offset": 3519
+            },
+            "end": {
+              "line": 74,
+              "column": 71,
+              "offset": 3527
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 71,
+              "offset": 3527
+            },
+            "end": {
+              "line": 74,
+              "column": 72,
+              "offset": 3528
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 74,
+          "column": 1,
+          "offset": 3457
+        },
+        "end": {
+          "line": 74,
+          "column": 72,
+          "offset": 3528
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For example ",
+          "position": {
+            "start": {
+              "line": 76,
+              "column": 1,
+              "offset": 3530
+            },
+            "end": {
+              "line": 76,
+              "column": 13,
+              "offset": 3542
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::set_pattern(“%^[%l]%$ %v”);",
+          "position": {
+            "start": {
+              "line": 76,
+              "column": 13,
+              "offset": 3542
+            },
+            "end": {
+              "line": 76,
+              "column": 54,
+              "offset": 3583
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 76,
+          "column": 1,
+          "offset": 3530
+        },
+        "end": {
+          "line": 76,
+          "column": 54,
+          "offset": 3583
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Source information do not appear when using custom format",
+          "position": {
+            "start": {
+              "line": 78,
+              "column": 4,
+              "offset": 3588
+            },
+            "end": {
+              "line": 78,
+              "column": 61,
+              "offset": 3645
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 78,
+          "column": 1,
+          "offset": 3585
+        },
+        "end": {
+          "line": 78,
+          "column": 61,
+          "offset": 3645
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Some custom format patterns, such as ",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 1,
+              "offset": 3647
+            },
+            "end": {
+              "line": 80,
+              "column": 38,
+              "offset": 3684
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%@",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 38,
+              "offset": 3684
+            },
+            "end": {
+              "line": 80,
+              "column": 46,
+              "offset": 3692
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 46,
+              "offset": 3692
+            },
+            "end": {
+              "line": 80,
+              "column": 48,
+              "offset": 3694
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%s",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 48,
+              "offset": 3694
+            },
+            "end": {
+              "line": 80,
+              "column": 56,
+              "offset": 3702
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 56,
+              "offset": 3702
+            },
+            "end": {
+              "line": 80,
+              "column": 58,
+              "offset": 3704
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%g",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 58,
+              "offset": 3704
+            },
+            "end": {
+              "line": 80,
+              "column": 66,
+              "offset": 3712
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 66,
+              "offset": 3712
+            },
+            "end": {
+              "line": 80,
+              "column": 68,
+              "offset": 3714
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%#",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 68,
+              "offset": 3714
+            },
+            "end": {
+              "line": 80,
+              "column": 76,
+              "offset": 3722
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 76,
+              "offset": 3722
+            },
+            "end": {
+              "line": 80,
+              "column": 78,
+              "offset": 3724
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%!",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 78,
+              "offset": 3724
+            },
+            "end": {
+              "line": 80,
+              "column": 86,
+              "offset": 3732
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", print the source information.",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 86,
+              "offset": 3732
+            },
+            "end": {
+              "line": 80,
+              "column": 117,
+              "offset": 3763
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 80,
+          "column": 1,
+          "offset": 3647
+        },
+        "end": {
+          "line": 80,
+          "column": 117,
+          "offset": 3763
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For these to work, you must use compile time log level macros.",
+          "position": {
+            "start": {
+              "line": 82,
+              "column": 1,
+              "offset": 3765
+            },
+            "end": {
+              "line": 82,
+              "column": 63,
+              "offset": 3827
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 82,
+          "column": 1,
+          "offset": 3765
+        },
+        "end": {
+          "line": 82,
+          "column": 63,
+          "offset": 3827
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For example:",
+          "position": {
+            "start": {
+              "line": 84,
+              "column": 1,
+              "offset": 3829
+            },
+            "end": {
+              "line": 84,
+              "column": 13,
+              "offset": 3841
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 84,
+          "column": 1,
+          "offset": 3829
+        },
+        "end": {
+          "line": 84,
+          "column": 13,
+          "offset": 3841
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "\n#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO \n#include \"spdlog/spdlog.h\"\n#include \"spdlog/sinks/stdout_sinks.h\"\n\nvoid source_info_example()\n{\n    auto console = spdlog::stdout_logger_mt(\"console\");\n    spdlog::set_default_logger(console);\n    spdlog::set_pattern(\"[source %s] [function %!] [line %#] %v\");\n\n    SPDLOG_LOGGER_INFO(console, \"log with source info\"); // Console: \"[source example.cpp] [function source_info_example] [line 10] log with source info\"\n    SPDLOG_INFO(\"global log with source info\"); // Console: \"[source example.cpp] [function source_info_example] [line 11] global logger with source info\"\n\n    console->info(\"source info is not printed\"); // Console: \"[source ] [function ] [line ] source info is not printed\"\n}",
+      "position": {
+        "start": {
+          "line": 85,
+          "column": 1,
+          "offset": 3842
+        },
+        "end": {
+          "line": 102,
+          "column": 4,
+          "offset": 4593
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "WinAPI ",
+          "position": {
+            "start": {
+              "line": 104,
+              "column": 4,
+              "offset": 4598
+            },
+            "end": {
+              "line": 104,
+              "column": 11,
+              "offset": 4605
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "min",
+          "position": {
+            "start": {
+              "line": 104,
+              "column": 11,
+              "offset": 4605
+            },
+            "end": {
+              "line": 104,
+              "column": 16,
+              "offset": 4610
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "/",
+          "position": {
+            "start": {
+              "line": 104,
+              "column": 16,
+              "offset": 4610
+            },
+            "end": {
+              "line": 104,
+              "column": 17,
+              "offset": 4611
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "max",
+          "position": {
+            "start": {
+              "line": 104,
+              "column": 17,
+              "offset": 4611
+            },
+            "end": {
+              "line": 104,
+              "column": 22,
+              "offset": 4616
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " macro definitions",
+          "position": {
+            "start": {
+              "line": 104,
+              "column": 22,
+              "offset": 4616
+            },
+            "end": {
+              "line": 104,
+              "column": 40,
+              "offset": 4634
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 104,
+          "column": 1,
+          "offset": 4595
+        },
+        "end": {
+          "line": 104,
+          "column": 40,
+          "offset": 4634
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "When using the header-only distribution of spdlog together with the bundled fmt library on Windows you end up including ",
+          "position": {
+            "start": {
+              "line": 106,
+              "column": 1,
+              "offset": 4636
+            },
+            "end": {
+              "line": 106,
+              "column": 121,
+              "offset": 4756
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "Windows.h",
+          "position": {
+            "start": {
+              "line": 106,
+              "column": 121,
+              "offset": 4756
+            },
+            "end": {
+              "line": 106,
+              "column": 132,
+              "offset": 4767
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " via the bundled fmt library.\nTo prevent any errors caused by the definiton of ",
+          "position": {
+            "start": {
+              "line": 106,
+              "column": 132,
+              "offset": 4767
+            },
+            "end": {
+              "line": 107,
+              "column": 50,
+              "offset": 4846
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "min",
+          "position": {
+            "start": {
+              "line": 107,
+              "column": 50,
+              "offset": 4846
+            },
+            "end": {
+              "line": 107,
+              "column": 55,
+              "offset": 4851
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "/",
+          "position": {
+            "start": {
+              "line": 107,
+              "column": 55,
+              "offset": 4851
+            },
+            "end": {
+              "line": 107,
+              "column": 56,
+              "offset": 4852
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "max",
+          "position": {
+            "start": {
+              "line": 107,
+              "column": 56,
+              "offset": 4852
+            },
+            "end": {
+              "line": 107,
+              "column": 61,
+              "offset": 4857
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " macros in WinAPI you can either",
+          "position": {
+            "start": {
+              "line": 107,
+              "column": 61,
+              "offset": 4857
+            },
+            "end": {
+              "line": 107,
+              "column": 93,
+              "offset": 4889
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 106,
+          "column": 1,
+          "offset": 4636
+        },
+        "end": {
+          "line": 107,
+          "column": 93,
+          "offset": 4889
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "spread": false,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Surround your ",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 3,
+                      "offset": 4893
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 17,
+                      "offset": 4907
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "min()",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 17,
+                      "offset": 4907
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 24,
+                      "offset": 4914
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " or ",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 24,
+                      "offset": 4914
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 28,
+                      "offset": 4918
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "max()",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 28,
+                      "offset": 4918
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 35,
+                      "offset": 4925
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " calls with parentheses: ",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 35,
+                      "offset": 4925
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 60,
+                      "offset": 4950
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "(std::max)(n1, n2)",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 60,
+                      "offset": 4950
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 80,
+                      "offset": 4970
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " or",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 80,
+                      "offset": 4970
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 83,
+                      "offset": 4973
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 109,
+                  "column": 3,
+                  "offset": 4893
+                },
+                "end": {
+                  "line": 109,
+                  "column": 83,
+                  "offset": 4973
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 109,
+              "column": 1,
+              "offset": 4891
+            },
+            "end": {
+              "line": 109,
+              "column": 83,
+              "offset": 4973
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "define ",
+                  "position": {
+                    "start": {
+                      "line": 110,
+                      "column": 3,
+                      "offset": 4976
+                    },
+                    "end": {
+                      "line": 110,
+                      "column": 10,
+                      "offset": 4983
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "NOMINMAX",
+                  "position": {
+                    "start": {
+                      "line": 110,
+                      "column": 10,
+                      "offset": 4983
+                    },
+                    "end": {
+                      "line": 110,
+                      "column": 20,
+                      "offset": 4993
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " macro before including spdlog.h, or",
+                  "position": {
+                    "start": {
+                      "line": 110,
+                      "column": 20,
+                      "offset": 4993
+                    },
+                    "end": {
+                      "line": 110,
+                      "column": 56,
+                      "offset": 5029
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 110,
+                  "column": 3,
+                  "offset": 4976
+                },
+                "end": {
+                  "line": 110,
+                  "column": 56,
+                  "offset": 5029
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 110,
+              "column": 1,
+              "offset": 4974
+            },
+            "end": {
+              "line": 110,
+              "column": 56,
+              "offset": 5029
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "use external fmt library(",
+                  "position": {
+                    "start": {
+                      "line": 111,
+                      "column": 3,
+                      "offset": 5032
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 28,
+                      "offset": 5057
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "-DSPDLOG_FMT_EXTERNAL=ON",
+                  "position": {
+                    "start": {
+                      "line": 111,
+                      "column": 28,
+                      "offset": 5057
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 54,
+                      "offset": 5083
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " when building spdlog)",
+                  "position": {
+                    "start": {
+                      "line": 111,
+                      "column": 54,
+                      "offset": 5083
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 76,
+                      "offset": 5105
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 111,
+                  "column": 3,
+                  "offset": 5032
+                },
+                "end": {
+                  "line": 111,
+                  "column": 76,
+                  "offset": 5105
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 111,
+              "column": 1,
+              "offset": 5030
+            },
+            "end": {
+              "line": 111,
+              "column": 76,
+              "offset": 5105
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 109,
+          "column": 1,
+          "offset": 4891
+        },
+        "end": {
+          "line": 111,
+          "column": 76,
+          "offset": 5105
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "See ",
+          "position": {
+            "start": {
+              "line": 113,
+              "column": 1,
+              "offset": 5107
+            },
+            "end": {
+              "line": 113,
+              "column": 5,
+              "offset": 5111
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/1553",
+          "children": [
+            {
+              "type": "text",
+              "value": "#1553",
+              "position": {
+                "start": {
+                  "line": 113,
+                  "column": 6,
+                  "offset": 5112
+                },
+                "end": {
+                  "line": 113,
+                  "column": 11,
+                  "offset": 5117
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 113,
+              "column": 5,
+              "offset": 5111
+            },
+            "end": {
+              "line": 113,
+              "column": 58,
+              "offset": 5164
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " or ",
+          "position": {
+            "start": {
+              "line": 113,
+              "column": 58,
+              "offset": 5164
+            },
+            "end": {
+              "line": 113,
+              "column": 62,
+              "offset": 5168
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/fmtlib/fmt/issues/1508",
+          "children": [
+            {
+              "type": "text",
+              "value": "fmt#1508",
+              "position": {
+                "start": {
+                  "line": 113,
+                  "column": 63,
+                  "offset": 5169
+                },
+                "end": {
+                  "line": 113,
+                  "column": 71,
+                  "offset": 5177
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 113,
+              "column": 62,
+              "offset": 5168
+            },
+            "end": {
+              "line": 113,
+              "column": 115,
+              "offset": 5221
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " for details.",
+          "position": {
+            "start": {
+              "line": 113,
+              "column": 115,
+              "offset": 5221
+            },
+            "end": {
+              "line": 113,
+              "column": 128,
+              "offset": 5234
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 113,
+          "column": 1,
+          "offset": 5107
+        },
+        "end": {
+          "line": 113,
+          "column": 128,
+          "offset": 5234
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Switch the default logger to ",
+          "position": {
+            "start": {
+              "line": 115,
+              "column": 4,
+              "offset": 5239
+            },
+            "end": {
+              "line": 115,
+              "column": 33,
+              "offset": 5268
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "stderr",
+          "position": {
+            "start": {
+              "line": 115,
+              "column": 33,
+              "offset": 5268
+            },
+            "end": {
+              "line": 115,
+              "column": 41,
+              "offset": 5276
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 115,
+          "column": 1,
+          "offset": 5236
+        },
+        "end": {
+          "line": 115,
+          "column": 41,
+          "offset": 5276
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can ",
+          "position": {
+            "start": {
+              "line": 117,
+              "column": 1,
+              "offset": 5278
+            },
+            "end": {
+              "line": 117,
+              "column": 9,
+              "offset": 5286
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "set_default_logger()",
+          "position": {
+            "start": {
+              "line": 117,
+              "column": 9,
+              "offset": 5286
+            },
+            "end": {
+              "line": 117,
+              "column": 31,
+              "offset": 5308
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " with a new ",
+          "position": {
+            "start": {
+              "line": 117,
+              "column": 31,
+              "offset": 5308
+            },
+            "end": {
+              "line": 117,
+              "column": 43,
+              "offset": 5320
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "stderr",
+          "position": {
+            "start": {
+              "line": 117,
+              "column": 43,
+              "offset": 5320
+            },
+            "end": {
+              "line": 117,
+              "column": 51,
+              "offset": 5328
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " logger. If you want the logging format to remain unchanged, you should specify the name as an empty string, but this will cause a conflict with the initial default logger, which is already using that name. To resolve this, first replace the default logger with one that has some other arbitrary name…",
+          "position": {
+            "start": {
+              "line": 117,
+              "column": 51,
+              "offset": 5328
+            },
+            "end": {
+              "line": 117,
+              "column": 359,
+              "offset": 5636
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 117,
+          "column": 1,
+          "offset": 5278
+        },
+        "end": {
+          "line": 117,
+          "column": 359,
+          "offset": 5636
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include \"spdlog/sinks/stdout_color_sinks.h\"\n#include \"spdlog/spdlog.h\"\nint main()\n{\n    // Replace the default logger with a (color, single-threaded) stderr logger\n    // (but first replace it with an arbitrarily-named logger to prevent a name clash)\n    spdlog::set_default_logger( spdlog::stderr_color_st( \"some_arbitrary_name\" ) );\n    spdlog::set_default_logger( spdlog::stderr_color_st( \"\" ) );\n    spdlog::info(\"This message will go to stderr\");\n}",
+      "position": {
+        "start": {
+          "line": 119,
+          "column": 1,
+          "offset": 5638
+        },
+        "end": {
+          "line": 130,
+          "column": 4,
+          "offset": 6103
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "How to force log messages to be output (ignore log level filter)",
+          "position": {
+            "start": {
+              "line": 132,
+              "column": 4,
+              "offset": 6108
+            },
+            "end": {
+              "line": 132,
+              "column": 68,
+              "offset": 6172
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 132,
+          "column": 1,
+          "offset": 6105
+        },
+        "end": {
+          "line": 132,
+          "column": 68,
+          "offset": 6172
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can use ",
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 1,
+              "offset": 6174
+            },
+            "end": {
+              "line": 134,
+              "column": 13,
+              "offset": 6186
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::level::off",
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 13,
+              "offset": 6186
+            },
+            "end": {
+              "line": 134,
+              "column": 33,
+              "offset": 6206
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " to force log messages to be output (",
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 33,
+              "offset": 6206
+            },
+            "end": {
+              "line": 134,
+              "column": 70,
+              "offset": 6243
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/discussions/2640",
+          "children": [
+            {
+              "type": "text",
+              "value": "Discussion",
+              "position": {
+                "start": {
+                  "line": 134,
+                  "column": 71,
+                  "offset": 6244
+                },
+                "end": {
+                  "line": 134,
+                  "column": 81,
+                  "offset": 6254
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 70,
+              "offset": 6243
+            },
+            "end": {
+              "line": 134,
+              "column": 115,
+              "offset": 6288
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ").",
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 115,
+              "offset": 6288
+            },
+            "end": {
+              "line": 134,
+              "column": 117,
+              "offset": 6290
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 134,
+          "column": 1,
+          "offset": 6174
+        },
+        "end": {
+          "line": 134,
+          "column": 117,
+          "offset": 6290
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "logger.set_level(spdlog::level::error);\n\nlogger.warn(\"This message is not output.\");\n\nlogger.log(spdlog::level::off, \"This message is output.\");",
+      "position": {
+        "start": {
+          "line": 136,
+          "column": 1,
+          "offset": 6292
+        },
+        "end": {
+          "line": 142,
+          "column": 4,
+          "offset": 6447
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Note that this way does not trigger log level-based flush ( ",
+          "position": {
+            "start": {
+              "line": 144,
+              "column": 1,
+              "offset": 6449
+            },
+            "end": {
+              "line": 144,
+              "column": 61,
+              "offset": 6509
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "logger.flush_on(spdlog::level)",
+          "position": {
+            "start": {
+              "line": 144,
+              "column": 61,
+              "offset": 6509
+            },
+            "end": {
+              "line": 144,
+              "column": 93,
+              "offset": 6541
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ").",
+          "position": {
+            "start": {
+              "line": 144,
+              "column": 93,
+              "offset": 6541
+            },
+            "end": {
+              "line": 144,
+              "column": 95,
+              "offset": 6543
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 144,
+          "column": 1,
+          "offset": 6449
+        },
+        "end": {
+          "line": 144,
+          "column": 95,
+          "offset": 6543
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "GCC standard library compatibility problem",
+          "position": {
+            "start": {
+              "line": 146,
+              "column": 4,
+              "offset": 6548
+            },
+            "end": {
+              "line": 146,
+              "column": 46,
+              "offset": 6590
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 146,
+          "column": 1,
+          "offset": 6545
+        },
+        "end": {
+          "line": 146,
+          "column": 46,
+          "offset": 6590
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you build a simple code like the following with GCC compiler and get ",
+          "position": {
+            "start": {
+              "line": 148,
+              "column": 1,
+              "offset": 6592
+            },
+            "end": {
+              "line": 148,
+              "column": 73,
+              "offset": 6664
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "std::bad_alloc",
+          "position": {
+            "start": {
+              "line": 148,
+              "column": 73,
+              "offset": 6664
+            },
+            "end": {
+              "line": 148,
+              "column": 89,
+              "offset": 6680
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", you may be using an incompatible standard library.",
+          "position": {
+            "start": {
+              "line": 148,
+              "column": 89,
+              "offset": 6680
+            },
+            "end": {
+              "line": 148,
+              "column": 141,
+              "offset": 6732
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 148,
+          "column": 1,
+          "offset": 6592
+        },
+        "end": {
+          "line": 148,
+          "column": 141,
+          "offset": 6732
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "#include \"spdlog/spdlog.h\"\n\nint main(int argc, char *argv[])\n{\n    spdlog::info(\"Test message.\");\n\n    return 0;\n}",
+      "position": {
+        "start": {
+          "line": 150,
+          "column": 1,
+          "offset": 6734
+        },
+        "end": {
+          "line": 159,
+          "column": 4,
+          "offset": 6859
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "std::bad_alloc",
+          "position": {
+            "start": {
+              "line": 161,
+              "column": 1,
+              "offset": 6861
+            },
+            "end": {
+              "line": 161,
+              "column": 17,
+              "offset": 6877
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " occurs mostly when passing a dangling pointer or a string that has not been null terminated.\nHowever, in GCC only, this error may be reported when spdlog and the application use different standard libraries (e.g. ",
+          "position": {
+            "start": {
+              "line": 161,
+              "column": 17,
+              "offset": 6877
+            },
+            "end": {
+              "line": 162,
+              "column": 121,
+              "offset": 7091
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "libstdc++",
+          "position": {
+            "start": {
+              "line": 162,
+              "column": 121,
+              "offset": 7091
+            },
+            "end": {
+              "line": 162,
+              "column": 132,
+              "offset": 7102
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " and ",
+          "position": {
+            "start": {
+              "line": 162,
+              "column": 132,
+              "offset": 7102
+            },
+            "end": {
+              "line": 162,
+              "column": 137,
+              "offset": 7107
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "libstdc++11",
+          "position": {
+            "start": {
+              "line": 162,
+              "column": 137,
+              "offset": 7107
+            },
+            "end": {
+              "line": 162,
+              "column": 150,
+              "offset": 7120
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ").\nThis problem has been reported more often when using the package manager.\nIf you use a package manager, please check your ABI settings.",
+          "position": {
+            "start": {
+              "line": 162,
+              "column": 150,
+              "offset": 7120
+            },
+            "end": {
+              "line": 164,
+              "column": 62,
+              "offset": 7258
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 161,
+          "column": 1,
+          "offset": 6861
+        },
+        "end": {
+          "line": 164,
+          "column": 62,
+          "offset": 7258
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "See ",
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 1,
+              "offset": 7260
+            },
+            "end": {
+              "line": 166,
+              "column": 5,
+              "offset": 7264
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/2286",
+          "children": [
+            {
+              "type": "text",
+              "value": "#2286",
+              "position": {
+                "start": {
+                  "line": 166,
+                  "column": 6,
+                  "offset": 7265
+                },
+                "end": {
+                  "line": 166,
+                  "column": 11,
+                  "offset": 7270
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 5,
+              "offset": 7264
+            },
+            "end": {
+              "line": 166,
+              "column": 58,
+              "offset": 7317
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " or ",
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 58,
+              "offset": 7317
+            },
+            "end": {
+              "line": 166,
+              "column": 62,
+              "offset": 7321
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/2290",
+          "children": [
+            {
+              "type": "text",
+              "value": "#2290",
+              "position": {
+                "start": {
+                  "line": 166,
+                  "column": 63,
+                  "offset": 7322
+                },
+                "end": {
+                  "line": 166,
+                  "column": 68,
+                  "offset": 7327
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 62,
+              "offset": 7321
+            },
+            "end": {
+              "line": 166,
+              "column": 115,
+              "offset": 7374
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " for details.",
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 115,
+              "offset": 7374
+            },
+            "end": {
+              "line": 166,
+              "column": 128,
+              "offset": 7387
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 166,
+          "column": 1,
+          "offset": 7260
+        },
+        "end": {
+          "line": 166,
+          "column": 128,
+          "offset": 7387
+        }
+      }
+    }
+  ],
+  "changes": [
+    {
+      "from": "https://github.com/gabime/spdlog/wiki/7.-Flush-policy",
+      "to": "/docs/spdlog-trial/v1/en/01-guide/10-flush-policy/"
+    },
+    {
+      "from": "https://github.com/gabime/spdlog/wiki/How-to-use-spdlog-in-DLLs",
+      "to": "/docs/spdlog-trial/v1/en/01-guide/12-how-to-use-spdlog-in-dlls/"
+    },
+    {
+      "from": "/gabime/spdlog/discussions/2640",
+      "to": "https://github.com/gabime/spdlog/discussions/2640",
+      "reason": "Preserve original GitHub-origin absolute path"
+    }
+  ]
+}

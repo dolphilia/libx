@@ -1,0 +1,1509 @@
+{
+  "source": {
+    "name": "Asynchronous-logging.md",
+    "source": "/Users/dolphilia/github/libx/docs/notes/project-expansion/runs/evidence/2026-10-03-378/wiki/Asynchronous-logging.md",
+    "sourceSHA256": "caf4f7529aaa6ac0540fdd5e2750ab5fec1256435abb68afa1968c39873f7e17",
+    "slug": "03-asynchronous-logging",
+    "trial": "/private/tmp/libx-spdlog-trial-20261003/apps/spdlog-trial/src/content/docs/v1/en/01-guide/03-asynchronous-logging.md",
+    "bytes": 4810,
+    "wholeBodyKept": true
+  },
+  "children": [
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Creating async loggers",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 4,
+              "offset": 456
+            },
+            "end": {
+              "line": 5,
+              "column": 26,
+              "offset": 478
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 453
+        },
+        "end": {
+          "line": 5,
+          "column": 26,
+          "offset": 478
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "There are several ways to create an asynchronous logger. In all ways you must ",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 1,
+              "offset": 479
+            },
+            "end": {
+              "line": 6,
+              "column": 79,
+              "offset": 557
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "#include spdlog/async.h",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 79,
+              "offset": 557
+            },
+            "end": {
+              "line": 6,
+              "column": 108,
+              "offset": 586
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 108,
+              "offset": 586
+            },
+            "end": {
+              "line": 6,
+              "column": 109,
+              "offset": 587
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1,
+          "offset": 479
+        },
+        "end": {
+          "line": 6,
+          "column": 109,
+          "offset": 587
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Using the ",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 5,
+              "offset": 594
+            },
+            "end": {
+              "line": 9,
+              "column": 15,
+              "offset": 604
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "<spdlog::async_factory>",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 15,
+              "offset": 604
+            },
+            "end": {
+              "line": 9,
+              "column": 44,
+              "offset": 633
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " template argument:",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 44,
+              "offset": 633
+            },
+            "end": {
+              "line": 9,
+              "column": 63,
+              "offset": 652
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 590
+        },
+        "end": {
+          "line": 9,
+          "column": 63,
+          "offset": 652
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include \"spdlog/async.h\"\nvoid async_example()\n{\n    // default thread pool settings can be modified *before* creating the async logger:\n    // spdlog::init_thread_pool(8192, 1); // queue with 8k items and 1 backing thread.\n    auto async_file = spdlog::basic_logger_mt<spdlog::async_factory>(\"async_file_logger\", \"logs/async_log.txt\");\n}",
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1,
+          "offset": 653
+        },
+        "end": {
+          "line": 18,
+          "column": 4,
+          "offset": 1002
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Using ",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 5,
+              "offset": 1008
+            },
+            "end": {
+              "line": 20,
+              "column": 11,
+              "offset": 1014
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::create_async<Sink>",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 11,
+              "offset": 1014
+            },
+            "end": {
+              "line": 20,
+              "column": 43,
+              "offset": 1046
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 43,
+              "offset": 1046
+            },
+            "end": {
+              "line": 20,
+              "column": 44,
+              "offset": 1047
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1,
+          "offset": 1004
+        },
+        "end": {
+          "line": 20,
+          "column": 44,
+          "offset": 1047
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto async_file = spdlog::create_async<spdlog::sinks::basic_file_sink_mt>(\"async_file_logger\", \"logs/async_log.txt\");    ",
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1,
+          "offset": 1048
+        },
+        "end": {
+          "line": 23,
+          "column": 4,
+          "offset": 1180
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Using  ",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 5,
+              "offset": 1185
+            },
+            "end": {
+              "line": 24,
+              "column": 12,
+              "offset": 1192
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::create_async_nb<Sink>",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 12,
+              "offset": 1192
+            },
+            "end": {
+              "line": 24,
+              "column": 47,
+              "offset": 1227
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 47,
+              "offset": 1227
+            },
+            "end": {
+              "line": 24,
+              "column": 48,
+              "offset": 1228
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1,
+          "offset": 1181
+        },
+        "end": {
+          "line": 24,
+          "column": 48,
+          "offset": 1228
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This will create a logger that will never block on full queue.",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1,
+              "offset": 1229
+            },
+            "end": {
+              "line": 25,
+              "column": 63,
+              "offset": 1291
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 1229
+        },
+        "end": {
+          "line": 25,
+          "column": 63,
+          "offset": 1291
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto async_file = spdlog::create_async_nb<spdlog::sinks::basic_file_sink_mt>(\"async_file_logger\", \"logs/async_log.txt\");",
+      "position": {
+        "start": {
+          "line": 26,
+          "column": 1,
+          "offset": 1292
+        },
+        "end": {
+          "line": 28,
+          "column": 4,
+          "offset": 1423
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Construct directly and use the global thread pool",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 5,
+              "offset": 1429
+            },
+            "end": {
+              "line": 30,
+              "column": 54,
+              "offset": 1478
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1,
+          "offset": 1425
+        },
+        "end": {
+          "line": 30,
+          "column": 54,
+          "offset": 1478
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::init_thread_pool(queue_size, n_threads);\nauto logger = std::make_shared<spdlog::async_logger>(\"as\", some_sink, spdlog::thread_pool(), async_overflow_policy::block);",
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1,
+          "offset": 1479
+        },
+        "end": {
+          "line": 34,
+          "column": 4,
+          "offset": 1662
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Construct directly and use a custom thread pool",
+          "position": {
+            "start": {
+              "line": 36,
+              "column": 5,
+              "offset": 1668
+            },
+            "end": {
+              "line": 36,
+              "column": 52,
+              "offset": 1715
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 36,
+          "column": 1,
+          "offset": 1664
+        },
+        "end": {
+          "line": 36,
+          "column": 52,
+          "offset": 1715
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto tp = std::make_shared<details::thread_pool>(queue_size, n_threads);\nauto logger = std::make_shared<spdlog::async_logger>(\"as\", some_sink, tp, async_overflow_policy::block);",
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1,
+          "offset": 1716
+        },
+        "end": {
+          "line": 40,
+          "column": 4,
+          "offset": 1904
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "Note: the tp object in the above example must outlive the logger object, since the logger acquires a weak_ptr to the tp.",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 6,
+              "offset": 1910
+            },
+            "end": {
+              "line": 41,
+              "column": 126,
+              "offset": 2030
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 41,
+          "column": 1,
+          "offset": 1905
+        },
+        "end": {
+          "line": 41,
+          "column": 126,
+          "offset": 2030
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Full queue policy",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 4,
+              "offset": 2035
+            },
+            "end": {
+              "line": 43,
+              "column": 21,
+              "offset": 2052
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 43,
+          "column": 1,
+          "offset": 2032
+        },
+        "end": {
+          "line": 43,
+          "column": 21,
+          "offset": 2052
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "There are 2 options on what to do when the queue is full:",
+          "position": {
+            "start": {
+              "line": 44,
+              "column": 1,
+              "offset": 2053
+            },
+            "end": {
+              "line": 44,
+              "column": 58,
+              "offset": 2110
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 44,
+          "column": 1,
+          "offset": 2053
+        },
+        "end": {
+          "line": 44,
+          "column": 58,
+          "offset": 2110
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "spread": false,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Block the caller until there is more room (default behaviour)",
+                  "position": {
+                    "start": {
+                      "line": 45,
+                      "column": 3,
+                      "offset": 2113
+                    },
+                    "end": {
+                      "line": 45,
+                      "column": 64,
+                      "offset": 2174
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 45,
+                  "column": 3,
+                  "offset": 2113
+                },
+                "end": {
+                  "line": 45,
+                  "column": 64,
+                  "offset": 2174
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 1,
+              "offset": 2111
+            },
+            "end": {
+              "line": 45,
+              "column": 64,
+              "offset": 2174
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Drop and replace the oldest messages in the queue with new ones instead of waiting for more room.\nUse the ",
+                  "position": {
+                    "start": {
+                      "line": 46,
+                      "column": 3,
+                      "offset": 2177
+                    },
+                    "end": {
+                      "line": 47,
+                      "column": 11,
+                      "offset": 2285
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "create_async_nb",
+                  "position": {
+                    "start": {
+                      "line": 47,
+                      "column": 11,
+                      "offset": 2285
+                    },
+                    "end": {
+                      "line": 47,
+                      "column": 32,
+                      "offset": 2306
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " factory function or  the ",
+                  "position": {
+                    "start": {
+                      "line": 47,
+                      "column": 32,
+                      "offset": 2306
+                    },
+                    "end": {
+                      "line": 47,
+                      "column": 58,
+                      "offset": 2332
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "spdlog::async_overflow_policy",
+                  "position": {
+                    "start": {
+                      "line": 47,
+                      "column": 58,
+                      "offset": 2332
+                    },
+                    "end": {
+                      "line": 47,
+                      "column": 93,
+                      "offset": 2367
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " in the logger's constructor:",
+                  "position": {
+                    "start": {
+                      "line": 47,
+                      "column": 93,
+                      "offset": 2367
+                    },
+                    "end": {
+                      "line": 47,
+                      "column": 122,
+                      "offset": 2396
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 46,
+                  "column": 3,
+                  "offset": 2177
+                },
+                "end": {
+                  "line": 47,
+                  "column": 122,
+                  "offset": 2396
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 46,
+              "column": 1,
+              "offset": 2175
+            },
+            "end": {
+              "line": 47,
+              "column": 122,
+              "offset": 2396
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 45,
+          "column": 1,
+          "offset": 2111
+        },
+        "end": {
+          "line": 47,
+          "column": 122,
+          "offset": 2396
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto logger = spdlog::create_async_nb<spdlog::sinks::basic_file_sink_mt>(\"async_file_logger\", \"logs/async_log.txt\");\n// or directly:\n auto logger = std::make_shared<async_logger>(\"as\", test_sink, spdlog::thread_pool(), spdlog::async_overflow_policy::overrun_oldest);",
+      "position": {
+        "start": {
+          "line": 48,
+          "column": 1,
+          "offset": 2397
+        },
+        "end": {
+          "line": 52,
+          "column": 4,
+          "offset": 2674
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlog's thread pool",
+          "position": {
+            "start": {
+              "line": 54,
+              "column": 4,
+              "offset": 2679
+            },
+            "end": {
+              "line": 54,
+              "column": 24,
+              "offset": 2699
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 54,
+          "column": 1,
+          "offset": 2676
+        },
+        "end": {
+          "line": 54,
+          "column": 24,
+          "offset": 2699
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "By default, spdlog create a global thread pool with queue size of 8192 and 1 worker thread which to serve ",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 1,
+              "offset": 2700
+            },
+            "end": {
+              "line": 55,
+              "column": 107,
+              "offset": 2806
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "all",
+              "position": {
+                "start": {
+                  "line": 55,
+                  "column": 109,
+                  "offset": 2808
+                },
+                "end": {
+                  "line": 55,
+                  "column": 112,
+                  "offset": 2811
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 107,
+              "offset": 2806
+            },
+            "end": {
+              "line": 55,
+              "column": 114,
+              "offset": 2813
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " async loggers.",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 114,
+              "offset": 2813
+            },
+            "end": {
+              "line": 55,
+              "column": 129,
+              "offset": 2828
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 55,
+          "column": 1,
+          "offset": 2700
+        },
+        "end": {
+          "line": 55,
+          "column": 130,
+          "offset": 2829
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This means that creating and destructing async loggers is cheap, since they do not own nor create any backing threads or queues- these are created and managed by the shared thread pool object.",
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 1,
+              "offset": 2831
+            },
+            "end": {
+              "line": 57,
+              "column": 193,
+              "offset": 3023
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 57,
+          "column": 1,
+          "offset": 2831
+        },
+        "end": {
+          "line": 57,
+          "column": 193,
+          "offset": 3023
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "All the queue slots are ",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 1,
+              "offset": 3025
+            },
+            "end": {
+              "line": 59,
+              "column": 25,
+              "offset": 3049
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "pre-allocated",
+              "position": {
+                "start": {
+                  "line": 59,
+                  "column": 27,
+                  "offset": 3051
+                },
+                "end": {
+                  "line": 59,
+                  "column": 40,
+                  "offset": 3064
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 25,
+              "offset": 3049
+            },
+            "end": {
+              "line": 59,
+              "column": 42,
+              "offset": 3066
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " on thread-pool construction (each slot occupies ~256 bytes on 64bit systems)",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 42,
+              "offset": 3066
+            },
+            "end": {
+              "line": 59,
+              "column": 119,
+              "offset": 3143
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 59,
+          "column": 1,
+          "offset": 3025
+        },
+        "end": {
+          "line": 59,
+          "column": 119,
+          "offset": 3143
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The thread pool size and threads can be reset by",
+          "position": {
+            "start": {
+              "line": 61,
+              "column": 1,
+              "offset": 3145
+            },
+            "end": {
+              "line": 61,
+              "column": 49,
+              "offset": 3193
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 61,
+          "column": 1,
+          "offset": 3145
+        },
+        "end": {
+          "line": 61,
+          "column": 49,
+          "offset": 3193
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::init_thread_pool(queue_size, n_threads);",
+      "position": {
+        "start": {
+          "line": 62,
+          "column": 1,
+          "offset": 3194
+        },
+        "end": {
+          "line": 64,
+          "column": 4,
+          "offset": 3253
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Note that this will drop the old global thread pool (tp) and create a new tp - which means that any loggers that use the old tp will stop working, so it is advised calling it before any async loggers created.",
+          "position": {
+            "start": {
+              "line": 65,
+              "column": 1,
+              "offset": 3254
+            },
+            "end": {
+              "line": 65,
+              "column": 209,
+              "offset": 3462
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 65,
+          "column": 1,
+          "offset": 3254
+        },
+        "end": {
+          "line": 65,
+          "column": 209,
+          "offset": 3462
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If different loggers must have separate queues, different instances of pools can be created and passed them to the loggers:",
+          "position": {
+            "start": {
+              "line": 67,
+              "column": 1,
+              "offset": 3464
+            },
+            "end": {
+              "line": 67,
+              "column": 124,
+              "offset": 3587
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 67,
+          "column": 1,
+          "offset": 3464
+        },
+        "end": {
+          "line": 67,
+          "column": 124,
+          "offset": 3587
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto tp = std::make_shared<details::thread_pool>(128, 1);\nauto logger = std::make_shared<async_logger>(\"as\", some_sink, tp, async_overflow_policy::overrun_oldest);\n\nauto tp2 = std::make_shared<details::thread_pool>(1024, 4);  // create pool with queue of 1024 slots and 4 backing threads\nauto logger2 = std::make_shared<async_logger>(\"as2\", some_sink, tp2, async_overflow_policy::block);",
+      "position": {
+        "start": {
+          "line": 69,
+          "column": 1,
+          "offset": 3589
+        },
+        "end": {
+          "line": 75,
+          "column": 4,
+          "offset": 3987
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thread-pool has additional constructors that take callbacks as arguments. Those will be executed by each thread following its creation and prior to its destruction.",
+          "position": {
+            "start": {
+              "line": 77,
+              "column": 1,
+              "offset": 3989
+            },
+            "end": {
+              "line": 77,
+              "column": 165,
+              "offset": 4153
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 77,
+          "column": 1,
+          "offset": 3989
+        },
+        "end": {
+          "line": 77,
+          "column": 165,
+          "offset": 4153
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "std::function<void()> on_start = []() { /* execute on start */ };\nauto on_stop = []() { /* execute on stop */ };\nauto tp = std::make_shared<details::thread_pool>(1024, 1, on_start, on_stop);\n\n// init_thread_pool helper also supports optional on_start and on_stop callbacks\nspdlog::init_thread_pool(1024, 1, on_start);\nspdlog::init_thread_pool(1024, 1, on_start, on_stop);",
+      "position": {
+        "start": {
+          "line": 78,
+          "column": 1,
+          "offset": 4154
+        },
+        "end": {
+          "line": 86,
+          "column": 4,
+          "offset": 4536
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Message ordering",
+          "position": {
+            "start": {
+              "line": 88,
+              "column": 5,
+              "offset": 4542
+            },
+            "end": {
+              "line": 88,
+              "column": 21,
+              "offset": 4558
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 88,
+          "column": 1,
+          "offset": 4538
+        },
+        "end": {
+          "line": 88,
+          "column": 21,
+          "offset": 4558
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "By default, spdlog creates a single worker thread which preserves the order of the messages in the queue.",
+          "position": {
+            "start": {
+              "line": 89,
+              "column": 1,
+              "offset": 4559
+            },
+            "end": {
+              "line": 89,
+              "column": 106,
+              "offset": 4664
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 89,
+          "column": 1,
+          "offset": 4559
+        },
+        "end": {
+          "line": 89,
+          "column": 106,
+          "offset": 4664
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Please note that with thread pool with multiple workers threads, messages may be reordered after dequeuing.",
+          "position": {
+            "start": {
+              "line": 91,
+              "column": 1,
+              "offset": 4666
+            },
+            "end": {
+              "line": 91,
+              "column": 108,
+              "offset": 4773
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 91,
+          "column": 1,
+          "offset": 4666
+        },
+        "end": {
+          "line": 91,
+          "column": 108,
+          "offset": 4773
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you want to keep the message order, create only one worker thread in the thread pool.",
+          "position": {
+            "start": {
+              "line": 93,
+              "column": 1,
+              "offset": 4775
+            },
+            "end": {
+              "line": 93,
+              "column": 89,
+              "offset": 4863
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 93,
+          "column": 1,
+          "offset": 4775
+        },
+        "end": {
+          "line": 93,
+          "column": 89,
+          "offset": 4863
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "Windows issues",
+          "position": {
+            "start": {
+              "line": 95,
+              "column": 6,
+              "offset": 4870
+            },
+            "end": {
+              "line": 95,
+              "column": 20,
+              "offset": 4884
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 95,
+          "column": 1,
+          "offset": 4865
+        },
+        "end": {
+          "line": 95,
+          "column": 20,
+          "offset": 4884
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "There is a bug in VS runtime that cause the application dead lock when it exits. If you use async logging, please make sure to call ",
+          "position": {
+            "start": {
+              "line": 96,
+              "column": 1,
+              "offset": 4885
+            },
+            "end": {
+              "line": 96,
+              "column": 133,
+              "offset": 5017
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::shutdown()",
+          "position": {
+            "start": {
+              "line": 96,
+              "column": 133,
+              "offset": 5017
+            },
+            "end": {
+              "line": 96,
+              "column": 157,
+              "offset": 5041
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " before main() exit\n(",
+          "position": {
+            "start": {
+              "line": 96,
+              "column": 157,
+              "offset": 5041
+            },
+            "end": {
+              "line": 97,
+              "column": 2,
+              "offset": 5062
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://stackoverflow.com/questions/10915233/stdthreadjoin-hangs-if-called-after-main-exits-when-using-vs2012-",
+          "children": [
+            {
+              "type": "text",
+              "value": "stackoverflow: std::thread join hangs if called after main exits when using vs2012 rc ",
+              "position": {
+                "start": {
+                  "line": 97,
+                  "column": 3,
+                  "offset": 5063
+                },
+                "end": {
+                  "line": 97,
+                  "column": 89,
+                  "offset": 5149
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 2,
+              "offset": 5062
+            },
+            "end": {
+              "line": 97,
+              "column": 201,
+              "offset": 5261
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ").",
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 201,
+              "offset": 5261
+            },
+            "end": {
+              "line": 97,
+              "column": 203,
+              "offset": 5263
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 96,
+          "column": 1,
+          "offset": 4885
+        },
+        "end": {
+          "line": 97,
+          "column": 203,
+          "offset": 5263
+        }
+      }
+    }
+  ],
+  "changes": []
+}

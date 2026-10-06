@@ -1,0 +1,117 @@
+{
+  "at": "2026-10-03T06:22:40.353Z",
+  "status": "partial-version-correspondence",
+  "softwareTree": "79524ddd08a4ec981b7fea76afd08ee05f83755d",
+  "wikiCommit": "d384272cd5320e27b041ae92625040aa6db71a1e",
+  "tweakingMacros": [
+    {
+      "name": "SPDLOG_CLOCK_COARSE",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_NO_THREAD_ID",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_NO_TLS",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_NO_ATOMIC_LEVELS",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_WCHAR_FILENAMES",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_EOL",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_FMT_EXTERNAL",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_WCHAR_TO_UTF",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_PREVENT_CHILD_FD",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_LEVEL_NAMES",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_SHORT_LEVEL_NAMES",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_DISABLE_DEFAULT_LOGGER",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_DEBUG",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_INFO",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_ACTIVE_LEVEL",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_LEVEL_INFO",
+      "presentInFixedHeader": true
+    },
+    {
+      "name": "SPDLOG_FUNCTION",
+      "presentInFixedHeader": true
+    }
+  ],
+  "findings": [
+    {
+      "topic": "Tweaking CLOCK_COARSE",
+      "wiki": "Example enables Linux CLOCK_REALTIME_COARSE; precision caveat",
+      "fixed": "os-inl.h76..84 implements guarded CLOCK_REALTIME_COARSE; current tweakme same precision caveat",
+      "judgment": "Corresponding setting present, no performance measurement inferred"
+    },
+    {
+      "topic": "Tweaking NO_THREAD_ID",
+      "wiki": "%t result undefined when disabled",
+      "fixed": "current tweakme comment says zero logged",
+      "judgment": "Preserve original, label earlier guide differs from1.17 comment. Runtime behavior not tested"
+    },
+    {
+      "topic": "PREVENT_CHILD_FD",
+      "wiki": "Uncomment prevents inherited log FD",
+      "fixed": "os-inl.h127..151 Windows inheritance clearing and Unix O_CLOEXEC; current tweakme setting present",
+      "judgment": "Not removed, counterpart present. No software executed"
+    },
+    {
+      "topic": "Custom-formatting MDC",
+      "wiki": "Earlier pattern table lacks%&",
+      "fixed": "pattern_formatter-inl.h1239..1243 registers & when TLS enabled; README MDC section present",
+      "judgment": "EarlierWiki is not complete1.17 flag catalogue; keep whole Wiki and explicit dated snapshot annotation"
+    },
+    {
+      "topic": "Sinks old name",
+      "wiki": "Dist example simple_file_sink_st",
+      "fixed": "fixed basic_file_sink.h36..37 basic_file_sink_mt/st, tree lacks simple_file_sink named header",
+      "judgment": "Historical sample name differs; no silent rewrite or compileability claim"
+    },
+    {
+      "topic": "CMake",
+      "wiki": "3.0+ in independentWiki",
+      "fixed": "fixed CMakeLists1 requires3.10...3.21",
+      "judgment": "Explicit original-version discrepancy, preserve and separate current fixed requirement note"
+    }
+  ],
+  "limitation": "Four helper headers Git blob verified. Only cited excerpts plus whole basic_file_sink read; no whole-library review, no compiled samples. Entire Wiki correspondence/completeness and scoring remain unfinished.",
+  "publicationLabelProposal": "spdlog1.17.0 README + official Wiki snapshot2025-10-15 (d384272c), independentWiki not tagged1.17.0",
+  "sourceReview": "Original Wiki whole-read screening381; this check does not replace translation review"
+}

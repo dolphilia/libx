@@ -1,0 +1,1 @@
+import {defineDocsConfig} from '@docs/config';import trial from './src/plugins/remark-spdlog-trial.mjs';const c=defineDocsConfig({site:'http://localhost:4390',base:'/docs/spdlog-trial',rootDir:process.cwd()});export default {...c,markdown:{...c.markdown,smartypants:false,remarkPlugins:[trial,c.markdown.remarkPlugins[0]]}};

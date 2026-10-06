@@ -1,0 +1,230 @@
+{
+  "source": {
+    "name": "Preventing-undefined-thread-ids-in-child-processes.md",
+    "source": "/Users/dolphilia/github/libx/docs/notes/project-expansion/runs/evidence/2026-10-03-378/wiki/Preventing-undefined-thread-ids-in-child-processes.md",
+    "sourceSHA256": "ecaf833b4deb534067c70721119491c65e0eba2674d2fad794d9edfc70f3b16e",
+    "slug": "19-preventing-undefined-thread-ids-in-child-processes",
+    "trial": "/private/tmp/libx-spdlog-trial-20261003/apps/spdlog-trial/src/content/docs/v1/en/01-guide/19-preventing-undefined-thread-ids-in-child-processes.md",
+    "bytes": 384,
+    "wholeBodyKept": true
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "By default spdlog saves thread ids in thread local storage to gain a few micros for each call, but if your program forks, you ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 483
+            },
+            "end": {
+              "line": 5,
+              "column": 127,
+              "offset": 609
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "must",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 129,
+                  "offset": 611
+                },
+                "end": {
+                  "line": 5,
+                  "column": 133,
+                  "offset": 615
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 127,
+              "offset": 609
+            },
+            "end": {
+              "line": 5,
+              "column": 135,
+              "offset": 617
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " uncomment the ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 135,
+              "offset": 617
+            },
+            "end": {
+              "line": 5,
+              "column": 150,
+              "offset": 632
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_DISABLE_TID_CACHING",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 150,
+              "offset": 632
+            },
+            "end": {
+              "line": 5,
+              "column": 182,
+              "offset": 664
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " flag in ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 182,
+              "offset": 664
+            },
+            "end": {
+              "line": 5,
+              "column": 191,
+              "offset": 673
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/blob/master/include/spdlog/tweakme.h",
+          "children": [
+            {
+              "type": "text",
+              "value": "tweakme.h",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 192,
+                  "offset": 674
+                },
+                "end": {
+                  "line": 5,
+                  "column": 201,
+                  "offset": 683
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 191,
+              "offset": 673
+            },
+            "end": {
+              "line": 5,
+              "column": 273,
+              "offset": 755
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 273,
+              "offset": 755
+            },
+            "end": {
+              "line": 5,
+              "column": 274,
+              "offset": 756
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 483
+        },
+        "end": {
+          "line": 5,
+          "column": 274,
+          "offset": 756
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This will prevent undefined thread ids in child log messages:",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 758
+            },
+            "end": {
+              "line": 7,
+              "column": 62,
+              "offset": 819
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 758
+        },
+        "end": {
+          "line": 7,
+          "column": 62,
+          "offset": 819
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#define SPDLOG_DISABLE_TID_CACHING",
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 821
+        },
+        "end": {
+          "line": 11,
+          "column": 4,
+          "offset": 866
+        }
+      }
+    }
+  ],
+  "changes": []
+}
