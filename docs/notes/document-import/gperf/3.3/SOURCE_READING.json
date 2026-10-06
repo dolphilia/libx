@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-03T21:44:13.462Z",
+  "status": "whole-primary-functional-source-read-not-translation-review",
+  "scope": [
+    "doc/gperf.html: title/TOC/notice plus complete contributors through concept index and footer",
+    "doc/gperf.1: whole 310-line source including option lists, notices and See Also"
+  ],
+  "method": "固定HTML本文をタグ抽出して2区間で全文読解、man原文を全文読解。原GPL章は翻訳対象から分離して原bytes保持。署名検証や現行サイトとの一致は主張しない。",
+  "selfContained": "主な入力形式、structの前提、全宣言・優先順位、生成関数・NUL条件、識別子、出力著作権、CLI全オプション、制約・文献・索引が収録範囲内にある。動画/チャット/Issueを組み合わせて主要説明を書き足す必要はない。",
+  "external": "論文・文献、GNU tool比較やソフトウェアソースへの参照は補助。例c.gperf等の言及は追加で発明せず原配布物の参照として区別。外部リンクの現在の全生存検査は未実施。",
+  "originalAnomalies": [
+    {
+      "location": "guide 4.2 / SEC14 / in_word_set description",
+      "original": "struct-type指定時の成功戻り値に続くOtherwise it returns NULLは、成功非struct時の処理として読むと実装と食い違う。",
+      "fixedImplementation": "src/output.ccの通常lookup比較一致分岐はTYPEなら&wordlist[key]、非TYPEならsを返し、末尾不一致でnull_expressionを返す。",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-557/output.cc",
+        "sha256": "e0bdcaeb1108ac5e5b2b607c0d61b3b523133d6cdf5fc1ce58ac6833541e378d"
+      },
+      "lines": "2000-2037",
+      "action": "原文・原訳を勝手に置換しない。別注記で固定3.3実装では非struct成功時にキーワード文字列へのポインタを返すこと、未一致はNULLと説明し、実装参照を付ける。実行試験は未実施。"
+    },
+    {
+      "location": "CLI --jump vs guide 5.5",
+      "original": "CLIは奇数必須、guideは偶数を切り上げ・0ランダムと説明。",
+      "fixedImplementation": "src/options.cc853-865で負値拒否、非0の偶数へ1加算。0のランダム動作はこのparser部分だけで実行検証していない。",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-557/options.cc",
+        "sha256": "1fcbe04b600661ac4b6afa0ecf2ebc799ab0822dc4bbdd564c542a567edfad06"
+      },
+      "action": "両原文を保持し、偶数丸めの文書間差異は固定parser参照の注記として残す。0動作を独立検証済みとしない。"
+    }
+  ],
+  "contentReview": "本記録は候補の全原文読解と自立性判定であり、未作成の英日成果物の全文内容レビューではない。"
+}

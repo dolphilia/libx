@@ -1,0 +1,9 @@
+<H2><A NAME="SEC20" HREF="#TOC20">5.2 入力ファイルの解釈に影響するオプション</A></H2>
+<P>これらのオプションは、入力ファイルの宣言としても指定できます（<A HREF="#SEC9">4.1.1.2 Gperfの宣言</A>を参照）。</P>
+<DL COMPACT>
+<DT><SAMP>&lsquo;-e <VAR>keyword-delimiter-list</VAR>&rsquo;</SAMP><DD>
+<DT><SAMP>&lsquo;--delimiters=<VAR>keyword-delimiter-list</VAR>&rsquo;</SAMP><DD><A NAME="IDX41"></A>キーワードとその属性を区切るための区切り文字を含む文字列を指定できます。デフォルトは「,」です。カンマや改行を含むキーワードを使うには、このオプションが必要です。便利な方法として、-e'TAB'を使うことができます。ここでTABは、実際のタブ文字を表します。
+<DT><SAMP>&lsquo;-t&rsquo;</SAMP><DD>
+<DT><SAMP>&lsquo;--struct-type&rsquo;</SAMP><DD>生成コードに<CODE>struct</CODE>型の宣言を含められます。連続する2つの<SAMP>&lsquo;%%&rsquo;</SAMP>より前のテキストはすべて、型宣言の一部とみなされます。その後にキーワードと追加のフィールドを記述でき、1行につきフィールドの組を1つ置きます。このリリースには、Ada、C、C++、Pascal、Modula 2、Modula 3、JavaScriptの予約語に対して完全ハッシュテーブルと関数を生成する例が含まれています。
+<DT><SAMP>&lsquo;--ignore-case&rsquo;</SAMP><DD>ASCII文字の大文字と小文字を同等とみなします。文字列の比較では、大文字と小文字を区別せずに文字を比較します。ロケールに依存する大文字・小文字の対応は無視されることに注意してください。そのため、適切に国際化された、またはロケールを考慮した大文字・小文字の対応を使う必要がある場合、このオプションは適していません。たとえば、トルコ語ロケールでは、ASCIIの小文字<SAMP>&lsquo;i&rsquo;</SAMP>に対応する大文字は、非ASCII文字の<SAMP>&lsquo;capital i with dot above&rsquo;</SAMP>、つまり上に点が付いた大文字Iです。この場合、<CODE>gperf</CODE>の生成関数に文字列を渡す前に、大文字または小文字への変換を行う方が適切です。
+</DL>

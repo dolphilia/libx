@@ -1,0 +1,80 @@
+
+<H1><CODE>gperf</CODE> 3.2 利用ガイド</H1>
+<H2>GNUの完全ハッシュ関数生成器</H2>
+<H2>第3.2版、2024年10月28日</H2>
+<ADDRESS>Douglas C. Schmidt</ADDRESS>
+<ADDRESS>Bruno Haible</ADDRESS>
+<P>
+<P><HR><P>
+<H1>目次</H1>
+<UL>
+<LI><A NAME="TOC1" HREF="#SEC1">GNU GENERAL PUBLIC LICENSE</A>
+<LI><A NAME="TOC2" HREF="#SEC2">GNU <CODE>gperf</CODE>ユーティリティの貢献者</A>
+<LI><A NAME="TOC3" HREF="#SEC3">2 はじめに</A>
+<LI><A NAME="TOC4" HREF="#SEC4">3 静的検索構造とGNU <CODE>gperf</CODE></A>
+<LI><A NAME="TOC5" HREF="#SEC5">4 GNU <CODE>gperf</CODE>の概要</A>
+<UL>
+<LI><A NAME="TOC6" HREF="#SEC6">4.1 <CODE>gperf</CODE>への入力形式</A>
+<UL>
+<LI><A NAME="TOC7" HREF="#SEC7">4.1.1 宣言</A>
+<UL>
+<LI><A NAME="TOC8" HREF="#SEC8">4.1.1.1 利用者が指定する<CODE>struct</CODE></A>
+<LI><A NAME="TOC9" HREF="#SEC9">4.1.1.2 Gperfの宣言</A>
+<LI><A NAME="TOC10" HREF="#SEC10">4.1.1.3 Cコードの取り込み</A>
+</UL>
+<LI><A NAME="TOC11" HREF="#SEC11">4.1.2 キーワード項目の形式</A>
+<LI><A NAME="TOC12" HREF="#SEC12">4.1.3 追加のC関数の取り込み</A>
+<LI><A NAME="TOC13" HREF="#SEC13">4.1.4 GNU <CODE>indent</CODE>向けの指示を置く場所</A>
+</UL>
+<LI><A NAME="TOC14" HREF="#SEC14">4.2 <CODE>gperf</CODE>が生成するCコードの出力形式</A>
+<LI><A NAME="TOC15" HREF="#SEC15">4.3 NULバイトの使用</A>
+<LI><A NAME="TOC16" HREF="#SEC16">4.4 識別子の制御</A>
+<LI><A NAME="TOC17" HREF="#SEC17">4.5 出力の著作権</A>
+</UL>
+<LI><A NAME="TOC18" HREF="#SEC18">5 <CODE>gperf</CODE>の実行</A>
+<UL>
+<LI><A NAME="TOC19" HREF="#SEC19">5.1 出力ファイルの場所の指定</A>
+<LI><A NAME="TOC20" HREF="#SEC20">5.2 入力ファイルの解釈に影響するオプション</A>
+<LI><A NAME="TOC21" HREF="#SEC21">5.3 出力コードの言語を指定するオプション</A>
+<LI><A NAME="TOC22" HREF="#SEC22">5.4 出力コードの詳細を調整するオプション</A>
+<LI><A NAME="TOC23" HREF="#SEC23">5.5 <CODE>gperf</CODE>が使うアルゴリズムを変更するオプション</A>
+<LI><A NAME="TOC24" HREF="#SEC24">5.6 情報の出力</A>
+</UL>
+<LI><A NAME="TOC25" HREF="#SEC25">6 <CODE>gperf</CODE>の既知の不具合と制限</A>
+<LI><A NAME="TOC26" HREF="#SEC26">7 今後の課題</A>
+<LI><A NAME="TOC27" HREF="#SEC27">8 参考文献</A>
+<LI><A NAME="TOC28" HREF="#SEC28">概念索引</A>
+</UL>
+<P><HR><P>
+
+<P>
+Copyright (C) 1989-2024 Free Software Foundation, Inc.
+
+</P>
+
+<P>
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+</P>
+<P>
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+section entitled “GNU General Public License” is included
+exactly as in the original, and provided that the entire resulting
+derived work is distributed under the terms of a permission notice
+identical to this one.
+
+</P>
+<P>
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that the section entitled “GNU General Public License” may be
+included in a translation approved by the author instead of in the
+original English.
+
+</P>
+
+
+

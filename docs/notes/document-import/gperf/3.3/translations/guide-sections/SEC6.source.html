@@ -1,0 +1,46 @@
+<H2><A NAME="SEC6" HREF="gperf.html#TOC6">4.1  Input Format to <CODE>gperf</CODE></A></H2>
+<P>
+<A NAME="IDX4"></A>
+<A NAME="IDX5"></A>
+<A NAME="IDX6"></A>
+<A NAME="IDX7"></A>
+You can control the input file format by varying certain command-line
+arguments, in particular the <SAMP>&lsquo;-t&rsquo;</SAMP> option.  The input's appearance
+is similar to GNU utilities <CODE>flex</CODE> and <CODE>bison</CODE> (or UNIX
+utilities <CODE>lex</CODE> and <CODE>yacc</CODE>).  Here's an outline of the general
+format:
+
+</P>
+
+<PRE>
+declarations
+%%
+keywords
+%%
+functions
+</PRE>
+
+<P>
+<EM>Unlike</EM> <CODE>flex</CODE> or <CODE>bison</CODE>, the declarations section and
+the functions section are optional.  The following sections describe the
+input format for each section.
+
+</P>
+
+<P>
+It is possible to omit the declaration section entirely, if the <SAMP>&lsquo;-t&rsquo;</SAMP>
+option is not given.  In this case the input file begins directly with the
+first keyword line, e.g.:
+
+</P>
+
+<PRE>
+january
+february
+march
+april
+...
+</PRE>
+
+
+

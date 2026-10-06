@@ -1,0 +1,46 @@
+<H2><A NAME="SEC20" HREF="gperf.html#TOC20">5.2  Options that affect Interpretation of the Input File</A></H2>
+
+<P>
+These options are also available as declarations in the input file
+(see section <A HREF="gperf.html#SEC9">4.1.1.2  Gperf Declarations</A>).
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>&lsquo;-e <VAR>keyword-delimiter-list</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--delimiters=<VAR>keyword-delimiter-list</VAR>&rsquo;</SAMP>
+<DD>
+<A NAME="IDX41"></A>
+Allows you to provide a string containing delimiters used to
+separate keywords from their attributes.  The default is ",".  This
+option is essential if you want to use keywords that have embedded
+commas or newlines.  One useful trick is to use -e'TAB', where TAB is
+the literal tab character.
+
+<DT><SAMP>&lsquo;-t&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--struct-type&rsquo;</SAMP>
+<DD>
+Allows you to include a <CODE>struct</CODE> type declaration for generated
+code.  Any text before a pair of consecutive <SAMP>&lsquo;%%&rsquo;</SAMP> is considered
+part of the type declaration.  Keywords and additional fields may follow
+this, one group of fields per line.  A set of examples for generating
+perfect hash tables and functions for Ada, C, C++, Pascal, Modula 2,
+Modula 3 and JavaScript reserved words are distributed with this release.
+
+<DT><SAMP>&lsquo;--ignore-case&rsquo;</SAMP>
+<DD>
+Consider upper and lower case ASCII characters as equivalent.  The string
+comparison will use a case insignificant character comparison.  Note that
+locale dependent case mappings are ignored.  This option is therefore not
+suitable if a properly internationalized or locale aware case mapping
+should be used.  (For example, in a Turkish locale, the upper case equivalent
+of the lowercase ASCII letter <SAMP>&lsquo;i&rsquo;</SAMP> is the non-ASCII character
+<SAMP>&lsquo;capital i with dot above&rsquo;</SAMP>.)  For this case, it is better to apply
+an uppercase or lowercase conversion on the string before passing it to
+the <CODE>gperf</CODE> generated function.
+</DL>
+
+
+

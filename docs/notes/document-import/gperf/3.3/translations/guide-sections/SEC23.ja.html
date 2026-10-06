@@ -1,0 +1,56 @@
+<H2><A NAME="SEC23" HREF="#TOC23">5.5 <CODE>gperf</CODE>が使うアルゴリズムを変更するオプション</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>&lsquo;-k <VAR>selected-byte-positions</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--key-positions=<VAR>selected-byte-positions</VAR>&rsquo;</SAMP>
+<DD>
+キーワードのハッシュ関数で使うバイト位置を選択できます。指定できる位置は1から255までです。位置は<SAMP>&lsquo;-k 9,4,13,14&rsquo;</SAMP>のようにカンマで区切り、<SAMP>&lsquo;-k 2-7&rsquo;</SAMP>のように範囲でも指定できます。順序は任意です。また、ワイルドカード「*」を指定すると、生成するハッシュ関数は各キーワードの<STRONG>すべての</STRONG>バイト位置を使用します。「$」は、キーワードの「最後のバイト」を使うよう指示します。なお、これは255より大きいバイト位置を使う唯一の方法です。たとえば、<SAMP>&lsquo;-k 1,2,4,6-10,'$'&rsquo;</SAMP>では、位置1、2、4、6、7、8、9、10と、各キーワードの最後のバイトを使うハッシュ関数を生成します。最後のバイトの位置は当然、キーワードごとに異なる場合があります。指定位置より短いキーワードでも正常に動作します。キーワードの長さを超える指定位置は、ハッシュ関数で単に参照されないためです。<CODE>gperf</CODE>のバージョン2.8以降、通常このオプションは不要です。デフォルトのバイト位置は、キーワード集合に応じて、使用する位置の数を最小化する探索によって計算されます。
+
+<DT><SAMP>&lsquo;-D&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--duplicates&rsquo;</SAMP>
+<DD>
+<A NAME="IDX50"></A>選択したバイト集合のハッシュ値が重複するキーワードを処理します。同じ名前で属性が異なるキーワードがある場合や、選択したバイト位置が適切でない場合に、ハッシュ値が重複することがあります。-Dオプションを使うと、<CODE>gperf</CODE>はこれらのキーワードをすべて同じ同値類に含め、重複するキーワードに対して複数回の比較を行う完全ハッシュ関数を生成します。キーワードを完全に区別するために生成したCコードを変更する作業は、利用者が行う必要があります。ただし、<CODE>gperf</CODE>は出力を整理することで、その作業を助けます。このオプションを使うと、通常、生成するハッシュ関数は完全ではなくなります。一方で、<CODE>gperf</CODE>がほかの方法では扱えないキーワード集合を処理できるようになります。
+
+<DT><SAMP>&lsquo;-m <VAR>iterations</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--multiple-iterations=<VAR>iterations</VAR>&rsquo;</SAMP>
+<DD>
+<SAMP>&lsquo;-i&rsquo;</SAMP>と<SAMP>&lsquo;-j&rsquo;</SAMP>の値を複数通り試し、最良の結果を選びます。実行時間は<VAR>iterations</VAR>倍になりますが、生成するテーブルのサイズを小さくするのに効果があります。
+
+<DT><SAMP>&lsquo;-i <VAR>initial-value</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--initial-asso=<VAR>initial-value</VAR>&rsquo;</SAMP>
+<DD>
+関連値配列の初期<VAR>value</VAR>を指定します。デフォルトは0です。初期値を大きくすると最終的なテーブルサイズが増え、キーワード検索の時間効率がよくなる可能性があります。ただし、<SAMP>&lsquo;-S&rsquo;</SAMP>、または同じ働きをする<SAMP>&lsquo;%switch&rsquo;</SAMP>を使う場合、このオプションは特に有用ではありません。また、<SAMP>&lsquo;-r&rsquo;</SAMP>オプションを使うと、<SAMP>&lsquo;-i&rsquo;</SAMP>の指定より優先されます。
+
+<DT><SAMP>&lsquo;-j <VAR>jump-value</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--jump=<VAR>jump-value</VAR>&rsquo;</SAMP>
+<DD>
+<A NAME="IDX51"></A>「ジャンプ値」、つまり衝突時に関連バイト値をどれだけ進めるかに影響します。<VAR>Jump-value</VAR>は奇数に切り上げられ、デフォルトは5です。<VAR>jump-value</VAR>が0の場合、<CODE>gperf</CODE>はランダムな幅でジャンプします。
+
+<DT><SAMP>&lsquo;-n&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--no-strlen&rsquo;</SAMP>
+<DD>
+ハッシュ値の計算にキーワードの長さを含めないよう、生成器に指示します。生成する検索テーブルで、アセンブリ命令を数個節約できる場合があります。
+
+<DT><SAMP>&lsquo;-r&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--random&rsquo;</SAMP>
+<DD>
+関連値テーブルの初期化に乱数を使います。すべての関連値を0から始める決定的な初期化よりも、速く解が得られることがよくあります。また、ランダム化オプションを使うと、一般にテーブルのサイズが大きくなります。
+
+<DT><SAMP>&lsquo;-s <VAR>size-multiple</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--size-multiple=<VAR>size-multiple</VAR>&rsquo;</SAMP>
+<DD>
+生成するハッシュテーブルのサイズに影響します。このオプションの数値引数は、関連値の最大範囲をキーワードの数に対して「何倍大きく、または小さく」するかを示します。整数、浮動小数点数、分数で記述できます。たとえば、値が3なら「関連値の最大値を入力キーワード数の約3倍まで許す」という意味です。逆に、1/3なら「関連値の最大値を入力キーワード数の約3分の1まで許す」という意味です。1より小さい値は、生成するハッシュテーブルの全体のサイズを制限するのに役立ちますが、この目的には<SAMP>&lsquo;-m&rsquo;</SAMP>オプションの方が適しています。「switchの生成」オプション<SAMP>&lsquo;-S&rsquo;</SAMP>、または同じ働きをする<SAMP>&lsquo;%switch&rsquo;</SAMP>が有効で<EM>ない</EM>場合、関連値の最大値は静的配列のテーブルサイズに影響します。テーブルを大きくすると、追加の領域を必要とする代わりに、検索が不成功に終わるまでの時間が短くなると考えられます。デフォルトは1なので、デフォルトの関連値の最大値は、キーワード数とほぼ同じ大きさになります。効率のため、関連値の最大値は必ず2のべき乗に切り上げられます。この手法は本質的にヒューリスティックなので、実際のテーブルサイズは多少変わる場合があります。
+
+</DL>
+
+
+

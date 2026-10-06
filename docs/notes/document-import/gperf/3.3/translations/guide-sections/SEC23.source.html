@@ -1,0 +1,125 @@
+<H2><A NAME="SEC23" HREF="gperf.html#TOC23">5.5  Options for changing the Algorithms employed by <CODE>gperf</CODE></A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>&lsquo;-k <VAR>selected-byte-positions</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--key-positions=<VAR>selected-byte-positions</VAR>&rsquo;</SAMP>
+<DD>
+Allows selection of the byte positions used in the keywords'
+hash function.  The allowable choices range between 1-255, inclusive.
+The positions are separated by commas, e.g., <SAMP>&lsquo;-k 9,4,13,14&rsquo;</SAMP>;
+ranges may be used, e.g., <SAMP>&lsquo;-k 2-7&rsquo;</SAMP>; and positions may occur
+in any order.  Furthermore, the wildcard '*' causes the generated
+hash function to consider <STRONG>all</STRONG> byte positions in each keyword,
+whereas '$' instructs the hash function to use the “final byte”
+of a keyword (this is the only way to use a byte position greater than
+255, incidentally).
+
+For instance, the option <SAMP>&lsquo;-k 1,2,4,6-10,'$'&rsquo;</SAMP> generates a hash
+function that considers positions 1,2,4,6,7,8,9,10, plus the last
+byte in each keyword (which may be at a different position for each
+keyword, obviously).  Keywords
+with length less than the indicated byte positions work properly, since
+selected byte positions exceeding the keyword length are simply not
+referenced in the hash function.
+
+This option is not normally needed since version 2.8 of <CODE>gperf</CODE>;
+the default byte positions are computed depending on the keyword set,
+through a search that minimizes the number of byte positions.
+
+<DT><SAMP>&lsquo;-D&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--duplicates&rsquo;</SAMP>
+<DD>
+<A NAME="IDX50"></A>
+Handle keywords whose selected byte sets hash to duplicate values.
+Duplicate hash values can occur if a set of keywords has the same names, but
+possesses different attributes, or if the selected byte positions are not well
+chosen.  With the -D option <CODE>gperf</CODE> treats all these keywords as
+part of an equivalence class and generates a perfect hash function with
+multiple comparisons for duplicate keywords.  It is up to you to completely
+disambiguate the keywords by modifying the generated C code.  However,
+<CODE>gperf</CODE> helps you out by organizing the output.
+
+Using this option usually means that the generated hash function is no
+longer perfect.  On the other hand, it permits <CODE>gperf</CODE> to work on
+keyword sets that it otherwise could not handle.
+
+<DT><SAMP>&lsquo;-m <VAR>iterations</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--multiple-iterations=<VAR>iterations</VAR>&rsquo;</SAMP>
+<DD>
+Perform multiple choices of the <SAMP>&lsquo;-i&rsquo;</SAMP> and <SAMP>&lsquo;-j&rsquo;</SAMP> values, and
+choose the best results.  This increases the running time by a factor of
+<VAR>iterations</VAR> but does a good job minimizing the generated table size.
+
+<DT><SAMP>&lsquo;-i <VAR>initial-value</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--initial-asso=<VAR>initial-value</VAR>&rsquo;</SAMP>
+<DD>
+Provides an initial <VAR>value</VAR> for the associate values array.  Default
+is 0.  Increasing the initial value helps inflate the final table size,
+possibly leading to more time efficient keyword lookups.  Note that this
+option is not particularly useful when <SAMP>&lsquo;-S&rsquo;</SAMP> (or, equivalently,
+<SAMP>&lsquo;%switch&rsquo;</SAMP>) is used.  Also,
+<SAMP>&lsquo;-i&rsquo;</SAMP> is overridden when the <SAMP>&lsquo;-r&rsquo;</SAMP> option is used.
+
+<DT><SAMP>&lsquo;-j <VAR>jump-value</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--jump=<VAR>jump-value</VAR>&rsquo;</SAMP>
+<DD>
+<A NAME="IDX51"></A>
+Affects the “jump value”, i.e., how far to advance the associated
+byte value upon collisions.  <VAR>Jump-value</VAR> is rounded up to an
+odd number, the default is 5.  If the <VAR>jump-value</VAR> is 0 <CODE>gperf</CODE>
+jumps by random amounts.
+
+<DT><SAMP>&lsquo;-n&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--no-strlen&rsquo;</SAMP>
+<DD>
+Instructs the generator not to include the length of a keyword when
+computing its hash value.  This may save a few assembly instructions in
+the generated lookup table.
+
+<DT><SAMP>&lsquo;-r&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--random&rsquo;</SAMP>
+<DD>
+Utilizes randomness to initialize the associated values table.  This
+frequently generates solutions faster than using deterministic
+initialization (which starts all associated values at 0).  Furthermore,
+using the randomization option generally increases the size of the
+table.
+
+<DT><SAMP>&lsquo;-s <VAR>size-multiple</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--size-multiple=<VAR>size-multiple</VAR>&rsquo;</SAMP>
+<DD>
+Affects the size of the generated hash table.  The numeric argument for
+this option indicates “how many times larger or smaller” the maximum
+associated value range should be, in relationship to the number of keywords.
+It can be written as an integer, a floating-point number or a fraction.
+For example, a value of 3 means “allow the maximum associated value to be
+about 3 times larger than the number of input keywords”.
+Conversely, a value of 1/3 means “allow the maximum associated value to
+be about 3 times smaller than the number of input keywords”.  Values
+smaller than 1 are useful for limiting the overall size of the generated hash
+table, though the option <SAMP>&lsquo;-m&rsquo;</SAMP> is better at this purpose.
+
+If `generate switch' option <SAMP>&lsquo;-S&rsquo;</SAMP> (or, equivalently, <SAMP>&lsquo;%switch&rsquo;</SAMP>) is
+<EM>not</EM> enabled, the maximum
+associated value influences the static array table size, and a larger
+table should decrease the time required for an unsuccessful search, at
+the expense of extra table space.
+
+The default value is 1, thus the default maximum associated value is about
+the same size as the number of keywords.  (For efficiency, the maximum
+associated value is always rounded up to a power of 2.)  The actual
+table size may vary somewhat, since this technique is essentially a
+heuristic.
+</DL>
+
+
+

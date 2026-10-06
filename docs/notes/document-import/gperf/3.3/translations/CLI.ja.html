@@ -1,0 +1,107 @@
+<h1>GNU gperf 3.3 — CLI（2025年4月）</h1>
+<h2 id="cli-name">名称</h2>
+<p>gperf - キー集合から完全ハッシュ関数を生成する</p>
+<h2 id="cli-synopsis">書式</h2>
+<p><strong>gperf</strong> [OPTION]... [INPUT-FILE]</p>
+<h2 id="cli-description">説明</h2>
+<p>GNU 'gperf'は完全ハッシュ関数を生成します。</p>
+<p>長いオプションで引数が必須とされている場合、対応する短いオプションでも引数は必須です。</p>
+<h3 id="cli-output-file-location">出力ファイルの場所:</h3>
+<p>--output-file=FILE 出力を指定したファイルに書き込みます。</p>
+<p>出力ファイルを指定しない場合、または-を指定した場合、結果は標準出力に書き込まれます。</p>
+<h3 id="cli-input-file-interpretation">入力ファイルの解釈:</h3>
+<dl>
+<dt><code>-e, --delimiters=DELIMITER-LIST</code></dt>
+<dd>キーワードとその属性を区切るための区切り文字を含む文字列を、利用者が指定できます。デフォルトは「,」です。</dd>
+<dt><code>-t, --struct-type</code></dt>
+<dd>生成コードに構造化された型の宣言を含められます。%%より前のテキストはすべて、型宣言の一部とみなされます。その後にキーワードと追加のフィールドを記述でき、1行につきフィールドの組を1つ置きます。</dd>
+<dt><code>--ignore-case</code></dt>
+<dd>ASCII文字の大文字と小文字を同等とみなします。ロケールに依存する大文字・小文字の対応は無視されることに注意してください。</dd>
+</dl>
+<h3 id="cli-language-for-the-output-code">出力コードの言語:</h3>
+<dl>
+<dt><code>-L, --language=LANGUAGE-NAME</code></dt>
+<dd>指定した言語のコードを生成します。現在対応している言語はC++、ANSI-C、C、KR-Cです。デフォルトはANSI-Cです。</dd>
+</dl>
+<h3 id="cli-details-in-the-output-code">出力コードの詳細:</h3>
+<dl>
+<dt><code>-K, --slot-name=NAME</code></dt>
+<dd>キーワード構造体内でキーワードを格納するメンバーの名前を選択します。</dd>
+<dt><code>-F, --initializer-suffix=INITIALIZERS</code></dt>
+<dd>キーワード構造体の追加メンバーの初期化子を指定します。</dd>
+<dt><code>-H, --hash-function-name=NAME</code></dt>
+<dd>生成するハッシュ関数の名前を指定します。デフォルトは'hash'です。</dd>
+<dt><code>-N, --lookup-function-name=NAME</code></dt>
+<dd>生成する検索関数の名前を指定します。デフォルトの名前は'in_word_set'です。</dd>
+<dt><code>-Z, --class-name=NAME</code></dt>
+<dd>生成するC++クラスの名前を指定します。デフォルトの名前は'Perfect_Hash'です。</dd>
+<dt><code>-7, --seven-bit</code></dt>
+<dd>7ビット文字を仮定します。</dd>
+<dt><code>-l, --compare-lengths</code></dt>
+<dd>文字列の比較を試みる前に、キーの長さを比較します。キーワードにNULバイトが含まれる場合に必要です。また、検索時の文字列比較の回数を減らすのにも役立ちます。</dd>
+<dt><code>-c, --compare-strncmp</code></dt>
+<dd>strcmpの代わりにstrncmpを使う比較コードを生成します。</dd>
+<dt><code>-C, --readonly-tables</code></dt>
+<dd>生成する検索テーブルの内容を定数、つまり読み取り専用にします。</dd>
+<dt><code>-E, --enum</code></dt>
+<dd>defineの代わりに、検索関数内のローカルなenumを使って定数値を定義します。</dd>
+<dt><code>-I, --includes</code></dt>
+<dd>コードの先頭に、必要なシステムのインクルードファイル&lt;string.h&gt;を含めます。</dd>
+<dt><code>-G, --global-table</code></dt>
+<dd>キーワードの静的テーブルを、検索関数の中に隠すデフォルトの動作ではなく、静的なグローバル変数として生成します。</dd>
+<dt><code>-P, --pic</code></dt>
+<dd>生成するテーブルを共有ライブラリに組み込むために最適化します。生成コードを含む共有ライブラリを使うプログラムの起動時間を短縮します。</dd>
+<dt><code>-Q, --string-pool-name=NAME</code></dt>
+<dd>--picオプションで生成する文字列プールの名前を指定します。デフォルトの名前は'stringpool'です。</dd>
+<dt><code>--null-strings</code></dt>
+<dd>空のキーワードテーブル項目に、空文字列の代わりにNULL文字列を使います。</dd>
+<dt><code>--constants-prefix=PREFIX</code></dt>
+<dd>TOTAL_KEYWORDSなどの定数に付ける接頭辞を指定します。</dd>
+<dt><code>-W, --word-array-name=NAME</code></dt>
+<dd>キーワード一覧の配列名を指定します。デフォルトの名前は'wordlist'です。</dd>
+<dt><code>--length-table-name=NAME</code></dt>
+<dd>長さのテーブルの配列名を指定します。デフォルトの名前は'lengthtable'です。</dd>
+<dt><code>-S, --switch=COUNT</code></dt>
+<dd>生成するCコードで、配列の検索テーブルの代わりにswitch文方式を使います。キーファイルによっては、必要な実行時間と記憶領域の両方を減らせます。COUNT引数は、生成するswitch文の数を指定します。値が1なら全要素を含む1つのswitchを生成し、値が2なら各テーブルに要素の半分ずつを含む2つのテーブルを生成します。ほかの値でも同様です。COUNTが1000000のように非常に大きい場合、生成するCコードは二分探索を行います。</dd>
+<dt><code>-T, --omit-struct-type</code></dt>
+<dd>型の宣言を出力ファイルへ転送しないようにします。型がすでにほかの場所で定義されている場合に使ってください。</dd>
+</dl>
+<h3 id="cli-algorithm-employed-by-gperf">gperfが使うアルゴリズム:</h3>
+<dl>
+<dt><code>-k, --key-positions=KEYS</code></dt>
+<dd>ハッシュ関数で使うキー位置を選択します。指定できる位置は1から255までです。位置はカンマで区切り、範囲でも指定できます。キー位置の順序は任意です。また、メタ文字「*」を指定すると、生成するハッシュ関数はすべてのキー位置を使用し、$はキーの「最後の文字」を表します。例は$,1,2,4,6-10です。</dd>
+<dt><code>-D, --duplicates</code></dt>
+<dd>ハッシュ値が重複するキーワードを処理します。冗長性が非常に高い一部のキーワード集合で役立ちます。</dd>
+<dt><code>-m, --multiple-iterations=ITERATIONS</code></dt>
+<dd>-iと-jの値を複数通り試し、最良の結果を選びます。実行時間はITERATIONS倍になりますが、生成するテーブルのサイズを小さくするのに効果があります。</dd>
+<dt><code>-i, --initial-asso=N</code></dt>
+<dd>関連値配列の初期値を指定します。デフォルトは0です。この値を大きくすると、最終的なテーブルのサイズを大きくするのに役立ちます。</dd>
+<dt><code>-j, --jump=JUMP-VALUE</code></dt>
+<dd>「ジャンプ値」、つまり衝突時に関連する文字の値をどれだけ進めるかに影響します。奇数でなければならず、デフォルトは5です。</dd>
+<dt><code>-n, --no-strlen</code></dt>
+<dd>ハッシュ関数の計算に、キーワードの長さを含めません。</dd>
+<dt><code>-r, --random</code></dt>
+<dd>関連値テーブルの初期化に乱数を使います。</dd>
+<dt><code>-s, --size-multiple=N</code></dt>
+<dd>生成するハッシュテーブルのサイズに影響します。数値引数Nは、関連値の範囲をキーの数に対して「何倍大きく、または小さく」するかを示します。たとえば、値が3なら「関連値の最大値を入力キー数の約3倍まで許す」という意味です。逆に、1/3なら「関連値の最大値を入力キー数の約3分の1にする」という意味です。テーブルを大きくすると、追加の領域を必要とする代わりに、検索が不成功に終わるまでの時間が短くなると考えられます。デフォルトは1です。</dd>
+</dl>
+<h3 id="cli-informative-output">情報の出力:</h3>
+<dl>
+<dt><code>-h, --help</code></dt>
+<dd>このメッセージを表示します。</dd>
+<dt><code>-v, --version</code></dt>
+<dd>gperfのバージョン番号を表示します。</dd>
+<dt><code>-d, --debug</code></dt>
+<dd>デバッグオプションを有効にします。標準エラー出力に詳細な出力を行います。</dd>
+</dl>
+<h2 id="cli-author">著者</h2>
+<p>Douglas C. SchmidtとBruno Haibleが作成しました。</p>
+<h2 id="cli-reporting-bugs">不具合の報告</h2>
+<p>不具合は&lt;bug-gperf@gnu.org&gt;に報告してください。</p>
+<h2 id="cli-copyright">著作権（原文通知）</h2>
+<p>Copyright © 2025 Free Software Foundation, Inc. License GPLv3+: GNU GPL version 3 or later &lt;https://gnu.org/licenses/gpl.html&gt;</p>
+<p>This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.</p>
+<h2 id="cli-see-also">関連項目</h2>
+<p><strong>gperf</strong>の完全な文書はTexinfoマニュアルとして保守されています。<strong>info</strong>と<strong>gperf</strong>のプログラムが正しくインストールされていれば、次のコマンドで</p>
+<p><strong>info gperf</strong></p>
+<p>完全なマニュアルを参照できるはずです。</p>
