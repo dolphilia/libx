@@ -1,0 +1,16 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {readLedger,updateLedger,hashFile,report,validateLedger} from '../../../../../../scripts/project-expansion/ledger.mjs';
+const root=process.cwd(),b='docs/notes/project-expansion',e=b+'/runs/evidence/2026-10-06-862',n='docs/notes/document-import/sds/v2-0-0';
+const read=p=>JSON.parse(fs.readFileSync(p)),ref=p=>({path:p,sha256:hashFile(p)}),write=(p,x)=>fs.writeFileSync(p,JSON.stringify(x,null,2)+'\n');
+const failure=read(e+'/PREVIEW_FAILURE_ATTEMPT2.json');assert.equal(failure.attempt,2);assert.equal(failure.sourceOrQualityStepsExecuted,0);
+assert.equal(failure.headSHA,'375ed5dee2d0d7abdc0ba14adef465d567c31832');
+const proofs=['PREVIEW_FAILURE.json','RERUN_PREVIEW_REQUEST.json','RERUN_PREVIEW_JOB.json','PREVIEW_FAILURE_ATTEMPT2.json','GITHUB_ACTIONS_OUTAGE_ATTEMPT2.json'].map(x=>ref(e+'/'+x));
+const next='862:同一375ed5deのPreview CIはattempt1/2ともrunner未取得・0stepsキャンセル。GitHub Actions重大障害の復旧など条件変化を確認後、未実行qualityジョブを再実行→Preview artifact/旧本番45比較/配信確認→CAS Production→公開後確認。条件不変の追加再試行をしない。';
+const p=read(n+'/PROGRESS.json');p.nextAction=next;p.externalPublicationWait={reason:'GitHub hosted runner unavailable',attempts:2,qualityStepsExecuted:0,productionAttempted:false,evidence:proofs};write(n+'/PROGRESS.json',p);
+const l=readLedger(root);updateLedger(root,b,'OPERATIONS',l.operations.revision,[ref(b+'/OPERATIONS.json'),...proofs],d=>{const o=d.operations.find(x=>x.appId==='sds');assert.equal(o.state,'verified');assert.equal(o.publication,'awaiting-release');o.nextAction=next;o.resumeCondition='ローカル検証と8全文レビューは有効。GitHub runner復旧/条件変化が公開再開条件。SDS本番未公開。Wrenの隔離準備・翻訳を継続できる。';const updates=[ref(n+'/PROGRESS.json'),...proofs];o.artifacts=o.artifacts.filter(x=>!updates.some(y=>y.path===x.path)).concat(updates);return d;});
+const runPath=b+'/runs/2026-10-06-862-sds-publication.json';fs.copyFileSync(runPath,e+'/RUN_BEFORE_EXTERNAL_WAIT.json',fs.constants.COPYFILE_EXCL);const run=read(runPath);
+run.endedAt=new Date().toISOString();run.result='partial';run.outputs.push(...proofs);
+run.checks.push({name:'GitHub hosted runner assignment for Preview attempts1/2',status:'failed',evidence:proofs});
+run.decisions.push('Preview attempt1/2のquality0stepsキャンセルはrunner外部障害。ソース検査の不合格とは扱わず、verified/awaiting-releaseを維持。条件変化までは追加再試行をしない。');
+run.unresolved.unshift('GitHub Actions hosted runner復旧/未実行quality検査');run.nextAction=next;run.resumeCondition=next;write(runPath,run);
+assert.deepEqual(validateLedger(root,readLedger(root)),[]);fs.writeFileSync(b+'/REPORT.md',report(root,readLedger(root)));console.log('SDS external runner failure recorded; verified/awaiting release retained; no third unchanged retry');
