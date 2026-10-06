@@ -1,0 +1,52 @@
+{
+  "id": "06-library/04-hc-header.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:58:20.446218+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/lz4hc.h",
+    "sha256": "e43824e8a9ba16f54100c4ccbccfa5782a858ca9ab83c48aac303fea3e76e21e",
+    "coverage": [
+      [
+        1,
+        414
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/06-library/04-hc-header.md",
+    "sha256": "438b14cbc1de8e605a1a3cb0225d083a0a90cb07f06c5eca35b5136d3e3d0817",
+    "coverage": [
+      [
+        1,
+        531
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-809/translation/04-hc-header.md",
+    "sha256": "7f8297471c4bef09201b1d476e9b9da785d5ba31d425ae3b44c875f7c9daa947",
+    "coverage": [
+      [
+        1,
+        483
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "source/EN/JA全文29区画・日本語単独",
+      "result": "初稿後にsource414行/EN全範囲/JA全範囲を別工程で再読照合。独立28説明を翻訳、0原legalnotice全文保持、全宣言/マクロ/inlineコメント/診断文字列原文固定。語義/否定/保証/可能性/should/must/optional/限定を確認。CLEVEL_MIN2 vscompressHC1からの原記述とHCs表記等をfooter区別し黙って修正なし。"
+    },
+    {
+      "scope": "1–13 基本/stream/dictionary全文",
+      "result": "lz4.h/c依存、HC強力but遅い/dst事前確保/bound成功保証/maxinput/level1–maxと超過max/失敗0、展開BSD/externalstate必要sizeと8byte境界shouldmalloc、destSize2結果/<=targetとsuccesssrcSizePtr更新を保持。streamcreate自動初期化/reuse/reset、任意block前64KBアクセス/ring64KB未満例外自動検出、allocation初期化必須/defaultlevel/2level選択時機、loadDict前level不可欠/任意仮想block/入力辞書不変/失敗回復保証なしmustreset/容量不足時destSize検討/save<=64KB/reuseを全照合。continueDestSize全入力未消費may、HC attachnocopy/onlyloadDict準備/NULL解除/無履歴should/現在session間接続とreset解除/sourcebuffer同位置accessibleunchanged全sessionを保持。"
+    },
+    {
+      "scope": "14–28 内部/旧API/実験全文",
+      "result": "内部定義直use禁止/LZ4_streamHC_t静的確保のみ/staticlink必須/将来change、struct全inlineコメントとmin262200等code保持/初回initmust/createなら不要recommend/pre1.9reset、旧関数と全replacement文字列、slide旧historytruncates/正しいoutput保持/使うなを照合。resetHC→init vsfastgarbage禁止/未来warn、実験DLLshouldnot/static/API未保証と将来stable、levelchange betweencontinue実験1.8+、favorDecomp1.8.2+/OPT_MIN限定を全保持。fastReset1.9+整合state軽量・不定statefull、valid6条件（create/reset/memset0/validfastreset/validcompresssuccess/不定extStatefullyreset成功）と最終errorfullclearhistorysettings、fastResetextstate既正初期化のみsafe/通常reset差を全照合。原著性能主張は今回測定せず、文書AstrobuildとAPI実行を区別。"
+    }
+  ]
+}

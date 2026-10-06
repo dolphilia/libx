@@ -1,0 +1,60 @@
+{
+  "id": "07-cli/02-lz4-command.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T06:18:27.631529+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/programs/lz4.1.md",
+    "sha256": "dab60aab6e9890a5d547e4f501fc334cb067c17054ff186dfd94eba468231f3f",
+    "coverage": [
+      [
+        1,
+        273
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/07-cli/02-lz4-command.md",
+    "sha256": "5f4af1042124bd82ed8ae0a911e15697cbd7245a209e2de4297a7b77bf69ced8",
+    "coverage": [
+      [
+        1,
+        281
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-814/translation/02-lz4-command.md",
+    "sha256": "65ededa978cf1e8cb68dac3c73536ed71df3e9f044e350d655a993d523ff9be1",
+    "coverage": [
+      [
+        1,
+        228
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文273行/定本281行/日本語全文・書式/説明/違い/連結",
+      "result": "初稿と組立から独立してsource/EN/JAを全量再読。原文→定本の本文不変、全見出し保持。unlz4=-d,lz4cat=-dcfm、scriptのlz4推奨と明示出力、stdout非console/consoleの分岐、file1→file2、元ファイル保持と成功時削除、複数fileと通知、連結例とcat同等を照合。コア速度とsingle-thread展開は原主張を訳し、測定と断定しない。"
+    },
+    {
+      "scope": "全動作モード/全修飾/その他/benchmark",
+      "result": "short連結long分離、矛盾cmd最後優先、無指定/名前/拡張子の既定圧縮条件、test破棄と作成削除なし、list自動-m、level1–12と12超/推奨1/9、fast相互後勝ち、best-12、threads0/無指定auto、favor>=10/0.5%増/5-20%速、辞書同一必須と異なる時errorいずれか、force上書きと型不明stdoutコピーを全保持。m/r、block4–7サイズ、BI/BD/BX、frame/block checksum既定とno-crc両無効、content-size既知fileのみ/stdin不可、sparsefile/stdout既定、Legacy-m/r非互換を照合。q二度errors抑制、keep/remove成功条件、--以後file、b/e両端含むとi1–9default3を保持。"
+    },
+    {
+      "scope": "環境/バグ/著者/日本語単独/フッター/修正箇所",
+      "result": "binarydefault<env<runtimecmd、global個人既定、CLEVELcmd未指定通常1、workers通常0autoCPU/multithreadbuildのみ/MAX200を照合。bugsURLと著者不変。日本語単独再読で条件/否定/例外欠落なし。増加量を「約0.5%増」と明示、twiceを「二度」、強調境界へ空白を入れた3箇所を再読し意味同一を確認。原code保持、見出し15IDはEN実DOMを確認。GPL運用注記/非公式/原文全ソース通知リンクはフッターへ分離、ソースキットとCLI実行は完了としない。"
+    },
+    {
+      "scope": "機械検査後stdout照応修正",
+      "result": "原文itに対応する余分なinline stdoutを「これ」に戻し段落を再読。直前の非console stdoutを指し、出力先分岐の意味は不変。"
+    },
+    {
+      "scope": "機械検査後強調境界2箇所修正",
+      "result": "同一ではない/コンソールではないの強調が日本語隣接によりASTで失われていたため空白付きasteriskへ変更。原文否定と出力先条件の意味を再読し、不変を確認。"
+    }
+  ]
+}

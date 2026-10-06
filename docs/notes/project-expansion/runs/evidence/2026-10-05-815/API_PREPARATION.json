@@ -1,0 +1,945 @@
+{
+  "status": "prepared-not-translated-not-reviewed",
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4_manual.html",
+    "sha256": "d3ba8f6d993890c7c6c077354944c67aa85b319a3a74a361ab5d5590fea37772"
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/04-api/01-block-api.md",
+    "sha256": "cd288e805419b1199f452c9e0d3d33150113125255c519d63b62ec49ac16b50c"
+  },
+  "headerSource": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/lz4.h",
+    "sha256": "26b82efc53d1570f3b54eef02e9c4764c1ad374ff03cac04e2ced5ea4d4c552f"
+  },
+  "headerBindings": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-806/COMMENT_BINDINGS.json",
+    "sha256": "ea69d017a4a2134d2d0fb590384bf5eb8859e0148e60009e4d9237c9d79f551d"
+  },
+  "initialSourceReading": [
+    [
+      1,
+      683
+    ]
+  ],
+  "contentReview": [],
+  "slotCount": 35,
+  "slots": [
+    {
+      "index": 0,
+      "kind": "chapter-prose",
+      "canonicalStart": 2617,
+      "canonicalEnd": 4058,
+      "canonicalLines": [
+        31,
+        57
+      ],
+      "text": "\n  LZ4 is lossless compression algorithm, providing compression speed >500 MB/s per core,\n  scalable with multi-cores CPU. It features an extremely fast decoder, with speed in\n  multiple GB/s per core, typically reaching RAM speed limits on multi-core systems.\n\n  The LZ4 compression library provides in-memory compression and decompression functions.\n  It gives full buffer control to user.\n  Compression can be done in:\n    - a single step (described as Simple Functions)\n    - a single step, reusing a context (described in Advanced Functions)\n    - unbounded multiple steps (described as Streaming compression)\n\n  lz4.h generates and decodes LZ4-compressed blocks (doc/lz4_Block_format.md).\n  Decompressing such a compressed block requires additional metadata.\n  Exact metadata depends on exact decompression function.\n  For the typical case of LZ4_decompress_safe(),\n  metadata includes block's compressed size, and maximum bound of decompressed size.\n  Each application is free to encode and pass such metadata in whichever way it wants.\n\n  lz4.h only handle blocks, it can not generate Frames.\n\n  Blocks are different from Frames (doc/lz4_Frame_format.md).\n  Frames bundle both blocks and metadata in a specified manner.\n  Embedding metadata is required for compressed data to be self-contained and portable.\n  Frame format is delivered through a companion API, declared in lz4frame.h.\n  The `lz4` CLI can only manage frames.\n",
+      "rawSha256": "f4a556b376a31171c235d43a82607439db4eb8bd3e44df9df36bb5c8158034fe",
+      "exactNormalizedSubstringHeaderIndices": [
+        2
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 2,
+          "ratio": 0.9953
+        },
+        {
+          "index": 28,
+          "ratio": 0.1381
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 1,
+      "kind": "api-description",
+      "canonicalStart": 4613,
+      "canonicalEnd": 5076,
+      "canonicalLines": [
+        75,
+        86
+      ],
+      "text": "  When this macro is set to 1, it enables \"freestanding mode\" that is\n  suitable for typical freestanding environment which doesn't support\n  standard C library.\n\n  - LZ4_FREESTANDING is a compile-time switch.\n  - It requires the following macros to be defined:\n    LZ4_memcpy, LZ4_memmove, LZ4_memset.\n  - It only enables LZ4/HC functions which don't use heap.\n    All LZ4F_* functions are not supported.\n  - See tests/freestanding.c to check its basic setup.\n \n",
+      "rawSha256": "d1915a06e43346ae5230f8fa6a8e18308842084d1da8aebd00fd7222ff8a374a",
+      "exactNormalizedSubstringHeaderIndices": [
+        5
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 5,
+          "ratio": 0.6249
+        },
+        {
+          "index": 37,
+          "ratio": 0.1916
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 2,
+      "kind": "api-description",
+      "canonicalStart": 5629,
+      "canonicalEnd": 6040,
+      "canonicalLines": [
+        101,
+        107
+      ],
+      "text": " Can be selected at compile time, by setting LZ4_MEMORY_USAGE.\n Memory usage formula : N->2^N Bytes (examples : 10 -> 1KB; 12 -> 4KB ; 16 -> 64KB; 20 -> 1MB)\n Increasing memory usage improves compression ratio, generally at the cost of speed.\n Reduced memory usage may improve speed at the cost of ratio, thanks to better cache locality.\n Default value is 14, for 16KB, which nicely fits into most L1 caches.\n \n",
+      "rawSha256": "a232d65b3a983a3816d8f9b4af69bd45b12dd6da50707982470019666d69f48b",
+      "exactNormalizedSubstringHeaderIndices": [
+        8
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 8,
+          "ratio": 0.977
+        },
+        {
+          "index": 28,
+          "ratio": 0.223
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 3,
+      "kind": "api-description",
+      "canonicalStart": 6231,
+      "canonicalEnd": 7089,
+      "canonicalLines": [
+        113,
+        126
+      ],
+      "text": "  Compresses 'srcSize' bytes from buffer 'src'\n  into already allocated 'dst' buffer of size 'dstCapacity'.\n  Compression is guaranteed to succeed if 'dstCapacity' >= LZ4_compressBound(srcSize).\n  It also runs faster, so it's a recommended setting.\n  If the function cannot compress 'src' into a more limited 'dst' budget,\n  compression stops *immediately*, and the function result is zero.\n  In which case, 'dst' content is undefined (invalid).\n      srcSize : max supported value is LZ4_MAX_INPUT_SIZE.\n      dstCapacity : size of buffer 'dst' (which must be already allocated)\n     @return  : the number of bytes written into buffer 'dst' (necessarily <= dstCapacity)\n                or 0 if compression fails\n Note : This function is protected against buffer overflow scenarios (never writes outside 'dst' buffer, nor read outside 'source' buffer).\n \n",
+      "rawSha256": "c79eeb32ef9278b86a45a9857e99a025fb9d3d5e1dd6fa2047950bbbc88746fe",
+      "exactNormalizedSubstringHeaderIndices": [
+        11
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 11,
+          "ratio": 0.9847
+        },
+        {
+          "index": 37,
+          "ratio": 0.1894
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 4,
+      "kind": "api-description",
+      "canonicalStart": 7211,
+      "canonicalEnd": 8516,
+      "canonicalLines": [
+        129,
+        143
+      ],
+      "text": " @compressedSize : is the exact complete size of the compressed block.\n @dstCapacity : is the size of destination buffer (which must be already allocated),\n                presumed an upper bound of decompressed size.\n @return : the number of bytes decompressed into destination buffer (necessarily <= dstCapacity)\n           If destination buffer is not large enough, decoding will stop and output an error code (negative value).\n           If the source stream is detected malformed, the function will stop decoding and return a negative result.\n Note 1 : This function is protected against malicious data packets :\n          it will never writes outside 'dst' buffer, nor read outside 'source' buffer,\n          even if the compressed block is maliciously modified to order the decoder to do these actions.\n          In such case, the decoder stops immediately, and considers the compressed block malformed.\n Note 2 : compressedSize and dstCapacity must be provided to the function, the compressed block does not contain them.\n          The implementation is free to send / store / derive this information in whichever way is most beneficial.\n          If there is a need for a different format which bundles together both compressed data and its metadata, consider looking at lz4frame.h instead.\n \n",
+      "rawSha256": "7f97033767d067c04a0994c14a479a4392dc9a5c1b4c0aed366106c1ab3e73ba",
+      "exactNormalizedSubstringHeaderIndices": [
+        12
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 12,
+          "ratio": 0.9901
+        },
+        {
+          "index": 31,
+          "ratio": 0.2654
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 5,
+      "kind": "api-description",
+      "canonicalStart": 8663,
+      "canonicalEnd": 9299,
+      "canonicalLines": [
+        149,
+        156
+      ],
+      "text": "    Provides the maximum size that LZ4 compression may output in a \"worst case\" scenario (input data not compressible)\n    This function is primarily useful for memory allocation purposes (destination buffer size).\n    Macro LZ4_COMPRESSBOUND() is also provided for compilation-time evaluation (stack memory allocation for example).\n    Note that LZ4_compress_default() compresses faster when dstCapacity is >= LZ4_compressBound(srcSize)\n        inputSize  : max supported value is LZ4_MAX_INPUT_SIZE\n        return : maximum output size in a \"worst case\" scenario\n              or 0, if input size is incorrect (too large or negative)\n",
+      "rawSha256": "1083d1497b8e428db787e220568396ac0e7ffee2ba4de0ee450fd396a1301a4c",
+      "exactNormalizedSubstringHeaderIndices": [
+        14
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 14,
+          "ratio": 0.9816
+        },
+        {
+          "index": 37,
+          "ratio": 0.185
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 6,
+      "kind": "api-description",
+      "canonicalStart": 9430,
+      "canonicalEnd": 9999,
+      "canonicalLines": [
+        159,
+        165
+      ],
+      "text": "    Same as LZ4_compress_default(), but allows selection of \"acceleration\" factor.\n    The larger the acceleration value, the faster the algorithm, but also the lesser the compression.\n    It's a trade-off. It can be fine tuned, with each successive value providing roughly +~3% to speed.\n    An acceleration value of \"1\" is the same as regular LZ4_compress_default()\n    Values <= 0 will be replaced by LZ4_ACCELERATION_DEFAULT (currently == 1, see lz4.c).\n    Values > LZ4_ACCELERATION_MAX will be replaced by LZ4_ACCELERATION_MAX (currently == 65537, see lz4.c).\n",
+      "rawSha256": "7e039797bf2558e1f016ce7cd1744fb4fbb222fb84bd5dc9e0a37a7db98ac915",
+      "exactNormalizedSubstringHeaderIndices": [
+        15
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 15,
+          "ratio": 0.9801
+        },
+        {
+          "index": 28,
+          "ratio": 0.1882
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 7,
+      "kind": "api-description",
+      "canonicalStart": 10179,
+      "canonicalEnd": 10493,
+      "canonicalLines": [
+        169,
+        174
+      ],
+      "text": "  Same as LZ4_compress_fast(), using an externally allocated memory space for its state.\n  Use LZ4_sizeofState() to know how much memory must be allocated,\n  and allocate it on 8-bytes boundaries (using `malloc()` typically).\n  Then, provide this buffer as `void* state` to compression function.\n \n",
+      "rawSha256": "2abd406b5a1fd68da5b0dd13576840149ea005481562c8c1dba7ddb2211872a4",
+      "exactNormalizedSubstringHeaderIndices": [
+        16
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 16,
+          "ratio": 0.7174
+        },
+        {
+          "index": 37,
+          "ratio": 0.3596
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 8,
+      "kind": "api-description",
+      "canonicalStart": 10615,
+      "canonicalEnd": 11960,
+      "canonicalLines": [
+        177,
+        200
+      ],
+      "text": "  Reverse the logic : compresses as much data as possible from 'src' buffer\n  into already allocated buffer 'dst', of size >= 'dstCapacity'.\n  This function either compresses the entire 'src' content into 'dst' if it's large enough,\n  or fill 'dst' buffer completely with as much data as possible from 'src'.\n  note: acceleration parameter is fixed to \"default\".\n\n *srcSizePtr : in+out parameter. Initially contains size of input.\n               Will be modified to indicate how many bytes where read from 'src' to fill 'dst'.\n               New value is necessarily <= input value.\n @return : Nb bytes written into 'dst' (necessarily <= dstCapacity)\n           or 0 if compression fails.\n\n Note : from v1.8.2 to v1.9.1, this function had a bug (fixed in v1.9.2+):\n        the produced compressed content could, in specific circumstances,\n        require to be decompressed into a destination buffer larger\n        by at least 1 byte than the content to decompress.\n        If an application uses `LZ4_compress_destSize()`,\n        it's highly recommended to update liblz4 to v1.9.2 or better.\n        If this can't be done or ensured,\n        the receiving decompression function should provide\n        a dstCapacity which is > decompressedSize, by at least 1 byte.\n        See https://github.com/lz4/lz4/issues/859 for details\n \n",
+      "rawSha256": "710bfca4128687804e46daec13bf3e4af6a0abe9711191aa18ab9a213a0cfae6",
+      "exactNormalizedSubstringHeaderIndices": [
+        17
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 17,
+          "ratio": 0.9893
+        },
+        {
+          "index": 37,
+          "ratio": 0.1281
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 9,
+      "kind": "api-description",
+      "canonicalStart": 12105,
+      "canonicalEnd": 13881,
+      "canonicalLines": [
+        203,
+        236
+      ],
+      "text": "  Decompress an LZ4 compressed block, of size 'srcSize' at position 'src',\n  into destination buffer 'dst' of size 'dstCapacity'.\n  Up to 'targetOutputSize' bytes will be decoded.\n  The function stops decoding on reaching this objective.\n  This can be useful to boost performance\n  whenever only the beginning of a block is required.\n\n @return : the number of bytes decoded in `dst` (necessarily <= targetOutputSize)\n           If source stream is detected malformed, function returns a negative result.\n\n  Note 1 : @return can be < targetOutputSize, if compressed block contains less data.\n\n  Note 2 : targetOutputSize must be <= dstCapacity\n\n  Note 3 : this function effectively stops decoding on reaching targetOutputSize,\n           so dstCapacity is kind of redundant.\n           This is because in older versions of this function,\n           decoding operation would still write complete sequences.\n           Therefore, there was no guarantee that it would stop writing at exactly targetOutputSize,\n           it could write more bytes, though only up to dstCapacity.\n           Some \"margin\" used to be required for this operation to work properly.\n           Thankfully, this is no longer necessary.\n           The function nonetheless keeps the same signature, in an effort to preserve API compatibility.\n\n  Note 4 : If srcSize is the exact size of the block,\n           then targetOutputSize can be any value,\n           including larger than the block's decompressed size.\n           The function will, at most, generate block's decompressed size.\n\n  Note 5 : If srcSize is _larger_ than block's compressed size,\n           then targetOutputSize **MUST** be <= block's decompressed size.\n           Otherwise, *silent corruption will occur*.\n \n",
+      "rawSha256": "c2dccaa7e19cfc22ef30fea7f3a1150af9f17646c966ba7fdeb4f7077b427760",
+      "exactNormalizedSubstringHeaderIndices": [
+        18
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 18,
+          "ratio": 0.9899
+        },
+        {
+          "index": 12,
+          "ratio": 0.1071
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 10,
+      "kind": "api-description",
+      "canonicalStart": 14358,
+      "canonicalEnd": 14857,
+      "canonicalLines": [
+        247,
+        257
+      ],
+      "text": "\n - RC_INVOKED is predefined symbol of rc.exe (the resource compiler which is part of MSVC/Visual Studio).\n   https://docs.microsoft.com/en-us/windows/win32/menurc/predefined-macros\n\n - Since rc.exe is a legacy compiler, it truncates long symbol (> 30 chars)\n   and reports warning \"RC4011: identifier truncated\".\n\n - To eliminate the warning, we surround long preprocessor symbol with\n   \"#if !defined(RC_INVOKED) ... #endif\" block that means\n   \"skip this block when rc.exe is trying to read it\".\n",
+      "rawSha256": "dd195eb5916edd904c095bd418c7b00a4d83fa5301997d980edcf5aad1e4a094",
+      "exactNormalizedSubstringHeaderIndices": [
+        20
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 20,
+          "ratio": 0.9776
+        },
+        {
+          "index": 28,
+          "ratio": 0.1505
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 11,
+      "kind": "api-description",
+      "canonicalStart": 14941,
+      "canonicalEnd": 15945,
+      "canonicalLines": [
+        260,
+        281
+      ],
+      "text": "  Use this to prepare an LZ4_stream_t for a new chain of dependent blocks\n  (e.g., LZ4_compress_fast_continue()).\n\n  An LZ4_stream_t must be initialized once before usage.\n  This is automatically done when created by LZ4_createStream().\n  However, should the LZ4_stream_t be simply declared on stack (for example),\n  it's necessary to initialize it first, using LZ4_initStream().\n\n  After init, start any new stream with LZ4_resetStream_fast().\n  A same LZ4_stream_t can be re-used multiple times consecutively\n  and compress multiple streams,\n  provided that it starts each new stream with LZ4_resetStream_fast().\n\n  LZ4_resetStream_fast() is much faster than LZ4_initStream(),\n  but is not compatible with memory regions containing garbage data.\n\n  Note: it's only useful to call LZ4_resetStream_fast()\n        in the context of streaming compression.\n        The *extState* functions perform their own resets.\n        Invoking LZ4_resetStream_fast() before is redundant, and even counterproductive.\n \n",
+      "rawSha256": "6f71a644cf6e7e98509de1b386b764b66900a4c434220cc0c362e80412ee1f65",
+      "exactNormalizedSubstringHeaderIndices": [
+        21
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 21,
+          "ratio": 0.9829
+        },
+        {
+          "index": 28,
+          "ratio": 0.1753
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 12,
+      "kind": "api-description",
+      "canonicalStart": 16058,
+      "canonicalEnd": 16725,
+      "canonicalLines": [
+        284,
+        294
+      ],
+      "text": "  Use this function to reference a static dictionary into LZ4_stream_t.\n  The dictionary must remain available during compression.\n  LZ4_loadDict() triggers a reset, so any previous data will be forgotten.\n  The same dictionary will have to be loaded on decompression side for successful decoding.\n  Dictionary are useful for better compression of small data (KB range).\n  While LZ4 itself accepts any input as dictionary, dictionary efficiency is also a topic.\n  When in doubt, employ the Zstandard's Dictionary Builder.\n  Loading a size of 0 is allowed, and is the same as reset.\n @return : loaded dictionary size, in bytes (note: only the last 64 KB are loaded)\n \n",
+      "rawSha256": "19a085691181b863c53bc835ead1c703968c1a5fa094ee8f4182550d571a6a22",
+      "exactNormalizedSubstringHeaderIndices": [
+        22
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 22,
+          "ratio": 0.8009
+        },
+        {
+          "index": 28,
+          "ratio": 0.1565
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 13,
+      "kind": "api-description",
+      "canonicalStart": 16841,
+      "canonicalEnd": 17184,
+      "canonicalLines": [
+        297,
+        303
+      ],
+      "text": "  Same as LZ4_loadDict(),\n  but uses a bit more cpu to reference the dictionary content more thoroughly.\n  This is expected to slightly improve compression ratio.\n  The extra-cpu cost is likely worth it if the dictionary is re-used across multiple sessions.\n @return : loaded dictionary size, in bytes (note: only the last 64 KB are loaded)\n \n",
+      "rawSha256": "4d2f7bb2f2055502d3f6e0a4552acc96be084b2817fd66551fc75f32fd6b4bc2",
+      "exactNormalizedSubstringHeaderIndices": [
+        23
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 23,
+          "ratio": 0.9335
+        },
+        {
+          "index": 28,
+          "ratio": 0.3347
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 14,
+      "kind": "api-description",
+      "canonicalStart": 17326,
+      "canonicalEnd": 18924,
+      "canonicalLines": [
+        308,
+        339
+      ],
+      "text": "\n  This allows efficient re-use of a static dictionary multiple times.\n\n  Rather than re-loading the dictionary buffer into a working context before\n  each compression, or copying a pre-loaded dictionary's LZ4_stream_t into a\n  working LZ4_stream_t, this function introduces a no-copy setup mechanism,\n  in which the working stream references @dictionaryStream in-place.\n\n  Several assumptions are made about the state of @dictionaryStream.\n  Currently, only states which have been prepared by LZ4_loadDict() or\n  LZ4_loadDictSlow() should be expected to work.\n\n  Alternatively, the provided @dictionaryStream may be NULL,\n  in which case any existing dictionary stream is unset.\n\n  If a dictionary is provided, it replaces any pre-existing stream history.\n  The dictionary contents are the only history that can be referenced and\n  logically immediately precede the data compressed in the first subsequent\n  compression call.\n\n  The dictionary will only remain attached to the working stream through the\n  first compression call, at the end of which it is cleared.\n @dictionaryStream stream (and source buffer) must remain in-place / accessible / unchanged\n  through the completion of the compression session.\n\n  Note: there is no equivalent LZ4_attach_*() method on the decompression side\n  because there is no initialization cost, hence no need to share the cost across multiple sessions.\n  To decompress LZ4 blocks using dictionary, attached or not,\n  just employ the regular LZ4_setStreamDecode() for streaming,\n  or the stateless LZ4_decompress_safe_usingDict() for one-shot decompression.\n \n",
+      "rawSha256": "8b07805c61051c6f70fb29fd8fa3bdc36cc2edfe14d70afe1ff1f0a753eff8c3",
+      "exactNormalizedSubstringHeaderIndices": [
+        24
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 24,
+          "ratio": 0.985
+        },
+        {
+          "index": 37,
+          "ratio": 0.08
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 15,
+      "kind": "api-description",
+      "canonicalStart": 19089,
+      "canonicalEnd": 20394,
+      "canonicalLines": [
+        342,
+        364
+      ],
+      "text": "  Compress 'src' content using data from previously compressed blocks, for better compression ratio.\n 'dst' buffer must be already allocated.\n  If dstCapacity >= LZ4_compressBound(srcSize), compression is guaranteed to succeed, and runs faster.\n\n @return : size of compressed block\n           or 0 if there is an error (typically, cannot fit into 'dst').\n\n  Note 1 : Each invocation to LZ4_compress_fast_continue() generates a new block.\n           Each block has precise boundaries.\n           Each block must be decompressed separately, calling LZ4_decompress_*() with relevant metadata.\n           It's not possible to append blocks together and expect a single invocation of LZ4_decompress_*() to decompress them together.\n\n  Note 2 : The previous 64KB of source data is __assumed__ to remain present, unmodified, at same address in memory !\n\n  Note 3 : When input is structured as a double-buffer, each buffer can have any size, including < 64 KB.\n           Make sure that buffers are separated, by at least one byte.\n           This construction ensures that each block only depends on previous block.\n\n  Note 4 : If input buffer is a ring-buffer, it can have any size, including < 64 KB.\n\n  Note 5 : After an error, the stream status is undefined (invalid), it can only be reset or freed.\n \n",
+      "rawSha256": "547a47390b3f76a6c55996d51c823f133b864f1e89aeaf565dd61a1c685e9dca",
+      "exactNormalizedSubstringHeaderIndices": [
+        25
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 25,
+          "ratio": 0.9873
+        },
+        {
+          "index": 37,
+          "ratio": 0.1376
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 16,
+      "kind": "api-description",
+      "canonicalStart": 20504,
+      "canonicalEnd": 20892,
+      "canonicalLines": [
+        367,
+        373
+      ],
+      "text": "  If last 64KB data cannot be guaranteed to remain available at its current memory location,\n  save it into a safer place (char* safeBuffer).\n  This is schematically equivalent to a memcpy() followed by LZ4_loadDict(),\n  but is much faster, because LZ4_saveDict() doesn't need to rebuild tables.\n @return : saved dictionary size in bytes (necessarily <= maxDictSize), or 0 if error.\n \n",
+      "rawSha256": "c1837fba27f06cb3a92945a737f2f9ff85aaddf800c186e7c76a5628bc4cd88a",
+      "exactNormalizedSubstringHeaderIndices": [
+        26
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 26,
+          "ratio": 0.9777
+        },
+        {
+          "index": 37,
+          "ratio": 0.1996
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 17,
+      "kind": "chapter-prose",
+      "canonicalStart": 20993,
+      "canonicalEnd": 21022,
+      "canonicalLines": [
+        376,
+        377
+      ],
+      "text": "  Bufferless synchronous API\n",
+      "rawSha256": "fe4bef73c7c189607ec7fc76875b294cf651bce7d14ff539cd043605e7b84f0e",
+      "exactNormalizedSubstringHeaderIndices": [
+        27
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 46,
+          "ratio": 0.338
+        },
+        {
+          "index": 47,
+          "ratio": 0.3288
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 18,
+      "kind": "api-description",
+      "canonicalStart": 21435,
+      "canonicalEnd": 21559,
+      "canonicalLines": [
+        385,
+        388
+      ],
+      "text": "  creation / destruction of streaming decompression tracking context.\n  A tracking context can be re-used multiple times.\n \n",
+      "rawSha256": "39ab6045bb59746e2128ac2f7aedb7892c2b2a99178cdc960b1eb79708cfa9f5",
+      "exactNormalizedSubstringHeaderIndices": [
+        28
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 28,
+          "ratio": 0.8125
+        },
+        {
+          "index": 49,
+          "ratio": 0.3787
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 19,
+      "kind": "api-description",
+      "canonicalStart": 21692,
+      "canonicalEnd": 22055,
+      "canonicalLines": [
+        391,
+        397
+      ],
+      "text": "  An LZ4_streamDecode_t context can be allocated once and re-used multiple times.\n  Use this function to start decompression of a new stream of blocks.\n  A dictionary can optionally be set. Use NULL or size 0 for a reset order.\n  Dictionary is presumed stable : it must remain accessible and unmodified during next decompression.\n @return : 1 if OK, 0 if error\n \n",
+      "rawSha256": "614342541bc2e707ba4ae8100b1fa7fff28f4c54b459a738035fe0a2e8d0a297",
+      "exactNormalizedSubstringHeaderIndices": [
+        29
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 29,
+          "ratio": 0.9587
+        },
+        {
+          "index": 28,
+          "ratio": 0.2146
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 20,
+      "kind": "api-description",
+      "canonicalStart": 22281,
+      "canonicalEnd": 22827,
+      "canonicalLines": [
+        401,
+        411
+      ],
+      "text": "  Note : in a ring buffer scenario (optional),\n  blocks are presumed decompressed next to each other\n  up to the moment there is not enough remaining space for next block (remainingSize < maxBlockSize),\n  at which stage it resumes from beginning of ring buffer.\n  When setting such a ring buffer for streaming decompression,\n  provides the minimum size of this ring buffer\n  to be compatible with any source respecting maxBlockSize condition.\n @return : minimum ring buffer size,\n           or 0 if there is an error (invalid maxBlockSize).\n \n",
+      "rawSha256": "f2bb78be99740bc2760d02dc5cff8046dc22c6a188d60fdbac9fc4b62e7df1c0",
+      "exactNormalizedSubstringHeaderIndices": [
+        30
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 30,
+          "ratio": 0.9644
+        },
+        {
+          "index": 28,
+          "ratio": 0.2073
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 21,
+      "kind": "api-description",
+      "canonicalStart": 23037,
+      "canonicalEnd": 25735,
+      "canonicalLines": [
+        417,
+        453
+      ],
+      "text": "  This decoding function allows decompression of consecutive blocks in \"streaming\" mode.\n  The difference with the usual independent blocks is that\n  new blocks are allowed to find references into former blocks.\n  A block is an unsplittable entity, and must be presented entirely to the decompression function.\n  LZ4_decompress_safe_continue() only accepts one block at a time.\n  It's modeled after `LZ4_decompress_safe()` and behaves similarly.\n\n @LZ4_streamDecode : decompression state, tracking the position in memory of past data\n @compressedSize : exact complete size of one compressed block.\n @dstCapacity : size of destination buffer (which must be already allocated),\n                must be an upper bound of decompressed size.\n @return : number of bytes decompressed into destination buffer (necessarily <= dstCapacity)\n           If destination buffer is not large enough, decoding will stop and output an error code (negative value).\n           If the source stream is detected malformed, the function will stop decoding and return a negative result.\n\n  The last 64KB of previously decoded data *must* remain available and unmodified\n  at the memory position where they were previously decoded.\n  If less than 64KB of data has been decoded, all the data must be present.\n\n  Special : if decompression side sets a ring buffer, it must respect one of the following conditions :\n  - Decompression buffer size is _at least_ LZ4_decoderRingBufferSize(maxBlockSize).\n    maxBlockSize is the maximum size of any single block. It can have any value > 16 bytes.\n    In which case, encoding and decoding buffers do not need to be synchronized.\n    Actually, data can be produced by any source compliant with LZ4 format specification, and respecting maxBlockSize.\n  - Synchronized mode :\n    Decompression buffer size is _exactly_ the same as compression buffer size,\n    and follows exactly same update rule (block boundaries at same positions),\n    and decoding function is provided with exact decompressed size of each block (exception for last block of the stream),\n    _then_ decoding & encoding ring buffer can have any size, including small ones ( < 64 KB).\n  - Decompression buffer is larger than encoding buffer, by a minimum of maxBlockSize more bytes.\n    In which case, encoding and decoding buffers do not need to be synchronized,\n    and encoding ring buffer can have any size, including small ones ( < 64 KB).\n\n  Whenever these conditions are not possible,\n  save the last 64KB of decoded data into a safe buffer where it can't be modified during decompression,\n  then indicate where this data is saved using LZ4_setStreamDecode(), before decompressing next block.\n",
+      "rawSha256": "51db8f0ffada21122023ee8d1d32abb44bc9e310a1606695badf8a0f48c501f0",
+      "exactNormalizedSubstringHeaderIndices": [
+        31
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 31,
+          "ratio": 0.9936
+        },
+        {
+          "index": 12,
+          "ratio": 0.264
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 22,
+      "kind": "api-description",
+      "canonicalStart": 25956,
+      "canonicalEnd": 26357,
+      "canonicalLines": [
+        459,
+        466
+      ],
+      "text": "  Works the same as\n  a combination of LZ4_setStreamDecode() followed by LZ4_decompress_safe_continue()\n  However, it's stateless: it doesn't need any LZ4_streamDecode_t state.\n  Dictionary is presumed stable : it must remain accessible and unmodified during decompression.\n  Performance tip : Decompression speed can be substantially increased\n                    when dst == dictStart + dictSize.\n \n",
+      "rawSha256": "5ef033b67335fb4e0758ea307919cd551ba2ab15ebbaa5676c1fce79fa574bf6",
+      "exactNormalizedSubstringHeaderIndices": [
+        32
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 32,
+          "ratio": 0.6364
+        },
+        {
+          "index": 33,
+          "ratio": 0.4459
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 23,
+      "kind": "api-description",
+      "canonicalStart": 26671,
+      "canonicalEnd": 26918,
+      "canonicalLines": [
+        473,
+        478
+      ],
+      "text": "  Behaves the same as LZ4_decompress_safe_partial()\n  with the added ability to specify a memory segment for past data.\n  Performance tip : Decompression speed can be substantially increased\n                    when dst == dictStart + dictSize.\n \n",
+      "rawSha256": "ea5c1022f79c98a72b1680b8e3ff223a1b2e7f7b382c54c10fb83f1492336fcb",
+      "exactNormalizedSubstringHeaderIndices": [
+        33
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 33,
+          "ratio": 0.8285
+        },
+        {
+          "index": 32,
+          "ratio": 0.4387
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 24,
+      "kind": "chapter-prose",
+      "canonicalStart": 27006,
+      "canonicalEnd": 27693,
+      "canonicalLines": [
+        481,
+        497
+      ],
+      "text": "\n Symbols declared in this section must be considered unstable. Their\n signatures or semantics may change, or they may be removed altogether in the\n future. They are therefore only safe to depend on when the caller is\n statically linked against the library.\n\n To protect against unsafe usage, not only are the declarations guarded,\n the definitions are hidden by default\n when building LZ4 as a shared/dynamic library.\n\n In order to access these declarations,\n define LZ4_STATIC_LINKING_ONLY in your application\n before including LZ4's headers.\n\n In order to make their implementations accessible dynamically, you must\n define LZ4_PUBLISH_STATIC_FUNCTIONS when building the LZ4 library.\n",
+      "rawSha256": "15cdf74bf4ebbffa9a1169dd4d5796121c1c3c57fe9a994d9936163908e59a0f",
+      "exactNormalizedSubstringHeaderIndices": [
+        35
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 35,
+          "ratio": 0.8839
+        },
+        {
+          "index": 4,
+          "ratio": 0.14
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 25,
+      "kind": "api-description",
+      "canonicalStart": 27870,
+      "canonicalEnd": 28386,
+      "canonicalLines": [
+        500,
+        509
+      ],
+      "text": "  A variant of LZ4_compress_fast_extState().\n\n  Using this variant avoids an expensive initialization step.\n  It is only safe to call if the state buffer is known to be correctly initialized already\n  (see above comment on LZ4_resetStream_fast() for a definition of \"correctly initialized\").\n  From a high level, the difference is that\n  this function initializes the provided state with a call to something like LZ4_resetStream_fast()\n  while LZ4_compress_fast_extState() starts with a call to LZ4_resetStream().\n \n",
+      "rawSha256": "b020a3fc24557fa306cea5fe57edb2454b77be20e1be712b4aa1fbadf30b3acc",
+      "exactNormalizedSubstringHeaderIndices": [
+        36
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 37,
+          "ratio": 0.2134
+        },
+        {
+          "index": 36,
+          "ratio": 0.1909
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 26,
+      "kind": "api-description",
+      "canonicalStart": 28548,
+      "canonicalEnd": 28656,
+      "canonicalLines": [
+        512,
+        515
+      ],
+      "text": "  Same as LZ4_compress_destSize(), but using an externally allocated state.\n  Also: exposes @acceleration\n \n",
+      "rawSha256": "3e577109accdad2eff77542e253e4f151120e6b5236d71b96677a94904d09d8b",
+      "exactNormalizedSubstringHeaderIndices": [
+        37
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 37,
+          "ratio": 0.7799
+        },
+        {
+          "index": 28,
+          "ratio": 0.2647
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 27,
+      "kind": "api-description",
+      "canonicalStart": 28687,
+      "canonicalEnd": 31382,
+      "canonicalLines": [
+        517,
+        566
+      ],
+      "text": "\n It's possible to have input and output sharing the same buffer,\n for highly constrained memory environments.\n In both cases, it requires input to lay at the end of the buffer,\n and decompression to start at beginning of the buffer.\n Buffer size must feature some margin, hence be larger than final size.\n\n |<------------------------buffer--------------------------------->|\n                             |<-----------compressed data--------->|\n |<-----------decompressed size------------------>|\n                                                  |<----margin---->|\n\n This technique is more useful for decompression,\n since decompressed size is typically larger,\n and margin is short.\n\n In-place decompression will work inside any buffer\n which size is >= LZ4_DECOMPRESS_INPLACE_BUFFER_SIZE(decompressedSize).\n This presumes that decompressedSize > compressedSize.\n Otherwise, it means compression actually expanded data,\n and it would be more efficient to store such data with a flag indicating it's not compressed.\n This can happen when data is not compressible (already compressed, or encrypted).\n\n For in-place compression, margin is larger, as it must be able to cope with both\n history preservation, requiring input data to remain unmodified up to LZ4_DISTANCE_MAX,\n and data expansion, which can happen when input is not compressible.\n As a consequence, buffer size requirements are much higher,\n and memory savings offered by in-place compression are more limited.\n\n There are ways to limit this cost for compression :\n - Reduce history size, by modifying LZ4_DISTANCE_MAX.\n   Note that it is a compile-time constant, so all compressions will apply this limit.\n   Lower values will reduce compression ratio, except when input_size < LZ4_DISTANCE_MAX,\n   so it's a reasonable trick when inputs are known to be small.\n - Require the compressor to deliver a \"maximum compressed size\".\n   This is the `dstCapacity` parameter in `LZ4_compress*()`.\n   When this size is < LZ4_COMPRESSBOUND(inputSize), then compression can fail,\n   in which case, the return code will be 0 (zero).\n   The caller must be ready for these cases to happen,\n   and typically design a backup scheme to send data uncompressed.\n The combination of both techniques can significantly reduce\n the amount of margin required for in-place compression.\n\n In-place compression can work in any buffer\n which size is >= (maxCompressedSize)\n with maxCompressedSize == LZ4_COMPRESSBOUND(srcSize) for guaranteed compression success.\n LZ4_COMPRESS_INPLACE_BUFFER_SIZE() depends on both maxCompressedSize and LZ4_DISTANCE_MAX,\n so it's possible to reduce memory requirements by playing with them.\n \n",
+      "rawSha256": "191e0c549b825952bcdbd632f0673410a16055a35b68bec76010f487b4247643",
+      "exactNormalizedSubstringHeaderIndices": [
+        38
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 38,
+          "ratio": 0.9923
+        },
+        {
+          "index": 28,
+          "ratio": 0.0737
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 28,
+      "kind": "chapter-prose",
+      "canonicalStart": 32097,
+      "canonicalEnd": 32348,
+      "canonicalLines": [
+        573,
+        577
+      ],
+      "text": "\n Do not use these definitions directly.\n They are only exposed to allow static allocation of `LZ4_stream_t` and `LZ4_streamDecode_t`.\n Accessing members will expose user code to API and/or ABI break in future versions of the library.\n",
+      "rawSha256": "47fc0e38fd46ce542dcdb51e8e4a5c7f1eabd5049ff0685e3a2f9b3cb04098cd",
+      "exactNormalizedSubstringHeaderIndices": [
+        39
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 39,
+          "ratio": 0.6917
+        },
+        {
+          "index": 37,
+          "ratio": 0.2577
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 29,
+      "kind": "api-description",
+      "canonicalStart": 32375,
+      "canonicalEnd": 32584,
+      "canonicalLines": [
+        579,
+        582
+      ],
+      "text": "  Never ever use below internal definitions directly !\n  These definitions are not API/ABI safe, and may change in future versions.\n  If you need static allocation, declare or allocate an LZ4_stream_t object.\n",
+      "rawSha256": "fdec8686baa02ccf9ac051f9615f755ec0dcd57e887f3e60088d5bc80e53e973",
+      "exactNormalizedSubstringHeaderIndices": [
+        40
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 40,
+          "ratio": 0.9642
+        },
+        {
+          "index": 43,
+          "ratio": 0.9374
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 30,
+      "kind": "api-description",
+      "canonicalStart": 32678,
+      "canonicalEnd": 33357,
+      "canonicalLines": [
+        585,
+        597
+      ],
+      "text": "  An LZ4_stream_t structure must be initialized at least once.\n  This is automatically done when invoking LZ4_createStream(),\n  but it's not when the structure is simply declared on stack (for example).\n\n  Use LZ4_initStream() to properly initialize a newly declared LZ4_stream_t.\n  It can also initialize any arbitrary buffer of sufficient size,\n  and will @return a pointer of proper type upon initialization.\n\n  Note : initialization fails if size and alignment conditions are not respected.\n         In which case, the function will @return NULL.\n  Note2: An LZ4_stream_t structure guarantees correct alignment and size.\n  Note3: Before v1.9.0, use LZ4_resetStream() instead\n",
+      "rawSha256": "52652e3f769bb915ef7be3cf8d49629250e00284ca05d7c62eb8e9bac4dee298",
+      "exactNormalizedSubstringHeaderIndices": [
+        42
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 42,
+          "ratio": 0.9796
+        },
+        {
+          "index": 51,
+          "ratio": 0.1905
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 31,
+      "kind": "api-description",
+      "canonicalStart": 33548,
+      "canonicalEnd": 33763,
+      "canonicalLines": [
+        605,
+        608
+      ],
+      "text": "  Never ever use below internal definitions directly !\n  These definitions are not API/ABI safe, and may change in future versions.\n  If you need static allocation, declare or allocate an LZ4_streamDecode_t object.\n",
+      "rawSha256": "5b83ee4c5d98b31b0e20c55f0024e73450cbc6bb1f4371fbec578a11117b860b",
+      "exactNormalizedSubstringHeaderIndices": [
+        43
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 43,
+          "ratio": 0.9519
+        },
+        {
+          "index": 40,
+          "ratio": 0.9506
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 32,
+      "kind": "api-description",
+      "canonicalStart": 34753,
+      "canonicalEnd": 35169,
+      "canonicalLines": [
+        629,
+        639
+      ],
+      "text": "\n  Deprecated functions make the compiler generate a warning when invoked.\n  This is meant to invite users to update their source code.\n  Should deprecation warnings be a problem, it is generally possible to disable them,\n  typically with -Wno-deprecated-declarations for gcc\n  or _CRT_SECURE_NO_WARNINGS in Visual.\n\n  Another method is to define LZ4_DISABLE_DEPRECATE_WARNINGS\n  before including the header file.\n \n",
+      "rawSha256": "0d115e4e14f3085937cecdca547100186187a7f09469aced7457219c370caf53",
+      "exactNormalizedSubstringHeaderIndices": [
+        45
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 45,
+          "ratio": 0.9742
+        },
+        {
+          "index": 28,
+          "ratio": 0.1655
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 33,
+      "kind": "api-description",
+      "canonicalStart": 37781,
+      "canonicalEnd": 39554,
+      "canonicalLines": [
+        664,
+        689
+      ],
+      "text": "  These functions used to be faster than LZ4_decompress_safe(),\n  but this is no longer the case. They are now slower.\n  This is because LZ4_decompress_fast() doesn't know the input size,\n  and therefore must progress more cautiously into the input buffer to not read beyond the end of block.\n  On top of that `LZ4_decompress_fast()` is not protected vs malformed or malicious inputs, making it a security liability.\n  As a consequence, LZ4_decompress_fast() is strongly discouraged, and deprecated.\n\n  The last remaining LZ4_decompress_fast() specificity is that\n  it can decompress a block without knowing its compressed size.\n  Such functionality can be achieved in a more secure manner\n  by employing LZ4_decompress_safe_partial().\n\n  Parameters:\n  originalSize : is the uncompressed size to regenerate.\n                 `dst` must be already allocated, its size must be >= 'originalSize' bytes.\n @return : number of bytes read from source buffer (== compressed size).\n           The function expects to finish at block's end exactly.\n           If the source stream is detected malformed, the function stops decoding and returns a negative result.\n  note : LZ4_decompress_fast*() requires originalSize. Thanks to this information, it never writes past the output buffer.\n         However, since it doesn't know its 'src' size, it may read an unknown amount of input, past input buffer bounds.\n         Also, since match offsets are not validated, match reads from 'src' may underflow too.\n         These issues never happen if input (compressed) data is correct.\n         But they may happen if input data is invalid (error or intentional tampering).\n         As a consequence, use these functions in trusted environments with trusted data **only**.\n \n",
+      "rawSha256": "62e08ab95ee8191e1ce6e2b4d3e010db09bd47e0a2c906518dfa42b17cd97aa5",
+      "exactNormalizedSubstringHeaderIndices": [
+        50
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 50,
+          "ratio": 0.9835
+        },
+        {
+          "index": 36,
+          "ratio": 0.0862
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 34,
+      "kind": "api-description",
+      "canonicalStart": 39633,
+      "canonicalEnd": 39878,
+      "canonicalLines": [
+        692,
+        697
+      ],
+      "text": "  An LZ4_stream_t structure must be initialized at least once.\n  This is done with LZ4_initStream(), or LZ4_resetStream().\n  Consider switching to LZ4_initStream(),\n  invoking LZ4_resetStream() will trigger deprecation warnings in the future.\n \n",
+      "rawSha256": "d6c46fb736040eb6869c9d5ae64219936702f91eadb8f0f19e9faac6feab0e8a",
+      "exactNormalizedSubstringHeaderIndices": [
+        51
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 51,
+          "ratio": 0.959
+        },
+        {
+          "index": 42,
+          "ratio": 0.2571
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    }
+  ],
+  "pending": [
+    "全文日本語翻訳（header同文訳は範囲/見出し/API名と条件照合後に再利用可能）",
+    "h1/h2/目次11リンクラベルと全API説明を翻訳、b宣言/inline comment/ASCII図を原文保護",
+    "原destSizeのdstCapacity/宣言targetDstSize、inplace本文と式の差を注記で保持",
+    "原文/定本/JA別工程全文review、全構造/数値/URL/識別子/DOM/隔離build"
+  ]
+}

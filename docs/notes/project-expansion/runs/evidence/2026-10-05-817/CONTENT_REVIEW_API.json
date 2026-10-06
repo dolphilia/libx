@@ -1,0 +1,90 @@
+{
+  "id": "04-api/01-block-api.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T06:31:33.740000+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4_manual.html",
+    "sha256": "d3ba8f6d993890c7c6c077354944c67aa85b319a3a74a361ab5d5590fea37772",
+    "coverage": [
+      [
+        1,
+        340
+      ],
+      [
+        341,
+        683
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/04-api/01-block-api.md",
+    "sha256": "cd288e805419b1199f452c9e0d3d33150113125255c519d63b62ec49ac16b50c",
+    "coverage": [
+      [
+        1,
+        350
+      ],
+      [
+        351,
+        700
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-817/translation/01-block-api.md",
+    "sha256": "fa6d8aeedadcd7b2e9f845c83ed0248563c6603b8801b20015b6d2ac0bbcb9ee",
+    "coverage": [
+      [
+        1,
+        244
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文→定本全量、宣言/見出し/目次/図/注記",
+      "result": "原文683行と定本700行を別工程全量照合。outer wrapper除去/名前anchor ID追加/改行/角括弧とbacktickの保護以外、技術本文・宣言・原inline comments・図保持。初回batched出力で定本前半が省略されたため1–350を単独再取得して確認。日本語は全411行を独立再読し35説明、12見出し/目次10リンクを照合。806既存訳の再利用を新ページの確認省略にしない。"
+    },
+    {
+      "scope": "説明区画0–9: 導入/freestanding/memory/simple/advanced",
+      "result": "blocksとframeの違い/追加metadata/caller制御、freestandingのcompile-time/heaps無し/LZ4F非対応、N->2^Nと例/default14/16KBを保持。default dstCapacity>=bound成功・小容量失敗即停止0/invalid dst、安全展開サイズ正確/容量不足・不正negative/metadata別途必須を照合。worstcase bound不正0、acceleration1/default/max65537、extstate8bytealignment、destSize入出力ポインターとv1.8.2–1.9.1bug/1byte余裕、partial全5注意とoversized srcSize時の必須上限/通知ない破損を確認。"
+    },
+    {
+      "scope": "説明10–23: streaming compress/decompress全条件",
+      "result": "RC compiler>30/warning/guard、stream初期化一度とnewchain毎reset/garbage禁止/extstate自分resetを保持。loadDictreset/同一dict/last64KB、slowCPUと再利用tradeoff、attach load準備状態のみ/NULL解除/履歴置換/最初call後解除/streamとsourceのsession中寿命を照合。各continue一block/連結展開不可、64KBsource保持/doublebuffer1bytegap/ring任意/errorresetfreeのみ、saveDictとreturnを確認。decodecontext再利用、dict安定/NULL0reset、ringの残余不足と最低size、continueのlast64KBと少ないとき全量、3条件（最低size・厳密同期と最後block例外・maxBlockSizeだけlarger）と不足時save+setを全文保持。usingDictstateless/partial/historyとperformance条件を照合。"
+    },
+    {
+      "scope": "説明24–34: experimental/inplace/private/deprecated、JA単独全文",
+      "result": "静的リンク限定・guardとhidden定義・publishmacro、fastreset initialized-onlyと旧reset説明、destSize_extState accelerationを保持。inplace末尾input/先頭decomp、図4行、margin/decomp>comp/maxhistory/圧縮不能代替/2削減手法を照合。原文サイズ>=maxCompressedSizeと後続macro説明を無断修正せずfooterで区別。private直接アクセス禁止/APIABI将来破壊/型を確保、init失敗NULLとalignment、deprecated warning無効化/unsafe fast inputsize無し/security/trustedonly/returnreadbytesを全保持。日本語単独再読で否定・例外・規範・主体/対象欠落なし。pre内の原強調文字列を保持。"
+    },
+    {
+      "scope": "provenance/license/editorial footer全量",
+      "result": "非公式訳、固定commit/sourceSHAとdownload/noticearchive、文書専用未発見のGPL運用判断と新許諾でないこと、原旧APIが生成manual未収録で全headerに収録する範囲注記を確認。GPL sourcekit未完と表示/統合を完了判定しない。コードinlinecomments英語保全、ソフト実行/性能測定未実施を表示。"
+    },
+    {
+      "scope": "表示検査後文字参照による整形修正",
+      "result": "Markdownによるraw pre/p内の改行/リスト/バッククォート強調解釈を検出。全35説明区画の改行・backtick・asterisk・underscoreをHTML数値文字参照で保護。html.unescape後の全説明は旧review草稿と完全一致する整形変更。意味reviewは旧全411行を根拠に維持し、文字参照を復元した全35区画・全宣言/見出し/目次の完全一致証明とDOMを別途検査する。"
+    }
+  ],
+  "reviewedBeforeFormatCorrection": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/draft/01-block-api.md",
+    "sha256": "c93c81ec75672030d2a075c52ee38a0fa04516c59cff760901aaee7790d55919",
+    "coverage": [
+      [
+        1,
+        190
+      ],
+      [
+        191,
+        411
+      ]
+    ],
+    "correctionEvidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-817/FORMAT_CORRECTION.json",
+      "sha256": "4f9cf56e5cbc8fdbf61ebc5b5b9603eedb80152fd4b693d4347725156e094448"
+    }
+  }
+}

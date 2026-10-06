@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-815-lz4-block-api-source-reading-and-prose-mapping",
+  "cycle": 813,
+  "startedAt": "2026-10-05T06:20:17.608Z",
+  "endedAt": "2026-10-05T06:22:05.677Z",
+  "result": "partial",
+  "phase": "LZ4 block API manual全原文読解と35説明区画のheader対応準備",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex full initial source reading",
+    "metadata prose/header mapping",
+    "read-only canonical/review SHA checks",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/BASELINE_OPERATIONS.json",
+      "sha256": "cb5332adf69906342a7757e81dff24bf35f9add76cf6285eb1adfb0e21847f86"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/BASELINE_PROGRESS.json",
+      "sha256": "96e68ecc0ed1169ead86b0c8543927e5f59ae0f0bfb900d660dadc052b344401"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "eaf1df4a1eb164731e4df8d43ea0bcc342a36a8a929f8bfcac97528a07a09d00"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4_manual.html",
+      "sha256": "d3ba8f6d993890c7c6c077354944c67aa85b319a3a74a361ab5d5590fea37772"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/04-api/01-block-api.md",
+      "sha256": "cd288e805419b1199f452c9e0d3d33150113125255c519d63b62ec49ac16b50c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/API_PREPARATION.json",
+      "sha256": "d04abfe84aae508b630e877b9a0d5e3c8740139c781262b127b8033d4f8df256"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/prepare-api.py",
+      "sha256": "6f154116de7829abc6db4a50e3904d5f80a4e3b5d5df2d7990cf789cc082d8fa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/record-draft-cycle.mjs",
+      "sha256": "d898eaf974dfc294fc0f69ee7f6ad9fabce79a5b6b1d4d8be95f1b54f5ee7d70"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "定本27とレビュー24組のlive SHA整合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/lz4/v1-10-0/canonical/revisions/802/CANONICAL_LOCK.json",
+          "sha256": "9d2b72008cc0f62a2df65e125cbac369bdb9a0f766b8390c8f8813fd02c541b9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/BASELINE_REVIEW_MANIFEST.json",
+          "sha256": "eaf1df4a1eb164731e4df8d43ea0bcc342a36a8a929f8bfcac97528a07a09d00"
+        }
+      ]
+    },
+    {
+      "name": "block API manual翻訳/別工程全文review/機械/取込/build/DOM",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/API_PREPARATION.json",
+          "sha256": "d04abfe84aae508b630e877b9a0d5e3c8740139c781262b127b8033d4f8df256"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/prepare-api.py",
+          "sha256": "6f154116de7829abc6db4a50e3904d5f80a4e3b5d5df2d7990cf789cc082d8fa"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/record-draft-cycle.mjs",
+          "sha256": "d898eaf974dfc294fc0f69ee7f6ad9fabce79a5b6b1d4d8be95f1b54f5ee7d70"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "原文683行を1–240/241–460/461–683の非省略出力で全量読んだ。正式翻訳/全文reviewは未着手。",
+    "定本body内の非空p31区画とstandalonepre4区画を抽出。35区画すべてが固定ヘッダー装飾/空白正規化後substringに対応するが、これは機械的な候補対応であり訳再利用や意味合否の判定ではない。",
+    "初回抽出のfrontmatter混入/empty pre跨ぎを検出し、body限定と閉じpre境界を修正。全35区画対応表を保存、24/27合格・3pendingを維持。未取込、外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "initialSourceReading": [
+      [
+        1,
+        683
+      ]
+    ],
+    "contentReview": []
+  },
+  "unresolved": [
+    "全文日本語翻訳（header同文訳は範囲/見出し/API名と条件照合後に再利用可能）",
+    "h1/h2/目次11リンクラベルと全API説明を翻訳、b宣言/inline comment/ASCII図を原文保護",
+    "原destSizeのdstCapacity/宣言targetDstSize、inplace本文と式の差を注記で保持",
+    "原文/定本/JA別工程全文review、全構造/数値/URL/識別子/DOM/隔離build",
+    "日本語/full review残り3、全表示/統合/finalgates・GPL対応Libx sourcekit未完",
+    "外部リンクHTTP可用性/画像ロード未確認"
+  ],
+  "nextAction": "816でOPERATIONS891・802定本27SHA・review24組・815 API_PREPARATIONと変換器SHAを照合。35本文区画と全見出し/目次を逐次翻訳し、806既存訳の再利用時はsource範囲/関数ラベル/条件を照合する。宣言・inline comment・ASCII図原文保持。source/EN/JA別工程全文review→機械→隔離取込/build/DOM。残り3（NEWS/manual2）、全gates/sourcekit/統合未完。",
+  "resumeCondition": "OPERATIONS891・815準備SHA照合後816でblock API manual翻訳を継続。"
+}
