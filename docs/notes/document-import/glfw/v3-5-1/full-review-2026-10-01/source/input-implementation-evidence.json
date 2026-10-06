@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "method": "fixed-archive-byte-comparison-and-ai-reading",
+  "createdAt": "2026-10-01T11:46:30.707Z",
+  "archive": {
+    "path": "docs/notes/document-import/glfw/v3-5-1/maintenance-2026-10-01/source/glfw-3.5.1.zip",
+    "sha256": "ea79bc5feffc254c87291980c2d0bce9acebb68c4983b79f961dcd2cb8a611a0"
+  },
+  "references": [
+    {
+      "archiveMember": "glfw-3.5.1/src/input.c",
+      "extractedSha256": "d750bc5a5553aae4e7f0e9d4b1628d06dc7e0626b847efba26b800943b0c0f6d",
+      "ranges": [
+        {
+          "start": 175,
+          "end": 245,
+          "text": "\n    memcpy(mapping->name, c, length);\n    c += length + 1;\n\n    while (*c)\n    {\n        // TODO: Implement output modifiers\n        if (*c == '+' || *c == '-')\n            return GLFW_FALSE;\n\n        for (i = 0;  i < sizeof(fields) / sizeof(fields[0]);  i++)\n        {\n            length = strlen(fields[i].name);\n            if (strncmp(c, fields[i].name, length) != 0 || c[length] != ':')\n                continue;\n\n            c += length + 1;\n\n            if (fields[i].element)\n            {\n                _GLFWmapelement* e = fields[i].element;\n                int8_t minimum = -1;\n                int8_t maximum = 1;\n\n                if (*c == '+')\n                {\n                    minimum = 0;\n                    c += 1;\n                }\n                else if (*c == '-')\n                {\n                    maximum = 0;\n                    c += 1;\n                }\n\n                if (*c == 'a')\n                    e->type = _GLFW_JOYSTICK_AXIS;\n                else if (*c == 'b')\n                    e->type = _GLFW_JOYSTICK_BUTTON;\n                else if (*c == 'h')\n                    e->type = _GLFW_JOYSTICK_HATBIT;\n                else\n                    break;\n\n                if (e->type == _GLFW_JOYSTICK_HATBIT)\n                {\n                    const unsigned long hat = strtoul(c + 1, (char**) &c, 10);\n                    const unsigned long bit = strtoul(c + 1, (char**) &c, 10);\n                    e->index = (uint8_t) ((hat << 4) | bit);\n                }\n                else\n                    e->index = (uint8_t) strtoul(c + 1, (char**) &c, 10);\n\n                if (e->type == _GLFW_JOYSTICK_AXIS)\n                {\n                    e->axisScale = 2 / (maximum - minimum);\n                    e->axisOffset = -(maximum + minimum);\n\n                    if (*c == '~')\n                    {\n                        e->axisScale = -e->axisScale;\n                        e->axisOffset = -e->axisOffset;\n                    }\n                }\n            }\n            else\n            {\n                const char* name = _glfw.platform.getMappingName();\n                length = strlen(name);\n                if (strncmp(c, name, length) != 0)\n                    return GLFW_FALSE;"
+        },
+        {
+          "start": 414,
+          "end": 425,
+          "text": "void _glfwInputJoystick(_GLFWjoystick* js, int event)\n{\n    assert(js != NULL);\n    assert(event == GLFW_CONNECTED || event == GLFW_DISCONNECTED);\n\n    if (event == GLFW_CONNECTED)\n        js->connected = GLFW_TRUE;\n    else if (event == GLFW_DISCONNECTED)\n        js->connected = GLFW_FALSE;\n\n    if (_glfw.callbacks.joystick)\n        _glfw.callbacks.joystick((int) (js - _glfw.joysticks), event);"
+        },
+        {
+          "start": 533,
+          "end": 541,
+          "text": "\n// Frees arrays and name and flags the joystick object as unused\n//\nvoid _glfwFreeJoystick(_GLFWjoystick* js)\n{\n    _glfw_free(js->axes);\n    _glfw_free(js->buttons);\n    _glfw_free(js->hats);\n    memset(js, 0, sizeof(_GLFWjoystick));"
+        },
+        {
+          "start": 1169,
+          "end": 1195,
+          "text": "GLFWAPI const char* glfwGetJoystickName(int jid)\n{\n    _GLFWjoystick* js;\n\n    assert(jid >= GLFW_JOYSTICK_1);\n    assert(jid <= GLFW_JOYSTICK_LAST);\n\n    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);\n\n    if (jid < 0 || jid > GLFW_JOYSTICK_LAST)\n    {\n        _glfwInputError(GLFW_INVALID_ENUM, \"Invalid joystick ID %i\", jid);\n        return NULL;\n    }\n\n    if (!initJoysticks())\n        return NULL;\n\n    js = _glfw.joysticks + jid;\n    if (!js->connected)\n        return NULL;\n\n    if (!_glfw.platform.pollJoystick(js, _GLFW_POLL_PRESENCE))\n        return NULL;\n\n    return js->name;\n}"
+        },
+        {
+          "start": 1241,
+          "end": 1255,
+          "text": "GLFWAPI void* glfwGetJoystickUserPointer(int jid)\n{\n    _GLFWjoystick* js;\n\n    assert(jid >= GLFW_JOYSTICK_1);\n    assert(jid <= GLFW_JOYSTICK_LAST);\n\n    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);\n\n    js = _glfw.joysticks + jid;\n    if (!js->allocated)\n        return NULL;\n\n    return js->userPointer;\n}"
+        }
+      ]
+    },
+    {
+      "archiveMember": "glfw-3.5.1/src/linux_joystick.c",
+      "extractedSha256": "b6691fbb3d80dd3ff5f560828b6fae0045ade62777b33ab3f7787e1074da790e",
+      "ranges": [
+        {
+          "start": 245,
+          "end": 252,
+          "text": "// Frees all resources associated with the specified joystick\n//\nstatic void closeJoystick(_GLFWjoystick* js)\n{\n    _glfwInputJoystick(js, GLFW_DISCONNECTED);\n    close(js->linjs.fd);\n    _glfwFreeJoystick(js);\n}"
+        }
+      ]
+    },
+    {
+      "archiveMember": "glfw-3.5.1/src/win32_joystick.c",
+      "extractedSha256": "e1714124ebc5e790ba958fc7c120fa17a2839edcc55809480feeda8b464fb820",
+      "ranges": [
+        {
+          "start": 257,
+          "end": 269,
+          "text": "static void closeJoystick(_GLFWjoystick* js)\n{\n    _glfwInputJoystick(js, GLFW_DISCONNECTED);\n\n    if (js->win32.device)\n    {\n        IDirectInputDevice8_Unacquire(js->win32.device);\n        IDirectInputDevice8_Release(js->win32.device);\n    }\n\n    _glfw_free(js->win32.objects);\n    _glfwFreeJoystick(js);\n}"
+        }
+      ]
+    },
+    {
+      "archiveMember": "glfw-3.5.1/src/cocoa_joystick.m",
+      "extractedSha256": "b3d9ec109c5496a43443cc64727fffd1d8d2e0e01063c3be5cec59b87e6a3de4",
+      "ranges": [
+        {
+          "start": 96,
+          "end": 114,
+          "text": "//\nstatic void closeJoystick(_GLFWjoystick* js)\n{\n    _glfwInputJoystick(js, GLFW_DISCONNECTED);\n\n    for (int i = 0;  i < CFArrayGetCount(js->ns.axes);  i++)\n        _glfw_free((void*) CFArrayGetValueAtIndex(js->ns.axes, i));\n    CFRelease(js->ns.axes);\n\n    for (int i = 0;  i < CFArrayGetCount(js->ns.buttons);  i++)\n        _glfw_free((void*) CFArrayGetValueAtIndex(js->ns.buttons, i));\n    CFRelease(js->ns.buttons);\n\n    for (int i = 0;  i < CFArrayGetCount(js->ns.hats);  i++)\n        _glfw_free((void*) CFArrayGetValueAtIndex(js->ns.hats, i));\n    CFRelease(js->ns.hats);\n\n    _glfwFreeJoystick(js);\n}"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "joystickのconnectedをFALSEにしてからcallbackを呼ぶ。GetJoystickNameはconnectedがFALSEならNULLを返す。GetUserPointerはallocatedを検査して返し、各Linux/Win32/Cocoaはcallback後にFreeJoystickする。FreeJoystickは構造体をゼロ化。名前の有効期間を切断後へ拡張しない。",
+    "マッピングパーサーはaをAXIS、bをBUTTON、hをHATBITとして扱う。a7はゼロ基準index7の8番目の軸。固定ガイドのeighth buttonは原文の不整合。"
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "id": "04-reference/21-glfwvidmode.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T16:33:51.735Z",
+  "updatedAt": "2026-10-01T16:37:15.804Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/struct_g_l_f_wvidmode.html",
+      "sha256": "90945246e68fc25df721119e5fc655b614cd6ac67938bb905092a0e5aa5c743b"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/21-glfwvidmode.md",
+      "sha256": "7ed72d3a08ba15efdc79023f983e518e6ce91d5c75d2b9ca460479ea2060a400"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/21-glfwvidmode.md",
+      "sha256": "dfb2210a55d1858f7c59b38f52991d3b139d2bc2849415f969deb1e23ed8fcd2"
+    }
+  },
+  "lineCounts": {
+    "source": 204,
+    "canonical": 224,
+    "translation": 224
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        204
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        222
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        222
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "id": "vidmode-title",
+      "type": "display",
+      "description": "配信英日本文h1なし。原文の構造体名称と配信titleが対応。",
+      "status": "applied"
+    }
+  ],
+  "plannedCorrections": [
+    {
+      "type": "display",
+      "scope": "英日h1と変換器の対象追加のみ。本文意味の変更なし。",
+      "status": "applied"
+    }
+  ],
+  "unresolved": [
+    "残るGLFW3ページ・Lua53ページの全文、全ページ表示、上流確認は未完了。"
+  ],
+  "nextAction": "04-reference/22-deprecated-list.mdの固定原文・英日全文をレビュー。GLFW内容32/35合格、3未確認。Lua55ページ未確認。",
+  "coverageMeaning": "原文204行・英日222/222行の全非空本文をraw全文実読。配信用本文は原文76–197行。1–75/198–204はraw観測したUI/生成metadataとして除外。",
+  "excludedSourceRanges": [
+    {
+      "range": [
+        1,
+        75
+      ],
+      "reason": "Doxygen header/search/nav UI。titleをh1欠如の根拠に確認。"
+    },
+    {
+      "range": [
+        198,
+        204
+      ],
+      "reason": "Doxygen footer生成日・閉じタグ、配信用外メタデータ。"
+    }
+  ],
+  "reviewViewEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/review-view-method.json",
+      "sha256": "782f32f2b3e75caf80395ea7dedf43a6f3a75a101363197b64475a2888f347fc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/vidmode-source-initial-view.txt",
+      "sha256": "90945246e68fc25df721119e5fc655b614cd6ac67938bb905092a0e5aa5c743b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/vidmode-canonical-initial-view.txt",
+      "sha256": "c4a657aba9dc11bd3427375ee098ade4aecbc15f52a8f24e35367f732d7fa3de"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/vidmode-translation-initial-view.txt",
+      "sha256": "364b17bcbd6def820ba982abdf1418f2cba49672fef903589d0fece92694469c"
+    }
+  ],
+  "initialReviewSummary": [
+    "固定原文204行・英日222行をraw全文実読。全6フィールドint、width/heightはスクリーン座標単位、RGB各bit深度、refreshRateはHz単位を照合。",
+    "単一ビデオモード、1.0追加・GLFW3でrefreshRate追加、ガイド/GetVideoMode/GetVideoModes/glfw3.h参照が忠実。意味の誤訳なし、h1欠如だけ補完する。"
+  ],
+  "initialReviewCompletedAt": "2026-10-01T16:34:15.381Z",
+  "mechanicalEvidence": [
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/VIDMODE_CODE_CHECK.json",
+      "sha256": "dc7ee82c1181f2dafdd011ba5b34b0d765fabae2b8a0c3ff2ffc2180440096bb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/content-check.txt",
+      "sha256": "e42228058423d67c4f2d71113b78ba45d49bef55d006cbe3b70f76bd52793dd1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "finalReviewCoverage": {
+    "canonical": [
+      [
+        1,
+        224
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        224
+      ]
+    ]
+  },
+  "finalReviewProgress": {
+    "status": "passed",
+    "reviewedAt": "2026-10-01T16:35:02.817Z",
+    "coverage": {
+      "canonical": [
+        [
+          1,
+          224
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          224
+        ]
+      ]
+    },
+    "results": [
+      "h1追加後の英日1–224行の全非空本文を編集と別工程で全文実読。全6フィールドint、width/heightのスクリーン座標単位、RGB各ビット深度、refreshRateのHz単位、1.0追加・GLFW3でrefreshRate追加、ガイド/GetVideoMode/GetVideoModesとglfw3.h参照を固定原文に照合。",
+      "英日本文の意味変更なし、h1だけ追加。6フィールド型・17URL/15idとh1以外の本文保全は別機械検査。",
+      "全pixel・実機gamma API挙動は未検証。コードfragmentなし。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/final-review-view-method.json",
+        "sha256": "25fe06579d9e75e768b50c012c54db0178548cc346e4531f5ba7fff914764033"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/vidmode-en-final-review-view.txt",
+        "sha256": "5a1ca8fb8670913c02680885a4e7138eefa67172fd72784a212071c397b9154a"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/vidmode-ja-final-review-view.txt",
+        "sha256": "b93d3579161314c9b6ebb5279819e40013d98ce0f901b52f48dd00f86cb24f9c"
+      }
+    ]
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T16:35:02.817Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/21-glfwvidmode.md",
+      "sha256": "7ed72d3a08ba15efdc79023f983e518e6ce91d5c75d2b9ca460479ea2060a400",
+      "coverage": [
+        [
+          1,
+          224
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/21-glfwvidmode.md",
+      "sha256": "dfb2210a55d1858f7c59b38f52991d3b139d2bc2849415f969deb1e23ed8fcd2",
+      "coverage": [
+        [
+          1,
+          224
+        ]
+      ]
+    },
+    "results": [
+      "h1追加後の英日1–224行の全非空本文を編集と別工程で全文実読。全6フィールドint、width/heightのスクリーン座標単位、RGB各ビット深度、refreshRateのHz単位、1.0追加・GLFW3でrefreshRate追加、ガイド/GetVideoMode/GetVideoModesとglfw3.h参照を固定原文に照合。",
+      "英日本文の意味変更なし、h1だけ追加。6フィールド型・17URL/15idとh1以外の本文保全は別機械検査。",
+      "全pixel・実機gamma API挙動は未検証。コードfragmentなし。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/final-review-view-method.json",
+        "sha256": "25fe06579d9e75e768b50c012c54db0178548cc346e4531f5ba7fff914764033"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/vidmode-en-final-review-view.txt",
+        "sha256": "5a1ca8fb8670913c02680885a4e7138eefa67172fd72784a212071c397b9154a"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-036/vidmode-ja-final-review-view.txt",
+        "sha256": "b93d3579161314c9b6ebb5279819e40013d98ce0f901b52f48dd00f86cb24f9c"
+      }
+    ]
+  },
+  "separateReviewPass": true
+}

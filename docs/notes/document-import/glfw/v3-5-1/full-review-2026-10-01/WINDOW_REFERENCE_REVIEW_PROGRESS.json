@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "id": "04-reference/03-window-reference.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T13:17:47.936Z",
+  "updatedAt": "2026-10-01T14:01:57.770Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/group__window.html",
+      "sha256": "1a75a70c6a53e29f826390165fbf59db4fe8b290538005288d29e9d310c29b1e"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/03-window-reference.md",
+      "sha256": "5329cff23f503f690d702a725c099d51509f986f8757aa0b6161b97362a8c90e"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/03-window-reference.md",
+      "sha256": "ede7c4dc0ee31796bbe4802c383322104841a12239c8c05c4cd4f4ad412decb4"
+    }
+  },
+  "lineCounts": {
+    "source": 3611,
+    "canonical": 6090,
+    "translation": 6090
+  },
+  "coverage": {
+    "source": [
+      [
+        78,
+        3604
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        6074
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        6074
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "id": "window-title",
+      "type": "display",
+      "status": "applied",
+      "sourceLines": [
+        1,
+        80
+      ],
+      "canonicalLines": [
+        1,
+        20
+      ],
+      "translationLines": [
+        1,
+        20
+      ],
+      "description": "固定HTMLのページtitleはWindow reference。日英本文にh1なし。対象ページだけh1を追加予定。"
+    },
+    {
+      "id": "floating-brief",
+      "type": "unmarked-source-correction",
+      "status": "applied",
+      "sourceLines": [
+        101,
+        102,
+        517,
+        527
+      ],
+      "canonicalLines": [
+        95,
+        99,
+        1523,
+        1537
+      ],
+      "translationLines": [
+        95,
+        99,
+        1523,
+        1537
+      ],
+      "description": "原文のGLFW_FLOATING brief/detailedはWindow decoration、JAのみfloatingへ無注記修正。固定guideとwindow.cは常時最前面のfloatingを指す。原文訳を復元し、詳細に別注記を追加予定。"
+    },
+    {
+      "id": "robustness-description",
+      "type": "unmarked-source-correction",
+      "status": "applied",
+      "sourceLines": [
+        952,
+        962
+      ],
+      "canonicalLines": [
+        2161,
+        2175
+      ],
+      "translationLines": [
+        2161,
+        2175
+      ],
+      "description": "原文詳細のGLFW_CONTEXT_ROBUSTNESSはContext client API revision numberの誤記。JAだけ堅牢性へ無注記修正。固定guide/window.cはrobustness strategy。原文訳を復元し注記追加予定。"
+    },
+    {
+      "id": "win32-icon-name",
+      "type": "upstream-error",
+      "status": "applied",
+      "sourceLines": [
+        1677,
+        1677
+      ],
+      "canonicalLines": [
+        3319,
+        3319
+      ],
+      "translationLines": [
+        3319,
+        3319
+      ],
+      "description": "GLFW_ICON,というコードは固定原文とheaderにも存在。変換器の混入ではない。win32_window.c1295–1297のLoadImageWはカンマなしGLFW_ICON。原文を保全し注記予定。"
+    },
+    {
+      "id": "set-position-parameter",
+      "type": "unmarked-source-correction",
+      "status": "applied",
+      "sourceLines": [
+        2020,
+        2027
+      ],
+      "canonicalLines": [
+        3792,
+        3803
+      ],
+      "translationLines": [
+        3792,
+        3803
+      ],
+      "description": "原文のsetter引数windowはThe window to query、JAのみ位置を設定するウィンドウへ無注記修正。固定setter596–607はsetWindowPosを呼ぶ。原文訳を復元して注記予定。"
+    },
+    {
+      "id": "opacity-range",
+      "type": "upstream-inconsistency",
+      "status": "applied",
+      "sourceLines": [
+        2448,
+        2449,
+        2492,
+        2493
+      ],
+      "canonicalLines": [
+        4282,
+        4342
+      ],
+      "translationLines": [
+        4282,
+        4342
+      ],
+      "description": "原文positive finiteとzero fully transparentが不整合。固定setterwindow.c777–796はfinite/0以上1以下を検査。get/setそれぞれに原文を保全した注記予定。"
+    },
+    {
+      "id": "transparency-prohibition",
+      "type": "translation",
+      "status": "applied",
+      "sourceLines": [
+        2495,
+        2495
+      ],
+      "canonicalLines": [
+        4346,
+        4346
+      ],
+      "translationLines": [
+        4346,
+        4346
+      ],
+      "description": "may not use whole window transparencyを使用できないことがありますと可能性に訳す。固定guide1243–1246も併用禁止・undefined。使用してはなりませんへ修正予定。"
+    },
+    {
+      "id": "wayland-restoration",
+      "type": "upstream-inconsistency",
+      "status": "applied",
+      "sourceLines": [
+        2571,
+        2571
+      ],
+      "canonicalLines": [
+        4471,
+        4471
+      ],
+      "translationLines": [
+        4471,
+        4471
+      ],
+      "description": "原文は最大化から復元できないが最大化からのみ復元できると自己矛盾。固定wl_window.c2688–2710は最小化解除不可コメント、最大化解除経路あり。現在の一般Wayland仕様へ一般化せず固定版挙動を注記予定。"
+    },
+    {
+      "id": "viewport-modality",
+      "type": "translation",
+      "status": "applied",
+      "sourceLines": [
+        2852,
+        2852
+      ],
+      "canonicalLines": [
+        4876,
+        4876
+      ],
+      "translationLines": [
+        4876,
+        4876
+      ],
+      "description": "may need to update your viewportを必要がありますと断定。フレームバッファ変更時の条件を残し、必要になる場合がありますへ修正予定。"
+    }
+  ],
+  "plannedCorrections": [
+    {
+      "type": "display",
+      "scope": "参考資料のh1タイトル欠如。Native accessで観測済み、window referenceは定本にh1なし。本文全文を確認後に対応範囲を判断。",
+      "status": "applied"
+    }
+  ],
+  "unresolved": [
+    "GLFW21ページ・Lua55ページ、全ページ表示、上流更新確認は未完了。",
+    "Doxygen tooltip/コードの表示区別を次サイクルで改善。nativeアクセス等のh1は未確認。"
+  ],
+  "nextAction": "次サイクルでDoxygen fragmentのコードとtooltip補足を区別するGLFW固有CSSを検討・実装・代表表示検証。その後04-reference/04-context-reference.mdの固定原文・英日全文をレビュー。内容14/35合格、21未確認。",
+  "coverageMeaning": "初回の本文全文内容レビュー。固定入力を要約せず構造タグ・空行を除いた全テキスト表示で実読。sourceはcontents本文78–3604行、EN/JAは全6074行の非空本文を原行番号付きで実読。HTML属性や構造タグの全行実読を意味しない。コード・URL・id・構造の別機械検査と、修正後別パス全文は未実施。",
+  "rawInspectionCoverage": {
+    "source": [
+      [
+        1,
+        80
+      ],
+      [
+        3580,
+        3611
+      ]
+    ]
+  },
+  "excludedSourceRanges": [
+    {
+      "range": [
+        1,
+        77
+      ],
+      "reason": "Doxygenのヘッダー・ナビゲーション・title・scriptなどの配信用外UI。原文を観測し除外理由を保存。"
+    },
+    {
+      "range": [
+        3605,
+        3611
+      ],
+      "reason": "Doxygen生成日時・フッター等の配信用外UI。原文末尾を観測。"
+    }
+  ],
+  "reviewViewEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/review-view-method.json",
+      "sha256": "3d233801da14b0136f807d036712bfad75e06f05e7a932a91f35b4e66a989a8a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/window-source-review-view.txt",
+      "sha256": "e92b79b188e18cdb9e6c9df311969b76afe5eba732eaec6a012191c0ce94ff40"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/window-en-review-view.txt",
+      "sha256": "088985beb5599e8b1f31302696d2e46a71e99c513d0327c24661c9d8290ead15"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/window-ja-review-view.txt",
+      "sha256": "508941760c358b59ce5d04ece1560fdde16f8c5542002beb302fb804a1b2999f"
+    }
+  ],
+  "initialReviewCompletedAt": "2026-10-01T13:33:00.743Z",
+  "separateReviewPass": true,
+  "initialReviewSummary": [
+    "固定HTMLの全文テキスト1431行とEN/JA各1627行の全非空表示を節単位で実読。抽出実行だけをレビューと数えない。",
+    "マクロ・typedef・全関数・全参数/戻り値/エラー/条件/スレッド/再入/版を照合。規範、原文の誤記・自己矛盾、無注記修正、翻訳のmayの強さを9種記録。",
+    "source生HTML構造全行とURL/id等は別検査待ち。初回確認は合格ではない。修正後の英日別パス全文、機械、代表表示はpending。"
+  ],
+  "implementationEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/fixed-implementation-source-check.json",
+    "sha256": "2f345eee89eecbcf53fece5d0abc20097b30a07ee0a71ac023e1c7e08d553869"
+  },
+  "initialReviewedArtifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/group__window.html",
+      "sha256": "1a75a70c6a53e29f826390165fbf59db4fe8b290538005288d29e9d310c29b1e"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/03-window-reference.md",
+      "sha256": "889748e3e345cab3be99bf52426b8e62cbd816a25d75505896d7bb4851946b66"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/03-window-reference.md",
+      "sha256": "322a3c6842b80f2ece92ee7d6f83232edd30f62a8038e7bbb0f53beb614fe30b"
+    }
+  },
+  "initialLineCounts": {
+    "source": 3611,
+    "canonical": 6074,
+    "translation": 6074
+  },
+  "finalReviewCoverage": {
+    "canonical": [
+      [
+        1,
+        6090
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        6090
+      ]
+    ]
+  },
+  "appliedCorrections": [
+    "window reference日英のh1、固定原文/実装根拠7注記を追加。",
+    "JAの無注記変更4箇所を原文訳へ復元し、注記で正しい意味を説明。",
+    "JA併用禁止とviewport mayの2文を修正。",
+    "差分確認でsetter引数表の途中に挿入した注記を検知し、3行の表全体の後へ移動。本文・表セル欠落なし。"
+  ],
+  "initialReviewCoverage": {
+    "source": [
+      [
+        78,
+        3604
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        6074
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        6074
+      ]
+    ]
+  },
+  "coverageAppliesTo": "initialReviewedArtifacts",
+  "finalReviewProgress": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "separateReviewPass": true,
+    "status": "passed",
+    "reviewedAt": "2026-10-01T13:53:31.691Z",
+    "artifacts": {
+      "canonical": {
+        "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/03-window-reference.md",
+        "sha256": "5329cff23f503f690d702a725c099d51509f986f8757aa0b6161b97362a8c90e"
+      },
+      "translation": {
+        "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/03-window-reference.md",
+        "sha256": "ede7c4dc0ee31796bbe4802c383322104841a12239c8c05c4cd4f4ad412decb4"
+      }
+    },
+    "coverage": {
+      "canonical": [
+        [
+          1,
+          6090
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          6090
+        ]
+      ]
+    },
+    "coverageMeaning": "修正後の全非空テキスト表示を原行番号で別工程実読。HTML属性と構造タグの字面実読を意味しない。機械検査とは別のAI内容確認。",
+    "results": [
+      "修正後英日1–6090行の全非空semantic表示を別工程実読。マクロ・typedef・全関数と参数/返値/エラー/規範/条件/版/スレッド/再入を照合。",
+      "7注記を固定版の該当実装/guideと照合。JA無注記修正4箇所を原文訳へ復元、併用禁止とviewport mayを修正。最後のcallback/events/swapbuffersまで確認。",
+      "HTML構造タグ/属性の全字面読解やOS/GPU実行を意味しない。署名/コード/id/URL/本文保全は別の機械検査で記録。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/final-review-view-method.json",
+        "sha256": "294ed470bd887a05d68a2744208d16ffc2fba68cec40193d581ad5dc6b8a6bb8"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/window-en-final-review-view.txt",
+        "sha256": "6c2c7356f54b8218ef4a422484008edd6e4b0585fb70cc7e0ec1b45999825ba3"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/window-ja-final-review-view.txt",
+        "sha256": "d15d40e8bc9943bd8365fa2d031a15f5929b655266a935c1de5e2679852c290e"
+      }
+    ]
+  },
+  "mechanicalEvidence": [
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/WINDOW_REFERENCE_CODE_CHECK.json",
+      "sha256": "24054569bdd414eca29e4ef97a991d146de42e7ee4df18659805981179320fa9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/glfw-content-after-lint-fix.txt",
+      "sha256": "e42228058423d67c4f2d71113b78ba45d49bef55d006cbe3b70f76bd52793dd1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/glfw-regenerate2-root.txt",
+      "sha256": "4005c53023df42e4fa89ab6a8364079468d6d5c3fd9d067eb24f1b479473d58e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/eslint-after-whitespace-fix.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/diff-check-after-lint-fix.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T13:53:31.691Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/03-window-reference.md",
+      "sha256": "5329cff23f503f690d702a725c099d51509f986f8757aa0b6161b97362a8c90e",
+      "coverage": [
+        [
+          1,
+          6090
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/03-window-reference.md",
+      "sha256": "ede7c4dc0ee31796bbe4802c383322104841a12239c8c05c4cd4f4ad412decb4",
+      "coverage": [
+        [
+          1,
+          6090
+        ]
+      ]
+    },
+    "results": [
+      "修正後英日1–6090行の全非空semantic表示を別工程実読。マクロ・typedef・全関数と参数/返値/エラー/規範/条件/版/スレッド/再入を照合。",
+      "7注記を固定版の該当実装/guideと照合。JA無注記修正4箇所を原文訳へ復元、併用禁止とviewport mayを修正。最後のcallback/events/swapbuffersまで確認。",
+      "HTML構造タグ/属性の全字面読解やOS/GPU実行を意味しない。署名/コード/id/URL/本文保全は別の機械検査で記録。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/final-review-view-method.json",
+        "sha256": "294ed470bd887a05d68a2744208d16ffc2fba68cec40193d581ad5dc6b8a6bb8"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/window-en-final-review-view.txt",
+        "sha256": "6c2c7356f54b8218ef4a422484008edd6e4b0585fb70cc7e0ec1b45999825ba3"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/window-ja-final-review-view.txt",
+        "sha256": "d15d40e8bc9943bd8365fa2d031a15f5929b655266a935c1de5e2679852c290e"
+      }
+    ]
+  }
+}

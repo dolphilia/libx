@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "id": "03-guides/04-window-guide.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6.1-sol;runtime:unavailable",
+  "startedAt": "2026-10-01T11:14:47.394Z",
+  "updatedAt": "2026-10-01T11:35:53.356Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/window.md",
+      "sha256": "a1fba65bac1eb12cbd28101b2e6b97b518236ff3a15aaa7a68c40a5e86d8e70e"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/04-window-guide.md",
+      "sha256": "defc38747867a73d84f76058f9c52253033491c4476fd0e3dfe84f13e962184e"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/04-window-guide.md",
+      "sha256": "395ec245261807133c7867f4502b9bdc14d43eaf8fa1f4c644ac8011b6d4f140"
+    }
+  },
+  "lineCounts": {
+    "source": 1542,
+    "canonical": 1563,
+    "translation": 1237
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        180
+      ],
+      [
+        181,
+        347
+      ],
+      [
+        348,
+        847
+      ],
+      [
+        848,
+        1542
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        190
+      ],
+      [
+        191,
+        359
+      ],
+      [
+        360,
+        868
+      ],
+      [
+        869,
+        1563
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        149
+      ],
+      [
+        150,
+        277
+      ],
+      [
+        278,
+        670
+      ],
+      [
+        671,
+        1237
+      ]
+    ]
+  },
+  "findings": [
+    "window/context分離不能・handle共用、640×480、作成失敗NULLの確認必須、inputイベントのwindow識別を原文/定本/日本語で照合。",
+    "full screenのmonitor指定、ビデオモード6フィールドとparameter/hint対応、最も近いmodeをinput focus中に設定、size/refresh/monitor変更でcontext不変、focus lossのmode復元/iconifyとAUTO_ICONIFY解除例を確認。",
+    "windowed full screenがfull screenに分類されること、現在mode要求でmode切替を回避、既存full screenから移す場合はdesktop resolutionの事前保存が必要な条件を保持。",
+    "破棄前にcallbackを除去、残存windowをTerminateで破棄、mode復元とgammaには触れないことを照合。日本語「ガンマランプは変更されたまま」は既に変更したことを前提に読めるため「ガンマランプは変更されません」へ明確化する候補。",
+    "Init時のdefaults、整数/StringHint/全体Reset、作成前のhint、platform固有設定をどこでも受け付け該当platformだけ作用を照合。4always-hard constraintsとOpenGLだけ2hard/ES ignoredを確認。",
+    "RESIZABLEはuser可否でSetWindowSizeは引き続き可能、fullscreen/undecorated ignored、VISIBLE/DECORATED/FOCUSED/AUTO_ICONIFY/FLOATING/MAXIMIZED/CENTER_CURSOR/TRANSPARENT_FRAMEBUFFER/FOCUS_ON_SHOWの全条件と無視条件を確認。",
+    "SCALE_TO_MONITORはWin/X11 1:1限定、SCALE_FRAMEBUFFERはmacOS/Waylandと3.4別名互換、MOUSE_PASSTHROUGHはundecoratedだけ保証、POSITION_X/YはWM変更/無視・ANY_POSITIONの一方/両方条件を照合。",
+    "bit depth6・accum4・auxのDONT_CARE=希望なし、legacy accum/aux非推奨、STEREO/DOUBLEBUFFERはhard、SAMPLES0=無効、SRGBのOpenGLデフォルト無効/ES常時有効の差、refresh DONT_CARE=最高でwindowed ignoredを確認。",
+    "context APIの3選択・hard/NO_API ignored、loaderとGetProcAddress、Wayland EGL・X11 native/EGL混在の一部環境segfault・OSMesa swap非表示とbuffer取得を照合。",
+    "GL/ES versionは最低条件で最高互換contextを試行、GLFW_VERSIONとの区別、ES1/2非互換と3→2互換、macOS core3.2+のみ・3.0/3.1非対応、forward/profile/debug/robustness/release/no-error全条件を確認。",
+    "Win32 keyboard menuと最初のSHOWDEFAULT/STARTUPINFO、COCOA保存名UTF8・切替GPUの用途とplatform ignored、Wayland app id・X11 class/instanceの両非空を照合。Info.plist原文shouldに対しJA必須表現は強すぎる。",
+    "47行のhint既定値/許容値表を原文・英語・JAで照合。NO_ERROR行の不在は固定原文にも共通であり翻訳欠落と判定せず、既定値を推測補完しない。",
+    "user pointer NULL・寿命中不変更、close flagは破棄ではなくcallbackは設定直後で再解除可能、window sizeスクリーン座標とframebuffer pixelの区別・glViewport警告、frame extents非負距離、framebufferの独立変更を照合。原文window_sizeのcontent area重複は同語反復で、JAは意味を保持して一度だけ記載。",
+    "DPI scaleは現在/default比で設定適正に依存しraw DPIと異なり得る、1:1系window sizeと非1:1系FB size、初期scale1と作成時適応、scale callback、min/max片側DONT_CARE・aspect比width/height・両制約矛盾undefinedを全例付きで照合。",
+    "window position左上content座標/ANY_POSITION復元、Wayland両hint ignored・Get/SetがFEATURE_UNAVAILABLE・callback無し、UTF8 titleのコピー/直接Unicode/C11 C++11例とtitle取得、icon32bit little-endian非premultiplied RGBA/top-left rows・空配列復元を照合。",
+    "fullscreen monitor handle/NULL識別、SetMonitorの位置/refreshの無視条件、windowedへ戻す属性と元size/pos事前保存、iconify fullscreen mode復元・再表示でdesired mode・Wayland restore最大化のみ/ICONIFIED false/iconify可、maximize fullscreen無作用/default falseを照合。",
+    "Hide fullscreen不可、Show focusdefaultとhint/attrib、initialvisibleとhidden準備、focusの操作妨害注意とattention自動終了、refreshのcompositor限定callback、2透明化併用undefined/FB alpha desktop compositing必須・装飾不変/whole opacity0..1初期1/非対応Get1を照合。",
+    "window関連11属性とcreation/after設定、context属性の3API/3creationAPI・versionとGLFWヘッダー区別・debug3.4旧名互換・profile検出fallback・release3動作・no error有効時undefined・robustness3値、FB情報はGL/ES/Vulkan直接取得しDOUBLEBUFFERだけ例外を照合。",
+    "FB bit取得GL/ES3.0境界と旧GetIntegerv、MSAAは常時GetIntegerv/現在bound FB、7行表とBACK_LEFT/DEPTH/STENCIL対象、doublebufferデフォルトとfront表示/back描画・swap interval最小回数/0即時/1tearing回避/driver設定override/tear拡張で負interval安定性とtearing危険の全条件を確認。",
+    "固定原文GLFW_AUTO_ICONIFY_attribの「focus loss, a close widget, etc.」は意味の繋がらない句を含み、英語定本は原文どおり、日本語はfocus lossの説明を保持しclose widget句を省略。誤訳でなく既存の原文不整合への翻訳処理として明記し、英語原文を無断修正しない。",
+    "初回の全1542原文行・全1563英語行・全1237日本語行を読了。コード例・表・警告を含む。内部URLは一部表示を短縮して内容を読んだため、URL対応の確認と修正後の別パスはまだ完了扱いしない。"
+  ],
+  "unresolved": [
+    "全35ページの内容・表示と上流確認は未完了。"
+  ],
+  "nextAction": "入力ガイドをレビュー。window当該検証はサイクル10のbrowser-reviewと機械ログを参照。",
+  "plannedCorrections": [
+    {
+      "type": "clarity",
+      "translationLines": [
+        115,
+        115
+      ],
+      "sourceLines": [
+        138,
+        139
+      ],
+      "before": "ガンマランプは変更されたままです。",
+      "proposed": "ガンマランプは変更されません。",
+      "status": "applied"
+    },
+    {
+      "type": "link-label",
+      "scope": "読了範囲に残るwindow/intro_guide/monitor_monitors等の参照キー",
+      "status": "applied",
+      "next": "全体のキーと正しい見出しを数え、リンク先を維持して変更"
+    },
+    {
+      "type": "emphasis",
+      "translationLines": [
+        57,
+        154
+      ],
+      "examples": [
+        "希望するビデオモード",
+        "ウィンドウ化フルスクリーン",
+        "ボーダーレスフルスクリーン",
+        "現在の",
+        "正確に",
+        "ユーザーが"
+      ],
+      "status": "applied",
+      "next": "全体でunderscoreの強調箇所を特定しAST/表示確認して修正"
+    },
+    {
+      "type": "normative-strength",
+      "translationLines": [
+        382,
+        382
+      ],
+      "sourceLines": [
+        509,
+        511
+      ],
+      "before": "宣言する必要もあります。",
+      "proposed": "宣言することも推奨されます。",
+      "status": "applied",
+      "reason": "should also declareをmustの意味にしない"
+    }
+  ],
+  "finalReview": {
+    "method": "ai-content-review",
+    "reviewedAt": "2026-10-01T11:28:59.740Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/04-window-guide.md",
+      "sha256": "46d06eecf4557c6ccc2ae08e851ba76b5948916e3aa5684a32044c3f3d58bf23",
+      "coverage": [
+        [
+          1,
+          600
+        ],
+        [
+          601,
+          868
+        ],
+        [
+          869,
+          1134
+        ],
+        [
+          1135,
+          1360
+        ],
+        [
+          1361,
+          1563
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/04-window-guide.md",
+      "sha256": "ff9de2396b4a6d1fadc28548c835df0bc54efa465c7988bc0614a8dc4cfe3ea1",
+      "coverage": [
+        [
+          1,
+          277
+        ],
+        [
+          278,
+          460
+        ],
+        [
+          461,
+          670
+        ],
+        [
+          671,
+          901
+        ],
+        [
+          902,
+          1088
+        ],
+        [
+          1089,
+          1237
+        ]
+      ]
+    },
+    "results": [
+      "修正後の英語・日本語全文を別パスで再読。EN1-600の表示出力で332-336付近39tokenが省略されたため320-348を再取得して欠落を解消。最終合格に欠落なし。",
+      "内部hrefのみ読了時に表示短縮。全文後に106種類の英語ラベル→URLを非短縮で確認し、英日全リンク先一致を別途機械検査。API/guide/内部sectionの対応を保持。",
+      "ガンマランプuntouchedとInfo.plist shouldの修正後日本語を原文に再照合。16ラベル、12強調のみ追加修正でコードとURL不変。"
+    ]
+  }
+}

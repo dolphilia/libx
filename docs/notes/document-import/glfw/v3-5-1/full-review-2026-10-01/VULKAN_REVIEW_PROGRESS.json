@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "03-guides/06-vulkan-guide.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "review-time-config:unverified;latest-observed:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T11:59:08.824Z",
+  "updatedAt": "2026-10-01T12:08:14.982Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/vulkan.md",
+      "sha256": "1e142f9cbbb1dd80d3619365d7168f4ff8c5e86169933185d3383ae5f49a86ed"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/06-vulkan-guide.md",
+      "sha256": "55516b2526ff9eb4800a8e1645f710bb6df613f13bcfcab6f84d01c604d94e9a"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/06-vulkan-guide.md",
+      "sha256": "ffb0c57ef7c26c6eb81643e90f300f56744f4e11b69ce7fb4086204381c58df2"
+    }
+  },
+  "lineCounts": {
+    "source": 250,
+    "canonical": 254,
+    "translation": 202
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        250
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        254
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        202
+      ]
+    ]
+  },
+  "findings": [
+    "固定原文250行/EN254行/JA202行を全行照合。GLFWガイドはVulkan公式資料の補足、LunarG検証レイヤー・外部チュートリアル・サンプルの説明に欠落なし。外部資料本文の技術適合性はここで未評価。",
+    "Vulkan loaderはGLFW自体link不要、DLL/so/dylib標準名・mac Frameworks追加検索、別loaderは初期化前InitVulkanLoaderへProcAddr渡し動的読込停止、再配布bundle要件を照合。",
+    "GLFW_INCLUDE_VULKAN/独自header先行、Vulkan型依存4関数未宣言、VK_USE_PLATFORM_*_KHRは直接拡張使用時だけの条件を照合。loader/ICD最小稼働がTRUE、不在時API_UNAVAILABLE、NULL instanceでcreate関数→instanceでcore/enabled拡張→device-specificProcAddr/fallbackNULLを照合。",
+    "requiredExtensionsはwindow render/PresentationSupport/WindowSurface用全部有効、platform/driver可変、NULLならsurface不可だがoffscreen/compute可、成功VK_KHR_surface含む、VkInstanceCreateInfoへ直接一覧・重複指定error、将来additional拡張ありを照合。",
+    "MoltenVK記述は2022年7月/Vulkan SDK1.3.216.0と時点限定しているため固定版本文として保持。現在の対応状況を確認済みとしない。portability_enumerationとENUMERATE_PORTABILITY bit両方必須の当該記述を忠実に翻訳。",
+    "queue family毎のpresentation制限、ウィンドウ未作成のqueryと既存surface検査、OpenGL/ES使わなければNO_API、既存GLcontextはpresentation占有でsurface不可、surfaceはアプリがDestroySurfaceKHRする責任を照合。"
+  ],
+  "plannedCorrections": [
+    {
+      "type": "link-label",
+      "scope": "vulkan/intro_guide/window_guide/context_guide/monitor_guide/input_guide/context_lessの7表示名（各locale）",
+      "status": "applied",
+      "next": "Vulkanガイド専用追加辞書とallowlistを追加。JA表示名も翻訳しURLを保持。"
+    }
+  ],
+  "unresolved": [
+    "GLFW全35ページの残り26ページの内容・全ページ表示、上流更新確認は未完了。"
+  ],
+  "nextAction": "次は03-guides/07-standards-conformance.mdの固定原文・英語・日本語の全文照合。",
+  "initialReviewedArtifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/vulkan.md",
+      "sha256": "1e142f9cbbb1dd80d3619365d7168f4ff8c5e86169933185d3383ae5f49a86ed"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/06-vulkan-guide.md",
+      "sha256": "6d552ceca3526b0e50ab3f8858a4c8442e68a1de954d60afd44afc19ac4309c8"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/06-vulkan-guide.md",
+      "sha256": "99a95521d853539e3b80e8d7230c1f702227a38016fbd2b18a7e10b4d081158e"
+    }
+  },
+  "finalReviewCoverage": {
+    "canonical": [],
+    "translation": []
+  },
+  "appliedCorrections": [
+    "英日参照表示名7件ずつを改善。説明・コード・URLは変更なし。"
+  ],
+  "finalReview": {
+    "method": "ai-content-review",
+    "reviewedAt": "2026-10-01T12:03:28.781Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/06-vulkan-guide.md",
+      "sha256": "55516b2526ff9eb4800a8e1645f710bb6df613f13bcfcab6f84d01c604d94e9a",
+      "coverage": [
+        [
+          1,
+          254
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/06-vulkan-guide.md",
+      "sha256": "ffb0c57ef7c26c6eb81643e90f300f56744f4e11b69ce7fb4086204381c58df2",
+      "coverage": [
+        [
+          1,
+          202
+        ]
+      ]
+    },
+    "results": [
+      "修正後の英語254行と日本語202行を全行・非短縮URLで別パス再読。省略出力なし。原文への忠実さ、日本語単独の読みやすさ、条件/否定/例外と参照先を確認。",
+      "7参照名を正しい見出しへ対応。MoltenVK2022年7月とVulkanSDK1.3.216.0の時点、拡張の全有効・重複禁止、offscreen/compute例外、GLcontextとの相互排他とsurfaceアプリ破棄責任を保持。",
+      "Vulkan外部資料の現状と実機GPU/Vulkanコード実行は未確認。固定版本文の照合と現在の仕様検証を区別する。"
+    ]
+  },
+  "modelObservation": {
+    "observedAt": "2026-10-01T12:13:50.063Z",
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "preferred": "gpt-6.1-sol",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false,
+    "note": "現在の設定はAstra。過去のSol設定観測を現在の設定と取り違えたため訂正。実行モデルもレビュー時点の設定も現在の設定から断定しない。原則Solとの運用差異を記録し、現在のCodexで継続。ユーザー設定は変更しない。"
+  }
+}
