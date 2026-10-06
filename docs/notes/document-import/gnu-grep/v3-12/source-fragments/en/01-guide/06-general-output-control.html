@@ -1,0 +1,136 @@
+<div class="gnu-grep-original-content" id="General-Output-Control">
+<h4 class="subsection" id="General-Output-Control-1"><span>2.1.3 General Output Control</span></h4>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-_002d_002dcount"></a>
+<a class="index-entry-id" id="index-counting-lines"></a>
+<a id="index-_002dc"></a><span><samp class="option">-c</samp></span></dt>
+<dt><samp class="option">--count</samp></dt>
+<dd><p>Suppress normal output;
+instead print a count of matching lines for each input file.
+With the <samp class="option">-v</samp> (<samp class="option">--invert-match</samp>) option,
+count non-matching lines.
+(<samp class="option">-c</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dcolour"></a>
+<a class="index-entry-id" id="index-highlight_002c-color_002c-colour"></a>
+<a id="index-_002d_002dcolor"></a><span><samp class="option">--color[=<var class="var">WHEN</var>]</samp></span></dt>
+<dt><samp class="option">--colour[=<var class="var">WHEN</var>]</samp></dt>
+<dd><p>Surround matched non-empty strings, matching lines, context lines,
+file names, line numbers, byte offsets, and separators (for fields and
+groups of context lines) with escape sequences to display them in color
+on the terminal.
+The colors are defined by the environment variable <code class="env">GREP_COLORS</code>
+and default to ‘<samp class="samp">ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36</samp>’
+for bold red matched text, magenta file names, green line numbers,
+green byte offsets, cyan separators, and default terminal colors otherwise.
+See <a class="xref" href="#Environment-Variables">Environment Variables</a>.
+</p>
+<p><var class="var">WHEN</var> is ‘<samp class="samp">always</samp>’ to use colors, ‘<samp class="samp">never</samp>’ to not use
+colors, or ‘<samp class="samp">auto</samp>’ to use colors if standard output is associated
+with a terminal device and the <code class="env">TERM</code> environment variable’s value
+suggests that the terminal supports colors.
+Plain <samp class="option">--color</samp> is treated like <samp class="option">--color=auto</samp>;
+if no <samp class="option">--color</samp> option is given, the default is <samp class="option">--color=never</samp>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dfiles_002dwithout_002dmatch"></a>
+<a class="index-entry-id" id="index-files-which-don_0027t-match"></a>
+<a id="index-_002dL"></a><span><samp class="option">-L</samp></span></dt>
+<dt><samp class="option">--files-without-match</samp></dt>
+<dd><p>Suppress normal output;
+instead print the name of each input file from which
+no output would normally have been printed.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dfiles_002dwith_002dmatches"></a>
+<a class="index-entry-id" id="index-names-of-matching-files"></a>
+<a id="index-_002dl"></a><span><samp class="option">-l</samp></span></dt>
+<dt><samp class="option">--files-with-matches</samp></dt>
+<dd><p>Suppress normal output;
+instead print the name of each input file from which
+output would normally have been printed.
+Scanning each input file stops upon first match.
+(<samp class="option">-l</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dmax_002dcount"></a>
+<a class="index-entry-id" id="index-max_002dcount"></a>
+<a id="index-_002dm"></a><span><samp class="option">-m <var class="var">num</var></samp></span></dt>
+<dt><samp class="option">--max-count=<var class="var">num</var></samp></dt>
+<dd><p>Stop after the first <var class="var">num</var> selected lines.
+If <var class="var">num</var> is zero, <code class="command">grep</code> stops right away without reading input.
+A <var class="var">num</var> of −1 is treated as infinity and <code class="command">grep</code>
+does not stop; this is the default.
+</p>
+<p>If the input is standard input from a regular file,
+and <var class="var">num</var> selected lines are output,
+<code class="command">grep</code> ensures that the standard input is positioned
+just after the last selected line before exiting,
+regardless of the presence of trailing context lines.
+This enables a calling process to resume a search.
+For example, the following shell script makes use of it:
+</p>
+<div class="example">
+<pre class="example-preformatted">while grep -m 1 'PATTERN'
+do
+  echo xxxx
+done &lt; FILE
+</pre></div>
+<p>But the following probably will not work because a pipe is not a regular
+file:
+</p>
+<div class="example">
+<pre class="example-preformatted"><span class="gnu-grep-comment-prose"># This probably will not work.</span>
+cat FILE |
+while grep -m 1 'PATTERN'
+do
+  echo xxxx
+done
+</pre></div>
+<a class="index-entry-id" id="index-context-lines"></a>
+<p>When <code class="command">grep</code> stops after <var class="var">num</var> selected lines,
+it outputs any trailing context lines.
+When the <samp class="option">-c</samp> or <samp class="option">--count</samp> option is also used,
+<code class="command">grep</code> does not output a count greater than <var class="var">num</var>.
+When the <samp class="option">-v</samp> or <samp class="option">--invert-match</samp> option is also used,
+<code class="command">grep</code> stops after outputting <var class="var">num</var> non-matching lines.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002donly_002dmatching"></a>
+<a class="index-entry-id" id="index-only-matching"></a>
+<a id="index-_002do"></a><span><samp class="option">-o</samp></span></dt>
+<dt><samp class="option">--only-matching</samp></dt>
+<dd><p>Print only the matched non-empty parts of matching lines,
+with each such part on a separate output line.
+Output lines use the same delimiters as input, and delimiters are null
+bytes if <samp class="option">-z</samp> (<samp class="option">--null-data</samp>) is also used (see <a class="pxref" href="#Other-Options">Other Options</a>).
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dquiet"></a>
+<a class="index-entry-id" id="index-_002d_002dsilent"></a>
+<a class="index-entry-id" id="index-quiet_002c-silent"></a>
+<a id="index-_002dq"></a><span><samp class="option">-q</samp></span></dt>
+<dt><samp class="option">--quiet</samp></dt>
+<dt><samp class="option">--silent</samp></dt>
+<dd><p>Quiet; do not write anything to standard output.
+Exit immediately with zero status if any match is found,
+even if an error was detected.
+Also see the <samp class="option">-s</samp> or <samp class="option">--no-messages</samp> option.
+Portability note: Solaris 10 <code class="command">grep</code> lacks <samp class="option">-q</samp>;
+portable shell scripts typically can redirect standard output to
+<samp class="file">/dev/null</samp> instead of using <samp class="option">-q</samp>.
+(<samp class="option">-q</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dno_002dmessages"></a>
+<a class="index-entry-id" id="index-suppress-error-messages"></a>
+<a id="index-_002ds"></a><span><samp class="option">-s</samp></span></dt>
+<dt><samp class="option">--no-messages</samp></dt>
+<dd><p>Suppress error messages about nonexistent or unreadable files.
+(<samp class="option">-s</samp> is specified by POSIX.)
+</p>
+</dd>
+</dl>
+<hr/>
+</div>

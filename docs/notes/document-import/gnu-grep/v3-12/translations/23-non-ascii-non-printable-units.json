@@ -1,0 +1,59 @@
+{
+  "slug": "23-non-ascii-non-printable",
+  "bodySHA256": "3c6021ccfbb80f03701756a59b5ec1cb880ce4d772319101684d4de77df92315",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧3.9 Matching Non-ASCII and Non-printable Characters⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Matching-Non_002dASCII-and-Non_002dprintable-Characters\"><span>3.9 Matching Non-ASCII and Non-printable Characters</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "In a regular expression, non-ASCII and non-printable characters other than newline are not special, and represent themselves. For example, in a locale using UTF-8 the command ‘⟦0⟧’ (where the white space between ‘⟦1⟧’ and the ‘⟦2⟧’ is a tab character) searches for ‘⟦3⟧’ (Unicode character U+039B GREEK CAPITAL LETTER LAMBDA), followed by a tab (U+0009 TAB), followed by ‘⟦4⟧’ (U+03C9 GREEK SMALL LETTER OMEGA).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">grep 'Λ ω'</samp>",
+        "⟦1⟧": "<samp class=\"samp\">Λ</samp>",
+        "⟦2⟧": "<samp class=\"samp\">ω</samp>",
+        "⟦3⟧": "<samp class=\"samp\">Λ</samp>",
+        "⟦4⟧": "<samp class=\"samp\">ω</samp>"
+      },
+      "sourceHTML": "<p>In a regular expression, non-ASCII and non-printable characters other\nthan newline are not special, and represent themselves.  For example,\nin a locale using UTF-8 the command ‘<samp class=\"samp\">grep 'Λ ω'</samp>’ (where the\nwhite space between ‘<samp class=\"samp\">Λ</samp>’ and the ‘<samp class=\"samp\">ω</samp>’ is a tab character)\nsearches for ‘<samp class=\"samp\">Λ</samp>’ (Unicode character U+039B GREEK CAPITAL LETTER\nLAMBDA), followed by a tab (U+0009 TAB), followed by ‘<samp class=\"samp\">ω</samp>’ (U+03C9\nGREEK SMALL LETTER OMEGA).\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Suppose you want to limit your pattern to only printable characters (or even only printable ASCII characters) to keep your script readable or portable, but you also want to match specific non-ASCII or non-null non-printable characters. If you are using the ⟦0⟧ (⟦1⟧) option, PCREs give you several ways to do this. Otherwise, if you are using Bash, the GNU project’s shell, you can represent these characters via ANSI-C quoting. For example, the Bash commands ‘⟦2⟧’ and ‘⟦3⟧’ both search for the same three-character string ‘⟦4⟧’ mentioned earlier. However, because Bash translates ANSI-C quoting before ⟦5⟧ sees the pattern, this technique should not be used to match printable ASCII characters; for example, ‘⟦6⟧’ is equivalent to ‘⟦7⟧’ and matches any line, not just lines containing the character ‘⟦8⟧’ (U+005E CIRCUMFLEX ACCENT).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-P</samp>",
+        "⟦1⟧": "<samp class=\"option\">--perl-regexp</samp>",
+        "⟦2⟧": "<samp class=\"samp\">grep $'Λ\\tω'</samp>",
+        "⟦3⟧": "<samp class=\"samp\">grep $'\\u039B\\t\\u03C9'</samp>",
+        "⟦4⟧": "<samp class=\"samp\">Λ ω</samp>",
+        "⟦5⟧": "<code class=\"command\">grep</code>",
+        "⟦6⟧": "<samp class=\"samp\">grep\n$'\\u005E'</samp>",
+        "⟦7⟧": "<samp class=\"samp\">grep '^'</samp>",
+        "⟦8⟧": "<samp class=\"samp\">^</samp>"
+      },
+      "sourceHTML": "<p>Suppose you want to limit your pattern to only printable characters\n(or even only printable ASCII characters) to keep your script readable\nor portable, but you also want to match specific non-ASCII or non-null\nnon-printable characters.  If you are using the <samp class=\"option\">-P</samp>\n(<samp class=\"option\">--perl-regexp</samp>) option, PCREs give you several ways to do\nthis.  Otherwise, if you are using Bash, the GNU project’s shell, you\ncan represent these characters via ANSI-C quoting.  For example, the\nBash commands ‘<samp class=\"samp\">grep $'Λ\\tω'</samp>’ and ‘<samp class=\"samp\">grep $'\\u039B\\t\\u03C9'</samp>’\nboth search for the same three-character string ‘<samp class=\"samp\">Λ ω</samp>’\nmentioned earlier.  However, because Bash translates ANSI-C quoting\nbefore <code class=\"command\">grep</code> sees the pattern, this technique should not be\nused to match printable ASCII characters; for example, ‘<samp class=\"samp\">grep\n$'\\u005E'</samp>’ is equivalent to ‘<samp class=\"samp\">grep '^'</samp>’ and matches any line, not\njust lines containing the character ‘<samp class=\"samp\">^</samp>’ (U+005E CIRCUMFLEX\nACCENT).\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Since PCREs and ANSI-C quoting are GNU extensions to POSIX, portable shell scripts written in ASCII should use other methods to match specific non-ASCII characters. For example, in a UTF-8 locale the command ‘⟦0⟧’ is a portable albeit hard-to-read alternative to Bash’s ‘⟦1⟧’. However, none of these techniques will let you put a null character directly into a command-line pattern; null characters can appear only in a pattern specified via the ⟦2⟧ (⟦3⟧) option.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">grep \"$(printf '\\316\\233\\t\\317\\211\\n')\"</samp>",
+        "⟦1⟧": "<samp class=\"samp\">grep $'Λ\\tω'</samp>",
+        "⟦2⟧": "<samp class=\"option\">-f</samp>",
+        "⟦3⟧": "<samp class=\"option\">--file</samp>"
+      },
+      "sourceHTML": "<p>Since PCREs and ANSI-C quoting are GNU extensions to POSIX, portable\nshell scripts written in ASCII should use other methods to match\nspecific non-ASCII characters.  For example, in a UTF-8 locale the\ncommand ‘<samp class=\"samp\">grep \"$(printf '\\316\\233\\t\\317\\211\\n')\"</samp>’ is a portable\nalbeit hard-to-read alternative to Bash’s ‘<samp class=\"samp\">grep $'Λ\\tω'</samp>’.\nHowever, none of these techniques will let you put a null character\ndirectly into a command-line pattern; null characters can appear only\nin a pattern specified via the <samp class=\"option\">-f</samp> (<samp class=\"option\">--file</samp>) option.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

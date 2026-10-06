@@ -1,0 +1,308 @@
+{
+  "slug": "11-environment-variables",
+  "bodySHA256": "b7292f4e2afa01226c08fd2f9f64d7c53c593c2daa1f0e2b7d91bdd3ff286a46",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧2.2 Environment Variables⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Environment-Variables-1\"><span>2.2 Environment Variables</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The behavior of ⟦0⟧ is affected by several environment variables, the most important of which control the locale, which specifies how ⟦1⟧ interprets characters in its patterns and data.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>The behavior of <code class=\"command\">grep</code> is affected by several environment\nvariables, the most important of which control the locale, which\nspecifies how <code class=\"command\">grep</code> interprets characters in its patterns and\ndata.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "The locale for category ⟦0⟧⟦1⟧ is specified by examining the three environment variables ⟦2⟧, ⟦3⟧⟦4⟧, and ⟦5⟧, in that order. The first of these variables that is set specifies the locale. For example, if ⟦6⟧ is not set, but ⟦7⟧ is set to ‘⟦8⟧’, then a Brazilian Portuguese locale is used for the ⟦9⟧ category. As a special case for ⟦10⟧ only, the environment variable ⟦11⟧ can contain a colon-separated list of languages that overrides the three environment variables that ordinarily specify the ⟦12⟧ category. The ‘⟦13⟧’ locale is used if none of these environment variables are set, if the locale catalog is not installed, or if ⟦14⟧ was not compiled with national language support (NLS). The shell command ⟦15⟧ lists locales that are currently available.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">LC_<var class=\"var\">foo</var></code>",
+        "⟦1⟧": "<!-- /@w -->",
+        "⟦2⟧": "<code class=\"env\">LC_ALL</code>",
+        "⟦3⟧": "<code class=\"env\">LC_<var class=\"var\">foo</var></code>",
+        "⟦4⟧": "<!-- /@w -->",
+        "⟦5⟧": "<code class=\"env\">LANG</code>",
+        "⟦6⟧": "<code class=\"env\">LC_ALL</code>",
+        "⟦7⟧": "<code class=\"env\">LC_COLLATE</code>",
+        "⟦8⟧": "<samp class=\"samp\">pt_BR.UTF-8</samp>",
+        "⟦9⟧": "<code class=\"env\">LC_COLLATE</code>",
+        "⟦10⟧": "<code class=\"env\">LC_MESSAGES</code>",
+        "⟦11⟧": "<code class=\"env\">LANGUAGE</code>",
+        "⟦12⟧": "<code class=\"env\">LC_MESSAGES</code>",
+        "⟦13⟧": "<samp class=\"samp\">C</samp>",
+        "⟦14⟧": "<code class=\"command\">grep</code>",
+        "⟦15⟧": "<code class=\"code\">locale -a</code>"
+      },
+      "sourceHTML": "<p>The locale for category <code class=\"code\">LC_<var class=\"var\">foo</var></code><!-- /@w -->\nis specified by examining the three environment variables\n<code class=\"env\">LC_ALL</code>, <code class=\"env\">LC_<var class=\"var\">foo</var></code><!-- /@w -->, and <code class=\"env\">LANG</code>,\nin that order.\nThe first of these variables that is set specifies the locale.\nFor example, if <code class=\"env\">LC_ALL</code> is not set,\nbut <code class=\"env\">LC_COLLATE</code> is set to ‘<samp class=\"samp\">pt_BR.UTF-8</samp>’,\nthen a Brazilian Portuguese locale is used\nfor the <code class=\"env\">LC_COLLATE</code> category.\nAs a special case for <code class=\"env\">LC_MESSAGES</code> only, the environment variable\n<code class=\"env\">LANGUAGE</code> can contain a colon-separated list of languages that\noverrides the three environment variables that ordinarily specify\nthe <code class=\"env\">LC_MESSAGES</code> category.\nThe ‘<samp class=\"samp\">C</samp>’ locale is used if none of these environment variables are set,\nif the locale catalog is not installed,\nor if <code class=\"command\">grep</code> was not compiled\nwith national language support (NLS).\nThe shell command <code class=\"code\">locale -a</code> lists locales that are currently available.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The following environment variables affect the behavior of ⟦0⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>The following environment variables affect the behavior of <code class=\"command\">grep</code>.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "This obsolescent variable interacts with ⟦0⟧ confusingly, and ⟦1⟧ warns if it is set and is not overridden by ⟦2⟧. Instead of ‘⟦3⟧’, you can use ‘⟦4⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">GREP_COLORS</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>",
+        "⟦2⟧": "<code class=\"env\">GREP_COLORS</code>",
+        "⟦3⟧": "<samp class=\"samp\">GREP_COLOR='<var class=\"var\">color</var>'</samp>",
+        "⟦4⟧": "<samp class=\"samp\">GREP_COLORS='mt=<var class=\"var\">color</var>'</samp>"
+      },
+      "sourceHTML": "<p>This obsolescent variable interacts with <code class=\"env\">GREP_COLORS</code>\nconfusingly, and <code class=\"command\">grep</code> warns if it is set and is not\noverridden by <code class=\"env\">GREP_COLORS</code>.  Instead of\n‘<samp class=\"samp\">GREP_COLOR='<var class=\"var\">color</var>'</samp>’, you can use\n‘<samp class=\"samp\">GREP_COLORS='mt=<var class=\"var\">color</var>'</samp>’.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "This variable controls how the ⟦0⟧ option highlights output. Its value is a colon-separated list of ⟦1⟧ capabilities that defaults to ‘⟦2⟧’ with the ‘⟦3⟧’ and ‘⟦4⟧’ boolean capabilities omitted (i.e., false). The two-letter capability names refer to terminal “capabilities,” the ability of a terminal to highlight text, or change its color, and so on. These capabilities are stored in an online database and accessed by the ⟦5⟧ library. Non-empty capability values control highlighting using Select Graphic Rendition (SGR) commands interpreted by the terminal or terminal emulator. (See the section in the documentation of your text terminal for permitted values and their meanings as character attributes.) These substring values are integers in decimal representation and can be concatenated with semicolons. ⟦6⟧ takes care of assembling the result into a complete SGR sequence (‘⟦7⟧’…‘⟦8⟧’). Common values to concatenate include ‘⟦9⟧’ for bold, ‘⟦10⟧’ for underline, ‘⟦11⟧’ for blink, ‘⟦12⟧’ for inverse, ‘⟦13⟧’ for default foreground color, ‘⟦14⟧’ to ‘⟦15⟧’ for foreground colors, ‘⟦16⟧’ to ‘⟦17⟧’ for 16-color mode foreground colors, ‘⟦18⟧’ to ‘⟦19⟧’ for 88-color and 256-color modes foreground colors, ‘⟦20⟧’ for default background color, ‘⟦21⟧’ to ‘⟦22⟧’ for background colors, ‘⟦23⟧’ to ‘⟦24⟧’ for 16-color mode background colors, and ‘⟦25⟧’ to ‘⟦26⟧’ for 88-color and 256-color modes background colors.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--color</samp>",
+        "⟦1⟧": "<code class=\"code\">terminfo</code>",
+        "⟦2⟧": "<samp class=\"samp\">ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36</samp>",
+        "⟦3⟧": "<samp class=\"samp\">rv</samp>",
+        "⟦4⟧": "<samp class=\"samp\">ne</samp>",
+        "⟦5⟧": "<code class=\"code\">terminfo</code>",
+        "⟦6⟧": "<code class=\"command\">grep</code>",
+        "⟦7⟧": "<samp class=\"samp\">\\33[</samp>",
+        "⟦8⟧": "<samp class=\"samp\">m</samp>",
+        "⟦9⟧": "<samp class=\"samp\">1</samp>",
+        "⟦10⟧": "<samp class=\"samp\">4</samp>",
+        "⟦11⟧": "<samp class=\"samp\">5</samp>",
+        "⟦12⟧": "<samp class=\"samp\">7</samp>",
+        "⟦13⟧": "<samp class=\"samp\">39</samp>",
+        "⟦14⟧": "<samp class=\"samp\">30</samp>",
+        "⟦15⟧": "<samp class=\"samp\">37</samp>",
+        "⟦16⟧": "<samp class=\"samp\">90</samp>",
+        "⟦17⟧": "<samp class=\"samp\">97</samp>",
+        "⟦18⟧": "<samp class=\"samp\">38;5;0</samp>",
+        "⟦19⟧": "<samp class=\"samp\">38;5;255</samp>",
+        "⟦20⟧": "<samp class=\"samp\">49</samp>",
+        "⟦21⟧": "<samp class=\"samp\">40</samp>",
+        "⟦22⟧": "<samp class=\"samp\">47</samp>",
+        "⟦23⟧": "<samp class=\"samp\">100</samp>",
+        "⟦24⟧": "<samp class=\"samp\">107</samp>",
+        "⟦25⟧": "<samp class=\"samp\">48;5;0</samp>",
+        "⟦26⟧": "<samp class=\"samp\">48;5;255</samp>"
+      },
+      "sourceHTML": "<p>This variable controls how the <samp class=\"option\">--color</samp> option highlights output.\nIts value is a colon-separated list of <code class=\"code\">terminfo</code> capabilities\nthat defaults to ‘<samp class=\"samp\">ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36</samp>’\nwith the ‘<samp class=\"samp\">rv</samp>’ and ‘<samp class=\"samp\">ne</samp>’ boolean capabilities omitted (i.e., false).\nThe two-letter capability names\nrefer to terminal “capabilities,” the ability\nof a terminal to highlight text, or change its color, and so on.\nThese capabilities are stored in an online database and accessed by\nthe <code class=\"code\">terminfo</code> library.\nNon-empty capability values\ncontrol highlighting using\nSelect Graphic Rendition (SGR)\ncommands interpreted by the terminal or terminal emulator.\n(See the\nsection\nin the documentation of your text terminal\nfor permitted values and their meanings as character attributes.)\nThese substring values are integers in decimal representation\nand can be concatenated with semicolons.\n<code class=\"command\">grep</code> takes care of assembling the result\ninto a complete SGR sequence (‘<samp class=\"samp\">\\33[</samp>’…‘<samp class=\"samp\">m</samp>’).\nCommon values to concatenate include\n‘<samp class=\"samp\">1</samp>’ for bold,\n‘<samp class=\"samp\">4</samp>’ for underline,\n‘<samp class=\"samp\">5</samp>’ for blink,\n‘<samp class=\"samp\">7</samp>’ for inverse,\n‘<samp class=\"samp\">39</samp>’ for default foreground color,\n‘<samp class=\"samp\">30</samp>’ to ‘<samp class=\"samp\">37</samp>’ for foreground colors,\n‘<samp class=\"samp\">90</samp>’ to ‘<samp class=\"samp\">97</samp>’ for 16-color mode foreground colors,\n‘<samp class=\"samp\">38;5;0</samp>’ to ‘<samp class=\"samp\">38;5;255</samp>’\nfor 88-color and 256-color modes foreground colors,\n‘<samp class=\"samp\">49</samp>’ for default background color,\n‘<samp class=\"samp\">40</samp>’ to ‘<samp class=\"samp\">47</samp>’ for background colors,\n‘<samp class=\"samp\">100</samp>’ to ‘<samp class=\"samp\">107</samp>’ for 16-color mode background colors,\nand ‘<samp class=\"samp\">48;5;0</samp>’ to ‘<samp class=\"samp\">48;5;255</samp>’\nfor 88-color and 256-color modes background colors.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Supported capabilities are as follows.",
+      "tokens": {},
+      "sourceHTML": "<p>Supported capabilities are as follows.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "SGR substring for whole selected lines (i.e., matching lines when the ⟦0⟧ command-line option is omitted, or non-matching lines when ⟦1⟧ is specified). If however the boolean ‘⟦2⟧’ capability and the ⟦3⟧ command-line option are both specified, it applies to context matching lines instead. The default is empty (i.e., the terminal’s default color pair).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-v</samp>",
+        "⟦1⟧": "<samp class=\"option\">-v</samp>",
+        "⟦2⟧": "<samp class=\"samp\">rv</samp>",
+        "⟦3⟧": "<samp class=\"option\">-v</samp>"
+      },
+      "sourceHTML": "<p>SGR substring for whole selected lines\n(i.e.,\nmatching lines when the <samp class=\"option\">-v</samp> command-line option is omitted,\nor non-matching lines when <samp class=\"option\">-v</samp> is specified).\nIf however the boolean ‘<samp class=\"samp\">rv</samp>’ capability\nand the <samp class=\"option\">-v</samp> command-line option are both specified,\nit applies to context matching lines instead.\nThe default is empty (i.e., the terminal’s default color pair).\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "SGR substring for whole context lines (i.e., non-matching lines when the ⟦0⟧ command-line option is omitted, or matching lines when ⟦1⟧ is specified). If however the boolean ‘⟦2⟧’ capability and the ⟦3⟧ command-line option are both specified, it applies to selected non-matching lines instead. The default is empty (i.e., the terminal’s default color pair).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-v</samp>",
+        "⟦1⟧": "<samp class=\"option\">-v</samp>",
+        "⟦2⟧": "<samp class=\"samp\">rv</samp>",
+        "⟦3⟧": "<samp class=\"option\">-v</samp>"
+      },
+      "sourceHTML": "<p>SGR substring for whole context lines\n(i.e.,\nnon-matching lines when the <samp class=\"option\">-v</samp> command-line option is omitted,\nor matching lines when <samp class=\"option\">-v</samp> is specified).\nIf however the boolean ‘<samp class=\"samp\">rv</samp>’ capability\nand the <samp class=\"option\">-v</samp> command-line option are both specified,\nit applies to selected non-matching lines instead.\nThe default is empty (i.e., the terminal’s default color pair).\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "Boolean value that reverses (swaps) the meanings of the ‘⟦0⟧’ and ‘⟦1⟧’ capabilities when the ⟦2⟧ command-line option is specified. The default is false (i.e., the capability is omitted).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">sl=</samp>",
+        "⟦1⟧": "<samp class=\"samp\">cx=</samp>",
+        "⟦2⟧": "<samp class=\"option\">-v</samp>"
+      },
+      "sourceHTML": "<p>Boolean value that reverses (swaps) the meanings of\nthe ‘<samp class=\"samp\">sl=</samp>’ and ‘<samp class=\"samp\">cx=</samp>’ capabilities\nwhen the <samp class=\"option\">-v</samp> command-line option is specified.\nThe default is false (i.e., the capability is omitted).\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "SGR substring for matching non-empty text in any matching line (i.e., a selected line when the ⟦0⟧ command-line option is omitted, or a context line when ⟦1⟧ is specified). Setting this is equivalent to setting both ‘⟦2⟧’ and ‘⟦3⟧’ at once to the same value. The default is a bold red text foreground over the current line background.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-v</samp>",
+        "⟦1⟧": "<samp class=\"option\">-v</samp>",
+        "⟦2⟧": "<samp class=\"samp\">ms=</samp>",
+        "⟦3⟧": "<samp class=\"samp\">mc=</samp>"
+      },
+      "sourceHTML": "<p>SGR substring for matching non-empty text in any matching line\n(i.e.,\na selected line when the <samp class=\"option\">-v</samp> command-line option is omitted,\nor a context line when <samp class=\"option\">-v</samp> is specified).\nSetting this is equivalent to setting both ‘<samp class=\"samp\">ms=</samp>’ and ‘<samp class=\"samp\">mc=</samp>’\nat once to the same value.\nThe default is a bold red text foreground over the current line background.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "SGR substring for matching non-empty text in a selected line. (This is used only when the ⟦0⟧ command-line option is omitted.) The effect of the ‘⟦1⟧’ (or ‘⟦2⟧’ if ‘⟦3⟧’) capability remains active when this takes effect. The default is a bold red text foreground over the current line background.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-v</samp>",
+        "⟦1⟧": "<samp class=\"samp\">sl=</samp>",
+        "⟦2⟧": "<samp class=\"samp\">cx=</samp>",
+        "⟦3⟧": "<samp class=\"samp\">rv</samp>"
+      },
+      "sourceHTML": "<p>SGR substring for matching non-empty text in a selected line.\n(This is used only when the <samp class=\"option\">-v</samp> command-line option is omitted.)\nThe effect of the ‘<samp class=\"samp\">sl=</samp>’ (or ‘<samp class=\"samp\">cx=</samp>’ if ‘<samp class=\"samp\">rv</samp>’) capability\nremains active when this takes effect.\nThe default is a bold red text foreground over the current line background.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "SGR substring for matching non-empty text in a context line. (This is used only when the ⟦0⟧ command-line option is specified.) The effect of the ‘⟦1⟧’ (or ‘⟦2⟧’ if ‘⟦3⟧’) capability remains active when this takes effect. The default is a bold red text foreground over the current line background.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-v</samp>",
+        "⟦1⟧": "<samp class=\"samp\">cx=</samp>",
+        "⟦2⟧": "<samp class=\"samp\">sl=</samp>",
+        "⟦3⟧": "<samp class=\"samp\">rv</samp>"
+      },
+      "sourceHTML": "<p>SGR substring for matching non-empty text in a context line.\n(This is used only when the <samp class=\"option\">-v</samp> command-line option is specified.)\nThe effect of the ‘<samp class=\"samp\">cx=</samp>’ (or ‘<samp class=\"samp\">sl=</samp>’ if ‘<samp class=\"samp\">rv</samp>’) capability\nremains active when this takes effect.\nThe default is a bold red text foreground over the current line background.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "SGR substring for file names prefixing any content line. The default is a magenta text foreground over the terminal’s default background.",
+      "tokens": {},
+      "sourceHTML": "<p>SGR substring for file names prefixing any content line.\nThe default is a magenta text foreground over the terminal’s default background.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "SGR substring for line numbers prefixing any content line. The default is a green text foreground over the terminal’s default background.",
+      "tokens": {},
+      "sourceHTML": "<p>SGR substring for line numbers prefixing any content line.\nThe default is a green text foreground over the terminal’s default background.\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "SGR substring for byte offsets prefixing any content line. The default is a green text foreground over the terminal’s default background.",
+      "tokens": {},
+      "sourceHTML": "<p>SGR substring for byte offsets prefixing any content line.\nThe default is a green text foreground over the terminal’s default background.\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "SGR substring for separators that are inserted between selected line fields (‘⟦0⟧’), between context line fields (‘⟦1⟧’), and between groups of adjacent lines when nonzero context is specified (‘⟦2⟧’). The default is a cyan text foreground over the terminal’s default background.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">:</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-</samp>",
+        "⟦2⟧": "<samp class=\"samp\">--</samp>"
+      },
+      "sourceHTML": "<p>SGR substring for separators that are inserted\nbetween selected line fields (‘<samp class=\"samp\">:</samp>’),\nbetween context line fields (‘<samp class=\"samp\">-</samp>’),\nand between groups of adjacent lines\nwhen nonzero context is specified (‘<samp class=\"samp\">--</samp>’).\nThe default is a cyan text foreground over the terminal’s default background.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "Boolean value that prevents clearing to the end of line using Erase in Line (EL) to Right (‘⟦0⟧’) each time a colorized item ends. This is needed on terminals on which EL is not supported. It is otherwise useful on terminals for which the ⟦1⟧ (⟦2⟧) boolean ⟦3⟧ capability does not apply, when the chosen highlight colors do not affect the background, or when EL is too slow or causes too much flicker. The default is false (i.e., the capability is omitted).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\33[K</samp>",
+        "⟦1⟧": "<code class=\"code\">back_color_erase</code>",
+        "⟦2⟧": "<code class=\"code\">bce</code>",
+        "⟦3⟧": "<code class=\"code\">terminfo</code>"
+      },
+      "sourceHTML": "<p>Boolean value that prevents clearing to the end of line\nusing Erase in Line (EL) to Right (‘<samp class=\"samp\">\\33[K</samp>’)\neach time a colorized item ends.\nThis is needed on terminals on which EL is not supported.\nIt is otherwise useful on terminals\nfor which the <code class=\"code\">back_color_erase</code>\n(<code class=\"code\">bce</code>) boolean <code class=\"code\">terminfo</code> capability does not apply,\nwhen the chosen highlight colors do not affect the background,\nor when EL is too slow or causes too much flicker.\nThe default is false (i.e., the capability is omitted).\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "Note that boolean capabilities have no ‘⟦0⟧’… part. They are omitted (i.e., false) by default and become true when specified.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">=</samp>"
+      },
+      "sourceHTML": "<p>Note that boolean capabilities have no ‘<samp class=\"samp\">=</samp>’… part.\nThey are omitted (i.e., false) by default and become true when specified.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "p",
+      "text": "These variables specify the locale for the ⟦0⟧ category, which might affect how range expressions like ‘⟦1⟧’ are interpreted.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">LC_COLLATE</code>",
+        "⟦1⟧": "<samp class=\"samp\">a-z</samp>"
+      },
+      "sourceHTML": "<p>These variables specify the locale for the <code class=\"env\">LC_COLLATE</code> category,\nwhich might affect how range expressions like ‘<samp class=\"samp\">a-z</samp>’ are\ninterpreted.\n</p>"
+    },
+    {
+      "index": 20,
+      "tag": "p",
+      "text": "These variables specify the locale for the ⟦0⟧ category, which determines the type of characters, e.g., which characters are whitespace. This category also determines the character encoding. See ⟦1⟧Character Encoding⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">LC_CTYPE</code>",
+        "⟦1⟧": "<a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/22-character-encoding/#Character-Encoding\">",
+        "⟦2⟧": "</a>"
+      },
+      "sourceHTML": "<p>These variables specify the locale for the <code class=\"env\">LC_CTYPE</code> category,\nwhich determines the type of characters,\ne.g., which characters are whitespace.\nThis category also determines the character encoding.\nSee <a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/22-character-encoding/#Character-Encoding\">Character Encoding</a>.\n</p>"
+    },
+    {
+      "index": 21,
+      "tag": "p",
+      "text": "These variables specify the locale for the ⟦0⟧ category, which determines the language that ⟦1⟧ uses for messages. The default ‘⟦2⟧’ locale uses American English messages.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">LC_MESSAGES</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>",
+        "⟦2⟧": "<samp class=\"samp\">C</samp>"
+      },
+      "sourceHTML": "<p>These variables specify the locale for the <code class=\"env\">LC_MESSAGES</code> category,\nwhich determines the language that <code class=\"command\">grep</code> uses for messages.\nThe default ‘<samp class=\"samp\">C</samp>’ locale uses American English messages.\n</p>"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "text": "If set, ⟦0⟧ behaves as POSIX requires; otherwise, ⟦1⟧ behaves more like other GNU programs. POSIX requires that options that follow file names must be treated as file names; by default, such options are permuted to the front of the operand list and are treated as options.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>If set, <code class=\"command\">grep</code> behaves as POSIX requires; otherwise,\n<code class=\"command\">grep</code> behaves more like other GNU programs.\nPOSIX\nrequires that options that\nfollow file names must be treated as file names;\nby default,\nsuch options are permuted to the front of the operand list\nand are treated as options.\n</p>"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "text": "This variable specifies the output terminal type, which can affect what the ⟦0⟧ option does. See ⟦1⟧General Output Control⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--color</samp>",
+        "⟦1⟧": "<a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/06-general-output-control/#General-Output-Control\">",
+        "⟦2⟧": "</a>"
+      },
+      "sourceHTML": "<p>This variable specifies the output terminal type, which can affect\nwhat the <samp class=\"option\">--color</samp> option does.  See <a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/06-general-output-control/#General-Output-Control\">General Output Control</a>.\n</p>"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "text": "The ⟦0⟧ environment variable of ⟦1⟧ 2.20 and earlier is no longer supported, as it caused problems when writing portable scripts. To make arbitrary changes to how ⟦2⟧ works, you can use an alias or script instead. For example, if ⟦3⟧ is in the directory ‘⟦4⟧’ you can prepend ⟦5⟧ to your ⟦6⟧ and create an executable script ⟦7⟧ containing the following:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">GREP_OPTIONS</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>",
+        "⟦2⟧": "<code class=\"command\">grep</code>",
+        "⟦3⟧": "<code class=\"command\">grep</code>",
+        "⟦4⟧": "<samp class=\"samp\">/usr/bin</samp>",
+        "⟦5⟧": "<samp class=\"file\">$HOME/bin</samp>",
+        "⟦6⟧": "<code class=\"env\">PATH</code>",
+        "⟦7⟧": "<samp class=\"file\">$HOME/bin/grep</samp>"
+      },
+      "sourceHTML": "<p>The <code class=\"env\">GREP_OPTIONS</code> environment variable of <code class=\"command\">grep</code> 2.20 and\nearlier is no longer supported, as it caused problems when writing\nportable scripts.  To make arbitrary changes to how <code class=\"command\">grep</code>\nworks, you can use an alias or script instead.  For example, if\n<code class=\"command\">grep</code> is in the directory ‘<samp class=\"samp\">/usr/bin</samp>’ you can prepend\n<samp class=\"file\">$HOME/bin</samp> to your <code class=\"env\">PATH</code> and create an executable script\n<samp class=\"file\">$HOME/bin/grep</samp> containing the following:\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

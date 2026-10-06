@@ -1,0 +1,308 @@
+{
+  "slug": "21-problematic-regular-expressions",
+  "bodySHA256": "99b996fac69da4c5040a1f543893b62ad6dff89263fa01b2df4354d2cf724c17",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧3.7 Problematic Regular Expressions⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Problematic-Regular-Expressions\"><span>3.7 Problematic Regular Expressions</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Some strings are ⟦0⟧invalid regular expressions⟦1⟧ and cause ⟦2⟧ to issue a diagnostic and fail. For example, ‘⟦3⟧’ is invalid because there is no parenthesized subexpression for the back-reference ‘⟦4⟧’ to refer to.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"dfn\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<code class=\"command\">grep</code>",
+        "⟦3⟧": "<samp class=\"samp\">xy\\1</samp>",
+        "⟦4⟧": "<samp class=\"samp\">\\1</samp>"
+      },
+      "sourceHTML": "<p>Some strings are <em class=\"dfn\">invalid regular expressions</em> and cause\n<code class=\"command\">grep</code> to issue a diagnostic and fail.  For example, ‘<samp class=\"samp\">xy\\1</samp>’\nis invalid because there is no parenthesized subexpression for the\nback-reference ‘<samp class=\"samp\">\\1</samp>’ to refer to.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Also, some regular expressions have ⟦0⟧unspecified behavior⟦1⟧ and should be avoided even if ⟦2⟧ does not currently diagnose them. For example, ‘⟦3⟧’ has unspecified behavior because ‘⟦4⟧’ is not a special character and ‘⟦5⟧’ is not a special backslash expression (see ⟦6⟧Special Backslash Expressions⟦7⟧). Unspecified behavior can be particularly problematic because the set of matched strings might be only partially specified, or not be specified at all, or the expression might even be invalid.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"dfn\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<code class=\"command\">grep</code>",
+        "⟦3⟧": "<samp class=\"samp\">xy\\0</samp>",
+        "⟦4⟧": "<samp class=\"samp\">0</samp>",
+        "⟦5⟧": "<samp class=\"samp\">\\0</samp>",
+        "⟦6⟧": "<a class=\"pxref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/17-special-backslash-expressions/#Special-Backslash-Expressions\">",
+        "⟦7⟧": "</a>"
+      },
+      "sourceHTML": "<p>Also, some regular expressions have <em class=\"dfn\">unspecified behavior</em> and\nshould be avoided even if <code class=\"command\">grep</code> does not currently diagnose\nthem.  For example, ‘<samp class=\"samp\">xy\\0</samp>’ has unspecified behavior because\n‘<samp class=\"samp\">0</samp>’ is not a special character and ‘<samp class=\"samp\">\\0</samp>’ is not a special\nbackslash expression (see <a class=\"pxref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/17-special-backslash-expressions/#Special-Backslash-Expressions\">Special Backslash Expressions</a>).\nUnspecified behavior can be particularly problematic because the set\nof matched strings might be only partially specified, or not be\nspecified at all, or the expression might even be invalid.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The following regular expression constructs are invalid on all platforms conforming to POSIX, so portable scripts can assume that ⟦0⟧ rejects these constructs:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>The following regular expression constructs are invalid on all\nplatforms conforming to POSIX, so portable scripts can assume that\n<code class=\"command\">grep</code> rejects these constructs:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "li",
+      "text": "A basic regular expression containing a back-reference ‘⟦0⟧’ preceded by fewer than ⟦1⟧ closing parentheses. For example, ‘⟦2⟧’ is invalid.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\<var class=\"var\">n</var></samp>",
+        "⟦1⟧": "<var class=\"var\">n</var>",
+        "⟦2⟧": "<samp class=\"samp\">\\(a\\)\\2</samp>"
+      },
+      "sourceHTML": "<li>A basic regular expression containing a back-reference ‘<samp class=\"samp\">\\<var class=\"var\">n</var></samp>’\npreceded by fewer than <var class=\"var\">n</var> closing parentheses.  For example,\n‘<samp class=\"samp\">\\(a\\)\\2</samp>’ is invalid.\n\n</li>"
+    },
+    {
+      "index": 5,
+      "tag": "li",
+      "text": "A bracket expression containing ‘⟦0⟧’ that does not start a character class; and similarly for ‘⟦1⟧’ and ‘⟦2⟧’. For example, ‘⟦3⟧’ and ‘⟦4⟧’ are invalid.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[:</samp>",
+        "⟦1⟧": "<samp class=\"samp\">[=</samp>",
+        "⟦2⟧": "<samp class=\"samp\">[.</samp>",
+        "⟦3⟧": "<samp class=\"samp\">[a[:b]</samp>",
+        "⟦4⟧": "<samp class=\"samp\">[a[:ouch:]b]</samp>"
+      },
+      "sourceHTML": "<li>A bracket expression containing ‘<samp class=\"samp\">[:</samp>’ that does not start a\ncharacter class; and similarly for ‘<samp class=\"samp\">[=</samp>’ and ‘<samp class=\"samp\">[.</samp>’.  For\nexample, ‘<samp class=\"samp\">[a[:b]</samp>’ and ‘<samp class=\"samp\">[a[:ouch:]b]</samp>’ are invalid.\n</li>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "GNU ⟦0⟧ treats the following constructs as invalid. However, other ⟦1⟧ implementations might allow them, so portable scripts should not rely on their being invalid:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>GNU <code class=\"command\">grep</code> treats the following constructs as invalid.\nHowever, other <code class=\"command\">grep</code> implementations might allow them, so\nportable scripts should not rely on their being invalid:\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "li",
+      "text": "Unescaped ‘⟦0⟧’ at the end of a regular expression.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\</samp>"
+      },
+      "sourceHTML": "<li>Unescaped ‘<samp class=\"samp\">\\</samp>’ at the end of a regular expression.\n\n</li>"
+    },
+    {
+      "index": 8,
+      "tag": "li",
+      "text": "Unescaped ‘⟦0⟧’ that does not start a bracket expression.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[</samp>"
+      },
+      "sourceHTML": "<li>Unescaped ‘<samp class=\"samp\">[</samp>’ that does not start a bracket expression.\n\n</li>"
+    },
+    {
+      "index": 9,
+      "tag": "li",
+      "text": "A ‘⟦0⟧’ in a basic regular expression that does not start an interval expression.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\{</samp>"
+      },
+      "sourceHTML": "<li>A ‘<samp class=\"samp\">\\{</samp>’ in a basic regular expression that does not start an\ninterval expression.\n\n</li>"
+    },
+    {
+      "index": 10,
+      "tag": "li",
+      "text": "A basic regular expression with unbalanced ‘⟦0⟧’ or ‘⟦1⟧’, or an extended regular expression with unbalanced ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\(</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\)</samp>",
+        "⟦2⟧": "<samp class=\"samp\">(</samp>"
+      },
+      "sourceHTML": "<li>A basic regular expression with unbalanced ‘<samp class=\"samp\">\\(</samp>’ or ‘<samp class=\"samp\">\\)</samp>’,\nor an extended regular expression with unbalanced ‘<samp class=\"samp\">(</samp>’.\n\n</li>"
+    },
+    {
+      "index": 11,
+      "tag": "li",
+      "text": "In the POSIX locale, a range expression like ‘⟦0⟧’ that represents zero elements. A non-GNU ⟦1⟧ might treat it as a valid range that never matches.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">z-a</samp>",
+        "⟦1⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<li>In the POSIX locale, a range expression like ‘<samp class=\"samp\">z-a</samp>’ that\nrepresents zero elements.  A non-GNU <code class=\"command\">grep</code> might treat it as\na valid range that never matches.\n\n</li>"
+    },
+    {
+      "index": 12,
+      "tag": "li",
+      "text": "An interval expression with a repetition count greater than 32767. (The portable POSIX limit is 255, and even interval expressions with smaller counts can be impractically slow on all known implementations.)",
+      "tokens": {},
+      "sourceHTML": "<li>An interval expression with a repetition count greater than 32767.\n(The portable POSIX limit is 255, and even interval expressions with\nsmaller counts can be impractically slow on all known implementations.)\n\n</li>"
+    },
+    {
+      "index": 13,
+      "tag": "li",
+      "text": "A bracket expression that contains at least three elements, the first and last of which are both ‘⟦0⟧’, or both ‘⟦1⟧’, or both ‘⟦2⟧’. For example, a non-GNU ⟦3⟧ might treat ‘⟦4⟧’ like ‘⟦5⟧’, or like ‘⟦6⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">:</samp>",
+        "⟦1⟧": "<samp class=\"samp\">.</samp>",
+        "⟦2⟧": "<samp class=\"samp\">=</samp>",
+        "⟦3⟧": "<code class=\"command\">grep</code>",
+        "⟦4⟧": "<samp class=\"samp\">[:alpha:]</samp>",
+        "⟦5⟧": "<samp class=\"samp\">[[:alpha:]]</samp>",
+        "⟦6⟧": "<samp class=\"samp\">[:ahlp]</samp>"
+      },
+      "sourceHTML": "<li>A bracket expression that contains at least three elements, the first\nand last of which are both ‘<samp class=\"samp\">:</samp>’, or both ‘<samp class=\"samp\">.</samp>’, or both\n‘<samp class=\"samp\">=</samp>’.  For example, a non-GNU <code class=\"command\">grep</code> might treat\n‘<samp class=\"samp\">[:alpha:]</samp>’ like ‘<samp class=\"samp\">[[:alpha:]]</samp>’, or like ‘<samp class=\"samp\">[:ahlp]</samp>’.\n</li>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "The following constructs have well-defined behavior in GNU ⟦0⟧. However, they have unspecified behavior elsewhere, so portable scripts should avoid them:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>The following constructs have well-defined behavior in GNU\n<code class=\"command\">grep</code>.  However, they have unspecified behavior elsewhere, so\nportable scripts should avoid them:\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "li",
+      "text": "Special backslash expressions like ‘⟦0⟧’, ‘⟦1⟧’, and ‘⟦2⟧’. See ⟦3⟧Special Backslash Expressions⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\b</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\&lt;</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\]</samp>",
+        "⟦3⟧": "<a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/17-special-backslash-expressions/#Special-Backslash-Expressions\">",
+        "⟦4⟧": "</a>"
+      },
+      "sourceHTML": "<li>Special backslash expressions like ‘<samp class=\"samp\">\\b</samp>’, ‘<samp class=\"samp\">\\&lt;</samp>’, and ‘<samp class=\"samp\">\\]</samp>’.\nSee <a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/17-special-backslash-expressions/#Special-Backslash-Expressions\">Special Backslash Expressions</a>.\n\n</li>"
+    },
+    {
+      "index": 16,
+      "tag": "li",
+      "text": "A basic regular expression that uses ‘⟦0⟧’, ‘⟦1⟧’, or ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\?</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\+</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\|</samp>"
+      },
+      "sourceHTML": "<li>A basic regular expression that uses ‘<samp class=\"samp\">\\?</samp>’, ‘<samp class=\"samp\">\\+</samp>’, or ‘<samp class=\"samp\">\\|</samp>’.\n\n</li>"
+    },
+    {
+      "index": 17,
+      "tag": "li",
+      "text": "An extended regular expression that uses back-references.",
+      "tokens": {},
+      "sourceHTML": "<li>An extended regular expression that uses back-references.\n\n</li>"
+    },
+    {
+      "index": 18,
+      "tag": "li",
+      "text": "An empty regular expression, subexpression, or alternative. For example, ‘⟦0⟧’ is not portable; a portable equivalent is ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">(a|bc|)</samp>",
+        "⟦1⟧": "<samp class=\"samp\">(a|bc)?</samp>"
+      },
+      "sourceHTML": "<li>An empty regular expression, subexpression, or alternative.  For\nexample, ‘<samp class=\"samp\">(a|bc|)</samp>’ is not portable; a portable equivalent is\n‘<samp class=\"samp\">(a|bc)?</samp>’.\n\n</li>"
+    },
+    {
+      "index": 19,
+      "tag": "li",
+      "text": "In a basic regular expression, an anchoring ‘⟦0⟧’ that appears directly after ‘⟦1⟧’, or an anchoring ‘⟦2⟧’ that appears directly before ‘⟦3⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">^</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\(</samp>",
+        "⟦2⟧": "<samp class=\"samp\">$</samp>",
+        "⟦3⟧": "<samp class=\"samp\">\\)</samp>"
+      },
+      "sourceHTML": "<li>In a basic regular expression, an anchoring ‘<samp class=\"samp\">^</samp>’ that appears\ndirectly after ‘<samp class=\"samp\">\\(</samp>’, or an anchoring ‘<samp class=\"samp\">$</samp>’ that appears\ndirectly before ‘<samp class=\"samp\">\\)</samp>’.\n\n</li>"
+    },
+    {
+      "index": 20,
+      "tag": "li",
+      "text": "In a basic regular expression, a repetition operator that directly follows another repetition operator.",
+      "tokens": {},
+      "sourceHTML": "<li>In a basic regular expression, a repetition operator that\ndirectly follows another repetition operator.\n\n</li>"
+    },
+    {
+      "index": 21,
+      "tag": "li",
+      "text": "In an extended regular expression, unescaped ‘⟦0⟧’ that does not begin a valid interval expression. GNU ⟦1⟧ treats the ‘⟦2⟧’ as an ordinary character.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">{</samp>",
+        "⟦1⟧": "<code class=\"command\">grep</code>",
+        "⟦2⟧": "<samp class=\"samp\">{</samp>"
+      },
+      "sourceHTML": "<li>In an extended regular expression, unescaped ‘<samp class=\"samp\">{</samp>’\nthat does not begin a valid interval expression.\nGNU <code class=\"command\">grep</code> treats the ‘<samp class=\"samp\">{</samp>’ as an ordinary character.\n\n</li>"
+    },
+    {
+      "index": 22,
+      "tag": "li",
+      "text": "A null character or an encoding error in either pattern or input data. See ⟦0⟧Character Encoding⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/22-character-encoding/#Character-Encoding\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<li>A null character or an encoding error in either pattern or input data.\nSee <a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/22-character-encoding/#Character-Encoding\">Character Encoding</a>.\n\n</li>"
+    },
+    {
+      "index": 23,
+      "tag": "li",
+      "text": "An input file that ends in a non-newline character, where GNU ⟦0⟧ silently supplies a newline.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<li>An input file that ends in a non-newline character,\nwhere GNU <code class=\"command\">grep</code> silently supplies a newline.\n</li>"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "text": "The following constructs have unspecified behavior, in both GNU and other ⟦0⟧ implementations. Scripts should avoid them whenever possible.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>The following constructs have unspecified behavior, in both GNU\nand other <code class=\"command\">grep</code> implementations.  Scripts should avoid\nthem whenever possible.\n</p>"
+    },
+    {
+      "index": 25,
+      "tag": "li",
+      "text": "A backslash escaping an ordinary character, unless it is a back-reference like ‘⟦0⟧’ or a special backslash expression like ‘⟦1⟧’ or ‘⟦2⟧’. See ⟦3⟧Special Backslash Expressions⟦4⟧. For example, ‘⟦5⟧’ has unspecified behavior now, and a future version of ⟦6⟧ might specify ‘⟦7⟧’ to have a new behavior.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\1</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\&lt;</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\b</samp>",
+        "⟦3⟧": "<a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/17-special-backslash-expressions/#Special-Backslash-Expressions\">",
+        "⟦4⟧": "</a>",
+        "⟦5⟧": "<samp class=\"samp\">\\x</samp>",
+        "⟦6⟧": "<code class=\"command\">grep</code>",
+        "⟦7⟧": "<samp class=\"samp\">\\x</samp>"
+      },
+      "sourceHTML": "<li>A backslash escaping an ordinary character, unless it is a\nback-reference like ‘<samp class=\"samp\">\\1</samp>’ or a special backslash expression like\n‘<samp class=\"samp\">\\&lt;</samp>’ or ‘<samp class=\"samp\">\\b</samp>’.  See <a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/17-special-backslash-expressions/#Special-Backslash-Expressions\">Special Backslash Expressions</a>.  For\nexample, ‘<samp class=\"samp\">\\x</samp>’ has unspecified behavior now, and a future version\nof <code class=\"command\">grep</code> might specify ‘<samp class=\"samp\">\\x</samp>’ to have a new behavior.\n\n</li>"
+    },
+    {
+      "index": 26,
+      "tag": "li",
+      "text": "A repetition operator that appears directly after an anchor, or at the start of a complete regular expression, parenthesized subexpression, or alternative. For example, ‘⟦0⟧’ has unspecified behavior, whereas ‘⟦1⟧’ is portable.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">+|^*(+a|?-b)</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\+|^\\*(\\+a|\\?-b)</samp>"
+      },
+      "sourceHTML": "<li>A repetition operator that appears directly after an anchor, or at the\nstart of a complete regular expression, parenthesized subexpression,\nor alternative.  For example, ‘<samp class=\"samp\">+|^*(+a|?-b)</samp>’ has unspecified\nbehavior, whereas ‘<samp class=\"samp\">\\+|^\\*(\\+a|\\?-b)</samp>’ is portable.\n\n</li>"
+    },
+    {
+      "index": 27,
+      "tag": "li",
+      "text": "A range expression outside the POSIX locale. For example, in some locales ‘⟦0⟧’ might match some characters that are not lowercase letters, or might not match some lowercase letters, or might be invalid. With GNU ⟦1⟧ it is not documented whether these range expressions use native code points, or use the collation sequence specified by the ⟦2⟧ category, or use the collation ordering used by ⟦3⟧ and ⟦4⟧, or have some other interpretation. Outside the POSIX locale, it is portable to use ‘⟦5⟧’ to match a lower-case letter, or ‘⟦6⟧’ to match an ASCII lower-case letter.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[a-z]</samp>",
+        "⟦1⟧": "<code class=\"command\">grep</code>",
+        "⟦2⟧": "<code class=\"env\">LC_COLLATE</code>",
+        "⟦3⟧": "<code class=\"command\">sort</code>",
+        "⟦4⟧": "<code class=\"code\">strcoll</code>",
+        "⟦5⟧": "<samp class=\"samp\">[[:lower:]]</samp>",
+        "⟦6⟧": "<samp class=\"samp\">[abcdefghijklmnopqrstuvwxyz]</samp>"
+      },
+      "sourceHTML": "<li>A range expression outside the POSIX locale.  For example, in some\nlocales ‘<samp class=\"samp\">[a-z]</samp>’ might match some characters that are not\nlowercase letters, or might not match some lowercase letters, or might\nbe invalid.  With GNU <code class=\"command\">grep</code> it is not documented whether\nthese range expressions use native code points, or use the collation\nsequence specified by the <code class=\"env\">LC_COLLATE</code> category, or use the\ncollation ordering used by <code class=\"command\">sort</code> and <code class=\"code\">strcoll</code>, or have some\nother interpretation.  Outside the POSIX locale, it is portable to use\n‘<samp class=\"samp\">[[:lower:]]</samp>’ to match a lower-case letter, or\n‘<samp class=\"samp\">[abcdefghijklmnopqrstuvwxyz]</samp>’ to match an ASCII lower-case\nletter.\n\n</li>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

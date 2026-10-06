@@ -1,0 +1,28 @@
+<div class="gnu-grep-original-content" id="Character-Encoding">
+<h3 class="section" id="Character-Encoding-1"><span>3.8 Character Encoding</span></h3>
+<a class="index-entry-id" id="index-character-encoding"></a>
+<p>The <code class="env">LC_CTYPE</code> locale specifies the encoding of characters in
+patterns and data, that is, whether text is encoded in UTF-8, ASCII,
+or some other encoding.  See <a class="xref" href="#Environment-Variables">Environment Variables</a>.
+</p>
+<p>In the ‘<samp class="samp">C</samp>’ or ‘<samp class="samp">POSIX</samp>’ locale, every character is encoded as
+a single byte and every byte is a valid character.  In more-complex
+encodings such as UTF-8, a sequence of multiple bytes may be needed to
+represent a character, and some bytes may be encoding errors that do
+not contribute to the representation of any character.  POSIX does not
+specify the behavior of <code class="command">grep</code> when patterns or input data
+contain encoding errors or null characters, so portable scripts should
+avoid such usage.  As an extension to POSIX, GNU <code class="command">grep</code> treats
+null characters like any other character.  However, unless the
+<samp class="option">-a</samp> (<samp class="option">--binary-files=text</samp>) option is used, the
+presence of null characters in input or of encoding errors in output
+causes GNU <code class="command">grep</code> to treat the file as binary and suppress
+details about matches.  See <a class="xref" href="#File-and-Directory-Selection">File and Directory Selection</a>.
+</p>
+<p>Regardless of locale, the 103 characters in the POSIX Portable
+Character Set (a subset of ASCII) are always encoded as a single byte,
+and the 128 ASCII characters have their usual single-byte encodings on
+all but oddball platforms.
+</p>
+<hr/>
+</div>

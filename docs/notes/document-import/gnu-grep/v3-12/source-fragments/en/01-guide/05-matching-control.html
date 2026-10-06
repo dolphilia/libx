@@ -1,0 +1,107 @@
+<div class="gnu-grep-original-content" id="Matching-Control">
+<h4 class="subsection" id="Matching-Control-1"><span>2.1.2 Matching Control</span></h4>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-_002d_002dregexp_003dpatterns"></a>
+<a class="index-entry-id" id="index-patterns-option"></a>
+<a id="index-_002de"></a><span><samp class="option">-e <var class="var">patterns</var></samp></span></dt>
+<dt><samp class="option">--regexp=<var class="var">patterns</var></samp></dt>
+<dd><p>Use <var class="var">patterns</var> as one or more patterns; newlines within
+<var class="var">patterns</var> separate each pattern from the next.
+If this option is used multiple times or is combined with the
+<samp class="option">-f</samp> (<samp class="option">--file</samp>) option, search for all patterns given.
+Typically <var class="var">patterns</var> should be quoted when <code class="command">grep</code> is used
+in a shell command.
+(<samp class="option">-e</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dfile"></a>
+<a class="index-entry-id" id="index-patterns-from-file"></a>
+<a id="index-_002df"></a><span><samp class="option">-f <var class="var">file</var></samp></span></dt>
+<dt><samp class="option">--file=<var class="var">file</var></samp></dt>
+<dd><p>Obtain patterns from <var class="var">file</var>, one per line.
+If this option is used multiple times or is combined with the
+<samp class="option">-e</samp> (<samp class="option">--regexp</samp>) option, search for all patterns given.
+When <var class="var">file</var> is ‘<samp class="samp">-</samp>’, read patterns from standard input.
+The empty file contains zero patterns, and therefore matches nothing.
+(<samp class="option">-f</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002dy"></a>
+<a class="index-entry-id" id="index-_002d_002dignore_002dcase"></a>
+<a class="index-entry-id" id="index-case-insensitive-search"></a>
+<a id="index-_002di"></a><span><samp class="option">-i</samp></span></dt>
+<dt><samp class="option">-y</samp></dt>
+<dt><samp class="option">--ignore-case</samp></dt>
+<dd><p>Ignore case distinctions in patterns and input data,
+so that characters that differ only in case
+match each other.  Although this is straightforward when letters
+differ in case only via lowercase-uppercase pairs, the behavior is
+unspecified in other situations.  For example, uppercase “S” has an
+unusual lowercase counterpart
+“ſ”
+(Unicode character U+017F LATIN
+SMALL LETTER LONG S) in many locales, and it is unspecified whether
+this unusual character matches “S” or “s” even though uppercasing
+it yields “S”.  Another example: the lowercase German letter “ß”
+(U+00DF LATIN SMALL LETTER SHARP S) is normally capitalized as the
+two-character string “SS” but it does not match “SS”, and it might
+not match the uppercase letter
+“ẞ”
+(U+1E9E LATIN CAPITAL LETTER
+SHARP S) even though lowercasing the latter yields the former.
+</p>
+<p><samp class="option">-y</samp> is an obsolete synonym that is provided for compatibility.
+(<samp class="option">-i</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a id="index-_002d_002dno_002dignore_002dcase"></a><span><samp class="option">--no-ignore-case</samp></span></dt>
+<dd><p>Do not ignore case distinctions in patterns and input data.  This is
+the default.  This option is useful for passing to shell scripts that
+already use <samp class="option">-i</samp>, in order to cancel its effects because the
+two options override each other.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dinvert_002dmatch"></a>
+<a class="index-entry-id" id="index-invert-matching"></a>
+<a class="index-entry-id" id="index-print-non_002dmatching-lines"></a>
+<a id="index-_002dv"></a><span><samp class="option">-v</samp></span></dt>
+<dt><samp class="option">--invert-match</samp></dt>
+<dd><p>Invert the sense of matching, to select non-matching lines.
+(<samp class="option">-v</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dword_002dregexp"></a>
+<a class="index-entry-id" id="index-matching-whole-words"></a>
+<a id="index-_002dw"></a><span><samp class="option">-w</samp></span></dt>
+<dt><samp class="option">--word-regexp</samp></dt>
+<dd><p>Select only those lines containing matches that form whole words.
+The test is that the matching substring must either
+be at the beginning of the line,
+or preceded by a non-word constituent character.
+Similarly,
+it must be either at the end of the line
+or followed by a non-word constituent character.
+Word constituent characters are letters, digits, and the underscore.
+This option has no effect if <samp class="option">-x</samp> is also specified.
+</p>
+<p>Because the <samp class="option">-w</samp> option can match a substring that does not
+begin and end with word constituents, it differs from surrounding a
+regular expression with ‘<samp class="samp">\&lt;</samp>’ and ‘<samp class="samp">\&gt;</samp>’.  For example, although
+‘<samp class="samp">grep -w @</samp>’ matches a line containing only ‘<samp class="samp">@</samp>’, ‘<samp class="samp">grep
+'\&lt;@\&gt;'</samp>’ cannot match any line because ‘<samp class="samp">@</samp>’ is not a
+word constituent.  See <a class="xref" href="#Special-Backslash-Expressions">Special Backslash Expressions</a>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dline_002dregexp"></a>
+<a class="index-entry-id" id="index-match-the-whole-line"></a>
+<a id="index-_002dx"></a><span><samp class="option">-x</samp></span></dt>
+<dt><samp class="option">--line-regexp</samp></dt>
+<dd><p>Select only those matches that exactly match the whole line.
+For regular expression patterns, this is like parenthesizing each
+pattern and then surrounding it with ‘<samp class="samp">^</samp>’ and ‘<samp class="samp">$</samp>’.
+(<samp class="option">-x</samp> is specified by POSIX.)
+</p>
+</dd>
+</dl>
+<hr/>
+</div>

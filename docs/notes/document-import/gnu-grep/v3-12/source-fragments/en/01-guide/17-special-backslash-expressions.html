@@ -1,0 +1,63 @@
+<div class="gnu-grep-original-content" id="Special-Backslash-Expressions">
+<h3 class="section" id="Special-Backslash-Expressions-1"><span>3.3 Special Backslash Expressions</span></h3>
+<a class="index-entry-id" id="index-backslash"></a>
+<p>The ‘<samp class="samp">\</samp>’ character followed by a special character is a regular
+expression that matches the special character.
+The ‘<samp class="samp">\</samp>’ character,
+when followed by certain ordinary characters,
+takes a special meaning:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">\b</samp>’</dt>
+<dd><p>Match the empty string at the edge of a word.
+</p>
+</dd>
+<dt>‘<samp class="samp">\B</samp>’</dt>
+<dd><p>Match the empty string provided it’s not at the edge of a word.
+</p>
+</dd>
+<dt>‘<samp class="samp">\&lt;</samp>’</dt>
+<dd><p>Match the empty string at the beginning of a word.
+</p>
+</dd>
+<dt>‘<samp class="samp">\&gt;</samp>’</dt>
+<dd><p>Match the empty string at the end of a word.
+</p>
+</dd>
+<dt>‘<samp class="samp">\w</samp>’</dt>
+<dd><p>Match word constituent, it is a synonym for ‘<samp class="samp">[_[:alnum:]]</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">\W</samp>’</dt>
+<dd><p>Match non-word constituent, it is a synonym for ‘<samp class="samp">[^_[:alnum:]]</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">\s</samp>’</dt>
+<dd><p>Match whitespace, it is a synonym for ‘<samp class="samp">[[:space:]]</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">\S</samp>’</dt>
+<dd><p>Match non-whitespace, it is a synonym for ‘<samp class="samp">[^[:space:]]</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">\]</samp>’</dt>
+<dd><p>Match ‘<samp class="samp">]</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">\}</samp>’</dt>
+<dd><p>Match ‘<samp class="samp">}</samp>’.
+</p>
+</dd>
+</dl>
+<p>For example, ‘<samp class="samp">\brat\b</samp>’ matches the separate word ‘<samp class="samp">rat</samp>’,
+‘<samp class="samp">\Brat\B</samp>’ matches ‘<samp class="samp">crate</samp>’ but not ‘<samp class="samp">furry rat</samp>’.
+</p>
+<p>The behavior of <code class="command">grep</code> is unspecified if a unescaped backslash
+is not followed by a special character, a nonzero digit, or a
+character in the above list.  Although <code class="command">grep</code> might issue a
+diagnostic and/or give the backslash an interpretation now, its
+behavior may change if the syntax of regular expressions is extended
+in future versions.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,132 @@
+{
+  "slug": "17-special-backslash-expressions",
+  "bodySHA256": "5bbf3a3b267ae7e5ffb0cb750b730242ea1190f3732097b8db6de1d65d1d5364",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧3.3 Special Backslash Expressions⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Special-Backslash-Expressions-1\"><span>3.3 Special Backslash Expressions</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The ‘⟦0⟧’ character followed by a special character is a regular expression that matches the special character. The ‘⟦1⟧’ character, when followed by certain ordinary characters, takes a special meaning:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\</samp>"
+      },
+      "sourceHTML": "<p>The ‘<samp class=\"samp\">\\</samp>’ character followed by a special character is a regular\nexpression that matches the special character.\nThe ‘<samp class=\"samp\">\\</samp>’ character,\nwhen followed by certain ordinary characters,\ntakes a special meaning:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Match the empty string at the edge of a word.",
+      "tokens": {},
+      "sourceHTML": "<p>Match the empty string at the edge of a word.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Match the empty string provided it’s not at the edge of a word.",
+      "tokens": {},
+      "sourceHTML": "<p>Match the empty string provided it’s not at the edge of a word.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Match the empty string at the beginning of a word.",
+      "tokens": {},
+      "sourceHTML": "<p>Match the empty string at the beginning of a word.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Match the empty string at the end of a word.",
+      "tokens": {},
+      "sourceHTML": "<p>Match the empty string at the end of a word.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Match word constituent, it is a synonym for ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[_[:alnum:]]</samp>"
+      },
+      "sourceHTML": "<p>Match word constituent, it is a synonym for ‘<samp class=\"samp\">[_[:alnum:]]</samp>’.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Match non-word constituent, it is a synonym for ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[^_[:alnum:]]</samp>"
+      },
+      "sourceHTML": "<p>Match non-word constituent, it is a synonym for ‘<samp class=\"samp\">[^_[:alnum:]]</samp>’.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Match whitespace, it is a synonym for ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[[:space:]]</samp>"
+      },
+      "sourceHTML": "<p>Match whitespace, it is a synonym for ‘<samp class=\"samp\">[[:space:]]</samp>’.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "Match non-whitespace, it is a synonym for ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[^[:space:]]</samp>"
+      },
+      "sourceHTML": "<p>Match non-whitespace, it is a synonym for ‘<samp class=\"samp\">[^[:space:]]</samp>’.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "Match ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">]</samp>"
+      },
+      "sourceHTML": "<p>Match ‘<samp class=\"samp\">]</samp>’.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "Match ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">}</samp>"
+      },
+      "sourceHTML": "<p>Match ‘<samp class=\"samp\">}</samp>’.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "For example, ‘⟦0⟧’ matches the separate word ‘⟦1⟧’, ‘⟦2⟧’ matches ‘⟦3⟧’ but not ‘⟦4⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\brat\\b</samp>",
+        "⟦1⟧": "<samp class=\"samp\">rat</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\Brat\\B</samp>",
+        "⟦3⟧": "<samp class=\"samp\">crate</samp>",
+        "⟦4⟧": "<samp class=\"samp\">furry rat</samp>"
+      },
+      "sourceHTML": "<p>For example, ‘<samp class=\"samp\">\\brat\\b</samp>’ matches the separate word ‘<samp class=\"samp\">rat</samp>’,\n‘<samp class=\"samp\">\\Brat\\B</samp>’ matches ‘<samp class=\"samp\">crate</samp>’ but not ‘<samp class=\"samp\">furry rat</samp>’.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "The behavior of ⟦0⟧ is unspecified if a unescaped backslash is not followed by a special character, a nonzero digit, or a character in the above list. Although ⟦1⟧ might issue a diagnostic and/or give the backslash an interpretation now, its behavior may change if the syntax of regular expressions is extended in future versions.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>The behavior of <code class=\"command\">grep</code> is unspecified if a unescaped backslash\nis not followed by a special character, a nonzero digit, or a\ncharacter in the above list.  Although <code class=\"command\">grep</code> might issue a\ndiagnostic and/or give the backslash an interpretation now, its\nbehavior may change if the syntax of regular expressions is extended\nin future versions.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

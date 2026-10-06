@@ -1,0 +1,123 @@
+<div class="gnu-grep-original-content" id="Problematic-Expressions">
+<h3 class="section" id="Problematic-Regular-Expressions"><span>3.7 Problematic Regular Expressions</span></h3>
+<a class="index-entry-id" id="index-invalid-regular-expressions"></a>
+<a class="index-entry-id" id="index-unspecified-behavior-in-regular-expressions"></a>
+<p>Some strings are <em class="dfn">invalid regular expressions</em> and cause
+<code class="command">grep</code> to issue a diagnostic and fail.  For example, ‘<samp class="samp">xy\1</samp>’
+is invalid because there is no parenthesized subexpression for the
+back-reference ‘<samp class="samp">\1</samp>’ to refer to.
+</p>
+<p>Also, some regular expressions have <em class="dfn">unspecified behavior</em> and
+should be avoided even if <code class="command">grep</code> does not currently diagnose
+them.  For example, ‘<samp class="samp">xy\0</samp>’ has unspecified behavior because
+‘<samp class="samp">0</samp>’ is not a special character and ‘<samp class="samp">\0</samp>’ is not a special
+backslash expression (see <a class="pxref" href="#Special-Backslash-Expressions">Special Backslash Expressions</a>).
+Unspecified behavior can be particularly problematic because the set
+of matched strings might be only partially specified, or not be
+specified at all, or the expression might even be invalid.
+</p>
+<p>The following regular expression constructs are invalid on all
+platforms conforming to POSIX, so portable scripts can assume that
+<code class="command">grep</code> rejects these constructs:
+</p>
+<ul class="itemize mark-bullet">
+<li>A basic regular expression containing a back-reference ‘<samp class="samp">\<var class="var">n</var></samp>’
+preceded by fewer than <var class="var">n</var> closing parentheses.  For example,
+‘<samp class="samp">\(a\)\2</samp>’ is invalid.
+
+</li><li>A bracket expression containing ‘<samp class="samp">[:</samp>’ that does not start a
+character class; and similarly for ‘<samp class="samp">[=</samp>’ and ‘<samp class="samp">[.</samp>’.  For
+example, ‘<samp class="samp">[a[:b]</samp>’ and ‘<samp class="samp">[a[:ouch:]b]</samp>’ are invalid.
+</li></ul>
+<p>GNU <code class="command">grep</code> treats the following constructs as invalid.
+However, other <code class="command">grep</code> implementations might allow them, so
+portable scripts should not rely on their being invalid:
+</p>
+<ul class="itemize mark-bullet">
+<li>Unescaped ‘<samp class="samp">\</samp>’ at the end of a regular expression.
+
+</li><li>Unescaped ‘<samp class="samp">[</samp>’ that does not start a bracket expression.
+
+</li><li>A ‘<samp class="samp">\{</samp>’ in a basic regular expression that does not start an
+interval expression.
+
+</li><li>A basic regular expression with unbalanced ‘<samp class="samp">\(</samp>’ or ‘<samp class="samp">\)</samp>’,
+or an extended regular expression with unbalanced ‘<samp class="samp">(</samp>’.
+
+</li><li>In the POSIX locale, a range expression like ‘<samp class="samp">z-a</samp>’ that
+represents zero elements.  A non-GNU <code class="command">grep</code> might treat it as
+a valid range that never matches.
+
+</li><li>An interval expression with a repetition count greater than 32767.
+(The portable POSIX limit is 255, and even interval expressions with
+smaller counts can be impractically slow on all known implementations.)
+
+</li><li>A bracket expression that contains at least three elements, the first
+and last of which are both ‘<samp class="samp">:</samp>’, or both ‘<samp class="samp">.</samp>’, or both
+‘<samp class="samp">=</samp>’.  For example, a non-GNU <code class="command">grep</code> might treat
+‘<samp class="samp">[:alpha:]</samp>’ like ‘<samp class="samp">[[:alpha:]]</samp>’, or like ‘<samp class="samp">[:ahlp]</samp>’.
+</li></ul>
+<p>The following constructs have well-defined behavior in GNU
+<code class="command">grep</code>.  However, they have unspecified behavior elsewhere, so
+portable scripts should avoid them:
+</p>
+<ul class="itemize mark-bullet">
+<li>Special backslash expressions like ‘<samp class="samp">\b</samp>’, ‘<samp class="samp">\&lt;</samp>’, and ‘<samp class="samp">\]</samp>’.
+See <a class="xref" href="#Special-Backslash-Expressions">Special Backslash Expressions</a>.
+
+</li><li>A basic regular expression that uses ‘<samp class="samp">\?</samp>’, ‘<samp class="samp">\+</samp>’, or ‘<samp class="samp">\|</samp>’.
+
+</li><li>An extended regular expression that uses back-references.
+
+</li><li>An empty regular expression, subexpression, or alternative.  For
+example, ‘<samp class="samp">(a|bc|)</samp>’ is not portable; a portable equivalent is
+‘<samp class="samp">(a|bc)?</samp>’.
+
+</li><li>In a basic regular expression, an anchoring ‘<samp class="samp">^</samp>’ that appears
+directly after ‘<samp class="samp">\(</samp>’, or an anchoring ‘<samp class="samp">$</samp>’ that appears
+directly before ‘<samp class="samp">\)</samp>’.
+
+</li><li>In a basic regular expression, a repetition operator that
+directly follows another repetition operator.
+
+</li><li>In an extended regular expression, unescaped ‘<samp class="samp">{</samp>’
+that does not begin a valid interval expression.
+GNU <code class="command">grep</code> treats the ‘<samp class="samp">{</samp>’ as an ordinary character.
+
+</li><li>A null character or an encoding error in either pattern or input data.
+See <a class="xref" href="#Character-Encoding">Character Encoding</a>.
+
+</li><li>An input file that ends in a non-newline character,
+where GNU <code class="command">grep</code> silently supplies a newline.
+</li></ul>
+<p>The following constructs have unspecified behavior, in both GNU
+and other <code class="command">grep</code> implementations.  Scripts should avoid
+them whenever possible.
+</p>
+<ul class="itemize mark-bullet">
+<li>A backslash escaping an ordinary character, unless it is a
+back-reference like ‘<samp class="samp">\1</samp>’ or a special backslash expression like
+‘<samp class="samp">\&lt;</samp>’ or ‘<samp class="samp">\b</samp>’.  See <a class="xref" href="#Special-Backslash-Expressions">Special Backslash Expressions</a>.  For
+example, ‘<samp class="samp">\x</samp>’ has unspecified behavior now, and a future version
+of <code class="command">grep</code> might specify ‘<samp class="samp">\x</samp>’ to have a new behavior.
+
+</li><li>A repetition operator that appears directly after an anchor, or at the
+start of a complete regular expression, parenthesized subexpression,
+or alternative.  For example, ‘<samp class="samp">+|^*(+a|?-b)</samp>’ has unspecified
+behavior, whereas ‘<samp class="samp">\+|^\*(\+a|\?-b)</samp>’ is portable.
+
+</li><li>A range expression outside the POSIX locale.  For example, in some
+locales ‘<samp class="samp">[a-z]</samp>’ might match some characters that are not
+lowercase letters, or might not match some lowercase letters, or might
+be invalid.  With GNU <code class="command">grep</code> it is not documented whether
+these range expressions use native code points, or use the collation
+sequence specified by the <code class="env">LC_COLLATE</code> category, or use the
+collation ordering used by <code class="command">sort</code> and <code class="code">strcoll</code>, or have some
+other interpretation.  Outside the POSIX locale, it is portable to use
+‘<samp class="samp">[[:lower:]]</samp>’ to match a lower-case letter, or
+‘<samp class="samp">[abcdefghijklmnopqrstuvwxyz]</samp>’ to match an ASCII lower-case
+letter.
+
+</li></ul>
+<hr/>
+</div>
