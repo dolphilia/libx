@@ -1,0 +1,141 @@
+<div class="gnu-original-content"><div id="Makefiles">
+<span id="Writing-Makefiles"></span><h2 class="chapter"><span>3 Writing Makefiles</span></h2>
+<a class="index-entry-id" id="index-makefile_002c-how-to-write"></a>
+<p>The information that tells <code class="code">make</code> how to recompile a system comes from
+reading a data base called the <em class="dfn">makefile</em>.
+</p>
+<hr/>
+</div><div class="section-level-extent" id="Makefile-Contents">
+<span id="What-Makefiles-Contain"></span><h3 class="section"><span>3.1 What Makefiles Contain</span></h3>
+<p>Makefiles contain five kinds of things: <em class="dfn">explicit rules</em>,
+<em class="dfn">implicit rules</em>, <em class="dfn">variable definitions</em>, <em class="dfn">directives</em>,
+and <em class="dfn">comments</em>.  Rules, variables, and directives are described at
+length in later chapters.
+</p>
+<ul class="itemize mark-bullet">
+<li><a class="index-entry-id" id="index-rule_002c-explicit_002c-definition-of"></a>
+<a class="index-entry-id" id="index-explicit-rule_002c-definition-of"></a>
+An <em class="dfn">explicit rule</em> says when and how to remake one or more files,
+called the rule’s <em class="dfn">targets</em>.  It lists the other files that the
+targets depend on, called the <em class="dfn">prerequisites</em> of the target, and
+may also give a recipe to use to create or update the targets.
+See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Rules">Writing Rules</a>.
+
+</li><li><a class="index-entry-id" id="index-rule_002c-implicit_002c-definition-of"></a>
+<a class="index-entry-id" id="index-implicit-rule_002c-definition-of"></a>
+An <em class="dfn">implicit rule</em> says when and how to remake a class of files
+based on their names.  It describes how a target may depend on a file
+with a name similar to the target and gives a recipe to create or
+update such a target.  See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules">Using Implicit Rules</a>.
+
+</li><li><a class="index-entry-id" id="index-variable-definition"></a>
+A <em class="dfn">variable definition</em> is a line that specifies a text string
+value for a variable that can be substituted into the text later.  The
+simple makefile example shows a variable definition for <code class="code">objects</code>
+as a list of all object files (see <a class="pxref" href="/docs/gnu-make/v4-4-1/en/01-guide/05-simplifying-makefiles/#Variables-Simplify">Variables
+Make Makefiles Simpler</a>).
+
+</li><li><a class="index-entry-id" id="index-directive"></a>
+A <em class="dfn">directive</em> is an instruction for <code class="code">make</code> to do something
+special while reading the makefile.  These include:
+
+<ul class="itemize mark-bullet">
+<li>Reading another makefile (see <a class="pxref" href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#Include">Including Other Makefiles</a>).
+
+</li><li>Deciding (based on the values of variables) whether to use or
+ignore a part of the makefile (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Conditionals">Conditional Parts of Makefiles</a>).
+
+</li><li>Defining a variable from a verbatim string containing multiple lines
+(see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Multi_002dLine">Defining Multi-Line Variables</a>).
+</li></ul>
+</li><li><a class="index-entry-id" id="index-comments_002c-in-makefile"></a>
+<a class="index-entry-id" id="index-_0023-_0028comments_0029_002c-in-makefile"></a>
+‘<samp class="samp">#</samp>’ in a line of a makefile starts a <em class="dfn">comment</em>.  It and the
+rest of the line are ignored, except that a trailing backslash not
+escaped by another backslash will continue the comment across multiple
+lines.  A line containing just a comment (with perhaps spaces before
+it) is effectively blank, and is ignored.  If you want a literal
+<code class="code">#</code>, escape it with a backslash (e.g., <code class="code">\#</code>).  Comments may
+appear on any line in the makefile, although they are treated
+specially in certain situations.
+
+<p>You cannot use comments within variable references or function calls:
+any instance of <code class="code">#</code> will be treated literally (rather than as the
+start of a comment) inside a variable reference or function call.
+</p>
+<p>Comments within a recipe are passed to the shell, just as with any
+other recipe text.  The shell decides how to interpret it: whether or
+not this is a comment is up to the shell.
+</p>
+<p>Within a <code class="code">define</code> directive, comments are not ignored during the
+definition of the variable, but rather kept intact in the value of the
+variable.  When the variable is expanded they will either be treated
+as <code class="code">make</code> comments or as recipe text, depending on the context in
+which the variable is evaluated.
+</p></li></ul>
+<hr/>
+<div class="subsection-level-extent" id="Splitting-Lines">
+<span id="Splitting-Long-Lines"></span><h4 class="subsection"><span>3.1.1 Splitting Long Lines</span></h4>
+<a class="index-entry-id" id="index-splitting-long-lines"></a>
+<a class="index-entry-id" id="index-long-lines_002c-splitting"></a>
+<a class="index-entry-id" id="index-backslash-_0028_005c_0029_002c-to-quote-newlines"></a>
+<p>Makefiles use a “line-based” syntax in which the newline character
+is special and marks the end of a statement.  GNU <code class="code">make</code> has no
+limit on the length of a statement line, up to the amount of memory in
+your computer.
+</p>
+<p>However, it is difficult to read lines which are too long to display
+without wrapping or scrolling.  So, you can format your makefiles for
+readability by adding newlines into the middle of a statement: you do
+this by escaping the internal newlines with a backslash (<code class="code">\</code>)
+character.  Where we need to make a distinction we will refer to
+“physical lines” as a single line ending with a newline (regardless
+of whether it is escaped) and a “logical line” being a complete
+statement including all escaped newlines up to the first non-escaped
+newline.
+</p>
+<p>The way in which backslash/newline combinations are handled depends on
+whether the statement is a recipe line or a non-recipe line.  Handling
+of backslash/newline in a recipe line is discussed later
+(see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Splitting-Recipe-Lines">Splitting Recipe Lines</a>).
+</p>
+<p>Outside of recipe lines, backslash/newlines are converted into a
+single space character.  Once that is done, all whitespace around the
+backslash/newline is condensed into a single space: this includes all
+whitespace preceding the backslash, all whitespace at the beginning of
+the line after the backslash/newline, and any consecutive
+backslash/newline combinations.
+</p>
+<p>If the <code class="code">.POSIX</code> special target is defined then backslash/newline
+handling is modified slightly to conform to POSIX.2: first, whitespace
+preceding a backslash is not removed and second, consecutive
+backslash/newlines are not condensed.
+</p>
+<span id="Splitting-Without-Adding-Whitespace"></span><h4 class="subsubheading"><span>Splitting Without Adding Whitespace</span></h4>
+<a class="index-entry-id" id="index-whitespace_002c-avoiding-on-line-split"></a>
+<a class="index-entry-id" id="index-removing-whitespace-from-split-lines"></a>
+<p>If you need to split a line but do <em class="emph">not</em> want any whitespace
+added, you can utilize a subtle trick: replace your backslash/newline
+pairs with the three characters dollar sign, backslash, and newline:
+</p>
+<div class="example">
+<pre class="example-preformatted">var := one$\
+       word
+</pre></div>
+<p>After <code class="code">make</code> removes the backslash/newline and condenses the
+following line into a single space, this is equivalent to:
+</p>
+<div class="example">
+<pre class="example-preformatted">var := one$ word
+</pre></div>
+<p>Then <code class="code">make</code> will perform variable expansion.  The variable
+reference ‘<samp class="samp">$ </samp>’ refers to a variable with the one-character name
+“ ” (space) which does not exist, and so expands to the empty
+string, giving a final assignment which is the equivalent of:
+</p>
+<div class="example">
+<pre class="example-preformatted">var := oneword
+</pre></div>
+<hr/>
+</div>
+</div></div>

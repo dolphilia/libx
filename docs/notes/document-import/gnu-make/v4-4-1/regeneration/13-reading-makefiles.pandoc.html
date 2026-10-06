@@ -1,0 +1,126 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Reading-Makefiles">
+<span id="How-make-Reads-a-Makefile"></span><h3 class="section"><span>3.7 How <code class="code">make</code> Reads a Makefile</span></h3>
+<a class="index-entry-id" id="index-reading-makefiles"></a>
+<a class="index-entry-id" id="index-makefile_002c-reading"></a>
+<p>GNU <code class="code">make</code> does its work in two distinct phases.  During the
+first phase it reads all the makefiles, included makefiles, etc. and
+internalizes all the variables and their values and implicit and
+explicit rules, and builds a dependency graph of all the targets and
+their prerequisites.  During the second phase, <code class="code">make</code> uses this
+internalized data to determine which targets need to be updated and
+run the recipes necessary to update them.
+</p>
+<p>It’s important to understand this two-phase approach because it has a
+direct impact on how variable and function expansion happens; this is
+often a source of some confusion when writing makefiles.  Below is a
+summary of the different constructs that can be found in a makefile,
+and the phase in which expansion happens for each part of the
+construct.
+</p>
+<p>We say that expansion is <em class="dfn">immediate</em> if it happens during the
+first phase: <code class="code">make</code> will expand that part of the construct as the
+makefile is parsed.  We say that expansion is <em class="dfn">deferred</em> if it is
+not immediate.  Expansion of a deferred construct part is delayed
+until the expansion is used: either when it is referenced in an
+immediate context, or when it is needed during the second phase.
+</p>
+<p>You may not be familiar with some of these constructs yet.  You can
+reference this section as you become familiar with them, in later
+chapters.
+</p>
+<span id="Variable-Assignment"></span><h4 class="subheading"><span>Variable Assignment</span></h4>
+<a class="index-entry-id" id="index-_002b_003d_002c-expansion"></a>
+<a class="index-entry-id" id="index-_003d_002c-expansion"></a>
+<a class="index-entry-id" id="index-_003f_003d_002c-expansion"></a>
+<a class="index-entry-id" id="index-_002b_003d_002c-expansion-1"></a>
+<a class="index-entry-id" id="index-_0021_003d_002c-expansion"></a>
+<a class="index-entry-id" id="index-define_002c-expansion"></a>
+<p>Variable definitions are parsed as follows:
+</p>
+<div class="example">
+<pre><var class="var">immediate</var> = <var class="var">deferred</var>
+<var class="var">immediate</var> ?= <var class="var">deferred</var>
+<var class="var">immediate</var> := <var class="var">immediate</var>
+<var class="var">immediate</var> ::= <var class="var">immediate</var>
+<var class="var">immediate</var> :::= <var class="var">immediate-with-escape</var>
+<var class="var">immediate</var> += <var class="var">deferred</var> or <var class="var">immediate</var>
+<var class="var">immediate</var> != <var class="var">immediate</var>
+
+define <var class="var">immediate</var>
+  <var class="var">deferred</var>
+endef
+
+define <var class="var">immediate</var> =
+  <var class="var">deferred</var>
+endef
+
+define <var class="var">immediate</var> ?=
+  <var class="var">deferred</var>
+endef
+
+define <var class="var">immediate</var> :=
+  <var class="var">immediate</var>
+endef
+
+define <var class="var">immediate</var> ::=
+  <var class="var">immediate</var>
+endef
+
+define <var class="var">immediate</var> :::=
+  <var class="var">immediate-with-escape</var>
+endef
+
+define <var class="var">immediate</var> +=
+  <var class="var">deferred</var> or <var class="var">immediate</var>
+endef
+
+define <var class="var">immediate</var> !=
+  <var class="var">immediate</var>
+endef
+</pre></div>
+<p>For the append operator ‘<samp class="samp">+=</samp>’, the right-hand side is considered
+immediate if the variable was previously set as a simple variable
+(‘<samp class="samp">:=</samp>’ or ‘<samp class="samp">::=</samp>’), and deferred otherwise.
+</p>
+<p>For the <var class="var">immediate-with-escape</var> operator ‘<samp class="samp">:::=</samp>’, the value on
+the right-hand side is immediately expanded but then escaped (that is,
+all instances of <code class="code">$</code> in the result of the expansion are replaced
+with <code class="code">$$</code>).
+</p>
+<p>For the shell assignment operator ‘<samp class="samp">!=</samp>’, the right-hand side is
+evaluated immediately and handed to the shell.  The result is stored
+in the variable named on the left, and that variable is considered a
+recursively expanded variable (and will thus be re-evaluated on each
+reference).
+</p>
+<span id="Conditional-Directives"></span><h4 class="subheading"><span>Conditional Directives</span></h4>
+<a class="index-entry-id" id="index-ifdef_002c-expansion"></a>
+<a class="index-entry-id" id="index-ifeq_002c-expansion"></a>
+<a class="index-entry-id" id="index-ifndef_002c-expansion"></a>
+<a class="index-entry-id" id="index-ifneq_002c-expansion"></a>
+<p>Conditional directives are parsed immediately.  This means, for
+example, that automatic variables cannot be used in conditional
+directives, as automatic variables are not set until the recipe for
+that rule is invoked.  If you need to use automatic variables in a
+conditional directive you <em class="emph">must</em> move the condition into the
+recipe and use shell conditional syntax instead.
+</p>
+<span id="Rule-Definition"></span><h4 class="subheading"><span>Rule Definition</span></h4>
+<a class="index-entry-id" id="index-target_002c-expansion"></a>
+<a class="index-entry-id" id="index-prerequisite_002c-expansion"></a>
+<a class="index-entry-id" id="index-implicit-rule_002c-expansion"></a>
+<a class="index-entry-id" id="index-pattern-rule_002c-expansion"></a>
+<a class="index-entry-id" id="index-explicit-rule_002c-expansion"></a>
+<p>A rule is always expanded the same way, regardless of the form:
+</p>
+<div class="example">
+<pre><var class="var">immediate</var> : <var class="var">immediate</var> ; <var class="var">deferred</var>
+        <var class="var">deferred</var>
+</pre></div>
+<p>That is, the target and prerequisite sections are expanded
+immediately, and the recipe used to build the target is always
+deferred.  This is true for explicit rules, pattern rules, suffix
+rules, static pattern rules, and simple prerequisite definitions.
+</p>
+<hr/>
+</div></div>

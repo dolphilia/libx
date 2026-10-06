@@ -1,0 +1,58 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Parsing-Makefiles">
+<span id="How-Makefiles-Are-Parsed"></span><h3 class="section"><span>3.8 How Makefiles Are Parsed</span></h3>
+<a class="index-entry-id" id="index-parsing-makefiles"></a>
+<a class="index-entry-id" id="index-makefiles_002c-parsing"></a>
+<p>GNU <code class="code">make</code> parses makefiles line-by-line.  Parsing proceeds using
+the following steps:
+</p>
+<ol class="enumerate">
+<li> Read in a full logical line, including backslash-escaped lines
+(see <a class="pxref" href="/docs/gnu-make/v4-4-1/en/01-guide/07-makefile-contents/#Splitting-Lines">Splitting Long Lines</a>).
+
+</li><li> Remove comments (see <a class="pxref" href="/docs/gnu-make/v4-4-1/en/01-guide/07-makefile-contents/#Makefile-Contents">What Makefiles Contain</a>).
+
+</li><li> If the line begins with the recipe prefix character and we are in a
+rule context, add the line to the current recipe and read the next
+line (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Recipe-Syntax">Recipe Syntax</a>).
+
+</li><li> Expand elements of the line which appear in an <em class="emph">immediate</em>
+expansion context (see <a class="pxref" href="/docs/gnu-make/v4-4-1/en/01-guide/13-reading-makefiles/#Reading-Makefiles">How <code class="code">make</code> Reads a
+Makefile</a>).
+
+</li><li> Scan the line for a separator character, such as ‘<samp class="samp">:</samp>’ or ‘<samp class="samp">=</samp>’,
+to determine whether the line is a macro assignment or a rule
+(see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Recipe-Syntax">Recipe Syntax</a>).
+
+</li><li> Internalize the resulting operation and read the next line.
+</li></ol>
+<p>An important consequence of this is that a macro can expand to an
+entire rule, <em class="emph">if it is one line long</em>.  This will work:
+</p>
+<div class="example">
+<pre class="example-preformatted">myrule = target : ; echo built
+
+$(myrule)
+</pre></div>
+<p>However, this will not work because <code class="code">make</code> does not re-split lines
+after it has expanded them:
+</p>
+<div class="example">
+<pre class="example-preformatted">define myrule
+target:
+        echo built
+endef
+
+$(myrule)
+</pre></div>
+<p>The above makefile results in the definition of a target ‘<samp class="samp">target</samp>’
+with prerequisites ‘<samp class="samp">echo</samp>’ and ‘<samp class="samp">built</samp>’, as if the makefile
+contained <code class="code">target: echo built</code>, rather than a rule with a recipe.
+Newlines still present in a line after expansion is complete are
+ignored as normal whitespace.
+</p>
+<p>In order to properly expand a multi-line macro you must use the
+<code class="code">eval</code> function: this causes the <code class="code">make</code> parser to be run on
+the results of the expanded macro (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Eval-Function">The <code class="code">eval</code> Function</a>).
+</p>
+<hr/>
+</div></div>

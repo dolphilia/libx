@@ -1,0 +1,101 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Remaking-Makefiles">
+<span id="How-Makefiles-Are-Remade"></span><h3 class="section"><span>3.5 How Makefiles Are Remade</span></h3>
+<a class="index-entry-id" id="index-updating-makefiles"></a>
+<a class="index-entry-id" id="index-remaking-makefiles"></a>
+<a class="index-entry-id" id="index-makefile_002c-remaking-of"></a>
+<p>Sometimes makefiles can be remade from other files, such as RCS or SCCS
+files.  If a makefile can be remade from other files, you probably want
+<code class="code">make</code> to get an up-to-date version of the makefile to read in.
+</p>
+<p>To this end, after reading in all makefiles <code class="code">make</code> will consider
+each as a goal target, in the order in which they were processed, and
+attempt to update it.  If parallel builds (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Parallel">Parallel
+Execution</a>) are enabled then makefiles will be rebuilt in parallel as
+well.
+</p>
+<p>If a makefile has a rule which says how to update it (found either in
+that very makefile or in another one) or if an implicit rule applies
+to it (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules">Using Implicit Rules</a>), it will be
+updated if necessary.  After all makefiles have been checked, if any
+have actually been changed, <code class="code">make</code> starts with a clean slate and
+reads all the makefiles over again.  (It will also attempt to update
+each of them over again, but normally this will not change them again,
+since they are already up to date.)  Each restart will cause the
+special variable <code class="code">MAKE_RESTARTS</code> to be updated (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables">Other Special Variables</a>).
+</p>
+<p>If you know that one or more of your makefiles cannot be remade and
+you want to keep <code class="code">make</code> from performing an implicit rule search
+on them, perhaps for efficiency reasons, you can use any normal method
+of preventing implicit rule look-up to do so.  For example, you can
+write an explicit rule with the makefile as the target, and an empty
+recipe (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Empty-Recipes">Using Empty Recipes</a>).
+</p>
+<p>If the makefiles specify a double-colon rule to remake a file with a recipe
+but no prerequisites, that file will always be remade (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Double_002dColon">Double-Colon Rules</a>).
+In the case of makefiles, a makefile that has a double-colon rule with a
+recipe but no prerequisites will be remade every time <code class="code">make</code> is run, and
+then again after <code class="code">make</code> starts over and reads the makefiles in again.
+This would cause an infinite loop: <code class="code">make</code> would constantly remake the
+makefile and restart, and never do anything else.  So, to avoid this,
+<code class="code">make</code> will <strong class="strong">not</strong> attempt to remake makefiles which are specified
+as targets of a double-colon rule with a recipe but no prerequisites.
+</p>
+<p>Phony targets (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets">Phony Targets</a>) have the same effect: they are never
+considered up-to-date and so an included file marked as phony would cause
+<code class="code">make</code> to restart continuously.  To avoid this <code class="code">make</code> will not
+attempt to remake makefiles which are marked phony.
+</p>
+<p>You can take advantage of this to optimize startup time: if you know you don’t
+need your <samp class="file">Makefile</samp> to be remade you can prevent make from trying to
+remake it by adding either:
+</p>
+<div class="example">
+<pre>.PHONY: Makefile
+</pre></div>
+<p>or:
+</p>
+<div class="example">
+<pre>Makefile:: ;
+</pre></div>
+<p>If you do not specify any makefiles to be read with ‘<samp class="samp">-f</samp>’ or
+‘<samp class="samp">--file</samp>’ options, <code class="code">make</code> will try the default makefile names;
+see <a class="pxref" href="/docs/gnu-make/v4-4-1/en/01-guide/08-makefile-names/#Makefile-Names">What Name to Give Your Makefile</a>.  Unlike
+makefiles explicitly requested with ‘<samp class="samp">-f</samp>’ or ‘<samp class="samp">--file</samp>’ options,
+<code class="code">make</code> is not certain that these makefiles should exist.  However,
+if a default makefile does not exist but can be created by running
+<code class="code">make</code> rules, you probably want the rules to be run so that the
+makefile can be used.
+</p>
+<p>Therefore, if none of the default makefiles exists, <code class="code">make</code> will
+try to make each of them until it succeeds in making one, or it runs
+out of names to try.  Note that it is not an error if <code class="code">make</code>
+cannot find or make any makefile; a makefile is not always
+necessary.
+</p>
+<p>When you use the ‘<samp class="samp">-t</samp>’ or ‘<samp class="samp">--touch</samp>’ option
+(see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Instead-of-Execution">Instead of Executing Recipes</a>),
+you would not want to use an out-of-date makefile to decide which
+targets to touch.  So the ‘<samp class="samp">-t</samp>’ option has no effect on updating
+makefiles; they are really updated even if ‘<samp class="samp">-t</samp>’ is specified.
+Likewise, ‘<samp class="samp">-q</samp>’ (or ‘<samp class="samp">--question</samp>’) and ‘<samp class="samp">-n</samp>’ (or
+‘<samp class="samp">--just-print</samp>’) do not prevent updating of makefiles, because an
+out-of-date makefile would result in the wrong output for other targets.
+Thus, ‘<samp class="samp">make -f mfile -n foo</samp>’ will update <samp class="file">mfile</samp>, read it in,
+and then print the recipe to update <samp class="file">foo</samp> and its prerequisites
+without running it.  The recipe printed for <samp class="file">foo</samp> will be the one
+specified in the updated contents of <samp class="file">mfile</samp>.
+</p>
+<p>However, on occasion you might actually wish to prevent updating of even
+the makefiles.  You can do this by specifying the makefiles as goals in
+the command line as well as specifying them as makefiles.  When the
+makefile name is specified explicitly as a goal, the options ‘<samp class="samp">-t</samp>’
+and so on do apply to them.
+</p>
+<p>Thus, ‘<samp class="samp">make -f mfile -n mfile foo</samp>’ would read the makefile
+<samp class="file">mfile</samp>, print the recipe needed to update it without actually
+running it, and then print the recipe needed to update <samp class="file">foo</samp>
+without running that.  The recipe for <samp class="file">foo</samp> will be the one
+specified by the existing contents of <samp class="file">mfile</samp>.
+</p>
+<hr/>
+</div></div>

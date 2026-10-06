@@ -1,0 +1,48 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Overriding-Makefiles">
+<span id="Overriding-Part-of-Another-Makefile"></span><h3 class="section"><span>3.6 Overriding Part of Another Makefile</span></h3>
+<a class="index-entry-id" id="index-overriding-makefiles"></a>
+<a class="index-entry-id" id="index-makefile_002c-overriding"></a>
+<p>Sometimes it is useful to have a makefile that is mostly just like
+another makefile.  You can often use the ‘<samp class="samp">include</samp>’ directive to
+include one in the other, and add more targets or variable definitions.
+However, it is invalid for two makefiles to give different recipes for
+the same target.  But there is another way.
+</p>
+<a class="index-entry-id" id="index-match_002danything-rule_002c-used-to-override"></a>
+<p>In the containing makefile (the one that wants to include the other),
+you can use a match-anything pattern rule to say that to remake any
+target that cannot be made from the information in the containing
+makefile, <code class="code">make</code> should look in another makefile.
+See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Pattern-Rules">Defining and Redefining Pattern Rules</a>, for more information on pattern rules.
+</p>
+<p>For example, if you have a makefile called <samp class="file">Makefile</samp> that says how
+to make the target ‘<samp class="samp">foo</samp>’ (and other targets), you can write a
+makefile called <samp class="file">GNUmakefile</samp> that contains:
+</p>
+<div class="example">
+<pre class="example-preformatted">foo:
+        frobnicate &gt; foo
+
+%: force
+        @$(MAKE) -f Makefile $@
+force: ;
+</pre></div>
+<p>If you say ‘<samp class="samp">make foo</samp>’, <code class="code">make</code> will find <samp class="file">GNUmakefile</samp>,
+read it, and see that to make <samp class="file">foo</samp>, it needs to run the recipe
+‘<samp class="samp">frobnicate &gt; foo</samp>’.  If you say ‘<samp class="samp">make bar</samp>’, <code class="code">make</code> will
+find no way to make <samp class="file">bar</samp> in <samp class="file">GNUmakefile</samp>, so it will use the
+recipe from the pattern rule: ‘<samp class="samp">make -f Makefile bar</samp>’.  If
+<samp class="file">Makefile</samp> provides a rule for updating <samp class="file">bar</samp>, <code class="code">make</code>
+will apply the rule.  And likewise for any other target that
+<samp class="file">GNUmakefile</samp> does not say how to make.
+</p>
+<p>The way this works is that the pattern rule has a pattern of just
+‘<samp class="samp">%</samp>’, so it matches any target whatever.  The rule specifies a
+prerequisite <samp class="file">force</samp>, to guarantee that the recipe will be run even
+if the target file already exists.  We give the <samp class="file">force</samp> target an
+empty recipe to prevent <code class="code">make</code> from searching for an implicit rule to
+build it—otherwise it would apply the same match-anything rule to
+<samp class="file">force</samp> itself and create a prerequisite loop!
+</p>
+<hr/>
+</div></div>

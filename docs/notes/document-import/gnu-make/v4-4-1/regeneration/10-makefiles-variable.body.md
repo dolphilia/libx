@@ -1,0 +1,23 @@
+<div class="gnu-original-content">
+
+<div id="MAKEFILES-Variable" class="section-level-extent">
+
+<span id="The-Variable-MAKEFILES"></span>
+
+### 3.4 The Variable `MAKEFILES`
+
+<span id="index-makefile_002c-and-MAKEFILES-variable" class="index-entry-id"></span> <span id="index-including-_0028MAKEFILES-variable_0029" class="index-entry-id"></span> <span id="index-MAKEFILES" class="index-entry-id"></span>
+
+If the environment variable `MAKEFILES` is defined, `make` considers its value as a list of names (separated by whitespace) of additional makefiles to be read before the others. This works much like the `include` directive: various directories are searched for those files (see <a href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#Include" class="pxref">Including Other Makefiles</a>). In addition, the default goal is never taken from one of these makefiles (or any makefile included by them) and it is not an error if the files listed in `MAKEFILES` are not found.
+
+<span id="index-recursion_002c-and-MAKEFILES-variable" class="index-entry-id"></span>
+
+The main use of `MAKEFILES` is in communication between recursive invocations of `make` (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Recursion" class="pxref">Recursive Use of <code class="code">make</code></a>). It usually is not desirable to set the environment variable before a top-level invocation of `make`, because it is usually better not to mess with a makefile from outside. However, if you are running `make` without a specific makefile, a makefile in `MAKEFILES` can do useful things to help the built-in implicit rules work better, such as defining search paths (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Directory-Search" class="pxref">Searching Directories for Prerequisites</a>).
+
+Some users are tempted to set `MAKEFILES` in the environment automatically on login, and program makefiles to expect this to be done. This is a very bad idea, because such makefiles will fail to work if run by anyone else. It is much better to write explicit `include` directives in the makefiles. See <a href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#Include" class="xref">Including Other Makefiles</a>.
+
+------------------------------------------------------------------------
+
+</div>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="gnu-original-content">
+
+<div id="Simple-Makefile" class="section-level-extent">
+
+<span id="A-Simple-Makefile"></span>
+
+### 2.2 A Simple Makefile
+
+<span id="index-simple-makefile" class="index-entry-id"></span> <span id="index-makefile_002c-simple" class="index-entry-id"></span>
+
+Here is a straightforward makefile that describes the way an executable file called `edit` depends on eight object files which, in turn, depend on eight C source and three header files.
+
+In this example, all the C files include `defs.h`, but only those defining editing commands include `command.h`, and only low level files that change the editor buffer include `buffer.h`.
+
+<div class="example">
+
+<div class="group">
+
+    edit : main.o kbd.o command.o display.o \
+           insert.o search.o files.o utils.o
+            cc -o edit main.o kbd.o command.o display.o \
+                       insert.o search.o files.o utils.o
+
+    main.o : main.c defs.h
+            cc -c main.c
+    kbd.o : kbd.c defs.h command.h
+            cc -c kbd.c
+    command.o : command.c defs.h command.h
+            cc -c command.c
+    display.o : display.c defs.h buffer.h
+            cc -c display.c
+    insert.o : insert.c defs.h buffer.h
+            cc -c insert.c
+    search.o : search.c defs.h buffer.h
+            cc -c search.c
+    files.o : files.c defs.h buffer.h command.h
+            cc -c files.c
+    utils.o : utils.c defs.h
+            cc -c utils.c
+    clean :
+            rm edit main.o kbd.o command.o display.o \
+               insert.o search.o files.o utils.o
+
+</div>
+
+</div>
+
+We split each long line into two lines using backslash/newline; this is like using one long line, but is easier to read. See <a href="/docs/gnu-make/v4-4-1/en/01-guide/07-makefile-contents/#Splitting-Lines" class="xref">Splitting Long Lines</a>. <span id="index-continuation-lines" class="index-entry-id"></span> <span id="index-_005c-_0028backslash_0029_002c-for-continuation-lines" class="index-entry-id"></span> <span id="index-backslash-_0028_005c_0029_002c-for-continuation-lines" class="index-entry-id"></span> <span id="index-quoting-newline_002c-in-makefile" class="index-entry-id"></span> <span id="index-newline_002c-quoting_002c-in-makefile" class="index-entry-id"></span>
+
+To use this makefile to create the executable file called `edit`, type:
+
+<div class="example">
+
+    make
+
+</div>
+
+To use this makefile to delete the executable file and all the object files from the directory, type:
+
+<div class="example">
+
+    make clean
+
+</div>
+
+In the example makefile, the targets include the executable file ‘`edit`’, and the object files ‘`main.o`’ and ‘`kbd.o`’. The prerequisites are files such as ‘`main.c`’ and ‘`defs.h`’. In fact, each ‘`.o`’ file is both a target and a prerequisite. Recipes include ‘`cc -c main.c`’ and ‘`cc -c kbd.c`’.
+
+When a target is a file, it needs to be recompiled or relinked if any of its prerequisites change. In addition, any prerequisites that are themselves automatically generated should be updated first. In this example, `edit` depends on each of the eight object files; the object file `main.o` depends on the source file `main.c` and on the header file `defs.h`.
+
+A recipe may follow each line that contains a target and prerequisites. These recipes say how to update the target file. A tab character (or whatever character is specified by the `.RECIPEPREFIX` variable; see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables" class="pxref">Other Special Variables</a>) must come at the beginning of every line in the recipe to distinguish recipes from other lines in the makefile. (Bear in mind that `make` does not know anything about how the recipes work. It is up to you to supply recipes that will update the target file properly. All `make` does is execute the recipe you have specified when the target file needs to be updated.) <span id="index-recipe" class="index-entry-id"></span>
+
+The target ‘`clean`’ is not a file, but merely the name of an action. Since you normally do not want to carry out the actions in this rule, ‘`clean`’ is not a prerequisite of any other rule. Consequently, `make` never does anything with it unless you tell it specifically. Note that this rule not only is not a prerequisite, it also does not have any prerequisites, so the only purpose of the rule is to run the specified recipe. Targets that do not refer to files but are just actions are called *phony targets*. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets" class="xref">Phony Targets</a>, for information about this kind of target. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Errors" class="xref">Errors in Recipes</a>, to see how to cause `make` to ignore errors from `rm` or any other command. <span id="index-clean-target" class="index-entry-id"></span> <span id="index-rm-_0028shell-command_0029" class="index-entry-id"></span>
+
+------------------------------------------------------------------------
+
+</div>
+
+</div>
