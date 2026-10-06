@@ -1,0 +1,40 @@
+---
+title: "MIT ライセンス"
+licenseSource: cjson-license
+toc:
+  maxLevel: 6
+documentContext: [{"kind":"editorial","html":"<p>以下は上に保持した英語の原通知の非公式参考訳です。ライセンス条件の原文は英語の通知を参照してください。</p>","context":{"anchor":"mit-reference-translation","label":"MITライセンスの日本語参考訳"}}]
+---
+
+<div class="cjson-upstream-document">
+<h1 id="license">ライセンス</h1><pre>Copyright (c) 2009-2017 Dave Gamble and cJSON contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+</pre>
+</div>
+
+<section class="cjson-license-reference-translation" aria-label="MITライセンスの日本語参考訳">
+<h2 id="mit-reference-translation">MITライセンスの日本語参考訳</h2>
+
+<p>Copyright (c) 2009-2017 Dave Gamble and cJSON contributors</p>
+<p>本ソフトウェアおよび関連する文書ファイル（以下「本ソフトウェア」）の複製を取得するすべての人に対し、本ソフトウェアを無制限に扱うことを、無償で許可します。これには、本ソフトウェアの使用、複製、変更、結合、公開、頒布、サブライセンス、および複製の販売の権利が含まれますが、これらに限定されません。また、本ソフトウェアを提供する相手に同じ権利を許可することも認めます。ただし、次の条件に従うものとします。</p>
+<p>上記の著作権表示および本許諾表示を、本ソフトウェアのすべての複製、またはその重要な部分に含めるものとします。</p>
+<p>本ソフトウェアは「現状のまま」で提供され、明示・黙示を問わず、いかなる保証もありません。これには、商品性、特定目的への適合性および権利非侵害の保証が含まれますが、これらに限定されません。著作者または著作権者は、契約、不法行為、その他の根拠のいずれによる場合も、本ソフトウェア、その使用、またはその他の取扱いに起因もしくは関連するいかなる請求、損害、その他の責任についても、一切責任を負いません。</p>
+</section>

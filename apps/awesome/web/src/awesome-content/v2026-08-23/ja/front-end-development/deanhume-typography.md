@@ -1,14 +1,14 @@
 ---
 title: "Awesome Web Typography"
-description: "Web Typographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Webタイポグラフィの記事、ツール、書籍、フォントの組み合わせ、講演を紹介します。フォントの読み込みと性能に関する資料も探せます。"
 licenseSource: "github-deanhume-typography-readme-md"
 ---
 
 # Awesome Web Typography
 
-Web Typographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+書体、文字の大きさや間隔、フォントの読み込みと性能を扱う記事を通じて、Webタイポグラフィを学べます。ツール、書籍、フォントの組み合わせ、講演も紹介します。
 
-## 記事
+## 記事<a id="articles"></a>
 
 - [完全無欠な @font-face 構文は存在しないし、存在すべきでもない](https://calendar.perfplanet.com/2016/no-font-face-bulletproof-syntax/)
 - [フォントのエイリアス設定、または CSS でフォント名を変更する方法](https://www.zachleat.com/web/rename-font/)
@@ -26,7 +26,7 @@ Web Typographyを扱う資料や関連プロジェクトをまとめたAwesome�
 - [Web タイポグラフィの良い例、悪い例、素晴らしい例](https://www.smashingmagazine.com/2014/12/the-good-the-bad-and-the-great-examples-of-web-typography/)
 - [Web フォントの性能：美しく高速に](https://www.igvita.com/2012/09/12/web-fonts-performance-making-pretty-fast/)
 - [フォントスムージング](https://davidwalsh.name/font-smoothing)
-- [Web タイプの現状](https://dev.opera.com/articles/state-of-web-type/)
+- [Webタイポグラフィの現状](https://dev.opera.com/articles/state-of-web-type/)
 - [Web タイポグラフィのダッシュ](https://viljamis.com/dashes/)
 - [タイポグラフィのスケールとリズム](http://lamb.cc/typograph/)
 - [タイポグラフィのスケール](http://retinart.net/typography/typographicscale/)
@@ -45,7 +45,7 @@ Web Typographyを扱う資料や関連プロジェクトをまとめたAwesome�
 - [人気有料フォント93種の代替 Google フォント](https://designtheway.com/most-used-fonts-alternative-google-fonts/)
 - [フォントのエイリアス設定、または CSS でフォント名を変更する方法](https://www.zachleat.com/web/rename-font/)
 
-## Web フォントと Web パフォーマンス
+## Web フォントと Web パフォーマンス<a id="web-fonts--web-performance"></a>
 - [font-display でフォント性能を制御する](https://developers.google.com/web/updates/2016/02/font-display)
 - [超高速なフォント読み込み手法](https://davidwalsh.name/font-loading)
 - [レスポンシブ Web サイトで Web フォントを高速に読み込む](http://bdadam.com/blog/loading-webfonts-with-high-performance.html)
@@ -63,56 +63,47 @@ Web Typographyを扱う資料や関連プロジェクトをまとめたAwesome�
 - [完全無欠な @font-face 構文は存在しないし、存在すべきでもない](http://calendar.perfplanet.com/2016/no-font-face-bulletproof-syntax/)
 - [パフォーマンスと Web タイポグラフィ](https://www.youtube.com/watch?v=emLfXChvVPQ)
 
-## ツール
-- [The State of Web Type - Web 上の文字とタイポグラフィ機能の対応状況を示す最新データ](http://stateofwebtype.com/)
-- [コンテナーの大きさに比例して font-size を保つシンプルなプラグイン](https://github.com/jkroso/flowtype)
+## ツール<a id="tools"></a>
+- [The State of Web Type](http://stateofwebtype.com/) - Web上の書体・タイポグラフィ機能の対応状況データ。原文では最新データと説明
+- [flowtype](https://github.com/jkroso/flowtype) - コンテナーの大きさに比例してfont-sizeを保つシンプルなプラグイン
 - [Type Rendering Mix](http://typerendering.com/)
 - [Web Font Loader](https://developers.google.com/fonts/docs/webfont_loader)
 - [独自フォントによる性能低下を防ぐ](https://css-tricks.com/preventing-the-performance-hit-from-custom-fonts/)
 - [Web フォント最適化](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en)
 - [Font Face とパフォーマンス](http://www.stevesouders.com/blog/2009/10/13/font-face-and-performance/)
-- [Normalize-Opentype.css - 合字やカーニングなどの OpenType 機能を Normalize.css に追加](https://github.com/kennethormandy/normalize-opentype.css)
-- [Type­set.js - クライアント側 JavaScript を使わない HTML 用タイポグラフィプリプロセッサー](https://blot.im/typeset/)
+- [Normalize-Opentype.css](https://github.com/kennethormandy/normalize-opentype.css) - 合字やカーニングなどのOpenType機能をNormalize.cssに追加
+- [Typeset.js](https://blot.im/typeset/) - クライアント側JavaScriptを使わないHTML用タイポグラフィプリプロセッサー
 - [brick.im](https://github.com/alfredxing/brick)
 - [Typebase.css](http://devinhunt.github.io/typebase.css/)
 - [Google WebFonts Helper](https://google-webfonts-helper.herokuapp.com/fonts/aguafina-script?subsets=latin)
-- [FontsWiki - 無料代替フォントや Fonts in Use の参照情報を備えた、デザイナー・開発者向け検索可能フォントカタログ](https://fontswiki.com)
-- [What Font Finder - 画像をアップロードせず、信頼度スコア付きでブラウザー内からフォントを特定](https://whatfontfinder.com/font-identifier/)
+- [FontsWiki](https://fontswiki.com) - 無料の代替フォントやFonts-in-Useの参照情報を備えた、デザイナー・開発者向けの検索可能なフォントカタログ
+- [What Font Finder](https://whatfontfinder.com/font-identifier/) - 画像をアップロードせずにブラウザー内でフォントを特定。信頼度スコアを表示
 - [メールで独自フォントを使う](https://github.com/ladjs/custom-fonts-in-emails)
-- [Typographist — 設定検証を備えたモジュラースケール計算 API](https://github.com/typographist)
-- [Font Face Observer は高速でシンプルな Web フォントローダー](https://fontfaceobserver.com/)
-- [MixFont：現代的なフォントジェネレーター](https://www.mixfont.com/)
+- [Typographist](https://github.com/typographist) - 設定検証を備えたモジュラースケール計算API
+- [Font Face Observer](https://fontfaceobserver.com/) - 原文で高速かつシンプルと説明されているWebフォントローダー
+- [MixFont](https://www.mixfont.com/) - 原文で現代的と説明されているフォントジェネレーター
 - [メールで独自フォントを使う方法](https://github.com/forwardemail/custom-fonts-in-emails)
 
-## 書籍
-- [Web タイポグラフィについて](https://abookapart.com/products/on-web-typography)
-- [タイポグラフィ様式の要素](https://www.amazon.co.uk/Elements-Typographic-Style-Robert-Bringhurst/dp/0881792063)
-- [タイポグラフィ様式の要素 - オンライン版](http://webtypography.net/)
-- [実践タイポグラフィ](https://practicaltypography.com/)
-- [書体の組み合わせ：優れたタイポグラフィの無料ガイド](https://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/)
-- [タイポグラフィハンドブック](http://typographyhandbook.com/)
+## 書籍<a id="books"></a>
+- [On Web Typography](https://abookapart.com/products/on-web-typography)
+- [The Elements of Typographic Style](https://www.amazon.co.uk/Elements-Typographic-Style-Robert-Bringhurst/dp/0881792063)
+- [The Elements of Typographic Style - オンライン版](http://webtypography.net/)
+- [Practical Typography](https://practicaltypography.com/)
+- [Combining Typefaces](https://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/) - 書体の組み合わせを扱う無料のタイポグラフィガイド
+- [The Typography Handbook](http://typographyhandbook.com/)
 
-## フォントの組み合わせ
+## フォントの組み合わせ<a id="font-combinations"></a>
 - [Mixfont](https://www.mixfont.com/)
 - [フォントの組み合わせ](https://www.canva.com/font-combinations/)
 - [Google Web フォントの実例](http://femmebot.github.io/google-type/)
-- [美しい Web 文字](https://beautifulwebtype.com/)
+- [Beautiful Web Type](https://beautifulwebtype.com/)
 - [Google フォントの組み合わせ](https://briangardner.com/google-font-combinations/)
-- [Google フォント上位5種](http://techdissected.com/web-and-computing/design/top-5-google-font-combinations/)
+- [Googleフォント上位5選](http://techdissected.com/web-and-computing/design/top-5-google-font-combinations/)
 - [100日間のフォント](http://100daysoffonts.com/)
-- [タイポグラフィとのセッション](http://www.sessions-with-typography.com)
+- [Sessions with Typography](http://www.sessions-with-typography.com)
 - [HTML と CSS による Google Web フォントのアイデア](http://tobiasahlin.com/typesource/)
 - [Google フォント組み合わせツール](http://www.ourownthing.co.uk/fontpairing/)
 
-## 講演
+## 講演<a id="talks"></a>
 - [Web フォントはロケット科学](https://www.filamentgroup.com/lab/rocket-science.html)
 - [動画スクリーンキャスト - Zach Leatherman と学ぶフォント読み込み](https://css-tricks.com/video-screencasts/152-font-loading-zach-leatherman/)
-
-## 掲載実績
-- この[サイト](https://deanhume.github.io/typography/)は、Google I/O 2015 の [Device Wall](https://twitter.com/gauntface/status/604029887414829057/photo/1) に掲載されました。
-
-![Google I/O Device Wall](https://raw.githubusercontent.com/deanhume/typography/master/images/device-wall-small.jpg)
-
-## ライセンス
-
-[![CC0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)

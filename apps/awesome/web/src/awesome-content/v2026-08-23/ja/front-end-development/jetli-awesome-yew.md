@@ -1,75 +1,58 @@
 ---
 title: "Awesome Yew"
-description: "Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "YewでRustとWebAssemblyのフロントエンドを開発するための資料集です。アプリケーション、テンプレート、コンポーネントライブラリ、フック、ツール、学習資料を収録しています。原リストは、YewをElmとReactに着想を得た、マルチスレッドのフロントエンドアプリを作成するフレームワークとして紹介しています。"
 licenseSource: "github-jetli-awesome-yew-readme-md"
 ---
 
 # Awesome Yew
 
-Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
-
-## 目次
-
-- [公式](#official)
-- [プロジェクト](#projects)
-- [テンプレート](#templates)
-- [クレート](#crates)
-  - [コンポーネントライブラリ](#component-libraries)
-  - [コンポーネント](#components)
-  - [フック](#hooks)
-  - [ユーティリティ](#utils)
-  - [Wasm](#wasm)
-- [ツール](#tooling)
-- [記事](#articles)
-- [書籍](#books)
-- [代替](#alternatives)
-- [関連リスト](#related-lists)
+[Yew](https://github.com/yewstack/yew)でRustとWebAssemblyのフロントエンドを開発するための資料集です。アプリケーション、テンプレート、コンポーネントライブラリ、フック、ツール、学習資料を収録しています。原リストは、YewをElmとReactに着想を得た、マルチスレッドのフロントエンドアプリを作成するフレームワークとして紹介しています。
 
 ## 公式
 
 - [Yew](https://github.com/yewstack/yew) - クライアント Web アプリを構築する Rust / WebAssembly フレームワーク。
-- [ライブデモ](https://yew-todomvc.netlify.com) - todomvc のデモ。
+- [ライブデモ](https://yew-todomvc.netlify.com) - TodoMVCのデモ。
 - [サンプル](https://github.com/yewstack/yew/tree/master/examples) - 公式リポジトリに含まれる小規模なサンプル。
 - [API ドキュメント](https://docs.rs/yew) - docs.rs 上のドキュメント。
 - [Web サイト](https://yew.rs/) - 公式 Web サイト。
 - [チャットルーム](https://discord.gg/VQck8X4) - 活発で、質問するのに適した場所です。
-- [Reddit](https://www.reddit.com/r/yew_web/) - 専用の Subreddit。
+- [Reddit](https://www.reddit.com/r/yew_web/) - Yew専用のサブレディット。
 - [資金面での貢献](https://opencollective.com/yew) - 資金面のコントリビューターになり、コミュニティの維持を支援できます。
-- [Playground](https://play.yew.rs) - Yew のオンライン Playground。
+- [プレイグラウンド](https://play.yew.rs) - Yewのオンライン実行環境。
 
 ## プロジェクト
 
-- [Realworld example](https://github.com/jetli/rust-yew-realworld-example-app) - Rust + Yew + WebAssembly で構築された模範的な実世界アプリ。Yew の最新の `function components` と `hooks` を利用しています。[Tauri](https://github.com/tauri-apps/tauri) によるデスクトップアプリにも対応します。
+- [Realworld example](https://github.com/jetli/rust-yew-realworld-example-app) - Rust、Yew、WebAssemblyで構築された実用的なアプリの例。原リストでYewの最新機能として紹介されている `function components` と `hooks` を利用しています。[Tauri](https://github.com/tauri-apps/tauri) によるデスクトップアプリにも対応します。
 - [webapp.rs](https://github.com/saschagrunert/webapp.rs) - 完全に Rust で書かれ、フロントエンドを Yew で構築した Web アプリケーション。
 - [Rust-Full-Stack](https://github.com/steadylearner/Rust-Full-Stack) - テストしやすく動作する Rust コードと、その解説ブログ記事。
 - [Bucket Questions](https://github.com/hgzimmerman/BucketQuestions) - 気軽なパーティーゲーム向けに、すべて Rust で書かれた Web アプリ。
-- [web-view todomvc desktop app](https://github.com/Extrawurst/rust-webview-todomvc-yew) - WebAssembly にコンパイルされる todomvc に Yew を使い、Electron の代わりに [web-view](https://github.com/Boscop/web-view) で軽量（約 2 MB）なデスクトップアプリとしてバンドルするデモ。[web-view](https://github.com/Boscop/web-view) にも[デモ](https://github.com/Boscop/web-view/tree/master/examples#todo-yew)があります。
+- [web-view todomvc desktop app](https://github.com/Extrawurst/rust-webview-todomvc-yew) - WebAssemblyにコンパイルするTodoMVCアプリにYewを使い、Electron の代わりに [web-view](https://github.com/Boscop/web-view) で軽量（約 2 MB）なデスクトップアプリとしてバンドルするデモ。[web-view](https://github.com/Boscop/web-view) にも[デモ](https://github.com/Boscop/web-view/tree/master/examples#todo-yew)があります。
 - [yew-react-example](https://github.com/hobofan/yew-react-example) - Yew コンポーネント内で React コンポーネントを使う Web アプリの作成方法を示すプロジェクト。
-- [Kirk](https://github.com/stkevintan/Kirk) - Rust WebAssembly 製のブログ。
+- [Kirk](https://github.com/stkevintan/Kirk) - RustとWebAssemblyで作られたブログ。
 - [rust-async-wasm-demo](https://github.com/extraymond/rust-async-wasm-demo) - Web にデプロイできる、Rust と async を学ぶための小規模プロジェクト。
 - [karaoke-rs](https://github.com/tarkah/karaoke-rs) - Rust 製のシンプルなネットワーク対応カラオケプレーヤー。
 - [I Love Hue! (rs)](https://github.com/noc7c9/i-love-hue-rs) - モバイルゲーム I Love Hue を Yew（Rust）で再現。
-- [yew-styles-page](https://github.com/spielrs/yew-styles-page) - Yew 向けフレームワークスタイルの初期プロジェクト。
-- [caniuse.rs](https://github.com/jplatte/caniuse.rs) - Rust の機能検索。
+- [yew-styles-page](https://github.com/spielrs/yew-styles-page) - Yew向けスタイリングフレームワークの初期プロジェクト。
+- [caniuse.rs](https://github.com/jplatte/caniuse.rs) - Rustの言語機能を検索するツール。
 - [Rust electron yew demo](https://github.com/Extrawurst/rust-electron-demo) - Rust ベースの Web アプリ（Yew）を Electron でネイティブアプリ化する例。
 - [covplot](https://github.com/jbowens/covplot) - 世界の COVID-19 データを表示するライブグラフ。
 - [Minesweeper](https://github.com/jgpaiva/minesweeper) - Rust、Yew、WebAssembly で構築されたマインスイーパー。
-- [Freecell](https://github.com/Stigjb/freecell) - Rust と Yew で書かれたペイシェンスゲーム。
+- [Freecell](https://github.com/Stigjb/freecell) - Rust と Yew で書かれた一人遊びのカードゲーム。
 - [Yew-WebRTC-Chat](https://github.com/codec-abc/Yew-WebRTC-Chat) - Yew で作られたシンプルな WebRTC チャット。
 - [Yew Fullstack Boilerplate](https://github.com/lukidoescode/yew-fullstack-boilerplate) - Rust でフルスタックアプリを作成するための、設計方針が明確なボイラープレート。
-- [Chord Quiz](https://github.com/Stigjb/chord-quiz) - Rust/Yew/WebAssembly アプリでコードの聞き分けを練習。
+- [Chord Quiz](https://github.com/Stigjb/chord-quiz) - Rust/Yew/WebAssembly アプリで和音の聞き分けを練習。
 - [RustMart](https://github.com/sheshbabu/rustmart-yew-example) - Rust、Wasm、Yew で書かれたシングルページアプリケーション（SPA）。
 - [DevAndDev](https://github.com/alepez/devand) - 開発者がペアプログラミング相手を探せる Web サイト。Rust 製で、フロントエンドは Yew。
 - [yew-octicons](https://github.com/io12/yew-octicons) - Yew プロジェクトで Octicons を簡単に使うためのインターフェース。
-- [Pipe](https://github.com/pipe-fun/pipe) - タスク管理センターとなる Rust / Wasm クライアント Web アプリ。
+- [Pipe](https://github.com/pipe-fun/pipe) - タスク管理の中心となる Rust / Wasm クライアント Web アプリ。
 - [note-to-yew](https://github.com/oovm/note-to-yew) - マークアップをオンラインで Yew マクロに変換。自身も Yew 製。
-- [ASCII-Hangman](https://github.com/getreu/ascii-hangman) - ASCII アートのご褒美付きで設定可能な子ども向けハングマンゲーム。
+- [ASCII-Hangman](https://github.com/getreu/ascii-hangman) - ASCIIアートのご褒美があり、設定を変更できる子ども向けハングマンゲーム。
 - [dotdotyew](https://github.com/shaunbennett/dotdotyew) - Yew を使った[ドット投票](https://en.wikipedia.org/wiki/Dot-voting)。バックエンド API は Rust 製。
 - [wasm-2048](https://github.com/dev-family/wasm-2048) - Rust と Yew で実装し、Wasm にコンパイルした 2048 ゲーム。
 - [website-wasm](https://github.com/kamiyaa/website-wasm) - Yew/Wasm を通じて Rust で書かれた個人 Web サイト。
 - [KeyPress](https://github.com/rayylee/keypress) - 中国語話者が英語を練習するための Rust WebAssembly Web サイト例。
-- [yew-train-ticket](https://github.com/anthhub/yew-train-ticket) - Yew の最新フックと関数 API を基盤にした Rust WebAssembly [Web アプリ](http://118.190.37.169:8002)の例。コードスタイルは React Function Component に非常によく似ています。
-- [yew-d3-example](https://github.com/ivanschuetz/yew-d3-example) - Yew で d3 チャートを表示する例。
+- [yew-train-ticket](https://github.com/anthhub/yew-train-ticket) - 原リストで最新APIとして紹介されているYewのフックと関数APIを基盤にした Rust WebAssembly [Web アプリ](http://118.190.37.169:8002)の例。コードスタイルはReactの関数コンポーネントによく似ています。
+- [yew-d3-example](https://github.com/ivanschuetz/yew-d3-example) - YewでD3チャートを表示する例。
 - [Oxfeed](https://github.com/sanpii/oxfeed) - Yew フロントエンドを持つ Rust 製フィードリーダー。
 - [Flow.er](https://github.com/LighghtEeloo/flow.er) - Todo リスト機能を統合したノートブックアプリ。Rust、WebAssembly、Yew、Trunk で開発。
 - [Fullstack-Rust](https://github.com/vascokk/fullstack-rust) - Actix-web、Yew、Bulma CSS、Diesel を使ったフルスタック Rust アプリ（Connect5 ゲーム）。
@@ -84,9 +67,9 @@ Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 - [Rquote](https://github.com/Altair-Bueno/rquote) - Rust と WebAssembly で構築され、Animechan API からアニメの引用を取得する Web アプリ。[ライブデモ](https://rquote.vercel.app/)。
 - [yew-ssr-tide](https://github.com/zzy/yew-ssr-tide) - tide と surf を使った Yew のサーバーサイドレンダリング例。Yew の**開発版**が必要です。
 - [yew-ssr-actix-web](https://github.com/zzy/yew-ssr-actix-web) - actix-web と reqwest を使った Yew のサーバーサイドレンダリング例。Yew の**開発版**が必要です。
-- [PixelGuesser](https://github.com/tdooms/pixelguesser) - 画像の内容をできるだけ早く当てる実生活向けパーティーゲーム。
+- [PixelGuesser](https://github.com/tdooms/pixelguesser) - 画像の内容をできるだけ早く当てる、対面で遊ぶパーティーゲーム。
 - [Crabtyper](https://github.com/brancobruyneel/crabtyper) - Rust で書かれたタイピング速度測定 Web アプリ。
-- [We-Come Monorepo](https://github.com/kabinetkmitb/wecome) - wecome KM ITB のモノレポ。[ライブデモ](https://wecome-itb.com/)。
+- [We-Come Monorepo](https://github.com/kabinetkmitb/wecome) - wecome KM ITBのモノレポ。[ライブデモ](https://wecome-itb.com/)。
 - [blog-rs](https://github.com/songday/blog-rs) - フロントエンドとバックエンドをすべて Rust で書いたブログシステム。バックエンドは Warp、フロントエンドは Yew（WASM）。
 - [mb2](https://devctm.com) - Yew クライアントを備えたポーカーサーバー。クライアントを見るには `Demo` ボタン、続いて `Start` をクリックします。
 - [Puzzle Cube](https://github.com/wainwrightmark/puzzle_cube) - Rust と Yew を使ったルービックキューブソルバー。[ライブデモ](https://wainwrightmark.github.io/puzzle_cube/)。
@@ -108,17 +91,17 @@ Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 - [demo_web_zip_wasm](https://github.com/MAE664128/demo_web_zip_wasm) - WebAssembly を使い、ブラウザー内で ZIP アーカイブを作成するシンプルなサンプルプログラム。[ライブデモ](https://mae664128.github.io/demo_web_zip_wasm/)。
 - [RustedLessPass](https://github.com/RustedLessPass/RustedLessPass) - ステートレスなパスワードマネージャー。[Web アプリ](https://rustedlesspass.github.io/)。
 - [windows-terminal-theme-generator](https://github.com/LelouchFR/windows-terminal-theme-generator/) - Windows Terminal テーマの作成を簡単にします。[ライブデモ](https://windows-terminal-theme-generator.netlify.app/)
-- [SandCat](https://github.com/Xu-Mj/sandcat) - 基本的な友人システム、1 対 1 チャット、グループチャット、1 対 1 の音声／ビデオ通話など、IM アプリの基本機能を主に実装。i18n に対応し、現在は中国語と英語を切り替えられます。
+- [SandCat](https://github.com/Xu-Mj/sandcat) - 基本的な友達機能、1 対 1 チャット、グループチャット、1 対 1 の音声／ビデオ通話など、IM アプリの基本機能を主に実装。i18n に対応し、原リストで紹介されている版では、中国語と英語を切り替えられます。
 - [PinePods](https://github.com/madeofpendletonwool/PinePods) - 複数ユーザーに対応し、クライアントが接続する中央データベースを利用する Rust ベースのポッドキャスト管理システム。
 - [0721](https://github.com/langyo/0721) - Rust で書かれた画像ホスティングエンジン。
-- [Hikari](https://github.com/celestia-island/hikari) - あらゆるもののフロントエンド。
+- [Hikari](https://github.com/celestia-island/hikari) - 原リストでは「あらゆるもののフロントエンド」と紹介されています。
 - [simply-view-image-for-python-debugging](https://github.com/elazarcoh/simply-view-image-for-python-debugging?tab=readme-ov-file) - Python のデバッグ時に画像変数の画像を簡単に表示する Visual Studio Code 拡張機能。
 - [Mindsweeper](https://github.com/AlexBuz/mindsweeper) - 原則に基づいて再構成したマインスイーパー。[ライブデモ](https://alexbuz.github.io/mindsweeper/)。
 - [scap-rs](https://github.com/emo-crab/scap-rs) - Rust で実装された National Vulnerability Database（NVD）。[ライブデモ](https://scap.kali-team.cn/)。
 - [Sentry Relay](https://github.com/getsentry/relay) - Sentry SDK と Sentry サーバーの一部機能をプロキシプロセスへ移すサービス。
 - [Syre](https://github.com/syre-data/syre) - 科学データの管理と洞察。
-- [candle-wasm-examples](https://github.com/huggingface/candle) - Candle は、パフォーマンス（GPU 対応を含む）と使いやすさを重視した Rust 向けのミニマルな ML フレームワークです。オンラインデモ：[whisper](https://huggingface.co/spaces/lmz/candle-whisper)、[LLaMA2](https://huggingface.co/spaces/lmz/candle-llama2)、[T5](https://huggingface.co/spaces/radames/Candle-T5-Generation-Wasm)、[yolo](https://huggingface.co/spaces/lmz/candle-yolo)、[Segment
-  Anything](https://huggingface.co/spaces/radames/candle-segment-anything-wasm)をお試しください。
+- [candle-wasm-examples](https://github.com/huggingface/candle) - Candleは、パフォーマンス（GPU対応を含む）と使いやすさを重視したRust向けのミニマルなMLフレームワーク。オンラインデモ：[whisper](https://huggingface.co/spaces/lmz/candle-whisper)、[LLaMA2](https://huggingface.co/spaces/lmz/candle-llama2)、[T5](https://huggingface.co/spaces/radames/Candle-T5-Generation-Wasm)、[yolo](https://huggingface.co/spaces/lmz/candle-yolo)、[Segment
+  Anything](https://huggingface.co/spaces/radames/candle-segment-anything-wasm)。
 - [chipbox](https://github.com/chipnertkj/chipbox) - Rust で書かれたオープンソースのデスクトップ DAW。
 - [Taxy](https://github.com/picoHz/taxy/tree/main) - TCP/HTTP/TLS/WebSocket に対応し、WebUI を内蔵した Rust 製リバースプロキシサーバー。
 - [Proxelar](https://github.com/emanuele-em/proxelar) - ネットワークトラフィックの可視化を目指す、初期段階の Rust ベース Man-in-the-Middle プロキシ。
@@ -126,7 +109,7 @@ Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 - [konnektoren.help](https://github.com/Konnektoren/konnektoren-web-game) - ゲーム化された課題と地図ベースのインターフェースを備えた、ドイツ語文法学習用の対話型 Web アプリ。[Web アプリ](https://konnektoren.help)
 - [layout-viewer](https://prideout.net/layout-viewer) - ズームとパン操作で集積回路のレイアウトを調査。
 - [Google Wasefire](https://github.com/google/wasefire) - 開発者体験を重視した安全なファームウェアフレームワーク。
-- [Apache Iggy](https://github.com/apache/iggy) - レーザー級の速度を持つ超高効率メッセージストリーミング。
+- [Apache Iggy](https://github.com/apache/iggy) - 原リストで「超高効率」「レーザー級の速度」と表現されているメッセージストリーミング。
 
 ## テンプレート
 
@@ -170,13 +153,13 @@ Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 
 - [Yew Form](https://github.com/jfbilodeau/yew_form) - Yew でのフォーム処理を簡素化するコンポーネント。
 - [yew-component-size](https://github.com/AircastDev/yew-component-size) - 親コンポーネントの幅／高さが変わるとイベントを発行する Yew コンポーネント。
-- [yew-virtual-scroller](https://github.com/AircastDev/yew-virtual-scroller) - 仮想スクロール／スクロールウィンドウ化のための Yew コンポーネント。
-- [yew-oauth2](https://github.com/ctron/yew-oauth2/) - 特定の CSS フレームワークに依存しない素の Yew OAuth2/OpenID Connect コンポーネント。
+- [yew-virtual-scroller](https://github.com/AircastDev/yew-virtual-scroller) - 仮想スクロールで、表示範囲に応じたウィンドウ処理を行う Yew コンポーネント。
+- [yew-oauth2](https://github.com/ctron/yew-oauth2/) - 特定のCSSフレームワークに依存しないシンプルなYew OAuth2/OpenID Connect コンポーネント。
 - [yew-scroll-area](https://github.com/MatchaChoco010/yew-scroll-area) - Yew 向けカスタムスクロール領域。
 
 ### フック
 
-- [yew-hooks](https://github.com/jetli/yew-hooks) - [streamich/react-use](https://github.com/streamich/react-use) と [alibaba/hooks](https://github.com/alibaba/hooks) に着想を得た Yew 向けカスタム Hooks ライブラリ。
+- [yew-hooks](https://github.com/jetli/yew-hooks) - [streamich/react-use](https://github.com/streamich/react-use) と [alibaba/hooks](https://github.com/alibaba/hooks) に着想を得た Yew向けカスタムフックライブラリ。
 - [yew-side-effect](https://github.com/futursolo/yew-side-effect) - [react-side-effect](https://github.com/gaearon/react-side-effect) と [react-helmet](https://github.com/nfl/react-helmet) に着想を得た、Yew アプリケーションの副作用を調整するライブラリ。
 - [Bounce](https://github.com/bounce-rs/bounce) - [Redux](https://github.com/reduxjs/redux) と [Recoil](https://github.com/facebookexperimental/Recoil) に着想を得た、Yew 向けの扱いやすい状態管理ライブラリ。
 - [yewv](https://github.com/yewv/yewv) - パフォーマンスと簡潔さを最優先に構築された、非常に高速な Yew 向け状態管理モジュール。
@@ -194,20 +177,20 @@ Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 - [styled-yew](https://github.com/IcyDefiance/styled-yew) - styled-components に似た Yew 向け CSS in Rust。
 - [stylist-rs](https://github.com/futursolo/stylist-rs) - WebAssembly アプリケーション向け CSS-in-Rust スタイリングソリューション。
 - [Yew Interop](https://github.com/Madoshakalaka/yew-interop) - Yew で JavaScript と CSS を非同期に読み込み。
-- [Tailwind RS](https://github.com/oovm/tailwind-rs) - Rust の Tailwind スタイルトレーサー。JIT + AOT インタープリター。
+- [Tailwind RS](https://github.com/oovm/tailwind-rs) - Rust製のTailwindスタイルトレーサー。JIT + AOT インタープリター。
 - [yew-style-in-rs](https://github.com/MatchaChoco010/yew-style-in-rs) - Yew 向け Rust 製スコープ CSS。
 - [yew_icons](https://github.com/finnbear/yew_icons) - Yew アプリへさまざまな SVG アイコン（Feather/Font Awesome/Octicons）を簡単に組み込み。
 - [Yew-Template](https://github.com/INSAgenda/yew-template) - Yew 使用時に HTML と Rust コードを分離するためのクレート。
 - [yew-nested-router](https://github.com/ctron/yew-nested-router) - Yew 0.20 に対応したネスト可能なルーター。
 - [turf](https://github.com/myFavShrimp/turf) - CSS Modules に着想を得た、マクロベースのコンパイル時 SCSS トランスパイル、CSS 圧縮、クラス名一意化ツールチェーン。
-- [browser-panic-hook](https://github.com/ctron/browser-panic-hook) - エンドユーザーに配慮した形で失敗を表示できる、ブラウザー環境向けパニックハンドラー。
+- [browser-panic-hook](https://github.com/ctron/browser-panic-hook) - 利用者に分かりやすい形でエラーを表示できる、ブラウザー環境向けパニックハンドラー。
 - [Rust Floating UI](https://floating-ui.rustforweb.org/) - ツールチップ、ポップオーバー、ドロップダウンなどの「浮動」要素を作成するためのライブラリ。
 
 ### Wasm
 
 - [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen) - WebAssembly モジュールと JavaScript の高水準な連携を支援。
 - [stdweb](https://github.com/koute/stdweb) - Web API の Rust バインディングを提供し、Rust と JavaScript の高度な相互運用を可能にします。
-- [tauri-sys](https://github.com/JonasKruckenberg/tauri-sys) - wasm-bindgen を使うプロジェクト向けの Tauri API 生バインディング。
+- [tauri-sys](https://github.com/JonasKruckenberg/tauri-sys) - wasm-bindgen を使うプロジェクト向けの Tauri APIの低水準バインディング。
 
 ### フレームワーク
 
@@ -215,7 +198,7 @@ Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 
 ## ツール
 
-- [wasm-pack](https://github.com/rustwasm/wasm-pack) - Rust から WebAssembly への定番ワークフローツール。
+- [wasm-pack](https://github.com/rustwasm/wasm-pack) - RustからWebAssemblyへの開発ワークフローを支援するツール。
 - [wasm-pack-action](https://github.com/jetli/wasm-pack-action) - 実行ファイルをダウンロードして `wasm-pack` をインストールし、CI/CD を高速化する GitHub Action。
 - [wasm-bindgen-action](https://github.com/jetli/wasm-bindgen-action) - 実行ファイルをダウンロードして `wasm-bindgen` をインストールし、CI/CD を高速化する GitHub Action。
 - [cargo-web](https://github.com/koute/cargo-web) - クライアントサイド Web 向けの Cargo サブコマンド。
@@ -253,7 +236,7 @@ Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 
 - [The WebAssembly Book](https://rustwasm.github.io/docs/book/) - Web を扱い、.wasm ファイルを生成する方法。
 - [The wasm-bindgen Guide](https://rustwasm.github.io/docs/wasm-bindgen/) - Rust と JavaScript API をバインドする方法。
-- [The wasm-pack Guide](https://rustwasm.github.io/docs/wasm-pack/) - Rust 生成の WebAssembly をビルドし扱う方法。
+- [The wasm-pack Guide](https://rustwasm.github.io/docs/wasm-pack/) - Rustから生成したWebAssemblyをビルドして利用する方法。
 - [Programming WebAssembly with Rust](https://pragprog.com/book/khrust/programming-webassembly-with-rust) - Yew でアプリを作成する章 `Advanced JavaScript Integration with Yew` を収録。
 - [Creative Projects for Rust Programmers](https://www.oreilly.com/library/view/creative-projects-for/9781789346220/) - 第 5 章は `Creating a Client-Side WebAssembly App Using Yew`。
 - [Server-Side WebAssembly](https://www.manning.com/books/server-side-webassembly) - WebAssembly コンポーネントと WebAssembly System Interface（WASI）を使って Web バックエンドを構築する方法。
@@ -273,6 +256,6 @@ Yew チームは他のプロジェクトとのアイデア共有を歓迎して�
 
 ## 関連リスト
 
-- [Awesome Rust and WebAssembly](https://github.com/rustwasm/awesome-rust-and-webassembly) - 優れた Rust・WebAssembly のプロジェクト、ライブラリ、ツール、リソースのリスト。
-- [Awesome WebAssembly](https://github.com/mbasso/awesome-wasm) - WebAssembly エコシステムに関する優れたもののコレクション。
+- [Awesome Rust and WebAssembly](https://github.com/rustwasm/awesome-rust-and-webassembly) - Rust・WebAssemblyのプロジェクト、ライブラリ、ツール、資料のリスト。
+- [Awesome WebAssembly](https://github.com/mbasso/awesome-wasm) - WebAssemblyエコシステムのプロジェクトや資料をまとめたリスト。
 - [Awesome Rust](https://github.com/rust-unofficial/awesome-rust) - Rust のコードとリソースを厳選したリスト。

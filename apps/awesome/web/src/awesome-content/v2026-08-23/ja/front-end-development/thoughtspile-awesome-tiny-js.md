@@ -1,238 +1,226 @@
 ---
 title: "Awesome Tiny JS"
-description: "Tiny JSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "小さなクライアント側JavaScriptライブラリを、記録時点のバンドルサイズ、収録条件、機能、利用上の制約とともに紹介します。"
 licenseSource: "github-thoughtspile-awesome-tiny-js-readme-md"
 ---
 
 # Awesome Tiny JS
 
-Tiny JSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+UI、状態管理、ルーティング、APIリクエスト、国際化、日付、ユーティリティ、検証、ID、色、ジェスチャー、検索に使う、小さなクライアント側JavaScriptライブラリを紹介します。バンドルサイズを比較し、収録条件と利用上の制約も示します。
 
-## 目次
+固定リストの収録条件は次のとおりです。
 
-- [UI Frameworks](#ui-frameworks)
-- [Event Emitters](#event-emitters)
-- [State Managers](#state-managers)
-  - [Signals](#signals)
-  - [Reactive Programming](#reactive-programming)
-- [Routers and URL Utils](#routers-and-url-utils)
-- [API Layer](#api-layer)
-- [I18N](#i18n)
-- [Dates and Time](#dates-and-time)
-- [Generic Utilities](#generic-utilities)
-- [Validation](#validation)
-- [Unique ID Generation](#unique-id-generation)
-- [Colors](#colors)
-- [Touch Gestures](#touch-gestures)
-- [Text Search](#text-search)
+- 特記がなければ、すべての依存関係を含めてコードを縮小し、gzip圧縮したサイズが、おおむね2 kB未満。
+- 多機能なライブラリは、有用な機能の部分集合がおおむね2 kB未満。
+- クライアント側で役立つもの。固定リストでは、Node専用ライブラリの参加基準は未定。
+- 二次ライブラリは、React・Vue・Angular・Svelte向けのみ。
+- コミュニティによる確認がある程度あるツールを対象とするため、GitHubスター100件以上、または週500件以上のnpmインストール。
+- JavaScriptを含まず、CSSや型だけで構成されるライブラリは対象外。
+
+以下のサイズは、固定した上流コミットのバッジに記録された値です。特記がなければ依存関係を含めてコードを縮小し、gzip圧縮したサイズで、記録時点の測定値を示します。
 
 ## UI フレームワーク
 
-UI frameworks (libraries?) provide declarative templates, event bindings, and observable state to update the view. I've been generous and expanded the size limit for this category to 4.5 kB (if you're boring, count them as 2 libraries), but also increased the star limit to 2K. 
+UIフレームワークは、宣言的なテンプレート、イベントとの連携、監視可能な状態によって表示を更新します。この分類では、固定リストのサイズ上限を4.5 kB、GitHubスターの下限を2,000件に引き上げています。
 
-- [preact](https://github.com/preactjs/preact) - React-like API (pre-hooks). Cool ecosystem of similarly tiny tools and components. Highly recommended. <img align="top" height="24" src="./img/preact.svg">
+- [preact](https://github.com/preactjs/preact) - React風のAPI（フック導入前の方式）と、同様に小さなツールやコンポーネントのエコシステム。4.3 kB。
 
-The following libraries are small and cool, but note they're about [500x less popular than preact.](https://npmtrends.com/preact-vs-hyperapp-vs-redom) Kudos for deconstrucing the very essence of a "framework":
+固定リストでは、次の小さなライブラリの人気を[preactの約500分の1](https://npmtrends.com/preact-vs-hyperapp-vs-redom)と説明しています。
 
-- [hyperapp](https://github.com/jorgebucaran/hyperapp) - vDOM framework with pure JS syntax and immutable state, <img align="top" height="24" src="./img/hyperapp.svg">
-- [redom](https://github.com/redom/redom) - Hyperapp-style templates with _imperative_ event listeners and updates, <img align="top" height="24" src="./img/redom.svg">
+- [hyperapp](https://github.com/jorgebucaran/hyperapp) - 純粋なJS構文と不変の状態を使う仮想DOMフレームワーク。1.73 kB。
+- [redom](https://github.com/redom/redom) - Hyperapp風のテンプレートと、命令的なイベントリスナー・更新処理。2.7 kB。
 
-Now, for the [openly experimental](https://npmtrends.com/@arrow-js/core-vs-fre-vs-hyperapp-vs-redom-vs-superfine-vs-vanjs-core) UI libraries:
+固定リストでは、次のライブラリを[実験的なUIライブラリ](https://npmtrends.com/@arrow-js/core-vs-fre-vs-hyperapp-vs-redom-vs-superfine-vs-vanjs-core)として扱っています。
 
-- [fre](https://github.com/frejs/fre) - React-like library with hooks and concurrency, <img align="top" height="24" src="./img/fre.svg">
-- [van](https://github.com/vanjs-org/van) - vDOM-based framework optimized for no-build setups, <img align="top" height="24" src="./img/vanjs-core.svg">
-- [superfine](https://github.com/jorgebucaran/superfine) - Hyperapp with state & effect hooks removed, <img align="top" height="24" src="./img/superfine.svg">
-- [arrowjs](https://github.com/justin-schroeder/arrow-js) - Tagged templates + reactive data, <img align="top" height="24" src="./img/arrow-jscore.svg">
+- [fre](https://github.com/frejs/fre) - フックと並行処理を備えるReact風ライブラリ。2.23 kB。
+- [van](https://github.com/vanjs-org/van) - ビルド不要の構成に最適化した仮想DOMフレームワーク。1.14 kB。
+- [superfine](https://github.com/jorgebucaran/superfine) - 状態フックと副作用フックを取り除いたHyperapp。1.14 kB。
+- [arrowjs](https://github.com/justin-schroeder/arrow-js) - タグ付きテンプレートとリアクティブなデータ。3.03 kB。
 
-And if being declarative is not your thing:
+命令的なDOM操作に使うライブラリです。
 
-- [umbrella](https://github.com/franciscop/umbrella) - jQuery-style DOM manipulation library, <img align="top" height="24" src="./img/umbrellajs.svg">
+- [umbrella](https://github.com/franciscop/umbrella) - jQuery風のDOM操作ライブラリ。2.71 kB。
 
 ## イベントエミッター
 
-Event emitter pattern is fairly easy to implement yourself, but why bother when you have these cool tools? With an arms race to build the smallest one, the limit is 0.5 kB.
+イベントエミッターは、イベントの発行と購読を提供します。この分類の記録上のサイズ上限は0.5 kBです。
 
-- [mitt](https://github.com/developit/mitt) - Plain event emitter that I use on most projects, <img align="top" height="24" src="./img/mitt.svg">
-- [nanoevents](https://github.com/ai/nanoevents) - Nicer unsubscribe API, but no `*` event, <img align="top" height="24" src="./img/nanoevents.svg">
-- [onfire.js](https://github.com/hustcc/onfire.js) - Also has `.once` method, <img align="top" height="24" src="./img/onfirejs.svg">
+- [mitt](https://github.com/developit/mitt) - シンプルなイベントエミッター。193 B。
+- [nanoevents](https://github.com/ai/nanoevents) - 購読解除APIを備えるが、`*`イベントには非対応。189 B。
+- [onfire.js](https://github.com/hustcc/onfire.js) - `.once`メソッドも提供。476 B。
 
 ## 状態管理
 
-State managers combine observable state with actions and framework bindings, intended for app-wide state.
+状態管理ライブラリは、監視可能な状態、アクション、フレームワークとの連携を組み合わせ、アプリ全体の状態を扱います。
 
-- [zustand](https://github.com/pmndrs/zustand) - Simple stores with pleasant actions and selectors. Vanilla <img align="top" height="24" src="./img/zustandvanilla.svg">, React <img align="top" height="24" src="./img/zustand.svg">
-- [nanostores](https://github.com/nanostores/nanostores) - Modular store with good tree-shaking support, <img align="top" height="24" src="./img/nanostores.svg"> vanilla, + React <img align="top" height="24" src="./img/nanostoresreact.svg"> extra. Supports all the top frameworks.
-- [exome](https://github.com/marcisbee/exome) - Atomic stores with lots of framework connectors, <img align="top" height="24" src="./img/exome.svg"> + React <img align="top" height="24" src="./img/exomereact.svg"> extra. Supports all the top frameworks.
-- [storeon](https://github.com/storeon/storeon) - Minimal redux-styled store with lots of framework connectors, <img align="top" height="24" src="./img/storeon.svg">. React extra <img align="top" height="24" src="./img/storeonreact.svg"> + Vue, Svelte, Angular.
-- [unistore](https://github.com/developit/unistore) - Centralized store with actions, <img align="top" height="24" src="./img/unistore.svg"> + React <img align="top" height="24" src="./img/unistorereact.svg">
-- [teaful](https://github.com/teafuljs/teaful) - Store with useState-like API, <img align="top" height="24" src="./img/teaful.svg">, including React / preact connector.
+- [zustand](https://github.com/pmndrs/zustand) - アクションとセレクターを備えるストア。フレームワーク非依存版は255 B、React版は375 B。
+- [nanostores](https://github.com/nanostores/nanostores) - ツリーシェイキング対応のモジュール式ストア。フレームワーク非依存版は803 B、React連携には273 Bを追加。固定リストでは主要なフレームワークすべてに対応すると説明。
+- [exome](https://github.com/marcisbee/exome) - フレームワークとの連携機能を備えるアトミックなストア。ストアは890 B、React連携には257 Bを追加。固定リストでは主要なフレームワークすべてに対応すると説明。
+- [storeon](https://github.com/storeon/storeon) - フレームワークとの連携機能を備える最小構成のRedux風ストア。276 B。React連携には299 Bを追加し、Vue・Svelte・Angularとの連携も提供。
+- [unistore](https://github.com/developit/unistore) - アクションを備える集中型ストア。326 Bに加え、React連携は1.01 kB。
+- [teaful](https://github.com/teafuljs/teaful) - useState風APIのストア。React／preact連携を含めて1.01 kB。
 
 ### シグナル
 
-A signal-styled state manager provides observable values (aka _signals_), derived values and effects.
+シグナル方式の状態管理は、監視可能な値であるシグナル、派生値、副作用を提供します。
 
-- [@preact/signals](https://github.com/preactjs/signals) - The OG signals from preact <img align="top" height="24" src="./img/preactsignals-core.svg"> core, <img align="top" height="24" src="./img/preactsignals-react.svg"> with react integration.
-- [usignal](https://github.com/WebReflection/usignal) - A smaller signal implementation, <img align="top" height="24" src="./img/usignal.svg">
-- [hyperactiv](https://github.com/elbywan/hyperactiv) - 4 functions to make objects observable and listen to changes, <img align="top" height="24" src="./img/hyperactiv.svg">
-- [flimsy](https://github.com/fabiospampinato/flimsy) - Signals from Solid (it _almost_ fit into UI frameworks category itself). Author warning: _it's probably buggy._ <img align="top" height="24" src="./img/flimsy.svg">
+- [@preact/signals](https://github.com/preactjs/signals) - preactのシグナル。コアは1.45 kB、React連携込みでは2.22 kB。
+- [usignal](https://github.com/WebReflection/usignal) - 小さなシグナル実装。963 B。
+- [hyperactiv](https://github.com/elbywan/hyperactiv) - オブジェクトを監視可能にして、変更を購読する4つの関数。1.25 kB。
+- [flimsy](https://github.com/fabiospampinato/flimsy) - Solid由来のシグナル。Solid本体もUIフレームワーク分類の条件にほぼ収まると記載。作者は「おそらくバグがある」と警告。1.02 kB。
 
-Honorable mention: [oby](https://github.com/vobyjs/oby) _could_ make it _if_ it had tree-shaking, but otherwise is around 7 kB.
+補足として[oby](https://github.com/vobyjs/oby)も挙げられています。ツリーシェイキングに対応していれば収録条件を満たせる可能性がありますが、未対応では約7 kBです。
 
 ### リアクティブプログラミング
 
-Another well-known state management approach is reactive programmning — operating on event streams, applying filters and transforms to end up with an observable value. Think RxJS, but tiny:
+リアクティブプログラミングも状態管理の方式の一つです。イベントストリームにフィルターや変換を適用して、監視可能な値を得ます。RxJSに似た方式を小さなライブラリで利用できます。
 
-- [flyd](https://github.com/paldepind/flyd) - Rx-styled event streams, <img align="top" height="24" src="./img/flyd.svg">
-- [callbag-basics](https://github.com/staltz/callbag-basics) - Rx-style event streams, <img align="top" height="24" src="./img/callbag-basics.svg">
+- [flyd](https://github.com/paldepind/flyd) - Rx風のイベントストリーム。2.28 kB。
+- [callbag-basics](https://github.com/staltz/callbag-basics) - Rx風のイベントストリーム。2.18 kB。
 
 ## ルーターと URL ユーティリティ
 
-Do stuff on URL / history changes, with path matching and parsing:
+URLや履歴の変更に応じて動作し、パスの照合と解析を行うライブラリです。
 
-- [wouter](https://github.com/molefrog/wouter) - Declarative router for React / preact, <img align="top" height="24" src="./img/wouter.svg">, also available as a standalone hook: <img align="top" height="24" src="./img/wouteruse-browser-location.svg">
-- [@nanostores/router](https://github.com/nanostores/router) - Routes as a nanostores store (framework-agnostic), <img align="top" height="24" src="./img/nanostoresrouter.svg">
-- [navaid](https://github.com/lukeed/navaid) - History-based observable router, <img align="top" height="24" src="./img/navaid.svg">
+- [wouter](https://github.com/molefrog/wouter) - React／preact向け宣言的ルーター。2.13 kB。単独フックとしても利用でき、その場合は562 B。
+- [@nanostores/router](https://github.com/nanostores/router) - ルートをnanostoresのストアとして扱う、フレームワーク非依存の実装。1.4 kB。
+- [navaid](https://github.com/lukeed/navaid) - 履歴に基づく、監視可能なルーター。934 B。
 
-Just want to parse or match URL paths without observing them? Here you go:
+変更を監視せず、URLパスの解析と照合だけを行うライブラリです。
 
-- [matchit](https://github.com/lukeed/matchit) - Route parser and matcher in <img align="top" height="24" src="./img/matchit.svg">
-- [regexparam](https://github.com/lukeed/regexparam) - Convert path to regexp in <img align="top" height="24" src="./img/regexparam.svg">
-- [qss](https://github.com/lukeed/qss) - Parse querystrings in <img align="top" height="24" src="./img/qss.svg">. Not sure you need it, [URL API](https://developer.mozilla.org/en-US/docs/Web/API/URL) support is good. 
+- [matchit](https://github.com/lukeed/matchit) - ルートの解析と照合。662 B。
+- [regexparam](https://github.com/lukeed/regexparam) - パスを正規表現へ変換。408 B。
+- [qss](https://github.com/lukeed/qss) - クエリ文字列の解析。318 B。固定リストでは、組み込みの[URL API](https://developer.mozilla.org/en-US/docs/Web/API/URL)も対応環境が整った選択肢として紹介。
 
 ## API レイヤー
 
-`fetch` API has some boilerplate associated with it: serialize & parse data, reject on non-200 response, etc. These tiny packages handle it for you:
+データのシリアライズ・解析や200以外の応答の拒否など、`fetch`で必要になる処理をまとめるパッケージです。
 
-- [redaxios](https://github.com/developit/redaxios) - Drop-in axios replacement for modern browsers, <img align="top" height="24" src="./img/redaxios.svg">
-- [wretch](https://github.com/elbywan/wretch) - Chainable API with error processing and lots of extra plugins, <img align="top" height="24" src="./img/wretch.svg">
-- [gretchen](https://github.com/truework/gretchen) - Chainable API with type-safe errors, <img align="top" height="24" src="./img/gretchen.svg">
+- [redaxios](https://github.com/developit/redaxios) - 現代的なブラウザーでaxiosの代わりにそのまま使える実装。925 B。
+- [wretch](https://github.com/elbywan/wretch) - メソッドを連結できるAPI、エラー処理、追加プラグイン。2 kB。
+- [gretchen](https://github.com/truework/gretchen) - メソッドを連結できるAPIと、型安全なエラー。2.15 kB。
 
-If for some reason you still need a fetch polyfill, try this one:
+fetchのポリフィルが必要な環境向けです。
 
-- [unfetch](https://github.com/developit/unfetch) - Loose fetch polyfill, <img align="top" height="24" src="./img/unfetch.svg">
+- [unfetch](https://github.com/developit/unfetch) - fetchの厳密ではないポリフィル。471 B。
 
-## I18N
+## 国際化 <a id="i18n"></a>
 
-A map of strings might seem enough to translate an app, but these tools also handle interpolation and some extra goodies:
+翻訳文字列の対応表に加え、文字列への値の埋め込みや関連機能を提供する国際化ツールです。
 
-- [@nanostores/i18n](https://github.com/nanostores/i18n) - Detect locale, load dictionaries, format dates / numbers, <img align="top" height="24" src="./img/nanostoresin.svg"> including nanostores.
-- [eo-locale](https://github.com/ibitcy/eo-locale) - Interpolation and dates / numbers, <img align="top" height="24" src="./img/eo-localecore.svg">, or <img align="top" height="24" src="./img/eo-localereact.svg"> with react bindings.
-- [rosetta](https://github.com/lukeed/rosetta) - Bare-bones template strings (`{{hello}}, {{username}}`) and custom functions for everyting else, <img align="top" height="24" src="./img/rosetta.svg">
-- [lingui](https://github.com/lingui/js-lingui) - Small core with template strings, <img align="top" height="24" src="./img/linguicore.svg">
+- [@nanostores/i18n](https://github.com/nanostores/i18n) - ロケール検出、辞書の読み込み、日付・数値の書式設定。nanostores込みで1.96 kB。
+- [eo-locale](https://github.com/ibitcy/eo-locale) - 文字列への値の埋め込みと日付・数値の処理。1.4 kB、React連携込みでは2.01 kB。
+- [rosetta](https://github.com/lukeed/rosetta) - 基本的なテンプレート文字列（`{{hello}}, {{username}}`）と、それ以外の処理用のカスタム関数。314 B。
+- [lingui](https://github.com/lingui/js-lingui) - テンプレート文字列を備える小さなコア。2.91 kB。
 
 ## 日付と時刻
 
-Date and time manipulation in pure JS is verbose. Luckily, two of the top date libraries have sensible size:
+小さなバンドルや必要な部分だけの利用で、日付と時刻を操作できるライブラリです。
 
-- [date-fns](https://github.com/date-fns/date-fns/) - Not tiny as a whole, but [most functions](https://bundlephobia.com/package/date-fns) are under 1 kB each (format and parse are quite heavy).
-- [dayjs](https://github.com/iamkun/dayjs) - _Almost_ moment.js-compatible API, covers most use cases, <img align="top" height="24" src="./img/dayjsesm.svg">
+- [date-fns](https://github.com/date-fns/date-fns/) - 全体は小さくないが、[大半の関数](https://bundlephobia.com/package/date-fns)はそれぞれ1 kB未満。formatとparseは比較的大きい。
+- [dayjs](https://github.com/iamkun/dayjs) - moment.jsとほぼ互換のAPIで、大半の用途に対応。3.06 kB。
 
-And some more packages that only do formatting:
+書式設定を中心とするパッケージです。
 
-- [tinytime](https://github.com/aweary/tinytime) - Simple date / time formatter: `{h}:{mm} -> 9:33`, <img align="top" height="24" src="./img/tinytime.svg">
-- [tinydate](https://github.com/lukeed/tinydate) - Date / time formatter, only supports padded numeric output (`September -> 09`), <img align="top" height="24" src="./img/tinydate.svg">
-- [time-stamp](https://github.com/jonschlinkert/time-stamp) - More of the same, <img align="top" height="24" src="./img/time-stamp.svg">
-- [ms](https://github.com/vercel/ms) - Parse & format ms durations, e.g. `"1m" <-> 60000`, <img align="top" height="24" src="./img/ms.svg">
-- [timeago.js](https://github.com/hustcc/timeago.js) - Format dates into stuff like _X minutes ago_ or _in X hours,_ <img align="top" height="24" src="./img/timeagojs.svg">
-- [fromnow](https://github.com/lukeed/fromnow) - More of the same, <img align="top" height="24" src="./img/fromnow.svg">
+- [tinytime](https://github.com/aweary/tinytime) - シンプルな日付・時刻の書式設定。`{h}:{mm} -> 9:33`。854 B。
+- [tinydate](https://github.com/lukeed/tinydate) - 日付・時刻の書式設定。ゼロ埋めした数値出力のみ対応（`September -> 09`）。360 B。
+- [time-stamp](https://github.com/jonschlinkert/time-stamp) - 日付・時刻の書式設定。412 B。
+- [ms](https://github.com/vercel/ms) - ミリ秒単位の期間の解析と書式設定。例：`"1m" <-> 60000`。696 B。
+- [timeago.js](https://github.com/hustcc/timeago.js) - 「X分前」「X時間後」のような相対的な日付表現へ変換。993 B。
+- [fromnow](https://github.com/lukeed/fromnow) - 相対的な日付・時刻の書式設定。361 B。
 
-Note that the built-in [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) has decent support.
+固定リストでは、組み込みの[`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)も、対応環境が整った選択肢として紹介しています。
 
 ## 汎用ユーティリティ
 
-Something you'd find in lodash or ramda, but smaller. Most are pretty similar and very small, with minor differences in package structure (single / package-per-helper) and tree shaking vs direct helper import.
+lodashやramdaにあるような機能を、小さなライブラリで提供します。多くは似た機能でサイズも小さく、パッケージ構成（単一パッケージか、補助関数ごとのパッケージか）や、ツリーシェイキングと補助関数の直接インポートに違いがあります。
 
-- [remeda](https://github.com/remeda/remeda) - 90 tree-shakable helpers [(list).](https://bundlephobia.com/package/remeda)
-- [rambda](https://github.com/selfrefactor/rambda) - 187 tree-shakable helpers [(list).](https://bundlephobia.com/package/rambda)
-- [just](https://github.com/angus-c/just) - 82 helpers in separate packages [(list).](https://anguscroll.com/just/)
-- [@fxts/core](https://github.com/marpple/FxTS) - 96 tree-shakable helpers. Lazy evaluation support.
+- [remeda](https://github.com/remeda/remeda) - ツリーシェイキング可能な90個の補助関数（[一覧](https://bundlephobia.com/package/remeda)）。
+- [rambda](https://github.com/selfrefactor/rambda) - ツリーシェイキング可能な187個の補助関数（[一覧](https://bundlephobia.com/package/rambda)）。
+- [just](https://github.com/angus-c/just) - 別々のパッケージに分かれた82個の補助関数（[一覧](https://anguscroll.com/just/)）。
+- [@fxts/core](https://github.com/marpple/FxTS) - ツリーシェイキング可能な96個の補助関数。遅延評価にも対応。
 
-Honorable mention: [underscore,](https://github.com/jashkenas/underscore) contains many sub-1 kB helpers. It does not tree-shake as well as the libraries above due to codebase structure.
+補足として[underscore](https://github.com/jashkenas/underscore)も挙げられており、1 kB未満の補助関数を多数含みます。ただしコードの構成により、上記ライブラリほどツリーシェイキングが効きません。
 
-Note: lodash itself is not tree-shakable, but has made many attempts at modulaity with `lodash.method` packages, imports from `lodash/method`, and `lodash-es`, none of which work well in practice.
+固定リストでは、lodash自体はツリーシェイキング非対応としています。`lodash.method`パッケージ、`lodash/method`からのインポート、`lodash-es`による分割の試みも、実用上うまく機能しないと説明しています。
 
-Also note that much of the original lodash functionality comes built-in with modern ES. Prefer native versions over libraries as your browser target allows.
+固定リストでは、元のlodashの機能の多くは当時のESに組み込まれていると説明し、対象ブラウザーが対応していれば組み込みの同等機能を優先するよう勧めています。
 
 ## バリデーション
 
-To check if an object matches an expected schema, you'd often use zod, yup, joi or ajv. But 90% of the time you can get what you need in under 2 kB. _Note:_ I compare a base validation subset (core + object / array + string / number / boolean) under tree-shaking to avoid punishing libs that have more features.
+zod、yup、joi、ajvなどの代わりに、オブジェクトがスキーマに合うかを検証するライブラリです。固定リストでは、2 kB未満のバンドルで需要の90%を満たせると見積もっています。比較対象はツリーシェイキング後の基本部分（コア、オブジェクト／配列、文字列／数値／真偽値の検証）で、機能の多いライブラリも同じ範囲で比較しています。
 
-- [v8n](https://github.com/imbrn/v8n) - zod-style API with fine-grained checks: `v8n().string().minLength(5).first("H").last("o")`. No tree shaking, <img align="top" height="24" src="./img/vn.svg">
-- [banditypes](https://github.com/thoughtspile/banditypes) - The smallest validation library: <img align="top" height="24" src="./img/banditypes.svg">
-- [superstruct](https://github.com/ianstormtaylor/superstruct) - The most popular modular validation library with good tree-shaking, <img align="top" height="24" src="./img/superstruct.svg">
-- [valibot](https://github.com/fabian-hiller/valibot) - Another modular validation library, <img align="top" height="24" src="./img/valibot.svg">
-- [deep-waters](https://github.com/antonioru/deep-waters) - Composable functional validators, <img align="top" height="24" src="./img/deep-waterscompose-deep-watershasShape-deep-watersarrayOf-deep-watersisString-deep-watersisNumber-deep-watersisBoolean.svg">.
+- [v8n](https://github.com/imbrn/v8n) - zod風APIによる細かな検証：`v8n().string().minLength(5).first("H").last("o")`。ツリーシェイキング非対応。2.17 kB。
+- [banditypes](https://github.com/thoughtspile/banditypes) - 小さな検証ライブラリ。289 B。
+- [superstruct](https://github.com/ianstormtaylor/superstruct) - ツリーシェイキング対応のモジュール式検証ライブラリ。1.51 kB。
+- [valibot](https://github.com/fabian-hiller/valibot) - モジュール式検証ライブラリ。1.16 kB。
+- [deep-waters](https://github.com/antonioru/deep-waters) - 組み合わせ可能な関数型バリデーター。617 B。
 
 ## 一意 ID 生成
 
-Unique ID generation does not take a lot of code, but it's not someting I'd want to write myself. Limit is 500 bytes. Also note that the [native `crypto.randomUUID`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID) has [OK support.](https://caniuse.com/mdn-api_crypto_randomuuid)
+一意ID生成の記録上のサイズ上限は500バイトです。組み込みの[`crypto.randomUUID`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)と、その[ブラウザー対応表](https://caniuse.com/mdn-api_crypto_randomuuid)も紹介しています。
 
-- [@lukeed/uuid](https://github.com/lukeed/uuid) - Real UUIDs, <img align="top" height="24" src="./img/lukeeduuid.svg">
-- [nanoid](https://github.com/ai/nanoid) - Random IDs with larger alphabet, <img align="top" height="24" src="./img/nanoid.svg">
-- [uid](https://github.com/lukeed/uid) - More of the same, <img align="top" height="24" src="./img/uid.svg">
-- [hexoid](https://github.com/lukeed/hexoid) - Hexadecimal IDs, <img align="top" height="24" src="./img/hexoid.svg">
+- [@lukeed/uuid](https://github.com/lukeed/uuid) - UUIDの生成。243 B。
+- [nanoid](https://github.com/ai/nanoid) - より多くの種類の文字を使うランダムID。207 B。
+- [uid](https://github.com/lukeed/uid) - ランダムID生成。186 B。
+- [hexoid](https://github.com/lukeed/hexoid) - 16進数のID。204 B。
 
 ## 色
 
-Color manipulation is rare in pure UI development, but very helpful for data visualization, and uses [freaky math.](https://en.wikipedia.org/wiki/HSL_and_HSV#Color_conversion_formulae) Don't fry your brain, take these:
+UIやデータ可視化に必要な色の操作や、[色空間の変換](https://en.wikipedia.org/wiki/HSL_and_HSV#Color_conversion_formulae)を支援するライブラリです。
 
-- [colord](https://github.com/omgovich/colord) - Manipulate colors and convert between spaces, <img align="top" height="24" src="./img/colord.svg">. Extra features come as plugins, 150b to 1.5 kB each.
-- [colr](https://github.com/stayradiated/colr) - More of the same, <img align="top" height="24" src="./img/colr.svg" >
-- [polychrome](https://github.com/cdonohue/polychrome) - More of the same, <img align="top" height="24" src="./img/polychrome.svg">
-- [randomcolor](https://github.com/davidmerfield/randomColor) - Attractive random colors with configuration. <img align="top" height="24" src="./img/randomcolor.svg">
+- [colord](https://github.com/omgovich/colord) - 色の操作と色空間の変換。1.92 kB。追加機能はプラグインで、それぞれ150b〜1.5 kB。
+- [colr](https://github.com/stayradiated/colr) - 色の操作と変換。1.9 kB。
+- [polychrome](https://github.com/cdonohue/polychrome) - 色の操作と変換。2.1 kB。
+- [randomcolor](https://github.com/davidmerfield/randomColor) - 設定可能なランダム色の生成。2.14 kB。
 
 ## タッチジェスチャー
 
-Touch gestures like swipe, drag, pinch or doubletap are a staple of mobile UX, but recognizing a series of touchmove / pointer events as a gesture is tricky, and testing is painful. Here are two libraries that do the heavy lifting for you:
+一連のtouchmoveやポインターイベントから、スワイプ、ドラッグ、ピンチ、ダブルタップなどのモバイルジェスチャーを認識するライブラリです。
 
-- [alloyfinger](https://github.com/AlloyTeam/AlloyFinger) - Pan, swipe, tap, doubletap, longpress, _and_ pinch / rotate. My personal favorite. <img align="top" height="24" src="./img/alloyfinger.svg">.
-- [tinygesture](https://github.com/sciactive/tinygesture) - Configurable pan, swipe, tap, doubletap, longpress. <img align="top" height="24" src="./img/tinygesture.svg">.
+- [alloyfinger](https://github.com/AlloyTeam/AlloyFinger) - パン、スワイプ、タップ、ダブルタップ、長押しに加え、ピンチ・回転にも対応。1.89 kB。
+- [tinygesture](https://github.com/sciactive/tinygesture) - 設定可能なパン、スワイプ、タップ、ダブルタップ、長押し。2.4 kB。
 
-Even if you want to detect gestures yourself, juggling mouse, touch and pointer events is hard enough, and browser inconsistencies don't help. Here are two more libraries to assist with that:
+ジェスチャー認識を実装する際に、ブラウザーごとに異なるマウス、タッチ、ポインターイベントを扱うためのライブラリです。
 
-- [pointer-tracker](https://github.com/GoogleChromeLabs/pointer-tracker) - Unified interface for mouse, touch and pointer events, <img align="top" height="24" src="./img/pointer-tracker.svg">
-- [detect-it](https://github.com/rafgraph/detect-it) - Detect present and primary input method (touch / mouse) and supported events, <img align="top" height="24" src="./img/detect-it.svg">
+- [pointer-tracker](https://github.com/GoogleChromeLabs/pointer-tracker) - マウス、タッチ、ポインターイベントを統一したインターフェース。1.09 kB。
+- [detect-it](https://github.com/rafgraph/detect-it) - 利用可能な入力方法と主な入力方法（タッチ／マウス）、対応イベントの検出。506 B。
 
-Honorable mentions: [any-touch](https://github.com/any86/any-touch) attempts a modular approach to gesture detection, but the core is around 2 kB without any gesture recognizers. [rc-gesture,](https://github.com/react-component/gesture) used in ant design system, could be the only react component on the list, but babel-runtime / corejs polyfills hard-wired into the build push the ~2.5 kB size to over 10 kB.
+補足として、[any-touch](https://github.com/any86/any-touch)はジェスチャー認識をモジュール化していますが、認識器を含まないコアだけで約2 kBです。Ant Designで使われる[rc-gesture](https://github.com/react-component/gesture)は、このリストで唯一のReactコンポーネントになり得るものの、ビルドに固定で含まれるbabel-runtime／corejsのポリフィルにより、約2.5 kBのサイズが10 kB超になります。
 
 ## テキスト検索
 
-Text search is important for client-side filtering and autosuggests. Naive `option.includes(search)` has no sensible order on the results, and ignoring word boundaries gives unexpected matches like _spa -> newSPAper._ First, here are some libraries that prioritize word matches:
+クライアント側の絞り込みや入力候補の提示に使うテキスト検索です。単純な`option.includes(search)`では結果に適切な順序がなく、単語の境界を無視するとspa -> newSPAperのような意図しない一致が起きます。まず、単語単位の一致を優先するライブラリを紹介します。
 
-- [js-search](https://github.com/bvaughn/js-search) - Feature-rich and customizable: multi-field indices, stop words, custom stemmers and tokenizers. <img align="top" height="24" src="./img/js-search.svg">
-- [ndx](https://github.com/localvoid/ndx) - Similar to js-search, differs in [ranking](https://kmwllc.com/index.php/2020/03/20/understanding-tf-idf-and-bm-25/) and is less strict for multi-word queries [(compare)](https://leeoniya.github.io/uFuzzy/demos/compare.html?libs=js-search,ndx,Wade&search=twilight%20sag). Supports field weights. <img align="top" height="24" src="./img/ndx-ndxquery.svg">
-- [wade](https://github.com/kbrsh/wade) - Also similar, [(compare)](https://leeoniya.github.io/uFuzzy/demos/compare.html?libs=js-search,Wade,ndx&search=twilight%20sag) <img align="top" height="24" src="./img/wade.svg">
-- [libsearch](https://github.com/thesephist/libsearch) - Index-free search (slower, but easier to use) with sane ordering <img align="top" height="24" src="./img/libsearch.svg">
+- [js-search](https://github.com/bvaughn/js-search) - 複数フィールドの索引、ストップワード、カスタムのステマーやトークナイザーなど、設定可能な機能。1.92 kB。
+- [ndx](https://github.com/localvoid/ndx) - js-searchに似るが、[順位付け](https://kmwllc.com/index.php/2020/03/20/understanding-tf-idf-and-bm-25/)が異なり、複数語クエリの条件がより緩い（[比較](https://leeoniya.github.io/uFuzzy/demos/compare.html?libs=js-search,ndx,Wade&search=twilight%20sag)）。フィールドの重み付けにも対応。1.4 kB。
+- [wade](https://github.com/kbrsh/wade) - 同様の検索機能（[比較](https://leeoniya.github.io/uFuzzy/demos/compare.html?libs=js-search,Wade,ndx&search=twilight%20sag)）。1.23 kB。
+- [libsearch](https://github.com/thesephist/libsearch) - 索引不要の検索。遅いが扱いやすく、適切な順序で結果を表示。439 B。
 
-One way to find sensible inexact matches is _stemming_ — converting words to a root form. _Walked_ will match _walking,_ etc. Here are a few [Porter stemmers](https://vijinimallawaarachchi.com/2017/05/09/porter-stemming-algorithm/) for English language:
+近い語を照合する方法の一つが、語を語幹へ変換するステミングです。たとえばwalkedとwalkingが一致します。以下は英語向けの[Porterステマー](https://vijinimallawaarachchi.com/2017/05/09/porter-stemming-algorithm/)です。
 
-- [stemmer](https://github.com/words/stemmer) - <img align="top" height="24" src="./img/stemmer.svg">
-- [porter-stemmer](https://github.com/jedp/porter-stemmer) - <img align="top" height="24" src="./img/porter-stemmer.svg">
+- [stemmer](https://github.com/words/stemmer) - 784 B。
+- [porter-stemmer](https://github.com/jedp/porter-stemmer) - 926 B。
 
-For non-English words, I only have honorable mentions: [snowball-js](https://github.com/fortnightlabs/snowball-js) is 17 kB with 15 languages, [lunr-languages](https://github.com/MihaiValentin/lunr-languages) supports 30 languages but only works with [lunr,](https://github.com/olivernn/lunr.js) the most promising one is [natural](https://github.com/NaturalNode/natural/tree/master/lib/natural/stemmers) but it depends on Node.js.
+英語以外の語には、補足の選択肢として[snowball-js](https://github.com/fortnightlabs/snowball-js)（17 kB、15言語）、[lunr-languages](https://github.com/MihaiValentin/lunr-languages)（30言語対応、[lunr](https://github.com/olivernn/lunr.js)との組み合わせ専用）、[natural](https://github.com/NaturalNode/natural/tree/master/lib/natural/stemmers)（Node.jsに依存）が挙げられています。
 
 ### あいまい検索
 
-__Fuzzy search__ is another take on inexact matching — the words can be modified. First, we have libraries that only allow insertion: spacecat -> SPACECrAfT. Not perfect for general-purpose text search, but great for filename, command, or URL lookups.
+あいまい検索は、変更された語も照合する別の方法です。まず、文字の挿入だけを許すライブラリ（spacecat -> SPACECrAfT）を紹介します。汎用のテキスト検索には制約がありますが、ファイル名、コマンド、URLの検索に適しています。
 
-- [fuzzy](https://github.com/mattyork/fuzzy) - Index-free, can highlight matches. <img align="top" height="24" src="./img/fuzzy.svg">
-- [fuzzy-search](https://github.com/wouterrutgers/fuzzy-search) - With stateful index. <img align="top" height="24" src="./img/fuzzy-search.svg">
-- [fzy.js](https://github.com/jhawthorn/fzy.js) - Matches one string at a time, tree-shakeable scores and match highlighting. <img align="top" height="24" src="./img/fzyjs.svg"> total, or ~150 bytes for `hasMatch` only.
-- [fuzzysearch](https://github.com/bevacqua/fuzzysearch) -  One string at a time, does not compute score / rank. <img align="top" height="24" src="./img/fuzzysearch.svg">
-- [liquidmetal](https://github.com/rmm5t/liquidmetal) - Quicksilver algorithm, prioritizes matches at start of word for command abbreviations (e.g. `gp` -> `git push`). One string at a time. <img align="top" height="24" src="./img/liquidmetal.svg">
-- [quick-score](https://github.com/fwextensions/quick-score) - Another quicksilver-based lib, tweaked for long strings. Built-in list filtering and sorting, <img align="top" height="24" src="./img/quick-score.svg"> or 1.2 kB for single-string scoring.
+- [fuzzy](https://github.com/mattyork/fuzzy) - 索引不要で、一致部分を強調表示可能。536 B。
+- [fuzzy-search](https://github.com/wouterrutgers/fuzzy-search) - 状態を保持する索引を使用。866 B。
+- [fzy.js](https://github.com/jhawthorn/fzy.js) - 一度に1つの文字列を照合し、ツリーシェイキング可能なスコア計算と一致部分の強調表示を提供。全体は751 B、`hasMatch`だけなら約150バイト。
+- [fuzzysearch](https://github.com/bevacqua/fuzzysearch) - 一度に1つの文字列を照合。スコアや順位は計算しない。223 B。
+- [liquidmetal](https://github.com/rmm5t/liquidmetal) - Quicksilverアルゴリズムで、コマンドの略記では単語先頭の一致を優先（例：`gp` -> `git push`）。一度に1つの文字列を照合。628 B。
+- [quick-score](https://github.com/fwextensions/quick-score) - 長い文字列向けに調整したQuicksilver方式のライブラリ。リストの絞り込み・並べ替えを内蔵。2.11 kB、単一文字列のスコア計算なら1.2 kB。
 
-Finally, one library is specifically built for spellchecking:
+最後に、スペルチェック専用のライブラリです。
 
-- [fuzzyset](https://github.com/Glench/fuzzyset.js) - Find misspellings, e.g. missipissi -> Missisipi, <img align="top" height="24" src="./img/fuzzyset.svg"> Commercial usage costs $42.
-
-
-## 貢献
-
-提案を歓迎します。 [contributing.md](https://github.com/thoughtspile/awesome-tiny-js/blob/f49d74e245824eb1194a01636b8dd3b0904d347c/contributing.md), or drop an [issue](https://github.com/thoughtspile/awesome-tiny-js/issues).
+- [fuzzyset](https://github.com/Glench/fuzzyset.js) - 綴りの誤りを検索。例：missipissi -> Missisipi。1.32 kB。固定リストでは商用利用は42ドルと記載。
 
 ## 脚注
 
-See [WIP](https://github.com/thoughtspile/awesome-tiny-js/blob/f49d74e245824eb1194a01636b8dd3b0904d347c/wip.md) for possibly awesome libraries I have found, but not yet analyzed deeply, and [incubate](https://github.com/thoughtspile/awesome-tiny-js/blob/f49d74e245824eb1194a01636b8dd3b0904d347c/incubate.md) for awesome libraries that don't meet popularity criteria yet.
+補足リストには、有用な可能性があるものの詳しく分析されていないライブラリを扱う[WIP](https://github.com/thoughtspile/awesome-tiny-js/blob/f49d74e245824eb1194a01636b8dd3b0904d347c/wip.md)と、人気に関する収録条件をまだ満たさないライブラリを扱う[incubate](https://github.com/thoughtspile/awesome-tiny-js/blob/f49d74e245824eb1194a01636b8dd3b0904d347c/incubate.md)があります。
 
-2023年に [Vladimir Klepov](https://blog.thoughtspile.tech) が収集・レビューしました。
+2023年に[Vladimir Klepov](https://blog.thoughtspile.tech)が収集・レビューしました。

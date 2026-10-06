@@ -1,26 +1,14 @@
 ---
-title: "Awesome choo :steam locomotive"
-description: "choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+title: "Awesome choo"
+description: "chooの公式資料、依存ライブラリ、デモ、プラグイン、要素、CLIテンプレート、学習資料、実装例を案内します。"
 licenseSource: "github-choojs-awesome-choo-readme-md"
 ---
 
-# Awesome choo :steam locomotive
+# Awesome choo<a id="awesome-choo-steam-locomotive"></a>
 
-choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+固定原文は[choo](https://choo.io/)を、堅牢なフロントエンドアプリケーションを作るための`4kb`のフレームワークと紹介しています。公式資料、依存ライブラリ、デモ、コミュニティ、プラグイン、要素、CLIテンプレート、チュートリアル、動画、記事、chooを使うプロジェクトを探せます。
 
-## 目次
-
-- [公式リソース](#official-resources)
-- [依存関係](#dependencies)
-- [デモ](#demos)
-- [コミュニティ](#community)
-- [プラグインとアドオン](#plugins-and-addons)
-- [要素](#elements)
-- [CLI テンプレート](#cli-templates)
-- [リソース](#resources)
-- [choo を使うプロジェクト](#projects-using-choo)
-
-### 公式リソース
+## 公式リソース
 
 - [ドキュメント](https://github.com/yoshuawuyts/choo/blob/master/README.md)
 - [ハンドブック](https://github.com/yoshuawuyts/choo-handbook)
@@ -28,7 +16,7 @@ choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたA
 - [ウェブサイト](https://choo.io/)
 - [Twitter スレッド](https://twitter.com/yoshuawuyts/status/730087077803528193)
 
-### 依存関係
+## 依存関係
 `choo` はモジュール式フレームワークです。内部で次の依存関係を
 組み合わせています。
 
@@ -36,8 +24,8 @@ choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたA
   作成。
 - [hyperx](https://github.com/substack/hyperx) - テンプレート文字列を
   ライブラリのバックエンドへ変換。
-- [nanomorph](https://github.com/choojs/nanomorph) - 実 DOM ノード向けの超高速差分アルゴリズム。
-- [nanoraf](https://github.com/yoshuawuyts/nanoraf) - 必要なときだけ RAF を呼び出します。
+- [nanomorph](https://github.com/choojs/nanomorph) - 実DOMノード向けの差分アルゴリズム。原文では高速と紹介。
+- [nanoraf](https://github.com/yoshuawuyts/nanoraf) - 必要なときだけRAFを呼び出す。
 - [nanorouter](https://github.com/choojs/nanorouter) - 小さなフロントエンドルーター。
 - [nanobus](https://github.com/choojs/nanobus) - 小型メッセージバス。
 - [nanolocation](https://github.com/choojs/nanolocation) - 小さな window.location ライブラリ。
@@ -45,7 +33,7 @@ choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたA
 - [nanoquery](https://github.com/choojs/nanoquery) - 小型クエリ文字列モジュール。
 - [nanotiming](https://github.com/choojs/nanotiming) - 小さなタイミングライブラリ。
 
-### デモ
+## デモ
 
 - [入力の例](http://requirebin.com/?gist=e589473373b3100a6ace29f7bbee3186) -（[リポジトリ](https://github.com/yoshuawuyts/choo/tree/master/examples/title)）
 - [HTTP エフェクト](https://hyperdev.com/#!/project/fork-fang)
@@ -58,11 +46,11 @@ choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたA
 - [choo-leaflet-demo](https://github.com/timwis/choo-leaflet-demo)
 - [choo-scriber](https://zhouhansen.github.io/choo-scriber) -（[リポジトリ](https://github.com/ZhouHansen/choo-scriber)）
 
-### コミュニティ
+## コミュニティ
 
 - [Freenode](https://webchat.freenode.net/?channels=choo)
 
-### プラグインとアドオン
+## プラグインとアドオン
 
 - [choo-location-electron](https://github.com/bcomnes/choo-location-electron) - Electron で `choo` のルーターを修正。
 - [choo-log](https://github.com/yoshuawuyts/choo-log) - choo 向け開発ロガー。
@@ -78,14 +66,14 @@ choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたA
 - [choo-websocket](https://github.com/YerkoPalma/choo-websocket) - `choo` アプリ向けのブラウザー WebSocket API の小さなラッパー。
 - [choo-store](https://github.com/ungoldman/choo-store) - choo アプリ向けの軽量な状態構造。
 
-### 要素
+## 要素
 
 - [dom-notifications](https://github.com/finnp/dom-notifications) - Atom に着想を得た通知コンポーネント。
 - [choodown](https://github.com/trainyard/choodown) - choo 向けのシンプルな Markdown コンポーネント。
 - [choo-md-editor](https://github.com/dbtek/choo-md-editor) - Choo アプリ内または独立ライブラリとして使える軽量 Markdown エディター。
 - [choo-chartist](https://github.com/rexmortus/choo-chartist) - choo フレームワークで [Chartist](https://gionkunz.github.io/chartist-js/) を使う小さなコンポーネント。
 
-### CLI テンプレート
+## CLI テンプレート
 
 [choo-cli](https://github.com/trainyard/choo-cli) 向けテンプレート
 
@@ -96,18 +84,14 @@ choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたA
 その他の CLI テンプレート
 - [graforlock/choo-bandwagon](https://github.com/graforlock/choo-bandwagon)
 
-### リソース
-> :movie_camera:：動画
-> :computer:：チュートリアル
-> :book:：記事
+## リソース
+- チュートリアル：[Your first choo app](https://yoshuawuyts.gitbooks.io/choo/content/02_your_first_app.html) - 最初のchooアプリを作るチュートリアル。
+- 動画：[TCBY community live hangout](https://www.youtube.com/watch?v=a97Mw2z1SAI) - TCBYコミュニティのライブ交流会。
+- 記事：[A better frontend experience](https://medium.com/@yoshuawuyts/a-better-frontend-experience-7b0498c85658) - よりよいフロントエンド体験についての記事。
+- 記事：[Composition in CycleJS, choo, React and Angular2](http://blog.krawaller.se/posts/composition-in-cyclejs-choo-react-and-angular2) - CycleJS、choo、React、Angular2における合成についての記事。
+- 記事：[Stupidly smart components in choo](http://blog.krawaller.se/posts/stupidly-smart-components-in-choo) - chooの「Stupidly smart components」についての記事。
 
-- :computer: [最初の choo アプリ](https://yoshuawuyts.gitbooks.io/choo/content/02_your_first_app.html)
-- :movie_camera: [TCBY コミュニティのライブ交流会](https://www.youtube.com/watch?v=a97Mw2z1SAI)
-- :book: [より良いフロントエンド体験](https://medium.com/@yoshuawuyts/a-better-frontend-experience-7b0498c85658)
-- :book: [CycleJS、choo、React、Angular2 における合成](http://blog.krawaller.se/posts/composition-in-cyclejs-choo-react-and-angular2)
-- :book: [choo の愚かなほど賢いコンポーネント](http://blog.krawaller.se/posts/stupidly-smart-components-in-choo)
-
-### choo を使うプロジェクト
+## choo を使うプロジェクト
 
 - [boxcar](https://github.com/toddself/boxcar) - choo ベースのグリッド・スプレッドシートエディター。
 - [choo-sortable](https://github.com/willkessler/choo-sortable) - choo で並べ替え可能なコードを構築。
@@ -119,17 +103,11 @@ choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたA
 - [hackernews-choo](https://github.com/kvnneff/hackernews-choo) - choo で構築された Hacker News リーダー。
 - [tic-tac-choo](https://github.com/YerkoPalma/tic-tac-toe) - choo 製のプログレッシブ三目並べゲーム。
 - [enviar](https://github.com/timwis/enviar) - SMS・テキストメッセージ向けチャットインターフェース。
-- [kaktus](https://github.com/kaktus/kaktus) - `choo` と IndexedDB 上に構築された新しい最小主義ウェブブラウザー。
+- [kaktus](https://github.com/kaktus/kaktus) - `choo` と IndexedDB 上に構築された最小限の構成のウェブブラウザー。
 - [civicdr.org](https://github.com/CiviCDR/civicdr.org) - [CiviCDR](https://civicdr.org/) のウェブサイト。
-- [nekocafe](https://github.com/notenoughneon/nekocafe) - ウェブチャットルーム :cat: :speech_balloon:。
-- [Robotopia](https://github.com/robotopia-x/robotopia) - 小さな仮想ロボットで子どもたちにコーディングを紹介！
+- [nekocafe](https://github.com/notenoughneon/nekocafe) - ウェブチャットルーム。
+- [Robotopia](https://github.com/robotopia-x/robotopia) - 小さな仮想ロボットで子どもたちにコーディングを紹介。
 - [busca](https://github.com/afk-mcz/busca) - Reddit で現在のタブを検索する小さなウェブ拡張機能。
 - [choo-ban](https://github.com/luizbaldi/choo-ban) - `choo` で構築された、ボード上のタスクを管理するシンプルなカンバン。
-- [boowa](https://github.com/boowajs/boowa) - `choo` で構築された楽しいブログ生成器。
+- [boowa](https://github.com/boowajs/boowa) - `choo` で構築されたブログ生成ツール。
 - [hyperamp](https://github.com/hypermodules/hyperamp) - 控えめな音楽プレーヤー。
-
-### ライセンス
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-法律で認められる範囲において、[Yerko Palma](https://github.com/YerkoPalma) はこの作品に関するすべての著作権および関連する権利、隣接権を放棄しています。

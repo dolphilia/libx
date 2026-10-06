@@ -1,55 +1,32 @@
 ---
 title: "Awesome Dojo"
-description: "Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Dojo Toolkitのドキュメント、チュートリアル、UIライブラリ、サーバー連携、テストツール、アプリケーション、テーマ、TypeScript資料。"
 licenseSource: "github-petk-awesome-dojo-readme-md"
 ---
 
 # Awesome Dojo
 
-Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+[Dojo Toolkit](http://dojotoolkit.org)は、Webアプリケーション向けのJavaScript言語ユーティリティとUIコンポーネントを提供します。ドキュメントとチュートリアル、ライブラリ、サーバー連携、テストツール、アプリケーション、テーマ、TypeScript資料を収録し、Dojo 2のパッケージを別にまとめています。関連資料を探せるコミュニティとAwesomeリストへのリンクもあります。
 
-## 索引 <a id="index"></a>
-
-* [DojoToolkit.orgのリソースとドキュメント](#dojotoolkitorg-resources-and-documentation)
-* [チュートリアル](#tutorials)
-* [スターターとボイラープレート](#bootstraps-and-boilerplates)
-* [パッケージ、ライブラリ、スクリプト](#packages-libraries-and-scripts)
-* [サーバー側統合](#serverside-integrations)
-* [テスト](#testing)
-* [アプリケーション](#applications)
-* [テーマ](#themes)
-* [TypeScript](#typescript)
-* [コミュニティ](#community)
-* [その他のAwesomeリスト](#other-awesome-lists)
-* [コントリビューションとライセンス](#contributing-and-license)
-
-
-## DojoToolkit.orgのリソースとドキュメント <a id="dojotoolkitorg-resources-and-documentation"></a>
+## <a id="dojotoolkitorg-resources-and-documentation"></a>DojoToolkit.orgのリソースとドキュメント
 
 * [API](http://dojotoolkit.org/api/) - Dojo ToolkitのAPIリファレンス。
-* [Roadmap](https://github.com/dojo/meta/wiki/Roadmap) Dojoのロードマップ（全バージョン）。
-* [Blog](http://dojotoolkit.org/blog/) - Dojo Toolkitブログ。
-* [Demos](http://demos.dojotoolkit.org/demos/) - Dojo Toolkitのデモ。
-* [Reference guide](https://github.com/dojo/docs) - [http://dojotoolkit.org/reference-guide/1.10/](http://dojotoolkit.org/reference-guide/1.10/)
-* [Tutorials](http://dojotoolkit.org/documentation/) - Dojo Toolkit向けの公認・更新済みチュートリアル。
+* [ロードマップ](https://github.com/dojo/meta/wiki/Roadmap) - Dojoのロードマップ（全バージョン）。
+* [ブログ](http://dojotoolkit.org/blog/) - Dojo Toolkitブログ。
+* [デモ](http://demos.dojotoolkit.org/demos/) - Dojo Toolkitのデモ。
+* [リファレンスガイド](https://github.com/dojo/docs) - [http://dojotoolkit.org/reference-guide/1.10/](http://dojotoolkit.org/reference-guide/1.10/)
+* [チュートリアル](http://dojotoolkit.org/documentation/) - Dojo Toolkitの公認チュートリアル。固定原文では更新済みとされている。
 * [Dojo Meta](https://github.com/dojo/meta) - Dojo 2のコントリビューション・コーディングガイドライン。
 * [Dojo Website](https://github.com/dojo/dojo-website) - Dojo Toolkit 1.xから2.xへの移行用Webサイト。
 
-
-[先頭へ戻る](#awesome-dojo)
-
-
-## チュートリアル <a id="tutorials"></a>
+## <a id="tutorials"></a>チュートリアル
 
 * [Dojo and Bootstrap FAQ](https://www.sitepen.com/blog/2014/08/13/dojo-faq-how-do-i-use-bootstrap-with-dijit/) - DijitでBootstrapを使う方法。
 * [Dojo Toolkit 1.9 tutorial](https://github.com/cepa/dojo-tutorial) - Dojo Toolkit 1.9を使うチュートリアル。
 * [Dojo the Good parts](https://github.com/DavidSpriggs/Dojo--The-Good-Parts) - 2014年3月10〜13日にPalm Springsで開催されたESRI Developer Summitの発表。
 * [Pluralsight's Dojo tutorial](https://www.pluralsight.com/courses/dojo-fundamentals) - Dojo Toolkit学習用動画チュートリアル。
 
-[先頭へ戻る](#awesome-dojo)
-
-
-## スターターとボイラープレート <a id="bootstraps-and-boilerplates"></a>
+## <a id="bootstraps-and-boilerplates"></a>スターターとボイラープレート
 
 * [dboostrap](https://github.com/atoha/dbootstrap) - Dojo向けBootstrapテーマ。
 * [Dojo Boilerplate](https://github.com/csnover/dojo-boilerplate) - Dojo Toolkit開発を始めるためのボイラープレート。
@@ -57,20 +34,17 @@ Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストで
 * [dojo.js](https://github.com/gpedro/dojo.js) - JasmineとGulpを使ってDojoを始める最小限のボイラープレート。
 * [dojo-node-boilerplate](https://github.com/kitsonk/dojo-node-boilerplate) - NodeJS上でDojo Toolkitを使うためのクイックスタート「テンプレート」。
 
-[先頭へ戻る](#awesome-dojo)
-
-
-## パッケージ、ライブラリ、スクリプト <a id="packages-libraries-and-scripts"></a>
+## <a id="packages-libraries-and-scripts"></a>パッケージ、ライブラリ、スクリプト
 
 * [AngularJS Dojo](https://github.com/adrobisch/angular-dojo) - Dojoウィジェット向けAngularJSディレクティブ。
-* [delite](https://github.com/ibm-js/delite) - HTML Custom Element／Widget基盤。
-* [deliteful](https://github.com/ibm-js/deliteful) - マルチチャネル（デスクトップ／モバイル）UI Custom Elementsライブラリ。
-* [Dojo Foundation packages](http://packages.dojofoundation.org/) - Dojo Foundationで利用可能なパッケージ。
+* [delite](https://github.com/ibm-js/delite) - HTMLのカスタム要素・ウィジェット基盤。
+* [deliteful](https://github.com/ibm-js/deliteful) - デスクトップ・モバイル向けUIカスタム要素ライブラリ。
+* [Dojo Foundationのパッケージ](http://packages.dojofoundation.org/) - Dojo Foundationで利用可能なパッケージ。
 * [dojo-smore](https://github.com/kfranqueiro/dojo-smore) - Dojo／Store実装を持つパッケージ。
 * [generator-dojo](https://github.com/bryanforbes/generator-dojo) - Dojoプロジェクト向けYeomanジェネレーター。
 * グリッド
-    * [dgrid](http://dgrid.io/) - 現代のブラウザーとオブジェクトストアを最大限に活用する次世代グリッドコンポーネント。
-    * [gridx](http://oria.github.io/gridx/) - 高速描画、適切なモジュール分割、プラグインアーキテクチャを備えたグリッド。
+    * [dgrid](http://dgrid.io/) - モダンブラウザーとオブジェクトストア向けのグリッドコンポーネント。
+    * [gridx](http://oria.github.io/gridx/) - モジュール構成とプラグインアーキテクチャを備えたグリッド。
     * [xgrid](https://github.com/xblox/xgrid) - dgrid拡張。
 * [grunt-dojo](https://github.com/phated/grunt-dojo) - Gruntタスク内でDojoをビルド。
 * [grunt-dojo2](https://github.com/dojo/grunt-dojo2) - Gruntタスク内でDojo 2をビルド。
@@ -79,11 +53,11 @@ Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストで
 * [Sitepen dstore](https://github.com/SitePen/dstore) - データコレクションとオブジェクトをモデル化・操作するツールを提供するデータ基盤フレームワーク。
 * [xaction](https://github.com/xblox/xaction) - ユーザー操作のUIとロジックを提供するコンポーネント。
 
-#### Dojo 2
+### Dojo 2
 
 * [Dojo core](https://github.com/dojo/core) - TypeScriptとJavaScriptのコアユーティリティを含むDojo 2パッケージ。
-* [DOM Utilities](https://github.com/dojo/dom) - Dojo 2 DOMユーティリティ。
-* [Dojo Command Line Tooling](https://github.com/dojo/cli)   - Dojo 2アプリケーション向けコマンドラインツール。
+* [DOMユーティリティ](https://github.com/dojo/dom) - Dojo 2 DOMユーティリティ。
+* [Dojoのコマンドラインツール](https://github.com/dojo/cli)   - Dojo 2アプリケーション向けコマンドラインツール。
 * [Dojo loader](https://github.com/dojo/loader) - Dojo 2向けAMDローダー。
 * [Dojo routing](https://github.com/dojo/routing) - Dojo 2ルーティング。
 * [Dojo compose](https://github.com/dojo/compose) - Dojo 2合成ライブラリ。
@@ -93,12 +67,7 @@ Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストで
 * [Dojo parse](https://github.com/dojo/parser) - ウィジェットを宣言的にインスタンス化するパッケージ。
 * [Dojo2 App](https://github.com/dojo/app) - Dojo 2向けアプリケーションフレームワーク（例）。
 
-
-
-[先頭へ戻る](#awesome-dojo)
-
-
-## サーバー側統合 <a id="serverside-integrations"></a>
+## <a id="serverside-integrations"></a>サーバー側統合
 
 * [Dojango](https://github.com/klipstein/dojango/) - DojoとDjango Pythonフレームワークの統合。
 * [dojo-rails](http://robin850.github.io/dojo-rails/) - DojoとRuby on Railsフレームワークの統合。
@@ -115,54 +84,42 @@ Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストで
     * [Spring](https://www.sitepen.com/blog/2011/08/11/how-do-you-use-the-dojo-store-jsonrest-api-with-spring/) - SpringとDojoの統合方法。
     * [Websphere](http://www-03.ibm.com/software/products/en/appserv-was) - Dojoを統合したアプリケーションサーバー。
 * Node.js
-    * [dojo-node](https://github.com/agebrock/dojo-node) - Node.js向け軽量Dojoラッパー。
+    * [dojo-node](https://github.com/agebrock/dojo-node) - Node.js向けDojoラッパー。
     * [Dojos](https://github.com/supnate/dojos) - NodeJS上のサーバー側Dojo。
-    * [Node.js integration](http://dojotoolkit.org/documentation/tutorials/1.10/node/) - DojoとNode.jsの使用方法を扱うチュートリアル。
+    * [Node.js連携](http://dojotoolkit.org/documentation/tutorials/1.10/node/) - DojoとNode.jsの使用方法を扱うチュートリアル。
 * PHP
     * [Dojo & Composer](https://github.com/zoopcommerce/pixie) - Dojoを含むzoopパッケージ向けカスタムComposerインストーラー。
     * [Dojo & Symfony PHP framework](https://www.sitepen.com/blog/2011/09/06/what-is-the-best-way-to-use-dojo-with-a-symfony-backend/) - Dojo ToolkitとSymfony PHPフレームワークを統合。
     * [Dojo & Zend PHP framework](https://github.com/superdweebie/DojoModule) - DojoModuleを通じてDojo ToolkitとZend Frameworkを統合。
 
-[先頭へ戻る](#awesome-dojo)
+## <a id="testing"></a>テスト
 
-
-## テスト <a id="testing"></a>
-
-* [Intern](https://github.com/theintern/) - JavaScript向け次世代コードテストスタック。
-* [Intern User guide](https://theintern.github.io/intern/#what-is-intern) - The Internの使用方法を扱うかなり完全なマニュアル。
+* [Intern](https://github.com/theintern/) - JavaScript向けコードテストスタック。
+* [Internユーザーガイド](https://theintern.github.io/intern/#what-is-intern) - Internのユーザーガイド。
 * [Intern Yeoman page objects](https://github.com/glamb/generator-internjs-pageobjects/) - ユニットテストとスイートを作成するYeomanジェネレーター。
 * [Intern Yeoman generator](https://github.com/naglalakk/generator-intern) - Intern向けYeomanジェネレーター。
 
-[先頭へ戻る](#awesome-dojo)
-
-
-## アプリケーション <a id="applications"></a>
+## <a id="applications"></a>アプリケーション
 
 * [AuShada](https://github.com/dreaswar/AuShadha) - 電子医療記録（EMR）と公衆衛生管理向けDjango・Dojoアプリケーション。
 * [dapi](https://github.com/dojo/dapi) - Node.js製Dojo APIビューアー。
 * [Dig Dug](https://github.com/theintern/digdug) - WebDriverサービストンネルを起動するJavaScriptライブラリ。
-* [Dojo Demo](https://github.com/rmurphey/dojo-demo) - Dojoのデモ。
+* [Dojoのデモ](https://github.com/rmurphey/dojo-demo) - Dojoのデモ。
 * [dojorama](https://github.com/sirprize/dojorama) - Dojo 1.9、Twitter Bootstrap 3、History APIベースのシングルページ・デモアプリケーション。
 * [Dojox application](https://github.com/dmachi/dojox_application) - モバイル、タブレット、デスクトップ向けDojox Application Framework。
 * [js-doc-parse](https://github.com/dojo/js-doc-parse) - Dojo JavaScriptファイルを解析し、インラインドキュメントを抽出するライブラリ。
 * [rstwiki](https://github.com/phiggins42/rstwiki) - PythonとDojo Toolkitで構築されたシンプルなreST／Wikiシステム。
-* [Scripted](https://github.com/scripted-editor) - 当初はJavaScript編集に焦点を当てた、高速で軽量なコードエディター。
+* [Scripted](https://github.com/scripted-editor) - 初期の主対象をJavaScript編集とするコードエディター。
 * [todomvc](https://github.com/tastejs/todomvc) - MV\*フレームワーク選びを支援するTodoアプリ例。
-* [Dojo2 Example](https://github.com/dojo/examples) - Dojo 2の例。
+* [Dojo 2のサンプル](https://github.com/dojo/examples) - Dojo 2の例。
 * [xamiro](https://github.com/xblox/xamiro) - 最小限の依存関係を持つ、PHP・JavaScript製IDE風ファイルマネージャー。
-* [Windows-dist](https://github.com/flysurfer28/windows-dist) - IoTとプロトタイピング向けの完全自動化スイート。
+* [Windows-dist](https://github.com/flysurfer28/windows-dist) - IoTとプロトタイピング向けの自動化ツール一式。
 
-[先頭へ戻る](#awesome-dojo)
-
-
-## テーマ <a id="themes"></a>
+## <a id="themes"></a>テーマ
 
 * [dijit-claro-stylus](https://github.com/kfranqueiro/dijit-claro-stylus) - DijitのClaroテーマをLESSからStylusへ直接変換。
-* [Flat Dojo Theme](http://yiweima.github.io/flatdojo/) - Esri Flat Dijit Design。
-* [Semantic Dojo Theme](http://websemantics.github.io/semantic-dojo/) - [Semantic UI](http://semantic-ui.com/) Frameworkの優れたスタイルを活用するレスポンシブDojoテーマ。
-
-[先頭へ戻る](#awesome-dojo)
-
+* [Flat Dojo Theme](http://yiweima.github.io/flatdojo/) - EsriのフラットなDijitデザイン。
+* [Semantic Dojo Theme](http://websemantics.github.io/semantic-dojo/) - [Semantic UI](http://semantic-ui.com/)フレームワークのスタイルを使うレスポンシブDojoテーマ。
 
 ## TypeScript
 
@@ -171,48 +128,29 @@ Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストで
 * [Dojo-TypeScript](https://github.com/schungx/Dojo-TypeScript) - Microsoft TypeScript 0.9.5でDojo 1.9 AMD形式を使用。
 * [Dojo Typings](https://github.com/dojo/typings) - DijitとDojoXを含むDojo 1 TypeScript型定義のリポジトリ。
 
-[先頭へ戻る](#awesome-dojo)
+## <a id="community"></a>コミュニティ
 
-
-## コミュニティ <a id="community"></a>
-
-* [Brazilian Facebook Group](https://www.facebook.com/groups/288220914564119/) - Facebook上のブラジルDojoコミュニティ。
-* [Dojo mailing list](http://dojotoolkit.org/community/) - 質問と議論のためのメーリングリスト。
-* [Dojo on StackOverflow](http://stackoverflow.com/questions/tagged/dojo) - StackOverflow上のDojo Toolkitサポート。
-* [Dojo on Twitter](https://twitter.com/dojo) - DojoのTwitterアカウント。
-* [Facebook Group](https://www.facebook.com/groups/4375511291/) - Facebook上のDojoコミュニティ。
-* [Google Plus Community](https://plus.google.com/communities/107837593684207188221) - Google Plus上のDojoコミュニティ。
-* [Linked In Dojo Ajax Toolkit Developers Group](https://www.linkedin.com/groups/Dojo-Ajax-Toolkit-Developers-71399) - LinkedIn上のDojoコミュニティ。
-* [Linked In Dojo Toolkit Group](https://www.linkedin.com/groups/dojo-toolkit-81926) - LinkedIn上のDojoコミュニティ。
-* [Reddit Community](https://www.reddit.com/r/dojo/) - RedditでDojoを議論する成長中のコミュニティ（招待制）。
+* [ブラジルのFacebookグループ](https://www.facebook.com/groups/288220914564119/) - Facebook上のブラジルDojoコミュニティ。
+* [Dojoメーリングリスト](http://dojotoolkit.org/community/) - 質問と議論のためのメーリングリスト。
+* [StackOverflowのDojo](http://stackoverflow.com/questions/tagged/dojo) - StackOverflow上のDojo Toolkitサポート。
+* [TwitterのDojo](https://twitter.com/dojo) - DojoのTwitterアカウント。
+* [Facebookグループ](https://www.facebook.com/groups/4375511291/) - Facebook上のDojoコミュニティ。
+* [Google Plusコミュニティ](https://plus.google.com/communities/107837593684207188221) - Google Plus上のDojoコミュニティ。
+* [LinkedInのDojo Ajax Toolkit開発者グループ](https://www.linkedin.com/groups/Dojo-Ajax-Toolkit-Developers-71399) - LinkedIn上のDojoコミュニティ。
+* [LinkedInのDojo Toolkitグループ](https://www.linkedin.com/groups/dojo-toolkit-81926) - LinkedIn上のDojoコミュニティ。
+* [Redditコミュニティ](https://www.reddit.com/r/dojo/) - RedditでDojoを議論するコミュニティ（招待制）。
 * [SensioLabs Connect Club](https://connect.sensiolabs.com/club/dojo-toolkit) - PHP・Symfony開発者向けSensioLabs Connect Dojo Toolkit Club。
-* [IRC](http://irc.lc/freenode/dojo) - 大規模で活発なIRCサポートチャンネル。
+* [IRC](http://irc.lc/freenode/dojo) - IRCサポートチャンネル。
 * [Meetup](https://www.meetup.com/topics/dojo/) - 地域で参加し、ユーザーグループを探す。
 
-[先頭へ戻る](#awesome-dojo)
+## <a id="other-awesome-lists"></a>その他のAwesomeリスト
 
-
-## その他のAwesomeリスト <a id="other-awesome-lists"></a>
-
-* [awesome-javascript](https://github.com/sorrycc/awesome-javascript) - Awesome JavaScriptリスト。
-* [awesome-javascript-books](https://github.com/heatroom/awesome-javascript-books) - Awesome JavaScript書籍。
-* Awesomeリスト：
-    * [awesome](https://github.com/sindresorhus/awesome) - Awesomeリスト。
-    * [awesome-awesome](https://github.com/emijrp/awesome-awesome) - Awesomeリスト。
-    * [GetAwesomeness](https://getawesomeness.herokuapp.com/) - Awesomeリスト群。
-    * [lists](https://github.com/jnv/lists) - Awesomeリスト群。
-    * [awesome-all](https://github.com/bradoyler/awesome-all) - Awesomeリスト群。
-    * [awesome-awesome](https://github.com/erichs/awesome-awesome) - Awesomeリスト群。
-
-[先頭へ戻る](#awesome-dojo)
-
-
-## コントリビューションとライセンス <a id="contributing-and-license"></a>
-
-このAwesome Dojo Toolkitリストへの[コントリビューション](https://github.com/petk/awesome-dojo/blob/9527cc7586561f0d5744062902620757dd7daccf/CONTRIBUTING.md)を歓迎します。このリストの構築に協力したすべての[コントリビューター](https://github.com/petk/awesome-dojo/graphs/contributors)に深く感謝します。
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-法律で認められる限り、[Peter Kokot](https://github.com/petk)は本作品に関するすべての著作権および関連する権利または隣接権を放棄しています。
-
-[先頭へ戻る](#awesome-dojo)
+* [awesome-javascript](https://github.com/sorrycc/awesome-javascript) - JavaScript資料のAwesomeリスト。
+* [awesome-javascript-books](https://github.com/heatroom/awesome-javascript-books) - JavaScript書籍のAwesomeリスト。
+* Awesomeリストのディレクトリ：
+    * [awesome](https://github.com/sindresorhus/awesome) - Awesomeリストのディレクトリ。
+    * [awesome-awesome](https://github.com/emijrp/awesome-awesome) - Awesomeリストのディレクトリ。
+    * [GetAwesomeness](https://getawesomeness.herokuapp.com/) - Awesomeリストのディレクトリ。
+    * [lists](https://github.com/jnv/lists) - Awesomeリストのディレクトリ。
+    * [awesome-all](https://github.com/bradoyler/awesome-all) - Awesomeリストのディレクトリ。
+    * [awesome-awesome](https://github.com/erichs/awesome-awesome) - Awesomeリストのディレクトリ。

@@ -1,16 +1,14 @@
 ---
 title: "Awesome Web Tools"
-description: "Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "レイアウト、画像、CSS、JavaScript、フォント、フォーム、API、Git、コードの試作、UI制作に使うオンラインツールを案内します。"
 licenseSource: "github-lvwzhen-tools-readme-md"
 ---
 
 # Awesome Web Tools
 
-Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+ウェブ開発に使うオンラインツールをまとめています。レスポンシブ表示、プレースホルダー画像、ファビコン、CDN、CSS、画像圧縮、JavaScript、ページ速度、色、フォント、フォーム、API、Gitホスティング、webpack、コードの試作環境、チートシート、UIビルダー、ツール集から探せます。
 
-## 目次
-
-### レスポンシブ
+## レスポンシブ
 
 * [Responsinator](http://www.responsinator.com/)
 * [viewport-resizer](http://lab.maltewassermann.com/viewport-resizer/)
@@ -19,7 +17,7 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [Sizzy](http://sizzy.co)
 * [Polypane](http://polypane.rocks)
 
-### プレースホルダー
+## プレースホルダー
 
 * [placehold.it](https://place-hold.it/)
 * [temp.im](http://temp.im/)
@@ -27,9 +25,9 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [dummyimage](http://dummyimage.com/)
 * [placekitten](http://placekitten.com/)
 * [unsplash](https://source.unsplash.com/)
-* [smalldev.tools - placeholder](https://smalldev.tools/placeholder-image-generator-online)
+* [smalldev.tools - プレースホルダー画像](https://smalldev.tools/placeholder-image-generator-online)
 
-### ファビコン
+## ファビコン
 
 * [favicon-generator](http://www.favicon-generator.org/)
 * [favicon.cc](http://www.favicon.cc/)
@@ -40,7 +38,7 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [RealFaviconGenerator](https://realfavicongenerator.net/)
 * [favicon.io](https://favicon.io/)
 
-### CDN
+## CDN
 
 * [staticfile](http://www.staticfile.org/)
 * [bootcss cdn](http://www.bootcdn.cn/)
@@ -55,21 +53,21 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [statically](https://statically.io/)
 * [pagecdn](https://pagecdn.com/lib)
 
-### CSS
+## CSS
 
-* [neumorphism css generator](https://neumorphism.io/)
+* [neumorphism - CSS生成ツール](https://neumorphism.io/)
 * [css-triangle-generator](http://apps.eky.hk/css-triangle-generator/zh-hant)
 * [csszengarden](http://www.csszengarden.com/)
-* [CSS Gradient Generator](http://www.colorzilla.com/gradient-editor/)
+* [CSSグラデーション生成ツール](http://www.colorzilla.com/gradient-editor/)
 * [cssBeutify](http://tool.lu/css/)
-* [css spritegen](http://spritegen.website-performance.org/)
+* [CSSスプライト生成ツール](http://spritegen.website-performance.org/)
 * [csssprites](http://csssprites.com/)
 * [sassme](http://sassme.arc90.com/)
 * [css Should I Prefix](http://shouldiprefix.com/)
-* [CSS Unit Converter](https://cssunitconverter.com/)
+* [CSS単位変換ツール](https://cssunitconverter.com/)
 
 
-### 画像圧縮
+## 画像圧縮
 
 * [webresizer](http://webresizer.com/resizer/)
 * [TinyPNG](https://tinypng.com)
@@ -79,25 +77,25 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [Trimage](https://trimage.org)
 * [Compress-Or-Die](https://compress-or-die.com/)
 
-### JavaScript
+## JavaScript
 
 * [jsBeutify](http://tool.lu/js/)
 * [jsbeautifier](http://jsbeautifier.org/)
 * [jsfiddle](http://jsfiddle.net/)
 * [jsbin](http://jsbin.com/)
-* [SmallDev.tools - JS formatter](https://smalldev.tools/javascript-formatter-online)
-* [Flatlogic CRUD Apps Generator](https://flatlogic)
-* [dhtmlx javascript components](https://dhtmlx.com/docs/products/)
+* [SmallDev.tools - JavaScript整形ツール](https://smalldev.tools/javascript-formatter-online)
+* [Flatlogic - CRUDアプリ生成ツール](https://flatlogic)
+* [dhtmlx - JavaScriptコンポーネント](https://dhtmlx.com/docs/products/)
 
-### ページ速度
+## ページ速度
 
 * [PageSpeed](https://developers.google.com/speed/pagespeed/insights/)
 * [Alibench](http://alibench.com/)
 * [Webkaka](http://pagespeed.webkaka.com/)
-* [Modern IE Reporting tool](https://www.modern.ie/en-us/report)
+* [Modern IE - レポートツール](https://www.modern.ie/en-us/report)
 * [GTmetrix](https://gtmetrix.com/)
 
-### 色
+## 色
 
 * [nipponcolors](http://nipponcolors.com/)
 * [flatuicolors](http://flatuicolors.com/)
@@ -108,11 +106,11 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [colourco.de](http://colourco.de)
 * [flatuicolorpicker](http://www.flatuicolorpicker.com/)
 * [krmp.cc](https://github.com/dadleyy/krmp.cc)
-* [Image Color Picker](https://image-color.com)
+* [画像カラーピッカー](https://image-color.com)
 * [Respresso](https://respresso.io/)
-* [Branding Colors](https://branition.com/colors)
+* [ブランドの配色](https://branition.com/colors)
 
-### フォント
+## フォント
 
 * [Google Fonts](https://www.google.com/fonts)
 * [Adobe Fonts](https://fonts.adobe.com/)
@@ -129,26 +127,26 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [Respresso](https://respresso.io/)
 * [Brick](https://brick.im/)
 
-### フォーム
+## フォーム
 
 * [Form.taxi](https://form.taxi/)
 * [SmarkForm](https://smarkform.bitifet.net)
 
-### API デバッグ
+## API デバッグ
 
 * [ExtendsClass.com](https://extendsclass.com/rest-client-online.html)
 * [RequestBin.com](https://requestbin.com/)
 * [Beeceptor.com](https://beeceptor.com/)
 
-### API ドキュメント
+## API ドキュメント
 
 * [Jquery API](http://www.jquery123.com/)
 * [OverAPI](http://overapi.com/)
 * [devdocs](http://devdocs.io/)
-* [oschina apidoc](http://tool.oschina.net/apidocs)
-* [Easing functions](http://easings.net/en)
+* [oschina - APIドキュメント](http://tool.oschina.net/apidocs)
+* [イージング関数](http://easings.net/en)
 
-### Git ホスト
+## Git ホスト
 
 * [GitHub](https://github.com/)
 * [Bitbucket](https://bitbucket.org/)
@@ -156,11 +154,11 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [GitCafe](https://gitcafe.com/)
 * [Git@OSC](http://git.oschina.net/)
 
-### webpack
+## webpack
 
-* [Visual webpack config tool](https://webpack.jakoblind.no/)
+* [webpackの視覚的な設定ツール](https://webpack.jakoblind.no/)
 
-### コードプレイグラウンド
+## コードプレイグラウンド
 
 * [CodePen](https://codepen.io/)
 * [CodeSandbox](https://codesandbox.io/)
@@ -176,17 +174,17 @@ Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 * [DataFormsJS](https://www.dataformsjs.com/en/playground)
 * [AnyChart Playground](https://playground.anychart.com/)
 
-### チートシート
-* [Bootstrap CheatSheet](https://bootstrap-cheatsheet.themeselection.com/)
-* [Regex CheatSheet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet)
+## チートシート
+* [Bootstrapチートシート](https://bootstrap-cheatsheet.themeselection.com/)
+* [正規表現チートシート](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet)
 
-### UI ビルダー
+## UI ビルダー
 * [Windframe](https://www.devwares.com/windframe/)
 
-### ツールコレクション
+## ツールコレクション
 * [SmallDev.tools](https://smalldev.tools/)
-* * [TryDocsy](https://trydocsy.com/) - 無料、完全ブラウザーベースの PDF 編集、画像処理、文書変換スイート。
+* [TryDocsy](https://trydocsy.com/) - 無料で、100%ブラウザー内で動作するPDF編集・画像処理・文書変換ツール群。
 * [WebToolkit Pro](https://wtkpro.site/)
 * [FreeToolBox](https://www.freetoolbox.site/)
-* [Hreflang checker](https://localizely.com/hreflang-checker/)
+* [hreflangチェッカー](https://localizely.com/hreflang-checker/)
 * [giga.tools](https://giga.tools/)

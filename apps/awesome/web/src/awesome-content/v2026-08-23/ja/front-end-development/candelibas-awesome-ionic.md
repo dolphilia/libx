@@ -1,82 +1,39 @@
 ---
 title: "Awesome Ionic"
-description: "Ionicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "IonicとCapacitorの公式資料、教材、プラグイン、ツール、コンポーネント、アプリの事例を紹介します。"
 licenseSource: "github-candelibas-awesome-ionic-readme-md"
 ---
 
 # Awesome Ionic
 
-Ionicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+Ionicは、Web技術でクロスプラットフォームのモバイルアプリを構築するためのオープンソースフレームワークです。このリストでは、公式ドキュメント、チュートリアル、CapacitorやCordovaのプラグイン、ツール、スターターアプリ、UIコンポーネント、Ionicで構築されたアプリの事例を紹介します。
 
-## 目次 <a id="contents"></a>
-
-- [現在のIonicバージョン](#current-ionic-version)
-- [公式資料](#official-resources)
-- [Capacitor](#capacitor)
-- [Ionicの基礎](#ionic-fundamentals)
-- [テーマ設定](#theming)
-- [コンポーネントチュートリアル](#components-tutorials)
-- [認証](#authentication)
-- [単体テスト](#unit-testing)
-- [Ionic Native／Cordovaプラグイン](#ionic-native--cordova-plugins)
-- [Capgo Capacitorプラグイン](#capgo-capacitor-plugins)
-- [決済ゲートウェイ統合](#payment-gateway-integrations)
-- [Backend as a Service](#backend-as-a-service)
-- [i18nとl10n](#i18n--l10n)
-- [ツール](#tools)
-- [動画チュートリアル](#video-tutorials)
-- [Webアプリの変換](#convert-a-web-app)
-- [書籍](#books)
-- [ボイラープレート／デモアプリ](#boilerplatedemo-apps)
-- [コンポーネント](#components)
-  - [ライブラリ](#libraries)
-  - [アニメーション](#animations)
-  - [UIライブラリ](#ui-library)
-  - [メニュー、タブ](#menu-tabs)
-  - [フォーム／入力](#form--input)
-  - [入力 — 日付／カレンダー](#input---datecalendar)
-  - [リスト／テーブル](#liststable)
-  - [画像](#images)
-  - [チャート／図](#chartsdiagram)
-  - [動画／音声](#videoaudio)
-  - [キーボード](#keyboards)
-  - [アイコン](#icons)
-  - [ダイアログ](#dialog)
-  - [フレーム](#frames)
-- [オープンソースプロジェクト](#open-source-projects)
-- [Ionicで構築されたアプリ](#apps-built-with-ionic)
-- [コミュニティ](#community)
-- [フリーランサー](#freelancers)
-- [コントリビューション](#contribute)
-- [作者](#author)
-
-## 現在のIonicバージョン <a id="current-ionic-version"></a>
-[![npm version](https://img.shields.io/npm/v/@ionic/angular)](https://www.npmjs.com/package/@ionic/angular)
-
+## Ionicパッケージのバージョン <a id="現在のionicバージョン"></a> <a id="current-ionic-version"></a>
+[@ionic/angularのnpmページ](https://www.npmjs.com/package/@ionic/angular)で公開済みのパッケージバージョンを確認できます。
 
 ## 公式資料 <a id="official-resources"></a>
-- [Site](http://ionicframework.com/)
-- [Blog](http://blog.ionic.io/)
-- [Documentation](https://ionicframework.com/docs)
-- [Getting Started Guide](https://ionicframework.com/docs/developing/starting)
+- [公式サイト](http://ionicframework.com/)
+- [ブログ](http://blog.ionic.io/)
+- [ドキュメント](https://ionicframework.com/docs)
+- [入門ガイド](https://ionicframework.com/docs/developing/starting)
 - [Ionic Native](https://github.com/driftyco/ionic-native/)
-- [Community Forum](http://forum.ionicframework.com/)
-- [Ionic YouTube Channel](https://www.youtube.com/channel/UChYheBnVeCfhCmqZfCUdJQw)
-- [Showcase](http://showcase.ionicframework.com/)
-- [GitHub Repo](https://github.com/ionic-team/ionic-framework)
-- [Community](https://ionicframework.com/community) - 公式なコミュニティハブ
+- [コミュニティフォーラム](http://forum.ionicframework.com/)
+- [IonicのYouTubeチャンネル](https://www.youtube.com/channel/UChYheBnVeCfhCmqZfCUdJQw)
+- [ショーケース](http://showcase.ionicframework.com/)
+- [GitHubリポジトリ](https://github.com/ionic-team/ionic-framework)
+- [コミュニティ](https://ionicframework.com/community) - 公式なコミュニティハブ
 
-## Capacitor <a id="capacitor"></a>
+## Capacitor
 
 IonicアプリはCapacitorをネイティブランタイムとして利用できます。
 
-- [Website](https://capacitorjs.com/) - プロジェクトのホームページ
-- [Documentation](https://capacitorjs.com/docs) - 公式ドキュメント
+- [公式サイト](https://capacitorjs.com/) - プロジェクトのホームページ
+- [ドキュメント](https://capacitorjs.com/docs) - 公式ドキュメント
 - [CLI](https://capacitorjs.com/docs/cli) - コマンドラインリファレンス
-- [Plugins](https://capacitorjs.com/docs/plugins) - 公式プラグインAPI
-- [Blog](https://capacitorjs.com/blog) - 公式ブログ記事
-- [Forum](https://forum.ionicframework.com/c/capacitor) - IonicフォーラムのCapacitorカテゴリ
-- [Repository](https://github.com/ionic-team/capacitor) - コアランタイムソースコード
+- [プラグイン](https://capacitorjs.com/docs/plugins) - 公式プラグインAPI
+- [ブログ](https://capacitorjs.com/blog) - 公式ブログ記事
+- [フォーラム](https://forum.ionicframework.com/c/capacitor) - IonicフォーラムのCapacitorカテゴリ
+- [リポジトリ](https://github.com/ionic-team/capacitor) - コアランタイムソースコード
 - [Awesome Capacitor](https://github.com/riderx/awesome-capacitor) - 厳選されたCapacitorプラグイン、ツール、ガイド
 
 ## Ionicの基礎 <a id="ionic-fundamentals"></a>
@@ -106,7 +63,6 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [Automatic build and release](https://capgo.app/blog/automatic-build-and-release-with-github-actions) - GitHub ActionsでCI/CDパイプラインを作成
 - [Google Vision in Ionic 4 apps](https://enappd.com/blog/implement-google-vision-in-ionic-4/43)
 - [Add headless ButterCMS to your Ionic App by Mike Hartington](https://buttercms.com/blog/integrating-buttercms-with-ionic)
-
 
 ## テーマ設定 <a id="theming"></a>
 - [A Guide to Styling an Ionic Application](http://www.joshmorony.com/a-guide-to-styling-an-ionic-2-application/)
@@ -163,98 +119,98 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [capacitor-accelerometer](https://github.com/Cap-go/capacitor-accelerometer) - Capacitorプラグインによるデバイス加速度計測値の読み取り
 - [capacitor-admob](https://github.com/Cap-go/capacitor-admob) - CapacitorプラグインによるiOSおよびAndroid向けAdMob SDKのブリッジ
 - [capacitor-age-range](https://github.com/Cap-go/capacitor-age-range) - Capacitorプラグインによる年齢範囲検出。Google Play年齢シグナル（Android）＋Apple DeclaredAgeRange（iOS）
-- [capacitor-alarm](https://github.com/Cap-go/capacitor-alarm) - Capacitorプラグインによるネイティブアラームの設定と開閉
-- [capacitor-android-age-signals](https://github.com/Cap-go/capacitor-android-age-signals) - キャパシタプラグインでPlay Age Signals APIを使用して、ユーザーの年齢に関連するシグナルを取得します。
-- [capacitor-android-inline-install](https://github.com/Cap-go/capacitor-android-inline-install) - キャパシタプラグインでAndroidのインラインインストール機能をトリガーします。
-- [capacitor-android-kiosk](https://github.com/Cap-go/capacitor-android-kiosk) - キャパシタプラグインで「キオスクモード」を持つアプリを作成します。このプラグインを使用したアプリは、Androidのランチャーとして設定できます。
-- [capacitor-android-sms-retriever](https://github.com/Cap-go/capacitor-android-sms-retriever) - Android SMS Retrieverおよび電話番号ヒントAPI向けのキャパシタプラグイン。
-- [capacitor-android-usagestatsmanager](https://github.com/Cap-go/capacitor-android-usagestatsmanager) - Androidアプリの使用状況統計をネイティブに取得するキャパシタプラグイン。
-- [capacitor-app-attest](https://github.com/Cap-go/capacitor-app-attest) - iOSでのApp AttestおよびAndroidでのPlay Integrityの認証に向けたキャパシタプラグイン。
-- [capacitor-app-tracking-transparency](https://github.com/Cap-go/capacitor-app-tracking-transparency) - iOSのアプリトラッキング透明性向けのキャパシタプラグイン。
-- [capacitor-appinsights](https://github.com/Cap-go/capacitor-appinsights) - アプリインサイトSDKとの相互作用を可能にするキャパシタプラグイン。
-- [capacitor-appsflyer](https://github.com/Cap-go/capacitor-appsflyer) - AppsFlyerのアトリビューション、分析、ディープリンクに向けたキャパシタプラグイン。
-- [capacitor-asset-cache](https://github.com/Cap-go/capacitor-asset-cache) - 大きな画像や動画の透明なローカルキャッシュを実現するキャパシタプラグイン。
-- [capacitor-audio-recorder](https://github.com/Cap-go/capacitor-audio-recorder) - iOSおよびAndroidで音声を録音し、バックグラウンドで保持するキャパシタプラグイン。
-- [capacitor-audiosession](https://github.com/Cap-go/capacitor-audiosession) - 音声セッションの管理を行うキャパシタプラグイン。
-- [capacitor-auto](https://github.com/Cap-go/capacitor-auto) - CarPlayおよびAndroid Autoとの通信を行うキャパシタプラグイン。
-- [capacitor-autofill-save-password](https://github.com/Cap-go/capacitor-autofill-save-password) - iOSのウェブビューアプリでパスワードをキーチェーンに保存するダイアログを表示するキャパシタプラグイン。
-- [capacitor-background-geolocation](https://github.com/Cap-go/capacitor-background-geolocation) - アプリがバックグラウンドにいるときでも正確な地理位置情報の更新を送信するキャパシタプラグイン。
-- [capacitor-background-task](https://github.com/Cap-go/capacitor-background-task) - iOSおよびAndroidでの定期的なバックグラウンドフェッチタスクに向けたキャパシタプラグイン。
-- [capacitor-barometer](https://github.com/Cap-go/capacitor-barometer) - デバイスの気圧センサーの読み取りを行うキャパシタプラグイン。
-- [capacitor-bluetooth-low-energy](https://github.com/Cap-go/capacitor-bluetooth-low-energy) - Bluetooth Low Energy向けのキャパシタプラグイン。
-- [capacitor-brightness](https://github.com/Cap-go/capacitor-brightness) - iOSおよびAndroidでの画面明るさの制御を行うキャパシタプラグイン。
-- [capacitor-calendar](https://github.com/Cap-go/capacitor-calendar) - iOSおよびAndroidでのカレンダーイベントの管理、iOSでのリマインダー対応を含むキャパシタプラグイン。
-- [capacitor-camera-preview](https://github.com/Cap-go/capacitor-camera-preview) - キャパシタプラグインでJavaScriptおよびHTMLからカメラとの相互作用を可能にする
-- [capacitor-compass](https://github.com/Cap-go/capacitor-compass) - ナビゲーションコンパスにアクセスできるキャパシタプラグイン
-- [capacitor-contacts](https://github.com/Cap-go/capacitor-contacts) - iOSおよびAndroidでのネイティブ連絡先との相互作用を可能にするキャパシタプラグイン
-- [capacitor-contentsquare](https://github.com/Cap-go/capacitor-contentsquare) - Contentsquareモバイル分析SDKに接続するキャパシタプラグイン
-- [capacitor-crisp](https://github.com/Cap-go/capacitor-crisp) - CrispネイティブSDKを使用するキャパシタプラグイン
-- [capacitor-data-storage-sqlite](https://github.com/Cap-go/capacitor-data-storage-sqlite) - iOSおよびAndroid向けデータストレージ用のSQLiteキャパシタプラグイン
-- [capacitor-date-picker](https://github.com/Cap-go/capacitor-date-picker) - ネイティブの日付、時刻、日時、年月、範囲選択器に対応するキャパシタプラグイン
-- [capacitor-device-info](https://github.com/Cap-go/capacitor-device-info) - CPU、メモリ、GPU、ストレージ、および搭載センサーのメトリクスを読み取るキャパシタプラグイン
-- [capacitor-device-integrity](https://github.com/Cap-go/capacitor-device-integrity) - デバイスの整合性、Android Widevineの指紋、Play Integrity、iOS App Attest、DeviceCheckに対応するキャパシタプラグイン
-- [capacitor-document-scanner](https://github.com/Cap-go/capacitor-document-scanner) - iOSおよびAndroidでのドキュメントスキャンを可能にするキャパシタプラグイン
-- [capacitor-downloader](https://github.com/Cap-go/capacitor-downloader) - バックグラウンドまたはフォアグラウンドでファイルをダウンロードできるキャパシタプラグイン
-- [capacitor-env](https://github.com/Cap-go/capacitor-env) - キャパシタ設定に環境変数を保存・読み出しできるキャパシタプラグイン。マルチテナントアプリに有効。
-- [capacitor-facebook-analytics](https://github.com/Cap-go/capacitor-facebook-analytics) - Meta／Facebookアプリイベント分析用のキャパシタプラグイン
-- [capacitor-fast-sql](https://github.com/Cap-go/capacitor-fast-sql) - ローカルSQLに接続できる高速プロトコルを用いたキャパシタプラグイン
-- [capacitor-ffmpeg](https://github.com/Cap-go/capacitor-ffmpeg) - デバイス上でFFmpegをローカルに実行できるキャパシタプラグイン
-- [capacitor-file](https://github.com/Cap-go/capacitor-file) - ファイルシステム操作を行うキャパシタプラグイン。Cordovaのcordova-plugin-fileと互換性のあるAPIを持つ現代的な代替品。
-- [capacitor-file-compressor](https://github.com/Cap-go/capacitor-file-compressor) - iOS、Android、WebプラットフォームでPNG、JPEG、WebP形式をサポートする効率的な画像圧縮を実現するキャパシタプラグイン
+- [capacitor-alarm](https://github.com/Cap-go/capacitor-alarm) - ネイティブアラームの設定と起動用のCapacitorプラグイン
+- [capacitor-android-age-signals](https://github.com/Cap-go/capacitor-android-age-signals) - CapacitorプラグインでPlay Age Signals APIを使用して、ユーザーの年齢に関連するシグナルを取得します。
+- [capacitor-android-inline-install](https://github.com/Cap-go/capacitor-android-inline-install) - Androidのインラインインストール機能を起動するCapacitorプラグイン。
+- [capacitor-android-kiosk](https://github.com/Cap-go/capacitor-android-kiosk) - 「キオスクモード」を持つアプリを作成するCapacitorプラグイン。このプラグインを使用したアプリは、Androidのランチャーとして設定可能。
+- [capacitor-android-sms-retriever](https://github.com/Cap-go/capacitor-android-sms-retriever) - Android SMS Retrieverおよび電話番号ヒントAPI向けのCapacitorプラグイン。
+- [capacitor-android-usagestatsmanager](https://github.com/Cap-go/capacitor-android-usagestatsmanager) - Androidアプリの使用状況統計をネイティブに取得するCapacitorプラグイン。
+- [capacitor-app-attest](https://github.com/Cap-go/capacitor-app-attest) - iOSのApp AttestとAndroidのPlay Integrityによるアテステーション用のCapacitorプラグイン。
+- [capacitor-app-tracking-transparency](https://github.com/Cap-go/capacitor-app-tracking-transparency) - iOSのApp Tracking Transparency用のCapacitorプラグイン。
+- [capacitor-appinsights](https://github.com/Cap-go/capacitor-appinsights) - App Insights SDKを操作するためのCapacitorプラグイン。
+- [capacitor-appsflyer](https://github.com/Cap-go/capacitor-appsflyer) - AppsFlyerのアトリビューション、分析、ディープリンクに向けたCapacitorプラグイン。
+- [capacitor-asset-cache](https://github.com/Cap-go/capacitor-asset-cache) - 大容量の画像や動画を透過的にローカルキャッシュするCapacitorプラグイン。
+- [capacitor-audio-recorder](https://github.com/Cap-go/capacitor-audio-recorder) - iOSおよびAndroidでバックグラウンドでも音声を録音するCapacitorプラグイン。
+- [capacitor-audiosession](https://github.com/Cap-go/capacitor-audiosession) - 音声セッションの管理を行うCapacitorプラグイン。
+- [capacitor-auto](https://github.com/Cap-go/capacitor-auto) - CarPlayおよびAndroid Autoとの通信を行うCapacitorプラグイン。
+- [capacitor-autofill-save-password](https://github.com/Cap-go/capacitor-autofill-save-password) - iOSのウェブビューアプリでパスワードをキーチェーンに保存するダイアログを表示するCapacitorプラグイン。
+- [capacitor-background-geolocation](https://github.com/Cap-go/capacitor-background-geolocation) - アプリがバックグラウンドにある場合も位置情報の更新を取得するCapacitorプラグイン。
+- [capacitor-background-task](https://github.com/Cap-go/capacitor-background-task) - iOSおよびAndroidでの定期的なバックグラウンドフェッチタスクに向けたCapacitorプラグイン。
+- [capacitor-barometer](https://github.com/Cap-go/capacitor-barometer) - デバイスの気圧センサーの読み取りを行うCapacitorプラグイン。
+- [capacitor-bluetooth-low-energy](https://github.com/Cap-go/capacitor-bluetooth-low-energy) - Bluetooth Low Energy向けのCapacitorプラグイン。
+- [capacitor-brightness](https://github.com/Cap-go/capacitor-brightness) - iOSおよびAndroidでの画面明るさの制御を行うCapacitorプラグイン。
+- [capacitor-calendar](https://github.com/Cap-go/capacitor-calendar) - iOSおよびAndroidでのカレンダーイベントの管理、iOSでのリマインダー対応を含むCapacitorプラグイン。
+- [capacitor-camera-preview](https://github.com/Cap-go/capacitor-camera-preview) - CapacitorプラグインでJavaScriptおよびHTMLからカメラとの相互作用を可能にする
+- [capacitor-compass](https://github.com/Cap-go/capacitor-compass) - ネイティブのコンパスにアクセスするCapacitorプラグイン
+- [capacitor-contacts](https://github.com/Cap-go/capacitor-contacts) - iOSおよびAndroidでネイティブの連絡先にアクセスするCapacitorプラグイン
+- [capacitor-contentsquare](https://github.com/Cap-go/capacitor-contentsquare) - Contentsquareモバイル分析SDKに接続するCapacitorプラグイン
+- [capacitor-crisp](https://github.com/Cap-go/capacitor-crisp) - CrispネイティブSDKを使用するCapacitorプラグイン
+- [capacitor-data-storage-sqlite](https://github.com/Cap-go/capacitor-data-storage-sqlite) - iOSとAndroidでSQLiteを使ったデータストレージを提供するCapacitorプラグイン
+- [capacitor-date-picker](https://github.com/Cap-go/capacitor-date-picker) - ネイティブの日付、時刻、日時、年月、範囲選択器に対応するCapacitorプラグイン
+- [capacitor-device-info](https://github.com/Cap-go/capacitor-device-info) - CPU、メモリ、GPU、ストレージ、および搭載センサーのメトリクスを読み取るCapacitorプラグイン
+- [capacitor-device-integrity](https://github.com/Cap-go/capacitor-device-integrity) - デバイスの整合性、Android Widevineの指紋、Play Integrity、iOS App Attest、DeviceCheckに対応するCapacitorプラグイン
+- [capacitor-document-scanner](https://github.com/Cap-go/capacitor-document-scanner) - iOSおよびAndroidでのドキュメントスキャンを可能にするCapacitorプラグイン
+- [capacitor-downloader](https://github.com/Cap-go/capacitor-downloader) - バックグラウンドまたはフォアグラウンドでファイルをダウンロードできるCapacitorプラグイン
+- [capacitor-env](https://github.com/Cap-go/capacitor-env) - マルチテナントアプリ向けに、Capacitor設定で環境変数を保存・読み出すプラグイン。
+- [capacitor-facebook-analytics](https://github.com/Cap-go/capacitor-facebook-analytics) - Meta／Facebookアプリイベント分析用のCapacitorプラグイン
+- [capacitor-fast-sql](https://github.com/Cap-go/capacitor-fast-sql) - ローカルSQLに接続できる高速プロトコルを用いたCapacitorプラグイン
+- [capacitor-ffmpeg](https://github.com/Cap-go/capacitor-ffmpeg) - デバイス上でFFmpegをローカルに実行できるCapacitorプラグイン
+- [capacitor-file](https://github.com/Cap-go/capacitor-file) - ファイルシステム操作を行うCapacitorプラグイン。Cordovaのcordova-plugin-fileと互換性のあるAPIを持つ現代的な代替品。
+- [capacitor-file-compressor](https://github.com/Cap-go/capacitor-file-compressor) - iOS、Android、WebプラットフォームでPNG、JPEG、WebP形式をサポートする効率的な画像圧縮を実現するCapacitorプラグイン
 - [capacitor-file-picker](https://github.com/Cap-go/capacitor-file-picker) - ファイル選択プラグイン - ファイル、画像、動画、ディレクトリを選択可能。
-- [capacitor-file-sharer](https://github.com/Cap-go/capacitor-file-sharer) - Android、iOS、Web上でファイルの共有および保存を可能にするキャパシタプラグイン
-- [capacitor-firebase](https://github.com/Cap-go/capacitor-firebase) - Firebaseプラグイン（Android、iOS、Web対応）：現在のFirebase SDKを使用
-- [capacitor-flash](https://github.com/Cap-go/capacitor-flash) - フラッシュライト／ランプの切り替え用のキャパシタプラグイン
-- [capacitor-gtm](https://github.com/Cap-go/capacitor-gtm) - Googleタグマネージャー(GTM)を本番で使用できるキャパシタプラグイン
-- [capacitor-health](https://github.com/Cap-go/capacitor-health) - Apple HealthKitおよびGoogle Fitからのデータを操作できるキャパシタプラグイン
-- [capacitor-home-indicator](https://github.com/Cap-go/capacitor-home-indicator) - ホームボタンのインディケータを非表示・表示できるキャパシタプラグイン
-- [capacitor-ibeacon](https://github.com/Cap-go/capacitor-ibeacon) - iBeaconとの相互作用を可能にするキャパシタプラグイン
-- [capacitor-in-app-review](https://github.com/Cap-go/capacitor-in-app-review) - アプリストアの評価をユーザーに促すキャパシタプラグイン
-- [capacitor-inappbrowser](https://github.com/Cap-go/capacitor-inappbrowser) - アプリブラウザ内のurlChangeEventを扱うキャパシタプラグイン
-- [capacitor-incoming-call-kit](https://github.com/Cap-go/capacitor-incoming-call-kit) - Androidのフルスクリーン通知およびiOSのCallKitによるネイティブ通話UIを提供するキャパシタプラグイン
-- [capacitor-install-referrer](https://github.com/Cap-go/capacitor-install-referrer) - Google PlayインストールリファーラーおよびApple AdServicesによるインストール履歴を管理するキャパシタプラグイン
+- [capacitor-file-sharer](https://github.com/Cap-go/capacitor-file-sharer) - Android、iOS、Web上でファイルの共有および保存を可能にするCapacitorプラグイン
+- [capacitor-firebase](https://github.com/Cap-go/capacitor-firebase) - Android、iOS、Webに対応するCapacitor向けFirebaseプラグイン。原文では、その時点のFirebase SDKを使用すると説明されています
+- [capacitor-flash](https://github.com/Cap-go/capacitor-flash) - フラッシュライト／トーチの切り替え用のCapacitorプラグイン
+- [capacitor-gtm](https://github.com/Cap-go/capacitor-gtm) - Google Tag Manager（GTM）をネイティブに使用するCapacitorプラグイン
+- [capacitor-health](https://github.com/Cap-go/capacitor-health) - Apple HealthKitおよびGoogle Fitからのデータを操作できるCapacitorプラグイン
+- [capacitor-home-indicator](https://github.com/Cap-go/capacitor-home-indicator) - ホームボタンのインディケータを非表示・表示できるCapacitorプラグイン
+- [capacitor-ibeacon](https://github.com/Cap-go/capacitor-ibeacon) - iBeaconとの相互作用を可能にするCapacitorプラグイン
+- [capacitor-in-app-review](https://github.com/Cap-go/capacitor-in-app-review) - アプリストアの評価をユーザーに促すCapacitorプラグイン
+- [capacitor-inappbrowser](https://github.com/Cap-go/capacitor-inappbrowser) - アプリブラウザ内のurlChangeEventを扱うCapacitorプラグイン
+- [capacitor-incoming-call-kit](https://github.com/Cap-go/capacitor-incoming-call-kit) - Androidのフルスクリーン通知およびiOSのCallKitによるネイティブ通話UIを提供するCapacitorプラグイン
+- [capacitor-install-referrer](https://github.com/Cap-go/capacitor-install-referrer) - Google Play Install ReferrerとApple AdServicesによるインストールのアトリビューションを行うCapacitorプラグイン
 - [capacitor-intent-launcher](https://github.com/Cap-go/capacitor-intent-launcher) - CapacitorアプリからAndroidのIntentを実行し、システム設定画面を開く
-- [capacitor-intercom](https://github.com/Cap-go/capacitor-intercom) - Intercom SDK用のキャパシタプラグインブリッジ
-- [capacitor-intune](https://github.com/Cap-go/capacitor-intune) - Microsoft Intune MAMの登録、アプリ保護ポリシー、アプリ設定、MSAL認証をサポートするキャパシタプラグイン
-- [capacitor-is-root](https://github.com/Cap-go/capacitor-is-root) - Jailbreak/Rootの検出を可能にするキャパシタプラグイン
-- [capacitor-ivs-player](https://github.com/Cap-go/capacitor-ivs-player) - AndroidおよびiOS向けのネイティブIVSプレイヤーを提供するキャパシタプラグイン
-- [capacitor-jw-player](https://github.com/Cap-go/capacitor-jw-player) - JWプレイヤーを使用して動画をネイティブに再生できるキャパシタプラグイン
-- [capacitor-keep-awake](https://github.com/Cap-go/capacitor-keep-awake) - デバイスの画面が暗くなるか、睡眠状態に入るのを防ぐキャパシタプラグイン
-- [capacitor-launch-navigator](https://github.com/Cap-go/capacitor-launch-navigator) - AndroidおよびiOS向けのネイティブルートナビゲーションアプリを起動するキャパシタプラグイン
-- [capacitor-light-sensor](https://github.com/Cap-go/capacitor-light-sensor) - デバイスの光センサ（Android限定）にアクセスできるキャパシタプラグイン
+- [capacitor-intercom](https://github.com/Cap-go/capacitor-intercom) - Intercom SDK用のCapacitorプラグインブリッジ
+- [capacitor-intune](https://github.com/Cap-go/capacitor-intune) - Microsoft Intune MAMの登録、アプリ保護ポリシー、アプリ設定、MSAL認証をサポートするCapacitorプラグイン
+- [capacitor-is-root](https://github.com/Cap-go/capacitor-is-root) - Jailbreak/Rootの検出を可能にするCapacitorプラグイン
+- [capacitor-ivs-player](https://github.com/Cap-go/capacitor-ivs-player) - AndroidおよびiOS向けのネイティブIVSプレイヤーを提供するCapacitorプラグイン
+- [capacitor-jw-player](https://github.com/Cap-go/capacitor-jw-player) - JWプレイヤーを使用して動画をネイティブに再生できるCapacitorプラグイン
+- [capacitor-keep-awake](https://github.com/Cap-go/capacitor-keep-awake) - デバイス画面の減光やスリープを防ぐCapacitorプラグイン
+- [capacitor-launch-navigator](https://github.com/Cap-go/capacitor-launch-navigator) - AndroidおよびiOS向けのネイティブの経路案内アプリを起動するCapacitorプラグイン
+- [capacitor-light-sensor](https://github.com/Cap-go/capacitor-light-sensor) - デバイスの光センサ（Android限定）にアクセスできるCapacitorプラグイン
 - [capacitor-live-activities](https://github.com/Cap-go/capacitor-live-activities) - iOSのライブアクティビティをCapacitorから管理する
-- [capacitor-live-reload](https://github.com/Cap-go/capacitor-live-reload) - リモートVite開発サーバーからCapacitorアプリをリアルタイムで再読み込みするキャパシタプラグイン
-- [capacitor-llm](https://github.com/Cap-go/capacitor-llm) - Apple IntelligenceをサポートしたiOSおよびAndroidでLLMモデルをローカルに実行できるキャパシタプラグイン
-- [capacitor-media-session](https://github.com/Cap-go/capacitor-media-session) - デバイスのメディアセッションコントロールを公開するキャパシタプラグイン
-- [capacitor-mock-location-detector](https://github.com/Cap-go/capacitor-mock-location-detector) - シミュレートされたGPS位置を検知し、アプリのフィッシングを可能にする開発ツールを提供するキャパシタプラグイン
-- [capacitor-mqtt](https://github.com/Cap-go/capacitor-mqtt) - AndroidおよびiOSでのMQTT接続を可能にするキャパシタプラグイン
-- [capacitor-mute](https://github.com/Cap-go/capacitor-mute) - デバイスのミュートスイッチが有効／無効になっているかを検知するキャパシタプラグイン
-- [capacitor-mux-player](https://github.com/Cap-go/capacitor-mux-player) - iOSおよびAndroidでMux Player SDKを使用して動画を再生するキャパシタプラグイン
-- [capacitor-native-audio](https://github.com/Cap-go/capacitor-native-audio) - ネイティブなオーディオエンジンを提供するキャパシタプラグイン
-- [capacitor-native-biometric](https://github.com/Cap-go/capacitor-native-biometric) - Face ID、Touch ID、Androidバイオメトリクスをサポートしたキャパシタのセキュアなバイオメトリック認証
-- [capacitor-native-loader](https://github.com/Cap-go/capacitor-native-loader) - キャパシタアプリにおけるネイティブアニメーションローダー、透過オーバーレイ、Lottieアセット、WebViewのサイズ変更
-- [capacitor-native-market](https://github.com/Cap-go/capacitor-native-market) - ネイティブなPlay Store／App Storeを開くキャパシタプラグイン
-- [capacitor-native-navigation](https://github.com/Cap-go/capacitor-native-navigation) - Liquid glassネイティブナビゲーションタブを提供するキャパシタプラグイン
-- [capacitor-native-purchases](https://github.com/Cap-go/capacitor-native-purchases) - 最新のAndroidおよびiOSライブラリを用いたキャパシタにおけるIAP管理プラグイン
-- [capacitor-nativegeocoder](https://github.com/Cap-go/capacitor-nativegeocoder) - ネイティブなフォワードおよびリバース地名変換を提供するキャパシタプラグイン
-- [capacitor-navigation-bar](https://github.com/Cap-go/capacitor-navigation-bar) - Android Lollipop以降のナビゲーションバーの色を設定するキャパシタプラグイン
-- [capacitor-network-diagnostics](https://github.com/Cap-go/capacitor-network-diagnostics) - ネイティブなネットワーク診断を提供するキャパシタプラグイン
-- [capacitor-nfc](https://github.com/Cap-go/capacitor-nfc) - NFCタグの読み書きを可能にするキャパシタプラグイン。他NFC対応デバイスとのデータ送受信も可能。
+- [capacitor-live-reload](https://github.com/Cap-go/capacitor-live-reload) - リモートVite開発サーバーからCapacitorアプリをリアルタイムで再読み込みするCapacitorプラグイン
+- [capacitor-llm](https://github.com/Cap-go/capacitor-llm) - Apple IntelligenceをサポートしたiOSおよびAndroidでLLMモデルをローカルに実行できるCapacitorプラグイン
+- [capacitor-media-session](https://github.com/Cap-go/capacitor-media-session) - デバイスのメディアセッションコントロールを公開するCapacitorプラグイン
+- [capacitor-mock-location-detector](https://github.com/Cap-go/capacitor-mock-location-detector) - シミュレートされたGPS位置と、位置偽装アプリを可能にする開発ツールを検出するCapacitorプラグイン
+- [capacitor-mqtt](https://github.com/Cap-go/capacitor-mqtt) - AndroidおよびiOSでのMQTT接続を可能にするCapacitorプラグイン
+- [capacitor-mute](https://github.com/Cap-go/capacitor-mute) - デバイスのミュートスイッチが有効／無効になっているかを検知するCapacitorプラグイン
+- [capacitor-mux-player](https://github.com/Cap-go/capacitor-mux-player) - iOSおよびAndroidでMux Player SDKを使用して動画を再生するCapacitorプラグイン
+- [capacitor-native-audio](https://github.com/Cap-go/capacitor-native-audio) - ネイティブなオーディオエンジンを提供するCapacitorプラグイン
+- [capacitor-native-biometric](https://github.com/Cap-go/capacitor-native-biometric) - Face ID、Touch ID、AndroidバイオメトリクスをサポートしたCapacitorのセキュアなバイオメトリック認証
+- [capacitor-native-loader](https://github.com/Cap-go/capacitor-native-loader) - Capacitorアプリにおけるネイティブアニメーションローダー、透過オーバーレイ、Lottieアセット、WebViewのサイズ変更
+- [capacitor-native-market](https://github.com/Cap-go/capacitor-native-market) - ネイティブなPlay Store／App Storeを開くCapacitorプラグイン
+- [capacitor-native-navigation](https://github.com/Cap-go/capacitor-native-navigation) - Liquid glassネイティブナビゲーションタブを提供するCapacitorプラグイン
+- [capacitor-native-purchases](https://github.com/Cap-go/capacitor-native-purchases) - CapacitorのIAPを管理するプラグイン。原文では、その時点の最新のAndroidおよびiOSライブラリを使用すると説明されています
+- [capacitor-nativegeocoder](https://github.com/Cap-go/capacitor-nativegeocoder) - ネイティブな順方向および逆方向のジオコーディングを提供するCapacitorプラグイン
+- [capacitor-navigation-bar](https://github.com/Cap-go/capacitor-navigation-bar) - Android Lollipop以降のナビゲーションバーの色を設定するCapacitorプラグイン
+- [capacitor-network-diagnostics](https://github.com/Cap-go/capacitor-network-diagnostics) - ネイティブなネットワーク診断を提供するCapacitorプラグイン
+- [capacitor-nfc](https://github.com/Cap-go/capacitor-nfc) - NFCタグの読み書きを可能にするCapacitorプラグイン。他NFC対応デバイスとのデータ送受信も可能。
 - [capacitor-notifications](https://github.com/Cap-go/capgo.app/tree/main/packages/capacitor-notifications) - ユーザー検索、バッジ、統計を含むネイティブiOSおよびAndroidのプッシュ通知を送信
-- [capacitor-passkey](https://github.com/Cap-go/capacitor-passkey) - WebAuthnと互換性のあるシェルを備えたキャパシタパスキープラグイン（ネイティブアプリ対応）
+- [capacitor-passkey](https://github.com/Cap-go/capacitor-passkey) - WebAuthn互換層を備えたCapacitorパスキープラグイン（ネイティブアプリ対応）
 - [capacitor-patch](https://github.com/Cap-go/capacitor-patch) - cap syncおよびcap update時に検証済みCapgoパッチを適用
-- [capacitor-pay](https://github.com/Cap-go/capacitor-pay) - iOS（Apple Pay）およびAndroid（Google Pay）でのネイティブ決済をトリガーするキャパシタプラグイン
-- [capacitor-pdf-generator](https://github.com/Cap-go/capacitor-pdf-generator) - CapacitorプラグインでiOSおよびAndroidでHTML文字列またはURLからPDFファイルを生成します
-- [capacitor-pedometer](https://github.com/Cap-go/capacitor-pedometer) - 歩数計データ（歩数、距離、ペース、cadence、階数）を取得できるCapacitorプラグイン
+- [capacitor-pay](https://github.com/Cap-go/capacitor-pay) - iOS（Apple Pay）およびAndroid（Google Pay）でのネイティブ決済をトリガーするCapacitorプラグイン
+- [capacitor-pdf-generator](https://github.com/Cap-go/capacitor-pdf-generator) - iOSとAndroidでHTML文字列またはURLからPDFファイルを生成するCapacitorプラグイン
+- [capacitor-pedometer](https://github.com/Cap-go/capacitor-pedometer) - 歩数計データ（歩数、距離、ペース、歩調、階数）を取得できるCapacitorプラグイン
 - [capacitor-persistent-account](https://github.com/Cap-go/capacitor-persistent-account) - アプリのインストール間でアカウントデータを保持できるCapacitorプラグイン
 - [capacitor-persistent-uuid](https://github.com/Cap-go/capacitor-persistent-uuid) - アプリの再インストールやアップデートを繰り返しても保持されるアプリUUIDを提供するCapacitorプラグイン
 - [capacitor-persona](https://github.com/Cap-go/capacitor-persona) - iOSおよびAndroidでPersona Inquiryフローを起動できるCapacitorプラグイン
-- [capacitor-photo-library](https://github.com/Cap-go/capacitor-photo-library) - 写真ギャラリーをウェブページとして表示する、または編集できないが認可不要なネイティブ画面を表示するCapacitorプラグイン
-- [capacitor-plus](https://github.com/Cap-go/capacitor-plus) - Capacitor+は、コミュニティによる修正と速いリリースを提供する、常に同期されるCapacitorのフォークです
-- [capacitor-pretty-toast](https://github.com/Cap-go/capacitor-pretty-toast) - Capacitorおよびウェブ向けのネイティブ第一のシンプルなトースト通知
+- [capacitor-photo-library](https://github.com/Cap-go/capacitor-photo-library) - 写真ギャラリーをWebページまたはネイティブ画面として表示するCapacitorプラグイン。原文では、ネイティブ画面は認可不要ですがカスタマイズできないと説明されています
+- [capacitor-plus](https://github.com/Cap-go/capacitor-plus) - Capacitor+はCapacitorのフォークです。原文では、Capacitorとの同期を維持し、コミュニティによる修正とより速いリリースを提供すると説明されています
+- [capacitor-pretty-toast](https://github.com/Cap-go/capacitor-pretty-toast) - CapacitorとWeb向けのネイティブ優先のトースト通知
 - [capacitor-printer](https://github.com/Cap-go/capacitor-printer) - ドキュメント、HTML、PDF、画像、ウェブビューの印刷を可能にするCapacitorプラグイン
 - [capacitor-privacy-screen](https://github.com/Cap-go/capacitor-privacy-screen) - AndroidのスクリーンショットやiOSアプリスイッチャーのプレビューでアプリコンテンツを隠すCapacitorプラグイン
-- [capacitor-proximity](https://github.com/Cap-go/capacitor-proximity) - モバイルアプリでプロキシモニタリングを有効にするCapacitorプラグイン
+- [capacitor-proximity](https://github.com/Cap-go/capacitor-proximity) - モバイルアプリで近接監視を有効にするCapacitorプラグイン
 - [capacitor-realtimekit](https://github.com/Cap-go/capacitor-realtimekit) - Cloudflare Realtime Kitを使用するCapacitorプラグイン
 - [capacitor-recaptcha](https://github.com/Cap-go/capacitor-recaptcha) - reCAPTCHAおよびreCAPTCHA Enterpriseトークンを生成するCapacitorプラグイン
 - [capacitor-ricoh360-camera-plugin](https://github.com/Cap-go/capacitor-ricoh360-camera-plugin) - ricoh camera 360用のCapacitorプラグイン
@@ -263,40 +219,40 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [capacitor-screen-recorder](https://github.com/Cap-go/capacitor-screen-recorder) - スマホの画面をネイティブで録画するCapacitorプラグイン
 - [capacitor-shake](https://github.com/Cap-go/capacitor-shake) - 物理デバイスがシェイクジェスチャーを実行したときに検知するCapacitorプラグイン
 - [capacitor-share-target](https://github.com/Cap-go/capacitor-share-target) - アプリ内で共有ターゲットインテントを受け取るCapacitorプラグイン
-- [capacitor-sheets](https://github.com/Cap-go/capacitor-sheets) - フレームワークに依存しないシート、ドレーアー、ダイアログ、オーバーレイプリミティブを提供するCapacitorプラグイン
-- [capacitor-sim](https://github.com/Cap-go/capacitor-sim) - SIMカードから情報を取得できるキャパシタプラグイン
-- [capacitor-social-login](https://github.com/Cap-go/capacitor-social-login) - Google、Apple、Facebookなどでのログインを簡単かつ迅速に実装できるキャパシタプラグイン
-- [capacitor-speech-recognition](https://github.com/Cap-go/capacitor-speech-recognition) - 音声認識に使えるキャパシタプラグイン
-- [capacitor-speech-synthesis](https://github.com/Cap-go/capacitor-speech-synthesis) - テキストから音声を合成するプラグインで、言語、声、トーン、速度、音量を完全に制御可能
-- [capacitor-ssl-pinning](https://github.com/Cap-go/capacitor-ssl-pinning) - AndroidおよびiOS向けのキャパシタSSLピンニングプラグイン（CapacitorHttpとの統合）
-- [capacitor-streamcall](https://github.com/Cap-go/capacitor-streamcall) - キャパシタ向けのStreamCall SDKプラグイン
-- [capacitor-stripe-identity](https://github.com/Cap-go/capacitor-stripe-identity) - StripeのID認証に使えるキャパシタプラグイン
-- [capacitor-stripe-pay](https://github.com/Cap-go/capacitor-stripe-pay) - Stripeの支払いシート、Apple Pay、Google Payに使えるキャパシタプラグイン
-- [capacitor-stripe-terminal](https://github.com/Cap-go/capacitor-stripe-terminal) - Stripe Terminalによる店頭支払いに使えるキャパシタプラグイン
-- [capacitor-supabase](https://github.com/Cap-go/capacitor-supabase) - キャパシタ向けのネイティブSupabase認証、JWTアクセス、および基本的なデータベースヘルパー
-- [capacitor-textinteraction](https://github.com/Cap-go/capacitor-textinteraction) - iOSアプリでのテキスト相互作用を切り替えるキャパシタプラグイン
-- [capacitor-transitions](https://github.com/Cap-go/capacitor-transitions) - キャパシタアプリ向けのフレームワークに依存しないページ遷移。iOSスタイルのナビゲーションで意見を一切持ちません
+- [capacitor-sheets](https://github.com/Cap-go/capacitor-sheets) - フレームワークに依存しないシート、ドロワー、ダイアログ、オーバーレイプリミティブを提供するCapacitorプラグイン
+- [capacitor-sim](https://github.com/Cap-go/capacitor-sim) - SIMカードから情報を取得できるCapacitorプラグイン
+- [capacitor-social-login](https://github.com/Cap-go/capacitor-social-login) - Google、Apple、Facebookなどのプロバイダーによるログインを実装するCapacitorプラグイン
+- [capacitor-speech-recognition](https://github.com/Cap-go/capacitor-speech-recognition) - 音声認識に使えるCapacitorプラグイン
+- [capacitor-speech-synthesis](https://github.com/Cap-go/capacitor-speech-synthesis) - テキストから音声を合成するプラグインで、言語、声、ピッチ、速度、音量を完全に制御可能
+- [capacitor-ssl-pinning](https://github.com/Cap-go/capacitor-ssl-pinning) - AndroidとiOS向けのSSLピンニング用Capacitorプラグイン。CapacitorHttpと統合
+- [capacitor-streamcall](https://github.com/Cap-go/capacitor-streamcall) - Capacitor向けのStreamCall SDKプラグイン
+- [capacitor-stripe-identity](https://github.com/Cap-go/capacitor-stripe-identity) - StripeのID認証に使えるCapacitorプラグイン
+- [capacitor-stripe-pay](https://github.com/Cap-go/capacitor-stripe-pay) - Stripeの支払いシート、Apple Pay、Google Payに使えるCapacitorプラグイン
+- [capacitor-stripe-terminal](https://github.com/Cap-go/capacitor-stripe-terminal) - Stripe Terminalによる店頭支払いに使えるCapacitorプラグイン
+- [capacitor-supabase](https://github.com/Cap-go/capacitor-supabase) - Capacitor向けのネイティブSupabase認証、JWTアクセス、および基本的なデータベースヘルパー
+- [capacitor-textinteraction](https://github.com/Cap-go/capacitor-textinteraction) - iOSアプリでのテキスト相互作用を切り替えるCapacitorプラグイン
+- [capacitor-transitions](https://github.com/Cap-go/capacitor-transitions) - フレームワークに依存しないCapacitorアプリのページ遷移。特定の設計方針を強制せず、iOSスタイルのナビゲーションを提供
 - [capacitor-twilio-video](https://capgo.app/plugins/capacitor-twilio-video/) - Twilio Videoのルームにネイティブの音声、カメラ、ルームライフサイクルイベントで参加
-- [capacitor-twilio-voice](https://github.com/Cap-go/capacitor-twilio-voice) - Twilio Voice SDKを使って電話の呼び出しを作成・応答できるキャパシタプラグイン
-- [capacitor-updater](https://github.com/Cap-go/capacitor-updater) - 即時更新を実現するキャパシタプラグイン：アップデート、修正、変更、新機能を数分以内に提供
-- [capacitor-uploader](https://github.com/Cap-go/capacitor-uploader) - ネイティブ層でファイルをアップロードできるキャパシタプラグイン
-- [capacitor-uwb](https://github.com/Cap-go/capacitor-uwb) - iOSおよびAndroid向けの超広帯域（UWB）距離測定に使えるキャパシタプラグイン
-- [capacitor-verisoul](https://github.com/Cap-go/capacitor-verisoul) - Verisoulによる詐欺防止セッションに使えるキャパシタプラグイン
-- [capacitor-video-player](https://github.com/Cap-go/capacitor-video-player) - ネイティブプレイヤーで動画を再生できるキャパシタプラグイン
-- [capacitor-video-thumbnails](https://github.com/Cap-go/capacitor-video-thumbnails) - ローカルまたはリモートの動画ファイルから動画のサムネイルを生成するキャパシタプラグイン
-- [capacitor-volume-buttons](https://github.com/Cap-go/capacitor-volume-buttons) - キャパシタプラグインでボリュームボタンの押下を検知する
-- [capacitor-watch](https://github.com/Cap-go/capacitor-watch) - Apple Watchとの通信を可能にする、両方向メッセージをサポートするキャパシタプラグイン
-- [capacitor-webview-crash](https://github.com/Cap-go/capacitor-webview-crash) - WebViewのクラッシュを検知するキャパシタプラグイン
-- [capacitor-webview-guardian](https://github.com/Cap-go/capacitor-webview-guardian) - バックグラウンドでWebViewが終了された際に、フォアグラウンド時に再起動するよう検知するキャパシタプラグイン
-- [capacitor-webview-version-checker](https://github.com/Cap-go/capacitor-webview-version-checker) - AndroidのWebViewエンジンの古さをチェックし、ネイティブアップデートプロンプトと実行時状態イベントを提供するキャパシタプラグイン
-- [capacitor-wechat](https://github.com/Cap-go/capacitor-wechat) - WeChat SDKとの相互作用を可能にするキャパシタプラグイン
+- [capacitor-twilio-voice](https://github.com/Cap-go/capacitor-twilio-voice) - Twilio Voice SDKを使って電話の呼び出しを作成・応答できるCapacitorプラグイン
+- [capacitor-updater](https://github.com/Cap-go/capacitor-updater) - ライブアップデート、修正、変更、新機能を配信するCapacitorプラグイン。原文では数分以内に配信すると説明されています
+- [capacitor-uploader](https://github.com/Cap-go/capacitor-uploader) - ネイティブ層でファイルをアップロードできるCapacitorプラグイン
+- [capacitor-uwb](https://github.com/Cap-go/capacitor-uwb) - iOSおよびAndroid向けの超広帯域（UWB）距離測定に使えるCapacitorプラグイン
+- [capacitor-verisoul](https://github.com/Cap-go/capacitor-verisoul) - Verisoulによる詐欺防止セッションに使えるCapacitorプラグイン
+- [capacitor-video-player](https://github.com/Cap-go/capacitor-video-player) - ネイティブプレイヤーで動画を再生できるCapacitorプラグイン
+- [capacitor-video-thumbnails](https://github.com/Cap-go/capacitor-video-thumbnails) - ローカルまたはリモートの動画ファイルから動画のサムネイルを生成するCapacitorプラグイン
+- [capacitor-volume-buttons](https://github.com/Cap-go/capacitor-volume-buttons) - Capacitorプラグインでボリュームボタンの押下を検知する
+- [capacitor-watch](https://github.com/Cap-go/capacitor-watch) - Apple Watchとの通信を可能にする、両方向メッセージをサポートするCapacitorプラグイン
+- [capacitor-webview-crash](https://github.com/Cap-go/capacitor-webview-crash) - WebViewがクラッシュから復旧したことを検出するCapacitorプラグイン
+- [capacitor-webview-guardian](https://github.com/Cap-go/capacitor-webview-guardian) - バックグラウンドでWebViewが終了されたことを検出し、アプリがフォアグラウンドへ戻るとWebViewを再起動するCapacitorプラグイン
+- [capacitor-webview-version-checker](https://github.com/Cap-go/capacitor-webview-version-checker) - AndroidのWebViewエンジンの古さをチェックし、ネイティブアップデートプロンプトと実行時状態イベントを提供するCapacitorプラグイン
+- [capacitor-wechat](https://github.com/Cap-go/capacitor-wechat) - WeChat SDKとの相互作用を可能にするCapacitorプラグイン
 - [capacitor-widget-kit](https://github.com/Cap-go/capacitor-widget-kit) - Capgo WidgetKitプラグインにワークアウトLive Activityの例とMaestroのスモークテストを提供
-- [capacitor-wifi](https://github.com/Cap-go/capacitor-wifi) - あなたのキャパシタアプリのWiFi接続を管理するキャパシタプラグイン
+- [capacitor-wifi](https://github.com/Cap-go/capacitor-wifi) - あなたのCapacitorアプリのWiFi接続を管理するCapacitorプラグイン
 - [capacitor-youtube-player](https://github.com/Cap-go/capacitor-youtube-player) - YouTubeプレイヤーのコントロールをCapacitorアプリに埋め込むためのプレイヤープラグイン
-- [capacitor-zebra-datawedge](https://github.com/Cap-go/capacitor-zebra-datawedge) - Zebra AndroidデバイスでのZebra DataWedgeプロファイル管理、通知、クエリ、ソフトスキャンを可能にするキャパシタプラグイン
-- [capacitor-zip](https://github.com/Cap-go/capacitor-zip) - iOS、Android、Webでファイルの圧縮と展開を行うキャパシタプラグイン
-- [cordova-updater](https://github.com/Cap-go/cordova-updater) - Cordova iOSおよびAndroid向けのOTAライブアップデート（アップダートプラグインと同じAPI）
-- [electron-updater](https://github.com/Cap-go/electron-updater) - Electronアプリ向けのOTAライブアップデート（アップダートプラグインと同じAPI）
+- [capacitor-zebra-datawedge](https://github.com/Cap-go/capacitor-zebra-datawedge) - Zebra AndroidデバイスでのZebra DataWedgeプロファイル管理、通知、クエリ、ソフトスキャンを可能にするCapacitorプラグイン
+- [capacitor-zip](https://github.com/Cap-go/capacitor-zip) - iOS、Android、Webでファイルの圧縮と展開を行うCapacitorプラグイン
+- [cordova-updater](https://github.com/Cap-go/cordova-updater) - Cordova iOSおよびAndroid向けのOTAライブアップデート（updaterプラグインと同じAPI）
+- [electron-updater](https://github.com/Cap-go/electron-updater) - Electronアプリ向けのOTAライブアップデート（updaterプラグインと同じAPI）
 - [tauri-updater](https://github.com/Cap-go/tauri-updater) - Tauriアプリ向けのOTAライブアップデート
 
 ## 決済ゲートウェイ統合 <a id="payment-gateway-integrations"></a>
@@ -305,7 +261,7 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [Ionic 4 Apple Pay Payment Integration](https://enappd.com/blog/how-to-integrate-apple-pay-in-ionic-4-apps/21)
 - [Ionic 4 Razorpay Payment Integration](https://enappd.com/blog/how-to-integrate-razorpay-in-ionic-4-apps-and-pwa/20)
 
-## Backend as a Service <a id="backend-as-a-service"></a>
+## バックエンド連携 <a id="backend-as-a-service"></a>
 - [10 Minutes with Ionic: Calling an API](http://blog.ionic.io/10-minutes-with-ionic-2-calling-an-api/)
 - [Using Http to Fetch Remote Data from a Server in Ionic](http://www.joshmorony.com/using-http-to-fetch-remote-data-from-a-server-in-ionic-2/)
 - [Posting data from Ionic app to a PHP server](http://www.nikola-breznjak.com/blog/ionic2/posting-data-from-ionic-2-app/)
@@ -319,7 +275,7 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [Ionic2-vscode](https://marketplace.visualstudio.com/items?itemName=jgw9617.ionic2-vscode)
 - [Vim-ionic2](https://github.com/akz92/vim-ionic2)
 - [Capacitor safe area simulator](https://chromewebstore.google.com/detail/capacitor-safe-area-simul/ddaaodgcccedhjbjeollookhompnlfhi) - ブラウザ内で安全領域をシミュレートするChrome拡張機能（Ionic、Knsta UIおよびTailwind Capacitorに対応）
-- [Capstart](https://github.com/AdrienADV/capstart) - React、Supabase、shadcn/uiを使用したCapacitorアプリの作成や、既存のウェブフレームワークプロジェクトにCapacitorを追加するためのCLIおよびスタートアップツールキット
+- [Capstart](https://github.com/AdrienADV/capstart) - React、Supabase、shadcn/uiを使用したCapacitorアプリの作成や、既存のウェブフレームワークプロジェクトにCapacitorを追加するためのCLIおよびスターターツールキット
 - [Capgo Skills](https://capgo.app/skills/) - Ionic/Capacitorスキルをインタラクティブなチャレンジでテスト
 - [Capgo Security Scanner](https://capgo.app/security-scanner/) - あなたのCapacitorアプリのセキュリティ脆弱性をスキャン
 - [Capgo Semver Tester](https://capgo.app/semver_tester/) - Capacitorプラグインのセマンティックバージョン互換性をテスト
@@ -335,7 +291,7 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [n8n nodes](https://github.com/Cap-go/n8n-nodes-capgo) - n8nワークフローからライブアップデートおよびネイティブビルドを自動化
 - [Standard Version](https://github.com/Cap-go/standard-version-for-capacitor) - アプリの自動バージョン管理
 - [CI/CD pipeline setup](https://capgo.app/blog/capacitor-cicd-pipeline-setup-guide/) - ビルド、テスト、ライブアップデートのデプロイを自動化
-- [OTA updates in CI/CD](https://capgo.app/blog/capacitor-ota-updates-cicd-integration-guide/) - パイプラインからオーバーアイアップデートを配信
+- [OTA updates in CI/CD](https://capgo.app/blog/capacitor-ota-updates-cicd-integration-guide/) - パイプラインからOTAアップデートを配信
 
 ## 動画チュートリアル <a id="video-tutorials"></a>
 - [Build a Todo App from Scratch with Ionic](http://www.joshmorony.com/build-a-todo-app-from-scratch-with-ionic-2-video-tutorial/)
@@ -343,43 +299,41 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [Build a Custom Flash Card Component in Ionic](https://www.youtube.com/watch?v=BKFQKywl_GM)
 - [Hacking CSS in Ionic](https://www.youtube.com/watch?v=sXFmkdhOEVc)
 - [Learn Ionic 3 From Scratch](https://www.youtube.com/watch?v=JcEGTektejA&list=PLYxzS__5yYQng-XnJhB21Jc7NW1OIaqct)
-- [TutorialSearch](https://tutorialsearch.io/browse/mobile-development/ionic-framework) - Udemy、Skillshare、Pluralsingなど、主要な学習プラットフォームの45以上のカテゴリにわたる5万件以上のチュートリアルを無料でクロスプラットフォーム検索エンジンでインデックス
+- [TutorialSearch](https://tutorialsearch.io/browse/mobile-development/ionic-framework) - クロスプラットフォームの検索エンジン。原文では無料で、Udemy、Skillshare、Pluralsightなど主要な学習プラットフォームの45以上のカテゴリから5万件以上のチュートリアルを索引化すると説明されています
 - [Ionic & Capacitor for Building Native Mobile Apps](https://www.youtube.com/watch?v=K7ghUiXLef8) - freeCodeCampによる初心者向け完全コース
-- [From React Web to Native Mobile App](https://www.youtube.com/watch?v=IwHt_QpIa8A) - シモン・グリム
-- [How to Build a Native App from Angular Projects](https://www.youtube.com/watch?v=V2Wn2JROUEo) - シモン・グリム
-- [Building a Native Mobile App with Next.js](https://www.youtube.com/watch?v=xQKtDgJXrlM) - シモン・グリム
-- [How To Create A Mobile App Using Vite, Vue and Ionic](https://www.youtube.com/watch?v=K_OwSHPxT-A) - アーロン・サウスウェル
-- [Building Modern Angular Apps with Ionic](https://www.youtube.com/watch?v=tbrJJkSYQ04) - シモン・グリム
-- [How to Setup Deep Links (iOS & Android)](https://www.youtube.com/watch?v=tAQwllZSQD8) - シモン・グリム
+- [From React Web to Native Mobile App](https://www.youtube.com/watch?v=IwHt_QpIa8A) - Simon Grimm
+- [How to Build a Native App from Angular Projects](https://www.youtube.com/watch?v=V2Wn2JROUEo) - Simon Grimm
+- [Building a Native Mobile App with Next.js](https://www.youtube.com/watch?v=xQKtDgJXrlM) - Simon Grimm
+- [How To Create A Mobile App Using Vite, Vue and Ionic](https://www.youtube.com/watch?v=K_OwSHPxT-A) - Aaron Saunders
+- [Building Modern Angular Apps with Ionic](https://www.youtube.com/watch?v=tbrJJkSYQ04) - Simon Grimm
+- [How to Setup Deep Links (iOS & Android)](https://www.youtube.com/watch?v=tAQwllZSQD8) - Simon Grimm
 
 ## Webアプリの変換 <a id="convert-a-web-app"></a>
 
-既存のWebアプリを公開済みモバイルアプリへ変換するまでを扱うチュートリアルです。
+既存のWebアプリをモバイルアプリにし、公開するまでの手順を扱うチュートリアルです。
 
 - [Transform a PWA into a native app](https://capgo.app/blog/transform-pwa-to-native-app-with-capacitor/) - iOS および Android 用のプログレッシブウェブアプリをパッケージ化する
 - [Turn a web app into a mobile app](https://capgo.app/blog/how-easy-is-it-to-make-web-app-into-mobile-app-with-capacitor/) - ウェブアプリをラップしてストア審査を通過させるために必要なこと
 - [Convert a Lovable app to iOS and Android](https://capgo.app/blog/transform-lovable-dev-app-to-mobile-with-capacitor/) - Lovable からエクスポートし、Capacitor でラップして署名済みバイナリを配布する
-- [Build iOS apps from Windows](https://capgo.app/blog/build-ios-app-from-windows-capacitor-capgo-build/) - Mac を所有せず、TestFlight にコンパイル・署名・提出する
+- [Build iOS apps from Windows](https://capgo.app/blog/build-ios-app-from-windows-capacitor-capgo-build/) - Macを所有せずにiOSアプリをコンパイル・署名し、TestFlightへ提出する
 
 ## 書籍 <a id="books"></a>
 - [Building Mobile Apps with Ionic](https://www.joshmorony.com/building-mobile-apps-with-ionic-2/)
 
-
-
 ## ボイラープレート／デモアプリ <a id="boilerplatedemo-apps"></a>
-- [Ionic Official Starter Templates](https://github.com/ionic-team/starters)
+- [Ionicの公式スターターテンプレート](https://github.com/ionic-team/starters)
 - [capacitor-updater-plugin-demo](https://github.com/Cap-go/demo-app) - Ionic Vue による OTA 更新を示すアプリ
 - [vue-data-storage-sqlite-app-starter](https://github.com/Cap-go/vue-data-storage-sqlite-app-starter) - SQLite キー/バリューストレージ用の Vue スターター
 - [react-data-storage-sqlite-app-starter](https://github.com/Cap-go/react-data-storage-sqlite-app-starter) - SQLite キー/バリューストレージ用の React スターター
 - [Ionic Boilerplate](https://github.com/marcoturi/ionic-boilerplate)
 - [Cordova File Transfer](https://github.com/dsgriffin/ionic-2-file-transfer-example)
-- [Update your App](https://github.com/NextFaze/ionic-manup)
-- [NFC Demo](https://github.com/RedFroggy/ionic2-nfc-app)
-- [Fullscreen Content](https://github.com/sebaferreras/Ionic2-FullscreenContent)
-- [Card Layout](https://github.com/joshuamorony/ionic2-card-layout)
+- [アプリの更新](https://github.com/NextFaze/ionic-manup)
+- [NFCのデモ](https://github.com/RedFroggy/ionic2-nfc-app)
+- [全画面コンテンツ](https://github.com/sebaferreras/Ionic2-FullscreenContent)
+- [カードレイアウト](https://github.com/joshuamorony/ionic2-card-layout)
 - [Ionic 2](https://github.com/marcoturi/ionic2-boilerplate)
 - [Ionic 2 Advanced Components](https://github.com/yannbf/ionic2-components)
-- [OCR Scan App](https://github.com/matiastucci/ionic-ocr-example)
+- [OCRスキャンアプリ](https://github.com/matiastucci/ionic-ocr-example)
 - [Ionic 4 Payment Gateway Starter - Stripe](https://store.enappd.com/product/ionic-4-stripe-payment-starter/)
 - [Ionic 4 Payment Gateway Starter - Paypal](https://store.enappd.com/product/ionic-4-paypal-payment-starter/)
 - [Ionic 4 Payment Gateway Starter - Razorpay](https://store.enappd.com/product/ionic-4-razorpay-payment-starter/)
@@ -399,77 +353,77 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 - [Ionic Blocks](https://ionicblocks.com/) - 無料およびプレミアムの Ionic コンポーネントのコレクション
 
 ### アニメーション <a id="animations"></a>
-- [Lottie Animation](https://github.com/chenqingspring/ng-lottie) 
-- [Lottie Animation](https://github.com/fivethree-team/lottie) 
+- [Lottieアニメーション](https://github.com/chenqingspring/ng-lottie)
+- [Lottieアニメーション](https://github.com/fivethree-team/lottie)
 
 ### UIライブラリ <a id="ui-library"></a>
-- [Ionic 4 UI Component Library](https://github.com/fivethree-team/ionic-4-components) 
+- [Ionic 4のUIコンポーネントライブラリ](https://github.com/fivethree-team/ionic-4-components)
 
 ### メニュー、タブ <a id="menu-tabs"></a>
-- [Scrollabel Tabs](https://github.com/SinoThomas/Ionic2-ScrollableTabs) 
-- [Circular Tabs](https://github.com/SinoThomas/Ionic2-CircularTabs) 
-- [Fab Toolbar](https://github.com/ekhmoi/fab-toolbar) 
-- [Multi Level Sidemenu](https://github.com/sebaferreras/Ionic2-MultiLevelSideMenu) 
-- [Popover Sidemenu](https://github.com/philipbrack/ionic2-menu-alternative-popover) 
-- [Drop down Title](https://github.com/Mohd-PH/ionic-drop-down-title) 
+- [スクロール可能なタブ](https://github.com/SinoThomas/Ionic2-ScrollableTabs)
+- [円形タブ](https://github.com/SinoThomas/Ionic2-CircularTabs)
+- [FABツールバー](https://github.com/ekhmoi/fab-toolbar)
+- [多階層サイドメニュー](https://github.com/sebaferreras/Ionic2-MultiLevelSideMenu)
+- [ポップオーバー型サイドメニュー](https://github.com/philipbrack/ionic2-menu-alternative-popover)
+- [ドロップダウン型タイトル](https://github.com/Mohd-PH/ionic-drop-down-title)
 
 ### フォーム／入力 <a id="form--input"></a>
-- [Autocomplete](https://github.com/kadoshms/ionic2-autocomplete) 
-- [Form Generator based on JSON](https://github.com/makinacorpus/angular2-schema-form) 
-- [Dynamic Forms](https://github.com/udos86/ng2-dynamic-forms/) 
-- [Form Builder](https://github.com/rohitg7/ionic2-form-builder) 
-- [Sidemenu tabs](https://github.com/seanmavley/ionic2-sidemenu-tabs)
-- [Selectable](https://github.com/eakoriakin/ionic-selectable)
-- [Masks](https://github.com/amarkes/br-mask)
+- [オートコンプリート](https://github.com/kadoshms/ionic2-autocomplete)
+- [JSONに基づくフォーム生成](https://github.com/makinacorpus/angular2-schema-form)
+- [動的フォーム](https://github.com/udos86/ng2-dynamic-forms/)
+- [フォームビルダー](https://github.com/rohitg7/ionic2-form-builder)
+- [サイドメニューのタブ](https://github.com/seanmavley/ionic2-sidemenu-tabs)
+- [Selectable（選択入力）](https://github.com/eakoriakin/ionic-selectable)
+- [入力マスク](https://github.com/amarkes/br-mask)
 
 ### 入力 — 日付／カレンダー <a id="input---datecalendar"></a>
-- [Calendar](https://github.com/twinssbc/Ionic2-Calendar) 
-- [Calendar](https://github.com/alexandretok/easy-ionic2-calendar) 
-- [Calendar](https://github.com/redpandatronicsuk/ionic2calendar) 
-- [Calendar](https://github.com/mattlewis92/angular-calendar)  (very powerful)
-- [Calendar - Fullcalendar](https://github.com/nekken/ng2-fullcalendar) 
-- [Datepicker](https://github.com/misha130/datepicker-ionic2) 
-- [Datepicker (selectable range dates calendar)](https://github.com/HsuanXyz/ion2-calendar) 
-- [Datepicker](https://github.com/rajeshwarpatlolla/ionic2-datepicker) 
-- [Rating](https://github.com/andrucz/ionic2-rating) 
-- [Inputfield Mask](https://github.com/text-mask/text-mask)
+- [カレンダー](https://github.com/twinssbc/Ionic2-Calendar)
+- [カレンダー](https://github.com/alexandretok/easy-ionic2-calendar)
+- [カレンダー](https://github.com/redpandatronicsuk/ionic2calendar)
+- [カレンダー](https://github.com/mattlewis92/angular-calendar)
+- [カレンダー — Fullcalendar](https://github.com/nekken/ng2-fullcalendar)
+- [日付選択](https://github.com/misha130/datepicker-ionic2)
+- [日付範囲を選択できるカレンダー](https://github.com/HsuanXyz/ion2-calendar)
+- [日付選択](https://github.com/rajeshwarpatlolla/ionic2-datepicker)
+- [評価入力](https://github.com/andrucz/ionic2-rating)
+- [入力フィールドのマスク](https://github.com/text-mask/text-mask)
 
 ### リスト／テーブル <a id="liststable"></a>
-- [Sortable/Filter Tables](https://github.com/valor-software/ng2-table) 
-- [Smart table (sorting, filtering)](https://github.com/akveo/ng2-smart-table) 
-- [Flexible and Light Table](https://github.com/swimlane/ngx-datatable) 
+- [並べ替え・絞り込みができるテーブル](https://github.com/valor-software/ng2-table)
+- [Smart table（並べ替え・絞り込み）](https://github.com/akveo/ng2-smart-table)
+- [柔軟で軽量なテーブル](https://github.com/swimlane/ngx-datatable)
 
 ### 画像 <a id="images"></a>
-- [Signatur](https://github.com/wulfsolter/angular2-signaturepad) - Ionicと完全に連携
-- [Image Fallback](https://github.com/VadimDez/ng2-img-fallback) 
-- [Lazy Load](https://github.com/tjoskar/ng2-lazyload-image)  
-- [Image Loader](https://github.com/zyramedia/ionic-image-loader) 
-- [Facebook Gallery](https://github.com/skyfloyd/ionic2-fb-gallery) 
-- [Image Viewer](https://github.com/Riron/ionic-img-viewer) 
-- [Gallery Modal](https://github.com/nikini/ionic-gallery-modal) 
-- [Image Zoom](https://github.com/brtnshrdr/angular2-image-zoom) 
+- [署名パッド](https://github.com/wulfsolter/angular2-signaturepad) - 原文ではIonicで動作すると説明されている署名パッド
+- [画像の代替表示](https://github.com/VadimDez/ng2-img-fallback)
+- [画像の遅延読み込み](https://github.com/tjoskar/ng2-lazyload-image)
+- [画像ローダー](https://github.com/zyramedia/ionic-image-loader)
+- [Facebookギャラリー](https://github.com/skyfloyd/ionic2-fb-gallery)
+- [画像ビューアー](https://github.com/Riron/ionic-img-viewer)
+- [ギャラリーモーダル](https://github.com/nikini/ionic-gallery-modal)
+- [画像の拡大](https://github.com/brtnshrdr/angular2-image-zoom)
 
 ### チャート／図 <a id="chartsdiagram"></a>
-- [Charts](https://github.com/valor-software/ng2-charts) 
-- [D3 Service](https://github.com/tomwanzek/d3-ng2-service) 
-- [D3 Angular Examples](https://github.com/datencia/d3js-angular-examples) 
-- [D3 Line/Bar/Pie Charts](https://github.com/datencia/d3js-angular2-example) 
+- [チャート](https://github.com/valor-software/ng2-charts)
+- [D3サービス](https://github.com/tomwanzek/d3-ng2-service)
+- [D3のAngular向けサンプル](https://github.com/datencia/d3js-angular-examples)
+- [D3の折れ線・棒・円グラフ](https://github.com/datencia/d3js-angular2-example)
 
 ### 動画／音声 <a id="videoaudio"></a>
-- [Video Editor](https://github.com/rossmartin/video-editor-ionic2) 
-- [Simple Audioplayer](https://github.com/arielfaur/ionic-audio) 
+- [動画エディター](https://github.com/rossmartin/video-editor-ionic2)
+- [シンプルな音声プレイヤー](https://github.com/arielfaur/ionic-audio)
 
 ### キーボード <a id="keyboards"></a>
-- [Digit Keyboard](https://github.com/skol-pro/ion-digit-keyboard-v2) 
+- [数字キーボード](https://github.com/skol-pro/ion-digit-keyboard-v2)
 
 ### アイコン <a id="icons"></a>
 - [@robsonos/ionic-mdi](https://www.npmjs.com/package/@robsonos/ionic-mdi) - Ionic `addIcons`用のMaterial Design Icons
 
 ### ダイアログ <a id="dialog"></a>
-- [Dialogbox with Counter](https://github.com/HsuanXyz/ionic2-extend-alert) 
+- [カウンター付きダイアログ](https://github.com/HsuanXyz/ionic2-extend-alert)
 
 ### フレーム <a id="frames"></a>
-- [ng Lightning (for Salesforce Apps)](https://github.com/ng-lightning/ng-lightning) 
+- [ng Lightning（Salesforceアプリ向け）](https://github.com/ng-lightning/ng-lightning)
 
 ## オープンソースプロジェクト <a id="open-source-projects"></a>
 - [Ionic Conference App](https://github.com/driftyco/ionic-conference-app)
@@ -499,18 +453,18 @@ IonicアプリはCapacitorをネイティブランタイムとして利用でき
 
 ## Ionicで構築されたアプリ <a id="apps-built-with-ionic"></a>
 
-Ionicの利用が公開資料で確認できる本番アプリです。
+リンク先の事例や記事でIonicの利用が紹介されているアプリです。
 
 - [AAA](https://ionic.io/resources/case-studies/american-automobile-association) - アメリカ自動車協会のメンバーサービスアプリ
 - [BBC Games](https://ionic.io/resources/case-studies/bbc-games) - BBCの子供向けゲーム
 - [Bestinvest](https://ionic.io/resources/case-studies/bestinvest) - 投資プラットフォームをiOSおよびAndroid用にラップ
-- [Burger King](https://ionic.io/resources/articles/burger-king-design-system) - バーグキングがモバイル向けにデザインシステムを導入した方法
-- [DayClocks Agenda](https://ionic.io/resources/case-studies/dayclocks) - Cordovaから移行したファミリーアジェンダアプリ
+- [Burger King](https://ionic.io/resources/articles/burger-king-design-system) - Burger Kingがモバイル向けにデザインシステムを導入した方法
+- [DayClocks Agenda](https://ionic.io/resources/case-studies/dayclocks) - Cordovaから移行した家族向け予定表アプリ
 - [Komed Health](https://ionic.io/resources/case-studies/komed) - 病院向けの臨床コミュニケーションアプリ
-- [MyBlock](https://ionic.io/resources/case-studies/hrblock) - H&R Blockの税務準備アプリ
-- [Spreekuur.nl](https://ionic.io/resources/case-studies/topicus) - Dutchのヘルスケアコンサルテーションアプリ（Topicus）
+- [MyBlock](https://ionic.io/resources/case-studies/hrblock) - H&R Blockの税務申告の準備用アプリ
+- [Spreekuur.nl](https://ionic.io/resources/case-studies/topicus) - Topicusによるオランダの医療相談アプリ
 - [YesHelp](https://ionic.io/resources/case-studies/yeshelp) - iOSおよびAndroid用の社会支援アプリ
-- [Ionic case studies](https://ionic.io/resources/case-studies) - Ionicチームが発表したさらに多くのケーススタディ
+- [Ionicの事例](https://ionic.io/resources/case-studies) - Ionicチームが発表したさらに多くのケーススタディ
 
 ## コミュニティ <a id="community"></a>
 
@@ -522,11 +476,4 @@ Ionicの利用が公開資料で確認できる本番アプリです。
 
 - [Adrien](https://book.capgo.app/adrien/) - Capstartの作成者であり、Capgoでのパートタイム開発者
 - [Jordan](https://book.capgo.app/jordan/) - 複数のモバイルアプリの作成者であり、Capgoでのパートタイム開発者
-- [Capgo consulting](https://capgo.app/consulting/) - リアルタイム更新、ネイティブプラグイン、Ionic/Capacitorに関するコンサルティング
-
-## コントリビューション <a id="contribute"></a>
-コントリビューションを歓迎します。最初に[コントリビューションガイドライン](https://github.com/candelibas/awesome-ionic/blob/199ba2489f47442c821ea46b1890e4aa0f0f5d86/CONTRIBUTING.md)を確認してください。
-
-## 作者 <a id="author"></a>
-
-<a href="https://capgo.app/">Capgo — Live updates for capacitor</a>
+- [Capgo consulting](https://capgo.app/consulting/) - ライブアップデート、ネイティブプラグイン、Ionic/Capacitorに関するコンサルティング

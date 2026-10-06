@@ -1,34 +1,19 @@
 ---
 title: "Awesome WebAssembly"
-description: "WebAssemblyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "WebAssemblyの仕様・学習資料、コンパイラー、実行環境、ライブラリー、ツール、フレームワーク、コミュニティを案内します。"
 licenseSource: "github-idematos-awesome-webassembly-readme-md"
 ---
 
 # Awesome WebAssembly
 
-WebAssemblyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
-
-## 目次
-
-- [リソース](#resources)
-  - [基礎](#basics)
-  - [記事](#articles)
-  - [書籍](#books)
-  - [動画](#videos)
-- [プロジェクト](#projects)
-  - [コンパイラー](#compilers)
-  - [ランタイム](#runtimes)
-  - [ライブラリー](#libraries)
-  - [ツール](#tools)
-  - [フレームワーク](#frameworks)
-- [コミュニティ](#communities)
+[WebAssembly](https://webassembly.org/)（Wasm）は、スタック型仮想マシン向けのバイナリー命令形式です。プログラミング言語の移植可能なコンパイル先として設計され、ウェブのクライアント・サーバーアプリケーションで利用できます。仕様、記事、書籍、動画、コンパイラー、実行環境、ライブラリー、ツール、フレームワーク、コミュニティを探せます。
 
 ## リソース
 
 ### 基礎
 
 - [WebAssembly MDN](https://developer.mozilla.org/en-US/docs/WebAssembly)
-- [WebAssembly Specification](https://webassembly.github.io/spec/)
+- [WebAssembly仕様](https://webassembly.github.io/spec/)
 
 ### 記事
 
@@ -62,7 +47,7 @@ WebAssemblyを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 
 ### コンパイラー
 
-- [Emscripten](https://emscripten.org/) - C と C++ を WebAssembly へコンパイルします。
+- [Emscripten](https://emscripten.org/) - CとC++をWebAssemblyへコンパイル。
 - [AssemblyScript](https://www.assemblyscript.org/) - WebAssembly へコンパイルされる TypeScript に似た言語。
 - [Binaryen](https://github.com/WebAssembly/binaryen) - WebAssembly 向けのコンパイラーインフラストラクチャ。
 - [TinyGo](https://tinygo.org/) - WebAssembly 向け Go コンパイラー。
@@ -70,24 +55,24 @@ WebAssemblyを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 ### ランタイム
 
 - [Wasmtime](https://wasmtime.dev/) - スタンドアロンの WebAssembly ランタイム。
-- [WasmEdge](https://github.com/WasmEdge/WasmEdge) - 高性能な WebAssembly ランタイム。
+- [WasmEdge](https://github.com/WasmEdge/WasmEdge) - 原文では高性能と説明されるWebAssemblyランタイム。
 - [WAVM](https://github.com/WAVM/WAVM) - WebAssembly 仮想マシン。
-- [Wasm3](https://github.com/wasm3/wasm3) - 小さく高速な WebAssembly インタープリター。
+- [Wasm3](https://github.com/wasm3/wasm3) - 原文では小型・高速と説明されるWebAssemblyインタープリター。
 - [Wasmer](https://wasmer.io/) - デスクトップ、クラウド、エッジ向け WebAssembly ランタイム。
 
 ### ライブラリー
 
 - [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen) - Rust と JavaScript の相互運用。
 - [wasmer-js](https://github.com/wasmerio/wasmer-js) - JavaScript 向け WebAssembly ランタイム。
-- [wasm-pack](https://github.com/rustwasm/wasm-pack) - Rust が生成した Wasm をビルド、テスト、公開します。
+- [wasm-pack](https://github.com/rustwasm/wasm-pack) - Rustが生成したWasmのビルド、テスト、公開。
 - [Wabt](https://github.com/WebAssembly/wabt) - WebAssembly バイナリーツールキット。
 - [WASI](https://github.com/WebAssembly/WASI) - WebAssembly システムインターフェース。
 
 ### ツール
 
-- [Wasm Explorer](https://mbebenita.github.io/WasmExplorer/) - WebAssembly バイナリーを可視化・デバッグします。
-- [wasm2c](https://github.com/WebAssembly/wabt/tree/main/wasm2c) - WebAssembly バイナリーを C へ変換します。
-- [Cross-Origin Isolation Checker](https://app.cinevva.com/tools/cross-origin-isolation-checker) - SharedArrayBuffer とマルチスレッド WebAssembly の要件である、ページのクロスオリジン分離（COOP/COEP）を確認します。
+- [Wasm Explorer](https://mbebenita.github.io/WasmExplorer/) - WebAssemblyバイナリーの可視化・デバッグ。
+- [wasm2c](https://github.com/WebAssembly/wabt/tree/main/wasm2c) - WebAssemblyバイナリーをCへ変換。
+- [Cross-Origin Isolation Checker](https://app.cinevva.com/tools/cross-origin-isolation-checker) - SharedArrayBufferとマルチスレッドWebAssemblyの要件である、ページのクロスオリジン分離（COOP/COEP）を確認。
 
 ### フレームワーク
 
@@ -97,11 +82,6 @@ WebAssemblyを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 
 ## コミュニティ
 
-- [WebAssembly GitHub Organization](https://github.com/WebAssembly)
-- [W3C WebAssembly Group](https://www.w3.org/wasm/)
-- [WebAssembly Subreddit](https://www.reddit.com/r/webassembly/)
-
-
-## 貢献
-
-貢献を歓迎します。変更を送信する前に [contribution guidelines](https://github.com/idematos/awesome-webassembly/blob/main/contributing.md) をお読みください。
+- [WebAssemblyのGitHub組織](https://github.com/WebAssembly)
+- [W3CのWebAssemblyグループ](https://www.w3.org/wasm/)
+- [WebAssemblyのsubreddit](https://www.reddit.com/r/webassembly/)
