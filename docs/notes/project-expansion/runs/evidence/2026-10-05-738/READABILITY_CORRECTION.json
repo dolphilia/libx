@@ -1,0 +1,11 @@
+{
+  "page": "reference/pipe",
+  "before": "最初にuv_pipe_pending_count()を呼び出し、戻り値が0より大きい場合は、型のハンドルを初期化します。この型はuv_pipe_pending_type()が返します。その後、uv_accept(pipe, handle)を呼び出します。",
+  "after": "最初にuv_pipe_pending_count()を呼び出します。戻り値が0より大きい場合は、uv_pipe_pending_type()が返す型のハンドルを初期化してから、uv_accept(pipe, handle)を呼び出します。",
+  "beforeSha256": "1a0bf8d6770f346b9577ba0df01e4a7a02a2db61118978bede0435a69360a68e",
+  "afterSha256": "63ec46749bf63ddcfff73bdaf9976101c55e0898c6eb73d29c6ec0e6594158ae",
+  "reason": "Clarify returned type and count>0/initialise/accept ordering; preserve links and API code.",
+  "model": "Codex configured gpt-6.1-sol",
+  "runtime": null,
+  "localLLMUsed": false
+}

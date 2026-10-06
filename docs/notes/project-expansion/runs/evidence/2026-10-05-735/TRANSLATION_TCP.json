@@ -1,0 +1,2009 @@
+{
+  "page": "reference/tcp",
+  "at": "2026-10-04T22:06:29.189590+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/tcp.rst",
+      "sha256": "e2e4205fb2e3ac32fcce34e8db9f0621c7c597397028e4fec741f77ea4c3dabe"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/tcp.md",
+      "sha256": "d834e950b46dffe033535719701563291eacb7f3403de7f932691fc0df1c6a9f"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/tcp.md",
+      "sha256": "a8cb39e93b2407d5ed469035b01517790ac789438e92c0b0b70acb0a98b0ae0f"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 1 code block, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — TCP handle",
+      "ja": " — TCPハンドル"
+    },
+    {
+      "index": 1,
+      "en": "TCP handles are used to represent both TCP streams and servers.",
+      "ja": "TCPハンドルは、TCPストリームとTCPサーバーの両方を表します。"
+    },
+    {
+      "index": 2,
+      "en": " is a ‘subclass’ of ",
+      "ja": "は、次の型の「サブクラス」です: "
+    },
+    {
+      "index": 3,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 4,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 5,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 6,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 7,
+      "en": "TCP handle type.",
+      "ja": "TCPハンドルの型です。"
+    },
+    {
+      "index": 8,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 9,
+      "en": "uv_tcp_flags",
+      "ja": "uv_tcp_flags"
+    },
+    {
+      "index": 10,
+      "en": "Flags used in ",
+      "ja": "次の関数で使うフラグです: "
+    },
+    {
+      "index": 11,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 12,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 13,
+      "en": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "index": 14,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 15,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 16,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 17,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 18,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 19,
+      "en": "uv_tcp_init",
+      "ja": "uv_tcp_init"
+    },
+    {
+      "index": 20,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 21,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 22,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 23,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 24,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 25,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 26,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 27,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 28,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 29,
+      "en": "Initialize the handle. No socket is created as of yet.",
+      "ja": "ハンドルを初期化します。この時点ではソケットを作成しません。"
+    },
+    {
+      "index": 30,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 31,
+      "en": "uv_tcp_init_ex",
+      "ja": "uv_tcp_init_ex"
+    },
+    {
+      "index": 32,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 33,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 34,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 35,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 36,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 37,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 38,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 39,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 40,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 41,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 42,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 43,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 44,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 45,
+      "en": "Initialize the handle with the specified flags. At the moment only the lower 8 bits\nof the ",
+      "ja": "指定したフラグでハンドルを初期化します。現在、"
+    },
+    {
+      "index": 46,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 47,
+      "en": " parameter are used as the socket domain. A socket will be created\nfor the given domain. If the specified domain is ",
+      "ja": "パラメーターの下位8ビットだけをソケットのドメインとして使い、指定したドメインのソケットを作成します。指定したドメインが"
+    },
+    {
+      "index": 48,
+      "en": " no socket is created,\njust like ",
+      "ja": "の場合は、次の関数と同様にソケットを作成しません: "
+    },
+    {
+      "index": 49,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 50,
+      "en": "New in version 1.7.0.",
+      "ja": "バージョン1.7.0で追加。"
+    },
+    {
+      "index": 51,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 52,
+      "en": "uv_tcp_open",
+      "ja": "uv_tcp_open"
+    },
+    {
+      "index": 53,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 54,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 55,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 56,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 57,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 58,
+      "en": "uv_os_sock_t",
+      "ja": "uv_os_sock_t"
+    },
+    {
+      "index": 59,
+      "en": "sock",
+      "ja": "sock"
+    },
+    {
+      "index": 60,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 61,
+      "en": "Open an existing file descriptor or SOCKET as a TCP handle.",
+      "ja": "既存のファイル記述子またはSOCKETをTCPハンドルとして開きます。"
+    },
+    {
+      "index": 62,
+      "en": "Changed in version 1.2.1: ",
+      "ja": "バージョン1.2.1での変更: "
+    },
+    {
+      "index": 63,
+      "en": "the file descriptor is set to non-blocking mode.",
+      "ja": "ファイル記述子を非ブロッキングモードに設定します。"
+    },
+    {
+      "index": 64,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 65,
+      "en": "The passed file descriptor or SOCKET is not checked for its type, but\nit’s required that it represents a valid stream socket.",
+      "ja": "渡したファイル記述子やSOCKETの型は検査しませんが、有効なストリームソケットを表している必要があります。"
+    },
+    {
+      "index": 66,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 67,
+      "en": "uv_tcp_nodelay",
+      "ja": "uv_tcp_nodelay"
+    },
+    {
+      "index": 68,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 69,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 70,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 71,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 72,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 73,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 74,
+      "en": "enable",
+      "ja": "enable"
+    },
+    {
+      "index": 75,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 76,
+      "en": "Enable ",
+      "ja": "次のオプションを有効にします: "
+    },
+    {
+      "index": 77,
+      "en": "TCP_NODELAY",
+      "ja": "TCP_NODELAY"
+    },
+    {
+      "index": 78,
+      "en": ", which disables Nagle’s algorithm.",
+      "ja": "。これによりNagleアルゴリズムを無効にします。"
+    },
+    {
+      "index": 79,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 80,
+      "en": "uv_tcp_keepalive",
+      "ja": "uv_tcp_keepalive"
+    },
+    {
+      "index": 81,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 82,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 83,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 84,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 85,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 86,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 87,
+      "en": "enable",
+      "ja": "enable"
+    },
+    {
+      "index": 88,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 89,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 90,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 91,
+      "en": "delay",
+      "ja": "delay"
+    },
+    {
+      "index": 92,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 93,
+      "en": "Enable / disable TCP keep-alive. ",
+      "ja": "TCPキープアライブを有効または無効にします。"
+    },
+    {
+      "index": 94,
+      "en": "delay",
+      "ja": "delay"
+    },
+    {
+      "index": 95,
+      "en": " is the initial delay in seconds,\nignored when ",
+      "ja": "は最初の待ち時間を秒単位で表し、"
+    },
+    {
+      "index": 96,
+      "en": "enable",
+      "ja": "enable"
+    },
+    {
+      "index": 97,
+      "en": " is zero.",
+      "ja": "が0の場合は無視します。"
+    },
+    {
+      "index": 98,
+      "en": "After ",
+      "ja": "待ち時間"
+    },
+    {
+      "index": 99,
+      "en": "delay",
+      "ja": "delay"
+    },
+    {
+      "index": 100,
+      "en": " has been reached, 10 successive probes, each spaced 1 second\nfrom the previous one, will still happen. If the connection is still lost\nat the end of this procedure, then the handle is destroyed with a\n",
+      "ja": "に達した後、1秒間隔で10回のプローブを送信します。この手順の最後でも接続が失われたままの場合は、ハンドルを破棄し、対応するコールバックへ"
+    },
+    {
+      "index": 101,
+      "en": " error passed to the corresponding callback.",
+      "ja": "エラーを渡します。"
+    },
+    {
+      "index": 102,
+      "en": "If ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 103,
+      "en": "delay",
+      "ja": "delay"
+    },
+    {
+      "index": 104,
+      "en": " is less than 1 then ",
+      "ja": "が1未満の場合は、"
+    },
+    {
+      "index": 105,
+      "en": " is returned.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 106,
+      "en": "Changed in version 1.49.0: ",
+      "ja": "バージョン1.49.0での変更: "
+    },
+    {
+      "index": 107,
+      "en": "If ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 108,
+      "en": "delay",
+      "ja": "delay"
+    },
+    {
+      "index": 109,
+      "en": " is less than 1 then ",
+      "ja": "が1未満の場合は、"
+    },
+    {
+      "index": 110,
+      "en": " is returned.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 111,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 112,
+      "en": "uv_tcp_keepalive_ex",
+      "ja": "uv_tcp_keepalive_ex"
+    },
+    {
+      "index": 113,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 114,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 115,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 116,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 117,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 118,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 119,
+      "en": "on",
+      "ja": "on"
+    },
+    {
+      "index": 120,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 121,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 122,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 123,
+      "en": "idle",
+      "ja": "idle"
+    },
+    {
+      "index": 124,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 125,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 126,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 127,
+      "en": "intvl",
+      "ja": "intvl"
+    },
+    {
+      "index": 128,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 129,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 130,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 131,
+      "en": "cnt",
+      "ja": "cnt"
+    },
+    {
+      "index": 132,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 133,
+      "en": "Enable / disable TCP keep-alive with all socket options: ",
+      "ja": "次のソケットオプションをすべて指定して、TCPキープアライブを有効または無効にします: "
+    },
+    {
+      "index": 134,
+      "en": "TCP_KEEPIDLE",
+      "ja": "TCP_KEEPIDLE"
+    },
+    {
+      "index": 135,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 136,
+      "en": "TCP_KEEPINTVL",
+      "ja": "TCP_KEEPINTVL"
+    },
+    {
+      "index": 137,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 138,
+      "en": "TCP_KEEPCNT",
+      "ja": "TCP_KEEPCNT"
+    },
+    {
+      "index": 139,
+      "en": ".\n",
+      "ja": "。"
+    },
+    {
+      "index": 140,
+      "en": "idle",
+      "ja": "idle"
+    },
+    {
+      "index": 141,
+      "en": " is the value for ",
+      "ja": "は"
+    },
+    {
+      "index": 142,
+      "en": "TCP_KEEPIDLE",
+      "ja": "TCP_KEEPIDLE"
+    },
+    {
+      "index": 143,
+      "en": ", ",
+      "ja": "の値、"
+    },
+    {
+      "index": 144,
+      "en": "intvl",
+      "ja": "intvl"
+    },
+    {
+      "index": 145,
+      "en": " is the value for ",
+      "ja": "は"
+    },
+    {
+      "index": 146,
+      "en": "TCP_KEEPINTVL",
+      "ja": "TCP_KEEPINTVL"
+    },
+    {
+      "index": 147,
+      "en": ",\n",
+      "ja": "の値、"
+    },
+    {
+      "index": 148,
+      "en": "cnt",
+      "ja": "cnt"
+    },
+    {
+      "index": 149,
+      "en": " is the value for ",
+      "ja": "は"
+    },
+    {
+      "index": 150,
+      "en": "TCP_KEEPCNT",
+      "ja": "TCP_KEEPCNT"
+    },
+    {
+      "index": 151,
+      "en": ", ignored when ",
+      "ja": "の値です。"
+    },
+    {
+      "index": 152,
+      "en": "on",
+      "ja": "on"
+    },
+    {
+      "index": 153,
+      "en": " is zero.",
+      "ja": "が0の場合は無視します。"
+    },
+    {
+      "index": 154,
+      "en": "With TCP keep-alive enabled, ",
+      "ja": "TCPキープアライブが有効な場合、"
+    },
+    {
+      "index": 155,
+      "en": "idle",
+      "ja": "idle"
+    },
+    {
+      "index": 156,
+      "en": " is the time (in seconds) the connection needs to remain idle before\nTCP starts sending keep-alive probes. ",
+      "ja": "は、TCPがキープアライブのプローブを送信し始める前に、接続がアイドル状態である必要がある時間を秒単位で表します。"
+    },
+    {
+      "index": 157,
+      "en": "intvl",
+      "ja": "intvl"
+    },
+    {
+      "index": 158,
+      "en": " is the time (in seconds) between individual keep-alive probes.\nTCP will drop the connection after sending ",
+      "ja": "は、各プローブの間隔を秒単位で表します。TCPは、"
+    },
+    {
+      "index": 159,
+      "en": "cnt",
+      "ja": "cnt"
+    },
+    {
+      "index": 160,
+      "en": " probes without getting any replies from the peer, then the\nhandle is destroyed with a ",
+      "ja": "回のプローブを送っても相手から応答がない場合、接続を切断します。その後、ハンドルを破棄し、対応するコールバックへ"
+    },
+    {
+      "index": 161,
+      "en": " error passed to the corresponding callback.",
+      "ja": "エラーを渡します。"
+    },
+    {
+      "index": 162,
+      "en": "If one of ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 163,
+      "en": "idle",
+      "ja": "idle"
+    },
+    {
+      "index": 164,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 165,
+      "en": "intvl",
+      "ja": "intvl"
+    },
+    {
+      "index": 166,
+      "en": ", or ",
+      "ja": "、"
+    },
+    {
+      "index": 167,
+      "en": "cnt",
+      "ja": "cnt"
+    },
+    {
+      "index": 168,
+      "en": " is less than 1, ",
+      "ja": "のいずれかが1未満の場合は、"
+    },
+    {
+      "index": 169,
+      "en": " is returned.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 170,
+      "en": "Changed in version 1.52.0: ",
+      "ja": "バージョン1.52.0での変更: "
+    },
+    {
+      "index": 171,
+      "en": "added support of setting ",
+      "ja": "次のソケットオプションの設定をサポートしました: "
+    },
+    {
+      "index": 172,
+      "en": "TCP_KEEPINTVL",
+      "ja": "TCP_KEEPINTVL"
+    },
+    {
+      "index": 173,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 174,
+      "en": "TCP_KEEPCNT",
+      "ja": "TCP_KEEPCNT"
+    },
+    {
+      "index": 175,
+      "en": " socket options.",
+      "ja": "。"
+    },
+    {
+      "index": 176,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 177,
+      "en": "Ensure that the socket options are supported by the underlying operating system.\nCurrently supported platforms:",
+      "ja": "基盤となるOSがソケットオプションをサポートしていることを確認してください。現在サポートしているプラットフォームは次のとおりです。"
+    },
+    {
+      "index": 178,
+      "en": "AIX",
+      "ja": "AIX"
+    },
+    {
+      "index": 179,
+      "en": "DragonFlyBSD",
+      "ja": "DragonFlyBSD"
+    },
+    {
+      "index": 180,
+      "en": "FreeBSD",
+      "ja": "FreeBSD"
+    },
+    {
+      "index": 181,
+      "en": "illumos",
+      "ja": "illumos"
+    },
+    {
+      "index": 182,
+      "en": "Linux",
+      "ja": "Linux"
+    },
+    {
+      "index": 183,
+      "en": "macOS",
+      "ja": "macOS"
+    },
+    {
+      "index": 184,
+      "en": "NetBSD",
+      "ja": "NetBSD"
+    },
+    {
+      "index": 185,
+      "en": "Solaris",
+      "ja": "Solaris"
+    },
+    {
+      "index": 186,
+      "en": "Windows",
+      "ja": "Windows"
+    },
+    {
+      "index": 187,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 188,
+      "en": "uv_tcp_simultaneous_accepts",
+      "ja": "uv_tcp_simultaneous_accepts"
+    },
+    {
+      "index": 189,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 190,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 191,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 192,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 193,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 194,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 195,
+      "en": "enable",
+      "ja": "enable"
+    },
+    {
+      "index": 196,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 197,
+      "en": "Enable / disable simultaneous asynchronous accept requests that are\nqueued by the operating system when listening for new TCP connections.",
+      "ja": "新しいTCP接続を待ち受けるときに、OSがキューに入れる複数の非同期acceptリクエストを同時に扱う機能を有効または無効にします。"
+    },
+    {
+      "index": 198,
+      "en": "This setting is used to tune a TCP server for the desired performance.\nHaving simultaneous accepts can significantly improve the rate of accepting\nconnections (which is why it is enabled by default) but may lead to uneven\nload distribution in multi-process setups.",
+      "ja": "この設定は、TCPサーバーの性能を調整するために使います。同時acceptは接続の受け付け速度を大幅に高められるため、既定で有効です。ただし、複数プロセスの構成では、負荷の分配が偏る可能性があります。"
+    },
+    {
+      "index": 199,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 200,
+      "en": "uv_tcp_bind",
+      "ja": "uv_tcp_bind"
+    },
+    {
+      "index": 201,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 202,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 203,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 204,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 205,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 206,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 207,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 208,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 209,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 210,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 211,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 212,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 213,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 214,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 215,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 216,
+      "en": "Bind the handle to an address and port.",
+      "ja": "ハンドルをアドレスとポートにバインドします。"
+    },
+    {
+      "index": 217,
+      "en": "When the port is already taken, you can expect to see an ",
+      "ja": "ポートがすでに使われている場合は、次のエラー、"
+    },
+    {
+      "index": 218,
+      "en": "\nerror from ",
+      "ja": "が、次の関数、"
+    },
+    {
+      "index": 219,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 220,
+      "en": " unless you specify\n",
+      "ja": "から返る可能性があります。ただし、バインドするすべてのソケットで、"
+    },
+    {
+      "index": 221,
+      "en": " in ",
+      "ja": "を"
+    },
+    {
+      "index": 222,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 223,
+      "en": " for all the binding sockets. That is, a successful\ncall to this function does not guarantee that the call to ",
+      "ja": "に指定した場合は例外です。つまり、この関数が成功しても、次の関数、"
+    },
+    {
+      "index": 224,
+      "en": " or\n",
+      "ja": "または"
+    },
+    {
+      "index": 225,
+      "en": " will succeed as well.",
+      "ja": "の成功は保証されません。"
+    },
+    {
+      "index": 226,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 227,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 228,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 229,
+      "en": " – TCP handle. It should have been initialized with ",
+      "ja": " — TCPハンドル。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 230,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 231,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 232,
+      "en": " – Address to bind to. It should point to an initialized ",
+      "ja": " — バインドするアドレス。初期化済みの"
+    },
+    {
+      "index": 233,
+      "en": "\nor ",
+      "ja": "または"
+    },
+    {
+      "index": 234,
+      "en": ".",
+      "ja": "を指す必要があります。"
+    },
+    {
+      "index": 235,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 236,
+      "en": " – Flags that control the behavior of binding the socket.\n",
+      "ja": " — ソケットをバインドするときの動作を制御するフラグです。"
+    },
+    {
+      "index": 237,
+      "en": " can be contained in ",
+      "ja": "を"
+    },
+    {
+      "index": 238,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 239,
+      "en": " to disable dual-stack\nsupport and only use IPv6.\n",
+      "ja": "に含めると、デュアルスタックのサポートを無効にし、IPv6だけを使います。"
+    },
+    {
+      "index": 240,
+      "en": " can be contained in ",
+      "ja": "を"
+    },
+    {
+      "index": 241,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 242,
+      "en": " to enable the socket option\n",
+      "ja": "に含めると、ソケットオプション"
+    },
+    {
+      "index": 243,
+      "en": "SO_REUSEPORT",
+      "ja": "SO_REUSEPORT"
+    },
+    {
+      "index": 244,
+      "en": " with the capability of load balancing that distribute incoming\nconnections across all listening sockets in multiple processes or threads.",
+      "ja": "を有効にし、複数のプロセスやスレッドのすべての待ち受けソケットへ、受信する接続を分配する負荷分散機能を使えます。"
+    },
+    {
+      "index": 245,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 246,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 247,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 248,
+      "en": "Changed in version 1.49.0: ",
+      "ja": "バージョン1.49.0での変更: "
+    },
+    {
+      "index": 249,
+      "en": "added the ",
+      "ja": "次のフラグを追加しました: "
+    },
+    {
+      "index": 250,
+      "en": " flag.",
+      "ja": "。"
+    },
+    {
+      "index": 251,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 252,
+      "en": " flag is available only on Linux 3.9+, DragonFlyBSD 3.6+,\nFreeBSD 12.0+, Solaris 11.4, and AIX 7.2.5+ at the moment. On other platforms\nthis function will return an UV_ENOTSUP error.",
+      "ja": "フラグは、現在Linux 3.9以降、DragonFlyBSD 3.6以降、FreeBSD 12.0以降、Solaris 11.4、AIX 7.2.5以降でだけ利用できます。他のプラットフォームでは、この関数はUV_ENOTSUPエラーを返します。"
+    },
+    {
+      "index": 253,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 254,
+      "en": "uv_tcp_getsockname",
+      "ja": "uv_tcp_getsockname"
+    },
+    {
+      "index": 255,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 256,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 257,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 258,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 259,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 260,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 261,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 262,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 263,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 264,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 265,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 266,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 267,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 268,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 269,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 270,
+      "en": "Get the current address to which the handle is bound. ",
+      "ja": "ハンドルが現在バインドされているアドレスを取得します。"
+    },
+    {
+      "index": 271,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 272,
+      "en": " must point to\na valid and big enough chunk of memory, ",
+      "ja": "は、有効で十分な大きさのメモリー領域を指す必要があります。IPv4とIPv6をサポートするため、"
+    },
+    {
+      "index": 273,
+      "en": " is\nrecommended for IPv4 and IPv6 support.",
+      "ja": "を推奨します。"
+    },
+    {
+      "index": 274,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 275,
+      "en": "uv_tcp_getpeername",
+      "ja": "uv_tcp_getpeername"
+    },
+    {
+      "index": 276,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 277,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 278,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 279,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 280,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 281,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 282,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 283,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 284,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 285,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 286,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 287,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 288,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 289,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 290,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 291,
+      "en": "Get the address of the peer connected to the handle. ",
+      "ja": "ハンドルへ接続している相手のアドレスを取得します。"
+    },
+    {
+      "index": 292,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 293,
+      "en": " must point to\na valid and big enough chunk of memory, ",
+      "ja": "は、有効で十分な大きさのメモリー領域を指す必要があります。IPv4とIPv6をサポートするため、"
+    },
+    {
+      "index": 294,
+      "en": " is\nrecommended for IPv4 and IPv6 support.",
+      "ja": "を推奨します。"
+    },
+    {
+      "index": 295,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 296,
+      "en": "uv_tcp_connect",
+      "ja": "uv_tcp_connect"
+    },
+    {
+      "index": 297,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 298,
+      "en": "uv_connect_t",
+      "ja": "uv_connect_t"
+    },
+    {
+      "index": 299,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 300,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 301,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 302,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 303,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 304,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 305,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 306,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 307,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 308,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 309,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 310,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 311,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 312,
+      "en": "uv_connect_cb",
+      "ja": "uv_connect_cb"
+    },
+    {
+      "index": 313,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 314,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 315,
+      "en": "Establish an IPv4 or IPv6 TCP connection. Provide an initialized TCP handle\nand an uninitialized ",
+      "ja": "IPv4またはIPv6のTCP接続を確立します。初期化済みのTCPハンドルと、未初期化の"
+    },
+    {
+      "index": 316,
+      "en": ". ",
+      "ja": "を渡してください。"
+    },
+    {
+      "index": 317,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 318,
+      "en": " should point to an\ninitialized ",
+      "ja": "は、初期化済みの"
+    },
+    {
+      "index": 319,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 320,
+      "en": ".",
+      "ja": "を指す必要があります。"
+    },
+    {
+      "index": 321,
+      "en": "On Windows if the ",
+      "ja": "Windowsでは、"
+    },
+    {
+      "index": 322,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 323,
+      "en": " is initialized to point to an unspecified address\n(",
+      "ja": "が未指定アドレス（"
+    },
+    {
+      "index": 324,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 325,
+      "en": ") it will be changed to point to ",
+      "ja": "）を指すように初期化されている場合、"
+    },
+    {
+      "index": 326,
+      "en": ".\nThis is done to match the behavior of Linux systems.",
+      "ja": "を指すように変更します。これはLinuxの動作に合わせるためです。"
+    },
+    {
+      "index": 327,
+      "en": "The callback is made when the connection has been established or when a\nconnection error happened.",
+      "ja": "接続が確立したとき、または接続エラーが発生したときに、コールバックを呼び出します。"
+    },
+    {
+      "index": 328,
+      "en": "Changed in version 1.19.0: ",
+      "ja": "バージョン1.19.0での変更: "
+    },
+    {
+      "index": 329,
+      "en": "added ",
+      "ja": "次のアドレス、"
+    },
+    {
+      "index": 330,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 331,
+      "en": " to ",
+      "ja": "を"
+    },
+    {
+      "index": 332,
+      "en": "\nmapping",
+      "ja": "へ対応付ける処理を追加しました。"
+    },
+    {
+      "index": 333,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 334,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 335,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    },
+    {
+      "index": 336,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 337,
+      "en": "uv_tcp_close_reset",
+      "ja": "uv_tcp_close_reset"
+    },
+    {
+      "index": 338,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 339,
+      "en": "uv_tcp_t",
+      "ja": "uv_tcp_t"
+    },
+    {
+      "index": 340,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 341,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 342,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 343,
+      "en": "uv_close_cb",
+      "ja": "uv_close_cb"
+    },
+    {
+      "index": 344,
+      "en": "close_cb",
+      "ja": "close_cb"
+    },
+    {
+      "index": 345,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 346,
+      "en": "Resets a TCP connection by sending a RST packet. This is accomplished by\nsetting the ",
+      "ja": "RSTパケットを送信してTCP接続をリセットします。この処理では、ソケットオプション"
+    },
+    {
+      "index": 347,
+      "en": "SO_LINGER",
+      "ja": "SO_LINGER"
+    },
+    {
+      "index": 348,
+      "en": " socket option with a linger interval of zero and\nthen calling ",
+      "ja": "のlinger間隔を0に設定してから、次の関数を呼び出します: "
+    },
+    {
+      "index": 349,
+      "en": ".\nDue to some platform inconsistencies, mixing of ",
+      "ja": "。プラットフォーム間の不一致があるため、"
+    },
+    {
+      "index": 350,
+      "en": " and\n",
+      "ja": "と"
+    },
+    {
+      "index": 351,
+      "en": " calls is not allowed.",
+      "ja": "の呼び出しを混在させることはできません。"
+    },
+    {
+      "index": 352,
+      "en": "New in version 1.32.0.",
+      "ja": "バージョン1.32.0で追加。"
+    },
+    {
+      "index": 353,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 354,
+      "en": "uv_socketpair",
+      "ja": "uv_socketpair"
+    },
+    {
+      "index": 355,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 356,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 357,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 358,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 359,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 360,
+      "en": "protocol",
+      "ja": "protocol"
+    },
+    {
+      "index": 361,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 362,
+      "en": "uv_os_sock_t",
+      "ja": "uv_os_sock_t"
+    },
+    {
+      "index": 363,
+      "en": "socket_vector",
+      "ja": "socket_vector"
+    },
+    {
+      "index": 364,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 365,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 366,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 367,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 368,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 369,
+      "en": "flags0",
+      "ja": "flags0"
+    },
+    {
+      "index": 370,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 371,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 372,
+      "en": "flags1",
+      "ja": "flags1"
+    },
+    {
+      "index": 373,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 374,
+      "en": "Create a pair of connected sockets with the specified properties.\nThe resulting handles can be passed to ",
+      "ja": "指定した特性を持つ、接続済みソケットのペアを作成します。得られたハンドルは、"
+    },
+    {
+      "index": 375,
+      "en": "uv_tcp_open",
+      "ja": "uv_tcp_open"
+    },
+    {
+      "index": 376,
+      "en": ", used with ",
+      "ja": "へ渡したり、"
+    },
+    {
+      "index": 377,
+      "en": "uv_spawn",
+      "ja": "uv_spawn"
+    },
+    {
+      "index": 378,
+      "en": ",\nor for any other purpose.",
+      "ja": "で使ったり、他の目的に使ったりできます。"
+    },
+    {
+      "index": 379,
+      "en": "Valid values for ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 380,
+      "en": "flags0",
+      "ja": "flags0"
+    },
+    {
+      "index": 381,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 382,
+      "en": "flags1",
+      "ja": "flags1"
+    },
+    {
+      "index": 383,
+      "en": " are:",
+      "ja": "に指定できる値は、次のとおりです。"
+    },
+    {
+      "index": 384,
+      "en": "UV_NONBLOCK_PIPE: Opens the specified socket handle for ",
+      "ja": "UV_NONBLOCK_PIPE: 指定したソケットハンドルを、"
+    },
+    {
+      "index": 385,
+      "en": "OVERLAPPED",
+      "ja": "OVERLAPPED"
+    },
+    {
+      "index": 386,
+      "en": "\nor ",
+      "ja": "または"
+    },
+    {
+      "index": 387,
+      "en": "FIONBIO",
+      "ja": "FIONBIO"
+    },
+    {
+      "index": 388,
+      "en": "/",
+      "ja": "/"
+    },
+    {
+      "index": 389,
+      "en": "O_NONBLOCK",
+      "ja": "O_NONBLOCK"
+    },
+    {
+      "index": 390,
+      "en": " I/O usage.\nThis is recommended for handles that will be used by libuv,\nand not usually recommended otherwise.",
+      "ja": "のI/O用に開きます。libuvで使うハンドルでは推奨しますが、通常、他の用途では推奨しません。"
+    },
+    {
+      "index": 391,
+      "en": "Equivalent to ",
+      "ja": "ドメインがAF_UNIXの"
+    },
+    {
+      "index": 392,
+      "en": "socketpair(2)",
+      "ja": "socketpair(2)"
+    },
+    {
+      "index": 393,
+      "en": " with a domain of AF_UNIX.",
+      "ja": "と同等です。"
+    },
+    {
+      "index": 394,
+      "en": "New in version 1.41.0.",
+      "ja": "バージョン1.41.0で追加。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 1,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

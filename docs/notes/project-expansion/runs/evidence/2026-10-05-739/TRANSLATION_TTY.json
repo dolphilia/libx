@@ -1,0 +1,654 @@
+{
+  "page": "reference/tty",
+  "at": "2026-10-04T22:19:41.634400+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/tty.rst",
+      "sha256": "1574dbfec4faae63f918c1dbbea740e30df09f69c2e7cf7a5ed4623ad5c03ced"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/tty.md",
+      "sha256": "f174bbbdd101e00fd5cf3f3cdb25ceba24a2e3fc0e8bd2c12e66627427cef9ee"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/tty.md",
+      "sha256": "52b61067775cbfc7420ca522eebaef8df02b2f70dec05f7655d71dd99b267a87"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 2enum code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — TTY handle",
+      "ja": " — TTYハンドル"
+    },
+    {
+      "index": 1,
+      "en": "TTY handles represent a stream for the console.",
+      "ja": "TTYハンドルは、コンソール用のストリームを表します。"
+    },
+    {
+      "index": 2,
+      "en": " is a ‘subclass’ of ",
+      "ja": "は、次の型の「サブクラス」です: "
+    },
+    {
+      "index": 3,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 4,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 5,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 6,
+      "en": "uv_tty_t",
+      "ja": "uv_tty_t"
+    },
+    {
+      "index": 7,
+      "en": "TTY handle type.",
+      "ja": "TTYハンドルの型です。"
+    },
+    {
+      "index": 8,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 9,
+      "en": "uv_tty_mode_t",
+      "ja": "uv_tty_mode_t"
+    },
+    {
+      "index": 10,
+      "en": "New in version 1.2.0.",
+      "ja": "バージョン1.2.0で追加。"
+    },
+    {
+      "index": 11,
+      "en": "TTY mode type:",
+      "ja": "TTYモードの型:"
+    },
+    {
+      "index": 12,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 13,
+      "en": "uv_tty_vtermstate_t",
+      "ja": "uv_tty_vtermstate_t"
+    },
+    {
+      "index": 14,
+      "en": "Console virtual terminal mode type:",
+      "ja": "コンソールの仮想端末モードの型:"
+    },
+    {
+      "index": 15,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 16,
+      "en": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "index": 17,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 18,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 19,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 20,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 21,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 22,
+      "en": "uv_tty_init",
+      "ja": "uv_tty_init"
+    },
+    {
+      "index": 23,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 24,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 25,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 26,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 27,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 28,
+      "en": "uv_tty_t",
+      "ja": "uv_tty_t"
+    },
+    {
+      "index": 29,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 30,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 31,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 32,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 33,
+      "en": "fd",
+      "ja": "fd"
+    },
+    {
+      "index": 34,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 35,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 36,
+      "en": "unused",
+      "ja": "unused"
+    },
+    {
+      "index": 37,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 38,
+      "en": "Initialize a new TTY stream with the given file descriptor. Usually the\nfile descriptor will be:",
+      "ja": "指定したファイル記述子で、新しいTTYストリームを初期化します。通常、ファイル記述子は次のいずれかです。"
+    },
+    {
+      "index": 39,
+      "en": "0 = stdin",
+      "ja": "0 = stdin"
+    },
+    {
+      "index": 40,
+      "en": "1 = stdout",
+      "ja": "1 = stdout"
+    },
+    {
+      "index": 41,
+      "en": "2 = stderr",
+      "ja": "2 = stderr"
+    },
+    {
+      "index": 42,
+      "en": "On Unix this function will determine the path of the fd of the terminal\nusing ",
+      "ja": "Unixでは、渡したファイル記述子がTTYを指す場合、この関数は、"
+    },
+    {
+      "index": 43,
+      "en": "ttyname_r(3)",
+      "ja": "ttyname_r(3)"
+    },
+    {
+      "index": 44,
+      "en": ", open it, and use it if the passed file descriptor\nrefers to a TTY. This lets libuv put the tty in non-blocking mode without\naffecting other processes that share the tty.",
+      "ja": "で端末のファイル記述子のパスを調べ、その端末を開いて使います。これにより、同じTTYを共有する他のプロセスへ影響を与えずに、libuvがTTYを非ブロッキングモードにできます。"
+    },
+    {
+      "index": 45,
+      "en": "This function is not thread safe on systems that don’t support\nioctl TIOCGPTN or TIOCPTYGNAME, for instance OpenBSD and Solaris.",
+      "ja": "この関数は、ioctlのTIOCGPTNやTIOCPTYGNAMEをサポートしないシステム、たとえばOpenBSDやSolarisでは、スレッドセーフではありません。"
+    },
+    {
+      "index": 46,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 47,
+      "en": "If reopening the TTY fails, libuv falls back to blocking writes.",
+      "ja": "TTYを再度開くことに失敗した場合、libuvはブロッキング書き込みへ切り替えます。"
+    },
+    {
+      "index": 48,
+      "en": "Changed in version 1.23.1:: ",
+      "ja": "バージョン1.23.1での変更: "
+    },
+    {
+      "index": 49,
+      "en": "the ",
+      "ja": "次のパラメーター、"
+    },
+    {
+      "index": 50,
+      "en": "readable",
+      "ja": "readable"
+    },
+    {
+      "index": 51,
+      "en": " parameter is now unused and ignored.\nThe correct value will now be auto-detected from the kernel.",
+      "ja": "は使わず、無視するようになりました。現在は、適切な値をカーネルから自動検出します。"
+    },
+    {
+      "index": 52,
+      "en": "Changed in version 1.9.0:: ",
+      "ja": "バージョン1.9.0での変更: "
+    },
+    {
+      "index": 53,
+      "en": "the path of the TTY is determined by\n",
+      "ja": "TTYのパスを、"
+    },
+    {
+      "index": 54,
+      "en": "ttyname_r(3)",
+      "ja": "ttyname_r(3)"
+    },
+    {
+      "index": 55,
+      "en": ". In earlier versions libuv opened\n",
+      "ja": "で調べるようになりました。以前のlibuvでは、代わりに"
+    },
+    {
+      "index": 56,
+      "en": "/dev/tty",
+      "ja": "/dev/tty"
+    },
+    {
+      "index": 57,
+      "en": " instead.",
+      "ja": "を開いていました。"
+    },
+    {
+      "index": 58,
+      "en": "Changed in version 1.5.0:: ",
+      "ja": "バージョン1.5.0での変更: "
+    },
+    {
+      "index": 59,
+      "en": "trying to initialize a TTY stream with a file\ndescriptor that refers to a file returns ",
+      "ja": "UNIXでは、ファイルを指すファイル記述子でTTYストリームを初期化しようとすると、"
+    },
+    {
+      "index": 60,
+      "en": "UV_EINVAL",
+      "ja": "UV_EINVAL"
+    },
+    {
+      "index": 61,
+      "en": "\non UNIX.",
+      "ja": "を返すようになりました。"
+    },
+    {
+      "index": 62,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 63,
+      "en": "uv_tty_set_mode",
+      "ja": "uv_tty_set_mode"
+    },
+    {
+      "index": 64,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 65,
+      "en": "uv_tty_t",
+      "ja": "uv_tty_t"
+    },
+    {
+      "index": 66,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 67,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 68,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 69,
+      "en": "uv_tty_mode_t",
+      "ja": "uv_tty_mode_t"
+    },
+    {
+      "index": 70,
+      "en": "mode",
+      "ja": "mode"
+    },
+    {
+      "index": 71,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 72,
+      "en": "Changed in version 1.2.0:: ",
+      "ja": "バージョン1.2.0での変更: "
+    },
+    {
+      "index": 73,
+      "en": "the mode is specified as a\n",
+      "ja": "モードを、次の型の値で指定するようになりました: "
+    },
+    {
+      "index": 74,
+      "en": " value.",
+      "ja": "。"
+    },
+    {
+      "index": 75,
+      "en": "Set the TTY using the specified terminal mode.",
+      "ja": "指定した端末モードでTTYを設定します。"
+    },
+    {
+      "index": 76,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 77,
+      "en": "uv_tty_reset_mode",
+      "ja": "uv_tty_reset_mode"
+    },
+    {
+      "index": 78,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 79,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 80,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 81,
+      "en": "To be called when the program exits. Resets TTY settings to default\nvalues for the next process to take over.",
+      "ja": "プログラムが終了するときに呼び出します。次のプロセスが使えるよう、TTYの設定を既定値へ戻します。"
+    },
+    {
+      "index": 82,
+      "en": "This function is async signal-safe on Unix platforms but can fail with error\ncode ",
+      "ja": "この関数はUnixでは非同期シグナルセーフですが、次の関数の実行中に呼び出した場合は、エラーコード"
+    },
+    {
+      "index": 83,
+      "en": " if you call it when execution is inside\n",
+      "ja": "で失敗する可能性があります。該当する関数は、"
+    },
+    {
+      "index": 84,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 85,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 86,
+      "en": "uv_tty_get_winsize",
+      "ja": "uv_tty_get_winsize"
+    },
+    {
+      "index": 87,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 88,
+      "en": "uv_tty_t",
+      "ja": "uv_tty_t"
+    },
+    {
+      "index": 89,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 90,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 91,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 92,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 93,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 94,
+      "en": "width",
+      "ja": "width"
+    },
+    {
+      "index": 95,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 96,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 97,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 98,
+      "en": "height",
+      "ja": "height"
+    },
+    {
+      "index": 99,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 100,
+      "en": "Gets the current Window size. On success it returns 0.",
+      "ja": "現在のウィンドウサイズを取得します。成功時は0を返します。"
+    },
+    {
+      "index": 101,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 102,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 103,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    },
+    {
+      "index": 104,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 105,
+      "en": "uv_tty_set_vterm_state",
+      "ja": "uv_tty_set_vterm_state"
+    },
+    {
+      "index": 106,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 107,
+      "en": "uv_tty_vtermstate_t",
+      "ja": "uv_tty_vtermstate_t"
+    },
+    {
+      "index": 108,
+      "en": "state",
+      "ja": "state"
+    },
+    {
+      "index": 109,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 110,
+      "en": "Controls whether console virtual terminal sequences are processed by libuv\nor console.\nUseful in particular for enabling ConEmu support of ANSI X3.64 and Xterm\n256 colors. Otherwise Windows10 consoles are usually detected automatically.",
+      "ja": "コンソールの仮想端末シーケンスをlibuvとコンソールのどちらが処理するかを制御します。特に、ConEmuでANSI X3.64とXtermの256色を有効にするときに役立ちます。それ以外では、通常、Windows10のコンソールを自動検出します。"
+    },
+    {
+      "index": 111,
+      "en": "This function is only meaningful on Windows systems. On Unix it is silently\nignored.",
+      "ja": "この関数はWindowsだけで意味があります。Unixでは何も通知せずに無視します。"
+    },
+    {
+      "index": 112,
+      "en": "New in version 1.33.0.",
+      "ja": "バージョン1.33.0で追加。"
+    },
+    {
+      "index": 113,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 114,
+      "en": "uv_tty_get_vterm_state",
+      "ja": "uv_tty_get_vterm_state"
+    },
+    {
+      "index": 115,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 116,
+      "en": "uv_tty_vtermstate_t",
+      "ja": "uv_tty_vtermstate_t"
+    },
+    {
+      "index": 117,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 118,
+      "en": "state",
+      "ja": "state"
+    },
+    {
+      "index": 119,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 120,
+      "en": "Get the current state of whether console virtual terminal sequences are\nhandled by libuv or the console.",
+      "ja": "コンソールの仮想端末シーケンスを、現在libuvとコンソールのどちらが処理しているかを取得します。"
+    },
+    {
+      "index": 121,
+      "en": "This function is not implemented on Unix, where it returns ",
+      "ja": "この関数はUnixでは実装されておらず、"
+    },
+    {
+      "index": 122,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 123,
+      "en": "New in version 1.33.0.",
+      "ja": "バージョン1.33.0で追加。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 2,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

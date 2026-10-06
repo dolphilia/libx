@@ -1,0 +1,1544 @@
+{
+  "page": "reference/pipe",
+  "at": "2026-10-04T22:13:28.069883+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/pipe.rst",
+      "sha256": "4769f88aa1191f4f91eeebce1422740ae6964d811cc5e91e1b229d0fa1552604"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/pipe.md",
+      "sha256": "f9ae1190c94a16767cc8bcfacbf3525a28cc9705e00fe533e2ab784adaa680f0"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/pipe.md",
+      "sha256": "1a0bf8d6770f346b9577ba0df01e4a7a02a2db61118978bede0435a69360a68e"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, notes, footer; no code block",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — Pipe handle",
+      "ja": " — パイプハンドル"
+    },
+    {
+      "index": 1,
+      "en": "Pipe handles provide an abstraction over streaming files on Unix (including\nlocal domain sockets, pipes, and FIFOs) and named pipes on Windows.",
+      "ja": "パイプハンドルは、Unixのストリーミングファイル（ローカルドメインソケット、パイプ、FIFOを含む）と、Windowsの名前付きパイプを抽象化します。"
+    },
+    {
+      "index": 2,
+      "en": " is a ‘subclass’ of ",
+      "ja": "は、次の型の「サブクラス」です: "
+    },
+    {
+      "index": 3,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 4,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 5,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 6,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 7,
+      "en": "Pipe handle type.",
+      "ja": "パイプハンドルの型です。"
+    },
+    {
+      "index": 8,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 9,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 10,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 11,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 12,
+      "en": "ipc",
+      "ja": "ipc"
+    },
+    {
+      "index": 13,
+      "en": "Whether this pipe is suitable for handle passing between processes.\nOnly a connected pipe that will be passing the handles should have this flag\nset, not the listening pipe that uv_accept is called on.",
+      "ja": "このパイプがプロセス間のハンドル転送に適しているかを表します。このフラグを設定するのは、ハンドルを転送する接続済みパイプだけです。uv_acceptを呼び出す待ち受けパイプには設定しません。"
+    },
+    {
+      "index": 14,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 15,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 16,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 17,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 18,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 19,
+      "en": "uv_pipe_init",
+      "ja": "uv_pipe_init"
+    },
+    {
+      "index": 20,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 21,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 22,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 23,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 24,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 25,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 26,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 27,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 28,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 29,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 30,
+      "en": "ipc",
+      "ja": "ipc"
+    },
+    {
+      "index": 31,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 32,
+      "en": "Initialize a pipe handle. The ",
+      "ja": "パイプハンドルを初期化します。"
+    },
+    {
+      "index": 33,
+      "en": "ipc",
+      "ja": "ipc"
+    },
+    {
+      "index": 34,
+      "en": " argument is a boolean to indicate if\nthis pipe will be used for handle passing between processes (which may\nchange the bytes on the wire). Only a connected pipe that will be\npassing the handles should have this flag set, not the listening pipe\nthat uv_accept is called on.",
+      "ja": "引数は、このパイプをプロセス間のハンドル転送に使うかどうかを表す真偽値です。これにより、通信路上のバイト列が変わる可能性があります。このフラグを設定するのは、ハンドルを転送する接続済みパイプだけです。uv_acceptを呼び出す待ち受けパイプには設定しません。"
+    },
+    {
+      "index": 35,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 36,
+      "en": "uv_pipe_open",
+      "ja": "uv_pipe_open"
+    },
+    {
+      "index": 37,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 38,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 39,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 40,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 41,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 42,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 43,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 44,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 45,
+      "en": "Open an existing file descriptor or HANDLE as a pipe.",
+      "ja": "既存のファイル記述子またはHANDLEをパイプとして開きます。"
+    },
+    {
+      "index": 46,
+      "en": "Changed in version 1.2.1: ",
+      "ja": "バージョン1.2.1での変更: "
+    },
+    {
+      "index": 47,
+      "en": "the file descriptor is set to non-blocking mode.",
+      "ja": "ファイル記述子を非ブロッキングモードに設定します。"
+    },
+    {
+      "index": 48,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 49,
+      "en": "The passed file descriptor or HANDLE is not checked for its type, but\nit’s required that it represents a valid pipe.",
+      "ja": "渡したファイル記述子やHANDLEの型は検査しませんが、有効なパイプを表している必要があります。"
+    },
+    {
+      "index": 50,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 51,
+      "en": "uv_pipe_bind",
+      "ja": "uv_pipe_bind"
+    },
+    {
+      "index": 52,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 53,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 54,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 55,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 56,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 57,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 58,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 59,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 60,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 61,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 62,
+      "en": "Bind the pipe to a file path (Unix) or a name (Windows).",
+      "ja": "パイプをファイルパス（Unix）または名前（Windows）にバインドします。"
+    },
+    {
+      "index": 63,
+      "en": "Does not support Linux abstract namespace sockets,\nunlike ",
+      "ja": "次の関数とは異なり、Linuxの抽象名前空間ソケットはサポートしません: "
+    },
+    {
+      "index": 64,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 65,
+      "en": "Alias for ",
+      "ja": "次の呼び出しの別名です: "
+    },
+    {
+      "index": 66,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 67,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 68,
+      "en": "Paths on Unix get truncated to ",
+      "ja": "Unixのパスは、"
+    },
+    {
+      "index": 69,
+      "en": " bytes,\ntypically between 92 and 108 bytes.",
+      "ja": "バイトで切り詰めます。通常は92〜108バイトです。"
+    },
+    {
+      "index": 70,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 71,
+      "en": "uv_pipe_bind2",
+      "ja": "uv_pipe_bind2"
+    },
+    {
+      "index": 72,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 73,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 74,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 75,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 76,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 77,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 78,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 79,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 80,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 81,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 82,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 83,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 84,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 85,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 86,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 87,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 88,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 89,
+      "en": "Bind the pipe to a file path (Unix) or a name (Windows).",
+      "ja": "パイプをファイルパス（Unix）または名前（Windows）にバインドします。"
+    },
+    {
+      "index": 90,
+      "en": " must be zero or ",
+      "ja": "は0または"
+    },
+    {
+      "index": 91,
+      "en": ". Returns ",
+      "ja": "でなければなりません。サポートしないフラグが指定された場合は、バインド操作を行わず、"
+    },
+    {
+      "index": 92,
+      "en": "\nfor unsupported flags without performing the bind operation.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 93,
+      "en": "Supports Linux abstract namespace sockets. ",
+      "ja": "Linuxの抽象名前空間ソケットをサポートします。"
+    },
+    {
+      "index": 94,
+      "en": " must include\nthe leading nul byte but not the trailing nul byte.",
+      "ja": "には、先頭のヌルバイトを含め、末尾のヌルバイトは含めません。"
+    },
+    {
+      "index": 95,
+      "en": "New in version 1.46.0.",
+      "ja": "バージョン1.46.0で追加。"
+    },
+    {
+      "index": 96,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 97,
+      "en": "Paths on Unix get truncated to ",
+      "ja": "Unixのパスは、"
+    },
+    {
+      "index": 98,
+      "en": " bytes,\ntypically between 92 and 108 bytes, unless the ",
+      "ja": "バイトで切り詰めます。通常は92〜108バイトです。ただし、"
+    },
+    {
+      "index": 99,
+      "en": "\nflag is specified, in which case an ",
+      "ja": "フラグが指定されている場合は、切り詰めずに"
+    },
+    {
+      "index": 100,
+      "en": " error is returned.",
+      "ja": "エラーを返します。"
+    },
+    {
+      "index": 101,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 102,
+      "en": "uv_pipe_connect",
+      "ja": "uv_pipe_connect"
+    },
+    {
+      "index": 103,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 104,
+      "en": "uv_connect_t",
+      "ja": "uv_connect_t"
+    },
+    {
+      "index": 105,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 106,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 107,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 108,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 109,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 110,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 111,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 112,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 113,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 114,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 115,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 116,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 117,
+      "en": "uv_connect_cb",
+      "ja": "uv_connect_cb"
+    },
+    {
+      "index": 118,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 119,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 120,
+      "en": "Connect to the Unix domain socket or the Windows named pipe.",
+      "ja": "UnixドメインソケットまたはWindowsの名前付きパイプに接続します。"
+    },
+    {
+      "index": 121,
+      "en": "Does not support Linux abstract namespace sockets,\nunlike ",
+      "ja": "次の関数とは異なり、Linuxの抽象名前空間ソケットはサポートしません: "
+    },
+    {
+      "index": 122,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 123,
+      "en": "Alias for ",
+      "ja": "次の呼び出しの別名です: "
+    },
+    {
+      "index": 124,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 125,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 126,
+      "en": "Paths on Unix get truncated to ",
+      "ja": "Unixのパスは、"
+    },
+    {
+      "index": 127,
+      "en": " bytes,\ntypically between 92 and 108 bytes.",
+      "ja": "バイトで切り詰めます。通常は92〜108バイトです。"
+    },
+    {
+      "index": 128,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 129,
+      "en": "uv_pipe_connect2",
+      "ja": "uv_pipe_connect2"
+    },
+    {
+      "index": 130,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 131,
+      "en": "uv_connect_t",
+      "ja": "uv_connect_t"
+    },
+    {
+      "index": 132,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 133,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 134,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 135,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 136,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 137,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 138,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 139,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 140,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 141,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 142,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 143,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 144,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 145,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 146,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 147,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 148,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 149,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 150,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 151,
+      "en": "uv_connect_cb",
+      "ja": "uv_connect_cb"
+    },
+    {
+      "index": 152,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 153,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 154,
+      "en": "Connect to the Unix domain socket or the Windows named pipe.",
+      "ja": "UnixドメインソケットまたはWindowsの名前付きパイプに接続します。"
+    },
+    {
+      "index": 155,
+      "en": " must be zero or ",
+      "ja": "は0または"
+    },
+    {
+      "index": 156,
+      "en": ". Returns ",
+      "ja": "でなければなりません。サポートしないフラグが指定された場合は、接続操作を行わず、"
+    },
+    {
+      "index": 157,
+      "en": "\nfor unsupported flags without performing the connect operation.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 158,
+      "en": "Supports Linux abstract namespace sockets. ",
+      "ja": "Linuxの抽象名前空間ソケットをサポートします。"
+    },
+    {
+      "index": 159,
+      "en": " must include\nthe leading nul byte but not the trailing nul byte.",
+      "ja": "には、先頭のヌルバイトを含め、末尾のヌルバイトは含めません。"
+    },
+    {
+      "index": 160,
+      "en": "New in version 1.46.0.",
+      "ja": "バージョン1.46.0で追加。"
+    },
+    {
+      "index": 161,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 162,
+      "en": "Paths on Unix get truncated to ",
+      "ja": "Unixのパスは、"
+    },
+    {
+      "index": 163,
+      "en": " bytes,\ntypically between 92 and 108 bytes, unless the ",
+      "ja": "バイトで切り詰めます。通常は92〜108バイトです。ただし、"
+    },
+    {
+      "index": 164,
+      "en": "\nflag is specified, in which case an ",
+      "ja": "フラグが指定されている場合は、切り詰めずに"
+    },
+    {
+      "index": 165,
+      "en": " error is returned.",
+      "ja": "エラーを返します。"
+    },
+    {
+      "index": 166,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 167,
+      "en": "uv_pipe_getsockname",
+      "ja": "uv_pipe_getsockname"
+    },
+    {
+      "index": 168,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 169,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 170,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 171,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 172,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 173,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 174,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 175,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 176,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 177,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 178,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 179,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 180,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 181,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 182,
+      "en": "Get the name of the Unix domain socket or the named pipe.",
+      "ja": "Unixドメインソケットまたは名前付きパイプの名前を取得します。"
+    },
+    {
+      "index": 183,
+      "en": "A preallocated buffer must be provided. The size parameter holds the length\nof the buffer and it’s set to the number of bytes written to the buffer on\noutput. If the buffer is not big enough ",
+      "ja": "事前に確保したバッファを渡す必要があります。sizeパラメーターはバッファの長さを保持し、出力時にはバッファへ書き込んだバイト数に設定します。バッファが十分な大きさでない場合は、"
+    },
+    {
+      "index": 184,
+      "en": " will be returned and\nlen will contain the required size.",
+      "ja": "を返し、lenには必要なサイズが入ります。"
+    },
+    {
+      "index": 185,
+      "en": "UNIX domain socket paths on FreeBSD cannot exceed the size of\n",
+      "ja": "FreeBSDでは、Unixドメインソケットのパスは、"
+    },
+    {
+      "index": 186,
+      "en": " although the platform defines a\n",
+      "ja": "のサイズを超えられません。これは、このプラットフォームが、それより大きな"
+    },
+    {
+      "index": 187,
+      "en": " that is larger.",
+      "ja": "を定義していても同じです。"
+    },
+    {
+      "index": 188,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 189,
+      "en": "the returned length no longer includes the terminating null byte,\nand the buffer is not null terminated.",
+      "ja": "返す長さに終端ヌルバイトを含めなくなり、バッファもヌル終端しなくなりました。"
+    },
+    {
+      "index": 190,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 191,
+      "en": "uv_pipe_getpeername",
+      "ja": "uv_pipe_getpeername"
+    },
+    {
+      "index": 192,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 193,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 194,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 195,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 196,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 197,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 198,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 199,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 200,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 201,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 202,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 203,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 204,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 205,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 206,
+      "en": "Get the name of the Unix domain socket or the named pipe to which the handle\nis connected.",
+      "ja": "ハンドルが接続しているUnixドメインソケットまたは名前付きパイプの名前を取得します。"
+    },
+    {
+      "index": 207,
+      "en": "A preallocated buffer must be provided. The size parameter holds the length\nof the buffer and it’s set to the number of bytes written to the buffer on\noutput. If the buffer is not big enough ",
+      "ja": "事前に確保したバッファを渡す必要があります。sizeパラメーターはバッファの長さを保持し、出力時にはバッファへ書き込んだバイト数に設定します。バッファが十分な大きさでない場合は、"
+    },
+    {
+      "index": 208,
+      "en": " will be returned and\nlen will contain the required size.",
+      "ja": "を返し、lenには必要なサイズが入ります。"
+    },
+    {
+      "index": 209,
+      "en": "New in version 1.3.0.",
+      "ja": "バージョン1.3.0で追加。"
+    },
+    {
+      "index": 210,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 211,
+      "en": "uv_pipe_pending_instances",
+      "ja": "uv_pipe_pending_instances"
+    },
+    {
+      "index": 212,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 213,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 214,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 215,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 216,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 217,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 218,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 219,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 220,
+      "en": "Set the number of pending pipe instance handles when the pipe server is\nwaiting for connections.",
+      "ja": "パイプサーバーが接続を待っているときの、保留中のパイプインスタンスハンドル数を設定します。"
+    },
+    {
+      "index": 221,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 222,
+      "en": "This setting applies to Windows only.",
+      "ja": "この設定はWindowsだけに適用されます。"
+    },
+    {
+      "index": 223,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 224,
+      "en": "uv_pipe_pending_count",
+      "ja": "uv_pipe_pending_count"
+    },
+    {
+      "index": 225,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 226,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 227,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 228,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 229,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 230,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 231,
+      "en": "uv_pipe_pending_type",
+      "ja": "uv_pipe_pending_type"
+    },
+    {
+      "index": 232,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 233,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 234,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 235,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 236,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 237,
+      "en": "Used to receive handles over IPC pipes.",
+      "ja": "IPCパイプ経由でハンドルを受信するために使います。"
+    },
+    {
+      "index": 238,
+      "en": "First - call ",
+      "ja": "最初に"
+    },
+    {
+      "index": 239,
+      "en": ", if it’s > 0 then initialize\na handle of the given ",
+      "ja": "を呼び出し、戻り値が0より大きい場合は、"
+    },
+    {
+      "index": 240,
+      "en": "type",
+      "ja": "型"
+    },
+    {
+      "index": 241,
+      "en": ", returned by ",
+      "ja": "のハンドルを初期化します。この型は"
+    },
+    {
+      "index": 242,
+      "en": "\nand call ",
+      "ja": "が返します。その後、"
+    },
+    {
+      "index": 243,
+      "en": ".",
+      "ja": "を呼び出します。"
+    },
+    {
+      "index": 244,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 245,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 246,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    },
+    {
+      "index": 247,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 248,
+      "en": "uv_pipe_chmod",
+      "ja": "uv_pipe_chmod"
+    },
+    {
+      "index": 249,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 250,
+      "en": "uv_pipe_t",
+      "ja": "uv_pipe_t"
+    },
+    {
+      "index": 251,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 252,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 253,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 254,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 255,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 256,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 257,
+      "en": "Alters pipe permissions, allowing it to be accessed from processes run by\ndifferent users. Makes the pipe writable or readable by all users. Mode can\nbe ",
+      "ja": "パイプのアクセス許可を変更し、別のユーザーが実行するプロセスからアクセスできるようにします。すべてのユーザーがパイプへ書き込む、または読み取ることを許可します。モードには、"
+    },
+    {
+      "index": 258,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 259,
+      "en": " or ",
+      "ja": "、"
+    },
+    {
+      "index": 260,
+      "en": ". This\nfunction is blocking.",
+      "ja": "のいずれかを指定できます。この関数はブロッキングです。"
+    },
+    {
+      "index": 261,
+      "en": "New in version 1.16.0.",
+      "ja": "バージョン1.16.0で追加。"
+    },
+    {
+      "index": 262,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 263,
+      "en": "uv_pipe",
+      "ja": "uv_pipe"
+    },
+    {
+      "index": 264,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 265,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 266,
+      "en": "fds",
+      "ja": "fds"
+    },
+    {
+      "index": 267,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 268,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 269,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 270,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 271,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 272,
+      "en": "read_flags",
+      "ja": "read_flags"
+    },
+    {
+      "index": 273,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 274,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 275,
+      "en": "write_flags",
+      "ja": "write_flags"
+    },
+    {
+      "index": 276,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 277,
+      "en": "Create a pair of connected pipe handles.\nData may be written to ",
+      "ja": "接続済みのパイプハンドルのペアを作成します。データは"
+    },
+    {
+      "index": 278,
+      "en": "fds[1]",
+      "ja": "fds[1]"
+    },
+    {
+      "index": 279,
+      "en": " and read from ",
+      "ja": "へ書き込み、"
+    },
+    {
+      "index": 280,
+      "en": "fds[0]",
+      "ja": "fds[0]"
+    },
+    {
+      "index": 281,
+      "en": ".\nThe resulting handles can be passed to ",
+      "ja": "から読み取れます。得られたハンドルは、"
+    },
+    {
+      "index": 282,
+      "en": "uv_pipe_open",
+      "ja": "uv_pipe_open"
+    },
+    {
+      "index": 283,
+      "en": ", used with ",
+      "ja": "へ渡したり、"
+    },
+    {
+      "index": 284,
+      "en": "uv_spawn",
+      "ja": "uv_spawn"
+    },
+    {
+      "index": 285,
+      "en": ",\nor for any other purpose.",
+      "ja": "で使ったり、他の目的に使ったりできます。"
+    },
+    {
+      "index": 286,
+      "en": "Valid values for ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 287,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 288,
+      "en": " are:",
+      "ja": "に指定できる値は、次のとおりです。"
+    },
+    {
+      "index": 289,
+      "en": "UV_NONBLOCK_PIPE: Opens the specified socket handle for ",
+      "ja": "UV_NONBLOCK_PIPE: 指定したソケットハンドルを、"
+    },
+    {
+      "index": 290,
+      "en": "OVERLAPPED",
+      "ja": "OVERLAPPED"
+    },
+    {
+      "index": 291,
+      "en": "\nor ",
+      "ja": "または"
+    },
+    {
+      "index": 292,
+      "en": "FIONBIO",
+      "ja": "FIONBIO"
+    },
+    {
+      "index": 293,
+      "en": "/",
+      "ja": "/"
+    },
+    {
+      "index": 294,
+      "en": "O_NONBLOCK",
+      "ja": "O_NONBLOCK"
+    },
+    {
+      "index": 295,
+      "en": " I/O usage.\nThis is recommended for handles that will be used by libuv,\nand not usually recommended otherwise.",
+      "ja": "のI/O用に開きます。libuvで使うハンドルでは推奨しますが、通常、他の用途では推奨しません。"
+    },
+    {
+      "index": 296,
+      "en": "Equivalent to ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 297,
+      "en": "pipe(2)",
+      "ja": "pipe(2)"
+    },
+    {
+      "index": 298,
+      "en": " with the ",
+      "ja": "で"
+    },
+    {
+      "index": 299,
+      "en": "O_CLOEXEC",
+      "ja": "O_CLOEXEC"
+    },
+    {
+      "index": 300,
+      "en": " flag set.",
+      "ja": "フラグを設定した場合と同等です。"
+    },
+    {
+      "index": 301,
+      "en": "New in version 1.41.0.",
+      "ja": "バージョン1.41.0で追加。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

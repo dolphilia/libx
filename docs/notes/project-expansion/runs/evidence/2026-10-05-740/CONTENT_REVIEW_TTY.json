@@ -1,0 +1,79 @@
+{
+  "page": "reference/tty",
+  "status": "passed",
+  "at": "2026-10-04T22:22:52.518055+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/enum/comment/footer reading after739 translation; no correction required. API and actual output checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/tty.rst",
+      "sha256": "1574dbfec4faae63f918c1dbbea740e30df09f69c2e7cf7a5ed4623ad5c03ced"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/tty.md",
+      "sha256": "f174bbbdd101e00fd5cf3f3cdb25ceba24a2e3fc0e8bd2c12e66627427cef9ee"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/tty.md",
+      "sha256": "52b61067775cbfc7420ca522eebaef8df02b2f70dec05f7655d71dd99b267a87"
+    }
+  ],
+  "coverage": {
+    "original": "entire tty.rst including both complete enum/comment blocks",
+    "canonical": "all current English article/API/code/footer",
+    "translation": "all current Japanese article/API/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "complete fixed RST / EN / JA / footer / enums",
+      "result": "All fixed tty.rst and current full EN/JA read separately after739 translation, all124mapped nodes/9declarations/2enum code blocks and original comments covered; no unread ranges. No correction necessary."
+    },
+    {
+      "scope": "type and original enum behaviour",
+      "result": "Console stream and stream subclass/member/API inheritance retained. Mode normal/raw/window input/raw_VT possibility/Unix-only binary IO/rawVT input and virtual-terminal supported versus legacy unsupported enum/code comments retained exactly, including original second typedef without final semicolon. Public member N/A and1.2 enum version retained."
+    },
+    {
+      "scope": "initialisation and platform/version conditions",
+      "result": "Init supplied fd and stdin0/stdout1/stderr2, Unix ttyname_r opening when tty and avoiding effects on sharing processes, unsupported TIOCGPTN/TIOCPTYGNAME ioctl thread-safety limitation/OpenBSD/Solaris retained. Failed reopen falls back blocking writes.1.23.1 readable parameter unused/ignored and kernel autodetection,1.9 ttyname_r versus previous dev/tty,1.5 UNIX nonTTY file EINVAL retained. EN original duplicated version punctuation normalised to usual Japanese punctuation without meaning changes."
+    },
+    {
+      "scope": "mode/reset/winsize",
+      "result": "Set-mode uv_tty_mode_t and1.2 retained. Reset on program exit/default for next process; Unix async signal-safe but EBUSY when inside set-mode retained, distinct from general safety guarantee. Get window size returns0 on success retained."
+    },
+    {
+      "scope": "vterm and review boundaries",
+      "result": "Set-state libuv versus console sequence processing, ConEmu ANSI X3.64/Xterm256 and Windows10 autodetection retained. Setter Windows-only/Unix silently ignored, getter Unix unimplemented ENOTSUP and both1.33 notes retained. Source/licences/notices/unofficial JA information kept footer. Mechanical tests739 and fresh render/API/TOC checks740 separate from content review. No native/runtime/content/integration/release or external supplementary video full review claimed."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-740/API_VERIFICATION.json",
+      "sha256": "d43a9402687d11f29c3a1173a31c8e1da7ba681c89c4a5b533f6e089675f40b3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-740/RENDER_VERIFICATION.json",
+      "sha256": "1cec349b510ed4f5d8b0a4e873dbf1c661fd076c0c301d13fb09c2f1854a032f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-740/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "7dfde569ef6132493709b26b83d248f10a0fddc73517729abb98408c5838d769"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-739/PREBUILD.log",
+      "sha256": "b6e99996deb4ea142e01a036c437d403a0a8614737fd261f2f1cc6129cec0918"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-739/BUILD.log",
+      "sha256": "27f8285a32d19b750aa13a5d699744dd1e7c1b28a2e15ba7296887317385c650"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

@@ -1,0 +1,939 @@
+{
+  "page": "reference/poll",
+  "at": "2026-10-04T22:25:08.557509+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/poll.rst",
+      "sha256": "7538dd293a80a4f5f7e6f4077fb460229c3fb2475362e770d8a19300472b98a4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/poll.md",
+      "sha256": "565d93a45748a007cbac6e5f1916557d4a568ee91d96eea9afc4a65c40485771"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/poll.md",
+      "sha256": "5f2e18b5e4ab439f728697119e72b2ece182aa6f070fd7e398749d0c9cfe94e5"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 1enum code block, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — Poll handle",
+      "ja": " — ポーリングハンドル"
+    },
+    {
+      "index": 1,
+      "en": "Poll handles are used to watch file descriptors for readability,\nwritability and disconnection similar to the purpose of ",
+      "ja": "ポーリングハンドルは、次の関数と同様に、ファイル記述子の読み取り可能・書き込み可能・切断を監視するために使います: "
+    },
+    {
+      "index": 2,
+      "en": "poll(2)",
+      "ja": "poll(2)"
+    },
+    {
+      "index": 3,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 4,
+      "en": "The purpose of poll handles is to enable integrating external libraries that\nrely on the event loop to signal it about the socket status changes, like\nc-ares or libssh2. Using uv_poll_t for any other purpose is not recommended;\n",
+      "ja": "ポーリングハンドルの目的は、c-aresやlibssh2など、イベントループからソケットの状態変化の通知を受ける外部ライブラリーを統合することです。他の目的でuv_poll_tを使うことは推奨しません。"
+    },
+    {
+      "index": 5,
+      "en": ", ",
+      "ja": "や、"
+    },
+    {
+      "index": 6,
+      "en": ", etc. provide an implementation that is faster and\nmore scalable than what can be achieved with ",
+      "ja": "などの実装の方が、次の型よりも高速で、規模を拡大しやすいためです: "
+    },
+    {
+      "index": 7,
+      "en": ", especially on\nWindows.",
+      "ja": "。特にWindowsでは、この差が大きくなります。"
+    },
+    {
+      "index": 8,
+      "en": "It is possible that poll handles occasionally signal that a file descriptor is\nreadable or writable even when it isn’t. The user should therefore always\nbe prepared to handle EAGAIN or equivalent when it attempts to read from or\nwrite to the fd.",
+      "ja": "ポーリングハンドルは、ファイル記述子が実際には読み取り可能や書き込み可能でなくても、その状態を通知することがあります。そのため、ファイル記述子から読み取る、または書き込むときは、常にEAGAINや同等のエラーを処理できるようにしてください。"
+    },
+    {
+      "index": 9,
+      "en": "It is not okay to have multiple active poll handles for the same socket, this\ncan cause libuv to busyloop or otherwise malfunction.",
+      "ja": "同じソケットに対し、複数のポーリングハンドルを同時にアクティブにしてはいけません。libuvがビジーループに陥ったり、他の不具合が生じたりする可能性があります。"
+    },
+    {
+      "index": 10,
+      "en": "The user should not close a file descriptor while it is being polled by an\nactive poll handle. This can cause the handle to report an error,\nbut it might also start polling another socket. However the fd can be safely\nclosed immediately after a call to ",
+      "ja": "アクティブなポーリングハンドルが監視している間は、ファイル記述子を閉じてはいけません。ハンドルがエラーを報告するだけでなく、別のソケットを監視し始める可能性もあります。ただし、"
+    },
+    {
+      "index": 11,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 12,
+      "en": ".",
+      "ja": "を呼び出した直後なら、ファイル記述子を安全に閉じられます。"
+    },
+    {
+      "index": 13,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 14,
+      "en": "On windows only sockets can be polled with poll handles. On Unix any file\ndescriptor that would be accepted by ",
+      "ja": "Windowsでは、ポーリングハンドルで監視できるのはソケットだけです。Unixでは、次の関数が受け付けるファイル記述子を使えます: "
+    },
+    {
+      "index": 15,
+      "en": "poll(2)",
+      "ja": "poll(2)"
+    },
+    {
+      "index": 16,
+      "en": " can be used.",
+      "ja": "。"
+    },
+    {
+      "index": 17,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 18,
+      "en": "On AIX, watching for disconnection is not supported.",
+      "ja": "AIXでは、切断の監視をサポートしません。"
+    },
+    {
+      "index": 19,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 20,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 21,
+      "en": "uv_poll_t",
+      "ja": "uv_poll_t"
+    },
+    {
+      "index": 22,
+      "en": "Poll handle type.",
+      "ja": "ポーリングハンドルの型です。"
+    },
+    {
+      "index": 23,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 24,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 25,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 26,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 27,
+      "en": "uv_poll_cb",
+      "ja": "uv_poll_cb"
+    },
+    {
+      "index": 28,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 29,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 30,
+      "en": "uv_poll_t",
+      "ja": "uv_poll_t"
+    },
+    {
+      "index": 31,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 32,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 33,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 34,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 35,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 36,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 37,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 38,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 39,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 40,
+      "en": "Type definition for callback passed to ",
+      "ja": "次の関数へ渡すコールバックの型定義です: "
+    },
+    {
+      "index": 41,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 42,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 43,
+      "en": "uv_poll_event",
+      "ja": "uv_poll_event"
+    },
+    {
+      "index": 44,
+      "en": "Poll event types",
+      "ja": "ポーリングイベントの型"
+    },
+    {
+      "index": 45,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 46,
+      "en": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "index": 47,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 48,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 49,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 50,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 51,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 52,
+      "en": "uv_poll_init",
+      "ja": "uv_poll_init"
+    },
+    {
+      "index": 53,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 54,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 55,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 56,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 57,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 58,
+      "en": "uv_poll_t",
+      "ja": "uv_poll_t"
+    },
+    {
+      "index": 59,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 60,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 61,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 62,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 63,
+      "en": "fd",
+      "ja": "fd"
+    },
+    {
+      "index": 64,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 65,
+      "en": "Initialize the handle using a file descriptor.",
+      "ja": "ファイル記述子でハンドルを初期化します。"
+    },
+    {
+      "index": 66,
+      "en": "Changed in version 1.2.2: ",
+      "ja": "バージョン1.2.2での変更: "
+    },
+    {
+      "index": 67,
+      "en": "the file descriptor is set to non-blocking mode.",
+      "ja": "ファイル記述子を非ブロッキングモードに設定します。"
+    },
+    {
+      "index": 68,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 69,
+      "en": "uv_poll_init_socket",
+      "ja": "uv_poll_init_socket"
+    },
+    {
+      "index": 70,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 71,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 72,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 73,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 74,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 75,
+      "en": "uv_poll_t",
+      "ja": "uv_poll_t"
+    },
+    {
+      "index": 76,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 77,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 78,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 79,
+      "en": "uv_os_sock_t",
+      "ja": "uv_os_sock_t"
+    },
+    {
+      "index": 80,
+      "en": "socket",
+      "ja": "socket"
+    },
+    {
+      "index": 81,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 82,
+      "en": "Initialize the handle using a socket descriptor. On Unix this is identical\nto ",
+      "ja": "ソケット記述子でハンドルを初期化します。Unixでは、次の関数と同じです: "
+    },
+    {
+      "index": 83,
+      "en": ". On windows it takes a SOCKET handle.",
+      "ja": "。Windowsでは、SOCKETハンドルを受け取ります。"
+    },
+    {
+      "index": 84,
+      "en": "Changed in version 1.2.2: ",
+      "ja": "バージョン1.2.2での変更: "
+    },
+    {
+      "index": 85,
+      "en": "the socket is set to non-blocking mode.",
+      "ja": "ソケットを非ブロッキングモードに設定します。"
+    },
+    {
+      "index": 86,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 87,
+      "en": "uv_poll_start",
+      "ja": "uv_poll_start"
+    },
+    {
+      "index": 88,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 89,
+      "en": "uv_poll_t",
+      "ja": "uv_poll_t"
+    },
+    {
+      "index": 90,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 91,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 92,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 93,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 94,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 95,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 96,
+      "en": "uv_poll_cb",
+      "ja": "uv_poll_cb"
+    },
+    {
+      "index": 97,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 98,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 99,
+      "en": "Starts polling the file descriptor. ",
+      "ja": "ファイル記述子のポーリングを開始します。"
+    },
+    {
+      "index": 100,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 101,
+      "en": " is a bitmask made up of\n",
+      "ja": "は、"
+    },
+    {
+      "index": 102,
+      "en": "UV_READABLE",
+      "ja": "UV_READABLE"
+    },
+    {
+      "index": 103,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 104,
+      "en": "UV_WRITABLE",
+      "ja": "UV_WRITABLE"
+    },
+    {
+      "index": 105,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 106,
+      "en": "UV_PRIORITIZED",
+      "ja": "UV_PRIORITIZED"
+    },
+    {
+      "index": 107,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 108,
+      "en": "UV_DISCONNECT",
+      "ja": "UV_DISCONNECT"
+    },
+    {
+      "index": 109,
+      "en": ". As soon\nas an event is detected the callback will be called with ",
+      "ja": "を組み合わせたビットマスクです。イベントを検出するとすぐに、"
+    },
+    {
+      "index": 110,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 111,
+      "en": " set to 0,\nand the detected events set on the ",
+      "ja": "を0に設定し、検出したイベントを"
+    },
+    {
+      "index": 112,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 113,
+      "en": " field.",
+      "ja": "フィールドに設定して、コールバックを呼び出します。"
+    },
+    {
+      "index": 114,
+      "en": "The ",
+      "ja": "次のイベント、"
+    },
+    {
+      "index": 115,
+      "en": "UV_PRIORITIZED",
+      "ja": "UV_PRIORITIZED"
+    },
+    {
+      "index": 116,
+      "en": " event is used to watch for sysfs interrupts or TCP\nout-of-band messages.",
+      "ja": "は、sysfsの割り込みやTCPの帯域外メッセージを監視するために使います。"
+    },
+    {
+      "index": 117,
+      "en": "The ",
+      "ja": "次のイベント、"
+    },
+    {
+      "index": 118,
+      "en": "UV_DISCONNECT",
+      "ja": "UV_DISCONNECT"
+    },
+    {
+      "index": 119,
+      "en": " event is optional in the sense that it may not be\nreported and the user is free to ignore it, but it can help optimize the\nshutdown path because an extra read or write call might be avoided.",
+      "ja": "は、通知されない場合があり、無視しても構わないという意味で任意です。ただし、読み取りや書き込みの追加呼び出しを避けられる可能性があるため、シャットダウン処理の最適化に役立ちます。"
+    },
+    {
+      "index": 120,
+      "en": "If an error happens while polling, ",
+      "ja": "ポーリング中にエラーが発生した場合、"
+    },
+    {
+      "index": 121,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 122,
+      "en": " will be < 0 and corresponds\nwith one of the ",
+      "ja": "は0未満になり、"
+    },
+    {
+      "index": 123,
+      "en": "UV_E*",
+      "ja": "UV_E*"
+    },
+    {
+      "index": 124,
+      "en": " error codes (see ",
+      "ja": "エラーコードのいずれかに対応します（"
+    },
+    {
+      "index": 125,
+      "en": "Error handling",
+      "ja": "エラー処理"
+    },
+    {
+      "index": 126,
+      "en": "). The user should\nnot close the socket while the handle is active. If the user does that\nanyway, the callback ",
+      "ja": "を参照）。ハンドルがアクティブな間は、ソケットを閉じてはいけません。それでも閉じた場合、エラーステータスを報告するコールバックが呼び出される"
+    },
+    {
+      "index": 127,
+      "en": "may",
+      "ja": "可能性"
+    },
+    {
+      "index": 128,
+      "en": " be called reporting an error status, but this is\n",
+      "ja": "はありますが、その通知は"
+    },
+    {
+      "index": 129,
+      "en": "not",
+      "ja": "保証されません"
+    },
+    {
+      "index": 130,
+      "en": " guaranteed. If ",
+      "ja": "。"
+    },
+    {
+      "index": 131,
+      "en": "status == UV_EBADF",
+      "ja": "status == UV_EBADF"
+    },
+    {
+      "index": 132,
+      "en": " polling is discontinued for the\nfile handle and no further events will be reported. The user should\nthen call ",
+      "ja": "の場合は、そのファイルハンドルのポーリングを停止し、以後イベントを報告しません。その後、ハンドルに対して"
+    },
+    {
+      "index": 133,
+      "en": " on the handle.",
+      "ja": "を呼び出してください。"
+    },
+    {
+      "index": 134,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 135,
+      "en": "Calling ",
+      "ja": "すでにアクティブなハンドルで"
+    },
+    {
+      "index": 136,
+      "en": " on a handle that is already active is\nfine. Doing so will update the events mask that is being watched for.",
+      "ja": "を呼び出しても構いません。その場合、監視するイベントマスクを更新します。"
+    },
+    {
+      "index": 137,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 138,
+      "en": "Though ",
+      "ja": "次のイベント、"
+    },
+    {
+      "index": 139,
+      "en": "UV_DISCONNECT",
+      "ja": "UV_DISCONNECT"
+    },
+    {
+      "index": 140,
+      "en": " can be set, it is unsupported on AIX and as such\nwill not be set on the ",
+      "ja": "は指定できますが、AIXではサポートしないため、コールバックの"
+    },
+    {
+      "index": 141,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 142,
+      "en": " field in the callback.",
+      "ja": "フィールドには設定されません。"
+    },
+    {
+      "index": 143,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 144,
+      "en": "If one of the events ",
+      "ja": "次のイベント、"
+    },
+    {
+      "index": 145,
+      "en": "UV_READABLE",
+      "ja": "UV_READABLE"
+    },
+    {
+      "index": 146,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 147,
+      "en": "UV_WRITABLE",
+      "ja": "UV_WRITABLE"
+    },
+    {
+      "index": 148,
+      "en": " are set, the\ncallback will be called again, as long as the given fd/socket remains\nreadable or writable accordingly. Particularly in each of the following\nscenarios:",
+      "ja": "が設定されている場合、対象のファイル記述子やソケットが対応する読み取り可能・書き込み可能の状態である限り、コールバックを繰り返し呼び出します。特に、次の場合が該当します。"
+    },
+    {
+      "index": 149,
+      "en": "The callback has been called because the socket became\nreadable/writable and the callback did not conduct a read/write on\nthis socket at all.",
+      "ja": "ソケットが読み取り可能または書き込み可能になったためコールバックを呼び出したが、そのコールバックがソケットで読み取りも書き込みも行わなかった場合。"
+    },
+    {
+      "index": 150,
+      "en": "The callback committed a read on the socket, and has not read all the\navailable data (when ",
+      "ja": "コールバックがソケットから読み取ったものの、利用可能なデータをすべては読み取らなかった場合（"
+    },
+    {
+      "index": 151,
+      "en": "UV_READABLE",
+      "ja": "UV_READABLE"
+    },
+    {
+      "index": 152,
+      "en": " is set).",
+      "ja": "が設定されている場合）。"
+    },
+    {
+      "index": 153,
+      "en": "The callback committed a write on the socket, but it remained\nwritable afterwards (when ",
+      "ja": "コールバックがソケットへ書き込んだ後も、ソケットが書き込み可能なままであった場合（"
+    },
+    {
+      "index": 154,
+      "en": "UV_WRITABLE",
+      "ja": "UV_WRITABLE"
+    },
+    {
+      "index": 155,
+      "en": " is set).",
+      "ja": "が設定されている場合）。"
+    },
+    {
+      "index": 156,
+      "en": "The socket has already became readable/writable before calling\n",
+      "ja": "ソケットに対応するポーリングハンドルで"
+    },
+    {
+      "index": 157,
+      "en": " on a poll handle associated with this socket,\nand since then the state of the socket did not changed.",
+      "ja": "を呼び出す前からソケットが読み取り可能または書き込み可能であり、その後も状態が変わらなかった場合。"
+    },
+    {
+      "index": 158,
+      "en": "In all of the above listed scenarios, the socket remains readable or\nwritable and hence the callback will be called again (depending on the\nevents set in the bitmask). This behaviour is known as level\ntriggering.",
+      "ja": "上記のすべての場合、ソケットは読み取り可能または書き込み可能な状態を維持するため、ビットマスクに設定したイベントに応じて、コールバックを再び呼び出します。この動作をレベルトリガーと呼びます。"
+    },
+    {
+      "index": 159,
+      "en": "Changed in version 1.9.0: ",
+      "ja": "バージョン1.9.0での変更: "
+    },
+    {
+      "index": 160,
+      "en": "Added the ",
+      "ja": "次のイベントを追加しました: "
+    },
+    {
+      "index": 161,
+      "en": "UV_DISCONNECT",
+      "ja": "UV_DISCONNECT"
+    },
+    {
+      "index": 162,
+      "en": " event.",
+      "ja": "。"
+    },
+    {
+      "index": 163,
+      "en": "Changed in version 1.14.0: ",
+      "ja": "バージョン1.14.0での変更: "
+    },
+    {
+      "index": 164,
+      "en": "Added the ",
+      "ja": "次のイベントを追加しました: "
+    },
+    {
+      "index": 165,
+      "en": "UV_PRIORITIZED",
+      "ja": "UV_PRIORITIZED"
+    },
+    {
+      "index": 166,
+      "en": " event.",
+      "ja": "。"
+    },
+    {
+      "index": 167,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 168,
+      "en": "uv_poll_stop",
+      "ja": "uv_poll_stop"
+    },
+    {
+      "index": 169,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 170,
+      "en": "uv_poll_t",
+      "ja": "uv_poll_t"
+    },
+    {
+      "index": 171,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 172,
+      "en": "poll",
+      "ja": "poll"
+    },
+    {
+      "index": 173,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 174,
+      "en": "Stop polling the file descriptor, the callback will no longer be called.",
+      "ja": "ファイル記述子のポーリングを停止します。以後、コールバックを呼び出しません。"
+    },
+    {
+      "index": 175,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 176,
+      "en": "Calling ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 177,
+      "en": " is effective immediately: any pending\ncallback is also canceled, even if the socket state change notification\nwas already pending.",
+      "ja": "は呼び出すとすぐに有効になります。ソケットの状態変化の通知がすでに保留中であっても、保留中のコールバックもキャンセルします。"
+    },
+    {
+      "index": 178,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 179,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 180,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 1,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

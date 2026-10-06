@@ -1,0 +1,79 @@
+{
+  "page": "reference/poll",
+  "status": "passed",
+  "at": "2026-10-04T22:28:23.066372+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/enum/footer reading after741 translation; no correction required. Mechanical checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/poll.rst",
+      "sha256": "7538dd293a80a4f5f7e6f4077fb460229c3fb2475362e770d8a19300472b98a4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/poll.md",
+      "sha256": "565d93a45748a007cbac6e5f1916557d4a568ee91d96eea9afc4a65c40485771"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/poll.md",
+      "sha256": "5f2e18b5e4ab439f728697119e72b2ece182aa6f070fd7e398749d0c9cfe94e5"
+    }
+  ],
+  "coverage": {
+    "original": "entire poll.rst including complete enum, allfour level-trigger examples and all notes",
+    "canonical": "all current English article/API/code/footer",
+    "translation": "all current Japanese article/API/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire original poll.rst/current English/current Japanese/API/enum/footer read separately after741 translation. All181mapped nodes/7declarations/one complete enum covered, no unread ranges. No correction required."
+    },
+    {
+      "scope": "purpose, descriptor lifetime and platforms",
+      "result": "Read/write/disconnect watcher for external libraries c-ares/libssh2; prefer faster scalable TCP/UDP for other purposes especially Windows retained. Spurious readiness and handle EAGAIN, forbidden duplicate active watchers/busyloop, do not close active fd/error or polling other socket, safe immediate close after stop/close retained. Windows sockets-only versus Unix poll-compatible fds and AIX no disconnect retained."
+    },
+    {
+      "scope": "types and initialisation",
+      "result": "Full callback signature and event enum READABLE1/WRITABLE2/DISCONNECT4/PRIORITIZED8 unchanged. N/A public members and inherited handle members/API retained. Init fd versus socket Unix identical/Windows SOCKET and both1.2.2 nonblocking retained."
+    },
+    {
+      "scope": "start/error/readiness semantics",
+      "result": "Event bitmask and detected status0/events, sysfs/TCP out-of-band prioritized, optional disconnect may be unreported/ignored and avoiding extra IO retained. Error negative UV_E*, closing active socket error notification only possible not guaranteed, EBADF stops future events and requires close retained. Repeated start updates mask, AIX disconnect never returned retained. All4 level-trigger scenarios and persistent readiness/repeated callbacks retained,1.9 disconnect/1.14 prioritized retained."
+    },
+    {
+      "scope": "stop and review boundary",
+      "result": "Stop prevents further callbacks and immediate cancellation even already-pending socket state notification retained. Fixed source/licences/notices/unofficial translation remain footer. Semantic full review distinct from current actual output/API/TOC checks; previous741 unchanged build evidence reused. No native/runtime/content/integration/release or external supplementary video review claimed."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-742/API_VERIFICATION.json",
+      "sha256": "563ada339101d0a5e91376203417bab90db38894a006cc928e617553d495aa1e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-742/RENDER_VERIFICATION.json",
+      "sha256": "73a6e163362c38e8f1d07923f06226fdd0d6f0e42e884957bc3a920e279fcdd6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-742/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "fde496dfd7dd0183b8f704ac18378922c29796f7f415e121a17e60c1c8f761b8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-741/PREBUILD.log",
+      "sha256": "1056e395a1acd01f67c7700533e8ef364b9ecc38091f106ef13a54cff3c8d9d0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-741/BUILD.log",
+      "sha256": "053eadc91ddcd12aade6f182e511a31f716b10c02c62a79d6236a1973aa6ca7e"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}
