@@ -6085,3 +6085,31 @@
 - 既存生成器を使用、原文定義リンク復元によりEXTERNAL_LINK_REPORTのStacks count115→117と全体138560→138562が更新されたため保存対象に含める。timestampだけのEXCLUSIONSはHEADへ戻した。元checkout mainの他作業変更は保持。確認tab3終了・viewport復元済み、preview session55413終了exit0 fe6b6c。修正後UI再利用のcleanup証拠はこの実終了記録に対応。
 - workflow push対象main,codex/pages-preview/**,codex/quality/**外のorigin/codex/awesome-editorial-isolated-20261007へこの検証済み差分のみcommit/pushする。現在は保存準備、送信成功を先取りしない。外部公開/dispatch/PR/定期設定なし。
 - 次165 github-golemfactory-awesome-golem-readme-md。/private/tmp/libx-awesome-editorial-20261007で固定raw/旧EN/旧JA hash照合→全文→編集/3全文review→生成/保全/build/UI/global。Stacks本文に未保存の未検証差分なし。
+
+### バッチ164送信確認・165全文読了 (2026-10-06T20:28:39.497Z)
+
+- 164 commit 7d3793731a39cb1573c3afd2ded06b5ac346d129 → origin/codex/awesome-editorial-isolated-20261007 push exit0(e7177e)、ls-remoteとHEAD同一(680a8d)。配信対象外、外部公開なし。
+- 165 Golem raw170/旧EN167/旧JA167、合計504単位全文読了。初回まとめ出力は合計上限で省略され、証拠に使わず87ca85/299290/656f09各個別全文を再取得。hash一致、省略なし。proof 689f6c2e2aa62e25a51b32736b535c2299482341979b8a8536f1db65a84573a7。次Yagna/非排他的役割の定義復元、JA集団ベース等修正、H4階層TOC対応。本文未変更・inventoried。
+
+- 2026-10-06T20:32:38.995Z batch165全文編集・3別パス全文レビュー完了（raw170/旧英日各167→英日各143単位、97list/38heading）。overlayと実英日本文を反映。proof f030ac195cc77d4423acce00a64aef24566cfa3f194207274fa80529c1a449d1。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified223→commit/push。
+
+- 2026-10-06T20:35:31.332Z batch165-generation-gates-passed-build-pending。222完了815残保留4。進捗31e6a024802f594ec9ca717f88b76987fa415941f04660e7d83dd75407f2cc9a。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML38見出し97list/英日PCmobile実UI→global→verified223/commit/push。
+
+- 2026-10-06T20:37:56.191Z batch165-trailing-whitespace-correction-checks-pending。222完了815残保留4。進捗add9e4069e43ecb896913ee62c782c2fd47aad3496df3cf06b4db2664b3c3a38。次新英日全文再読/3reviewhash証拠→correspondence/replay/通常gate→fresh build/input/HTML/4UI/global/diff→verified223→commit/push。
+
+- 2026-10-06T20:38:29.711Z batch165-correction-reviewed-regeneration-pending。222完了815残保留4。進捗cdad0631b6d358799ee424034083055e0a5d3f39424685f36fed3df0f3cb7a37。次新hash生成/replay/保全→systems fresh build/input/HTML/4UI/global/diff→verified223→commit/push。
+
+- 2026-10-06T20:41:23.198Z batch165-generation-gates-passed-build-pending。222完了815残保留4。進捗95e7422ddebedde060a77aa659cb49ba5356ff8bec03f2c0fa8179b5d417a510。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML38見出し97list/英日PCmobile実UI→global→verified223/commit/push。
+
+- 2026-10-06T20:44:33.151Z batch165-four-ui-content-reviewed-global-pending。222完了815残保留4。進捗087d8958b84ba2bcb4b6f1b1fd317a87ab4b414c3e53daae57615ddf37e0aed8。次全1037台帳global/全2074hash/diff→verified223→commit/push/hash照合→166 Mastodon fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T20:45:38.701Z batch165-verified223-save-push-pending。223完了814残保留4。進捗b097bbe82e4a26357f45725de09d12661e25f94900e922ec2e0c7d377a953e9c。次223完了814残保留4。Golem全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次166 github-hyperupcall-awesome-mastodon-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ165 Golem検証完了・保存準備 (2026-10-06T20:45:44.182Z)
+
+- 固定raw170/旧EN167/旧JA167を省略なし全文読了。英日各143単位/97項目/38見出し、Archive16H4を保持してtoc.maxLevel4へ。Yagna/Rust/P2P計算市場/providerとrequestor非排他的役割の欠落を復元。GPU Discord参照、Reality Games/ERC1155/web2、mainnet報告は固定原文へ帰属。Population-basedを集団ベース、COVID新規死亡数/100万人を修正、SLATEの存在しないApps参照は制約注記。全機能/URL/条件/数値を保持。手動TOC/投稿案内/ロゴとバッジを除去。
+- raw/EN・EN/JA・JA単独の3別パス全文レビュー完了。使用モデルは現Codexセッション、API識別子取得不能、委任/ローカルLLMなし。初稿サービス紹介英日各行末空白1文字をdiff検査で検出、合格扱いせず修正。新hashについてraw ROW0-74全文再比較、変更u000023の英日比較、新JA全文読了。他142単位sha256/順序/型/URL/code完全一致を証明して別パス全文証拠再利用。最終hash EN 06fddc03cb49e0f774a0968337a345a67997efad8f8e1e49bbf8c338b46c14e0 / JA e9b817aa90154af6f4d28086ff82a9a143586d4488ef7f63dd26e85e9e12f5ab。
+- 最初の参照監査はpublish再生成中の一時欠落に当たりexit1、採用せず生成終了後再検査exit0。最初のbuild検証も終了前で未完了assert停止、採用せず実exit0後に全7開始/現在/manifest一致確認。初稿buildは全7fresh合格。空白修正後のreplay2回各1037組2074文書、通常8gate、全2074hash/fragment参照0、fresh対象build、全7入力一致、正規HTML2文書gate・38見出し/97項目/37分類74TOC/旧有用ID/CC0・固定README/2出典URL・統合HTML一致、英日PC1440×1000/mobile390×844実表示とTOC/言語/版/隣接操作、global/diff合格。verified223/残814/保留4、status移行後も全検査入力一致でglobal証拠再利用。検査無効化なし。
+- EXTERNAL_LINK_REPORTのGolem103→102/総138562→138561は装飾・運用部分の除去に対応し保存する。timestampだけのEXCLUSIONSはHEADへ戻した。元checkout mainの他作業差分は保持。所有UI/previewは終了してviewport復元。
+- workflow対象main,codex/pages-preview/**,codex/quality/**外のorigin/codex/awesome-editorial-isolated-20261007へ検証済み差分のみcommit/pushする。まだ保存準備であり、成功は送信後に照合。外部公開/dispatch/PR/定期設定なし。
+- 次166 github-hyperupcall-awesome-mastodon-readme-md。worktree /private/tmp/libx-awesome-editorial-20261007でfixedraw a6b1c2d58348761df7b8e1a73c87921edaf4d887830243a5b5ec35e9ad639477、旧EN f1b9c0573f8baf1f06ea7129d5b9cd654f7f3c35973895bc8475a1cd39b15565/JA 7d32b7bf0e11f792abaef3068c5b1793b133e32892647f958a8997ef5f4bc90fを照合し全文→編集→3別パスreview→各検証。Golem本文に未保存の未検証差分なし。

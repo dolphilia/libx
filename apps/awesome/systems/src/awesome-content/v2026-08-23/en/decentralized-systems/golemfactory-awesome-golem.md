@@ -1,36 +1,14 @@
 ---
 title: "Awesome Golem"
-description: "A curated collection of resources and projects focused on Golem."
+description: "Golem projects, statistics, tools, learning materials, and archived applications."
 licenseSource: "github-golemfactory-awesome-golem-readme-md"
+toc:
+  maxLevel: 4
 ---
 
 # Awesome Golem
 
-A curated collection of resources and projects focused on Golem.
-
-## Contents
-
-- [Golem](#golem)
-- [Network Statistics](#network-statistics)
-- [Golem Projects](#Golem-Projects)
-  - [GPU Provider](#GPU-Provider)
-  - [Ray on Golem](#Ray-on-Golem)
-  - [golem-js - the JS SDK from Golem](#golem-js---the-JS-SDK-from-Golem)
-  - [Jupyter on Golem](#Jupyter-on-Golem)
-  - [Rendering on Golem](#Rendering-on-Golem)
-  - [Reputation System](#Reputation-System)
-- [Ecosystem](#Ecosystem)
-  - [Blockchain Automations (aka Emeth.xyz)](#Blockchain-automations-(aka-Emeth.xyz))
-- [Developer and Requestor Resources](#developer-and-requestor-resources)
-- [Provider Resources](#provider-resources)
-  - [Monitoring](#monitoring)
-  - [Provisioning](#provisioning)
-- [Learning Resources](#learning-resources)
-  - [Presentations and Workshop Material](#presentations-and-workshop-material)
-  - [Unraveling Golem's The Next Milestone Blog Series](#unraveling-golems-the-next-milestone-blog-series)
-  - [GitHub Digest Blog Series](#github-digest-blog-series)
-- [Archive](#Archive)
-  - [Apps](#apps)
+Golem users run Yagna, the Rust reference implementation. Together they form the Golem Network, a peer-to-peer marketplace for computational resources. Users can act as providers selling idle resources, requestors buying resources to run tasks, or both. This community-curated list covers Golem projects, network statistics, developer and provider tools, learning materials, and archived applications.
 
 
 ## Golem
@@ -39,7 +17,7 @@ A curated collection of resources and projects focused on Golem.
 - [Golem Network Discord](https://chat.golem.network/) - Join the Golem Network community on Discord and chat directly with the team.
 - [Reddit](https://reddit.com/r/GolemProject) - Golem Network discussion on the Reddit platform.
 - [Twitter](https://twitter.com/golemproject) - The Golem Project Twitter.
-- [Blog](http://blog.golemproject.net/) - The official blog where you can find the most reliable information on announcements, summaries and updates.
+- [Blog](http://blog.golemproject.net/) - Official blog for announcements, summaries, and updates; described in the source as the most reliable source of this information.
 
 ## Network Statistics
 
@@ -51,11 +29,11 @@ A curated collection of resources and projects focused on Golem.
 
 ### GPU Provider
 
-We want to extend the capabilities of Golem Network for GPU workloads. Project status is available on the pinned messages of the dedicated GPU Provider channel on our [Discord](https://chat.golem.network/). You can find it under #golem-projects.
+The source describes a project to extend Golem Network capabilities to GPU workloads. It directs readers to pinned status messages in the dedicated GPU Provider channel on [Discord](https://chat.golem.network/), under #golem-projects.
 
 ### Ray on Golem
 
-[Ray on Golem](https://github.com/golemfactory/ray-on-golem) is an exciting integration with Ray, a distributed computing framework, to provide an easier way of accessing the Golem Network for Python developers.
+[Ray on Golem](https://github.com/golemfactory/ray-on-golem) is an integration with Ray, a distributed computing framework, to provide an easier way of accessing the Golem Network for Python developers.
 
 ### golem-js - the JS SDK from Golem
 
@@ -67,12 +45,12 @@ We want to extend the capabilities of Golem Network for GPU workloads. Project s
 
 ### Rendering on Golem
 
-In close collaboration with Reality Games, we've developed a service that activates Golem's providers for rendering personalized building animations as a (web2) proof-of-ownership for ERC-1155 tokens. Learn more [here](https://reality.golem.network/) 
+The source describes a service developed in close collaboration with Reality Games. It activates Golem providers to render personalized building animations as a (web2) proof-of-ownership for ERC-1155 tokens. See the [service](https://reality.golem.network/).
 
 
 ### Reputation System
 
-The Reputation System goal is to address the challenges of trust and reliability in the network where anyone can participate as a provider or requestor without any sort of identification. The system aims to establish a framework of trust, ensuring secure and reliable interactions between participants on the network.
+The Reputation System goal is to address the challenges of trust and reliability in the network where anyone can participate as a provider or requestor without any sort of identification. The system aims to establish a framework of trust, with the goal of enabling secure and reliable interactions between participants on the network.
 
 ## Ecosystem
 
@@ -107,20 +85,20 @@ Emeth specializes in DeFi (Decentralized Finance) portfolio management and block
 - [Golem Provider Terraform](https://github.com/nemani/golem-provider-terraform) - Terraform script to automatically deploy a Golem Provider on a cloud provider and setup monitoring using prometheus.
 - [Automatic Golem](https://github.com/r34x/Automatic-Golem) - Setup a Golem Provider with simple instructions and logs guiding you through the process.
 - [Golem Provider Node](https://github.com/alexandre-abrioux/golem-node) - Docker version of a node to help you get started running as a provider in a Docker container quick.
-- [Golem Provider node](https://github.com/blue-notes-robot/golem-node) - Fork of Alxexandre-abrioux project above that allows to dynamically generate config files from ENV variables and specify how many replicas you'd like to spawn.
+- [Golem Provider node](https://github.com/blue-notes-robot/golem-node) - Fork of the alexandre-abrioux project above that allows to dynamically generate config files from ENV variables and specify how many replicas you'd like to spawn.
 
 ## Learning Resources
 
 ### Presentations and Workshop Material
 
 - [Golem: Distributed parallel computing with JavaScript](https://www.youtube.com/watch?v=2iUhqOJUsoI) - Presentation from Grzegorz Godlewski on Distributed Parallel Computing with JavaScript, based on Golem Network (meet.js Summit 2023).
-- [Golem: Architecture, SDKs and tips with Jakub Mazurek at 0xHack](https://youtu.be/1UoZWC9XI2g) - Live workshop diving into how any developer with Python or JS coding experience can start build applications running on Golem.
+- [Golem: Architecture, SDKs and tips with Jakub Mazurek at 0xHack](https://youtu.be/1UoZWC9XI2g) - Live workshop diving into how any developer with Python or JS coding experience can start building applications running on Golem.
   
 
 ### Unraveling Golem's The Next Milestone Blog Series
 
 - [Unraveling Golem's The Next Milestone](https://blog.golemproject.net/next-milestone) - Introduction to the Yagna implementation of Golem.
-- [Unraveling Golem's The Next Milestone, Part II](https://blog.golemproject.net/next-milestone-part-ii/) - Fundamental architectural concepts which constitute the foundations of the new implemenation of Golem, Yagna.
+- [Unraveling Golem's The Next Milestone, Part II](https://blog.golemproject.net/next-milestone-part-ii/) - Fundamental architectural concepts which constitute the foundations of the new implementation of Golem, Yagna.
 - [Unraveling Golem's The Next Milestone, Part III](https://blog.golemproject.net/next-milestone-part-iii/) - The elements of Golem's reference architecture, and illustrates how they interact to form a working ecosystem, being the Golem Network.
 
 ### GitHub Digest Blog Series
@@ -136,16 +114,13 @@ Emeth specializes in DeFi (Decentralized Finance) portfolio management and block
 - [Golem GitHub Digest #9](https://blog.golemproject.net/golem-github-digest-9/) - AMD provider support, network metrics and improved proposal handling.
 - [Golem GitHub Digest #10](https://blog.golemproject.net/golem-github-digest-10/) - Improvements from community feedback.
 - [Golem GitHub Digest #11](https://blog.golemproject.net/golem-github-digest-11/) - Easy log collection.
-- [Golem GitHub Digest #12](https://blog.golemproject.net/golem-github-digest-12/) - We are on MAINNET and gathering feedback.
+- [Golem GitHub Digest #12](https://blog.golemproject.net/golem-github-digest-12/) - The source reports mainnet deployment and feedback collection.
 - [Golem GitHub Digest #13](https://blog.golemproject.net/golem-github-digest-13/) - Progressing faster with the help of the Golem community.
 - [Golem GitHub Digest #14](https://blog.golemproject.net/golem-github-digest-14/) - Towards the next major release.
 - [Golem GitHub Digest #15](https://blog.golemproject.net/golem-github-digest-15/) - Awesome, Goth improvements and towards Beta 3.
 - [Golem GitHub Digest #16](https://blog.golemproject.net/golem-github-digest-16/) - VPN, ARM binaries for requestors, and custom usage counters.
 
 
-## Contributing
-
-Pull requests and issues with suggestions to Awesome Golem are welcome! Please read the [contributing](https://github.com/golemfactory/awesome-golem/blob/ea2e7d49e2258f6f7a0f96d95e5e7bc96af728f2/contributing.md) guidelines before submitting a PR.
 
 ## Archive
 
@@ -164,13 +139,13 @@ Pull requests and issues with suggestions to Awesome Golem are welcome! Please r
 - [Golem-afl](https://github.com/sladecek/golem-afl) - An experimental test-fuzzing framework. Assists in finding security holes.
 - [Golem Cargo Test](https://github.com/sladecek/golem_cargo_test) - An adaptive distributed test executor for Rust projects.
 - [Golem CI](https://github.com/hhio618/golem-ci) - Decentralized task pipeline.
-- [Golem SLATE](https://github.com/deutschklub/golem-slate) - Open source repository for Golem SLATE described in the above Apps section.
-- [ThorgPress](https://github.com/figurestudios/thorgpress) - A tool to benchmark providers and unveil their true capabilities beyond what can be seen through the marketplace.
+- [Golem SLATE](https://github.com/deutschklub/golem-slate) - Open-source repository for Golem SLATE. The fixed source refers to an Apps-section description that is absent from the fixed document.
+- [ThorgPress](https://github.com/figurestudios/thorgpress) - A tool to benchmark providers and assess capabilities beyond what can be seen through the marketplace.
 
 #### VPN
 
 - [Yagna httpx client](https://github.com/golemfactory/ya-httpx-client/tree/johny-b/vpn) - VPN usage on Yagna demonstrating communication with a provider-based HTTP server the way you communicate with any other HTTP server.
-- [Golem Provider with network access](https://github.com/jedbrooke/golem-network-requestor) - A requstor that acts as a http proxy for running providers, allowing them to access the wider internet.
+- [Golem Provider with network access](https://github.com/jedbrooke/golem-network-requestor) - A requestor that acts as an HTTP proxy for running providers, allowing them to access the wider internet.
 
 #### Games
 
@@ -192,7 +167,7 @@ Pull requests and issues with suggestions to Awesome Golem are welcome! Please r
 - [Golem Auto Editor](https://github.com/jedbrooke/golem-auto-editor) - Run Auto-Editor to automatically perform some video editing functions, offload the video processing to Golem.
 
 #### Data Analysis
-- [Coacervate](https://github.com/pryce-turner/coacervate/) - Coacervate is a free and open-source public good that lets you easily run genomic analyses on an extremely low-cost global supercomputer; democratizing access to the knowledge and infrastructure required to carry out groundbreaking research.
+- [Coacervate](https://github.com/pryce-turner/coacervate/) - Coacervate is a free and open-source public good that lets you easily run genomic analyses on a global supercomputer described in the source as extremely low-cost; intended to broaden access to the knowledge and infrastructure needed for groundbreaking research.
 - [Flan](https://github.com/nestorbonilla/flan) - Tool for entrepreneurs that provide customized analysis of millions of worldwide trade value records giving them a bold guideline about what sectors they would need to take more attention to.
 - [Golem Lorenz-attractor](https://github.com/hhio618/golem-lorenz-attractor) - A system of three coupled, first-order, nonlinear differential equations which describe the trajectory of a particle through time.
 - [Golem Geomandel](https://github.com/Edhendil/golem-geomandel) - Python script for generating sequences of Mandelbrot images centered on a single point and with zoom increasing in each image.
@@ -204,9 +179,9 @@ Pull requests and issues with suggestions to Awesome Golem are welcome! Please r
 
 - [cadCAD Golem](https://github.com/rogervs/cadcadgolem) - Package wrapper for cadCAD to dispatch the simulation workload to multiple Golem nodes. Supports Jupyter Notebook.
 - [Golem Array](https://github.com/johngrantuk/golem-array) - Antenna array design and simulation.
-- [Limit visualization](https://github.com/vporton/limit-visualization) - Plots graphs with various limits. Supports discontinous graphs.
+- [Limit visualization](https://github.com/vporton/limit-visualization) - Plots graphs with various limits. Supports discontinuous graphs.
 - [GolemGraphWavePair](https://github.com/smiley1983/golemGraphWavePair) - Generates graph frames, then combine them into an animation.
-- [Golemized strong-gravitational-lense](https://github.com/rezahsnz/golemized-strong-gravitational-lense) - Simple distributed computing hack that simulates a physical phenomena called gravitional lensing.
+- [Golemized strong-gravitational-lense](https://github.com/rezahsnz/golemized-strong-gravitational-lense) - Simple distributed computing hack that simulates a physical phenomenon called gravitational lensing.
 
 #### Data Optimization
 
@@ -215,7 +190,7 @@ Pull requests and issues with suggestions to Awesome Golem are welcome! Please r
 - [Mutta Puffs](https://github.com/DeveloperInProgress/Mutta-Puffs) - Sports league scheduler that solves the Travelling Tournament Problem for a given set of teams using Population-based Simulated Annealing.
 
 #### Machine Learning
-- [DeML-Golem](https://github.com/anshuman73/DeML-Golem) - Decentralised Machine Learning using Federated Learning to combine the sub-step models, it trains on different provider nodes into a full fleged model.
+- [DeML-Golem](https://github.com/anshuman73/DeML-Golem) - Decentralised Machine Learning using Federated Learning to combine the sub-step models, it trains on different provider nodes into a full-fledged model.
 - [Golem Image Classifier](https://github.com/ControlCplusControlV/Golem-Image-Classifier) - Train and classify images through an active service.
 
 #### Deep Learning
