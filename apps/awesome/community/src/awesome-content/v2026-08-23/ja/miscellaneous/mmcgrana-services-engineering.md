@@ -1,11 +1,11 @@
 ---
 title: "Awesome Services Engineering"
-description: "Awesome Services Engineeringの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "サービスエンジニアリングに関する資料へ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Services Engineering
 
-Awesome Services Engineeringの収録案内です。このスナップショットでは上流本文を転載していません。
+サービスエンジニアリングに関する資料を探せるAwesome Services Engineeringへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/mmcgrana/services-engineering/blob/9c0a5c4ece2a1a28d46ed84d9810968558b98089/README.md)
+- [元のリストを読む](https://github.com/mmcgrana/services-engineering/blob/9c0a5c4ece2a1a28d46ed84d9810968558b98089/README.md)

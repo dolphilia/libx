@@ -1,11 +1,11 @@
 ---
 title: "Awesome CLI Workshoppers"
-description: "An index entry for the Awesome CLI Workshoppers list. The upstream content is not reproduced in this snapshot."
+description: "A reference to interactive command-line tutorials. The original list’s body is not reproduced in this snapshot."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome CLI Workshoppers
 
-An index entry for the Awesome CLI Workshoppers list. The upstream content is not reproduced in this snapshot.
+Explore interactive command-line tutorials through the original Awesome CLI Workshoppers list. This snapshot links to the list without reproducing its body.
 
-- [Open the original repository](https://github.com/therebelrobot/awesome-workshopper/blob/5c19be2962ba93c2f8c10576cb3cf210219c4d44/README.md)
+- [Read the original list](https://github.com/therebelrobot/awesome-workshopper/blob/5c19be2962ba93c2f8c10576cb3cf210219c4d44/README.md)

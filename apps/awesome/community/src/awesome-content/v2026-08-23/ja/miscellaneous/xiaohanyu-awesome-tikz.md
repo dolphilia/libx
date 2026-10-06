@@ -1,11 +1,11 @@
 ---
 title: "Awesome TikZ"
-description: "Awesome TikZの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "TeX・LaTeX・ConTeXt向けのグラフ描画パッケージTikZに関する資料へ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome TikZ
 
-Awesome TikZの収録案内です。このスナップショットでは上流本文を転載していません。
+TeX・LaTeX・ConTeXt向けのグラフ描画パッケージTikZに関する資料を探せるAwesome TikZへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/xiaohanyu/awesome-tikz/blob/8539838ba12a3291f76d84047e804c50134c8254/README.md)
+- [元のリストを読む](https://github.com/xiaohanyu/awesome-tikz/blob/8539838ba12a3291f76d84047e804c50134c8254/README.md)

@@ -1,503 +1,416 @@
 ---
-title: "Awesome Developer-First"
-description: "Developer-Firstを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
-licenseSource: "github-agamm-awesome-developer-first-readme-md"
+title: Awesome Developer-First
+description: コーディング、認証、デプロイ、データ、モニタリング、決済、テストに使う開発者向けAPI、プラットフォーム、ツール。
+licenseSource: github-agamm-awesome-developer-first-readme-md
 ---
 
 # Awesome Developer-First
 
-Developer-Firstを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+開発者向けのプロダクトは、API、ヘッドレスサービス、SaaSツールなどを通じて開発者を対象とし、通常はトップページにコード例を掲載します。このリストでは、コーディングアシスタント、認証、デプロイ、データサービス、モニタリング、決済、テストを扱い、有料プロダクト、オープンソースのツール、無料プランを含みます。説明、比較、プランの制限は、固定された上流原文のスナップショットに基づきます。
 
-## 目次
-* [AI Coding](#ai-coding)
-* [Analytics](#analytics)
-* [Authentication & Identity](#authentication--identity)
-* [Automation](#automation)
-* [Backend-as-a-Service](#backend-as-a-service)
-* [CI/CD](#cicd)
-* [CMS (headless)](#cms-headless)
-* [Code Quality](#code-quality)
-* [Computer Vision](#computer-vision)
-* [Databases & Spreadsheets](#databases--spreadsheets)
-* [Debugging](#debugging)
-* [Deployment Hosting](#deployment-hosting)
-* [Discussions](#discussions)
-* [Documentation](#documentation)
-* [Environment & Secret Management](#environment--secret-management)
-* [Feature Flags](#feature-flags)
-* [Gen UI](#gen-ui)
-* [GEO](#geo)
-* [IDE](#ide)
-* [Infrastructure as Code](#infrastructure-as-code)
-* [Integrations](#integrations)
-* [Localization](#localization)
-* [Mail](#mail)
-* [Media](#media)
-* [Messaging](#messaging)
-* [Misc](#misc)
-* [Monitoring](#monitoring)
-* [Natural Language Processing](#natural-language-processing)
-* [Orchestration](#orchestration)
-* [Payments & Pricing](#payments--pricing)
-* [Repo](#repo)
-* [Reports Generation](#reports-generation)
-* [Scraping](#scraping)
-* [Search](#search)
-* [Security](#security)
-* [Shipping](#shipping)
-* [Testing](#testing)
+## AIコーディング<a id="ai-coding"></a>
+AIを備えたIDEとコーディングアシスタント。
+* [Aider](https://aider.chat/) - オープンソースのターミナル用AIアシスタント。 [GitHubリポジトリ](https://github.com/Aider-AI/aider)
+* [Amazon Q](https://aws.amazon.com/q/developer/) - AmazonのAIアシスタント。
+* [Cline](https://cline.bot/) - Claudeをコーディング支援に使うオープンソースのVS Codeプラグイン。 [GitHubリポジトリ](https://github.com/cline/cline)
+* [CodeParrot](https://codeparrot.ai/) - VS Code向けのフロントエンドコンポーネント作成用AIアシスタント。
+* [CodeSquire](https://codesquire.ai) - JupyterやBigQueryなどの環境でAIによる生成を行うブラウザー拡張。
+* [Cody](https://sourcegraph.com/cody) - Sourcegraphのコーディングアシスタント。
+* [Continue](https://www.continue.dev/) - VS CodeとJetBrains向けのAIコーディングアシスタント。
+* [Cursor](https://www.cursor.com/) - AIを前提に一から構築されたVS Codeのフォーク。
+* [Fine](https://www.fine.dev/) - AIエージェントによるソフトウェア開発。
+* [GitHub Copilot](https://github.com/features/copilot) - 初期からのAIコーディングアシスタントで、GitHubと連携。原文の著者は他のアシスタントよりやや後れを取っていると評価。
+* [IntelliCode](https://visualstudio.microsoft.com/services/intellicode) - MicrosoftがVisual Studio向けに提供するAI機能。
+* [JetBrains AI](https://www.jetbrains.com/ai) - JetBrainsの多くのIDEに統合された同社のAI機能。
+* [Kilo Code](https://kilocode.ai) - VS CodeとJetBrains向けの高速なオープンソースAIコーディングエージェント。 [GitHubリポジトリ](https://github.com/Kilo-Org/kilocode)
+* [Mastra](https://mastra.ai) - モダンなTypeScriptスタックでAIエージェントを構築。 [GitHubリポジトリ](https://github.com/mastra-ai/mastra)
+* [OpenHands](https://all-hands.dev/) - Devinの代替となるオープンソースのツール。 [GitHubリポジトリ](https://github.com/All-Hands-AI/OpenHands)
+* [Qodo](https://www.qodo.ai/) - テストを通じて確実性を高めるコード生成。
+* [Replit AI](http://repl.it/) - AIを備えたReplitのIDE。機能を限定した無料プランあり。
+* [Supermaven](https://supermaven.com/) - 原文の著者が、特に速度とコンテキスト長について好評を聞いたと記しているAIコーディングアシスタント。
+* [Tabby](https://www.tabbyml.com/) - セルフホストできるオープンソースのコーディングアシスタント。 [GitHubリポジトリ](https://github.com/TabbyML/tabby)
+* [Tabnine](https://www.tabnine.com/) - 初期からのAIコードアシスタントの一つ。
+* [Warp](https://www.warp.dev/warp-ai) - ターミナルに完全に統合されたAI。
 
----
+## 分析<a id="analytics"></a>
+ウェブサイトとアプリケーションの訪問者や利用状況を追跡。
+* [Baremetrics](https://baremetrics.com/) - Stripeのサブスクリプション分析。
+* [devActivity](https://devactivity.com/) - AIによるインサイト、パフォーマンスレビュー、振り返り、ゲーミフィケーションを備えた貢献活動の分析。
+* [Heap](https://heap.io/) - すべてのイベントを取得する、ウェブとモバイル向けのプロダクト分析API。
+* [Mixpanel](https://mixpanel.com/) - プロダクト分析とダッシュボード。
+* [Pirsch](https://pirsch.io/) - バックエンドとの連携とAPIを備えた、プライバシーに配慮したウェブ分析。
+* [Plausible](https://plausible.io/) - シンプルでプライバシーに配慮したオープンソースのウェブ分析ツール。 [GitHubリポジトリ](https://github.com/plausible/analytics)
+* [PoeticMetric](https://poeticmetric.com/) - 原文でプライバシー優先、規制準拠、高速と説明されている分析ツール。
+* [PostHog](https://posthog.com/) - オープンソースのプロダクト分析プラットフォーム。 [GitHubリポジトリ](https://github.com/posthog/posthog)
+* [Segment](https://segment.com/) - ユーザーデータを収集し、他のツールへ送信。
+* [Tinybird](https://www.tinybird.co/) - リアルタイムのデータストリームをAPIに変換。
+* [Zoho Apptics](https://zoho.com/apptics) - 統合された、シンプルで行動につながるプロダクト分析。
 
-<a id="ai-coding"></a>
-## AIコーディング
-*AI IDEとAIアシスタント。*
-* [Aider](https://aider.chat/) - オープンソースのターミナルAIアシスタント。 [![aider](https://img.shields.io/github/stars/Aider-AI/aider?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/Aider-AI/aider)
-* [Amazon Q](https://aws.amazon.com/q/developer/) - アマゾンのAIアシスタント。
-* [Cline](https://cline.bot/) - オープンソースのVS Codeプラグイン（クレードをコードアシスタントとして）。 [![cline](https://img.shields.io/github/stars/cline/cline?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/cline/cline)
-* [CodeParrot](https://codeparrot.ai/) - VS Code用のフロントエンドコンポーネントAIアシスタント。
-* [CodeSquire](https://codesquire.ai) - Jupyter/BigQueryなどでのAI生成用ブラウザ拡張。
-* [Cody](https://sourcegraph.com/cody) - Sourcegraphのコードアシスタント。
-* [Continue](https://www.continue.dev/) - VS CodeおよびJetBrains向けのAIコードアシスタント。
-* [Cursor](https://www.cursor.com/) - AIをベースに構築されたVS Codeのフォーク。
-* [Fine](https://www.fine.dev/) - AIエージェントでソフトウェアを構築。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [GitHub Copilot](https://github.com/features/copilot) - みんなが聞いたことのある「元祖」AI IDE。まだ少し後れを感じるが、GitHubと良好に統合されている。
-* [IntelliCode](https://visualstudio.microsoft.com/services/intellicode) - マイクロソフトのVisual StudioからのAI提供。
-* [JetBrains AI](https://www.jetbrains.com/ai) - JetBrainsのAI提供が、その多くIDEに統合されている。
-* [Kilo Code](https://kilocode.ai) - VS CodeおよびJetBrains向けの高速かつオープンソースのAIコードエージェント。 [![Kilo Code](https://img.shields.io/github/stars/Kilo-Org/kilocode?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/Kilo-Org/kilocode)
-* [Mastra](https://mastra.ai) - 現代的なTypeScriptスタックでAIエージェントを構築。 [![Mastra](https://img.shields.io/github/stars/mastra-ai/mastra?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/mastra-ai/mastra)
-* [OpenHands](https://all-hands.dev/) - オープンソースのDevinの代替品。 [![OpenHands](https://img.shields.io/github/stars/All-Hands-AI/OpenHands?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/All-Hands-AI/OpenHands)
-* [Qodo](https://www.qodo.ai/) - 自信を持ってコードを生成（テストの面で特に強調）。
-* [Replit AI](http://repl.it/) - ReplitのAIを用いたコードIDE（無料限定プランも提供）。
-* [Supermaven](https://supermaven.com/) - スピードとコンテキスト長に関して、非常に良い評価を聞いた。
-* [Tabby](https://www.tabbyml.com/) - セルフホスト型オープンソースコードアシスタント。 [![tabby](https://img.shields.io/github/stars/TabbyML/tabby?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/TabbyML/tabby)
-* [Tabnine](https://www.tabnine.com/) - AIコードアシスタント分野の「元祖」プレイヤーの一つ。
-* [Warp](https://www.warp.dev/warp-ai) - ターミナルに完全に統合されたAI
+## 認証とアイデンティティ<a id="authentication--identity"></a>
+認証とユーザーのアイデンティティを管理。
+* [Aserto](https://www.aserto.com) - アプリケーションとAPI向けのクラウドネイティブな認可。
+* [Auth0](https://auth0.com/) - 認証と認可をサービスとして提供。
+* [AWS Cognito](https://aws.amazon.com/cognito/) - AWSの認証サービス。
+* [BoxyHQ Enterprise SSO](https://boxyhq.com) - 企業向けSSOとディレクトリ同期のオープンソースAPI。
+* [Clerk](https://clerk.com/) - React、React Native、Next.js向けの認証とユーザー管理プラットフォーム。
+* [Corbado](https://corbado.com) - パスキーを中心とした認証サービス。
+* [Firebase Auth](https://firebase.google.com/products/auth) - Google Firebaseの認証機能。
+* [FusionAuth](https://fusionauth.io/) - セルフホストにも対応する、セキュリティを重視した認証サービス。
+* [Hanko](https://www.hanko.io/) - WebAuthn APIを使うパスワードレス認証。原文ではPSD2、eIDAS、GDPRに準拠すると説明されている。 [GitHubリポジトリ](https://github.com/teamhanko/hanko)
+* [Kinde](https://kinde.com/) - 認証とユーザー管理をサービスとして提供。
+* [LoginRadius](https://www.loginradius.com/) - SSOを備えたマネージドユーザー認証サービス。
+* [MojoAuth](https://mojoauth.com/) - 企業向けSSOと豊富な標準の企業向け機能を備えた、包括的なCIAMソリューション。
+* [Okta](https://developer.okta.com/) - SSOを備えた組み込み可能な認証。
+* [Ory](https://ory.sh/) - サービスとしても利用できる、オープンソースのアイデンティティとアクセス制御のソリューション。
+* [Oso](https://www.osohq.com/) - 認可フレームワーク（RBAC）。
+* [Permit.io](https://www.permit.io/) - 権限とアクセス制御をサービスとして提供。
+* [PropelAuth](https://www.propelauth.com/) - チーム単位の認証。
+* [Scalekit](https://scalekit.com) - Firebase、Auth0、Cognitoなどの既存の認証構成を書き直さずに、企業向けSSO（SAML、OIDC）とSCIMプロビジョニングを追加。
+* [SSOJet](https://ssojet.com/) - 認証を再構築せずに企業向けSSOを実現。無料プランでは月間アクティブユーザー数と組織数が無制限で、SSO接続2件とSCIM接続2件を利用できる。
+* [Stack Auth](https://stack-auth.com/) - Auth0の代替となるオープンソースのツール。 [GitHubリポジトリ](https://github.com/stack-auth/stack)
+* [Stytch](https://stytch.com/) - 認証、認可、不正防止を一体化したインフラ。
+* [SuperTokens](https://supertokens.io/) - 事前構築済みUIを備えたメールとOAuthの認証。オープンソース版とホスティング版を提供。 [GitHubリポジトリ](https://github.com/supertokens/supertokens-core)
+* [Unkey](https://www.unkey.com/) - API向けの認証、レート制限、使用状況分析。 [原文のGitHubリンク（Stack Authを指す）](https://github.com/stack-auth/stack)
+* [Userfront](https://userfront.com/) - 事前構築済みのバックオフィス用ダッシュボードを備えたユーザー認証。
+* [WorkOS](https://workos.com/) - 企業向けSSOと、その他の標準の企業向け機能。
 
-<a id="analytics"></a>
-## 分析
-*Track web/app visitors.*
-* [Baremetrics](https://baremetrics.com/) - ストリップのサブスクリプション分析
-* [devActivity](https://devactivity.com/) - AIインサイト、パフォーマンスレビュー、リトロスペクティブ、ゲーム化を含む貢献分析
-* [Heap](https://heap.io/) - ウェブおよびモバイル向けの製品分析API。すべてのイベントをキャプチャ。
-* [Mixpanel](https://mixpanel.com/) - 製品分析とダッシュボード
-* [Pirsch](https://pirsch.io/) - プライバシーに配慮したウェブ分析（バックエンド統合とAPIを含む）
-* [Plausible](https://plausible.io/) - シンプルでプライバシーに配慮し、オープンソースのウェブ分析ツール。 [![Plausible](https://img.shields.io/github/stars/plausible/analytics?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/plausible/analytics)
-* [PoeticMetric](https://poeticmetric.com/) - プライバシーを最優先にし、規制に適合した高速分析ツール
-* [PostHog](https://posthog.com/) - オープンソースの製品分析プラットフォーム。 [![PostHog](https://img.shields.io/github/stars/posthog/posthog?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/posthog/posthog) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Segment](https://segment.com/) - ユーザーのデータを収集し、他のツールに送信。
-* [Tinybird](https://www.tinybird.co/) - APIへのリアルタイムデータストリーム。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Zoho Apptics](https://zoho.com/apptics) - 統合された、簡潔で実行可能な製品分析
+## 自動化<a id="automation"></a>
+APIとSDKでワークフローを自動化。
+* [Abstra](http://abstra.io/) - 独自の業務プロセス向けのPythonベースのワークフローエンジン。 [GitHubリポジトリ](https://github.com/abstra-app/abstra-lib)
+* [Lil'bots](https://www.lilbots.io/) - JavaScriptまたはPythonで自動化スクリプトを作成し、即座にクラウドへデプロイ。OpenAIやAnthropicなどの無料の組み込みAPIを提供。
+* [n8n](http://n8n.io/) - 無料で利用できる、ソースコードを公開したfair-codeライセンスのワークフロー自動化ツール。 [GitHubリポジトリ](https://github.com/n8n-io/n8n)
+* [Potpie](https://potpie.ai) - コードベース向けのオープンソースAIエージェントを数分で構成。Q&A、テスト、デバッグ、システム設計の事前構築済みエージェントを使うか、用途に特化したエージェントを作成。 [GitHubリポジトリ](https://github.com/potpie-ai/potpie)
+* [Trigger.dev](http://trigger.dev/) - APIを使い、スケジュールまたは必要に応じてワークフローを作成するオープンソースのプラットフォーム。 [GitHubリポジトリ](https://github.com/triggerdotdev/trigger.dev)
 
-<a id="authentication--identity"></a>
-## 認証とアイデンティティ
-*Products that handle authentication and user identity for you.*
-* [Aserto](https://www.aserto.com) - クラウドネイティブなアプリケーションおよびAPIの認証
-* [Auth0](https://auth0.com/) - 認証・認可をサービスとして提供
-* [AWS Cognito](https://aws.amazon.com/cognito/) - アマゾンの認証をサービスとして提供
-* [BoxyHQ Enterprise SSO](https://boxyhq.com) - エンタープライズSSOおよびディレクトリ同期向けオープンソースAPI
-* [Clerk](https://clerk.com/) - React、React Native、Next.js向けの認証およびユーザー管理プラットフォーム
-* [Corbado](https://corbado.com) - パスキーを最優先とした認証をサービスとして提供
-* [Firebase Auth](https://firebase.google.com/products/auth) - グーグルフィアブルの認証アプローチ
-* [FusionAuth](https://fusionauth.io/) - セキュリティを最優先とした認証サービス（セルフホスティングを含む）
-* [Hanko](https://www.hanko.io/) - パスワードレス（WebAuthn API）PSD2、eIDAS、およびGDPRに適合。 [![Hanko](https://img.shields.io/github/stars/teamhanko/hanko?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/teamhanko/hanko)
-* [Kinde](https://kinde.com/) - 認証とユーザー管理サービス。
-* [LoginRadius](https://www.loginradius.com/) - SSOを備えた管理型ユーザー認証サービス。
-* [MojoAuth](https://mojoauth.com/) - 企業向けSSOおよび豊富な標準機能を備えた完全なCIAMソリューション。
-* [Okta](https://developer.okta.com/) - SSOを備えた埋め込み認証。
-* [Ory](https://ory.sh/) - オープンソースの識別およびアクセス制御ソリューション（サービスとしても提供）。
-* [Oso](https://www.osohq.com/) - 承認フレームワーク（RBAC）。
-* [Permit.io](https://www.permit.io/) - アクセス許可とアクセス制御サービス。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [PropelAuth](https://www.propelauth.com/) - チームベースの認証。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Scalekit](https://scalekit.com) – Firebase、Auth0、またはCognitoなどの既存の認証設定にSAML、OIDCによる企業向けSSOおよびSCIMプロビジョニングを追加可能。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2025#06)
-* [SSOJet](https://ssojet.com/) - 認証を再構築せずに企業向けSSOを実現。無料プランには月間アクティブユーザー無制限、組織無制限、2つのSSOおよび2つのSCIM接続が含まれます。
-* [Stack Auth](https://stack-auth.com/) - オープンソースのAuth0代替品。 [![stack-auth](https://img.shields.io/github/stars/stack-auth/stack?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/stack-auth/stack) [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Stytch](https://stytch.com/) - すべての認証、承認、および詐欺防止インフラを一括提供。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [SuperTokens](https://supertokens.io/) - オープンソースかつホスティングされたメールおよびOAuth認証、事前構築されたUIを備えたもの。 [![SuperTokens](https://img.shields.io/github/stars/supertokens/supertokens-core?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/supertokens/supertokens-core)
-* [Unkey](https://www.unkey.com/) - APIに対する認証、レート制限、使用分析。 [![unkey](https://img.shields.io/github/stars/unkeyed/unkey?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/stack-auth/stack) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024#06)
-* [Userfront](https://userfront.com/) - シンプルなユーザー認証と事前構築されたバックオフィスダッシュボード。
-* [WorkOS](https://workos.com/) - 企業向けSSOおよびさらに豊富な標準機能。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
+## Backend-as-a-Service
+バックエンドの実装を抽象化した、すぐに使えるバックエンドサービス。
+* [Appwrite](https://appwrite.io/) - フロントエンドとモバイルの開発者向けに一連の機能を提供するバックエンドサーバー。 [GitHubリポジトリ](https://github.com/appwrite/appwrite)
+* [Encore](https://encore.dev/) - 堅牢で型安全なアプリケーションを構築するための、オープンソースのTypeScriptバックエンドフレームワーク。 [GitHubリポジトリ](https://github.com/encoredev/encore)
+* [Jamsocket](https://jamsocket.com/) - リアルタイムアプリ向けのバックエンド。
+* [Nhost](https://nhost.io/) - Postgresデータベース、即座に使えるGraphQL API、認証、ストレージ、サーバーレス関数を備えたオープンソースのバックエンド。 [GitHubリポジトリ](https://github.com/nhost/nhost)
+* [Supabase](https://supabase.com/) - Firebaseに似たマネージドPostgresデータベース。ホスティング版とオープンソース版を提供。 [GitHubリポジトリ](https://github.com/supabase/supabase)
 
-<a id="automation"></a>
-## 自動化
-*Automate workflows via APIs and SDKs.*
-* [Abstra](http://abstra.io/) - カスタムビジネスプロセス用のPythonベースのワークフローエンジン。 [![Abstra](https://img.shields.io/github/stars/abstra-app/abstra-lib?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/abstra-app/abstra-lib)
-* [Lil'bots](https://www.lilbots.io/) - JavaScriptまたはPythonで自動化スクリプトを作成・デプロイし、クラウドに即座にデプロイ可能。OpenAI、Anthropicなど、無料の組み込みAPIも提供。
-* [n8n](http://n8n.io/) - 無料かつソースコード公開のfair-codeライセンスに基づくワークフロー自動化ツール。 [![n8n](https://img.shields.io/github/stars/n8n-io/n8n?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/n8n-io/n8n)
-* [Potpie](https://potpie.ai) - オープンソースAIエージェントでコードベースを数分で構築。Q&A、テスト、デバッグ、システム設計など、事前に作成されたエージェントを使用するか、あるいは自作の用途に特化したエージェントを作成する。 [![potpie](https://img.shields.io/github/stars/potpie-ai/potpie?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/potpie-ai/potpie)
-* [Trigger.dev](http://trigger.dev/) - APIからワークフローを作成できるオープンソースプラットフォーム。スケジュールまたは要請に応じて。 [![trigger.dev](https://img.shields.io/github/stars/triggerdotdev/trigger.dev?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/triggerdotdev/trigger.dev) [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-
-<a id="backend-as-a-service"></a>
-## Backend as a Service
-*Abstract away all the backend hassles with an out-of-the-box suite of backend solutions.*
-* [Appwrite](https://appwrite.io/) - フロントエンドおよびモバイル開発者向けの端末から端末までの一貫したバックエンドサーバー。 [![Appwrite](https://img.shields.io/github/stars/appwrite/appwrite?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/appwrite/appwrite) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Encore](https://encore.dev/) - 堅牢で型安全なアプリケーションを実現するオープンソースTypeScriptバックエンドフレームワーク。 [![Encore](https://img.shields.io/github/stars/encoredev/encore?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/encoredev/encore) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Jamsocket](https://jamsocket.com/) - リアルタイムアプリ向けのバックエンド。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Nhost](https://nhost.io/) - Postgresデータベースを備えたオープンソースバックエンド、即時GraphQLAPI、認証、ストレージ、サーバレス関数を提供。 [![nhost](https://img.shields.io/github/stars/nhost/nhost?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/nhost/nhost)
-* [Supabase](https://supabase.com/) - Firebaseに類するホストされたオープンソース管理PostgresDB。 [![Supabase](https://img.shields.io/github/stars/supabase/supabase?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/supabase/supabase) [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-
-<a id="cicd"></a>
 ## CI/CD
-*Continuous Integration/Delivery.*
-* [CircleCI](https://circleci.com/) - ビルド設定、並列ジョブ、ジョブマーケットをYMLで構成。
-* [Depot](https://depot.dev) - CIでDockerイメージを高速に構築するための即時置き換え。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [GitLab](https://gitlab.com/) - GitHubのような機能を備えたオープンソースCIおよびホストソリューション。
-* [Ona](https://www.ona.com/) - 自動化されたクラウド開発環境。 [![Ona](https://img.shields.io/github/stars/gitpod-io/gitpod?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/gitpod-io/gitpod)
-* [RunMyJob](https://runmyjob.io/) - GitHub ActionsおよびGitLab CI向けのクラウドランナー。
-* [Spacelift](https://spacelift.io/) - インフラアセンブリとしてのCI/CDプラットフォーム。現在はTerraform、Pulumi、AWS CloudFormation、Kubernetesをサポート。
+継続的インテグレーションと継続的デリバリー。
+* [CircleCI](https://circleci.com/) - YAMLによるビルド構成、並列ジョブ、ジョブのマーケットプレイス。
+* [Depot](https://depot.dev) - CIのDockerイメージビルドを高速化する、既存の仕組みと置き換え可能なツール。
+* [GitLab](https://gitlab.com/) - GitHubのような機能を備えたオープンソースのCIとホスティングサービス。
+* [Ona](https://www.ona.com/) - 自動化されたクラウド開発環境。 [GitHubリポジトリ](https://github.com/gitpod-io/gitpod)
+* [RunMyJob](https://runmyjob.io/) - GitHub ActionsとGitLab CI向けのクラウドランナー。
+* [Spacelift](https://spacelift.io/) - コードによるインフラ管理向けのCI/CDプラットフォーム。原文時点ではTerraform、Pulumi、AWS CloudFormation、Kubernetesに対応。
 
-<a id="cms-headless"></a>
-## CMS（ヘッドレス）
-*Backend only Content Management System, you decide on frontend and consume content via API.*
-* [Contentful](http://contentful.com/) - CMSとしてAPIを提供。
+## ヘッドレスCMS<a id="cms-headless"></a><a id="cmsヘッドレス"></a><a id="headless-cms"></a>
+バックエンドのみのコンテンツ管理システム。フロントエンドを自由に選び、APIを通じてコンテンツを利用。
+* [Contentful](http://contentful.com/) - APIとして提供するCMS。
 * [DatoCMS](https://www.datocms.com/) - APIベースのCMS。
-* [Ghost](https://ghost.org/) - ブログプラットフォーム。ヘッドレスCMSとして使用可能（例： [with Hexo](https://ghost.org/docs/api/v3/hexo/)）。 [![Ghost](https://img.shields.io/github/stars/tryghost/ghost?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/tryghost/ghost)
-* [Sanity](https://sanity.io/) - ヘッドレスCMS。コンテンツをデータとして扱う。
-* [Strapi](https://strapi.io/) - オープンソースヘッドレスCMS、100％JavaScript。 [![Strapi](https://img.shields.io/github/stars/strapi/strapi?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/strapi/strapi) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
+* [Ghost](https://ghost.org/) - ヘッドレスCMSとしても使えるブログプラットフォーム（例：[Hexoとの連携](https://ghost.org/docs/api/v3/hexo/)）。 [GitHubリポジトリ](https://github.com/tryghost/ghost)
+* [Sanity](https://sanity.io/) - コンテンツをデータとして扱うヘッドレスCMS。
+* [Strapi](https://strapi.io/) - 100% JavaScriptのオープンソースのヘッドレスCMS。 [GitHubリポジトリ](https://github.com/strapi/strapi)
 
-<a id="code-quality"></a>
-## コード品質
-*Check your code quality.*
+## コード品質<a id="code-quality"></a>
+コード品質のチェックとレビュー。
 * [Codacy](https://www.codacy.com/) - 自動コード品質チェック。
-* [CodeRabbit AI](https://coderabbit.ai/) - AIによるコードレビューと自動プルリクエスト管理。
-* [DebuggAI](https://debugg.ai) - ゼロ設定AIブラウザ（E2E）テストがすべてのコミットとプルリクエスト（PR）をレビュー。
-* [Ellipsis](http://ellipsis.dev/) - AIによるコードレビューとバグ修正。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Kodus](https://kodus.io/) - オープンソースコードレビューエージェント。 [![Kodus](https://img.shields.io/github/stars/kodustech/kodus-ai?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/kodustech/kodus-ai)
-* [Sonar](https://www.sonarsource.com/) - Lintおよびコード品質チェック。
+* [CodeRabbit AI](https://coderabbit.ai/) - AIによるコードレビューとプルリクエストの自動管理。
+* [DebuggAI](https://debugg.ai) - 設定不要のAIブラウザーテスト（E2E）で、すべてのコミットとプルリクエスト（PR）をレビュー。
+* [Ellipsis](http://ellipsis.dev/) - AIによるコードレビューとバグ修正。
+* [Kodus](https://kodus.io/) - オープンソースのコードレビューエージェント。 [GitHubリポジトリ](https://github.com/kodustech/kodus-ai)
+* [Sonar](https://www.sonarsource.com/) - Lintとコード品質のチェック。
 
-<a id="computer-vision"></a>
-## コンピュータービジョン
-*Manipulate and detect visual data.*
-* [Clarifai](https://www.clarifai.com/) - コンピュータビジョンAPIのセット。
-* [CloudSight](https://cloudsight.ai/) - デジタルメディアブランド認識。
-* [Google Vision AI](https://cloud.google.com/vision) - グーグルのAIビジョンAPI。
-* [Roboflow](https://roboflow.com/) - 開発者向けに簡易なコンピュータビジョンモデル作成。
+## コンピュータービジョン<a id="computer-vision"></a>
+視覚的なデータを操作し、その内容を検出。
+* [Clarifai](https://www.clarifai.com/) - コンピュータービジョンAPIのセット。
+* [CloudSight](https://cloudsight.ai/) - デジタルメディア内のブランド認識。
+* [Google Vision AI](https://cloud.google.com/vision) - GoogleのAIビジョンAPI。
+* [Roboflow](https://roboflow.com/) - 開発者向けにコンピュータービジョンモデルの作成を簡略化。
 
-<a id="databases--spreadsheets"></a>
-## データベースとスプレッドシート
-*Storing data and processing it.*
-* [Airtable](https://airtable.com/) - データベースとスプレッドシートのハイブリッドサービス（API対応）。
-* [Apitable](https://apitable.com/) - API中心のAirtableの代替品。
-* [CrateDB](https://crate.io/) - 分散型オープンソースSQLデータベース（リアルタイム分析用）。 [![Crate](https://img.shields.io/github/stars/crate/crate?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/crate/crate)
-* [Neon](https://neon.tech/) - サーバレスPostgresデータベース（スケールゼロ、ブランチ、自動スケーリング対応）。 [![Neon](https://img.shields.io/github/stars/neondatabase/neon?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/neondatabase/neon)
-* [Neuledge](https://neuledge.com/) - どんなデータベースにも対応するユニバーサルスキーマ言語を備えた抽象的なORM。
-* [Outerbase](https://outerbase.com/) - AIによるデータベースUI。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [PlanetScale](https://planetscale.com/) - ホスティングされた管理型MySQLデータベース、CI統合および自動スケーリング。
-* [Upstash](https://upstash.com/) - サーバレスでカスタマイズされたRedisプロバイダー。
+## データベースとスプレッドシート<a id="databases--spreadsheets"></a>
+データを保存・処理。
+* [Airtable](https://airtable.com/) - APIを備えたデータベースとスプレッドシートの複合サービス。
+* [Apitable](https://apitable.com/) - APIを中心としたAirtableの代替ツール。
+* [CrateDB](https://crate.io/) - リアルタイム分析向けの分散型オープンソースSQLデータベース。 [GitHubリポジトリ](https://github.com/crate/crate)
+* [Neon](https://neon.tech/) - ゼロへのスケールダウン、ブランチ、自動スケーリングに対応するサーバーレスのPostgresデータベース。 [GitHubリポジトリ](https://github.com/neondatabase/neon)
+* [Neuledge](https://neuledge.com/) - 任意のデータベースに対応する共通スキーマ言語を備えた抽象化ORM。
+* [Outerbase](https://outerbase.com/) - AIを使うデータベースUI。
+* [PlanetScale](https://planetscale.com/) - CI連携と自動スケーリングを備えた、ホスティング型のマネージドMySQLデータベース。
+* [Upstash](https://upstash.com/) - サーバーレスアプリに適したRedisプロバイダー。
 
-<a id="debugging"></a>
-## デバッグ
-*Tools that help in tracking bugs.*
-* [Lightrun](https://www.lightrun.com) - IDE（オンプレミスまたはSaaS）にプラグインをインストールして、Java、Node.js、Pythonをサポートするプロダクションサーバーのデバッグ。
-* [Linear](https://linear.app/) - 開発者向けの問題トラッキング機能。
-* [Multiplayer](https://www.multiplayer.app) - あなたの好きなコーディングエージェント（オープンソースまたはSaaS）のすぐ側にローカルで実行されるデバッグエージェント。そのエージェントは、フルスタックかつサンプリングなしの実行データを提供し、自動的にバグを検出し、修正する。
-* [Rookout](https://www.rookout.com) - クラウドベースのデバッガーを用いてプロダクションサーバーをデバッグ。Java、.Net、Node.js、Python、Rubyをサポート。
+## デバッグ<a id="debugging"></a>
+ソフトウェアの問題を追跡・デバッグ。
+* [Lightrun](https://www.lightrun.com) - IDEプラグインで本番サーバーをデバッグ。オンプレミスまたはSaaSで提供され、Java、Node.js、Pythonに対応。
+* [Linear](https://linear.app/) - 開発者向けの課題管理。
+* [Multiplayer](https://www.multiplayer.app) - オープンソースまたはSaaSのコーディングエージェントとともにローカルで動くデバッグエージェント。フルスタックの実行時データをサンプリングせずに渡し、バグを自動で検出・修正。
+* [Rookout](https://www.rookout.com) - クラウドベースのデバッガーによる本番サーバーのデバッグ。Java、.NET、Node.js、Python、Rubyに対応。
 
-<a id="deployment-hosting"></a>
-## デプロイとホスティング
-*Products that help you deploy your app/website.*
-* [Adaptable](https://adaptable.io/) - アプリとデータベースを共通テンプレートでデプロイ可能
-* [Beam](https://www.beam.cloud/) - サーバレスクラウドインフラ。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Cycle.io](https://www.cycle.io/) - プラットフォームを構築するためのDevOpsプラットフォーム。コンテナオーケストレーション、ロードバランシング、モニタリングなどを扱う
-* [Digital Ocean App Platform](https://www.digitalocean.com/products/app-platform/) - インフラをデプロイし、その後は気にしない。主要フレームワークと互換可能
-* [Fly.io](https://fly.io/) - 位置意識サービスを活用し、フルスタックアプリをDocker化してデプロイ（遅延削減）
-* [Heroku](https://www.heroku.com/) - スケーラブルなサーバーにCLIでデプロイ
-* [Kinsta](https://kinsta.com/) - GitHub、GitLab、Bitbucketから静的サイト、アプリ、データベースをデプロイし、ヘッドレスWordPressをホスト
-* [Koyeb](https://www.koyeb.com/) - フルスタックアプリとAPIを数分でサーバレスにデプロイ可能。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Netlify](https://www.netlify.com/) - CLIでJAMStack（主にGatsby）をデプロイ
-* [Platform.sh](https://platform.sh/) - フルスタックアプリの継続的デプロイ
-* [Propel](https://www.propeldata.com/) - サーバレスClickHouseプラットフォーム。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Qoddi](https://qoddi.com/) - Git接続型アプリホスティングプラットフォーム
-* [Quix](https://quix.io/) - イベントストリーミングアプリケーションの構築と実行に必要な1つのツール
-* [Railway](https://railway.app/) - 自動スケーリング、データベース、シークレット、リロードを含む即時Gitからデプロイ。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Reflex](https://reflex.dev/) - Pythonでウェブアプリを構築・デプロイするためのフレームワーク。
-フロントエンドも対象とします。 [![Reflex](https://img.shields.io/github/stars/reflex-dev/reflex?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/reflex-dev/reflex)
-* [Render](https://render.com/) - GitからCDNへデプロイし、SSLを有効化
-* [Vercel](https://vercel.com/) - サーバレスウェブアプリ、静的ウェブサイト、JAMStack（主にNext.js）プロジェクトの構築とデプロイに使えるクラウドプラットフォーム
-* [Zeabur](https://zeabur.com/) - フロントエンド、バックエンド、データベースサービスのワンクリックデプロイ
+## デプロイとホスティング<a id="deployment-hosting"></a>
+アプリケーションとウェブサイトをデプロイ。
+* [Adaptable](https://adaptable.io/) - 共通テンプレートでアプリとデータベースをデプロイ。
+* [Beam](https://www.beam.cloud/) - サーバーレスのクラウドインフラ。
+* [Cycle.io](https://www.cycle.io/) - プラットフォームを構築するためのDevOpsプラットフォーム。コンテナのオーケストレーション、負荷分散、モニタリングなどを扱う。
+* [Digital Ocean App Platform](https://www.digitalocean.com/products/app-platform/) - インフラを管理せずにアプリをデプロイ。主要なフレームワークすべてに対応。
+* [Fly.io](https://fly.io/) - 位置を考慮するサービスを通じて、Dockerを使うフルスタックアプリをデプロイし、遅延を削減。
+* [Heroku](https://www.heroku.com/) - CLIでスケーラブルなサーバーへデプロイ。
+* [Kinsta](https://kinsta.com/) - GitHub、GitLab、Bitbucketから静的サイト、アプリ、データベースをデプロイし、ヘッドレスWordPressをホスト。
+* [Koyeb](https://www.koyeb.com/) - フルスタックアプリとAPIを数分でデプロイするサーバーレスのプラットフォーム。
+* [Netlify](https://www.netlify.com/) - CLIでJAMStack（主にGatsby）をデプロイ。
+* [Platform.sh](https://platform.sh/) - フルスタックアプリを継続的にデプロイ。
+* [Propel](https://www.propeldata.com/) - サーバーレスのClickHouseプラットフォーム。
+* [Qoddi](https://qoddi.com/) - Gitと接続するアプリホスティングプラットフォーム。
+* [Quix](https://quix.io/) - イベントストリーミングアプリの構築と実行を一つのツールで行う。
+* [Railway](https://railway.app/) - Gitからすぐにデプロイでき、自動スケーリング、データベース、シークレット、ロールバックを備える。
+* [Reflex](https://reflex.dev/) - フロントエンドを含むウェブアプリを構築・デプロイするPythonフレームワーク。 [GitHubリポジトリ](https://github.com/reflex-dev/reflex)
+* [Render](https://render.com/) - GitからSSLを備えたCDNへデプロイ。
+* [Vercel](https://vercel.com/) - サーバーレスのウェブアプリ、静的サイト、Jamstack（主にNext.js）プロジェクトを構築・デプロイするクラウドプラットフォーム。
+* [Zeabur](https://zeabur.com/) - フロントエンド、バックエンド、データベースの各サービスをワンクリックでデプロイ。
 
-<a id="discussions"></a>
-## ディスカッション
-*Comments and forums.*
-* [Bazaarvoice](https://www.bazaarvoice.com/ratings-and-reviews/) - 評価、レビューをサービスとして提供
-* [Commento](https://commento.io/) - プライバシー中心の埋め込みコメントシステム
-* [Yotpo](https://www.yotpo.com/platform/reviews/) - レビュー・評価・Q&Aをサービスとして提供
+## ディスカッション<a id="discussions"></a>
+コメント、議論、評価、レビュー。
+* [Bazaarvoice](https://www.bazaarvoice.com/ratings-and-reviews/) - 評価とレビューをサービスとして提供。
+* [Commento](https://commento.io/) - プライバシーを重視した組み込み可能なコメントシステム。
+* [Yotpo](https://www.yotpo.com/platform/reviews/) - レビュー、評価、Q&Aをサービスとして提供。
 
-<a id="documentation"></a>
-## ドキュメント
-*Documentation solutions.*
-* [Apidog](https://apidog.com/) - すべてを一括で扱えるAPIドキュメントツール。リクエストから1クリックでAPIドキュメントを生成
-* [Bump.sh](https://bump.sh/) - APIドキュメントと変更管理ソリューション
-* [DeveloperHub](https://developerhub.io/) - 協働型開発者ドキュメントプラットフォーム
-* [Fern](https://www.buildwithfern.com/) - API向けの即時ドキュメントとSDK
-* [Mintlify](https://www.mintlify.com/) - NextJSベースのAI駆動ドキュメントサイトプラットフォーム。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [ReadMe](https://readme.com/) - パーソナライズされた動的開発者ドキュメント
-* [Speakeasy](https://speakeasy.com/) - SDK、APIドキュメント、Terraformプロバイダー、端末まで含むAPIツールing。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Swimm](https://swimm.io/) - コードと連携したドキュメント、自動同期、IDEとの連携対応
+## ドキュメント<a id="documentation"></a>
+開発者向けドキュメントを作成・保守。
+* [Apidog](https://apidog.com/) - リクエストからワンクリックでAPIドキュメントを生成する、機能を統合したAPIドキュメントツール。
+* [Bump.sh](https://bump.sh/) - APIドキュメントと変更管理のソリューション。
+* [DeveloperHub](https://developerhub.io/) - 共同作業向けの開発者ドキュメントプラットフォーム。
+* [Fern](https://www.buildwithfern.com/) - API向けのドキュメントとSDKをすぐに作成。
+* [Mintlify](https://www.mintlify.com/) - Next.jsベースでAIを使うドキュメントサイト用プラットフォーム。
+* [ReadMe](https://readme.com/) - パーソナライズされた動的な開発者ドキュメント。
+* [Speakeasy](https://speakeasy.com/) - SDK、APIドキュメント、Terraformプロバイダー、E2Eテスト向けのAPIツール。
+* [Swimm](https://swimm.io/) - コードと結び付いたドキュメントを自動で同期し、IDEと連携。
 
-<a id="environment--secret-management"></a>
-## 環境・シークレット管理
-*Manage environment variables and secrets for multiple apps or projects.*
-* [Doppler](https://doppler.com/) - プロジェクト間の環境変数管理を一括で行う
-* [Envkey](https://www.envkey.com/) - すべてのアプリに同期機構を備えた環境管理
-* [KeyHippo](https://www.keyhippo.com/) - Postgres RLS用のAPIキー。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Ubiq](https://www.ubiqsecurity.com/) - 暗号化APIとシークレット管理
-* [Vault](https://www.vaultproject.io/) - API駆動のシークレットキー管理
+## 環境変数とシークレットの管理<a id="environment--secret-management"></a><a id="環境シークレット管理"></a>
+アプリケーションとプロジェクト間で環境変数とシークレットを管理。
+* [Doppler](https://doppler.com/) - 複数プロジェクトの環境変数を一か所で管理。
+* [Envkey](https://www.envkey.com/) - すべてのアプリと同期する仕組みを備えた環境管理。
+* [KeyHippo](https://www.keyhippo.com/) - PostgresのRLS向けのAPIキー。
+* [Ubiq](https://www.ubiqsecurity.com/) - シークレット管理を備えた暗号化API。
+* [Vault](https://www.vaultproject.io/) - APIによるシークレットキー管理。
 
-<a id="feature-flags"></a>
-## フィーチャーフラグ
-*Control production features with conditional flags in your code.*
-* [Bucket](https://bucket.co) - B2B SaaS製品向けに設計された機能フラグ
-* [ConfigCat](https://configcat.com/) - チーム規模無制限、永遠無料プランを備えた強力でプライバシーを最優先した機能フラグ管理
-* [Flagsmith](https://flagsmith.com/) - 機能フラグ-as-a-serviceプラットフォームを簡易化
-* [GrowthBook](https://www.growthbook.io/) - オープンソース機能フラグと実験プラットフォーム。 [![GrowthBook](https://img.shields.io/github/stars/growthbook/growthbook?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/growthbook/growthbook)
-* [Hypertune](https://hypertune.com) - ReactおよびNext.js向けに最適化された型安全機能フラグ
-* [LaunchDarkly](https://launchdarkly.com/) - 機能フラグ-as-a-serviceプラットフォーム。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Split](https://www.split.io/) - 機能フラグプラットフォームとデータ分析
-* [Statsig](https://statsig.com/) - 分析、機能フラグ、A/Bテストを一括で提供するプラットフォーム。月間100万件までのイベントは無料。
-* [Unleash](https://www.getunleash.io/) - オープンソースでプライバシーを最優先し、企業向けにも対応する機能管理ソリューション。 [![Unleash](https://img.shields.io/github/stars/unleash/unleash?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/unleash/unleash)
+## フィーチャーフラグ<a id="feature-flags"></a>
+コード内の条件付きフラグで本番環境の機能を制御。
+* [Bucket](https://bucket.co) - B2B SaaS製品向けに設計されたフィーチャーフラグ。
+* [ConfigCat](https://configcat.com/) - チーム規模が無制限で、永続的な無料プランを備えた、強力かつプライバシーを重視するフィーチャーフラグ管理。
+* [Flagsmith](https://flagsmith.com/) - 手軽に使えるフィーチャーフラグのサービス。
+* [GrowthBook](https://www.growthbook.io/) - オープンソースのフィーチャーフラグと実験のプラットフォーム。 [GitHubリポジトリ](https://github.com/growthbook/growthbook)
+* [Hypertune](https://hypertune.com) - ReactとNext.js向けに最適化された型安全なフィーチャーフラグ。
+* [LaunchDarkly](https://launchdarkly.com/) - フィーチャーフラグをサービスとして提供するプラットフォーム。
+* [Split](https://www.split.io/) - データ分析を備えたフィーチャーフラグのプラットフォーム。
+* [Statsig](https://statsig.com/) - 分析、フィーチャーフラグ、A/Bテストを統合したプラットフォーム。月100万件までの計測対象イベントは無料。
+* [Unleash](https://www.getunleash.io/) - オープンソースでプライバシーを重視し、企業での利用にも対応する機能管理ソリューション。 [GitHubリポジトリ](https://github.com/unleash/unleash)
 
-<a id="gen-ui"></a>
-## 生成UI
-*Or Generative UI, Dynamic User Experiences, Adaptive UI.*
-* [AI SDK by Vercel](https://ai-sdk.dev/) - Gen UIアプリケーションを作成するためのSDK。 [![AI SDK by Vercel](https://img.shields.io/github/stars/vercel/ai?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/vercel/ai)
-* [Coframe](https://coframe.ai/) - AIによって、あなたのウェブサイトのコピー、画像、UIを自動的に最適化。
-* [Horizon UI](https://horizon-ui.com/) - shadcnのボイラープレートで、Gen UI AIコンポーネントが内蔵されている。
-* [Magic Patterns](https://magicpatterns.link/dev) - AIを使ってプロトタイプの製品アイデアを生成。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Tempo](https://tempolabs.ai/) - コード中心のFigmaの代替ツール。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [v0 by Vercel](https://v0.link/dev) - プロンプトからUIを生成。すべてのUIはストリーミングされ、クライアントサイドコンポーネントとして実行される。
+## 生成UI<a id="gen-ui"></a><a id="generative-ui"></a>
+生成型UI、動的なユーザー体験、状況に応じて変わるインターフェース。
+* [AI SDK by Vercel](https://ai-sdk.dev/) - 生成型UIアプリケーションを作成するSDK。 [GitHubリポジトリ](https://github.com/vercel/ai)
+* [Coframe](https://coframe.ai/) - AIを使い、ウェブサイトの文章、画像、UIを自動で最適化。
+* [Horizon UI](https://horizon-ui.com/) - 生成型UI向けのAIコンポーネントを組み込んだshadcnのひな形。
+* [Magic Patterns](https://magicpatterns.link/dev) - AIを使ってプロダクトのアイデアを試作。
+* [Tempo](https://tempolabs.ai/) - コードを中心に扱うFigmaの代替ツール。
+* [v0 by Vercel](https://v0.link/dev) - プロンプトからUIを生成。UIはストリーミングされ、クライアント側のコンポーネントとして動作。
 
-<a id="geo"></a>
-## 地理情報
-*Location services.*
-* [AirPinpoint](https://airpinpoint.com/) - Apple AirTagsのトラッキング用API。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Mapbox](https://www.mapbox.com/) - 開発者向けのマップと位置情報製品。
-* [OpenCage](https://opencagedata.com/) - オープンデータに基づくフォワードおよびリバースジオコーディングAPI。
-* [PlaceKit](https://placekit.io/) - 位置情報検索API。
-* [Radar](https://radar.io/) - 地理境界（Geofencing）および地理API。
-* [SmartyStreets](https://www.smartystreets.com/) - 米国向けリバースジオコーディングおよび住所検証API。
+## 位置情報サービス<a id="geo"></a><a id="地理情報"></a><a id="location-services"></a>
+地図、場所の検索、住所と座標の変換、ジオフェンシングのサービス。
+* [AirPinpoint](https://airpinpoint.com/) - Apple AirTagの追跡用API。
+* [Mapbox](https://www.mapbox.com/) - 開発者向けの地図と位置情報のプロダクト。
+* [OpenCage](https://opencagedata.com/) - オープンデータに基づく、住所から座標への変換と座標から住所への逆変換のAPI。
+* [PlaceKit](https://placekit.io/) - 場所の検索API。
+* [Radar](https://radar.io/) - ジオフェンシングと地理情報のAPI。
+* [SmartyStreets](https://www.smartystreets.com/) - 米国向けの座標から住所への逆変換と住所検証のAPI。
 
-<a id="ide"></a>
 ## IDE
-*Products that extend your IDE and help development.*
-* [GoCodeo](https://www.gocodeo.com/) - AIによるコード作成・テストアグエント。
-* [Kite](https://www.kite.com/) - IDE（PythonまたはJS）に搭載されたAIアシスタント。
-* [MarsCode](https://www.marscode.com/?utm_source=github&utm_medium=rm) - AIを活用したクラウドベースIDE。
-* [OneCompiler](https://onecompiler.com/) - 70以上のプログラミング言語をサポートする柔軟でAIを活用したオンラインIDE。開発者がコードを書く、コンパイルし、実行できるように設計されている。
+IDE拡張と開発環境。
+* [GoCodeo](https://www.gocodeo.com/) - AIによるコーディングとテストのエージェント。
+* [Kite](https://www.kite.com/) - IDE内で動くAIアシスタント。PythonとJavaScriptに対応。
+* [MarsCode](https://www.marscode.com/?utm_source=github&utm_medium=rm) - AIを備えたクラウドベースのIDE。
+* [OneCompiler](https://onecompiler.com/) - コードの記述、コンパイル、実行に使うAI搭載のオンラインIDE。70を超えるプログラミング言語に対応。
 
-<a id="infrastructure-as-code"></a>
-## Infrastructure as Code
-*Declare your infrastructure and reproducibly provision cloud infrastructure from it.*
-* [Pulumi](https://www.pulumi.com/) -  Python、TypeScript、Goなど、多くの言語に対応する開発者中心のIaC。
-* [Terraform](https://www.hashicorp.com/products/terraform) - DSL、オープンソース、無料（有料ソリューションではチーム管理、ポリシー-as-コードなどが追加）。 [![Terraform](https://img.shields.io/github/stars/hashicorp/terraform?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/hashicorp/terraform)
-* [Terrateam](https://terrateam.io/) - Terraform、OpenTofu、Terragrunt、CDKTF、Pulumiに適用可能なGitOpsを第一にしたオープンソースインフラコード自動化。 [![Terrateam](https://img.shields.io/github/stars/terrateamio/terrateam?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/terrateamio/terrateam)
+## コードによるインフラ管理（IaC）<a id="infrastructure-as-code"></a>
+インフラを宣言し、クラウドリソースを再現可能な方法で用意。
+* [Pulumi](https://www.pulumi.com/) - Python、TypeScript、Goなどの言語を使う、開発者を重視したIaC。
+* [Terraform](https://www.hashicorp.com/products/terraform) - DSLを使う無料のオープンソースツールとして原文に掲載。有料版ではチーム管理やコードによるポリシー管理などの機能を追加。 [GitHubリポジトリ](https://github.com/hashicorp/terraform)
+* [Terrateam](https://terrateam.io/) - GitOpsを重視したオープンソースのIaC自動化ツール。Terraform、OpenTofu、Terragrunt、CDKTF、Pulumiに対応。 [GitHubリポジトリ](https://github.com/terrateamio/terrateam)
 
-<a id="integrations"></a>
-## 統合
-*Integration management systems or products that ease integration development.*
-* [Apideck](https://www.apideck.com) - 統合マーケットプレイスビルダー、第三者サービスとの1APIで迅速な開発を可能に。
-* [Metorial](https://metorial.com) - AIアグエントを600以上の統合に1つのインターフェースで接続。OAuth、スケーリング、モニタリングが含まれる。
-* [Nango](https://www.nango.dev) - 250以上のAPIを備えた数百の事前構築済み製品統合。コードでカスタマイズ可能。 [![Nango](https://img.shields.io/github/stars/nangoHQ/nango?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/NangoHQ/nango)
-* [Panora](https://panora.dev) - SaaS製品に顧客向け統合を簡単に追加できる柔軟なAPI。 [![Panora](https://img.shields.io/github/stars/panoratech/panora?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/panoratech/panora)
-* [Revert](https://revert.dev) - B2B製品統合を構築するためのオープンソース統合API。 [![Revert](https://img.shields.io/github/stars/revertinc/revert?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/revertinc/revert)
-* [Sequin](https://sequin.io/) - SQLを使用して第三者サービスとインターフェースを接続。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Vessel](https://www.vessel.dev/) - GTMツール向けの開発者中心のネイティブ統合プラットフォーム。
-* [YepCode](https://yepcode.io/) - 最も良い開発体験を備えたサーバーレス関数の構築と実行。
+## 連携<a id="integrations"></a><a id="統合"></a>
+連携機能の管理と開発を簡略化。
+* [Apideck](https://www.apideck.com) - サードパーティーのサービスを一つのAPIで扱い、開発を速める連携機能のマーケットプレイス作成ツール。
+* [Metorial](https://metorial.com) - AIエージェントを一つのインターフェースで600以上の連携先に接続。OAuth、スケーリング、モニタリングを含む。
+* [Nango](https://www.nango.dev) - 250以上のAPIを使う、事前構築済みのプロダクト連携機能を数百種類提供。コードでカスタマイズ可能。 [GitHubリポジトリ](https://github.com/NangoHQ/nango)
+* [Panora](https://panora.dev) - SaaSプロダクトに顧客向けの連携機能を追加する、使いやすく柔軟なAPI。 [GitHubリポジトリ](https://github.com/panoratech/panora)
+* [Revert](https://revert.dev) - B2Bプロダクトの連携機能を構築するオープンソースの統合API。 [GitHubリポジトリ](https://github.com/revertinc/revert)
+* [Sequin](https://sequin.io/) - SQLを使ってサードパーティーのサービスとやり取り。
+* [Vessel](https://www.vessel.dev/) - 市場開拓（GTM）ツール向けに、開発者を重視したネイティブ連携プラットフォームを提供。
+* [YepCode](https://yepcode.io/) - サーバーレス関数を構築・実行。原文の著者は開発体験を最高と評価。
 
-<a id="localization"></a>
-## ローカライゼーション
-*Translating your product (also denoted i18n).*
-* [Lingo.dev](https://lingo.dev/) - AIによるローカリゼーションインフラ。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Localazy](https://localazy.com/) - 開発者向けのアプリケーション翻訳。
-* [Locize](https://locize.com) - i18nextの開発者が開発した翻訳管理システム。プロダクションに投入する前に開発・ステージ環境でライターと協働。
-* [Tolgee](https://tolgee.io) - 開発者と翻訳者にとって親しみやすいウェブベースのローカリゼーションプラットフォーム。
+## ローカライズ<a id="localization"></a><a id="ローカライゼーション"></a>
+プロダクトの翻訳とローカライズ。原文でi18nと説明されるツールも含む。
+* [Lingo.dev](https://lingo.dev/) - AIによるローカライズのインフラ。
+* [Localazy](https://localazy.com/) - 開発者向けに設計されたアプリの翻訳ツール。
+* [Locize](https://locize.com) - i18nextの開発者が作成した翻訳管理システム。本番公開前に、開発環境とステージング環境で執筆者と共同作業。
+* [Tolgee](https://tolgee.io) - 開発者と翻訳者が使いやすいウェブベースのローカライズプラットフォーム。
 
-<a id="mail"></a>
-## メール
-*Sending emails as a service.*
-* [Anymail finder](https://anymailfinder.com) - メールAPIの確認と検索。
-* [FormSpree](https://formspree.io/) - メールでフォームの提出を受け取る。
-* [Heybounce](https://www.heybounce.io/) - メール認証API。
-* [Hunter.io](https://hunter.io/) - メールリードおよび検証API。
-* [Imitate Email](https://imitate.email) - 端末から端末までメールテストツール。
-* [Lob](https://www.lob.com/) - メールおよび住所認証。
-* [Loops](https://loops.so/) - コンタクトプロパティの管理、イベントの送信およびトランザクショナルメールの送信に必要なREST API。[![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Mailgun](https://www.mailgun.com/) - メールの送信、トラッキング、受信。
-* [Resend](https://resend.com/) - トランザクショナルメールの構築、テスト、配信に必要なメールAPI。[![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
+## メール<a id="mail"></a><a id="email"></a>
+メール配信、アドレス検証、テストのサービス。
+* [Anymail finder](https://anymailfinder.com) - メールアドレスの検索と検証のAPI。
+* [FormSpree](https://formspree.io/) - フォームの送信内容をメールで受信。
+* [Heybounce](https://www.heybounce.io/) - メール検証API。
+* [Hunter.io](https://hunter.io/) - 見込み顧客のメールアドレスの取得と検証のAPI。
+* [Imitate Email](https://imitate.email) - メールのE2Eテストツール。
+* [Lob](https://www.lob.com/) - 原文ではメールと住所の検証を提供すると説明されている。
+* [Loops](https://loops.so/) - 連絡先の属性を管理し、イベントとトランザクションメールを送信するREST API。
+* [Mailgun](https://www.mailgun.com/) - メールの送信、追跡、受信。
+* [Resend](https://resend.com/) - トランザクションメールの構築、テスト、配信のためのメールAPI。
 * [Sendgrid](https://sendgrid.com/) - メールAPI。
-* [Zyntra](https://zyntra.app/) – 自動化および品質保証用にAPIおよびUIアクセス可能な無制限のメールインボックス。
+* [Zyntra](https://zyntra.app/) - 自動化とQA向けに、APIまたはUIからアクセスできるメール受信箱を無制限に提供。
 
-<a id="media"></a>
-## メディア
-*Media APIs (optimization, CDN).*
-* [APITemplate.io](https://apitemplate.io/) - 再利用可能なテンプレートから画像およびPDFを生成するAPI。
-* [Bytescale](https://bytescale.com) - ファイルのストレージおよび処理に必要なAPI。
-* [Cloudinary](https://cloudinary.com/) - 画像および動画の最適化、作成、管理、配信。
-* [Dyte](https://dyte.io) - 製品にパワフルなライブ体験を構築するための一括Video SDK。
-* [Flatfile](https://flatfile.com/) - ファイルからデータをプログラム的にインポートし、API対応にします。[![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
+## メディア<a id="media"></a>
+最適化、CDNを通じた配信、保存、処理のためのメディアAPI。
+* [APITemplate.io](https://apitemplate.io/) - 再利用可能なテンプレートから画像とPDFを生成するAPI。
+* [Bytescale](https://bytescale.com) - ファイルの保存と処理のAPI。
+* [Cloudinary](https://cloudinary.com/) - 画像と動画の最適化、作成、管理、配信。
+* [Dyte](https://dyte.io) - 一体型の動画SDKで、プロダクトに充実したライブ体験を構築。
+* [Flatfile](https://flatfile.com/) - ファイルのデータをプログラムから取り込み、APIで利用できる状態にする。
 * [ImageKit](https://imagekit.io/) - 画像の最適化、変換、配信を自動化。
 * [imgix](https://www.imgix.com/) - 画像の変換、最適化、キャッシュ。
-* [Mux](https://mux.com/) - 動画のアップロード、管理、ストリーミングに必要なAPI。[![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Pintura](https://pqina.nl/pintura) - 完全にカスタマイズ可能なJavaScript画像編集SDK。
+* [Mux](https://mux.com/) - 動画のアップロード、管理、ストリーミングのAPI。
+* [Pintura](https://pqina.nl/pintura) - 柔軟に設定できるJavaScriptの画像編集SDK。
 
-<a id="messaging"></a>
-## メッセージング
-*Messaging APIs - SMS, notifications, chats, and VoIP.*
-* [Ably](https://ably.com) - プブ/サブ、リアルタイムメッセージング、通知、チャット、マルチプレイヤー、データ同期。
-* [Applozic](https://www.applozic.com/) - チャットSDK、リアルタイムメッセージング。
-* [Knock](https://knock.app) - 通知サービス。[![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [MagicBell](https://www.magicbell.com/) - APIおよびUIコンポーネントを備えたリアルタイム通知システム。
-* [Novu](https://novu.co/) - オープンソースの通知（メール、SMS、ダイレクト、プッシュ）管理。[![Novu](https://img.shields.io/github/stars/novuhq/novu?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/novuhq/novu) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2025#02)
-* [Pingram](https://www.pingram.io/) - メール、SMS、音声、WhatsAppに対応するメッセージングAPI。管理されたA2P 10DLCを備える。
-* [Stream](https://getstream.io/) - フィードとチャットをサービスとして提供
-* [Twilio](https://www.twilio.com/) - SMS、プッシュ通知、VoIP API
-* [Vonage](https://www.vonage.com) - ビデオ、SMS、チャット、音声 API
+## メッセージング<a id="messaging"></a>
+SMS、通知、チャット、VoIPのメッセージAPI。
+* [Ably](https://ably.com) - Pub/Sub、リアルタイムメッセージ、通知、チャット、マルチプレイヤー機能、データ同期。
+* [Applozic](https://www.applozic.com/) - チャットSDKとリアルタイムメッセージ。
+* [Knock](https://knock.app) - 通知をサービスとして提供。
+* [MagicBell](https://www.magicbell.com/) - APIとUIコンポーネントを備えたリアルタイム通知システム。
+* [Novu](https://novu.co/) - メール、SMS、ダイレクト通知、プッシュ通知を管理するオープンソースのツール。 [GitHubリポジトリ](https://github.com/novuhq/novu)
+* [Pingram](https://www.pingram.io/) - メール、SMS、音声、WhatsAppのメッセージAPI。マネージドA2P 10DLCを提供。
+* [Stream](https://getstream.io/) - フィードとチャットをサービスとして提供。
+* [Twilio](https://www.twilio.com/) - SMS、プッシュ通知、VoIPのAPI。
+* [Vonage](https://www.vonage.com) - 動画、SMS、チャット、音声のAPI。
 
-<a id="misc"></a>
-## その他
-*Different products that probably don't have a category.*
-* [Actyx](https://www.actyx.com/) - 開発者中心のファクトリ構築
-* [daily.dev](https://daily.dev/) - 1000以上の中のテックソースから集約されたパーソナライズされた開発者ニュースフィードとコミュニティディスカッション。 [![daily.dev](https://img.shields.io/github/stars/dailydotdev/daily?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/dailydotdev/daily)
-* [Docusign](https://developers.docusign.com/) - eSignatureおよびインテリジェントな契約管理API
-* [Fernand](https://getfernand.com/) - インディーハッカーおよび小型SaaSチーム向けAPI中心の顧客サポート
-* [Frigade](https://frigade.com) - アプリの特性を学習し、ユーザーの代わりに行動を起こす（モーダルを開く、ナビゲート、ワークフローを進める）インプロダクトAIアシスタントを配信するSDK
-* [Interval](https://interval.com/) - あなたの製品向けの内部ツールやスクリプトを構築するためのSDK
-* [ngrok](https://ngrok.com/) - 内部サーバー（NAT/ファイアウォールの後）に公開URLを生成
-* [Nylas](https://www.nylas.com/) - 生産性ワークフロー（メール、カレンダー、連絡先など）向けAPI — プレードのようなもの
-* [Plain](https://plain.com) - 顧客サービス向けAPI中心のプラットフォーム（サポート、フィードバック、評価ウィジェットなど）
-* [Propexo](https://www.propexo.com/) - 不動産管理システムとの統合用の統合API
-* [SignatureAPI](https://signatureapi.com) - API中心の電子署名
-* [Trophy](https://trophy.so) - ゲーム化された製品体験向けAPI
+## その他のプロダクト<a id="misc"></a><a id="その他"></a><a id="other-products"></a>
+他の分類に収まらない、開発者向けのプロダクト。
+* [Actyx](https://www.actyx.com/) - 開発者を重視した工場構築。
+* [daily.dev](https://daily.dev/) - 1,000以上の技術情報源を集約する、個人に合わせた開発者向けニュースフィード。コミュニティでの議論も提供。 [GitHubリポジトリ](https://github.com/dailydotdev/daily)
+* [Docusign](https://developers.docusign.com/) - 電子署名とインテリジェント契約管理のAPI。
+* [Fernand](https://getfernand.com/) - 個人開発者と小規模SaaSチーム向けに、APIを中心としたカスタマーサポートを提供。
+* [Frigade](https://frigade.com) - アプリを学習し、ユーザーに代わって操作するAIアシスタントをプロダクトに組み込むSDK。モーダルの表示、画面移動、ワークフローの案内などに対応。
+* [Interval](https://interval.com/) - プロダクトの社内ツールとスクリプトを構築するSDK。
+* [ngrok](https://ngrok.com/) - NATやファイアウォールの内側にあるサーバーの公開URLを生成。
+* [Nylas](https://www.nylas.com/) - メール、カレンダー、連絡先など、生産性に関わるワークフローのAPI。原文では「生産性分野のPlaid」と説明されている。
+* [Plain](https://plain.com) - APIを中心としたカスタマーサービスのプラットフォーム。サポート、フィードバック、評価ウィジェットなどを提供。
+* [Propexo](https://www.propexo.com/) - 不動産管理システムとの連携用統合API。
+* [SignatureAPI](https://signatureapi.com) - APIを中心とした電子署名。
+* [Trophy](https://trophy.so) - ゲーミフィケーションを使うプロダクト体験のAPI。
 
-<a id="monitoring"></a>
-## モニタリング
-*Monitoring your production application.*
-* [Airbrake](https://airbrake.io) - 生産環境におけるエラーモニタリング
-* [Anteon](https://getanteon.com/) - Kubernetesのモニタリングおよびパフォーマンステスト — CLI、セルフホスト、クラウドで利用可能。 [![Anteon](https://img.shields.io/github/stars/getanteon/anteon?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/getanteon/anteon)
-* [Better Stack](https://betterstack.com/) - 稼働状態モニタリング、インシデント管理、ステータスページ
-* [Future AGI](https://futureagi.com/) - トレース、評価、シミュレーション、データセット、ゲートウェイ、ガードレールを統合したオープンソース・セルフホスト可能なエンドツーエンドLLMOpsプラットフォーム。 [![Future AGI](https://img.shields.io/github/stars/future-agi/future-agi?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/future-agi/future-agi)
-* [Helicone AI](https://www.helicone.ai/) - 生産環境におけるLLMアプリのLLM可視化およびモニタリング。 [![Helicone AI](https://img.shields.io/github/stars/helicone/helicone?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/Helicone/helicone)
-* [Highlight.io](https://www.highlight.io/) - フルスタックモニタリングプラットフォーム。 [![Highlight.io](https://img.shields.io/github/stars/highlight/highlight?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/highlight/highlight) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Instatus](https://instatus.com) - アップタイムモニタリング、インシデント対応、ステータスページの提供。
-* [KeenIO](https://keen.io/) - イベントストリーミングプラットフォーム。
-* [Laminar](https://www.lmnr.ai/) - LLM製品のトレース、評価、ラベリングに用いるオープンソースプラットフォーム。 [![lmnr](https://img.shields.io/github/stars/lmnr-ai/lmnr?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/lmnr-ai/lmnr) [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Langfuse](https://langfuse.com/) - LLMアプリケーションの協働デバッグ、分析、イテレーションを支援するオープンソースLLM可視性プラットフォーム。 [![Langfuse](https://img.shields.io/github/stars/langfuse/langfuse?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/langfuse/langfuse) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [LogRocket](https://logrocket.com/) - ユーザーが経験したバグを再現。
-* [Maxim AI](https://www.getmaxim.ai) - AIエージェントの信頼性を高め、5倍速くデプロイできるエンドツーエンド評価および可視性プラットフォーム。
-* [Middleware](https://middleware.io/) - APM、分散トレース、ログ、インフラメトリクスを一元的に提供するフルスタック可視性プラットフォーム。
-* [Oh Dear](https://ohdear.app) - アップタイム、パフォーマンス、SSL証明書、破損リンク、DNSのモニタリング。
-* [Pinecone](https://www.pinecone.io/) - 正確で安全かつスケーラブルなAIアプリの開発に用いるAIインフラ。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Opik](https://www.comet.com/site/products/opik/) - 開発およびプロダクションライフサイクル全体でLLMアプリケーションを評価、テスト、デプロイ。 [![Comet](https://img.shields.io/github/stars/comet-ml/opik?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/comet-ml/opik)
-* [Pagerly](https://pagerly.io) - SlackでOncall、チケット、インシデントの管理。
-* [Quivr](https://quivr.com/) - AIエージェントのデプロイと使用に用いるオープンソースRAGフレームワーク。 [![quivr](https://img.shields.io/github/stars/QuivrHQ/quivr?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/QuivrHQ/quivr) [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Respan](https://respan.ai/) - プロダクション環境におけるエージェントワークフローをトレースし、カスタムグレーダで出力品質を評価し、コード変更なしでプロンプトをイテレーションし、250以上のモデルを1つのゲートウェイでルートするフルスタックAIエンジニアリングプラットフォーム。以前はKeywords AI。
-* [Rollbar](https://rollbar.com/) - 生産環境におけるエラーを報告。
-* [Sentry](https://sentry.io/) - アプリケーションのバグおよびパフォーマンスモニタリング。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
+## モニタリング<a id="monitoring"></a>
+本番環境のアプリケーションを監視。
+* [Airbrake](https://airbrake.io) - 本番環境のエラー監視。
+* [Anteon](https://getanteon.com/) - Kubernetesの監視と性能テスト。CLI、セルフホスト、クラウドで利用可能。 [GitHubリポジトリ](https://github.com/getanteon/anteon)
+* [Better Stack](https://betterstack.com/) - 稼働状況の監視、インシデント管理、ステータスページ。
+* [Future AGI](https://futureagi.com/) - トレーシング、評価、シミュレーション、データセット、ゲートウェイ、ガードレールを統合する、セルフホスト可能なオープンソースの包括的LLMOpsプラットフォーム。 [GitHubリポジトリ](https://github.com/future-agi/future-agi)
+* [Helicone AI](https://www.helicone.ai/) - 本番環境のLLMアプリ向けに、LLMの可観測性と監視を提供。 [GitHubリポジトリ](https://github.com/Helicone/helicone)
+* [Highlight.io](https://www.highlight.io/) - フルスタックの監視プラットフォーム。 [GitHubリポジトリ](https://github.com/highlight/highlight)
+* [Instatus](https://instatus.com) - 稼働状況の監視、インシデント対応、ステータスページ。
+* [KeenIO](https://keen.io/) - イベントストリーミングのプラットフォーム。
+* [Laminar](https://www.lmnr.ai/) - LLMプロダクトのトレーシング、評価、ラベル付けを行うオープンソースのプラットフォーム。 [GitHubリポジトリ](https://github.com/lmnr-ai/lmnr)
+* [Langfuse](https://langfuse.com/) - LLMアプリのデバッグ、分析、改善をチームで共同して行う、オープンソースのLLM可観測性プラットフォーム。 [GitHubリポジトリ](https://github.com/langfuse/langfuse)
+* [LogRocket](https://logrocket.com/) - ユーザーが遭遇したバグを再現。
+* [Maxim AI](https://www.getmaxim.ai) - 包括的な評価と可観測性のプラットフォーム。原文では、AIエージェントを確実に、5倍速く提供することを支援すると説明されている。
+* [Middleware](https://middleware.io/) - APM、分散トレーシング、ログ、インフラのメトリクスを一か所にまとめた、フルスタックの可観測性プラットフォーム。
+* [Oh Dear](https://ohdear.app) - 稼働状況、性能、SSL証明書、リンク切れ、DNSの監視。
+* [Pinecone](https://www.pinecone.io/) - 正確で安全かつスケーラブルなAIアプリを構築するためのAIインフラ。
+* [Opik](https://www.comet.com/site/products/opik/) - 開発から本番までのライフサイクル全体でLLMアプリを評価、テスト、提供。 [GitHubリポジトリ](https://github.com/comet-ml/opik)
+* [Pagerly](https://pagerly.io) - Slackでオンコール業務、チケット、インシデントを管理。
+* [Quivr](https://quivr.com/) - AIエージェントをデプロイして使う、オープンソースのRAGフレームワーク。 [GitHubリポジトリ](https://github.com/QuivrHQ/quivr)
+* [Respan](https://respan.ai/) - 本番環境のエージェントのワークフローをトレースし、独自の評価器で出力品質を評価。コードを変更せずにプロンプトを改善し、一つのゲートウェイで250以上のモデルへ振り分ける、フルスタックのAIエンジニアリングプラットフォーム。旧称Keywords AI。
+* [Rollbar](https://rollbar.com/) - 本番環境のエラーを報告。
+* [Sentry](https://sentry.io/) - バグと性能を調べるアプリケーション監視。
 
-<a id="natural-language-processing"></a>
-## 自然言語処理
-*Interactions with natural language.*
-* [DialogFlow](https://cloud.google.com/dialogflow) - Googleによるボイス／テキストチャットボットフレームワーク。
+## 自然言語処理<a id="natural-language-processing"></a>
+自然言語を使ってやり取り。
+* [DialogFlow](https://cloud.google.com/dialogflow) - Googleの音声・テキストチャットボットのフレームワーク。
 
-<a id="orchestration"></a>
-## オーケストレーション
-*Orchestration tools for (micro) services.*
-* [AWS Step Functions](https://aws.amazon.com/step-functions/) - 分散アプリケーションの構築やプロセスの自動化を支援する可視ワークフローサービス。
-* [Camunda](https://camunda.com/) - スケーラブルでオンデマンドのプロセス自動化を提供するワークフローエンジン。
+## オーケストレーション<a id="orchestration"></a>
+サービスとマイクロサービスの連携を制御。
+* [AWS Step Functions](https://aws.amazon.com/step-functions/) - 分散アプリケーションの構築とプロセスの自動化に使う、視覚的なワークフローサービス。
+* [Camunda](https://camunda.com/) - スケーラブルで必要に応じて利用できるプロセス自動化を提供するワークフローエンジン。
 
-<a id="payments--pricing"></a>
-## 決済と価格設定
-*Handling payments, credit card processing, and invoices.*
-* [Braintree](https://www.braintreepayments.com/) - PaypalのAPIファースト型の決済サービス。
-* [Increase](https://increase.com/) - ベアメタルバンキングAPI
-* [LemonSqueezy](https://www.lemonsqueezy.com/) - SaaS決済 - 複数の国をカバーし、VAT税の対応も行う
-* [OpenMeter](https://openmeter.io/) - オープンソースの使用量計測による請求およびチャージバック対応。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Paddle](https://paddle.com/) - SaaS向け収益配分プラットフォーム（現在のStripeとは異なり、広範な地理的サポートを提供）
-* [Plaid](https://plaid.com/) - ACH（銀行送金）の受け入れ・送信、および銀行情報の取得
-* [Stigg](https://www.stigg.io) - API中心の価格プラン
-* [Stripe Payments](https://stripe.com/payments) - APIを活用し、グローバルに決済を受け入れ、資金を移動
+## 決済と価格設定<a id="payments--pricing"></a>
+決済、クレジットカードの処理、請求書を扱う。
+* [Braintree](https://www.braintreepayments.com/) - APIを中心としたPayPalの決済サービス。
+* [Increase](https://increase.com/) - 銀行の基盤機能を直接扱うAPI。
+* [LemonSqueezy](https://www.lemonsqueezy.com/) - SaaS向け決済。より多くの国に対応し、VATの処理も担う。
+* [OpenMeter](https://openmeter.io/) - 課金と利用費用の配賦・請求（chargeback）のための、オープンソースの使用量計測。
+* [Paddle](https://paddle.com/) - SaaS向けの収益管理プラットフォーム。原文では対応地域が広く、執筆時点のStripeには同様の広い対応がないと説明されている。
+* [Plaid](https://plaid.com/) - ACHによる銀行送金の受け入れと送信、および銀行情報の取得。
+* [Stigg](https://www.stigg.io) - APIを中心とした料金プラン。
+* [Stripe Payments](https://stripe.com/payments) - APIを使って世界各地で決済を受け付け、資金を移動。
 
-<a id="repo"></a>
-## リポジトリ
-*Repository and artifacts management.*
-* [Artifactory](https://jfrog.com/artifactory/) - 独自のパッケージリポジトリの作成
-* [Buildstash](https://buildstash.com/) - アプリ、ゲーム、埋め込みソフトウェア向けのバイナリアーティファクトおよびリリース管理
-* [Cloudsmith](https://cloudsmith.com/) - クラウドネイティブなプライベートパッケージ管理
+## リポジトリと成果物<a id="repo"></a><a id="リポジトリ"></a><a id="repositories-and-artifacts"></a>
+リポジトリと成果物を管理。
+* [Artifactory](https://jfrog.com/artifactory/) - 独自のパッケージリポジトリを作成。
+* [Buildstash](https://buildstash.com/) - アプリ、ゲーム、組み込みソフトウェア向けのバイナリー成果物とリリースの管理。
+* [Cloudsmith](https://cloudsmith.com/) - クラウドネイティブなプライベートパッケージ管理。
 
-<a id="reports-generation"></a>
-## レポート生成
-*Generating reports, mainly PDFs.*
-* [Carbone](https://carbone.io/) - JSONをPDF、DOCX、XLSX、PPTX、ODS...へ変換するAPI
-* [DocRaptor](https://docraptor.com) - paged media用に特化したHTMLからPDFへ変換するAPI（[Prince](https://www.princexml.com/)PDFライブラリを使用）
-* [Export SDK](https://exportsdk.com) - PDF生成APIに可視テンプレートエディタを備える
-* [Image-Charts](https://www.image-charts.com/) - レポート、PDFなどにチャートを画像として変換するAPI
-* [PDFBlade](https://pdfblade.com/) - HTMLからPDFへの変換API（使用量に基づく価格設定）
-* [PDFShift](https://pdfshift.io/) - HTML/URLからPDFへの変換API
+## レポート生成<a id="reports-generation"></a><a id="report-generation"></a>
+主にPDFのレポートを生成。
+* [Carbone](https://carbone.io/) - JSONをPDF、DOCX、XLSX、PPTX、ODSなどの形式に変換するAPI。
+* [DocRaptor](https://docraptor.com) - [Prince](https://www.princexml.com/)のPDFライブラリを使い、ページ区切りのある媒体（Paged Media）向けに設計されたHTMLからPDFへの変換API。
+* [Export SDK](https://exportsdk.com) - 視覚的なテンプレートエディターを備えたPDF生成API。
+* [Image-Charts](https://www.image-charts.com/) - レポートやPDFなどに使う、グラフを画像として生成するAPI。
+* [PDFBlade](https://pdfblade.com/) - 使用量に応じた料金のHTMLからPDFへの変換API。
+* [PDFShift](https://pdfshift.io/) - HTMLとURLをPDFに変換するAPI。
 
-<a id="scraping"></a>
-## スクレイピング
-*Fetching data from websites not via an intended API.*
-* [Apify](https://apify.com/) - ウェブサイトをAPIに変換
-* [browserless](https://browserless.io) - ブラウザ自動化をクラウドにデプロイ。 [![browserless](https://img.shields.io/github/stars/browserless/browserless?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/browserless/browserless)
-* [Corsfix](https://corsfix.com) - CORSプロキシで任意のウェブリソースを取得し、CORSエラーを回避
-* [Crawlbase](https://proxycrawl.com/) - プロキシを用いて、スクレイピングが難しいウェブサイトをスクレイピング
-* [Geonode](https://geonode.com) - 回転型の住宅用およびデータセンター用プロキシ、REST APIによるアクセス。
-* [Proxy Sentinel](https://www.proxysentinel.io) - 自前で管理できるプロキシローテーター。
-* [ScrapingANT](https://scrapingant.com/) - ヘッドレスChromeでスクレイピング。
-* [ScrapingBee](https://www.scrapingbee.com/) - ヘッドレスブラウザとプロキシを用いて、ブロックされないようスクレイピング。
-* [SearchApi](https://www.searchapi.io/) - リアルタイムGoogleSERPAPI。
-* [SerpApi](https://serpapi.com/) - リアルタイム検索エンジンスクレイピングAPI。
-* [WebScrapingHQ](https://www.webscrapinghq.com/) - ウェブスクレイピングAPIと完全に管理されたサービス。
-* [ZenRows](https://www.zenrows.com/) - 組み込みプロキシと回転IPを備えたウェブスクレイピングAPIで検出を回避。
+## スクレイピング<a id="scraping"></a>
+提供されたAPI以外の方法でウェブサイトのデータを取得。
+* [Apify](https://apify.com/) - ウェブサイトをAPIに変換。
+* [browserless](https://browserless.io) - クラウドにデプロイするブラウザー自動化。 [GitHubリポジトリ](https://github.com/browserless/browserless)
+* [Corsfix](https://corsfix.com) - 任意のウェブリソースを取得し、CORSエラーを回避するCORSプロキシ。
+* [Crawlbase](https://proxycrawl.com/) - プロキシを使って取得が難しいウェブサイトをスクレイピング。
+* [Geonode](https://geonode.com) - REST APIから使う、順次切り替わる住宅用IPとデータセンターのプロキシ。
+* [Proxy Sentinel](https://www.proxysentinel.io) - 自分で管理するプロキシ切り替えツール。
+* [ScrapingANT](https://scrapingant.com/) - ヘッドレスChromeによるスクレイピング。
+* [ScrapingBee](https://www.scrapingbee.com/) - ヘッドレスブラウザーとプロキシを使い、ブロックを避けながらスクレイピング。
+* [SearchApi](https://www.searchapi.io/) - リアルタイムのGoogle検索結果（SERP）のAPI。
+* [SerpApi](https://serpapi.com/) - リアルタイムの検索エンジンのスクレイピングAPI。
+* [WebScrapingHQ](https://www.webscrapinghq.com/) - ウェブスクレイピングAPIと完全マネージドのサービス。
+* [ZenRows](https://www.zenrows.com/) - 検知を避けるためのプロキシとIP切り替えを組み込んだ、ウェブスクレイピングAPI。
 
-<a id="search"></a>
-## 検索
-*Index and search your content as a service API.*
-* [Agentset](https://agentset.ai/) - 組み込みアグエント推論、ハイブリッド検索、マルチモーダル対応を備えたオープンソースでプロダクション対応のRAGプラットフォーム。 [![Agentset](https://img.shields.io/github/stars/agentset-ai/agentset?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/agentset-ai/agentset)
-* [Algolia](https://www.algolia.com/) - 検索サービスと完全な検索APIセット。
-* [Cognee](https://www.cognee.ai/) - AIメモリ層によるアグエントサポート。知識グラフ＋ベクトル検索による文脈取得と推論。 [![Cognee](https://img.shields.io/github/stars/topoteretes/cognee?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/topoteretes/cognee)
-* [Meilisearch](https://www.meilisearch.com/) - オープンソースで高速かつ関連性の高い検索エンジン。 [![Meilisearch](https://img.shields.io/github/stars/meilisearch/meilisearch?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/meilisearch/meilisearch) [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Swiftype](https://swiftype.com/) - 検索サービス（クロールとReact対応）。
-* [Typesense Cloud](https://cloud.typesense.org/) - オープンソースかつホスティングされた検索サービス。 [![Typesense](https://img.shields.io/github/stars/typesense/typesense?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/typesense/typesense)
-* [Websolr](https://www.websolr.com/) - ソルのオープンソースかつホスティングされた検索。
+## 検索<a id="search"></a>
+サービスのAPIを通じてコンテンツを索引化・検索。
+* [Agentset](https://agentset.ai/) - 本番で使えるオープンソースのRAGプラットフォーム。エージェントによる推論、ハイブリッド検索、マルチモーダル対応を組み込む。 [GitHubリポジトリ](https://github.com/agentset-ai/agentset)
+* [Algolia](https://www.algolia.com/) - 検索をサービスとして提供し、検索API一式を備える。
+* [Cognee](https://www.cognee.ai/) - エージェント向けのAIメモリ層。ナレッジグラフとベクトル検索を組み合わせ、文脈に即した情報の取得と推論を行う。 [GitHubリポジトリ](https://github.com/topoteretes/cognee)
+* [Meilisearch](https://www.meilisearch.com/) - 高速で関連性の高い検索結果を提供する、オープンソースの検索エンジン。 [GitHubリポジトリ](https://github.com/meilisearch/meilisearch)
+* [Swiftype](https://swiftype.com/) - 検索をサービスとして提供。クローラーとReactに対応。
+* [Typesense Cloud](https://cloud.typesense.org/) - オープンソース版とホスティング版で検索をサービスとして提供。 [GitHubリポジトリ](https://github.com/typesense/typesense)
+* [Websolr](https://www.websolr.com/) - Solrを使う検索のオープンソース版とホスティング版。
 
-<a id="security"></a>
-## セキュリティ
-*Products that secure your codebase.*
-* [Bearer](https://www.bearer.com/) - JavaScriptおよびRubyスタック向けの静的アプリケーションセキュリティテスト（SAST）ツール。
-* [GitGuardian](https://www.gitguardian.com/) - リアルタイムGitHubアクティビティスキャナー。
-* [Infisical](https://infisical.com) - オープンソースかつ端末から端末まで暗号化されたシークレットマネージャー。 [![Infisical](https://img.shields.io/github/stars/infisical/infisical?style=flat-square&logo=github&labelColor=%230D1117&color=%23161B22)](https://github.com/infisical/infisical)
-* [Pixee](https://www.pixee.ai/) - 自動脆弱性修正。脆弱性を修正し、コードを強化。
-* [Snyk](https://snyk.io/) - コード、依存関係、コンテナ、インフラコード向けの脆弱性スキャナー。
-* [Socket](https://socket.dev/) - オープンソースサプライチェーン攻撃の検出とブロック
+## セキュリティ<a id="security"></a>
+コードベースと依存関係の安全性を確保。
+* [Bearer](https://www.bearer.com/) - JavaScriptとRubyのスタック向けの静的アプリケーションセキュリティテスト（SAST）ツール。
+* [GitGuardian](https://www.gitguardian.com/) - GitHubの活動をリアルタイムに検査。
+* [Infisical](https://infisical.com) - エンドツーエンド暗号化を使うオープンソースのシークレット管理ツール。 [GitHubリポジトリ](https://github.com/infisical/infisical)
+* [Pixee](https://www.pixee.ai/) - 脆弱性の修復を自動化。脆弱性を修正し、コードを強化。
+* [Snyk](https://snyk.io/) - コード、依存関係、コンテナ、IaCの脆弱性スキャナー。
+* [Socket](https://socket.dev/) - オープンソースのサプライチェーン攻撃を検出・遮断。
 
+## 配送<a id="shipping"></a>
+物品の発送を手配・管理。
+* [EasyPost](https://www.easypost.com/) - EC向けの物品配送API。
 
-<a id="shipping"></a>
-## 配送
-*Creating and handling the shipment of goods.*
-* [EasyPost](https://www.easypost.com/) - エコノミー向けAPIの提供
-
-<a id="testing"></a>
-## テスト
-*Testing tools.*
-* [Applitools](https://applitools.com/) - 自動視覚テスト
-* [Beeceptor](https://beeceptor.com/) - ノーコード、クラウドベースのプラットフォーム。複数プロトコル（REST、SOAP、gRPCおよびGraphQL）のAPIをモックおよびデバッグできる。ルールベースの論理、CRUDおよび状態付きモック、プロキシ、CORS管理を提供し、より迅速な統合とテストを実現。
-* [BitDive](https://bitdive.io/) - Java/Kotlin向けのゼロコード統合テスト。実行時アプリケーションの動作からテストを自動生成。
-* [Blackfire.io](https://blackfire.io/) - パフォーマンステスト
-* [Chromatic](https://www.chromatic.com/) - Storybook向けの視覚UIテスト
-* [CodSpeed](https://codspeed.io) - CI環境における継続的なパフォーマンステスト。 [![featured on launchweek.dev](https://img.shields.io/badge/featured-0D1117.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev)
-* [Coval](https://coval.dev/) - AIエージェントのシミュレーションおよび評価。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Fiberplane](https://fiberplane.com/) - Hono APIのテストおよびデバッグ。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Loadmill](https://www.loadmill.com/) - ユーザー行動からテストを生成。
-* [Octomind](https://www.octomind.dev/) -  AIを支援したテストケース発見により、自動生成・実行・維持されるPlaywright UIテスト。
-* [Percy](https://percy.io/) - 継続的な視覚テスト
-* [Sherlo](https://sherlo.io) - React Native向けの視覚回帰テスト（Storybook統合あり）
-* [Synth](https://usesynth.ai) - 自動AIエージェント最適化。 [![LW24 participant](https://img.shields.io/badge/featured-LW24-8957E5.svg?style=flat-square&labelColor=0D1117&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjI0MCIgeT0iMzAwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+IDxyZWN0IHg9IjMwMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiLz4gPHJlY3QgeD0iMTgwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAwIiBmaWxsPSJ3aGl0ZSIvPiA8L3N2Zz4=)](https://launchweek.dev/lw/2024/mega#participants)
-* [Testim](https://www.testim.io/) - フロントエンドテスト
-
----
-
-<a id="contributing"></a>
-## コントリビューション
-
-こちらをご覧ください： [CONTRIBUTING.md](https://github.com/agamm/awesome-developer-first/blob/main/CONTRIBUTING.md)
+## テスト<a id="testing"></a>
+ソフトウェア、インターフェース、性能、AIエージェントをテスト。
+* [Applitools](https://applitools.com/) - 視覚的テストを自動化。
+* [Beeceptor](https://beeceptor.com/) - 複数のプロトコル（REST、SOAP、gRPC、GraphQL）のAPIをモック化・デバッグする、ノーコードのクラウドプラットフォーム。ルールに基づくロジック、CRUDと状態を保持するモック、プロキシ、CORS管理を備えたサーバーを即座に提供し、連携とテストを速める。
+* [BitDive](https://bitdive.io/) - アプリケーションの実行時の動作からテストを生成する、JavaとKotlin向けのコード不要の結合テスト。
+* [Blackfire.io](https://blackfire.io/) - 性能テスト。
+* [Chromatic](https://www.chromatic.com/) - Storybook向けの視覚的なUIテスト。
+* [CodSpeed](https://codspeed.io) - CI環境で継続的に行う性能テスト。
+* [Coval](https://coval.dev/) - AIエージェントのシミュレーションと評価。
+* [Fiberplane](https://fiberplane.com/) - Hono APIのテストとデバッグ。
+* [Loadmill](https://www.loadmill.com/) - ユーザーの動作からテストを生成。
+* [Octomind](https://www.octomind.dev/) - AIによるテストケースの発見支援。PlaywrightのUIテストを自動で生成、実行、保守。
+* [Percy](https://percy.io/) - 継続的な視覚的テスト。
+* [Sherlo](https://sherlo.io) - React Nativeの視覚的な回帰テスト。Storybookとの連携機能を備える。
+* [Synth](https://usesynth.ai) - AIエージェントの最適化を自動化。
+* [Testim](https://www.testim.io/) - フロントエンドのテスト。

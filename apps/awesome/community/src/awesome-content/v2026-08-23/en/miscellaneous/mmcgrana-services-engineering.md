@@ -1,11 +1,11 @@
 ---
 title: "Awesome Services Engineering"
-description: "An index entry for the Awesome Services Engineering list. The upstream content is not reproduced in this snapshot."
+description: "A reference to services engineering resources. The original list’s body is not reproduced here."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Services Engineering
 
-An index entry for the Awesome Services Engineering list. The upstream content is not reproduced in this snapshot.
+Explore resources on services engineering through the original Awesome Services Engineering list. This snapshot links to the list without reproducing its body.
 
-- [Open the original repository](https://github.com/mmcgrana/services-engineering/blob/9c0a5c4ece2a1a28d46ed84d9810968558b98089/README.md)
+- [Read the original list](https://github.com/mmcgrana/services-engineering/blob/9c0a5c4ece2a1a28d46ed84d9810968558b98089/README.md)

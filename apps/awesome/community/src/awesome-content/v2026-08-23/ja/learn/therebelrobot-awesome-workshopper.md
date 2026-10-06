@@ -1,11 +1,11 @@
 ---
 title: "Awesome CLI Workshoppers"
-description: "Awesome CLI Workshoppersの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "コマンドラインで取り組む対話形式のチュートリアルへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome CLI Workshoppers
 
-Awesome CLI Workshoppersの収録案内です。このスナップショットでは上流本文を転載していません。
+コマンドラインで取り組む対話形式のチュートリアルを探せるAwesome CLI Workshoppersへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/therebelrobot/awesome-workshopper/blob/5c19be2962ba93c2f8c10576cb3cf210219c4d44/README.md)
+- [元のリストを読む](https://github.com/therebelrobot/awesome-workshopper/blob/5c19be2962ba93c2f8c10576cb3cf210219c4d44/README.md)
