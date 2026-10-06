@@ -2,7 +2,7 @@
 
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
-- 検証済み: 34件 / 今回の公開済み: 33件 / 公開待ち: 1件
+- 検証済み: 34件 / 今回の公開済み: 34件 / 公開待ち: 0件
 - 作業中: 1件（新規1件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 停止
 - 作業方針: 保守優先
@@ -46,8 +46,8 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-diffutils / v3-12 / new | verified | verified | 915:GNU diffutils3.12概要と第1〜4章43英日/932原稿ZIPを限定4e47452c3で統合Pages公開・公開後確認完了。916:GNU findutils4.11.0を70点eligible選定済み、26EN/26JA未review草稿保存。917:公開済み4e47452c3を基準に隔離正規作成器で正式開始し、10/8/8バッチ別パス全文review・検証公開へ。重大不具合/既存修正/着手済みを優先し件数上限を維持。MsgPack新許諾または2026-11-01待ち。 915:GNU diffutils3.12概要と第1〜4章43英日/932原稿ZIPを限定4e47452c3で統合Pages公開・公開後確認完了。916:GNU findutils4.11.0を70点eligible選定済み、26EN/26JA未review草稿保存。917:公開済み4e47452c3を基準に隔離正規作成器で正式開始し、10/8/8バッチ別パス全文review・検証公開へ。重大不具合/既存修正/着手済みを優先し件数上限を維持。MsgPack新許諾または2026-11-01待ち。 |
 | gnu-findutils / v4-11-0 / new | verified | verified | 921:GNU findutils4.11.0概要と第1〜2章26英日/53編集原稿/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認完了。922:GNU gzip1.15全7章+Topを70点eligible選定し、全8草稿/84単位の別パス全文review完了。923:実公開f4075feから隔離正規作成器で正式定本化し、有効な本文レビューをSHA対応付けて再利用、配布・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 921:GNU findutils4.11.0概要と第1〜2章26英日/53編集原稿/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認完了。922:GNU gzip1.15全7章+Topを70点eligible選定し、全8草稿/84単位の別パス全文review完了。923:実公開f4075feから隔離正規作成器で正式定本化し、有効な本文レビューをSHA対応付けて再利用、配布・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 |
 | gnu-gzip / v1-15 / new | verified | verified | 925:GNU gzip1.15概要+完全第1〜7章8英日/17編集原稿/593再生成ZIPを限定d192c99で統合Pages公開・公開後確認完了。927:GNU Time1.10Top+完全第1〜2章3英日/111単位全文レビュー・代表試作を現行基準70点eligible登録。928:実公開d192c99から隔離正規作成器で正式定本化し、有効本文レビューをSHA対応付けて再利用、通知・配布キット・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 925:GNU gzip1.15概要+完全第1〜7章8英日/17編集原稿/593再生成ZIPを限定d192c99で統合Pages公開・公開後確認完了。927:GNU Time1.10Top+完全第1〜2章3英日/111単位全文レビュー・代表試作を現行基準70点eligible登録。928:実公開d192c99から隔離正規作成器で正式定本化し、有効本文レビューをSHA対応付けて再利用、通知・配布キット・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 |
-| gnu-time / v1-10 / new | verified | verified | 932:再開指示を受け、設定値不変の書式修正70a733878をorigin/codex/import-gnu-time-20261006へpush成功。Preview CI開始。111単位全文レビュー・522原稿キット・同一49配信出力の証拠を再利用し、新commitのCI/artifact/HTTP/代表表示→現本番CAS保護→Production/公開後確認へ。共有POLICY/計画/Awesome未完了変更を公開差分へ混在させない。 932:再開指示を受け、設定値不変の書式修正70a733878をorigin/codex/import-gnu-time-20261006へpush成功。Preview CI開始。111単位全文レビュー・522原稿キット・同一49配信出力の証拠を再利用し、新commitのCI/artifact/HTTP/代表表示→現本番CAS保護→Production/公開後確認へ。共有POLICY/計画/Awesome未完了変更を公開差分へ混在させない。 |
-| gnu-ed / v1-22-6 / new | source-locked | source-locked | 934:固定1.22.6の原文12+GFDL1・日本語12頁/196本文単位+15説明コメントの草稿を保存し、25頁のbuild/本文・literal・リンク・ID照合は合格。全文意味review未完、原稿ZIP/独立rebuild/正式検証/公開は未実施。GNU Time932本番CI優先。保存snapshotはnotes内でrootapp不在/配信除外。935で別パス全文reviewの未読部分と原著対照→原稿キット→正式検証へ。 934:固定1.22.6の原文12+GFDL1・日本語12頁/196本文単位+15説明コメントの草稿を保存し、25頁のbuild/本文・literal・リンク・ID照合は合格。全文意味review未完、原稿ZIP/独立rebuild/正式検証/公開は未実施。GNU Time932本番CI優先。保存snapshotはnotes内でrootapp不在/配信除外。935で別パス全文reviewの未読部分と原著対照→原稿キット→正式検証へ。 |
+| gnu-time / v1-10 / new | verified | verified | 932:GNU Time1.10の原文3・独自訳3・原英語GFDL/111単位全文review/7編集原稿/522再生成ZIPを70a733878で統合Pages公開・公開後確認完了。本番46d5e609、libx.dev267配信照合/未説明差分0。934–935:GNU ed1.22.6原文12/訳12の196単位・15説明コメント全文意味reviewを引継ぎ、原稿キット・独立rebuild・正式検証・公開へ。重大不具合/着手済み/既存更新優先、上限・停止指示遵守。 932:GNU Time1.10の原文3・独自訳3・原英語GFDL/111単位全文review/7編集原稿/522再生成ZIPを70a733878で統合Pages公開・公開後確認完了。本番46d5e609、libx.dev267配信照合/未説明差分0。934–935:GNU ed1.22.6原文12/訳12の196単位・15説明コメント全文意味reviewを引継ぎ、原稿キット・独立rebuild・正式検証・公開へ。重大不具合/着手済み/既存更新優先、上限・停止指示遵守。 |
+| gnu-ed / v1-22-6 / new | content-reviewed | content-reviewed | 935:GNU ed1.22.6原文12/訳12/196本文単位・15説明コメントを保存後の別パス全文review＋6修正単位再確認、正式共通通知/全原英語GFDL保持も確認してcontent-reviewed。589原稿キット作成・全memberSHA照合済、別展開workspaceで依存install→原文/訳/通知/25MD再生成→対象build→代表表示/正式gates/統合/公開へ。現在本番はGNU Time70a733878/46d5e609。ed正式baseline d192c99のため公開用checkoutは検証済Timeを含む最新実公開へ限定差分移植しCAS保護、他未完了変更は除外。 935:GNU ed1.22.6原文12/訳12/196本文単位・15説明コメントを保存後の別パス全文review＋6修正単位再確認、正式共通通知/全原英語GFDL保持も確認してcontent-reviewed。589原稿キット作成・全memberSHA照合済、別展開workspaceで依存install→原文/訳/通知/25MD再生成→対象build→代表表示/正式gates/統合/公開へ。現在本番はGNU Time70a733878/46d5e609。ed正式baseline d192c99のため公開用checkoutは検証済Timeを含む最新実公開へ限定差分移植しCAS保護、他未完了変更は除外。 |
 
 ## 登録済みの既存文書
 
@@ -80,7 +80,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-diffutils | v3-12 | 未実施 | 915:GNU diffutils3.12概要+第1〜4章43英日/別パス全文review43/33originalpre157VAR、87編集原稿/12固定入力/932再構築ZIPを限定4e47452c3で統合Pages公開・公開後確認。全artifact・新規変更HTTP・代表検索/言語/版/原典/404合格。909–914有効証拠再利用。公開証拠915 PUBLICATION_RESULT。 |
 | gnu-findutils | v4-11-0 | 未実施 | 921:GNU findutils4.11.0Top+完全第1〜2章26英日/全文review26・372単位、31pre/146VAR/2tables/完全脚注1、53編集原稿/19原入力/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認。全artifact・対象HTTP・代表検索/日英/版/原典/404合格。917–920有効証拠再利用。 |
 | gnu-gzip | v1-15 | 未実施 | 925:GNU gzip1.15Top+完全第1〜7章8英日/全文review8・84単位、15pre/6VAR、17編集原稿/11原入力/593再生成ZIPを限定d192c99で統合Pages公開・公開後確認。全5614artifact・HTTP176・検索/日英/版/原典/404合格。有効な922–924証拠再利用。 |
-| gnu-time | v1-10 | 未実施 | 929:GNU Time1.10概要+完全第1〜2章3英日/111単位別パス全文review/7定本。GFDL原通知・David MacKenzie/FSF・全文英語license・Libx変更履歴・522編集キットと独立再生成・必要6検査合格。概念索引は固定英語全文。公開待ち、定期巡回未実施。 |
+| gnu-time | v1-10 | 未実施 | 932:GNU Time1.10原文3・訳3/111単位全文review/7編集原稿/522再生成ZIPを限定70a733878で統合Pages本番46d5e609公開・公開後確認。5663artifact、267配信、CAS保護、未説明差分0。 |
 
 ## 候補
 

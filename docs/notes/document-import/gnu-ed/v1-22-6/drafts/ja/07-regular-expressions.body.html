@@ -7,7 +7,7 @@
 <p>は、<var class="var">string</var> を含むすべての行を表示します。正規表現は、「<samp class="samp">s</samp>」コマンドでも、新しいテキストで置き換える古いテキストの選択に使います。</p>
 <p>正規表現は、文字列リテラルの指定に加え、文字列の集合も表せます。そのように表される文字列は、対応する正規表現に一致するといいます。正規表現が行内の複数の文字列に一致できる場合、最も左の一致が選択されます。正規表現が可変個数の文字の一致を許す場合は、その位置から始まる最長の並びに一致します。</p>
 <p>空の正規表現は、最後に処理した正規表現と等価です。したがって「<samp class="samp">/<var class="var">re</var>/s//<var class="var">replacement</var>/</samp>」は <var class="var">re</var> を <var class="var">replacement</var> に置き換えます。ただし、グローバルコマンドの <var class="var">command-list</var> 内で正規表現を使う場合、「最後に処理した正規表現」は、<var class="var">command-list</var> の最初の実行とその後の実行とで異なることがあります。<a class="xref" href="#global-command">グローバルコマンド</a>を参照してください。</p>
-<p>GNU 拡張として、正規表現 /<var class="var">re</var>/ の後に接尾辞「<samp class="samp">I</samp>」を付けられます。これにより、<code class="command">ed</code> は <var class="var">re</var> に大文字と小文字を区別せずに一致します。この接尾辞は正規表現のコンパイル時に評価されるため、空の正規表現とともに指定することは無効です。</p>
+<p>GNU 拡張として、正規表現 /<var class="var">re</var>/ の後に接尾辞「<samp class="samp">I</samp>」を付けられます。これにより、<code class="command">ed</code> は <var class="var">re</var> による照合で大文字と小文字を区別しなくなります。この接尾辞は正規表現のコンパイル時に評価されるため、空の正規表現とともに指定することは無効です。</p>
 <p>POSIX 基本正規表現の構文で正規表現を作るには、次の記号を使います。</p>
 <dl class="table">
 <dt><code class="code"><var class="var">c</var></code></dt>

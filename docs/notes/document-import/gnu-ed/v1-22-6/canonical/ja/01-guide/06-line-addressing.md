@@ -44,10 +44,10 @@ documentContext: [{"kind": "source", "html": "<section class=\"gnu-ed-notices\">
 <dd><p>バッファーの現在行から最後の行まで。アドレス範囲「<samp class="samp">.;$</samp>」と等価です。</p>
 </dd>
 <dt><code class="code">/<var class="var">re</var>/[I]</code></dt>
-<dd><p>正規表現 <var class="var">re</var> を含む次の行。必要なら検索はバッファーの先頭に戻り、現在行まで下方向に続けます。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> を <var class="var">re</var> に、大文字と小文字を区別せずに一致させます。</p>
+<dd><p>正規表現 <var class="var">re</var> を含む次の行。必要なら検索はバッファーの先頭に戻り、現在行まで下方向に続けます。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> が <var class="var">re</var> による照合で大文字と小文字を区別しないようにします。</p>
 </dd>
 <dt><code class="code">?<var class="var">re</var>?[I]</code></dt>
-<dd><p>正規表現 <var class="var">re</var> を含む前の行。必要なら検索はバッファーの末尾に戻り、現在行まで上方向に続けます。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> を <var class="var">re</var> に、大文字と小文字を区別せずに一致させます。</p>
+<dd><p>正規表現 <var class="var">re</var> を含む前の行。必要なら検索はバッファーの末尾に戻り、現在行まで上方向に続けます。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> が <var class="var">re</var> による照合で大文字と小文字を区別しないようにします。</p>
 </dd>
 <dt><code class="code">'x</code></dt>
 <dd><p>アポストロフィーと x の2文字で、「<samp class="samp">k</samp>」（マーク）コマンドであらかじめ印を付けた行を指定します。「<samp class="samp">x</samp>」は移植可能な文字集合「<samp class="samp">[a-z]</samp>」の小文字です。</p>
