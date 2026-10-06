@@ -1,0 +1,274 @@
+<hr><h3><a name="luaL_makeseed"><code>luaL_makeseed</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">unsigned int luaL_makeseed (lua_State *L);</pre>
+
+<p>
+Returns a value with a weak attempt for randomness.
+The parameter <code>L</code> can be <code>NULL</code>
+if there is no Lua state available.
+
+
+
+
+
+<hr><h3><a name="luaL_newlib"><code>luaL_newlib</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">void luaL_newlib (lua_State *L, const luaL_Reg l[]);</pre>
+
+<p>
+Creates a new table and registers there
+the functions in the list <code>l</code>.
+
+
+<p>
+It is implemented as the following macro:
+
+<pre>
+     (luaL_newlibtable(L,l), luaL_setfuncs(L,l,0))
+</pre><p>
+The array <code>l</code> must be the actual array,
+not a pointer to it.
+
+
+
+
+
+<hr><h3><a name="luaL_newlibtable"><code>luaL_newlibtable</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">void luaL_newlibtable (lua_State *L, const luaL_Reg l[]);</pre>
+
+<p>
+Creates a new table with a size optimized
+to store all entries in the array <code>l</code>
+(but does not actually store them).
+It is intended to be used in conjunction with <a href="#luaL_setfuncs"><code>luaL_setfuncs</code></a>
+(see <a href="#luaL_newlib"><code>luaL_newlib</code></a>).
+
+
+<p>
+It is implemented as a macro.
+The array <code>l</code> must be the actual array,
+not a pointer to it.
+
+
+
+
+
+<hr><h3><a name="luaL_newmetatable"><code>luaL_newmetatable</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">int luaL_newmetatable (lua_State *L, const char *tname);</pre>
+
+<p>
+If the registry already has the key <code>tname</code>,
+returns 0.
+Otherwise,
+creates a new table to be used as a metatable for userdata,
+adds to this new table the pair <code>__name = tname</code>,
+adds to the registry the pair <code>[tname] = new table</code>,
+and returns 1.
+
+
+<p>
+In both cases,
+the function pushes onto the stack the final value associated
+with <code>tname</code> in the registry.
+
+
+<p>
+Usage note: Beware the use of the return value of this function to
+conditionally initializes the new metatable
+(e.g., by adding metamethods to it).
+If the initialization raises an error,
+the metatable will not be properly initialized,
+but a subsequent execution of that code will detect that the
+metatable already exists and then skip the initialization.
+
+
+
+
+
+<hr><h3><a name="luaL_newstate"><code>luaL_newstate</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_State *luaL_newstate (void);</pre>
+
+<p>
+Creates a new Lua state.
+It calls <a href="#lua_newstate"><code>lua_newstate</code></a> with <a href="#luaL_alloc"><code>luaL_alloc</code></a> as
+the allocator function and the result of <code>luaL_makeseed(NULL)</code>
+as the seed,
+and then sets a warning function and a panic function (see <a href="#4.4">&sect;4.4</a>)
+that print messages to the standard error output.
+
+
+<p>
+Returns the new state,
+or <code>NULL</code> if there is a memory allocation error.
+
+
+
+
+
+<hr><h3><a name="luaL_opt"><code>luaL_opt</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">T luaL_opt (L, func, arg, dflt);</pre>
+
+<p>
+This macro is defined as follows:
+
+<pre>
+     (lua_isnoneornil(L,(arg)) ? (dflt) : func(L,(arg)))
+</pre><p>
+In words, if the argument <code>arg</code> is nil or absent,
+the macro results in the default <code>dflt</code>.
+Otherwise, it results in the result of calling <code>func</code>
+with the state <code>L</code> and the argument index <code>arg</code> as
+arguments.
+Note that it evaluates the expression <code>dflt</code> only if needed.
+
+
+
+
+
+<hr><h3><a name="luaL_optinteger"><code>luaL_optinteger</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">lua_Integer luaL_optinteger (lua_State *L,
+                             int arg,
+                             lua_Integer d);</pre>
+
+<p>
+If the function argument <code>arg</code> is an integer
+(or it is convertible to an integer),
+returns this integer.
+If this argument is absent or is <b>nil</b>,
+returns <code>d</code>.
+Otherwise, raises an error.
+
+
+
+
+
+<hr><h3><a name="luaL_optlstring"><code>luaL_optlstring</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">const char *luaL_optlstring (lua_State *L,
+                             int arg,
+                             const char *d,
+                             size_t *l);</pre>
+
+<p>
+If the function argument <code>arg</code> is a string,
+returns this string.
+If this argument is absent or is <b>nil</b>,
+returns <code>d</code>.
+Otherwise, raises an error.
+
+
+<p>
+If <code>l</code> is not <code>NULL</code>,
+fills its referent with the result's length.
+If the result is <code>NULL</code>
+(only possible when returning <code>d</code> and <code>d == NULL</code>),
+its length is considered zero.
+
+
+<p>
+This function uses <a href="#lua_tolstring"><code>lua_tolstring</code></a> to get its result,
+so all conversions and caveats of that function apply here.
+
+
+
+
+
+<hr><h3><a name="luaL_optnumber"><code>luaL_optnumber</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">lua_Number luaL_optnumber (lua_State *L, int arg, lua_Number d);</pre>
+
+<p>
+If the function argument <code>arg</code> is a number,
+returns this number as a <code>lua_Number</code>.
+If this argument is absent or is <b>nil</b>,
+returns <code>d</code>.
+Otherwise, raises an error.
+
+
+
+
+
+<hr><h3><a name="luaL_optstring"><code>luaL_optstring</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">const char *luaL_optstring (lua_State *L,
+                            int arg,
+                            const char *d);</pre>
+
+<p>
+If the function argument <code>arg</code> is a string,
+returns this string.
+If this argument is absent or is <b>nil</b>,
+returns <code>d</code>.
+Otherwise, raises an error.
+
+
+
+
+
+<hr><h3><a name="luaL_prepbuffer"><code>luaL_prepbuffer</code></a></h3><p>
+<span class="apii">[-?, +?, <em>m</em>]</span>
+<pre class="api">char *luaL_prepbuffer (luaL_Buffer *B);</pre>
+
+<p>
+Equivalent to <a href="#luaL_prepbuffsize"><code>luaL_prepbuffsize</code></a>
+with the predefined size <a name="pdf-LUAL_BUFFERSIZE"><code>LUAL_BUFFERSIZE</code></a>.
+
+
+
+
+
+<hr><h3><a name="luaL_prepbuffsize"><code>luaL_prepbuffsize</code></a></h3><p>
+<span class="apii">[-?, +?, <em>m</em>]</span>
+<pre class="api">char *luaL_prepbuffsize (luaL_Buffer *B, size_t sz);</pre>
+
+<p>
+Returns an address to a space of size <code>sz</code>
+where you can copy a string to be added to buffer <code>B</code>
+(see <a href="#luaL_Buffer"><code>luaL_Buffer</code></a>).
+After copying the string into this space you must call
+<a href="#luaL_addsize"><code>luaL_addsize</code></a> with the size of the string to actually add
+it to the buffer.
+
+
+
+
+
+<hr><h3><a name="luaL_pushfail"><code>luaL_pushfail</code></a></h3><p>
+<span class="apii">[-0, +1, &ndash;]</span>
+<pre class="api">void luaL_pushfail (lua_State *L);</pre>
+
+<p>
+Pushes the <b>fail</b> value onto the stack (see <a href="#6">&sect;6</a>).
+
+
+
+
+
+<hr><h3><a name="luaL_pushresult"><code>luaL_pushresult</code></a></h3><p>
+<span class="apii">[-?, +1, <em>m</em>]</span>
+<pre class="api">void luaL_pushresult (luaL_Buffer *B);</pre>
+
+<p>
+Finishes the use of buffer <code>B</code> leaving the final string on
+the top of the stack.
+
+
+
+
+
+<hr><h3><a name="luaL_pushresultsize"><code>luaL_pushresultsize</code></a></h3><p>
+<span class="apii">[-?, +1, <em>m</em>]</span>
+<pre class="api">void luaL_pushresultsize (luaL_Buffer *B, size_t sz);</pre>
+
+<p>
+Equivalent to the sequence <a href="#luaL_addsize"><code>luaL_addsize</code></a>, <a href="#luaL_pushresult"><code>luaL_pushresult</code></a>.
+
+
+
+
+

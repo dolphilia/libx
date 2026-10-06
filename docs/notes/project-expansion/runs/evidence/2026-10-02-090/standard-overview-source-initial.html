@@ -1,0 +1,68 @@
+<h1>6 &ndash; <a name="6">The Standard Libraries</a></h1>
+
+
+
+<p>
+The standard Lua libraries provide useful functions
+that are implemented in&nbsp;C through the C&nbsp;API.
+Some of these functions provide essential services to the language
+(e.g., <a href="#pdf-type"><code>type</code></a> and <a href="#pdf-getmetatable"><code>getmetatable</code></a>);
+others provide access to outside services (e.g., I/O);
+and others could be implemented in Lua itself,
+but that for different reasons
+deserve an implementation in C (e.g., <a href="#pdf-table.sort"><code>table.sort</code></a>).
+
+
+<p>
+All libraries are implemented through the official C&nbsp;API
+and are provided as separate C&nbsp;modules.
+Unless otherwise noted,
+these library functions do not adjust its number of arguments
+to its expected parameters.
+For instance, a function documented as <code>foo(arg)</code>
+should not be called without an argument.
+
+
+<p>
+The notation <b>fail</b> means a false value representing
+some kind of failure.
+(Currently, <b>fail</b> is equal to <b>nil</b>,
+but that may change in future versions.
+The recommendation is to always test the success of these functions
+with <code>(not status)</code>, instead of <code>(status == nil)</code>.)
+
+
+<p>
+Currently, Lua has the following standard libraries:
+
+<ul>
+
+<li>basic library (<a href="#6.2">&sect;6.2</a>);</li>
+
+<li>coroutine library (<a href="#6.3">&sect;6.3</a>);</li>
+
+<li>package library (<a href="#6.4">&sect;6.4</a>);</li>
+
+<li>string manipulation (<a href="#6.5">&sect;6.5</a>);</li>
+
+<li>basic UTF-8 support (<a href="#6.6">&sect;6.6</a>);</li>
+
+<li>table manipulation (<a href="#6.7">&sect;6.7</a>);</li>
+
+<li>mathematical functions (<a href="#6.8">&sect;6.8</a>) (sin, log, etc.);</li>
+
+<li>input and output (<a href="#6.9">&sect;6.9</a>);</li>
+
+<li>operating system facilities (<a href="#6.10">&sect;6.10</a>);</li>
+
+<li>debug facilities (<a href="#6.11">&sect;6.11</a>).</li>
+
+</ul><p>
+Except for the basic and the package libraries,
+each library provides all its functions as fields of a global table
+or as methods of its objects.
+
+
+
+
+

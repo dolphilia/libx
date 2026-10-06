@@ -1,0 +1,267 @@
+<hr><h3><a name="luaL_dofile"><code>luaL_dofile</code></a></h3><p>
+<span class="apii">[-0, +?, <em>m</em>]</span>
+<pre class="api">int luaL_dofile (lua_State *L, const char *filename);</pre>
+
+<p>
+Loads and runs the given file.
+It is defined as the following macro:
+
+<pre>
+     (luaL_loadfile(L, filename) || lua_pcall(L, 0, LUA_MULTRET, 0))
+</pre><p>
+It returns&nbsp;0 (<a href="#pdf-LUA_OK"><code>LUA_OK</code></a>) if there are no errors,
+or 1 in case of errors.
+(Except for out-of-memory errors, which are raised.)
+
+
+
+
+
+<hr><h3><a name="luaL_dostring"><code>luaL_dostring</code></a></h3><p>
+<span class="apii">[-0, +?, &ndash;]</span>
+<pre class="api">int luaL_dostring (lua_State *L, const char *str);</pre>
+
+<p>
+Loads and runs the given string.
+It is defined as the following macro:
+
+<pre>
+     (luaL_loadstring(L, str) || lua_pcall(L, 0, LUA_MULTRET, 0))
+</pre><p>
+It returns&nbsp;0 (<a href="#pdf-LUA_OK"><code>LUA_OK</code></a>) if there are no errors,
+or 1 in case of errors.
+
+
+
+
+
+<hr><h3><a name="luaL_error"><code>luaL_error</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">int luaL_error (lua_State *L, const char *fmt, ...);</pre>
+
+<p>
+Raises an error.
+The error message format is given by <code>fmt</code>
+plus any extra arguments,
+following the same rules of <a href="#lua_pushfstring"><code>lua_pushfstring</code></a>.
+It also adds at the beginning of the message the file name and
+the line number where the error occurred,
+if this information is available.
+
+
+<p>
+This function never returns,
+but it is an idiom to use it in C&nbsp;functions
+as <code>return luaL_error(<em>args</em>)</code>.
+
+
+
+
+
+<hr><h3><a name="luaL_execresult"><code>luaL_execresult</code></a></h3><p>
+<span class="apii">[-0, +3, <em>m</em>]</span>
+<pre class="api">int luaL_execresult (lua_State *L, int stat);</pre>
+
+<p>
+This function produces the return values for
+process-related functions in the standard library
+(<a href="#pdf-os.execute"><code>os.execute</code></a> and <a href="#pdf-io.close"><code>io.close</code></a>).
+
+
+
+
+
+<hr><h3><a name="luaL_fileresult"><code>luaL_fileresult</code></a></h3><p>
+<span class="apii">[-0, +(1|3), <em>m</em>]</span>
+<pre class="api">int luaL_fileresult (lua_State *L, int stat, const char *fname);</pre>
+
+<p>
+This function produces the return values for
+file-related functions in the standard library
+(<a href="#pdf-io.open"><code>io.open</code></a>, <a href="#pdf-os.rename"><code>os.rename</code></a>, <a href="#pdf-file:seek"><code>file:seek</code></a>, etc.).
+
+
+
+
+
+<hr><h3><a name="luaL_getmetafield"><code>luaL_getmetafield</code></a></h3><p>
+<span class="apii">[-0, +(0|1), <em>m</em>]</span>
+<pre class="api">int luaL_getmetafield (lua_State *L, int obj, const char *e);</pre>
+
+<p>
+Pushes onto the stack the field <code>e</code> from the metatable
+of the object at index <code>obj</code> and returns the type of the pushed value.
+If the object does not have a metatable,
+or if the metatable does not have this field,
+pushes nothing and returns <code>LUA_TNIL</code>.
+
+
+
+
+
+<hr><h3><a name="luaL_getmetatable"><code>luaL_getmetatable</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">int luaL_getmetatable (lua_State *L, const char *tname);</pre>
+
+<p>
+Pushes onto the stack the metatable associated with the name <code>tname</code>
+in the registry (see <a href="#luaL_newmetatable"><code>luaL_newmetatable</code></a>),
+or <b>nil</b> if there is no metatable associated with that name.
+Returns the type of the pushed value.
+
+
+
+
+
+<hr><h3><a name="luaL_getsubtable"><code>luaL_getsubtable</code></a></h3><p>
+<span class="apii">[-0, +1, <em>e</em>]</span>
+<pre class="api">int luaL_getsubtable (lua_State *L, int idx, const char *fname);</pre>
+
+<p>
+Ensures that the value <code>t[fname]</code>,
+where <code>t</code> is the value at index <code>idx</code>,
+is a table,
+and pushes that table onto the stack.
+Returns true if it finds a previous table there
+and false if it creates a new table.
+
+
+
+
+
+<hr><h3><a name="luaL_gsub"><code>luaL_gsub</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">const char *luaL_gsub (lua_State *L,
+                       const char *s,
+                       const char *p,
+                       const char *r);</pre>
+
+<p>
+Creates a copy of string <code>s</code>,
+replacing any occurrence of the string <code>p</code>
+with the string <code>r</code>.
+Pushes the resulting string on the stack and returns it.
+
+
+
+
+
+<hr><h3><a name="luaL_len"><code>luaL_len</code></a></h3><p>
+<span class="apii">[-0, +0, <em>e</em>]</span>
+<pre class="api">lua_Integer luaL_len (lua_State *L, int index);</pre>
+
+<p>
+Returns the "length" of the value at the given index
+as a number;
+it is equivalent to the '<code>#</code>' operator in Lua (see <a href="#3.4.7">&sect;3.4.7</a>).
+Raises an error if the result of the operation is not an integer.
+(This case can only happen through metamethods.)
+
+
+
+
+
+<hr><h3><a name="luaL_loadbuffer"><code>luaL_loadbuffer</code></a></h3><p>
+<span class="apii">[-0, +1, &ndash;]</span>
+<pre class="api">int luaL_loadbuffer (lua_State *L,
+                     const char *buff,
+                     size_t sz,
+                     const char *name);</pre>
+
+<p>
+Equivalent to <a href="#luaL_loadbufferx"><code>luaL_loadbufferx</code></a> with <code>mode</code> equal to <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="luaL_loadbufferx"><code>luaL_loadbufferx</code></a></h3><p>
+<span class="apii">[-0, +1, &ndash;]</span>
+<pre class="api">int luaL_loadbufferx (lua_State *L,
+                      const char *buff,
+                      size_t sz,
+                      const char *name,
+                      const char *mode);</pre>
+
+<p>
+Loads a buffer as a Lua chunk.
+This function uses <a href="#lua_load"><code>lua_load</code></a> to load the chunk in the
+buffer pointed to by <code>buff</code> with size <code>sz</code>.
+
+
+<p>
+This function returns the same results as <a href="#lua_load"><code>lua_load</code></a>.
+<code>name</code> is the chunk name,
+used for debug information and error messages.
+The string <code>mode</code> works as in the function <a href="#lua_load"><code>lua_load</code></a>.
+In particular, this function supports mode '<code>B</code>' for
+fixed buffers.
+
+
+
+
+
+<hr><h3><a name="luaL_loadfile"><code>luaL_loadfile</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">int luaL_loadfile (lua_State *L, const char *filename);</pre>
+
+<p>
+Equivalent to <a href="#luaL_loadfilex"><code>luaL_loadfilex</code></a> with <code>mode</code> equal to <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="luaL_loadfilex"><code>luaL_loadfilex</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">int luaL_loadfilex (lua_State *L, const char *filename,
+                                            const char *mode);</pre>
+
+<p>
+Loads a file as a Lua chunk.
+This function uses <a href="#lua_load"><code>lua_load</code></a> to load the chunk in the file
+named <code>filename</code>.
+If <code>filename</code> is <code>NULL</code>,
+then it loads from the standard input.
+The first line in the file is ignored if it starts with a <code>#</code>.
+
+
+<p>
+The string <code>mode</code> works as in the function <a href="#lua_load"><code>lua_load</code></a>.
+
+
+<p>
+This function returns the same results as <a href="#lua_load"><code>lua_load</code></a>,
+or <a href="#pdf-LUA_ERRFILE"><code>LUA_ERRFILE</code></a> for file-related errors.
+
+
+<p>
+As <a href="#lua_load"><code>lua_load</code></a>, this function only loads the chunk;
+it does not run it.
+
+
+
+
+
+<hr><h3><a name="luaL_loadstring"><code>luaL_loadstring</code></a></h3><p>
+<span class="apii">[-0, +1, &ndash;]</span>
+<pre class="api">int luaL_loadstring (lua_State *L, const char *s);</pre>
+
+<p>
+Loads a string as a Lua chunk.
+This function uses <a href="#lua_load"><code>lua_load</code></a> to load the chunk in
+the zero-terminated string <code>s</code>.
+
+
+<p>
+This function returns the same results as <a href="#lua_load"><code>lua_load</code></a>.
+
+
+<p>
+Also as <a href="#lua_load"><code>lua_load</code></a>, this function only loads the chunk;
+it does not run it.
+
+
+
+
+

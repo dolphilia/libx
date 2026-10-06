@@ -1,0 +1,26 @@
+{
+  "status": "known-upstream-discrepancy",
+  "fixedArchive": "docs/notes/document-import/lua/v5-5-1/maintenance-2026-10-01/source/lua-5.5.1.tar.gz",
+  "manualSignature": "const void luaL_addgsub (luaL_Buffer *B, const char *s, const char *p, const char *r);",
+  "sourceHeader": [
+    {
+      "member": "lua-5.5.1/src/lauxlib.h",
+      "memberSha256": "007608c5e2abd231a9f61dc6cf4080ff6d4b54c845aa87b08162b5c778960443",
+      "lines": [
+        110,
+        111
+      ],
+      "excerpt": "LUALIB_API void (luaL_addgsub) (luaL_Buffer *b, const char *s,\n                                     const char *p, const char *r);"
+    },
+    {
+      "member": "lua-5.5.1/src/lauxlib.c",
+      "memberSha256": "12479bc0ada905452185278dc681d72eb865e1fc247a0143227c210bc3f9dd78",
+      "lines": [
+        1039,
+        1040
+      ],
+      "excerpt": "LUALIB_API void luaL_addgsub (luaL_Buffer *b, const char *s,\n                                     const char *p, const char *r) {"
+    }
+  ],
+  "decision": "定本マニュアルと英日declはconst voidを保持。同配布ヘッダー/実装はvoid。実行検証済みとはしない。公式マニュアルの訂正を確認できる次回上流巡回で再照合。"
+}
