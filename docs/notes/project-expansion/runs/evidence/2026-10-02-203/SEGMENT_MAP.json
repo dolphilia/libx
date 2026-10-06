@@ -1,0 +1,197 @@
+[
+  {
+    "canonicalLine": 1718,
+    "en": "## Advanced Topics",
+    "ja": "## 高度なトピック"
+  },
+  {
+    "canonicalLine": 1726,
+    "en": "### Compound keys",
+    "ja": "### 複合キー"
+  },
+  {
+    "canonicalLine": 1730,
+    "en": "Your key can even comprise multiple contiguous fields.",
+    "ja": "複数の連続したフィールドでキーを構成することもできます。"
+  },
+  {
+    "canonicalLine": 1738,
+    "en": "A multi-field key",
+    "ja": "複数のフィールドからなるキー"
+  },
+  {
+    "canonicalLine": 1810,
+    "en": "This example is included in the distribution in `tests/test22.c`.",
+    "ja": "この例は、配布物の `tests/test22.c` に収録されています。"
+  },
+  {
+    "canonicalLine": 1816,
+    "en": "If you use multi-field keys, recognize that the compiler pads adjacent fields (by inserting unused space between them) in order to fulfill the alignment requirement of each field. For example a structure containing a `char` followed by an `int` will normally have 3 \"wasted\" bytes of padding after the char, in order to make the `int` field start on a multiple-of-4 address (4 is the length of the int).",
+    "ja": "複数のフィールドからなるキーを使う場合は、コンパイラーが各フィールドのアラインメント要件を満たすために、隣接するフィールドの間に未使用領域を挿入する、つまりパディングを加えることを理解してください。たとえば、`char` の後に `int` がある構造体では、通常、charの後に3バイトの未使用パディングが入り、`int` フィールドが4の倍数のアドレスから始まるようになります（4はintの長さです）。"
+  },
+  {
+    "canonicalLine": 1826,
+    "en": "Calculating the length of a multi-field key:",
+    "ja": "複数のフィールドからなるキーの長さの計算："
+  },
+  {
+    "canonicalLine": 1832,
+    "en": "To determine the key length when using a multi-field key, you must include any intervening structure padding the compiler adds for alignment purposes.",
+    "ja": "複数のフィールドからなるキーの長さを求める際は、コンパイラーがアラインメントのためにフィールド間へ加える構造体のパディングも、すべて含めなければなりません。"
+  },
+  {
+    "canonicalLine": 1838,
+    "en": "An easy way to calculate the key length is to use the `offsetof` macro from `<stddef.h>`. The formula is:",
+    "ja": "キーの長さを簡単に計算するには、`offsetof` マクロを `<stddef.h>` から利用します。式は次のとおりです。"
+  },
+  {
+    "canonicalLine": 1856,
+    "en": "In the example above, the `keylen` variable is set using this formula.",
+    "ja": "上の例では、`keylen` 変数をこの式で設定しています。"
+  },
+  {
+    "canonicalLine": 1866,
+    "en": "When dealing with a multi-field key, you must zero-fill your structure before `HASH_ADD`'ing it to a hash table, or using its fields in a `HASH_FIND` key.",
+    "ja": "複数のフィールドからなるキーを扱う場合は、`HASH_ADD` でハッシュテーブルに追加したり、そのフィールドを `HASH_FIND` のキーに使ったりする前に、構造体を必ずゼロで埋めてください。"
+  },
+  {
+    "canonicalLine": 1872,
+    "en": "In the previous example, `memset` is used to initialize the structure by zero-filling it. This zeroes out any padding between the key fields. If we didn’t zero-fill the structure, this padding would contain random values. The random values would lead to `HASH_FIND` failures; as two \"identical\" keys will appear to mismatch if there are any differences within their padding.",
+    "ja": "前の例では、`memset` を使って構造体をゼロで埋め、初期化しています。これにより、キーのフィールド間のパディングもすべてゼロになります。構造体をゼロで埋めなければ、パディングには不定の値が入ります。この不定の値が `HASH_FIND` の失敗につながります。パディングに違いがあると、2つの「同一」のキーが一致しないように見えるためです。"
+  },
+  {
+    "canonicalLine": 1878,
+    "en": "Alternatively, you can customize the global [key comparison function](#hash_keycompare) and [key hashing function](#hash_functions) to ignore the padding in your key. See [Specifying an alternate key comparison function](#hash_keycompare).",
+    "ja": "別の方法として、グローバルな[キー比較関数](#hash_keycompare)と[キーハッシュ関数](#hash_functions)をカスタマイズし、キーのパディングを無視できます。[別のキー比較関数を指定する](#hash_keycompare)を参照してください。"
+  },
+  {
+    "canonicalLine": 1888,
+    "en": "### Multi-level hash tables",
+    "ja": "### 多段ハッシュテーブル"
+  },
+  {
+    "canonicalLine": 1892,
+    "en": "A multi-level hash table arises when each element of a hash table contains its own secondary hash table. There can be any number of levels. In a scripting language you might see:",
+    "ja": "ハッシュテーブルの各要素が、それぞれ第2階層のハッシュテーブルを持つと、多段ハッシュテーブルになります。階層数に制限はありません。スクリプト言語では、次のように書くかもしれません。"
+  },
+  {
+    "canonicalLine": 1908,
+    "en": "The C program below builds this example in uthash: the hash table is called `items`. It contains one element (`bob`) whose own hash table contains one element (`age`) with value 37. No special functions are necessary to build a multi-level hash table.",
+    "ja": "以下のCプログラムは、uthashでこの例を構築します。ハッシュテーブルの名前は `items` です。1つの要素（`bob`）を持ち、その要素自身のハッシュテーブルには、値37の要素（`age`）が1つあります。多段ハッシュテーブルを構築するための特別な関数は不要です。"
+  },
+  {
+    "canonicalLine": 1914,
+    "en": "While this example represents both levels (`bob` and `age`) using the same structure, it would also be fine to use two different structure definitions. It would also be fine if there were three or more levels instead of two.",
+    "ja": "この例では、両方の階層（`bob` と `age`）を同じ構造体で表していますが、2つの異なる構造体定義を使っても構いません。2階層ではなく、3階層以上でも構いません。"
+  },
+  {
+    "canonicalLine": 1922,
+    "en": "Multi-level hash table",
+    "ja": "多段ハッシュテーブル"
+  },
+  {
+    "canonicalLine": 1986,
+    "en": "The example above is included in `tests/test59.c`.",
+    "ja": "上の例は `tests/test59.c` に収録されています。"
+  },
+  {
+    "canonicalLine": 1996,
+    "en": "### Items in several hash tables",
+    "ja": "### 複数のハッシュテーブルに属する要素"
+  },
+  {
+    "canonicalLine": 2000,
+    "en": "A structure can be added to more than one hash table. A few reasons you might do this include:",
+    "ja": "1つの構造体を複数のハッシュテーブルに追加できます。そうする理由には、次のようなものがあります。"
+  },
+  {
+    "canonicalLine": 2006,
+    "en": "- each hash table may use a different key;",
+    "ja": "- ハッシュテーブルごとに異なるキーを使う。"
+  },
+  {
+    "canonicalLine": 2008,
+    "en": "- each hash table may have its own sort order;",
+    "ja": "- ハッシュテーブルごとに独自のソート順を持つ。"
+  },
+  {
+    "canonicalLine": 2010,
+    "en": "- or you might simply use multiple hash tables for grouping purposes. E.g., you could have users in an `admin_users` and a `users` hash table.",
+    "ja": "- 単にグループ分けのために複数のハッシュテーブルを使う。たとえば、利用者を `admin_users` と `users` のハッシュテーブルに入れる。"
+  },
+  {
+    "canonicalLine": 2016,
+    "en": "Your structure needs to have a `UT_hash_handle` field for each hash table to which it might be added. You can name them anything. E.g.,",
+    "ja": "構造体には、追加する可能性があるハッシュテーブルごとに、`UT_hash_handle` フィールドが必要です。任意の名前を付けられます。たとえば、次のようにします。"
+  },
+  {
+    "canonicalLine": 2036,
+    "en": "### Items with multiple keys",
+    "ja": "### 複数のキーを持つ要素"
+  },
+  {
+    "canonicalLine": 2040,
+    "en": "You might create a hash table keyed on an ID field, and another hash table keyed on username (if usernames are unique). You can add the same user structure to both hash tables (without duplication of the structure), allowing lookup of a user structure by their name or ID. The way to achieve this is to have a separate `UT_hash_handle` for each hash to which the structure may be added.",
+    "ja": "IDフィールドをキーにするハッシュテーブルと、利用者名をキーにする別のハッシュテーブルを作ることができます（利用者名が一意である場合）。同じ利用者の構造体を両方のハッシュテーブルに追加すれば、構造体を複製することなく、名前またはIDで利用者の構造体を検索できます。これを実現するには、構造体を追加するハッシュごとに、別々の `UT_hash_handle` を用意します。"
+  },
+  {
+    "canonicalLine": 2048,
+    "en": "A structure with two different keys",
+    "ja": "2つの異なるキーを持つ構造体"
+  },
+  {
+    "canonicalLine": 2067,
+    "en": "In the example above, the structure can now be added to two separate hash tables. In one hash, `id` is its key, while in the other hash, `username` is its key. (There is no requirement that the two hashes have different key fields. They could both use the same key, such as `id`).",
+    "ja": "上の例では、構造体を2つの別々のハッシュテーブルに追加できます。一方のハッシュでは `id` がキーで、もう一方では `username` がキーです（2つのハッシュが異なるキーのフィールドを使う必要はありません。両方で `id` などの同じキーを使っても構いません）。"
+  },
+  {
+    "canonicalLine": 2073,
+    "en": "Notice the structure has two hash handles (`hh1` and `hh2`). In the code below, notice that each hash handle is used exclusively with a particular hash table. (`hh1` is always used with the `users_by_id` hash, while `hh2` is always used with the `users_by_name` hash table).",
+    "ja": "構造体に2つのハッシュハンドル（`hh1` と `hh2`）がある点に注意してください。以下のコードでは、それぞれのハッシュハンドルを特定のハッシュテーブルだけに使っています（`hh1` は常に `users_by_id` のハッシュに、`hh2` は常に `users_by_name` のハッシュテーブルに使います）。"
+  },
+  {
+    "canonicalLine": 2081,
+    "en": "Two keys on a structure",
+    "ja": "構造体上の2つのキー"
+  },
+  {
+    "canonicalLine": 2119,
+    "en": "### Sorted insertion of new items",
+    "ja": "### ソート順を保った新規要素の挿入"
+  },
+  {
+    "canonicalLine": 2123,
+    "en": "To maintain a sorted hash, you have two options. Your first option is to use the `HASH_SRT` macro, which will sort any unordered list in *O(n log(n))*. This is the best strategy if you’re just filling up a hash table with items in random order with a single final `HASH_SRT` operation when all is done. If you need the table to remain sorted as you add and remove items, you can use `HASH_SRT` after every insertion operation, but that gives a computational complexity of *O(n^2 log n)* to insert *n* items.",
+    "ja": "ソート済みのハッシュを維持するには、2つの方法があります。第1の方法は、`HASH_SRT` マクロを使うことです。順不同のリストを *O(n log(n))* でソートします。ランダムな順序で要素をハッシュテーブルに追加し、すべて終わった後に1回だけ `HASH_SRT` を実行するなら、これが最適な方法です。追加や削除の間もテーブルをソート済みの状態に保つ必要がある場合は、挿入のたびに `HASH_SRT` を使えますが、*O(n^2 log n)* の計算量で *n* 個の要素を挿入することになります。"
+  },
+  {
+    "canonicalLine": 2129,
+    "en": "Your second option is to use the in-order add and replace macros. The `HASH_ADD_*_INORDER` macros work just like their `HASH_ADD_*` counterparts, but with an additional comparison-function argument:",
+    "ja": "第2の方法は、順序を保って追加・置換するマクロを使うことです。`HASH_ADD_*_INORDER` マクロは、対応する `HASH_ADD_*` マクロと同様に動作しますが、比較関数の引数を追加で受け取ります。"
+  },
+  {
+    "canonicalLine": 2157,
+    "en": "These macros assume that the hash is already sorted according to the comparison function, and insert the new item in its proper place. A single insertion takes *O(n)*, resulting in a total computational complexity of *O(n^2)* to insert all *n* items: slower than a single `HASH_SRT`, but faster than doing a `HASH_SRT` after every insertion.",
+    "ja": "これらのマクロは、ハッシュが比較関数に従ってすでにソートされていると仮定し、新しい要素を正しい位置に挿入します。1回の挿入は *O(n)* なので、全体の計算量は *O(n^2)* で、すべての *n* 個の要素を挿入できます。1回の `HASH_SRT` よりは遅くなりますが、挿入のたびに `HASH_SRT` を行うよりは高速です。"
+  },
+  {
+    "canonicalLine": 2167,
+    "en": "### Several sort orders",
+    "ja": "### 複数のソート順"
+  },
+  {
+    "canonicalLine": 2171,
+    "en": "It comes as no surprise that two hash tables can have different sort orders, but this fact can also be used advantageously to sort the *same items* in several ways. This is based on the ability to store a structure in several hash tables.",
+    "ja": "2つのハッシュテーブルが異なるソート順を持てるのは当然ですが、それを利用すると、*同じ要素* を複数の方法でソートできます。これは、1つの構造体を複数のハッシュテーブルに格納できることに基づいています。"
+  },
+  {
+    "canonicalLine": 2177,
+    "en": "Extending the previous example, suppose we have many users. We have added each user structure to the `users_by_id` hash table and the `users_by_name` hash table. (To reiterate, this is done without the need to have two copies of each structure.) Now we can define two sort functions, then use `HASH_SRT`.",
+    "ja": "前の例を拡張し、多くの利用者がいるとしましょう。各利用者の構造体を、`users_by_id` と `users_by_name` のハッシュテーブルに追加しています（繰り返しますが、各構造体のコピーを2つ用意する必要はありません）。これで、2つのソート関数を定義して `HASH_SRT` を使えます。"
+  },
+  {
+    "canonicalLine": 2219,
+    "en": "Now iterating over the items in `users_by_id` will traverse them in id-order while, naturally, iterating over `users_by_name` will traverse them in name-order. The items are fully forward-and-backward linked in each order. So even for one set of users, we might store them in two hash tables to provide easy iteration in two different sort orders.",
+    "ja": "これで、`users_by_id` の要素を反復処理するとID順にたどり、`users_by_name` の要素を反復処理すると名前順にたどります。どちらの順序でも、要素は前後両方向に完全にリンクされています。したがって、1組の利用者であっても、2つのハッシュテーブルに格納することで、2つの異なるソート順で簡単に反復処理できます。"
+  }
+]

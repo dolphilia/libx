@@ -1,0 +1,53 @@
+{
+  "candidate": "uthash",
+  "version": "2.4.0",
+  "scores": {
+    "additionalValue": {
+      "value": 3,
+      "reason": "既存2.3日本語ありを考慮。固定2.3→2.4差分でutarray_replace、各REVERSE/CDL_CONCAT追加、gets例のfgets更新と順序挿入説明を確認。現行6guide/ChangeLogを同版で日本語提供する具体価値がある。既存訳の全文・現行版未取得を欠落/低品質とせず、metadataのみ3guideは新機能加点しない。"
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "C/C++読者がhash/list/array/ringbuffer/stack/stringをheader-onlyで組み込むための初期化・操作・所有権/解放・例を同一公式一式で読める。利用者指定候補であり、既存C/C++ライブラリ文書との関連が具体的。市場人気・導入数の推測は得点根拠にしない。"
+    },
+    "quality": {
+      "value": 4,
+      "reason": "6guideのIntroduction/Usage/Referenceと例/注意、API表、ChangeLogを自立単位として確認。100コード・19表・172見出しの整合と元全文保持を実appで試験済み。歴史的PDF404と原ChangeLogの不完全かもしれない旨を残し、完全無欠として5点にはしない。"
+    },
+    "maintenance": {
+      "value": 4,
+      "reason": "タグcommit固定、全262原ファイルSHA、版header/履歴対応、元ID181とnativeTOC172、2.3→2.4全7差分分類を実証。3guideはmetadataのみ、API表追加と主例変更は局所。小更新4–8hを見積もり、HTML/検索対応が独自工程なので5点にはしない。"
+    },
+    "reuse": {
+      "value": 4,
+      "reason": "AsciiDoc→Pandoc/nativeMarkdownにHTML表保持とsourceID remarkを用い、全7actual本文/100code/19table/RSS/リンクを保全した。既存templateを使用できる。sourceID検索対応や原URLmapは追加実装が必要で、試験コードを無修正の汎用importerとして5点にはしない。"
+    }
+  },
+  "total": 74,
+  "weights": {
+    "additionalValue": 30,
+    "practicality": 25,
+    "quality": 20,
+    "maintenance": 15,
+    "reuse": 10
+  },
+  "basis": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/BOUNDARY_RECONCILED.json",
+      "sha256": "13ed7838789c4fbe83d128cb0e60d442b40156093daf3459fff7ba9c813f5616"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/JAPANESE_RESEARCH_LIMITS.json",
+      "sha256": "08db50dcc333e8a08d2a4367a9b6281af3ebef12812631ca3fe3aa4b9671e02c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-181/ACTUAL_CONVERSION_AND_PRODUCTION_WAIT.json",
+      "sha256": "cda567919300aefd417402b3adf458d4b5b08cf22734e3e5fc7f2d4afb7adedb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-183/FULL_UPSTREAM_DIFF_AND_WORKLOAD.json",
+      "sha256": "f5fe3e14dc0f8afc82e8c1db0599be453f5d085b3c73ab4739fe2146714138b0"
+    }
+  ],
+  "decision": "旧版日本語訳を尊重しつつ、現行APIの追加と修正された利用例を全公式guide/履歴の日本語版で提供する。全必須条件の実証があり、74点は70点基準を満たすため新規1件の採用候補とする。"
+}

@@ -1,0 +1,574 @@
+[
+  {
+    "en": "add utarray_replace (thanks, xunicatt!)",
+    "ja": "utarray_replaceを追加（xunicattに感謝）"
+  },
+  {
+    "en": "add LL_REVERSE/DL_REVERSE/CDL_REVERSE (thanks, xunicatt!)",
+    "ja": "LL_REVERSE/DL_REVERSE/CDL_REVERSEを追加（xunicattに感謝）"
+  },
+  {
+    "en": "add CDL_CONCAT (thanks, xunicatt!)",
+    "ja": "CDL_CONCATを追加（xunicattに感謝）"
+  },
+  {
+    "en": "remove `oom` (deprecated in v2.2.0) in favor of `utarray_oom`",
+    "ja": "`oom`（v2.2.0で非推奨化）を削除し、`utarray_oom` に置き換え"
+  },
+  {
+    "en": "remove HASH_DEFINE_OWN_STDINT (added in v2.2.0), on the theory nobody uses it",
+    "ja": "誰も使っていないという見込みで、HASH_DEFINE_OWN_STDINT（v2.2.0で追加）を削除"
+  },
+  {
+    "en": "use \\_\\_typeof on the MCST Elbrus C Compiler (thanks, utf-4096!)",
+    "ja": "MCST Elbrus C Compilerで\\_\\_typeofを使用（utf-4096に感謝）"
+  },
+  {
+    "en": "remove HASH_FCN; the HASH_FUNCTION and HASH_KEYCMP macros now behave similarly",
+    "ja": "HASH_FCNを削除。HASH_FUNCTIONとHASH_KEYCMPマクロが同様に動作するように変更"
+  },
+  {
+    "en": "remove uthash_memcmp (deprecated in v2.1.0) in favor of HASH_KEYCMP",
+    "ja": "uthash_memcmp（v2.1.0で非推奨化）を削除し、HASH_KEYCMPに置き換え"
+  },
+  {
+    "en": "silence -Wswitch-default warnings (thanks, Olaf Bergmann!)",
+    "ja": "-Wswitch-default警告を抑制（Olaf Bergmannに感謝）"
+  },
+  {
+    "en": "add HASH_NO_STDINT for platforms without C99 \\<stdint.h\\>",
+    "ja": "C99の\\<stdint.h\\>がないプラットフォーム向けにHASH_NO_STDINTを追加"
+  },
+  {
+    "en": "silence many -Wcast-qual warnings (thanks, Olaf Bergmann!)",
+    "ja": "多数の-Wcast-qual警告を抑制（Olaf Bergmannに感謝）"
+  },
+  {
+    "en": "skip hash computation when finding in an empty hash (thanks, Huansong Fu!)",
+    "ja": "空のハッシュで検索する場合はハッシュ計算を省略（Huansong Fuに感謝）"
+  },
+  {
+    "en": "rename oom to utarray_oom, in utarray.h (thanks, Hong Xu!)",
+    "ja": "utarray.hでoomをutarray_oomに改名（Hong Xuに感謝）"
+  },
+  {
+    "en": "rename oom to utstring_oom, in utstring.h (thanks, Hong Xu!)",
+    "ja": "utstring.hでoomをutstring_oomに改名（Hong Xuに感謝）"
+  },
+  {
+    "en": "remove MurmurHash/HASH_MUR",
+    "ja": "MurmurHash/HASH_MURを削除"
+  },
+  {
+    "en": "silence some Clang static analysis warnings",
+    "ja": "Clangの静的解析による一部の警告を抑制"
+  },
+  {
+    "en": "add LL_INSERT_INORDER and LL_LOWER_BOUND etc (thanks, Jeffrey Lovitz and Mattias Eriksson!)",
+    "ja": "LL_INSERT_INORDERとLL_LOWER_BOUNDなどを追加（Jeffrey Lovitz and Mattias Erikssonに感謝）"
+  },
+  {
+    "en": "add uthash_bzero for platforms without \\<string.h\\>",
+    "ja": "\\<string.h\\>がないプラットフォーム向けにuthash_bzeroを追加"
+  },
+  {
+    "en": "fix a missing HASH_BLOOM_ADD in HASH_SELECT (thanks, Pawel Veselov!)",
+    "ja": "HASH_SELECT内のHASH_BLOOM_ADD欠落を修正（Pawel Veselovに感謝）"
+  },
+  {
+    "en": "permit malloc failure to be recoverable via HASH_NONFATAL_OOM (thanks, Pawel Veselov!)",
+    "ja": "HASH_NONFATAL_OOMによってmalloc失敗から回復できるように変更（Pawel Veselovに感謝）"
+  },
+  {
+    "en": "avoid repeated calls to uthash_strlen in HASH_FIND_STR",
+    "ja": "HASH_FIND_STR内でuthash_strlenを繰り返し呼び出すことを回避"
+  },
+  {
+    "en": "rename uthash_memcmp to HASH_KEYCMP, leaving the old name for compatibility",
+    "ja": "uthash_memcmpをHASH_KEYCMPに改名し、互換性のため旧名を保持"
+  },
+  {
+    "en": "add utstack.h",
+    "ja": "utstack.hを追加"
+  },
+  {
+    "en": "remove libut",
+    "ja": "libutを削除"
+  },
+  {
+    "en": "fix segfault in HASH_ADD_INORDER etc (thanks, Yana Kireyonok!)",
+    "ja": "HASH_ADD_INORDERなどのセグメンテーション違反を修正（Yana Kireyonokに感謝）"
+  },
+  {
+    "en": "remove spurious cast to unsigned in utstring_len (thanks, Michal Sestrienka!)",
+    "ja": "utstring_len内の不要なunsignedへのキャストを削除（Michal Sestrienkaに感謝）"
+  },
+  {
+    "en": "add uthash_memcmp and uthash_strlen for platforms without \\<stdlib.h\\> (thanks, Pawel Veselov!)",
+    "ja": "\\<stdlib.h\\>がないプラットフォーム向けにuthash_memcmpとuthash_strlenを追加（Pawel Veselovに感謝）"
+  },
+  {
+    "en": "fix a C++ incompatibility in utringbuffer",
+    "ja": "utringbufferのC++非互換性を修正"
+  },
+  {
+    "en": "in-order insertion macros HASH_ADD_INORDER etc (thanks, Thilo Schulz!)",
+    "ja": "順序を保って挿入するマクロHASH_ADD_INORDERなどを追加（Thilo Schulzに感謝）"
+  },
+  {
+    "en": "by-hashvalue insertion macros HASH_ADD_BYHASHVALUE etc",
+    "ja": "ハッシュ値を指定して挿入するマクロHASH_ADD_BYHASHVALUEなどを追加"
+  },
+  {
+    "en": "during key comparison, check hashvalue before doing a full memcmp",
+    "ja": "キー比較時に、全体のmemcmpを行う前にハッシュ値を確認"
+  },
+  {
+    "en": "add utringbuffer.h",
+    "ja": "utringbuffer.hを追加"
+  },
+  {
+    "en": "inclusion of experimental libut bundle with utvector in opt/",
+    "ja": "utvectorを含む実験的なlibutバンドルをopt/に収録"
+  },
+  {
+    "en": "use shift in Bernstein hash instead of multiply (thanks, Jimmy Zhuo!)",
+    "ja": "Bernsteinハッシュで乗算の代わりにシフトを使用（Jimmy Zhuoに感謝）"
+  },
+  {
+    "en": "switch ssize_t types in utarray/utstring to size_t (thanks, Hong Xu!)",
+    "ja": "utarray/utstringのssize_t型をsize_tに変更（Hong Xuに感謝）"
+  },
+  {
+    "en": "fix utstring pointer math on \\>4GB strings (thanks, Thomas Bottesch!)",
+    "ja": "\\>4GBの文字列に対するutstringのポインター計算を修正（Thomas Botteschに感謝）"
+  },
+  {
+    "en": "change FNV hash to FNV-1a varation (thanks, dwest1975!)",
+    "ja": "FNVハッシュをFNV-1a変種に変更（dwest1975に感謝）"
+  },
+  {
+    "en": "fix bug in HASH_REPLACE_STR (thanks, Ilya Kaliman!)",
+    "ja": "HASH_REPLACE_STRのバグを修正（Ilya Kalimanに感謝）"
+  },
+  {
+    "en": "made HASH_ADD_STR compatible with char\\* or char\\[\\] (thanks, Samuel Thibault!)",
+    "ja": "HASH_ADD_STRをchar\\*またはchar\\[\\]に対応させるように変更（Samuel Thibaultに感謝）"
+  },
+  {
+    "en": "fixed header inclusion of sys/types.h for ssize_t (thanks, Fernando Campos!)",
+    "ja": "ssize_t用のsys/types.hのインクルードを修正（Fernando Camposに感謝）"
+  },
+  {
+    "en": "added LL_COUNT/DL_COUNT/CDL_COUNT (thansk, Paul Praet!)",
+    "ja": "LL_COUNT/DL_COUNT/CDL_COUNTを追加（Paul Praetに感謝）"
+  },
+  {
+    "en": "added LRU cache example in `tests/lru_cache` (thanks, Oliver Lorenz!)",
+    "ja": "`tests/lru_cache` にLRUキャッシュの例を追加（Oliver Lorenzに感謝）"
+  },
+  {
+    "en": "fix LL_DELETE2 for VS2008 (thanks, Greg Davydouski!)",
+    "ja": "VS2008向けにLL_DELETE2を修正（Greg Davydouskiに感謝）"
+  },
+  {
+    "en": "fix missing argument in `HASH_REPLACE_STR` (thanks, Alex!)",
+    "ja": "`HASH_REPLACE_STR` の引数欠落を修正（Alexに感謝）"
+  },
+  {
+    "en": "bump version number in source files to match docs (thanks, John Crow!)",
+    "ja": "ソースファイルの版番号を文書に合わせて更新（John Crowに感謝）"
+  },
+  {
+    "en": "add `HASH_OVERHEAD` macro to get overhead size for hash table",
+    "ja": "ハッシュテーブルのオーバーヘッドサイズを取得する `HASH_OVERHEAD` マクロを追加"
+  },
+  {
+    "en": "`HASH_REPLACE` now in uthash (thanks, Nick Vatamaniuc!)",
+    "ja": "uthashに `HASH_REPLACE` を追加（Nick Vatamaniucに感謝）"
+  },
+  {
+    "en": "fixed clang warnings (thanks wynnw!)",
+    "ja": "clang警告を修正（wynnwに感謝）"
+  },
+  {
+    "en": "fixed `utarray_insert` when inserting past array end (thanks Rob Willett!)",
+    "ja": "配列の末尾を越えて挿入する場合の `utarray_insert` を修正（Rob Willettに感謝）"
+  },
+  {
+    "en": "you can now find [uthash on GitHub](http://troydhanson.github.io/uthash/)",
+    "ja": "[GitHubのuthash](http://troydhanson.github.io/uthash/)を見つけられるようになった"
+  },
+  {
+    "en": "there’s a [uthash Google Group](https://groups.google.com/d/forum/uthash)",
+    "ja": "[uthashのGoogleグループ](https://groups.google.com/d/forum/uthash)がある"
+  },
+  {
+    "en": "uthash has been downloaded 29,000+ times since 2006 on SourceForge",
+    "ja": "uthashは2006年以来、SourceForgeで29,000+回ダウンロードされた"
+  },
+  {
+    "en": "utstring now supports substring search using `utstring_find` (thanks, Joe Wei!)",
+    "ja": "utstringが `utstring_find` による部分文字列検索に対応（Joe Weiに感謝）"
+  },
+  {
+    "en": "utlist now supports element *prepend* and *replace* (thanks, Zoltán Lajos Kis!)",
+    "ja": "utlistが要素の *先頭への追加* と *置換* に対応（Zoltán Lajos Kisに感謝）"
+  },
+  {
+    "en": "utlist element prev/next fields can now have any names (thanks, Pawel S. Veselov!)",
+    "ja": "utlist要素のprev/nextフィールドに任意の名前を付けられるように変更（Pawel S. Veselovに感謝）"
+  },
+  {
+    "en": "uthash cast quiets a clang warning (thanks, Roman Divacky and Baptiste Daroussin!)",
+    "ja": "uthashのキャストによってclang警告を抑制（Roman Divacky and Baptiste Daroussinに感謝）"
+  },
+  {
+    "en": "uthash userguide example shows how to check key uniqueness (thanks, Richard Cook!)",
+    "ja": "uthashのユーザーガイド例でキーの一意性を確認する方法を提示（Richard Cookに感謝）"
+  },
+  {
+    "en": "uthash HASH_MUR compiles under MSVC++ 10 in C mode (thanks, Arun Kirthi Cherian!)",
+    "ja": "uthashのHASH_MURをMSVC++ 10のCモードでコンパイルできるように変更（Arun Kirthi Cherianに感謝）"
+  },
+  {
+    "en": "`utstring_printf` now supports format checking (thanks, Donald Carr!)",
+    "ja": "`utstring_printf` が書式検査に対応（Donald Carrに感謝）"
+  },
+  {
+    "en": "add utarray_prev (thanks, Ben Hiett!)",
+    "ja": "utarray_prevを追加（Ben Hiettに感謝）"
+  },
+  {
+    "en": "add parens/casts for greater compatibility (thanks, Atis, Debasis Ganguly, and Steve McClellan!)",
+    "ja": "互換性を高めるため括弧とキャストを追加（Atis, Debasis Ganguly, and Steve McClellanに感謝）"
+  },
+  {
+    "en": "added ifndef to uthash_malloc and related hooks (thanks, Holger Machens!)",
+    "ja": "uthash_mallocと関連フックにifndefを追加（Holger Machensに感謝）"
+  },
+  {
+    "en": "edit examples so they do not leak memory (thanks, 任晶磊!)",
+    "ja": "メモリーリークが起きないように例を修正（任晶磊に感謝）"
+  },
+  {
+    "en": "added `utarray_renew`",
+    "ja": "`utarray_renew` を追加"
+  },
+  {
+    "en": "fixed memory leak in `uthash_clear` when using Bloom filter (thanks, Jan Hättig!)",
+    "ja": "Bloomフィルター使用時の `uthash_clear` のメモリーリークを修正（Jan Hättigに感謝）"
+  },
+  {
+    "en": "utarray now copies the UT_icd on array creation rather than storing a pointer",
+    "ja": "utarrayが配列作成時にUT_icdへのポインターを保持する代わりに、UT_icdをコピーするように変更"
+  },
+  {
+    "en": "add parentheses to `HASH_ADD` to fix preprocessing of certain arguments (thanks, Aaron Rosen!)",
+    "ja": "特定の引数のプリプロセスを修正するため `HASH_ADD` に括弧を追加（Aaron Rosenに感謝）"
+  },
+  {
+    "en": "more parenthesizations for greater macro argument flexibility",
+    "ja": "マクロ引数の柔軟性を高めるため、さらに括弧を追加"
+  },
+  {
+    "en": "uthash now supports MurmurHash v3",
+    "ja": "uthashがMurmurHash v3に対応"
+  },
+  {
+    "en": "utlist now includes concatenation macros (`LL_CONCAT` and `DL_CONCAT`)",
+    "ja": "utlistに連結マクロ（`LL_CONCAT` と `DL_CONCAT`）を追加"
+  },
+  {
+    "en": "utarray now supports binary search (`utarray_find`)",
+    "ja": "utarrayが二分探索（`utarray_find`）に対応"
+  },
+  {
+    "en": "utstring now supports a new-or-clear-existing macro (`utstring_renew`)",
+    "ja": "utstringが新規作成または既存内容を消去するマクロ（`utstring_renew`）に対応"
+  },
+  {
+    "en": "documented technique for a multi-level hash table",
+    "ja": "多段ハッシュテーブルの手法を文書化"
+  },
+  {
+    "en": "clarified scope requirements for `UT_icd` in the utarray documentation",
+    "ja": "utarray文書で `UT_icd` のスコープ要件を明確化"
+  },
+  {
+    "en": "fixed termination when `utstring_clear` is followed by `utstring_body`",
+    "ja": "`utstring_clear` の後に `utstring_body` を呼ぶ場合の終端を修正"
+  },
+  {
+    "en": "fixed utarray_inserta macro when used with complex arguments",
+    "ja": "複雑な引数で使う場合のutarray_insertaマクロを修正"
+  },
+  {
+    "en": "on Visual Studio define missing type `uint8_t`",
+    "ja": "Visual Studioで欠けている型 `uint8_t` を定義"
+  },
+  {
+    "en": "Debian/Ubuntu include uthash in the package `uthash-dev`.",
+    "ja": "Debian/Ubuntuが `uthash-dev` パッケージにuthashを収録"
+  },
+  {
+    "en": "uthash has been downloaded 16,211 times.",
+    "ja": "uthashは16,211回ダウンロードされた"
+  },
+  {
+    "en": "fix an `ifdef` for compatibility with Intel compiler (thanks, degski!)",
+    "ja": "Intelコンパイラーとの互換性のため `ifdef` を修正（degskiに感謝）"
+  },
+  {
+    "en": "fix `HASH_ITER` macro to satisfy C++ casting rules (thanks, Erik Bai!)",
+    "ja": "C++のキャスト規則を満たすよう `HASH_ITER` マクロを修正（Erik Baiに感謝）"
+  },
+  {
+    "en": "new `HASH_ITER` macro for more convenient deletion-safe iteration",
+    "ja": "削除に安全な反復処理をより便利に行える、新しい `HASH_ITER` マクロを追加"
+  },
+  {
+    "en": "`hashscan` can now run on FreeBSD 8.1 and later (thanks, Markus Gebert!)",
+    "ja": "`hashscan` がFreeBSD 8.1以降で動作するように変更（Markus Gebertに感謝）"
+  },
+  {
+    "en": "More parens to evaluate complex macro arguments properly (thanks, ngg!)",
+    "ja": "複雑なマクロ引数を正しく評価するため、さらに括弧を追加（nggに感謝）"
+  },
+  {
+    "en": "Add sz parameter to the `uthash_free` hook for platforms that do their own memory management. Hopefully this minor API change doesn’t cause too much breakage for people. (thanks, Niall Douglas!)",
+    "ja": "独自にメモリーを管理するプラットフォーム向けに、`uthash_free` フックにszパラメーターを追加。この小さなAPI変更で大きな互換性問題が起きないことを期待（Niall Douglasに感謝）"
+  },
+  {
+    "en": "uthash has been downloaded 12,294 times",
+    "ja": "uthashは12,294回ダウンロードされた"
+  },
+  {
+    "en": "Fix a redefinition warning when using `uthash.h` and `utstring.h` together",
+    "ja": "`uthash.h` と `utstring.h` を併用した際の再定義警告を修正"
+  },
+  {
+    "en": "Fix a bug in `utstring_init`",
+    "ja": "`utstring_init` のバグを修正"
+  },
+  {
+    "en": "Added `HASH_FIND_PTR` and `HASH_ADD_PTR` (thanks, Niall Douglas!)",
+    "ja": "`HASH_FIND_PTR` と `HASH_ADD_PTR` を追加（Niall Douglasに感謝）"
+  },
+  {
+    "en": "uthash now supports Visual Studio 2008 and 2010 in C or C++ code!",
+    "ja": "uthashがVisual Studio 2008と2010のCまたはC++コードに対応"
+  },
+  {
+    "en": "new headers [utarray.h](/docs/uthash/v2-4-0/en/01-guides/03-utarray/) and [utstring.h](/docs/uthash/v2-4-0/en/01-guides/06-utstring/) are now included. These implement dynamic arrays and strings using macros",
+    "ja": "新しいヘッダー[utarray.h](/docs/uthash/v2-4-0/ja/01-guides/03-utarray/)と[utstring.h](/docs/uthash/v2-4-0/ja/01-guides/06-utstring/)を収録。これらはマクロで動的配列と文字列を実装"
+  },
+  {
+    "en": "[utlist.h](/docs/uthash/v2-4-0/en/01-guides/02-utlist/) now has deletion-safe iterators and search macros",
+    "ja": "[utlist.h](/docs/uthash/v2-4-0/ja/01-guides/02-utlist/)に削除に安全なイテレーターと検索マクロを追加"
+  },
+  {
+    "en": "the test suite now runs under Visual Studio (thanks again degski!)",
+    "ja": "テストスイートがVisual Studio上で動作するように変更（degskiに感謝）"
+  },
+  {
+    "en": "special thanks for suggesting utarray and utlist features to Charalampos P.!",
+    "ja": "utarrayとutlistの機能を提案したCharalampos P.に特別な感謝"
+  },
+  {
+    "en": "uthash has been downloaded 9,616 times",
+    "ja": "uthashは9,616回ダウンロードされた"
+  },
+  {
+    "en": "Added the `hashscan` utility that can report on the size and quality of hash tables in a running process (Linux-only)",
+    "ja": "実行中のプロセス内のハッシュテーブルのサイズと品質を報告できる `hashscan` ユーティリティーを追加（Linuxのみ）"
+  },
+  {
+    "en": "Added Bloom filter support. This has the potential to speed up certain types of programs that look up non-existant keys in sufficient numbers.",
+    "ja": "Bloomフィルターに対応。存在しないキーを十分な回数検索する特定の種類のプログラムで、高速化できる可能性がある"
+  },
+  {
+    "en": "Restored the MurmurHash, which can once again be used, if an additional symbol is defined. This is a \"safety\" by which the user declares they understand that `-fno-strict-aliasing` flag must be used if they are using MurmurHash under gcc with optimization.",
+    "ja": "MurmurHashを復活させ、追加のシンボルを定義すれば再び使えるように変更。これは、最適化を有効にしたgccでMurmurHashを使う場合は `-fno-strict-aliasing` フラグが必須であると理解していることを、利用者が表明するための「安全策」"
+  },
+  {
+    "en": "Unified the bucket/table malloc hooks; now there is only one malloc hook",
+    "ja": "バケットとテーブルのmallocフックを統合し、mallocフックを1つに変更"
+  },
+  {
+    "en": "Re-organized the manual into a main section and advanced topics section",
+    "ja": "マニュアルを主な説明の節と高度なトピックの節に再編"
+  },
+  {
+    "en": "Fixed a bug in `utlist.h` where sorting a singly-linked list threw a compile-time error.",
+    "ja": "単方向連結リストのソート時にコンパイルエラーが生じる `utlist.h` のバグを修正"
+  },
+  {
+    "en": "Fixed a bug in `utlist.h` where a doubly-linked list that is sorted did not maintain the special `head->prev` pointer back to the list tail.",
+    "ja": "`utlist.h` で、ソート済み双方向連結リストが末尾を指す特別な `head->prev` ポインターを維持しないバグを修正"
+  },
+  {
+    "en": "The MurmurHash has been removed, and Jenkin’s hash is once again the default. While MurmurHash performed well, it’s unsafe with regard to the strict aliasing rule. This results in incorrect code when compiled with optimization. It’s not possible to enable `-fno-strict-aliasing` from within a header file.",
+    "ja": "MurmurHashを削除し、Jenkinのハッシュを再び既定に変更。MurmurHashは高性能だったが、厳密エイリアシング規則の面で安全ではなく、最適化してコンパイルすると誤ったコードを生成する。ヘッダーファイル内から `-fno-strict-aliasing` を有効にすることはできない"
+  },
+  {
+    "en": "The linked list macros in `utlist.h` now comply with the strict-aliasing rule so they generate correct code under high optimization levels (O2 or O3). The use of the `__typeof__` extension, which was originally a GNU extension, may reduce portability to other compilers that do not support this extension. This extension is used in the singly-linked list macros and the sort macros.",
+    "ja": "`utlist.h` の連結リストマクロを厳密エイリアシング規則に準拠させ、高い最適化レベル（O2またはO3）でも正しいコードを生成するように変更。もともとGNU拡張だった `__typeof__` 拡張の使用は、この拡張をサポートしない他のコンパイラーへの移植性を下げる可能性がある。この拡張は単方向連結リストマクロとソートマクロで使用"
+  },
+  {
+    "en": "Support for two new hash functions:",
+    "ja": "2つの新しいハッシュ関数に対応"
+  },
+  {
+    "en": "the Paul Hsieh hash function (`HASH_SFH`)",
+    "ja": "Paul Hsiehのハッシュ関数（`HASH_SFH`）"
+  },
+  {
+    "en": "Austin Appleby’s MurmurHash function (`HASH_MUR`)",
+    "ja": "Austin ApplebyのMurmurHash関数（`HASH_MUR`）"
+  },
+  {
+    "en": "Because of its excellent performance, MurmurHash is now the default hash function.",
+    "ja": "高い性能のため、MurmurHashを既定のハッシュ関数に変更"
+  },
+  {
+    "en": "`keystats` now has much better elapsed time accuracy under Cygwin and MinGW",
+    "ja": "`keystats` のCygwinとMinGWでの経過時間の精度を大幅に改善"
+  },
+  {
+    "en": "fixed casting in `HASH_FNV`, `HASH_SAX` and `HASH_OAT` for non-char keys",
+    "ja": "char以外のキーに対する `HASH_FNV`、`HASH_SAX`、`HASH_OAT` のキャストを修正"
+  },
+  {
+    "en": "a new `HASH_CLEAR` operation clears a hash table in one step.",
+    "ja": "新しい `HASH_CLEAR` 操作でハッシュテーブルを1操作で消去"
+  },
+  {
+    "en": "a new `HASH_SELECT` operation inserts those elements from one hash that satisfy a given condition into another hash. The selected items have dual presence in both hash tables. For example a game could select the visible polygons from a hash of all polygons.",
+    "ja": "新しい `HASH_SELECT` 操作で、指定条件を満たす要素をあるハッシュから別のハッシュへ挿入。選択した要素は両方のハッシュテーブルに存在する。たとえばゲームでは、全ポリゴンのハッシュから表示対象のポリゴンを選択できる"
+  },
+  {
+    "en": "fixed a compile-time error which occurred if the final argument to `HASH_ADD_KEYPTR` was a pointer to an array member like `&a[i]`",
+    "ja": "`HASH_ADD_KEYPTR` の最後の引数が `&a[i]` のような配列メンバーへのポインターの場合に生じるコンパイルエラーを修正"
+  },
+  {
+    "en": "added another test script `tests/all_funcs` which executes the test suite using every supported hash function",
+    "ja": "対応するすべてのハッシュ関数を使ってテストスイートを実行する、別のテストスクリプト `tests/all_funcs` を追加"
+  },
+  {
+    "en": "a new, separate header called [utlist.h](/docs/uthash/v2-4-0/en/01-guides/02-utlist/) is included which provides *linked list macros* for C structures, similar in style to the uthash macros",
+    "ja": "新しい独立したヘッダー[utlist.h](/docs/uthash/v2-4-0/ja/01-guides/02-utlist/)を収録。uthashマクロと同じような書き方で、Cの構造体用の *連結リストマクロ* を提供"
+  },
+  {
+    "en": "now thread-safe for concurrent readers",
+    "ja": "同時に読み取る複数のスレッドに対して安全に変更"
+  },
+  {
+    "en": "use scratch variables on stack rather than in table (thanks, Petter Arvidsson!). This change made HASH_FIND about 13% faster and enabled reader concurrency.",
+    "ja": "作業変数をテーブル内ではなくスタック上に配置（Petter Arvidssonに感謝）。この変更でHASH_FINDが約13%高速化し、同時読み取りが可能になった"
+  },
+  {
+    "en": "made [BSD license](/docs/uthash/v2-4-0/en/02-license/01-license/) terms even more permissive",
+    "ja": "[BSDライセンス](/docs/uthash/v2-4-0/ja/02-license/01-license/)の条件をさらに寛容に変更"
+  },
+  {
+    "en": "added [PDF version](https://troydhanson.github.io/uthash/userguide.pdf) of User Guide",
+    "ja": "ユーザーガイドの[PDF版](https://troydhanson.github.io/uthash/userguide.pdf)を追加"
+  },
+  {
+    "en": "added [update news](http://troydhanson.wordpress.com/feed/) <span class=\"image\"> ![(RSS)](/docs/uthash/assets/uthash-v2-4-0/rss.png) </span>",
+    "ja": "[更新ニュース](http://troydhanson.wordpress.com/feed/) <span class=\"image\"> ![(RSS)](/docs/uthash/assets/uthash-v2-4-0/rss.png) </span>を追加"
+  },
+  {
+    "en": "Add `HASH_COUNT` for counting items in the hash",
+    "ja": "ハッシュ内の要素を数える `HASH_COUNT` を追加"
+  },
+  {
+    "en": "Compatibility with C++. Satisfy additional casting requirements. Also in the `tests/` directory, running `make cplusplus` now compiles all the test programs with the C++ compiler.",
+    "ja": "C++に対応し、追加のキャスト要件を満たすように変更。`tests/` ディレクトリで `make cplusplus` を実行すると、すべてのテストプログラムをC++コンパイラーでコンパイルするように変更"
+  },
+  {
+    "en": "Eliminate `elmt` pointer from the UT_hash_handle. Calculate elmt from hash handle address by subtracting `hho` (hash handle offset).",
+    "ja": "UT_hash_handleから `elmt` ポインターを削除。ハッシュハンドルのアドレスから `hho`（ハッシュハンドルのオフセット）を引いてelmtを計算"
+  },
+  {
+    "en": "Contributed by L.S.Chin: Cast `void*` to char\\* before pointer arithmetic to suppress compiler warnings. We assume compilers abide to C standards which impose requirement that `sizeof(void*) == sizeof(char*)`.",
+    "ja": "L.S.Chinによる寄稿：コンパイラー警告を抑えるため、ポインター計算の前に `void*` をchar\\*へキャスト。`sizeof(void*) == sizeof(char*)` を要求するC標準にコンパイラーが従うと仮定"
+  },
+  {
+    "en": "Return meaningful exit status from do_tests per Tiago Cunha, so that package manager-based install can verify tests are successful",
+    "ja": "Tiago Cunhaの提案により、do_testsが意味のある終了ステータスを返すように変更し、パッケージマネージャーによるインストールでテスト成功を確認できるようにした"
+  },
+  {
+    "en": "use integer-only math-- no floating point! Support FPU-less CPU’s.",
+    "ja": "浮動小数点を使わず整数演算のみを使用。FPUのないCPUに対応"
+  },
+  {
+    "en": "eliminate `hash_q` metric, which measured the fraction of items with non-ideal chain positions. We only need to know if this fraction is below 0.5. This is now determined using fast bitwise tests.",
+    "ja": "理想的でないチェーン位置の要素の割合を測る `hash_q` 指標を削除。必要なのはこの割合が0.5未満かどうかだけであり、高速なビット演算による検査で判定するように変更"
+  },
+  {
+    "en": "when an item is added to the hash, calculate the key’s hash value upfront and store it, instead of recomputing it as needed. This hashv is stored in the hash handle. Potentially major speed benefit for bucket expansion algorithm. Deleting is marginally improved too.",
+    "ja": "ハッシュへの要素追加時に、必要のたびに再計算する代わりにキーのハッシュ値を先に計算して保存。このhashvをハッシュハンドルに格納。バケット拡張アルゴリズムで大幅な高速化の可能性があり、削除もわずかに改善"
+  },
+  {
+    "en": "fixed a minor bug in the calculation of the max ideal chain length; line 446 in v1.2 erroneously calculated a/b\\*2 instead of a/(b\\*2). The effect of this bug was that bucket expansion could occur more readily because the per-bucket *max chain length multiplier factor* (which delays bucket expansion when certain buckets are overused) was set to a lower, expansion-favoring value than intended.",
+    "ja": "最大理想チェーン長の計算の小さなバグを修正。v1.2の446行目はa/(b\\*2)の代わりにa/b\\*2を誤って計算していた。このバグにより、バケットごとの *最大チェーン長の乗数*（特定のバケットが多用されるときにバケット拡張を遅らせる係数）が、意図より小さい、拡張が起きやすい値となり、バケット拡張がより容易に起きていた"
+  },
+  {
+    "en": "improved source commenting and improved variable names in structures",
+    "ja": "ソースコメントと構造体内の変数名を改善"
+  },
+  {
+    "en": "remove `HASH_JSW`. Lengthy random number array made code less readable",
+    "ja": "`HASH_JSW` を削除。長い乱数配列がコードを読みにくくしていた"
+  },
+  {
+    "en": "add `HASH_SRT(hh,hash,cmp)` as a generalized `HASH_SORT(hash,cmp)`. It was an omission in uthash 1.2 that there was no sort macro for hash handles with names other than hh.",
+    "ja": "`HASH_SRT(hh,hash,cmp)` を、`HASH_SORT(hash,cmp)` を一般化したものとして追加。hh以外の名前のハッシュハンドル用のソートマクロがなかったのは、uthash 1.2の欠落だった"
+  },
+  {
+    "en": "Corrected `HASH_FSCK` so it works with any name for the hash handle.",
+    "ja": "`HASH_FSCK` を、ハッシュハンドルの名前にかかわらず動作するように修正"
+  },
+  {
+    "en": "behave properly in pathological `HASH_DEL(a,a)` case where the same variable references the head and the deletee (advancing the head then loses the correct reference to the deletee); fix by using scratch area in the hash table to store deletee hash handle.",
+    "ja": "同じ変数が先頭と削除対象を参照する特殊な `HASH_DEL(a,a)` の場合に正しく動作するように変更（先頭を進めると削除対象への正しい参照を失う）。ハッシュテーブル内の作業領域に削除対象のハッシュハンドルを保存して修正"
+  },
+  {
+    "en": "made tests runnable on MinGW",
+    "ja": "MinGWでテストを実行できるように変更"
+  },
+  {
+    "en": "3000+ downloads since uthash-1.0",
+    "ja": "uthash-1.0以来、3000+回ダウンロードされた"
+  },
+  {
+    "en": "new `HASH_SORT` macro",
+    "ja": "新しい `HASH_SORT` マクロを追加"
+  },
+  {
+    "en": "Cygwin support",
+    "ja": "Cygwinに対応"
+  },
+  {
+    "en": "User Guide now features a clickable Table of Contents. (The technique for generating the TOC on the browser was contributed back to the AsciiDoc project and incorporated into AsciiDoc v8.1.0).",
+    "ja": "ユーザーガイドにクリックできる目次を追加（ブラウザー上で目次を生成する手法をAsciiDocプロジェクトに還元し、AsciiDoc v8.1.0に組み込まれた）"
+  },
+  {
+    "en": "uthash-1.1 released",
+    "ja": "uthash-1.1をリリース"
+  },
+  {
+    "en": "supports several built-in user-selectable hash functions",
+    "ja": "利用者が選べる複数の組み込みハッシュ関数に対応"
+  },
+  {
+    "en": "new keystats utility quantifies performance of hash functions",
+    "ja": "新しいkeystatsユーティリティーでハッシュ関数の性能を定量化"
+  },
+  {
+    "en": "Initial release",
+    "ja": "初回リリース"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "confirmed-fix-required",
+  "url": "http://127.0.0.1:4390/docs/uthash/v2-4-0/ja/01-guides/01-userguide/",
+  "tabId": "16",
+  "steps": [
+    "検索を開く",
+    "スレッド安全性を入力",
+    "ArrowDown→Enter"
+  ],
+  "observedURL": "http://127.0.0.1:4390/docs/uthash/v2-4-0/ja/01-guides/01-userguide/#_thread_safety",
+  "finding": "検索結果の同一ページ内見出しへキーボードで移動後、検索dialogが開いたまま本文を覆う。AXとスクリーンショットで実確認。",
+  "source": "packages/ui/src/scripts/search-client.ts",
+  "cause": "結果link生成時にdialogを閉じるclick処理がなく、同一document内アンカー移動ではdialogが残る。",
+  "nextAction": "private checkoutで結果linkのclick時にdialogを閉じる処理を追加。pointer/keyboard・同一/別ページ・Esc復帰を実ブラウザーで確認し、共有変更の影響を別アプリでも検証。root共有ファイルのユーザー変更は比較して保護。",
+  "pending": [
+    "英日desktop/mobile/table/code/license/category/version/sidebar/nav/404",
+    "shared search correction regression",
+    "integrated publication"
+  ],
+  "localPreview": {
+    "sessionId": 20916,
+    "port": 4390,
+    "host": "127.0.0.1",
+    "status": "ready-observed"
+  }
+}

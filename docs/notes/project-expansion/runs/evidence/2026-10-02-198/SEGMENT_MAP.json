@@ -1,0 +1,174 @@
+[
+  {
+    "en": "title: \"uthash User Guide\"",
+    "ja": "title: \"uthashユーザーガイド\""
+  },
+  {
+    "en": "description: \"uthash 2.4.0 official source: uthash User Guide\"",
+    "ja": "description: \"uthash 2.4.0公式ユーザーガイドの全文日本語訳\""
+  },
+  {
+    "en": "To download uthash, follow this link back to the [GitHub project page](https://github.com/troydhanson/uthash). Back to my [other projects](https://troydhanson.github.io/).",
+    "ja": "uthashをダウンロードするには、[GitHubのプロジェクトページ](https://github.com/troydhanson/uthash)に戻ってください。著者の[他のプロジェクト](https://troydhanson.github.io/)に戻ることもできます。"
+  },
+  {
+    "en": "## A hash in C",
+    "ja": "## Cで使うハッシュ"
+  },
+  {
+    "en": "This document is written for C programmers. Since you’re reading this, chances are that you know a hash is used for looking up items using a key. In scripting languages, hashes or \"dictionaries\" are used all the time. In C, hashes don’t exist in the language itself. This software provides a hash table for C structures.",
+    "ja": "この文書はCプログラマー向けに書かれています。この文書を読んでいる方なら、ハッシュがキーを使って要素を検索するためのものだとご存じでしょう。スクリプト言語では、ハッシュや「辞書」が日常的に使われます。Cには、言語自体にハッシュがありません。このソフトウェアは、Cの構造体を扱うハッシュテーブルを提供します。"
+  },
+  {
+    "en": "### What can it do?",
+    "ja": "### 何ができますか？"
+  },
+  {
+    "en": "This software supports these operations on items in a hash table:",
+    "ja": "このソフトウェアは、ハッシュテーブルの要素に対する次の操作をサポートします。"
+  },
+  {
+    "en": "1.  add/replace",
+    "ja": "1.  追加／置換"
+  },
+  {
+    "en": "2.  find",
+    "ja": "2.  検索"
+  },
+  {
+    "en": "3.  delete",
+    "ja": "3.  削除"
+  },
+  {
+    "en": "4.  count",
+    "ja": "4.  要素数の取得"
+  },
+  {
+    "en": "5.  iterate",
+    "ja": "5.  反復処理"
+  },
+  {
+    "en": "6.  sort",
+    "ja": "6.  ソート"
+  },
+  {
+    "en": "### Is it fast?",
+    "ja": "### 高速ですか？"
+  },
+  {
+    "en": "Add, find and delete are normally constant-time operations. This is influenced by your key domain and the hash function.",
+    "ja": "追加・検索・削除は、通常、定数時間の操作です。これは、使用するキーの範囲とハッシュ関数の影響を受けます。"
+  },
+  {
+    "en": "This hash aims to be minimalistic and efficient. It’s around 1000 lines of C. It inlines automatically because it’s implemented as macros. It’s fast as long as the hash function is suited to your keys. You can use the default hash function, or easily compare performance and choose from among several other [built-in hash functions](#hash_functions).",
+    "ja": "このハッシュは、最小限の構成と効率を目指しています。Cで約1000行です。マクロで実装されているため、自動的にインライン展開されます。ハッシュ関数がキーに適していれば高速です。既定のハッシュ関数を使うことも、性能を簡単に比較して他の複数の[組み込みハッシュ関数](#hash_functions)から選ぶこともできます。"
+  },
+  {
+    "en": "### Is it a library?",
+    "ja": "### ライブラリーですか？"
+  },
+  {
+    "en": "No, it’s just a single header file: `uthash.h`. All you need to do is copy the header file into your project, and:",
+    "ja": "いいえ、`uthash.h` という単一のヘッダーファイルだけです。ヘッダーファイルをプロジェクトにコピーし、次のように記述するだけで使えます。"
+  },
+  {
+    "en": "Since uthash is a header file only, there is no library code to link against.",
+    "ja": "uthashはヘッダーファイルだけで構成されるため、リンクするライブラリーのコードはありません。"
+  },
+  {
+    "en": "### C/C++ and platforms",
+    "ja": "### C/C++とプラットフォーム"
+  },
+  {
+    "en": "This software can be used in C and C++ programs. It has been tested on:",
+    "ja": "このソフトウェアは、CとC++のプログラムで使用できます。次の環境でテストされています。"
+  },
+  {
+    "en": "- Windows using Visual Studio 2008 and 2010",
+    "ja": "- Visual Studio 2008および2010を使用するWindows"
+  },
+  {
+    "en": "#### Test suite",
+    "ja": "#### テストスイート"
+  },
+  {
+    "en": "To run the test suite, enter the `tests` directory. Then,",
+    "ja": "テストスイートを実行するには、`tests` ディレクトリに移動し、次の操作を行います。"
+  },
+  {
+    "en": "- on Unix platforms, run `make`",
+    "ja": "- Unixプラットフォームでは、`make` を実行します。"
+  },
+  {
+    "en": "- on Windows, run the \"do_tests_win32.cmd\" batch file. (You may edit the batch file if your Visual Studio is installed in a non-standard location).",
+    "ja": "- Windowsでは、\"do_tests_win32.cmd\" バッチファイルを実行します（Visual Studioを標準以外の場所にインストールしている場合は、バッチファイルを編集できます）。"
+  },
+  {
+    "en": "### BSD licensed",
+    "ja": "### BSDライセンス"
+  },
+  {
+    "en": "This software is made available under the [revised BSD license](/docs/uthash/v2-4-0/en/02-license/01-license/). It is free and open source.",
+    "ja": "このソフトウェアは、[修正版BSDライセンス](/docs/uthash/v2-4-0/ja/02-license/01-license/)で提供されています。無料で、オープンソースです。"
+  },
+  {
+    "en": "### Download uthash",
+    "ja": "### uthashのダウンロード"
+  },
+  {
+    "en": "Follow the links on <https://github.com/troydhanson/uthash> to clone uthash or get a zip file.",
+    "ja": "<https://github.com/troydhanson/uthash>のリンクから、uthashをクローンするかzipファイルを取得してください。"
+  },
+  {
+    "en": "### Getting help",
+    "ja": "### 質問するには"
+  },
+  {
+    "en": "Please use the [uthash Google Group](https://groups.google.com/d/forum/uthash) to ask questions. You can email it at <uthash@googlegroups.com>.",
+    "ja": "質問には[uthashのGoogleグループ](https://groups.google.com/d/forum/uthash)をご利用ください。<uthash@googlegroups.com>にメールを送ることもできます。"
+  },
+  {
+    "en": "### Contributing",
+    "ja": "### 貢献するには"
+  },
+  {
+    "en": "You may submit pull requests through GitHub. However, the maintainers of uthash value keeping it unchanged, rather than adding bells and whistles.",
+    "ja": "GitHubを通じてプルリクエストを送ることができます。ただし、uthashのメンテナーは、装飾的な機能を追加するよりも、変更せずに保つことを重視しています。"
+  },
+  {
+    "en": "### Extras included",
+    "ja": "### 同梱されている追加機能"
+  },
+  {
+    "en": "Three \"extras\" come with uthash. These provide lists, dynamic arrays and strings:",
+    "ja": "uthashには3つの「追加機能」が同梱されています。リスト、動的配列、文字列を提供します。"
+  },
+  {
+    "en": "- [utlist.h](/docs/uthash/v2-4-0/en/01-guides/02-utlist/) provides linked list macros for C structures.",
+    "ja": "- [utlist.h](/docs/uthash/v2-4-0/ja/01-guides/02-utlist/)は、Cの構造体を扱う連結リストのマクロを提供します。"
+  },
+  {
+    "en": "- [utarray.h](/docs/uthash/v2-4-0/en/01-guides/03-utarray/) implements dynamic arrays using macros.",
+    "ja": "- [utarray.h](/docs/uthash/v2-4-0/ja/01-guides/03-utarray/)は、マクロを使って動的配列を実装します。"
+  },
+  {
+    "en": "- [utstring.h](/docs/uthash/v2-4-0/en/01-guides/06-utstring/) implements a basic dynamic string.",
+    "ja": "- [utstring.h](/docs/uthash/v2-4-0/ja/01-guides/06-utstring/)は、基本的な動的文字列を実装します。"
+  },
+  {
+    "en": "### History",
+    "ja": "### 歴史"
+  },
+  {
+    "en": "I wrote uthash in 2004-2006 for my own purposes. Originally it was hosted on SourceForge. Uthash was downloaded around 30,000 times between 2006-2013 then transitioned to GitHub. It’s been incorporated into commercial software, academic research, and into other open-source software. It has also been added to the native package repositories for a number of Unix-y distros.",
+    "ja": "私は、自分の用途のために2004-2006年にuthashを書きました。当初はSourceForgeで公開していました。uthashは2006-2013年に約30,000回ダウンロードされ、その後GitHubへ移りました。商用ソフトウェア、学術研究、他のオープンソースソフトウェアに組み込まれています。また、複数のUnix系ディストリビューションの標準パッケージリポジトリにも追加されています。"
+  },
+  {
+    "en": "When uthash was written, there were fewer options for doing generic hash tables in C than exist today. There are faster hash tables, more memory-efficient hash tables, with very different API’s today. But, like driving a minivan, uthash is convenient, and gets the job done for many purposes.",
+    "ja": "uthashが書かれた当時、Cで汎用ハッシュテーブルを実現する選択肢は、現在よりも少数でした。現在は、より高速なハッシュテーブルや、メモリー効率が高く、APIも大きく異なるハッシュテーブルがあります。それでも、ミニバンを運転するのと同じように、uthashは便利で、多くの用途で必要な仕事をこなします。"
+  },
+  {
+    "en": "As of July 2016, uthash is maintained by Arthur O’Dwyer.",
+    "ja": "2016年7月から、uthashはArthur O’Dwyerによって保守されています。"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "canonicalLine": 2229,
+    "en": "### Bloom filter (faster misses)",
+    "ja": "### Bloomフィルター（検索失敗を高速化）"
+  },
+  {
+    "canonicalLine": 2233,
+    "en": "Programs that generate a fair miss rate (`HASH_FIND` that result in `NULL`) may benefit from the built-in Bloom filter support. This is disabled by default, because programs that generate only hits would incur a slight penalty from it. Also, programs that do deletes should not use the Bloom filter. While the program would operate correctly, deletes diminish the benefit of the filter. To enable the Bloom filter, simply compile with `-DHASH_BLOOM=n` like:",
+    "ja": "検索失敗（`HASH_FIND` の結果が `NULL` になること）がある程度の割合で発生するプログラムは、組み込みのBloomフィルターから恩恵を受ける可能性があります。検索がすべて成功するプログラムではわずかな性能低下が生じるため、既定では無効です。また、削除を行うプログラムではBloomフィルターを使うべきではありません。正しく動作しますが、削除によってフィルターの利点が減るためです。有効にするには、次のように `-DHASH_BLOOM=n` を付けてコンパイルするだけです。"
+  },
+  {
+    "canonicalLine": 2249,
+    "en": "where the number can be any value up to 32 which determines the amount of memory used by the filter, as shown below. Using more memory makes the filter more accurate and has the potential to speed up your program by making misses bail out faster.",
+    "ja": "この数値は32までの任意の値を指定でき、以下に示すように、フィルターが使用するメモリー量を決めます。より多くのメモリーを使うとフィルターの精度が高まり、検索失敗をより早く打ち切ることで、プログラムを高速化できる可能性があります。"
+  },
+  {
+    "canonicalLine": 2256,
+    "en": "<caption class=\"title\">Table 1. Bloom filter sizes for selected values of n</caption>",
+    "ja": "<caption class=\"title\">表1. nの値ごとのBloomフィルターのサイズ</caption>"
+  },
+  {
+    "canonicalLine": 2262,
+    "en": "<th align=\"left\" valign=\"top\"> Bloom filter size (per hash table)</th>",
+    "ja": "<th align=\"left\" valign=\"top\"> Bloomフィルターのサイズ（ハッシュテーブルごと）</th>"
+  },
+  {
+    "canonicalLine": 2268,
+    "en": "<td align=\"left\" valign=\"top\"><p class=\"table\">8 kilobytes</p></td>",
+    "ja": "<td align=\"left\" valign=\"top\"><p class=\"table\">8キロバイト</p></td>"
+  },
+  {
+    "canonicalLine": 2272,
+    "en": "<td align=\"left\" valign=\"top\"><p class=\"table\">128 kilobytes</p></td>",
+    "ja": "<td align=\"left\" valign=\"top\"><p class=\"table\">128キロバイト</p></td>"
+  },
+  {
+    "canonicalLine": 2276,
+    "en": "<td align=\"left\" valign=\"top\"><p class=\"table\">2 megabytes</p></td>",
+    "ja": "<td align=\"left\" valign=\"top\"><p class=\"table\">2メガバイト</p></td>"
+  },
+  {
+    "canonicalLine": 2280,
+    "en": "<td align=\"left\" valign=\"top\"><p class=\"table\">32 megabytes</p></td>",
+    "ja": "<td align=\"left\" valign=\"top\"><p class=\"table\">32メガバイト</p></td>"
+  },
+  {
+    "canonicalLine": 2284,
+    "en": "<td align=\"left\" valign=\"top\"><p class=\"table\">512 megabytes</p></td>",
+    "ja": "<td align=\"left\" valign=\"top\"><p class=\"table\">512メガバイト</p></td>"
+  },
+  {
+    "canonicalLine": 2293,
+    "en": "Bloom filters are only a performance feature; they do not change the results of hash operations in any way. The only way to gauge whether or not a Bloom filter is right for your program is to test it. Reasonable values for the size of the Bloom filter are 16-32 bits.",
+    "ja": "Bloomフィルターは、性能だけに関わる機能です。ハッシュ操作の結果を変えることは一切ありません。プログラムに適しているかどうかを判断する唯一の方法は、試してみることです。Bloomフィルターのサイズとして妥当な値は16-32ビットです。"
+  },
+  {
+    "canonicalLine": 2303,
+    "en": "### Select",
+    "ja": "### 選択"
+  },
+  {
+    "canonicalLine": 2307,
+    "en": "An experimental *select* operation is provided that inserts those items from a source hash that satisfy a given condition into a destination hash. This insertion is done with somewhat more efficiency than if this were using `HASH_ADD`, namely because the hash function is not recalculated for keys of the selected items. This operation does not remove any items from the source hash. Rather the selected items obtain dual presence in both hashes. The destination hash may already have items in it; the selected items are added to it. In order for a structure to be usable with `HASH_SELECT`, it must have two or more hash handles. (As described [here](#multihash), a structure can exist in many hash tables at the same time; it must have a separate hash handle for each one).",
+    "ja": "実験的な *選択* 操作が用意されています。指定した条件を満たす要素を、元のハッシュから宛先のハッシュへ挿入します。`HASH_ADD` を使う場合よりもいくらか効率よく挿入できます。選択した要素のキーについて、ハッシュ関数を再計算しないためです。この操作は、元のハッシュから要素を取り除きません。選択した要素は、両方のハッシュに存在するようになります。宛先のハッシュにすでに要素があっても構いません。選択した要素は、そこに追加されます。構造体を `HASH_SELECT` で使うには、2つ以上のハッシュハンドルが必要です（[複数テーブルへの登録](#multihash)で説明したように、構造体は同時に多くのハッシュテーブルに存在できますが、テーブルごとに別々のハッシュハンドルが必要です）。"
+  },
+  {
+    "canonicalLine": 2338,
+    "en": "Now suppose we have added some users, and want to select just the administrator users who have id’s less than 1024.",
+    "ja": "利用者を何人か追加した後、IDが1024未満の管理者だけを選択したいとしましょう。"
+  },
+  {
+    "canonicalLine": 2355,
+    "en": "The first two parameters are the *destination* hash handle and hash table, the second two parameters are the *source* hash handle and hash table, and the last parameter is the *select condition*. Here we used a macro `is_admin(x)` but we could just as well have used a function.",
+    "ja": "最初の2つの引数は *宛先* のハッシュハンドルとハッシュテーブル、次の2つは *元* のハッシュハンドルとハッシュテーブル、最後の引数は *選択条件* です。ここではマクロ `is_admin(x)` を使っていますが、関数を使っても構いません。"
+  },
+  {
+    "canonicalLine": 2374,
+    "en": "If the select condition always evaluates to true, this operation is essentially a *merge* of the source hash into the destination hash.",
+    "ja": "選択条件が常に真になる場合、この操作は実質的に、元のハッシュを宛先のハッシュへ *マージ* します。"
+  },
+  {
+    "canonicalLine": 2380,
+    "en": "`HASH_SELECT` adds items to the destination without removing them from the source; the source hash table remains unchanged. The destination hash table must not be the same as the source hash table.",
+    "ja": "`HASH_SELECT` は、元のハッシュから要素を取り除かずに宛先へ追加するため、元のハッシュテーブルは変わりません。宛先のハッシュテーブルは、元のハッシュテーブルと同じであってはなりません。"
+  },
+  {
+    "canonicalLine": 2386,
+    "en": "An example of using `HASH_SELECT` is included in `tests/test36.c`.",
+    "ja": "`HASH_SELECT` の使用例は、`tests/test36.c` に収録されています。"
+  }
+]

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T11:57:36.674Z",
+  "status": "passed-search-regression-display-incomplete",
+  "change": "検索結果リンクのclick時にdialog.close()を実行。pointer/Enterの双方へ適用。",
+  "rootIntegration": {
+    "before": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/search-client.before.ts",
+      "sha256": "e8bc5a0a29f6572ad90857e2598889e904720d592d86eed66c49c42ede78fb35"
+    },
+    "after": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/search-client.after.ts",
+      "sha256": "1e908c9f5e3f3e693157b2b0da0f77c94949515b35655b813d6e95ee90c94abc"
+    },
+    "concurrentChangesProtected": "rootと変更前snapshotの全bytes一致を確認して適用"
+  },
+  "checks": [
+    {
+      "name": "検索既存unit6件とtests TypeScript",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/SEARCH_UNIT.log",
+        "sha256": "d0ba3b6b6e2ab013d20fe5f2bbba004e1d5e62521b92ca410928591ea6cb6aa7"
+      }
+    },
+    {
+      "name": "uthash21/pugixml29 route build",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/BUILD.log",
+        "sha256": "04a62539d48679de9485a28e95b26d5e679ebc8a567acdbdce4037997e8b61d7"
+      }
+    },
+    {
+      "name": "共有search-client ESLint",
+      "status": "passed",
+      "command": "pnpm exec eslint packages/ui/src/scripts/search-client.ts",
+      "exitCode": 0
+    }
+  ],
+  "browser": {
+    "tool": "cua_repl",
+    "environment": "local Astro preview, integrated Pages未公開",
+    "observations": [
+      {
+        "app": "uthash",
+        "language": "ja",
+        "input": "マクロリファレンス",
+        "action": "ArrowDown / Enter",
+        "result": "URL #Macro_reference、dialog.open=false"
+      },
+      {
+        "app": "uthash",
+        "language": "ja",
+        "input": "スレッド安全性",
+        "action": "pointer",
+        "result": "URL #_thread_safety、dialog.open=false"
+      },
+      {
+        "app": "uthash",
+        "language": "ja",
+        "action": "検索を開きEscape",
+        "result": "dialog.open=false"
+      },
+      {
+        "app": "uthash",
+        "language": "en",
+        "input": "Thread safety",
+        "action": "pointer",
+        "result": "URL #_thread_safety、dialog.open=false"
+      },
+      {
+        "app": "uthash",
+        "language": "en",
+        "input": "utstack",
+        "action": "pointer別ページ",
+        "result": "01-guides/05-utstack/、dialog.open=false。desktop screenshotで本文・コード・sidebar表示確認"
+      },
+      {
+        "app": "pugixml",
+        "language": "ja",
+        "input": "xpath_query",
+        "action": "pointer同一ページ",
+        "result": "08-xpath/#source-xpath_query、dialog.open=false"
+      },
+      {
+        "app": "pugixml",
+        "language": "ja",
+        "input": "xpath_query",
+        "action": "APIリファレンス結果でEnter",
+        "result": "03-reference/02-api-reference/、dialog.open=false"
+      }
+    ],
+    "screenshots": "cua toolで目視。画像ファイルは保存していない。",
+    "mobile": {
+      "status": "pending",
+      "requestedViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "observedViewport": {
+        "innerWidth": 1280,
+        "innerHeight": 720,
+        "clientWidth": 1265
+      },
+      "reason": "viewport capability set後も実測と画像がdesktopのまま。一時overrideはreset済み。"
+    }
+  },
+  "limits": [
+    "検索回帰の確認のみ。全ページ表示/モバイル/統合build/integrity/公開は未完了。",
+    "内容review210全8ページは変更なし。root apps/uthash未配置、配信除外維持。"
+  ]
+}

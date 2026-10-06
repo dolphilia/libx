@@ -1,0 +1,222 @@
+[
+  {
+    "canonicalLine": 290,
+    "en": "## Your structure",
+    "ja": "## 構造体"
+  },
+  {
+    "canonicalLine": 296,
+    "en": "In uthash, a hash table is comprised of structures. Each structure represents a key-value association. One or more of the structure fields constitute the key. The structure pointer itself is the value.",
+    "ja": "uthashのハッシュテーブルは、構造体で構成されます。各構造体はキーと値の対応関係を表します。構造体の1つ以上のフィールドがキーを構成し、構造体へのポインター自体が値になります。"
+  },
+  {
+    "canonicalLine": 304,
+    "en": "Defining a structure that can be hashed",
+    "ja": "ハッシュに格納できる構造体の定義"
+  },
+  {
+    "canonicalLine": 324,
+    "en": "Note that, in uthash, your structure will never be moved or copied into another location when you add it into a hash table. This means that you can keep other data structures that safely point to your structure-- regardless of whether you add or delete it from a hash table during your program’s lifetime.",
+    "ja": "uthashでは、構造体をハッシュテーブルに追加しても、その構造体が別の場所に移動されたりコピーされたりすることはありません。そのため、プログラムの実行中にその構造体をハッシュテーブルへ追加したり削除したりしても、安全にその構造体を指す別のデータ構造を保持できます。"
+  },
+  {
+    "canonicalLine": 332,
+    "en": "### The key",
+    "ja": "### キー"
+  },
+  {
+    "canonicalLine": 336,
+    "en": "There are no restrictions on the data type or name of the key field. The key can also comprise multiple contiguous fields, having any names and data types.",
+    "ja": "キーのフィールドのデータ型や名前に制限はありません。任意の名前とデータ型を持つ、複数の連続したフィールドでキーを構成することもできます。"
+  },
+  {
+    "canonicalLine": 346,
+    "en": "Any data type… really?",
+    "ja": "本当に、どのデータ型でも使えますか？"
+  },
+  {
+    "canonicalLine": 352,
+    "en": "Yes, your key and structure can have any data type. Unlike function calls with fixed prototypes, uthash consists of macros-- whose arguments are untyped-- and thus able to work with any type of structure or key.",
+    "ja": "はい、キーと構造体には任意のデータ型を使えます。固定のプロトタイプを持つ関数呼び出しとは異なり、uthashは引数に型を持たないマクロで構成されるため、任意の型の構造体やキーを扱えます。"
+  },
+  {
+    "canonicalLine": 364,
+    "en": "#### Unique keys",
+    "ja": "#### キーの一意性"
+  },
+  {
+    "canonicalLine": 368,
+    "en": "As with any hash, every item must have a unique key. Your application must enforce key uniqueness. Before you add an item to the hash table, you must first know (if in doubt, check!) that the key is not already in use. You can check whether a key already exists in the hash table using `HASH_FIND`.",
+    "ja": "他のハッシュと同様に、すべての要素が一意のキーを持つ必要があります。アプリケーション側でキーの一意性を保証しなければなりません。要素をハッシュテーブルに追加する前に、そのキーがまだ使われていないことを確認しておく必要があります（不確かなら調べてください）。`HASH_FIND` を使って、そのキーがすでにハッシュテーブルにあるかどうかを調べられます。"
+  },
+  {
+    "canonicalLine": 380,
+    "en": "### The hash handle",
+    "ja": "### ハッシュハンドル"
+  },
+  {
+    "canonicalLine": 384,
+    "en": "The `UT_hash_handle` field must be present in your structure. It is used for the internal bookkeeping that makes the hash work. It does not require initialization. It can be named anything, but you can simplify matters by naming it `hh`. This allows you to use the easier \"convenience\" macros to add, find and delete items.",
+    "ja": "構造体には `UT_hash_handle` フィールドが必ず必要です。ハッシュを動作させるための内部管理に使われます。初期化は不要です。任意の名前を付けられますが、`hh` という名前にすると扱いが簡単になります。これにより、要素の追加・検索・削除に、より簡単な「簡便マクロ」を使えます。"
+  },
+  {
+    "canonicalLine": 394,
+    "en": "### A word about memory",
+    "ja": "### メモリーについて"
+  },
+  {
+    "canonicalLine": 400,
+    "en": "#### Overhead",
+    "ja": "#### オーバーヘッド"
+  },
+  {
+    "canonicalLine": 404,
+    "en": "The hash handle consumes about 32 bytes per item on a 32-bit system, or 56 bytes per item on a 64-bit system. The other overhead costs-- the buckets and the table-- are negligible in comparison. You can use `HASH_OVERHEAD` to get the overhead size, in bytes, for a hash table. See [Macro Reference](#Macro_reference).",
+    "ja": "ハッシュハンドルは、32ビットシステムでは要素ごとに約32バイト、64ビットシステムでは要素ごとに約56バイトを消費します。その他のオーバーヘッドであるバケットとテーブルは、これと比べれば無視できる程度です。`HASH_OVERHEAD` を使うと、ハッシュテーブルのオーバーヘッドのサイズをバイト単位で取得できます。[マクロリファレンス](#Macro_reference)を参照してください。"
+  },
+  {
+    "canonicalLine": 414,
+    "en": "#### How clean up occurs",
+    "ja": "#### 内部メモリーが解放されるタイミング"
+  },
+  {
+    "canonicalLine": 418,
+    "en": "Some have asked how uthash cleans up its internal memory. The answer is simple: *when you delete the final item* from a hash table, uthash releases all the internal memory associated with that hash table, and sets its pointer to NULL.",
+    "ja": "uthashが内部メモリーをどのように解放するのか、という質問がありました。答えは簡単です。ハッシュテーブルから *最後の要素を削除すると*、uthashはそのハッシュテーブルに関連する内部メモリーをすべて解放し、そのポインターをNULLに設定します。"
+  },
+  {
+    "canonicalLine": 434,
+    "en": "## Hash operations",
+    "ja": "## ハッシュの操作"
+  },
+  {
+    "canonicalLine": 440,
+    "en": "This section introduces the uthash macros by example. For a more succinct listing, see [Macro Reference](#Macro_reference).",
+    "ja": "この節では、例を通じてuthashのマクロを紹介します。より簡潔な一覧については、[マクロリファレンス](#Macro_reference)を参照してください。"
+  },
+  {
+    "canonicalLine": 450,
+    "en": "Convenience vs. general macros:",
+    "ja": "簡便マクロと汎用マクロ："
+  },
+  {
+    "canonicalLine": 456,
+    "en": "The uthash macros fall into two categories. The *convenience* macros can be used with integer, pointer or string keys (and require that you chose the conventional name `hh` for the `UT_hash_handle` field). The convenience macros take fewer arguments than the general macros, making their usage a bit simpler for these common types of keys.",
+    "ja": "uthashのマクロには2つの種類があります。*簡便* マクロは、整数・ポインター・文字列のキーに使えます（慣例的な名前の `hh` を `UT_hash_handle` フィールドに付けている必要があります）。簡便マクロは汎用マクロより引数が少ないため、これらの一般的なキーの型で、少し簡単に使えます。"
+  },
+  {
+    "canonicalLine": 462,
+    "en": "The *general* macros can be used for any types of keys, or for multi-field keys, or when the `UT_hash_handle` has been named something other than `hh`. These macros take more arguments and offer greater flexibility in return. But if the convenience macros suit your needs, use them-- your code will be more readable.",
+    "ja": "*汎用* マクロは、任意の型のキー、複数のフィールドからなるキー、または `UT_hash_handle` に `hh` 以外の名前を付けている場合に使えます。引数は多くなりますが、その分、柔軟性が高くなります。ただし、簡便マクロで要件を満たせるなら、それを使ってください。コードが読みやすくなります。"
+  },
+  {
+    "canonicalLine": 474,
+    "en": "### Declare the hash",
+    "ja": "### ハッシュの宣言"
+  },
+  {
+    "canonicalLine": 478,
+    "en": "Your hash must be declared as a `NULL`-initialized pointer to your structure.",
+    "ja": "ハッシュは、構造体へのポインターとして宣言し、`NULL` で初期化しなければなりません。"
+  },
+  {
+    "canonicalLine": 498,
+    "en": "### Add item",
+    "ja": "### 要素の追加"
+  },
+  {
+    "canonicalLine": 502,
+    "en": "Allocate and initialize your structure as you see fit. The only aspect of this that matters to uthash is that your key must be initialized to a unique value. Then call `HASH_ADD`. (Here we use the convenience macro `HASH_ADD_INT`, which offers simplified usage for keys of type `int`).",
+    "ja": "構造体のメモリーを確保し、用途に応じて初期化してください。このときuthashにとって重要なのは、キーを一意の値で初期化することだけです。その後、`HASH_ADD` を呼び出します（ここでは、簡便マクロ `HASH_ADD_INT` を使います。`int` 型のキーを簡単に扱えます）。"
+  },
+  {
+    "canonicalLine": 510,
+    "en": "Add an item to a hash",
+    "ja": "ハッシュに要素を追加する"
+  },
+  {
+    "canonicalLine": 531,
+    "en": "The first parameter to `HASH_ADD_INT` is the hash table, and the second parameter is the *name* of the key field. Here, this is `id`. The last parameter is a pointer to the structure being added.",
+    "ja": "`HASH_ADD_INT` の第1引数はハッシュテーブル、第2引数はキーのフィールドの *名前* です。この例では `id` です。最後の引数は、追加する構造体へのポインターです。"
+  },
+  {
+    "canonicalLine": 541,
+    "en": "Wait.. the parameter is a field name?",
+    "ja": "引数にフィールド名を渡すのですか？"
+  },
+  {
+    "canonicalLine": 547,
+    "en": "If you find it strange that `id`, which is the *name of a field* in the structure, can be passed as a parameter… welcome to the world of macros. Don’t worry; the C preprocessor expands this to valid C code.",
+    "ja": "`id` は構造体の *フィールド名* ですが、それを引数として渡せることを不思議に思うなら、マクロの世界へようこそ。心配は不要です。Cプリプロセッサーが、有効なCコードに展開します。"
+  },
+  {
+    "canonicalLine": 559,
+    "en": "#### Key must not be modified while in-use",
+    "ja": "#### 使用中のキーは変更してはいけません"
+  },
+  {
+    "canonicalLine": 563,
+    "en": "Once a structure has been added to the hash, do not change the value of its key. Instead, delete the item from the hash, change the key, and then re-add it.",
+    "ja": "構造体をハッシュに追加した後は、そのキーの値を変更しないでください。変更するには、要素をハッシュから削除し、キーを変更してから、再び追加してください。"
+  },
+  {
+    "canonicalLine": 573,
+    "en": "#### Checking uniqueness",
+    "ja": "#### 一意性の確認"
+  },
+  {
+    "canonicalLine": 577,
+    "en": "In the example above, we didn’t check to see if `user_id` was already a key of some existing item in the hash. **If there’s any chance that duplicate keys could be generated by your program, you must explicitly check the uniqueness** before adding the key to the hash. If the key is already in the hash, you can simply modify the existing structure in the hash rather than adding the item. *It is an error to add two items with the same key to the hash table*.",
+    "ja": "上の例では、`user_id` が、ハッシュ内の既存の要素のキーになっていないかを確認していません。**プログラムが重複するキーを生成する可能性が少しでもあるなら、明示的に一意性を確認しなければなりません**。確認は、キーをハッシュに追加する前に行います。キーがすでにハッシュにある場合は、要素を追加せず、ハッシュ内の既存の構造体を変更するだけで済みます。*同じキーを持つ2つの要素をハッシュテーブルに追加するのは誤りです*。"
+  },
+  {
+    "canonicalLine": 583,
+    "en": "Let’s rewrite the `add_user` function to check whether the id is in the hash. Only if the id is not present in the hash, do we create the item and add it. Otherwise we just modify the structure that already exists.",
+    "ja": "IDがハッシュにあるかどうかを確認するように、`add_user` 関数を書き直してみましょう。IDがハッシュにない場合に限り、要素を作成して追加します。それ以外の場合は、すでにある構造体を変更するだけです。"
+  },
+  {
+    "canonicalLine": 617,
+    "en": "Why doesn’t uthash check key uniqueness for you? It saves the cost of a hash lookup for those programs which don’t need it- for example, programs whose keys are generated by an incrementing, non-repeating counter.",
+    "ja": "uthashがキーの一意性を確認しないのはなぜでしょうか。それを必要としないプログラムで、ハッシュ検索のコストを省くためです。たとえば、増加し続けて重複しないカウンターでキーを生成するプログラムが該当します。"
+  },
+  {
+    "canonicalLine": 623,
+    "en": "However, if replacement is a common operation, it is possible to use the `HASH_REPLACE` macro. This macro, before adding the item, will try to find an item with the same key and delete it first. It also returns a pointer to the replaced item, so the user has a chance to de-allocate its memory.",
+    "ja": "ただし、置換を頻繁に行う場合は、`HASH_REPLACE` マクロを使えます。このマクロは、要素を追加する前に、同じキーを持つ要素を検索し、先に削除しようとします。置換された要素へのポインターも返すため、利用者はその要素のメモリーを解放できます。"
+  },
+  {
+    "canonicalLine": 633,
+    "en": "#### Passing the hash pointer into functions",
+    "ja": "#### ハッシュのポインターを関数に渡す"
+  },
+  {
+    "canonicalLine": 637,
+    "en": "In the example above `users` is a global variable, but what if the caller wanted to pass the hash pointer *into* the `add_user` function? At first glance it would appear that you could simply pass `users` as an argument, but that won’t work right.",
+    "ja": "上の例では `users` はグローバル変数ですが、呼び出し側がハッシュのポインターを *関数の中へ* 渡し、`add_user` で扱いたい場合はどうでしょうか。一見、引数として `users` を渡すだけでよさそうですが、それでは正しく動作しません。"
+  },
+  {
+    "canonicalLine": 657,
+    "en": "You really need to pass *a pointer* to the hash pointer:",
+    "ja": "実際には、ハッシュのポインターを指す *ポインター* を渡す必要があります。"
+  },
+  {
+    "canonicalLine": 677,
+    "en": "Note that we dereferenced the pointer in the `HASH_ADD` also.",
+    "ja": "`HASH_ADD` の中でも、ポインターを参照外ししている点に注意してください。"
+  },
+  {
+    "canonicalLine": 683,
+    "en": "The reason it’s necessary to deal with a pointer to the hash pointer is simple: the hash macros modify it (in other words, they modify the *pointer itself* not just what it points to).",
+    "ja": "ハッシュのポインターを指すポインターを扱う必要がある理由は簡単です。ハッシュのマクロがそのポインターを変更するからです（指しているものだけでなく、*ポインター自体* を変更します）。"
+  },
+  {
+    "canonicalLine": 695,
+    "en": "### Replace item",
+    "ja": "### 要素の置換"
+  },
+  {
+    "canonicalLine": 699,
+    "en": "`HASH_REPLACE` macros are equivalent to HASH_ADD macros except they attempt to find and delete the item first. If it finds and deletes an item, it will also return that items pointer as an output parameter.",
+    "ja": "`HASH_REPLACE` マクロは、先に要素を検索して削除しようとする点を除き、HASH_ADDマクロと同じです。要素が見つかり削除された場合は、その要素へのポインターも出力引数として返します。"
+  }
+]

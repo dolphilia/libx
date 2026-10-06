@@ -1,0 +1,147 @@
+[
+  {
+    "canonicalLine": 3358,
+    "en": "## Macro reference",
+    "ja": "## マクロリファレンス"
+  },
+  {
+    "canonicalLine": 3366,
+    "en": "### Convenience macros",
+    "ja": "### 便利マクロ"
+  },
+  {
+    "canonicalLine": 3370,
+    "en": "The convenience macros do the same thing as the generalized macros, but require fewer arguments.",
+    "ja": "便利マクロは汎用マクロと同じ操作を行いますが、必要な引数が少なくなっています。"
+  },
+  {
+    "canonicalLine": 3376,
+    "en": "In order to use the convenience macros,",
+    "ja": "便利マクロを使うには、次の条件を満たす必要があります。"
+  },
+  {
+    "canonicalLine": 3382,
+    "en": "1.  the structure’s `UT_hash_handle` field must be named `hh`, and",
+    "ja": "1.  構造体の`UT_hash_handle`フィールドの名前が`hh`であること。"
+  },
+  {
+    "canonicalLine": 3384,
+    "en": "2.  for add or find, the key field must be of type `int` or `char[]` or pointer",
+    "ja": "2.  追加または検索では、キーフィールドの型が`int`、`char[]`、またはポインターであること。"
+  },
+  {
+    "canonicalLine": 3391,
+    "en": "<caption class=\"title\">Table 3. Convenience macros</caption>",
+    "ja": "<caption class=\"title\">表3. 便利マクロ</caption>"
+  },
+  {
+    "canonicalLine": 3396,
+    "en": "<th align=\"left\" valign=\"top\">macro            </th>",
+    "ja": "<th align=\"left\" valign=\"top\">マクロ</th>"
+  },
+  {
+    "canonicalLine": 3397,
+    "en": "<th align=\"left\" valign=\"top\"> arguments</th>",
+    "ja": "<th align=\"left\" valign=\"top\">引数</th>"
+  },
+  {
+    "canonicalLine": 3460,
+    "en": "### General macros",
+    "ja": "### 汎用マクロ"
+  },
+  {
+    "canonicalLine": 3464,
+    "en": "These macros add, find, delete and sort the items in a hash. You need to use the general macros if your `UT_hash_handle` is named something other than `hh`, or if your key’s data type isn’t `int` or `char[]`.",
+    "ja": "これらのマクロは、ハッシュ内の項目を追加・検索・削除・ソートします。`UT_hash_handle`の名前が`hh`以外の場合や、キーのデータ型が`int`または`char[]`ではない場合には、汎用マクロを使う必要があります。"
+  },
+  {
+    "canonicalLine": 3471,
+    "en": "<caption class=\"title\">Table 4. General macros</caption>",
+    "ja": "<caption class=\"title\">表4. 汎用マクロ</caption>"
+  },
+  {
+    "canonicalLine": 3476,
+    "en": "<th align=\"left\" valign=\"top\">macro                               </th>",
+    "ja": "<th align=\"left\" valign=\"top\">マクロ</th>"
+  },
+  {
+    "canonicalLine": 3477,
+    "en": "<th align=\"left\" valign=\"top\"> arguments</th>",
+    "ja": "<th align=\"left\" valign=\"top\">引数</th>"
+  },
+  {
+    "canonicalLine": 3578,
+    "en": "<div class=\"title\">Note</div>",
+    "ja": "<div class=\"title\">注意</div>"
+  },
+  {
+    "canonicalLine": 3580,
+    "en": "<td class=\"content\"><code>HASH_ADD_KEYPTR</code> is used when the structure contains a pointer to the",
+    "ja": "<td class=\"content\"><code>HASH_ADD_KEYPTR</code>は、構造体がキー自体ではなく、"
+  },
+  {
+    "canonicalLine": 3581,
+    "en": "key, rather than the key itself.</td>",
+    "ja": "キーへのポインターを保持している場合に使います。</td>"
+  },
+  {
+    "canonicalLine": 3588,
+    "en": "The `HASH_VALUE` and `..._BYHASHVALUE` macros are a performance mechanism mainly for the special case of having different structures, in different hash tables, having identical keys. It allows the hash value to be obtained once and then passed in to the `..._BYHASHVALUE` macros, saving the expense of re-computing the hash value.",
+    "ja": "`HASH_VALUE`と`..._BYHASHVALUE`マクロは、主として、異なるハッシュテーブル内の異なる構造体が同一のキーを持つという特殊な場合に使う性能向上の仕組みです。ハッシュ値を一度だけ求めて`..._BYHASHVALUE`マクロへ渡すことで、ハッシュ値を再計算するコストを省けます。"
+  },
+  {
+    "canonicalLine": 3596,
+    "en": "#### Argument descriptions",
+    "ja": "#### 引数の説明"
+  },
+  {
+    "canonicalLine": 3601,
+    "en": "name of the `UT_hash_handle` field in the structure. Conventionally called `hh`.",
+    "ja": "構造体内の`UT_hash_handle`フィールドの名前です。慣例では`hh`とします。"
+  },
+  {
+    "canonicalLine": 3604,
+    "en": "the structure pointer variable which acts as the \"head\" of the hash. So named because it initially points to the first item that is added to the hash.",
+    "ja": "ハッシュの「先頭」として働く構造体ポインター変数です。最初はハッシュに追加された最初の項目を指すため、この名前で呼ばれます。"
+  },
+  {
+    "canonicalLine": 3607,
+    "en": "the name of the key field in the structure. (In the case of a multi-field key, this is the first field of the key). If you’re new to macros, it might seem strange to pass the name of a field as a parameter. See [note](#validc).",
+    "ja": "構造体内のキーフィールドの名前です（複数フィールドのキーでは、キーの最初のフィールドです）。マクロに慣れていないと、フィールド名をパラメーターとして渡すのは奇妙に見えるかもしれません。[注意](#validc)を参照してください。"
+  },
+  {
+    "canonicalLine": 3610,
+    "en": "the length of the key field in bytes. E.g. for an integer key, this is `sizeof(int)`, while for a string key it’s `strlen(key)`. (For a multi-field key, see [this note](#multifield_note).)",
+    "ja": "キーフィールドの長さをバイト単位で指定します。たとえば整数キーでは`sizeof(int)`、文字列キーでは`strlen(key)`です（複数フィールドのキーについては[こちらの注意](#multifield_note)を参照してください）。"
+  },
+  {
+    "canonicalLine": 3613,
+    "en": "for `HASH_FIND`, this is a pointer to the key to look up in the hash (since it’s a pointer, you can’t directly pass a literal value here). For `HASH_ADD_KEYPTR`, this is the address of the key of the item being added.",
+    "ja": "`HASH_FIND`では、ハッシュ内で検索するキーへのポインターです（ポインターなので、リテラル値を直接渡すことはできません）。`HASH_ADD_KEYPTR`では、追加する項目のキーのアドレスです。"
+  },
+  {
+    "canonicalLine": 3616,
+    "en": "the hash value of the provided key. This is an input parameter for the `..._BYHASHVALUE` macros, and an output parameter for `HASH_VALUE`. Reusing a cached hash value can be a performance optimization if you’re going to do repeated lookups for the same key.",
+    "ja": "指定したキーのハッシュ値です。`..._BYHASHVALUE`マクロでは入力パラメーター、`HASH_VALUE`では出力パラメーターです。同じキーを繰り返し検索する場合、キャッシュしたハッシュ値の再利用で性能を向上できることがあります。"
+  },
+  {
+    "canonicalLine": 3619,
+    "en": "pointer to the structure being added, deleted, replaced, or looked up, or the current pointer during iteration. This is an input parameter for the `HASH_ADD`, `HASH_DELETE`, and `HASH_REPLACE` macros, and an output parameter for `HASH_FIND` and `HASH_ITER`. (When using `HASH_ITER` to iterate, `tmp_item_ptr` is another variable of the same type as `item_ptr`, used internally).",
+    "ja": "追加・削除・置換・検索する構造体へのポインター、または反復処理中の現在のポインターです。`HASH_ADD`、`HASH_DELETE`、`HASH_REPLACE`マクロでは入力パラメーター、`HASH_FIND`と`HASH_ITER`では出力パラメーターです（`HASH_ITER`で反復処理を行う場合、`tmp_item_ptr`は`item_ptr`と同じ型の別変数で、内部で使われます）。"
+  },
+  {
+    "canonicalLine": 3622,
+    "en": "used in `HASH_REPLACE` macros. This is an output parameter that is set to point to the replaced item (if no item is replaced it is set to NULL).",
+    "ja": "`HASH_REPLACE`マクロで使います。置換された項目を指すように設定される出力パラメーターです（置換される項目がなければNULLに設定されます）。"
+  },
+  {
+    "canonicalLine": 3625,
+    "en": "pointer to comparison function which accepts two arguments (pointers to items to compare) and returns an int specifying whether the first item should sort before, equal to, or after the second item (like `strcmp`).",
+    "ja": "2つの引数（比較する項目へのポインター）を受け取り、最初の項目を2番目の項目より前・同順位・後のどこに並べるかを示すintを返す比較関数へのポインターです（`strcmp`と同様）。"
+  },
+  {
+    "canonicalLine": 3628,
+    "en": "a function or macro which accepts a single argument (a void pointer to a structure, which needs to be cast to the appropriate structure type). The function or macro should evaluate to a non-zero value if the structure should be \"selected\" for addition to the destination hash.",
+    "ja": "引数を1つ受け取る関数またはマクロです。引数は構造体へのvoidポインターで、適切な構造体型にキャストする必要があります。その構造体を宛先ハッシュへの追加対象として「選択」する場合、関数またはマクロは非ゼロの値を返す必要があります。"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T10:44:25.802Z",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.3.2)\nTarget: arm64-apple-darwin24.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin",
+  "scope": "Original stack example whole block with upstream header; utstring original malloc statement in minimal includes/declaration wrapper. Syntax only, no executable generated.",
+  "diagnostics": [
+    {
+      "name": "utstack-original-example.c",
+      "arguments": [
+        "-fsyntax-only",
+        "-I/private/tmp/libx-official-research-20261002-114/uthash/src",
+        "/private/tmp/libx-uthash-review-187/utstack-original-example.c"
+      ],
+      "exitCode": 1,
+      "stderr": "/private/tmp/libx-uthash-review-187/utstack-original-example.c:18:24: error: expected parentheses around type name in sizeof expression\n   18 |     char linebuf[sizeof el->bname];\n      |                        ^  \n      |                        (  )\n1 error generated.\n",
+      "input": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-187/utstack-original-example.c",
+        "sha256": "a71af67603ded87c1e8561581c2edd96ca360749c5f1a30e2e7b104aa7c3a3ef"
+      }
+    },
+    {
+      "name": "utstring-original-allocation.c",
+      "arguments": [
+        "-fsyntax-only",
+        "/private/tmp/libx-uthash-review-187/utstring-original-allocation.c"
+      ],
+      "exitCode": 1,
+      "stderr": "/private/tmp/libx-uthash-review-187/utstring-original-allocation.c:5:64: error: extraneous ')' before ';'\n    5 | KPM_TABLE = (long *)malloc( sizeof(long) * (strlen(\"ABC\")) + 1));\n      |                                                                ^\n1 error generated.\n",
+      "input": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-187/utstring-original-allocation.c",
+        "sha256": "732790cd856902b6e68481654a7517553317fdc2a1edadf57c3f766e5f9d54cf"
+      }
+    }
+  ],
+  "conclusion": "Both original source sample problems confirmed. Canonical preserves source; sample executable correctness is not claimed. Use separate provenance notes, do not silently alter original code."
+}

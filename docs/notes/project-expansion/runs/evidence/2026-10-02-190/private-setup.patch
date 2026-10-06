@@ -1,0 +1,133 @@
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 5a8c8898..4b7489ce 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -414,6 +414,39 @@ importers:
+         specifier: ^5.0.0
+         version: 5.0.0
+ 
++  apps/uthash:
++    dependencies:
++      '@docs/config':
++        specifier: workspace:*
++        version: link:../../packages/config
++      '@docs/content-utils':
++        specifier: workspace:*
++        version: link:../../packages/content-utils
++      '@docs/i18n':
++        specifier: workspace:*
++        version: link:../../packages/i18n
++      '@docs/project-config':
++        specifier: workspace:*
++        version: link:../../packages/project-config
++      '@docs/theme':
++        specifier: workspace:*
++        version: link:../../packages/theme
++      '@docs/ui':
++        specifier: workspace:*
++        version: link:../../packages/ui
++      '@docs/versioning':
++        specifier: workspace:*
++        version: link:../../packages/versioning
++      astro:
++        specifier: ^5.7.12
++        version: 5.7.12(@types/node@24.13.3)(jiti@1.21.7)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.7.1)
++      shiki:
++        specifier: ^3.4.0
++        version: 3.4.0
++      unist-util-visit:
++        specifier: ^5.0.0
++        version: 5.0.0
++
+   apps/sample-docs:
+     dependencies:
+       '@astrojs/mdx':
+diff --git a/sites/landing/src/config/projects.config.jsonc b/sites/landing/src/config/projects.config.jsonc
+index 95ea3a17..cbf9716a 100644
+--- a/sites/landing/src/config/projects.config.jsonc
++++ b/sites/landing/src/config/projects.config.jsonc
+@@ -6,36 +6,75 @@
+   },
+   // プロジェクトカードの装飾情報
+   "projectDecorations": {
+-    "pugixml": { "icon": "file-code", "tags": ["xml", "cpp", "reference"], "isNew": true },
++    "pugixml": {
++      "icon": "file-code",
++      "tags": [
++        "xml",
++        "cpp",
++        "reference"
++      ],
++      "isNew": true
++    },
+     "sample-docs": {
+       "isNew": false,
+       "icon": "file-text",
+-      "tags": ["sample", "documentation", "example"]
++      "tags": [
++        "sample",
++        "documentation",
++        "example"
++      ]
+     },
+     "test-verification": {
+       "isNew": true,
+       "icon": "file-text",
+-      "tags": ["documentation"]
++      "tags": [
++        "documentation"
++      ]
+     },
+     "glfw": {
+       "icon": "code",
+-      "tags": ["glfw", "c", "graphics", "reference"],
++      "tags": [
++        "glfw",
++        "c",
++        "graphics",
++        "reference"
++      ],
+       "isNew": true
+     },
+     "lua": {
+       "icon": "code",
+-      "tags": ["lua", "language", "reference"],
++      "tags": [
++        "lua",
++        "language",
++        "reference"
++      ],
+       "isNew": true
+     },
+     "awesome": {
+       "icon": "list",
+-      "tags": ["awesome", "curation"],
++      "tags": [
++        "awesome",
++        "curation"
++      ],
+       "isNew": true
+     },
+     "toml": {
+       "icon": "file-code",
+-      "tags": ["toml", "configuration", "specification"],
++      "tags": [
++        "toml",
++        "configuration",
++        "specification"
++      ],
++      "isNew": true
++    },
++    "uthash": {
++      "icon": "code",
++      "tags": [
++        "c",
++        "hash-table",
++        "reference"
++      ],
+       "isNew": true
+     }
+   }
+-}
++}
+\ No newline at end of file
