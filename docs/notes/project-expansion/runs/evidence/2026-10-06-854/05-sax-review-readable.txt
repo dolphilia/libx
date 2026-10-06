@@ -1,0 +1,99 @@
+2	「SAX」という用語は、Simple API for XMLに由来します。JSONの解析・生成にも、この用語を借用しています。
+3	RapidJSONでは、Reader（GenericReader<...>のtypedef）がJSONのSAX形式パーサーで、Writer（GenericWriter<...>のtypedef）がJSONのSAX形式生成器です。
+4	Reader
+5	Readerは、ストリームからJSONを解析します。ストリームの文字を読みながらJSONの構文に従って解析し、ハンドラーへイベントを発行します。
+6	たとえば、次のJSONを考えます。
+7	Readerは、このJSONを解析しながら、以下のイベントをハンドラーへ順番に発行します。
+8	これらのイベントは、JSONと簡単に対応付けられますが、一部の引数には説明が必要です。上とまったく同じ出力を生成するsimplereaderの例を見てみます。
+9	JSONテキストを解析します。
+10	RapidJSONの主な名前空間。
+11	UTF8エンコーディングの文字列ストリーム。
+12	UTF8エンコーディングと既定のアロケーターを使うReader。
+13	Handlerの既定の実装。
+14	RapidJSONは、仮想関数を持つクラスではなく、テンプレートでReader型とハンドラー型を静的に結び付けます。この方法では、関数のインライン化によって性能を改善できます。
+15	Handler
+16	前の例のように、Readerからのイベント（関数呼び出し）を受け取るハンドラーを実装する必要があります。ハンドラーには、以下のメンバー関数が必要です。
+17	解析時にGenericReaderからイベントを受け取る概念。エラーがなければ関数はtrueを返し…（生成原文の抜粋）。
+18	大きさを表す型（文字列の長さ、配列の大きさなど）。
+19	ReaderがJSONのnull値に遭遇すると、Null()を呼びます。
+20	ReaderがJSONのtrueかfalse値に遭遇すると、Bool(bool)を呼びます。
+21	ReaderがJSONの数値に遭遇すると、適切なC++型への対応付けを選びます。そして、Int(int)、Uint(unsigned)、Int64(int64_t)、Uint64(uint64_t)、Double(double)のうち、1つの関数を呼びます。kParseNumbersAsStringsが有効なら、Readerは代わりに常にRawNumber()を呼びます。
+22	Readerが文字列に遭遇すると、String(const char* str, SizeType length, bool copy)を呼びます。第1引数は文字列へのポインター、第2引数はヌル終端文字を含めない文字列の長さです。RapidJSONは、文字列内のヌル文字'\0'にも対応します。その場合は、strlen(str) < lengthとなります。最後のcopyは、ハンドラーが文字列をコピーする必要があるかを表します。通常の解析ではcopy = trueで、insitu解析の場合だけcopy = falseとなります。文字型は、この後で説明する変換先エンコーディングに依存することにも注意してください。
+23	Readerがオブジェクトの開始に遭遇すると、StartObject()を呼びます。JSONのオブジェクトは、名前と値の組の集合です。メンバーがあれば、まず名前についてKey()を呼び、次に値の型に応じた関数を呼びます。名前と値の組についての呼び出しを、EndObject(SizeType memberCount)まで繰り返します。memberCount引数はハンドラーを助けるためのもので、必要ない場合もあります。
+24	配列はオブジェクトと似ていますが、より単純です。配列の開始時に、ReaderはBeginArary()を呼びます。要素があれば、要素の型に応じた関数を呼びます。同様に、最後のEndArray(SizeType elementCount)のelementCount引数は、ハンドラーを助けるためのものです。
+25	ハンドラーの各関数はboolを返します。通常はtrueを返します。エラーに遭遇した場合は、falseを返して、イベントの発行元へ処理の停止を伝えられます。
+26	たとえば、ReaderでJSONを解析し、必要なスキーマにJSONが適合しないことをハンドラーが検出した場合、falseを返して、Readerの解析を停止できます。Readerは、エラーコードkParseErrorTerminationのエラー状態になります。
+27	GenericReader
+28	前述のように、ReaderはテンプレートクラスGenericReaderのtypedefです。
+29	SAX形式のJSONパーサー。UTF8エンコーディングと既定のアロケーターにはReaderを使います。
+30	UTF-8エンコーディング。
+31	Readerは、入力と変換先の両方のエンコーディングにUTF-8を使います。入力エンコーディングはJSONストリームのエンコーディング、変換先はString()呼び出しのstr引数のエンコーディングです。たとえば、UTF-8ストリームを解析し、UTF-16文字列のイベントを出力するには、次のようにreaderを定義します。
+32	UTF-16エンコーディング。
+33	UTF16の既定の文字型はwchar_tです。そのため、このreaderはハンドラーのString(const wchar_t*, SizeType, bool)を呼ぶ必要があります。
+34	第3のテンプレート引数Allocatorは、内部データ構造（実際にはスタック）用のアロケーター型です。
+35	解析
+36	Readerの唯一の機能は、JSONの解析です。
+37	解析中にエラーが起こると、falseを返します。bool HasParseEror()、ParseErrorCode GetParseErrorCode()、size_t GetErrorOffset()でエラー状態を取得することもできます。実際に、DocumentはこれらのReaderの関数で解析エラーを取得しています。詳しくはDOMを参照してください。
+38	Writer
+39	ReaderはJSONをイベントへ変換（解析）します。Writerはその逆で、イベントをJSONへ変換します。
+40	Writerはとても簡単に使えます。アプリケーションでデータをJSONへ変換するだけなら、Documentを作り、Writerで文字列化する代わりに、Writerを直接使う方法が適している場合があります。
+41	simplewriterの例では、simplereaderのちょうど逆の処理を行います。
+42	JSONライター。
+43	UTF8エンコーディングの文字列バッファー。
+44	String()とKey()には、それぞれ2つのオーバーロードがあります。1つはハンドラーの概念で定義したものと同じ3引数のもので、ヌル文字を含む文字列を扱えます。もう1つは、上の例で使った単純なものです。
+45	この例では、EndArray()とEndObject()に引数を渡していないことに注意してください。SizeTypeを渡すこともできますが、Writerはそれを単に無視します。
+46	JSONを組み立てるのに、sprintf()やstd::stringstreamを使うだけではいけないのか、と思うかもしれません。
+47	理由はいくつもあります。
+48	Writerは、整形式のJSONを出力しなければなりません。イベントの順序が不正な場合（StartObject()の直後にInt()など）、デバッグモードではアサーションに失敗します。
+49	Writer::String()は、文字列のエスケープ（コードポイントU+000Aを\nへ変換するなど）とUnicodeのエンコーディング変換を処理できます。
+50	Writerは、数値の出力を一貫して処理します。
+51	Writerはイベントハンドラーの概念を実装しています。Reader、Document、その他のイベント発行元からのイベントを処理できます。
+52	Writerは、プラットフォームごとに最適化できます。
+53	いずれにせよ、WriterAPIは、その場限りの方法でJSONを生成するより簡単に使えます。
+54	テンプレート
+55	Writerには、Readerとの小さな設計上の違いがあります。Writerはtypedefではなくテンプレートクラスです。GenericWriterは存在しません。宣言は次のとおりです。
+56	メモリーブロックの確保・大きさの変更・解放を行う概念。
+57	コンストラクター。
+58	テンプレート引数OutputStreamは、出力ストリームの型です。推論できないため、利用者が指定しなければなりません。
+59	テンプレート引数SourceEncodingは、String(const Ch*, ...)で使うエンコーディングを指定します。
+60	テンプレート引数TargetEncodingは、出力ストリームのエンコーディングを指定します。
+61	Allocatorはアロケーターの型で、内部データ構造（スタック）のメモリー確保に使います。
+62	writeFlagsは、次のビットフラグの組み合わせです。
+63	解析フラグ
+64	意味
+65	kWriteNoFlags
+66	フラグを設定しません。
+67	kWriteDefaultFlags
+68	既定の書き込みフラグです。マクロRAPIDJSON_WRITE_DEFAULT_FLAGSと同じ値で、このマクロはkWriteNoFlagsとして定義されています。
+69	kWriteValidateEncodingFlag
+70	JSON文字列のエンコーディングの妥当性を検証します。
+71	kWriteNanAndInfFlag
+72	Infinity、-Infinity、NaNの書き込みを許可します。
+73	さらに、WriterのコンストラクターにはlevelDepth引数があります。この引数は、階層の各レベルの情報を保存するために最初に確保するメモリー量へ影響します。
+74	PrettyWriter
+75	Writerの出力は空白のない最もコンパクトなJSONで、ネットワーク転送や保存に適していますが、人には読みづらいものです。
+76	そのため、RapidJSONは、出力にインデントと改行を加えるPrettyWriterを提供します。
+77	PrettyWriterの使い方はWriterとまったく同じですが、PrettyWriterにはSetIndent(Ch indentChar, unsigned indentCharCount)関数があります。既定では、空白4個です。
+78	完了状態とリセット
+79	Writerは、ルートに任意のJSON型を持つ単一のJSONだけを出力できます。ルートの単独イベント（String()など）、または対応する最後のEndObject()かEndArray()イベントを処理すると、出力JSONは整形式で完全になります。Writer::IsComplete()でこの状態を検出できます。
+80	JSONが完成すると、Writerは新しいイベントを受け取れません。受け取ると、ルートが複数ある不正な出力になります。Writerオブジェクトを再利用するには、Writer::Reset(OutputStream& os)を呼び、新しい出力ストリームとともにWriterの内部状態をすべてリセットできます。
+81	テクニック
+82	JSONを独自のデータ構造へ解析する
+83	Documentの解析機能は、完全にReaderに基づいています。実際に、Documentはreaderからイベントを受け取り、解析中にDOMを組み立てるハンドラーです。
+84	Readerで、他のデータ構造を直接組み立てることもできます。DOMを作らずに済むため、メモリーを減らし、性能を改善できます。
+85	以下のmessagereaderの例では、ParseMessages()は、キーと文字列の組を持つオブジェクトとして想定されたJSONを解析します。
+86	直前の解析のParseErrorCodeを取得します。
+87	入力内の直前の解析エラーの位置を取得します。エラーがなければ0です。
+88	解析のエラーコード。
+89	解析のエラーコードをエラーメッセージへ対応付けます。
+90	最初のJSON（json1）は、MessageMapへ正常に解析されました。MessageMapはstd::mapなので、出力順はキーでソートされます。これはJSON内の順序とは異なります。
+91	2つ目のJSON（json2）では、fooの値は空のオブジェクトです。オブジェクトなので、MessageHandler::StartObject()が呼ばれます。しかし、その時点ではstate_ = kExpectValueであるため、その関数はfalseを返し、解析を停止させます。エラーコードはkParseErrorTerminationです。
+92	JSONのフィルタリング
+93	前述のように、WriterはReaderが発行するイベントを処理できます。condenseの例は、ReaderのハンドラーとしてWriterを設定するだけで、JSONの空白をすべて削除できます。prettyの例も同じ関係を使い、WriterをPrettyWriterへ置き換えます。これにより、prettyでJSONにインデントと改行を付け直せます。
+94	これらのSAX形式APIには、JSONの内容をフィルター処理する中間層を追加できます。たとえば、capitalizeの例はJSON内のすべての文字列を大文字にします。
+95	fread()を使う入力用のファイルバイトストリーム。
+96	fread()を使う入力用のCファイルストリームのラッパー。
+97	JSON全体を単なる文字列として大文字にするのは不正です。たとえば、次のようになります。
+98	JSON全体をそのまま大文字にすると、不正なエスケープ文字が含まれます。
+99	capitalizeによる正しい結果：
+100	さらに複雑なフィルターも作れます。ただし、SAX形式APIで得られる情報は一度に1イベント分だけなので、文脈情報（ルート値からのパスや関連する他の値の保存など）を管理する必要がある場合があります。処理によっては、SAXよりDOMの方が実装しやすい場合もあります。

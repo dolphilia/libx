@@ -1,0 +1,888 @@
+{
+  "status": "separate-full-review-passed",
+  "sentences": [
+    {
+      "n": 1,
+      "source": "This tutorial introduces the basics of the Document Object Model(DOM) API.",
+      "ja": "このチュートリアルでは、Document Object Model（DOM）APIの基本を紹介します。"
+    },
+    {
+      "n": 2,
+      "source": "As shown in {1}, a JSON can be parsed into DOM, and then the DOM can be queried and modified easily, and finally be converted back to JSON.",
+      "ja": "{1}で示したように、JSONをDOMへ解析し、DOMへ簡単に問い合わせや変更を行い、最後にJSONへ戻せます。"
+    },
+    {
+      "n": 3,
+      "source": "Value & Document",
+      "ja": "ValueとDocument"
+    },
+    {
+      "n": 4,
+      "source": "Each JSON value is stored in a type called {1}. A {2}, representing the DOM, contains the root {3} of the DOM tree. All public types and functions of RapidJSON are defined in the {4} namespace.",
+      "ja": "各JSON値は、{1}という型に保存します。DOMを表す{2}は、DOMツリーのルートとなる{3}を保持します。RapidJSONの公開型と公開関数はすべて、{4}名前空間に定義されています。"
+    },
+    {
+      "n": 5,
+      "source": "Query Value",
+      "ja": "値の問い合わせ"
+    },
+    {
+      "n": 6,
+      "source": "In this section, we will use excerpt of {1}.",
+      "ja": "この節では、{1}の抜粋を使います。"
+    },
+    {
+      "n": 7,
+      "source": "Assumes we have a JSON stored in a C string ({1}):",
+      "ja": "C文字列（{1}）にJSONを保存したとします。"
+    },
+    {
+      "n": 8,
+      "source": "Parse it into a {1}:",
+      "ja": "これを{1}へ解析します。"
+    },
+    {
+      "n": 9,
+      "source": "Parse JSON text from a read-only string (with Encoding conversion).",
+      "ja": "読み取り専用文字列からJSONテキストを解析します（エンコーディング変換あり）。"
+    },
+    {
+      "n": 10,
+      "source": "main RapidJSON namespace",
+      "ja": "RapidJSONの主な名前空間。"
+    },
+    {
+      "n": 11,
+      "source": "GenericDocument with UTF8 encoding.",
+      "ja": "UTF8エンコーディングのGenericDocument。"
+    },
+    {
+      "n": 12,
+      "source": "The JSON is now parsed into {1} as a {2}:",
+      "ja": "JSONは、{2}として{1}へ解析されました。"
+    },
+    {
+      "n": 13,
+      "source": "DOM in the tutorial",
+      "ja": "チュートリアルのDOM"
+    },
+    {
+      "n": 14,
+      "source": "Since the update to RFC 7159, the root of a conforming JSON document can be any JSON value. In earlier RFC 4627, only objects or arrays were allowed as root values. In this case, the root is an object.",
+      "ja": "RFC 7159への更新以降、準拠するJSON文書のルートには、どのJSON値でも使えます。それ以前のRFC 4627では、ルート値にはオブジェクトか配列しか使えませんでした。この例のルートはオブジェクトです。"
+    },
+    {
+      "n": 15,
+      "source": "Let's query whether a {1} member exists in the root object. Since a {2} can contain different types of value, we may need to verify its type and use suitable API to obtain the value. In this example, {3} member associates with a JSON string.",
+      "ja": "ルートオブジェクトに{1}メンバーがあるか問い合わせてみます。{2}は異なる型の値を保持できるため、型を確認し、適切なAPIで値を取得する必要がある場合があります。この例では、{3}メンバーはJSON文字列に対応しています。"
+    },
+    {
+      "n": 16,
+      "source": "Check whether a member exists in the object.",
+      "ja": "オブジェクトにメンバーがあるかどうかを確認します。"
+    },
+    {
+      "n": 17,
+      "source": "JSON true/false values are represented as {1}.",
+      "ja": "JSONのtrue/false値は、{1}で表します。"
+    },
+    {
+      "n": 18,
+      "source": "JSON null can be queryed by {1}.",
+      "ja": "JSONのnullは、{1}で問い合わせられます。"
+    },
+    {
+      "n": 19,
+      "source": "JSON number type represents all numeric values. However, C++ needs more specific type for manipulation.",
+      "ja": "JSONの数値型は、すべての数値を表します。ただし、C++で操作するには、より具体的な型が必要です。"
+    },
+    {
+      "n": 20,
+      "source": "JSON array contains a number of elements.",
+      "ja": "JSON配列は、複数の要素を保持します。"
+    },
+    {
+      "n": 21,
+      "source": "Get the number of elements in array.",
+      "ja": "配列の要素数を取得します。"
+    },
+    {
+      "n": 22,
+      "source": "Size type (for string lengths, array sizes, etc.).",
+      "ja": "大きさを表す型（文字列の長さ、配列の大きさなど）。"
+    },
+    {
+      "n": 23,
+      "source": "GenericValue with UTF8 encoding.",
+      "ja": "UTF8エンコーディングのGenericValue。"
+    },
+    {
+      "n": 24,
+      "source": "Note that, RapidJSON does not automatically convert values between JSON types. If a value is a string, it is invalid to call {1}, for example. In debug mode it will fail an assertion. In release mode, the behavior is undefined.",
+      "ja": "RapidJSONは、JSONの型の間で値を自動変換しません。たとえば、値が文字列なら、{1}の呼び出しは不正です。デバッグモードではアサーションに失敗し、リリースモードでは未定義の動作になります。"
+    },
+    {
+      "n": 25,
+      "source": "In the following, details about querying individual types are discussed.",
+      "ja": "以下では、個々の型に問い合わせる方法を詳しく説明します。"
+    },
+    {
+      "n": 26,
+      "source": "Query Array",
+      "ja": "配列の問い合わせ"
+    },
+    {
+      "n": 27,
+      "source": "By default, {1} is typedef of {2}. In most systems, array is limited to store up to 2^32-1 elements.",
+      "ja": "既定では、{1}は{2}のtypedefです。大半のシステムでは、配列が保存できる要素数は最大2^32-1に制限されます。"
+    },
+    {
+      "n": 28,
+      "source": "You may access the elements in array by integer literal, for example, {1}, {2}, {3}.",
+      "ja": "{1}、{2}、{3}など、整数リテラルで配列の要素へアクセスできます。"
+    },
+    {
+      "n": 29,
+      "source": "Array is similar to {1}, instead of using indices, you may also use iterator to access all the elements.",
+      "ja": "配列は{1}と同様、インデックスの代わりにイテレーターを使って、すべての要素へアクセスすることもできます。"
+    },
+    {
+      "n": 30,
+      "source": "Element iterator.",
+      "ja": "要素のイテレーター。"
+    },
+    {
+      "n": 31,
+      "source": "Past-the-end element iterator",
+      "ja": "末尾の次を指す要素イテレーター。"
+    },
+    {
+      "n": 32,
+      "source": "And other familiar query functions:",
+      "ja": "他にも、よく使う問い合わせ関数があります。"
+    },
+    {
+      "n": 33,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 34,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 35,
+      "source": "Range-based For Loop (New in v1.1.0)",
+      "ja": "範囲ベースのforループ（v1.1.0で追加）"
+    },
+    {
+      "n": 36,
+      "source": "When C++11 is enabled, you can use range-based for loop to access all elements in an array.",
+      "ja": "C++11が有効なら、範囲ベースのforループで配列内のすべての要素へアクセスできます。"
+    },
+    {
+      "n": 37,
+      "source": "Query Object",
+      "ja": "オブジェクトの問い合わせ"
+    },
+    {
+      "n": 38,
+      "source": "Similar to array, we can access all object members by iterator:",
+      "ja": "配列と同様、イテレーターですべてのオブジェクトメンバーへアクセスできます。"
+    },
+    {
+      "n": 39,
+      "source": "Const past-the-end member iterator.",
+      "ja": "末尾の次を指すconstメンバーイテレーター。"
+    },
+    {
+      "n": 40,
+      "source": "Const member iterator.",
+      "ja": "constメンバーイテレーター。"
+    },
+    {
+      "n": 41,
+      "source": "Note that, when {1} cannot find the member, it will fail an assertion.",
+      "ja": "{1}でメンバーが見つからないと、アサーションに失敗することに注意してください。"
+    },
+    {
+      "n": 42,
+      "source": "If we are unsure whether a member exists, we need to call {1} before calling {2}. However, this incurs two lookup. A better way is to call {3}, which can check the existence of member and obtain its value at once:",
+      "ja": "メンバーが存在するか不明な場合は、{2}の前に{1}を呼ぶ必要があります。ただし、これでは検索を2回行います。{3}を呼べば、メンバーの存在確認と値の取得を一度に行えるため、より良い方法です。"
+    },
+    {
+      "n": 43,
+      "source": "Find member by name.",
+      "ja": "名前でメンバーを検索します。"
+    },
+    {
+      "n": 44,
+      "source": "Range-based For Loop (New in v1.1.0)",
+      "ja": "範囲ベースのforループ（v1.1.0で追加）"
+    },
+    {
+      "n": 45,
+      "source": "When C++11 is enabled, you can use range-based for loop to access all members in an object.",
+      "ja": "C++11が有効なら、範囲ベースのforループでオブジェクト内のすべてのメンバーへアクセスできます。"
+    },
+    {
+      "n": 46,
+      "source": "Querying Number",
+      "ja": "数値の問い合わせ"
+    },
+    {
+      "n": 47,
+      "source": "JSON provide a single numerical type called Number. Number can be integer or real numbers. RFC 4627 says the range of Number is specified by parser.",
+      "ja": "JSONには、Numberという単一の数値型があります。Numberは整数か実数を表せます。RFC 4627では、Numberの範囲はパーサーが定めるとしています。"
+    },
+    {
+      "n": 48,
+      "source": "As C++ provides several integer and floating point number types, the DOM tries to handle these with widest possible range and good performance.",
+      "ja": "C++には複数の整数型と浮動小数点型があるため、DOMはできるだけ広い範囲と良い性能で、これらを扱おうとします。"
+    },
+    {
+      "n": 49,
+      "source": "When a Number is parsed, it is stored in the DOM as either one of the following type:",
+      "ja": "Numberを解析すると、DOMでは以下のいずれかの型で保存します。"
+    },
+    {
+      "n": 50,
+      "source": "Type",
+      "ja": "型"
+    },
+    {
+      "n": 51,
+      "source": "Description",
+      "ja": "説明"
+    },
+    {
+      "n": 52,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 53,
+      "source": "32-bit unsigned integer",
+      "ja": "32ビットの符号なし整数"
+    },
+    {
+      "n": 54,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 55,
+      "source": "32-bit signed integer",
+      "ja": "32ビットの符号付き整数"
+    },
+    {
+      "n": 56,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 57,
+      "source": "64-bit unsigned integer",
+      "ja": "64ビットの符号なし整数"
+    },
+    {
+      "n": 58,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 59,
+      "source": "64-bit signed integer",
+      "ja": "64ビットの符号付き整数"
+    },
+    {
+      "n": 60,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 61,
+      "source": "64-bit double precision floating point",
+      "ja": "64ビットの倍精度浮動小数点数"
+    },
+    {
+      "n": 62,
+      "source": "When querying a number, you can check whether the number can be obtained as target type:",
+      "ja": "数値へ問い合わせるときは、その数値を対象の型として取得できるか確認できます。"
+    },
+    {
+      "n": 63,
+      "source": "Checking",
+      "ja": "確認"
+    },
+    {
+      "n": 64,
+      "source": "Obtaining",
+      "ja": "取得"
+    },
+    {
+      "n": 65,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 66,
+      "source": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "n": 67,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 68,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 69,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 70,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 71,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 72,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 73,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 74,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 75,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 76,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 77,
+      "source": "Note that, an integer value may be obtained in various ways without conversion. For example, A value {1} containing 123 will make {2}. But a value {3} containing -3000000000 will only makes {4}.",
+      "ja": "整数値は、変換せずに複数の方法で取得できる場合があります。たとえば、123を保持する値{1}では、{2}となります。一方、-3000000000を保持する値{3}では、{4}だけが成立します。"
+    },
+    {
+      "n": 78,
+      "source": "When obtaining the numeric values, {1} will convert internal integer representation to a {2}. Note that, {3} and {4} can be safely convert to {5}, but {6} and {7} may lose precision (since mantissa of {8} is only 52-bits).",
+      "ja": "数値を取得するとき、{1}は内部の整数表現を{2}へ変換します。{3}と{4}は{5}へ安全に変換できますが、{6}と{7}では精度を失う場合があります（{8}の仮数部は52ビットしかないためです）。"
+    },
+    {
+      "n": 79,
+      "source": "Query String",
+      "ja": "文字列の問い合わせ"
+    },
+    {
+      "n": 80,
+      "source": "In addition to {1}, the {2} class also contains {3}. Here explains why.",
+      "ja": "{2}クラスには、{1}に加えて{3}もあります。その理由を説明します。"
+    },
+    {
+      "n": 81,
+      "source": "According to RFC 4627, JSON strings can contain Unicode character {1}, which must be escaped as {2}. The problem is that, C/C++ often uses null-terminated string, which treats `{3} as the terminator symbol.",
+      "ja": "RFC 4627によると、JSON文字列にはUnicode文字{1}を含めることができ、{2}としてエスケープしなければなりません。問題は、C/C++ではヌル終端文字列をよく使い、{3}を終端記号として扱うことです。"
+    },
+    {
+      "n": 82,
+      "source": "To conform RFC 4627, RapidJSON supports string containing {1}. If you need to handle this, you can use {2} API to obtain the correct length of string.",
+      "ja": "RFC 4627に準拠するため、RapidJSONは{1}を含む文字列に対応しています。これを扱う必要がある場合は、{2}APIで正しい文字列長を取得できます。"
+    },
+    {
+      "n": 83,
+      "source": "For example, after parsing a the following JSON to {1}:",
+      "ja": "たとえば、以下のJSONを{1}へ解析した場合です。"
+    },
+    {
+      "n": 84,
+      "source": "The correct length of the value {1} is 3. But {2} returns 1.",
+      "ja": "値{1}の正しい長さは3ですが、{2}は1を返します。"
+    },
+    {
+      "n": 85,
+      "source": "{1} can also improve performance, as user may often need to call {2} for allocating buffer.",
+      "ja": "バッファーの確保のために{2}を呼ぶことが多いため、{1}は性能の改善にも役立ちます。"
+    },
+    {
+      "n": 86,
+      "source": "Besides, {1} also support a constructor:",
+      "ja": "さらに、{1}には次のコンストラクターもあります。"
+    },
+    {
+      "n": 87,
+      "source": "which accepts the length of string as parameter. This constructor supports storing null character within the string, and should also provide better performance.",
+      "ja": "これは、引数として文字列の長さを受け取ります。文字列内のヌル文字の保存にも対応し、性能の向上も期待できます。"
+    },
+    {
+      "n": 88,
+      "source": "Comparing values",
+      "ja": "値の比較"
+    },
+    {
+      "n": 89,
+      "source": "You can use {1} and {2} to compare values. Two values are equal if and only if they are have same type and contents. You can also compare values with primitive types. Here is an example.",
+      "ja": "値の比較には、{1}と{2}を使えます。2つの値が等しいのは、型と内容がともに同じ場合に限ります。プリミティブ型とも比較できます。例を示します。"
+    },
+    {
+      "n": 90,
+      "source": "Array/object compares their elements/members in order. They are equal if and only if their whole subtrees are equal.",
+      "ja": "配列やオブジェクトは、要素やメンバーを順番に比較します。部分ツリー全体が等しい場合に限り、等しいと判定されます。"
+    },
+    {
+      "n": 91,
+      "source": "Note that, currently if an object contains duplicated named member, comparing equality with any object is always {1}.",
+      "ja": "現時点では、オブジェクトに名前が重複するメンバーがあると、どのオブジェクトとの等価比較も常に{1}となることに注意してください。"
+    },
+    {
+      "n": 92,
+      "source": "Create/Modify Values",
+      "ja": "値の作成・変更"
+    },
+    {
+      "n": 93,
+      "source": "There are several ways to create values. After a DOM tree is created and/or modified, it can be saved as JSON again using {1}.",
+      "ja": "値を作る方法はいくつかあります。DOMツリーを作成・変更した後は、{1}で再びJSONとして保存できます。"
+    },
+    {
+      "n": 94,
+      "source": "Change Value Type",
+      "ja": "値の型の変更"
+    },
+    {
+      "n": 95,
+      "source": "When creating a Value or Document by default constructor, its type is Null. To change its type, call {1} or assignment operator, for example:",
+      "ja": "既定のコンストラクターでValueやDocumentを作ると、型はNullになります。型を変更するには、{1}か代入演算子を使います。たとえば、次のようになります。"
+    },
+    {
+      "n": 96,
+      "source": "Set this value as an empty object.",
+      "ja": "この値を空のオブジェクトにします。"
+    },
+    {
+      "n": 97,
+      "source": "Overloaded Constructors",
+      "ja": "オーバーロードされたコンストラクター"
+    },
+    {
+      "n": 98,
+      "source": "There are also overloaded constructors for several types:",
+      "ja": "複数の型について、オーバーロードされたコンストラクターもあります。"
+    },
+    {
+      "n": 99,
+      "source": "To create empty object or array, you may use {1}/{2} after default constructor, or using the {3} in one shot:",
+      "ja": "空のオブジェクトや配列を作るには、既定のコンストラクターの後に{1}/{2}を使うか、{3}で一度に作れます。"
+    },
+    {
+      "n": 100,
+      "source": "array",
+      "ja": "配列"
+    },
+    {
+      "n": 101,
+      "source": "object",
+      "ja": "オブジェクト"
+    },
+    {
+      "n": 102,
+      "source": "Move Semantics",
+      "ja": "ムーブセマンティクス"
+    },
+    {
+      "n": 103,
+      "source": "A very special decision during design of RapidJSON is that, assignment of value does not copy the source value to destination value. Instead, the value from source is moved to the destination. For example,",
+      "ja": "RapidJSONの設計で特徴的な決定は、値の代入で、代入元を代入先へコピーしないことです。代わりに、代入元の値を代入先へ移動します。たとえば、次のようになります。"
+    },
+    {
+      "n": 104,
+      "source": "Assignment with move semantics.",
+      "ja": "ムーブセマンティクスによる代入。"
+    },
+    {
+      "n": 105,
+      "source": "Why? What is the advantage of this semantics?",
+      "ja": "なぜでしょうか。このセマンティクスの利点は何でしょうか。"
+    },
+    {
+      "n": 106,
+      "source": "The simple answer is performance. For fixed size JSON types (Number, True, False, Null), copying them is fast and easy. However, For variable size JSON types (String, Array, Object), copying them will incur a lot of overheads. And these overheads are often unnoticed. Especially when we need to create temporary object, copy it to another variable, and then destruct it.",
+      "ja": "簡単に言えば、性能のためです。大きさが固定のJSON型（Number、True、False、Null）は、高速かつ簡単にコピーできます。しかし、可変長のJSON型（String、Array、Object）では、コピーに大きなオーバーヘッドが生じます。このオーバーヘッドは見落とされがちです。特に、一時オブジェクトを作り、別の変数へコピーし、破棄する場合に発生します。"
+    },
+    {
+      "n": 107,
+      "source": "For example, if normal {1} semantics was used:",
+      "ja": "たとえば、通常の{1}セマンティクスを使った場合です。"
+    },
+    {
+      "n": 108,
+      "source": "Get the allocator of this document.",
+      "ja": "この文書のアロケーターを取得します。"
+    },
+    {
+      "n": 109,
+      "source": "Copy semantics makes a lots of copy operations.",
+      "ja": "コピーセマンティクスでは、多くのコピー操作が発生します。"
+    },
+    {
+      "n": 110,
+      "source": "The object {1} needs to allocate a buffer of same size as contacts, makes a deep clone of it, and then finally contacts is destructed. This will incur a lot of unnecessary allocations/deallocations and memory copying.",
+      "ja": "オブジェクト{1}は、contactsと同じ大きさのバッファーを確保し、ディープコピーを作る必要があります。その後、最後にcontactsが破棄されます。これにより、不要なメモリー確保・解放やコピーが大量に発生します。"
+    },
+    {
+      "n": 111,
+      "source": "There are solutions to prevent actual copying these data, such as reference counting and garbage collection(GC).",
+      "ja": "参照カウントやガベージコレクション（GC）など、実際にこれらのデータをコピーせずに済ませる方法もあります。"
+    },
+    {
+      "n": 112,
+      "source": "To make RapidJSON simple and fast, we chose to use {1} semantics for assignment. It is similar to {2} which transfer ownership during assignment. Move is much faster and simpler, it just destructs the original value, {3} the source to destination, and finally sets the source as Null type.",
+      "ja": "RapidJSONを単純かつ高速にするため、代入には{1}セマンティクスを採用しました。代入時に所有権を移す{2}に似ています。ムーブはずっと高速で単純です。元の値を破棄し、{3}で代入元を代入先へコピーし、最後に代入元をNull型にするだけです。"
+    },
+    {
+      "n": 113,
+      "source": "So, with move semantics, the above example becomes:",
+      "ja": "ムーブセマンティクスを使うと、上の例は次のようになります。"
+    },
+    {
+      "n": 114,
+      "source": "Move semantics makes no copying.",
+      "ja": "ムーブセマンティクスではコピーが発生しません。"
+    },
+    {
+      "n": 115,
+      "source": "This is called move assignment operator in C++11. As RapidJSON supports C++03, it adopts move semantics using assignment operator, and all other modifying function like {1}, {2}.",
+      "ja": "これは、C++11ではムーブ代入演算子と呼ばれます。RapidJSONはC++03に対応しているため、代入演算子と、{1}や{2}など他のすべての変更用関数にムーブセマンティクスを採用しています。"
+    },
+    {
+      "n": 116,
+      "source": "Move semantics and temporary values",
+      "ja": "ムーブセマンティクスと一時値"
+    },
+    {
+      "n": 117,
+      "source": "Sometimes, it is convenient to construct a Value in place, before passing it to one of the \"moving\" functions, like {1} or {2}. As temporary objects can't be converted to proper Value references, the convenience function {3} is available:",
+      "ja": "{1}や{2}などの「移動する」関数へ渡す前に、その場でValueを作ると便利な場合があります。一時オブジェクトは適切なValueの参照へ変換できないため、補助関数{3}が用意されています。"
+    },
+    {
+      "n": 118,
+      "source": "Append a GenericValue at the end of the array.",
+      "ja": "GenericValueを配列の末尾へ追加します。"
+    },
+    {
+      "n": 119,
+      "source": "Create String",
+      "ja": "文字列の作成"
+    },
+    {
+      "n": 120,
+      "source": "RapidJSON provide two strategies for storing string.",
+      "ja": "RapidJSONは、文字列の保存に2つの方法を提供します。"
+    },
+    {
+      "n": 121,
+      "source": "copy-string: allocates a buffer, and then copy the source data into it.",
+      "ja": "copy-string：バッファーを確保して、元のデータをコピーします。"
+    },
+    {
+      "n": 122,
+      "source": "const-string: simply store a pointer of string.",
+      "ja": "const-string：文字列へのポインターだけを保存します。"
+    },
+    {
+      "n": 123,
+      "source": "Copy-string is always safe because it owns a copy of the data. Const-string can be used for storing string literal, and in-situ parsing which we will mentioned in Document section.",
+      "ja": "copy-stringはデータのコピーを所有するため、常に安全です。const-stringは、文字列リテラルの保存と、Documentの節で説明するin-situ解析に使えます。"
+    },
+    {
+      "n": 124,
+      "source": "To make memory allocation customizable, RapidJSON requires user to pass an instance of allocator, whenever an operation may require allocation. This design is needed to prevent storing a allocator (or Document) pointer per Value.",
+      "ja": "メモリー確保を独自に扱えるよう、RapidJSONでは、メモリー確保が必要になり得る操作には、アロケーターのインスタンスを渡す必要があります。この設計は、Valueごとにアロケーター（またはDocument）へのポインターを保存しないために必要です。"
+    },
+    {
+      "n": 125,
+      "source": "Therefore, when we assign a copy-string, we call this overloaded {1} with allocator:",
+      "ja": "そのため、copy-stringを代入するときは、アロケーター付きの、オーバーロードされた{1}を呼びます。"
+    },
+    {
+      "n": 126,
+      "source": "Set this value as a string without copying source string.",
+      "ja": "元の文字列をコピーせず、この値を文字列として設定します。"
+    },
+    {
+      "n": 127,
+      "source": "In this example, we get the allocator from a {1} instance. This is a common idiom when using RapidJSON. But you may use other instances of allocator.",
+      "ja": "この例では、{1}のインスタンスからアロケーターを取得します。これは、RapidJSONでよく使う書き方ですが、別のアロケーターのインスタンスを使うこともできます。"
+    },
+    {
+      "n": 128,
+      "source": "Besides, the above {1} requires length. This can handle null characters within a string. There is another {2} overloaded function without the length parameter. And it assumes the input is null-terminated and calls a {3}-like function to obtain the length.",
+      "ja": "上の{1}には長さも必要です。そのため、文字列内のヌル文字も扱えます。長さ引数のない別の{2}のオーバーロードもあります。そちらは入力がヌル終端されていると仮定し、{3}のような関数で長さを取得します。"
+    },
+    {
+      "n": 129,
+      "source": "Finally, for string literal or string with safe life-cycle can use const-string version of {1}, which lacks allocator parameter. For string literals (or constant character arrays), simply passing the literal as parameter is safe and efficient:",
+      "ja": "最後に、文字列リテラルや寿命が保証される文字列には、アロケーター引数のないconst-string版の{1}を使えます。文字列リテラル（または定数の文字配列）なら、引数としてそのまま渡すだけで安全かつ効率的です。"
+    },
+    {
+      "n": 130,
+      "source": "For character pointer, the RapidJSON requires to mark it as safe before using it without copying. This can be achieved by using the {1} function:",
+      "ja": "文字ポインターをコピーせずに使うには、RapidJSONでは安全なものとして明示する必要があります。これは、{1}関数で行えます。"
+    },
+    {
+      "n": 131,
+      "source": "Mark a character pointer as constant string.",
+      "ja": "文字ポインターを定数文字列として明示します。"
+    },
+    {
+      "n": 132,
+      "source": "Modify Array",
+      "ja": "配列の変更"
+    },
+    {
+      "n": 133,
+      "source": "Value with array type provides similar APIs as {1}.",
+      "ja": "配列型のValueは、{1}に似たAPIを提供します。"
+    },
+    {
+      "n": 134,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 135,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 136,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 137,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 138,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 139,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 140,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 141,
+      "source": "Note that, {1} and {2} may allocate memory for the array elements, therefore require an allocator.",
+      "ja": "{1}と{2}は、配列要素用のメモリーを確保する場合があるため、アロケーターが必要です。"
+    },
+    {
+      "n": 142,
+      "source": "Here is an example of {1}:",
+      "ja": "{1}の例を示します。"
+    },
+    {
+      "n": 143,
+      "source": "Differs from STL, {1}/{2} returns the array reference itself. This is called {3}.",
+      "ja": "STLと異なり、{1}/{2}は配列自身の参照を返します。これを{3}と呼びます。"
+    },
+    {
+      "n": 144,
+      "source": "If you want to add a non-constant string or a string without sufficient lifetime (see {1}Create String) to the array, you need to create a string Value by using the copy-string API. To avoid the need for an intermediate variable, you can use a {2}temporary value in place:",
+      "ja": "配列に、定数ではない文字列や寿命が十分でない文字列（{1}を参照）を追加するには、copy-string APIで文字列のValueを作る必要があります。中間変数を用意せずに、その場で{2}を使うこともできます。"
+    },
+    {
+      "n": 145,
+      "source": "Modify Object",
+      "ja": "オブジェクトの変更"
+    },
+    {
+      "n": 146,
+      "source": "Object is a collection of key-value pairs (members). Each key must be a string value. To modify an object, either add or remove members. THe following APIs are for adding members:",
+      "ja": "オブジェクトは、キーと値の組（メンバー）の集合です。キーはすべて文字列値でなければなりません。変更するには、メンバーを追加・削除します。以下は、メンバーの追加用APIです。"
+    },
+    {
+      "n": 147,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 148,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 149,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 150,
+      "source": "Here is an example.",
+      "ja": "例を示します。"
+    },
+    {
+      "n": 151,
+      "source": "The name parameter with {1} is similar to the interface of {2} function for string values. These overloads are used to avoid the need for copying the {3} string, as constant key names are very common in JSON objects.",
+      "ja": "{1}による名前の引数は、文字列値用の{2}関数のインターフェースに似ています。JSONオブジェクトでは定数のキー名をよく使うため、これらのオーバーロードによって{3}文字列のコピーを避けられます。"
+    },
+    {
+      "n": 152,
+      "source": "If you need to create a name from a non-constant string or a string without sufficient lifetime (see {1}Create String), you need to create a string Value by using the copy-string API. To avoid the need for an intermediate variable, you can use a {2}temporary value in place:",
+      "ja": "定数ではない文字列や寿命が十分でない文字列（{1}を参照）から名前を作るには、copy-string APIで文字列のValueを作る必要があります。中間変数を用意せずに、その場で{2}を使うこともできます。"
+    },
+    {
+      "n": 153,
+      "source": "For removing members, there are several choices:",
+      "ja": "メンバーの削除には、いくつかの方法があります。"
+    },
+    {
+      "n": 154,
+      "source": "{1}: Remove a member by search its name (linear time complexity).",
+      "ja": "{1}：名前を検索してメンバーを削除します（時間計算量は線形）。"
+    },
+    {
+      "n": 155,
+      "source": "{1}: same as above but {2} is a Value.",
+      "ja": "{1}：上と同じですが、{2}はValueです。"
+    },
+    {
+      "n": 156,
+      "source": "{1}: Remove a member by iterator ({2} time complexity).",
+      "ja": "{1}：イテレーターでメンバーを削除します（時間計算量は{2}）。"
+    },
+    {
+      "n": 157,
+      "source": "{1}: similar to the above but it preserves order of members (linear time complexity).",
+      "ja": "{1}：上に似ていますが、メンバーの順序を保持します（時間計算量は線形）。"
+    },
+    {
+      "n": 158,
+      "source": "{1}: remove a range of members, preserves order (linear time complexity).",
+      "ja": "{1}：範囲内のメンバーを削除し、順序を保持します（時間計算量は線形）。"
+    },
+    {
+      "n": 159,
+      "source": "{1} uses a \"move-last\" trick to achieve constant time complexity. Basically the member at iterator is destructed, and then the last element is moved to that position. So the order of the remaining members are changed.",
+      "ja": "{1}は、「move-last」という方法で定数時間を実現します。基本的には、イテレーター位置のメンバーを破棄し、最後の要素をその位置へ移動します。そのため、残ったメンバーの順序が変わります。"
+    },
+    {
+      "n": 160,
+      "source": "Deep Copy Value",
+      "ja": "値のディープコピー"
+    },
+    {
+      "n": 161,
+      "source": "If we really need to copy a DOM tree, we can use two APIs for deep copy: constructor with allocator, and {1}.",
+      "ja": "DOMツリーを実際にコピーする必要がある場合は、アロケーター付きのコンストラクターと{1}という2つのAPIでディープコピーできます。"
+    },
+    {
+      "n": 162,
+      "source": "Set this value as an empty array.",
+      "ja": "この値を空の配列にします。"
+    },
+    {
+      "n": 163,
+      "source": "Swap Values",
+      "ja": "値の交換"
+    },
+    {
+      "n": 164,
+      "source": "{1} is also provided.",
+      "ja": "{1}も用意されています。"
+    },
+    {
+      "n": 165,
+      "source": "Swapping two DOM trees is fast (constant time), despite the complexity of the trees.",
+      "ja": "2つのDOMツリーは、ツリーの複雑さにかかわらず、高速（定数時間）に交換できます。"
+    },
+    {
+      "n": 166,
+      "source": "What's next",
+      "ja": "次に読むもの"
+    },
+    {
+      "n": 167,
+      "source": "This tutorial shows the basics of DOM tree query and manipulation. There are several important concepts in RapidJSON:",
+      "ja": "このチュートリアルでは、DOMツリーへの問い合わせと操作の基本を示しました。RapidJSONには、他にも重要な概念があります。"
+    },
+    {
+      "n": 168,
+      "source": "{1} are channels for reading/writing JSON, which can be a in-memory string, or file stream, etc. User can also create their streams.",
+      "ja": "{1}はJSONを読み書きする経路で、メモリー内の文字列やファイルストリームなどがあります。独自のストリームも作れます。"
+    },
+    {
+      "n": 169,
+      "source": "{1} defines which character encoding is used in streams and memory. RapidJSON also provide Unicode conversion/validation internally.",
+      "ja": "{1}は、ストリームやメモリーで使う文字エンコーディングを定義します。RapidJSONは、Unicodeの変換と妥当性検証も内部で処理します。"
+    },
+    {
+      "n": 170,
+      "source": "{1}'s basics are already covered in this tutorial. Uncover more advanced features such as {2} parsing, other parsing options and advanced usages.",
+      "ja": "{1}の基本は、このチュートリアルで説明しました。{2}解析やその他の解析オプション、応用的な使い方などを学べます。"
+    },
+    {
+      "n": 171,
+      "source": "{1} is the foundation of parsing/generating facility in RapidJSON. Learn how to use {2}/{3} to implement even faster applications. Also try {4} to format the JSON.",
+      "ja": "{1}は、RapidJSONの解析・生成機能の基盤です。{2}/{3}でさらに高速なアプリケーションを実装する方法を学べます。また、{4}によるJSONの整形も試してください。"
+    },
+    {
+      "n": 172,
+      "source": "{1} shows some in-house and third-party benchmarks.",
+      "ja": "{1}では、開発元と第三者によるベンチマークを紹介します。"
+    },
+    {
+      "n": 173,
+      "source": "{1} describes some internal designs and techniques of RapidJSON.",
+      "ja": "{1}では、RapidJSON内部の設計やテクニックを説明します。"
+    },
+    {
+      "n": 174,
+      "source": "You may also refer to the {1}, API documentation, examples and unit tests.",
+      "ja": "{1}、API文書、サンプル、単体テストも参照できます。"
+    }
+  ],
+  "tokenTranslations": {
+    "Usage at a glance": "使い方の概要",
+    "DOM tree": "DOMツリー",
+    "copy": "コピー",
+    "move": "ムーブ",
+    "fluent interface": "流暢なインターフェース",
+    "Create String": "文字列の作成",
+    "temporary value": "一時値",
+    "constant": "定数",
+    "Streams": "ストリーム",
+    "Performance": "性能",
+    "Internals": "内部設計"
+  }
+}

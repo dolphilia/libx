@@ -1,0 +1,640 @@
+{
+  "status": "draft-not-reviewed",
+  "sentences": [
+    {
+      "n": 1,
+      "source": "(This feature was released in v1.1.0)",
+      "ja": "（この機能はv1.1.0で公開されました）"
+    },
+    {
+      "n": 2,
+      "source": "JSON Schema is a draft standard for describing the format of JSON data. The schema itself is also JSON data. By validating a JSON structure with JSON Schema, your code can safely access the DOM without manually checking types, or whether a key exists, etc. It can also ensure that the serialized JSON conform to a specified schema.",
+      "ja": "JSON Schemaは、JSONデータの形式を記述するための標準の草案です。スキーマ自体もJSONデータです。JSON SchemaでJSON構造を検証すると、型やキーの存在などを手作業で確認せずに、コードからDOMへ安全にアクセスできます。また、シリアライズしたJSONが、指定したスキーマに適合することも保証できます。"
+    },
+    {
+      "n": 3,
+      "source": "RapidJSON implemented a JSON Schema validator for {1}. If you are not familiar with JSON Schema, you may refer to {2}.",
+      "ja": "RapidJSONには、{1}のバリデーターが実装されています。JSON Schemaに詳しくない場合は、{2}を参照してください。"
+    },
+    {
+      "n": 4,
+      "source": "Basic Usage",
+      "ja": "基本的な使い方"
+    },
+    {
+      "n": 5,
+      "source": "First of all, you need to parse a JSON Schema into {1}, and then compile the {2} into a {3}.",
+      "ja": "まず、JSON Schemaを{1}へ解析し、その{2}を{3}へコンパイルします。"
+    },
+    {
+      "n": 6,
+      "source": "Secondly, construct a {1} with the {2}. It is similar to a {3} in the sense of handling SAX events. So, you can use {4} to validate a document, and then check the validity.",
+      "ja": "次に、その{2}を使って{1}を構築します。SAXイベントを処理するという点で、{3}と似ています。したがって、{4}でドキュメントを検証し、その妥当性を確認できます。"
+    },
+    {
+      "n": 7,
+      "source": "String buffer with UTF8 encoding.",
+      "ja": "UTF8エンコーディングの文字列バッファー。"
+    },
+    {
+      "n": 8,
+      "source": "Some notes:",
+      "ja": "補足："
+    },
+    {
+      "n": 9,
+      "source": "One {1} can be referenced by multiple {2}s. It will not be modified by {3}s.",
+      "ja": "一つの{1}を、複数の{2}が参照できます。{3}は、それを変更しません。"
+    },
+    {
+      "n": 10,
+      "source": "A {1} may be reused to validate multiple documents. To run it for other documents, call {2} first.",
+      "ja": "{1}は、複数のドキュメントの検証に再利用できます。別のドキュメントで使う前に、{2}を呼びます。"
+    },
+    {
+      "n": 11,
+      "source": "Validation during parsing/serialization",
+      "ja": "解析・シリアライズ中の検証"
+    },
+    {
+      "n": 12,
+      "source": "Unlike most JSON Schema validator implementations, RapidJSON provides a SAX-based schema validator. Therefore, you can parse a JSON from a stream while validating it on the fly. If the validator encounters a JSON value that invalidates the supplied schema, the parsing will be terminated immediately. This design is especially useful for parsing large JSON files.",
+      "ja": "多くのJSON Schemaバリデーター実装と異なり、RapidJSONはSAXに基づくスキーマバリデーターを提供します。そのため、ストリームからJSONを解析しながら、その場で検証できます。指定したスキーマに違反するJSONの値に遭遇すると、解析は直ちに終了します。この設計は、大きなJSONファイルの解析に特に役立ちます。"
+    },
+    {
+      "n": 13,
+      "source": "DOM parsing",
+      "ja": "DOMによる解析"
+    },
+    {
+      "n": 14,
+      "source": "For using DOM in parsing, {1} needs some preparation and finalizing tasks, in addition to receiving SAX events, thus it needs some work to route the reader, validator and the document. {2} is a helper class that doing such work.",
+      "ja": "DOMを使って解析する場合、{1}には、SAXイベントの受信に加え、準備と終了処理が必要です。そのため、reader・バリデーター・ドキュメントの間でイベントを受け渡すための処理が必要になります。{2}は、この処理を行うヘルパークラスです。"
+    },
+    {
+      "n": 15,
+      "source": "SAX parsing",
+      "ja": "SAXによる解析"
+    },
+    {
+      "n": 16,
+      "source": "For using SAX in parsing, it is much simpler. If it only need to validate the JSON without further processing, it is simply:",
+      "ja": "SAXを使った解析は、はるかに単純です。JSONを検証するだけで、その後の処理が不要なら、次のように書けます。"
+    },
+    {
+      "n": 17,
+      "source": "This is exactly the method used in the {1} example. The distinct advantage is low memory usage, no matter how big the JSON was (the memory usage depends on the complexity of the schema).",
+      "ja": "これは、{1}の例で使われている方法そのものです。明確な利点は、JSONの大きさにかかわらずメモリー使用量が少ないことです（メモリー使用量はスキーマの複雑さに依存します）。"
+    },
+    {
+      "n": 18,
+      "source": "If you need to handle the SAX events further, then you need to use the template class {1} to set the output handler of the validator:",
+      "ja": "さらにSAXイベントを処理する必要がある場合は、テンプレートクラス{1}を使い、バリデーターの出力ハンドラーを設定します。"
+    },
+    {
+      "n": 19,
+      "source": "Serialization",
+      "ja": "シリアライズ"
+    },
+    {
+      "n": 20,
+      "source": "It is also possible to do validation during serializing. This can ensure the result JSON is valid according to the JSON schema.",
+      "ja": "シリアライズ中に検証することもできます。これにより、出力JSONがJSON Schemaに適合することを保証できます。"
+    },
+    {
+      "n": 21,
+      "source": "Of course, if your application only needs SAX-style serialization, it can simply send SAX events to {1} instead of {2}.",
+      "ja": "もちろん、アプリケーションにSAX形式のシリアライズだけが必要なら、{2}の代わりに{1}へSAXイベントを送るだけで済みます。"
+    },
+    {
+      "n": 22,
+      "source": "Remote Schema",
+      "ja": "リモートスキーマ"
+    },
+    {
+      "n": 23,
+      "source": "JSON Schema supports {1}, which is a {2} referencing to a local or remote schema. Local pointer is prefixed with {3}, while remote pointer is an relative or absolute URI. For example:",
+      "ja": "JSON Schemaは、ローカルまたはリモートのスキーマを参照する{2}である、{1}をサポートします。ローカルのポインターは{3}で始まり、リモートのポインターは相対または絶対URIです。例を示します。"
+    },
+    {
+      "n": 24,
+      "source": "As {1} does not know how to resolve such URI, it needs a user-provided {2} instance to do so.",
+      "ja": "{1}には、このようなURIを解決する方法が分からないため、利用者が提供する{2}のインスタンスが必要です。"
+    },
+    {
+      "n": 25,
+      "source": "Conformance",
+      "ja": "適合性"
+    },
+    {
+      "n": 26,
+      "source": "RapidJSON passed 262 out of 263 tests in {1} (Json Schema draft 4).",
+      "ja": "RapidJSONは、{1}（JSON Schema draft 4）の263テスト中262テストに合格しました。"
+    },
+    {
+      "n": 27,
+      "source": "The failed test is \"changed scope ref invalid\" of \"change resolution scope\" in {1}. It is due to that {2} schema keyword and URI combining function are not implemented.",
+      "ja": "失敗したのは、{1}の「change resolution scope」にある「changed scope ref invalid」テストです。スキーマのキーワード{2}と、URIを結合する機能が実装されていないためです。"
+    },
+    {
+      "n": 28,
+      "source": "Besides, the {1} schema keyword for string values is ignored, since it is not required by the specification.",
+      "ja": "また、文字列の値に対するスキーマのキーワード{1}は、仕様で必須とされていないため無視されます。"
+    },
+    {
+      "n": 29,
+      "source": "Regular Expression",
+      "ja": "正規表現"
+    },
+    {
+      "n": 30,
+      "source": "The schema keyword {1} and {2} uses regular expression to match the required pattern.",
+      "ja": "スキーマのキーワード{1}と{2}は、正規表現で要求するパターンを照合します。"
+    },
+    {
+      "n": 31,
+      "source": "RapidJSON implemented a simple NFA regular expression engine, which is used by default. It supports the following syntax.",
+      "ja": "RapidJSONには単純なNFA正規表現エンジンが実装されており、既定で使われます。次の構文に対応しています。"
+    },
+    {
+      "n": 32,
+      "source": "Syntax",
+      "ja": "構文"
+    },
+    {
+      "n": 33,
+      "source": "Description",
+      "ja": "説明"
+    },
+    {
+      "n": 34,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 35,
+      "source": "Concatenation",
+      "ja": "連結"
+    },
+    {
+      "n": 36,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 37,
+      "source": "Alternation",
+      "ja": "選択"
+    },
+    {
+      "n": 38,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 39,
+      "source": "Zero or one",
+      "ja": "0回または1回"
+    },
+    {
+      "n": 40,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 41,
+      "source": "Zero or more",
+      "ja": "0回以上"
+    },
+    {
+      "n": 42,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 43,
+      "source": "One or more",
+      "ja": "1回以上"
+    },
+    {
+      "n": 44,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 45,
+      "source": "Exactly 3 times",
+      "ja": "ちょうど3回"
+    },
+    {
+      "n": 46,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 47,
+      "source": "At least 3 times",
+      "ja": "3回以上"
+    },
+    {
+      "n": 48,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 49,
+      "source": "3 to 5 times",
+      "ja": "3回から5回"
+    },
+    {
+      "n": 50,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 51,
+      "source": "Grouping",
+      "ja": "グループ化"
+    },
+    {
+      "n": 52,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 53,
+      "source": "At the beginning",
+      "ja": "先頭"
+    },
+    {
+      "n": 54,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 55,
+      "source": "At the end",
+      "ja": "末尾"
+    },
+    {
+      "n": 56,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 57,
+      "source": "Any character",
+      "ja": "任意の文字"
+    },
+    {
+      "n": 58,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 59,
+      "source": "Character classes",
+      "ja": "文字クラス"
+    },
+    {
+      "n": 60,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 61,
+      "source": "Character class range",
+      "ja": "文字クラスの範囲"
+    },
+    {
+      "n": 62,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 63,
+      "source": "Character class combination",
+      "ja": "文字クラスの組み合わせ"
+    },
+    {
+      "n": 64,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 65,
+      "source": "Negated character classes",
+      "ja": "否定文字クラス"
+    },
+    {
+      "n": 66,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 67,
+      "source": "Negated character class range",
+      "ja": "否定文字クラスの範囲"
+    },
+    {
+      "n": 68,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 69,
+      "source": "Backspace (U+0008)",
+      "ja": "バックスペース（U+0008）"
+    },
+    {
+      "n": 70,
+      "source": "{1}, {2}, ...",
+      "ja": "{1}, {2}, ..."
+    },
+    {
+      "n": 71,
+      "source": "Escape characters",
+      "ja": "文字のエスケープ"
+    },
+    {
+      "n": 72,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 73,
+      "source": "Form feed (U+000C)",
+      "ja": "改ページ（U+000C）"
+    },
+    {
+      "n": 74,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 75,
+      "source": "Line feed (U+000A)",
+      "ja": "改行（U+000A）"
+    },
+    {
+      "n": 76,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 77,
+      "source": "Carriage return (U+000D)",
+      "ja": "復帰（U+000D）"
+    },
+    {
+      "n": 78,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 79,
+      "source": "Tab (U+0009)",
+      "ja": "タブ（U+0009）"
+    },
+    {
+      "n": 80,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 81,
+      "source": "Vertical tab (U+000B)",
+      "ja": "垂直タブ（U+000B）"
+    },
+    {
+      "n": 82,
+      "source": "For C++11 compiler, it is also possible to use the {1} by defining {2} and {3}. If your schemas do not need {4} and {5}, you can set both macros to zero to disable this feature, which will reduce some code size.",
+      "ja": "C++11コンパイラーでは、{2}と{3}を定義することで、{1}も使えます。スキーマで{4}と{5}が不要なら、両方のマクロを0にしてこの機能を無効にすると、コードサイズをいくらか小さくできます。"
+    },
+    {
+      "n": 83,
+      "source": "Performance",
+      "ja": "性能"
+    },
+    {
+      "n": 84,
+      "source": "Most C++ JSON libraries do not yet support JSON Schema. So we tried to evaluate the performance of RapidJSON's JSON Schema validator according to {1}, which tests 11 JavaScript libraries running on Node.js.",
+      "ja": "C++のJSONライブラリーの多くは、まだJSON Schemaに対応していません。そこで、Node.js上で動く11のJavaScriptライブラリーをテストする{1}に合わせて、RapidJSONのJSON Schemaバリデーターの性能を評価しました。"
+    },
+    {
+      "n": 85,
+      "source": "That benchmark runs validations on {1}, in which some test suites and tests are excluded. We made the same benchmarking procedure in {2}.",
+      "ja": "このベンチマークは、{1}を使って検証を実行しますが、一部のテストスイートとテストを除外しています。{2}に、同じベンチマーク手順を実装しました。"
+    },
+    {
+      "n": 86,
+      "source": "On a Mac Book Pro (2.8 GHz Intel Core i7), the following results are collected.",
+      "ja": "Mac Book Pro（2.8 GHz Intel Core i7）で、次の結果が得られました。"
+    },
+    {
+      "n": 87,
+      "source": "Validator",
+      "ja": "バリデーター"
+    },
+    {
+      "n": 88,
+      "source": "Relative speed",
+      "ja": "相対速度"
+    },
+    {
+      "n": 89,
+      "source": "Number of test runs per second",
+      "ja": "1秒当たりのテスト実行回数"
+    },
+    {
+      "n": 90,
+      "source": "RapidJSON",
+      "ja": "RapidJSON"
+    },
+    {
+      "n": 91,
+      "source": "155%",
+      "ja": "155%"
+    },
+    {
+      "n": 92,
+      "source": "30682",
+      "ja": "30682"
+    },
+    {
+      "n": 93,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 94,
+      "source": "100%",
+      "ja": "100%"
+    },
+    {
+      "n": 95,
+      "source": "19770 (± 1.31%)",
+      "ja": "19770 (± 1.31%)"
+    },
+    {
+      "n": 96,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 97,
+      "source": "70%",
+      "ja": "70%"
+    },
+    {
+      "n": 98,
+      "source": "13835 (± 2.84%)",
+      "ja": "13835 (± 2.84%)"
+    },
+    {
+      "n": 99,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 100,
+      "source": "57.7%",
+      "ja": "57.7%"
+    },
+    {
+      "n": 101,
+      "source": "11411 (± 1.27%)",
+      "ja": "11411 (± 1.27%)"
+    },
+    {
+      "n": 102,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 103,
+      "source": "26%",
+      "ja": "26%"
+    },
+    {
+      "n": 104,
+      "source": "5145 (± 1.62%)",
+      "ja": "5145 (± 1.62%)"
+    },
+    {
+      "n": 105,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 106,
+      "source": "19.9%",
+      "ja": "19.9%"
+    },
+    {
+      "n": 107,
+      "source": "3935 (± 2.69%)",
+      "ja": "3935 (± 2.69%)"
+    },
+    {
+      "n": 108,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 109,
+      "source": "7%",
+      "ja": "7%"
+    },
+    {
+      "n": 110,
+      "source": "1388 (± 0.84%)",
+      "ja": "1388 (± 0.84%)"
+    },
+    {
+      "n": 111,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 112,
+      "source": "3.1%",
+      "ja": "3.1%"
+    },
+    {
+      "n": 113,
+      "source": "606 (± 2.84%)",
+      "ja": "606 (± 2.84%)"
+    },
+    {
+      "n": 114,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 115,
+      "source": "0.9%",
+      "ja": "0.9%"
+    },
+    {
+      "n": 116,
+      "source": "185 (± 1.01%)",
+      "ja": "185 (± 1.01%)"
+    },
+    {
+      "n": 117,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 118,
+      "source": "0.8%",
+      "ja": "0.8%"
+    },
+    {
+      "n": 119,
+      "source": "154 (± 0.79%)",
+      "ja": "154 (± 0.79%)"
+    },
+    {
+      "n": 120,
+      "source": "tv4",
+      "ja": "tv4"
+    },
+    {
+      "n": 121,
+      "source": "0.5%",
+      "ja": "0.5%"
+    },
+    {
+      "n": 122,
+      "source": "93 (± 0.94%)",
+      "ja": "93 (± 0.94%)"
+    },
+    {
+      "n": 123,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 124,
+      "source": "0.1%",
+      "ja": "0.1%"
+    },
+    {
+      "n": 125,
+      "source": "21 (± 1.14%)",
+      "ja": "21 (± 1.14%)"
+    },
+    {
+      "n": 126,
+      "source": "That is, RapidJSON is about 1.5x faster than the fastest JavaScript library (ajv). And 1400x faster than the slowest one.",
+      "ja": "つまり、RapidJSONは最も速いJavaScriptライブラリー（ajv）の約1.5倍、最も遅いものの1400倍の速さです。"
+    }
+  ],
+  "tokenTranslations": {
+    "$ref": "$ref",
+    " keyword": " キーワード",
+    "JSON pointer": "JSON Pointer"
+  }
+}

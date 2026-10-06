@@ -1,0 +1,813 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "The term \"SAX\" originated from {1}. We borrowed this term for JSON parsing and generation.",
+    "tokens": [
+      "<a href=\"http://en.wikipedia.org/wiki/Simple_API_for_XML\">Simple API for XML</a>"
+    ]
+  },
+  {
+    "n": 2,
+    "tag": "p",
+    "text": "In RapidJSON, {1} (typedef of {2}) is the SAX-style parser for JSON, and {3} (typedef of {4}) is the SAX-style generator for JSON.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">GenericReader&lt;...&gt;</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">GenericWriter&lt;...&gt;</span>"
+    ]
+  },
+  {
+    "n": 3,
+    "tag": "h1",
+    "text": "Reader",
+    "tokens": []
+  },
+  {
+    "n": 4,
+    "tag": "p",
+    "text": "{1} parses a JSON from a stream. While it reads characters from the stream, it analyze the characters according to the syntax of JSON, and publish events to a handler.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 5,
+    "tag": "p",
+    "text": "For example, here is a JSON.",
+    "tokens": []
+  },
+  {
+    "n": 6,
+    "tag": "p",
+    "text": "While a {1} parses this JSON, it publishes the following events to the handler sequentially:",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 7,
+    "tag": "p",
+    "text": "These events can be easily matched with the JSON, except some event parameters need further explanation. Let's see the {1} example which produces exactly the same output as above:",
+    "tokens": [
+      "<span class=\"tt\">simplereader</span>"
+    ]
+  },
+  {
+    "n": 8,
+    "tag": "div",
+    "text": "Parse JSON text.",
+    "tokens": []
+  },
+  {
+    "n": 9,
+    "tag": "div",
+    "text": "main RapidJSON namespace",
+    "tokens": []
+  },
+  {
+    "n": 10,
+    "tag": "div",
+    "text": "String stream with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 11,
+    "tag": "div",
+    "text": "Reader with UTF8 encoding and default allocator.",
+    "tokens": []
+  },
+  {
+    "n": 12,
+    "tag": "div",
+    "text": "Default implementation of Handler.",
+    "tokens": []
+  },
+  {
+    "n": 13,
+    "tag": "p",
+    "text": "Note that, RapidJSON uses template to statically bind the {1} type and the handler type, instead of using class with virtual functions. This paradigm can improve the performance by inlining functions.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 14,
+    "tag": "h2",
+    "text": "Handler",
+    "tokens": []
+  },
+  {
+    "n": 15,
+    "tag": "p",
+    "text": "As the previous example showed, user needs to implement a handler, which consumes the events (function calls) from {1}. The handler must contain the following member functions.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 16,
+    "tag": "div",
+    "text": "Concept for receiving events from GenericReader upon parsing. The functions return true if no error o...",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "div",
+    "text": "Size type (for string lengths, array sizes, etc.).",
+    "tokens": []
+  },
+  {
+    "n": 18,
+    "tag": "p",
+    "text": "{1} is called when the {2} encounters a JSON null value.",
+    "tokens": [
+      "<span class=\"tt\">Null()</span>",
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 19,
+    "tag": "p",
+    "text": "{1} is called when the {2} encounters a JSON true or false value.",
+    "tokens": [
+      "<span class=\"tt\">Bool(bool)</span>",
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 20,
+    "tag": "p",
+    "text": "When the {1} encounters a JSON number, it chooses a suitable C++ type mapping. And then it calls {2} function out of {3}, {4}, {5}, {6} and {7}. If {8} is enabled, {9} will always calls {10} instead.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<em>one</em>",
+      "<span class=\"tt\">Int(int)</span>",
+      "<span class=\"tt\">Uint(unsigned)</span>",
+      "<span class=\"tt\">Int64(int64_t)</span>",
+      "<span class=\"tt\">Uint64(uint64_t)</span>",
+      "<span class=\"tt\">Double(double)</span>",
+      "<span class=\"tt\">kParseNumbersAsStrings</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">RawNumber()</span>"
+    ]
+  },
+  {
+    "n": 21,
+    "tag": "p",
+    "text": "{1} is called when the {2} encounters a string. The first parameter is pointer to the string. The second parameter is the length of the string (excluding the null terminator). Note that RapidJSON supports null character {3} inside a string. If such situation happens, {4}. The last {5} indicates whether the handler needs to make a copy of the string. For normal parsing, {6}. Only when {7} parsing is used, {8}. And beware that, the character type depends on the target encoding, which will be explained later.",
+    "tokens": [
+      "<span class=\"tt\">String(const char* str, SizeType length, bool copy)</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">'\\0'</span>",
+      "<span class=\"tt\">strlen(str) &lt; length</span>",
+      "<span class=\"tt\">copy</span>",
+      "<span class=\"tt\">copy = true</span>",
+      "<em>insitu</em>",
+      "<span class=\"tt\">copy = false</span>"
+    ]
+  },
+  {
+    "n": 22,
+    "tag": "p",
+    "text": "When the {1} encounters the beginning of an object, it calls {2}. An object in JSON is a set of name-value pairs. If the object contains members it first calls {3} for the name of member, and then calls functions depending on the type of the value. These calls of name-value pairs repeats until calling {4}. Note that the {5} parameter is just an aid for the handler, user may not need this parameter.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">StartObject()</span>",
+      "<span class=\"tt\">Key()</span>",
+      "<span class=\"tt\">EndObject(SizeType memberCount)</span>",
+      "<span class=\"tt\">memberCount</span>"
+    ]
+  },
+  {
+    "n": 23,
+    "tag": "p",
+    "text": "Array is similar to object but simpler. At the beginning of an array, the {1} calls {2}. If there is elements, it calls functions according to the types of element. Similarly, in the last call {3}, the parameter {4} is just an aid for the handler.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">BeginArary()</span>",
+      "<span class=\"tt\">EndArray(SizeType elementCount)</span>",
+      "<span class=\"tt\">elementCount</span>"
+    ]
+  },
+  {
+    "n": 24,
+    "tag": "p",
+    "text": "Every handler functions returns a {1}. Normally it should returns {2}. If the handler encounters an error, it can return {3} to notify event publisher to stop further processing.",
+    "tokens": [
+      "<span class=\"tt\">bool</span>",
+      "<span class=\"tt\">true</span>",
+      "<span class=\"tt\">false</span>"
+    ]
+  },
+  {
+    "n": 25,
+    "tag": "p",
+    "text": "For example, when we parse a JSON with {1} and the handler detected that the JSON does not conform to the required schema, then the handler can return {2} and let the {3} stop further parsing. And the {4} will be in error state with error code {5}.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">false</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">kParseErrorTermination</span>"
+    ]
+  },
+  {
+    "n": 26,
+    "tag": "h2",
+    "text": "GenericReader",
+    "tokens": []
+  },
+  {
+    "n": 27,
+    "tag": "p",
+    "text": "As mentioned before, {1} is a typedef of a template class {2}:",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">GenericReader</span>"
+    ]
+  },
+  {
+    "n": 28,
+    "tag": "div",
+    "text": "SAX-style JSON parser. Use Reader for UTF8 encoding and default allocator.",
+    "tokens": []
+  },
+  {
+    "n": 29,
+    "tag": "div",
+    "text": "UTF-8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 30,
+    "tag": "p",
+    "text": "The {1} uses UTF-8 as both source and target encoding. The source encoding means the encoding in the JSON stream. The target encoding means the encoding of the {2} parameter in {3} calls. For example, to parse a UTF-8 stream and outputs UTF-16 string events, you can define a reader by:",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">str</span>",
+      "<span class=\"tt\">String()</span>"
+    ]
+  },
+  {
+    "n": 31,
+    "tag": "div",
+    "text": "UTF-16 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 32,
+    "tag": "p",
+    "text": "Note that, the default character type of {1} is {2}. So this {3}needs to call {4} of the handler.",
+    "tokens": [
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">wchar_t</span>",
+      "<span class=\"tt\">reader</span>",
+      "<span class=\"tt\">String(const wchar_t*, SizeType, bool)</span>"
+    ]
+  },
+  {
+    "n": 33,
+    "tag": "p",
+    "text": "The third template parameter {1} is the allocator type for internal data structure (actually a stack).",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>"
+    ]
+  },
+  {
+    "n": 34,
+    "tag": "h2",
+    "text": "Parsing",
+    "tokens": []
+  },
+  {
+    "n": 35,
+    "tag": "p",
+    "text": "The one and only one function of {1} is to parse JSON.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 36,
+    "tag": "p",
+    "text": "If an error occurs during parsing, it will return {1}. User can also calls {2}, {3} and {4} to obtain the error states. Actually {5} uses these {6} functions to obtain parse errors. Please refer to {7} for details about parse error.",
+    "tokens": [
+      "<span class=\"tt\">false</span>",
+      "<span class=\"tt\">bool HasParseEror()</span>",
+      "<span class=\"tt\">ParseErrorCode GetParseErrorCode()</span>",
+      "<span class=\"tt\">size_t GetErrorOffset()</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/04-dom/\" title=\"DOM\">DOM</a>"
+    ]
+  },
+  {
+    "n": 37,
+    "tag": "h1",
+    "text": "Writer",
+    "tokens": []
+  },
+  {
+    "n": 38,
+    "tag": "p",
+    "text": "{1} converts (parses) JSON into events. {2} does exactly the opposite. It converts events into JSON.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 39,
+    "tag": "p",
+    "text": "{1} is very easy to use. If your application only need to converts some data into JSON, it may be a good choice to use {2} directly, instead of building a {3} and then stringifying it with a {4}.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 40,
+    "tag": "p",
+    "text": "In {1} example, we do exactly the reverse of {2}.",
+    "tokens": [
+      "<span class=\"tt\">simplewriter</span>",
+      "<span class=\"tt\">simplereader</span>"
+    ]
+  },
+  {
+    "n": 41,
+    "tag": "div",
+    "text": "JSON writer.",
+    "tokens": []
+  },
+  {
+    "n": 42,
+    "tag": "div",
+    "text": "String buffer with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 43,
+    "tag": "p",
+    "text": "There are two {1} and {2} overloads. One is the same as defined in handler concept with 3 parameters. It can handle string with null characters. Another one is the simpler version used in the above example.",
+    "tokens": [
+      "<span class=\"tt\">String()</span>",
+      "<span class=\"tt\">Key()</span>"
+    ]
+  },
+  {
+    "n": 44,
+    "tag": "p",
+    "text": "Note that, the example code does not pass any parameters in {1} and {2}. An {3} can be passed but it will be simply ignored by {4}.",
+    "tokens": [
+      "<span class=\"tt\">EndArray()</span>",
+      "<span class=\"tt\">EndObject()</span>",
+      "<span class=\"tt\">SizeType</span>",
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 45,
+    "tag": "p",
+    "text": "You may doubt that, why not just using {1} or {2} to build a JSON?",
+    "tokens": [
+      "<span class=\"tt\">sprintf()</span>",
+      "<span class=\"tt\">std::stringstream</span>"
+    ]
+  },
+  {
+    "n": 46,
+    "tag": "p",
+    "text": "There are various reasons:",
+    "tokens": []
+  },
+  {
+    "n": 47,
+    "tag": "li",
+    "text": "{1} must output a well-formed JSON. If there is incorrect event sequence (e.g. {2} just after {3}), it generates assertion fail in debug mode.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Int()</span>",
+      "<span class=\"tt\">StartObject()</span>"
+    ]
+  },
+  {
+    "n": 48,
+    "tag": "li",
+    "text": "{1} can handle string escaping (e.g. converting code point {2} to {3}) and Unicode transcoding.",
+    "tokens": [
+      "<span class=\"tt\">Writer::String()</span>",
+      "<span class=\"tt\">U+000A</span>",
+      "<span class=\"tt\">\\n</span>"
+    ]
+  },
+  {
+    "n": 49,
+    "tag": "li",
+    "text": "{1} handles number output consistently.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 50,
+    "tag": "li",
+    "text": "{1} implements the event handler concept. It can be used to handle events from {2}, {3} or other event publisher.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Document</span>"
+    ]
+  },
+  {
+    "n": 51,
+    "tag": "li",
+    "text": "{1} can be optimized for different platforms.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 52,
+    "tag": "p",
+    "text": "Anyway, using {1} API is even simpler than generating a JSON by ad hoc methods.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 53,
+    "tag": "h2",
+    "text": "Template",
+    "tokens": []
+  },
+  {
+    "n": 54,
+    "tag": "p",
+    "text": "{1} has a minor design difference to {2}. {3} is a template class, not a typedef. There is no {4}. The following is the declaration.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">GenericWriter</span>"
+    ]
+  },
+  {
+    "n": 55,
+    "tag": "div",
+    "text": "Concept for allocating, resizing and freeing memory block.",
+    "tokens": []
+  },
+  {
+    "n": 56,
+    "tag": "div",
+    "text": "Constructor.",
+    "tokens": []
+  },
+  {
+    "n": 57,
+    "tag": "p",
+    "text": "The {1} template parameter is the type of output stream. It cannot be deduced and must be specified by user.",
+    "tokens": [
+      "<span class=\"tt\">OutputStream</span>"
+    ]
+  },
+  {
+    "n": 58,
+    "tag": "p",
+    "text": "The {1} template parameter specifies the encoding to be used in {2}.",
+    "tokens": [
+      "<span class=\"tt\">SourceEncoding</span>",
+      "<span class=\"tt\">String(const Ch*, ...)</span>"
+    ]
+  },
+  {
+    "n": 59,
+    "tag": "p",
+    "text": "The {1} template parameter specifies the encoding in the output stream.",
+    "tokens": [
+      "<span class=\"tt\">TargetEncoding</span>"
+    ]
+  },
+  {
+    "n": 60,
+    "tag": "p",
+    "text": "The {1} is the type of allocator, which is used for allocating internal data structure (a stack).",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>"
+    ]
+  },
+  {
+    "n": 61,
+    "tag": "p",
+    "text": "The {1} are combination of the following bit-flags:",
+    "tokens": [
+      "<span class=\"tt\">writeFlags</span>"
+    ]
+  },
+  {
+    "n": 62,
+    "tag": "th",
+    "text": "Parse flags",
+    "tokens": []
+  },
+  {
+    "n": 63,
+    "tag": "th",
+    "text": "Meaning",
+    "tokens": []
+  },
+  {
+    "n": 64,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteNoFlags</span>"
+    ]
+  },
+  {
+    "n": 65,
+    "tag": "td",
+    "text": "No flag is set.",
+    "tokens": []
+  },
+  {
+    "n": 66,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteDefaultFlags</span>"
+    ]
+  },
+  {
+    "n": 67,
+    "tag": "td",
+    "text": "Default write flags. It is equal to macro {1}, which is defined as {2}.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/121-group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g/#ga1975595e2f1dc20a2d4859f340ac88c6\" title=\"User-defined kWriteDefaultFlags definition.\">RAPIDJSON_WRITE_DEFAULT_FLAGS</a></span>",
+      "<span class=\"tt\">kWriteNoFlags</span>"
+    ]
+  },
+  {
+    "n": 68,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteValidateEncodingFlag</span>"
+    ]
+  },
+  {
+    "n": 69,
+    "tag": "td",
+    "text": "Validate encoding of JSON strings.",
+    "tokens": []
+  },
+  {
+    "n": 70,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteNanAndInfFlag</span>"
+    ]
+  },
+  {
+    "n": 71,
+    "tag": "td",
+    "text": "Allow writing of {1}, {2} and {3}.",
+    "tokens": [
+      "<span class=\"tt\">Infinity</span>",
+      "<span class=\"tt\">-Infinity</span>",
+      "<span class=\"tt\">NaN</span>"
+    ]
+  },
+  {
+    "n": 72,
+    "tag": "p",
+    "text": "Besides, the constructor of {1} has a {2} parameter. This parameter affects the initial memory allocated for storing information per hierarchy level.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">levelDepth</span>"
+    ]
+  },
+  {
+    "n": 73,
+    "tag": "h2",
+    "text": "PrettyWriter",
+    "tokens": []
+  },
+  {
+    "n": 74,
+    "tag": "p",
+    "text": "While the output of {1} is the most condensed JSON without white-spaces, suitable for network transfer or storage, it is not easily readable by human.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 75,
+    "tag": "p",
+    "text": "Therefore, RapidJSON provides a {1}, which adds indentation and line feeds in the output.",
+    "tokens": [
+      "<span class=\"tt\">PrettyWriter</span>"
+    ]
+  },
+  {
+    "n": 76,
+    "tag": "p",
+    "text": "The usage of {1} is exactly the same as {2}, expect that {3} provides a {4} function. The default is 4 spaces.",
+    "tokens": [
+      "<span class=\"tt\">PrettyWriter</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">PrettyWriter</span>",
+      "<span class=\"tt\">SetIndent(Ch indentChar, unsigned indentCharCount)</span>"
+    ]
+  },
+  {
+    "n": 77,
+    "tag": "h2",
+    "text": "Completeness and Reset",
+    "tokens": []
+  },
+  {
+    "n": 78,
+    "tag": "p",
+    "text": "A {1} can only output a single JSON, which can be any JSON type at the root. Once the singular event for root (e.g. {2}), or the last matching {3} or {4} event, is handled, the output JSON is well-formed and complete. User can detect this state by calling {5}.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">String()</span>",
+      "<span class=\"tt\">EndObject()</span>",
+      "<span class=\"tt\">EndArray()</span>",
+      "<span class=\"tt\">Writer::IsComplete()</span>"
+    ]
+  },
+  {
+    "n": 79,
+    "tag": "p",
+    "text": "When a JSON is complete, the {1} cannot accept any new events. Otherwise the output will be invalid (i.e. having more than one root). To reuse the {2} object, user can call {3} to reset all internal states of the {4} with a new output stream.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Writer::Reset(OutputStream&amp; os)</span>",
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 80,
+    "tag": "h1",
+    "text": "Techniques",
+    "tokens": []
+  },
+  {
+    "n": 81,
+    "tag": "h2",
+    "text": "Parsing JSON to Custom Data Structure",
+    "tokens": []
+  },
+  {
+    "n": 82,
+    "tag": "p",
+    "text": "{1}'s parsing capability is completely based on {2}. Actually {3} is a handler which receives events from a reader to build a DOM during parsing.",
+    "tokens": [
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Document</span>"
+    ]
+  },
+  {
+    "n": 83,
+    "tag": "p",
+    "text": "User may uses {1} to build other data structures directly. This eliminates building of DOM, thus reducing memory and improving performance.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 84,
+    "tag": "p",
+    "text": "In the following {1} example, {2} parses a JSON which should be an object with key-string pairs.",
+    "tokens": [
+      "<span class=\"tt\">messagereader</span>",
+      "<span class=\"tt\">ParseMessages()</span>"
+    ]
+  },
+  {
+    "n": 85,
+    "tag": "div",
+    "text": "Get the ParseErrorCode of last parsing.",
+    "tokens": []
+  },
+  {
+    "n": 86,
+    "tag": "div",
+    "text": "Get the position of last parsing error in input, 0 otherwise.",
+    "tokens": []
+  },
+  {
+    "n": 87,
+    "tag": "div",
+    "text": "Error code of parsing.",
+    "tokens": []
+  },
+  {
+    "n": 88,
+    "tag": "div",
+    "text": "Maps error code of parsing into error message.",
+    "tokens": []
+  },
+  {
+    "n": 89,
+    "tag": "p",
+    "text": "The first JSON ({1}) was successfully parsed into {2}. Since {3} is a {4}, the printing order are sorted by the key. This order is different from the JSON's order.",
+    "tokens": [
+      "<span class=\"tt\">json1</span>",
+      "<span class=\"tt\">MessageMap</span>",
+      "<span class=\"tt\">MessageMap</span>",
+      "<span class=\"tt\">std::map</span>"
+    ]
+  },
+  {
+    "n": 90,
+    "tag": "p",
+    "text": "In the second JSON ({1}), {2}'s value is an empty object. As it is an object, {3} will be called. However, at that moment {4}, so that function returns {5} and cause the parsing process be terminated. The error code is {6}.",
+    "tokens": [
+      "<span class=\"tt\">json2</span>",
+      "<span class=\"tt\">foo</span>",
+      "<span class=\"tt\">MessageHandler::StartObject()</span>",
+      "<span class=\"tt\">state_ = kExpectValue</span>",
+      "<span class=\"tt\">false</span>",
+      "<span class=\"tt\">kParseErrorTermination</span>"
+    ]
+  },
+  {
+    "n": 91,
+    "tag": "h2",
+    "text": "Filtering of JSON",
+    "tokens": []
+  },
+  {
+    "n": 92,
+    "tag": "p",
+    "text": "As mentioned earlier, {1} can handle the events published by {2}. {3} example simply set a {4} as handler of a {5}, so it can remove all white-spaces in JSON. {6} example uses the same relationship, but replacing {7} by {8}. So {9} can be used to reformat a JSON with indentation and line feed.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">condense</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">pretty</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">PrettyWriter</span>",
+      "<span class=\"tt\">pretty</span>"
+    ]
+  },
+  {
+    "n": 93,
+    "tag": "p",
+    "text": "Actually, we can add intermediate layer(s) to filter the contents of JSON via these SAX-style API. For example, {1} example capitalize all strings in a JSON.",
+    "tokens": [
+      "<span class=\"tt\">capitalize</span>"
+    ]
+  },
+  {
+    "n": 94,
+    "tag": "div",
+    "text": "File byte stream for input using fread().",
+    "tokens": []
+  },
+  {
+    "n": 95,
+    "tag": "div",
+    "text": "Wrapper of C file stream for input using fread().",
+    "tokens": []
+  },
+  {
+    "n": 96,
+    "tag": "p",
+    "text": "Note that, it is incorrect to simply capitalize the JSON as a string. For example:",
+    "tokens": []
+  },
+  {
+    "n": 97,
+    "tag": "p",
+    "text": "Simply capitalizing the whole JSON would contain incorrect escape character:",
+    "tokens": []
+  },
+  {
+    "n": 98,
+    "tag": "p",
+    "text": "The correct result by {1}:",
+    "tokens": [
+      "<span class=\"tt\">capitalize</span>"
+    ]
+  },
+  {
+    "n": 99,
+    "tag": "p",
+    "text": "More complicated filters can be developed. However, since SAX-style API can only provide information about a single event at a time, user may need to book-keeping the contextual information (e.g. the path from root value, storage of other related values). Some processing may be easier to be implemented in DOM than SAX.",
+    "tokens": []
+  }
+]

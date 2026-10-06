@@ -1,0 +1,813 @@
+[
+  {
+    "n": 1,
+    "source": "The term \"SAX\" originated from {1}. We borrowed this term for JSON parsing and generation.",
+    "tokens": [
+      "<a href=\"http://en.wikipedia.org/wiki/Simple_API_for_XML\">Simple API for XML</a>"
+    ],
+    "ja": "「SAX」という用語は、{1}に由来します。JSONの解析・生成にも、この用語を借用しています。"
+  },
+  {
+    "n": 2,
+    "source": "In RapidJSON, {1} (typedef of {2}) is the SAX-style parser for JSON, and {3} (typedef of {4}) is the SAX-style generator for JSON.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">GenericReader&lt;...&gt;</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">GenericWriter&lt;...&gt;</span>"
+    ],
+    "ja": "RapidJSONでは、{1}（{2}のtypedef）がJSONのSAX形式パーサーで、{3}（{4}のtypedef）がJSONのSAX形式生成器です。"
+  },
+  {
+    "n": 3,
+    "source": "Reader",
+    "tokens": [],
+    "ja": "Reader"
+  },
+  {
+    "n": 4,
+    "source": "{1} parses a JSON from a stream. While it reads characters from the stream, it analyze the characters according to the syntax of JSON, and publish events to a handler.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "{1}は、ストリームからJSONを解析します。ストリームの文字を読みながらJSONの構文に従って解析し、ハンドラーへイベントを発行します。"
+  },
+  {
+    "n": 5,
+    "source": "For example, here is a JSON.",
+    "tokens": [],
+    "ja": "たとえば、次のJSONを考えます。"
+  },
+  {
+    "n": 6,
+    "source": "While a {1} parses this JSON, it publishes the following events to the handler sequentially:",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "{1}は、このJSONを解析しながら、以下のイベントをハンドラーへ順番に発行します。"
+  },
+  {
+    "n": 7,
+    "source": "These events can be easily matched with the JSON, except some event parameters need further explanation. Let's see the {1} example which produces exactly the same output as above:",
+    "tokens": [
+      "<span class=\"tt\">simplereader</span>"
+    ],
+    "ja": "これらのイベントは、JSONと簡単に対応付けられますが、一部の引数には説明が必要です。上とまったく同じ出力を生成する{1}の例を見てみます。"
+  },
+  {
+    "n": 8,
+    "source": "Parse JSON text.",
+    "tokens": [],
+    "ja": "JSONテキストを解析します。"
+  },
+  {
+    "n": 9,
+    "source": "main RapidJSON namespace",
+    "tokens": [],
+    "ja": "RapidJSONの主な名前空間。"
+  },
+  {
+    "n": 10,
+    "source": "String stream with UTF8 encoding.",
+    "tokens": [],
+    "ja": "UTF8エンコーディングの文字列ストリーム。"
+  },
+  {
+    "n": 11,
+    "source": "Reader with UTF8 encoding and default allocator.",
+    "tokens": [],
+    "ja": "UTF8エンコーディングと既定のアロケーターを使うReader。"
+  },
+  {
+    "n": 12,
+    "source": "Default implementation of Handler.",
+    "tokens": [],
+    "ja": "Handlerの既定の実装。"
+  },
+  {
+    "n": 13,
+    "source": "Note that, RapidJSON uses template to statically bind the {1} type and the handler type, instead of using class with virtual functions. This paradigm can improve the performance by inlining functions.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "RapidJSONは、仮想関数を持つクラスではなく、テンプレートで{1}型とハンドラー型を静的に結び付けます。この方法では、関数のインライン化によって性能を改善できます。"
+  },
+  {
+    "n": 14,
+    "source": "Handler",
+    "tokens": [],
+    "ja": "Handler"
+  },
+  {
+    "n": 15,
+    "source": "As the previous example showed, user needs to implement a handler, which consumes the events (function calls) from {1}. The handler must contain the following member functions.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "前の例のように、{1}からのイベント（関数呼び出し）を受け取るハンドラーを実装する必要があります。ハンドラーには、以下のメンバー関数が必要です。"
+  },
+  {
+    "n": 16,
+    "source": "Concept for receiving events from GenericReader upon parsing. The functions return true if no error o...",
+    "tokens": [],
+    "ja": "解析時にGenericReaderからイベントを受け取る概念。エラーがなければ関数はtrueを返し…（生成原文の抜粋）。"
+  },
+  {
+    "n": 17,
+    "source": "Size type (for string lengths, array sizes, etc.).",
+    "tokens": [],
+    "ja": "大きさを表す型（文字列の長さ、配列の大きさなど）。"
+  },
+  {
+    "n": 18,
+    "source": "{1} is called when the {2} encounters a JSON null value.",
+    "tokens": [
+      "<span class=\"tt\">Null()</span>",
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "{2}がJSONのnull値に遭遇すると、{1}を呼びます。"
+  },
+  {
+    "n": 19,
+    "source": "{1} is called when the {2} encounters a JSON true or false value.",
+    "tokens": [
+      "<span class=\"tt\">Bool(bool)</span>",
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "{2}がJSONのtrueかfalse値に遭遇すると、{1}を呼びます。"
+  },
+  {
+    "n": 20,
+    "source": "When the {1} encounters a JSON number, it chooses a suitable C++ type mapping. And then it calls {2} function out of {3}, {4}, {5}, {6} and {7}. If {8} is enabled, {9} will always calls {10} instead.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<em>one</em>",
+      "<span class=\"tt\">Int(int)</span>",
+      "<span class=\"tt\">Uint(unsigned)</span>",
+      "<span class=\"tt\">Int64(int64_t)</span>",
+      "<span class=\"tt\">Uint64(uint64_t)</span>",
+      "<span class=\"tt\">Double(double)</span>",
+      "<span class=\"tt\">kParseNumbersAsStrings</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">RawNumber()</span>"
+    ],
+    "ja": "{1}がJSONの数値に遭遇すると、適切なC++型への対応付けを選びます。そして、{3}、{4}、{5}、{6}、{7}のうち、{2}を呼びます。{8}が有効なら、{9}は代わりに常に{10}を呼びます。"
+  },
+  {
+    "n": 21,
+    "source": "{1} is called when the {2} encounters a string. The first parameter is pointer to the string. The second parameter is the length of the string (excluding the null terminator). Note that RapidJSON supports null character {3} inside a string. If such situation happens, {4}. The last {5} indicates whether the handler needs to make a copy of the string. For normal parsing, {6}. Only when {7} parsing is used, {8}. And beware that, the character type depends on the target encoding, which will be explained later.",
+    "tokens": [
+      "<span class=\"tt\">String(const char* str, SizeType length, bool copy)</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">'\\0'</span>",
+      "<span class=\"tt\">strlen(str) &lt; length</span>",
+      "<span class=\"tt\">copy</span>",
+      "<span class=\"tt\">copy = true</span>",
+      "<em>insitu</em>",
+      "<span class=\"tt\">copy = false</span>"
+    ],
+    "ja": "{2}が文字列に遭遇すると、{1}を呼びます。第1引数は文字列へのポインター、第2引数はヌル終端文字を含めない文字列の長さです。RapidJSONは、文字列内のヌル文字{3}にも対応します。その場合は、{4}となります。最後の{5}は、ハンドラーが文字列をコピーする必要があるかを表します。通常の解析では{6}で、{7}解析の場合だけ{8}となります。文字型は、この後で説明する変換先エンコーディングに依存することにも注意してください。"
+  },
+  {
+    "n": 22,
+    "source": "When the {1} encounters the beginning of an object, it calls {2}. An object in JSON is a set of name-value pairs. If the object contains members it first calls {3} for the name of member, and then calls functions depending on the type of the value. These calls of name-value pairs repeats until calling {4}. Note that the {5} parameter is just an aid for the handler, user may not need this parameter.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">StartObject()</span>",
+      "<span class=\"tt\">Key()</span>",
+      "<span class=\"tt\">EndObject(SizeType memberCount)</span>",
+      "<span class=\"tt\">memberCount</span>"
+    ],
+    "ja": "{1}がオブジェクトの開始に遭遇すると、{2}を呼びます。JSONのオブジェクトは、名前と値の組の集合です。メンバーがあれば、まず名前について{3}を呼び、次に値の型に応じた関数を呼びます。名前と値の組についての呼び出しを、{4}まで繰り返します。{5}引数はハンドラーを助けるためのもので、必要ない場合もあります。"
+  },
+  {
+    "n": 23,
+    "source": "Array is similar to object but simpler. At the beginning of an array, the {1} calls {2}. If there is elements, it calls functions according to the types of element. Similarly, in the last call {3}, the parameter {4} is just an aid for the handler.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">BeginArary()</span>",
+      "<span class=\"tt\">EndArray(SizeType elementCount)</span>",
+      "<span class=\"tt\">elementCount</span>"
+    ],
+    "ja": "配列はオブジェクトと似ていますが、より単純です。配列の開始時に、{1}は{2}を呼びます。要素があれば、要素の型に応じた関数を呼びます。同様に、最後の{3}の{4}引数は、ハンドラーを助けるためのものです。"
+  },
+  {
+    "n": 24,
+    "source": "Every handler functions returns a {1}. Normally it should returns {2}. If the handler encounters an error, it can return {3} to notify event publisher to stop further processing.",
+    "tokens": [
+      "<span class=\"tt\">bool</span>",
+      "<span class=\"tt\">true</span>",
+      "<span class=\"tt\">false</span>"
+    ],
+    "ja": "ハンドラーの各関数は{1}を返します。通常は{2}を返します。エラーに遭遇した場合は、{3}を返して、イベントの発行元へ処理の停止を伝えられます。"
+  },
+  {
+    "n": 25,
+    "source": "For example, when we parse a JSON with {1} and the handler detected that the JSON does not conform to the required schema, then the handler can return {2} and let the {3} stop further parsing. And the {4} will be in error state with error code {5}.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">false</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">kParseErrorTermination</span>"
+    ],
+    "ja": "たとえば、{1}でJSONを解析し、必要なスキーマにJSONが適合しないことをハンドラーが検出した場合、{2}を返して、{3}の解析を停止できます。{4}は、エラーコード{5}のエラー状態になります。"
+  },
+  {
+    "n": 26,
+    "source": "GenericReader",
+    "tokens": [],
+    "ja": "GenericReader"
+  },
+  {
+    "n": 27,
+    "source": "As mentioned before, {1} is a typedef of a template class {2}:",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">GenericReader</span>"
+    ],
+    "ja": "前述のように、{1}はテンプレートクラス{2}のtypedefです。"
+  },
+  {
+    "n": 28,
+    "source": "SAX-style JSON parser. Use Reader for UTF8 encoding and default allocator.",
+    "tokens": [],
+    "ja": "SAX形式のJSONパーサー。UTF8エンコーディングと既定のアロケーターにはReaderを使います。"
+  },
+  {
+    "n": 29,
+    "source": "UTF-8 encoding.",
+    "tokens": [],
+    "ja": "UTF-8エンコーディング。"
+  },
+  {
+    "n": 30,
+    "source": "The {1} uses UTF-8 as both source and target encoding. The source encoding means the encoding in the JSON stream. The target encoding means the encoding of the {2} parameter in {3} calls. For example, to parse a UTF-8 stream and outputs UTF-16 string events, you can define a reader by:",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">str</span>",
+      "<span class=\"tt\">String()</span>"
+    ],
+    "ja": "{1}は、入力と変換先の両方のエンコーディングにUTF-8を使います。入力エンコーディングはJSONストリームのエンコーディング、変換先は{3}呼び出しの{2}引数のエンコーディングです。たとえば、UTF-8ストリームを解析し、UTF-16文字列のイベントを出力するには、次のようにreaderを定義します。"
+  },
+  {
+    "n": 31,
+    "source": "UTF-16 encoding.",
+    "tokens": [],
+    "ja": "UTF-16エンコーディング。"
+  },
+  {
+    "n": 32,
+    "source": "Note that, the default character type of {1} is {2}. So this {3}needs to call {4} of the handler.",
+    "tokens": [
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">wchar_t</span>",
+      "<span class=\"tt\">reader</span>",
+      "<span class=\"tt\">String(const wchar_t*, SizeType, bool)</span>"
+    ],
+    "ja": "{1}の既定の文字型は{2}です。そのため、この{3}はハンドラーの{4}を呼ぶ必要があります。"
+  },
+  {
+    "n": 33,
+    "source": "The third template parameter {1} is the allocator type for internal data structure (actually a stack).",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>"
+    ],
+    "ja": "第3のテンプレート引数{1}は、内部データ構造（実際にはスタック）用のアロケーター型です。"
+  },
+  {
+    "n": 34,
+    "source": "Parsing",
+    "tokens": [],
+    "ja": "解析"
+  },
+  {
+    "n": 35,
+    "source": "The one and only one function of {1} is to parse JSON.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "{1}の唯一の機能は、JSONの解析です。"
+  },
+  {
+    "n": 36,
+    "source": "If an error occurs during parsing, it will return {1}. User can also calls {2}, {3} and {4} to obtain the error states. Actually {5} uses these {6} functions to obtain parse errors. Please refer to {7} for details about parse error.",
+    "tokens": [
+      "<span class=\"tt\">false</span>",
+      "<span class=\"tt\">bool HasParseEror()</span>",
+      "<span class=\"tt\">ParseErrorCode GetParseErrorCode()</span>",
+      "<span class=\"tt\">size_t GetErrorOffset()</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/04-dom/\" title=\"DOM\">DOM</a>"
+    ],
+    "ja": "解析中にエラーが起こると、{1}を返します。{2}、{3}、{4}でエラー状態を取得することもできます。実際に、{5}はこれらの{6}の関数で解析エラーを取得しています。詳しくは{7}を参照してください。"
+  },
+  {
+    "n": 37,
+    "source": "Writer",
+    "tokens": [],
+    "ja": "Writer"
+  },
+  {
+    "n": 38,
+    "source": "{1} converts (parses) JSON into events. {2} does exactly the opposite. It converts events into JSON.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "{1}はJSONをイベントへ変換（解析）します。{2}はその逆で、イベントをJSONへ変換します。"
+  },
+  {
+    "n": 39,
+    "source": "{1} is very easy to use. If your application only need to converts some data into JSON, it may be a good choice to use {2} directly, instead of building a {3} and then stringifying it with a {4}.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "{1}はとても簡単に使えます。アプリケーションでデータをJSONへ変換するだけなら、{3}を作り、{4}で文字列化する代わりに、{2}を直接使う方法が適している場合があります。"
+  },
+  {
+    "n": 40,
+    "source": "In {1} example, we do exactly the reverse of {2}.",
+    "tokens": [
+      "<span class=\"tt\">simplewriter</span>",
+      "<span class=\"tt\">simplereader</span>"
+    ],
+    "ja": "{1}の例では、{2}のちょうど逆の処理を行います。"
+  },
+  {
+    "n": 41,
+    "source": "JSON writer.",
+    "tokens": [],
+    "ja": "JSONライター。"
+  },
+  {
+    "n": 42,
+    "source": "String buffer with UTF8 encoding.",
+    "tokens": [],
+    "ja": "UTF8エンコーディングの文字列バッファー。"
+  },
+  {
+    "n": 43,
+    "source": "There are two {1} and {2} overloads. One is the same as defined in handler concept with 3 parameters. It can handle string with null characters. Another one is the simpler version used in the above example.",
+    "tokens": [
+      "<span class=\"tt\">String()</span>",
+      "<span class=\"tt\">Key()</span>"
+    ],
+    "ja": "{1}と{2}には、それぞれ2つのオーバーロードがあります。1つはハンドラーの概念で定義したものと同じ3引数のもので、ヌル文字を含む文字列を扱えます。もう1つは、上の例で使った単純なものです。"
+  },
+  {
+    "n": 44,
+    "source": "Note that, the example code does not pass any parameters in {1} and {2}. An {3} can be passed but it will be simply ignored by {4}.",
+    "tokens": [
+      "<span class=\"tt\">EndArray()</span>",
+      "<span class=\"tt\">EndObject()</span>",
+      "<span class=\"tt\">SizeType</span>",
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "この例では、{1}と{2}に引数を渡していないことに注意してください。{3}を渡すこともできますが、{4}はそれを単に無視します。"
+  },
+  {
+    "n": 45,
+    "source": "You may doubt that, why not just using {1} or {2} to build a JSON?",
+    "tokens": [
+      "<span class=\"tt\">sprintf()</span>",
+      "<span class=\"tt\">std::stringstream</span>"
+    ],
+    "ja": "JSONを組み立てるのに、{1}や{2}を使うだけではいけないのか、と思うかもしれません。"
+  },
+  {
+    "n": 46,
+    "source": "There are various reasons:",
+    "tokens": [],
+    "ja": "理由はいくつもあります。"
+  },
+  {
+    "n": 47,
+    "source": "{1} must output a well-formed JSON. If there is incorrect event sequence (e.g. {2} just after {3}), it generates assertion fail in debug mode.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Int()</span>",
+      "<span class=\"tt\">StartObject()</span>"
+    ],
+    "ja": "{1}は、整形式のJSONを出力しなければなりません。イベントの順序が不正な場合（{3}の直後に{2}など）、デバッグモードではアサーションに失敗します。"
+  },
+  {
+    "n": 48,
+    "source": "{1} can handle string escaping (e.g. converting code point {2} to {3}) and Unicode transcoding.",
+    "tokens": [
+      "<span class=\"tt\">Writer::String()</span>",
+      "<span class=\"tt\">U+000A</span>",
+      "<span class=\"tt\">\\n</span>"
+    ],
+    "ja": "{1}は、文字列のエスケープ（コードポイント{2}を{3}へ変換するなど）とUnicodeのエンコーディング変換を処理できます。"
+  },
+  {
+    "n": 49,
+    "source": "{1} handles number output consistently.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "{1}は、数値の出力を一貫して処理します。"
+  },
+  {
+    "n": 50,
+    "source": "{1} implements the event handler concept. It can be used to handle events from {2}, {3} or other event publisher.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Document</span>"
+    ],
+    "ja": "{1}はイベントハンドラーの概念を実装しています。{2}、{3}、その他のイベント発行元からのイベントを処理できます。"
+  },
+  {
+    "n": 51,
+    "source": "{1} can be optimized for different platforms.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "{1}は、プラットフォームごとに最適化できます。"
+  },
+  {
+    "n": 52,
+    "source": "Anyway, using {1} API is even simpler than generating a JSON by ad hoc methods.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "いずれにせよ、{1}APIは、その場限りの方法でJSONを生成するより簡単に使えます。"
+  },
+  {
+    "n": 53,
+    "source": "Template",
+    "tokens": [],
+    "ja": "テンプレート"
+  },
+  {
+    "n": 54,
+    "source": "{1} has a minor design difference to {2}. {3} is a template class, not a typedef. There is no {4}. The following is the declaration.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">GenericWriter</span>"
+    ],
+    "ja": "{1}には、{2}との小さな設計上の違いがあります。{3}はtypedefではなくテンプレートクラスです。{4}は存在しません。宣言は次のとおりです。"
+  },
+  {
+    "n": 55,
+    "source": "Concept for allocating, resizing and freeing memory block.",
+    "tokens": [],
+    "ja": "メモリーブロックの確保・大きさの変更・解放を行う概念。"
+  },
+  {
+    "n": 56,
+    "source": "Constructor.",
+    "tokens": [],
+    "ja": "コンストラクター。"
+  },
+  {
+    "n": 57,
+    "source": "The {1} template parameter is the type of output stream. It cannot be deduced and must be specified by user.",
+    "tokens": [
+      "<span class=\"tt\">OutputStream</span>"
+    ],
+    "ja": "テンプレート引数{1}は、出力ストリームの型です。推論できないため、利用者が指定しなければなりません。"
+  },
+  {
+    "n": 58,
+    "source": "The {1} template parameter specifies the encoding to be used in {2}.",
+    "tokens": [
+      "<span class=\"tt\">SourceEncoding</span>",
+      "<span class=\"tt\">String(const Ch*, ...)</span>"
+    ],
+    "ja": "テンプレート引数{1}は、{2}で使うエンコーディングを指定します。"
+  },
+  {
+    "n": 59,
+    "source": "The {1} template parameter specifies the encoding in the output stream.",
+    "tokens": [
+      "<span class=\"tt\">TargetEncoding</span>"
+    ],
+    "ja": "テンプレート引数{1}は、出力ストリームのエンコーディングを指定します。"
+  },
+  {
+    "n": 60,
+    "source": "The {1} is the type of allocator, which is used for allocating internal data structure (a stack).",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>"
+    ],
+    "ja": "{1}はアロケーターの型で、内部データ構造（スタック）のメモリー確保に使います。"
+  },
+  {
+    "n": 61,
+    "source": "The {1} are combination of the following bit-flags:",
+    "tokens": [
+      "<span class=\"tt\">writeFlags</span>"
+    ],
+    "ja": "{1}は、次のビットフラグの組み合わせです。"
+  },
+  {
+    "n": 62,
+    "source": "Parse flags",
+    "tokens": [],
+    "ja": "解析フラグ"
+  },
+  {
+    "n": 63,
+    "source": "Meaning",
+    "tokens": [],
+    "ja": "意味"
+  },
+  {
+    "n": 64,
+    "source": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteNoFlags</span>"
+    ],
+    "ja": "{1}"
+  },
+  {
+    "n": 65,
+    "source": "No flag is set.",
+    "tokens": [],
+    "ja": "フラグを設定しません。"
+  },
+  {
+    "n": 66,
+    "source": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteDefaultFlags</span>"
+    ],
+    "ja": "{1}"
+  },
+  {
+    "n": 67,
+    "source": "Default write flags. It is equal to macro {1}, which is defined as {2}.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/121-group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g/#ga1975595e2f1dc20a2d4859f340ac88c6\" title=\"User-defined kWriteDefaultFlags definition.\">RAPIDJSON_WRITE_DEFAULT_FLAGS</a></span>",
+      "<span class=\"tt\">kWriteNoFlags</span>"
+    ],
+    "ja": "既定の書き込みフラグです。マクロ{1}と同じ値で、このマクロは{2}として定義されています。"
+  },
+  {
+    "n": 68,
+    "source": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteValidateEncodingFlag</span>"
+    ],
+    "ja": "{1}"
+  },
+  {
+    "n": 69,
+    "source": "Validate encoding of JSON strings.",
+    "tokens": [],
+    "ja": "JSON文字列のエンコーディングの妥当性を検証します。"
+  },
+  {
+    "n": 70,
+    "source": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kWriteNanAndInfFlag</span>"
+    ],
+    "ja": "{1}"
+  },
+  {
+    "n": 71,
+    "source": "Allow writing of {1}, {2} and {3}.",
+    "tokens": [
+      "<span class=\"tt\">Infinity</span>",
+      "<span class=\"tt\">-Infinity</span>",
+      "<span class=\"tt\">NaN</span>"
+    ],
+    "ja": "{1}、{2}、{3}の書き込みを許可します。"
+  },
+  {
+    "n": 72,
+    "source": "Besides, the constructor of {1} has a {2} parameter. This parameter affects the initial memory allocated for storing information per hierarchy level.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">levelDepth</span>"
+    ],
+    "ja": "さらに、{1}のコンストラクターには{2}引数があります。この引数は、階層の各レベルの情報を保存するために最初に確保するメモリー量へ影響します。"
+  },
+  {
+    "n": 73,
+    "source": "PrettyWriter",
+    "tokens": [],
+    "ja": "PrettyWriter"
+  },
+  {
+    "n": 74,
+    "source": "While the output of {1} is the most condensed JSON without white-spaces, suitable for network transfer or storage, it is not easily readable by human.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "{1}の出力は空白のない最もコンパクトなJSONで、ネットワーク転送や保存に適していますが、人には読みづらいものです。"
+  },
+  {
+    "n": 75,
+    "source": "Therefore, RapidJSON provides a {1}, which adds indentation and line feeds in the output.",
+    "tokens": [
+      "<span class=\"tt\">PrettyWriter</span>"
+    ],
+    "ja": "そのため、RapidJSONは、出力にインデントと改行を加える{1}を提供します。"
+  },
+  {
+    "n": 76,
+    "source": "The usage of {1} is exactly the same as {2}, expect that {3} provides a {4} function. The default is 4 spaces.",
+    "tokens": [
+      "<span class=\"tt\">PrettyWriter</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">PrettyWriter</span>",
+      "<span class=\"tt\">SetIndent(Ch indentChar, unsigned indentCharCount)</span>"
+    ],
+    "ja": "{1}の使い方は{2}とまったく同じですが、{3}には{4}関数があります。既定では、空白4個です。"
+  },
+  {
+    "n": 77,
+    "source": "Completeness and Reset",
+    "tokens": [],
+    "ja": "完了状態とリセット"
+  },
+  {
+    "n": 78,
+    "source": "A {1} can only output a single JSON, which can be any JSON type at the root. Once the singular event for root (e.g. {2}), or the last matching {3} or {4} event, is handled, the output JSON is well-formed and complete. User can detect this state by calling {5}.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">String()</span>",
+      "<span class=\"tt\">EndObject()</span>",
+      "<span class=\"tt\">EndArray()</span>",
+      "<span class=\"tt\">Writer::IsComplete()</span>"
+    ],
+    "ja": "{1}は、ルートに任意のJSON型を持つ単一のJSONだけを出力できます。ルートの単独イベント（{2}など）、または対応する最後の{3}か{4}イベントを処理すると、出力JSONは整形式で完全になります。{5}でこの状態を検出できます。"
+  },
+  {
+    "n": 79,
+    "source": "When a JSON is complete, the {1} cannot accept any new events. Otherwise the output will be invalid (i.e. having more than one root). To reuse the {2} object, user can call {3} to reset all internal states of the {4} with a new output stream.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Writer::Reset(OutputStream&amp; os)</span>",
+      "<span class=\"tt\">Writer</span>"
+    ],
+    "ja": "JSONが完成すると、{1}は新しいイベントを受け取れません。受け取ると、ルートが複数ある不正な出力になります。{2}オブジェクトを再利用するには、{3}を呼び、新しい出力ストリームとともに{4}の内部状態をすべてリセットできます。"
+  },
+  {
+    "n": 80,
+    "source": "Techniques",
+    "tokens": [],
+    "ja": "テクニック"
+  },
+  {
+    "n": 81,
+    "source": "Parsing JSON to Custom Data Structure",
+    "tokens": [],
+    "ja": "JSONを独自のデータ構造へ解析する"
+  },
+  {
+    "n": 82,
+    "source": "{1}'s parsing capability is completely based on {2}. Actually {3} is a handler which receives events from a reader to build a DOM during parsing.",
+    "tokens": [
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Document</span>"
+    ],
+    "ja": "{1}の解析機能は、完全に{2}に基づいています。実際に、{3}はreaderからイベントを受け取り、解析中にDOMを組み立てるハンドラーです。"
+  },
+  {
+    "n": 83,
+    "source": "User may uses {1} to build other data structures directly. This eliminates building of DOM, thus reducing memory and improving performance.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "{1}で、他のデータ構造を直接組み立てることもできます。DOMを作らずに済むため、メモリーを減らし、性能を改善できます。"
+  },
+  {
+    "n": 84,
+    "source": "In the following {1} example, {2} parses a JSON which should be an object with key-string pairs.",
+    "tokens": [
+      "<span class=\"tt\">messagereader</span>",
+      "<span class=\"tt\">ParseMessages()</span>"
+    ],
+    "ja": "以下の{1}の例では、{2}は、キーと文字列の組を持つオブジェクトとして想定されたJSONを解析します。"
+  },
+  {
+    "n": 85,
+    "source": "Get the ParseErrorCode of last parsing.",
+    "tokens": [],
+    "ja": "直前の解析のParseErrorCodeを取得します。"
+  },
+  {
+    "n": 86,
+    "source": "Get the position of last parsing error in input, 0 otherwise.",
+    "tokens": [],
+    "ja": "入力内の直前の解析エラーの位置を取得します。エラーがなければ0です。"
+  },
+  {
+    "n": 87,
+    "source": "Error code of parsing.",
+    "tokens": [],
+    "ja": "解析のエラーコード。"
+  },
+  {
+    "n": 88,
+    "source": "Maps error code of parsing into error message.",
+    "tokens": [],
+    "ja": "解析のエラーコードをエラーメッセージへ対応付けます。"
+  },
+  {
+    "n": 89,
+    "source": "The first JSON ({1}) was successfully parsed into {2}. Since {3} is a {4}, the printing order are sorted by the key. This order is different from the JSON's order.",
+    "tokens": [
+      "<span class=\"tt\">json1</span>",
+      "<span class=\"tt\">MessageMap</span>",
+      "<span class=\"tt\">MessageMap</span>",
+      "<span class=\"tt\">std::map</span>"
+    ],
+    "ja": "最初のJSON（{1}）は、{2}へ正常に解析されました。{3}は{4}なので、出力順はキーでソートされます。これはJSON内の順序とは異なります。"
+  },
+  {
+    "n": 90,
+    "source": "In the second JSON ({1}), {2}'s value is an empty object. As it is an object, {3} will be called. However, at that moment {4}, so that function returns {5} and cause the parsing process be terminated. The error code is {6}.",
+    "tokens": [
+      "<span class=\"tt\">json2</span>",
+      "<span class=\"tt\">foo</span>",
+      "<span class=\"tt\">MessageHandler::StartObject()</span>",
+      "<span class=\"tt\">state_ = kExpectValue</span>",
+      "<span class=\"tt\">false</span>",
+      "<span class=\"tt\">kParseErrorTermination</span>"
+    ],
+    "ja": "2つ目のJSON（{1}）では、{2}の値は空のオブジェクトです。オブジェクトなので、{3}が呼ばれます。しかし、その時点では{4}であるため、その関数は{5}を返し、解析を停止させます。エラーコードは{6}です。"
+  },
+  {
+    "n": 91,
+    "source": "Filtering of JSON",
+    "tokens": [],
+    "ja": "JSONのフィルタリング"
+  },
+  {
+    "n": 92,
+    "source": "As mentioned earlier, {1} can handle the events published by {2}. {3} example simply set a {4} as handler of a {5}, so it can remove all white-spaces in JSON. {6} example uses the same relationship, but replacing {7} by {8}. So {9} can be used to reformat a JSON with indentation and line feed.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">condense</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">pretty</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">PrettyWriter</span>",
+      "<span class=\"tt\">pretty</span>"
+    ],
+    "ja": "前述のように、{1}は{2}が発行するイベントを処理できます。{3}の例は、{5}のハンドラーとして{4}を設定するだけで、JSONの空白をすべて削除できます。{6}の例も同じ関係を使い、{7}を{8}へ置き換えます。これにより、{9}でJSONにインデントと改行を付け直せます。"
+  },
+  {
+    "n": 93,
+    "source": "Actually, we can add intermediate layer(s) to filter the contents of JSON via these SAX-style API. For example, {1} example capitalize all strings in a JSON.",
+    "tokens": [
+      "<span class=\"tt\">capitalize</span>"
+    ],
+    "ja": "これらのSAX形式APIには、JSONの内容をフィルター処理する中間層を追加できます。たとえば、{1}の例はJSON内のすべての文字列を大文字にします。"
+  },
+  {
+    "n": 94,
+    "source": "File byte stream for input using fread().",
+    "tokens": [],
+    "ja": "fread()を使う入力用のファイルバイトストリーム。"
+  },
+  {
+    "n": 95,
+    "source": "Wrapper of C file stream for input using fread().",
+    "tokens": [],
+    "ja": "fread()を使う入力用のCファイルストリームのラッパー。"
+  },
+  {
+    "n": 96,
+    "source": "Note that, it is incorrect to simply capitalize the JSON as a string. For example:",
+    "tokens": [],
+    "ja": "JSON全体を単なる文字列として大文字にするのは不正です。たとえば、次のようになります。"
+  },
+  {
+    "n": 97,
+    "source": "Simply capitalizing the whole JSON would contain incorrect escape character:",
+    "tokens": [],
+    "ja": "JSON全体をそのまま大文字にすると、不正なエスケープ文字が含まれます。"
+  },
+  {
+    "n": 98,
+    "source": "The correct result by {1}:",
+    "tokens": [
+      "<span class=\"tt\">capitalize</span>"
+    ],
+    "ja": "{1}による正しい結果："
+  },
+  {
+    "n": 99,
+    "source": "More complicated filters can be developed. However, since SAX-style API can only provide information about a single event at a time, user may need to book-keeping the contextual information (e.g. the path from root value, storage of other related values). Some processing may be easier to be implemented in DOM than SAX.",
+    "tokens": [],
+    "ja": "さらに複雑なフィルターも作れます。ただし、SAX形式APIで得られる情報は一度に1イベント分だけなので、文脈情報（ルート値からのパスや関連する他の値の保存など）を管理する必要がある場合があります。処理によっては、SAXよりDOMの方が実装しやすい場合もあります。"
+  }
+]

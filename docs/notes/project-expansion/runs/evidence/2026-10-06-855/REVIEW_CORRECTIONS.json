@@ -1,0 +1,20 @@
+{
+  "status": "passed-changed-unit-review",
+  "page": "11-internals",
+  "units": [
+    {
+      "n": 189,
+      "before": "Numberは、少し複雑です。通常の整数値は、その範囲に応じて、{1}、{2}、{3}、{4}のフラグを持てます。小数部のある数値や64ビットの範囲を超える整数は、{6}を付けた{5}として保存します。",
+      "source": "Number is a bit more complicated. For normal integer values, it can contains {1}, {2}, {3} and/or {4}, according to the range of the integer. For numbers with fraction, and integers larger than 64-bit range, they will be stored as {5} with {6}.",
+      "after": "Numberは、少し複雑です。通常の整数値は、その範囲に応じて、{1}、{2}、{3}、{4}のフラグの一つまたは複数を持てます。小数部のある数値や64ビットの範囲を超える整数は、{6}を付けた{5}として保存します。"
+    },
+    {
+      "n": 207,
+      "before": "特別な手法を使っています。文字列長を直接保存する代わりに、（MaxChars - length）を保存します。これにより、末尾の{1}を含めて11文字を保存できます。",
+      "source": "A special technique is applied. Instead of storing the length of string directly, it stores (MaxChars - length). This make it possible to store 11 characters with trailing {1}.",
+      "after": "特別な手法を使っています。文字列長を直接保存する代わりに、（MaxChars - length）を保存します。これにより、末尾に{1}を付けた11文字の文字列を保存できます。"
+    }
+  ],
+  "method": "separate saved-draft full review then changed units only",
+  "meaning": "and/or subset combinations; 11 characters followed by null, not null included in eleven"
+}

@@ -1,0 +1,884 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "(This feature was released in v1.1.0)",
+    "tokens": []
+  },
+  {
+    "n": 2,
+    "tag": "p",
+    "text": "JSON Schema is a draft standard for describing the format of JSON data. The schema itself is also JSON data. By validating a JSON structure with JSON Schema, your code can safely access the DOM without manually checking types, or whether a key exists, etc. It can also ensure that the serialized JSON conform to a specified schema.",
+    "tokens": []
+  },
+  {
+    "n": 3,
+    "tag": "p",
+    "text": "RapidJSON implemented a JSON Schema validator for {1}. If you are not familiar with JSON Schema, you may refer to {2}.",
+    "tokens": [
+      "<a href=\"http://json-schema.org/documentation.html\">JSON Schema Draft v4</a>",
+      "<a href=\"http://spacetelescope.github.io/understanding-json-schema/\">Understanding JSON Schema</a>"
+    ]
+  },
+  {
+    "n": 4,
+    "tag": "h1",
+    "text": "Basic Usage",
+    "tokens": []
+  },
+  {
+    "n": 5,
+    "tag": "p",
+    "text": "First of all, you need to parse a JSON Schema into {1}, and then compile the {2} into a {3}.",
+    "tokens": [
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">SchemaDocument</span>"
+    ]
+  },
+  {
+    "n": 6,
+    "tag": "p",
+    "text": "Secondly, construct a {1} with the {2}. It is similar to a {3} in the sense of handling SAX events. So, you can use {4} to validate a document, and then check the validity.",
+    "tokens": [
+      "<span class=\"tt\">SchemaValidator</span>",
+      "<span class=\"tt\">SchemaDocument</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">document.Accept(validator)</span>"
+    ]
+  },
+  {
+    "n": 7,
+    "tag": "div",
+    "text": "String buffer with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 8,
+    "tag": "p",
+    "text": "Some notes:",
+    "tokens": []
+  },
+  {
+    "n": 9,
+    "tag": "li",
+    "text": "One {1} can be referenced by multiple {2}s. It will not be modified by {3}s.",
+    "tokens": [
+      "<span class=\"tt\">SchemaDocment</span>",
+      "<span class=\"tt\">SchemaValidator</span>",
+      "<span class=\"tt\">SchemaValidator</span>"
+    ]
+  },
+  {
+    "n": 10,
+    "tag": "li",
+    "text": "A {1} may be reused to validate multiple documents. To run it for other documents, call {2} first.",
+    "tokens": [
+      "<span class=\"tt\">SchemaValidator</span>",
+      "<span class=\"tt\">validator.Reset()</span>"
+    ]
+  },
+  {
+    "n": 11,
+    "tag": "h1",
+    "text": "Validation during parsing/serialization",
+    "tokens": []
+  },
+  {
+    "n": 12,
+    "tag": "p",
+    "text": "Unlike most JSON Schema validator implementations, RapidJSON provides a SAX-based schema validator. Therefore, you can parse a JSON from a stream while validating it on the fly. If the validator encounters a JSON value that invalidates the supplied schema, the parsing will be terminated immediately. This design is especially useful for parsing large JSON files.",
+    "tokens": []
+  },
+  {
+    "n": 13,
+    "tag": "h2",
+    "text": "DOM parsing",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "p",
+    "text": "For using DOM in parsing, {1} needs some preparation and finalizing tasks, in addition to receiving SAX events, thus it needs some work to route the reader, validator and the document. {2} is a helper class that doing such work.",
+    "tokens": [
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">SchemaValidatingReader</span>"
+    ]
+  },
+  {
+    "n": 15,
+    "tag": "h2",
+    "text": "SAX parsing",
+    "tokens": []
+  },
+  {
+    "n": 16,
+    "tag": "p",
+    "text": "For using SAX in parsing, it is much simpler. If it only need to validate the JSON without further processing, it is simply:",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "p",
+    "text": "This is exactly the method used in the {1} example. The distinct advantage is low memory usage, no matter how big the JSON was (the memory usage depends on the complexity of the schema).",
+    "tokens": [
+      "<a href=\"https://github.com/Tencent/rapidjson/blob/f54b0e47a08782a6131cc3d60f94d038fa6e0a51/example/schemavalidator/schemavalidator.cpp\">schemavalidator</a>"
+    ]
+  },
+  {
+    "n": 18,
+    "tag": "p",
+    "text": "If you need to handle the SAX events further, then you need to use the template class {1} to set the output handler of the validator:",
+    "tokens": [
+      "<span class=\"tt\">GenericSchemaValidator</span>"
+    ]
+  },
+  {
+    "n": 19,
+    "tag": "h2",
+    "text": "Serialization",
+    "tokens": []
+  },
+  {
+    "n": 20,
+    "tag": "p",
+    "text": "It is also possible to do validation during serializing. This can ensure the result JSON is valid according to the JSON schema.",
+    "tokens": []
+  },
+  {
+    "n": 21,
+    "tag": "p",
+    "text": "Of course, if your application only needs SAX-style serialization, it can simply send SAX events to {1} instead of {2}.",
+    "tokens": [
+      "<span class=\"tt\">SchemaValidator</span>",
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 22,
+    "tag": "h1",
+    "text": "Remote Schema",
+    "tokens": []
+  },
+  {
+    "n": 23,
+    "tag": "p",
+    "text": "JSON Schema supports {1}, which is a {2} referencing to a local or remote schema. Local pointer is prefixed with {3}, while remote pointer is an relative or absolute URI. For example:",
+    "tokens": [
+      "<a href=\"http://spacetelescope.github.io/understanding-json-schema/structuring.html\"><span class=\"tt\">$ref</span> keyword</a>",
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/08-pointer/\" title=\"Pointer\">JSON pointer</a>",
+      "<span class=\"tt\">#</span>"
+    ]
+  },
+  {
+    "n": 24,
+    "tag": "p",
+    "text": "As {1} does not know how to resolve such URI, it needs a user-provided {2} instance to do so.",
+    "tokens": [
+      "<span class=\"tt\">SchemaDocument</span>",
+      "<span class=\"tt\">IRemoteSchemaDocumentProvider</span>"
+    ]
+  },
+  {
+    "n": 25,
+    "tag": "h1",
+    "text": "Conformance",
+    "tokens": []
+  },
+  {
+    "n": 26,
+    "tag": "p",
+    "text": "RapidJSON passed 262 out of 263 tests in {1} (Json Schema draft 4).",
+    "tokens": [
+      "<a href=\"https://github.com/json-schema/JSON-Schema-Test-Suite\">JSON Schema Test Suite</a>"
+    ]
+  },
+  {
+    "n": 27,
+    "tag": "p",
+    "text": "The failed test is \"changed scope ref invalid\" of \"change resolution scope\" in {1}. It is due to that {2} schema keyword and URI combining function are not implemented.",
+    "tokens": [
+      "<span class=\"tt\">refRemote.json</span>",
+      "<span class=\"tt\">id</span>"
+    ]
+  },
+  {
+    "n": 28,
+    "tag": "p",
+    "text": "Besides, the {1} schema keyword for string values is ignored, since it is not required by the specification.",
+    "tokens": [
+      "<span class=\"tt\">format</span>"
+    ]
+  },
+  {
+    "n": 29,
+    "tag": "h2",
+    "text": "Regular Expression",
+    "tokens": []
+  },
+  {
+    "n": 30,
+    "tag": "p",
+    "text": "The schema keyword {1} and {2} uses regular expression to match the required pattern.",
+    "tokens": [
+      "<span class=\"tt\">pattern</span>",
+      "<span class=\"tt\">patternProperties</span>"
+    ]
+  },
+  {
+    "n": 31,
+    "tag": "p",
+    "text": "RapidJSON implemented a simple NFA regular expression engine, which is used by default. It supports the following syntax.",
+    "tokens": []
+  },
+  {
+    "n": 32,
+    "tag": "th",
+    "text": "Syntax",
+    "tokens": []
+  },
+  {
+    "n": 33,
+    "tag": "th",
+    "text": "Description",
+    "tokens": []
+  },
+  {
+    "n": 34,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">ab</span>"
+    ]
+  },
+  {
+    "n": 35,
+    "tag": "td",
+    "text": "Concatenation",
+    "tokens": []
+  },
+  {
+    "n": 36,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a|b</span>"
+    ]
+  },
+  {
+    "n": 37,
+    "tag": "td",
+    "text": "Alternation",
+    "tokens": []
+  },
+  {
+    "n": 38,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a?</span>"
+    ]
+  },
+  {
+    "n": 39,
+    "tag": "td",
+    "text": "Zero or one",
+    "tokens": []
+  },
+  {
+    "n": 40,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a*</span>"
+    ]
+  },
+  {
+    "n": 41,
+    "tag": "td",
+    "text": "Zero or more",
+    "tokens": []
+  },
+  {
+    "n": 42,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a+</span>"
+    ]
+  },
+  {
+    "n": 43,
+    "tag": "td",
+    "text": "One or more",
+    "tokens": []
+  },
+  {
+    "n": 44,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a{3}</span>"
+    ]
+  },
+  {
+    "n": 45,
+    "tag": "td",
+    "text": "Exactly 3 times",
+    "tokens": []
+  },
+  {
+    "n": 46,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a{3,}</span>"
+    ]
+  },
+  {
+    "n": 47,
+    "tag": "td",
+    "text": "At least 3 times",
+    "tokens": []
+  },
+  {
+    "n": 48,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a{3,5}</span>"
+    ]
+  },
+  {
+    "n": 49,
+    "tag": "td",
+    "text": "3 to 5 times",
+    "tokens": []
+  },
+  {
+    "n": 50,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">(ab)</span>"
+    ]
+  },
+  {
+    "n": 51,
+    "tag": "td",
+    "text": "Grouping",
+    "tokens": []
+  },
+  {
+    "n": 52,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">^a</span>"
+    ]
+  },
+  {
+    "n": 53,
+    "tag": "td",
+    "text": "At the beginning",
+    "tokens": []
+  },
+  {
+    "n": 54,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">a$</span>"
+    ]
+  },
+  {
+    "n": 55,
+    "tag": "td",
+    "text": "At the end",
+    "tokens": []
+  },
+  {
+    "n": 56,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">.</span>"
+    ]
+  },
+  {
+    "n": 57,
+    "tag": "td",
+    "text": "Any character",
+    "tokens": []
+  },
+  {
+    "n": 58,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">[abc]</span>"
+    ]
+  },
+  {
+    "n": 59,
+    "tag": "td",
+    "text": "Character classes",
+    "tokens": []
+  },
+  {
+    "n": 60,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">[a-c]</span>"
+    ]
+  },
+  {
+    "n": 61,
+    "tag": "td",
+    "text": "Character class range",
+    "tokens": []
+  },
+  {
+    "n": 62,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">[a-z0-9_]</span>"
+    ]
+  },
+  {
+    "n": 63,
+    "tag": "td",
+    "text": "Character class combination",
+    "tokens": []
+  },
+  {
+    "n": 64,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">[^abc]</span>"
+    ]
+  },
+  {
+    "n": 65,
+    "tag": "td",
+    "text": "Negated character classes",
+    "tokens": []
+  },
+  {
+    "n": 66,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">[^a-c]</span>"
+    ]
+  },
+  {
+    "n": 67,
+    "tag": "td",
+    "text": "Negated character class range",
+    "tokens": []
+  },
+  {
+    "n": 68,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">[\\b]</span>"
+    ]
+  },
+  {
+    "n": 69,
+    "tag": "td",
+    "text": "Backspace (U+0008)",
+    "tokens": []
+  },
+  {
+    "n": 70,
+    "tag": "td",
+    "text": "{1}, {2}, ...",
+    "tokens": [
+      "<span class=\"tt\">\\|</span>",
+      "<span class=\"tt\">\\\\</span>"
+    ]
+  },
+  {
+    "n": 71,
+    "tag": "td",
+    "text": "Escape characters",
+    "tokens": []
+  },
+  {
+    "n": 72,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\\f</span>"
+    ]
+  },
+  {
+    "n": 73,
+    "tag": "td",
+    "text": "Form feed (U+000C)",
+    "tokens": []
+  },
+  {
+    "n": 74,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\\n</span>"
+    ]
+  },
+  {
+    "n": 75,
+    "tag": "td",
+    "text": "Line feed (U+000A)",
+    "tokens": []
+  },
+  {
+    "n": 76,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\\r</span>"
+    ]
+  },
+  {
+    "n": 77,
+    "tag": "td",
+    "text": "Carriage return (U+000D)",
+    "tokens": []
+  },
+  {
+    "n": 78,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\\t</span>"
+    ]
+  },
+  {
+    "n": 79,
+    "tag": "td",
+    "text": "Tab (U+0009)",
+    "tokens": []
+  },
+  {
+    "n": 80,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\\v</span>"
+    ]
+  },
+  {
+    "n": 81,
+    "tag": "td",
+    "text": "Vertical tab (U+000B)",
+    "tokens": []
+  },
+  {
+    "n": 82,
+    "tag": "p",
+    "text": "For C++11 compiler, it is also possible to use the {1} by defining {2} and {3}. If your schemas do not need {4} and {5}, you can set both macros to zero to disable this feature, which will reduce some code size.",
+    "tokens": [
+      "<span class=\"tt\">std::regex</span>",
+      "<span class=\"tt\">RAPIDJSON_SCHEMA_USE_INTERNALREGEX=0</span>",
+      "<span class=\"tt\">RAPIDJSON_SCHEMA_USE_STDREGEX=1</span>",
+      "<span class=\"tt\">pattern</span>",
+      "<span class=\"tt\">patternProperties</span>"
+    ]
+  },
+  {
+    "n": 83,
+    "tag": "h1",
+    "text": "Performance",
+    "tokens": []
+  },
+  {
+    "n": 84,
+    "tag": "p",
+    "text": "Most C++ JSON libraries do not yet support JSON Schema. So we tried to evaluate the performance of RapidJSON's JSON Schema validator according to {1}, which tests 11 JavaScript libraries running on Node.js.",
+    "tokens": [
+      "<a href=\"https://github.com/ebdrup/json-schema-benchmark\">json-schema-benchmark</a>"
+    ]
+  },
+  {
+    "n": 85,
+    "tag": "p",
+    "text": "That benchmark runs validations on {1}, in which some test suites and tests are excluded. We made the same benchmarking procedure in {2}.",
+    "tokens": [
+      "<a href=\"https://github.com/json-schema/JSON-Schema-Test-Suite\">JSON Schema Test Suite</a>",
+      "<a href=\"https://github.com/Tencent/rapidjson/blob/f54b0e47a08782a6131cc3d60f94d038fa6e0a51/test/perftest/schematest.cpp\"><span class=\"tt\">schematest.cpp</span></a>"
+    ]
+  },
+  {
+    "n": 86,
+    "tag": "p",
+    "text": "On a Mac Book Pro (2.8 GHz Intel Core i7), the following results are collected.",
+    "tokens": []
+  },
+  {
+    "n": 87,
+    "tag": "th",
+    "text": "Validator",
+    "tokens": []
+  },
+  {
+    "n": 88,
+    "tag": "th",
+    "text": "Relative speed",
+    "tokens": []
+  },
+  {
+    "n": 89,
+    "tag": "th",
+    "text": "Number of test runs per second",
+    "tokens": []
+  },
+  {
+    "n": 90,
+    "tag": "td",
+    "text": "RapidJSON",
+    "tokens": []
+  },
+  {
+    "n": 91,
+    "tag": "td",
+    "text": "155%",
+    "tokens": []
+  },
+  {
+    "n": 92,
+    "tag": "td",
+    "text": "30682",
+    "tokens": []
+  },
+  {
+    "n": 93,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/epoberezkin/ajv\"><span class=\"tt\">ajv</span></a>"
+    ]
+  },
+  {
+    "n": 94,
+    "tag": "td",
+    "text": "100%",
+    "tokens": []
+  },
+  {
+    "n": 95,
+    "tag": "td",
+    "text": "19770 (± 1.31%)",
+    "tokens": []
+  },
+  {
+    "n": 96,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/mafintosh/is-my-json-valid\"><span class=\"tt\">is-my-json-valid</span></a>"
+    ]
+  },
+  {
+    "n": 97,
+    "tag": "td",
+    "text": "70%",
+    "tokens": []
+  },
+  {
+    "n": 98,
+    "tag": "td",
+    "text": "13835 (± 2.84%)",
+    "tokens": []
+  },
+  {
+    "n": 99,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/bugventure/jsen\"><span class=\"tt\">jsen</span></a>"
+    ]
+  },
+  {
+    "n": 100,
+    "tag": "td",
+    "text": "57.7%",
+    "tokens": []
+  },
+  {
+    "n": 101,
+    "tag": "td",
+    "text": "11411 (± 1.27%)",
+    "tokens": []
+  },
+  {
+    "n": 102,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/AlexeyGrishin/schemasaurus\"><span class=\"tt\">schemasaurus</span></a>"
+    ]
+  },
+  {
+    "n": 103,
+    "tag": "td",
+    "text": "26%",
+    "tokens": []
+  },
+  {
+    "n": 104,
+    "tag": "td",
+    "text": "5145 (± 1.62%)",
+    "tokens": []
+  },
+  {
+    "n": 105,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/playlyfe/themis\"><span class=\"tt\">themis</span></a>"
+    ]
+  },
+  {
+    "n": 106,
+    "tag": "td",
+    "text": "19.9%",
+    "tokens": []
+  },
+  {
+    "n": 107,
+    "tag": "td",
+    "text": "3935 (± 2.69%)",
+    "tokens": []
+  },
+  {
+    "n": 108,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/zaggino/z-schema\"><span class=\"tt\">z-schema</span></a>"
+    ]
+  },
+  {
+    "n": 109,
+    "tag": "td",
+    "text": "7%",
+    "tokens": []
+  },
+  {
+    "n": 110,
+    "tag": "td",
+    "text": "1388 (± 0.84%)",
+    "tokens": []
+  },
+  {
+    "n": 111,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/pandastrike/jsck#readme\"><span class=\"tt\">jsck</span></a>"
+    ]
+  },
+  {
+    "n": 112,
+    "tag": "td",
+    "text": "3.1%",
+    "tokens": []
+  },
+  {
+    "n": 113,
+    "tag": "td",
+    "text": "606 (± 2.84%)",
+    "tokens": []
+  },
+  {
+    "n": 114,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/tdegrunt/jsonschema#readme\"><span class=\"tt\">jsonschema</span></a>"
+    ]
+  },
+  {
+    "n": 115,
+    "tag": "td",
+    "text": "0.9%",
+    "tokens": []
+  },
+  {
+    "n": 116,
+    "tag": "td",
+    "text": "185 (± 1.01%)",
+    "tokens": []
+  },
+  {
+    "n": 117,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/Prestaul/skeemas#readme\"><span class=\"tt\">skeemas</span></a>"
+    ]
+  },
+  {
+    "n": 118,
+    "tag": "td",
+    "text": "0.8%",
+    "tokens": []
+  },
+  {
+    "n": 119,
+    "tag": "td",
+    "text": "154 (± 0.79%)",
+    "tokens": []
+  },
+  {
+    "n": 120,
+    "tag": "td",
+    "text": "tv4",
+    "tokens": []
+  },
+  {
+    "n": 121,
+    "tag": "td",
+    "text": "0.5%",
+    "tokens": []
+  },
+  {
+    "n": 122,
+    "tag": "td",
+    "text": "93 (± 0.94%)",
+    "tokens": []
+  },
+  {
+    "n": 123,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/natesilva/jayschema\"><span class=\"tt\">jayschema</span></a>"
+    ]
+  },
+  {
+    "n": 124,
+    "tag": "td",
+    "text": "0.1%",
+    "tokens": []
+  },
+  {
+    "n": 125,
+    "tag": "td",
+    "text": "21 (± 1.14%)",
+    "tokens": []
+  },
+  {
+    "n": 126,
+    "tag": "p",
+    "text": "That is, RapidJSON is about 1.5x faster than the fastest JavaScript library (ajv). And 1400x faster than the slowest one.",
+    "tokens": []
+  }
+]

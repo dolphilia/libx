@@ -1,0 +1,1890 @@
+{
+  "status": "separate-full-review-passed",
+  "sentences": [
+    {
+      "n": 1,
+      "source": "This section records some design and implementation details.",
+      "ja": "この節では、設計と実装の詳細を記録します。"
+    },
+    {
+      "n": 2,
+      "source": "Architecture",
+      "ja": "アーキテクチャー"
+    },
+    {
+      "n": 3,
+      "source": "SAX and DOM",
+      "ja": "SAXとDOM"
+    },
+    {
+      "n": 4,
+      "source": "The basic relationships of SAX and DOM is shown in the following UML diagram.",
+      "ja": "SAXとDOMの基本的な関係を、次のUML図に示します。"
+    },
+    {
+      "n": 5,
+      "source": "Architecture UML class diagram",
+      "ja": "アーキテクチャーのUMLクラス図"
+    },
+    {
+      "n": 6,
+      "source": "The core of the relationship is the {1} concept. From the SAX side, {2} parses a JSON from a stream and publish events to a {3}. {4} implements the {5} concept to handle the same set of events. From the DOM side, {6} implements the {7} concept to build a DOM according to the events. {8} supports a {9} function, which traverses the DOM to publish events.",
+      "ja": "関係の中心は、{1}という概念です。SAX側では、{2}がストリームからJSONを解析し、{3}へイベントを発行します。{4}は{5}の概念を実装し、同じイベント群を処理します。DOM側では、{6}が{7}の概念を実装して、イベントに従ってDOMを構築します。{8}には、DOMを走査してイベントを発行する{9}関数があります。"
+    },
+    {
+      "n": 7,
+      "source": "With this design, SAX is not dependent on DOM. Even {1} and {2} have no dependencies between them. This provides flexibility to chain event publisher and handlers. Besides, {3} does not depends on SAX as well. So, in addition to stringify a DOM to JSON, user may also stringify it to a XML writer, or do anything else.",
+      "ja": "この設計により、SAXはDOMに依存しません。{1}と{2}の間にも依存関係はありません。そのため、イベントの発行元とハンドラーを柔軟につなげられます。また、{3}もSAXに依存しません。したがって、DOMをJSONへ文字列化するだけでなく、XMLライターへ出力したり、ほかの処理を行ったりすることもできます。"
+    },
+    {
+      "n": 8,
+      "source": "Utility Classes",
+      "ja": "ユーティリティークラス"
+    },
+    {
+      "n": 9,
+      "source": "Both SAX and DOM APIs depends on 3 additional concepts: {1}, {2} and {3}. Their inheritance hierarchy is shown as below.",
+      "ja": "SAXとDOMの両APIは、さらに{1}、{2}、{3}という3つの概念に依存します。その継承階層を以下に示します。"
+    },
+    {
+      "n": 10,
+      "source": "Utility classes UML class diagram",
+      "ja": "ユーティリティークラスのUMLクラス図"
+    },
+    {
+      "n": 11,
+      "source": "Value",
+      "ja": "Value"
+    },
+    {
+      "n": 12,
+      "source": "{1} (actually a typedef of {2}) is the core of DOM API. This section describes the design of it.",
+      "ja": "{1}（実際には{2}のtypedef）は、DOM APIの中心です。この節では、その設計を説明します。"
+    },
+    {
+      "n": 13,
+      "source": "Data Layout",
+      "ja": "データ配置"
+    },
+    {
+      "n": 14,
+      "source": "{1} is a {2}. In RapidJSON's context, an instance of {3} can contain 1 of 6 JSON value types. This is possible by using {4}. Each {5} contains two members: {6} and a{7}. The {8} indiciates the JSON type, and also additional information.",
+      "ja": "{1}は{2}です。RapidJSONでは、{3}のインスタンスは、6種類のJSON値の型のうち一つを保持できます。これは{4}で実現しています。各{5}は、{6}と{7}という2つのメンバーを持ちます。{8}は、JSONの型と追加情報を表します。"
+    },
+    {
+      "n": 15,
+      "source": "The following tables show the data layout of each type. The 32-bit/64-bit columns indicates the size of the field in bytes.",
+      "ja": "以下の表は、各型のデータ配置を示します。32ビット・64ビットの列は、フィールドの大きさをバイト単位で表します。"
+    },
+    {
+      "n": 16,
+      "source": "Null",
+      "ja": "Null"
+    },
+    {
+      "n": 17,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 18,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 19,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 20,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 21,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 22,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 23,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 24,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 25,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 26,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 27,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 28,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 29,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 30,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 31,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 32,
+      "source": "Bool",
+      "ja": "Bool"
+    },
+    {
+      "n": 33,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 34,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 35,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 36,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 37,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 38,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 39,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 40,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 41,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 42,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 43,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 44,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 45,
+      "source": "{1} (either {2} or {3})",
+      "ja": "{1}（{2}または{3}）"
+    },
+    {
+      "n": 46,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 47,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 48,
+      "source": "String",
+      "ja": "String"
+    },
+    {
+      "n": 49,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 50,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 51,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 52,
+      "source": "Pointer to the string (may own)",
+      "ja": "文字列へのポインター（所有する場合あり）"
+    },
+    {
+      "n": 53,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 54,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 55,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 56,
+      "source": "Length of string",
+      "ja": "文字列長"
+    },
+    {
+      "n": 57,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 58,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 59,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 60,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 61,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 62,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 63,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 64,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 65,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 66,
+      "source": "Object",
+      "ja": "Object"
+    },
+    {
+      "n": 67,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 68,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 69,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 70,
+      "source": "Pointer to array of members (owned)",
+      "ja": "メンバー配列へのポインター（所有）"
+    },
+    {
+      "n": 71,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 72,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 73,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 74,
+      "source": "Number of members",
+      "ja": "メンバー数"
+    },
+    {
+      "n": 75,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 76,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 77,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 78,
+      "source": "Capacity of members",
+      "ja": "メンバーの容量"
+    },
+    {
+      "n": 79,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 80,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 81,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 82,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 83,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 84,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 85,
+      "source": "Array",
+      "ja": "Array"
+    },
+    {
+      "n": 86,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 87,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 88,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 89,
+      "source": "Pointer to array of values (owned)",
+      "ja": "値の配列へのポインター（所有）"
+    },
+    {
+      "n": 90,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 91,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 92,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 93,
+      "source": "Number of values",
+      "ja": "値の数"
+    },
+    {
+      "n": 94,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 95,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 96,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 97,
+      "source": "Capacity of values",
+      "ja": "値の容量"
+    },
+    {
+      "n": 98,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 99,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 100,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 101,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 102,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 103,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 104,
+      "source": "Number (Int)",
+      "ja": "Number (Int)"
+    },
+    {
+      "n": 105,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 106,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 107,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 108,
+      "source": "32-bit signed integer",
+      "ja": "32ビットの符号付き整数"
+    },
+    {
+      "n": 109,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 110,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 111,
+      "source": "(zero padding)",
+      "ja": "（ゼロ埋め）"
+    },
+    {
+      "n": 112,
+      "source": "0",
+      "ja": "0"
+    },
+    {
+      "n": 113,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 114,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 115,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 116,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 117,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 118,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 119,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 120,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 121,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 122,
+      "source": "Number (UInt)",
+      "ja": "Number (UInt)"
+    },
+    {
+      "n": 123,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 124,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 125,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 126,
+      "source": "32-bit unsigned integer",
+      "ja": "32ビットの符号なし整数"
+    },
+    {
+      "n": 127,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 128,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 129,
+      "source": "(zero padding)",
+      "ja": "（ゼロ埋め）"
+    },
+    {
+      "n": 130,
+      "source": "0",
+      "ja": "0"
+    },
+    {
+      "n": 131,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 132,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 133,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 134,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 135,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 136,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 137,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 138,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 139,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 140,
+      "source": "Number (Int64)",
+      "ja": "Number (Int64)"
+    },
+    {
+      "n": 141,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 142,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 143,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 144,
+      "source": "64-bit signed integer",
+      "ja": "64ビットの符号付き整数"
+    },
+    {
+      "n": 145,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 146,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 147,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 148,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 149,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 150,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 151,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 152,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 153,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 154,
+      "source": "Number (Uint64)",
+      "ja": "Number (Uint64)"
+    },
+    {
+      "n": 155,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 156,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 157,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 158,
+      "source": "64-bit unsigned integer",
+      "ja": "64ビットの符号なし整数"
+    },
+    {
+      "n": 159,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 160,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 161,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 162,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 163,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 164,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 165,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 166,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 167,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 168,
+      "source": "Number (Double)",
+      "ja": "Number (Double)"
+    },
+    {
+      "n": 169,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 170,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 171,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 172,
+      "source": "Double precision floating-point",
+      "ja": "倍精度浮動小数点数"
+    },
+    {
+      "n": 173,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 174,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 175,
+      "source": "(unused)",
+      "ja": "（未使用）"
+    },
+    {
+      "n": 176,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 177,
+      "source": "8",
+      "ja": "8"
+    },
+    {
+      "n": 178,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 179,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 180,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 181,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 182,
+      "source": "Here are some notes:",
+      "ja": "補足："
+    },
+    {
+      "n": 183,
+      "source": "To reduce memory consumption for 64-bit architecture, {1} is typedef as {2} instead of {3}.",
+      "ja": "64ビットアーキテクチャーでのメモリー使用量を減らすため、{1}は{3}ではなく{2}のtypedefになっています。"
+    },
+    {
+      "n": 184,
+      "source": "Zero padding for 32-bit number may be placed after or before the actual type, according to the endianess. This makes possible for interpreting a 32-bit integer as a 64-bit integer, without any conversion.",
+      "ja": "32ビット数値のゼロ埋めは、エンディアンに応じて実際の型の前か後に置かれます。これにより、変換せずに32ビット整数を64ビット整数として解釈できます。"
+    },
+    {
+      "n": 185,
+      "source": "An {1} is always an {2}, but the converse is not always true.",
+      "ja": "{1}は常に{2}でもありますが、その逆は常に成り立つわけではありません。"
+    },
+    {
+      "n": 186,
+      "source": "Flags",
+      "ja": "フラグ"
+    },
+    {
+      "n": 187,
+      "source": "The 32-bit {1} contains both JSON type and other additional information. As shown in the above tables, each JSON type contains redundant {2} and {3}. This design is for optimizing the operation of testing bit-flags ({4}) and obtaining a sequential number for each type ({5}).",
+      "ja": "32ビットの{1}には、JSONの型と追加情報が含まれます。上の表に示すように、各JSON型は、重複する{2}と{3}を持ちます。この設計は、ビットフラグの検査（{4}）と、各型の連番の取得（{5}）を最適化するためのものです。"
+    },
+    {
+      "n": 188,
+      "source": "String has two optional flags. {1} means that the string owns a copy of the string. {2} means using {3}Short-String Optimization.",
+      "ja": "Stringには、2つの任意のフラグがあります。{1}は、文字列のコピーを所有することを表します。{2}は、{3}を使うことを表します。"
+    },
+    {
+      "n": 189,
+      "source": "Number is a bit more complicated. For normal integer values, it can contains {1}, {2}, {3} and/or {4}, according to the range of the integer. For numbers with fraction, and integers larger than 64-bit range, they will be stored as {5} with {6}.",
+      "ja": "Numberは、少し複雑です。通常の整数値は、その範囲に応じて、{1}、{2}、{3}、{4}のフラグの一つまたは複数を持てます。小数部のある数値や64ビットの範囲を超える整数は、{6}を付けた{5}として保存します。"
+    },
+    {
+      "n": 190,
+      "source": "Short-String Optimization",
+      "ja": "短い文字列の最適化"
+    },
+    {
+      "n": 191,
+      "source": "{1} provided a very neat short-string optimization. The optimization idea is given as follow. Excluding the {2}, a {3} has 12 or 16 bytes (32-bit or 64-bit) for storing actual data. Instead of storing a pointer to a string, it is possible to store short strings in these space internally. For encoding with 1-byte character type (e.g. {4}), it can store maximum 11 or 15 characters string inside the {5} type.",
+      "ja": "{1}が、優れた短い文字列の最適化を提供しました。考え方は次のとおりです。{2}を除くと、{3}には実データ保存用に12または16バイト（32ビットまたは64ビット）があります。文字列へのポインターを保存する代わりに、この領域へ短い文字列を直接保存できます。1バイトの文字型（{4}など）を使うエンコーディングでは、{5}の内部に最大11または15文字の文字列を保存できます。"
+    },
+    {
+      "n": 192,
+      "source": "ShortString (Ch=char)",
+      "ja": "ShortString (Ch=char)"
+    },
+    {
+      "n": 193,
+      "source": "32-bit",
+      "ja": "32ビット"
+    },
+    {
+      "n": 194,
+      "source": "64-bit",
+      "ja": "64ビット"
+    },
+    {
+      "n": 195,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 196,
+      "source": "String buffer",
+      "ja": "文字列バッファー"
+    },
+    {
+      "n": 197,
+      "source": "11",
+      "ja": "11"
+    },
+    {
+      "n": 198,
+      "source": "15",
+      "ja": "15"
+    },
+    {
+      "n": 199,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 200,
+      "source": "MaxChars - Length",
+      "ja": "MaxChars - Length"
+    },
+    {
+      "n": 201,
+      "source": "1",
+      "ja": "1"
+    },
+    {
+      "n": 202,
+      "source": "1",
+      "ja": "1"
+    },
+    {
+      "n": 203,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 204,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 205,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 206,
+      "source": "4",
+      "ja": "4"
+    },
+    {
+      "n": 207,
+      "source": "A special technique is applied. Instead of storing the length of string directly, it stores (MaxChars - length). This make it possible to store 11 characters with trailing {1}.",
+      "ja": "特別な手法を使っています。文字列長を直接保存する代わりに、（MaxChars - length）を保存します。これにより、末尾に{1}を付けた11文字の文字列を保存できます。"
+    },
+    {
+      "n": 208,
+      "source": "This optimization can reduce memory usage for copy-string. It can also improve cache-coherence thus improve runtime performance.",
+      "ja": "この最適化は、copy-stringのメモリー使用量を減らせます。また、キャッシュコヒーレンスを改善し、実行時の性能も改善できます。"
+    },
+    {
+      "n": 209,
+      "source": "Allocator",
+      "ja": "Allocator"
+    },
+    {
+      "n": 210,
+      "source": "{1} is a concept in RapidJSON:",
+      "ja": "{1}は、RapidJSONにおける概念です。"
+    },
+    {
+      "n": 211,
+      "source": "Concept for allocating, resizing and freeing memory block.",
+      "ja": "メモリーブロックの確保・大きさの変更・解放を行う概念。"
+    },
+    {
+      "n": 212,
+      "source": "Note that {1} and {2} are member functions but {3} is static member function.",
+      "ja": "{1}と{2}はメンバー関数ですが、{3}は静的メンバー関数であることに注意してください。"
+    },
+    {
+      "n": 213,
+      "source": "MemoryPoolAllocator",
+      "ja": "MemoryPoolAllocator"
+    },
+    {
+      "n": 214,
+      "source": "{1} is the default allocator for DOM. It allocate but do not free memory. This is suitable for building a DOM tree.",
+      "ja": "{1}は、DOMの既定のアロケーターです。メモリーを確保しますが、解放はしません。DOMツリーの構築に適しています。"
+    },
+    {
+      "n": 215,
+      "source": "Internally, it allocates chunks of memory from the base allocator (by default {1}) and stores the chunks as a singly linked list. When user requests an allocation, it allocates memory from the following order:",
+      "ja": "内部では、基底のアロケーター（既定は{1}）からメモリーのチャンクを確保し、単方向連結リストとして保存します。利用者がメモリー確保を要求すると、次の順番で確保します。"
+    },
+    {
+      "n": 216,
+      "source": "User supplied buffer if it is available. (See {1})",
+      "ja": "利用者が指定したバッファーがあれば、それを使います（{1}を参照）。"
+    },
+    {
+      "n": 217,
+      "source": "If user supplied buffer is full, use the current memory chunk.",
+      "ja": "利用者が指定したバッファーが満杯なら、現在のメモリーチャンクを使います。"
+    },
+    {
+      "n": 218,
+      "source": "If the current block is full, allocate a new block of memory.",
+      "ja": "現在のブロックが満杯なら、新しいメモリーブロックを確保します。"
+    },
+    {
+      "n": 219,
+      "source": "Parsing Optimization",
+      "ja": "解析の最適化"
+    },
+    {
+      "n": 220,
+      "source": "Skip Whitespaces with SIMD",
+      "ja": "SIMDによる空白の読み飛ばし"
+    },
+    {
+      "n": 221,
+      "source": "When parsing JSON from a stream, the parser need to skip 4 whitespace characters:",
+      "ja": "ストリームからJSONを解析する際、パーサーは次の4つの空白文字を読み飛ばす必要があります。"
+    },
+    {
+      "n": 222,
+      "source": "Space ({1})",
+      "ja": "空白（{1}）"
+    },
+    {
+      "n": 223,
+      "source": "Character Tabulation ({1})",
+      "ja": "水平タブ（{1}）"
+    },
+    {
+      "n": 224,
+      "source": "Line Feed ({1})",
+      "ja": "改行（{1}）"
+    },
+    {
+      "n": 225,
+      "source": "Carriage Return ({1})",
+      "ja": "復帰（{1}）"
+    },
+    {
+      "n": 226,
+      "source": "A simple implementation will be simply:",
+      "ja": "単純に実装すると、次のようになります。"
+    },
+    {
+      "n": 227,
+      "source": "However, this requires 4 comparisons and a few branching for each character. This was found to be a hot spot.",
+      "ja": "ただし、これでは文字ごとに4回の比較と複数の分岐が必要です。この部分が処理のホットスポットであることが分かりました。"
+    },
+    {
+      "n": 228,
+      "source": "To accelerate this process, SIMD was applied to compare 16 characters with 4 white spaces for each iteration. Currently RapidJSON only supports SSE2 and SSE4.2 instructions for this. And it is only activated for UTF-8 memory streams, including string stream or {1} parsing.",
+      "ja": "処理を高速化するため、SIMDを使って、反復ごとに16文字を4つの空白文字と比較します。現在、RapidJSONでは、この処理にSSE2とSSE4.2命令だけをサポートしています。有効になるのは、文字列ストリームや{1}解析など、UTF-8のメモリーストリームだけです。"
+    },
+    {
+      "n": 229,
+      "source": "To enable this optimization, need to define {1} or {2} before including {3}. Some compilers can detect the setting, as in {4}:",
+      "ja": "この最適化を有効にするには、{3}をインクルードする前に{1}か{2}を定義します。コンパイラーによっては、{4}の例のように設定を検出できます。"
+    },
+    {
+      "n": 230,
+      "source": "Note that, these are compile-time settings. Running the executable on a machine without such instruction set support will make it crash.",
+      "ja": "これらはコンパイル時の設定です。該当する命令セットをサポートしないマシンで実行ファイルを動かすと、クラッシュすることに注意してください。"
+    },
+    {
+      "n": 231,
+      "source": "Page boundary issue",
+      "ja": "ページ境界の問題"
+    },
+    {
+      "n": 232,
+      "source": "In an early version of RapidJSON, {1} reported that the {2} causes crash very rarely (around 1 in 500,000). After investigation, it is suspected that {3} accessed bytes after {4}, and across a protected page boundary.",
+      "ja": "RapidJSONの初期版では、{2}がごくまれに（約50万回に1回）クラッシュすることが、{1}で報告されました。調査の結果、{3}が{4}の後のバイトへアクセスし、保護されたページ境界を越えることが原因と疑われました。"
+    },
+    {
+      "n": 233,
+      "source": "In {1}, section 10.2.1:",
+      "ja": "{1}の10.2.1節には、次の記述があります。"
+    },
+    {
+      "n": 234,
+      "source": "To support algorithms requiring unaligned 128-bit SIMD memory accesses, memory buffer allocation by a caller function should consider adding some pad space so that a callee function can safely use the address pointer safely with unaligned 128-bit SIMD memory operations. The minimal padding size should be the width of the SIMD register that might be used in conjunction with unaligned SIMD memory access.",
+      "ja": "アラインされていない128ビットSIMDメモリーアクセスを必要とするアルゴリズムをサポートするには、呼び出し側の関数でメモリーバッファーを確保する際、呼び出される関数がアドレスポインターを使ってそのようなアクセスを安全に行えるよう、パディング領域の追加を検討する必要があります。最小のパディングサイズは、アラインされていないSIMDメモリーアクセスで使う可能性があるSIMDレジスターの幅です。"
+    },
+    {
+      "n": 235,
+      "source": "This is not feasible as RapidJSON should not enforce such requirement.",
+      "ja": "RapidJSONは、このような要件を強制すべきではないため、この方法は実用的ではありません。"
+    },
+    {
+      "n": 236,
+      "source": "To fix this issue, currently the routine process bytes up to the next aligned address. After tha, use aligned read to perform SIMD processing. Also see {1}.",
+      "ja": "この問題を修正するため、現在の処理では、次のアラインされたアドレスまでバイトを処理します。その後、アラインされた読み取りでSIMD処理を行います。{1}も参照してください。"
+    },
+    {
+      "n": 237,
+      "source": "Local Stream Copy",
+      "ja": "ストリームのローカルコピー"
+    },
+    {
+      "n": 238,
+      "source": "During optimization, it is found that some compilers cannot localize some member data access of streams into local variables or registers. Experimental results show that for some stream types, making a copy of the stream and used it in inner-loop can improve performance. For example, the actual (non-SIMD) implementation of {1} is implemented as:",
+      "ja": "最適化中に、一部のコンパイラーが、ストリームのメンバーデータへのアクセスをローカル変数やレジスターへ移せないことが分かりました。実験では、ストリームの型によっては、ストリームをコピーして内部ループで使うと性能が改善しました。たとえば、実際の（SIMDを使わない）{1}は、次のように実装されています。"
+    },
+    {
+      "n": 239,
+      "source": "Depending on the traits of stream, {1} will make (or not make) a copy of the stream object, use it locally and copy the states of stream back to the original stream.",
+      "ja": "ストリームの特性に応じて、{1}はストリームオブジェクトをコピーするかを決め、それをローカルで使い、ストリームの状態を元のストリームへ書き戻します。"
+    },
+    {
+      "n": 240,
+      "source": "Parsing to Double",
+      "ja": "doubleへの解析"
+    },
+    {
+      "n": 241,
+      "source": "Parsing string into {1} is difficult. The standard library function {2} can do the job but it is slow. By default, the parsers use normal precision setting. This has has maximum 3 {3} error and implemented in {4}.",
+      "ja": "文字列を{1}へ解析するのは難しい処理です。標準ライブラリーの{2}でも行えますが、低速です。既定では、パーサーは通常精度の設定を使います。最大誤差は3 {3}で、{4}に実装されています。"
+    },
+    {
+      "n": 242,
+      "source": "When using {1}, the parsers calls {2} instead, and this function actually implemented 3 versions of conversion methods.",
+      "ja": "{1}を使うと、パーサーは代わりに{2}を呼びます。この関数には、実際に3種類の変換方法が実装されています。"
+    },
+    {
+      "n": 243,
+      "source": "{1}.",
+      "ja": "{1}。"
+    },
+    {
+      "n": 244,
+      "source": "Custom DIY-FP implementation as in {1}.",
+      "ja": "{1}にあるような、独自のDIY-FP実装。"
+    },
+    {
+      "n": 245,
+      "source": "Big Integer Method as in (Clinger, William D. How to read floating point numbers accurately. Vol. 25. No. 6. ACM, 1990).",
+      "ja": "Clinger, William D.「How to read floating point numbers accurately」（Vol. 25, No. 6, ACM, 1990）にあるような、大整数による方法。"
+    },
+    {
+      "n": 246,
+      "source": "If the first conversion methods fail, it will try the second, and so on.",
+      "ja": "最初の変換方法で失敗した場合は2番目を試し、以降も同様に進めます。"
+    },
+    {
+      "n": 247,
+      "source": "Generation Optimization",
+      "ja": "生成の最適化"
+    },
+    {
+      "n": 248,
+      "source": "Integer-to-String conversion",
+      "ja": "整数から文字列への変換"
+    },
+    {
+      "n": 249,
+      "source": "The naive algorithm for integer-to-string conversion involves division per each decimal digit. We have implemented various implementations and evaluated them in {1}.",
+      "ja": "素朴な整数から文字列への変換アルゴリズムでは、十進数の各桁で除算を行います。さまざまな実装を作り、{1}で評価しました。"
+    },
+    {
+      "n": 250,
+      "source": "Although SSE2 version is the fastest but the difference is minor by comparing to the first running-up {1}. And {2} is pure C++ implementation so we adopt {3} in RapidJSON.",
+      "ja": "SSE2版が最も高速ですが、2番目の{1}との差はわずかです。{2}は純粋なC++実装なので、RapidJSONでは{3}を採用しました。"
+    },
+    {
+      "n": 251,
+      "source": "Double-to-String conversion",
+      "ja": "doubleから文字列への変換"
+    },
+    {
+      "n": 252,
+      "source": "Originally RapidJSON uses {1} to achieve double-to-string conversion. This is not accurate as the default precision is 6. Later we also find that this is slow and there is an alternative.",
+      "ja": "当初、RapidJSONは、doubleから文字列への変換に{1}を使っていました。既定の精度が6なので、これは正確ではありません。後に、低速であることや代わりの方法があることも分かりました。"
+    },
+    {
+      "n": 253,
+      "source": "Google's V8 {1} implemented a newer, fast algorithm called Grisu3 (Loitsch, Florian. \"Printing floating-point numbers quickly and accurately with integers.\" ACM Sigplan Notices 45.6 (2010): 233-243.).",
+      "ja": "GoogleのV8の{1}には、Grisu3という新しい高速なアルゴリズムが実装されています（Loitsch, Florian. \"Printing floating-point numbers quickly and accurately with integers.\" ACM Sigplan Notices 45.6 (2010): 233–243）。"
+    },
+    {
+      "n": 254,
+      "source": "However, since it is not header-only so that we implemented a header-only version of Grisu2. This algorithm guarantees that the result is always accurate. And in most of cases it produces the shortest (optimal) string representation.",
+      "ja": "ただし、ヘッダーだけの実装ではないため、Grisu2のヘッダーだけの版を実装しました。このアルゴリズムは、結果が常に正確であることを保証します。また、大半の場合に、最短（最適）の文字列表現を生成します。"
+    },
+    {
+      "n": 255,
+      "source": "The header-only conversion function has been evaluated in {1}.",
+      "ja": "ヘッダーだけの変換関数は、{1}で評価されています。"
+    },
+    {
+      "n": 256,
+      "source": "Parser",
+      "ja": "パーサー"
+    },
+    {
+      "n": 257,
+      "source": "Iterative Parser",
+      "ja": "反復型パーサー"
+    },
+    {
+      "n": 258,
+      "source": "The iterative parser is a recursive descent LL(1) parser implemented in a non-recursive manner.",
+      "ja": "反復型パーサーは、再帰を使わずに実装した、再帰下降LL(1)パーサーです。"
+    },
+    {
+      "n": 259,
+      "source": "Grammar",
+      "ja": "文法"
+    },
+    {
+      "n": 260,
+      "source": "The grammar used for this parser is based on strict JSON syntax:",
+      "ja": "このパーサーの文法は、厳密なJSON構文に基づきます。"
+    },
+    {
+      "n": 261,
+      "source": "Note that left factoring is applied to non-terminals {1} and {2} to make the grammar be LL(1).",
+      "ja": "文法をLL(1)にするため、非終端記号{1}と{2}を左因子分解していることに注意してください。"
+    },
+    {
+      "n": 262,
+      "source": "Parsing Table",
+      "ja": "解析表"
+    },
+    {
+      "n": 263,
+      "source": "Based on the grammar, we can construct the FIRST and FOLLOW set.",
+      "ja": "この文法に基づき、FIRST集合とFOLLOW集合を構築できます。"
+    },
+    {
+      "n": 264,
+      "source": "The FIRST set of non-terminals is listed below:",
+      "ja": "非終端記号のFIRST集合を以下に示します。"
+    },
+    {
+      "n": 265,
+      "source": "NON-TERMINAL",
+      "ja": "非終端記号"
+    },
+    {
+      "n": 266,
+      "source": "FIRST",
+      "ja": "FIRST"
+    },
+    {
+      "n": 267,
+      "source": "array",
+      "ja": "array"
+    },
+    {
+      "n": 268,
+      "source": "[",
+      "ja": "["
+    },
+    {
+      "n": 269,
+      "source": "object",
+      "ja": "object"
+    },
+    {
+      "n": 270,
+      "source": "{",
+      "ja": "{"
+    },
+    {
+      "n": 271,
+      "source": "values",
+      "ja": "values"
+    },
+    {
+      "n": 272,
+      "source": "ε STRING NUMBER NULL BOOLEAN { [",
+      "ja": "ε STRING NUMBER NULL BOOLEAN { ["
+    },
+    {
+      "n": 273,
+      "source": "addition-values",
+      "ja": "addition-values"
+    },
+    {
+      "n": 274,
+      "source": "ε COMMA",
+      "ja": "ε COMMA"
+    },
+    {
+      "n": 275,
+      "source": "members",
+      "ja": "members"
+    },
+    {
+      "n": 276,
+      "source": "ε STRING",
+      "ja": "ε STRING"
+    },
+    {
+      "n": 277,
+      "source": "addition-members",
+      "ja": "addition-members"
+    },
+    {
+      "n": 278,
+      "source": "ε COMMA",
+      "ja": "ε COMMA"
+    },
+    {
+      "n": 279,
+      "source": "member",
+      "ja": "member"
+    },
+    {
+      "n": 280,
+      "source": "STRING",
+      "ja": "STRING"
+    },
+    {
+      "n": 281,
+      "source": "value",
+      "ja": "value"
+    },
+    {
+      "n": 282,
+      "source": "STRING NUMBER NULL BOOLEAN { [",
+      "ja": "STRING NUMBER NULL BOOLEAN { ["
+    },
+    {
+      "n": 283,
+      "source": "S",
+      "ja": "S"
+    },
+    {
+      "n": 284,
+      "source": "[ {",
+      "ja": "[ {"
+    },
+    {
+      "n": 285,
+      "source": "non-empty-members",
+      "ja": "non-empty-members"
+    },
+    {
+      "n": 286,
+      "source": "STRING",
+      "ja": "STRING"
+    },
+    {
+      "n": 287,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 288,
+      "source": "STRING NUMBER NULL BOOLEAN { [",
+      "ja": "STRING NUMBER NULL BOOLEAN { ["
+    },
+    {
+      "n": 289,
+      "source": "The FOLLOW set is listed below:",
+      "ja": "FOLLOW集合を以下に示します。"
+    },
+    {
+      "n": 290,
+      "source": "NON-TERMINAL",
+      "ja": "非終端記号"
+    },
+    {
+      "n": 291,
+      "source": "FOLLOW",
+      "ja": "FOLLOW"
+    },
+    {
+      "n": 292,
+      "source": "S",
+      "ja": "S"
+    },
+    {
+      "n": 293,
+      "source": "$",
+      "ja": "$"
+    },
+    {
+      "n": 294,
+      "source": "array",
+      "ja": "array"
+    },
+    {
+      "n": 295,
+      "source": ", $ } ]",
+      "ja": ", $ } ]"
+    },
+    {
+      "n": 296,
+      "source": "object",
+      "ja": "object"
+    },
+    {
+      "n": 297,
+      "source": ", $ } ]",
+      "ja": ", $ } ]"
+    },
+    {
+      "n": 298,
+      "source": "values",
+      "ja": "values"
+    },
+    {
+      "n": 299,
+      "source": "]",
+      "ja": "]"
+    },
+    {
+      "n": 300,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 301,
+      "source": "]",
+      "ja": "]"
+    },
+    {
+      "n": 302,
+      "source": "addition-values",
+      "ja": "addition-values"
+    },
+    {
+      "n": 303,
+      "source": "]",
+      "ja": "]"
+    },
+    {
+      "n": 304,
+      "source": "members",
+      "ja": "members"
+    },
+    {
+      "n": 305,
+      "source": "}",
+      "ja": "}"
+    },
+    {
+      "n": 306,
+      "source": "non-empty-members",
+      "ja": "non-empty-members"
+    },
+    {
+      "n": 307,
+      "source": "}",
+      "ja": "}"
+    },
+    {
+      "n": 308,
+      "source": "addition-members",
+      "ja": "addition-members"
+    },
+    {
+      "n": 309,
+      "source": "}",
+      "ja": "}"
+    },
+    {
+      "n": 310,
+      "source": "member",
+      "ja": "member"
+    },
+    {
+      "n": 311,
+      "source": ", }",
+      "ja": ", }"
+    },
+    {
+      "n": 312,
+      "source": "value",
+      "ja": "value"
+    },
+    {
+      "n": 313,
+      "source": ", } ]",
+      "ja": ", } ]"
+    },
+    {
+      "n": 314,
+      "source": "Finally the parsing table can be constructed from FIRST and FOLLOW set:",
+      "ja": "最後に、FIRST集合とFOLLOW集合から解析表を構築できます。"
+    },
+    {
+      "n": 315,
+      "source": "NON-TERMINAL",
+      "ja": "非終端記号"
+    },
+    {
+      "n": 316,
+      "source": "[",
+      "ja": "["
+    },
+    {
+      "n": 317,
+      "source": "{",
+      "ja": "{"
+    },
+    {
+      "n": 318,
+      "source": ",",
+      "ja": ","
+    },
+    {
+      "n": 319,
+      "source": ":",
+      "ja": ":"
+    },
+    {
+      "n": 320,
+      "source": "]",
+      "ja": "]"
+    },
+    {
+      "n": 321,
+      "source": "}",
+      "ja": "}"
+    },
+    {
+      "n": 322,
+      "source": "STRING",
+      "ja": "STRING"
+    },
+    {
+      "n": 323,
+      "source": "NUMBER",
+      "ja": "NUMBER"
+    },
+    {
+      "n": 324,
+      "source": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "n": 325,
+      "source": "BOOLEAN",
+      "ja": "BOOLEAN"
+    },
+    {
+      "n": 326,
+      "source": "S",
+      "ja": "S"
+    },
+    {
+      "n": 327,
+      "source": "array",
+      "ja": "array"
+    },
+    {
+      "n": 328,
+      "source": "object",
+      "ja": "object"
+    },
+    {
+      "n": 329,
+      "source": "array",
+      "ja": "array"
+    },
+    {
+      "n": 330,
+      "source": "[ values ]",
+      "ja": "[ values ]"
+    },
+    {
+      "n": 331,
+      "source": "object",
+      "ja": "object"
+    },
+    {
+      "n": 332,
+      "source": "{ members }",
+      "ja": "{ members }"
+    },
+    {
+      "n": 333,
+      "source": "values",
+      "ja": "values"
+    },
+    {
+      "n": 334,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 335,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 336,
+      "source": "ε",
+      "ja": "ε"
+    },
+    {
+      "n": 337,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 338,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 339,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 340,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 341,
+      "source": "non-empty-values",
+      "ja": "non-empty-values"
+    },
+    {
+      "n": 342,
+      "source": "value addition-values",
+      "ja": "value addition-values"
+    },
+    {
+      "n": 343,
+      "source": "value addition-values",
+      "ja": "value addition-values"
+    },
+    {
+      "n": 344,
+      "source": "value addition-values",
+      "ja": "value addition-values"
+    },
+    {
+      "n": 345,
+      "source": "value addition-values",
+      "ja": "value addition-values"
+    },
+    {
+      "n": 346,
+      "source": "value addition-values",
+      "ja": "value addition-values"
+    },
+    {
+      "n": 347,
+      "source": "value addition-values",
+      "ja": "value addition-values"
+    },
+    {
+      "n": 348,
+      "source": "addition-values",
+      "ja": "addition-values"
+    },
+    {
+      "n": 349,
+      "source": ", non-empty-values",
+      "ja": ", non-empty-values"
+    },
+    {
+      "n": 350,
+      "source": "ε",
+      "ja": "ε"
+    },
+    {
+      "n": 351,
+      "source": "members",
+      "ja": "members"
+    },
+    {
+      "n": 352,
+      "source": "ε",
+      "ja": "ε"
+    },
+    {
+      "n": 353,
+      "source": "non-empty-members",
+      "ja": "non-empty-members"
+    },
+    {
+      "n": 354,
+      "source": "non-empty-members",
+      "ja": "non-empty-members"
+    },
+    {
+      "n": 355,
+      "source": "member addition-members",
+      "ja": "member addition-members"
+    },
+    {
+      "n": 356,
+      "source": "addition-members",
+      "ja": "addition-members"
+    },
+    {
+      "n": 357,
+      "source": ", non-empty-members",
+      "ja": ", non-empty-members"
+    },
+    {
+      "n": 358,
+      "source": "ε",
+      "ja": "ε"
+    },
+    {
+      "n": 359,
+      "source": "member",
+      "ja": "member"
+    },
+    {
+      "n": 360,
+      "source": "STRING : value",
+      "ja": "STRING : value"
+    },
+    {
+      "n": 361,
+      "source": "value",
+      "ja": "value"
+    },
+    {
+      "n": 362,
+      "source": "array",
+      "ja": "array"
+    },
+    {
+      "n": 363,
+      "source": "object",
+      "ja": "object"
+    },
+    {
+      "n": 364,
+      "source": "STRING",
+      "ja": "STRING"
+    },
+    {
+      "n": 365,
+      "source": "NUMBER",
+      "ja": "NUMBER"
+    },
+    {
+      "n": 366,
+      "source": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "n": 367,
+      "source": "BOOLEAN",
+      "ja": "BOOLEAN"
+    },
+    {
+      "n": 368,
+      "source": "There is a great {1} for above grammar analysis.",
+      "ja": "上の文法の解析に役立つ{1}があります。"
+    },
+    {
+      "n": 369,
+      "source": "Implementation",
+      "ja": "実装"
+    },
+    {
+      "n": 370,
+      "source": "Based on the parsing table, a direct(or conventional) implementation that pushes the production body in reverse order while generating a production could work.",
+      "ja": "解析表に基づき、生成規則を展開する際に規則の本体を逆順でスタックへ積む、直接的な（従来の）実装を使えます。"
+    },
+    {
+      "n": 371,
+      "source": "In RapidJSON, several modifications(or adaptations to current design) are made to a direct implementation.",
+      "ja": "RapidJSONでは、直接的な実装にいくつかの変更（現在の設計への適応）を加えています。"
+    },
+    {
+      "n": 372,
+      "source": "First, the parsing table is encoded in a state machine in RapidJSON. States are constructed by the head and body of production. State transitions are constructed by production rules. Besides, extra states are added for productions involved with {1} and {2}. In this way the generation of array values or object members would be a single state transition, rather than several pop/push operations in the direct implementation. This also makes the estimation of stack size more easier.",
+      "ja": "まず、RapidJSONでは、解析表を状態機械として符号化します。状態は生成規則の左辺と右辺から、状態遷移は生成規則から構築します。さらに、{1}と{2}を含む生成規則には、追加の状態を設けます。これにより、直接的な実装で複数回のpop/push操作を行う代わりに、配列の値やオブジェクトのメンバーの生成を一つの状態遷移で行えます。スタックサイズの見積もりも簡単になります。"
+    },
+    {
+      "n": 373,
+      "source": "The state diagram is shown as follows:",
+      "ja": "状態図を以下に示します。"
+    },
+    {
+      "n": 374,
+      "source": "State Diagram",
+      "ja": "状態図"
+    },
+    {
+      "n": 375,
+      "source": "Second, the iterative parser also keeps track of array's value count and object's member count in its internal stack, which may be different from a conventional implementation.",
+      "ja": "次に、反復型パーサーは、内部スタックで配列の値の数とオブジェクトのメンバー数も管理します。これは、従来の実装とは異なる場合があります。"
+    }
+  ],
+  "tokenTranslations": {
+    "here": "こちら",
+    "variant type": "バリアント型",
+    "Short-String Optimization": "短い文字列の最適化",
+    "User Buffer section in DOM": "DOMの「利用者が指定するバッファー」の節",
+    "an issue": "問題報告",
+    "tool": "ツール",
+    "Basic benchmarks for miscellaneous C++ JSON parsers and generators": "各種C++ JSONパーサー・生成器の基本ベンチマーク",
+    "JSON Parser Benchmarking": "JSONパーサーのベンチマーク"
+  }
+}

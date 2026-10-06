@@ -1,0 +1,1275 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "This tutorial introduces the basics of the Document Object Model(DOM) API.",
+    "tokens": []
+  },
+  {
+    "n": 2,
+    "tag": "p",
+    "text": "As shown in {1}, a JSON can be parsed into DOM, and then the DOM can be queried and modified easily, and finally be converted back to JSON.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/01-index/\" title=\"RapidJSON\">Usage at a glance</a>"
+    ]
+  },
+  {
+    "n": 3,
+    "tag": "h1",
+    "text": "Value & Document",
+    "tokens": []
+  },
+  {
+    "n": 4,
+    "tag": "p",
+    "text": "Each JSON value is stored in a type called {1}. A {2}, representing the DOM, contains the root {3} of the DOM tree. All public types and functions of RapidJSON are defined in the {4} namespace.",
+    "tokens": [
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/148-namespacerapidjson/\" title=\"main RapidJSON namespace\">rapidjson</a></span>"
+    ]
+  },
+  {
+    "n": 5,
+    "tag": "h1",
+    "text": "Query Value",
+    "tokens": []
+  },
+  {
+    "n": 6,
+    "tag": "p",
+    "text": "In this section, we will use excerpt of {1}.",
+    "tokens": [
+      "<span class=\"tt\">example/tutorial/tutorial.cpp</span>"
+    ]
+  },
+  {
+    "n": 7,
+    "tag": "p",
+    "text": "Assumes we have a JSON stored in a C string ({1}):",
+    "tokens": [
+      "<span class=\"tt\">const char* json</span>"
+    ]
+  },
+  {
+    "n": 8,
+    "tag": "p",
+    "text": "Parse it into a {1}:",
+    "tokens": [
+      "<span class=\"tt\">Document</span>"
+    ]
+  },
+  {
+    "n": 9,
+    "tag": "div",
+    "text": "Parse JSON text from a read-only string (with Encoding conversion).",
+    "tokens": []
+  },
+  {
+    "n": 10,
+    "tag": "div",
+    "text": "main RapidJSON namespace",
+    "tokens": []
+  },
+  {
+    "n": 11,
+    "tag": "div",
+    "text": "GenericDocument with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 12,
+    "tag": "p",
+    "text": "The JSON is now parsed into {1} as a {2}:",
+    "tokens": [
+      "<span class=\"tt\">document</span>",
+      "<em>DOM tree</em>"
+    ]
+  },
+  {
+    "n": 13,
+    "tag": "div",
+    "text": "DOM in the tutorial",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "p",
+    "text": "Since the update to RFC 7159, the root of a conforming JSON document can be any JSON value. In earlier RFC 4627, only objects or arrays were allowed as root values. In this case, the root is an object.",
+    "tokens": []
+  },
+  {
+    "n": 15,
+    "tag": "p",
+    "text": "Let's query whether a {1} member exists in the root object. Since a {2} can contain different types of value, we may need to verify its type and use suitable API to obtain the value. In this example, {3} member associates with a JSON string.",
+    "tokens": [
+      "<span class=\"tt\">\"hello\"</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">\"hello\"</span>"
+    ]
+  },
+  {
+    "n": 16,
+    "tag": "div",
+    "text": "Check whether a member exists in the object.",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "p",
+    "text": "JSON true/false values are represented as {1}.",
+    "tokens": [
+      "<span class=\"tt\">bool</span>"
+    ]
+  },
+  {
+    "n": 18,
+    "tag": "p",
+    "text": "JSON null can be queryed by {1}.",
+    "tokens": [
+      "<span class=\"tt\">IsNull()</span>"
+    ]
+  },
+  {
+    "n": 19,
+    "tag": "p",
+    "text": "JSON number type represents all numeric values. However, C++ needs more specific type for manipulation.",
+    "tokens": []
+  },
+  {
+    "n": 20,
+    "tag": "p",
+    "text": "JSON array contains a number of elements.",
+    "tokens": []
+  },
+  {
+    "n": 21,
+    "tag": "div",
+    "text": "Get the number of elements in array.",
+    "tokens": []
+  },
+  {
+    "n": 22,
+    "tag": "div",
+    "text": "Size type (for string lengths, array sizes, etc.).",
+    "tokens": []
+  },
+  {
+    "n": 23,
+    "tag": "div",
+    "text": "GenericValue with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 24,
+    "tag": "p",
+    "text": "Note that, RapidJSON does not automatically convert values between JSON types. If a value is a string, it is invalid to call {1}, for example. In debug mode it will fail an assertion. In release mode, the behavior is undefined.",
+    "tokens": [
+      "<span class=\"tt\">GetInt()</span>"
+    ]
+  },
+  {
+    "n": 25,
+    "tag": "p",
+    "text": "In the following, details about querying individual types are discussed.",
+    "tokens": []
+  },
+  {
+    "n": 26,
+    "tag": "h2",
+    "text": "Query Array",
+    "tokens": []
+  },
+  {
+    "n": 27,
+    "tag": "p",
+    "text": "By default, {1} is typedef of {2}. In most systems, array is limited to store up to 2^32-1 elements.",
+    "tokens": [
+      "<span class=\"tt\">SizeType</span>",
+      "<span class=\"tt\">unsigned</span>"
+    ]
+  },
+  {
+    "n": 28,
+    "tag": "p",
+    "text": "You may access the elements in array by integer literal, for example, {1}, {2}, {3}.",
+    "tokens": [
+      "<span class=\"tt\">a[0]</span>",
+      "<span class=\"tt\">a[1]</span>",
+      "<span class=\"tt\">a[2]</span>"
+    ]
+  },
+  {
+    "n": 29,
+    "tag": "p",
+    "text": "Array is similar to {1}, instead of using indices, you may also use iterator to access all the elements.",
+    "tokens": [
+      "<span class=\"tt\">std::vector</span>"
+    ]
+  },
+  {
+    "n": 30,
+    "tag": "div",
+    "text": "Element iterator.",
+    "tokens": []
+  },
+  {
+    "n": 31,
+    "tag": "div",
+    "text": "Past-the-end element iterator",
+    "tokens": []
+  },
+  {
+    "n": 32,
+    "tag": "p",
+    "text": "And other familiar query functions:",
+    "tokens": []
+  },
+  {
+    "n": 33,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">SizeType Capacity() const</span>"
+    ]
+  },
+  {
+    "n": 34,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">bool Empty() const</span>"
+    ]
+  },
+  {
+    "n": 35,
+    "tag": "h3",
+    "text": "Range-based For Loop (New in v1.1.0)",
+    "tokens": []
+  },
+  {
+    "n": 36,
+    "tag": "p",
+    "text": "When C++11 is enabled, you can use range-based for loop to access all elements in an array.",
+    "tokens": []
+  },
+  {
+    "n": 37,
+    "tag": "h2",
+    "text": "Query Object",
+    "tokens": []
+  },
+  {
+    "n": 38,
+    "tag": "p",
+    "text": "Similar to array, we can access all object members by iterator:",
+    "tokens": []
+  },
+  {
+    "n": 39,
+    "tag": "div",
+    "text": "Const past-the-end member iterator.",
+    "tokens": []
+  },
+  {
+    "n": 40,
+    "tag": "div",
+    "text": "Const member iterator.",
+    "tokens": []
+  },
+  {
+    "n": 41,
+    "tag": "p",
+    "text": "Note that, when {1} cannot find the member, it will fail an assertion.",
+    "tokens": [
+      "<span class=\"tt\">operator[](const char*)</span>"
+    ]
+  },
+  {
+    "n": 42,
+    "tag": "p",
+    "text": "If we are unsure whether a member exists, we need to call {1} before calling {2}. However, this incurs two lookup. A better way is to call {3}, which can check the existence of member and obtain its value at once:",
+    "tokens": [
+      "<span class=\"tt\">HasMember()</span>",
+      "<span class=\"tt\">operator[](const char*)</span>",
+      "<span class=\"tt\">FindMember()</span>"
+    ]
+  },
+  {
+    "n": 43,
+    "tag": "div",
+    "text": "Find member by name.",
+    "tokens": []
+  },
+  {
+    "n": 44,
+    "tag": "h3",
+    "text": "Range-based For Loop (New in v1.1.0)",
+    "tokens": []
+  },
+  {
+    "n": 45,
+    "tag": "p",
+    "text": "When C++11 is enabled, you can use range-based for loop to access all members in an object.",
+    "tokens": []
+  },
+  {
+    "n": 46,
+    "tag": "h2",
+    "text": "Querying Number",
+    "tokens": []
+  },
+  {
+    "n": 47,
+    "tag": "p",
+    "text": "JSON provide a single numerical type called Number. Number can be integer or real numbers. RFC 4627 says the range of Number is specified by parser.",
+    "tokens": []
+  },
+  {
+    "n": 48,
+    "tag": "p",
+    "text": "As C++ provides several integer and floating point number types, the DOM tries to handle these with widest possible range and good performance.",
+    "tokens": []
+  },
+  {
+    "n": 49,
+    "tag": "p",
+    "text": "When a Number is parsed, it is stored in the DOM as either one of the following type:",
+    "tokens": []
+  },
+  {
+    "n": 50,
+    "tag": "th",
+    "text": "Type",
+    "tokens": []
+  },
+  {
+    "n": 51,
+    "tag": "th",
+    "text": "Description",
+    "tokens": []
+  },
+  {
+    "n": 52,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned</span>"
+    ]
+  },
+  {
+    "n": 53,
+    "tag": "td",
+    "text": "32-bit unsigned integer",
+    "tokens": []
+  },
+  {
+    "n": 54,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">int</span>"
+    ]
+  },
+  {
+    "n": 55,
+    "tag": "td",
+    "text": "32-bit signed integer",
+    "tokens": []
+  },
+  {
+    "n": 56,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">uint64_t</span>"
+    ]
+  },
+  {
+    "n": 57,
+    "tag": "td",
+    "text": "64-bit unsigned integer",
+    "tokens": []
+  },
+  {
+    "n": 58,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">int64_t</span>"
+    ]
+  },
+  {
+    "n": 59,
+    "tag": "td",
+    "text": "64-bit signed integer",
+    "tokens": []
+  },
+  {
+    "n": 60,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">double</span>"
+    ]
+  },
+  {
+    "n": 61,
+    "tag": "td",
+    "text": "64-bit double precision floating point",
+    "tokens": []
+  },
+  {
+    "n": 62,
+    "tag": "p",
+    "text": "When querying a number, you can check whether the number can be obtained as target type:",
+    "tokens": []
+  },
+  {
+    "n": 63,
+    "tag": "th",
+    "text": "Checking",
+    "tokens": []
+  },
+  {
+    "n": 64,
+    "tag": "th",
+    "text": "Obtaining",
+    "tokens": []
+  },
+  {
+    "n": 65,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">bool IsNumber()</span>"
+    ]
+  },
+  {
+    "n": 66,
+    "tag": "td",
+    "text": "N/A",
+    "tokens": []
+  },
+  {
+    "n": 67,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">bool IsUint()</span>"
+    ]
+  },
+  {
+    "n": 68,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned GetUint()</span>"
+    ]
+  },
+  {
+    "n": 69,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">bool IsInt()</span>"
+    ]
+  },
+  {
+    "n": 70,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">int GetInt()</span>"
+    ]
+  },
+  {
+    "n": 71,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">bool IsUint64()</span>"
+    ]
+  },
+  {
+    "n": 72,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">uint64_t GetUint64()</span>"
+    ]
+  },
+  {
+    "n": 73,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">bool IsInt64()</span>"
+    ]
+  },
+  {
+    "n": 74,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">int64_t GetInt64()</span>"
+    ]
+  },
+  {
+    "n": 75,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">bool IsDouble()</span>"
+    ]
+  },
+  {
+    "n": 76,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">double GetDouble()</span>"
+    ]
+  },
+  {
+    "n": 77,
+    "tag": "p",
+    "text": "Note that, an integer value may be obtained in various ways without conversion. For example, A value {1} containing 123 will make {2}. But a value {3} containing -3000000000 will only makes {4}.",
+    "tokens": [
+      "<span class=\"tt\">x</span>",
+      "<span class=\"tt\">x.IsInt() == x.IsUint() == x.IsInt64() == x.IsUint64() == true</span>",
+      "<span class=\"tt\">y</span>",
+      "<span class=\"tt\">x.IsInt64() == true</span>"
+    ]
+  },
+  {
+    "n": 78,
+    "tag": "p",
+    "text": "When obtaining the numeric values, {1} will convert internal integer representation to a {2}. Note that, {3} and {4} can be safely convert to {5}, but {6} and {7} may lose precision (since mantissa of {8} is only 52-bits).",
+    "tokens": [
+      "<span class=\"tt\">GetDouble()</span>",
+      "<span class=\"tt\">double</span>",
+      "<span class=\"tt\">int</span>",
+      "<span class=\"tt\">unsigned</span>",
+      "<span class=\"tt\">double</span>",
+      "<span class=\"tt\">int64_t</span>",
+      "<span class=\"tt\">uint64_t</span>",
+      "<span class=\"tt\">double</span>"
+    ]
+  },
+  {
+    "n": 79,
+    "tag": "h2",
+    "text": "Query String",
+    "tokens": []
+  },
+  {
+    "n": 80,
+    "tag": "p",
+    "text": "In addition to {1}, the {2} class also contains {3}. Here explains why.",
+    "tokens": [
+      "<span class=\"tt\">GetString()</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">GetStringLength()</span>"
+    ]
+  },
+  {
+    "n": 81,
+    "tag": "p",
+    "text": "According to RFC 4627, JSON strings can contain Unicode character {1}, which must be escaped as {2}. The problem is that, C/C++ often uses null-terminated string, which treats `{3} as the terminator symbol.",
+    "tokens": [
+      "<span class=\"tt\">U+0000</span>",
+      "<span class=\"tt\">\"\\u0000\"</span>",
+      "<span class=\"tt\">\\0'</span>"
+    ]
+  },
+  {
+    "n": 82,
+    "tag": "p",
+    "text": "To conform RFC 4627, RapidJSON supports string containing {1}. If you need to handle this, you can use {2} API to obtain the correct length of string.",
+    "tokens": [
+      "<span class=\"tt\">U+0000</span>",
+      "<span class=\"tt\">GetStringLength()</span>"
+    ]
+  },
+  {
+    "n": 83,
+    "tag": "p",
+    "text": "For example, after parsing a the following JSON to {1}:",
+    "tokens": [
+      "<span class=\"tt\">Document d</span>"
+    ]
+  },
+  {
+    "n": 84,
+    "tag": "p",
+    "text": "The correct length of the value {1} is 3. But {2} returns 1.",
+    "tokens": [
+      "<span class=\"tt\">\"a\\u0000b\"</span>",
+      "<span class=\"tt\">strlen()</span>"
+    ]
+  },
+  {
+    "n": 85,
+    "tag": "p",
+    "text": "{1} can also improve performance, as user may often need to call {2} for allocating buffer.",
+    "tokens": [
+      "<span class=\"tt\">GetStringLength()</span>",
+      "<span class=\"tt\">strlen()</span>"
+    ]
+  },
+  {
+    "n": 86,
+    "tag": "p",
+    "text": "Besides, {1} also support a constructor:",
+    "tokens": [
+      "<span class=\"tt\">std::string</span>"
+    ]
+  },
+  {
+    "n": 87,
+    "tag": "p",
+    "text": "which accepts the length of string as parameter. This constructor supports storing null character within the string, and should also provide better performance.",
+    "tokens": []
+  },
+  {
+    "n": 88,
+    "tag": "h2",
+    "text": "Comparing values",
+    "tokens": []
+  },
+  {
+    "n": 89,
+    "tag": "p",
+    "text": "You can use {1} and {2} to compare values. Two values are equal if and only if they are have same type and contents. You can also compare values with primitive types. Here is an example.",
+    "tokens": [
+      "<span class=\"tt\">==</span>",
+      "<span class=\"tt\">!=</span>"
+    ]
+  },
+  {
+    "n": 90,
+    "tag": "p",
+    "text": "Array/object compares their elements/members in order. They are equal if and only if their whole subtrees are equal.",
+    "tokens": []
+  },
+  {
+    "n": 91,
+    "tag": "p",
+    "text": "Note that, currently if an object contains duplicated named member, comparing equality with any object is always {1}.",
+    "tokens": [
+      "<span class=\"tt\">false</span>"
+    ]
+  },
+  {
+    "n": 92,
+    "tag": "h1",
+    "text": "Create/Modify Values",
+    "tokens": []
+  },
+  {
+    "n": 93,
+    "tag": "p",
+    "text": "There are several ways to create values. After a DOM tree is created and/or modified, it can be saved as JSON again using {1}.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 94,
+    "tag": "h2",
+    "text": "Change Value Type",
+    "tokens": []
+  },
+  {
+    "n": 95,
+    "tag": "p",
+    "text": "When creating a Value or Document by default constructor, its type is Null. To change its type, call {1} or assignment operator, for example:",
+    "tokens": [
+      "<span class=\"tt\">SetXXX()</span>"
+    ]
+  },
+  {
+    "n": 96,
+    "tag": "div",
+    "text": "Set this value as an empty object.",
+    "tokens": []
+  },
+  {
+    "n": 97,
+    "tag": "h3",
+    "text": "Overloaded Constructors",
+    "tokens": []
+  },
+  {
+    "n": 98,
+    "tag": "p",
+    "text": "There are also overloaded constructors for several types:",
+    "tokens": []
+  },
+  {
+    "n": 99,
+    "tag": "p",
+    "text": "To create empty object or array, you may use {1}/{2} after default constructor, or using the {3} in one shot:",
+    "tokens": [
+      "<span class=\"tt\">SetObject()</span>",
+      "<span class=\"tt\">SetArray()</span>",
+      "<span class=\"tt\">Value(Type)</span>"
+    ]
+  },
+  {
+    "n": 100,
+    "tag": "div",
+    "text": "array",
+    "tokens": []
+  },
+  {
+    "n": 101,
+    "tag": "div",
+    "text": "object",
+    "tokens": []
+  },
+  {
+    "n": 102,
+    "tag": "h2",
+    "text": "Move Semantics",
+    "tokens": []
+  },
+  {
+    "n": 103,
+    "tag": "p",
+    "text": "A very special decision during design of RapidJSON is that, assignment of value does not copy the source value to destination value. Instead, the value from source is moved to the destination. For example,",
+    "tokens": []
+  },
+  {
+    "n": 104,
+    "tag": "div",
+    "text": "Assignment with move semantics.",
+    "tokens": []
+  },
+  {
+    "n": 105,
+    "tag": "p",
+    "text": "Why? What is the advantage of this semantics?",
+    "tokens": []
+  },
+  {
+    "n": 106,
+    "tag": "p",
+    "text": "The simple answer is performance. For fixed size JSON types (Number, True, False, Null), copying them is fast and easy. However, For variable size JSON types (String, Array, Object), copying them will incur a lot of overheads. And these overheads are often unnoticed. Especially when we need to create temporary object, copy it to another variable, and then destruct it.",
+    "tokens": []
+  },
+  {
+    "n": 107,
+    "tag": "p",
+    "text": "For example, if normal {1} semantics was used:",
+    "tokens": [
+      "<em>copy</em>"
+    ]
+  },
+  {
+    "n": 108,
+    "tag": "div",
+    "text": "Get the allocator of this document.",
+    "tokens": []
+  },
+  {
+    "n": 109,
+    "tag": "div",
+    "text": "Copy semantics makes a lots of copy operations.",
+    "tokens": []
+  },
+  {
+    "n": 110,
+    "tag": "p",
+    "text": "The object {1} needs to allocate a buffer of same size as contacts, makes a deep clone of it, and then finally contacts is destructed. This will incur a lot of unnecessary allocations/deallocations and memory copying.",
+    "tokens": [
+      "<span class=\"tt\">o</span>"
+    ]
+  },
+  {
+    "n": 111,
+    "tag": "p",
+    "text": "There are solutions to prevent actual copying these data, such as reference counting and garbage collection(GC).",
+    "tokens": []
+  },
+  {
+    "n": 112,
+    "tag": "p",
+    "text": "To make RapidJSON simple and fast, we chose to use {1} semantics for assignment. It is similar to {2} which transfer ownership during assignment. Move is much faster and simpler, it just destructs the original value, {3} the source to destination, and finally sets the source as Null type.",
+    "tokens": [
+      "<em>move</em>",
+      "<span class=\"tt\">std::auto_ptr</span>",
+      "<span class=\"tt\">memcpy()</span>"
+    ]
+  },
+  {
+    "n": 113,
+    "tag": "p",
+    "text": "So, with move semantics, the above example becomes:",
+    "tokens": []
+  },
+  {
+    "n": 114,
+    "tag": "div",
+    "text": "Move semantics makes no copying.",
+    "tokens": []
+  },
+  {
+    "n": 115,
+    "tag": "p",
+    "text": "This is called move assignment operator in C++11. As RapidJSON supports C++03, it adopts move semantics using assignment operator, and all other modifying function like {1}, {2}.",
+    "tokens": [
+      "<span class=\"tt\">AddMember()</span>",
+      "<span class=\"tt\">PushBack()</span>"
+    ]
+  },
+  {
+    "n": 116,
+    "tag": "h3",
+    "text": "Move semantics and temporary values",
+    "tokens": []
+  },
+  {
+    "n": 117,
+    "tag": "p",
+    "text": "Sometimes, it is convenient to construct a Value in place, before passing it to one of the \"moving\" functions, like {1} or {2}. As temporary objects can't be converted to proper Value references, the convenience function {3} is available:",
+    "tokens": [
+      "<span class=\"tt\">PushBack()</span>",
+      "<span class=\"tt\">AddMember()</span>",
+      "<span class=\"tt\">Move()</span>"
+    ]
+  },
+  {
+    "n": 118,
+    "tag": "div",
+    "text": "Append a GenericValue at the end of the array.",
+    "tokens": []
+  },
+  {
+    "n": 119,
+    "tag": "h2",
+    "text": "Create String",
+    "tokens": []
+  },
+  {
+    "n": 120,
+    "tag": "p",
+    "text": "RapidJSON provide two strategies for storing string.",
+    "tokens": []
+  },
+  {
+    "n": 121,
+    "tag": "li",
+    "text": "copy-string: allocates a buffer, and then copy the source data into it.",
+    "tokens": []
+  },
+  {
+    "n": 122,
+    "tag": "li",
+    "text": "const-string: simply store a pointer of string.",
+    "tokens": []
+  },
+  {
+    "n": 123,
+    "tag": "p",
+    "text": "Copy-string is always safe because it owns a copy of the data. Const-string can be used for storing string literal, and in-situ parsing which we will mentioned in Document section.",
+    "tokens": []
+  },
+  {
+    "n": 124,
+    "tag": "p",
+    "text": "To make memory allocation customizable, RapidJSON requires user to pass an instance of allocator, whenever an operation may require allocation. This design is needed to prevent storing a allocator (or Document) pointer per Value.",
+    "tokens": []
+  },
+  {
+    "n": 125,
+    "tag": "p",
+    "text": "Therefore, when we assign a copy-string, we call this overloaded {1} with allocator:",
+    "tokens": [
+      "<span class=\"tt\">SetString()</span>"
+    ]
+  },
+  {
+    "n": 126,
+    "tag": "div",
+    "text": "Set this value as a string without copying source string.",
+    "tokens": []
+  },
+  {
+    "n": 127,
+    "tag": "p",
+    "text": "In this example, we get the allocator from a {1} instance. This is a common idiom when using RapidJSON. But you may use other instances of allocator.",
+    "tokens": [
+      "<span class=\"tt\">Document</span>"
+    ]
+  },
+  {
+    "n": 128,
+    "tag": "p",
+    "text": "Besides, the above {1} requires length. This can handle null characters within a string. There is another {2} overloaded function without the length parameter. And it assumes the input is null-terminated and calls a {3}-like function to obtain the length.",
+    "tokens": [
+      "<span class=\"tt\">SetString()</span>",
+      "<span class=\"tt\">SetString()</span>",
+      "<span class=\"tt\">strlen()</span>"
+    ]
+  },
+  {
+    "n": 129,
+    "tag": "p",
+    "text": "Finally, for string literal or string with safe life-cycle can use const-string version of {1}, which lacks allocator parameter. For string literals (or constant character arrays), simply passing the literal as parameter is safe and efficient:",
+    "tokens": [
+      "<span class=\"tt\">SetString()</span>"
+    ]
+  },
+  {
+    "n": 130,
+    "tag": "p",
+    "text": "For character pointer, the RapidJSON requires to mark it as safe before using it without copying. This can be achieved by using the {1} function:",
+    "tokens": [
+      "<span class=\"tt\">StringRef</span>"
+    ]
+  },
+  {
+    "n": 131,
+    "tag": "div",
+    "text": "Mark a character pointer as constant string.",
+    "tokens": []
+  },
+  {
+    "n": 132,
+    "tag": "h2",
+    "text": "Modify Array",
+    "tokens": []
+  },
+  {
+    "n": 133,
+    "tag": "p",
+    "text": "Value with array type provides similar APIs as {1}.",
+    "tokens": [
+      "<span class=\"tt\">std::vector</span>"
+    ]
+  },
+  {
+    "n": 134,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Clear()</span>"
+    ]
+  },
+  {
+    "n": 135,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Reserve(SizeType, <a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a>&amp;)</span>"
+    ]
+  },
+  {
+    "n": 136,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Value&amp; PushBack(Value&amp;, <a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a>&amp;)</span>"
+    ]
+  },
+  {
+    "n": 137,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">template &lt;typename T&gt; GenericValue&amp; PushBack(T, <a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a>&amp;)</span>"
+    ]
+  },
+  {
+    "n": 138,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Value&amp; PopBack()</span>"
+    ]
+  },
+  {
+    "n": 139,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">ValueIterator Erase(ConstValueIterator pos)</span>"
+    ]
+  },
+  {
+    "n": 140,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">ValueIterator Erase(ConstValueIterator first, ConstValueIterator last)</span>"
+    ]
+  },
+  {
+    "n": 141,
+    "tag": "p",
+    "text": "Note that, {1} and {2} may allocate memory for the array elements, therefore require an allocator.",
+    "tokens": [
+      "<span class=\"tt\">Reserve(...)</span>",
+      "<span class=\"tt\">PushBack(...)</span>"
+    ]
+  },
+  {
+    "n": 142,
+    "tag": "p",
+    "text": "Here is an example of {1}:",
+    "tokens": [
+      "<span class=\"tt\">PushBack()</span>"
+    ]
+  },
+  {
+    "n": 143,
+    "tag": "p",
+    "text": "Differs from STL, {1}/{2} returns the array reference itself. This is called {3}.",
+    "tokens": [
+      "<span class=\"tt\">PushBack()</span>",
+      "<span class=\"tt\">PopBack()</span>",
+      "<em>fluent interface</em>"
+    ]
+  },
+  {
+    "n": 144,
+    "tag": "p",
+    "text": "If you want to add a non-constant string or a string without sufficient lifetime (see {1}Create String) to the array, you need to create a string Value by using the copy-string API. To avoid the need for an intermediate variable, you can use a {2}temporary value in place:",
+    "tokens": [
+      "<a class=\"el\" href=\"#CreateString\" title=\"Create String\">Create String</a>",
+      "<a class=\"el\" href=\"#TemporaryValues\" title=\"Move semantics and temporary values\">temporary value</a>"
+    ]
+  },
+  {
+    "n": 145,
+    "tag": "h2",
+    "text": "Modify Object",
+    "tokens": []
+  },
+  {
+    "n": 146,
+    "tag": "p",
+    "text": "Object is a collection of key-value pairs (members). Each key must be a string value. To modify an object, either add or remove members. THe following APIs are for adding members:",
+    "tokens": []
+  },
+  {
+    "n": 147,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Value&amp; AddMember(Value&amp;, Value&amp;, <a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a>&amp; allocator)</span>"
+    ]
+  },
+  {
+    "n": 148,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Value&amp; AddMember(StringRefType, Value&amp;, <a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a>&amp;)</span>"
+    ]
+  },
+  {
+    "n": 149,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">template &lt;typename T&gt; Value&amp; AddMember(StringRefType, T value, <a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a>&amp;)</span>"
+    ]
+  },
+  {
+    "n": 150,
+    "tag": "p",
+    "text": "Here is an example.",
+    "tokens": []
+  },
+  {
+    "n": 151,
+    "tag": "p",
+    "text": "The name parameter with {1} is similar to the interface of {2} function for string values. These overloads are used to avoid the need for copying the {3} string, as constant key names are very common in JSON objects.",
+    "tokens": [
+      "<span class=\"tt\">StringRefType</span>",
+      "<span class=\"tt\">SetString</span>",
+      "<span class=\"tt\">name</span>"
+    ]
+  },
+  {
+    "n": 152,
+    "tag": "p",
+    "text": "If you need to create a name from a non-constant string or a string without sufficient lifetime (see {1}Create String), you need to create a string Value by using the copy-string API. To avoid the need for an intermediate variable, you can use a {2}temporary value in place:",
+    "tokens": [
+      "<a class=\"el\" href=\"#CreateString\" title=\"Create String\">Create String</a>",
+      "<a class=\"el\" href=\"#TemporaryValues\" title=\"Move semantics and temporary values\">temporary value</a>"
+    ]
+  },
+  {
+    "n": 153,
+    "tag": "p",
+    "text": "For removing members, there are several choices:",
+    "tokens": []
+  },
+  {
+    "n": 154,
+    "tag": "li",
+    "text": "{1}: Remove a member by search its name (linear time complexity).",
+    "tokens": [
+      "<span class=\"tt\">bool RemoveMember(const Ch* name)</span>"
+    ]
+  },
+  {
+    "n": 155,
+    "tag": "li",
+    "text": "{1}: same as above but {2} is a Value.",
+    "tokens": [
+      "<span class=\"tt\">bool RemoveMember(const Value&amp; name)</span>",
+      "<span class=\"tt\">name</span>"
+    ]
+  },
+  {
+    "n": 156,
+    "tag": "li",
+    "text": "{1}: Remove a member by iterator ({2} time complexity).",
+    "tokens": [
+      "<span class=\"tt\">MemberIterator RemoveMember(MemberIterator)</span>",
+      "<em>constant</em>"
+    ]
+  },
+  {
+    "n": 157,
+    "tag": "li",
+    "text": "{1}: similar to the above but it preserves order of members (linear time complexity).",
+    "tokens": [
+      "<span class=\"tt\">MemberIterator EraseMember(MemberIterator)</span>"
+    ]
+  },
+  {
+    "n": 158,
+    "tag": "li",
+    "text": "{1}: remove a range of members, preserves order (linear time complexity).",
+    "tokens": [
+      "<span class=\"tt\">MemberIterator EraseMember(MemberIterator first, MemberIterator last)</span>"
+    ]
+  },
+  {
+    "n": 159,
+    "tag": "p",
+    "text": "{1} uses a \"move-last\" trick to achieve constant time complexity. Basically the member at iterator is destructed, and then the last element is moved to that position. So the order of the remaining members are changed.",
+    "tokens": [
+      "<span class=\"tt\">MemberIterator RemoveMember(MemberIterator)</span>"
+    ]
+  },
+  {
+    "n": 160,
+    "tag": "h2",
+    "text": "Deep Copy Value",
+    "tokens": []
+  },
+  {
+    "n": 161,
+    "tag": "p",
+    "text": "If we really need to copy a DOM tree, we can use two APIs for deep copy: constructor with allocator, and {1}.",
+    "tokens": [
+      "<span class=\"tt\">CopyFrom()</span>"
+    ]
+  },
+  {
+    "n": 162,
+    "tag": "div",
+    "text": "Set this value as an empty array.",
+    "tokens": []
+  },
+  {
+    "n": 163,
+    "tag": "h2",
+    "text": "Swap Values",
+    "tokens": []
+  },
+  {
+    "n": 164,
+    "tag": "p",
+    "text": "{1} is also provided.",
+    "tokens": [
+      "<span class=\"tt\">Swap()</span>"
+    ]
+  },
+  {
+    "n": 165,
+    "tag": "p",
+    "text": "Swapping two DOM trees is fast (constant time), despite the complexity of the trees.",
+    "tokens": []
+  },
+  {
+    "n": 166,
+    "tag": "h1",
+    "text": "What's next",
+    "tokens": []
+  },
+  {
+    "n": 167,
+    "tag": "p",
+    "text": "This tutorial shows the basics of DOM tree query and manipulation. There are several important concepts in RapidJSON:",
+    "tokens": []
+  },
+  {
+    "n": 168,
+    "tag": "li",
+    "text": "{1} are channels for reading/writing JSON, which can be a in-memory string, or file stream, etc. User can also create their streams.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/06-stream/\" title=\"Stream\">Streams</a>"
+    ]
+  },
+  {
+    "n": 169,
+    "tag": "li",
+    "text": "{1} defines which character encoding is used in streams and memory. RapidJSON also provide Unicode conversion/validation internally.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/07-encoding/\" title=\"Encoding\">Encoding</a>"
+    ]
+  },
+  {
+    "n": 170,
+    "tag": "li",
+    "text": "{1}'s basics are already covered in this tutorial. Uncover more advanced features such as {2} parsing, other parsing options and advanced usages.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/04-dom/\" title=\"DOM\">DOM</a>",
+      "<em>in situ</em>"
+    ]
+  },
+  {
+    "n": 171,
+    "tag": "li",
+    "text": "{1} is the foundation of parsing/generating facility in RapidJSON. Learn how to use {2}/{3} to implement even faster applications. Also try {4} to format the JSON.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/05-sax/\" title=\"SAX\">SAX</a>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">PrettyWriter</span>"
+    ]
+  },
+  {
+    "n": 172,
+    "tag": "li",
+    "text": "{1} shows some in-house and third-party benchmarks.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/10-performance/\" title=\"Performance\">Performance</a>"
+    ]
+  },
+  {
+    "n": 173,
+    "tag": "li",
+    "text": "{1} describes some internal designs and techniques of RapidJSON.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/11-internals/\" title=\"Internals\">Internals</a>"
+    ]
+  },
+  {
+    "n": 174,
+    "tag": "p",
+    "text": "You may also refer to the {1}, API documentation, examples and unit tests.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/12-faq/\" title=\"FAQ\">FAQ</a>"
+    ]
+  }
+]

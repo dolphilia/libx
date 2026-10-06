@@ -1,0 +1,2462 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "This section records some design and implementation details.",
+    "tokens": []
+  },
+  {
+    "n": 2,
+    "tag": "h1",
+    "text": "Architecture",
+    "tokens": []
+  },
+  {
+    "n": 3,
+    "tag": "h2",
+    "text": "SAX and DOM",
+    "tokens": []
+  },
+  {
+    "n": 4,
+    "tag": "p",
+    "text": "The basic relationships of SAX and DOM is shown in the following UML diagram.",
+    "tokens": []
+  },
+  {
+    "n": 5,
+    "tag": "div",
+    "text": "Architecture UML class diagram",
+    "tokens": []
+  },
+  {
+    "n": 6,
+    "tag": "p",
+    "text": "The core of the relationship is the {1} concept. From the SAX side, {2} parses a JSON from a stream and publish events to a {3}. {4} implements the {5} concept to handle the same set of events. From the DOM side, {6} implements the {7} concept to build a DOM according to the events. {8} supports a {9} function, which traverses the DOM to publish events.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/047-classrapidjson_1_1_handler/\" title=\"Concept for receiving events from GenericReader upon parsing. The functions return true if no error o...\">Handler</a></span>",
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/047-classrapidjson_1_1_handler/\" title=\"Concept for receiving events from GenericReader upon parsing. The functions return true if no error o...\">Handler</a></span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/047-classrapidjson_1_1_handler/\" title=\"Concept for receiving events from GenericReader upon parsing. The functions return true if no error o...\">Handler</a></span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/047-classrapidjson_1_1_handler/\" title=\"Concept for receiving events from GenericReader upon parsing. The functions return true if no error o...\">Handler</a></span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">Value::Accept(<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/047-classrapidjson_1_1_handler/\" title=\"Concept for receiving events from GenericReader upon parsing. The functions return true if no error o...\">Handler</a>&amp;)</span>"
+    ]
+  },
+  {
+    "n": 7,
+    "tag": "p",
+    "text": "With this design, SAX is not dependent on DOM. Even {1} and {2} have no dependencies between them. This provides flexibility to chain event publisher and handlers. Besides, {3} does not depends on SAX as well. So, in addition to stringify a DOM to JSON, user may also stringify it to a XML writer, or do anything else.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Value</span>"
+    ]
+  },
+  {
+    "n": 8,
+    "tag": "h2",
+    "text": "Utility Classes",
+    "tokens": []
+  },
+  {
+    "n": 9,
+    "tag": "p",
+    "text": "Both SAX and DOM APIs depends on 3 additional concepts: {1}, {2} and {3}. Their inheritance hierarchy is shown as below.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a></span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/056-classrapidjson_1_1_stream/\" title=\"Concept for reading and writing characters.\">Stream</a></span>"
+    ]
+  },
+  {
+    "n": 10,
+    "tag": "div",
+    "text": "Utility classes UML class diagram",
+    "tokens": []
+  },
+  {
+    "n": 11,
+    "tag": "h1",
+    "text": "Value",
+    "tokens": []
+  },
+  {
+    "n": 12,
+    "tag": "p",
+    "text": "{1} (actually a typedef of {2}) is the core of DOM API. This section describes the design of it.",
+    "tokens": [
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">GenericValue&lt;UTF8&lt;&gt;&gt;</span>"
+    ]
+  },
+  {
+    "n": 13,
+    "tag": "h2",
+    "text": "Data Layout",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "p",
+    "text": "{1} is a {2}. In RapidJSON's context, an instance of {3} can contain 1 of 6 JSON value types. This is possible by using {4}. Each {5} contains two members: {6} and a{7}. The {8} indiciates the JSON type, and also additional information.",
+    "tokens": [
+      "<span class=\"tt\">Value</span>",
+      "<a href=\"http://en.wikipedia.org/wiki/Variant_type\">variant type</a>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">union</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">union Data data_</span>",
+      "<span class=\"tt\">unsigned flags_</span>",
+      "<span class=\"tt\">flags_</span>"
+    ]
+  },
+  {
+    "n": 15,
+    "tag": "p",
+    "text": "The following tables show the data layout of each type. The 32-bit/64-bit columns indicates the size of the field in bytes.",
+    "tokens": []
+  },
+  {
+    "n": 16,
+    "tag": "th",
+    "text": "Null",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 18,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 19,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 20,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 21,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 22,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 23,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 24,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 25,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 26,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 27,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 28,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 29,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kNullType kNullFlag</span>"
+    ]
+  },
+  {
+    "n": 30,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 31,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 32,
+    "tag": "th",
+    "text": "Bool",
+    "tokens": []
+  },
+  {
+    "n": 33,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 34,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 35,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 36,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 37,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 38,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 39,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 40,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 41,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 42,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 43,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 44,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 45,
+    "tag": "td",
+    "text": "{1} (either {2} or {3})",
+    "tokens": [
+      "<span class=\"tt\">kBoolType</span>",
+      "<span class=\"tt\">kTrueFlag</span>",
+      "<span class=\"tt\">kFalseFlag</span>"
+    ]
+  },
+  {
+    "n": 46,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 47,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 48,
+    "tag": "th",
+    "text": "String",
+    "tokens": []
+  },
+  {
+    "n": 49,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 50,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 51,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Ch* str</span>"
+    ]
+  },
+  {
+    "n": 52,
+    "tag": "td",
+    "text": "Pointer to the string (may own)",
+    "tokens": []
+  },
+  {
+    "n": 53,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 54,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 55,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">SizeType length</span>"
+    ]
+  },
+  {
+    "n": 56,
+    "tag": "td",
+    "text": "Length of string",
+    "tokens": []
+  },
+  {
+    "n": 57,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 58,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 59,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 60,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 61,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 62,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 63,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kStringType kStringFlag ...</span>"
+    ]
+  },
+  {
+    "n": 64,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 65,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 66,
+    "tag": "th",
+    "text": "Object",
+    "tokens": []
+  },
+  {
+    "n": 67,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 68,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 69,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Member* members</span>"
+    ]
+  },
+  {
+    "n": 70,
+    "tag": "td",
+    "text": "Pointer to array of members (owned)",
+    "tokens": []
+  },
+  {
+    "n": 71,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 72,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 73,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">SizeType size</span>"
+    ]
+  },
+  {
+    "n": 74,
+    "tag": "td",
+    "text": "Number of members",
+    "tokens": []
+  },
+  {
+    "n": 75,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 76,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 77,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">SizeType capacity</span>"
+    ]
+  },
+  {
+    "n": 78,
+    "tag": "td",
+    "text": "Capacity of members",
+    "tokens": []
+  },
+  {
+    "n": 79,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 80,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 81,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 82,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kObjectType kObjectFlag</span>"
+    ]
+  },
+  {
+    "n": 83,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 84,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 85,
+    "tag": "th",
+    "text": "Array",
+    "tokens": []
+  },
+  {
+    "n": 86,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 87,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 88,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Value* values</span>"
+    ]
+  },
+  {
+    "n": 89,
+    "tag": "td",
+    "text": "Pointer to array of values (owned)",
+    "tokens": []
+  },
+  {
+    "n": 90,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 91,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 92,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">SizeType size</span>"
+    ]
+  },
+  {
+    "n": 93,
+    "tag": "td",
+    "text": "Number of values",
+    "tokens": []
+  },
+  {
+    "n": 94,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 95,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 96,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">SizeType capacity</span>"
+    ]
+  },
+  {
+    "n": 97,
+    "tag": "td",
+    "text": "Capacity of values",
+    "tokens": []
+  },
+  {
+    "n": 98,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 99,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 100,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 101,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kArrayType kArrayFlag</span>"
+    ]
+  },
+  {
+    "n": 102,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 103,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 104,
+    "tag": "th",
+    "text": "Number (Int)",
+    "tokens": []
+  },
+  {
+    "n": 105,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 106,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 107,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">int i</span>"
+    ]
+  },
+  {
+    "n": 108,
+    "tag": "td",
+    "text": "32-bit signed integer",
+    "tokens": []
+  },
+  {
+    "n": 109,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 110,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 111,
+    "tag": "td",
+    "text": "(zero padding)",
+    "tokens": []
+  },
+  {
+    "n": 112,
+    "tag": "td",
+    "text": "0",
+    "tokens": []
+  },
+  {
+    "n": 113,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 114,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 115,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 116,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 117,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 118,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 119,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kNumberType kNumberFlag kIntFlag kInt64Flag ...</span>"
+    ]
+  },
+  {
+    "n": 120,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 121,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 122,
+    "tag": "th",
+    "text": "Number (UInt)",
+    "tokens": []
+  },
+  {
+    "n": 123,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 124,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 125,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned u</span>"
+    ]
+  },
+  {
+    "n": 126,
+    "tag": "td",
+    "text": "32-bit unsigned integer",
+    "tokens": []
+  },
+  {
+    "n": 127,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 128,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 129,
+    "tag": "td",
+    "text": "(zero padding)",
+    "tokens": []
+  },
+  {
+    "n": 130,
+    "tag": "td",
+    "text": "0",
+    "tokens": []
+  },
+  {
+    "n": 131,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 132,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 133,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 134,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 135,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 136,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 137,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kNumberType kNumberFlag kUIntFlag kUInt64Flag ...</span>"
+    ]
+  },
+  {
+    "n": 138,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 139,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 140,
+    "tag": "th",
+    "text": "Number (Int64)",
+    "tokens": []
+  },
+  {
+    "n": 141,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 142,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 143,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">int64_t i64</span>"
+    ]
+  },
+  {
+    "n": 144,
+    "tag": "td",
+    "text": "64-bit signed integer",
+    "tokens": []
+  },
+  {
+    "n": 145,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 146,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 147,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 148,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 149,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 150,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 151,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kNumberType kNumberFlag kInt64Flag ...</span>"
+    ]
+  },
+  {
+    "n": 152,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 153,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 154,
+    "tag": "th",
+    "text": "Number (Uint64)",
+    "tokens": []
+  },
+  {
+    "n": 155,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 156,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 157,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">uint64_t i64</span>"
+    ]
+  },
+  {
+    "n": 158,
+    "tag": "td",
+    "text": "64-bit unsigned integer",
+    "tokens": []
+  },
+  {
+    "n": 159,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 160,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 161,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 162,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 163,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 164,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 165,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kNumberType kNumberFlag kInt64Flag ...</span>"
+    ]
+  },
+  {
+    "n": 166,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 167,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 168,
+    "tag": "th",
+    "text": "Number (Double)",
+    "tokens": []
+  },
+  {
+    "n": 169,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 170,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 171,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">uint64_t i64</span>"
+    ]
+  },
+  {
+    "n": 172,
+    "tag": "td",
+    "text": "Double precision floating-point",
+    "tokens": []
+  },
+  {
+    "n": 173,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 174,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 175,
+    "tag": "td",
+    "text": "(unused)",
+    "tokens": []
+  },
+  {
+    "n": 176,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 177,
+    "tag": "td",
+    "text": "8",
+    "tokens": []
+  },
+  {
+    "n": 178,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 179,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kNumberType kNumberFlag kDoubleFlag</span>"
+    ]
+  },
+  {
+    "n": 180,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 181,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 182,
+    "tag": "p",
+    "text": "Here are some notes:",
+    "tokens": []
+  },
+  {
+    "n": 183,
+    "tag": "li",
+    "text": "To reduce memory consumption for 64-bit architecture, {1} is typedef as {2} instead of {3}.",
+    "tokens": [
+      "<span class=\"tt\">SizeType</span>",
+      "<span class=\"tt\">unsigned</span>",
+      "<span class=\"tt\">size_t</span>"
+    ]
+  },
+  {
+    "n": 184,
+    "tag": "li",
+    "text": "Zero padding for 32-bit number may be placed after or before the actual type, according to the endianess. This makes possible for interpreting a 32-bit integer as a 64-bit integer, without any conversion.",
+    "tokens": []
+  },
+  {
+    "n": 185,
+    "tag": "li",
+    "text": "An {1} is always an {2}, but the converse is not always true.",
+    "tokens": [
+      "<span class=\"tt\">Int</span>",
+      "<span class=\"tt\">Int64</span>"
+    ]
+  },
+  {
+    "n": 186,
+    "tag": "h2",
+    "text": "Flags",
+    "tokens": []
+  },
+  {
+    "n": 187,
+    "tag": "p",
+    "text": "The 32-bit {1} contains both JSON type and other additional information. As shown in the above tables, each JSON type contains redundant {2} and {3}. This design is for optimizing the operation of testing bit-flags ({4}) and obtaining a sequential number for each type ({5}).",
+    "tokens": [
+      "<span class=\"tt\">flags_</span>",
+      "<span class=\"tt\">kXXXType</span>",
+      "<span class=\"tt\">kXXXFlag</span>",
+      "<span class=\"tt\">IsNumber()</span>",
+      "<span class=\"tt\">GetType()</span>"
+    ]
+  },
+  {
+    "n": 188,
+    "tag": "p",
+    "text": "String has two optional flags. {1} means that the string owns a copy of the string. {2} means using {3}Short-String Optimization.",
+    "tokens": [
+      "<span class=\"tt\">kCopyFlag</span>",
+      "<span class=\"tt\">kInlineStrFlag</span>",
+      "<a class=\"el\" href=\"#ShortString\" title=\"Short-String Optimization\">Short-String Optimization</a>"
+    ]
+  },
+  {
+    "n": 189,
+    "tag": "p",
+    "text": "Number is a bit more complicated. For normal integer values, it can contains {1}, {2}, {3} and/or {4}, according to the range of the integer. For numbers with fraction, and integers larger than 64-bit range, they will be stored as {5} with {6}.",
+    "tokens": [
+      "<span class=\"tt\">kIntFlag</span>",
+      "<span class=\"tt\">kUintFlag</span>",
+      "<span class=\"tt\">kInt64Flag</span>",
+      "<span class=\"tt\">kUint64Flag</span>",
+      "<span class=\"tt\">double</span>",
+      "<span class=\"tt\">kDoubleFlag</span>"
+    ]
+  },
+  {
+    "n": 190,
+    "tag": "h2",
+    "text": "Short-String Optimization",
+    "tokens": []
+  },
+  {
+    "n": 191,
+    "tag": "p",
+    "text": "{1} provided a very neat short-string optimization. The optimization idea is given as follow. Excluding the {2}, a {3} has 12 or 16 bytes (32-bit or 64-bit) for storing actual data. Instead of storing a pointer to a string, it is possible to store short strings in these space internally. For encoding with 1-byte character type (e.g. {4}), it can store maximum 11 or 15 characters string inside the {5} type.",
+    "tokens": [
+      "<a href=\"https://github.com/Kosta-Github\">Kosta</a>",
+      "<span class=\"tt\">flags_</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">char</span>",
+      "<span class=\"tt\">Value</span>"
+    ]
+  },
+  {
+    "n": 192,
+    "tag": "th",
+    "text": "ShortString (Ch=char)",
+    "tokens": []
+  },
+  {
+    "n": 193,
+    "tag": "th",
+    "text": "32-bit",
+    "tokens": []
+  },
+  {
+    "n": 194,
+    "tag": "th",
+    "text": "64-bit",
+    "tokens": []
+  },
+  {
+    "n": 195,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Ch str[MaxChars]</span>"
+    ]
+  },
+  {
+    "n": 196,
+    "tag": "td",
+    "text": "String buffer",
+    "tokens": []
+  },
+  {
+    "n": 197,
+    "tag": "td",
+    "text": "11",
+    "tokens": []
+  },
+  {
+    "n": 198,
+    "tag": "td",
+    "text": "15",
+    "tokens": []
+  },
+  {
+    "n": 199,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Ch invLength</span>"
+    ]
+  },
+  {
+    "n": 200,
+    "tag": "td",
+    "text": "MaxChars - Length",
+    "tokens": []
+  },
+  {
+    "n": 201,
+    "tag": "td",
+    "text": "1",
+    "tokens": []
+  },
+  {
+    "n": 202,
+    "tag": "td",
+    "text": "1",
+    "tokens": []
+  },
+  {
+    "n": 203,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">unsigned flags_</span>"
+    ]
+  },
+  {
+    "n": 204,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kStringType kStringFlag ...</span>"
+    ]
+  },
+  {
+    "n": 205,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 206,
+    "tag": "td",
+    "text": "4",
+    "tokens": []
+  },
+  {
+    "n": 207,
+    "tag": "p",
+    "text": "A special technique is applied. Instead of storing the length of string directly, it stores (MaxChars - length). This make it possible to store 11 characters with trailing {1}.",
+    "tokens": [
+      "<span class=\"tt\">\\0</span>"
+    ]
+  },
+  {
+    "n": 208,
+    "tag": "p",
+    "text": "This optimization can reduce memory usage for copy-string. It can also improve cache-coherence thus improve runtime performance.",
+    "tokens": []
+  },
+  {
+    "n": 209,
+    "tag": "h1",
+    "text": "Allocator",
+    "tokens": []
+  },
+  {
+    "n": 210,
+    "tag": "p",
+    "text": "{1} is a concept in RapidJSON:",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>"
+    ]
+  },
+  {
+    "n": 211,
+    "tag": "div",
+    "text": "Concept for allocating, resizing and freeing memory block.",
+    "tokens": []
+  },
+  {
+    "n": 212,
+    "tag": "p",
+    "text": "Note that {1} and {2} are member functions but {3} is static member function.",
+    "tokens": [
+      "<span class=\"tt\">Malloc()</span>",
+      "<span class=\"tt\">Realloc()</span>",
+      "<span class=\"tt\">Free()</span>"
+    ]
+  },
+  {
+    "n": 213,
+    "tag": "h2",
+    "text": "MemoryPoolAllocator",
+    "tokens": []
+  },
+  {
+    "n": 214,
+    "tag": "p",
+    "text": "{1} is the default allocator for DOM. It allocate but do not free memory. This is suitable for building a DOM tree.",
+    "tokens": [
+      "<span class=\"tt\">MemoryPoolAllocator</span>"
+    ]
+  },
+  {
+    "n": 215,
+    "tag": "p",
+    "text": "Internally, it allocates chunks of memory from the base allocator (by default {1}) and stores the chunks as a singly linked list. When user requests an allocation, it allocates memory from the following order:",
+    "tokens": [
+      "<span class=\"tt\">CrtAllocator</span>"
+    ]
+  },
+  {
+    "n": 216,
+    "tag": "li",
+    "text": "User supplied buffer if it is available. (See {1})",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/04-dom/\" title=\"DOM\">User Buffer section in DOM</a>"
+    ]
+  },
+  {
+    "n": 217,
+    "tag": "li",
+    "text": "If user supplied buffer is full, use the current memory chunk.",
+    "tokens": []
+  },
+  {
+    "n": 218,
+    "tag": "li",
+    "text": "If the current block is full, allocate a new block of memory.",
+    "tokens": []
+  },
+  {
+    "n": 219,
+    "tag": "h1",
+    "text": "Parsing Optimization",
+    "tokens": []
+  },
+  {
+    "n": 220,
+    "tag": "h2",
+    "text": "Skip Whitespaces with SIMD",
+    "tokens": []
+  },
+  {
+    "n": 221,
+    "tag": "p",
+    "text": "When parsing JSON from a stream, the parser need to skip 4 whitespace characters:",
+    "tokens": []
+  },
+  {
+    "n": 222,
+    "tag": "li",
+    "text": "Space ({1})",
+    "tokens": [
+      "<span class=\"tt\">U+0020</span>"
+    ]
+  },
+  {
+    "n": 223,
+    "tag": "li",
+    "text": "Character Tabulation ({1})",
+    "tokens": [
+      "<span class=\"tt\">U+000B</span>"
+    ]
+  },
+  {
+    "n": 224,
+    "tag": "li",
+    "text": "Line Feed ({1})",
+    "tokens": [
+      "<span class=\"tt\">U+000A</span>"
+    ]
+  },
+  {
+    "n": 225,
+    "tag": "li",
+    "text": "Carriage Return ({1})",
+    "tokens": [
+      "<span class=\"tt\">U+000D</span>"
+    ]
+  },
+  {
+    "n": 226,
+    "tag": "p",
+    "text": "A simple implementation will be simply:",
+    "tokens": []
+  },
+  {
+    "n": 227,
+    "tag": "p",
+    "text": "However, this requires 4 comparisons and a few branching for each character. This was found to be a hot spot.",
+    "tokens": []
+  },
+  {
+    "n": 228,
+    "tag": "p",
+    "text": "To accelerate this process, SIMD was applied to compare 16 characters with 4 white spaces for each iteration. Currently RapidJSON only supports SSE2 and SSE4.2 instructions for this. And it is only activated for UTF-8 memory streams, including string stream or {1} parsing.",
+    "tokens": [
+      "<em>in situ</em>"
+    ]
+  },
+  {
+    "n": 229,
+    "tag": "p",
+    "text": "To enable this optimization, need to define {1} or {2} before including {3}. Some compilers can detect the setting, as in {4}:",
+    "tokens": [
+      "<span class=\"tt\">RAPIDJSON_SSE2</span>",
+      "<span class=\"tt\">RAPIDJSON_SSE42</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/154-rapidjson_8h/\" title=\"common definitions and configuration\">rapidjson.h</a></span>",
+      "<span class=\"tt\">perftest.h</span>"
+    ]
+  },
+  {
+    "n": 230,
+    "tag": "p",
+    "text": "Note that, these are compile-time settings. Running the executable on a machine without such instruction set support will make it crash.",
+    "tokens": []
+  },
+  {
+    "n": 231,
+    "tag": "h3",
+    "text": "Page boundary issue",
+    "tokens": []
+  },
+  {
+    "n": 232,
+    "tag": "p",
+    "text": "In an early version of RapidJSON, {1} reported that the {2} causes crash very rarely (around 1 in 500,000). After investigation, it is suspected that {3} accessed bytes after {4}, and across a protected page boundary.",
+    "tokens": [
+      "<a href=\"https://code.google.com/archive/p/rapidjson/issues/104\">an issue</a>",
+      "<span class=\"tt\">SkipWhitespace_SIMD()</span>",
+      "<span class=\"tt\">_mm_loadu_si128()</span>",
+      "<span class=\"tt\">'\\0'</span>"
+    ]
+  },
+  {
+    "n": 233,
+    "tag": "p",
+    "text": "In {1}, section 10.2.1:",
+    "tokens": [
+      "<a href=\"http://www.intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-optimization-manual.html\">Intel® 64 and IA-32 Architectures Optimization Reference Manual</a>"
+    ]
+  },
+  {
+    "n": 234,
+    "tag": "p",
+    "text": "To support algorithms requiring unaligned 128-bit SIMD memory accesses, memory buffer allocation by a caller function should consider adding some pad space so that a callee function can safely use the address pointer safely with unaligned 128-bit SIMD memory operations. The minimal padding size should be the width of the SIMD register that might be used in conjunction with unaligned SIMD memory access.",
+    "tokens": []
+  },
+  {
+    "n": 235,
+    "tag": "p",
+    "text": "This is not feasible as RapidJSON should not enforce such requirement.",
+    "tokens": []
+  },
+  {
+    "n": 236,
+    "tag": "p",
+    "text": "To fix this issue, currently the routine process bytes up to the next aligned address. After tha, use aligned read to perform SIMD processing. Also see {1}.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/issues/85\">#85</a>"
+    ]
+  },
+  {
+    "n": 237,
+    "tag": "h2",
+    "text": "Local Stream Copy",
+    "tokens": []
+  },
+  {
+    "n": 238,
+    "tag": "p",
+    "text": "During optimization, it is found that some compilers cannot localize some member data access of streams into local variables or registers. Experimental results show that for some stream types, making a copy of the stream and used it in inner-loop can improve performance. For example, the actual (non-SIMD) implementation of {1} is implemented as:",
+    "tokens": [
+      "<span class=\"tt\">SkipWhitespace()</span>"
+    ]
+  },
+  {
+    "n": 239,
+    "tag": "p",
+    "text": "Depending on the traits of stream, {1} will make (or not make) a copy of the stream object, use it locally and copy the states of stream back to the original stream.",
+    "tokens": [
+      "<span class=\"tt\">StreamLocalCopy</span>"
+    ]
+  },
+  {
+    "n": 240,
+    "tag": "h2",
+    "text": "Parsing to Double",
+    "tokens": []
+  },
+  {
+    "n": 241,
+    "tag": "p",
+    "text": "Parsing string into {1} is difficult. The standard library function {2} can do the job but it is slow. By default, the parsers use normal precision setting. This has has maximum 3 {3} error and implemented in {4}.",
+    "tokens": [
+      "<span class=\"tt\">double</span>",
+      "<span class=\"tt\">strtod()</span>",
+      "<a href=\"http://en.wikipedia.org/wiki/Unit_in_the_last_place\">ULP</a>",
+      "<span class=\"tt\">internal::StrtodNormalPrecision()</span>"
+    ]
+  },
+  {
+    "n": 242,
+    "tag": "p",
+    "text": "When using {1}, the parsers calls {2} instead, and this function actually implemented 3 versions of conversion methods.",
+    "tokens": [
+      "<span class=\"tt\">kParseFullPrecisionFlag</span>",
+      "<span class=\"tt\">internal::StrtodFullPrecision()</span>"
+    ]
+  },
+  {
+    "n": 243,
+    "tag": "li",
+    "text": "{1}.",
+    "tokens": [
+      "<a href=\"http://www.exploringbinary.com/fast-path-decimal-to-floating-point-conversion/\">Fast-Path</a>"
+    ]
+  },
+  {
+    "n": 244,
+    "tag": "li",
+    "text": "Custom DIY-FP implementation as in {1}.",
+    "tokens": [
+      "<a href=\"https://github.com/floitsch/double-conversion\">double-conversion</a>"
+    ]
+  },
+  {
+    "n": 245,
+    "tag": "li",
+    "text": "Big Integer Method as in (Clinger, William D. How to read floating point numbers accurately. Vol. 25. No. 6. ACM, 1990).",
+    "tokens": []
+  },
+  {
+    "n": 246,
+    "tag": "p",
+    "text": "If the first conversion methods fail, it will try the second, and so on.",
+    "tokens": []
+  },
+  {
+    "n": 247,
+    "tag": "h1",
+    "text": "Generation Optimization",
+    "tokens": []
+  },
+  {
+    "n": 248,
+    "tag": "h2",
+    "text": "Integer-to-String conversion",
+    "tokens": []
+  },
+  {
+    "n": 249,
+    "tag": "p",
+    "text": "The naive algorithm for integer-to-string conversion involves division per each decimal digit. We have implemented various implementations and evaluated them in {1}.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/itoa-benchmark\">itoa-benchmark</a>"
+    ]
+  },
+  {
+    "n": 250,
+    "tag": "p",
+    "text": "Although SSE2 version is the fastest but the difference is minor by comparing to the first running-up {1}. And {2} is pure C++ implementation so we adopt {3} in RapidJSON.",
+    "tokens": [
+      "<span class=\"tt\">branchlut</span>",
+      "<span class=\"tt\">branchlut</span>",
+      "<span class=\"tt\">branchlut</span>"
+    ]
+  },
+  {
+    "n": 251,
+    "tag": "h2",
+    "text": "Double-to-String conversion",
+    "tokens": []
+  },
+  {
+    "n": 252,
+    "tag": "p",
+    "text": "Originally RapidJSON uses {1} to achieve double-to-string conversion. This is not accurate as the default precision is 6. Later we also find that this is slow and there is an alternative.",
+    "tokens": [
+      "<span class=\"tt\">snprintf(..., ..., \"%g\")</span>"
+    ]
+  },
+  {
+    "n": 253,
+    "tag": "p",
+    "text": "Google's V8 {1} implemented a newer, fast algorithm called Grisu3 (Loitsch, Florian. \"Printing floating-point numbers quickly and accurately with integers.\" ACM Sigplan Notices 45.6 (2010): 233-243.).",
+    "tokens": [
+      "<a href=\"https://github.com/floitsch/double-conversion\">double-conversion</a>"
+    ]
+  },
+  {
+    "n": 254,
+    "tag": "p",
+    "text": "However, since it is not header-only so that we implemented a header-only version of Grisu2. This algorithm guarantees that the result is always accurate. And in most of cases it produces the shortest (optimal) string representation.",
+    "tokens": []
+  },
+  {
+    "n": 255,
+    "tag": "p",
+    "text": "The header-only conversion function has been evaluated in {1}.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/dtoa-benchmark\">dtoa-benchmark</a>"
+    ]
+  },
+  {
+    "n": 256,
+    "tag": "h1",
+    "text": "Parser",
+    "tokens": []
+  },
+  {
+    "n": 257,
+    "tag": "h2",
+    "text": "Iterative Parser",
+    "tokens": []
+  },
+  {
+    "n": 258,
+    "tag": "p",
+    "text": "The iterative parser is a recursive descent LL(1) parser implemented in a non-recursive manner.",
+    "tokens": []
+  },
+  {
+    "n": 259,
+    "tag": "h3",
+    "text": "Grammar",
+    "tokens": []
+  },
+  {
+    "n": 260,
+    "tag": "p",
+    "text": "The grammar used for this parser is based on strict JSON syntax:",
+    "tokens": []
+  },
+  {
+    "n": 261,
+    "tag": "p",
+    "text": "Note that left factoring is applied to non-terminals {1} and {2} to make the grammar be LL(1).",
+    "tokens": [
+      "<span class=\"tt\">values</span>",
+      "<span class=\"tt\">members</span>"
+    ]
+  },
+  {
+    "n": 262,
+    "tag": "h3",
+    "text": "Parsing Table",
+    "tokens": []
+  },
+  {
+    "n": 263,
+    "tag": "p",
+    "text": "Based on the grammar, we can construct the FIRST and FOLLOW set.",
+    "tokens": []
+  },
+  {
+    "n": 264,
+    "tag": "p",
+    "text": "The FIRST set of non-terminals is listed below:",
+    "tokens": []
+  },
+  {
+    "n": 265,
+    "tag": "th",
+    "text": "NON-TERMINAL",
+    "tokens": []
+  },
+  {
+    "n": 266,
+    "tag": "th",
+    "text": "FIRST",
+    "tokens": []
+  },
+  {
+    "n": 267,
+    "tag": "td",
+    "text": "array",
+    "tokens": []
+  },
+  {
+    "n": 268,
+    "tag": "td",
+    "text": "[",
+    "tokens": []
+  },
+  {
+    "n": 269,
+    "tag": "td",
+    "text": "object",
+    "tokens": []
+  },
+  {
+    "n": 270,
+    "tag": "td",
+    "text": "{",
+    "tokens": []
+  },
+  {
+    "n": 271,
+    "tag": "td",
+    "text": "values",
+    "tokens": []
+  },
+  {
+    "n": 272,
+    "tag": "td",
+    "text": "ε STRING NUMBER NULL BOOLEAN { [",
+    "tokens": []
+  },
+  {
+    "n": 273,
+    "tag": "td",
+    "text": "addition-values",
+    "tokens": []
+  },
+  {
+    "n": 274,
+    "tag": "td",
+    "text": "ε COMMA",
+    "tokens": []
+  },
+  {
+    "n": 275,
+    "tag": "td",
+    "text": "members",
+    "tokens": []
+  },
+  {
+    "n": 276,
+    "tag": "td",
+    "text": "ε STRING",
+    "tokens": []
+  },
+  {
+    "n": 277,
+    "tag": "td",
+    "text": "addition-members",
+    "tokens": []
+  },
+  {
+    "n": 278,
+    "tag": "td",
+    "text": "ε COMMA",
+    "tokens": []
+  },
+  {
+    "n": 279,
+    "tag": "td",
+    "text": "member",
+    "tokens": []
+  },
+  {
+    "n": 280,
+    "tag": "td",
+    "text": "STRING",
+    "tokens": []
+  },
+  {
+    "n": 281,
+    "tag": "td",
+    "text": "value",
+    "tokens": []
+  },
+  {
+    "n": 282,
+    "tag": "td",
+    "text": "STRING NUMBER NULL BOOLEAN { [",
+    "tokens": []
+  },
+  {
+    "n": 283,
+    "tag": "td",
+    "text": "S",
+    "tokens": []
+  },
+  {
+    "n": 284,
+    "tag": "td",
+    "text": "[ {",
+    "tokens": []
+  },
+  {
+    "n": 285,
+    "tag": "td",
+    "text": "non-empty-members",
+    "tokens": []
+  },
+  {
+    "n": 286,
+    "tag": "td",
+    "text": "STRING",
+    "tokens": []
+  },
+  {
+    "n": 287,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 288,
+    "tag": "td",
+    "text": "STRING NUMBER NULL BOOLEAN { [",
+    "tokens": []
+  },
+  {
+    "n": 289,
+    "tag": "p",
+    "text": "The FOLLOW set is listed below:",
+    "tokens": []
+  },
+  {
+    "n": 290,
+    "tag": "th",
+    "text": "NON-TERMINAL",
+    "tokens": []
+  },
+  {
+    "n": 291,
+    "tag": "th",
+    "text": "FOLLOW",
+    "tokens": []
+  },
+  {
+    "n": 292,
+    "tag": "td",
+    "text": "S",
+    "tokens": []
+  },
+  {
+    "n": 293,
+    "tag": "td",
+    "text": "$",
+    "tokens": []
+  },
+  {
+    "n": 294,
+    "tag": "td",
+    "text": "array",
+    "tokens": []
+  },
+  {
+    "n": 295,
+    "tag": "td",
+    "text": ", $ } ]",
+    "tokens": []
+  },
+  {
+    "n": 296,
+    "tag": "td",
+    "text": "object",
+    "tokens": []
+  },
+  {
+    "n": 297,
+    "tag": "td",
+    "text": ", $ } ]",
+    "tokens": []
+  },
+  {
+    "n": 298,
+    "tag": "td",
+    "text": "values",
+    "tokens": []
+  },
+  {
+    "n": 299,
+    "tag": "td",
+    "text": "]",
+    "tokens": []
+  },
+  {
+    "n": 300,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 301,
+    "tag": "td",
+    "text": "]",
+    "tokens": []
+  },
+  {
+    "n": 302,
+    "tag": "td",
+    "text": "addition-values",
+    "tokens": []
+  },
+  {
+    "n": 303,
+    "tag": "td",
+    "text": "]",
+    "tokens": []
+  },
+  {
+    "n": 304,
+    "tag": "td",
+    "text": "members",
+    "tokens": []
+  },
+  {
+    "n": 305,
+    "tag": "td",
+    "text": "}",
+    "tokens": []
+  },
+  {
+    "n": 306,
+    "tag": "td",
+    "text": "non-empty-members",
+    "tokens": []
+  },
+  {
+    "n": 307,
+    "tag": "td",
+    "text": "}",
+    "tokens": []
+  },
+  {
+    "n": 308,
+    "tag": "td",
+    "text": "addition-members",
+    "tokens": []
+  },
+  {
+    "n": 309,
+    "tag": "td",
+    "text": "}",
+    "tokens": []
+  },
+  {
+    "n": 310,
+    "tag": "td",
+    "text": "member",
+    "tokens": []
+  },
+  {
+    "n": 311,
+    "tag": "td",
+    "text": ", }",
+    "tokens": []
+  },
+  {
+    "n": 312,
+    "tag": "td",
+    "text": "value",
+    "tokens": []
+  },
+  {
+    "n": 313,
+    "tag": "td",
+    "text": ", } ]",
+    "tokens": []
+  },
+  {
+    "n": 314,
+    "tag": "p",
+    "text": "Finally the parsing table can be constructed from FIRST and FOLLOW set:",
+    "tokens": []
+  },
+  {
+    "n": 315,
+    "tag": "th",
+    "text": "NON-TERMINAL",
+    "tokens": []
+  },
+  {
+    "n": 316,
+    "tag": "th",
+    "text": "[",
+    "tokens": []
+  },
+  {
+    "n": 317,
+    "tag": "th",
+    "text": "{",
+    "tokens": []
+  },
+  {
+    "n": 318,
+    "tag": "th",
+    "text": ",",
+    "tokens": []
+  },
+  {
+    "n": 319,
+    "tag": "th",
+    "text": ":",
+    "tokens": []
+  },
+  {
+    "n": 320,
+    "tag": "th",
+    "text": "]",
+    "tokens": []
+  },
+  {
+    "n": 321,
+    "tag": "th",
+    "text": "}",
+    "tokens": []
+  },
+  {
+    "n": 322,
+    "tag": "th",
+    "text": "STRING",
+    "tokens": []
+  },
+  {
+    "n": 323,
+    "tag": "th",
+    "text": "NUMBER",
+    "tokens": []
+  },
+  {
+    "n": 324,
+    "tag": "th",
+    "text": "NULL",
+    "tokens": []
+  },
+  {
+    "n": 325,
+    "tag": "th",
+    "text": "BOOLEAN",
+    "tokens": []
+  },
+  {
+    "n": 326,
+    "tag": "td",
+    "text": "S",
+    "tokens": []
+  },
+  {
+    "n": 327,
+    "tag": "td",
+    "text": "array",
+    "tokens": []
+  },
+  {
+    "n": 328,
+    "tag": "td",
+    "text": "object",
+    "tokens": []
+  },
+  {
+    "n": 329,
+    "tag": "td",
+    "text": "array",
+    "tokens": []
+  },
+  {
+    "n": 330,
+    "tag": "td",
+    "text": "[ values ]",
+    "tokens": []
+  },
+  {
+    "n": 331,
+    "tag": "td",
+    "text": "object",
+    "tokens": []
+  },
+  {
+    "n": 332,
+    "tag": "td",
+    "text": "{ members }",
+    "tokens": []
+  },
+  {
+    "n": 333,
+    "tag": "td",
+    "text": "values",
+    "tokens": []
+  },
+  {
+    "n": 334,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 335,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 336,
+    "tag": "td",
+    "text": "ε",
+    "tokens": []
+  },
+  {
+    "n": 337,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 338,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 339,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 340,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 341,
+    "tag": "td",
+    "text": "non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 342,
+    "tag": "td",
+    "text": "value addition-values",
+    "tokens": []
+  },
+  {
+    "n": 343,
+    "tag": "td",
+    "text": "value addition-values",
+    "tokens": []
+  },
+  {
+    "n": 344,
+    "tag": "td",
+    "text": "value addition-values",
+    "tokens": []
+  },
+  {
+    "n": 345,
+    "tag": "td",
+    "text": "value addition-values",
+    "tokens": []
+  },
+  {
+    "n": 346,
+    "tag": "td",
+    "text": "value addition-values",
+    "tokens": []
+  },
+  {
+    "n": 347,
+    "tag": "td",
+    "text": "value addition-values",
+    "tokens": []
+  },
+  {
+    "n": 348,
+    "tag": "td",
+    "text": "addition-values",
+    "tokens": []
+  },
+  {
+    "n": 349,
+    "tag": "td",
+    "text": ", non-empty-values",
+    "tokens": []
+  },
+  {
+    "n": 350,
+    "tag": "td",
+    "text": "ε",
+    "tokens": []
+  },
+  {
+    "n": 351,
+    "tag": "td",
+    "text": "members",
+    "tokens": []
+  },
+  {
+    "n": 352,
+    "tag": "td",
+    "text": "ε",
+    "tokens": []
+  },
+  {
+    "n": 353,
+    "tag": "td",
+    "text": "non-empty-members",
+    "tokens": []
+  },
+  {
+    "n": 354,
+    "tag": "td",
+    "text": "non-empty-members",
+    "tokens": []
+  },
+  {
+    "n": 355,
+    "tag": "td",
+    "text": "member addition-members",
+    "tokens": []
+  },
+  {
+    "n": 356,
+    "tag": "td",
+    "text": "addition-members",
+    "tokens": []
+  },
+  {
+    "n": 357,
+    "tag": "td",
+    "text": ", non-empty-members",
+    "tokens": []
+  },
+  {
+    "n": 358,
+    "tag": "td",
+    "text": "ε",
+    "tokens": []
+  },
+  {
+    "n": 359,
+    "tag": "td",
+    "text": "member",
+    "tokens": []
+  },
+  {
+    "n": 360,
+    "tag": "td",
+    "text": "STRING : value",
+    "tokens": []
+  },
+  {
+    "n": 361,
+    "tag": "td",
+    "text": "value",
+    "tokens": []
+  },
+  {
+    "n": 362,
+    "tag": "td",
+    "text": "array",
+    "tokens": []
+  },
+  {
+    "n": 363,
+    "tag": "td",
+    "text": "object",
+    "tokens": []
+  },
+  {
+    "n": 364,
+    "tag": "td",
+    "text": "STRING",
+    "tokens": []
+  },
+  {
+    "n": 365,
+    "tag": "td",
+    "text": "NUMBER",
+    "tokens": []
+  },
+  {
+    "n": 366,
+    "tag": "td",
+    "text": "NULL",
+    "tokens": []
+  },
+  {
+    "n": 367,
+    "tag": "td",
+    "text": "BOOLEAN",
+    "tokens": []
+  },
+  {
+    "n": 368,
+    "tag": "p",
+    "text": "There is a great {1} for above grammar analysis.",
+    "tokens": [
+      "<a href=\"http://hackingoff.com/compilers/predict-first-follow-set\">tool</a>"
+    ]
+  },
+  {
+    "n": 369,
+    "tag": "h3",
+    "text": "Implementation",
+    "tokens": []
+  },
+  {
+    "n": 370,
+    "tag": "p",
+    "text": "Based on the parsing table, a direct(or conventional) implementation that pushes the production body in reverse order while generating a production could work.",
+    "tokens": []
+  },
+  {
+    "n": 371,
+    "tag": "p",
+    "text": "In RapidJSON, several modifications(or adaptations to current design) are made to a direct implementation.",
+    "tokens": []
+  },
+  {
+    "n": 372,
+    "tag": "p",
+    "text": "First, the parsing table is encoded in a state machine in RapidJSON. States are constructed by the head and body of production. State transitions are constructed by production rules. Besides, extra states are added for productions involved with {1} and {2}. In this way the generation of array values or object members would be a single state transition, rather than several pop/push operations in the direct implementation. This also makes the estimation of stack size more easier.",
+    "tokens": [
+      "<span class=\"tt\">array</span>",
+      "<span class=\"tt\">object</span>"
+    ]
+  },
+  {
+    "n": 373,
+    "tag": "p",
+    "text": "The state diagram is shown as follows:",
+    "tokens": []
+  },
+  {
+    "n": 374,
+    "tag": "div",
+    "text": "State Diagram",
+    "tokens": []
+  },
+  {
+    "n": 375,
+    "tag": "p",
+    "text": "Second, the iterative parser also keeps track of array's value count and object's member count in its internal stack, which may be different from a conventional implementation.",
+    "tokens": []
+  }
+]

@@ -1,0 +1,395 @@
+{
+  "status": "separate-full-review-passed",
+  "sentences": [
+    {
+      "n": 1,
+      "source": "(This feature was released in v1.1.0)",
+      "ja": "（この機能はv1.1.0で公開されました）"
+    },
+    {
+      "n": 2,
+      "source": "JSON Pointer is a standardized ({1}) way to select a value inside a JSON Document (DOM). This can be analogous to XPath for XML document. However, JSON Pointer is much simpler, and a single JSON Pointer only pointed to a single value.",
+      "ja": "JSON Pointerは、JSONドキュメント（DOM）内の値を選択するための標準化された方法（{1}）です。XMLドキュメントのXPathに似ていますが、JSON Pointerははるかに単純で、一つのJSON Pointerは一つの値だけを指します。"
+    },
+    {
+      "n": 3,
+      "source": "Using RapidJSON's implementation of JSON Pointer can simplify some manipulations of the DOM.",
+      "ja": "RapidJSONのJSON Pointer実装を使うと、DOMの一部の操作を簡単にできます。"
+    },
+    {
+      "n": 4,
+      "source": "JSON Pointer",
+      "ja": "JSON Pointer"
+    },
+    {
+      "n": 5,
+      "source": "A JSON Pointer is a list of zero-to-many tokens, each prefixed by {1}. Each token can be a string or a number. For example, given a JSON:",
+      "ja": "JSON Pointerは、各トークンの先頭に{1}を付けた、0個以上のトークンのリストです。各トークンは文字列か数値です。たとえば、次のJSONを考えます。"
+    },
+    {
+      "n": 6,
+      "source": "The following JSON Pointers resolve this JSON as:",
+      "ja": "以下のJSON Pointerは、このJSONに対して次の値を指します。"
+    },
+    {
+      "n": 7,
+      "source": "{1} → {2}",
+      "ja": "{1} → {2}"
+    },
+    {
+      "n": 8,
+      "source": "{1} → {2}",
+      "ja": "{1} → {2}"
+    },
+    {
+      "n": 9,
+      "source": "{1} → {2}",
+      "ja": "{1} → {2}"
+    },
+    {
+      "n": 10,
+      "source": "{1} → {2}",
+      "ja": "{1} → {2}"
+    },
+    {
+      "n": 11,
+      "source": "Note that, an empty JSON Pointer {1} (zero token) resolves to the whole JSON.",
+      "ja": "空のJSON Pointer {1}（トークン数0）は、JSON全体を指すことに注意してください。"
+    },
+    {
+      "n": 12,
+      "source": "Basic Usage",
+      "ja": "基本的な使い方"
+    },
+    {
+      "n": 13,
+      "source": "The following example code is self-explanatory.",
+      "ja": "次のコード例を見れば、使い方が分かります。"
+    },
+    {
+      "n": 14,
+      "source": "Create a value in a subtree.",
+      "ja": "部分木内に値を作成します。"
+    },
+    {
+      "n": 15,
+      "source": "Query a value in a subtree with default value.",
+      "ja": "部分木内の値を問い合わせ、既定値も指定します。"
+    },
+    {
+      "n": 16,
+      "source": "Swap a value with a value in a subtree.",
+      "ja": "値を部分木内の値と交換します。"
+    },
+    {
+      "n": 17,
+      "source": "Erase a value in a subtree.",
+      "ja": "部分木内の値を削除します。"
+    },
+    {
+      "n": 18,
+      "source": "Set a value in a subtree, with move semantics.",
+      "ja": "ムーブセマンティクスを使って、部分木内の値を設定します。"
+    },
+    {
+      "n": 19,
+      "source": "Helper Functions",
+      "ja": "ヘルパー関数"
+    },
+    {
+      "n": 20,
+      "source": "Since object-oriented calling convention may be non-intuitive, RapidJSON also provides helper functions, which just wrap the member functions with free-functions.",
+      "ja": "オブジェクト指向の呼び出し方は直感的でない場合があるため、RapidJSONには、メンバー関数を自由関数で包んだヘルパー関数もあります。"
+    },
+    {
+      "n": 21,
+      "source": "The following example does exactly the same as the above one.",
+      "ja": "次の例は、前の例とまったく同じ処理を行います。"
+    },
+    {
+      "n": 22,
+      "source": "The conventions are shown here for comparison:",
+      "ja": "比較のため、呼び出し方を並べます。"
+    },
+    {
+      "n": 23,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 24,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 25,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 26,
+      "source": "Resolving Pointer",
+      "ja": "ポインターの解決"
+    },
+    {
+      "n": 27,
+      "source": "{1} or {2} function does not modify the DOM. If the tokens cannot match a value in the DOM, it returns {3}. User can use this to check whether a value exists.",
+      "ja": "{1}や{2}は、DOMを変更しません。トークンに一致する値がDOM内になければ、{3}を返します。これを使って、値が存在するかを確認できます。"
+    },
+    {
+      "n": 28,
+      "source": "Note that, numerical tokens can represent an array index or member name. The resolving process will match the values according to the types of value.",
+      "ja": "数値のトークンは、配列の添字にもメンバー名にもなります。解決処理は、値の型に応じて値を照合します。"
+    },
+    {
+      "n": 29,
+      "source": "{1} → {2}",
+      "ja": "{1} → {2}"
+    },
+    {
+      "n": 30,
+      "source": "{1} → {2}",
+      "ja": "{1} → {2}"
+    },
+    {
+      "n": 31,
+      "source": "The token {1} is treated as member name in the first pointer. It is treated as an array index in the second pointer.",
+      "ja": "トークン{1}は、最初のポインターではメンバー名、2番目のポインターでは配列の添字として扱われます。"
+    },
+    {
+      "n": 32,
+      "source": "The other functions, including {1}, {2}, {3} and {4}, will change the DOM. These functions will always succeed. They will create the parent values if they do not exist. If the parent values do not match the tokens, they will also be forced to change their type. Changing the type also mean fully removal of that DOM subtree.",
+      "ja": "{1}、{2}、{3}、{4}などのほかの関数は、DOMを変更します。これらの関数は常に成功します。親の値が存在しなければ作成し、親の値がトークンに一致しなければ、その型を強制的に変更します。型を変更すると、そのDOMの部分木は完全に削除されます。"
+    },
+    {
+      "n": 33,
+      "source": "Parsing the above JSON into {1},",
+      "ja": "上のJSONを{1}へ解析すると、次のようになります。"
+    },
+    {
+      "n": 34,
+      "source": "Resolving Minus Sign Token",
+      "ja": "マイナス記号トークンの解決"
+    },
+    {
+      "n": 35,
+      "source": "Besides, {1} defines a special token {2} (single minus sign), which represents the pass-the-end element of an array. {3} only treats this token as a member name '\"-\"'. Yet the other functions can resolve this for array, equivalent to calling {4} to the array.",
+      "ja": "また、{1}は、配列の末尾の次の要素を表す特別なトークン{2}（マイナス記号一つ）を定義しています。{3}は、このトークンをメンバー名「\"-\"」としてだけ扱います。一方、ほかの関数は配列に対して解決でき、配列の{4}を呼ぶのと同じになります。"
+    },
+    {
+      "n": 36,
+      "source": "Parse JSON text from a read-only string (with Encoding conversion).",
+      "ja": "読み取り専用の文字列から、エンコーディング変換を伴ってJSONテキストを解析します。"
+    },
+    {
+      "n": 37,
+      "source": "Resolving Document and Value",
+      "ja": "DocumentとValueに対する解決"
+    },
+    {
+      "n": 38,
+      "source": "When using {1} or {2}, {3} is a (const) {4}. That means, it can be a subtree of the DOM.",
+      "ja": "{1}や{2}を使う場合、{3}は（constの）{4}です。つまり、DOMの部分木でもかまいません。"
+    },
+    {
+      "n": 39,
+      "source": "The other functions have two groups of signature. One group uses {1} as parameter, another one uses {2}. The first group uses {3} for creating values. And the second group needs user to supply an allocator, like the functions in DOM.",
+      "ja": "ほかの関数には、2種類のシグネチャがあります。一方は引数に{1}を使い、もう一方は{2}を使います。前者は値の作成に{3}を使います。後者は、DOMの関数と同様に、利用者がアロケーターを渡す必要があります。"
+    },
+    {
+      "n": 40,
+      "source": "All examples above do not require an allocator parameter, because the first parameter is a {1}. But if you want to resolve a pointer to a subtree, you need to supply the allocator as in the following example:",
+      "ja": "上の例はすべて、第1引数が{1}なので、アロケーター引数は不要です。ただし、ポインターを部分木に対して解決する場合は、次の例のようにアロケーターを渡す必要があります。"
+    },
+    {
+      "n": 41,
+      "source": "GenericDocument with UTF8 encoding.",
+      "ja": "UTF8エンコーディングのGenericDocument。"
+    },
+    {
+      "n": 42,
+      "source": "{1} or {2} does not need allocator. And they return {3} if the value is erased successfully.",
+      "ja": "{1}や{2}は、アロケーターを必要としません。値を正常に削除すると、{3}を返します。"
+    },
+    {
+      "n": 43,
+      "source": "Error Handling",
+      "ja": "エラー処理"
+    },
+    {
+      "n": 44,
+      "source": "A {1} parses a source string in its constructor. If there is parsing error, {2} returns {3}. And you can use {4} and {5} to retrieve the error information.",
+      "ja": "{1}は、コンストラクターで入力文字列を解析します。解析エラーがあると、{2}は{3}を返します。{4}と{5}で、エラー情報を取得できます。"
+    },
+    {
+      "n": 45,
+      "source": "Note that, all resolving functions assumes valid pointer. Resolving with an invalid pointer causes assertion failure.",
+      "ja": "すべての解決関数は、有効なポインターを前提とすることに注意してください。無効なポインターで解決すると、アサーションに失敗します。"
+    },
+    {
+      "n": 46,
+      "source": "URI Fragment Representation",
+      "ja": "URIフラグメント表現"
+    },
+    {
+      "n": 47,
+      "source": "In addition to the string representation of JSON pointer that we are using till now, {1} also defines the URI fragment representation of JSON pointer. URI fragment is specified in {2} \"Uniform Resource Identifier (URI): Generic Syntax\".",
+      "ja": "ここまで使ってきたJSON Pointerの文字列表現に加え、{1}はURIフラグメント表現も定義しています。URIフラグメントは、{2}「Uniform Resource Identifier (URI): Generic Syntax」で規定されています。"
+    },
+    {
+      "n": 48,
+      "source": "The main differences are that a the URI fragment always has a {1} (pound sign) in the beginning, and some characters are encoded by percent-encoding in UTF-8 sequence. For example, the following table shows different C/C++ string literals of different representations.",
+      "ja": "主な違いは、URIフラグメントの先頭に必ず{1}（番号記号）が付き、一部の文字はUTF-8のバイト列をパーセントエンコードして表すことです。次の表は、各表現のC/C++文字列リテラルを示します。"
+    },
+    {
+      "n": 49,
+      "source": "String Representation",
+      "ja": "文字列表現"
+    },
+    {
+      "n": 50,
+      "source": "URI Fragment Representation",
+      "ja": "URIフラグメント表現"
+    },
+    {
+      "n": 51,
+      "source": "Pointer Tokens (UTF-8)",
+      "ja": "ポインターのトークン（UTF-8）"
+    },
+    {
+      "n": 52,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 53,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 54,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 55,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 56,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 57,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 58,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 59,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 60,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 61,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 62,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 63,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 64,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 65,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 66,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 67,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 68,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 69,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 70,
+      "source": "RapidJSON fully support URI fragment representation. It automatically detects the pound sign during parsing.",
+      "ja": "RapidJSONはURIフラグメント表現を完全にサポートし、解析時に番号記号を自動検出します。"
+    },
+    {
+      "n": 71,
+      "source": "Stringify",
+      "ja": "文字列化"
+    },
+    {
+      "n": 72,
+      "source": "You may also stringify a {1} to a string or other output streams. This can be done by:",
+      "ja": "{1}を文字列やほかの出力ストリームへ文字列化することもできます。方法は次のとおりです。"
+    },
+    {
+      "n": 73,
+      "source": "It can also stringify to URI fragment reprsentation by {1}.",
+      "ja": "{1}で、URIフラグメント表現へ文字列化することもできます。"
+    },
+    {
+      "n": 74,
+      "source": "User-Supplied Tokens",
+      "ja": "利用者が指定するトークン"
+    },
+    {
+      "n": 75,
+      "source": "If a pointer will be resolved multiple times, it should be constructed once, and then apply it to different DOMs or in different times. This reduce time and memory allocation for constructing {1} multiple times.",
+      "ja": "ポインターを何度も解決する場合は、一度だけ構築し、異なるDOMや異なる時点で使うようにします。これにより、{1}を何度も構築する時間とメモリー確保を減らせます。"
+    },
+    {
+      "n": 76,
+      "source": "We can go one step further, to completely eliminate the parsing process and dynamic memory allocation, we can establish the token array directly:",
+      "ja": "さらに、トークン配列を直接作ることで、解析処理と動的なメモリー確保を完全になくせます。"
+    },
+    {
+      "n": 77,
+      "source": "This may be useful for memory constrained systems.",
+      "ja": "これは、メモリーに制約のあるシステムで役立つ場合があります。"
+    }
+  ],
+  "tokenTranslations": {
+    "$ref": "$ref",
+    " keyword": " キーワード",
+    "JSON pointer": "JSON Pointer"
+  }
+}

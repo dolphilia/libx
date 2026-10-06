@@ -1,0 +1,580 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "(This feature was released in v1.1.0)",
+    "tokens": []
+  },
+  {
+    "n": 2,
+    "tag": "p",
+    "text": "JSON Pointer is a standardized ({1}) way to select a value inside a JSON Document (DOM). This can be analogous to XPath for XML document. However, JSON Pointer is much simpler, and a single JSON Pointer only pointed to a single value.",
+    "tokens": [
+      "<a href=\"https://tools.ietf.org/html/rfc6901\">RFC6901</a>"
+    ]
+  },
+  {
+    "n": 3,
+    "tag": "p",
+    "text": "Using RapidJSON's implementation of JSON Pointer can simplify some manipulations of the DOM.",
+    "tokens": []
+  },
+  {
+    "n": 4,
+    "tag": "h1",
+    "text": "JSON Pointer",
+    "tokens": []
+  },
+  {
+    "n": 5,
+    "tag": "p",
+    "text": "A JSON Pointer is a list of zero-to-many tokens, each prefixed by {1}. Each token can be a string or a number. For example, given a JSON:",
+    "tokens": [
+      "<span class=\"tt\">/</span>"
+    ]
+  },
+  {
+    "n": 6,
+    "tag": "p",
+    "text": "The following JSON Pointers resolve this JSON as:",
+    "tokens": []
+  },
+  {
+    "n": 7,
+    "tag": "li",
+    "text": "{1} → {2}",
+    "tokens": [
+      "<span class=\"tt\">\"/foo\"</span>",
+      "<span class=\"tt\">[ \"bar\", \"baz\" ]</span>"
+    ]
+  },
+  {
+    "n": 8,
+    "tag": "li",
+    "text": "{1} → {2}",
+    "tokens": [
+      "<span class=\"tt\">\"/foo/0\"</span>",
+      "<span class=\"tt\">\"bar\"</span>"
+    ]
+  },
+  {
+    "n": 9,
+    "tag": "li",
+    "text": "{1} → {2}",
+    "tokens": [
+      "<span class=\"tt\">\"/foo/1\"</span>",
+      "<span class=\"tt\">\"baz\"</span>"
+    ]
+  },
+  {
+    "n": 10,
+    "tag": "li",
+    "text": "{1} → {2}",
+    "tokens": [
+      "<span class=\"tt\">\"/pi\"</span>",
+      "<span class=\"tt\">3.1416</span>"
+    ]
+  },
+  {
+    "n": 11,
+    "tag": "p",
+    "text": "Note that, an empty JSON Pointer {1} (zero token) resolves to the whole JSON.",
+    "tokens": [
+      "<span class=\"tt\">\"\"</span>"
+    ]
+  },
+  {
+    "n": 12,
+    "tag": "h1",
+    "text": "Basic Usage",
+    "tokens": []
+  },
+  {
+    "n": 13,
+    "tag": "p",
+    "text": "The following example code is self-explanatory.",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "div",
+    "text": "Create a value in a subtree.",
+    "tokens": []
+  },
+  {
+    "n": 15,
+    "tag": "div",
+    "text": "Query a value in a subtree with default value.",
+    "tokens": []
+  },
+  {
+    "n": 16,
+    "tag": "div",
+    "text": "Swap a value with a value in a subtree.",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "div",
+    "text": "Erase a value in a subtree.",
+    "tokens": []
+  },
+  {
+    "n": 18,
+    "tag": "div",
+    "text": "Set a value in a subtree, with move semantics.",
+    "tokens": []
+  },
+  {
+    "n": 19,
+    "tag": "h1",
+    "text": "Helper Functions",
+    "tokens": []
+  },
+  {
+    "n": 20,
+    "tag": "p",
+    "text": "Since object-oriented calling convention may be non-intuitive, RapidJSON also provides helper functions, which just wrap the member functions with free-functions.",
+    "tokens": []
+  },
+  {
+    "n": 21,
+    "tag": "p",
+    "text": "The following example does exactly the same as the above one.",
+    "tokens": []
+  },
+  {
+    "n": 22,
+    "tag": "p",
+    "text": "The conventions are shown here for comparison:",
+    "tokens": []
+  },
+  {
+    "n": 23,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">Pointer(source).&lt;Method&gt;(root, ...)</span>"
+    ]
+  },
+  {
+    "n": 24,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">&lt;Method&gt;ValueByPointer(root, Pointer(source), ...)</span>"
+    ]
+  },
+  {
+    "n": 25,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">&lt;Method&gt;ValueByPointer(root, source, ...)</span>"
+    ]
+  },
+  {
+    "n": 26,
+    "tag": "h1",
+    "text": "Resolving Pointer",
+    "tokens": []
+  },
+  {
+    "n": 27,
+    "tag": "p",
+    "text": "{1} or {2} function does not modify the DOM. If the tokens cannot match a value in the DOM, it returns {3}. User can use this to check whether a value exists.",
+    "tokens": [
+      "<span class=\"tt\">Pointer::Get()</span>",
+      "<span class=\"tt\">GetValueByPointer()</span>",
+      "<span class=\"tt\">nullptr</span>"
+    ]
+  },
+  {
+    "n": 28,
+    "tag": "p",
+    "text": "Note that, numerical tokens can represent an array index or member name. The resolving process will match the values according to the types of value.",
+    "tokens": []
+  },
+  {
+    "n": 29,
+    "tag": "li",
+    "text": "{1} → {2}",
+    "tokens": [
+      "<span class=\"tt\">\"/0\"</span>",
+      "<span class=\"tt\">123</span>"
+    ]
+  },
+  {
+    "n": 30,
+    "tag": "li",
+    "text": "{1} → {2}",
+    "tokens": [
+      "<span class=\"tt\">\"/1/0\"</span>",
+      "<span class=\"tt\">456</span>"
+    ]
+  },
+  {
+    "n": 31,
+    "tag": "p",
+    "text": "The token {1} is treated as member name in the first pointer. It is treated as an array index in the second pointer.",
+    "tokens": [
+      "<span class=\"tt\">\"0\"</span>"
+    ]
+  },
+  {
+    "n": 32,
+    "tag": "p",
+    "text": "The other functions, including {1}, {2}, {3} and {4}, will change the DOM. These functions will always succeed. They will create the parent values if they do not exist. If the parent values do not match the tokens, they will also be forced to change their type. Changing the type also mean fully removal of that DOM subtree.",
+    "tokens": [
+      "<span class=\"tt\">Create()</span>",
+      "<span class=\"tt\">GetWithDefault()</span>",
+      "<span class=\"tt\">Set()</span>",
+      "<span class=\"tt\">Swap()</span>"
+    ]
+  },
+  {
+    "n": 33,
+    "tag": "p",
+    "text": "Parsing the above JSON into {1},",
+    "tokens": [
+      "<span class=\"tt\">d</span>"
+    ]
+  },
+  {
+    "n": 34,
+    "tag": "h2",
+    "text": "Resolving Minus Sign Token",
+    "tokens": []
+  },
+  {
+    "n": 35,
+    "tag": "p",
+    "text": "Besides, {1} defines a special token {2} (single minus sign), which represents the pass-the-end element of an array. {3} only treats this token as a member name '\"-\"'. Yet the other functions can resolve this for array, equivalent to calling {4} to the array.",
+    "tokens": [
+      "<a href=\"https://tools.ietf.org/html/rfc6901\">RFC6901</a>",
+      "<span class=\"tt\">-</span>",
+      "<span class=\"tt\">Get()</span>",
+      "<span class=\"tt\">Value::PushBack()</span>"
+    ]
+  },
+  {
+    "n": 36,
+    "tag": "div",
+    "text": "Parse JSON text from a read-only string (with Encoding conversion).",
+    "tokens": []
+  },
+  {
+    "n": 37,
+    "tag": "h2",
+    "text": "Resolving Document and Value",
+    "tokens": []
+  },
+  {
+    "n": 38,
+    "tag": "p",
+    "text": "When using {1} or {2}, {3} is a (const) {4}. That means, it can be a subtree of the DOM.",
+    "tokens": [
+      "<span class=\"tt\">p.Get(root)</span>",
+      "<span class=\"tt\">GetValueByPointer(root, p)</span>",
+      "<span class=\"tt\">root</span>",
+      "<span class=\"tt\">Value&amp;</span>"
+    ]
+  },
+  {
+    "n": 39,
+    "tag": "p",
+    "text": "The other functions have two groups of signature. One group uses {1} as parameter, another one uses {2}. The first group uses {3} for creating values. And the second group needs user to supply an allocator, like the functions in DOM.",
+    "tokens": [
+      "<span class=\"tt\">Document&amp; document</span>",
+      "<span class=\"tt\">Value&amp; root</span>",
+      "<span class=\"tt\">document.GetAllocator()</span>"
+    ]
+  },
+  {
+    "n": 40,
+    "tag": "p",
+    "text": "All examples above do not require an allocator parameter, because the first parameter is a {1}. But if you want to resolve a pointer to a subtree, you need to supply the allocator as in the following example:",
+    "tokens": [
+      "<span class=\"tt\">Document&amp;</span>"
+    ]
+  },
+  {
+    "n": 41,
+    "tag": "div",
+    "text": "GenericDocument with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 42,
+    "tag": "p",
+    "text": "{1} or {2} does not need allocator. And they return {3} if the value is erased successfully.",
+    "tokens": [
+      "<span class=\"tt\">Erase()</span>",
+      "<span class=\"tt\">EraseValueByPointer()</span>",
+      "<span class=\"tt\">true</span>"
+    ]
+  },
+  {
+    "n": 43,
+    "tag": "h1",
+    "text": "Error Handling",
+    "tokens": []
+  },
+  {
+    "n": 44,
+    "tag": "p",
+    "text": "A {1} parses a source string in its constructor. If there is parsing error, {2} returns {3}. And you can use {4} and {5} to retrieve the error information.",
+    "tokens": [
+      "<span class=\"tt\">Pointer</span>",
+      "<span class=\"tt\">Pointer::IsValid()</span>",
+      "<span class=\"tt\">false</span>",
+      "<span class=\"tt\">Pointer::GetParseErrorCode()</span>",
+      "<span class=\"tt\">GetParseErrorOffset()</span>"
+    ]
+  },
+  {
+    "n": 45,
+    "tag": "p",
+    "text": "Note that, all resolving functions assumes valid pointer. Resolving with an invalid pointer causes assertion failure.",
+    "tokens": []
+  },
+  {
+    "n": 46,
+    "tag": "h1",
+    "text": "URI Fragment Representation",
+    "tokens": []
+  },
+  {
+    "n": 47,
+    "tag": "p",
+    "text": "In addition to the string representation of JSON pointer that we are using till now, {1} also defines the URI fragment representation of JSON pointer. URI fragment is specified in {2} \"Uniform Resource Identifier (URI): Generic Syntax\".",
+    "tokens": [
+      "<a href=\"https://tools.ietf.org/html/rfc6901\">RFC6901</a>",
+      "<a href=\"https://tools.ietf.org/html/rfc3986\">RFC3986</a>"
+    ]
+  },
+  {
+    "n": 48,
+    "tag": "p",
+    "text": "The main differences are that a the URI fragment always has a {1} (pound sign) in the beginning, and some characters are encoded by percent-encoding in UTF-8 sequence. For example, the following table shows different C/C++ string literals of different representations.",
+    "tokens": [
+      "<span class=\"tt\">#</span>"
+    ]
+  },
+  {
+    "n": 49,
+    "tag": "th",
+    "text": "String Representation",
+    "tokens": []
+  },
+  {
+    "n": 50,
+    "tag": "th",
+    "text": "URI Fragment Representation",
+    "tokens": []
+  },
+  {
+    "n": 51,
+    "tag": "th",
+    "text": "Pointer Tokens (UTF-8)",
+    "tokens": []
+  },
+  {
+    "n": 52,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"/foo/0\"</span>"
+    ]
+  },
+  {
+    "n": 53,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"#/foo/0\"</span>"
+    ]
+  },
+  {
+    "n": 54,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">{\"foo\", 0}</span>"
+    ]
+  },
+  {
+    "n": 55,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"/a~1b\"</span>"
+    ]
+  },
+  {
+    "n": 56,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"#/a~1b\"</span>"
+    ]
+  },
+  {
+    "n": 57,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">{\"a/b\"}</span>"
+    ]
+  },
+  {
+    "n": 58,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"/m~0n\"</span>"
+    ]
+  },
+  {
+    "n": 59,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"#/m~0n\"</span>"
+    ]
+  },
+  {
+    "n": 60,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">{\"m~n\"}</span>"
+    ]
+  },
+  {
+    "n": 61,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"/ \"</span>"
+    ]
+  },
+  {
+    "n": 62,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"#/%20\"</span>"
+    ]
+  },
+  {
+    "n": 63,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">{\" \"}</span>"
+    ]
+  },
+  {
+    "n": 64,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"/\\0\"</span>"
+    ]
+  },
+  {
+    "n": 65,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"#/%00\"</span>"
+    ]
+  },
+  {
+    "n": 66,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">{\"\\0\"}</span>"
+    ]
+  },
+  {
+    "n": 67,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"/€\"</span>"
+    ]
+  },
+  {
+    "n": 68,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">\"#/%E2%82%AC\"</span>"
+    ]
+  },
+  {
+    "n": 69,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">{\"€\"}</span>"
+    ]
+  },
+  {
+    "n": 70,
+    "tag": "p",
+    "text": "RapidJSON fully support URI fragment representation. It automatically detects the pound sign during parsing.",
+    "tokens": []
+  },
+  {
+    "n": 71,
+    "tag": "h1",
+    "text": "Stringify",
+    "tokens": []
+  },
+  {
+    "n": 72,
+    "tag": "p",
+    "text": "You may also stringify a {1} to a string or other output streams. This can be done by:",
+    "tokens": [
+      "<span class=\"tt\">Pointer</span>"
+    ]
+  },
+  {
+    "n": 73,
+    "tag": "p",
+    "text": "It can also stringify to URI fragment reprsentation by {1}.",
+    "tokens": [
+      "<span class=\"tt\">StringifyUriFragment()</span>"
+    ]
+  },
+  {
+    "n": 74,
+    "tag": "h1",
+    "text": "User-Supplied Tokens",
+    "tokens": []
+  },
+  {
+    "n": 75,
+    "tag": "p",
+    "text": "If a pointer will be resolved multiple times, it should be constructed once, and then apply it to different DOMs or in different times. This reduce time and memory allocation for constructing {1} multiple times.",
+    "tokens": [
+      "<span class=\"tt\">Pointer</span>"
+    ]
+  },
+  {
+    "n": 76,
+    "tag": "p",
+    "text": "We can go one step further, to completely eliminate the parsing process and dynamic memory allocation, we can establish the token array directly:",
+    "tokens": []
+  },
+  {
+    "n": 77,
+    "tag": "p",
+    "text": "This may be useful for memory constrained systems.",
+    "tokens": []
+  }
+]
