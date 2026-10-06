@@ -1,0 +1,238 @@
+{
+  "reviewedAt": "2026-10-02T02:40:54.162Z",
+  "method": "ai-content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "separateFromEditingCycle": 108,
+  "editingCompletedBeforeReview": true,
+  "scope": [
+    "01-specification/01-specification.md",
+    "02-reference/02-abnf.md",
+    "03-license/01-license.md"
+  ],
+  "pages": [
+    {
+      "id": "01-specification/01-specification.md",
+      "status": "passed",
+      "source": {
+        "path": "docs/notes/document-import/toml/v1-1-0/source/specification.md",
+        "sha256": "cd36fd06f90cebec13aba35e7389b8ce099779270d5e913d6ec25c511761beb1",
+        "coverage": [
+          [
+            1,
+            258
+          ],
+          [
+            259,
+            420
+          ],
+          [
+            421,
+            668
+          ],
+          [
+            669,
+            890
+          ],
+          [
+            891,
+            1044
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/toml/v1-1-0/canonical/01-specification/01-specification.md",
+        "sha256": "fe68b6ba289ae2ac414e65043f8eba9cccfbe94a3db8c59d492c7c506389e722",
+        "coverage": [
+          [
+            1,
+            279
+          ],
+          [
+            280,
+            443
+          ],
+          [
+            444,
+            707
+          ],
+          [
+            708,
+            933
+          ],
+          [
+            934,
+            1093
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/toml/v1-1-0/reviewed-translation/01-specification/01-specification.md",
+        "sha256": "f37fedbaeef034eb2c4ba079c6f5484c40a28f67e574589b388ed31562caa1d4",
+        "coverage": [
+          [
+            1,
+            256
+          ],
+          [
+            257,
+            386
+          ],
+          [
+            387,
+            609
+          ],
+          [
+            610,
+            810
+          ],
+          [
+            811,
+            957
+          ]
+        ]
+      },
+      "assessments": {
+        "sourcePreservation": "原文全1044行・定本全1093行を読み、全説明・70コード・22見出し・参照が保持されることを確認。許可差分は22互換アンカー/フラグメント対応/ABNF内部化/メタデータだけ。",
+        "translationMeaning": "訳文全957行を読み、大小文字、UTF-8/不正列、制御文字、キー再定義、文字列4種/エスケープ/改行/引用符、数値型/64bit損失/IEEE754、日時オフセット/秒省略/ミリ秒/切り捨て、配列/テーブル/インライン/配列要素定義順序と無効例、拡張子/MIME/文法参照を全節照合。",
+        "readability": "原文を併記しない日本語単独の全127説明単位を再読。用語・条件・説明順序を確認。out-of-orderの2表現を修正後再読。コードとコード内コメントは再現のため原文保全。",
+        "checkedHeadings": 22,
+        "checkedProseUnits": 127,
+        "checkedCodeExamples": 70
+      },
+      "findings": [
+        {
+          "type": "readability",
+          "severity": "minor",
+          "sourceLines": [
+            218,
+            243
+          ],
+          "canonicalLines": [
+            237,
+            262
+          ],
+          "translationLines": [
+            216,
+            241
+          ],
+          "issue": "out-of-orderを順不同とすると、任意の順序自体が不正との誤解を招き得る。例はapple/orangeの関連する定義の混在を示す。",
+          "resolution": "関連するキーの定義順序が入り交じる記述は非推奨と明確化。VALIDと禁止の区別を維持。",
+          "status": "resolved"
+        },
+        {
+          "type": "readability",
+          "severity": "minor",
+          "sourceLines": [
+            755,
+            769
+          ],
+          "canonicalLines": [
+            794,
+            808
+          ],
+          "translationLines": [
+            689,
+            703
+          ],
+          "issue": "テーブルについても順不同では、関連するテーブルの定義をまとめる推奨が不鮮明。",
+          "resolution": "関連するテーブルの定義順序が入り交じる記述は非推奨へ。定義順序に構文制約を追加せず元の例を保持。",
+          "status": "resolved"
+        }
+      ]
+    },
+    {
+      "id": "02-reference/02-abnf.md",
+      "status": "passed",
+      "source": {
+        "path": "docs/notes/document-import/toml/v1-1-0/source/toml.abnf",
+        "sha256": "2038f64825dd9a2bbb22807bcb46900c6d6c30eb728d577e948db8eda87555c5",
+        "coverage": [
+          [
+            1,
+            247
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/toml/v1-1-0/canonical/02-reference/02-abnf.md",
+        "sha256": "24c8f15f250e731ab4014fbdf8afb330e687bad79084d5c47da919cbc69f420e",
+        "coverage": [
+          [
+            1,
+            257
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/toml/v1-1-0/reviewed-translation/02-reference/02-abnf.md",
+        "sha256": "8af64304904571397e41a337d4b944e1e41c54ba05693371f267723e6ca7fec0",
+        "coverage": [
+          [
+            1,
+            257
+          ]
+        ]
+      },
+      "assessments": {
+        "sourcePreservation": "247行のABNF全体とコメントを原文/定本/日本語版で全文確認。UTF-8復号後のコードポイント、意味論での不正拒否、全構文型・1.1.0 e/x/秒省略/複数行インライン/末尾カンマ規則を保持。",
+        "translationMeaning": "形式文法とコメントはコード内原文のまま保全。見出し/説明はABNF文法全文と適切に記述。文法専用licenseSourceを維持。",
+        "readability": "日本語の見出しと説明が対象・版・全文の範囲を明示。本文は原文の形式文法として提示。"
+      },
+      "findings": []
+    },
+    {
+      "id": "03-license/01-license.md",
+      "status": "passed",
+      "source": {
+        "path": "docs/notes/document-import/toml/v1-1-0/review/initial-2026-10-02-108/license-originals.txt",
+        "sha256": "0e17120aba9fc0c3fc85f43253946d3fc6d6bb7a0a410dce30d521764b4000db",
+        "coverage": [
+          [
+            1,
+            45
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/toml/v1-1-0/canonical/03-license/01-license.md",
+        "sha256": "cac88d4d4af5d4ad4bbdecc2e408146ab1d446f60f2fec90045088fa45595ace",
+        "coverage": [
+          [
+            1,
+            62
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/toml/v1-1-0/reviewed-translation/03-license/01-license.md",
+        "sha256": "78cfb8b45561b3758b4ca5dc77f19c077a362bd1695f9644ff2f550cb6649b85",
+        "coverage": [
+          [
+            1,
+            62
+          ]
+        ]
+      },
+      "assessments": {
+        "sourcePreservation": "両MIT原文全45行、定本/日本語全62行を読み、著作権名義、無償許諾、利用/複製/改変/結合/公開/配布/再許諾/販売、通知保持条件、無保証/非侵害/損害責任の原文を全て確認。",
+        "translationMeaning": "公開仕様と仕様リポジトリ/ABNFの区分と両固定リンクが対応。両許諾の法律文は原文を保持し、日本語の見出し・説明・ラベルに誤対応なし。",
+        "readability": "ライセンス原文であることを日本語メタデータ/見出し/ラベルで明示。2つの著作権表記を混同していない。"
+      },
+      "findings": []
+    }
+  ],
+  "mechanicalChecksSeparate": true,
+  "unresolvedContentFindings": [],
+  "notClaimed": [
+    "人手レビュー",
+    "実モデルの確証",
+    "本番公開",
+    "表示/統合検証完了"
+  ]
+}

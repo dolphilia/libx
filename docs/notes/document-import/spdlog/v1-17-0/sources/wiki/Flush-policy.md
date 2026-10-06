@@ -1,0 +1,26 @@
+By default spdlog lets the underlying libc flush whenever it sees fit in order to achieve good performance. You can override this using the following options:
+
+
+### Manual flush
+You can use the ```logger->flush()``` function to instruct a logger to flush its contents. The logger will in turn call the ```flush()``` function on each of the underlying sinks.
+
+**Note:** If using an async logger, ```logger->flush()``` posts a message to the queue requesting the flush operation, so the function returns immediately. This is different from some older versions of spdlog (which would synchronously wait until the message was received and the flush completed). Currently there is no need to explicitly call ```logger->flush()```  or ```spdlog::shutdown()``` before shutting down, it is done automatically at destruction while program exits. However, if you want to flush all the async logger manually before  "immediately" exit function such as ```abort()``` or ```_exit(-1)```, please call ```spdlog::shutdown()``` before those functions.
+
+### Severity based flush
+You can set the minimum log level that will trigger automatic flush.
+
+For example, this will trigger flush whenever errors or more severe messages are logged:
+```c++
+my_logger->flush_on(spdlog::level::err); 
+```
+
+### Interval based flush
+spdlog supports setting flush interval. This is implemented by a single worker thread that periodically calls flush() on each logger.
+
+
+For example, turn on periodic flush with interval of 5 seconds for all registered loggers:
+```c++
+spdlog::flush_every(std::chrono::seconds(5));
+```
+
+**Note** Use this only on thread safe loggers, since the periodic flush happens from a different thread.

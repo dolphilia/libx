@@ -1,0 +1,109 @@
+Each logger contains a vector of one or more  ```std::shared_ptr<spdlog::sink>```.
+
+On each log call (if the log level is right) the logger will call the ```sink(log_msg)``` function on each of them.
+
+spdlog's sinks have `_mt` (multi threaded) or `_st` (single threaded) suffixes to indicate the thread safety.
+While single threaded sinks cannot be used from multiple threads simultaneously they might be faster because no locking is employed.
+
+### Creating loggers using the factory functions
+
+```c++
+//Create and return a shared_ptr to a multithreaded console logger.
+#include "spdlog/sinks/stdout_color_sinks.h"
+auto console = spdlog::stdout_color_mt("some_unique_name");
+```
+This will create a console logger, register it in spdlog's global registry with "some_unique_name" as its id, and return it as shared_ptr.
+
+### Accessing loggers using spdlog::get("...")
+Loggers can be accessed from anywhere using the thread safe ```spdlog::get("logger_name")``` which returns a shared pointer.
+
+
+**Note**: ```spdlog::get``` might slow your code down since it locks a mutex, so use with caution. It is advisable to save the ```shared_ptr<spdlog::logger>``` returned and use it directly, at least in hot code paths.
+
+A good approach would be to have a private member of type ```shared_ptr<spdlog::logger>``` which will be set in  the constructor:
+
+```c++
+class MyClass
+{
+private:
+   std::shared_ptr<spdlog::logger> _logger;
+public:
+   MyClass()
+   {
+     //set _logger to some existing logger
+     _logger = spdlog::get("some_logger");
+     //or create directly
+     //_logger = spdlog::rotating_file_logger_mt("my_logger", ...);
+   }
+};
+```
+
+**Note 2:** Manually created loggers (i.e. those you construct directly, see [Creating loggers manually](#creating-loggers-manually)) do not get automatically registered and will not be found by the ```get("...")``` call.
+
+If you want to register such logger use the ```register_logger(...)``` function:
+
+```c++
+spdlog::register_logger(my_logger);
+...
+auto the_same_logger = spdlog::get("mylogger");
+```
+
+### Create a rotating file logger
+```c++
+//Create rotating file multi-threaded logger
+#include "spdlog/sinks/rotating_file_sink.h"
+auto file_logger = spdlog::rotating_logger_mt("file_logger", "logs/mylogfile", 1048576 * 5, 3);
+...
+auto same_logger= spdlog::get("file_logger");
+```
+
+### Creating asynchronous loggers
+```c++
+#include "spdlog/async.h"
+void async_example()
+{
+    // default thread pool settings can be modified *before* creating the async logger:
+    // spdlog::init_thread_pool(8192, 1); // queue with 8k items and 1 backing thread.
+    auto async_file = spdlog::basic_logger_mt<spdlog::async_factory>("async_file_logger", "logs/async_log.txt");
+    // alternatively:
+    // auto async_file = spdlog::create_async<spdlog::sinks::basic_file_sink_mt>("async_file_logger", "logs/async_log.txt");
+   
+}
+```
+For asynchronous logging, spdlog uses a shared global thread pool with a dedicated message queue.
+
+For this, it creates fixed number of **pre-allocated slots** in the message queue (~256 bytes per slot in 64 bits) and can be modified using ```spdlog::init_thread_pool(queue_size, backing_threads_count)```
+
+When trying to log a message and the queue is full, the caller will block (default behavior) until a slot becomes available (default), or overrun oldest message immediately in the queue with the new one (if the logger was constructed with ```async_overflow_policy==overrun_oldest```).  
+
+### Creating loggers manually 
+```c++
+auto sink = std::make_shared<spdlog::sinks::stdout_sink_mt>();
+auto my_logger = std::make_shared<spdlog::logger>("mylogger", sink);
+
+// Optionally register the logger.  This is only needed if you want to access it with spdlog::get("mylogger")
+spdlog::register_logger(my_logger);
+```
+
+> [!NOTE]
+> The factory function internally sets the global state, such as log level, to the logger.
+> Loggers created manually will not have the global state set.
+> If you want to set the global state to a logger, call `spdlog::initialize_logger()`.
+
+### Creating loggers with multiple sinks
+```c++
+std::vector<spdlog::sink_ptr> sinks;
+sinks.push_back(std::make_shared<spdlog::sinks::stdout_sink_st>());
+sinks.push_back(std::make_shared<spdlog::sinks::daily_file_sink_st>("logfile", 23, 59));
+auto combined_logger = std::make_shared<spdlog::logger>("name", begin(sinks), end(sinks));
+//register it if you need to access it globally
+spdlog::register_logger(combined_logger);
+```
+
+### Creating multiple file loggers with the same output file
+If you want to have different loggers to write to the same output file all of them must share the same sink. Otherwise you might get strange results. 
+```c++
+auto sharedFileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("fileName.txt");
+auto firstLogger = std::make_shared<spdlog::logger>("firstLoggerName", sharedFileSink);
+auto secondLogger = std::make_unique<spdlog::logger>("secondLoggerName", sharedFileSink);
+```

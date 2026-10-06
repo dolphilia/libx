@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/source/specification.md",
+      "sha256": "cd36fd06f90cebec13aba35e7389b8ce099779270d5e913d6ec25c511761beb1",
+      "classification": "adopted",
+      "page": "01-specification/01-specification.md",
+      "reason": "公式サイトの1.1.0本文全文。段落・70コード・22見出しを保全。"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/source/toml.abnf",
+      "sha256": "2038f64825dd9a2bbb22807bcb46900c6d6c30eb728d577e948db8eda87555c5",
+      "classification": "adopted",
+      "page": "02-reference/02-abnf.md",
+      "reason": "固定Git blobのABNF全247行。本文全体をabnfフェンスへ。"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/source/SITE-LICENSE.txt",
+      "sha256": "169ec8dbd3ad5d42b29d9d006ccb668414fe5b87b874e18feece8aa3e6d2b6fe",
+      "classification": "combined",
+      "page": "03-license/01-license.md",
+      "reason": "公式仕様サイトのMIT許諾全文をtextフェンスへ。"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/source/SPEC-LICENSE.txt",
+      "sha256": "a9e276d27f1f71f0ca7601eac41bd1b94418d782119190a03f1d966de76065ce",
+      "classification": "combined",
+      "page": "03-license/01-license.md",
+      "reason": "仕様リポジトリとABNFのMIT許諾全文をtextフェンスへ。"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/source/gitattributes.json",
+      "sha256": "557ada29bfa0ba24286ed6dfd48e0bb99f18fd5fb16edbd47d2a2330fa7367d0",
+      "classification": "validation-reference",
+      "page": null,
+      "reason": "取得ABNFのLF/保存CRLF対応根拠。"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/source/tag.json",
+      "sha256": "fb7351dcdf661c8bb10b95de8cc64b221be6b66e834139277c3d3877c65a0900",
+      "classification": "validation-reference",
+      "page": null,
+      "reason": "正式版1.1.0の固定コミット確認。"
+    }
+  ],
+  "scope": [
+    "01-specification/01-specification.md",
+    "02-reference/02-abnf.md",
+    "03-license/01-license.md"
+  ],
+  "sections": [
+    {
+      "title": "TOML v1.1.0",
+      "stableAnchor": "source-toml-v110",
+      "sourceLines": [
+        1,
+        7
+      ],
+      "canonicalBodyLines": [
+        4,
+        12
+      ]
+    },
+    {
+      "title": "Objectives",
+      "stableAnchor": "source-objectives",
+      "sourceLines": [
+        8,
+        13
+      ],
+      "canonicalBodyLines": [
+        13,
+        20
+      ]
+    },
+    {
+      "title": "Table of contents",
+      "stableAnchor": "source-table-of-contents",
+      "sourceLines": [
+        14,
+        35
+      ],
+      "canonicalBodyLines": [
+        21,
+        44
+      ]
+    },
+    {
+      "title": "Preliminaries",
+      "stableAnchor": "source-preliminaries",
+      "sourceLines": [
+        36,
+        47
+      ],
+      "canonicalBodyLines": [
+        45,
+        58
+      ]
+    },
+    {
+      "title": "Comment",
+      "stableAnchor": "source-comment",
+      "sourceLines": [
+        48,
+        65
+      ],
+      "canonicalBodyLines": [
+        59,
+        78
+      ]
+    },
+    {
+      "title": "Key/Value Pair",
+      "stableAnchor": "source-keyvalue-pair",
+      "sourceLines": [
+        66,
+        103
+      ],
+      "canonicalBodyLines": [
+        79,
+        118
+      ]
+    },
+    {
+      "title": "Keys",
+      "stableAnchor": "source-keys",
+      "sourceLines": [
+        104,
+        258
+      ],
+      "canonicalBodyLines": [
+        119,
+        275
+      ]
+    },
+    {
+      "title": "String",
+      "stableAnchor": "source-string",
+      "sourceLines": [
+        259,
+        420
+      ],
+      "canonicalBodyLines": [
+        276,
+        439
+      ]
+    },
+    {
+      "title": "Integer",
+      "stableAnchor": "source-integer",
+      "sourceLines": [
+        421,
+        470
+      ],
+      "canonicalBodyLines": [
+        440,
+        491
+      ]
+    },
+    {
+      "title": "Float",
+      "stableAnchor": "source-float",
+      "sourceLines": [
+        471,
+        534
+      ],
+      "canonicalBodyLines": [
+        492,
+        557
+      ]
+    },
+    {
+      "title": "Boolean",
+      "stableAnchor": "source-boolean",
+      "sourceLines": [
+        535,
+        543
+      ],
+      "canonicalBodyLines": [
+        558,
+        568
+      ]
+    },
+    {
+      "title": "Offset Date-Time",
+      "stableAnchor": "source-offset-date-time",
+      "sourceLines": [
+        544,
+        574
+      ],
+      "canonicalBodyLines": [
+        569,
+        601
+      ]
+    },
+    {
+      "title": "Local Date-Time",
+      "stableAnchor": "source-local-date-time",
+      "sourceLines": [
+        575,
+        598
+      ],
+      "canonicalBodyLines": [
+        602,
+        627
+      ]
+    },
+    {
+      "title": "Local Date",
+      "stableAnchor": "source-local-date",
+      "sourceLines": [
+        599,
+        608
+      ],
+      "canonicalBodyLines": [
+        628,
+        639
+      ]
+    },
+    {
+      "title": "Local Time",
+      "stableAnchor": "source-local-time",
+      "sourceLines": [
+        609,
+        631
+      ],
+      "canonicalBodyLines": [
+        640,
+        664
+      ]
+    },
+    {
+      "title": "Array",
+      "stableAnchor": "source-array",
+      "sourceLines": [
+        632,
+        668
+      ],
+      "canonicalBodyLines": [
+        665,
+        703
+      ]
+    },
+    {
+      "title": "Table",
+      "stableAnchor": "source-table",
+      "sourceLines": [
+        669,
+        817
+      ],
+      "canonicalBodyLines": [
+        704,
+        854
+      ]
+    },
+    {
+      "title": "Inline Table",
+      "stableAnchor": "source-inline-table",
+      "sourceLines": [
+        818,
+        890
+      ],
+      "canonicalBodyLines": [
+        855,
+        929
+      ]
+    },
+    {
+      "title": "Array of Tables",
+      "stableAnchor": "source-array-of-tables",
+      "sourceLines": [
+        891,
+        1029
+      ],
+      "canonicalBodyLines": [
+        930,
+        1070
+      ]
+    },
+    {
+      "title": "Filename Extension",
+      "stableAnchor": "source-filename-extension",
+      "sourceLines": [
+        1030,
+        1033
+      ],
+      "canonicalBodyLines": [
+        1071,
+        1076
+      ]
+    },
+    {
+      "title": "MIME Type",
+      "stableAnchor": "source-mime-type",
+      "sourceLines": [
+        1034,
+        1038
+      ],
+      "canonicalBodyLines": [
+        1077,
+        1083
+      ]
+    },
+    {
+      "title": "ABNF Grammar",
+      "stableAnchor": "source-abnf-grammar",
+      "sourceLines": [
+        1039,
+        1044
+      ],
+      "canonicalBodyLines": [
+        1084,
+        1089
+      ]
+    }
+  ],
+  "allowedTransformations": [
+    "YAMLメタデータ追加",
+    "原文22見出し直前にsource-接頭辞の固定互換アンカーを追加",
+    "原文目次の19フラグメントリンクを互換アンカーへ対応",
+    "ABNF定義リンク1箇所を収録した固定文法ページへ内部化",
+    "ABNF全体とMIT許諾全文をコードフェンスへ配置"
+  ],
+  "externalReferences": [
+    "https://unicode.org/glossary/#well_formed_code_unit_sequence",
+    "https://unicode.org/glossary/#unicode_scalar_value",
+    "https://www.base64decode.org/",
+    "https://tools.ietf.org/html/rfc3339"
+  ],
+  "fullAIContentReview": "pending"
+}
