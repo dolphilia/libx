@@ -1,0 +1,488 @@
+{
+  "page": "01-guide/20-embedding-storing-c-data.md",
+  "titleEN": "Storing C Data",
+  "titleJA": "Cのデータを格納する",
+  "sourceCanonicalSHA256": "2a45658dcaca2087fc61d581677bdfa8202439a80209bc361270d32d019f158f",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Storing C Data",
+      "originalInnerHTML": "Storing C Data",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "An embedded language often needs to work with native data. You may want a\npointer to some memory managed in the C heap, or maybe you want to store a chunk\nof data more efficiently than Wren’s dynamism allows. You may want a Wren object\nthat represents a native resource like a file handle or database connection.",
+      "originalInnerHTML": "An embedded language often needs to work with native data. You may want a\npointer to some memory managed in the C heap, or maybe you want to store a chunk\nof data more efficiently than Wren’s dynamism allows. You may want a Wren object\nthat represents a native resource like a file handle or database connection.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "For those cases, you can define a <strong>foreign class</strong>, a chimera whose state is\nhalf Wren and half C. It is a real Wren class with a name, constructor, and\nmethods. You can define methods on it written in Wren, or <a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">foreign methods</a>\nwritten in C. It produces real Wren objects that you can pass around, do ⟦CODE0⟧\nchecks on, etc. But it also wraps a blob of raw memory that is opaque to Wren\nbut accessible from C.",
+      "originalInnerHTML": "For those cases, you can define a <strong>foreign class</strong>, a chimera whose state is\nhalf Wren and half C. It is a real Wren class with a name, constructor, and\nmethods. You can define methods on it written in Wren, or <a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">foreign methods</a>\nwritten in C. It produces real Wren objects that you can pass around, do <code>is</code>\nchecks on, etc. But it also wraps a blob of raw memory that is opaque to Wren\nbut accessible from C.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>is</code>"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "tag": "h2",
+      "sourceHTML": "Defining a Foreign Class <a class=\"header-anchor\" href=\"#defining-a-foreign-class\" name=\"defining-a-foreign-class\">#</a>",
+      "originalInnerHTML": "Defining a Foreign Class <a class=\"header-anchor\" href=\"#defining-a-foreign-class\" name=\"defining-a-foreign-class\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "You define one like so:",
+      "originalInnerHTML": "You define one like so:",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ keyword tells Wren to loop in the host application when it\nconstructs instances of the class. The host tells Wren how many bytes of extra\nmemory the foreign instance should contain and in return, Wren gives the host\nthe opportunity to initialize that data.",
+      "originalInnerHTML": "The <code>foreign</code> keyword tells Wren to loop in the host application when it\nconstructs instances of the class. The host tells Wren how many bytes of extra\nmemory the foreign instance should contain and in return, Wren gives the host\nthe opportunity to initialize that data.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>foreign</code>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "To talk to the host app, Wren needs a C function it can call when it constructs\nan instance of the foreign class. This function is found through a binding\nprocess similar to <a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/#binding-foreign-methods\">how foreign methods are bound</a>. When you <a href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">configure\nthe VM</a>, you set the ⟦CODE0⟧ field in WrenConfiguration to point\nto a C callback you define. Its signature must be:",
+      "originalInnerHTML": "To talk to the host app, Wren needs a C function it can call when it constructs\nan instance of the foreign class. This function is found through a binding\nprocess similar to <a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/#binding-foreign-methods\">how foreign methods are bound</a>. When you <a href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">configure\nthe VM</a>, you set the <code>bindForeignClassFn</code> field in WrenConfiguration to point\nto a C callback you define. Its signature must be:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>bindForeignClassFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "Wren invokes this callback once when a foreign class declaration is executed.\nWren passes in the name of the module containing the foreign class, and the name\nof the class being declared. The host’s responsibility is to return one of these\nstructs:",
+      "originalInnerHTML": "Wren invokes this callback once when a foreign class declaration is executed.\nWren passes in the name of the module containing the foreign class, and the name\nof the class being declared. The host’s responsibility is to return one of these\nstructs:",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "It’s a pair of function pointers. The first, ⟦CODE0⟧, is called by Wren\nwhenever an instance of the foreign class is created. (We’ll get to the optional\n⟦CODE1⟧ callback later.) The allocation callback has the same signature as a\nforeign method:",
+      "originalInnerHTML": "It’s a pair of function pointers. The first, <code>allocate</code>, is called by Wren\nwhenever an instance of the foreign class is created. (We’ll get to the optional\n<code>finalize</code> callback later.) The allocation callback has the same signature as a\nforeign method:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>allocate</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>finalize</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "h2",
+      "sourceHTML": "Initializing an Instance <a class=\"header-anchor\" href=\"#initializing-an-instance\" name=\"initializing-an-instance\">#</a>",
+      "originalInnerHTML": "Initializing an Instance <a class=\"header-anchor\" href=\"#initializing-an-instance\" name=\"initializing-an-instance\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "When you create an instance of a foreign class by calling one its\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#constructors\">constructors</a>, Wren invokes the ⟦CODE0⟧ callback you gave it when binding\nthe foreign class. Your primary responsibility in that callback is to tell Wren\nhow many bytes of raw memory you need. You do that by calling:",
+      "originalInnerHTML": "When you create an instance of a foreign class by calling one its\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#constructors\">constructors</a>, Wren invokes the <code>allocate</code> callback you gave it when binding\nthe foreign class. Your primary responsibility in that callback is to tell Wren\nhow many bytes of raw memory you need. You do that by calling:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>allocate</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "Like other <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">slot manipulation functions</a>, it both reads from and writes to\nthe slot array. It has a few parameters to make it more general purpose since it\ncan also be used in other foreign methods:",
+      "originalInnerHTML": "Like other <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">slot manipulation functions</a>, it both reads from and writes to\nthe slot array. It has a few parameters to make it more general purpose since it\ncan also be used in other foreign methods:",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "li",
+      "sourceHTML": "\n<p>The ⟦CODE0⟧ parameter is the destination slot where the new foreign object\n  should be placed. When you’re calling this in a foreign class’s allocate\n  callback, this should be 0.</p>\n",
+      "originalInnerHTML": "\n<p>The <code>slot</code> parameter is the destination slot where the new foreign object\n  should be placed. When you’re calling this in a foreign class’s allocate\n  callback, this should be 0.</p>\n",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>slot</code>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "tag": "li",
+      "sourceHTML": "\n<p>The ⟦CODE0⟧ parameter is the slot where the foreign class being\n  constructed can be found. When the VM calls an allocate callback for a\n  foreign class, the class itself is already in slot 0, so you’ll pass 0 for\n  this too.</p>\n",
+      "originalInnerHTML": "\n<p>The <code>classSlot</code> parameter is the slot where the foreign class being\n  constructed can be found. When the VM calls an allocate callback for a\n  foreign class, the class itself is already in slot 0, so you’ll pass 0 for\n  this too.</p>\n",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>classSlot</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "li",
+      "sourceHTML": "\n<p>Finally, the ⟦CODE0⟧ parameter is the interesting one. Here, you pass in the\n  number of extra raw bytes of data you want the foreign instance to store.\n  This is the memory you get to play with from C.</p>\n",
+      "originalInnerHTML": "\n<p>Finally, the <code>size</code> parameter is the interesting one. Here, you pass in the\n  number of extra raw bytes of data you want the foreign instance to store.\n  This is the memory you get to play with from C.</p>\n",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>size</code>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "So, for example, if you wanted to create a foreign instance that contains eight\nbytes of C data, you’d call:",
+      "originalInnerHTML": "So, for example, if you wanted to create a foreign instance that contains eight\nbytes of C data, you’d call:",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "The value returned by ⟦CODE0⟧ is the raw pointer to the\nrequested bytes. You can cast that to whatever C type makes sense (as long as it\nfits within the requested number of bytes) and initialize it as you see fit.",
+      "originalInnerHTML": "The value returned by <code>wrenSetSlotNewForeign()</code> is the raw pointer to the\nrequested bytes. You can cast that to whatever C type makes sense (as long as it\nfits within the requested number of bytes) and initialize it as you see fit.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenSetSlotNewForeign()</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "Any parameters passed to the constructor are also available in subsequent slots\nin the slot array. That way you can initialize the foreign data based on values\npassed to the constructor from Wren.",
+      "originalInnerHTML": "Any parameters passed to the constructor are also available in subsequent slots\nin the slot array. That way you can initialize the foreign data based on values\npassed to the constructor from Wren.",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "After the allocate callback returns, the class’s constructor in Wren is run and\nexecution proceeds like normal. From here on out, within Wren, it appears you\nhave a normal instance of a class. It just happens to have some extra bytes\nhiding inside it that can be accessed from foreign methods.",
+      "originalInnerHTML": "After the allocate callback returns, the class’s constructor in Wren is run and\nexecution proceeds like normal. From here on out, within Wren, it appears you\nhave a normal instance of a class. It just happens to have some extra bytes\nhiding inside it that can be accessed from foreign methods.",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "sourceHTML": "Accessing Foreign Data <a class=\"header-anchor\" href=\"#accessing-foreign-data\" name=\"accessing-foreign-data\">#</a>",
+      "originalInnerHTML": "Accessing Foreign Data <a class=\"header-anchor\" href=\"#accessing-foreign-data\" name=\"accessing-foreign-data\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "Typically, the way you make use of the data stored in an instance of a foreign\nclass is through other foreign methods. Those are usually defined on the same\nforeign class, but can be defined on other classes as well. Wren doesn’t care.",
+      "originalInnerHTML": "Typically, the way you make use of the data stored in an instance of a foreign\nclass is through other foreign methods. Those are usually defined on the same\nforeign class, but can be defined on other classes as well. Wren doesn’t care.",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "Once you have a foreign instance in a slot, you can access the raw bytes it\nstores by calling:",
+      "originalInnerHTML": "Once you have a foreign instance in a slot, you can access the raw bytes it\nstores by calling:",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "You pass in the slot index containing the foreign object and it gives you back a\npointer to the raw memory the object wraps. As usual, the C API doesn’t do any\ntype or bounds checking, so it’s on you to make sure the object in that slot\nactually <em>is</em> an instance of a foreign class and contains as much memory as you\naccess.",
+      "originalInnerHTML": "You pass in the slot index containing the foreign object and it gives you back a\npointer to the raw memory the object wraps. As usual, the C API doesn’t do any\ntype or bounds checking, so it’s on you to make sure the object in that slot\nactually <em>is</em> an instance of a foreign class and contains as much memory as you\naccess.",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "Given that void pointer, you can now freely read and modify the data it points\nto. They’re your bits, Wren just holds them for you.",
+      "originalInnerHTML": "Given that void pointer, you can now freely read and modify the data it points\nto. They’re your bits, Wren just holds them for you.",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "h2",
+      "sourceHTML": "Freeing Resources <a class=\"header-anchor\" href=\"#freeing-resources\" name=\"freeing-resources\">#</a>",
+      "originalInnerHTML": "Freeing Resources <a class=\"header-anchor\" href=\"#freeing-resources\" name=\"freeing-resources\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "If your foreign instances are just holding memory and you’re OK with Wren’s\ngarbage collector managing the lifetime of that memory, then you’re done. Wren\nwill keep the bytes around as long as there is still a reference to them. When\nthe instance is no longer reachable, eventually the garbage collector will do\nits thing and free the memory.",
+      "originalInnerHTML": "If your foreign instances are just holding memory and you’re OK with Wren’s\ngarbage collector managing the lifetime of that memory, then you’re done. Wren\nwill keep the bytes around as long as there is still a reference to them. When\nthe instance is no longer reachable, eventually the garbage collector will do\nits thing and free the memory.",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "But, often, your foreign data refers to some resource whose lifetime needs to\nbe explicitly managed. For example, if you have a foreign object that wraps an\nopen file handle, you need to ensure that handle doesn’t get left open when the\nGC frees the foreign instance.",
+      "originalInnerHTML": "But, often, your foreign data refers to some resource whose lifetime needs to\nbe explicitly managed. For example, if you have a foreign object that wraps an\nopen file handle, you need to ensure that handle doesn’t get left open when the\nGC frees the foreign instance.",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "Of course, you can (and usually should) add a method on your foreign class, like\n⟦CODE0⟧ so the user can explicitly release the resource managed by the object.\nBut if they forget to do that and the object is no longer reachable, you want to\nmake sure the resource isn’t leaked.",
+      "originalInnerHTML": "Of course, you can (and usually should) add a method on your foreign class, like\n<code>close()</code> so the user can explicitly release the resource managed by the object.\nBut if they forget to do that and the object is no longer reachable, you want to\nmake sure the resource isn’t leaked.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>close()</code>"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "To that end, you can also provide a <em>finalizer</em> function when binding the\nforeign class. That’s the other callback in the WrenForeignClassMethods struct.\nIf you provide that callback, then Wren will invoke it when an instance of your\nforeign class is about to be freed by the garbage collector. This gives you one\nlast chance to clean up the object’s resources.",
+      "originalInnerHTML": "To that end, you can also provide a <em>finalizer</em> function when binding the\nforeign class. That’s the other callback in the WrenForeignClassMethods struct.\nIf you provide that callback, then Wren will invoke it when an instance of your\nforeign class is about to be freed by the garbage collector. This gives you one\nlast chance to clean up the object’s resources.",
+      "protected": []
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "Because this is called during the middle of a garbage collection, you do not\nhave unfettered access to the VM. It’s not like a normal foreign method where\nyou can monkey around with slots and other stuff. Doing that while the GC is\nrunning could leave Wren in a weird state.",
+      "originalInnerHTML": "Because this is called during the middle of a garbage collection, you do not\nhave unfettered access to the VM. It’s not like a normal foreign method where\nyou can monkey around with slots and other stuff. Doing that while the GC is\nrunning could leave Wren in a weird state.",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "Instead, the finalize callback’s signature is only:",
+      "originalInnerHTML": "Instead, the finalize callback’s signature is only:",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "Wren gives you the pointer to your foreign function’s memory, and that’s it. The\n<em>only</em> thing you should do inside a finalizer is release any external resources\nreferenced by that memory.",
+      "originalInnerHTML": "Wren gives you the pointer to your foreign function’s memory, and that’s it. The\n<em>only</em> thing you should do inside a finalizer is release any external resources\nreferenced by that memory.",
+      "protected": []
+    },
+    {
+      "id": "33",
+      "tag": "h2",
+      "sourceHTML": "A Full Example <a class=\"header-anchor\" href=\"#a-full-example\" name=\"a-full-example\">#</a>",
+      "originalInnerHTML": "A Full Example <a class=\"header-anchor\" href=\"#a-full-example\" name=\"a-full-example\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "That’s a lot to take in, so let’s walk through a full example of a foreign class\nwith a finalizer and a couple of methods. We’ll do a File class that wraps the\nC standard file API.",
+      "originalInnerHTML": "That’s a lot to take in, so let’s walk through a full example of a foreign class\nwith a finalizer and a couple of methods. We’ll do a File class that wraps the\nC standard file API.",
+      "protected": []
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "In Wren, the class we want looks like this:",
+      "originalInnerHTML": "In Wren, the class we want looks like this:",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "So you can create a new file given a path. Once you have one, you can write to\nit and then explicitly close it if you want. We also need to make sure the file\ngets closed if the user forgets to and the GC cleans up the object.",
+      "originalInnerHTML": "So you can create a new file given a path. Once you have one, you can write to\nit and then explicitly close it if you want. We also need to make sure the file\ngets closed if the user forgets to and the GC cleans up the object.",
+      "protected": []
+    },
+    {
+      "id": "37",
+      "tag": "h3",
+      "sourceHTML": "Setting up the VM <a class=\"header-anchor\" href=\"#setting-up-the-vm\" name=\"setting-up-the-vm\">#</a>",
+      "originalInnerHTML": "Setting up the VM <a class=\"header-anchor\" href=\"#setting-up-the-vm\" name=\"setting-up-the-vm\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "38",
+      "tag": "p",
+      "sourceHTML": "Over in the host, first we’ll set up the VM:",
+      "originalInnerHTML": "Over in the host, first we’ll set up the VM:",
+      "protected": []
+    },
+    {
+      "id": "39",
+      "tag": "h3",
+      "sourceHTML": "Binding the foreign class <a class=\"header-anchor\" href=\"#binding-the-foreign-class\" name=\"binding-the-foreign-class\">#</a>",
+      "originalInnerHTML": "Binding the foreign class <a class=\"header-anchor\" href=\"#binding-the-foreign-class\" name=\"binding-the-foreign-class\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "sourceHTML": "We give the VM two callbacks. The first is for wiring up the foreign class\nitself:",
+      "originalInnerHTML": "We give the VM two callbacks. The first is for wiring up the foreign class\nitself:",
+      "protected": []
+    },
+    {
+      "id": "41",
+      "tag": "p",
+      "sourceHTML": "When our binding callback is invoked for the File class, we return the allocate\nand finalize functions the VM should call. Allocation looks like:",
+      "originalInnerHTML": "When our binding callback is invoked for the File class, we return the allocate\nand finalize functions the VM should call. Allocation looks like:",
+      "protected": []
+    },
+    {
+      "id": "42",
+      "tag": "p",
+      "sourceHTML": "First we create the instance by calling ⟦CODE0⟧. We tell it to\nadd enough extra bytes to store a ⟦CODE1⟧ in it, which is C’s representation of\na file handle. We’re given back a pointer to the bytes. Since the file handle is\nitself a pointer, we end up with a double indirection, hence the ⟦CODE2⟧. In\nmost cases, you’ll just have a single ⟦CODE3⟧.",
+      "originalInnerHTML": "First we create the instance by calling <code>wrenSetSlotNewForeign()</code>. We tell it to\nadd enough extra bytes to store a <code>FILE*</code> in it, which is C’s representation of\na file handle. We’re given back a pointer to the bytes. Since the file handle is\nitself a pointer, we end up with a double indirection, hence the <code>FILE**</code>. In\nmost cases, you’ll just have a single <code>*</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenSetSlotNewForeign()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>FILE*</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>FILE**</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>*</code>"
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "tag": "p",
+      "sourceHTML": "We also pull the file path from the slot array. Then we tell C to create a new\nfile at that path. That gives us back a new file handle – a ⟦CODE0⟧ – and we\nstore that back into the foreign instance using ⟦CODE1⟧. Now we have a foreign\nobject that wraps an open file handle.",
+      "originalInnerHTML": "We also pull the file path from the slot array. Then we tell C to create a new\nfile at that path. That gives us back a new file handle – a <code>FILE*</code> – and we\nstore that back into the foreign instance using <code>*file</code>. Now we have a foreign\nobject that wraps an open file handle.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>FILE*</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>*file</code>"
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "tag": "p",
+      "sourceHTML": "The finalizer simply casts the foreign instance’s data back to the proper type\nand closes the file:",
+      "originalInnerHTML": "The finalizer simply casts the foreign instance’s data back to the proper type\nand closes the file:",
+      "protected": []
+    },
+    {
+      "id": "45",
+      "tag": "p",
+      "sourceHTML": "It uses this little utility function:",
+      "originalInnerHTML": "It uses this little utility function:",
+      "protected": []
+    },
+    {
+      "id": "46",
+      "tag": "p",
+      "sourceHTML": "This closes the file (if it’s not already closed) and also nulls out the file\nhandle so that we don’t try to use the file after it’s been closed.",
+      "originalInnerHTML": "This closes the file (if it’s not already closed) and also nulls out the file\nhandle so that we don’t try to use the file after it’s been closed.",
+      "protected": []
+    },
+    {
+      "id": "47",
+      "tag": "h3",
+      "sourceHTML": "Binding the foreign methods <a class=\"header-anchor\" href=\"#binding-the-foreign-methods\" name=\"binding-the-foreign-methods\">#</a>",
+      "originalInnerHTML": "Binding the foreign methods <a class=\"header-anchor\" href=\"#binding-the-foreign-methods\" name=\"binding-the-foreign-methods\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "48",
+      "tag": "p",
+      "sourceHTML": "That’s the foreign <em>class</em> part. Now we have a couple of foreign <em>methods</em> to\nhandle. The host tells the VM how to find them by giving Wren a pointer to this\nfunction:",
+      "originalInnerHTML": "That’s the foreign <em>class</em> part. Now we have a couple of foreign <em>methods</em> to\nhandle. The host tells the VM how to find them by giving Wren a pointer to this\nfunction:",
+      "protected": []
+    },
+    {
+      "id": "49",
+      "tag": "p",
+      "sourceHTML": "When Wren calls this, we look at the class and method name to figure out which\nmethod it’s binding, and then return a pointer to the appropriate function. The\nforeign method for writing to the file is:",
+      "originalInnerHTML": "When Wren calls this, we look at the class and method name to figure out which\nmethod it’s binding, and then return a pointer to the appropriate function. The\nforeign method for writing to the file is:",
+      "protected": []
+    },
+    {
+      "id": "50",
+      "tag": "p",
+      "sourceHTML": "We use ⟦CODE0⟧ to pull the foreign data out of the slot array.\nSince this method is called on the file itself, the foreign object is in slot\nzero. We take the resulting pointer and cast it to a pointer of the proper type.\nAgain, because our foreign data is <em>itself</em> a pointer, we get a pointer to a\npointer.",
+      "originalInnerHTML": "We use <code>wrenGetSlotForeign()</code> to pull the foreign data out of the slot array.\nSince this method is called on the file itself, the foreign object is in slot\nzero. We take the resulting pointer and cast it to a pointer of the proper type.\nAgain, because our foreign data is <em>itself</em> a pointer, we get a pointer to a\npointer.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenGetSlotForeign()</code>"
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "tag": "p",
+      "sourceHTML": "We do a little sanity checking to make sure the user isn’t writing to a file\nthey already closed. If not, we call ⟦CODE0⟧ to write to the file.",
+      "originalInnerHTML": "We do a little sanity checking to make sure the user isn’t writing to a file\nthey already closed. If not, we call <code>fwrite()</code> to write to the file.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>fwrite()</code>"
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "tag": "p",
+      "sourceHTML": "The other method is ⟦CODE0⟧ to let them explicitly close the file:",
+      "originalInnerHTML": "The other method is <code>close()</code> to let them explicitly close the file:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>close()</code>"
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "tag": "p",
+      "sourceHTML": "It uses the same helper we defined above. And that’s it, a complete foreign\nclass with a finalizer and a couple of foreign methods. In Wren, you can use it\nlike so:",
+      "originalInnerHTML": "It uses the same helper we defined above. And that’s it, a complete foreign\nclass with a finalizer and a couple of foreign methods. In Wren, you can use it\nlike so:",
+      "protected": []
+    },
+    {
+      "id": "54",
+      "tag": "p",
+      "sourceHTML": "Pretty neat, right? The resulting class looks and feels like a normal Wren\nclass, but it has the functionality and much of the performance of native C\ncode.",
+      "originalInnerHTML": "Pretty neat, right? The resulting class looks and feels like a normal Wren\nclass, but it has the functionality and much of the performance of native C\ncode.",
+      "protected": []
+    },
+    {
+      "id": "55",
+      "tag": "p",
+      "sourceHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">Configuring the VM →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">← Calling C from Wren</a>",
+      "originalInnerHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">Configuring the VM →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">← Calling C from Wren</a>",
+      "protected": []
+    }
+  ]
+}

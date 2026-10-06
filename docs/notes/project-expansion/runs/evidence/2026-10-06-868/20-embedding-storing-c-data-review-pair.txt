@@ -1,0 +1,322 @@
+1 [h1]
+EN: Storing C Data
+JA: Cデータの保存
+
+2 [p]
+EN: An embedded language often needs to work with native data. You may want a
+pointer to some memory managed in the C heap, or maybe you want to store a chunk
+of data more efficiently than Wren’s dynamism allows. You may want a Wren object
+that represents a native resource like a file handle or database connection.
+JA: 組み込み言語では、ネイティブのデータを扱う必要がよくあります。Cのヒープで管理するメモリーへのポインターが必要な場合や、Wrenの動的な仕組みより効率的にデータのまとまりを保存したい場合があるでしょう。ファイルハンドルやデータベース接続などのネイティブリソースを表すWrenオブジェクトが必要な場合もあります。
+
+3 [p]
+EN: For those cases, you can define a <strong>foreign class</strong>, a chimera whose state is
+half Wren and half C. It is a real Wren class with a name, constructor, and
+methods. You can define methods on it written in Wren, or <a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">foreign methods</a>
+written in C. It produces real Wren objects that you can pass around, do ⟦CODE0⟧
+checks on, etc. But it also wraps a blob of raw memory that is opaque to Wren
+but accessible from C.
+JA: そのような場合は、状態をWrenとCで半分ずつ持つ、混成の<strong>外部クラス</strong>を定義できます。名前、コンストラクター、メソッドを持つ、実際のWrenクラスです。Wrenで書いたメソッドや、Cで書いた<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">外部メソッド</a>を定義できます。渡したり、⟦CODE0⟧で検査したりできる、実際のWrenオブジェクトを作ります。それと同時に、Wrenからは不透明で、Cからはアクセスできる、生のメモリーのまとまりを包みます。
+
+4 [h2]
+EN: Defining a Foreign Class <a class="header-anchor" href="#defining-a-foreign-class" name="defining-a-foreign-class">#</a>
+JA: 外部クラスの定義 <a class="header-anchor" href="#defining-a-foreign-class" name="defining-a-foreign-class">#</a>
+
+5 [p]
+EN: You define one like so:
+JA: 次のように定義します。
+
+6 [p]
+EN: The ⟦CODE0⟧ keyword tells Wren to loop in the host application when it
+constructs instances of the class. The host tells Wren how many bytes of extra
+memory the foreign instance should contain and in return, Wren gives the host
+the opportunity to initialize that data.
+JA: ⟦CODE0⟧キーワードは、クラスのインスタンスを構築するとき、ホストアプリケーションを関与させるようWrenへ伝えます。ホストは、外部インスタンスに何バイトの追加メモリーを持たせるかWrenへ伝え、Wrenは、そのデータを初期化する機会をホストへ与えます。
+
+7 [p]
+EN: To talk to the host app, Wren needs a C function it can call when it constructs
+an instance of the foreign class. This function is found through a binding
+process similar to <a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/#binding-foreign-methods">how foreign methods are bound</a>. When you <a href="/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/">configure
+the VM</a>, you set the ⟦CODE0⟧ field in WrenConfiguration to point
+to a C callback you define. Its signature must be:
+JA: ホストアプリとやり取りするため、Wrenは外部クラスのインスタンスを構築するときに呼び出すC関数を必要とします。この関数は、<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/#binding-foreign-methods">外部メソッドの束縛</a>と似た処理で探します。<a href="/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/">VMを設定</a>するとき、WrenConfigurationの⟦CODE0⟧フィールドを、定義したCのコールバックへ向けます。そのシグネチャは、次のとおりでなければなりません。
+
+8 [p]
+EN: Wren invokes this callback once when a foreign class declaration is executed.
+Wren passes in the name of the module containing the foreign class, and the name
+of the class being declared. The host’s responsibility is to return one of these
+structs:
+JA: Wrenは、外部クラスの宣言を実行するとき、このコールバックを一度だけ呼び出します。外部クラスを含むモジュール名と、宣言するクラス名を渡します。ホストは、次の構造体を返す責任があります。
+
+9 [p]
+EN: It’s a pair of function pointers. The first, ⟦CODE0⟧, is called by Wren
+whenever an instance of the foreign class is created. (We’ll get to the optional
+⟦CODE1⟧ callback later.) The allocation callback has the same signature as a
+foreign method:
+JA: これは、二つの関数ポインターです。最初の⟦CODE0⟧は、外部クラスのインスタンスを作るたびにWrenが呼び出します。（省略可能な⟦CODE1⟧コールバックは、後で説明します。）割り当てコールバックのシグネチャは、外部メソッドと同じです。
+
+10 [h2]
+EN: Initializing an Instance <a class="header-anchor" href="#initializing-an-instance" name="initializing-an-instance">#</a>
+JA: インスタンスの初期化 <a class="header-anchor" href="#initializing-an-instance" name="initializing-an-instance">#</a>
+
+11 [p]
+EN: When you create an instance of a foreign class by calling one its
+<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#constructors">constructors</a>, Wren invokes the ⟦CODE0⟧ callback you gave it when binding
+the foreign class. Your primary responsibility in that callback is to tell Wren
+how many bytes of raw memory you need. You do that by calling:
+JA: <a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#constructors">コンストラクター</a>を呼び出して外部クラスのインスタンスを作ると、Wrenは、その外部クラスを束縛するときに渡した⟦CODE0⟧コールバックを呼び出します。そのコールバックで主に行うことは、何バイトの生のメモリーが必要かWrenへ伝えることです。次を呼び出します。
+
+12 [p]
+EN: Like other <a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">slot manipulation functions</a>, it both reads from and writes to
+the slot array. It has a few parameters to make it more general purpose since it
+can also be used in other foreign methods:
+JA: ほかの<a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">スロット操作関数</a>と同様に、スロット配列を読み書きします。ほかの外部メソッドでも使えるよう汎用性を持たせるため、いくつかの引数があります。
+
+13 [li]
+EN: 
+<p>The ⟦CODE0⟧ parameter is the destination slot where the new foreign object
+  should be placed. When you’re calling this in a foreign class’s allocate
+  callback, this should be 0.</p>
+
+JA: <p>⟦CODE0⟧引数は、新しい外部オブジェクトを置く、宛先スロットです。外部クラスの割り当てコールバックで呼び出すときは、0にします。</p>
+
+14 [li]
+EN: 
+<p>The ⟦CODE0⟧ parameter is the slot where the foreign class being
+  constructed can be found. When the VM calls an allocate callback for a
+  foreign class, the class itself is already in slot 0, so you’ll pass 0 for
+  this too.</p>
+
+JA: <p>⟦CODE0⟧引数は、構築する外部クラスがあるスロットです。VMが外部クラスの割り当てコールバックを呼び出すとき、クラス自身はすでにスロット0にあるので、これにも0を渡します。</p>
+
+15 [li]
+EN: 
+<p>Finally, the ⟦CODE0⟧ parameter is the interesting one. Here, you pass in the
+  number of extra raw bytes of data you want the foreign instance to store.
+  This is the memory you get to play with from C.</p>
+
+JA: <p>最後の⟦CODE0⟧引数が、注目する部分です。外部インスタンスに保存させたい、追加の生データのバイト数を渡します。Cから操作できるのが、このメモリーです。</p>
+
+16 [p]
+EN: So, for example, if you wanted to create a foreign instance that contains eight
+bytes of C data, you’d call:
+JA: 例えば、8バイトのCデータを持つ外部インスタンスを作るには、次のように呼び出します。
+
+17 [p]
+EN: The value returned by ⟦CODE0⟧ is the raw pointer to the
+requested bytes. You can cast that to whatever C type makes sense (as long as it
+fits within the requested number of bytes) and initialize it as you see fit.
+JA: ⟦CODE0⟧の戻り値は、要求したバイト領域への生のポインターです。（要求したバイト数に収まる限り）適切なCの型へキャストし、必要に応じて初期化できます。
+
+18 [p]
+EN: Any parameters passed to the constructor are also available in subsequent slots
+in the slot array. That way you can initialize the foreign data based on values
+passed to the constructor from Wren.
+JA: コンストラクターへ渡した引数も、スロット配列の後続スロットで使えます。そのため、Wrenからコンストラクターへ渡した値を使って、外部データを初期化できます。
+
+19 [p]
+EN: After the allocate callback returns, the class’s constructor in Wren is run and
+execution proceeds like normal. From here on out, within Wren, it appears you
+have a normal instance of a class. It just happens to have some extra bytes
+hiding inside it that can be accessed from foreign methods.
+JA: 割り当てコールバックが戻ると、Wrenで書いたクラスのコンストラクターを実行し、通常どおり処理を続けます。その後、Wren内では、通常のクラスのインスタンスに見えます。ただ、その内部には、外部メソッドからアクセスできる追加のバイト領域があります。
+
+20 [h2]
+EN: Accessing Foreign Data <a class="header-anchor" href="#accessing-foreign-data" name="accessing-foreign-data">#</a>
+JA: 外部データへのアクセス <a class="header-anchor" href="#accessing-foreign-data" name="accessing-foreign-data">#</a>
+
+21 [p]
+EN: Typically, the way you make use of the data stored in an instance of a foreign
+class is through other foreign methods. Those are usually defined on the same
+foreign class, but can be defined on other classes as well. Wren doesn’t care.
+JA: 外部クラスのインスタンスに保存したデータは、通常、ほかの外部メソッドから使います。そのメソッドは同じ外部クラスに定義することが多いですが、ほかのクラスに定義してもかまいません。Wrenは、どちらでも扱えます。
+
+22 [p]
+EN: Once you have a foreign instance in a slot, you can access the raw bytes it
+stores by calling:
+JA: スロットに外部インスタンスを入れたら、次を呼び出して、保存した生のバイト領域へアクセスできます。
+
+23 [p]
+EN: You pass in the slot index containing the foreign object and it gives you back a
+pointer to the raw memory the object wraps. As usual, the C API doesn’t do any
+type or bounds checking, so it’s on you to make sure the object in that slot
+actually <em>is</em> an instance of a foreign class and contains as much memory as you
+access.
+JA: 外部オブジェクトを含むスロットのインデックスを渡すと、そのオブジェクトが包む生のメモリーへのポインターを返します。いつもどおり、C APIは型や範囲を検査しません。そのスロット内のオブジェクトが、実際に外部クラスのインスタンスであり、アクセスする分のメモリーを持つことを確認するのは、利用者の責任です。
+
+24 [p]
+EN: Given that void pointer, you can now freely read and modify the data it points
+to. They’re your bits, Wren just holds them for you.
+JA: そのvoidポインターを使って、指す先のデータを自由に読み書きできます。データは利用者のもので、Wrenは、それを保持するだけです。
+
+25 [h2]
+EN: Freeing Resources <a class="header-anchor" href="#freeing-resources" name="freeing-resources">#</a>
+JA: リソースの解放 <a class="header-anchor" href="#freeing-resources" name="freeing-resources">#</a>
+
+26 [p]
+EN: If your foreign instances are just holding memory and you’re OK with Wren’s
+garbage collector managing the lifetime of that memory, then you’re done. Wren
+will keep the bytes around as long as there is still a reference to them. When
+the instance is no longer reachable, eventually the garbage collector will do
+its thing and free the memory.
+JA: 外部インスタンスがメモリーを保持するだけで、その寿命をWrenのガベージコレクターへ任せてよければ、これで完了です。Wrenは、参照がある限り、そのバイト領域を保持します。インスタンスへ到達できなくなれば、いずれガベージコレクターが処理し、メモリーを解放します。
+
+27 [p]
+EN: But, often, your foreign data refers to some resource whose lifetime needs to
+be explicitly managed. For example, if you have a foreign object that wraps an
+open file handle, you need to ensure that handle doesn’t get left open when the
+GC frees the foreign instance.
+JA: しかし、外部データは、寿命を明示的に管理する必要のあるリソースを参照することがよくあります。例えば、開いたファイルハンドルを包む外部オブジェクトでは、GCが外部インスタンスを解放するとき、そのハンドルが開いたまま残らないようにする必要があります。
+
+28 [p]
+EN: Of course, you can (and usually should) add a method on your foreign class, like
+⟦CODE0⟧ so the user can explicitly release the resource managed by the object.
+But if they forget to do that and the object is no longer reachable, you want to
+make sure the resource isn’t leaked.
+JA: もちろん、外部クラスに⟦CODE0⟧などのメソッドを追加して、オブジェクトが管理するリソースを利用者が明示的に解放できるようにできますし、通常は、そうするべきです。しかし、利用者が忘れ、オブジェクトへ到達できなくなった場合も、リソースが漏れないようにしたいでしょう。
+
+29 [p]
+EN: To that end, you can also provide a <em>finalizer</em> function when binding the
+foreign class. That’s the other callback in the WrenForeignClassMethods struct.
+If you provide that callback, then Wren will invoke it when an instance of your
+foreign class is about to be freed by the garbage collector. This gives you one
+last chance to clean up the object’s resources.
+JA: そのため、外部クラスを束縛するとき、<em>ファイナライザー</em>関数も指定できます。WrenForeignClassMethods構造体の、もう一方のコールバックです。指定すると、ガベージコレクターが外部クラスのインスタンスを解放する直前に、Wrenが呼び出します。オブジェクトのリソースを片付ける、最後の機会です。
+
+30 [p]
+EN: Because this is called during the middle of a garbage collection, you do not
+have unfettered access to the VM. It’s not like a normal foreign method where
+you can monkey around with slots and other stuff. Doing that while the GC is
+running could leave Wren in a weird state.
+JA: これはガベージコレクションの途中で呼び出すため、VMへ自由にはアクセスできません。通常の外部メソッドのように、スロットなどを操作することはできません。GCの実行中にそうすると、Wrenが不整合な状態になるおそれがあります。
+
+31 [p]
+EN: Instead, the finalize callback’s signature is only:
+JA: そのため、finalizeコールバックのシグネチャは、次だけです。
+
+32 [p]
+EN: Wren gives you the pointer to your foreign function’s memory, and that’s it. The
+<em>only</em> thing you should do inside a finalizer is release any external resources
+referenced by that memory.
+JA: Wrenが渡すのは、外部関数のメモリーへのポインターだけです。ファイナライザー内で行うべき<em>唯一</em>の処理は、そのメモリーから参照する、外部リソースの解放です。
+
+33 [h2]
+EN: A Full Example <a class="header-anchor" href="#a-full-example" name="a-full-example">#</a>
+JA: 完全な例 <a class="header-anchor" href="#a-full-example" name="a-full-example">#</a>
+
+34 [p]
+EN: That’s a lot to take in, so let’s walk through a full example of a foreign class
+with a finalizer and a couple of methods. We’ll do a File class that wraps the
+C standard file API.
+JA: 内容が多いので、ファイナライザーといくつかのメソッドを持つ、外部クラスの完全な例を見てみましょう。Cの標準ファイルAPIを包むFileクラスを作ります。
+
+35 [p]
+EN: In Wren, the class we want looks like this:
+JA: Wrenで作るクラスは、次のとおりです。
+
+36 [p]
+EN: So you can create a new file given a path. Once you have one, you can write to
+it and then explicitly close it if you want. We also need to make sure the file
+gets closed if the user forgets to and the GC cleans up the object.
+JA: パスを指定して新しいファイルを作れます。作成後は書き込むことができ、必要なら明示的に閉じられます。また、利用者が閉じ忘れ、GCがオブジェクトを片付ける場合も、ファイルが閉じるようにする必要があります。
+
+37 [h3]
+EN: Setting up the VM <a class="header-anchor" href="#setting-up-the-vm" name="setting-up-the-vm">#</a>
+JA: VMの準備 <a class="header-anchor" href="#setting-up-the-vm" name="setting-up-the-vm">#</a>
+
+38 [p]
+EN: Over in the host, first we’ll set up the VM:
+JA: ホスト側では、まずVMを準備します。
+
+39 [h3]
+EN: Binding the foreign class <a class="header-anchor" href="#binding-the-foreign-class" name="binding-the-foreign-class">#</a>
+JA: 外部クラスの束縛 <a class="header-anchor" href="#binding-the-foreign-class" name="binding-the-foreign-class">#</a>
+
+40 [p]
+EN: We give the VM two callbacks. The first is for wiring up the foreign class
+itself:
+JA: VMへ二つのコールバックを渡します。最初は、外部クラス自身を結び付けるためのものです。
+
+41 [p]
+EN: When our binding callback is invoked for the File class, we return the allocate
+and finalize functions the VM should call. Allocation looks like:
+JA: 束縛コールバックをFileクラスに対して呼び出したとき、VMが呼び出すべきallocate関数とfinalize関数を返します。割り当て処理は、次のようになります。
+
+42 [p]
+EN: First we create the instance by calling ⟦CODE0⟧. We tell it to
+add enough extra bytes to store a ⟦CODE1⟧ in it, which is C’s representation of
+a file handle. We’re given back a pointer to the bytes. Since the file handle is
+itself a pointer, we end up with a double indirection, hence the ⟦CODE2⟧. In
+most cases, you’ll just have a single ⟦CODE3⟧.
+JA: まず、⟦CODE0⟧を呼び出し、インスタンスを作ります。Cでファイルハンドルを表す⟦CODE1⟧を保存するのに十分な追加バイト数を指定します。そのバイト領域へのポインターを受け取ります。ファイルハンドル自身がポインターなので、二段階の間接参照となり、⟦CODE2⟧になります。通常は、単一の⟦CODE3⟧になります。
+
+43 [p]
+EN: We also pull the file path from the slot array. Then we tell C to create a new
+file at that path. That gives us back a new file handle – a ⟦CODE0⟧ – and we
+store that back into the foreign instance using ⟦CODE1⟧. Now we have a foreign
+object that wraps an open file handle.
+JA: スロット配列からファイルパスも取得します。次に、Cに、そのパスで新しいファイルを作らせます。新しいファイルハンドル、つまり⟦CODE0⟧を受け取り、⟦CODE1⟧を使って、外部インスタンスへ保存します。これで、開いたファイルハンドルを包む外部オブジェクトができました。
+
+44 [p]
+EN: The finalizer simply casts the foreign instance’s data back to the proper type
+and closes the file:
+JA: ファイナライザーは、外部インスタンスのデータを適切な型へキャストし直し、ファイルを閉じるだけです。
+
+45 [p]
+EN: It uses this little utility function:
+JA: 次の小さな補助関数を使います。
+
+46 [p]
+EN: This closes the file (if it’s not already closed) and also nulls out the file
+handle so that we don’t try to use the file after it’s been closed.
+JA: この関数は、まだ閉じていなければファイルを閉じ、ファイルハンドルをnullにします。これで、閉じたファイルを使おうとしないようにします。
+
+47 [h3]
+EN: Binding the foreign methods <a class="header-anchor" href="#binding-the-foreign-methods" name="binding-the-foreign-methods">#</a>
+JA: 外部メソッドの束縛 <a class="header-anchor" href="#binding-the-foreign-methods" name="binding-the-foreign-methods">#</a>
+
+48 [p]
+EN: That’s the foreign <em>class</em> part. Now we have a couple of foreign <em>methods</em> to
+handle. The host tells the VM how to find them by giving Wren a pointer to this
+function:
+JA: 外部<em>クラス</em>の部分は、これで完了です。次は、いくつかの外部<em>メソッド</em>を扱います。ホストは、次の関数へのポインターをWrenへ渡し、メソッドの探し方をVMへ伝えます。
+
+49 [p]
+EN: When Wren calls this, we look at the class and method name to figure out which
+method it’s binding, and then return a pointer to the appropriate function. The
+foreign method for writing to the file is:
+JA: Wrenがこれを呼び出すと、クラス名とメソッド名を調べ、束縛するメソッドを特定し、適した関数へのポインターを返します。ファイルへ書き込む外部メソッドは、次のとおりです。
+
+50 [p]
+EN: We use ⟦CODE0⟧ to pull the foreign data out of the slot array.
+Since this method is called on the file itself, the foreign object is in slot
+zero. We take the resulting pointer and cast it to a pointer of the proper type.
+Again, because our foreign data is <em>itself</em> a pointer, we get a pointer to a
+pointer.
+JA: ⟦CODE0⟧を使い、スロット配列から外部データを取得します。このメソッドは、ファイル自身を対象に呼び出すので、外部オブジェクトはスロット0にあります。受け取ったポインターを、適切な型のポインターへキャストします。ここでも、外部データ<em>自身</em>がポインターなので、ポインターへのポインターを受け取ります。
+
+51 [p]
+EN: We do a little sanity checking to make sure the user isn’t writing to a file
+they already closed. If not, we call ⟦CODE0⟧ to write to the file.
+JA: 利用者がすでに閉じたファイルへ書き込んでいないか、簡単に確認します。そうでなければ、⟦CODE0⟧を呼び出してファイルへ書き込みます。
+
+52 [p]
+EN: The other method is ⟦CODE0⟧ to let them explicitly close the file:
+JA: もう一つのメソッドは⟦CODE0⟧で、利用者が明示的にファイルを閉じられるようにします。
+
+53 [p]
+EN: It uses the same helper we defined above. And that’s it, a complete foreign
+class with a finalizer and a couple of foreign methods. In Wren, you can use it
+like so:
+JA: 上で定義したのと同じ補助関数を使います。これで、ファイナライザーといくつかの外部メソッドを持つ、完全な外部クラスができました。Wrenでは、次のように使えます。
+
+54 [p]
+EN: Pretty neat, right? The resulting class looks and feels like a normal Wren
+class, but it has the functionality and much of the performance of native C
+code.
+JA: 便利でしょう？ このクラスは、通常のWrenクラスと同じように見え、同じように扱えますが、ネイティブCコードの機能と、その性能の多くを備えています。
+
+55 [p]
+EN: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/">Configuring the VM →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">← Calling C from Wren</a>
+JA: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/">VMの設定 →</a><a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">← WrenからCを呼び出す</a>
