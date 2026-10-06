@@ -1,45 +1,14 @@
 ---
 title: "Awesome EOSIO"
-description: "A curated collection of resources and projects focused on EOSIO."
+description: "EOSIO learning resources, wallets, development and testing tools, block producer operations, community publications, and DApps."
 licenseSource: "github-DanailMinchev-awesome-eosio-readme-md"
+toc:
+  maxLevel: 4
 ---
 
 # Awesome EOSIO
 
-A curated collection of resources and projects focused on EOSIO.
-
-## Contents
-
-- [Official](#official)
-- [Learn](#learn)
-  - [Websites](#websites)
-  - [Books](#books)
-  - [Interactive learning, labs](#interactive-learning-labs)
-  - [Courses, workshops, webinars, videos and others](#courses-workshops-webinars-videos-and-others)
-- [Tools](#tools)
-  - [Wallets and Toolkits](#wallets-and-toolkits)
-  - [Account services](#account-services)
-  - [Block explorers, Voting portals](#block-explorers-voting-portals)
-  - [General](#general)
-- [Block Producers](#block-producers)
-- [Developers](#developers)
-  - [Environment](#environment)
-  - [Testnets](#testnets)
-  - [Libraries and Frameworks](#libraries-and-frameworks)
-  - [Developer Tools](#developer-tools)
-  - [Code examples](#code-examples)
-  - [Block Producer tools](#block-producer-tools)
-  - [Other in Developers](#other-in-developers)
-- [Community](#community)
-  - [Blogs](#blogs)
-  - [YouTube Channels](#youtube-channels)
-  - [Forums](#forums)
-- [EOSIO Ecosystem](#eosio-ecosystem)
-- [DApps](#dapps)
-  - [DApp directories](#dapp-directories)
-  - [Leasing platforms](#leasing-platforms)
-  - [Games](#games)
-  - [Other in DApps](#other-in-dapps)
+EOSIO is an open-source smart contract platform for building decentralized applications. The source describes the software as enabling businesses to rapidly build and deploy high-performance, high-security blockchain applications. This list covers learning resources, wallets, account and block explorer tools, development and testing libraries, block producer operations, community publications, and DApps.
 
 ## Official
 
@@ -57,14 +26,14 @@ EOSIO learning resources.
 
 ### Websites
 
-- [EOSIO Developer Portal](https://developers.eos.io/) - A great place to begin your EOSIO blockchain journey.
+- [EOSIO Developer Portal](https://developers.eos.io/) - An introduction to developing on the EOSIO blockchain.
 - [EOS Smart Contract Development Security Best Practices](https://github.com/slowmist/eos-smart-contract-security-best-practices/blob/master/README_EN.md)
 - [EOS Learning Resources - EOS Costa Rica](https://guide.eoscostarica.io/)
 - [ESC - EOS Study Center](https://eosvenezuela.io/esc.html)
 
 ### Books
 
-- [Learn EOS Development](https://learneos.dev/) - The up-to-date, in-depth, complete guide to dapps on the EOS blockchain.
+- [Learn EOS Development](https://learneos.dev/) - A guide to DApps on the EOS blockchain, described in the source as up-to-date, in-depth, and complete.
 
 ### Interactive learning, labs
 
@@ -121,10 +90,10 @@ Various software and tools.
 ### Block explorers, Voting portals
 
 - [EOS Network Monitor](http://eosnetworkmonitor.io/) - EOSIO Network Monitor by "CryptoLions". Useful for developers. Scatter friendly.
-- [eosflare](https://eosflare.io/) - Popular block explorer includes resource statistics, latest profile actions and statistics about "Top Name Bids" and "Top Voters".
+- [eosflare](https://eosflare.io/) - A block explorer, described in the source as popular, that includes resource statistics, latest profile actions and statistics about "Top Name Bids" and "Top Voters".
 - [EOS Tracker](https://eostracker.io/) - Open Source block explorer includes producers information and account information.
   - [EOSEssentials/EOSTracker](https://github.com/EOSEssentials/EOSTracker) - Official GitHub.
-- [Bloks](https://bloks.io/) - Fast block explorer, can be used for voting. Includes information about block producers and tokens.
+- [Bloks](https://bloks.io/) - A block explorer, described in the source as fast, that can be used for voting. Includes information about block producers and tokens.
 
 - [EOSX](https://www.eosx.io/) - Block explorer. Various side chains are supported.
 
@@ -169,7 +138,7 @@ All about development on EOSIO platform.
 #### Core
 
 - [EOSIO/eos](https://github.com/EOSIO/eos) - Official EOSIO GitHub repository.
-- [EOSIO/eos-vm](https://github.com/EOSIO/eos-vm) - A Low-Latency, High Performance and Extensible WebAssembly Backend Library.
+- [EOSIO/eos-vm](https://github.com/EOSIO/eos-vm) - A WebAssembly backend library described in the source as low-latency, high-performance, and extensible.
 
 #### API libraries
 
@@ -203,7 +172,7 @@ All about development on EOSIO platform.
 - [EOSIO/eosio-reference-ios-authenticator-app](https://github.com/EOSIO/eosio-reference-ios-authenticator-app) - iOS reference app demonstrating inter-application transaction signing for EOSIO blockchain apps.
 - [EOSIO/ual-scatter](https://github.com/EOSIO/ual-scatter) - Authenticator meant to be used with Scatter and Universal Authenticator Library.
 - [greymass/ual-anchor](https://github.com/greymass/ual-anchor) - Authenticator meant to be used with Anchor and Universal Authenticator Library.
-- [greymass/anchor-link](https://github.com/greymass/anchor-link) - Persistent, fast and secure signature provider for EOSIO chains built on top of EOSIO Signing Requests (EEP-7).
+- [greymass/anchor-link](https://github.com/greymass/anchor-link) - A persistent signature provider for EOSIO chains built on EOSIO Signing Requests (EEP-7), described in the source as fast and secure.
 - [greymass/eosio-signing-request](https://github.com/greymass/eosio-signing-request) - Library to assist in creating and digesting EOSIO Signing Requests (ESR).
 - [greymass/eosio-signing-request-java](https://github.com/greymass/eosio-signing-request-java) - Java wrapper for the EOSIO Signing Request protocol.
 - [eosdac/ual-wax](https://github.com/eosdac/ual-wax) - UAL authenticator for Wax Cloud Wallet.
@@ -217,7 +186,7 @@ All about development on EOSIO platform.
 - [EOSIO Light API](https://github.com/cc32d9/eosio_light_api) - Historic information about EOSIO blockchain accounts and token balances.
 
 #### Testing
-- [EOSIO/eosio.contracts](https://github.com/EOSIO/eosio.contracts/tree/master/tests) - Official C++ system contract test suite (notoriously difficult to use).
+- [EOSIO/eosio.contracts](https://github.com/EOSIO/eosio.contracts/tree/master/tests) - Official C++ system contract test suite, described in the source as difficult to use.
 - [tokenika/eosfactory](https://github.com/tokenika/eosfactory) - Python-based EOSIO smart-contract development & unit testing framework.
 - [infeos](https://github.com/infiniteXLabs/infeos) - JavaScript based framework for development, building, deploying and unit testing EOSIO dApps.
 - [EOSLIME](https://github.com/LimeChain/eoslime) - Truffle like framework for development, deployment and testing on EOS blockchains.
@@ -234,7 +203,7 @@ All about development on EOSIO platform.
 ### Developer Tools
 
 - [EOSIO/eosio.cdt](https://github.com/EOSIO/eosio.cdt) - EOSIO.CDT (Contract Development Toolkit) is a suite of tools used to build EOSIO contracts.
-- [Blanc](https://github.com/haderech/blanc) - A toolchain for building WebAssembly-based blockchain contracts. Currently, Blanc supports EOSIO and CosmWasm (experimental).
+- [Blanc](https://github.com/haderech/blanc) - A toolchain for building WebAssembly-based blockchain contracts. At the time of the source, Blanc supports EOSIO and CosmWasm (experimental).
 - [EOSIO/ricardian-template-toolkit](https://github.com/EOSIO/ricardian-template-toolkit) - Renderer for the Ricardian Contract specification.
 - [EOSIO Ethereum Virtual Machine (EVM)](https://github.com/jafri/eosio.evm) - Ethereum Virtual Machine on EOSIO.
 - [Elliptic curve cryptography functions (ECC)](https://github.com/EOSIO/eosjs-ecc) - Private Key, Public Key, Signature, AES, Encryption / Decryption.
@@ -243,7 +212,7 @@ All about development on EOSIO platform.
 - [Octopus](https://github.com/pventuzelo/octopus) - Security Analysis tool for WebAssembly and Blockchain Smart Contracts (BTC/ETH/NEO/EOS).
 - [greymass/eosio-resources](https://github.com/greymass/eosio-resources) - Tool to assist in network resource calculations.
 - [greymass/abi2core](https://github.com/greymass/abi2core) - Command line utility to convert ABI definitions to greymass/eosio type definitions.
-- [maxifom/eos-abigen](https://github.com/maxifom/eos-abigen) - Typescript and Golang code generator for generating type-safe client and tables for EOS-compatible contracts.
+- [maxifom/eos-abigen](https://github.com/maxifom/eos-abigen) - TypeScript and Go code generator for generating type-safe client and tables for EOS-compatible contracts.
 - [manh-vv/eosjs-name](https://github.com/manh-vv/eosjs-name) - Convert an Eosio name to uint64 and back.
 - [blockchain-etl/eos-etl](https://github.com/blockchain-etl/eos-etl) - Connector for Google's BigQuery Public Datasets.
 
@@ -303,7 +272,7 @@ All about development on EOSIO platform.
 
 - [EOS Nation](https://www.youtube.com/channel/UCXgAY9DyooykrubRXw3xK1g) - EOS Hot Sauce, ENF, tech, and community content.
 - [Helios](https://www.youtube.com/c/HeliosEOSIO) - Dedicated to growing EOS, interviews and spotlights.
-- [EOS Go](https://www.youtube.com/c/EOSGo) - ESO Go community meetings, podcasts, live streams. News and discussions.
+- [EOS Go](https://www.youtube.com/c/EOSGo) - EOS Go community meetings, podcasts, live streams. News and discussions.
 - [Investing with a difference](https://www.youtube.com/channel/UC6SxkB3kM4uNs_yIU0Lqo_w) - EOSIO ecosystem overview, news and market discussions.
 - [nsjames](https://www.youtube.com/user/grandmoren1) - Scatter related content.
 - [Crypto Dunker](https://www.youtube.com/user/clamantfever) - Crypto Dunker channel. EOSIO DApps related content and news.
@@ -353,5 +322,5 @@ DApp resources.
 ### Other in DApps
 
 - [EveripediaNetwork/Everipedia](https://github.com/EveripediaNetwork/Everipedia) - The Everipedia Network protocol.
-- [eosfilestore](https://github.com/grigio/eosfilestore) - Immutable, censorship resistant, cheap, file storage on EOSIO blockchain.
+- [eosfilestore](https://github.com/grigio/eosfilestore) - File storage on the EOSIO blockchain, described in the source as immutable, censorship-resistant, and inexpensive.
 - [kesar/decentwitter](https://github.com/kesar/decentwitter) - Decentralized Twitter on EOS.

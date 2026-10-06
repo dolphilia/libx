@@ -6026,3 +6026,26 @@
 - 次163 github-DanailMinchev-awesome-eosio-readme-md。上記worktreeで台帳とraw/EN/JAhashを確認し全文読みから再開。表示tab/preview終了、viewport復元済み。
 
 - 完了後監査の初回は、JSON保存時に省略されるundefinedキーとメモリ上のundefinedキーとの差をdeepEqualが検出して中断（本文/経路/hashの差ではない）。JSON正規化して保存済み入力と再比較しexit0/完全一致を確認。修正実行helper e1756e5e14f2bd46f2ac9156ae82d54772cbfb89b7c08caae4f2c7be3aec286d、確認receipt501131。検査を無効化していない。
+
+### バッチ162送信確認・163全文読了 (2026-10-06T19:49:29.382Z)
+
+- 162 commit 7bfd25c47904e316f27ccbf43e4017652658b663 → origin/codex/awesome-editorial-isolated-20261007 push exit0（d596d2）、ls-remoteとHEAD同一（676e09）。配信対象外で外部公開なし。
+- 163 EOSIO固定raw278/旧EN272/旧JA272（合計822単位）を全行・全文読了。入力hashは台帳と一致、tool出力省略なし。proof 682b4e8ddfffaa9d4469c335c33ecd3dbd7a184660ea37f32e22fa62c3eb329f。旧JA説明の大部分が英語残存、次は分類→EN編集→JA全文翻訳。本文は未変更、未検証対象はinventoriedのまま。
+
+- 2026-10-06T19:54:36.113Z batch163全文編集・3別パス全文レビュー完了（raw278/旧英日各272→EN241/JA317単位、194list/39heading）。overlayと実英日本文を反映。proof 2b11a7ad701311e33f21b551a009060fcd42ad5bdff093b6540069babdbe107f。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified221→commit/push。
+
+- 2026-10-06T19:57:47.331Z batch163-generation-gates-passed-build-pending。220完了817残保留4。進捗de5eb6e08320670dff2ae1898e4f6abbee3d87588d98813551d2d9a9d9cfb0eb。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML39見出し194list/英日PCmobile実UI→global→verified221/commit/push。
+
+- 2026-10-06T19:58:54.063Z batch163-final-build-running。220完了817残保留4。進捗bd13c4c150f5d75c928174c2294627dd15ca93a097062410bfc94b2e6955ecd1。次build session31139のexitを確認。成功後 /tmp/awesome-batch163-final-verify-build.mjs と final-html.mjs → awesome:validate-editorial-html対象 → preview英日PC/mobile → global/verified221/commit/push。
+
+- 2026-10-06T20:06:22.872Z batch163-four-ui-content-reviewed-global-pending。220完了817残保留4。進捗5d65485291946c9c61f2fdad51d233bb94beeef5ae7aeaa7be11201d47630e27。次全1037台帳global/全2074hash/diff→verified221→commit/push/hash照合→164 Stacks Chain fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T20:07:25.054Z batch163-verified221-save-push-pending。221完了816残保留4。進捗cb5db9d8d6c9a9a5dc375b622823e1cfdab7ec9a46fb1349b3024b26327255dc。次221完了816残保留4。EOSIO全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次164 github-friedger-awesome-stacks-chain-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ163 EOSIO検証完了・保存準備 (2026-10-06T20:07:45.579Z)
+
+- 固定raw278/旧EN272/旧JA272を全文読み、EN編集、JA本文241単位を全文翻訳。3別パス全文レビュー完了。194項目・39見出し・全主題URL/機能条件を保持。手動TOC/投稿案内/ロゴ等を除去、EOSIO定義復元、原文評価は帰属表示、8 H4用途階層を残してtoc.maxLevel4。JA38旧ID別名保持。EN/JAhash b06e4b800204d1c0c4d69ff882cce2cb663099dde80e10afb6deb1882d003d4d / e1b3a7b9463e4b689016ca3e3e93f45fdd59cb111f65a6ccea9d5d4085157b8a。使用モデルは現Codexセッション、APIモデル識別子は取得不能、委任/ローカルLLMなし。
+- replay2回各1037組2074文書、正規8gate、fresh awesome/systems統合全7子build、開始/現在/manifest入力一致、HTML39見出し194項目・38カテゴリ76目次・全旧有用ID・CC0保全、英日PC1440×1000/mobile390×844の冒頭/API H4/出典全体目視、旧ID/言語/版往復/次Stacks遷移実操作、全1037global exit0(8fc833)、全2074hash/diff合格。verified221/残816/保留4。完了後入力一致でglobal証拠再利用。
+- 保存補助スクリプトはhelperProofキー未定義で一度失敗。保存前例外で台帳未変更、既存helpersキーに修正して再実行。検査の無効化なし。UI見出し取得/End操作の失敗も実表示証拠に記録し、実到達後のみ合格。
+- workflow送信対象main,codex/pages-preview/**,codex/quality/**外のorigin/codex/awesome-editorial-isolated-20261007へcommit/pushする。現時点は保存準備、送信成功を先取りしない。確認用tab/preview終了、viewport復元済み。timestampのみ生成差分はHEADへ戻した。元mainの別作業差分は保持。
+- 次164 github-friedger-awesome-stacks-chain-readme-md。分離worktree /private/tmp/libx-awesome-editorial-20261007で固定raw/旧EN/旧JA全文→編集→3全文review→生成/保全/build/UI/global。入力抽出のみ実施（raw171/旧EN166/旧JA166）、本文未変更・未読了。
