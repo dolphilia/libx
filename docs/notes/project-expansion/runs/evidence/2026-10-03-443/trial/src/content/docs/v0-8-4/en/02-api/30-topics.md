@@ -1,0 +1,17 @@
+---
+title: "Topics"
+licenseSource: "xxhash-fixed"
+---
+
+<div class="contents xxhash-api-trial">&#10;<div class="textblock">Here is a list of all topics with brief descriptions:</div><div class="directory">&#10;<table class="directory">&#10;<tbody><tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/18-group__dispatch/" target="_self">x86 Dispatcher</a></td><td class="desc"></td></tr>&#10;<tr id="row_1_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/20-group__public/" target="_self">Public API</a></td><td class="desc"></td></tr>&#10;<tr id="row_1_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/12-group___x_x_h32__family/" target="_self">XXH32 family</a></td><td class="desc"></td></tr>&#10;<tr id="row_1_1_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/16-group___x_x_h64__family/" target="_self">XXH64 family</a></td><td class="desc"></td></tr>&#10;<tr id="row_1_2_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/14-group___x_x_h3__family/" target="_self">XXH3 family</a></td><td class="desc"></td></tr>&#10;<tr id="row_2_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/21-group__tuning/" target="_self">Tuning parameters</a></td><td class="desc"></td></tr>&#10;<tr id="row_3_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/19-group__impl/" target="_self">Implementation</a></td><td class="desc"></td></tr>&#10;<tr id="row_3_0_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/13-group___x_x_h32__impl/" target="_self">XXH32 implementation</a></td><td class="desc"></td></tr>&#10;<tr id="row_3_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/17-group___x_x_h64__impl/" target="_self">XXH64 implementation</a></td><td class="desc"></td></tr>&#10;<tr id="row_3_2_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&nbsp;</span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/15-group___x_x_h3__impl/" target="_self">XXH3 implementation</a></td><td class="desc"></td></tr>&#10;</tbody></table>&#10;</div><!-- directory -->&#10;</div>
+
+> 文書専用ライセンスの表記が確認できないため、ソフトウェア本体のBSD 2-Clause Licenseを文書にも適用する運用判断で掲載しています。原文英語の非公式形式変換・公式Doxyfileからの生成と形式変換。
+
+[固定原ソース](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h)
+
+
+## Source and notices
+
+[api-header](/docs/xxhash-trial/v0-8-4/en/03-notices/api-header/) · [dispatch-c](/docs/xxhash-trial/v0-8-4/en/03-notices/dispatch-c/) · [dispatch-h](/docs/xxhash-trial/v0-8-4/en/03-notices/dispatch-h/)
+
+[Fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h)

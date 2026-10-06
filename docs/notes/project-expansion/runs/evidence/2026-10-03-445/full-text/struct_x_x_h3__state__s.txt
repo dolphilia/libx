@@ -1,0 +1,448 @@
+
+
+
+ 
+
+Data Fields 
+ XXH64_hash_t
+ 
+acc
+ [8] 
+ unsigned char 
+customSecret
+ [
+XXH3_SECRET_DEFAULT_SIZE
+] 
+ unsigned char 
+buffer
+ [XXH3_INTERNALBUFFER_SIZE] 
+ XXH32_hash_t
+ 
+bufferedSize 
+ XXH32_hash_t
+ 
+useSeed 
+ size_t 
+nbStripesSoFar 
+ XXH64_hash_t
+ 
+totalLen 
+ size_t 
+nbStripesPerBlock 
+ size_t 
+secretLimit 
+ XXH64_hash_t
+ 
+seed 
+ XXH64_hash_t
+ 
+reserved64 
+ const unsigned char * 
+extSecret 
+
+
+
+
+Field Documentation
+
+
+
+
+
+◆ 
+acc
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_state_s::acc[8]
+
+         
+      
+
+
+
+
+The 8 accumulators. See 
+XXH32_state_s::acc
+ and 
+XXH64_state_s::acc
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+customSecret
+
+
+
+
+
+
+      
+
+         
+          
+unsigned char XXH3_state_s::customSecret[
+XXH3_SECRET_DEFAULT_SIZE
+]
+
+         
+      
+
+
+
+
+Used to store a custom secret generated from a seed. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+buffer
+
+
+
+
+
+
+      
+
+         
+          
+unsigned char XXH3_state_s::buffer[XXH3_INTERNALBUFFER_SIZE]
+
+         
+      
+
+
+
+
+The internal buffer. 
+See also XXH32_state_s::mem32 
+
+
+
+
+
+
+
+
+
+
+◆ 
+bufferedSize
+
+
+
+
+
+
+      
+
+         
+          
+XXH32_hash_t
+ XXH3_state_s::bufferedSize
+
+         
+      
+
+
+
+
+The amount of memory in 
+buffer
+, 
+See also XXH32_state_s::memsize 
+
+
+
+
+
+
+
+
+
+
+◆ 
+useSeed
+
+
+
+
+
+
+      
+
+         
+          
+XXH32_hash_t
+ XXH3_state_s::useSeed
+
+         
+      
+
+
+
+
+Reserved field. Needed for padding on 64-bit. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+nbStripesSoFar
+
+
+
+
+
+
+      
+
+         
+          
+size_t XXH3_state_s::nbStripesSoFar
+
+         
+      
+
+
+
+
+Number or stripes processed. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+totalLen
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_state_s::totalLen
+
+         
+      
+
+
+
+
+Total length hashed. 64-bit even on 32-bit targets. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+nbStripesPerBlock
+
+
+
+
+
+
+      
+
+         
+          
+size_t XXH3_state_s::nbStripesPerBlock
+
+         
+      
+
+
+
+
+Number of stripes per block. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+secretLimit
+
+
+
+
+
+
+      
+
+         
+          
+size_t XXH3_state_s::secretLimit
+
+         
+      
+
+
+
+
+Size of 
+customSecret
+ or 
+extSecret
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+seed
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_state_s::seed
+
+         
+      
+
+
+
+
+Seed for _withSeed variants. Must be zero otherwise, 
+See also XXH3_INITSTATE()
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+reserved64
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_state_s::reserved64
+
+         
+      
+
+
+
+
+Reserved field. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+extSecret
+
+
+
+
+
+
+      
+
+         
+          
+const unsigned char* XXH3_state_s::extSecret
+
+         
+      
+
+
+
+
+Reference to an external secret for the _withSecret variants, NULL for other variants. 
+
+
+
+
+
+
+
+
+The documentation for this struct was generated from the following file:
+
+ xxhash.h 
+
+

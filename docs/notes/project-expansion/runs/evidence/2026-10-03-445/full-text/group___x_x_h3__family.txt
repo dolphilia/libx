@@ -1,0 +1,4195 @@
+
+
+
+ 
+
+Data Structures 
+ struct  
+XXH128_hash_t 
+  
+The return value from 128-bit hashes.  
+More...
+ 
+ struct  
+XXH128_canonical_t 
+
+
+ 
+
+Macros 
+ #define 
+XXH_SSE2
+   1 
+ #define 
+XXH_AVX2
+   2 
+ #define 
+XXH_AVX512
+   3 
+ #define 
+XXH_NEON
+   4 
+ #define 
+XXH_VSX
+   5 
+ #define 
+XXH_SVE
+   6 
+ #define 
+XXH_LSX
+   7 
+ #define 
+XXH_LASX
+   8 
+ #define 
+XXH_RVV
+   9 
+ #define 
+XXH3_SECRET_SIZE_MIN
+   136 
+
+
+ 
+
+Typedefs 
+ typedef struct 
+XXH3_state_s
+ 
+XXH3_state_t 
+  
+The opaque state struct for the XXH3 streaming API.  
+ 
+
+
+ 
+
+Functions 
+ XXH64_hash_t
+ 
+XXH3_64bits
+ (const void *input, size_t length) 
+  
+Calculates 64-bit unseeded variant of XXH3 hash of 
+input
+.  
+ 
+ XXH64_hash_t
+ 
+XXH3_64bits_withSeed
+ (const void *input, size_t length, 
+XXH64_hash_t
+ seed) 
+  
+Calculates 64-bit seeded variant of XXH3 hash of 
+input
+.  
+ 
+ XXH64_hash_t
+ 
+XXH3_64bits_withSecret
+ (const void *data, size_t len, const void *secret, size_t secretSize) 
+  
+Calculates 64-bit variant of XXH3 with a custom "secret".  
+ 
+ XXH3_state_t
+ * 
+XXH3_createState
+ (void) 
+  
+Allocate an 
+XXH3_state_t
+.  
+ 
+ XXH_errorcode
+ 
+XXH3_freeState
+ (
+XXH3_state_t
+ *statePtr) 
+  
+Frees an 
+XXH3_state_t
+.  
+ 
+ void 
+XXH3_copyState
+ (
+XXH3_state_t
+ *dst_state, const 
+XXH3_state_t
+ *src_state) 
+  
+Copies one 
+XXH3_state_t
+ to another.  
+ 
+ XXH_errorcode
+ 
+XXH3_64bits_reset
+ (
+XXH3_state_t
+ *statePtr) 
+  
+Resets an 
+XXH3_state_t
+ to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH3_64bits_reset_withSeed
+ (
+XXH3_state_t
+ *statePtr, 
+XXH64_hash_t
+ seed) 
+  
+Resets an 
+XXH3_state_t
+ with 64-bit seed to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH3_64bits_reset_withSecret
+ (
+XXH3_state_t
+ *statePtr, const void *secret, size_t secretSize) 
+  
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH3_64bits_update
+ (
+XXH3_state_t
+ *statePtr, const void *input, size_t length) 
+  
+Consumes a block of 
+input
+ to an 
+XXH3_state_t
+.  
+ 
+ XXH64_hash_t
+ 
+XXH3_64bits_digest
+ (const 
+XXH3_state_t
+ *statePtr) 
+  
+Returns the calculated XXH3 64-bit hash value from an 
+XXH3_state_t
+.  
+ 
+ XXH128_hash_t
+ 
+XXH3_128bits
+ (const void *data, size_t len) 
+  
+Calculates 128-bit unseeded variant of XXH3 of 
+data
+.  
+ 
+ XXH128_hash_t
+ 
+XXH3_128bits_withSeed
+ (const void *data, size_t len, 
+XXH64_hash_t
+ seed) 
+  
+Calculates 128-bit seeded variant of XXH3 hash of 
+data
+.  
+ 
+ XXH128_hash_t
+ 
+XXH3_128bits_withSecret
+ (const void *data, size_t len, const void *secret, size_t secretSize) 
+  
+Calculates 128-bit variant of XXH3 with a custom "secret".  
+ 
+ XXH_errorcode
+ 
+XXH3_128bits_reset
+ (
+XXH3_state_t
+ *statePtr) 
+  
+Resets an 
+XXH3_state_t
+ to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH3_128bits_reset_withSeed
+ (
+XXH3_state_t
+ *statePtr, 
+XXH64_hash_t
+ seed) 
+  
+Resets an 
+XXH3_state_t
+ with 64-bit seed to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH3_128bits_reset_withSecret
+ (
+XXH3_state_t
+ *statePtr, const void *secret, size_t secretSize) 
+  
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH3_128bits_update
+ (
+XXH3_state_t
+ *statePtr, const void *input, size_t length) 
+  
+Consumes a block of 
+input
+ to an 
+XXH3_state_t
+.  
+ 
+ XXH128_hash_t
+ 
+XXH3_128bits_digest
+ (const 
+XXH3_state_t
+ *statePtr) 
+  
+Returns the calculated XXH3 128-bit hash value from an 
+XXH3_state_t
+.  
+ 
+ int 
+XXH128_isEqual
+ (
+XXH128_hash_t
+ h1, 
+XXH128_hash_t
+ h2) 
+  
+Check equality of two 
+XXH128_hash_t
+ values.  
+ 
+ int 
+XXH128_cmp
+ (const void *h128_1, const void *h128_2) 
+  
+Compares two 
+XXH128_hash_t
+.  
+ 
+ void 
+XXH128_canonicalFromHash
+ (
+XXH128_canonical_t
+ *dst, 
+XXH128_hash_t
+ hash) 
+  
+Converts an 
+XXH128_hash_t
+ to a big endian 
+XXH128_canonical_t
+.  
+ 
+ XXH128_hash_t
+ 
+XXH128_hashFromCanonical
+ (const 
+XXH128_canonical_t
+ *src) 
+  
+Converts an 
+XXH128_canonical_t
+ to a native 
+XXH128_hash_t
+.  
+ 
+ XXH_errorcode
+ 
+XXH3_64bits_reset_withSecretandSeed
+ (
+XXH3_state_t
+ *statePtr, const void *secret, size_t secretSize, 
+XXH64_hash_t
+ seed64) 
+  
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash.  
+ 
+ XXH128_hash_t
+ 
+XXH3_128bits_withSecretandSeed
+ (const void *input, size_t length, const void *secret, size_t secretSize, 
+XXH64_hash_t
+ seed64) 
+  
+Calculates 128-bit seeded variant of XXH3 hash of 
+data
+.  
+ 
+ XXH128_hash_t
+ 
+XXH128
+ (const void *data, size_t len, 
+XXH64_hash_t
+ seed) 
+  
+Calculates the 128-bit hash of 
+data
+ using XXH3.  
+ 
+ XXH_errorcode
+ 
+XXH3_128bits_reset_withSecretandSeed
+ (
+XXH3_state_t
+ *statePtr, const void *secret, size_t secretSize, 
+XXH64_hash_t
+ seed64) 
+  
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH3_generateSecret
+ (void *secretBuffer, size_t secretSize, const void *customSeed, size_t customSeedSize) 
+  
+Derive a high-entropy secret from any user-defined content, named customSeed.  
+ 
+ void 
+XXH3_generateSecret_fromSeed
+ (void *secretBuffer, 
+XXH64_hash_t
+ seed) 
+  
+Generate the same secret as the _withSeed() variants.  
+ 
+
+
+
+
+Detailed Description
+
+
+
+
+
+XXH3 is a more recent hash algorithm featuring:
+
+ Improved speed for both small and large inputs 
+ True 64-bit and 128-bit outputs 
+ SIMD acceleration 
+ Improved 32-bit viability 
+
+
+
+Speed analysis methodology is explained here:
+
+
+https://fastcompression.blogspot.com/2019/03/presenting-xxh3.html
+
+
+Compared to XXH64, expect XXH3 to run approximately ~2x faster on large inputs and >3x faster on small ones, exact differences vary depending on platform.
+
+
+XXH3's speed benefits greatly from SIMD and 64-bit arithmetic, but does not require it. Most 32-bit and 64-bit targets that can run XXH32 smoothly can run XXH3 at competitive speeds, even without vector support. Further details are explained in the implementation.
+
+
+XXH3 has a fast scalar implementation, but it also includes accelerated SIMD implementations for many common platforms:
+
+ AVX512 
+ AVX2 
+ SSE2 
+ ARM NEON 
+ WebAssembly SIMD128 
+ POWER8 VSX 
+ s390x ZVector This can be controlled via the 
+XXH_VECTOR
+ macro, but it automatically selects the best version according to predefined macros. For the x86 family, an automatic runtime dispatcher is included separately in 
+xxh_x86dispatch.c
+. 
+
+
+
+XXH3 implementation is portable: it has a generic C90 formulation that can be compiled on any platform, all implementations generate exactly the same hash value on all platforms. Starting from v0.8.0, it's also labelled "stable", meaning that any future version will also generate the same hash value.
+
+
+XXH3 offers 2 variants, _64bits and _128bits.
+
+
+When only 64 bits are needed, prefer invoking the _64bits variant, as it reduces the amount of mixing, resulting in faster speed on small inputs. It's also generally simpler to manipulate a scalar return type than a struct.
+
+
+The API supports one-shot hashing, streaming mode, and custom secrets. 
+
+
+
+Macro Definition Documentation
+
+
+
+
+
+◆ 
+XXH_SSE2
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_SSE2   1
+
+         
+      
+
+
+
+
+SSE2 for Pentium 4, Opteron, all x86_64. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_AVX2
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_AVX2   2
+
+         
+      
+
+
+
+
+AVX2 for Haswell and Bulldozer 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_AVX512
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_AVX512   3
+
+         
+      
+
+
+
+
+AVX512 for Skylake and Icelake 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_NEON
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_NEON   4
+
+         
+      
+
+
+
+
+NEON for most ARMv7-A, all AArch64, and WASM SIMD128 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_VSX
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_VSX   5
+
+         
+      
+
+
+
+
+VSX and ZVector for POWER8/z13 (64-bit) 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_SVE
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_SVE   6
+
+         
+      
+
+
+
+
+SVE for some ARMv8-A and ARMv9-A 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_LSX
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_LSX   7
+
+         
+      
+
+
+
+
+LSX (128-bit SIMD) for LoongArch64 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_LASX
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_LASX   8
+
+         
+      
+
+
+
+
+LASX (256-bit SIMD) for LoongArch64 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_RVV
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_RVV   9
+
+         
+      
+
+
+
+
+RVV (RISC-V Vector) for RISC-V 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_SECRET_SIZE_MIN
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH3_SECRET_SIZE_MIN   136
+
+         
+      
+
+
+
+
+The bare minimum size for a custom secret.
+
+
+See also XXH3_64bits_withSecret()
+, 
+XXH3_64bits_reset_withSecret()
+, 
+XXH3_128bits_withSecret()
+, 
+XXH3_128bits_reset_withSecret()
+. 
+
+
+
+
+
+
+
+
+Typedef Documentation
+
+
+
+
+
+◆ 
+XXH3_state_t
+
+
+
+
+
+
+      
+
+         
+          
+typedef struct 
+XXH3_state_s
+ 
+XXH3_state_t
+
+         
+      
+
+
+
+
+
+The opaque state struct for the XXH3 streaming API. 
+
+
+See also XXH3_state_s
+ for details.  
+ 
+
+Streaming Example
+ 
+
+
+
+
+
+
+
+
+Function Documentation
+
+
+
+
+
+◆ 
+XXH3_64bits()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_64bits 
+
+          
+(
+
+          
+const void *
+          
+input
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+length
+ )
+
+         
+      
+
+
+
+
+
+Calculates 64-bit unseeded variant of XXH3 hash of 
+input
+. 
+
+
+Parameters 
+  
+
+     input
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     length
+The length of 
+input
+, in bytes. 
+  
+
+   
+
+
+
+Precondition The memory between 
+input
+ and 
+input
+ + 
+length
+ must be valid, readable, contiguous memory. However, if 
+length
+ is 
+0
+, 
+input
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+.
+
+
+Returns The calculated 64-bit XXH3 hash value.
+
+
+Note This is equivalent to 
+XXH3_64bits_withSeed()
+ with a seed of 
+0
+, however it may have slightly better performance due to constant propagation of the defaults.
+
+
+See also XXH3_64bits_withSeed()
+, 
+XXH3_64bits_withSecret()
+: other seeding variants  
+ 
+
+Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_withSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_64bits_withSeed 
+
+          
+(
+
+          
+const void *
+          
+input
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+length
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Calculates 64-bit seeded variant of XXH3 hash of 
+input
+. 
+
+
+Parameters 
+  
+
+     input
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     length
+The length of 
+input
+, in bytes.  
+     seed
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Precondition The memory between 
+input
+ and 
+input
+ + 
+length
+ must be valid, readable, contiguous memory. However, if 
+length
+ is 
+0
+, 
+input
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+.
+
+
+Returns The calculated 64-bit XXH3 hash value.
+
+
+Note seed == 0 produces the same results as 
+XXH3_64bits()
+.
+
+
+This variant generates a custom secret on the fly based on default secret altered using the 
+seed
+ value.
+
+
+While this operation is decently fast, note that it's not completely free.
+
+
+See also Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_withSecret()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_64bits_withSecret 
+
+          
+(
+
+          
+const void *
+          
+data
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+len
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+ )
+
+         
+      
+
+
+
+
+
+Calculates 64-bit variant of XXH3 with a custom "secret". 
+
+
+Parameters 
+  
+
+     data
+The block of data to be hashed, at least 
+len
+ bytes in size.  
+     len
+The length of 
+data
+, in bytes.  
+     secret
+The secret data.  
+     secretSize
+The length of 
+secret
+, in bytes. 
+  
+
+   
+
+
+
+Returns The calculated 64-bit XXH3 hash value.
+
+
+Precondition The memory between 
+data
+ and 
+data
+ + 
+len
+ must be valid, readable, contiguous memory. However, if 
+length
+ is 
+0
+, 
+data
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+.
+
+
+It's possible to provide any blob of bytes as a "secret" to generate the hash. This makes it more difficult for an external actor to prepare an intentional collision. The main condition is that 
+secretSize
+ 
+must
+ be large enough (>= 
+XXH3_SECRET_SIZE_MIN
+). However, the quality of the secret impacts the dispersion of the hash algorithm. Therefore, the secret 
+must
+ look like a bunch of random bytes. Avoid "trivial" or structured data such as repeated sequences or a text document. Whenever in doubt about the "randomness" of the blob of bytes, consider employing 
+XXH3_generateSecret()
+ instead (see below). It will generate a proper high entropy secret derived from the blob of bytes. Another advantage of using 
+XXH3_generateSecret()
+ is that it guarantees that all bits within the initial blob of bytes will impact every bit of the output. This is not necessarily the case when using the blob of bytes directly because, when hashing 
+small
+ inputs, only a portion of the secret is employed.
+
+
+See also Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_createState()
+
+
+
+
+
+
+      
+
+         
+          
+XXH3_state_t
+ * XXH3_createState 
+
+          
+(
+
+          
+void
+          
+
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Allocate an 
+XXH3_state_t
+. 
+
+
+Returns An allocated pointer of 
+XXH3_state_t
+ on success.  
+ 
+
+NULL
+ on failure.
+
+
+Note Must be freed with 
+XXH3_freeState()
+.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_freeState()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_freeState 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Frees an 
+XXH3_state_t
+. 
+
+
+Parameters 
+  
+
+     statePtr
+A pointer to an 
+XXH3_state_t
+ allocated with 
+XXH3_createState()
+. 
+  
+
+   
+
+
+
+Returns XXH_OK
+.
+
+
+Note Must be allocated with 
+XXH3_createState()
+.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_copyState()
+
+
+
+
+
+
+      
+
+         
+          
+void XXH3_copyState 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+dst_state
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const 
+XXH3_state_t
+ *
+          
+src_state
+ )
+
+         
+      
+
+
+
+
+
+Copies one 
+XXH3_state_t
+ to another. 
+
+
+Parameters 
+  
+
+     dst_state
+The state to copy to.  
+     src_state
+The state to copy from.  
+  
+
+   
+
+
+
+Precondition dst_state
+ and 
+src_state
+ must not be 
+NULL
+ and must not overlap. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_reset()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_64bits_reset 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to reset. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note 
+ This function resets 
+statePtr
+ and generate a secret with default parameters. 
+ Call this function before 
+XXH3_64bits_update()
+. 
+ Digest will be equivalent to 
+XXH3_64bits()
+. 
+
+
+
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_reset_withSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_64bits_reset_withSeed 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ with 64-bit seed to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to reset.  
+     seed
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note 
+ This function resets 
+statePtr
+ and generate a secret from 
+seed
+. 
+ Call this function before 
+XXH3_64bits_update()
+. 
+ Digest will be equivalent to 
+XXH3_64bits_withSeed()
+. 
+
+
+
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_reset_withSecret()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_64bits_reset_withSecret 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+ )
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to reset.  
+     secret
+The secret data.  
+     secretSize
+The length of 
+secret
+, in bytes. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note secret
+ is referenced, it 
+must outlive
+ the hash streaming session.
+
+
+Similar to one-shot API, 
+secretSize
+ must be >= 
+XXH3_SECRET_SIZE_MIN
+, and the quality of produced hash values depends on secret's entropy (secret's content should look like a bunch of random bytes). When in doubt about the randomness of a candidate 
+secret
+, consider employing 
+XXH3_generateSecret()
+ instead (see below).
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_update()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_64bits_update 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+input
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+length
+ )
+
+         
+      
+
+
+
+
+
+Consumes a block of 
+input
+ to an 
+XXH3_state_t
+. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to update.  
+     input
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     length
+The length of 
+input
+, in bytes. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.  
+ 
+The memory between 
+input
+ and 
+input
+ + 
+length
+ must be valid, readable, contiguous memory. However, if 
+length
+ is 
+0
+, 
+input
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note Call this to incrementally consume blocks of data.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_digest()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_64bits_digest 
+
+          
+(
+
+          
+const 
+XXH3_state_t
+ *
+          
+statePtr
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Returns the calculated XXH3 64-bit hash value from an 
+XXH3_state_t
+. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to calculate the hash from. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns The calculated XXH3 64-bit hash value from that state.
+
+
+Note Calling 
+XXH3_64bits_digest()
+ will not affect 
+statePtr
+, so you can update, digest, and update again.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits()
+
+
+
+
+
+
+      
+
+         
+          
+XXH128_hash_t
+ XXH3_128bits 
+
+          
+(
+
+          
+const void *
+          
+data
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+len
+ )
+
+         
+      
+
+
+
+
+
+Calculates 128-bit unseeded variant of XXH3 of 
+data
+. 
+
+
+Parameters 
+  
+
+     data
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     len
+The length of 
+data
+, in bytes. 
+  
+
+   
+
+
+
+Returns The calculated 128-bit variant of XXH3 value.
+
+
+The 128-bit variant of XXH3 has more strength, but it has a bit of overhead for shorter inputs.
+
+
+This is equivalent to 
+XXH3_128bits_withSeed()
+ with a seed of 
+0
+, however it may have slightly better performance due to constant propagation of the defaults.
+
+
+See also XXH3_128bits_withSeed()
+, 
+XXH3_128bits_withSecret()
+: other seeding variants  
+ 
+
+Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_withSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH128_hash_t
+ XXH3_128bits_withSeed 
+
+          
+(
+
+          
+const void *
+          
+data
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+len
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Calculates 128-bit seeded variant of XXH3 hash of 
+data
+. 
+
+
+Parameters 
+  
+
+     data
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     len
+The length of 
+data
+, in bytes.  
+     seed
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Returns The calculated 128-bit variant of XXH3 value.
+
+
+Note seed == 0 produces the same results as 
+XXH3_64bits()
+.
+
+
+This variant generates a custom secret on the fly based on default secret altered using the 
+seed
+ value.
+
+
+While this operation is decently fast, note that it's not completely free.
+
+
+See also XXH3_128bits()
+, 
+XXH3_128bits_withSecret()
+: other seeding variants  
+ 
+
+Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_withSecret()
+
+
+
+
+
+
+      
+
+         
+          
+XXH128_hash_t
+ XXH3_128bits_withSecret 
+
+          
+(
+
+          
+const void *
+          
+data
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+len
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+ )
+
+         
+      
+
+
+
+
+
+Calculates 128-bit variant of XXH3 with a custom "secret". 
+
+
+Parameters 
+  
+
+     data
+The block of data to be hashed, at least 
+len
+ bytes in size.  
+     len
+The length of 
+data
+, in bytes.  
+     secret
+The secret data.  
+     secretSize
+The length of 
+secret
+, in bytes. 
+  
+
+   
+
+
+
+Returns The calculated 128-bit variant of XXH3 value.
+
+
+It's possible to provide any blob of bytes as a "secret" to generate the hash. This makes it more difficult for an external actor to prepare an intentional collision. The main condition is that 
+secretSize
+ 
+must
+ be large enough (>= 
+XXH3_SECRET_SIZE_MIN
+). However, the quality of the secret impacts the dispersion of the hash algorithm. Therefore, the secret 
+must
+ look like a bunch of random bytes. Avoid "trivial" or structured data such as repeated sequences or a text document. Whenever in doubt about the "randomness" of the blob of bytes, consider employing 
+XXH3_generateSecret()
+ instead (see below). It will generate a proper high entropy secret derived from the blob of bytes. Another advantage of using 
+XXH3_generateSecret()
+ is that it guarantees that all bits within the initial blob of bytes will impact every bit of the output. This is not necessarily the case when using the blob of bytes directly because, when hashing 
+small
+ inputs, only a portion of the secret is employed.
+
+
+See also Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_reset()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_128bits_reset 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to reset. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note 
+ This function resets 
+statePtr
+ and generate a secret with default parameters. 
+ Call it before 
+XXH3_128bits_update()
+. 
+ Digest will be equivalent to 
+XXH3_128bits()
+. 
+
+
+
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_reset_withSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_128bits_reset_withSeed 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ with 64-bit seed to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to reset.  
+     seed
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note 
+ This function resets 
+statePtr
+ and generate a secret from 
+seed
+. 
+ Call it before 
+XXH3_128bits_update()
+. 
+ Digest will be equivalent to 
+XXH3_128bits_withSeed()
+. 
+
+
+
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_reset_withSecret()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_128bits_reset_withSecret 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+ )
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to reset.  
+     secret
+The secret data.  
+     secretSize
+The length of 
+secret
+, in bytes. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+secret
+ is referenced, it 
+must outlive
+ the hash streaming session. Similar to one-shot API, 
+secretSize
+ must be >= 
+XXH3_SECRET_SIZE_MIN
+, and the quality of produced hash values depends on secret's entropy (secret's content should look like a bunch of random bytes). When in doubt about the randomness of a candidate 
+secret
+, consider employing 
+XXH3_generateSecret()
+ instead (see below).
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_update()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_128bits_update 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+input
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+length
+ )
+
+         
+      
+
+
+
+
+
+Consumes a block of 
+input
+ to an 
+XXH3_state_t
+. 
+
+
+Call this to incrementally consume blocks of data.
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to update.  
+     input
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     length
+The length of 
+input
+, in bytes. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note The memory between 
+input
+ and 
+input
+ + 
+length
+ must be valid, readable, contiguous memory. However, if 
+length
+ is 
+0
+, 
+input
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_digest()
+
+
+
+
+
+
+      
+
+         
+          
+XXH128_hash_t
+ XXH3_128bits_digest 
+
+          
+(
+
+          
+const 
+XXH3_state_t
+ *
+          
+statePtr
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Returns the calculated XXH3 128-bit hash value from an 
+XXH3_state_t
+. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to calculate the hash from. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns The calculated XXH3 128-bit hash value from that state.
+
+
+Note Calling 
+XXH3_128bits_digest()
+ will not affect 
+statePtr
+, so you can update, digest, and update again. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH128_isEqual()
+
+
+
+
+
+
+      
+
+         
+          
+int XXH128_isEqual 
+
+          
+(
+
+          
+XXH128_hash_t
+          
+h1
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH128_hash_t
+          
+h2
+ )
+
+         
+      
+
+
+
+
+
+Check equality of two 
+XXH128_hash_t
+ values. 
+
+
+Parameters 
+  
+
+     h1
+The 128-bit hash value.  
+     h2
+Another 128-bit hash value. 
+  
+
+   
+
+
+
+Returns 1
+ if 
+h1
+ and 
+h2
+ are equal.  
+ 
+
+0
+ if they are not. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH128_cmp()
+
+
+
+
+
+
+      
+
+         
+          
+int XXH128_cmp 
+
+          
+(
+
+          
+const void *
+          
+h128_1
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+h128_2
+ )
+
+         
+      
+
+
+
+
+
+Compares two 
+XXH128_hash_t
+. 
+
+
+This comparator is compatible with stdlib's 
+qsort()
+/
+bsearch()
+.
+
+
+Parameters 
+  
+
+     h128_1
+Left-hand side value  
+     h128_2
+Right-hand side value 
+  
+
+   
+
+
+
+Returns >0 if 
+h128_1
+ > 
+h128_2
+  
+ 
+=0 if 
+h128_1
+ == 
+h128_2
+  
+ 
+<0 if 
+h128_1
+ < 
+h128_2
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH128_canonicalFromHash()
+
+
+
+
+
+
+      
+
+         
+          
+void XXH128_canonicalFromHash 
+
+          
+(
+
+          
+XXH128_canonical_t
+ *
+          
+dst
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH128_hash_t
+          
+hash
+ )
+
+         
+      
+
+
+
+
+
+Converts an 
+XXH128_hash_t
+ to a big endian 
+XXH128_canonical_t
+. 
+
+
+Parameters 
+  
+
+     dst
+The 
+XXH128_canonical_t
+ pointer to be stored to.  
+     hash
+The 
+XXH128_hash_t
+ to be converted. 
+  
+
+   
+
+
+
+Precondition dst
+ must not be 
+NULL
+. 
+
+
+See also Canonical Representation Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH128_hashFromCanonical()
+
+
+
+
+
+
+      
+
+         
+          
+XXH128_hash_t
+ XXH128_hashFromCanonical 
+
+          
+(
+
+          
+const 
+XXH128_canonical_t
+ *
+          
+src
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Converts an 
+XXH128_canonical_t
+ to a native 
+XXH128_hash_t
+. 
+
+
+Parameters 
+  
+
+     src
+The 
+XXH128_canonical_t
+ to convert. 
+  
+
+   
+
+
+
+Precondition src
+ must not be 
+NULL
+.
+
+
+Returns The converted hash. 
+
+
+See also Canonical Representation Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_64bits_reset_withSecretandSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_64bits_reset_withSecretandSeed 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed64
+ )
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+A pointer to an 
+XXH3_state_t
+ allocated with 
+XXH3_createState()
+.  
+     secret
+The secret data.  
+     secretSize
+The length of 
+secret
+, in bytes.  
+     seed64
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+See also XXH3_64bits_withSecretandSeed()
+. Contract is identical. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_withSecretandSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH128_hash_t
+ XXH3_128bits_withSecretandSeed 
+
+          
+(
+
+          
+const void *
+          
+input
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+length
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed64
+ )
+
+         
+      
+
+
+
+
+
+Calculates 128-bit seeded variant of XXH3 hash of 
+data
+. 
+
+
+Parameters 
+  
+
+     input
+The memory segment to be hashed, at least 
+len
+ bytes in size.  
+     length
+The length of 
+data
+, in bytes.  
+     secret
+The secret used to alter hash result predictably.  
+     secretSize
+The length of 
+secret
+, in bytes (must be >= XXH3_SECRET_SIZE_MIN)  
+     seed64
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+See also XXH3_64bits_withSecretandSeed()
+: contract is the same. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH128()
+
+
+
+
+
+
+      
+
+         
+          
+XXH128_hash_t
+ XXH128 
+
+          
+(
+
+          
+const void *
+          
+data
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+len
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Calculates the 128-bit hash of 
+data
+ using XXH3. 
+
+
+Parameters 
+  
+
+     data
+The block of data to be hashed, at least 
+len
+ bytes in size.  
+     len
+The length of 
+data
+, in bytes.  
+     seed
+The 64-bit seed to alter the hash's output predictably. 
+  
+
+   
+
+
+
+Precondition The memory between 
+data
+ and 
+data
+ + 
+len
+ must be valid, readable, contiguous memory. However, if 
+len
+ is 
+0
+, 
+data
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+.
+
+
+Returns The calculated 128-bit XXH3 value.
+
+
+See also Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_128bits_reset_withSecretandSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_128bits_reset_withSecretandSeed 
+
+          
+(
+
+          
+XXH3_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed64
+ )
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH3_state_t
+ with secret data to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+A pointer to an 
+XXH3_state_t
+ allocated with 
+XXH3_createState()
+.  
+     secret
+The secret data.  
+     secretSize
+The length of 
+secret
+, in bytes.  
+     seed64
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+See also XXH3_64bits_withSecretandSeed()
+. Contract is identical.
+
+
+Note: there was a bug in an earlier version of this function (<= v0.8.2) that would make it generate an incorrect hash value when 
+seed
+ == 0 and 
+length
+ < XXH3_MIDSIZE_MAX and 
+secret
+ is different from 
+XXH3_generateSecret_fromSeed()
+. As stated in the contract, the correct hash result must be the same as 
+XXH3_128bits_withSeed()
+ when 
+length
+ <= XXH3_MIDSIZE_MAX. Results generated by this older version are wrong, hence not comparable. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_generateSecret()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH3_generateSecret 
+
+          
+(
+
+          
+void *
+          
+secretBuffer
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+customSeed
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+customSeedSize
+ )
+
+         
+      
+
+
+
+
+
+Derive a high-entropy secret from any user-defined content, named customSeed. 
+
+
+Parameters 
+  
+
+     secretBuffer
+A writable buffer for derived high-entropy secret data.  
+     secretSize
+Size of secretBuffer, in bytes. Must be >= XXH3_SECRET_SIZE_MIN.  
+     customSeed
+A user-defined content.  
+     customSeedSize
+Size of customSeed, in bytes. 
+  
+
+   
+
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+The generated secret can be used in combination with 
+*_withSecret()
+ functions. The 
+_withSecret()
+ variants are useful to provide a higher level of protection than 64-bit seed, as it becomes much more difficult for an external actor to guess how to impact the calculation logic.
+
+
+The function accepts as input a custom seed of any length and any content, and derives from it a high-entropy secret of length 
+secretSize
+ into an already allocated buffer 
+secretBuffer
+.
+
+
+The generated secret can then be used with any 
+*_withSecret()
+ variant. The functions 
+XXH3_128bits_withSecret()
+, 
+XXH3_64bits_withSecret()
+, 
+XXH3_128bits_reset_withSecret()
+ and 
+XXH3_64bits_reset_withSecret()
+ are part of this list. They all accept a 
+secret
+ parameter which must be large enough for implementation reasons (>= 
+XXH3_SECRET_SIZE_MIN
+) 
+and
+ feature very high entropy (consist of random-looking bytes). These conditions can be a high bar to meet, so 
+XXH3_generateSecret()
+ can be employed to ensure proper quality.
+
+
+customSeed
+ can be anything. It can have any size, even small ones, and its content can be anything, even "poor entropy" sources such as a bunch of zeroes. The resulting 
+secret
+ will nonetheless provide all required qualities.
+
+
+Precondition 
+ secretSize
+ must be >= 
+XXH3_SECRET_SIZE_MIN 
+ When 
+customSeedSize
+ > 0, supplying NULL as customSeed is undefined behavior. 
+
+
+
+
+
+Example code: 
+#include <stdio.h>
+
+
+#include <stdlib.h>
+
+
+#include <string.h>
+
+
+#define XXH_STATIC_LINKING_ONLY 
+// expose unstable API
+
+
+#include " xxhash.h "
+
+
+// Hashes argv[2] using the entropy from argv[1].
+
+
+int
+ main(
+int
+ argc, 
+char
+* argv[])
+
+
+{
+
+
+    
+char
+ secret[
+XXH3_SECRET_SIZE_MIN
+];
+
+
+    
+if
+ (argv != 3) { 
+return
+ 1; }
+
+
+    
+XXH3_generateSecret
+(secret, 
+sizeof
+(secret), argv[1], strlen(argv[1]));
+
+
+    
+XXH64_hash_t
+ h = 
+XXH3_64bits_withSecret
+(
+
+
+         argv[2], strlen(argv[2]),
+
+
+         secret, 
+sizeof
+(secret)
+
+
+    );
+
+
+    printf(
+"%016llx\n"
+, (
+unsigned
+ 
+long
+ 
+long
+) h);
+
+
+}
+
+
+XXH3_generateSecret
+XXH_errorcode XXH3_generateSecret(void *secretBuffer, size_t secretSize, const void *customSeed, size_t customSeedSize)
+Derive a high-entropy secret from any user-defined content, named customSeed.
+Definition
+ xxhash.h:7459
+
+
+XXH3_64bits_withSecret
+XXH64_hash_t XXH3_64bits_withSecret(const void *data, size_t len, const void *secret, size_t secretSize)
+Calculates 64-bit variant of XXH3 with a custom "secret".
+Definition
+ xxhash.h:6476
+
+
+XXH3_SECRET_SIZE_MIN
+#define XXH3_SECRET_SIZE_MIN
+Definition
+ xxhash.h:1184
+
+
+XXH64_hash_t
+uint64_t XXH64_hash_t
+An unsigned 64-bit integer.
+Definition
+ xxhash.h:858
+
+
+xxhash.h
+
+
+
+ 
+
+
+
+
+
+
+
+
+◆ 
+XXH3_generateSecret_fromSeed()
+
+
+
+
+
+
+      
+
+         
+          
+void XXH3_generateSecret_fromSeed 
+
+          
+(
+
+          
+void *
+          
+secretBuffer
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Generate the same secret as the _withSeed() variants. 
+
+
+Parameters 
+  
+
+     secretBuffer
+A writable buffer of 
+XXH3_SECRET_DEFAULT_SIZE
+ bytes  
+     seed
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+The generated secret can be used in combination with 
+*_withSecret()
+ and 
+_withSecretandSeed()
+ variants.
+
+
+Example C++ 
+std::string
+ hash class: 
+#include <string>
+
+
+#define XXH_STATIC_LINKING_ONLY 
+// expose unstable API
+
+
+#include " xxhash.h "
+
+
+// Slow, seeds each time
+
+
+class 
+HashSlow {
+
+
+    
+XXH64_hash_t
+ seed;
+
+
+public
+:
+
+
+    HashSlow(
+XXH64_hash_t
+ s) : seed{s} {}
+
+
+    
+size_t
+ operator()(
+const
+ std::string& x)
+ const 
+{
+
+
+        
+return
+ 
+size_t
+{
+XXH3_64bits_withSeed
+(x.c_str(), x.length(), seed)};
+
+
+    }
+
+
+};
+
+
+// Fast, caches the seeded secret for future uses.
+
+
+class 
+HashFast {
+
+
+    
+unsigned
+ 
+char
+ secret[
+XXH3_SECRET_DEFAULT_SIZE
+];
+
+
+public
+:
+
+
+    HashFast(
+XXH64_hash_t
+ s) {
+
+
+        
+XXH3_generateSecret_fromSeed
+(secret, seed);
+
+
+    }
+
+
+    
+size_t
+ operator()(
+const
+ std::string& x)
+ const 
+{
+
+
+        
+return
+ 
+size_t
+{
+
+
+            
+XXH3_64bits_withSecret
+(x.c_str(), x.length(), secret, 
+sizeof
+(secret))
+
+
+        };
+
+
+    }
+
+
+};
+
+
+XXH3_generateSecret_fromSeed
+void XXH3_generateSecret_fromSeed(void *secretBuffer, XXH64_hash_t seed)
+Generate the same secret as the _withSeed() variants.
+Definition
+ xxhash.h:7504
+
+
+XXH3_64bits_withSeed
+XXH64_hash_t XXH3_64bits_withSeed(const void *input, size_t length, XXH64_hash_t seed)
+Calculates 64-bit seeded variant of XXH3 hash of input.
+Definition
+ xxhash.h:6483
+
+
+XXH3_SECRET_DEFAULT_SIZE
+#define XXH3_SECRET_DEFAULT_SIZE
+Default Secret's size.
+Definition
+ xxhash.h:1741
+
+
+
+ 
+
+
+
+

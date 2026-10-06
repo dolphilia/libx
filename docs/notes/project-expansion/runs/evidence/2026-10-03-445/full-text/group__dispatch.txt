@@ -1,0 +1,240 @@
+
+
+
+ 
+
+Macros 
+ #define 
+XXH_DISPATCH_SCALAR
+   1 
+  
+Enables/dispatching the scalar code path.  
+ 
+ #define 
+XXH_DISPATCH_AVX2
+   0 
+  
+Enables/disables dispatching for AVX2.  
+ 
+ #define 
+XXH_DISPATCH_AVX512
+   0 
+  
+Enables/disables dispatching for AVX512.  
+ 
+ #define 
+XXH_TARGET_SSE2
+   /* disable attribute target */ 
+  
+Allows a function to be compiled with SSE2 intrinsics.  
+ 
+ 
+
+#define 
+XXH_TARGET_AVX2
+   /* disable attribute target */ 
+  
+Like 
+XXH_TARGET_SSE2
+, but for AVX2. 
+ 
+ 
+
+#define 
+XXH_TARGET_AVX512
+   /* disable attribute target */ 
+  
+Like 
+XXH_TARGET_SSE2
+, but for AVX512. 
+ 
+
+
+
+
+Detailed Description
+
+
+
+
+Macro Definition Documentation
+
+
+
+
+
+◆ 
+XXH_DISPATCH_SCALAR
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_DISPATCH_SCALAR   1
+
+         
+      
+
+
+
+
+
+Enables/dispatching the scalar code path. 
+
+
+If this is defined to 0, SSE2 support is assumed. This reduces code size when the scalar path is not needed.
+
+
+This is automatically defined to 0 when...
+
+ SSE2 support is enabled in the compiler 
+ Targeting x86_64 
+ Targeting Android x86 
+ Targeting macOS  
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_DISPATCH_AVX2
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_DISPATCH_AVX2   0
+
+         
+      
+
+
+
+
+
+Enables/disables dispatching for AVX2. 
+
+
+This is automatically detected if it is not defined.
+
+ GCC 4.7 and later are known to support AVX2, but >4.9 is required for to get the AVX2 intrinsics and typedefs without -mavx -mavx2. 
+ Visual Studio 2013 Update 2 and later are known to support AVX2. 
+ The GCC/Clang internal header 
+<avx2intrin.h>
+ is detected. While this is not allowed to be included directly, it still appears in the builtin include path and is detectable with 
+__has_include
+. 
+
+
+
+See also XXH_AVX2
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_DISPATCH_AVX512
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_DISPATCH_AVX512   0
+
+         
+      
+
+
+
+
+
+Enables/disables dispatching for AVX512. 
+
+
+Automatically detected if one of the following conditions is met:
+
+ GCC 4.9 and later are known to support AVX512. 
+ Visual Studio 2017 and later are known to support AVX2. 
+ The GCC/Clang internal header 
+<avx512fintrin.h>
+ is detected. While this is not allowed to be included directly, it still appears in the builtin include path and is detectable with 
+__has_include
+. 
+
+
+
+See also XXH_AVX512
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_TARGET_SSE2
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_TARGET_SSE2   /* disable attribute target */
+
+         
+      
+
+
+
+
+
+Allows a function to be compiled with SSE2 intrinsics. 
+
+
+Uses 
+__attribute__((__target__("sse2")))
+ on GCC to allow SSE2 to be used even with 
+-mno-sse2
+. 
+
+
+
+
+
+

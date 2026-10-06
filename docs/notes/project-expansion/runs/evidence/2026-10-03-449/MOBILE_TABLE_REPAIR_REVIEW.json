@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-03T12:06:27.186Z",
+  "status": "partial-repair-verified-not-conversion-pass",
+  "trial": "/private/tmp/libx-xxhash-conversion-trial-449",
+  "change": "Only project-specific .xxhash-api-trial table display:block/max-width100%/overflow-x:auto CSS. Original prose, tables, row/cell order and source text retained.",
+  "finding": "独立試験449でAPI tableのmax-width/内部overflow-x CSSを適用。61ページbuild、33API/source原文DOM完全一致。390px native最大APIでdocument375px、宣言表327/scroll491px、実操作でscrollLeft164.5に達し右端引数を確認。",
+  "machineEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-449/RENDERED_API_BODY_CHECK.json",
+    "sha256": "7ec8ef163502d1834e5509607ad358eba1d47ee3f9ab3e70ddb4f6987b428a7e"
+  },
+  "nativeEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-449/mobile-table-scroll.json",
+    "sha256": "5cf8040b302d5c5426918eea5123f2bcb84d5eb909013c500aef7290459963e8"
+  },
+  "screenshots": [
+    "mobile-declaration-left.png",
+    "mobile-declaration-right.png"
+  ],
+  "nativeNotes": "Initial semantic locator click showed summary while scroll transition was unsettled; native click and subsequent observation confirmed actual hash target at top -0.12px. Horizontal native scroll reached right end. Scope limited to largest XXH3 family; all-page visual review is not claimed.",
+  "cleanup": "temporary viewport reset, agent browser81 closed, local preview82936 terminated",
+  "nextAction": "独立試験449を450へ複製し、既存API id/見出し/順序を保持した右目次登録を実装する。全生成ページのリンク/33原文DOM/目次の機械検査と実クリックを検証。codecopy/nativeコード/表/notice/他2注記ページ、既存日本語調査/採点/別パス選定は未完。",
+  "productionPublished": false,
+  "localLLMUsed": false
+}

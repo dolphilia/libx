@@ -1,0 +1,1525 @@
+
+
+
+ 
+
+Macros 
+ #define 
+XXH_likely
+(x) 
+ #define 
+XXH_unlikely
+(x) 
+ #define 
+XXH_HAS_INCLUDE
+(x) 
+ 
+
+#define 
+XXH_SEC_ALIGN
+   
+XXH_ACC_ALIGN 
+ 
+
+#define 
+XXH_ALIASING
+   /* nothing */ 
+ 
+
+#define 
+XXH_VSX_BE
+   0 
+ #define 
+ACCRND
+(acc,  offset) 
+ #define 
+XXH_PREFETCH
+(ptr) 
+ 
+
+#define 
+XXH_SECRET_DEFAULT_SIZE
+   192   /* minimum 
+XXH3_SECRET_SIZE_MIN
+ */ 
+ 
+
+#define 
+XXH_STRIPE_LEN
+   64 
+ 
+
+#define 
+XXH_SECRET_CONSUME_RATE
+   8   /* nb of secret bytes consumed at each accumulation */ 
+ 
+
+#define 
+XXH_ACC_NB
+   (XXH_STRIPE_LEN / sizeof(xxh_u64)) 
+ 
+
+#define 
+XXH_PREFETCH_DIST
+   512 
+ #define 
+XXH3_ACCUMULATE_TEMPLATE
+(name) 
+ #define 
+_LSX_SHUFFLE
+(z,  y,  x,  w) 
+ #define 
+_LASX_SHUFFLE
+(z,  y,  x,  w) 
+ #define 
+XXH_CONCAT2
+(X,  Y) 
+ #define 
+XXH_CONCAT
+(X,  Y) 
+ #define 
+XXH_RVOP
+(op) 
+ #define 
+XXH_RVCAST
+(op) 
+ 
+
+#define 
+XXH3_accumulate_512
+   XXH3_accumulate_512_avx512 
+ 
+
+#define 
+XXH3_accumulate
+   XXH3_accumulate_avx512 
+ 
+
+#define 
+XXH3_scrambleAcc
+   XXH3_scrambleAcc_avx512 
+ 
+
+#define 
+XXH3_initCustomSecret
+   XXH3_initCustomSecret_avx512 
+ 
+
+#define 
+XXH_SECRET_MERGEACCS_START
+   11 
+ #define 
+XXH3_INIT_ACC 
+ 
+
+#define 
+XXH3_STREAM_USE_STACK
+   1 
+ #define 
+XXH_MIN
+(x,  y) 
+
+
+ 
+
+Typedefs 
+ 
+
+typedef uint64x2_t xxh_aliasing_uint64x2_t 
+XXH_ALIASING 
+ 
+
+typedef __vector unsigned long long 
+xxh_u64x2 
+ 
+
+typedef __vector unsigned char 
+xxh_u8x16 
+ 
+
+typedef __vector unsigned 
+xxh_u32x4 
+ 
+
+typedef long long 
+xxh_i64 
+ 
+
+typedef void(* 
+XXH3_f_accumulate
+) (xxh_u64 *restrict, const xxh_u8 *restrict, const xxh_u8 *restrict, size_t) 
+ 
+
+typedef void(* 
+XXH3_f_scrambleAcc
+) (void *restrict, const void *) 
+ 
+
+typedef void(* 
+XXH3_f_initCustomSecret
+) (void *restrict, xxh_u64) 
+ 
+
+typedef 
+XXH64_hash_t
+(* 
+XXH3_hashLong64_f
+) (const void *restrict, size_t, 
+XXH64_hash_t
+, const xxh_u8 *restrict, size_t) 
+ 
+
+typedef 
+XXH128_hash_t
+(* 
+XXH3_hashLong128_f
+) (const void *restrict, size_t, 
+XXH64_hash_t
+, const void *restrict, size_t) 
+
+
+ 
+
+Functions 
+ 
+
+ 
+XXH_STATIC_ASSERT
+ (XXH_STRIPE_LEN==sizeof(__m512i)) 
+ 
+
+ 
+for
+ (i=0;i< XXH_STRIPE_LEN/sizeof(__m256i);i++) 
+ 
+
+ 
+for
+ (;count > 0;count -=vl, xacc+=vl, xsecret+=vl *8) 
+ 
+
+ 
+XXH_ASSERT
+ ((((size_t) acc) &(
+XXH_ACC_ALIGN
+-1))==0) 
+ 
+
+ 
+XXH_ASSERT
+ (lane< XXH_ACC_NB) 
+ 
+
+XXH3_WITH_SECRET_INLINE 
+XXH64_hash_t
+ 
+XXH3_hashLong_64b_withSecret
+ (const void *restrict input, size_t len, 
+XXH64_hash_t
+ seed64, const xxh_u8 *restrict secret, size_t secretLen) 
+ XXH64_hash_t
+ 
+XXH3_64bits_withSecretandSeed
+ (const void *data, size_t len, const void *secret, size_t secretSize, 
+XXH64_hash_t
+ seed) 
+  
+Calculates 64/128-bit seeded variant of XXH3 hash of 
+data
+.  
+ 
+ 
+
+XXH3_WITH_SECRET_INLINE 
+XXH128_hash_t
+ 
+XXH3_hashLong_128b_withSecret
+ (const void *restrict input, size_t len, 
+XXH64_hash_t
+ seed64, const void *restrict secret, size_t secretLen) 
+
+
+ 
+
+Variables 
+ static 
+XXH_TARGET_AVX512
+ const void *restrict 
+secret 
+ 
+
+const __m512i 
+prime32
+ = _mm512_set1_epi32((int)
+XXH_PRIME32_1
+) 
+ 
+
+__m512i const 
+acc_vec
+ = *xacc 
+ 
+
+__m512i const 
+shifted
+ = _mm512_srli_epi64 (acc_vec, 47) 
+ 
+
+__m512i const 
+key_vec
+ = _mm512_loadu_si512 (secret) 
+ 
+
+__m512i const 
+data_key
+ = _mm512_ternarylogic_epi32(key_vec, acc_vec, shifted, 0x96 ) 
+ 
+
+__m512i const 
+data_key_hi
+ = _mm512_srli_epi64 (data_key, 32) 
+ 
+
+__m512i const 
+prod_lo
+ = _mm512_mul_epu32 (data_key, prime32) 
+ 
+
+__m512i const 
+prod_hi
+ = _mm512_mul_epu32 (data_key_hi, prime32) 
+ 
+
+* 
+xacc
+ = _mm512_add_epi64(prod_lo, _mm512_slli_epi64(prod_hi, 32)) 
+ 
+
+const __m256i *const 
+xsecret
+ = (const __m256i *) secret 
+ 
+
+size_t 
+i 
+ 
+
+uint32x2_t const 
+kPrimeLo
+ = vdup_n_u32(
+XXH_PRIME32_1
+) 
+ 
+
+uint32x4_t const 
+kPrimeHi
+ = vreinterpretq_u32_u64(vdupq_n_u64((xxh_u64)
+XXH_PRIME32_1
+ << 32)) 
+ 
+
+xxh_u64x2 const 
+v32
+ = { 32, 32 } 
+ 
+
+xxh_u64x2 const 
+v47
+ = { 47, 47 } 
+ 
+
+xxh_u32x4 const 
+prime
+ = { 
+XXH_PRIME32_1
+, 
+XXH_PRIME32_1
+, 
+XXH_PRIME32_1
+, 
+XXH_PRIME32_1
+ } 
+ 
+
+size_t 
+vl 
+ static void const  *restrict size_t 
+lane 
+ 
+
+xxh_u64 
+acc64
+ = xacc[lane] 
+
+
+
+
+Detailed Description
+
+
+
+
+Macro Definition Documentation
+
+
+
+
+
+◆ 
+XXH_likely
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_likely
+
+          
+(
+
+          
+
+          
+x
+)
+
+          
+
+
+         
+      
+
+
+
+
+Value:
+(x)
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_unlikely
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_unlikely
+
+          
+(
+
+          
+
+          
+x
+)
+
+          
+
+
+         
+      
+
+
+
+
+Value:
+(x)
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_HAS_INCLUDE
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_HAS_INCLUDE
+
+          
+(
+
+          
+
+          
+x
+)
+
+          
+
+
+         
+      
+
+
+
+
+Value:
+0
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+ACCRND
+
+
+
+
+
+
+      
+
+         
+          
+#define ACCRND
+
+          
+(
+
+          
+
+          
+acc
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+offset
+ )
+
+         
+      
+
+
+
+
+Value:
+do
+ { \
+
+
+    svuint64_t input_vec = svld1_u64(mask, xinput + offset);         \
+
+
+    svuint64_t secret_vec = svld1_u64(mask, xsecret + offset);       \
+
+
+    svuint64_t mixed = sveor_u64_x(mask, secret_vec, input_vec);     \
+
+
+    svuint64_t swapped = svtbl_u64(input_vec, kSwap);                \
+
+
+    svuint64_t mixed_lo = svextw_u64_x(mask, mixed);                 \
+
+
+    svuint64_t mixed_hi = svlsr_n_u64_x(mask, mixed, 32);            \
+
+
+    svuint64_t mul = svmad_u64_x(mask, mixed_lo, mixed_hi, swapped); \
+
+
+    acc = svadd_u64_x(mask, acc, mul);                               \
+
+
+} 
+while
+ (0)
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_PREFETCH
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_PREFETCH
+
+          
+(
+
+          
+
+          
+ptr
+)
+
+          
+
+
+         
+      
+
+
+
+
+Value:
+(void)(ptr)  
+/* disabled */
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_ACCUMULATE_TEMPLATE
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH3_ACCUMULATE_TEMPLATE
+
+          
+(
+
+          
+
+          
+name
+)
+
+          
+
+
+         
+      
+
+
+
+
+Value:
+void                                                        \
+
+
+XXH3_accumulate_##name(xxh_u64* XXH_RESTRICT acc,           \
+
+
+                       
+const
+ xxh_u8* XXH_RESTRICT input,    \
+
+
+                       
+const
+ xxh_u8* XXH_RESTRICT secret,   \
+
+
+                       
+size_t
+ nbStripes)                    \
+
+
+{                                                           \
+
+
+    
+size_t
+ n;                                               \
+
+
+    for (n = 0; n < nbStripes; n++ ) {                      \
+
+
+        
+const
+ xxh_u8* 
+const
+ in = input + n*XXH_STRIPE_LEN;  \
+
+
+        XXH_PREFETCH(in + XXH_PREFETCH_DIST);               \
+
+
+        XXH3_accumulate_512_##name(                         \
+
+
+                 acc,                                       \
+
+
+                 in,                                        \
+
+
+                 secret + n*XXH_SECRET_CONSUME_RATE);       \
+
+
+    }                                                       \
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+_LSX_SHUFFLE
+
+
+
+
+
+
+      
+
+         
+          
+#define _LSX_SHUFFLE
+
+          
+(
+
+          
+
+          
+z
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+y
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+x
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+w
+ )
+
+         
+      
+
+
+
+
+Value:
+(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+_LASX_SHUFFLE
+
+
+
+
+
+
+      
+
+         
+          
+#define _LASX_SHUFFLE
+
+          
+(
+
+          
+
+          
+z
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+y
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+x
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+w
+ )
+
+         
+      
+
+
+
+
+Value:
+(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_CONCAT2
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_CONCAT2
+
+          
+(
+
+          
+
+          
+X
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+Y
+ )
+
+         
+      
+
+
+
+
+Value:
+X ## Y
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_CONCAT
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_CONCAT
+
+          
+(
+
+          
+
+          
+X
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+Y
+ )
+
+         
+      
+
+
+
+
+Value:
+XXH_CONCAT2(X, Y)
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_RVOP
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_RVOP
+
+          
+(
+
+          
+
+          
+op
+)
+
+          
+
+
+         
+      
+
+
+
+
+Value:
+XXH_CONCAT(__riscv_, op)
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_RVCAST
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_RVCAST
+
+          
+(
+
+          
+
+          
+op
+)
+
+          
+
+
+         
+      
+
+
+
+
+Value:
+XXH_CONCAT(__riscv_vreinterpret_v_, op)
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH3_INIT_ACC
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH3_INIT_ACC
+
+         
+      
+
+
+
+
+Value:
+{ 
+XXH_PRIME32_3
+, 
+XXH_PRIME64_1
+, 
+XXH_PRIME64_2
+, 
+XXH_PRIME64_3
+, \
+
+
+XXH_PRIME64_4
+, 
+XXH_PRIME32_2
+, 
+XXH_PRIME64_5
+, 
+XXH_PRIME32_1
+ }
+
+
+XXH_PRIME32_2
+#define XXH_PRIME32_2
+Definition
+ xxhash.h:2923
+
+
+XXH_PRIME32_1
+#define XXH_PRIME32_1
+Definition
+ xxhash.h:2922
+
+
+XXH_PRIME32_3
+#define XXH_PRIME32_3
+Definition
+ xxhash.h:2924
+
+
+XXH_PRIME64_1
+#define XXH_PRIME64_1
+Definition
+ xxhash.h:3481
+
+
+XXH_PRIME64_2
+#define XXH_PRIME64_2
+Definition
+ xxhash.h:3482
+
+
+XXH_PRIME64_4
+#define XXH_PRIME64_4
+Definition
+ xxhash.h:3484
+
+
+XXH_PRIME64_3
+#define XXH_PRIME64_3
+Definition
+ xxhash.h:3483
+
+
+XXH_PRIME64_5
+#define XXH_PRIME64_5
+Definition
+ xxhash.h:3485
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH_MIN
+
+
+
+
+
+
+      
+
+         
+          
+#define XXH_MIN
+
+          
+(
+
+          
+
+          
+x
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+
+          
+y
+ )
+
+         
+      
+
+
+
+
+Value:
+(((x) > (y)) ? (y) : (x))
+
+
+
+
+
+
+
+
+
+
+Function Documentation
+
+
+
+
+
+◆ 
+XXH3_64bits_withSecretandSeed()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH3_64bits_withSecretandSeed 
+
+          
+(
+
+          
+const void *
+          
+data
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+len
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+secret
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+secretSize
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Calculates 64/128-bit seeded variant of XXH3 hash of 
+data
+. 
+
+
+Parameters 
+  
+
+     data
+The block of data to be hashed, at least 
+len
+ bytes in size.  
+     len
+The length of 
+data
+, in bytes.  
+     secret
+The secret data.  
+     secretSize
+The length of 
+secret
+, in bytes.  
+     seed
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+These variants generate hash values using either:
+
+ seed
+ for "short" keys (< 
+XXH3_MIDSIZE_MAX
+ = 240 bytes) 
+ secret
+ for "large" keys (>= 
+XXH3_MIDSIZE_MAX
+). 
+
+
+
+This generally benefits speed, compared to 
+_withSeed()
+ or 
+_withSecret()
+. 
+_withSeed()
+ has to generate the secret on the fly for "large" keys. It's fast, but can be perceptible for "not so large" keys (< 1 KB). 
+_withSecret()
+ has to generate the masks on the fly for "small" keys, which requires more instructions than _withSeed() variants. Therefore, _withSecretandSeed variant combines the best of both worlds.
+
+
+When 
+secret
+ has been generated by 
+XXH3_generateSecret_fromSeed()
+, this variant produces 
+exactly
+ the same results as 
+_withSeed()
+ variant, hence offering only a pure speed benefit on "large" input, by skipping the need to regenerate the secret for every large input.
+
+
+Another usage scenario is to hash the secret to a 64-bit hash value, for example with 
+XXH3_64bits()
+, which then becomes the seed, and then employ both the seed and the secret in _withSecretandSeed(). On top of speed, an added benefit is that each bit in the secret has a 50% chance to swap each bit in the output, via its impact to the seed.
+
+
+This is not guaranteed when using the secret directly in "small data" scenarios, because only portions of the secret are employed for small data. 
+
+
+
+
+
+
+
+
+Variable Documentation
+
+
+
+
+
+◆ 
+secret
+
+
+
+
+
+
+      
+
+         
+          
+void const  *restrict secret
+
+         
+      
+
+
+
+
+Initial value:
+{
+
+
+    XXH_ASSERT((((
+size_t
+)acc) & 63) == 0)
+
+
+
+
+
+
+
+
+
+
+
+
+◆ 
+lane
+
+
+
+
+
+
+      
+
+         
+          
+void const* restrict size_t lane
+
+         
+      
+
+
+
+
+Initial value:
+{
+
+
+    xxh_u64* 
+const
+ xacc = (xxh_u64*) acc
+
+
+
+
+
+
+
+

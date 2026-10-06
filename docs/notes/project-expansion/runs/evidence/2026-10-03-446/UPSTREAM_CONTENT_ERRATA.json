@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-03T11:56:24.806Z",
+  "fixedHeader": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-429/sources/xxhash.h",
+    "sha256": "3dc8d161e867a62d3417f7885b55fdaded8b7b497e2f165d05c94f4fe24f2ca4"
+  },
+  "method": "Fixed header prose/declarations/implementation read and compared; no numerical execution or compiler proof.",
+  "confirmed": [
+    {
+      "id": "secret-seed-240-boundary",
+      "lines": [
+        1952,
+        1953,
+        6490,
+        7319
+      ],
+      "finding": "文章は短い入力<240、大きい入力>=240とするが、固定実装の両familyはlength<=XXH3_MIDSIZE_MAXでseed/default-secretを使う。仕様書も<=240と>240。",
+      "action": "原文を保持し、240bytesを含む境界の静的実装照合注記を追加。"
+    },
+    {
+      "id": "128-secret-seed-return",
+      "lines": [
+        1976,
+        1995,
+        7319
+      ],
+      "finding": "XXH3_128bits_withSecretandSeedのReturnsがXXH_OK/ERRORだが宣言と実装の戻り型はXXH128_hash_t。reset variantのXXH_errorcodeと区別。",
+      "action": "誤記と実際の宣言を明示する。"
+    },
+    {
+      "id": "128-seed-zero-family",
+      "lines": [
+        1387,
+        1408,
+        7310
+      ],
+      "finding": "128bits_withSeedのseed0注記が64bits()を指す。直前の128bits説明と実装は128bits familyの関係を示す。",
+      "action": "同じ128bits familyとの関係を注記。数値比較を実行済みとしない。"
+    },
+    {
+      "id": "argc-example",
+      "lines": [
+        1885
+      ],
+      "finding": "generateSecret例のargc/argvの条件にargv!=3がある。",
+      "action": "原文例を維持し、変数名と型に関する問題を注記。コンパイル未確認。"
+    },
+    {
+      "id": "hashfast-seed-example",
+      "lines": [
+        1921,
+        1926
+      ],
+      "finding": "HashFastの引数はs、generateSecret_fromSeed呼出しはseed。クラス内に対応seed宣言なし。",
+      "action": "原文例を維持して不整合を注記。修正版の性能や同値性を未検証で保証しない。"
+    },
+    {
+      "id": "stale-state-field-reference",
+      "lines": [
+        1771,
+        1773
+      ],
+      "finding": "XXH32_state_s::mem32/memsizeを参照するが構造体のフィールドはbuffer/bufferedSize。",
+      "action": "古い参照表記を注記し、存在しないアンカーを新設して有効と扱わない。"
+    }
+  ],
+  "suspected": [
+    {
+      "id": "dispatcher-avx512-compiler-text",
+      "finding": "AVX512説明内のVisualStudio2017/AVX2記述は疑義のみ。別の公式根拠未確認なので誤記と確定しない。"
+    }
+  ],
+  "resolved": [
+    {
+      "id": "cmake-option-off",
+      "previousEvidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-444/SOURCE_DOCUMENT_CONTENT_REVIEW.json",
+        "sha256": "18b3bae7b00a7a198cde52011ace62856ef0bf25e33e1d7d2f4fca789cd74a7f"
+      },
+      "officialUrl": "https://cmake.org/cmake/help/latest/command/option.html",
+      "finding": "公式option構文はvariable/help_text/[value]、value省略時OFF。option(BUILD_SHARED_LIBS OFF)はOFFがhelp_textとなり省略valueはOFFなので構文違反ではない。既存normal/cache変数がある場合は変更しない条件もある。",
+      "action": "444の懸念を解消。固定原文を修正しない。"
+    }
+  ]
+}

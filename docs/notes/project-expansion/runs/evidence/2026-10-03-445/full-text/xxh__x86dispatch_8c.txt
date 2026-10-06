@@ -1,0 +1,52 @@
+
+
+#include <assert.h>
+
+
+
+
+ 
+
+Macros 
+ #define 
+XXH_DISPATCH_SCALAR
+   1 
+  
+Enables/dispatching the scalar code path.  
+ 
+ #define 
+XXH_DISPATCH_AVX2
+   0 
+  
+Enables/disables dispatching for AVX2.  
+ 
+ #define 
+XXH_DISPATCH_AVX512
+   0 
+  
+Enables/disables dispatching for AVX512.  
+ 
+
+
+
+
+Detailed Description
+
+
+Automatic dispatcher code for the 
+XXH3 family
+ on x86-based targets.
+
+
+Optional add-on.
+
+
+Compile this file with the default flags for your target.
+ Note that compiling with flags like 
+-mavx*
+, 
+-march=native
+, or 
+/arch:AVX*
+ will make the resulting binary incompatible with cpus not supporting the requested instruction set. 
+

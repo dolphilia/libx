@@ -1,0 +1,1013 @@
+
+
+
+ 
+
+Data Structures 
+ struct  
+XXH64_canonical_t 
+  
+Canonical (big endian) representation of 
+XXH64_hash_t
+.  
+More...
+ 
+
+
+ 
+
+Typedefs 
+ typedef struct 
+XXH64_state_s
+ 
+XXH64_state_t 
+  
+The opaque state struct for the XXH64 streaming API.  
+ 
+
+
+ 
+
+Functions 
+ XXH64_hash_t
+ 
+XXH64
+ (const void *input, size_t length, 
+XXH64_hash_t
+ seed) 
+  
+Calculates the 64-bit hash of 
+input
+ using xxHash64.  
+ 
+ XXH64_state_t
+ * 
+XXH64_createState
+ (void) 
+  
+Allocates an 
+XXH64_state_t
+.  
+ 
+ XXH_errorcode
+ 
+XXH64_freeState
+ (
+XXH64_state_t
+ *statePtr) 
+  
+Frees an 
+XXH64_state_t
+.  
+ 
+ void 
+XXH64_copyState
+ (
+XXH64_state_t
+ *dst_state, const 
+XXH64_state_t
+ *src_state) 
+  
+Copies one 
+XXH64_state_t
+ to another.  
+ 
+ XXH_errorcode
+ 
+XXH64_reset
+ (
+XXH64_state_t
+ *statePtr, 
+XXH64_hash_t
+ seed) 
+  
+Resets an 
+XXH64_state_t
+ to begin a new hash.  
+ 
+ XXH_errorcode
+ 
+XXH64_update
+ (
+XXH64_state_t
+ *statePtr, const void *input, size_t length) 
+  
+Consumes a block of 
+input
+ to an 
+XXH64_state_t
+.  
+ 
+ XXH64_hash_t
+ 
+XXH64_digest
+ (const 
+XXH64_state_t
+ *statePtr) 
+  
+Returns the calculated hash value from an 
+XXH64_state_t
+.  
+ 
+ void 
+XXH64_canonicalFromHash
+ (
+XXH64_canonical_t
+ *dst, 
+XXH64_hash_t
+ hash) 
+  
+Converts an 
+XXH64_hash_t
+ to a big endian 
+XXH64_canonical_t
+.  
+ 
+ XXH64_hash_t
+ 
+XXH64_hashFromCanonical
+ (const 
+XXH64_canonical_t
+ *src) 
+  
+Converts an 
+XXH64_canonical_t
+ to a native 
+XXH64_hash_t
+.  
+ 
+
+
+
+
+Detailed Description
+
+
+Contains functions used in the classic 64-bit xxHash algorithm.
+
+
+Note XXH3 provides competitive speed for both 32-bit and 64-bit systems, and offers true 64/128 bit hash results. It provides better speed for systems with vector processing capabilities. 
+
+
+
+Typedef Documentation
+
+
+
+
+
+◆ 
+XXH64_state_t
+
+
+
+
+
+
+      
+
+         
+          
+typedef struct 
+XXH64_state_s
+ 
+XXH64_state_t
+
+         
+      
+
+
+
+
+
+The opaque state struct for the XXH64 streaming API. 
+
+
+See also XXH64_state_s
+ for details.  
+ 
+
+Streaming Example
+ 
+
+
+
+
+
+
+
+
+Function Documentation
+
+
+
+
+
+◆ 
+XXH64()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH64 
+
+          
+(
+
+          
+const void *
+          
+input
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+length
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Calculates the 64-bit hash of 
+input
+ using xxHash64. 
+
+
+Parameters 
+  
+
+     input
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     length
+The length of 
+input
+, in bytes.  
+     seed
+The 64-bit seed to alter the hash's output predictably. 
+  
+
+   
+
+
+
+Precondition The memory between 
+input
+ and 
+input
+ + 
+length
+ must be valid, readable, contiguous memory. However, if 
+length
+ is 
+0
+, 
+input
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+.
+
+
+Returns The calculated 64-bit xxHash64 value.
+
+
+See also Single Shot Example
+ for an example. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_createState()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_state_t
+ * XXH64_createState 
+
+          
+(
+
+          
+void
+          
+
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Allocates an 
+XXH64_state_t
+. 
+
+
+Returns An allocated pointer of 
+XXH64_state_t
+ on success.  
+ 
+
+NULL
+ on failure.
+
+
+Note Must be freed with 
+XXH64_freeState()
+.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_freeState()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH64_freeState 
+
+          
+(
+
+          
+XXH64_state_t
+ *
+          
+statePtr
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Frees an 
+XXH64_state_t
+. 
+
+
+Parameters 
+  
+
+     statePtr
+A pointer to an 
+XXH64_state_t
+ allocated with 
+XXH64_createState()
+. 
+  
+
+   
+
+
+
+Returns XXH_OK
+.
+
+
+Note statePtr
+ must be allocated with 
+XXH64_createState()
+.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_copyState()
+
+
+
+
+
+
+      
+
+         
+          
+void XXH64_copyState 
+
+          
+(
+
+          
+XXH64_state_t
+ *
+          
+dst_state
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const 
+XXH64_state_t
+ *
+          
+src_state
+ )
+
+         
+      
+
+
+
+
+
+Copies one 
+XXH64_state_t
+ to another. 
+
+
+Parameters 
+  
+
+     dst_state
+The state to copy to.  
+     src_state
+The state to copy from.  
+  
+
+   
+
+
+
+Precondition dst_state
+ and 
+src_state
+ must not be 
+NULL
+ and must not overlap. 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_reset()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH64_reset 
+
+          
+(
+
+          
+XXH64_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+seed
+ )
+
+         
+      
+
+
+
+
+
+Resets an 
+XXH64_state_t
+ to begin a new hash. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to reset.  
+     seed
+The 64-bit seed to alter the hash result predictably. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note This function resets and seeds a state. Call it before 
+XXH64_update()
+.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_update()
+
+
+
+
+
+
+      
+
+         
+          
+XXH_errorcode
+ XXH64_update 
+
+          
+(
+
+          
+XXH64_state_t
+ *
+          
+statePtr
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+const void *
+          
+input
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+size_t
+          
+length
+ )
+
+         
+      
+
+
+
+
+
+Consumes a block of 
+input
+ to an 
+XXH64_state_t
+. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to update.  
+     input
+The block of data to be hashed, at least 
+length
+ bytes in size.  
+     length
+The length of 
+input
+, in bytes. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.  
+ 
+The memory between 
+input
+ and 
+input
+ + 
+length
+ must be valid, readable, contiguous memory. However, if 
+length
+ is 
+0
+, 
+input
+ may be 
+NULL
+. In C++, this also must be 
+TriviallyCopyable
+.
+
+
+Returns XXH_OK
+ on success.  
+ 
+
+XXH_ERROR
+ on failure.
+
+
+Note Call this to incrementally consume blocks of data.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_digest()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH64_digest 
+
+          
+(
+
+          
+const 
+XXH64_state_t
+ *
+          
+statePtr
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Returns the calculated hash value from an 
+XXH64_state_t
+. 
+
+
+Parameters 
+  
+
+     statePtr
+The state struct to calculate the hash from. 
+  
+
+   
+
+
+
+Precondition statePtr
+ must not be 
+NULL
+.
+
+
+Returns The calculated 64-bit xxHash64 value from that state.
+
+
+Note Calling 
+XXH64_digest()
+ will not affect 
+statePtr
+, so you can update, digest, and update again.
+
+
+See also Streaming Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_canonicalFromHash()
+
+
+
+
+
+
+      
+
+         
+          
+void XXH64_canonicalFromHash 
+
+          
+(
+
+          
+XXH64_canonical_t
+ *
+          
+dst
+, 
+
+         
+         
+          
+
+
+          
+
+
+          
+XXH64_hash_t
+          
+hash
+ )
+
+         
+      
+
+
+
+
+
+Converts an 
+XXH64_hash_t
+ to a big endian 
+XXH64_canonical_t
+. 
+
+
+Parameters 
+  
+
+     dst
+The 
+XXH64_canonical_t
+ pointer to be stored to.  
+     hash
+The 
+XXH64_hash_t
+ to be converted. 
+  
+
+   
+
+
+
+Precondition dst
+ must not be 
+NULL
+.
+
+
+See also Canonical Representation Example
+ 
+
+
+
+
+
+
+
+
+
+
+◆ 
+XXH64_hashFromCanonical()
+
+
+
+
+
+
+      
+
+         
+          
+XXH64_hash_t
+ XXH64_hashFromCanonical 
+
+          
+(
+
+          
+const 
+XXH64_canonical_t
+ *
+          
+src
+)
+
+          
+
+
+         
+      
+
+
+
+
+
+Converts an 
+XXH64_canonical_t
+ to a native 
+XXH64_hash_t
+. 
+
+
+Parameters 
+  
+
+     src
+The 
+XXH64_canonical_t
+ to convert. 
+  
+
+   
+
+
+
+Precondition src
+ must not be 
+NULL
+.
+
+
+Returns The converted hash.
+
+
+See also Canonical Representation Example
+ 
+
+
+
+
+
+

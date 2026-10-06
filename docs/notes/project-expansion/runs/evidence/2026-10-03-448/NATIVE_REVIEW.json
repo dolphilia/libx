@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-03T12:02:08.178Z",
+  "status": "partial-with-failed-mobile-page-width",
+  "trial": "/private/tmp/libx-xxhash-conversion-trial-447",
+  "url": "http://127.0.0.1:4448/docs/xxhash-trial/v0-8-4/en/02-api/14-group___x_x_h3__family/",
+  "method": "Codex in-app native browser80, desktop screenshot, scroll to note end/original start; viewport390x844 screenshot and read-only actual DOM measurements. No browser mutation. Temporary viewport reset/tab closed/local Astro server terminated.",
+  "passed": [
+    "Desktop six editorial notes readable and separated from original body",
+    "Mobile editorial note text readable within327px body",
+    "Original API body shown after notes"
+  ],
+  "failed": [
+    {
+      "check": "mobile overall page width",
+      "viewport": 390,
+      "documentWidth": 563,
+      "observedCause": "table.memname width377/425px and larger declaration tables exceed article width327px"
+    }
+  ],
+  "pending": [
+    "Other2 annotated pages native view",
+    "API right TOC missing body headings",
+    "Raw fragments codecopy",
+    "Mobile API/code/table/notice and images"
+  ],
+  "screenshots": [
+    "desktop-notes.png",
+    "desktop-notes-to-original.png",
+    "mobile-notes.png"
+  ],
+  "finding": "試験447の最大XXH3 APIを実ブラウザー確認。desktopの6注記と原文区分、390px幅の注記可読性を確認。ただしAPI memname宣言表が横はみ出し、document幅563px/viewport390px。API右目次欠落とcopy未統合も継続。",
+  "nextAction": "試験447を独立後継449へ複製し、原文DOMの表を改変せずAPI表コンテナ内スクロールCSSを適用。61pagebuild/33原文DOM一致後、390pxのdocument幅と表横スクロールを実ブラウザー再確認。API見出し目次登録/codecopy、JP調査/採点/選定を続ける。",
+  "productionPublished": false,
+  "localLLMUsed": false
+}
