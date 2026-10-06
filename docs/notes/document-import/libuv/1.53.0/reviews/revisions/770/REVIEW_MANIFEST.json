@@ -1,0 +1,2779 @@
+{
+  "scope": [
+    "guide/about.md",
+    "guide/basics.md",
+    "guide/eventloops.md",
+    "guide/filesystem.md",
+    "guide/introduction.md",
+    "guide/networking.md",
+    "guide/processes.md",
+    "guide/threads.md",
+    "guide/utilities.md",
+    "reference/api.md",
+    "reference/async.md",
+    "reference/check.md",
+    "reference/design.md",
+    "reference/dll.md",
+    "reference/dns.md",
+    "reference/errors.md",
+    "reference/fs.md",
+    "reference/fs_event.md",
+    "reference/fs_poll.md",
+    "reference/genindex.md",
+    "reference/guide.md",
+    "reference/handle.md",
+    "reference/idle.md",
+    "reference/loop.md",
+    "reference/metrics.md",
+    "reference/migration_010_100.md",
+    "reference/misc.md",
+    "reference/overview.md",
+    "reference/pipe.md",
+    "reference/poll.md",
+    "reference/prepare.md",
+    "reference/process.md",
+    "reference/request.md",
+    "reference/signal.md",
+    "reference/stream.md",
+    "reference/tcp.md",
+    "reference/threading.md",
+    "reference/threadpool.md",
+    "reference/timer.md",
+    "reference/tty.md",
+    "reference/udp.md",
+    "reference/upgrading.md",
+    "reference/version.md"
+  ],
+  "pages": [
+    {
+      "id": "reference/api.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:12:39.343Z",
+      "findings": [
+        {
+          "scope": "RST to EN",
+          "result": "27 toctree references preserved in exact order; rendered labels resolved from pinned source titles, no API prose or declarations omitted."
+        },
+        {
+          "scope": "EN to JA",
+          "result": "All27 labels retain API/category meaning and type identifiers. Prepare/Check/Idle/Async/Poll and FS Event/FS Poll distinguish named handle types. Version-checking includes both macros/functions; threading/synchronization, work scheduling, metrics and shared library handling retain scope."
+        },
+        {
+          "scope": "JA readability",
+          "result": "Short directory labels are consistent and readable; no incorrect normative verbs, numbers or exceptions introduced."
+        },
+        {
+          "scope": "footer",
+          "result": "Fixed version/commit, CC BY4.0, original MIT/component/Apache notifications and editable source retained as footer; unofficial translation clearly stated."
+        },
+        {
+          "scope": "links",
+          "result": "Current real EN destinations deliberately retained during partial JA creation. Final JA route switch remains pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-692/CONTENT_REVIEW_API.json",
+        "sha256": "104ae6aa4267921a20dae183edb8015e4003b2d4284c9694a382697a62ea7a92"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/api.rst",
+        "sha256": "7d434a8621ae0dbfd83d143d5e3785289434022460ef6fce8e3a88128e0553b1",
+        "coverage": [
+          [
+            1,
+            36
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/api.md",
+        "sha256": "08cc4ad049dae554fb9fe42e9c65638e0c7934b8e9e56deeec331404d9cd8754",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/api.md",
+        "sha256": "e5c76ce3d932c6b06a99187f3e7734d1fab5d93b9e4d08585de79271216fc50f",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/async.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:21:27.187Z",
+      "findings": [
+        {
+          "result": "Intro describes waking loop from another thread without falsely claiming callback executes on sending thread. Thread note explicitly says callback executes on loop thread."
+        },
+        {
+          "result": "seq_cst operations are scoped to the same async handle. Prior sends make all prior reads/writes visible. Coalescing is preserved:5 sends before callback ->1 call; after callback a new send invokes again; callback values same or newer."
+        },
+        {
+          "result": "Changed1.53.0 retained. Earlier versions probably require full seq_cst fence when coalescing possible; Japanese retains probability rather than unconditional must."
+        },
+        {
+          "result": "Types uv_async_t and uv_async_cb, all parameters, two APIs, NULL allowed, immediate start unlike other initialization, both success0/error<0 and inherited base members/APIs retained."
+        },
+        {
+          "result": "Any-thread safety, async-signal-safety/signal handler, and full-memory-fence ordering on sending/receiving threads retain scope and all operations."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-694/CONTENT_REVIEW_ASYNC.json",
+        "sha256": "bcd02082b96c93445aa06a5594313756c5f8f159b7b75e8f056ad4599acd6d03"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/async.rst",
+        "sha256": "fb268602aebde93549923acd9d6f063d8f36ee02b95ba5ffb5245dc26ed6d761",
+        "coverage": [
+          [
+            1,
+            86
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/async.md",
+        "sha256": "4dd37bce0305d2b72a43d6355add4cf683a8cd00f6046cd64b0f4b16475446f9",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/async.md",
+        "sha256": "8850c157942df15a85979a03c3191f990ea9c3505bb62f80a5d78f92df34c8ef",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/check.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:37:38.676Z",
+      "findings": [
+        {
+          "result": "Callback once per loop iteration immediately AFTER I/O polling; not confused with Prepare before polling."
+        },
+        {
+          "result": "Both type declarations and all3 functions retained. Callback typedef points to uv_check_start."
+        },
+        {
+          "result": "init always succeeds and returns0. start always succeeds except cb NULL; success0 and cb==NULL ->UV_EINVAL retained."
+        },
+        {
+          "result": "stop guarantees no further callback, always succeeds, returns0. Base uv_handle_t members and API inheritances preserved."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-698/CONTENT_REVIEW_CHECK.json",
+        "sha256": "e800d7206924d2a83501d8738e522ab2a33e4a4e97539a74d8cf3d0aebbfd5b3"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/check.rst",
+        "sha256": "f4f9b6cde2727269c55976f73ff701012203f2dc5fd9e700d1198fac29e7734f",
+        "coverage": [
+          [
+            1,
+            54
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/check.md",
+        "sha256": "73e30862f6eddf1fdea9e87b91bef5d96e095fdf51f093f44111d4a4dccc36f7",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/check.md",
+        "sha256": "6d8ab8296a5652b1a6945ae750fa5b22a57e997a6a8554f7c734b72afd528525",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/design.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T21:43:27.118501+00:00",
+      "findings": [
+        {
+          "scope": "all fixed source/EN/JA/footer",
+          "result": "Separate full review spans727-728: full original design.rst, all98 EN/JA narrative leaves, identifiers, all headings, lists, Important/Note/Warning and current footer compared. No code blocks or footnotes. No unread ranges."
+        },
+        {
+          "scope": "handle/request lifetimes",
+          "result": "Long-lived handles vs short-lived operations, prepare/TCP callback examples, standalone getaddrinfo, all7 lifecycle rules retained. Successful init requires close; init failure no action; only handles closed; close callback before reclamation; spawn combined init/start; fs cleanup and addrinfo free retained. Cancellation original wording kept with fixed API explicit no free before callback clarification in EN/JA footer."
+        },
+        {
+          "scope": "thread model and loop sequence",
+          "result": "Per-loop single-thread restriction and not-thread-safe exception qualifier retained. epoll/kqueue/event ports/IOCP mapping and readable/writable/hangup conditions retained. All13 ordered stages include initial default-mode timers, alive handles/requests/closing handles, pending/idle/prepare, six timeout rules, poll/check/close, time update/timers and NOWAIT/ONCE/default continuation. Timer due while processing deferred to nextiteration preserved."
+        },
+        {
+          "scope": "file I/O and figures",
+          "result": "Network I/O always loop thread contrasted with file I/O threadpool; global pool shared across loops, filesystem/DNS/user queue work and limited-size warning retained. Both original PNGs directly viewed727 and textual diagrams read: architecture grouping and iteration branches/order consistent. Original pixels/English labels retained; native rendered display remains pending."
+        },
+        {
+          "scope": "provenance",
+          "result": "Fixed source commit/licences/notices/editable RST/unofficial JA translation retained. Original whitespace-only image-directive indentation correction disclosed EN/JA footer. Cancellation API supplement explicit Libx note outside body, original unchanged. Prior21 passed hashes unchanged."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-728/CONTENT_REVIEW_DESIGN.json",
+        "sha256": "53d6c8eec40adf947ccef239b96bfa0381780879585c27edc08cbf6a0338eeba"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/design.rst",
+        "sha256": "3b823869f1152dae6d5f1b3201ade736f73bd4f232f700afd783c4cf9c4c65a4",
+        "coverage": [
+          [
+            1,
+            178
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/design.md",
+        "sha256": "7c7003d050a5d011f04655966ab663ff24bfea3bc16c1e0ca133ca5153ab3323",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/design.md",
+        "sha256": "441878c39059c0777763b361c6c773f067cc5a689fe38248ee892c9f482cb2bb",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/dll.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:37:38.676Z",
+      "findings": [
+        {
+          "result": "Cross-platform loading and symbol retrieval preserved; uv_lib_t data type and no public members retained."
+        },
+        {
+          "result": "All4 API declarations/parameters/pointer levels retained. uv_dlopen UTF-8 filename and success0/error-1 plus uv_dlerror link are exact in meaning."
+        },
+        {
+          "result": "uv_dlclose closes the library. uv_dlsym retrieves data pointer, allows symbol mapping to NULL, distinguishes success0 from not-found-1. NULL is not falsely called lookup failure."
+        },
+        {
+          "result": "uv_dlerror returns last dlopen or dlsym error message; no thread/lifetime guarantee invented."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-698/CONTENT_REVIEW_DLL.json",
+        "sha256": "93833749231c1ff3c93aededd9b53ea4d6b30f7dc9f9c7c00c352ab6707be75a"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/dll.rst",
+        "sha256": "a359238664f1c7838722eb7b5c0744800d5edbc94a259b2a9d9b44e268609f85",
+        "coverage": [
+          [
+            1,
+            44
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/dll.md",
+        "sha256": "695b16c5285fdf2413028603af58e14a4041940f40fbdf77236989a20df8b4b3",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/dll.md",
+        "sha256": "6e87ba7f8bd99bf038cf5136d1fc2cb452c6faf284e168d931bff6d069942f07",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/dns.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:38:37.494023+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire fixed dns.rst/current English/current Japanese/API/source-editorial footer read separately after745 translation. All199mapped nodes/12declarations covered, no code block/no unread ranges. No correction required."
+        },
+        {
+          "scope": "types, callbacks and members",
+          "result": "Asynchronous getaddrinfo/getnameinfo variants and both request/callback signatures retained. Cancellation status ECANCELED retained. Both readonly initiating/completion loops, result addrinfo must user free via freeaddrinfo,1.3 public field retained. Host/service original char array declarations with NI_MAXHOST/NI_MAXSERV and null-terminated result plus1.3 public notes retained, including originally unparsed declarations."
+        },
+        {
+          "scope": "getaddrinfo and memory",
+          "result": "node or service mayNULL but not both, hints additional address type constraints orNULL, original man reference retained. Return0 versus negative immediate failure and later callback successful lookup with status0 valid res or negative resNULL/EAI errors retained. freeaddrinfo required and NULL allowed/noop retained."
+        },
+        {
+          "scope": "getnameinfo and synchronous exceptions",
+          "result": "Getnameinfo callback later with result when successful, return0/negative error and man reference retained. Both1.3 allow NULL callback causing synchronous operation, bold emphasis retained; not mistaken for synchronous callback or changing async default. Request members/API inherited."
+        },
+        {
+          "scope": "canonicalisation annotation and review boundary",
+          "result": "Original array declaration text and two added navigation anchors retained; English generator limitation/anchor annotation translated in Japanese footer, not article. Fixed source/licences/notices/unofficial Japanese context retained. Actual API/render/link/TOC checks separate from semantic review; unchanged745 build reused. No native/runtime/content/integration/release or external supplementary video full review claimed."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-746/CONTENT_REVIEW_DNS.json",
+        "sha256": "c88e7c747b593863c49e78f504a9b50a5603b13a4df21f43d5d5bebefd0cb977"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/dns.rst",
+        "sha256": "8a35059186247951fa2274823414798cd1c5bd4e82d5837a1429b46c202bd3d4",
+        "coverage": [
+          [
+            1,
+            108
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/dns.md",
+        "sha256": "e651bb44a518075b8f792f765f0bd7c1fcf85449502b2643b486ebea09242afb",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/dns.md",
+        "sha256": "337ede52a597c3ef379fcf0849d36f071aa7deca12e3a8d60f1fb71242b7490e",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/errors.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:31:55.862Z",
+      "findings": [
+        {
+          "scope": "source -> canonical",
+          "result": "80constants and UV_ERRNO_MAP plus6functions retained. All87declaration blocks preserved. Original negative-error conventions, Unix/Windows distinction and leak warnings retained."
+        },
+        {
+          "scope": "error descriptions",
+          "result": "All80constant labels checked in order against original. Address family/socket type/protocol, transient vs permanent failure, file/permission/memory/network/device errors, EOF/cancellation and all other labels retain their particular meaning."
+        },
+        {
+          "scope": "negative and callback conditions",
+          "result": "Rule of thumb retained, not strengthened to universal guarantee. Callback-taking function returning error means callback never invoked. Unix negated errno and Windows arbitrary negative libuv definitions retained."
+        },
+        {
+          "scope": "API macro",
+          "result": "One invocation per error constant, two arguments, removal of UV_ prefix, message string literal retained. iter_macro identifier unchanged."
+        },
+        {
+          "scope": "error names/messages",
+          "result": "uv_strerror and uv_err_name retain few-byte leaks for unknown error codes. Both _r variants distinguish message vs name, NUL termination, supplied buf and at-most buflen bytes. Both added1.22.0 retained."
+        },
+        {
+          "scope": "system errors",
+          "result": "POSIX errno/Unix and Win32 GetLastError or WSAGetLastError/Windows remain distinct. Already-libuv sys_errno returned unchanged; public declaration1.10.0 preserved."
+        },
+        {
+          "scope": "Japanese readability/footer",
+          "result": "Complete sentences and short error labels are coherent. Source/license/notice/editorial metadata stays outside body, fixed editable source linked; no conversation approval wording."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-696/CONTENT_REVIEW_ERRORS.json",
+        "sha256": "9d327f1d0f1a77076309d98c0c6ffdaa61a08092bae5abc087eb4d94ca6aa779"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/errors.rst",
+        "sha256": "e937e4e485c793bfb1f59c6bcc6e95937f8cf86bd7b8c835b632c94c70dae810",
+        "coverage": [
+          [
+            1,
+            388
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/errors.md",
+        "sha256": "010be54945ff141a52576dd3d7063f9ae614e07abc5bc27c77390fa78d0769dd",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/errors.md",
+        "sha256": "21c5263c2cafa3972015c9c5c4ba0a94fe29c84c722d1c2c5663f700439ab05f",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/fs.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:38:58.330835+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / API / code / footer",
+          "result": "Entire fs.rst read in explicit nontruncated ranges1-239,240-520,521-end; full English and Japanese narratives separately read, all83 declarations separately read in each language. Seven structures/enums read in RST and exact preservation independently checked. Full frontmatter/footer read. All1421 mapped nodes covered, no unread ranges."
+        },
+        {
+          "scope": "semantics and platform/version conditions",
+          "result": "NULL sync/non-NULL async; threadpool/io_uring1.45 and1.49 opt-in; UTF-8 and Y2K38; result/ptr/statbuf; cleanup and opendir/readdir/closedir ordering; copy EXCL/FICLONE/FORCE and1.33 errors; time NOW/OMIT and AIX/zOS; realpath32 links/Windows caveats; OS-handle ownership; all22 open flags and sync/direct/platform constraints retained. Original malformed RST inline markup retained without inventing source corrections."
+        },
+        {
+          "scope": "translation corrections",
+          "result": "Removed duplicate equivalence wording in13 paragraphs and completed Windows GetFileAttributesW predicate. All corrected paragraphs reread; no source/signature/code/link/id/footer changes. Initial expected correction count12 assertion failed before mutation; inspected13 actual paragraphs. First predicate repair condition missed Japanese punctuation; correction output inspection caught this and explicit followup repaired before build/register."
+        },
+        {
+          "scope": "verification boundary",
+          "result": "Current88-page build, JA41 DOM/footer,1901 local links,84TOC,83declarations/7code exact passed. These are mechanical checks distinct from semantic review. Native/runtime/full-project gates pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-766/CONTENT_REVIEW_FS.json",
+        "sha256": "8f0f280e7ba8861d6759f5501f8d79732741832a944a61f83ddbe09ec2136e1c"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/fs.rst",
+        "sha256": "04ecb374338f08d18ecc3828c19da90f92ec9f7d987e204e051d0c05ca49578d",
+        "coverage": [
+          [
+            1,
+            728
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/fs.md",
+        "sha256": "59013093f90d3d2018d2a08c4a24034cddd1b9b06d5bfb08305072ceaa47342c",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/fs.md",
+        "sha256": "142914bd87ebf021725522f2119290c2bf2799c17596222507c3fafcbcc53bd4",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/fs_event.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:50:47.278110+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire fixed fs_event.rst/current English/current Japanese/API/footer read separately after749 translation. All153 mapped nodes/8 declarations/2 enum code blocks covered. No unread ranges or correction necessary."
+        },
+        {
+          "scope": "platform and callback conditions",
+          "result": "AIX bos.ahafs installation, per-process monitoring and thread-safety restrictions, separate process per monitor, no file-write events for directory-only monitoring retained. z/OS creation/deletion limitation retained. Repeated callback, relative filename or NULL, ORed events, FreeBSD kernel-bug NULL note retained."
+        },
+        {
+          "scope": "flags and platform notes",
+          "result": "Both enum values and original comments/code exact. WATCH_ENTRY and STAT unimplemented on all backends retained in original code comments. RECURSIVE supported where available; original OSX/Windows restriction and macOS events collected immediately before start retained without speculative source correction."
+        },
+        {
+          "scope": "API and historical getpath changes",
+          "result": "Inherited handle members/API, init/start/stop retained. Caller preallocates buffer; success0/failure negative, returned path/size and ENOBUFS required size including nul retained. Separate1.3 no-nul and1.9 ENOBUFS includes-nul/success terminated conditions kept with historical version labels."
+        },
+        {
+          "scope": "review boundary",
+          "result": "Source/licence/notices/unofficial Japanese note verified in frontmatter/footer outside body. Original external IBM links retained; linked external document full content not claimed reviewed. Current mechanical output/API/link/TOC checks distinct; unchanged749 prebuild/build reused. Final native/full-project content/integration/publication and external supplementary video review pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-750/CONTENT_REVIEW_FS_EVENT.json",
+        "sha256": "55e1c69df25dea4977760ce17ba9cd4fa22271bdeab59a9a75eb4c4d6e03e891"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/fs_event.rst",
+        "sha256": "ddbaa33f0d2f71a471c6824cea4210689b15eb3e19ed321d3785d6f799bba5d4",
+        "coverage": [
+          [
+            1,
+            144
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/fs_event.md",
+        "sha256": "43e7453dbb9c6093ee0d9b2852422d374a8d17757348a122b977ce523318b5e8",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/fs_event.md",
+        "sha256": "75fb0e067521b21e7517289387c032e1ef3c3b46601f4278ec92586595d25319",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/fs_poll.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:43:14.175889+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire fixed fs_poll.rst/current English/current Japanese/API/footer read separately after747 translation. All131mapped nodes/6declarations covered; no code block/unread ranges. No correction necessary."
+        },
+        {
+          "scope": "monitoring and callback lifetime",
+          "result": "Given path monitoring via stat versus event handles unavailable filesystems retained. Repeated callback after start on path change; negative status conditional on nonexistent/inaccessible path and watcher NOT stopped retained. No further callback until change including creation or changed error reason retained. Status0 receives old/new stat pointers valid only during callback, no lifetime extension inferred."
+        },
+        {
+          "scope": "public members/init/start/stop",
+          "result": "No public-specific members and inherited handle members/API retained. Init, interval milliseconds and path check retained. Maximum portability multi-second intervals, subsecond cannot detect all changes on many filesystems retained. Stop prevents callbacks retained."
+        },
+        {
+          "scope": "getpath and version conditions",
+          "result": "User preallocates buffer, success0/failure negative, success path and its length, small buffer ENOBUFS/required size retained.1.3 historical change excludes terminating nul/not terminated;1.9 ENOBUFS length includes nul and success buffer terminated retained with version labels, not treated as simultaneous current conditions."
+        },
+        {
+          "scope": "review boundary",
+          "result": "Source/fixed licence/notices/unofficial JA remain footer. Current actual API/render/link/TOC check distinct from semantic review; unchanged747 prebuild/build retained. Native/runtime/content/integration/publication and supplementary external video full review remain pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-748/CONTENT_REVIEW_FS_POLL.json",
+        "sha256": "7b7b1530fc5ebadeeaa576a6b313c18ea9f2ff1fa36a5bae429cb4b44d6d6527"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/fs_poll.rst",
+        "sha256": "574ed180b6ebb50e7bf43b006357931e6867c41df2ecc52f8f6168cbfba5565c",
+        "coverage": [
+          [
+            1,
+            77
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/fs_poll.md",
+        "sha256": "25a5240d8842983e34827dbf7cc5ccfbdee87f24f63e40b346b7c4be09c607a2",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/fs_poll.md",
+        "sha256": "c2d284722dd3031d3c842e5c91c80f691cf62ca500f93de981a87abf116d2276",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T20:10:07.774Z",
+      "findings": [
+        {
+          "result": "Original author warning that guide recently incorporated/not thoroughly reviewed remains in body, with error-report/PR invitation. It is not rewritten as a Libx current status statement."
+        },
+        {
+          "result": "All44 chapter/section directory labels translate their original meaning, preserve hierarchy/order and links. 9 target RSTs checked for original heading labels; no claim that target chapter content is reviewed."
+        },
+        {
+          "result": "Libx version/WIP explanatory note is footer-only, distinct from original author warning. Fixed1.53 distribution does not silently relabel original book/examples1.42."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/CONTENT_REVIEW_GUIDE.json",
+        "sha256": "7ba8ac1d6ae3221c2dbf9e0591d908decb2511e4652d5ae079def8bf87585789"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide.rst",
+        "sha256": "908d6344db9df73c4db1f17fac28f00fbb3db26a617e6c6977d909318443a9d2",
+        "coverage": [
+          [
+            1,
+            22
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/guide.md",
+        "sha256": "5d2cc096b0057dbdad99db6621d53ce64bb22a05512528c8b0035d0f46b236e4",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/guide.md",
+        "sha256": "a23a54d03340f5db96a1dc9e207f3049c1553f9e6ff7d1cb149e5738607c3a6b",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/about.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T21:34:19.515809+00:00",
+      "findings": [
+        {
+          "scope": "all source/EN/JA/footer",
+          "result": "Read complete original about.rst and complete current EN/JA article and footer separately after724 translation. All15 narrative leaves and heading/Note reviewed; no code/table/figure/footnotes present. No unread ranges."
+        },
+        {
+          "scope": "author, history and attribution",
+          "result": "Nikhil Marathe, June16 2012 afternoon, node-taglib context and missing comprehensive tutorials retained. Accuracy intention and possible errors/PR encouragement preserved. Marc Lehmann/libev semantics attribution, Sphinx/vim tools and2017 official incorporation/maintenance retained with all original URLs."
+        },
+        {
+          "scope": "provenance",
+          "result": "Fixed commit/documentation CC BY4/software MIT/component/Apache notices/editable source and unofficial JA translation retained, guidev1.42/WIP caveat only footer. Previous20passed inputs unchanged. No external historical claims independently verified; review checks faithful fixed-source translation."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-725/CONTENT_REVIEW_ABOUT.json",
+        "sha256": "a5d877f8ecaa15f247560f9e5dce1513e5965109c4dafa3ee607eabc9f1e39b0"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/about.rst",
+        "sha256": "f56016d30f31e1cc17bdae92b42ffea990ab5f8ed8494b55f7db11a510d293f0",
+        "coverage": [
+          [
+            1,
+            22
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/about.md",
+        "sha256": "b5c37d8a2942b5462487b639a13be90999669bb6f680b4eecd5f3d9fa6d07ed2",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/about.md",
+        "sha256": "f1051fda4ae58cd052a477a3ef56c2317812390d759fc9b3938a9a5ea49b940d",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/basics.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T20:26:39.949Z",
+      "findings": [
+        {
+          "scope": "event loop and async model",
+          "result": "Asynchronous/event-driven utility scope, callback registration/event gathering, loop usually forever and pseudocode retained. File-write/socket-read/timer events, uv_run central role, blocking I/O waiting/performance explanation, standard thread alternative retained."
+        },
+        {
+          "scope": "nonblocking and qualification",
+          "result": "OS socket watch/event queue/inspect-and-fetch narrative, async interest-vs-later data use, nonblocking freedom for other work retained. Throughput explanation keeps original hardware-capacity footnote. Background threads/workers and/or polling note retains usually, not universal guarantee."
+        },
+        {
+          "scope": "supplementary video",
+          "result": "Author introduction and original YouTube-nocookie embedded element retained, fixed design-doc link retained. Footer distinguishes external supplementary media from Libx CC BY4.0 document licence; no video copy/relicensing. Full external video viewing/semantic/audio review NOT performed and not counted as a reviewed fixed textual source."
+        },
+        {
+          "scope": "HelloWorld/default loop",
+          "result": "All original examples retained. Immediate exit without events, API watchers required, v1.0 allocate-before-init/custom memory management and close-then-release advice retained. Default loop one-loop recommendation and node.js binding note retained."
+        },
+        {
+          "scope": "source discrepancy",
+          "result": "Original prose says examples never close loops but helloworld/default-loop/idle-basic fixed sources all call uv_loop_close. Literal source is not silently corrected; EN/JA footer identifies discrepancy with all3source links. Primary source hashes and repeatable overlay confirm this."
+        },
+        {
+          "scope": "errors",
+          "result": "Possibly-failing init/sync negative returns vs async callback status retained. UV_E* constants, strerror message vs err_name name/const char*, nread<0 and special EOF handling retained."
+        },
+        {
+          "scope": "handles/requests",
+          "result": "Opaque uv_TYPE_t usage, long-lived handles vs short-lived requests usually one callback/I/O and context preservation retained. UDP socket uv_udp_t vs individual send uv_udp_send_t distinguished. Full typedef list and init prototype copied without amendments."
+        },
+        {
+          "scope": "callback/idle/context",
+          "result": "Application callbacks/data/timer examples retained. Idle callback once per turn, watcher lifecycle, uv_run waiting until no active watchers and stop at count retained. This is blocking of the call, not a claim that active idle blocks the I/O poll. data member opaque void* and casting context back, including loop data, retained."
+        },
+        {
+          "scope": "code/readability/footer",
+          "result": "6literal blocks including English pseudocode and code comments deliberately preserved exactly. Captions, headings, all narrative and footnote translated consistently. Libx notes stay only in footer; author content and licensing remain separate."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-706/CONTENT_REVIEW_BASICS.json",
+        "sha256": "073ab7fe97e67092bf138ecfcf0699e9c5d430e395030dafb40bad626cdb9738"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/basics.rst",
+        "sha256": "55f9d3e8cb02c05ab4e082994496676a35988e835291bfaa9c8e042c6de24b53",
+        "coverage": [
+          [
+            1,
+            236
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/basics.md",
+        "sha256": "f79171bf2fa12ebd272c718c50b0f9dbb10670429935c5dcbdedb411bfbbd371",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/basics.md",
+        "sha256": "aa9f55497aa82c625a8e88043d4284defaa53337f4ca6988558836f0ee494ba6",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/eventloops.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T21:16:55.607430+00:00",
+      "findings": [
+        {
+          "scope": "all fixed source, canonical, Japanese and footer",
+          "result": "Separate full read of eventloops.rst, complete EN article/code/footer and complete Japanese article/code/footer after718 translation. All23 narrative leaves, headings, two code excerpts and source/licence notices compared; no omitted text or unread ranges."
+        },
+        {
+          "scope": "embedding and stopping semantics",
+          "result": "Multiple-loop and Qt embedding example retained. uv_stop earliest next iteration possibly later, already-ready events continue, not a kill switch and no I/O blocking during current iteration retained. stop_flag setting, timer/pending/idle/prepare/I/O order as stated in original, timeout zero and already-finished I/O in check-handler case retained. No claim that old guide sequence was updated to fixed release."
+        },
+        {
+          "scope": "examples and original discrepancy",
+          "result": "Full handle-closing excerpt21 lines and uvstop33 lines preserved. Counter >=5 invokes uv_stop and current prepare callback continues, idle/prepare setup and default loop retained. Original304–324 range mislabeled uv_run remains original and EN/JA footer explicitly says closing code versus uv_run start427 with fixed API/source links. No silent source substitution or compilation claim."
+        },
+        {
+          "scope": "provenance and editorial boundary",
+          "result": "Fixed commit, documentation CC BY4.0, software/component/Apache notices and editable source retained. Unofficial Japanese translation and original guide v1.42/WIP caveat visible only footer. Prior18 reviewed input hashes unchanged."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-719/CONTENT_REVIEW_EVENTLOOPS.json",
+        "sha256": "eb1b84f620d61d739b1b1de9122d245d527c653f35994b049a37779d33ea8201"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/eventloops.rst",
+        "sha256": "00d4b0ec25bbf56753d5e6881aca5a7f2b0a0543ff96638351d14cf803794b82",
+        "coverage": [
+          [
+            1,
+            50
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/eventloops.md",
+        "sha256": "c634161133cb5e7ffe9329272ccbc7376c9b0f9b272651414c1fe4ce99db3ad3",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/eventloops.md",
+        "sha256": "32e0d7ef47e65637344dc48f503442cc96d4eb0022e9d53cf8a7bd2ae8cac36b",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/filesystem.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T20:36:45.847254+00:00",
+      "findings": [
+        {
+          "scope": "filesystem vs socket / synchronous asynchronous",
+          "result": "Threadpool-backed blocking filesystem calls distinguished from OS nonblocking socket operations. Null callback invokes synchronous blocking form; original error-code/async return0 prose retained without strengthening into universal successful submission guarantee."
+        },
+        {
+          "scope": "uvcat all includes / results / cleanup",
+          "result": "Open/read/write/close prototypes, all4 uvcat slices, positive fd result, initialized read buffer, result0 file EOF vs UV_EOF stream status, callback-driven alternating reads/writes reviewed in full. Synchronous close/one-off startup-shutdown rationale retained. Disk durability warning and mandatory request cleanup warning translated, not removed."
+        },
+        {
+          "scope": "filesystem complete list",
+          "result": "All37 declarations preserved verbatim including buffers arrays/count, int64_t offsets, flags/modes, directory/scan/free-dependent APIs, uid/gid and statfs. Caption/prose result field and original full-list assertion retained."
+        },
+        {
+          "scope": "buffers streams / memory lifetime",
+          "result": "Stream subclasses TCP/TTY/pipes, start-once/read-stop, pointer/length/value semantics and application-owned bytes retained. uvtee copy-before-free, separate two-write allocations and callback freeing, nread negative/EOF/zero, UV_ENOBUFS retry and explicit close retained. Reference counting/pool suggestions retain advisory scope."
+        },
+        {
+          "scope": "original sample limitations / literal includes",
+          "result": "Strong original THIS PROGRAM DOES NOT ALWAYS WORK warning translated prominently. Exact18 literal blocks include original noncontiguous source ranges with partially shown function boundaries; did not rewrite these into invented compilable examples. Overshooting62-80 include on79line source noted in original and translated footer. Preserved original comments/signals/example calls, no successful compile/run claim."
+        },
+        {
+          "scope": "SIGPIPE / file changes",
+          "result": "Pipe writes can abort on SIGPIPE and original signal(SIGPIPE,SIG_IGN) initialization advice retained. OSX/Windows example restriction, event init vs start sequence, flags1/2/4, two inactive flags and recursive support qualifier retained. All4 callback args, optional filename/null even on Linux/Windows, bitwise OR events and negative status error retained. system command invocation and original1023path limitation comment retained."
+        },
+        {
+          "scope": "footnotes / readability / footer",
+          "result": "Both numbered footnotes/backlinks, platform notification implementations/Cygwin unsupported and parent-child IPC target preserved. Full166 narrative leaves reviewed; result/uv_fs_t word order corrected before final saved input. Titles/captions/warnings translate consistently. Libx provenance/editorial notices only footer, fixed CC BY4.0/original software notices/source links/unofficial translation distinct."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-708/CONTENT_REVIEW_FILESYSTEM.json",
+        "sha256": "c0c023a3dec463bf599fe59476d311c4b87f7c3dbb1b353f47aac9d2e5ab4a8e"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/filesystem.rst",
+        "sha256": "e7ff2e8ccec2d504db9856c1818b0fe470b10d08189e563afa80844f9314e685",
+        "coverage": [
+          [
+            1,
+            349
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/filesystem.md",
+        "sha256": "bbc081892ca35b1bede3b465929791d90ec596bf174dfb6f20e98728ec2057ca",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/filesystem.md",
+        "sha256": "ebb1716b930d2af5d7a7270101a472dddb46434cb4d217d5c6a7bf7f94edd4be",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/introduction.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T20:10:07.774Z",
+      "findings": [
+        {
+          "result": "Book is small tutorials, Windows/Unix same API/evented I/O, main areas but not exhaustive function/data-structure reference; original official-doc reference retained. WIP/incomplete sections remain."
+        },
+        {
+          "result": "Both audience cases retained: system programmer low-level daemons/network service/client/event-loop approach; node.js module author wrapping C/C++ APIs as sync/async JS APIs, solely node.js context, other V8/node.js resources needed. C familiarity assumption retained."
+        },
+        {
+          "result": "Background original historical narrative preserved:2009,GoogleV8/MarcLehmann libev, evented language shaped by browsers, Unix-only libev/Windows IOCP vs kqueue/(e)poll, platform abstraction, removal node-v0.9.0, maturation and original Mozilla Rust/language bindings references. Not substituted with new unverified contemporary assertions."
+        },
+        {
+          "result": "Explicit book/code v1.42.0 retained. Fixed release1.53 source metadata and original-book1.42/WIP notes distinguished. No all examples updated claim."
+        },
+        {
+          "result": "Code/source available GitHub, clone/download and exact3 build command lines preserved. No need make install; examples make in docs/code directory retained. Actual rendered pre whitespace matches canonical exactly."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/CONTENT_REVIEW_INTRODUCTION.json",
+        "sha256": "c5c7cae1a4b0a15fafaf2ba630cf055c68ad902454cb9a6a0adf8807db67417c"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/introduction.rst",
+        "sha256": "b2a63998152ac1333f36ea6b8a7346475e707a13ee53635669814fb85da6f4ff",
+        "coverage": [
+          [
+            1,
+            73
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/introduction.md",
+        "sha256": "a342f3f435c88af05513cfb1482a8ee10a18c0e7c0e4ad8bfc2d8df4321cd513",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/introduction.md",
+        "sha256": "5cf8c0d74745d5aa3d7851b9254ad4a0164d47c6d4bf6ff2f6cf423c2e7d1cfb",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/networking.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T20:50:36.840653+00:00",
+      "findings": [
+        {
+          "scope": "RST/code preservation and conversion correction",
+          "result": "Read all fixed networking.rst, full EN/JA article including9 literal blocks. Missing original multicast declaration restored verbatim at original location; footer discloses malformed original directive and conversion correction. Existing8blocks retain exact comments/names/whitespace and original slice boundaries; did not invent missing enclosing function lines."
+        },
+        {
+          "scope": "TCP server and client",
+          "result": "Nonblocking BSD abstractions, uv_tcp_t/uv_udp_t, original memory-leak/improper-close warning, complete5-step server sequence, backlog bound, ip4/ip6 transforms, accept/read registration and close advice retained. Client connect request/handle/lifetime example retained; same-style callback wording adjusted to similarity rather than identical callback claim, without changing original."
+        },
+        {
+          "scope": "UDP semantics and DHCP example",
+          "result": "Connectionless/unreliable vs stream distinction, receiving handle vs sending request, DHCP discover scope retained. Root requirement/below1024, addresses0.0.0.0/255.255.255.255, port0, ports68/67, REUSEADDR, required broadcast flag/EACCES and failure<0 retained. nread0/null address means no data versus nonnull empty datagram, allocator-too-small/PARTIAL and OS discards excess retained."
+        },
+        {
+          "scope": "TTL IPv6 multicast",
+          "result": "TTL setting, dual-stack IPv6 with IPV6ONLY restriction, restored membership declaration including4params/types, JOIN/LEAVE group, multicast loopback default and disabling call, multicast TTL/external supplemental guide references retained."
+        },
+        {
+          "scope": "DNS",
+          "result": "Async replacement/system-threadpool footnote, Libera.chat example, nonzero setup failure/no callback, immediate argument release as original wording, hostname/servname/hints docs and NULL callback synchronous alternative retained. Resolver list selection, connect example and required freeaddrinfo call retained; reverse getnameinfo retained. No claim sample runtime tested."
+        },
+        {
+          "scope": "interfaces and all footnotes",
+          "result": "Interface-address collection/type/family inspection/freeing sample retained; is_internal loopback and duplicate names per physical IPv4/IPv6 address retained. All3footnotes/backlinks/referencedURLs and removed c-ares<=0.8 vs0.9 distinction retained."
+        },
+        {
+          "scope": "JA full-page readability/footer",
+          "result": "Read full headings/captions/ordered list/narrative/warnings/code/footnotes/footer. Technical identifiers and numbers retained; advisory/necessary qualifiers not strengthened. Fixed version/commit/CC BY4.0/software component notices/RST/unofficial translation and guide work-in-progress/version caveat in footer. Restoration note/footer remains outside original article."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-712/CONTENT_REVIEW_NETWORKING.json",
+        "sha256": "e15797c797800c02b1ee595a36e9ba93de356f5aa792d609e4ba3555de734728"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/networking.rst",
+        "sha256": "6d12921724fd84c70c256f27b894df5b41a113d0ad87688b733b4af03bb68e73",
+        "coverage": [
+          [
+            1,
+            256
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/networking.md",
+        "sha256": "6c01861257ca863c0b5a2513242d10b15622dde93d0a1998361f5b7d23a811a7",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/networking.md",
+        "sha256": "d5e2cbd2f6d9cddb4b51107f2dfb30c44d44c10d4db9a0a24056409b09393339",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/processes.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T21:08:39.508782+00:00",
+      "findings": [
+        {
+          "scope": "complete source/EN/JA/code",
+          "result": "Read full current fixed processes.rst, all244EN narrative leaves, all20literal blocks through current full JA article, full headings/list/footnote/footer. Existing original snippets intentionally partial, not rewritten or certified compilable. One-event and uv_kill old-type originals preserved and footer annotated against fixed public documentation."
+        },
+        {
+          "scope": "spawn and process configuration",
+          "result": "Child-process abstractions, message-vs-shared-memory and multiple-core rationale retained. spawn/zero-initialized global versus local options, process handle vs options, file/args/path/NULL-array conventions, pid, exit status/signal, do-not-close-before-exit and required-close-after-exit retained. cwd/env NULL inheritance, bitwise flags/uid/gid/Unix-only+Windows ENOTSUP, Windows verbatim ignored Unix retained."
+        },
+        {
+          "scope": "detached lifecycle/kill/signals",
+          "result": "Detached new session/parent-independent lifetime and handle still referenced/unref advisory retained. kill(2)/Windows termination caveat SIGTERM/INT/KILL retained. Original uv_err_t signature distinct from fixed int and both source/API footer links retained. process_kill uses handle not pid and after-exit close retained; Japanese close word order corrected in this pass and actual render rechecked. Signals init/start/one-number overwrite/stop, all66line signal sample/four watchers retained. NOWAIT-vs-ONCE wait distinction retains original one-event wording with footer explaining loop pass/poll, not exact callback guarantee."
+        },
+        {
+          "scope": "child stdio and CGI",
+          "result": "Descriptors0/1/2 correctly stdin/stdout/stderr, stderr-only test, stdio count/container flags/union, ignore first3 to devnull, inherit fd2, inherit stream data.stream retained. Complete test/tick examples and original CGI excerpt slices unchanged. Ten ticks, socket-as-stdout, OS buffering and process creation cost retained. Partial slices and guide minor proc-stream name remain original."
+        },
+        {
+          "scope": "parent-child/arbitrary IPC",
+          "result": "Create-pipe plus readable/writable flags explicitly child perspective, initialized-unopened pipe instance requirement retained. Pipe versus streamable objects, Unix domain/mkfifo/pipe and Windows named pipe, socketpair choice retained. Domain sockets unrelated process/D-BUS/MySQL examples, echo.sock/socat/path/platform name and all references/footnote retained."
+        },
+        {
+          "scope": "descriptor passing/workers",
+          "result": "TCP/other-pipe only qualifier retained. Round-robin/master-worker scope and full-code reading advice retained. Worker ipc1/stdin association, pending count/type and accept client from queue retained. Process+options+pipe struct, CPU count/free-info, one worker perCPU, stdio child-readable pipe/stdout ignored/stderr inherited, connection dispatch/write2/dummy1-byte buffer and nonempty buffer attribution retained. Original return/error checks untouched; runtime correctness not certified."
+        },
+        {
+          "scope": "readability/provenance",
+          "result": "All narrative/modal qualifiers/numbers/types/comments reviewed. Fixed guide WIP/v1.42 caveat and source discrepancy notes distinct from original content, located only footer. CC BY4.0/original software/component/Apache notices/editable sources/unofficial translation retained. Prior17passed inputs unchanged."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-717/CONTENT_REVIEW_PROCESSES.json",
+        "sha256": "6561290fc60a7ed6ee4d0603ea6c376d6943fb702957a19602bac32e877d0635"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/processes.rst",
+        "sha256": "3077d63729eabd43f0ec723d806fd0dc8a0f8b26b5f5acd650a2f8c10527d75e",
+        "coverage": [
+          [
+            1,
+            424
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/processes.md",
+        "sha256": "95f6700c1a95b2e98fd86cf2ef17f4b213c1264b98fc5c660e48735baa8f4efa",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/processes.md",
+        "sha256": "f18a215df00a211b8fac6c0fcfcf4264e6b3775816c03811aa946b63aa369bf6",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/threads.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T20:57:01.973731+00:00",
+      "findings": [
+        {
+          "scope": "entire fixed-source mapping",
+          "result": "Read full threads.rst, all199 English narrative leaves, entire Japanese article/footer and all16original code blocks. Fixed literals include source partial function boundaries and old example syntax; not silently rewritten into compilable examples. Overshoot26-36 on35line file preserved/annotated in footer."
+        },
+        {
+          "scope": "thread model and core",
+          "result": "Event-loop vs thread rhetorical contrast, internal blocking task offload, Windows/POSIX analogy/limitations and thread API independence retained. Single main loop/thread and only async_send from others stated as chapter assumption, not general libuv restriction. create/join, void* argument, preemptive scheduling and lack of returned join value retained; Unix pthread alias is implementation detail."
+        },
+        {
+          "scope": "mutex/rwlock/synchronization",
+          "result": "All6mutex signatures/return types retained. Original debug abort statement and EAGAIN/EBUSY exceptions translated with exact logical scope after draft word-order correction. Recursive mutex advisory/cond restriction, BSD double-lock caveat and original Windows assertion retained. Concurrent readers/exclusive writer, scheduling usually qualifier, complete57line rwlock/barrier example, semaphore/condition/barrier links and once-only/TLS version retained. Original once example calls unchanged, not certified compilable."
+        },
+        {
+          "scope": "work queue and cancellation",
+          "result": "Blocking/CPU-bound work off main loop, fib examples, work_t/data proper locks and after callback on event-loop thread retained. Baton link, since0.9.4, not-started-only cancellation vs already-started/completed failure, pending tasks shutdown rationale, SIGINT example/return0 and after status ECANCELED retained. Existing original errorno mismatch to fixed result structure explicitly annotated only in footer."
+        },
+        {
+          "scope": "interthread communication and async notifications",
+          "result": "Sender-any/receiver-loop distinction, print_progress, async timing immediate-or-later, coalescing multiple sends into one callback, at-least-once and no duplicate per-single-event/none-without-pending conditions retained. Draft sentence ordering corrected before final713 inputs. Nonblocking immediate return, progress/watch cleanup instructions and full fixed atomic acquire/release example slices preserved; code/prose old data-field explanation not silently modernized."
+        },
+        {
+          "scope": "data safety/signals/thread affinity",
+          "result": "Original data field misuse attribution/bnoordhuis, wake-up role and mutex/rwlock ordering retained. Signal handler mutex/rwlock prohibition vs async_send retained. V8 thread-affinity/undefined-cross-thread consequence, complete4-step third-party blocking library example and raw JavaScript snippet retained."
+        },
+        {
+          "scope": "readability/footer and limitations",
+          "result": "All headings/captions/emphasis/links/version qualifiers/numbers reviewed. English API identifiers/code comments preserved. FixedCC licence/source/original notices/unofficial translation and Libx source discrepancy notes only footer. Literal preservation does not certify modern example correctness or execution."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-714/CONTENT_REVIEW_THREADS.json",
+        "sha256": "33f415f1f8423dd89d7ec0e72a9def9839723972187c0edec8471320ca9a55c4"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/threads.rst",
+        "sha256": "48155bf8a2759cb4ed4a3547a5dc8fcf9c354d02607aae81006dc8e915a06946",
+        "coverage": [
+          [
+            1,
+            398
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/threads.md",
+        "sha256": "5e680930e002cbf8a83092e3e23839f6a856a203bcb048432923e5545ad854a2",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/threads.md",
+        "sha256": "cf182a98c509f45a475f27773b2d9b7eb4cbf4f1f3d72202077f26adeed5bfee",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "guide/utilities.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T21:31:18.293482+00:00",
+      "findings": [
+        {
+          "scope": "complete source, EN, JA, examples and footer",
+          "result": "Separate full fixed-text review over722-723: complete original utilities.rst including all directives, current full Japanese text/24code blocks/table/footnotes, complete current EN narrative and identical code, current EN/JA footer. Earlier output truncation repaired by targeted complete remaining paragraph/TTY/footnotes/footer reads; no unread ranges remain."
+        },
+        {
+          "scope": "timer and references",
+          "result": "5000/2000ms interpreted5s/2s, optional repeat and callback-safe stop retained. Delayed repeat change, prior interval once more, non-repeating restart, again repeat-only and original failure wording retained with fixed API discrepancy note. ref/unref, only timer still active does not keep loop alive, GC/fake-job9000ms and JS-object example retained."
+        },
+        {
+          "scope": "idle and baton",
+          "result": "Original GUI/blocking rationale and repeated crunch_away description translated faithfully, but actual code stops idle every callback and restarts after positive input; explicit EN/JA footer separates original prose from fixed example. Baton first-member req, data pointer and single free lifecycle retained. Original ftp_cleanup arity differs from fixed after_work status parameter; note preserved. Partial sample syntax is original, not certified compilable."
+        },
+        {
+          "scope": "poll and libcurl",
+          "result": "Underlying fd and incremental processing requirements retained; blocking-only library uses threadpool with reduced control. Socket/timer callbacks, URLs/direct file write, timer socket action timeout, socketp association, remove and cleanup, readable/writable mask updates, event flags and transfer-message cleanup retained. All six original uvwget excerpts and command preserved; behavior/error-handling not runtime certified."
+        },
+        {
+          "scope": "plugin, TTY and table",
+          "result": "TODO preserved. Shared library plugin interface/initialize/dlopen/dlsym/error and platform filenames retained. TTY unused old parameter, mode/reset and redirection/guess handle, winsize width/height success0 retained. Full31line tty and48line animation examples exact. ANSI J/H/B/C/m rows, 40+2/30+7, version1.23.1 and both footnotes/URLs retained."
+        },
+        {
+          "scope": "source and editorial notes",
+          "result": "Original documentation CC BY4/software MIT/component/Apache notices, fixed commit, editable source and unofficial translation retained. Guidev1.42/WIP caveat, three API differences and idle difference remain separate footer. Prior19 reviewed page input hashes unchanged; final project gate not claimed."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-723/CONTENT_REVIEW_UTILITIES.json",
+        "sha256": "ef830df8c0c68468e3d443c4630ce97e7dd7d34642e8fd7c24b9872c43ae1581"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/utilities.rst",
+        "sha256": "50ff039f3411668b250df843df196bef7a96329c370af73952b98ab6bedde359",
+        "coverage": [
+          [
+            1,
+            451
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/utilities.md",
+        "sha256": "f305a17e7c363d533afae05b9ac4e19c064586d18bd48bb01640f64744c522dd",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/utilities.md",
+        "sha256": "e5ff55496b2491ed28fc0f52598c7d5c35f6361ce7c388ca53bc185f7aa9b7b1",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/handle.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T21:54:27.743959+00:00",
+      "findings": [
+        {
+          "scope": "complete source/EN/JA/code/footer",
+          "result": "Complete original handle.rst and current full EN/JA read in separate review after731 full translation. All351mapped nodes/24declarations/two code blocks/all headings/admonitions/version/footer covered, no unread ranges. Final ordinary cited active corrected to アクティブ; API/code unchanged."
+        },
+        {
+          "scope": "types, allocation and handle lifetime",
+          "result": "Aligned casts/base/union/full enum preserved. Not movable and valid pointers throughout requested operation/stack caution retained. alloc callback buffer allocation, baseNULL or length0 ENOBUFS, one-use/free responsibility, 65536 advisory unrelated pending data and custom allocators retained. Close must precede memory release, only in/after callback, fd immediate close but deferred callback, in-flight req async canceled, nullable callback retained."
+        },
+        {
+          "scope": "activity and references",
+          "result": "Async always active unless closed, stream/socket I/O activity and check/idle/timer start/stop distinction retained. is_closing valid init-through-closecallback range and nonzero/zero values retained. ref/unref idempotence, no counter and active AND referenced default-run requirement retained; unref after timer-start ordering exact."
+        },
+        {
+          "scope": "miscellaneous functions/platform conditions",
+          "result": "FFI size, *value0 read versus positive set, return0/negative, Unix TCP/pipe/UDP versus Windows TCP/UDP, Linux double-size caveat for send/receive retained. fileno supported five handle types, EINVAL versus unattached/closed EBADF and no interfering fd warning retained. Loop/data/type getters/setter, pipe naming/NULL fallback and allfive1.19notes retained."
+        },
+        {
+          "scope": "source and validation boundary",
+          "result": "Fixed licences/commit/original source and unofficial JA notices remain footer. Original EN/RST and previous23reviewed inputs unchanged. Signatures/code and actual rendered output rechecked after small prose correction, distinct from this semantic review. Prebuild setup731 reused unchanged, Astro build732 rerun; native/runtime/whole project not claimed."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-732/CONTENT_REVIEW_HANDLE.json",
+        "sha256": "4b3290a57465c0e16e146e51fe06a46368a4ed6682eaa874e634aa99ec99370e"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/handle.rst",
+        "sha256": "8bd15a65a57b0d07e71c06ca367e4dd4a99eab195287b041804eba539ae8e6bb",
+        "coverage": [
+          [
+            1,
+            286
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/handle.md",
+        "sha256": "08d22720dbd88c1c93aa6f91aaf0c1851a7fd469e5cb54784c27bdac5f788616",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/handle.md",
+        "sha256": "0538aa83350793e88f630e18398730d292c36963713dc36eb78726be22f49cb3",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/idle.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:37:38.676Z",
+      "findings": [
+        {
+          "result": "Callback once per loop iteration immediately BEFORE uv_prepare_t handles, not directly rephrased as before/after I/O poll."
+        },
+        {
+          "result": "Active Idle forces zero-timeout polling instead of blocking for I/O. Warning keeps every-iteration callbacks even when loop not actually idle."
+        },
+        {
+          "result": "Both types and all3 APIs retained; callback typedef uv_idle_start, init always succeeds/0, start except NULL with0/UV_EINVAL, stop no further callback/always0 preserved."
+        },
+        {
+          "result": "Inherited base handle members/API apply. No misleading waiting-for-inactivity explanation introduced."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-698/CONTENT_REVIEW_IDLE.json",
+        "sha256": "51f08c1307b8c438dd3f0b2792df56361f91eb6e2c37707899ac827c8070bc7c"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/idle.rst",
+        "sha256": "b292d099199be6c65e344dde0bc32fb9ddd75d3e10c40d18e5ca5308e35b1c32",
+        "coverage": [
+          [
+            1,
+            62
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/idle.md",
+        "sha256": "cd3cc11e079f156801fbfcc8613546a75c0a55fb55c59689b60f8a733f41ea44",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/idle.md",
+        "sha256": "dbed28054653fdd604673d5c521d6f2b7b01ab5e85f12bee710859ab4235444d",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/overview.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:55:36.571642+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire index.rst/current English/current Japanese/frontmatter/footer read separately after751 translation. All43 mapped nodes covered; API0/code0. No unread ranges. No correction necessary."
+        },
+        {
+          "scope": "overview and contribution",
+          "result": "Multi-platform support and asynchronous I/O emphasis retained. Originally developed for Node.js, also used by Luvit/Julia/uvloop/others with every original link retained. Documentation errors/pull-request contribution invitation retained, no new claim about translation being official."
+        },
+        {
+          "scope": "features and documentation links",
+          "result": "All12 features retained, including epoll/kqueue/IOCP/event ports backend, asynchronous TCP/UDP/DNS/file operations, file events, ANSI-controlled TTY, socket-sharing IPC with Unix-domain sockets or Windows named pipes, child processes/threadpool/signals/high-resolution clock/threading and synchronization. All4 generated design/API/guide/upgrading links match original toctree scope."
+        },
+        {
+          "scope": "download/install/footer and review boundary",
+          "result": "Original download and README installation URLs retained. Fixed commit, CC BY4.0, software/component/generator notices and unofficial Japanese/source information remain footer-only. Native/integration/publication and external supplementary video full review unperformed. Current mechanical checks separate; unchanged751 build/prebuild reused."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-752/CONTENT_REVIEW_OVERVIEW.json",
+        "sha256": "63e0800443c8dd2fe1726335ddca955a1d3c79001048df7675ff91cddef8976c"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/index.rst",
+        "sha256": "17fdd9f41645ad1cca88e7a7248feb04d7e8f6523254c9c83da8bcecb943ecdf",
+        "coverage": [
+          [
+            1,
+            62
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/overview.md",
+        "sha256": "6075eb16655aafaa08c6636e9eb60fb397cdac4654fa9796ba620d51dd61a3d1",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/overview.md",
+        "sha256": "db273f2aae8c0fda7479ca88df36a2e9409c5491feb03d86ff7cd6bab5373e85",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/loop.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T20:00:48.982Z",
+      "findings": [
+        {
+          "scope": "types/public data",
+          "result": "Loop/options/run mode/walk callback and data member preserved. Both enum code blocks copied exactly; all constant ordering and UV_RUN_DEFAULT/UV_LOOP_BLOCK_SIGNAL=0 retained. User data is untouched by libuv."
+        },
+        {
+          "scope": "configure",
+          "result": "Normal before-first-run recommendation and unless-otherwise exception retained.0/UV_E* errors and UV_ENOSYS unsupported option, only SIGPROF with other signals UV_EINVAL, option meanings and1.0.2/1.39.0/1.49.0 versions preserved."
+        },
+        {
+          "scope": "close/default",
+          "result": "Close requires finished loop and all open handles/requests closed; otherwise UV_EBUSY retained. Freeing-memory statement is read under preceding successful-close precondition, supported by fixed primary implementation. Default allocation NULL, equality with normal initialized loop, can/should close and not-thread-safe warning retained."
+        },
+        {
+          "scope": "run/alive/stop",
+          "result": "DEFAULT active referenced handles/requests and stop return condition retained. ONCE vs NOWAIT are once-poll modes, blocking difference preserved, not one-callback claims. Non-reentrant/must-not-call-from-callback explicit. Alive referenced-active/active-request/closing categories retained. Stop as-soon-as-possible but not-before-next-iteration and before-I/O-no-block exception retained."
+        },
+        {
+          "scope": "size/backends",
+          "result": "FFI size use, backend kqueue/epoll/event ports only, separate poll/callback threads example, kqueue embedding caveat/no events and timeout milliseconds/-1 preserved."
+        },
+        {
+          "scope": "time/walk",
+          "result": "Cached milliseconds at tick start, monotonically increasing arbitrary origin/no origin assumption, sub-ms uv_hrtime, system-call reduction and subjective probably-ms-or-more threshold retained. Walk passes arg to walk_cb."
+        },
+        {
+          "scope": "fork",
+          "result": "Child kernel reinitialization after fork, previous watchers, every reused parent loop including default even if unused later in parent, must precede child run/any loop API and undefined behavior consequences retained. Prefer new child loop; new loops should not use fork repair. Windows UV_ENOSYS and experimental/API/ABI no guarantee retained."
+        },
+        {
+          "scope": "fork platform caveats",
+          "result": "Mac any-parent-loop directory watchers force fallback FSEvent behavior; AIX/SunOS inherited FS watchers do not deliver until close/restart; others unchanged. Prior backend fd invalid/must reacquire retained."
+        },
+        {
+          "scope": "data accessors/footer/readability",
+          "result": "get/set loop->data and1.19.0 retained. Natural complete Japanese conditional/exception statements; all source metadata/notice/editable RST outside body and unofficial translation explicit. No technical fixes silently added."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-702/CONTENT_REVIEW_LOOP.json",
+        "sha256": "2c7fc1479f2f77b1d83e54544a540eb4560a3de5aff9d5c30b0d23efa1b43803"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/loop.rst",
+        "sha256": "bbff439c8e84037d8e54b1129bf823fc056bc172d8c45662777c949a23930d48",
+        "coverage": [
+          [
+            1,
+            263
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/loop.md",
+        "sha256": "1e60e5c6203e09efe33871189118a136b3e65b027942cb0189d3f502d3659bc0",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/loop.md",
+        "sha256": "a1ac7924b1892ca0eedbe3fdeb7b85bb8a401b00b84de31c3ae7c1bbeb9009b3",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/metrics.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:58:29.733488+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire metrics.rst/current English/current Japanese/API/code/frontmatter/footer read separately after753 translation. All54 mapped nodes/6 declarations/1 structure code covered. No unread ranges, no correction necessary."
+        },
+        {
+          "scope": "metric structure and counters",
+          "result": "uv_metrics_t and original reserved[13] structure retained. Retrieving metrics in uv_prepare_cb is a recommendation to prevent counter inconsistencies, not an imposed runtime constraint. loop_count iterations, events processed by handler, events_waiting at provider call distinguished correctly."
+        },
+        {
+          "scope": "API conditions and version additions",
+          "result": "uv_metrics_idle_time is thread safe and measures idle time in kernel event provider such as epoll_wait. Accumulation begins only after uv_loop_configure with UV_METRICS_IDLE_TIME; start point is configuration, not loop construction.1.39.0 added label retained. uv_metrics_info copies current set into metrics pointer;1.45.0 added label retained. No duration units/counter-reset/return semantics invented."
+        },
+        {
+          "scope": "footer and review boundary",
+          "result": "Fixed commit/source, CC BY4.0, software/component/generator notices and unofficial Japanese footer retained. Current actual API/structure/render/link/TOC checks separate from full content review, unchanged753 build/prebuild reused. Native/full-project content/integration/publication and external supplementary video review pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-754/CONTENT_REVIEW_METRICS.json",
+        "sha256": "a159eb7c9b770b67fc49003f8003f0d9243341aed3b67b2abbec9a1627db1223"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/metrics.rst",
+        "sha256": "7806eca5509685431e03878d8f012fd2ceca8e2dd05c5766f2cb6b676b9731b4",
+        "coverage": [
+          [
+            1,
+            71
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/metrics.md",
+        "sha256": "24877099aa6ae99bc05f1c3b6e085e82ac318846cdc5a168fe0a287add3a515b",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/metrics.md",
+        "sha256": "6fc6bf2dbf957f619ef33903eef8c68c3a802dca7eb305f6039e7429333d56f8",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/migration_010_100.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:02:56.501004+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire migration_010_100.rst/current English/current Japanese/API examples/frontmatter/footer read separately after755 translation. All81 mapped nodes/0API declarations/13 original code blocks covered; all9 change sections. No unread ranges, no correction necessary."
+        },
+        {
+          "scope": "loops/errors/threadpool",
+          "result": "0.10 and earlier uv_loop_new allocates+initializes, uv_loop_delete destroys+frees;1.0 deprecates and caller allocates/initializes/closes/frees distinguished. Error-handling omission notice retained. Old0 success/-1 failure/positive last-error versus new0/negative code retained. Historical Unix4/Windows internal QueueUserWorkItem512 per process and unified1.0/exported UV_THREADPOOL_SIZE retained as historical claims."
+        },
+        {
+          "scope": "allocation/address/receive/pipe APIs",
+          "result": "Filled uv_buf_t returned by value versus passed pointer to fill retained. IPv4/IPv6 unification into uv_tcp_bind, sockaddr value versus sockaddr pointer, stack allocation, ip4/ip6 creation changes and all-distinguishing-functions applicability retained. Streams/UDP receive pointers and const changes exact in code. uv_read2_start removed and pending count/type checked within read callback retained."
+        },
+        {
+          "scope": "fileno/scandir and original limitations",
+          "result": "Unsupported internal descriptor access versus official uv_fileno retained. Old readdir list req->ptr/new scandir naming and one-at-a-time scandir_next without threadpool roundtrip because libuv retains dents list preserved. Original malformed ..note:: and code missing semicolons retained with no inferred source repairs."
+        },
+        {
+          "scope": "footer and review boundary",
+          "result": "Fixed commit/source, CC BY4.0, notices and unofficial Japanese footer outside body retained. API/code/render/link/TOC checks separate from full semantic review; unchanged755 build/prebuild reused. No sample compilation/runtime experiments; native/full-project content/integration/publication and external supplementary video full review pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-756/CONTENT_REVIEW_MIGRATION_010_100.json",
+        "sha256": "e607fe85c18d3e06d34930d0174e0dee910426fd0765044f9eeec0b848be5c94"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/migration_010_100.rst",
+        "sha256": "53aaaa9380782dd8b3f38418f0f81a8ff16f2c556be4de8e0cdb66dcb6f1c5cf",
+        "coverage": [
+          [
+            1,
+            244
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/migration_010_100.md",
+        "sha256": "ba6f8ae7f1879688dbe44f7c9bdf7f0389ddc97485b2282564f00e832446ded6",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/migration_010_100.md",
+        "sha256": "0504e550efd97255184cc71e4071eae69427c5723d544d99119c2d172042ac4e",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/misc.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:50:24.582791+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / API / code / footer",
+          "result": "Entire misc.rst read in explicit nontruncated ranges1-320,321-640,641-end; full English and Japanese narratives read separately, all88 declarations separately read in each language. All15 original code blocks and structures read in RST and exact preservation checked independently. Full frontmatter/footer read. All1540 mapped nodes covered, no unread ranges."
+        },
+        {
+          "scope": "semantics and OS/version constraints",
+          "result": "Allocator replacement lifetime/thread safety; shutdown once/no active loops/no subsequent calls; buffer layout/ownership/511MB/2GB; setup_args/process titles and ENOMEM; resource units/platform zero fields; parallelism and affinity; address and IPv6 interface name/iid success/error NUL lengths; exe setuid; cwd/home/temp and environment buffer conditions/thread safety; effective versus real uid/freeing; constrained versus available memory 0/UINT64_MAX/cgroup/zOS; real-time versus monotonic clocks; priorities Windows/IBM i; CSPRNG full reads/blocking/entropy/error; UTF16/WTF8 sizes/NUL/allocation/truncation preserved."
+        },
+        {
+          "scope": "source discrepancies and footer",
+          "result": "Fixed public header1335 read directly: uv_os_free_group(uv_group_t* grp), versus original RST uv_passwd_t* pwd. Original declaration preserved and Japanese footer identifies discrepancy with source link. uv_sleep inserted separator note retained; original code bytes unchanged. Other original wording/parameter inconsistencies and malformed entropy inline URLs retained, not silently corrected."
+        },
+        {
+          "scope": "translation corrections and verification boundary",
+          "result": "Nine Japanese paragraphs corrected for function/type particles and reread. Source/API/code/link/id/footer unchanged. Fresh89-page build, JA42 DOM/footer,2067 local links,85TOC,88declarations/15code exact passed independently of semantic review. Native/runtime/full-project gates pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-768/CONTENT_REVIEW_MISC.json",
+        "sha256": "d089a0e49efbfc0a24ca3f54c75ddcad68d628b0aeb6328fc17900a06a06fbfd"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/misc.rst",
+        "sha256": "df0c9962d8cf18c500583e034a0b2dceb7b13ea1e446c0a6c37bed8fac3c63c3",
+        "coverage": [
+          [
+            1,
+            961
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/misc.md",
+        "sha256": "1f88feb083af743f028d98f7b74098176e489c833fad5a1889bb4d91d3ad0a9d",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/misc.md",
+        "sha256": "f6b90c008737b9c451132debb08d9ff50d10cd80f625302a83187aafe2beb1cb",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/pipe.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:17:51.918731+00:00",
+      "findings": [
+        {
+          "scope": "complete fixed RST / EN / JA / footer",
+          "result": "All original pipe.rst and current full English/Japanese articles/API/version/footer read in separate pass after737 translation. All302mapped nodes/15declarations covered; no pre/code block in this page. No unread ranges. Pending handle receive sentence reordered for clear count>0 then returned type initialisation then accept; corrected paragraph reread."
+        },
+        {
+          "scope": "abstraction, IPC, initialisation/open",
+          "result": "Unix stream files/local sockets/pipe/FIFO versus Windows named pipes and stream subclass/member inheritance preserved. ipc member and boolean init arg apply only connected handle-passing pipe, not listening pipe accepting connections; potential wire byte changes retained. Existing fd/HANDLE open,1.2.1 nonblocking and valid pipe with no type check retained."
+        },
+        {
+          "scope": "bind/connect and abstract namespace",
+          "result": "Both legacy APIs do not support Linux abstract namespace and preserve exact bind2/connect2 alias expressions/argument order. Both2APIs support it; flags0 or NO_TRUNCATE/unsupported EINVAL without operation, namelen leading nul included/trailing excluded,1.46 retained. Unix sizeof sun_path truncation92–108 and NO_TRUNCATE error rather than truncation retained."
+        },
+        {
+          "scope": "getters, buffers and pending handles",
+          "result": "Both name getters require preallocated buffer, size input/output bytes and ENOBUFS required length retained. Original narrative uses len though signatures use size; retained faithfully without guessed correction. FreeBSD sun_path limit even larger SOCK_MAXADDRLEN,1.3 excluding trailing nul/no null terminator and peername1.3 retained. Pending instance count Windows-only, positive pending_count then type returned by pending_type then accept ordering now clear, unchanged API declarations."
+        },
+        {
+          "scope": "chmod, pipe and review boundaries",
+          "result": "Different users/read-write all users and three permission alternatives/blocking/1.16 retained. Connected pair fd1 write/fd0 read, open/spawn/other uses, flags narrative and original socket handle terminology retained. OVERLAPPED or FIONBIO/O_NONBLOCK, libuv recommended otherwise generally not, pipe2 with CLOEXEC and1.41 preserved. Footer provenance/licence/source/notices unchanged. Actual output/API/link/TOC/build checks separate from semantic review. Final native/content/integration/release and external supplementary video review remain pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-738/CONTENT_REVIEW_PIPE.json",
+        "sha256": "20ebdd3bfa563d629835c24f18b49d4527f6ab36a49e8c37c55b6e3f06ed30a6"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/pipe.rst",
+        "sha256": "4769f88aa1191f4f91eeebce1422740ae6964d811cc5e91e1b229d0fa1552604",
+        "coverage": [
+          [
+            1,
+            186
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/pipe.md",
+        "sha256": "f9ae1190c94a16767cc8bcfacbf3525a28cc9705e00fe533e2ab784adaa680f0",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/pipe.md",
+        "sha256": "63ec46749bf63ddcfff73bdaf9976101c55e0898c6eb73d29c6ec0e6594158ae",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/poll.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:28:23.066372+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire original poll.rst/current English/current Japanese/API/enum/footer read separately after741 translation. All181mapped nodes/7declarations/one complete enum covered, no unread ranges. No correction required."
+        },
+        {
+          "scope": "purpose, descriptor lifetime and platforms",
+          "result": "Read/write/disconnect watcher for external libraries c-ares/libssh2; prefer faster scalable TCP/UDP for other purposes especially Windows retained. Spurious readiness and handle EAGAIN, forbidden duplicate active watchers/busyloop, do not close active fd/error or polling other socket, safe immediate close after stop/close retained. Windows sockets-only versus Unix poll-compatible fds and AIX no disconnect retained."
+        },
+        {
+          "scope": "types and initialisation",
+          "result": "Full callback signature and event enum READABLE1/WRITABLE2/DISCONNECT4/PRIORITIZED8 unchanged. N/A public members and inherited handle members/API retained. Init fd versus socket Unix identical/Windows SOCKET and both1.2.2 nonblocking retained."
+        },
+        {
+          "scope": "start/error/readiness semantics",
+          "result": "Event bitmask and detected status0/events, sysfs/TCP out-of-band prioritized, optional disconnect may be unreported/ignored and avoiding extra IO retained. Error negative UV_E*, closing active socket error notification only possible not guaranteed, EBADF stops future events and requires close retained. Repeated start updates mask, AIX disconnect never returned retained. All4 level-trigger scenarios and persistent readiness/repeated callbacks retained,1.9 disconnect/1.14 prioritized retained."
+        },
+        {
+          "scope": "stop and review boundary",
+          "result": "Stop prevents further callbacks and immediate cancellation even already-pending socket state notification retained. Fixed source/licences/notices/unofficial translation remain footer. Semantic full review distinct from current actual output/API/TOC checks; previous741 unchanged build evidence reused. No native/runtime/content/integration/release or external supplementary video review claimed."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-742/CONTENT_REVIEW_POLL.json",
+        "sha256": "926e7a892caf7924beb83134abfa6044e7cfa28a4b2401827342a70cbc8786f6"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/poll.rst",
+        "sha256": "7538dd293a80a4f5f7e6f4077fb460229c3fb2475362e770d8a19300472b98a4",
+        "coverage": [
+          [
+            1,
+            150
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/poll.md",
+        "sha256": "565d93a45748a007cbac6e5f1916557d4a568ee91d96eea9afc4a65c40485771",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/poll.md",
+        "sha256": "5f2e18b5e4ab439f728697119e72b2ece182aa6f070fd7e398749d0c9cfe94e5",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/prepare.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:37:38.676Z",
+      "findings": [
+        {
+          "result": "Callback once per loop iteration immediately BEFORE I/O polling; not confused with Check after polling."
+        },
+        {
+          "result": "Both type declarations and all3 functions retained. Callback typedef points to uv_prepare_start."
+        },
+        {
+          "result": "init always succeeds and returns0. start always succeeds except cb NULL; success0 and cb==NULL ->UV_EINVAL retained."
+        },
+        {
+          "result": "stop guarantees no further callback, always succeeds, returns0. Base uv_handle_t members and API inheritances preserved."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-698/CONTENT_REVIEW_PREPARE.json",
+        "sha256": "1d54856da109428531c141ffab21ff07adad4adcf4c5b8674f3668b911ff8d66"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/prepare.rst",
+        "sha256": "ce154cd78622803a12ee50985a3a287076d40321ee2077497e0c20948e798736",
+        "coverage": [
+          [
+            1,
+            54
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/prepare.md",
+        "sha256": "fd6f9ef3f2c44baeec12df6ee6f90ecbe2834ab8e2191a043fc4512fa79a9c75",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/prepare.md",
+        "sha256": "21569730b59eb884824e8b1fb2859c76069d3112da93214e7fef553bb9bd033f",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/process.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:08:09.152087+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire fixed process.rst/current English/current Japanese/API/code/frontmatter/footer read separately after757 translation. All225 mapped nodes/24 declarations/4 original code blocks covered. Two Japanese narrative paragraphs clarified and reread; no unread ranges."
+        },
+        {
+          "scope": "types/flags/options/stdio",
+          "result": "Process control/stream channels, exit callback status/signal, options and flags retained. Original enum comments include Windows-only escaping/window options/exact-name search and detached process group/uv_unref condition. stdio exclusive flags, unopened initialized pipe, inheritance duplicates, child-view readable/writable duplex and nonblocking data-loss warning retained exactly in original code. Options file/args/env NULL/cwd, Windows MSVCRT fd>2 and unsupported uid/gid ENOTSUP retained."
+        },
+        {
+          "scope": "lifetime/inheritance/spawn",
+          "result": "PID set after spawn and retained after exit, uniqueness only while alive retained. Inheritance disabled early before close/duplicate with best-effort caveat retained. spawn success0/failure negative, close required before free on either success/failure, nonexhaustive failure reasons retained. Unix close-before-process-exit zombie responsibility/waitpid and Windows exception retained; Japanese argument order clarified."
+        },
+        {
+          "scope": "kill and version conditions",
+          "result": "process_kill handle will not kill a different process reusing dead PID; uv_kill with cached get_pid may do so retained. Signal support pointer especially Windows, direct PID signal, handle->pid return,1.19 addition,1.24 hide-console/gui and1.48 exact-name additions retained."
+        },
+        {
+          "scope": "source issues/footer/review boundary",
+          "result": "Original enum comment malformed closing delimiter retained; original options description missing parenthesis clarified as Japanese sentence boundary without modifying source/code. Fixed source/licences/notices/unofficial Japanese footer outside body retained. Current758 rebuilt actual API/code/render/link/TOC checks distinct. No native/runtime experiments; final full-project content/integration/publication and supplementary video full review pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-758/CONTENT_REVIEW_PROCESS.json",
+        "sha256": "3bdb6dc5d60cbc7bd93478a024fcf1cee62b895502522748039e74eacb01bbce"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/process.rst",
+        "sha256": "3de02a76a25a9570bbce99e8a41b2cc4a4d9e1f9574d61963275545d4ad8e0bd",
+        "coverage": [
+          [
+            1,
+            306
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/process.md",
+        "sha256": "84c2326da72e92b44af717053e99968155e6d758234400f888a930b6f5b5113a",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/process.md",
+        "sha256": "69d83b65ce3b8a80baed995d89aad09e093eb9458ad7ba17b9cfea0dba8a5865",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/request.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T21:47:57.718208+00:00",
+      "findings": [
+        {
+          "scope": "complete source/EN/JA/code/footer",
+          "result": "Read complete fixed request.rst and full current EN/JA including twelve declarations, all150mapped nodes, one enum code, version notes and footer separately after729 translation. No unread ranges; no figures/table/footnotes."
+        },
+        {
+          "scope": "base type, members and macro",
+          "result": "Cast-compatible aligned structures, any request API applicability, base/union/enum definitions and readonly type retained. Arbitrary user data not used by libuv retained. Macro receives two arguments with precise UV_ prefix and uv_/_t removal; original enum members including original omission of UV_RANDOM remain fixed source, not silently amended."
+        },
+        {
+          "scope": "cancellation and memory lifetime",
+          "result": "Pending-only cancellation, running/completed failure and write exceptions retained: attempt interruption/partial callback, completed write successful no-op. Success0/failure<0, six supported request types, deferred callback and no free until callback preserved. fs result versus work/DNS/random callback status distinctions retained. Writes report status, nwritten retrieval, zero-byte cancellation callback order and kernel completion before cancellation may succeed/other-error retained."
+        },
+        {
+          "scope": "helper APIs and notices",
+          "result": "FFI size, req->data get/set, readonly req->type getter, type-name connect/uv_connect_t/UV_CONNECT mapping and NULL fallback retained. Four version1.19 notes exact. All fixed source/licences/notices/editable link/unofficial JA footer preserved. Original declarations/code unchanged; existing22reviewed inputs unchanged. Native/runtime/full-project gates remain pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-730/CONTENT_REVIEW_REQUEST.json",
+        "sha256": "afb88d97748274b8db865f9ba4a4c448dd74a4a74b589e26ea365c10cb69fb96"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/request.rst",
+        "sha256": "c798691f4f5cf400bbcd21a8e0610372d7457295d02fda0ba61348021cf16219",
+        "coverage": [
+          [
+            1,
+            134
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/request.md",
+        "sha256": "2ccb1370b4f58072342de319cae337ea797e1b1884b2bd6c060f37c1151afffa",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/request.md",
+        "sha256": "a186d769b8bb18b7f7db48356728e103fe27cfb5868ded0450f48ba76f39e749",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/signal.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:33:09.014217+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire fixed signal.rst/current English/current Japanese/API/footer read separately after743 translation. All119mapped nodes/7declarations covered; no code block/no unread ranges. No correction necessary. Original cited SIGKILL punctuation retained as original, not mistaken for another signal."
+        },
+        {
+          "scope": "Windows delivery and emulation",
+          "result": "Per-event-loop Unix-style handling retained. CtrlC/SIGINT except raw mode, CtrlBreak/SIGBREAK, console-close SIGHUP approximate10second cleanup then unconditional termination retained. SIGWINCH emulator and32bit-on64bit emulation/not always timely, writable tty cursor movement only and readable tty raw AND reading buffer-resize condition retained."
+        },
+        {
+          "scope": "Windows non-reception and versions",
+          "result": "Watchers may be created but never receive all6listed signals; programmatic raise/abort not detected/no watcher trigger retained.1.15 improved Windows WINCH and1.31 reverted32bit64bit implementation retained."
+        },
+        {
+          "scope": "Unix restrictions",
+          "result": "Uncatchable KILL/STOP, BUS/FPE/ILL/SEGV undefined handling, abort-generated ABRT including assert not caught retained. Linux NPTL uses RT0/RT1=32/33; watchers unpredictable/strongly discouraged and future may reject retained as original, no broad platform guarantee inferred."
+        },
+        {
+          "scope": "types, member and functions",
+          "result": "Handle/callback signature and readonly signum, inherited handle members/API retained. Init/start supplied callback and signal, oneshot reset at receipt/1.12, stop prevents callback retained. Fixed sources/licences/notices/unofficial translation in footer. Separate mechanical API/current output/TOC checks and unchanged743 build reused; native/runtime/content/integration/release and external supplementary video not claimed."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-744/CONTENT_REVIEW_SIGNAL.json",
+        "sha256": "6f158ef74ae041ec826fb52cc02767113c5690c4bd0be8bba97ab17a608b6d36"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/signal.rst",
+        "sha256": "72d322b2078aa3e1d6f2bc5c1ec6654775a1dc7083994df1341dddfb52f37a3d",
+        "coverage": [
+          [
+            1,
+            101
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/signal.md",
+        "sha256": "a3b1a9aeb0b46e2f104596c410581844444935dea2bb0266e23ad2201a65ea05",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/signal.md",
+        "sha256": "3abf97eb481e7aad8a937ac65d0b85b47fec37881ee17bfc00973c32a9507499",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/stream.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:03:41.325512+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "All source, canonical English and Japanese article text/signatures/code/version notes and provenance read separately after733 translation. All453 mapped nodes/28 declarations/one complete example covered; no unread ranges. Only nread0 Japanese word order corrected and rendered output rechecked."
+        },
+        {
+          "scope": "callbacks and object/buffer lifetime",
+          "result": "Duplex abstraction and three implementations retained. uv_write_t reuse only after callback retained; positive nread=data, negative=error, UV_EOF and nread0 neither error nor EOF retained. read(2) EAGAIN/EWOULDBLOCK equivalence clarified without changing source meaning. Invalid/null buffers on error, caller stop/close/free responsibility and undefined reread retained. All callback status0/negative semantics preserved."
+        },
+        {
+          "scope": "shutdown/listen/accept/read APIs",
+          "result": "Initialized stream and uninitialized shutdown req, pending write completion and callback timing retained. backlog/listen correspondence, preinitialized accepted client, first accept success guarantee and once-per-callback recommendation/same loop condition retained. read-start repeat callbacks and1.38 platform error differences retained. read-stop idempotence and Windows TTY nonzero deferred resources rather than failure preserved."
+        },
+        {
+          "scope": "writes/IPC/cancellation",
+          "result": "Readonly queue size and five member pointers retained. Ordered writes/example1234 exact, buffers remain valid until callback including write2. ipc==1 and platform/handle/listening/connected distinctions retained. Try-write no queue, partial byte count and negative EAGAIN retained. Try-write2 Windows unsupported/EAGAIN and1.42 note retained. Original malformed RST c:func:uv_write2 literal is already present in canonical English and faithfully retained; no API text invented.1.53 nwritten only inside callback, cancellation ECANCELED and already-completed success/other error caveat retained."
+        },
+        {
+          "scope": "blocking/getters and review boundaries",
+          "result": "Readable/writable1/0, synchronous writes with asynchronous callbacks, Windows pipe-only versus Unix all streams, no ordering guarantee after pending writes and opening-time recommendation,1.4/1.19 notes retained. Source/licence/unofficial Japanese context remains footer. API/code/DOM/link/build checks separate from semantic full review. Final native/content/integration/release and supplementary external video review remain pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-734/CONTENT_REVIEW_STREAM.json",
+        "sha256": "1fc9d2d3698fa8ef551d85ef02a0bb897c538f31621e7cab8636514d1af3ceb2"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/stream.rst",
+        "sha256": "eaf5239705b37beb496dab820bb3414578b64ad86cd5299ff0f1ce9f43868f5c",
+        "coverage": [
+          [
+            1,
+            272
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/stream.md",
+        "sha256": "f1bde4022c89437fde02790b70101e0bf3b0c8e5c8f5705337c142d033b6261f",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/stream.md",
+        "sha256": "d51040dc8a0fc57532d396e63a5694b2cf5b3e5bd41cdc0e35cde7dc42891f91",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/tcp.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:11:20.517900+00:00",
+      "findings": [
+        {
+          "scope": "complete fixed RST / EN / JA / code / footer",
+          "result": "Entire fixed tcp.rst and entire current EN and JA read separately after735 translation; all395 mapped nodes/15 declarations/one full enum code/all version and platform notes covered, no unread ranges. Missing Japanese editorial footer note for platform-list separator restored, body unchanged and current footer reread."
+        },
+        {
+          "scope": "type, initialisation, open and nodelay",
+          "result": "Streams and servers/subclass retained. Entire uv_tcp_flags enum and comments/IPv6ONLY1/REUSEPORT2 unchanged. No public members and inherited stream members retained. Init no socket, init_ex lower8bits domain/AF_UNSPEC no socket/1.7 retained. Open existing fd/SOCKET,1.2.1 nonblocking and valid stream socket but no type check retained. TCP_NODELAY disables Nagle retained."
+        },
+        {
+          "scope": "keepalive and simultaneous accepts",
+          "result": "Delay seconds/enable0 ignored/10probes1second/timeout callback destruction/minimum1/EINVAL/1.49 retained. Extended idle/intvl/cnt socket option mapping/on0 ignored, probe delay/interval/count/replies/destruction/ETIMEDOUT/minimum1 and1.52 retained. All9 supported OS names preserved. Async simultaneous accepts default enabled/performance versus multiprocess unequal load retained. Original malformed UV_EINVAL triple trailing backtick retained by both EN and JA; correct error identifier also appears plainly in preceding paragraph, no invented API."
+        },
+        {
+          "scope": "bind, address getters and connect",
+          "result": "Bind occupied port EADDRINUSE from listen/connect unless REUSEPORT on all bindings and bind success not sufficient retained. Parameter initialisation, sockaddr4/6, flags dual stack disable and process/thread load balance, return0/negative,1.49 and exact five platform thresholds/ENOTSUP retained. Both getters valid large memory and sockaddr_storage retained. Connect initialized handle/uninitialized request/initialized address, Windows0.0.0.0/:: to localhost for Linux consistency, callback success/error and1.19 retained."
+        },
+        {
+          "scope": "reset/socketpair and review boundary",
+          "result": "Inherited stream API, reset RST via linger0/close and shutdown-reset mixing prohibition/1.32 retained. Socketpair parameters and flags0/flags1, OVERLAPPED/FIONBIO/O_NONBLOCK and libuv-only recommendation, AF_UNIX equivalent/1.41 retained. Existing English list-format editorial annotation now present as Japanese footer annotation; source/licence/unofficial notice and all code remain. Semantic full review distinct from checks. Project final native/content/integration/publication and external supplementary video full review remain unperformed."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-736/CONTENT_REVIEW_TCP.json",
+        "sha256": "3c648068f98e40ea4552529a5f95e26ca567fe7fde9b7714aa1ab45dd8299387"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/tcp.rst",
+        "sha256": "e2e4205fb2e3ac32fcce34e8db9f0621c7c597397028e4fec741f77ea4c3dabe",
+        "coverage": [
+          [
+            1,
+            218
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/tcp.md",
+        "sha256": "d834e950b46dffe033535719701563291eacb7f3403de7f932691fc0df1c6a9f",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/tcp.md",
+        "sha256": "2088aa35f6d24df41bb9ebd1b333690f503a616777ecaebdb383e9bfacb291fc",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/threading.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:15:08.530253+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire threading.rst/current English/current Japanese/API/code/frontmatter/footer read separately after759 translation. All551 mapped nodes/56 declarations/2 code blocks covered. Six Japanese paragraphs clarified around function links and reread; no unread ranges."
+        },
+        {
+          "scope": "thread creation/affinity",
+          "result": "Callback arg equality, all types, options layout extensibility, detach resource release/no join, stack flag/default0/page rounding and version changes retained. Affinity byte mapping Unix getters/setters vs Windows bitmask, oldmask optional, mask_size >= uv_cpumask_size, Windows non-atomic/macOS unsupported and getcpu platform restrictions retained."
+        },
+        {
+          "scope": "thread names/priorities",
+          "result": "Current thread name and original platform character maxima16/64/32767/32 and truncation retained. Getname includes trailing NUL and truncates to fit with NUL, input size; terminated-thread undefined behavior and WindowsServer2016 ENOSYS retained. Priority success0/failure negative, privilege limitation, all5 constants, platform-dependent get and Linux SCHED_OTHER0 retained. All version-added labels retained."
+        },
+        {
+          "scope": "TLS/once/locks/semaphores/conditions/barriers",
+          "result": "TLS capacity limitation retained. Once-only execution/same-guard blocking except unspecified one and static UV_ONCE_INIT retained. Lock/semaphore/condition/barrier declarations and general return rules retained. Spurious wakeups for wait/timedwait, relative call time, zOS conversion to absolute time/ETIMEDOUT if time passes before signal and no wait-time clock change after wait begins retained. Arbitrary serializer positive barrier result and cleanup example exact."
+        },
+        {
+          "scope": "footer and review boundary",
+          "result": "Fixed source/licences/notices/unofficial Japanese context remains footer outside body. Correction changes only narrative argument order/particles; API/code/links/IDs exact, current760 rebuilt actual output checks distinct from semantic review. Runtime/native/final full-project content/integration/publication and external supplementary video full review pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-760/CONTENT_REVIEW_THREADING.json",
+        "sha256": "e6bbd5f5152052fb539c013ea2c0beeeb8efe5c67be20d72c6d4d7e03e7f78e2"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/threading.rst",
+        "sha256": "7f7e197066a10a4039cae5c4aa1adc35e41726c9b7b37a23e66509c1d6b205c2",
+        "coverage": [
+          [
+            1,
+            294
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/threading.md",
+        "sha256": "dcb747d662544fcaf125457306218e6a221687c85b385c2d0d978703bde705b9",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/threading.md",
+        "sha256": "3535e81c669aaaad8c7cbbbde019f201d03acc04f787b16b07987ec93dfdeeff",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/threadpool.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:44:31.414Z",
+      "findings": [
+        {
+          "result": "Intro preserves user code and notification on loop thread, internal filesystem operations/getaddrinfo/getnameinfo."
+        },
+        {
+          "result": "Default4 and startup UV_THREADPOOL_SIZE absolute maximum1024; changes1.30.0 max128->1024,1.45.0 stack8MB vs platform default sometimes too low,1.50.0 defaultname libuv-worker retained."
+        },
+        {
+          "result": "Global pool shared across all loops, maximum permitted thread preallocation/initialization on using functions, throughput/memory tradeoff and lazy stack growth on most platforms retained."
+        },
+        {
+          "result": "Critical negative note explicitly says functions are NOT thread safe despite global shared pool."
+        },
+        {
+          "result": "uv_work_t and both callback typedefs preserved. work_cb runs on pool; after_work_cb on loop thread after completion; cancellation with uv_cancel gives status UV_ECANCELED. Japanese reorders cancellation clause while preserving condition/identifiers."
+        },
+        {
+          "result": "Readonly uv_work_t.loop is initiating loop and completion reporting destination. uv_queue_work initializes request/work callback then after-work callback on loop thread; cancellable with uv_cancel; inherited uv_req_t members/API retained."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-700/CONTENT_REVIEW_THREADPOOL.json",
+        "sha256": "ea549d7b74e3cdc58c3ef416b1deceb2b4f201ae680bc3c107bf789871daedcf"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/threadpool.rst",
+        "sha256": "6e99b4a0e98185bcd424c677def5f29796fb223f123e582cb8e89ec4ba9ee2c3",
+        "coverage": [
+          [
+            1,
+            74
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/threadpool.md",
+        "sha256": "a497a103c0fc66248f5d84e9eca6d8e0741103bcf039f2cd7eeec7ba67157273",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/threadpool.md",
+        "sha256": "8aa797a5f62b45d92b9ef9ec720c8c31f77e1af0c40862a465e1eaebdb460520",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/timer.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:44:31.414Z",
+      "findings": [
+        {
+          "result": "Intro preserves one-shot vs repeating, no adjustment for overhead, rearming relative to cached now; now update before timer callbacks/after I/O wakeup with uv_update_time reference."
+        },
+        {
+          "result": "Example preserves50ms interval,17ms callback,33ms remainder and callback as soon as possible when other tasks overrun; no claim of exact guaranteed real-time deadline."
+        },
+        {
+          "result": "Both type definitions and all7 functions preserved, including parameter types/constness. timeout/repeat milliseconds, zero timeout ->next loop iteration; nonzero repeat first timeout then repeat."
+        },
+        {
+          "result": "start does not update cached now and already-active timer is updated. stop means no future callback. again stops/restarts repeating timer using repeat as timeout, never-started ->UV_EINVAL."
+        },
+        {
+          "result": "set_repeat preserves interval independent of callback duration and normal semantics on overrun. Callback-setting is NOT immediate: one-shot already stopped; repeating next timeout already scheduled with old repeat value."
+        },
+        {
+          "result": "get_repeat and get_due_in retained; expired ->0, time relative uv_now and added1.40.0. Inherited handle members/API preserved."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-700/CONTENT_REVIEW_TIMER.json",
+        "sha256": "811b6091c3471ddd05f64a1f350be7194fca54d56656a616fed88faee0c4c7a4"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/timer.rst",
+        "sha256": "cb3fa085f7c7ef97da074ad5a0e0637fb93127cb69edc2aeaf6e253d490a8951",
+        "coverage": [
+          [
+            1,
+            92
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/timer.md",
+        "sha256": "45fcff586631a17391c82aa14d5c5ac2f96078adbf5db862f60a31c8e3875573",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/timer.md",
+        "sha256": "45f0a58f382f24999e28604ce0e4684b55e56e63e0ea898d587e45e1ce40f976",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/tty.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T22:22:52.518055+00:00",
+      "findings": [
+        {
+          "scope": "complete fixed RST / EN / JA / footer / enums",
+          "result": "All fixed tty.rst and current full EN/JA read separately after739 translation, all124mapped nodes/9declarations/2enum code blocks and original comments covered; no unread ranges. No correction necessary."
+        },
+        {
+          "scope": "type and original enum behaviour",
+          "result": "Console stream and stream subclass/member/API inheritance retained. Mode normal/raw/window input/raw_VT possibility/Unix-only binary IO/rawVT input and virtual-terminal supported versus legacy unsupported enum/code comments retained exactly, including original second typedef without final semicolon. Public member N/A and1.2 enum version retained."
+        },
+        {
+          "scope": "initialisation and platform/version conditions",
+          "result": "Init supplied fd and stdin0/stdout1/stderr2, Unix ttyname_r opening when tty and avoiding effects on sharing processes, unsupported TIOCGPTN/TIOCPTYGNAME ioctl thread-safety limitation/OpenBSD/Solaris retained. Failed reopen falls back blocking writes.1.23.1 readable parameter unused/ignored and kernel autodetection,1.9 ttyname_r versus previous dev/tty,1.5 UNIX nonTTY file EINVAL retained. EN original duplicated version punctuation normalised to usual Japanese punctuation without meaning changes."
+        },
+        {
+          "scope": "mode/reset/winsize",
+          "result": "Set-mode uv_tty_mode_t and1.2 retained. Reset on program exit/default for next process; Unix async signal-safe but EBUSY when inside set-mode retained, distinct from general safety guarantee. Get window size returns0 on success retained."
+        },
+        {
+          "scope": "vterm and review boundaries",
+          "result": "Set-state libuv versus console sequence processing, ConEmu ANSI X3.64/Xterm256 and Windows10 autodetection retained. Setter Windows-only/Unix silently ignored, getter Unix unimplemented ENOTSUP and both1.33 notes retained. Source/licences/notices/unofficial JA information kept footer. Mechanical tests739 and fresh render/API/TOC checks740 separate from content review. No native/runtime/content/integration/release or external supplementary video full review claimed."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-740/CONTENT_REVIEW_TTY.json",
+        "sha256": "a1d383adf5a3abb60b40b947c459b764ba49fed61913d52220b396a9959841ee"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/tty.rst",
+        "sha256": "1574dbfec4faae63f918c1dbbea740e30df09f69c2e7cf7a5ed4623ad5c03ced",
+        "coverage": [
+          [
+            1,
+            145
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/tty.md",
+        "sha256": "f174bbbdd101e00fd5cf3f3cdb25ceba24a2e3fc0e8bd2c12e66627427cef9ee",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/tty.md",
+        "sha256": "52b61067775cbfc7420ca522eebaef8df02b2f70dec05f7655d71dd99b267a87",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/udp.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:24:26.037007+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire udp.rst/current English/current Japanese/API/enum code/frontmatter/footer read separately after761 translation. Initial combined output truncated; complete narrative rerendered separately, RST tail and API signatures separately read. All891 mapped nodes/32 declarations/2 original enum blocks covered;14 Japanese paragraphs/list items clarified and reread; initial mistaken handle-label edits were detected before registration and labels restored with separate description correction and another build; no unread ranges."
+        },
+        {
+          "scope": "recv callback and buffer ownership",
+          "result": "nread bytes/0 no-data vs empty datagram addr nonNULL/negative transmission error, NULL sender address and callback-only lifetime retained. Callee frees buffer, no libuv reuse, null buffer on error. MMSG_CHUNK buffers must not be freed; final no-error callback0/NULL/initial buffer/CHUNK cleared/FREE set, negative error alternative allows free.1.40 FREE flag and exact enums retained."
+        },
+        {
+          "scope": "init/open/bind/connect/addresses",
+          "result": "Lazy init, lower8 domain bits/AF_UNSPEC no socket, explicit RECVMMSG64KiB buffers, open_ex flags, Unix datagram contract/raw/netlink/nonblocking and unconditional open SO_REUSEADDR retained. REUSEPORT supported OS/version list, other ENOTSUP, balancing override vs unsupported combination retained. Original RECVERR naming and malformed source markup kept without speculative source correction. Connect NULL disconnect and EISCONN/ENOTCONN, getpeer/getlocal prerequisites/storage/namelen wording retained."
+        },
+        {
+          "scope": "multicast and send APIs",
+          "result": "Membership/source membership all parameters, multicast loop/on-off/ttl1..255/interface/broadcast/general ttl and five alternative init/bind prerequisites retained and clarified. Send automatic0.0.0.0/randomport and Windows unspecified localhost mapping retained. Connected addrNULL vs unconnected nonNULL/error codes, request no-init/buffers/count/callback retained. try_send no queue/byte count vs try_send2 datagram count/zero only count0/negative only first fail/EAGAIN and fallback preserved."
+        },
+        {
+          "scope": "recv start/version labels/footer",
+          "result": "Buffer capacity max-datagram limit/suggested_size max one datagram,1.35 recvmmsg64KiB,1.37 explicit flag,1.39 detection helper and1/0 both-conditions retained. All version labels/queue accessors/inherited APIs retained. Generator three fallback-parser warnings/try_send2 original signature anchor note translated in footer; raw c:func source notation retained. Current762 rebuilt API/code/DOM/1633links/82TOC check separate from full content review; native/full-project content/integration/publication and supplementary video full review pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-762/CONTENT_REVIEW_UDP.json",
+        "sha256": "bfc66a78ab0fb0ad3265e5acc9f1b9ed5b6b9f8406be1f87503bafae53e4ec60"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/udp.rst",
+        "sha256": "09f01b976b6bfba11e09c663ced430e89af45c0c5daeb96f298f487c2de5bb0f",
+        "coverage": [
+          [
+            1,
+            523
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/udp.md",
+        "sha256": "f556554cd448b503a38cda62df6acd453c3355d8cac223d5ccb61897c4b75126",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/udp.md",
+        "sha256": "b8181762db7f0e5af1ee1b019581faacace930c994545ee448df0d3362abb796",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/upgrading.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:28:06.291065+00:00",
+      "findings": [
+        {
+          "scope": "full fixed RST / EN / JA / footer",
+          "result": "Entire upgrading.rst/current English/current Japanese/frontmatter/footer read separately after763 translation. All3 mapped nodes/0API/0code covered, no unread ranges. No correction necessary."
+        },
+        {
+          "scope": "version scope and migration link",
+          "result": "Original migration guides starting with1.0 meaning retained. Single original toctree migration_010_100 rendered as0.10 to1.0.0 migration guide, current fixed internal URL/anchor preserved; no guides or support claims invented. Final JA link localization pending after remaining pages."
+        },
+        {
+          "scope": "footer and review boundary",
+          "result": "Fixed commit/source/CC BY4.0/software-component-generator notices/unofficial Japanese footer retained outside body. Current actual DOM/link/TOC checks distinct from semantic full review, unchanged763 build/prebuild reused. Native/full-project content/integration/publication and external supplementary video full review pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-764/CONTENT_REVIEW_UPGRADING.json",
+        "sha256": "eae454af5fa9e017aa414d773be6642fc288abe4e3487fe56aa1829ce4a5a555"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/upgrading.rst",
+        "sha256": "cd9500de1e98a1b327d9a02db5391e5f292c556f431c7ed5d125e8d822006898",
+        "coverage": [
+          [
+            1,
+            11
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/upgrading.md",
+        "sha256": "72d9468fdf2eee21e3c5ad55859f22e25abc030a7d54e88f0ecf9b06eaff3c05",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/upgrading.md",
+        "sha256": "9cddb1d54e2742440675bee1fad63e79ae6d38eec3e77a569824b0ef9b8426a1",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/version.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T19:21:27.186Z",
+      "findings": [
+        {
+          "result": "Intro retains 1.0.0 semantic versioning, permission to introduce new APIs across major-release lifetime, and conditional source/compilation across versions."
+        },
+        {
+          "result": "All6 macros retain distinct major/minor/patch, release1/development0, potential rc suffix, and packed integer semantics. Each component8bits, low8bits patch, example1.2.3=0x010203 and added1.7.0 retained."
+        },
+        {
+          "result": "Both function declarations preserved. uv_version returns UV_VERSION_HEX; uv_version_string includes suffix for non-release versions."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-694/CONTENT_REVIEW_VERSION.json",
+        "sha256": "df8ad925605987cf065b56d46b02b6d4fb3662e77d0353f837f730da4ee1aa33"
+      },
+      "source": {
+        "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/version.rst",
+        "sha256": "261c8252401912241453d5d921c3f70dcd1e6c142dd520c4530aa4090d67f0ab",
+        "coverage": [
+          [
+            1,
+            60
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/version.md",
+        "sha256": "502d88497d5bf2ab7a1f2d64a311ef48bb2b417f84bac45557f07a31bedf5e71",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/version.md",
+        "sha256": "30b5e6a63ce31b0d2e62ff1fd7b3c19f3924dcf52a80f2e198809c26568ba07f",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reference/genindex.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "Codex configured gpt-6.1-sol; actual runtime identifier unavailable",
+      "reviewedAt": "2026-10-04T23:59:02.980258+00:00",
+      "findings": [
+        {
+          "scope": "all index entries and framing",
+          "result": "All584 entries read without truncation:0-194 English and Japanese separately,195-389 and390-583 bilingual paired text/targets. All587 mapped nodes covered, including Index/索引 and both U labels. Generated names/order/C kind/function/type/member/enum/macro and584 destinations retained, no corrections necessary. Existing generator-repeated member prefix uv_buf_t.uv_buf_t is retained, not silently renamed."
+        },
+        {
+          "scope": "source role and footer",
+          "result": "No standalone genindex.rst exists. Full fixed index.rst and conf.py read, master_doc=index and fixed version/config checked. Footer correctly describes Sphinx-generated reference index from fixed documentation declarations, entry point/config links and per-item API destinations. Current fixed commit/CC BY4.0/software/component/generator/unofficial JA notices read. Frozen conversion packet body retained exactly apart original trial-project route normalization. Generated source snapshot used for source coverage rather than pretending index.rst contains all index entries."
+        },
+        {
+          "scope": "verification boundary",
+          "result": "Current90-page build from769 reused because no content changed. Actual JA43 DOM/footer (only documented implicit tbody normalization),2659 links,86TOC,584 ordered names/kinds/targets passed independently of semantic review. Full-project JA routing/native/content/reproducibility/integration/publication and supplementary video full content remain pending."
+        }
+      ],
+      "separateReviewPass": true,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-770/CONTENT_REVIEW_GENINDEX.json",
+        "sha256": "d9c5389e630a1e100df1f2c413b2847ef421573216720aa4eb95787a3183f8dd"
+      },
+      "sourceRole": "Sphinx-generated fixed index snapshot, from frozen687 conversion packet; entry-point/config auxiliary inputs are in review evidence",
+      "source": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-770/GENERATED_INDEX_INPUT.html",
+        "sha256": "ccf24cf880e19016f38ea409e6eb37cb2c44129461f8695fe9db0ddefa1350b3",
+        "coverage": [
+          [
+            1,
+            1184
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/genindex.md",
+        "sha256": "07977787e830b874aab62c9c49ba83c4eec8cedf17477f03e4111a10c6898da4",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/genindex.md",
+        "sha256": "7d90c82eac51c74239357df51b2d443a3dccdf8189afb0b604eea075ea200a4d",
+        "coverage": [
+          [
+            1,
+            9
+          ]
+        ]
+      }
+    }
+  ],
+  "completedPages": 43,
+  "unreviewedPages": 0,
+  "fullProjectComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  },
+  "at": "2026-10-04T23:59:02.980258+00:00",
+  "coveragePolicy": "Full fixed RST/canonical/current JA coverage per reader page. Generated index covers immutable generated input snapshot, plus fixed entry/config sources. Footer included; final routing/native/full-project verification pending.",
+  "nativeDisplay": "pending",
+  "humanReview": "not-performed",
+  "previousManifest": {
+    "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/768/REVIEW_MANIFEST.json",
+    "sha256": "47cff2ad3b57ae40513c12a529e9863a6ac1f0648e73a2f771167311c4362195"
+  },
+  "supplementaryExternalVideoReview": "not-performed; fixed iframe and accompanying text reviewed, not whole external media content"
+}
