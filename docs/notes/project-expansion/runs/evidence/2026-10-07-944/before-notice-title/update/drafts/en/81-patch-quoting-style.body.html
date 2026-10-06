@@ -1,0 +1,37 @@
+<div class="gnu-diffutils-original-content" id="patch-Quoting-Style">
+<h4 class="subsection" id="patch-Quoting-Style-1"><span>10.11.3 <code class="command">patch</code> Quoting Style</span></h4>
+<a class="index-entry-id" id="index-quoting-style"></a>
+<p>When <code class="command">patch</code> outputs a file name in a diagnostic message, it
+can format the name in any of several ways.  This can be useful to
+output file names unambiguously, even if they contain punctuation or
+special characters like newlines.  The
+<samp class="option">--quoting-style=<var class="var">word</var></samp> option controls how names are
+output.  The <var class="var">word</var> should be one of the following:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">literal</samp>’</dt>
+<dd><p>Output names as-is.
+</p></dd>
+<dt>‘<samp class="samp">shell</samp>’</dt>
+<dd><p>Quote names for the shell if they contain shell metacharacters or would
+cause ambiguous output.
+</p></dd>
+<dt>‘<samp class="samp">shell-always</samp>’</dt>
+<dd><p>Quote names for the shell, even if they would normally not require quoting.
+</p></dd>
+<dt>‘<samp class="samp">c</samp>’</dt>
+<dd><p>Quote names as for a C language string.
+</p></dd>
+<dt>‘<samp class="samp">escape</samp>’</dt>
+<dd><p>Quote as with ‘<samp class="samp">c</samp>’ except omit the surrounding double-quote
+characters.
+</p></dd>
+</dl>
+<a class="index-entry-id" id="index-QUOTING_005fSTYLE"></a>
+<p>You can specify the default value of the <samp class="option">--quoting-style</samp>
+option with the environment variable <code class="env">QUOTING_STYLE</code>.  If that
+environment variable is not set, the default value is ‘<samp class="samp">shell</samp>’,
+but this default may change in a future version of <code class="command">patch</code>.
+</p>
+<hr/>
+</div>

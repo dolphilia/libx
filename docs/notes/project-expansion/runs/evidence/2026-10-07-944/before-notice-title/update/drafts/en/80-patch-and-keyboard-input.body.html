@@ -1,0 +1,29 @@
+<div class="gnu-diffutils-original-content" id="patch-and-Keyboard-Input">
+<h4 class="subsection" id="Inhibiting-Keyboard-Input"><span>10.11.2 Inhibiting Keyboard Input</span></h4>
+<a class="index-entry-id" id="index-keyboard-input-to-patch"></a>
+<p>There are two ways you can prevent <code class="command">patch</code> from asking you any
+questions.  The <samp class="option">--force</samp> (<samp class="option">-f</samp>) option assumes that you know
+what you are doing.  It causes <code class="command">patch</code> to do the following:
+</p>
+<ul class="itemize mark-bullet">
+<li>Skip patches that do not contain file names in their headers.
+
+</li><li>Patch files even though they have the wrong version for the
+‘<samp class="samp">Prereq:</samp>’ line in the patch;
+
+</li><li>Assume that patches are not reversed even if they look like they are.
+</li></ul>
+<p>The <samp class="option">--batch</samp> (<samp class="option">-t</samp>) option is similar to <samp class="option">-f</samp>, in that
+it suppresses questions, but it makes somewhat different assumptions:
+</p>
+<ul class="itemize mark-bullet">
+<li>Skip patches that do not contain file names in their headers
+(the same as <samp class="option">-f</samp>).
+
+</li><li>Skip patches for which the file has the wrong version for the
+‘<samp class="samp">Prereq:</samp>’ line in the patch;
+
+</li><li>Assume that patches are reversed if they look like they are.
+</li></ul>
+<hr/>
+</div>

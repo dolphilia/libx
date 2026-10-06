@@ -1,0 +1,14 @@
+<div class="gnu-diffutils-original-content" id="patch-Directories">
+<h3 class="section" id="Applying-Patches-in-Other-Directories"><span>10.7 別ディレクトリでのパッチ適用</span></h3>
+<a class="index-entry-id" id="index-directories-and-patch"></a>
+<a class="index-entry-id" id="index-patching-directories"></a>
+<p><code class="command">patch</code>の<samp class="option">--directory=<var class="var">directory</var></samp>（<samp class="option">-d <var class="var">directory</var></samp>）オプションは、パッチファイル内のファイル名と、他のオプション（<samp class="option">-B</samp>や<samp class="option">-o</samp>など）の引数のファイル名の両方を解釈する際、<var class="var">directory</var>をカレントディレクトリにします。たとえばメールを読んでいるとき、パッチを含むメッセージから<samp class="file">/usr/src/emacs</samp>ディレクトリ内のファイルへ、次のように直接適用できます。</p>
+<div class="example">
+<pre class="example-preformatted">| patch -d /usr/src/emacs
+</pre></div>
+<p>パッチ内の名前に先行ディレクトリが含まれていても、手元では別のディレクトリにファイルを置いていることがあります。その場合は<samp class="option">--strip=<var class="var">number</var></samp>（<samp class="option">-p<var class="var">number</var></samp>）オプションで、ファイル名の除去数を<var class="var">number</var>に設定できます。除去数は、名前の先頭からスラッシュとその間のディレクトリ名をいくつ取り除くか、<code class="command">patch</code>に伝えます。連続する1個以上のスラッシュは1個と数えます。既定では<code class="command">patch</code>は先行ディレクトリをすべて除き、ベース名だけを残します。</p>
+<p>たとえばパッチ内の名前が<samp class="file">/gnu/src/emacs/etc/NEWS</samp>なら、<samp class="option">-p0</samp>では名前全体を変更せず、<samp class="option">-p1</samp>では<samp class="file">gnu/src/emacs/etc/NEWS</samp>（先頭のスラッシュなし）、<samp class="option">-p4</samp>では<samp class="file">etc/NEWS</samp>になります。<samp class="option">-p</samp>をまったく指定しなければ<samp class="file">NEWS</samp>になります。</p>
+<p><code class="command">patch</code>はスラッシュの除去後の各ファイルを、カレントディレクトリ、または<samp class="option">-d <var class="var">directory</var></samp>オプションで指定したディレクトリから探します。</p>
+<hr/>
+</div>
+

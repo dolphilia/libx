@@ -1,0 +1,79 @@
+<div class="gnu-diffutils-original-content" id="Backup-Names">
+<h3 class="section" id="Backup-File-Names"><span>10.9 Backup File Names</span></h3>
+<a class="index-entry-id" id="index-backup-file-names"></a>
+<p>Normally, <code class="command">patch</code> renames an original input file into a backup
+file by appending to its name the extension ‘<samp class="samp">.orig</samp>’, or ‘<samp class="samp">~</samp>’
+if using ‘<samp class="samp">.orig</samp>’ would make the backup file name too
+long.<a class="footnote" href="#FOOT1" id="DOCF1"><sup>1</sup></a>  The <samp class="option">-z <var class="var">backup-suffix</var></samp> or
+<samp class="option">--suffix=<var class="var">backup-suffix</var></samp> option causes <code class="command">patch</code> to
+use <var class="var">backup-suffix</var> as the backup extension instead.
+</p>
+<a class="index-entry-id" id="index-SIMPLE_005fBACKUP_005fSUFFIX"></a>
+<p>Alternately, you can specify the extension for backup files with the
+<code class="env">SIMPLE_BACKUP_SUFFIX</code> environment variable, which the options
+override.
+</p>
+<p><code class="command">patch</code> can also create numbered backup files the way
+GNU Emacs does.  With this method, instead of having a
+single backup of each file, <code class="command">patch</code> makes a new backup file
+name each time it patches a file.  For example, the backups of a file
+named <samp class="file">sink</samp> would be called, successively, <samp class="file">sink.~1~</samp>,
+<samp class="file">sink.~2~</samp>, <samp class="file">sink.~3~</samp>, etc.
+</p>
+<a class="index-entry-id" id="index-PATCH_005fVERSION_005fCONTROL"></a>
+<a class="index-entry-id" id="index-VERSION_005fCONTROL-1"></a>
+<p>The <samp class="option">-V <var class="var">backup-style</var></samp> or
+<samp class="option">--version-control=<var class="var">backup-style</var></samp> option takes as an
+argument a method for creating backup file names.  You can alternately
+control the type of backups that <code class="command">patch</code> makes with the
+<code class="env">PATCH_VERSION_CONTROL</code> environment variable, which the
+<samp class="option">-V</samp> option overrides.  If <code class="env">PATCH_VERSION_CONTROL</code> is not
+set, the <code class="env">VERSION_CONTROL</code> environment variable is used instead.
+Please note that these options and variables control backup file
+names; they do not affect the choice of revision control system
+(see <a class="pxref" href="#Revision-Control">Revision Control</a>).
+</p>
+<p>The values of these environment variables and the argument to the
+<samp class="option">-V</samp> option are like the GNU Emacs <code class="code">version-control</code>
+variable (see <a data-manual="emacs" href="https://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Backup-Names">Backup Names</a> in <cite class="cite">The GNU Emacs Manual</cite>,
+for more information on backup versions in Emacs).  They also
+recognize synonyms that are more descriptive.  The valid values are
+listed below; unique abbreviations are acceptable.
+</p>
+<dl class="table">
+<dt><samp class="option">t</samp></dt>
+<dt><samp class="option">numbered</samp></dt>
+<dd><p>Always make numbered backups.
+</p>
+</dd>
+<dt><samp class="option">nil</samp></dt>
+<dt><samp class="option">existing</samp></dt>
+<dd><p>Make numbered backups of files that already have them, simple backups of
+the others.  This is the default.
+</p>
+</dd>
+<dt><samp class="option">never</samp></dt>
+<dt><samp class="option">simple</samp></dt>
+<dd><p>Always make simple backups.
+</p></dd>
+</dl>
+<p>You can also tell <code class="command">patch</code> to prepend a prefix, such as a
+directory name, to produce backup file names.  The
+<samp class="option">--prefix=<var class="var">prefix</var></samp> (<samp class="option">-B <var class="var">prefix</var></samp>) option makes backup
+files by prepending <var class="var">prefix</var> to them.  The
+<samp class="option">--basename-prefix=<var class="var">prefix</var></samp> (<samp class="option">-Y <var class="var">prefix</var></samp>) prepends
+<var class="var">prefix</var> to the last file name component of backup file names
+instead; for example, <samp class="option">-Y ~</samp> causes the backup name for
+<samp class="file">dir/file.c</samp> to be <samp class="file">dir/~file.c</samp>.  If you use either of
+these prefix options, the suffix-based options are ignored.
+</p>
+<p>If you specify the output file with the <samp class="option">-o</samp> option, that file is
+the one that is backed up, not the input file.
+</p>
+<p>Options that affect the names of backup files do not affect whether
+backups are made.  For example, if you specify the
+<samp class="option">--no-backup-if-mismatch</samp> option, none of the options described
+in this section have any affect, because no backups are made.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,32 @@
+<div class="gnu-diffutils-original-content" id="Revision-Control">
+<h3 class="section" id="Revision-Control-1"><span>10.2 Revision Control</span></h3>
+<a class="index-entry-id" id="index-revision-control"></a>
+<a class="index-entry-id" id="index-version-control"></a>
+<a class="index-entry-id" id="index-RCS"></a>
+<a class="index-entry-id" id="index-ClearCase"></a>
+<a class="index-entry-id" id="index-SCCS"></a>
+<p>If a nonexistent input file is under a revision control system
+supported by <code class="command">patch</code>, <code class="command">patch</code> normally asks the user
+whether to get (or check out) the file from the revision control
+system.  Patch currently supports RCS, ClearCase and
+SCCS.  Under RCS and SCCS,
+<code class="command">patch</code> also asks when the input file is read-only and matches
+the default version in the revision control system.
+</p>
+<a class="index-entry-id" id="index-PATCH_005fGET"></a>
+<p>The <samp class="option">--get=<var class="var">num</var></samp> (<samp class="option">-g <var class="var">num</var></samp>) option affects access
+to files under supported revision control systems.  If <var class="var">num</var> is
+positive, <code class="command">patch</code> gets the file without asking the user; if
+zero, <code class="command">patch</code> neither asks the user nor gets the file; and if
+negative, <code class="command">patch</code> asks the user before getting the file.  The
+default value of <var class="var">num</var> is given by the value of the
+<code class="env">PATCH_GET</code> environment variable if it is set; if not, the default
+value is zero if <code class="command">patch</code> is conforming to POSIX, negative
+otherwise.  See <a class="xref" href="#patch-and-POSIX"><code class="command">patch</code> and the POSIX Standard</a>.
+</p>
+<a class="index-entry-id" id="index-VERSION_005fCONTROL"></a>
+<p>The choice of revision control system is unaffected by the
+<code class="env">VERSION_CONTROL</code> environment variable (see <a class="pxref" href="#Backup-Names">Backup File Names</a>).
+</p>
+<hr/>
+</div>

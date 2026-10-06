@@ -1,0 +1,25 @@
+<div class="gnu-diffutils-original-content" id="patch-and-POSIX">
+<h3 class="section" id="patch-and-the-POSIX-Standard"><span>10.12 <code class="command">patch</code> and the POSIX Standard</span></h3>
+<a class="index-entry-id" id="index-POSIX"></a>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT"></a>
+<p>If you specify the <samp class="option">--posix</samp> option, or set the
+<code class="env">POSIXLY_CORRECT</code> environment variable, <code class="command">patch</code> conforms
+more strictly to the POSIX standard, as follows:
+</p>
+<ul class="itemize mark-bullet">
+<li>Take the first existing file from the list (old, new, index)
+when intuiting file names from diff headers.  See <a class="xref" href="#Multiple-Patches">Multiple Patches in a File</a>.
+
+</li><li>Do not remove files that are removed by a diff.
+See <a class="xref" href="#Creating-and-Removing">Creating and Removing Files</a>.
+
+</li><li>Do not ask whether to get files from RCS, ClearCase, or
+SCCS.  See <a class="xref" href="#Revision-Control">Revision Control</a>.
+
+</li><li>Require that all options precede the files in the command line.
+
+</li><li>Do not backup files, even when there is a mismatch.  See <a class="xref" href="#Backups">Backup Files</a>.
+
+</li></ul>
+<hr/>
+</div>

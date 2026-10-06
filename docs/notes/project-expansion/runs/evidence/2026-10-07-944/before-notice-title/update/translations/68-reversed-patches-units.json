@@ -1,0 +1,57 @@
+{
+  "slug": "68-reversed-patches",
+  "bodySHA256": "2bd4dadd1d04221aa8677dff5a2b9c91b7d9d3cdb34e4a8fe4db4144e88b97ee",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧10.3.2 Applying Reversed Patches⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"Applying-Reversed-Patches\"><span>10.3.2 Applying Reversed Patches</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Sometimes people run ⟦0⟧ with the new file first instead of second. This creates a diff that is “reversed”. To apply such patches, give ⟦1⟧ the ⟦2⟧ (⟦3⟧) option. ⟦4⟧ then attempts to swap each hunk around before applying it. Rejects come out in the swapped format.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "<samp class=\"option\">--reverse</samp>",
+        "⟦3⟧": "<samp class=\"option\">-R</samp>",
+        "⟦4⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>Sometimes people run <code class=\"command\">diff</code> with the new file first instead of\nsecond.  This creates a diff that is “reversed”.  To apply such\npatches, give <code class=\"command\">patch</code> the <samp class=\"option\">--reverse</samp> (<samp class=\"option\">-R</samp>) option.\n<code class=\"command\">patch</code> then attempts to swap each hunk around before applying it.\nRejects come out in the swapped format.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Often ⟦0⟧ can guess that the patch is reversed. If the first hunk of a patch fails, ⟦1⟧ reverses the hunk to see if it can apply it that way. If it can, ⟦2⟧ asks you if you want to have the ⟦3⟧ option set; if it can’t, ⟦4⟧ continues to apply the patch normally. This method cannot detect a reversed patch if it is a normal diff and the first command is an append (which should have been a delete) since appends always succeed, because a null context matches anywhere. But most patches add or change lines rather than delete them, so most reversed normal diffs begin with a delete, which fails, and ⟦5⟧ notices.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "<code class=\"command\">patch</code>",
+        "⟦3⟧": "<samp class=\"option\">-R</samp>",
+        "⟦4⟧": "<code class=\"command\">patch</code>",
+        "⟦5⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>Often <code class=\"command\">patch</code> can guess that the patch is reversed.  If the first\nhunk of a patch fails, <code class=\"command\">patch</code> reverses the hunk to see if it can\napply it that way.  If it can, <code class=\"command\">patch</code> asks you if you want to have\nthe <samp class=\"option\">-R</samp> option set; if it can’t, <code class=\"command\">patch</code> continues to apply\nthe patch normally.  This method cannot detect a reversed patch if it is\na normal diff and the first command is an append (which should have been\na delete) since appends always succeed, because a null context matches\nanywhere.  But most patches add or change lines rather than delete them,\nso most reversed normal diffs begin with a delete, which fails, and\n<code class=\"command\">patch</code> notices.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "If you apply a patch that you have already applied, ⟦0⟧ thinks it is a reversed patch and offers to un-apply the patch. This could be construed as a feature. If you did this inadvertently and you don’t want to un-apply the patch, just answer ‘⟦1⟧’ to this offer and to the subsequent “apply anyway” question—or type ⟦2⟧C-c⟦3⟧ to kill the ⟦4⟧ process.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<samp class=\"samp\">n</samp>",
+        "⟦2⟧": "<kbd class=\"kbd\">",
+        "⟦3⟧": "</kbd>",
+        "⟦4⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>If you apply a patch that you have already applied, <code class=\"command\">patch</code> thinks\nit is a reversed patch and offers to un-apply the patch.  This could be\nconstrued as a feature.  If you did this inadvertently and you don’t\nwant to un-apply the patch, just answer ‘<samp class=\"samp\">n</samp>’ to this offer and to\nthe subsequent “apply anyway” question—or type <kbd class=\"kbd\">C-c</kbd> to kill the\n<code class=\"command\">patch</code> process.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

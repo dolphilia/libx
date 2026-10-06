@@ -1,0 +1,148 @@
+{
+  "slug": "76-backup-names",
+  "bodySHA256": "269d6439e1ff1d32ac50e22cf320b0e5b4a10b6ee930821f017c02b105a4ee70",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧10.9 Backup File Names⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Backup-File-Names\"><span>10.9 Backup File Names</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Normally, ⟦0⟧ renames an original input file into a backup file by appending to its name the extension ‘⟦1⟧’, or ‘⟦2⟧’ if using ‘⟦3⟧’ would make the backup file name too long.⟦4⟧⟦5⟧1⟦6⟧⟦7⟧ The ⟦8⟧ or ⟦9⟧ option causes ⟦10⟧ to use ⟦11⟧ as the backup extension instead.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<samp class=\"samp\">.orig</samp>",
+        "⟦2⟧": "<samp class=\"samp\">~</samp>",
+        "⟦3⟧": "<samp class=\"samp\">.orig</samp>",
+        "⟦4⟧": "<a class=\"footnote\" href=\"#FOOT1\" id=\"DOCF1\">",
+        "⟦5⟧": "<sup>",
+        "⟦6⟧": "</sup>",
+        "⟦7⟧": "</a>",
+        "⟦8⟧": "<samp class=\"option\">-z <var class=\"var\">backup-suffix</var></samp>",
+        "⟦9⟧": "<samp class=\"option\">--suffix=<var class=\"var\">backup-suffix</var></samp>",
+        "⟦10⟧": "<code class=\"command\">patch</code>",
+        "⟦11⟧": "<var class=\"var\">backup-suffix</var>"
+      },
+      "sourceHTML": "<p>Normally, <code class=\"command\">patch</code> renames an original input file into a backup\nfile by appending to its name the extension ‘<samp class=\"samp\">.orig</samp>’, or ‘<samp class=\"samp\">~</samp>’\nif using ‘<samp class=\"samp\">.orig</samp>’ would make the backup file name too\nlong.<a class=\"footnote\" href=\"#FOOT1\" id=\"DOCF1\"><sup>1</sup></a>  The <samp class=\"option\">-z <var class=\"var\">backup-suffix</var></samp> or\n<samp class=\"option\">--suffix=<var class=\"var\">backup-suffix</var></samp> option causes <code class=\"command\">patch</code> to\nuse <var class=\"var\">backup-suffix</var> as the backup extension instead.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Alternately, you can specify the extension for backup files with the ⟦0⟧ environment variable, which the options override.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">SIMPLE_BACKUP_SUFFIX</code>"
+      },
+      "sourceHTML": "<p>Alternately, you can specify the extension for backup files with the\n<code class=\"env\">SIMPLE_BACKUP_SUFFIX</code> environment variable, which the options\noverride.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "⟦0⟧ can also create numbered backup files the way GNU Emacs does. With this method, instead of having a single backup of each file, ⟦1⟧ makes a new backup file name each time it patches a file. For example, the backups of a file named ⟦2⟧ would be called, successively, ⟦3⟧, ⟦4⟧, ⟦5⟧, etc.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "<samp class=\"file\">sink</samp>",
+        "⟦3⟧": "<samp class=\"file\">sink.~1~</samp>",
+        "⟦4⟧": "<samp class=\"file\">sink.~2~</samp>",
+        "⟦5⟧": "<samp class=\"file\">sink.~3~</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">patch</code> can also create numbered backup files the way\nGNU Emacs does.  With this method, instead of having a\nsingle backup of each file, <code class=\"command\">patch</code> makes a new backup file\nname each time it patches a file.  For example, the backups of a file\nnamed <samp class=\"file\">sink</samp> would be called, successively, <samp class=\"file\">sink.~1~</samp>,\n<samp class=\"file\">sink.~2~</samp>, <samp class=\"file\">sink.~3~</samp>, etc.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "The ⟦0⟧ or ⟦1⟧ option takes as an argument a method for creating backup file names. You can alternately control the type of backups that ⟦2⟧ makes with the ⟦3⟧ environment variable, which the ⟦4⟧ option overrides. If ⟦5⟧ is not set, the ⟦6⟧ environment variable is used instead. Please note that these options and variables control backup file names; they do not affect the choice of revision control system (see ⟦7⟧Revision Control⟦8⟧).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-V <var class=\"var\">backup-style</var></samp>",
+        "⟦1⟧": "<samp class=\"option\">--version-control=<var class=\"var\">backup-style</var></samp>",
+        "⟦2⟧": "<code class=\"command\">patch</code>",
+        "⟦3⟧": "<code class=\"env\">PATCH_VERSION_CONTROL</code>",
+        "⟦4⟧": "<samp class=\"option\">-V</samp>",
+        "⟦5⟧": "<code class=\"env\">PATCH_VERSION_CONTROL</code>",
+        "⟦6⟧": "<code class=\"env\">VERSION_CONTROL</code>",
+        "⟦7⟧": "<a class=\"pxref\" href=\"#Revision-Control\">",
+        "⟦8⟧": "</a>"
+      },
+      "sourceHTML": "<p>The <samp class=\"option\">-V <var class=\"var\">backup-style</var></samp> or\n<samp class=\"option\">--version-control=<var class=\"var\">backup-style</var></samp> option takes as an\nargument a method for creating backup file names.  You can alternately\ncontrol the type of backups that <code class=\"command\">patch</code> makes with the\n<code class=\"env\">PATCH_VERSION_CONTROL</code> environment variable, which the\n<samp class=\"option\">-V</samp> option overrides.  If <code class=\"env\">PATCH_VERSION_CONTROL</code> is not\nset, the <code class=\"env\">VERSION_CONTROL</code> environment variable is used instead.\nPlease note that these options and variables control backup file\nnames; they do not affect the choice of revision control system\n(see <a class=\"pxref\" href=\"#Revision-Control\">Revision Control</a>).\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "The values of these environment variables and the argument to the ⟦0⟧ option are like the GNU Emacs ⟦1⟧ variable (see ⟦2⟧Backup Names⟦3⟧ in ⟦4⟧The GNU Emacs Manual⟦5⟧, for more information on backup versions in Emacs). They also recognize synonyms that are more descriptive. The valid values are listed below; unique abbreviations are acceptable.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-V</samp>",
+        "⟦1⟧": "<code class=\"code\">version-control</code>",
+        "⟦2⟧": "<a data-manual=\"emacs\" href=\"https://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Backup-Names\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<cite class=\"cite\">",
+        "⟦5⟧": "</cite>"
+      },
+      "sourceHTML": "<p>The values of these environment variables and the argument to the\n<samp class=\"option\">-V</samp> option are like the GNU Emacs <code class=\"code\">version-control</code>\nvariable (see <a data-manual=\"emacs\" href=\"https://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Backup-Names\">Backup Names</a> in <cite class=\"cite\">The GNU Emacs Manual</cite>,\nfor more information on backup versions in Emacs).  They also\nrecognize synonyms that are more descriptive.  The valid values are\nlisted below; unique abbreviations are acceptable.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Always make numbered backups.",
+      "tokens": {},
+      "sourceHTML": "<p>Always make numbered backups.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Make numbered backups of files that already have them, simple backups of the others. This is the default.",
+      "tokens": {},
+      "sourceHTML": "<p>Make numbered backups of files that already have them, simple backups of\nthe others.  This is the default.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Always make simple backups.",
+      "tokens": {},
+      "sourceHTML": "<p>Always make simple backups.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "You can also tell ⟦0⟧ to prepend a prefix, such as a directory name, to produce backup file names. The ⟦1⟧ (⟦2⟧) option makes backup files by prepending ⟦3⟧ to them. The ⟦4⟧ (⟦5⟧) prepends ⟦6⟧ to the last file name component of backup file names instead; for example, ⟦7⟧ causes the backup name for ⟦8⟧ to be ⟦9⟧. If you use either of these prefix options, the suffix-based options are ignored.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<samp class=\"option\">--prefix=<var class=\"var\">prefix</var></samp>",
+        "⟦2⟧": "<samp class=\"option\">-B <var class=\"var\">prefix</var></samp>",
+        "⟦3⟧": "<var class=\"var\">prefix</var>",
+        "⟦4⟧": "<samp class=\"option\">--basename-prefix=<var class=\"var\">prefix</var></samp>",
+        "⟦5⟧": "<samp class=\"option\">-Y <var class=\"var\">prefix</var></samp>",
+        "⟦6⟧": "<var class=\"var\">prefix</var>",
+        "⟦7⟧": "<samp class=\"option\">-Y ~</samp>",
+        "⟦8⟧": "<samp class=\"file\">dir/file.c</samp>",
+        "⟦9⟧": "<samp class=\"file\">dir/~file.c</samp>"
+      },
+      "sourceHTML": "<p>You can also tell <code class=\"command\">patch</code> to prepend a prefix, such as a\ndirectory name, to produce backup file names.  The\n<samp class=\"option\">--prefix=<var class=\"var\">prefix</var></samp> (<samp class=\"option\">-B <var class=\"var\">prefix</var></samp>) option makes backup\nfiles by prepending <var class=\"var\">prefix</var> to them.  The\n<samp class=\"option\">--basename-prefix=<var class=\"var\">prefix</var></samp> (<samp class=\"option\">-Y <var class=\"var\">prefix</var></samp>) prepends\n<var class=\"var\">prefix</var> to the last file name component of backup file names\ninstead; for example, <samp class=\"option\">-Y ~</samp> causes the backup name for\n<samp class=\"file\">dir/file.c</samp> to be <samp class=\"file\">dir/~file.c</samp>.  If you use either of\nthese prefix options, the suffix-based options are ignored.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "If you specify the output file with the ⟦0⟧ option, that file is the one that is backed up, not the input file.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-o</samp>"
+      },
+      "sourceHTML": "<p>If you specify the output file with the <samp class=\"option\">-o</samp> option, that file is\nthe one that is backed up, not the input file.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "Options that affect the names of backup files do not affect whether backups are made. For example, if you specify the ⟦0⟧ option, none of the options described in this section have any affect, because no backups are made.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--no-backup-if-mismatch</samp>"
+      },
+      "sourceHTML": "<p>Options that affect the names of backup files do not affect whether\nbackups are made.  For example, if you specify the\n<samp class=\"option\">--no-backup-if-mismatch</samp> option, none of the options described\nin this section have any affect, because no backups are made.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

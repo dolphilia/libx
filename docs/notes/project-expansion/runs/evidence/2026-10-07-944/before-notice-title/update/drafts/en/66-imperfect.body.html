@@ -1,0 +1,23 @@
+<div class="gnu-diffutils-original-content" id="Imperfect">
+<h3 class="section" id="Applying-Imperfect-Patches"><span>10.3 Applying Imperfect Patches</span></h3>
+<a class="index-entry-id" id="index-imperfect-patch-application"></a>
+<p><code class="command">patch</code> tries to skip any leading text in the patch file,
+apply the diff, and then skip any trailing text.  Thus you can feed a
+mail message directly to <code class="command">patch</code>, and it should work.  If the
+entire diff is indented by a constant amount of white space,
+<code class="command">patch</code> automatically ignores the indentation.  If a context
+diff contains trailing carriage return on each line, <code class="command">patch</code>
+automatically ignores the carriage return.  If a context diff has been
+encapsulated by prepending ‘<samp class="samp">- </samp>’<!-- /@w --> to lines beginning with ‘<samp class="samp">-</samp>’
+as per <a class="uref" href="ftp://ftp.isi.edu/in-notes/rfc934.txt">Internet RFC 934</a>,
+<code class="command">patch</code> automatically unencapsulates the input.
+</p>
+<p>However, certain other types of imperfect input require user
+intervention or testing.
+</p>
+<hr/>
+
+
+
+
+</div>
