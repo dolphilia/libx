@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-05T03:29:21.573630+00:00",
+  "status": "pass-with-bounded-estimate",
+  "measurement": {
+    "pages": 27,
+    "bodyEnglishWords": 27405,
+    "codeEnglishWords": 2835,
+    "links": 77,
+    "tables": 10
+  },
+  "definition": "27試験ページのarticle本文英字語を同一正規表現で数え、code要素とpaginationを除外。生成manualのb宣言・原NOTICE・manual/header重複を含む保守的な本文量。コード語数を別計数。見出し/図・table/sourcecommentは原本を保持。",
+  "upperRawEnglishTokenCount": 30101,
+  "upperRawDefinition": "原Cコード・原HTMLmarkup除外後のテキスト・重複を含む全英字token概算。本文3万語の判定と混同しない。",
+  "bodyBelow30000": true,
+  "maxOriginalHeaderLines": 884,
+  "codeAndAsciiDiagramBlocks": 18,
+  "standaloneSourceCommentSegments": 144,
+  "initialEstimate": {
+    "qualificationHours": [
+      2,
+      4
+    ],
+    "formalImporterAndGatesHours": [
+      2,
+      4
+    ],
+    "sequentialTranslationAndPageReviewHours": [
+      6,
+      12
+    ],
+    "buildDisplaySourcekitHours": [
+      1,
+      3
+    ],
+    "unit": "Codex実作業時間の見積もり、実績や保証ではない",
+    "split": "27元入力を1元入力/1page基本とし最大2manualと2headerは原著章・コメント単位のpage分割が可能。1cycle新規最大1件、正式新規active最大1件、全体最大2件を守る。"
+  },
+  "maintenanceEstimate": {
+    "hoursPerVersion": [
+      2,
+      6
+    ],
+    "method": "全208inventory SHA差分→27範囲とgenerator出力2再生成→変更comment/章だけ逐次翻訳と内容review。ChapterNアンカー変動/原APIとmanual欠落の再照合が必要。差分大なら再見積もりして保留。"
+  },
+  "owner": {
+    "configuredModel": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  },
+  "risks": [
+    "rawHTML textの特殊記号escapeとsmartypants:falseが必須",
+    "原著9API識別子欠落/誤植/旧pathを別注記・header全文で保全",
+    "GPL対応sourcekitと固有Frame/BSD条件の配置/到達性を正式gatesへ残す",
+    "重複header/commentの日本語ページ粒度はformalmapで確定し、未確認を完了扱いにしない"
+  ]
+}

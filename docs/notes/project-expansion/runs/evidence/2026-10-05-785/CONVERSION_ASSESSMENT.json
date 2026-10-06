@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-05T03:29:21.573630+00:00",
+  "status": "pass-qualification-trial",
+  "evidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/GENERATOR_REPRODUCTION.json",
+      "sha256": "6f5b8e188fc115a4498fd88ba8723574b0c20011226bad4f3eff730557c1603e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/TRIAL_MAP.json",
+      "sha256": "de61c6acdd6793b59a3c4b421abe540c9ffdeb1b0b746a141a904147686ab950"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/STATIC_AUDIT.json",
+      "sha256": "0bb96abd185be0495fb0a5e6238eee4faa26177ff2d0d2ae9ef48fc848f38a53"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/MARKDOWN_AUDIT.json",
+      "sha256": "d215c550a521d59f38689aebf0debed1693413b2dad3061e3616d227607da604"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/DISPLAY_OBSERVATIONS.json",
+      "sha256": "921061e1f8d1e023cb9b13a4a3800e06f50076add95eccd7678df50335cccb13"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/BUILD.log",
+      "sha256": "26f7aff4c33ebb9b2044d79cc51006d7b2f34a829924418ecb624ad86419440f"
+    }
+  ],
+  "fixes": [
+    "固定generator由来manual2 byte一致",
+    "literal <stdlib.h>、backticks、block heading境界を保全",
+    "smartypants:falseでapostropheの原textを保持",
+    "INSTALLはMarkdownとして扱う",
+    "原reference形式linkをmapへ変換しrelative href8件を解消",
+    "header全sourceはordered spansの完全再構築+rendered segment text完全一致"
+  ],
+  "coverage": "採用27全量を隔離trial。通常INSTALL、最大lz4.h、表のFrame、rawHTML API、ASCII図、help難例を対象に確認。Markdown19は全code/図、全heading depth/text、全tablecell/件数、image件数を原AST/renderedで照合。全manual2原textは空白正規化比較。",
+  "notClaimed": [
+    "正式定本化完了",
+    "翻訳/全文内容review",
+    "正式appのlicense/version metadata・sourcekit履行",
+    "全外部link応答検査・全内部fragment再検証",
+    "正式build/display verified"
+  ],
+  "next": "正式map/importerに同じ決定を反映し、安全出力・全gateを正式アプリで実施。source licensing version は借用Luaフッターに依存しない。"
+}
