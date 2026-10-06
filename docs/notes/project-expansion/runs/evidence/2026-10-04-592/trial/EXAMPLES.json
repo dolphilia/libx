@@ -1,0 +1,2084 @@
+[
+  {
+    "key": "sections/1/entries/0/examples/0",
+    "program": ".",
+    "input": "\"Hello, world!\"",
+    "outputs": [
+      "\"Hello, world!\""
+    ]
+  },
+  {
+    "key": "sections/1/entries/0/examples/1",
+    "program": ".",
+    "input": "0.12345678901234567890123456789",
+    "outputs": [
+      "0.12345678901234567890123456789"
+    ]
+  },
+  {
+    "key": "sections/1/entries/0/examples/2",
+    "program": "[., tojson] == if have_decnum then [12345678909876543212345,\"12345678909876543212345\"] else [12345678909876543000000,\"12345678909876543000000\"] end",
+    "input": "12345678909876543212345",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/1/entries/0/examples/3",
+    "program": "[1234567890987654321,-1234567890987654321 | tojson] == if have_decnum then [\"1234567890987654321\",\"-1234567890987654321\"] else [\"1234567890987654400\",\"-1234567890987654400\"] end",
+    "input": "null",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/1/entries/0/examples/4",
+    "program": ". < 0.12345678901234567890123456788",
+    "input": "0.12345678901234567890123456789",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/1/entries/0/examples/5",
+    "program": "map([., . == 1]) | tojson == if have_decnum then \"[[1,true],[1.000,true],[1.0,true],[1.00,true]]\" else \"[[1,true],[1,true],[1,true],[1,true]]\" end",
+    "input": "[1, 1.000, 1.0, 100e-2]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/1/entries/0/examples/6",
+    "program": ". as $big | [$big, $big + 1] | map(. > 10000000000000000000000000000000) | . == if have_decnum then [true, false] else [false, false] end",
+    "input": "10000000000000000000000000000001",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/1/entries/1/examples/0",
+    "program": ".foo",
+    "input": "{\"foo\": 42, \"bar\": \"less interesting data\"}",
+    "outputs": [
+      "42"
+    ]
+  },
+  {
+    "key": "sections/1/entries/1/examples/1",
+    "program": ".foo",
+    "input": "{\"notfoo\": true, \"alsonotfoo\": false}",
+    "outputs": [
+      "null"
+    ]
+  },
+  {
+    "key": "sections/1/entries/1/examples/2",
+    "program": ".[\"foo\"]",
+    "input": "{\"foo\": 42}",
+    "outputs": [
+      "42"
+    ]
+  },
+  {
+    "key": "sections/1/entries/2/examples/0",
+    "program": ".foo?",
+    "input": "{\"foo\": 42, \"bar\": \"less interesting data\"}",
+    "outputs": [
+      "42"
+    ]
+  },
+  {
+    "key": "sections/1/entries/2/examples/1",
+    "program": ".foo?",
+    "input": "{\"notfoo\": true, \"alsonotfoo\": false}",
+    "outputs": [
+      "null"
+    ]
+  },
+  {
+    "key": "sections/1/entries/2/examples/2",
+    "program": ".[\"foo\"]?",
+    "input": "{\"foo\": 42}",
+    "outputs": [
+      "42"
+    ]
+  },
+  {
+    "key": "sections/1/entries/2/examples/3",
+    "program": "[.foo?]",
+    "input": "[1,2]",
+    "outputs": [
+      "[]"
+    ]
+  },
+  {
+    "key": "sections/1/entries/4/examples/0",
+    "program": ".[0]",
+    "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+    "outputs": [
+      "{\"name\":\"JSON\", \"good\":true}"
+    ]
+  },
+  {
+    "key": "sections/1/entries/4/examples/1",
+    "program": ".[2]",
+    "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+    "outputs": [
+      "null"
+    ]
+  },
+  {
+    "key": "sections/1/entries/4/examples/2",
+    "program": ".[-2]",
+    "input": "[1,2,3]",
+    "outputs": [
+      "2"
+    ]
+  },
+  {
+    "key": "sections/1/entries/5/examples/0",
+    "program": ".[2:4]",
+    "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+    "outputs": [
+      "[\"c\", \"d\"]"
+    ]
+  },
+  {
+    "key": "sections/1/entries/5/examples/1",
+    "program": ".[2:4]",
+    "input": "\"abcdefghi\"",
+    "outputs": [
+      "\"cd\""
+    ]
+  },
+  {
+    "key": "sections/1/entries/5/examples/2",
+    "program": ".[:3]",
+    "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+    "outputs": [
+      "[\"a\", \"b\", \"c\"]"
+    ]
+  },
+  {
+    "key": "sections/1/entries/5/examples/3",
+    "program": ".[-2:]",
+    "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+    "outputs": [
+      "[\"d\", \"e\"]"
+    ]
+  },
+  {
+    "key": "sections/1/entries/6/examples/0",
+    "program": ".[]",
+    "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+    "outputs": [
+      "{\"name\":\"JSON\", \"good\":true}",
+      "{\"name\":\"XML\", \"good\":false}"
+    ]
+  },
+  {
+    "key": "sections/1/entries/6/examples/1",
+    "program": ".[]",
+    "input": "[]",
+    "outputs": []
+  },
+  {
+    "key": "sections/1/entries/6/examples/2",
+    "program": ".foo[]",
+    "input": "{\"foo\":[1,2,3]}",
+    "outputs": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "key": "sections/1/entries/6/examples/3",
+    "program": ".[]",
+    "input": "{\"a\": 1, \"b\": 1}",
+    "outputs": [
+      "1",
+      "1"
+    ]
+  },
+  {
+    "key": "sections/1/entries/8/examples/0",
+    "program": ".foo, .bar",
+    "input": "{\"foo\": 42, \"bar\": \"something else\", \"baz\": true}",
+    "outputs": [
+      "42",
+      "\"something else\""
+    ]
+  },
+  {
+    "key": "sections/1/entries/8/examples/1",
+    "program": ".user, .projects[]",
+    "input": "{\"user\":\"stedolan\", \"projects\": [\"jq\", \"wikiflow\"]}",
+    "outputs": [
+      "\"stedolan\"",
+      "\"jq\"",
+      "\"wikiflow\""
+    ]
+  },
+  {
+    "key": "sections/1/entries/8/examples/2",
+    "program": ".[4,2]",
+    "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+    "outputs": [
+      "\"e\"",
+      "\"c\""
+    ]
+  },
+  {
+    "key": "sections/1/entries/9/examples/0",
+    "program": ".[] | .name",
+    "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+    "outputs": [
+      "\"JSON\"",
+      "\"XML\""
+    ]
+  },
+  {
+    "key": "sections/1/entries/10/examples/0",
+    "program": "(. + 2) * 5",
+    "input": "1",
+    "outputs": [
+      "15"
+    ]
+  },
+  {
+    "key": "sections/2/entries/0/examples/0",
+    "program": "[.user, .projects[]]",
+    "input": "{\"user\":\"stedolan\", \"projects\": [\"jq\", \"wikiflow\"]}",
+    "outputs": [
+      "[\"stedolan\", \"jq\", \"wikiflow\"]"
+    ]
+  },
+  {
+    "key": "sections/2/entries/0/examples/1",
+    "program": "[ .[] | . * 2]",
+    "input": "[1, 2, 3]",
+    "outputs": [
+      "[2, 4, 6]"
+    ]
+  },
+  {
+    "key": "sections/2/entries/1/examples/0",
+    "program": "{user, title: .titles[]}",
+    "input": "{\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}",
+    "outputs": [
+      "{\"user\":\"stedolan\", \"title\": \"JQ Primer\"}",
+      "{\"user\":\"stedolan\", \"title\": \"More JQ\"}"
+    ]
+  },
+  {
+    "key": "sections/2/entries/1/examples/1",
+    "program": "{(.user): .titles}",
+    "input": "{\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}",
+    "outputs": [
+      "{\"stedolan\": [\"JQ Primer\", \"More JQ\"]}"
+    ]
+  },
+  {
+    "key": "sections/2/entries/2/examples/0",
+    "program": ".. | .a?",
+    "input": "[[{\"a\":1}]]",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/0/examples/0",
+    "program": ".a + 1",
+    "input": "{\"a\": 7}",
+    "outputs": [
+      "8"
+    ]
+  },
+  {
+    "key": "sections/3/entries/0/examples/1",
+    "program": ".a + .b",
+    "input": "{\"a\": [1,2], \"b\": [3,4]}",
+    "outputs": [
+      "[1,2,3,4]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/0/examples/2",
+    "program": ".a + null",
+    "input": "{\"a\": 1}",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/0/examples/3",
+    "program": ".a + 1",
+    "input": "{}",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/0/examples/4",
+    "program": "{a: 1} + {b: 2} + {c: 3} + {a: 42}",
+    "input": "null",
+    "outputs": [
+      "{\"a\": 42, \"b\": 2, \"c\": 3}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/1/examples/0",
+    "program": "4 - .a",
+    "input": "{\"a\":3}",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/1/examples/1",
+    "program": ". - [\"xml\", \"yaml\"]",
+    "input": "[\"xml\", \"yaml\", \"json\"]",
+    "outputs": [
+      "[\"json\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/2/examples/0",
+    "program": "10 / . * 3",
+    "input": "5",
+    "outputs": [
+      "6"
+    ]
+  },
+  {
+    "key": "sections/3/entries/2/examples/1",
+    "program": ". / \", \"",
+    "input": "\"a, b,c,d, e\"",
+    "outputs": [
+      "[\"a\",\"b,c,d\",\"e\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/2/examples/2",
+    "program": "{\"k\": {\"a\": 1, \"b\": 2}} * {\"k\": {\"a\": 0,\"c\": 3}}",
+    "input": "null",
+    "outputs": [
+      "{\"k\": {\"a\": 0, \"b\": 2, \"c\": 3}}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/2/examples/3",
+    "program": ".[] | (1 / .)?",
+    "input": "[1,0,-1]",
+    "outputs": [
+      "1",
+      "-1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/3/examples/0",
+    "program": "map(abs)",
+    "input": "[-10, -1.1, -1e-1]",
+    "outputs": [
+      "[10,1.1,1e-1]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/4/examples/0",
+    "program": ".[] | length",
+    "input": "[[1,2], \"string\", {\"a\":2}, null, -5]",
+    "outputs": [
+      "2",
+      "6",
+      "1",
+      "0",
+      "5"
+    ]
+  },
+  {
+    "key": "sections/3/entries/5/examples/0",
+    "program": "utf8bytelength",
+    "input": "\"\\u03bc\"",
+    "outputs": [
+      "2"
+    ]
+  },
+  {
+    "key": "sections/3/entries/6/examples/0",
+    "program": "keys",
+    "input": "{\"abc\": 1, \"abcd\": 2, \"Foo\": 3}",
+    "outputs": [
+      "[\"Foo\", \"abc\", \"abcd\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/6/examples/1",
+    "program": "keys",
+    "input": "[42,3,35]",
+    "outputs": [
+      "[0,1,2]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/7/examples/0",
+    "program": "map(has(\"foo\"))",
+    "input": "[{\"foo\": 42}, {}]",
+    "outputs": [
+      "[true, false]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/7/examples/1",
+    "program": "map(has(2))",
+    "input": "[[0,1], [\"a\",\"b\",\"c\"]]",
+    "outputs": [
+      "[false, true]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/8/examples/0",
+    "program": ".[] | in({\"foo\": 42})",
+    "input": "[\"foo\", \"bar\"]",
+    "outputs": [
+      "true",
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/8/examples/1",
+    "program": "map(in([0,1]))",
+    "input": "[2, 0]",
+    "outputs": [
+      "[false, true]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/9/examples/0",
+    "program": "map(.+1)",
+    "input": "[1,2,3]",
+    "outputs": [
+      "[2,3,4]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/9/examples/1",
+    "program": "map_values(.+1)",
+    "input": "{\"a\": 1, \"b\": 2, \"c\": 3}",
+    "outputs": [
+      "{\"a\": 2, \"b\": 3, \"c\": 4}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/9/examples/2",
+    "program": "map(., .)",
+    "input": "[1,2]",
+    "outputs": [
+      "[1,1,2,2]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/9/examples/3",
+    "program": "map_values(. // empty)",
+    "input": "{\"a\": null, \"b\": true, \"c\": false}",
+    "outputs": [
+      "{\"b\":true}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/10/examples/0",
+    "program": "pick(.a, .b.c, .x)",
+    "input": "{\"a\": 1, \"b\": {\"c\": 2, \"d\": 3}, \"e\": 4}",
+    "outputs": [
+      "{\"a\":1,\"b\":{\"c\":2},\"x\":null}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/10/examples/1",
+    "program": "pick(.[2], .[0], .[0])",
+    "input": "[1,2,3,4]",
+    "outputs": [
+      "[1,null,3]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/11/examples/0",
+    "program": "path(.a[0].b)",
+    "input": "null",
+    "outputs": [
+      "[\"a\",0,\"b\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/11/examples/1",
+    "program": "[path(..)]",
+    "input": "{\"a\":[{\"b\":1}]}",
+    "outputs": [
+      "[[],[\"a\"],[\"a\",0],[\"a\",0,\"b\"]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/12/examples/0",
+    "program": "del(.foo)",
+    "input": "{\"foo\": 42, \"bar\": 9001, \"baz\": 42}",
+    "outputs": [
+      "{\"bar\": 9001, \"baz\": 42}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/12/examples/1",
+    "program": "del(.[1, 2])",
+    "input": "[\"foo\", \"bar\", \"baz\"]",
+    "outputs": [
+      "[\"foo\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/13/examples/0",
+    "program": "getpath([\"a\",\"b\"])",
+    "input": "null",
+    "outputs": [
+      "null"
+    ]
+  },
+  {
+    "key": "sections/3/entries/13/examples/1",
+    "program": "[getpath([\"a\",\"b\"], [\"a\",\"c\"])]",
+    "input": "{\"a\":{\"b\":0, \"c\":1}}",
+    "outputs": [
+      "[0, 1]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/14/examples/0",
+    "program": "setpath([\"a\",\"b\"]; 1)",
+    "input": "null",
+    "outputs": [
+      "{\"a\": {\"b\": 1}}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/14/examples/1",
+    "program": "setpath([\"a\",\"b\"]; 1)",
+    "input": "{\"a\":{\"b\":0}}",
+    "outputs": [
+      "{\"a\": {\"b\": 1}}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/14/examples/2",
+    "program": "setpath([0,\"a\"]; 1)",
+    "input": "null",
+    "outputs": [
+      "[{\"a\":1}]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/15/examples/0",
+    "program": "delpaths([[\"a\",\"b\"]])",
+    "input": "{\"a\":{\"b\":1},\"x\":{\"y\":2}}",
+    "outputs": [
+      "{\"a\":{},\"x\":{\"y\":2}}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/16/examples/0",
+    "program": "to_entries",
+    "input": "{\"a\": 1, \"b\": 2}",
+    "outputs": [
+      "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/16/examples/1",
+    "program": "from_entries",
+    "input": "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]",
+    "outputs": [
+      "{\"a\": 1, \"b\": 2}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/16/examples/2",
+    "program": "with_entries(.key |= \"KEY_\" + .)",
+    "input": "{\"a\": 1, \"b\": 2}",
+    "outputs": [
+      "{\"KEY_a\": 1, \"KEY_b\": 2}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/17/examples/0",
+    "program": "map(select(. >= 2))",
+    "input": "[1,5,3,0,7]",
+    "outputs": [
+      "[5,3,7]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/17/examples/1",
+    "program": ".[] | select(.id == \"second\")",
+    "input": "[{\"id\": \"first\", \"val\": 1}, {\"id\": \"second\", \"val\": 2}]",
+    "outputs": [
+      "{\"id\": \"second\", \"val\": 2}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/18/examples/0",
+    "program": ".[]|numbers",
+    "input": "[[],{},1,\"foo\",null,true,false]",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/19/examples/0",
+    "program": "1, empty, 2",
+    "input": "null",
+    "outputs": [
+      "1",
+      "2"
+    ]
+  },
+  {
+    "key": "sections/3/entries/19/examples/1",
+    "program": "[1,2,empty,3]",
+    "input": "null",
+    "outputs": [
+      "[1,2,3]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/20/examples/0",
+    "program": "try error catch .",
+    "input": "\"error message\"",
+    "outputs": [
+      "\"error message\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/20/examples/1",
+    "program": "try error(\"invalid value: \\(.)\") catch .",
+    "input": "42",
+    "outputs": [
+      "\"invalid value: 42\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/23/examples/0",
+    "program": "try error(\"\\($__loc__)\") catch .",
+    "input": "null",
+    "outputs": [
+      "\"{\\\"file\\\":\\\"<top-level>\\\",\\\"line\\\":1}\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/24/examples/0",
+    "program": "[paths]",
+    "input": "[1,[[],{\"a\":2}]]",
+    "outputs": [
+      "[[0],[1],[1,0],[1,1],[1,1,\"a\"]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/24/examples/1",
+    "program": "[paths(type == \"number\")]",
+    "input": "[1,[[],{\"a\":2}]]",
+    "outputs": [
+      "[[0],[1,1,\"a\"]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/25/examples/0",
+    "program": "add",
+    "input": "[\"a\",\"b\",\"c\"]",
+    "outputs": [
+      "\"abc\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/25/examples/1",
+    "program": "add",
+    "input": "[1, 2, 3]",
+    "outputs": [
+      "6"
+    ]
+  },
+  {
+    "key": "sections/3/entries/25/examples/2",
+    "program": "add",
+    "input": "[]",
+    "outputs": [
+      "null"
+    ]
+  },
+  {
+    "key": "sections/3/entries/25/examples/3",
+    "program": "add(.[].a)",
+    "input": "[{\"a\":3}, {\"a\":5}, {\"b\":6}]",
+    "outputs": [
+      "8"
+    ]
+  },
+  {
+    "key": "sections/3/entries/26/examples/0",
+    "program": "any",
+    "input": "[true, false]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/26/examples/1",
+    "program": "any",
+    "input": "[false, false]",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/26/examples/2",
+    "program": "any",
+    "input": "[]",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/27/examples/0",
+    "program": "all",
+    "input": "[true, false]",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/27/examples/1",
+    "program": "all",
+    "input": "[true, true]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/27/examples/2",
+    "program": "all",
+    "input": "[]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/28/examples/0",
+    "program": "flatten",
+    "input": "[1, [2], [[3]]]",
+    "outputs": [
+      "[1, 2, 3]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/28/examples/1",
+    "program": "flatten(1)",
+    "input": "[1, [2], [[3]]]",
+    "outputs": [
+      "[1, 2, [3]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/28/examples/2",
+    "program": "flatten",
+    "input": "[[]]",
+    "outputs": [
+      "[]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/28/examples/3",
+    "program": "flatten",
+    "input": "[{\"foo\": \"bar\"}, [{\"foo\": \"baz\"}]]",
+    "outputs": [
+      "[{\"foo\": \"bar\"}, {\"foo\": \"baz\"}]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/29/examples/0",
+    "program": "range(2; 4)",
+    "input": "null",
+    "outputs": [
+      "2",
+      "3"
+    ]
+  },
+  {
+    "key": "sections/3/entries/29/examples/1",
+    "program": "[range(2; 4)]",
+    "input": "null",
+    "outputs": [
+      "[2,3]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/29/examples/2",
+    "program": "[range(4)]",
+    "input": "null",
+    "outputs": [
+      "[0,1,2,3]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/29/examples/3",
+    "program": "[range(0; 10; 3)]",
+    "input": "null",
+    "outputs": [
+      "[0,3,6,9]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/29/examples/4",
+    "program": "[range(0; 10; -1)]",
+    "input": "null",
+    "outputs": [
+      "[]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/29/examples/5",
+    "program": "[range(0; -5; -1)]",
+    "input": "null",
+    "outputs": [
+      "[0,-1,-2,-3,-4]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/30/examples/0",
+    "program": "floor",
+    "input": "3.14159",
+    "outputs": [
+      "3"
+    ]
+  },
+  {
+    "key": "sections/3/entries/31/examples/0",
+    "program": "sqrt",
+    "input": "9",
+    "outputs": [
+      "3"
+    ]
+  },
+  {
+    "key": "sections/3/entries/32/examples/0",
+    "program": ".[] | tonumber",
+    "input": "[1, \"1\"]",
+    "outputs": [
+      "1",
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/33/examples/0",
+    "program": ".[] | toboolean",
+    "input": "[\"true\", \"false\", true, false]",
+    "outputs": [
+      "true",
+      "false",
+      "true",
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/34/examples/0",
+    "program": ".[] | tostring",
+    "input": "[1, \"1\", [1]]",
+    "outputs": [
+      "\"1\"",
+      "\"1\"",
+      "\"[1]\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/35/examples/0",
+    "program": "map(type)",
+    "input": "[0, false, [], {}, null, \"hello\"]",
+    "outputs": [
+      "[\"number\", \"boolean\", \"array\", \"object\", \"null\", \"string\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/36/examples/0",
+    "program": ".[] | (infinite * .) < 0",
+    "input": "[-1, 1]",
+    "outputs": [
+      "true",
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/36/examples/1",
+    "program": "infinite, nan | type",
+    "input": "null",
+    "outputs": [
+      "\"number\"",
+      "\"number\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/37/examples/0",
+    "program": "sort",
+    "input": "[8,3,null,6]",
+    "outputs": [
+      "[null,3,6,8]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/37/examples/1",
+    "program": "sort_by(.foo)",
+    "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":10}, {\"foo\":2, \"bar\":1}]",
+    "outputs": [
+      "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":4, \"bar\":10}]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/37/examples/2",
+    "program": "sort_by(.foo, .bar)",
+    "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}]",
+    "outputs": [
+      "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":4, \"bar\":10}]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/38/examples/0",
+    "program": "group_by(.foo)",
+    "input": "[{\"foo\":1, \"bar\":10}, {\"foo\":3, \"bar\":100}, {\"foo\":1, \"bar\":1}]",
+    "outputs": [
+      "[[{\"foo\":1, \"bar\":10}, {\"foo\":1, \"bar\":1}], [{\"foo\":3, \"bar\":100}]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/39/examples/0",
+    "program": "min",
+    "input": "[5,4,2,7]",
+    "outputs": [
+      "2"
+    ]
+  },
+  {
+    "key": "sections/3/entries/39/examples/1",
+    "program": "max_by(.foo)",
+    "input": "[{\"foo\":1, \"bar\":14}, {\"foo\":2, \"bar\":3}]",
+    "outputs": [
+      "{\"foo\":2, \"bar\":3}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/40/examples/0",
+    "program": "unique",
+    "input": "[1,2,5,3,5,3,1,3]",
+    "outputs": [
+      "[1,2,3,5]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/40/examples/1",
+    "program": "unique_by(.foo)",
+    "input": "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 1, \"bar\": 3}, {\"foo\": 4, \"bar\": 5}]",
+    "outputs": [
+      "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 4, \"bar\": 5}]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/40/examples/2",
+    "program": "unique_by(length)",
+    "input": "[\"chunky\", \"bacon\", \"kitten\", \"cicada\", \"asparagus\"]",
+    "outputs": [
+      "[\"bacon\", \"chunky\", \"asparagus\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/41/examples/0",
+    "program": "reverse",
+    "input": "[1,2,3,4]",
+    "outputs": [
+      "[4,3,2,1]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/42/examples/0",
+    "program": "contains(\"bar\")",
+    "input": "\"foobar\"",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/42/examples/1",
+    "program": "contains([\"baz\", \"bar\"])",
+    "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/42/examples/2",
+    "program": "contains([\"bazzzzz\", \"bar\"])",
+    "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/42/examples/3",
+    "program": "contains({foo: 12, bar: [{barp: 12}]})",
+    "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/42/examples/4",
+    "program": "contains({foo: 12, bar: [{barp: 15}]})",
+    "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/43/examples/0",
+    "program": "indices(\", \")",
+    "input": "\"a,b, cd, efg, hijk\"",
+    "outputs": [
+      "[3,7,12]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/43/examples/1",
+    "program": "indices(1)",
+    "input": "[0,1,2,1,3,1,4]",
+    "outputs": [
+      "[1,3,5]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/43/examples/2",
+    "program": "indices([1,2])",
+    "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+    "outputs": [
+      "[1,8]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/44/examples/0",
+    "program": "index(\", \")",
+    "input": "\"a,b, cd, efg, hijk\"",
+    "outputs": [
+      "3"
+    ]
+  },
+  {
+    "key": "sections/3/entries/44/examples/1",
+    "program": "index(1)",
+    "input": "[0,1,2,1,3,1,4]",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/44/examples/2",
+    "program": "index([1,2])",
+    "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/44/examples/3",
+    "program": "rindex(\", \")",
+    "input": "\"a,b, cd, efg, hijk\"",
+    "outputs": [
+      "12"
+    ]
+  },
+  {
+    "key": "sections/3/entries/44/examples/4",
+    "program": "rindex(1)",
+    "input": "[0,1,2,1,3,1,4]",
+    "outputs": [
+      "5"
+    ]
+  },
+  {
+    "key": "sections/3/entries/44/examples/5",
+    "program": "rindex([1,2])",
+    "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+    "outputs": [
+      "8"
+    ]
+  },
+  {
+    "key": "sections/3/entries/45/examples/0",
+    "program": "inside(\"foobar\")",
+    "input": "\"bar\"",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/45/examples/1",
+    "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+    "input": "[\"baz\", \"bar\"]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/45/examples/2",
+    "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+    "input": "[\"bazzzzz\", \"bar\"]",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/45/examples/3",
+    "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+    "input": "{\"foo\": 12, \"bar\": [{\"barp\": 12}]}",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/3/entries/45/examples/4",
+    "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+    "input": "{\"foo\": 12, \"bar\": [{\"barp\": 15}]}",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/3/entries/46/examples/0",
+    "program": "[.[]|startswith(\"foo\")]",
+    "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"barfoob\"]",
+    "outputs": [
+      "[false, true, false, true, false]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/47/examples/0",
+    "program": "[.[]|endswith(\"foo\")]",
+    "input": "[\"foobar\", \"barfoo\"]",
+    "outputs": [
+      "[false, true]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/48/examples/0",
+    "program": "combinations",
+    "input": "[[1,2], [3, 4]]",
+    "outputs": [
+      "[1, 3]",
+      "[1, 4]",
+      "[2, 3]",
+      "[2, 4]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/48/examples/1",
+    "program": "combinations(2)",
+    "input": "[0, 1]",
+    "outputs": [
+      "[0, 0]",
+      "[0, 1]",
+      "[1, 0]",
+      "[1, 1]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/49/examples/0",
+    "program": "[.[]|ltrimstr(\"foo\")]",
+    "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"afoo\"]",
+    "outputs": [
+      "[\"fo\",\"\",\"barfoo\",\"bar\",\"afoo\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/50/examples/0",
+    "program": "[.[]|rtrimstr(\"foo\")]",
+    "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"foob\"]",
+    "outputs": [
+      "[\"fo\",\"\",\"bar\",\"foobar\",\"foob\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/51/examples/0",
+    "program": "[.[]|trimstr(\"foo\")]",
+    "input": "[\"fo\", \"foo\", \"barfoo\", \"foobarfoo\", \"foob\"]",
+    "outputs": [
+      "[\"fo\",\"\",\"bar\",\"bar\",\"b\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/52/examples/0",
+    "program": "trim, ltrim, rtrim",
+    "input": "\" abc \"",
+    "outputs": [
+      "\"abc\"",
+      "\"abc \"",
+      "\" abc\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/53/examples/0",
+    "program": "explode",
+    "input": "\"foobar\"",
+    "outputs": [
+      "[102,111,111,98,97,114]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/54/examples/0",
+    "program": "implode",
+    "input": "[65, 66, 67]",
+    "outputs": [
+      "\"ABC\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/55/examples/0",
+    "program": "split(\", \")",
+    "input": "\"a, b,c,d, e, \"",
+    "outputs": [
+      "[\"a\",\"b,c,d\",\"e\",\"\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/56/examples/0",
+    "program": "join(\", \")",
+    "input": "[\"a\",\"b,c,d\",\"e\"]",
+    "outputs": [
+      "\"a, b,c,d, e\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/56/examples/1",
+    "program": "join(\" \")",
+    "input": "[\"a\",1,2.3,true,null,false]",
+    "outputs": [
+      "\"a 1 2.3 true  false\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/57/examples/0",
+    "program": "ascii_upcase",
+    "input": "\"useful but not for é\"",
+    "outputs": [
+      "\"USEFUL BUT NOT FOR é\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/58/examples/0",
+    "program": "[while(.<100; .*2)]",
+    "input": "1",
+    "outputs": [
+      "[1,2,4,8,16,32,64]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/59/examples/0",
+    "program": "[repeat(.*2, error)?]",
+    "input": "1",
+    "outputs": [
+      "[2]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/60/examples/0",
+    "program": "[.,1]|until(.[0] < 1; [.[0] - 1, .[1] * .[0]])|.[1]",
+    "input": "4",
+    "outputs": [
+      "24"
+    ]
+  },
+  {
+    "key": "sections/3/entries/61/examples/0",
+    "program": "recurse(.foo[])",
+    "input": "{\"foo\":[{\"foo\": []}, {\"foo\":[{\"foo\":[]}]}]}",
+    "outputs": [
+      "{\"foo\":[{\"foo\":[]},{\"foo\":[{\"foo\":[]}]}]}",
+      "{\"foo\":[]}",
+      "{\"foo\":[{\"foo\":[]}]}",
+      "{\"foo\":[]}"
+    ]
+  },
+  {
+    "key": "sections/3/entries/61/examples/1",
+    "program": "recurse",
+    "input": "{\"a\":0,\"b\":[1]}",
+    "outputs": [
+      "{\"a\":0,\"b\":[1]}",
+      "0",
+      "[1]",
+      "1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/61/examples/2",
+    "program": "recurse(. * .; . < 20)",
+    "input": "2",
+    "outputs": [
+      "2",
+      "4",
+      "16"
+    ]
+  },
+  {
+    "key": "sections/3/entries/62/examples/0",
+    "program": "walk(if type == \"array\" then sort else . end)",
+    "input": "[[4, 1, 7], [8, 5, 2], [3, 6, 9]]",
+    "outputs": [
+      "[[1,4,7],[2,5,8],[3,6,9]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/62/examples/1",
+    "program": "walk( if type == \"object\" then with_entries( .key |= sub( \"^_+\"; \"\") ) else . end )",
+    "input": "[ { \"_a\": { \"__b\": 2 } } ]",
+    "outputs": [
+      "[{\"a\":{\"b\":2}}]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/66/examples/0",
+    "program": "$ENV.PAGER",
+    "input": "null",
+    "outputs": [
+      "\"less\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/66/examples/1",
+    "program": "env.PAGER",
+    "input": "null",
+    "outputs": [
+      "\"less\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/67/examples/0",
+    "program": "transpose",
+    "input": "[[1], [2,3]]",
+    "outputs": [
+      "[[1,2],[null,3]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/68/examples/0",
+    "program": "bsearch(0)",
+    "input": "[0,1]",
+    "outputs": [
+      "0"
+    ]
+  },
+  {
+    "key": "sections/3/entries/68/examples/1",
+    "program": "bsearch(0)",
+    "input": "[1,2,3]",
+    "outputs": [
+      "-1"
+    ]
+  },
+  {
+    "key": "sections/3/entries/68/examples/2",
+    "program": "bsearch(4) as $ix | if $ix < 0 then .[-(1+$ix)] = 4 else . end",
+    "input": "[1,2,3]",
+    "outputs": [
+      "[1,2,3,4]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/69/examples/0",
+    "program": "\"The input was \\(.), which is one less than \\(.+1)\"",
+    "input": "42",
+    "outputs": [
+      "\"The input was 42, which is one less than 43\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/70/examples/0",
+    "program": "[.[]|tostring]",
+    "input": "[1, \"foo\", [\"foo\"]]",
+    "outputs": [
+      "[\"1\",\"foo\",\"[\\\"foo\\\"]\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/70/examples/1",
+    "program": "[.[]|tojson]",
+    "input": "[1, \"foo\", [\"foo\"]]",
+    "outputs": [
+      "[\"1\",\"\\\"foo\\\"\",\"[\\\"foo\\\"]\"]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/70/examples/2",
+    "program": "[.[]|tojson|fromjson]",
+    "input": "[1, \"foo\", [\"foo\"]]",
+    "outputs": [
+      "[1,\"foo\",[\"foo\"]]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/71/examples/0",
+    "program": "@html",
+    "input": "\"This works if x < y\"",
+    "outputs": [
+      "\"This works if x &lt; y\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/71/examples/1",
+    "program": "@sh \"echo \\(.)\"",
+    "input": "\"O'Hara's Ale\"",
+    "outputs": [
+      "\"echo 'O'\\\\''Hara'\\\\''s Ale'\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/71/examples/2",
+    "program": "@base64",
+    "input": "\"This is a message\"",
+    "outputs": [
+      "\"VGhpcyBpcyBhIG1lc3NhZ2U=\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/71/examples/3",
+    "program": "@base64d",
+    "input": "\"VGhpcyBpcyBhIG1lc3NhZ2U=\"",
+    "outputs": [
+      "\"This is a message\""
+    ]
+  },
+  {
+    "key": "sections/3/entries/72/examples/0",
+    "program": "fromdate",
+    "input": "\"2015-03-05T23:51:47Z\"",
+    "outputs": [
+      "1425599507"
+    ]
+  },
+  {
+    "key": "sections/3/entries/72/examples/1",
+    "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")",
+    "input": "\"2015-03-05T23:51:47Z\"",
+    "outputs": [
+      "[2015,2,5,23,51,47,4,63]"
+    ]
+  },
+  {
+    "key": "sections/3/entries/72/examples/2",
+    "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")|mktime",
+    "input": "\"2015-03-05T23:51:47Z\"",
+    "outputs": [
+      "1425599507"
+    ]
+  },
+  {
+    "key": "sections/4/entries/0/examples/0",
+    "program": ". == false",
+    "input": "null",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/4/entries/0/examples/1",
+    "program": ". == {\"b\": {\"d\": (4 + 1e-20), \"c\": 3}, \"a\":1}",
+    "input": "{\"a\":1, \"b\": {\"c\": 3, \"d\": 4}}",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/4/entries/0/examples/2",
+    "program": ".[] == 1",
+    "input": "[1, 1.0, \"1\", \"banana\"]",
+    "outputs": [
+      "true",
+      "true",
+      "false",
+      "false"
+    ]
+  },
+  {
+    "key": "sections/4/entries/1/examples/0",
+    "program": "if . == 0 then\n  \"zero\"\nelif . == 1 then\n  \"one\"\nelse\n  \"many\"\nend",
+    "input": "2",
+    "outputs": [
+      "\"many\""
+    ]
+  },
+  {
+    "key": "sections/4/entries/2/examples/0",
+    "program": ". < 5",
+    "input": "2",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/4/entries/3/examples/0",
+    "program": "42 and \"a string\"",
+    "input": "null",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/4/entries/3/examples/1",
+    "program": "(true, false) or false",
+    "input": "null",
+    "outputs": [
+      "true",
+      "false"
+    ]
+  },
+  {
+    "key": "sections/4/entries/3/examples/2",
+    "program": "(true, true) and (true, false)",
+    "input": "null",
+    "outputs": [
+      "true",
+      "false",
+      "true",
+      "false"
+    ]
+  },
+  {
+    "key": "sections/4/entries/3/examples/3",
+    "program": "[true, false | not]",
+    "input": "null",
+    "outputs": [
+      "[false, true]"
+    ]
+  },
+  {
+    "key": "sections/4/entries/4/examples/0",
+    "program": "empty // 42",
+    "input": "null",
+    "outputs": [
+      "42"
+    ]
+  },
+  {
+    "key": "sections/4/entries/4/examples/1",
+    "program": ".foo // 42",
+    "input": "{\"foo\": 19}",
+    "outputs": [
+      "19"
+    ]
+  },
+  {
+    "key": "sections/4/entries/4/examples/2",
+    "program": ".foo // 42",
+    "input": "{}",
+    "outputs": [
+      "42"
+    ]
+  },
+  {
+    "key": "sections/4/entries/4/examples/3",
+    "program": "(false, null, 1) // 42",
+    "input": "null",
+    "outputs": [
+      "1"
+    ]
+  },
+  {
+    "key": "sections/4/entries/4/examples/4",
+    "program": "(false, null, 1) | . // 42",
+    "input": "null",
+    "outputs": [
+      "42",
+      "42",
+      "1"
+    ]
+  },
+  {
+    "key": "sections/4/entries/5/examples/0",
+    "program": "try .a catch \". is not an object\"",
+    "input": "true",
+    "outputs": [
+      "\". is not an object\""
+    ]
+  },
+  {
+    "key": "sections/4/entries/5/examples/1",
+    "program": "[.[]|try .a]",
+    "input": "[{}, true, {\"a\":1}]",
+    "outputs": [
+      "[null, 1]"
+    ]
+  },
+  {
+    "key": "sections/4/entries/5/examples/2",
+    "program": "try error(\"some exception\") catch .",
+    "input": "true",
+    "outputs": [
+      "\"some exception\""
+    ]
+  },
+  {
+    "key": "sections/4/entries/7/examples/0",
+    "program": "[.[] | .a?]",
+    "input": "[{}, true, {\"a\":1}]",
+    "outputs": [
+      "[null, 1]"
+    ]
+  },
+  {
+    "key": "sections/4/entries/7/examples/1",
+    "program": "[.[] | tonumber?]",
+    "input": "[\"1\", \"invalid\", \"3\", 4]",
+    "outputs": [
+      "[1, 3, 4]"
+    ]
+  },
+  {
+    "key": "sections/5/entries/0/examples/0",
+    "program": "test(\"foo\")",
+    "input": "\"foo\"",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/5/entries/0/examples/1",
+    "program": ".[] | test(\"a b c # spaces are ignored\"; \"ix\")",
+    "input": "[\"xabcd\", \"ABC\"]",
+    "outputs": [
+      "true",
+      "true"
+    ]
+  },
+  {
+    "key": "sections/5/entries/1/examples/0",
+    "program": "match(\"(abc)+\"; \"g\")",
+    "input": "\"abc abc\"",
+    "outputs": [
+      "{\"offset\": 0, \"length\": 3, \"string\": \"abc\", \"captures\": [{\"offset\": 0, \"length\": 3, \"string\": \"abc\", \"name\": null}]}",
+      "{\"offset\": 4, \"length\": 3, \"string\": \"abc\", \"captures\": [{\"offset\": 4, \"length\": 3, \"string\": \"abc\", \"name\": null}]}"
+    ]
+  },
+  {
+    "key": "sections/5/entries/1/examples/1",
+    "program": "match(\"foo\")",
+    "input": "\"foo bar foo\"",
+    "outputs": [
+      "{\"offset\": 0, \"length\": 3, \"string\": \"foo\", \"captures\": []}"
+    ]
+  },
+  {
+    "key": "sections/5/entries/1/examples/2",
+    "program": "match([\"foo\", \"ig\"])",
+    "input": "\"foo bar FOO\"",
+    "outputs": [
+      "{\"offset\": 0, \"length\": 3, \"string\": \"foo\", \"captures\": []}",
+      "{\"offset\": 8, \"length\": 3, \"string\": \"FOO\", \"captures\": []}"
+    ]
+  },
+  {
+    "key": "sections/5/entries/1/examples/3",
+    "program": "match(\"foo (?<bar123>bar)? foo\"; \"ig\")",
+    "input": "\"foo bar foo foo  foo\"",
+    "outputs": [
+      "{\"offset\": 0, \"length\": 11, \"string\": \"foo bar foo\", \"captures\": [{\"offset\": 4, \"length\": 3, \"string\": \"bar\", \"name\": \"bar123\"}]}",
+      "{\"offset\": 12, \"length\": 8, \"string\": \"foo  foo\", \"captures\": [{\"offset\": -1, \"length\": 0, \"string\": null, \"name\": \"bar123\"}]}"
+    ]
+  },
+  {
+    "key": "sections/5/entries/1/examples/4",
+    "program": "[ match(\".\"; \"g\")] | length",
+    "input": "\"abc\"",
+    "outputs": [
+      "3"
+    ]
+  },
+  {
+    "key": "sections/5/entries/2/examples/0",
+    "program": "capture(\"(?<a>[a-z]+)-(?<n>[0-9]+)\")",
+    "input": "\"xyzzy-14\"",
+    "outputs": [
+      "{ \"a\": \"xyzzy\", \"n\": \"14\" }"
+    ]
+  },
+  {
+    "key": "sections/5/entries/3/examples/0",
+    "program": "scan(\"c\")",
+    "input": "\"abcdefabc\"",
+    "outputs": [
+      "\"c\"",
+      "\"c\""
+    ]
+  },
+  {
+    "key": "sections/5/entries/3/examples/1",
+    "program": "scan(\"(a+)(b+)\")",
+    "input": "\"abaabbaaabbb\"",
+    "outputs": [
+      "[\"a\",\"b\"]",
+      "[\"aa\",\"bb\"]",
+      "[\"aaa\",\"bbb\"]"
+    ]
+  },
+  {
+    "key": "sections/5/entries/4/examples/0",
+    "program": "split(\", *\"; null)",
+    "input": "\"ab,cd, ef\"",
+    "outputs": [
+      "[\"ab\",\"cd\",\"ef\"]"
+    ]
+  },
+  {
+    "key": "sections/5/entries/5/examples/0",
+    "program": "splits(\", *\")",
+    "input": "\"ab,cd,   ef, gh\"",
+    "outputs": [
+      "\"ab\"",
+      "\"cd\"",
+      "\"ef\"",
+      "\"gh\""
+    ]
+  },
+  {
+    "key": "sections/5/entries/5/examples/1",
+    "program": "splits(\",? *\"; \"n\")",
+    "input": "\"ab,cd ef,  gh\"",
+    "outputs": [
+      "\"ab\"",
+      "\"cd\"",
+      "\"ef\"",
+      "\"gh\""
+    ]
+  },
+  {
+    "key": "sections/5/entries/6/examples/0",
+    "program": "sub(\"[^a-z]*(?<x>[a-z]+)\"; \"Z\\(.x)\"; \"g\")",
+    "input": "\"123abc456def\"",
+    "outputs": [
+      "\"ZabcZdef\""
+    ]
+  },
+  {
+    "key": "sections/5/entries/6/examples/1",
+    "program": "[sub(\"(?<a>.)\"; \"\\(.a|ascii_upcase)\", \"\\(.a|ascii_downcase)\")]",
+    "input": "\"aB\"",
+    "outputs": [
+      "[\"AB\",\"aB\"]"
+    ]
+  },
+  {
+    "key": "sections/5/entries/7/examples/0",
+    "program": "gsub(\"(?<x>.)[^a]*\"; \"+\\(.x)-\")",
+    "input": "\"Abcabc\"",
+    "outputs": [
+      "\"+A-+a-\""
+    ]
+  },
+  {
+    "key": "sections/5/entries/7/examples/1",
+    "program": "[gsub(\"p\"; \"a\", \"b\")]",
+    "input": "\"p\"",
+    "outputs": [
+      "[\"a\",\"b\"]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/0/examples/0",
+    "program": ".bar as $x | .foo | . + $x",
+    "input": "{\"foo\":10, \"bar\":200}",
+    "outputs": [
+      "210"
+    ]
+  },
+  {
+    "key": "sections/6/entries/0/examples/1",
+    "program": ". as $i|[(.*2|. as $i| $i), $i]",
+    "input": "5",
+    "outputs": [
+      "[10,5]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/0/examples/2",
+    "program": ". as [$a, $b, {c: $c}] | $a + $b + $c",
+    "input": "[2, 3, {\"c\": 4, \"d\": 5}]",
+    "outputs": [
+      "9"
+    ]
+  },
+  {
+    "key": "sections/6/entries/0/examples/3",
+    "program": ".[] as [$a, $b] | {a: $a, b: $b}",
+    "input": "[[0], [0, 1], [2, 1, 0]]",
+    "outputs": [
+      "{\"a\":0,\"b\":null}",
+      "{\"a\":0,\"b\":1}",
+      "{\"a\":2,\"b\":1}"
+    ]
+  },
+  {
+    "key": "sections/6/entries/1/examples/0",
+    "program": ".[] as {$a, $b, c: {$d, $e}} ?// {$a, $b, c: [{$d, $e}]} | {$a, $b, $d, $e}",
+    "input": "[{\"a\": 1, \"b\": 2, \"c\": {\"d\": 3, \"e\": 4}}, {\"a\": 1, \"b\": 2, \"c\": [{\"d\": 3, \"e\": 4}]}]",
+    "outputs": [
+      "{\"a\":1,\"b\":2,\"d\":3,\"e\":4}",
+      "{\"a\":1,\"b\":2,\"d\":3,\"e\":4}"
+    ]
+  },
+  {
+    "key": "sections/6/entries/1/examples/1",
+    "program": ".[] as {$a, $b, c: {$d}} ?// {$a, $b, c: [{$e}]} | {$a, $b, $d, $e}",
+    "input": "[{\"a\": 1, \"b\": 2, \"c\": {\"d\": 3, \"e\": 4}}, {\"a\": 1, \"b\": 2, \"c\": [{\"d\": 3, \"e\": 4}]}]",
+    "outputs": [
+      "{\"a\":1,\"b\":2,\"d\":3,\"e\":null}",
+      "{\"a\":1,\"b\":2,\"d\":null,\"e\":4}"
+    ]
+  },
+  {
+    "key": "sections/6/entries/1/examples/2",
+    "program": ".[] as [$a] ?// [$b] | if $a != null then error(\"err: \\($a)\") else {$a,$b} end",
+    "input": "[[3]]",
+    "outputs": [
+      "{\"a\":null,\"b\":3}"
+    ]
+  },
+  {
+    "key": "sections/6/entries/2/examples/0",
+    "program": "def addvalue(f): . + [f]; map(addvalue(.[0]))",
+    "input": "[[1,2],[10,20]]",
+    "outputs": [
+      "[[1,2,1], [10,20,10]]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/2/examples/1",
+    "program": "def addvalue(f): f as $x | map(. + $x); addvalue(.[0])",
+    "input": "[[1,2],[10,20]]",
+    "outputs": [
+      "[[1,2,1,2], [10,20,1,2]]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/4/examples/0",
+    "program": "isempty(empty)",
+    "input": "null",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/6/entries/4/examples/1",
+    "program": "isempty(.[])",
+    "input": "[]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/6/entries/4/examples/2",
+    "program": "isempty(.[])",
+    "input": "[1,2,3]",
+    "outputs": [
+      "false"
+    ]
+  },
+  {
+    "key": "sections/6/entries/5/examples/0",
+    "program": "[limit(3; .[])]",
+    "input": "[0,1,2,3,4,5,6,7,8,9]",
+    "outputs": [
+      "[0,1,2]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/6/examples/0",
+    "program": "[skip(3; .[])]",
+    "input": "[0,1,2,3,4,5,6,7,8,9]",
+    "outputs": [
+      "[3,4,5,6,7,8,9]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/7/examples/0",
+    "program": "[first(range(.)), last(range(.)), nth(5; range(.))]",
+    "input": "10",
+    "outputs": [
+      "[0,9,5]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/7/examples/1",
+    "program": "[first(empty), last(empty), nth(5; empty)]",
+    "input": "null",
+    "outputs": [
+      "[]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/8/examples/0",
+    "program": "[range(.)]|[first, last, nth(5)]",
+    "input": "10",
+    "outputs": [
+      "[0,9,5]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/9/examples/0",
+    "program": "reduce .[] as $item (0; . + $item)",
+    "input": "[1,2,3,4,5]",
+    "outputs": [
+      "15"
+    ]
+  },
+  {
+    "key": "sections/6/entries/9/examples/1",
+    "program": "reduce .[] as [$i,$j] (0; . + $i * $j)",
+    "input": "[[1,2],[3,4],[5,6]]",
+    "outputs": [
+      "44"
+    ]
+  },
+  {
+    "key": "sections/6/entries/9/examples/2",
+    "program": "reduce .[] as {$x,$y} (null; .x += $x | .y += [$y])",
+    "input": "[{\"x\":\"a\",\"y\":1},{\"x\":\"b\",\"y\":2},{\"x\":\"c\",\"y\":3}]",
+    "outputs": [
+      "{\"x\":\"abc\",\"y\":[1,2,3]}"
+    ]
+  },
+  {
+    "key": "sections/6/entries/10/examples/0",
+    "program": "foreach .[] as $item (0; . + $item)",
+    "input": "[1,2,3,4,5]",
+    "outputs": [
+      "1",
+      "3",
+      "6",
+      "10",
+      "15"
+    ]
+  },
+  {
+    "key": "sections/6/entries/10/examples/1",
+    "program": "foreach .[] as $item (0; . + $item; [$item, . * 2])",
+    "input": "[1,2,3,4,5]",
+    "outputs": [
+      "[1,2]",
+      "[2,6]",
+      "[3,12]",
+      "[4,20]",
+      "[5,30]"
+    ]
+  },
+  {
+    "key": "sections/6/entries/10/examples/2",
+    "program": "foreach .[] as $item (0; . + 1; {index: ., $item})",
+    "input": "[\"foo\", \"bar\", \"baz\"]",
+    "outputs": [
+      "{\"index\":1,\"item\":\"foo\"}",
+      "{\"index\":2,\"item\":\"bar\"}",
+      "{\"index\":3,\"item\":\"baz\"}"
+    ]
+  },
+  {
+    "key": "sections/6/entries/12/examples/0",
+    "program": "def range(init; upto; by): def _range: if (by > 0 and . < upto) or (by < 0 and . > upto) then ., ((.+by)|_range) else empty end; if init == upto then empty elif by == 0 then init else init|_range end; range(0; 10; 3)",
+    "input": "null",
+    "outputs": [
+      "0",
+      "3",
+      "6",
+      "9"
+    ]
+  },
+  {
+    "key": "sections/6/entries/12/examples/1",
+    "program": "def while(cond; update): def _while: if cond then ., (update | _while) else empty end; _while; [while(.<100; .*2)]",
+    "input": "1",
+    "outputs": [
+      "[1,2,4,8,16,32,64]"
+    ]
+  },
+  {
+    "key": "sections/9/entries/0/examples/0",
+    "program": "truncate_stream([[0],\"a\"],[[1,0],\"b\"],[[1,0]],[[1]])",
+    "input": "1",
+    "outputs": [
+      "[[0],\"b\"]",
+      "[[0]]"
+    ]
+  },
+  {
+    "key": "sections/9/entries/1/examples/0",
+    "program": "fromstream(1|truncate_stream([[0],\"a\"],[[1,0],\"b\"],[[1,0]],[[1]]))",
+    "input": "null",
+    "outputs": [
+      "[\"b\"]"
+    ]
+  },
+  {
+    "key": "sections/9/entries/2/examples/0",
+    "program": ". as $dot|fromstream($dot|tostream)|.==$dot",
+    "input": "[0,[1,{\"a\":1},{\"b\":2}]]",
+    "outputs": [
+      "true"
+    ]
+  },
+  {
+    "key": "sections/10/entries/0/examples/0",
+    "program": "(..|select(type==\"boolean\")) |= if . then 1 else 0 end",
+    "input": "[true,false,[5,true,[true,[false]],false]]",
+    "outputs": [
+      "[1,0,[5,1,[1,[0]],0]]"
+    ]
+  },
+  {
+    "key": "sections/10/entries/1/examples/0",
+    "program": ".foo += 1",
+    "input": "{\"foo\": 42}",
+    "outputs": [
+      "{\"foo\": 43}"
+    ]
+  },
+  {
+    "key": "sections/10/entries/2/examples/0",
+    "program": ".a = .b",
+    "input": "{\"a\": {\"b\": 10}, \"b\": 20}",
+    "outputs": [
+      "{\"a\":20,\"b\":20}"
+    ]
+  },
+  {
+    "key": "sections/10/entries/2/examples/1",
+    "program": ".a |= .b",
+    "input": "{\"a\": {\"b\": 10}, \"b\": 20}",
+    "outputs": [
+      "{\"a\":10,\"b\":20}"
+    ]
+  },
+  {
+    "key": "sections/10/entries/2/examples/2",
+    "program": "(.a, .b) = range(3)",
+    "input": "null",
+    "outputs": [
+      "{\"a\":0,\"b\":0}",
+      "{\"a\":1,\"b\":1}",
+      "{\"a\":2,\"b\":2}"
+    ]
+  },
+  {
+    "key": "sections/10/entries/2/examples/3",
+    "program": "(.a, .b) |= range(3)",
+    "input": "null",
+    "outputs": [
+      "{\"a\":0,\"b\":0}"
+    ]
+  }
+]

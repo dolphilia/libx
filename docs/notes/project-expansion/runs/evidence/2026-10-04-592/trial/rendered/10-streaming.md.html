@@ -1,0 +1,78 @@
+<p><span id="streaming"></span></p>
+<!-- jq-source-field:sections/9/title:start -->
+<p>Streaming</p>
+<!-- jq-source-field:sections/9/title:end -->
+<!-- jq-source-field:sections/9/body:start -->
+<p>With the <code>--stream</code> option jq can parse input texts in a streaming
+fashion, allowing jq programs to start processing large JSON texts
+immediately rather than after the parse completes.  If you have a
+single JSON text that is 1GB in size, streaming it will allow you
+to process it much more quickly.</p>
+<p>However, streaming isn't easy to deal with as the jq program will
+have <code>[&#x3C;path>, &#x3C;leaf-value>]</code> (and a few other forms) as inputs.</p>
+<p>Several builtins are provided to make handling streams easier.</p>
+<p>The examples below use the streamed form of <code>["a",["b"]]</code>, which is
+<code>[[0],"a"],[[1,0],"b"],[[1,0]],[[1]]</code>.</p>
+<p>Streaming forms include <code>[&#x3C;path>, &#x3C;leaf-value>]</code> (to indicate any
+scalar value, empty array, or empty object), and <code>[&#x3C;path>]</code> (to
+indicate the end of an array or object).  Future versions of jq
+run with <code>--stream</code> and <code>--seq</code> may output additional forms such
+as <code>["error message"]</code> when an input text fails to parse.</p>
+<!-- jq-source-field:sections/9/body:end -->
+<p><span id="truncate_stream"></span></p>
+<h3><code>truncate_stream(stream_expression)</code></h3>
+<!-- jq-source-field:sections/9/entries/0/body:start -->
+<p>Consumes a number as input and truncates the corresponding
+number of path elements from the left of the outputs of the
+given streaming expression.</p>
+<!-- jq-source-field:sections/9/entries/0/body:end -->
+<!-- jq-example:sections/9/entries/0/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'truncate_stream([[0],"a"],[[1,0],"b"],[[1,0]],[[1]])'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">1
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">[[0],"b"]
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">[[0]]
+</code></pre>
+<!-- jq-example:sections/9/entries/0/examples/0:end -->
+<p><span id="fromstream"></span></p>
+<h3><code>fromstream(stream_expression)</code></h3>
+<!-- jq-source-field:sections/9/entries/1/body:start -->
+<p>Outputs values corresponding to the stream expression's
+outputs.</p>
+<!-- jq-source-field:sections/9/entries/1/body:end -->
+<!-- jq-example:sections/9/entries/1/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'fromstream(1|truncate_stream([[0],"a"],[[1,0],"b"],[[1,0]],[[1]]))'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">null
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">["b"]
+</code></pre>
+<!-- jq-example:sections/9/entries/1/examples/0:end -->
+<p><span id="tostream"></span></p>
+<h3><code>tostream</code></h3>
+<!-- jq-source-field:sections/9/entries/2/body:start -->
+<p>The <code>tostream</code> builtin outputs the streamed form of its input.</p>
+<!-- jq-source-field:sections/9/entries/2/body:end -->
+<!-- jq-example:sections/9/entries/2/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq '. as $dot|fromstream($dot|tostream)|.==$dot'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">[0,[1,{"a":1},{"b":2}]]
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">true
+</code></pre>
+<!-- jq-example:sections/9/entries/2/examples/0:end -->

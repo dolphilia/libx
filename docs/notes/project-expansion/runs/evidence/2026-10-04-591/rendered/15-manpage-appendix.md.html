@@ -1,0 +1,27 @@
+<!-- jq-source-field:manpage_intro:start -->
+<h1>jq(1) -- Command-line JSON processor</h1>
+<h2>SYNOPSIS</h2>
+<p><code>jq</code> [<options>...] <filter> [<files>...]</p>
+<p><code>jq</code> can transform JSON in various ways, by selecting, iterating,
+reducing and otherwise mangling JSON documents. For instance,
+running the command <code>jq 'map(.price) | add'</code> will take an array of
+JSON objects as input and return the sum of their "price" fields.</p>
+<p><code>jq</code> can accept text input as well, but by default, <code>jq</code> reads a
+stream of JSON entities (including numbers and other literals) from
+<code>stdin</code>. Whitespace is only needed to separate entities such as 1
+and 2, and true and false.  One or more <files> may be specified, in
+which case <code>jq</code> will read input from those instead.</p>
+<p>The <options> are described in the [INVOKING JQ] section; they
+mostly concern input and output formatting. The <filter> is written
+in the jq language and specifies how to transform the input
+file or document.</p>
+<h2>FILTERS</h2>
+<!-- jq-source-field:manpage_intro:end -->
+<!-- jq-source-field:manpage_epilogue:start -->
+<h2>BUGS</h2>
+<p>Presumably. Report them or discuss them at:</p>
+<pre><code>https://github.com/jqlang/jq/issues
+</code></pre>
+<h2>AUTHOR</h2>
+<p>Stephen Dolan <code>&#x3C;mu@netsoc.tcd.ie></code></p>
+<!-- jq-source-field:manpage_epilogue:end -->

@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-04T03:48:20.831Z",
+  "status": "partial-browser-observations-not-full-conversion",
+  "local": "http://127.0.0.1:4592/docs/jq/",
+  "tabId": "106",
+  "observed": [
+    "最大Builtinページの本文・例・TOCを表示",
+    "付録に引数options/filter/filesがliteral表示されることをAXと実DOMで確認",
+    "付録SYNOPSISリンクへnative Returnで移動しURL #synopsisを確認",
+    "付録mobile390x844、document375/article327、横方向overflowなし",
+    "browser error/warn logs empty at observation"
+  ],
+  "clipboard": {
+    "attempt": "最大Builtinページの最初のCommand Copy codeをnative click",
+    "expected": "jq '.a + 1'",
+    "feedback": "実スクリーンショットにCopiedを観測。ただしAX getStateはCopiedを含まずタイミング差あり。",
+    "observed": "clipboard.readText()は前のgperf declarations例を返し、再観測も同じ。画面のコピー対象DOMコードは期待値と一致。",
+    "result": "unverified clipboard equality",
+    "next": "browser clipboard APIと実際のUIコピー先の関係を調べ、実コピーの一致を独立に検証。原因を推測してコード修正しない。"
+  },
+  "limitations": [
+    "英語trialのみ。日本語は未翻訳",
+    "最大ページmobileは未確認",
+    "source packet download未作成",
+    "全entry-titleの上流HTML見出し階層との対応は未確認",
+    "上流Python Markdown描画との独立比較は未実施"
+  ],
+  "screenshots": "ツール画像で目視したが、ファイル保存した証拠とは記録しない。",
+  "cleanup": "viewport reset、tab106 close済み。ローカルAstro preview53989へCtrl-C送信。"
+}

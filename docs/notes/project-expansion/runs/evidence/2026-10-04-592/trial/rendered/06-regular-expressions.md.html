@@ -1,0 +1,365 @@
+<p><span id="regular-expressions"></span></p>
+<!-- jq-source-field:sections/5/title:start -->
+<p>Regular expressions</p>
+<!-- jq-source-field:sections/5/title:end -->
+<!-- jq-source-field:sections/5/body:start -->
+<p>jq uses the
+<a href="https://github.com/kkos/oniguruma/blob/master/doc/RE">Oniguruma regular expression library</a>,
+as do PHP, TextMate, Sublime Text, etc, so the
+description here will focus on jq specifics.</p>
+<p>Oniguruma supports several flavors of regular expression, so it is important to know
+that jq uses the <a href="https://github.com/kkos/oniguruma/blob/master/doc/SYNTAX.md">"Perl NG" (Perl with named groups)</a> flavor.</p>
+<p>The jq regex filters are defined so that they can be used using
+one of these patterns:</p>
+<pre><code>STRING | FILTER(REGEX)
+STRING | FILTER(REGEX; FLAGS)
+STRING | FILTER([REGEX])
+STRING | FILTER([REGEX, FLAGS])
+</code></pre>
+<p>where:</p>
+<ul>
+<li>STRING, REGEX, and FLAGS are jq strings and subject to jq string interpolation;</li>
+<li>REGEX, after string interpolation, should be a valid regular expression;</li>
+<li>FILTER is one of <code>test</code>, <code>match</code>, or <code>capture</code>, as described below.</li>
+</ul>
+<p>Since REGEX must evaluate to a JSON string, some characters that are needed
+to form a regular expression must be escaped. For example, the regular expression
+<code>\s</code> signifying a whitespace character would be written as <code>"\\s"</code>.</p>
+<p>FLAGS is a string consisting of one of more of the supported flags:</p>
+<ul>
+<li><code>g</code> - Global search (find all matches, not just the first)</li>
+<li><code>i</code> - Case insensitive search</li>
+<li><code>m</code> - Multi line mode (<code>.</code> will match newlines)</li>
+<li><code>n</code> - Ignore empty matches</li>
+<li><code>p</code> - Both s and m modes are enabled</li>
+<li><code>s</code> - Single line mode (<code>^</code> -> <code>\A</code>, <code>$</code> -> <code>\Z</code>)</li>
+<li><code>l</code> - Find longest possible matches</li>
+<li><code>x</code> - Extended regex format (ignore whitespace and comments)</li>
+</ul>
+<p>To match a whitespace with the <code>x</code> flag, use <code>\s</code>, e.g.</p>
+<pre><code>jq -n '"a b" | test("a\\sb"; "x")'
+</code></pre>
+<p>Note that certain flags may also be specified within REGEX, e.g.</p>
+<pre><code>jq -n '("test", "TEst", "teST", "TEST") | test("(?i)te(?-i)st")'
+</code></pre>
+<p>evaluates to: <code>true</code>, <code>true</code>, <code>false</code>, <code>false</code>.</p>
+<!-- jq-source-field:sections/5/body:end -->
+<p><span id="test"></span></p>
+<h3><code>test(val)</code>, <code>test(regex; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/0/body:start -->
+<p>Like <code>match</code>, but does not return match objects, only <code>true</code> or <code>false</code>
+for whether or not the regex matches the input.</p>
+<!-- jq-source-field:sections/5/entries/0/body:end -->
+<!-- jq-example:sections/5/entries/0/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'test("foo")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"foo"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">true
+</code></pre>
+<!-- jq-example:sections/5/entries/0/examples/0:end -->
+<!-- jq-example:sections/5/entries/0/examples/1:start -->
+<h4>Example 2</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq '.[] | test("a b c # spaces are ignored"; "ix")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">["xabcd", "ABC"]
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">true
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">true
+</code></pre>
+<!-- jq-example:sections/5/entries/0/examples/1:end -->
+<p><span id="match"></span></p>
+<h3><code>match(val)</code>, <code>match(regex; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/1/body:start -->
+<p><strong>match</strong> outputs an object for each match it finds.  Matches have
+the following fields:</p>
+<ul>
+<li><code>offset</code> - offset in UTF-8 codepoints from the beginning of the input</li>
+<li><code>length</code> - length in UTF-8 codepoints of the match</li>
+<li><code>string</code> - the string that it matched</li>
+<li><code>captures</code> - an array of objects representing capturing groups.</li>
+</ul>
+<p>Capturing group objects have the following fields:</p>
+<ul>
+<li><code>offset</code> - offset in UTF-8 codepoints from the beginning of the input</li>
+<li><code>length</code> - length in UTF-8 codepoints of this capturing group</li>
+<li><code>string</code> - the string that was captured</li>
+<li><code>name</code> - the name of the capturing group (or <code>null</code> if it was unnamed)</li>
+</ul>
+<p>Capturing groups that did not match anything return an offset of -1</p>
+<!-- jq-source-field:sections/5/entries/1/body:end -->
+<!-- jq-example:sections/5/entries/1/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'match("(abc)+"; "g")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"abc abc"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">{"offset": 0, "length": 3, "string": "abc", "captures": [{"offset": 0, "length": 3, "string": "abc", "name": null}]}
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">{"offset": 4, "length": 3, "string": "abc", "captures": [{"offset": 4, "length": 3, "string": "abc", "name": null}]}
+</code></pre>
+<!-- jq-example:sections/5/entries/1/examples/0:end -->
+<!-- jq-example:sections/5/entries/1/examples/1:start -->
+<h4>Example 2</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'match("foo")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"foo bar foo"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">{"offset": 0, "length": 3, "string": "foo", "captures": []}
+</code></pre>
+<!-- jq-example:sections/5/entries/1/examples/1:end -->
+<!-- jq-example:sections/5/entries/1/examples/2:start -->
+<h4>Example 3</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'match(["foo", "ig"])'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"foo bar FOO"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">{"offset": 0, "length": 3, "string": "foo", "captures": []}
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">{"offset": 8, "length": 3, "string": "FOO", "captures": []}
+</code></pre>
+<!-- jq-example:sections/5/entries/1/examples/2:end -->
+<!-- jq-example:sections/5/entries/1/examples/3:start -->
+<h4>Example 4</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'match("foo (?&#x3C;bar123>bar)? foo"; "ig")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"foo bar foo foo  foo"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">{"offset": 0, "length": 11, "string": "foo bar foo", "captures": [{"offset": 4, "length": 3, "string": "bar", "name": "bar123"}]}
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">{"offset": 12, "length": 8, "string": "foo  foo", "captures": [{"offset": -1, "length": 0, "string": null, "name": "bar123"}]}
+</code></pre>
+<!-- jq-example:sections/5/entries/1/examples/3:end -->
+<!-- jq-example:sections/5/entries/1/examples/4:start -->
+<h4>Example 5</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq '[ match("."; "g")] | length'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"abc"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">3
+</code></pre>
+<!-- jq-example:sections/5/entries/1/examples/4:end -->
+<p><span id="capture"></span></p>
+<h3><code>capture(val)</code>, <code>capture(regex; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/2/body:start -->
+<p>Collects the named captures in a JSON object, with the name
+of each capture as the key, and the matched string as the
+corresponding value.</p>
+<!-- jq-source-field:sections/5/entries/2/body:end -->
+<!-- jq-example:sections/5/entries/2/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'capture("(?&#x3C;a>[a-z]+)-(?&#x3C;n>[0-9]+)")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"xyzzy-14"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">{ "a": "xyzzy", "n": "14" }
+</code></pre>
+<!-- jq-example:sections/5/entries/2/examples/0:end -->
+<p><span id="scan"></span></p>
+<h3><code>scan(regex)</code>, <code>scan(regex; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/3/body:start -->
+<p>Emit a stream of the non-overlapping substrings of the input
+that match the regex in accordance with the flags, if any
+have been specified.  If there is no match, the stream is empty.
+To capture all the matches for each input string, use the idiom
+<code>[ expr ]</code>, e.g. <code>[ scan(regex) ]</code>.  If the regex contains capturing
+groups, the filter emits a stream of arrays, each of which contains
+the captured strings.</p>
+<!-- jq-source-field:sections/5/entries/3/body:end -->
+<!-- jq-example:sections/5/entries/3/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'scan("c")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"abcdefabc"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">"c"
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">"c"
+</code></pre>
+<!-- jq-example:sections/5/entries/3/examples/0:end -->
+<!-- jq-example:sections/5/entries/3/examples/1:start -->
+<h4>Example 2</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'scan("(a+)(b+)")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"abaabbaaabbb"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">["a","b"]
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">["aa","bb"]
+</code></pre>
+<p>Output 3</p>
+<pre><code class="language-text">["aaa","bbb"]
+</code></pre>
+<!-- jq-example:sections/5/entries/3/examples/1:end -->
+<p><span id="split-2"></span></p>
+<h3><code>split(regex; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/4/body:start -->
+<p>Splits an input string on each regex match.</p>
+<p>For backwards compatibility, when called with a single argument,
+<code>split</code> splits on a string, not a regex.</p>
+<!-- jq-source-field:sections/5/entries/4/body:end -->
+<!-- jq-example:sections/5/entries/4/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'split(", *"; null)'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"ab,cd, ef"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">["ab","cd","ef"]
+</code></pre>
+<!-- jq-example:sections/5/entries/4/examples/0:end -->
+<p><span id="splits"></span></p>
+<h3><code>splits(regex)</code>, <code>splits(regex; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/5/body:start -->
+<p>These provide the same results as their <code>split</code> counterparts,
+but as a stream instead of an array.</p>
+<!-- jq-source-field:sections/5/entries/5/body:end -->
+<!-- jq-example:sections/5/entries/5/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'splits(", *")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"ab,cd,   ef, gh"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">"ab"
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">"cd"
+</code></pre>
+<p>Output 3</p>
+<pre><code class="language-text">"ef"
+</code></pre>
+<p>Output 4</p>
+<pre><code class="language-text">"gh"
+</code></pre>
+<!-- jq-example:sections/5/entries/5/examples/0:end -->
+<!-- jq-example:sections/5/entries/5/examples/1:start -->
+<h4>Example 2</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'splits(",? *"; "n")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"ab,cd ef,  gh"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">"ab"
+</code></pre>
+<p>Output 2</p>
+<pre><code class="language-text">"cd"
+</code></pre>
+<p>Output 3</p>
+<pre><code class="language-text">"ef"
+</code></pre>
+<p>Output 4</p>
+<pre><code class="language-text">"gh"
+</code></pre>
+<!-- jq-example:sections/5/entries/5/examples/1:end -->
+<p><span id="sub"></span></p>
+<h3><code>sub(regex; tostring)</code>, <code>sub(regex; tostring; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/6/body:start -->
+<p>Emit the string obtained by replacing the first match of
+regex in the input string with <code>tostring</code>, after
+interpolation.  <code>tostring</code> should be a jq string or a stream
+of such strings, each of which may contain references to
+named captures. The named captures are, in effect, presented
+as a JSON object (as constructed by <code>capture</code>) to
+<code>tostring</code>, so a reference to a captured variable named "x"
+would take the form: <code>"\(.x)"</code>.</p>
+<!-- jq-source-field:sections/5/entries/6/body:end -->
+<!-- jq-example:sections/5/entries/6/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'sub("[^a-z]*(?&#x3C;x>[a-z]+)"; "Z\(.x)"; "g")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"123abc456def"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">"ZabcZdef"
+</code></pre>
+<!-- jq-example:sections/5/entries/6/examples/0:end -->
+<!-- jq-example:sections/5/entries/6/examples/1:start -->
+<h4>Example 2</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq '[sub("(?&#x3C;a>.)"; "\(.a|ascii_upcase)", "\(.a|ascii_downcase)")]'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"aB"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">["AB","aB"]
+</code></pre>
+<!-- jq-example:sections/5/entries/6/examples/1:end -->
+<p><span id="gsub"></span></p>
+<h3><code>gsub(regex; tostring)</code>, <code>gsub(regex; tostring; flags)</code></h3>
+<!-- jq-source-field:sections/5/entries/7/body:start -->
+<p><code>gsub</code> is like <code>sub</code> but all the non-overlapping occurrences of the regex are
+replaced by <code>tostring</code>, after interpolation. If the second argument is a stream
+of jq strings, then <code>gsub</code> will produce a corresponding stream of JSON strings.</p>
+<!-- jq-source-field:sections/5/entries/7/body:end -->
+<!-- jq-example:sections/5/entries/7/examples/0:start -->
+<h4>Example 1</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq 'gsub("(?&#x3C;x>.)[^a]*"; "+\(.x)-")'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"Abcabc"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">"+A-+a-"
+</code></pre>
+<!-- jq-example:sections/5/entries/7/examples/0:end -->
+<!-- jq-example:sections/5/entries/7/examples/1:start -->
+<h4>Example 2</h4>
+<p>Command</p>
+<pre><code class="language-sh">jq '[gsub("p"; "a", "b")]'
+</code></pre>
+<p>Input</p>
+<pre><code class="language-text">"p"
+</code></pre>
+<p>Output 1</p>
+<pre><code class="language-text">["a","b"]
+</code></pre>
+<!-- jq-example:sections/5/entries/7/examples/1:end -->

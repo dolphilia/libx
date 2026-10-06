@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-04T03:48:20.831Z",
+  "workspace": "/private/tmp/libx-jq-astro-trial-592",
+  "baseline": "5961d7b32447ca14c681c9201c031c45251e8052",
+  "generator": "clone内の正規create-project.jsでdry-run後jq試験app生成。skip-install/skip-test。正式採用/新規着手件数に数えずroot apps/には置かない。",
+  "dependency": "既存private integrationのnode_modulesを読み取り参照。root共有依存installなし。",
+  "changes": [
+    "manpage6placeholderのみAST位置に基づきentity化。元YAMLを保管しsource/canonicalhashとbefore/after位置を記録。",
+    "app内のみmarkdown smartypants:false/gfm:falseで上流の句読点/基本Markdown意味を保持。共有configを変更しない。",
+    "検査はdocs-code-toolbarの既知UIを対象クラス/ボタン数/label検査付きで本文比較から除外。",
+    "Shiki/remarkのPRE末尾差はreferenceのrenderer-added LFを1個だけ除去、原文コードの末尾LFは保持。"
+  ],
+  "failedChecks": [
+    "初回version config date省略でbuild失敗。固定583公式release.published_at=2026-06-20T14:11:27Zを用いて修正。",
+    "初回全文text比較がAstroのsmart punctuationで不一致。アプリ専用configで無効化し全件build再実行。",
+    "次の比較がCopy code UI textで不一致。class/button対応を検査した上でUIのみ除外して全件再実行。"
+  ],
+  "remaining": [
+    "上流templateのsection h2/entry h3と分割ページのheading意味/階層を明示対応し独立確認",
+    "upstream Python Markdownと原136entry title/本文の比較",
+    "browser copy equality and max-mobile",
+    "full self-contained content review",
+    "Japanese target scope / workload / scoring"
+  ],
+  "conversion": "unknown; partial mechanical Astro fidelity is not eligibility"
+}
