@@ -25,13 +25,13 @@ Original source: [GNU sed](https://www.gnu.org/software/sed/), [official manual]
 
 ## 編集可能な原稿 / Preferred editable sources
 
-- [固定した原英語マニュアル全文 / fixed complete English manual](manual.html)
-- [原著GFDL全文 / original English GFDL](manual.html#GNU-Free-Documentation-License)
-- [未変更の原著ソース配布物 / unchanged original source archive](original/sed-4.10.tar.gz)
-- [原Texinfo / original Texinfo](original/doc/sed.texi)
-- [原Info / original Info](original/doc/sed.info)
-- [原英語GFDL Texinfo / original GFDL Texinfo](original/doc/fdl.texi)
-- [Libxの編集用原稿・再生成キット / Libx editable source and rebuild kit](source.zip)
+- [固定した原英語マニュアル全文 / fixed complete English manual](https://libx.dev/docs/gnu-sed/source/v4-10/manual.html)
+- [原著GFDL全文 / original English GFDL](https://libx.dev/docs/gnu-sed/source/v4-10/manual.html#GNU-Free-Documentation-License)
+- [未変更の原著ソース配布物 / unchanged original source archive](https://libx.dev/docs/gnu-sed/source/v4-10/original/sed-4.10.tar.gz)
+- [原Texinfo / original Texinfo](https://libx.dev/docs/gnu-sed/source/v4-10/original/doc/sed.texi)
+- [原Info / original Info](https://libx.dev/docs/gnu-sed/source/v4-10/original/doc/sed.info)
+- [原英語GFDL Texinfo / original GFDL Texinfo](https://libx.dev/docs/gnu-sed/source/v4-10/original/doc/fdl.texi)
+- [Libxの編集用原稿・再生成キット / Libx editable source and rebuild kit](https://libx.dev/docs/gnu-sed/source/v4-10/source.zip)
 
 `edited/en/01-guide/`と`edited/ja/01-guide/`には、サイトが使用する英語・日本語のMarkdown原稿があり、`edited/en/02-reference/01-gfdl.md`には原英語GFDL参照ページがあります。同じ原稿とその優先編集入力を`source.zip`へまとめています。Markdown内のHTMLはテキストエディターで編集可能です。改行・タブの数値文字参照は、例の空白と変数の斜体を保持するためのものです。
 
