@@ -1,0 +1,608 @@
+<div class="sect1">
+<p><span id="modify"></span></p>
+<h2 id="6-modifying-document-data"><a href="#modify" class="anchor"></a><a href="#modify" class="link">6. Modifying document data</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The document in pugixml is fully mutable: you can completely change the document structure and modify the data of nodes/attributes. This section provides documentation for the relevant functions. All functions take care of memory management and structural integrity themselves, so they always result in structurally valid tree - however, it is possible to create an invalid XML tree (for example, by adding two attributes with the same name or by setting attribute/node name to empty/invalid string). Tree modification is optimized for performance and for memory consumption, so if you have enough memory you can create documents from scratch with pugixml and later save them to file/stream instead of relying on error-prone manual text writing and without too much overhead.</p>
+</div>
+<div class="paragraph">
+<p>All member functions that change node/attribute data or structure are non-constant and thus can not be called on constant handles. However, you can easily convert constant handle to non-constant one by simple assignment: <code>void foo(const pugi::xml_node&#x26; n) { pugi::xml_node nc = n; }</code>, so const-correctness here mainly provides additional documentation.</p>
+</div>
+<div class="sect2">
+<p><span id="modify.nodedata"></span></p>
+<h3 id="61-setting-node-data"><a href="#modify.nodedata" class="anchor"></a><a href="#modify.nodedata" class="link">6.1. Setting node data</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::set_name"></span><span id="xml_node::set_value"></span> As discussed before, nodes can have name and value, both of which are strings. Depending on node type, name or value may be absent. <a href="#node_document">node_document</a> nodes do not have a name or value, <a href="#node_element">node_element</a> and <a href="#node_declaration">node_declaration</a> nodes always have a name but never have a value, <a href="#node_pcdata">node_pcdata</a>, <a href="#node_cdata">node_cdata</a>, <a href="#node_comment">node_comment</a> and <a href="#node_doctype">node_doctype</a> nodes never have a name but always have a value (it may be empty though), <a href="#node_pi">node_pi</a> nodes always have a name and a value (again, value may be empty). In order to set node’s name or value, you can use the following functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">size_t</span><span style="color:#FFAB70"> sz</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">size_t</span><span style="color:#FFAB70"> size</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the node can not have name or value (for instance, when trying to call <code>set_name</code> on a <a href="#node_pcdata">node_pcdata</a> node), if the node handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of setting node name and value (<a href="samples/modify_base.cpp">samples/modify_base.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node node </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"node"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// change node name</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"notnode"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", new node name: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// change comment text</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">last_child</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"useless comment"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", new comment text: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">last_child</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// we can't change value of the element or name of the comment</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"1"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">last_child</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"2"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="modify.attrdata"></span></p>
+<h3 id="62-setting-attribute-data"><a href="#modify.attrdata" class="anchor"></a><a href="#modify.attrdata" class="link">6.2. Setting attribute data</a></h3>
+<div class="paragraph">
+<p><span id="xml_attribute::set_name"></span><span id="xml_attribute::set_value"></span> All attributes have name and value, both of which are strings (value may be empty). You can set them with the following functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">size_t</span><span style="color:#FFAB70"> sz</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">size_t</span><span style="color:#FFAB70"> size</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the attribute handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed.</p>
+</div>
+<div class="paragraph">
+<p>In addition to string functions, several functions are provided for handling attributes with numbers and booleans as values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> precision</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> precision</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">bool</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The above functions convert the argument to string and then call the base <code>set_value</code> function. Integers are converted to a decimal form, floating-point numbers are converted to either decimal or scientific form, depending on the number magnitude, boolean values are converted to either <code>"true"</code> or <code>"false"</code>.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Caution
+</div></td>
+<td class="content">Floating-point conversion functions depend on the current C locale as set with <code>setlocale</code>, so may generate unexpected results if the locale is different from <code>"C"</code>. This does not apply when pugixml is built with <code>PUGIXML_CHARCONV_FLOAT</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content"><code>set_value</code> overloads with <code>long long</code> type are only available if your platform has support for the type.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="xml_attribute::assign" class="paragraph">
+<p>For convenience, all <code>set_value</code> functions have the corresponding assignment operators:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">bool</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>These operators simply call the right <code>set_value</code> function and return the attribute they’re called on; the return value of <code>set_value</code> is ignored, so errors are ignored.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of setting attribute name and value (<a href="samples/modify_base.cpp">samples/modify_base.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_attribute attr </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// change attribute name/value</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">set_name</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"key"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"345"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", new attribute: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "="</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// we can use numbers or booleans</span></span>
+<span class="line"><span style="color:#E1E4E8">attr.</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1.234</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "new attribute value: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// we can also use assignment operators for more concise code</span></span>
+<span class="line"><span style="color:#E1E4E8">attr </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "final attribute value: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="modify.add"></span></p>
+<h3 id="63-adding-nodesattributes"><a href="#modify.add" class="anchor"></a><a href="#modify.add" class="link">6.3. Adding nodes/attributes</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::prepend_attribute"></span><span id="xml_node::append_attribute"></span><span id="xml_node::insert_attribute_after"></span><span id="xml_node::insert_attribute_before"></span><span id="xml_node::ensure_attribute"></span><span id="xml_node::prepend_child"></span><span id="xml_node::append_child"></span><span id="xml_node::insert_child_after"></span><span id="xml_node::insert_child_before"></span><span id="xml_node::ensure_child"></span> Nodes and attributes do not exist without a document tree, so you can’t create them without adding them to some document. A node or attribute can be created at the end of node/attribute list or before/after some other node:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_attribute_after</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> attr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_attribute_after</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> attr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_attribute_before</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> attr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_attribute_before</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> attr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_child</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_node_type</span><span style="color:#FFAB70"> type</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> node_element);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_child</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_node_type</span><span style="color:#FFAB70"> type</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> node_element);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_child_after</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_node_type</span><span style="color:#FFAB70"> type</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_child_before</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_node_type</span><span style="color:#FFAB70"> type</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_child</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_child</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_child</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_child</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_child_after</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_child_after</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_child_before</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_child_before</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">ensure_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">ensure_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">ensure_child</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">ensure_child</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>append_attribute</code> and <code>append_child</code> create a new node/attribute at the end of the corresponding list of the node the method is called on; <code>prepend_attribute</code> and <code>prepend_child</code> create a new node/attribute at the beginning of the list; <code>insert_attribute_after</code>, <code>insert_attribute_before</code>, <code>insert_child_after</code> and <code>insert_child_before</code> add the node/attribute before or after the specified node/attribute. <code>ensure_attribute</code> and <code>ensure_child</code> return the existing attribute/child with the specified name, appending a new one only if no such attribute/child exists; this makes it convenient to write code like <code>node.ensure_attribute("id") = 123;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Attribute functions create an attribute with the specified name; you can specify the empty name and change the name later if you want to. Node functions with the <code>type</code> argument create the node with the specified type; since node type can’t be changed, you have to know the desired type beforehand. Also note that not all types can be added as children; see below for clarification. Node functions with the <code>name</code> argument create the element node (<a href="#node_element">node_element</a>) with the specified name.</p>
+</div>
+<div class="paragraph">
+<p>All functions return the handle to the created object on success, and null handle on failure. There are several reasons for failure:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding fails if the target node is null;</p>
+</li>
+<li>
+<p>Only <a href="#node_element">node_element</a> and <a href="#node_declaration">node_declaration</a> nodes can contain attributes, so attribute adding fails if node is not an element or a declaration;</p>
+</li>
+<li>
+<p>Only <a href="#node_document">node_document</a> and <a href="#node_element">node_element</a> nodes can contain children, so child node adding fails if the target node is not an element or a document;</p>
+</li>
+<li>
+<p><a href="#node_document">node_document</a> and <a href="#node_null">node_null</a> nodes can not be inserted as children, so passing <a href="#node_document">node_document</a> or <a href="#node_null">node_null</a> value as <code>type</code> results in operation failure;</p>
+</li>
+<li>
+<p><a href="#node_declaration">node_declaration</a> and <a href="#node_doctype">node_doctype</a> nodes can only be added as children of the document node; attempt to insert them as children of an element node fails;</p>
+</li>
+<li>
+<p>Adding node/attribute results in memory allocation, which may fail;</p>
+</li>
+<li>
+<p>Insertion functions fail if the specified node or attribute is null or is not in the target node’s children/attribute list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Even if the operation fails, the document remains in consistent state, but the requested node/attribute is not added.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Caution
+</div></td>
+<td class="content"><code>attribute()</code> and <code>child()</code> functions do not add attributes or nodes to the tree, so code like <code>node.attribute("id") = 123;</code> will not do anything if <code>node</code> does not have an attribute with name <code>"id"</code>. Make sure you’re operating with existing attributes/nodes by adding them if necessary, or use <code>ensure_attribute</code>/<code>ensure_child</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph">
+<p>This is an example of adding new attributes/nodes to the document (<a href="samples/modify_add.cpp">samples/modify_add.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D">// add node with some name</span></span>
+<span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node node </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">append_child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"node"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// add description node with text child</span></span>
+<span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node descr </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">append_child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"description"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">descr.</span><span style="color:#B392F0">append_child</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::node_pcdata).</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Simple node"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// add param node before the description</span></span>
+<span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node param </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">insert_child_before</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"param"</span><span style="color:#E1E4E8">, descr);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// add attributes to param node</span></span>
+<span class="line"><span style="color:#E1E4E8">param.</span><span style="color:#B392F0">append_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "version"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">param.</span><span style="color:#B392F0">append_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"value"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1.1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">param.</span><span style="color:#B392F0">insert_attribute_after</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"type"</span><span style="color:#E1E4E8">, param.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "float"</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="modify.remove"></span></p>
+<h3 id="64-removing-nodesattributes"><a href="#modify.remove" class="anchor"></a><a href="#modify.remove" class="link">6.4. Removing nodes/attributes</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::remove_attribute"></span><span id="xml_node::remove_attributes"></span><span id="xml_node::remove_child"></span><span id="xml_node::remove_children"></span> If you do not want your document to contain some node or attribute, you can remove it with one of the following functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> a</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_attributes</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_child</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> n</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_children</span><span style="color:#E1E4E8">();</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>remove_attribute</code> removes the attribute from the attribute list of the node, and returns the operation result. <code>remove_child</code> removes the child node with the entire subtree (including all descendant nodes and attributes) from the document, and returns the operation result. <code>remove_attributes</code> removes all the attributes of the node, and returns the operation result. <code>remove_children</code> removes all the child nodes of the node, and returns the operation result. Removing fails if one of the following is true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The node the function is called on is null;</p>
+</li>
+<li>
+<p>The attribute/node to be removed is null;</p>
+</li>
+<li>
+<p>The attribute/node to be removed is not in the node’s attribute/child list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Removing the attribute or node invalidates all handles to the same underlying object, and also invalidates all iterators pointing to the same object. Removing node also invalidates all past-the-end iterators to its attribute or child node list. Be careful to ensure that all such handles and iterators either do not exist or are not used after the attribute/node is removed.</p>
+</div>
+<div class="paragraph">
+<p>If you want to remove the attribute or child node by its name, two additional helper functions are available:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_child</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">remove_child</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>These functions look for the first attribute or child with the specified name, and then remove it, returning the result. If there is no attribute or child with such name, the function returns <code>false</code>; if there are two nodes with the given name, only the first node is deleted. If you want to delete all nodes with the specified name, you can use code like this: <code>while (node.remove_child("tool")) ;</code>.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of removing attributes/nodes from the document (<a href="samples/modify_remove.cpp">samples/modify_remove.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D">// remove description node with the whole subtree</span></span>
+<span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node node </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"node"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">node.</span><span style="color:#B392F0">remove_child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"description"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// remove value attribute</span></span>
+<span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node param </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"param"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">param.</span><span style="color:#B392F0">remove_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"value"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// we can also remove nodes/attributes by handles</span></span>
+<span class="line"><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_attribute id </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> param.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">param.</span><span style="color:#B392F0">remove_attribute</span><span style="color:#E1E4E8">(id);</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="modify.text"></span></p>
+<h3 id="65-working-with-text-contents"><a href="#modify.text" class="anchor"></a><a href="#modify.text" class="link">6.5. Working with text contents</a></h3>
+<div class="paragraph">
+<p>pugixml provides a special class, <code>xml_text</code>, to work with text contents stored as a value of some node, i.e. <code>&#x3C;node>&#x3C;description>This is a node&#x3C;/description>&#x3C;/node></code>. Working with text objects to retrieve data is described in <a href="#access.text">the documentation for accessing document data</a>; this section describes the modification interface of <code>xml_text</code>.</p>
+</div>
+<div id="xml_text::set" class="paragraph">
+<p>Once you have an <code>xml_text</code> object, you can set the text contents using the following function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">size_t</span><span style="color:#FFAB70"> size</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>This function tries to set the contents to the specified string, and returns the operation result. The operation fails if the text object was retrieved from a node that can not have a value and is not an element node (i.e. it is a <a href="#node_declaration">node_declaration</a> node), if the node handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to this function). Note that if the text object was retrieved from an element node, this function creates the PCDATA child node if necessary (i.e. if the element node does not have a PCDATA/CDATA child already).</p>
+</div>
+<div id="xml_text::set_value" class="paragraph">
+<p>In addition to a string function, several functions are provided for handling text with numbers and booleans as contents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> precision</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> precision</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">bool</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The above functions convert the argument to string and then call the base <code>set</code> function. These functions have the same semantics as similar <code>xml_attribute</code> functions. You can <a href="#xml_attribute::set_value">refer to documentation for the attribute functions</a> for details.</p>
+</div>
+<div id="xml_text::assign" class="paragraph">
+<p>For convenience, all <code>set</code> functions have the corresponding assignment operators:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">bool</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#F97583">&#x26;</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#F97583">operator</span><span style="color:#B392F0">=</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> rhs</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>These operators simply call the right <code>set</code> function and return the attribute they’re called on; the return value of <code>set</code> is ignored, so errors are ignored.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of using <code>xml_text</code> object to modify text contents (<a href="samples/text.cpp">samples/text.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D">// change project version</span></span>
+<span class="line"><span style="color:#E1E4E8">project.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"version"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1.2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// add description element and set the contents</span></span>
+<span class="line"><span style="color:#6A737D">// note that we do not have to explicitly add the node_pcdata child</span></span>
+<span class="line"><span style="color:#E1E4E8">project.</span><span style="color:#B392F0">append_child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"description"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"a test project"</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="modify.clone"></span></p>
+<h3 id="66-cloning-nodesattributes"><a href="#modify.clone" class="anchor"></a><a href="#modify.clone" class="link">6.6. Cloning nodes/attributes</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::prepend_copy"></span><span id="xml_node::append_copy"></span><span id="xml_node::insert_copy_after"></span><span id="xml_node::insert_copy_before"></span> With the help of previously described functions, it is possible to create trees with any contents and structure, including cloning the existing data. However since this is an often needed operation, pugixml provides built-in node/attribute cloning facilities. Since nodes and attributes do not exist without a document tree, you can’t create a standalone copy - you have to immediately insert it somewhere in the tree. For this, you can use one of the following functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_copy</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_copy</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_copy_after</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> attr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_copy_before</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> attr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_copy</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_copy</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_copy_after</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_copy_before</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> proto</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>These functions mirror the structure of <code>append_child</code>, <code>prepend_child</code>, <code>insert_child_before</code> and related functions - they take the handle to the prototype object, which is to be cloned, insert a new attribute/node at the appropriate place, and then copy the attribute data or the whole node subtree to the new object. The functions return the handle to the resulting duplicate object, or null handle on failure.</p>
+</div>
+<div class="paragraph">
+<p>The attribute is copied along with the name and value; the node is copied along with its type, name and value; additionally attribute list and all children are recursively cloned, resulting in the deep subtree clone. The prototype object can be a part of the same document, or a part of any other document.</p>
+</div>
+<div class="paragraph">
+<p>The failure conditions resemble those of <code>append_child</code>, <code>insert_child_before</code> and related functions, <a href="#xml_node::append_child">consult their documentation for more information</a>. There are additional caveats specific to cloning functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloning null handles results in operation failure;</p>
+</li>
+<li>
+<p>Node cloning starts with insertion of the node of the same type as that of the prototype; for this reason, cloning functions can not be directly used to clone entire documents, since <a href="#node_document">node_document</a> is not a valid insertion type. The example below provides a workaround.</p>
+</li>
+<li>
+<p>It is possible to copy a subtree as a child of some node inside this subtree, i.e. <code>node.append_copy(node.parent().parent());</code>. This is a valid operation, and it results in a clone of the subtree in the state before cloning started, i.e. no infinite recursion takes place.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is an example with one possible implementation of include tags in XML (<a href="samples/include.cpp">samples/include.cpp</a>). It illustrates node cloning and usage of other document modification functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> load_preprocess</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_document</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> doc</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#F97583"> char*</span><span style="color:#FFAB70"> path</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> preprocess</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_node</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node child </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">first_child</span><span style="color:#E1E4E8">(); child; )</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (child.</span><span style="color:#B392F0">type</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">==</span><span style="color:#B392F0"> pugi</span><span style="color:#E1E4E8">::node_pi </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#B392F0"> strcmp</span><span style="color:#E1E4E8">(child.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">(), </span><span style="color:#9ECBFF">"include"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#B392F0">            pugi</span><span style="color:#E1E4E8">::xml_node include </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> child;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">            // load new preprocessed document (note: ideally this should handle relative paths)</span></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#F97583"> char*</span><span style="color:#E1E4E8"> path </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> include.</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">            pugi</span><span style="color:#E1E4E8">::xml_document doc;</span></span>
+<span class="line"><span style="color:#F97583">            if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#B392F0">load_preprocess</span><span style="color:#E1E4E8">(doc, path)) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">            // insert the comment marker above include directive</span></span>
+<span class="line"><span style="color:#E1E4E8">            node.</span><span style="color:#B392F0">insert_child_before</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::node_comment, include).</span><span style="color:#B392F0">set_value</span><span style="color:#E1E4E8">(path);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">            // copy the document above the include directive (this retains the original order!)</span></span>
+<span class="line"><span style="color:#F97583">            for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node ic </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">first_child</span><span style="color:#E1E4E8">(); ic; ic </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ic.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">                node.</span><span style="color:#B392F0">insert_copy_before</span><span style="color:#E1E4E8">(ic, include);</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">            // remove the include node and move to the next child</span></span>
+<span class="line"><span style="color:#E1E4E8">            child </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> child.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">            node.</span><span style="color:#B392F0">remove_child</span><span style="color:#E1E4E8">(include);</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#F97583">        else</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#F97583">            if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#B392F0">preprocess</span><span style="color:#E1E4E8">(child)) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">            child </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> child.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> load_preprocess</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_document</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> doc</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#F97583"> char*</span><span style="color:#FFAB70"> path</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    pugi</span><span style="color:#E1E4E8">::xml_parse_result result </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">load_file</span><span style="color:#E1E4E8">(path, </span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::parse_default </span><span style="color:#F97583">|</span><span style="color:#B392F0"> pugi</span><span style="color:#E1E4E8">::parse_pi);</span><span style="color:#6A737D"> // for &#x3C;?include?></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">?</span><span style="color:#B392F0"> preprocess</span><span style="color:#E1E4E8">(doc) </span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="modify.move"></span></p>
+<h3 id="67-moving-nodes"><a href="#modify.move" class="anchor"></a><a href="#modify.move" class="link">6.7. Moving nodes</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::prepend_move"></span><span id="xml_node::append_move"></span><span id="xml_node::insert_move_after"></span><span id="xml_node::insert_move_before"></span> Sometimes instead of cloning a node you need to move an existing node to a different position in a tree. This can be accomplished by copying the node and removing the original; however, this is expensive since it results in a lot of extra operations. For moving nodes within the same document tree, you can use of the following functions instead:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_move</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> moved</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">prepend_move</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> moved</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_move_after</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> moved</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">insert_move_before</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> moved</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>These functions mirror the structure of <code>append_copy</code>, <code>prepend_copy</code>, <code>insert_copy_before</code> and <code>insert_copy_after</code> - they take the handle to the moved object and move it to the appropriate place with all attributes and/or child nodes. The functions return the handle to the resulting object (which is the same as the moved object), or null handle on failure.</p>
+</div>
+<div class="paragraph">
+<p>The failure conditions resemble those of <code>append_child</code>, <code>insert_child_before</code> and related functions, <a href="#xml_node::append_child">consult their documentation for more information</a>. There are additional caveats specific to moving functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Moving null handles results in operation failure;</p>
+</li>
+<li>
+<p>Moving is only possible for nodes that belong to the same document; attempting to move nodes between documents will fail.</p>
+</li>
+<li>
+<p><code>insert_move_after</code> and <code>insert_move_before</code> functions fail if the moved node is the same as the <code>node</code> argument (this operation would be a no-op otherwise).</p>
+</li>
+<li>
+<p>It is impossible to move a subtree to a child of some node inside this subtree, i.e. <code>node.append_move(node.parent().parent());</code> will fail.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="modify.fragments"></span></p>
+<h3 id="68-assembling-document-from-fragments"><a href="#modify.fragments" class="anchor"></a><a href="#modify.fragments" class="link">6.8. Assembling document from fragments</a></h3>
+<div id="xml_node::append_buffer" class="paragraph">
+<p>pugixml provides several ways to assemble an XML document from other XML documents. Assuming there is a set of document fragments, represented as in-memory buffers, the implementation choices are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use a temporary document to parse the data from a string, then clone the nodes to a destination node. For example:</p>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> append_fragment</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_node</span><span style="color:#FFAB70"> target</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#F97583"> char*</span><span style="color:#FFAB70"> buffer</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">size_t</span><span style="color:#FFAB70"> size</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    pugi</span><span style="color:#E1E4E8">::xml_document doc;</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">doc.</span><span style="color:#B392F0">load_buffer</span><span style="color:#E1E4E8">(buffer, size)) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node child </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">first_child</span><span style="color:#E1E4E8">(); child; child </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> child.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">        target.</span><span style="color:#B392F0">append_copy</span><span style="color:#E1E4E8">(child);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+</li>
+<li>
+<p>Cache the parsing step - instead of keeping in-memory buffers, keep document objects that already contain the parsed fragment:</p>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> append_fragment</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_node</span><span style="color:#FFAB70"> target</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#B392F0"> pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_document</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> cached_fragment</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node child </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> cached_fragment.</span><span style="color:#B392F0">first_child</span><span style="color:#E1E4E8">(); child; child </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> child.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">        target.</span><span style="color:#B392F0">append_copy</span><span style="color:#E1E4E8">(child);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+</li>
+<li>
+<p>Use <code>xml_node::append_buffer</code> directly:</p>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_parse_result</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">append_buffer</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#F97583"> void*</span><span style="color:#FFAB70"> contents</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">size_t</span><span style="color:#FFAB70"> size</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> parse_default, </span><span style="color:#B392F0">xml_encoding</span><span style="color:#FFAB70"> encoding</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> encoding_auto);</span></span></code></pre></div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first method is more convenient, but slower than the other two. The relative performance of <code>append_copy</code> and <code>append_buffer</code> depends on the buffer format - usually <code>append_buffer</code> is faster if the buffer is in native encoding (UTF-8 or wchar_t, depending on <code>PUGIXML_WCHAR_MODE</code>). At the same time it might be less efficient in terms of memory usage - the implementation makes a copy of the provided buffer, and the copy has the same lifetime as the document - the memory used by that copy will be reclaimed after the document is destroyed, but no sooner. Even deleting all nodes in the document, including the appended ones, won’t reclaim the memory.</p>
+</div>
+<div class="paragraph">
+<p><code>append_buffer</code> behaves in the same way as <a href="#xml_document::load_buffer">xml_document::load_buffer</a> - the input buffer is a byte buffer, with size in bytes; the buffer is not modified and can be freed after the function returns.</p>
+</div>
+<div id="status_append_invalid_root" class="paragraph">
+<p>Since <code>append_buffer</code> needs to append child nodes to the current node, it only works if the current node is either document or element node. Calling <code>append_buffer</code> on a node with any other type results in an error with <code>status_append_invalid_root</code> status.</p>
+</div>
+</div>
+</div>
+</div><script type="module">document.addEventListener('click',async e=>{const b=e.target.closest?.('.docs-code-copy');if(!b)return;const c=b.closest('.docs-code-frame')?.querySelector('code');if(!c)return;await navigator.clipboard.writeText(c.textContent??'');b.textContent=b.dataset.copiedLabel;setTimeout(()=>b.textContent=b.dataset.copyLabel,1500)});</script>

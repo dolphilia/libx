@@ -1,0 +1,678 @@
+<div class="sect1">
+
+<p><span id="saving"></span></p>
+<h2
+id="7-saving-document"><a href="#saving" class="anchor"></a><a href="#saving" class="link">7.
+Saving document</a></h2>
+<div class="sectionbody">
+
+<div class="paragraph">
+
+<p>Often after creating a new document or loading the existing one and
+processing it, it is necessary to save the result back to file. Also it
+is occasionally useful to output the whole document or a subtree to some
+stream; use cases include debug printing, serialization via network or
+other text-oriented medium, etc. pugixml provides several functions to
+output any subtree of the document to a file, stream or another generic
+transport interface; these functions allow to customize the output
+format (see <a href="#saving.options">Output options</a>), and also
+perform necessary encoding conversions (see <a
+href="#saving.encoding">Encodings</a>). This section documents the
+relevant functionality.</p>
+</div>
+
+<div class="paragraph">
+
+<p>Before writing to the destination the node/attribute data is properly
+formatted according to the node type; all special XML symbols, such as
+<code>&lt;</code> and <code>&amp;</code>, are properly escaped (unless
+<a href="#format_no_escapes">format_no_escapes</a> flag is set). In
+order to guard against forgotten node/attribute names, empty
+node/attribute names are printed as <code>":anonymous"</code>. For
+well-formed output, make sure all node and attribute names are set to
+meaningful values.</p>
+</div>
+
+<div class="paragraph">
+
+<p>CDATA sections with values that contain <code>"]]&gt;"</code> are
+split into several sections as follows: section with value
+<code>"pre]]&gt;post"</code> is written as
+<code>&lt;![CDATA[pre]]]]&gt;&lt;![CDATA[&gt;post]]&gt;</code>. While
+this alters the structure of the document (if you load the document
+after saving it, there will be two CDATA sections instead of one), this
+is the only way to escape CDATA contents.</p>
+</div>
+
+<div class="sect2">
+
+<p><span id="saving.file"></span></p>
+<h3
+id="71-saving-document-to-a-file"><a href="#saving.file" class="anchor"></a><a href="#saving.file" class="link">7.1.
+Saving document to a file</a></h3>
+<div class="paragraph">
+
+<p><span id="xml_document::save_file"></span><span id="xml_document::save_file_wide"></span>
+If you want to save the whole document to a file, you can use one of the
+following functions:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>bool xml_document::save_file(const char* path, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;
+bool xml_document::save_file(const wchar_t* path, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>These functions accept file path as its first argument, and also
+three optional arguments, which specify indentation and other output
+options (see <a href="#saving.options">Output options</a>) and output
+data encoding (see <a href="#saving.encoding">Encodings</a>). The path
+has the target operating system format, so it can be a relative or
+absolute one, it should have the delimiters of the target system, it
+should have the exact case if the target file system is case-sensitive,
+etc. The functions return <code>true</code> on success and
+<code>false</code> if the file could not be opened or written to.</p>
+</div>
+
+<div class="paragraph">
+
+<p>File path is passed to the system file opening function as is in case
+of the first function (which accepts <code>const char* path</code>); the
+second function either uses a special file opening function if it is
+provided by the runtime library or converts the path to UTF-8 and uses
+the system file opening function.</p>
+</div>
+
+<div id="xml_writer_file" class="paragraph">
+
+<p><code>save_file</code> opens the target file for writing, outputs the
+requested header (by default a document declaration is output, unless
+the document already has one), and then saves the document contents.
+Calling <code>save_file</code> is equivalent to creating an
+<code>xml_writer_file</code> object with <code>FILE*</code> handle as
+the only constructor argument and then calling <code>save</code>; see <a
+href="#saving.writer">Saving document via writer interface</a> for
+writer interface details.</p>
+</div>
+
+<div class="paragraph">
+
+<p>This is a simple example of saving XML document to file (<a
+href="samples/save_file.cpp">samples/save_file.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>// save document to file
+std::cout &lt;&lt; &quot;Saving result: &quot; &lt;&lt; doc.save_file(&quot;save_file_output.xml&quot;) &lt;&lt; std::endl;</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="saving.stream"></span></p>
+<h3
+id="72-saving-document-to-c-iostreams"><a href="#saving.stream" class="anchor"></a><a href="#saving.stream" class="link">7.2.
+Saving document to C++ IOstreams</a></h3>
+<div id="xml_document::save_stream" class="paragraph">
+
+<p>To enhance interoperability pugixml provides functions for saving
+document to any object which implements C++ <code>std::ostream</code>
+interface. This allows you to save documents to any standard C++ stream
+(i.e. file stream) or any third-party compliant implementation (i.e.
+Boost Iostreams). Most notably, this allows for easy debug output, since
+you can use <code>std::cout</code> stream as saving target. There are
+two functions, one works with narrow character streams, another handles
+wide character ones:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>void xml_document::save(std::ostream&amp; stream, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;
+void xml_document::save(std::wostream&amp; stream, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><code>save</code> with <code>std::ostream</code> argument saves the
+document to the stream in the same way as <code>save_file</code> (i.e.
+with requested header and with encoding conversions). On the other hand,
+<code>save</code> with <code>std::wostream</code> argument saves the
+document to the wide stream with <a
+href="#encoding_wchar">encoding_wchar</a> encoding. Because of this,
+using <code>save</code> with wide character streams requires careful
+(usually platform-specific) stream setup (i.e. using the
+<code>imbue</code> function). Generally use of wide streams is
+discouraged, however it provides you with the ability to save documents
+to non-Unicode encodings, i.e. you can save Shift-JIS encoded data if
+you set the correct locale.</p>
+</div>
+
+<div id="xml_writer_stream" class="paragraph">
+
+<p>Calling <code>save</code> with stream target is equivalent to
+creating an <code>xml_writer_stream</code> object with stream as the
+only constructor argument and then calling <code>save</code>; see <a
+href="#saving.writer">Saving document via writer interface</a> for
+writer interface details. When using <code>xml_writer_stream</code> with
+wide-character streams, you must pass <code>encoding_wchar</code>
+explicitly, as the wide writer expects wide-character data.</p>
+</div>
+
+<div class="paragraph">
+
+<p>This is a simple example of saving XML document to standard output
+(<a href="samples/save_stream.cpp">samples/save_stream.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>// save document to standard output
+std::cout &lt;&lt; &quot;Document:\n&quot;;
+doc.save(std::cout);</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="saving.writer"></span></p>
+<h3
+id="73-saving-document-via-writer-interface"><a href="#saving.writer" class="anchor"></a><a href="#saving.writer" class="link">7.3.
+Saving document via writer interface</a></h3>
+<div class="paragraph">
+
+<p><span id="xml_document::save"></span><span id="xml_writer"></span><span id="xml_writer::write"></span>
+All of the above saving functions are implemented in terms of writer
+interface. This is a simple interface with a single function, which is
+called several times during output process with chunks of document data
+as input:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>class xml_writer
+{
+public:
+    virtual void write(const void* data, size_t size) = 0;
+};
+
+void xml_document::save(xml_writer&amp; writer, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>In order to output the document via some custom transport, for
+example sockets, you should create an object which implements
+<code>xml_writer</code> interface and pass it to <code>save</code>
+function. <code>xml_writer::write</code> function is called with a
+buffer as an input, where <code>data</code> points to buffer start, and
+<code>size</code> is equal to the buffer size in bytes.
+<code>write</code> implementation must write the buffer to the
+transport; it can not save the passed buffer pointer, as the buffer
+contents will change after <code>write</code> returns. The buffer
+contains the chunk of document data in the desired encoding.</p>
+</div>
+
+<div class="paragraph">
+
+<p><code>write</code> function is called with relatively large blocks
+(size is usually several kilobytes, except for the last block that may
+be small), so there is often no need for additional buffering in the
+implementation.</p>
+</div>
+
+<div class="paragraph">
+
+<p>This is a simple example of custom writer for saving document data to
+STL string (<a
+href="samples/save_custom_writer.cpp">samples/save_custom_writer.cpp</a>);
+read the sample code for more complex examples:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>struct xml_string_writer: pugi::xml_writer
+{
+    std::string result;
+
+    virtual void write(const void* data, size_t size)
+    {
+        result.append(static_cast&lt;const char*&gt;(data), size);
+    }
+};</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="saving.subtree"></span></p>
+<h3
+id="74-saving-a-single-subtree"><a href="#saving.subtree" class="anchor"></a><a href="#saving.subtree" class="link">7.4.
+Saving a single subtree</a></h3>
+<div class="paragraph">
+
+<p><span id="xml_node::print"></span><span id="xml_node::print_stream"></span>
+While the previously described functions save the whole document to the
+destination, it is easy to save a single subtree. The following
+functions are provided:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>void xml_node::print(std::ostream&amp; os, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default, xml_encoding encoding = encoding_auto, unsigned int depth = 0) const;
+void xml_node::print(std::wostream&amp; os, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default, unsigned int depth = 0) const;
+void xml_node::print(xml_writer&amp; writer, const char_t* indent = &quot;\t&quot;, unsigned int flags = format_default, xml_encoding encoding = encoding_auto, unsigned int depth = 0) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>These functions have the same arguments with the same meaning as the
+corresponding <code>xml_document::save</code> functions, and allow you
+to save the subtree to either a C++ IOstream or to any object that
+implements <code>xml_writer</code> interface.</p>
+</div>
+
+<div class="paragraph">
+
+<p>Saving a subtree differs from saving the whole document: the process
+behaves as if <a href="#format_write_bom">format_write_bom</a> is off,
+and <a href="#format_no_declaration">format_no_declaration</a> is on,
+even if actual values of the flags are different. This means that BOM is
+not written to the destination, and document declaration is only written
+if it is the node itself or is one of node’s children. Note that this
+also holds if you’re saving a document; this example (<a
+href="samples/save_subtree.cpp">samples/save_subtree.cpp</a>)
+illustrates the difference:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>// get a test document
+pugi::xml_document doc;
+doc.load_string(&quot;&lt;foo bar=&#39;baz&#39;&gt;&lt;call&gt;hey&lt;/call&gt;&lt;/foo&gt;&quot;);
+
+// print document to standard output (prints &lt;?xml version=&quot;1.0&quot;?&gt;&lt;foo bar=&quot;baz&quot;&gt;&lt;call&gt;hey&lt;/call&gt;&lt;/foo&gt;)
+doc.save(std::cout, &quot;&quot;, pugi::format_raw);
+std::cout &lt;&lt; std::endl;
+
+// print document to standard output as a regular node (prints &lt;foo bar=&quot;baz&quot;&gt;&lt;call&gt;hey&lt;/call&gt;&lt;/foo&gt;)
+doc.print(std::cout, &quot;&quot;, pugi::format_raw);
+std::cout &lt;&lt; std::endl;
+
+// print a subtree to standard output (prints &lt;call&gt;hey&lt;/call&gt;)
+doc.child(&quot;foo&quot;).child(&quot;call&quot;).print(std::cout, &quot;&quot;, pugi::format_raw);
+std::cout &lt;&lt; std::endl;</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="saving.options"></span></p>
+<h3
+id="75-output-options"><a href="#saving.options" class="anchor"></a><a href="#saving.options" class="link">7.5.
+Output options</a></h3>
+<div class="paragraph">
+
+<p>All saving functions accept the optional parameter
+<code>flags</code>. This is a bitmask that customizes the output format;
+you can select the way the document nodes are printed and select the
+needed additional information that is output before the document
+contents.</p>
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content">You should use the usual bitwise arithmetics to manipulate the bitmask: to enable a flag, use <code>mask | flag</code>; to disable a flag, use <code>mask &amp; ~flag</code>.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>These flags control the resulting tree contents:</p>
+</div>
+
+<div class="ulist">
+
+<ul>
+<li><p><span id="format_indent"></span><code>format_indent</code>
+determines if all nodes should be indented with the indentation string
+(this is an additional parameter for all saving functions, and is
+<code>"\t"</code> by default). If this flag is on, the indentation
+string is printed several times before every node, where the amount of
+indentation depends on the node’s depth relative to the output subtree.
+This flag has no effect if <a href="#format_raw">format_raw</a> is
+enabled. This flag is <strong>on</strong> by default.</p></li>
+<li><p><span id="format_indent_attributes"></span><code>format_indent_attributes</code>
+determines if all attributes should be printed on a new line, indented
+with the indentation string according to the attribute’s depth. This
+flag implies <a href="#format_indent">format_indent</a>. This flag has
+no effect if <a href="#format_raw">format_raw</a> is enabled. This flag
+is <strong>off</strong> by default.</p></li>
+<li><p><span id="format_raw"></span><code>format_raw</code> switches
+between formatted and raw output. If this flag is on, the nodes are not
+indented in any way, and also no newlines that are not part of document
+text are printed. Raw mode can be used for serialization where the
+result is not intended to be read by humans; also it can be useful if
+the document was parsed with <a
+href="#parse_ws_pcdata">parse_ws_pcdata</a> flag, to preserve the
+original document formatting as much as possible. This flag is
+<strong>off</strong> by default.</p></li>
+<li><p><span id="format_no_escapes"></span><code>format_no_escapes</code>
+disables output escaping for attribute values and PCDATA contents. If
+this flag is off, special symbols (<code>"</code>, <code>&amp;</code>,
+<code>&lt;</code>, <code>&gt;</code>) and all non-printable characters
+(those with codepoint values less than 32) are converted to XML escape
+sequences (i.e. <code>&amp;amp;</code>) during output. If this flag is
+on, no text processing is performed; therefore, output XML can be
+malformed if output contents contains invalid symbols (i.e. having a
+stray <code>&lt;</code> in the PCDATA will make the output malformed).
+This flag is <strong>off</strong> by default.</p></li>
+<li><p><span id="format_no_empty_element_tags"></span><code>format_no_empty_element_tags</code>
+determines if start/end tags should be output instead of empty element
+tags for empty elements (that is, elements with no children). This flag
+is <strong>off</strong> by default.</p></li>
+<li><p><span id="format_skip_control_chars"></span><code>format_skip_control_chars</code>
+enables skipping characters belonging to range [0; 32) instead of
+"&amp;#xNN;" encoding. This flag is <strong>off</strong> by
+default.</p></li>
+<li><p><span id="format_attribute_single_quote"></span><code>format_attribute_single_quote</code>
+enables using single quotes <code>'</code> instead of double quotes
+<code>"</code> for enclosing attribute values. This flag is
+<strong>off</strong> by default.</p></li>
+</ul>
+</div>
+
+<div class="paragraph">
+
+<p>These flags control the additional output information:</p>
+</div>
+
+<div class="ulist">
+
+<ul>
+<li><p><span id="format_no_declaration"></span><code>format_no_declaration</code>
+disables default node declaration output. By default, if the document is
+saved via <code>save</code> or <code>save_file</code> function, and it
+does not have any document declaration, a default declaration is output
+before the document contents. Enabling this flag disables this
+declaration. This flag has no effect in <code>xml_node::print</code>
+functions: they never output the default declaration. This flag is
+<strong>off</strong> by default.</p></li>
+<li><p><span id="format_write_bom"></span><code>format_write_bom</code>
+enables Byte Order Mark (BOM) output. By default, no BOM is output, so
+in case of non UTF-8 encodings the resulting document’s encoding may not
+be recognized by some parsers and text editors, if they do not implement
+sophisticated encoding detection. Enabling this flag adds an
+encoding-specific BOM to the output. This flag has no effect in
+<code>xml_node::print</code> functions: they never output the BOM. This
+flag is <strong>off</strong> by default.</p></li>
+<li><p><span id="format_save_file_text"></span><code>format_save_file_text</code>
+changes the file mode when using <code>save_file</code> function. By
+default, file is opened in binary mode, which means that the output file
+will contain platform-independent newline <code>\n</code> (ASCII 10). If
+this flag is on, file is opened in text mode, which on some systems
+changes the newline format (i.e. on Windows you can use this flag to
+output XML documents with <code>\r\n</code> (ASCII 13 10) newlines).
+This flag is <strong>off</strong> by default.</p></li>
+</ul>
+</div>
+
+<div class="paragraph">
+
+<p>Additionally, there is one predefined option mask:</p>
+</div>
+
+<div class="ulist">
+
+<ul>
+<li><span id="format_default"></span><code>format_default</code> is the
+default set of flags, i.e. it has all options set to their default
+values. It sets formatted output with indentation, without BOM and with
+default node declaration, if necessary.</li>
+</ul>
+</div>
+
+<div class="paragraph">
+
+<p>This is an example that shows the outputs of different output options
+(<a href="samples/save_options.cpp">samples/save_options.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>// get a test document
+pugi::xml_document doc;
+doc.load_string(&quot;&lt;foo bar=&#39;baz&#39;&gt;&lt;call&gt;hey&lt;/call&gt;&lt;/foo&gt;&quot;);
+
+// default options; prints
+// &lt;?xml version=&quot;1.0&quot;?&gt;
+// &lt;foo bar=&quot;baz&quot;&gt;
+//         &lt;call&gt;hey&lt;/call&gt;
+// &lt;/foo&gt;
+doc.save(std::cout);
+std::cout &lt;&lt; std::endl;
+
+// default options with custom indentation string; prints
+// &lt;?xml version=&quot;1.0&quot;?&gt;
+// &lt;foo bar=&quot;baz&quot;&gt;
+// --&lt;call&gt;hey&lt;/call&gt;
+// &lt;/foo&gt;
+doc.save(std::cout, &quot;--&quot;);
+std::cout &lt;&lt; std::endl;
+
+// default options without indentation; prints
+// &lt;?xml version=&quot;1.0&quot;?&gt;
+// &lt;foo bar=&quot;baz&quot;&gt;
+// &lt;call&gt;hey&lt;/call&gt;
+// &lt;/foo&gt;
+doc.save(std::cout, &quot;\t&quot;, pugi::format_default &amp; ~pugi::format_indent); // can also pass &quot;&quot; instead of indentation string for the same effect
+std::cout &lt;&lt; std::endl;
+
+// raw output; prints
+// &lt;?xml version=&quot;1.0&quot;?&gt;&lt;foo bar=&quot;baz&quot;&gt;&lt;call&gt;hey&lt;/call&gt;&lt;/foo&gt;
+doc.save(std::cout, &quot;\t&quot;, pugi::format_raw);
+std::cout &lt;&lt; std::endl &lt;&lt; std::endl;
+
+// raw output without declaration; prints
+// &lt;foo bar=&quot;baz&quot;&gt;&lt;call&gt;hey&lt;/call&gt;&lt;/foo&gt;
+doc.save(std::cout, &quot;\t&quot;, pugi::format_raw | pugi::format_no_declaration);
+std::cout &lt;&lt; std::endl;</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="saving.encoding"></span></p>
+<h3
+id="76-encodings"><a href="#saving.encoding" class="anchor"></a><a href="#saving.encoding" class="link">7.6.
+Encodings</a></h3>
+<div class="paragraph">
+
+<p>pugixml supports all popular Unicode encodings (UTF-8, UTF-16 (big
+and little endian), UTF-32 (big and little endian); UCS-2 is naturally
+supported since it’s a strict subset of UTF-16) and handles all encoding
+conversions during output. The output encoding is set via the
+<code>encoding</code> parameter of saving functions, which is of type
+<code>xml_encoding</code>. The possible values for the encoding are
+documented in <a href="#loading.encoding">Encodings</a>; the only flag
+that has a different meaning is <code>encoding_auto</code>.</p>
+</div>
+
+<div class="paragraph">
+
+<p>While all other flags set the exact encoding,
+<code>encoding_auto</code> is meant for automatic encoding detection.
+The automatic detection does not make sense for output encoding, since
+there is usually nothing to infer the actual encoding from, so here
+<code>encoding_auto</code> means UTF-8 encoding, which is the most
+popular encoding for XML data storage. This is also the default value of
+output encoding; specify another value if you do not want UTF-8 encoded
+output.</p>
+</div>
+
+<div class="paragraph">
+
+<p>Also note that wide stream saving functions do not have
+<code>encoding</code> argument and always assume <a
+href="#encoding_wchar">encoding_wchar</a> encoding.</p>
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content">The current behavior for Unicode conversion is to skip all invalid UTF sequences during conversion. This behavior should not be relied upon; if your node/attribute names do not contain any valid UTF sequences, they may be output as if they are empty, which will result in malformed XML document.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="saving.declaration"></span></p>
+<h3
+id="77-customizing-document-declaration"><a href="#saving.declaration" class="anchor"></a><a href="#saving.declaration" class="link">7.7.
+Customizing document declaration</a></h3>
+<div class="paragraph">
+
+<p>When you are saving the document using
+<code>xml_document::save()</code> or
+<code>xml_document::save_file()</code>, a default XML document
+declaration is output, if <code>format_no_declaration</code> is not
+specified and if the document does not have a declaration node. However,
+the default declaration is not customizable. If you want to customize
+the declaration output, you need to create the declaration node
+yourself.</p>
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content">By default the declaration node is not added to the document during parsing. If you just need to preserve the original declaration node, you have to add the flag <a href="#parse_declaration">parse_declaration</a> to the parsing flags; the resulting document will contain the original declaration node, which will be output during saving.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Declaration node is a node with type <a
+href="#node_declaration">node_declaration</a>; it behaves like an
+element node in that it has attributes with values (but it does not have
+child nodes). Therefore setting custom version, encoding or standalone
+declaration involves adding attributes and setting attribute values.</p>
+</div>
+
+<div class="paragraph">
+
+<p>This is an example that shows how to create a custom declaration node
+(<a
+href="samples/save_declaration.cpp">samples/save_declaration.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="cpp"><code>// get a test document
+pugi::xml_document doc;
+doc.load_string(&quot;&lt;foo bar=&#39;baz&#39;&gt;&lt;call&gt;hey&lt;/call&gt;&lt;/foo&gt;&quot;);
+
+// add a custom declaration node
+pugi::xml_node decl = doc.prepend_child(pugi::node_declaration);
+decl.append_attribute(&quot;version&quot;) = &quot;1.0&quot;;
+decl.append_attribute(&quot;encoding&quot;) = &quot;UTF-8&quot;;
+decl.append_attribute(&quot;standalone&quot;) = &quot;no&quot;;
+
+// &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+// &lt;foo bar=&quot;baz&quot;&gt;
+//         &lt;call&gt;hey&lt;/call&gt;
+// &lt;/foo&gt;
+doc.save(std::cout);
+std::cout &lt;&lt; std::endl;</code></pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>

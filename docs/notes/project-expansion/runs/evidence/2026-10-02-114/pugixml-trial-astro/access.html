@@ -1,0 +1,677 @@
+<div class="sect1">
+<p><span id="access"></span></p>
+<h2 id="5-accessing-document-data"><a href="#access" class="anchor"></a><a href="#access" class="link">5. Accessing document data</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>pugixml features an extensive interface for getting various types of data from the document and for traversing the document. This section provides documentation for all such functions that do not modify the tree except for XPath-related functions; see <a href="#xpath">XPath</a> for XPath reference. As discussed in <a href="#dom.cpp">C++ interface</a>, there are two types of handles to tree data - <a href="#xml_node">xml_node</a> and <a href="#xml_attribute">xml_attribute</a>. The handles have special null (empty) values which propagate through various functions and thus are useful for writing more concise code; see <a href="#node_null">this description</a> for details. The documentation in this section will explicitly state the results of all function in case of null inputs.</p>
+</div>
+<div class="sect2">
+<p><span id="access.basic"></span></p>
+<h3 id="51-basic-traversal-functions"><a href="#access.basic" class="anchor"></a><a href="#access.basic" class="link">5.1. Basic traversal functions</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::parent"></span><span id="xml_node::first_child"></span><span id="xml_node::last_child"></span><span id="xml_node::next_sibling"></span><span id="xml_node::previous_sibling"></span><span id="xml_node::first_attribute"></span><span id="xml_node::last_attribute"></span><span id="xml_attribute::next_attribute"></span><span id="xml_attribute::previous_attribute"></span> The internal representation of the document is a tree, where each node has a list of child nodes (the order of children corresponds to their order in the XML representation), and additionally element nodes have a list of attributes, which is also ordered. Several functions are provided in order to let you get from one node in the tree to the other. These functions roughly correspond to the internal representation, and thus are usually building blocks for other methods of traversing (i.e. XPath traversals are based on these functions).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">parent</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">first_child</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">last_child</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">previous_sibling</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">first_attribute</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">last_attribute</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">next_attribute</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">previous_attribute</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>parent</code> function returns the node’s parent; all non-null nodes except the document have non-null parent. <code>first_child</code> and <code>last_child</code> return the first and last child of the node, respectively; note that only document nodes and element nodes can have non-empty child node list. If node has no children, both functions return null nodes. <code>next_sibling</code> and <code>previous_sibling</code> return the node that’s immediately to the right/left of this node in the children list, respectively - for example, in <code>&#x3C;a/>&#x3C;b/>&#x3C;c/></code>, calling <code>next_sibling</code> for a handle that points to <code>&#x3C;b/></code> results in a handle pointing to <code>&#x3C;c/></code>, and calling <code>previous_sibling</code> results in handle pointing to <code>&#x3C;a/></code>. If node does not have next/previous sibling (this happens if it is the last/first node in the list, respectively), the functions return null nodes. <code>first_attribute</code>, <code>last_attribute</code>, <code>next_attribute</code> and <code>previous_attribute</code> functions behave similarly to the corresponding child node functions and allow to iterate through attribute list in the same way.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content">Because of memory consumption reasons, attributes do not have a link to their parent nodes. Thus there is no <code>xml_attribute::parent()</code> function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph">
+<p>Calling any of the functions above on the null handle results in a null handle - i.e. <code>node.first_child().next_sibling()</code> returns the second child of <code>node</code>, and null handle if <code>node</code> is null, has no children at all or if it has only one child node.</p>
+</div>
+<div class="paragraph">
+<p>With these functions, you can iterate through all child nodes and display all attributes like this (<a href="samples/traverse_base.cpp">samples/traverse_base.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">first_child</span><span style="color:#E1E4E8">(); tool; tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Tool:"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_attribute attr </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">first_attribute</span><span style="color:#E1E4E8">(); attr; attr </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">next_attribute</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#B392F0">        std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> " "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "="</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.nodedata"></span></p>
+<h3 id="52-getting-node-data"><a href="#access.nodedata" class="anchor"></a><a href="#access.nodedata" class="link">5.2. Getting node data</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::name"></span><span id="xml_node::value"></span> Apart from structural information (parent, child nodes, attributes), nodes can have name and value, both of which are strings. Depending on node type, name or value may be absent. <a href="#node_document">node_document</a> nodes do not have a name or value, <a href="#node_element">node_element</a> and <a href="#node_declaration">node_declaration</a> nodes always have a name but never have a value, <a href="#node_pcdata">node_pcdata</a>, <a href="#node_cdata">node_cdata</a>, <a href="#node_comment">node_comment</a> and <a href="#node_doctype">node_doctype</a> nodes never have a name but always have a value (it may be empty though), <a href="#node_pi">node_pi</a> nodes always have a name and a value (again, value may be empty). In order to get node’s name or value, you can use the following functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>In case node does not have a name or value or if the node handle is null, both functions return empty strings - they never return null pointers.</p>
+</div>
+<div id="xml_node::child_value" class="paragraph">
+<p>It is common to store data as text contents of some node - i.e. <code>&#x3C;node>&#x3C;description>This is a node&#x3C;/description>&#x3C;/node></code>. In this case, <code>&#x3C;description></code> node does not have a value, but instead has a child of type <a href="#node_pcdata">node_pcdata</a> with value <code>"This is a node"</code>. pugixml provides several helper functions to parse such data:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">child_value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">child_value</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>child_value()</code> returns the value of the first child with type <a href="#node_pcdata">node_pcdata</a> or <a href="#node_cdata">node_cdata</a>; <code>child_value(name)</code> is a simple wrapper for <code>child(name).child_value()</code>. For the above example, calling <code>node.child_value("description")</code> and <code>description.child_value()</code> will both produce string <code>"This is a node"</code>. If there is no child with relevant type, or if the handle is null, <code>child_value</code> functions return empty string.</p>
+</div>
+<div class="paragraph">
+<p><code>text()</code> returns a special object that can be used for working with PCDATA contents in more complex cases than just retrieving the value; it is described in <a href="#access.text">Working with text contents</a> sections.</p>
+</div>
+<div class="paragraph">
+<p>There is an example of using some of these functions <a href="#code_traverse_base_data">at the end of the next section</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.attrdata"></span></p>
+<h3 id="53-getting-attribute-data"><a href="#access.attrdata" class="anchor"></a><a href="#access.attrdata" class="link">5.3. Getting attribute data</a></h3>
+<div class="paragraph">
+<p><span id="xml_attribute::name"></span><span id="xml_attribute::value"></span> All attributes have name and value, both of which are strings (value may be empty). There are two corresponding accessors, like for <code>xml_node</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>In case the attribute handle is null, both functions return empty strings - they never return null pointers.</p>
+</div>
+<div id="xml_attribute::as_string" class="paragraph">
+<p>If you need a non-empty string if the attribute handle is null (for example, you need to get the option value from XML attribute, but if it is not specified, you need it to default to <code>"sorted"</code> instead of <code>""</code>), you can use <code>as_string</code> accessor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_string</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>It returns <code>def</code> argument if the attribute handle is null. If you do not specify the argument, the function is equivalent to <code>value()</code>.</p>
+</div>
+<div class="paragraph">
+<p><span id="xml_attribute::as_int"></span><span id="xml_attribute::as_uint"></span><span id="xml_attribute::as_double"></span><span id="xml_attribute::as_float"></span><span id="xml_attribute::as_bool"></span><span id="xml_attribute::as_llong"></span><span id="xml_attribute::as_ullong"></span> In many cases attribute values have types that are not strings - i.e. an attribute may always contain values that should be treated as integers, despite the fact that they are represented as strings in XML. pugixml provides several accessors that convert attribute value to some other type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">int</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_int</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_uint</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">double</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_double</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">float</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_float</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_bool</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">bool</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_llong</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#B392F0"> xml_attribute</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_ullong</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>as_int</code>, <code>as_uint</code>, <code>as_llong</code>, <code>as_ullong</code>, <code>as_double</code> and <code>as_float</code> convert attribute values to numbers. If attribute handle is null <code>def</code> argument is returned (which is 0 by default). Otherwise, all leading whitespace characters are truncated, and the remaining string is parsed as an integer number in either decimal or hexadecimal form (applicable to <code>as_int</code>, <code>as_uint</code>, <code>as_llong</code> and <code>as_ullong</code>; hexadecimal format is used if the number has <code>0x</code> or <code>0X</code> prefix) or as a floating point number in either decimal or scientific form (<code>as_double</code> or <code>as_float</code>).</p>
+</div>
+<div class="paragraph">
+<p>For integer conversions, non-numeric character sequences return 0 and out of range values are clamped to the closest representable value; for floating-point conversions, the result depends on implementation (CRT or STL depending on whether <code>PUGIXML_CHARCONV_FLOAT</code> is used).</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Caution
+</div></td>
+<td class="content">Floating-point conversion functions depend on the current C locale as set with <code>setlocale</code>, so may return unexpected results if the locale is different from <code>"C"</code>. This does not apply when pugixml is built with <code>PUGIXML_CHARCONV_FLOAT</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph">
+<p><code>as_bool</code> converts attribute value to boolean as follows: if attribute handle is null, <code>def</code> argument is returned (which is <code>false</code> by default). If attribute value is empty, <code>false</code> is returned. Otherwise, <code>true</code> is returned if the first character is one of <code>'1', 't', 'T', 'y', 'Y'</code>. This means that strings like <code>"true"</code> and <code>"yes"</code> are recognized as <code>true</code>, while strings like <code>"false"</code> and <code>"no"</code> are recognized as <code>false</code>. For more complex matching you’ll have to write your own function.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content"><code>as_llong</code> and <code>as_ullong</code> are only available if your platform has support for the <code>long long</code> type.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="code_traverse_base_data" class="paragraph">
+<p>This is an example of using these functions, along with node data retrieval ones (<a href="samples/traverse_base.cpp">samples/traverse_base.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">); tool; tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Tool "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Filename"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ": AllowRemote "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"AllowRemote"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as_bool</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", Timeout "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Timeout"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as_int</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", Description '"</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">child_value</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Description"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "'</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.contents"></span></p>
+<h3 id="54-contents-based-traversal-functions"><a href="#access.contents" class="anchor"></a><a href="#access.contents" class="link">5.4. Contents-based traversal functions</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::child"></span><span id="xml_node::attribute"></span><span id="xml_node::next_sibling_name"></span><span id="xml_node::previous_sibling_name"></span> Since a lot of document traversal consists of finding the node/attribute with the correct name, there are special functions for that purpose:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">previous_sibling</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">previous_sibling</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>child</code> and <code>attribute</code> return the first child/attribute with the specified name; <code>next_sibling</code> and <code>previous_sibling</code> return the first sibling in the corresponding direction with the specified name. All string comparisons are case-sensitive. In case the node handle is null or there is no node/attribute with the specified name, null handle is returned.</p>
+</div>
+<div class="paragraph">
+<p><code>child</code> and <code>next_sibling</code> functions can be used together to loop through all child nodes with the desired name like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">); tool; tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">))</span></span></code></pre></div>
+</div>
+</div>
+<div id="xml_node::attribute_hinted" class="paragraph">
+<p><code>attribute</code> function needs to look for the target attribute by name. If a node has many attributes, finding each by name can be time consuming. If you have an idea of how attributes are ordered in the node, you can use a faster function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> hint</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">string_view_t</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">xml_attribute</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> hint</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The extra <code>hint</code> argument is used to guess where the attribute might be, and is updated to the location of the next attribute so that if you search for multiple attributes in the right order, the performance is maximized. Note that <code>hint</code> has to be either null or has to belong to the node, otherwise the behavior is undefined.</p>
+</div>
+<div class="paragraph">
+<p>You can use this function as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#E1E4E8">xml_attribute hint;</span></span>
+<span class="line"><span style="color:#E1E4E8">xml_attribute id </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">, hint);</span></span>
+<span class="line"><span style="color:#E1E4E8">xml_attribute name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">, hint);</span></span>
+<span class="line"><span style="color:#E1E4E8">xml_attribute version </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"version"</span><span style="color:#E1E4E8">, hint);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>This code is correct regardless of the order of the attributes, but it’s faster if <code>"id"</code>, <code>"name"</code> and <code>"version"</code> occur in that order.</p>
+</div>
+<div id="xml_node::find_child_by_attribute" class="paragraph">
+<p>Occasionally the needed node is specified not by the unique name but instead by the value of some attribute; for example, it is common to have node collections with each node having a unique id: <code>&#x3C;group>&#x3C;item id="1"/> &#x3C;item id="2"/>&#x3C;/group></code>. There are two functions for finding child nodes based on the attribute values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">find_child_by_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> attr_name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> attr_value</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">find_child_by_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> attr_name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> attr_value</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The three-argument function returns the first child node with the specified name which has an attribute with the specified name/value; the two-argument function skips the name test for the node, which can be useful for searching in heterogeneous collections. If the node handle is null or if no node is found, null handle is returned. All string comparisons are case-sensitive.</p>
+</div>
+<div class="paragraph">
+<p>In all of the above functions, all arguments have to be valid strings; passing null pointers results in undefined behavior.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of using these functions (<a href="samples/traverse_base.cpp">samples/traverse_base.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Tool for *.dae generation: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">find_child_by_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"OutputFileMasks"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"*.dae"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Filename"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">); tool; tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">next_sibling</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Tool "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Filename"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.rangefor"></span></p>
+<h3 id="55-range-based-for-loop-support"><a href="#access.rangefor" class="anchor"></a><a href="#access.rangefor" class="link">5.5. Range-based for-loop support</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::children"></span><span id="xml_node::attributes"></span> If your C++ compiler supports range-based for-loop (this is a C++11 feature, supported by Microsoft Visual Studio 2012+, GCC 4.6+ and Clang 3.0+), you can use it to enumerate nodes/attributes. Additional helpers are provided to support this; note that they are also compatible with <a href="http://www.boost.org/libs/foreach/">Boost Foreach</a>, and possibly other pre-C++11 foreach facilities.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#E1E4E8">implementation</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">defined</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">type </span><span style="color:#B392F0">xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">children</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">implementation</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">defined</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">type </span><span style="color:#B392F0">xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">children</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> name) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">implementation</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">defined</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">type </span><span style="color:#B392F0">xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">attributes</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>children</code> function allows you to enumerate all child nodes; <code>children</code> function with <code>name</code> argument allows you to enumerate all child nodes with a specific name; <code>attributes</code> function allows you to enumerate all attributes of the node. Note that you can also use node object itself in a range-based for construct, which is equivalent to using <code>children()</code>.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of using these functions (<a href="samples/traverse_rangefor.cpp">samples/traverse_rangefor.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node tool: tools.</span><span style="color:#B392F0">children</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Tool:"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_attribute attr: tool.</span><span style="color:#B392F0">attributes</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#B392F0">        std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> " "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "="</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> attr.</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node child: tool.</span><span style="color:#B392F0">children</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#B392F0">        std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ", child "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> child.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>While using <code>children()</code> makes the intent of the code clear, note that each node can be treated as a container of child nodes, since it provides <code>begin()</code>/<code>end()</code> member functions described in the next section. Because of this, you can iterate through node’s children simply by using the node itself:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node child: tool) ...</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>When using C++20, you can also use nodes as well as objects returned by <code>children()</code> and <code>attributes()</code> functions as ranges:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">auto</span><span style="color:#E1E4E8"> tf </span><span style="color:#F97583">=</span></span>
+<span class="line"><span style="color:#E1E4E8">    tools.</span><span style="color:#B392F0">children</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Tool"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    |</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">views</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">([](</span><span style="color:#F97583">auto</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">) { </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"AllowRemote"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as_bool</span><span style="color:#E1E4E8">(); })</span></span>
+<span class="line"><span style="color:#F97583">    |</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">views</span><span style="color:#E1E4E8">::reverse;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node tool: tf) ...</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.iterators"></span></p>
+<h3 id="56-traversing-nodeattribute-lists-via-iterators"><a href="#access.iterators" class="anchor"></a><a href="#access.iterators" class="link">5.6. Traversing node/attribute lists via iterators</a></h3>
+<div class="paragraph">
+<p><span id="xml_node_iterator"></span><span id="xml_attribute_iterator"></span><span id="xml_node::begin"></span><span id="xml_node::end"></span><span id="xml_node::attributes_begin"></span><span id="xml_node::attributes_end"></span> Child node lists and attribute lists are simply double-linked lists; while you can use <code>previous_sibling</code>/<code>next_sibling</code> and other such functions for iteration, pugixml additionally provides node and attribute iterators, so that you can treat nodes as containers of other nodes or attributes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> xml_node_iterator</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> xml_attribute_iterator</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">typedef</span><span style="color:#E1E4E8"> xml_node_iterator </span><span style="color:#B392F0">xml_node</span><span style="color:#E1E4E8">::iterator;</span></span>
+<span class="line"><span style="color:#B392F0">iterator</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">begin</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">iterator</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">typedef</span><span style="color:#E1E4E8"> xml_attribute_iterator </span><span style="color:#B392F0">xml_node</span><span style="color:#E1E4E8">::attribute_iterator;</span></span>
+<span class="line"><span style="color:#B392F0">attribute_iterator</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">attributes_begin</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">attribute_iterator</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">attributes_end</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>begin</code> and <code>attributes_begin</code> return iterators that point to the first node/attribute, respectively; <code>end</code> and <code>attributes_end</code> return past-the-end iterator for node/attribute list, respectively - this iterator can’t be dereferenced, but decrementing it results in an iterator pointing to the last element in the list (except for empty lists, where decrementing past-the-end iterator results in undefined behavior). Past-the-end iterator is commonly used as a termination value for iteration loops (see sample below). If you want to get an iterator that points to an existing handle, you can construct the iterator with the handle as a single constructor argument, like so: <code>xml_node_iterator(node)</code>. For <code>xml_attribute_iterator</code>, you’ll have to provide both an attribute and its parent node.</p>
+</div>
+<div class="paragraph">
+<p><code>begin</code> and <code>end</code> return equal iterators if called on null node; such iterators can’t be dereferenced. <code>attributes_begin</code> and <code>attributes_end</code> behave the same way. For correct iterator usage this means that child node/attribute collections of null nodes appear to be empty.</p>
+</div>
+<div class="paragraph">
+<p>Both types of iterators have bidirectional iterator semantics (i.e. they can be incremented and decremented, but efficient random access is not supported) and support all usual iterator operations - comparison, dereference, etc. The iterators are invalidated if the node/attribute objects they’re pointing to are removed from the tree; adding nodes/attributes does not invalidate any iterators.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example of using iterators for document traversal (<a href="samples/traverse_iter.cpp">samples/traverse_iter.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_node_iterator it </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">begin</span><span style="color:#E1E4E8">(); it </span><span style="color:#F97583">!=</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">(); </span><span style="color:#F97583">++</span><span style="color:#E1E4E8">it)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Tool:"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::xml_attribute_iterator ait </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> it-></span><span style="color:#B392F0">attributes_begin</span><span style="color:#E1E4E8">(); ait </span><span style="color:#F97583">!=</span><span style="color:#E1E4E8"> it-></span><span style="color:#B392F0">attributes_end</span><span style="color:#E1E4E8">(); </span><span style="color:#F97583">++</span><span style="color:#E1E4E8">ait)</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#B392F0">        std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> " "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> ait-></span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "="</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> ait-></span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre></div>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Caution
+</div></td>
+<td class="content">Node and attribute iterators are somewhere in the middle between const and non-const iterators. While dereference operation yields a non-constant reference to the object, so that you can use it for tree modification operations, modifying this reference using assignment - i.e. passing iterators to a function like <code>std::sort</code> - will not give expected results, as assignment modifies local handle that’s stored in the iterator.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.walker"></span></p>
+<h3 id="57-recursive-traversal-with-xml_tree_walker"><a href="#access.walker" class="anchor"></a><a href="#access.walker" class="link">5.7. Recursive traversal with xml_tree_walker</a></h3>
+<div id="xml_tree_walker" class="paragraph">
+<p>The methods described above allow traversal of immediate children of some node; if you want to do a deep tree traversal, you’ll have to do it via a recursive function or some equivalent method. However, pugixml provides a helper for depth-first traversal of a subtree. In order to use it, you have to implement <code>xml_tree_walker</code> interface and to call <code>traverse</code> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> xml_tree_walker</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">public:</span></span>
+<span class="line"><span style="color:#F97583">    virtual</span><span style="color:#F97583"> bool</span><span style="color:#B392F0"> begin</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    virtual</span><span style="color:#F97583"> bool</span><span style="color:#B392F0"> for_each</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    virtual</span><span style="color:#F97583"> bool</span><span style="color:#B392F0"> end</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    int</span><span style="color:#B392F0"> depth</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">traverse</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">xml_tree_walker</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> walker</span><span style="color:#E1E4E8">);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p><span id="xml_tree_walker::begin"></span><span id="xml_tree_walker::for_each"></span><span id="xml_tree_walker::end"></span><span id="xml_node::traverse"></span> The traversal is launched by calling <code>traverse</code> function on traversal root and proceeds as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>First, <code>begin</code> function is called with traversal root as its argument.</p>
+</li>
+<li>
+<p>Then, <code>for_each</code> function is called for all nodes in the traversal subtree in depth first order, excluding the traversal root. Node is passed as an argument.</p>
+</li>
+<li>
+<p>Finally, <code>end</code> function is called with traversal root as its argument.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If <code>begin</code>, <code>end</code> or any of the <code>for_each</code> calls return <code>false</code>, the traversal is terminated and <code>false</code> is returned as the traversal result; otherwise, the traversal results in <code>true</code>. Note that you don’t have to override <code>begin</code> or <code>end</code> functions; their default implementations return <code>true</code>.</p>
+</div>
+<div id="xml_tree_walker::depth" class="paragraph">
+<p>You can get the node’s depth relative to the traversal root at any point by calling <code>depth</code> function. It returns <code>-1</code> if called from <code>begin</code>/<code>end</code>, and returns 0-based depth if called from <code>for_each</code> - depth is 0 for all children of the traversal root, 1 for all grandchildren and so on.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of traversing tree hierarchy with xml_tree_walker (<a href="samples/traverse_walker.cpp">samples/traverse_walker.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">struct</span><span style="color:#B392F0"> simple_walker</span><span style="color:#E1E4E8">: pugi::</span><span style="color:#B392F0">xml_tree_walker</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    virtual</span><span style="color:#F97583"> bool</span><span style="color:#B392F0"> for_each</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_node</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#F97583">        for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">int</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#B392F0"> depth</span><span style="color:#E1E4E8">(); </span><span style="color:#F97583">++</span><span style="color:#E1E4E8">i) </span><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "  "</span><span style="color:#E1E4E8">;</span><span style="color:#6A737D"> // indentation</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">        std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> node_types[node.</span><span style="color:#B392F0">type</span><span style="color:#E1E4E8">()] </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> ": name='"</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "', value='"</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "'</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span><span style="color:#6A737D"> // continue traversal</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre></div>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#E1E4E8">simple_walker walker;</span></span>
+<span class="line"><span style="color:#E1E4E8">doc.</span><span style="color:#B392F0">traverse</span><span style="color:#E1E4E8">(walker);</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.predicate"></span></p>
+<h3 id="58-searching-for-nodesattributes-with-predicates"><a href="#access.predicate" class="anchor"></a><a href="#access.predicate" class="link">5.8. Searching for nodes/attributes with predicates</a></h3>
+<div class="paragraph">
+<p><span id="xml_node::find_attribute"></span><span id="xml_node::find_child"></span><span id="xml_node::find_node"></span> While there are existing functions for getting a node/attribute with known contents, they are often not sufficient for simple queries. As an alternative for manual iteration through nodes/attributes until the needed one is found, you can make a predicate and call one of <code>find_</code> functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">template</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#F97583">typename</span><span style="color:#B392F0"> Predicate</span><span style="color:#E1E4E8">> </span><span style="color:#B392F0">xml_attribute</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">find_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">Predicate</span><span style="color:#FFAB70"> pred</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">template</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#F97583">typename</span><span style="color:#B392F0"> Predicate</span><span style="color:#E1E4E8">> </span><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">find_child</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">Predicate</span><span style="color:#FFAB70"> pred</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">template</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#F97583">typename</span><span style="color:#B392F0"> Predicate</span><span style="color:#E1E4E8">> </span><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">find_node</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">Predicate</span><span style="color:#FFAB70"> pred</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The predicate should be either a plain function or a function object which accepts one argument of type <code>xml_attribute</code> (for <code>find_attribute</code>) or <code>xml_node</code> (for <code>find_child</code> and <code>find_node</code>), and returns <code>bool</code>. The predicate is never called with null handle as an argument.</p>
+</div>
+<div class="paragraph">
+<p><code>find_attribute</code> function iterates through all attributes of the specified node, and returns the first attribute for which the predicate returned <code>true</code>. If the predicate returned <code>false</code> for all attributes or if there were no attributes (including the case where the node is null), null attribute is returned.</p>
+</div>
+<div class="paragraph">
+<p><code>find_child</code> function iterates through all child nodes of the specified node, and returns the first node for which the predicate returned <code>true</code>. If the predicate returned <code>false</code> for all nodes or if there were no child nodes (including the case where the node is null), null node is returned.</p>
+</div>
+<div class="paragraph">
+<p><code>find_node</code> function performs a depth-first traversal through the subtree of the specified node (excluding the node itself), and returns the first node for which the predicate returned <code>true</code>. If the predicate returned <code>false</code> for all nodes or if subtree was empty, null node is returned.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of using predicate-based functions (<a href="samples/traverse_predicate.cpp">samples/traverse_predicate.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> small_timeout</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_node</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Timeout"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as_int</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 20</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">struct</span><span style="color:#B392F0"> allow_remote_predicate</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    bool</span><span style="color:#F97583"> operator</span><span style="color:#B392F0">()</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_attribute</span><span style="color:#FFAB70"> attr</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#B392F0"> strcmp</span><span style="color:#E1E4E8">(attr.</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">(), </span><span style="color:#9ECBFF">"AllowRemote"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    bool</span><span style="color:#F97583"> operator</span><span style="color:#B392F0">()</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">pugi</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">xml_node</span><span style="color:#FFAB70"> node</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> node.</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"AllowRemote"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">as_bool</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre></div>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D">// Find child via predicate (looks for direct children only)</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">find_child</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">allow_remote_predicate</span><span style="color:#E1E4E8">()).</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Filename"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Find node via predicate (looks for all descendants in depth-first order)</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> doc.</span><span style="color:#B392F0">find_node</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">allow_remote_predicate</span><span style="color:#E1E4E8">()).</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Filename"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Find attribute via predicate</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">last_child</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">find_attribute</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">allow_remote_predicate</span><span style="color:#E1E4E8">()).</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// We can use simple functions instead of function objects</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#E1E4E8"> tools.</span><span style="color:#B392F0">find_child</span><span style="color:#E1E4E8">(small_timeout).</span><span style="color:#B392F0">attribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Filename"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">value</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.text"></span></p>
+<h3 id="59-working-with-text-contents"><a href="#access.text" class="anchor"></a><a href="#access.text" class="link">5.9. Working with text contents</a></h3>
+<div id="xml_text" class="paragraph">
+<p>It is common to store data as text contents of some node - i.e. <code>&#x3C;node>&#x3C;description>This is a node&#x3C;/description>&#x3C;/node></code>. In this case, <code>&#x3C;description></code> node does not have a value, but instead has a child of type <a href="#node_pcdata">node_pcdata</a> with value <code>"This is a node"</code>. pugixml provides a special class, <code>xml_text</code>, to work with such data. Working with text objects to modify data is described in <a href="#modify.text">the documentation for modifying document data</a>; this section describes the access interface of <code>xml_text</code>.</p>
+</div>
+<div id="xml_node::text" class="paragraph">
+<p>You can get the text object from a node by using <code>text()</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_text</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>If the node has a type <code>node_pcdata</code> or <code>node_cdata</code>, then the node itself is used to return data; otherwise, a first child node of type <code>node_pcdata</code> or <code>node_cdata</code> is used.</p>
+</div>
+<div class="paragraph">
+<p><span id="xml_text::empty"></span><span id="xml_text::unspecified_bool_type"></span> You can check if the text object is bound to a valid PCDATA/CDATA node by using it as a boolean value, i.e. <code>if (text) { …​ }</code> or <code>if (!text) { …​ }</code>. Alternatively you can check it by using the <code>empty()</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">empty</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div id="xml_text::get" class="paragraph">
+<p>Given a text object, you can get the contents (i.e. the value of PCDATA/CDATA node) by using the following function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>In case text object is empty, the function returns an empty string - it never returns a null pointer.</p>
+</div>
+<div class="paragraph">
+<p><span id="xml_text::as_string"></span><span id="xml_text::as_int"></span><span id="xml_text::as_uint"></span><span id="xml_text::as_double"></span><span id="xml_text::as_float"></span><span id="xml_text::as_bool"></span><span id="xml_text::as_llong"></span><span id="xml_text::as_ullong"></span> If you need a non-empty string if the text object is empty, or if the text contents is actually a number or a boolean that is stored as a string, you can use the following accessors:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_string</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_int</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_uint</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">double</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_double</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">double</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">float</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_float</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">float</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_bool</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">bool</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_llong</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">as_ullong</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> long</span><span style="color:#F97583"> long</span><span style="color:#FFAB70"> def</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>All of the above functions have the same semantics as similar <code>xml_attribute</code> members: they return the default argument if the text object is empty, they convert the text contents to a target type using the same rules and restrictions. You can <a href="#xml_attribute::as_int">refer to documentation for the attribute functions</a> for details.</p>
+</div>
+<div id="xml_text::data" class="paragraph">
+<p><code>xml_text</code> is essentially a helper class that operates on <code>xml_node</code> values. It is bound to a node of type <a href="#node_pcdata">node_pcdata</a> or <a href="#node_cdata">node_cdata</a>. You can use the following function to retrieve this node:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_text</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">data</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Essentially, assuming <code>text</code> is an <code>xml_text</code> object, calling <code>text.get()</code> is equivalent to calling <code>text.data().value()</code>.</p>
+</div>
+<div class="paragraph">
+<p>This is an example of using <code>xml_text</code> object (<a href="samples/text.cpp">samples/text.cpp</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Project name: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> project.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Project version: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> project.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"version"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">as_double</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Project visibility: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> (project.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"public"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">as_bool</span><span style="color:#E1E4E8">(</span><span style="color:#6A737D">/* def= */</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">?</span><span style="color:#9ECBFF"> "public"</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> "private"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span>
+<span class="line"><span style="color:#B392F0">std</span><span style="color:#E1E4E8">::cout </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#9ECBFF"> "Project description: "</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#E1E4E8"> project.</span><span style="color:#B392F0">child</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"description"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#B392F0"> std</span><span style="color:#E1E4E8">::endl;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<p><span id="access.misc"></span></p>
+<h3 id="510-miscellaneous-functions"><a href="#access.misc" class="anchor"></a><a href="#access.misc" class="link">5.10. Miscellaneous functions</a></h3>
+<div id="xml_node::root" class="paragraph">
+<p>If you need to get the document root of some node, you can use the following function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">root</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>This function returns the node with type <a href="#node_document">node_document</a>, which is the root node of the document the node belongs to (unless the node is null, in which case null node is returned).</p>
+</div>
+<div class="paragraph">
+<p><span id="xml_node::path"></span><span id="xml_node::first_element_by_path"></span> While pugixml supports complex XPath expressions, sometimes a simple path handling facility is needed. There are two functions, for getting node path and for converting path to a node:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#79B8FF">string_t</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">path</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">char_t</span><span style="color:#FFAB70"> delimiter</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> '/'</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">xml_node</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">first_element_by_path</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> char_t</span><span style="color:#F97583">*</span><span style="color:#FFAB70"> path</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">char_t</span><span style="color:#FFAB70"> delimiter</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> '/'</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Node paths consist of node names, separated with a delimiter (which is <code>/</code> by default); also paths can contain self (<code>.</code>) and parent (<code>..</code>) pseudo-names, so that this is a valid path: <code>"../../foo/./bar"</code>. <code>path</code> returns the path to the node from the document root, <code>first_element_by_path</code> looks for a node represented by a given path; a path can be an absolute one (absolute paths start with the delimiter), in which case the rest of the path is treated as document root relative, and relative to the given node. For example, in the following document: <code>&#x3C;a>&#x3C;b>&#x3C;c/>&#x3C;/b>&#x3C;/a></code>, node <code>&#x3C;c/></code> has path <code>"a/b/c"</code>; calling <code>first_element_by_path</code> for document with path <code>"a/b"</code> results in node <code>&#x3C;b/></code>; calling <code>first_element_by_path</code> for node <code>&#x3C;a/></code> with path <code>"../a/./b/../."</code> results in node <code>&#x3C;a/></code>; calling <code>first_element_by_path</code> with path <code>"/a"</code> results in node <code>&#x3C;a/></code> for any node.</p>
+</div>
+<div class="paragraph">
+<p>In case path component is ambiguous (if there are two nodes with given name), the first one is selected; paths are not guaranteed to uniquely identify nodes in a document. If any component of a path is not found, the result of <code>first_element_by_path</code> is null node; also <code>first_element_by_path</code> returns null node for null nodes, in which case the path does not matter. <code>path</code> returns an empty string for null nodes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content"><code>path</code> function returns the result as STL string, and thus is not available if <a href="#PUGIXML_NO_STL">PUGIXML_NO_STL</a> is defined.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="xml_node::offset_debug" class="paragraph">
+<p>pugixml does not record row/column information for nodes upon parsing for efficiency reasons. However, if the node has not changed in a significant way since parsing (the name/value are not changed, and the node itself is the original one, i.e. it was not deleted from the tree and re-added later), it is possible to get the offset from the beginning of XML buffer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#79B8FF">ptrdiff_t</span><span style="color:#B392F0"> xml_node</span><span style="color:#E1E4E8">::</span><span style="color:#B392F0">offset_debug</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">const</span><span style="color:#E1E4E8">;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>If the offset is not available (this happens if the node is null, was not originally parsed from a stream, or has changed in a significant way), the function returns -1. Otherwise it returns the offset to node’s data from the beginning of XML buffer in <a href="#char_t">pugi::char_t</a> units. For more information on parsing offsets, see <a href="#xml_parse_result::offset">parsing error handling documentation</a>.</p>
+</div>
+</div>
+</div>
+</div><script type="module">document.addEventListener('click',async e=>{const b=e.target.closest?.('.docs-code-copy');if(!b)return;const c=b.closest('.docs-code-frame')?.querySelector('code');if(!c)return;await navigator.clipboard.writeText(c.textContent??'');b.textContent=b.dataset.copiedLabel;setTimeout(()=>b.textContent=b.dataset.copyLabel,1500)});</script>

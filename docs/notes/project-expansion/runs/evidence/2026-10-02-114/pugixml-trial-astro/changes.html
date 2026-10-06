@@ -1,0 +1,1715 @@
+<div class="sect1">
+<p><span id="changes"></span></p>
+<h2 id="9-changelog"><a href="#changes" class="anchor"></a><a href="#changes" class="link">9. Changelog</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<p><span id="v1.16"></span></p>
+<h3 id="v116-2026-06-16"><a href="#v1.16" class="anchor"></a><a href="#v1.16" class="link">v1.16 <sup>2026-06-16</sup></a></h3>
+<div class="paragraph">
+<p>Anniversary release (pugixml turns 20 this year!). Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Behavior changes:</p>
+<div class="olist arabic">
+<ol>
+<li>Elements that have a single empty PCDATA child are now printed as empty element tags (unless <code>format_no_empty_element_tags</code> is used)</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>PUGIXML_CHARCONV_FLOAT</code> option can be enabled to switch floating point conversions to <code>&#x3C;charconv></code>; this requires C++17, makes the conversions locale-independent and can improve performance</p>
+</li>
+<li>
+<p>Add <code>xml_node::ensure_child</code> and <code>xml_node::ensure_attribute</code> that return the child/attribute with the specified name, adding one if it does not exist</p>
+</li>
+<li>
+<p>Improve performance of searching for nodes and attributes by name</p>
+</li>
+<li>
+<p>Loading a document from an empty buffer no longer performs memory allocations</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>XPath improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Improve performance of queries that evaluate or compare attribute values, like <code>@attr > 5</code></p>
+</li>
+<li>
+<p>Improve performance of queries that select nodes and attributes by name</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix stack overflow when removing subtrees with extremely deep nesting</p>
+</li>
+<li>
+<p>Fix integer overflows that could lead to crashes when loading very large (1+ GB) documents on 32-bit platforms in <code>PUGIXML_WCHAR_MODE</code></p>
+</li>
+<li>
+<p>Fix null pointer dereference when copying <code>xpath_variable_set</code> objects that contain string variables with unassigned values</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>CMake improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Apple frameworks built with <code>PUGIXML_BUILD_APPLE_FRAMEWORK</code> now include framework headers</p>
+</li>
+<li>
+<p><code>PUGIXML_INSTALL_SOURCE</code> option can be used to install <code>pugixml.cpp</code> (useful for header-only mode)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Add project files and NuGet packages for Visual Studio 2026</p>
+</li>
+<li>
+<p>Fix compatibility with C++20 modules when including <code>pugixml.hpp</code> in the global module fragment</p>
+</li>
+<li>
+<p>Fix clang/gcc warnings <code>-Wextra-semi-stmt</code>, <code>-Wsign-conversion</code>, <code>-Wuninitialized</code> (GCC16)</p>
+</li>
+<li>
+<p>Fix compilation for Embarcadero C++ XE5</p>
+</li>
+<li>
+<p>Work around several static analysis false positives</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.15"></span></p>
+<h3 id="v115-2025-01-10"><a href="#v1.15" class="anchor"></a><a href="#v1.15" class="link">v1.15 <sup>2025-01-10</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>Many <code>xml_attribute::</code> and <code>xml_node::</code> functions now transparently support <code>std::string_view</code> and <code>std::string</code> when C++17 support is detected.</li>
+</ol>
+</div>
+</li>
+<li>
+<p>CMake improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Improve <code>pkg-config</code> file generation for NixOS</p>
+</li>
+<li>
+<p><code>PUGIXML_BUILD_APPLE_FRAMEWORK</code> CMake option can be used to build pugixml as <code>.xcframework</code></p>
+</li>
+<li>
+<p><code>PUGIXML_INSTALL</code> CMake option can be used to disable installation targets</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix clang/gcc warnings <code>-Wzero-as-null-pointer-constant</code>, <code>-Wuseless-cast</code>, <code>-Wshorten-64-to-32</code></p>
+</li>
+<li>
+<p>Fix unreferenced function warnings in <code>PUGIXML_NO_STL</code> configuration</p>
+</li>
+<li>
+<p>Fix CMake 3.31 deprecation warnings</p>
+</li>
+<li>
+<p>Stop using deprecated <code>throw()</code> when <code>noexcept</code> is available</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.14"></span></p>
+<h3 id="v114-2023-10-01"><a href="#v1.14" class="anchor"></a><a href="#v1.14" class="link">v1.14 <sup>2023-10-01</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>xml_attribute::set_name</code> and <code>xml_node::set_name</code> now have overloads that accept pointer to non-null-terminated string and size</p>
+</li>
+<li>
+<p>Implement <code>parse_merge_pcdata</code> parsing mode in which PCDATA contents is merged into a single node when original document had comments that were skipped during parsing</p>
+</li>
+<li>
+<p><code>xml_document::load_file</code> now returns a more consistent error status when given a path to a folder</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix assertion in XPath number→string conversion when using non-English locales</p>
+</li>
+<li>
+<p>Fix PUGIXML_STATIC_CRT CMake option to correctly select static CRT when using MSVC and recent CMake</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix GCC 2.95/3.3 builds</p>
+</li>
+<li>
+<p>Fix CMake 3.27 deprecation warnings</p>
+</li>
+<li>
+<p>Fix XCode 14 sprintf deprecation warning when compiling in C++03 mode</p>
+</li>
+<li>
+<p>Fix clang/gcc warnings <code>-Wweak-vtables</code>, <code>-Wreserved-macro-identifier</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.13"></span></p>
+<h3 id="v113-2022-11-01"><a href="#v1.13" class="anchor"></a><a href="#v1.13" class="link">v1.13 <sup>2022-11-01</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>xml_attribute::set_value</code>, <code>xml_node::set_value</code> and <code>xml_text::set</code> now have overloads that accept pointer to non-null-terminated string and size</p>
+</li>
+<li>
+<p>Improve performance of tree traversal when using compact mode (<code>PUGIXML_COMPACT</code>)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix error handling in <code>xml_document::save_file</code> that could result in the function succeeding while running out of disk space</p>
+</li>
+<li>
+<p>Fix memory leak during error handling of some out-of-memory conditions during <code>xml_document::load</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix exported symbols in CMake DLL builds when using CMake</p>
+</li>
+<li>
+<p>Fix exported symbols in CMake shared object builds when using -fvisibility=hidden</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.12"></span></p>
+<h3 id="v112-2022-02-09"><a href="#v1.12" class="anchor"></a><a href="#v1.12" class="link">v1.12 <sup>2022-02-09</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix a bug in xml_document move construction when the source of the move is empty</p>
+</li>
+<li>
+<p>Fix const-correctness issues with iterator objects to support C++20 ranges</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>XPath improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>Improved detection of overly complex queries that may result in stack overflow during parsing</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix Cygwin support for DLL builds</p>
+</li>
+<li>
+<p>Fix Windows CE support</p>
+</li>
+<li>
+<p>Add NuGet builds and project files for VS2022</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Build system changes</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>All CMake options now have the prefix <code>PUGIXML_</code>. This may require changing dependent build configurations.</p>
+</li>
+<li>
+<p>Many build settings are now exposed via CMake settings, most notably <code>PUGIXML_COMPACT</code> and <code>PUGIXML_WCHAR_MODE</code> can be set without changing <code>pugiconfig.hpp</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.11"></span></p>
+<h3 id="v111-2020-11-26"><a href="#v1.11" class="anchor"></a><a href="#v1.11" class="link">v1.11 <sup>2020-11-26</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Add xml_node::remove_attributes and xml_node::remove_children</p>
+</li>
+<li>
+<p>Add a way to customize floating point precision via xml_attribute::set and xml_text::set overloads</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>XPath improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>XPath parser now limits recursion depth which prevents stack overflow on malicious queries</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix Visual Studio warnings when built using clang-cl compiler</p>
+</li>
+<li>
+<p>Fix Wconversion warnings in gcc</p>
+</li>
+<li>
+<p>Fix Wzero-as-null-pointer-constant warnings in pugixml.hpp</p>
+</li>
+<li>
+<p>Work around several static analysis false positives</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Build system changes</p>
+<div class="olist arabic">
+<ol>
+<li>The CMake package for pugixml now provides a <code>pugixml::pugixml</code> target rather than a <code>pugixml</code> target. A compatibility <code>pugixml</code> target is provided if at least version 1.11 is not requested.</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.10"></span></p>
+<h3 id="v110-2019-09-15"><a href="#v1.10" class="anchor"></a><a href="#v1.10" class="link">v1.10 <sup>2019-09-15</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Behavior changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Tab characters (ASCII 9) in attribute values are now encoded as '&#x26;#9;' to survive roundtripping</p>
+</li>
+<li>
+<p><code>></code> characters are no longer escaped in attribute values</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Add Visual Studio .natvis files to improve debugging experience</p>
+</li>
+<li>
+<p>CMake improvements (USE_POSTFIX and BUILD_SHARED_AND_STATIC_LIBS options for building multiple versions and pkg-config tweaks)</p>
+</li>
+<li>
+<p>Add format_skip_control_chars formatting flag to skip non-printable ASCII characters that are invalid to use in well-formed XML files</p>
+</li>
+<li>
+<p>Add format_attribute_single_quote formatting flag to use single quotes for attribute values instead of default double quotes.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>XPath improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>XPath union now results in a stable order that doesn’t depend on memory allocations; crucially, this may require sorting the output of XPath query operation if you rely on the document-ordered traversal</p>
+</li>
+<li>
+<p>Improve performance of XPath union operation, making it ~2x faster</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix Visual Studio warnings when built in a DLL configuration</p>
+</li>
+<li>
+<p>Fix static analysis false positives in Coverity and clang</p>
+</li>
+<li>
+<p>Fix Wdouble-promotion warnings in gcc</p>
+</li>
+<li>
+<p>Add Visual Studio 2019 support for NuGet packages</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.9"></span></p>
+<h3 id="v19-2018-04-04"><a href="#v1.9" class="anchor"></a><a href="#v1.9" class="link">v1.9 <sup>2018-04-04</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>xml_document::load(const char*)</code> (deprecated in 1.5) now has <code>deprecated</code> attribute; use <code>xml_document::load_string</code> instead</p>
+</li>
+<li>
+<p><code>xml_node::select_single_node</code> (deprecated in 1.5) now has <code>deprecated</code> attribute; use <code>xml_node::select_node</code> instead</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Add move semantics support for xml_document and improve move semantics support for other objects</p>
+</li>
+<li>
+<p>CMake build now exports include directories</p>
+</li>
+<li>
+<p>CMake build with BUILD_SHARED_LIBS=ON now uses dllexport attribute for MSVC</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>XPath improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Rework parser/evaluator to not rely on exceptional control flow; longjmp is no longer used when exceptions are disabled</p>
+</li>
+<li>
+<p>Improve error messages for certain invalid expressions such as <code>.[1]</code> or <code>(1</code></p>
+</li>
+<li>
+<p>Minor performance improvements</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix Texas Instruments compiler warnings</p>
+</li>
+<li>
+<p>Fix compilation issues with limits.h for some versions of gcc</p>
+</li>
+<li>
+<p>Fix compilation issues with Clang/C2</p>
+</li>
+<li>
+<p>Fix implicit fallthrough warnings in gcc 7</p>
+</li>
+<li>
+<p>Fix unknown attribute directive warnings in gcc 8</p>
+</li>
+<li>
+<p>Fix cray++ compiler errors</p>
+</li>
+<li>
+<p>Fix unsigned integer overflow errors with -fsanitize=integer</p>
+</li>
+<li>
+<p>Fix undefined behavior sanitizer issues in compact mode</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.8"></span></p>
+<h3 id="v18-2016-11-24"><a href="#v1.8" class="anchor"></a><a href="#v1.8" class="link">v1.8 <sup>2016-11-24</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>When printing empty elements, a space is no longer added before / in format_raw mode</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added parse_embed_pcdata parsing mode in which PCDATA value is stored in the element node if possible (significantly reducing memory consumption for some documents)</p>
+</li>
+<li>
+<p>Added auto-detection support for Latin-1 (ISO-8859-1) encoding during parsing</p>
+</li>
+<li>
+<p>Added format_no_empty_element_tags formatting flag that outputs start/end tags instead of empty element tags for empty elements</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Performance improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>Minor memory allocation improvements (yielding up to 1% memory savings in some cases)</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed compilation issues for Borland C++ 5.4</p>
+</li>
+<li>
+<p>Fixed compilation issues for some distributions of MinGW 3.8</p>
+</li>
+<li>
+<p>Fixed various Clang/GCC warnings</p>
+</li>
+<li>
+<p>Enabled move semantics support for XPath objects for MSVC 2010 and above</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.7"></span></p>
+<h3 id="v17-2015-10-19"><a href="#v1.7" class="anchor"></a><a href="#v1.7" class="link">v1.7 <sup>2015-10-19</sup></a></h3>
+<div class="paragraph">
+<p>Major release, featuring performance and memory improvements along with some new features. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Compact mode:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Introduced a new tree storage mode that takes significantly less memory (2-5x smaller DOM) at some performance cost.</p>
+</li>
+<li>
+<p>The mode can be enabled using <code>PUGIXML_COMPACT</code> define.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New integer parsing/formatting implementation:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Functions that convert from and to integers (e.g. <code>as_int</code>/<code>set_value</code>) do not rely on CRT any more.</p>
+</li>
+<li>
+<p>New implementation is 3-5x faster and is always correct wrt overflow or underflow. This is a behavior change - where previously <code>as_uint()</code> would return UINT_MAX on a value "-1", it now returns 0.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>XPath objects (<code>xpath_query</code>, <code>xpath_node_set</code>, <code>xpath_variable_set</code>) are now movable if your compiler supports C++11. Additionally, <code>xpath_variable_set</code> is copyable.</p>
+</li>
+<li>
+<p>Added <code>format_indent_attributes</code> that makes the resulting XML friendlier to line diff/merge tools.</p>
+</li>
+<li>
+<p>Added a variant of <code>xml_node::attribute</code> function with a hint that can improve lookup performance.</p>
+</li>
+<li>
+<p>Custom allocation functions are now allowed (but not required) to throw instead of returning a null pointer.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fix Clang 3.7 crashes in out-of-memory cases (C++ DR 1748)</p>
+</li>
+<li>
+<p>Fix XPath crashes on SPARC64 (and other 32-bit architectures where doubles have to be aligned to 8 bytes)</p>
+</li>
+<li>
+<p>Fix xpath_node_set assignment to provide strong exception guarantee</p>
+</li>
+<li>
+<p>Fix saving for custom xml_writer implementations that can throw from write()</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.6"></span></p>
+<h3 id="v16-2015-04-10"><a href="#v1.6" class="anchor"></a><a href="#v1.6" class="link">v1.6 <sup>2015-04-10</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Attribute/text values now use more digits when printing floating point numbers to guarantee round-tripping.</p>
+</li>
+<li>
+<p>Text nodes no longer get extra surrounding whitespace when pretty-printing nodes with mixed contents</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed translate and normalize-space XPath functions to no longer return internal NUL characters</p>
+</li>
+<li>
+<p>Fixed buffer overrun on malformed comments inside DOCTYPE sections</p>
+</li>
+<li>
+<p>DOCTYPE parsing can no longer run out of stack space on malformed inputs (XML parsing is now using bounded stack space)</p>
+</li>
+<li>
+<p>Adjusted processing instruction output to avoid malformed documents if the PI value contains <code>?></code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.5"></span></p>
+<h3 id="v15-2014-11-27"><a href="#v1.5" class="anchor"></a><a href="#v1.5" class="link">v1.5 <sup>2014-11-27</sup></a></h3>
+<div class="paragraph">
+<p>Major release, featuring a lot of performance improvements and some new features.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>xml_document::load(const char_t*)</code> was renamed to <code>load_string</code>; the old method is still available and will be deprecated in a future release</p>
+</li>
+<li>
+<p><code>xml_node::select_single_node</code> was renamed to <code>select_node</code>; the old method is still available and will be deprecated in a future release.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added <code>xml_node::append_move</code> and other functions for moving nodes within a document</p>
+</li>
+<li>
+<p>Added <code>xpath_query::evaluate_node</code> for evaluating queries with a single node as a result</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Performance improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Optimized XML parsing (10-40% faster with clang/gcc, up to 10% faster with MSVC)</p>
+</li>
+<li>
+<p>Optimized memory consumption when copying nodes in the same document (string contents is now shared)</p>
+</li>
+<li>
+<p>Optimized node copying (10% faster for cross-document copies, 3x faster for inter-document copies; also it now consumes a constant amount of stack space)</p>
+</li>
+<li>
+<p>Optimized node output (60% faster; also it now consumes a constant amount of stack space)</p>
+</li>
+<li>
+<p>Optimized XPath allocation (query evaluation now results in fewer temporary allocations)</p>
+</li>
+<li>
+<p>Optimized XPath sorting (node set sorting is 2-3x faster in some cases)</p>
+</li>
+<li>
+<p>Optimized XPath evaluation (XPathMark suite is 100x faster; some commonly used queries are 3-4x faster)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed <code>xml_node::offset_debug</code> for corner cases</p>
+</li>
+<li>
+<p>Fixed undefined behavior while calling memcpy in some cases</p>
+</li>
+<li>
+<p>Fixed MSVC 2015 compilation warnings</p>
+</li>
+<li>
+<p>Fixed <code>contrib/foreach.hpp</code> for Boost 1.56.0</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Adjusted comment output to avoid malformed documents if the comment value contains <code>--</code></p>
+</li>
+<li>
+<p>Fix XPath sorting for documents that were constructed using append_buffer</p>
+</li>
+<li>
+<p>Fix <code>load_file</code> for wide-character paths with non-ASCII characters in MinGW with C++11 mode enabled</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.4"></span></p>
+<h3 id="v14-2014-02-27"><a href="#v1.4" class="anchor"></a><a href="#v1.4" class="link">v1.4 <sup>2014-02-27</sup></a></h3>
+<div class="paragraph">
+<p>Major release, featuring various new features, bug fixes and compatibility improvements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>Documents without element nodes are now rejected with <code>status_no_document_element</code> error, unless <code>parse_fragment</code> option is used</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added XML fragment parsing (<code>parse_fragment</code> flag)</p>
+</li>
+<li>
+<p>Added PCDATA whitespace trimming (<code>parse_trim_pcdata</code> flag)</p>
+</li>
+<li>
+<p>Added long long support for <code>xml_attribute</code> and <code>xml_text</code> (<code>as_llong</code>, <code>as_ullong</code> and <code>set_value</code>/<code>set</code> overloads)</p>
+</li>
+<li>
+<p>Added hexadecimal integer parsing support for <code>as_int</code>/<code>as_uint</code>/<code>as_llong</code>/<code>as_ullong</code></p>
+</li>
+<li>
+<p>Added <code>xml_node::append_buffer</code> to improve performance of assembling documents from fragments</p>
+</li>
+<li>
+<p><code>xml_named_node_iterator</code> is now bidirectional</p>
+</li>
+<li>
+<p>Reduced XPath stack consumption during compilation and evaluation (useful for embedded systems)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Improved support for platforms without wchar_t support</p>
+</li>
+<li>
+<p>Fixed several false positives in clang static analysis</p>
+</li>
+<li>
+<p>Fixed several compilation warnings for various GCC versions</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed undefined pointer arithmetic in XPath implementation</p>
+</li>
+<li>
+<p>Fixed non-seekable iostream support for certain stream types, i.e. Boost <code>file_source</code> with pipe input</p>
+</li>
+<li>
+<p>Fixed <code>xpath_query::return_type</code> for some expressions</p>
+</li>
+<li>
+<p>Fixed dllexport issues with <code>xml_named_node_iterator</code></p>
+</li>
+<li>
+<p>Fixed <code>find_child_by_attribute</code> assertion for attributes with null name/value</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.2"></span></p>
+<h3 id="v12-2012-05-01"><a href="#v1.2" class="anchor"></a><a href="#v1.2" class="link">v1.2 <sup>2012-05-01</sup></a></h3>
+<div class="paragraph">
+<p>Major release, featuring header-only mode, various interface enhancements (i.e. PCDATA manipulation and C++11 iteration), many other features and compatibility improvements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added <code>xml_text</code> helper class for working with PCDATA/CDATA contents of an element node</p>
+</li>
+<li>
+<p>Added optional header-only mode (controlled by <code>PUGIXML_HEADER_ONLY</code> define)</p>
+</li>
+<li>
+<p>Added <code>xml_node::children()</code> and <code>xml_node::attributes()</code> for C++11 ranged for loop or <code>BOOST_FOREACH</code></p>
+</li>
+<li>
+<p>Added support for Latin-1 (ISO-8859-1) encoding conversion during loading and saving</p>
+</li>
+<li>
+<p>Added custom default values for <code>xml_attribute::as_*</code> (they are returned if the attribute does not exist)</p>
+</li>
+<li>
+<p>Added <code>parse_ws_pcdata_single</code> flag for preserving whitespace-only PCDATA in case it’s the only child</p>
+</li>
+<li>
+<p>Added <code>format_save_file_text</code> for <code>xml_document::save_file</code> to open files as text instead of binary (changes newlines on Windows)</p>
+</li>
+<li>
+<p>Added <code>format_no_escapes</code> flag to disable special symbol escaping (complements <code>~parse_escapes</code>)</p>
+</li>
+<li>
+<p>Added support for loading document from streams that do not support seeking</p>
+</li>
+<li>
+<p>Added <code>PUGIXML_MEMORY_*</code> constants for tweaking allocation behavior (useful for embedded systems)</p>
+</li>
+<li>
+<p>Added <code>PUGIXML_VERSION</code> preprocessor define</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Parser does not require setjmp support (improves compatibility with some embedded platforms, enables <code>/clr:pure</code> compilation)</p>
+</li>
+<li>
+<p>STL forward declarations are no longer used (fixes SunCC/RWSTL compilation, fixes clang compilation in C++11 mode)</p>
+</li>
+<li>
+<p>Fixed AirPlay SDK, Android, Windows Mobile (WinCE) and C++/CLI compilation</p>
+</li>
+<li>
+<p>Fixed several compilation warnings for various GCC versions, Intel C++ compiler and Clang</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed unsafe bool conversion to avoid problems on C++/CLI</p>
+</li>
+<li>
+<p>Iterator dereference operator is const now (fixes Boost <code>filter_iterator</code> support)</p>
+</li>
+<li>
+<p><code>xml_document::save_file</code> now checks for file I/O errors during saving</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v1.0"></span></p>
+<h3 id="v10-2010-11-01"><a href="#v1.0" class="anchor"></a><a href="#v1.0" class="link">v1.0 <sup>2010-11-01</sup></a></h3>
+<div class="paragraph">
+<p>Major release, featuring many XPath enhancements, wide character filename support, miscellaneous performance improvements, bug fixes and more.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>XPath:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>XPath implementation is moved to <code>pugixml.cpp</code> (which is the only source file now); use <code>PUGIXML_NO_XPATH</code> if you want to disable XPath to reduce code size</p>
+</li>
+<li>
+<p>XPath is now supported without exceptions (<code>PUGIXML_NO_EXCEPTIONS</code>); the error handling mechanism depends on the presence of exception support</p>
+</li>
+<li>
+<p>XPath is now supported without STL (<code>PUGIXML_NO_STL</code>)</p>
+</li>
+<li>
+<p>Introduced variable support</p>
+</li>
+<li>
+<p>Introduced new <code>xpath_query::evaluate_string</code>, which works without STL</p>
+</li>
+<li>
+<p>Introduced new <code>xpath_node_set</code> constructor (from an iterator range)</p>
+</li>
+<li>
+<p>Evaluation function now accept attribute context nodes</p>
+</li>
+<li>
+<p>All internal allocations use custom allocation functions</p>
+</li>
+<li>
+<p>Improved error reporting; now a last parsed offset is returned together with the parsing error</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed memory leak for loading from streams with stream exceptions turned on</p>
+</li>
+<li>
+<p>Fixed custom deallocation function calling with null pointer in one case</p>
+</li>
+<li>
+<p>Fixed missing attributes for iterator category functions; all functions/classes can now be DLL-exported</p>
+</li>
+<li>
+<p>Worked around Digital Mars compiler bug, which lead to minor read overfetches in several functions</p>
+</li>
+<li>
+<p><code>load_file</code> now works with 2+ Gb files in MSVC/MinGW</p>
+</li>
+<li>
+<p>XPath: fixed memory leaks for incorrect queries</p>
+</li>
+<li>
+<p>XPath: fixed <code>xpath_node()</code> attribute constructor with empty attribute argument</p>
+</li>
+<li>
+<p>XPath: fixed <code>lang()</code> function for non-ASCII arguments</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>CDATA nodes containing <code>]]></code> are printed as several nodes; while this changes the internal structure, this is the only way to escape CDATA contents</p>
+</li>
+<li>
+<p>Memory allocation errors during parsing now preserve last parsed offset (to give an idea about parsing progress)</p>
+</li>
+<li>
+<p>If an element node has the only child, and it is of CDATA type, then the extra indentation is omitted (previously this behavior only held for PCDATA children)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Additional functionality:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added <code>xml_parse_result</code> default constructor</p>
+</li>
+<li>
+<p>Added <code>xml_document::load_file</code> and <code>xml_document::save_file</code> with wide character paths</p>
+</li>
+<li>
+<p>Added <code>as_utf8</code> and <code>as_wide</code> overloads for <code>std::wstring</code>/<code>std::string</code> arguments</p>
+</li>
+<li>
+<p>Added DOCTYPE node type (<code>node_doctype</code>) and a special parse flag, <code>parse_doctype</code>, to add such nodes to the document during parsing</p>
+</li>
+<li>
+<p>Added <code>parse_full</code> parse flag mask, which extends <code>parse_default</code> with all node type parsing flags except <code>parse_ws_pcdata</code></p>
+</li>
+<li>
+<p>Added <code>xml_node::hash_value()</code> and <code>xml_attribute::hash_value()</code> functions for use in hash-based containers</p>
+</li>
+<li>
+<p>Added <code>internal_object()</code> and additional constructor for both <code>xml_node</code> and <code>xml_attribute</code> for easier marshalling (useful for language bindings)</p>
+</li>
+<li>
+<p>Added <code>xml_document::document_element()</code> function</p>
+</li>
+<li>
+<p>Added <code>xml_node::prepend_attribute</code>, <code>xml_node::prepend_child</code> and <code>xml_node::prepend_copy</code> functions</p>
+</li>
+<li>
+<p>Added <code>xml_node::append_child</code>, <code>xml_node::prepend_child</code>, <code>xml_node::insert_child_before</code> and <code>xml_node::insert_child_after</code> overloads for element nodes (with name instead of type)</p>
+</li>
+<li>
+<p>Added <code>xml_document::reset()</code> function</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Performance improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>xml_node::root()</code> and <code>xml_node::offset_debug()</code> are now O(1) instead of O(logN)</p>
+</li>
+<li>
+<p>Minor parsing optimizations</p>
+</li>
+<li>
+<p>Minor memory optimization for strings in DOM tree (<code>set_name</code>/<code>set_value</code>)</p>
+</li>
+<li>
+<p>Memory optimization for string memory reclaiming in DOM tree (<code>set_name</code>/<code>set_value</code> now reallocate the buffer if memory waste is too big)</p>
+</li>
+<li>
+<p>XPath: optimized document order sorting</p>
+</li>
+<li>
+<p>XPath: optimized child/attribute axis step</p>
+</li>
+<li>
+<p>XPath: optimized number-to-string conversions in MSVC</p>
+</li>
+<li>
+<p>XPath: optimized concat for many arguments</p>
+</li>
+<li>
+<p>XPath: optimized evaluation allocation mechanism: constant and document strings are not heap-allocated</p>
+</li>
+<li>
+<p>XPath: optimized evaluation allocation mechanism: all temporaries' allocations use fast stack-like allocator</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Removed wildcard functions (<code>xml_node::child_w</code>, <code>xml_node::attribute_w</code>, etc.)</p>
+</li>
+<li>
+<p>Removed <code>xml_node::all_elements_by_name</code></p>
+</li>
+<li>
+<p>Removed <code>xpath_type_t</code> enumeration; use <code>xpath_value_type</code> instead</p>
+</li>
+<li>
+<p>Removed <code>format_write_bom_utf8</code> enumeration; use <code>format_write_bom</code> instead</p>
+</li>
+<li>
+<p>Removed <code>xml_document::precompute_document_order</code>, <code>xml_attribute::document_order</code> and <code>xml_node::document_order</code> functions; document order sort optimization is now automatic</p>
+</li>
+<li>
+<p>Removed <code>xml_document::parse</code> functions and <code>transfer_ownership</code> struct; use <code>xml_document::load_buffer_inplace</code> and <code>xml_document::load_buffer_inplace_own</code> instead</p>
+</li>
+<li>
+<p>Removed <code>as_utf16</code> function; use <code>as_wide</code> instead</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.9"></span></p>
+<h3 id="v09-2010-07-01"><a href="#v0.9" class="anchor"></a><a href="#v0.9" class="link">v0.9 <sup>2010-07-01</sup></a></h3>
+<div class="paragraph">
+<p>Major release, featuring extended and improved Unicode support, miscellaneous performance improvements, bug fixes and more.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Major Unicode improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Introduced encoding support (automatic/manual encoding detection on load, manual encoding selection on save, conversion from/to UTF8, UTF16 LE/BE, UTF32 LE/BE)</p>
+</li>
+<li>
+<p>Introduced <code>wchar_t</code> mode (you can set <code>PUGIXML_WCHAR_MODE</code> define to switch pugixml internal encoding from UTF8 to <code>wchar_t</code>; all functions are switched to their Unicode variants)</p>
+</li>
+<li>
+<p>Load/save functions now support wide streams</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed document corruption on failed parsing bug</p>
+</li>
+<li>
+<p>XPath string/number conversion improvements (increased precision, fixed crash for huge numbers)</p>
+</li>
+<li>
+<p>Improved DOCTYPE parsing: now parser recognizes all well-formed DOCTYPE declarations</p>
+</li>
+<li>
+<p>Fixed <code>xml_attribute::as_uint()</code> for large numbers (i.e. 2<sup>32</sup>-1)</p>
+</li>
+<li>
+<p>Fixed <code>xml_node::first_element_by_path</code> for path components that are prefixes of node names, but are not exactly equal to them.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>parse()</code> API changed to <code>load_buffer</code>/<code>load_buffer_inplace</code>/<code>load_buffer_inplace_own</code>; <code>load_buffer</code> APIs do not require zero-terminated strings.</p>
+</li>
+<li>
+<p>Renamed <code>as_utf16</code> to <code>as_wide</code></p>
+</li>
+<li>
+<p>Changed <code>xml_node::offset_debug</code> return type and <code>xml_parse_result::offset</code> type to <code>ptrdiff_t</code></p>
+</li>
+<li>
+<p>Nodes/attributes with empty names are now printed as <code>:anonymous</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Performance improvements:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Optimized document parsing and saving</p>
+</li>
+<li>
+<p>Changed internal memory management: internal allocator is used for both metadata and name/value data; allocated pages are deleted if all allocations from them are deleted</p>
+</li>
+<li>
+<p>Optimized memory consumption: <code>sizeof(xml_node_struct)</code> reduced from 40 bytes to 32 bytes on x86</p>
+</li>
+<li>
+<p>Optimized debug mode parsing/saving by order of magnitude</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Miscellaneous:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>All STL includes except <code>&#x3C;exception></code> in <code>pugixml.hpp</code> are replaced with forward declarations</p>
+</li>
+<li>
+<p><code>xml_node::remove_child</code> and <code>xml_node::remove_attribute</code> now return the operation result</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Compatibility:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>parse()</code> and <code>as_utf16</code> are left for compatibility (these functions are deprecated and will be removed in version 1.0)</p>
+</li>
+<li>
+<p>Wildcard functions, <code>document_order</code>/<code>precompute_document_order</code> functions, <code>all_elements_by_name</code> function and <code>format_write_bom_utf8</code> flag are deprecated and will be removed in version 1.0</p>
+</li>
+<li>
+<p><code>xpath_type_t</code> enumeration was renamed to <code>xpath_value_type</code>; <code>xpath_type_t</code> is deprecated and will be removed in version 1.0</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.5"></span></p>
+<h3 id="v05-2009-11-08"><a href="#v0.5" class="anchor"></a><a href="#v0.5" class="link">v0.5 <sup>2009-11-08</sup></a></h3>
+<div class="paragraph">
+<p>Major bugfix release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>XPath bugfixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed <code>translate()</code>, <code>lang()</code> and <code>concat()</code> functions (infinite loops/crashes)</p>
+</li>
+<li>
+<p>Fixed compilation of queries with empty literal strings (<code>""</code>)</p>
+</li>
+<li>
+<p>Fixed axis tests: they never add empty nodes/attributes to the resulting node set now</p>
+</li>
+<li>
+<p>Fixed string-value evaluation for node-set (the result excluded some text descendants)</p>
+</li>
+<li>
+<p>Fixed <code>self::</code> axis (it behaved like <code>ancestor-or-self::</code>)</p>
+</li>
+<li>
+<p>Fixed <code>following::</code> and <code>preceding::</code> axes (they included descendent and ancestor nodes, respectively)</p>
+</li>
+<li>
+<p>Minor fix for <code>namespace-uri()</code> function (namespace declaration scope includes the parent element of namespace declaration attribute)</p>
+</li>
+<li>
+<p>Some incorrect queries are no longer parsed now (i.e. <code>foo: *</code>)</p>
+</li>
+<li>
+<p>Fixed <code>text()</code>/etc. node test parsing bug (i.e. <code>foo[text()]</code> failed to compile)</p>
+</li>
+<li>
+<p>Fixed root step (<code>/</code>) - it now selects empty node set if query is evaluated on empty node</p>
+</li>
+<li>
+<p>Fixed string to number conversion (<code>"123 "</code> converted to NaN, <code>"123 .456"</code> converted to 123.456 - now the results are 123 and NaN, respectively)</p>
+</li>
+<li>
+<p>Node set copying now preserves sorted type; leads to better performance on some queries</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Miscellaneous bugfixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed <code>xml_node::offset_debug</code> for PI nodes</p>
+</li>
+<li>
+<p>Added empty attribute checks to <code>xml_node::remove_attribute</code></p>
+</li>
+<li>
+<p>Fixed <code>node_pi</code> and <code>node_declaration</code> copying</p>
+</li>
+<li>
+<p>Const-correctness fixes</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Specification changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>xpath_node::select_nodes()</code> and related functions now throw exception if expression return type is not node set (instead of assertion)</p>
+</li>
+<li>
+<p><code>xml_node::traverse()</code> now sets depth to -1 for both <code>begin()</code> and <code>end()</code> callbacks (was 0 at <code>begin()</code> and -1 at <code>end()</code>)</p>
+</li>
+<li>
+<p>In case of non-raw node printing a newline is output after PCDATA inside nodes if the PCDATA has siblings</p>
+</li>
+<li>
+<p>UTF8 → <code>wchar_t</code> conversion now considers 5-byte UTF8-like sequences as invalid</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added <code>xpath_node_set::operator[]</code> for index-based iteration</p>
+</li>
+<li>
+<p>Added <code>xpath_query::return_type()</code></p>
+</li>
+<li>
+<p>Added getter accessors for memory-management functions</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.42"></span></p>
+<h3 id="v042-2009-09-17"><a href="#v0.42" class="anchor"></a><a href="#v0.42" class="link">v0.42 <sup>2009-09-17</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed deallocation in case of custom allocation functions or if <code>delete[]</code> / <code>free</code> are incompatible</p>
+</li>
+<li>
+<p>XPath parser fixed for incorrect queries (i.e. incorrect XPath queries should now always fail to compile)</p>
+</li>
+<li>
+<p>Const-correctness fixes for <code>find_child_by_attribute</code></p>
+</li>
+<li>
+<p>Improved compatibility (miscellaneous warning fixes, fixed <code>&#x3C;cstring></code> include dependency for GCC)</p>
+</li>
+<li>
+<p>Fixed iterator begin/end and print function to work correctly for empty nodes</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added <code>PUGIXML_API</code>/<code>PUGIXML_CLASS</code>/<code>PUGIXML_FUNCTION</code> configuration macros to control class/function attributes</p>
+</li>
+<li>
+<p>Added <code>xml_attribute::set_value</code> overloads for different types</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.41"></span></p>
+<h3 id="v041-2009-02-08"><a href="#v0.41" class="anchor"></a><a href="#v0.41" class="link">v0.41 <sup>2009-02-08</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>Fixed bug with node printing (occasionally some content was not written to output stream)</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.4"></span></p>
+<h3 id="v04-2009-01-18"><a href="#v0.4" class="anchor"></a><a href="#v0.4" class="link">v0.4 <sup>2009-01-18</sup></a></h3>
+<div class="paragraph">
+<p>Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Documentation fix in samples for <code>parse()</code> with manual lifetime control</p>
+</li>
+<li>
+<p>Fixed document order sorting in XPath (it caused wrong order of nodes after <code>xpath_node_set::sort</code> and wrong results of some XPath queries)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Node printing changes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Single quotes are no longer escaped when printing nodes</p>
+</li>
+<li>
+<p>Symbols in second half of ASCII table are no longer escaped when printing nodes; because of this, <code>format_utf8</code> flag is deleted as it’s no longer needed and <code>format_write_bom</code> is renamed to <code>format_write_bom_utf8</code>.</p>
+</li>
+<li>
+<p>Reworked node printing - now it works via <code>xml_writer</code> interface; implementations for <code>FILE*</code> and <code>std::ostream</code> are available. As a side-effect, <code>xml_document::save_file</code> now works without STL.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added unsigned integer support for attributes (<code>xml_attribute::as_uint</code>, <code>xml_attribute::operator=</code>)</p>
+</li>
+<li>
+<p>Now document declaration (<code>&#x3C;?xml …​?></code>) is parsed as node with type <code>node_declaration</code> when <code>parse_declaration</code> flag is specified (access to encoding/version is performed as if they were attributes, i.e. <code>doc.child("xml").attribute("version").as_float()</code>); corresponding flags for node printing were also added</p>
+</li>
+<li>
+<p>Added support for custom memory management (see <code>set_memory_management_functions</code> for details)</p>
+</li>
+<li>
+<p>Implemented node/attribute copying (see <code>xml_node::insert_copy_*</code> and <code>xml_node::append_copy</code> for details)</p>
+</li>
+<li>
+<p>Added <code>find_child_by_attribute</code> and <code>find_child_by_attribute_w</code> to simplify parsing code in some cases (i.e. COLLADA files)</p>
+</li>
+<li>
+<p>Added file offset information querying for debugging purposes (now you’re able to determine exact location of any <code>xml_node</code> in parsed file, see <code>xml_node::offset_debug</code> for details)</p>
+</li>
+<li>
+<p>Improved error handling for parsing - now <code>load()</code>, <code>load_file()</code> and <code>parse()</code> return <code>xml_parse_result</code>, which contains error code and last parsed offset; this does not break old interface as <code>xml_parse_result</code> can be implicitly casted to <code>bool</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.34"></span></p>
+<h3 id="v034-2007-10-31"><a href="#v0.34" class="anchor"></a><a href="#v0.34" class="link">v0.34 <sup>2007-10-31</sup></a></h3>
+<div class="paragraph">
+<p>Maintenance release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed bug with loading from text-mode iostreams</p>
+</li>
+<li>
+<p>Fixed leak when <code>transfer_ownership</code> is true and parsing is failing</p>
+</li>
+<li>
+<p>Fixed bug in saving (<code>\r</code> and <code>\n</code> are now escaped in attribute values)</p>
+</li>
+<li>
+<p>Renamed <code>free()</code> to <code>destroy()</code> - some macro conflicts were reported</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Improved compatibility (supported Digital Mars C++, MSVC 6, CodeWarrior 8, PGI C++, Comeau, supported PS3 and XBox360)</p>
+</li>
+<li>
+<p><code>PUGIXML_NO_EXCEPTION</code> flag for platforms without exception handling</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.3"></span></p>
+<h3 id="v03-2007-02-21"><a href="#v0.3" class="anchor"></a><a href="#v0.3" class="link">v0.3 <sup>2007-02-21</sup></a></h3>
+<div class="paragraph">
+<p>Refactored, reworked and improved version. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Interface:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Added XPath</p>
+</li>
+<li>
+<p>Added tree modification functions</p>
+</li>
+<li>
+<p>Added no STL compilation mode</p>
+</li>
+<li>
+<p>Added saving document to file</p>
+</li>
+<li>
+<p>Refactored parsing flags</p>
+</li>
+<li>
+<p>Removed <code>xml_parser</code> class in favor of <code>xml_document</code></p>
+</li>
+<li>
+<p>Added transfer ownership parsing mode</p>
+</li>
+<li>
+<p>Modified the way <code>xml_tree_walker</code> works</p>
+</li>
+<li>
+<p>Iterators are now non-constant</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Implementation:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Support of several compilers and platforms</p>
+</li>
+<li>
+<p>Refactored and sped up parsing core</p>
+</li>
+<li>
+<p>Improved standard compliancy</p>
+</li>
+<li>
+<p>Added XPath implementation</p>
+</li>
+<li>
+<p>Fixed several bugs</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.2"></span></p>
+<h3 id="v02-2006-11-06"><a href="#v0.2" class="anchor"></a><a href="#v0.2" class="link">v0.2 <sup>2006-11-06</sup></a></h3>
+<div class="paragraph">
+<p>First public release. Changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Fixed <code>child_value()</code> (for empty nodes)</p>
+</li>
+<li>
+<p>Fixed <code>xml_parser_impl</code> warning at W4</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>New features:</p>
+<div class="olist arabic">
+<ol>
+<li>
+<p>Introduced <code>child_value(name)</code> and <code>child_value_w(name)</code></p>
+</li>
+<li>
+<p><code>parse_eol_pcdata</code> and <code>parse_eol_attribute</code> flags + <code>parse_minimal</code> optimizations</p>
+</li>
+<li>
+<p>Optimizations of <code>strconv_t</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<p><span id="v0.1"></span></p>
+<h3 id="v01-2006-07-15"><a href="#v0.1" class="anchor"></a><a href="#v0.1" class="link">v0.1 <sup>2006-07-15</sup></a></h3>
+<div class="paragraph">
+<p>First private release for testing purposes</p>
+</div>
+</div>
+</div>
+</div>
