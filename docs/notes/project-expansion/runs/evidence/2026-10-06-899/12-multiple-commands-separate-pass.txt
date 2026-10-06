@@ -1,0 +1,123 @@
+FULL REVIEW 12-multiple-commands
+0 EN 3.8 Multiple commands syntax
+JA 3.8 複数コマンドの構文
+1 EN There are several methods to specify multiple commands in a sed program.
+JA sedプログラムで複数のコマンドを指定する方法はいくつかあります。
+2 EN Using newlines is most natural when running a sed script from a file (using the -f option).
+JA ファイルからsedスクリプトを実行する場合（-fオプションを使う場合）は、改行を使うのが最も自然です。
+3 EN On the command line, all sed commands may be separated by newlines. Alternatively, you may specify each command as an argument to an -e option:
+JA コマンドラインでは、すべてのsedコマンドを改行で区切れます。または、各コマンドをそれぞれ-eオプションの引数として指定できます。
+4 pre EN=JA LITERAL $ seq 6 | sed '1d
+3d
+5d'
+2
+4
+6
+
+$ seq 6 | sed -e 1d -e 3d -e 5d
+2
+4
+6
+5 EN A semicolon (‘;’) may be used to separate most simple commands:
+JA ほとんどの単純なコマンドは、セミコロン（「;」）で区切れます。
+6 pre EN=JA LITERAL $ seq 6 | sed '1d;3d;5d'
+2
+4
+6
+7 EN The {,},b,t,T,: commands can be separated with a semicolon (this is a non-portable GNU sed extension).
+JA {、}、b、t、T、:の各コマンドはセミコロンで区切れます。これは移植性のないGNU sed拡張です。
+8 pre EN=JA LITERAL $ seq 4 | sed '{1d;3d}'
+2
+4
+
+$ seq 6 | sed '{1d;3d};5d'
+2
+4
+6
+9 EN Labels used in b,t,T,: commands are read until a semicolon. Leading and trailing whitespace is ignored. In the examples below the label is ‘x’. The first example works with GNU sed. The second is a portable equivalent. For more information about branching and labels see Branching and Flow Control.
+JA b、t、T、:の各コマンドが使うラベルは、セミコロンまで読み込まれます。先頭と末尾の空白は無視されます。次の例のラベルは「x」です。最初の例はGNU sedで動作します。2番目は、それと同じ働きをする移植可能な書き方です。分岐とラベルの詳細は、分岐と制御の流れを参照してください。
+10 pre EN=JA LITERAL $ seq 3 | sed '/1/b x ; s/^/=/ ; :x ; 3d'
+1
+=2
+
+$ seq 3 | sed -e '/1/bx' -e 's/^/=/' -e ':x' -e '3d'
+1
+=2
+11 EN 3.8.1 Commands Requiring a newline
+JA 3.8.1 改行を必要とするコマンド
+12 EN The following commands cannot be separated by a semicolon and require a newline:
+JA 次のコマンドはセミコロンで区切れず、改行が必要です。
+13 dt EN=JA LITERAL a,c,i (append/change/insert)
+14 EN All characters following a,c,i commands are taken as the text to append/change/insert. Using a semicolon leads to undesirable results:
+JA a、c、iの各コマンドの後にある文字は、すべて追加・変更・挿入するテキストとして扱われます。セミコロンを使うと、望ましくない結果になります。
+15 pre EN=JA LITERAL $ seq 2 | sed '1aHello ; 2d'
+1
+Hello ; 2d
+2
+16 EN Separate the commands using -e or a newline:
+JA -eまたは改行を使って、コマンドを区切ってください。
+17 pre EN=JA LITERAL $ seq 2 | sed -e 1aHello -e 2d
+1
+Hello
+
+$ seq 2 | sed '1aHello
+2d'
+1
+Hello
+18 EN Note that specifying the text to add (‘Hello’) immediately after a,c,i is itself a GNU sed extension. A portable, POSIX-compliant alternative is:
+JA 追加するテキスト（「Hello」）をa、c、iの直後に指定すること自体が、GNU sed拡張である点に注意してください。移植可能でPOSIXに準拠した別の書き方は、次のとおりです。
+19 pre EN=JA LITERAL $ seq 2 | sed '1a\
+Hello
+2d'
+1
+Hello
+20 dt EN=JA LITERAL # (comment)
+21 EN All characters following ‘#’ until the next newline are ignored.
+JA 「#」の後から次の改行までの文字は、すべて無視されます。
+22 pre EN=JA LITERAL $ seq 3 | sed '# this is a comment ; 2d'
+1
+2
+3
+
+
+$ seq 3 | sed '# this is a comment
+2d'
+1
+3
+23 dt EN=JA LITERAL r,R,w,W (reading and writing files)
+24 EN The r,R,w,W commands parse the filename until end of the line. If whitespace, comments or semicolons are found, they will be included in the filename, leading to unexpected results:
+JA r、R、w、Wの各コマンドは、行末までをファイル名として読み取ります。空白、コメント、セミコロンがあれば、それらもファイル名に含まれ、予期しない結果につながります。
+25 pre EN=JA LITERAL $ seq 2 | sed '1w hello.txt ; 2d'
+1
+2
+
+$ ls -log
+total 4
+-rw-rw-r-- 1 2 Jan 23 23:03 hello.txt ; 2d
+
+$ cat 'hello.txt ; 2d'
+1
+26 EN Note that sed silently ignores read/write errors in r,R,w,W commands (such as missing files). In the following example, sed tries to read a file named ‘hello.txt ; N’. The file is missing, and the error is silently ignored:
+JA sedは、r、R、w、Wの各コマンドでの読み書きエラー（ファイルがない場合など）を、通知せずに無視することに注意してください。次の例では、sedは「hello.txt ; N」という名前のファイルを読もうとします。そのファイルはなく、エラーは通知されずに無視されます。
+27 pre EN=JA LITERAL $ echo x | sed '1rhello.txt ; N'
+x
+28 dt EN=JA LITERAL e (command execution)
+29 EN Any characters following the e command until the end of the line will be sent to the shell. If whitespace, comments or semicolons are found, they will be included in the shell command, leading to unexpected results:
+JA eコマンドの後から行末までの文字は、すべてシェルへ送られます。空白、コメント、セミコロンがあれば、それらもシェルコマンドに含まれ、予期しない結果につながります。
+30 pre EN=JA LITERAL $ echo a | sed '1e touch foo#bar'
+a
+
+$ ls -1
+foo#bar
+
+$ echo a | sed '1e touch foo ; s/a/b/'
+sh: 1: s/a/b/: not found
+a
+31 dt EN=JA LITERAL s///[we] (substitute with e or w flags)
+32 EN In a substitution command, the w flag writes the substitution result to a file, and the e flag executes the substitution result as a shell command. As with the r/R/w/W/e commands, these must be terminated with a newline. If whitespace, comments or semicolons are found, they will be included in the shell command or filename, leading to unexpected results:
+JA 置換コマンドでは、wフラグは置換結果をファイルへ書き込み、eフラグは置換結果をシェルコマンドとして実行します。r/R/w/W/eコマンドと同様に、これらは改行で終える必要があります。空白、コメント、セミコロンがあれば、それらもシェルコマンドやファイル名に含まれ、予期しない結果につながります。
+33 pre EN=JA LITERAL $ echo a | sed 's/a/b/w1.txt#foo'
+b
+
+$ ls -1
+1.txt#foo

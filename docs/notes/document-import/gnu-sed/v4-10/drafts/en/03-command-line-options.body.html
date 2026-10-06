@@ -1,0 +1,243 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="Command_002dLine-Options">
+<h3 class="section" id="Command_002dLine-Options-1"><span>2.2 Command-Line Options</span></h3>
+<p>The full format for invoking <code class="command">sed</code> is:
+</p>
+<div class="example">
+<pre class="gnu-sed-literal">sed OPTIONS... [SCRIPT] [INPUTFILE...]&#10;</pre></div>
+<p><code class="command">sed</code> may be invoked with the following command-line options:
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-Version_002c-printing"></a>
+<a id="index-_002d_002dversion"></a><span><code class="code">--version</code></span></dt>
+<dd><p>Print out the version of <code class="command">sed</code> that is being run and a copyright notice,
+then exit.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Usage-summary_002c-printing"></a>
+<a id="index-_002d_002dhelp"></a><span><code class="code">--help</code></span></dt>
+<dd><p>Print a usage message briefly summarizing these command-line options
+and the bug-reporting address,
+then exit.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dquiet"></a>
+<a class="index-entry-id" id="index-_002d_002dsilent"></a>
+<a class="index-entry-id" id="index-Disabling-autoprint_002c-from-command-line"></a>
+<a id="index-_002dn"></a><span><code class="code">-n</code></span></dt>
+<dt><code class="code">--quiet</code></dt>
+<dt><code class="code">--silent</code></dt>
+<dd><p>By default, <code class="command">sed</code> prints out the pattern space
+at the end of each cycle through the script (see <a class="pxref" href="/docs/gnu-sed/source/v4-10/manual.html#Execution-Cycle">How <code class="code">sed</code> works</a>).
+These options disable this automatic printing,
+and <code class="command">sed</code> only produces output when explicitly told to
+via the <code class="code">p</code> command.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-debug"></a>
+<a id="index-_002d_002ddebug"></a><span><code class="code">--debug</code></span></dt>
+<dd><p>Print the input sed program in canonical form,
+and annotate program execution.
+</p><div class="example">
+<pre class="gnu-sed-literal">$ echo 1 | sed '\%1%s21232'&#10;3&#10;&#10;$ echo 1 | sed --debug '\%1%s21232'&#10;SED PROGRAM:&#10;  /1/ s/1/3/&#10;INPUT:   'STDIN' line 1&#10;PATTERN: 1&#10;COMMAND: /1/ s/1/3/&#10;PATTERN: 3&#10;END-OF-CYCLE:&#10;3&#10;</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dexpression"></a>
+<a class="index-entry-id" id="index-Script_002c-from-command-line"></a>
+<a id="index-_002de"></a><span><code class="code">-e <var class="var">script</var></code></span></dt>
+<dt><code class="code">--expression=<var class="var">script</var></code></dt>
+<dd><p>Add the commands in <var class="var">script</var> to the set of commands to be
+run while processing the input.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dfile"></a>
+<a class="index-entry-id" id="index-Script_002c-from-a-file"></a>
+<a id="index-_002df"></a><span><code class="code">-f <var class="var">script-file</var></code></span></dt>
+<dt><code class="code">--file=<var class="var">script-file</var></code></dt>
+<dd><p>Add the commands contained in the file <var class="var">script-file</var>
+to the set of commands to be run while processing the input.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002din_002dplace"></a>
+<a class="index-entry-id" id="index-In_002dplace-editing_002c-activating"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-in_002dplace-editing"></a>
+<a id="index-_002di"></a><span><code class="code">-i[<var class="var">SUFFIX</var>]</code></span></dt>
+<dt><code class="code">--in-place[=<var class="var">SUFFIX</var>]</code></dt>
+<dd><p>This option specifies that files are to be edited in-place.
+GNU <code class="command">sed</code> does this by creating a temporary file and
+sending output to this file rather than to the standard
+output.<a class="footnote" href="/docs/gnu-sed/v4-10/en/01-guide/03-command-line-options/#FOOT1" id="DOCF1"><sup>1</sup></a>.
+</p>
+<p>This option implies <samp class="option">-s</samp>.
+</p>
+<p>When the end of the file is reached, the temporary file is
+renamed to the output file’s original name.  The extension,
+if supplied, is used to modify the name of the old file
+before renaming the temporary file, thereby making a backup
+copy<a class="footnote" href="/docs/gnu-sed/v4-10/en/01-guide/03-command-line-options/#FOOT2" id="DOCF2"><sup>2</sup></a>).
+</p>
+<a class="index-entry-id" id="index-In_002dplace-editing_002c-Perl_002dstyle-backup-file-names"></a>
+<p>This rule is followed: if the extension doesn’t contain a <code class="code">*</code>,
+then it is appended to the end of the current filename as a
+suffix; if the extension does contain one or more <code class="code">*</code>
+characters, then <em class="emph">each</em> asterisk is replaced with the
+current filename.  This allows you to add a prefix to the
+backup file, instead of (or in addition to) a suffix, or
+even to place backup copies of the original files into another
+directory (provided the directory already exists).
+</p>
+<p>If no extension is supplied, the original file is
+overwritten without making a backup.
+</p>
+<p>Because <samp class="option">-i</samp> takes an optional argument, it should
+not be followed by other short options:
+</p><dl class="table">
+<dt><code class="code">sed -Ei '...' FILE</code></dt>
+<dd><p>Same as <samp class="option">-E -i</samp> with no backup suffix - <samp class="file">FILE</samp> will be
+edited in-place without creating a backup.
+</p>
+</dd>
+<dt><code class="code">sed -iE '...' FILE</code></dt>
+<dd><p>This is equivalent to <samp class="option">--in-place=E</samp>, creating <samp class="file">FILEE</samp> as backup
+of <samp class="file">FILE</samp>
+</p></dd>
+</dl>
+<p>Be cautious of using <samp class="option">-n</samp> with <samp class="option">-i</samp>: the former disables
+automatic printing of lines and the latter changes the file in-place
+without a backup. Used carelessly (and without an explicit <code class="code">p</code> command),
+the output file will be empty:
+</p><div class="example">
+<pre class="gnu-sed-literal"># WRONG USAGE: 'FILE' will be truncated.&#10;sed -ni 's/foo/bar/' FILE&#10;</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dline_002dlength"></a>
+<a class="index-entry-id" id="index-Line-length_002c-setting"></a>
+<a id="index-_002dl"></a><span><code class="code">-l <var class="var">N</var></code></span></dt>
+<dt><code class="code">--line-length=<var class="var">N</var></code></dt>
+<dd><p>Specify the default line-wrap length for the <code class="code">l</code> command.
+A length of 0 (zero) means to never wrap long lines.  If
+not specified, it is taken to be 70.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-disabling"></a>
+<a id="index-_002d_002dposix"></a><span><code class="code">--posix</code></span></dt>
+<dd><p>GNU <code class="command">sed</code> includes several extensions to POSIX
+sed.  In order to simplify writing portable scripts, this
+option disables all the extensions that this manual documents,
+including additional commands.
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT-behavior_002c-enabling"></a>
+Most of the extensions accept <code class="command">sed</code> programs that
+are outside the syntax mandated by POSIX, but some
+of them (such as the behavior of the <code class="command">N</code> command
+described in <a class="ref" href="/docs/gnu-sed/source/v4-10/manual.html#Reporting-Bugs">Reporting Bugs</a>) actually violate the
+standard.  If you want to disable only the latter kind of
+extension, you can set the <code class="code">POSIXLY_CORRECT</code> variable
+to a non-empty value.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dbinary"></a>
+<a id="index-_002db"></a><span><code class="code">-b</code></span></dt>
+<dt><code class="code">--binary</code></dt>
+<dd><p>This option is available on every platform, but is only effective where the
+operating system makes a distinction between text files and binary files.
+When such a distinction is made—as is the case for MS-DOS, Windows,
+Cygwin—text files are composed of lines separated by a carriage return
+<em class="emph">and</em> a line feed character, and <code class="command">sed</code> does not see the
+ending CR.  When this option is specified, <code class="command">sed</code> will open
+input files in binary mode, thus not requesting this special processing
+and considering lines to end at a line feed.
+</p>
+</dd>
+<dt><a id="index-_002d_002dfollow_002dsymlinks"></a><span><code class="code">--follow-symlinks</code></span></dt>
+<dd><p>This option is available only on platforms that support
+symbolic links and has an effect only if option <samp class="option">-i</samp>
+is specified.  In this case, if the file that is specified
+on the command line is a symbolic link, <code class="command">sed</code> will
+follow the link and edit the ultimate destination of the
+link.  The default behavior is to break the symbolic link,
+so that the link destination will not be modified.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002dr"></a>
+<a class="index-entry-id" id="index-_002d_002dregexp_002dextended"></a>
+<a class="index-entry-id" id="index-Extended-regular-expressions_002c-choosing"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-extended-regular-expressions"></a>
+<a id="index-_002dE"></a><span><code class="code">-E</code></span></dt>
+<dt><code class="code">-r</code></dt>
+<dt><code class="code">--regexp-extended</code></dt>
+<dd><p>Use extended regular expressions rather than basic
+regular expressions.  Extended regexps are those that
+<code class="command">egrep</code> accepts; they can be clearer because they
+usually have fewer backslashes.
+Historically this was a GNU extension,
+but the <samp class="option">-E</samp>
+extension has since been added to the POSIX standard
+(http://austingroupbugs.net/view.php?id=528),
+so use <samp class="option">-E</samp> for portability.
+GNU sed has accepted <samp class="option">-E</samp> as an undocumented option for years,
+and *BSD seds have accepted <samp class="option">-E</samp> for years as well,
+but scripts that use <samp class="option">-E</samp> might not port to other older systems.
+See <a class="xref" href="/docs/gnu-sed/source/v4-10/manual.html#ERE-syntax">Extended regular expressions</a>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dseparate"></a>
+<a class="index-entry-id" id="index-Working-on-separate-files"></a>
+<a id="index-_002ds"></a><span><code class="code">-s</code></span></dt>
+<dt><code class="code">--separate</code></dt>
+<dd><p>By default, <code class="command">sed</code> will consider the files specified on the
+command line as a single continuous long stream.  This GNU <code class="command">sed</code>
+extension allows the user to consider them as separate files:
+range addresses (such as ‘<samp class="samp">/abc/,/def/</samp>’) are not allowed
+to span several files, line numbers are relative to the start
+of each file, <code class="code">$</code> refers to the last line of each file,
+and files invoked from the <code class="code">R</code> commands are rewound at the
+start of each file.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Sandbox-mode"></a>
+<a id="index-_002d_002dsandbox"></a><span><code class="code">--sandbox</code></span></dt>
+<dd><p>In sandbox mode,  <code class="code">e/w/r</code> commands are rejected - programs containing
+them will be aborted without being run. Sandbox mode ensures <code class="command">sed</code>
+operates only on the input files designated on the command line, and
+cannot run external programs.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dunbuffered"></a>
+<a class="index-entry-id" id="index-Unbuffered-I_002fO_002c-choosing"></a>
+<a id="index-_002du"></a><span><code class="code">-u</code></span></dt>
+<dt><code class="code">--unbuffered</code></dt>
+<dd><p>Buffer both input and output as minimally as practical.
+(This is particularly useful if the input is coming from
+the likes of ‘<samp class="samp">tail -f</samp>’, and you wish to see the transformed
+output as soon as possible.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dnull_002ddata"></a>
+<a class="index-entry-id" id="index-_002d_002dzero_002dterminated"></a>
+<a id="index-_002dz"></a><span><code class="code">-z</code></span></dt>
+<dt><code class="code">--null-data</code></dt>
+<dt><code class="code">--zero-terminated</code></dt>
+<dd><p>Treat the input as a set of lines, each terminated by a zero byte
+(the ASCII ‘<samp class="samp">NUL</samp>’ character) instead of a newline.  This option can
+be used with commands like ‘<samp class="samp">sort -z</samp>’ and ‘<samp class="samp">find -print0</samp>’
+to process arbitrary file names.
+</p></dd>
+</dl>
+<p>If no <samp class="option">-e</samp>, <samp class="option">-f</samp>, <samp class="option">--expression</samp>, or <samp class="option">--file</samp>
+options are given on the command-line,
+then the first non-option argument on the command line is
+taken to be the <var class="var">script</var> to be executed.
+</p>
+<a class="index-entry-id" id="index-Files-to-be-processed-as-input"></a>
+<p>If any command-line parameters remain after processing the above,
+these parameters are interpreted as the names of input files to
+be processed.
+<a class="index-entry-id" id="index-Standard-input_002c-processing-as-input"></a>
+A file name of ‘<samp class="samp">-</samp>’ refers to the standard input stream.
+The standard input will be processed if no file names are specified.
+</p>
+<hr/>
+</div><div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="/docs/gnu-sed/v4-10/en/01-guide/03-command-line-options/#DOCF1" id="FOOT1">(1)</a></h5><p>This applies to commands such as <code class="code">=</code>,
+<code class="code">a</code>, <code class="code">c</code>, <code class="code">i</code>, <code class="code">l</code>, <code class="code">p</code>.  You can
+still write to the standard output by using the <code class="code">w</code>
+<a class="index-entry-id" id="index-GNU-extensions_002c-_002fdev_002fstdout-file"></a>
+or <code class="code">W</code> commands together with the <samp class="file">/dev/stdout</samp>
+special file</p></div><div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="/docs/gnu-sed/v4-10/en/01-guide/03-command-line-options/#DOCF2" id="FOOT2">(2)</a></h5><p>Note that GNU <code class="command">sed</code> creates the backup
+file whether or not any output is actually changed.</p></div></div>

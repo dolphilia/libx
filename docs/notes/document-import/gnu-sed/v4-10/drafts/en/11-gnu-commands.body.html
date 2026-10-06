@@ -1,0 +1,122 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="Extended-Commands">
+<h3 class="section" id="Commands-Specific-to-GNU-sed"><span>3.7 Commands Specific to GNU <code class="command">sed</code></span></h3>
+<p>These commands are specific to GNU <code class="command">sed</code>, so you
+must use them with care and only when you are sure that
+hindering portability is not evil.  They allow you to check
+for GNU <code class="command">sed</code> extensions or to do tasks that are required
+quite often, yet are unsupported by standard <code class="command">sed</code>s.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-Evaluate-Bourne_002dshell-commands"></a>
+<a class="index-entry-id" id="index-Subprocesses-1"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-evaluating-Bourne_002dshell-commands-1"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-subprocesses-1"></a>
+<a id="index-e-_0028evaluate_0029-command"></a><span><code class="code">e [<var class="var">command</var>]</code></span></dt>
+<dd><p>This command allows one to pipe input from a shell command
+into pattern space.  Without parameters, the <code class="code">e</code> command
+executes the command that is found in pattern space and
+replaces the pattern space with the output; a trailing newline
+is suppressed.
+</p>
+<p>If a parameter is specified, instead, the <code class="code">e</code> command
+interprets it as a command and sends its output to the output stream.
+The command can run across multiple lines, all but the last ending with
+a back-slash.
+</p>
+<p>In both cases, the results are undefined if the command to be
+executed contains a <small class="sc">NUL</small> character.
+</p>
+<p>Note that, unlike the <code class="code">r</code> command, the output of the command will
+be printed immediately; the <code class="code">r</code> command instead delays the output
+to the end of the current cycle.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Printing-file-name"></a>
+<a class="index-entry-id" id="index-File-name_002c-printing"></a>
+<a id="index-F-_0028File-name_0029-command"></a><span><code class="code">F</code></span></dt>
+<dd><p>Print out the file name of the current input file (with a trailing
+newline).
+</p>
+</dd>
+<dt><code class="code">Q [<var class="var">exit-code</var>]</code></dt>
+<dd><p>This command accepts only one address.
+</p>
+<a class="index-entry-id" id="index-Q-_0028silent-Quit_0029-command"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-quitting-silently"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-returning-an-exit-code-1"></a>
+<a class="index-entry-id" id="index-Quitting-1"></a>
+<p>This command is the same as <code class="code">q</code>, but will not print the
+contents of pattern space.  Like <code class="code">q</code>, it provides the
+ability to return an exit code to the caller.
+</p>
+<p>This command can be useful because the only alternative ways
+to accomplish this apparently trivial function are to use
+the <samp class="option">-n</samp> option (which can unnecessarily complicate
+your script) or resorting to the following snippet, which
+wastes time by reading the whole file without any visible effect:
+</p>
+<div class="example">
+<pre class="gnu-sed-literal">:eat&#10;$d       <i class="i"><span class="r">Quit silently on the last line</span></i>&#10;N        <i class="i"><span class="r">Read another line, silently</span></i>&#10;g        <i class="i"><span class="r">Overwrite pattern space each time to save memory</span></i>&#10;b eat&#10;</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-Read-text-from-a-file-1"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-reading-a-file-a-line-at-a-time"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-R-command"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-_002fdev_002fstdin-file-1"></a>
+<a id="index-R-_0028read-line_0029-command"></a><span><code class="code">R <var class="var">filename</var></code></span></dt>
+<dd><p>Queue a line of <var class="var">filename</var> to be read and
+inserted into the output stream at the end of the current cycle,
+or when the next input line is read.
+Note that if <var class="var">filename</var> cannot be read, or if its end is
+reached, no line is appended, without any error indication.
+</p>
+<p>As with the <code class="code">r</code> command, the special value <samp class="file">/dev/stdin</samp>
+is supported for the file name, which reads a line from the
+standard input.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-branch-if-s_002f_002f_002f-failed"></a>
+<a class="index-entry-id" id="index-Branch-to-a-label_002c-if-s_002f_002f_002f-failed"></a>
+<a class="index-entry-id" id="index-Conditional-branch-1"></a>
+<a id="index-T-_0028test-and-branch-if-failed_0029-command"></a><span><code class="code">T <var class="var">label</var></code></span></dt>
+<dd><p>Branch to <var class="var">label</var> only if there have been no successful
+<code class="code">s</code>ubstitutions since the last input line was read or
+conditional branch was taken. The <var class="var">label</var> may be omitted,
+in which case the next cycle is started.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-checking-for-their-presence"></a>
+<a class="index-entry-id" id="index-Requiring-GNU-sed"></a>
+<a id="index-v-_0028version_0029-command"></a><span><code class="code">v <var class="var">version</var></code></span></dt>
+<dd><p>This command does nothing, but makes <code class="command">sed</code> fail if
+GNU <code class="command">sed</code> extensions are not supported, simply because other
+versions of <code class="command">sed</code> do not implement it.  In addition, you
+can specify the version of <code class="command">sed</code> that your script
+requires, such as <code class="code">4.0.5</code>.  The default is <code class="code">4.0</code>
+because that is the first version that implemented this command.
+</p>
+<p>This command enables all GNU extensions even if
+<code class="env">POSIXLY_CORRECT</code> is set in the environment.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Write-first-line-to-a-file"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-writing-first-line-to-a-file"></a>
+<a id="index-W-_0028write-first-line_0029-command"></a><span><code class="code">W <var class="var">filename</var></code></span></dt>
+<dd><p>Write to the given filename the portion of the pattern space up to
+the first newline.  Everything said under the <code class="code">w</code> command about
+file handling holds here too.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-emptying-pattern-space"></a>
+<a class="index-entry-id" id="index-Emptying-pattern-space"></a>
+<a id="index-z-_0028Zap_0029-command"></a><span><code class="code">z</code></span></dt>
+<dd><p>This command empties the content of pattern space.  It is
+usually the same as ‘<samp class="samp">s/.*//</samp>’, but is more efficient
+and works in the presence of invalid multibyte sequences
+in the input stream.  <small class="sc">POSIX</small> mandates that such sequences
+are <em class="emph">not</em> matched by ‘<samp class="samp">.</samp>’, so that there is no portable
+way to clear <code class="command">sed</code>’s buffers in the middle of the
+script in most multibyte locales (including UTF-8 locales).
+</p></dd>
+</dl>
+<hr/>
+</div></div>

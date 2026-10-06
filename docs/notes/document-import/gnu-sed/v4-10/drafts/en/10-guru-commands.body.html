@@ -1,0 +1,37 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="Programming-Commands">
+<h3 class="section" id="Commands-for-sed-gurus"><span>3.6 Commands for <code class="command">sed</code> gurus</span></h3>
+<p>In most cases, use of these commands indicates that you are
+probably better off programming in something like <code class="command">awk</code>
+or Perl.  But occasionally one is committed to sticking
+with <code class="command">sed</code>, and these commands can enable one to write
+quite convoluted scripts.
+</p>
+<a class="index-entry-id" id="index-Flow-of-control-in-scripts"></a>
+<dl class="table">
+<dt><code class="code">: <var class="var">label</var></code></dt>
+<dd><p>[No addresses allowed.]
+</p>
+<a class="index-entry-id" id="index-_003a-_0028label_0029-command"></a>
+<a class="index-entry-id" id="index-Labels_002c-in-scripts"></a>
+<p>Specify the location of <var class="var">label</var> for branch commands.
+In all other respects, a no-op.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Branch-to-a-label_002c-unconditionally"></a>
+<a class="index-entry-id" id="index-Goto_002c-in-scripts"></a>
+<a id="index-b-_0028branch_0029-command"></a><span><code class="code">b <var class="var">label</var></code></span></dt>
+<dd><p>Unconditionally branch to <var class="var">label</var>.
+The <var class="var">label</var> may be omitted, in which case the next cycle is started.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Branch-to-a-label_002c-if-s_002f_002f_002f-succeeded"></a>
+<a class="index-entry-id" id="index-Conditional-branch"></a>
+<a id="index-t-_0028test-and-branch-if-successful_0029-command"></a><span><code class="code">t <var class="var">label</var></code></span></dt>
+<dd><p>Branch to <var class="var">label</var> only if there has been a successful <code class="code">s</code>ubstitution
+since the last input line was read or conditional branch was taken.
+The <var class="var">label</var> may be omitted, in which case the next cycle is started.
+</p>
+</dd>
+</dl>
+<hr/>
+</div></div>

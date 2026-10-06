@@ -1,0 +1,102 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="Common-Commands">
+<h3 class="section" id="Often_002dUsed-Commands"><span>3.4 Often-Used Commands</span></h3>
+<p>If you use <code class="command">sed</code> at all, you will quite likely want to know
+these commands.
+</p>
+<dl class="table">
+<dt><code class="code">#</code></dt>
+<dd><p>[No addresses allowed.]
+</p>
+<a class="index-entry-id" id="index-_0023-_0028comments_0029"></a>
+<a class="index-entry-id" id="index-Comments_002c-in-scripts"></a>
+<p>The <code class="code">#</code> character begins a comment;
+the comment continues until the next newline.
+</p>
+<a class="index-entry-id" id="index-Portability_002c-comments"></a>
+<p>If you are concerned about portability, be aware that
+some implementations of <code class="command">sed</code> (which are not <small class="sc">POSIX</small>
+conforming) may only support a single one-line comment,
+and then only when the very first character of the script is a <code class="code">#</code>.
+</p>
+<a class="index-entry-id" id="index-_002dn_002c-forcing-from-within-a-script"></a>
+<a class="index-entry-id" id="index-Caveat-_002d_002d_002d-_0023n-on-first-line"></a>
+<p>Warning: if the first two characters of the <code class="command">sed</code> script
+are <code class="code">#n</code>, then the <samp class="option">-n</samp> (no-autoprint) option is forced.
+If you want to put a comment in the first line of your script
+and that comment begins with the letter ‘<samp class="samp">n</samp>’
+and you do not want this behavior,
+then be sure to either use a capital ‘<samp class="samp">N</samp>’,
+or place at least one space before the ‘<samp class="samp">n</samp>’.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-returning-an-exit-code"></a>
+<a class="index-entry-id" id="index-Quitting"></a>
+<a id="index-q-_0028quit_0029-command"></a><span><code class="code">q [<var class="var">exit-code</var>]</code></span></dt>
+<dd><p>Exit <code class="command">sed</code> without processing any more commands or input.
+</p>
+<p>Example: stop after printing the second line:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed 2q&#10;1&#10;2&#10;</pre></div>
+<p>This command accepts only one address.
+Note that the current pattern space is printed if auto-print is
+not disabled with the <samp class="option">-n</samp> options.  The ability to return
+an exit code from the <code class="command">sed</code> script is a GNU <code class="command">sed</code> extension.
+</p>
+<p>See also the GNU <code class="command">sed</code> extension <code class="code">Q</code> command which quits silently
+without printing the current pattern space.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Text_002c-deleting"></a>
+<a id="index-d-_0028delete_0029-command"></a><span><code class="code">d</code></span></dt>
+<dd><p>Delete the pattern space;
+immediately start next cycle.
+</p>
+<p>Example: delete the second input line:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed 2d&#10;1&#10;3&#10;</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-Text_002c-printing"></a>
+<a id="index-p-_0028print_0029-command"></a><span><code class="code">p</code></span></dt>
+<dd><p>Print out the pattern space (to the standard output).
+This command is usually only used in conjunction with the <samp class="option">-n</samp>
+command-line option.
+</p>
+<p>Example: print only the second input line:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed -n 2p&#10;2&#10;</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-Next-input-line_002c-replace-pattern-space-with"></a>
+<a class="index-entry-id" id="index-Read-next-input-line"></a>
+<a id="index-n-_0028next_002dline_0029-command"></a><span><code class="code">n</code></span></dt>
+<dd><p>If auto-print is not disabled, print the pattern space,
+then, regardless, replace the pattern space with the next line of input.
+If there is no more input then <code class="command">sed</code> exits without processing
+any more commands.
+</p>
+<p>This command is useful to skip lines (e.g. process every Nth line).
+</p>
+<p>Example: perform substitution on every 3rd line (i.e. two <code class="code">n</code> commands
+skip two lines):
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 6 | sed 'n;n;s/./x/'&#10;1&#10;2&#10;x&#10;4&#10;5&#10;x&#10;</pre></div>
+<p>GNU <code class="command">sed</code> provides an extension address syntax of <var class="var">first</var>~<var class="var">step</var>
+to achieve the same result:
+</p>
+<div class="example">
+<pre class="gnu-sed-literal">$ seq 6 | sed '0~3s/./x/'&#10;1&#10;2&#10;x&#10;4&#10;5&#10;x&#10;</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-Grouping-commands"></a>
+<a class="index-entry-id" id="index-Command-groups"></a>
+<a id="index-_007b_007d-command-grouping"></a><span><code class="code">{ <var class="var">commands</var> }</code></span></dt>
+<dd><p>A group of commands may be enclosed between
+<code class="code">{</code> and <code class="code">}</code> characters.
+This is particularly useful when you want a group of commands
+to be triggered by a single address (or address-range) match.
+</p>
+<p>Example: perform substitution then print the second input line:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed -n '2{s/2/X/ ; p}'&#10;X&#10;</pre></div>
+</dd>
+</dl>
+<hr/>
+</div></div>

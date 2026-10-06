@@ -1,0 +1,351 @@
+{
+  "slug": "07-substitution",
+  "bodySHA256": "cc414c3567f81dbbbe993e486d72592ae41a70ccd57e6c32f5cf9dd96a5aa97d",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧3.3 The ⟦1⟧ Command⟦2⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<code class=\"code\">s</code>",
+        "⟦2⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"The-s-Command\"><span>3.3 The <code class=\"code\">s</code> Command</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The ⟦0⟧ command (as in substitute) is probably the most important in ⟦1⟧ and has a lot of different options. The syntax of the ⟦2⟧ command is ‘⟦3⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">s</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>",
+        "⟦2⟧": "<code class=\"code\">s</code>",
+        "⟦3⟧": "<samp class=\"samp\">s/<var class=\"var\">regexp</var>/<var class=\"var\">replacement</var>/<var class=\"var\">flags</var></samp>"
+      },
+      "sourceHTML": "<p>The <code class=\"code\">s</code> command (as in substitute) is probably the most important\nin <code class=\"command\">sed</code> and has a lot of different options.  The syntax of\nthe <code class=\"code\">s</code> command is\n‘<samp class=\"samp\">s/<var class=\"var\">regexp</var>/<var class=\"var\">replacement</var>/<var class=\"var\">flags</var></samp>’.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Its basic concept is simple: the ⟦0⟧ command attempts to match the pattern space against the supplied regular expression ⟦1⟧; if the match is successful, then that portion of the pattern space which was matched is replaced with ⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">s</code>",
+        "⟦1⟧": "<var class=\"var\">regexp</var>",
+        "⟦2⟧": "<var class=\"var\">replacement</var>"
+      },
+      "sourceHTML": "<p>Its basic concept is simple: the <code class=\"code\">s</code> command attempts to match\nthe pattern space against the supplied regular expression <var class=\"var\">regexp</var>;\nif the match is successful, then that portion of the\npattern space which was matched is replaced with <var class=\"var\">replacement</var>.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "For details about ⟦0⟧ syntax see ⟦1⟧Regular Expression Addresses⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">regexp</var>",
+        "⟦1⟧": "<a class=\"pxref\" href=\"/docs/gnu-sed/source/v4-10/manual.html#Regexp-Addresses\">",
+        "⟦2⟧": "</a>"
+      },
+      "sourceHTML": "<p>For details about <var class=\"var\">regexp</var> syntax see <a class=\"pxref\" href=\"/docs/gnu-sed/source/v4-10/manual.html#Regexp-Addresses\">Regular\nExpression Addresses</a>.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "The ⟦0⟧ can contain ⟦1⟧ (⟦2⟧ being a number from 1 to 9, inclusive) references, which refer to the portion of the match which is contained between the ⟦3⟧th ⟦4⟧ and its matching ⟦5⟧. Also, the ⟦6⟧ can contain unescaped ⟦7⟧ characters which reference the whole matched portion of the pattern space.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">replacement</var>",
+        "⟦1⟧": "<code class=\"code\">\\<var class=\"var\">n</var></code>",
+        "⟦2⟧": "<var class=\"var\">n</var>",
+        "⟦3⟧": "<var class=\"var\">n</var>",
+        "⟦4⟧": "<code class=\"code\">\\(</code>",
+        "⟦5⟧": "<code class=\"code\">\\)</code>",
+        "⟦6⟧": "<var class=\"var\">replacement</var>",
+        "⟦7⟧": "<code class=\"code\">&amp;</code>"
+      },
+      "sourceHTML": "<p>The <var class=\"var\">replacement</var> can contain <code class=\"code\">\\<var class=\"var\">n</var></code> (<var class=\"var\">n</var> being\na number from 1 to 9, inclusive) references, which refer to\nthe portion of the match which is contained between the <var class=\"var\">n</var>th\n<code class=\"code\">\\(</code> and its matching <code class=\"code\">\\)</code>.\nAlso, the <var class=\"var\">replacement</var> can contain unescaped <code class=\"code\">&amp;</code>\ncharacters which reference the whole matched portion\nof the pattern space.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "The ⟦0⟧ characters may be uniformly replaced by any other single character within any given ⟦1⟧ command. The ⟦2⟧ character (or whatever other character is used in its stead) can appear in the ⟦3⟧ or ⟦4⟧ only if it is preceded by a ⟦5⟧ character.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">/</code>",
+        "⟦1⟧": "<code class=\"code\">s</code>",
+        "⟦2⟧": "<code class=\"code\">/</code>",
+        "⟦3⟧": "<var class=\"var\">regexp</var>",
+        "⟦4⟧": "<var class=\"var\">replacement</var>",
+        "⟦5⟧": "<code class=\"code\">\\</code>"
+      },
+      "sourceHTML": "<p>The <code class=\"code\">/</code>\ncharacters may be uniformly replaced by any other single\ncharacter within any given <code class=\"code\">s</code> command.  The <code class=\"code\">/</code>\ncharacter (or whatever other character is used in its stead)\ncan appear in the <var class=\"var\">regexp</var> or <var class=\"var\">replacement</var>\nonly if it is preceded by a <code class=\"code\">\\</code> character.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Finally, as a GNU ⟦0⟧ extension, you can include a special sequence made of a backslash and one of the letters ⟦1⟧, ⟦2⟧, ⟦3⟧, ⟦4⟧, or ⟦5⟧. The meaning is as follows:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">L</code>",
+        "⟦2⟧": "<code class=\"code\">l</code>",
+        "⟦3⟧": "<code class=\"code\">U</code>",
+        "⟦4⟧": "<code class=\"code\">u</code>",
+        "⟦5⟧": "<code class=\"code\">E</code>"
+      },
+      "sourceHTML": "<p>Finally, as a GNU <code class=\"command\">sed</code> extension, you can include a\nspecial sequence made of a backslash and one of the letters\n<code class=\"code\">L</code>, <code class=\"code\">l</code>, <code class=\"code\">U</code>, <code class=\"code\">u</code>, or <code class=\"code\">E</code>.\nThe meaning is as follows:\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Turn the replacement to lowercase until a ⟦0⟧ or ⟦1⟧ is found,",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">\\U</code>",
+        "⟦1⟧": "<code class=\"code\">\\E</code>"
+      },
+      "sourceHTML": "<p>Turn the replacement\nto lowercase until a <code class=\"code\">\\U</code> or <code class=\"code\">\\E</code> is found,\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Turn the next character to lowercase,",
+      "tokens": {},
+      "sourceHTML": "<p>Turn the\nnext character to lowercase,\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "Turn the replacement to uppercase until a ⟦0⟧ or ⟦1⟧ is found,",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">\\L</code>",
+        "⟦1⟧": "<code class=\"code\">\\E</code>"
+      },
+      "sourceHTML": "<p>Turn the replacement to uppercase\nuntil a <code class=\"code\">\\L</code> or <code class=\"code\">\\E</code> is found,\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "Turn the next character to uppercase,",
+      "tokens": {},
+      "sourceHTML": "<p>Turn the next character\nto uppercase,\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "Stop case conversion started by ⟦0⟧ or ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">\\L</code>",
+        "⟦1⟧": "<code class=\"code\">\\U</code>"
+      },
+      "sourceHTML": "<p>Stop case conversion started by <code class=\"code\">\\L</code> or <code class=\"code\">\\U</code>.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "When the ⟦0⟧ flag is being used, case conversion does not propagate from one occurrence of the regular expression to another. For example, when the following command is executed with ‘⟦1⟧’ in pattern space:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">g</code>",
+        "⟦1⟧": "<samp class=\"samp\">a-b-</samp>"
+      },
+      "sourceHTML": "<p>When the <code class=\"code\">g</code> flag is being used, case conversion does not\npropagate from one occurrence of the regular expression to\nanother.  For example, when the following command is executed\nwith ‘<samp class=\"samp\">a-b-</samp>’ in pattern space:\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "the output is ‘⟦0⟧’. When replacing the first ‘⟦1⟧’, the ‘⟦2⟧’ sequence only affects the empty replacement of ‘⟦3⟧’. It does not affect the ⟦4⟧ character that is added to pattern space when replacing ⟦5⟧ with ⟦6⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">axxB</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\u</samp>",
+        "⟦3⟧": "<samp class=\"samp\">\\1</samp>",
+        "⟦4⟧": "<code class=\"code\">x</code>",
+        "⟦5⟧": "<code class=\"code\">b-</code>",
+        "⟦6⟧": "<code class=\"code\">xB</code>"
+      },
+      "sourceHTML": "<p>the output is ‘<samp class=\"samp\">axxB</samp>’.  When replacing the first ‘<samp class=\"samp\">-</samp>’,\nthe ‘<samp class=\"samp\">\\u</samp>’ sequence only affects the empty replacement of\n‘<samp class=\"samp\">\\1</samp>’.  It does not affect the <code class=\"code\">x</code> character that is\nadded to pattern space when replacing <code class=\"code\">b-</code> with <code class=\"code\">xB</code>.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "On the other hand, ⟦0⟧ and ⟦1⟧ do affect the remainder of the replacement text if they are followed by an empty substitution. With ‘⟦2⟧’ in pattern space, the following command:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">\\l</code>",
+        "⟦1⟧": "<code class=\"code\">\\u</code>",
+        "⟦2⟧": "<samp class=\"samp\">a-b-</samp>"
+      },
+      "sourceHTML": "<p>On the other hand, <code class=\"code\">\\l</code> and <code class=\"code\">\\u</code> do affect the remainder\nof the replacement text if they are followed by an empty substitution.\nWith ‘<samp class=\"samp\">a-b-</samp>’ in pattern space, the following command:\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "will replace ‘⟦0⟧’ with ‘⟦1⟧’ (uppercase) and ‘⟦2⟧’ with ‘⟦3⟧’. If this behavior is undesirable, you can prevent it by adding a ‘⟦4⟧’ sequence—after ‘⟦5⟧’ in this case.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-</samp>",
+        "⟦1⟧": "<samp class=\"samp\">X</samp>",
+        "⟦2⟧": "<samp class=\"samp\">b-</samp>",
+        "⟦3⟧": "<samp class=\"samp\">Bx</samp>",
+        "⟦4⟧": "<samp class=\"samp\">\\E</samp>",
+        "⟦5⟧": "<samp class=\"samp\">\\1</samp>"
+      },
+      "sourceHTML": "<p>will replace ‘<samp class=\"samp\">-</samp>’ with ‘<samp class=\"samp\">X</samp>’ (uppercase) and ‘<samp class=\"samp\">b-</samp>’ with\n‘<samp class=\"samp\">Bx</samp>’.  If this behavior is undesirable, you can prevent it by\nadding a ‘<samp class=\"samp\">\\E</samp>’ sequence—after ‘<samp class=\"samp\">\\1</samp>’ in this case.\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "To include a literal ⟦0⟧, ⟦1⟧, or newline in the final replacement, be sure to precede the desired ⟦2⟧, ⟦3⟧, or newline in the ⟦4⟧ with a ⟦5⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">\\</code>",
+        "⟦1⟧": "<code class=\"code\">&amp;</code>",
+        "⟦2⟧": "<code class=\"code\">\\</code>",
+        "⟦3⟧": "<code class=\"code\">&amp;</code>",
+        "⟦4⟧": "<var class=\"var\">replacement</var>",
+        "⟦5⟧": "<code class=\"code\">\\</code>"
+      },
+      "sourceHTML": "<p>To include a literal <code class=\"code\">\\</code>, <code class=\"code\">&amp;</code>, or newline in the final\nreplacement, be sure to precede the desired <code class=\"code\">\\</code>, <code class=\"code\">&amp;</code>,\nor newline in the <var class=\"var\">replacement</var> with a <code class=\"code\">\\</code>.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "The ⟦0⟧ command can be followed by zero or more of the following ⟦1⟧:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">s</code>",
+        "⟦1⟧": "<var class=\"var\">flags</var>"
+      },
+      "sourceHTML": "<p>The <code class=\"code\">s</code> command can be followed by zero or more of the\nfollowing <var class=\"var\">flags</var>:\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "Apply the replacement to ⟦0⟧all⟦1⟧ matches to the ⟦2⟧, not just the first.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<var class=\"var\">regexp</var>"
+      },
+      "sourceHTML": "<p>Apply the replacement to <em class=\"emph\">all</em> matches to the <var class=\"var\">regexp</var>,\nnot just the first.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "p",
+      "text": "Only replace the ⟦0⟧th match of the ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">number</var>",
+        "⟦1⟧": "<var class=\"var\">regexp</var>"
+      },
+      "sourceHTML": "<p>Only replace the <var class=\"var\">number</var>th match of the <var class=\"var\">regexp</var>.\n</p>"
+    },
+    {
+      "index": 20,
+      "tag": "p",
+      "text": "interaction in ⟦0⟧ command ⟦1⟧⟦2⟧ Note: the ⟦3⟧POSIX⟦4⟧ standard does not specify what should happen when you mix the ⟦5⟧ and ⟦6⟧ modifiers, and currently there is no widely agreed upon meaning across ⟦7⟧ implementations. For GNU ⟦8⟧, the interaction is defined to be: ignore matches before the ⟦9⟧th, and then match and replace all matches from the ⟦10⟧th on.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">s</code>",
+        "⟦1⟧": "<a class=\"index-entry-id\" id=\"index-Mixing-g-and-number-modifiers-in-the-s-command\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "<small class=\"sc\">",
+        "⟦4⟧": "</small>",
+        "⟦5⟧": "<code class=\"code\">g</code>",
+        "⟦6⟧": "<var class=\"var\">number</var>",
+        "⟦7⟧": "<code class=\"command\">sed</code>",
+        "⟦8⟧": "<code class=\"command\">sed</code>",
+        "⟦9⟧": "<var class=\"var\">number</var>",
+        "⟦10⟧": "<var class=\"var\">number</var>"
+      },
+      "sourceHTML": "<p>interaction in <code class=\"code\">s</code> command\n<a class=\"index-entry-id\" id=\"index-Mixing-g-and-number-modifiers-in-the-s-command\"></a>\nNote: the <small class=\"sc\">POSIX</small> standard does not specify what should happen\nwhen you mix the <code class=\"code\">g</code> and <var class=\"var\">number</var> modifiers,\nand currently there is no widely agreed upon meaning\nacross <code class=\"command\">sed</code> implementations.\nFor GNU <code class=\"command\">sed</code>, the interaction is defined to be:\nignore matches before the <var class=\"var\">number</var>th,\nand then match and replace all matches from\nthe <var class=\"var\">number</var>th on.\n</p>"
+    },
+    {
+      "index": 21,
+      "tag": "p",
+      "text": "If the substitution was made, then print the new pattern space.",
+      "tokens": {},
+      "sourceHTML": "<p>If the substitution was made, then print the new pattern space.\n</p>"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "text": "Note: when both the ⟦0⟧ and ⟦1⟧ options are specified, the relative ordering of the two produces very different results. In general, ⟦2⟧ (evaluate then print) is what you want, but operating the other way round can be useful for debugging. For this reason, the current version of GNU ⟦3⟧ interprets specially the presence of ⟦4⟧ options both before and after ⟦5⟧, printing the pattern space before and after evaluation, while in general flags for the ⟦6⟧ command show their effect just once. This behavior, although documented, might change in future versions.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">p</code>",
+        "⟦1⟧": "<code class=\"code\">e</code>",
+        "⟦2⟧": "<code class=\"code\">ep</code>",
+        "⟦3⟧": "<code class=\"command\">sed</code>",
+        "⟦4⟧": "<code class=\"code\">p</code>",
+        "⟦5⟧": "<code class=\"code\">e</code>",
+        "⟦6⟧": "<code class=\"code\">s</code>"
+      },
+      "sourceHTML": "<p>Note: when both the <code class=\"code\">p</code> and <code class=\"code\">e</code> options are specified,\nthe relative ordering of the two produces very different results.\nIn general, <code class=\"code\">ep</code> (evaluate then print) is what you want,\nbut operating the other way round can be useful for debugging.\nFor this reason, the current version of GNU <code class=\"command\">sed</code> interprets\nspecially the presence of <code class=\"code\">p</code> options both before and after\n<code class=\"code\">e</code>, printing the pattern space before and after evaluation,\nwhile in general flags for the <code class=\"code\">s</code> command show their\neffect just once.  This behavior, although documented, might\nchange in future versions.\n</p>"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "text": "If the substitution was made, then write out the result to the named file. As a GNU ⟦0⟧ extension, two special values of ⟦1⟧ are supported: ⟦2⟧, which writes the result to the standard error, and ⟦3⟧, which writes to the standard output.⟦4⟧⟦5⟧3⟦6⟧⟦7⟧",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<var class=\"var\">filename</var>",
+        "⟦2⟧": "<samp class=\"file\">/dev/stderr</samp>",
+        "⟦3⟧": "<samp class=\"file\">/dev/stdout</samp>",
+        "⟦4⟧": "<a class=\"footnote\" href=\"/docs/gnu-sed/v4-10/en/01-guide/07-substitution/#FOOT3\" id=\"DOCF3\">",
+        "⟦5⟧": "<sup>",
+        "⟦6⟧": "</sup>",
+        "⟦7⟧": "</a>"
+      },
+      "sourceHTML": "<p>If the substitution was made, then write out the result to the named file.\nAs a GNU <code class=\"command\">sed</code> extension, two special values of <var class=\"var\">filename</var> are\nsupported: <samp class=\"file\">/dev/stderr</samp>, which writes the result to the standard\nerror, and <samp class=\"file\">/dev/stdout</samp>, which writes to the standard\noutput.<a class=\"footnote\" href=\"/docs/gnu-sed/v4-10/en/01-guide/07-substitution/#FOOT3\" id=\"DOCF3\"><sup>3</sup></a>\n</p>"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "text": "This command allows one to pipe input from a shell command into pattern space. If a substitution was made, the command that is found in pattern space is executed and pattern space is replaced with its output. A trailing newline is suppressed; results are undefined if the command to be executed contains a ⟦0⟧NUL⟦1⟧ character. This is a GNU ⟦2⟧ extension.",
+      "tokens": {
+        "⟦0⟧": "<small class=\"sc\">",
+        "⟦1⟧": "</small>",
+        "⟦2⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>This command allows one to pipe input from a shell command\ninto pattern space.  If a substitution was made, the command\nthat is found in pattern space is executed and pattern space\nis replaced with its output.  A trailing newline is suppressed;\nresults are undefined if the command to be executed contains\na <small class=\"sc\">NUL</small> character.  This is a GNU <code class=\"command\">sed</code> extension.\n</p>"
+    },
+    {
+      "index": 25,
+      "tag": "p",
+      "text": "The ⟦0⟧ modifier to regular-expression matching is a GNU extension which makes ⟦1⟧ match ⟦2⟧ in a case-insensitive manner.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">I</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>",
+        "⟦2⟧": "<var class=\"var\">regexp</var>"
+      },
+      "sourceHTML": "<p>The <code class=\"code\">I</code> modifier to regular-expression matching is a GNU\nextension which makes <code class=\"command\">sed</code> match <var class=\"var\">regexp</var> in a\ncase-insensitive manner.\n</p>"
+    },
+    {
+      "index": 26,
+      "tag": "p",
+      "text": "The ⟦0⟧ modifier to regular-expression matching is a GNU ⟦1⟧ extension which directs GNU ⟦2⟧ to match the regular expression in ⟦3⟧multi-line⟦4⟧ mode. The modifier causes ⟦5⟧ and ⟦6⟧ to match respectively (in addition to the normal behavior) the empty string after a newline, and the empty string before a newline. There are special character sequences (⟦7⟧ and ⟦8⟧) which always match the beginning or the end of the buffer. In addition, the period character does not match a new-line character in multi-line mode.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">M</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>",
+        "⟦2⟧": "<code class=\"command\">sed</code>",
+        "⟦3⟧": "<cite class=\"cite\">",
+        "⟦4⟧": "</cite>",
+        "⟦5⟧": "<code class=\"code\">^</code>",
+        "⟦6⟧": "<code class=\"code\">$</code>",
+        "⟦7⟧": "<code class=\"code\">\\`</code>",
+        "⟦8⟧": "<code class=\"code\">\\'</code>"
+      },
+      "sourceHTML": "<p>The <code class=\"code\">M</code> modifier to regular-expression matching is a GNU <code class=\"command\">sed</code>\nextension which directs GNU <code class=\"command\">sed</code> to match the regular expression\nin <cite class=\"cite\">multi-line</cite> mode.  The modifier causes <code class=\"code\">^</code> and <code class=\"code\">$</code> to\nmatch respectively (in addition to the normal behavior) the empty string\nafter a newline, and the empty string before a newline.  There are\nspecial character sequences\n(<code class=\"code\">\\`</code> and <code class=\"code\">\\'</code>)\nwhich always match the beginning or the end of the buffer.\nIn addition,\nthe period character does not match a new-line character in\nmulti-line mode.\n</p>"
+    },
+    {
+      "index": 27,
+      "tag": "h5",
+      "text": "⟦0⟧(3)⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<a href=\"/docs/gnu-sed/v4-10/en/01-guide/07-substitution/#DOCF3\" id=\"FOOT3\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<h5 class=\"footnote-body-heading\"><a href=\"/docs/gnu-sed/v4-10/en/01-guide/07-substitution/#DOCF3\" id=\"FOOT3\">(3)</a></h5>"
+    },
+    {
+      "index": 28,
+      "tag": "p",
+      "text": "This is equivalent to ⟦0⟧ unless the ⟦1⟧ option is being used.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">p</code>",
+        "⟦1⟧": "<samp class=\"option\">-i</samp>"
+      },
+      "sourceHTML": "<p>This is equivalent to <code class=\"code\">p</code> unless the <samp class=\"option\">-i</samp>\noption is being used.</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

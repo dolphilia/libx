@@ -1,0 +1,48 @@
+FULL REVIEW 11-gnu-commands
+0 EN 3.7 Commands Specific to GNU sed
+JA 3.7 GNU sed固有のコマンド
+1 EN These commands are specific to GNU sed, so you must use them with care and only when you are sure that hindering portability is not evil. They allow you to check for GNU sed extensions or to do tasks that are required quite often, yet are unsupported by standard seds.
+JA これらのコマンドはGNU sed固有なので、移植性を損ねても問題ないと確信できる場合にだけ、注意して使ってください。GNU sed拡張の有無を確認したり、標準的なsedではサポートされないものの、よく必要になる処理を行ったりできます。
+2 dt EN=JA LITERAL e [command]
+3 EN This command allows one to pipe input from a shell command into pattern space. Without parameters, the e command executes the command that is found in pattern space and replaces the pattern space with the output; a trailing newline is suppressed.
+JA このコマンドでは、シェルコマンドからの入力をパターンスペースへパイプで取り込めます。引数がなければ、eコマンドはパターンスペースにあるコマンドを実行し、その出力でパターンスペースを置き換えます。末尾の改行は除去されます。
+4 EN If a parameter is specified, instead, the e command interprets it as a command and sends its output to the output stream. The command can run across multiple lines, all but the last ending with a back-slash.
+JA 引数を指定した場合は、eコマンドはそれをコマンドとして解釈し、その出力を出力ストリームへ送ります。コマンドは複数行にまたがることができ、その場合は最後の行以外の各行をバックスラッシュで終えます。
+5 EN In both cases, the results are undefined if the command to be executed contains a NUL character.
+JA どちらの場合も、実行するコマンドにNUL文字が含まれていれば、結果は未定義です。
+6 EN Note that, unlike the r command, the output of the command will be printed immediately; the r command instead delays the output to the end of the current cycle.
+JA rコマンドとは異なり、コマンドの出力は直ちに表示されることに注意してください。rコマンドの場合は、現在のサイクルの最後まで出力を遅らせます。
+7 dt EN=JA LITERAL F
+8 EN Print out the file name of the current input file (with a trailing newline).
+JA 現在の入力ファイル名を、末尾の改行とともに表示します。
+9 dt EN=JA LITERAL Q [exit-code]
+10 EN This command accepts only one address.
+JA このコマンドにはアドレスを一つだけ指定できます。
+11 EN This command is the same as q, but will not print the contents of pattern space. Like q, it provides the ability to return an exit code to the caller.
+JA このコマンドはqと同じですが、パターンスペースの内容を表示しません。qと同様に、呼び出し元へ終了コードを返せます。
+12 EN This command can be useful because the only alternative ways to accomplish this apparently trivial function are to use the -n option (which can unnecessarily complicate your script) or resorting to the following snippet, which wastes time by reading the whole file without any visible effect:
+JA 一見単純なこの機能を実現する別の方法は、-nオプションを使うか、次のコード片に頼ることだけなので、このコマンドは役立ちます。前者はスクリプトを不必要に複雑にすることがあり、後者は見える効果が何もないままファイル全体を読み込むため、時間を浪費します。
+13 pre EN=JA LITERAL :eat
+$d       Quit silently on the last line
+N        Read another line, silently
+g        Overwrite pattern space each time to save memory
+b eat
+14 dt EN=JA LITERAL R filename
+15 EN Queue a line of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. Note that if filename cannot be read, or if its end is reached, no line is appended, without any error indication.
+JA filenameの1行を読み込み待ちのキューに入れ、現在のサイクルの最後、または次の入力行を読み込むときに、出力ストリームへ挿入します。filenameを読めない場合や末尾に達した場合は、行を追加せず、エラーも通知しないことに注意してください。
+16 EN As with the r command, the special value /dev/stdin is supported for the file name, which reads a line from the standard input.
+JA rコマンドと同様に、ファイル名として特殊な値/dev/stdinを指定でき、標準入力から1行を読み込みます。
+17 dt EN=JA LITERAL T label
+18 EN Branch to label only if there have been no successful substitutions since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started.
+JA 最後の入力行の読み込み、または条件付き分岐の実行以降に、sによる置換が成功していない場合だけlabelへ分岐します。labelは省略でき、その場合は次のサイクルを開始します。
+19 dt EN=JA LITERAL v version
+20 EN This command does nothing, but makes sed fail if GNU sed extensions are not supported, simply because other versions of sed do not implement it. In addition, you can specify the version of sed that your script requires, such as 4.0.5. The default is 4.0 because that is the first version that implemented this command.
+JA このコマンドは何も行いませんが、GNU sed拡張がサポートされていない場合に、sedを失敗させます。他のsedはこのコマンドを実装していないためです。さらに、スクリプトが必要とするsedの版（4.0.5など）を指定できます。既定値は4.0です。このコマンドを最初に実装した版だからです。
+21 EN This command enables all GNU extensions even if POSIXLY_CORRECT is set in the environment.
+JA このコマンドは、環境変数POSIXLY_CORRECTが設定されていても、すべてのGNU拡張を有効にします。
+22 dt EN=JA LITERAL W filename
+23 EN Write to the given filename the portion of the pattern space up to the first newline. Everything said under the w command about file handling holds here too.
+JA パターンスペースの最初の改行までの部分を、指定したファイル名へ書き込みます。wコマンドで述べたファイルの扱いに関する説明は、すべてここにも当てはまります。
+24 dt EN=JA LITERAL z
+25 EN This command empties the content of pattern space. It is usually the same as ‘s/.*//’, but is more efficient and works in the presence of invalid multibyte sequences in the input stream. POSIX mandates that such sequences are not matched by ‘.’, so that there is no portable way to clear sed’s buffers in the middle of the script in most multibyte locales (including UTF-8 locales).
+JA このコマンドはパターンスペースの内容を空にします。通常は「s/.*//」と同じですが、より効率的で、入力ストリームに不正なマルチバイト列があっても動作します。POSIXは、そのような列には「.」が一致しないことを定めています。このため、ほとんどのマルチバイトロケール（UTF-8ロケールを含みます）では、スクリプトの途中でsedのバッファーを空にする移植可能な方法はありません。

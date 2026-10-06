@@ -1,0 +1,281 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="Other-Commands">
+<h3 class="section" id="Less-Frequently_002dUsed-Commands"><span>3.5 Less Frequently-Used Commands</span></h3>
+<p>Though perhaps less frequently used than those in the previous
+section, some very small yet useful <code class="command">sed</code> scripts can be built with
+these commands.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-Transliteration"></a>
+<a id="index-y-_0028transliterate_0029-command"></a><span><code class="code">y/<var class="var">source-chars</var>/<var class="var">dest-chars</var>/</code></span></dt>
+<dd><p>Transliterate any characters in the pattern space which match
+any of the <var class="var">source-chars</var> with the corresponding character
+in <var class="var">dest-chars</var>.
+</p>
+<p>Example: transliterate ‘<samp class="samp">a-j</samp>’ into ‘<samp class="samp">0-9</samp>’:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ echo hello world | sed 'y/abcdefghij/0123456789/'&#10;74llo worl3&#10;</pre></div>
+<p>(The <code class="code">/</code> characters may be uniformly replaced by
+any other single character within any given <code class="code">y</code> command.)
+</p>
+<p>Instances of the <code class="code">/</code> (or whatever other character is used in its stead),
+<code class="code">\</code>, or newlines can appear in the <var class="var">source-chars</var> or <var class="var">dest-chars</var>
+lists, provide that each instance is escaped by a <code class="code">\</code>.
+The <var class="var">source-chars</var> and <var class="var">dest-chars</var> lists <em class="emph">must</em>
+contain the same number of characters (after de-escaping).
+</p>
+<p>See the <code class="command">tr</code> command from GNU coreutils for similar functionality.
+</p>
+</dd>
+<dt><code class="code">a <var class="var">text</var></code></dt>
+<dd><p>Appending <var class="var">text</var> after a line. This is a GNU extension
+to the standard <code class="code">a</code> command - see below for details.
+</p>
+<p>Example: Add ‘<samp class="samp">hello</samp>’ after the second line:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2a hello'&#10;1&#10;2&#10;hello&#10;3&#10;</pre></div>
+<p>Leading whitespace after the <code class="code">a</code> command is ignored.
+The text to add is read until the end of the line.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Appending-text-after-a-line"></a>
+<a class="index-entry-id" id="index-Text_002c-appending"></a>
+<a id="index-a-_0028append-text-lines_0029-command"></a><span><code class="code">a\</code></span></dt>
+<dt><code class="code"><var class="var">text</var></code></dt>
+<dd><p>Appending <var class="var">text</var> after a line.
+</p>
+<p>Example: Add ‘<samp class="samp">hello</samp>’ after the second line
+(-| indicates printed output lines):
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2a\&#10;hello'&#10;-|1&#10;-|2&#10;-|hello&#10;-|3&#10;</pre></div>
+<p>The <code class="code">a</code> command queues the lines of text which follow this command
+(each but the last ending with a <code class="code">\</code>,
+which are removed from the output)
+to be output at the end of the current cycle,
+or when the next input line is read.
+</p>
+<a class="index-entry-id" id="index-GNU-extensions_002c-two-addresses-supported-by-most-commands"></a>
+<p>As a GNU extension, this command accepts two addresses.
+</p>
+<p>Escape sequences in <var class="var">text</var> are processed, so you should
+use <code class="code">\\</code> in <var class="var">text</var> to print a single backslash.
+</p>
+<p>The commands resume after the last line without a backslash (<code class="code">\</code>) -
+‘<samp class="samp">world</samp>’ in the following example:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2a\&#10;hello\&#10;world&#10;3s/./X/'&#10;-|1&#10;-|2&#10;-|hello&#10;-|world&#10;-|X&#10;</pre></div>
+<p>As a GNU extension, the <code class="code">a</code> command and <var class="var">text</var> can be
+separated into two <code class="code">-e</code> parameters, enabling easier scripting:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed -e '2a\' -e hello&#10;1&#10;2&#10;hello&#10;3&#10;&#10;$ sed -e '2a\' -e "$VAR"&#10;</pre></div>
+</dd>
+<dt><code class="code">i <var class="var">text</var></code></dt>
+<dd><p>insert <var class="var">text</var> before a line. This is a GNU extension
+to the standard <code class="code">i</code> command - see below for details.
+</p>
+<p>Example: Insert ‘<samp class="samp">hello</samp>’ before the second line:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2i hello'&#10;1&#10;hello&#10;2&#10;3&#10;</pre></div>
+<p>Leading whitespace after the <code class="code">i</code> command is ignored.
+The text to add is read until the end of the line.
+</p>
+<a class="anchor" id="insert-command"></a></dd>
+<dt><a class="index-entry-id" id="index-Inserting-text-before-a-line"></a>
+<a class="index-entry-id" id="index-Text_002c-insertion"></a>
+<a id="index-i-_0028insert-text-lines_0029-command"></a><span><code class="code">i\</code></span></dt>
+<dt><code class="code"><var class="var">text</var></code></dt>
+<dd><p>Immediately output the lines of text which follow this command.
+</p>
+<p>Example: Insert ‘<samp class="samp">hello</samp>’ before the second line
+(-| indicates printed output lines):
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2i\&#10;hello'&#10;-|1&#10;-|hello&#10;-|2&#10;-|3&#10;</pre></div>
+<a class="index-entry-id" id="index-GNU-extensions_002c-two-addresses-supported-by-most-commands-1"></a>
+<p>As a GNU extension, this command accepts two addresses.
+</p>
+<p>Escape sequences in <var class="var">text</var> are processed, so you should
+use <code class="code">\\</code> in <var class="var">text</var> to print a single backslash.
+</p>
+<p>The commands resume after the last line without a backslash (<code class="code">\</code>) -
+‘<samp class="samp">world</samp>’ in the following example:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2i\&#10;hello\&#10;world&#10;s/./X/'&#10;-|X&#10;-|hello&#10;-|world&#10;-|X&#10;-|X&#10;</pre></div>
+<p>As a GNU extension, the <code class="code">i</code> command and <var class="var">text</var> can be
+separated into two <code class="code">-e</code> parameters, enabling easier scripting:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed -e '2i\' -e hello&#10;1&#10;hello&#10;2&#10;3&#10;&#10;$ sed -e '2i\' -e "$VAR"&#10;</pre></div>
+</dd>
+<dt><code class="code">c <var class="var">text</var></code></dt>
+<dd><p>Replaces the line(s) with <var class="var">text</var>. This is a GNU extension
+to the standard <code class="code">c</code> command - see below for details.
+</p>
+<p>Example: Replace the 2nd to 9th lines with the word ‘<samp class="samp">hello</samp>’:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 10 | sed '2,9c hello'&#10;1&#10;hello&#10;10&#10;</pre></div>
+<p>Leading whitespace after the <code class="code">c</code> command is ignored.
+The text to add is read until the end of the line.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Replacing-selected-lines-with-other-text"></a>
+<a id="index-c-_0028change-to-text-lines_0029-command"></a><span><code class="code">c\</code></span></dt>
+<dt><code class="code"><var class="var">text</var></code></dt>
+<dd><p>Delete the lines matching the address or address-range,
+and output the lines of text which follow this command.
+</p>
+<p>Example: Replace 2nd to 4th lines with the words ‘<samp class="samp">hello</samp>’ and
+‘<samp class="samp">world</samp>’ (-| indicates printed output lines):
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 5 | sed '2,4c\&#10;hello\&#10;world'&#10;-|1&#10;-|hello&#10;-|world&#10;-|5&#10;</pre></div>
+<p>If no addresses are given, each line is replaced.
+</p>
+<p>A new cycle is started after this command is done,
+since the pattern space will have been deleted.
+In the following example, the <code class="code">c</code> starts a
+new cycle and the substitution command is not performed
+on the replaced text:
+</p>
+<div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2c\&#10;hello&#10;s/./X/'&#10;-|X&#10;-|hello&#10;-|X&#10;</pre></div>
+<p>As a GNU extension, the <code class="code">c</code> command and <var class="var">text</var> can be
+separated into two <code class="code">-e</code> parameters, enabling easier scripting:
+</p><div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed -e '2c\' -e hello&#10;1&#10;hello&#10;3&#10;&#10;$ sed -e '2c\' -e "$VAR"&#10;</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-Printing-line-number"></a>
+<a class="index-entry-id" id="index-Line-number_002c-printing"></a>
+<a id="index-_003d-_0028print-line-number_0029-command"></a><span><code class="code">=</code></span></dt>
+<dd><p>Print out the current input line number (with a trailing newline).
+</p>
+<div class="example">
+<pre class="gnu-sed-literal">$ printf '%s\n' aaa bbb ccc | sed =&#10;1&#10;aaa&#10;2&#10;bbb&#10;3&#10;ccc&#10;</pre></div>
+<a class="index-entry-id" id="index-GNU-extensions_002c-two-addresses-supported-by-most-commands-2"></a>
+<p>As a GNU extension, this command accepts two addresses.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-List-pattern-space"></a>
+<a class="index-entry-id" id="index-Printing-text-unambiguously"></a>
+<a class="index-entry-id" id="index-Line-length_002c-setting-1"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-setting-line-length"></a>
+<a id="index-l-_0028list-unambiguously_0029-command"></a><span><code class="code">l <var class="var">n</var></code></span></dt>
+<dd><p>Print the pattern space in an unambiguous form:
+non-printable characters (and the <code class="code">\</code> character)
+are printed in C-style escaped form; long lines are split,
+with a trailing <code class="code">\</code> character to indicate the split;
+the end of each line is marked with a <code class="code">$</code>.
+</p>
+<p><var class="var">n</var> specifies the desired line-wrap length;
+a length of 0 (zero) means to never wrap long lines.  If omitted,
+the default as specified on the command line is used.  The <var class="var">n</var>
+parameter is a GNU <code class="command">sed</code> extension.
+</p>
+</dd>
+<dt><code class="code">r <var class="var">filename</var></code></dt>
+<dd>
+<a class="index-entry-id" id="index-r-_0028read-file_0029-command"></a>
+<a class="index-entry-id" id="index-Read-text-from-a-file"></a>
+<p>Reads file <var class="var">filename</var>. Example:
+</p>
+<div class="example">
+<pre class="gnu-sed-literal">$ seq 3 | sed '2r/etc/hostname'&#10;1&#10;2&#10;fencepost.gnu.org&#10;3&#10;</pre></div>
+<a class="index-entry-id" id="index-GNU-extensions_002c-_002fdev_002fstdin-file"></a>
+<p>Queue the contents of <var class="var">filename</var> to be read and
+inserted into the output stream at the end of the current cycle,
+or when the next input line is read.
+Note that if <var class="var">filename</var> cannot be read, it is treated as
+if it were an empty file, without any error indication.
+</p>
+<p>As a GNU <code class="command">sed</code> extension, the special value <samp class="file">/dev/stdin</samp>
+is supported for the file name, which reads the contents of the
+standard input.
+</p>
+<a class="index-entry-id" id="index-GNU-extensions_002c-two-addresses-supported-by-most-commands-3"></a>
+<p>As a GNU extension, this command accepts two addresses. The
+file will then be reread and inserted on each of the addressed lines.
+</p>
+<p>As a GNU <code class="command">sed</code> extension, the <code class="code">r</code> command accepts a zero address,
+inserting a file <em class="emph">before</em> the first line of the input
+see <a class="pxref" href="/docs/gnu-sed/source/v4-10/manual.html#Adding-a-header-to-multiple-files">Adding a header to multiple files</a>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Write-to-a-file"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-_002fdev_002fstdout-file-2"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-_002fdev_002fstderr-file-1"></a>
+<a id="index-w-_0028write-file_0029-command"></a><span><code class="code">w <var class="var">filename</var></code></span></dt>
+<dd><p>Write the pattern space to <var class="var">filename</var>.
+As a GNU <code class="command">sed</code> extension, two special values of <var class="var">filename</var> are
+supported: <samp class="file">/dev/stderr</samp>, which writes the result to the standard
+error, and <samp class="file">/dev/stdout</samp>, which writes to the standard
+output.<a class="footnote" href="/docs/gnu-sed/v4-10/en/01-guide/09-less-frequent-commands/#FOOT4" id="DOCF4"><sup>4</sup></a>
+</p>
+<p>The file will be created (or truncated) before the first input line is
+read; all <code class="code">w</code> commands (including instances of the <code class="code">w</code> flag
+on successful <code class="code">s</code> commands) which refer to the same <var class="var">filename</var>
+are output without closing and reopening the file.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Delete-first-line-from-pattern-space"></a>
+<a id="index-D-_0028delete-first-line_0029-command"></a><span><code class="code">D</code></span></dt>
+<dd><p>If pattern space contains no newline, start a normal new cycle as if
+the <code class="code">d</code> command was issued.  Otherwise, delete text in the pattern
+space up to the first newline, and restart cycle with the resultant
+pattern space, without reading a new line of input.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Next-input-line_002c-append-to-pattern-space"></a>
+<a class="index-entry-id" id="index-Append-next-input-line-to-pattern-space"></a>
+<a id="index-N-_0028append-Next-line_0029-command"></a><span><code class="code">N</code></span></dt>
+<dd><p>Add a newline to the pattern space,
+then append the next line of input to the pattern space.
+If there is no more input then <code class="command">sed</code> exits without processing
+any more commands.
+</p>
+<p>When <samp class="option">-z</samp> is used, a zero byte (the ascii ‘<samp class="samp">NUL</samp>’ character) is
+added between the lines (instead of a new line).
+</p>
+<p>By default <code class="command">sed</code> does not terminate if there is no ’next’ input line.
+This is a GNU extension which can be disabled with <samp class="option">--posix</samp>.
+See <a class="xref" href="/docs/gnu-sed/source/v4-10/manual.html#N_005fcommand_005flast_005fline">N command on the last line</a>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Print-first-line-from-pattern-space"></a>
+<a id="index-P-_0028print-first-line_0029-command"></a><span><code class="code">P</code></span></dt>
+<dd><p>Print out the portion of the pattern space up to the first newline.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Copy-pattern-space-into-hold-space"></a>
+<a class="index-entry-id" id="index-Replace-hold-space-with-copy-of-pattern-space"></a>
+<a class="index-entry-id" id="index-Hold-space_002c-copying-pattern-space-into"></a>
+<a id="index-h-_0028hold_0029-command"></a><span><code class="code">h</code></span></dt>
+<dd><p>Replace the contents of the hold space with the contents of the pattern space.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Append-pattern-space-to-hold-space"></a>
+<a class="index-entry-id" id="index-Hold-space_002c-appending-from-pattern-space"></a>
+<a id="index-H-_0028append-Hold_0029-command"></a><span><code class="code">H</code></span></dt>
+<dd><p>Append a newline to the contents of the hold space,
+and then append the contents of the pattern space to that of the hold space.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Copy-hold-space-into-pattern-space"></a>
+<a class="index-entry-id" id="index-Replace-pattern-space-with-copy-of-hold-space"></a>
+<a class="index-entry-id" id="index-Hold-space_002c-copy-into-pattern-space"></a>
+<a id="index-g-_0028get_0029-command"></a><span><code class="code">g</code></span></dt>
+<dd><p>Replace the contents of the pattern space with the contents of the hold space.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Append-hold-space-to-pattern-space"></a>
+<a class="index-entry-id" id="index-Hold-space_002c-appending-to-pattern-space"></a>
+<a id="index-G-_0028appending-Get_0029-command"></a><span><code class="code">G</code></span></dt>
+<dd><p>Append a newline to the contents of the pattern space,
+and then append the contents of the hold space to that of the pattern space.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Exchange-hold-space-with-pattern-space"></a>
+<a class="index-entry-id" id="index-Hold-space_002c-exchange-with-pattern-space"></a>
+<a id="index-x-_0028eXchange_0029-command"></a><span><code class="code">x</code></span></dt>
+<dd><p>Exchange the contents of the hold and pattern spaces.
+</p>
+</dd>
+</dl>
+<hr/>
+</div><div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="/docs/gnu-sed/v4-10/en/01-guide/09-less-frequent-commands/#DOCF4" id="FOOT4">(4)</a></h5><p>This is equivalent to <code class="code">p</code> unless the <samp class="option">-i</samp>
+option is being used.</p></div></div>

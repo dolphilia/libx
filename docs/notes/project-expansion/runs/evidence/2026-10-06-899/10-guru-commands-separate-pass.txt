@@ -1,0 +1,16 @@
+FULL REVIEW 10-guru-commands
+0 EN 3.6 Commands for sed gurus
+JA 3.6 sedの熟練者向けコマンド
+1 EN In most cases, use of these commands indicates that you are probably better off programming in something like awk or Perl. But occasionally one is committed to sticking with sed, and these commands can enable one to write quite convoluted scripts.
+JA 多くの場合、これらのコマンドを使うのであれば、awkやPerlのようなものでプログラムを書くほうがよいでしょう。それでもsedを使い続ける必要がある場合、これらのコマンドを使えば、かなり複雑なスクリプトを書くことができます。
+2 dt EN=JA LITERAL : label
+3 EN [No addresses allowed.]
+JA ［アドレスは指定できません。］
+4 EN Specify the location of label for branch commands. In all other respects, a no-op.
+JA 分岐コマンドが使うlabelの位置を指定します。それ以外は何もしません。
+5 dt EN=JA LITERAL b label
+6 EN Unconditionally branch to label. The label may be omitted, in which case the next cycle is started.
+JA labelへ無条件に分岐します。labelは省略でき、その場合は次のサイクルを開始します。
+7 dt EN=JA LITERAL t label
+8 EN Branch to label only if there has been a successful substitution since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started.
+JA 最後の入力行の読み込み、または条件付き分岐の実行以降に、sによる置換が成功している場合だけlabelへ分岐します。labelは省略でき、その場合は次のサイクルを開始します。

@@ -1,0 +1,208 @@
+{
+  "id": "gnu-sed",
+  "officialUrl": "https://www.gnu.org/software/sed/",
+  "repository": "https://git.savannah.gnu.org/git/sed.git",
+  "version": "4.10",
+  "scope": "GNU sed4.10第1–3章の全導入・起動・scriptガイド12英日ページ/4注釈。残りは固定全文英語HTML/Texinfo/Infoと原典。",
+  "field": "text-processing",
+  "discovery": [
+    {
+      "route": "GNU official release announcement/archive with checksum;GNU document copying notice;JM primary Japanese docs;actual Astro/static representative trial",
+      "reference": "https://www.gnu.org/software/sed/",
+      "date": "2026-10-06T05:29:47.362701+00:00"
+    }
+  ],
+  "state": "discovered",
+  "conditions": {
+    "rights": {
+      "status": "pass",
+      "reason": "明示GFDL1.3-or-later/不変節・covertextsなし。原通知・著作者・履歴・原英語license・優先原稿の履行設計を確認。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/RIGHTS.json",
+          "sha256": "a20138ee61f4922e2984ce42e7b5f84b2da23a000c3cfa8af2df060eee308b47"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/sed-4.10/doc/sed.texi",
+          "sha256": "c1335920e158fac98bd8b7c126dd0e8c89f1953699a43538e2aaea8ea8b5aafb"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/sed-4.10/doc/fdl.texi",
+          "sha256": "6d06c81e4920b8d86c09ebf8525e29b0e5190daed730831519cca9d7123bc244"
+        }
+      ]
+    },
+    "boundary": {
+      "status": "pass",
+      "reason": "第1–3章全文を12ページに分割。preamble・4注釈も保持。残りは固定全文英語/原典で補う。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/SCOPE.json",
+          "sha256": "4629d676bb788704e319d0b1d6dc17c99ce12d0b35a501e9f0412031e2013e2a"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/CONTENT_TRIAL.json",
+          "sha256": "756938ee3cf1ff04f2a359e05c7e8040a5c376fd4fd2132a67aa5d3070795938"
+        }
+      ]
+    },
+    "fixedInput": {
+      "status": "pass",
+      "reason": "原著4.10告知SHA256とmirror配布物SHA256一致。13正規文書・通知を安全保存。署名検証済みとはしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/MIRROR_ACQUISITION.json",
+          "sha256": "238c2edaa3b1f58f638a11f4f9779697f229e1144d4a9fe3f7ca534e6a63d8f9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/RELEASE_CHECKSUM_BINDING.json",
+          "sha256": "f907d7fc55790a163880adc4771cfbc20c6a218af8b92dd4aff3808aa37f72bc"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/DRAFT_INPUT_BINDINGS.json",
+          "sha256": "00a68c471fa7a00bbf250856400fac67fcde5203fa5f0ce7ae54f4859e983868"
+        }
+      ]
+    },
+    "selfContained": {
+      "status": "pass",
+      "reason": "導入・起動/終了状態・script命令一覧/置換/よく使う・高度/GNU命令/複数命令をまとまって読める。範囲外は固定全文に参照。原著技術監査は広げない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/SCOPE.json",
+          "sha256": "4629d676bb788704e319d0b1d6dc17c99ce12d0b35a501e9f0412031e2013e2a"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/NATIVE.json",
+          "sha256": "531428216633ce53c2c425dbb7ffa8b293202e3f534c050ac4e9fd6d77a847bc"
+        }
+      ]
+    },
+    "conversion": {
+      "status": "pass",
+      "reason": "実AstroMarkdownで全本文・51pre/見出し/18参照を保持。1280/390で定義・変数強調・literalpreが読め、脚注と固定全文へ実移動。空行消失を符号化で修正。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/CONTENT_TRIAL.json",
+          "sha256": "756938ee3cf1ff04f2a359e05c7e8040a5c376fd4fd2132a67aa5d3070795938"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/LITERAL_CORRECTION.json",
+          "sha256": "61f99d6bd63c8f99a3440caedc2e8f5f05eadb569855b2a8e5d1fcbba5419874"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/NATIVE.json",
+          "sha256": "531428216633ce53c2c425dbb7ffa8b293202e3f534c050ac4e9fd6d77a847bc"
+        }
+      ]
+    },
+    "workload": {
+      "status": "pass",
+      "reason": "約7000語/12ページを2関連バッチ。既存Texinfo7.1+HTML/Markdown/literal符号化・共通テンプレートを再利用。固定静的原典に絞り原プログラム/サイトJS維持なし。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/SCOPE.json",
+          "sha256": "4629d676bb788704e319d0b1d6dc17c99ce12d0b35a501e9f0412031e2013e2a"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/CONTENT_TRIAL.json",
+          "sha256": "756938ee3cf1ff04f2a359e05c7e8040a5c376fd4fd2132a67aa5d3070795938"
+        }
+      ]
+    }
+  },
+  "japaneseResearch": {
+    "status": "partial",
+    "checkedAt": "2026-10-06T05:29:47.362701+00:00",
+    "queries": [
+      "GNU sed4.10日本語 documentation",
+      "JM GNU sed4.9 actualmanual/completeTexinfo comparison"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/JAPANESE_VALUE.json",
+        "sha256": "d83bcb718ba5d7225a1e192194cbea4324a7349b0edd36224b6b11bb48c6ec3e"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/jm-gnu-index.html",
+        "sha256": "fe5d7597de1e8d31f44780cc3d41b2029dc0d5f499089ec83c93ef151dd9f4bb"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/jm-sed-4.9.html",
+        "sha256": "b7ca4775093df795a55e6c10fc11060e261c71fd35b46fb0ea910ed58eb19d3e"
+      }
+    ]
+  },
+  "scores": {
+    "additionalValue": {
+      "value": 3,
+      "reason": "既存JM日本語manpageを認め、固定4.10全文ガイド第1–3章の英日対照・検索・原稿導線を追加。不存在による加点なし。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/JAPANESE_VALUE.json",
+          "sha256": "d83bcb718ba5d7225a1e192194cbea4324a7349b0edd36224b6b11bb48c6ec3e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/SCOPE.json",
+          "sha256": "4629d676bb788704e319d0b1d6dc17c99ce12d0b35a501e9f0412031e2013e2a"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "pipelineでのtext編集/commandline/script構文・置換・命令を実行環境なしで原文と訳文から参照できる。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/SCOPE.json",
+          "sha256": "4629d676bb788704e319d0b1d6dc17c99ce12d0b35a501e9f0412031e2013e2a"
+        }
+      ]
+    },
+    "quality": {
+      "value": 3,
+      "reason": "原コピーの構造/literal/注釈と代表可読性は確認。日本語の品質・正式全体UI未完のため採用時基準相当。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/CONTENT_TRIAL.json",
+          "sha256": "756938ee3cf1ff04f2a359e05c7e8040a5c376fd4fd2132a67aa5d3070795938"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/NATIVE.json",
+          "sha256": "531428216633ce53c2c425dbb7ffa8b293202e3f534c050ac4e9fd6d77a847bc"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 4,
+      "reason": "固定単一Texinfo原稿・12節・全文静的原典の簡素な方式。既存版差し替えや元サイト動作再現なし。GFDL通知と再構築sourcekitは正式工程の必要作業。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/RIGHTS.json",
+          "sha256": "a20138ee61f4922e2984ce42e7b5f84b2da23a000c3cfa8af2df060eee308b47"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-897/SCOPE.json",
+          "sha256": "4629d676bb788704e319d0b1d6dc17c99ce12d0b35a501e9f0412031e2013e2a"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 4,
+      "reason": "GNU MakeのTexinfo固定変換/GFDL配布とPCRE2のHTML literalpre・Astro照合を再利用。既存通常テンプレート/共通フッター/検索を用いる。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/CONTENT_TRIAL.json",
+          "sha256": "756938ee3cf1ff04f2a359e05c7e8040a5c376fd4fd2132a67aa5d3070795938"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-896/next-candidate/LITERAL_CORRECTION.json",
+          "sha256": "61f99d6bd63c8f99a3440caedc2e8f5f05eadb569855b2a8e5d1fcbba5419874"
+        }
+      ]
+    }
+  },
+  "decision": "897採用草稿70点。別パス選定照合/正式アプリ/独自翻訳/全文意味レビュー/正式検証/公開は未完。",
+  "resumeCondition": "別パス選定照合後eligibleへ。PCRE2本番公開後の実検証済みfaae5fa043を基準に隔離通常テンプレートへ12英日2バッチの正式工程を開始。",
+  "nextCheckAt": null,
+  "selectionReview": null
+}

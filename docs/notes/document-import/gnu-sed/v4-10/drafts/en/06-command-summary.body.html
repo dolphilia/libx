@@ -1,0 +1,205 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="sed-commands-list">
+<h3 class="section" id="sed-commands-summary"><span>3.2 <code class="command">sed</code> commands summary</span></h3>
+<p>The following commands are supported in GNU <code class="command">sed</code>.
+Some are standard POSIX commands, while other are GNU extensions.
+Details and examples for each command are in the following sections.
+(Mnemonics) are shown in parentheses.
+</p>
+<dl class="table">
+<dt><code class="code">a\</code></dt>
+<dt><code class="code"><var class="var">text</var></code></dt>
+<dd><p>Append <var class="var">text</var> after a line.
+</p>
+</dd>
+<dt><code class="code">a <var class="var">text</var></code></dt>
+<dd><p>Append <var class="var">text</var> after a line (alternative syntax).
+</p>
+</dd>
+<dt><code class="code">b <var class="var">label</var></code></dt>
+<dd><p>Branch unconditionally to <var class="var">label</var>.
+The <var class="var">label</var> may be omitted, in which case the next cycle is started.
+</p>
+</dd>
+<dt><code class="code">c\</code></dt>
+<dt><code class="code"><var class="var">text</var></code></dt>
+<dd><p>Replace (change) lines with <var class="var">text</var>.
+</p>
+</dd>
+<dt><code class="code">c <var class="var">text</var></code></dt>
+<dd><p>Replace (change) lines with <var class="var">text</var> (alternative syntax).
+</p>
+</dd>
+<dt><code class="code">d</code></dt>
+<dd><p>Delete the pattern space;
+immediately start next cycle.
+</p>
+</dd>
+<dt><code class="code">D</code></dt>
+<dd><p>If pattern space contains newlines, delete text in the pattern
+space up to the first newline, and restart cycle with the resultant
+pattern space, without reading a new line of input.
+</p>
+<p>If pattern space contains no newline, start a normal new cycle as if
+the <code class="code">d</code> command was issued.
+</p>
+</dd>
+<dt><code class="code">e</code></dt>
+<dd><p>Executes the command that is found in pattern space and
+replaces the pattern space with the output; a trailing newline
+is suppressed.
+</p>
+</dd>
+<dt><code class="code">e <var class="var">command</var></code></dt>
+<dd><p>Executes <var class="var">command</var> and sends its output to the output stream.
+The command can run across multiple lines, all but the last ending with
+a back-slash.
+</p>
+</dd>
+<dt><code class="code">F</code></dt>
+<dd><p>(filename) Print the file name of the current input file (with a trailing
+newline).
+</p>
+</dd>
+<dt><code class="code">g</code></dt>
+<dd><p>Replace the contents of the pattern space with the contents of the hold space.
+</p>
+</dd>
+<dt><code class="code">G</code></dt>
+<dd><p>Append a newline to the contents of the pattern space,
+and then append the contents of the hold space to that of the pattern space.
+</p>
+</dd>
+<dt><code class="code">h</code></dt>
+<dd><p>(hold) Replace the contents of the hold space with the contents of the
+pattern space.
+</p>
+</dd>
+<dt><code class="code">H</code></dt>
+<dd><p>Append a newline to the contents of the hold space,
+and then append the contents of the pattern space to that of the hold space.
+</p>
+</dd>
+<dt><code class="code">i\</code></dt>
+<dt><code class="code"><var class="var">text</var></code></dt>
+<dd><p>insert <var class="var">text</var> before a line.
+</p>
+</dd>
+<dt><code class="code">i <var class="var">text</var></code></dt>
+<dd><p>insert <var class="var">text</var> before a line (alternative syntax).
+</p>
+</dd>
+<dt><code class="code">l</code></dt>
+<dd><p>Print the pattern space in an unambiguous form.
+</p>
+</dd>
+<dt><code class="code">n</code></dt>
+<dd><p>(next) If auto-print is not disabled, print the pattern space,
+then, regardless, replace the pattern space with the next line of input.
+If there is no more input then <code class="command">sed</code> exits without processing
+any more commands.
+</p>
+</dd>
+<dt><code class="code">N</code></dt>
+<dd><p>Add a newline to the pattern space,
+then append the next line of input to the pattern space.
+If there is no more input then <code class="command">sed</code> exits without processing
+any more commands.
+</p>
+</dd>
+<dt><code class="code">p</code></dt>
+<dd><p>Print the pattern space.
+</p>
+</dd>
+<dt><code class="code">P</code></dt>
+<dd><p>Print the pattern space, up to the first &lt;newline&gt;.
+</p>
+</dd>
+<dt><code class="code">q<var class="var">[exit-code]</var></code></dt>
+<dd><p>(quit) Exit <code class="command">sed</code> without processing any more commands or input.
+</p>
+</dd>
+<dt><code class="code">Q<var class="var">[exit-code]</var></code></dt>
+<dd><p>(quit) This command is the same as <code class="code">q</code>, but will not print the
+contents of pattern space.  Like <code class="code">q</code>, it provides the
+ability to return an exit code to the caller.
+</p>
+</dd>
+<dt><code class="code">r filename</code></dt>
+<dd><p>Reads file <var class="var">filename</var>.
+</p>
+</dd>
+<dt><code class="code">R filename</code></dt>
+<dd><p>Queue a line of <var class="var">filename</var> to be read and
+inserted into the output stream at the end of the current cycle,
+or when the next input line is read.
+</p>
+</dd>
+<dt><code class="code">s<var class="var">/regexp/replacement/[flags]</var></code></dt>
+<dd><p>(substitute) Match the regular-expression against the content of the
+pattern space.  If found, replace matched string with
+<var class="var">replacement</var>.
+</p>
+</dd>
+<dt><code class="code">t <var class="var">label</var></code></dt>
+<dd><p>(test) Branch to <var class="var">label</var> only if there has been a successful
+<code class="code">s</code>ubstitution since the last input line was read or conditional
+branch was taken.  The <var class="var">label</var> may be omitted, in which case the
+next cycle is started.
+</p>
+</dd>
+<dt><code class="code">T <var class="var">label</var></code></dt>
+<dd><p>(test) Branch to <var class="var">label</var> only if there have been no successful
+<code class="code">s</code>ubstitutions since the last input line was read or
+conditional branch was taken. The <var class="var">label</var> may be omitted,
+in which case the next cycle is started.
+</p>
+</dd>
+<dt><code class="code">v <var class="var">[version]</var></code></dt>
+<dd><p>(version) This command does nothing, but makes <code class="command">sed</code> fail if
+GNU <code class="command">sed</code> extensions are not supported, or if the requested version
+is not available.
+</p>
+</dd>
+<dt><code class="code">w filename</code></dt>
+<dd><p>Write the pattern space to <var class="var">filename</var>.
+</p>
+</dd>
+<dt><code class="code">W filename</code></dt>
+<dd><p>Write to the given filename the portion of the pattern space up to
+the first newline
+</p>
+</dd>
+<dt><code class="code">x</code></dt>
+<dd><p>Exchange the contents of the hold and pattern spaces.
+</p>
+</dd>
+<dt><code class="code">y/src/dst/</code></dt>
+<dd><p>Transliterate any characters in the pattern space which match
+any of the <var class="var">source-chars</var> with the corresponding character
+in <var class="var">dest-chars</var>.
+</p>
+</dd>
+<dt><code class="code">z</code></dt>
+<dd><p>(zap) This command empties the content of pattern space.
+</p>
+</dd>
+<dt><code class="code">#</code></dt>
+<dd><p>A comment, until  the next newline.
+</p>
+</dd>
+<dt><code class="code">{ <var class="var">cmd ; cmd ...</var> }</code></dt>
+<dd><p>Group several commands together.
+</p>
+</dd>
+<dt><code class="code">=</code></dt>
+<dd><p>Print the current input line number (with a trailing newline).
+</p>
+</dd>
+<dt><code class="code">: <var class="var">label</var></code></dt>
+<dd><p>Specify the location of <var class="var">label</var> for branch commands (<code class="code">b</code>,
+<code class="code">t</code>, <code class="code">T</code>).
+</p>
+</dd>
+</dl>
+<hr/>
+</div></div>
