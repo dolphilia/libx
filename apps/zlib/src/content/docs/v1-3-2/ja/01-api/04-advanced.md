@@ -1,0 +1,605 @@
+---
+title: "高度な関数"
+licenseSource: zlib-api
+toc:
+  maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>固定したzlib 1.3.2の原文全体を整形した英語定本からの非公式な日本語訳です。原資料：zlib.h。<a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">公式配布物</a>のSHA-256：<code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256：<code>818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a</code>。原文の通知は固定原資料と<a href=\"../01-overview/\">概要ページの英語原文</a>に保持しています。この整形版と翻訳は非公式です。</p><p><a href=\"../../02-appendix/05-license/\">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は、固定した公式配布物内を参照してください。</p></aside>"},{"kind":"editorial","html":"<aside data-editorial=\"source-note\"><p>原資料についての注記：deflateBound_zの宣言名は、コメントの1箇所ではdelfateBound_zと誤記されています。inflateInit2にはヘッダーを読み込む可能性の説明と、現在の実装はinflateまで処理を遅延するという説明があり、両方を保持しています。「much each」は原文の誤記です。deflateTuneは内部の調整に関する詳細をdeflate.cへ委ねており、この文書ではその詳細を創作していません。deflateSetHeaderのコメントではxflag、gz_headerのフィールド名ではxflagsとなっており、両方の原文表記を保持しています。</p></aside>"}]
+---
+
+
+<div class="zlib-document" style="overflow-wrap:anywhere"><div data-zlib-block="40"><h2 id="section-40" data-source-role="section"> 高度な関数 </h2></div><div data-zlib-block="41"><pre><code>
+
+</code></pre></div><div data-zlib-block="42"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+    以下の関数が必要になるのは、一部の特殊なアプリケーションだけです。
+</div></div><div data-zlib-block="43"><pre><code>
+
+</code></pre></div><a id="deflateInit2" data-editorial="anchor"></a><h3 id="nav-44" data-editorial="navigation">deflateInit2</h3><div data-zlib-block="44"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><pre><code>ZEXTERN int ZEXPORT deflateInit2(z_streamp strm,
+                                 int level,
+                                 int method,
+                                 int windowBits,
+                                 int memLevel,
+                                 int strategy);</code></pre><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+
+     圧縮オプションを追加した、<a href="../03-basic/#deflateInit">deflateInit</a>の別版です。
+   呼び出し側は事前にzalloc、zfree、opaqueを初期化しなければなりません。
+
+     methodは圧縮方式を指定します。この版のライブラリではZ_DEFLATEDでなければなりません。
+
+     windowBitsはウィンドウサイズ（履歴バッファーのサイズ）の底2の対数です。
+   この版では8〜15の範囲にするべきです。値を大きくするとメモリ使用量と引き換えに
+   圧縮率が上がります。代わりに<a href="../03-basic/#deflateInit">deflateInit</a>を使う場合の既定値は15です。
+
+     現在の<a href="../03-basic/#deflate">deflate</a>()はwindowBitsが8（256バイトのウィンドウ）に対応していません。
+   そのため8を要求すると9（512バイト）になります。この場合、<a href="./#inflateInit2">inflateInit2</a>()に8を
+   指定すると、9を含むzlibヘッダーを<a href="../03-basic/#inflate">inflate</a>()の初期化設定と照合する際に
+   エラーになります。対処方法は、この初期化設定では<a href="./#deflateInit2">deflateInit2</a>()に8を使わないこと、
+   または少なくともその場合は<a href="./#inflateInit2">inflateInit2</a>()に9を指定することです。
+
+     raw deflateにはwindowBitsを-8〜-15にもできます。この場合、-windowBitsが
+   ウィンドウサイズを決めます。<a href="../03-basic/#deflate">deflate</a>()はzlibヘッダーもトレーラーもない
+   raw deflateデータを生成し、チェック値を計算しません。
+
+     gzipエンコードを選ぶ場合はwindowBitsを15より大きくすることもできます。
+   windowBitsに16を加えると、zlibラッパーの代わりに単純なgzipヘッダーとトレーラーを
+   圧縮データの前後に書き込みます。このgzipヘッダーにはファイル名、追加データ、コメント、
+   更新時刻（0に設定）、ヘッダーCRCはなく、コンパイル時にOSが判定されていれば、
+   OSフィールドを適切な値に設定します。gzipストリームの書き込み時、strm-&gt;adlerは
+   Adler-32ではなくCRC-32です。
+
+     raw deflateまたはgzipエンコードでは、256バイトのウィンドウ要求は不正として拒否します。
+   ウィンドウサイズを展開側へ伝える手段を提供するのはzlibヘッダーだけだからです。
+
+     memLevelは内部圧縮状態に確保するメモリの量を指定します。memLevel=1は最小のメモリを
+   使いますが低速で圧縮率も下がり、memLevel=9は最大のメモリを使って速度を最適化します。
+   既定値は8です。windowBitsとmemLevelによる総メモリ使用量は<a href="../../02-appendix/01-zconf/">zconf.h</a>を参照してください。
+
+     strategyは圧縮アルゴリズムの調整に使います。通常のデータにはZ_DEFAULT_STRATEGY、
+   フィルター（または予測器）が生成したデータにはZ_FILTERED、マッチ距離を1に制限する
+   ランレングス符号化にはZ_RLE、文字列マッチングを行わずHuffman符号化だけを強制するには
+   Z_HUFFMAN_ONLYを使います。フィルター後のデータは、PNGフィルターの出力のように、
+   ややランダムな分布を持つ小さな値が主です。この場合、それらをよりよく圧縮するよう
+   アルゴリズムを調整します。Z_FILTEREDは既定よりHuffman符号化を増やし、文字列マッチングを
+   減らします。Z_DEFAULT_STRATEGYとZ_HUFFMAN_ONLYの中間です。Z_RLEはZ_HUFFMAN_ONLYと
+   ほぼ同じ速度ですが、PNG画像データではHuffmanのみよりよい圧縮率になるはずです。
+   文字列マッチングの程度は多い順にZ_DEFAULT_STRATEGY、Z_FILTERED、Z_RLE、
+   Z_HUFFMAN_ONLY（なし）です。strategyは圧縮率には影響しますが、データに最適でなくても
+   圧縮出力の正しさには決して影響しません。Z_FIXEDは既定の文字列マッチングを使いますが、
+   動的Huffman符号の使用を防ぎ、特殊なアプリケーションでデコーダーを簡略化できます。
+
+     <a href="./#deflateInit2">deflateInit2</a>は、成功時にZ_OK、メモリ不足時にZ_MEM_ERROR、いずれかの引数が
+   不正な場合（不正なmethodなど）にZ_STREAM_ERROR、ライブラリの版（zlib_version）が
+   呼び出し側の想定する版（ZLIB_VERSION）と互換性がない場合にZ_VERSION_ERRORを返します。
+   エラーメッセージがなければmsgはnullです。<a href="./#deflateInit2">deflateInit2</a>自体は圧縮せず、
+   圧縮は<a href="../03-basic/#deflate">deflate</a>()が行います。
+</div></div><a id="deflateSetDictionary" data-editorial="anchor"></a><h3 id="nav-45" data-editorial="navigation">deflateSetDictionary</h3><div data-zlib-block="45"><pre><code>
+
+ZEXTERN int ZEXPORT deflateSetDictionary(z_streamp strm,
+                                         const Bytef *dictionary,
+                                         uInt  dictLength);
+</code></pre></div><div data-zlib-block="46"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     指定したバイト列から圧縮辞書を初期化し、圧縮出力は生成しません。
+   zlib形式では、<a href="../03-basic/#deflateInit">deflateInit</a>、<a href="./#deflateInit2">deflateInit2</a>、または<a href="./#deflateReset">deflateReset</a>の直後、
+   deflateを一度も呼び出していない時点で呼び出さなければなりません。
+   raw deflateでは、deflateを一度も呼び出していない時点か、deflateブロック完了の直後に
+   呼び出さなければなりません。ブロック完了とは、Z_BLOCK、Z_PARTIAL_FLUSH、Z_SYNC_FLUSH、
+   Z_FULL_FLUSHのいずれかを使い、入力をすべて消費して出力をすべて引き渡した時点です。
+   圧縮側と展開側は、まったく同じ辞書を使わなければなりません（<a href="./#inflateSetDictionary">inflateSetDictionary</a>を参照）。
+
+     辞書は、今後の圧縮対象データに現れそうな文字列（バイト列）から構成するべきであり、
+   最もよく使う文字列は辞書の末尾寄りに置くことが望まれます。辞書が最も役立つのは、
+   圧縮対象が短く、精度よく予測できる場合です。その場合、既定の空の辞書よりよく圧縮できます。
+
+     <a href="../03-basic/#deflateInit">deflateInit</a>または<a href="./#deflateInit2">deflateInit2</a>が選ぶ圧縮用データ構造のサイズによって、
+   辞書の一部が実質的に破棄されることがあります。例えば、辞書が<a href="../03-basic/#deflateInit">deflateInit</a>または
+   <a href="./#deflateInit2">deflateInit2</a>で指定したウィンドウより大きい場合です。そのため、最も役立ちそうな
+   文字列は先頭ではなく末尾へ置くべきです。また、現在のdeflateは、指定した辞書のうち
+   最大でウィンドウサイズから262バイトを引いた量だけを使います。
+
+     戻る際、strm-&gt;adlerを辞書のAdler-32値へ設定します。展開側は後でこの値を使って、
+   圧縮側が使用した辞書を判別できます。実際には辞書の一部しか使わなくても、この値は
+   辞書全体に対するものです。raw deflateを要求した場合はAdler-32を計算せず、
+   strm-&gt;adlerも設定しません。
+
+     <a href="./#deflateSetDictionary">deflateSetDictionary</a>は、成功時にZ_OK、引数が不正な場合（dictionaryがZ_NULLなど）、
+   またはストリーム状態が不整合な場合にZ_STREAM_ERRORを返します。不整合の例は、すでに
+   deflateを呼び出したストリーム、またはraw deflateでブロック境界にない場合です。
+   <a href="./#deflateSetDictionary">deflateSetDictionary</a>自体は圧縮せず、圧縮は<a href="../03-basic/#deflate">deflate</a>()が行います。
+</div></div><a id="deflateGetDictionary" data-editorial="anchor"></a><h3 id="nav-47" data-editorial="navigation">deflateGetDictionary</h3><div data-zlib-block="47"><pre><code>
+
+ZEXTERN int ZEXPORT deflateGetDictionary(z_streamp strm,
+                                         Bytef *dictionary,
+                                         uInt  *dictLength);
+</code></pre></div><div data-zlib-block="48"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     deflateが維持するスライディング辞書を返します。dictLengthを辞書のバイト数に設定し、
+   その数のバイトをdictionaryへコピーします。dictionaryには十分な領域が必要であり、
+   32768バイトあれば常に十分です。<a href="./#deflateGetDictionary">deflateGetDictionary</a>()でdictionaryがZ_NULLなら、
+   辞書の長さだけを返し、何もコピーしません。同様にdictLengthがZ_NULLなら設定しません。
+
+     <a href="./#deflateGetDictionary">deflateGetDictionary</a>()は、ウィンドウサイズを超える入力が渡されていても、
+   ウィンドウより短い長さを返すことがあります。この場合、最大258バイト短くなることが
+   あります。zlibのdeflate実装によるウィンドウの管理と、最大258バイト長のマッチを
+   先読みする方法によるものです。入力の末尾からウィンドウサイズ分のバイトが必要なら、
+   アプリケーションがzlibの外で保存しなければなりません。
+
+     <a href="./#deflateGetDictionary">deflateGetDictionary</a>は、成功時にZ_OK、ストリーム状態が不整合ならZ_STREAM_ERRORを返します。
+</div></div><a id="deflateCopy" data-editorial="anchor"></a><h3 id="nav-49" data-editorial="navigation">deflateCopy</h3><div data-zlib-block="49"><pre><code>
+
+ZEXTERN int ZEXPORT deflateCopy(z_streamp dest,
+                                z_streamp source);
+</code></pre></div><div data-zlib-block="50"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     宛先ストリームを、元のストリームの完全なコピーに設定します。
+
+     この関数は複数の圧縮方針を試す場合に役立ちます。例えば、入力データをフィルターで
+   前処理する方法が複数ある場合です。破棄するストリームは<a href="../03-basic/#deflateEnd">deflateEnd</a>を呼び出して
+   解放するべきです。<a href="./#deflateCopy">deflateCopy</a>は非常に大きいこともある内部圧縮状態を複製するため、
+   この方法は低速で、多くのメモリを使うことがあります。
+
+     <a href="./#deflateCopy">deflateCopy</a>は、成功時にZ_OK、メモリ不足時にZ_MEM_ERROR、元ストリームの状態が
+   不整合な場合（zallocがZ_NULLなど）にZ_STREAM_ERRORを返します。
+   元ストリームと宛先ストリームのmsgは、どちらも変更しません。
+</div></div><a id="deflateReset" data-editorial="anchor"></a><h3 id="nav-51" data-editorial="navigation">deflateReset</h3><div data-zlib-block="51"><pre><code>
+
+ZEXTERN int ZEXPORT deflateReset(z_streamp strm);
+</code></pre></div><div data-zlib-block="52"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="../03-basic/#deflateEnd">deflateEnd</a>の後に<a href="../03-basic/#deflateInit">deflateInit</a>を行うことに相当しますが、内部圧縮状態を解放したり
+   再確保したりしません。圧縮レベルや設定済みのほかの属性は変更せずに残します。
+   total_in、total_out、adler、msgを初期化します。
+
+     <a href="./#deflateReset">deflateReset</a>は、成功時にZ_OK、元ストリーム状態が不整合ならZ_STREAM_ERROR
+   （zallocまたはstateがZ_NULLの場合など）を返します。
+</div></div><a id="deflateParams" data-editorial="anchor"></a><h3 id="nav-53" data-editorial="navigation">deflateParams</h3><div data-zlib-block="53"><pre><code>
+
+ZEXTERN int ZEXPORT deflateParams(z_streamp strm,
+                                  int level,
+                                  int strategy);
+</code></pre></div><div data-zlib-block="54"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     圧縮レベルと圧縮方針を動的に更新します。levelとstrategyの意味は<a href="./#deflateInit2">deflateInit2</a>()と
+   同じです。圧縮と入力の単純コピーを切り替えたり、別の方針が必要な種類の入力へ
+   切り替えたりできます。圧縮方法（levelによって決まります）またはstrategyが変わり、
+   状態の初期化かリセット後に<a href="../03-basic/#deflate">deflate</a>()を呼び出していれば、それまでに利用可能な入力を
+   <a href="../03-basic/#deflate">deflate</a>(strm, Z_BLOCK)で旧レベル・旧方針を使って圧縮します。
+   圧縮レベル0、1〜3、4〜9には、それぞれ異なる3つの方法があります。
+   新レベル・新方針は次の<a href="../03-basic/#deflate">deflate</a>()呼び出しから有効になります。
+
+     <a href="./#deflateParams">deflateParams</a>()が<a href="../03-basic/#deflate">deflate</a>(strm, Z_BLOCK)を実行し、完了するだけの出力領域が
+   なければ、パラメーター変更は反映されません。この場合、同じパラメーターと追加の
+   出力領域で<a href="./#deflateParams">deflateParams</a>()を再び呼び出し、再試行できます。
+
+     最初の試行で確実にパラメーターを変更するには、<a href="./#deflateParams">deflateParams</a>()の呼び出し前に、
+   <a href="../03-basic/#deflate">deflate</a>()でZ_BLOCKなどのフラッシュを要求し、strm.avail_outが0以外になるまで
+   フラッシュするべきです。その後、<a href="./#deflateParams">deflateParams</a>()を呼ぶ前に入力を追加するべきではありません。
+   この手順に従えば、<a href="./#deflateParams">deflateParams</a>()より前に圧縮したデータには旧レベル・旧方針が、
+   <a href="./#deflateParams">deflateParams</a>()より後に圧縮したデータには新レベル・新方針が適用されます。
+
+     <a href="./#deflateParams">deflateParams</a>は、成功時にZ_OK、元ストリームの状態が不整合か引数が不正なら
+   Z_STREAM_ERROR、方針や圧縮方法の変更前に利用可能な入力の圧縮を完了するだけの
+   出力領域がなければZ_BUF_ERRORを返します。Z_BUF_ERRORの場合、パラメーターは
+   変更されません。Z_BUF_ERRORは致命的ではなく、出力領域を追加して
+   <a href="./#deflateParams">deflateParams</a>()を再試行できます。
+</div></div><a id="deflateTune" data-editorial="anchor"></a><h3 id="nav-55" data-editorial="navigation">deflateTune</h3><div data-zlib-block="55"><pre><code>
+
+ZEXTERN int ZEXPORT deflateTune(z_streamp strm,
+                                int good_length,
+                                int max_lazy,
+                                int nice_length,
+                                int max_chain);
+</code></pre></div><div data-zlib-block="56"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     deflateの内部圧縮パラメーターを微調整します。zlibのdeflateが最良の一致文字列を
+   探すアルゴリズムを理解している人だけが使うべきであり、その中でも、自分の特定の
+   入力データから圧縮後の最後の1ビットまで絞り出そうとする、最も熱心な最適化者に
+   限るべきです。max_lazy、good_length、nice_length、max_chainの意味は
+   deflate.cのソースコードを読んでください。
+
+     <a href="./#deflateTune">deflateTune</a>()は<a href="../03-basic/#deflateInit">deflateInit</a>()または<a href="./#deflateInit2">deflateInit2</a>()の後に呼び出せます。
+   成功時にZ_OK、不正なdeflateストリームにはZ_STREAM_ERRORを返します。
+ </div></div><a id="deflateBound_z" data-editorial="anchor"></a><a id="deflateBound" data-editorial="anchor"></a><h3 id="nav-57" data-editorial="navigation">deflateBound</h3><div data-zlib-block="57"><pre><code>
+
+ZEXTERN uLong ZEXPORT deflateBound(z_streamp strm, uLong sourceLen);
+ZEXTERN z_size_t ZEXPORT deflateBound_z(z_streamp strm, z_size_t sourceLen);
+</code></pre></div><div data-zlib-block="58"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#deflateBound">deflateBound</a>()はsourceLenバイトを圧縮した後のサイズの上限を返します。
+   <a href="../03-basic/#deflateInit">deflateInit</a>()または<a href="./#deflateInit2">deflateInit2</a>()の後、さらに<a href="./#deflateSetHeader">deflateSetHeader</a>()を使う場合は
+   その後に呼び出さなければなりません。1回で圧縮するための出力バッファーの確保に使うので、
+   <a href="../03-basic/#deflate">deflate</a>()より前に呼び出します。最初の<a href="../03-basic/#deflate">deflate</a>()にsourceLenバイトの入力、
+   <a href="./#deflateBound">deflateBound</a>()が返したサイズの出力バッファー、flush値Z_FINISHを指定すれば、
+   <a href="../03-basic/#deflate">deflate</a>()は必ずZ_STREAM_ENDを返します。Z_FINISHまたはZ_NO_FLUSH以外の
+   フラッシュを使うと、圧縮後サイズが<a href="./#deflateBound">deflateBound</a>()の戻り値を超える可能性があります。
+
+     delfateBound_z()も同じですが、長さをsize_tで受け取り、size_tで返します。
+   Windowsではlongが32ビットであることに注意してください。
+</div></div><a id="deflatePending" data-editorial="anchor"></a><h3 id="nav-59" data-editorial="navigation">deflatePending</h3><div data-zlib-block="59"><pre><code>
+
+ZEXTERN int ZEXPORT deflatePending(z_streamp strm,
+                                   unsigned *pending,
+                                   int *bits);
+</code></pre></div><div data-zlib-block="60"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#deflatePending">deflatePending</a>()は、生成済みでありながら、利用可能な出力へまだ渡されていない
+   出力のバイト数とビット数を返します。未出力のバイトがあるのは、利用可能な出力領域を
+   使い切ったためです。未出力のビット数は0〜7で、1バイトを満たすためにさらにビットが
+   加わるのを待っています。pendingまたはbitsがZ_NULLなら、その値は設定しません。
+
+     <a href="./#deflatePending">deflatePending</a>は、成功時にZ_OK、元ストリーム状態が不整合ならZ_STREAM_ERRORを
+   返します。intが16ビットでmemLevelが9の場合、保留中のバイト数がunsignedに
+   収まらないことがあります。その場合はZ_BUF_ERRORを返し、*pendingをunsignedの最大値に設定します。
+ </div></div><a id="deflateUsed" data-editorial="anchor"></a><h3 id="nav-61" data-editorial="navigation">deflateUsed</h3><div data-zlib-block="61"><pre><code>
+
+ZEXTERN int ZEXPORT deflateUsed(z_streamp strm,
+                                int *bits);
+</code></pre></div><div data-zlib-block="62"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#deflateUsed">deflateUsed</a>()は、バイト境界へのフラッシュ時に最後のバイトで使用したdeflateビット数の
+   直近の値を*bitsに返します。結果は1〜8、まだフラッシュしていなければ0です。
+   deflateストリームの最終ビットの位置を特定するのに役立ちます。
+
+     <a href="./#deflateUsed">deflateUsed</a>は、成功時にZ_OK、元ストリーム状態が不整合ならZ_STREAM_ERRORを返します。
+ </div></div><a id="deflatePrime" data-editorial="anchor"></a><h3 id="nav-63" data-editorial="navigation">deflatePrime</h3><div data-zlib-block="63"><pre><code>
+
+ZEXTERN int ZEXPORT deflatePrime(z_streamp strm,
+                                 int bits,
+                                 int value);
+</code></pre></div><div data-zlib-block="64"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#deflatePrime">deflatePrime</a>()はdeflate出力ストリームへビットを挿入します。前のdeflateストリームへ
+   追記する際、そのストリームに残ったビットから新しいdeflate出力を開始することを
+   意図しています。そのためraw deflateだけで使うことができ、<a href="./#deflateInit2">deflateInit2</a>()または
+   <a href="./#deflateReset">deflateReset</a>()後の最初の<a href="../03-basic/#deflate">deflate</a>()呼び出しより前に使わなければなりません。
+   bitsは16以下でなければならず、valueの下位からその数のビットを出力へ挿入します。
+
+     <a href="./#deflatePrime">deflatePrime</a>は、成功時にZ_OK、ビット挿入用の内部バッファーの空きが足りなければ
+   Z_BUF_ERROR、元ストリーム状態が不整合ならZ_STREAM_ERRORを返します。
+</div></div><a id="deflateSetHeader" data-editorial="anchor"></a><h3 id="nav-65" data-editorial="navigation">deflateSetHeader</h3><div data-zlib-block="65"><pre><code>
+
+ZEXTERN int ZEXPORT deflateSetHeader(z_streamp strm,
+                                     gz_headerp head);
+</code></pre></div><div data-zlib-block="66"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#deflateSetHeader">deflateSetHeader</a>()は、<a href="./#deflateInit2">deflateInit2</a>()でgzipストリームを要求した場合の
+   gzipヘッダー情報を指定します。<a href="./#deflateSetHeader">deflateSetHeader</a>()は、<a href="./#deflateInit2">deflateInit2</a>()または
+   <a href="./#deflateReset">deflateReset</a>()の後、最初の<a href="../03-basic/#deflate">deflate</a>()呼び出しより前に呼び出せます。
+   指定した<a href="../01-overview/#gz_header">gz_header</a>構造体のtext、time、os、extraフィールド、name、commentの情報を
+   gzipヘッダーへ書き込みます。xflagは無視し、追加フラグは圧縮レベルに応じて設定します。
+   呼び出し側は、nameとcommentがZ_NULLでなければゼロバイトで終端すること、extraが
+   Z_NULLでなければそこにextra_lenバイトが存在することを保証しなければなりません。
+   hcrcが真ならgzipヘッダーCRCを含めます。コマンドライン版gzipの現行版（1.3.xまで）は
+   ヘッダーCRCに対応せず、「multi-part gzip file」と報告して処理を断念することに注意してください。
+
+     <a href="./#deflateSetHeader">deflateSetHeader</a>を使わない場合、既定のgzipヘッダーではtextは偽、timeは0、
+   osは現在のOSに設定し、extra、name、commentのフィールドはありません。
+   <a href="./#deflateReset">deflateReset</a>()はgzipヘッダーを既定状態へ戻します。
+
+     <a href="./#deflateSetHeader">deflateSetHeader</a>は、成功時にZ_OK、元ストリーム状態が不整合ならZ_STREAM_ERRORを返します。
+</div></div><div data-zlib-block="67"><pre><code>
+
+</code></pre></div><a id="inflateInit2" data-editorial="anchor"></a><h3 id="nav-68" data-editorial="navigation">inflateInit2</h3><div data-zlib-block="68"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><pre><code>ZEXTERN int ZEXPORT inflateInit2(z_streamp strm,
+                                 int windowBits);</code></pre><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+
+     引数を1つ追加した<a href="../03-basic/#inflateInit">inflateInit</a>の別版です。呼び出し側は事前に
+   next_in、avail_in、zalloc、zfree、opaqueを初期化しなければなりません。
+
+     windowBitsは最大ウィンドウサイズ（履歴バッファーのサイズ）の底2の対数です。
+   この版では8〜15の範囲にするべきです。代わりに<a href="../03-basic/#inflateInit">inflateInit</a>を使う場合の既定値は15です。
+   圧縮時に<a href="./#deflateInit2">deflateInit2</a>()へ指定したwindowBits以上でなければなりません。
+   <a href="./#deflateInit2">deflateInit2</a>()を使わなかった場合は15でなければなりません。
+   より大きなウィンドウの圧縮ストリームを入力すると、<a href="../03-basic/#inflate">inflate</a>()は大きなウィンドウを
+   確保しようとする代わりに、Z_DATA_ERRORを返します。
+
+     windowBitsを0にすると、圧縮ストリームのzlibヘッダーにあるウィンドウサイズを
+   inflateが使うよう要求できます。
+
+     raw inflateのためにwindowBitsを-8〜-15にすることもできます。この場合、
+   -windowBitsがウィンドウサイズを決めます。<a href="../03-basic/#inflate">inflate</a>()はraw deflateデータを処理し、
+   zlibやgzipヘッダーを探さず、チェック値も生成せず、ストリーム終端で比較するための
+   チェック値も探しません。zipなど、deflate圧縮データ形式を使う別の形式向けです。
+   それらの形式は独自のチェック値を提供します。raw deflateを圧縮データに使う独自形式を
+   作る場合は、zlib、gzip、zipと同様に、非圧縮データへAdler-32やCRC-32などのチェック値を
+   適用することを推奨します。多くのアプリケーションではzlib形式をそのまま使うべきです。
+   上述の<a href="./#deflateInit2">deflateInit2</a>()についての注記は、windowBitsの絶対値にも適用されます。
+
+     gzipデコードを選ぶ場合はwindowBitsを15より大きくすることもできます。
+   windowBitsに32を加えると、ヘッダーの自動検出によりzlibとgzipの両方をデコードできます。
+   16を加えるとgzipだけをデコードし、zlib形式にはZ_DATA_ERRORを返します。
+   gzipのデコード時、strm-&gt;adlerはAdler-32ではなくCRC-32です。
+   gunzipユーティリティや後述の<a href="../06-gzip/#gzread">gzread</a>()とは異なり、<a href="../03-basic/#inflate">inflate</a>()は連結された
+   gzipメンバーを自動的にはデコードしません。<a href="../03-basic/#inflate">inflate</a>()はgzipメンバーの終端で
+   Z_STREAM_ENDを返します。後続メンバーのデコードを続けるには状態をリセットする必要があります。
+   gzipメンバーの後ろにデータがある場合、gzip標準（RFC 1952）に適合した展開とするため、
+   必ずこのリセットを行わなければなりません。
+
+     <a href="./#inflateInit2">inflateInit2</a>は、成功時にZ_OK、メモリ不足時にZ_MEM_ERROR、ライブラリの版が
+   呼び出し側の想定する版と互換性がない場合にZ_VERSION_ERROR、構造体へのnullポインターなど
+   引数が不正な場合にZ_STREAM_ERRORを返します。エラーメッセージがなければmsgはnullです。
+   <a href="./#inflateInit2">inflateInit2</a>は、存在するzlibヘッダーを読み込む可能性を除き、展開は行いません。
+   実際の展開は<a href="../03-basic/#inflate">inflate</a>()が行います。そのためnext_inとavail_inは変更される可能性が
+   ありますが、next_outとavail_outは使用せず、変更もしません。
+   現在の<a href="./#inflateInit2">inflateInit2</a>()はヘッダー情報を処理せず、<a href="../03-basic/#inflate">inflate</a>()を呼ぶまで遅延します。
+</div></div><a id="inflateSetDictionary" data-editorial="anchor"></a><h3 id="nav-69" data-editorial="navigation">inflateSetDictionary</h3><div data-zlib-block="69"><pre><code>
+
+ZEXTERN int ZEXPORT inflateSetDictionary(z_streamp strm,
+                                         const Bytef *dictionary,
+                                         uInt  dictLength);
+</code></pre></div><div data-zlib-block="70"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     指定した非圧縮バイト列から展開辞書を初期化します。inflateがZ_NEED_DICTを
+   返した場合、その呼び出し直後にこの関数を呼び出さなければなりません。
+   圧縮側が選んだ辞書は、そのinflate呼び出しが返したAdler-32値から判別できます。
+   圧縮側と展開側はまったく同じ辞書を使わなければなりません（<a href="./#deflateSetDictionary">deflateSetDictionary</a>を参照）。
+   raw inflateでは、いつでもこの関数を呼んで辞書を設定できます。指定した辞書が
+   ウィンドウより小さく、ウィンドウにすでにデータがある場合、指定した辞書で既存の内容を補います。
+   アプリケーションは、圧縮に使った辞書を渡すことを保証しなければなりません。
+
+     <a href="./#inflateSetDictionary">inflateSetDictionary</a>は、成功時にZ_OK、引数が不正な場合（dictionaryがZ_NULLなど）や
+   ストリーム状態が不整合ならZ_STREAM_ERROR、辞書が想定と一致しない場合
+   （Adler-32値が不正）にZ_DATA_ERRORを返します。<a href="./#inflateSetDictionary">inflateSetDictionary</a>自体は
+   展開せず、その後の<a href="../03-basic/#inflate">inflate</a>()呼び出しが行います。
+</div></div><a id="inflateGetDictionary" data-editorial="anchor"></a><h3 id="nav-71" data-editorial="navigation">inflateGetDictionary</h3><div data-zlib-block="71"><pre><code>
+
+ZEXTERN int ZEXPORT inflateGetDictionary(z_streamp strm,
+                                         Bytef *dictionary,
+                                         uInt  *dictLength);
+</code></pre></div><div data-zlib-block="72"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     inflateが維持するスライディング辞書を返します。dictLengthを辞書のバイト数に設定し、
+   その数のバイトをdictionaryへコピーします。dictionaryには十分な領域が必要であり、
+   32768バイトあれば常に十分です。<a href="./#inflateGetDictionary">inflateGetDictionary</a>()でdictionaryがZ_NULLなら、
+   辞書の長さだけを返し、何もコピーしません。同様にdictLengthがZ_NULLなら設定しません。
+
+     <a href="./#inflateGetDictionary">inflateGetDictionary</a>は、成功時にZ_OK、ストリーム状態が不整合ならZ_STREAM_ERRORを返します。
+</div></div><a id="inflateSync" data-editorial="anchor"></a><h3 id="nav-73" data-editorial="navigation">inflateSync</h3><div data-zlib-block="73"><pre><code>
+
+ZEXTERN int ZEXPORT inflateSync(z_streamp strm);
+</code></pre></div><div data-zlib-block="74"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     フルフラッシュ地点の候補を見つけるか、利用可能な入力をすべて読み飛ばすまで、
+   不正な圧縮データを読み飛ばします。フルフラッシュについては、前述のdeflateの
+   Z_FULL_FLUSHの説明を参照してください。出力は生成しません。
+
+     <a href="./#inflateSync">inflateSync</a>は圧縮データ内の00 00 FF FFを探します。すべてのフルフラッシュ地点に
+   このパターンがありますが、このパターンが現れる場所すべてがフルフラッシュ地点とは限りません。
+
+     <a href="./#inflateSync">inflateSync</a>は、フルフラッシュ地点の候補を見つけた場合にZ_OK、追加の入力が
+   渡されていない場合にZ_BUF_ERROR、フラッシュ地点が見つからなければZ_DATA_ERROR、
+   ストリーム構造が不整合ならZ_STREAM_ERRORを返します。成功時は、有効な圧縮データを
+   見つけた位置を示す現在のtotal_inを保存できます。エラー時は、成功するか入力データの
+   終端に達するまで、入力を追加しながら<a href="./#inflateSync">inflateSync</a>を繰り返し呼び出せます。
+</div></div><a id="inflateCopy" data-editorial="anchor"></a><h3 id="nav-75" data-editorial="navigation">inflateCopy</h3><div data-zlib-block="75"><pre><code>
+
+ZEXTERN int ZEXPORT inflateCopy(z_streamp dest,
+                                z_streamp source);
+</code></pre></div><div data-zlib-block="76"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     出力先ストリームを元ストリームの完全なコピーに設定します。
+
+     大きなストリームへランダムアクセスする場合に役立ちます。最初にストリームを
+   読み進める際に、inflateの状態を定期的に記録しておけば、ランダムアクセス時に
+   それらの地点からinflateを再開できます。
+
+     <a href="./#inflateCopy">inflateCopy</a>は、成功時にZ_OK、メモリ不足時にZ_MEM_ERROR、元ストリーム状態が
+   不整合な場合（zallocがZ_NULLなど）にZ_STREAM_ERRORを返します。
+   元ストリームと出力先のどちらのmsgも変更しません。
+</div></div><a id="inflateReset" data-editorial="anchor"></a><h3 id="nav-77" data-editorial="navigation">inflateReset</h3><div data-zlib-block="77"><pre><code>
+
+ZEXTERN int ZEXPORT inflateReset(z_streamp strm);
+</code></pre></div><div data-zlib-block="78"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="../03-basic/#inflateEnd">inflateEnd</a>の後に<a href="../03-basic/#inflateInit">inflateInit</a>を呼び出すことと同等ですが、内部の展開状態を
+   解放して再確保することはありません。ストリームは、<a href="./#inflateInit2">inflateInit2</a>で設定した可能性のある
+   属性を保持します。total_in、total_out、adler、msgは初期化します。
+
+     <a href="./#inflateReset">inflateReset</a>は、成功時にZ_OK、元ストリーム状態が不整合な場合
+   （zallocやstateがZ_NULLなど）にZ_STREAM_ERRORを返します。
+</div></div><a id="inflateReset2" data-editorial="anchor"></a><h3 id="nav-79" data-editorial="navigation">inflateReset2</h3><div data-zlib-block="79"><pre><code>
+
+ZEXTERN int ZEXPORT inflateReset2(z_streamp strm,
+                                  int windowBits);
+</code></pre></div><div data-zlib-block="80"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#inflateReset">inflateReset</a>と同じですが、ラッパーとウィンドウサイズの指定も変更できます。
+   windowBitsは<a href="./#inflateInit2">inflateInit2</a>と同じように解釈します。ウィンドウサイズが変わる場合は、
+   ウィンドウに確保したメモリを解放し、必要になったときに<a href="../03-basic/#inflate">inflate</a>()が再確保します。
+
+     <a href="./#inflateReset2">inflateReset2</a>は、成功時にZ_OK、元ストリーム状態が不整合な場合
+   （zallocやstateがZ_NULLなど）、またはwindowBitsが不正な場合にZ_STREAM_ERRORを返します。
+</div></div><a id="inflatePrime" data-editorial="anchor"></a><h3 id="nav-81" data-editorial="navigation">inflatePrime</h3><div data-zlib-block="81"><pre><code>
+
+ZEXTERN int ZEXPORT inflatePrime(z_streamp strm,
+                                 int bits,
+                                 int value);
+</code></pre></div><div data-zlib-block="82"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     inflateの入力ストリームへビットを挿入します。<a href="./#inflatePrime">inflatePrime</a>()を使い、バイトの途中の
+   ビット位置から展開を開始するための関数です。指定したビットはnext_inからのバイトより
+   先に使います。raw inflateで、<a href="./#inflateInit2">inflateInit2</a>()または<a href="./#inflateReset">inflateReset</a>()の後、最初の
+   <a href="../03-basic/#inflate">inflate</a>()呼び出しより前に使うべきです。Z_BLOCKを使用して、<a href="../03-basic/#inflate">inflate</a>()の戻り値が
+   deflateブロックまたはヘッダーの終端を示した後にも使えます。bitsは16以下でなければならず、
+   valueの下位からその数のビットを入力へ挿入します。valueのほかのビットはゼロでなくてもよく、
+   無視します。
+
+     bitsが負なら、入力ストリームのビットバッファーを空にします。その後、<a href="./#inflatePrime">inflatePrime</a>()を
+   再び呼び出してビットをバッファーへ入れられます。inflateへブロック記述を渡した後、
+   符号を渡す前に、残ったビットを取り除くために使います。
+
+     <a href="./#inflatePrime">inflatePrime</a>は、成功時にZ_OK、元ストリーム状態が不整合な場合やbitsが範囲外の
+   場合にZ_STREAM_ERRORを返します。inflateがヘッダー、トレーラー、非圧縮ブロックの長さを
+   処理している途中なら、ビットバッファーには8ビットしか空きがない可能性があります。
+   その場合、bits &gt; 8は範囲外とみなします。ただし、上記の方法で使う場合には、挿入用の
+   空きが常に16ビットあります。前述の説明のとおり、inflateは戻る際にビットバッファー内の
+   ビット数をdata_typeへ記録します。32からその数を引いた値が、挿入できるビット数です。
+   <a href="./#inflatePrime">inflatePrime</a>は、バッファー内の新しいビット数でdata_typeを更新しません。
+</div></div><a id="inflateMark" data-editorial="anchor"></a><h3 id="nav-83" data-editorial="navigation">inflateMark</h3><div data-zlib-block="83"><pre><code>
+
+ZEXTERN long ZEXPORT inflateMark(z_streamp strm);
+</code></pre></div><div data-zlib-block="84"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     戻り値の下位16ビットに1つ、残りの上位ビットにもう1つ、合計2つの値を返します。
+   上位の値は戻り値を16ビット右へシフトして得ます。上位の値が-1、下位の値が0なら、
+   <a href="../03-basic/#inflate">inflate</a>()はブロック外の情報をデコードしています。上位の値が-1、下位の値が0でなければ、
+   inflateは非圧縮ブロックの途中にあり、下位の値は入力からまだコピーする必要のあるバイト数です。
+   上位の値が-1でなければ、処理中の符号（リテラルまたは長さと距離の組）の入力内の位置が、
+   現在のビット位置から何ビット前にあるかを表します。この場合、下位の値はその符号について
+   すでに出力したバイト数です。
+
+     inflateが符号のデコードを完了するための入力を待っている場合、またはデコードは
+   完了したがリテラルや一致データを書き出すための出力領域を待っている場合、符号は処理中です。
+
+     <a href="./#inflateMark">inflateMark</a>()は、ランダムアクセスのために入力データ内の位置（ビット単位の場合も
+   あります）を記録し、符号の出力がランダムアクセス用ブロックの境界をまたぐ場合を把握するために
+   使います。入力ストリーム内の現在位置は、inflateのZ_BLOCKフラッシュ引数の説明のとおり、
+   avail_inとdata_typeから求められます。
+
+     <a href="./#inflateMark">inflateMark</a>は上記の値を返します。指定した元ストリーム状態が不整合なら-65536を返します。
+</div></div><a id="inflateGetHeader" data-editorial="anchor"></a><h3 id="nav-85" data-editorial="navigation">inflateGetHeader</h3><div data-zlib-block="85"><pre><code>
+
+ZEXTERN int ZEXPORT inflateGetHeader(z_streamp strm,
+                                     gz_headerp head);
+</code></pre></div><div data-zlib-block="86"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#inflateGetHeader">inflateGetHeader</a>()は、指定した<a href="../01-overview/#gz_header">gz_header</a>構造体へgzipヘッダー情報を保存するよう
+   要求します。<a href="./#inflateInit2">inflateInit2</a>()または<a href="./#inflateReset">inflateReset</a>()の後、最初の<a href="../03-basic/#inflate">inflate</a>()呼び出しより前に
+   <a href="./#inflateGetHeader">inflateGetHeader</a>()を呼び出せます。<a href="../03-basic/#inflate">inflate</a>()がgzipストリームを処理する間、ヘッダーの
+   完了まではhead-&gt;doneは0で、完了時に1へ設定します。zlibストリームをデコードしている場合は、
+   gzipヘッダー情報が得られないことを示すためhead-&gt;doneを-1に設定します。Z_BLOCKまたはZ_TREESを
+   使えば、ヘッダー処理が完了した直後、実データの展開前に<a href="../03-basic/#inflate">inflate</a>()を戻らせられます。
+
+     text、time、xflags、osフィールドにはgzipヘッダーの内容が入ります。ヘッダーCRCがあれば
+   hcrcを真に設定します。（doneが1ならヘッダーCRCは有効でした。）extra、name、commentの各ポインターは
+   Z_NULLか、ヘッダーの情報を保存する領域を指していなければなりません。extraがZ_NULLでなければ、
+   extra_maxにはextraへ書き込める最大バイト数を指定します。doneが真になれば、extra_lenには実際の
+   extraフィールドの長さが入り、extraにはextraフィールドが入ります。extra_maxがextra_lenより小さい
+   場合は、その領域に収まる部分だけが入ります。nameがZ_NULLでなければ、終端のゼロを含めて最大
+   name_max文字を書き込みます。commentがZ_NULLでなければ、終端のゼロを含めて最大comm_max文字を
+   書き込みます。終端のゼロがないことから、nameやcommentが指定した領域に収まらなかったと判断できます。
+   extra、name、commentのいずれかがヘッダーに存在しなければ、そのフィールドのポインターをZ_NULLへ
+   設定します。これにより、返された構造体を<a href="./#deflateSetHeader">deflateSetHeader</a>()に渡してヘッダーを複製できます。
+   それらのフィールドが初めに確保済みメモリを指していた場合は、後で解放できるように、
+   アプリケーションがそのポインターを別の場所へ保存しておく必要があります。
+
+     <a href="./#inflateGetHeader">inflateGetHeader</a>を使わない場合、ヘッダー情報は単に破棄します。ヘッダーは、
+   ヘッダーCRCがあればそれも含めて、常に妥当性を検査します。<a href="./#inflateReset">inflateReset</a>()は、ヘッダー情報を
+   破棄する状態へ処理を戻します。次のgzipストリームのヘッダーを取得するには、アプリケーションが
+   <a href="./#inflateGetHeader">inflateGetHeader</a>()を再び呼び出す必要があります。
+
+     <a href="./#inflateGetHeader">inflateGetHeader</a>は、成功時にZ_OK、元ストリーム状態が不整合ならZ_STREAM_ERRORを返します。
+</div></div><div data-zlib-block="87"><pre><code>
+
+</code></pre></div><a id="inflateBackInit" data-editorial="anchor"></a><h3 id="nav-88" data-editorial="navigation">inflateBackInit</h3><div data-zlib-block="88"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><pre><code>ZEXTERN int ZEXPORT inflateBackInit(z_streamp strm, int windowBits,
+                                    unsigned char FAR *window);</code></pre><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+
+     <a href="./#inflateBack">inflateBack</a>()呼び出しによる展開のために、内部ストリーム状態を初期化します。
+   呼び出し前にstrmのzalloc、zfree、opaqueを初期化しなければなりません。
+   zallocとzfreeがZ_NULLなら、ライブラリが提供する既定のメモリ確保ルーチンを使います。
+   windowBitsはウィンドウサイズの底2の対数で、範囲は8〜15です。windowは、そのサイズの
+   呼び出し側が提供するバッファーです。小さなウィンドウサイズでdeflateを使用したと
+   保証できる特別な用途を除き、一般的なdeflateストリームを展開できるように、windowBitsを15とし、
+   32Kバイトのウィンドウを提供しなければなりません。
+
+     これらのルーチンの使い方は<a href="./#inflateBack">inflateBack</a>()を参照してください。
+
+     <a href="./#inflateBackInit">inflateBackInit</a>は、成功時にZ_OK、引数が不正な場合にZ_STREAM_ERROR、内部状態を
+   確保できなかった場合にZ_MEM_ERROR、ライブラリの版とヘッダーファイルの版が一致しない場合に
+   Z_VERSION_ERRORを返します。
+</div></div><a id="out_func" data-editorial="anchor"></a><a id="in_func" data-editorial="anchor"></a><a id="inflateBack" data-editorial="anchor"></a><h3 id="nav-89" data-editorial="navigation">inflateBack</h3><div data-zlib-block="89"><pre><code>
+
+typedef unsigned (*in_func)(void FAR *,
+                            z_const unsigned char FAR * FAR *);
+typedef int (*out_func)(void FAR *, unsigned char FAR *, unsigned);
+
+ZEXTERN int ZEXPORT inflateBack(z_streamp strm,
+                                in_func in, void FAR *in_desc,
+                                out_func out, void FAR *out_desc);
+</code></pre></div><div data-zlib-block="90"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#inflateBack">inflateBack</a>()は、入出力のコールバックを使い、1回の呼び出しでraw inflateを行います。
+   ウィンドウ自体を出力バッファーにすることで、出力とスライディングウィンドウの間のコピーを
+   避けるため、ファイル入出力を行う用途では<a href="../03-basic/#inflate">inflate</a>()より効率的な可能性があります。
+   現代のCPUでは、大きなバッファーを使う<a href="../03-basic/#inflate">inflate</a>()の方が速い場合があります。
+   <a href="./#inflateBack">inflateBack</a>()は、少なくとも<a href="./#inflateBack">inflateBack</a>()が戻るまでは、アプリケーションが出力関数に渡される
+   出力バッファーを変更しないものと信頼します。
+
+     最初に<a href="./#inflateBackInit">inflateBackInit</a>()を呼び出して内部状態を確保し、利用者が提供するウィンドウ
+   バッファーで状態を初期化しなければなりません。その後、<a href="./#inflateBack">inflateBack</a>()を複数回使えます。
+   各呼び出しで完全なraw deflateストリームを1つ展開します。最後に<a href="./#inflateBackEnd">inflateBackEnd</a>()を
+   呼び出して、確保した状態を解放します。
+
+     raw deflateストリームにはzlibやgzipのヘッダー、トレーラーがありません。
+   このルーチンは通常、zipやgzipファイルを読み、非圧縮ファイルを書き出すユーティリティで
+   使います。ユーティリティ自身がヘッダーをデコードし、トレーラーを処理するため、このルーチンは
+   展開対象としてraw deflateストリームだけを想定します。これは、deflateストリームの前後に
+   zlibヘッダーとトレーラーを想定する<a href="../03-basic/#inflate">inflate</a>()の既定動作とは異なります。
+
+     <a href="./#inflateBack">inflateBack</a>()は、呼び出し側が提供する入出力用の2つのサブルーチンを使い、
+   <a href="./#inflateBack">inflateBack</a>()がそれらを呼び出します。
+   完全なdeflateストリームを読み、すべての非圧縮データを書き出すか、エラーに遭遇するまで、
+   <a href="./#inflateBack">inflateBack</a>()はそれらのルーチンを呼び出します。関数の引数と戻り値の型は、上の<a href="./#in_func">in_func</a>と<a href="./#out_func">out_func</a>の
+   typedefで定義しています。<a href="./#inflateBack">inflateBack</a>()はin(in_desc, &amp;buf)を呼び出します。
+   in()は、提供する入力のバイト数を返し、その入力へのポインターをbufへ設定するべきです。
+   入力がなければin()は0を返さなければなりません。その場合bufは無視し、<a href="./#inflateBack">inflateBack</a>()は
+   バッファーエラーを返します。<a href="./#inflateBack">inflateBack</a>()は非圧縮データbuf[0..len-1]を書き出すために
+   out(out_desc, buf, len)を呼び出します。out()は成功時に0、失敗時に0以外を返すべきです。
+   out()が0以外を返せば、<a href="./#inflateBack">inflateBack</a>()はエラーで戻ります。in()もout()も、
+   <a href="./#inflateBackInit">inflateBackInit</a>()へ提供したウィンドウの内容を変更してはいけません。
+   そのウィンドウは、out()が書き出すデータのバッファーでもあります。out()が書き出す長さは
+   ウィンドウサイズ以下です。in()は0以外の任意の量の入力を提供できます。
+
+     便宜上、strm-&gt;next_inとstrm-&gt;avail_inを設定して、<a href="./#inflateBack">inflateBack</a>()の最初の呼び出しに入力を渡せます。
+   その入力を使い切るとin()を呼び出します。そのため、<a href="./#inflateBack">inflateBack</a>()の呼び出し前に
+   strm-&gt;next_inを初期化しなければなりません。strm-&gt;next_inがZ_NULLなら、入力のために
+   直ちにin()を呼び出します。Z_NULLでなければstrm-&gt;avail_inも初期化しなければなりません。
+   strm-&gt;avail_inが0でなければ、最初はstrm-&gt;next_in[0 .. strm-&gt;avail_in - 1]から入力を取ります。
+
+     <a href="./#inflateBack">inflateBack</a>()のin_descとout_descは、それぞれin()とout()を呼び出すときに
+   最初の引数として渡します。必要に応じて、呼び出し側が提供するin()とout()の処理に必要な
+   任意の情報を、この記述子を使って渡せます。
+
+     戻る際、<a href="./#inflateBack">inflateBack</a>()はstrm-&gt;next_inとstrm-&gt;avail_inを設定して、最後のin()呼び出しが
+   提供した未使用の入力を返します。<a href="./#inflateBack">inflateBack</a>()の戻り値は、成功時にZ_STREAM_END、in()やout()がエラーを
+   返した場合にZ_BUF_ERROR、deflateストリームの形式エラー時にZ_DATA_ERROR（エラーの内容を
+   示すようstrm-&gt;msgを設定）、ストリームが適切に初期化されていない場合にZ_STREAM_ERRORです。
+   Z_BUF_ERRORの場合、strm-&gt;next_inで入力エラーと出力エラーを区別できます。
+   in()がエラーを返した場合に限りZ_NULLになります。Z_NULLでなければ、out()が0以外を返した
+   ことがZ_BUF_ERRORの原因です。（in()は常にout()より先に呼び出すため、out()が0以外を
+   返す場合にはstrm-&gt;next_inが定義されていると保証できます。）<a href="./#inflateBack">inflateBack</a>()は
+   Z_OKを返せないことに注意してください。
+</div></div><a id="inflateBackEnd" data-editorial="anchor"></a><h3 id="nav-91" data-editorial="navigation">inflateBackEnd</h3><div data-zlib-block="91"><pre><code>
+
+ZEXTERN int ZEXPORT inflateBackEnd(z_streamp strm);
+</code></pre></div><div data-zlib-block="92"><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+     <a href="./#inflateBackInit">inflateBackInit</a>()が確保したすべてのメモリを解放します。
+
+     <a href="./#inflateBackEnd">inflateBackEnd</a>()は、成功時にZ_OK、ストリーム状態が不整合ならZ_STREAM_ERRORを返します。
+</div></div><a id="zlibCompileFlags" data-editorial="anchor"></a><h3 id="nav-93" data-editorial="navigation">zlibCompileFlags</h3><div data-zlib-block="93"><pre><code>
+
+ZEXTERN uLong ZEXPORT zlibCompileFlags(void);
+</code></pre></div><div data-zlib-block="94"><div style="white-space:pre-wrap;overflow-wrap:anywhere"> コンパイル時のオプションを表すフラグを返します。
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">    型のサイズ（各2ビット）。00 = 16ビット、01 = 32、10 = 64、11 = その他：
+</div><table><tbody><tr><td style="white-space:pre-wrap">     1.0:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> uIntのサイズ
+</td></tr><tr><td style="white-space:pre-wrap">     3.2:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> uLongのサイズ
+</td></tr><tr><td style="white-space:pre-wrap">     5.4:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> voidpf（ポインター）のサイズ
+</td></tr><tr><td style="white-space:pre-wrap">     7.6:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> z_off_tのサイズ
+</td></tr></tbody></table><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">    コンパイラー、アセンブラー、デバッグのオプション：
+</div><table><tbody><tr><td style="white-space:pre-wrap">     8:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> ZLIB_DEBUG
+</td></tr><tr><td style="white-space:pre-wrap">     9:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> ASMVまたはASMINF — アセンブリコードを使用
+</td></tr><tr><td style="white-space:pre-wrap">     10:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> ZLIB_WINAPI — エクスポート関数はWINAPI呼び出し規約を使用
+</td></tr><tr><td style="white-space:pre-wrap">     11:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0（予約済み）
+</td></tr></tbody></table><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">    1回だけのテーブル構築（コードは小さくなるが、真ならスレッドセーフではない）：
+</div><table><tbody><tr><td style="white-space:pre-wrap">     12:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> BUILDFIXED — 必要時に静的ブロックのデコード用テーブルを構築
+</td></tr><tr><td style="white-space:pre-wrap">     13:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> DYNAMIC_CRC_TABLE — 必要時にCRC計算用テーブルを構築
+</td></tr><tr><td style="white-space:pre-wrap">     14,15:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0（予約済み）
+</td></tr></tbody></table><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">    ライブラリの内容（欠けている機能を示す）：
+</div><table><tbody><tr><td style="white-space:pre-wrap">     16:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> NO_GZCOMPRESS — gz*関数では圧縮できない（不要な場合に
+                          deflateコードのリンクを避けるため）
+</td></tr><tr><td style="white-space:pre-wrap">     17:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> NO_GZIP — deflateはgzipストリームを書き出せず、inflateはgzipストリームの
+                    検出・デコードができない（crcコードのリンクを避けるため）
+</td></tr><tr><td style="white-space:pre-wrap">     18-19:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0（予約済み）
+</td></tr></tbody></table><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">    動作の変種（ライブラリ機能の変更）：
+</div><table><tbody><tr><td style="white-space:pre-wrap">     20:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> PKZIP_BUG_WORKAROUND — inflateを少し寛容にする
+</td></tr><tr><td style="white-space:pre-wrap">     21:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> FASTEST — 最低の圧縮レベル1つだけを使うdeflateアルゴリズム
+</td></tr><tr><td style="white-space:pre-wrap">     22,23:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0（予約済み）
+</td></tr></tbody></table><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">    <a href="../06-gzip/#gzprintf">gzprintf</a>が使用するsprintfの変種（すべて0が最良）：
+</div><table><tbody><tr><td style="white-space:pre-wrap">     24:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0 = vs*、1 = s* — 1なら書式の後の引数は20個まで
+</td></tr><tr><td style="white-space:pre-wrap">     25:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0 = *nprintf、1 = *printf — 1なら<a href="../06-gzip/#gzprintf">gzprintf</a>()は安全ではない！
+</td></tr><tr><td style="white-space:pre-wrap">     26:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0 = 値を返す、1 = void — 1なら推定した文字列長を返す
+</td></tr><tr><td style="white-space:pre-wrap">     27:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0 = <a href="../06-gzip/#gzprintf">gzprintf</a>()あり、1 = なし — 1なら<a href="../06-gzip/#gzprintf">gzprintf</a>()はエラーを返す
+</td></tr></tbody></table><div style="white-space:pre-wrap;overflow-wrap:anywhere">
+</div><div style="white-space:pre-wrap;overflow-wrap:anywhere">    残り：
+</div><table><tbody><tr><td style="white-space:pre-wrap">     28-31:</td><td style="white-space:pre-wrap;overflow-wrap:anywhere"> 0（予約済み）
+</td></tr></tbody></table><div style="white-space:pre-wrap;overflow-wrap:anywhere"> </div></div><div data-zlib-block="95"><pre><code>
+
+#ifndef Z_SOLO
+
+                        </code></pre></div></div>

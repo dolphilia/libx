@@ -1,0 +1,145 @@
+import fs from 'node:fs';
+import { parse, parseFragment } from 'parse5';
+import assert from 'node:assert/strict';
+const at = (n, k) => n.attrs?.find((a) => a.name === k)?.value;
+const walk = (n, p) => [...(p(n) ? [n] : []), ...(n.childNodes ?? []).flatMap((c) => walk(c, p))];
+const txt = (n) =>
+  n.nodeName === 'button' && at(n, 'class')?.split(' ').includes('docs-code-copy')
+    ? ''
+    : n.nodeName === '#text'
+      ? n.value
+      : (n.childNodes ?? []).map(txt).join('');
+const sourceOnly = process.argv.includes('--source-only');
+const page = process.argv[2] ?? '01-api/01-overview.md',
+  load = (l) =>
+    parseFragment(
+      fs.readFileSync('src/content/docs/v1-3-2/' + l + '/' + page, 'utf8').split('---')[2]
+    );
+const en = load('en'),
+  ja = load('ja'),
+  rendered = sourceOnly
+    ? null
+    : parse(fs.readFileSync('dist/v1-3-2/ja/' + page.replace(/\.md$/, '') + '/index.html', 'utf8'));
+const blocks = (d) => walk(d, (n) => at(n, 'data-zlib-block') !== undefined);
+assert.equal(blocks(ja).length, blocks(en).length);
+assert.deepEqual(
+  blocks(ja).map((n) => at(n, 'data-zlib-block')),
+  blocks(en).map((n) => at(n, 'data-zlib-block'))
+);
+if (!sourceOnly) assert.deepEqual(blocks(ja).map(txt), blocks(rendered).map(txt));
+const codes = (d) =>
+  walk(d, (n) => n.nodeName === 'code' && n.parentNode?.nodeName === 'pre').map(txt);
+const strip = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '');
+assert.deepEqual(codes(en).map(strip), codes(ja).map(strip));
+const ids = (d) => walk(d, (n) => at(n, 'id')).map((n) => at(n, 'id'));
+assert.deepEqual(ids(en), ids(ja));
+if (!sourceOnly) for (const id of ids(ja)) assert(ids(rendered).includes(id));
+const original = JSON.parse(fs.readFileSync('meta/expected-blocks.json'))[page][0];
+const notice = walk(ja, (n) => at(n, 'data-editorial') === 'original-notice')[0];
+if (['01-api/01-overview.md', '02-appendix/01-zconf.md'].includes(page)) {
+  assert.equal(txt(walk(notice, (n) => n.nodeName === 'pre')[0]), original);
+  if (!sourceOnly) {
+    const renderedNotice = walk(rendered, (n) => at(n, 'data-editorial') === 'original-notice')[0];
+    assert.equal(txt(walk(renderedNotice, (n) => n.nodeName === 'pre')[0]), original);
+  }
+}
+if (
+  ['02-appendix/05-license.md', '02-appendix/02-readme.md', '02-appendix/04-manual.md'].includes(
+    page
+  )
+) {
+  const raw = fs.readFileSync(
+    'upstream/v1.3.2/' +
+      (page.includes('license') ? 'LICENSE' : page.includes('manual') ? 'zlib.3' : 'README'),
+    'utf8'
+  );
+  const originalText = page.includes('license')
+    ? raw
+    : page.includes('manual')
+      ? '.SH AUTHORS AND LICENSE' +
+        raw.split('.SH AUTHORS AND LICENSE', 2)[1].split('.LP\nThe deflate format used by')[0]
+      : 'Copyright notice:' +
+        raw.split('Copyright notice:', 2)[1].split('If you use the zlib library in a product')[0];
+  const pre = walk(notice, (n) => n.nodeName === 'pre')[0];
+  assert.equal(txt(pre), originalText);
+  if (!sourceOnly) {
+    const renderedNotice = walk(rendered, (n) => at(n, 'data-editorial') === 'original-notice')[0];
+    assert.equal(txt(walk(renderedNotice, (n) => n.nodeName === 'pre')[0]), originalText);
+  }
+}
+const urls = (d) =>
+  walk(d, (n) => n.nodeName === 'a')
+    .map((n) => at(n, 'href'))
+    .sort();
+const additions = [
+  '01-api/02-constants.md',
+  '01-api/03-basic.md',
+  '01-api/04-advanced.md',
+  '01-api/05-utility.md',
+  '01-api/06-gzip.md',
+  '01-api/07-checksum.md',
+  '01-api/08-hacks.md',
+  '01-api/09-undocumented.md',
+].includes(page)
+  ? ['../01-overview/']
+  : [];
+assert.deepEqual([...urls(en), ...additions].sort(), urls(ja));
+const tables = (d) => walk(d, (n) => n.nodeName === 'table');
+assert.equal(tables(en).length, tables(ja).length);
+const rowLabels = (d) =>
+  tables(d).flatMap((t) =>
+    walk(t, (n) => n.nodeName === 'tr').map((r) =>
+      txt(r.childNodes.filter((n) => n.nodeName === 'td')[0])
+    )
+  );
+assert.deepEqual(rowLabels(en), rowLabels(ja));
+if (!sourceOnly) assert.deepEqual(tables(ja).map(txt), tables(rendered).map(txt));
+const missingJapanese = Object.keys(
+  JSON.parse(fs.readFileSync('meta/expected-blocks.json'))
+).filter((p) => !fs.existsSync('src/content/docs/v1-3-2/ja/' + p));
+const faqHeadings =
+  page === '02-appendix/03-faq.md'
+    ? walk(ja, (n) => n.nodeName === 'h2' && at(n, 'data-source-role') === 'question')
+    : null;
+if (faqHeadings) {
+  assert.equal(faqHeadings.length, 44);
+  assert.deepEqual(
+    faqHeadings.map((n) => at(n, 'id')),
+    Array.from({ length: 44 }, (_, i) => 'faq-' + (i + 1))
+  );
+}
+console.log(
+  JSON.stringify({
+    status: 'passed-translated-page-only',
+    scope: sourceOnly ? 'source-only' : 'source-and-rendered',
+    page,
+    blocks: blocks(ja).length,
+    codeFragments: codes(ja).length,
+    nonCommentCodeUnchanged: true,
+    originalNoticeExact: [
+      '01-api/01-overview.md',
+      '02-appendix/02-readme.md',
+      '02-appendix/05-license.md',
+      '02-appendix/04-manual.md',
+      '02-appendix/01-zconf.md',
+    ].includes(page)
+      ? true
+      : null,
+    anchors: ids(ja),
+    renderedTextExact: sourceOnly ? null : true,
+    tables: tables(ja).length,
+    tableRows: rowLabels(ja).length,
+    tableBitLabelsExact: true,
+    renderedTableTextExact: sourceOnly ? null : true,
+    linksRetained: true,
+    declaredEditorialLinkAdditions: additions,
+    faqQuestions: faqHeadings?.length ?? null,
+    missingJapanese,
+    pending: [
+      ...(missingJapanese.length ? ['remaining untranslated Japanese pages'] : []),
+      'Japanese target link resolution',
+      'full native display validation',
+      'whole project checks',
+    ],
+  })
+);

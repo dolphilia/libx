@@ -39,6 +39,8 @@
 - `0009-synchronize-doc-site-layouts.md` – 正規テンプレートからのレイアウト同期
 
 ## 計画 (`docs/plans`)
+
+- [AWESOME_FULL_CONTENT_EDITORIAL_REVIEW_PLAN.md](plans/AWESOME_FULL_CONTENT_EDITORIAL_REVIEW_PLAN.md) – Awesome全ページの英語編集、日本語翻訳、例外判断、Codexによる全件内容レビューの計画
 - [NESTED_APP_GROUPS_IMPLEMENTATION_PLAN.md](plans/NESTED_APP_GROUPS_IMPLEMENTATION_PLAN.md) – 一段の入れ子型アプリグループ、共通検出・閲覧・ビルド基盤とAwesome移行の実装計画
 - `CODE_QUALITY_IMPROVEMENT_PLAN.md` – コード品質改善の実施計画と受け入れ基準
 - `PROJECT_PRINCIPLES_COMPLIANCE_IMPROVEMENT_PLAN.md` – 正式原則準拠監査で確認した課題の優先度付き改善計画

@@ -1,0 +1,59 @@
+import fs from 'node:fs';
+import { parse, parseFragment } from 'parse5';
+import assert from 'node:assert/strict';
+const at = (n, k) => n.attrs?.find((a) => a.name === k)?.value;
+const walk = (n, p) => [...(p(n) ? [n] : []), ...(n.childNodes ?? []).flatMap((c) => walk(c, p))];
+const txt = (n) =>
+  n.nodeName === 'button' && at(n, 'class')?.split(' ').includes('docs-code-copy')
+    ? ''
+    : n.nodeName === '#text'
+      ? n.value
+      : (n.childNodes ?? []).map(txt).join('');
+const page = '01-api/01-overview.md',
+  load = (l) =>
+    parseFragment(
+      fs.readFileSync('src/content/docs/v1-3-2/' + l + '/' + page, 'utf8').split('---')[2]
+    );
+const en = load('en'),
+  ja = load('ja'),
+  rendered = parse(fs.readFileSync('dist/v1-3-2/ja/01-api/01-overview/index.html', 'utf8'));
+const blocks = (d) => walk(d, (n) => at(n, 'data-zlib-block') !== undefined);
+assert.equal(blocks(ja).length, 8);
+assert.deepEqual(
+  blocks(ja).map((n) => at(n, 'data-zlib-block')),
+  blocks(en).map((n) => at(n, 'data-zlib-block'))
+);
+assert.deepEqual(blocks(ja).map(txt), blocks(rendered).map(txt));
+const codes = (d) =>
+  walk(d, (n) => n.nodeName === 'code' && n.parentNode?.nodeName === 'pre').map(txt);
+const strip = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '');
+assert.deepEqual(codes(en).map(strip), codes(ja).map(strip));
+const ids = (d) => walk(d, (n) => at(n, 'id')).map((n) => at(n, 'id'));
+assert.deepEqual(ids(en), ids(ja));
+for (const id of ids(ja)) assert(ids(rendered).includes(id));
+const original = JSON.parse(fs.readFileSync('meta/expected-blocks.json'))[page][0];
+const notice = walk(ja, (n) => at(n, 'data-editorial') === 'original-notice')[0];
+assert.equal(txt(walk(notice, (n) => n.nodeName === 'pre')[0]), original);
+const urls = (d) =>
+  walk(d, (n) => n.nodeName === 'a')
+    .map((n) => at(n, 'href'))
+    .sort();
+assert.deepEqual(urls(en), urls(ja));
+console.log(
+  JSON.stringify({
+    status: 'passed-overview-only',
+    blocks: 8,
+    codeFragments: codes(ja).length,
+    nonCommentCodeUnchanged: true,
+    originalNoticeExact: true,
+    anchors: ids(ja),
+    renderedTextExact: true,
+    linksRetained: true,
+    pending: [
+      'other13 Japanese pages',
+      'Japanese target link resolution once all pages exist',
+      'full native display validation',
+      'whole project checks',
+    ],
+  })
+);
