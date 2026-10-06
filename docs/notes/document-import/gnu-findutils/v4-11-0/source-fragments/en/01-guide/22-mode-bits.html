@@ -1,0 +1,155 @@
+<div class="gnu-findutils-original-content" id="Mode-Bits">
+<h3 class="section" id="File-Mode-Bits"><span>2.9 File Mode Bits</span></h3>
+<p>See <a class="xref" href="#File-Permissions">File Permissions</a>, for information on how file mode bits are
+structured and how to specify them.
+</p>
+<p>Four tests determine what users can do with files.  These are
+‘<samp class="samp">-readable</samp>’, ‘<samp class="samp">-writable</samp>’, ‘<samp class="samp">-executable</samp>’ and
+‘<samp class="samp">-perm</samp>’.  The first three tests ask the operating system if the
+current user can perform the relevant operation on a file, while
+‘<samp class="samp">-perm</samp>’ just examines the file’s mode.  The file mode may give
+a misleading impression of what the user can actually do, because the
+file may have an access control list, or exist on a read-only
+filesystem, for example.  Of these four tests though, only
+‘<samp class="samp">-perm</samp>’ is specified by the POSIX standard.
+</p>
+<p>The ‘<samp class="samp">-readable</samp>’, ‘<samp class="samp">-writable</samp>’ and ‘<samp class="samp">-executable</samp>’ tests
+are implemented via the <code class="code">access</code> system call.  This is
+implemented within the operating system itself.  If the file being
+considered is on an NFS filesystem, the remote system may allow or
+forbid read or write operations for reasons of which the NFS client
+cannot take account.  This includes user-ID mapping, either in the
+general sense or the more restricted sense in which remote superusers
+are treated by the NFS server as if they are the local user
+‘<samp class="samp">nobody</samp>’ on the NFS server.
+</p>
+<p>None of the tests in this section should be used to verify that a user
+is authorised to perform any operation (on the file being tested or
+any other file) because of the possibility of a race condition.  That
+is, the situation may change between the test and an action being
+taken on the basis of the result of that test.
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dreadable"><span class="category-def">Test: </span><span><strong class="def-name">-readable</strong></span></dt>
+<dd><p>True if the file can be read by the invoking user.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dwritable"><span class="category-def">Test: </span><span><strong class="def-name">-writable</strong></span></dt>
+<dd><p>True if the file can be written by the invoking user.  This is an
+in-principle check, and other things may prevent a successful write
+operation; for example, the filesystem might be full.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dexecutable"><span class="category-def">Test: </span><span><strong class="def-name">-executable</strong></span></dt>
+<dd><p>True if the file can be executed/searched by the invoking user.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dperm"><span class="category-def">Test: </span><span><strong class="def-name">-perm</strong> <var class="def-var-arguments">pmode</var></span></dt>
+<dd>
+<p>True if the file’s mode bits match <var class="var">pmode</var>, which can be
+either a symbolic or numeric <var class="var">mode</var> (see <a class="pxref" href="#File-Permissions">File Permissions</a>)
+optionally prefixed by ‘<samp class="samp">-</samp>’ or ‘<samp class="samp">/</samp>’.
+</p>
+<p>Note that <var class="var">pmode</var> starts with all file mode bits cleared, i.e.,
+does not relate to the process’s file creation bit mask (also known
+as <code class="command">umask</code>).
+</p>
+<p>A <var class="var">pmode</var> that starts with neither ‘<samp class="samp">-</samp>’ nor ‘<samp class="samp">/</samp>’ matches
+if <var class="var">mode</var> exactly matches the file mode bits.
+</p>
+<p>A <var class="var">pmode</var> that starts with ‘<samp class="samp">-</samp>’ matches if
+<em class="emph">all</em> the file mode bits set in <var class="var">mode</var> are set for the file;
+bits not set in <var class="var">mode</var> are ignored.
+</p>
+<p>A <var class="var">pmode</var> that starts with ‘<samp class="samp">/</samp>’ matches if
+<em class="emph">any</em> of the file mode bits set in <var class="var">mode</var> are set for the file;
+bits not set in <var class="var">mode</var> are ignored.
+This is a GNU extension.
+</p>
+<p>If you don’t use the ‘<samp class="samp">/</samp>’ or ‘<samp class="samp">-</samp>’ form with a symbolic mode
+string, you may have to specify a rather complex mode string.  For
+example ‘<samp class="samp">-perm g=w</samp>’ will only match files that have mode 0020
+(that is, ones for which group write permission is the only file mode bit
+set).  It is more likely that you will want to use the ‘<samp class="samp">/</samp>’ or
+‘<samp class="samp">-</samp>’ forms, for example ‘<samp class="samp">-perm -g=w</samp>’, which matches any file
+with group write permission.
+</p>
+<p>GNU <code class="code">find</code> used to support ‘<samp class="samp">-perm +mode</samp>’.  This was
+deprecated in findutils version 4.2.21 (2005), being replaced by
+‘<samp class="samp">-perm /mode</samp>’.  Support for ‘<samp class="samp">-perm +mode</samp>’ was removed
+entirely in findutils version 4.5.12 (2013). To avoid confusion with
+this obsolete GNU extension, <var class="var">mode</var> must not start with a ‘<samp class="samp">+</samp>’
+immediately followed by an octal digit.
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">-perm 664</samp>’</dt>
+<dd><p>Match files that have read and write permission for their owner,
+and group, but that the rest of the world can read but not write to.
+Do not match files that meet these criteria but have other file mode
+bits set (for example if someone can execute/search the file).
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm -664</samp>’</dt>
+<dd><p>Match files that have read and write permission for their owner,
+and group, but that the rest of the world can read but not write to,
+without regard to the presence of any extra file mode bits (for
+example the executable bit).  This matches a file with mode
+0777, for example.
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm /222</samp>’</dt>
+<dd><p>Match files that are writable by somebody (their owner, or
+their group, or anybody else).
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm /022</samp>’</dt>
+<dd><p>Match files that are writable by their group or everyone else - the latter
+often called <em class="dfn">other</em>.  The files don’t have to be writable by both the
+group and other to be matched; either will do.
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm /g+w,o+w</samp>’</dt>
+<dd><p>As above.
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm /g=w,o=w</samp>’</dt>
+<dd><p>As above.
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm -022</samp>’</dt>
+<dd><p>Match files that are writable by both their group and everyone else.
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm -g+w,o+w</samp>’</dt>
+<dd><p>As above.
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm -444 -perm /222 ! -perm /111</samp>’</dt>
+<dd><p>Match files that are readable for everybody, have at least one
+write bit set (i.e., somebody can write to them), but that cannot be
+executed/searched by anybody.  Note that in some shells the ‘<samp class="samp">!</samp>’ must be
+escaped.
+</p>
+</dd>
+<dt>‘<samp class="samp">-perm -a+r -perm /a+w ! -perm /a+x</samp>’</dt>
+<dd><p>As above.
+</p>
+</dd>
+</dl>
+<blockquote class="quotation">
+<p><b class="b">Warning:</b> If you specify ‘<samp class="samp">-perm /000</samp>’ or ‘<samp class="samp">-perm /mode</samp>’ where the
+symbolic mode ‘<samp class="samp">mode</samp>’ has no bits set, the test matches all files.
+Versions of GNU <code class="code">find</code> prior to 4.3.3 (2007) matched no files in
+this situation.
+</p></blockquote>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dcontext"><span class="category-def">Test: </span><span><strong class="def-name">-context</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>True if file’s SELinux context matches the pattern <var class="var">pattern</var>.
+The pattern uses shell glob matching.
+</p>
+<p>This predicate is supported only on <code class="code">find</code> versions compiled with
+SELinux support and only when SELinux is enabled.
+</p></dd></dl>
+<hr/>
+</div>

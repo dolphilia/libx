@@ -1,0 +1,44 @@
+<div class="gnu-findutils-original-content" id="Comparing-Timestamps">
+<h4 class="subsection" id="Comparing-Timestamps-1"><span>2.5.2 タイムスタンプを比較する</span></h4>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dnewerXY"><span class="category-def">テスト: </span><span><strong class="def-name">-newerXY</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dd><p>対象ファイルのタイムスタンプ「<samp class="samp">X</samp>」が、ファイル<samp class="file">reference</samp>のタイムスタンプ「<samp class="samp">Y</samp>」より新しい場合に成功します。タイムスタンプが<em class="emph">等しい</em>場合は失敗します。文字「<samp class="samp">X</samp>」と「<samp class="samp">Y</samp>」には、次のいずれかを指定できます。</p>
+<dl class="table">
+<dt>‘<samp class="samp">a</samp>’</dt>
+<dd><p><samp class="file">reference</samp>の最終アクセス時刻</p></dd>
+<dt>‘<samp class="samp">B</samp>’</dt>
+<dd><p><samp class="file">reference</samp>の誕生時刻。この時刻が不明な場合、テストは成功しません。</p></dd>
+<dt>‘<samp class="samp">c</samp>’</dt>
+<dd><p><samp class="file">reference</samp>の最終状態変更時刻</p></dd>
+<dt>‘<samp class="samp">m</samp>’</dt>
+<dd><p><samp class="file">reference</samp>の最終内容変更時刻</p></dd>
+<dt>‘<samp class="samp">t</samp>’</dt>
+<dd><p><samp class="file">reference</samp>引数を、ファイル名ではなく、時刻を直接表す文字列として解釈します。タイムスタンプの解釈方法については、<a class="xref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Date-input-formats">日付の入力形式</a>を参照してください。「<samp class="samp">-newerXt</samp>」形式のテストは有効ですが、「<samp class="samp">-newertY</samp>」形式のテストは無効です。</p></dd>
+</dl>
+<p>たとえば、テスト<code class="code">-newerac /tmp/foo</code>は、<samp class="file">/tmp/foo</samp>の状態が変更された時刻より後にアクセスされたすべてのファイルに対して成功します。ここでは、「<samp class="samp">X</samp>」は「<samp class="samp">a</samp>」、「<samp class="samp">Y</samp>」は「<samp class="samp">c</samp>」です。</p>
+<p>すべてのファイルについて誕生時刻が分かるわけではありません。「<samp class="samp">Y</samp>」が「<samp class="samp">B</samp>」で、<samp class="file">reference</samp>の誕生時刻を利用できない場合、<code class="code">find</code>は理由を説明するエラーメッセージを出して終了します。「<samp class="samp">X</samp>」が「<samp class="samp">B</samp>」で、現在の対象ファイルの誕生時刻が不明な場合は、テストが失敗するだけです。つまり、<code class="code">-false</code>と同じ動作になります。</p>
+<p>ほとんどのUnixの実装など、ファイルの誕生時刻に対応していないOSもあります。一方、NetBSD-3.1などは対応しています。対応するOSであっても、特定のファイルでは情報を利用できない場合があります。たとえば、NetBSDではUFS2ファイルシステム上の誕生時刻に対応していますが、UFS1では対応していません。</p>
+</dd></dl>
+<p><samp class="file">/usr</samp>にある、今年の2月1日の<em class="emph">開始時点</em>より後に内容が変更されたファイルを列挙する方法は2つあります。1つは「<samp class="samp">-newermt</samp>」を使う方法です。</p>
+<div class="example">
+<pre class="example-preformatted">find /usr -newermt "Feb 1"&#10;</pre></div>
+<p>もう1つの方法は、4.3.3（2007年）より前のfindでも使えます。</p>
+<div class="example">
+<pre class="example-preformatted">touch -t 02010000 /tmp/stamp$$&#10;find /usr -newer /tmp/stamp$$&#10;rm -f /tmp/stamp$$&#10;</pre></div>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002danewer"><span class="category-def">テスト: </span><span><strong class="def-name">-anewer</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dcnewer"><span class="category-def">テスト: </span><span><strong class="def-name">-cnewer</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dnewer"><span class="category-def">テスト: </span><span><strong class="def-name">-newer</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dd><p>現在のファイルの最終アクセス時刻、最終状態変更時刻、または最終データ変更時刻が、<var class="var">reference</var>ファイルの最終データ変更時刻より新しい場合に真になります。時刻が等しい場合は偽です。したがって、「<samp class="samp">-anewer</samp>」は「<samp class="samp">-neweram</samp>」、「<samp class="samp">-cnewer</samp>」は「<samp class="samp">-newercm</samp>」、「<samp class="samp">-newer</samp>」は「<samp class="samp">-newermm</samp>」と同等です。</p>
+<p><var class="var">reference</var>がシンボリックリンクで、「<samp class="samp">-H</samp>」または「<samp class="samp">-L</samp>」が有効な場合は、常にリンク先ファイルの最終データ変更時刻を使います。</p>
+<p>これらのテストに「<samp class="samp">-follow</samp>」が影響するのは、コマンド行で「<samp class="samp">-follow</samp>」がそのテストより前にある場合だけです。「<samp class="samp">-follow</samp>」の詳細については、<a class="xref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/14-symbolic-links/#Symbolic-Links">シンボリックリンク</a>を参照してください。</p>
+<p>たとえば、<samp class="file">/bin/sh</samp>の内容が最後に変更された時刻より後に変更されたファイルを列挙するには、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">find . -newer /bin/sh&#10;</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dused"><span class="category-def">テスト: </span><span><strong class="def-name">-used</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>ファイルへの最後のアクセスが、最後の状態変更から<var class="var">n</var>日後に行われた場合に真になります。使われておらず、ディスク容量を節約するためにアーカイブや削除の対象にできそうなファイルを探すのに役立ちます。</p></dd></dl>
+<hr/>
+</div>
+

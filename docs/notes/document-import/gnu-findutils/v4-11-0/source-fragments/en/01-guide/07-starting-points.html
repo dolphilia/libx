@@ -1,0 +1,104 @@
+<div class="gnu-findutils-original-content" id="Starting-points">
+<h3 class="section" id="Starting-points-1"><span>2.2 Starting points</span></h3>
+<p>GNU <code class="code">find</code> searches the directory tree rooted at each given starting-point
+by evaluating the given expression from left to right, according to the
+rules of operator precedence, until the outcome is known (the left hand side
+is false for ‘<samp class="samp">and</samp>’ operations, true for ‘<samp class="samp">or</samp>’), at which point
+<code class="code">find</code> moves on to the next file name.
+</p>
+<p>If no starting-point is specified, the current directory ‘<samp class="samp">.</samp>’ is assumed.
+</p>
+<p>A double dash ‘<samp class="samp">--</samp>’ could theoretically be used to signal that any remaining
+arguments are not options, but this does not really work due to the way
+<code class="code">find</code> determines the end of the list of starting point arguments:
+it does that by reading until an expression argument comes (which also starts
+with a ‘<samp class="samp">-</samp>’).
+Now, if a starting point argument would begin with a ‘<samp class="samp">-</samp>’, then <code class="code">find</code>
+would treat it as expression argument instead.
+Thus, to ensure that all start points are taken as such, and especially to
+prevent that wildcard patterns expanded by the calling shell are not mistakenly
+treated as expression arguments, it is generally safer to prefix wildcards
+or dubious path names with either ‘<samp class="samp">./</samp>’, or to use absolute path names
+starting with ‘<samp class="samp">/</samp>’.
+</p>
+<p>Alternatively, it is generally safe though non-portable to use the GNU option
+‘<samp class="samp">-files0-from</samp>’ to pass arbitrary starting points to <code class="code">find</code>.
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dfiles0_002dfrom"><span class="category-def">Option: </span><span><strong class="def-name">-files0-from</strong> <var class="def-var-arguments">file</var></span></dt>
+<dd>
+<p>Read the starting points from <samp class="file">file</samp> instead of getting them on the
+command line.
+In contrast to the known limitations of passing starting points via arguments
+on the command line, namely the limitation of the amount of file names,
+and the inherent ambiguity of file names clashing with option names,
+using this option allows to safely pass an arbitrary number of starting points
+to <code class="code">find</code>.
+</p>
+<p>Using this option and passing starting points on the command line is mutually
+exclusive, and is therefore not allowed at the same time.
+</p>
+<p>The <samp class="file">file</samp> argument is mandatory.
+One can use ‘<samp class="samp">-files0-from -</samp>’ to read the list of starting points from the
+standard input stream, and e.g. from a pipe.
+In this case, the actions ‘<samp class="samp">-ok</samp>’ and ‘<samp class="samp">-okdir</samp>’ are not allowed,
+because they would obviously interfere with reading from standard input
+in order to get a user confirmation.
+</p>
+<p>The starting points in <samp class="file">file</samp> have to be separated by ASCII NUL characters.
+Two consecutive NUL characters, i.e., a starting point with a Zero-length
+file name is not allowed and will lead to an error diagnostic followed by
+a non-Zero exit code later.
+</p>
+<p>In the case the given <samp class="file">file</samp> is empty, <code class="code">find</code> does not process any
+starting point and therefore will exit immediately after parsing the program
+arguments.
+This is unlike the standard invocation where <code class="code">find</code> assumes the current
+directory as starting point if no path argument is passed.
+</p>
+<p>The processing of the starting points is otherwise as usual, e.g. <code class="code">find</code>
+will recurse into subdirectories unless otherwise prevented.
+To process only the starting points, one can additionally pass ‘<samp class="samp">-maxdepth 0</samp>’.
+</p>
+<table border="1" class="cartouche"><tr><th>
+Warnings</th></tr><tr><td>
+<p>In order to use this option safely, you need to take care about some
+specific things:
+</p>
+<ul class="itemize mark-bullet">
+<li>Ensure there are no duplicate entries
+    <ul class="itemize mark-minus">
+<li>Otherwise, some files may (or may not) be visited more than once.
+    </li></ul>
+</li><li>Do not modify the file while <code class="code">find</code> is running
+    <ul class="itemize mark-minus">
+<li>The effects of any concurrent modification are unspecified.
+    </li></ul>
+</li><li>Do not rely on the final seek position in the file
+    <ul class="itemize mark-minus">
+<li>There is no guarantee about the final seek position.  It may
+    vary between platforms, between findutils release, or even between
+    runs of <samp class="file">find</samp>.
+    </li><li>Therefore, sharing the same open file between
+    ‘<samp class="samp">-files0-from</samp>’ and anything else (including use of
+    ‘<samp class="samp">-files0-from</samp>’ in another instance of the <code class="code">find</code>
+    program) is unlikely to reliably do what you want.
+    Instead if you need to read from the same file in more
+    than one program, open it separately for each.
+    </li></ul>
+</li></ul>
+</td></tr></table>
+<p>Suppose that some program <code class="code">proggy</code> pre-filters and creates a huge
+NUL-separated list of files, we can process those as starting points,
+and find all regular, empty files among them:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ proggy | find -files0-from - -maxdepth 0 -type f -empty
+</pre></div>
+<p>The use of ‘<samp class="samp">-files0-from -</samp>’ means to read the names of the starting points
+from standard input, i.e., from the pipe.  Using ‘<samp class="samp">-maxdepth 0</samp>’ ensures that
+only explicitly those entries are examined without recursing into directories
+(in the case one of the starting points is one).
+</p></dd></dl>
+<hr/>
+</div>

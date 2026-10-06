@@ -1,0 +1,136 @@
+<div class="gnu-findutils-original-content" id="Directories">
+<h3 class="section" id="Directories-1"><span>2.11 Directories</span></h3>
+<p>Here is how to control which directories <code class="code">find</code> searches, and how
+it searches them.  These two options allow you to process a horizontal
+slice of a directory tree.
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dmaxdepth"><span class="category-def">Option: </span><span><strong class="def-name">-maxdepth</strong> <var class="def-var-arguments">levels</var></span></dt>
+<dd><p>Descend at most <var class="var">levels</var> (a non-negative integer) levels of
+directories below the command line arguments.  Using ‘<samp class="samp">-maxdepth 0</samp>’
+means only apply the tests and actions to the command line arguments.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ mkdir -p dir/d1/d2/d3/d4/d5/d6&#10;&#10;$ find dir -maxdepth 1&#10;dir&#10;dir/d1&#10;&#10;$ find dir -mindepth 5&#10;dir/d1/d2/d3/d4/d5&#10;dir/d1/d2/d3/d4/d5/d6&#10;&#10;$ find dir -mindepth 2 -maxdepth 4&#10;dir/d1/d2&#10;dir/d1/d2/d3&#10;dir/d1/d2/d3/d4&#10;</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dmindepth"><span class="category-def">Option: </span><span><strong class="def-name">-mindepth</strong> <var class="def-var-arguments">levels</var></span></dt>
+<dd><p>Do not apply any tests or actions at levels less than <var class="var">levels</var> (a
+non-negative integer).  Using ‘<samp class="samp">-mindepth 1</samp>’ means process all files
+except the command line arguments.
+</p>
+<p>See ‘<samp class="samp">-maxdepth</samp>’ for examples.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002ddepth"><span class="category-def">Option: </span><span><strong class="def-name">-depth</strong></span></dt>
+<dd><p>Process each directory’s contents before the directory itself.  Doing
+this is a good idea when producing lists of files to archive with
+<code class="code">cpio</code> or <code class="code">tar</code>.  If a directory does not have write
+permission for its owner, its contents can still be restored from the
+archive since the directory’s permissions are restored after its
+contents.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dd"><span class="category-def">Option: </span><span><strong class="def-name">-d</strong></span></dt>
+<dd><p>This is a deprecated synonym for ‘<samp class="samp">-depth</samp>’, for compatibility with
+Mac OS X, FreeBSD and OpenBSD.  The ‘<samp class="samp">-depth</samp>’ option is a POSIX
+feature, so it is better to use that.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dprune"><span class="category-def">Action: </span><span><strong class="def-name">-prune</strong></span></dt>
+<dd><p>If the file is a directory, do not descend into it.  The result is
+true.  For example, to skip the directory <samp class="file">src/emacs</samp> and all
+files and directories under it, and print the names of the other files
+found:
+</p>
+<div class="example">
+<pre class="example-preformatted">find . -wholename './src/emacs' -prune -o -print&#10;</pre></div>
+<p>The above command will not print <samp class="file">./src/emacs</samp> among its list of
+results.  This however is not due to the effect of the ‘<samp class="samp">-prune</samp>’
+action (which only prevents further descent, it doesn’t make sure we
+ignore that item).  Instead, this effect is due to the use of
+‘<samp class="samp">-o</samp>’.  Since the left hand side of the “or” condition has
+succeeded for <samp class="file">./src/emacs</samp>, it is not necessary to evaluate the
+right-hand-side (‘<samp class="samp">-print</samp>’) at all for this particular file.  If
+you wanted to print that directory name you could use either an extra
+‘<samp class="samp">-print</samp>’ action:
+</p>
+<div class="example">
+<pre class="example-preformatted">find . -wholename './src/emacs' -prune -print -o -print&#10;</pre></div>
+<p>or use the comma operator:
+</p>
+<div class="example">
+<pre class="example-preformatted">find . -wholename './src/emacs' -prune , -print&#10;</pre></div>
+<p>If the ‘<samp class="samp">-depth</samp>’ option is in effect, the subdirectories will have
+already been visited in any case.  Hence ‘<samp class="samp">-prune</samp>’ has no effect
+in this case.
+</p>
+<p>Because ‘<samp class="samp">-delete</samp>’ implies ‘<samp class="samp">-depth</samp>’, using ‘<samp class="samp">-prune</samp>’ in
+combination with ‘<samp class="samp">-delete</samp>’ may well result in the deletion of
+more files than you intended.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dquit"><span class="category-def">Action: </span><span><strong class="def-name">-quit</strong></span></dt>
+<dd><p>Exit immediately (with return value zero if no errors have occurred).
+This is different to ‘<samp class="samp">-prune</samp>’ because ‘<samp class="samp">-prune</samp>’ only applies
+to the contents of pruned directories, while ‘<samp class="samp">-quit</samp>’ simply makes
+<code class="code">find</code> stop immediately.  No child processes will be left
+running.  Any command lines which have been built by ‘<samp class="samp">-exec
+... {} +</samp>’ or ‘<samp class="samp">-execdir ... \+</samp>’ are invoked before the program is
+exited.  After ‘<samp class="samp">-quit</samp>’ is executed, no more files specified on
+the command line will be processed.  For example, ‘<samp class="samp">find /tmp/foo
+/tmp/bar -print -quit</samp>’ will print only ‘<samp class="samp">/tmp/foo</samp>’.  One common
+use of ‘<samp class="samp">-quit</samp>’ is to stop searching the file system once we have
+found what we want.  For example, if we want to find just a single
+file we can do this:
+</p><div class="example">
+<pre class="example-preformatted">find / -name needle -print -quit&#10;</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dnoleaf"><span class="category-def">Option: </span><span><strong class="def-name">-noleaf</strong></span></dt>
+<dd><p>Do not optimize by assuming that directories contain 2 fewer
+subdirectories than their hard link count.  This option is needed when
+searching filesystems that do not follow the Unix directory-link
+convention, such as CD-ROM or MS-DOS filesystems or AFS volume mount
+points.  Each directory on a normal Unix filesystem has at least 2
+hard links: its name and its <samp class="file">.</samp>  entry.  Additionally, its
+subdirectories (if any) each have a <samp class="file">..</samp>  entry linked to that
+directory.  When <code class="code">find</code> is examining a directory, after it has
+statted 2 fewer subdirectories than the directory’s link count, it
+knows that the rest of the entries in the directory are
+non-directories (<em class="dfn">leaf</em> files in the directory tree).  If only the
+files’ names need to be examined, there is no need to stat them; this
+gives a significant increase in search speed.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dignore_005freaddir_005frace"><span class="category-def">Option: </span><span><strong class="def-name">-ignore_readdir_race</strong></span></dt>
+<dd><p>If a file disappears after its name has been read from a directory but
+before <code class="code">find</code> gets around to examining the file with <code class="code">stat</code>,
+don’t issue an error message.  If you don’t specify this option, an
+error message will be issued.
+</p>
+<p>Furthermore, <code class="code">find</code> with the ‘<samp class="samp">-ignore_readdir_race</samp>’ option
+will ignore errors of the ‘<samp class="samp">-delete</samp>’ action in the case the file
+has disappeared since the parent directory was read: it will not output
+an error diagnostic, and the return code of the ‘<samp class="samp">-delete</samp>’ action
+will be true.
+</p>
+<p>This option can be useful in system
+scripts (cron scripts, for example) that examine areas of the
+filesystem that change frequently (mail queues, temporary directories,
+and so forth), because this scenario is common for those sorts of
+directories.  Completely silencing error messages from <code class="code">find</code> is
+undesirable, so this option neatly solves the problem.  There is no
+way to search one part of the filesystem with this option on and part
+of it with this option off, though.  When this option is turned on and
+find discovers that one of the start-point files specified on the
+command line does not exist, no error message will be issued.
+</p>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dnoignore_005freaddir_005frace"><span class="category-def">Option: </span><span><strong class="def-name">-noignore_readdir_race</strong></span></dt>
+<dd><p>This option reverses the effect of the ‘<samp class="samp">-ignore_readdir_race</samp>’
+option.
+</p></dd></dl>
+<hr/>
+</div>

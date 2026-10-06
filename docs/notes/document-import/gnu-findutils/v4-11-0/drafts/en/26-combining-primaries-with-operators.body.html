@@ -1,0 +1,68 @@
+<div class="gnu-findutils-original-content" id="Combining-Primaries-With-Operators">
+<h3 class="section" id="Combining-Primaries-With-Operators-1"><span>2.13 Combining Primaries With Operators</span></h3>
+<p>Operators build a complex expression from tests and actions.
+The operators are, in order of decreasing precedence:
+</p>
+<dl class="table">
+<dt><a id="index-_0028_0029"></a><span><code class="code">( <var class="var">expr</var> )</code></span></dt>
+<dd><p>Force precedence.  True if <var class="var">expr</var> is true.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002dnot"></a>
+<a id="index-_0021"></a><span><code class="code">! <var class="var">expr</var></code></span></dt>
+<dt><code class="code">-not <var class="var">expr</var></code></dt>
+<dd><p>True if <var class="var">expr</var> is false.  In some shells, it is necessary to
+protect the ‘<samp class="samp">!</samp>’ from shell interpretation by quoting it.
+The ‘<samp class="samp">-not</samp>’ operator does not exist in POSIX, so ‘<samp class="samp">!</samp>’ is an
+equivalent and more portable choice.
+</p></dd>
+<dt><a class="index-entry-id" id="index-_002da"></a>
+<a id="index-_002dand"></a><span><code class="code"><var class="var">expr1 expr2</var></code></span></dt>
+<dt><code class="code"><var class="var">expr1</var> -a <var class="var">expr2</var></code></dt>
+<dt><code class="code"><var class="var">expr1</var> -and <var class="var">expr2</var></code></dt>
+<dd><p>And; <var class="var">expr2</var> is not evaluated if <var class="var">expr1</var> is false.
+The ‘<samp class="samp">-and</samp>’ operator does not exist in POSIX, so ‘<samp class="samp">-a</samp>’ is an
+equivalent and more portable choice.
+</p></dd>
+<dt><a class="index-entry-id" id="index-_002do"></a>
+<a id="index-_002dor"></a><span><code class="code"><var class="var">expr1</var> -o <var class="var">expr2</var></code></span></dt>
+<dt><code class="code"><var class="var">expr1</var> -or <var class="var">expr2</var></code></dt>
+<dd><p>Or; <var class="var">expr2</var> is not evaluated if <var class="var">expr1</var> is true.
+The ‘<samp class="samp">-or</samp>’ operator does not exist in POSIX, so ‘<samp class="samp">-o</samp>’ is an
+equivalent and more portable choice.
+</p></dd>
+<dt><a id="index-_002c"></a><span><code class="code"><var class="var">expr1</var> , <var class="var">expr2</var></code></span></dt>
+<dd><p>List; both <var class="var">expr1</var> and <var class="var">expr2</var> are always evaluated.  True if
+<var class="var">expr2</var> is true.  The value of <var class="var">expr1</var> is discarded.  This
+operator lets you do multiple independent operations on one traversal,
+without depending on whether other operations succeeded.  The two
+operations <var class="var">expr1</var> and <var class="var">expr2</var> are not always fully
+independent, since <var class="var">expr1</var> might have side effects like touching
+or deleting files, or it might use ‘<samp class="samp">-prune</samp>’ which would also
+affect <var class="var">expr2</var>.
+</p></dd>
+</dl>
+<p>Please note that ‘<samp class="samp">-a</samp>’ when specified implicitly (for example by
+two tests appearing without an explicit operator between them)
+or explicitly has higher precedence than ‘<samp class="samp">-o</samp>’.
+This means that ‘<samp class="samp">find afile bfile -name afile -o -name bfile -print</samp>’
+will never print ‘<samp class="samp">afile</samp>’ .
+</p>
+<p><code class="code">find</code> searches the directory tree rooted at each file name by
+evaluating the expression from left to right, according to the rules
+of precedence, until the outcome is known (the left hand side is false
+for ‘<samp class="samp">-and</samp>’, true for ‘<samp class="samp">-or</samp>’), at which point <code class="code">find</code>
+moves on to the next file name.
+</p>
+<p>There are two other tests that can be useful in complex expressions:
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dtrue"><span class="category-def">Test: </span><span><strong class="def-name">-true</strong></span></dt>
+<dd><p>Always true.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dfalse"><span class="category-def">Test: </span><span><strong class="def-name">-false</strong></span></dt>
+<dd><p>Always false.
+</p></dd></dl>
+<hr/>
+</div>

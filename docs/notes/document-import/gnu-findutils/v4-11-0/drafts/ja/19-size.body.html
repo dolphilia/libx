@@ -1,0 +1,31 @@
+<div class="gnu-findutils-original-content" id="Size">
+<h3 class="section" id="Size-1"><span>2.6 サイズ</span></h3>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dsize"><span class="category-def">テスト: </span><span><strong class="def-name">-size</strong> <var class="def-var-arguments">n<span class="r">[</span>bckwMG<span class="r">]</span></var></span></dt>
+<dd><p>ファイルが使用する容量を単位ごとに切り上げた結果が、<var class="var">n</var>単位になる場合に真になります。既定の単位は512バイトのブロックですが、<var class="var">n</var>に1文字の接尾辞を付けて変更できます。</p>
+<dl class="table">
+<dt><code class="code">b</code></dt>
+<dd><p>512バイトのブロック。1024バイトにはなりません。</p></dd>
+<dt><code class="code">c</code></dt>
+<dd><p>バイト</p></dd>
+<dt><code class="code">w</code></dt>
+<dd><p>2バイトのワード</p></dd>
+<dt><code class="code">k</code></dt>
+<dd><p>キビバイト。KiB、1024バイト単位。</p></dd>
+<dt><code class="code">M</code></dt>
+<dd><p>メビバイト。MiB、1024 × 1024 = 1048576バイト単位。</p></dd>
+<dt><code class="code">G</code></dt>
+<dd><p>ギビバイト。GiB、1024 × 1024 × 1024 = 1073741824バイト単位。</p></dd>
+</dl>
+<p>接尾辞「b」では、常に1ブロックを512バイトとして扱います。環境変数<code class="env">POSIXLY_CORRECT</code>の設定の有無や値には影響されません。この動作は「<samp class="samp">-ls</samp>」アクションと異なります。1024バイト単位を使いたい場合は、代わりに接尾辞「k」を使ってください。</p>
+<p>数値には「+」または「-」を前置できます。プラス記号は、ファイルが少なくとも<var class="var">n</var>単位の記憶領域を使う場合にテストが成功することを示します。これはよく使われる指定です。マイナス記号は、ファイルが<var class="var">n</var>単位未満の記憶領域を使う場合に成功することを示します。つまり、ちょうど<var class="var">n</var>単位のサイズには一致しません。「=」の接頭辞はありません。等しい値に一致するのが既定だからです。</p>
+<table border="1" class="cartouche"><tr><th>重要</th></tr><tr><td>
+<p>サイズは次の単位へ切り上げられることに注意してください。そのため、「<samp class="samp">-size -1M</samp>」は「<samp class="samp">-size -1048576c</samp>」と同等ではありません。前者は空のファイルだけに一致し、後者は0〜1,048,575バイトのファイルに一致します。</p></td></tr></table>
+<p>サイズは、lstatまたはstatシステムコールが設定するstruct statのst_sizeメンバーを、上記のように切り上げたものです。つまり、「<samp class="samp">ls -l</samp>」の結果と整合します。このスパースファイルの扱いは、「<samp class="samp">-printf</samp>」述語の書式指定子「<samp class="samp">%k</samp>」「<samp class="samp">%b</samp>」が出力するものとは異なります。</p>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dempty"><span class="category-def">テスト: </span><span><strong class="def-name">-empty</strong></span></dt>
+<dd><p>ファイルが空で、通常のファイルまたはディレクトリである場合に真になります。削除候補を判断するのに役立つ場合があります。「<samp class="samp">-depth</samp>」（<a class="pxref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/24-directories/#Directories">ディレクトリ</a>を参照）や「<samp class="samp">-delete</samp>」（<a class="pxref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Single-File">単一のファイル</a>を参照）と組み合わせると便利です。</p></dd></dl>
+<hr/>
+</div>
+

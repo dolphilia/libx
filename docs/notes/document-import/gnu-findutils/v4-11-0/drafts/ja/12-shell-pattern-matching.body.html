@@ -1,0 +1,23 @@
+<div class="gnu-findutils-original-content" id="Shell-Pattern-Matching">
+<h4 class="subsection" id="Shell-Pattern-Matching-1"><span>2.3.4 シェルのパターンマッチング</span></h4>
+<p><code class="code">find</code>と<code class="code">locate</code>は、ファイル名またはその一部をシェルパターンと比較できます。<em class="dfn">シェルパターン</em>とは、<em class="dfn">ワイルドカード</em>または<em class="dfn">メタ文字</em>と呼ばれる、次の特殊文字を含められる文字列です。</p>
+<p>メタ文字を含むパターンは、シェル自身による展開を防ぐため、引用符で囲む必要があります。二重引用符も単一引用符も使えますし、バックスラッシュによるエスケープでも構いません。</p>
+<dl class="table">
+<dt><code class="code">*</code></dt>
+<dd><p>任意の0文字以上の文字列に一致します。</p>
+</dd>
+<dt><code class="code">?</code></dt>
+<dd><p>任意の1文字に一致します。</p>
+</dd>
+<dt><code class="code">[<var class="var">string</var>]</code></dt>
+<dd><p>文字列<var class="var">string</var>に含まれる、ちょうど1文字に一致します。これを<em class="dfn">文字クラス</em>と呼びます。省略記法として、<var class="var">string</var>には、2つの文字の間にダッシュを置いた範囲を含められます。たとえば、クラス「<samp class="samp">[a-z0-9_]</samp>」は、小文字、数字、アンダースコアのいずれかに一致します。開き角括弧の直後に「<samp class="samp">!</samp>」または「<samp class="samp">^</samp>」を置くと、クラスを否定できます。したがって、「<samp class="samp">[^A-Z@]</samp>」は、大文字とアットマークを除く任意の文字に一致します。</p>
+</dd>
+<dt><code class="code">\</code></dt>
+<dd><p>直後の文字の特別な意味を取り除きます。文字クラス内でも機能します。</p></dd>
+</dl>
+<p>シェルパターンの照合を行う<code class="code">find</code>のテスト、「<samp class="samp">-name</samp>」「<samp class="samp">-wholename</samp>」などでは、パターン内のワイルドカードはファイル名の先頭の「<samp class="samp">.</samp>」にも一致します。<code class="code">locate</code>も同様です。そのため、「<samp class="samp">find -name '*macs'</samp>」も「<samp class="samp">locate '*macs'</samp>」も、<samp class="file">.emacs</samp>という名前のファイルに一致します。</p>
+<p>シェルではワイルドカードがスラッシュに一致しませんが、<code class="code">find</code>と<code class="code">locate</code>が行うシェルパターン照合では、スラッシュに特別な意味はありません。したがって、パターン「<samp class="samp">foo*bar</samp>」はファイル名「<samp class="samp">foo3/bar</samp>」に一致でき、パターン「<samp class="samp">./sr*sc</samp>」はファイル名「<samp class="samp">./src/misc</samp>」に一致できます。</p>
+<p>「<samp class="samp">locate</samp>」でファイルを検索したいものの、一覧全体を見る必要がない場合は、「<samp class="samp">--limit</samp>」で少数の結果だけを表示するか、「<samp class="samp">--count</samp>」で一致した総数だけを表示できます。</p>
+<hr/>
+</div>
+

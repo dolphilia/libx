@@ -1,0 +1,32 @@
+<div class="gnu-findutils-original-content" id="Symbolic-Links">
+<h4 class="subsection" id="Symbolic-Links-1"><span>2.4.1 シンボリックリンク</span></h4>
+<p>シンボリックリンクは、ほかのファイルを参照する名前です。GNU <code class="code">find</code>は、シンボリックリンクを2つの方法のいずれかで扱います。1つ目は、リンクをたどる方法です。シンボリックリンクに出会うと、そのリンクが指すファイルを調べ、指定した条件に一致するかどうかを確認します。2つ目は、リンクそのものを探している場合に、リンク自体を調べる方法です。リンク先のファイルも<code class="code">find</code>で検索するディレクトリ階層内にある場合は、この2つの方法の違いがあまり目立たないこともあります。</p>
+<p>既定では、<code class="code">find</code>は見つけたシンボリックリンクそのものを調べます。後でリンク先のファイルに出会えば、それも調べます。<code class="code">find</code>でリンクをたどり、各リンクが指すファイルを調べたい場合は、<code class="code">find</code>に「<samp class="samp">-L</samp>」オプションを指定してください。「<samp class="samp">-P</samp>」で既定の動作を明示することもできます。「<samp class="samp">-H</samp>」は中間的なオプションで、コマンド行に列挙したシンボリックリンクだけをたどり、それ以外はたどりません。列挙したものには、検索するファイルの一覧や、「<samp class="samp">-newer</samp>」のようなテストで指定したものが含まれます。</p>
+<p>シンボリックリンクは、リンクをたどるために、リンク先のファイル名に含まれるディレクトリを検索する権限が必要な点で、ハードリンクと異なります。そのため、「<samp class="samp">-L</samp>」を指定しても、権限が不足していると、<code class="code">find</code>はリンク先ファイルの属性を判断できない場合があります。その場合、<code class="code">find</code>はリンクそのものの属性を使います。リンク先のファイルが存在しない場合や、リンクが直接または間接的に自分自身を指している場合も同様です。</p>
+<p>リンクに関する<code class="code">find</code>の動作を制御するオプションは、次のとおりです。</p>
+<dl class="table">
+<dt>‘<samp class="samp">-P</samp>’</dt>
+<dd><p><code class="code">find</code>はシンボリックリンクをまったくたどりません。これが既定の動作です。このオプションは、コマンド行のファイル名より前に指定する必要があります。</p></dd>
+<dt>‘<samp class="samp">-H</samp>’</dt>
+<dd><p><code class="code">find</code>は、コマンド行にあるファイル名を除いて、シンボリックリンクをたどりません。コマンド行のファイル名についてはたどります。たどれない場合は、シンボリックリンクそのものの情報を使います。このオプションは、コマンド行のファイル名より前に指定する必要があります。</p></dd>
+<dt>‘<samp class="samp">-L</samp>’</dt>
+<dd><p><code class="code">find</code>は、可能であればシンボリックリンクをたどり、不可能な場合はリンクそのものの属性を使います。このオプションは、コマンド行のファイル名より前に指定する必要があります。また、このオプションを使うと、「<samp class="samp">-noleaf</samp>」と同じ動作も有効になります。後から「<samp class="samp">-H</samp>」や「<samp class="samp">-P</samp>」を使っても、「<samp class="samp">-noleaf</samp>」の効果は無効になりません。</p>
+<p><samp class="samp">find</samp>の実行中にシンボリックリンクを壊す可能性がある「<samp class="samp">-delete</samp>」などのアクションは、紛らわしい動作を引き起こす場合があります。たとえば、「<samp class="samp">find -L . -type d -delete</samp>」は空のディレクトリを削除します。しかし、あるサブツリーがディレクトリとディレクトリへのシンボリックリンクだけを含む場合でも、削除に失敗することがあります。リンク先を削除するとシンボリックリンクが壊れ、壊れたリンクに対しては「<samp class="samp">-type d</samp>」が偽になるためです。</p>
+</dd>
+<dt>‘<samp class="samp">-follow</samp>’</dt>
+<dd><p>このオプションは式の一部なので、ファイル名より後に指定する必要があります。それ以外は「<samp class="samp">-L</samp>」と同等です。「<samp class="samp">-follow</samp>」は、コマンド行でそれより後にあるテストだけに影響します。このオプションは非推奨です。可能であれば、代わりに「<samp class="samp">-L</samp>」を使ってください。</p></dd>
+</dl>
+<p>「<samp class="samp">-L</samp>」を使うと、次のような動作の違いがあります。</p>
+<ul class="itemize mark-bullet">
+<li><code class="code">find</code>は、ディレクトリツリーを検索するとき、ディレクトリへのシンボリックリンクをたどります。</li><li>「<samp class="samp">-lname</samp>」と「<samp class="samp">-ilname</samp>」は、壊れたシンボリックリンクに一致する場合を除き、常に偽を返します。</li><li>「<samp class="samp">-type</samp>」は、シンボリックリンクが指すファイルの種類を報告します。そのため、「<samp class="samp">-L</samp>」と組み合わせた場合、「<samp class="samp">-type l</samp>」が真になるのは壊れたシンボリックリンクだけです。「<samp class="samp">-L</samp>」を指定したときにシンボリックリンクを調べるには、「<samp class="samp">-xtype l</samp>」を使ってください。</li><li>「<samp class="samp">-noleaf</samp>」の動作も有効になります（<a class="pxref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/24-directories/#Directories">ディレクトリ</a>を参照）。</li></ul>
+<p>「<samp class="samp">-L</samp>」または「<samp class="samp">-H</samp>」を使う場合、「<samp class="samp">-newer</samp>」「<samp class="samp">-anewer</samp>」「<samp class="samp">-cnewer</samp>」の引数に指定したファイル名についてはシンボリックリンクをたどり、可能であればリンク先のタイムスタンプを使います。不可能であれば、リンクのタイムスタンプを使います。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlname"><span class="category-def">テスト: </span><span><strong class="def-name">-lname</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dilname"><span class="category-def">テスト: </span><span><strong class="def-name">-ilname</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>ファイルがシンボリックリンクで、その内容がシェルパターン<var class="var">pattern</var>に一致すると真になります。「<samp class="samp">-ilname</samp>」では大文字と小文字を区別しません。<var class="var">pattern</var>引数の詳細については、<a class="xref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/12-shell-pattern-matching/#Shell-Pattern-Matching">シェルのパターンマッチング</a>を参照してください。「<samp class="samp">-L</samp>」が有効な場合、壊れたシンボリックリンクを除いて、このテストは常に偽を返します。そのため、現在のディレクトリとそのサブディレクトリにある、<samp class="file">sysdep.c</samp>へのシンボリックリンクを列挙するには、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">find . -lname '*sysdep.c'&#10;</pre></div>
+</dd></dl>
+<hr/>
+</div>
+

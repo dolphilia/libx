@@ -1,0 +1,29 @@
+<div class="gnu-findutils-original-content" id="Filesystems">
+<h3 class="section" id="Filesystems-1"><span>2.12 ファイルシステム</span></h3>
+<p><em class="dfn">ファイルシステム</em>は、ローカルホスト上、またはネットワーク越しにリモートホストからマウントした、ディスクの一区画です。ネットワーク上のファイルシステムの検索は遅くなることがあるため、<code class="code">find</code>で検索を避けることがよくあります。</p>
+<p>特定のファイルシステムの検索を避ける方法は2つあります。1つは、現在検索している開始点と同じファイルシステム内だけを検索するよう、<code class="code">find</code>に指定する方法です。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dmount"><span class="category-def">オプション: </span><span><strong class="def-name">-mount</strong></span></dt>
+<dd><p>ほかのデバイス上のファイルを無視します。マウントポイントを訪問せず、その内部も検索しません。「<samp class="samp">-L</samp>」や「<samp class="samp">-H</samp>」などにより<code class="code">find</code>がシンボリックリンクをたどっていても、そのリンク先が別のファイルシステム内のディレクトリであれば、内部を検索しません。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dxdev"><span class="category-def">オプション: </span><span><strong class="def-name">-xdev</strong></span></dt>
+<dd><p>マウントポイントを訪問しますが、その子は訪問しません。つまり、ほかのデバイス上のディレクトリへは下りません。<code class="code">-mount -xdev</code>を使うと、「<samp class="samp">-mount</samp>」と同じ効果になります。</p></dd></dl>
+<p>ここでは、通常<code class="code">find</code>が「<samp class="samp">tree/bound1</samp>」にマウントされたファイルシステムの内部を検索することを確認できます。</p>
+<div class="example">
+<pre class="example-preformatted">$ find tree -printf 'device: %5D path: %p\n'&#10;device:    40 path: tree&#10;device: 64770 path: tree/bound1&#10;device: 64770 path: tree/bound1/on-another-fs&#10;</pre></div>
+<p>「<samp class="samp">-xdev</samp>」を指定すると、マウントポイントは訪問しますが、その内部は検索しません。</p>
+<div class="example">
+<pre class="example-preformatted">$ find tree -xdev -printf 'device: %5D path: %p\n'&#10;device:    40 path: tree&#10;device: 64770 path: tree/bound1&#10;</pre></div>
+<p>「<samp class="samp">-mount</samp>」を指定すると、マウントポイント自体を訪問しません。</p>
+<div class="example">
+<pre class="example-preformatted">$ find tree -mount -printf 'device: %5D path: %p\n'&#10;device:    40 path: tree&#10;</pre></div>
+<p>これらの例では、「<samp class="samp">-printf</samp>」の「<samp class="samp">%D</samp>」指定子で各項目のデバイス番号を表示し、ファイルが別々のデバイス上にあることを示しました。<a class="xref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Print-File-Information">ファイル情報を表示する</a>を参照してください。</p>
+<p>もう1つは、各ファイルが置かれたファイルシステムの種類を調べ、対象から外したい種類のファイルシステム上のディレクトリに進まない方法です。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dfstype"><span class="category-def">テスト: </span><span><strong class="def-name">-fstype</strong> <var class="def-var-arguments">type</var></span></dt>
+<dd><p>ファイルが、種類<var class="var">type</var>のファイルシステム上にある場合に真になります。有効なファイルシステムの種類は、Unixの版によって異なります。いずれかのUnixの版で受け付けられる種類の、不完全な一覧を次に示します。</p><div class="example">
+<pre class="example-preformatted">autofs ext3 ext4 fuse.sshfs nfs proc sshfs sysfs ufs tmpfs xfs&#10;</pre></div>
+<p>「<samp class="samp">-printf</samp>」と「<samp class="samp">%F</samp>」指定子で、ファイルシステムの種類を確認できます。「<samp class="samp">-fstype</samp>」は、リモートのファイルシステムを検索しないよう、通常「<samp class="samp">-prune</samp>」とともに使います（<a class="pxref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/24-directories/#Directories">ディレクトリ</a>を参照）。</p></dd></dl>
+<hr/>
+</div>
+

@@ -1,0 +1,46 @@
+<div class="gnu-findutils-original-content" id="Full-Name-Patterns">
+<h4 class="subsection" id="Full-Name-Patterns-1"><span>2.3.2 完全なファイル名のパターン</span></h4>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dpath"><span class="category-def">テスト: </span><span><strong class="def-name">-path</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dwholename"><span class="category-def">テスト: </span><span><strong class="def-name">-wholename</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>そのファイルが見つかった起点となるコマンド行引数から始まる完全なファイル名が、シェルパターン<var class="var">pattern</var>に一致すると真になります。ディレクトリツリー全体を対象から外すには、ツリー内の各ファイルを調べる代わりに「<samp class="samp">-prune</samp>」を使います（<a class="pxref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/24-directories/#Directories">ディレクトリ</a>を参照）。<code class="code">find</code>がいう「完全なファイル名」は、コマンド行で指定した開始点から始まり、絶対パス名に変換されません。そのため、たとえば<code class="code">cd /; find tmp -wholename /tmp</code>が何かに一致することはありません。</p>
+<p>findは「<samp class="samp">-path</samp>」の引数を、対象ファイルのディレクトリ名とベース名を連結したものと比較します。連結した結果がスラッシュで終わることはないため、「<samp class="samp">-path</samp>」の引数が「<samp class="samp">/</samp>」で終わる場合、何にも一致しません。ただし、コマンド行で指定した開始点には一致する可能性があります。</p>
+<p>「<samp class="samp">-wholename</samp>」という名前はGNU固有ですが、「<samp class="samp">-path</samp>」のほうは移植性が高くなっています。後者はHP-UXの<code class="code">find</code>が対応しており、IEEE Std 1003.1-2008以降のPOSIX標準にも含まれています。</p>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dipath"><span class="category-def">テスト: </span><span><strong class="def-name">-ipath</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002diwholename"><span class="category-def">テスト: </span><span><strong class="def-name">-iwholename</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>これらのテストは「<samp class="samp">-wholename</samp>」と「<samp class="samp">-path</samp>」と同様ですが、大文字と小文字を区別せずに照合します。</p></dd></dl>
+<p>「<samp class="samp">-path</samp>」「<samp class="samp">-wholename</samp>」「<samp class="samp">-ipath</samp>」「<samp class="samp">-iwholename</samp>」テストの文脈でいう「フルパス」は、<code class="code">find</code>の開始点から対象ファイルに至るまでに通るすべてのディレクトリ名と、ファイルそのもののベース名を連結したものです。これらのパスは、絶対パスとは限りません。たとえば、次のようになります。</p>
+<div class="example">
+<pre class="example-preformatted">$ cd /tmp&#10;$ mkdir -p foo/bar/baz&#10;$ find foo -path foo/bar -print&#10;foo/bar&#10;$ find foo -path /tmp/foo/bar -print&#10;$ find /tmp/foo -path /tmp/foo/bar -print&#10;/tmp/foo/bar&#10;</pre></div>
+<p><samp class="file">/tmp/foo/bar</samp>が存在し、<code class="code">find</code>が調べているにもかかわらず、2番目の<code class="code">find</code>コマンドは何も表示しないことに注意してください。</p>
+<p>コマンド行でのファイル名展開とは異なり、パターン中の「<samp class="samp">*</samp>」は「<samp class="samp">/</samp>」にも、ファイル名の先頭のドットにも一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ find .  -path '*f'&#10;./quux/bar/baz/f&#10;$ find .  -path '*/*config'&#10;./quux/bar/baz/.config&#10;</pre></div>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dregex"><span class="category-def">テスト: </span><span><strong class="def-name">-regex</strong> <var class="def-var-arguments">expr</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002diregex"><span class="category-def">テスト: </span><span><strong class="def-name">-iregex</strong> <var class="def-var-arguments">expr</var></span></dt>
+<dd><p>完全なファイル名が正規表現<var class="var">expr</var>に一致すると真になります。これはパス全体の一致を調べるもので、部分文字列を検索するものではありません。たとえば、<samp class="file">./fubar3</samp>という名前のファイルに一致させるには、正規表現「<samp class="samp">.*bar.</samp>」または「<samp class="samp">.*b.*3</samp>」を使えますが、「<samp class="samp">f.*r3</samp>」は使えません。「<samp class="samp">-iregex</samp>」では大文字と小文字を区別しません。</p>
+<p>「<samp class="samp">-path</samp>」と同様に、照合対象のファイル名がスラッシュで終わることはないため、スラッシュで終わるものだけに一致する正規表現は常に失敗します。</p>
+<p>正規表現にはいくつかの種類があります。このテストでは既定でGNU Emacsの正規表現を使いますが、「<samp class="samp">-regextype</samp>」オプションで変更できます。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dregextype"><span class="category-def">オプション: </span><span><strong class="def-name">-regextype</strong> <var class="def-var-arguments">name</var></span></dt>
+<dd><p>このオプションは、「<samp class="samp">-regex</samp>」と「<samp class="samp">-iregex</samp>」テストが解釈する正規表現構文の種類を指定します。このオプションは位置に依存し、コマンド行でそれより後に現れる正規表現だけに影響します。指定しない場合は、GNU Emacsの正規表現を使います。現在実装されている種類は次のとおりです。</p>
+<dl class="table">
+<dt>‘<samp class="samp">emacs</samp>’</dt>
+<dd><p>GNU Emacsと互換性のある正規表現です。このオプションを使わない場合の既定の動作でもあります。</p></dd>
+<dt>‘<samp class="samp">posix-awk</samp>’</dt>
+<dd><p>POSIXのawkコマンドと互換性のある正規表現です。GNU awkではありません。</p></dd>
+<dt>‘<samp class="samp">posix-basic</samp>’</dt>
+<dd><p>POSIXの基本正規表現です。</p></dd>
+<dt>‘<samp class="samp">posix-egrep</samp>’</dt>
+<dd><p>POSIXのegrepコマンドと互換性のある正規表現です。</p></dd>
+<dt>‘<samp class="samp">posix-extended</samp>’</dt>
+<dd><p>POSIXの拡張正規表現です。</p></dd>
+</dl>
+<p>GNU findutilsが解釈する正規表現の各方言については、<a class="ref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Regular-Expressions">正規表現</a>を参照してください。</p>
+</dd></dl>
+<hr/>
+</div>
+

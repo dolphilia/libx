@@ -1,0 +1,27 @@
+{
+  "name": "apps-gnu-findutils",
+  "private": true,
+  "description": "Documentation site for gnu-findutils",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "prebuild": "libx-docs-prepare --projects=gnu-findutils",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check:content": "node ../../docs/notes/document-import/gnu-findutils/v4-11-0/check-content.mjs"
+  },
+  "dependencies": {
+    "@docs/config": "workspace:*",
+    "@docs/content-utils": "workspace:*",
+    "@docs/i18n": "workspace:*",
+    "@docs/project-config": "workspace:*",
+    "@docs/theme": "workspace:*",
+    "@docs/ui": "workspace:*",
+    "@docs/versioning": "workspace:*",
+    "astro": "^5.7.12",
+    "shiki": "^3.4.0",
+    "unist-util-visit": "^5.0.0"
+  }
+}

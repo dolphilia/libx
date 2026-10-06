@@ -1,0 +1,49 @@
+<div class="gnu-findutils-original-content" id="Age-Ranges">
+<h4 class="subsection" id="Age-Ranges-1"><span>2.5.1 Age Ranges</span></h4>
+<p>These tests are mainly useful with ranges (‘<samp class="samp">+<var class="var">n</var></samp>’ and
+‘<samp class="samp">-<var class="var">n</var></samp>’).
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002datime"><span class="category-def">Test: </span><span><strong class="def-name">-atime</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dctime"><span class="category-def">Test: </span><span><strong class="def-name">-ctime</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dmtime"><span class="category-def">Test: </span><span><strong class="def-name">-mtime</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>True if the file was last accessed (or its status changed, or it was
+modified) <var class="var">n</var>*24 hours ago.  The number of 24-hour periods since
+the file’s timestamp is always rounded down; therefore 0 means “less
+than 24 hours ago”, 1 means “between 24 and 48 hours ago”, and so
+forth.  Fractional values are supported but this only really makes
+sense for the case where ranges (‘<samp class="samp">+<var class="var">n</var></samp>’ and ‘<samp class="samp">-<var class="var">n</var></samp>’)
+are used.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002damin"><span class="category-def">Test: </span><span><strong class="def-name">-amin</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dcmin"><span class="category-def">Test: </span><span><strong class="def-name">-cmin</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dmmin"><span class="category-def">Test: </span><span><strong class="def-name">-mmin</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>True if the file was last accessed (or its status changed, or it was
+modified) <var class="var">n</var> minutes ago.  These tests provide finer granularity
+of measurement than ‘<samp class="samp">-atime</samp>’ et al., but rounding is done in a
+similar way (again, fractions are supported).  For example, to list
+files in <samp class="file">/u/bill</samp> that were last read from 2 to 6 minutes ago:
+</p>
+<div class="example">
+<pre class="example-preformatted">find /u/bill -amin +2 -amin -6
+</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002ddaystart"><span class="category-def">Option: </span><span><strong class="def-name">-daystart</strong></span></dt>
+<dd><p>Measure times from the beginning of today rather than from 24 hours
+ago.  So, to list the regular files in your home directory that were
+modified yesterday, do
+</p>
+<div class="example">
+<pre class="example-preformatted">find ~/ -daystart -type f -mtime 1
+</pre></div>
+<p>The ‘<samp class="samp">-daystart</samp>’ option is unlike most other options in that it
+has an effect on the way that other tests are performed.  The affected
+tests are ‘<samp class="samp">-amin</samp>’, ‘<samp class="samp">-cmin</samp>’, ‘<samp class="samp">-mmin</samp>’, ‘<samp class="samp">-atime</samp>’,
+‘<samp class="samp">-ctime</samp>’ and ‘<samp class="samp">-mtime</samp>’.  The ‘<samp class="samp">-daystart</samp>’ option only
+affects the behaviour of any tests which appear after it on the
+command line.
+</p></dd></dl>
+<hr/>
+</div>

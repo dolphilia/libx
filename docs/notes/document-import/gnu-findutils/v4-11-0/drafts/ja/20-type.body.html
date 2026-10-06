@@ -1,0 +1,43 @@
+<div class="gnu-findutils-original-content" id="Type">
+<h3 class="section" id="Type-1"><span>2.7 種類</span></h3>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dtype"><span class="category-def">テスト: </span><span><strong class="def-name">-type</strong> <var class="def-var-arguments">c</var></span></dt>
+<dd><p>ファイルの種類が<var class="var">c</var>である場合に真になります。</p>
+<dl class="table">
+<dt><code class="code">b</code></dt>
+<dd><p>ブロック型の特殊ファイル。バッファリングされます。</p></dd>
+<dt><code class="code">c</code></dt>
+<dd><p>文字型の特殊ファイル。バッファリングされません。</p></dd>
+<dt><code class="code">d</code></dt>
+<dd><p>ディレクトリ</p></dd>
+<dt><code class="code">p</code></dt>
+<dd><p>名前付きパイプ。FIFO。</p></dd>
+<dt><code class="code">f</code></dt>
+<dd><p>通常のファイル</p></dd>
+<dt><code class="code">l</code></dt>
+<dd><p>シンボリックリンク。「<samp class="samp">-L</samp>」が有効な場合は、壊れたシンボリックリンクだけで真になります。「<samp class="samp">-L</samp>」が有効なときにシンボリックリンクを検索したい場合は、「<samp class="samp">-type</samp>」の代わりに「<samp class="samp">-xtype</samp>」を使ってください。</p></dd>
+<dt><code class="code">s</code></dt>
+<dd><p>ソケット</p></dd>
+<dt><code class="code">D</code></dt>
+<dd><p>door。Solaris。</p></dd>
+</dl>
+<p>GNUの拡張として、複数のファイル種類をコンマ「<samp class="samp">,</samp>」で区切った一覧として指定できます。たとえば、「<samp class="samp">-type f,d,l</samp>」は、論理的には「<samp class="samp">( -type f -o -type d -o -type l )</samp>」と解釈されます。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dxtype"><span class="category-def">テスト: </span><span><strong class="def-name">-xtype</strong> <var class="def-var-arguments">c</var></span></dt>
+<dd><p>ファイルがシンボリックリンクでない限り、このテストは「<samp class="samp">-type</samp>」と同じ動作になります。シンボリックリンクの場合、結果は次のとおりです。以下の一覧の「<samp class="samp">X</samp>」は、「<samp class="samp">l</samp>」以外の任意の文字を表します。</p>
+<dl class="table">
+<dt>‘<samp class="samp">‘<samp class="samp">-P -xtype l</samp>’</samp>’</dt>
+<dd><p>シンボリックリンクが壊れているか、無限ループになっている場合に真になります。</p></dd>
+<dt>‘<samp class="samp">‘<samp class="samp">-P -xtype X</samp>’</samp>’</dt>
+<dd><p>最終的なリンク先ファイルの種類が「<samp class="samp">X</samp>」である場合に真になります。</p></dd>
+<dt>‘<samp class="samp">‘<samp class="samp">-L -xtype l</samp>’</samp>’</dt>
+<dd><p>常に真になります。</p></dd>
+<dt>‘<samp class="samp">‘<samp class="samp">-L -xtype X</samp>’</samp>’</dt>
+<dd><p>シンボリックリンクが壊れているか、無限ループになっている場合を除き、偽になります。</p></dd>
+</dl>
+<p>つまり、壊れていないシンボリックリンクに対して、「<samp class="samp">-xtype</samp>」は「<samp class="samp">-type</samp>」が調べないほうのファイルの種類を調べます。壊れたリンクやループに対しては、「<samp class="samp">-xtype</samp>」は「<samp class="samp">-type</samp>」と同じ動作になります。ユーザーがアクセスできないものを指すシンボリックリンクは、壊れたリンクとはみなしません。</p>
+<p>「<samp class="samp">-H</samp>」も「<samp class="samp">-xtype</samp>」の動作に影響します。「<samp class="samp">-H</samp>」が有効なとき、「<samp class="samp">-xtype</samp>」は、コマンド行に列挙したファイルを調べる場合は「<samp class="samp">-L</samp>」を指定したように、それ以外では「<samp class="samp">-P</samp>」を指定したように動作します。「<samp class="samp">-H</samp>」も「<samp class="samp">-L</samp>」も指定しない場合、「<samp class="samp">-xtype</samp>」は「<samp class="samp">-P</samp>」を指定したように動作します。</p>
+<p>「<samp class="samp">-follow</samp>」と「<samp class="samp">-L</samp>」の詳細については、<a class="xref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/14-symbolic-links/#Symbolic-Links">シンボリックリンク</a>を参照してください。</p></dd></dl>
+<hr/>
+</div>
+

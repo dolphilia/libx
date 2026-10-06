@@ -1,0 +1,64 @@
+<div class="gnu-findutils-original-content" id="Size">
+<h3 class="section" id="Size-1"><span>2.6 Size</span></h3>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dsize"><span class="category-def">Test: </span><span><strong class="def-name">-size</strong> <var class="def-var-arguments">n<span class="r">[</span>bckwMG<span class="r">]</span></var></span></dt>
+<dd><p>True if the file uses <var class="var">n</var> units of space, rounding up.  The units
+are 512-byte blocks by default, but they can be changed by adding a
+one-character suffix to <var class="var">n</var>:
+</p>
+<dl class="table">
+<dt><code class="code">b</code></dt>
+<dd><p>512-byte blocks (never 1024)
+</p></dd>
+<dt><code class="code">c</code></dt>
+<dd><p>bytes
+</p></dd>
+<dt><code class="code">w</code></dt>
+<dd><p>2-byte words
+</p></dd>
+<dt><code class="code">k</code></dt>
+<dd><p>Kibibytes (KiB, units of 1024 bytes)
+</p></dd>
+<dt><code class="code">M</code></dt>
+<dd><p>Mebibytes (MiB, units of 1024 * 1024 = 1048576 bytes)
+</p></dd>
+<dt><code class="code">G</code></dt>
+<dd><p>Gibibytes (GiB, units of 1024 * 1024 * 1024 = 1073741824 bytes)
+</p></dd>
+</dl>
+<p>The ‘b’ suffix always considers blocks to be 512 bytes.  This is not
+affected by the setting (or non-setting) of the <code class="env">POSIXLY_CORRECT</code>
+environment variable.  This behaviour is different from the behaviour of
+the ‘<samp class="samp">-ls</samp>’ action).  If you want to use 1024-byte units, use the
+‘k’ suffix instead.
+</p>
+<p>The number can be prefixed with a ‘+’ or a ‘-’.  A plus sign indicates
+that the test should succeed if the file uses at least <var class="var">n</var> units
+of storage (a common use of this test) and a minus sign
+indicates that the test should succeed if the file uses less than
+<var class="var">n</var> units of storage; i.e., an exact size of <var class="var">n</var> units does not match.
+There is no ‘=’ prefix, because that’s the default anyway.
+</p>
+<table border="1" class="cartouche"><tr><th>
+Important</th></tr><tr><td>
+<p>Bear in mind that the size is rounded up to
+the next unit. Therefore ‘<samp class="samp">-size -1M</samp>’ is not equivalent to
+‘<samp class="samp">-size -1048576c</samp>’. The former only matches empty files, the latter
+matches files from 0 to 1,048,575 bytes.
+</p></td></tr></table>
+<p>The size is simply the st_size member of the struct stat populated by
+the lstat (or stat) system call, rounded up as shown above.  In other words, it’s
+consistent with the result you get for ‘<samp class="samp">ls -l</samp>’.
+This handling of sparse files differs from the output of the ‘<samp class="samp">%k</samp>’
+and ‘<samp class="samp">%b</samp>’ format specifiers for the ‘<samp class="samp">-printf</samp>’ predicate.
+</p>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dempty"><span class="category-def">Test: </span><span><strong class="def-name">-empty</strong></span></dt>
+<dd><p>True if the file is empty and is either a regular file or a directory.
+This might help determine good candidates for deletion.  This test is
+useful with ‘<samp class="samp">-depth</samp>’ (see <a class="pxref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/24-directories/#Directories">Directories</a>) and ‘<samp class="samp">-delete</samp>’
+(see <a class="pxref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Single-File">Single File</a>).
+</p></dd></dl>
+<hr/>
+</div>

@@ -1,0 +1,91 @@
+<div class="gnu-findutils-original-content" id="Comparing-Timestamps">
+<h4 class="subsection" id="Comparing-Timestamps-1"><span>2.5.2 Comparing Timestamps</span></h4>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dnewerXY"><span class="category-def">Test: </span><span><strong class="def-name">-newerXY</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dd><p>Succeeds if timestamp ‘<samp class="samp">X</samp>’ of the file being considered is newer
+than timestamp ‘<samp class="samp">Y</samp>’ of the file <samp class="file">reference</samp>.
+Fails if the timestamps are <em class="emph">equal</em>.
+The letters ‘<samp class="samp">X</samp>’ and ‘<samp class="samp">Y</samp>’ can be any of the following letters:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">a</samp>’</dt>
+<dd><p>Last-access time of <samp class="file">reference</samp>
+</p></dd>
+<dt>‘<samp class="samp">B</samp>’</dt>
+<dd><p>Birth time of <samp class="file">reference</samp> (when this is not known, the test cannot succeed)
+</p></dd>
+<dt>‘<samp class="samp">c</samp>’</dt>
+<dd><p>Last-change time of <samp class="file">reference</samp>
+</p></dd>
+<dt>‘<samp class="samp">m</samp>’</dt>
+<dd><p>Last-modification time of <samp class="file">reference</samp>
+</p></dd>
+<dt>‘<samp class="samp">t</samp>’</dt>
+<dd><p>The <samp class="file">reference</samp> argument is interpreted as a literal time, rather
+than the name of a file.  See <a class="xref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Date-input-formats">Date input formats</a>, for a description
+of how the timestamp is understood.  Tests of the form ‘<samp class="samp">-newerXt</samp>’
+are valid but tests of the form ‘<samp class="samp">-newertY</samp>’ are not.
+</p></dd>
+</dl>
+<p>For example the test <code class="code">-newerac /tmp/foo</code> succeeds for all files
+which have been accessed more recently than <samp class="file">/tmp/foo</samp> was
+changed.   Here ‘<samp class="samp">X</samp>’ is ‘<samp class="samp">a</samp>’ and ‘<samp class="samp">Y</samp>’ is ‘<samp class="samp">c</samp>’.
+</p>
+<p>Not all files have a known birth time.  If ‘<samp class="samp">Y</samp>’ is ‘<samp class="samp">B</samp>’ and
+the birth time of <samp class="file">reference</samp> is not available, <code class="code">find</code> exits
+with an explanatory error message.  If ‘<samp class="samp">X</samp>’ is ‘<samp class="samp">B</samp>’ and we do
+not know the birth time the file currently being considered, the test
+simply fails (that is, it behaves like <code class="code">-false</code> does).
+</p>
+<p>Some operating systems (for example, most implementations of Unix) do
+not support file birth times.  Some others, for example NetBSD-3.1,
+do.  Even on operating systems which support file birth times, the
+information may not be available for specific files.  For example,
+under NetBSD, file birth times are supported on UFS2 file systems, but
+not UFS1 file systems.
+</p>
+</dd></dl>
+<p>There are two ways to list files in <samp class="file">/usr</samp> modified after
+<em class="emph">the start</em> of February 1 of the current year.  One uses
+‘<samp class="samp">-newermt</samp>’:
+</p>
+<div class="example">
+<pre class="example-preformatted">find /usr -newermt "Feb 1"&#10;</pre></div>
+<p>The other way of doing this works on the versions of find before 4.3.3
+(2007):
+</p>
+<div class="example">
+<pre class="example-preformatted">touch -t 02010000 /tmp/stamp$$&#10;find /usr -newer /tmp/stamp$$&#10;rm -f /tmp/stamp$$&#10;</pre></div>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002danewer"><span class="category-def">Test: </span><span><strong class="def-name">-anewer</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dcnewer"><span class="category-def">Test: </span><span><strong class="def-name">-cnewer</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dnewer"><span class="category-def">Test: </span><span><strong class="def-name">-newer</strong> <var class="def-var-arguments">reference</var></span></dt>
+<dd><p>True if the time of the last access (or status change or data modification)
+of the current file is more recent than that of the last data modification
+of the <var class="var">reference</var> file.
+False if the timestamps are equal.
+As such, ‘<samp class="samp">-anewer</samp>’ is equivalent to ‘<samp class="samp">-neweram</samp>’,
+‘<samp class="samp">-cnewer</samp>’ to ‘<samp class="samp">-newercm</samp>’, and ‘<samp class="samp">-newer</samp>’ to ‘<samp class="samp">-newermm</samp>’.
+</p>
+<p>If <var class="var">reference</var> is a symbolic link and the ‘<samp class="samp">-H</samp>’ option or the ‘<samp class="samp">-L</samp>’
+option is in effect, then the time of the last data modification of the file
+it points to is always used.
+</p>
+<p>These tests are affected by ‘<samp class="samp">-follow</samp>’ only if ‘<samp class="samp">-follow</samp>’ comes before
+them on the command line.  See <a class="xref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/14-symbolic-links/#Symbolic-Links">Symbolic Links</a>, for more information on
+‘<samp class="samp">-follow</samp>’.
+</p>
+<p>As an example, to list any files modified since
+<samp class="file">/bin/sh</samp> was last modified:
+</p>
+<div class="example">
+<pre class="example-preformatted">find . -newer /bin/sh&#10;</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dused"><span class="category-def">Test: </span><span><strong class="def-name">-used</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>True if the file was last accessed <var class="var">n</var> days after its status was
+last changed.  Useful for finding files that are not being used, and
+could perhaps be archived or removed to save disk space.
+</p></dd></dl>
+<hr/>
+</div>

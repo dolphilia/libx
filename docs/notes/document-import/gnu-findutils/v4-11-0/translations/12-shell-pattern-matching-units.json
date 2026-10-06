@@ -1,0 +1,118 @@
+{
+  "slug": "12-shell-pattern-matching",
+  "bodySHA256": "6c2537d68018b0308bfb0fed14759ba8afdf1b59496df878c68b4cf7c0a7268c",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧2.3.4 Shell Pattern Matching⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"Shell-Pattern-Matching-1\"><span>2.3.4 Shell Pattern Matching</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧ and ⟦1⟧ can compare file names, or parts of file names, to shell patterns. A ⟦2⟧shell pattern⟦3⟧ is a string that may contain the following special characters, which are known as ⟦4⟧wildcards⟦5⟧ or ⟦6⟧metacharacters⟦7⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<code class=\"code\">locate</code>",
+        "⟦2⟧": "<em class=\"dfn\">",
+        "⟦3⟧": "</em>",
+        "⟦4⟧": "<em class=\"dfn\">",
+        "⟦5⟧": "</em>",
+        "⟦6⟧": "<em class=\"dfn\">",
+        "⟦7⟧": "</em>"
+      },
+      "sourceHTML": "<p><code class=\"code\">find</code> and <code class=\"code\">locate</code> can compare file names, or parts of file\nnames, to shell patterns.  A <em class=\"dfn\">shell pattern</em> is a string that may\ncontain the following special characters, which are known as\n<em class=\"dfn\">wildcards</em> or <em class=\"dfn\">metacharacters</em>.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "You must quote patterns that contain metacharacters to prevent the shell from expanding them itself. Double and single quotes both work; so does escaping with a backslash.",
+      "tokens": {},
+      "sourceHTML": "<p>You must quote patterns that contain metacharacters to prevent the\nshell from expanding them itself.  Double and single quotes both work;\nso does escaping with a backslash.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Matches any zero or more characters.",
+      "tokens": {},
+      "sourceHTML": "<p>Matches any zero or more characters.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Matches any one character.",
+      "tokens": {},
+      "sourceHTML": "<p>Matches any one character.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Matches exactly one character that is a member of the string ⟦0⟧. This is called a ⟦1⟧character class⟦2⟧. As a shorthand, ⟦3⟧ may contain ranges, which consist of two characters with a dash between them. For example, the class ‘⟦4⟧’ matches a lowercase letter, a number, or an underscore. You can negate a class by placing a ‘⟦5⟧’ or ‘⟦6⟧’ immediately after the opening bracket. Thus, ‘⟦7⟧’ matches any character except an uppercase letter or an at sign.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">string</var>",
+        "⟦1⟧": "<em class=\"dfn\">",
+        "⟦2⟧": "</em>",
+        "⟦3⟧": "<var class=\"var\">string</var>",
+        "⟦4⟧": "<samp class=\"samp\">[a-z0-9_]</samp>",
+        "⟦5⟧": "<samp class=\"samp\">!</samp>",
+        "⟦6⟧": "<samp class=\"samp\">^</samp>",
+        "⟦7⟧": "<samp class=\"samp\">[^A-Z@]</samp>"
+      },
+      "sourceHTML": "<p>Matches exactly one character that is a member of the string\n<var class=\"var\">string</var>.  This is called a <em class=\"dfn\">character class</em>.  As a\nshorthand, <var class=\"var\">string</var> may contain ranges, which consist of two\ncharacters with a dash between them.  For example, the class\n‘<samp class=\"samp\">[a-z0-9_]</samp>’ matches a lowercase letter, a number, or an\nunderscore.  You can negate a class by placing a ‘<samp class=\"samp\">!</samp>’ or ‘<samp class=\"samp\">^</samp>’\nimmediately after the opening bracket.  Thus, ‘<samp class=\"samp\">[^A-Z@]</samp>’ matches\nany character except an uppercase letter or an at sign.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Removes the special meaning of the character that follows it. This works even in character classes.",
+      "tokens": {},
+      "sourceHTML": "<p>Removes the special meaning of the character that follows it.  This\nworks even in character classes.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "In the ⟦0⟧ tests that do shell pattern matching (‘⟦1⟧’, ‘⟦2⟧’, etc.), wildcards in the pattern will match a ‘⟦3⟧’ at the beginning of a file name. This is also the case for ⟦4⟧. Thus, ‘⟦5⟧’ will match a file named ⟦6⟧, as will ‘⟦7⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<samp class=\"samp\">-name</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-wholename</samp>",
+        "⟦3⟧": "<samp class=\"samp\">.</samp>",
+        "⟦4⟧": "<code class=\"code\">locate</code>",
+        "⟦5⟧": "<samp class=\"samp\">find -name '*macs'</samp>",
+        "⟦6⟧": "<samp class=\"file\">.emacs</samp>",
+        "⟦7⟧": "<samp class=\"samp\">locate '*macs'</samp>"
+      },
+      "sourceHTML": "<p>In the <code class=\"code\">find</code> tests that do shell pattern matching (‘<samp class=\"samp\">-name</samp>’,\n‘<samp class=\"samp\">-wholename</samp>’, etc.), wildcards in the pattern will match a\n‘<samp class=\"samp\">.</samp>’  at the beginning of a file name.  This is also the case for\n<code class=\"code\">locate</code>.  Thus, ‘<samp class=\"samp\">find -name '*macs'</samp>’ will match a file\nnamed <samp class=\"file\">.emacs</samp>, as will ‘<samp class=\"samp\">locate '*macs'</samp>’.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Slash characters have no special significance in the shell pattern matching that ⟦0⟧ and ⟦1⟧ do, unlike in the shell, in which wildcards do not match them. Therefore, a pattern ‘⟦2⟧’ can match a file name ‘⟦3⟧’, and a pattern ‘⟦4⟧’ can match a file name ‘⟦5⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<code class=\"code\">locate</code>",
+        "⟦2⟧": "<samp class=\"samp\">foo*bar</samp>",
+        "⟦3⟧": "<samp class=\"samp\">foo3/bar</samp>",
+        "⟦4⟧": "<samp class=\"samp\">./sr*sc</samp>",
+        "⟦5⟧": "<samp class=\"samp\">./src/misc</samp>"
+      },
+      "sourceHTML": "<p>Slash characters have no special significance in the shell pattern\nmatching that <code class=\"code\">find</code> and <code class=\"code\">locate</code> do, unlike in the shell,\nin which wildcards do not match them.  Therefore, a pattern\n‘<samp class=\"samp\">foo*bar</samp>’ can match a file name ‘<samp class=\"samp\">foo3/bar</samp>’, and a pattern\n‘<samp class=\"samp\">./sr*sc</samp>’ can match a file name ‘<samp class=\"samp\">./src/misc</samp>’.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "If you want to locate some files with the ‘⟦0⟧’ command but don’t need to see the full list you can use the ‘⟦1⟧’ option to see just a small number of results, or the ‘⟦2⟧’ option to display only the total number of matches.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">locate</samp>",
+        "⟦1⟧": "<samp class=\"samp\">--limit</samp>",
+        "⟦2⟧": "<samp class=\"samp\">--count</samp>"
+      },
+      "sourceHTML": "<p>If you want to locate some files with the ‘<samp class=\"samp\">locate</samp>’ command but\ndon’t need to see the full list you can use the ‘<samp class=\"samp\">--limit</samp>’ option\nto see just a small number of results, or the ‘<samp class=\"samp\">--count</samp>’ option to\ndisplay only the total number of matches.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

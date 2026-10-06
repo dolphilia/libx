@@ -1,0 +1,27 @@
+<div class="gnu-findutils-original-content" id="Starting-points">
+<h3 class="section" id="Starting-points-1"><span>2.2 検索の開始点</span></h3>
+<p>GNU <code class="code">find</code>は、指定された各開始点を根とするディレクトリツリーを検索します。演算子の優先順位に従い、指定した式を左から右へ評価し、結果が確定するまで続けます。「<samp class="samp">and</samp>」演算では左辺が偽、「<samp class="samp">or</samp>」演算では左辺が真になった時点で結果が確定し、<code class="code">find</code>は次のファイル名へ進みます。</p>
+<p>開始点を指定しない場合、現在のディレクトリ「<samp class="samp">.</samp>」が使われます。</p>
+<p>理論上、2つのダッシュ「<samp class="samp">--</samp>」は、それ以降の引数がオプションではないことを示すために使えます。しかし、<code class="code">find</code>が開始点引数の一覧の終わりを判断する方法のため、これは実際にはうまく機能しません。式の引数が現れるまで読み取り、その引数も「<samp class="samp">-</samp>」で始まります。開始点引数が「<samp class="samp">-</samp>」で始まると、<code class="code">find</code>はそれを式の引数として扱います。したがって、すべての開始点を開始点として扱わせ、特に、呼び出し元のシェルが展開したワイルドカードを式の引数と誤認させないためには、ワイルドカードや紛らわしいパス名の前に「<samp class="samp">./</samp>」を付けるか、「<samp class="samp">/</samp>」で始まる絶対パス名を使うのが、一般に安全です。</p>
+<p>別の方法として、移植性はありませんが、GNUのオプション「<samp class="samp">-files0-from</samp>」で任意の開始点を<code class="code">find</code>へ渡すのも一般に安全です。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dfiles0_002dfrom"><span class="category-def">オプション: </span><span><strong class="def-name">-files0-from</strong> <var class="def-var-arguments">file</var></span></dt>
+<dd>
+<p>開始点をコマンド行から取得する代わりに、<samp class="file">file</samp>から読み取ります。コマンド行引数で開始点を渡す場合には、渡せるファイル名の数に制限があり、ファイル名とオプション名が衝突するという本質的な曖昧さもあります。このオプションを使うと、任意の数の開始点を安全に<code class="code">find</code>へ渡せます。</p>
+<p>このオプションの使用と、コマンド行で開始点を渡すことは排他的であり、同時には行えません。</p>
+<p><samp class="file">file</samp>引数は必須です。「<samp class="samp">-files0-from -</samp>」を使うと、たとえばパイプから、標準入力ストリームを通して開始点の一覧を読み取れます。この場合、「<samp class="samp">-ok</samp>」と「<samp class="samp">-okdir</samp>」アクションは使えません。ユーザーの確認を得るための標準入力の読み取りが、開始点の読み取りと明らかに干渉するからです。</p>
+<p><samp class="file">file</samp>内の開始点は、ASCII NUL文字で区切る必要があります。NUL文字が2つ連続する、つまり長さゼロのファイル名を開始点とすることは許可されません。その場合、エラーの診断メッセージが出力され、その後にゼロ以外の終了コードで終了します。</p>
+<p>指定した<samp class="file">file</samp>が空の場合、<code class="code">find</code>は開始点を1つも処理せず、プログラムの引数を解析した直後に終了します。パス引数が渡されないと現在のディレクトリを開始点とみなす通常の<code class="code">find</code>の呼び出しとは異なります。</p>
+<p>そのほかの開始点の処理は通常どおりです。たとえば、別途抑制しない限り、<code class="code">find</code>はサブディレクトリへ再帰的に進みます。開始点だけを処理するには、さらに「<samp class="samp">-maxdepth 0</samp>」を指定します。</p>
+<table border="1" class="cartouche"><tr><th>注意事項</th></tr><tr><td>
+<p>このオプションを安全に使うためには、次の点に注意する必要があります。</p>
+<ul class="itemize mark-bullet">
+<li>重複したエントリがないことを確認してください。<ul class="itemize mark-minus"> <li>重複があると、一部のファイルが複数回訪問される場合も、されない場合もあります。</li></ul></li><li><code class="code">find</code>の実行中にファイルを変更しないでください。<ul class="itemize mark-minus"> <li>同時に行われた変更の影響は規定されていません。</li></ul></li><li>ファイルの最終的なシーク位置に依存しないでください。<ul class="itemize mark-minus"> <li>最終的なシーク位置は保証されません。プラットフォーム、findutilsのリリース、さらには<samp class="file">find</samp>の実行ごとに異なる場合があります。</li><li>そのため、「<samp class="samp">-files0-from</samp>」と別の用途で、開かれた同じファイルを共有しても、意図した結果を確実に得られる可能性は低くなります。別の用途には、<code class="code">find</code>の別のインスタンスで「<samp class="samp">-files0-from</samp>」を使う場合も含みます。複数のプログラムで同じファイルを読み取る必要がある場合は、プログラムごとに別々に開いてください。</li></ul></li></ul>
+</td></tr></table>
+<p>あるプログラム<code class="code">proggy</code>が事前に絞り込み、大量のファイルをNUL区切りで列挙した一覧を作成したとします。その一覧を開始点として処理し、その中から通常の空ファイルすべてを検索できます。</p>
+<div class="example">
+<pre class="example-preformatted">$ proggy | find -files0-from - -maxdepth 0 -type f -empty&#10;</pre></div>
+<p>「<samp class="samp">-files0-from -</samp>」を使うと、標準入力、つまりパイプから開始点の名前を読み取ります。「<samp class="samp">-maxdepth 0</samp>」を使うと、明示的に指定したエントリだけを調べ、開始点のいずれかがディレクトリでも、その内部へ再帰的に進まないことを保証できます。</p></dd></dl>
+<hr/>
+</div>
+

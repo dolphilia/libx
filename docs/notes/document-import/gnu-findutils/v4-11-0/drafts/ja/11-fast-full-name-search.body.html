@@ -1,0 +1,22 @@
+<div class="gnu-findutils-original-content" id="Fast-Full-Name-Search">
+<h4 class="subsection" id="Fast-Full-Name-Search-1"><span>2.3.3 完全なファイル名を高速に検索する</span></h4>
+<p>ディスク上のディレクトリを実際に走査せずにファイル名で検索するには、<code class="code">locate</code>を使えます。ディレクトリの走査は遅くなる場合があります。<code class="code">locate</code>は、指定した各シェルパターンについて、1つ以上のファイル名データベースを検索し、そのパターンを含むファイル名を表示します。シェルパターンの詳細については、<a class="xref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/12-shell-pattern-matching/#Shell-Pattern-Matching">シェルのパターンマッチング</a>を参照してください。</p>
+<p>パターンがメタ文字を含まない単なる文字列の場合、<code class="code">locate</code>は、その文字列を含むデータベース内のすべてのファイル名を表示します。パターンにメタ文字が含まれる場合、<code class="code">locate</code>はパターン全体に正確に一致するファイル名だけを表示します。そのため、メタ文字を含むパターンは、通常「<samp class="samp">*</samp>」で始め、末尾にも付けることが多くなります。ファイル名の先頭または末尾に明示的に一致させたいパターンは例外です。</p>
+<p><code class="code">locate</code>でファイル名の最後の要素、つまりベース名だけを照合したい場合は、「<samp class="samp">--basename</samp>」オプションを使えます。既定ではその反対の動作になりますが、「<samp class="samp">--wholename</samp>」オプションで明示的に選ぶこともできます。</p>
+<p>次のコマンドは、</p><div class="example">
+<pre class="example-preformatted">locate <var class="var">pattern</var>&#10;</pre></div>
+<p>次のコマンドとほぼ同じです。</p><div class="example">
+<pre class="example-preformatted">find <var class="var">directories</var> -name <var class="var">pattern</var>&#10;</pre></div>
+<p>ここで、<var class="var">directories</var>はファイル名データベースに情報が収録されているディレクトリです。違いは、<code class="code">locate</code>の情報が古い可能性があることと、<code class="code">locate</code>が既定でベース名だけでなくファイル名全体に対してワイルドカードを照合することです（<a class="pxref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/12-shell-pattern-matching/#Shell-Pattern-Matching">シェルのパターンマッチング</a>を参照）。</p>
+<p>ファイル名データベースには、最後に更新した時点でシステム上にあったファイルの一覧が格納されています。システム管理者は、既定のデータベースのファイル名、更新頻度、収録するディレクトリを選べます。</p>
+<p><code class="code">locate</code>が検索するファイル名データベースを選ぶ方法を示します。既定値はシステムによって異なります。この文書を生成した時点の既定値は<samp class="file">/usr/local/var/locatedb</samp>でした。</p>
+<dl class="table">
+<dt><code class="code">--database=<var class="var">path</var></code></dt>
+<dt><code class="code">-d <var class="var">path</var></code></dt>
+<dd><p>既定のファイル名データベースの代わりに、<var class="var">path</var>に指定したデータベースを検索します。これは、データベースのファイル名をコロンで区切った一覧です。検索するデータベースファイルの一覧は、環境変数<code class="env">LOCATE_PATH</code>でも設定できます。両方を使った場合、オプションが環境変数に優先します。</p></dd>
+</dl>
+<p>GNU <code class="code">locate</code>は、<code class="code">slocate</code>パッケージが生成したファイル名データベースを読み取れます。ただし、そのデータベースは一般にシステム上のすべてのファイルの一覧を含むため、<code class="code">locate</code>は、そのデータベースを使うとき、ユーザーがアクセスできるファイルだけを表示します。この処理に使う「<samp class="samp">--existing</samp>」オプションについては、<a class="xref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Invoking-locate"><code class="code">locate</code>の呼び出し</a>を参照してください。</p>
+<p><code class="code">updatedb</code>も、<code class="code">slocate</code>と互換性のある形式でデータベースを生成できます。その「<samp class="samp">--dbformat</samp>」と「<samp class="samp">--output</samp>」オプションについては、<a class="xref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Invoking-updatedb"><code class="code">updatedb</code>の呼び出し</a>を参照してください。</p>
+<hr/>
+</div>
+

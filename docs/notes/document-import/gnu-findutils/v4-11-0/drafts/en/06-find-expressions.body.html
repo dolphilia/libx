@@ -1,0 +1,73 @@
+<div class="gnu-findutils-original-content" id="find-Expressions">
+<h3 class="section" id="find-Expressions-1"><span>2.1 <code class="code">find</code> Expressions</span></h3>
+<p>The expression that <code class="code">find</code> uses to select files consists of one
+or more <em class="dfn">primaries</em>, each of which is a separate command line
+argument to <code class="code">find</code>.  <code class="code">find</code> evaluates the expression each
+time it processes a file.  An expression can contain any of the
+following types of primaries:
+</p>
+<dl class="table">
+<dt><em class="dfn">options</em></dt>
+<dd><p>affect overall operation rather than the processing of a specific
+file;
+</p></dd>
+<dt><em class="dfn">tests</em></dt>
+<dd><p>return a true or false value, depending on the file’s attributes;
+</p></dd>
+<dt><em class="dfn">actions</em></dt>
+<dd><p>have side effects and return a true or false value; and
+</p></dd>
+<dt><em class="dfn">operators</em></dt>
+<dd><p>connect the other arguments and affect when and whether they are
+evaluated.
+</p></dd>
+</dl>
+<p>You can omit the operator between two primaries; it defaults to
+‘<samp class="samp">-and</samp>’.  See <a class="xref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/26-combining-primaries-with-operators/#Combining-Primaries-With-Operators">Combining Primaries With Operators</a>, for ways to
+connect primaries into more complex expressions.
+</p>
+<p>The ‘<samp class="samp">-print</samp>’ action is performed on all files for which the
+entire expression is true (see <a class="pxref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Print-File-Name">Print File Name</a>), unless the
+expression contains an action other than ‘<samp class="samp">-prune</samp>’ or
+‘<samp class="samp">-quit</samp>’.
+Actions which inhibit the default ‘<samp class="samp">-print</samp>’ are
+‘<samp class="samp">-delete</samp>’,
+‘<samp class="samp">-execdir</samp>’,
+‘<samp class="samp">-exec</samp>’,
+‘<samp class="samp">-fls</samp>’,
+‘<samp class="samp">-fprint0</samp>’,
+‘<samp class="samp">-fprintf</samp>’,
+‘<samp class="samp">-fprint</samp>’,
+‘<samp class="samp">-ls</samp>’,
+‘<samp class="samp">-okdir</samp>’,
+‘<samp class="samp">-ok</samp>’,
+‘<samp class="samp">-print0</samp>’,
+‘<samp class="samp">-printf</samp>’
+and ‘<samp class="samp">-print</samp>’.
+</p>
+<p>Options take effect immediately, rather than being evaluated for each
+file when their place in the expression is reached.  Therefore, for
+clarity, it is best to place them at the beginning of the expression.
+There are exceptions to this; ‘<samp class="samp">-regextype</samp>’, ‘<samp class="samp">-daystart</samp>’ and ‘<samp class="samp">-follow</samp>’
+have different effects depending on where in the command line they
+appear.  This can be confusing, so it’s best to keep them at the
+beginning, too.
+</p>
+<p>Many of the primaries take arguments, which immediately follow them in
+the next command line argument to <code class="code">find</code>.  Some arguments are
+file names, patterns, or other strings; others are numbers.  Numeric
+arguments can be specified as
+</p>
+<dl class="table">
+<dt><code class="code">+<var class="var">n</var></code></dt>
+<dd><p>for greater than <var class="var">n</var>,
+</p></dd>
+<dt><code class="code">-<var class="var">n</var></code></dt>
+<dd><p>for less than <var class="var">n</var>,
+</p></dd>
+<dt><code class="code"><var class="var">n</var></code></dt>
+<dd><p>for exactly <var class="var">n</var>.
+</p></dd>
+</dl>
+<hr/>
+</div>

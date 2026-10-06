@@ -1,0 +1,267 @@
+{
+  "slug": "15-hard-links",
+  "bodySHA256": "19f4983ad9d4020f9e7f983a7d2e8fcf1869176be784d4bfdfe5aad03296b81e",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧2.4.2 Hard Links⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"Hard-Links-1\"><span>2.4.2 Hard Links</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Hard links allow more than one name to refer to the same file on a file system, i.e., to the same inode. To find all the names which refer to the same file as ⟦0⟧, use ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">name</var>",
+        "⟦1⟧": "<samp class=\"samp\">-samefile <var class=\"var\">name</var></samp>"
+      },
+      "sourceHTML": "<p>Hard links allow more than one name to refer to the same file on a\nfile system, i.e., to the same inode.  To find all the names which refer\nto the same file as <var class=\"var\">name</var>, use ‘<samp class=\"samp\">-samefile <var class=\"var\">name</var></samp>’.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-samefile⟦4⟧ ⟦5⟧⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "<var class=\"def-var-arguments\"><var class=\"var\">name</var></var>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dsamefile\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-samefile</strong> <var class=\"def-var-arguments\"><var class=\"var\">name</var></var></span></dt>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "True if the file is a hard link to the same inode as ⟦0⟧. This implies that ⟦1⟧ and the file reside on the same file system, i.e., they have the same device number.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">name</var>",
+        "⟦1⟧": "<var class=\"var\">name</var>"
+      },
+      "sourceHTML": "<p>True if the file is a hard link to the same inode as <var class=\"var\">name</var>.\nThis implies that <var class=\"var\">name</var> and the file reside on the same file system,\ni.e., they have the same device number.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Unless the ‘⟦0⟧’ option is also given to follow symbolic links, one may confine the search to one file system by using the ‘⟦1⟧’ option. This is useful because hard links cannot point outside a single file system, so this can cut down on needless searching.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-L</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-xdev</samp>"
+      },
+      "sourceHTML": "<p>Unless the ‘<samp class=\"samp\">-L</samp>’ option is also given to follow symbolic links, one may\nconfine the search to one file system by using the ‘<samp class=\"samp\">-xdev</samp>’ option.\nThis is useful because hard links cannot point outside a single file system,\nso this can cut down on needless searching.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "If the ‘⟦0⟧’ option is in effect, then dereferencing of symbolic links applies both to the ⟦1⟧ argument of the ‘⟦2⟧’ primary and to each file examined during the traversal of the directory hierarchy. Therefore, ‘⟦3⟧’ will find both hard links and symbolic links pointing to the file referenced by ⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-L</samp>",
+        "⟦1⟧": "<var class=\"var\">name</var>",
+        "⟦2⟧": "<samp class=\"samp\">-samefile</samp>",
+        "⟦3⟧": "<samp class=\"samp\">find -L -samefile <var class=\"var\">name</var></samp>",
+        "⟦4⟧": "<var class=\"var\">name</var>"
+      },
+      "sourceHTML": "<p>If the ‘<samp class=\"samp\">-L</samp>’ option is in effect, then dereferencing of symbolic links\napplies both to the <var class=\"var\">name</var> argument of the ‘<samp class=\"samp\">-samefile</samp>’ primary and\nto each file examined during the traversal of the directory hierarchy.\nTherefore, ‘<samp class=\"samp\">find -L -samefile <var class=\"var\">name</var></samp>’ will find both hard links and\nsymbolic links pointing to the file referenced by <var class=\"var\">name</var>.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "⟦0⟧ also allows searching for files by inode number.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">find</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">find</code> also allows searching for files by inode number.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "This can occasionally be useful in diagnosing problems with file systems; for example, ⟦0⟧ and ⟦1⟧ tend to print inode numbers. Inode numbers also occasionally turn up in log messages for some types of software.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">fsck</code>",
+        "⟦1⟧": "<code class=\"command\">lsof</code>"
+      },
+      "sourceHTML": "<p>This can occasionally be useful in diagnosing problems with file systems;\nfor example, <code class=\"command\">fsck</code> and <code class=\"command\">lsof</code> tend to print inode numbers.\nInode numbers also occasionally turn up in log messages for some types of\nsoftware.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "You can learn a file’s inode number and the number of links to it by running ‘⟦0⟧’, ‘⟦1⟧’ or ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">ls -li</samp>",
+        "⟦1⟧": "<samp class=\"samp\">stat</samp>",
+        "⟦2⟧": "<samp class=\"samp\">find -ls</samp>"
+      },
+      "sourceHTML": "<p>You can learn a file’s inode number and the number of links to it by\nrunning ‘<samp class=\"samp\">ls -li</samp>’, ‘<samp class=\"samp\">stat</samp>’ or ‘<samp class=\"samp\">find -ls</samp>’.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "You can search for hard links to inode number NUM by using ‘⟦0⟧’. If there are any file system mount points below the directory where you are starting the search, use the ‘⟦1⟧’ option unless you are also using the ‘⟦2⟧’ option. Using ‘⟦3⟧’ saves needless searching, since hard links to a file must be on the same file system. See ⟦4⟧Filesystems⟦5⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-inum\nNUM</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-xdev</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-L</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-xdev</samp>",
+        "⟦4⟧": "<a class=\"xref\" href=\"/docs/gnu-findutils/v4-11-0/en/01-guide/25-filesystems/#Filesystems\">",
+        "⟦5⟧": "</a>"
+      },
+      "sourceHTML": "<p>You can search for hard links to inode number NUM by using ‘<samp class=\"samp\">-inum\nNUM</samp>’. If there are any file system mount points below the directory\nwhere you are starting the search, use the ‘<samp class=\"samp\">-xdev</samp>’ option unless\nyou are also using the ‘<samp class=\"samp\">-L</samp>’ option.  Using ‘<samp class=\"samp\">-xdev</samp>’ saves\nneedless searching, since hard links to a file must be on the\nsame file system.  See <a class=\"xref\" href=\"/docs/gnu-findutils/v4-11-0/en/01-guide/25-filesystems/#Filesystems\">Filesystems</a>.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-inum⟦4⟧ ⟦5⟧⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "<var class=\"def-var-arguments\">n</var>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dinum\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-inum</strong> <var class=\"def-var-arguments\">n</var></span></dt>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "True if the file has inode number ⟦0⟧. The ‘⟦1⟧’ and ‘⟦2⟧’ qualifiers also work, though these are rarely useful.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>",
+        "⟦1⟧": "<samp class=\"samp\">+</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-</samp>"
+      },
+      "sourceHTML": "<p>True if the file has inode number <var class=\"var\">n</var>.  The ‘<samp class=\"samp\">+</samp>’ and ‘<samp class=\"samp\">-</samp>’ qualifiers\nalso work, though these are rarely useful.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "Please note that the ‘⟦0⟧’ primary simply compares the inode number against the given ⟦1⟧. This means that a search for a certain inode number in several file systems may return several files with that inode number, but as each file system has its own device number, those files are not necessarily hard links to the same file.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-inum</samp>",
+        "⟦1⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>Please note that the ‘<samp class=\"samp\">-inum</samp>’ primary simply compares the inode number\nagainst the given <var class=\"var\">n</var>.\nThis means that a search for a certain inode number in several file systems\nmay return several files with that inode number, but as each file system has\nits own device number, those files are not necessarily hard links to the\nsame file.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "Therefore, it is much of the time easier to use ‘⟦0⟧’ rather than this option.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-samefile</samp>"
+      },
+      "sourceHTML": "<p>Therefore, it is much of the time easier to use ‘<samp class=\"samp\">-samefile</samp>’ rather than\nthis option.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "⟦0⟧ also allows searching for files that have a certain number of links, with ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">find</code>",
+        "⟦1⟧": "<samp class=\"samp\">-links</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">find</code> also allows searching for files that have a certain number of\nlinks, with ‘<samp class=\"samp\">-links</samp>’.\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "A directory normally has at least two hard links: the entry named in its parent directory, and the ⟦0⟧ entry inside of the directory. If a directory has subdirectories, each of those also has a hard link called ⟦1⟧ to its parent directory.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">.</samp>",
+        "⟦1⟧": "<samp class=\"file\">..</samp>"
+      },
+      "sourceHTML": "<p>A directory normally has at least two hard links: the entry named in its parent\ndirectory, and the <samp class=\"file\">.</samp> entry inside of the directory.\nIf a directory has subdirectories, each of those also has a hard link called\n<samp class=\"file\">..</samp> to its parent directory.\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "The ⟦0⟧ and ⟦1⟧ directory entries are not normally searched unless they are mentioned on the ⟦2⟧ command line.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">.</samp>",
+        "⟦1⟧": "<samp class=\"file\">..</samp>",
+        "⟦2⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p>The <samp class=\"file\">.</samp> and <samp class=\"file\">..</samp> directory entries are not normally searched unless\nthey are mentioned on the <code class=\"code\">find</code> command line.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-links⟦4⟧ ⟦5⟧⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "<var class=\"def-var-arguments\">n</var>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dlinks\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-links</strong> <var class=\"def-var-arguments\">n</var></span></dt>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "File has ⟦0⟧ hard links.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>File has <var class=\"var\">n</var> hard links.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-links⟦4⟧ ⟦5⟧⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "<var class=\"def-var-arguments\">+n</var>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dlinks-1\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-links</strong> <var class=\"def-var-arguments\">+n</var></span></dt>"
+    },
+    {
+      "index": 20,
+      "tag": "p",
+      "text": "File has more than ⟦0⟧ hard links.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>File has more than <var class=\"var\">n</var> hard links.\n</p>"
+    },
+    {
+      "index": 21,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-links⟦4⟧ ⟦5⟧⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "<var class=\"def-var-arguments\">-n</var>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dlinks-2\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-links</strong> <var class=\"def-var-arguments\">-n</var></span></dt>"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "text": "File has fewer than ⟦0⟧ hard links.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>File has fewer than <var class=\"var\">n</var> hard links.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

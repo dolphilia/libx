@@ -1,0 +1,22 @@
+<div class="gnu-findutils-original-content" id="Overview">
+<h3 class="section" id="Overview-1"><span>1.2 概要</span></h3>
+<p>指定した条件に一致するファイルの一覧を作成し、そのファイルに対してコマンドを実行するための主なプログラムは、<code class="code">find</code>、<code class="code">locate</code>、<code class="code">xargs</code>です。システム管理者は、追加のコマンド<code class="code">updatedb</code>を使って、<code class="code">locate</code>用のデータベースを作成します。</p>
+<p><code class="code">find</code>はディレクトリ階層からファイルを検索し、見つかったファイルの情報を表示します。実行形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">find <span class="r">[</span><var class="var">file</var>...<span class="r">]</span> <span class="r">[</span><var class="var">expression</var><span class="r">]</span>&#10;</pre></div>
+<p><code class="code">find</code>の典型的な使い方を示します。この例は、<samp class="file">/usr/src</samp>を根とするディレクトリツリー内で、名前が「<samp class="samp">.c</samp>」で終わり、サイズが101 KiB以上のファイルすべての名前を表示します。</p><div class="example">
+<pre class="example-preformatted">find /usr/src -name '*.c' -size +100k -print&#10;</pre></div>
+<p>シェルによる展開を防ぐため、ワイルドカードは引用符で囲む必要があります。</p>
+<p><code class="code">locate</code>は専用のファイル名データベースから、パターンに一致するファイル名を検索します。システム管理者が<code class="code">updatedb</code>を実行してデータベースを作成します。<code class="code">locate</code>の実行形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">locate <span class="r">[</span><var class="var">option</var>...<span class="r">]</span> <var class="var">pattern</var>...&#10;</pre></div>
+<p>この例は、既定のファイル名データベース内で、名前が「<samp class="samp">Makefile</samp>」または「<samp class="samp">makefile</samp>」で終わるファイルすべての名前を表示します。データベースに格納されるファイル名は、システム管理者がどのように<code class="code">updatedb</code>を実行したかによって決まります。</p><div class="example">
+<pre class="example-preformatted">locate '*[Mm]akefile'&#10;</pre></div>
+<p><code class="code">xargs</code>は「EX-args」と発音し、その名前は「引数を結合する」という意味です。<code class="code">xargs</code>は標準入力から読み取った引数を集め、コマンド行を組み立てて実行します。多くの場合、これらの引数は<code class="code">find</code>が生成したファイル名の一覧です。<code class="code">xargs</code>の実行形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">xargs <span class="r">[</span><var class="var">option</var>...<span class="r">]</span> <span class="r">[</span><var class="var">command</var> <span class="r">[</span><var class="var">initial-arguments</var><span class="r">]</span><span class="r">]</span>&#10;</pre></div>
+<p>次のコマンドは、<samp class="file">file-list</samp>に列挙されたファイルを検索し、「<samp class="samp">typedef</samp>」という語を含む行をすべて表示します。</p><div class="example">
+<pre class="example-preformatted">xargs grep typedef &lt; file-list&#10;</pre></div>
+<hr/>
+</div>
+
