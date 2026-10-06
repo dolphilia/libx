@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-01-002-maintenance",
+  "cycle": 2,
+  "startedAt": "2026-10-01T09:13:20.359969+00:00",
+  "endedAt": "2026-10-01T09:56:28.877Z",
+  "result": "complete",
+  "phase": "existing-corrections",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "workspace": "/Users/dolphilia/github/libx",
+  "validationWorkspace": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx",
+  "tools": [
+    "exec_command",
+    "apply_patch",
+    "web.run",
+    "cua_repl",
+    "codex_app.create_worktree"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/glfw/SOURCE_MANIFEST.md",
+      "sha256": "8b8be77473e5958ee4ef209d246ffd1d911f52c1773529d6adfde95561cbc463"
+    },
+    {
+      "path": "docs/notes/document-import/glfw/CONTENT_MAP.md",
+      "sha256": "697fc8d7c923c02cd1018354bfce8e00c3f38e0fb932d3306ad290cf09968581"
+    },
+    {
+      "path": "docs/notes/document-import/lua/SOURCE_MANIFEST.md",
+      "sha256": "3323d51dca2622c39f48f471b1d01dab073eaee2ba2fb79d18998a76c7124c05"
+    },
+    {
+      "path": "docs/notes/document-import/lua/CONTENT_MAP.md",
+      "sha256": "872ef5a5757572045d8b5c1875d37359fa48aa6ab900258a300d9289e5f2cd90"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/07-migration-and-known-issues/03-known-issues.md",
+      "sha256": "c81988f0b214dbad3751ab390394402644d63a381e5359e3548e253ccd5ed8ea"
+    },
+    {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/07-migration-and-known-issues/03-known-issues.md",
+      "sha256": "12daba27ad2b8b137cfbb03ee3cf056d345994b9ea164a115ce6c6a28e4d7eac"
+    },
+    {
+      "path": "apps/lua/src/config/project.config.jsonc",
+      "sha256": "23d1e53a7b5f6b5bea103548ef6851a85a4910a055ac5dee648e555c633602cc"
+    },
+    {
+      "path": "scripts/importers/import-lua-5.5.1.mjs",
+      "sha256": "7bcd891b56a6b1525c3c24fb83930b210e770df86428c510f6a93c6717029475"
+    },
+    {
+      "path": "scripts/importers/lua-5.5.1-page-map.mjs",
+      "sha256": "75227b41790a53ae8db17606c3df811fa753ecb6458b8f74df4177e118aea3a5"
+    },
+    {
+      "path": "packages/ui/src/components/LanguageSelector.astro",
+      "sha256": "0ecb9bec9c0998830518f3f6a3b9f4c29bbcf2a52d30d03ea323fde0ccd4e833"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/maintenance-2026-10-01/CONTENT_REVIEW.json",
+      "sha256": "815494238071fa421ffda84a1c62dc37e830e12a66663814ae0039e3ebaca37a"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/01-overview/01-introduction.md",
+      "sha256": "4ec3c096ad677581310536d756cde1279793513466ee82389405e7788f21da5d"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/01-overview/01-introduction.md",
+      "sha256": "79e82da1e1c443cc1a8d2eedf15847105a846956ebc0e19b2bf7685ea94c456f"
+    },
+    {
+      "path": "scripts/importers/import-glfw-3.5.1.mjs",
+      "sha256": "f3f53808d437c12b671a4c2ccb652dc5abf23a4d6b6e294b382ed3e6ff8d3dc5"
+    },
+    {
+      "path": "packages/ui/src/components/LanguageSelector.astro",
+      "sha256": "0ecb9bec9c0998830518f3f6a3b9f4c29bbcf2a52d30d03ea323fde0ccd4e833"
+    },
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/maintenance-2026-10-01/CONTENT_REVIEW.json",
+      "sha256": "afb066cb10abc474acf7bef633bbc03993a5b47449f693da2c43cb1c76ecec37"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "operationIds": [
+    "lua:v5-5-1:6a71e80a0b5319b024f50336c65e12cecf4f98c8fd1003b7022ff2ca0ef582cb",
+    "glfw:v3-5-1:bea53421297ae73253a9b5a9ed490c79faf1d55014218cd130613b798d360ec8"
+  ],
+  "checks": [
+    {
+      "name": "Lua/canonical",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/lua-content-final.txt",
+          "sha256": "c000fedf6aa76b535fff349ab2645b6d14da2a2a60673f72db82b68edf96927e"
+        }
+      ]
+    },
+    {
+      "name": "Lua/structure",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/lua-content-final.txt",
+          "sha256": "c000fedf6aa76b535fff349ab2645b6d14da2a2a60673f72db82b68edf96927e"
+        }
+      ]
+    },
+    {
+      "name": "Lua/links",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/lua-content-final.txt",
+          "sha256": "c000fedf6aa76b535fff349ab2645b6d14da2a2a60673f72db82b68edf96927e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/links-final.txt",
+          "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+        }
+      ]
+    },
+    {
+      "name": "Lua/integrity",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/integrity-final.txt",
+          "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+        }
+      ]
+    },
+    {
+      "name": "Lua/build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/selective-build-current-ui.txt",
+          "sha256": "7ec2ee8158c5bcc7b6a5fd904626ceec2e7cc7273de179581b0788dc01d615b2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/shared-ui-input.json",
+          "sha256": "eb069bf00246102eb8fa676f3ab5bf4dc5db8cf4cf631b122b7e6986a8d07dec"
+        }
+      ]
+    },
+    {
+      "name": "Lua/display",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/browser-review.json",
+          "sha256": "51e0d8d08470797fe315511acdc2c8c88d6d43cc87b960eea04ffa15ae27a688"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/local-http.json",
+          "sha256": "24cef390df4b32f7a955ec4b3249fa7435329fd71cd7a0c372363aa16de0a937"
+        }
+      ]
+    },
+    {
+      "name": "GLFW/canonical",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/glfw-content.txt",
+          "sha256": "0b166e62606b4fdb1e6e96e1759d16c9117666cdfe731fe085031a3721d2fcf2"
+        }
+      ]
+    },
+    {
+      "name": "GLFW/structure",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/glfw-content.txt",
+          "sha256": "0b166e62606b4fdb1e6e96e1759d16c9117666cdfe731fe085031a3721d2fcf2"
+        }
+      ]
+    },
+    {
+      "name": "GLFW/links",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/glfw-content.txt",
+          "sha256": "0b166e62606b4fdb1e6e96e1759d16c9117666cdfe731fe085031a3721d2fcf2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/links-final.txt",
+          "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+        }
+      ]
+    },
+    {
+      "name": "GLFW/integrity",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/integrity-final.txt",
+          "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+        }
+      ]
+    },
+    {
+      "name": "GLFW/build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/selective-build-current-ui.txt",
+          "sha256": "7ec2ee8158c5bcc7b6a5fd904626ceec2e7cc7273de179581b0788dc01d615b2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/shared-ui-input.json",
+          "sha256": "eb069bf00246102eb8fa676f3ab5bf4dc5db8cf4cf631b122b7e6986a8d07dec"
+        }
+      ]
+    },
+    {
+      "name": "GLFW/display",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/browser-review.json",
+          "sha256": "51e0d8d08470797fe315511acdc2c8c88d6d43cc87b960eea04ffa15ae27a688"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/local-http.json",
+          "sha256": "24cef390df4b32f7a955ec4b3249fa7435329fd71cd7a0c372363aa16de0a937"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "Lua既知問題の取得日を明示し、bugs出典への専用licenseSourceを追加。現在の不具合一覧と混同させない。",
+    "GLFW入口の13参照ラベルを正式見出しへ修正。",
+    "各修正ページを原文・定本・日本語で全文レビュー。既存プロジェクト全92ページをレビュー済みとはしない。",
+    "GLFW36組・Lua56組の機械検査、二度の再生成、リンク、整合性、選択ビルド、ローカル表示を確認。",
+    "公開待ち2件のため新規取り込みを停止。外部公開・push・定期実行なし。"
+  ],
+  "unresolved": [
+    "既存本文の全文レビューは残り90ページ。",
+    "上流の本文全体の現在確認は部分確認。Lua既知問題は2026-08-11取得版で最新一覧ではない。",
+    "GLFW Productionの既存404問題は現状未確認。ローカルAstroの404は検証済み。",
+    "検証用worktreeには現行共有LanguageSelectorの変更を読み込んだ。クリーンな公開候補ではない。"
+  ],
+  "nextAction": "既存GLFW本文の全文レビューを開始し、原文・英日ハッシュとページ単位の結果を保存。",
+  "resumeCondition": "台帳checkが合格し、修正の原文・定本・訳文・変換器・UI依存ハッシュが一致。",
+  "startedAtBasis": "最初に残る内容レビュー記録の日時。実作業の開始はそれ以前で未記録。"
+}

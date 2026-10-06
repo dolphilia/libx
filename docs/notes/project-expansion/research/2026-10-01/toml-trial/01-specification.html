@@ -1,0 +1,574 @@
+<h1 id="toml-v110">TOML v1.1.0</h1>
+<p>Tom's Obvious, Minimal Language.</p>
+<p>By Tom Preston-Werner, Pradyun Gedam, et al.</p>
+<h2 id="objectives">Objectives</h2>
+<p>TOML aims to be a minimal configuration file format that's easy to read due to obvious semantics. TOML is designed to map unambiguously to a hash table. TOML should be easy to parse into data structures in a wide variety of languages.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#preliminaries">Preliminaries</a></li>
+<li><a href="#comment">Comment</a></li>
+<li><a href="#keyvalue-pair">Key/Value Pair</a></li>
+<li><a href="#keys">Keys</a></li>
+<li><a href="#string">String</a></li>
+<li><a href="#integer">Integer</a></li>
+<li><a href="#float">Float</a></li>
+<li><a href="#boolean">Boolean</a></li>
+<li><a href="#offset-date-time">Offset Date-Time</a></li>
+<li><a href="#local-date-time">Local Date-Time</a></li>
+<li><a href="#local-date">Local Date</a></li>
+<li><a href="#local-time">Local Time</a></li>
+<li><a href="#array">Array</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#inline-table">Inline Table</a></li>
+<li><a href="#array-of-tables">Array of Tables</a></li>
+<li><a href="#filename-extension">Filename Extension</a></li>
+<li><a href="#mime-type">MIME Type</a></li>
+<li><a href="#abnf-grammar">ABNF Grammar</a></li>
+</ul>
+<h2 id="preliminaries">Preliminaries</h2>
+<ul>
+<li><p>TOML is case-sensitive.</p></li>
+<li><p>Whitespace means tab (U+0009) or space (U+0020).</p></li>
+<li><p>Newline means LF (U+000A) or CRLF (U+000D U+000A).</p></li>
+<li><p>A TOML file must be a valid UTF-8 encoded Unicode document.</p>
+<p>Specifically this means that a file <em>as a whole</em> must form a <a href="https://unicode.org/glossary/#well_formed_code_unit_sequence">well-formed code-unit sequence</a>. Otherwise, it must be rejected (preferably) or have ill-formed byte sequences replaced with U+FFFD, as per the Unicode specification.</p></li>
+</ul>
+<h2 id="comment">Comment</h2>
+<p>A hash symbol marks the rest of the line as a comment, except when inside a string.</p>
+<pre class="toml"><code># This is a full-line comment
+key = &quot;value&quot;  # This is a comment at the end of a line
+another = &quot;# This is not a comment&quot;</code></pre>
+<p>Control characters other than tab (U+0000 to U+0008, U+000A to U+001F, U+007F) are not permitted in comments.</p>
+<p>Comments should be used to communicate between the human readers of a file. Parsers must not modify keys or values, based on the presence (or contents) of a comment.</p>
+<h2 id="keyvalue-pair">Key/Value Pair</h2>
+<p>The primary building block of a TOML document is the key/value pair.</p>
+<p>Keys are on the left of the equals sign and values are on the right. Whitespace is ignored around key names and values. The key, equals sign, and value must be on the same line (though some values can be broken over multiple lines).</p>
+<pre class="toml"><code>key = &quot;value&quot;</code></pre>
+<p>Values must have one of the following types.</p>
+<ul>
+<li><a href="#string">String</a></li>
+<li><a href="#integer">Integer</a></li>
+<li><a href="#float">Float</a></li>
+<li><a href="#boolean">Boolean</a></li>
+<li><a href="#offset-date-time">Offset Date-Time</a></li>
+<li><a href="#local-date-time">Local Date-Time</a></li>
+<li><a href="#local-date">Local Date</a></li>
+<li><a href="#local-time">Local Time</a></li>
+<li><a href="#array">Array</a></li>
+<li><a href="#inline-table">Inline Table</a></li>
+</ul>
+<p>Unspecified values are invalid.</p>
+<pre class="toml"><code>key = # INVALID</code></pre>
+<p>There must be a newline (or EOF) after a key/value pair. (See <a href="#inline-table">Inline Table</a> for exceptions.)</p>
+<pre><code>first = &quot;Tom&quot; last = &quot;Preston-Werner&quot; # INVALID</code></pre>
+<h2 id="keys">Keys</h2>
+<p>A key may be either bare, quoted, or dotted.</p>
+<p><strong>Bare keys</strong> may only contain ASCII letters, ASCII digits, underscores, and dashes (<code>A-Za-z0-9_-</code>). Note that bare keys are allowed to be composed of only ASCII digits, e.g. <code>1234</code>, but are always interpreted as strings.</p>
+<pre class="toml"><code>key = &quot;value&quot;
+bare_key = &quot;value&quot;
+bare-key = &quot;value&quot;
+1234 = &quot;value&quot;</code></pre>
+<p><strong>Quoted keys</strong> follow the exact same rules as either basic strings or literal strings and allow you to use a much broader set of key names. Best practice is to use bare keys except when absolutely necessary.</p>
+<pre class="toml"><code>&quot;127.0.0.1&quot; = &quot;value&quot;
+&quot;character encoding&quot; = &quot;value&quot;
+&quot;ʎǝʞ&quot; = &quot;value&quot;
+&#39;key2&#39; = &quot;value&quot;
+&#39;quoted &quot;value&quot;&#39; = &quot;value&quot;</code></pre>
+<p>A bare key must be non-empty, but an empty quoted key is allowed (though discouraged). You cannot use multi-line strings to define quoted keys.</p>
+<pre class="toml"><code>= &quot;no key name&quot;           # INVALID
+&quot;&quot;&quot;key&quot;&quot;&quot; = &quot;not allowed&quot; # INVALID
+&quot;&quot; = &quot;blank&quot;              # VALID but discouraged
+&#39;&#39; = &#39;blank&#39;              # VALID but discouraged</code></pre>
+<p><strong>Dotted keys</strong> are a sequence of bare or quoted keys joined with a dot. This allows for grouping similar properties together:</p>
+<pre class="toml"><code>name = &quot;Orange&quot;
+physical.color = &quot;orange&quot;
+physical.shape = &quot;round&quot;
+site.&quot;google.com&quot; = true</code></pre>
+<p>In JSON land, that would give you the following structure:</p>
+<pre class="json"><code>{
+  &quot;name&quot;: &quot;Orange&quot;,
+  &quot;physical&quot;: {
+    &quot;color&quot;: &quot;orange&quot;,
+    &quot;shape&quot;: &quot;round&quot;
+  },
+  &quot;site&quot;: {
+    &quot;google.com&quot;: true
+  }
+}</code></pre>
+<p>For details regarding the tables that dotted keys define, refer to the <a href="#table">Table</a> section below.</p>
+<p>Whitespace around dot-separated parts is ignored. However, best practice is to not use any extraneous whitespace.</p>
+<pre class="toml"><code>fruit.name = &quot;banana&quot;       # this is best practice
+fruit. color = &quot;yellow&quot;     # same as fruit.color
+fruit . flavor = &quot;banana&quot;   # same as fruit.flavor</code></pre>
+<p>Indentation is treated as whitespace and ignored.</p>
+<p>Defining a key multiple times is invalid.</p>
+<pre><code># DO NOT DO THIS
+name = &quot;Tom&quot;
+name = &quot;Pradyun&quot;</code></pre>
+<p>Note that bare keys and quoted keys are equivalent:</p>
+<pre><code># THIS WILL NOT WORK
+spelling = &quot;favorite&quot;
+&quot;spelling&quot; = &quot;favourite&quot;</code></pre>
+<p>As long as a key hasn't been directly defined, you may still write to it and to names within it.</p>
+<pre class="toml"><code># This makes the key &quot;fruit&quot; into a table.
+fruit.apple.smooth = true
+
+# So then you can add to the table &quot;fruit&quot; like so:
+fruit.orange = 2</code></pre>
+<pre><code># THE FOLLOWING IS INVALID
+
+# This defines the value of fruit.apple to be an integer.
+fruit.apple = 1
+
+# But then this treats fruit.apple like it&#39;s a table.
+# You can&#39;t turn an integer into a table.
+fruit.apple.smooth = true</code></pre>
+<p>Defining dotted keys out-of-order is discouraged.</p>
+<pre class="toml"><code># VALID BUT DISCOURAGED
+
+apple.type = &quot;fruit&quot;
+orange.type = &quot;fruit&quot;
+
+apple.skin = &quot;thin&quot;
+orange.skin = &quot;thick&quot;
+
+apple.color = &quot;red&quot;
+orange.color = &quot;orange&quot;</code></pre>
+<pre class="toml"><code># RECOMMENDED
+
+apple.type = &quot;fruit&quot;
+apple.skin = &quot;thin&quot;
+apple.color = &quot;red&quot;
+
+orange.type = &quot;fruit&quot;
+orange.skin = &quot;thick&quot;
+orange.color = &quot;orange&quot;</code></pre>
+<p>Since bare keys can be composed of only ASCII integers, it is possible to write dotted keys that look like floats but are 2-part dotted keys. Don't do this unless you have a good reason to (you probably don't).</p>
+<pre class="toml"><code>3.14159 = &quot;pi&quot;</code></pre>
+<p>The above TOML maps to the following JSON.</p>
+<pre class="json"><code>{ &quot;3&quot;: { &quot;14159&quot;: &quot;pi&quot; } }</code></pre>
+<h2 id="string">String</h2>
+<p>There are four ways to express strings: basic, multi-line basic, literal, and multi-line literal. All strings must contain only Unicode characters.</p>
+<p><strong>Basic strings</strong> are surrounded by quotation marks (<code>"</code>). Any Unicode character may be used except those that must be escaped: quotation mark, backslash, and the control characters other than tab (U+0000 to U+0008, U+000A to U+001F, U+007F).</p>
+<pre class="toml"><code>str = &quot;I&#39;m a string. \&quot;You can quote me\&quot;. Name\tJos\xE9\nLocation\tSF.&quot;</code></pre>
+<p>For convenience, some popular characters have a compact escape sequence.</p>
+<pre><code>\b         - backspace       (U+0008)
+\t         - tab             (U+0009)
+\n         - linefeed        (U+000A)
+\f         - form feed       (U+000C)
+\r         - carriage return (U+000D)
+\e         - escape          (U+001B)
+\&quot;         - quote           (U+0022)
+\\         - backslash       (U+005C)
+\xHH       - unicode         (U+00HH)
+\uHHHH     - unicode         (U+HHHH)
+\UHHHHHHHH - unicode         (U+HHHHHHHH)</code></pre>
+<p>Any Unicode character may be escaped with the <code>\xHH</code>, <code>\uHHHH</code>, or <code>\UHHHHHHHH</code> forms. The escape codes must be Unicode <a href="https://unicode.org/glossary/#unicode_scalar_value">scalar values</a>.</p>
+<p>Keep in mind that all TOML strings are sequences of Unicode characters, <em>not</em> byte sequences. For binary data, avoid using these escape codes. Instead, external binary-to-text encoding strategies, like hexadecimal sequences or <a href="https://www.base64decode.org/">Base64</a>, are recommended for converting between bytes and strings.</p>
+<p>All other escape sequences not listed above are reserved; if they are used, TOML should produce an error.</p>
+<p>Sometimes you need to express passages of text (e.g. translation files) or would like to break up a very long string into multiple lines. TOML makes this easy.</p>
+<p><strong>Multi-line basic strings</strong> are surrounded by three quotation marks on each side and allow newlines. A newline immediately following the opening delimiter will be trimmed. All other whitespace and newline characters remain intact.</p>
+<pre class="toml"><code>str1 = &quot;&quot;&quot;
+Roses are red
+Violets are blue&quot;&quot;&quot;</code></pre>
+<p>TOML parsers should feel free to normalize newline to whatever makes sense for their platform.</p>
+<pre class="toml"><code># On a Unix system, the above multi-line string will most likely be the same as:
+str2 = &quot;Roses are red\nViolets are blue&quot;
+
+# On a Windows system, it will most likely be equivalent to:
+str3 = &quot;Roses are red\r\nViolets are blue&quot;</code></pre>
+<p>For writing long strings without introducing extraneous whitespace, use a "line ending backslash". When the last non-whitespace character on a line is an unescaped <code>\</code>, it will be trimmed along with all whitespace (including newlines) up to the next non-whitespace character or closing delimiter. All of the escape sequences that are valid for basic strings are also valid for multi-line basic strings.</p>
+<pre class="toml"><code># The following strings are byte-for-byte equivalent:
+str1 = &quot;The quick brown fox jumps over the lazy dog.&quot;
+
+str2 = &quot;&quot;&quot;
+The quick brown \
+
+
+  fox jumps over \
+    the lazy dog.&quot;&quot;&quot;
+
+str3 = &quot;&quot;&quot;\
+       The quick brown \
+       fox jumps over \
+       the lazy dog.\
+       &quot;&quot;&quot;</code></pre>
+<p>Any Unicode character may be used except those that must be escaped: backslash and the control characters other than tab, line feed, and carriage return (U+0000 to U+0008, U+000B, U+000C, U+000E to U+001F, U+007F). Carriage returns (U+000D) are only allowed as part of a newline sequence.</p>
+<p>You can write a quotation mark, or two adjacent quotation marks, anywhere inside a multi-line basic string. They can also be written just inside the delimiters.</p>
+<pre class="toml"><code>str4 = &quot;&quot;&quot;Here are two quotation marks: &quot;&quot;. Simple enough.&quot;&quot;&quot;
+# str5 = &quot;&quot;&quot;Here are three quotation marks: &quot;&quot;&quot;.&quot;&quot;&quot;  # INVALID
+str5 = &quot;&quot;&quot;Here are three quotation marks: &quot;&quot;\&quot;.&quot;&quot;&quot;
+str6 = &quot;&quot;&quot;Here are fifteen quotation marks: &quot;&quot;\&quot;&quot;&quot;\&quot;&quot;&quot;\&quot;&quot;&quot;\&quot;&quot;&quot;\&quot;.&quot;&quot;&quot;
+
+# &quot;This,&quot; she said, &quot;is just a pointless statement.&quot;
+str7 = &quot;&quot;&quot;&quot;This,&quot; she said, &quot;is just a pointless statement.&quot;&quot;&quot;&quot;</code></pre>
+<p>If you're a frequent specifier of Windows paths or regular expressions, then having to escape backslashes quickly becomes tedious and error-prone. To help, TOML supports literal strings which do not allow escaping at all.</p>
+<p><strong>Literal strings</strong> are surrounded by single quotes. Like basic strings, they must appear on a single line:</p>
+<pre class="toml"><code># What you see is what you get.
+winpath  = &#39;C:\Users\nodejs\templates&#39;
+winpath2 = &#39;\\ServerX\admin$\system32\&#39;
+quoted   = &#39;Tom &quot;Dubs&quot; Preston-Werner&#39;
+regex    = &#39;&lt;\i\c*\s*&gt;&#39;</code></pre>
+<p>Since there is no escaping, there is no way to write a single quote inside a literal string enclosed by single quotes. Luckily, TOML supports a multi-line version of literal strings that solves this problem.</p>
+<p><strong>Multi-line literal strings</strong> are surrounded by three single quotes on each side and allow newlines. Like literal strings, there is no escaping whatsoever. A newline immediately following the opening delimiter will be trimmed. TOML parsers must normalize newlines in the same manner as multi-line basic strings.</p>
+<p>All other content between the delimiters is interpreted as-is without modification.</p>
+<pre class="toml"><code>regex2 = &#39;&#39;&#39;I [dw]on&#39;t need \d{2} apples&#39;&#39;&#39;
+lines  = &#39;&#39;&#39;
+The first newline is
+trimmed in literal strings.
+   All other whitespace
+   is preserved.
+&#39;&#39;&#39;</code></pre>
+<p>You can write 1 or 2 single quotes anywhere within a multi-line literal string, but sequences of three or more single quotes are not permitted.</p>
+<pre class="toml"><code>quot15 = &#39;&#39;&#39;Here are fifteen quotation marks: &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&#39;&#39;&#39;
+
+# apos15 = &#39;&#39;&#39;Here are fifteen apostrophes: &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;  # INVALID
+apos15 = &quot;Here are fifteen apostrophes: &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&quot;
+
+# &#39;That,&#39; she said, &#39;is still pointless.&#39;
+str = &#39;&#39;&#39;&#39;That,&#39; she said, &#39;is still pointless.&#39;&#39;&#39;&#39;</code></pre>
+<p>Control characters other than tab are not permitted in a literal string.</p>
+<h2 id="integer">Integer</h2>
+<p>Integers are whole numbers. Positive numbers may be prefixed with a plus sign. Negative numbers are prefixed with a minus sign.</p>
+<pre class="toml"><code>int1 = +99
+int2 = 42
+int3 = 0
+int4 = -17</code></pre>
+<p>For large numbers, you may use underscores between digits to enhance readability. Each underscore must be surrounded by at least one digit on each side.</p>
+<pre class="toml"><code>int5 = 1_000
+int6 = 5_349_221
+int7 = 53_49_221  # Indian number system grouping
+int8 = 1_2_3_4_5  # VALID but discouraged</code></pre>
+<p>Leading zeros are not allowed. Integer values <code>-0</code> and <code>+0</code> are valid and identical to an unprefixed zero.</p>
+<p>Non-negative integer values may also be expressed in hexadecimal, octal, or binary. In these formats, leading <code>+</code> is not allowed and leading zeros are allowed (after the prefix). Hex values are case-insensitive. Underscores are allowed between digits (but not between the prefix and the value).</p>
+<pre class="toml"><code># hexadecimal with prefix `0x`
+hex1 = 0xDEADBEEF
+hex2 = 0xdeadbeef
+hex3 = 0xdead_beef
+
+# octal with prefix `0o`
+oct1 = 0o01234567
+oct2 = 0o755 # useful for Unix file permissions
+
+# binary with prefix `0b`
+bin1 = 0b11010110</code></pre>
+<p>Implementations are free to support any integer size. It's recommended that at least 64-bit signed integers (from −2^63 to 2^63−1) are accepted and handled losslessly. If an integer cannot be represented losslessly, an error must be thrown.</p>
+<h2 id="float">Float</h2>
+<p>A float consists of an integer part (which follows the same rules as decimal integer values) followed by a fractional part and/or an exponent part. If both a fractional part and exponent part are present, the fractional part must precede the exponent part.</p>
+<pre class="toml"><code># fractional
+flt1 = +1.0
+flt2 = 3.1415
+flt3 = -0.01
+
+# exponent
+flt4 = 5e+22
+flt5 = 1e06
+flt6 = -2E-2
+
+# both
+flt7 = 6.626e-34</code></pre>
+<p>A fractional part is a decimal point followed by one or more digits.</p>
+<p>An exponent part is an E (upper or lower case) followed by an integer part (which follows the same rules as decimal integer values but may include leading zeros).</p>
+<p>The decimal point, if used, must be surrounded by at least one digit on each side.</p>
+<pre><code># INVALID FLOATS
+invalid_float_1 = .7
+invalid_float_2 = 7.
+invalid_float_3 = 3.e+20</code></pre>
+<p>Similar to integers, you may use underscores to enhance readability. Each underscore must be surrounded by at least one digit.</p>
+<pre class="toml"><code>flt8 = 224_617.445_991_228</code></pre>
+<p>Float values <code>-0.0</code> and <code>+0.0</code> are valid and should map according to IEEE 754.</p>
+<p>Special float values can also be expressed. They are always lowercase.</p>
+<pre class="toml"><code># infinity
+sf1 = inf  # positive infinity
+sf2 = +inf # positive infinity
+sf3 = -inf # negative infinity
+
+# not a number
+sf4 = nan  # actual sNaN/qNaN encoding is implementation-specific
+sf5 = +nan # same as `nan`
+sf6 = -nan # valid, actual encoding is implementation-specific</code></pre>
+<p>Implementations are free to support any precision level. It's recommended that at least IEEE 754 binary64 values are supported.</p>
+<h2 id="boolean">Boolean</h2>
+<p>Booleans are just the tokens you're used to. Always lowercase.</p>
+<pre class="toml"><code>bool1 = true
+bool2 = false</code></pre>
+<h2 id="offset-date-time">Offset Date-Time</h2>
+<p>To unambiguously represent a specific instant in time, you may use an <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> formatted date-time with offset.</p>
+<pre class="toml"><code>odt1 = 1979-05-27T07:32:00Z
+odt2 = 1979-05-27T00:32:00-07:00
+odt3 = 1979-05-27T00:32:00.5-07:00
+odt4 = 1979-05-27T00:32:00.999999-07:00</code></pre>
+<p>For the sake of readability, you may replace the T delimiter between date and time with a space character (as permitted by RFC 3339 section 5.6).</p>
+<pre class="toml"><code>odt4 = 1979-05-27 07:32:00Z</code></pre>
+<p>One exception to RFC 3339 is permitted: seconds may be omitted, in which case <code>:00</code> will be assumed. The offset immediately follows the minutes.</p>
+<pre class="toml"><code>odt5 = 1979-05-27 07:32Z
+odt6 = 1979-05-27 07:32-07:00</code></pre>
+<p>Implementations are required to support at least millisecond precision. Additional digits of precision may be specified, but if they exceed the supported precision then the extra digits must be truncated, not rounded.</p>
+<h2 id="local-date-time">Local Date-Time</h2>
+<p>If you omit the offset from an <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> formatted date-time, it will represent the given date-time without any relation to an offset or timezone. It cannot be converted to an instant in time without additional information. Conversion to an instant, if required, is implementation-specific.</p>
+<pre class="toml"><code>ldt1 = 1979-05-27T07:32:00
+ldt2 = 1979-05-27T07:32:00.5
+ldt3 = 1979-05-27T00:32:00.999999</code></pre>
+<p>Seconds may be omitted, in which case <code>:00</code> will be assumed.</p>
+<pre class="toml"><code>ldt3 = 1979-05-27T07:32</code></pre>
+<p>Implementations are required to support at least millisecond precision. Additional digits of precision may be specified, but if they exceed the supported precision then the extra digits must be truncated, not rounded.</p>
+<h2 id="local-date">Local Date</h2>
+<p>If you include only the date portion of an <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> formatted date-time, it will represent that entire day without any relation to an offset or timezone.</p>
+<pre class="toml"><code>ld1 = 1979-05-27</code></pre>
+<h2 id="local-time">Local Time</h2>
+<p>If you include only the time portion of an <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> formatted date-time, it will represent that time of day without any relation to a specific day or any offset or timezone.</p>
+<pre class="toml"><code>lt1 = 07:32:00
+lt2 = 00:32:00.5
+lt3 = 00:32:00.999999</code></pre>
+<p>Seconds may be omitted, in which case <code>:00</code> will be assumed.</p>
+<pre class="toml"><code>lt3 = 07:32</code></pre>
+<p>Implementations are required to support at least millisecond precision. Additional digits of precision may be specified, but if they exceed the supported precision then the extra digits must be truncated, not rounded.</p>
+<h2 id="array">Array</h2>
+<p>Arrays are ordered values surrounded by square brackets. Whitespace is ignored. Elements are separated by commas. Arrays can contain values of the same data types as allowed in key/value pairs. Values of different types may be mixed.</p>
+<pre class="toml"><code>integers = [ 1, 2, 3 ]
+colors = [ &quot;red&quot;, &quot;yellow&quot;, &quot;green&quot; ]
+nested_arrays_of_ints = [ [ 1, 2 ], [3, 4, 5] ]
+nested_mixed_array = [ [ 1, 2 ], [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;] ]
+string_array = [ &quot;all&quot;, &#39;strings&#39;, &quot;&quot;&quot;are the same&quot;&quot;&quot;, &#39;&#39;&#39;type&#39;&#39;&#39; ]
+
+# Mixed-type arrays are allowed
+numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
+contributors = [
+  &quot;Foo Bar &lt;foo@example.com&gt;&quot;,
+  { name = &quot;Baz Qux&quot;, email = &quot;bazqux@example.com&quot;, url = &quot;https://example.com/bazqux&quot; }
+]</code></pre>
+<p>Arrays can span multiple lines. A terminating comma (also called a trailing comma) is permitted after the last value of the array. Any number of newlines and comments may precede values, commas, and the closing bracket. Indentation between array values and commas is treated as whitespace and ignored.</p>
+<pre class="toml"><code>integers2 = [
+  1, 2, 3
+]
+
+integers3 = [
+  1,
+  2, # this is ok
+]</code></pre>
+<h2 id="table">Table</h2>
+<p>Tables (also known as hash tables or dictionaries) are collections of key/value pairs. They are defined by headers, with square brackets on a line by themselves. You can tell headers apart from arrays because arrays are only ever values.</p>
+<pre class="toml"><code>[table]</code></pre>
+<p>Under that, and until the next header or EOF, are the key/values of that table. Key/value pairs within tables are not guaranteed to be in any specific order.</p>
+<pre class="toml"><code>[table-1]
+key1 = &quot;some string&quot;
+key2 = 123
+
+[table-2]
+key1 = &quot;another string&quot;
+key2 = 456</code></pre>
+<p>Naming rules for tables are the same as for keys (see definition of <a href="#keys">Keys</a> above).</p>
+<pre class="toml"><code>[dog.&quot;tater.man&quot;]
+type.name = &quot;pug&quot;</code></pre>
+<p>In JSON land, that would give you the following structure:</p>
+<pre class="json"><code>{ &quot;dog&quot;: { &quot;tater.man&quot;: { &quot;type&quot;: { &quot;name&quot;: &quot;pug&quot; } } } }</code></pre>
+<p>Whitespace around the key is ignored. However, best practice is to not use any extraneous whitespace.</p>
+<pre class="toml"><code>[a.b.c]            # this is best practice
+[ d.e.f ]          # same as [d.e.f]
+[ g .  h  . i ]    # same as [g.h.i]
+[ j . &quot;ʞ&quot; . &#39;l&#39; ]  # same as [j.&quot;ʞ&quot;.&#39;l&#39;]</code></pre>
+<p>Indentation is treated as whitespace and ignored.</p>
+<p>You don't need to specify all the super-tables if you don't want to. TOML knows how to do it for you.</p>
+<pre class="toml"><code># [x] you
+# [x.y] don&#39;t
+# [x.y.z] need these
+[x.y.z.w] # for this to work
+
+[x] # defining a super-table afterward is ok</code></pre>
+<p>Empty tables are allowed and simply have no key/value pairs within them.</p>
+<p>Like keys, you cannot define a table more than once. Doing so is invalid.</p>
+<pre><code># DO NOT DO THIS
+
+[fruit]
+apple = &quot;red&quot;
+
+[fruit]
+orange = &quot;orange&quot;</code></pre>
+<pre><code># DO NOT DO THIS EITHER
+
+[fruit]
+apple = &quot;red&quot;
+
+[fruit.apple]
+texture = &quot;smooth&quot;</code></pre>
+<p>Defining tables out-of-order is discouraged.</p>
+<pre class="toml"><code># VALID BUT DISCOURAGED
+[fruit.apple]
+[animal]
+[fruit.orange]</code></pre>
+<pre class="toml"><code># RECOMMENDED
+[fruit.apple]
+[fruit.orange]
+[animal]</code></pre>
+<p>The top-level table, also called the root table, starts at the beginning of the document and ends just before the first table header (or EOF). Unlike other tables, it is nameless and cannot be relocated.</p>
+<pre class="toml"><code># Top-level table begins.
+name = &quot;Fido&quot;
+breed = &quot;pug&quot;
+
+# Top-level table ends.
+[owner]
+name = &quot;Regina Dogman&quot;
+member_since = 1999-08-04</code></pre>
+<p>Dotted keys create and define a table for each key part before the last one. Any such table must have all its key/value pairs defined under the current <code>[table]</code> header, or in the root table if defined before all headers, or in one inline table.</p>
+<pre class="toml"><code>fruit.apple.color = &quot;red&quot;
+# Defines a table named fruit
+# Defines a table named fruit.apple
+
+fruit.apple.taste.sweet = true
+# Defines a table named fruit.apple.taste
+# fruit and fruit.apple were already created</code></pre>
+<p>Since tables cannot be defined more than once, redefining such tables using a <code>[table]</code> header is not allowed. Likewise, using dotted keys to redefine tables already defined in <code>[table]</code> form is not allowed. The <code>[table]</code> form can, however, be used to define sub-tables within tables defined via dotted keys.</p>
+<pre class="toml"><code>[fruit]
+apple.color = &quot;red&quot;
+apple.taste.sweet = true
+
+# [fruit.apple]  # INVALID
+# [fruit.apple.taste]  # INVALID
+
+[fruit.apple.texture]  # you can add sub-tables
+smooth = true</code></pre>
+<h2 id="inline-table">Inline Table</h2>
+<p>Inline tables provide a more compact syntax for expressing tables. They are especially useful for grouped nested data that can otherwise quickly become verbose.</p>
+<p>Inline tables are fully defined within curly braces: <code>{</code> and <code>}</code>. Within the braces, zero or more comma-separated key/value pairs may appear. Key/value pairs take the same form as key/value pairs in standard tables. All value types are allowed, including inline tables.</p>
+<p>Inline tables can have multiple key/value pairs on the same line, or they can be put on different lines. A terminating comma (also called trailing comma) is permitted after the last key/value pair.</p>
+<pre class="toml"><code>name = { first = &quot;Tom&quot;, last = &quot;Preston-Werner&quot; }
+point = {x=1, y=2}
+animal = { type.name = &quot;pug&quot; }
+contact = {
+    personal = {
+        name = &quot;Donald Duck&quot;,
+        email = &quot;donald@duckburg.com&quot;,
+    },
+    work = {
+        name = &quot;Coin cleaner&quot;,
+        email = &quot;donald@ScroogeCorp.com&quot;,
+    },
+}</code></pre>
+<p>The inline tables above are identical to the following standard table definitions:</p>
+<pre class="toml"><code>[name]
+first = &quot;Tom&quot;
+last = &quot;Preston-Werner&quot;
+
+[point]
+x = 1
+y = 2
+
+[animal]
+type.name = &quot;pug&quot;
+
+[contact.personal]
+name = &quot;Donald Duck&quot;
+email = &quot;donald@duckburg.com&quot;
+
+[contact.work]
+name = &quot;Coin cleaner&quot;
+email = &quot;donald@ScroogeCorp.com&quot;</code></pre>
+<p>Inline tables are fully self-contained and define all keys and sub-tables within them. Keys and sub-tables cannot be added outside the braces.</p>
+<pre class="toml"><code>[product]
+type = { name = &quot;Nail&quot; }
+# type.edible = false  # INVALID</code></pre>
+<p>Similarly, inline tables cannot be used to add keys or sub-tables to an already-defined table.</p>
+<pre class="toml"><code>[product]
+type.name = &quot;Nail&quot;
+# type = { edible = false }  # INVALID</code></pre>
+<h2 id="array-of-tables">Array of Tables</h2>
+<p>The last syntax that has not yet been described allows writing arrays of tables. These can be expressed by using a header with a name in double brackets. The first instance of that header defines the array and its first table element, and each subsequent instance creates and defines a new table element in that array. The tables are inserted into the array in the order encountered.</p>
+<pre class="toml"><code>[[product]]
+name = &quot;Hammer&quot;
+sku = 738594937
+
+[[product]]  # empty table within the array
+
+[[product]]
+name = &quot;Nail&quot;
+sku = 284758393
+
+color = &quot;gray&quot;</code></pre>
+<p>In JSON land, that would give you the following structure.</p>
+<pre class="json"><code>{
+  &quot;product&quot;: [
+    { &quot;name&quot;: &quot;Hammer&quot;, &quot;sku&quot;: 738594937 },
+    {},
+    { &quot;name&quot;: &quot;Nail&quot;, &quot;sku&quot;: 284758393, &quot;color&quot;: &quot;gray&quot; }
+  ]
+}</code></pre>
+<p>Any reference to an array of tables points to the most recently defined table element of the array. This allows you to define sub-tables, and even sub-arrays of tables, inside the most recent table.</p>
+<pre class="toml"><code>[[fruits]]
+name = &quot;apple&quot;
+
+[fruits.physical]  # subtable
+color = &quot;red&quot;
+shape = &quot;round&quot;
+
+[[fruits.varieties]]  # nested array of tables
+name = &quot;red delicious&quot;
+
+[[fruits.varieties]]
+name = &quot;granny smith&quot;
+
+
+[[fruits]]
+name = &quot;banana&quot;
+
+[[fruits.varieties]]
+name = &quot;plantain&quot;</code></pre>
+<p>The above TOML maps to the following JSON.</p>
+<pre class="json"><code>{
+  &quot;fruits&quot;: [
+    {
+      &quot;name&quot;: &quot;apple&quot;,
+      &quot;physical&quot;: {
+        &quot;color&quot;: &quot;red&quot;,
+        &quot;shape&quot;: &quot;round&quot;
+      },
+      &quot;varieties&quot;: [{ &quot;name&quot;: &quot;red delicious&quot; }, { &quot;name&quot;: &quot;granny smith&quot; }]
+    },
+    {
+      &quot;name&quot;: &quot;banana&quot;,
+      &quot;varieties&quot;: [{ &quot;name&quot;: &quot;plantain&quot; }]
+    }
+  ]
+}</code></pre>
+<p>If the parent of a table or array of tables is an array element, that element must already have been defined before the child can be defined. Attempts to reverse that ordering must produce an error at parse time.</p>
+<pre><code># INVALID TOML DOC
+[fruit.physical]  # subtable, but to which parent element should it belong?
+color = &quot;red&quot;
+shape = &quot;round&quot;
+
+[[fruit]]  # parser must throw an error upon discovering that &quot;fruit&quot; is
+           # an array rather than a table
+name = &quot;apple&quot;</code></pre>
+<p>Attempting to append to a statically defined array, even if that array is empty, must produce an error at parse time.</p>
+<pre><code># INVALID TOML DOC
+fruits = []
+
+[[fruits]] # Not allowed</code></pre>
+<p>Attempting to define a normal table with the same name as an already established array must produce an error at parse time. Attempting to redefine a normal table as an array must likewise produce a parse-time error.</p>
+<pre><code># INVALID TOML DOC
+[[fruits]]
+name = &quot;apple&quot;
+
+[[fruits.varieties]]
+name = &quot;red delicious&quot;
+
+# INVALID: This table conflicts with the previous array of tables
+[fruits.varieties]
+name = &quot;granny smith&quot;
+
+[fruits.physical]
+color = &quot;red&quot;
+shape = &quot;round&quot;
+
+# INVALID: This array of tables conflicts with the previous table
+[[fruits.physical]]
+color = &quot;green&quot;</code></pre>
+<p>You may also use inline tables where appropriate:</p>
+<pre class="toml"><code>points = [ { x = 1, y = 2, z = 3 },
+           { x = 7, y = 8, z = 9 },
+           { x = 2, y = 4, z = 8 } ]</code></pre>
+<h2 id="filename-extension">Filename Extension</h2>
+<p>TOML files should use the extension <code>.toml</code>.</p>
+<h2 id="mime-type">MIME Type</h2>
+<p>When transferring TOML files over the internet, the appropriate MIME type is <code>application/toml</code>.</p>
+<h2 id="abnf-grammar">ABNF Grammar</h2>
+<p>A formal description of TOML's syntax is available, as a separate <a href="/docs/toml/v1-1-0/en/02-reference/02-abnf/">ABNF file</a>.</p>

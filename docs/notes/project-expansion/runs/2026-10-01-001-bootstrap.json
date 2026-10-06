@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-01-001-bootstrap",
+  "cycle": 1,
+  "startedAt": "2026-10-01T09:10:16.330880+00:00",
+  "endedAt": "2026-10-01T09:56:28.877Z",
+  "result": "complete",
+  "phase": "0",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "workspace": "/Users/dolphilia/github/libx",
+  "validationWorkspace": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx",
+  "tools": [
+    "exec_command",
+    "apply_patch",
+    "web.run",
+    "codex_app.create_worktree"
+  ],
+  "inputs": [
+    {
+      "path": "docs/plans/CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md",
+      "sha256": "a415dc1a6915425aec72875c23e855022ed3dac95aacf07ae1a5cd585d22363b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "cd81e28a073f47f9d0391e0f262f2722d12161e603dc775d6ba669a1e1bc19d9"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "7501643bddaf521427868d1a10a20ac967fbe477628e7b89ca12696bd326eb59"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "37ad73052d8fc0ab61ec6729fa8ba93dcfc310e616b706a6494d51c7c2b06919"
+    }
+  ],
+  "protectedBefore": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/protected-initial-inventory.json",
+    "sha256": "b0e3ef733819a3f5c766e78fb5348a02b15b25bc35bb87a9ad7464b8a2e720a3"
+  },
+  "checks": [
+    {
+      "name": "台帳の根拠不足・重複・上限・ハッシュ失効・再開・ロック競合・安全更新とサイクル検査（10テスト）",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-002/ledger-tests.txt",
+          "sha256": "f7e107c435ebb996f2863d971b50618beb453fd05b10c5843036418e882984a4"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "運用記録は計画レビュー1件のみ。段階0から開始。",
+    "既存GLFW36組・Lua56組の過去翻訳記録は今回の全文内容レビューへ流用しない。",
+    "共有package.json・docs/README.md・Awesome作業は変更しない。コマンドはnodeで提供。"
+  ],
+  "unresolved": [
+    "実行中モデル識別APIがないため設定名と区別。既存本文の過去レビューを今回の全文レビューに継承しない。"
+  ],
+  "nextAction": "既存文書の修正・内容レビューを継続。台帳checkから再開する。",
+  "resumeCondition": "台帳と実ファイルのハッシュ照合が合格。残存担当があればプロセス終了を確認してから引継ぎ。",
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": []
+}
