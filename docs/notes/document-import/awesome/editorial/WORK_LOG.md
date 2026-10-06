@@ -6010,3 +6010,19 @@
 - 2026-10-06T13:17:59.851Z batch162-all675-input-units-initial-full-reads-complete-classification-next。219完了818残保留4。進捗a2ab61f6190ffdfc92a072189d6183e872021407fe924f6849a8a26f2774d2ed。次Cosmos SDK全675入力単位全文読了。次全unit分類、2非公式免責の出典再配置判定、旧ID/全2074参照/出典先行確認→EN編集→JA→3独立全文review→全検証。219完了818残保留4、まだ本文未変更。
 
 - 2026-10-06T13:18:41.900Z batch162-reader-disclaimer-body-consolidation-decided-classification-next。219完了818残保留4。進捗182156633d74f9f2b74c68f57ccc0f767d61bf61684f1de17632af3593c0b238。次Cosmos SDK全675入力全文読了。非公式注意は序文直後へ1段落集約、通常146list/32見出し階層保持。次全unit分類/旧HTML/全2074参照監査→EN定義復元→JA自然化→3独立全文review/全検証。219完了818残保留4。
+
+- 2026-10-06T19:32:23.595Z batch162-full-content-reviews-overlay-complete-verification-pending。219完了818残保留4。進捗23310cdddf8f06563b199cd3809cd039e3bdc8ca7d0abe7e0e0598c70b5bfd74。次Cosmos SDK全675入力→英日191出力の判断・3独立全文review・overlay・実本文反映完了。次先行build完了と旧ID/全2074参照→2回再生成/正規生成gate→対象fresh build/HTML/英日PC mobile→global→verified220→commit/push→163。
+
+- 2026-10-06T19:45:27.144Z batch162-four-ui-content-reviewed-global-pending。219完了818残保留4。進捗7294690885cf5bf9c32b98b31eef5447bc6de2a313f754b442cb935258094598。次Cosmos SDK全工程content-reviewed。全1037台帳global/全2074本文hash/diff→verified220→commit/push→163 EOSIO固定raw/旧EN/旧JA全文。分離worktree /private/tmp/libx-awesome-editorial-20261007, branch codex/awesome-editorial-isolated-20261007。
+
+- 2026-10-06T19:46:45.787Z batch162-verified220-save-push-pending。220完了817残保留4。進捗3f0f56774398e7927eea535ae02469943a3e062e7e898e7479eab4bfe1c3ef98。次220完了817残保留4。Cosmos SDK全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次163 github-DanailMinchev-awesome-eosio-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ162 Cosmos SDK検証完了・保存準備 (2026-10-06T19:47:07.694Z)
+
+- raw229/旧EN223/旧JA223入力単位と編集後英日191単位を全文確認。Go/SDK/Gaia定義復元、非公式免責集約、手動目次・運営案内除去、日本語の署名処理/DAO/鍵派生等を修正。146項目・32見出し・全URLと意味を保全。英日hash 8bbe7275324556074aa99c5500f9be681c6bd40e23d6328ab1429d16e7c842b9 / 6ba4484e42cc7532848adec569894cfac9e698979887eed2c9ab54685f8bf883。実使用モデルは現Codexセッション、API識別子は取得不能（local LLM/委任なし）。
+- 2回replay各1037組2074文書、正規生成8gate、対象awesome/systems統合build全7子fresh、開始/現在/成果物input hash一致、HTML32見出し146項目・旧有用ID/CC0保持、英日PC1440×1000/mobile390×844の実表示・TOC/言語/旧版往復/次EOSIO確認、全1037global、全2074hash、diff check合格。verified220/残817/保留4。完了後入力一致によりglobal証拠再利用。
+- 別作業の変更を混ぜないため初期HEAD af1e52730ef89d5acb66f4f394832ef22203eb09から分離worktree /private/tmp/libx-awesome-editorial-20261007、branch codex/awesome-editorial-isolated-20261007。元checkoutはmainに戻し、元作業差分を保持。依存は既存pnpm node_modulesのcloneコピー、固定取得cacheコピーで同じ生成器を使用。
+- 配信workflow push対象(main,codex/pages-preview/**,codex/quality/**)外の上記branchへ保存。外部公開/dispatch/PR/定期設定なし。commit/pushは次操作、成功はremote commit照合後に追記。本文に未保存の変更なし、現在はbatch162保存対象のみ。
+- 次163 github-DanailMinchev-awesome-eosio-readme-md。上記worktreeで台帳とraw/EN/JAhashを確認し全文読みから再開。表示tab/preview終了、viewport復元済み。
+
+- 完了後監査の初回は、JSON保存時に省略されるundefinedキーとメモリ上のundefinedキーとの差をdeepEqualが検出して中断（本文/経路/hashの差ではない）。JSON正規化して保存済み入力と再比較しexit0/完全一致を確認。修正実行helper e1756e5e14f2bd46f2ac9156ae82d54772cbfb89b7c08caae4f2c7be3aec286d、確認receipt501131。検査を無効化していない。
