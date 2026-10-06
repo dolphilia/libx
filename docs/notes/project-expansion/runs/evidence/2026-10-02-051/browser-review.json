@@ -1,0 +1,1484 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-01T18:55:48.252Z",
+  "preview": "localhost:4324 own Astro preview",
+  "views": [
+    {
+      "clientWidth": 1265,
+      "codes": [
+        "__add",
+        "__add",
+        "__call",
+        "getmetatable",
+        "rawget",
+        "setmetatable",
+        "__add",
+        "+",
+        "__add",
+        "__sub",
+        "-",
+        "__mul",
+        "*",
+        "__div",
+        "/",
+        "__mod",
+        "%",
+        "__pow",
+        "^",
+        "__unm",
+        "-",
+        "__idiv",
+        "//",
+        "__band",
+        "&",
+        "__bor",
+        "|",
+        "__bxor",
+        "~",
+        "__bnot",
+        "~",
+        "__shl",
+        "<<",
+        "__shr",
+        ">>",
+        "__concat",
+        "..",
+        "__len",
+        "#",
+        "__eq",
+        "==",
+        "__lt",
+        "<",
+        "__le",
+        "<=",
+        "__index",
+        "table[key]",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__index",
+        "table",
+        "key",
+        "key",
+        "__index",
+        "__newindex",
+        "table[key] = value",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__newindex",
+        "table",
+        "key",
+        "value",
+        "__newindex",
+        "__newindex",
+        "rawset",
+        "__call",
+        "func(args)",
+        "func",
+        "func",
+        "args",
+        "func",
+        "__gc",
+        "__close",
+        "__mode",
+        "__name",
+        "__name",
+        "tostring",
+        "tostring",
+        "__gc"
+      ],
+      "emphasis": [
+        "メタテーブル",
+        "メタテーブル",
+        "メタ値",
+        "メタメソッド"
+      ],
+      "h1": "2.4 – メタテーブルとメタメソッド",
+      "headingAnchor": true,
+      "images": 0,
+      "items": [
+        {
+          "key": "__add",
+          "paragraphs": 1,
+          "text": "\n__add : 加算（+）操作。加算のいずれかのオペランドが数値でない場合、Luaはメタメソッドの呼び出しを試みる。最初に第1オペランド（それが数値であっても）を調べ、そのオペランドが__addのメタメソッドを定義していなければ、第2オペランドを調べる。メタメソッドが見つかった場合、Luaは2つのオペランドを引数としてメタメソッドを呼び出し、その呼び出し結果（1つの値に調整される）が操作の結果となる。見つからない場合、Luaはエラーを発生させる。\n"
+        },
+        {
+          "key": "__sub",
+          "paragraphs": 1,
+          "text": "\n__sub : 減算（-）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__mul",
+          "paragraphs": 1,
+          "text": "\n__mul : 乗算（*）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__div",
+          "paragraphs": 1,
+          "text": "\n__div : 除算（/）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__mod",
+          "paragraphs": 1,
+          "text": "\n__mod : 剰余（%）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__pow",
+          "paragraphs": 1,
+          "text": "\n__pow : べき乗（^）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__unm",
+          "paragraphs": 1,
+          "text": "\n__unm : 符号反転（単項-）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__idiv",
+          "paragraphs": 1,
+          "text": "\n__idiv : 切り捨て除算（//）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__band",
+          "paragraphs": 1,
+          "text": "\n__band : ビット単位AND（&）操作。いずれかのオペランドが整数でも整数へ型強制できる浮動小数点数でもない場合にLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する（§3.4.3を参照）。\n"
+        },
+        {
+          "key": "__bor",
+          "paragraphs": 1,
+          "text": "\n__bor : ビット単位OR（|）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__bxor",
+          "paragraphs": 1,
+          "text": "\n__bxor : ビット単位排他的OR（2項~）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__bnot",
+          "paragraphs": 1,
+          "text": "\n__bnot : ビット単位NOT（単項~）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__shl",
+          "paragraphs": 1,
+          "text": "\n__shl : ビット単位左シフト（<<）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__shr",
+          "paragraphs": 1,
+          "text": "\n__shr : ビット単位右シフト（>>）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__concat",
+          "paragraphs": 1,
+          "text": "\n__concat : 連結（..）操作。いずれかのオペランドが文字列でも数値（常に文字列へ型強制できる）でもない場合にLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__len",
+          "paragraphs": 1,
+          "text": "\n__len : 長さ（#）操作。オブジェクトが文字列でない場合、Luaはそのメタメソッドを試みる。メタメソッドがある場合、Luaはオブジェクトを引数として呼び出し、その呼び出し結果（常に1つの値に調整される）が操作の結果となる。メタメソッドはないがオブジェクトがテーブルの場合、Luaはテーブルの長さ操作を使用する（§3.4.7を参照）。それ以外の場合、Luaはエラーを発生させる。\n"
+        },
+        {
+          "key": "__eq",
+          "paragraphs": 1,
+          "text": "\n__eq : 等価（==）操作。比較する値が、両方ともテーブルまたは両方ともフルユーザーデータで、プリミティブな比較では等しくない場合にだけLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する。呼び出し結果は常にブール値へ変換される。\n"
+        },
+        {
+          "key": "__lt",
+          "paragraphs": 1,
+          "text": "\n__lt : 未満（<）操作。比較する値が両方とも数値でも両方とも文字列でもない場合にだけLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する。さらに、呼び出し結果は常にブール値へ変換される。\n"
+        },
+        {
+          "key": "__le",
+          "paragraphs": 1,
+          "text": "\n__le : 以下（<=）操作。未満操作と同様に動作する。\n"
+        },
+        {
+          "key": "__index",
+          "paragraphs": 2,
+          "text": "\n__index : インデックスアクセス操作table[key]。このイベントは、 tableがテーブルでないか、 keyがtableに存在しない場合に発生する。メタ値はtableのメタテーブルから検索される。\nこのイベントのメタ値には、関数、テーブル、または__indexメタ値を持つ任意の値を指定できる。関数の場合、tableとkeyを引数として呼び出され、その呼び出し結果（1つの値に調整される）が操作の結果となる。それ以外の場合、最終結果はkeyを使ってこのメタ値をインデックス指定した結果となる。このインデックス指定は生ではなく通常のものであるため、別の__indexメタ値を起動することがある。\n"
+        },
+        {
+          "key": "__newindex",
+          "paragraphs": 3,
+          "text": "\n__newindex : インデックス代入table[key] = value。indexイベントと同様に、このイベントはtableがテーブルでないか、 keyがtableに存在しない場合に発生する。メタ値はtableのメタテーブルから検索される。\nインデックス指定と同様に、このイベントのメタ値には、関数、テーブル、または__newindexメタ値を持つ任意の値を指定できる。関数の場合、table、key、valueを引数として呼び出される。それ以外の場合、Luaは同じキーと値を使い、このメタ値に対してインデックス代入を繰り返す。この代入は生ではなく通常のものであるため、別の__newindexメタ値を起動することがある。\n__newindexメタ値が呼び出されるとき、Luaはプリミティブな代入を行わない。必要であれば、メタメソッド自身がrawsetを呼び出して代入を行える。\n"
+        },
+        {
+          "key": "__call",
+          "paragraphs": 1,
+          "text": "\n__call : 呼び出し操作func(args)。このイベントは、Luaが関数でない値を呼び出そうとした場合（すなわちfuncが関数でない場合）に発生する。メタメソッドはfuncから検索される。存在する場合、元の呼び出しの引数（args）に先立ち、 funcを第1引数としてメタメソッドが呼び出される。その呼び出しのすべての結果が操作の結果となる。複数の結果を許可するメタメソッドはこれだけである。\n"
+        }
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/03-error-handling",
+          "text": "     前へ  エラー処理  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection",
+          "text": "  次へ  ガベージコレクション     "
+        }
+      ],
+      "paragraphs": [
+        "Luaのすべての値は、メタテーブルを持つことができる。このメタテーブルは通常のLuaテーブルであり、特定のイベントにおける元の値の動作を定義する。メタテーブルの特定のフィールドを設定することで、値の動作のいくつかの側面を変更できる。たとえば、数値でない値が加算のオペランドになった場合、Luaはその値のメタテーブルにある__addフィールドの関数を調べる。関数が見つかると、Luaは加算を行うためにその関数を呼び出す。",
+        "メタテーブルにおける各イベントのキーは、イベント名の先頭に2つのアンダースコアを付けた文字列であり、対応する値はメタ値と呼ばれる。ほとんどのイベントでは、メタ値は関数でなければならず、その関数はメタメソッドと呼ばれる。前の例では、キーは文字列「__add」であり、メタメソッドは加算を行う関数である。特に断りがない限り、メタメソッドには、関数または__callメタメソッドを持つ値のいずれかである、任意の呼び出し可能な値を実際には使用できる。",
+        "任意の値のメタテーブルは、getmetatable関数を使って問い合わせられる。Luaは生のアクセス（rawgetを参照）を使って、メタテーブル内のメタメソッドを問い合わせる。",
+        "テーブルのメタテーブルは、setmetatable関数を使って置き換えられる。デバッグライブラリ（§6.11）を使用する場合を除き、Luaコードから他の型のメタテーブルを変更することはできない。",
+        "テーブルとフルユーザーデータは個別のメタテーブルを持つが、複数のテーブルやユーザーデータがメタテーブルを共有することもできる。その他のすべての型の値は、型ごとに1つのメタテーブルを共有する。すなわち、すべての数値に1つ、すべての文字列に1つ、といった具合である。デフォルトでは値にメタテーブルはないが、文字列ライブラリはstring型にメタテーブルを設定する（§6.5を参照）。",
+        "メタテーブルが制御する操作の詳細な一覧を次に示す。各イベントは、対応するキーによって識別される。慣例として、Luaが使用するすべてのメタテーブルキーは、2つのアンダースコアに小文字のラテン文字を続けて構成される。",
+        "前の一覧に加えて、インタープリターはメタテーブル内の次のキーも使用する。__gc（§2.5.3を参照）、__close（§3.3.8を参照）、__mode（§2.5.4を参照）、__name。（エントリー__nameに文字列が格納されている場合、tostringやエラーメッセージで使用されることがある。）",
+        "単項演算子（符号反転、長さ、ビット単位NOT）の場合、メタメソッドは、第1オペランドと等しいダミーの第2オペランドを付けて計算・呼び出される。この追加オペランドは、これらの演算子を2項演算と同様に動作させてLua内部を単純化するためだけのものであり、将来のバージョンで削除される可能性がある。ほとんどの用途では、この追加オペランドは関係しない。",
+        "メタテーブルは通常のテーブルであるため、前述のイベント名だけでなく、任意のフィールドを格納できる。標準ライブラリの一部の関数（例：tostring）は、それぞれの目的でメタテーブル内の他のフィールドを使用する。",
+        "必要なすべてのメタメソッドをテーブルへ追加してから、そのテーブルを何らかのオブジェクトのメタテーブルとして設定するのがよい慣行である。特に、__gcメタメソッドは、この順序に従った場合にだけ機能する（§2.5.3を参照）。また、オブジェクトを作成した直後にそのメタテーブルを設定することも、よい慣行である。"
+      ],
+      "pre": 0,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/04-metatables-and-metamethods/",
+      "locale": "ja",
+      "viewport": "desktop",
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        }
+      ],
+      "navigationLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/03-error-handling",
+          "text": "     前へ  エラー処理  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection",
+          "text": "  次へ  ガベージコレクション     "
+        }
+      ]
+    },
+    {
+      "clientWidth": 375,
+      "codes": [
+        "__add",
+        "__add",
+        "__call",
+        "getmetatable",
+        "rawget",
+        "setmetatable",
+        "__add",
+        "+",
+        "__add",
+        "__sub",
+        "-",
+        "__mul",
+        "*",
+        "__div",
+        "/",
+        "__mod",
+        "%",
+        "__pow",
+        "^",
+        "__unm",
+        "-",
+        "__idiv",
+        "//",
+        "__band",
+        "&",
+        "__bor",
+        "|",
+        "__bxor",
+        "~",
+        "__bnot",
+        "~",
+        "__shl",
+        "<<",
+        "__shr",
+        ">>",
+        "__concat",
+        "..",
+        "__len",
+        "#",
+        "__eq",
+        "==",
+        "__lt",
+        "<",
+        "__le",
+        "<=",
+        "__index",
+        "table[key]",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__index",
+        "table",
+        "key",
+        "key",
+        "__index",
+        "__newindex",
+        "table[key] = value",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__newindex",
+        "table",
+        "key",
+        "value",
+        "__newindex",
+        "__newindex",
+        "rawset",
+        "__call",
+        "func(args)",
+        "func",
+        "func",
+        "args",
+        "func",
+        "__gc",
+        "__close",
+        "__mode",
+        "__name",
+        "__name",
+        "tostring",
+        "tostring",
+        "__gc"
+      ],
+      "emphasis": [
+        "メタテーブル",
+        "メタテーブル",
+        "メタ値",
+        "メタメソッド"
+      ],
+      "h1": "2.4 – メタテーブルとメタメソッド",
+      "headingAnchor": true,
+      "images": 0,
+      "items": [
+        {
+          "key": "__add",
+          "paragraphs": 1,
+          "text": "\n__add : 加算（+）操作。加算のいずれかのオペランドが数値でない場合、Luaはメタメソッドの呼び出しを試みる。最初に第1オペランド（それが数値であっても）を調べ、そのオペランドが__addのメタメソッドを定義していなければ、第2オペランドを調べる。メタメソッドが見つかった場合、Luaは2つのオペランドを引数としてメタメソッドを呼び出し、その呼び出し結果（1つの値に調整される）が操作の結果となる。見つからない場合、Luaはエラーを発生させる。\n"
+        },
+        {
+          "key": "__sub",
+          "paragraphs": 1,
+          "text": "\n__sub : 減算（-）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__mul",
+          "paragraphs": 1,
+          "text": "\n__mul : 乗算（*）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__div",
+          "paragraphs": 1,
+          "text": "\n__div : 除算（/）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__mod",
+          "paragraphs": 1,
+          "text": "\n__mod : 剰余（%）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__pow",
+          "paragraphs": 1,
+          "text": "\n__pow : べき乗（^）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__unm",
+          "paragraphs": 1,
+          "text": "\n__unm : 符号反転（単項-）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__idiv",
+          "paragraphs": 1,
+          "text": "\n__idiv : 切り捨て除算（//）操作。加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__band",
+          "paragraphs": 1,
+          "text": "\n__band : ビット単位AND（&）操作。いずれかのオペランドが整数でも整数へ型強制できる浮動小数点数でもない場合にLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する（§3.4.3を参照）。\n"
+        },
+        {
+          "key": "__bor",
+          "paragraphs": 1,
+          "text": "\n__bor : ビット単位OR（|）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__bxor",
+          "paragraphs": 1,
+          "text": "\n__bxor : ビット単位排他的OR（2項~）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__bnot",
+          "paragraphs": 1,
+          "text": "\n__bnot : ビット単位NOT（単項~）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__shl",
+          "paragraphs": 1,
+          "text": "\n__shl : ビット単位左シフト（<<）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__shr",
+          "paragraphs": 1,
+          "text": "\n__shr : ビット単位右シフト（>>）操作。ビット単位AND操作と同様に動作する。\n"
+        },
+        {
+          "key": "__concat",
+          "paragraphs": 1,
+          "text": "\n__concat : 連結（..）操作。いずれかのオペランドが文字列でも数値（常に文字列へ型強制できる）でもない場合にLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する。\n"
+        },
+        {
+          "key": "__len",
+          "paragraphs": 1,
+          "text": "\n__len : 長さ（#）操作。オブジェクトが文字列でない場合、Luaはそのメタメソッドを試みる。メタメソッドがある場合、Luaはオブジェクトを引数として呼び出し、その呼び出し結果（常に1つの値に調整される）が操作の結果となる。メタメソッドはないがオブジェクトがテーブルの場合、Luaはテーブルの長さ操作を使用する（§3.4.7を参照）。それ以外の場合、Luaはエラーを発生させる。\n"
+        },
+        {
+          "key": "__eq",
+          "paragraphs": 1,
+          "text": "\n__eq : 等価（==）操作。比較する値が、両方ともテーブルまたは両方ともフルユーザーデータで、プリミティブな比較では等しくない場合にだけLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する。呼び出し結果は常にブール値へ変換される。\n"
+        },
+        {
+          "key": "__lt",
+          "paragraphs": 1,
+          "text": "\n__lt : 未満（<）操作。比較する値が両方とも数値でも両方とも文字列でもない場合にだけLuaがメタメソッドを試みる点を除き、加算操作と同様に動作する。さらに、呼び出し結果は常にブール値へ変換される。\n"
+        },
+        {
+          "key": "__le",
+          "paragraphs": 1,
+          "text": "\n__le : 以下（<=）操作。未満操作と同様に動作する。\n"
+        },
+        {
+          "key": "__index",
+          "paragraphs": 2,
+          "text": "\n__index : インデックスアクセス操作table[key]。このイベントは、 tableがテーブルでないか、 keyがtableに存在しない場合に発生する。メタ値はtableのメタテーブルから検索される。\nこのイベントのメタ値には、関数、テーブル、または__indexメタ値を持つ任意の値を指定できる。関数の場合、tableとkeyを引数として呼び出され、その呼び出し結果（1つの値に調整される）が操作の結果となる。それ以外の場合、最終結果はkeyを使ってこのメタ値をインデックス指定した結果となる。このインデックス指定は生ではなく通常のものであるため、別の__indexメタ値を起動することがある。\n"
+        },
+        {
+          "key": "__newindex",
+          "paragraphs": 3,
+          "text": "\n__newindex : インデックス代入table[key] = value。indexイベントと同様に、このイベントはtableがテーブルでないか、 keyがtableに存在しない場合に発生する。メタ値はtableのメタテーブルから検索される。\nインデックス指定と同様に、このイベントのメタ値には、関数、テーブル、または__newindexメタ値を持つ任意の値を指定できる。関数の場合、table、key、valueを引数として呼び出される。それ以外の場合、Luaは同じキーと値を使い、このメタ値に対してインデックス代入を繰り返す。この代入は生ではなく通常のものであるため、別の__newindexメタ値を起動することがある。\n__newindexメタ値が呼び出されるとき、Luaはプリミティブな代入を行わない。必要であれば、メタメソッド自身がrawsetを呼び出して代入を行える。\n"
+        },
+        {
+          "key": "__call",
+          "paragraphs": 1,
+          "text": "\n__call : 呼び出し操作func(args)。このイベントは、Luaが関数でない値を呼び出そうとした場合（すなわちfuncが関数でない場合）に発生する。メタメソッドはfuncから検索される。存在する場合、元の呼び出しの引数（args）に先立ち、 funcを第1引数としてメタメソッドが呼び出される。その呼び出しのすべての結果が操作の結果となる。複数の結果を許可するメタメソッドはこれだけである。\n"
+        }
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/03-error-handling",
+          "text": "     前へ  エラー処理  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection",
+          "text": "  次へ  ガベージコレクション     "
+        }
+      ],
+      "paragraphs": [
+        "Luaのすべての値は、メタテーブルを持つことができる。このメタテーブルは通常のLuaテーブルであり、特定のイベントにおける元の値の動作を定義する。メタテーブルの特定のフィールドを設定することで、値の動作のいくつかの側面を変更できる。たとえば、数値でない値が加算のオペランドになった場合、Luaはその値のメタテーブルにある__addフィールドの関数を調べる。関数が見つかると、Luaは加算を行うためにその関数を呼び出す。",
+        "メタテーブルにおける各イベントのキーは、イベント名の先頭に2つのアンダースコアを付けた文字列であり、対応する値はメタ値と呼ばれる。ほとんどのイベントでは、メタ値は関数でなければならず、その関数はメタメソッドと呼ばれる。前の例では、キーは文字列「__add」であり、メタメソッドは加算を行う関数である。特に断りがない限り、メタメソッドには、関数または__callメタメソッドを持つ値のいずれかである、任意の呼び出し可能な値を実際には使用できる。",
+        "任意の値のメタテーブルは、getmetatable関数を使って問い合わせられる。Luaは生のアクセス（rawgetを参照）を使って、メタテーブル内のメタメソッドを問い合わせる。",
+        "テーブルのメタテーブルは、setmetatable関数を使って置き換えられる。デバッグライブラリ（§6.11）を使用する場合を除き、Luaコードから他の型のメタテーブルを変更することはできない。",
+        "テーブルとフルユーザーデータは個別のメタテーブルを持つが、複数のテーブルやユーザーデータがメタテーブルを共有することもできる。その他のすべての型の値は、型ごとに1つのメタテーブルを共有する。すなわち、すべての数値に1つ、すべての文字列に1つ、といった具合である。デフォルトでは値にメタテーブルはないが、文字列ライブラリはstring型にメタテーブルを設定する（§6.5を参照）。",
+        "メタテーブルが制御する操作の詳細な一覧を次に示す。各イベントは、対応するキーによって識別される。慣例として、Luaが使用するすべてのメタテーブルキーは、2つのアンダースコアに小文字のラテン文字を続けて構成される。",
+        "前の一覧に加えて、インタープリターはメタテーブル内の次のキーも使用する。__gc（§2.5.3を参照）、__close（§3.3.8を参照）、__mode（§2.5.4を参照）、__name。（エントリー__nameに文字列が格納されている場合、tostringやエラーメッセージで使用されることがある。）",
+        "単項演算子（符号反転、長さ、ビット単位NOT）の場合、メタメソッドは、第1オペランドと等しいダミーの第2オペランドを付けて計算・呼び出される。この追加オペランドは、これらの演算子を2項演算と同様に動作させてLua内部を単純化するためだけのものであり、将来のバージョンで削除される可能性がある。ほとんどの用途では、この追加オペランドは関係しない。",
+        "メタテーブルは通常のテーブルであるため、前述のイベント名だけでなく、任意のフィールドを格納できる。標準ライブラリの一部の関数（例：tostring）は、それぞれの目的でメタテーブル内の他のフィールドを使用する。",
+        "必要なすべてのメタメソッドをテーブルへ追加してから、そのテーブルを何らかのオブジェクトのメタテーブルとして設定するのがよい慣行である。特に、__gcメタメソッドは、この順序に従った場合にだけ機能する（§2.5.3を参照）。また、オブジェクトを作成した直後にそのメタテーブルを設定することも、よい慣行である。"
+      ],
+      "pre": 0,
+      "scrollWidth": 375,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/04-metatables-and-metamethods/",
+      "locale": "ja",
+      "viewport": "mobile",
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        }
+      ],
+      "navigationLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/03-error-handling",
+          "text": "     前へ  エラー処理  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/05-garbage-collection",
+          "text": "  次へ  ガベージコレクション     "
+        }
+      ]
+    },
+    {
+      "clientWidth": 1265,
+      "codes": [
+        "__add",
+        "__add",
+        "__call",
+        "getmetatable",
+        "rawget",
+        "setmetatable",
+        "__add",
+        "+",
+        "__add",
+        "__sub",
+        "-",
+        "__mul",
+        "*",
+        "__div",
+        "/",
+        "__mod",
+        "%",
+        "__pow",
+        "^",
+        "__unm",
+        "-",
+        "__idiv",
+        "//",
+        "__band",
+        "&",
+        "__bor",
+        "|",
+        "__bxor",
+        "~",
+        "__bnot",
+        "~",
+        "__shl",
+        "<<",
+        "__shr",
+        ">>",
+        "__concat",
+        "..",
+        "__len",
+        "#",
+        "__eq",
+        "==",
+        "__lt",
+        "<",
+        "__le",
+        "<=",
+        "__index",
+        "table[key]",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__index",
+        "table",
+        "key",
+        "key",
+        "__index",
+        "__newindex",
+        "table[key] = value",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__newindex",
+        "table",
+        "key",
+        "value",
+        "__newindex",
+        "__newindex",
+        "rawset",
+        "__call",
+        "func(args)",
+        "func",
+        "func",
+        "func",
+        "args",
+        "__gc",
+        "__close",
+        "__mode",
+        "__name",
+        "__name",
+        "tostring",
+        "tostring",
+        "__gc"
+      ],
+      "emphasis": [
+        "metatable",
+        "metatable",
+        "metavalue",
+        "metamethod"
+      ],
+      "h1": "2.4 – Metatables and Metamethods",
+      "headingAnchor": true,
+      "images": 0,
+      "items": [
+        {
+          "key": "__add",
+          "paragraphs": 1,
+          "text": "\n__add: the addition (+) operation. If any operand for an addition is not a number, Lua will try to call a metamethod. It starts by checking the first operand (even if it is a number); if that operand does not define a metamethod for __add, then Lua will check the second operand. If Lua can find a metamethod, it calls the metamethod with the two operands as arguments, and the result of the call (adjusted to one value) is the result of the operation. Otherwise, if no metamethod is found, Lua raises an error.\n"
+        },
+        {
+          "key": "__sub",
+          "paragraphs": 1,
+          "text": "\n__sub: the subtraction (-) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__mul",
+          "paragraphs": 1,
+          "text": "\n__mul: the multiplication (*) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__div",
+          "paragraphs": 1,
+          "text": "\n__div: the division (/) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__mod",
+          "paragraphs": 1,
+          "text": "\n__mod: the modulo (%) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__pow",
+          "paragraphs": 1,
+          "text": "\n__pow: the exponentiation (^) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__unm",
+          "paragraphs": 1,
+          "text": "\n__unm: the negation (unary -) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__idiv",
+          "paragraphs": 1,
+          "text": "\n__idiv: the floor division (//) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__band",
+          "paragraphs": 1,
+          "text": "\n__band: the bitwise AND (&) operation. Behavior similar to the addition operation, except that Lua will try a metamethod if any operand is neither an integer nor a float coercible to an integer (see §3.4.3).\n"
+        },
+        {
+          "key": "__bor",
+          "paragraphs": 1,
+          "text": "\n__bor: the bitwise OR (|) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__bxor",
+          "paragraphs": 1,
+          "text": "\n__bxor: the bitwise exclusive OR (binary ~) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__bnot",
+          "paragraphs": 1,
+          "text": "\n__bnot: the bitwise NOT (unary ~) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__shl",
+          "paragraphs": 1,
+          "text": "\n__shl: the bitwise left shift (<<) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__shr",
+          "paragraphs": 1,
+          "text": "\n__shr: the bitwise right shift (>>) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__concat",
+          "paragraphs": 1,
+          "text": "\n__concat: the concatenation (..) operation. Behavior similar to the addition operation, except that Lua will try a metamethod if any operand is neither a string nor a number (which is always coercible to a string).\n"
+        },
+        {
+          "key": "__len",
+          "paragraphs": 1,
+          "text": "\n__len: the length (#) operation. If the object is not a string, Lua will try its metamethod. If there is a metamethod, Lua calls it with the object as argument, and the result of the call (always adjusted to one value) is the result of the operation. If there is no metamethod but the object is a table, then Lua uses the table length operation (see §3.4.7). Otherwise, Lua raises an error.\n"
+        },
+        {
+          "key": "__eq",
+          "paragraphs": 1,
+          "text": "\n__eq: the equal (==) operation. Behavior similar to the addition operation, except that Lua will try a metamethod only when the values being compared are either both tables or both full userdata and they are not primitively equal. The result of the call is always converted to a boolean.\n"
+        },
+        {
+          "key": "__lt",
+          "paragraphs": 1,
+          "text": "\n__lt: the less than (<) operation. Behavior similar to the addition operation, except that Lua will try a metamethod only when the values being compared are neither both numbers nor both strings. Moreover, the result of the call is always converted to a boolean.\n"
+        },
+        {
+          "key": "__le",
+          "paragraphs": 1,
+          "text": "\n__le: the less equal (<=) operation. Behavior similar to the less than operation.\n"
+        },
+        {
+          "key": "__index",
+          "paragraphs": 2,
+          "text": "\n__index: The indexing access operation table[key]. This event happens when table is not a table or when key is not present in table. The metavalue is looked up in the metatable of table.\nThe metavalue for this event can be either a function, a table, or any value with an __index metavalue. If it is a function, it is called with table and key as arguments, and the result of the call (adjusted to one value) is the result of the operation. Otherwise, the final result is the result of indexing this metavalue with key. This indexing is regular, not raw, and therefore can trigger another __index metavalue.\n"
+        },
+        {
+          "key": "__newindex",
+          "paragraphs": 3,
+          "text": "\n__newindex: The indexing assignment table[key] = value. Like the index event, this event happens when table is not a table or when key is not present in table. The metavalue is looked up in the metatable of table.\nLike with indexing, the metavalue for this event can be either a function, a table, or any value with an __newindex metavalue. If it is a function, it is called with table, key, and value as arguments. Otherwise, Lua repeats the indexing assignment over this metavalue with the same key and value. This assignment is regular, not raw, and therefore can trigger another __newindex metavalue.\nWhenever a __newindex metavalue is invoked, Lua does not perform the primitive assignment. If needed, the metamethod itself can call rawset to do the assignment.\n"
+        },
+        {
+          "key": "__call",
+          "paragraphs": 1,
+          "text": "\n__call: The call operation func(args). This event happens when Lua tries to call a non-function value (that is, func is not a function). The metamethod is looked up in func. If present, the metamethod is called with func as its first argument, followed by the arguments of the original call (args). All results of the call are the results of the operation. This is the only metamethod that allows multiple results.\n"
+        }
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/03-error-handling",
+          "text": "     Previous  Error handling  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection",
+          "text": "  Next  Garbage collection     "
+        }
+      ],
+      "paragraphs": [
+        "Every value in Lua can have a metatable. This metatable is an ordinary Lua table that defines the behavior of the original value under certain events. You can change several aspects of the behavior of a value by setting specific fields in its metatable. For instance, when a non-numeric value is the operand of an addition, Lua checks for a function in the field __add of the value’s metatable. If it finds one, Lua calls this function to perform the addition.",
+        "The key for each event in a metatable is a string with the event name prefixed by two underscores; the corresponding value is called a metavalue. For most events, the metavalue must be a function, which is then called a metamethod. In the previous example, the key is the string “__add” and the metamethod is the function that performs the addition. Unless stated otherwise, a metamethod can in fact be any callable value, which is either a function or a value with a __call metamethod.",
+        "You can query the metatable of any value using the getmetatable function. Lua queries metamethods in metatables using a raw access (see rawget).",
+        "You can replace the metatable of tables using the setmetatable function. You cannot change the metatable of other types from Lua code, except by using the debug library (§6.11).",
+        "Tables and full userdata have individual metatables, although multiple tables and userdata can share their metatables. Values of all other types share one single metatable per type; that is, there is one single metatable for all numbers, one for all strings, etc. By default, a value has no metatable, but the string library sets a metatable for the string type (see §6.5).",
+        "A detailed list of operations controlled by metatables is given next. Each event is identified by its corresponding key. By convention, all metatable keys used by Lua are composed by two underscores followed by lowercase Latin letters.",
+        "In addition to the previous list, the interpreter also respects the following keys in metatables: __gc (see §2.5.3), __close (see §3.3.8), __mode (see §2.5.4), and __name. (The entry __name, when it contains a string, may be used by tostring and in error messages.)",
+        "For the unary operators (negation, length, and bitwise NOT), the metamethod is computed and called with a dummy second operand, equal to the first one. This extra operand is only to simplify Lua’s internals (by making these operators behave like a binary operation) and may be removed in future versions. For most uses this extra operand is irrelevant.",
+        "Because metatables are regular tables, they can contain arbitrary fields, not only the event names defined above. Some functions in the standard library (e.g., tostring) use other fields in metatables for their own purposes.",
+        "It is a good practice to add all needed metamethods to a table before setting it as a metatable of some object. In particular, the __gc metamethod works only when this order is followed (see §2.5.3). It is also a good practice to set the metatable of an object right after its creation."
+      ],
+      "pre": 0,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/04-metatables-and-metamethods/",
+      "locale": "en",
+      "viewport": "desktop",
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        }
+      ],
+      "navigationLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/03-error-handling",
+          "text": "     Previous  Error handling  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection",
+          "text": "  Next  Garbage collection     "
+        }
+      ]
+    },
+    {
+      "clientWidth": 375,
+      "codes": [
+        "__add",
+        "__add",
+        "__call",
+        "getmetatable",
+        "rawget",
+        "setmetatable",
+        "__add",
+        "+",
+        "__add",
+        "__sub",
+        "-",
+        "__mul",
+        "*",
+        "__div",
+        "/",
+        "__mod",
+        "%",
+        "__pow",
+        "^",
+        "__unm",
+        "-",
+        "__idiv",
+        "//",
+        "__band",
+        "&",
+        "__bor",
+        "|",
+        "__bxor",
+        "~",
+        "__bnot",
+        "~",
+        "__shl",
+        "<<",
+        "__shr",
+        ">>",
+        "__concat",
+        "..",
+        "__len",
+        "#",
+        "__eq",
+        "==",
+        "__lt",
+        "<",
+        "__le",
+        "<=",
+        "__index",
+        "table[key]",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__index",
+        "table",
+        "key",
+        "key",
+        "__index",
+        "__newindex",
+        "table[key] = value",
+        "table",
+        "key",
+        "table",
+        "table",
+        "__newindex",
+        "table",
+        "key",
+        "value",
+        "__newindex",
+        "__newindex",
+        "rawset",
+        "__call",
+        "func(args)",
+        "func",
+        "func",
+        "func",
+        "args",
+        "__gc",
+        "__close",
+        "__mode",
+        "__name",
+        "__name",
+        "tostring",
+        "tostring",
+        "__gc"
+      ],
+      "emphasis": [
+        "metatable",
+        "metatable",
+        "metavalue",
+        "metamethod"
+      ],
+      "h1": "2.4 – Metatables and Metamethods",
+      "headingAnchor": true,
+      "images": 0,
+      "items": [
+        {
+          "key": "__add",
+          "paragraphs": 1,
+          "text": "\n__add: the addition (+) operation. If any operand for an addition is not a number, Lua will try to call a metamethod. It starts by checking the first operand (even if it is a number); if that operand does not define a metamethod for __add, then Lua will check the second operand. If Lua can find a metamethod, it calls the metamethod with the two operands as arguments, and the result of the call (adjusted to one value) is the result of the operation. Otherwise, if no metamethod is found, Lua raises an error.\n"
+        },
+        {
+          "key": "__sub",
+          "paragraphs": 1,
+          "text": "\n__sub: the subtraction (-) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__mul",
+          "paragraphs": 1,
+          "text": "\n__mul: the multiplication (*) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__div",
+          "paragraphs": 1,
+          "text": "\n__div: the division (/) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__mod",
+          "paragraphs": 1,
+          "text": "\n__mod: the modulo (%) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__pow",
+          "paragraphs": 1,
+          "text": "\n__pow: the exponentiation (^) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__unm",
+          "paragraphs": 1,
+          "text": "\n__unm: the negation (unary -) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__idiv",
+          "paragraphs": 1,
+          "text": "\n__idiv: the floor division (//) operation. Behavior similar to the addition operation.\n"
+        },
+        {
+          "key": "__band",
+          "paragraphs": 1,
+          "text": "\n__band: the bitwise AND (&) operation. Behavior similar to the addition operation, except that Lua will try a metamethod if any operand is neither an integer nor a float coercible to an integer (see §3.4.3).\n"
+        },
+        {
+          "key": "__bor",
+          "paragraphs": 1,
+          "text": "\n__bor: the bitwise OR (|) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__bxor",
+          "paragraphs": 1,
+          "text": "\n__bxor: the bitwise exclusive OR (binary ~) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__bnot",
+          "paragraphs": 1,
+          "text": "\n__bnot: the bitwise NOT (unary ~) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__shl",
+          "paragraphs": 1,
+          "text": "\n__shl: the bitwise left shift (<<) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__shr",
+          "paragraphs": 1,
+          "text": "\n__shr: the bitwise right shift (>>) operation. Behavior similar to the bitwise AND operation.\n"
+        },
+        {
+          "key": "__concat",
+          "paragraphs": 1,
+          "text": "\n__concat: the concatenation (..) operation. Behavior similar to the addition operation, except that Lua will try a metamethod if any operand is neither a string nor a number (which is always coercible to a string).\n"
+        },
+        {
+          "key": "__len",
+          "paragraphs": 1,
+          "text": "\n__len: the length (#) operation. If the object is not a string, Lua will try its metamethod. If there is a metamethod, Lua calls it with the object as argument, and the result of the call (always adjusted to one value) is the result of the operation. If there is no metamethod but the object is a table, then Lua uses the table length operation (see §3.4.7). Otherwise, Lua raises an error.\n"
+        },
+        {
+          "key": "__eq",
+          "paragraphs": 1,
+          "text": "\n__eq: the equal (==) operation. Behavior similar to the addition operation, except that Lua will try a metamethod only when the values being compared are either both tables or both full userdata and they are not primitively equal. The result of the call is always converted to a boolean.\n"
+        },
+        {
+          "key": "__lt",
+          "paragraphs": 1,
+          "text": "\n__lt: the less than (<) operation. Behavior similar to the addition operation, except that Lua will try a metamethod only when the values being compared are neither both numbers nor both strings. Moreover, the result of the call is always converted to a boolean.\n"
+        },
+        {
+          "key": "__le",
+          "paragraphs": 1,
+          "text": "\n__le: the less equal (<=) operation. Behavior similar to the less than operation.\n"
+        },
+        {
+          "key": "__index",
+          "paragraphs": 2,
+          "text": "\n__index: The indexing access operation table[key]. This event happens when table is not a table or when key is not present in table. The metavalue is looked up in the metatable of table.\nThe metavalue for this event can be either a function, a table, or any value with an __index metavalue. If it is a function, it is called with table and key as arguments, and the result of the call (adjusted to one value) is the result of the operation. Otherwise, the final result is the result of indexing this metavalue with key. This indexing is regular, not raw, and therefore can trigger another __index metavalue.\n"
+        },
+        {
+          "key": "__newindex",
+          "paragraphs": 3,
+          "text": "\n__newindex: The indexing assignment table[key] = value. Like the index event, this event happens when table is not a table or when key is not present in table. The metavalue is looked up in the metatable of table.\nLike with indexing, the metavalue for this event can be either a function, a table, or any value with an __newindex metavalue. If it is a function, it is called with table, key, and value as arguments. Otherwise, Lua repeats the indexing assignment over this metavalue with the same key and value. This assignment is regular, not raw, and therefore can trigger another __newindex metavalue.\nWhenever a __newindex metavalue is invoked, Lua does not perform the primitive assignment. If needed, the metamethod itself can call rawset to do the assignment.\n"
+        },
+        {
+          "key": "__call",
+          "paragraphs": 1,
+          "text": "\n__call: The call operation func(args). This event happens when Lua tries to call a non-function value (that is, func is not a function). The metamethod is looked up in func. If present, the metamethod is called with func as its first argument, followed by the arguments of the original call (args). All results of the call are the results of the operation. This is the only metamethod that allows multiple results.\n"
+        }
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/03-error-handling",
+          "text": "     Previous  Error handling  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection",
+          "text": "  Next  Garbage collection     "
+        }
+      ],
+      "paragraphs": [
+        "Every value in Lua can have a metatable. This metatable is an ordinary Lua table that defines the behavior of the original value under certain events. You can change several aspects of the behavior of a value by setting specific fields in its metatable. For instance, when a non-numeric value is the operand of an addition, Lua checks for a function in the field __add of the value’s metatable. If it finds one, Lua calls this function to perform the addition.",
+        "The key for each event in a metatable is a string with the event name prefixed by two underscores; the corresponding value is called a metavalue. For most events, the metavalue must be a function, which is then called a metamethod. In the previous example, the key is the string “__add” and the metamethod is the function that performs the addition. Unless stated otherwise, a metamethod can in fact be any callable value, which is either a function or a value with a __call metamethod.",
+        "You can query the metatable of any value using the getmetatable function. Lua queries metamethods in metatables using a raw access (see rawget).",
+        "You can replace the metatable of tables using the setmetatable function. You cannot change the metatable of other types from Lua code, except by using the debug library (§6.11).",
+        "Tables and full userdata have individual metatables, although multiple tables and userdata can share their metatables. Values of all other types share one single metatable per type; that is, there is one single metatable for all numbers, one for all strings, etc. By default, a value has no metatable, but the string library sets a metatable for the string type (see §6.5).",
+        "A detailed list of operations controlled by metatables is given next. Each event is identified by its corresponding key. By convention, all metatable keys used by Lua are composed by two underscores followed by lowercase Latin letters.",
+        "In addition to the previous list, the interpreter also respects the following keys in metatables: __gc (see §2.5.3), __close (see §3.3.8), __mode (see §2.5.4), and __name. (The entry __name, when it contains a string, may be used by tostring and in error messages.)",
+        "For the unary operators (negation, length, and bitwise NOT), the metamethod is computed and called with a dummy second operand, equal to the first one. This extra operand is only to simplify Lua’s internals (by making these operators behave like a binary operation) and may be removed in future versions. For most uses this extra operand is irrelevant.",
+        "Because metatables are regular tables, they can contain arbitrary fields, not only the event names defined above. Some functions in the standard library (e.g., tostring) use other fields in metatables for their own purposes.",
+        "It is a good practice to add all needed metamethods to a table before setting it as a metatable of some object. In particular, the __gc metamethod works only when this order is followed (see §2.5.3). It is also a good practice to set the metatable of an object right after its creation."
+      ],
+      "pre": 0,
+      "scrollWidth": 375,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/04-metatables-and-metamethods/",
+      "locale": "en",
+      "viewport": "mobile",
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-getmetatable",
+          "text": "getmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawget",
+          "text": "rawget"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-setmetatable",
+          "text": "setmetatable"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/12-debug-library/#6.11",
+          "text": "§6.11"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5",
+          "text": "§6.5"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.3",
+          "text": "§3.4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.7",
+          "text": "§3.4.7"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-rawset",
+          "text": "rawset"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.8",
+          "text": "§3.3.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.4",
+          "text": "§2.5.4"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring",
+          "text": "tostring"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5.3",
+          "text": "§2.5.3"
+        }
+      ],
+      "navigationLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/03-error-handling",
+          "text": "     Previous  Error handling  "
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/05-garbage-collection",
+          "text": "  Next  Garbage collection     "
+        }
+      ]
+    }
+  ],
+  "console": [],
+  "interactions": [
+    {
+      "name": "JA rawset Enter and back",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-rawset",
+      "h1": "6.2 – 基本関数",
+      "returned": true
+    },
+    {
+      "name": "JA→English same page",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/04-metatables-and-metamethods/",
+      "h1": "2.4 – Metatables and Metamethods"
+    },
+    {
+      "name": "extra navigation observed and restored",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/05-garbage-collection/#2.5.4",
+      "h1": "2.5 – ガベージコレクション",
+      "trigger": "日本語共通キー段落の中央クリックが§2.5.4リンクに当たりGCへ移動。rawset試行はno matchで未実施。"
+    }
+  ],
+  "before": {
+    "paragraphs": 9,
+    "lastItemIncludedGc": true
+  },
+  "after": {
+    "paragraphs": 10,
+    "lastItemIncludedGc": false,
+    "indexParagraphs": 2,
+    "newindexParagraphs": 3
+  },
+  "limits": [
+    "GC/debug/basicfunctions参照先の本文は未レビュー。最初のrawset試行no-matchは通過扱いしない。戻った後の新規Enterと結果のみをpassedと記録。"
+  ]
+}
