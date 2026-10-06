@@ -1,0 +1,503 @@
+<div class="chapter-level-extent" id="Resource-Measurement">
+
+<h2 class="chapter" id="Measuring-Program-Resource-Use"><span>1 Measuring Program Resource Use<a class="copiable-link" href="#Measuring-Program-Resource-Use"> ¶</a></span></h2>
+<a class="index-entry-id" id="index-time"></a>
+<a class="index-entry-id" id="index-time-1"></a>
+<a class="index-entry-id" id="index-time-2"></a>
+<a class="index-entry-id" id="index-measurement"></a>
+<p>The <code class="code">time</code> command runs another program, then displays information
+about the resources used by that program, collected by the system while
+the program was running.  You can select which information is reported
+and the format in which it is shown (see <a class="pxref" href="#Setting-Format">Setting the Output Format</a>), or have
+<code class="code">time</code> save the information in a file instead of displaying it on the
+screen (see <a class="pxref" href="#Redirecting">Redirecting Output</a>).
+</p>
+<p>The resources that <code class="code">time</code> can report on fall into the general
+categories of time, memory, and I/O and IPC calls.  Some systems do not
+provide much information about program resource use; <code class="code">time</code>
+reports unavailable information as zero values (see <a class="pxref" href="#Accuracy">Accuracy</a>).
+</p>
+<p>The format of the <code class="code">time</code> command is:
+</p>
+<div class="example">
+<pre class="example-preformatted">time <span class="r">[</span>option...<span class="r">]</span> <var class="var">command</var> <span class="r">[</span><var class="var">arg</var>...<span class="r">]</span>
+</pre></div>
+<a class="index-entry-id" id="index-resources"></a>
+<p><code class="code">time</code> runs the program <var class="var">command</var>, with any given arguments
+<var class="var">arg</var>….  When <var class="var">command</var> finishes, <code class="code">time</code> displays
+information about resources used by <var class="var">command</var>.
+</p>
+<p>Here is an example of using <code class="code">time</code> to measure the time and other
+resources used by running the program <code class="code">grep</code>:
+</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time grep nobody /etc/aliases
+nobody:/dev/null
+etc-files:nobody
+misc-group:nobody
+0.07user 0.50system 0:06.69elapsed 8%CPU (0avgtext+489avgdata 324maxresident)k
+46inputs+7outputs (43major+251minor)pagefaults 0swaps
+</pre></div>
+<p>Mail suggestions and bug reports for GNU <code class="code">time</code> to
+<code class="code">bug-time@gnu.org</code>.  Please include the version of
+<code class="code">time</code>, which you can get by running ‘<samp class="samp">env time --version</samp>’, and
+the operating system and C compiler you used.
+</p>
+<ul class="mini-toc">
+<li><a accesskey="1" href="#Setting-Format">Setting the Output Format</a></li>
+<li><a accesskey="2" href="#Format-String">The Format String</a></li>
+<li><a accesskey="3" href="#Redirecting">Redirecting Output</a></li>
+<li><a accesskey="4" href="#Examples">Examples</a></li>
+<li><a accesskey="5" href="#Accuracy">Accuracy</a></li>
+<li><a accesskey="6" href="#Invoking-time">Running the <code class="code">time</code> Command</a></li>
+</ul>
+<hr/>
+<div class="section-level-extent" id="Setting-Format">
+
+<h3 class="section" id="Setting-the-Output-Format"><span>1.1 Setting the Output Format<a class="copiable-link" href="#Setting-the-Output-Format"> ¶</a></span></h3>
+<p><code class="code">time</code> uses a <em class="dfn">format string</em> to determine which information to
+display about the resources used by the command it runs.  See <a class="xref" href="#Format-String">The Format String</a>, for the interpretation of the format string contents.
+</p>
+<p>You can specify a format string with the command line options listed
+below.  If no format is specified on the command line, but the
+<code class="code">TIME</code> environment variable is set, its value is used as the format
+string.  Otherwise, the default format built into <code class="code">time</code> is used:
+</p>
+<div class="example">
+<pre class="example-preformatted">%Uuser %Ssystem %Eelapsed %PCPU (%Xtext+%Ddata %Mmax)k
+%Iinputs+%Ooutputs (%Fmajor+%Rminor)pagefaults %Wswaps
+</pre></div>
+<p>The command line options to set the format are:
+</p>
+<dl class="table">
+<dt><code class="code">-f <var class="var">format</var></code></dt>
+<dt><code class="code">--format=<var class="var">format</var></code></dt>
+<dd><p>Use <var class="var">format</var> as the format string.
+</p>
+</dd>
+<dt><code class="code">-p</code></dt>
+<dt><code class="code">--portability</code></dt>
+<dd><p>Use the following format string, for conformance with POSIX standard
+1003.2:
+</p>
+<div class="example">
+<pre class="example-preformatted">real %e
+user %U
+sys %S
+</pre></div>
+</dd>
+<dt><a id="index-format"></a><span><code class="code">-v</code><a class="copiable-link" href="#index-format"> ¶</a></span></dt>
+<dt><code class="code">--verbose</code></dt>
+<dd><p>Use the built-in verbose format, which displays each available piece of
+information on the program’s resource use on its own line, with an
+English description of its meaning.
+</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="section-level-extent" id="Format-String">
+
+<h3 class="section" id="The-Format-String"><span>1.2 The Format String<a class="copiable-link" href="#The-Format-String"> ¶</a></span></h3>
+<a class="index-entry-id" id="index-format-1"></a>
+<a class="index-entry-id" id="index-resource"></a>
+<p>The <em class="dfn">format string</em> controls the contents of the <code class="code">time</code> output.
+It consists of <em class="dfn">resource specifiers</em> and <em class="dfn">escapes</em>, interspersed
+with plain text.
+</p>
+<p>A backslash introduces an <em class="dfn">escape</em>, which is translated
+into a single printing character upon output.  The valid escapes are
+listed below.  An invalid escape is output as a question mark followed
+by a backslash.
+</p>
+<dl class="table">
+<dt><code class="code">\t</code></dt>
+<dd><p>a tab character
+</p>
+</dd>
+<dt><code class="code">\n</code></dt>
+<dd><p>a newline
+</p>
+</dd>
+<dt><code class="code">\\</code></dt>
+<dd><p>a literal backslash
+</p></dd>
+</dl>
+<p><code class="code">time</code> always prints a newline after printing the resource use
+information, so normally format strings do not end with a newline
+character (or ‘<samp class="samp">\n</samp>’).
+</p>
+<p>A resource specifier consists of a percent sign followed by another
+character.  An invalid resource specifier is output as a question mark
+followed by the invalid character.  Use ‘<samp class="samp">%%</samp>’ to output a literal
+percent sign.
+</p>
+<p>The resource specifiers, which are a superset of those recognized by the
+<code class="code">tcsh</code> builtin <code class="code">time</code> command, are listed below.  Not all
+resources are measured by all versions of Unix, so some of the values
+might be reported as zero (see <a class="pxref" href="#Accuracy">Accuracy</a>).
+</p>
+<ul class="mini-toc">
+<li><a accesskey="1" href="#Time-Resources">Time Resources</a></li>
+<li><a accesskey="2" href="#Memory-Resources">Memory Resources</a></li>
+<li><a accesskey="3" href="#I_002fO-Resources">I/O Resources</a></li>
+<li><a accesskey="4" href="#Command-Info">Command Info</a></li>
+<li><a accesskey="5" href="#Termination-Status">Termination Status</a></li>
+</ul>
+<hr/>
+<div class="subsection-level-extent" id="Time-Resources">
+
+<h4 class="subsection" id="Time-Resources-1"><span>1.2.1 Time Resources<a class="copiable-link" href="#Time-Resources-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">E</code></dt>
+<dd><p>Elapsed real (wall clock) time used by the process, in
+[hours:]minutes:seconds.
+</p>
+</dd>
+<dt><code class="code">e</code></dt>
+<dd><p>Elapsed real (wall clock) time used by the process, in
+seconds.
+</p>
+</dd>
+<dt><code class="code">S</code></dt>
+<dd><p>Total number of CPU-seconds used by the system on behalf of the process
+(in kernel mode), in seconds.
+</p>
+</dd>
+<dt><code class="code">U</code></dt>
+<dd><p>Total number of CPU-seconds that the process used directly (in user
+mode), in seconds.
+</p>
+</dd>
+<dt><code class="code">P</code></dt>
+<dd><p>Percentage of the CPU that this job got.  This is just user + system
+times divied by the total running time.
+</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="Memory-Resources">
+
+<h4 class="subsection" id="Memory-Resources-1"><span>1.2.2 Memory Resources<a class="copiable-link" href="#Memory-Resources-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">M</code></dt>
+<dd><p>Maximum resident set size of the process during its lifetime, in
+Kilobytes.
+</p>
+</dd>
+<dt><code class="code">t</code></dt>
+<dd><p>Average resident set size of the process, in Kilobytes.
+</p>
+</dd>
+<dt><code class="code">K</code></dt>
+<dd><p>Average total (data+stack+text) memory use of the process, in Kilobytes.
+</p>
+</dd>
+<dt><code class="code">D</code></dt>
+<dd><p>Average size of the process’s unshared data area, in Kilobytes.
+</p>
+</dd>
+<dt><code class="code">p</code></dt>
+<dd><p>Average size of the process’s unshared stack, in Kilobytes.
+</p>
+</dd>
+<dt><code class="code">X</code></dt>
+<dd><p>Average size of the process’s shared text, in Kilobytes.
+</p>
+</dd>
+<dt><code class="code">Z</code></dt>
+<dd><p>System’s page size, in bytes.  This is a per-system constant, but
+varies between systems.
+</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="I_002fO-Resources">
+
+<h4 class="subsection" id="I_002fO-Resources-1"><span>1.2.3 I/O Resources<a class="copiable-link" href="#I_002fO-Resources-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">F</code></dt>
+<dd><p>Number of major, or I/O-requiring, page faults that occurred while the
+process was running.  These are faults where the page has actually
+migrated out of primary memory.
+</p>
+</dd>
+<dt><code class="code">R</code></dt>
+<dd><p>Number of minor, or recoverable, page faults.  These are pages that are
+not valid (so they fault) but which have not yet been claimed by other
+virtual pages.  Thus the data in the page is still valid but the system
+tables must be updated.
+</p>
+</dd>
+<dt><code class="code">W</code></dt>
+<dd><p>Number of times the process was swapped out of main memory.
+</p>
+</dd>
+<dt><code class="code">c</code></dt>
+<dd><p>Number of times the process was context-switched involuntarily (because
+the time slice expired).
+</p>
+</dd>
+<dt><code class="code">w</code></dt>
+<dd><p>Number of times that the program was context-switched voluntarily, for
+instance while waiting for an I/O operation to complete.
+</p>
+</dd>
+<dt><code class="code">I</code></dt>
+<dd><p>Number of file system inputs by the process.
+</p>
+</dd>
+<dt><code class="code">O</code></dt>
+<dd><p>Number of file system outputs by the process.
+</p>
+</dd>
+<dt><code class="code">r</code></dt>
+<dd><p>Number of socket messages received by the process.
+</p>
+</dd>
+<dt><code class="code">s</code></dt>
+<dd><p>Number of socket messages sent by the process.
+</p>
+</dd>
+<dt><code class="code">k</code></dt>
+<dd><p>Number of signals delivered to the process.
+</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="Command-Info">
+
+<h4 class="subsection" id="Command-Info-1"><span>1.2.4 Command Info<a class="copiable-link" href="#Command-Info-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">C</code></dt>
+<dd><p>Name and command line arguments of the command being timed.
+</p>
+</dd>
+<dt><code class="code">x</code></dt>
+<dd><p>Exit status of the command.
+</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="Termination-Status">
+
+<h4 class="subsection" id="Termination-Status-1"><span>1.2.5 Termination Status<a class="copiable-link" href="#Termination-Status-1"> ¶</a></span></h4>
+<p>The following are <em class="emph">two-letter specifiers</em>:
+</p>
+<dl class="table">
+<dt><code class="code">%Tt</code></dt>
+<dd><p>Exit type: the text ‘<samp class="samp">normal</samp>’ or ‘<samp class="samp">signalled</samp>’, depending on
+how the command terminated. ‘<samp class="samp">normal</samp>’ means the program terminated
+with any exit code, not just a zero exit code.
+</p>
+</dd>
+<dt><code class="code">%Tx</code></dt>
+<dd><p>Numeric exit code <em class="emph">if</em> the command exited normally (i.e., not terminated
+by a signal). This value is similar to ‘<samp class="samp">%x</samp>’ format specifier, except that
+unlike ‘<samp class="samp">%x</samp>’, this will be <em class="emph">empty</em> if the program was terminated by a
+signal.
+</p>
+</dd>
+<dt><code class="code">%Tn</code></dt>
+<dd><p>Numeric signal code <em class="emph">if</em> the command was terminated by a signal (e.g.,
+the value ‘<samp class="samp">9</samp>’ if the program was terminated by SIGKILL).
+Empty if the program exited normally (i.e., not terminated by a signal).
+</p>
+</dd>
+<dt><code class="code">%Ts</code></dt>
+<dd><p>Signal name <em class="emph">if</em> the command was terminated by a signal (e.g.,
+‘<samp class="samp">KILL</samp>’ if the program was terminated by SIGKILL).
+Empty if the program exited normally (i.e., not terminated by a signal).
+</p>
+</dd>
+<dt><code class="code">%To</code></dt>
+<dd><p>The text ‘<samp class="samp">ok</samp>’ <em class="emph">if</em> the command exited normally (i.e., not signalled)
+and with exit code zero. Empty otherwise.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>
+</div>
+<div class="section-level-extent" id="Redirecting">
+
+<h3 class="section" id="Redirecting-Output"><span>1.3 Redirecting Output<a class="copiable-link" href="#Redirecting-Output"> ¶</a></span></h3>
+<p>By default, <code class="code">time</code> writes the resource use statistics to the
+standard error stream.  The options below make it write the statistics
+to a file instead.  Doing this can be useful if the program you’re
+running writes to the standard error or you’re running <code class="code">time</code>
+noninteractively or in the background.
+</p>
+<dl class="table">
+<dt><code class="code">-o <var class="var">file</var></code></dt>
+<dt><code class="code">--output=<var class="var">file</var></code></dt>
+<dd><p>Write the resource use statistics to <var class="var">file</var>.  By default, this
+<em class="emph">overwrites</em> the file, destroying the file’s previous contents.
+</p>
+</dd>
+<dt><code class="code">-a</code></dt>
+<dt><code class="code">--append</code></dt>
+<dd><p><em class="emph">Append</em> the resource use information to the output file instead
+of overwriting it.  This option is only useful with the ‘<samp class="samp">-o</samp>’ or
+‘<samp class="samp">--output</samp>’ option.
+</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="section-level-extent" id="Examples">
+
+<h3 class="section" id="Examples-1"><span>1.4 Examples<a class="copiable-link" href="#Examples-1"> ¶</a></span></h3>
+<p>Run the command ‘<samp class="samp">wc /etc/hosts</samp>’ and show the default information:
+</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time wc /etc/hosts
+      35     111    1134 /etc/hosts
+0.00user 0.01system 0:00.04elapsed 25%CPU (0avgtext+0avgdata 0maxresident)k
+1inputs+1outputs (0major+0minor)pagefaults 0swaps
+</pre></div>
+<p>Run the command ‘<samp class="samp">ls -Fs</samp>’ and show just the user, system, and
+wall-clock time:
+</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time -f "\t%E real,\t%U user,\t%S sys" ls -Fs
+total 16
+1 account/      1 db/           1 mail/         1 run/
+1 backups/      1 emacs/        1 msgs/         1 rwho/
+1 crash/        1 games/        1 preserve/     1 spool/
+1 cron/         1 log/          1 quotas/       1 tmp/
+        0:00.03 real,   0.00 user,      0.01 sys
+</pre></div>
+<p>Edit the file <samp class="file">.bashrc</samp> and have <code class="code">time</code> append the elapsed time
+and number of signals to the file <samp class="file">log</samp>, reading the format string
+from the environment variable <code class="code">TIME</code>:
+</p>
+<div class="example">
+<pre class="example-preformatted">eg$ export TIME="\t%E,\t%k" #<span class="r"> If using bash or ksh</span>
+eg$ setenv TIME "\t%E,\t%k" #<span class="r"> If using csh or tcsh</span>
+eg$ time -a -o log emacs .bashrc
+eg$ cat log
+        0:16.55,        726
+</pre></div>
+<p>Run the command ‘<samp class="samp">sleep 4</samp>’ and show all of the information about it
+verbosely:
+</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time -v sleep 4
+        Command being timed: "sleep 4"
+        User time (seconds): 0.00
+        System time (seconds): 0.05
+        Percent of CPU this job got: 1%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.26
+        Average shared text size (kbytes): 36
+        Average unshared data size (kbytes): 24
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 60
+        Maximum resident set size (kbytes): 32
+        Average resident set size (kbytes): 24
+        Major (requiring I/O) page faults: 3
+        Minor (reclaiming a frame) page faults: 0
+        Voluntary context switches: 11
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 3
+        File system outputs: 1
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 1
+        Page size (bytes): 4096
+        Exit status: 0
+</pre></div>
+<hr/>
+</div>
+<div class="section-level-extent" id="Accuracy">
+
+<h3 class="section" id="Accuracy-1"><span>1.5 Accuracy<a class="copiable-link" href="#Accuracy-1"> ¶</a></span></h3>
+<a class="index-entry-id" id="index-error-_0028in-measurement_0029"></a>
+<p>The elapsed time is not collected atomically with the execution of the
+program; as a result, in bizarre circumstances (if the <code class="code">time</code>
+command gets stopped or swapped out in between when the program being
+timed exits and when <code class="code">time</code> calculates how long it took to run), it
+could be much larger than the actual execution time.
+</p>
+<p>When the running time of a command is very nearly zero, some values
+(e.g., the percentage of CPU used) may be reported as either zero (which
+is wrong) or a question mark.
+</p>
+<p>Most information shown by <code class="code">time</code> is derived from the
+<code class="code">getrusage</code> system call.  The numbers are only as good as those
+returned by <code class="code">getrusage</code>.  Many systems do not measure all of the
+resources that <code class="code">time</code> can report on; those resources are reported
+as zero.  The systems that measure most or all of the resources are
+based on 4.2 or 4.3BSD.  Later BSD releases use different memory
+management code that measures fewer resources.
+</p>
+<p>On systems that do not have a <code class="code">getrusage</code> call, the <code class="code">times</code>
+system call is used instead.  It provides much less information than
+<code class="code">getrusage</code>, so on those systems <code class="code">time</code> reports most of the
+resources as zero.
+</p>
+<p>The ‘<samp class="samp">%I</samp>’ and ‘<samp class="samp">%O</samp>’ values are allegedly only “real” input
+and output and do not include those supplied by caching devices.  The
+meaning of “real” I/O reported by ‘<samp class="samp">%I</samp>’ and ‘<samp class="samp">%O</samp>’ may be
+muddled for workstations, especially diskless ones.
+</p>
+<hr/>
+</div>
+<div class="section-level-extent" id="Invoking-time">
+
+<h3 class="section" id="Running-the-time-Command"><span>1.6 Running the <code class="code">time</code> Command<a class="copiable-link" href="#Running-the-time-Command"> ¶</a></span></h3>
+<p>The format of the <code class="code">time</code> command is:
+</p>
+<div class="example">
+<pre class="example-preformatted">time <span class="r">[</span>option...<span class="r">]</span> <var class="var">command</var> <span class="r">[</span><var class="var">arg</var>...<span class="r">]</span>
+</pre></div>
+<a class="index-entry-id" id="index-resources-1"></a>
+<p><code class="code">time</code> runs the program <var class="var">command</var>, with any given arguments
+<var class="var">arg</var>….  When <var class="var">command</var> finishes, <code class="code">time</code> displays
+information about resources used by <var class="var">command</var> (on the standard error
+output, by default).  If <var class="var">command</var> exits with non-zero status or is
+terminated by a signal, <code class="code">time</code> displays a warning message and the
+exit status or signal number.
+</p>
+<p>Options to <code class="code">time</code> must appear on the command line before
+<var class="var">command</var>.  Anything on the command line after <var class="var">command</var> is
+passed as arguments to <var class="var">command</var>.
+</p>
+<dl class="table">
+<dt><code class="code">-o <var class="var">file</var></code></dt>
+<dt><code class="code">--output=<var class="var">file</var></code></dt>
+<dd><p>Write the resource use statistics to <var class="var">file</var>.
+</p>
+</dd>
+<dt><code class="code">-a</code></dt>
+<dt><code class="code">--append</code></dt>
+<dd><p><em class="emph">Append</em> the resource use information to the output file instead
+of overwriting it.
+</p>
+</dd>
+<dt><code class="code">-f <var class="var">format</var></code></dt>
+<dt><code class="code">--format=<var class="var">format</var></code></dt>
+<dd><p>Use <var class="var">format</var> as the format string.
+</p>
+</dd>
+<dt><code class="code">--help</code></dt>
+<dd><p>Print a summary of the command line options to <code class="code">time</code> and exit.
+</p>
+</dd>
+<dt><code class="code">-p</code></dt>
+<dt><code class="code">--portability</code></dt>
+<dd><p>Use the POSIX format.
+</p>
+</dd>
+<dt><a id="index-format-2"></a><span><code class="code">-v</code><a class="copiable-link" href="#index-format-2"> ¶</a></span></dt>
+<dt><code class="code">--verbose</code></dt>
+<dd><p>Use the built-in verbose format.
+</p>
+</dd>
+<dt><a id="index-version-number"></a><span><code class="code">-V</code><a class="copiable-link" href="#index-version-number"> ¶</a></span></dt>
+<dt><code class="code">--version</code></dt>
+<dd><p>Print the version number of <code class="code">time</code> and exit.
+</p></dd>
+</dl>
+<hr/>
+</div>
+</div>

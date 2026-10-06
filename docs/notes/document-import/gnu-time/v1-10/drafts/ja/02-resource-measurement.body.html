@@ -1,0 +1,272 @@
+<div class="chapter-level-extent" id="Resource-Measurement">
+<h2 class="chapter" id="Measuring-Program-Resource-Use"><span>1 プログラムのリソース使用量を測定する<a class="copiable-link" href="#Measuring-Program-Resource-Use"> ¶</a></span></h2>
+<a class="index-entry-id" id="index-time"></a>
+<a class="index-entry-id" id="index-time-1"></a>
+<a class="index-entry-id" id="index-time-2"></a>
+<a class="index-entry-id" id="index-measurement"></a>
+<p><code class="code">time</code> コマンドは別のプログラムを実行し、その実行中にシステムが収集した、そのプログラムのリソース使用量を表示します。報告する情報と表示形式を選択できます（<a class="pxref" href="#Setting-Format">出力形式の設定</a>を参照）。また、<code class="code">time</code> に情報を画面へ表示させる代わりにファイルへ保存させることもできます（<a class="pxref" href="#Redirecting">出力のリダイレクト</a>を参照）。</p>
+<p><code class="code">time</code> が報告できるリソースは、大きく時間、メモリ、I/OおよびIPC呼び出しに分類されます。システムによっては、プログラムのリソース使用量に関する情報があまり提供されません。<code class="code">time</code> は取得できない情報をゼロとして報告します（<a class="pxref" href="#Accuracy">精度</a>を参照）。</p>
+<p><code class="code">time</code> コマンドの形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">time <span class="r">[</span>option...<span class="r">]</span> <var class="var">command</var> <span class="r">[</span><var class="var">arg</var>...<span class="r">]</span>&#10;</pre></div>
+<a class="index-entry-id" id="index-resources"></a>
+<p><code class="code">time</code> は、指定された引数 <var class="var">arg</var>… を渡してプログラム <var class="var">command</var> を実行します。<var class="var">command</var> が終了すると、<code class="code">time</code> は <var class="var">command</var> のリソース使用量を表示します。</p>
+<p>次の例では、<code class="code">time</code> を使ってプログラム <code class="code">grep</code> の実行に要した時間やその他のリソースを測定します。</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time grep nobody /etc/aliases&#10;nobody:/dev/null&#10;etc-files:nobody&#10;misc-group:nobody&#10;0.07user 0.50system 0:06.69elapsed 8%CPU (0avgtext+489avgdata 324maxresident)k&#10;46inputs+7outputs (43major+251minor)pagefaults 0swaps&#10;</pre></div>
+<p>GNU <code class="code">time</code> への提案やバグ報告は <code class="code">bug-time@gnu.org</code> 宛てにメールで送ってください。<code class="code">time</code> のバージョン（「<samp class="samp">env time --version</samp>」で取得できます）、使用したオペレーティングシステムとCコンパイラを含めてください。</p>
+<ul class="mini-toc">
+<li><a accesskey="1" href="#Setting-Format">出力形式の設定</a></li>
+<li><a accesskey="2" href="#Format-String">書式文字列</a></li>
+<li><a accesskey="3" href="#Redirecting">出力のリダイレクト</a></li>
+<li><a accesskey="4" href="#Examples">例</a></li>
+<li><a accesskey="5" href="#Accuracy">精度</a></li>
+<li><a accesskey="6" href="#Invoking-time"><code class="code">time</code> コマンドの実行</a></li>
+</ul>
+<hr/>
+<div class="section-level-extent" id="Setting-Format">
+<h3 class="section" id="Setting-the-Output-Format"><span>1.1 出力形式の設定<a class="copiable-link" href="#Setting-the-Output-Format"> ¶</a></span></h3>
+<p><code class="code">time</code> は、実行するコマンドのリソース使用量についてどの情報を表示するかを、<em class="dfn">書式文字列</em>で決定します。書式文字列の内容の解釈については、<a class="xref" href="#Format-String">書式文字列</a>を参照してください。</p>
+<p>以下のコマンドラインオプションで書式文字列を指定できます。コマンドラインで書式が指定されていなくても、環境変数 <code class="code">TIME</code> が設定されていれば、その値が書式文字列として使われます。それ以外の場合は、<code class="code">time</code> に組み込まれた既定の書式が使われます。</p>
+<div class="example">
+<pre class="example-preformatted">%Uuser %Ssystem %Eelapsed %PCPU (%Xtext+%Ddata %Mmax)k&#10;%Iinputs+%Ooutputs (%Fmajor+%Rminor)pagefaults %Wswaps&#10;</pre></div>
+<p>書式を設定するコマンドラインオプションは次のとおりです。</p>
+<dl class="table">
+<dt><code class="code">-f <var class="var">format</var></code></dt>
+<dt><code class="code">--format=<var class="var">format</var></code></dt>
+<dd><p><var class="var">format</var> を書式文字列として使います。</p>
+</dd>
+<dt><code class="code">-p</code></dt>
+<dt><code class="code">--portability</code></dt>
+<dd><p>POSIX標準1003.2に適合する、次の書式文字列を使います。</p>
+<div class="example">
+<pre class="example-preformatted">real %e&#10;user %U&#10;sys %S&#10;</pre></div>
+</dd>
+<dt><a id="index-format"></a><span><code class="code">-v</code><a class="copiable-link" href="#index-format"> ¶</a></span></dt>
+<dt><code class="code">--verbose</code></dt>
+<dd><p>組み込みの詳細書式を使います。プログラムのリソース使用量について取得できる情報を、意味を説明する英語の記述とともに、情報ごとに1行ずつ表示します。</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="section-level-extent" id="Format-String">
+<h3 class="section" id="The-Format-String"><span>1.2 書式文字列<a class="copiable-link" href="#The-Format-String"> ¶</a></span></h3>
+<a class="index-entry-id" id="index-format-1"></a>
+<a class="index-entry-id" id="index-resource"></a>
+<p><em class="dfn">書式文字列</em>は <code class="code">time</code> の出力内容を制御します。通常のテキストの間に<em class="dfn">リソース指定子</em>と<em class="dfn">エスケープ</em>を挟んで構成します。</p>
+<p>バックスラッシュは<em class="dfn">エスケープ</em>を開始し、出力時には単一の出力文字に変換されます。有効なエスケープを以下に示します。無効なエスケープは、疑問符に続けてバックスラッシュを出力します。</p>
+<dl class="table">
+<dt><code class="code">\t</code></dt>
+<dd><p>タブ文字</p>
+</dd>
+<dt><code class="code">\n</code></dt>
+<dd><p>改行</p>
+</dd>
+<dt><code class="code">\\</code></dt>
+<dd><p>バックスラッシュそのもの</p></dd>
+</dl>
+<p><code class="code">time</code> はリソース使用量を表示した後、必ず改行を出力するため、通常、書式文字列の末尾には改行文字（または「<samp class="samp">\n</samp>」）を付けません。</p>
+<p>リソース指定子は、パーセント記号とそれに続く1文字で構成します。無効なリソース指定子は、疑問符に続けてその無効な文字を出力します。パーセント記号そのものを出力するには「<samp class="samp">%%</samp>」を使います。</p>
+<p>リソース指定子を以下に示します。これらは <code class="code">tcsh</code> の組み込み <code class="code">time</code> コマンドが認識する指定子を包含します。Unixのすべてのバージョンですべてのリソースが測定されるわけではないため、一部の値はゼロとして報告されることがあります（<a class="pxref" href="#Accuracy">精度</a>を参照）。</p>
+<ul class="mini-toc">
+<li><a accesskey="1" href="#Time-Resources">時間リソース</a></li>
+<li><a accesskey="2" href="#Memory-Resources">メモリリソース</a></li>
+<li><a accesskey="3" href="#I_002fO-Resources">I/Oリソース</a></li>
+<li><a accesskey="4" href="#Command-Info">コマンド情報</a></li>
+<li><a accesskey="5" href="#Termination-Status">終了状態</a></li>
+</ul>
+<hr/>
+<div class="subsection-level-extent" id="Time-Resources">
+<h4 class="subsection" id="Time-Resources-1"><span>1.2.1 時間リソース<a class="copiable-link" href="#Time-Resources-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">E</code></dt>
+<dd><p>プロセスが使用した実経過時間（壁時計時間）。形式は [時:]分:秒です。</p>
+</dd>
+<dt><code class="code">e</code></dt>
+<dd><p>プロセスが使用した実経過時間（壁時計時間）。単位は秒です。</p>
+</dd>
+<dt><code class="code">S</code></dt>
+<dd><p>システムがプロセスのためにカーネルモードで使用したCPU時間の合計。単位はCPU秒です。</p>
+</dd>
+<dt><code class="code">U</code></dt>
+<dd><p>プロセスがユーザーモードで直接使用したCPU時間の合計。単位はCPU秒です。</p>
+</dd>
+<dt><code class="code">P</code></dt>
+<dd><p>このジョブが得たCPUの割合。ユーザー時間とシステム時間の和を総実行時間で割った値です。</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="Memory-Resources">
+<h4 class="subsection" id="Memory-Resources-1"><span>1.2.2 メモリリソース<a class="copiable-link" href="#Memory-Resources-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">M</code></dt>
+<dd><p>プロセスの生存期間中の最大常駐セットサイズ。単位はキロバイトです。</p>
+</dd>
+<dt><code class="code">t</code></dt>
+<dd><p>プロセスの平均常駐セットサイズ。単位はキロバイトです。</p>
+</dd>
+<dt><code class="code">K</code></dt>
+<dd><p>プロセスの平均総メモリ使用量（データ＋スタック＋テキスト）。単位はキロバイトです。</p>
+</dd>
+<dt><code class="code">D</code></dt>
+<dd><p>プロセスの非共有データ領域の平均サイズ。単位はキロバイトです。</p>
+</dd>
+<dt><code class="code">p</code></dt>
+<dd><p>プロセスの非共有スタックの平均サイズ。単位はキロバイトです。</p>
+</dd>
+<dt><code class="code">X</code></dt>
+<dd><p>プロセスの共有テキストの平均サイズ。単位はキロバイトです。</p>
+</dd>
+<dt><code class="code">Z</code></dt>
+<dd><p>システムのページサイズ。単位はバイトです。各システム内では一定ですが、システム間では異なります。</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="I_002fO-Resources">
+<h4 class="subsection" id="I_002fO-Resources-1"><span>1.2.3 I/Oリソース<a class="copiable-link" href="#I_002fO-Resources-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">F</code></dt>
+<dd><p>プロセスの実行中に発生したメジャーページフォールト、すなわちI/Oを必要とするページフォールトの回数。ページが実際に主記憶から移動している場合のフォールトです。</p>
+</dd>
+<dt><code class="code">R</code></dt>
+<dd><p>マイナーページフォールト、すなわち回復可能なページフォールトの回数。これらのページは有効でないためフォールトが発生しますが、まだ他の仮想ページに割り当てられていません。このため、ページ内のデータは依然として有効ですが、システムの管理表を更新する必要があります。</p>
+</dd>
+<dt><code class="code">W</code></dt>
+<dd><p>プロセスが主記憶からスワップアウトされた回数。</p>
+</dd>
+<dt><code class="code">c</code></dt>
+<dd><p>プロセスが非自発的にコンテキスト切り替えされた回数（タイムスライスが終了したため）。</p>
+</dd>
+<dt><code class="code">w</code></dt>
+<dd><p>プログラムが自発的にコンテキスト切り替えされた回数。たとえば、I/O操作の完了を待っている場合です。</p>
+</dd>
+<dt><code class="code">I</code></dt>
+<dd><p>プロセスによるファイルシステム入力の回数。</p>
+</dd>
+<dt><code class="code">O</code></dt>
+<dd><p>プロセスによるファイルシステム出力の回数。</p>
+</dd>
+<dt><code class="code">r</code></dt>
+<dd><p>プロセスが受信したソケットメッセージの数。</p>
+</dd>
+<dt><code class="code">s</code></dt>
+<dd><p>プロセスが送信したソケットメッセージの数。</p>
+</dd>
+<dt><code class="code">k</code></dt>
+<dd><p>プロセスへ配信されたシグナルの数。</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="Command-Info">
+<h4 class="subsection" id="Command-Info-1"><span>1.2.4 コマンド情報<a class="copiable-link" href="#Command-Info-1"> ¶</a></span></h4>
+<dl class="table">
+<dt><code class="code">C</code></dt>
+<dd><p>測定対象コマンドの名前とコマンドライン引数。</p>
+</dd>
+<dt><code class="code">x</code></dt>
+<dd><p>コマンドの終了ステータス。</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="subsection-level-extent" id="Termination-Status">
+<h4 class="subsection" id="Termination-Status-1"><span>1.2.5 終了状態<a class="copiable-link" href="#Termination-Status-1"> ¶</a></span></h4>
+<p>以下は<em class="emph">2文字の指定子</em>です。</p>
+<dl class="table">
+<dt><code class="code">%Tt</code></dt>
+<dd><p>終了の種類。コマンドの終了のしかたに応じて、「<samp class="samp">normal</samp>」または「<samp class="samp">signalled</samp>」というテキストになります。「<samp class="samp">normal</samp>」は、終了コードがゼロの場合に限らず、任意の終了コードでプログラムが終了したことを意味します。</p>
+</dd>
+<dt><code class="code">%Tx</code></dt>
+<dd><p>コマンドが正常に終了した<em class="emph">場合</em>（シグナルで終了していない場合）の数値の終了コード。「<samp class="samp">%x</samp>」書式指定子と似ていますが、「<samp class="samp">%x</samp>」とは異なり、プログラムがシグナルで終了した場合は<em class="emph">空</em>になります。</p>
+</dd>
+<dt><code class="code">%Tn</code></dt>
+<dd><p>コマンドがシグナルで終了した<em class="emph">場合</em>の数値のシグナル番号（たとえば、SIGKILLで終了した場合の「<samp class="samp">9</samp>」）。プログラムが正常に終了した場合（シグナルで終了していない場合）は空になります。</p>
+</dd>
+<dt><code class="code">%Ts</code></dt>
+<dd><p>コマンドがシグナルで終了した<em class="emph">場合</em>のシグナル名（たとえば、SIGKILLで終了した場合の「<samp class="samp">KILL</samp>」）。プログラムが正常に終了した場合（シグナルで終了していない場合）は空になります。</p>
+</dd>
+<dt><code class="code">%To</code></dt>
+<dd><p>コマンドが正常に終了し（シグナルによる終了でなく）、終了コードがゼロである<em class="emph">場合</em>は「<samp class="samp">ok</samp>」というテキスト。それ以外の場合は空になります。</p>
+</dd>
+</dl>
+<hr/>
+</div>
+</div>
+<div class="section-level-extent" id="Redirecting">
+<h3 class="section" id="Redirecting-Output"><span>1.3 出力のリダイレクト<a class="copiable-link" href="#Redirecting-Output"> ¶</a></span></h3>
+<p>既定では、<code class="code">time</code> はリソース使用統計を標準エラー出力へ書き出します。以下のオプションでは、代わりにファイルへ書き出します。実行するプログラムが標準エラー出力へ書き込む場合や、<code class="code">time</code> を対話なしで、またはバックグラウンドで実行する場合に役立ちます。</p>
+<dl class="table">
+<dt><code class="code">-o <var class="var">file</var></code></dt>
+<dt><code class="code">--output=<var class="var">file</var></code></dt>
+<dd><p>リソース使用統計を <var class="var">file</var> へ書き出します。既定ではファイルを<em class="emph">上書き</em>し、それまでの内容を破棄します。</p>
+</dd>
+<dt><code class="code">-a</code></dt>
+<dt><code class="code">--append</code></dt>
+<dd><p>出力ファイルを上書きする代わりに、リソース使用情報を<em class="emph">追記</em>します。このオプションは「<samp class="samp">-o</samp>」または「<samp class="samp">--output</samp>」オプションと併用した場合にのみ有用です。</p></dd>
+</dl>
+<hr/>
+</div>
+<div class="section-level-extent" id="Examples">
+<h3 class="section" id="Examples-1"><span>1.4 例<a class="copiable-link" href="#Examples-1"> ¶</a></span></h3>
+<p>コマンド「<samp class="samp">wc /etc/hosts</samp>」を実行して、既定の情報を表示します。</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time wc /etc/hosts&#10;      35     111    1134 /etc/hosts&#10;0.00user 0.01system 0:00.04elapsed 25%CPU (0avgtext+0avgdata 0maxresident)k&#10;1inputs+1outputs (0major+0minor)pagefaults 0swaps&#10;</pre></div>
+<p>コマンド「<samp class="samp">ls -Fs</samp>」を実行して、ユーザー時間、システム時間、壁時計時間だけを表示します。</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time -f "\t%E real,\t%U user,\t%S sys" ls -Fs&#10;total 16&#10;1 account/      1 db/           1 mail/         1 run/&#10;1 backups/      1 emacs/        1 msgs/         1 rwho/&#10;1 crash/        1 games/        1 preserve/     1 spool/&#10;1 cron/         1 log/          1 quotas/       1 tmp/&#10;        0:00.03 real,   0.00 user,      0.01 sys&#10;</pre></div>
+<p>ファイル <samp class="file">.bashrc</samp> を編集し、環境変数 <code class="code">TIME</code> から書式文字列を読み取って、<code class="code">time</code> に経過時間とシグナル数をファイル <samp class="file">log</samp> へ追記させます。</p>
+<div class="example">
+<pre class="example-preformatted">eg$ export TIME="\t%E,\t%k" #<span class="r"> If using bash or ksh</span>&#10;eg$ setenv TIME "\t%E,\t%k" #<span class="r"> If using csh or tcsh</span>&#10;eg$ time -a -o log emacs .bashrc&#10;eg$ cat log&#10;        0:16.55,        726&#10;</pre></div>
+<p>コマンド「<samp class="samp">sleep 4</samp>」を実行し、その情報をすべて詳細に表示します。</p>
+<div class="example">
+<pre class="example-preformatted">eg$ time -v sleep 4&#10;        Command being timed: "sleep 4"&#10;        User time (seconds): 0.00&#10;        System time (seconds): 0.05&#10;        Percent of CPU this job got: 1%&#10;        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.26&#10;        Average shared text size (kbytes): 36&#10;        Average unshared data size (kbytes): 24&#10;        Average stack size (kbytes): 0&#10;        Average total size (kbytes): 60&#10;        Maximum resident set size (kbytes): 32&#10;        Average resident set size (kbytes): 24&#10;        Major (requiring I/O) page faults: 3&#10;        Minor (reclaiming a frame) page faults: 0&#10;        Voluntary context switches: 11&#10;        Involuntary context switches: 0&#10;        Swaps: 0&#10;        File system inputs: 3&#10;        File system outputs: 1&#10;        Socket messages sent: 0&#10;        Socket messages received: 0&#10;        Signals delivered: 1&#10;        Page size (bytes): 4096&#10;        Exit status: 0&#10;</pre></div>
+<hr/>
+</div>
+<div class="section-level-extent" id="Accuracy">
+<h3 class="section" id="Accuracy-1"><span>1.5 精度<a class="copiable-link" href="#Accuracy-1"> ¶</a></span></h3>
+<a class="index-entry-id" id="index-error-_0028in-measurement_0029"></a>
+<p>経過時間の収集は、プログラムの実行と不可分な操作として行われません。そのため、特殊な状況（測定対象のプログラムが終了してから <code class="code">time</code> が実行時間を計算するまでの間に、<code class="code">time</code> コマンドが停止したりスワップアウトされたりした場合）には、実際の実行時間よりも大幅に長くなることがあります。</p>
+<p>コマンドの実行時間がほぼゼロの場合、一部の値（たとえばCPU使用率）がゼロ（これは誤り）または疑問符として報告されることがあります。</p>
+<p><code class="code">time</code> が表示する情報の大部分は、<code class="code">getrusage</code> システムコールから得られます。数値の精度は <code class="code">getrusage</code> が返す値の精度に依存します。システムによっては、<code class="code">time</code> が報告できるすべてのリソースを測定しているわけではなく、それらのリソースはゼロとして報告されます。大部分またはすべてのリソースを測定するシステムは、4.2BSDまたは4.3BSDを基盤としています。後のBSDリリースは異なるメモリ管理コードを使い、測定するリソースが少なくなっています。</p>
+<p><code class="code">getrusage</code> 呼び出しがないシステムでは、代わりに <code class="code">times</code> システムコールが使われます。これは <code class="code">getrusage</code> よりもはるかに少ない情報しか提供しないため、そのようなシステムでは <code class="code">time</code> が大部分のリソースをゼロとして報告します。</p>
+<p>「<samp class="samp">%I</samp>」と「<samp class="samp">%O</samp>」の値は、「実際の」入力と出力だけで、キャッシュ装置が供給するものは含まないと言われています。「<samp class="samp">%I</samp>」と「<samp class="samp">%O</samp>」が報告する「実際の」I/Oの意味は、ワークステーション、とりわけディスクレスのものでは曖昧になることがあります。</p>
+<hr/>
+</div>
+<div class="section-level-extent" id="Invoking-time">
+<h3 class="section" id="Running-the-time-Command"><span>1.6 <code class="code">time</code> コマンドの実行<a class="copiable-link" href="#Running-the-time-Command"> ¶</a></span></h3>
+<p><code class="code">time</code> コマンドの形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">time <span class="r">[</span>option...<span class="r">]</span> <var class="var">command</var> <span class="r">[</span><var class="var">arg</var>...<span class="r">]</span>&#10;</pre></div>
+<a class="index-entry-id" id="index-resources-1"></a>
+<p><code class="code">time</code> は、指定された引数 <var class="var">arg</var>… を渡してプログラム <var class="var">command</var> を実行します。<var class="var">command</var> が終了すると、<code class="code">time</code> は <var class="var">command</var> のリソース使用量を表示します（既定では標準エラー出力へ）。<var class="var">command</var> が非ゼロのステータスで終了したり、シグナルで終了したりした場合、<code class="code">time</code> は警告メッセージと、終了ステータスまたはシグナル番号を表示します。</p>
+<p><code class="code">time</code> のオプションは、コマンドライン上で <var class="var">command</var> より前に置かなければなりません。<var class="var">command</var> より後にあるものはすべて、<var class="var">command</var> への引数として渡されます。</p>
+<dl class="table">
+<dt><code class="code">-o <var class="var">file</var></code></dt>
+<dt><code class="code">--output=<var class="var">file</var></code></dt>
+<dd><p>リソース使用統計を <var class="var">file</var> へ書き出します。</p>
+</dd>
+<dt><code class="code">-a</code></dt>
+<dt><code class="code">--append</code></dt>
+<dd><p>出力ファイルを上書きする代わりに、リソース使用情報を<em class="emph">追記</em>します。</p>
+</dd>
+<dt><code class="code">-f <var class="var">format</var></code></dt>
+<dt><code class="code">--format=<var class="var">format</var></code></dt>
+<dd><p><var class="var">format</var> を書式文字列として使います。</p>
+</dd>
+<dt><code class="code">--help</code></dt>
+<dd><p><code class="code">time</code> のコマンドラインオプションの要約を表示して終了します。</p>
+</dd>
+<dt><code class="code">-p</code></dt>
+<dt><code class="code">--portability</code></dt>
+<dd><p>POSIX形式を使います。</p>
+</dd>
+<dt><a id="index-format-2"></a><span><code class="code">-v</code><a class="copiable-link" href="#index-format-2"> ¶</a></span></dt>
+<dt><code class="code">--verbose</code></dt>
+<dd><p>組み込みの詳細書式を使います。</p>
+</dd>
+<dt><a id="index-version-number"></a><span><code class="code">-V</code><a class="copiable-link" href="#index-version-number"> ¶</a></span></dt>
+<dt><code class="code">--version</code></dt>
+<dd><p><code class="code">time</code> のバージョン番号を表示して終了します。</p></dd>
+</dl>
+<hr/>
+</div>
+</div>
+
