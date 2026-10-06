@@ -1,0 +1,28 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import crypto from 'node:crypto';
+import{unified}from'/private/tmp/libx-lz4-formal-786/node_modules/unified/index.js';
+import rp from'/private/tmp/libx-lz4-formal-786/node_modules/remark-parse/index.js';
+import gfm from'/private/tmp/libx-lz4-formal-786/node_modules/remark-gfm/index.js';
+import{parse}from'/private/tmp/libx-lz4-formal-786/node_modules/parse5/dist/index.js';
+const ev='docs/notes/project-expansion/runs/evidence/2026-10-05-798',work='/private/tmp/libx-lz4-formal-786';
+const review=JSON.parse(fs.readFileSync(ev+'/CONTENT_REVIEW_EXAMPLES.json'));
+const c=fs.readFileSync(review.canonical.path,'utf8'),t=fs.readFileSync(review.translation.path,'utf8');
+const body=s=>s.slice(s.indexOf('\n---\n')+5),ast=s=>unified().use(rp).use(gfm).parse(body(s));
+const nodes=(n,p)=>[...(p(n)?[n]:[]),...(n.children??[]).flatMap(x=>nodes(x,p))];
+const values=(s,type,key)=>nodes(ast(s),n=>n.type===type).map(n=>n[key]);
+for(const type of ['code','inlineCode'])assert.deepEqual(values(t,type,'value'),values(c,type,'value'));
+for(const type of ['link','definition','image'])assert.deepEqual(values(t,type,'url').sort(),values(c,type,'url').sort());
+assert.deepEqual(values(t,'heading','depth'),values(c,'heading','depth'));
+for(const type of ['listItem','strong','table','tableRow','tableCell'])assert.equal(nodes(ast(t),n=>n.type===type).length,nodes(ast(c),n=>n.type===type).length);
+const numbers=s=>nodes(ast(s),n=>n.type==='text'||n.type==='inlineCode'||n.type==='code').flatMap(n=>n.value.match(/\d+/g)??[]).sort();
+assert.deepEqual(numbers(t),numbers(c));
+const sid=s=>s.match(/^licenseSource: (.*)$/m)?.[1]??null;assert.equal(sid(t),sid(c));
+const html=fs.readFileSync(work+'/apps/lz4/dist/v1-10-0/ja/'+review.id.replace(/\.md$/,'')+'/index.html','utf8');
+const d=parse(html),attr=(n,k)=>n.attrs?.find(x=>x.name===k)?.value,find=(n,p)=>[...(p(n)?[n]:[]),...(n.childNodes??[]).flatMap(x=>find(x,p))],text=n=>n.nodeName==='#text'?n.value:(n.childNodes??[]).map(text).join('');
+const a=find(d,n=>n.tagName==='article'&&(attr(n,'class')??'').includes('sl-markdown-content'))[0],footer=find(d,n=>attr(n,'class')==='document-context-footer')[0];
+for(const id of ['lz4-examples','documents']) assert.equal(find(a,n=>attr(n,'id')===id).length,1);
+assert(text(a).includes('すべてのサンプルはGPL-v2ライセンス')&&text(footer).includes('simple_buffer.c'));
+for(const n of find(a,n=>n.tagName==='a'&&(attr(n,'href')??'').startsWith('/docs/lz4/'))){const href=attr(n,'href').split('#')[0];assert(fs.existsSync(work+'/apps/lz4/dist/'+href.slice('/docs/lz4/'.length).replace(/\/$/,'')+'/index.html'),href);}
+assert(text(footer).includes('非公式日本語訳')&&!text(a).includes('Libxの運用方針'));
+assert(find(d,n=>n.tagName==='link'&&attr(n,'hreflang')==='en'&&attr(n,'href')?.includes('/en/'+review.id.replace(/\.md$/,'')+'/')).length);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');assert.equal(sha(fs.readFileSync(work+'/apps/lz4/src/content/docs/v1-10-0/ja/'+review.id)),review.translation.sha256);
+fs.writeFileSync(ev+'/MACHINE_EXAMPLES.json',JSON.stringify({at:new Date().toISOString(),status:'passed',errors:[],page:review.id,translationSha256:review.translation.sha256,renderedSha256:sha(Buffer.from(html)),scope:'all code/inlinecode/URL destinations/heading depths/list/strong/table counts/numeric tokens/explicit canonical ID/footer/body separation/reviewed snapshot/EN alternate',display:'browser not performed',fullProject:'JA11/27 reviews11/27, final gates pending'},null,2)+'\n');console.log('Examples index machine checks passed; final gates pending');

@@ -1,145 +1,120 @@
 ---
-title: "Awesome Electronics"
-description: "Electronicsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
-licenseSource: "github-kitspace-awesome-electronics-readme-md"
+title: Awesome Electronics
+description: 電子工学の学習資料、回路シミュレーション、EDA・CADツール、PCBサービス、部品資料、在庫管理ツール、コミュニティ。
+licenseSource: github-kitspace-awesome-electronics-readme-md
 ---
-
 # Awesome Electronics
 
-Electronicsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+電子工学の学習資料、回路シミュレーター、EDA・CADツール、PCBサービス、部品資料、技術者や電子工作愛好家向けのコミュニティを探せます。在庫管理ツール、開発ボード販売店、プロジェクト共有サービス、ブログや動画などのメディア、キットの定期配送、アラビア語の講座も収録しています。
 
-## 目次
+電子工学（EE）は、電子回路を理解し、設計・製作する分野です。原文では、低電力の直流回路を中心に扱う電子工学と、高電力の交流システムを扱う電気工学を区別しつつ、両分野に大きな重なりがあることも説明しています。
 
+電子回路の実験や製作は趣味としても行われています。専門家向けと趣味向けの資料は、互いに役立つことが多いものです。
 
+提供状況、価格、対応環境の説明は、記録された上流READMEに基づいています。
 
+## 学習 <a id="learning"></a>
 
-- [Learning](#learning)
-- [Documentation](#documentation)
-- [Simulators](#simulators)
-- [Gerber Viewers](#gerber-viewers)
-- [Free EDA Packages](#free-eda-packages)
-- [Paid EDA Packages](#paid-eda-packages)
-- [CAD Specific](#cad-specific)
-- [PCB Batching Services](#pcb-batching-services)
-- [Part Search Engines](#part-search-engines)
-- [Project Sharing Platforms](#project-sharing-platforms)
-- [Inventory Management and Purchasing](#inventory-management-and-purchasing)
-- [Miscellaneous Software Projects](#miscellaneous-software-projects)
-- [Development Board Retailers](#development-board-retailers)
-- [Blogs](#blogs)
-- [Forums](#forums)
-- [Podcasts](#podcasts)
-- [Videos](#videos)
-- [Subscription Kit Services](#subscription-kit-services)
-- [3D Part Models](#3d-part-models)
-- [Other Lists](#other-lists)
-- [Arabic Section](#arabic-section)
+### 技術チュートリアル <a id="technical-tutorials"></a>
+- [learn.sparkfun.comの「skill」タグ](https://learn.sparkfun.com/tutorials/tags/skill) - 電子工学に関するさまざまな技能を学ぶ技術チュートリアル。
+- [Soldering is Easy](https://mightyohm.com/blog/2011/04/soldering-is-easy-comic-book/) - はんだ付けの基礎を解説する漫画。多くの言語に翻訳されている。
+- [Uses of Different Soldering Iron Tips](https://www.instructables.com/id/Uses-of-Different-Soldering-Iron-Tips/) - 形状の異なるはんだごて先の用途を解説。
+- [How to design a motherboard for your electronics project](https://www.staycaffeinated.com/2021/02/21/how-to-design-a-motherboard-for-your-project-part-1) - 回路図とPCBの設計を学ぶ入門チュートリアル。
 
+### 講座 <a id="courses"></a> <a id="コース"></a>
+- [Khan Academy - Electrical Engineering](https://www.khanacademy.org/science/electrical-engineering) - 電気工学と関連分野の一通りの講座を提供する非営利学習プラットフォーム。
+- [NEETS (Navy Electricity and Electronics Training Series)](https://www.fcctests.com/neets/Neets.htm) - 米国海軍の通信教育用教材。
+- [NPTEL](https://nptel.ac.in/course.html) - 電子工学、電気工学、通信工学などの無料の工学講座。
+- [Udemyの電子工学講座](https://www.udemy.com/topic/electronics/) - Udemyの有料の電子工学講座。
+- [Courseraの電子工学講座](https://www.coursera.org/courses?query=electronics) - 修了時に電子修了証を取得できる無料講座も収録。
 
+### 理論 <a id="theory"></a>
+- [電子工学の教科書](https://upload.wikimedia.org/wikipedia/commons/e/ee/Electronics.pdf) - 電子回路・部品の設計と機能、直流解析、交流解析を扱う教科書。
+- [Student Handbook](http://cbseacademic.nic.in/web_material/Curriculum/Vocational/2018/Basic_Electronics_XI.pdf) - 電子工学の歴史と基礎、ダイオード、整流器、トランジスタとその応用、SCR、DIAC、TRIACを分かりやすく解説。
+- [Electronics circuits and systems](http://aems.edu.sd/wp-content/uploads/2019/02/Electronics-Circuits-and-Systems-Fourth-Edition-PDFDrive.com-.pdf) - 回路とシステムの概念を理解するための無料の電子書籍。
+- [Lessons In Electric Circuits](https://www.ibiblio.org/kuphaldt/electricCircuits/) - 理論、シミュレーション、ソクラテス式問答法を重視した無料の教科書と演習資料。
+- [Ultimate Electronics: Practical Circuit Design and Analysis](https://ultimateelectronicsbook.com/) - CircuitLabによるインタラクティブな回路図とシミュレーションを備えた無料のオンライン書籍。原文では開発中とされている。
 
-## 学習
+### 大学講義アーカイブ <a id="university-course-archives"></a>
 
-### 技術チュートリアル
-- ["skill" tag on learn.sparkfun.com](https://learn.sparkfun.com/tutorials/tags/skill) - A wide variety of technical tutorials on various EE related skills.
-- [Soldering is Easy](https://mightyohm.com/blog/2011/04/soldering-is-easy-comic-book/) - Comic book that goes over the basics of soldering that has been translated into quite a few languages.
-- [Uses of Different Soldering Iron Tips](https://www.instructables.com/id/Uses-of-Different-Soldering-Iron-Tips/) - Covers what all those different soldering iron tips are good for.
-- [How to design a motherboard for your electronics project](https://www.staycaffeinated.com/2021/02/21/how-to-design-a-motherboard-for-your-project-part-1) - Introductory tutorial on Schematic & PCB design
+- [Berkeley EECS](http://inst.eecs.berkeley.edu/classes-eecs.html) - 電子工学とコンピュータサイエンスの幅広い講座のウェブサイトアーカイブ。
+- [Dr. Jacob Baker](http://cmosedu.com) - ネバダ大学ラスベガス校の教授による講座とチュートリアル。
+- [Dr. Abraham](https://www.cerc.utexas.edu/~jaa/teaching.html)、[Dr. McDermot](http://users.ece.utexas.edu/~mcdermot/)、[Dr. Valvano](http://users.ece.utexas.edu/~valvano/) - テキサス大学オースティン校の教授陣による講座資料。
 
-### コース
-- [Khan Academy - Electrical Engineering](https://www.khanacademy.org/science/electrical-engineering) - Non-profit learning platform with a full course on electrical engineering and related topics.
-- [NEETS (Navy Electricity and Electronics Training Series)](https://www.fcctests.com/neets/Neets.htm) - U.S. Navy Non-Resident Training Course Material.
-- [NPTEL](https://nptel.ac.in/course.html) - Has all free engineering courses including electronics, electrical and communcation engineering.
-- [Udemy courses related to Electronics](https://www.udemy.com/topic/electronics/) - Top paid courses available on Udemy.
-- [Coursera courses related to Electronics](https://www.coursera.org/courses?query=electronics) - Includes some free courses that provide e-certificates on completion.
+## 文書・設計支援ツール <a id="documentation"></a> <a id="ドキュメント"></a>
+- [Inkscape Electric Symbols](https://github.com/upb-lea/Inkscape_electric_Symbols) - Inkscapeで回路図を描くための記号集。
+- [Tabula](http://tabula.ondata.it/) - PDFから表形式データを抽出。データシートのピン一覧や部品特性の取り出しに利用できる。
+- [WebPlotDigitizer](https://automeris.io/WebPlotDigitizer/) - プロットやグラフなどからデータを抽出。データシートの部品性能曲線の取り出しに利用できる。
+- [WaveDrom](https://wavedrom.com/) - JSONの記述ファイルから波形図やタイミング図を生成。
+- [tscircuit](https://tscircuit.com) - Reactを使って回路図とPCBを設計するオープンソースのEDAパッケージ。
 
-### 理論 
-- [Electronics textbook](https://upload.wikimedia.org/wikipedia/commons/e/ee/Electronics.pdf) - Text covers design and function of electronic circuits and components, DC analysis, and AC analysis. 
-- [Student Handbook](http://cbseacademic.nic.in/web_material/Curriculum/Vocational/2018/Basic_Electronics_XI.pdf) - Language used in this book easily understandable covers evolution, fundamentals, diode, rectifiers, transistors and its applications, SCR, DIAC and TRIAC.
-- [Electronics circuits and systems](http://aems.edu.sd/wp-content/uploads/2019/02/Electronics-Circuits-and-Systems-Fourth-Edition-PDFDrive.com-.pdf) - Quality free e-book covering all topics under circuits and systems, highly recommended for conceptual understanding.
-- [Lessons In Electric Circuits](https://www.ibiblio.org/kuphaldt/electricCircuits/) - Free high quality textbooks and worksheets with emphasis on theory, simulation, and the socratic method.
-- [Ultimate Electronics: Practical Circuit Design and Analysis](https://ultimateelectronicsbook.com/) - Free online book with interactive schematics & simulations by CircuitLab (under development).
+## シミュレーター <a id="simulators"></a>
 
+### アナログ・混合信号回路シミュレーター <a id="analog-and-mixed-signal-circuit-simulators"></a> <a id="アナログミックスドシグナル回路シミュレーター"></a>
 
-### 大学講義アーカイブ
+- [LTspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html) - Linear Technologiesの無料のSPICE回路シミュレーター。非公式の[LTwiki](http://ltwiki.org/?title=Main_Page)と[ユーザーグループ](https://groups.io/g/LTspice)も参照。
+- [ngspice](http://ngspice.sourceforge.net/) - オープンソースのSPICE回路シミュレーター。
+- [Circuit JS/Falstad](http://www.falstad.com/circuit/circuitjs.html) - 電子の流れを可視化する無料のオープンソースオンラインシミュレーター。Paul Falstadによる元のJavaアプレットを書き直したもの。
+- [EveryCircuit](https://everycircuit.com) - 比較的単純な回路向けの、視覚的に操作できるオンライン回路シミュレーター。無料で試用可能。
+- [Qucs](http://qucs.sourceforge.net/) - オープンソースで複数のプラットフォームに対応する、SPICEベースではない回路シミュレーター。Sパラメーターとハーモニックバランス法に対応。
+- [Qucs-S](https://ra3xdh.github.io/) - シミュレーションにSPICEを使う、Qucsのオープンソースの派生版。
+- [QucsStudio](http://qucsstudio.de/) - Qucsから派生した、無料でソース非公開のWindows専用ソフトウェア。類似のインターフェース、新しいエンジン、追加機能を備える。
+- [Open Circuit Design Software](http://opencircuitdesign.com) - 商用ツールに追随することを目指す、チップ設計向けのオープンソースEDAツール群。
+- [TINA-TI](http://www.ti.com/tool/TINA-TI) - Texas Instruments専用の[DesignSoft-TINA](https://www.tina.com)ビルド。Texas Instrumentsのモデルを同梱。
+- [CppSim](https://www.cppsim.com/) - C++を使ってシミュレーションを高速化する、無料のオープンソース回路シミュレーター。
+- [Scilab with Xcos](https://www.scilab.org/) - MATLABの代替となる無料のオープンソース数値計算ソフトウェア。XcosはSimulinkに似た電気システムのモデリング機能を提供。
+- [iCircuit](http://icircuitapp.com/) - アナログ回路とデジタル回路に対応し、リアルタイムで継続的に解析する電子回路シミュレーター。
+- [Micro-Cap](http://www.spectrum-soft.com/download/download.shtm) - さまざまな対話型シミュレーションに対応する混合信号シミュレーター。
+- [GeckoCIRCUITS](https://de.wikipedia.org/wiki/GeckoCircuits) - オープンソースのパワーエレクトロニクス回路シミュレーター。[GitHubプロジェクト](https://github.com/geckocircuits/GeckoCIRCUITS)。ウェブサイトが機能しないため、直接[ダウンロードするリンク](http://gecko-simulations.com/GeckoCIRCUITS/GeckoCIRCUITS.zip)を掲載。
+- [Proteus](https://www.labcenter.com/) - PCB設計と回路シミュレーションのソフトウェア。
 
-- [Berkeley EECS](http://inst.eecs.berkeley.edu/classes-eecs.html) - Comprehensive EE & CS course website archives.
-- [Dr. Jacob Baker](http://cmosedu.com) - Courses and tutorials, professor at The University of Nevada, Las Vegas.
-- [Dr. Abraham](https://www.cerc.utexas.edu/~jaa/teaching.html), [Dr. McDermot](http://users.ece.utexas.edu/~mcdermot/), and [Dr. Valvano](http://users.ece.utexas.edu/~valvano/) - Courses materials, professors at UT Austin
+### Verilog HDLシミュレーター <a id="verilog-hdl-simulators"></a> <a id="verilog-hdl-シミュレーター"></a>
 
-## ドキュメント
-- [Inkscape Electric Symbols](https://github.com/upb-lea/Inkscape_electric_Symbols) - Circuit Drawing Symbols for Inkscape
-- [Tabula](http://tabula.ondata.it/) - Extract tabular data from a pdf, very useful for extracting pin tables or part characteristics from datasheets.
-- [WebPlotDigitizer](https://automeris.io/WebPlotDigitizer/) - Extract data from plots, charts, etc., very useful for getting part performance curves from datasheets.
-- [WaveDrom](https://wavedrom.com/) - Create waveforms and timing diagrams from a JSON description file.
-- [tscircuit](https://tscircuit.com) - Open source EDA package for schematic and PCB design using React
+- [Verilator](https://www.veripool.org/wiki/verilator) - C++またはSystemCのテストベンチを使う、無料のオープンソースVerilogコンパイラー。原文では高速とされているが、シミュレーションは2状態、サイクル単位の動作、合成可能なコードに限られる。
+- [Icarus Verilog](http://iverilog.icarus.com/) - 無料のオープンソースVerilogインタープリター。テストベンチにはビヘイビアVerilogを使い、シミュレーションは4状態かつイベント駆動。
 
-## シミュレーター
+## ガーバービューアー <a id="gerber-viewers"></a> <a id="gerber-ビューアー"></a>
 
-### アナログ・ミックスドシグナル回路シミュレーター
+### オンライン <a id="online"></a>
+- [Tracespace Viewer](https://tracespace.io/) - 基板全体のプレビューと個々の層を確認できるガーバービューアー。
+- [Gerblook](https://www.gerblook.org/) - Gerbvを利用するオンラインのガーバービューアー。
+- [Mayhew Labs 3dpcb](http://mayhewlabs.com/3dpcb) - 3Dガーバービューアー。
+- [CircuitPeople](https://circuitpeople.com) - 重い処理を伴わない、ガーバーファイルの各層を表示するシンプルな2Dビューアー。
+- [Stackrate Viewer](https://stackrate.de/viewer/) - 配線へのマウスオーバー表示と測定ツールを備えた、使いやすいオンラインのガーバービューアー。
 
-- [LTspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html) - The industry standard free SPICE circuit simulator from Linear Technologies. Also see the unofficial [LTwiki](http://ltwiki.org/?title=Main_Page) and [Group](https://groups.io/g/LTspice).
-- [ngspice](http://ngspice.sourceforge.net/) - Open source SPICE circuit simulator.
-- [Circuit JS/Falstad](http://www.falstad.com/circuit/circuitjs.html) - Free, open source online simulator with electron flow visualization (rewrite of original Java applet by Paul Falstad).
-- [EveryCircuit](https://everycircuit.com) - Free to try online, visual, interactive circuit simulator for simpler circuits.
-- [Qucs](http://qucs.sourceforge.net/) - Open source, cross-platform, non-SPICE-based circuit simulator, with with S-parameter and Harmonic Balance capability.
-- [Qucs-S](https://ra3xdh.github.io/) - Open source fork of Qucs using SPICE for simulation.
-- [QucsStudio](http://qucsstudio.de/) - Free, closed-source, Windows-only fork of Qucs with a similar interface, new engine, and more features.
-- [Open Circuit Design Software](http://opencircuitdesign.com) - Open Source, full EDA suite chip design suite, focused on keeping up with commercial tools.
-- [TINA-TI](http://www.ti.com/tool/TINA-TI) - Exclusive [DesignSoft-TINA](https://www.tina.com) build for Texas Instruments, bundled with Texas Instruments Models.
-- [CppSim](https://www.cppsim.com/) - Free, open source circuit simulator that leverages the C++ language to achieve very fast simulation times.
-- [Scilab with Xcos](https://www.scilab.org/) - Free, open source numerical computing alternative to MATLAB. Xcos provides Electrical System modeling capability similar to Simulink.
-- [iCircuit](http://icircuitapp.com/) - Easy to use electronic circuit simulator, its advanced simulation engine can handle both analog and digital circuits and features realtime always-on analysis.
-- [Micro-Cap](http://www.spectrum-soft.com/download/download.shtm) - Professional-grade mixed signal simulator with wide variety of interactive simulation types.
-- [GeckoCIRCUITS](https://de.wikipedia.org/wiki/GeckoCircuits) - Open Source Power Electronic Circuit Simulator. [GitHub Project](https://github.com/geckocircuits/GeckoCIRCUITS). Direct [download link](http://gecko-simulations.com/GeckoCIRCUITS/GeckoCIRCUITS.zip) due to broken website.
-- [Proteus](https://www.labcenter.com/) - PCB Design and Circuit Simulator Software.
+### インストール型 <a id="installable"></a> <a id="インストール可能"></a>
+- [Gerbv](http://gerbv.geda-project.org/) - LinuxとBSD向けのガーバービューアー。
+- [KiCAD Gerbview](https://kicad.org/) - KiCADのガーバービューアー。
+- [GC-Prevue](http://www.graphicode.com/GC-Prevue_Gerber_Viewer) - 無料版もある商用のガーバービューアー。原文では、一部のガーバーファイルをGerbvやKiCADより適切に扱えるとされている。
+- [ZofZPCB](https://www.zofzpcb.com/) - 無料の3Dガーバービューアー。
 
-### Verilog HDL シミュレーター
+## 無料のEDAパッケージ <a id="free-eda-packages"></a> <a id="無料-eda-パッケージ"></a>
+- [KiCad](https://kicad.org/) - プッシュ・アンド・ショブルーター、差動ペアなどの機能を備えたオープンソースのEDAパッケージ。
+- [Eagle](https://www.autodesk.com/products/eagle/overview) - 基板サイズに制限のある無料版を提供するEDAパッケージ。
+- [DesignSpark PCB](https://www.rs-online.com/designspark/pcb-software) - RS Componentsが支援する、制限のない無料のEDAパッケージ。
+- [Altium CircuitMaker](https://circuitmaker.com/) - Altiumのプロ向けソフトウェアの開発元が提供する無料のEDAパッケージ。
+- [gEDA](http://geda-project.org) - スクリプトやMakefileを好む人向けのオープンソースパッケージ。LinuxとBSDのみ対応。
+- [DipTrace](https://diptrace.com) - 回路図入力とPCB設計のソフトウェア。ピン数と信号層数に制限のある無料版を提供。
+- [LibrePCB](https://librepcb.org/) - GNU GPLv3で提供される、複数のプラットフォームに対応したEDAツール。
+- [Horizon EDA](https://github.com/horizon-eda/horizon) - ショートカット操作を重視した、無料のオープンソースEDAツール。
+- [EasyEDA](https://easyeda.com/) - ブラウザー版と複数のプラットフォームに対応するアプリ版を提供するEDAツール。[LCSC](https://www.lcsc.com/products)と[JLCPCB](https://jlcpcb.com/parts)の部品カタログを3Dモデルとともに統合。
 
-- [Verilator](https://www.veripool.org/wiki/verilator) - Free, open source Verilog compiler. Test benches are in C++ or SystemC. Very fast, but limted to 2-state, cycle-based simulation, and synthesizeable code only.
-- [Icarus Verilog](http://iverilog.icarus.com/) - Free, open source verilog interpreter. Test benches are in behavioral verilog. Simulation is 4-state, and event-based.
+## 有料のEDAパッケージ <a id="paid-eda-packages"></a> <a id="有料-eda-パッケージ"></a>
+- [Altium](https://www.altium.com/) - PCB設計のソフトウェアとツール。
+- [Proteus](https://www.labcenter.com/) - PCB設計と回路シミュレーションのソフトウェア。
 
-## Gerber ビューアー
-
-### オンライン
-- [Tracespace Viewer](https://tracespace.io/) -  Gerber viewer that lets you inspect the individual layers as well as the board preview.
-- [Gerblook](https://www.gerblook.org/) - Online Gerber viewer powered by Gerbv.
-- [Mayhew Labs 3dpcb](http://mayhewlabs.com/3dpcb) - 3D Gerber viewer.
-- [CircuitPeople](https://circuitpeople.com) - No frills 2D layer viewer for Gerbers, without the excessive processing.
-- [Stackrate Viewer](https://stackrate.de/viewer/) - Easy to use online gerber viewer with trace hovering and measurement tools.
-
-### インストール可能
-- [Gerbv](http://gerbv.geda-project.org/) - Excellent Gerber viewer for Linux and BSD.
-- [KiCAD Gerbview](https://kicad.org/) - The KiCAD gerber viewer.
-- [GC-Prevue](http://www.graphicode.com/GC-Prevue_Gerber_Viewer) - Commercial with free version. Can handle some gerbers better than Gerbv and KiCAD.
-- [ZofZPCB](https://www.zofzpcb.com/) - FREE 3D Gerber Viewer.
-
-## 無料 EDA パッケージ
-- [KiCad](https://kicad.org/) - Open source EDA package with push and shove router, differential pairs and much more.
-- [Eagle](https://www.autodesk.com/products/eagle/overview) - One of the most popular EDA packages due to it's (board size restricted) free version.
-- [DesignSpark PCB](https://www.rs-online.com/designspark/pcb-software) - Gratis EDA package without restrictions, sponserd by RS Components.
-- [Altium CircuitMaker](https://circuitmaker.com/) - Free package from the maker of the go to pro software.
-- [gEDA](http://geda-project.org) - Another open source package, good for people that like scripting and makefiles, Linux and BSD only.
-- [DipTrace](https://diptrace.com) - Quality Schematic Capture and PCB Design software with (pin and signal layer restricted) free version.
-- [LibrePCB](https://librepcb.org/) - A new, powerful and intuitive EDA tool for everyone, cross-platform and GNU GPLv3.
-- [Horizon EDA](https://github.com/horizon-eda/horizon) - A free and open source EDA tool with the focus on shortcut operation.
-- [EasyEDA](https://easyeda.com/) - Easy to use with both browser based and cross platform app versions. Integrates [LCSC](https://www.lcsc.com/products) and [JLCPCB](https://jlcpcb.com/parts) component catalogs with 3D models.
-
-## 有料 EDA パッケージ
-- [Altium](https://www.altium.com/) - PCB Design Software & Tools.
-- [Proteus](https://www.labcenter.com/) - PCB Design and Circuit Simulator Software.
-
-## CAD 固有
+## CAD別の資料 <a id="cad-specific"></a> <a id="cad-固有"></a>
 
 ### KiCad
-- [Xesscorp's list of KiCad 3rd party tools](https://github.com/xesscorp/kicad-3rd-party-tools)
-- [Contextual Electronics' Shine on You Crazy KiCad](https://contextualelectronics.com/courses/shine-on-you-crazy-kicad/) - Beginner video tutorial that gets you to a manufactured board as quickly as possible.
-- [Contextual Electronics' Getting to Blinky Tutorial](https://www.youtube.com/playlist?list=PLy2022BX6Eso532xqrUxDT1u2p4VVsg-q) - A more comprehensive beginner to intermediate video tutorial.
-- [KiCad.info Forums](https://forum.kicad.info) - User discussion and help forum.
-- [Keyboard PCB Guide](https://github.com/ruiqimao/keyboard-pcb-guide) -  Comprehensive written tutorial that takes you through creating a keyboard PCB.
-- [Cheatsheet](https://silica.io/wp-content/uploads/2018/06/kicad-cheatsheet.pdf) (also [in landscape](https://silica.io/wp-content/uploads/2018/06/kicad-cheatsheet-landscape.pdf)) - Short PDF that goes over the menus and keyboard shortcuts for the most common operations.
-- [Footprint Collection](https://github.com/kitspace/kicad_footprints) - Collection of all the KiCad footprints available online and some scripts to manage them.
-- [InteractiveHtmlBom](https://github.com/openscopeproject/InteractiveHtmlBom) - A html BOM generation tool for manual pick and place.
-- [KiBot](https://github.com/INTI-CMNB/KiBot) - Generate the fabrication and documentation files for your KiCad projects easily, repeatable, and most of all, scriptably.
+- [XesscorpのKiCadサードパーティーツール一覧](https://github.com/xesscorp/kicad-3rd-party-tools)
+- [Contextual Electronics' Shine on You Crazy KiCad](https://contextualelectronics.com/courses/shine-on-you-crazy-kicad/) - 基板を製造することに重点を置いた初心者向けの動画チュートリアル。
+- [Contextual Electronics' Getting to Blinky Tutorial](https://www.youtube.com/playlist?list=PLy2022BX6Eso532xqrUxDT1u2p4VVsg-q) - 初心者から中級者までを対象に、より幅広く解説する動画チュートリアル。
+- [KiCad.infoフォーラム](https://forum.kicad.info) - ユーザー同士の議論と質問のためのフォーラム。
+- [Keyboard PCB Guide](https://github.com/ruiqimao/keyboard-pcb-guide) - キーボードのPCBを作成する手順を文章で解説。
+- [早見表](https://silica.io/wp-content/uploads/2018/06/kicad-cheatsheet.pdf) （[横向き版](https://silica.io/wp-content/uploads/2018/06/kicad-cheatsheet-landscape.pdf)もあり） - よく使う操作のメニューとキーボードショートカットをまとめた短いPDF。
+- [フットプリント集](https://github.com/kitspace/kicad_footprints) - オンラインで入手できるKiCadの全フットプリントの収集を目指す資料集と、それらを管理するスクリプト。
+- [InteractiveHtmlBom](https://github.com/openscopeproject/InteractiveHtmlBom) - 部品を手作業で配置するためのHTML形式の部品表（BOM）を生成するツール。
+- [KiBot](https://github.com/INTI-CMNB/KiBot) - KiCadプロジェクトの製造用ファイルと文書を、スクリプトで繰り返し生成。
 
 ### Eagle
 - [List of ULPs everyone should know](https://www.element14.com/community/community/eagle/blog/2015/01/19/eagle-ulps-every-user-should-know)
@@ -147,123 +122,118 @@ Electronicsを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 - [SparkFun Electronics Eagle Libraries](https://github.com/sparkfun/SparkFun-Eagle-Libraries)
 
 ### Altium
-- [Altium Designer Libraries](https://www.altium.com/documentation/other_installers#!libraries) - `.IntLib` and `.PcbLib` of electronic components from different manufacturers.
+- [Altium Designer Libraries](https://www.altium.com/documentation/other_installers#!libraries) - 各メーカーの電子部品の`.IntLib`と`.PcbLib`。
 
+## PCB共同製造サービス <a id="pcb-batching-services"></a> <a id="pcb-バッチングサービス"></a>
+- [PCBShopper](https://pcbshopper.com/) - さまざまなPCBの共同製造・組み立てサービスを比較。
+- [OSH Park](https://oshpark.com) - 低価格のPCB共同製造サービス。原文では、特徴的な紫のシルク印刷を備えた高品質の基板を提供するとされている。
+- [Aisler](https://aisler.net) - ヨーロッパ（ドイツ）で製造し、そこから発送する回路基板。原文では、手頃な価格で品質がよいとされている。
+- [Dirty PCBs](http://dirtypcbs.com/store/pcbs) - 自らの品質を「dirty」と表現する、低価格のPCB共同製造サービス。
+- [JLCPCB](https://jlcpcb.com/) - 自社の低価格SMTサービスも提供する、低価格のPCB共同製造サービス。
+- [PCBWay](https://www.pcbway.com/) - PCBA、CNC、3Dプリントも提供する、低価格のPCB共同製造サービス。
 
-## PCB バッチングサービス
-- [PCBShopper](https://pcbshopper.com/) - Comparison service for quite a lot of different PCB batching and assembly services.
-- [OSH Park](https://oshpark.com) - Low cost PCB batching service with high quality boards with a signature purple silkscreen.
-- [Aisler](https://aisler.net) - Affordable quality circuit boards made in and shipped from Europe (Germany).
-- [Dirty PCBs](http://dirtypcbs.com/store/pcbs) - Low cost PCB batching service that prides itself on its "dirty" quality.
-- [JLCPCB](https://jlcpcb.com/) - Low cost PCB batching service with inhouse low cost SMT service.
-- [PCBWay](https://www.pcbway.com/) - Low cost PCB batching service with PCBA, CNC and 3D-Printing services.
+## 部品検索エンジン <a id="part-search-engines"></a>
+- [Octopart](https://octopart.com) - 電子部品の検索エンジン。
+- [Findchips](https://www.findchips.com/) - Supply Frameによる部品検索。
+- [Parts.io](https://parts.io/) - 新しい部品を発見することを重視した、Supply Frameの別の検索エンジン。
+- [Electronic Component Search Engine](https://componentsearchengine.com/) - 回路図記号、PCBフットプリント、3Dモデルを無料で利用可能。
+- [Yoo Need One - SMD Marking Database](https://smd.yooneed.one/) - 表面実装部品（SMD）のマーキングのデータベース。
+- [JLCSearch](https://jlcsearch.tscircuit.com) - JLCの在庫がある人気の部品をカテゴリ別に検索。
 
-## 部品検索エンジン
-- [Octopart](https://octopart.com) - Probably the most well known part search engine.
-- [Findchips](https://www.findchips.com/) - Part search from Supply Frame.
-- [Parts.io](https://parts.io/) - Another search engine from Supply Frame geared towards discovering new parts.
-- [Electronic Component Search Engine](https://componentsearchengine.com/) - Free access to schematic symbols, PCB footprints and 3D models.
-- [Yoo Need One - SMD Marking Database](https://smd.yooneed.one/) - Surface Mount Device (SMD) component marking database.
-- [JLCSearch](https://jlcsearch.tscircuit.com) - Find the most popular in-stock JLC components for different categories
+## プロジェクト共有プラットフォーム <a id="project-sharing-platforms"></a>
+- [Kitspace](https://kitspace.org) - 部品の購入とプロジェクトの再製作を支援する、オープンソースのプロジェクト共有サイト。このリストの管理者が開発。
+- [Hackaday.io](https://hackaday.io) - 人気のブログによる、プロジェクトを共有する交流サイト。
+- [Hackster.io](https://www.hackster.io/) - プラットフォーム、主題、製品別に整理されたプロジェクト共有サイト。
+- [InventHub](https://inventhub.io/) - ハードウェア開発向けの、Gitを利用したプロジェクトホスティング・共同作業プラットフォーム。
+- [CADLAB](https://cadlab.io/) - ハードウェア開発向けの、Gitを利用した別のプロジェクトホスティング・共同作業プラットフォーム。
+- [Eyrie](https://eyrie.io) - EagleとKiCadの設計をオンラインで閲覧。
+- [WikiFactory](https://wikifactory.com/) - 製品開発向けのプロジェクトホスティング・共同作業プラットフォーム。「electronics」で絞り込むと電子工学に関するプロジェクトを探せる。
+- [Instructables](https://www.instructables.com/) - プロジェクトを共有する交流サイト。「circuits」で絞り込むと電子工学に関するプロジェクトを探せる。
 
+## 在庫管理と購入 <a id="inventory-management-and-purchasing"></a>
+- [PartsBox](https://partsbox.io) - ユーザーインターフェースとOctopart連携を備えた、部品在庫を管理するウェブサービス。
+- [Part-DB](https://github.com/Part-DB/Part-DB) - 権限管理とバーコード生成機能を備えた、部品在庫を管理するオープンソースのウェブサービス。
+- [InvenTree](https://inventree.org) - パラメーターによる検索、豊富なAPI、プラグインの仕組みを備えた、部品在庫を管理するオープンソースのウェブサービス。
 
-## プロジェクト共有プラットフォーム
-- [Kitspace](https://kitspace.org) - Project sharing site that helps you buy parts and re-build projects. Open source and developed by yours truly.
-- [Hackaday.io](https://hackaday.io) - Social site for sharing projects from the popular blog.
-- [Hackster.io](https://www.hackster.io/) - Another social site for sharing projects. Is well organised by platform, topic and product.
-- [InventHub](https://inventhub.io/) - Git-based project hosting and collaboration platform for hardware development.
-- [CADLAB](https://cadlab.io/) - Another Git-based project hosting and collaboration platform for hardware development.
-- [Eyrie](https://eyrie.io) - For viewing Eagle and KiCad designs online.
-- [WikiFactory](https://wikifactory.com/) - A project hosting and collaboration platform for product development. Filter for "electronics" for more electronics related projects.
-- [Instructables](https://www.instructables.com/) - A social site for sharing projects. Filter for "circuits" for more electronics related projects.
+## その他のソフトウェアプロジェクト <a id="miscellaneous-software-projects"></a>
+- [SnapEDA](https://www.snapeda.com) - 無料の回路図記号とフットプリントを提供する部品ライブラリ。Eagle、KiCad、Altium、OrCad、Allegroなどに対応。
+- [Language PCB](https://github.com/Alhadis/language-pcb) - さまざまなPCB形式の構文強調表示。
+- [NinjaCalc](https://gbmhunter.github.io/NinjaCalc/) - 組み込み開発向けの計算ツール集。
+- [Saturn PCB Design Toolkit](https://saturnpcb.com/saturn-pcb-toolkit/) - PCBに関する計算に使うフリーウェアのツール集。
+- [KiCanvas](https://kicanvas.org/) - KiCadの回路図と基板をオンラインで閲覧するオープンソースのビューアー。
 
+## 開発ボード販売店 <a id="development-board-retailers"></a>
+- [Sparkfun](https://www.sparkfun.com/) - オープンソースの電子工作用開発ボード、機器、材料を設計・販売。関連するチュートリアルも提供。
+- [Adafruit](https://www.adafruit.com/) - 電子工作製品を設計・販売。製品の品ぞろえとチュートリアルを提供。
+- [Tindie](https://www.tindie.com) - 電子工作の製作者が、自分の設計した製品を少量のロットで販売するマーケットプレイス。
 
-## 在庫管理と購入
-- [PartsBox](https://partsbox.io) - Web service to manage your part inventory with a nice user interface and Octopart integration.
-- [Part-DB](https://github.com/Part-DB/Part-DB) - Another open source web service for managing part inventory with a permission system and a good barcode generator.
-- [InvenTree](https://inventree.org) - Open source web service for managing part inventory with parametric search, extensive API and plugin system
-- 
-## その他のソフトウェアプロジェクト
-- [SnapEDA](https://www.snapeda.com) - Parts library with free symbols & footprints. (Compatible with Eagle, KiCad, Altium, OrCad, Allegro, etc.)
-- [Language PCB](https://github.com/Alhadis/language-pcb) - Syntax highlighting for various PCB formats.
-- [NinjaCalc](https://gbmhunter.github.io/NinjaCalc/) - An embedded engineering calculator toolbox for doing calculations in a breeze.
-- [Saturn PCB Design Toolkit](https://saturnpcb.com/saturn-pcb-toolkit/) - The Saturn PCB Toolkit is the best freeware resource for PCB related calculations you can find.
-- [KiCanvas](https://kicanvas.org/) - An open source online viewer of KiCad schematics and boards.
+## ブログ <a id="blogs"></a>
+- [Hackaday](https://hackaday.com) - 執筆者を擁する、電子工学とハードウェアハッキングのブログ。
+- [bunniestudios.com](https://www.bunniestudios.com) - Andrew「Bunnie」Huangがハードウェアハッキング、オープンハードウェア、製造などを扱うブログ。
+- [Bald Engineer](https://www.baldengineer.com) - James Lewisによる、電子工学と組み込みソフトウェアのプロジェクト記録、チュートリアル、記事。
+- [Rheingold Heavy](https://rheingoldheavy.com) - Dan Hienzschによる、電子工学と組み込みソフトウェアのプロジェクト記録、チュートリアル、記事。
+- [Hackster.io](https://www.hackster.io/news) - 電子工学を扱う別のブログ。
+- [Dangerous Prototypes](http://dangerousprototypes.com/blog/) - オープンソースのハードウェアプロジェクトと興味深いアプリケーションノートを扱うブログ。
+- [N-O-D-E](https://n-o-d-e.net/) - DIYの電子工作、ハードウェア、技術を扱うブログ。
 
-## 開発ボード販売店
-- [Sparkfun](https://www.sparkfun.com/) - Retailer and designer of open source electronics development boards and other equipment and materials with excellent accompanying tutorials.
-- [Adafruit](https://www.adafruit.com/) - Another retailer and designer with excellent selection and tutorials.
-- [Tindie](https://www.tindie.com) - Marketplace for electronics makers to sell low volume batches of their own designs.
+## フォーラム <a id="forums"></a>
 
-## ブログ
-- [Hackaday](https://hackaday.com) - Probably the most popular blog covering electronics and hardware hacking with a whole staff of writers.
-- [bunniestudios.com](https://www.bunniestudios.com) - Andrew 'Bunnie' Huang covers hardware hacking, open hardware, manufacturing and more.
-- [Bald Engineer](https://www.baldengineer.com) - Project logs, tutorials and articles about electronics and embedded software by James Lewis.
-- [Rheingold Heavy](https://rheingoldheavy.com) - More project logs, tutorials and articles about electronics and embedded software, these ones by Dan Hienzsch.
-- [Hackster.io](https://www.hackster.io/news) - Another blog covering electronics.
-- [Dangerous Prototypes](http://dangerousprototypes.com/blog/) - Blog about open source hardware projects and interesting app notes.
-- [N-O-D-E](https://n-o-d-e.net/) - Blog about DIY electronics, hardware, and technology.
+### 議論 <a id="discussion"></a>
+- [EEVBlogフォーラム](https://www.eevblog.com/forum/) - 電子工学の話題について議論するフォーラム。
+- [/r/electronics](https://www.reddit.com/r/electronics/)と[/r/ECE](https://www.reddit.com/r/ECE/) - 電子工学を扱うサブレディット。
 
+### 質問と回答 <a id="help"></a> <a id="ヘルプ"></a>
+- [/r/askelectronics](https://www.reddit.com/r/AskElectronics/) - 電子工学の質問に答えることを目的としたサブレディット。
+- [Electronics Stack Exchange](https://electronics.stackexchange.com) - Stack Overflowのサービスを利用する、電子工学のQ&Aサイト。
+- [EEVBlog初心者フォーラム](https://www.eevblog.com/forum/beginners/) - 初心者の質問に答えるフォーラム。より高度な話題はEEVBlogの他のサブフォーラムで扱う。
 
-## フォーラム
+## ポッドキャスト <a id="podcasts"></a>
+- [The Amp Hour](https://theamphour.com/) - Chris GammelとDave Jones（EEVBlog）が電子工学について気軽に話す番組。ゲストが参加することも多い。
+- [Embedded.fm](https://embedded.fm/) - Christopher WhiteとElecia Whiteが組み込みシステム開発などを話し合う番組。ゲストが参加することも多い。
+- [The Spark Gap Podcast](http://thesparkgap.net) - 毎回、特定の電子工学の主題を扱う番組。ゲストが参加する回もある。
+- [MacroFab Engineering Podcast](https://macrofab.com/blog/podcast/) - MacroFabのParkerとStephenが電子工学の話題や業界ニュースを話す週刊ポッドキャスト。
+- [The Engineering Commons Podcast](http://theengineeringcommons.com/) - 機械工学から電気工学まで、工学全般の話題を扱う番組。
 
-### 議論
-- [EEVBlog forum](https://www.eevblog.com/forum/) - Probably the largest and most active forum to discuss Electronic Engineering topics.
-- [/r/electronics](https://www.reddit.com/r/electronics/) and [/r/ECE](https://www.reddit.com/r/ECE/) are the two most active sub-reddits for EE topics.
+## 動画 <a id="videos"></a>
+- [EEVblog](https://www.youtube.com/user/EEVblog) - Dave Jonesが分解、チュートリアルなどを紹介するYouTubeチャンネル。原文では、初期のYouTubeチャンネルの一つとされている。
+- [BigClive](http://bigclive.com) - 危険な製品も含む機器の分解、回路のリバースエンジニアリング、チュートリアルを扱う[YouTubeチャンネル](https://www.youtube.com/user/bigclivedotcom)。
+- [ElectroBOOM](https://www.youtube.com/user/msadaghd) - ユーモアを交えて電子工学の誤解を解き、主題を解説するYouTubeチャンネル。
+- [Micah Scott](https://www.youtube.com/user/micahjd) - 家庭用電子機器のハードウェアをリバースエンジニアリングし、創意工夫で別の用途に転用する動画記録。
+- [Afrotechmods](https://www.youtube.com/user/afrotechmods) - 初心者にも適した内容を多く含む、電子工作プロジェクトのチュートリアル。
+- [The Signal Path](https://www.youtube.com/user/TheSignalPathBlog) - 実験用機器や試作向け製品を詳しく分解、修理、レビュー。
+- [w2aew](https://www.youtube.com/channel/UCiqd3GLTluk2s_IBt7p_LjA) - 基本的なものから複雑なものまで、アナログハードウェアのチュートリアル。
+- [Mr. Carlson's Lab](https://www.youtube.com/user/MrCarlsonsLab) - 古い電子機器を中心とした分解、修理、修復。
+- [GreatScott](https://www.youtube.com/user/greatscottlab) - 電子工学のチュートリアル、プロジェクト、手順の解説。
+- [Julian Ilett](https://www.youtube.com/user/julius256) - 見つけられる中で最も安い電子モジュールを購入し、有用な使い方を試みる。
+- [MikesElectricStuff](https://www.youtube.com/channel/UCcs0ZkP_as4PpHDhFcmCHyA) - 機器の分解、大規模な照明プロジェクト、X線など。
+- [Ben Eater](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU) - ブレッドボードで8ビットのコンピューターを作る動画。すべての部分回路を解説。
+- [Robert Feranec](https://www.youtube.com/user/matarofe) - 100件以上のハードウェア設計のヒントや工夫。回路図設計とPCBレイアウトの動画。
+- [Strange Parts](https://strangeparts.com) - 電子工学、製造、ものづくり、世界旅行、中国での暮らしとものづくりを扱う[YouTubeチャンネル](https://www.youtube.com/channel/UCO8DQrSp5yEP937qNqTooOw)。
+- [Analog Circuit Design](https://youtube.com/playlist?list=PLc7Gz02Znph-c2-ssFpRrzYwbzplXfXUT) - カリフォルニア工科大学のAli Hajimiri教授によるアナログ回路設計の講座。
 
-### ヘルプ
-- [/r/askelectronics](https://www.reddit.com/r/AskElectronics/) - Sub-reddit dedicated to help on electronics topics.
-- [Electronics Stack Exchange](https://electronics.stackexchange.com) - Question and answer site for electronics running on the popular Stack Overflow service.
-- [EEVBlog beginners forum](https://www.eevblog.com/forum/beginners/) - Good place for beginner questions, other sub-forums on EEVblog should be suitable for questions on more advanced topics.
+## キットの定期配送サービス <a id="subscription-kit-services"></a> <a id="定期キットサービス"></a>
+- [AdaBox](https://www.adafruit.com/adabox/) - Adafruit製品、収集品、限定割引を四半期ごとに届けるサービス。
+- [HackerBoxes](https://hackerboxes.com/) - プロジェクト、部品、モジュール、工具を詰め合わせた月替わりのお楽しみボックス。
 
+## 3D部品モデル <a id="3d-part-models"></a> <a id="3d-部品モデル"></a>
+- [GrabCad](https://grabcad.com/library/electronic-components-1) - 多数の電子部品モデルを収録する、コミュニティが支える3Dモデルのデータベース。
+- [3D ContentCentral](https://www.3dcontentcentral.com) - 部品の3Dモデルを専門に扱うサイト。ログインが必要。
 
-## ポッドキャスト
-- [The Amp Hour](https://theamphour.com/) - Off-the-cuff chat about electronics with Chris Gammel and Dave Jones (EEVBlog), often with guests
-- [Embedded.fm](https://embedded.fm/) - Christopher and Elecia White discuss embedded systems development and much more, often with guests.
-- [The Spark Gap Podcast](http://thesparkgap.net) - Covers a specific EE topic each episode, sometimes with guests.
-- [MacroFab Engineering Podcast](https://macrofab.com/blog/podcast/) - Weekly podcast where Parker and Stephen from MacroFab discuss EE topics and industry news.
-- [The Engineering Commons Podcast](http://theengineeringcommons.com/) - Covers general engineering topics from mechanical to electrical.
+## その他のリスト <a id="other-lists"></a>
+- [PwnKitteh/InsanelyCheapElectronics](https://github.com/PwnKitteh/InsanelyCheapElectronics) - プロジェクトで使える、中国から入手できる安価な電子工作用品のリスト。
+- [EEVblogフォーラムのPCB/EDAソフトウェア一覧](https://www.eevblog.com/forum/eda/pcbeda-software-list/) - PCBとEDAのソフトウェアツールをより幅広くまとめたリスト。
+- [intajay/open-electronics](https://github.com/intajay/open-electronics) - 電子工作の愛好家とハードウェアハッカー向けの資料をまとめた別のGitHubリスト。
+- [Vitorian/awesome-fpga](https://github.com/Vitorian/awesome-fpga) - FPGAに関する資料のAwesomeリスト。
+- [cajt/list_of_robot_electronics](https://github.com/cajt/list_of_robot_electronics) - ロボットの電子回路に関する資料、プロジェクト、製品のGitHubリスト。
+- [embedded-boston/awesome-embedded-systems](https://github.com/embedded-boston/awesome-embedded-systems) - 組み込みプログラミングの資料のAwesomeリスト。
+- [TCAD Central](https://tcadcentral.com/Software.html) - DEVSIMの開発元による、Technology CAD（TCAD）のソフトウェアと資料のリスト。
+- [Awesome Lattice FPGAs](https://github.com/kelu124/awesome-latticeFPGAs) - オープンソースのFPGAボードのリスト。
+- [TM90/awesome-hwd-tools](https://github.com/TM90/awesome-hwd-tools) - チップ設計を重視したハードウェア設計ツールのリスト。
+- [delftopenhardware/awesome-open-hardware](https://github.com/delftopenhardware/awesome-open-hardware) - オープンソースのハードウェアプロジェクトを制作・学習するための資料。
+- [upb-lea/awesome-open-source-power-electronics](https://github.com/upb-lea/awesome-open-source-power-electronics) - パワーエレクトロニクスに特化したオープンソースソフトウェアのリスト。
 
-
-## 動画
-- [EEVblog](https://www.youtube.com/user/EEVblog) - One of the earliest and most successful YouTube channels where Dave Jones does teardowns, tutorials and more.
-- [BigClive](http://bigclive.com) - [YouTube channel](https://www.youtube.com/user/bigclivedotcom) about teardowns (including dangerous products), circuit reverse-engineering and tutorials.
-- [ElectroBOOM](https://www.youtube.com/user/msadaghd) - YouTube channel that debunks and explains EE topics with a lot of comedy thrown in.
-- [Micah Scott](https://www.youtube.com/user/micahjd) - Video logs of reverse engineering and re-purposing consumer electronics hardware in creative ways.
-- [Afrotechmods](https://www.youtube.com/user/afrotechmods) - Tutorials on electronics projects, often suitable for beginners as well.
-- [The Signal Path](https://www.youtube.com/user/TheSignalPathBlog) - Very in depth teardowns, repairs and reviews of lab equipment and prototyping products.
-- [w2aew](https://www.youtube.com/channel/UCiqd3GLTluk2s_IBt7p_LjA) - Excellent tutorials about basic and complex analog hardware.
-- [Mr. Carlson's Lab](https://www.youtube.com/user/MrCarlsonsLab) - Teardowns, repairs and restorations with an emphasis on classic electronics gear.
-- [GreatScott](https://www.youtube.com/user/greatscottlab) - Electronics tutorials, projects and how to's.
-- [Julian Ilett](https://www.youtube.com/user/julius256) - Buys cheapest electronic modules he can find and tries to do useful things with them.
-- [MikesElectricStuff](https://www.youtube.com/channel/UCcs0ZkP_as4PpHDhFcmCHyA) - Teardowns, large lighting projects, xrays and more.
-- [Ben Eater](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU) - Series of videos on building an 8-bit computer on breadboards with excellent explanations of all the sub-circuits.
-- [Robert Feranec](https://www.youtube.com/user/matarofe) - 100+ Hardware design tips and tricks. Videos about Schematic design and PCB layout.
-- [Strange Parts](https://strangeparts.com) - [YouTube channel](https://www.youtube.com/channel/UCO8DQrSp5yEP937qNqTooOw) about electronics, manufacturing, making, world travel, living in and making things in China.
-- [Analog Circuit Design](https://youtube.com/playlist?list=PLc7Gz02Znph-c2-ssFpRrzYwbzplXfXUT) - Analog Circuit Design by Prof. Ali Hajimiri, Caltech.
-## 定期キットサービス
-- [AdaBox](https://www.adafruit.com/adabox/) - Curated Adafruit products, unique collectibles, and exclusive discounts. All delivered quarterly.
-- [HackerBoxes](https://hackerboxes.com/) - A monthly surprise box which includes projects, components, modules and tools.
-
-## 3D 部品モデル
-- [GrabCad](https://grabcad.com/library/electronic-components-1) - Community supported database of 3D models with a large number of electronic component models.
-- [3D ContentCentral](https://www.3dcontentcentral.com) - Website dedicated to 3D models of parts (requires login).
-
-## その他のリスト
-- [PwnKitteh/InsanelyCheapElectronics](https://github.com/PwnKitteh/InsanelyCheapElectronics) - A list of cheap electronics from China, that you can use in your projects.
-- [PCB/EDA software list on the EEVblog forums](https://www.eevblog.com/forum/eda/pcbeda-software-list/) - A much more comprehensive list of all the software tools available.
-- [intajay/open-electronics](https://github.com/intajay/open-electronics) - Another GitHub list: resources for Electronics Enthusiasts and Hardware Hackers.
-- [Vitorian/awesome-fpga](https://github.com/Vitorian/awesome-fpga) - Awesome list of FPGA resources.
-- [cajt/list_of_robot_electronics](https://github.com/cajt/list_of_robot_electronics) - A GitHub list of resources, projects and products for robot electronics.
-- [embedded-boston/awesome-embedded-systems](https://github.com/embedded-boston/awesome-embedded-systems) - Awesome list of embedded programming resources.
-- [TCAD Central](https://tcadcentral.com/Software.html) - List of Technology CAD (TCAD) software and resources from the maker of DEVSIM.
-- [Awesome Lattice FPGAs](https://github.com/kelu124/awesome-latticeFPGAs) - A curated list of awesome open-source FPGA boards.
-- [TM90/awesome-hwd-tools](https://github.com/TM90/awesome-hwd-tools) - A curated list of hardware design tools with a focus on chip design.
-- [delftopenhardware/awesome-open-hardware](https://github.com/delftopenhardware/awesome-open-hardware) - Helpful items for making and learning about open source hardware projects.
-- [upb-lea/awesome-open-source-power-electronics](https://github.com/upb-lea/awesome-open-source-power-electronics) - Open source software list specialized on power electronics.
-
-## アラビア語セクション
- - [Complete EE Course](https://youtube.com/playlist?list=PLww54WQ2wa5rOJ7FcXxi-CMNgmpybv7ei&si=4Whr8h-_9kGdUN3_) - دورة الالكترونيات العملية
- - [Complete Digital Electronics Course](https://youtube.com/playlist?list=PLww54WQ2wa5obq6IbRbIiql8oHaTUp3T_&si=I4mqjy3JUZ8xmElT) - دورة الالكترونيات الرقمية
- - [professional Electronics Design](https://youtube.com/playlist?list=PLww54WQ2wa5oKEhE_D3UVbKWwml8o8_Fu&si=BF213_MSJwSiyvIV) - دورة التصميم الالكتروني المحترف كاملة
- - [professional PCB Design](https://www.youtube.com/playlist?list=PLww54WQ2wa5pBm96kQTkqAyMXn9F4Q0i9) - دورة تصميم اللوحات المطبوعة (PCB)
+## アラビア語の講座 <a id="arabic-section"></a> <a id="アラビア語セクション"></a>
+ - [Complete EE Course](https://youtube.com/playlist?list=PLww54WQ2wa5rOJ7FcXxi-CMNgmpybv7ei&si=4Whr8h-_9kGdUN3_) - アラビア語の実践的な電子工学講座。
+ - [Complete Digital Electronics Course](https://youtube.com/playlist?list=PLww54WQ2wa5obq6IbRbIiql8oHaTUp3T_&si=I4mqjy3JUZ8xmElT) - アラビア語のデジタル電子工学講座。
+ - [professional Electronics Design](https://youtube.com/playlist?list=PLww54WQ2wa5oKEhE_D3UVbKWwml8o8_Fu&si=BF213_MSJwSiyvIV) - アラビア語のプロ向け電子設計の全講座。
+ - [professional PCB Design](https://www.youtube.com/playlist?list=PLww54WQ2wa5pBm96kQTkqAyMXn9F4Q0i9) - アラビア語のプリント基板（PCB）設計講座。

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-438-xxhash-markdown-and-native-screening",
+  "cycle": 438,
+  "startedAt": "2026-10-03T11:24:26.509Z",
+  "endedAt": "2026-10-03T11:24:28.666Z",
+  "result": "partial",
+  "phase": "candidate-markdown-native-trial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "全12原資料MarkdownASTと実コード比較",
+    "Codex IAB native screenshots/リンク操作とDOM読み取り",
+    "局所CSSクラス修復・Astro build/DOM/links/notices再検査",
+    "台帳CAS、localLLM未使用"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9b86ffac3f9698d3e89f5c66eae40f2d09a44584ca3c9925cd5e186e89cecd08"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/CYCLE_FINDINGS.json",
+      "sha256": "0151b691f0e4bd3d7b98765ca1c454a048c1766208c6cf001f15184a60ef9602"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/MARKDOWN_BODY_AND_CODE_CHECK.json",
+      "sha256": "719718b8c384cb81cb9b79b67906e0924e4136d40c8b1fe844133c19548407fe"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/PREVIEW.log",
+      "sha256": "48f272ee76b777fe26b1b640f8ce8f7da977a4b691e355f7b9f1fda3a29bfbb7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/PREVIEW_FAILED_SANDBOX.log",
+      "sha256": "23b29d4871fa1556593a32607e8132a332a9fa5c7b0b3b5e171aa80086e29332"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/largest-api-desktop.png",
+      "sha256": "0ff355224f9099a204bb32eaee46f64ade7b493c192231033b9897fa0ab7cc85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/md-preservation-check.mjs",
+      "sha256": "fc84069021acffbd668d60b2b3a08c21ad75275f6e05a45ed45d8035b77cdc21"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/normal-api-desktop.png",
+      "sha256": "f92f0db71b60517de128f35c2c055a967e52cdb056715c38614d729528153b0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/streaming-example-desktop.png",
+      "sha256": "d654e5b94ab463ad55598b8f0215b23024a2d8c70f76c52628765b5a58072661"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "3c3942be32228f8830c9b57dfeb27edddd0320aef1a2c2bbba0755ab2d35a2ce"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "MD12原本文ASTと実コード67ブロック保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/MARKDOWN_BODY_AND_CODE_CHECK.json",
+          "sha256": "719718b8c384cb81cb9b79b67906e0924e4136d40c8b1fe844133c19548407fe"
+        }
+      ]
+    },
+    {
+      "name": "native APIコード表示",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-438/CYCLE_FINDINGS.json",
+          "sha256": "0151b691f0e4bd3d7b98765ca1c454a048c1766208c6cf001f15184a60ef9602"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "MD原資料12件AST全件一致（明示URL対応のみ変更）、実コード67ブロック一致。native通常API/最大API・Streaming遷移を確認したがAPIコードの比例フォント・インデント消失を発見。元convertのclass重複と再parse後のclass欠落によるCSS非適用。",
+    "機械的本文保持・native画面確認・全文内容レビューを分離。"
+  ],
+  "unresolved": [
+    "最新版fixture440の通常/最大/仕様/native mobile/notice/graph巡回",
+    "API見出し目次・コードコピーUI",
+    "MD表セルと全文自立性/日本語調査/工数/採点"
+  ],
+  "nextAction": "xxHash最新版試験440の通常/最大API・仕様・通知・外部画像をnativeで巡回し、390px mobileとコード/表の横スクロールを確認。API目次とコードコピー導線の扱いを整える。MD全表セル/本文保持、全文自立性、日本語版範囲、API項目・工数・採点を確定する。",
+  "resumeCondition": "CANDIDATES91、3条件pass。移植は最終native未完でunknown。fixture440と全本文/修復脚本/hashは証拠保存済み。採用0。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

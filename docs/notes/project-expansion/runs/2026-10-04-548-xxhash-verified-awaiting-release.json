@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-548-xxhash-verified-awaiting-release",
+  "cycle": 548,
+  "startedAt": "2026-10-03T20:44:57.188Z",
+  "endedAt": "2026-10-03T20:45:07.235Z",
+  "result": "partial",
+  "phase": "verified",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "all current evidence SHA audit",
+    "3064dist inventory exact match",
+    "112 private/root reviewed docs SHA check",
+    "new app/importer source replica without shared overwrite",
+    "remote refs/current GitHub production observation",
+    "CAS verified registration"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "58f55829f034579e16b8c31a35e3af86ae9cc994f3ad0abbd527e8dc4ad428b0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-541/CONTENT_REVIEW_GATE.json",
+      "sha256": "1448eed321d3e2d633274d0fef69ffd9d708ff7c384a5ab8ecd49a5972458911"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-548/GITHUB_CURRENT_STATUS.json",
+      "sha256": "05d00556b0fe43ba058f4b90b09d6e1a1b37194a4ed2fab1e138c840738f647b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-548/REMOTE_REFS.txt",
+      "sha256": "9582e052f5b49065b8f460fe90c16e4f82d36818f8121fab1cd585e40ad2ba0e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-548/VERIFIED_GATE.json",
+      "sha256": "24e60005c9a6ea323ce8b456285fec0449c6ae9e3b301946c285c015405f8ae8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-548/read-github.mjs",
+      "sha256": "05ade8f887dcbb616358c2801e5298fe041ff8fe9dbe8056f4ff686480b06745"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-548/register.mjs",
+      "sha256": "6645b53dfeb68c0440d4c935876b87bc980774eb320f052f6f9a2170067e9293"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "170776241eb13a9b1e82a33d18709738efa8c588c0a3a577412e0224f04b5456"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "verified gate",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-548/VERIFIED_GATE.json",
+          "sha256": "24e60005c9a6ea323ce8b456285fec0449c6ae9e3b301946c285c015405f8ae8"
+        }
+      ]
+    },
+    {
+      "name": "publication",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-548/GITHUB_CURRENT_STATUS.json",
+          "sha256": "05d00556b0fe43ba058f4b90b09d6e1a1b37194a4ed2fab1e138c840738f647b"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全六gateと全文review現行SHAを照合してverifiedへ。",
+    "新規app/importerのみrootへ保存、rootの共通user変更を保護。",
+    "既存Pages workflowの直接canonical CASとartifact照合で公開。"
+  ],
+  "unresolved": [
+    "private source commit/push/CI公開・外部検証"
+  ],
+  "nextAction": "xxHash verified・正規公開待ち登録済み。専用 /private/tmp/libx-xxhash-integration-20261004（base本番4f0ee6d0/main祖先a010）だけで対象source/通知/review metadata/共通任意テンプレート/keyboard/linkchecker/最小lockを限定commit。公開候補cleanチェック→push→既存Pages workflowをexpected_production_commit=4f0ee6d00b08e3fe7b39f7466a545c4c944d6b26指定で実行。CI成果物SHA/Pages canonical/全主要URLとsource.gzのHTTP encoding/downloadを確認しpublishedへ。",
+  "resumeCondition": "xxHash verified・正規公開待ち登録済み。専用 /private/tmp/libx-xxhash-integration-20261004（base本番4f0ee6d0/main祖先a010）だけで対象source/通知/review metadata/共通任意テンプレート/keyboard/linkchecker/最小lockを限定commit。公開候補cleanチェック→push→既存Pages workflowをexpected_production_commit=4f0ee6d00b08e3fe7b39f7466a545c4c944d6b26指定で実行。CI成果物SHA/Pages canonical/全主要URLとsource.gzのHTTP encoding/downloadを確認しpublishedへ。",
+  "counts": {
+    "verified": 14,
+    "published": 13,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

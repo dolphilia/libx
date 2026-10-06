@@ -1,11 +1,11 @@
 ---
 title: "Awesome Electric Guitar Specifications"
-description: "Awesome Electric Guitar Specificationsの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "エレキギターを自作するためのチェックリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Electric Guitar Specifications
 
-Awesome Electric Guitar Specificationsの収録案内です。このスナップショットでは上流本文を転載していません。
+エレキギターを自作するためのチェックリストであるAwesome Electric Guitar Specificationsへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/gitfrage/guitarspecs/blob/220559669d42d0edd0314464c32b722795f27e05/README.md)
+- [元のリストを読む](https://github.com/gitfrage/guitarspecs/blob/220559669d42d0edd0314464c32b722795f27e05/README.md)

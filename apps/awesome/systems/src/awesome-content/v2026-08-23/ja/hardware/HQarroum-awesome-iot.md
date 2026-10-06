@@ -1,430 +1,411 @@
 ---
-title: "Awesome IoT"
-description: "IoTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
-licenseSource: "github-HQarroum-awesome-iot-readme-md"
+title: Awesome IoT
+description: IoT向けのハードウェア、OS、言語、フレームワーク、ミドルウェア、ツール、通信プロトコル、規格・団体、書籍・記事・論文。
+licenseSource: github-HQarroum-awesome-iot-readme-md
+toc:
+  minLevel: 2
+  maxLevel: 4
 ---
-
 # Awesome IoT
 
-IoTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+IoTプロジェクト向けのハードウェア、OS、プログラミング言語、フレームワーク、ミドルウェア、ツールを紹介します。通信層別のプロトコル解説に加え、関連技術、規格・団体、書籍、記事、論文を掲載しています。
 
-## 目次 <a id="table-of-contents"></a>
+説明、価格、性能値、対応状況、過去の予測、書籍の情報は、記録された上流READMEに基づきます。
 
-- [ハードウェア](#hardware)
-- [ソフトウェア](#software)
-  - [オペレーティングシステム](#operating-systems)
-  - [Programming Languages](#programming-languages)
-  - [フレームワーク](#frameworks)
-  - [ミドルウェア](#middlewares)
-  - [ライブラリ・ツール](#libraries-and-tools)
-  - [その他](#miscellaneous)
-- [プロトコル・ネットワーク](#protocols-and-networks)
-- [技術](#technologies)
-- [標準・アライアンス](#standards-and-alliances)
-- [資料](#resources)
-  - [書籍](#books)
-  - [記事](#articles)
-  - [論文](#papers)
+## ハードウェア <a id="hardware"></a>
 
-### ハードウェア <a id="hardware"></a>
+- [Arduino](https://www.arduino.cc/) - 扱いやすいハードウェアとソフトウェアを基盤とする、オープンソースの電子工作プラットフォーム。対話型プロジェクトを作る人を対象とする。
+- [BeagleBoard](http://beagleboard.org/) - Texas InstrumentsがDigi-KeyおよびNewark element14と共同で製造する、低消費電力のオープンソース・シングルボードコンピューター。
+- [Dragonboard](https://developer.qualcomm.com/hardware/dragonboard-410c) - Arrow ElectronicsのDragonBoard 410cは、ミドルレンジのQualcomm® Snapdragon™ 410Eプロセッサーを基盤とする開発ボード。クレジットカード大の基板に処理機能、Wi-Fi、Bluetooth、GPSを搭載。
+- [ESP32](https://www.espressif.com/en/products/hardware/esp32/overview) - ESP8266の後継で、高速なデュアルコアプロセッサーと内蔵周辺機能を備える。原文では、ネット接続製品のマイクロコントローラーを置き換えるものとして紹介されている。
+- [HomeMaster](https://www.home-master.eu/) - DINレールに取り付ける、ESP32ベースのオープンソースなモジュール式スマートホーム基盤。MiniPLC・MicroPLCコントローラー、リレー、調光器、RGBCCT、電力量計測、漏水検知、警報の各モジュールを備え、ESPHomeとHome Assistantを使ってすべてローカルで動作。ファームウェアと回路図は[GitHub](https://github.com/isystemsautomation/homemaster-dev)で公開。
+- [HummingBoard](https://www.solid-run.com/freescale-imx6-family/hummingboard/) - 1GHzのFreescale i.MX6 SoCを基盤とする、Linux・Android対応のオープンソースSBC 3機種のシリーズ。Raspberry Piに似た26ピンのI/Oコネクターを備える。
+- [Intel Galileo](https://www-ssl.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) - Intel®アーキテクチャーに基づくArduino*認定の開発・試作ボードシリーズの最初の製品、Intel® Galileo Gen 2。メイカー、学生、教育者、電子工作を楽しむ人向けに設計。
+- [Microduino](https://www.microduino.cc/) - メイカー、デザイナー、エンジニア、学生、幅広い年代の工作愛好家がオープンソースのプロジェクトや新たな作品を作るための、小型で積み重ねられるMicroduino・mCookieの電子ハードウェア。
+- [Node MCU (ESP 8266)](http://www.nodemcu.com/index_en.html) - Luaスクリプト言語を使うオープンソースのIoTプラットフォーム。eLuaプロジェクトを基盤とし、ESP8266 SDK 0.9.5上に構築。
+- [OLinuXino](https://www.olimex.com/Products/OLinuXino/open-source-hardware) - GPIOを備え、ハードウェアとソフトウェアをオープンソースで提供する、産業用途のLinuxシングルボードコンピューター。原文の記載価格はEUR 30、動作温度範囲は-25°C〜+85°C。
+- [Odroid](http://www.hardkernel.com/) - ODROIDはOpen + Droidに由来する名称。ハードウェアとソフトウェアの開発プラットフォーム。
+- [Particle](https://www.particle.io) - IoT製品の試作、規模拡大、管理を支援するハードウェア・ソフトウェアのツール群。
+- [Pinoccio](https://www.open-electronics.org/pinoccio-wifi-mesh-networking-for-arduino-and-iot-available-now/) - IoT機器にメッシュネットワーク機能とWi-Fi経由のインターネット接続を追加する、Arduino互換のソリューション。
+- [PiSpot Show](https://github.com/GeiserX/PiSpot-Show) - 天気情報との連携とPiJuiceのバッテリー管理を備えた、Raspberry PiによるWi-Fi利用券の表示システム。
+- [PiSpot Watch](https://github.com/GeiserX/PiSpot-Watch) - GPConnect向けのPiSpot Watchを動作させるソフトウェア。機器はRaspberry Pi ZeroとPaPiRus Zeroで構成。
+- [AutoPi](https://github.com/autopi-io/autopi-core) - Raspberry PiベースのOBD-II機器、AutoPiドングル用のオープンソース中核ソフトウェア。ネット接続車両のテレマティクス、CANバスデータ収集、自動車向けIoT用途に使用。
+- [Raspberry Pi](https://www.raspberrypi.org/) - 原文で低価格と紹介される、クレジットカード大のコンピューター。モニターやテレビに接続し、標準的なキーボードとマウスを使って、ウェブ閲覧、高解像度動画、表計算、文書作成、ゲームなどのデスクトップ用途に使用。
+- [Tessel](https://tessel.io/) - 完全にオープンソースで、コミュニティが主導するIoT・ロボティクスの開発プラットフォーム。開発ボード、追加ハードウェアモジュール、そこで動作するソフトウェアを含む。
+- [UDOO](http://www.udoo.org) - Arduino 2互換のマイクロコントローラーを内蔵したシングルボードコンピューター。コンピューター科学教育、メイカー、IoT向けに設計。
+- [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) - Raspberry Pi Foundationが開発したRP2040マイクロコントローラーを搭載する小型ボード。原文には、IoT向けの2.4GHz 802.11n無線LAN搭載モデルも記載されている。
+- [Rinho Telematics](https://rinho.com.ar/en) - CANバス（J1939/FMS）に標準対応し、オフラインデータをダウンロードするためのWi-Fi接続への切替とBLE 5.0センサーを備えるGPSトラッカー。Traccar・Wialonに対応。
+- [WisBlock](https://www.rakwireless.com/en-us/products/wisblock) - IoTソリューションへ低消費電力広域ネットワーク（LPWAN）を導入するためのモジュール式システム。ベースボード、中心となる演算モジュール、複数のセンサーモジュールの組み合わせで構成。
 
-- [Arduino](https://www.arduino.cc/) - アーロンドは、使いやすいハードウェアとソフトウェアに基づくオープンソース電子プラットフォームです。これは、インタラクティブなプロジェクトを作成するすべての人向けに設計されています。
-- [BeagleBoard](http://beagleboard.org/) - ビーゲルボードは、テキサス・インスティテュートとディジー・キーやニューカイの協力により開発された、低消費電力のオープンソースハードウェアのシングルボードコンピュータです。
-- [Dragonboard](https://developer.qualcomm.com/hardware/dragonboard-410c) - ドラゴンボード410cは、アーロン・エレクトロニクスが提供する製品で、中級のクアルコム® スネードン™ 410Eプロセッサに基づく開発ボードです。このボードは、高度な処理能力、Wi-Fi、ブルートゥース接続、GPSを、クレジットカードサイズのボードにすべて統合しています。
-- [ESP32](https://www.espressif.com/en/products/hardware/esp32/overview) - ESP32はESP8266の後継機種です。ESP32はハードウェア機能が豊富です。高速のダブルコアプロセッサと多数の内蔵周辺回路により、接続製品におけるマイクロコントローラの代替が可能になります。
-- [HomeMaster](https://www.home-master.eu/) - IoTの試作・配備に利用できるボード、センサー、ゲートウェイ等のハードウェアです。 [GitHub](https://github.com/isystemsautomation/homemaster-dev)
-- [HummingBoard](https://www.solid-run.com/freescale-imx6-family/hummingboard/) - ハミングボードは、1GHzのフリースケル・i.MX6 SoCに基づく3種類のLinuxおよびAndroid対応オープンソースSBCのファミリーです。また、ピーアイ風の26ピンI/O接続器を備えています。
-- [Intel Galileo](https://www-ssl.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) - インテル® ガリオーロ・ジェン2ボードは、インテル®アーキテクチャに基づくアーロンド*認定開発およびプロトタイピングボードのファミリーの最初の製品であり、マーカー、学生、教育者、DIY電子エンジニア向けに特別設計されています。
-- [Microduino](https://www.microduino.cc/) - マイクロドゥーンとmCookieは、マーカー、デザイナー、エンジニア、学生、そしてすべての年齢層の好奇心旺盛なチューナーに、強力で小型かつスタック可能な電子ハードウェアを提供します。オープンソースプロジェクトを構築するか、革新的な新プロジェクトを創出できます。
-- [Node MCU (ESP 8266)](http://www.nodemcu.com/index_en.html) - ノードMCUは、オープンソースIoTプラットフォームです。Luaスクリプト言語を使用しています。eLuaプロジェクトに基づき、ESP8266 SDK 0.9.5に構築されています。
-- [OLinuXino](https://www.olimex.com/Products/OLinuXino/open-source-hardware) - オリヌクシノは、低価格（EUR30）のオープンソースソフトウェアおよびオープンソースハードウェアのLinux工業用シングルボードコンピュータで、GPIOを備え、-25°Cから+8及°Cまで動作可能です。
-- [Odroid](http://www.hardkernel.com/) - ODROIDは「オープン＋ドロイド」という意味です。これはハードウェアおよびソフトウェアの開発プラットフォームです。
-- [Particle](https://www.particle.io) - IoT製品のプロトタイピング、スケーリング、管理を支援するハードウェアおよびソフトウェアツールのセットです。
-- [Pinoccio](https://www.open-electronics.org/pinoccio-wifi-mesh-networking-for-arduino-and-iot-available-now/) - ピンコッチオは、すべてのIoTデバイスにメッシュネットワーク機能およびWi-Fiインターネットアクセスを追加するソリューションであり、アーロンドと互換性があります。
-- [PiSpot Show](https://github.com/GeiserX/PiSpot-Show) - ラズベリーパイWiFiボンパーアプリケーションに天気統合とPiJuiceバッテリー管理を搭載した表示システム.
-- [PiSpot Watch](https://github.com/GeiserX/PiSpot-Watch) - GPConnect社用のPiSpotウォッチ（ラズベリーパイゼロとPaPiRusゼロで構成）を実行するソフトウェアです。
-- [AutoPi](https://github.com/autopi-io/autopi-core) - AutoPiドングル（ラズベリーパイベースのOBD-IIデバイス）のオープンソースコアソフトウェア。これは、接続車両のテレメトリック、CANバスデータ収集、自動車IoTアプリケーションに使用されます。
-- [Raspberry Pi](https://www.raspberrypi.org/) - ラズベリーパイは、低価格でクレジットカードサイズのコンピュータで、コンピュータモニターやテレビに接続され、標準のキーボードとマウスを使用できます。インターネット閲覧やハイデフィ動画の再生、スプレッドシート作成、ワードプロセッシング、ゲームのプレイなど、デスクトップコンピュータが行えるすべての機能を備えています。
-- [Tessel](https://tessel.io/) - テセルは、完全にオープンソースでコミュニティが運営するIoTおよびロボティクス開発プラットフォームです。開発ボード、ハードウェアモジュールの追加、それらに実行されるソフトウェアを含みます。
-- [UDOO](http://www.udoo.org) - UDOOは、アーロンド2と互換性のあるマイクロコントローラを内蔵したシングルボードコンピュータで、コンピュータ科学教育、マーカーの世界、IoTに設計されています。
-- [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) - ラズベリーパイピコは、ラズベリーパイ財団が開発したRP2040マイクロコントローラチップを搭載した小型で高速かつ多用途なボードです。さらに、2.4GHz 802.11n無線LAN変種を備え、IoTに最適です。
-- [Rinho Telematics](https://rinho.com.ar/en) - CANバス（J1939/FMS）を内蔵し、オフラインデータダウンロード用のWi-Fiバックアップ、BLE 5.0センサーを備えたGPSトラッカー。TraccarおよびWialonと互換性があります。
-- [WisBlock](https://www.rakwireless.com/en-us/products/wisblock) - WisBlockは、IoTソリューションに低電力広域ネットワーク（LPWAN）を簡単に導入できるモジュラーなシステムです。WisBlockは、ベースボード、コア計算モジュール、複数のセンサモジュールの組み合わせから構成されています。
+## ソフトウェア <a id="software"></a>
 
-### ソフトウェア <a id="software"></a>
+### オペレーティングシステム <a id="operating-systems"></a>
 
-#### オペレーティングシステム <a id="operating-systems"></a>
+- [Apache Mynewt](https://mynewt.apache.org/) - 電力・メモリー・ストレージの制約下で長期間動作するIoT接続機器向けの、リアルタイムでモジュール式のOS。最初に提供された通信スタックはBLE 4.2。
+- [ARM mbed](http://www.mbed.com/) - 商用の規格準拠IoTソリューションを大規模に作成・展開するために、OS、クラウドサービス、ツール、開発者エコシステムを提供するARM® mbed™ IoT Device Platform。
+- [Contiki](http://www.contiki-os.org/) - IoT向けのオープンソースOS。小型・低価格・低消費電力のマイクロコントローラーをインターネットに接続。
+- [FreeRTOS](http://www.freertos.org/) - 組み込み機器向けのリアルタイムOSカーネル。原文には35種類のマイクロコントローラーへの移植が記載されている。
+- [Android Things](https://developer.android.com/things/) - 注意：記録された原文では非推奨とされている。接続機器全体へAndroidプラットフォームを拡張し、設定や機器同士・スマートフォンとの連携を容易にするものとして紹介。
+- [OpenWrt](https://openwrt.org/) - Linuxカーネルを基盤とし、主に組み込み機器でネットワーク通信をルーティングするOS。Linuxカーネル、util-linux、uClibcまたはmusl、BusyBoxを主要構成要素とし、家庭用ルーターの限られたストレージとメモリーに収まるようサイズを最適化。
+- [Snappy Ubuntu](https://wiki.ubuntu.com/Snappy) - トランザクション単位の更新を採用したUbuntu派生版。原文では、当時のUbuntuと同じライブラリーを持つ最小構成のサーバーイメージと、アプリケーションを提供する簡素な仕組みが説明されている。
+- [Mbed OS](https://os.mbed.com/) - 低消費電力でリソースが限られたネット接続Cortex-Mボード向けの、オープンソースIoT用OS。マイクロコントローラーの抽象化層を提供し、Mbed対応ボードで動作するC/C++アプリケーションを開発可能。
+- [NodeOS](http://node-os.com/) - すべてJavaScriptで記述され、npmで管理され、Linuxカーネル上で動作するOS。
+- [Raspbian](https://raspbian.org/) - Debianを基盤とし、Raspberry Piのハードウェア向けに最適化された無料のOS。
+- [RIOT](http://www.riot-os.org/) - IoT向けのOS。
+- [Tiny OS](https://github.com/tinyos/tinyos-main) - センサーネットワーク、ユビキタスコンピューティング、パーソナルエリアネットワーク、スマートビル、スマートメーターなどの低消費電力無線機器向けに設計された、BSDライセンスのオープンソースOS。
+- [Toit](https://toit.io/) - 堅牢で障害に強い機器運用、機器とデータの管理、ネット接続された組み込み機器のファームウェア・アプリケーションの無線更新を提供するプラットフォーム。
+- [UBOS](https://ubos.net/) - ウェブアプリケーションを動かす家庭用サーバーや独立系IoT機器のシステム管理を簡素化するLinuxディストリビューション。Arch Linux派生で、PC、Raspberry Pi、ESPRESSObin、クラウド上で動作。
+- [Windows 10 IoT Core](https://dev.windows.com/en-us/iot) - 小型の産業用ゲートウェイからPOS端末やATMなどの大型で複雑な機器まで、幅広いインテリジェント機器を対象とするWindows 10のエディション群。
+- [Zephyr Project](https://www.zephyrproject.org/) - 複数のハードウェアアーキテクチャーに対応し、リソースが限られた機器向けに最適化され、セキュリティを考慮して設計された、拡張可能なリアルタイムOS（RTOS）。
 
- - [Apache Mynewt](https://mynewt.apache.org/) - Apache Mynewtは、長期間にわたって電力、メモリ、ストレージの制限の下で動作する必要がある接続IoTデバイス向けのリアルタイム・モジュラーなオペレーティングシステムです。最初に提供された接続スタックはBLE 4.2です。
- - [ARM mbed](http://www.mbed.com/) - ARM® mbed™ IoTデバイスプラットフォームは、商業的に実現可能な、標準化されたIoTソリューションの開発と展開を可能にするオペレーティングシステム、クラウドサービス、ツール、開発エコシステムを提供します。
- - [Contiki](http://www.contiki-os.org/) - Contikiは、インターネット・オブ・シングス（IoT）向けのオープンソースオペレーティングシステムです。Contikiは、小さな低コスト・低消費電力のマイコンをインターネットに接続します。
- - [FreeRTOS](http://www.freertos.org/) - FreeRTOSは、エントリーデバイス向けに人気のあるリアルタイムオペレーティングシステムカーネルであり、35のマイコンにポートされています。
- - [Android Things](https://developer.android.com/things/) - **注意：Android Thingsは廃止されています。** Android Thingsは、すべての接続デバイスにAndroidプラットフォームを拡張し、設定が簡単で、互いにスムーズに動作し、スマートフォンと連携できるようにします。
- - [OpenWrt](https://openwrt.org/) - OpenWrtは、Linuxカーネルに基づくオペレーティングシステム（特に、エントリーデバイス向けの埋め込みオペレーティングシステム）であり、ネットワークトラフィックのルーティングに主に使用されます。主なコンポーネントはLinuxカーネル、util-linux、uClibcまたはmusl、およびBusyBoxです。すべてのコンポーネントはサイズを最適化し、家庭用ルーターに搭載可能な限られたストレージとメモリに収まるように設計されています。
- - [Snappy Ubuntu](https://wiki.ubuntu.com/Snappy) - Snappy Ubuntu Coreは、Ubuntuの新しいバージョンで、取引型アップデートを提供します。現在のUbuntuと同じライブラリを備えた最小サーバーイメージを提供し、アプリケーションはよりシンプルなメカニズムで提供されます。
- - [Mbed OS](https://os.mbed.com/) - インターネット・オブ・シングス（IoT）向けのCortex-Mボード用のオープンソースオペレーティングシステム：低消費電力、制限されたリソース、接続されたデバイス。Mbed OSは、実行するマイコンに対して抽象化層を提供し、開発者はC/C++アプリケーションを任意のMbed対応ボード上で実行できるようになります。
- - [NodeOS](http://node-os.com/) - NodeOSは、JavaScriptで完全に構築されたオペレーティングシステムであり、Linuxカーネルの上にnpmで管理されています。
- - [Raspbian](https://raspbian.org/) - Raspbianは、Debianに基づく無料のオペレーティングシステムで、Raspberry Piハードウェアに最適化されています。
- - [RIOT](http://www.riot-os.org/) - インターネット・オブ・シングス向けの親しみやすいオペレーティングシステム。
- - [Tiny OS](https://github.com/tinyos/tinyos-main) - TinyOSは、低消費電力のワイヤレスデバイス（センサネットワーク、周辺計算、個人エリアネットワーク、スマートビルディング、スマートメーターなど）向けに設計されたオープンソース、BSDライセンスに基づくオペレーティングシステムです。
- - [Toit](https://toit.io/) - Toitプラットフォームは、デバイスを堅牢かつ耐性のある方法で提供し、デバイスとデータの制御を可能にし、ネットワーク接続された埋め込みデバイスに即時更新可能なファームウェアとアプリケーション更新を提供します。
- - [UBOS](https://ubos.net/) - UBOSは、家庭用サーバーおよびIndie IoTデバイスのシステム管理をシンプルにすることを目的としたLinuxディストリビューションです。Arch Linuxの派生品であり、PC、Raspberry Pi、ESPRESSObin、クラウド上で動作します。
- - [Windows 10 IoT Core](https://dev.windows.com/en-us/iot) - Windows 10 IoTは、小型産業ゲートウェイから、POS端末やATMなどのより大きな複雑なデバイスまで幅広いスマートデバイスに向けたWindows 10のエディションのファミリーです。
-  - [Zephyr Project](https://www.zephyrproject.org/) - Zephyr™プロジェクトは、複数のハードウェアアーキテクチャをサポートし、リソース制限されたデバイスに最適化され、セキュリティを意識したスケーラブルなリアルタイムオペレーティングシステム（RTOS）です。
+### プログラミング言語 <a id="programming-languages"></a>
 
-#### プログラミング言語 <a id="programming-languages"></a>
+組み込み開発向けのコンパイル型・インタープリター型言語。ドメイン固有言語（DSL）も含みます。
 
-> この節では、コンパイル言語、インタープリター言語、DSLを問わず、組込み開発に関連する言語をまとめます。
+- [AtomVM](https://atomvm.org/) - Erlang、Elixir、Gleamなどの関数型言語をマイクロコントローラーで実行するためのプロジェクト。
+- [C](https://en.wikipedia.org/wiki/C_(programming_language)) - 構造化プログラミング、変数の字句スコープ、再帰を支援する、汎用の命令型プログラミング言語。静的な型システムで多くの意図しない操作を防ぐ。
+- [C++](https://en.wikipedia.org/wiki/C%2B%2B) - 命令型、オブジェクト指向、ジェネリックプログラミングの機能と、低水準のメモリー操作機能を備える汎用プログラミング言語。
+- [Groovy](http://www.groovy-lang.org/) - 簡潔な構文を持つ、Javaプラットフォーム向けの動的言語。型指定は任意で、静的型付けと静的コンパイルにも対応。原文ではSmartThingsの開発環境でスマートアプリケーションを作る用途が説明されている。
+- [Lua](http://www.lua.org/) - 軽量で組み込み可能な、動的型付けのスクリプト言語。レジスターベースの仮想マシンでバイトコードを解釈し、インクリメンタルなガベージコレクションによる自動メモリー管理を提供。設定、スクリプト、迅速な試作に使用。
+- [eLua](http://www.eluaproject.net/) - Embedded Luaの略。Lua言語の完全な実装を組み込み環境に提供し、効率的で移植性のある組み込みソフトウェア開発向けの機能を追加。
+- [ELFE](http://c3d.github.io/elfe/) - センサーやアクチュエーターなどの小型機器群の設定・制御に適した、小規模な汎用プログラミング言語。
+- [MicroPython](https://docs.micropython.org/) - マイクロコントローラーやリソースに制約のあるシステム向けの、小型のPython実装。
+- [PikaPython](https://github.com/pikastech/pikapython) - 原文でRAM 4KBで動作し、依存関係がなく、Cと連携できると紹介されているPython実装。
+- [PharoThings](https://github.com/pharo-iot/PharoThings) - [Pharo](https://pharo.org/)を基盤とするIoTプロジェクト向けのライブプログラミング環境。Pharoは純粋なオブジェクト指向言語と開発環境で、簡素さと即時のフィードバックを重視。
+- [Rust](https://www.rust-lang.org/) - 性能、信頼性、生産性を重視する言語。原文ではメモリー安全性、借用チェッカー、安全な並行処理が特徴として挙げられている。
+- [TinyGo](https://tinygo.org/) - LLVMを基盤とする新たなコンパイラーで、Go言語をマイクロコントローラーや現代のウェブブラウザーへ提供するプロジェクト。BBC micro:bitやArduino Unoなど、多様なボード向けにプログラムをコンパイル・実行可能。
+- [Toitlang](https://toitlang.org/) - Pythonに近い構文を持ち、マイクロコントローラー向けに基礎から設計された、IDE連携を備える高水準言語。原文ではMicroPythonの少なくとも20倍の速度とされている。
 
- - [AtomVM](https://atomvm.org/) - Erlang、Elixir、Gleamなどの機能言語をマイコンに導入します。
- - [C](https://en.wikipedia.org/wiki/C_(programming_language)) - 一般用途の、命令型のコンピュータプログラミング言語であり、構造化プログラミング、文法スコープ、再帰をサポートし、静的型システムにより多くの意図外の操作を防止します。
- - [C++](https://en.wikipedia.org/wiki/C%2B%2B) - 一般用途のプログラミング言語であり、命令型、オブジェクト指向、ジェネリックプログラミング機能を備え、低レベルのメモリ操作にも対応しています。
- - [Groovy](http://www.groovy-lang.org/) - グローブイは、強力で、オプションで型を指定できる動的言語であり、Javaプラットフォーム向けに、簡潔で親しみやすく、学習しやすい構文を持つため、開発者の生産性を高める静的型と静的コンパイル機能を備えた言語です。スマートスイッチ開発環境でスマートアプリケーションを作成するために使用されています。
- - [Lua](http://www.lua.org/) - ルアは、強力で、高速で、軽量で、埋め込み可能なスクリプト言語です。ルアは動的型を持ち、レジスタベースの仮想マシンのバイナリコードを解釈して実行し、自動メモリ管理とインクリメンタルなゴミ収集を備えており、設定、スクリプト、および迅速なプロトタイピングに最適です。
- - [eLua](http://www.eluaproject.net/) - eLuaは「埋め込みルア」という名称であり、プロジェクトはルアプログラミング言語の完全な実装を埋め込み世界に提供し、効率的かつ移植性の高いソフトウェア開発に特化した機能を追加しています。
- - [ELFE](http://c3d.github.io/elfe/) - ELFEは非常にシンプルで小さいプログラミング言語です。これは一般用途のプログラミング言語ですが、センサーやアクチュエータなどの小さなデバイスの群れの設定および制御を容易にするように調整されています。
- - [MicroPython](https://docs.micropython.org/) - マイクロコントローラおよび制限されたシステム向けの軽量で効率的なPython実装
- - [PikaPython](https://github.com/pikastech/pikapython) - Pythonは4KBのRAMで動作し、依存関係はゼロで、Cとの結合が容易です。
- - [PharoThings](https://github.com/pharo-iot/PharoThings) - マイクロコントローラーや組込みIoT開発に利用できる言語・処理系です。 [Pharo](https://pharo.org/)
- - [Rust](https://www.rust-lang.org/) - ルストはパフォーマンス、信頼性、生産性に焦点を当てた言語です。安全性が知られ、メモリ安全であり、バーミングチェックを用い、並列処理も安全です。
- - [TinyGo](https://tinygo.org/) - タイニーゴは、LLVMをベースにした新しいコンパイラを用いて、Goプログラミング言語をマイクロコントローラおよび現代のウェブブラウザに導入するプロジェクトです。BBC micro:bitやArduino Unoなどのさまざまなマイクロコントローラボード上で、タイニーゴプログラムをコンパイル・実行できます。
- - [Toitlang](https://toitlang.org/) - 非常にPythonに近い構文を持つ高レベル言語です。マイクロコントローラ向けに基本から構築されたため、マイクロPythonより少なくとも20倍速いです。また、スムーズなIDE統合も実現しています。
+### フレームワーク <a id="frameworks"></a>
 
-#### フレームワーク <a id="frameworks"></a>
+- [AllJoyn](https://openconnectivity.org/developer/reference-implementation/alljoyn) - 機器とアプリケーションが互いを検出し、通信するためのオープンソース・ソフトウェアフレームワーク。
+- [Apple HomeKit](https://developer.apple.com/homekit/) - 家庭内の接続アクセサリーと通信し、制御するためのフレームワーク。
+- [homebridge-blink-security](https://github.com/BitWise-0x/homebridge-blink-security) - Blinkのカメラ、ドアベル、サイレンをApple HomeKitへ統合するHomebridgeプラグイン。ライブ映像配信、警戒の有効化・解除、動作検知を備える。
+- [homebridge-smartrent](https://github.com/BitWise-0x/homebridge-smartrent) - リアルタイムのWebSocket接続で、SmartRentの鍵、サーモスタット、漏水センサー、スイッチをApple HomeKitへ統合するHomebridgeプラグイン。
+- [AREG SDK](https://github.com/aregtech/areg-sdk) - 分散コンピューティングと[ミストコンピューティング](https://csrc.nist.gov/publications/detail/sp/500-325/final)を実現する、インターフェース中心のリアルタイム非同期通信エンジン。接続された機器が軽量な分散サーバーのように相互作用し、サービスを提供。
+- [Astarte](https://github.com/astarte-platform/astarte) - 機器群を遠隔のアプリケーションへ接続する、Elixir製のオープンソースIoTプラットフォーム。データモデリング、データ量の自動削減、リアルタイムイベントを提供。原文では、付属SDKによるLinuxとESP32への対応が挙げられている。
+- [Blynk](http://www.blynk.cc) - 接続機器向けのiOS・Androidアプリケーションを作るプラットフォーム。スマートフォン上でウィジェットをドラッグ＆ドロップしてグラフィカルな操作画面を構築。Arduino、Raspberry、ARM mbed、Particle、RedBearなどの試作プラットフォームで、Ethernet、WiFi、Bluetooth、GSM/GPRS、USB/シリアル接続に対応。
+- [Countly IoT Analytics](http://github.com/countly/countly-server) - モバイル機器とIoT機器向けの汎用分析プラットフォーム。オープンソースで提供。
+- [Eclipse Ditto™](https://eclipse.org/ditto/) - デジタルツインを構築するフレームワーク。接続された物理機器をクラウド上に表現し、その機器とやり取りするAPIを提供。認可、検索、接続の機能を内蔵し、MQTTブローカー、HTTPエンドポイント、Apache Kafkaなどの外部システムと統合。
+- [Eclipse Smarthome](https://eclipse.org/smarthome/) - Raspberry Pi、BeagleBone Black、Intel Edisonなどの組み込み機器で動作するよう設計されたフレームワーク。原文ではJava 7準拠のJVMと、Eclipse EquinoxなどのOSGi（4.2以上）フレームワークを要件としている。
+- [Freedomotic](http://www.freedomotic.com) - 現代的なスマート空間を構築・管理するための、柔軟性とセキュリティを考慮したオープンソースIoT開発フレームワーク。個人のホームオートメーションと、スマート店舗、周辺環境を考慮するマーケティング、監視・分析などの業務用途を対象とする。Javaで記述され、標準的なビル自動化プロトコルと自作の仕組みの両方と連携。
+- [Iotivity](https://iotivity.org/) - IoTの新たな要求に応えるため、機器同士を円滑に接続するオープンソース・ソフトウェアフレームワーク。
+- [Iotellect](https://iotellect.com) - 機器統合、データ収集、リアルタイムの可視化を行うローコードIoTプラットフォーム。ドラッグ＆ドロップのUI構築機能を備え、MQTT、OPC UA、Modbusなど、原文では50以上の産業用プロトコルに対応するとされている。
+- [Jumpstarter](https://github.com/jumpstarter-dev/jumpstarter) - 実物と仮想のIoTハードウェアで自動テストを行う、オープンソースのHardware-in-the-Loopテストフレームワーク。CI/CDと統合。
+- [Kura](https://eclipse.org/kura/) - サービスゲートウェイで動作するM2Mアプリケーション向けの、Java/OSGiベースのコンテナーを提供するプロジェクト。M2Mで一般的に必要なサービスをオープンソースで実装し、既存の実装が利用できる場合はそれを集約。
+- [Lelylan](http://www.lelylan.com/) - 軽量なマイクロサービス構成のIoTクラウドプラットフォーム。ハードウェアとプラットフォームに依存せず、ESP8266から業務用の組み込みハードウェアまで接続。パブリッククラウド、独自のデータセンター、両者を組み合わせた環境で、仮想化環境でもベアメタルでも動作。
+- [Macchina.io](https://github.com/macchina-io/macchina.io) - Linux機器で動作するIoTアプリケーションを構築するソフトウェアフレームワーク、macchina.io EDGE。ウェブ連携、セキュリティ、モジュール構成、拡張性を備えるJavaScript・C++の実行環境と、すぐに使える実績のあるソフトウェア部品を提供。センサー、他の機器、クラウドサービスとの通信や、機器・エッジ機器・ローカルネットワーク内でのセンサーデータの処理、分析、フィルタリングに使用。
+- [Mihini](https://wiki.eclipse.org/Mihini) - Linux上で動作し、M2Mアプリケーションを構築する高水準APIを提供する組み込み実行環境を目指すプロジェクト。M2Mシステムの入出力へのアクセスや通信層を提供し、開発の容易さと移植性を支援。
+- [OpenHAB](http://www.openhab.org/) - OSGiフレームワーク（Equinox）上へ配置するOSGiバンドル群で構成される実行環境。Javaのみで実装され、動作にJVMを必要とする。OSGiによるモジュール構成を採用し、サービスを停止せず、実行中に機能を追加・削除可能。
+- [Gobot](http://gobot.io/) - Goで記述された、ロボティクス、フィジカルコンピューティング、IoT向けのフレームワーク。
+- [Home Assistant](https://github.com/home-assistant/home-assistant) - Python 3で動作するホームオートメーション基盤。家庭内の機器の状態を把握・制御し、その制御を自動化するためのプラットフォームを目指す。
+- [Lightweight MQTT Machine Network](http://lwmqn.github.io/) - OMA LWM2M v1.0仕様の一部に従い、IPベースのSmart Objectモデルで機器ネットワーク管理の最低要件を満たすオープンソース・プロジェクト、LWMQN。サーバー側と機器側のライブラリーを提供し、JavaScriptとNode.jsによるIoTシステム全体の開発を支援。関連資料：IPSO Allianceの[技術資料集](http://www.ipso-alliance.org/ipso-community/resources/technical-archive/)。
+- [Thingsboard IoT Gateway](https://github.com/thingsboard/thingsboard-gateway) - 従来のシステムや第三者のシステムへ接続された機器を、OPC-UAとMQTTでThingsboard IoT Platformへ統合するオープンソースIoTゲートウェイ。
+- [Pimatic](https://pimatic.org/) - node.jsで動作するホームオートメーション・フレームワーク。家庭内の制御・自動化処理に共通する、拡張可能な基盤を提供。
+- [IOTA](https://iota.org/) - IoT向けのオープンソース分散台帳プロトコル。ブロックチェーンに代えて有向非巡回グラフ（DAG）を使用。
+- [MyController](https://github.com/mycontroller-org/mycontroller) - 家庭、オフィスなど、さまざまな場所を対象とするオープンソースIoT自動化コントローラー、MyController.org。
+- [Mozilla WebThings](https://iot.mozilla.org/) - ウェブを通じて機器を監視・制御するオープンなプラットフォーム。
+- [HStreamDB](https://github.com/hstreamdb/hstream) - IoTデータの保存とリアルタイム処理向けに構築されたストリーミングデータベース。
+- [IoTSharp.Gateways](https://github.com/IoTSharp/Gateways) - 従来のシステムや第三者のシステムへ接続された機器を、ModBus、OPC-UA、BACNet、MQTTでIoTSharp IoT Platformへ統合するオープンソースIoTゲートウェイ。
+- [ForestHub](https://foresthub.ai) - エッジAIエージェントのプラットフォーム。オープンソース実行環境[edge-agents](https://github.com/ForestHubAI/edge-agents)により、Linuxエッジゲートウェイ（Raspberry Pi、Jetson）上でAIエージェントをオフライン実行。ローカルのSLMとクラウドのLLMを併用し、GPIO・UART・MQTTを主要なノードとして扱うビジュアル構築機能を備える。
 
- - [AllJoyn](https://openconnectivity.org/developer/reference-implementation/alljoyn) - アリーナは、デバイスやアプリケーションが互いに発見し、通信できるようにするオープンソースソフトウェアフレームワークです。
- - [Apple HomeKit](https://developer.apple.com/homekit/) - ホームキットは、ユーザーの家に接続されたアクセサリーと通信し、制御するためのフレームワークです。
- - [homebridge-blink-security](https://github.com/BitWise-0x/homebridge-blink-security) - Blinkカメラ、ドアベル、サイレンをAppleホームキットと統合するためのホームブリッジプラグインで、ライブストリーミング、アーム／ディーアーム、動き検知を提供しています。
- - [homebridge-smartrent](https://github.com/BitWise-0x/homebridge-smartrent) - スマートレンツのロック、サーモスタット、漏れセンサー、スイッチをAppleホームキットとリアルタイムのWebSocket接続で統合するためのホームブリッジプラグインです。
- - [AREG SDK](https://github.com/aregtech/areg-sdk) - AREG SDKは、分散型および[mist-](https://csrc.nist.gov/publications/detail/sp/500-325/final)計算を可能にする、インターフェース中心のリアルタイム非同期通信エンジンであり、接続されたThingsが相互に作用し、サービスを提供する仕組みを、薄い分散サーバーのように実現します。
- - [Astarte](https://github.com/astarte-platform/astarte) - アスタルテはElixirで書かれたオープンソースIoTプラットフォームです。これは、デバイスのファルトを遠隔アプリケーションに接続するために必要なすべての機能を内包した即時解決ソリューションです。データモデル化、自動データ圧縮、リアルタイムイベント、そして現代的なIoTプラットフォームに期待されるすべての機能を提供します。現在は、LinuxおよびESP32デバイスが、提供されたSDKで即時サポートされています。
- - [Blynk](http://www.blynk.cc) - ブリンクは、iOSおよびAndroidアプリを構築するためのプラットフォームです。すべてのプロジェクトに、スマートフォン上でウィジェットをドラッグ＆ドロップで構築できるグラフィカルインターフェースを簡単に作成できます。Ethernet、WiFi、Bluetooth、GSM/GPRS、USB/シリアル接続をサポートし、Arduino、Raspberry、ARM mbed、Particle、RedBearなど、多くのプロトタイピングプラットフォームに対応しています。
- - [Countly IoT Analytics](http://github.com/countly/countly-server) - カウントリーは、モバイルおよびIoTデバイス向けの一般用途の分析プラットフォームであり、オープンソースで提供されています。
- - [Eclipse Ditto™](https://eclipse.org/ditto/) - Eclipse Dittoは、所謂「デジタルツイン」を構築するためのフレームワークです。クラウド上で物理デバイスの表現とAPIを提供し、外部システム（MQTTブローカー、HTTPエンドポイント、Apache Kafkaなど）との統合に必要な認証、検索、接続機能を内蔵しています。
- - [Eclipse Smarthome](https://eclipse.org/smarthome/) - Eclipse SmartHomeフレームワークは、ラズベリーパイ、ベーグルボーンブラック、インテルエドソンなどの埋め込みデバイス上で動作するように設計されています。Java 7に対応するJVMとOSGi（4.2以降）フレームワーク（例：Eclipse Equinox）が必要です。
- - [Freedomotic](http://www.freedomotic.com) - フリーディオティックは、オープンソースで、柔軟で、安全なインターネット・オブ・シングス（IoT）開発フレームワークです。個人（ホームオートメーション）およびビジネスユーザー（スマートレターリング環境、周辺環境認識マーケティング、監視および分析など）向けに設計されています。Javaで書かれており、既知の標準ビルディングオートメーションプロトコルおよび「DIY」ソリューションと相互作用できます。
- - [Iotivity](https://iotivity.org/) - IoTivityは、デバイス間のシームレスな接続を可能にするオープンソースソフトウェアフレームワークであり、インターネット・オブ・シングスの新たなニーズに対応しています。
- - [Iotellect](https://iotellect.com) - 低コードIoTプラットフォーム。デバイスの統合、データ収集、リアルタイム可視化をサポート。MQTT、OPC UA、Modbus、および50以上の工業プロトコルに対応。ドラッグアンドドロップUIビルダーを備えている。
- - [Jumpstarter](https://github.com/jumpstarter-dev/jumpstarter) - オープンソースのハードウェアインザループテストフレームワーク。リアルおよび仮想IoTハードウェア上の自動テストを実行し、CI/CDとの統合をサポート。
- - [Kura](https://eclipse.org/kura/) - Kuraは、サービスゲートウェイ上で実行されるM2Mアプリケーションに用いるJava/OSGiベースのコンテナを提供するものである。Kuraは、M2Mアプリケーションが利用する最も一般的なサービスに対して、提供するか、あるいは存在するオープンソース実装を集約する。
- - [Lelylan](http://www.lelylan.com/) - Lelylanは、軽量マイクロサービスアーキテクチャに基づいたIoTクラウドプラットフォームである。Lely及プラットフォームはハードウェアに依存せず、プラットフォームに依存しない。つまり、ESP8266から最も専門的なエムベディドハードウェアまで、あらゆるハードウェアに接続可能であり、AWS、Google Cloud、Azureなどの公的クラウド、自社のプライベートデータセンター、あるいは仮想化または裸金属環境でのハイブリッド環境でも動作可能である。
- - [Macchina.io](https://github.com/macchina-io/macchina.io) - macchina.io EDGEは、Linuxベースのデバイス上で迅速にIoTデバイスアプリケーションを構築できる豊かなソフトウェアフレームワークである。macchina.io EDGEは、ウェブ対応、セキュア、モジュラーかつ拡張可能なJavaScriptおよびC++ランタイム環境を実装し、即時使用可能かつ業界で証明されたソフトウェアブロックを提供する。これにより、デバイスはさまざまなセンサー、他のデバイス、クラウドサービスと通信し、センサーデータをローカルで処理・分析・フィルタリングできるようになる。
- - [Mihini](https://wiki.eclipse.org/Mihini) - Mihiniの主な目標は、Linux上で実行される埋め込みランタイムを提供し、M2Mアプリケーションの開発に必要な高レベルAPIを公開することである。Mihiniは、M2MシステムのI/Oへのアクセスを容易にし、通信層を提供することで、開発を簡単かつ移植可能なものにすることを目指している。
- - [OpenHAB](http://www.openhab.org/) - openHABランタイムは、OSGiフレームワーク（Equinox）にデプロイされたOSGiバンドルのセットである。したがって、純粋なJavaソリューションであり、JVMが必要である。OSGiに基づくため、高度にモジュラリズドなアーキテクチャを提供し、サービスを停止せずに機能を追加・削除できる。
- - [Gobot](http://gobot.io/) - Gobotは、Go言語で書かれたロボティクス、物理コンピューティング、IoT向けのフレームワークである。
- - [Home Assistant](https://github.com/home-assistant/home-assistant) - Home AssistantはPython 3で動作するホームオートメーションプラットフォームである。Home Assistantの目標は、家庭内のすべてのデバイスを追跡・制御でき、自動制御プラットフォームを提供することである。
- - [Lightweight MQTT Machine Network](http://lwmqn.github.io/) - LWMQNは、OMA LWM2M v1.0仕様の一部を追従し、IPベースのスマートオブジェクトモデルを使用して機械ネットワーク管理の最低要件を満たすオープンソースプロジェクトです。JavaScriptおよびNode.jsでフルスタックIoT開発を可能にするサーバーサイドおよびマシンサイドのライブラリを提供します。詳細は：IPSOアライアンス [Technical Archive](http://www.ipso-alliance.org/ipso-community/resources/technical-archive/)です。
- - [Thingsboard IoT Gateway](https://github.com/thingsboard/thingsboard-gateway) - オープンソースIoTゲートウェイ - 過去のシステムおよび第三者システムに接続されたデバイスを、OPC-UAおよびMQTTプロトコルを使ってThingsboard IoTプラットフォームと統合。
- - [Pimatic](https://pimatic.org/) - Pimaticはnode.js上で動作するホームオートメーションフレームワークであり、ホーム制御および自動化タスクの共通拡張プラットフォームを提供する。
- - [IOTA](https://iota.org/) - オープンソースIoT用分散台帳プロトコル。有向無サイクルグラフ（DAG）を使用する。
- - [MyController](https://github.com/mycontroller-org/mycontroller) - オープンソースコントローラー。MyController.orgは、家庭、オフィス、またはその他の場所に適用可能なIoT自動化コントローラーである。
- - [Mozilla WebThings](https://iot.mozilla.org/) - ウェブ上でデバイスを監視・制御できるオープンプラットフォーム。
- - [HStreamDB](https://github.com/hstreamdb/hstream) - IoTデータのストレージおよびリアルタイム処理に最適化されたストリーミングデータベース。
- - [IoTSharp.Gateways](https://github.com/IoTSharp/Gateways) - オープンソースIoTゲートウェイ - 過去のシステムおよび第三者システムに接続されたデバイスを、ModBus、OPC-UA、BACNetおよびMQTTプロトコルを使ってIoTSharp IoTプラットフォームと統合。
- - [ForestHub](https://foresthub.ai) - エッジAIエージェントプラットフォーム。そのオープンソースランタイム[edge-agents](https://github.com/ForestHubAI/edge-agents)は、Linuxエッジゲートウェイ（Raspberry Pi、Jetson）上でオフラインでAIエージェントを実行し、ローカルのSLMとクラウドのLLMを併用し、GPIO/UART/MQTTを第一クラスのノードとして提供し、視覚的なビルダーを備えています。
+### ミドルウェア <a id="middlewares"></a>
 
-#### ミドルウェア <a id="middlewares"></a>
+- [Corlysis](https://corlysis.com/) - GrafanaとInfluxDBを基盤とする、時系列データの保存・可視化プラットフォーム。原文では、これらのオープンソース・プロジェクトをSpaceXも利用していると説明されている。
+- [IFTTT](https://ifttt.com/) - Gmail、Facebook、Instagram、Pinterestなどのウェブサービスの変化をきっかけに、単純な条件文を連結した「レシピ」を実行するウェブサービス。名称はIf This Then Thatの略で、発音はgiftからgを除いたもの。
+- [OPC Router](https://www.opc-router.com/opc-router-details/) - OPC UA、Mqtt、SQL、REST、SAP、InfluxDB、プリンターなど、各種プラグインを備えるIoTゲートウェイ。
+- [Huginn](https://github.com/cantino/huginn) - オンラインの処理を自動実行するエージェントを構築するシステム。
+- [Kaa](http://www.kaaproject.org/) - IoTソリューションを迅速に作成するためのオープンソース・ミドルウェア基盤。
+- [Losant](https://losant.com) - 複雑な接続ソリューションを迅速かつ安全に構築するための開発者向けプラットフォーム。RESTやMQTTなどのオープンな通信規格で、1台から数百万台規模の機器を接続。大量のセンサーデータを把握・定量化するための収集、集約、可視化機能を提供。ドラッグ＆ドロップのワークフロー編集で、プログラミングせずに処理、通知、機器間通信を開始可能。
+- [MicroServiceBus.com](https://microservicebus.com) - Azure、AWS、IBM IoT Hub向けの機器管理プラットフォーム。GitHub、ServiceNow、Cisco Jasperなどと統合。原文では機能を限定した無料版と企業向けプランが挙げられている。
+- [DreamFactory](http://www.dreamfactory.com) - モバイル、ウェブ、IoTアプリケーション向けの無料・オープンソースREST API基盤。
+- [HiveMQ](https://www.hivemq.com/) - 企業向けのMQTTブローカー。数百万台のIoT機器を接続できる規模へ拡張可能。
+- [I1820](https://i1820.github.io/) - MQTTに基づく検出、データ収集、設定のサービスを提供する無料・オープンソース基盤。機器を制御するREST APIを実装し、収集した全データを時系列データベースのInfluxDBへ保存。
+- [IOStash](https://iostash.io) - 原文で高性能と紹介され、DIY開発者と非営利用途には無料とされているIoTプラットフォーム。複数の接続方式を備え、M2M・M2Aアプリケーションの開発を支援。NodejsとAndroidのライブラリーも提供。
+- [Thingsboard](https://thingsboard.io) - IoTソリューションの機器管理、データ収集、処理、可視化を提供するオープンソースIoT基盤。
+- [Thingspeak](https://thingspeak.com/) - クラウド上でライブデータを集約・可視化・分析する、オープンソースIoT分析プラットフォームサービス。機器からThingSpeakへデータを送信し、そのデータを即座に可視化したり、警告を送ったりできる。
+- [VerneMQ](https://github.com/erlio/vernemq) - IoT、M2M、モバイル、ウェブアプリケーションを接続する、高性能で分散構成のMQTTブローカー。汎用ハードウェア上で水平方向・垂直方向に拡張し、低遅延と耐障害性を保ちながら多数の発行者・受信者の同時接続に対応。
+- [Kuzzle](https://github.com/kuzzleio/kuzzle) - リアルタイムの発行・購読やジオフェンシングなどの機能を備えるオープンソース・バックエンド。MQTT、LoRaWANなどに対応する複数プロトコルのインターフェースを提供。（[公式サイト](https://kuzzle.io/solutions/technologies/iot-backend/)）
+- [DevicePilot](https://www.devicepilot.com) - 接続機器の運用分析サービス。原文では期限を設けない無料プランが挙げられている。
+- [EMQX](https://www.emqx.io/) - オープンソースのMQTTブローカー。原文では、単一クラスターで1億台以上のIoT機器に対応し、毎秒100万メッセージの処理量と1msの遅延でリアルタイムデータ処理を行うとされている。
+- [Waterstream](https://waterstream.io/) - Apache Kafkaを自身の保存・配信エンジンとして使うMQTTブローカー。
+- [NanoMQ](https://github.com/nanomq/nanomq) - IoTエッジ基盤向けの軽量MQTTブローカー。原文では高速と紹介されている。
+- [Kuiper](https://github.com/emqx/kuiper) - リソースが限られたエッジ機器向けに、Goで実装された軽量なIoTエッジデータ分析・ストリーミングソフトウェア。
+- [t6](https://github.com/mathcoll/t6) - データを中心に据え、物理的なモノを時系列データベースへ接続して分析するIoTプラットフォーム。
+- [IoTSharp](https://github.com/IoTSharp/IoTSharp) - データ収集、処理、可視化、機器管理を提供するオープンソースIoTプラットフォーム。
+- [Husarnet](https://husarnet.com/) - インターネット経由で、ブリッジを介さずMCUとサーバー、またはMCU同士を直接接続する、世界規模のピアツーピア・ネットワーク層。
+- [Zilla](https://github.com/aklivity/zilla) - HTTP、SSE、gRPC、MQTT、Kafkaの固有プロトコルなどの標準プロトコルに対応する、イベントを中心に設計された複数プロトコルのエッジ・サービスプロキシー。
+- [IoT DC3](https://github.com/pnoker/iot-dc3) - Spring Cloudを基盤とする、完全にオープンソースの分散型産業用IoTプラットフォーム。原文では、Modbus、OPC UA、Siemens S7、BACnet、MQTT、CoAPなど28種類の組み込みプロトコルドライバー、AIを活用した運用、マイクロサービス構成が挙げられている。（[ドキュメント](https://docs.dc3.site)）
+- [DeviceChain](https://github.com/devicechain-io/devicechain) - Apache-2.0ライセンスの、Go・React製セルフホストIoTプラットフォーム。Kubernetes上のマルチテナントなマイクロサービス構成を採用。MQTT・Sparkplug B・LwM2Mのデータ取り込み、TimescaleDBによる時系列データ保存、警告や外部接続（ウェブフック、MQTT、Kafka、クラウドキュー）を動かすCELベースのルールエンジン、版管理されたダッシュボード、GraphQL APIを備える。（[ドキュメント](https://docs.devicechain.io)）
 
- - [Corlysis](https://corlysis.com/) - Corlysisは、タイムシリーズデータの保存と可視化を支援するプラットフォームである。GrafanaおよびInfluxDBというオープンソースプロジェクトに基づいている。SpaceXもこのプロジェクトを使用している。
- - [IFTTT](https://ifttt.com/) - IFTTTは、Gmail、Facebook、Instagram、Pinterestなどのウェブサービスの変更に基づいてトリガーされる、単純な条件文の連鎖（「レシピ」と呼ばれる）を作成できるウェブベースサービスである。IFTTTは「If This Then That」（「gift」と発音するが、gを除く）の略である。
- - [OPC Router](https://www.opc-router.com/opc-router-details/) - さまざまなプラグイン（OPC UA、Mqtt、SQL、REST、SAP、InfluxDB、Printer、...）を備えたIoTゲートウェイ
- - [Huginn](https://github.com/cantino/huginn) - Huginnは、オンラインで自動化されたタスクを実行するエージェントを構築するためのシステムである。
- - [Kaa](http://www.kaaproject.org/) - オープンソースのミドルウェアプラットフォームで、IoTソリューションの迅速な開発を可能にする。
- - [Losant](https://losant.com) - Losantは、複雑な接続ソリューションを安全かつ迅速に構築できるように設計された使いやすい開発プラットフォームです。LosantはRESTやMQTTといったオープンな通信標準を使用し、1台から数百万台のデバイスへの接続を実現します。Losantは、大量のセンサーデータを理解し、定量的に分析するための強力なデータ収集、集計、可視化機能を提供しています。Losantのドラッグアンドドロップ型ワークフロー編集器により、プログラミングなしでアクションや通知、機械間通信をトリガーできます。
- - [MicroServiceBus.com](https://microservicebus.com) - MicroServiceBus.comは、Azure、AWSおよびIBM IoT Hub向けのデバイス管理プラットフォームで、GitHub、ServiceNow、Cisco Jasperなどとの統合を提供します。無料（限定）版および企業向けのオプションが用意されています。
- - [DreamFactory](http://www.dreamfactory.com) - DreamFactoryは、モバイル、ウェブ、IoTアプリケーション向けの無料オープンソースREST APIプラットフォームです。
- - [HiveMQ](https://www.hivemq.com/) - 企業向けに設計されたMQTTブローカーで、数百万台のIoTデバイスに接続できるスケーラビリティを備えています。
- - [I1820](https://i1820.github.io/) - I1820は、MQTTに基づく発見、データ収集、設定サービスを提供する無料オープンソースプラットフォームです。I1820は、デバイスの制御にREST APIを実装し、すべての収集データをインフルエンスDBというタイムシリーズデータベースに保存します。
- - [IOStash](https://iostash.io) - IOStashは、DIY開発者や非営利アプリケーション向けに無料の高性能IoTプラットフォームです。複数の接続オプションを提供し、M2MまたはM2Aアプリケーションの簡単な開発を可能にします。IOStashは、アプリケーション開発を容易にするNode.jsおよびAndroidライブラリを提供しています。
- - [Thingsboard](https://thingsboard.io) - オープンソースIoTプラットフォーム。IoTソリューションのデバイス管理、データ収集、処理および可視化を提供します。
- - [Thingspeak](https://thingspeak.com/) - クラウド上でのリアルタイムデータストリームの集計、可視化、分析を行うオープンソースIoTアナリティクスプラットフォームサービスです。デバイスからThingSpeakにデータを送信し、リアルタイムデータの即時可視化を行い、アラートを送信できます。
- - [VerneMQ](https://github.com/erlio/vernemq) - VerneMQは、IoT、M2M、モバイル、ウェブアプリケーションを接続する高性能、分散型MQTTブローカーです。コンピューターハードウェアの標準的な構成で、並列および垂直スケーリングを行い、多くの同時発行者と消費者をサポートしつつ、低遅延と障害耐性を維持します。
- - [Kuzzle](https://github.com/kuzzleio/kuzzle) - IPベースのリアルタイムパブ/サブ、地理フェンス、複数プロトコルインターフェース（MQTT、LoRaWANを含む）を備えた高度な機能を持つオープンソースバックエンド。（[Website](https://kuzzle.io/solutions/technologies/iot-backend/)）
- - [DevicePilot](https://www.devicepilot.com) - 接続デバイスの運用分析（無料・永遠に利用可能プランを含む）。
- - [EMQX](https://www.emqx.io/) - 超スケーラブルなオープンソースMQTTブローカー。1つのクラスタで1億台以上のIoTデバイスを接続し、1ms遅延で100万メッセージ/秒のスループットでリアルタイムIoTデータを移動・処理できます。
- - [Waterstream](https://waterstream.io/) - Apache Kafkaを自社のストレージおよび配分エンジンとして活用したMQTTブローカー。
- - [NanoMQ](https://github.com/nanomq/nanomq) - IoTエッジプラットフォーム向けに軽量かつ高速なMQTTブローカー。
- - [Kuiper](https://github.com/emqx/kuiper) - Golangで実装されたエッジ向け軽量IoTデータ分析/ストリーミングソフトウェアで、さまざまなリソース制限のあるエッジデバイス上で実行可能です。
- - [t6](https://github.com/mathcoll/t6) - 物理オブジェクトとタイムシリーズDBを接続し、データ分析を行うデータ中心型IoTプラットフォーム。
- - [IoTSharp](https://github.com/IoTSharp/IoTSharp) - IoTSharpは、データ収集、処理、可視化、デバイス管理を行うオープンソースIoTプラットフォームです。
- - [Husarnet](https://husarnet.com/) - Husarnetは、グローバルなペアワーキングネットワーク層で、インターネット経由でMCU-サーバーまたはMCU-MCU間の接続を直接行うことができ、ブリッジの必要なしです。
- - [Zilla](https://github.com/aklivity/zilla) - マルチプロトコルイベントネイティブエッジ/サービスプロキシで、HTTP、SSE、gRPC、MQTTおよびネイティブKafkaプロトコルといった標準プロトコルをサポートしています。
- - [IoT DC3](https://github.com/pnoker/iot-dc3) - スプリングクラウドに基づく完全なオープンソース分散型産業IoTプラットフォーム。組み込みプロトコルドライバー28種（Modbus、OPC UA、シエムスS7、BACnet、MQTT、CoAP）、AIによる運用、マイクロサービスアーキテクチャを備えています。（[Docs](https://docs.dc3.site)）
- - [DeviceChain](https://github.com/devicechain-io/devicechain) - GoおよびReactで構成されたApache-2.0ライセンスに基づくセルフホスト型IoTプラットフォーム。Kubernetes上のマルチテナントマイクロサービス、MQTT、Sparkplug BおよびLwM2Mのイングレス、TimescaleDBによる時系列ストレージ、CELベースのルールエンジン（アラートおよび外部接続、ウェブホーク、MQTT、Kafka、クラウドキューを駆動）、バージョン管理されたダッシュボード、GraphQL APIを備えています。（[Docs](https://docs.devicechain.io)）
+### ライブラリー・ツール <a id="ライブラリツール"></a> <a id="libraries-and-tools"></a>
 
-#### ライブラリ・ツール <a id="libraries-and-tools"></a>
+- [aem-modbus-simulator](https://github.com/leaberg69/aem-modbus-simulator) - LRI AEM-60DC8産業用直流モニターを模擬する、Python製オープンソースのModbus RTU/TCPスレーブシミュレーター。147個の保持レジスター、8個の直流チャンネル、6種類のボーレート（4,800〜115,200）を再現。実機を使わないSCADA・PLC統合テストに使用。
+- [ble-scale-sync](https://github.com/KristianP26/ble-scale-sync) - BLEスマート体重計から読み取り（原文では23ブランド対応）、体組成を計算し、Garmin Connect、MQTT、InfluxDB、ウェブフック、Ntfyへ出力する、複数OS対応のNode.js CLI。Raspberry Pi、Linux、macOS、Windowsで動作。
+- [Cylon.js](http://cylonjs.com/) - ロボティクス、フィジカルコンピューティング、IoT向けのJavaScriptフレームワーク。ロボットや機器を操作するコマンドを提供。
+- [Luvit](https://luvit.io/) - Node.jsのAPIをLuaで実装するプロジェクト。IoT開発を直接の対象とはしていないが、原文ではメモリー効率のよい組み込みウェブアプリケーションを作る方法として紹介されている。
+- [Johnny-Five](http://johnny-five.io/) - 2012年にBocoupが公開した、JavaScriptのロボティクス・プログラミングフレームワーク。原文ではソフトウェア開発者とハードウェアエンジニアのコミュニティによる保守が説明されている。
+- [Pi4J](http://pi4j.com/) - Java開発者がRaspberry Piの全入出力機能へアクセスするための、使いやすいオブジェクト指向I/O APIと実装ライブラリーを提供するプロジェクト。
+- [WiringPi](http://wiringpi.com/) - Raspberry Piで使われるBCM2835向けにCで記述された、GPIOアクセスライブラリー。
+- [Node-RED](http://nodered.org/) - IoTの各要素をつなぐビジュアルツール。
+- [MIMIC IoT Simulator](https://www.gambitcomm.com/site/iot_simulator.php) - MQTT、CoAP、RESTに基づくIoTアプリケーションのアジャイル開発、テスト、概念実証、研修に向けて、大規模なIoT環境を模擬するシミュレーター。
+- [MQTT ACL Linter](https://github.com/visoar/mqtt-acl-linter) - ローカルのみでMQTTトピックのACLを静的解析するツール。任意でRunMQTTのポリシー検査を追加可能。
+- [MQTT Explorer](https://thomasnordquist.github.io/MQTT-Explorer/) - MQTTトピックを階層で可視化するツール。
+- [MQTT X](https://mqttx.app/) - EMQがオープンソースで提供する、macOS・Linux・Windows対応のMQTT 5.0クライアントツール。
+- [ops](https://ops.city/) - Linuxアプリケーションをユニカーネルとして構築・実行・展開する、無料・オープンソースのツール。
+- [SmartObject](https://github.com/PeterEB/smartobject) - JavaScriptアプリケーションでIPSO Smart Objectを作成するためのSmart Objectクラス。関連資料：IPSO Allianceの[技術資料集](http://www.ipso-alliance.org/ipso-community/resources/technical-archive/)。
+- [United Manufacturing Hub](https://github.com/united-manufacturing-hub/united-manufacturing-hub) - Node-RED、VerneMQ、TimescaleDBなどのソリューションをHelmチャートへ組み合わせた、オープンソースの製造業向けアプリケーション基盤。
+- [QuestDB](https://github.com/questdb/questdb) - リアルタイム分析と高性能アプリケーション向けの、オープンソース時系列データベース。InfluxDBラインプロトコルによる高い処理量でのデータ取り込みと、問い合わせ言語としてのSQLに対応。
+- [Chaos Genius](https://github.com/chaos-genius/chaos_genius) - 機械学習による外れ値・異常の検出と原因分析を行う、オープンソース分析エンジン。センサーデータへ接続し、異常な挙動を監視・通知。
+- [Explore IoT Libraries](https://kandi.openweaver.com/explore/internet-of-things) - ライブラリー、作者、プロジェクトキット、議論、チュートリアル、学習資料を掲載するkandiの資料一覧。
+- [ThingsOn MQTT Bench](https://github.com/volkanalkilic/ThingsOn.MQTT.Bench) - 複数OS対応の.NET Core製MQTTブローカー用ベンチマークツール。指定した時間内にブローカーへ送信できる最大メッセージ数を測定。
+- [ReductStore](https://github.com/reductstore/reductstore) - 産業用IoT向けのBlob・時系列ストレージ。エッジへの展開、選択的な複製、マルチモーダルな問い合わせを提供。原文では高性能と紹介されている。
 
- - [aem-modbus-simulator](https://github.com/leaberg69/aem-modbus-simulator) - オープンソースPython Modbus RTU/TCPスレーブシミュレータ。LRI AEM-60DC8工業用DCモニタを模倣。147個のホールディングレジスタ、8チャンネルのDC、6つのバウドレート（4,800～115,200）を反映。物理ハードウェアなしでSCADA/PLC統合テストに有用です。
- - [ble-scale-sync](https://github.com/KristianP26/ble-scale-sync) - クロスプラットフォームのNode.js CLIツールで、BLEスマートスケール（23ブランド）を読み取り、体組成を計算し、Garmin Connect、MQTT、InfluxDB、Webhook、Ntfyにエクスポート。Raspberry Pi、Linux、macOS、Windowsで動作。
- - [Cylon.js](http://cylonjs.com/) - Cylon.jsは、ロボット、物理計算、IoT向けのJavaScriptフレームワーク。ロボットやデバイスを操作するための非常に簡単な方法を提供。
- - [Luvit](https://luvit.io/) - LuvitはNode.jsと同じAPIをLuaで実装！このフレームワークはIoT開発に直接関係していないが、依然として強力でメモリ効率の高い、埋め込みWebアプリケーションを迅速に構築するための*素晴らしい*手段。
- - [Johnny-Five](http://johnny-five.io/) - Johnny-Fiveは、オリジナルのJavaScriptロボットプログラミングフレームワーク。2012年にBocoupがリリースし、現在は情熱的なソフトウェア開発者とハードウェアエンジニアたちのコミュニティによって維持されている。
- - [Pi4J](http://pi4j.com/) - Pi4jは、Raspberry Piプラットフォームの全I/O機能にアクセスできるようにする、親しみやすいオブジェクト指向I/OAPIと実装ライブラリを提供するもの。
- - [WiringPi](http://wiringpi.com/) - WiringPiは、Raspberry Piに搭載されたBCM2835で使用されるC言語によるGPIOアクセスライブラリ。
- - [Node-RED](http://nodered.org/) - IoTの接続を視覚的に組み立てるツール。
- - [MIMIC IoT Simulator](https://www.gambitcomm.com/site/iot_simulator.php) - MQTT、CoAP、RESTに基づくIoTアプリケーションのアグレッシブ開発／テスト／概念検証／訓練を可能にする、大規模IoT環境のシミュレーション。
- - [MQTT ACL Linter](https://github.com/visoar/mqtt-acl-linter) - ローカルのみのMQTTトピックACLの静的解析に、オプションでRunMQTTポリシーチェックを実行。
- - [MQTT Explorer](https://thomasnordquist.github.io/MQTT-Explorer/) - MQTTトピックを階層構造で可視化するツール、MQTTの万能ツール。
- - [MQTT X](https://mqttx.app/) - MQTT Xは、EMQがオープンソースで提供したクロスプラットフォームのMQTT 5.0クライアントツールで、macOS、Linux、Windowsに対応。
- - [ops](https://ops.city/) - 無料のオープンソースツールで、Linuxアプリケーションをユニクーラーとして構築・実行・デプロイできる。
- - [SmartObject](https://github.com/PeterEB/smartobject) - IoTデバイス、通信、データ処理、開発・試験を支援するライブラリまたはツールです。 [Technical Archive](http://www.ipso-alliance.org/ipso-community/resources/technical-archive/)
- - [United Manufacturing Hub](https://github.com/united-manufacturing-hub/united-manufacturing-hub) - オープンソース製造アプリケーションプラットフォーム（例：Nodered、VerneMQ、timescaleDBなど、さまざまなオープンソースソリューションをHelmチャートにまとめる）
- - [QuestDB](https://github.com/questdb/questdb) - リアルタイム分析および高性能アプリケーション向けのオープンソースタイムシリーズデータベース。InfluxDBのラインプロトコルによる高スループットインゴースとSQLをクエリ言語としてサポート。
- - [Chaos Genius](https://github.com/chaos-genius/chaos_genius) - センサーデータとの接続を可能にし、異常行動をモニタリングし、アラートを発信するオープンソースML駆動の分析エンジン。異常検出および原因分析に特化。
- - [Explore IoT Libraries](https://kandi.openweaver.com/explore/internet-of-things) - kandiで人気や新規のライブラリ、トップ著者、トレンドプロジェクトキット、ディスカッション、チュートリアル、学習リソースを一覧にしたカスタムリストを発見・検索。
- - [ThingsOn MQTT Bench](https://github.com/volkanalkilic/ThingsOn.MQTT.Bench) - ThingsOn MQTT Benchは、MQTTブローカー向けのシンプルなクロスプラットフォーム.NET Coreベンチマークツール。指定された時間内にブローカーに送信可能なメッセージの最大数を測定。
- - [ReductStore](https://github.com/reductstore/reductstore) - 工業IoT向けの高パフォーマンスのブロブおよびタイムシリーズストレージ。エッジデプロイメント、選択的なレプリケーション、多モーダルデータの効率的なクエリをサポート。
+### その他 <a id="miscellaneous"></a>
 
-#### その他 <a id="miscellaneous"></a>
-
- - [Amazon Dash](https://fresh.amazon.com/dash/) - Amazon Dash Buttonは、Wi-Fi接続されたデバイスで、ボタンを押すだけで好きなアイテムを再注文できる。
- - [BirdNET-Go](https://github.com/tphakala/birdnet-go) - リアルタイムで野生動物の音響環境を分析し、マルチモデルAI推論、Home AssistantによるMQTT発行、ウェブダッシュボードを備えたツール。
- - [Electrum](https://github.com/yoelf22/electrum) - 構造化されたAI支援ツールキットで、ソフトウェアを内蔵したハードウェア製品の定義を、概念段階からエンジニアリング仕様まで、プレゼンテーション用資料まで8つのフェーズにわたって行う.
- - [Freeboard](http://freeboard.io/) - リアルタイムのインタラクティブダッシュボードと可視化作成ツールで、直感的なドラッグ＆ドロップインターフェースを実装.
- - [Nebula](http://nebula.readthedocs.io) - IoTデバイスの管理を目的としたDockerオーケストレーター.
- - [Gladys](https://gladysassistant.com) - Gladysはラズベリーパイ上で実行されるオープンソースプログラムであり、家庭ネットワーク全体に統合される.
- - [authBroker](https://github.com/authbroker/authbroker) - Keycloak HTTP/MQTT/CoAP IoT ブローカーアダプタ（Aedesに類似）.
- - [MQTT File Uploader](https://github.com/volkanalkilic/Mqtt-File-Uploader) - MQTTファイルアップローダーは、シンプルなクロスプラットフォーム.NET Coreアプリケーションで、ローカルディレクトリの変更を監視し、新しいまたは変更されたファイルをMQTTブローカーにアップロードする.
- - [PiSpot-Show](https://github.com/GeiserX/PiSpot-Show) - ラズベリーパイWiFiボンパーアプリケーションに天気統合とPiJuiceバッテリー管理を搭載した表示システム.
-- [SIGNL4 – Mobile Alerting](https://www.signl4.com/iot-service-alerting/) - SIGNL4は、アプリケーションプッシュ、SMS、音声通話による信頼性の高いモバイルアラートを提供し、さらにエスケープと勤務スケジュールをIoTプロジェクトに適用します.
+- [Amazon Dash](https://fresh.amazon.com/dash/) - ボタンを押して好みの商品を再注文する、Wi-Fi接続機器のAmazon Dash Button。
+- [BirdNET-Go](https://github.com/tphakala/birdnet-go) - 複数モデルによるAI推論、Home Assistantの機器検出に対応したMQTT発行、ウェブダッシュボードを備える、野生生物の音環境をリアルタイムで分析するソフトウェア。
+- [Electrum](https://github.com/yoelf22/electrum) - ソフトウェアを内蔵するハードウェア製品を定義する、構造化されたAI支援ツール群。構想からエンジニアリング仕様、発表に使える資料まで、8段階で作成。
+- [Freeboard](http://freeboard.io/) - 直感的なドラッグ＆ドロップの操作画面を備える、リアルタイムで対話的なダッシュボード・可視化の作成ツール。
+- [Nebula](http://nebula.readthedocs.io) - IoT機器を管理するDockerオーケストレーター。
+- [Gladys](https://gladysassistant.com) - Raspberry Pi上で動作し、家庭内ネットワーク全体へ統合するオープンソース・プログラム。
+- [authBroker](https://github.com/authbroker/authbroker) - AedesなどのIoTブローカー向けに、HTTP・MQTT・CoAPを扱うKeycloakアダプター。
+- [MQTT File Uploader](https://github.com/volkanalkilic/Mqtt-File-Uploader) - ローカルディレクトリーの変更を監視し、新規・変更済みファイルをMQTTブローカーへアップロードする、複数OS対応の.NET Coreアプリケーション。
+- [PiSpot-Show](https://github.com/GeiserX/PiSpot-Show) - 天気情報との連携とPiJuiceのバッテリー管理を備えた、Raspberry PiによるWiFi利用券の表示システム。
+- [SIGNL4 – Mobile Alerting](https://www.signl4.com/iot-service-alerting/) - アプリのプッシュ通知、SMS、音声通話に加え、エスカレーションと当番の予定管理を備える、IoTプロジェクト向けの信頼性を重視したモバイル通知サービス。
 
 ## プロトコル・ネットワーク <a id="protocols-and-networks"></a>
 
 ### 物理層
 
-#### <img width="50" src="http://www.ieee802.org/15/pub/ieee802-15%20logo.jpg" /> - [802.15.4](https://en.wikipedia.org/wiki/IEEE_802.15.4) (IEEE)
+#### [802.15.4](https://en.wikipedia.org/wiki/IEEE_802.15.4) (IEEE) <a id="---802154-ieee"></a>
 
-IEEE 802.15.4 is a standard that specifies the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs). It is maintained by the IEEE 802.15 working group, which defined it in 2003. It is the basis for the ZigBee, ISA100.11a, WirelessHART, and MiWi specifications, each of which further extends the standard by developing the upper layers which are not defined in IEEE 802.15.4. Alternatively, it can be used with 6LoWPAN and standard Internet protocols to build a wireless embedded Internet. - [Wikipedia](https://en.wikipedia.org/wiki/IEEE_802.15.4)
+低速無線パーソナルエリアネットワーク（LR-WPAN）の物理層と媒体アクセス制御を定める規格。2003年に策定したIEEE 802.15作業部会が保守。ZigBee、ISA100.11a、WirelessHART、MiWiの基盤となり、各仕様はIEEE 802.15.4で定義されていない上位層を開発して規格を拡張。また、6LoWPANと標準的なインターネットプロトコルを組み合わせ、無線の組み込みインターネットを構築可能。— [Wikipedia](https://en.wikipedia.org/wiki/IEEE_802.15.4)
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+IEEE 802.15.4は、身の回りの機器間で低価格・低速の通信を広く利用するための無線パーソナルエリアネットワーク（WPAN）の、基本的な下位層を提供することを目指す。より広い帯域幅と多くの電力を必要とするWi-Fiなどと対比される。基盤設備をほとんど、またはまったく必要とせず、近くの機器間で非常に低価格な通信を行うことを重視し、これによって消費電力をさらに減らすことを意図。
 
-#### <img width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/BluetoothLogo.svg/770px-BluetoothLogo.svg.png" /> - [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth) (Bluetooth Special Interest Group)
+#### [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth) (Bluetooth Special Interest Group) <a id="---bluetooth-bluetooth-special-interest-group"></a>
 
-Bluetooth is a wireless technology standard for exchanging data over short distances (using short-wavelength UHF radio waves in the ISM band from 2.4 to 2.485 GHz) from fixed and mobile devices, and building personal area networks (PANs). Invented by telecom vendor Ericsson in 1994, it was originally conceived as a wireless alternative to RS-232 data cables. It can connect several devices, overcoming problems of synchronization. - [Wikipedia](https://en.wikipedia.org/wiki/Bluetooth)
+固定機器・モバイル機器の間で短距離のデータを交換し、パーソナルエリアネットワーク（PAN）を構築する無線技術規格。2.4〜2.485GHzのISM帯にある短波長のUHF電波を使用。通信機器ベンダーのEricssonが1994年に開発し、当初はRS-232データケーブルを無線で置き換えるものとして構想。複数の機器を接続し、同期の問題を解消。— [Wikipedia](https://en.wikipedia.org/wiki/Bluetooth)
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+原文では、Bluetooth Special Interest Group（SIG）による管理と、通信、コンピューティング、ネットワーク、家電分野の25,000社を超える会員企業が説明されている。
 
-#### <img width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bluetooth_Smart_Logo.svg/241px-Bluetooth_Smart_Logo.svg.png" /> - [Bluetooth Low Energy](https://en.wikipedia.org/wiki/Bluetooth_low_energy) (Bluetooth Special Interest Group)
+#### [Bluetooth Low Energy](https://en.wikipedia.org/wiki/Bluetooth_low_energy) (Bluetooth Special Interest Group) <a id="---bluetooth-low-energy-bluetooth-special-interest-group"></a>
 
-Bluetooth low energy (Bluetooth LE, BLE, marketed as Bluetooth Smart) is a wireless personal area network technology designed and marketed by the Bluetooth Special Interest Group aimed at novel applications in the healthcare, fitness, beacons, security, and home entertainment industries. - [Wikipedia](https://en.wikipedia.org/wiki/Bluetooth_low_energy)
+Bluetooth Special Interest Groupが設計・販売促進する無線パーソナルエリアネットワーク技術。Bluetooth LE、BLEとも呼ばれ、Bluetooth Smartの名称で市場展開。医療、フィットネス、ビーコン、セキュリティ、家庭内娯楽の分野で新たな用途を対象とする。— [Wikipedia](https://en.wikipedia.org/wiki/Bluetooth_low_energy)
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+Bluetooth Smartは、Classic Bluetoothと同程度の通信距離を保ちながら、消費電力と費用を大幅に減らすことを意図。原文には、Bluetooth対応スマートフォンの90%超が2018年までにBluetooth Smartへ対応するという、当時のBluetooth SIGの予測が記録されている。
 
 #### [EC-GSM-IoT](http://www.gsma.com/connectedliving/extended-coverage-gsm-internet-of-things-ec-gsm-iot/) (EC-GSM-IoT Group)
 
-この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+Extended coverage GSM IoT（EC-GSM-IoT）は、規格に基づく低消費電力広域通信技術。eGPRSを基盤とし、IoT通信用に、大容量、長距離、低消費電力で複雑さを抑えたセルラーシステムとして設計。
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+原文には、主要なモバイル機器・チップセット・モジュールの各製造業者の支援を受けたネットワーク試験と、2017年に予定された初の商用導入が記載されている。2G・3G・4Gネットワークとの共存と、移動通信網のセキュリティ・プライバシー機能を説明。機能には利用者識別情報の秘匿、エンティティー認証、機密性、データ完全性、移動通信機器の識別が含まれる。
 
-#### <img width="50" src="https://intelilight.eu/wp-content/uploads/2017/02/technology_lorawan.png" /> - [LoRaWAN](https://en.wikipedia.org/wiki/LoRaWAN) (LoRa Alliance)
+#### [LoRaWAN](https://en.wikipedia.org/wiki/LoRaWAN) (LoRa Alliance) <a id="---lorawan-lora-alliance"></a>
 
-A LoRaWAN wide area network allows low bit rate communication from and to connected objects, thus participating to Internet of Things, machine-to-machine M2M, and smart city. - [Wikipedia](https://en.wikipedia.org/wiki/LoRaWAN)
+接続されたモノとの低ビットレート通信を可能にする広域ネットワーク。IoT、M2M、スマートシティーに使用。— [Wikipedia](https://en.wikipedia.org/wiki/LoRaWAN)
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+LoRa Allianceが標準化する技術。当初はCycleoが開発し、同社は2012年にSemtechに買収された。LoRaWANはLong Range Wide-area networkの略。
 
 #### [NB-IoT](https://en.wikipedia.org/wiki/NarrowBand_IOT) (3GPP)
 
-NarrowBand IoT (NB-IoT) is a Low Power Wide Area Network (LPWAN) radio technology standard that has been developed to enable a wide range of devices and services to be connected using cellular telecommunications bands. - [Wikipedia](https://en.wikipedia.org/wiki/NarrowBand_IOT)
+セルラー通信帯域を使って、幅広い機器・サービスを接続するために開発された、低消費電力広域ネットワーク（LPWAN）の無線技術規格、NarrowBand IoT（NB-IoT）。— [Wikipedia](https://en.wikipedia.org/wiki/NarrowBand_IOT)
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+NB-IoTはIoT向けの狭帯域無線技術で、3rd Generation Partnership Project（3GPP）が標準化するMobile IoT（MIoT）技術群の一つ。
 
-#### <img width="50" src="http://www.silvereco.fr/wp-content/uploads/2015/02/logo510f703a4647f1.jpg" /> - [Sigfox](https://en.wikipedia.org/wiki/Sigfox) (Sigfox)
+#### [Sigfox](https://en.wikipedia.org/wiki/Sigfox) (Sigfox) <a id="---sigfox-sigfox"></a>
 
-Sigfox is a French firm that builds wireless networks to connect low-energy objects such as electricity meters, smart watches, and washing machines, which need to be continuously on and emitting small amounts of data. Its infrastructure is intended to be a contribution to what is known as the Internet of Things (IoT). - [Wikipedia](https://en.wikipedia.org/wiki/Sigfox)
+電力量計、スマートウォッチ、洗濯機など、常時稼働し少量のデータを送信する低消費電力機器を接続する無線ネットワークを構築するフランス企業。その基盤はIoTに貢献することを意図。— [Wikipedia](https://en.wikipedia.org/wiki/Sigfox)
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+原文に記載されたSIGFOXの自己紹介では、IoTに世界規模のセルラー接続を提供する最初で唯一の企業とされる。通信網などの既存ネットワークから完全に独立した基盤を掲げ、数十億のモノと数千の新たな用途の展開手段を提供することを目指す。日常のモノがペタバイト単位のデータを生成することを長期的な目標としている。
 
-#### <img width="50" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Wi-FI_Alliance_Logo.png" /> - [Wi-Fi](https://en.wikipedia.org/wiki/Wi-Fi) (Wi-Fi Alliance)
+#### [Wi-Fi](https://en.wikipedia.org/wiki/Wi-Fi) (Wi-Fi Alliance) <a id="---wi-fi-wi-fi-alliance"></a>
 
-Wi-Fi (or WiFi) is a local area wireless computer networking technology that allows electronic devices to network, mainly using the 2.4 gigahertz (12 cm) UHF and 5 gigahertz (6 cm) SHF ISM radio bands. - [Wikipedia](https://en.wikipedia.org/wiki/Wi-Fi)
+電子機器をネットワークへ接続する、無線ローカルエリアネットワーク技術。WiFiとも表記。主に2.4GHz（波長12cm）のUHFと5GHz（波長6cm）のSHFのISM帯を使用。— [Wikipedia](https://en.wikipedia.org/wiki/Wi-Fi)
 
-> この物理層技術は、IoTデバイス間の無線接続とデータ伝送に利用されます。
+Wi-Fi Allianceは、IEEE 802.11規格に基づく無線ローカルエリアネットワーク（WLAN）製品をWi-Fiと定義。一方、現代のWLANの多くが同規格に基づくため、英語の一般的な用法ではWi-FiがWLANの同義語として使われる。Wi-FiはWi-Fi Allianceの商標であり、Wi-Fi Certified商標は同団体の相互運用性認証試験に合格したWi-Fi製品だけが使用可能。
 
 ### ネットワーク・トランスポート層
 
-#### <img width="50" src="http://www.tonex.com/wp-content/uploads/6lowpan.jpg" /> - [6LowPan](https://en.wikipedia.org/wiki/6LoWPAN) (IETF)
+#### [6LowPan](https://en.wikipedia.org/wiki/6LoWPAN) (IETF) <a id="---6lowpan-ietf"></a>
 
-6LoWPAN is an acronym for IPv6 over Low power Wireless Personal Area Networks. 6LoWPAN is the name of a concluded working group in the Internet area of the IETF. - [Wikipedia](https://en.wikipedia.org/wiki/6LoWPAN)
+6LoWPANはIPv6 over Low power Wireless Personal Area Networksの略で、IETFのインターネット領域に属し、活動を終了した作業部会の名称。— [Wikipedia](https://en.wikipedia.org/wiki/6LoWPAN)
 
-> このネットワーク・トランスポート技術は、IoTデバイス間のアドレス指定、経路制御、データ配送に利用されます。
-このネットワーク・トランスポート技術は、IoTデバイス間のアドレス指定、経路制御、データ配送に利用されます。
+6LoWPANの構想は、最小の機器にもインターネットプロトコルを適用でき、適用すべきであり、処理能力の限られた低消費電力機器もIoTに参加できるべきだという考えから生まれた。
+同作業部会は、IEEE 802.15.4ネットワークでIPv6パケットを送受信するためのカプセル化とヘッダー圧縮の仕組みを定義。IPv4とIPv6は、LAN、都市規模のネットワーク、インターネットなどの広域ネットワークでデータ転送の中心を担う。同様に、IEEE 802.15.4機器は無線領域でセンシングと通信の機能を提供する。ただし、この二つのネットワークは本来の性質が異なる。
 
-#### <img width="50" src="https://www.threadgroup.org/portals/0/images/contact/img1.svg" /> - [Thread](http://threadgroup.org/) (Thread Group)
+#### [Thread](http://threadgroup.org/) (Thread Group) <a id="---thread-thread-group"></a>
 
-このネットワーク・トランスポート技術は、IoTデバイス間のアドレス指定、経路制御、データ配送に利用されます。
+家庭内のスマート機器がネットワーク上で通信するための、IPv6に基づくプロトコル。
 
-> このネットワーク・トランスポート技術は、IoTデバイス間のアドレス指定、経路制御、データ配送に利用されます。
-このネットワーク・トランスポート技術は、IoTデバイス間のアドレス指定、経路制御、データ配送に利用されます。
+2014年7月、GoogleのNest LabsはSamsung、ARM Holdings、Freescale、Silicon Labs、Big Ass Fans、鍵メーカーのYaleと作業部会を発表。製品のThread認証を提供して業界標準化を目指した。原文では他の利用中のプロトコルとしてZigBeeとBluetooth Smartが挙げられている。
+Threadは6LoWPANを使用し、その下ではZigBeeなどと同様に、メッシュ通信を備えるIEEE 802.15.4無線プロトコルを使用。一方、ThreadはIPアドレスで指定でき、クラウドへのアクセスとAES暗号化を備える。原文では1ネットワークで250台を超える機器に対応するとされている。
 
-#### <img width="50" src="https://zigbeealliance.org/wp-content/uploads/2019/11/zb_logo-b_color_rgb_icon-e1573775155251.png" /> - [ZigBee](https://en.wikipedia.org/wiki/ZigBee) (ZigBee Alliance)
+#### [ZigBee](https://en.wikipedia.org/wiki/ZigBee) (ZigBee Alliance) <a id="---zigbee-zigbee-alliance"></a>
 
-ZigBee is an IEEE 802.15.4-based specification for a suite of high-level communication protocols used to create personal area networks with small, low-power digital radios. - [Wikipedia](https://en.wikipedia.org/wiki/ZigBee)
+IEEE 802.15.4に基づき、小型で低消費電力のデジタル無線を使うパーソナルエリアネットワークを構築する、高水準通信プロトコル群の仕様。— [Wikipedia](https://en.wikipedia.org/wiki/ZigBee)
 
-> このネットワーク・トランスポート技術は、IoTデバイス間のアドレス指定、経路制御、データ配送に利用されます。
+ZigBee仕様の技術は、BluetoothやWi-Fiなどの他の無線パーソナルエリアネットワーク（WPAN）より単純で安価であることを意図。用途には無線照明スイッチ、家庭内表示器付き電力量計、交通管理システムなど、短距離・低速の無線データ転送を必要とする家庭用・産業用機器が含まれる。
 
-#### <img width="50" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Z-Wave_logo.jpg" /> - [Z-Wave](http://www.z-wave.com/) (Z-Wave Alliance)
+#### [Z-Wave](http://www.z-wave.com/) (Z-Wave Alliance) <a id="---z-wave-z-wave-alliance"></a>
 
-Z-Wave is a wireless communications specification designed to allow devices in the home (lighting, access controls, entertainment systems and household appliances, for example) to communicate with one another for the purposes of home automation. - [Wikipedia](https://en.wikipedia.org/wiki/Z-Wave)
+照明、入退室管理、娯楽システム、家電などの家庭内機器が、ホームオートメーションのために相互通信する無線通信仕様。— [Wikipedia](https://en.wikipedia.org/wiki/Z-Wave)
 
-> このネットワーク・トランスポート技術は、IoTデバイス間のアドレス指定、経路制御、データ配送に利用されます。
+Z-Waveは電池駆動機器に適するよう消費電力を抑える。主に高速データ転送を目的とするWi-FiなどのIEEE 802.11無線LANとは異なり、小さなデータパケットを最大100kbit/sで、信頼性と低遅延を重視して送信する設計。約900MHzの1GHz未満の周波数帯で動作。
 
 ### アプリケーション層
 
 #### [CoAP](http://coap.technology/) (IETF)
 
-Constrained Application Protocol (CoAP) is a software protocol intended to be used in very simple electronic devices that allows them to communicate interactively over the Internet. - [Wikipedia](https://en.wikipedia.org/wiki/Constrained_Application_Protocol)
+非常に単純な電子機器がインターネット上で相互に通信するためのソフトウェアプロトコル、Constrained Application Protocol（CoAP）。— [Wikipedia](https://en.wikipedia.org/wiki/Constrained_Application_Protocol)
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+CoAPは、標準的なインターネット網を通じて遠隔制御・監視する、小型で低消費電力のセンサー、スイッチ、弁などを主な対象とする。WSNノードなど、リソースが限られたインターネット機器向けのアプリケーション層プロトコル。
 
 #### [DTLS](https://fr.wikipedia.org/wiki/Datagram_Transport_Layer_Security) (IETF)
 
-The Datagram Transport Layer Security (DTLS) communications protocol provides communications security for datagram protocols.  - [Wikipedia](https://fr.wikipedia.org/wiki/Datagram_Transport_Layer_Security)
+データグラム型プロトコルの通信を保護する、Datagram Transport Layer Security（DTLS）。— [Wikipedia](https://fr.wikipedia.org/wiki/Datagram_Transport_Layer_Security)
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+DTLSは、データグラム型通信の盗聴、改ざん、メッセージ偽造を防ぐために設計。ストリーム型のTransport Layer Security（TLS）に基づき、同様のセキュリティ保証を提供することを意図。
 
-#### <img width="50" src="https://cdn.arstechnica.net/wp-content/uploads/2015/07/2015-07-13_16-46-26.jpg" /> - [Eddystone](https://en.wikipedia.org/wiki/Eddystone_(Google)) (Google)
+#### [Eddystone](https://en.wikipedia.org/wiki/Eddystone_(Google)) (Google) <a id="---eddystone-google"></a>
 
-Eddystone is a beacon technology profile released by Google in July 2015. The open source, cross-platform software gives users location and proximity data via Bluetooth low-energy beacon format. - [Wikipedia](https://en.wikipedia.org/wiki/Eddystone_(Google))
+Googleが2015年7月に公開したビーコン技術のプロファイル。オープンソースで複数プラットフォームに対応し、Bluetooth Low Energyのビーコン形式を通じて、利用者へ位置・近接情報を提供。— [Wikipedia](https://en.wikipedia.org/wiki/Eddystone_(Google))
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+原文では、2013年公開のAppleのiBeaconと比較し、EddystoneはAndroid・iOS、iBeaconはiOSのみへの対応を挙げている。両技術の業務用途として、スマートフォンの位置に基づき、潜在的な顧客をリアルタイムで対象にする方法を説明。
 
-#### <img width="50" src="http://www.httptechnology.com.au/logo.jpg" /> - [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (IETF)
+#### [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (IETF) <a id="---http-ietf"></a>
 
-The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the World Wide Web. - [Wikipedia](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+分散型で協調的なハイパーメディア情報システム向けのアプリケーションプロトコル、Hypertext Transfer Protocol（HTTP）。World Wide Webのデータ通信の基盤。— [Wikipedia](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+HTTPの標準化はIETFとW3Cが調整し、一連のRFCの公開へ至った。原文で一般的な利用版とされるHTTP/1.1は1997年のRFC 2068で初めて定義され、1999年のRFC 2616によって旧版となった。
 
-#### <img width="50" src="https://developer.apple.com/ibeacon/images/ibeacon-logo.svg" /> - [iBeacon](https://en.wikipedia.org/wiki/IBeacon) (Apple)
+#### [iBeacon](https://en.wikipedia.org/wiki/IBeacon) (Apple) <a id="---ibeacon-apple"></a>
 
-iBeacon is a protocol standardized by Apple and introduced at the Apple Worldwide Developers Conference in 2013. - [Wikipedia](https://en.wikipedia.org/wiki/IBeacon)
+Appleが標準化し、2013年のApple Worldwide Developers Conferenceで紹介したプロトコル。— [Wikipedia](https://en.wikipedia.org/wiki/IBeacon)
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+iBeaconはBluetooth Low Energyの近接検出を使い、対応アプリケーションやOSが受信する汎用一意識別子を送信。この識別子は、機器の物理的な位置の特定、顧客の追跡、SNSへのチェックインやプッシュ通知など、位置に基づく機器上の処理を開始するために使用可能。
 
-#### <img width="50" src="https://raw.githubusercontent.com/mqtt/mqttorg-graphics/master/mqtticon-large.png" /> - [MQTT](http://mqtt.org/) (IBM)
+#### [MQTT](http://mqtt.org/) (IBM) <a id="---mqtt-ibm"></a>
 
-MQTT (formerly MQ Telemetry Transport) is a publish-subscribe based "light weight" messaging protocol for use on top of the TCP/IP protocol. It is designed for connections with remote locations where a "small code footprint" is required or the network bandwidth is limited. - [Wikipedia](https://en.wikipedia.org/wiki/MQTT)
+TCP/IP上で使う、発行・購読型の軽量メッセージングプロトコル。旧称はMQ Telemetry Transport。コード容量を小さく抑える必要がある場合や、ネットワーク帯域幅が限られる場合の、遠隔拠点との接続向けに設計。— [Wikipedia](https://en.wikipedia.org/wiki/MQTT)
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+発行・購読型のメッセージングにはメッセージブローカーが必要。ブローカーはメッセージのトピックに基づき、関心を持つクライアントへ配信。Andy Stanford-ClarkとCirrus Link SolutionsのArlen Nipperが1999年にプロトコルの初版を作成。
 
-#### <img width="50" src="https://www.pjon.org/assets/images/PJON-logo-devices.jpg" /> - [PJON](https://github.com/gioblu/PJON/)
+#### [PJON](https://github.com/gioblu/PJON/) <a id="---pjon"></a>
 
-このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+PJON®（Padded Jittering Operative Network）は、Arduino互換のマルチマスター・複数媒体対応ネットワークプロトコル。完全にソフトウェアで模擬するプロトコルスタックを持つ規格とフレームワークを提案。ATtiny、ATmega、ESP8266、ESP32、STM32、Teensy、Raspberry Pi、Linux、Windows x86、Apple機器向けにクロスコンパイルし、機器ネットワークを構築可能。提案する規格はプロジェクトのWikiとドキュメントで説明。
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+原文では数千台の機器での利用と世界的なコミュニティが報告され、六つの要因として、新たな技術、複数媒体への対応、セキュリティの向上、信頼性の向上、柔軟性、低価格が挙げられている。
 
-#### <img width="50" src="https://stomp.github.io/images/project-logo.png" /> - [STOMP](https://stomp.github.io/)
+[上流の図](https://www.pjon.org/assets/images/PJON-logo-devices.jpg)は、コンピューター、モバイル機器、家電、車両、ロボット、ドローンのネットワークの中心にPJONを描いている。
 
-Simple (or Streaming) Text Oriented Message Protocol (STOMP), formerly known as TTMP, is a simple text-based protocol, designed for working with message-oriented middleware (MOM). - [Wikipedia](https://en.wikipedia.org/wiki/Streaming_Text_Oriented_Messaging_Protocol)
+#### [STOMP](https://stomp.github.io/) <a id="---stomp"></a>
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+メッセージ指向ミドルウェア（MOM）で使う、単純なテキストベースのプロトコル、Simple（またはStreaming）Text Oriented Message Protocol（STOMP）。旧称はTTMP。— [Wikipedia](https://en.wikipedia.org/wiki/Streaming_Text_Oriented_Messaging_Protocol)
 
-#### <img width="50" src="https://www.rabbitmq.com/wp-uploads/2012/02/HTML5_Logo_256.png" /> - [Websocket](https://en.wikipedia.org/wiki/WebSocket)
+STOMPは相互運用可能な通信形式を提供し、STOMPクライアントは同プロトコル対応の任意のメッセージブローカーと通信可能。特定の言語に依存せず、ある言語・プラットフォームで開発したブローカーが、別の言語で開発したクライアントからの通信を受信できる。
 
-WebSocket is a protocol providing full-duplex communication channels over a single TCP connection. - [Wikipedia](https://en.wikipedia.org/wiki/WebSocket)
+#### [Websocket](https://en.wikipedia.org/wiki/WebSocket) <a id="---websocket"></a>
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+単一のTCP接続で全二重の通信路を提供するプロトコル。— [Wikipedia](https://en.wikipedia.org/wiki/WebSocket)
 
-#### <img width="50" src="https://upload.wikimedia.org/wikipedia/commons/9/95/XMPP_logo.svg" /> - [XMPP](https://en.wikipedia.org/wiki/XMPP) (IETF)
+WebSocketはウェブブラウザーとウェブサーバーで実装することを想定するが、任意のクライアント・サーバーアプリケーションでも使用可能。TCPに基づく独立したプロトコルで、ブラウザーとウェブサイトのやり取りを増やし、ライブコンテンツやリアルタイムゲームの作成を支援。クライアントからの要求を待たずサーバーがブラウザーへコンテンツを送る標準的な方法を提供し、接続を開いたまま双方がメッセージを交換できる。
 
-Extensible Messaging and Presence Protocol (XMPP) is a communications protocol for message-oriented middleware based on XML (Extensible Markup Language). - [Wikipedia](https://en.wikipedia.org/wiki/XMPP)
+#### [XMPP](https://en.wikipedia.org/wiki/XMPP) (IETF) <a id="---xmpp-ietf"></a>
 
-> このアプリケーション層技術は、IoTデバイスのメッセージ交換、検出、制御に利用されます。
+XML（Extensible Markup Language）に基づく、メッセージ指向ミドルウェア向けの通信プロトコル、Extensible Messaging and Presence Protocol（XMPP）。— [Wikipedia](https://en.wikipedia.org/wiki/XMPP)
 
-## 技術 <a id="technologies"></a>
+二つ以上のネットワーク実体の間で、構造化され拡張可能なデータをほぼリアルタイムで交換。拡張性を考慮した設計により、発行・購読システム、VoIPのシグナリング、動画、ファイル転送、ゲーム、スマートグリッドなどのIoT用途、SNSでも使用。
 
-> この節ではIoTと密接に関連する技術を厳選してまとめます。
+## 関連技術 <a id="技術"></a> <a id="technologies"></a>
 
-### <img width="50" src="http://vectorlogofree.com/wp-content/uploads/2012/12/nfc-logo-vector-400x400.png" /> - [NFC](https://en.wikipedia.org/wiki/Near_field_communication)
+IoTの通信とモデル化に関連する技術。
 
-近距離無線通信（NFC）は、機器同士を接触させるか通常10cm以内へ近づけて無線通信を確立するプロトコル群です。 - [Wikipedia](https://en.wikipedia.org/wiki/Near_field_communication)
+### [NFC](https://en.wikipedia.org/wiki/Near_field_communication) <a id="---nfc"></a>
 
-### <img width="50" src="https://opcfoundation.org/wp-content/themes/opc/images/logo.jpg"/>- [OPCUA](https://en.wikipedia.org/wiki/OPC_Unified_Architecture)
-OPC-UAは産業オートメーション用プロトコルであるだけでなく、産業環境の意味記述とオブジェクトモデリングを可能にする技術です。
+機器同士を接触させる、または通常10cm以内へ近づけることで、電子機器間の無線通信を確立するプロトコル群、Near field communication（NFC）。— [Wikipedia](https://en.wikipedia.org/wiki/Near_field_communication)
+
+### [OPCUA](https://en.wikipedia.org/wiki/OPC_Unified_Architecture) <a id="--opcua"></a>
+OPC-UAは、産業自動化のプロトコルと、産業環境の意味的な記述・オブジェクトモデル化の技術を組み合わせる。
 [Wikipedia](https://en.wikipedia.org/wiki/OPC_Unified_Architecture)
 
+## 規格・団体 <a id="標準アライアンス"></a> <a id="standards-and-alliances"></a>
 
-## 標準・アライアンス <a id="standards-and-alliances"></a>
+### 規格 <a id="標準"></a>
 
-### 標準
+- [ETSI M2M](http://www.etsi.org/technologies-clusters/technologies/m2m) - M2M通信の規格を開発するETSIの技術委員会。
+- [OneM2M](http://www.onem2m.org/) - さまざまなハードウェア・ソフトウェアへ容易に組み込める共通のM2Mサービス層に向けて、技術仕様を開発する取り組み。現場の多数の機器を、世界各地のM2Mアプリケーションサーバーへ接続することを目指す。
+- [OPCUA](https://opcfoundation.org/) - OPC Foundationが開発した、相互運用性のための産業用M2M通信プロトコル、OPC Unified Architecture（OPC UA）。
+- [OCF](https://openconnectivity.org/) - Constrained Application Protocol（CoAP）を中心に、IoT機器の規格と認証を開発するOpen Connectivity Foundation。
+- [W3C WoT](https://www.w3.org/WoT/) - 既存の標準化されたウェブ技術を利用・拡張し、IoTの分断を解消することを目指すW3CのWeb of Things（WoT）作業部会。標準化されたメタデータなどの再利用可能な技術部品を提供し、IoT基盤や応用分野を横断する統合を支援。
 
-- [ETSI M2M](http://www.etsi.org/technologies-clusters/technologies/m2m) - ETSI技術委員会は、機械間通信の標準化を進めています.
-- [OneM2M](http://www.onem2m.org/) - oneM2Mの目的と目標は、さまざまなハードウェアおよびソフトウェアに容易に埋め込み可能な共通M2Mサービス層の技術仕様を開発することであり、現場の多様なデバイスを世界中のM2Mアプリケーションサーバーと接続する必要性を解決することです.
-- [OPCUA](https://opcfoundation.org/) - OPC統合アーキテクチャ（OPC UA）は、OPCファウンデーションによって開発された産業用M2M通信プロトコルで、相互運用性を実現しています.
-- [OCF](https://openconnectivity.org/) - OCF（オープンコネクティビティファウンデーション）は、制約付きアプリケーションプロトコル（CoAP）に基づくIoTデバイスの標準と認証を提供しています.
-- [W3C WoT](https://www.w3.org/WoT/) - ウェブオブテクノロジー（WoT）のW3Cワーキンググループは、IoTの分断を防ぐために、既存の標準化されたウェブ技術を活用・拡張しています。標準化されたメタデータおよびその他の再利用可能な技術的ブロックを提供することで、W3C WoTはIoTプラットフォームおよびアプリケーション領域間の容易な統合を実現します.
+### 団体 <a id="アライアンス"></a>
 
-### アライアンス
-
-- [AIOTI](http://www.meet-iot.eu/Alliance-for-Internet-of-Things-Innovation-AIOTI.html) - IoTイノベーション（AIOTI）は、異なるIoT関係者（産業、中小企業、スタートアップ）および業界間のつながりを強化し、新たな関係を構築することを目的としています.
-- [Bluetooth Special Interest Group](https://www.bluetooth.com/) - Bluetooth特別興味グループ（SIG）は、Bluetooth標準の開発およびメーカー向けのBluetooth技術および商標のライセンスを管理する組織です.
-- [IPSO Alliance](http://www.ipso-alliance.org/) - IPSOアライアンスは、業界の成長を促進するために、意識の向上、教育の提供、業界の推進、研究の生成、そしてIPおよびそのIoTにおける役割に関するより良い理解を促進しています.
-- [LoRa Alliance](https://www.lora-alliance.org/) - LoRaアライアンスは、IoT時代が現在であると信じるオープンで非営利のメンバーによる協会であり、世界中で展開されている低消費電力・広範囲エリアネットワーク（LPWAN）を標準化し、IoT、機械間通信（M2M）、スマートシティ、産業アプリケーションを可能にする目的を持っています.
-- [OPC Foundation](https://opcfoundation.org/about/opc-foundation/mission-statement/) - IoT関連仕様の策定・認証・普及を行う業界団体です。
-仕様の策定・保守、認証試験によるOPC仕様への適合確認、主要な標準化団体との協働を行います。
-- [Thread Group](http://threadgroup.org/) - Threadグループは、Nest、Samsung、ARM、Freescale、Silicon Labs、Big Ass FansおよびYaleのメンバーから成り立つ組織で、Threadネットワークプロトコルの開発を進めています.
-- [Wi-Fi Alliance](https://www.wi-fi.org/) - Wi-Fiアライアンス®は、複数の企業が構成するグローバルな非営利協会であり、新しい無線ネットワーク技術による最高のユーザー体験を実現することを目指しています（ブランドを問わず）.
-- [Zigbee Alliance](http://www.zigbee.org/) - ZigBeeアライアンスは、約450のメンバーを有するオープンで非営及協会であり、革新的で信頼性があり、使いやすいZigBing標準の開発を進めています。
-- [Z-Wave Alliance](http://z-wavealliance.org/) - 2005年に設立されたZ-Waveアライアンスは、スマートな家庭およびビジネスアプリケーションにおけるキーテクノロジーとしてZ-Waveを発展・拡張することを目的とした、世界中の業界リーダーから成る組織である。
+- [AIOTI](http://www.meet-iot.eu/Alliance-for-Internet-of-Things-Innovation-AIOTI.html) - IoTの企業、中小企業、スタートアップなどの関係者と各業界の間で、つながりを強め、新たな関係を構築することを目指すAlliance for Internet of Things Innovation。
+- [Bluetooth Special Interest Group](https://www.bluetooth.com/) - Bluetooth規格の開発と、製造業者へのBluetooth技術・商標のライセンス供与を管理する団体、Bluetooth SIG。
+- [IPSO Alliance](http://www.ipso-alliance.org/) - IPとIoTにおけるその役割への理解を深め、認知、教育、業界の促進、研究を通じて業界の成長基盤を提供する団体。
+- [LoRa Alliance](https://www.lora-alliance.org/) - IoT、M2M、スマートシティー、産業用途を実現するため、世界各地へ展開される低消費電力広域ネットワーク（LPWAN）の標準化を使命として、業界の主要企業が発足させた開かれた非営利団体。原文ではIoTの時代が到来しているという会員共通の認識が説明されている。
+- [OPC Foundation](https://opcfoundation.org/about/opc-foundation/mission-statement/) - 産業自動化で、複数のベンダー・プラットフォーム間の安全で信頼できる相互運用性を実現するデータ転送規格を、利用者、ベンダー、連合組織が共同で作成する世界的な組織を運営。仕様の作成・保守、認証試験によるOPC仕様への適合確認、主要な標準化団体との協力を行う。
+- [Thread Group](http://threadgroup.org/) - Threadネットワークプロトコルの開発を推進する団体。原文ではNest、Samsung、ARM、Freescale、Silicon Labs、Big Ass Fans、Yaleの関係者から構成されると説明されている。
+- [Wi-Fi Alliance](https://www.wi-fi.org/) - ブランドを問わず、新たな無線ネットワーク技術で優れた利用体験を実現することを目指す、企業による世界的な非営利団体、Wi-Fi Alliance®。
+- [Zigbee Alliance](http://www.zigbee.org/) - 原文では約450の会員を持つ、開かれた非営利団体として紹介されている。革新性、信頼性、使いやすさを特徴とするZigBee規格を開発。
+- [Z-Wave Alliance](http://z-wavealliance.org/) - 2005年に設立され、世界各地の主要企業で構成される団体。家庭と業務向けのスマートな用途を実現する主要技術として、Z-Waveの開発・拡張に取り組む。
 
 ## 資料 <a id="resources"></a>
 
 ### 書籍 <a id="books"></a>
 
-#### [Abusing the Internet of Things: Blackouts, Freakouts, and Stakeouts](http://www.amazon.com/Abusing-Internet-Things-Blackouts-Freakouts/dp/1491902337) (2015) *by [Nitesh Dhanjani](http://www.amazon.com/Nitesh-Dhanjani/e/B001KDWB6W/ref=dp_byline_cont_book_1)* [5.0]
+年、角括弧内の評価、提供状況は原文の記載を保持しています。原文には評価尺度や評価日の記載がありません。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [Abusing the Internet of Things: Blackouts, Freakouts, and Stakeouts](http://www.amazon.com/Abusing-Internet-Things-Blackouts-Freakouts/dp/1491902337) (2015) *著：[Nitesh Dhanjani](http://www.amazon.com/Nitesh-Dhanjani/e/B001KDWB6W/ref=dp_byline_cont_book_1)* [5.0] <a id="abusing-the-internet-of-things-blackouts-freakouts-and-stakeouts-2015-by-nitesh-dhanjani-50"></a>
 
-#### [Building Wireless Sensor Networks: with ZigBee, XBee, Arduino, and Processing](http://www.amazon.com/Building-Wireless-Sensor-Networks-Processing/dp/0596807732) (2011) *by [Robert Faludi](http://www.amazon.com/Robert-Faludi/e/B004JKWA3C/ref=dp_byline_cont_book_1)* [4.5]
+数十億のモノが接続される未来のセキュリティ上の懸念と、無線LED電球、電子ドアロック、ベビーモニター、スマートテレビ、ネット接続車両などのIoT機器への攻撃を扱う。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [Building Wireless Sensor Networks: with ZigBee, XBee, Arduino, and Processing](http://www.amazon.com/Building-Wireless-Sensor-Networks-Processing/dp/0596807732) (2011) *著：[Robert Faludi](http://www.amazon.com/Robert-Faludi/e/B004JKWA3C/ref=dp_byline_cont_book_1)* [4.5] <a id="building-wireless-sensor-networks-with-zigbee-xbee-arduino-and-processing-2011-by-robert-faludi-45"></a>
 
-#### [Digital Twins in Action](https://www.manning.com/books/digital-twins-in-action) (2013) *by [Greg Biegel](https://www.linkedin.com/in/gregbiegel/)* [4.0]
+ZigBeeとSeries 2 XBee無線を使う、分散センサーシステムと知的な対話型機器の実践ガイド。原文では、本の半分までに作るプロジェクトの一つとして、遠隔で取得したセンサーデータを届ける完全なZigBeeネットワークが説明されている。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [Digital Twins in Action](https://www.manning.com/books/digital-twins-in-action) (2013) *著：[Greg Biegel](https://www.linkedin.com/in/gregbiegel/)* [4.0] <a id="digital-twins-in-action-2013-by-greg-biegel-40"></a>
 
-#### [Designing the Internet of Things](http://www.amazon.co.uk/Designing-Internet-Things-Adrian-McEwen/dp/111843062X/ref=sr_1_1?ie=UTF8&qid=1444905007&sr=8-1) (2013) *by [Adrian McEwen](http://www.amazon.co.uk/Adrian-McEwen/e/B00FF7V2VY/ref=dp_byline_cont_book_1) and [Hakim Cassimally](http://www.amazon.co.uk/Hakim-Cassimally/e/B00FF5I3Y0/ref=ntt_athr_dp_pel_2/277-3946068-7961614)* [4.0]
+効果的なデジタルツインを設計・構築する実践ガイド。家庭規模のデジタルツインを基礎から作成する。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [Designing the Internet of Things](http://www.amazon.co.uk/Designing-Internet-Things-Adrian-McEwen/dp/111843062X/ref=sr_1_1?ie=UTF8&qid=1444905007&sr=8-1) (2013) *著：[Adrian McEwen](http://www.amazon.co.uk/Adrian-McEwen/e/B00FF7V2VY/ref=dp_byline_cont_book_1)、[Hakim Cassimally](http://www.amazon.co.uk/Hakim-Cassimally/e/B00FF5I3Y0/ref=ntt_athr_dp_pel_2/277-3946068-7961614)* [4.0] <a id="designing-the-internet-of-things-2013-by-adrian-mcewen-and-hakim-cassimally-40"></a>
 
-#### [Edge Computing Technology and Application](https://www.manning.com/books/edge-computing-technology-and-applications) (2023) *by [Perry Lea](https://www.linkedin.com/in/perrylea/) 
+ハードウェア、組み込みソフトウェア、ウェブサービス、電子工学、デザインを組み合わせ、対話的で実用的な機器を作る方法を扱う。フィジカルコンピューティング、ユビキタスコンピューティング、IoTの領域にわたる。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [Edge Computing Technology and Application](https://www.manning.com/books/edge-computing-technology-and-applications) (2023) 著：[Perry Lea](https://www.linkedin.com/in/perrylea/) <a id="edge-computing-technology-and-application-2023-by-perry-lea"></a>
 
-#### [Getting Started with Bluetooth Low Energy: Tools and Techniques for Low-Power Networking](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511) (2014) *by [Kevin Townsend](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription), [Carles Cufí](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription), [Akiba](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription) and [Robert Davidson](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription)* [4.5]
+ハードウェア・ソフトウェアのシステムから顧客・依頼者・従業員とのやり取りまで、エッジコンピューティングが事業とITの意思決定に与える影響を説明するPerry Leaのガイド。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [Getting Started with Bluetooth Low Energy: Tools and Techniques for Low-Power Networking](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511) (2014) *著：[Kevin Townsend](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription)、[Carles Cufí](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription)、[Akiba](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription)、[Robert Davidson](http://www.amazon.com/Getting-Started-Bluetooth-Low-Energy/dp/1491949511#productDescription)* [4.5] <a id="getting-started-with-bluetooth-low-energy-tools-and-techniques-for-low-power-networking-2014-by-kevin-townsend-carles-cufí-akiba-and-robert-davidson-45"></a>
 
-#### [IoT Inc: How Your Company Can Use the Internet of Things to Win in the Outcome Economy](https://www.amazon.com/IoT-Inc-Company-Internet-Outcome/dp/1260025896/ref=asc_df_1260025896/?tag=hyprod-20&linkCode=df0&hvadid=312243616995&hvpos=&hvnetw=g&hvrand=13286743199559517729&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1014863&hvtargid=pla-332228957705&psc=1) (2017) *by [Bruce Sinclair](https://www.amazon.com/Bruce-Sinclair/e/B07258Z2L8/ref=dp_byline_cont_pop_book_1)* [4.6]
+BLE機器間の通信を概説し、BLE対応モバイルアプリケーションと組み込みファームウェアの開発・テスト向けに低価格なツールを紹介。アプリ開発者にはiOS・Androidの例、製品設計者とハードウェアエンジニアには組み込み基盤の例を示す。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [IoT Inc: How Your Company Can Use the Internet of Things to Win in the Outcome Economy](https://www.amazon.com/IoT-Inc-Company-Internet-Outcome/dp/1260025896/ref=asc_df_1260025896/?tag=hyprod-20&linkCode=df0&hvadid=312243616995&hvpos=&hvnetw=g&hvrand=13286743199559517729&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1014863&hvtargid=pla-332228957705&psc=1) (2017) *著：[Bruce Sinclair](https://www.amazon.com/Bruce-Sinclair/e/B07258Z2L8/ref=dp_byline_cont_pop_book_1)* [4.6] <a id="iot-inc-how-your-company-can-use-the-internet-of-things-to-win-in-the-outcome-economy-2017-by-bruce-sinclair-46"></a>
 
-#### [Smart Things: Ubiquitous Computing User Experience Design](http://www.amazon.com/Smart-Things-Ubiquitous-Computing-Experience/dp/0123748992) (2010) *by [Mike Kuniavsky](http://www.amazon.com/Mike-Kuniavsky/e/B001K8LTGU/ref=dp_byline_cont_book_1)* [4.5]
+IoTの仕組みと事業にもたらす変化、IoTを通じて事業・顧客・競合を評価する方法、IoT戦略を策定・実施する方法を説明。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [Smart Things: Ubiquitous Computing User Experience Design](http://www.amazon.com/Smart-Things-Ubiquitous-Computing-Experience/dp/0123748992) (2010) *著：[Mike Kuniavsky](http://www.amazon.com/Mike-Kuniavsky/e/B001K8LTGU/ref=dp_byline_cont_book_1)* [4.5] <a id="smart-things-ubiquitous-computing-user-experience-design-2010-by-mike-kuniavsky-45"></a>
 
-#### [JavaScript on Things: Hardware for Web Developers](https://www.manning.com/books/javascript-on-things) (2018 - est.) *by [Lyza Danger Gardner](https://www.amazon.com/s/ref=dp_byline_sr_book_1?ie=UTF8&text=Lyza+Danger+Gardner&search-alias=books&field-author=Lyza+Danger+Gardner&sort=relevancerank)* [early access book]
+設計者の要望へ応える問題解決の方法を示す書籍。すぐに時代遅れにならないよう、技術の細部より工程を重視。対象とする媒体の能力と限界を丁寧に扱い、商業環境での設計のトレードオフと課題を論じる。
 
-> IoTの技術、設計、実装、セキュリティ、ビジネス応用を扱う書籍です。
+#### [JavaScript on Things: Hardware for Web Developers](https://www.manning.com/books/javascript-on-things) (2018年刊行予定) *著：[Lyza Danger Gardner](https://www.amazon.com/s/ref=dp_byline_sr_book_1?ie=UTF8&text=Lyza+Danger+Gardner&search-alias=books&field-author=Lyza+Danger+Gardner&sort=relevancerank)* [先行提供版] <a id="javascript-on-things-hardware-for-web-developers-2018---est-by-lyza-danger-gardner-early-access-book"></a>
+
+JavaScriptでウェブサイトを作れる読者向けに、小型の電子機器を同言語でプログラミングする方法を、図と実践を通じて紹介。Arduino、Tessel、Raspberry Piを使い、音、点滅する光、動きのあるプロジェクトを作成。
 
 ### 記事 <a id="articles"></a>
 
-- [A Simple Explanation Of 'The Internet Of Things' (Forbes)](http://www.forbes.com/sites/jacobmorgan/2014/05/13/simple-explanation-internet-things-that-anyone-can-understand/) - この記事は、「インターネット・オブ・シングス」とは何か、そして私たちにどのような影響を与えるかを明らかにしようとするものである。
-- [IoT security. Is there an app for that ?](http://embedded-computing.com/21517-iot-security-is-there-an-app-for-that/) - インターネット・オブ・シングス（IoT）アプリケーション開発、セキュリティ、ビジネスモデルについて検討するインターネット・オブ・シングス・ワールド・カンファレンス。
-- [The IoT Testing Atlas](http://iamqa.in/2015/10/04/The-IoT-Testing-Atlas/) - IoTベース製品のテストにおいて、パラメータの組み合わせを管理するためのテスト手法。
-- [How to begin with the Amazon Timestream](https://itnext.io/how-to-begin-with-the-amazon-timestream-in-5-simple-steps-19c129040d9c/) - AWS Timestream（時系列データベース）へのステップバイステップガイド。IoTデータを時間軸に収集するためのツールである。
+- [A Simple Explanation Of 'The Internet Of Things' (Forbes)](http://www.forbes.com/sites/jacobmorgan/2014/05/13/simple-explanation-internet-things-that-anyone-can-understand/) - IoTとは何か、私たちにどのような影響を与えるのかを説明する記事。
+- [IoT security. Is there an app for that ?](http://embedded-computing.com/21517-iot-security-is-there-an-app-for-that/) - IoTアプリケーションの開発、セキュリティ、ビジネスモデルを取り上げるInternet of Things World会議についての記事。
+- [The IoT Testing Atlas](http://iamqa.in/2015/10/04/The-IoT-Testing-Atlas/) - IoT製品のテストで、パラメーターの組み合わせを管理するためのテスト手法。
+- [How to begin with the Amazon Timestream](https://itnext.io/how-to-begin-with-the-amazon-timestream-in-5-simple-steps-19c129040d9c/) - IoTデータを時系列で収集するデータベース、AWS Timestreamの利用を段階的に説明するガイド。
 
 ### 論文 <a id="papers"></a>
 
-- [A Reference Architecture for the Internet of Things](http://wso2.com/wso2_resources/wso2_whitepaper_a-reference-architecture-for-the-internet-of-things.pdf) - この白書は、インターネット・オブ・シングス（IoT）のリファレンスアーキテクチャを紹介する。これは、デバイスと、それらと相互作用・管理するために必要なサーバーサイドおよびクラウドアーキテクチャを含む。
-- [Developing solutions for the Internet of Things](https://www-ssl.intel.com/content/dam/www/public/us/en/documents/white-papers/developing-solutions-for-iot.pdf) - インテルがインターネット・オブ・シングス（IoT）において、安全かつスムーズなソリューションを実現するためのビジョン。
-- [Evaluation of indoor positioning based on Bluetooth Smart technology](http://publications.lib.chalmers.se/records/fulltext/199826/199826.pdf) - コンピュータ・システムおよびネットワークプログラムにおける修士号論文。
-- [IoT: A Vision, Architectural Elements, and Future Directions](http://arxiv.org/pdf/1207.0203.pdf) - この論文は、インターネット・オブ・シングスの世界規模実施をクラウド中心に捉える視点を提示する。今後のIoT研究を牽引する可能性のある、キーテクノロジーおよびアプリケーション分野について述べる。
-- [Realizing the Potential of the Internet of Things](https://www.tiaonline.org/wp-content/uploads/2018/05/Realizing_the_Potential_of_the_Internet_of_Things_-_Recommendations_to_Policymakers.pdf) - 通信業界協会（TIA）が政策決定者に向けた、インターネット・オブ・シングス市場の可能性を活用し実現するための提言をまとめた白書。
-- [The Internet of Things: Evolution or Revolution ?](http://www.aig.com/Chartis/internet/US/en/AIG%20White%20Paper%20-%20IoT%20English%20DIGITAL_tcm3171-677828_tcm3171-698578.pdf) - この白書は、現在のインターネット・オブ・シ及市場の成長を、他の産業革命と比較し、それが私たちの日常生活に与える課題と影響について述べる。
-
-
-## ライセンス <a id="license"></a>
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
-
-法律で認められる範囲において、[Halim Qarroum](https://github.com/HQarroum/)は本作品に関する著作権および関連・隣接する権利を放棄しています。
+- [A Reference Architecture for the Internet of Things](http://wso2.com/wso2_resources/wso2_whitepaper_a-reference-architecture-for-the-internet-of-things.pdf) - IoTの参照アーキテクチャーを紹介するホワイトペーパー。機器と、その機器とのやり取りや管理に必要なサーバー側・クラウドの構成を含む。
+- [Developing solutions for the Internet of Things](https://www-ssl.intel.com/content/dam/www/public/us/en/documents/white-papers/developing-solutions-for-iot.pdf) - IoT向けの安全で円滑に連携するソリューションを実現するための、Intelの構想を説明する資料。
+- [Evaluation of indoor positioning based on Bluetooth Smart technology](http://publications.lib.chalmers.se/records/fulltext/199826/199826.pdf) - Computer Systems and Networks課程の理学修士論文。
+- [IoT: A Vision, Architectural Elements, and Future Directions](http://arxiv.org/pdf/1207.0203.pdf) - IoTを世界規模で実現するための、クラウドを中心に据えた構想を示す論文。近い将来のIoT研究を推進すると考えられる主要な実現技術と応用分野を論じる。
+- [Realizing the Potential of the Internet of Things](https://www.tiaonline.org/wp-content/uploads/2018/05/Realizing_the_Potential_of_the_Internet_of_Things_-_Recommendations_to_Policymakers.pdf) - IoT市場の可能性を活用・実現するため、政策立案者への提言としてまとめられたTelecommunications Industry Association（TIA）のホワイトペーパー。
+- [The Internet of Things: Evolution or Revolution ?](http://www.aig.com/Chartis/internet/US/en/AIG%20White%20Paper%20-%20IoT%20English%20DIGITAL_tcm3171-677828_tcm3171-698578.pdf) - IoT市場の成長を他の産業革命と比較し、もたらされる課題と日常生活への影響を論じるホワイトペーパー。

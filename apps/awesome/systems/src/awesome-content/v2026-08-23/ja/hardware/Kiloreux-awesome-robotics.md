@@ -1,11 +1,11 @@
 ---
 title: "Awesome Robotics"
-description: "Awesome Roboticsの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "ロボット工学に関する資料を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Robotics
 
-Awesome Roboticsの収録案内です。このスナップショットでは上流本文を転載していません。
+ロボット工学に関する資料を探せるAwesome Roboticsへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/Kiloreux/awesome-robotics/blob/067f76e8c2cbacfef976523dd6bd3c11480900ad/README.md)
+- [元のリストを読む](https://github.com/Kiloreux/awesome-robotics/blob/067f76e8c2cbacfef976523dd6bd3c11480900ad/README.md)
