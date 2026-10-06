@@ -7,14 +7,14 @@ description: "Window creation, properties and events"
 
 # Window guide
 This guide introduces the window related functions of GLFW.  For details on
-a specific function in this category, see the [window](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/).  There are also
+a specific function in this category, see the [Window reference](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/).  There are also
 guides for the other areas of GLFW.
 
- - [intro_guide](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
- - [context_guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
+ - [Introduction to the API](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [Context guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
+ - [Vulkan guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [Monitor guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
+ - [Input guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
 
 
 <a id="window_object"></a>
@@ -52,7 +52,7 @@ the event.
 #### Full screen windows
 To create a full screen window, you need to specify which monitor the window
 should use.  In most cases, the user's primary monitor is a good choice.
-For more information about retrieving monitors, see [monitor_monitors](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_monitors).
+For more information about retrieving monitors, see [Retrieving monitors](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_monitors).
 
 ```c
 GLFWwindow* window = glfwCreateWindow(640, 480, "My Title", glfwGetPrimaryMonitor(), NULL);
@@ -68,7 +68,7 @@ Each field of the [GLFWvidmode](/docs/glfw/v3-5-1/en/04-reference/05-monitor-ref
 or window hint and combine to form the _desired video mode_ for that window.
 The supported video mode most closely matching the desired video mode will be
 set for the chosen monitor as long as the window has input focus.  For more
-information about retrieving video modes, see [monitor_modes](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_modes).
+information about retrieving video modes, see [Video modes](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_modes).
 
 Video mode field        | Corresponds to
 ----------------        | --------------
@@ -92,7 +92,7 @@ the desktop.  This behavior can be disabled with the
 wish to simultaneously cover multiple monitors with full screen windows.
 
 If a monitor is disconnected, all windows that are full screen on that monitor
-will be switched to windowed mode.  See [monitor_event](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_event) for more information.
+will be switched to windowed mode.  See [Monitor configuration changes](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_event) for more information.
 
 
 <a id="window_windowed_full_screen"></a>
@@ -599,7 +599,7 @@ GLFW_X11_INSTANCE_NAME        | `""`                        | An ASCII encoded `
 <a id="window_events"></a>
 
 ## Window event processing
-See [events](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#events).
+See [Event processing](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#events).
 
 
 <a id="window_properties"></a>
@@ -1361,22 +1361,22 @@ glfwSetWindowAttrib(window, GLFW_RESIZABLE, GLFW_FALSE);
 #### Window related attributes
 <a id="GLFW_FOCUSED_attrib"></a>
 __GLFW_FOCUSED__ indicates whether the specified window has input focus.  See
-[window_focus](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_focus) for details.
+[Window input focus](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_focus) for details.
 
 <a id="GLFW_ICONIFIED_attrib"></a>
 __GLFW_ICONIFIED__ indicates whether the specified window is iconified.
-See [window_iconify](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_iconify) for details.
+See [Window iconification](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_iconify) for details.
 
 <a id="GLFW_MAXIMIZED_attrib"></a>
 __GLFW_MAXIMIZED__ indicates whether the specified window is maximized.  See
-[window_maximize](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_maximize) for details.
+[Window maximization](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_maximize) for details.
 
 <a id="GLFW_HOVERED_attrib"></a>
 __GLFW_HOVERED__ indicates whether the cursor is currently directly over the
-content area of the window, with no other windows between.  See [cursor_enter](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#cursor_enter) for details.
+content area of the window, with no other windows between.  See [Cursor enter/leave events](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#cursor_enter) for details.
 
 <a id="GLFW_VISIBLE_attrib"></a>
-__GLFW_VISIBLE__ indicates whether the specified window is visible.  See [window_hide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_hide) for details.
+__GLFW_VISIBLE__ indicates whether the specified window is visible.  See [Window visibility](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_hide) for details.
 
 <a id="GLFW_RESIZABLE_attrib"></a>
 __GLFW_RESIZABLE__ indicates whether the specified window is resizable _by the
@@ -1402,7 +1402,7 @@ called topmost or always-on-top.  This can be set before creation with the
 <a id="GLFW_TRANSPARENT_FRAMEBUFFER_attrib"></a>
 __GLFW_TRANSPARENT_FRAMEBUFFER__ indicates whether the specified window has
 a transparent framebuffer, i.e. the window contents is composited with the
-background using the window framebuffer alpha channel.  See [window_transparency](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_transparency) for details.
+background using the window framebuffer alpha channel.  See [Window transparency](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_transparency) for details.
 
 <a id="GLFW_FOCUS_ON_SHOW_attrib"></a>
 __GLFW_FOCUS_ON_SHOW__ specifies whether the window will be given input

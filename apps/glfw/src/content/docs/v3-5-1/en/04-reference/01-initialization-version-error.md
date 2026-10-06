@@ -1,7 +1,10 @@
 ---
 title: "Initialization, version and error reference"
 description: "GLFW 3.5.1 Initialization, version and error reference"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream descriptions of <code>GLFW_TRUE</code> and <code>GLFW_FALSE</code> above include <code>_True</code> and <code>_False</code>. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L303-L320\">fixed GLFW header</a> defines <code>GLFW_TRUE</code> as 1 and <code>GLFW_FALSE</code> as 0, but does not declare or define <code>_True</code> or <code>_False</code>. These names cannot be assumed to be supplied by GLFW. Use <code>GLFW_TRUE</code>/<code>GLFW_FALSE</code> or 1/0 when relying on GLFW alone. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream paragraph below about returning <code>NULL</code> is inconsistent with this callback's <code>void</code> return type. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L1571\">fixed declaration</a> and <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L296-L300\">deallocation implementation</a> provide no return value and do not test a deallocation result for <code>NULL</code>. The <code>GLFW_OUT_OF_MEMORY</code> checks on allocation and reallocation are separate. The upstream paragraph is preserved below.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream <code>init_hints</code> reference above is plain text. Its target is <a href=\"/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#init_hints\">Initialization hints</a>.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> In the upstream sentence above, the function-pointer requirement applies to <code>allocate</code>, <code>reallocate</code> and <code>deallocate</code>. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L2142-L2160\">fixed struct</a> also has a <code>void* user</code> member, which is a user pointer. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L471-L482\">fixed setter</a> checks the three callbacks and copies <code>user</code> without requiring it to be non-<code>NULL</code>. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream parameter table above labels <code>description</code> as <code>[in]</code>, while its explanation describes a destination. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L499-L521\">fixed implementation</a> writes the error-description pointer to <code>*description</code> when a destination is provided. Pass the address of a <code>const char*</code> variable to receive that pointer, or <code>NULL</code> to omit it. The <code>[in]</code> label is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}}]
 ---
+
+# Initialization, version and error reference
 
 <span id="details"></span>
 
@@ -524,6 +527,8 @@ This is only semantic sugar for the number 1. You can instead use `1` or `true` 
 
 This is only semantic sugar for the number 0. You can instead use `0` or `false` or `_False` or `GL_FALSE` or `VK_FALSE` or anything else that is equal to zero.
 
+
+
 </div>
 
 </div>
@@ -1005,6 +1010,8 @@ This is the function pointer type for memory deallocation callbacks. A memory de
 
 This function may deallocate the specified memory block. This memory block will have been allocated with the same allocator.
 
+
+
 This function must support being called during <a href="/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e" class="el">glfwInit</a> but before the library is flagged as initialized, as well as during <a href="/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901" class="el">glfwTerminate</a> after the library is no longer flagged as initialized.
 
 The block address will never be `NULL`. Deallocations of `NULL` are filtered out before reaching the custom allocator.
@@ -1318,6 +1325,8 @@ This function must only be called from the main thread.
 See also  
 init_hints
 
+
+
 <a href="/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e" class="el" title="Initializes the GLFW library.">glfwInit</a>
 
 <!-- -->
@@ -1348,6 +1357,8 @@ Added in version 3.3.
 To use the default allocator, call this function with a `NULL` argument.
 
 If you specify an allocator struct, every member must be a valid function pointer. If any member is `NULL`, this function will emit <a href="/docs/glfw/v3-5-1/en/04-reference/02-error-codes/#gaaf2ef9aa8202c2b82ac2d921e554c687" class="el">GLFW_INVALID_VALUE</a> and the init allocator will be unchanged.
+
+
 
 The functions in the allocator must fulfil a number of requirements. See the documentation for <a href="/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga4306a564e9f60f4de8cc8f31731a3120" class="el">GLFWallocatefun</a>, <a href="/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga3e88a829615d8efe8bec1746f7309c63" class="el">GLFWreallocatefun</a> and <a href="/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga7181615eda94c4b07bd72bdcee39fa28" class="el">GLFWdeallocatefun</a> for details.
 
@@ -1608,6 +1619,8 @@ Parameters
 |  |  |  |
 |----|----|----|
 | \[in\] | description | Where to store the error description pointer, or `NULL`. |
+
+
 
 <!-- -->
 

@@ -21,14 +21,14 @@ to use GLFW and Vulkan.  The [Khronos Vulkan
 Samples](https://github.com/KhronosGroup/Vulkan-Samples) also use GLFW, although
 with a small framework in between.
 
-For details on a specific Vulkan support function, see the [vulkan](/docs/glfw/v3-5-1/en/04-reference/07-vulkan-support-reference/).  There
+For details on a specific Vulkan support function, see the [Vulkan support reference](/docs/glfw/v3-5-1/en/04-reference/07-vulkan-support-reference/).  There
 are also guides for the other areas of the GLFW API.
 
- - [intro_guide](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
+ - [Introduction to the API](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [Window guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
+ - [Context guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
+ - [Monitor guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
+ - [Input guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
 
 
 <a id="vulkan_loader"></a>
@@ -228,7 +228,7 @@ glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 GLFWwindow* window = glfwCreateWindow(640, 480, "Window Title", NULL, NULL);
 ```
 
-See [context_less](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_less) for more information.
+See [Windows without contexts](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_less) for more information.
 
 
 <a id="vulkan_surface"></a>

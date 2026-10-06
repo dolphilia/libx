@@ -7,20 +7,20 @@ description: "OpenGL and OpenGL ES context management"
 
 # Context guide
 This guide introduces the OpenGL and OpenGL ES context related functions of
-GLFW.  For details on a specific function in this category, see the [context](/docs/glfw/v3-5-1/en/04-reference/04-context-reference/).  There are also guides for the other areas of the GLFW API.
+GLFW.  For details on a specific function in this category, see the [Context reference](/docs/glfw/v3-5-1/en/04-reference/04-context-reference/).  There are also guides for the other areas of the GLFW API.
 
- - [intro_guide](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
+ - [Introduction to the API](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [Window guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
+ - [Vulkan guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [Monitor guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
+ - [Input guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
 
 
 <a id="context_object"></a>
 
 ## Context objects
 A window object encapsulates both a top-level window and an OpenGL or OpenGL ES
-context.  It is created with [glfwCreateWindow](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga3555a418df92ad53f917597fe2f64aeb) and destroyed with [glfwDestroyWindow](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#gacdf43e51376051d2c091662e9fe3d7b2) or [glfwTerminate](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901).  See [window_creation](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_creation) for more
+context.  It is created with [glfwCreateWindow](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga3555a418df92ad53f917597fe2f64aeb) and destroyed with [glfwDestroyWindow](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#gacdf43e51376051d2c091662e9fe3d7b2) or [glfwTerminate](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901).  See [Creating a window](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_creation) for more
 information.
 
 As the window and context are inseparably linked, the window object also serves
@@ -32,7 +32,7 @@ the `glfwinfo` test program.
 > **Note:** Vulkan does not have a context and the Vulkan instance is created via the
 Vulkan API itself.  If you will be using Vulkan to render to a window, disable
 context creation by setting the [GLFW_CLIENT_API](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_CLIENT_API_hint)
-hint to `GLFW_NO_API`.  For more information, see the [vulkan_guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide).
+hint to `GLFW_NO_API`.  For more information, see the [Vulkan guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide).
 
 
 <a id="context_hints"></a>
@@ -132,7 +132,7 @@ error.
 <a id="context_swap"></a>
 
 ## Buffer swapping
-See [buffer_swap](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#buffer_swap) in the window guide.
+See [Buffer swapping](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#buffer_swap) in the window guide.
 
 
 <a id="context_glext"></a>

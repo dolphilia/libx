@@ -1,7 +1,10 @@
 ---
 title: "Window reference"
 description: "GLFW 3.5.1 Window reference"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream brief and detailed descriptions call <code>GLFW_FLOATING</code> a decoration setting. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L211-L216\">fixed window guide</a> describes floating above other regular windows, also called topmost or always-on-top, and the <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L360-L362\">fixed hint implementation</a> stores the floating setting. Window decorations are controlled separately by <code>GLFW_DECORATED</code>. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream detailed description above says revision number. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L442-L447\">fixed window guide</a> defines this hint as the context robustness strategy, and the <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L412-L414\">fixed hint implementation</a> stores <code>context.robustness</code>. It is separate from the <code>GLFW_CONTEXT_REVISION</code> attribute. The upstream detailed wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The comma in the upstream code-formatted name <code>GLFW_ICON,</code> is preserved above. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L1294-L1297\">fixed Win32 implementation</a> looks up the resource name <code>GLFW_ICON</code>, without a comma.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream parameter table calls <code>window</code> a window to query. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L596-L607\">fixed setter implementation</a> passes this window to the platform position setter when it is windowed. Here <code>window</code> identifies the window whose position is to be set; the full-screen no-op described above still applies. The upstream table is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream word positive conflicts with the explicit zero endpoint. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796\">fixed opacity setter</a> checks for a finite value in the inclusive range 0 to 1; zero is included. Whether whole-window transparency is supported still depends on the platform. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream word positive conflicts with the explicit zero endpoint. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796\">fixed opacity setter</a> checks for a finite value in the inclusive range 0 to 1; zero is included. Whether whole-window transparency is supported still depends on the platform. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream remark contradicts itself about restoring from maximization. In the <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L2688-L2710\">fixed Wayland implementation</a>, the comment says that minimization cannot be unset, while the windowed branch unsets maximization through libdecor or xdg-toplevel, or clears the stored maximized flag. This explains the fixed 3.5.1 behavior and does not establish the capabilities of current Wayland protocols. The upstream remark is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}}]
 ---
+
+# Window reference
 
 <span id="details"></span>
 
@@ -1536,6 +1539,8 @@ Window auto-iconification <a href="/docs/glfw/v3-5-1/en/03-guides/04-window-guid
 
 Window decoration <a href="/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_FLOATING_hint" class="el">window hint</a> and <a href="/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_FLOATING_attrib" class="el">window attribute</a>.
 
+
+
 </div>
 
 </div>
@@ -2173,6 +2178,8 @@ Context client API revision number <a href="/docs/glfw/v3-5-1/en/03-guides/04-wi
 <div class="memdoc">
 
 Context client API revision number <a href="/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_hint" class="el">hint</a> and <a href="/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_attrib" class="el">attribute</a>.
+
+
 
 </div>
 
@@ -3318,6 +3325,8 @@ Remarks
 
 **Win32:** If the executable has an icon resource named `GLFW_ICON,` it will be set as the initial icon for the window. If no such icon is present, the `IDI_APPLICATION` icon will be used instead. To set a different icon, see <a href="/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#gadd7ccd39fe7a7d1f0904666ae5932dc5" class="el">glfwSetWindowIcon</a>.
 
+
+
 **Win32:** The context to share resources with must not be current on any other thread.
 
 **macOS:** The OS only supports core profile contexts for OpenGL versions 3.2 and later. Before creating an OpenGL context of version 3.2 or later you must set the <a href="/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_OPENGL_PROFILE_hint" class="el">GLFW_OPENGL_PROFILE</a> hint accordingly. OpenGL 3.0 and 3.1 contexts are not supported at all on macOS.
@@ -3802,6 +3811,8 @@ Parameters
 | \[in\] | xpos | The x-coordinate of the upper-left corner of the content area. |
 | \[in\] | ypos | The y-coordinate of the upper-left corner of the content area. |
 
+
+
 <!-- -->
 
 Errors  
@@ -4281,6 +4292,8 @@ This function returns the opacity of the window, including any decorations.
 
 The opacity (or alpha) value is a positive finite number between zero and one, where zero is fully transparent and one is fully opaque. If the system does not support whole window transparency, this function always returns one.
 
+
+
 The initial opacity value for newly created windows is one.
 
 Parameters  
@@ -4340,6 +4353,8 @@ Added in version 3.3.
 This function sets the opacity of the window, including any decorations.
 
 The opacity (or alpha) value is a positive finite number between zero and one, where zero is fully transparent and one is fully opaque.
+
+
 
 The initial opacity value for newly created windows is one.
 
@@ -4469,6 +4484,8 @@ Possible errors include <a href="/docs/glfw/v3-5-1/en/04-reference/02-error-code
 
 Remarks  
 **Wayland:** Restoring a window from maximization is not currently part of any common Wayland protocol, so this function can only restore windows from maximization.
+
+
 
 <!-- -->
 

@@ -9,7 +9,7 @@ description: "Build and link applications that use GLFW"
 This is about compiling and linking applications that use GLFW.  For information on
 how to write such applications, start with the
 [introductory tutorial](/docs/glfw/v3-5-1/en/02-getting-started/01-getting-started/#quick_guide).  For information on how to compile
-the GLFW library itself, see [compile_guide](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_guide).
+the GLFW library itself, see [Compiling GLFW](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_guide).
 
 This is not a tutorial on compilation or linking.  It assumes basic
 understanding of how to compile and link a C program as well as how to use the
@@ -265,7 +265,7 @@ gcc -o myprog myprog.c -D GLFW_DLL -I path/to/glfw/include path/to/glfw/lib-ming
 
 ### With CMake and GLFW source
 This section is about using CMake to compile and link GLFW along with your
-application.  If you want to use an installed binary instead, see [build_link_cmake_package](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_link_cmake_package).
+application.  If you want to use an installed binary instead, see [With CMake and installed GLFW binaries](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_link_cmake_package).
 
 With a few changes to your `CMakeLists.txt` you can have the GLFW source tree
 built along with your application.
@@ -314,7 +314,7 @@ For a minimal example of a program and GLFW sources built with CMake, see the
 ### With CMake and installed GLFW binaries
 This section is about using CMake to link GLFW after it has been built and
 installed.  If you want to build it along with your application instead, see
-[build_link_cmake_source](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_link_cmake_source).
+[With CMake and GLFW source](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_link_cmake_source).
 
 With a few changes to your `CMakeLists.txt` you can locate the package and
 target files generated when GLFW is installed.

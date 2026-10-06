@@ -3,6 +3,8 @@ title: "Native access"
 description: "GLFW 3.5.1 Native access"
 ---
 
+# Native access
+
 <span id="details"></span>
 
 ## Description

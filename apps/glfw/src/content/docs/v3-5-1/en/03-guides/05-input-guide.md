@@ -1,20 +1,21 @@
 ---
 title: "Input guide"
 description: "Keyboard, mouse, joystick and gamepad input"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The statement above about all input callbacks has an exception: the joystick callback receives a joystick ID and an event, with no window handle. See <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#joystick_event\">Joystick configuration changes</a> and the callback example in that section.</p>\n</blockquote>","context":{"anchor":"input-guide","label":"Input guide"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The paragraph above says \"monitor callback\" in a section about joystick callbacks. It also includes <a href=\"/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978\">glfwGetJoystickName</a> among functions that return useful values after disconnection. In the <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1169-L1195\">fixed 3.5.1 implementation</a>, the joystick is marked disconnected before the joystick callback runs, and this function returns <code>NULL</code> for a disconnected joystick. <a href=\"/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3\">glfwGetJoystickUserPointer</a> can still be queried during that callback. Obtain and copy any needed joystick name before disconnection; the lifetime stated in its reference ends on disconnection. These clarifications supplement the preserved upstream text.</p>\n</blockquote>","context":{"anchor":"joystick-configuration-changes","label":"Joystick configuration changes"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream example above calls <code>a7</code> the eighth button. In this mapping format it denotes the eighth axis (index 7). The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L210-L228\">fixed mapping parser</a> interprets <code>a</code> as an axis and <code>b</code> as a button. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"gamepad-mappings","label":"Gamepad mappings"}}]
 ---
 
 <a id="input_guide"></a>
 
 # Input guide
 This guide introduces the input related functions of GLFW.  For details on
-a specific function in this category, see the [input](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/).  There are also guides
+a specific function in this category, see the [Input reference](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/).  There are also guides
 for the other areas of GLFW.
 
- - [intro_guide](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
+ - [Introduction to the API](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [Window guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
+ - [Context guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
+ - [Vulkan guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [Monitor guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
 
 GLFW provides many kinds of input.  While some can only be polled, like time, or
 only received via callbacks, like scrolling, many provide both callbacks and
@@ -24,6 +25,8 @@ and guarantees that you do not miss state changes.
 All input callbacks receive a window handle.  By using the
 [window user pointer](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_userptr), you can access non-global structures
 or objects from your callbacks.
+
+
 
 To get a better feel for how the various events callbacks behave, run the
 `events` test program.  It registers every callback supported by GLFW and prints
@@ -762,6 +765,8 @@ useful values for a disconnected joystick and only before the monitor callback
 returns.
 
 
+
+
 <a id="gamepad"></a>
 
 ### Gamepad input
@@ -776,7 +781,7 @@ devices to an Xbox-like gamepad.
 [SDL_GameControllerDB]: https://github.com/gabomdq/SDL_GameControllerDB
 
 GLFW supports this mapping format and contains a copy of the mappings
-available at the time of release.  See [gamepad_mapping](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#gamepad_mapping) for how to update
+available at the time of release.  See [Gamepad mappings](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#gamepad_mapping) for how to update
 this at runtime.  Mappings will be assigned to joysticks automatically any time
 a joystick is connected or the mappings are updated.
 
@@ -897,6 +902,8 @@ a hat bitmask or empty.  Joystick buttons are specified as `bN`, for example
 `a7` for the eighth button.  Joystick hat bit masks are specified as `hN.N`, for
 example `h0.8` for left on the first hat.  More than one bit may be set in the
 mask.
+
+
 
 Before an axis there may be a `+` or `-` range modifier, for example `+a3` for
 the positive half of the fourth axis.  This restricts input to only the positive

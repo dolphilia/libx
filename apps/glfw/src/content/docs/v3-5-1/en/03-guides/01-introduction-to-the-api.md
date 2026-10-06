@@ -1,23 +1,26 @@
 ---
 title: "Introduction to the API"
 description: "Initialization, errors, coordinates and version management"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The initialization section below restricts calls before initialization to the main thread. However, the reference for <a href=\"/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga9f8ffaacf3c269cc48eafbf8b9b71197\">glfwGetVersion</a> and <a href=\"/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga026abd003c8e6501981ab1662062f1c0\">glfwGetVersionString</a> in the same fixed version explicitly permits calls before initialization and from any thread. As this guide states under version compatibility, the reference takes precedence over a guide. Consult each function's reference for its thread restrictions.</p>\n</blockquote>"}]
 ---
+
+
 
 <a id="intro_guide"></a>
 
 # Introduction to the API
 This guide introduces the basic concepts of GLFW and describes initialization,
 error handling and API guarantees and limitations.  For a broad but shallow
-tutorial, see [quick_guide](/docs/glfw/v3-5-1/en/02-getting-started/01-getting-started/#quick_guide) instead.  For details on a specific function in
-this category, see the [init](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/).
+tutorial, see [Getting started](/docs/glfw/v3-5-1/en/02-getting-started/01-getting-started/#quick_guide) instead.  For details on a specific function in
+this category, see the [Initialization, version and error reference](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/).
 
 There are also guides for the other areas of GLFW.
 
- - [window_guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
+ - [Window guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
+ - [Context guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
+ - [Vulkan guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [Monitor guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
+ - [Input guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
 
 
 <a id="intro_init"></a>

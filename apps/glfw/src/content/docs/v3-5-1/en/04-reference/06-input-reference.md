@@ -1,7 +1,10 @@
 ---
 title: "Input reference"
 description: "GLFW 3.5.1 Input reference"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream mode lists omit <code>GLFW_UNLIMITED_MOUSE_BUTTONS</code>. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583\">fixed implementation</a> accepts this mode and returns its current value. The upstream lists are preserved.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The paragraph above names <code>GLFW_FEATURE_UNAVAILABLE</code>. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687\">fixed implementation</a> instead emits <code>GLFW_PLATFORM_ERROR</code> when raw mouse motion is unsupported, matching the description of <code>glfwRawMouseMotionSupported</code>. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The parameter table below omits <code>GLFW_UNLIMITED_MOUSE_BUTTONS</code>, although this paragraph describes it. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693\">fixed implementation</a> accepts this mode. The upstream table is preserved.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The NORMAL-only statement above is incomplete for capture-supporting backends. The fixed <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242\">Win32</a>, <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474\">X11</a>, and <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353\">Wayland</a> implementations also select the cursor image in <code>GLFW_CURSOR_CAPTURED</code>. The fixed <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683\">Cocoa implementation</a> reports <code>GLFW_FEATURE_UNIMPLEMENTED</code> for captured mode. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The all-functions statement above has an exception. The fixed <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255\">user-pointer functions</a> check whether the joystick object is allocated rather than polling for a connection. As their own descriptions state, they may be used in the disconnection callback. The fixed <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426\">callback path</a> marks the joystick disconnected before invoking that callback. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream paragraph says positive. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507\">fixed implementation</a> also permits zero: it rejects non-finite values, values below 0.0, and values above 18446744073.0. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}}]
 ---
+
+# Input reference
 
 <span id="details"></span>
 
@@ -1443,6 +1446,8 @@ Added in version 3.3.
 
 This function returns the value of an input option for the specified window. The mode must be one of <a href="/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_CURSOR" class="el">GLFW_CURSOR</a>, <a href="/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_STICKY_KEYS" class="el">GLFW_STICKY_KEYS</a>, <a href="/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_STICKY_MOUSE_BUTTONS" class="el">GLFW_STICKY_MOUSE_BUTTONS</a>, <a href="/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_LOCK_KEY_MODS" class="el">GLFW_LOCK_KEY_MODS</a> or <a href="/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_RAW_MOUSE_MOTION" class="el">GLFW_RAW_MOUSE_MOTION</a>.
 
+
+
 Parameters  
 |  |  |  |
 |----|----|----|
@@ -1509,7 +1514,11 @@ If the mode is `GLFW_LOCK_KEY_MODS`, the value must be either `GLFW_TRUE` to ena
 
 If the mode is `GLFW_RAW_MOUSE_MOTION`, the value must be either `GLFW_TRUE` to enable raw (unscaled and unaccelerated) mouse motion when the cursor is disabled, or `GLFW_FALSE` to disable it. If raw motion is not supported, attempting to set this will emit <a href="/docs/glfw/v3-5-1/en/04-reference/02-error-codes/#ga526fba20a01504a8086c763b6ca53ce5" class="el">GLFW_FEATURE_UNAVAILABLE</a>. Call <a href="/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gae4ee0dbd0d256183e1ea4026d897e1c2" class="el">glfwRawMouseMotionSupported</a> to check for support.
 
+
+
 If the mode is `GLFW_UNLIMITED_MOUSE_BUTTONS`, the value must be either `GLFW_TRUE` to disable the mouse button limit when calling the mouse button callback, or `GLFW_FALSE` to limit the mouse buttons sent to the callback to the mouse button token values up to `GLFW_MOUSE_BUTTON_LAST`.
+
+
 
 Parameters  
 |  |  |  |
@@ -2208,6 +2217,8 @@ Added in version 3.1.
 
 This function sets the cursor image to be used when the cursor is over the content area of the specified window. The set cursor will only be visible when the <a href="/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#cursor_mode" class="el">cursor mode</a> of the window is `GLFW_CURSOR_NORMAL`.
 
+
+
 On some platforms, the set cursor may not be visible unless the window also has input focus.
 
 Parameters  
@@ -2846,6 +2857,8 @@ Added in version 3.1.
 This function returns whether the specified joystick is present.
 
 There is no need to call this function before other functions that accept a joystick ID, as they all check for presence before performing any other work.
+
+
 
 Parameters  
 |  |  |  |
@@ -3863,6 +3876,8 @@ Added in version 1.0.
 <div class="memdoc">
 
 This function sets the current GLFW time, in seconds. The value must be a positive finite number less than or equal to 18446744073.0, which is approximately 584.5 years.
+
+
 
 This function and <a href="/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaa6cf4e7a77158a3b8fd00328b1720a4a" class="el">glfwGetTime</a> are helper functions on top of <a href="/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga3289ee876572f6e91f06df3a24824443" class="el">glfwGetTimerFrequency</a> and <a href="/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga09b2bd37d328e0b9456c7ec575cc26aa" class="el">glfwGetTimerValue</a>.
 

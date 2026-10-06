@@ -3,6 +3,8 @@ title: "Vulkan support reference"
 description: "GLFW 3.5.1 Vulkan support reference"
 ---
 
+# Vulkan support reference
+
 <span id="details"></span>
 
 ## Description

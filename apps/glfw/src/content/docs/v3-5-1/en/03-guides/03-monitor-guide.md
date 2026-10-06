@@ -7,14 +7,14 @@ description: "Monitor objects, modes and gamma ramps"
 
 # Monitor guide
 This guide introduces the monitor related functions of GLFW.  For details on
-a specific function in this category, see the [monitor](/docs/glfw/v3-5-1/en/04-reference/05-monitor-reference/).  There are also
+a specific function in this category, see the [Monitor reference](/docs/glfw/v3-5-1/en/04-reference/05-monitor-reference/).  There are also
 guides for the other areas of GLFW.
 
- - [intro_guide](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
- - [input_guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
+ - [Introduction to the API](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [Window guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
+ - [Context guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
+ - [Vulkan guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [Input guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
 
 
 <a id="monitor_object"></a>

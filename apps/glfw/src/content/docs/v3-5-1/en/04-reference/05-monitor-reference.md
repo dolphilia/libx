@@ -1,7 +1,10 @@
 ---
 title: "Monitor reference"
 description: "GLFW 3.5.1 Monitor reference"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream lifetime paragraph above says array. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/monitor.c#L451-L461\">fixed implementation</a> returns a pointer to a single <code>GLFWvidmode</code> stored in the monitor. The array-returning function is <code>glfwGetVideoModes</code>. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"functions","label":"Functions"}}]
 ---
+
+# Monitor reference
 
 <span id="details"></span>
 
@@ -1116,6 +1119,8 @@ Possible errors include <a href="/docs/glfw/v3-5-1/en/04-reference/02-error-code
 
 Pointer lifetime  
 The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected or the library is terminated.
+
+
 
 <!-- -->
 
