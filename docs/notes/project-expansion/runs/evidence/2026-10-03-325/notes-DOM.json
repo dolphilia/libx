@@ -1,0 +1,49 @@
+{
+  "links": [
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L42-L75",
+      "text": "固定sds.hの42–75行"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L250-L251",
+      "text": "固定sds.hの250–251行"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L237",
+      "text": "固定宣言237行"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L668-L695",
+      "text": "固定実装668–695行"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L778-L806",
+      "text": "固定sds.cの778–806行"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L38",
+      "text": "固定sds.cの38行"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sdsalloc.h",
+      "text": "そのヘッダー全体"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L305",
+      "text": "305行の引用符不一致"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L416-L429",
+      "text": "416–429行のprintf引数欠落"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L542-L548",
+      "text": "542–548行のs1宣言とsの使用の混在"
+    },
+    {
+      "href": "https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L812-L814",
+      "text": "812–814行のsize_t値に対する%d指定"
+    }
+  ],
+  "text": "SDS 2.0.0 原文注釈案（採用前）\n\nこれは固定原資料を調査した編集注釈案です。原文やコード例を修正したものではなく、ソフトウェアのコード例は実行検証していません。採用・訳文の全文レビューは未完了です。\n\n内部構造: READMEのInternalsにあるstruct sdshdr { int len; int free; char buf[]; }は、固定版のヘッダーで宣言されたsdshdr5/8/16/32/64とは異なります。固定版の構造体、flags、len、allocについては固定sds.hの42–75行の原典付録を参照してください。READMEの構造図と説明は原文として保持します。\n結合API: READMEのsdsjoin宣言と例は4引数です。固定sds.hの250–251行ではsdsjoinは3引数、sdsjoinsdsは4引数です。二つのAPIを区別してください。\nトリミング: READMEはsdstrimをvoidとして掲載していますが、固定宣言237行はsds戻り値です。固定実装668–695行は再確保せず受け取ったsを返します。この関数の原コメントには参照置換の説明があり、入力例HelloWorldに対して出力Hello Worldと記されています。これらも原文のまま区別して掲載します。\n分割APIコメント: 固定sds.cの778–806行のsdssplitlenコメントは空文字列の場合もNULLと説明しますが、実装はtokensの割り当てに成功した空入力なら*count = 0でtokensを返します。またコメントにあるsdssplit()は固定公開ヘッダーに宣言されていません。sdssplitlen()と同じ公開APIが存在すると推測しないでください。\n組み込みと割当設定: READMEはsds.cとsds.hのコピーを案内しています。固定sds.cの38行はsdsalloc.hをインクルードしており、そのヘッダー全体を原典付録に含めます。\n例の静的な不備: 固定READMEには305行の引用符不一致、416–429行のprintf引数欠落、542–548行のs1宣言とsの使用の混在、812–814行のsize_t値に対する%d指定があります。コード例は原文を保持し、そのまま実行できる検証済みプログラムとは扱いません。\n条件の区別: READMEは原LICENSEのBSD 2-Clauseを明示参照します。一方、採録するsds.cコメント、sds.h、sdsalloc.hには個別のBSD 3-Clause通知があります。各原通知を全文保持し、Redisの名称や貢献者名による推薦・宣伝についての追加条項も省略しません。READMEの条件で個別条件を上書きしません。\n\n全注釈は固定コミットf74b9b785b63c6d8ea312d7e7864df5267149c85の原文との相違を示すものです。現在のmaster、未実行のソフトウェア挙動、存在未確認のAPIへ一般化しません。"
+}

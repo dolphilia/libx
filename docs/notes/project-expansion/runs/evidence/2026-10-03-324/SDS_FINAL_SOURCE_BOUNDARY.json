@@ -1,0 +1,447 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-03T00:21:55.513813+00:00",
+  "fixedCommit": "f74b9b785b63c6d8ea312d7e7864df5267149c85",
+  "scope": "SDS2.0.0公式利用ガイド全文と公式公開APIコメント・宣言/型/allocator設定の原典付録、適用原通知。実装からAIが新規API文書を生成する方式ではない。",
+  "allUpstreamFilesClassified": [
+    {
+      "path": ".gitignore",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/.gitignore",
+      "sha256": "b31705d05f052c093e9977bb098d5553ab54369b06f230d288b09c8a1898ef6d",
+      "gitBlob": "a521197c85eb4ee0379c9c6b196bdedd07d14da8",
+      "bytes": 9,
+      "lines": 1,
+      "action": "exclude",
+      "reason": "ビルド出力除外規則で文書本文ではない。全原資料は証拠に保持。"
+    },
+    {
+      "path": "Changelog",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/Changelog",
+      "sha256": "9c4d5eb10e7890c2197bb35d47668bb9ac7cb7c217f83a63564a8bf5cd7effb9",
+      "gitBlob": "26bd871b1ebe76e92049b8fd183aab8103757ff0",
+      "bytes": 311,
+      "lines": 12,
+      "action": "reference",
+      "reason": "版2変更/allocator/非バイナリ互換の公式検査参照。本文全12行読解、guideに同内容があり対象利用ガイド/API付録とは別の履歴。"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/LICENSE",
+      "sha256": "bb0d0d505009fdf584b0f44dbb62562eebada497d53d726cd2e940ada512dc16",
+      "gitBlob": "d1199bcf724dacae76b9aabd94e1ebb2f8ce8cc1",
+      "bytes": 1335,
+      "lines": 24,
+      "action": "adopt",
+      "reason": "BSD2原通知全文、READMEが明示参照する条件を掲載。"
+    },
+    {
+      "path": "Makefile",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/Makefile",
+      "sha256": "6bb979f056be5166f3857b02eea4daed6806b4aad4867db0f1117e0a6e2cf0cc",
+      "gitBlob": "045fa88aac641305147d460a5f541f375e01de5a",
+      "bytes": 200,
+      "lines": 8,
+      "action": "reference",
+      "reason": "テストビルド設定の検査参照。本文全8行読解。独立利用ガイドの本文や公開APIではない。"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md",
+      "sha256": "6671e7ad7a52f747c138a59183491d3737bd19d14ad9671979ceb737ee0814b6",
+      "gitBlob": "91cf301cda98050df9f7f19edc4b3ac2b4dac63f",
+      "bytes": 31092,
+      "lines": 892,
+      "action": "adopt",
+      "reason": "公式利用ガイド全892行、問題章/原例/図を含めて全文。"
+    },
+    {
+      "path": "sds.c",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c",
+      "sha256": "ff0fde82bbe31581b2a5ada425a7a1aee7582ad807b8365516bbad6ef667dca0",
+      "gitBlob": "aff9cd1f928f51ae93a5f6f54dbbb5666a60bca6",
+      "bytes": 39363,
+      "lines": 1264,
+      "action": "adopt-and-reference",
+      "reason": "公式READMEがソース内文書として案内する公開APIコメント全34と原BSD3通知を採録。実装は不一致検査参照であり新たな説明生成には使わない。内側実装コメント・非公開helper・test本文はソフトウェア実装で対象マニュアル外。"
+    },
+    {
+      "path": "sds.h",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h",
+      "sha256": "38d808abcef9eeb9387242e6d23c4f0442fc4d1717305b91900527277403514a",
+      "gitBlob": "20eaac0ce0754034a784d8ad0b83c9f4a0312a6b",
+      "bytes": 8562,
+      "lines": 264,
+      "action": "adopt",
+      "reason": "全264行原publicheader付録。全41関数宣言/6inline/34非test/1test条件、型・全macroを切り落とさず保持。"
+    },
+    {
+      "path": "sdsalloc.h",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/sdsalloc.h",
+      "sha256": "ae25f82b03f9e011d969242cd176aa3f242bdead7b6404ce5c082f2af0c10d56",
+      "gitBlob": "152976c808b71cc89bcb0a7249a86fc88da437b6",
+      "bytes": 2059,
+      "lines": 41,
+      "action": "adopt",
+      "reason": "全41行原allocator設定header付録、原BSD3通知保持。guideEmbeddingの必要ファイル不足を注釈する参照。"
+    },
+    {
+      "path": "testhelp.h",
+      "url": "https://raw.githubusercontent.com/antirez/sds/f74b9b785b63c6d8ea312d7e7864df5267149c85/testhelp.h",
+      "sha256": "8cb1b652da0f106374b284cb10e4d27f10959d3082d703d9c852fe0c4ad6bd44",
+      "gitBlob": "450334046af86a5e0f00126f9790e9a14e170f84",
+      "bytes": 2431,
+      "lines": 57,
+      "action": "exclude",
+      "reason": "test内部補助のソフトウェア実装。公開SDSAPI/対象manualではない。全原資料は証拠保持し本文57行読解済み。"
+    }
+  ],
+  "header": {
+    "allLinesRetained": 264,
+    "uniqueFunctionNames": 41,
+    "inline": 6,
+    "publicNonTestCommented": 34,
+    "testConditional": 1,
+    "typedef": "char *sds",
+    "structures": [
+      "sdshdr5",
+      "sdshdr8",
+      "sdshdr16",
+      "sdshdr32",
+      "sdshdr64"
+    ],
+    "allDefinedMacros": [
+      "__SDS_H",
+      "SDS_MAX_PREALLOC",
+      "SDS_TYPE_5",
+      "SDS_TYPE_8",
+      "SDS_TYPE_16",
+      "SDS_TYPE_32",
+      "SDS_TYPE_64",
+      "SDS_TYPE_MASK",
+      "SDS_TYPE_BITS",
+      "SDS_HDR_VAR",
+      "SDS_HDR",
+      "SDS_TYPE_5_LEN"
+    ]
+  },
+  "allocatorHeader": {
+    "allLinesRetained": 41,
+    "macros": [
+      "s_malloc",
+      "s_realloc",
+      "s_free"
+    ],
+    "individualNotice": "BSD3 whole30lines"
+  },
+  "sourcePublicComments": [
+    {
+      "symbol": "sdsnewlen",
+      "sourceRanges": [
+        [
+          68,
+          79
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsnew",
+      "sourceRanges": [
+        [
+          142,
+          142
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsempty",
+      "sourceRanges": [
+        [
+          136,
+          137
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsdup",
+      "sourceRanges": [
+        [
+          148,
+          148
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsfree",
+      "sourceRanges": [
+        [
+          153,
+          153
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsgrowzero",
+      "sourceRanges": [
+        [
+          352,
+          356
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscatlen",
+      "sourceRanges": [
+        [
+          370,
+          374
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscat",
+      "sourceRanges": [
+        [
+          386,
+          389
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscatsds",
+      "sourceRanges": [
+        [
+          394,
+          397
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscpylen",
+      "sourceRanges": [
+        [
+          402,
+          403
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscpy",
+      "sourceRanges": [
+        [
+          415,
+          416
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscatvprintf",
+      "sourceRanges": [
+        [
+          499,
+          499
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscatprintf",
+      "sourceRanges": [
+        [
+          537,
+          552
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscatfmt",
+      "sourceRanges": [
+        [
+          562,
+          577
+        ]
+      ]
+    },
+    {
+      "symbol": "sdstrim",
+      "sourceRanges": [
+        [
+          668,
+          681
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsrange",
+      "sourceRanges": [
+        [
+          697,
+          712
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsupdatelen",
+      "sourceRanges": [
+        [
+          159,
+          172
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsclear",
+      "sourceRanges": [
+        [
+          178,
+          181
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscmp",
+      "sourceRanges": [
+        [
+          755,
+          765
+        ]
+      ]
+    },
+    {
+      "symbol": "sdssplitlen",
+      "sourceRanges": [
+        [
+          778,
+          793
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsfreesplitres",
+      "sourceRanges": [
+        [
+          843,
+          843
+        ]
+      ]
+    },
+    {
+      "symbol": "sdstolower",
+      "sourceRanges": [
+        [
+          741,
+          741
+        ]
+      ]
+    },
+    {
+      "symbol": "sdstoupper",
+      "sourceRanges": [
+        [
+          748,
+          748
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsfromlonglong",
+      "sourceRanges": [
+        [
+          488,
+          491
+        ]
+      ]
+    },
+    {
+      "symbol": "sdscatrepr",
+      "sourceRanges": [
+        [
+          851,
+          856
+        ]
+      ]
+    },
+    {
+      "symbol": "sdssplitargs",
+      "sourceRanges": [
+        [
+          913,
+          931
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsmapchars",
+      "sourceRanges": [
+        [
+          1042,
+          1050
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsjoin",
+      "sourceRanges": [
+        [
+          1065,
+          1066
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsjoinsds",
+      "sourceRanges": [
+        [
+          1078,
+          1078
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsMakeRoomFor",
+      "sourceRanges": [
+        [
+          187,
+          192
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsIncrLen",
+      "sourceRanges": [
+        [
+          288,
+          310
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsRemoveFreeSpace",
+      "sourceRanges": [
+        [
+          238,
+          243
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsAllocSize",
+      "sourceRanges": [
+        [
+          270,
+          276
+        ]
+      ]
+    },
+    {
+      "symbol": "sdsAllocPtr",
+      "sourceRanges": [
+        [
+          282,
+          283
+        ]
+      ]
+    }
+  ],
+  "licensing": "guide→README explicitBSD2/LICENSE; eachsourceexcerpt/header→individualBSD3 originalnotice, nofallbackoverrides",
+  "notSelected": true,
+  "extension": "初期30分後、正式tagguide/固定header不一致とnestedcode変換欠落、個別BSD3条件が判明。SDSに有用な独立guide/APIコメントがあり、原典を切り落とさず試験を完成する見込みがあるため詳細調査を延長。範囲分類をここで確定し、次は注釈/visual/JP比較/工数/採点を進める。"
+}

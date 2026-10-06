@@ -1,0 +1,84 @@
+{
+  "checkedAt": "2026-10-03T00:38:38.276Z",
+  "scope": "SDS2.0.0公式利用ガイドREADME全892行、公式公開APIコメント34と全publicheader264行（41関数/型5/全macro12）、allocator設定header41行の原典付録、適用原通知全文。実装から新たな説明を生成しない。",
+  "scores": {
+    "additionalValue": {
+      "value": 3,
+      "reason": "公式固定入力に訳案内なし、一般検索と実読した日本語利用記事では対象2.0.0ガイド/API一式が調査範囲では未発見。実読記事の用途・範囲差による具体的な価値はあるが、LabHub本文未読/検索非網羅の限界を残し強い最高加点はしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_JAPANESE_SCOPE_COMPARISON.json",
+          "sha256": "d7bdf51765126460c88e5d9d1af433243040ec25389d9ae2662879c6117262eb"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "公式ガイドにbinary-safe可変文字列/プロトコル送信buffer/CLI tokenization/直接readによるzero-copyの具体用途がある。C99組込で既存C系文書読者と関連。人気数や実利用人数の推測で加点しない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-312/sds-2.0.0/README.md",
+          "sha256": "6671e7ad7a52f747c138a59183491d3737bd19d14ad9671979ceb737ee0814b6"
+        }
+      ]
+    },
+    "quality": {
+      "value": 2,
+      "reason": "全体の構成と基本操作の説明はまとまるが、主要sdsjoin引数・sdstrim戻り値、2.0の内部構造がheaderと不一致、sdssplitlen元commentにも空入力説明不一致、複数C例に静的不備。原文品質を注釈で高評価へ置換しない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_SELF_CONTAINED_ASSESSMENT.json",
+          "sha256": "0f2e137be3147e0027dc8cabdc90796d893055b0b6d83fb6505ddcef0ba5fdbb"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-324/SDS_SOURCE_NOTES_DRAFT.md",
+          "sha256": "7d8555a3594dc69f76eea4e433614a7c932a9e70af327fe586626fe7cdcceae7"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 3,
+      "reason": "2.0.0公式tagと固定全9file/全SHAがありChangelogはv1/v2差とallocator変更を記す。固定差分で追跡可能。一方正式tagは古くmasterと区別が必要で、全コメントとheader/ガイド不整合の注釈も維持する負担があるため高加点しない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-312/sds-2.0.0/FETCH.json",
+          "sha256": "6441445c17cb67a676b8a3891323d834903cdb4a99c3a8ef529c00223983e954"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-312/sds-2.0.0/TAGS.json",
+          "sha256": "749e659eba8d99b1e41413640da35b74b9f767865f458d47791b8381f55132e7"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-312/sds-2.0.0/Changelog",
+          "sha256": "9c4d5eb10e7890c2197bb35d47668bb9ac7cb7c217f83a63564a8bf5cd7effb9"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 4,
+      "reason": "既存Markdown3.7/fencedcode方式を再利用し全56code/全header/全commentの試験成立、画像なし。3nested書式変換と公式コメント抽出が固有で、追加の再利用可能性を未検証のまま5点にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-325/SDS_CONVERSION_TRIAL_CHECK.json",
+          "sha256": "9949ebf0b74a1b81077bb6e4a9fe11473ec04ed2e88b207c580fa050abaf9528"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-325/TRIAL_CHECKER.py",
+          "sha256": "d5d0fa1f575ab6dd68f18b11a896ea366e8a0b9d0ea3df1d2b239feb7a98b10b"
+        }
+      ]
+    }
+  },
+  "weights": {
+    "additionalValue": 30,
+    "practicality": 25,
+    "quality": 20,
+    "maintenance": 15,
+    "reuse": 10
+  },
+  "total": 63,
+  "minimum": 70,
+  "decision": "rejected-below-threshold",
+  "reason": "用途と原典一式の価値はあるが、原文品質の具体的不整合と保守負担を考慮すると63点。公開数を増やすための得点調整を行わず、この固定版範囲の通常採用を見送る。",
+  "reopen": "新しい正式版/公式修正文書など、内部構造・API・例の不整合を減らす新たな原典証拠、または対象範囲の不足を具体的に示す日本語需要が得られた場合に再評価。同じ調査の反復だけでは再開しない。"
+}
