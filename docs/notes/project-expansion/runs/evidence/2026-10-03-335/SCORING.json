@@ -1,0 +1,86 @@
+{
+  "status": "scored",
+  "scores": {
+    "additionalValue": {
+      "value": 4,
+      "reason": "本文確認した矢田1.2.6/奥村1.1–1.2入門とは版と範囲が異なり、1.3.2の_z/deflateUsed/G/非blockingと全API・FAQ44を同版で読める追加価値。日本語不存在は断定せず満点にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/JAPANESE_SCOPE_COMPARISON.json",
+          "sha256": "60e8e546069bdee0cb1dd90a663d49d7b2f77bfacfdcaed7edac04de03f0c329"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "固定公式資料にはCのstream圧縮・展開、gzip file/非blocking、checksum、buffer上限の具体的利用と返り値・寿命条件がある。汎用の実用用途を根拠とし、利用者数/人気の推測はしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_SOURCE_CONTENT_ASSESSMENT.json",
+          "sha256": "b9fe812e44c1d0ac4c5684e78b76f0863c5fa856e4be46da1f7c147525813827"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/README",
+          "sha256": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f"
+        }
+      ]
+    },
+    "quality": {
+      "value": 3,
+      "reason": "固定版の公式全API原説明とFAQが自立。原文誤記・header説明併存・内部最適化参照・未文書化宣言があるため3点。原典保持と別注釈を必須にする。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_SOURCE_CONTENT_ASSESSMENT.json",
+          "sha256": "b9fe812e44c1d0ac4c5684e78b76f0863c5fa856e4be46da1f7c147525813827"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/ZLIB_RIGHTS_DECISION.json",
+          "sha256": "e22d76b7357b824a50d9a38b711ddd1abf127b7414117eab4df6f111c23bf239"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 4,
+      "reason": "6固定原典をhash/区間で管理でき、初回21–42h・小patch3–8hの計画見積もりと再測定条件がある。条件macroと大型header差分の負荷を残し満点にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/WORKLOAD_REVIEW.json",
+          "sha256": "1bc97fc5e30cff2d61848c8aa8b5b966e5bdad3e2626037306bc71a4b1f3b47e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/v3/WORKLOAD_ESTIMATE.json",
+          "sha256": "2c07e9050795d225066d37cb6f8d5cf6c89056124c89865db0f41d6b3e4928e7"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 3,
+      "reason": "原文全319blockと108anchorを再生成し実Astro・実DOMで保持検証済み。header/表/man変換は再利用可能だが正式template専用plugin化・分割・外部link検証は後工程。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/CONVERSION_REVIEW.json",
+          "sha256": "a8288aaadd9ba5b4ad07949864ad33d205d9e09da5199cf0faf45e65b8a73401"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/ASTRO_BLOCK_CHECK_V2.json",
+          "sha256": "984cf51103f28f2a0ea6c6273f95a58e13463fdf663378face7c7f4b741022a3"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/LINK_CHECK.json",
+          "sha256": "a571b7fc3ee2d23793747232cc1ea19f8ab36a27ef5a130230bb931054ef5082"
+        }
+      ]
+    }
+  },
+  "weights": {
+    "additionalValue": 30,
+    "practicality": 25,
+    "quality": 20,
+    "maintenance": 15,
+    "reuse": 10
+  },
+  "total": 74,
+  "minimum": 70,
+  "scope": "zlib1.3.2公式公開APIマニュアルzlib.h全文（宣言/全原コメント/型/定数/条件macro含む）、必須zconf.h原典付録、同版README・FAQ全44問・zlib.3概要man頁・原LICENSE全文。実装から不足文書を生成しない。",
+  "limitations": "候補選定の採点。正式app/日本語訳/全文レビュー/公開検証の合格ではない。日本語資料不存在を前提にしない。"
+}

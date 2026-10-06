@@ -1,0 +1,275 @@
+{
+  "id": "zlib",
+  "officialUrl": "https://www.zlib.net/",
+  "repository": null,
+  "version": "1.3.2",
+  "scope": "zlib1.3.2公式公開APIマニュアルzlib.h全文（宣言/全原コメント/型/定数/条件macro含む）、必須zconf.h原典付録、同版README・FAQ全44問・zlib.3概要man頁・原LICENSE全文。実装から不足文書を生成しない。",
+  "field": "compression",
+  "discovery": [
+    {
+      "route": "package-registry",
+      "reference": "https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/zlib/vcpkg.json",
+      "date": "2026-10-02T03:17:08.565Z"
+    },
+    {
+      "route": "awesome",
+      "reference": "https://github.com/fffaraz/awesome-cpp",
+      "date": "2026-10-02T03:17:08.565Z"
+    }
+  ],
+  "state": "qualifying",
+  "conditions": {
+    "rights": {
+      "status": "pass",
+      "reason": "327:原LICENSE/README/zlib.h/zconf/manの明示zlib条件と全原通知を保持する履行設計。専用表記未発見のFAQは承認された本体license注釈適用。明示CC BY-ND4.0の別冊使用例how.htmlは翻訳対象外、code側publicdomainと混同せず、contrib各条件も上書きしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/ZLIB_RIGHTS_DECISION.json",
+          "sha256": "e22d76b7357b824a50d9a38b711ddd1abf127b7414117eab4df6f111c23bf239"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/LICENSE",
+          "sha256": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/examples/zlib_how.html",
+          "sha256": "48e287c4eca635c937c01baf923bf275086c83922876c22aad1b04e04605017f"
+        }
+      ]
+    },
+    "boundary": {
+      "status": "pass",
+      "reason": "327:公式README/FAQ/manが全API文書としてzlib.hを指定。全254入力を6採録/8参照/個別除外と根拠へ分類。全API原comment/宣言/型/定数/条件macroと必須zconf、全README/FAQ44/man/通知を保持する独立APIマニュアルの境界。別冊NDguideを本体licenseで上書きしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/ZLIB_SOURCE_BOUNDARY.json",
+          "sha256": "7657c2822978b4d4dfb63dc8a5222def8f9cc305fb5d01ff80a0468455637ae1"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/README",
+          "sha256": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/FAQ",
+          "sha256": "8f64fd44e4773233f22a07c9d7a8cd83646d78c1e7c9bb79c43a9876e6ddb0d5"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/INDEX",
+          "sha256": "ecbca9833dc89a4d725eff611e7f4e6a97f70451dda8e1f8c571418ec27c71e7"
+        }
+      ]
+    },
+    "fixedInput": {
+      "status": "pass",
+      "reason": "327:公式zlib.netの正式1.3.2 tar.gzは掲示SHA256 bb329a0a…119d16と一致。全254regularfilesのSHA保存/再照合、path traversal/links/special/重複なし、header/README/manの版1.3.2確認。外部Web manual1.3.1は別入力で誤ラベルしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/FETCH.json",
+          "sha256": "ca8ecc4bc3776217120dc014a5b028c7a4518cf95c0365e115b1fd23e81a12af"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/HOME.html",
+          "sha256": "a2654af9cc15e4943a11c8aa27ce378f7293230d2953f18609fca7485b9423a5"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/zlib.h",
+          "sha256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a"
+        }
+      ]
+    },
+    "selfContained": {
+      "status": "pass",
+      "reason": "328:公式zlib.h全2057行と必須zconf全551行の内容確認を完了。主要なストリーム/utility/gzip/checksumと条件/寿命/返り値説明が同版原資料に自立。内部最適化の元実装参照と未文書化宣言は原文表示を保持し新規説明を生成しない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_SOURCE_CONTENT_ASSESSMENT.json",
+          "sha256": "b9fe812e44c1d0ac4c5684e78b76f0863c5fa856e4be46da1f7c147525813827"
+        }
+      ]
+    },
+    "conversion": {
+      "status": "pass",
+      "reason": "334:root6全量319blockを原文保持で実Astro/全nativeDOM照合。108anchor/450内部link重複0、署名/code/7表22行/FAQ44とmanURLを構造化。desktop/mobilefragmentで見出し表示・幅、manAPIのEnter移動を確認。正式app/英日全文review/外部到達性は後工程で再検証。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_TRIAL_REVIEW.json",
+          "sha256": "5cfaba93a5743a4e9b6a030973d7b376e7a98aa0df0b7d26fd0bd667ab2fefe0"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/v3/ZLIB_HEADER_TRIAL_MACHINE_CHECK.json",
+          "sha256": "875f6aff0542ea5d08487b02b77fdcf0529c2fd6f4e7ac78b2c802b2a1624f95"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-330/TRIAL_REVIEW.json",
+          "sha256": "8d935b7ba019aff17cc4333e2888501562e19953f9b5b718db45588978e937c6"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-330/ASTRO_BLOCK_CHECK_V3.json",
+          "sha256": "c1f43f414afc0b6abd8b92582970eb4016fe69b3b8ff26cb2b713a4c80f776a8"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-331/TRIAL_REVIEW.json",
+          "sha256": "842eb784d4b321b0a7eba4beac4e362c9ba80f64b55a6ca0fd7991584af8e7db"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-331/v3/LINK_CHECK.json",
+          "sha256": "1a0c58bc0932f9ac49daa96af5dfaacd14e5755685f64643c9557e06bd52d46f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/CONVERSION_REVIEW.json",
+          "sha256": "a8288aaadd9ba5b4ad07949864ad33d205d9e09da5199cf0faf45e65b8a73401"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/ASTRO_BLOCK_CHECK_V2.json",
+          "sha256": "984cf51103f28f2a0ea6c6273f95a58e13463fdf663378face7c7f4b741022a3"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/LINK_CHECK.json",
+          "sha256": "a571b7fc3ee2d23793747232cc1ea19f8ab36a27ef5a130230bb931054ef5082"
+        }
+      ]
+    },
+    "workload": {
+      "status": "pass",
+      "reason": "332:固定root6全21680code込みtoken、翻訳規模18273tokenを実測。96export/107条件枝宣言を主要73・補助6・largefile7・未文書化10へ分類、5macro/9主header型/字句macro在庫。初回21-42h・小patch3-8h計画見積もりと再測定条件/保守手順を保存。未確認の変換/採点/全文レビューは別gateを維持。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/ZLIB_SCOPE_MEASUREMENTS_PARTIAL.json",
+          "sha256": "0310e9fd71e6b6c4176d706f3b0cf5d627ea9a7073865f7131f9ad89590bc1c7"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_TRIAL_REVIEW.json",
+          "sha256": "5cfaba93a5743a4e9b6a030973d7b376e7a98aa0df0b7d26fd0bd667ab2fefe0"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-330/API_DECLARATION_INVENTORY_V3.json",
+          "sha256": "9117e8d29074239065678ae614728368312f881ad4ac8b77eb0ff204ccf77671"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-330/TRIAL_REVIEW.json",
+          "sha256": "8d935b7ba019aff17cc4333e2888501562e19953f9b5b718db45588978e937c6"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-331/TRIAL_REVIEW.json",
+          "sha256": "842eb784d4b321b0a7eba4beac4e362c9ba80f64b55a6ca0fd7991584af8e7db"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/WORKLOAD_REVIEW.json",
+          "sha256": "1bc97fc5e30cff2d61848c8aa8b5b966e5bdad3e2626037306bc71a4b1f3b47e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/v3/WORKLOAD_ESTIMATE.json",
+          "sha256": "2c07e9050795d225066d37cb6f8d5cf6c89056124c89865db0f41d6b3e4928e7"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/v3/API_CLASSIFICATION.json",
+          "sha256": "83132feea4a7146c15ceb43dc48d48a32b57ed1ea285b1307bb20aaa529d076b"
+        }
+      ]
+    }
+  },
+  "japaneseResearch": {
+    "status": "partial",
+    "queries": [
+      "zlib 1.3.2 マニュアル 日本語 翻訳",
+      "zlib マニュアル 日本語 奥村",
+      "zlib 1.3.2 日本語 マニュアル 翻訳 zlib.h",
+      "zlib 日本語 翻訳 公式 マニュアル"
+    ],
+    "checkedAt": "2026-10-03T01:50:40.870Z",
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_JAPANESE_OBSERVATION_PARTIAL.json",
+        "sha256": "2ce7e694457bf26a6b6a4a1f825ff6983c57eb2cb3aaadcf5f5775eacec82302"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/ZLIB_JAPANESE_OBSERVATION_CONTINUED.json",
+        "sha256": "78d362ce4f97877f3ec52e5c1c85f852db41f23fbbbce92ada2a078f01b572a5"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/JAPANESE_SCOPE_COMPARISON.json",
+        "sha256": "60e8e546069bdee0cb1dd90a663d49d7b2f77bfacfdcaed7edac04de03f0c329"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/JAPANESE_REPOSITORY_OBSERVATION.json",
+        "sha256": "148e4683b9b08ea919caa3b1e41bbfdae00ba85b51721cbeed6021fa4f5318b3"
+      }
+    ]
+  },
+  "scores": {
+    "additionalValue": {
+      "value": 4,
+      "reason": "本文確認した矢田1.2.6/奥村1.1–1.2入門とは版と範囲が異なり、1.3.2の_z/deflateUsed/G/非blockingと全API・FAQ44を同版で読める追加価値。日本語不存在は断定せず満点にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/JAPANESE_SCOPE_COMPARISON.json",
+          "sha256": "60e8e546069bdee0cb1dd90a663d49d7b2f77bfacfdcaed7edac04de03f0c329"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "固定公式資料にはCのstream圧縮・展開、gzip file/非blocking、checksum、buffer上限の具体的利用と返り値・寿命条件がある。汎用の実用用途を根拠とし、利用者数/人気の推測はしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_SOURCE_CONTENT_ASSESSMENT.json",
+          "sha256": "b9fe812e44c1d0ac4c5684e78b76f0863c5fa856e4be46da1f7c147525813827"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/source/zlib-1.3.2/README",
+          "sha256": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f"
+        }
+      ]
+    },
+    "quality": {
+      "value": 3,
+      "reason": "固定版の公式全API原説明とFAQが自立。原文誤記・header説明併存・内部最適化参照・未文書化宣言があるため3点。原典保持と別注釈を必須にする。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-328/ZLIB_SOURCE_CONTENT_ASSESSMENT.json",
+          "sha256": "b9fe812e44c1d0ac4c5684e78b76f0863c5fa856e4be46da1f7c147525813827"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-327/ZLIB_RIGHTS_DECISION.json",
+          "sha256": "e22d76b7357b824a50d9a38b711ddd1abf127b7414117eab4df6f111c23bf239"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 4,
+      "reason": "6固定原典をhash/区間で管理でき、初回21–42h・小patch3–8hの計画見積もりと再測定条件がある。条件macroと大型header差分の負荷を残し満点にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/WORKLOAD_REVIEW.json",
+          "sha256": "1bc97fc5e30cff2d61848c8aa8b5b966e5bdad3e2626037306bc71a4b1f3b47e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/v3/WORKLOAD_ESTIMATE.json",
+          "sha256": "2c07e9050795d225066d37cb6f8d5cf6c89056124c89865db0f41d6b3e4928e7"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 3,
+      "reason": "原文全319blockと108anchorを再生成し実Astro・実DOMで保持検証済み。header/表/man変換は再利用可能だが正式template専用plugin化・分割・外部link検証は後工程。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/CONVERSION_REVIEW.json",
+          "sha256": "a8288aaadd9ba5b4ad07949864ad33d205d9e09da5199cf0faf45e65b8a73401"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/ASTRO_BLOCK_CHECK_V2.json",
+          "sha256": "984cf51103f28f2a0ea6c6273f95a58e13463fdf663378face7c7f4b741022a3"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/LINK_CHECK.json",
+          "sha256": "a571b7fc3ee2d23793747232cc1ea19f8ab36a27ef5a130230bb931054ef5082"
+        }
+      ]
+    }
+  },
+  "decision": "334:必須6条件を満たす変換試験を完了。日本語採点/別選定未了でqualifyingを維持、採用0件。",
+  "resumeCondition": "zlib334:root6全319block/108anchor/450内部link、manURL/本文内部参照、desktop/mobilefragment見出し・表、manmobileとEnter移動を実検証しcandidate conversion pass。全6必須条件はpassだがJP追加価値等の採点/別選定reviewは未了。次は公式repoの翻訳dir限定確認、333日本語旧版入門/未取得区分と1.3.2機能差を採点へ反映。根拠再照合の別reviewで70点以上/追加価値・実用性3以上を確認してselected/正式zlib appを正規templateから孤立場所へ作成。",
+  "nextCheckAt": null,
+  "selectionReview": null
+}
