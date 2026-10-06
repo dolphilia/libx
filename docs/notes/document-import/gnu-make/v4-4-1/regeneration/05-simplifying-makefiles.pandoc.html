@@ -1,0 +1,117 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Variables-Simplify">
+<span id="Variables-Make-Makefiles-Simpler"></span><h3 class="section"><span>2.4 Variables Make Makefiles Simpler</span></h3>
+<a class="index-entry-id" id="index-variables"></a>
+<a class="index-entry-id" id="index-simplifying-with-variables"></a>
+<p>In our example, we had to list all the object files twice in the rule for
+<samp class="file">edit</samp> (repeated here):
+</p>
+<div class="example">
+<div class="group"><pre>edit : main.o kbd.o command.o display.o \
+              insert.o search.o files.o utils.o
+        cc -o edit main.o kbd.o command.o display.o \
+                   insert.o search.o files.o utils.o
+</pre></div></div>
+<a class="index-entry-id" id="index-objects"></a>
+<p>Such duplication is error-prone; if a new object file is added to the
+system, we might add it to one list and forget the other.  We can eliminate
+the risk and simplify the makefile by using a variable.  <em class="dfn">Variables</em>
+allow a text string to be defined once and substituted in multiple places
+later (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Using-Variables">How to Use Variables</a>).
+</p>
+<a class="index-entry-id" id="index-OBJECTS"></a>
+<a class="index-entry-id" id="index-objs"></a>
+<a class="index-entry-id" id="index-OBJS"></a>
+<a class="index-entry-id" id="index-obj"></a>
+<a class="index-entry-id" id="index-OBJ"></a>
+<p>It is standard practice for every makefile to have a variable named
+<code class="code">objects</code>, <code class="code">OBJECTS</code>, <code class="code">objs</code>, <code class="code">OBJS</code>, <code class="code">obj</code>,
+or <code class="code">OBJ</code> which is a list of all object file names.  We would
+define such a variable <code class="code">objects</code> with a line like this in the
+makefile:
+</p>
+<div class="example">
+<div class="group"><pre>objects = main.o kbd.o command.o display.o \
+          insert.o search.o files.o utils.o
+</pre></div></div>
+<p>Then, each place we want to put a list of the object file names, we can
+substitute the variable’s value by writing ‘<samp class="samp">$(objects)</samp>’
+(see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Using-Variables">How to Use Variables</a>).
+</p>
+<p>Here is how the complete simple makefile looks when you use a variable
+for the object files:
+</p>
+<div class="example">
+<div class="group"><pre>objects = main.o kbd.o command.o display.o \
+          insert.o search.o files.o utils.o
+
+edit : $(objects)
+        cc -o edit $(objects)
+main.o : main.c defs.h
+        cc -c main.c
+kbd.o : kbd.c defs.h command.h
+        cc -c kbd.c
+command.o : command.c defs.h command.h
+        cc -c command.c
+display.o : display.c defs.h buffer.h
+        cc -c display.c
+insert.o : insert.c defs.h buffer.h
+        cc -c insert.c
+search.o : search.c defs.h buffer.h
+        cc -c search.c
+files.o : files.c defs.h buffer.h command.h
+        cc -c files.c
+utils.o : utils.c defs.h
+        cc -c utils.c
+clean :
+        rm edit $(objects)
+</pre></div></div>
+<hr/>
+</div><div class="section-level-extent" id="make-Deduces">
+<span id="Letting-make-Deduce-the-Recipes"></span><h3 class="section"><span>2.5 Letting <code class="code">make</code> Deduce the Recipes</span></h3>
+<a class="index-entry-id" id="index-deducing-recipes-_0028implicit-rules_0029"></a>
+<a class="index-entry-id" id="index-implicit-rule_002c-introduction-to"></a>
+<a class="index-entry-id" id="index-rule_002c-implicit_002c-introduction-to"></a>
+<p>It is not necessary to spell out the recipes for compiling the individual
+C source files, because <code class="code">make</code> can figure them out: it has an
+<em class="dfn">implicit rule</em> for updating a ‘<samp class="samp">.o</samp>’ file from a correspondingly
+named ‘<samp class="samp">.c</samp>’ file using a ‘<samp class="samp">cc -c</samp>’ command.  For example, it will
+use the recipe ‘<samp class="samp">cc -c main.c -o main.o</samp>’ to compile <samp class="file">main.c</samp> into
+<samp class="file">main.o</samp>.  We can therefore omit the recipes from the rules for the
+object files.  See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules">Using Implicit Rules</a>.
+</p>
+<p>When a ‘<samp class="samp">.c</samp>’ file is used automatically in this way, it is also
+automatically added to the list of prerequisites.  We can therefore omit
+the ‘<samp class="samp">.c</samp>’ files from the prerequisites, provided we omit the recipe.
+</p>
+<p>Here is the entire example, with both of these changes, and a variable
+<code class="code">objects</code> as suggested above:
+</p>
+<div class="example">
+<div class="group"><pre>objects = main.o kbd.o command.o display.o \
+          insert.o search.o files.o utils.o
+
+edit : $(objects)
+        cc -o edit $(objects)
+
+main.o : defs.h
+kbd.o : defs.h command.h
+command.o : defs.h command.h
+display.o : defs.h buffer.h
+insert.o : defs.h buffer.h
+search.o : defs.h buffer.h
+files.o : defs.h buffer.h command.h
+utils.o : defs.h
+
+.PHONY : clean
+clean :
+        rm edit $(objects)
+</pre></div></div>
+<p>This is how we would write the makefile in actual practice.  (The
+complications associated with ‘<samp class="samp">clean</samp>’ are described elsewhere.
+See <a class="ref" href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets">Phony Targets</a>, and <a class="ref" href="/docs/gnu-make/source/v4-4-1/manual.html#Errors">Errors in Recipes</a>.)
+</p>
+<p>Because implicit rules are so convenient, they are important.  You
+will see them used frequently.
+</p>
+<hr/>
+</div></div>

@@ -1,0 +1,79 @@
+<div class="gnu-original-content">
+
+<div id="Include" class="section-level-extent">
+
+<span id="Including-Other-Makefiles"></span>
+
+### 3.3 Including Other Makefiles
+
+<span id="index-including-other-makefiles" class="index-entry-id"></span> <span id="index-makefile_002c-including" class="index-entry-id"></span> <span id="index-include" class="index-entry-id"></span>
+
+The `include` directive tells `make` to suspend reading the current makefile and read one or more other makefiles before continuing. The directive is a line in the makefile that looks like this:
+
+<div class="example">
+
+[LIBX_CODE_1]
+
+</div>
+
+`filenames` can contain shell file name patterns. If `filenames` is empty, nothing is included and no error is printed. <span id="index-shell-file-name-pattern-_0028in-include_0029" class="index-entry-id"></span> <span id="index-shell-wildcards-_0028in-include_0029" class="index-entry-id"></span> <span id="index-wildcard_002c-in-include" class="index-entry-id"></span>
+
+Extra spaces are allowed and ignored at the beginning of the line, but the first character must not be a tab (or the value of `.RECIPEPREFIX`)—if the line begins with a tab, it will be considered a recipe line. Whitespace is required between `include` and the file names, and between file names; extra whitespace is ignored there and at the end of the directive. A comment starting with ‘`#`’ is allowed at the end of the line. If the file names contain any variable or function references, they are expanded. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Using-Variables" class="xref">How to Use Variables</a>.
+
+For example, if you have three `.mk` files, `a.mk`, `b.mk`, and `c.mk`, and `$(bar)` expands to `bish bash`, then the following expression
+
+<div class="example">
+
+[LIBX_CODE_2]
+
+</div>
+
+is equivalent to
+
+<div class="example">
+
+[LIBX_CODE_3]
+
+</div>
+
+When `make` processes an `include` directive, it suspends reading of the containing makefile and reads from each listed file in turn. When that is finished, `make` resumes reading the makefile in which the directive appears.
+
+One occasion for using `include` directives is when several programs, handled by individual makefiles in various directories, need to use a common set of variable definitions (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Setting" class="pxref">Setting Variables</a>) or pattern rules (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Pattern-Rules" class="pxref">Defining and Redefining Pattern Rules</a>).
+
+Another such occasion is when you want to generate prerequisites from source files automatically; the prerequisites can be put in a file that is included by the main makefile. This practice is generally cleaner than that of somehow appending the prerequisites to the end of the main makefile as has been traditionally done with other versions of `make`. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Automatic-Prerequisites" class="xref">Generating Prerequisites Automatically</a>. <span id="index-prerequisites_002c-automatic-generation" class="index-entry-id"></span> <span id="index-automatic-generation-of-prerequisites" class="index-entry-id"></span> <span id="index-generating-prerequisites-automatically" class="index-entry-id"></span>
+
+<span id="index-_002dI" class="index-entry-id"></span> <span id="index-_002d_002dinclude_002ddir" class="index-entry-id"></span> <span id="index-included-makefiles_002c-default-directories" class="index-entry-id"></span> <span id="index-default-directories-for-included-makefiles" class="index-entry-id"></span> <span id="index-_002fusr_002fgnu_002finclude" class="index-entry-id"></span> <span id="index-_002fusr_002flocal_002finclude" class="index-entry-id"></span> <span id="index-_002fusr_002finclude" class="index-entry-id"></span>
+
+If the specified name does not start with a slash (or a drive letter and colon when GNU Make is compiled with MS-DOS / MS-Windows path support), and the file is not found in the current directory, several other directories are searched. First, any directories you have specified with the ‘`-I`’ or ‘`--include-dir`’ options are searched (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Options-Summary" class="pxref">Summary of Options</a>). Then the following directories (if they exist) are searched, in this order: `prefix/include` (normally `/usr/local/include` <a href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#FOOT1" id="DOCF1" class="footnote"><sup>1</sup></a>) `/usr/gnu/include`, `/usr/local/include`, `/usr/include`.
+
+The `.INCLUDE_DIRS` variable will contain the current list of directories that make will search for included files. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables" class="xref">Other Special Variables</a>.
+
+You can avoid searching in these default directories by adding the command line option `-I` with the special value `-` (e.g., `-I-`) to the command line. This will cause `make` to forget any already-set include directories, including the default directories.
+
+If an included makefile cannot be found in any of these directories it is not an immediately fatal error; processing of the makefile containing the `include` continues. Once it has finished reading makefiles, `make` will try to remake any that are out of date or don’t exist. See <a href="/docs/gnu-make/v4-4-1/en/01-guide/11-remaking-makefiles/#Remaking-Makefiles" class="xref">How Makefiles Are Remade</a>. Only after it has failed to find a rule to remake the makefile, or it found a rule but the recipe failed, will `make` diagnose the missing makefile as a fatal error.
+
+If you want `make` to simply ignore a makefile which does not exist or cannot be remade, with no error message, use the `-include` directive instead of `include`, like this:
+
+<div class="example">
+
+[LIBX_CODE_4]
+
+</div>
+
+This acts like `include` in every way except that there is no error (not even a warning) if any of the `filenames` (or any prerequisites of any of the `filenames`) do not exist or cannot be remade.
+
+For compatibility with some other `make` implementations, `sinclude` is another name for `-include`.
+
+------------------------------------------------------------------------
+
+</div>
+
+<div class="gnu-source-footnote">
+
+##### <a href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#DOCF1" id="FOOT1">(1)</a>
+
+GNU Make compiled for MS-DOS and MS-Windows behaves as if `prefix` has been defined to be the root of the DJGPP tree hierarchy.
+
+</div>
+
+</div>

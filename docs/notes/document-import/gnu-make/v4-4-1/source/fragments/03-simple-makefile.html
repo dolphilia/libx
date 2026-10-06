@@ -1,0 +1,99 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Simple-Makefile">
+<span id="A-Simple-Makefile"></span><h3 class="section"><span>2.2 A Simple Makefile</span></h3>
+<a class="index-entry-id" id="index-simple-makefile"></a>
+<a class="index-entry-id" id="index-makefile_002c-simple"></a>
+<p>Here is a straightforward makefile that describes the way an
+executable file called <code class="code">edit</code> depends on eight object files
+which, in turn, depend on eight C source and three header files.
+</p>
+<p>In this example, all the C files include <samp class="file">defs.h</samp>, but only those
+defining editing commands include <samp class="file">command.h</samp>, and only low
+level files that change the editor buffer include <samp class="file">buffer.h</samp>.
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">edit : main.o kbd.o command.o display.o \
+       insert.o search.o files.o utils.o
+        cc -o edit main.o kbd.o command.o display.o \
+                   insert.o search.o files.o utils.o
+
+main.o : main.c defs.h
+        cc -c main.c
+kbd.o : kbd.c defs.h command.h
+        cc -c kbd.c
+command.o : command.c defs.h command.h
+        cc -c command.c
+display.o : display.c defs.h buffer.h
+        cc -c display.c
+insert.o : insert.c defs.h buffer.h
+        cc -c insert.c
+search.o : search.c defs.h buffer.h
+        cc -c search.c
+files.o : files.c defs.h buffer.h command.h
+        cc -c files.c
+utils.o : utils.c defs.h
+        cc -c utils.c
+clean :
+        rm edit main.o kbd.o command.o display.o \
+           insert.o search.o files.o utils.o
+</pre></div></div>
+<p>We split each long line into two lines using backslash/newline; this is
+like using one long line, but is easier to read.  See <a class="xref" href="/docs/gnu-make/v4-4-1/en/01-guide/07-makefile-contents/#Splitting-Lines">Splitting Long Lines</a>.
+<a class="index-entry-id" id="index-continuation-lines"></a>
+<a class="index-entry-id" id="index-_005c-_0028backslash_0029_002c-for-continuation-lines"></a>
+<a class="index-entry-id" id="index-backslash-_0028_005c_0029_002c-for-continuation-lines"></a>
+<a class="index-entry-id" id="index-quoting-newline_002c-in-makefile"></a>
+<a class="index-entry-id" id="index-newline_002c-quoting_002c-in-makefile"></a>
+</p>
+<p>To use this makefile to create the executable file called <samp class="file">edit</samp>,
+type:
+</p>
+<div class="example">
+<pre class="example-preformatted">make
+</pre></div>
+<p>To use this makefile to delete the executable file and all the object
+files from the directory, type:
+</p>
+<div class="example">
+<pre class="example-preformatted">make clean
+</pre></div>
+<p>In the example makefile, the targets include the executable file
+‘<samp class="samp">edit</samp>’, and the object files ‘<samp class="samp">main.o</samp>’ and ‘<samp class="samp">kbd.o</samp>’.  The
+prerequisites are files such as ‘<samp class="samp">main.c</samp>’ and ‘<samp class="samp">defs.h</samp>’.
+In fact, each ‘<samp class="samp">.o</samp>’ file is both a target and a prerequisite.
+Recipes include ‘<samp class="samp">cc -c main.c</samp>’<!-- /@w --> and ‘<samp class="samp">cc -c kbd.c</samp>’<!-- /@w -->.
+</p>
+<p>When a target is a file, it needs to be recompiled or relinked if any
+of its prerequisites change.  In addition, any prerequisites that are
+themselves automatically generated should be updated first.  In this
+example, <samp class="file">edit</samp> depends on each of the eight object files; the
+object file <samp class="file">main.o</samp> depends on the source file <samp class="file">main.c</samp> and
+on the header file <samp class="file">defs.h</samp>.
+</p>
+<p>A recipe may follow each line that contains a target and
+prerequisites.  These recipes say how to update the target file.  A
+tab character (or whatever character is specified by the
+<code class="code">.RECIPEPREFIX</code> variable; see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables">Other Special Variables</a>) must come at
+the beginning of every line in the recipe to distinguish recipes from
+other lines in the makefile.  (Bear in mind that <code class="code">make</code> does not
+know anything about how the recipes work.  It is up to you to supply
+recipes that will update the target file properly.  All <code class="code">make</code>
+does is execute the recipe you have specified when the target file
+needs to be updated.)
+<a class="index-entry-id" id="index-recipe"></a>
+</p>
+<p>The target ‘<samp class="samp">clean</samp>’ is not a file, but merely the name of an
+action.  Since you normally do not want to carry out the actions in
+this rule, ‘<samp class="samp">clean</samp>’ is not a prerequisite of any other rule.
+Consequently, <code class="code">make</code> never does anything with it unless you tell
+it specifically.  Note that this rule not only is not a prerequisite,
+it also does not have any prerequisites, so the only purpose of the
+rule is to run the specified recipe.  Targets that do not refer to
+files but are just actions are called <em class="dfn">phony targets</em>.
+See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets">Phony Targets</a>, for information about this kind of target.
+See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Errors">Errors in Recipes</a>, to see how to cause <code class="code">make</code>
+to ignore errors from <code class="code">rm</code> or any other command.
+<a class="index-entry-id" id="index-clean-target"></a>
+<a class="index-entry-id" id="index-rm-_0028shell-command_0029"></a>
+</p>
+<hr/>
+</div></div>

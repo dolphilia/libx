@@ -1,0 +1,818 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Libx GNU Make4.4.1 Makefiles prototype</title><style>body{max-width:78ch;margin:2rem auto;padding:0 1rem;font:18px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}pre{max-width:100%;overflow-x:auto;padding:1rem;background:#f4f4f4;font:15px/1.55 monospace;overflow-wrap:normal}pre.astro-code{background:#f4f4f4!important;color:#222!important}pre.astro-code span{color:inherit!important}header,footer{border:1px solid #ccc;padding:1rem}a{color:#176da1}h1,h2,h3{line-height:1.35}</style></head><body><header><h1>Libx GNU Make 4.4.1 Getting Started Guide — Chapters 1–3</h1><p>原著者 / Original authors: Richard M. Stallman, Roland McGrath, Paul D. Smith. 編集・翻訳者と発行者 / Modification author and publisher: Libx.</p><p>Copyright © 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
+1996, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2006, 2007,
+2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+2020, 2021, 2022, 2023 Free Software Foundation, Inc.
+</p><p>Copyright © 2026 Libx, for the editing and translation modifications.</p><blockquote class="quotation">
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being “A GNU Manual,”
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled “GNU Free Documentation
+License.”
+</p>
+<p>(a) The FSF’s Back-Cover Text is: “You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom.”
+</p></blockquote><p>This Libx edited guide is licensed under the GNU Free Documentation License, version 1.3 or later, with no Invariant Sections and with the original Front-Cover Text and Back-Cover Text reproduced above. It is an unofficial chapter 1–3 excerpt; all later chapters are available in the fixed original source and the official manual. No new Cover Texts or Invariant Sections have been added.</p><p>入れ子のコード内装飾は通常のコード表記にし、内容とコマンドを保持しています。見出しの自己参照記号は省略しています。元の装飾・Info・印刷表示などは固定原稿と原典を参照してください。これは変換・通知設計の試作で、日本語全文訳と意味レビューは未実施です。</p></header><main><div id="Makefiles" class="chapter-level-extent">
+<h2 id="3-writing-makefiles">3 Writing Makefiles</h2>
+<p><span id="index-makefile_002c-how-to-write" class="index-entry-id"></span></p>
+<p>The information that tells <code>make</code> how to recompile a system comes from reading a data base called the <em>makefile</em>.</p>
+<hr>
+<div id="Makefile-Contents" class="section-level-extent">
+<h3 id="31-what-makefiles-contain">3.1 What Makefiles Contain</h3>
+<p>Makefiles contain five kinds of things: <em>explicit rules</em>, <em>implicit rules</em>, <em>variable definitions</em>, <em>directives</em>, and <em>comments</em>. Rules, variables, and directives are described at length in later chapters.</p>
+<ul>
+<li>
+<p><span id="index-rule_002c-explicit_002c-definition-of" class="index-entry-id"></span> <span id="index-explicit-rule_002c-definition-of" class="index-entry-id"></span> An <em>explicit rule</em> says when and how to remake one or more files, called the rule’s <em>targets</em>. It lists the other files that the targets depend on, called the <em>prerequisites</em> of the target, and may also give a recipe to use to create or update the targets. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Rules" class="xref">Writing Rules</a>.</p>
+</li>
+<li>
+<p><span id="index-rule_002c-implicit_002c-definition-of" class="index-entry-id"></span> <span id="index-implicit-rule_002c-definition-of" class="index-entry-id"></span> An <em>implicit rule</em> says when and how to remake a class of files based on their names. It describes how a target may depend on a file with a name similar to the target and gives a recipe to create or update such a target. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules" class="xref">Using Implicit Rules</a>.</p>
+</li>
+<li>
+<p><span id="index-variable-definition" class="index-entry-id"></span> A <em>variable definition</em> is a line that specifies a text string value for a variable that can be substituted into the text later. The simple makefile example shows a variable definition for <code>objects</code> as a list of all object files (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Variables-Simplify" class="pxref">Variables Make Makefiles Simpler</a>).</p>
+</li>
+<li>
+<p><span id="index-directive" class="index-entry-id"></span> A <em>directive</em> is an instruction for <code>make</code> to do something special while reading the makefile. These include:</p>
+<ul>
+<li>Reading another makefile (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Include" class="pxref">Including Other Makefiles</a>).</li>
+<li>Deciding (based on the values of variables) whether to use or ignore a part of the makefile (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Conditionals" class="pxref">Conditional Parts of Makefiles</a>).</li>
+<li>Defining a variable from a verbatim string containing multiple lines (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Multi_002dLine" class="pxref">Defining Multi-Line Variables</a>).</li>
+</ul>
+</li>
+<li>
+<p><span id="index-comments_002c-in-makefile" class="index-entry-id"></span> <span id="index-_0023-_0028comments_0029_002c-in-makefile" class="index-entry-id"></span> ‘<code>#</code>’ in a line of a makefile starts a <em>comment</em>. It and the rest of the line are ignored, except that a trailing backslash not escaped by another backslash will continue the comment across multiple lines. A line containing just a comment (with perhaps spaces before it) is effectively blank, and is ignored. If you want a literal <code>#</code>, escape it with a backslash (e.g., <code>\#</code>). Comments may appear on any line in the makefile, although they are treated specially in certain situations.</p>
+<p>You cannot use comments within variable references or function calls: any instance of <code>#</code> will be treated literally (rather than as the start of a comment) inside a variable reference or function call.</p>
+<p>Comments within a recipe are passed to the shell, just as with any other recipe text. The shell decides how to interpret it: whether or not this is a comment is up to the shell.</p>
+<p>Within a <code>define</code> directive, comments are not ignored during the definition of the variable, but rather kept intact in the value of the variable. When the variable is expanded they will either be treated as <code>make</code> comments or as recipe text, depending on the context in which the variable is evaluated.</p>
+</li>
+</ul>
+<hr>
+<div id="Splitting-Lines" class="subsection-level-extent">
+<h4 id="311-splitting-long-lines">3.1.1 Splitting Long Lines</h4>
+<p><span id="index-splitting-long-lines" class="index-entry-id"></span> <span id="index-long-lines_002c-splitting" class="index-entry-id"></span> <span id="index-backslash-_0028_005c_0029_002c-to-quote-newlines" class="index-entry-id"></span></p>
+<p>Makefiles use a “line-based” syntax in which the newline character is special and marks the end of a statement. GNU <code>make</code> has no limit on the length of a statement line, up to the amount of memory in your computer.</p>
+<p>However, it is difficult to read lines which are too long to display without wrapping or scrolling. So, you can format your makefiles for readability by adding newlines into the middle of a statement: you do this by escaping the internal newlines with a backslash (<code>\</code>) character. Where we need to make a distinction we will refer to “physical lines” as a single line ending with a newline (regardless of whether it is escaped) and a “logical line” being a complete statement including all escaped newlines up to the first non-escaped newline.</p>
+<p>The way in which backslash/newline combinations are handled depends on whether the statement is a recipe line or a non-recipe line. Handling of backslash/newline in a recipe line is discussed later (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Splitting-Recipe-Lines" class="pxref">Splitting Recipe Lines</a>).</p>
+<p>Outside of recipe lines, backslash/newlines are converted into a single space character. Once that is done, all whitespace around the backslash/newline is condensed into a single space: this includes all whitespace preceding the backslash, all whitespace at the beginning of the line after the backslash/newline, and any consecutive backslash/newline combinations.</p>
+<p>If the <code>.POSIX</code> special target is defined then backslash/newline handling is modified slightly to conform to POSIX.2: first, whitespace preceding a backslash is not removed and second, consecutive backslash/newlines are not condensed.</p>
+<h4 id="splitting-without-adding-whitespace">Splitting Without Adding Whitespace</h4>
+<p><span id="index-whitespace_002c-avoiding-on-line-split" class="index-entry-id"></span> <span id="index-removing-whitespace-from-split-lines" class="index-entry-id"></span></p>
+<p>If you need to split a line but do <em>not</em> want any whitespace added, you can utilize a subtle trick: replace your backslash/newline pairs with the three characters dollar sign, backslash, and newline:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>var := one$\</span></span>
+<span class="line"><span>       word</span></span></code></pre>
+</div>
+<p>After <code>make</code> removes the backslash/newline and condenses the following line into a single space, this is equivalent to:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>var := one$ word</span></span></code></pre>
+</div>
+<p>Then <code>make</code> will perform variable expansion. The variable reference ‘<code>$ </code>’ refers to a variable with the one-character name “ ” (space) which does not exist, and so expands to the empty string, giving a final assignment which is the equivalent of:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>var := oneword</span></span></code></pre>
+</div>
+<hr>
+</div>
+</div>
+<div id="Makefile-Names" class="section-level-extent">
+<h3 id="32-what-name-to-give-your-makefile">3.2 What Name to Give Your Makefile</h3>
+<p><span id="index-makefile-name" class="index-entry-id"></span> <span id="index-name-of-makefile" class="index-entry-id"></span> <span id="index-default-makefile-name" class="index-entry-id"></span> <span id="index-file-name-of-makefile" class="index-entry-id"></span></p>
+<p>By default, when <code>make</code> looks for the makefile, it tries the following names, in order: <code>GNUmakefile</code>, <code>makefile</code> and <code>Makefile</code>. <span id="index-Makefile" class="index-entry-id"></span> <span id="index-GNUmakefile" class="index-entry-id"></span> <span id="index-makefile-1" class="index-entry-id"></span></p>
+<p><span id="index-README" class="index-entry-id"></span></p>
+<p>Normally you should call your makefile either <code>makefile</code> or <code>Makefile</code>. (We recommend <code>Makefile</code> because it appears prominently near the beginning of a directory listing, right near other important files such as <code>README</code>.) The first name checked, <code>GNUmakefile</code>, is not recommended for most makefiles. You should use this name if you have a makefile that is specific to GNU <code>make</code>, and will not be understood by other versions of <code>make</code>. Other <code>make</code> programs look for <code>makefile</code> and <code>Makefile</code>, but not <code>GNUmakefile</code>.</p>
+<p>If <code>make</code> finds none of these names, it does not use any makefile. Then you must specify a goal with a command argument, and <code>make</code> will attempt to figure out how to remake it using only its built-in implicit rules. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules" class="xref">Using Implicit Rules</a>.</p>
+<p><span id="index-_002df" class="index-entry-id"></span> <span id="index-_002d_002dfile" class="index-entry-id"></span> <span id="index-_002d_002dmakefile" class="index-entry-id"></span></p>
+<p>If you want to use a nonstandard name for your makefile, you can specify the makefile name with the ‘<code>-f</code>’ or ‘<code>--file</code>’ option. The arguments ‘<code>-f name</code>’ or ‘<code>--file=name</code>’ tell <code>make</code> to read the file <code>name</code> as the makefile. If you use more than one ‘<code>-f</code>’ or ‘<code>--file</code>’ option, you can specify several makefiles. All the makefiles are effectively concatenated in the order specified. The default makefile names <code>GNUmakefile</code>, <code>makefile</code> and <code>Makefile</code> are not checked automatically if you specify ‘<code>-f</code>’ or ‘<code>--file</code>’. <span id="index-specifying-makefile-name" class="index-entry-id"></span> <span id="index-makefile-name_002c-how-to-specify" class="index-entry-id"></span> <span id="index-name-of-makefile_002c-how-to-specify" class="index-entry-id"></span> <span id="index-file-name-of-makefile_002c-how-to-specify" class="index-entry-id"></span></p>
+<hr>
+</div>
+<div id="Include" class="section-level-extent">
+<h3 id="33-including-other-makefiles">3.3 Including Other Makefiles</h3>
+<p><span id="index-including-other-makefiles" class="index-entry-id"></span> <span id="index-makefile_002c-including" class="index-entry-id"></span> <span id="index-include" class="index-entry-id"></span></p>
+<p>The <code>include</code> directive tells <code>make</code> to suspend reading the current makefile and read one or more other makefiles before continuing. The directive is a line in the makefile that looks like this:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>include filenames...</span></span></code></pre>
+</div>
+<p><code>filenames</code> can contain shell file name patterns. If <code>filenames</code> is empty, nothing is included and no error is printed. <span id="index-shell-file-name-pattern-_0028in-include_0029" class="index-entry-id"></span> <span id="index-shell-wildcards-_0028in-include_0029" class="index-entry-id"></span> <span id="index-wildcard_002c-in-include" class="index-entry-id"></span></p>
+<p>Extra spaces are allowed and ignored at the beginning of the line, but the first character must not be a tab (or the value of <code>.RECIPEPREFIX</code>)—if the line begins with a tab, it will be considered a recipe line. Whitespace is required between <code>include</code> and the file names, and between file names; extra whitespace is ignored there and at the end of the directive. A comment starting with ‘<code>#</code>’ is allowed at the end of the line. If the file names contain any variable or function references, they are expanded. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Using-Variables" class="xref">How to Use Variables</a>.</p>
+<p>For example, if you have three <code>.mk</code> files, <code>a.mk</code>, <code>b.mk</code>, and <code>c.mk</code>, and <code>$(bar)</code> expands to <code>bish bash</code>, then the following expression</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>include foo *.mk $(bar)</span></span></code></pre>
+</div>
+<p>is equivalent to</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>include foo a.mk b.mk c.mk bish bash</span></span></code></pre>
+</div>
+<p>When <code>make</code> processes an <code>include</code> directive, it suspends reading of the containing makefile and reads from each listed file in turn. When that is finished, <code>make</code> resumes reading the makefile in which the directive appears.</p>
+<p>One occasion for using <code>include</code> directives is when several programs, handled by individual makefiles in various directories, need to use a common set of variable definitions (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Setting" class="pxref">Setting Variables</a>) or pattern rules (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Pattern-Rules" class="pxref">Defining and Redefining Pattern Rules</a>).</p>
+<p>Another such occasion is when you want to generate prerequisites from source files automatically; the prerequisites can be put in a file that is included by the main makefile. This practice is generally cleaner than that of somehow appending the prerequisites to the end of the main makefile as has been traditionally done with other versions of <code>make</code>. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Automatic-Prerequisites" class="xref">Generating Prerequisites Automatically</a>. <span id="index-prerequisites_002c-automatic-generation" class="index-entry-id"></span> <span id="index-automatic-generation-of-prerequisites" class="index-entry-id"></span> <span id="index-generating-prerequisites-automatically" class="index-entry-id"></span></p>
+<p><span id="index-_002dI" class="index-entry-id"></span> <span id="index-_002d_002dinclude_002ddir" class="index-entry-id"></span> <span id="index-included-makefiles_002c-default-directories" class="index-entry-id"></span> <span id="index-default-directories-for-included-makefiles" class="index-entry-id"></span> <span id="index-_002fusr_002fgnu_002finclude" class="index-entry-id"></span> <span id="index-_002fusr_002flocal_002finclude" class="index-entry-id"></span> <span id="index-_002fusr_002finclude" class="index-entry-id"></span></p>
+<p>If the specified name does not start with a slash (or a drive letter and colon when GNU Make is compiled with MS-DOS / MS-Windows path support), and the file is not found in the current directory, several other directories are searched. First, any directories you have specified with the ‘<code>-I</code>’ or ‘<code>--include-dir</code>’ options are searched (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Options-Summary" class="pxref">Summary of Options</a>). Then the following directories (if they exist) are searched, in this order: <code>prefix/include</code> (normally <code>/usr/local/include</code> <a href="/docs/gnu-make/source/v4-4-1/manual.html#FOOT1" id="DOCF1" class="footnote"><sup>1</sup></a>) <code>/usr/gnu/include</code>, <code>/usr/local/include</code>, <code>/usr/include</code>.</p>
+<p>The <code>.INCLUDE_DIRS</code> variable will contain the current list of directories that make will search for included files. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables" class="xref">Other Special Variables</a>.</p>
+<p>You can avoid searching in these default directories by adding the command line option <code>-I</code> with the special value <code>-</code> (e.g., <code>-I-</code>) to the command line. This will cause <code>make</code> to forget any already-set include directories, including the default directories.</p>
+<p>If an included makefile cannot be found in any of these directories it is not an immediately fatal error; processing of the makefile containing the <code>include</code> continues. Once it has finished reading makefiles, <code>make</code> will try to remake any that are out of date or don’t exist. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Remaking-Makefiles" class="xref">How Makefiles Are Remade</a>. Only after it has failed to find a rule to remake the makefile, or it found a rule but the recipe failed, will <code>make</code> diagnose the missing makefile as a fatal error.</p>
+<p>If you want <code>make</code> to simply ignore a makefile which does not exist or cannot be remade, with no error message, use the <code>-include</code> directive instead of <code>include</code>, like this:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>-include filenames...</span></span></code></pre>
+</div>
+<p>This acts like <code>include</code> in every way except that there is no error (not even a warning) if any of the <code>filenames</code> (or any prerequisites of any of the <code>filenames</code>) do not exist or cannot be remade.</p>
+<p>For compatibility with some other <code>make</code> implementations, <code>sinclude</code> is another name for <code>-include</code>.</p>
+<hr>
+</div>
+<div id="MAKEFILES-Variable" class="section-level-extent">
+<h3 id="34-the-variable-makefiles">3.4 The Variable <code>MAKEFILES</code></h3>
+<p><span id="index-makefile_002c-and-MAKEFILES-variable" class="index-entry-id"></span> <span id="index-including-_0028MAKEFILES-variable_0029" class="index-entry-id"></span> <span id="index-MAKEFILES" class="index-entry-id"></span></p>
+<p>If the environment variable <code>MAKEFILES</code> is defined, <code>make</code> considers its value as a list of names (separated by whitespace) of additional makefiles to be read before the others. This works much like the <code>include</code> directive: various directories are searched for those files (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Include" class="pxref">Including Other Makefiles</a>). In addition, the default goal is never taken from one of these makefiles (or any makefile included by them) and it is not an error if the files listed in <code>MAKEFILES</code> are not found.</p>
+<p><span id="index-recursion_002c-and-MAKEFILES-variable" class="index-entry-id"></span></p>
+<p>The main use of <code>MAKEFILES</code> is in communication between recursive invocations of <code>make</code> (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Recursion" class="pxref">Recursive Use of <code class="code">make</code></a>). It usually is not desirable to set the environment variable before a top-level invocation of <code>make</code>, because it is usually better not to mess with a makefile from outside. However, if you are running <code>make</code> without a specific makefile, a makefile in <code>MAKEFILES</code> can do useful things to help the built-in implicit rules work better, such as defining search paths (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Directory-Search" class="pxref">Searching Directories for Prerequisites</a>).</p>
+<p>Some users are tempted to set <code>MAKEFILES</code> in the environment automatically on login, and program makefiles to expect this to be done. This is a very bad idea, because such makefiles will fail to work if run by anyone else. It is much better to write explicit <code>include</code> directives in the makefiles. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Include" class="xref">Including Other Makefiles</a>.</p>
+<hr>
+</div>
+<div id="Remaking-Makefiles" class="section-level-extent">
+<h3 id="35-how-makefiles-are-remade">3.5 How Makefiles Are Remade</h3>
+<p><span id="index-updating-makefiles" class="index-entry-id"></span> <span id="index-remaking-makefiles" class="index-entry-id"></span> <span id="index-makefile_002c-remaking-of" class="index-entry-id"></span></p>
+<p>Sometimes makefiles can be remade from other files, such as RCS or SCCS files. If a makefile can be remade from other files, you probably want <code>make</code> to get an up-to-date version of the makefile to read in.</p>
+<p>To this end, after reading in all makefiles <code>make</code> will consider each as a goal target, in the order in which they were processed, and attempt to update it. If parallel builds (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Parallel" class="pxref">Parallel Execution</a>) are enabled then makefiles will be rebuilt in parallel as well.</p>
+<p>If a makefile has a rule which says how to update it (found either in that very makefile or in another one) or if an implicit rule applies to it (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules" class="pxref">Using Implicit Rules</a>), it will be updated if necessary. After all makefiles have been checked, if any have actually been changed, <code>make</code> starts with a clean slate and reads all the makefiles over again. (It will also attempt to update each of them over again, but normally this will not change them again, since they are already up to date.) Each restart will cause the special variable <code>MAKE_RESTARTS</code> to be updated (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables" class="pxref">Other Special Variables</a>).</p>
+<p>If you know that one or more of your makefiles cannot be remade and you want to keep <code>make</code> from performing an implicit rule search on them, perhaps for efficiency reasons, you can use any normal method of preventing implicit rule look-up to do so. For example, you can write an explicit rule with the makefile as the target, and an empty recipe (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Empty-Recipes" class="pxref">Using Empty Recipes</a>).</p>
+<p>If the makefiles specify a double-colon rule to remake a file with a recipe but no prerequisites, that file will always be remade (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Double_002dColon" class="pxref">Double-Colon Rules</a>). In the case of makefiles, a makefile that has a double-colon rule with a recipe but no prerequisites will be remade every time <code>make</code> is run, and then again after <code>make</code> starts over and reads the makefiles in again. This would cause an infinite loop: <code>make</code> would constantly remake the makefile and restart, and never do anything else. So, to avoid this, <code>make</code> will <strong>not</strong> attempt to remake makefiles which are specified as targets of a double-colon rule with a recipe but no prerequisites.</p>
+<p>Phony targets (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets" class="pxref">Phony Targets</a>) have the same effect: they are never considered up-to-date and so an included file marked as phony would cause <code>make</code> to restart continuously. To avoid this <code>make</code> will not attempt to remake makefiles which are marked phony.</p>
+<p>You can take advantage of this to optimize startup time: if you know you don’t need your <code>Makefile</code> to be remade you can prevent make from trying to remake it by adding either:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.PHONY: Makefile</span></span></code></pre>
+</div>
+<p>or:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Makefile:: ;</span></span></code></pre>
+</div>
+<p>If you do not specify any makefiles to be read with ‘<code>-f</code>’ or ‘<code>--file</code>’ options, <code>make</code> will try the default makefile names; see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Makefile-Names" class="pxref">What Name to Give Your Makefile</a>. Unlike makefiles explicitly requested with ‘<code>-f</code>’ or ‘<code>--file</code>’ options, <code>make</code> is not certain that these makefiles should exist. However, if a default makefile does not exist but can be created by running <code>make</code> rules, you probably want the rules to be run so that the makefile can be used.</p>
+<p>Therefore, if none of the default makefiles exists, <code>make</code> will try to make each of them until it succeeds in making one, or it runs out of names to try. Note that it is not an error if <code>make</code> cannot find or make any makefile; a makefile is not always necessary.</p>
+<p>When you use the ‘<code>-t</code>’ or ‘<code>--touch</code>’ option (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Instead-of-Execution" class="pxref">Instead of Executing Recipes</a>), you would not want to use an out-of-date makefile to decide which targets to touch. So the ‘<code>-t</code>’ option has no effect on updating makefiles; they are really updated even if ‘<code>-t</code>’ is specified. Likewise, ‘<code>-q</code>’ (or ‘<code>--question</code>’) and ‘<code>-n</code>’ (or ‘<code>--just-print</code>’) do not prevent updating of makefiles, because an out-of-date makefile would result in the wrong output for other targets. Thus, ‘<code>make -f mfile -n foo</code>’ will update <code>mfile</code>, read it in, and then print the recipe to update <code>foo</code> and its prerequisites without running it. The recipe printed for <code>foo</code> will be the one specified in the updated contents of <code>mfile</code>.</p>
+<p>However, on occasion you might actually wish to prevent updating of even the makefiles. You can do this by specifying the makefiles as goals in the command line as well as specifying them as makefiles. When the makefile name is specified explicitly as a goal, the options ‘<code>-t</code>’ and so on do apply to them.</p>
+<p>Thus, ‘<code>make -f mfile -n mfile foo</code>’ would read the makefile <code>mfile</code>, print the recipe needed to update it without actually running it, and then print the recipe needed to update <code>foo</code> without running that. The recipe for <code>foo</code> will be the one specified by the existing contents of <code>mfile</code>.</p>
+<hr>
+</div>
+<div id="Overriding-Makefiles" class="section-level-extent">
+<h3 id="36-overriding-part-of-another-makefile">3.6 Overriding Part of Another Makefile</h3>
+<p><span id="index-overriding-makefiles" class="index-entry-id"></span> <span id="index-makefile_002c-overriding" class="index-entry-id"></span></p>
+<p>Sometimes it is useful to have a makefile that is mostly just like another makefile. You can often use the ‘<code>include</code>’ directive to include one in the other, and add more targets or variable definitions. However, it is invalid for two makefiles to give different recipes for the same target. But there is another way.</p>
+<p><span id="index-match_002danything-rule_002c-used-to-override" class="index-entry-id"></span></p>
+<p>In the containing makefile (the one that wants to include the other), you can use a match-anything pattern rule to say that to remake any target that cannot be made from the information in the containing makefile, <code>make</code> should look in another makefile. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Pattern-Rules" class="xref">Defining and Redefining Pattern Rules</a>, for more information on pattern rules.</p>
+<p>For example, if you have a makefile called <code>Makefile</code> that says how to make the target ‘<code>foo</code>’ (and other targets), you can write a makefile called <code>GNUmakefile</code> that contains:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>foo:</span></span>
+<span class="line"><span>        frobnicate > foo</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>%: force</span></span>
+<span class="line"><span>        @$(MAKE) -f Makefile $@</span></span>
+<span class="line"><span>force: ;</span></span></code></pre>
+</div>
+<p>If you say ‘<code>make foo</code>’, <code>make</code> will find <code>GNUmakefile</code>, read it, and see that to make <code>foo</code>, it needs to run the recipe ‘<code>frobnicate > foo</code>’. If you say ‘<code>make bar</code>’, <code>make</code> will find no way to make <code>bar</code> in <code>GNUmakefile</code>, so it will use the recipe from the pattern rule: ‘<code>make -f Makefile bar</code>’. If <code>Makefile</code> provides a rule for updating <code>bar</code>, <code>make</code> will apply the rule. And likewise for any other target that <code>GNUmakefile</code> does not say how to make.</p>
+<p>The way this works is that the pattern rule has a pattern of just ‘<code>%</code>’, so it matches any target whatever. The rule specifies a prerequisite <code>force</code>, to guarantee that the recipe will be run even if the target file already exists. We give the <code>force</code> target an empty recipe to prevent <code>make</code> from searching for an implicit rule to build it—otherwise it would apply the same match-anything rule to <code>force</code> itself and create a prerequisite loop!</p>
+<hr>
+</div>
+<div id="Reading-Makefiles" class="section-level-extent">
+<h3 id="37-how-make-reads-a-makefile">3.7 How <code>make</code> Reads a Makefile</h3>
+<p><span id="index-reading-makefiles" class="index-entry-id"></span> <span id="index-makefile_002c-reading" class="index-entry-id"></span></p>
+<p>GNU <code>make</code> does its work in two distinct phases. During the first phase it reads all the makefiles, included makefiles, etc. and internalizes all the variables and their values and implicit and explicit rules, and builds a dependency graph of all the targets and their prerequisites. During the second phase, <code>make</code> uses this internalized data to determine which targets need to be updated and run the recipes necessary to update them.</p>
+<p>It’s important to understand this two-phase approach because it has a direct impact on how variable and function expansion happens; this is often a source of some confusion when writing makefiles. Below is a summary of the different constructs that can be found in a makefile, and the phase in which expansion happens for each part of the construct.</p>
+<p>We say that expansion is <em>immediate</em> if it happens during the first phase: <code>make</code> will expand that part of the construct as the makefile is parsed. We say that expansion is <em>deferred</em> if it is not immediate. Expansion of a deferred construct part is delayed until the expansion is used: either when it is referenced in an immediate context, or when it is needed during the second phase.</p>
+<p>You may not be familiar with some of these constructs yet. You can reference this section as you become familiar with them, in later chapters.</p>
+<h4 id="variable-assignment">Variable Assignment</h4>
+<p><span id="index-_002b_003d_002c-expansion" class="index-entry-id"></span> <span id="index-_003d_002c-expansion" class="index-entry-id"></span> <span id="index-_003f_003d_002c-expansion" class="index-entry-id"></span> <span id="index-_002b_003d_002c-expansion-1" class="index-entry-id"></span> <span id="index-_0021_003d_002c-expansion" class="index-entry-id"></span> <span id="index-define_002c-expansion" class="index-entry-id"></span></p>
+<p>Variable definitions are parsed as follows:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>immediate = deferred</span></span>
+<span class="line"><span>immediate ?= deferred</span></span>
+<span class="line"><span>immediate := immediate</span></span>
+<span class="line"><span>immediate ::= immediate</span></span>
+<span class="line"><span>immediate :::= immediate-with-escape</span></span>
+<span class="line"><span>immediate += deferred or immediate</span></span>
+<span class="line"><span>immediate != immediate</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate</span></span>
+<span class="line"><span>  deferred</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate =</span></span>
+<span class="line"><span>  deferred</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate ?=</span></span>
+<span class="line"><span>  deferred</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate :=</span></span>
+<span class="line"><span>  immediate</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate ::=</span></span>
+<span class="line"><span>  immediate</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate :::=</span></span>
+<span class="line"><span>  immediate-with-escape</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate +=</span></span>
+<span class="line"><span>  deferred or immediate</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define immediate !=</span></span>
+<span class="line"><span>  immediate</span></span>
+<span class="line"><span>endef</span></span></code></pre>
+</div>
+<p>For the append operator ‘<code>+=</code>’, the right-hand side is considered immediate if the variable was previously set as a simple variable (‘<code>:=</code>’ or ‘<code>::=</code>’), and deferred otherwise.</p>
+<p>For the <code>immediate-with-escape</code> operator ‘<code>:::=</code>’, the value on the right-hand side is immediately expanded but then escaped (that is, all instances of <code>$</code> in the result of the expansion are replaced with <code>$$</code>).</p>
+<p>For the shell assignment operator ‘<code>!=</code>’, the right-hand side is evaluated immediately and handed to the shell. The result is stored in the variable named on the left, and that variable is considered a recursively expanded variable (and will thus be re-evaluated on each reference).</p>
+<h4 id="conditional-directives">Conditional Directives</h4>
+<p><span id="index-ifdef_002c-expansion" class="index-entry-id"></span> <span id="index-ifeq_002c-expansion" class="index-entry-id"></span> <span id="index-ifndef_002c-expansion" class="index-entry-id"></span> <span id="index-ifneq_002c-expansion" class="index-entry-id"></span></p>
+<p>Conditional directives are parsed immediately. This means, for example, that automatic variables cannot be used in conditional directives, as automatic variables are not set until the recipe for that rule is invoked. If you need to use automatic variables in a conditional directive you <em>must</em> move the condition into the recipe and use shell conditional syntax instead.</p>
+<h4 id="rule-definition">Rule Definition</h4>
+<p><span id="index-target_002c-expansion" class="index-entry-id"></span> <span id="index-prerequisite_002c-expansion" class="index-entry-id"></span> <span id="index-implicit-rule_002c-expansion" class="index-entry-id"></span> <span id="index-pattern-rule_002c-expansion" class="index-entry-id"></span> <span id="index-explicit-rule_002c-expansion" class="index-entry-id"></span></p>
+<p>A rule is always expanded the same way, regardless of the form:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>immediate : immediate ; deferred</span></span>
+<span class="line"><span>        deferred</span></span></code></pre>
+</div>
+<p>That is, the target and prerequisite sections are expanded immediately, and the recipe used to build the target is always deferred. This is true for explicit rules, pattern rules, suffix rules, static pattern rules, and simple prerequisite definitions.</p>
+<hr>
+</div>
+<div id="Parsing-Makefiles" class="section-level-extent">
+<h3 id="38-how-makefiles-are-parsed">3.8 How Makefiles Are Parsed</h3>
+<p><span id="index-parsing-makefiles" class="index-entry-id"></span> <span id="index-makefiles_002c-parsing" class="index-entry-id"></span></p>
+<p>GNU <code>make</code> parses makefiles line-by-line. Parsing proceeds using the following steps:</p>
+<ol>
+<li>Read in a full logical line, including backslash-escaped lines (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Splitting-Lines" class="pxref">Splitting Long Lines</a>).</li>
+<li>Remove comments (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Makefile-Contents" class="pxref">What Makefiles Contain</a>).</li>
+<li>If the line begins with the recipe prefix character and we are in a rule context, add the line to the current recipe and read the next line (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Recipe-Syntax" class="pxref">Recipe Syntax</a>).</li>
+<li>Expand elements of the line which appear in an <em>immediate</em> expansion context (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Reading-Makefiles" class="pxref">How <code class="code">make</code> Reads a Makefile</a>).</li>
+<li>Scan the line for a separator character, such as ‘<code>:</code>’ or ‘<code>=</code>’, to determine whether the line is a macro assignment or a rule (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Recipe-Syntax" class="pxref">Recipe Syntax</a>).</li>
+<li>Internalize the resulting operation and read the next line.</li>
+</ol>
+<p>An important consequence of this is that a macro can expand to an entire rule, <em>if it is one line long</em>. This will work:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>myrule = target : ; echo built</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>$(myrule)</span></span></code></pre>
+</div>
+<p>However, this will not work because <code>make</code> does not re-split lines after it has expanded them:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>define myrule</span></span>
+<span class="line"><span>target:</span></span>
+<span class="line"><span>        echo built</span></span>
+<span class="line"><span>endef</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>$(myrule)</span></span></code></pre>
+</div>
+<p>The above makefile results in the definition of a target ‘<code>target</code>’ with prerequisites ‘<code>echo</code>’ and ‘<code>built</code>’, as if the makefile contained <code>target: echo built</code>, rather than a rule with a recipe. Newlines still present in a line after expansion is complete are ignored as normal whitespace.</p>
+<p>In order to properly expand a multi-line macro you must use the <code>eval</code> function: this causes the <code>make</code> parser to be run on the results of the expanded macro (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Eval-Function" class="pxref">The <code class="code">eval</code> Function</a>).</p>
+<hr>
+</div>
+<div id="Secondary-Expansion" class="section-level-extent">
+<h3 id="39-secondary-expansion">3.9 Secondary Expansion</h3>
+<p><span id="index-secondary-expansion" class="index-entry-id"></span> <span id="index-expansion_002c-secondary" class="index-entry-id"></span> <span id="index-_002eSECONDEXPANSION" class="index-entry-id"></span></p>
+<p>Previously we learned that GNU <code>make</code> works in two distinct phases: a read-in phase and a target-update phase (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Reading-Makefiles" class="pxref">How <code class="code">make</code> Reads a Makefile</a>). GNU Make also has the ability to enable a <em>second expansion</em> of the prerequisites (only) for some or all targets defined in the makefile. In order for this second expansion to occur, the special target <code>.SECONDEXPANSION</code> must be defined before the first prerequisite list that makes use of this feature.</p>
+<p>If <code>.SECONDEXPANSION</code> is defined then when GNU <code>make</code> needs to check the prerequisites of a target, the prerequisites are expanded a <em>second time</em>. In most circumstances this secondary expansion will have no effect, since all variable and function references will have been expanded during the initial parsing of the makefiles. In order to take advantage of the secondary expansion phase of the parser, then, it’s necessary to <em>escape</em> the variable or function reference in the makefile. In this case the first expansion merely un-escapes the reference but doesn’t expand it, and expansion is left to the secondary expansion phase. For example, consider this makefile:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.SECONDEXPANSION:</span></span>
+<span class="line"><span>ONEVAR = onefile</span></span>
+<span class="line"><span>TWOVAR = twofile</span></span>
+<span class="line"><span>myfile: $(ONEVAR) $$(TWOVAR)</span></span></code></pre>
+</div>
+<p>After the first expansion phase the prerequisites list of the <code>myfile</code> target will be <code>onefile</code> and <code>$(TWOVAR)</code>; the first (unescaped) variable reference to <code>ONEVAR</code> is expanded, while the second (escaped) variable reference is simply unescaped, without being recognized as a variable reference. Now during the secondary expansion the first word is expanded again but since it contains no variable or function references it remains the value <code>onefile</code>, while the second word is now a normal reference to the variable <code>TWOVAR</code>, which is expanded to the value <code>twofile</code>. The final result is that there are two prerequisites, <code>onefile</code> and <code>twofile</code>.</p>
+<p>Obviously, this is not a very interesting case since the same result could more easily have been achieved simply by having both variables appear, unescaped, in the prerequisites list. One difference becomes apparent if the variables are reset; consider this example:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.SECONDEXPANSION:</span></span>
+<span class="line"><span>AVAR = top</span></span>
+<span class="line"><span>onefile: $(AVAR)</span></span>
+<span class="line"><span>twofile: $$(AVAR)</span></span>
+<span class="line"><span>AVAR = bottom</span></span></code></pre>
+</div>
+<p>Here the prerequisite of <code>onefile</code> will be expanded immediately, and resolve to the value <code>top</code>, while the prerequisite of <code>twofile</code> will not be full expanded until the secondary expansion and yield a value of <code>bottom</code>.</p>
+<p>This is marginally more exciting, but the true power of this feature only becomes apparent when you discover that secondary expansions always take place within the scope of the automatic variables for that target. This means that you can use variables such as <code>$@</code>, <code>$*</code>, etc. during the second expansion and they will have their expected values, just as in the recipe. All you have to do is defer the expansion by escaping the <code>$</code>. Also, secondary expansion occurs for both explicit and implicit (pattern) rules. Knowing this, the possible uses for this feature increase dramatically. For example:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.SECONDEXPANSION:</span></span>
+<span class="line"><span>main_OBJS := main.o try.o test.o</span></span>
+<span class="line"><span>lib_OBJS := lib.o api.o</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>main lib: $$($$@_OBJS)</span></span></code></pre>
+</div>
+<p>Here, after the initial expansion the prerequisites of both the <code>main</code> and <code>lib</code> targets will be <code>$($@_OBJS)</code>. During the secondary expansion, the <code>$@</code> variable is set to the name of the target and so the expansion for the <code>main</code> target will yield <code>$(main_OBJS)</code>, or <code>main.o try.o test.o</code>, while the secondary expansion for the <code>lib</code> target will yield <code>$(lib_OBJS)</code>, or <code>lib.o api.o</code>.</p>
+<p>You can also mix in functions here, as long as they are properly escaped:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>main_SRCS := main.c try.c test.c</span></span>
+<span class="line"><span>lib_SRCS := lib.c api.c</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.SECONDEXPANSION:</span></span>
+<span class="line"><span>main lib: $$(patsubst %.c,%.o,$$($$@_SRCS))</span></span></code></pre>
+</div>
+<p>This version allows users to specify source files rather than object files, but gives the same resulting prerequisites list as the previous example.</p>
+<p>Evaluation of automatic variables during the secondary expansion phase, especially of the target name variable <code>$$@</code>, behaves similarly to evaluation within recipes. However, there are some subtle differences and “corner cases” which come into play for the different types of rule definitions that <code>make</code> understands. The subtleties of using the different automatic variables are described below.</p>
+<h4 id="secondary-expansion-of-explicit-rules">Secondary Expansion of Explicit Rules</h4>
+<p><span id="index-secondary-expansion-and-explicit-rules" class="index-entry-id"></span> <span id="index-explicit-rules_002c-secondary-expansion-of" class="index-entry-id"></span></p>
+<p>During the secondary expansion of explicit rules, <code>$$@</code> and <code>$$%</code> evaluate, respectively, to the file name of the target and, when the target is an archive member, the target member name. The <code>$$&#x3C;</code> variable evaluates to the first prerequisite in the first rule for this target. <code>$$^</code> and <code>$$+</code> evaluate to the list of all prerequisites of rules <em>that have already appeared</em> for the same target (<code>$$+</code> with repetitions and <code>$$^</code> without). The following example will help illustrate these behaviors:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.SECONDEXPANSION:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>foo: foo.1 bar.1 $$&#x3C; $$^ $$+    # line #1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>foo: foo.2 bar.2 $$&#x3C; $$^ $$+    # line #2</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>foo: foo.3 bar.3 $$&#x3C; $$^ $$+    # line #3</span></span></code></pre>
+</div>
+<p>In the first prerequisite list, all three variables (<code>$$&#x3C;</code>, <code>$$^</code>, and <code>$$+</code>) expand to the empty string. In the second, they will have values <code>foo.1</code>, <code>foo.1 bar.1</code>, and <code>foo.1 bar.1</code> respectively. In the third they will have values <code>foo.1</code>, <code>foo.1 bar.1 foo.2 bar.2</code>, and <code>foo.1 bar.1 foo.2 bar.2 foo.1 foo.1 bar.1 foo.1 bar.1</code> respectively.</p>
+<p>Rules undergo secondary expansion in makefile order, except that the rule with the recipe is always evaluated last.</p>
+<p>The variables <code>$$?</code> and <code>$$*</code> are not available and expand to the empty string.</p>
+<h4 id="secondary-expansion-of-static-pattern-rules">Secondary Expansion of Static Pattern Rules</h4>
+<p><span id="index-secondary-expansion-and-static-pattern-rules" class="index-entry-id"></span> <span id="index-static-pattern-rules_002c-secondary-expansion-of" class="index-entry-id"></span></p>
+<p>Rules for secondary expansion of static pattern rules are identical to those for explicit rules, above, with one exception: for static pattern rules the <code>$$*</code> variable is set to the pattern stem. As with explicit rules, <code>$$?</code> is not available and expands to the empty string.</p>
+<h4 id="secondary-expansion-of-implicit-rules">Secondary Expansion of Implicit Rules</h4>
+<p><span id="index-secondary-expansion-and-implicit-rules" class="index-entry-id"></span> <span id="index-implicit-rules_002c-secondary-expansion-of" class="index-entry-id"></span></p>
+<p>As <code>make</code> searches for an implicit rule, it substitutes the stem and then performs secondary expansion for every rule with a matching target pattern. The value of the automatic variables is derived in the same fashion as for static pattern rules. As an example:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.SECONDEXPANSION:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>foo: bar</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>foo foz: fo%: bo%</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>%oo: $$&#x3C; $$^ $$+ $$*</span></span></code></pre>
+</div>
+<p>When the implicit rule is tried for target <code>foo</code>, <code>$$&#x3C;</code> expands to <code>bar</code>, <code>$$^</code> expands to <code>bar boo</code>, <code>$$+</code> also expands to <code>bar boo</code>, and <code>$$*</code> expands to <code>f</code>.</p>
+<p>Note that the directory prefix (D), as described in <a href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rule-Search" class="ref">Implicit Rule Search Algorithm</a>, is appended (after expansion) to all the patterns in the prerequisites list. As an example:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.SECONDEXPANSION:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>/tmp/foo.o:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>%.o: $$(addsuffix /%.c,foo bar) foo.h</span></span>
+<span class="line"><span>        @echo $^</span></span></code></pre>
+</div>
+<p>The prerequisite list printed, after the secondary expansion and directory prefix reconstruction, will be <code>/tmp/foo/foo.c /tmp/bar/foo.c foo.h</code>. If you are not interested in this reconstruction, you can use <code>$$*</code> instead of <code>%</code> in the prerequisites list.</p>
+<hr>
+</div>
+</div></main><footer><section id="Libx-History"><h2>History</h2><p>Original: GNU Make (The GNU Make Manual), Edition 0.77, GNU make 4.4.1, 2023; Richard M. Stallman, Roland McGrath, Paul D. Smith; publisher Free Software Foundation. Fixed source: <a href="https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz">Official make-4.4.1.tar.gz</a>.</p><p>2026: Libx GNU Make 4.4.1 Getting Started Guide — Chapters 1–3 / Libx GNU Make 4.4.1 入門ガイド — 第1〜3章; modification author and publisher Libx; static Markdown conversion, scoped editing and forthcoming unofficial Japanese translation. Original licence notices preserved. Chapter 1 acknowledgements preserved in the scoped content; remaining original material and source includes retained in the original archive.</p></section><h2>Original English GNU Free Documentation License</h2><div class="appendix-level-extent" id="GNU-Free-Documentation-License">
+<h2 class="appendix" id="GNU-Free-Documentation-License-1"><span>Appendix D GNU Free Documentation License<a class="copiable-link" href="#GNU-Free-Documentation-License-1"> ¶</a></span></h2>
+<a class="index-entry-id" id="index-FDL_002c-GNU-Free-Documentation-License"></a>
+<div class="center">Version 1.3, 3 November 2008
+</div>
+<div class="display">
+<pre class="display-preformatted">Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+<a class="uref" href="https://fsf.org/">https://fsf.org/</a>
+
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+</pre></div>
+<ol class="enumerate" start="0">
+<li> PREAMBLE
+
+<p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <em class="dfn">free</em> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially.
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+</p>
+<p>This License is a kind of “copyleft”, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+</p>
+<p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+</p>
+</li><li> APPLICABILITY AND DEFINITIONS
+
+<p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The “Document”, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as “you”.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+</p>
+<p>A “Modified Version” of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+</p>
+<p>A “Secondary Section” is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document’s overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+</p>
+<p>The “Invariant Sections” are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+</p>
+<p>The “Cover Texts” are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+</p>
+<p>A “Transparent” copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent.
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not “Transparent” is called “Opaque”.
+</p>
+<p>Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, LaTeX input
+format, SGML or XML using a publicly available
+DTD, and standard-conforming simple HTML,
+PostScript or PDF designed for human modification.  Examples
+of transparent image formats include PNG, XCF and
+JPG.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, SGML or
+XML for which the DTD and/or processing tools are
+not generally available, and the machine-generated HTML,
+PostScript or PDF produced by some word processors for
+output purposes only.
+</p>
+<p>The “Title Page” means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, “Title Page” means
+the text near the most prominent appearance of the work’s title,
+preceding the beginning of the body of the text.
+</p>
+<p>The “publisher” means any person or entity that distributes copies
+of the Document to the public.
+</p>
+<p>A section “Entitled XYZ” means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as “Acknowledgements”,
+“Dedications”, “Endorsements”, or “History”.)  To “Preserve the Title”
+of such a section when you modify the Document means that it remains a
+section “Entitled XYZ” according to this definition.
+</p>
+<p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+</p>
+</li><li> VERBATIM COPYING
+
+<p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+</p>
+<p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+</p>
+</li><li> COPYING IN QUANTITY
+
+<p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document’s license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition.
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+</p>
+<p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+</p>
+<p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+</p>
+<p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+</p>
+</li><li> MODIFICATIONS
+
+<p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+</p>
+<ol class="enumerate" start="1" type="A">
+<li> Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+</li><li> List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+</li><li> State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+</li><li> Preserve all the copyright notices of the Document.
+
+</li><li> Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+</li><li> Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+</li><li> Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document’s license notice.
+
+</li><li> Include an unaltered copy of this License.
+
+</li><li> Preserve the section Entitled “History”, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled “History” in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+</li><li> Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the “History” section.
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+</li><li> For any section Entitled “Acknowledgements” or “Dedications”, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+</li><li> Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+</li><li> Delete any section Entitled “Endorsements”.  Such a section
+may not be included in the Modified Version.
+
+</li><li> Do not retitle any existing section to be Entitled “Endorsements” or
+to conflict in title with any Invariant Section.
+
+</li><li> Preserve any Warranty Disclaimers.
+</li></ol>
+<p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version’s license notice.
+These titles must be distinct from any other section titles.
+</p>
+<p>You may add a section Entitled “Endorsements”, provided it contains
+nothing but endorsements of your Modified Version by various
+parties—for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+</p>
+<p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+</p>
+<p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+</p>
+</li><li> COMBINING DOCUMENTS
+
+<p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+</p>
+<p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+</p>
+<p>In the combination, you must combine any sections Entitled “History”
+in the various original documents, forming one section Entitled
+“History”; likewise combine any sections Entitled “Acknowledgements”,
+and any sections Entitled “Dedications”.  You must delete all
+sections Entitled “Endorsements.”
+</p>
+</li><li> COLLECTIONS OF DOCUMENTS
+
+<p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+</p>
+<p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+</p>
+</li><li> AGGREGATION WITH INDEPENDENT WORKS
+
+<p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an “aggregate” if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation’s users beyond what the individual works permit.
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+</p>
+<p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document’s Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form.
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+</p>
+</li><li> TRANSLATION
+
+<p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4.
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+</p>
+<p>If a section in the Document is Entitled “Acknowledgements”,
+“Dedications”, or “History”, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+</p>
+</li><li> TERMINATION
+
+<p>You may not copy, modify, sublicense, or distribute the Document
+except as expressly provided under this License.  Any attempt
+otherwise to copy, modify, sublicense, or distribute it is void, and
+will automatically terminate your rights under this License.
+</p>
+<p>However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally
+terminates your license, and (b) permanently, if the copyright holder
+fails to notify you of the violation by some reasonable means prior to
+60 days after the cessation.
+</p>
+<p>Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.
+</p>
+<p>Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, receipt of a copy of some or all of the same material does
+not give you any rights to use it.
+</p>
+</li><li> FUTURE REVISIONS OF THIS LICENSE
+
+<p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a class="uref" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.
+</p>
+<p>Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License “or any later version” applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.  If the Document
+specifies that a proxy can decide which future versions of this
+License can be used, that proxy’s public statement of acceptance of a
+version permanently authorizes you to choose that version for the
+Document.
+</p>
+</li><li> RELICENSING
+
+<p>“Massive Multiauthor Collaboration Site” (or “MMC Site”) means any
+World Wide Web server that publishes copyrightable works and also
+provides prominent facilities for anybody to edit those works.  A
+public wiki that anybody can edit is an example of such a server.  A
+“Massive Multiauthor Collaboration” (or “MMC”) contained in the
+site means any set of copyrightable works thus published on the MMC
+site.
+</p>
+<p>“CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0
+license published by Creative Commons Corporation, a not-for-profit
+corporation with a principal place of business in San Francisco,
+California, as well as future copyleft versions of that license
+published by that same organization.
+</p>
+<p>“Incorporate” means to publish or republish a Document, in whole or
+in part, as part of another Document.
+</p>
+<p>An MMC is “eligible for relicensing” if it is licensed under this
+License, and if all works that were first published under this License
+somewhere other than this MMC, and subsequently incorporated in whole
+or in part into the MMC, (1) had no cover texts or invariant sections,
+and (2) were thus incorporated prior to November 1, 2008.
+</p>
+<p>The operator of an MMC Site may republish an MMC contained in the site
+under CC-BY-SA on the same site at any time before August 1, 2009,
+provided the MMC is eligible for relicensing.
+</p>
+</li></ol>
+<h3 class="heading" id="ADDENDUM_003a-How-to-use-this-License-for-your-documents"><span>ADDENDUM: How to use this License for your documents<a class="copiable-link" href="#ADDENDUM_003a-How-to-use-this-License-for-your-documents"> ¶</a></span></h3>
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">  Copyright (C)  <var class="var">year</var>  <var class="var">your name</var>.
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.3
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+  Texts.  A copy of the license is included in the section entitled ``GNU
+  Free Documentation License''.
+</pre></div></div>
+<p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the “with…Texts.” line with this:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">    with the Invariant Sections being <var class="var">list their titles</var>, with
+    the Front-Cover Texts being <var class="var">list</var>, and with the Back-Cover Texts
+    being <var class="var">list</var>.
+</pre></div></div>
+<p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+</p>
+<p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+</p>
+<hr/>
+</div></footer></body></html>

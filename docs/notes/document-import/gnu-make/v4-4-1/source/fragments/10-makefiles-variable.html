@@ -1,0 +1,32 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="MAKEFILES-Variable">
+<span id="The-Variable-MAKEFILES"></span><h3 class="section"><span>3.4 The Variable <code class="code">MAKEFILES</code></span></h3>
+<a class="index-entry-id" id="index-makefile_002c-and-MAKEFILES-variable"></a>
+<a class="index-entry-id" id="index-including-_0028MAKEFILES-variable_0029"></a>
+<a class="index-entry-id" id="index-MAKEFILES"></a>
+<p>If the environment variable <code class="code">MAKEFILES</code> is defined, <code class="code">make</code>
+considers its value as a list of names (separated by whitespace) of
+additional makefiles to be read before the others.  This works much
+like the <code class="code">include</code> directive: various directories are searched
+for those files (see <a class="pxref" href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#Include">Including Other Makefiles</a>).  In
+addition, the default goal is never taken from one of these makefiles
+(or any makefile included by them) and it is not an error if the files
+listed in <code class="code">MAKEFILES</code> are not found.
+</p>
+<a class="index-entry-id" id="index-recursion_002c-and-MAKEFILES-variable"></a>
+<p>The main use of <code class="code">MAKEFILES</code> is in communication between recursive
+invocations of <code class="code">make</code> (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Recursion">Recursive Use of
+<code class="code">make</code></a>).  It usually is not desirable to set the environment
+variable before a top-level invocation of <code class="code">make</code>, because it is
+usually better not to mess with a makefile from outside.  However, if
+you are running <code class="code">make</code> without a specific makefile, a makefile in
+<code class="code">MAKEFILES</code> can do useful things to help the built-in implicit
+rules work better, such as defining search paths (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Directory-Search">Searching Directories for Prerequisites</a>).
+</p>
+<p>Some users are tempted to set <code class="code">MAKEFILES</code> in the environment
+automatically on login, and program makefiles to expect this to be done.
+This is a very bad idea, because such makefiles will fail to work if run by
+anyone else.  It is much better to write explicit <code class="code">include</code> directives
+in the makefiles.  See <a class="xref" href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#Include">Including Other Makefiles</a>.
+</p>
+<hr/>
+</div></div>

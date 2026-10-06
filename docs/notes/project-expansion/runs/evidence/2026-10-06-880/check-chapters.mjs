@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {createMarkdownProcessor} from '/private/tmp/libx-yyjson-formal-874/node_modules/.pnpm/@astrojs+markdown-remark@6.3.1/node_modules/@astrojs/markdown-remark/dist/index.js';
+import {parse} from '/private/tmp/libx-yyjson-formal-874/node_modules/parse5/dist/index.js';
+const E=new URL('.',import.meta.url),draft=JSON.parse(fs.readFileSync(new URL('CHAPTER_CONVERSION_DRAFT.json',E))),proc=await createMarkdownProcessor({smartypants:false,syntaxHighlight:'shiki'}),walk=n=>[n,...(n.childNodes??[]).flatMap(walk)],txt=n=>n.value??(n.childNodes??[]).map(txt).join(''),norm=s=>s.replace(/\s+/g,' ').trim(),results=[];
+for(const r of draft.results){
+ const before=walk(parse(fs.readFileSync(r.sourceHTML,'utf8'))),body=before.find(n=>n.tagName==='body'),render=await proc.render(fs.readFileSync(r.markdown,'utf8')),nodes=walk(parse(render.code)),after=nodes.find(n=>n.tagName==='body');
+ const originalCodes=before.filter(n=>n.tagName==='pre').map(n=>txt(n).replace(/\n$/,'')),convertedCodes=nodes.filter(n=>n.tagName==='pre').map(txt),codeExact=JSON.stringify(originalCodes)===JSON.stringify(convertedCodes),textExact=norm(txt(body))===norm(txt(after)),headingsExact=JSON.stringify(before.filter(n=>/^h[1-6]$/.test(n.tagName)).map(n=>norm(txt(n))))===JSON.stringify(nodes.filter(n=>/^h[1-6]$/.test(n.tagName)).map(n=>norm(txt(n))));
+ fs.writeFileSync(new URL(r.id+'_RENDERED_DRAFT.html',E),render.code);
+ const row={id:r.id,codeBlocks:originalCodes.length,codeExact,textExact,headingsExact,renderedSHA256:createHash('sha256').update(render.code).digest('hex')};if(!textExact){const a=norm(txt(body)),b=norm(txt(after));let i=0;while(a[i]===b[i]&&i<a.length)i++;row.textDifference={position:i,original:a.slice(i-70,i+140),converted:b.slice(i-70,i+140)};}if(!codeExact)row.codeDifferences=originalCodes.map((x,i)=>({i,original:x,converted:convertedCodes[i]})).filter(x=>x.original!==x.converted);results.push(row);
+}
+const passed=results.every(r=>r.codeExact&&r.textExact&&r.headingsExact),out={status:passed?'passed-machine-chapter-conversion':'failed',at:new Date().toISOString(),processor:'Current installed Astro markdown6.3.1/GFM/Shiki; smartypants:false',words:draft.words,codeBlocks:results.reduce((n,r)=>n+r.codeBlocks,0),results,scope:'First3 fullchapter original body normalized whitespace,allcode/headings;heading selfpilcrow onlyremoved andsourcefragment href relinked. No Japanese translation/fullmeaning review/canonicalapp/publication claim.'};fs.writeFileSync(new URL('CHAPTER_CHECK_DRAFT.json',E),JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out));process.exitCode=passed?0:1;

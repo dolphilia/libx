@@ -1,0 +1,63 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="How-Make-Works">
+<span id="How-make-Processes-a-Makefile"></span><h3 class="section"><span>2.3 How <code class="code">make</code> Processes a Makefile</span></h3>
+<a class="index-entry-id" id="index-processing-a-makefile"></a>
+<a class="index-entry-id" id="index-makefile_002c-how-make-processes"></a>
+<p>By default, <code class="code">make</code> starts with the first target (not targets whose names
+start with ‘<samp class="samp">.</samp>’ unless they also contain one or more ‘<samp class="samp">/</samp>’).  This is
+called the <em class="dfn">default goal</em>.  (<em class="dfn">Goals</em> are the targets that <code class="code">make</code>
+strives ultimately to update.  You can override this behavior using the
+command line (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Goals">Arguments to Specify the Goals</a>) or with the
+<code class="code">.DEFAULT_GOAL</code> special variable (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables">Other
+Special Variables</a>).
+<a class="index-entry-id" id="index-default-goal"></a>
+<a class="index-entry-id" id="index-goal_002c-default"></a>
+<a class="index-entry-id" id="index-goal"></a>
+</p>
+<p>In the simple example of the previous section, the default goal is to
+update the executable program <samp class="file">edit</samp>; therefore, we put that rule
+first.
+</p>
+<p>Thus, when you give the command:
+</p>
+<div class="example">
+<pre class="example-preformatted">make
+</pre></div>
+<p><code class="code">make</code> reads the makefile in the current directory and begins by
+processing the first rule.  In the example, this rule is for relinking
+<samp class="file">edit</samp>; but before <code class="code">make</code> can fully process this rule, it
+must process the rules for the files that <samp class="file">edit</samp> depends on,
+which in this case are the object files.  Each of these files is
+processed according to its own rule.  These rules say to update each
+‘<samp class="samp">.o</samp>’ file by compiling its source file.  The recompilation must
+be done if the source file, or any of the header files named as
+prerequisites, is more recent than the object file, or if the object
+file does not exist.
+</p>
+<p>The other rules are processed because their targets appear as
+prerequisites of the goal.  If some other rule is not depended on by the
+goal (or anything it depends on, etc.), that rule is not processed,
+unless you tell <code class="code">make</code> to do so (with a command such as
+<code class="code">make clean</code><!-- /@w -->).
+</p>
+<p>Before recompiling an object file, <code class="code">make</code> considers updating its
+prerequisites, the source file and header files.  This makefile does not
+specify anything to be done for them—the ‘<samp class="samp">.c</samp>’ and ‘<samp class="samp">.h</samp>’ files
+are not the targets of any rules—so <code class="code">make</code> does nothing for these
+files.  But <code class="code">make</code> would update automatically generated C programs,
+such as those made by Bison or Yacc, by their own rules at this time.
+</p>
+<p>After recompiling whichever object files need it, <code class="code">make</code> decides
+whether to relink <samp class="file">edit</samp>.  This must be done if the file
+<samp class="file">edit</samp> does not exist, or if any of the object files are newer than
+it.  If an object file was just recompiled, it is now newer than
+<samp class="file">edit</samp>, so <samp class="file">edit</samp> is relinked.
+<a class="index-entry-id" id="index-relinking"></a>
+</p>
+<p>Thus, if we change the file <samp class="file">insert.c</samp> and run <code class="code">make</code>,
+<code class="code">make</code> will compile that file to update <samp class="file">insert.o</samp>, and then
+link <samp class="file">edit</samp>.  If we change the file <samp class="file">command.h</samp> and run
+<code class="code">make</code>, <code class="code">make</code> will recompile the object files <samp class="file">kbd.o</samp>,
+<samp class="file">command.o</samp> and <samp class="file">files.o</samp> and then link the file <samp class="file">edit</samp>.
+</p>
+<hr/>
+</div></div>

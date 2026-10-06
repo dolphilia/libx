@@ -1,0 +1,112 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Include">
+<span id="Including-Other-Makefiles"></span><h3 class="section"><span>3.3 Including Other Makefiles</span></h3>
+<a class="index-entry-id" id="index-including-other-makefiles"></a>
+<a class="index-entry-id" id="index-makefile_002c-including"></a>
+<a class="index-entry-id" id="index-include"></a>
+<p>The <code class="code">include</code> directive tells <code class="code">make</code> to suspend reading the
+current makefile and read one or more other makefiles before continuing.
+The directive is a line in the makefile that looks like this:
+</p>
+<div class="example">
+<pre>include <var class="var">filenames</var>...
+</pre></div>
+<p><var class="var">filenames</var> can contain shell file name patterns.  If
+<var class="var">filenames</var> is empty, nothing is included and no error is printed.
+<a class="index-entry-id" id="index-shell-file-name-pattern-_0028in-include_0029"></a>
+<a class="index-entry-id" id="index-shell-wildcards-_0028in-include_0029"></a>
+<a class="index-entry-id" id="index-wildcard_002c-in-include"></a>
+</p>
+<p>Extra spaces are allowed and ignored at the beginning of the line, but
+the first character must not be a tab (or the value of
+<code class="code">.RECIPEPREFIX</code>)—if the line begins with a tab, it will be
+considered a recipe line.  Whitespace is required between
+<code class="code">include</code> and the file names, and between file names; extra
+whitespace is ignored there and at the end of the directive.  A
+comment starting with ‘<samp class="samp">#</samp>’ is allowed at the end of the line.  If
+the file names contain any variable or function references, they are
+expanded.  See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Using-Variables">How to Use Variables</a>.
+</p>
+<p>For example, if you have three <samp class="file">.mk</samp> files, <samp class="file">a.mk</samp>,
+<samp class="file">b.mk</samp>, and <samp class="file">c.mk</samp>, and <code class="code">$(bar)</code> expands to
+<code class="code">bish bash</code>, then the following expression
+</p>
+<div class="example">
+<pre>include foo *.mk $(bar)
+</pre></div>
+<p>is equivalent to
+</p>
+<div class="example">
+<pre>include foo a.mk b.mk c.mk bish bash
+</pre></div>
+<p>When <code class="code">make</code> processes an <code class="code">include</code> directive, it suspends
+reading of the containing makefile and reads from each listed file in
+turn.  When that is finished, <code class="code">make</code> resumes reading the
+makefile in which the directive appears.
+</p>
+<p>One occasion for using <code class="code">include</code> directives is when several programs,
+handled by individual makefiles in various directories, need to use a
+common set of variable definitions
+(see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Setting">Setting Variables</a>) or pattern rules
+(see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Pattern-Rules">Defining and Redefining Pattern Rules</a>).
+</p>
+<p>Another such occasion is when you want to generate prerequisites from
+source files automatically; the prerequisites can be put in a file that
+is included by the main makefile.  This practice is generally cleaner
+than that of somehow appending the prerequisites to the end of the main
+makefile as has been traditionally done with other versions of
+<code class="code">make</code>.  See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Automatic-Prerequisites">Generating Prerequisites Automatically</a>.
+<a class="index-entry-id" id="index-prerequisites_002c-automatic-generation"></a>
+<a class="index-entry-id" id="index-automatic-generation-of-prerequisites"></a>
+<a class="index-entry-id" id="index-generating-prerequisites-automatically"></a>
+</p>
+<a class="index-entry-id" id="index-_002dI"></a>
+<a class="index-entry-id" id="index-_002d_002dinclude_002ddir"></a>
+<a class="index-entry-id" id="index-included-makefiles_002c-default-directories"></a>
+<a class="index-entry-id" id="index-default-directories-for-included-makefiles"></a>
+<a class="index-entry-id" id="index-_002fusr_002fgnu_002finclude"></a>
+<a class="index-entry-id" id="index-_002fusr_002flocal_002finclude"></a>
+<a class="index-entry-id" id="index-_002fusr_002finclude"></a>
+<p>If the specified name does not start with a slash (or a drive letter and colon
+when GNU Make is compiled with MS-DOS / MS-Windows path support), and the file
+is not found in the current directory, several other directories are searched.
+First, any directories you have specified with the ‘<samp class="samp">-I</samp>’ or
+‘<samp class="samp">--include-dir</samp>’ options are searched (see <a class="pxref" href="/docs/gnu-make/source/v4-4-1/manual.html#Options-Summary">Summary of
+Options</a>).  Then the following directories (if they exist) are searched, in
+this order: <samp class="file">prefix/include</samp> (normally <samp class="file">/usr/local/include</samp>
+<a class="footnote" href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#FOOT1" id="DOCF1"><sup>1</sup></a>)
+<samp class="file">/usr/gnu/include</samp>, <samp class="file">/usr/local/include</samp>, <samp class="file">/usr/include</samp>.
+</p>
+<p>The <code class="code">.INCLUDE_DIRS</code> variable will contain the current list of
+directories that make will search for included files.  See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables">Other Special Variables</a>.
+</p>
+<p>You can avoid searching in these default directories by adding the
+command line option <code class="code">-I</code> with the special value <code class="code">-</code> (e.g.,
+<code class="code">-I-</code>) to the command line.  This will cause <code class="code">make</code> to
+forget any already-set include directories, including the default
+directories.
+</p>
+<p>If an included makefile cannot be found in any of these directories it is not
+an immediately fatal error; processing of the makefile containing the
+<code class="code">include</code> continues.  Once it has finished reading makefiles, <code class="code">make</code>
+will try to remake any that are out of date or don’t exist.  See <a class="xref" href="/docs/gnu-make/v4-4-1/en/01-guide/11-remaking-makefiles/#Remaking-Makefiles">How Makefiles Are Remade</a>.  Only after it has failed to find a
+rule to remake the makefile, or it found a rule but the recipe failed, will
+<code class="code">make</code> diagnose the missing makefile as a fatal error.
+</p>
+<p>If you want <code class="code">make</code> to simply ignore a makefile which does not exist
+or cannot be remade, with no error message, use the <code class="code">-include</code><!-- /@w -->
+directive instead of <code class="code">include</code>, like this:
+</p>
+<div class="example">
+<pre>-include <var class="var">filenames</var>...
+</pre></div>
+<p>This acts like <code class="code">include</code> in every way except that there is no
+error (not even a warning) if any of the <var class="var">filenames</var> (or any
+prerequisites of any of the <var class="var">filenames</var>) do not exist or cannot be
+remade.
+</p>
+<p>For compatibility with some other <code class="code">make</code> implementations,
+<code class="code">sinclude</code> is another name for <code class="code">-include</code><!-- /@w -->.
+</p>
+<hr/>
+</div><div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="/docs/gnu-make/v4-4-1/en/01-guide/09-including-makefiles/#DOCF1" id="FOOT1">(1)</a></h5><p>GNU Make compiled for MS-DOS and MS-Windows behaves as if
+<var class="var">prefix</var> has been defined to be the root of the DJGPP tree hierarchy.</p></div></div>

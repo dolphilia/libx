@@ -1,0 +1,48 @@
+<div class="gnu-original-content"><div class="section-level-extent" id="Makefile-Names">
+<span id="What-Name-to-Give-Your-Makefile"></span><h3 class="section"><span>3.2 What Name to Give Your Makefile</span></h3>
+<a class="index-entry-id" id="index-makefile-name"></a>
+<a class="index-entry-id" id="index-name-of-makefile"></a>
+<a class="index-entry-id" id="index-default-makefile-name"></a>
+<a class="index-entry-id" id="index-file-name-of-makefile"></a>
+<p>By default, when <code class="code">make</code> looks for the makefile, it tries the
+following names, in order: <samp class="file">GNUmakefile</samp>, <samp class="file">makefile</samp>
+and <samp class="file">Makefile</samp>.
+<a class="index-entry-id" id="index-Makefile"></a>
+<a class="index-entry-id" id="index-GNUmakefile"></a>
+<a class="index-entry-id" id="index-makefile-1"></a>
+</p>
+<a class="index-entry-id" id="index-README"></a>
+<p>Normally you should call your makefile either <samp class="file">makefile</samp> or
+<samp class="file">Makefile</samp>.  (We recommend <samp class="file">Makefile</samp> because it appears
+prominently near the beginning of a directory listing, right near other
+important files such as <samp class="file">README</samp>.)  The first name checked,
+<samp class="file">GNUmakefile</samp>, is not recommended for most makefiles.  You should
+use this name if you have a makefile that is specific to GNU
+<code class="code">make</code>, and will not be understood by other versions of
+<code class="code">make</code>.  Other <code class="code">make</code> programs look for <samp class="file">makefile</samp> and
+<samp class="file">Makefile</samp>, but not <samp class="file">GNUmakefile</samp>.
+</p>
+<p>If <code class="code">make</code> finds none of these names, it does not use any makefile.
+Then you must specify a goal with a command argument, and <code class="code">make</code>
+will attempt to figure out how to remake it using only its built-in
+implicit rules.  See <a class="xref" href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules">Using Implicit Rules</a>.
+</p>
+<a class="index-entry-id" id="index-_002df"></a>
+<a class="index-entry-id" id="index-_002d_002dfile"></a>
+<a class="index-entry-id" id="index-_002d_002dmakefile"></a>
+<p>If you want to use a nonstandard name for your makefile, you can specify
+the makefile name with the ‘<samp class="samp">-f</samp>’ or ‘<samp class="samp">--file</samp>’ option.  The
+arguments ‘<samp class="samp">-f name</samp>’<!-- /@w --> or ‘<samp class="samp">--file=name</samp>’<!-- /@w --> tell
+<code class="code">make</code> to read the file <var class="var">name</var> as the makefile.  If you use
+more than one ‘<samp class="samp">-f</samp>’ or ‘<samp class="samp">--file</samp>’ option, you can specify several
+makefiles.  All the makefiles are effectively concatenated in the order
+specified.  The default makefile names <samp class="file">GNUmakefile</samp>,
+<samp class="file">makefile</samp> and <samp class="file">Makefile</samp> are not checked automatically if you
+specify ‘<samp class="samp">-f</samp>’ or ‘<samp class="samp">--file</samp>’.
+<a class="index-entry-id" id="index-specifying-makefile-name"></a>
+<a class="index-entry-id" id="index-makefile-name_002c-how-to-specify"></a>
+<a class="index-entry-id" id="index-name-of-makefile_002c-how-to-specify"></a>
+<a class="index-entry-id" id="index-file-name-of-makefile_002c-how-to-specify"></a>
+</p>
+<hr/>
+</div></div>
