@@ -1,0 +1,186 @@
+{
+  "entryStart": 3,
+  "entries": [
+    {
+      "title": "スコープ",
+      "body": "\njqの記号には、値の束縛（「変数」とも呼ばれます）と関数の2種類があります。どちらも字句的なスコープを持ち、式が参照できるのは、自分より「左側」で定義された記号だけです。この規則の唯一の例外は、再帰関数を作れるように、関数が自分自身を参照できることです。\n\nたとえば、次の式には、定義位置の「右側」では見えますが、「左側」では見えない束縛があります。`... | .*3 as\n$times_three | [. + $times_three] | ...` です。次の式を考えてみてください。`... | (.*3 as\n$times_three | [. + $times_three]) | ...` です。ここでは、束縛 `$times_three` は、閉じ括弧より後では_見えません_。\n"
+    },
+    {
+      "title": "`isempty(exp)`",
+      "body": "\n`exp` が何も出力しない場合にtrueを返し、それ以外の場合にfalseを返します。\n",
+      "examples": [
+        {
+          "program": "isempty(empty)",
+          "input": "null",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "isempty(.[])",
+          "input": "[]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "isempty(.[])",
+          "input": "[1,2,3]",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`limit(n; expr)`",
+      "body": "\n関数 `limit` は、最大 `n` 個の出力を `expr` から取り出します。\n",
+      "examples": [
+        {
+          "program": "[limit(3; .[])]",
+          "input": "[0,1,2,3,4,5,6,7,8,9]",
+          "output": [
+            "[0,1,2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`skip(n; expr)`",
+      "body": "\n関数 `skip` は、最初の `n` 個の出力を `expr` から飛ばします。\n",
+      "examples": [
+        {
+          "program": "[skip(3; .[])]",
+          "input": "[0,1,2,3,4,5,6,7,8,9]",
+          "output": [
+            "[3,4,5,6,7,8,9]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`first(expr)`, `last(expr)`, `nth(n; expr)`",
+      "body": "\n関数 `first(expr)` と `last(expr)` は、それぞれ、`expr` の最初と最後の値を取り出します。\n\n関数 `nth(n; expr)` は、`expr` が出力するn番目の値を取り出します。`nth(n; expr)` は、`n` の負の値に対応していないことに注意してください。\n",
+      "examples": [
+        {
+          "program": "[first(range(.)), last(range(.)), nth(5; range(.))]",
+          "input": "10",
+          "output": [
+            "[0,9,5]"
+          ]
+        },
+        {
+          "program": "[first(empty), last(empty), nth(5; empty)]",
+          "input": "null",
+          "output": [
+            "[]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`first`, `last`, `nth(n)`",
+      "body": "\n関数 `first` と `last` は、`.` にある配列の最初と最後の値を、それぞれ取り出します。\n\n関数 `nth(n)` は、`.` にある配列のn番目の値を取り出します。\n",
+      "examples": [
+        {
+          "program": "[range(.)]|[first, last, nth(5)]",
+          "input": "10",
+          "output": [
+            "[0,9,5]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`reduce`",
+      "body": "\n`reduce` 構文は、式のすべての結果を1つの答えへ累積することで、まとめられるようにします。形式は `reduce EXP as $var (INIT; UPDATE)` です。例として、`[1,2,3]` を次の式に渡します。\n\n    reduce .[] as $item (0; . + $item)\n\n`.[]` が生成する各結果に対して、`. + $item` を実行し、入力値0から始めて合計を累積します。この例では、`.[]` は `1`、`2`、`3` を生成するため、次のような式を実行するのと似た効果があります。\n\n    0 | 1 as $item | . + $item |\n        2 as $item | . + $item |\n        3 as $item | . + $item\n",
+      "examples": [
+        {
+          "program": "reduce .[] as $item (0; . + $item)",
+          "input": "[1,2,3,4,5]",
+          "output": [
+            "15"
+          ]
+        },
+        {
+          "program": "reduce .[] as [$i,$j] (0; . + $i * $j)",
+          "input": "[[1,2],[3,4],[5,6]]",
+          "output": [
+            "44"
+          ]
+        },
+        {
+          "program": "reduce .[] as {$x,$y} (null; .x += $x | .y += [$y])",
+          "input": "[{\"x\":\"a\",\"y\":1},{\"x\":\"b\",\"y\":2},{\"x\":\"c\",\"y\":3}]",
+          "output": [
+            "{\"x\":\"abc\",\"y\":[1,2,3]}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`foreach`",
+      "body": "\n`foreach` 構文は `reduce` と似ていますが、`limit` や中間結果を生成する集約処理を構築できるようにすることを目的としています。\n\n形式は `foreach EXP as $var (INIT; UPDATE; EXTRACT)` です。例として、`[1,2,3]` を次の式に渡します。\n\n    foreach .[] as $item (0; . + $item; [$item, . * 2])\n\n`reduce` 構文と同様に、`. + $item` を、`.[]` が生成する各結果に対して実行します。ただし、`[$item, . * 2]` は各中間値に対して実行します。この例では、中間値が `1`、`3`、`6` であるため、`foreach` 式は `[1,2]`、`[2,6]`、`[3,12]` を生成します。そのため、次のような式を実行するのと似た効果があります。\n\n    0 | 1 as $item | . + $item | [$item, . * 2],\n        2 as $item | . + $item | [$item, . * 2],\n        3 as $item | . + $item | [$item, . * 2]\n\n`EXTRACT` を省略した場合、恒等フィルターを使います。つまり、中間値をそのまま出力します。\n",
+      "examples": [
+        {
+          "program": "foreach .[] as $item (0; . + $item)",
+          "input": "[1,2,3,4,5]",
+          "output": [
+            "1",
+            "3",
+            "6",
+            "10",
+            "15"
+          ]
+        },
+        {
+          "program": "foreach .[] as $item (0; . + $item; [$item, . * 2])",
+          "input": "[1,2,3,4,5]",
+          "output": [
+            "[1,2]",
+            "[2,6]",
+            "[3,12]",
+            "[4,20]",
+            "[5,30]"
+          ]
+        },
+        {
+          "program": "foreach .[] as $item (0; . + 1; {index: ., $item})",
+          "input": "[\"foo\", \"bar\", \"baz\"]",
+          "output": [
+            "{\"index\":1,\"item\":\"foo\"}",
+            "{\"index\":2,\"item\":\"bar\"}",
+            "{\"index\":3,\"item\":\"baz\"}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "再帰",
+      "body": "\n前述のとおり、`recurse` は再帰を使い、どのjq関数も再帰関数になれます。組込み関数 `while` も再帰によって実装されています。\n\n再帰呼出しの左側にある式が最後の値を出力するとき、末尾呼出しが最適化されます。実際には、再帰呼出しの左側にある式が、各入力に対して2つ以上の出力を生成しないようにするという意味です。\n\n例：\n\n    def recurse(f): def r: ., (f | select(. != null) | r); r;\n\n    def while(cond; update):\n      def _while:\n        if cond then ., (update | _while) else empty end;\n      _while;\n\n    def repeat(exp):\n      def _repeat:\n        exp, _repeat;\n      _repeat;\n"
+    },
+    {
+      "title": "ジェネレーターとイテレーター",
+      "body": "\njqの演算子や関数の中には、各入力に対して0個、1個、または複数の値を生成できるという意味で、実際にジェネレーターであるものがあります。ジェネレーターを持つ他のプログラミング言語と同様です。たとえば、`.[]` は入力のすべての値を生成します。入力は配列かオブジェクトでなければなりません。`range(0; 10)` は0から10の間の整数を生成する、というようになります。\n\nカンマ演算子もジェネレーターです。まずカンマの左側の式が生成する値を生成し、その後にカンマの右側の式が生成する値を生成します。\n\n組込み関数 `empty` は、出力を0個生成するジェネレーターです。組込み関数 `empty` は、直前のジェネレーター式へバックトラックします。\n\nすべてのjq関数は、組込みジェネレーターを使うだけでジェネレーターになれます。再帰とカンマ演算子だけを使って、新しいジェネレーターを構築することもできます。再帰呼出しが「末尾位置」にあれば、ジェネレーターは効率的になります。以下の例では、`_range` が自分自身を呼び出す再帰呼出しが末尾位置にあります。この例は、末尾再帰、ジェネレーターの構築、下位関数という3つの高度な話題を示します。\n",
+      "examples": [
+        {
+          "program": "def range(init; upto; by): def _range: if (by > 0 and . < upto) or (by < 0 and . > upto) then ., ((.+by)|_range) else empty end; if init == upto then empty elif by == 0 then init else init|_range end; range(0; 10; 3)",
+          "input": "null",
+          "output": [
+            "0",
+            "3",
+            "6",
+            "9"
+          ]
+        },
+        {
+          "program": "def while(cond; update): def _while: if cond then ., (update | _while) else empty end; _while; [while(.<100; .*2)]",
+          "input": "1",
+          "output": [
+            "[1,2,4,8,16,32,64]"
+          ]
+        }
+      ]
+    }
+  ]
+}

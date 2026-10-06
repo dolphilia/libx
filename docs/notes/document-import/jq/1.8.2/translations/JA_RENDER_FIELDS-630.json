@@ -1,0 +1,2437 @@
+{
+  "status": "full-japanese-render-fields-not-app-validation",
+  "markdownVersion": "3.10.2",
+  "inputSha256": "2309907188195edee4659ffcdd52d4a30c51d4ef3824a05bcdb9d5e259802a73",
+  "translatedPages": [
+    "00-introduction",
+    "01-invoking-jq",
+    "02-basic-filters",
+    "03-types-and-values",
+    "04-builtin-operators-and-functions",
+    "05-conditionals-and-comparisons",
+    "06-regular-expressions",
+    "07-advanced-features",
+    "08-math",
+    "09-io",
+    "10-streaming",
+    "11-assignment",
+    "12-comments",
+    "13-modules",
+    "14-colors",
+    "15-manpage-appendix"
+  ],
+  "missingPages": [],
+  "fields": [
+    {
+      "key": "body",
+      "page": "00-introduction",
+      "mode": "web-body",
+      "sourceSha256": "ad2f1be3e09b443eefe5bb6997eaa1bb2fe4da1dd470b1b5846548421a157e68",
+      "translatedSha256": "2177f85ad08675f0cc76aa38815cdb32b93e64113eb1e628c53ed5c1aa985ab2",
+      "html": "<p>jqのプログラムは「フィルター」です。入力を受け取り、出力を生成します。オブジェクトから特定のフィールドを取り出す、数値を文字列に変換するなど、さまざまな一般的な処理に使える組込みフィルターが数多くあります。</p>\n<p>フィルターはさまざまな方法で組み合わせられます。あるフィルターの出力を別のフィルターへパイプで渡したり、フィルターの出力を配列にまとめたりできます。</p>\n<p>複数の結果を生成するフィルターもあります。たとえば、入力配列のすべての要素を生成するフィルターがあります。このフィルターの出力を2つ目のフィルターへパイプで渡すと、配列の各要素に対して2つ目のフィルターが実行されます。一般に、他の言語ならループや反復処理で行うことを、jqではフィルターをつなぎ合わせるだけで行えます。</p>\n<p>どのフィルターにも入力と出力があることを覚えておくのが大切です。\"hello\"や42のようなリテラルもフィルターです。入力は受け取りますが、出力として常に同じリテラルを生成します。加算のように2つのフィルターを組み合わせる演算では、通常、両方に同じ入力を渡し、その結果を組み合わせます。したがって、平均を求めるフィルターは <code>add / length</code> と書けます。入力配列を <code>add</code> フィルターと <code>length</code> フィルターの両方へ渡してから、割り算を行うわけです。</p>\n<p>とはいえ、少し先走ってしまいました。:) もっと簡単なところから始めましょう。</p>"
+    },
+    {
+      "key": "sections/0/title",
+      "page": "01-invoking-jq",
+      "mode": "section-title",
+      "sourceSha256": "351d0bfffb5f18aaeac965e738063dbac7b0ceb56a70a3ca6e4245560222b874",
+      "translatedSha256": "73bc35ebdc5b9adebc0a4f1f84e003a2f53cd07d36543fc32095ec9da5b31ddf",
+      "html": "<h2>jqの起動</h2>"
+    },
+    {
+      "key": "sections/0/body",
+      "page": "01-invoking-jq",
+      "mode": "web-body",
+      "sourceSha256": "a7dd4abd103dbf34527565b32a4008d439796e7f58f5aaa3c657c211b36021cd",
+      "translatedSha256": "6d9937494a72ce1642c0e47a2e949b1056f9e8653c6e62b23923ab377d68f4f5",
+      "html": "<p>jqのフィルターはJSONデータのストリームを処理します。jqへの入力は、空白で区切られたJSON値の列として解析され、指定したフィルターへ1つずつ渡されます。フィルターの出力は、改行で区切られたJSONデータの列として標準出力に書き出されます。</p>\n<p>最も単純で、最もよく使われるフィルター（jqプログラム）は <code>.</code> です。これは恒等演算子で、jq処理系への入力をそのまま出力ストリームへコピーします。jq処理系は既定で入力ストリームからJSONテキストを読み取り、出力を整形するため、<code>.</code> プログラムの主な用途は入力の検証と整形です。jqのプログラミング言語には豊富な機能があり、検証や整形以外にもはるかに多くのことができます。</p>\n<p>注意：シェルの引用規則に気を配ることが大切です。一般則として、jqプログラムは常に引用符で囲むのが最善です（Unixシェルでは一重引用符を使います）。jqで特別な意味を持つ文字の多くは、シェルのメタ文字でもあるためです。たとえば、<code>jq\n\"foo\"</code> はほとんどのUnixシェルで失敗します。これは <code>jq foo</code> と同じになり、通常は <code>foo is not\ndefined</code> という理由で失敗するからです。Windowsコマンドシェル（cmd.exe）では、<code>-f program-file</code> オプションの代わりにコマンド行でjqプログラムを指定する場合、プログラムを二重引用符で囲むのが最善ですが、その場合はjqプログラム内の二重引用符をバックスラッシュでエスケープする必要があります。Powershell（<code>powershell.exe</code>）またはPowershell Core（<code>pwsh</code>/<code>pwsh.exe</code>）では、jqプログラムを一重引用符で囲み、プログラム内の二重引用符をバックスラッシュでエスケープ（<code>\\\"</code>）してください。</p>\n<ul>\n<li>Unixシェル：<code>jq '.[\"foo\"]'</code></li>\n<li>Powershell：<code>jq '.[\\\"foo\\\"]'</code></li>\n<li>Windowsコマンドシェル：<code>jq \".[\\\"foo\\\"]\"</code></li>\n</ul>\n<p>注意：jqではユーザー定義関数を使えますが、すべてのjqプログラムにはトップレベルの式が必要です。</p>\n<p>コマンド行オプションを使って、jqによる入出力の読み書きの方法を変更できます。</p>\n<ul>\n<li><code>--null-input</code> / <code>-n</code>:</li>\n</ul>\n<p>入力を一切読み取りません。代わりに、<code>null</code> を入力としてフィルターを1回実行します。jqを簡単な計算機として使う場合や、JSONデータを一から構築する場合に便利です。</p>\n<ul>\n<li><code>--raw-input</code> / <code>-R</code>:</li>\n</ul>\n<p>入力をJSONとして解析しません。代わりに、テキストの各行を文字列としてフィルターへ渡します。<code>--slurp</code> と組み合わせると、入力全体を1つの長い文字列としてフィルターへ渡します。</p>\n<ul>\n<li><code>--slurp</code> / <code>-s</code>:</li>\n</ul>\n<p>入力中のJSONオブジェクトごとにフィルターを実行する代わりに、入力ストリーム全体を大きな配列へ読み込み、フィルターを1回だけ実行します。</p>\n<ul>\n<li><code>--compact-output</code> / <code>-c</code>:</li>\n</ul>\n<p>jqは既定でJSON出力を整形します。このオプションを使うと、各JSONオブジェクトを1行にまとめ、よりコンパクトに出力します。</p>\n<ul>\n<li><code>--raw-output</code> / <code>-r</code>:</li>\n</ul>\n<p>このオプションを使うと、フィルターの結果が文字列の場合、引用符付きのJSON文字列に整形せず、そのまま標準出力に書き出します。jqフィルターをJSONを使わないシステムと連携させる場合に便利です。</p>\n<ul>\n<li><code>--raw-output0</code>:</li>\n</ul>\n<p><code>-r</code> と同様ですが、各出力の後に改行ではなくNULを出力します。出力する値に改行が含まれる場合に便利です。出力値にNULが含まれる場合、jqは0以外のコードで終了します。</p>\n<ul>\n<li><code>--join-output</code> / <code>-j</code>:</li>\n</ul>\n<p><code>-r</code> と同様ですが、各出力の後に改行を出力しません。</p>\n<ul>\n<li><code>--ascii-output</code> / <code>-a</code>:</li>\n</ul>\n<p>jqは通常、ASCII以外のUnicodeコードポイントをUTF-8で出力します。入力でエスケープシーケンス（\"\\u03bc\"など）を使って指定した場合も同様です。このオプションを使うと、ASCII以外の各文字を対応するエスケープシーケンスに置き換え、ASCIIだけで出力するよう強制できます。</p>\n<ul>\n<li><code>--sort-keys</code> / <code>-S</code>:</li>\n</ul>\n<p>各オブジェクトのフィールドを、キーをソートした順序で出力します。</p>\n<ul>\n<li><code>--color-output</code> / <code>-C</code> と <code>--monochrome-output</code> / <code>-M</code>:</li>\n</ul>\n<p>jqは既定で、端末に書き出す場合にJSONを色付きで出力します。<code>-C</code> を使うと、パイプやファイルに書き出す場合でも色付きの出力を強制でき、<code>-M</code> で色を無効にできます。環境変数 <code>NO_COLOR</code> が空でない場合、jqは既定で色付きの出力を無効にしますが、<code>-C</code> で有効にできます。</p>\n<p>色は環境変数 <code>JQ_COLORS</code> で設定できます（後述）。</p>\n<ul>\n<li><code>--tab</code>:</li>\n</ul>\n<p>インデントの各段階で、2つの空白の代わりにタブを使います。</p>\n<ul>\n<li><code>--indent n</code>:</li>\n</ul>\n<p>指定した数の空白（最大7個）でインデントします。</p>\n<ul>\n<li><code>--unbuffered</code>:</li>\n</ul>\n<p>JSONオブジェクトを出力するたびに、出力をフラッシュします（遅いデータソースをパイプでjqへ渡し、jqの出力をさらに別の場所へパイプで渡す場合に便利です）。</p>\n<ul>\n<li><code>--stream</code>:</li>\n</ul>\n<p>入力をストリーミング方式で解析し、パスと葉の値（スカラー、および空の配列や空のオブジェクト）からなる配列を出力します。たとえば、<code>\"a\"</code> は <code>[[],\"a\"]</code> になり、<code>[[],\"a\",[\"b\"]]</code> は <code>[[0],[]]</code>、<code>[[1],\"a\"]</code>、<code>[[2,0],\"b\"]</code> になります。</p>\n<p>非常に大きな入力の処理に便利です。フィルタリング、および <code>reduce</code> と <code>foreach</code> の構文と組み合わせて使うと、大きな入力を逐次的に集約できます。</p>\n<ul>\n<li><code>--stream-errors</code>:</li>\n</ul>\n<p><code>--stream</code> と同様ですが、不正なJSON入力に対して、第1要素がエラー、第2要素がパスの配列値を生成します。たとえば、<code>[\"a\",n]</code> は <code>[\"Invalid literal at line 1,\n  column 7\",[1]]</code> を生成します。</p>\n<p><code>--stream</code> を暗黙に有効にします。<code>--stream</code> を使い、<code>--stream-errors</code> を付けなかった場合、不正なJSON入力に対してエラー値は生成されません。</p>\n<ul>\n<li><code>--seq</code>:</li>\n</ul>\n<p>jqの入出力でJSONテキストを区切るために、MIMEタイプ <code>application/json-seq</code> の方式を使います。つまり、出力の各値の前にASCIIのRS（レコード区切り）文字を、各出力の後にASCIIのLF（改行）を出力します。解析に失敗した入力JSONテキストは無視されますが警告が出され、次のRSまでの後続入力はすべて破棄されます。このモードでは、<code>--seq</code> オプションを付けずに実行したjqの出力も解析できます。</p>\n<ul>\n<li><code>-f</code> / <code>--from-file</code>:</li>\n</ul>\n<p>awkの-fオプションのように、コマンド行ではなくファイルからフィルターを読み取ります。このオプションにより、フィルター引数はプログラムのソースではなくファイル名として解釈されます。</p>\n<ul>\n<li><code>-L directory</code> / <code>--library-path directory</code>:</li>\n</ul>\n<p>モジュールの検索リストの先頭に <code>directory</code> を追加します。このオプションを使うと、組込みの検索リストは使われません。後述のモジュールの節を参照してください。</p>\n<ul>\n<li><code>--arg name value</code>:</li>\n</ul>\n<p>このオプションは、事前定義された変数として値をjqプログラムへ渡します。<code>--arg foo bar</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使え、その値は <code>\"bar\"</code> になります。<code>value</code> は文字列として扱われるため、<code>--arg foo 123</code> は <code>$foo</code> に <code>\"123\"</code> を束縛します。</p>\n<p>名前付き引数は、jqプログラム内で <code>$ARGS.named</code> としても使えます。名前が有効な識別子でない場合、それにアクセスするにはこの方法しかありません。</p>\n<ul>\n<li><code>--argjson name JSON-text</code>:</li>\n</ul>\n<p>このオプションは、JSONエンコードされた値を事前定義された変数としてjqプログラムへ渡します。<code>--argjson foo 123</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使え、その値は <code>123</code> になります。</p>\n<ul>\n<li><code>--slurpfile variable-name filename</code>:</li>\n</ul>\n<p>指定したファイル内のすべてのJSONテキストを読み取り、解析されたJSON値の配列を指定したグローバル変数へ束縛します。<code>--slurpfile foo bar</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使えます。その値は、<code>bar</code> という名前のファイル内の各テキストに対応する要素を持つ配列です。</p>\n<ul>\n<li><code>--rawfile variable-name filename</code>:</li>\n</ul>\n<p>指定したファイルを読み取り、その内容を指定したグローバル変数へ束縛します。<code>--rawfile foo bar</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使え、その値は <code>bar</code> という名前のファイル内のテキストを内容とする文字列になります。</p>\n<ul>\n<li><code>--args</code>:</li>\n</ul>\n<p>残りの引数は、文字列の位置引数として扱われます。jqプログラム内で <code>$ARGS.positional[]</code> として使えます。</p>\n<ul>\n<li><code>--jsonargs</code>:</li>\n</ul>\n<p>残りの引数は、JSONテキストの位置引数として扱われます。jqプログラム内で <code>$ARGS.positional[]</code> として使えます。</p>\n<ul>\n<li><code>--exit-status</code> / <code>-e</code>:</li>\n</ul>\n<p>jqの終了ステータスは、最後の出力値が <code>false</code> でも <code>null</code> でもない場合に0、最後の出力値が <code>false</code> または <code>null</code> の場合に1、有効な結果が一度も生成されなかった場合に4になります。通常、使用方法の問題またはシステムエラーがあった場合には2、jqプログラムのコンパイルエラーがあった場合には3、jqプログラムが実行された場合には0で終了します。</p>\n<p>終了ステータスを設定する別の方法として、組込み関数 <code>halt_error</code> もあります。</p>\n<ul>\n<li><code>--binary</code> / <code>-b</code>:</li>\n</ul>\n<p>WSL、MSYS2、Cygwinを使うWindowsユーザーは、ネイティブのjq.exeを使う場合、このオプションを指定してください。指定しないと、jqは改行（LF）を復帰と改行の組（CRLF）へ変換します。</p>\n<ul>\n<li><code>--version</code> / <code>-V</code>:</li>\n</ul>\n<p>jqのバージョンを出力し、0で終了します。</p>\n<ul>\n<li><code>--build-configuration</code>:</li>\n</ul>\n<p>jqのビルド設定を出力し、0で終了します。この出力には、サポート対象として保証された形式や構造がなく、将来のリリースで予告なく変わる可能性があります。</p>\n<ul>\n<li><code>--help</code> / <code>-h</code>:</li>\n</ul>\n<p>jqのヘルプを出力し、0で終了します。</p>\n<ul>\n<li><code>--</code>:</li>\n</ul>\n<p>引数の処理を終了します。残りの引数はオプションとして解釈されません。</p>\n<ul>\n<li><code>--run-tests [filename]</code>:</li>\n</ul>\n<p>指定したファイルまたは標準入力内のテストを実行します。指定するオプションの最後に置く必要があり、それより前のオプションすべてに従うわけではありません。入力は、コメント行、空行、プログラム行と、それに続く1行の入力、期待する出力の数だけの出力行（出力1つにつき1行）、最後の空行で構成されます。コンパイル失敗のテストは、<code>%%FAIL</code> だけを含む行、コンパイルするプログラムを含む行、実際のエラーと比較するエラーメッセージを含む行の順で始まります。</p>\n<p>このオプションは後方互換性を保たずに変更される可能性があるので、注意してください。</p>"
+    },
+    {
+      "key": "sections/1/title",
+      "page": "02-basic-filters",
+      "mode": "section-title",
+      "sourceSha256": "60cac4263f7a19dfa5cc37be0456cbcc16948888b26b425253e6af02cddab8ef",
+      "translatedSha256": "b57ee1f15c072a1d48d15d4c8e960819fe445b4839f3893d3ecb36817dce5ccd",
+      "html": "<h2>基本フィルター</h2>"
+    },
+    {
+      "key": "sections/1/entries/0/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "3121d7a846204c2febee8e2e26b693289330707c40a582774530cf66dd012599",
+      "translatedSha256": "8a516ca4812b0aeb70f99eb2287ef1d14dae7de42c9027a99f7504dcd3f8d807",
+      "html": "<h3>恒等フィルター：<code>.</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/0/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "38274b1239440dd6835fa6366fdc85b8f6b2cdbc36d63ef9b32078551b216122",
+      "translatedSha256": "1e581b042e6dec028a830310a5a809d3a53db74eebe2853ef7a17032bfe21d73",
+      "html": "<p>最も単純なフィルターは <code>.</code> です。このフィルターは入力を受け取り、同じ値を出力します。つまり、恒等演算子です。</p>\n<p>jqは既定ですべての出力を整形するため、<code>.</code> だけからなる簡単なプログラムを使って、たとえば <code>curl</code> のJSON出力を整形できます。</p>\n<p>恒等フィルター自体は入力の値を変更しませんが、jqの処理によって、変更されたように見えることがあります。たとえば、jqの現在の実装では、次の式を評価すると、</p>\n<pre><code>1E1234567890 | .&#10;</code></pre>\n<p>少なくとも1つのプラットフォームで <code>1.7976931348623157e+308</code> が生成されます。これは、数値を解析する過程で、この特定の版のjqがIEEE754の倍精度表現へ変換し、精度が失われたためです。</p>\n<p>jqによる数値の扱いはこれまでに変化しており、今後も関連するJSON標準が定める範囲内で変化する可能性が高いと考えられます。また、ビルド設定のオプションによって、jqの数値処理の方法が変わることがあります。</p>\n<p>したがって、以下の説明は、jqの現在の版の動作を記述することを意図したものであり、動作を規定するものと解釈すべきではない、という前提で示します。</p>\n<p>(1) まだIEEE754の倍精度表現へ変換されていない数値に対して算術演算を行うと、IEEE754表現への変換が発生します。</p>\n<p>(2) jqは、数値リテラルの元の十進精度を維持しようとします（ビルド設定のオプション <code>--disable-decnum</code> が使われなかった場合）。ただし、<code>1E1234567890</code> のような式では、指数が大きすぎると精度が失われます。</p>\n<p>(3) 数値の切り詰められていない大きな十進数表現が利用できる場合、比較はその表現を使って行われます。以下の実行例の1つで、この動作を示します。</p>\n<p>以下の実行例では、組込み関数 <code>have_decnum</code> を使って、ビルド設定のオプション <code>--disable-decnum</code> を使った場合と使わなかった場合に期待される違いを示します。また、このオプションの使用の有無にかかわらず、実行例から作成した自動テストが成功するようにしています。</p>"
+    },
+    {
+      "key": "sections/1/entries/1/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "d02bedcd681d7de440f37901e348c2a312daf974d4f93fbc05614a38e404ef66",
+      "translatedSha256": "c5119a449f8b28e423731f57e2d03ee3680acbcef233683b7978ee9f47dfef62",
+      "html": "<h3>オブジェクトの識別子による索引：<code>.foo</code>、<code>.foo.bar</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/1/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "fc5482debcf9421630e8d644b57ca767100a4505e1da8c38f73b34cfbeabf849",
+      "translatedSha256": "80d07002393a83c984ecf9d4cc5f094a4c0b2965f6a5b2efc8e6db903a5bcf5f",
+      "html": "<p>最も単純で<em>役に立つ</em>フィルターは <code>.foo</code> という形式です。JSONオブジェクト（辞書やハッシュとも呼ばれます）を入力として与えると、<code>.foo</code> はキー\"foo\"が存在する場合にその値を、存在しない場合にnullを生成します。</p>\n<p><code>.foo.bar</code> という形式のフィルターは <code>.foo | .bar</code> と同じです。</p>\n<p><code>.foo</code> の構文は、単純で識別子のようなキーにだけ使えます。つまり、英数字とアンダースコアだけで構成され、数字で始まらないキーです。</p>\n<p>キーに特殊文字が含まれる場合や数字で始まる場合は、<code>.\"foo$\"</code> のように二重引用符で囲むか、<code>.[\"foo$\"]</code> を使う必要があります。</p>\n<p>たとえば、<code>.[\"foo::bar\"]</code> と <code>.[\"foo.bar\"]</code> は使えますが、<code>.foo::bar</code> は使えません。</p>"
+    },
+    {
+      "key": "sections/1/entries/2/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "eecb66aa812b8d2cbb58fc4bb311a36b337af1555fa72e664b58dc4044999ceb",
+      "translatedSha256": "692b1bd1824a4abb9ad9f11b9624b39f39888cc1d91d6e8270fb0604b8ea2c10",
+      "html": "<h3>オブジェクトの識別子による索引（エラーを抑制）：<code>.foo?</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/2/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "29efffb75031da66fa5a5074b3369790fb862015447ada4dc4c49a742993d05d",
+      "translatedSha256": "5363fe7edc7f0c0f44cb763c68be6871b95acb3543771a1c511021a29d131774",
+      "html": "<p><code>.foo</code> と同様ですが、<code>.</code> がオブジェクトでなくてもエラーを出力しません。</p>"
+    },
+    {
+      "key": "sections/1/entries/3/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "bbc8c0c5b60b04aa985f2373bf8f0c36c5787c57639f828529013cd43f402079",
+      "translatedSha256": "085fc272a612dbac175b2ca9f40f84c2bf26de5fefb5aa4e9bcf5c7893605095",
+      "html": "<h3>オブジェクトの索引：<code>.[&lt;string&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/3/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "8fff5f39d8b1d84e43f34484b757ccc4e288c5e26b812c190a4cdeebb13395ad",
+      "translatedSha256": "a0a107fd9d8f483412d116098c322f14c3c028e8230289fe32b8d42f7ce154a9",
+      "html": "<p><code>.[\"foo\"]</code> のような構文を使って、オブジェクトのフィールドを検索することもできます（前述の <code>.foo</code> はこの省略形ですが、識別子のような文字列にだけ使えます）。</p>"
+    },
+    {
+      "key": "sections/1/entries/4/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "2486bfae7395872092ecb81b74bfa31b2f1c58b5e66881821e6b91aa7d5aac6a",
+      "translatedSha256": "4321a8c86440e5d5f54bdb4132de025806239057da84ce316ad554d3d8bf86b3",
+      "html": "<h3>配列の索引：<code>.[&lt;number&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/4/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "c3ac205c3c75bfd270daaac05d7b4b809f0819ae68881c6047eb5b71c6d328d4",
+      "translatedSha256": "2bc5118027c8142e146ab3c13f483b0bf33fb82f4ef6ef0a865611743e6d7544",
+      "html": "<p>索引の値が整数の場合、<code>.[&lt;number&gt;]</code> で配列を参照できます。配列の索引は0から始まるため、<code>.[2]</code> は3番目の要素を返します。</p>\n<p>負の索引も使えます。-1は最後の要素、-2は最後から2番目の要素を指し、以下も同様です。</p>"
+    },
+    {
+      "key": "sections/1/entries/5/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "07fce2d402a36f9ad39831aebf519107f46686b33ab2856a6f772223eb39a33b",
+      "translatedSha256": "7776f5c09ce27745bc079490c99b4e88d3d36749264037a15f9ba27af619bf8f",
+      "html": "<h3>配列・文字列のスライス：<code>.[&lt;number&gt;:&lt;number&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/5/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "810c7e37958719662a2756e97c19ae5d9cb60bb2a8dc51a8651e04ae8a1e0c18",
+      "translatedSha256": "00940b994b3e3fb3ae13e1a360830a7eff04a3a24793bd55b78874adf21dcb68",
+      "html": "<p><code>.[&lt;number&gt;:&lt;number&gt;]</code> という構文を使うと、配列の部分配列や文字列の部分文字列を返せます。<code>.[10:15]</code> が返す配列の長さは5で、索引10（含む）から索引15（含まない）までの要素を含みます。どちらの索引も負の値にできます。その場合、配列の末尾から逆向きに数えます。また、どちらも省略でき、その場合は配列の先頭または末尾を指します。索引は0から始まります。</p>"
+    },
+    {
+      "key": "sections/1/entries/6/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "68078df0805f72954daf2a44ea91d19f24c70f766387b6566ab0022eafd30949",
+      "translatedSha256": "f8f63a7e583057e201800a28d19a845112c95d5f59959d0e822647f2a0194fb7",
+      "html": "<h3>配列・オブジェクトの値のイテレーター：<code>.[]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/6/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "bb14c94f84d8d3dc8e2fb6080ddfac322aae01f34cd94e645a701337f3b22717",
+      "translatedSha256": "ecae531e4453b1f357f38d247d376839367e0196b764dce4e9f7bcc268c7222d",
+      "html": "<p><code>.[index]</code> の構文で索引を完全に省略すると、配列の<em>すべて</em>の要素を返します。<code>.[]</code> を入力 <code>[1,2,3]</code> に対して実行すると、1つの配列ではなく、3つの別々の結果として数値を生成します。<code>.foo[]</code> という形式のフィルターは <code>.foo | .[]</code> と同じです。</p>\n<p>オブジェクトに対して使うこともでき、その場合はオブジェクトのすべての値を返します。</p>\n<p>このイテレーター演算子は、値のジェネレーターであることに注意してください。</p>"
+    },
+    {
+      "key": "sections/1/entries/7/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "5c0d998724a9d55020c473e937c199a355e78745cd6ed66cbecf91b9d67f1566",
+      "translatedSha256": "5c0d998724a9d55020c473e937c199a355e78745cd6ed66cbecf91b9d67f1566",
+      "html": "<h3><code>.[]?</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/7/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "e52310a6207da127dfcc5e14a3d5866a21f8fb68d61c0f4e454160c51cf694db",
+      "translatedSha256": "a1215090221adcca371c5a6038b4146f2bede60ac9ff2be02740210e52a4e700",
+      "html": "<p><code>.[]</code> と同様ですが、.が配列でもオブジェクトでもない場合も、エラーを出力しません。<code>.foo[]?</code> という形式のフィルターは <code>.foo | .[]?</code> と同じです。</p>"
+    },
+    {
+      "key": "sections/1/entries/8/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "a02b92c4788778480d0303ab13fd40803c351c5928eb4ee2ef1dad475d489991",
+      "translatedSha256": "15249aa5451451d9cca3a13e97d652ab03b0e993b07c02d4bc90e8c52527c196",
+      "html": "<h3>カンマ：<code>,</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/8/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "931120470c0faddf22675e4f2af9abec5c06d925cbc8173b34a827de3684c0e1",
+      "translatedSha256": "2cfe42569b221abc4d6f4bf1aaf0605faf0e4591b1ad964af147b7081e43ae55",
+      "html": "<p>2つのフィルターをカンマで区切ると、両方に同じ入力が渡され、2つのフィルターが出力する値のストリームが順番に連結されます。最初に左側の式が生成するすべての出力が続き、その後に右側の式が生成するすべての出力が続きます。たとえば、フィルター <code>.foo,\n.bar</code> は\"foo\"フィールドと\"bar\"フィールドの両方を、別々の出力として生成します。</p>\n<p><code>,</code> 演算子は、ジェネレーターを構築する方法の1つです。</p>"
+    },
+    {
+      "key": "sections/1/entries/9/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "6537a20612ae60226ad6e55d35a80096d3406bf6e12798aeb47787da72ed8fdd",
+      "translatedSha256": "3f2a18f3ec0f3ef2aa44c650fb75562bd9329091a7458036725c9ac07e54d472",
+      "html": "<h3>パイプ：<code>|</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/9/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "71b65cbbeb44785330837912d01cd230e99d694485e9030b4ef0c0f32bd87b32",
+      "translatedSha256": "ad2092593f710711b867d8c1815be3842b744c4212175e6f700c10e617515f52",
+      "html": "<p>|演算子は、左側のフィルターの出力を右側のフィルターの入力へ渡すことで、2つのフィルターを組み合わせます。Unixシェルのパイプに慣れていれば、それと似たものと考えられます。</p>\n<p>左側が複数の結果を生成すると、右側はそれぞれの結果に対して実行されます。したがって、式 <code>.[] | .foo</code> は入力配列の各要素から\"foo\"フィールドを取り出します。これは直積であり、意外に感じることがあります。</p>\n<p><code>.a.b.c</code> は <code>.a | .b | .c</code> と同じであることに注意してください。</p>\n<p>また、<code>.</code> は「パイプライン」の特定の段階、具体的には <code>.</code> という式が現れる位置での入力値です。したがって、<code>.a | . | .b</code> は <code>.a.b</code> と同じです。中央の <code>.</code> は、<code>.a</code> が生成した値を指すためです。</p>"
+    },
+    {
+      "key": "sections/1/entries/10/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "79280f9b979532076907fcbc556cc2d779941c233c8319a763093ef39834be75",
+      "translatedSha256": "0378fc99bcf69e02886241457dc8c29876b35ce81283b38a90e4951738e9ea33",
+      "html": "<h3>丸括弧</h3>"
+    },
+    {
+      "key": "sections/1/entries/10/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "8bdaefc3154eeacbd63a9aa462ddd6124c82c1f7c400d4cb4120ed82a1f9938b",
+      "translatedSha256": "18a30a7c40db4beedbd7c2421f315a0b602613b21ed0e985b57ff479280196a6",
+      "html": "<p>丸括弧は、一般的なプログラミング言語と同様に、式をまとめる演算子として働きます。</p>"
+    },
+    {
+      "key": "sections/2/title",
+      "page": "03-types-and-values",
+      "mode": "section-title",
+      "sourceSha256": "3cbd50a298bea10bc05254979fa6eb1756a7d9cd6e0076ae549c720ac76593c4",
+      "translatedSha256": "6b3d6cbcba94c822e6dd18b69da4b01e323294e9e797a21e83498b377c7ec144",
+      "html": "<h2>型と値</h2>"
+    },
+    {
+      "key": "sections/2/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "dbae4d8d811f47d71933e237bdd453433efba8500deab3918cab5d2c84ba5716",
+      "translatedSha256": "37a701e9f4040e9cf94b1e3eed2bf951109be3f6cf463923c81efcdc41038c86",
+      "html": "<p>jqはJSONと同じデータ型を扱えます。数値、文字列、真偽値、配列、オブジェクト（JSONでは、キーが文字列だけであるハッシュを指します）、そして\"null\"です。</p>\n<p>真偽値、null、文字列、数値は、JSONと同じ形式で記述します。jqの他のすべてと同様に、これらの単純な値も入力を受け取り、出力を生成します。<code>42</code> は有効なjqの式で、入力を受け取って無視し、代わりに42を返します。</p>\n<p>jqの数値は、内部ではIEEE754の倍精度による近似値として表現されます。数値がリテラルであっても、先行するフィルターの結果であっても、数値に対する算術演算は倍精度の浮動小数点数の結果を生成します。</p>\n<p>ただし、リテラルを解析する際、jqは元のリテラル文字列を保存します。この値に変更を加えなければ、倍精度への変換で精度が失われる場合でも、元の形式のまま出力されます。</p>"
+    },
+    {
+      "key": "sections/2/entries/0/title",
+      "page": "03-types-and-values",
+      "mode": "entry-title",
+      "sourceSha256": "07554e5ae8bfdcb872d8e58fc9ceb8b9d918143131f01c13eeaff8483084efd5",
+      "translatedSha256": "d3dbcbccf46899d9526381059a39cbbd8017e315a7af1058e5847ef1e3465465",
+      "html": "<h3>配列の構築：<code>[]</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/0/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "8c2c81385b8bfac4b7e09de0dc76d84bae9f31f23102f5118baa2b389a1201b3",
+      "translatedSha256": "bf681c6e297d99316e04aee82014de4c0836f8f94b98e61ae515390f594ada7a",
+      "html": "<p>JSONと同様に、<code>[]</code> は <code>[1,2,3]</code> のように配列を構築するために使います。配列の要素には、パイプラインを含む任意のjqの式を使えます。すべての式が生成するすべての結果が、1つの大きな配列にまとめられます。<code>[.foo, .bar, .baz]</code> のように既知の個数の値から配列を構築するためにも、<code>[.items[].name]</code> のようにフィルターのすべての結果を配列へ「集める」ためにも使えます。</p>\n<p>\",\"演算子を理解すると、jqの配列構文を別の観点から見られます。式 <code>[1,2,3]</code> は、カンマ区切りの配列専用の組込み構文を使っているわけではありません。3つの別々の結果を生成する式1,2,3に、結果を集める <code>[]</code> 演算子を適用しています。</p>\n<p>4つの結果を生成するフィルター <code>X</code> がある場合、式 <code>[X]</code> は、4要素の配列という1つの結果を生成します。</p>"
+    },
+    {
+      "key": "sections/2/entries/1/title",
+      "page": "03-types-and-values",
+      "mode": "entry-title",
+      "sourceSha256": "41409b48dde9bb554c2ae4fcd92a5e3ab34c932bd89cd92394d679180e3b1ecc",
+      "translatedSha256": "c2651d390bceb51154117ea00689d5dc072153d4ebbb34e0c157d3b362ac8008",
+      "html": "<h3>オブジェクトの構築：<code>{}</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/1/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "bbf77b48c2f684dc7342b473ca77994cea048076da005bf16c98de746b885333",
+      "translatedSha256": "93b54e8b14342fe2728645d657243ffb9c5228a7194e96fc9b8bab6815e0c0b1",
+      "html": "<p>JSONと同様に、<code>{}</code> は <code>{\"a\": 42, \"b\": 17}</code> のようにオブジェクト（辞書やハッシュとも呼ばれます）を構築するために使います。</p>\n<p>キーが「識別子のような」形式であれば、<code>{a:42, b:17}</code> のように引用符を省略できます。キーの式として変数参照を使うと、その変数の値がキーになります。定数リテラル、識別子、変数参照以外のキーの式は、<code>{(\"a\"+\"b\"):59}</code> のように丸括弧で囲む必要があります。</p>\n<p>値には任意の式を使えます。ただし、たとえばコロンを含む場合などには、丸括弧で囲む必要があることがあります。その式は、{}という式への入力に適用されます。すべてのフィルターには入力と出力があることを思い出してください。</p>\n<pre><code>{foo: .bar}&#10;</code></pre>\n<p>は、JSONオブジェクト <code>{\"foo\": 42}</code> を生成します（入力としてJSONオブジェクト <code>{\"bar\":42, \"baz\":43}</code> を与えた場合）。これを使って、オブジェクトの特定のフィールドを選択できます。入力が\"user\"、\"title\"、\"id\"、\"content\"フィールドを持つオブジェクトで、\"user\"と\"title\"だけが必要なら、次のように書けます。</p>\n<pre><code>{user: .user, title: .title}&#10;</code></pre>\n<p>これはよく使われるため、短縮構文 <code>{user, title}</code> があります。</p>\n<p>式の1つが複数の結果を生成すると、複数の辞書が生成されます。入力が次のとき、</p>\n<pre><code>{\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}&#10;</code></pre>\n<p>次の式は、</p>\n<pre><code>{user, title: .titles[]}&#10;</code></pre>\n<p>2つの出力を生成します。</p>\n<pre><code>{\"user\":\"stedolan\", \"title\": \"JQ Primer\"}&#10;{\"user\":\"stedolan\", \"title\": \"More JQ\"}&#10;</code></pre>\n<p>キーを丸括弧で囲むと、式として評価されます。上と同じ入力に対して、</p>\n<pre><code>{(.user): .titles}&#10;</code></pre>\n<p>は次を生成します。</p>\n<pre><code>{\"stedolan\": [\"JQ Primer\", \"More JQ\"]}&#10;</code></pre>\n<p>キーとして変数参照を使うと、変数の値がキーになります。値を指定しない場合は、変数名がキーになり、その変数の値が値になります。</p>\n<pre><code>\"f o o\" as $foo | \"b a r\" as $bar | {$foo, $bar:$foo}&#10;</code></pre>\n<p>は次を生成します。</p>\n<pre><code>{\"foo\":\"f o o\",\"b a r\":\"f o o\"}&#10;</code></pre>"
+    },
+    {
+      "key": "sections/2/entries/2/title",
+      "page": "03-types-and-values",
+      "mode": "entry-title",
+      "sourceSha256": "be4c699677193c16cc7d890dcd7d058e78b6bcafacd51a02b04cce562f4ff34c",
+      "translatedSha256": "39ef5a4eed9718b9f1ab1bb47444107bb563e96995f179d38ab21095b1f0bed3",
+      "html": "<h3>再帰的な走査：<code>..</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/2/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "1b0270dc79318c362cb124ba0ab2f1e6cd5b67afebac641018bf42da5b405522",
+      "translatedSha256": "9996f7d9e2a6dc0a0e79a1b5f3220fe6708ff0cf37f253e4ce89c9adcae66fea",
+      "html": "<p><code>.</code> を再帰的に走査し、すべての値を生成します。これは、引数なしの組込み関数 <code>recurse</code>（後述）と同じです。XPathの <code>//</code> 演算子に似た動作を意図しています。<code>..a</code> は使えないため、代わりに <code>.. | .a</code> を使ってください。以下の実行例では、<code>.. | .a?</code> を使って、<code>.</code> の「下」にあるオブジェクト内で、キー\"a\"のすべての値を探します。</p>\n<p><code>path(EXP)</code>（これも後述）や <code>?</code> 演算子と組み合わせると、特に便利です。</p>"
+    },
+    {
+      "key": "sections/3/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "section-title",
+      "sourceSha256": "c0ce1d76acd3cefbedcf59be407ac7f8637b675a2d6b11c58bc5f07512cff6c6",
+      "translatedSha256": "250b05ef8d1092fadcdac70a1f7e5f5a6e222cf74347135a6c9d59cd09b878d7",
+      "html": "<h2>組込み演算子と関数</h2>"
+    },
+    {
+      "key": "sections/3/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "a6b5f7558a9de0dfd719f002ce959a00f3e1b9ea5db06cafb000c736ab2a06d8",
+      "translatedSha256": "c5d165f675b9a0812dc98ec452c45a7e89faa09b0771f18d9e02af9f9a3ab793",
+      "html": "<p>jqの演算子の一部（たとえば <code>+</code>）は、引数の型（配列、数値など）によって異なる処理を行います。ただし、jqは暗黙の型変換を行いません。文字列をオブジェクトに加えようとすると、エラーメッセージが表示され、結果は得られません。</p>\n<p>すべての数値はIEEE754の倍精度浮動小数点表現へ変換されることに注意してください。算術演算子と論理演算子は、この変換済みの倍精度数値を使って動作します。これらの演算の結果も、倍精度に制限されます。</p>\n<p>この数値の扱いに対する唯一の例外は、元の数値リテラルを保存したものです。最初にリテラルとして与えられた数値が、プログラムの最後まで一度も変更されなかった場合、元のリテラル形式のまま出力されます。元のリテラルをIEEE754の倍精度浮動小数点数へ変換すると切り詰められる場合も、これに含まれます。</p>"
+    },
+    {
+      "key": "sections/3/entries/0/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "79b5e482631104bba69f4d34487562a5c495f24c41b93a4efbec6a6e4a09840f",
+      "translatedSha256": "c16d90ddd3e1def53e90d675fb03d02019fdad3ae6c79d7dc108281534e8090a",
+      "html": "<h3>加算：<code>+</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/0/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "0e8ccadb3d1f6e36aa48a0c4b912e1083ba56b472a99440848a60b35a6a2e07e",
+      "translatedSha256": "ad6c1542775ad04cbe4f412c7c39dd05c4c1dae05d18fe135ab3e329b2571945",
+      "html": "<p>演算子 <code>+</code> は2つのフィルターを受け取り、両方を同じ入力に適用して、その結果を加えます。「加える」が何を意味するかは、対象の型によって異なります。</p>\n<ul>\n<li>\n<p><strong>数値</strong>は、通常の算術演算で加算されます。</p>\n</li>\n<li>\n<p><strong>配列</strong>は、連結されて、より大きな配列になります。</p>\n</li>\n<li>\n<p><strong>文字列</strong>は、結合されて、より長い文字列になります。</p>\n</li>\n<li>\n<p><strong>オブジェクト</strong>は、両方のオブジェクトのすべてのキーと値の組を1つのオブジェクトへ挿入する、マージ処理で加算されます。両方のオブジェクトに同じキーの値がある場合、<code>+</code> の右側のオブジェクトが優先されます（再帰的にマージするには、<code>*</code> 演算子を使ってください）。</p>\n</li>\n</ul>\n<p><code>null</code> は任意の値に加えることができ、もう一方の値を変更せずに返します。</p>"
+    },
+    {
+      "key": "sections/3/entries/1/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "6a53736f5ea1bf26c3f40de2c400e877d08025132135134ae35ba07c06948287",
+      "translatedSha256": "7fb69fd19eb6ddf88e69090d6139c86abaa520e984227c37fdb70e71dd138791",
+      "html": "<h3>減算：<code>-</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/1/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "33418c4172831a8ee17e1a600498f1f43bde4c9b3a0f7c5eeaff533f107d3a86",
+      "translatedSha256": "934b765431d7e8669eb9e2669d5e06d39106f5749f0b6fa9f31dedd28cd9ace2",
+      "html": "<p>数値に対する通常の算術的な減算に加えて、<code>-</code> 演算子は配列にも使えます。2つ目の配列の要素について、1つ目の配列からすべての出現箇所を取り除きます。</p>"
+    },
+    {
+      "key": "sections/3/entries/2/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "85f0dbcacc5bcb6702e8f1f01fafa811092a3636463a2d4e77e0f898a91faa60",
+      "translatedSha256": "c0ab6c7d8525114d46db809900de1685e9f9b4028207161e7f8e2ac6b968f8c1",
+      "html": "<h3>乗算・除算・剰余：<code>*</code>、<code>/</code>、<code>%</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/2/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "dc1fd37c8c21bb4c2fe94cfb25678fb6cea7b4aa4712ff7519bd556911e47ecb",
+      "translatedSha256": "65c8e020dc2d34c1bbfd75e771bf47da8c434b3a6995caadb4c4bd839e7fab02",
+      "html": "<p>これらの中置演算子は、2つの数値を与えると期待どおりに動作します。0による除算はエラーになります。<code>x % y</code> は、xのyによる剰余を計算します。</p>\n<p>文字列に数値を掛けると、その数だけ文字列を連結したものを生成します。<code>\"x\" * 0</code> は <code>\"\"</code> を生成します。</p>\n<p>文字列を別の文字列で割ると、2つ目の文字列を区切りとして1つ目の文字列を分割します。</p>\n<p>2つのオブジェクトを掛けると、再帰的にマージします。加算と同様に動作しますが、両方のオブジェクトに同じキーの値があり、その値がオブジェクトである場合、その2つの値も同じ方法でマージされます。</p>"
+    },
+    {
+      "key": "sections/3/entries/3/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "45dc9b24c773271035fd5b5b73e9b3a04568edc7f3f101524b3b440f9751a748",
+      "translatedSha256": "45dc9b24c773271035fd5b5b73e9b3a04568edc7f3f101524b3b440f9751a748",
+      "html": "<h3><code>abs</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/3/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "6ed6bba5b32c4bca0acd519e7e361578fd866c5a55af52cba985793041a54187",
+      "translatedSha256": "8896d0a0cf22ceab179a9035681190375e56fb59baeb7f433a199b49a9e7e086",
+      "html": "<p>組込み関数 <code>abs</code> は、単純に <code>if . &lt; 0 then - . else . end</code> と定義されています。</p>\n<p>数値を入力した場合、これは絶対値になります。この定義が数値入力に与える影響については、恒等フィルターの節を参照してください。</p>\n<p>数値の絶対値を浮動小数点数として計算する場合は、<code>fabs</code> の使用を検討してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/4/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "a146378dbd162237db4fe14e69c780d15aeed1d301eee2fa458000e5593fd62d",
+      "translatedSha256": "a146378dbd162237db4fe14e69c780d15aeed1d301eee2fa458000e5593fd62d",
+      "html": "<h3><code>length</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/4/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "0b2c61daf36483574450802a5385e99b31bd92ad26db87fe9662e183a4ec75bf",
+      "translatedSha256": "7baaa9f5ae7fa39ed556c0fc1f6dc08a9eb94e04f54200055d7dedfce51c3ca8",
+      "html": "<p>組込み関数 <code>length</code> は、さまざまな型の値の長さを取得します。</p>\n<ul>\n<li>\n<p><strong>文字列</strong>の長さは、含まれるUnicodeコードポイントの数です（ASCIIだけで構成されている場合、そのJSONエンコード後のバイト長と同じになります）。</p>\n</li>\n<li>\n<p><strong>数値</strong>の長さは、その絶対値です。</p>\n</li>\n<li>\n<p><strong>配列</strong>の長さは、要素の数です。</p>\n</li>\n<li>\n<p><strong>オブジェクト</strong>の長さは、キーと値の組の数です。</p>\n</li>\n<li>\n<p><strong>null</strong>の長さは0です。</p>\n</li>\n<li>\n<p><strong>真偽値</strong>に <code>length</code> を使うと、エラーになります。</p>\n</li>\n</ul>"
+    },
+    {
+      "key": "sections/3/entries/5/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "34a41ba6cfb899f9f5b3cd8d9033dcfcfdce7253e1e251b3cc834cb0ccb82cdb",
+      "translatedSha256": "34a41ba6cfb899f9f5b3cd8d9033dcfcfdce7253e1e251b3cc834cb0ccb82cdb",
+      "html": "<h3><code>utf8bytelength</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/5/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "eefb97b736e6b89dabf56adc6e9c009d34ff4aec25783c01364f710f926f0984",
+      "translatedSha256": "05ccb2901c23e0b6d81ba2ba8522c201ec538ae1e8214bd078e1b35574b5a803",
+      "html": "<p>組込み関数 <code>utf8bytelength</code> は、文字列をUTF-8でエンコードするために使うバイト数を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/6/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "06ea8d5e28026720f0f0fddab6e399fe184dab90f3a0e64d5db2adb8cd8901d0",
+      "translatedSha256": "06ea8d5e28026720f0f0fddab6e399fe184dab90f3a0e64d5db2adb8cd8901d0",
+      "html": "<h3><code>keys</code>, <code>keys_unsorted</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/6/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "ab89e0bfefb0395c74facfa4aad41962fb47eb3c4cfca70c2f8b41f205fc76ca",
+      "translatedSha256": "9de9b39c40474686956cf9dc264fe039bd923cc24ed68cb6924d9cc19e88ce43",
+      "html": "<p>組込み関数 <code>keys</code> は、オブジェクトを与えると、そのキーを配列として返します。</p>\n<p>キーは、Unicodeコードポイントの順序で「アルファベット順」にソートされます。これは、特定の言語で特に意味のある順序ではありませんが、ロケール設定にかかわらず、同じキーの集合を持つ2つのオブジェクトでは同じ順序になることが保証されます。</p>\n<p><code>keys</code> に配列を与えると、その配列の有効な索引、つまり0からlength-1までの整数を返します。</p>\n<p>関数 <code>keys_unsorted</code> は <code>keys</code> と同様ですが、入力がオブジェクトの場合、キーはソートされず、おおむね挿入順になります。</p>"
+    },
+    {
+      "key": "sections/3/entries/7/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "91ea8fb459dbf00466774e0a3fac890588be0e66945f7704f5c33877383f6f93",
+      "translatedSha256": "91ea8fb459dbf00466774e0a3fac890588be0e66945f7704f5c33877383f6f93",
+      "html": "<h3><code>has(key)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/7/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "efae4a24df2b16f0546c9fd458684493320813043c5cf36e9e9c40c508daf38d",
+      "translatedSha256": "9c05378007285b64550804f481d5dc7219cbc3fff099646d4ff32846215c105e",
+      "html": "<p>組込み関数 <code>has</code> は、入力オブジェクトに指定したキーがあるかどうか、または入力配列の指定した索引に要素があるかどうかを返します。</p>\n<p><code>has($key)</code> は、<code>$key</code> が <code>keys</code> の返す配列の要素かどうかを調べるのと同じ効果がありますが、<code>has</code> の方が高速です。</p>"
+    },
+    {
+      "key": "sections/3/entries/8/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "bb5c992b2e9aecc89853ad2f3444070eba35491d7f5ee835ccf0efb114267437",
+      "translatedSha256": "bb5c992b2e9aecc89853ad2f3444070eba35491d7f5ee835ccf0efb114267437",
+      "html": "<h3><code>in</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/8/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "2c1b43c1394af016e9163b6e5075c224028ce736b395d86b93a5ce096f9e8dc9",
+      "translatedSha256": "442aa3b1e622cd8482a35ef0b2e747393b38197a03f740f5ff09e8f9724503d8",
+      "html": "<p>組込み関数 <code>in</code> は、入力のキーが指定したオブジェクトにあるかどうか、または入力の索引が指定した配列の要素に対応するかどうかを返します。基本的には、<code>has</code> の向きを逆にしたものです。</p>"
+    },
+    {
+      "key": "sections/3/entries/9/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "5d16825b047c12daffa9789f2606bbf4e02ff14bbc2fd78603e4b1377d7a77de",
+      "translatedSha256": "5d16825b047c12daffa9789f2606bbf4e02ff14bbc2fd78603e4b1377d7a77de",
+      "html": "<h3><code>map(f)</code>, <code>map_values(f)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/9/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "a4d493a3bb6ad85adce8f7b6d9e6a9e9bd82ab56b3ee963986f1ea74a9512a84",
+      "translatedSha256": "aecb0c753b3bf3d855dcb68f75c807dcbce88431932207b3eeb55313e2345294",
+      "html": "<p>任意のフィルター <code>f</code> に対して、<code>map(f)</code> と <code>map_values(f)</code> は、入力配列またはオブジェクトの各値に <code>f</code> を適用します。これらは <code>.[]</code> の値です。</p>\n<p>エラーがない場合、<code>map(f)</code> は常に配列を出力します。一方、<code>map_values(f)</code> は、配列を与えられた場合は配列を、オブジェクトを与えられた場合はオブジェクトを出力します。</p>\n<p><code>map_values(f)</code> への入力がオブジェクトの場合、出力オブジェクトは入力オブジェクトと同じキーを持ちます。ただし、その値を <code>f</code> へパイプで渡したときに値が1つも生成されないキーは除かれます。</p>\n<p><code>map(f)</code> と <code>map_values(f)</code> の主な違いは、前者が、<code>($x|f)</code> のすべての値を単に配列へまとめるのに対し（<code>$x</code> は入力配列またはオブジェクトの各値です）、<code>map_values(f)</code> は <code>first($x|f)</code> だけを使う点です。</p>\n<p>具体的には、オブジェクト入力の場合、<code>map_values(f)</code> は、<code>first(.[$k]|f)</code> の値を順に調べて、出力オブジェクトを構築します。このとき <code>$k</code> は入力の各キーです。この式が値を1つも生成しなければ、対応するキーは削除されます。それ以外の場合、出力オブジェクトのキー <code>$k</code> には、その値が入ります。</p>\n<p>以下の例で、配列に対する <code>map</code> と <code>map_values</code> の動作を示します。これらの例では、どの場合も入力は <code>[1]</code> であるとします。</p>\n<pre><code>map(.+1)          #=&gt;  [2]&#10;map(., .)         #=&gt;  [1,1]&#10;map(empty)        #=&gt;  []&#10;&#10;map_values(.+1)   #=&gt;  [2]&#10;map_values(., .)  #=&gt;  [1]&#10;map_values(empty) #=&gt;  []&#10;</code></pre>\n<p><code>map(f)</code> は <code>[.[] | f]</code> と同じで、<code>map_values(f)</code> は <code>.[] |= f</code> と同じです。</p>\n<p>実際、これらがその実装です。</p>"
+    },
+    {
+      "key": "sections/3/entries/10/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "6884fd99f3d79e4918c9abfa2a253a8233514e6bda0cb1f96af4556dcaf43cd4",
+      "translatedSha256": "6884fd99f3d79e4918c9abfa2a253a8233514e6bda0cb1f96af4556dcaf43cd4",
+      "html": "<h3><code>pick(pathexps)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/10/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "7038d83e904d7a6460e333c4be129e7ff3b1a5dfbe559bf229dcaec46ce9a8b4",
+      "translatedSha256": "ae40068191ddab47c126418446a387930095084be436e91d0c14cd62c626408d",
+      "html": "<p>指定した一連のパス式によって定義される、入力オブジェクトまたは配列の射影を出力します。<code>p</code> が指定したパス式のいずれかであれば、<code>(. | p)</code> は <code>(. | pick(pathexps) | p)</code> と同じ値に評価されます。配列では、負の索引や <code>.[m:n]</code> という指定を使うべきではありません。</p>"
+    },
+    {
+      "key": "sections/3/entries/11/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "db392bf800b2d7f12d20d5d5f44e44018f9ef4344c5e05be6cfdfd749bb4043c",
+      "translatedSha256": "db392bf800b2d7f12d20d5d5f44e44018f9ef4344c5e05be6cfdfd749bb4043c",
+      "html": "<h3><code>path(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/11/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "89ff3180abe67b38279bc2481537eef85b7257a24ea893a377c3690dd2ecd4c7",
+      "translatedSha256": "fe2c4e616c4aee47159130b4c0aff62af0a96a2db4632cfbd3508d943063f86f",
+      "html": "<p><code>.</code> 内の指定したパス式を配列で表したものを出力します。出力は、文字列（オブジェクトのキー）や数値（配列の索引）からなる配列です。</p>\n<p>パス式には、<code>.a</code> のようなjqの式だけでなく、<code>.[]</code> も含まれます。パス式には、完全一致できるものと、できないものの2種類があります。たとえば、<code>.a.b.c</code> は完全一致するパス式ですが、<code>.a[].b</code> はそうではありません。</p>\n<p><code>path(exact_path_expression)</code> は、そのパスが <code>.</code> 内に存在しなくても、<code>.</code> が <code>null</code>、配列、またはオブジェクトの場合に、パス式を配列で表したものを生成します。</p>\n<p><code>path(pattern)</code> は、<code>pattern</code> に一致するパスが <code>.</code> 内に存在する場合、それらを配列で表したものを生成します。</p>\n<p>パス式は通常の式と異なるものではないことに注意してください。式 <code>path(..|select(type==\"boolean\"))</code> は、<code>.</code> 内の真偽値に至るパスをすべて出力し、それ以外のパスは出力しません。</p>"
+    },
+    {
+      "key": "sections/3/entries/12/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "8549619bd6a5ece949599435c7ebe0aca9b444eccd86458d1fd8a16733af1c8c",
+      "translatedSha256": "8549619bd6a5ece949599435c7ebe0aca9b444eccd86458d1fd8a16733af1c8c",
+      "html": "<h3><code>del(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/12/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "bb30e9d06aa7be5c9456d193dab28071743ae47385f46bbe6a7e3c484d050587",
+      "translatedSha256": "43edc8073bd791622ce3729bdd3227912db6a1180e924b06ce1a176e43152e81",
+      "html": "<p>組込み関数 <code>del</code> は、オブジェクトからキーと、それに対応する値を削除します。</p>"
+    },
+    {
+      "key": "sections/3/entries/13/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "618b36f8c643c50c5591806ae282492a7525aaed1321374a05ed0ca2f6396836",
+      "translatedSha256": "618b36f8c643c50c5591806ae282492a7525aaed1321374a05ed0ca2f6396836",
+      "html": "<h3><code>getpath(PATHS)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/13/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "20ed7c56cfcb9a04e644313e3141555c23538b76d0b5b4614a402f63364284c1",
+      "translatedSha256": "e58f0f910b274b30cdd304ab843279c75f06b8723588e91e5a11250473e12c16",
+      "html": "<p>組込み関数 <code>getpath</code> は、<code>.</code> 内の、<code>PATHS</code> の各パスで見つかった値を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/14/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "707c53b47bb525cde1b941375c71c1111b4796e5038cd7063908d11b6c02e7ba",
+      "translatedSha256": "707c53b47bb525cde1b941375c71c1111b4796e5038cd7063908d11b6c02e7ba",
+      "html": "<h3><code>setpath(PATHS; VALUE)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/14/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "34c38c55f1efc0db493bb9e75965717db50507c0568da46269b1ed3119c9f126",
+      "translatedSha256": "764baa07d902d89eac34996f8b76ce97adf2e10a71e3467255e6b4622d8afcf6",
+      "html": "<p>組込み関数 <code>setpath</code> は、<code>PATHS</code> で指定した <code>.</code> 内のパスを <code>VALUE</code> に設定します。</p>"
+    },
+    {
+      "key": "sections/3/entries/15/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "0ecb0ebf417d2d057618aea3d621e4f76af2c159c114e90656a825fe09004b63",
+      "translatedSha256": "0ecb0ebf417d2d057618aea3d621e4f76af2c159c114e90656a825fe09004b63",
+      "html": "<h3><code>delpaths(PATHS)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/15/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "b6bda5d8b38ccd093770548cb4e78f706f943168c3aed2717281f4f943f1015d",
+      "translatedSha256": "5ac71f84a9373d2785bfbb925eae6d4a60603f9013338e1456f11525b5f064ae",
+      "html": "<p>組込み関数 <code>delpaths</code> は、<code>PATHS</code> で指定した <code>.</code> 内のパスを削除します。\n<code>PATHS</code> はパスの配列でなければなりません。各パスは、文字列と数値からなる配列です。</p>"
+    },
+    {
+      "key": "sections/3/entries/16/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "1ee596fad3e038a9bfed452a5739f029f0979c87f51bf1e4044048eef15c2e9f",
+      "translatedSha256": "1ee596fad3e038a9bfed452a5739f029f0979c87f51bf1e4044048eef15c2e9f",
+      "html": "<h3><code>to_entries</code>, <code>from_entries</code>, <code>with_entries(f)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/16/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "eb34cd388f79fa871e9b71618234b834fa7dc520ac38c951be3358189ce01091",
+      "translatedSha256": "3ae1da067ad745c2bdfec45c21203bc702f3d38acadb5961633d664da073474e",
+      "html": "<p>これらの関数は、オブジェクトと、キーと値の組の配列との間で変換します。<code>to_entries</code> にオブジェクトを渡すと、入力の各 <code>k: v</code> エントリーに対して、出力配列に <code>{\"key\": k, \"value\": v}</code> が含まれます。</p>\n<p><code>from_entries</code> は逆方向の変換を行います。<code>with_entries(f)</code> は <code>to_entries | map(f) | from_entries</code> の省略形で、オブジェクトのすべてのキーと値に何らかの操作を行う際に便利です。\n<code>from_entries</code> は、キーとして <code>\"key\"</code>、<code>\"Key\"</code>、<code>\"name\"</code>、<code>\"Name\"</code>、<code>\"value\"</code>、<code>\"Value\"</code> を受け付けます。</p>"
+    },
+    {
+      "key": "sections/3/entries/17/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "66e63068358cdc489de44b8417497ceaa339c2062b49c5ed8fd52109e8dbdda2",
+      "translatedSha256": "66e63068358cdc489de44b8417497ceaa339c2062b49c5ed8fd52109e8dbdda2",
+      "html": "<h3><code>select(boolean_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/17/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "2a12323b26c98387226f7f2d233a41a8dfb2a120c8d1984faf102685dae272d3",
+      "translatedSha256": "6814257e80e0b8b66558d185b02a7771bd93f2b9a0b2fe18d915c1b961d96e8b",
+      "html": "<p>関数 <code>select(f)</code> は、その入力に対して <code>f</code> がtrueを返す場合、入力をそのまま出力します。それ以外の場合は何も出力しません。</p>\n<p>リストを絞り込む際に便利です。<code>[1,2,3] | map(select(. &gt;= 2))</code> は <code>[2,3]</code> を返します。</p>"
+    },
+    {
+      "key": "sections/3/entries/18/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "1afc015c430f852c499883d572bf432c248db7554a4053829a20d6adcbfca2ce",
+      "translatedSha256": "1afc015c430f852c499883d572bf432c248db7554a4053829a20d6adcbfca2ce",
+      "html": "<h3><code>arrays</code>, <code>objects</code>, <code>iterables</code>, <code>booleans</code>, <code>numbers</code>, <code>normals</code>, <code>finites</code>, <code>strings</code>, <code>nulls</code>, <code>values</code>, <code>scalars</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/18/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "2967834895527c4c90af13fe4a934386316ed3ce4da4694dfbc4cbc62c5068cd",
+      "translatedSha256": "06d1c880985cfef7b8222555d26e3bad2ec385d9c004746cd7e7e5c68bcac6c5",
+      "html": "<p>これらの組込み関数は、それぞれ、配列、オブジェクト、反復可能な値（配列またはオブジェクト）、真偽値、数値、正規数、有限数、文字列、null、null以外の値、反復可能でない値である入力だけを選択します。</p>"
+    },
+    {
+      "key": "sections/3/entries/19/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "52848189b1ca9061510e0d3849291e5c4ba43e169d56627f359ed972c8dee390",
+      "translatedSha256": "52848189b1ca9061510e0d3849291e5c4ba43e169d56627f359ed972c8dee390",
+      "html": "<h3><code>empty</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/19/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "5a9deb0ed625bbc05e13d7c41631dfdf8dc9124aa4cc4c403ce2b41112f91c22",
+      "translatedSha256": "e75c451f963024dc3ff4a4dac7d807e6dd31b458d62812f0f07a16d4f4866cfa",
+      "html": "<p><code>empty</code> は結果を1つも返しません。まったく何も返さず、<code>null</code> さえ返しません。</p>\n<p>ときどき便利です。必要になれば、使いどころが分かるでしょう :)</p>"
+    },
+    {
+      "key": "sections/3/entries/20/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "828e7dcdea66d9f035ca7d0dfa7fc56a1d4e870b2c61539282c335706bf607c2",
+      "translatedSha256": "828e7dcdea66d9f035ca7d0dfa7fc56a1d4e870b2c61539282c335706bf607c2",
+      "html": "<h3><code>error</code>, <code>error(message)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/20/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "7d899c79c8f55f6744f5c677bf4b5815afa5a1f4b8157fe9aa4b82a59bc6e2ab",
+      "translatedSha256": "df9322c1202d16d3ecc7efbbf2235214954bd601e0a7741fca06b698e53fdc14",
+      "html": "<p>入力値、または引数として与えたメッセージを使って、エラーを生成します。エラーはtry/catchで捕捉できます。後述の説明を参照してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/21/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "da875f669da753961540ec029d43b03a06385f4a2c782e3c8142d385d77bdca9",
+      "translatedSha256": "da875f669da753961540ec029d43b03a06385f4a2c782e3c8142d385d77bdca9",
+      "html": "<h3><code>halt</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/21/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "efedded669b7a0abbda690a4d33d5b01825dcbdaa16dc3664c70c08038a3eeef",
+      "translatedSha256": "8945badefa5a6962113d67f30117ffbd635fbd5aafdf27d926b7c96f5ad58ad5",
+      "html": "<p>それ以上何も出力せずに、jqプログラムを停止します。jqは終了ステータス <code>0</code> で終了します。</p>"
+    },
+    {
+      "key": "sections/3/entries/22/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "e809fdaa4957d4ad0ce6ffaebae4a30effdfa2a1eadd9ffb3927fafa63b9c676",
+      "translatedSha256": "e809fdaa4957d4ad0ce6ffaebae4a30effdfa2a1eadd9ffb3927fafa63b9c676",
+      "html": "<h3><code>halt_error</code>, <code>halt_error(exit_code)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/22/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "6a9cea339ba370bf33e8e319f9811cfb2be72ec6cb422950a9fa987e48673a1c",
+      "translatedSha256": "b87e583747c44f2dfc77999634800a1f282cf5b5d4a1420b1101dabb287c0313",
+      "html": "<p>それ以上何も出力せずに、jqプログラムを停止します。入力は <code>stderr</code> に、そのままの出力として表示されます（つまり、文字列に二重引用符は付きません）。装飾は一切付かず、改行さえ付きません。</p>\n<p>指定した <code>exit_code</code>（既定値は <code>5</code>）が、jqの終了ステータスになります。</p>\n<p>例：<code>\"Error: something went wrong\\n\"|halt_error(1)</code>。</p>"
+    },
+    {
+      "key": "sections/3/entries/23/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "296798a77360540e08d1d8ddc913913c6c5a6adb97e4678f6f9c69440e70cabd",
+      "translatedSha256": "296798a77360540e08d1d8ddc913913c6c5a6adb97e4678f6f9c69440e70cabd",
+      "html": "<h3><code>$__loc__</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/23/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "85f499d1bbff1551f4756be448b613e7a2c5a63ebe8d7def67c5e08950d96d07",
+      "translatedSha256": "8b1a485e163e265ac724ae2369743f41fca69a735b96d606d439da3a83a49470",
+      "html": "<p>\"file\"キーと\"line\"キーを持つオブジェクトを生成します。それぞれの値は、<code>$__loc__</code> が現れる位置のファイル名と行番号です。</p>"
+    },
+    {
+      "key": "sections/3/entries/24/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "fe66621c45c7f9467c75eb0569e9f6c26a68370fe3ccf099aeedad1e8ee169e4",
+      "translatedSha256": "fe66621c45c7f9467c75eb0569e9f6c26a68370fe3ccf099aeedad1e8ee169e4",
+      "html": "<h3><code>paths</code>, <code>paths(node_filter)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/24/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "b8694accf94c89e11124bd671ea1875247cf992240f0870814481213290cfdd4",
+      "translatedSha256": "38e990eeca8c0e6eb6b344fdfa47b87fa21ec71dbdfdcd9f99c9d782d79c8ac6",
+      "html": "<p><code>paths</code> は、入力のすべての要素に至るパスを出力します。ただし、.自体を表す空のリストは出力しません。</p>\n<p><code>paths(f)</code> は、<code>f</code> が <code>true</code> になる値に至るパスを出力します。つまり、<code>paths(type == \"number\")</code> は、すべての数値に至るパスを出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/25/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "6dd738c9d025b6e95ad7889717bf86723ed6b1ce646e0b849d68980a6adf870d",
+      "translatedSha256": "6dd738c9d025b6e95ad7889717bf86723ed6b1ce646e0b849d68980a6adf870d",
+      "html": "<h3><code>add</code>, <code>add(generator)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/25/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "f8772ca70e8d391e11cf3d69960aa5e050051929fc53e7e184d54dc105af5a6d",
+      "translatedSha256": "ebabb05db24ad7710de4e353bf8c646dddd5a3e7f359c6027f3acd1a0adf9ee4",
+      "html": "<p>フィルター <code>add</code> は配列を入力として受け取り、その配列の要素を足し合わせた結果を出力します。入力配列の要素の型に応じて、これは合計、連結、またはマージになります。規則は、前述の <code>+</code> 演算子と同じです。</p>\n<p>入力が空の配列の場合、<code>add</code> は <code>null</code> を返します。</p>\n<p><code>add(generator)</code> は、入力ではなく、指定したジェネレーターに対して動作します。</p>"
+    },
+    {
+      "key": "sections/3/entries/26/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "d058f96c54c408560f47aca22772895d794e3792bbffdca93006dc673819e22f",
+      "translatedSha256": "d058f96c54c408560f47aca22772895d794e3792bbffdca93006dc673819e22f",
+      "html": "<h3><code>any</code>, <code>any(condition)</code>, <code>any(generator; condition)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/26/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "0fd2ace5991c434d70816121b465542fb72c48cfb6cc39dedfbd12f3b5b2ba64",
+      "translatedSha256": "33867c368c0a4a4ebcb5abf72397f00ad192916cdb98d90c8754d5f7533b5f47",
+      "html": "<p>フィルター <code>any</code> は真偽値の配列を入力として受け取り、出力として <code>true</code> を生成するのは、配列の要素のいずれかが <code>true</code> の場合です。</p>\n<p>入力が空の配列の場合、<code>any</code> は <code>false</code> を返します。</p>\n<p><code>any(condition)</code> という形式は、指定した条件を入力配列の要素に適用します。</p>\n<p><code>any(generator; condition)</code> という形式は、指定した条件を、指定したジェネレーターのすべての出力に適用します。</p>"
+    },
+    {
+      "key": "sections/3/entries/27/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "1b7bec02286d157fbbe6b4c93420b99c571921616956051174a8164fe5bd253a",
+      "translatedSha256": "1b7bec02286d157fbbe6b4c93420b99c571921616956051174a8164fe5bd253a",
+      "html": "<h3><code>all</code>, <code>all(condition)</code>, <code>all(generator; condition)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/27/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "8bce70d8cbfb0a419a25c66aef553dae20412a0a373ac36de4ee60776a52da33",
+      "translatedSha256": "ff47b37dbc4a34378963725a7c16a39daf0b900ed36a6889a5d511b7965c464d",
+      "html": "<p>フィルター <code>all</code> は真偽値の配列を入力として受け取り、出力として <code>true</code> を生成するのは、配列のすべての要素が <code>true</code> の場合です。</p>\n<p><code>all(condition)</code> という形式は、指定した条件を入力配列の要素に適用します。</p>\n<p><code>all(generator; condition)</code> という形式は、指定した条件を、指定したジェネレーターのすべての出力に適用します。</p>\n<p>入力が空の配列の場合、<code>all</code> は <code>true</code> を返します。</p>"
+    },
+    {
+      "key": "sections/3/entries/28/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "c330a914e116888c5e9ce4c3a903d6d23eb6f99c7f877bb372393cfec3d416b5",
+      "translatedSha256": "c330a914e116888c5e9ce4c3a903d6d23eb6f99c7f877bb372393cfec3d416b5",
+      "html": "<h3><code>flatten</code>, <code>flatten(depth)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/28/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "b9c0daa676346e8206315dbf6675f7232c8809e861b2ace2416907dd63202182",
+      "translatedSha256": "83be95face6b7dd321c73293d3c017d09074994099616d552e78f8e2d5657c2f",
+      "html": "<p>フィルター <code>flatten</code> は、入れ子になった配列を含む配列を入力として受け取り、元の配列の内側にあるすべての配列を、それぞれの値で再帰的に置き換えた、平坦な配列を生成します。引数を渡すことで、入れ子を何階層まで平坦化するか指定できます。</p>\n<p><code>flatten(2)</code> は <code>flatten</code> と同様ですが、深さ2階層までしか処理しません。</p>"
+    },
+    {
+      "key": "sections/3/entries/29/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "4f3cec00a6cfdff5f1ca548c22b67b13dbf1d8299822521d043ce0026a7408b5",
+      "translatedSha256": "4f3cec00a6cfdff5f1ca548c22b67b13dbf1d8299822521d043ce0026a7408b5",
+      "html": "<h3><code>range(upto)</code>, <code>range(from; upto)</code>, <code>range(from; upto; by)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/29/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "78554cf58a8da33e2e6805c554f84fea6544db0e3363be51bcb74b683991e8cd",
+      "translatedSha256": "17b683066adf6973063eec64ffc580eae0b451c1697859f4d48f40c184449544",
+      "html": "<p>関数 <code>range</code> は、ある範囲の数値を生成します。<code>range(4; 10)</code> は、4を含み10を含まない範囲の6個の数値を生成します。これらの数値は、個別の出力として生成されます。範囲を配列として取得するには、<code>[range(4; 10)]</code> を使います。</p>\n<p>引数が1つの形式は、0から指定した数値まで、1ずつ増加する数値を生成します。</p>\n<p>引数が2つの形式は、<code>from</code> から <code>upto</code> まで、1ずつ増加する数値を生成します。</p>\n<p>引数が3つの形式は、<code>from</code> から <code>upto</code> まで、<code>by</code> ずつ増加する数値を生成します。</p>"
+    },
+    {
+      "key": "sections/3/entries/30/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "51bcfd15dc74f1e6e006f47de2ba67f31c95ebed58c0d925770161598c02935a",
+      "translatedSha256": "51bcfd15dc74f1e6e006f47de2ba67f31c95ebed58c0d925770161598c02935a",
+      "html": "<h3><code>floor</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/30/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "9bae9012b7b8a403eb39fbc92cb69e7f47d74566803ef0759add074e2f9e863a",
+      "translatedSha256": "a4a4f9e24948aa751f88c0b6c149f74ce453ce768c97f876c1b02b9c0d2cd446",
+      "html": "<p>関数 <code>floor</code> は、数値入力の床、つまりその値以下の最大の整数を返します。</p>"
+    },
+    {
+      "key": "sections/3/entries/31/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "6f4ea47f806a52f4046085046987b6c160f8d041ed593efc61c8401377a51f69",
+      "translatedSha256": "6f4ea47f806a52f4046085046987b6c160f8d041ed593efc61c8401377a51f69",
+      "html": "<h3><code>sqrt</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/31/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "ffc0785c7d2435266d3d6cd521d35246084a0177647c0cc7d479c4a424116bf8",
+      "translatedSha256": "b4f8d0e58e863ce731261dea9c3b67b4a69a83fd179d56fc9918e2c46f127a1b",
+      "html": "<p>関数 <code>sqrt</code> は、数値入力の平方根を返します。</p>"
+    },
+    {
+      "key": "sections/3/entries/32/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "a1a955fd8181b702cedb8effc6ba15352b9a5508ac594b91711ccf1b76a6ca2f",
+      "translatedSha256": "a1a955fd8181b702cedb8effc6ba15352b9a5508ac594b91711ccf1b76a6ca2f",
+      "html": "<h3><code>tonumber</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/32/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "520eb42e6cf94c866c0cd2c7fd1d1a6d5131e55892347feed026cd6f27ffec74",
+      "translatedSha256": "1db4a6149fed260bd928c0984fe4da8075fef116622e505078b9e4d132218327",
+      "html": "<p>関数 <code>tonumber</code> は、入力を数値として解析します。正しい形式の文字列を対応する数値に変換し、数値はそのままにします。それ以外の入力はすべてエラーになります。</p>"
+    },
+    {
+      "key": "sections/3/entries/33/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "a8690e44bb98fe6857a9b66250f34a8d48f21f66c891ef3da14ad7a76bea0d07",
+      "translatedSha256": "a8690e44bb98fe6857a9b66250f34a8d48f21f66c891ef3da14ad7a76bea0d07",
+      "html": "<h3><code>toboolean</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/33/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "5923216e1e2efc33292378663cbc86385e19fe10997229c64a3ab695abd44789",
+      "translatedSha256": "1dd57b25c23d0b689906fee386aee223f04f13e3a60ad066ab64a6cba0715a09",
+      "html": "<p>関数 <code>toboolean</code> は、入力を真偽値として解析します。正しい形式の文字列を対応する真偽値に変換し、真偽値はそのままにします。それ以外の入力はすべてエラーになります。</p>"
+    },
+    {
+      "key": "sections/3/entries/34/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "0703c24c49c451f9945ee5e80e72112cf101ec4a4ad8f62f462ba4df7c71a10a",
+      "translatedSha256": "0703c24c49c451f9945ee5e80e72112cf101ec4a4ad8f62f462ba4df7c71a10a",
+      "html": "<h3><code>tostring</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/34/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "382f3649143920616319d0bd5489d5f12b7e85773107db35702f932e6720af29",
+      "translatedSha256": "0c170fefdaffad039f7fb5319c7b367d67567f03fc4ee57dfba07277cc963f86",
+      "html": "<p>関数 <code>tostring</code> は、入力を文字列として出力します。文字列は変更せず、それ以外のすべての値はJSONエンコードします。</p>"
+    },
+    {
+      "key": "sections/3/entries/35/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "800fc75ca46860aee9ee2ddaa21d17b7699c81ad5339661eb8ddb74453f376c1",
+      "translatedSha256": "800fc75ca46860aee9ee2ddaa21d17b7699c81ad5339661eb8ddb74453f376c1",
+      "html": "<h3><code>type</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/35/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "8db91a4bd52e63895d3d1dc079a73164ae9753786b9656efe335a15db6e9627d",
+      "translatedSha256": "fcc5fa9dd336a8a08e26241b521341d9efb6e4c84ac146176dde558500db8773",
+      "html": "<p>関数 <code>type</code> は、引数の型を文字列で返します。その文字列は、null、boolean、number、string、array、objectのいずれかです。</p>"
+    },
+    {
+      "key": "sections/3/entries/36/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "cd57b9ccb8084b00d23121a8b4bd23e4c6dfac62a07a3851fd5e3c29770926c9",
+      "translatedSha256": "cd57b9ccb8084b00d23121a8b4bd23e4c6dfac62a07a3851fd5e3c29770926c9",
+      "html": "<h3><code>infinite</code>, <code>nan</code>, <code>isinfinite</code>, <code>isnan</code>, <code>isfinite</code>, <code>isnormal</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/36/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "e5fad2eeec0a36a5f6d27cae469a40d3d0fe39d13f6445f22bc6d8477a04f481",
+      "translatedSha256": "87a00881949f1bbac9257c84bc699f1f9a806b3ada4a7d7377804c0304e865b3",
+      "html": "<p>一部の算術演算は、無限大や「非数」（NaN）の値を生成することがあります。組込み関数 <code>isinfinite</code> は、入力が無限大の場合に <code>true</code> を返します。組込み関数 <code>isnan</code> は、入力がNaNの場合に <code>true</code> を返します。組込み関数 <code>infinite</code> は、正の無限大の値を返します。組込み関数 <code>nan</code> はNaNを返します。組込み関数 <code>isnormal</code> は、入力が正規数の場合にtrueを返します。</p>\n<p>ゼロによる除算はエラーを発生させることに注意してください。</p>\n<p>現在、無限大、NaN、非正規数を扱う算術演算のほとんどは、エラーを発生させません。</p>"
+    },
+    {
+      "key": "sections/3/entries/37/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "53af58a0fd1af6f5856da287374771950c8a6119dceb77ab312e1869a5c041c5",
+      "translatedSha256": "53af58a0fd1af6f5856da287374771950c8a6119dceb77ab312e1869a5c041c5",
+      "html": "<h3><code>sort</code>, <code>sort_by(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/37/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "7e5045b253c251dcc19f02636a8ccdb630f65958e0aa234b8d26121b7b9a086d",
+      "translatedSha256": "22c7b9597b3e04dc1fb205223dbb2a68f0bf182ded5ca014ae76ab19baf8f334",
+      "html": "<p>関数 <code>sort</code> は、入力をソートします。入力は配列でなければなりません。値は次の順序でソートされます。</p>\n<ul>\n<li><code>null</code></li>\n<li><code>false</code></li>\n<li><code>true</code></li>\n<li>数値</li>\n<li>文字列。Unicodeコードポイントの値によるアルファベット順</li>\n<li>配列。辞書式順序</li>\n<li>オブジェクト</li>\n</ul>\n<p>オブジェクトの順序は少し複雑です。まず、キーの集合を、ソート済みの配列として比較します。キーが同じであれば、キーごとに値を比較します。</p>\n<p><code>sort_by</code> は、オブジェクトの特定のフィールドによるソートや、任意のjqフィルターを適用したソートに使えます。<code>sort_by(f)</code> は、それぞれの要素に対する <code>f</code> の結果を比較することで、2つの要素を比較します。<code>f</code> が複数の値を生成する場合、まず最初の値を比較し、それらが等しければ2番目の値を比較する、というように続けます。</p>"
+    },
+    {
+      "key": "sections/3/entries/38/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "96671e996e0a1e0db8658401a59acbd9dd742ae7c5d434af0acddbe19e681240",
+      "translatedSha256": "96671e996e0a1e0db8658401a59acbd9dd742ae7c5d434af0acddbe19e681240",
+      "html": "<h3><code>group_by(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/38/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "cab58a205bfd0a6124795a614a13d2ee0d47c46f561ffb6c2e41f88ed0de8cdb",
+      "translatedSha256": "2aa1b1c47db9b094ab06fea45176d194f0258a3b81cbb212ccd71cdbcd091022",
+      "html": "<p><code>group_by(.foo)</code> は配列を入力として受け取り、同じ <code>.foo</code> フィールドを持つ要素を個別の配列にまとめます。そして、それらの配列すべてを、<code>.foo</code> フィールドの値でソートした大きな配列の要素として出力します。</p>\n<p><code>.foo</code> の代わりに使えるのはフィールドへのアクセスだけでなく、任意のjq式です。ソート順は、前述の <code>sort</code> 関数で説明した順序と同じです。</p>"
+    },
+    {
+      "key": "sections/3/entries/39/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "f922de57ab35b155937ba48e077919bbd1cff93c808179eb187ae3461891eae4",
+      "translatedSha256": "f922de57ab35b155937ba48e077919bbd1cff93c808179eb187ae3461891eae4",
+      "html": "<h3><code>min</code>, <code>max</code>, <code>min_by(path_exp)</code>, <code>max_by(path_exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/39/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "264d67888a572df5b04954c153634561b102907c0423896a3742f88d6cba479e",
+      "translatedSha256": "6319ea5e29770c310a36674365ae9b8e15401204f710295c342fba3ab970ac97",
+      "html": "<p>入力配列の最小または最大の要素を見つけます。</p>\n<p>関数 <code>min_by(path_exp)</code> と <code>max_by(path_exp)</code> では、調べる特定のフィールドやプロパティを指定できます。たとえば、<code>min_by(.foo)</code> は、<code>foo</code> フィールドが最小のオブジェクトを見つけます。</p>"
+    },
+    {
+      "key": "sections/3/entries/40/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "f7ba413137da2dc1b4796c57b069ab00ab28ce092e110073d9d2d09f1688a1e3",
+      "translatedSha256": "f7ba413137da2dc1b4796c57b069ab00ab28ce092e110073d9d2d09f1688a1e3",
+      "html": "<h3><code>unique</code>, <code>unique_by(path_exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/40/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "46be18932874fbd158d6df0560f3706abaafb359957bfd18379eac4b9a8aa002",
+      "translatedSha256": "7d4f884a878d1995cf61e8522acedc2af73da73f83109d27ea975b24b2901edd",
+      "html": "<p>関数 <code>unique</code> は配列を入力として受け取り、同じ要素をソート順に並べ、重複を取り除いた配列を生成します。</p>\n<p>関数 <code>unique_by(path_exp)</code> は、引数を適用して得られる値ごとに、1つの要素だけを残します。<code>group</code> が生成する各グループから1つずつ要素を取り出して、配列を作ると考えてください。</p>"
+    },
+    {
+      "key": "sections/3/entries/41/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "1749afdef67c964c766ae753242820edb068218ff364937b6c25027193f2c4fe",
+      "translatedSha256": "1749afdef67c964c766ae753242820edb068218ff364937b6c25027193f2c4fe",
+      "html": "<h3><code>reverse</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/41/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "2193d2b39c2b69c4eb0a2fb286e65c30eeb76d9f2ff3c5f20c4557c6317a720c",
+      "translatedSha256": "43270f08dc61be7cc4c83af7fbfa1e224e15e568713fdc9cede9c52080fac01a",
+      "html": "<p>この関数は、配列の要素の順序を逆にします。</p>"
+    },
+    {
+      "key": "sections/3/entries/42/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "875cef565448a0400db3d41a4a4cd5e3aa84832df34b782b45ddeab9bb796042",
+      "translatedSha256": "875cef565448a0400db3d41a4a4cd5e3aa84832df34b782b45ddeab9bb796042",
+      "html": "<h3><code>contains(element)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/42/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "fb44fe5a0cdd1eabed451191c8260219c2cdb67210e01ef6faf4224d82ac14cd",
+      "translatedSha256": "864fdd9b566f2e595a5e93a3e202ae212815a448b28d2196c0fdb472649af7fd",
+      "html": "<p>フィルター <code>contains(b)</code> は、bが入力に完全に含まれている場合にtrueを生成します。文字列Bが文字列Aに含まれているとは、BがAの部分文字列であることを意味します。配列Bが配列Aに含まれているとは、Bのすべての要素が、それぞれAのいずれかの要素に含まれていることを意味します。オブジェクトBがオブジェクトAに含まれているとは、Bのすべての値が、Aの同じキーに対応する値に含まれていることを意味します。それ以外の型はすべて、互いに等しい場合に、互いに含まれているとみなします。</p>"
+    },
+    {
+      "key": "sections/3/entries/43/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "59ca959f06347907b5545bb2da60fffd75074bf1e18f76b2b43d5300a4d252f1",
+      "translatedSha256": "59ca959f06347907b5545bb2da60fffd75074bf1e18f76b2b43d5300a4d252f1",
+      "html": "<h3><code>indices(s)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/43/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "6e4f77a6e199900ae882b1599ba8436491f74e42d0d6d495a32a1335afcb38a1",
+      "translatedSha256": "2261de17a03c8b55be9ce687c1c7b840c694ee610480590cda9734ee83e69cd0",
+      "html": "<p><code>.</code> 内で <code>s</code> が現れる位置の索引を含む配列を出力します。入力は配列でも構いません。その場合、<code>s</code> も配列であれば、<code>.</code> 内の一連の要素が <code>s</code> のすべての要素と一致する位置の索引を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/44/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "18eb0f8e43cf210e7f477202eb6a6b707a182b5cf062d6ba2c9881ceb1c1b0e7",
+      "translatedSha256": "18eb0f8e43cf210e7f477202eb6a6b707a182b5cf062d6ba2c9881ceb1c1b0e7",
+      "html": "<h3><code>index(s)</code>, <code>rindex(s)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/44/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "1238866b0706ca4f9cf76d453ee9be1a0e39365712519e06a053ac2533209350",
+      "translatedSha256": "15ddbe4fcd954a79022bf6bb05b5e052d3c9e4dec0557b61d64418a4f9b37595",
+      "html": "<p>最初の出現位置（<code>index</code>）または最後の出現位置（<code>rindex</code>）の索引を出力します。探す対象は、入力内の <code>s</code> です。</p>"
+    },
+    {
+      "key": "sections/3/entries/45/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "c2df1c210864be173d2aa8b8cb87d5591f88c6b90d5e488dc476d60165adb902",
+      "translatedSha256": "c2df1c210864be173d2aa8b8cb87d5591f88c6b90d5e488dc476d60165adb902",
+      "html": "<h3><code>inside</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/45/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "8219197e3bc6f0fb9d7fb26351ca750300aeac461b3a20b92761ff974216fc1f",
+      "translatedSha256": "20b19c0e1604ac75956375c2bc15f37bf332f15a9a4a4457827f1954b53f77a9",
+      "html": "<p>フィルター <code>inside(b)</code> は、入力がbに完全に含まれている場合にtrueを生成します。基本的には、<code>contains</code> の向きを逆にしたものです。</p>"
+    },
+    {
+      "key": "sections/3/entries/46/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "0dba5ce3afc29893142aeda1f83abd78679be27922bf6bd63e7bbb0319f052ab",
+      "translatedSha256": "0dba5ce3afc29893142aeda1f83abd78679be27922bf6bd63e7bbb0319f052ab",
+      "html": "<h3><code>startswith(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/46/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "e589d67be15b6b1cf1d06d44c0b76eb2bcaab0bbd8bd29ca9ab17d629205d169",
+      "translatedSha256": "d9803720bcacf2f70d584eabd59285dc514b1b1292536a171482488eb905f96e",
+      "html": "<p>.が指定した文字列引数で始まる場合、<code>true</code> を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/47/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "a510e66bd282d95698fa9d56ddbe3e7fc91229fba796b927b9a8f1b30e56f4c0",
+      "translatedSha256": "a510e66bd282d95698fa9d56ddbe3e7fc91229fba796b927b9a8f1b30e56f4c0",
+      "html": "<h3><code>endswith(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/47/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "fb5d7d923c08a844c9de181229f1a6adf0e66e169161cfbb721b408a7deac7a7",
+      "translatedSha256": "2d4b22b3fedae667b4a7ee907a01944e9a4db9e36ebda466bda6bec653d73113",
+      "html": "<p>.が指定した文字列引数で終わる場合、<code>true</code> を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/48/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "5b451242f2143d82f43f22087e01932f303d286dc58fdb8d8e225e9a69166631",
+      "translatedSha256": "5b451242f2143d82f43f22087e01932f303d286dc58fdb8d8e225e9a69166631",
+      "html": "<h3><code>combinations</code>, <code>combinations(n)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/48/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "4069af63f215d5270a376d4b222632ac4709adc2b9298c1602160d5a9a1e0479",
+      "translatedSha256": "be059d290ca91137b5acd1e579e652cf6481c468c967e6db90ecfdddcde36703",
+      "html": "<p>入力配列の中にある各配列の要素の、すべての組合せを出力します。引数 <code>n</code> を与えた場合、入力配列を <code>n</code> 回繰り返した、すべての組合せを出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/49/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "f0fd7e7beb2dab255554b40e7235ed9c20f4c16fecd9414f14b29fcde51c7e1d",
+      "translatedSha256": "f0fd7e7beb2dab255554b40e7235ed9c20f4c16fecd9414f14b29fcde51c7e1d",
+      "html": "<h3><code>ltrimstr(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/49/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "5eba5cbc5dff8e3f680b3c10c839ed34f198342d8b8c482f31b4df8018c9ac4c",
+      "translatedSha256": "b29197a38ac03fa4c5ac46cc4bec29f1f7410dbc2d801086b4c007a0475a925b",
+      "html": "<p>入力が指定した接頭文字列で始まる場合、その接頭文字列を取り除いた入力を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/50/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "2d3e392f50f5a0a1563547e617860360f319388ba0c7d8d46bd2a23ea83b6593",
+      "translatedSha256": "2d3e392f50f5a0a1563547e617860360f319388ba0c7d8d46bd2a23ea83b6593",
+      "html": "<h3><code>rtrimstr(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/50/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "a2ac630d1f666c5e29b79623b9119d84c293453395bf3c8aff576c32ee03da49",
+      "translatedSha256": "7f011c5fe6908ca4463f65608c4516d15f39212c55c6373e3c5c80d9e048ce4d",
+      "html": "<p>入力が指定した接尾文字列で終わる場合、その接尾文字列を取り除いた入力を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/51/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "9eb256dd825f8f67dd594eecb39dded3c4fac5f38ac2915a1bcf8715a2cfa39b",
+      "translatedSha256": "9eb256dd825f8f67dd594eecb39dded3c4fac5f38ac2915a1bcf8715a2cfa39b",
+      "html": "<h3><code>trimstr(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/51/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "3db7c9d5546b7f8f4ee175a7b461bfb90b107d5614e96a1d6c7f34b21f1d8d07",
+      "translatedSha256": "507ca7aff0dc0deeab24c792ad8abf4c7f7fa0e189e3d0b53b8295788cb2d21c",
+      "html": "<p>入力が指定した文字列で始まるか終わる場合、両端からその文字列を取り除いた入力を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/52/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "b1df8d26ab2487a3d7b07b04ef22aa6350832ec943177feaf61ebc87d89b3102",
+      "translatedSha256": "b1df8d26ab2487a3d7b07b04ef22aa6350832ec943177feaf61ebc87d89b3102",
+      "html": "<h3><code>trim</code>, <code>ltrim</code>, <code>rtrim</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/52/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "06d999a093f686400eb98290e4512b00050fb2b19a43063366e5c0f6a2d31bed",
+      "translatedSha256": "b33e0f00449267b2cca8b974487ee79cf520097d9afda49a6a96d230a24f8a76",
+      "html": "<p><code>trim</code> は、先頭と末尾の両方の空白文字を取り除きます。</p>\n<p><code>ltrim</code> は、先頭（左側）の空白文字だけを取り除きます。</p>\n<p><code>rtrim</code> は、末尾（右側）の空白文字だけを取り除きます。</p>\n<p>空白文字には、通常の <code>\" \"</code>、<code>\"\\n\"</code>、<code>\"\\t\"</code>、<code>\"\\r\"</code> に加え、Unicode文字データベースで空白プロパティを持つすべての文字が含まれます。何を空白とみなすかは、将来変わる可能性があることに注意してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/53/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "41ff2c895a3aed3b22f1482e31f438bb8b27dd2c24e183240e9ad5fa097886d3",
+      "translatedSha256": "41ff2c895a3aed3b22f1482e31f438bb8b27dd2c24e183240e9ad5fa097886d3",
+      "html": "<h3><code>explode</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/53/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "921f7b956193e62a228b81510469c4acf4509d3ddd6a87f1259032f335dbfe60",
+      "translatedSha256": "77ff3597dd6c207484f05e084b602bddd6f299f953848a0a40ec87ae21c9dbb3",
+      "html": "<p>入力文字列を、その文字列のコードポイントの数値からなる配列に変換します。</p>"
+    },
+    {
+      "key": "sections/3/entries/54/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "ef07c6d96bffc96d7773d6ccf4ac967be692f91c901e5bb506a0dd1b65350829",
+      "translatedSha256": "ef07c6d96bffc96d7773d6ccf4ac967be692f91c901e5bb506a0dd1b65350829",
+      "html": "<h3><code>implode</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/54/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "29407534c36c7dc7b29e9780e7c4d44058cffaa98c2823035d1d62b0140032e0",
+      "translatedSha256": "062b8253db2a97149bb838508e55da05bb4c08b6f63c68f46afcedef2f9b80b4",
+      "html": "<p>explodeの逆の操作です。</p>"
+    },
+    {
+      "key": "sections/3/entries/55/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "da4325f945dd9925a373a3891f28029d45b082bac99e3e40d033da24a50f1f4a",
+      "translatedSha256": "da4325f945dd9925a373a3891f28029d45b082bac99e3e40d033da24a50f1f4a",
+      "html": "<h3><code>split(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/55/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "a7317a654ee0338b467ef161abdbb30a54c53e4a1ac27c5d99cdd4c06b1d8c7a",
+      "translatedSha256": "da297e64e37c8228d940c5a23e9300ac4a0282fc7d8a47a8471a2acf26547de2",
+      "html": "<p>区切り文字の引数を使って、入力文字列を分割します。</p>\n<p><code>split</code> は、引数を2つ指定して呼び出すと、正規表現の一致箇所でも分割できます。後述の正規表現の節を参照してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/56/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "b06fbaac639754156f29090d82567c9b8d82223d7d87fc59ccbabc02590fa3cd",
+      "translatedSha256": "b06fbaac639754156f29090d82567c9b8d82223d7d87fc59ccbabc02590fa3cd",
+      "html": "<h3><code>join(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/56/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "f30c5e1659850d6b18beffb294e7947378b8861bf5b465eb295a642d3a1b0b55",
+      "translatedSha256": "ec4974afe2377d9d21cfea8dd212c6c8b814de9eb249ca4e77c65cdf28898154",
+      "html": "<p>入力として与えられた要素の配列を、引数を区切り文字として使って結合します。これは <code>split</code> の逆の操作です。つまり、任意の入力文字列に対して <code>split(\"foo\") | join(\"foo\")</code> を実行すると、その入力文字列が返ります。</p>\n<p>入力内の数値と真偽値は文字列に変換されます。nullの値は空文字列として扱われます。入力内の配列とオブジェクトには対応していません。</p>"
+    },
+    {
+      "key": "sections/3/entries/57/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "ad2e081bdb180fc8ac25f45dfca9126a94ba8d9ee432e30f3fdef4a8f79df428",
+      "translatedSha256": "ad2e081bdb180fc8ac25f45dfca9126a94ba8d9ee432e30f3fdef4a8f79df428",
+      "html": "<h3><code>ascii_downcase</code>, <code>ascii_upcase</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/57/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "64050f670c94f798f88f112b50aa3b32dbfa39d873a43492f6f88d24e1951922",
+      "translatedSha256": "bff2bc03fc1f40302f3ece1b1345abe6c17d6fda62ab047ff87aa879a2888ea1",
+      "html": "<p>入力文字列のコピーを出力し、英字（a-zとA-Z）を指定した大文字または小文字に変換します。</p>"
+    },
+    {
+      "key": "sections/3/entries/58/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "fb83549ad8476f477b78f80319a7ee23d64b7fb4ea81b78dd1f3a52ebc01e9dc",
+      "translatedSha256": "fb83549ad8476f477b78f80319a7ee23d64b7fb4ea81b78dd1f3a52ebc01e9dc",
+      "html": "<h3><code>while(cond; update)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/58/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "ac77fc02b14d9ad0953e4ab7be82f556ba76a5b4c07dd0ee7a9f0c0ace7fc8e3",
+      "translatedSha256": "272f498b7c8eca55424190a6478516361028547f5aa0d655c24175a9716efc52",
+      "html": "<p>関数 <code>while(cond; update)</code> は、<code>.</code> に更新を繰り返し適用し、<code>cond</code> がfalseになるまで続けます。</p>\n<p><code>while(cond; update)</code> は、内部では再帰的なjq関数として定義されています。<code>while</code> 内の再帰呼び出しは、<code>update</code> が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/59/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "85ea80778d00c64f41b1726f3d1c68352b9b45fbd8985d1116475621de8b68bc",
+      "translatedSha256": "85ea80778d00c64f41b1726f3d1c68352b9b45fbd8985d1116475621de8b68bc",
+      "html": "<h3><code>repeat(exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/59/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "b4f2e377ae5f3a49dc3bb0712594a6f6ee51472dc27afb885b54666916c52fa1",
+      "translatedSha256": "d6c93c889dd4c1aab1a3bc8f822e5f280f9d3cd086b63c8daf94020e8f7b1e0a",
+      "html": "<p>関数 <code>repeat(exp)</code> は、式 <code>exp</code> を <code>.</code> に繰り返し適用し、エラーが発生するまで続けます。</p>\n<p><code>repeat(exp)</code> は、内部では再帰的なjq関数として定義されています。<code>repeat</code> 内の再帰呼び出しは、<code>exp</code> が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/60/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "3a414969895b8669174ddad8bac7bfe9881ec41e91377ccabf0d804c676dd661",
+      "translatedSha256": "3a414969895b8669174ddad8bac7bfe9881ec41e91377ccabf0d804c676dd661",
+      "html": "<h3><code>until(cond; next)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/60/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "1e9db7d4e60959a21cd09301f8e181ea3893ca4cb7feb6b7801fde27548fff14",
+      "translatedSha256": "0e272a1501732cc6ec888976fc1193727b95124b6b0a3476e1424ec858eb3444",
+      "html": "<p>関数 <code>until(cond; next)</code> は、式 <code>next</code> を繰り返し適用します。最初は <code>.</code> に、その後は式自身の出力に適用し、<code>cond</code> がtrueになるまで続けます。たとえば、階乗関数の実装に使えます。以下を参照してください。</p>\n<p><code>until(cond; next)</code> は、内部では再帰的なjq関数として定義されています。<code>until()</code> 内の再帰呼び出しは、<code>next</code> が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/61/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "f2ce3d8935a3a9b8c82f40bc07c10a6e4bf523aebe1953532fce9761bb46848d",
+      "translatedSha256": "f2ce3d8935a3a9b8c82f40bc07c10a6e4bf523aebe1953532fce9761bb46848d",
+      "html": "<h3><code>recurse(f)</code>, <code>recurse</code>, <code>recurse(f; condition)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/61/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "5d37c83d500f29959ef457924782ed4fe8d8ff11b070d74abd55c24b9295a641",
+      "translatedSha256": "d7b30c77ab7d7673509befb3e96c690b231768a4ec483a4477deea63276639f2",
+      "html": "<p>関数 <code>recurse(f)</code> は、再帰的な構造を探索し、すべての階層から必要なデータを抽出できます。入力が次のようなファイルシステムを表すとします。</p>\n<pre><code>{\"name\": \"/\", \"children\": [&#10;  {\"name\": \"/bin\", \"children\": [&#10;    {\"name\": \"/bin/ls\", \"children\": []},&#10;    {\"name\": \"/bin/sh\", \"children\": []}]},&#10;  {\"name\": \"/home\", \"children\": [&#10;    {\"name\": \"/home/stephen\", \"children\": [&#10;      {\"name\": \"/home/stephen/jq\", \"children\": []}]}]}]}&#10;</code></pre>\n<p>存在するすべてのファイル名を抽出したいとします。<code>.name</code>、<code>.children[].name</code>、<code>.children[].children[].name</code>、というように取得する必要があります。これは次の式で行えます。</p>\n<pre><code>recurse(.children[]) | .name&#10;</code></pre>\n<p>引数なしで呼び出した <code>recurse</code> は、<code>recurse(.[]?)</code> と同じです。</p>\n<p><code>recurse(f)</code> は <code>recurse(f; true)</code> と同じで、再帰の深さを気にせずに使えます。</p>\n<p><code>recurse(f; condition)</code> は、まず.を出力し、その後は計算した値が条件を満たす限り、.|f、.|f|f、.|f|f|f、…と順に出力するジェネレーターです。たとえば、少なくとも原理的には、<code>recurse(.+1; true)</code> と書けば、すべての整数を生成できます。</p>\n<p><code>recurse</code> 内の再帰呼び出しは、<code>f</code> が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。</p>"
+    },
+    {
+      "key": "sections/3/entries/62/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "1c055565d6c8805d05c2adf85583aeb4a6b14a46f89c6b88a2f016817a71d142",
+      "translatedSha256": "1c055565d6c8805d05c2adf85583aeb4a6b14a46f89c6b88a2f016817a71d142",
+      "html": "<h3><code>walk(f)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/62/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "b5c4937b10b4ca88cba9c69bf371f74d651af7b4f30e48b15929c2e314261b70",
+      "translatedSha256": "ff733d344bc980c184a880aa9232d8b315f12fdea163b8a17db8b1e705ab7fe5",
+      "html": "<p>関数 <code>walk(f)</code> は、入力の各構成要素にfを再帰的に適用します。配列に出会うと、まずその要素にfを適用し、その後に配列自体に適用します。オブジェクトに出会うと、まずすべての値にfを適用し、その後にオブジェクトに適用します。実際には、以下の例のように、fは通常、入力の型を調べます。最初の例は、配列の配列について、配列自体を処理する前に要素を処理することの便利さを示します。2番目の例は、入力内のすべてのオブジェクトのすべてのキーを、変更の対象にできることを示します。</p>"
+    },
+    {
+      "key": "sections/3/entries/63/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "aee854653d925f21a8cd82e60f9d96cb519e849f157d547228c3920d5d0fd65c",
+      "translatedSha256": "aee854653d925f21a8cd82e60f9d96cb519e849f157d547228c3920d5d0fd65c",
+      "html": "<h3><code>have_literal_numbers</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/63/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "bfaf29bb263a34a29b62cc761941dad9aca4bb5781c4855008e777567419766b",
+      "translatedSha256": "5899c8ffd8654c5aaca8758a982b79ae63bf066464e996c7509ab37f6183fdbc",
+      "html": "<p>jqのビルド設定が入力の数値リテラルを保持する機能を含んでいる場合、この組込み関数はtrueを返します。</p>"
+    },
+    {
+      "key": "sections/3/entries/64/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "ad5d5b680a71809d0df734f42abd04d4f24d2c36dc6ab92c179d724ee5adea17",
+      "translatedSha256": "ad5d5b680a71809d0df734f42abd04d4f24d2c36dc6ab92c179d724ee5adea17",
+      "html": "<h3><code>have_decnum</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/64/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "539df7f94495d987294838866fa30c2e57cce48b9bf2c508f265729209ba104f",
+      "translatedSha256": "03ad6af98dc7df2fe67f527538a0eefbeea5f82d893842db99f9bc20d043cd53",
+      "html": "<p>jqが\"decnum\"を使ってビルドされた場合、この組込み関数はtrueを返します。これは、現在のjqで数値リテラルを保持する数値バックエンドの実装です。</p>"
+    },
+    {
+      "key": "sections/3/entries/65/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "0f846d9099a813d67ba77f61d64fe8d761afdd10541d3e348a8d4aad8441f986",
+      "translatedSha256": "0f846d9099a813d67ba77f61d64fe8d761afdd10541d3e348a8d4aad8441f986",
+      "html": "<h3><code>$JQ_BUILD_CONFIGURATION</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/65/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "1f4edbc6a3976aa539f99a270bd59326d478697aeb3399b5578913dd12bd505e",
+      "translatedSha256": "d58a9b92e84da1ec2fd7aeb5e0fb17f63a07d7b9c29601354772d9938332217a",
+      "html": "<p>この組込みの束縛は、jq実行ファイルのビルド設定を示します。値に決まった形式はありませんが、少なくとも <code>./configure</code> のコマンドライン引数が含まれると期待できます。将来は、使用したビルドツールのバージョン文字列などが追加される可能性があります。</p>\n<p>これは、コマンドラインの <code>--arg</code> や関連するオプションで上書きできることに注意してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/66/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "72e3aa38700ea5173564a13e32531cd3d54172c4f560f1c402e60460c18a2621",
+      "translatedSha256": "72e3aa38700ea5173564a13e32531cd3d54172c4f560f1c402e60460c18a2621",
+      "html": "<h3><code>$ENV</code>, <code>env</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/66/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "4c7b9cd9d8fd6653c625217503094f85b6437498545dc44cc2f7e913cc9cec61",
+      "translatedSha256": "5c7faf818cd7052646bc14ff712d38c5a4953f2a39e800aec789945c1517c3af",
+      "html": "<p><code>$ENV</code> は、jqプログラムの開始時点で設定されていた環境変数を表すオブジェクトです。</p>\n<p><code>env</code> は、jqの現在の環境を表すオブジェクトを出力します。</p>\n<p>現時点では、環境変数を設定する組込み関数はありません。</p>"
+    },
+    {
+      "key": "sections/3/entries/67/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "d4ea5ef30a8fa2b91211d1f883515a340300acc7e989e59227ec119574e72a1e",
+      "translatedSha256": "d4ea5ef30a8fa2b91211d1f883515a340300acc7e989e59227ec119574e72a1e",
+      "html": "<h3><code>transpose</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/67/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "2c1d95ffe6e2e3f2960d3ef0272ce7aed20c531c7646b3c316f831de60bb87b8",
+      "translatedSha256": "cc1985fa50f9a095f5038bdaa41a50dcfd17910ecf78325e2c95a7b1f14ca5a2",
+      "html": "<p>行ごとの長さが異なる場合もある行列（配列の配列）を転置します。行はnullで埋められるため、結果は常に長方形になります。</p>"
+    },
+    {
+      "key": "sections/3/entries/68/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "663797cad2eb479adea7483691f2b4d79e9fcb264439a44534424d0b9f4f5933",
+      "translatedSha256": "663797cad2eb479adea7483691f2b4d79e9fcb264439a44534424d0b9f4f5933",
+      "html": "<h3><code>bsearch(x)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/68/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "6a1ac5d0019e5693924aafaff9e11d599f52a6c1b525f1cabf2ed2cffa7707b1",
+      "translatedSha256": "91e80ce78f5fbaea38142a87326338c3f36dd5c7db5f4c87ae5ce364a5dfa028",
+      "html": "<p><code>bsearch(x)</code> は、入力配列からxを二分探索します。入力がソート済みでxを含んでいる場合、<code>bsearch(x)</code> は配列内でのその索引を返します。そうでなくても配列がソート済みであれば、(-1 - ix)を返します。ここでixは、その位置にxを挿入しても配列のソート順が保たれる挿入位置です。配列がソートされていない場合、<code>bsearch(x)</code> は、おそらく意味のない整数を返します。</p>"
+    },
+    {
+      "key": "sections/3/entries/69/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "3cf17dc6b69a833d2c510816ba3dc2b676c54a136208cbc086e93ad17f042b52",
+      "translatedSha256": "410a4a4019f9512a85aca4dc89bed28c692377e9b003c3318cbeded399e701b3",
+      "html": "<h3>文字列への式の埋込み：<code>\\(exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/69/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "962869cd798e137d3b21386b871dd1bef647355889b7440af5c8c0bd0364bf45",
+      "translatedSha256": "a679a1ddd286923ffada4a640d67e4bf582229fb2d0a245fae08ff18f53f7581",
+      "html": "<p>文字列内では、バックスラッシュに続く丸括弧の中に式を置けます。その式が返すものが、文字列に埋め込まれます。</p>"
+    },
+    {
+      "key": "sections/3/entries/70/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "632ade9e2285a0d33eba6b7db3df4cdb4c124424832ca2e69e387df156ce51f1",
+      "translatedSha256": "3389b35acc4da68f1e799e7cc9ed4366db1cfa1c060057b513b86c6934254b31",
+      "html": "<h3>JSONへの変換とJSONからの変換</h3>"
+    },
+    {
+      "key": "sections/3/entries/70/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "c6da9f9efaf6f4189057ac86b939af9fc766bba0addb70d058ae984ff6a21dca",
+      "translatedSha256": "7de4493e587f2669a9044eea71d00809421fb17878fdcfe75131da65cc1a8b74",
+      "html": "<p>組込み関数 <code>tojson</code> と <code>fromjson</code> は、それぞれ、値をJSONテキストとして出力するか、JSONテキストを値へ解析します。組込み関数 <code>tojson</code> と <code>tostring</code> の違いは、<code>tostring</code> が文字列を変更せず返すのに対し、<code>tojson</code> は文字列をJSON文字列としてエンコードする点です。</p>"
+    },
+    {
+      "key": "sections/3/entries/71/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "1726b99e1f6579be30d03a81a08f807ec8c90e88ee5a33d6f0c6144993b5e938",
+      "translatedSha256": "e4f23c12a5443b651be4b029d0b36d36529090aab229703fdd367d781e8fde2b",
+      "html": "<h3>文字列の書式設定とエスケープ</h3>"
+    },
+    {
+      "key": "sections/3/entries/71/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "0b6be3fcb6e2ba6aa6649f2a05beceba68bbf6eb2d2f00a23ab972ec1962c89d",
+      "translatedSha256": "b54694d234b25791227970576f8baac6a6efa200367394be05e3687401c95730",
+      "html": "<p><code>@foo</code> 構文は、文字列の書式設定やエスケープに使います。URLや、HTML・XMLのような言語の文書などを作る際に便利です。<code>@foo</code> は、それ自体をフィルターとして使えます。利用できるエスケープは次のとおりです。</p>\n<ul>\n<li><code>@text</code>:</li>\n</ul>\n<p><code>tostring</code> を呼び出します。詳細はその関数を参照してください。</p>\n<ul>\n<li><code>@json</code>:</li>\n</ul>\n<p>入力をJSONとしてシリアライズします。</p>\n<ul>\n<li><code>@html</code>:</li>\n</ul>\n<p>文字 <code>&lt;&gt;&amp;'\"</code> を、対応する実体参照 <code>&amp;lt;</code>、<code>&amp;gt;</code>、<code>&amp;amp;</code>、<code>&amp;apos;</code>、<code>&amp;quot;</code> に置き換えて、HTML/XMLエスケープを適用します。</p>\n<ul>\n<li><code>@uri</code>:</li>\n</ul>\n<p>URIのすべての予約文字を <code>%XX</code> という並びに置き換えて、パーセントエンコードを適用します。</p>\n<ul>\n<li><code>@urid</code>:</li>\n</ul>\n<p><code>@uri</code> の逆の操作です。すべての <code>%XX</code> という並びを対応するURIの文字に置き換えて、パーセントデコードを適用します。</p>\n<ul>\n<li><code>@csv</code>:</li>\n</ul>\n<p>入力は配列でなければなりません。CSVとして出力し、文字列は二重引用符で囲み、引用符は繰り返すことでエスケープします。</p>\n<ul>\n<li><code>@tsv</code>:</li>\n</ul>\n<p>入力は配列でなければなりません。TSV（タブ区切りの値）として出力します。各入力配列を1行として出力します。フィールドは1つのタブ（ASCII <code>0x09</code>）で区切ります。入力の改行（ASCII <code>0x0a</code>）、復帰（ASCII <code>0x0d</code>）、タブ（ASCII <code>0x09</code>）、バックスラッシュ（ASCII <code>0x5c</code>）は、それぞれエスケープシーケンス <code>\\n</code>、<code>\\r</code>、<code>\\t</code>、<code>\\\\</code> として出力します。</p>\n<ul>\n<li><code>@sh</code>:</li>\n</ul>\n<p>POSIXシェルのコマンドラインで使えるように入力をエスケープします。入力が配列の場合、出力はスペースで区切った文字列の並びになります。</p>\n<ul>\n<li><code>@base64</code>:</li>\n</ul>\n<p>RFC 4648で規定されているbase64へ入力を変換します。</p>\n<ul>\n<li><code>@base64d</code>:</li>\n</ul>\n<p><code>@base64</code> の逆の操作です。RFC 4648に従って入力をデコードします。注意：デコードした文字列がUTF-8でない場合、結果は未定義です。</p>\n<p>この構文は、文字列への式の埋込みと便利に組み合わせられます。<code>@foo</code> トークンの後に文字列リテラルを置けます。文字列リテラルの内容自体は、エスケープ<em>されません</em>。ただし、その文字列リテラル内に埋め込まれる式の結果は、すべてエスケープされます。たとえば、</p>\n<pre><code>@uri \"https://www.google.com/search?q=\\(.search)\"&#10;</code></pre>\n<p>は、入力 <code>{\"search\":\"what is jq?\"}</code> に対して、次の出力を生成します。</p>\n<pre><code>\"https://www.google.com/search?q=what%20is%20jq%3F\"&#10;</code></pre>\n<p>URLのスラッシュや疑問符などは、文字列リテラルの一部だったため、エスケープされないことに注意してください。</p>"
+    },
+    {
+      "key": "sections/3/entries/72/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "78963905f399ce6fe0e1b9ca063e591c314b3f5c944677a8bca89e3d3425c4b7",
+      "translatedSha256": "666819e1782ecb4ddb6967d3f6c94def3e52bf33676a5a3c89e0c0d6b57e2409",
+      "html": "<h3>日付</h3>"
+    },
+    {
+      "key": "sections/3/entries/72/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "8ad17e45bbde3441763618481a20866e885f00e219f14f5fcd41d3d71ff54c4a",
+      "translatedSha256": "fed1bbe78333475906cead11fa00db1afd30887197676e011ba38bc75b455ae2",
+      "html": "<p>jqは、高水準と低水準の組込み関数による、基本的な日付処理機能を提供します。これらの組込み関数は、すべての場合においてUTCの時刻だけを扱います。</p>\n<p>組込み関数 <code>fromdateiso8601</code> は、ISO 8601形式の日時を、Unixエポック（1970-01-01T00:00:00Z）からの秒数へ解析します。組込み関数 <code>todateiso8601</code> は、その逆の操作を行います。</p>\n<p>組込み関数 <code>fromdate</code> は日時文字列を解析します。現在、<code>fromdate</code> はISO 8601形式の日時文字列にだけ対応していますが、将来はさらに多くの形式の日時文字列の解析を試みるようになります。</p>\n<p>組込み関数 <code>todate</code> は、<code>todateiso8601</code> の別名です。</p>\n<p>組込み関数 <code>now</code> は、現在の時刻を、Unixエポックからの秒数で出力します。</p>\n<p>Cライブラリの時刻関数に対する低水準のjqインターフェースも提供されています。<code>strptime</code>、<code>strftime</code>、<code>strflocaltime</code>、<code>mktime</code>、<code>gmtime</code>、<code>localtime</code> です。<code>strptime</code> と <code>strftime</code> で使う書式文字列については、ホストOSの文書を参照してください。注意：これらはjqで必ずしも安定したインターフェースではなく、特に地域化機能については注意が必要です。</p>\n<p>組込み関数 <code>gmtime</code> は、Unixエポックからの秒数を受け取り、グリニッジ標準時の「分解された時刻」表現を出力します。これは数値の配列で、次の順序で表します。年、月（0始まり）、月内の日（1始まり）、時、分、秒、曜日、年内の日です。別途記載がない限り、すべて1始まりです。一部のシステムでは、1900年3月1日より前、または2099年12月31日より後の日付で、曜日の数値が誤っていることがあります。</p>\n<p>組込み関数 <code>localtime</code> は、組込み関数 <code>gmtime</code> と同様に動作しますが、ローカルのタイムゾーン設定を使います。</p>\n<p>組込み関数 <code>mktime</code> は、<code>gmtime</code> と <code>strptime</code> が出力する「分解された時刻」表現を受け取ります。</p>\n<p>組込み関数 <code>strptime(fmt)</code> は、引数 <code>fmt</code> に一致する入力文字列を解析します。出力は「分解された時刻」表現で、<code>mktime</code> が受け取り、<code>gmtime</code> が出力する表現です。</p>\n<p>組込み関数 <code>strftime(fmt)</code> は、指定した書式で時刻（GMT）を整形します。<code>strflocaltime</code> は同じ操作を行いますが、ローカルのタイムゾーン設定を使います。</p>\n<p><code>strptime</code> と <code>strftime</code> の書式文字列は、一般的なCライブラリの文書で説明されています。ISO 8601日時の書式文字列は <code>\"%Y-%m-%dT%H:%M:%SZ\"</code> です。</p>\n<p>一部のシステムでは、jqがこれらの日付機能の一部またはすべてに対応していない場合があります。特に、macOSでは、<code>%u</code> と <code>%j</code> の指定子を <code>strptime(fmt)</code> で使えません。</p>"
+    },
+    {
+      "key": "sections/3/entries/73/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "8ad1cec622e7bfd5d250f12b6cccad787d0648ef961dc5aaea67726bb2070c5d",
+      "translatedSha256": "703ae2b6b45dc9cf49869eb7f3bf786a0b72b8dc53f3108bd61caa2b703991eb",
+      "html": "<h3>SQL形式の演算子</h3>"
+    },
+    {
+      "key": "sections/3/entries/73/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "c0f083a4941b1df241ca33d21711c3567d869e1728418b3e9bab43964bf0f765",
+      "translatedSha256": "0c7b335908672730f1f161e71b37bf6b688f149e575215ef57740b1b0c89d69a",
+      "html": "<p>jqはいくつかのSQL形式の演算子を提供します。</p>\n<ul>\n<li><code>INDEX(stream; index_expression)</code>:</li>\n</ul>\n<p>この組込み関数は、指定したストリームの各値に、指定した索引式を適用してキーを計算したオブジェクトを生成します。</p>\n<ul>\n<li><code>JOIN($idx; stream; idx_expr; join_expr)</code>:</li>\n</ul>\n<p>この組込み関数は、指定したストリームの値を、指定した索引へ結合します。索引のキーは、指定したストリームの各値に、指定した索引式を適用して計算します。ストリーム内の値と、索引内の対応する値からなる配列を、指定した結合式に渡して、それぞれの結果を生成します。</p>\n<ul>\n<li><code>JOIN($idx; stream; idx_expr)</code>:</li>\n</ul>\n<p><code>JOIN($idx; stream; idx_expr; .)</code> と同じです。</p>\n<ul>\n<li><code>JOIN($idx; idx_expr)</code>:</li>\n</ul>\n<p>この組込み関数は、入力 <code>.</code> を指定した索引へ結合します。指定した索引式を <code>.</code> に適用して、索引のキーを計算します。結合操作は、前述のとおりです。</p>\n<ul>\n<li><code>IN(s)</code>:</li>\n</ul>\n<p>この組込み関数が <code>true</code> を出力するのは、<code>.</code> が指定したストリームに現れる場合です。それ以外の場合は <code>false</code> を出力します。</p>\n<ul>\n<li><code>IN(source; s)</code>:</li>\n</ul>\n<p>この組込み関数が <code>true</code> を出力するのは、元のストリームのいずれかの値が2番目のストリームに現れる場合です。それ以外の場合は <code>false</code> を出力します。</p>"
+    },
+    {
+      "key": "sections/3/entries/74/title",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "entry-title",
+      "sourceSha256": "ed7889154c283b113837cbf5b4ddfda91e3bebc0b9e6120543ece3e09b6be8ec",
+      "translatedSha256": "ed7889154c283b113837cbf5b4ddfda91e3bebc0b9e6120543ece3e09b6be8ec",
+      "html": "<h3><code>builtins</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/74/body",
+      "page": "04-builtin-operators-and-functions",
+      "mode": "web-body",
+      "sourceSha256": "79ad956ef954fe7d1f7b59e706cba3a5615146b148acf57dc98039c5ca8a5ea5",
+      "translatedSha256": "bde75c94f05908e351ceb730fdbdf734e9cbfe72c4b544bec3aa8139ddb19d3b",
+      "html": "<p>すべての組込み関数のリストを、<code>name/arity</code> という形式で返します。同じ名前でも引数の数が異なる関数は別の関数とみなされるため、<code>all/0</code>、<code>all/1</code>、<code>all/2</code> はすべてリストに含まれます。</p>"
+    },
+    {
+      "key": "sections/4/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "section-title",
+      "sourceSha256": "da5829de7ffde071089edcbe99a725575d686a35b99c7ce488b8551a75b8c772",
+      "translatedSha256": "d9e3a9511b5d1347e3c1704deb9cec2bbf0feca49da1c59447856de342321c4f",
+      "html": "<h2>条件式と比較</h2>"
+    },
+    {
+      "key": "sections/4/entries/0/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "9fb0f08d5539cf5600b387bd1156b0bc17a16666e34f3a5b43f9f0caa65e957f",
+      "translatedSha256": "9fb0f08d5539cf5600b387bd1156b0bc17a16666e34f3a5b43f9f0caa65e957f",
+      "html": "<h3><code>==</code>, <code>!=</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/0/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "b82d629221f164166447a63b0fd33e7d48f7394a37329f2b7c4af476a958d879",
+      "translatedSha256": "7ca3b38876673c1116355a8ff118090b8c9ce973da245233099ee83c0acfb54c",
+      "html": "<p>式'a == b'は、aとbを評価した結果が等しい場合（つまり、等価なJSON値を表す場合）に'true'を生成し、それ以外の場合に'false'を生成します。特に、文字列が数値と等しいとみなされることはありません。JSONオブジェクトの等価性を調べるとき、キーの順序は関係ありません。JavaScriptを使っていた方は、jqの <code>==</code> が、JavaScriptの「厳密等価」演算子 <code>===</code> と同様であることに注意してください。</p>\n<p>!=は「等しくない」を意味し、'a != b'は'a == b'と逆の値を返します。</p>"
+    },
+    {
+      "key": "sections/4/entries/1/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "c7d062df3cd478f55fdfba3b065db38f90b3c653a5c33206d8f62205b103fd94",
+      "translatedSha256": "c7d062df3cd478f55fdfba3b065db38f90b3c653a5c33206d8f62205b103fd94",
+      "html": "<h3>if-then-else-end</h3>"
+    },
+    {
+      "key": "sections/4/entries/1/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "9c0b5afd7758dbcd3072d7b925ef087cd058d3357035a31405bf8f0e4795dc6c",
+      "translatedSha256": "f4fd9d93c33809ffbfacbaa1e3790dd1941f9ac5b86ab6de937101dcee0cb969",
+      "html": "<p><code>if A then B else C end</code> が <code>B</code> と同じ動作をするのは、<code>A</code> がfalseでもnullでもない値を生成する場合です。それ以外の場合は <code>C</code> と同じ動作をします。</p>\n<p><code>if A then B end</code> は、<code>if A then B else .  end</code> と同じです。つまり、<code>else</code> 分岐は省略可能で、省略した場合は <code>.</code> と同じです。これは、<code>elif</code> で最後の <code>else</code> 分岐を省略した場合にも当てはまります。</p>\n<p>falseかnullかを調べるという「真とみなすかどうか」の基準は、JavaScriptやPythonより単純です。ただし、求める条件を、より明示的に指定しなければならない場合があります。たとえば、<code>if .name then A else B end</code> では文字列が空かどうかは調べられません。代わりに、<code>if .name == \"\" then A else B end</code> のような式が必要です。</p>\n<p>条件 <code>A</code> が複数の結果を生成する場合、<code>B</code> はfalseでもnullでもない各結果に対して1回ずつ評価され、<code>C</code> はfalseまたはnullの各結果に対して1回ずつ評価されます。</p>\n<p>ifにさらに条件を追加するには、<code>elif A then B</code> 構文を使います。</p>"
+    },
+    {
+      "key": "sections/4/entries/2/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "7e2f373c72fcad4f2d7d77f0cffcc85b9c5c704afa054fc669125762bcff8aab",
+      "translatedSha256": "7e2f373c72fcad4f2d7d77f0cffcc85b9c5c704afa054fc669125762bcff8aab",
+      "html": "<h3><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/2/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "78dabda6edf120e7135d99cccbb6e872c2c9342cac23f557364517fc687cd56a",
+      "translatedSha256": "b957be45ba93df2482b79a695af36b70c724d7106e8aaaa947f85cfec12ae89e",
+      "html": "<p>比較演算子 <code>&gt;</code>、<code>&gt;=</code>、<code>&lt;=</code>、<code>&lt;</code> は、それぞれ、左の引数が右の引数より大きいか、以上か、以下か、より小さいかを返します。</p>\n<p>順序は、前述の <code>sort</code> で説明した順序と同じです。</p>"
+    },
+    {
+      "key": "sections/4/entries/3/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "b9a1b0207abe1e1d0c7de26fced3dd6860e37b6d8b387e4f193659bf51ee1982",
+      "translatedSha256": "b9a1b0207abe1e1d0c7de26fced3dd6860e37b6d8b387e4f193659bf51ee1982",
+      "html": "<h3><code>and</code>, <code>or</code>, <code>not</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/3/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "179a39b221c9271567e4c5bae22422d417e3813fabea1ce7e5bcf2137982e019",
+      "translatedSha256": "3ee6b8d187f059e6a093ea80d4d8cc8f6809762d44a371c1415cda7fd8c3176a",
+      "html": "<p>jqは、通常の真偽値演算子 <code>and</code>、<code>or</code>、<code>not</code> に対応しています。真とみなす基準はif式と同じです。<code>false</code> と <code>null</code> は「偽の値」とみなされ、それ以外はすべて「真の値」です。</p>\n<p>これらの演算子のオペランドが複数の結果を生成する場合、演算子自体も各入力に対して結果を生成します。</p>\n<p>実際には、<code>not</code> は演算子ではなく組込み関数です。そのため、専用の構文ではなく、値をパイプで渡すフィルターとして呼び出します。たとえば、<code>.foo and .bar |\nnot</code> のように使います。</p>\n<p>この3つは、<code>true</code> と <code>false</code> の値だけを生成します。そのため、純粋な真偽値演算に使うもので、Perl/Python/Rubyでよく使われる\"value_that_may_be_null or default\"という書き方には使えません。このような「or」を使い、条件を評価する代わりに2つの値から選びたい場合は、後述の <code>//</code> 演算子を参照してください。</p>"
+    },
+    {
+      "key": "sections/4/entries/4/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "6ce3e770322a093e53b091a65dec9fde3d2be779cd360776ed0b67332a6e2ad8",
+      "translatedSha256": "7832b8206b207d954eb4cb732b25b6a06a934a3b5353955884279ecb573ee65b",
+      "html": "<h3>代替演算子：<code>//</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/4/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "a05dc18bd1af9b2ac6bf63178999b7d3d7277d99f3a113a3a5b35cc6b313d144",
+      "translatedSha256": "2aa694e5f3d35781998ef3bb5c96dfbe7d0e1d89530f6ce0d1653e21438ab3fe",
+      "html": "<p>演算子 <code>//</code> は、左辺の値のうち、<code>false</code> でも <code>null</code> でもないものをすべて生成します。左辺が <code>false</code> または <code>null</code> 以外の値を1つも生成しない場合、<code>//</code> は右辺の値をすべて生成します。</p>\n<p><code>a // b</code> という形式のフィルターは、<code>a</code> の結果のうち、<code>false</code> でも <code>null</code> でもないものをすべて生成します。<code>a</code> が結果を1つも生成しない場合、または <code>false</code> か <code>null</code> 以外の結果を生成しない場合、<code>a\n// b</code> は <code>b</code> の結果を生成します。</p>\n<p>これは既定値を与える際に便利です。<code>.foo // 1</code> が <code>1</code> に評価されるのは、入力に <code>.foo</code> 要素がない場合です。これは、Pythonで <code>or</code> が使われることがある方法と似ています（jqの <code>or</code> 演算子は、厳密な真偽値演算専用です）。</p>\n<p>注意：<code>some_generator // defaults_here</code> は、<code>some_generator | . // defaults_here</code> と同じではありません。後者は左辺の、<code>false</code> でない値、<code>null</code> でない値のすべてに対して既定値を生成しますが、前者はそうではありません。優先順位の規則が分かりにくくする場合があります。たとえば、<code>false, 1 // 2</code> で <code>//</code> の左辺となるのは <code>1</code> であって、<code>false, 1</code> ではありません。<code>false, 1 // 2</code> は、<code>false,\n(1 // 2)</code> と同じように解析されます。<code>(false, null, 1) | . // 42</code> で <code>//</code> の左辺となるのは <code>.</code> で、常に1つの値だけを生成します。一方、<code>(false, null, 1) // 42</code> の左辺は3つの値のジェネレーターです。<code>false</code> と <code>null</code> 以外の値を生成するため、既定値 <code>42</code> は生成されません。</p>"
+    },
+    {
+      "key": "sections/4/entries/5/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "3e020118f10b7d1ea62f761f087d2cef0b8499ac50bcc92f61238fde5cf2e652",
+      "translatedSha256": "3e020118f10b7d1ea62f761f087d2cef0b8499ac50bcc92f61238fde5cf2e652",
+      "html": "<h3>try-catch</h3>"
+    },
+    {
+      "key": "sections/4/entries/5/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "3d5aa5f89de69ddf1fec2a6fe5838c3508c03bb2c4d54927875545e03788d5bb",
+      "translatedSha256": "8a50fd1bef1151af72ae68c9cb3d30472e7a5b8f139f712881a9370e014b8975",
+      "html": "<p>エラーは、<code>try EXP catch EXP</code> を使って捕捉できます。最初の式を実行し、失敗した場合は、エラーメッセージを入力として2番目の式を実行します。ハンドラーが何かを出力した場合、それは、試した式の出力であるかのように出力されます。</p>\n<p><code>try EXP</code> という形式は、例外ハンドラーとして <code>empty</code> を使います。</p>"
+    },
+    {
+      "key": "sections/4/entries/6/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "d33f50ec48bd743afecfbf2aa9f8c4a5b0b7b9ae979b47b8e14716a3c7b69e20",
+      "translatedSha256": "b4d42b02da123fdaeafbe9be959da052b874c179c8174730509e7193d7e35594",
+      "html": "<h3>制御構造から抜け出す</h3>"
+    },
+    {
+      "key": "sections/4/entries/6/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "fbea308adcf2ab7dd0ac37a2f95962db58a79e763072e890cc590fd0fd0daf4b",
+      "translatedSha256": "9fed0b22f348abb0bbc76a21af86277fc7fd58a3f95bdf87562468a67baf0ada",
+      "html": "<p>try/catchの便利な用途の1つは、<code>reduce</code>、<code>foreach</code>、<code>while</code> などの制御構造から抜け出すことです。</p>\n<p>例：</p>\n<pre><code># Repeat an expression until it raises \"break\" as an&#10;# error, then stop repeating without re-raising the error.&#10;# But if the error caught is not \"break\" then re-raise it.&#10;try repeat(exp) catch if .==\"break\" then empty else error&#10;</code></pre>\n<p>jqには、「抜け出す」または「戻る」先として使う、名前付きの字句的なラベルの構文があります。</p>\n<pre><code>label $out | ... break $out ...&#10;</code></pre>\n<p>式 <code>break $label_name</code> は、最も近い左側の <code>label $label_name</code> が <code>empty</code> を生成したかのように、プログラムを動作させます。</p>\n<p><code>break</code> と対応する <code>label</code> の関係は字句的なものです。ラベルがbreakから「見える」位置にある必要があります。</p>\n<p>たとえば、<code>reduce</code> から抜け出すには、次のようにします。</p>\n<pre><code>label $out | reduce .[] as $item (null; if .==false then break $out else ... end)&#10;</code></pre>\n<p>次のjqプログラムは、構文エラーを生成します。</p>\n<pre><code>break $out&#10;</code></pre>\n<p>ラベル <code>$out</code> が見える位置にないためです。</p>"
+    },
+    {
+      "key": "sections/4/entries/7/title",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "entry-title",
+      "sourceSha256": "d23b8b6511bdf9539cb3b9150d9850094e62da79e466ff2fbe1024d824e38106",
+      "translatedSha256": "4783490589179995cfa2367afa5cc5888688ceb7a9aab12a17620b7b56b83087",
+      "html": "<h3>エラー抑制／オプショナル演算子：<code>?</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/7/body",
+      "page": "05-conditionals-and-comparisons",
+      "mode": "web-body",
+      "sourceSha256": "521222f45cabe3815485dce12694df0d97e9d852606b5f35e72938eccc5ab88e",
+      "translatedSha256": "99344f0ff75ee4e2d753a196a76dea22073cf1c7f89899b9842edb26664893fb",
+      "html": "<p>演算子 <code>?</code> を <code>EXP?</code> として使う書き方は、<code>try EXP</code> の省略形です。</p>"
+    },
+    {
+      "key": "sections/5/title",
+      "page": "06-regular-expressions",
+      "mode": "section-title",
+      "sourceSha256": "a04b7d1898d40bb897e37914195556f04d179bfd250cc9b8c8c49caae7999d0f",
+      "translatedSha256": "79a1e6fbad2f1c670bd8f91373f2581c8c302ca8253e6596fa04a2b49e97eba2",
+      "html": "<h2>正規表現</h2>"
+    },
+    {
+      "key": "sections/5/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "d1345042813f7e826c143bd4dfd9659d72954a743672e5911daa511a9c98f6b0",
+      "translatedSha256": "17b2e4b1f6f63b332971823084539844aed74973f96e9f78887151252b738f8b",
+      "html": "<p>jqは、PHP、TextMate、Sublime Textなどと同様に、<a href=\"https://github.com/kkos/oniguruma/blob/master/doc/RE\">Oniguruma正規表現ライブラリ</a>を使っています。そのため、ここではjq固有の点を中心に説明します。</p>\n<p>Onigurumaは複数の正規表現の構文に対応しています。jqが使うのは<a href=\"https://github.com/kkos/oniguruma/blob/master/doc/SYNTAX.md\">\"Perl NG\"（名前付きグループを持つPerl）</a>の構文であることを知っておく必要があります。</p>\n<p>jqの正規表現フィルターは、次のいずれかの形式で使えるように定義されています。</p>\n<pre><code>STRING | FILTER(REGEX)&#10;STRING | FILTER(REGEX; FLAGS)&#10;STRING | FILTER([REGEX])&#10;STRING | FILTER([REGEX, FLAGS])&#10;</code></pre>\n<p>ここで、各要素は次のようになります。</p>\n<ul>\n<li>STRING、REGEX、FLAGSはjqの文字列で、jqの文字列への式の埋込みが適用されます。</li>\n<li>REGEXは、式の埋込み後に、有効な正規表現である必要があります。</li>\n<li>FILTERは、後述する <code>test</code>、<code>match</code>、<code>capture</code> のいずれかです。</li>\n</ul>\n<p>REGEXはJSON文字列に評価される必要があるため、正規表現を構成するための一部の文字をエスケープしなければなりません。たとえば、空白文字を表す正規表現 <code>\\s</code> は、<code>\"\\\\s\"</code> と書きます。</p>\n<p>FLAGSは、対応するフラグを1つ以上含む文字列です。</p>\n<ul>\n<li><code>g</code> - 全体検索（最初だけでなく、すべての一致を見つける）</li>\n<li><code>i</code> - 大文字と小文字を区別しない検索</li>\n<li><code>m</code> - 複数行モード（<code>.</code> が改行にも一致する）</li>\n<li><code>n</code> - 空の一致を無視する</li>\n<li><code>p</code> - sとmの両方のモードを有効にする</li>\n<li><code>s</code> - 単一行モード（<code>^</code> -&gt; <code>\\A</code>、<code>$</code> -&gt; <code>\\Z</code>）</li>\n<li><code>l</code> - 可能な限り長い一致を見つける</li>\n<li><code>x</code> - 拡張正規表現形式（空白とコメントを無視する）</li>\n</ul>\n<p><code>x</code> フラグで空白に一致させるには、<code>\\s</code> を使います。例：</p>\n<pre><code>jq -n '\"a b\" | test(\"a\\\\sb\"; \"x\")'&#10;</code></pre>\n<p>一部のフラグは、REGEX内でも指定できることに注意してください。例：</p>\n<pre><code>jq -n '(\"test\", \"TEst\", \"teST\", \"TEST\") | test(\"(?i)te(?-i)st\")'&#10;</code></pre>\n<p>これは、<code>true</code>、<code>true</code>、<code>false</code>、<code>false</code> に評価されます。</p>"
+    },
+    {
+      "key": "sections/5/entries/0/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "9e0a4c7cc965552876aef0fc5d1be04ce18890bdca41b2c75484ea8633d89f02",
+      "translatedSha256": "9e0a4c7cc965552876aef0fc5d1be04ce18890bdca41b2c75484ea8633d89f02",
+      "html": "<h3><code>test(val)</code>, <code>test(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/0/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "9f675d3e90a962d8c80bf681ddc152cfe7f8e734d8b071fd074e91018bf915f1",
+      "translatedSha256": "a548489a1e5807a5826bfdf455eeeace859f256e62a2f605721ad3a83e6ee95d",
+      "html": "<p><code>match</code> と同様ですが、一致オブジェクトは返しません。正規表現が入力に一致するかどうかに応じて、<code>true</code> または <code>false</code> だけを返します。</p>"
+    },
+    {
+      "key": "sections/5/entries/1/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "a334137866b0601ee1dd5f261955ff9b8b3bf13f0787e68452a29bcb77232fdd",
+      "translatedSha256": "a334137866b0601ee1dd5f261955ff9b8b3bf13f0787e68452a29bcb77232fdd",
+      "html": "<h3><code>match(val)</code>, <code>match(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/1/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "6d09923a736df4fa4a396fcd82e153c50c66c1f3134610092f7076f173a9fe4d",
+      "translatedSha256": "49bd33b2f8b254a262b195242eab53441a59f48fb2bd1aedba4b5bad9736b490",
+      "html": "<p><strong>match</strong>は、見つかった一致ごとにオブジェクトを出力します。一致には、次のフィールドがあります。</p>\n<ul>\n<li><code>offset</code> - 入力の先頭からのオフセット。UTF-8コードポイント単位</li>\n<li><code>length</code> - 一致の長さ。UTF-8コードポイント単位</li>\n<li><code>string</code> - 一致した文字列</li>\n<li><code>captures</code> - キャプチャグループを表すオブジェクトの配列</li>\n</ul>\n<p>キャプチャグループのオブジェクトには、次のフィールドがあります。</p>\n<ul>\n<li><code>offset</code> - 入力の先頭からのオフセット。UTF-8コードポイント単位</li>\n<li><code>length</code> - このキャプチャグループの長さ。UTF-8コードポイント単位</li>\n<li><code>string</code> - キャプチャされた文字列</li>\n<li><code>name</code> - キャプチャグループの名前（名前なしの場合は <code>null</code>）</li>\n</ul>\n<p>何にも一致しなかったキャプチャグループは、オフセット-1を返します。</p>"
+    },
+    {
+      "key": "sections/5/entries/2/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "ad5affecf97a3779b4660cdd7a4d8125d6b748026c7bdf3e91e5f0f445a927d1",
+      "translatedSha256": "ad5affecf97a3779b4660cdd7a4d8125d6b748026c7bdf3e91e5f0f445a927d1",
+      "html": "<h3><code>capture(val)</code>, <code>capture(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/2/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "3da56d4e26dafd9d85fdd3d8e4533a47feba06bec63dc4f0e9a4ce5980dc76e3",
+      "translatedSha256": "df3e4ddf0965d55520966b32607b61457df735ca755ce401bdedcfd6a9d7f7a5",
+      "html": "<p>名前付きキャプチャをJSONオブジェクトにまとめます。各キャプチャの名前をキーとし、一致した文字列を対応する値とします。</p>"
+    },
+    {
+      "key": "sections/5/entries/3/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "93eb9da913cfe81209814560c2a616a0645ff4773d874eee8b91b07c52720d88",
+      "translatedSha256": "93eb9da913cfe81209814560c2a616a0645ff4773d874eee8b91b07c52720d88",
+      "html": "<h3><code>scan(regex)</code>, <code>scan(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/3/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "d50a1faffef5e8b92f5a06875d4d88c1dd1d4562c0051911f6cc473b0e15a9e6",
+      "translatedSha256": "5737eadd6983f2e2af571947d3c3d7f7bbd20168d82d345d7da3c8495b79e26f",
+      "html": "<p>入力のうち、正規表現に一致する重なりのない部分文字列を、ストリームとして出力します。フラグが指定されていれば、それに従います。一致がなければ、ストリームは空です。各入力文字列のすべての一致をまとめて取得するには、<code>[ expr ]</code> という書き方を使います。たとえば、<code>[ scan(regex) ]</code> です。正規表現にキャプチャグループが含まれている場合、フィルターは配列のストリームを出力し、各配列にはキャプチャされた文字列が入ります。</p>"
+    },
+    {
+      "key": "sections/5/entries/4/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "217e59ae1898dfa42b7debe66cc635af2b9020268e0854c0b7b247d565357633",
+      "translatedSha256": "217e59ae1898dfa42b7debe66cc635af2b9020268e0854c0b7b247d565357633",
+      "html": "<h3><code>split(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/4/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "6a6b4471f6eebbe9a8c2ea42450ac5e7c4ce44e4ccf98ef4a9bbd3f50d565cec",
+      "translatedSha256": "ca7205019cde4464353fdae4c61fc472b0330da43508197d554e486abf7ccb45",
+      "html": "<p>入力文字列を、正規表現の各一致箇所で分割します。</p>\n<p>後方互換性のため、引数を1つ指定して呼び出した <code>split</code> は、正規表現ではなく文字列で分割します。</p>"
+    },
+    {
+      "key": "sections/5/entries/5/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "8981b38d334ace16e88d8524275ec7a75e28308589c94c6168b82d7a435ef4fd",
+      "translatedSha256": "8981b38d334ace16e88d8524275ec7a75e28308589c94c6168b82d7a435ef4fd",
+      "html": "<h3><code>splits(regex)</code>, <code>splits(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/5/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "00fe4c9728eaad4084699379728f27a7445749bc9b953a732adaa04b1a4a1c02",
+      "translatedSha256": "b719c64cb9caa972e199ffeff1af018f9095cc99b45a31789b8d94d3c13aa8e9",
+      "html": "<p>対応する <code>split</code> と同じ結果を、配列ではなくストリームとして提供します。</p>"
+    },
+    {
+      "key": "sections/5/entries/6/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "cb24d0d5c4917a4c7912e33ee22e5b09a9eae51e0584f8c29997da935accaf76",
+      "translatedSha256": "cb24d0d5c4917a4c7912e33ee22e5b09a9eae51e0584f8c29997da935accaf76",
+      "html": "<h3><code>sub(regex; tostring)</code>, <code>sub(regex; tostring; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/6/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "27af1223053d58169e99f855167ccf2720d492d3a0d8177de862faac1b41d05e",
+      "translatedSha256": "47026755df19ff1f08912532dcd29167915d000906890bfbdd75c259e90d9139",
+      "html": "<p>入力文字列内の正規表現の最初の一致を、式の埋込み後の <code>tostring</code> で置き換えて得られる文字列を出力します。<code>tostring</code> はjqの文字列、またはそのような文字列のストリームである必要があります。各文字列は、名前付きキャプチャへの参照を含められます。名前付きキャプチャは、実質的に、<code>capture</code> が構築するようなJSONオブジェクトとして <code>tostring</code> に渡されます。そのため、\"x\"という名前でキャプチャされた変数への参照は、<code>\"\\(.x)\"</code> という形式になります。</p>"
+    },
+    {
+      "key": "sections/5/entries/7/title",
+      "page": "06-regular-expressions",
+      "mode": "entry-title",
+      "sourceSha256": "d20852c4f57592ac866b0d57f8b7a9aca6af0287a5e695138aca3ae386b10554",
+      "translatedSha256": "d20852c4f57592ac866b0d57f8b7a9aca6af0287a5e695138aca3ae386b10554",
+      "html": "<h3><code>gsub(regex; tostring)</code>, <code>gsub(regex; tostring; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/7/body",
+      "page": "06-regular-expressions",
+      "mode": "web-body",
+      "sourceSha256": "5cb1df9b9fefc060e191f98b6ec1be59f7d4bfaf73d381b301ceddeaf2366957",
+      "translatedSha256": "3018424b489c60e18d1e0e49827698263bcec2814ac682ebc11008a4bbfc8375",
+      "html": "<p><code>gsub</code> は <code>sub</code> と同様ですが、正規表現の重なりのないすべての一致を、式の埋込み後の <code>tostring</code> で置き換えます。2番目の引数がjq文字列のストリームであれば、<code>gsub</code> は対応するJSON文字列のストリームを生成します。</p>"
+    },
+    {
+      "key": "sections/6/title",
+      "page": "07-advanced-features",
+      "mode": "section-title",
+      "sourceSha256": "c998e76868f8afb02f6d641be4cc67aa4a508df32ba9d1c5011185271e57fe39",
+      "translatedSha256": "5c902699f20499e8311dfff90221e19ecf34a5f5b91cbcf2fd22e7a2b1bf1d8d",
+      "html": "<h2>高度な機能</h2>"
+    },
+    {
+      "key": "sections/6/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "eb9de060d63c22a0936dee7593c1146fea7ae7b02807bcb38dfcda186bfbdcfc",
+      "translatedSha256": "63a12a1cf10fd4c41d1211dc75973d5712632f032646d798e4ea17d04c96c498",
+      "html": "<p>ほとんどのプログラミング言語では変数が不可欠ですが、jqでは「高度な機能」として扱われます。</p>\n<p>ほとんどの言語では、データを受け渡す手段は変数だけです。値を計算して2回以上使いたい場合、変数に保存する必要があります。プログラムの別の部分に値を渡すには、その部分で、関数の引数やオブジェクトのメンバーなど、データを置く変数を定義する必要があります。</p>\n<p>jqでも関数を定義できます。ただし、この機能の主な用途はjqの標準ライブラリの定義です。<code>map</code> や <code>select</code> など、多くのjq関数は、実際にjqで書かれています。</p>\n<p>jqには集約演算子があり、非常に強力ですが、少し扱いにくいものです。これらも主に、jqの標準ライブラリの便利な部分を定義するため、内部で使われています。</p>\n<p>最初は分かりにくいかもしれませんが、jqの中心にあるのはジェネレーターです。他の言語でもよく見られるものです。ジェネレーターを扱うための補助機能がいくつか提供されています。</p>\n<p>標準入力からJSONを読み込み、標準出力へJSONを書き出す以外にも、最小限の入出力機能があります。</p>\n<p>最後に、モジュール／ライブラリの仕組みがあります。</p>"
+    },
+    {
+      "key": "sections/6/entries/0/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "2ab8b9e41ab24e16f4ada6cf0589183994cdb16acff33fa1605dcc699b1235d5",
+      "translatedSha256": "ec45f38bb05e626f672ae101e595248c53ea9b59ab4f2e8a5f61830fa38b8180",
+      "html": "<h3>変数／記号的束縛演算子：<code>... as $identifier | ...</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/0/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "ff0b28ab7417f326194151c5691c71932856b3d33a715a3a5aec43372b5b2755",
+      "translatedSha256": "9f44d8dc587110b87852725edf827ad91d9352c3278db6f31f233ac0c8815a14",
+      "html": "<p>jqでは、すべてのフィルターに入力と出力があるため、プログラムのある部分から次の部分に値を渡すための手動の受け渡し処理は必要ありません。たとえば <code>a + b</code> のような多くの式は、入力を2つの異なる部分式に渡します。ここでは、<code>a</code> と <code>b</code> の両方に同じ入力を渡します。そのため、値を2回使うために変数が必要になることは、通常ありません。</p>\n<p>たとえば、数値の配列の平均値を計算するには、ほとんどの言語でいくつかの変数が必要です。少なくとも配列を保持する変数が1つ、場合によっては各要素やループのカウンターを保持する変数も必要です。jqでは、単に <code>add / length</code> と書きます。式 <code>add</code> は配列を受け取って合計を生成し、式 <code>length</code> は配列を受け取って長さを生成します。</p>\n<p>そのため、jqでは、ほとんどの問題に対して変数を定義するよりすっきりした解決方法があります。それでも、変数で簡単になる場合があるため、jqでは <code>expression as $variable</code> を使って変数を定義できます。変数名はすべて <code>$</code> で始まります。配列の平均の例を、少し見通しの悪い形で書くと、次のようになります。</p>\n<pre><code>length as $array_length | add / $array_length&#10;</code></pre>\n<p>変数を使うことで実際に楽になる場面を見つけるには、もう少し複雑な問題が必要です。</p>\n<p>\"author\"と\"title\"フィールドを持つブログ記事の配列と、著者のユーザー名を実名に対応付ける別のオブジェクトがあるとします。入力は次のようになります。</p>\n<pre><code>{\"posts\": [{\"title\": \"First post\", \"author\": \"anon\"},&#10;           {\"title\": \"A well-written article\", \"author\": \"person1\"}],&#10; \"realnames\": {\"anon\": \"Anonymous Coward\",&#10;               \"person1\": \"Person McPherson\"}}&#10;</code></pre>\n<p>次のように、authorフィールドに実名が入った記事を生成したいとします。</p>\n<pre><code>{\"title\": \"First post\", \"author\": \"Anonymous Coward\"}&#10;{\"title\": \"A well-written article\", \"author\": \"Person McPherson\"}&#10;</code></pre>\n<p>変数 <code>$names</code> にrealnamesオブジェクトを保存し、後で著者のユーザー名を調べる際に参照できるようにします。</p>\n<pre><code>.realnames as $names | .posts[] | {title, author: $names[.author]}&#10;</code></pre>\n<p>式 <code>exp as $x | ...</code> は、式 <code>exp</code> の各値に対して、元の入力全体を使い、<code>$x</code> をその値に設定して、パイプラインの残りを実行するという意味です。そのため、<code>as</code> は一種のforeachループのように機能します。</p>\n<p><code>{foo}</code> が <code>{foo: .foo}</code> の便利な省略形であるのと同様に、<code>{$foo}</code> は <code>{foo: $foo}</code> の便利な省略形です。</p>\n<p>1つの <code>as</code> 式で複数の変数を宣言できます。入力の構造に一致するパターンを指定します。これは「分割代入」と呼ばれます。</p>\n<pre><code>. as {realnames: $names, posts: [$first, $second]} | ...&#10;</code></pre>\n<p>配列パターン内の変数宣言（たとえば、<code>. as\n[$first, $second]</code>）は、索引0から順に配列の要素を束縛します。配列パターンの要素に対応する索引に値がない場合、その変数には <code>null</code> が束縛されます。</p>\n<p>変数のスコープは、その変数を定義した式の残りの部分に及びます。そのため、</p>\n<pre><code>.realnames as $names | (.posts[] | {title, author: $names[.author]})&#10;</code></pre>\n<p>は動作しますが、</p>\n<pre><code>(.realnames as $names | .posts[]) | {title, author: $names[.author]}&#10;</code></pre>\n<p>は動作しません。</p>\n<p>プログラミング言語の理論の用語では、jqの変数は字句的なスコープを持つ束縛と呼ぶ方が正確です。特に、束縛の値を変更する方法はありません。同じ名前で新しい束縛を作ることだけができますが、以前の束縛が見えていた場所で新しい束縛が見えるようになるわけではありません。</p>"
+    },
+    {
+      "key": "sections/6/entries/1/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "38011510a552c987f3239d2725e91cb483798857858e59d87a1e656ca7c2b305",
+      "translatedSha256": "9fdccc77b2aeddb092b21f6da912073f87ea2d731d44d25fa1f98ce7f6d42293",
+      "html": "<h3>分割代入の代替演算子：<code>?//</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/1/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "d7df59979f99b4ff955c7e643e7c7cdcf5f96173909262cb5578ab36b492b1aa",
+      "translatedSha256": "6823a39e821b8aeac44df1d60979f89e445599480e5b10a35271ec9bd2cd93bb",
+      "html": "<p>分割代入の代替演算子は、複数の形式のいずれかを取り得る入力を、簡潔に分割代入するための仕組みを提供します。</p>\n<p>リソースとそれに関連するイベントのリストを返すAPIがあり、各リソースの最初のイベントのuser_idとtimestampを取得したいとします。このAPIは、XMLから不器用に変換されたため、リソースに複数のイベントがある場合だけ、イベントを配列で囲みます。</p>\n<pre><code>{\"resources\": [{\"id\": 1, \"kind\": \"widget\", \"events\": {\"action\": \"create\", \"user_id\": 1, \"ts\": 13}},&#10;               {\"id\": 2, \"kind\": \"widget\", \"events\": [{\"action\": \"create\", \"user_id\": 1, \"ts\": 14}, {\"action\": \"destroy\", \"user_id\": 1, \"ts\": 15}]}]}&#10;</code></pre>\n<p>分割代入の代替演算子を使うと、この構造の違いを簡単に扱えます。</p>\n<pre><code>.resources[] as {$id, $kind, events: {$user_id, $ts}} ?// {$id, $kind, events: [{$user_id, $ts}]} | {$user_id, $kind, $id, $ts}&#10;</code></pre>\n<p>あるいは、入力が値の配列なのかオブジェクトなのか、はっきりしない場合は、次のように書けます。</p>\n<pre><code>.[] as [$id, $kind, $user_id, $ts] ?// {$id, $kind, $user_id, $ts} | ...&#10;</code></pre>\n<p>各代替パターンで、すべて同じ変数を定義する必要はありません。ただし、名前の付いたすべての変数は、その後の式で使えます。成功した代替パターンで一致しなかった変数は <code>null</code> になります。</p>\n<pre><code>.resources[] as {$id, $kind, events: {$user_id, $ts}} ?// {$id, $kind, events: [{$first_user_id, $first_ts}]} | {$user_id, $first_user_id, $kind, $id, $ts, $first_ts}&#10;</code></pre>\n<p>さらに、その後の式がエラーを返す場合、代替演算子は次の束縛を試みます。最後の代替パターンで発生したエラーは、そのまま伝えられます。</p>\n<pre><code>[[3]] | .[] as [$a] ?// [$b] | if $a != null then error(\"err: \\($a)\") else {$a,$b} end&#10;</code></pre>"
+    },
+    {
+      "key": "sections/6/entries/2/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "d78e9d5471aa1e778245f97586f865ea49e52e92faa897ae063d87dd2f68fe2a",
+      "translatedSha256": "1e77b684ad2aac5150e80dc3aaf119adabd42a09a40427987b9726ff86d61904",
+      "html": "<h3>関数の定義</h3>"
+    },
+    {
+      "key": "sections/6/entries/2/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "c17c384d8759e98bda0e9808ae0cb04283d6e19426df79d06908c083a50facfb",
+      "translatedSha256": "a366074594be4a748f3998ac54df44fb3f1296d76eb54b0f8535d999de4bea60",
+      "html": "<p>\"def\"構文を使って、フィルターに名前を付けられます。</p>\n<pre><code>def increment: . + 1;&#10;</code></pre>\n<p>その後は、<code>increment</code> を組込み関数と同様にフィルターとして使えます。実際、多くの組込み関数はこの方法で定義されています。関数は引数を受け取ることもできます。</p>\n<pre><code>def map(f): [.[] | f];&#10;</code></pre>\n<p>引数は、値では_なく_、<em>フィルター</em>（引数のない関数）として渡されます。同じ引数を、異なる入力で複数回参照できます。ここでは、<code>f</code> を入力配列の各要素に対して実行します。関数への引数は、値の引数よりも、コールバックに近い動作をします。この点を理解することが大切です。次の例を考えてください。</p>\n<pre><code>def foo(f): f|f;&#10;5|foo(.*2)&#10;</code></pre>\n<p>結果は20になります。<code>f</code> は <code>.*2</code> であり、最初の <code>f</code> の呼出しでは <code>.</code> が5、2回目では10（5 * 2）になるため、結果は20です。関数の引数はフィルターであり、フィルターは呼び出されるときに入力を必要とします。</p>\n<p>単純な関数を定義するために、値の引数としての動作が欲しい場合は、変数を使えばよいだけです。</p>\n<pre><code>def addvalue(f): f as $f | map(. + $f);&#10;</code></pre>\n<p>または、次の省略形を使います。</p>\n<pre><code>def addvalue($f): ...;&#10;</code></pre>\n<p>どちらの定義でも、<code>addvalue(.foo)</code> は、現在の入力の <code>.foo</code> フィールドを配列の各要素に加えます。<code>addvalue(.[])</code> を呼び出すと、呼出し位置の <code>map(. + $f)</code> の部分が、<code>.</code> の値に含まれる各値に対して1回ずつ評価されることに注意してください。</p>\n<p>同じ関数名を使った複数の定義が認められています。再定義すると、関数の引数の数が同じ以前の定義を置き換えますが、再定義より後の関数またはメインプログラムからの参照にだけ適用されます。後述のスコープの節も参照してください。</p>"
+    },
+    {
+      "key": "sections/6/entries/3/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "02ac7177a2d825a5e85e08449693cda58b8e66596eaf435f92c599a98241bbe5",
+      "translatedSha256": "4a41286a93ebd5e4c71b88d0c2a7dd89eb109ee80ef7074c25ef2c626845522a",
+      "html": "<h3>スコープ</h3>"
+    },
+    {
+      "key": "sections/6/entries/3/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "da67b0fbb60d3dfdd7bc76cf2f814b1ee6dd9f14f7ce7c410d017ae70ec3a004",
+      "translatedSha256": "e6bf992885bbe9fb762e6348133330ae62616e125fb114b1db07e1f64095914a",
+      "html": "<p>jqの記号には、値の束縛（「変数」とも呼ばれます）と関数の2種類があります。どちらも字句的なスコープを持ち、式が参照できるのは、自分より「左側」で定義された記号だけです。この規則の唯一の例外は、再帰関数を作れるように、関数が自分自身を参照できることです。</p>\n<p>たとえば、次の式には、定義位置の「右側」では見えますが、「左側」では見えない束縛があります。<code>... | .*3 as\n$times_three | [. + $times_three] | ...</code> です。次の式を考えてみてください。<code>... | (.*3 as\n$times_three | [. + $times_three]) | ...</code> です。ここでは、束縛 <code>$times_three</code> は、閉じ括弧より後では_見えません_。</p>"
+    },
+    {
+      "key": "sections/6/entries/4/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "e0bcaeb065b633bec029d9822e1194f24a6987e0545882dacc6cb13700ab0f95",
+      "translatedSha256": "e0bcaeb065b633bec029d9822e1194f24a6987e0545882dacc6cb13700ab0f95",
+      "html": "<h3><code>isempty(exp)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/4/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "82e90498c5db0a6cf8d721a45bb63f1c1cb5332d65ced579c706a5ba9f43e6a2",
+      "translatedSha256": "d55e07fbc1320616a115e68c0190cf3834e10ee8f0ddbbc9fb9916cfbf94bc81",
+      "html": "<p><code>exp</code> が何も出力しない場合にtrueを返し、それ以外の場合にfalseを返します。</p>"
+    },
+    {
+      "key": "sections/6/entries/5/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "b196193797bb4da519a514c83e4fe8377f0c102d222332f77db4f2a9e9a14def",
+      "translatedSha256": "b196193797bb4da519a514c83e4fe8377f0c102d222332f77db4f2a9e9a14def",
+      "html": "<h3><code>limit(n; expr)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/5/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "0ce3564c66de3632047e0b929ce5d2aae6c72d561e503ab4030cc92a4a788a00",
+      "translatedSha256": "88dd5fd16af8337081ccc60bc529cb66def68277e899f3e490d90126cfdd41f4",
+      "html": "<p>関数 <code>limit</code> は、最大 <code>n</code> 個の出力を <code>expr</code> から取り出します。</p>"
+    },
+    {
+      "key": "sections/6/entries/6/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "ecd0bb34eb81558a23a16ce1b8fefd4dcf49dd3ffbdf849ed238319d4d032138",
+      "translatedSha256": "ecd0bb34eb81558a23a16ce1b8fefd4dcf49dd3ffbdf849ed238319d4d032138",
+      "html": "<h3><code>skip(n; expr)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/6/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "6f5ac3df322d4e9bb39be823b9197d9fa007a9e351e2b15b713cd276e3a95cbe",
+      "translatedSha256": "118bec227a162e2aaa7056ee7dcd2c8f741a52431fd570b76f0093d68f7abee2",
+      "html": "<p>関数 <code>skip</code> は、最初の <code>n</code> 個の出力を <code>expr</code> から飛ばします。</p>"
+    },
+    {
+      "key": "sections/6/entries/7/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "3e31485b3fe07cc94ff9579e5c01613abaa2cdf16a0f65a6d07ed2c8b893c026",
+      "translatedSha256": "3e31485b3fe07cc94ff9579e5c01613abaa2cdf16a0f65a6d07ed2c8b893c026",
+      "html": "<h3><code>first(expr)</code>, <code>last(expr)</code>, <code>nth(n; expr)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/7/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "b1504b6b169fc58c1b8a32bfd1b99b9dae9d4b25a394853a8a6e90a5376a358c",
+      "translatedSha256": "ddc8b1fe3d9230b01f14dcb104ce3dc3d3de2c318b551cb76eef2800808547a8",
+      "html": "<p>関数 <code>first(expr)</code> と <code>last(expr)</code> は、それぞれ、<code>expr</code> の最初と最後の値を取り出します。</p>\n<p>関数 <code>nth(n; expr)</code> は、<code>expr</code> が出力するn番目の値を取り出します。<code>nth(n; expr)</code> は、<code>n</code> の負の値に対応していないことに注意してください。</p>"
+    },
+    {
+      "key": "sections/6/entries/8/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "ee84db677d9d1196fd08486c70f045b634b3c8823fbef936bacd51f8c90b03a3",
+      "translatedSha256": "ee84db677d9d1196fd08486c70f045b634b3c8823fbef936bacd51f8c90b03a3",
+      "html": "<h3><code>first</code>, <code>last</code>, <code>nth(n)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/8/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "8ee0e43f51bea47a22054b861865c684a52e1aaa8000a6a20269949a2bc6ec13",
+      "translatedSha256": "0464a8800031897fbd4ec7c8d86491cb91aa172ba00db6120d8b29801658811d",
+      "html": "<p>関数 <code>first</code> と <code>last</code> は、<code>.</code> にある配列の最初と最後の値を、それぞれ取り出します。</p>\n<p>関数 <code>nth(n)</code> は、<code>.</code> にある配列のn番目の値を取り出します。</p>"
+    },
+    {
+      "key": "sections/6/entries/9/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "2f69e4728744ba651e4c60b2f905371e39b49ae8c6bfaef40284f68d6f6f25de",
+      "translatedSha256": "2f69e4728744ba651e4c60b2f905371e39b49ae8c6bfaef40284f68d6f6f25de",
+      "html": "<h3><code>reduce</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/9/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "b46f50223ab32fed083461af8abb30b9757c13042e7b0eca7f2dc6b93cd62c9f",
+      "translatedSha256": "d8f9d52210abf3b7e8d8adb628a8462d9e9ed35d0d024d94d293b1701645d17f",
+      "html": "<p><code>reduce</code> 構文は、式のすべての結果を1つの答えへ累積することで、まとめられるようにします。形式は <code>reduce EXP as $var (INIT; UPDATE)</code> です。例として、<code>[1,2,3]</code> を次の式に渡します。</p>\n<pre><code>reduce .[] as $item (0; . + $item)&#10;</code></pre>\n<p><code>.[]</code> が生成する各結果に対して、<code>. + $item</code> を実行し、入力値0から始めて合計を累積します。この例では、<code>.[]</code> は <code>1</code>、<code>2</code>、<code>3</code> を生成するため、次のような式を実行するのと似た効果があります。</p>\n<pre><code>0 | 1 as $item | . + $item |&#10;    2 as $item | . + $item |&#10;    3 as $item | . + $item&#10;</code></pre>"
+    },
+    {
+      "key": "sections/6/entries/10/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "c5d90d63b46f5a88fa3dce75a73c52a489f4d06c5203fc2cba38f4c9f41d3c14",
+      "translatedSha256": "c5d90d63b46f5a88fa3dce75a73c52a489f4d06c5203fc2cba38f4c9f41d3c14",
+      "html": "<h3><code>foreach</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/10/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "2d0d4fec661ad3c49722d47949577ff741f68920abbcd83c9ce028a8606b75fd",
+      "translatedSha256": "e234b2e061b22bdd3555a27b358315e5a5bdae7edc419f9503639ba965e6ff79",
+      "html": "<p><code>foreach</code> 構文は <code>reduce</code> と似ていますが、<code>limit</code> や中間結果を生成する集約処理を構築できるようにすることを目的としています。</p>\n<p>形式は <code>foreach EXP as $var (INIT; UPDATE; EXTRACT)</code> です。例として、<code>[1,2,3]</code> を次の式に渡します。</p>\n<pre><code>foreach .[] as $item (0; . + $item; [$item, . * 2])&#10;</code></pre>\n<p><code>reduce</code> 構文と同様に、<code>. + $item</code> を、<code>.[]</code> が生成する各結果に対して実行します。ただし、<code>[$item, . * 2]</code> は各中間値に対して実行します。この例では、中間値が <code>1</code>、<code>3</code>、<code>6</code> であるため、<code>foreach</code> 式は <code>[1,2]</code>、<code>[2,6]</code>、<code>[3,12]</code> を生成します。そのため、次のような式を実行するのと似た効果があります。</p>\n<pre><code>0 | 1 as $item | . + $item | [$item, . * 2],&#10;    2 as $item | . + $item | [$item, . * 2],&#10;    3 as $item | . + $item | [$item, . * 2]&#10;</code></pre>\n<p><code>EXTRACT</code> を省略した場合、恒等フィルターを使います。つまり、中間値をそのまま出力します。</p>"
+    },
+    {
+      "key": "sections/6/entries/11/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "37476e82bdaec0e074c03aeb0b79539eb4e4f4305fdc947c7c26eb93faa4c833",
+      "translatedSha256": "4be4041b9271c385e3a956e81ce1a1fc8ebde5dcba14b24f198bf90277babdbc",
+      "html": "<h3>再帰</h3>"
+    },
+    {
+      "key": "sections/6/entries/11/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "ef7710da08e5d60a591489a9e479944f442fb89545a303adc458e781fe103f41",
+      "translatedSha256": "0128452c5ed1bee1caaa0edc9154fc49c7a38e3730490970afba81e966d62972",
+      "html": "<p>前述のとおり、<code>recurse</code> は再帰を使い、どのjq関数も再帰関数になれます。組込み関数 <code>while</code> も再帰によって実装されています。</p>\n<p>再帰呼出しの左側にある式が最後の値を出力するとき、末尾呼出しが最適化されます。実際には、再帰呼出しの左側にある式が、各入力に対して2つ以上の出力を生成しないようにするという意味です。</p>\n<p>例：</p>\n<pre><code>def recurse(f): def r: ., (f | select(. != null) | r); r;&#10;&#10;def while(cond; update):&#10;  def _while:&#10;    if cond then ., (update | _while) else empty end;&#10;  _while;&#10;&#10;def repeat(exp):&#10;  def _repeat:&#10;    exp, _repeat;&#10;  _repeat;&#10;</code></pre>"
+    },
+    {
+      "key": "sections/6/entries/12/title",
+      "page": "07-advanced-features",
+      "mode": "entry-title",
+      "sourceSha256": "d41e196e5e5857703c39c4a5617909ad0b4559bb2d9dc5ed0a232ad5bf48dba0",
+      "translatedSha256": "899ad2328863767775029f919df9425e7e3b17a4c57c144ad56ca958c00afa87",
+      "html": "<h3>ジェネレーターとイテレーター</h3>"
+    },
+    {
+      "key": "sections/6/entries/12/body",
+      "page": "07-advanced-features",
+      "mode": "web-body",
+      "sourceSha256": "e6699d4b321dde66d5c7739939c9cfd86a398d5795da24d31863f7560a1ebc5e",
+      "translatedSha256": "0f1ddd715f32f51460604af149c7eb8d16dd2970d1749c4918f013b028e45033",
+      "html": "<p>jqの演算子や関数の中には、各入力に対して0個、1個、または複数の値を生成できるという意味で、実際にジェネレーターであるものがあります。ジェネレーターを持つ他のプログラミング言語と同様です。たとえば、<code>.[]</code> は入力のすべての値を生成します。入力は配列かオブジェクトでなければなりません。<code>range(0; 10)</code> は0から10の間の整数を生成する、というようになります。</p>\n<p>カンマ演算子もジェネレーターです。まずカンマの左側の式が生成する値を生成し、その後にカンマの右側の式が生成する値を生成します。</p>\n<p>組込み関数 <code>empty</code> は、出力を0個生成するジェネレーターです。組込み関数 <code>empty</code> は、直前のジェネレーター式へバックトラックします。</p>\n<p>すべてのjq関数は、組込みジェネレーターを使うだけでジェネレーターになれます。再帰とカンマ演算子だけを使って、新しいジェネレーターを構築することもできます。再帰呼出しが「末尾位置」にあれば、ジェネレーターは効率的になります。以下の例では、<code>_range</code> が自分自身を呼び出す再帰呼出しが末尾位置にあります。この例は、末尾再帰、ジェネレーターの構築、下位関数という3つの高度な話題を示します。</p>"
+    },
+    {
+      "key": "sections/7/title",
+      "page": "08-math",
+      "mode": "section-title",
+      "sourceSha256": "d48500aea83254706245e7d20d430468b1c00cd84c96ac175044ffe4b514a6e3",
+      "translatedSha256": "872c1fa141b5ed8d2f2b99255b4180eff7c3ec3079f98bfb261bfa83aac4ec68",
+      "html": "<h2>数学</h2>"
+    },
+    {
+      "key": "sections/7/body",
+      "page": "08-math",
+      "mode": "web-body",
+      "sourceSha256": "75077e09f5ce69a3193f2638e7d781116026e40c47b93170e21b6f2cdbc9e072",
+      "translatedSha256": "7024769c69562539dae99a1037ecd5f40e57fabe692acb1f71df16464ccea571",
+      "html": "<p>現在のjqは、IEEE754の倍精度（64ビット）浮動小数点数だけに対応しています。</p>\n<p><code>+</code> のような単純な算術演算子に加え、jqにはC数学ライブラリの標準的な数学関数のほとんどがあります。入力引数が1つのC数学関数（たとえば <code>sin()</code>）は、引数なしのjq関数として使えます。入力引数が2つのC数学関数（たとえば <code>pow()</code>）は、<code>.</code> を無視する2引数のjq関数として使えます。入力引数が3つのC数学関数は、<code>.</code> を無視する3引数のjq関数として使えます。</p>\n<p>標準的な数学関数を使えるかどうかは、OSとC数学ライブラリで、対応する数学関数が使えるかどうかに依存します。使えない数学関数も定義はされますが、エラーを発生させます。</p>\n<p>入力引数が1つのC数学関数： <code>acos</code> <code>acosh</code> <code>asin</code> <code>asinh</code> <code>atan</code>\n<code>atanh</code> <code>cbrt</code> <code>ceil</code> <code>cos</code> <code>cosh</code> <code>erf</code> <code>erfc</code> <code>exp</code> <code>exp10</code>\n<code>exp2</code> <code>expm1</code> <code>fabs</code> <code>floor</code> <code>gamma</code> <code>j0</code> <code>j1</code> <code>lgamma</code> <code>log</code>\n<code>log10</code> <code>log1p</code> <code>log2</code> <code>logb</code> <code>nearbyint</code> <code>rint</code> <code>round</code>\n<code>significand</code> <code>sin</code> <code>sinh</code> <code>sqrt</code> <code>tan</code> <code>tanh</code> <code>tgamma</code> <code>trunc</code>\n<code>y0</code> <code>y1</code>.</p>\n<p>入力引数が2つのC数学関数： <code>atan2</code> <code>copysign</code> <code>drem</code> <code>fdim</code>\n<code>fmax</code> <code>fmin</code> <code>fmod</code> <code>frexp</code> <code>hypot</code> <code>jn</code> <code>ldexp</code> <code>modf</code>\n<code>nextafter</code> <code>nexttoward</code> <code>pow</code> <code>remainder</code> <code>scalb</code> <code>scalbln</code> <code>yn</code>.</p>\n<p>入力引数が3つのC数学関数： <code>fma</code>.</p>\n<p>各関数の詳細は、システムのマニュアルを参照してください。</p>"
+    },
+    {
+      "key": "sections/8/title",
+      "page": "09-io",
+      "mode": "section-title",
+      "sourceSha256": "eb748e3e71e4bb3fe45e07d0e114e9399eaad56ad1ae7794f4659ba3bbc547b2",
+      "translatedSha256": "c03bda983bf39b4fe2551b19adfbcf63ccb045837067bb458b064a1eef401f38",
+      "html": "<h2>入出力</h2>"
+    },
+    {
+      "key": "sections/8/body",
+      "page": "09-io",
+      "mode": "web-body",
+      "sourceSha256": "b5771636e6514110c7665d25d10171c9131160e4d7dc0a4573de6e2fc1fe4918",
+      "translatedSha256": "8929d1d4d849ba13c80b68f5c58879ed73461e8f3a597d1de97394f5a4b9b16f",
+      "html": "<p>現在のjqの入出力機能は最小限で、主に、いつ入力を読むかを制御する形で提供されています。このために、組込み関数 <code>input</code> と <code>inputs</code> があります。これらは、jq自体と同じ入力元（たとえば <code>stdin</code> や、コマンドラインで指定したファイル）から読み込みます。この2つの組込み関数と、jq自体の読込みは、互いに交互に実行できます。一般に、入力を1つ暗黙に読み込むのを防ぐため、null入力オプション <code>-n</code> と組み合わせて使います。</p>\n<p>最小限の出力機能を提供する組込み関数は、<code>debug</code> と <code>stderr</code> です。jqプログラムの出力値は、常にJSONテキストとして <code>stdout</code> に出力されることを思い出してください。組込み関数 <code>debug</code> は、アプリケーション固有の動作を持つ場合があります。たとえば、libjqのC APIを使う、jq実行ファイル自体とは異なる実行ファイルの場合です。組込み関数 <code>stderr</code> は、入力をそのままの形式でstderrへ出力し、装飾は一切付けず、改行さえ付けません。</p>\n<p>jqの組込み関数の多くは参照透過です。一定の入力に適用すると、一定で再現可能な値のストリームを生成します。入出力の組込み関数は、これに当てはまりません。</p>"
+    },
+    {
+      "key": "sections/8/entries/0/title",
+      "page": "09-io",
+      "mode": "entry-title",
+      "sourceSha256": "b7b18013b64897c4b43ca6110fb2eaa2a65b2cedbc48f67856272a56f927da62",
+      "translatedSha256": "b7b18013b64897c4b43ca6110fb2eaa2a65b2cedbc48f67856272a56f927da62",
+      "html": "<h3><code>input</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/0/body",
+      "page": "09-io",
+      "mode": "web-body",
+      "sourceSha256": "90e1689d4b72d67b43da9f775db4d0e4f6187bef8fbee2afb765d292a681d15c",
+      "translatedSha256": "7d6a4c381a1ba7a00e60ace2a5b9ed4543c66eb85d08e440a6e84cfdaab3969b",
+      "html": "<p>新しい入力を1つ出力します。</p>\n<p><code>input</code> を使う場合、通常はコマンドラインオプション <code>-n</code> を指定してjqを起動する必要があります。そうしないと、最初の入力が失われることに注意してください。</p>\n<pre><code>echo 1 2 3 4 | jq '[., input]' # [1,2] [3,4]&#10;</code></pre>"
+    },
+    {
+      "key": "sections/8/entries/1/title",
+      "page": "09-io",
+      "mode": "entry-title",
+      "sourceSha256": "568f848a6dc3046bf19fc7bb16a0f5d0055c00dc0e43accd26692d36628e6ca0",
+      "translatedSha256": "568f848a6dc3046bf19fc7bb16a0f5d0055c00dc0e43accd26692d36628e6ca0",
+      "html": "<h3><code>inputs</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/1/body",
+      "page": "09-io",
+      "mode": "web-body",
+      "sourceSha256": "8cc8b7da17840bb689550f19675d016086e5b9e051b017e706f93c2c1c9e2118",
+      "translatedSha256": "37040b2d502cf415fec3160abfd743db9f6f100390328a5ea5c8aa827f29f2c9",
+      "html": "<p>残っている入力を、1つずつすべて出力します。</p>\n<p>これは、主にプログラムの入力全体に対して集約処理を行う際に便利です。<code>inputs</code> を使う場合、通常はコマンドラインオプション <code>-n</code> を指定してjqを起動する必要があります。そうしないと、最初の入力が失われることに注意してください。</p>\n<pre><code>echo 1 2 3 | jq -n 'reduce inputs as $i (0; . + $i)' # 6&#10;</code></pre>"
+    },
+    {
+      "key": "sections/8/entries/2/title",
+      "page": "09-io",
+      "mode": "entry-title",
+      "sourceSha256": "cb56fc30100ac61fe0dcd81006f8c17214e10e7576d4e0c38be7f050c017aa52",
+      "translatedSha256": "cb56fc30100ac61fe0dcd81006f8c17214e10e7576d4e0c38be7f050c017aa52",
+      "html": "<h3><code>debug</code>, <code>debug(msgs)</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/2/body",
+      "page": "09-io",
+      "mode": "web-body",
+      "sourceSha256": "8725a9dc8c856ecd4c8c925843a3d4d94d97fcca7cf4b30c4b4ebe3a1c67e835",
+      "translatedSha256": "d4eeec773055f94a19f55332628d65a68768056c320337941d6866660d2fd0eb",
+      "html": "<p>この2つのフィルターは <code>.</code> と同様ですが、副作用としてstderrに1つ以上のメッセージを生成します。</p>\n<p>フィルター <code>debug</code> が生成するメッセージは、次の形式です。</p>\n<pre><code>[\"DEBUG:\",&lt;input-value&gt;]&#10;</code></pre>\n<p>ここで、<code>&lt;input-value&gt;</code> は、入力値をコンパクトに表したものです。この形式は、将来変わる可能性があります。</p>\n<p>フィルター <code>debug(msgs)</code> は、<code>(msgs | debug | empty), .</code> と定義されています。そのため、メッセージの内容を柔軟に指定でき、複数行のデバッグ文も作れます。</p>\n<p>たとえば、次の式は、</p>\n<pre><code>1 as $x | 2 | debug(\"Entering function foo with $x == \\($x)\", .) | (.+1)&#10;</code></pre>\n<p>値3を生成しますが、次の2行をstderrへ書き出します。</p>\n<pre><code>[\"DEBUG:\",\"Entering function foo with $x == 1\"]&#10;[\"DEBUG:\",2]&#10;</code></pre>"
+    },
+    {
+      "key": "sections/8/entries/3/title",
+      "page": "09-io",
+      "mode": "entry-title",
+      "sourceSha256": "efb4c12f97b474f7b095bfadc54d425cafb0afc5619040eecb924d7ac48a6be1",
+      "translatedSha256": "efb4c12f97b474f7b095bfadc54d425cafb0afc5619040eecb924d7ac48a6be1",
+      "html": "<h3><code>stderr</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/3/body",
+      "page": "09-io",
+      "mode": "web-body",
+      "sourceSha256": "aa0e346aafa2a84b3e1bc0d7b3e51863361412cfbb90a0ce0f374e65b518d25f",
+      "translatedSha256": "deddf84a9d02fd6e6a0c7590d0b52323e0cdf430cd12f33dfd46f6519e450f5a",
+      "html": "<p>入力をそのままのコンパクトな形式でstderrへ出力します。装飾は一切付けず、改行さえ付けません。</p>"
+    },
+    {
+      "key": "sections/8/entries/4/title",
+      "page": "09-io",
+      "mode": "entry-title",
+      "sourceSha256": "57e446582323d78a0341eb3d4d332ea61e69da1965bf788f2db09995eae6dd74",
+      "translatedSha256": "57e446582323d78a0341eb3d4d332ea61e69da1965bf788f2db09995eae6dd74",
+      "html": "<h3><code>input_filename</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/4/body",
+      "page": "09-io",
+      "mode": "web-body",
+      "sourceSha256": "87dbe347154c534476bb38c1d90daf611ee797efd4b3a08f548b400b4501d09e",
+      "translatedSha256": "38ebee268785f99f16ac833bc254a075a395e32dc4221ab4ffacc317eb41357a",
+      "html": "<p>現在フィルターで処理している入力のファイル名を返します。jqをUTF-8ロケールで実行していない場合、うまく動作しないことに注意してください。</p>"
+    },
+    {
+      "key": "sections/8/entries/5/title",
+      "page": "09-io",
+      "mode": "entry-title",
+      "sourceSha256": "4586eb3f16b988c676eadd862abe016d9b13ec648edef21db5d6ad00cc72590f",
+      "translatedSha256": "4586eb3f16b988c676eadd862abe016d9b13ec648edef21db5d6ad00cc72590f",
+      "html": "<h3><code>input_line_number</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/5/body",
+      "page": "09-io",
+      "mode": "web-body",
+      "sourceSha256": "08d5545374bbdfb1072de9d00f5faf28fefa739c5cb47ed5609e043995de5b41",
+      "translatedSha256": "e77a14ed4b41e985ec1e2dc0e5f3843d8c88c110890063c1b40a6cef0a73c1ca",
+      "html": "<p>現在フィルターで処理している入力の行番号を返します。</p>"
+    },
+    {
+      "key": "sections/9/title",
+      "page": "10-streaming",
+      "mode": "section-title",
+      "sourceSha256": "a951c5945635e2d32e944bf67ddf3101bc3c5c9b2e3087ef39c384dc0e61a0d0",
+      "translatedSha256": "d7bc3cb357c227a17270779e5072b0f2a367ccb1300e489c5fa816ce43bbc4b0",
+      "html": "<h2>ストリーミング</h2>"
+    },
+    {
+      "key": "sections/9/body",
+      "page": "10-streaming",
+      "mode": "web-body",
+      "sourceSha256": "ae4450c24f0bf5b254018be77ee399590ae9c44c17ca49b3c33607ac955657c8",
+      "translatedSha256": "f215b868fa1c0a47fe9226384e0d1a9509173d77845ec2b4fc770179de68d649",
+      "html": "<p><code>--stream</code> オプションを使うと、jqは入力テキストをストリーミング形式で解析できます。そのため、大きなJSONテキストを、解析が完了してからではなく、すぐに処理し始められます。1GBの単一のJSONテキストがある場合、ストリーミングによって、より早く処理できます。</p>\n<p>ただし、ストリーミングを扱うのは簡単ではありません。jqプログラムの入力が、<code>[&lt;path&gt;, &lt;leaf-value&gt;]</code> や、いくつかの別の形式になるためです。</p>\n<p>ストリームを扱いやすくするため、いくつかの組込み関数があります。</p>\n<p>以下の例では、<code>[\"a\",[\"b\"]]</code> のストリーミング形式を使います。これは <code>[[0],\"a\"],[[1,0],\"b\"],[[1,0]],[[1]]</code> です。</p>\n<p>ストリーミング形式には、<code>[&lt;path&gt;, &lt;leaf-value&gt;]</code>（スカラー値、空の配列、空のオブジェクトを示すもの）と、<code>[&lt;path&gt;]</code>（配列またはオブジェクトの終わりを示すもの）が含まれます。将来のjqを <code>--stream</code> と <code>--seq</code> で実行した場合、入力テキストの解析に失敗したときに、<code>[\"error message\"]</code> のような追加の形式を出力する可能性があります。</p>"
+    },
+    {
+      "key": "sections/9/entries/0/title",
+      "page": "10-streaming",
+      "mode": "entry-title",
+      "sourceSha256": "34cd89eea83aa86076d5390c6b31b3285e7434632a5955704bc3a4c59832e283",
+      "translatedSha256": "34cd89eea83aa86076d5390c6b31b3285e7434632a5955704bc3a4c59832e283",
+      "html": "<h3><code>truncate_stream(stream_expression)</code></h3>"
+    },
+    {
+      "key": "sections/9/entries/0/body",
+      "page": "10-streaming",
+      "mode": "web-body",
+      "sourceSha256": "5403903fa42550ab81c4a8c2e3ba760fd187d95693eef507e393b546999999f9",
+      "translatedSha256": "048d5339613e976cabb0239ea1ed4dfcd4c2464e88ae18414f4388428b8a2117",
+      "html": "<p>数値を入力として受け取り、指定したストリーミング式の出力から、その数に対応する個数のパス要素を左側から切り落とします。</p>"
+    },
+    {
+      "key": "sections/9/entries/1/title",
+      "page": "10-streaming",
+      "mode": "entry-title",
+      "sourceSha256": "57a8e8b0d14ceb52aaa5fa50053cc1845ff20a712eba03ba011bdfb6f1cad9fb",
+      "translatedSha256": "57a8e8b0d14ceb52aaa5fa50053cc1845ff20a712eba03ba011bdfb6f1cad9fb",
+      "html": "<h3><code>fromstream(stream_expression)</code></h3>"
+    },
+    {
+      "key": "sections/9/entries/1/body",
+      "page": "10-streaming",
+      "mode": "web-body",
+      "sourceSha256": "d757e03010ed47727b8df937c7fda6de567c798290d46fddb18c3dda685e3186",
+      "translatedSha256": "13fb9634108cc4ce083c9390a6bc9fed69cb7af4b7b9052e4acd627f42bdacef",
+      "html": "<p>ストリーム式の出力に対応する値を出力します。</p>"
+    },
+    {
+      "key": "sections/9/entries/2/title",
+      "page": "10-streaming",
+      "mode": "entry-title",
+      "sourceSha256": "afd813d60c2eb161f2a40af8f19f216dfd4471dd6f759f3c253f384313a088af",
+      "translatedSha256": "afd813d60c2eb161f2a40af8f19f216dfd4471dd6f759f3c253f384313a088af",
+      "html": "<h3><code>tostream</code></h3>"
+    },
+    {
+      "key": "sections/9/entries/2/body",
+      "page": "10-streaming",
+      "mode": "web-body",
+      "sourceSha256": "a31f820071160483989215a0cc2badf5f7c24373ab66ac694c85cffc3d846765",
+      "translatedSha256": "3ac29df3e986f1541cc19a0bfeee8963daa2c217be1ee7d50b40ddfc658a7d7a",
+      "html": "<p>組込み関数 <code>tostream</code> は、入力のストリーミング形式を出力します。</p>"
+    },
+    {
+      "key": "sections/10/title",
+      "page": "11-assignment",
+      "mode": "section-title",
+      "sourceSha256": "153cdaaec56103da0c71f1ff5a0786849d190d369ece1e63940081d8b3ecbd8d",
+      "translatedSha256": "dc9d1a00a79380970d9227e5fe4f609bc59cd94f2764184c5a954ef76e4f3767",
+      "html": "<h2>代入</h2>"
+    },
+    {
+      "key": "sections/10/body",
+      "page": "11-assignment",
+      "mode": "web-body",
+      "sourceSha256": "281233ce4cd2600af65aeaef2b29d5c4fd58c2511446b56b30f4ac553f82fa09",
+      "translatedSha256": "6324350ad8b985b45b9c52dddab33734cdf33840a2c63a06d8fd7e9c1c1334c0",
+      "html": "<p>jqの代入は、ほとんどのプログラミング言語と少し異なります。jqは、参照とコピーを区別しません。2つのオブジェクトや配列は、等しいか等しくないかのどちらかであり、「同じオブジェクト」か「別のオブジェクト」かという追加の概念はありません。</p>\n<p>オブジェクトに、配列である2つのフィールド <code>.foo</code> と <code>.bar</code> があり、<code>.foo</code> に何かを追加しても、<code>.bar</code> は大きくなりません。以前に <code>.bar = .foo</code> と設定していても同じです。Python、Java、Ruby、JavaScriptなどの言語に慣れている場合は、jqが代入前にすべてのオブジェクトを完全にディープコピーするかのように考えられます。性能のため、実際にはそうしていませんが、大まかな考え方はそのようになります。</p>\n<p>このため、jqで循環する値を構築することはできません。たとえば、最初の要素が自分自身である配列は作れません。これは意図的なもので、jqプログラムが生成できるものをすべてJSONで表現できるようにしています。</p>\n<p>jqのすべての代入演算子では、左辺（LHS）がパス式です。右辺（RHS）は、左辺のパス式が指定するパスへ設定する値を提供します。</p>\n<p>jqの値は、常に不変です。内部では、集約処理を使って、<code>.</code> を置き換える新しい値を計算することで代入を行います。その値には、必要な代入をすべて <code>.</code> に適用してから、変更した値を出力します。次の例で分かりやすくなるかもしれません。<code>{a:{b:{c:1}}} | (.a.b|=3), .</code> は、<code>{\"a\":{\"b\":3}}</code> と <code>{\"a\":{\"b\":{\"c\":1}}}</code> を出力します。最後の部分式 <code>.</code> が見るのは、変更した値ではなく、元の値だからです。</p>\n<p>多くの場合、<code>|=</code> や <code>+=</code> のような変更を行う代入演算子を使い、<code>=</code> は使わない方がよいでしょう。</p>\n<p>代入演算子の左辺は、<code>.</code> 内の値を参照することに注意してください。そのため、<code>$var.foo = 1</code> は期待どおりには動きません。<code>$var.foo</code> は、<code>.</code> 内の有効または有用なパス式ではありません。代わりに <code>$var | .foo =\n1</code> を使います。</p>\n<p>また、<code>.a,.b=0</code> は <code>.a</code> と <code>.b</code> の両方を設定するわけではありませんが、<code>(.a,.b)=0</code> は両方を設定します。</p>"
+    },
+    {
+      "key": "sections/10/entries/0/title",
+      "page": "11-assignment",
+      "mode": "entry-title",
+      "sourceSha256": "74d23781dd5b337a95d45a712a0e3cac848a37d6a3b000c601099c2ffc5e134b",
+      "translatedSha256": "59beb6e505ab57af5fdfaaaa7a826f6f60378c9a039cf0b7bcebf3237ccd5f78",
+      "html": "<h3>更新代入：<code>|=</code></h3>"
+    },
+    {
+      "key": "sections/10/entries/0/body",
+      "page": "11-assignment",
+      "mode": "web-body",
+      "sourceSha256": "f20fb2c9b89835a32d0b2e6f6179f6efb1ef579fe136bab3330d16cfa0c3446a",
+      "translatedSha256": "5c8838eabb4649318d5fb83b484171626e928b36d0e23dffea53cf31a73663c3",
+      "html": "<p>これは「更新」演算子 <code>|=</code> です。右辺にフィルターを取り、代入対象の <code>.</code> のプロパティの古い値を、この式に渡して処理することで、新しい値を計算します。たとえば、<code>(.foo, .bar) |= .+1</code> は、<code>foo</code> フィールドを入力の <code>foo</code> に1を加えた値に、<code>bar</code> フィールドを入力の <code>bar</code> に1を加えた値に設定したオブジェクトを構築します。</p>\n<p>左辺には、一般的なパス式を使えます。<code>path()</code> を参照してください。</p>\n<p><code>|=</code> の左辺が参照するのは、<code>.</code> 内の値であることに注意してください。そのため、<code>$var.foo |= . + 1</code> は期待どおりには動きません。<code>$var.foo</code> は、<code>.</code> 内の有効または有用なパス式ではありません。代わりに、<code>$var |\n.foo |= . + 1</code> を使います。</p>\n<p>右辺が何も出力しない場合（つまり、<code>empty</code> の場合）、<code>del(path)</code> と同様に、左辺のパスを削除します。</p>\n<p>右辺が複数の値を出力する場合、最初の値だけを使います。互換性に関する注意：jq 1.5以前のリリースでは、最後の値だけを使っていました。</p>"
+    },
+    {
+      "key": "sections/10/entries/1/title",
+      "page": "11-assignment",
+      "mode": "entry-title",
+      "sourceSha256": "2b47480da54c7de3599f9c772e0a95e51cf140ae594aab0761a21d4aaf2ca917",
+      "translatedSha256": "64f7491ee51614654fe9036cbb4ca9e32590d1e351454369f576bb4882a037c0",
+      "html": "<h3>算術更新代入：<code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>//=</code></h3>"
+    },
+    {
+      "key": "sections/10/entries/1/body",
+      "page": "11-assignment",
+      "mode": "web-body",
+      "sourceSha256": "5b8fe51262b6e4abcd2ae74b9e2d004883655493d4c2c23843a16655c54a4afb",
+      "translatedSha256": "1793a7e12b82ae28246226b9cba4acb5ac0588a8309627470de80ecd7c6e27f9",
+      "html": "<p>jqには、<code>a op= b</code> という形式の演算子がいくつかあり、すべて <code>a |= . op b</code> と同じです。そのため、<code>+= 1</code> は、<code>|= . + 1</code> と同じ意味で、値を1増やすために使えます。</p>"
+    },
+    {
+      "key": "sections/10/entries/2/title",
+      "page": "11-assignment",
+      "mode": "entry-title",
+      "sourceSha256": "b7c59ca959dac0a14a99740065c7662a2627ca75fc35cf29799682f534bdac00",
+      "translatedSha256": "de4b58ba3c0ce6252bdca53375a38fc5f2590955b65adc641b632b7b185a1808",
+      "html": "<h3>通常の代入：<code>=</code></h3>"
+    },
+    {
+      "key": "sections/10/entries/2/body",
+      "page": "11-assignment",
+      "mode": "web-body",
+      "sourceSha256": "4da01a1bdd7d90d6bb8a477828dd8577594c33275d3224b6c9c009ea773f7779",
+      "translatedSha256": "01743ea82e7e93aff06156c64bca1bb64f14f7a24a9f08e308ca00ef65f24969",
+      "html": "<p>これは通常の代入演算子です。他の代入演算子と違い、右辺（RHS）への入力は、左辺（LHS）のパスにある値ではなく、左辺への入力と同じです。また、右辺が出力するすべての値を使います。以下の例を参照してください。</p>\n<p><code>=</code> の右辺が複数の値を生成する場合、jqはそれぞれの値に対して、左辺のパスをその値に設定し、変更した <code>.</code> を出力します。たとえば、<code>(.a,.b) = range(2)</code> は、<code>{\"a\":0,\"b\":0}</code> を出力し、その後に <code>{\"a\":1,\"b\":1}</code> を出力します。前述の「更新」形式の代入では、このようにはなりません。</p>\n<p>次の例で、<code>=</code> と <code>|=</code> の違いが分かるでしょう。</p>\n<p>入力 <code>{\"a\": {\"b\": 10}, \"b\": 20}</code> を、次のプログラムに与えます。</p>\n<pre><code>.a = .b&#10;</code></pre>\n<p>および、</p>\n<pre><code>.a |= .b&#10;</code></pre>\n<p>前者は、入力の <code>a</code> フィールドを入力の <code>b</code> フィールドに設定し、<code>{\"a\": 20, \"b\": 20}</code> を出力します。後者は、入力の <code>a</code> フィールドを、<code>a</code> フィールド内の <code>b</code> フィールドに設定し、<code>{\"a\": 10, \"b\": 20}</code> を出力します。</p>"
+    },
+    {
+      "key": "sections/10/entries/3/title",
+      "page": "11-assignment",
+      "mode": "entry-title",
+      "sourceSha256": "c22ea537123a4d224a7e3d016c863a923640b504529d62b09050392fda169a75",
+      "translatedSha256": "475847c7e53ccc631bf9cc0e3e8c0ce5518f31661d95df17b4a4e9ccb5ac9276",
+      "html": "<h3>複雑な代入</h3>"
+    },
+    {
+      "key": "sections/10/entries/3/body",
+      "page": "11-assignment",
+      "mode": "web-body",
+      "sourceSha256": "aaa39e47c0a714f6725fce54105eebb5fcbcacf7dade9ce7bd6cccb8445beff0",
+      "translatedSha256": "94fc1355b0adba7045ed55ce74650fdbe25dca3493555a5948cabfd93bcb22d6",
+      "html": "<p>jqの代入の左辺には、ほとんどの言語よりも、多くのものを指定できます。左辺の単純なフィールドへのアクセスはすでに見ました。配列へのアクセスも、同じように使えます。</p>\n<pre><code>.posts[0].title = \"JQ Manual\"&#10;</code></pre>\n<p>意外かもしれませんが、左側の式は、入力文書の異なる位置を参照する複数の結果を生成できます。</p>\n<pre><code>.posts[].comments |= . + [\"this is great\"]&#10;</code></pre>\n<p>この例は、入力内の各記事の\"comments\"配列に、文字列\"this is great\"を追加します。入力は、記事の配列である\"posts\"フィールドを持つオブジェクトです。</p>\n<p>jqが'a = b'のような代入に出会うと、aを実行するときに、入力文書の一部を選択するためにたどった「パス」を記録します。代入を実行するときには、このパスを使って、入力のどの部分を変更するかを見つけます。等号の左辺には、どのフィルターでも使えます。そのフィルターが入力から選択するパスが、代入を行う場所になります。</p>\n<p>これは非常に強力な操作です。前述の\"blog\"入力を使って、ブログ記事にコメントを追加したいとします。今回は、\"stedolan\"が書いた記事だけにコメントしたいとします。前述の\"select\"関数で、そのような記事を見つけられます。</p>\n<pre><code>.posts[] | select(.author == \"stedolan\")&#10;</code></pre>\n<p>この操作が提供するパスは、\"stedolan\"が書いた各記事を指しています。以前と同じ方法で、それぞれにコメントできます。</p>\n<pre><code>(.posts[] | select(.author == \"stedolan\") | .comments) |=&#10;    . + [\"terrible.\"]&#10;</code></pre>"
+    },
+    {
+      "key": "sections/11/title",
+      "page": "12-comments",
+      "mode": "section-title",
+      "sourceSha256": "355f79f29d7d3c2df917ad07f7441e3ce4b0ac48892b778076dbdca401851712",
+      "translatedSha256": "6b9190f59aa3a51fcced55744fead599f764c81e4a51d12c2e97af8e7ab31284",
+      "html": "<h2>コメント</h2>"
+    },
+    {
+      "key": "sections/11/body",
+      "page": "12-comments",
+      "mode": "web-body",
+      "sourceSha256": "92e341490b876d411ead537cf8d8177d54edec59c0fdb2b453adb12bc4a926b4",
+      "translatedSha256": "7f423aac390f41cc55c2c10152f6caeed368e9201aa5589fc931eeabf0df0d53",
+      "html": "<p><code>#</code> を使って、jqフィルターにコメントを書けます。</p>\n<p>文字列の一部でない <code>#</code> 文字は、コメントの開始を示します。<code>#</code> から行末までのすべての文字は無視されます。</p>\n<p>行末の直前に、奇数個のバックスラッシュ文字がある場合、次の行もコメントの一部とみなされ、無視されます。</p>\n<p>たとえば、次のコードは <code>[1,3,4,7]</code> を出力します。</p>\n<pre><code>[&#10;  1,&#10;  # foo \\&#10;  2,&#10;  # bar \\\\&#10;  3,&#10;  4, # baz \\\\\\&#10;  5, \\&#10;  6,&#10;  7&#10;  # comment \\&#10;    comment \\&#10;    comment&#10;]&#10;</code></pre>\n<p>コメントを次の行へ継続するバックスラッシュは、jqスクリプトの「shebang」を書くときに便利です。</p>\n<pre><code>#!/bin/sh --&#10;# total - Output the sum of the given arguments (or stdin)&#10;# usage: total [numbers...]&#10;# \\&#10;exec jq --args -MRnf -- \"$0\" \"$@\"&#10;&#10;$ARGS.positional |&#10;reduce (&#10;  if . == []&#10;    then inputs&#10;    else .[]&#10;  end |&#10;  . as $dot |&#10;  try tonumber catch false |&#10;  if not or isnan then&#10;    @json \"total: Invalid number \\($dot).\\n\" | halt_error(1)&#10;  end&#10;) as $n (0; . + $n)&#10;</code></pre>\n<p><code>exec</code> の行は、jqではコメントとみなされるため、無視されます。しかし、<code>sh</code> では無視されません。<code>sh</code> では、行末のバックスラッシュがコメントを継続しないためです。この方法で、スクリプトを <code>total 1 2</code> として呼び出すと、<code>/bin/sh -- /path/to/total 1 2</code> が実行され、<code>sh</code> は、次に <code>exec jq --args -MRnf -- /path/to/total 1 2</code> を実行します。その際、自分自身を <code>jq</code> インタープリターに置き換えます。このインタープリターは、指定したオプション（<code>-M</code>、<code>-R</code>、<code>-n</code>、<code>--args</code>）で起動し、現在のファイル（<code>$0</code>）を、<code>$@</code> の引数を使って評価します。これらの引数は、<code>sh</code> に渡されたものです。</p>"
+    },
+    {
+      "key": "sections/12/title",
+      "page": "13-modules",
+      "mode": "section-title",
+      "sourceSha256": "76c86c4c32432be30bdd4037aae3c816045cc2a34a0b41b2322bb2c37927323e",
+      "translatedSha256": "fe6dad4d2c1f23ddd1d1a6feb2829cc95bc865bfe2d5746633de5e3d692a8009",
+      "html": "<h2>モジュール</h2>"
+    },
+    {
+      "key": "sections/12/body",
+      "page": "13-modules",
+      "mode": "web-body",
+      "sourceSha256": "16148477f5e5d2637d660b1b8ce84b1a80b9196f6882591991770c39c02c2002",
+      "translatedSha256": "53b03b72a7bac56aed6898a1a118cd78be13f0ddcd38f0337954c8496a44b41c",
+      "html": "<p>jqにはライブラリ／モジュールの仕組みがあります。モジュールは、ファイル名が <code>.jq</code> で終わるファイルです。</p>\n<p>プログラムがインポートするモジュールは、既定の検索パスで探します。以下を参照してください。<code>import</code> と <code>include</code> の指示では、インポートする側がこのパスを変更できます。</p>\n<p>検索パス内のパスには、さまざまな置換を適用します。</p>\n<p><code>~/</code> で始まるパスでは、<code>~</code> をユーザーのホームディレクトリで置き換えます。</p>\n<p><code>$ORIGIN/</code> で始まるパスでは、<code>$ORIGIN</code> をjq実行ファイルがあるディレクトリで置き換えます。</p>\n<p><code>./</code> で始まるパス、または <code>.</code> というパスでは、<code>.</code> を、そのファイルを取り込む側のファイルのパスで置き換えます。コマンドラインで指定した最上位のプログラムの場合は、現在のディレクトリを使います。</p>\n<p>インポートの指示では、検索パスを任意で指定できます。その後ろに既定の検索パスを追加します。</p>\n<p>既定の検索パスは、コマンドラインオプション <code>-L</code> に指定した検索パスです。それがなければ、<code>[\"~/.jq\", \"$ORIGIN/../lib/jq\",\n\"$ORIGIN/../lib\"]</code> です。</p>\n<p>nullまたは空文字列のパス要素は、検索パスの処理を終了させます。</p>\n<p>相対パス <code>foo/bar</code> の依存モジュールは、指定した検索パス内の <code>foo/bar.jq</code> と <code>foo/bar/bar.jq</code> で探します。これは、モジュールをバージョン管理ファイルやREADMEファイルなどと一緒にディレクトリへ置けるようにしつつ、単一ファイルのモジュールも使えるようにするためです。</p>\n<p>曖昧さを避けるため、同じ名前のパス要素を連続させることは認められていません。たとえば、<code>foo/foo</code> です。</p>\n<p>例として、<code>-L$HOME/.jq</code> を指定すると、モジュール <code>foo</code> は、<code>$HOME/.jq/foo.jq</code> と <code>$HOME/.jq/foo/foo.jq</code> に見つかります。</p>\n<p>ユーザーのホームディレクトリに <code>.jq</code> があり、ディレクトリではなくファイルである場合、メインプログラムへ自動的に読み込まれます。</p>"
+    },
+    {
+      "key": "sections/12/entries/0/title",
+      "page": "13-modules",
+      "mode": "entry-title",
+      "sourceSha256": "06bde897efe9cc8c3fc18c27088381a5ddc40ed44a9180ed13ea6860ae16bdf6",
+      "translatedSha256": "06bde897efe9cc8c3fc18c27088381a5ddc40ed44a9180ed13ea6860ae16bdf6",
+      "html": "<h3><code>import RelativePathString as NAME [&lt;metadata&gt;];</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/0/body",
+      "page": "13-modules",
+      "mode": "web-body",
+      "sourceSha256": "03468423bf5b7b2e7bc056fc28590f72bcc892f7b82219d76ab99530be65296b",
+      "translatedSha256": "c29a6b1974d94ce4185c6e6e028047ecb4e3d78d07ef6f0c43a8939a13d8f25a",
+      "html": "<p>検索パス内のディレクトリからの相対パスとして、指定したパスで見つかったモジュールをインポートします。相対パス文字列には <code>.jq</code> 接尾辞を追加します。モジュールの記号には、<code>NAME::</code> という接頭辞が付きます。</p>\n<p>任意のメタデータは、定数のjq式でなければなりません。<code>homepage</code> などのキーを持つオブジェクトにするべきです。現時点で、jqが使うのは、メタデータの <code>search</code> のキーと値だけです。メタデータは、組込み関数 <code>modulemeta</code> によって利用者にも提供されます。</p>\n<p>メタデータに <code>search</code> キーがある場合、その値は文字列か、文字列の配列であるべきです。これは、最上位の検索パスの先頭に追加する検索パスです。</p>"
+    },
+    {
+      "key": "sections/12/entries/1/title",
+      "page": "13-modules",
+      "mode": "entry-title",
+      "sourceSha256": "9cc463bb1249f706b47a24d80a9966f051f41f92d9686c82051521fddc5a959f",
+      "translatedSha256": "9cc463bb1249f706b47a24d80a9966f051f41f92d9686c82051521fddc5a959f",
+      "html": "<h3><code>include RelativePathString [&lt;metadata&gt;];</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/1/body",
+      "page": "13-modules",
+      "mode": "web-body",
+      "sourceSha256": "4ad182958bc2596fcd46e11a107f12da787cbf18da81a2a0b15af7a4af8a2928",
+      "translatedSha256": "fd6e56d483abf329158d3faf591b681b2cd5ab5253677fb5da7aadf13dbada75",
+      "html": "<p>検索パス内のディレクトリからの相対パスとして、指定したパスで見つかったモジュールを、その場所へ取り込むかのようにインポートします。相対パス文字列には <code>.jq</code> 接尾辞を追加します。モジュールの記号は、モジュールの内容を直接取り込んだかのように、呼出し側の名前空間へインポートされます。</p>\n<p>任意のメタデータは、定数のjq式でなければなりません。<code>homepage</code> などのキーを持つオブジェクトにするべきです。現時点で、jqが使うのは、メタデータの <code>search</code> のキーと値だけです。メタデータは、組込み関数 <code>modulemeta</code> によって利用者にも提供されます。</p>"
+    },
+    {
+      "key": "sections/12/entries/2/title",
+      "page": "13-modules",
+      "mode": "entry-title",
+      "sourceSha256": "7c316e91e5d429002e5e8a0ddcfa1b96bcf69efa27723015af3dd97d49a41a2c",
+      "translatedSha256": "7c316e91e5d429002e5e8a0ddcfa1b96bcf69efa27723015af3dd97d49a41a2c",
+      "html": "<h3><code>import RelativePathString as $NAME [&lt;metadata&gt;];</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/2/body",
+      "page": "13-modules",
+      "mode": "web-body",
+      "sourceSha256": "81e54b40fd539074b0d27f6a9210ca58d705e29e4fa0a2b6c496e8429e4687da",
+      "translatedSha256": "c711cc763757394f56cddd1b6b7e54a60fe949b62e78d52fedc3eea91fb80b63",
+      "html": "<p>検索パス内のディレクトリからの相対パスとして、指定したパスで見つかったJSONファイルをインポートします。相対パス文字列には <code>.json</code> 接尾辞を追加します。ファイルのデータは、<code>$NAME::NAME</code> として使えます。</p>\n<p>任意のメタデータは、定数のjq式でなければなりません。<code>homepage</code> などのキーを持つオブジェクトにするべきです。現時点で、jqが使うのは、メタデータの <code>search</code> のキーと値だけです。メタデータは、組込み関数 <code>modulemeta</code> によって利用者にも提供されます。</p>\n<p>メタデータに <code>search</code> キーがある場合、その値は文字列か、文字列の配列であるべきです。これは、最上位の検索パスの先頭に追加する検索パスです。</p>"
+    },
+    {
+      "key": "sections/12/entries/3/title",
+      "page": "13-modules",
+      "mode": "entry-title",
+      "sourceSha256": "bea98c7c1d5b2a8046c4297e1560fbe4a6623668b4bdeb9a1677f93551e94f81",
+      "translatedSha256": "bea98c7c1d5b2a8046c4297e1560fbe4a6623668b4bdeb9a1677f93551e94f81",
+      "html": "<h3><code>module &lt;metadata&gt;;</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/3/body",
+      "page": "13-modules",
+      "mode": "web-body",
+      "sourceSha256": "6d0381ec158e18f779ed97e7e1bcabd27f4b567c4d86a49264245d034c819750",
+      "translatedSha256": "5adf6824e9e7d654e593a01a57f90d97b378158ffd93f37008199e4702739f95",
+      "html": "<p>この指示は完全に任意です。正しく動作するためには必要ありません。組込み関数 <code>modulemeta</code> で読み取れるメタデータを提供することだけが目的です。</p>\n<p>メタデータは、定数のjq式でなければなりません。<code>homepage</code> のようなキーを持つオブジェクトにするべきです。現時点で、jqはこのメタデータを使いませんが、組込み関数 <code>modulemeta</code> によって利用者に提供されます。</p>"
+    },
+    {
+      "key": "sections/12/entries/4/title",
+      "page": "13-modules",
+      "mode": "entry-title",
+      "sourceSha256": "82cfb77156dc17b8861261e5f9c17bb006b342d37098ab16923bfa34b269304e",
+      "translatedSha256": "82cfb77156dc17b8861261e5f9c17bb006b342d37098ab16923bfa34b269304e",
+      "html": "<h3><code>modulemeta</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/4/body",
+      "page": "13-modules",
+      "mode": "web-body",
+      "sourceSha256": "00d94ed6075e09e1a6cf96632c99354dcc7c0abebe4e4d48768c7f13c80a66b8",
+      "translatedSha256": "b1347282f91a98a05e38a000b5f2c6cccfe4a6b89e9be8f0656721fad6cf9b41",
+      "html": "<p>モジュール名を入力として受け取り、モジュールのメタデータをオブジェクトとして出力します。モジュールがインポートするものは、メタデータも含めて <code>deps</code> キーの配列の値になり、モジュールが定義する関数は <code>defs</code> キーの配列の値になります。</p>\n<p>プログラムは、この関数でモジュールのメタデータを問い合わせ、たとえば、不足している依存モジュールの検索、ダウンロード、インストールに使えます。</p>"
+    },
+    {
+      "key": "sections/13/title",
+      "page": "14-colors",
+      "mode": "section-title",
+      "sourceSha256": "88c45d9e526c08dd7f8b9d1d3ab96a72d68205232090be5da57e05251bfea650",
+      "translatedSha256": "2b3611f71ddd36fdfabfeed10c11ae3311e17ce509baa616aca85fcf007ec286",
+      "html": "<h2>色</h2>"
+    },
+    {
+      "key": "sections/13/body",
+      "page": "14-colors",
+      "mode": "web-body",
+      "sourceSha256": "282eaae932feac61634fedb37dd757fc434e190e1ead80161acd1ed7cb87d150",
+      "translatedSha256": "833d9d0e8eea6b94c6a2ea5a00af0e6c6328ffef64e3028a0f2ebe8d7ddb25bd",
+      "html": "<p>別の色を設定するには、環境変数 <code>JQ_COLORS</code> を、<code>\"1;31\"</code> のような端末のエスケープシーケンスの一部をコロンで区切ったリストに設定します。順序は次のとおりです。</p>\n<ul>\n<li><code>null</code> の色</li>\n<li><code>false</code> の色</li>\n<li><code>true</code> の色</li>\n<li>数値の色</li>\n<li>文字列の色</li>\n<li>配列の色</li>\n<li>オブジェクトの色</li>\n<li>オブジェクトのキーの色</li>\n</ul>\n<p>既定の配色は、<code>JQ_COLORS=\"0;90:0;39:0;39:0;39:0;32:1;39:1;39:1;34\"</code> と設定した場合と同じです。</p>\n<p>ここでは、VT100/ANSIエスケープのマニュアルは提供しません。ただし、各色の指定は、セミコロンで区切った2つの数値で構成するべきです。最初の数値は、次のいずれかです。</p>\n<ul>\n<li>1（明るい）</li>\n<li>2（暗い）</li>\n<li>4（下線）</li>\n<li>5（点滅）</li>\n<li>7（反転）</li>\n<li>8（非表示）</li>\n</ul>\n<p>2番目の数値は、次のいずれかです。</p>\n<ul>\n<li>30（黒）</li>\n<li>31（赤）</li>\n<li>32（緑）</li>\n<li>33（黄）</li>\n<li>34（青）</li>\n<li>35（マゼンタ）</li>\n<li>36（シアン）</li>\n<li>37（白）</li>\n</ul>"
+    },
+    {
+      "key": "manpage_intro",
+      "page": "15-manpage-appendix",
+      "mode": "manpage-intro",
+      "sourceSha256": "4e1c07f1363dd0cfb268c89950c581567c073bb888b44cd8eec46aac31f5cff7",
+      "translatedSha256": "662d846cc3f781aee28d2ce6c4a526f5249f4e636c4c7fc97fe13c1d89cf1ffd",
+      "html": "<h1>jq(1) -- コマンドラインJSONプロセッサー</h1>\n<h2>書式</h2>\n<p><code>jq</code> [&lt;options&gt;...] &lt;filter&gt; [&lt;files&gt;...]</p>\n<p><code>jq</code> は、JSON文書の選択、反復、集約など、さまざまな方法でJSONを変換できます。たとえば、コマンド <code>jq 'map(.price) | add'</code> を実行すると、JSONオブジェクトの配列を入力として受け取り、その\"price\"フィールドの合計を返します。</p>\n<p><code>jq</code> はテキスト入力も受け取れますが、既定では、<code>jq</code> は <code>stdin</code> からJSONの値（数値やその他のリテラルも含みます）のストリームを読み込みます。空白が必要なのは、1と2やtrueとfalseのような値を区切る場合だけです。1つ以上の&lt;files&gt;を指定できます。その場合、<code>jq</code> は代わりに、それらのファイルから入力を読み込みます。</p>\n<p>&lt;options&gt;は、[INVOKING JQ]の節で説明されています。主に入力と出力の書式に関するものです。&lt;filter&gt;はjq言語で書き、入力ファイルまたは文書をどう変換するかを指定します。</p>\n<h2>フィルター</h2>"
+    },
+    {
+      "key": "manpage_epilogue",
+      "page": "15-manpage-appendix",
+      "mode": "web-body",
+      "sourceSha256": "d2795dbd24c1fcb6a2ac32a116b76ae7fce9e636215837a992482a0f402f0d96",
+      "translatedSha256": "a2439c3a5eb0e4def793225adf58fe43c342bb7646eea92e49b3f85d2b96fbb1",
+      "html": "<h2>バグ</h2>\n<p>おそらく存在します。次の場所で報告または議論してください。</p>\n<pre><code>https://github.com/jqlang/jq/issues&#10;</code></pre>\n<h2>著者</h2>\n<p>Stephen Dolan <code>&lt;mu@netsoc.tcd.ie&gt;</code></p>"
+    }
+  ],
+  "examplesInTranslatedPages": 250,
+  "remainingFields": 0,
+  "releaseReady": false
+}

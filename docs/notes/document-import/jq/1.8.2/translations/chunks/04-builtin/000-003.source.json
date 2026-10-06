@@ -1,0 +1,115 @@
+{
+  "title": "Builtin operators and functions",
+  "body": "\nSome jq operators (for instance, `+`) do different things\ndepending on the type of their arguments (arrays, numbers,\netc.). However, jq never does implicit type conversions. If you\ntry to add a string to an object you'll get an error message and\nno result.\n\nPlease note that all numbers are converted to IEEE754 double precision\nfloating point representation. Arithmetic and logical operators are working\nwith these converted doubles. Results of all such operations are also limited\nto the double precision.\n\nThe only exception to this behaviour of number is a snapshot of original number\nliteral. When a number which originally was provided as a literal is never\nmutated until the end of the program then it is printed to the output in its\noriginal literal form. This also includes cases when the original literal\nwould be truncated when converted to the IEEE754 double precision floating point\nnumber.\n",
+  "entries": [
+    {
+      "title": "Addition: `+`",
+      "body": "\nThe operator `+` takes two filters, applies them both\nto the same input, and adds the results together. What\n\"adding\" means depends on the types involved:\n\n- **Numbers** are added by normal arithmetic.\n\n- **Arrays** are added by being concatenated into a larger array.\n\n- **Strings** are added by being joined into a larger string.\n\n- **Objects** are added by merging, that is, inserting all\n  the key-value pairs from both objects into a single\n  combined object. If both objects contain a value for the\n  same key, the object on the right of the `+` wins. (For\n  recursive merge use the `*` operator.)\n\n`null` can be added to any value, and returns the other\nvalue unchanged.\n",
+      "examples": [
+        {
+          "program": ".a + 1",
+          "input": "{\"a\": 7}",
+          "output": [
+            "8"
+          ]
+        },
+        {
+          "program": ".a + .b",
+          "input": "{\"a\": [1,2], \"b\": [3,4]}",
+          "output": [
+            "[1,2,3,4]"
+          ]
+        },
+        {
+          "program": ".a + null",
+          "input": "{\"a\": 1}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": ".a + 1",
+          "input": "{}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "{a: 1} + {b: 2} + {c: 3} + {a: 42}",
+          "input": "null",
+          "output": [
+            "{\"a\": 42, \"b\": 2, \"c\": 3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Subtraction: `-`",
+      "body": "\nAs well as normal arithmetic subtraction on numbers, the `-`\noperator can be used on arrays to remove all occurrences of\nthe second array's elements from the first array.\n",
+      "examples": [
+        {
+          "program": "4 - .a",
+          "input": "{\"a\":3}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": ". - [\"xml\", \"yaml\"]",
+          "input": "[\"xml\", \"yaml\", \"json\"]",
+          "output": [
+            "[\"json\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Multiplication, division, modulo: `*`, `/`, `%`",
+      "body": "\nThese infix operators behave as expected when given two numbers.\nDivision by zero raises an error. `x % y` computes x modulo y.\n\nMultiplying a string by a number produces the concatenation of\nthat string that many times. `\"x\" * 0` produces `\"\"`.\n\nDividing a string by another splits the first using the second\nas separators.\n\nMultiplying two objects will merge them recursively: this works\nlike addition but if both objects contain a value for the\nsame key, and the values are objects, the two are merged with\nthe same strategy.\n",
+      "examples": [
+        {
+          "program": "10 / . * 3",
+          "input": "5",
+          "output": [
+            "6"
+          ]
+        },
+        {
+          "program": ". / \", \"",
+          "input": "\"a, b,c,d, e\"",
+          "output": [
+            "[\"a\",\"b,c,d\",\"e\"]"
+          ]
+        },
+        {
+          "program": "{\"k\": {\"a\": 1, \"b\": 2}} * {\"k\": {\"a\": 0,\"c\": 3}}",
+          "input": "null",
+          "output": [
+            "{\"k\": {\"a\": 0, \"b\": 2, \"c\": 3}}"
+          ]
+        },
+        {
+          "program": ".[] | (1 / .)?",
+          "input": "[1,0,-1]",
+          "output": [
+            "1",
+            "-1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`abs`",
+      "body": "\nThe builtin function `abs` is defined naively as: `if . < 0 then - . else . end`.\n\nFor numeric input, this is the absolute value.  See the\nsection on the identity filter for the implications of this\ndefinition for numeric input.\n\nTo compute the absolute value of a number as a floating point number, you may wish use `fabs`.\n",
+      "examples": [
+        {
+          "program": "map(abs)",
+          "input": "[-10, -1.1, -1e-1]",
+          "output": [
+            "[10,1.1,1e-1]"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "entryStart": 63,
+  "entries": [
+    {
+      "title": "`have_literal_numbers`",
+      "body": "\nThis builtin returns true if jq's build configuration\nincludes support for preservation of input number literals.\n"
+    },
+    {
+      "title": "`have_decnum`",
+      "body": "\nThis builtin returns true if jq was built with \"decnum\",\nwhich is the current literal number preserving numeric\nbackend implementation for jq.\n"
+    },
+    {
+      "title": "`$JQ_BUILD_CONFIGURATION`",
+      "body": "\nThis builtin binding shows the jq executable's build\nconfiguration.  Its value has no particular format, but\nit can be expected to be at least the `./configure`\ncommand-line arguments, and may be enriched in the\nfuture to include the version strings for the build\ntooling used.\n\nNote that this can be overridden in the command-line\nwith `--arg` and related options.\n"
+    },
+    {
+      "title": "`$ENV`, `env`",
+      "body": "\n`$ENV` is an object representing the environment variables as\nset when the jq program started.\n\n`env` outputs an object representing jq's current environment.\n\nAt the moment there is no builtin for setting environment\nvariables.\n",
+      "examples": [
+        {
+          "program": "$ENV.PAGER",
+          "input": "null",
+          "output": [
+            "\"less\""
+          ]
+        },
+        {
+          "program": "env.PAGER",
+          "input": "null",
+          "output": [
+            "\"less\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`transpose`",
+      "body": "\nTranspose a possibly jagged matrix (an array of arrays).\nRows are padded with nulls so the result is always rectangular.\n",
+      "examples": [
+        {
+          "program": "transpose",
+          "input": "[[1], [2,3]]",
+          "output": [
+            "[[1,2],[null,3]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`bsearch(x)`",
+      "body": "\n`bsearch(x)` conducts a binary search for x in the input\narray.  If the input is sorted and contains x, then\n`bsearch(x)` will return its index in the array; otherwise, if\nthe array is sorted, it will return (-1 - ix) where ix is an\ninsertion point such that the array would still be sorted\nafter the insertion of x at ix.  If the array is not sorted,\n`bsearch(x)` will return an integer that is probably of no\ninterest.\n",
+      "examples": [
+        {
+          "program": "bsearch(0)",
+          "input": "[0,1]",
+          "output": [
+            "0"
+          ]
+        },
+        {
+          "program": "bsearch(0)",
+          "input": "[1,2,3]",
+          "output": [
+            "-1"
+          ]
+        },
+        {
+          "program": "bsearch(4) as $ix | if $ix < 0 then .[-(1+$ix)] = 4 else . end",
+          "input": "[1,2,3]",
+          "output": [
+            "[1,2,3,4]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "String interpolation: `\\(exp)`",
+      "body": "\nInside a string, you can put an expression inside parens\nafter a backslash. Whatever the expression returns will be\ninterpolated into the string.\n",
+      "examples": [
+        {
+          "program": "\"The input was \\(.), which is one less than \\(.+1)\"",
+          "input": "42",
+          "output": [
+            "\"The input was 42, which is one less than 43\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Convert to/from JSON",
+      "body": "\nThe `tojson` and `fromjson` builtins dump values as JSON texts\nor parse JSON texts into values, respectively.  The `tojson`\nbuiltin differs from `tostring` in that `tostring` returns strings\nunmodified, while `tojson` encodes strings as JSON strings.\n",
+      "examples": [
+        {
+          "program": "[.[]|tostring]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[\"1\",\"foo\",\"[\\\"foo\\\"]\"]"
+          ]
+        },
+        {
+          "program": "[.[]|tojson]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[\"1\",\"\\\"foo\\\"\",\"[\\\"foo\\\"]\"]"
+          ]
+        },
+        {
+          "program": "[.[]|tojson|fromjson]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[1,\"foo\",[\"foo\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Format strings and escaping",
+      "body": "\nThe `@foo` syntax is used to format and escape strings,\nwhich is useful for building URLs, documents in a language\nlike HTML or XML, and so forth. `@foo` can be used as a\nfilter on its own, the possible escapings are:\n\n* `@text`:\n\n  Calls `tostring`, see that function for details.\n\n* `@json`:\n\n  Serializes the input as JSON.\n\n* `@html`:\n\n  Applies HTML/XML escaping, by mapping the characters\n  `<>&'\"` to their entity equivalents `&lt;`, `&gt;`,\n  `&amp;`, `&apos;`, `&quot;`.\n\n* `@uri`:\n\n  Applies percent-encoding, by mapping all reserved URI\n  characters to a `%XX` sequence.\n\n* `@urid`:\n\n  The inverse of `@uri`, applies percent-decoding, by mapping\n  all `%XX` sequences to their corresponding URI characters.\n\n* `@csv`:\n\n  The input must be an array, and it is rendered as CSV\n  with double quotes for strings, and quotes escaped by\n  repetition.\n\n* `@tsv`:\n\n  The input must be an array, and it is rendered as TSV\n  (tab-separated values). Each input array will be printed as\n  a single line. Fields are separated by a single\n  tab (ascii `0x09`). Input characters line-feed (ascii `0x0a`),\n  carriage-return (ascii `0x0d`), tab (ascii `0x09`) and\n  backslash (ascii `0x5c`) will be output as escape sequences\n  `\\n`, `\\r`, `\\t`, `\\\\` respectively.\n\n* `@sh`:\n\n  The input is escaped suitable for use in a command-line\n  for a POSIX shell. If the input is an array, the output\n  will be a series of space-separated strings.\n\n* `@base64`:\n\n  The input is converted to base64 as specified by RFC 4648.\n\n* `@base64d`:\n\n  The inverse of `@base64`, input is decoded as specified by RFC 4648.\n  Note\\: If the decoded string is not UTF-8, the results are undefined.\n\nThis syntax can be combined with string interpolation in a\nuseful way. You can follow a `@foo` token with a string\nliteral. The contents of the string literal will *not* be\nescaped. However, all interpolations made inside that string\nliteral will be escaped. For instance,\n\n    @uri \"https://www.google.com/search?q=\\(.search)\"\n\nwill produce the following output for the input\n`{\"search\":\"what is jq?\"}`:\n\n    \"https://www.google.com/search?q=what%20is%20jq%3F\"\n\nNote that the slashes, question mark, etc. in the URL are\nnot escaped, as they were part of the string literal.\n",
+      "examples": [
+        {
+          "program": "@html",
+          "input": "\"This works if x < y\"",
+          "output": [
+            "\"This works if x &lt; y\""
+          ]
+        },
+        {
+          "program": "@sh \"echo \\(.)\"",
+          "input": "\"O'Hara's Ale\"",
+          "output": [
+            "\"echo 'O'\\\\''Hara'\\\\''s Ale'\""
+          ]
+        },
+        {
+          "program": "@base64",
+          "input": "\"This is a message\"",
+          "output": [
+            "\"VGhpcyBpcyBhIG1lc3NhZ2U=\""
+          ]
+        },
+        {
+          "program": "@base64d",
+          "input": "\"VGhpcyBpcyBhIG1lc3NhZ2U=\"",
+          "output": [
+            "\"This is a message\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dates",
+      "body": "\njq provides some basic date handling functionality, with some\nhigh-level and low-level builtins.  In all cases these\nbuiltins deal exclusively with time in UTC.\n\nThe `fromdateiso8601` builtin parses datetimes in the ISO 8601\nformat to a number of seconds since the Unix epoch\n(1970-01-01T00:00:00Z).  The `todateiso8601` builtin does the\ninverse.\n\nThe `fromdate` builtin parses datetime strings.  Currently\n`fromdate` only supports ISO 8601 datetime strings, but in the\nfuture it will attempt to parse datetime strings in more\nformats.\n\nThe `todate` builtin is an alias for `todateiso8601`.\n\nThe `now` builtin outputs the current time, in seconds since\nthe Unix epoch.\n\nLow-level jq interfaces to the C-library time functions are\nalso provided: `strptime`, `strftime`, `strflocaltime`,\n`mktime`, `gmtime`, and `localtime`.  Refer to your host\noperating system's documentation for the format strings used\nby `strptime` and `strftime`.  Note: these are not necessarily\nstable interfaces in jq, particularly as to their localization\nfunctionality.\n\nThe `gmtime` builtin consumes a number of seconds since the\nUnix epoch and outputs a \"broken down time\" representation of\nGreenwich Mean Time as an array of numbers representing\n(in this order): the year, the month (zero-based), the day of\nthe month (one-based), the hour of the day, the minute of the\nhour, the second of the minute, the day of the week, and the\nday of the year -- all one-based unless otherwise stated.  The\nday of the week number may be wrong on some systems for dates\nbefore March 1st 1900, or after December 31 2099.\n\nThe `localtime` builtin works like the `gmtime` builtin, but\nusing the local timezone setting.\n\nThe `mktime` builtin consumes \"broken down time\"\nrepresentations of time output by `gmtime` and `strptime`.\n\nThe `strptime(fmt)` builtin parses input strings matching the\n`fmt` argument.  The output is in the \"broken down time\"\nrepresentation consumed by `mktime` and output by `gmtime`.\n\nThe `strftime(fmt)` builtin formats a time (GMT) with the\ngiven format.  The `strflocaltime` does the same, but using\nthe local timezone setting.\n\nThe format strings for `strptime` and `strftime` are described\nin typical C library documentation.  The format string for ISO\n8601 datetime is `\"%Y-%m-%dT%H:%M:%SZ\"`.\n\njq may not support some or all of this date functionality on\nsome systems. In particular, the `%u` and `%j` specifiers for\n`strptime(fmt)` are not supported on macOS.\n",
+      "examples": [
+        {
+          "program": "fromdate",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "1425599507"
+          ]
+        },
+        {
+          "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "[2015,2,5,23,51,47,4,63]"
+          ]
+        },
+        {
+          "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")|mktime",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "1425599507"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SQL-Style Operators",
+      "body": "\njq provides a few SQL-style operators.\n\n* `INDEX(stream; index_expression)`:\n\n  This builtin produces an object whose keys are computed by\n  the given index expression applied to each value from the\n  given stream.\n\n* `JOIN($idx; stream; idx_expr; join_expr)`:\n\n  This builtin joins the values from the given stream to the\n  given index.  The index's keys are computed by applying the\n  given index expression to each value from the given stream.\n  An array of the value in the stream and the corresponding\n  value from the index is fed to the given join expression to\n  produce each result.\n\n* `JOIN($idx; stream; idx_expr)`:\n\n  Same as `JOIN($idx; stream; idx_expr; .)`.\n\n* `JOIN($idx; idx_expr)`:\n\n  This builtin joins the input `.` to the given index, applying\n  the given index expression to `.` to compute the index key.\n  The join operation is as described above.\n\n* `IN(s)`:\n\n  This builtin outputs `true` if `.` appears in the given\n  stream, otherwise it outputs `false`.\n\n* `IN(source; s)`:\n\n  This builtin outputs `true` if any value in the source stream\n  appears in the second stream, otherwise it outputs `false`.\n"
+    },
+    {
+      "title": "`builtins`",
+      "body": "\nReturns a list of all builtin functions in the format `name/arity`.\nSince functions with the same name but different arities are considered\nseparate functions, `all/0`, `all/1`, and `all/2` would all be present\nin the list.\n"
+    }
+  ]
+}

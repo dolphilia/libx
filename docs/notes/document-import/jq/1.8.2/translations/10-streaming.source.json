@@ -1,0 +1,46 @@
+{
+  "title": "Streaming",
+  "body": "\nWith the `--stream` option jq can parse input texts in a streaming\nfashion, allowing jq programs to start processing large JSON texts\nimmediately rather than after the parse completes.  If you have a\nsingle JSON text that is 1GB in size, streaming it will allow you\nto process it much more quickly.\n\nHowever, streaming isn't easy to deal with as the jq program will\nhave `[<path>, <leaf-value>]` (and a few other forms) as inputs.\n\nSeveral builtins are provided to make handling streams easier.\n\nThe examples below use the streamed form of `[\"a\",[\"b\"]]`, which is\n`[[0],\"a\"],[[1,0],\"b\"],[[1,0]],[[1]]`.\n\nStreaming forms include `[<path>, <leaf-value>]` (to indicate any\nscalar value, empty array, or empty object), and `[<path>]` (to\nindicate the end of an array or object).  Future versions of jq\nrun with `--stream` and `--seq` may output additional forms such\nas `[\"error message\"]` when an input text fails to parse.\n",
+  "entries": [
+    {
+      "title": "`truncate_stream(stream_expression)`",
+      "body": "\nConsumes a number as input and truncates the corresponding\nnumber of path elements from the left of the outputs of the\ngiven streaming expression.\n",
+      "examples": [
+        {
+          "program": "truncate_stream([[0],\"a\"],[[1,0],\"b\"],[[1,0]],[[1]])",
+          "input": "1",
+          "output": [
+            "[[0],\"b\"]",
+            "[[0]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`fromstream(stream_expression)`",
+      "body": "\nOutputs values corresponding to the stream expression's\noutputs.\n",
+      "examples": [
+        {
+          "program": "fromstream(1|truncate_stream([[0],\"a\"],[[1,0],\"b\"],[[1,0]],[[1]]))",
+          "input": "null",
+          "output": [
+            "[\"b\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tostream`",
+      "body": "\nThe `tostream` builtin outputs the streamed form of its input.\n",
+      "examples": [
+        {
+          "program": ". as $dot|fromstream($dot|tostream)|.==$dot",
+          "input": "[0,[1,{\"a\":1},{\"b\":2}]]",
+          "output": [
+            "true"
+          ]
+        }
+      ]
+    }
+  ]
+}

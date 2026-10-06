@@ -1,0 +1,91 @@
+{
+  "title": "Advanced features",
+  "body": "Variables are an absolute necessity in most programming languages, but\nthey're relegated to an \"advanced feature\" in jq.\n\nIn most languages, variables are the only means of passing around\ndata. If you calculate a value, and you want to use it more than once,\nyou'll need to store it in a variable. To pass a value to another part\nof the program, you'll need that part of the program to define a\nvariable (as a function parameter, object member, or whatever) in\nwhich to place the data.\n\nIt is also possible to define functions in jq, although this is\nis a feature whose biggest use is defining jq's standard library\n(many jq functions such as `map` and `select` are in fact written\nin jq).\n\njq has reduction operators, which are very powerful but a bit\ntricky.  Again, these are mostly used internally, to define some\nuseful bits of jq's standard library.\n\nIt may not be obvious at first, but jq is all about generators\n(yes, as often found in other languages).  Some utilities are\nprovided to help deal with generators.\n\nSome minimal I/O support (besides reading JSON from standard\ninput, and writing JSON to standard output) is available.\n\nFinally, there is a module/library system.\n",
+  "entries": [
+    {
+      "title": "Variable / Symbolic Binding Operator: `... as $identifier | ...`",
+      "body": "\nIn jq, all filters have an input and an output, so manual\nplumbing is not necessary to pass a value from one part of a program\nto the next. Many expressions, for instance `a + b`, pass their input\nto two distinct subexpressions (here `a` and `b` are both passed the\nsame input), so variables aren't usually necessary in order to use a\nvalue twice.\n\nFor instance, calculating the average value of an array of numbers\nrequires a few variables in most languages - at least one to hold the\narray, perhaps one for each element or for a loop counter. In jq, it's\nsimply `add / length` - the `add` expression is given the array and\nproduces its sum, and the `length` expression is given the array and\nproduces its length.\n\nSo, there's generally a cleaner way to solve most problems in jq than\ndefining variables. Still, sometimes they do make things easier, so jq\nlets you define variables using `expression as $variable`. All\nvariable names start with `$`. Here's a slightly uglier version of the\narray-averaging example:\n\n    length as $array_length | add / $array_length\n\nWe'll need a more complicated problem to find a situation where using\nvariables actually makes our lives easier.\n\n\nSuppose we have an array of blog posts, with \"author\" and \"title\"\nfields, and another object which is used to map author usernames to\nreal names. Our input looks like:\n\n    {\"posts\": [{\"title\": \"First post\", \"author\": \"anon\"},\n               {\"title\": \"A well-written article\", \"author\": \"person1\"}],\n     \"realnames\": {\"anon\": \"Anonymous Coward\",\n                   \"person1\": \"Person McPherson\"}}\n\nWe want to produce the posts with the author field containing a real\nname, as in:\n\n    {\"title\": \"First post\", \"author\": \"Anonymous Coward\"}\n    {\"title\": \"A well-written article\", \"author\": \"Person McPherson\"}\n\nWe use a variable, `$names`, to store the realnames object, so that we\ncan refer to it later when looking up author usernames:\n\n    .realnames as $names | .posts[] | {title, author: $names[.author]}\n\nThe expression `exp as $x | ...` means: for each value of expression\n`exp`, run the rest of the pipeline with the entire original input, and\nwith `$x` set to that value.  Thus `as` functions as something of a\nforeach loop.\n\nJust as `{foo}` is a handy way of writing `{foo: .foo}`, so\n`{$foo}` is a handy way of writing `{foo: $foo}`.\n\nMultiple variables may be declared using a single `as` expression by\nproviding a pattern that matches the structure of the input\n(this is known as \"destructuring\"):\n\n    . as {realnames: $names, posts: [$first, $second]} | ...\n\nThe variable declarations in array patterns (e.g., `. as\n[$first, $second]`) bind to the elements of the array in from\nthe element at index zero on up, in order.  When there is no\nvalue at the index for an array pattern element, `null` is\nbound to that variable.\n\nVariables are scoped over the rest of the expression that defines\nthem, so\n\n    .realnames as $names | (.posts[] | {title, author: $names[.author]})\n\nwill work, but\n\n    (.realnames as $names | .posts[]) | {title, author: $names[.author]}\n\nwon't.\n\nFor programming language theorists, it's more accurate to\nsay that jq variables are lexically-scoped bindings.  In\nparticular there's no way to change the value of a binding;\none can only setup a new binding with the same name, but which\nwill not be visible where the old one was.\n",
+      "examples": [
+        {
+          "program": ".bar as $x | .foo | . + $x",
+          "input": "{\"foo\":10, \"bar\":200}",
+          "output": [
+            "210"
+          ]
+        },
+        {
+          "program": ". as $i|[(.*2|. as $i| $i), $i]",
+          "input": "5",
+          "output": [
+            "[10,5]"
+          ]
+        },
+        {
+          "program": ". as [$a, $b, {c: $c}] | $a + $b + $c",
+          "input": "[2, 3, {\"c\": 4, \"d\": 5}]",
+          "output": [
+            "9"
+          ]
+        },
+        {
+          "program": ".[] as [$a, $b] | {a: $a, b: $b}",
+          "input": "[[0], [0, 1], [2, 1, 0]]",
+          "output": [
+            "{\"a\":0,\"b\":null}",
+            "{\"a\":0,\"b\":1}",
+            "{\"a\":2,\"b\":1}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Destructuring Alternative Operator: `?//`",
+      "body": "\nThe destructuring alternative operator provides a concise mechanism\nfor destructuring an input that can take one of several forms.\n\nSuppose we have an API that returns a list of resources and events\nassociated with them, and we want to get the user_id and timestamp of\nthe first event for each resource. The API (having been clumsily\nconverted from XML) will only wrap the events in an array if the resource\nhas multiple events:\n\n    {\"resources\": [{\"id\": 1, \"kind\": \"widget\", \"events\": {\"action\": \"create\", \"user_id\": 1, \"ts\": 13}},\n                   {\"id\": 2, \"kind\": \"widget\", \"events\": [{\"action\": \"create\", \"user_id\": 1, \"ts\": 14}, {\"action\": \"destroy\", \"user_id\": 1, \"ts\": 15}]}]}\n\nWe can use the destructuring alternative operator to handle this structural change simply:\n\n    .resources[] as {$id, $kind, events: {$user_id, $ts}} ?// {$id, $kind, events: [{$user_id, $ts}]} | {$user_id, $kind, $id, $ts}\n\nOr, if we aren't sure if the input is an array of values or an object:\n\n    .[] as [$id, $kind, $user_id, $ts] ?// {$id, $kind, $user_id, $ts} | ...\n\nEach alternative need not define all of the same variables, but all named\nvariables will be available to the subsequent expression. Variables not\nmatched in the alternative that succeeded will be `null`:\n\n    .resources[] as {$id, $kind, events: {$user_id, $ts}} ?// {$id, $kind, events: [{$first_user_id, $first_ts}]} | {$user_id, $first_user_id, $kind, $id, $ts, $first_ts}\n\nAdditionally, if the subsequent expression returns an error, the\nalternative operator will attempt to try the next binding. Errors\nthat occur during the final alternative are passed through.\n\n    [[3]] | .[] as [$a] ?// [$b] | if $a != null then error(\"err: \\($a)\") else {$a,$b} end\n",
+      "examples": [
+        {
+          "program": ".[] as {$a, $b, c: {$d, $e}} ?// {$a, $b, c: [{$d, $e}]} | {$a, $b, $d, $e}",
+          "input": "[{\"a\": 1, \"b\": 2, \"c\": {\"d\": 3, \"e\": 4}}, {\"a\": 1, \"b\": 2, \"c\": [{\"d\": 3, \"e\": 4}]}]",
+          "output": [
+            "{\"a\":1,\"b\":2,\"d\":3,\"e\":4}",
+            "{\"a\":1,\"b\":2,\"d\":3,\"e\":4}"
+          ]
+        },
+        {
+          "program": ".[] as {$a, $b, c: {$d}} ?// {$a, $b, c: [{$e}]} | {$a, $b, $d, $e}",
+          "input": "[{\"a\": 1, \"b\": 2, \"c\": {\"d\": 3, \"e\": 4}}, {\"a\": 1, \"b\": 2, \"c\": [{\"d\": 3, \"e\": 4}]}]",
+          "output": [
+            "{\"a\":1,\"b\":2,\"d\":3,\"e\":null}",
+            "{\"a\":1,\"b\":2,\"d\":null,\"e\":4}"
+          ]
+        },
+        {
+          "program": ".[] as [$a] ?// [$b] | if $a != null then error(\"err: \\($a)\") else {$a,$b} end",
+          "input": "[[3]]",
+          "output": [
+            "{\"a\":null,\"b\":3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Defining Functions",
+      "body": "\nYou can give a filter a name using \"def\" syntax:\n\n    def increment: . + 1;\n\nFrom then on, `increment` is usable as a filter just like a\nbuiltin function (in fact, this is how many of the builtins\nare defined). A function may take arguments:\n\n    def map(f): [.[] | f];\n\nArguments are passed as _filters_ (functions with no\narguments), _not_ as values. The same argument may be\nreferenced multiple times with different inputs (here `f` is\nrun for each element of the input array).  Arguments to a\nfunction work more like callbacks than like value arguments.\nThis is important to understand.  Consider:\n\n    def foo(f): f|f;\n    5|foo(.*2)\n\nThe result will be 20 because `f` is `.*2`, and during the\nfirst invocation of `f` `.` will be 5, and the second time it\nwill be 10 (5 * 2), so the result will be 20.  Function\narguments are filters, and filters expect an input when\ninvoked.\n\nIf you want the value-argument behaviour for defining simple\nfunctions, you can just use a variable:\n\n    def addvalue(f): f as $f | map(. + $f);\n\nOr use the short-hand:\n\n    def addvalue($f): ...;\n\nWith either definition, `addvalue(.foo)` will add the current\ninput's `.foo` field to each element of the array.  Do note\nthat calling `addvalue(.[])` will cause the `map(. + $f)` part\nto be evaluated once per value in the value of `.` at the call\nsite.\n\nMultiple definitions using the same function name are allowed.\nEach re-definition replaces the previous one for the same\nnumber of function arguments, but only for references from\nfunctions (or main program) subsequent to the re-definition.\nSee also the section below on scoping.\n",
+      "examples": [
+        {
+          "program": "def addvalue(f): . + [f]; map(addvalue(.[0]))",
+          "input": "[[1,2],[10,20]]",
+          "output": [
+            "[[1,2,1], [10,20,10]]"
+          ]
+        },
+        {
+          "program": "def addvalue(f): f as $x | map(. + $x); addvalue(.[0])",
+          "input": "[[1,2],[10,20]]",
+          "output": [
+            "[[1,2,1,2], [10,20,1,2]]"
+          ]
+        }
+      ]
+    }
+  ]
+}

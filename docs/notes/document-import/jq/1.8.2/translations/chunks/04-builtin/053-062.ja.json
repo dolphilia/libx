@@ -1,0 +1,171 @@
+{
+  "entryStart": 53,
+  "entries": [
+    {
+      "title": "`explode`",
+      "body": "\n入力文字列を、その文字列のコードポイントの数値からなる配列に変換します。\n",
+      "examples": [
+        {
+          "program": "explode",
+          "input": "\"foobar\"",
+          "output": [
+            "[102,111,111,98,97,114]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`implode`",
+      "body": "\nexplodeの逆の操作です。\n",
+      "examples": [
+        {
+          "program": "implode",
+          "input": "[65, 66, 67]",
+          "output": [
+            "\"ABC\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`split(str)`",
+      "body": "\n区切り文字の引数を使って、入力文字列を分割します。\n\n`split` は、引数を2つ指定して呼び出すと、正規表現の一致箇所でも分割できます。後述の正規表現の節を参照してください。\n",
+      "examples": [
+        {
+          "program": "split(\", \")",
+          "input": "\"a, b,c,d, e, \"",
+          "output": [
+            "[\"a\",\"b,c,d\",\"e\",\"\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`join(str)`",
+      "body": "\n入力として与えられた要素の配列を、引数を区切り文字として使って結合します。これは `split` の逆の操作です。つまり、任意の入力文字列に対して `split(\"foo\") | join(\"foo\")` を実行すると、その入力文字列が返ります。\n\n入力内の数値と真偽値は文字列に変換されます。nullの値は空文字列として扱われます。入力内の配列とオブジェクトには対応していません。\n",
+      "examples": [
+        {
+          "program": "join(\", \")",
+          "input": "[\"a\",\"b,c,d\",\"e\"]",
+          "output": [
+            "\"a, b,c,d, e\""
+          ]
+        },
+        {
+          "program": "join(\" \")",
+          "input": "[\"a\",1,2.3,true,null,false]",
+          "output": [
+            "\"a 1 2.3 true  false\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`ascii_downcase`, `ascii_upcase`",
+      "body": "\n入力文字列のコピーを出力し、英字（a-zとA-Z）を指定した大文字または小文字に変換します。\n",
+      "examples": [
+        {
+          "program": "ascii_upcase",
+          "input": "\"useful but not for é\"",
+          "output": [
+            "\"USEFUL BUT NOT FOR é\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`while(cond; update)`",
+      "body": "\n関数 `while(cond; update)` は、`.` に更新を繰り返し適用し、`cond` がfalseになるまで続けます。\n\n`while(cond; update)` は、内部では再帰的なjq関数として定義されています。`while` 内の再帰呼び出しは、`update` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。\n",
+      "examples": [
+        {
+          "program": "[while(.<100; .*2)]",
+          "input": "1",
+          "output": [
+            "[1,2,4,8,16,32,64]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`repeat(exp)`",
+      "body": "\n関数 `repeat(exp)` は、式 `exp` を `.` に繰り返し適用し、エラーが発生するまで続けます。\n\n`repeat(exp)` は、内部では再帰的なjq関数として定義されています。`repeat` 内の再帰呼び出しは、`exp` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。\n",
+      "examples": [
+        {
+          "program": "[repeat(.*2, error)?]",
+          "input": "1",
+          "output": [
+            "[2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`until(cond; next)`",
+      "body": "\n関数 `until(cond; next)` は、式 `next` を繰り返し適用します。最初は `.` に、その後は式自身の出力に適用し、`cond` がtrueになるまで続けます。たとえば、階乗関数の実装に使えます。以下を参照してください。\n\n`until(cond; next)` は、内部では再帰的なjq関数として定義されています。`until()` 内の再帰呼び出しは、`next` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。\n",
+      "examples": [
+        {
+          "program": "[.,1]|until(.[0] < 1; [.[0] - 1, .[1] * .[0]])|.[1]",
+          "input": "4",
+          "output": [
+            "24"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`recurse(f)`, `recurse`, `recurse(f; condition)`",
+      "body": "\n関数 `recurse(f)` は、再帰的な構造を探索し、すべての階層から必要なデータを抽出できます。入力が次のようなファイルシステムを表すとします。\n\n    {\"name\": \"/\", \"children\": [\n      {\"name\": \"/bin\", \"children\": [\n        {\"name\": \"/bin/ls\", \"children\": []},\n        {\"name\": \"/bin/sh\", \"children\": []}]},\n      {\"name\": \"/home\", \"children\": [\n        {\"name\": \"/home/stephen\", \"children\": [\n          {\"name\": \"/home/stephen/jq\", \"children\": []}]}]}]}\n\n存在するすべてのファイル名を抽出したいとします。`.name`、`.children[].name`、`.children[].children[].name`、というように取得する必要があります。これは次の式で行えます。\n\n    recurse(.children[]) | .name\n\n引数なしで呼び出した `recurse` は、`recurse(.[]?)` と同じです。\n\n`recurse(f)` は `recurse(f; true)` と同じで、再帰の深さを気にせずに使えます。\n\n`recurse(f; condition)` は、まず.を出力し、その後は計算した値が条件を満たす限り、.|f、.|f|f、.|f|f|f、…と順に出力するジェネレーターです。たとえば、少なくとも原理的には、`recurse(.+1; true)` と書けば、すべての整数を生成できます。\n\n`recurse` 内の再帰呼び出しは、`f` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。\n",
+      "examples": [
+        {
+          "program": "recurse(.foo[])",
+          "input": "{\"foo\":[{\"foo\": []}, {\"foo\":[{\"foo\":[]}]}]}",
+          "output": [
+            "{\"foo\":[{\"foo\":[]},{\"foo\":[{\"foo\":[]}]}]}",
+            "{\"foo\":[]}",
+            "{\"foo\":[{\"foo\":[]}]}",
+            "{\"foo\":[]}"
+          ]
+        },
+        {
+          "program": "recurse",
+          "input": "{\"a\":0,\"b\":[1]}",
+          "output": [
+            "{\"a\":0,\"b\":[1]}",
+            "0",
+            "[1]",
+            "1"
+          ]
+        },
+        {
+          "program": "recurse(. * .; . < 20)",
+          "input": "2",
+          "output": [
+            "2",
+            "4",
+            "16"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`walk(f)`",
+      "body": "\n関数 `walk(f)` は、入力の各構成要素にfを再帰的に適用します。配列に出会うと、まずその要素にfを適用し、その後に配列自体に適用します。オブジェクトに出会うと、まずすべての値にfを適用し、その後にオブジェクトに適用します。実際には、以下の例のように、fは通常、入力の型を調べます。最初の例は、配列の配列について、配列自体を処理する前に要素を処理することの便利さを示します。2番目の例は、入力内のすべてのオブジェクトのすべてのキーを、変更の対象にできることを示します。\n",
+      "examples": [
+        {
+          "program": "walk(if type == \"array\" then sort else . end)",
+          "input": "[[4, 1, 7], [8, 5, 2], [3, 6, 9]]",
+          "output": [
+            "[[1,4,7],[2,5,8],[3,6,9]]"
+          ]
+        },
+        {
+          "program": "walk( if type == \"object\" then with_entries( .key |= sub( \"^_+\"; \"\") ) else . end )",
+          "input": "[ { \"_a\": { \"__b\": 2 } } ]",
+          "output": [
+            "[{\"a\":{\"b\":2}}]"
+          ]
+        }
+      ]
+    }
+  ]
+}

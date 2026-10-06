@@ -1,0 +1,26 @@
+{
+  "title": "Modules",
+  "body": "\njq has a library/module system.  Modules are files whose names end\nin `.jq`.\n\nModules imported by a program are searched for in a default search\npath (see below).  The `import` and `include` directives allow the\nimporter to alter this path.\n\nPaths in the search path are subject to various substitutions.\n\nFor paths starting with `~/`, the user's home directory is\nsubstituted for `~`.\n\nFor paths starting with `$ORIGIN/`, the directory where the jq\nexecutable is located is substituted for `$ORIGIN`.\n\nFor paths starting with `./` or paths that are `.`, the path of\nthe including file is substituted for `.`.  For top-level programs\ngiven on the command-line, the current directory is used.\n\nImport directives can optionally specify a search path to which\nthe default is appended.\n\nThe default search path is the search path given to the `-L`\ncommand-line option, else `[\"~/.jq\", \"$ORIGIN/../lib/jq\",\n\"$ORIGIN/../lib\"]`.\n\nNull and empty string path elements terminate search path\nprocessing.\n\nA dependency with relative path `foo/bar` would be searched for in\n`foo/bar.jq` and `foo/bar/bar.jq` in the given search path. This\nis intended to allow modules to be placed in a directory along\nwith, for example, version control files, README files, and so on,\nbut also to allow for single-file modules.\n\nConsecutive components with the same name are not allowed to avoid\nambiguities (e.g., `foo/foo`).\n\nFor example, with `-L$HOME/.jq` a module `foo` can be found in\n`$HOME/.jq/foo.jq` and `$HOME/.jq/foo/foo.jq`.\n\nIf `.jq` exists in the user's home directory, and is a file (not a\ndirectory), it is automatically sourced into the main program.\n",
+  "entries": [
+    {
+      "title": "`import RelativePathString as NAME [<metadata>];`",
+      "body": "\nImports a module found at the given path relative to a\ndirectory in a search path.  A `.jq` suffix will be added to\nthe relative path string.  The module's symbols are prefixed\nwith `NAME::`.\n\nThe optional metadata must be a constant jq expression.  It\nshould be an object with keys like `homepage` and so on.  At\nthis time jq only uses the `search` key/value of the metadata.\nThe metadata is also made available to users via the\n`modulemeta` builtin.\n\nThe `search` key in the metadata, if present, should have a\nstring or array value (array of strings); this is the search\npath to be prefixed to the top-level search path.\n"
+    },
+    {
+      "title": "`include RelativePathString [<metadata>];`",
+      "body": "\nImports a module found at the given path relative to a\ndirectory in a search path as if it were included in place.  A\n`.jq` suffix will be added to the relative path string.  The\nmodule's symbols are imported into the caller's namespace as\nif the module's content had been included directly.\n\nThe optional metadata must be a constant jq expression.  It\nshould be an object with keys like `homepage` and so on.  At\nthis time jq only uses the `search` key/value of the metadata.\nThe metadata is also made available to users via the\n`modulemeta` builtin.\n"
+    },
+    {
+      "title": "`import RelativePathString as $NAME [<metadata>];`",
+      "body": "\nImports a JSON file found at the given path relative to a\ndirectory in a search path.  A `.json` suffix will be added to\nthe relative path string.  The file's data will be available\nas `$NAME::NAME`.\n\nThe optional metadata must be a constant jq expression.  It\nshould be an object with keys like `homepage` and so on.  At\nthis time jq only uses the `search` key/value of the metadata.\nThe metadata is also made available to users via the\n`modulemeta` builtin.\n\nThe `search` key in the metadata, if present, should have a\nstring or array value (array of strings); this is the search\npath to be prefixed to the top-level search path.\n"
+    },
+    {
+      "title": "`module <metadata>;`",
+      "body": "\nThis directive is entirely optional.  It's not required for\nproper operation.  It serves only the purpose of providing\nmetadata that can be read with the `modulemeta` builtin.\n\nThe metadata must be a constant jq expression.  It should be\nan object with keys like `homepage`.  At this time jq doesn't\nuse this metadata, but it is made available to users via the\n`modulemeta` builtin.\n"
+    },
+    {
+      "title": "`modulemeta`",
+      "body": "\nTakes a module name as input and outputs the module's metadata\nas an object, with the module's imports (including metadata)\nas an array value for the `deps` key and the module's defined\nfunctions as an array value for the `defs` key.\n\nPrograms can use this to query a module's metadata, which they\ncould then use to, for example, search for, download, and\ninstall missing dependencies.\n"
+    }
+  ]
+}

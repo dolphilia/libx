@@ -1,0 +1,171 @@
+{
+  "entryStart": 53,
+  "entries": [
+    {
+      "title": "`explode`",
+      "body": "\nConverts an input string into an array of the string's\ncodepoint numbers.\n",
+      "examples": [
+        {
+          "program": "explode",
+          "input": "\"foobar\"",
+          "output": [
+            "[102,111,111,98,97,114]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`implode`",
+      "body": "\nThe inverse of explode.\n",
+      "examples": [
+        {
+          "program": "implode",
+          "input": "[65, 66, 67]",
+          "output": [
+            "\"ABC\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`split(str)`",
+      "body": "\nSplits an input string on the separator argument.\n\n`split` can also split on regex matches when called with\ntwo arguments (see the regular expressions section below).\n",
+      "examples": [
+        {
+          "program": "split(\", \")",
+          "input": "\"a, b,c,d, e, \"",
+          "output": [
+            "[\"a\",\"b,c,d\",\"e\",\"\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`join(str)`",
+      "body": "\nJoins the array of elements given as input, using the\nargument as separator. It is the inverse of `split`: that is,\nrunning `split(\"foo\") | join(\"foo\")` over any input string\nreturns said input string.\n\nNumbers and booleans in the input are converted to strings.\nNull values are treated as empty strings. Arrays and objects\nin the input are not supported.\n",
+      "examples": [
+        {
+          "program": "join(\", \")",
+          "input": "[\"a\",\"b,c,d\",\"e\"]",
+          "output": [
+            "\"a, b,c,d, e\""
+          ]
+        },
+        {
+          "program": "join(\" \")",
+          "input": "[\"a\",1,2.3,true,null,false]",
+          "output": [
+            "\"a 1 2.3 true  false\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`ascii_downcase`, `ascii_upcase`",
+      "body": "\nEmit a copy of the input string with its alphabetic characters (a-z and A-Z)\nconverted to the specified case.\n",
+      "examples": [
+        {
+          "program": "ascii_upcase",
+          "input": "\"useful but not for é\"",
+          "output": [
+            "\"USEFUL BUT NOT FOR é\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`while(cond; update)`",
+      "body": "\nThe `while(cond; update)` function allows you to repeatedly\napply an update to `.` until `cond` is false.\n\nNote that `while(cond; update)` is internally defined as a\nrecursive jq function.  Recursive calls within `while` will\nnot consume additional memory if `update` produces at most one\noutput for each input.  See advanced topics below.\n",
+      "examples": [
+        {
+          "program": "[while(.<100; .*2)]",
+          "input": "1",
+          "output": [
+            "[1,2,4,8,16,32,64]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`repeat(exp)`",
+      "body": "\nThe `repeat(exp)` function allows you to repeatedly\napply expression `exp` to `.` until an error is raised.\n\nNote that `repeat(exp)` is internally defined as a\nrecursive jq function.  Recursive calls within `repeat` will\nnot consume additional memory if `exp` produces at most one\noutput for each input.  See advanced topics below.\n",
+      "examples": [
+        {
+          "program": "[repeat(.*2, error)?]",
+          "input": "1",
+          "output": [
+            "[2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`until(cond; next)`",
+      "body": "\nThe `until(cond; next)` function allows you to repeatedly\napply the expression `next`, initially to `.` then to its own\noutput, until `cond` is true.  For example, this can be used\nto implement a factorial function (see below).\n\nNote that `until(cond; next)` is internally defined as a\nrecursive jq function.  Recursive calls within `until()` will\nnot consume additional memory if `next` produces at most one\noutput for each input.  See advanced topics below.\n",
+      "examples": [
+        {
+          "program": "[.,1]|until(.[0] < 1; [.[0] - 1, .[1] * .[0]])|.[1]",
+          "input": "4",
+          "output": [
+            "24"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`recurse(f)`, `recurse`, `recurse(f; condition)`",
+      "body": "\nThe `recurse(f)` function allows you to search through a\nrecursive structure, and extract interesting data from all\nlevels. Suppose your input represents a filesystem:\n\n    {\"name\": \"/\", \"children\": [\n      {\"name\": \"/bin\", \"children\": [\n        {\"name\": \"/bin/ls\", \"children\": []},\n        {\"name\": \"/bin/sh\", \"children\": []}]},\n      {\"name\": \"/home\", \"children\": [\n        {\"name\": \"/home/stephen\", \"children\": [\n          {\"name\": \"/home/stephen/jq\", \"children\": []}]}]}]}\n\nNow suppose you want to extract all of the filenames\npresent. You need to retrieve `.name`, `.children[].name`,\n`.children[].children[].name`, and so on. You can do this\nwith:\n\n    recurse(.children[]) | .name\n\nWhen called without an argument, `recurse` is equivalent to\n`recurse(.[]?)`.\n\n`recurse(f)` is identical to `recurse(f; true)` and can be\nused without concerns about recursion depth.\n\n`recurse(f; condition)` is a generator which begins by\nemitting . and then emits in turn .|f, .|f|f, .|f|f|f, ...  so long\nas the computed value satisfies the condition. For example,\nto generate all the integers, at least in principle, one\ncould write `recurse(.+1; true)`.\n\nThe recursive calls in `recurse` will not consume additional\nmemory whenever `f` produces at most a single output for each\ninput.\n",
+      "examples": [
+        {
+          "program": "recurse(.foo[])",
+          "input": "{\"foo\":[{\"foo\": []}, {\"foo\":[{\"foo\":[]}]}]}",
+          "output": [
+            "{\"foo\":[{\"foo\":[]},{\"foo\":[{\"foo\":[]}]}]}",
+            "{\"foo\":[]}",
+            "{\"foo\":[{\"foo\":[]}]}",
+            "{\"foo\":[]}"
+          ]
+        },
+        {
+          "program": "recurse",
+          "input": "{\"a\":0,\"b\":[1]}",
+          "output": [
+            "{\"a\":0,\"b\":[1]}",
+            "0",
+            "[1]",
+            "1"
+          ]
+        },
+        {
+          "program": "recurse(. * .; . < 20)",
+          "input": "2",
+          "output": [
+            "2",
+            "4",
+            "16"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`walk(f)`",
+      "body": "\nThe `walk(f)` function applies f recursively to every\ncomponent of the input entity.  When an array is\nencountered, f is first applied to its elements and then to\nthe array itself; when an object is encountered, f is first\napplied to all the values and then to the object.  In\npractice, f will usually test the type of its input, as\nillustrated in the following examples.  The first example\nhighlights the usefulness of processing the elements of an\narray of arrays before processing the array itself.  The second\nexample shows how all the keys of all the objects within the\ninput can be considered for alteration.\n",
+      "examples": [
+        {
+          "program": "walk(if type == \"array\" then sort else . end)",
+          "input": "[[4, 1, 7], [8, 5, 2], [3, 6, 9]]",
+          "output": [
+            "[[1,4,7],[2,5,8],[3,6,9]]"
+          ]
+        },
+        {
+          "program": "walk( if type == \"object\" then with_entries( .key |= sub( \"^_+\"; \"\") ) else . end )",
+          "input": "[ { \"_a\": { \"__b\": 2 } } ]",
+          "output": [
+            "[{\"a\":{\"b\":2}}]"
+          ]
+        }
+      ]
+    }
+  ]
+}

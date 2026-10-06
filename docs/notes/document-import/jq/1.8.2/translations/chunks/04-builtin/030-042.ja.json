@@ -1,0 +1,252 @@
+{
+  "entryStart": 30,
+  "entries": [
+    {
+      "title": "`floor`",
+      "body": "\n関数 `floor` は、数値入力の床、つまりその値以下の最大の整数を返します。\n",
+      "examples": [
+        {
+          "program": "floor",
+          "input": "3.14159",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sqrt`",
+      "body": "\n関数 `sqrt` は、数値入力の平方根を返します。\n",
+      "examples": [
+        {
+          "program": "sqrt",
+          "input": "9",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tonumber`",
+      "body": "\n関数 `tonumber` は、入力を数値として解析します。正しい形式の文字列を対応する数値に変換し、数値はそのままにします。それ以外の入力はすべてエラーになります。\n",
+      "examples": [
+        {
+          "program": ".[] | tonumber",
+          "input": "[1, \"1\"]",
+          "output": [
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`toboolean`",
+      "body": "\n関数 `toboolean` は、入力を真偽値として解析します。正しい形式の文字列を対応する真偽値に変換し、真偽値はそのままにします。それ以外の入力はすべてエラーになります。\n",
+      "examples": [
+        {
+          "program": ".[] | toboolean",
+          "input": "[\"true\", \"false\", true, false]",
+          "output": [
+            "true",
+            "false",
+            "true",
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tostring`",
+      "body": "\n関数 `tostring` は、入力を文字列として出力します。文字列は変更せず、それ以外のすべての値はJSONエンコードします。\n",
+      "examples": [
+        {
+          "program": ".[] | tostring",
+          "input": "[1, \"1\", [1]]",
+          "output": [
+            "\"1\"",
+            "\"1\"",
+            "\"[1]\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`type`",
+      "body": "\n関数 `type` は、引数の型を文字列で返します。その文字列は、null、boolean、number、string、array、objectのいずれかです。\n",
+      "examples": [
+        {
+          "program": "map(type)",
+          "input": "[0, false, [], {}, null, \"hello\"]",
+          "output": [
+            "[\"number\", \"boolean\", \"array\", \"object\", \"null\", \"string\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`infinite`, `nan`, `isinfinite`, `isnan`, `isfinite`, `isnormal`",
+      "body": "\n一部の算術演算は、無限大や「非数」（NaN）の値を生成することがあります。組込み関数 `isinfinite` は、入力が無限大の場合に `true` を返します。組込み関数 `isnan` は、入力がNaNの場合に `true` を返します。組込み関数 `infinite` は、正の無限大の値を返します。組込み関数 `nan` はNaNを返します。組込み関数 `isnormal` は、入力が正規数の場合にtrueを返します。\n\nゼロによる除算はエラーを発生させることに注意してください。\n\n現在、無限大、NaN、非正規数を扱う算術演算のほとんどは、エラーを発生させません。\n",
+      "examples": [
+        {
+          "program": ".[] | (infinite * .) < 0",
+          "input": "[-1, 1]",
+          "output": [
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "infinite, nan | type",
+          "input": "null",
+          "output": [
+            "\"number\"",
+            "\"number\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sort`, `sort_by(path_expression)`",
+      "body": "\n関数 `sort` は、入力をソートします。入力は配列でなければなりません。値は次の順序でソートされます。\n\n* `null`\n* `false`\n* `true`\n* 数値\n* 文字列。Unicodeコードポイントの値によるアルファベット順\n* 配列。辞書式順序\n* オブジェクト\n\nオブジェクトの順序は少し複雑です。まず、キーの集合を、ソート済みの配列として比較します。キーが同じであれば、キーごとに値を比較します。\n\n`sort_by` は、オブジェクトの特定のフィールドによるソートや、任意のjqフィルターを適用したソートに使えます。`sort_by(f)` は、それぞれの要素に対する `f` の結果を比較することで、2つの要素を比較します。`f` が複数の値を生成する場合、まず最初の値を比較し、それらが等しければ2番目の値を比較する、というように続けます。\n",
+      "examples": [
+        {
+          "program": "sort",
+          "input": "[8,3,null,6]",
+          "output": [
+            "[null,3,6,8]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":10}, {\"foo\":2, \"bar\":1}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":4, \"bar\":10}]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo, .bar)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":4, \"bar\":10}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`group_by(path_expression)`",
+      "body": "\n`group_by(.foo)` は配列を入力として受け取り、同じ `.foo` フィールドを持つ要素を個別の配列にまとめます。そして、それらの配列すべてを、`.foo` フィールドの値でソートした大きな配列の要素として出力します。\n\n`.foo` の代わりに使えるのはフィールドへのアクセスだけでなく、任意のjq式です。ソート順は、前述の `sort` 関数で説明した順序と同じです。\n",
+      "examples": [
+        {
+          "program": "group_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":10}, {\"foo\":3, \"bar\":100}, {\"foo\":1, \"bar\":1}]",
+          "output": [
+            "[[{\"foo\":1, \"bar\":10}, {\"foo\":1, \"bar\":1}], [{\"foo\":3, \"bar\":100}]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`min`, `max`, `min_by(path_exp)`, `max_by(path_exp)`",
+      "body": "\n入力配列の最小または最大の要素を見つけます。\n\n関数 `min_by(path_exp)` と `max_by(path_exp)` では、調べる特定のフィールドやプロパティを指定できます。たとえば、`min_by(.foo)` は、`foo` フィールドが最小のオブジェクトを見つけます。\n",
+      "examples": [
+        {
+          "program": "min",
+          "input": "[5,4,2,7]",
+          "output": [
+            "2"
+          ]
+        },
+        {
+          "program": "max_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":14}, {\"foo\":2, \"bar\":3}]",
+          "output": [
+            "{\"foo\":2, \"bar\":3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`unique`, `unique_by(path_exp)`",
+      "body": "\n関数 `unique` は配列を入力として受け取り、同じ要素をソート順に並べ、重複を取り除いた配列を生成します。\n\n関数 `unique_by(path_exp)` は、引数を適用して得られる値ごとに、1つの要素だけを残します。`group` が生成する各グループから1つずつ要素を取り出して、配列を作ると考えてください。\n",
+      "examples": [
+        {
+          "program": "unique",
+          "input": "[1,2,5,3,5,3,1,3]",
+          "output": [
+            "[1,2,3,5]"
+          ]
+        },
+        {
+          "program": "unique_by(.foo)",
+          "input": "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 1, \"bar\": 3}, {\"foo\": 4, \"bar\": 5}]",
+          "output": [
+            "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 4, \"bar\": 5}]"
+          ]
+        },
+        {
+          "program": "unique_by(length)",
+          "input": "[\"chunky\", \"bacon\", \"kitten\", \"cicada\", \"asparagus\"]",
+          "output": [
+            "[\"bacon\", \"chunky\", \"asparagus\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`reverse`",
+      "body": "\nこの関数は、配列の要素の順序を逆にします。\n",
+      "examples": [
+        {
+          "program": "reverse",
+          "input": "[1,2,3,4]",
+          "output": [
+            "[4,3,2,1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`contains(element)`",
+      "body": "\nフィルター `contains(b)` は、bが入力に完全に含まれている場合にtrueを生成します。文字列Bが文字列Aに含まれているとは、BがAの部分文字列であることを意味します。配列Bが配列Aに含まれているとは、Bのすべての要素が、それぞれAのいずれかの要素に含まれていることを意味します。オブジェクトBがオブジェクトAに含まれているとは、Bのすべての値が、Aの同じキーに対応する値に含まれていることを意味します。それ以外の型はすべて、互いに等しい場合に、互いに含まれているとみなします。\n",
+      "examples": [
+        {
+          "program": "contains(\"bar\")",
+          "input": "\"foobar\"",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"baz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"bazzzzz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 12}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 15}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    }
+  ]
+}

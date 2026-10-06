@@ -1,0 +1,302 @@
+{
+  "status": "partial-japanese-render-fields-not-app-validation",
+  "markdownVersion": "3.10.2",
+  "inputSha256": "2309907188195edee4659ffcdd52d4a30c51d4ef3824a05bcdb9d5e259802a73",
+  "translatedPages": [
+    "00-introduction",
+    "01-invoking-jq",
+    "02-basic-filters",
+    "03-types-and-values"
+  ],
+  "missingPages": [
+    "04-builtin-operators-and-functions",
+    "05-conditionals-and-comparisons",
+    "06-regular-expressions",
+    "07-advanced-features",
+    "08-math",
+    "09-io",
+    "10-streaming",
+    "11-assignment",
+    "12-comments",
+    "13-modules",
+    "14-colors",
+    "15-manpage-appendix"
+  ],
+  "fields": [
+    {
+      "key": "body",
+      "page": "00-introduction",
+      "mode": "web-body",
+      "sourceSha256": "ad2f1be3e09b443eefe5bb6997eaa1bb2fe4da1dd470b1b5846548421a157e68",
+      "translatedSha256": "2177f85ad08675f0cc76aa38815cdb32b93e64113eb1e628c53ed5c1aa985ab2",
+      "html": "<p>jqのプログラムは「フィルター」です。入力を受け取り、出力を生成します。オブジェクトから特定のフィールドを取り出す、数値を文字列に変換するなど、さまざまな一般的な処理に使える組込みフィルターが数多くあります。</p>\n<p>フィルターはさまざまな方法で組み合わせられます。あるフィルターの出力を別のフィルターへパイプで渡したり、フィルターの出力を配列にまとめたりできます。</p>\n<p>複数の結果を生成するフィルターもあります。たとえば、入力配列のすべての要素を生成するフィルターがあります。このフィルターの出力を2つ目のフィルターへパイプで渡すと、配列の各要素に対して2つ目のフィルターが実行されます。一般に、他の言語ならループや反復処理で行うことを、jqではフィルターをつなぎ合わせるだけで行えます。</p>\n<p>どのフィルターにも入力と出力があることを覚えておくのが大切です。\"hello\"や42のようなリテラルもフィルターです。入力は受け取りますが、出力として常に同じリテラルを生成します。加算のように2つのフィルターを組み合わせる演算では、通常、両方に同じ入力を渡し、その結果を組み合わせます。したがって、平均を求めるフィルターは <code>add / length</code> と書けます。入力配列を <code>add</code> フィルターと <code>length</code> フィルターの両方へ渡してから、割り算を行うわけです。</p>\n<p>とはいえ、少し先走ってしまいました。:) もっと簡単なところから始めましょう。</p>"
+    },
+    {
+      "key": "sections/0/title",
+      "page": "01-invoking-jq",
+      "mode": "section-title",
+      "sourceSha256": "351d0bfffb5f18aaeac965e738063dbac7b0ceb56a70a3ca6e4245560222b874",
+      "translatedSha256": "73bc35ebdc5b9adebc0a4f1f84e003a2f53cd07d36543fc32095ec9da5b31ddf",
+      "html": "<h2>jqの起動</h2>"
+    },
+    {
+      "key": "sections/0/body",
+      "page": "01-invoking-jq",
+      "mode": "web-body",
+      "sourceSha256": "a7dd4abd103dbf34527565b32a4008d439796e7f58f5aaa3c657c211b36021cd",
+      "translatedSha256": "6d9937494a72ce1642c0e47a2e949b1056f9e8653c6e62b23923ab377d68f4f5",
+      "html": "<p>jqのフィルターはJSONデータのストリームを処理します。jqへの入力は、空白で区切られたJSON値の列として解析され、指定したフィルターへ1つずつ渡されます。フィルターの出力は、改行で区切られたJSONデータの列として標準出力に書き出されます。</p>\n<p>最も単純で、最もよく使われるフィルター（jqプログラム）は <code>.</code> です。これは恒等演算子で、jq処理系への入力をそのまま出力ストリームへコピーします。jq処理系は既定で入力ストリームからJSONテキストを読み取り、出力を整形するため、<code>.</code> プログラムの主な用途は入力の検証と整形です。jqのプログラミング言語には豊富な機能があり、検証や整形以外にもはるかに多くのことができます。</p>\n<p>注意：シェルの引用規則に気を配ることが大切です。一般則として、jqプログラムは常に引用符で囲むのが最善です（Unixシェルでは一重引用符を使います）。jqで特別な意味を持つ文字の多くは、シェルのメタ文字でもあるためです。たとえば、<code>jq\n\"foo\"</code> はほとんどのUnixシェルで失敗します。これは <code>jq foo</code> と同じになり、通常は <code>foo is not\ndefined</code> という理由で失敗するからです。Windowsコマンドシェル（cmd.exe）では、<code>-f program-file</code> オプションの代わりにコマンド行でjqプログラムを指定する場合、プログラムを二重引用符で囲むのが最善ですが、その場合はjqプログラム内の二重引用符をバックスラッシュでエスケープする必要があります。Powershell（<code>powershell.exe</code>）またはPowershell Core（<code>pwsh</code>/<code>pwsh.exe</code>）では、jqプログラムを一重引用符で囲み、プログラム内の二重引用符をバックスラッシュでエスケープ（<code>\\\"</code>）してください。</p>\n<ul>\n<li>Unixシェル：<code>jq '.[\"foo\"]'</code></li>\n<li>Powershell：<code>jq '.[\\\"foo\\\"]'</code></li>\n<li>Windowsコマンドシェル：<code>jq \".[\\\"foo\\\"]\"</code></li>\n</ul>\n<p>注意：jqではユーザー定義関数を使えますが、すべてのjqプログラムにはトップレベルの式が必要です。</p>\n<p>コマンド行オプションを使って、jqによる入出力の読み書きの方法を変更できます。</p>\n<ul>\n<li><code>--null-input</code> / <code>-n</code>:</li>\n</ul>\n<p>入力を一切読み取りません。代わりに、<code>null</code> を入力としてフィルターを1回実行します。jqを簡単な計算機として使う場合や、JSONデータを一から構築する場合に便利です。</p>\n<ul>\n<li><code>--raw-input</code> / <code>-R</code>:</li>\n</ul>\n<p>入力をJSONとして解析しません。代わりに、テキストの各行を文字列としてフィルターへ渡します。<code>--slurp</code> と組み合わせると、入力全体を1つの長い文字列としてフィルターへ渡します。</p>\n<ul>\n<li><code>--slurp</code> / <code>-s</code>:</li>\n</ul>\n<p>入力中のJSONオブジェクトごとにフィルターを実行する代わりに、入力ストリーム全体を大きな配列へ読み込み、フィルターを1回だけ実行します。</p>\n<ul>\n<li><code>--compact-output</code> / <code>-c</code>:</li>\n</ul>\n<p>jqは既定でJSON出力を整形します。このオプションを使うと、各JSONオブジェクトを1行にまとめ、よりコンパクトに出力します。</p>\n<ul>\n<li><code>--raw-output</code> / <code>-r</code>:</li>\n</ul>\n<p>このオプションを使うと、フィルターの結果が文字列の場合、引用符付きのJSON文字列に整形せず、そのまま標準出力に書き出します。jqフィルターをJSONを使わないシステムと連携させる場合に便利です。</p>\n<ul>\n<li><code>--raw-output0</code>:</li>\n</ul>\n<p><code>-r</code> と同様ですが、各出力の後に改行ではなくNULを出力します。出力する値に改行が含まれる場合に便利です。出力値にNULが含まれる場合、jqは0以外のコードで終了します。</p>\n<ul>\n<li><code>--join-output</code> / <code>-j</code>:</li>\n</ul>\n<p><code>-r</code> と同様ですが、各出力の後に改行を出力しません。</p>\n<ul>\n<li><code>--ascii-output</code> / <code>-a</code>:</li>\n</ul>\n<p>jqは通常、ASCII以外のUnicodeコードポイントをUTF-8で出力します。入力でエスケープシーケンス（\"\\u03bc\"など）を使って指定した場合も同様です。このオプションを使うと、ASCII以外の各文字を対応するエスケープシーケンスに置き換え、ASCIIだけで出力するよう強制できます。</p>\n<ul>\n<li><code>--sort-keys</code> / <code>-S</code>:</li>\n</ul>\n<p>各オブジェクトのフィールドを、キーをソートした順序で出力します。</p>\n<ul>\n<li><code>--color-output</code> / <code>-C</code> と <code>--monochrome-output</code> / <code>-M</code>:</li>\n</ul>\n<p>jqは既定で、端末に書き出す場合にJSONを色付きで出力します。<code>-C</code> を使うと、パイプやファイルに書き出す場合でも色付きの出力を強制でき、<code>-M</code> で色を無効にできます。環境変数 <code>NO_COLOR</code> が空でない場合、jqは既定で色付きの出力を無効にしますが、<code>-C</code> で有効にできます。</p>\n<p>色は環境変数 <code>JQ_COLORS</code> で設定できます（後述）。</p>\n<ul>\n<li><code>--tab</code>:</li>\n</ul>\n<p>インデントの各段階で、2つの空白の代わりにタブを使います。</p>\n<ul>\n<li><code>--indent n</code>:</li>\n</ul>\n<p>指定した数の空白（最大7個）でインデントします。</p>\n<ul>\n<li><code>--unbuffered</code>:</li>\n</ul>\n<p>JSONオブジェクトを出力するたびに、出力をフラッシュします（遅いデータソースをパイプでjqへ渡し、jqの出力をさらに別の場所へパイプで渡す場合に便利です）。</p>\n<ul>\n<li><code>--stream</code>:</li>\n</ul>\n<p>入力をストリーミング方式で解析し、パスと葉の値（スカラー、および空の配列や空のオブジェクト）からなる配列を出力します。たとえば、<code>\"a\"</code> は <code>[[],\"a\"]</code> になり、<code>[[],\"a\",[\"b\"]]</code> は <code>[[0],[]]</code>、<code>[[1],\"a\"]</code>、<code>[[2,0],\"b\"]</code> になります。</p>\n<p>非常に大きな入力の処理に便利です。フィルタリング、および <code>reduce</code> と <code>foreach</code> の構文と組み合わせて使うと、大きな入力を逐次的に集約できます。</p>\n<ul>\n<li><code>--stream-errors</code>:</li>\n</ul>\n<p><code>--stream</code> と同様ですが、不正なJSON入力に対して、第1要素がエラー、第2要素がパスの配列値を生成します。たとえば、<code>[\"a\",n]</code> は <code>[\"Invalid literal at line 1,\n  column 7\",[1]]</code> を生成します。</p>\n<p><code>--stream</code> を暗黙に有効にします。<code>--stream</code> を使い、<code>--stream-errors</code> を付けなかった場合、不正なJSON入力に対してエラー値は生成されません。</p>\n<ul>\n<li><code>--seq</code>:</li>\n</ul>\n<p>jqの入出力でJSONテキストを区切るために、MIMEタイプ <code>application/json-seq</code> の方式を使います。つまり、出力の各値の前にASCIIのRS（レコード区切り）文字を、各出力の後にASCIIのLF（改行）を出力します。解析に失敗した入力JSONテキストは無視されますが警告が出され、次のRSまでの後続入力はすべて破棄されます。このモードでは、<code>--seq</code> オプションを付けずに実行したjqの出力も解析できます。</p>\n<ul>\n<li><code>-f</code> / <code>--from-file</code>:</li>\n</ul>\n<p>awkの-fオプションのように、コマンド行ではなくファイルからフィルターを読み取ります。このオプションにより、フィルター引数はプログラムのソースではなくファイル名として解釈されます。</p>\n<ul>\n<li><code>-L directory</code> / <code>--library-path directory</code>:</li>\n</ul>\n<p>モジュールの検索リストの先頭に <code>directory</code> を追加します。このオプションを使うと、組込みの検索リストは使われません。後述のモジュールの節を参照してください。</p>\n<ul>\n<li><code>--arg name value</code>:</li>\n</ul>\n<p>このオプションは、事前定義された変数として値をjqプログラムへ渡します。<code>--arg foo bar</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使え、その値は <code>\"bar\"</code> になります。<code>value</code> は文字列として扱われるため、<code>--arg foo 123</code> は <code>$foo</code> に <code>\"123\"</code> を束縛します。</p>\n<p>名前付き引数は、jqプログラム内で <code>$ARGS.named</code> としても使えます。名前が有効な識別子でない場合、それにアクセスするにはこの方法しかありません。</p>\n<ul>\n<li><code>--argjson name JSON-text</code>:</li>\n</ul>\n<p>このオプションは、JSONエンコードされた値を事前定義された変数としてjqプログラムへ渡します。<code>--argjson foo 123</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使え、その値は <code>123</code> になります。</p>\n<ul>\n<li><code>--slurpfile variable-name filename</code>:</li>\n</ul>\n<p>指定したファイル内のすべてのJSONテキストを読み取り、解析されたJSON値の配列を指定したグローバル変数へ束縛します。<code>--slurpfile foo bar</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使えます。その値は、<code>bar</code> という名前のファイル内の各テキストに対応する要素を持つ配列です。</p>\n<ul>\n<li><code>--rawfile variable-name filename</code>:</li>\n</ul>\n<p>指定したファイルを読み取り、その内容を指定したグローバル変数へ束縛します。<code>--rawfile foo bar</code> を指定してjqを実行すると、プログラム内で <code>$foo</code> を使え、その値は <code>bar</code> という名前のファイル内のテキストを内容とする文字列になります。</p>\n<ul>\n<li><code>--args</code>:</li>\n</ul>\n<p>残りの引数は、文字列の位置引数として扱われます。jqプログラム内で <code>$ARGS.positional[]</code> として使えます。</p>\n<ul>\n<li><code>--jsonargs</code>:</li>\n</ul>\n<p>残りの引数は、JSONテキストの位置引数として扱われます。jqプログラム内で <code>$ARGS.positional[]</code> として使えます。</p>\n<ul>\n<li><code>--exit-status</code> / <code>-e</code>:</li>\n</ul>\n<p>jqの終了ステータスは、最後の出力値が <code>false</code> でも <code>null</code> でもない場合に0、最後の出力値が <code>false</code> または <code>null</code> の場合に1、有効な結果が一度も生成されなかった場合に4になります。通常、使用方法の問題またはシステムエラーがあった場合には2、jqプログラムのコンパイルエラーがあった場合には3、jqプログラムが実行された場合には0で終了します。</p>\n<p>終了ステータスを設定する別の方法として、組込み関数 <code>halt_error</code> もあります。</p>\n<ul>\n<li><code>--binary</code> / <code>-b</code>:</li>\n</ul>\n<p>WSL、MSYS2、Cygwinを使うWindowsユーザーは、ネイティブのjq.exeを使う場合、このオプションを指定してください。指定しないと、jqは改行（LF）を復帰と改行の組（CRLF）へ変換します。</p>\n<ul>\n<li><code>--version</code> / <code>-V</code>:</li>\n</ul>\n<p>jqのバージョンを出力し、0で終了します。</p>\n<ul>\n<li><code>--build-configuration</code>:</li>\n</ul>\n<p>jqのビルド設定を出力し、0で終了します。この出力には、サポート対象として保証された形式や構造がなく、将来のリリースで予告なく変わる可能性があります。</p>\n<ul>\n<li><code>--help</code> / <code>-h</code>:</li>\n</ul>\n<p>jqのヘルプを出力し、0で終了します。</p>\n<ul>\n<li><code>--</code>:</li>\n</ul>\n<p>引数の処理を終了します。残りの引数はオプションとして解釈されません。</p>\n<ul>\n<li><code>--run-tests [filename]</code>:</li>\n</ul>\n<p>指定したファイルまたは標準入力内のテストを実行します。指定するオプションの最後に置く必要があり、それより前のオプションすべてに従うわけではありません。入力は、コメント行、空行、プログラム行と、それに続く1行の入力、期待する出力の数だけの出力行（出力1つにつき1行）、最後の空行で構成されます。コンパイル失敗のテストは、<code>%%FAIL</code> だけを含む行、コンパイルするプログラムを含む行、実際のエラーと比較するエラーメッセージを含む行の順で始まります。</p>\n<p>このオプションは後方互換性を保たずに変更される可能性があるので、注意してください。</p>"
+    },
+    {
+      "key": "sections/1/title",
+      "page": "02-basic-filters",
+      "mode": "section-title",
+      "sourceSha256": "60cac4263f7a19dfa5cc37be0456cbcc16948888b26b425253e6af02cddab8ef",
+      "translatedSha256": "b57ee1f15c072a1d48d15d4c8e960819fe445b4839f3893d3ecb36817dce5ccd",
+      "html": "<h2>基本フィルター</h2>"
+    },
+    {
+      "key": "sections/1/entries/0/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "3121d7a846204c2febee8e2e26b693289330707c40a582774530cf66dd012599",
+      "translatedSha256": "8a516ca4812b0aeb70f99eb2287ef1d14dae7de42c9027a99f7504dcd3f8d807",
+      "html": "<h3>恒等フィルター：<code>.</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/0/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "38274b1239440dd6835fa6366fdc85b8f6b2cdbc36d63ef9b32078551b216122",
+      "translatedSha256": "1e581b042e6dec028a830310a5a809d3a53db74eebe2853ef7a17032bfe21d73",
+      "html": "<p>最も単純なフィルターは <code>.</code> です。このフィルターは入力を受け取り、同じ値を出力します。つまり、恒等演算子です。</p>\n<p>jqは既定ですべての出力を整形するため、<code>.</code> だけからなる簡単なプログラムを使って、たとえば <code>curl</code> のJSON出力を整形できます。</p>\n<p>恒等フィルター自体は入力の値を変更しませんが、jqの処理によって、変更されたように見えることがあります。たとえば、jqの現在の実装では、次の式を評価すると、</p>\n<pre><code>1E1234567890 | .&#10;</code></pre>\n<p>少なくとも1つのプラットフォームで <code>1.7976931348623157e+308</code> が生成されます。これは、数値を解析する過程で、この特定の版のjqがIEEE754の倍精度表現へ変換し、精度が失われたためです。</p>\n<p>jqによる数値の扱いはこれまでに変化しており、今後も関連するJSON標準が定める範囲内で変化する可能性が高いと考えられます。また、ビルド設定のオプションによって、jqの数値処理の方法が変わることがあります。</p>\n<p>したがって、以下の説明は、jqの現在の版の動作を記述することを意図したものであり、動作を規定するものと解釈すべきではない、という前提で示します。</p>\n<p>(1) まだIEEE754の倍精度表現へ変換されていない数値に対して算術演算を行うと、IEEE754表現への変換が発生します。</p>\n<p>(2) jqは、数値リテラルの元の十進精度を維持しようとします（ビルド設定のオプション <code>--disable-decnum</code> が使われなかった場合）。ただし、<code>1E1234567890</code> のような式では、指数が大きすぎると精度が失われます。</p>\n<p>(3) 数値の切り詰められていない大きな十進数表現が利用できる場合、比較はその表現を使って行われます。以下の実行例の1つで、この動作を示します。</p>\n<p>以下の実行例では、組込み関数 <code>have_decnum</code> を使って、ビルド設定のオプション <code>--disable-decnum</code> を使った場合と使わなかった場合に期待される違いを示します。また、このオプションの使用の有無にかかわらず、実行例から作成した自動テストが成功するようにしています。</p>"
+    },
+    {
+      "key": "sections/1/entries/1/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "d02bedcd681d7de440f37901e348c2a312daf974d4f93fbc05614a38e404ef66",
+      "translatedSha256": "c5119a449f8b28e423731f57e2d03ee3680acbcef233683b7978ee9f47dfef62",
+      "html": "<h3>オブジェクトの識別子による索引：<code>.foo</code>、<code>.foo.bar</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/1/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "fc5482debcf9421630e8d644b57ca767100a4505e1da8c38f73b34cfbeabf849",
+      "translatedSha256": "80d07002393a83c984ecf9d4cc5f094a4c0b2965f6a5b2efc8e6db903a5bcf5f",
+      "html": "<p>最も単純で<em>役に立つ</em>フィルターは <code>.foo</code> という形式です。JSONオブジェクト（辞書やハッシュとも呼ばれます）を入力として与えると、<code>.foo</code> はキー\"foo\"が存在する場合にその値を、存在しない場合にnullを生成します。</p>\n<p><code>.foo.bar</code> という形式のフィルターは <code>.foo | .bar</code> と同じです。</p>\n<p><code>.foo</code> の構文は、単純で識別子のようなキーにだけ使えます。つまり、英数字とアンダースコアだけで構成され、数字で始まらないキーです。</p>\n<p>キーに特殊文字が含まれる場合や数字で始まる場合は、<code>.\"foo$\"</code> のように二重引用符で囲むか、<code>.[\"foo$\"]</code> を使う必要があります。</p>\n<p>たとえば、<code>.[\"foo::bar\"]</code> と <code>.[\"foo.bar\"]</code> は使えますが、<code>.foo::bar</code> は使えません。</p>"
+    },
+    {
+      "key": "sections/1/entries/2/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "eecb66aa812b8d2cbb58fc4bb311a36b337af1555fa72e664b58dc4044999ceb",
+      "translatedSha256": "692b1bd1824a4abb9ad9f11b9624b39f39888cc1d91d6e8270fb0604b8ea2c10",
+      "html": "<h3>オブジェクトの識別子による索引（エラーを抑制）：<code>.foo?</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/2/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "29efffb75031da66fa5a5074b3369790fb862015447ada4dc4c49a742993d05d",
+      "translatedSha256": "5363fe7edc7f0c0f44cb763c68be6871b95acb3543771a1c511021a29d131774",
+      "html": "<p><code>.foo</code> と同様ですが、<code>.</code> がオブジェクトでなくてもエラーを出力しません。</p>"
+    },
+    {
+      "key": "sections/1/entries/3/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "bbc8c0c5b60b04aa985f2373bf8f0c36c5787c57639f828529013cd43f402079",
+      "translatedSha256": "085fc272a612dbac175b2ca9f40f84c2bf26de5fefb5aa4e9bcf5c7893605095",
+      "html": "<h3>オブジェクトの索引：<code>.[&lt;string&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/3/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "8fff5f39d8b1d84e43f34484b757ccc4e288c5e26b812c190a4cdeebb13395ad",
+      "translatedSha256": "a0a107fd9d8f483412d116098c322f14c3c028e8230289fe32b8d42f7ce154a9",
+      "html": "<p><code>.[\"foo\"]</code> のような構文を使って、オブジェクトのフィールドを検索することもできます（前述の <code>.foo</code> はこの省略形ですが、識別子のような文字列にだけ使えます）。</p>"
+    },
+    {
+      "key": "sections/1/entries/4/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "2486bfae7395872092ecb81b74bfa31b2f1c58b5e66881821e6b91aa7d5aac6a",
+      "translatedSha256": "4321a8c86440e5d5f54bdb4132de025806239057da84ce316ad554d3d8bf86b3",
+      "html": "<h3>配列の索引：<code>.[&lt;number&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/4/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "c3ac205c3c75bfd270daaac05d7b4b809f0819ae68881c6047eb5b71c6d328d4",
+      "translatedSha256": "2bc5118027c8142e146ab3c13f483b0bf33fb82f4ef6ef0a865611743e6d7544",
+      "html": "<p>索引の値が整数の場合、<code>.[&lt;number&gt;]</code> で配列を参照できます。配列の索引は0から始まるため、<code>.[2]</code> は3番目の要素を返します。</p>\n<p>負の索引も使えます。-1は最後の要素、-2は最後から2番目の要素を指し、以下も同様です。</p>"
+    },
+    {
+      "key": "sections/1/entries/5/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "07fce2d402a36f9ad39831aebf519107f46686b33ab2856a6f772223eb39a33b",
+      "translatedSha256": "7776f5c09ce27745bc079490c99b4e88d3d36749264037a15f9ba27af619bf8f",
+      "html": "<h3>配列・文字列のスライス：<code>.[&lt;number&gt;:&lt;number&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/5/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "810c7e37958719662a2756e97c19ae5d9cb60bb2a8dc51a8651e04ae8a1e0c18",
+      "translatedSha256": "00940b994b3e3fb3ae13e1a360830a7eff04a3a24793bd55b78874adf21dcb68",
+      "html": "<p><code>.[&lt;number&gt;:&lt;number&gt;]</code> という構文を使うと、配列の部分配列や文字列の部分文字列を返せます。<code>.[10:15]</code> が返す配列の長さは5で、索引10（含む）から索引15（含まない）までの要素を含みます。どちらの索引も負の値にできます。その場合、配列の末尾から逆向きに数えます。また、どちらも省略でき、その場合は配列の先頭または末尾を指します。索引は0から始まります。</p>"
+    },
+    {
+      "key": "sections/1/entries/6/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "68078df0805f72954daf2a44ea91d19f24c70f766387b6566ab0022eafd30949",
+      "translatedSha256": "f8f63a7e583057e201800a28d19a845112c95d5f59959d0e822647f2a0194fb7",
+      "html": "<h3>配列・オブジェクトの値のイテレーター：<code>.[]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/6/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "bb14c94f84d8d3dc8e2fb6080ddfac322aae01f34cd94e645a701337f3b22717",
+      "translatedSha256": "ecae531e4453b1f357f38d247d376839367e0196b764dce4e9f7bcc268c7222d",
+      "html": "<p><code>.[index]</code> の構文で索引を完全に省略すると、配列の<em>すべて</em>の要素を返します。<code>.[]</code> を入力 <code>[1,2,3]</code> に対して実行すると、1つの配列ではなく、3つの別々の結果として数値を生成します。<code>.foo[]</code> という形式のフィルターは <code>.foo | .[]</code> と同じです。</p>\n<p>オブジェクトに対して使うこともでき、その場合はオブジェクトのすべての値を返します。</p>\n<p>このイテレーター演算子は、値のジェネレーターであることに注意してください。</p>"
+    },
+    {
+      "key": "sections/1/entries/7/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "5c0d998724a9d55020c473e937c199a355e78745cd6ed66cbecf91b9d67f1566",
+      "translatedSha256": "5c0d998724a9d55020c473e937c199a355e78745cd6ed66cbecf91b9d67f1566",
+      "html": "<h3><code>.[]?</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/7/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "e52310a6207da127dfcc5e14a3d5866a21f8fb68d61c0f4e454160c51cf694db",
+      "translatedSha256": "a1215090221adcca371c5a6038b4146f2bede60ac9ff2be02740210e52a4e700",
+      "html": "<p><code>.[]</code> と同様ですが、.が配列でもオブジェクトでもない場合も、エラーを出力しません。<code>.foo[]?</code> という形式のフィルターは <code>.foo | .[]?</code> と同じです。</p>"
+    },
+    {
+      "key": "sections/1/entries/8/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "a02b92c4788778480d0303ab13fd40803c351c5928eb4ee2ef1dad475d489991",
+      "translatedSha256": "15249aa5451451d9cca3a13e97d652ab03b0e993b07c02d4bc90e8c52527c196",
+      "html": "<h3>カンマ：<code>,</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/8/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "931120470c0faddf22675e4f2af9abec5c06d925cbc8173b34a827de3684c0e1",
+      "translatedSha256": "2cfe42569b221abc4d6f4bf1aaf0605faf0e4591b1ad964af147b7081e43ae55",
+      "html": "<p>2つのフィルターをカンマで区切ると、両方に同じ入力が渡され、2つのフィルターが出力する値のストリームが順番に連結されます。最初に左側の式が生成するすべての出力が続き、その後に右側の式が生成するすべての出力が続きます。たとえば、フィルター <code>.foo,\n.bar</code> は\"foo\"フィールドと\"bar\"フィールドの両方を、別々の出力として生成します。</p>\n<p><code>,</code> 演算子は、ジェネレーターを構築する方法の1つです。</p>"
+    },
+    {
+      "key": "sections/1/entries/9/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "6537a20612ae60226ad6e55d35a80096d3406bf6e12798aeb47787da72ed8fdd",
+      "translatedSha256": "3f2a18f3ec0f3ef2aa44c650fb75562bd9329091a7458036725c9ac07e54d472",
+      "html": "<h3>パイプ：<code>|</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/9/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "71b65cbbeb44785330837912d01cd230e99d694485e9030b4ef0c0f32bd87b32",
+      "translatedSha256": "ad2092593f710711b867d8c1815be3842b744c4212175e6f700c10e617515f52",
+      "html": "<p>|演算子は、左側のフィルターの出力を右側のフィルターの入力へ渡すことで、2つのフィルターを組み合わせます。Unixシェルのパイプに慣れていれば、それと似たものと考えられます。</p>\n<p>左側が複数の結果を生成すると、右側はそれぞれの結果に対して実行されます。したがって、式 <code>.[] | .foo</code> は入力配列の各要素から\"foo\"フィールドを取り出します。これは直積であり、意外に感じることがあります。</p>\n<p><code>.a.b.c</code> は <code>.a | .b | .c</code> と同じであることに注意してください。</p>\n<p>また、<code>.</code> は「パイプライン」の特定の段階、具体的には <code>.</code> という式が現れる位置での入力値です。したがって、<code>.a | . | .b</code> は <code>.a.b</code> と同じです。中央の <code>.</code> は、<code>.a</code> が生成した値を指すためです。</p>"
+    },
+    {
+      "key": "sections/1/entries/10/title",
+      "page": "02-basic-filters",
+      "mode": "entry-title",
+      "sourceSha256": "79280f9b979532076907fcbc556cc2d779941c233c8319a763093ef39834be75",
+      "translatedSha256": "0378fc99bcf69e02886241457dc8c29876b35ce81283b38a90e4951738e9ea33",
+      "html": "<h3>丸括弧</h3>"
+    },
+    {
+      "key": "sections/1/entries/10/body",
+      "page": "02-basic-filters",
+      "mode": "web-body",
+      "sourceSha256": "8bdaefc3154eeacbd63a9aa462ddd6124c82c1f7c400d4cb4120ed82a1f9938b",
+      "translatedSha256": "18a30a7c40db4beedbd7c2421f315a0b602613b21ed0e985b57ff479280196a6",
+      "html": "<p>丸括弧は、一般的なプログラミング言語と同様に、式をまとめる演算子として働きます。</p>"
+    },
+    {
+      "key": "sections/2/title",
+      "page": "03-types-and-values",
+      "mode": "section-title",
+      "sourceSha256": "3cbd50a298bea10bc05254979fa6eb1756a7d9cd6e0076ae549c720ac76593c4",
+      "translatedSha256": "6b3d6cbcba94c822e6dd18b69da4b01e323294e9e797a21e83498b377c7ec144",
+      "html": "<h2>型と値</h2>"
+    },
+    {
+      "key": "sections/2/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "dbae4d8d811f47d71933e237bdd453433efba8500deab3918cab5d2c84ba5716",
+      "translatedSha256": "37a701e9f4040e9cf94b1e3eed2bf951109be3f6cf463923c81efcdc41038c86",
+      "html": "<p>jqはJSONと同じデータ型を扱えます。数値、文字列、真偽値、配列、オブジェクト（JSONでは、キーが文字列だけであるハッシュを指します）、そして\"null\"です。</p>\n<p>真偽値、null、文字列、数値は、JSONと同じ形式で記述します。jqの他のすべてと同様に、これらの単純な値も入力を受け取り、出力を生成します。<code>42</code> は有効なjqの式で、入力を受け取って無視し、代わりに42を返します。</p>\n<p>jqの数値は、内部ではIEEE754の倍精度による近似値として表現されます。数値がリテラルであっても、先行するフィルターの結果であっても、数値に対する算術演算は倍精度の浮動小数点数の結果を生成します。</p>\n<p>ただし、リテラルを解析する際、jqは元のリテラル文字列を保存します。この値に変更を加えなければ、倍精度への変換で精度が失われる場合でも、元の形式のまま出力されます。</p>"
+    },
+    {
+      "key": "sections/2/entries/0/title",
+      "page": "03-types-and-values",
+      "mode": "entry-title",
+      "sourceSha256": "07554e5ae8bfdcb872d8e58fc9ceb8b9d918143131f01c13eeaff8483084efd5",
+      "translatedSha256": "d3dbcbccf46899d9526381059a39cbbd8017e315a7af1058e5847ef1e3465465",
+      "html": "<h3>配列の構築：<code>[]</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/0/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "8c2c81385b8bfac4b7e09de0dc76d84bae9f31f23102f5118baa2b389a1201b3",
+      "translatedSha256": "bf681c6e297d99316e04aee82014de4c0836f8f94b98e61ae515390f594ada7a",
+      "html": "<p>JSONと同様に、<code>[]</code> は <code>[1,2,3]</code> のように配列を構築するために使います。配列の要素には、パイプラインを含む任意のjqの式を使えます。すべての式が生成するすべての結果が、1つの大きな配列にまとめられます。<code>[.foo, .bar, .baz]</code> のように既知の個数の値から配列を構築するためにも、<code>[.items[].name]</code> のようにフィルターのすべての結果を配列へ「集める」ためにも使えます。</p>\n<p>\",\"演算子を理解すると、jqの配列構文を別の観点から見られます。式 <code>[1,2,3]</code> は、カンマ区切りの配列専用の組込み構文を使っているわけではありません。3つの別々の結果を生成する式1,2,3に、結果を集める <code>[]</code> 演算子を適用しています。</p>\n<p>4つの結果を生成するフィルター <code>X</code> がある場合、式 <code>[X]</code> は、4要素の配列という1つの結果を生成します。</p>"
+    },
+    {
+      "key": "sections/2/entries/1/title",
+      "page": "03-types-and-values",
+      "mode": "entry-title",
+      "sourceSha256": "41409b48dde9bb554c2ae4fcd92a5e3ab34c932bd89cd92394d679180e3b1ecc",
+      "translatedSha256": "c2651d390bceb51154117ea00689d5dc072153d4ebbb34e0c157d3b362ac8008",
+      "html": "<h3>オブジェクトの構築：<code>{}</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/1/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "bbf77b48c2f684dc7342b473ca77994cea048076da005bf16c98de746b885333",
+      "translatedSha256": "93b54e8b14342fe2728645d657243ffb9c5228a7194e96fc9b8bab6815e0c0b1",
+      "html": "<p>JSONと同様に、<code>{}</code> は <code>{\"a\": 42, \"b\": 17}</code> のようにオブジェクト（辞書やハッシュとも呼ばれます）を構築するために使います。</p>\n<p>キーが「識別子のような」形式であれば、<code>{a:42, b:17}</code> のように引用符を省略できます。キーの式として変数参照を使うと、その変数の値がキーになります。定数リテラル、識別子、変数参照以外のキーの式は、<code>{(\"a\"+\"b\"):59}</code> のように丸括弧で囲む必要があります。</p>\n<p>値には任意の式を使えます。ただし、たとえばコロンを含む場合などには、丸括弧で囲む必要があることがあります。その式は、{}という式への入力に適用されます。すべてのフィルターには入力と出力があることを思い出してください。</p>\n<pre><code>{foo: .bar}&#10;</code></pre>\n<p>は、JSONオブジェクト <code>{\"foo\": 42}</code> を生成します（入力としてJSONオブジェクト <code>{\"bar\":42, \"baz\":43}</code> を与えた場合）。これを使って、オブジェクトの特定のフィールドを選択できます。入力が\"user\"、\"title\"、\"id\"、\"content\"フィールドを持つオブジェクトで、\"user\"と\"title\"だけが必要なら、次のように書けます。</p>\n<pre><code>{user: .user, title: .title}&#10;</code></pre>\n<p>これはよく使われるため、短縮構文 <code>{user, title}</code> があります。</p>\n<p>式の1つが複数の結果を生成すると、複数の辞書が生成されます。入力が次のとき、</p>\n<pre><code>{\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}&#10;</code></pre>\n<p>次の式は、</p>\n<pre><code>{user, title: .titles[]}&#10;</code></pre>\n<p>2つの出力を生成します。</p>\n<pre><code>{\"user\":\"stedolan\", \"title\": \"JQ Primer\"}&#10;{\"user\":\"stedolan\", \"title\": \"More JQ\"}&#10;</code></pre>\n<p>キーを丸括弧で囲むと、式として評価されます。上と同じ入力に対して、</p>\n<pre><code>{(.user): .titles}&#10;</code></pre>\n<p>は次を生成します。</p>\n<pre><code>{\"stedolan\": [\"JQ Primer\", \"More JQ\"]}&#10;</code></pre>\n<p>キーとして変数参照を使うと、変数の値がキーになります。値を指定しない場合は、変数名がキーになり、その変数の値が値になります。</p>\n<pre><code>\"f o o\" as $foo | \"b a r\" as $bar | {$foo, $bar:$foo}&#10;</code></pre>\n<p>は次を生成します。</p>\n<pre><code>{\"foo\":\"f o o\",\"b a r\":\"f o o\"}&#10;</code></pre>"
+    },
+    {
+      "key": "sections/2/entries/2/title",
+      "page": "03-types-and-values",
+      "mode": "entry-title",
+      "sourceSha256": "be4c699677193c16cc7d890dcd7d058e78b6bcafacd51a02b04cce562f4ff34c",
+      "translatedSha256": "39ef5a4eed9718b9f1ab1bb47444107bb563e96995f179d38ab21095b1f0bed3",
+      "html": "<h3>再帰的な走査：<code>..</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/2/body",
+      "page": "03-types-and-values",
+      "mode": "web-body",
+      "sourceSha256": "1b0270dc79318c362cb124ba0ab2f1e6cd5b67afebac641018bf42da5b405522",
+      "translatedSha256": "9996f7d9e2a6dc0a0e79a1b5f3220fe6708ff0cf37f253e4ce89c9adcae66fea",
+      "html": "<p><code>.</code> を再帰的に走査し、すべての値を生成します。これは、引数なしの組込み関数 <code>recurse</code>（後述）と同じです。XPathの <code>//</code> 演算子に似た動作を意図しています。<code>..a</code> は使えないため、代わりに <code>.. | .a</code> を使ってください。以下の実行例では、<code>.. | .a?</code> を使って、<code>.</code> の「下」にあるオブジェクト内で、キー\"a\"のすべての値を探します。</p>\n<p><code>path(EXP)</code>（これも後述）や <code>?</code> 演算子と組み合わせると、特に便利です。</p>"
+    }
+  ],
+  "examplesInTranslatedPages": 35,
+  "remainingFields": 267,
+  "releaseReady": false
+}

@@ -1,0 +1,186 @@
+{
+  "entryStart": 3,
+  "entries": [
+    {
+      "title": "Scoping",
+      "body": "\nThere are two types of symbols in jq: value bindings (a.k.a.,\n\"variables\"), and functions.  Both are scoped lexically,\nwith expressions being able to refer only to symbols that\nhave been defined \"to the left\" of them.  The only exception\nto this rule is that functions can refer to themselves so as\nto be able to create recursive functions.\n\nFor example, in the following expression there is a binding\nwhich is visible \"to the right\" of it, `... | .*3 as\n$times_three | [. + $times_three] | ...`, but not \"to the\nleft\".  Consider this expression now, `... | (.*3 as\n$times_three | [. + $times_three]) | ...`: here the binding\n`$times_three` is _not_ visible past the closing parenthesis.\n"
+    },
+    {
+      "title": "`isempty(exp)`",
+      "body": "\nReturns true if `exp` produces no outputs, false otherwise.\n",
+      "examples": [
+        {
+          "program": "isempty(empty)",
+          "input": "null",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "isempty(.[])",
+          "input": "[]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "isempty(.[])",
+          "input": "[1,2,3]",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`limit(n; expr)`",
+      "body": "\nThe `limit` function extracts up to `n` outputs from `expr`.\n",
+      "examples": [
+        {
+          "program": "[limit(3; .[])]",
+          "input": "[0,1,2,3,4,5,6,7,8,9]",
+          "output": [
+            "[0,1,2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`skip(n; expr)`",
+      "body": "\nThe `skip` function skips the first `n` outputs from `expr`.\n",
+      "examples": [
+        {
+          "program": "[skip(3; .[])]",
+          "input": "[0,1,2,3,4,5,6,7,8,9]",
+          "output": [
+            "[3,4,5,6,7,8,9]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`first(expr)`, `last(expr)`, `nth(n; expr)`",
+      "body": "\nThe `first(expr)` and `last(expr)` functions extract the first\nand last values from `expr`, respectively.\n\nThe `nth(n; expr)` function extracts the nth value output by `expr`.\nNote that `nth(n; expr)` doesn't support negative values of `n`.\n",
+      "examples": [
+        {
+          "program": "[first(range(.)), last(range(.)), nth(5; range(.))]",
+          "input": "10",
+          "output": [
+            "[0,9,5]"
+          ]
+        },
+        {
+          "program": "[first(empty), last(empty), nth(5; empty)]",
+          "input": "null",
+          "output": [
+            "[]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`first`, `last`, `nth(n)`",
+      "body": "\nThe `first` and `last` functions extract the first\nand last values from any array at `.`.\n\nThe `nth(n)` function extracts the nth value of any array at `.`.\n",
+      "examples": [
+        {
+          "program": "[range(.)]|[first, last, nth(5)]",
+          "input": "10",
+          "output": [
+            "[0,9,5]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`reduce`",
+      "body": "\nThe `reduce` syntax allows you to combine all of the results of\nan expression by accumulating them into a single answer.\nThe form is `reduce EXP as $var (INIT; UPDATE)`.\nAs an example, we'll pass `[1,2,3]` to this expression:\n\n    reduce .[] as $item (0; . + $item)\n\nFor each result that `.[]` produces, `. + $item` is run to\naccumulate a running total, starting from 0 as the input value.\nIn this example, `.[]` produces the results `1`, `2`, and `3`,\nso the effect is similar to running something like this:\n\n    0 | 1 as $item | . + $item |\n        2 as $item | . + $item |\n        3 as $item | . + $item\n",
+      "examples": [
+        {
+          "program": "reduce .[] as $item (0; . + $item)",
+          "input": "[1,2,3,4,5]",
+          "output": [
+            "15"
+          ]
+        },
+        {
+          "program": "reduce .[] as [$i,$j] (0; . + $i * $j)",
+          "input": "[[1,2],[3,4],[5,6]]",
+          "output": [
+            "44"
+          ]
+        },
+        {
+          "program": "reduce .[] as {$x,$y} (null; .x += $x | .y += [$y])",
+          "input": "[{\"x\":\"a\",\"y\":1},{\"x\":\"b\",\"y\":2},{\"x\":\"c\",\"y\":3}]",
+          "output": [
+            "{\"x\":\"abc\",\"y\":[1,2,3]}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`foreach`",
+      "body": "\nThe `foreach` syntax is similar to `reduce`, but intended to\nallow the construction of `limit` and reducers that produce\nintermediate results.\n\nThe form is `foreach EXP as $var (INIT; UPDATE; EXTRACT)`.\nAs an example, we'll pass `[1,2,3]` to this expression:\n\n    foreach .[] as $item (0; . + $item; [$item, . * 2])\n\nLike the `reduce` syntax, `. + $item` is run for each result\nthat `.[]` produces, but `[$item, . * 2]` is run for each\nintermediate values. In this example, since the intermediate\nvalues are `1`, `3`, and `6`, the `foreach` expression produces\n`[1,2]`, `[2,6]`, and `[3,12]`. So the effect is similar\nto running something like this:\n\n    0 | 1 as $item | . + $item | [$item, . * 2],\n        2 as $item | . + $item | [$item, . * 2],\n        3 as $item | . + $item | [$item, . * 2]\n\nWhen `EXTRACT` is omitted, the identity filter is used.\nThat is, it outputs the intermediate values as they are.\n",
+      "examples": [
+        {
+          "program": "foreach .[] as $item (0; . + $item)",
+          "input": "[1,2,3,4,5]",
+          "output": [
+            "1",
+            "3",
+            "6",
+            "10",
+            "15"
+          ]
+        },
+        {
+          "program": "foreach .[] as $item (0; . + $item; [$item, . * 2])",
+          "input": "[1,2,3,4,5]",
+          "output": [
+            "[1,2]",
+            "[2,6]",
+            "[3,12]",
+            "[4,20]",
+            "[5,30]"
+          ]
+        },
+        {
+          "program": "foreach .[] as $item (0; . + 1; {index: ., $item})",
+          "input": "[\"foo\", \"bar\", \"baz\"]",
+          "output": [
+            "{\"index\":1,\"item\":\"foo\"}",
+            "{\"index\":2,\"item\":\"bar\"}",
+            "{\"index\":3,\"item\":\"baz\"}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Recursion",
+      "body": "\nAs described above, `recurse` uses recursion, and any jq\nfunction can be recursive.  The `while` builtin is also\nimplemented in terms of recursion.\n\nTail calls are optimized whenever the expression to the left of\nthe recursive call outputs its last value.  In practice this\nmeans that the expression to the left of the recursive call\nshould not produce more than one output for each input.\n\nFor example:\n\n    def recurse(f): def r: ., (f | select(. != null) | r); r;\n\n    def while(cond; update):\n      def _while:\n        if cond then ., (update | _while) else empty end;\n      _while;\n\n    def repeat(exp):\n      def _repeat:\n        exp, _repeat;\n      _repeat;\n"
+    },
+    {
+      "title": "Generators and iterators",
+      "body": "\nSome jq operators and functions are actually generators in\nthat they can produce zero, one, or more values for each\ninput, just as one might expect in other programming\nlanguages that have generators.  For example, `.[]`\ngenerates all the values in its input (which must be an\narray or an object), `range(0; 10)` generates the integers\nbetween 0 and 10, and so on.\n\nEven the comma operator is a generator, generating first\nthe values generated by the expression to the left of the\ncomma, then the values generated by the expression on the\nright of the comma.\n\nThe `empty` builtin is the generator that produces zero\noutputs.  The `empty` builtin backtracks to the preceding\ngenerator expression.\n\nAll jq functions can be generators just by using builtin\ngenerators.  It is also possible to construct new generators\nusing only recursion and the comma operator.  If\nrecursive calls are \"in tail position\" then the\ngenerator will be efficient.  In the example below the\nrecursive call by `_range` to itself is in tail position.\nThe example shows off three advanced topics: tail recursion,\ngenerator construction, and sub-functions.\n",
+      "examples": [
+        {
+          "program": "def range(init; upto; by): def _range: if (by > 0 and . < upto) or (by < 0 and . > upto) then ., ((.+by)|_range) else empty end; if init == upto then empty elif by == 0 then init else init|_range end; range(0; 10; 3)",
+          "input": "null",
+          "output": [
+            "0",
+            "3",
+            "6",
+            "9"
+          ]
+        },
+        {
+          "program": "def while(cond; update): def _while: if cond then ., (update | _while) else empty end; _while; [while(.<100; .*2)]",
+          "input": "1",
+          "output": [
+            "[1,2,4,8,16,32,64]"
+          ]
+        }
+      ]
+    }
+  ]
+}
