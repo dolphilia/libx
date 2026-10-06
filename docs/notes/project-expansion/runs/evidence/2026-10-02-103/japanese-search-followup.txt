@@ -1,0 +1,287 @@
+Coop!! — Japanese translations of open-source developer docs (https://www.ecoop.net/coop/index.en.html)
+citeturn16search0 [wordlim: 200] Crawled: 2 months ago; COOP(1) Programming reference manual — www.ecoop.net COOP(1) ... A complete translation of the official GNU Make 4.4 manual.
+
+COOP(1) Programming reference manual — www.ecoop.net COOP(1)
+
+日本語EnglishEspañolFrançaisPortuguês中文Bahasa Indonesia
+
+Open-source documentation, translated
+
+# Coop!!
+
+A technical archive translating developer documentation since 2002. The centerpiece is the complete GNU Make 4.4 manual, available in Japanese, Spanish, French, Portuguese, Chinese and Indonesian.
+
+Read the GNU Make 4.4 manual → Sitemap (in Japanese) ↓
+
+Looking for the ECOOP conference (European Conference on Object-Oriented Programming)? → Official ECOOP conference pages (not affiliated with this site)
+
+Complete — 16 chapters + 4 appendices · 6 languages
+
+### GNU Make manual 4.4
+
+A complete translation of the official GNU Make 4.4 manual. No English edition yet — choose one of the available languages below.
+
+日本語EspañolFrançaisPortuguês中文Bahasa Indonesia
+
+Archive: GNU Make 3.77 · gcc / dlltool / Mingw32 (Japanese)
+
+### More technical references Japanese
+
+The rest of the catalog — Win32 API, DirectSound/VFW multimedia, C/C++ tips, server programming — is written in Japanese.
+
+Browse the full catalog →
+
+#### About Co-op
+
+A free technical-reference archive. Links to any page are welcome.
+
+ecoop.net--------------------------------------------------------------------------------
+zstd/doc/zstd_compression_format.md at dev · facebook/zstd · GitHub (https://github.com/facebook/zstd/blob/dev/doc/zstd_compression_format.md)
+citeturn16search1 [wordlim: 200] Published: 4 months ago; Crawled: 2 days ago; # zstd_compression_format.md
+
+# zstd_compression_format.md
+
+# Zstandard Compression Format
+
+### Notices
+
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+Permission is granted to copy and distribute this document for any purpose and without charge, including translations into other languages and incorporation into compilations, provided that the copyright notice and this notice are preserved, and that any substantive changes or deletions from the original are clearly marked. Distribution of this document is unlimited.
+
+### Version
+
+0.4.5 (2026-05-14)
+
+## Introduction
+
+The purpose of this document is to define a lossless compressed data format, that is independent of CPU type, operating system, file system and character set, suitable for file compression, pipe and streaming compression, using the Zstandard algorithm. The text of the specification assumes a basic background in programming at the level of bits and other primitive data representations.
+
+The data can be produced or consumed, even for an arbitrarily long sequentially presented input data stream, using only an a priori bounded amount of intermediate storage, and hence can be used in data communications.     * Skippable frames
+  * Entropy Encoding
+    * FSE
+    * Huffman Coding
+  * Dictionary Format
+
+## Frames
+
+Zstandard compressed data is made of one or more frames. Each frame is independent and can be decompressed independently of other frames. The decompressed content of multiple concatenated frames is the concatenation of each frame decompressed content.
+
+There are two frame formats defined by Zstandard: Zstandard frames and Skippable frames. Zstandard frames contain compressed data, while skippable frames contain custom user metadata.
+
+## Zstandard frames
+
+The structure of a single Zstandard frame is following:
+
+`Magic_Number`  | `Frame_Header`  | `Data_Block`  | [More data blocks]  | [`Content_Checksum`]
+--- | --- | --- | --- | ---
+4 bytes  | 2-14 bytes  | n bytes  |  | 0-4 bytes
+
+`Magic_Number`
+
+4 Bytes, little-endian format. Value : 0xFD2FB528 Note: This value was selected to be less probable to find at the beginning of some random file. It avoids trivial patterns (0x00, 0xFF, repeated bytes, increasing bytes, etc.), contains byte values outside of ASCII range, and doesn't map into UTF8 space. It reduces the chances that a text file represent this value by accident.
+
+`Frame_Header`
+
+2 to 14 Bytes, detailed in `Frame_Header`.
+
+`Data_Block`
+
+Detailed in `Blocks`. That’s where compressed data is stored.
+
+`Content_Checksum`
+
+An optional 32-bit checksum, only present if `Content_Checksum_flag` is set. The content checksum is the result of xxh64() hash function digesting the original (decoded) data as input, and a seed of zero. The low 4 bytes of the checksum are stored in little-endian format.
+
+--------------------------------------------------------------------------------
+ルールの書き方 — GNU Make 4.4 日本語マニュアル 第4章 (https://www.ecoop.net/coop/translated/GNUMake4.4/ch04.jp.html)
+citeturn16search2 [wordlim: 200] Crawled: 2 months ago;   * 4.1 ルールの例 ... 　GNU `make` が理解する前提条件には2種類あります。 ... 　`make` がグループ化されたターゲットのどれか1つをビルドするとき、レシピの呼び出しの結果として、グループ内の他のすべてのターゲットも更新されることを `make` は理解します。
+
+# 4 ルールの書き方
+
+　ルール(rule)とは makefile の中に書かれるもので、特定のファイル——そのルールのターゲット(target)と呼ばれます(たいていは1つのルールにつき1つです)——を、いつ、どのように作り直すかを指示するものです。ルールには、ターゲットの前提条件(prerequisite、旧称:依存関係)となる別のファイルの一覧と、ターゲットを生成または更新するために使うレシピ(recipe、ルールの実行内容)を書きます。
+
+　ルールを書く順序は、原則として意味を持ちません。ただしデフォルトゴール——あなたが特に何も指定しなかったときに `make` が処理対象とするターゲット——を決める場合だけは例外です。デフォルトゴールは、最初の makefile の最初のルールにある最初のターゲットになります。ここにはさらに2つの例外があります。1つは、ピリオドで始まるターゲットは、スラッシュ「`/`」を1つ以上含んでいない限りデフォルトにはならないこと。  * 4.9 特別な組み込みターゲット名
+  * 4.10 1つのルールに複数のターゲット
+  * 4.11 1つのターゲットに複数のルール
+  * 4.12 静的パターンルール
+  * 4.13 ダブルコロンルール
+  * 4.14 前提条件を自動的に生成する
+
+* * *
+
+## 4.1 ルールの例
+
+　まずはルールの例を1つ見てみましょう:
+    
+    foo.o : foo.c defs.h       # frob をいじるためのモジュール
+            cc -c -g foo.c
+    
+
+　このルールのターゲットは `foo.o` で、前提条件は `foo.c` と `defs.h` です。レシピには「`cc -c -g foo.c`」という1つのコマンドが入っています。レシピの行はタブ文字で始めることで、それがレシピであると識別されます。
+
+　このルールは、次の2つのことを述べています:
+
+  * `foo.o` が古くなっている(更新が必要な)かどうかをどう判断するか:`foo.o` が存在しないか、あるいは `foo.c` か `defs.h` のどちらかが `foo.o` より新しい場合に、古いと判断します。
+  * `foo.o` をどう更新するか:記載のとおり `cc` を実行します。レシピの中で `defs.h` は明示的に触れられていませんが、`foo.c` がそれを `#include` しているはずだと考えて、`defs.h` を前提条件に加えてあるわけです。
+
+* * *
+
+--------------------------------------------------------------------------------
+各資料の日本語訳(Coop編) - 目次 (https://www.ecoop.net/coop/translated/)
+citeturn16search3 [wordlim: 200] Crawled: last month;     GNU Make 4.4(最新版・新訳) - 多言語:Español / Français / Português / 中文 / Bahasa Indonesia - 英語原版(gnu.org)    GNU Make 3.77(旧版の訳) - 英語原版(3.79.1)をダウンロード(リンク) ...     PHPマニュアル日本語版 (リンク / 未完) ...
+    
+    #### 日本語訳資料
+    
+    
+    ここにある資料は,それぞれの英語版リファレンスを日本語訳したものです.
+    閲覧はもちろん,転載,再配布,はご自由に行って下さい.ただしその際,原版および訳者の
+    著作権表示は必ず表示して下さい.また,この資料について訳者は何の保障も致しません.
+    
+      * GNU
+    
+    
+    GNU Make 4.4(最新版・新訳) - 多言語:Español / Français / Português / 中文 / Bahasa Indonesia - 英語原版(gnu.org)
+    GNU Make 3.77(旧版の訳) - 英語原版(3.79.1)をダウンロード(リンク)
+    
+    GCC (リンク / 未完)    　
+    GDB (リンク)           　
+    flex (リンク)          　
+    
+    GNU その他の資料
+    
+    
+      * Mingw・Cygwin
+    
+    GNU その他の資料
+    
+    
+      * ネットワーク関係
+    
+    PHPマニュアル日本語版 (リンク / 未完) ...Download(tar.bz2形式)--------------------------------------------------------------------------------
+ZStandard形式で圧縮／展開する (https://gihyo.jp/assets/files/book/2026/978-4-297-15545-2/9784297155452-01.pdf)
+citeturn16search12 [wordlim: 200] Published: 6 months ago; 展開用のunzstdや、展開して標準出力するzstdcatとしても利用できます。従来のツールより高速・高圧縮なのが特徴で、シンプルかつ強力なデータ処理を実現します。 ... $ zstd Rocky-9.5-x86_64-minimal.iso  ○ 元ファイルを残して圧縮
+ZStandard形式で圧縮／展開する
+
+zstd
+
+書式  
+zstd [オプション] [ファイル名 …]
+
+オプション
+
+<table id="e1">
+<tr><th>オプション</th><th>説明</th></tr>
+<tr><td>-z<br>--compress</td><td>ファイルを圧縮する</td></tr>
+<tr><td>-d<br>--decompress, --uncompress</td><td>圧縮ファイルを展開する</td></tr>
+<tr><td>-t<br>--test</td><td>圧縮ファイルを解凍できるかテストする</td></tr>
+<tr><td>-l<br>--list</td><td>圧縮ファイルの情報を出力する</td></tr>
+<tr><td>-f<br>--force</td><td>入力・出力ファイルのチェックを実施せず、存在するファイルも上書きする強制モード</td></tr>
+<tr><td>-c<br>--stdout</td><td>標準出力に出力する</td></tr>
+<tr><td>--rm</td><td>圧縮、もしくは展開後に元ファイルを削除する</td></tr>
+<tr><td>-k<br>--keep</td><td>圧縮、もしくは展開後に元ファイルを保存する(デフォルト)</td></tr>
+<tr><td>--no-progress</td><td>プログレスバーを出力しない</td></tr>
+--------------------------------------------------------------------------------
+GNU makeを組み込む(他プログラムとの連携) — GNU Make 4.4 日本語マニュアル 第13章 (https://www.ecoop.net/coop/translated/GNUMake4.4/ch13.jp.html)
+citeturn16search4 [wordlim: 200] Crawled: 2 months ago;   * 13.1 GNU makeとジョブスロットを共有する ... 　GNU `make` には、複数のレシピを並列に実行する能力(並列実行を参照してください)があり、さらに `make` の再帰的な呼び出しをまたいでも並列ジョブの総数に上限を設ける能力(サブmakeへオプションを伝えるを参照してください)があります。
+--------------------------------------------------------------------------------
+暗黙のルールの使い方 — GNU Make 4.4 日本語マニュアル 第10章 (https://www.ecoop.net/coop/translated/GNUMake4.4/ch10.jp.html)
+citeturn16search5 [wordlim: 200] Crawled: 2 months ago;   * 10.4 暗黙のルールの連鎖 ... すると `make` は、どんなソースファイルが存在するか、あるいは作れるかをもとに、どの暗黙のルールを使うかを判断してくれます。 ... `%`」は空でない任意の部分文字列にマッチし、それ以外の文字はその文字自身にしかマッチしません。 ...   * 10.5.1 パターンルール入門
+--------------------------------------------------------------------------------
+Zstandard - Real-time data compression algorithm (https://facebook.github.io/zstd/index.html)
+citeturn16search6 [wordlim: 200] Crawled: 7 months ago; You can learn more about Zstandard API by reading its documentation. ... Python (simple)  | Sergey Dryabzhinsky  | https://github.com/sergey-dryabzhinsky/python-zstd ... Rust  | Alexandre Bury  | https://crates.io/crates/zstd
+--------------------------------------------------------------------------------
+サイトマップ — Coop!! (https://www.ecoop.net/coop/sitemap.html)
+citeturn16search7 [wordlim: 200] Crawled: last month; COOP(1) サイトマップ — www.ecoop.net/coop COOP(1) ...   * GNU Make 4.4 訳 (日本語)全16章＋付録4
+--------------------------------------------------------------------------------
+编写规则 — GNU Make 4.4 中文手册 第4章 (https://www.ecoop.net/coop/translated/GNUMake4.4/ch04.zh.html)
+citeturn16search8 [wordlim: 200] Crawled: 2 months ago; 唯一的例外是在确定默认目标——也就是当你没有特别指定任何对象时 `make` 所要处理的目标——的时候。 ...   * 4.1 规则示例
+--------------------------------------------------------------------------------
+Écrire des règles — Manuel de GNU Make 4.4 en français Chapitre 4 (https://www.ecoop.net/coop/translated/GNUMake4.4/ch04.fr.html)
+citeturn16search9 [wordlim: 200] Crawled: 2 months ago; L'ordre dans lequel les règles sont écrites n'a en principe aucune importance, sauf pour déterminer le but par défaut : la cible que `make` s'efforce de traiter lorsque vous n'en spécifiez aucune autre. ...   * 4.1 Un exemple de règle
+--------------------------------------------------------------------------------
+Makefile入門 — GNU Make 4.4 日本語マニュアル 第2章 (https://www.ecoop.net/coop/translated/GNUMake4.4/ch02.jp.html)
+citeturn16search10 [wordlim: 200] Crawled: 2 months ago; ## 2.1 ルールってこんなものです ... 　レシピ(recipe、ルールの実行内容)とは、`make` が実行するアクションのことです。 ... ゴールとは、`make` が最終的に更新しようと努めるターゲットのことです。)
+--------------------------------------------------------------------------------
+About ecoop.net | てくめも@ecoop.net (https://www.ecoop.net/memo/about-en)
+citeturn16search11 [wordlim: 200] Crawled: 2 weeks ago; # About ecoop.net ... ecoop.net is a personal site that has published programming notes and translated ... centerpiece is a complete translation of the GNU Make 4.4 manual, available in
+--------------------------------------------------------------------------------
+新しい圧縮エンコード – Zstandard (ZSTD) (https://d1.awsstatic.com/webinars/jp/pdf/services/20170607_AWS-BlackBelt_Redshift-update.pdf)
+citeturn16search13 [wordlim: 200] Published: 9.3 years ago; 新しい圧縮エンコード – Zstandard (ZSTD)- 圧縮＆展開が高速で、かつ高い圧縮率を実現できるアルゴリズム ... - 長さがさまざまな文字列を保存する (VAR)CHAR 列に対して、特に効果を発揮
+--------------------------------------------------------------------------------
+ROSCon JP 2024 (https://roscon.jp/2024/presentations/07.pdf)
+citeturn16search14 [wordlim: 200] Published: 11 months ago; ros2 bag recordのプリセットプロファイル ... zstd_fast：Zstd圧縮、速度優先
+--------------------------------------------------------------------------------
+20240925_ROSConJP2024 (https://roscon.ros.org/jp/2024/presentations/07.pdf)
+citeturn16search15 [wordlim: 200] 赤枠で強調された箇所があり、右上に「タイムスタンプのレンジ」として Start / End の入力欄と Reset ボタン、下に「圧縮形式」として ZSTD / LZ4 / None の選択肢と Save ボタンが見える。左下にはトピック一覧の表が赤枠で囲われ、下部に「トピック指定」と表示されている。
+--------------------------------------------------------------------------------
+RFC 8878: Zstandard Compression and the 'application/zstd' Media Type (https://www.rfc-editor.org/rfc/rfc8878.pdf)
+citeturn16search16 [wordlim: 200] Published: 5.6 years ago; Crawled: 5.6 years ago; Compression Algorithm ... Zstandard Frames ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.1.4. ... Dictionary Format
+--------------------------------------------------------------------------------
+TEZip (https://tezip.readthedocs.io/_/downloads/ja/latest/pdf/)
+citeturn16search17 [wordlim: 200] Published: 4.8 years ago; 上の図の解凍機構のコントロールフローは左側が解凍時全体の工程を表しており、右側が推論中の工程を表してい ... 圧縮時に出力したキーフレームをzstd で復元した後、numpy 配列に圧縮時と同じデータ型で変換します。
+--------------------------------------------------------------------------------
+Zstd (https://en.wikipedia.org/wiki/Zstd)
+citeturn16search18 [wordlim: 200] Crawled: 6 months ago; The Linux kernel has included Zstandard since November 2017 (version 4.14) as a compression method for the btrfs and squashfs filesystems, as well as for loadable kernel module s. ... On 15 June 2020, Zstandard was implemented in version 6.3.8 of the zip file format with codec number93, deprecating the previous codec number of20 as it was implemented in version 6.3.7, released on 1 June.
+--------------------------------------------------------------------------------
+压缩文件格式列表 (https://zh.wikipedia.org/wiki/%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%88%97%E8%A1%A8)
+citeturn16search19 [wordlim: 200] Crawled: 1.6 years ago; .genozip | application/vnd.genozip | genozip | Linux, macOS, Windows | 一种用于FASTQ format、BAM、VCF 等基因组文件格式的压缩器。 ... CRUNCH对LZW的实现有一个有点不寻常的特点，那就是当内存中的代码表变满时，会修改并偶尔清除它，从而使许多文件的压缩率提高几个百分点。 ... .z | application/x-compress |  | 类Unix | 传统的哈夫曼编码压缩格式。 ... .zst | application/zstd | Zstandard | 跨平台 | 由Facebook的开发的一个无损数据压缩算法，为LZ77的衍生物。 ... - 如果在DOS操作系统中无法在文件名上附加`.
+--------------------------------------------------------------------------------
+List of archive formats (https://en.wikipedia.org/wiki/List_of_archive_formats)
+citeturn16search20 [wordlim: 200] Crawled: 5 months ago; .lz4 |  | LZ4 | Unix-like | Algorithm developed by Yann Collet, designed for very high (de)compression speeds. ... Z | application/ | compress | Unix-like | The traditional LZW compression format..zst | application/ | Zstandard | Cross-platform | Algorithm developed by Yann Collet at Facebook, combining high speed and high compression.
+--------------------------------------------------------------------------------
+Zstandard (https://ru.wikipedia.org/wiki/Zstandard)
+citeturn16search21 [wordlim: 200] Crawled: 10 months ago; По данным LTCB, zstd 0.6 при максимальной степени сжатия показывает уровень сжатия, близкий к архиваторам boz, yxz, tornado; более высокий, чем у lza, brotli, bzip2, обеспечивая при этом очень быструю распаковку (2,2 нс/байт на Core i7-3930K при 4,5 ГГц) ... - Facebook open sources Zstandard data compression algorithm, aims to replace technology behind Zip. ... - «Zstd v1.3.1 release» 20200912235153., GitHub
+--------------------------------------------------------------------------------
+Comparison of file systems (https://en.wikipedia.org/wiki/Comparison_of_file_systems)
+citeturn16search22 [wordlim: 200] Crawled: 5 months ago; zstd positive: 1 (fastest) to 19 (best), default is 3
+--------------------------------------------------------------------------------
+Tar (computing) (https://en.wikipedia.org/wiki/Tar_%28computing%29)
+citeturn16search23 [wordlim: 200] Crawled: 6 months ago; To achieve archive compression, a variety of compression programs are available, such as gzip, bzip2, xz, lzip, lzma, zstd, or compress, which compress the entire tar archive.Typically, the compressed form of the archive receives a filename by appending the format-specific compressor suffix to the archive file name. ... BSD tar detects an even wider range of compressors (lrzip, lz4), using not the filename but the data within. ... MS-DOS's 8.3 filename limitations resulted in additional conventions for naming compressed tar archives.
+--------------------------------------------------------------------------------
+ZSTD Config (https://www.reddit.com/r/bcachefs/comments/g9erxy)
+citeturn16reddit24 [wordlim: 200] Published: 6.4 years ago; Crawled: 6.0 years ago; [Tuesday April 28 2020] [+11 votes]ZStandard released a few potentially useful features *after* BCacheFS introduced ZSTD compression. ... The biggest one is fast mode, which gets ZSTD into LZO and LZ4 territory.
+--------------------------------------------------------------------------------
+Zstd compression in the standard library? (https://www.reddit.com/r/Zig/comments/1ck53cg)
+citeturn16reddit25 [wordlim: 200] Published: 2.4 years ago; Crawled: 2.2 years ago; Also `std.compression.zstd` has helpful functions for converting a normal reader into a zstd decompressed reader but I don't see the equivalent for writing.
+--------------------------------------------------------------------------------
+ジェミには間違いを認めるが、改善されることはない (https://www.reddit.com/r/u_ZoneOpen318/comments/1u0kdkd/%E3%82%B8%E3%82%A7%E3%83%9F%E3%81%AB%E3%81%AF%E9%96%93%E9%81%95%E3%81%84%E3%82%92%E8%AA%8D%E3%82%81%E3%82%8B%E3%81%8C%E6%94%B9%E5%96%84%E3%81%95%E3%82%8C%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%84/)
+citeturn16reddit26 [wordlim: 200] Published: 3 months ago; 一部のモデルにおいて、設定されたカスタム指示やフォーマットのルールを完全に無視し、指定されていない不適切な言語や形式で突如として返信を行ってしまう現象が発生しております。 ... 長文のやり取りやコンテキストの増大に伴い、最優先されるべき「日本語での回答」という指示や、マークダウン記号を一切使用しないといったフォーマット規則を失念し、システム側のデフォルト言語や直前の文脈に引きずられた言語で出力してしまうことがありました。
+--------------------------------------------------------------------------------
+ANN: Zstandard Go Compression package (https://www.reddit.com/r/golang/comments/bvz8ts)
+citeturn16reddit27 [wordlim: 200] Published: 7.3 years ago; Crawled: 2.0 years ago; This package will allow you to get very fast compression to the Zstandard format.The current compressor is focused mainly on speed and outperforms gzip/deflate typically by a factor of 3x for similar compression ratios.It is also within a reasonable margin, typically 0.75x the throughput of the reference library called with cgo. ... For services I often see decompression speed become a bottleneck and force people to use pure LZ compressors like LZ4 or Snappy.
+--------------------------------------------------------------------------------
+For those affected by the new Meta Encryption ZSTD (https://www.reddit.com/r/fortinet/comments/1b285ho)
+citeturn16reddit28 [wordlim: 200] Published: 2.6 years ago; Crawled: 2.6 years ago; Zstandard is a fast compression algorithm, providing high compression ratios. ... Its format is stable and published as IETF RFC 8878. ...   [Wednesday February 28 2024] [+3 votes]
+--------------------------------------------------------------------------------
+Any Tips for using ZStandard compression (https://www.reddit.com/r/csharp/comments/16idtqk)
+citeturn16reddit29 [wordlim: 200] Published: 3.0 years ago; Crawled: 2.4 years ago; [Thursday September 14 2023] [+5 votes]I am looking to introduce ZStandard compression library to my project. ... I want to use to compress data that I uncompress on loading as well as a secondary cache stage meaning the app is storing data in compressed form and uncompressing it on short term use. ... [Thursday May 02 2024] [+1 votes]
+--------------------------------------------------------------------------------
+fzstd - expand super-compressed Zstandard data in 8kB of pure JS (https://www.reddit.com/r/javascript/comments/odr87w)
+citeturn16reddit30 [wordlim: 200] Published: 5.2 years ago; Crawled: 3.7 years ago; DEFLATE has many uses, as a general purpose compression format, so it has become very popular and is used in formats like PNG, PDF, XLSX, etc. ... One of the people following the development of `fzstd` told me Zstandard compressed 4-5x better than DEFLATE for a specific type of data they needed to load on the frontend. ...   As for the newspaper analogy, maybe the text content of each article could be Zstandard compressed rather than Brotli'd or Gzipped for a better compression ratio, though usually for text Brotli is similar in compression ratio to Zstandard.
+--------------------------------------------------------------------------------
+Zstandard HTTP compression support coming in .NET 11 (https://www.reddit.com/r/dotnet/comments/1quy8ga/zstandard_http_compression_support_coming_in_net/)
+citeturn16reddit31 [wordlim: 200] Published: 8 months ago;     [Tuesday February 03 2026] [+4 votes] ...     [Tuesday February 03 2026] [+3 votes] ...   If anything, CVEs are more likely to be related to the native library that System.IO.Compression.Zstandard uses
+--------------------------------------------------------------------------------
+Optimizing Lossy Compression Rate-Distortion from Automatic Online Selection between SZ and ZFP (https://arxiv.org/abs/1806.08901)
+citeturn16academia32 [wordlim: 200] Published: 8.3 years ago; Title: Optimizing Lossy Compression Rate-Distortion from Automatic Online Selection between SZ and ZFP
+--------------------------------------------------------------------------------
+Zeekstd - Rust implementation of the Zstd Seekable Format (https://www.reddit.com/r/compression/comments/1lc6ki9)
+citeturn16reddit33 [wordlim: 200] Published: 1.3 years ago; Crawled: 1.3 years ago; It's a complete Rust implementation of the Zstandard seekable format. ... My use-case seemed to require a whole rewrite of the seekable format, so I decided to implement it from scratch in Rust (don't know how to write proper C ¯\\\_(ツ)\_/¯) using bindings to the advanced zstd compression API, available from zstd 1.4.0+.
+--------------------------------------------------------------------------------
+Smaller and faster data compression with Zstandard (https://www.reddit.com/r/programming/comments/dlf15w)
+citeturn16reddit34 [wordlim: 200] Published: 6.9 years ago; Crawled: 6.7 years ago;   Current version: 1.4.3 dated Aug. 19th 2019 ... The way I meant is that I have never seen on a developer download page something in the lines of "to extract this archive you will need zstd enabled archive manager". ... Zstandard is for situations where you want to optimize for decompression speed while having a reasonable compression rate comparable to Deflate.  I've even rolled my own compression format once, designed to maximize decompression speed above all else.
+--------------------------------------------------------------------------------
+Attaching a decompression program to compressed data (https://www.reddit.com/r/compression/comments/1gpj5ia)
+citeturn16reddit35 [wordlim: 200] Published: 1.9 years ago; Crawled: 1.8 years ago; The compressed data would contain a shrinked version of the original file, and the DECOMPRESSION PROGRAM itself. ... If a "breakthrough" compression method is invented in 2050, we can use it right away to make ZIPs, and these ZIPs would work in software from 2024. ... In terms of "ultimate compression", it would be a good contender, and WASM is a fine choice for a VM format. ... Most software will restict window sizes of various formats. zstandard for example will not be allowed to have a window larger than 8MB for decoders for most "online" use.
+--------------------------------------------------------------------------------
+Zstandard v1.5.0 release! (https://www.reddit.com/r/linux/comments/ncgf43)
+citeturn16reddit36 [wordlim: 200] Published: 5.4 years ago; Crawled: 2.0 years ago;         [Friday May 14 2021] [+3 votes] ...     Arch has been using zstandard for package compression for a while ... You can feed the compressor `--threads=0` to multithread compression as much as possible. ... Would it make sense to use zstd instead of lz4 for kernel and initramfs compression?
+--------------------------------------------------------------------------------
+STZ: A High Quality and High Speed Streaming Lossy Compression Framework for Scientific Data (https://arxiv.org/abs/2509.01626)
+citeturn16academia37 [wordlim: 200] Published: 1.1 years ago; 
+Title: STZ: A High Quality and High Speed Streaming Lossy Compression Framework for Scientific Data
+Authors: Daoce Wang, Pascal Grosset, Jesus Pulido, Jiannan Tian, Tushar M. Athawale, Jinda Jia, Baixi Sun, Boyuan Zhang, Sian Jin, Kai Zhao, James Ahrens, Fengguang Song
+Date: Mon Sep  1 17:14:31 2025
+
+Error-bounded lossy compression is one of the most efficient solutions to reduce the volume of scientific data. For lossy compression, progressive decompression and random-access decompression are critical features that enable on-demand data access and flexible analysis workflows. However, these features can severely degrade compression quality and speed. To address these limitations, we propose a novel streaming compression framework that supports both progressive decompression and random-access decompression while maintaining high compression quality and speed. Our contributions are three-fold: (1) we design the first compression framework that simultaneously enables both progressive decompression and random-access decompression; (2) we introduce a hierarchical partitioning strategy to enable both streaming features, along with a hierarchical prediction mechanism that mitigates the impact of partitioning and achieves high compression quality -- even comparable to state-of-the-art (SOTA) non-streaming compressor SZ3; and (3) our framework delivers high compression and decompression speed, up to 6.7$\times$ faster than SZ3.

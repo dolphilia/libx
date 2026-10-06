@@ -1,0 +1,528 @@
+zstd-rs/doc/zstd_compression_format.md at e55da9e9638ef504f93a0ed448a47d0a8d745657 - zstd-rs - PFS Gitea (https://git.comff.net/ddidderr/zstd-rs/src/commit/e55da9e9638ef504f93a0ed448a47d0a8d745657/doc/zstd_compression_format.md)
+citeturn18search0 [wordlim: 200] Published: 7.9 years ago; Crawled: 3 weeks ago; The purpose of this document is to define a lossless compressed data format, that is independent of CPU type, operating system, file system and character set, suitable for file compression, pipe and streaming compression, using the Zstandard algorithm.
+
+e55da9e9638ef504f93a0ed448a47d0a8d745657
+
+[Input: Go to file]`T`
+
+Yann Collet 9bf00707c7 minor clarifications of history update rules
+
+2018-10-26 15:51:51 -07:00
+
+# Zstandard Compression Format
+
+### Notices
+
+Copyright (c) 2016-present Yann Collet, Facebook, Inc.
+
+Permission is granted to copy and distribute this document for any purpose and without charge, including translations into other languages and incorporation into compilations, provided that the copyright notice and this notice are preserved, and that any substantive changes or deletions from the original are clearly marked. Distribution of this document is unlimited.
+
+### Version
+
+0.3.1 (25/10/18)
+
+## Introduction
+
+The purpose of this document is to define a lossless compressed data format, that is independent of CPU type, operating system, file system and character set, suitable for file compression, pipe and streaming compression, using the Zstandard algorithm. The text of the specification assumes a basic background in programming at the level of bits and other primitive data representations.
+
+The data can be produced or consumed, even for an arbitrarily long sequentially presented input data stream, using only an a priori bounded amount of intermediate storage, and hence can be used in data communications. The format uses the Zstandard compression method, and optional xxHash-64 checksum method, for detection of data corruption.
+
+The data format defined by this specification does not attempt to allow random access to compressed data.
+
+Unless otherwise indicated below, a compliant compressor must produce data sets that conform to the specifications presented here. It doesn’t need to support all options though.
+
+A compliant decompressor must be able to decompress at least one working set of parameters that conforms to the specifications presented here. It may also ignore informative fields, such as checksum. Whenever it does not support a parameter defined in the compressed stream, it must produce a non-ambiguous error code and associated error message explaining which parameter is unsupported.
+
+This specification is intended for use by implementers of software to compress data into Zstandard format and/or decompress data from Zstandard format. The Zstandard format is supported by an open source reference implementation, written in portable C, and available at : https://github.com/facebook/zstd .
+
+### Overall conventions
+
+In this document:
+
+  * square brackets i.e. `[` and `]` are used to indicate optional fields or parameters.
+  * the naming convention for identifiers is `Mixed_Case_With_Underscores`
+
+### Definitions
+
+Content compressed by Zstandard is transformed into a Zstandard frame. Multiple frames can be appended into a single file or stream. A frame is completely independent, has a defined beginning and end, and a set of parameters which tells the decoder how to decompress it.
+
+A frame encapsulates one or multiple blocks. Each block contains arbitrary content, which is described by its header, and has a guaranteed maximum content size, which depends on frame parameters. Unlike frames, each block depends on previous blocks for proper decoding. However, each block can be decompressed without waiting for its successor, allowing streaming operations.
+
+## Overview
+
+  * Frames
+    * Zstandard frames
+      * Blocks
+        * Literals Section
+        * Sequences Section
+        * Sequence Execution
+    * Skippable frames
+  * Entropy Encoding
+    * FSE
+    * Huffman Coding
+  * Dictionary Format
+
+## Frames
+
+Zstandard compressed data is made of one or more frames. Each frame is independent and can be decompressed independently of other frames. The decompressed content of multiple concatenated frames is the concatenation of each frame decompressed content.
+
+There are two frame formats defined by Zstandard: Zstandard frames and Skippable frames. Zstandard frames contain compressed data, while skippable frames contain custom user metadata.
+
+## Zstandard frames
+
+The structure of a single Zstandard frame is following:
+
+`Magic_Number`  | `Frame_Header`  | `Data_Block`  | [More data blocks]  | [`Content_Checksum`]
+--- | --- | --- | --- | ---
+4 bytes  | 2-14 bytes  | n bytes  |  | 0-4 bytes
+
+`Magic_Number`
+
+4 Bytes, little-endian format. Value : 0xFD2FB528 Note: This value was selected to be less probable to find at the beginning of some random file. It avoids trivial patterns (0x00, 0xFF, repeated bytes, increasing bytes, etc.), contains byte values outside of ASCII range, and doesn't map into UTF8 space. It reduces the chances that a text file represent this value by accident.
+
+`Frame_Header`
+
+2 to 14 Bytes, detailed in `Frame_Header`.
+
+`Data_Block`
+
+Detailed in `Blocks`. That’s where compressed data is stored.
+
+`Content_Checksum`
+
+An optional 32-bit checksum, only present if `Content_Checksum_flag` is set. The content checksum is the result of xxh64() hash function digesting the original (decoded) data as input, and a seed of zero. The low 4 bytes of the checksum are stored in little-endian format.
+
+
+`Unused_bit`
+
+A decoder compliant with this specification version shall not interpret this bit. It might be used in any future version, to signal a property which is transparent to properly decode the frame. An encoder compliant with this specification version must set this bit to zero.
+
+`Reserved_bit`
+
+This bit is reserved for some future feature. Its value must be zero. A decoder compliant with this specification version must ensure it is not set. This bit may be used in a future revision, to signal a feature that must be interpreted to decode the frame correctly.
+
+`Content_Checksum_flag`
+
+If this flag is set, a 32-bits `Content_Checksum` will be present at frame's end. See `Content_Checksum` paragraph.
+
+`Dictionary_ID_flag`
+
+This is a 2-bits flag (`= FHD & 3`), telling if a dictionary ID is provided within the header. It also specifies the size of this field as `DID_Field_Size`.
+
+`Flag_Value`  | 0  | 1  | 2  | 3
+--- | --- | --- | --- | ---
+`DID_Field_Size`  | 0  | 1  | 2  | 4
+
+#### `Window_Descriptor`
+
+Provides guarantees on minimum memory buffer required to decompress a frame. #### `Dictionary_ID`
+
+This is a variable size field, which contains the ID of the dictionary required to properly decode the frame. `Dictionary_ID` field is optional. When it's not present, it's up to the decoder to know which dictionary to use.
+
+`Dictionary_ID` field size is provided by `DID_Field_Size`. `DID_Field_Size` is directly derived from value of `Dictionary_ID_flag`. 1 byte can represent an ID 0-255. 2 bytes can represent an ID 0-65535. 4 bytes can represent an ID 0-4294967295. Format is little-endian.
+
+It's allowed to represent a small ID (for example `13`) with a large 4-bytes dictionary ID, even if it is less efficient.
+
+Reserved ranges : Within private environments, any `Dictionary_ID` can be used.
+
+However, for frames and dictionaries distributed in public space, `Dictionary_ID` must be attributed carefully. Rules for public environment are not yet decided, but the following ranges are reserved for some future registrar :
+
+  * low range : `<= 32767`
+  * high range : `>= (1 << 31)`
+
+Outside of these ranges, any value of `Dictionary_ID` which is both `>= 32768` and `< (1<<31)` can be used freely, even in public environment.
+
+#### `Frame_Content_Size`
+
+This is the original (uncompressed) size. This information is optional. `Frame_Content_Size` uses a variable number of bytes, provided by `FCS_Field_Size`. `FCS_Field_Size` is provided by the value of `Frame_Content_Size_flag`. `FCS_Field_Size` can be equal to 0 (not present), 1, 2, 4 or 8 bytes.
+
+`FCS_Field_Size`  | Range
+--- | ---
+0  | unknown
+1  | 0 - 255
+2  | 256 - 65791
+4  | 0 - 2^32-1
+8  | 0 - 2^64-1
+
+`Frame_Content_Size` format is little-endian. When `FCS_Field_Size` is 1, 4 or 8 bytes, the value is read directly. When `FCS_Field_Size` is 2, the offset of 256 is added. It's allowed to represent a small size (for example `18`) using any compatible variant.
+
+## Blocks
+
+After `Magic_Number` and `Frame_Header`, there are some number of blocks. Each frame must have at least one block, but there is no upper limit on the number of blocks per frame.
+
+The structure of a block is as follows:
+
+`Block_Header`  | `Block_Content`
+--- | ---
+3 bytes  | n bytes
+
+`Block_Header` uses 3 bytes, written using little-endian convention. It contains 3 fields :
+
+`Last_Block`  | `Block_Type`  | `Block_Size`
+--- | --- | ---
+bit 0  | bits 1-2  | bits 3-23
+
+`Last_Block`
+
+The lowest bit signals if this block is the last one. The frame will end after this last block. It may be followed by an optional `Content_Checksum` (see Zstandard Frames).
+
+`Block_Type`
+
+The next 2 bits represent the `Block_Type`. There are 4 block types :
+
+Value  | 0  | 1  | 2  | 3
+--- | --- | --- | --- | ---
+`Block_Type`  | `Raw_Block`  | `RLE_Block`  | `Compressed_Block`  | `Reserved`
+
+  * `Raw_Block` - this is an uncompressed block. `Block_Content` contains `Block_Size` bytes.
+
+  * `RLE_Block` - this is a single byte, repeated `Block_Size` times. `Block_Content` consists of a single byte. On the decompression side, this byte must be repeated `Block_Size` times.
+
+  * `Compressed_Block` - this is a Zstandard compressed block, explained later on. `Block_Size` is the length of `Block_Content`, the compressed data. The decompressed size is not known, but its maximum possible value is guaranteed (see below)
+
+  * `Reserved` - this is not a block. This value cannot be used with current version of this specification. If such a value is present, it is considered corrupted data.
+
+`Block_Size`
+
+The upper 21 bits of `Block_Header` represent the `Block_Size`. `Block_Size` is the size of the block excluding the header. A block can contain any number of bytes (even zero), up to `Block_Maximum_Decompressed_Size`, which is the smallest of:
+
+  * Window_Size
+  * 128 KB
+
+A `Compressed_Block` has the extra restriction that `Block_Size` is always strictly less than the decompressed size. If this condition cannot be respected, the block must be sent uncompressed instead (`Raw_Block`).
+
+## Compressed Blocks
+
+To decompress a compressed block, the compressed size must be provided from `Block_Size` field within `Block_Header`.
+
+A compressed block consists of 2 sections :
+
+  * Literals Section
+  * Sequences Section
+
+The results of the two sections are then combined to produce the decompressed data in Sequence Execution
+
+#### Prerequisites
+
+To decode a compressed block, the following elements are necessary :
+
+  * Previous decoded data, up to a distance of `Window_Size`, or beginning of the Frame, whichever is smaller.
+  * List of "recent offsets" from previous `Compressed_Block`.
+  * The previous Huffman tree, required by `Treeless_Literals_Block` type
+  * Previous FSE decoding tables, required by `Repeat_Mode` for each symbol type (literals lengths, match lengths, offsets)
+
+Note that decoding tables aren't always from the previous `Compressed_Block`.
+
+  * Every decoding table can come from a dictionary.
+  * The Huffman tree comes from the previous `Compressed_Literals_Block`.
+
+`Literals_Block_Type`  | Value
+--- | ---
+`Raw_Literals_Block`  | 0
+`RLE_Literals_Block`  | 1
+`Compressed_Literals_Block`  | 2
+`Treeless_Literals_Block`  | 3
+
+  * `Raw_Literals_Block` - Literals are stored uncompressed.
+  * `RLE_Literals_Block` - Literals consist of a single byte value repeated `Regenerated_Size` times.
+  * `Compressed_Literals_Block` - This is a standard Huffman-compressed block, starting with a Huffman tree description. See details below.
+  * `Treeless_Literals_Block` - This is a Huffman-compressed block, using Huffman tree from previous Huffman-compressed literals block. `Huffman_Tree_Description` will be skipped. Note: If this mode is triggered without any previous Huffman-table in the frame (or dictionary), this should be treated as data corruption.
+
+`Size_Format`
+
+`Size_Format` is divided into 2 families :
+
+  * For `Raw_Literals_Block` and `RLE_Literals_Block`, it's only necessary to decode `Regenerated_Size`. There is no `Compressed_Size` field.
+  * For `Compressed_Block` and `Treeless_Literals_Block`, it's required to decode both `Compressed_Size` and `Regenerated_Size` (the decompressed size). It's also necessary to decode the number of streams (1 or 4).
+
+For values spanning several bytes, convention is little-endian.
+
+`Size_Format` for `Raw_Literals_Block` and `RLE_Literals_Block` :
+
+`Size_Format` uses 1 or 2 bits. Its value is : `Size_Format = (Literals_Section_Header[0]>>2) & 3`
+
+  * `Size_Format` == 00 or 10 : `Size_Format` uses 1 bit. `Regenerated_Size` uses 5 bits (0-31). `Literals_Section_Header` uses 1 byte. `Regenerated_Size = Literals_Section_Header[0]>>3`
+  * `Size_Format` == 01 : `Size_Format` uses 2 bits. `Regenerated_Size` uses 12 bits (0-4095). `Literals_Section_Header` uses 2 bytes. `Regenerated_Size = (Literals_Section_Header[0]>>4) + (Literals_Section_Header[1]<<4)`
+  * `Size_Format` == 11 : `Size_Format` uses 2 bits. `Regenerated_Size` uses 20 bits (0-1048575). `Literals_Section_Header` uses 3 bytes. `Regenerated_Size = (Literals_Section_Header[0]>>4) + (Literals_Section_Header[1]<<4) + (Literals_Section_Header[2]<<12)`
+
+Only Stream1 is present for these cases. Note : it's allowed to represent a short value (for example `13`) using a long format, even if it's less efficient.
+
+`Size_Format` for `Compressed_Literals_Block` and `Treeless_Literals_Block` :
+
+`Size_Format` always uses 2 bits.
+
+  * `Size_Format` == 00 : A single stream. Both `Regenerated_Size` and `Compressed_Size` use 10 bits (0-1023). `Literals_Section_Header` uses 3 bytes.
+  * `Size_Format` == 01 : 4 streams. Both `Regenerated_Size` and `Compressed_Size` use 10 bits (0-1023). `Literals_Section_Header` uses 3 bytes.
+  * `Size_Format` == 10 : 4 streams. Both `Regenerated_Size` and `Compressed_Size` use 14 bits (0-16383). `Literals_Section_Header` uses 4 bytes.
+  * `Size_Format` == 11 : 4 streams. Both `Regenerated_Size` and `Compressed_Size` use 18 bits (0-262143). `Literals_Section_Header` uses 5 bytes.
+
+Both `Compressed_Size` and `Regenerated_Size` fields follow little-endian convention. Note: `Compressed_Size` includes the size of the Huffman Tree description when it is present.
+
+Here also, from an offset history update perspective, it's just a common case : `Repeated_Offset3` = `Repeated_Offset2` `Repeated_Offset2` = `Repeated_Offset1` `Repeated_Offset1` = `NewOffset` ( == `Repeated_Offset1` - 1_byte )
+
+## Skippable Frames
+
+`Magic_Number`  | `Frame_Size`  | `User_Data`
+--- | --- | ---
+4 bytes  | 4 bytes  | n bytes
+
+Skippable frames allow the insertion of user-defined metadata into a flow of concatenated frames.
+
+Skippable frames defined in this specification are compatible with LZ4 ones.
+
+From a compliant decoder perspective, skippable frames need just be skipped, and their content ignored, resuming decoding after the skippable frame.
+
+It can be noted that a skippable frame can be used to watermark a stream of concatenated frames embedding any kind of tracking information (even just an UUID). Users wary of such possibility should scan the stream of concatenated frames in an attempt to detect such frame for analysis or removal.
+
+`Magic_Number`
+
+4 Bytes, little-endian format. Value : 0x184D2A5?, which means any value from 0x184D2A50 to 0x184D2A5F. All 16 values are valid to identify a skippable frame. This specification doesn't detail any specific tagging for skippable frames.
+
+`Frame_Size`
+
+This is the size, in bytes, of the following `User_Data` (without including the magic number nor the size field itself). This field is represented using 4 Bytes, little-endian format, unsigned 32-bits. This means `User_Data` can’t be bigger than (2^32-1) bytes.
+
+`User_Data`
+
+The `User_Data` can be anything. Data will just be skipped by the decoder.
+
+## Dictionary Format
+
+Zstandard is compatible with "raw content" dictionaries, free of any format restriction, except that they must be at least 8 bytes. These dictionaries function as if they were just the `Content` part of a formatted dictionary.
+
+But dictionaries created by `zstd --train` follow a format, described here.
+
+Pre-requisites : a dictionary has a size, defined either by a buffer limit, or a file size.
+
+`Magic_Number`  | `Dictionary_ID`  | `Entropy_Tables`  | `Content`
+--- | --- | --- | ---
+
+`Magic_Number` : 4 bytes ID, value 0xEC30A437, little-endian format
+
+`Dictionary_ID` : 4 bytes, stored in little-endian format. `Dictionary_ID` can be any value, except 0 (which means no `Dictionary_ID`). It's used by decoders to check if they use the correct dictionary.
+
+Reserved ranges : If the frame is going to be distributed in a private environment, any `Dictionary_ID` can be used. However, for public distribution of compressed frames, the following ranges are reserved and shall not be used :
+    
+    `          - low range  : <= 32767
+--------------------------------------------------------------------------------
+ProjectSettings — Godot Engine (4.x)の日本語のドキュメント (https://godot-ja.readthedocs.io/ja/4.x/classes/class_projectsettings.html)
+citeturn18search1 [wordlim: 200] Crawled: last month; The default compression level for Zstandard.
+
+* * *
+
+int compression/formats/zstd/compression_level = `3` 🔗
+
+The default compression level for Zstandard. Affects compressed scenes and resources. Higher levels result in smaller files at the cost of compression speed. Decompression speed is mostly unaffected by the compression level.
+
+* * *
+
+bool compression/formats/zstd/long_distance_matching = `false` 🔗
+
+Enables long-distance matching in Zstandard.
+
+* * *
+
+int compression/formats/zstd/window_log_size = `27` 🔗
+
+Largest size limit (in power of 2) allowed when compressing using long-distance matching with Zstandard. Higher values can result in better compression, but will require more memory when compressing and decompressing.
+
+* * *
+
+Color debug/canvas_items/debug_redraw_color = `Color(1, 0.2, 0.2, 0.5)` 🔗
+
+If canvas item redraw debugging is active, this color will be flashed on canvas items when they redraw.
+
+* * *
+
+float debug/canvas_items/debug_redraw_time = `1.0` 🔗
+--------------------------------------------------------------------------------
+ddidderr/zstd-rs - zstd-rs - PFS Gitea (https://git.comff.net/ddidderr/zstd-rs/src/commit/5e80dd3261bbcba9c8b942fd1f7aa0266b0060c0)
+citeturn18search2 [wordlim: 200] Published: 10.2 years ago; Crawled: last month; Zstd, short for Zstandard, is a fast lossless compression algorithm, targeting real-time compression scenarios at zlib-level and better compression ratios. ... Zstd compression format has reached "Final status". ... Bahasa Indonesia Deutsch English Español Français Gaeilge Italiano Latviešu Magyar nyelv Nederlands Polski Português de Portugal Português do Brasil Suomi Svenska Türkçe Čeština Ελληνικά Български Русский Українська فارسی മലയാളം 日本語 简体中文 繁體中文（台灣） 繁體中文（香港） 한국어
+
+`zstd --train FullPathToTrainingSet/* -o dictionaryName`
+
+  2. Compress with dictionary
+
+`zstd FILE -D dictionaryName`
+
+  3. Decompress with dictionary
+
+`zstd --decompress FILE.zst -D dictionaryName`
+
+### Status
+
+Zstd compression format has reached "Final status". It means it is planned to become the official stable zstd format and be tagged `v1.0`. The reason it's not yet tagged `v1.0` is that it currently performs its "validation period", making sure the format holds all its promises and nothing was missed. Zstd library also offers legacy decoder support. Any data compressed by any version >= `v0.1` (hence including current one) remains decodable now and in the future. The library has been validated using strong fuzzer tests, including both internal tools and external ones. It's able to withstand hazard situations, including invalid inputs. As a consequence, Zstandard is considered safe for, and is currently used in, production environments.
+
+### Branch Policy
+
+The "dev" branch is the one where all contributions will be merged before reaching "master". If you plan to propose a patch, please commit into the "dev" branch or its own feature branch. Direct commit to "master" are not permitted.
+
+### Miscellaneous
+
+Zstd entropy stage is provided by Huff0 and FSE, from Finite State Entropy library.
+
+Reference in New Issue View Git Blame Copy Permalink
+
+Description
+
+No description provided
+
+Readme BSD-3-Clause
+
+44 MiB
+
+Languages
+
+Rust 53%
+
+C 33.7%
+
+C++ 6%
+
+Shell 2%
+
+Python 1.8%
+
+Other 3.4%
+
+Auto
+
+English
+
+Bahasa Indonesia Deutsch English Español Français Gaeilge Italiano Latviešu Magyar nyelv Nederlands Polski Português de Portugal Português do Brasil Suomi Svenska Türkçe Čeština Ελληνικά Български Русский Українська فارسی മലയാളം 日本語 简体中文 繁體中文（台灣） 繁體中文（香港） 한국어--------------------------------------------------------------------------------
+ep129 Monthly Platform 202308 | mozaic.fm (https://mozaic.fm/episodes/129/monthly-platform-202308.html)
+citeturn18search3 [wordlim: 200] Published: 3.1 years ago; Crawled: 3 months ago;   * Zstandard compression format for Content-Encoding · Issue #168
+#### Standard Positions
+
+  * 今月 Close されたものをみる
+    * https://github.com/WebKit/standards-positions/issues?q=is%3Aissue+closed%3A%3E2023-08-01+
+  * `content-visibility: auto` forces `contain-intrinsic-size: auto` · Issue #228
+    * https://github.com/WebKit/standards-positions/issues/228
+    * Support
+  * Zstandard compression format for Content-Encoding · Issue #168
+    * https://github.com/WebKit/standards-positions/issues/168
+    * Support
+  * Update and overflow media features · Issue #146
+    * https://github.com/WebKit/standards-positions/issues/146
+    * Support
+  * scrollbar-width CSS Property · Issue #133
+    * https://github.com/WebKit/standards-positions/issues/133
+    * Support
+  * Customized built-in elements · Issue #97
+    * https://github.com/WebKit/standards-positions/issues/97
+    * Oppose
+  * CSS highlight pseudo system · Issue #95
+--------------------------------------------------------------------------------
+Changing log compression formats | Fastly Documentation (https://quic.fastly.com/documentation/guides/integrations/streaming-logs/changing-log-compression-options/)
+citeturn18search4 [wordlim: 200] Crawled: 2 months ago;   * 日本語Fastly's Real-Time Log Streaming feature allows you to specify compression format and options for file-based logging endpoints. ...   * Zstandard, a compression algorithm defined by RFC 8478
+
+# Changing log compression formats
+
+English
+
+  * English
+  * 日本語
+
+Fastly's Real-Time Log Streaming feature allows you to specify compression format and options for file-based logging endpoints. These include the Azure Blob, FTP, Google Cloud Storage, Kafka, OpenStack, Amazon S3, SFTP, Digital Ocean, and Cloud Files logging endpoints.
+
+## Available log compression formats
+
+Although the default is to use no compression, we allow you to choose one of several compression mechanisms:
+
+  * Zstandard, a compression algorithm defined by RFC 8478
+  * Snappy, a compression and decompression library used by many Google products as referenced in the Snappy compressed format description
+  * Gzip, a compression utility as defined in RFC 1952 and RFC 1951
+--------------------------------------------------------------------------------
+〖Fish Speech 1.4〗自然な音声と多言語対応の音声生成AI！機能と使い方、課題を徹底解説 | WEEL (https://weel.co.jp/media/tech/fish-speech/)
+citeturn18search5 [wordlim: 200] Published: 2.1 years ago; Crawled: last month; pip install numpy==1.26.4 transformers>=4.35.2 datasets==2.18.0 lightning>=2.1.0 hydra-core>=1.3.2 tensorboard>=2.14.1 natsort>=8.4.0 einops>=0.7.0 librosa>=0.10.1 rich>=13.5.3 gradio>=4.0.0 wandb>=0.15.11 grpcio>=1.58.0 kui>=1.6.0 uvicorn>=0.30.0 loguru>=0.6.0 loralib>=0.1.2 pyrootutils>=1.0.4 vector_quantize_pytorch>=1.14.24 resampy>=0.4.3 einx[torch]==0.2.2 zstandard>=0.22.0 pydub faster_whisper modelscope==1.17.1 funasr==1.1.5 opencc-python-reimplemented==0.1.7 silero-vad ormsgpack fsspec==2024.6.1 ... 日本語だと音読み・訓読みが怪しい部分がありますが、それ以外はかなり自然な音声読み上げになっています。
+
+Fish Speechの実行ではあまりGPUを使わないため、無料プランでも十分利用できます。
+
+■Pythonのバージョン
+Python 3.10以上
+■使用ディスク量
+35.7GB
+■GPU RAMの使用量
+1.8GB
+■システムRAMの使用量
+4.4GB
+
+ロケールの設定はこちら
+    
+    `import locale
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')`
+
+モデルのダウンロードはこちら
+    
+    `!huggingface-cli download fishaudio/fish-speech-1.4 --local-dir checkpoints/fish-speech-1.4`
+
+リポジトリのクローンはこちら
+    
+    `!git clone https://github.com/fishaudio/fish-speech.git`
+
+必要ライブラリのインストールはこちら
+    
+    `!pip install -r /content/fish-speech/docs/requirements.txt`
+
+不足ライブラリのインストールはこちら
+    
+    `!pip install numpy==1.26.4 transformers>=4.35.2 datasets==2.18.0 lightning>=2.1.0 hydra-core>=1.3.2 tensorboard>=2.14.1 natsort>=8.4.0 einops>=0.7.0 librosa>=0.10.1 rich>=13.5.3 gradio>=4.0.0 wandb>=0.15.11 grpcio>=1.58.0 kui>=1.6.0 uvicorn>=0.30.0 loguru>=0.6.0 loralib>=0.1.2 pyrootutils>=1.0.4 vector_quantize_pytorch>=1.14.24 resampy>=0.4.3 einx[torch]==0.2.2 zstandard>=0.22.0 pydub faster_whisper modelscope==1.17.1 funasr==1.1.5 opencc-python-reimplemented==0.1.7 silero-vad ormsgpack fsspec==2024.6.1
+    !pip install --upgrade datasets
+    !pip install triton`
+
+webUIの実行はこちら
+    
+    `!python fish-speech/tools/webui.py \
+        --llama-checkpoint-path /content/checkpoints/fish-speech-1.4 \
+        --decoder-checkpoint-path /content/checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth \
+        --compile`
+
+上記のコードを使えばGoogle ColaboratoryでFish Speechを使うことができますが、Google Colaboratoryでgradioを使う際には、ローカルURLにアクセスできるようにする必要があります。
+
+
+Image
+
+gradioの画面でInput Textに読み上げてもらいたいテキストを入力します。
+
+その後、Streaming Generateをクリックすることで、入力したテキストの読み上げを聞くことができます。
+
+Image
+
+日本語だと音読み・訓読みが怪しい部分がありますが、それ以外はかなり自然な音声読み上げになっています。
+
+--------------------------------------------------------------------------------
+Changing log compression formats | Fastly Documentation (https://fastly.quic.co/documentation/guides/integrations/streaming-logs/changing-log-compression-options/)
+citeturn18search6 [wordlim: 200] Crawled: last month;   * 日本語Fastly's Real-Time Log Streaming feature allows you to specify compression format and options for file-based logging endpoints. ...   * Zstandard, a compression algorithm defined by RFC 8478
+
+# Changing log compression formats
+
+English
+
+  * English
+  * 日本語
+
+Fastly's Real-Time Log Streaming feature allows you to specify compression format and options for file-based logging endpoints. These include the Azure Blob, FTP, Google Cloud Storage, Kafka, OpenStack, Amazon S3, SFTP, Digital Ocean, and Cloud Files logging endpoints.
+
+## Available log compression formats
+
+Although the default is to use no compression, we allow you to choose one of several compression mechanisms:
+
+  * Zstandard, a compression algorithm defined by RFC 8478
+  * Snappy, a compression and decompression library used by many Google products as referenced in the Snappy compressed format description
+  * Gzip, a compression utility as defined in RFC 1952 and RFC 1951
+--------------------------------------------------------------------------------
+Bookmarks (https://www7b.biglobe.ne.jp/~saia/link.html)
+citeturn18search7 [wordlim: 200] Crawled: 2 days ago; Tsuzuri - 日本語執筆ソフト ... Zstandard - Real-time data compression algorithm ... brotli: Brotli compression format
+--------------------------------------------------------------------------------
+zstd-rs/zstd_compression_format.md at 57ef4b1a0d82335e1a599a8ec9ea9f07703406ab - zstd-rs - PFS Gitea (https://git.comff.net/ddidderr/zstd-rs/src/commit/57ef4b1a0d82335e1a599a8ec9ea9f07703406ab/zstd_compression_format.md?display=source)
+citeturn18search8 [wordlim: 200] Published: 10.1 years ago; Crawled: 3 weeks ago;  |  | `header only provides compressed and regenerated size of all 4 streams combined.
+--------------------------------------------------------------------------------
+ddidderr/zstd-rs - zstd-rs - PFS Gitea (https://git.comff.net/ddidderr/zstd-rs/src/commit/57ef4b1a0d82335e1a599a8ec9ea9f07703406ab)
+citeturn18search9 [wordlim: 200] Published: 10.1 years ago; Crawled: 3 weeks ago; Zstd, short for Zstandard, is a fast lossless compression algorithm, targeting real-time compression scenarios at zlib-level and better compression ratios. ... Zstd compression format has reached "Final status". ... Bahasa Indonesia Deutsch English Español Français Gaeilge Italiano Latviešu Magyar nyelv Nederlands Polski Português de Portugal Português do Brasil Suomi Svenska Türkçe Čeština Ελληνικά Български Русский Українська فارسی മലയാളം 日本語 简体中文 繁體中文（台灣） 繁體中文（香港） 한국어
+--------------------------------------------------------------------------------
+naufaladrna08/lz4: Extremely Fast Compression algorithm - lz4 - Gitea: Git with a cup of tea (https://git.kincirangin.id/naufaladrna08/lz4/src/commit/bcb26565a732062759a2428e167e27ad3c2f6e96)
+citeturn18search10 [wordlim: 200] Published: 7.5 years ago; Crawled: last month; Zstandard 1.3.4 -1  | 2.877  | 470 MB/s  | 1380 MB/s ... The raw LZ4 block compression format is detailed within lz4_Block_format.
+--------------------------------------------------------------------------------
+naufaladrna08/lz4: Extremely Fast Compression algorithm - lz4 - Gitea: Git with a cup of tea (https://git.kincirangin.id/naufaladrna08/lz4/src/commit/6f68a1692e58b0380e5f88d8be61656ead8331f4)
+citeturn18search11 [wordlim: 200] Published: 9.9 years ago; Crawled: 3 weeks ago; Zstandard 0.5.1  | 2.876  | 240 MB/s  | 620 MB/s ... The raw LZ4 block compression format is detailed within lz4_Block_format.
+

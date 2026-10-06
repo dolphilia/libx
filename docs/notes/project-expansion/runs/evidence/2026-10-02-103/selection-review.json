@@ -1,0 +1,237 @@
+{
+  "status": "passed",
+  "meaning": "根拠と不採用判断の別パス照合。採用可能という意味ではない。",
+  "checkedAt": "2026-10-02T01:03:42.204Z",
+  "proposalSha256": "a7822a400f8c7045541881be5fc9a3f239c3e6aab0cb96c1d949327970ebd59f",
+  "uniqueEvidenceCount": 35,
+  "reviewedPrimaryFacts": [
+    "GNU MakeのGFDL Cover Textsとinclude条件を原ファイルへ辿った。GPL例通知も保持し履行方法unknown、規模約76kを通常枠へ押し込まない。",
+    "Zstd固有通知・独立仕様範囲・固定commitと配布物の本文一致・版0.4.3、同梱CLI1.5.6/API1.5.7をそれぞれ原資料で確認。",
+    "Zstd初回参照切れと補正後の1参照以外の本文一致・表/コード/見出し/内部リンク試験を再照合。外部リンク/全文意味/Astro表示は後工程。",
+    "Msgpackは固定仕様treeにLICENSEなし、著作権表示あり。実装・日本語紹介サイトから許諾を推測しない。"
+  ],
+  "scoreReview": [
+    "Zstd追加価値と実用性3は原典を参照する具体的用途に限定。検索で全訳未発見を不存在・読者需要の確定と混同しない。",
+    "原文品質4は構造・数値表・手順・付録に基づき、上流参照切れと未実施の全文意味レビューを制限として残す。",
+    "保守3/再利用4は版の複数軸と分割時リンク対応の固有工数を含め、更新実績がないため加点しない。",
+    "合計66点で70未達を再計算。未知条件のGNU/Msgpackはnull採点。全3件の非採用判断を維持。"
+  ],
+  "candidates": [
+    {
+      "id": "gnu-make",
+      "inputHash": "ff9460bd169b542fccfe5655077fd4b2014602b6136d85db8b8bf3e8d0d060de",
+      "conditions": {
+        "rights": "unknown",
+        "boundary": "pass",
+        "fixedInput": "pass",
+        "selfContained": "unknown",
+        "conversion": "unknown",
+        "workload": "unknown"
+      },
+      "scores": {
+        "additionalValue": null,
+        "practicality": null,
+        "quality": null,
+        "maintenance": null,
+        "reuse": null
+      },
+      "score": null,
+      "eligible": false,
+      "state": "deferred"
+    },
+    {
+      "id": "zstd",
+      "inputHash": "978fb338528b46d59aa692e8a4b3e7532314e45b866f47951077c77375607745",
+      "conditions": {
+        "rights": "pass",
+        "boundary": "pass",
+        "fixedInput": "pass",
+        "selfContained": "pass",
+        "conversion": "pass",
+        "workload": "pass"
+      },
+      "scores": {
+        "additionalValue": 3,
+        "practicality": 3,
+        "quality": 4,
+        "maintenance": 3,
+        "reuse": 4
+      },
+      "score": 66,
+      "eligible": false,
+      "state": "deferred"
+    },
+    {
+      "id": "msgpack",
+      "inputHash": "991241232e5e4b7a5549efa4646bd6ac304bfa8185d293f7499557294ee980eb",
+      "conditions": {
+        "rights": "unknown",
+        "boundary": "pass",
+        "fixedInput": "pass",
+        "selfContained": "unknown",
+        "conversion": "unknown",
+        "workload": "unknown"
+      },
+      "scores": {
+        "additionalValue": null,
+        "practicality": null,
+        "quality": null,
+        "maintenance": null,
+        "reuse": null
+      },
+      "score": null,
+      "eligible": false,
+      "state": "needs-evidence"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/GNU_MAKE_RESEARCH.md",
+      "sha256": "f5ca3c11eac861c2c99aeeb28c8f552f72d6bfd4945f779fe7dda305f6c7429f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/gnu-make/members/doc/make.texi",
+      "sha256": "4bc3c176c7eacefae7fdafd0665138372943f9e15cf6b6e816ad8062a31689dd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/gnu-make/members/doc/make-stds.texi",
+      "sha256": "a4f552d2262cc7ac5f8511f92f6a20e3b200424c59aa547b6a4de94392bc25c6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/gnu-make/members/doc/fdl.texi",
+      "sha256": "297ad42928811894f3abc955526431b1e7856e6766eecb7de2a5a0aa2915e5cf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/gnu-make-input-inventory.json",
+      "sha256": "ca336e04b5644f23f30cb27284d0353a4aef20849850ffd5cfc509ce23fbefcb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/gnu-make/members/doc/Makefile.am",
+      "sha256": "137b6b9f4b8d15744fb36d210da040f533bc097eb71fb90676c6e38511b19108"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/gnu-make/fetch-records.json",
+      "sha256": "c3fd2adfb24a8ce6b040e33239555950354501923dfb6e343710745ce83b8e62"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/gnu-make/members/doc/version.texi",
+      "sha256": "e46be516b6360cbdff46e512a69af989568f2bf147c9c3ce1343e485ed50bbad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/gnu-make-workload.json",
+      "sha256": "e008f4c4f8015c1496ff49e20245d5a043aed1bc11ff2df366f8d941dc2a3d9d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/japanese-search-evidence.txt",
+      "sha256": "1311565b8ca5949a991acdefd87c0d1d03177598d04f2bb4139a099426f82751"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/japanese-search-followup.txt",
+      "sha256": "5a99d960b7a71e01852480badbf2338a78de71e08dd0e76c6a3f0fa5d1c77bd6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/gnu-ja-index.html",
+      "sha256": "8b1034a11c757f31ea8c8ca75c9da4e79fdc2954d1bf977143be1e0cb3b0e562"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/gnu-ja-toc-fetch.json",
+      "sha256": "063fbbda5c00f8ba25181e76a58b2f54dc92da68ab3e45c13c93c2035b3fb63a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/ZSTD_RESEARCH.md",
+      "sha256": "1b4a0d2c5ad5695586308f81d0aa50fc4f00ae5ea10b760a65066f1b8c20c630"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/zstd/members/doc/zstd_compression_format.md",
+      "sha256": "81d08d9af1e3011190cae694d1b775b46db4743728733522a4119a5cb7558bb5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-trial/specification.md",
+      "sha256": "b3082c42a1199c7f92d861688777eea14aa6168a0e8d33b07c3bddd85be922be"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-input-inventory.json",
+      "sha256": "d4300290f3804a89ae0ebac6ffdf40f413483edd3666e3f5017bfd18f64833f3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/zstd/members/doc/README.md",
+      "sha256": "cf8fec9d5c5ea6939e64af9f87b171bd22b6be0c937ffb0bb3906a17f0670e38"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/zstd/fetch-records.json",
+      "sha256": "7b50ac24051e5236c0416e2f5409c35bc0a1fed99352fa07d7800ed6a295406b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/zstd/tag.json",
+      "sha256": "b14db262e29beebfa04703f4f11b108eb7a584401c5d9bf046fe2f0d16aefd3b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-tag-object.json",
+      "sha256": "8777a52ed68b5e300a853f8d2410951b97d990d95b17436717f58825ed718aeb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/zstd/release.json",
+      "sha256": "d737f4afcb7a0a6e8832180191fb5ce764341900be1ae123a39a34760ebfb550"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-trial/source-ast-metrics.json",
+      "sha256": "96fe5cdfcf8d28030cef499d3e0dea484b879a80034d69134aa92a48df741b11"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-trial/html-equivalence.json",
+      "sha256": "8189360faf22bc700e622be4506d12c59fbaa5a4977a4781724e67d9312dbf87"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-trial/specification.html",
+      "sha256": "ebb8b0701715d4f9f8b3b113277a75cb32fe02313f429334d3c952a489e2cc16"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/japanese-exact-title-search.txt",
+      "sha256": "ea3381fa4c8dec0992fefe1f055d5c8cb42e2f79265326827b02f317da1e7913"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-official-home.html",
+      "sha256": "9c4c2694cdde0a47e764e3f80c7bf9d752ff770f4c925104db0d26c47cfe73da"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/MSGPACK_RESEARCH.md",
+      "sha256": "209fbdf69e235c18e7adccf2cf09a594385b44de28c43a0db902e600d429f651"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/msgpack/tree.json",
+      "sha256": "ee16ff6d83a2d72fcb303e8dafc79b4a8e03ba72d2dfbe2b563f8d2d4ab013cb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/msgpack/spec.md",
+      "sha256": "e185302236e4674cf59e0e47c362751d32ab143d8203fa779c1bf5a72314eb81"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/msgpack-input-inventory.json",
+      "sha256": "f5a954d7e125ca9f9df03e52de1f1525ac7d30b4f7c13d4637e5b356c91ecc4b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/msgpack/README.md",
+      "sha256": "45971d5bc265b6ca8d57f10d806159065ef01f854eab80d44ec0fb17eb1297a9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/msgpack/fetch-records.json",
+      "sha256": "76608ccaf438d27e9a8072b99af684e3b4b5e76300c7c4938278f3f67549b4ce"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/source/msgpack/commit.json",
+      "sha256": "bdbfd3ca223c3426e4d132f3690e6eef6181fb5328b5df0021e65a16c98d04c2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/msgpack-ja-home.html",
+      "sha256": "b6db974fd60567249ffb0d689a698a20f9be0cff78a77abd031a65e3353499dd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-103/zstd-commit-spec-check.json",
+      "sha256": "0ae665e65a0713c0b033050434ac029a0f5bdcf44da388c038e33b1148650d0f"
+    }
+  ],
+  "limits": [
+    "候補の適格性調査と不採用判断。本文の翻訳・全文内容レビューやAstro検証の完了証拠にはしない。",
+    "日本語検索は記録した範囲のみ。GNU目次の403は未確認のまま。"
+  ]
+}
