@@ -6295,3 +6295,31 @@
 - 2回replay各1037組2074文書2passes/通常8gate/全2074hash/全fragment監査、対象systems fresh統合buildと全7開始現在manifest hash、正規HTMLgate、英日16head/166list/30TOC/JA14alias/旧有用ID/画像表0/固定README・Unlicense2URL/統合HTML一致、英日PCmobile実UIと目次/出典/言語/版/隣接操作を確認。global 52b24e actual exit0/diff合格、230完了807残保留4。状態変更後の同一入力証拠でglobal再利用。
 - EXCLUSIONS判断同一を再帰比較しtimestampsのみHEADへ復元。外部リンク報告はawesome-dotと原文序文URL復元の実差分を保持。元main他作業差分保全。実モデルCodex current session/API識別子取得不能。所有UI/preview終了・viewport復元。
 - 保存対象は本バッチの検証済み本文/overlay/判断・レビュー/生成物/台帳/証拠のみ。origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合を行う。外部公開/PR/dispatch/定期設定なし。次173 github-ttumiel-Awesome-Ethereum-readme-mdの固定raw/旧英日全文から継続。
+
+### バッチ172送信確認・173全文読了 (2026-10-06T23:05:07.330Z)
+
+- 172 Substrate commit 3747c3eb13adbc7a3574b06bf2714235ee498661、origin/codex/awesome-editorial-isolated-20261007 push 909487 exit0、remote HEAD一致296218+7c06c6/clean。ステージ76対象のみ/body-review hash一致f85ff6、workflow全文22e56fの配信対象外。外部公開なし。230完了807残保留4。
+- 173 fixedraw193行129単位/旧EN185行127単位/旧JA185行157単位を06a586+9bb29d/9bb29d+c270f9/c270f9で省略なし全文読了。原文HTML導入とWikipediaの欠落、非paywall収録条件、CC0全権利放棄声明とlicense.md参照、評価・旧式技術と動画の現行保証への読み替え、資料名の一般英語残り等を確認。本文未変更。次 EthereumのWikipedia定義リンク/オープンソース・blockchain・smart contract computing/非paywall収録条件を復元。先に固定raw192–193の@ttumiel全権利放棄とlicense.md参照をPROVENANCE_NOTESへ保存し生成/事前英日出典表示を確認。全88非TOC list/13分類/補助URL/入れ子/時刻22:00と37:00/2016/PoSとPoWを保持、手動TOC13/運営投稿・着想・License画像整理。既存JAの攻撃対象・非公式区別等と一般資料名を調整、評価・旧版・最新という記述は固定原文へ帰属→3別pass全文review→通常gate/保全/参照/build/HTML/4UI/global→verified231→commit/push。
+
+- 2026-10-06T23:05:38.039Z batch173-source-notice-saved-preflight-build-pending。230完了807残保留4。進捗cf5d39582c8bd1b8ba804956db50327f30ae6edd7a175feea8b08ce92e83658f。次source registry生成/check→元英日本文を維持したままsystems build→出典通知の英日実表示を確認してproof保存→初稿EN/JA・3別全文review→overlay/gate/build/HTML/4UI/global→verified231/commit/push。
+
+- 2026-10-06T23:08:07.098Z batch173-source-notice-preflight-complete-draft-reviews-pending。230完了807残保留4。進捗bb8a53604a82375e032c97369b3e33a6705a74f0ae0a4f9806e6c465c92190e1。次一時EN/JA初稿をraw→EN/EN→JA/JA単独の別passで全単位再読→判断対応/overlay/本文反映→再生成/8gate/全2074保全/参照/build/HTML/4UI/global→verified231→commit/push。
+
+- 2026-10-06T23:11:41.583Z batch173全文編集・3別pass全文review完了（raw129/旧EN127/旧JA157→EN108/JA134、88本文list/14head/13alias）。raw→EN683e2f+6439bb/変更27a19b、ENJA全単位b6d9b6+90ad28/変更edb806、JA単独全edb806。License移設前の英日出典声明全文実表示とcleanup証拠 70e0a7909dc9d58de5146513a4d3cf8019f66fb6d6fa607c1aeaf81d7ccac628。overlay/本文/レビュー/台帳反映、まだtranslated-ja。次 2replay/通常8gate/全2074hash/全fragment→対象fresh build/全7入力/HTML14head88list13alias/英日PCmobile4実UI→global→verified231→commit/push。
+
+- 2026-10-06T23:15:10.381Z batch173-generation-gates-passed-build-pending。230完了807残保留4。進捗af95a4e7b575198fbb657582758d2a83daa061b1cd7054f8c0f72000b543aa5b。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML14見出し88list/13alias/英日PCmobile実UI→global→verified231/commit/push。
+
+- 2026-10-06T23:19:37.604Z batch173-build-html-complete-four-ui-pending。230完了807残保留4。進捗17ef63e2362a8fb554a0287277b6bb40c5c958f2c5152db186a962f464077288。次英日PC1440/mobile390導入/Protocols入れ子/自動目次到達/権利放棄全文/license.md/出典2リンク/言語/版/隣接操作実UI→global→verified231→commit/push→174 Ripple。
+
+- 2026-10-06T23:21:51.292Z batch173-four-ui-content-reviewed-global-pending。230完了807残保留4。進捗b07414224c8dca4feedfe9a798ebe299d0eab820b7578aedfb884dd561298012。次全1037台帳global/全2074hash/diff→verified231→commit/push/hash照合→174 Ripple fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T23:22:33.741Z batch173-verified231-save-push-pending。231完了806残保留4。進捗065028beda39af35e9c65e7fcbcadba965f9abb259f636ef8c366238c8d394af。次231完了806残保留4。Ethereum全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次174 github-vhpoet-awesome-ripple-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ173 Ethereum検証完了・保存準備 (2026-10-06T23:22:38.449Z)
+
+- 固定raw193行129単位(06a586+9bb29d)、旧EN185行127単位(9bb29d+c270f9)、旧JA185行157単位(c270f9)を全文読了。raw→EN別パス683e2f+6439bb、導入条件の理由/Wiki全話題補正27a19bをraw/EN/JAで再読。英日全108主要単位b6d9b6+90ad28、Mist/ボンディングカーブ/Redditの変更3単位とJA単独全文edb806。全入力129/127/157→最終108/134単位対応8d9c4b。EN全文diff7d7223、JA全文diff2d79da（348fcd省略は不採用）。最終EN eae1f1dfc7fecbbb6d93373e752ba347204b43acf2cb1e7878897d2b84e1f2d8/JA ec18e0120f91dcafa7834db9b324ed5e27ece32ec75b583f50e86ae8c3100eef。
+- Wikipedia定義とオープンソース/スマートコントラクト、分散アプリの趣旨と有料制限なしの採録条件を復元。13分類/88本文リスト/全補助URL/入れ子/年/講座番号/動画時刻/正式識別子を保持。一般記事・講座案内を翻訳し、正式書籍・論文原題を同定用に維持。CBC/FFG・PoSとPoW、攻撃対象を明確化し日本語を自然に修正。最新/安全性/公式ウォレット等は固定原文へ帰属。運営投稿案内と他リストへの謝辞・手動目次・装飾を整理し、14見出し/13JA旧英語別名を保持。
+- License本文移設前に権利放棄全文とlicense.md参照をPROVENANCE_NOTESへ英日で保存し、既存registryで設定生成、英日出典HTMLと実PC表示を先に確認（64bd02/7d7f6a/f45ab1/683e2f）。事前JAの2リンクはviewport外であり事前スクリーンショット確認とは記録せず、編集後4表示で確認。原文通知192–193/excerpt hash7f2e34861d73d12406399f64f5c10158417236afb93e5a810875552ff126220eを保持。CC0-1.0/ttumiel/固定READMEとCC0の2URLを維持。
+- 2回replay各1037組2074文書2passes/通常8gate/全2074hash/全fragment incoming0、systems fresh統合buildと全7開始現在manifest hash、正規HTMLgate、英日14head/88list/26TOC/JA13alias/旧有用ID/画像表0/固定README・CC0 2URL/権利声明全文/license.md参照/統合HTML一致を確認。英日PCmobile4表示、目次/出典/言語/版/隣接操作も実確認。global 5e9212 actual exit0/diff合格、231完了806残保留4。content-reviewed→verifiedの全入力同一を照合しglobal証拠を再利用。
+- EXCLUSIONS判断は全一致を確認しtimestamp差分だけHEADへ復元。外部リンク報告は定義リンク追加/装飾整理の実差分を維持。主作業mainの他作業差分保全。実モデルCodex current session/API識別子取得不能、ローカルLLM/委任なし。所有UI/preview終了・viewport復元。
+- 本バッチの検証済み本文/出典案内・設定/overlay/判断・レビュー/生成物/台帳/証拠をorigin/codex/awesome-editorial-isolated-20261007へcommit/pushしてremote HEAD照合。外部公開/PR/dispatch/定期設定なし。次174 github-vhpoet-awesome-ripple-readme-md固定raw/旧英日全文から継続。
