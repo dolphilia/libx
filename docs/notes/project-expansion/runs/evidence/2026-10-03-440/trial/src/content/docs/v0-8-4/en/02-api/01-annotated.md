@@ -1,0 +1,17 @@
+---
+title: "Data Structures"
+licenseSource: "xxhash-fixed"
+---
+
+<div class="contents xxhash-api-trial">&#10;<div class="textblock">Here are the data structures with brief descriptions:</div><div class="directory">&#10;<table class="directory">&#10;<tbody><tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/23-struct_x_x_h128__canonical__t/" target="_self">XXH128_canonical_t</a></td><td class="desc"></td></tr>&#10;<tr id="row_1_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/24-struct_x_x_h128__hash__t/" target="_self">XXH128_hash_t</a></td><td class="desc">The return value from 128-bit hashes </td></tr>&#10;<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/25-struct_x_x_h32__canonical__t/" target="_self">XXH32_canonical_t</a></td><td class="desc">Canonical (big endian) representation of <a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/20-group__public/#ga469df6c7273f15924de58143ef1afe14" title="XXH32_hash_t">XXH32_hash_t</a> </td></tr>&#10;<tr id="row_3_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/26-struct_x_x_h32__state__s/" target="_self">XXH32_state_s</a></td><td class="desc"></td></tr>&#10;<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/27-struct_x_x_h3__state__s/" target="_self">XXH3_state_s</a></td><td class="desc"></td></tr>&#10;<tr id="row_5_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/" target="_self">XXH64_canonical_t</a></td><td class="desc">Canonical (big endian) representation of <a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603" title="XXH64_hash_t">XXH64_hash_t</a> </td></tr>&#10;<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&nbsp;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="/docs/xxhash-trial/v0-8-4/en/02-api/29-struct_x_x_h64__state__s/" target="_self">XXH64_state_s</a></td><td class="desc"></td></tr>&#10;</tbody></table>&#10;</div><!-- directory -->&#10;</div>
+
+> 文書専用ライセンスの表記が確認できないため、ソフトウェア本体のBSD 2-Clause Licenseを文書にも適用する運用判断で掲載しています。非公式日本語訳・公式Doxyfileからの生成と形式変換。
+
+[固定原ソース](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h)
+
+
+## Source and notices
+
+[api-header](/docs/xxhash-trial/v0-8-4/en/03-notices/api-header/) · [dispatch-c](/docs/xxhash-trial/v0-8-4/en/03-notices/dispatch-c/) · [dispatch-h](/docs/xxhash-trial/v0-8-4/en/03-notices/dispatch-h/)
+
+[Fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h)
