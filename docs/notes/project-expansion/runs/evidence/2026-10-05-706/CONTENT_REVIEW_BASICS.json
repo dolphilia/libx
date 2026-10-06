@@ -1,0 +1,95 @@
+{
+  "page": "guide/basics",
+  "status": "passed",
+  "at": "2026-10-04T20:26:39.949Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page fixed-text review after705 translation, source-discrepancy overlay and actual renderer tests. Read full fixed basics.rst, all canonical narrative/6 literal blocks, full Japanese text/code captions/footnote/footer. Semantic review is separate from mechanical DOM/code/link assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/basics.rst",
+      "sha256": "55f9d3e8cb02c05ab4e082994496676a35988e835291bfaa9c8e042c6de24b53"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/basics.md",
+      "sha256": "f79171bf2fa12ebd272c718c50b0f9dbb10670429935c5dcbdedb411bfbbd371"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/basics.md",
+      "sha256": "aa9f55497aa82c625a8e88043d4284defaa53337f4ca6988558836f0ee494ba6"
+    }
+  ],
+  "coverage": {
+    "original": "entire guide/basics.rst including literalinclude directives, raw supplementary iframe and hardware footnote",
+    "canonical": "all sections, emphasized notions,6code blocks, callbacks/lifetimes/context, original media element and footer",
+    "translation": "entire fixed textual page with all6original code blocks/footnote/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "event loop and async model",
+      "result": "Asynchronous/event-driven utility scope, callback registration/event gathering, loop usually forever and pseudocode retained. File-write/socket-read/timer events, uv_run central role, blocking I/O waiting/performance explanation, standard thread alternative retained."
+    },
+    {
+      "scope": "nonblocking and qualification",
+      "result": "OS socket watch/event queue/inspect-and-fetch narrative, async interest-vs-later data use, nonblocking freedom for other work retained. Throughput explanation keeps original hardware-capacity footnote. Background threads/workers and/or polling note retains usually, not universal guarantee."
+    },
+    {
+      "scope": "supplementary video",
+      "result": "Author introduction and original YouTube-nocookie embedded element retained, fixed design-doc link retained. Footer distinguishes external supplementary media from Libx CC BY4.0 document licence; no video copy/relicensing. Full external video viewing/semantic/audio review NOT performed and not counted as a reviewed fixed textual source."
+    },
+    {
+      "scope": "HelloWorld/default loop",
+      "result": "All original examples retained. Immediate exit without events, API watchers required, v1.0 allocate-before-init/custom memory management and close-then-release advice retained. Default loop one-loop recommendation and node.js binding note retained."
+    },
+    {
+      "scope": "source discrepancy",
+      "result": "Original prose says examples never close loops but helloworld/default-loop/idle-basic fixed sources all call uv_loop_close. Literal source is not silently corrected; EN/JA footer identifies discrepancy with all3source links. Primary source hashes and repeatable overlay confirm this."
+    },
+    {
+      "scope": "errors",
+      "result": "Possibly-failing init/sync negative returns vs async callback status retained. UV_E* constants, strerror message vs err_name name/const char*, nread<0 and special EOF handling retained."
+    },
+    {
+      "scope": "handles/requests",
+      "result": "Opaque uv_TYPE_t usage, long-lived handles vs short-lived requests usually one callback/I/O and context preservation retained. UDP socket uv_udp_t vs individual send uv_udp_send_t distinguished. Full typedef list and init prototype copied without amendments."
+    },
+    {
+      "scope": "callback/idle/context",
+      "result": "Application callbacks/data/timer examples retained. Idle callback once per turn, watcher lifecycle, uv_run waiting until no active watchers and stop at count retained. This is blocking of the call, not a claim that active idle blocks the I/O poll. data member opaque void* and casting context back, including loop data, retained."
+    },
+    {
+      "scope": "code/readability/footer",
+      "result": "6literal blocks including English pseudocode and code comments deliberately preserved exactly. Captions, headings, all narrative and footnote translated consistently. Libx notes stay only in footer; author content and licensing remain separate."
+    }
+  ],
+  "corrections": [
+    "Fixed-source example/prose discrepancy annotated only in EN/JA footer. Original body/code unchanged and deterministic2step canonical generation verified."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-705/CANONICAL_OVERLAY_VERIFICATION.json",
+      "sha256": "00af4832ae7ec599f96dd6a2b318226c27af1062771397a67723e1dc19f84f7f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-705/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "c47ab263cfe9a1f94effb3a3ad2e5ea9741628071f94f8e21620ab47ff477c7d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-705/OUTPUT_PRESERVATION.json",
+      "sha256": "483393e164bfc816178848f9c5dfa670646468b149226823bff5e51a73227534"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-705/RENDER_VERIFICATION.json",
+      "sha256": "fd0b47ba6ed205022ccda198ce74f8c738c711d1484c6e9e6ba758eb46651ecb"
+    }
+  ],
+  "mediaReview": {
+    "fixedEmbedElementAndAccompanyingText": "reviewed",
+    "externalVideoEntireContent": "not-performed",
+    "videoTranslation": "not-performed",
+    "scopeBoundary": "External original supplemental media, not part of fixed textual/RST/code translation scope; native availability separate and pending."
+  },
+  "projectFullReviewComplete": false,
+  "remaining": "Other29pages translation/review, all examples compilation/runtime not claimed, final JA links/check:content/native/integration/publication."
+}

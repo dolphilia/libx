@@ -1,0 +1,864 @@
+{
+  "page": "guide/filesystem",
+  "at": "2026-10-04T20:33:56.666560+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/filesystem.rst",
+      "sha256": "e7ff2e8ccec2d504db9856c1818b0fe470b10d08189e563afa80844f9314e685"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/filesystem.md",
+      "sha256": "bbc081892ca35b1bede3b465929791d90ec596bf174dfb6f20e98728ec2057ca"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/filesystem.md",
+      "sha256": "ebb1716b930d2af5d7a7270101a472dddb46434cb4d217d5c6a7bf7f94edd4be"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 18 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Filesystem",
+      "ja": "ファイルシステム"
+    },
+    {
+      "index": 1,
+      "en": "Simple filesystem read/write is achieved using the ",
+      "ja": "ファイルシステムの単純な読み書きには、"
+    },
+    {
+      "index": 2,
+      "en": " functions and the\n",
+      "ja": "関数と"
+    },
+    {
+      "index": 3,
+      "en": " struct.",
+      "ja": "構造体を使います。"
+    },
+    {
+      "index": 4,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 5,
+      "en": "The libuv filesystem operations are different from ",
+      "ja": "libuvのファイルシステム操作は、"
+    },
+    {
+      "index": 6,
+      "en": "socket operations",
+      "ja": "ソケット操作"
+    },
+    {
+      "index": 7,
+      "en": ". Socket operations use the non-blocking operations provided\nby the operating system. Filesystem operations use blocking functions\ninternally, but invoke these functions in a ",
+      "ja": "とは異なります。ソケット操作では、オペレーティングシステムが提供するノンブロッキング操作を使います。ファイルシステム操作では内部でブロッキング関数を使いますが、これらの関数を"
+    },
+    {
+      "index": 8,
+      "en": "thread pool",
+      "ja": "スレッドプール"
+    },
+    {
+      "index": 9,
+      "en": " and notify\nwatchers registered with the event loop when application interaction is\nrequired.",
+      "ja": "で呼び出し、アプリケーションとのやり取りが必要になると、イベントループに登録された監視対象に通知します。"
+    },
+    {
+      "index": 10,
+      "en": "All filesystem functions have two forms - ",
+      "ja": "すべてのファイルシステム関数には、"
+    },
+    {
+      "index": 11,
+      "en": "synchronous",
+      "ja": "同期"
+    },
+    {
+      "index": 12,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 13,
+      "en": "asynchronous",
+      "ja": "非同期"
+    },
+    {
+      "index": 14,
+      "en": ".",
+      "ja": "の2つの形式があります。"
+    },
+    {
+      "index": 15,
+      "en": "The ",
+      "ja": "コールバックがnullなら、"
+    },
+    {
+      "index": 16,
+      "en": "synchronous",
+      "ja": "同期"
+    },
+    {
+      "index": 17,
+      "en": " forms automatically get called (and ",
+      "ja": "形式が自動的に呼び出され、処理は"
+    },
+    {
+      "index": 18,
+      "en": "block",
+      "ja": "ブロック"
+    },
+    {
+      "index": 19,
+      "en": ") if the\ncallback is null. The return value of functions is a ",
+      "ja": "します。関数の戻り値は、"
+    },
+    {
+      "index": 20,
+      "en": "libuv error code",
+      "ja": "libuvエラーコード"
+    },
+    {
+      "index": 21,
+      "en": ". This is usually only useful for synchronous calls.\nThe ",
+      "ja": "です。通常、これは同期呼び出しでのみ有用です。"
+    },
+    {
+      "index": 22,
+      "en": "asynchronous",
+      "ja": "非同期"
+    },
+    {
+      "index": 23,
+      "en": " form is called when a callback is passed and the return\nvalue is 0.",
+      "ja": "形式はコールバックを渡したときに呼び出され、戻り値は0です。"
+    },
+    {
+      "index": 24,
+      "en": "Reading/Writing files",
+      "ja": "ファイルの読み書き"
+    },
+    {
+      "index": 25,
+      "en": "A file descriptor is obtained using",
+      "ja": "ファイル記述子は、次の関数で取得します。"
+    },
+    {
+      "index": 26,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 27,
+      "en": " are standard\n",
+      "ja": "は、標準の"
+    },
+    {
+      "index": 28,
+      "en": "Unix flags",
+      "ja": "Unixフラグ"
+    },
+    {
+      "index": 29,
+      "en": ".\nlibuv takes care of converting to the appropriate Windows flags.",
+      "ja": "です。libuvが適切なWindowsのフラグへの変換を処理します。"
+    },
+    {
+      "index": 30,
+      "en": "File descriptors are closed using",
+      "ja": "ファイル記述子は、次の関数で閉じます。"
+    },
+    {
+      "index": 31,
+      "en": "Filesystem operation callbacks have the signature:",
+      "ja": "ファイルシステム操作のコールバックは、次のシグネチャを持ちます。"
+    },
+    {
+      "index": 32,
+      "en": "Let’s see a simple implementation of ",
+      "ja": "単純な"
+    },
+    {
+      "index": 33,
+      "en": ". We start with registering\na callback for when the file is opened:",
+      "ja": "の実装を見てみましょう。まず、ファイルを開いたときのコールバックを登録します。"
+    },
+    {
+      "index": 34,
+      "en": "uvcat/main.c - opening a file",
+      "ja": "uvcat/main.c - ファイルを開く"
+    },
+    {
+      "index": 35,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 36,
+      "en": " field of a ",
+      "ja": "フィールドは、"
+    },
+    {
+      "index": 37,
+      "en": " is the file descriptor in case of the\n",
+      "ja": "では、"
+    },
+    {
+      "index": 38,
+      "en": " callback. If the file is successfully opened, we start reading it.",
+      "ja": "コールバック時にファイル記述子です。ファイルを正常に開けたら、読み取りを開始します。"
+    },
+    {
+      "index": 39,
+      "en": "uvcat/main.c - read callback",
+      "ja": "uvcat/main.c - 読み取りコールバック"
+    },
+    {
+      "index": 40,
+      "en": "In the case of a read call, you should pass an ",
+      "ja": "読み取り呼び出しでは、"
+    },
+    {
+      "index": 41,
+      "en": "initialized",
+      "ja": "初期化済み"
+    },
+    {
+      "index": 42,
+      "en": " buffer which will\nbe filled with data before the read callback is triggered. The ",
+      "ja": "のバッファを渡してください。読み取りコールバックが呼び出される前に、このバッファにデータが格納されます。"
+    },
+    {
+      "index": 43,
+      "en": "\noperations map almost directly to certain POSIX functions, so EOF is indicated\nin this case by ",
+      "ja": "操作は特定のPOSIX関数にほぼ直接対応するため、この場合のEOFは、"
+    },
+    {
+      "index": 44,
+      "en": " being 0. In the case of streams or pipes, the\n",
+      "ja": "が0であることで示されます。ストリームやパイプの場合は、代わりに"
+    },
+    {
+      "index": 45,
+      "en": " constant would have been passed as a status instead.",
+      "ja": "定数がステータスとして渡されます。"
+    },
+    {
+      "index": 46,
+      "en": "Here you see a common pattern when writing asynchronous programs. The\n",
+      "ja": "ここには、非同期プログラムでよく使われるパターンがあります。"
+    },
+    {
+      "index": 47,
+      "en": " call is performed synchronously. ",
+      "ja": "の呼び出しは同期的に実行します。"
+    },
+    {
+      "index": 48,
+      "en": "Usually tasks which are\none-off, or are done as part of the startup or shutdown stage are performed\nsynchronously, since we are interested in fast I/O when the program is going\nabout its primary task and dealing with multiple I/O sources",
+      "ja": "通常、一度限りのタスクや起動・終了段階の一部として行うタスクは、同期的に実行します。高速なI/Oが必要なのは、プログラムが主要な仕事を行い、複数のI/Oソースを扱っているときだからです"
+    },
+    {
+      "index": 49,
+      "en": ". For solo tasks\nthe performance difference usually is negligible and may lead to simpler code.",
+      "ja": "。単独のタスクでは、通常、性能差は無視できるほど小さく、同期処理の方がコードを単純にできることがあります。"
+    },
+    {
+      "index": 50,
+      "en": "Filesystem writing is similarly simple using ",
+      "ja": "ファイルシステムへの書き込みも、"
+    },
+    {
+      "index": 51,
+      "en": ".  ",
+      "ja": "を使えば同様に簡単です。"
+    },
+    {
+      "index": 52,
+      "en": "Your callback\nwill be triggered after the write is complete",
+      "ja": "コールバックは、書き込みが完了した後に呼び出されます"
+    },
+    {
+      "index": 53,
+      "en": ".  In our case the callback\nsimply drives the next read. Thus read and write proceed in lockstep via\ncallbacks.",
+      "ja": "。この例では、コールバックは単に次の読み取りを開始します。このように、読み取りと書き込みはコールバックを通じて交互に進みます。"
+    },
+    {
+      "index": 54,
+      "en": "uvcat/main.c - write callback",
+      "ja": "uvcat/main.c - 書き込みコールバック"
+    },
+    {
+      "index": 55,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 56,
+      "en": "Due to the way filesystems and disk drives are configured for performance,\na write that ‘succeeds’ may not be committed to disk yet.",
+      "ja": "ファイルシステムやディスクドライブは性能を重視して構成されているため、「成功」した書き込みでも、まだディスクに確定していない場合があります。"
+    },
+    {
+      "index": 57,
+      "en": "We set the dominos rolling in ",
+      "ja": "処理の連鎖を開始するのは、"
+    },
+    {
+      "index": 58,
+      "en": ":",
+      "ja": "です。"
+    },
+    {
+      "index": 59,
+      "en": "uvcat/main.c",
+      "ja": "uvcat/main.c"
+    },
+    {
+      "index": 60,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 61,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 62,
+      "en": " function must always be called on filesystem\nrequests to free internal memory allocations in libuv.",
+      "ja": "関数は、libuv内部で割り当てられたメモリを解放するため、ファイルシステム要求に対して必ず呼び出す必要があります。"
+    },
+    {
+      "index": 63,
+      "en": "Filesystem operations",
+      "ja": "ファイルシステム操作"
+    },
+    {
+      "index": 64,
+      "en": "All the standard filesystem operations like ",
+      "ja": ""
+    },
+    {
+      "index": 65,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 66,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 67,
+      "en": " are\nsupported asynchronously and have intuitive argument order. They follow the\nsame patterns as the read/write/open calls, returning the result in the\n",
+      "ja": "など、標準的なファイルシステム操作はすべて非同期でサポートされており、引数の順序も直感的です。読み取り・書き込み・オープン呼び出しと同じパターンに従い、結果を"
+    },
+    {
+      "index": 68,
+      "en": " field. The full list:",
+      "ja": "フィールドに返します。全一覧は次のとおりです。"
+    },
+    {
+      "index": 69,
+      "en": "Filesystem operations",
+      "ja": "ファイルシステム操作"
+    },
+    {
+      "index": 70,
+      "en": "Buffers and Streams",
+      "ja": "バッファとストリーム"
+    },
+    {
+      "index": 71,
+      "en": "The basic I/O handle in libuv is the stream (",
+      "ja": "libuvの基本的なI/Oハンドルはストリーム（"
+    },
+    {
+      "index": 72,
+      "en": "). TCP sockets, TTYs,\nand pipes for file I/O and IPC are all treated as stream subclasses.",
+      "ja": "）です。TCPソケット、TTY、ファイルI/OやIPCのためのパイプは、すべてストリームのサブクラスとして扱われます。"
+    },
+    {
+      "index": 73,
+      "en": "Streams are initialized using custom functions for each subclass, then operated\nupon using",
+      "ja": "ストリームは、サブクラスごとの専用関数で初期化し、その後、次の関数で操作します。"
+    },
+    {
+      "index": 74,
+      "en": "The stream based functions are simpler to use than the filesystem ones and\nlibuv will automatically keep reading from a stream when ",
+      "ja": "ストリーム用の関数は、ファイルシステム用の関数よりも簡単に使えます。"
+    },
+    {
+      "index": 75,
+      "en": " is\ncalled once, until ",
+      "ja": "を一度呼び出すと、libuvは、"
+    },
+    {
+      "index": 76,
+      "en": " is called.",
+      "ja": "を呼び出すまで自動的にストリームから読み取り続けます。"
+    },
+    {
+      "index": 77,
+      "en": "The discrete unit of data is the buffer – ",
+      "ja": "データの個々の単位はバッファ、すなわち"
+    },
+    {
+      "index": 78,
+      "en": ". This is simply\na collection of a pointer to bytes (",
+      "ja": "です。これは単に、バイト列へのポインタ（"
+    },
+    {
+      "index": 79,
+      "en": ") and the length\n(",
+      "ja": "）と長さ（"
+    },
+    {
+      "index": 80,
+      "en": "). The ",
+      "ja": "）をまとめたものです。"
+    },
+    {
+      "index": 81,
+      "en": " is lightweight and passed around by value.\nWhat does require management is the actual bytes, which have to be allocated\nand freed by the application.",
+      "ja": "は軽量で、値渡しされます。管理が必要なのは実際のバイト列であり、アプリケーションが割り当てと解放を行わなければなりません。"
+    },
+    {
+      "index": 82,
+      "en": "Error",
+      "ja": "エラー"
+    },
+    {
+      "index": 83,
+      "en": "THIS PROGRAM DOES NOT ALWAYS WORK, NEED SOMETHING BETTER",
+      "ja": "このプログラムは常に動作するわけではありません。より良いものが必要です"
+    },
+    {
+      "index": 84,
+      "en": "To demonstrate streams we will need to use ",
+      "ja": "ストリームの実演には、"
+    },
+    {
+      "index": 85,
+      "en": ". This allows streaming\nlocal files ",
+      "ja": "を使う必要があります。これにより、ローカルファイルをストリームとして扱えます"
+    },
+    {
+      "index": 86,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 87,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 88,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 89,
+      "en": ". Here is a simple tee utility using libuv.  Doing all operations\nasynchronously shows the power of evented I/O. The two writes won’t block each\nother, but we have to be careful to copy over the buffer data to ensure we don’t\nfree a buffer until it has been written.",
+      "ja": "。ここではlibuvを使った単純なteeユーティリティを示します。すべての操作を非同期で行うことで、イベント駆動I/Oの力がわかります。2つの書き込みは互いをブロックしませんが、書き込みが完了するまでバッファを解放しないよう、バッファのデータを慎重にコピーする必要があります。"
+    },
+    {
+      "index": 90,
+      "en": "The program is to be executed as:",
+      "ja": "プログラムは、次のように実行します。"
+    },
+    {
+      "index": 91,
+      "en": "We start off opening pipes on the files we require. libuv pipes to a file are\nopened as bidirectional by default.",
+      "ja": "まず、必要なファイルに対してパイプを開きます。libuvでは、ファイルへのパイプはデフォルトで双方向として開かれます。"
+    },
+    {
+      "index": 92,
+      "en": "uvtee/main.c - read on pipes",
+      "ja": "uvtee/main.c - パイプからの読み取り"
+    },
+    {
+      "index": 93,
+      "en": "The third argument of ",
+      "ja": ""
+    },
+    {
+      "index": 94,
+      "en": " should be set to 1 for IPC using named\npipes. This is covered in ",
+      "ja": "の第3引数は、名前付きパイプによるIPCでは1に設定する必要があります。これについては、"
+    },
+    {
+      "index": 95,
+      "en": "Processes",
+      "ja": "プロセス"
+    },
+    {
+      "index": 96,
+      "en": ". The ",
+      "ja": "で説明します。"
+    },
+    {
+      "index": 97,
+      "en": " call\nassociates the pipe with the file descriptor, in this case ",
+      "ja": "の呼び出しは、パイプをファイル記述子、この例では"
+    },
+    {
+      "index": 98,
+      "en": " (standard\ninput).",
+      "ja": "（標準入力）に関連付けます。"
+    },
+    {
+      "index": 99,
+      "en": "We start monitoring ",
+      "ja": ""
+    },
+    {
+      "index": 100,
+      "en": ". The ",
+      "ja": "の監視を開始します。"
+    },
+    {
+      "index": 101,
+      "en": " callback is invoked as new\nbuffers are required to hold incoming data. ",
+      "ja": "コールバックは、入力データを保持する新しいバッファが必要になると呼び出されます。"
+    },
+    {
+      "index": 102,
+      "en": " will be called with\nthese buffers.",
+      "ja": "は、これらのバッファを渡して呼び出されます。"
+    },
+    {
+      "index": 103,
+      "en": "uvtee/main.c - reading buffers",
+      "ja": "uvtee/main.c - バッファの読み取り"
+    },
+    {
+      "index": 104,
+      "en": "The standard ",
+      "ja": "ここでは標準の"
+    },
+    {
+      "index": 105,
+      "en": " is sufficient here, but you can use any memory allocation\nscheme. For example, node.js uses its own slab allocator which associates\nbuffers with V8 objects.",
+      "ja": "で十分ですが、任意のメモリ割り当て方式を使えます。たとえば、node.jsは、バッファをV8オブジェクトに関連付ける独自のスラブアロケータを使っています。"
+    },
+    {
+      "index": 106,
+      "en": "The read callback ",
+      "ja": "読み取りコールバックの"
+    },
+    {
+      "index": 107,
+      "en": " parameter is less than 0 on any error. This error\nmight be EOF, in which case we close all the streams, using the generic close\nfunction ",
+      "ja": "パラメータは、エラー時には0未満になります。このエラーはEOFの場合もあり、その場合は汎用のクローズ関数、"
+    },
+    {
+      "index": 108,
+      "en": " which deals with the handle based on its internal type.\nOtherwise ",
+      "ja": "を使ってすべてのストリームを閉じます。この関数は、ハンドルの内部型に応じて処理します。それ以外の場合、"
+    },
+    {
+      "index": 109,
+      "en": " is a non-negative number and we can attempt to write that\nmany bytes to the output streams. Finally remember that buffer allocation and\ndeallocation is application responsibility, so we free the data.",
+      "ja": "は非負の数であり、そのバイト数を出力ストリームに書き込むことができます。最後に、バッファの割り当てと解放はアプリケーションの責任なので、データを解放します。"
+    },
+    {
+      "index": 110,
+      "en": "The allocation callback may return a buffer with length zero if it fails to\nallocate memory. In this case, the read callback is invoked with error\nUV_ENOBUFS. libuv will continue to attempt to read the stream though, so you\nmust explicitly call ",
+      "ja": "割り当てコールバックは、メモリの割り当てに失敗すると、長さ0のバッファを返すことがあります。この場合、読み取りコールバックはUV_ENOBUFSエラーで呼び出されます。ただし、libuvは引き続きストリームからの読み取りを試みるため、割り当て失敗時に停止したいなら、明示的に"
+    },
+    {
+      "index": 111,
+      "en": " if you want to stop when allocation fails.",
+      "ja": "を呼び出す必要があります。"
+    },
+    {
+      "index": 112,
+      "en": "The read callback may be called with ",
+      "ja": "読み取りコールバックは、"
+    },
+    {
+      "index": 113,
+      "en": ", indicating that at this\npoint there is nothing to be read. Most applications will just ignore this.",
+      "ja": "で呼び出されることもあります。これは、その時点で読み取るものがないことを示します。ほとんどのアプリケーションでは、単に無視します。"
+    },
+    {
+      "index": 114,
+      "en": "uvtee/main.c - Write to pipe",
+      "ja": "uvtee/main.c - パイプへの書き込み"
+    },
+    {
+      "index": 115,
+      "en": " makes a copy of the buffer obtained from read. This buffer\ndoes not get passed through to the write callback trigged on write completion. To\nget around this we wrap a write request and a buffer in ",
+      "ja": "は、読み取りで得られたバッファをコピーします。このバッファは、書き込み完了時に呼び出される書き込みコールバックには引き渡されません。これを解決するため、書き込み要求とバッファを"
+    },
+    {
+      "index": 116,
+      "en": " and\nunwrap it in the callbacks. We make a copy so we can free the two buffers from\nthe two calls to ",
+      "ja": "でまとめ、コールバックで取り出します。コピーを作成することで、2回の"
+    },
+    {
+      "index": 117,
+      "en": " independently of each other. While acceptable\nfor a demo program like this, you’ll probably want smarter memory management,\nlike reference counted buffers or a pool of buffers in any major application.",
+      "ja": "の呼び出しによる2つのバッファを、互いに独立して解放できます。このような実演プログラムでは許容できますが、大きなアプリケーションでは、参照カウント付きバッファやバッファプールなど、より賢いメモリ管理を使いたいでしょう。"
+    },
+    {
+      "index": 118,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 119,
+      "en": "If your program is meant to be used with other programs it may knowingly or\nunknowingly be writing to a pipe. This makes it susceptible to ",
+      "ja": "他のプログラムと組み合わせて使うことを想定したプログラムは、意図的に、あるいは知らずに、パイプに書き込んでいる場合があります。このため、"
+    },
+    {
+      "index": 120,
+      "en": "aborting on\nreceiving a SIGPIPE",
+      "ja": "SIGPIPEを受信して異常終了する"
+    },
+    {
+      "index": 121,
+      "en": ". It is a good idea to insert:",
+      "ja": "可能性があります。次の処理を、"
+    },
+    {
+      "index": 122,
+      "en": "in the initialization stages of your application.",
+      "ja": "アプリケーションの初期化段階に入れるとよいでしょう。"
+    },
+    {
+      "index": 123,
+      "en": "File change events",
+      "ja": "ファイル変更イベント"
+    },
+    {
+      "index": 124,
+      "en": "All modern operating systems provide APIs to put watches on individual files or\ndirectories and be informed when the files are modified. libuv wraps common\nfile change notification libraries ",
+      "ja": "現代のオペレーティングシステムはすべて、個々のファイルやディレクトリを監視し、ファイルが変更されたときに通知を受けるためのAPIを提供しています。libuvは一般的なファイル変更通知ライブラリをラップしています"
+    },
+    {
+      "index": 125,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 126,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 127,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 128,
+      "en": ". This is one of the more\ninconsistent parts of libuv. File change notification systems are themselves\nextremely varied across platforms so getting everything working everywhere is\ndifficult. To demonstrate, I’m going to build a simple utility which runs\na command whenever any of the watched files change:",
+      "ja": "。これはlibuvの中でも一貫性に欠ける部分の1つです。ファイル変更通知の仕組み自体がプラットフォームごとに大きく異なるため、すべての環境で動作させるのは困難です。実演として、監視対象のいずれかのファイルが変更されるたびにコマンドを実行する、単純なユーティリティを作ります。"
+    },
+    {
+      "index": 129,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 130,
+      "en": "Currently this example only works on OSX and Windows.\nRefer to the ",
+      "ja": "現在、この例はOSXとWindowsでのみ動作します。"
+    },
+    {
+      "index": 131,
+      "en": "notes of uv_fs_event_start",
+      "ja": "uv_fs_event_startの注記"
+    },
+    {
+      "index": 132,
+      "en": " function.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 133,
+      "en": "The file change notification is started using ",
+      "ja": "ファイル変更通知は、"
+    },
+    {
+      "index": 134,
+      "en": ":",
+      "ja": "で開始します。"
+    },
+    {
+      "index": 135,
+      "en": "onchange/main.c - The setup",
+      "ja": "onchange/main.c - セットアップ"
+    },
+    {
+      "index": 136,
+      "en": "The third argument is the actual file or directory to monitor. The last\nargument, ",
+      "ja": "第3引数は、実際に監視するファイルまたはディレクトリです。最後の引数、"
+    },
+    {
+      "index": 137,
+      "en": ", can be:",
+      "ja": "は、次のいずれかです。"
+    },
+    {
+      "index": 138,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 139,
+      "en": " don’t do anything (yet).\n",
+      "ja": "は、（まだ）何もしません。"
+    },
+    {
+      "index": 140,
+      "en": " will start watching subdirectories as well on\nsupported platforms.",
+      "ja": "は、対応するプラットフォームでサブディレクトリの監視も開始します。"
+    },
+    {
+      "index": 141,
+      "en": "The callback will receive the following arguments:",
+      "ja": "コールバックは、次の引数を受け取ります。"
+    },
+    {
+      "index": 142,
+      "en": " - The handle. The ",
+      "ja": " - ハンドルです。ハンドルの"
+    },
+    {
+      "index": 143,
+      "en": " field of the handle\nis the file on which the watch was set.",
+      "ja": "フィールドは、監視を設定したファイルです。"
+    },
+    {
+      "index": 144,
+      "en": " - If a directory is being monitored, this is the\nfile which was changed. Only non-",
+      "ja": " - ディレクトリを監視している場合は、変更されたファイルです。LinuxとWindowsでのみ非"
+    },
+    {
+      "index": 145,
+      "en": " on Linux and Windows. May be ",
+      "ja": "になります。ただし、これらのプラットフォームでも"
+    },
+    {
+      "index": 146,
+      "en": "\neven on those platforms.",
+      "ja": "になる場合があります。"
+    },
+    {
+      "index": 147,
+      "en": " - one of ",
+      "ja": " - "
+    },
+    {
+      "index": 148,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 149,
+      "en": ", or a bitwise OR of\nboth.",
+      "ja": "のいずれか、あるいは両者のビット単位ORです。"
+    },
+    {
+      "index": 150,
+      "en": " - If ",
+      "ja": " - "
+    },
+    {
+      "index": 151,
+      "en": ", there is an ",
+      "ja": "なら、"
+    },
+    {
+      "index": 152,
+      "en": "libuv error",
+      "ja": "libuvエラー"
+    },
+    {
+      "index": 153,
+      "en": ".",
+      "ja": "があります。"
+    },
+    {
+      "index": 154,
+      "en": "In our example we simply print the arguments and run the command using\n",
+      "ja": "この例では、単に引数を表示し、"
+    },
+    {
+      "index": 155,
+      "en": ".",
+      "ja": "を使ってコマンドを実行します。"
+    },
+    {
+      "index": 156,
+      "en": "onchange/main.c - file change notification callback",
+      "ja": "onchange/main.c - ファイル変更通知コールバック"
+    },
+    {
+      "index": 157,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 158,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 159,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 160,
+      "en": "inotify on Linux, FSEvents on Darwin, kqueue on BSDs,\nReadDirectoryChangesW on Windows, event ports on Solaris, unsupported on Cygwin",
+      "ja": "Linuxではinotify、DarwinではFSEvents、BSD系ではkqueue、WindowsではReadDirectoryChangesW、Solarisではイベントポートを使います。Cygwinは非対応です。"
+    },
+    {
+      "index": 161,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 162,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 163,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 164,
+      "en": "see ",
+      "ja": "参照: "
+    },
+    {
+      "index": 165,
+      "en": "Parent-child IPC",
+      "ja": "親子間IPC"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 18,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

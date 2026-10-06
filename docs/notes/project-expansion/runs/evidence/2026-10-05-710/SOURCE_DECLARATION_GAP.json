@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-04T20:42:55.802084+00:00",
+  "status": "failed",
+  "source": {
+    "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/networking.rst",
+    "sha256": "6d12921724fd84c70c256f27b894df5b41a113d0ad87688b733b4af03bb68e73"
+  },
+  "originalLine": 176,
+  "originalDirective": ".. code::block:: c",
+  "originalDeclaration": "int uv_udp_set_membership(uv_udp_t* handle, const char* multicast_addr, const char* interface_addr, uv_membership membership);",
+  "observations": [
+    {
+      "role": "canonical",
+      "path": "/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/canonical/en/guide/networking.md",
+      "sha256": "41063fca40b78497b757d6e4d4a5d8f8bc55b5a28d433396787552935ac8b90a",
+      "originalDeclarationAbsentFromBody": true
+    },
+    {
+      "role": "translation",
+      "path": "/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/translation/ja/guide/networking.md",
+      "sha256": "4ad0e7c096f983d841f7b8e8fdc127b763ed204a62ddb594113838f1e1616e44",
+      "originalDeclarationAbsentFromBody": true
+    },
+    {
+      "role": "rendered English",
+      "path": "/private/tmp/libx-libuv-formal-689/apps/libuv/dist/v1-53-0/en/guide/networking/index.html",
+      "sha256": "a13e7acb7757313a5bef0ba374bd3e2a020b4d527fe7a577d741cd5a6610d20e",
+      "originalDeclarationAbsentFromBody": true
+    },
+    {
+      "role": "rendered Japanese",
+      "path": "/private/tmp/libx-libuv-formal-689/apps/libuv/dist/v1-53-0/ja/guide/networking/index.html",
+      "sha256": "1a3ea9274b2c3575d6e8007490e34fdebc09b2030b4845fe0c1ac5808b489b7a",
+      "originalDeclarationAbsentFromBody": true
+    }
+  ],
+  "finding": "固定RSTにある公開関数宣言1件がSphinx由来定本とその日本語訳/生成本文から欠落。元HTML同一検査では発見できず、RSTとの内容対照で確認。",
+  "cause": "Original malformed directive is a likely explanation; exact parser behavior not yet proved. No warning attributing this declaration absence was found in saved679SPHINX_BUILD.log.",
+  "nextAction": "固定RSTからこの宣言をコードブロックとして忠実に復元する決定的canonical overlayを追加する。原文の誤記/変換補正はEN/JAフッターに示す。該当原文/EN/JAとactualDOMを再照合し、原RST全体の他の脱落も調べる。既存15reviewed頁は入力不変なら保持。",
+  "fullContentReview": "not completed",
+  "publication": "not requested"
+}

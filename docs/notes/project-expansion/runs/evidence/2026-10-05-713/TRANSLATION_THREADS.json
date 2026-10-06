@@ -1,0 +1,1029 @@
+{
+  "page": "guide/threads",
+  "at": "2026-10-04T20:54:53.763873+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/threads.rst",
+      "sha256": "48155bf8a2759cb4ed4a3547a5dc8fcf9c354d02607aae81006dc8e915a06946"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/threads.md",
+      "sha256": "5e680930e002cbf8a83092e3e23839f6a856a203bcb048432923e5545ad854a2"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/threads.md",
+      "sha256": "cf182a98c509f45a475f27773b2d9b7eb4cbf4f1f3d72202077f26adeed5bfee"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 16 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Threads",
+      "ja": "スレッド"
+    },
+    {
+      "index": 1,
+      "en": "Wait a minute? Why are we on threads? Aren’t event loops supposed to be ",
+      "ja": "ちょっと待ってください。なぜスレッドの話をしているのでしょう？イベントループこそが、"
+    },
+    {
+      "index": 2,
+      "en": "the\nway",
+      "ja": "決定的な方法"
+    },
+    {
+      "index": 3,
+      "en": " to do ",
+      "ja": "として、"
+    },
+    {
+      "index": 4,
+      "en": "web-scale programming",
+      "ja": "Web規模のプログラミング"
+    },
+    {
+      "index": 5,
+      "en": "? Well… no. Threads are still the medium in\nwhich processors do their jobs. Threads are therefore mighty useful sometimes, even\nthough you might have to wade through various synchronization primitives.",
+      "ja": "を行うものではないのでしょうか？そうではありません。プロセッサが仕事をする手段は、今もスレッドです。そのため、さまざまな同期プリミティブを使いこなす必要があるとしても、スレッドが非常に役立つ場面があります。"
+    },
+    {
+      "index": 6,
+      "en": "Threads are used internally to fake the asynchronous nature of all of the system\ncalls. libuv also uses threads to allow you, the application, to perform a task\nasynchronously that is actually blocking, by spawning a thread and collecting\nthe result when it is done.",
+      "ja": "内部では、システムコールを非同期に見せるためにスレッドを使います。libuvは、スレッドを起動して完了時に結果を回収することで、アプリケーションが、実際にはブロッキングするタスクを非同期で実行できるようにもしています。"
+    },
+    {
+      "index": 7,
+      "en": "Today there are two predominant thread libraries: the Windows threads\nimplementation and POSIX’s ",
+      "ja": "現在、主要なスレッドライブラリは2つあります。Windowsのスレッド実装と、POSIXの"
+    },
+    {
+      "index": 8,
+      "en": "pthreads(7)",
+      "ja": "pthreads(7)"
+    },
+    {
+      "index": 9,
+      "en": ". libuv’s thread API is analogous to\nthe pthreads API and often has similar semantics.",
+      "ja": "です。libuvのスレッドAPIはpthreads APIに似ており、意味も共通していることが多くあります。"
+    },
+    {
+      "index": 10,
+      "en": "A notable aspect of libuv’s thread facilities is that it is a self contained\nsection within libuv. Whereas other features intimately depend on the event\nloop and callback principles, threads are complete agnostic, they block as\nrequired, signal errors directly via return values, and, as shown in the\n",
+      "ja": "libuvのスレッド機能で注目すべき点は、libuv内で独立した部分になっていることです。他の機能はイベントループやコールバックの原則に密接に依存しますが、スレッド機能はそれらに依存しません。必要に応じてブロックし、戻り値で直接エラーを通知します。"
+    },
+    {
+      "index": 11,
+      "en": "first example",
+      "ja": "最初の例"
+    },
+    {
+      "index": 12,
+      "en": ", don’t even require a running\nevent loop.",
+      "ja": "に示すように、動作中のイベントループさえ必要ありません。"
+    },
+    {
+      "index": 13,
+      "en": "libuv’s thread API is also very limited since the semantics and syntax of\nthreads are different on all platforms, with different levels of completeness.",
+      "ja": "プラットフォームごとにスレッドの意味や構文、機能の充実度が異なるため、libuvのスレッドAPIも非常に限定的です。"
+    },
+    {
+      "index": 14,
+      "en": "This chapter makes the following assumption: ",
+      "ja": "この章では、次を前提とします。"
+    },
+    {
+      "index": 15,
+      "en": "There is only one event loop,\nrunning in one thread (the main thread)",
+      "ja": "イベントループは1つだけで、1つのスレッド（メインスレッド）で動作します"
+    },
+    {
+      "index": 16,
+      "en": ". No other thread interacts\nwith the event loop (except using ",
+      "ja": "。他のスレッドは、イベントループとやり取りしません（"
+    },
+    {
+      "index": 17,
+      "en": ").",
+      "ja": "を使う場合を除きます）。"
+    },
+    {
+      "index": 18,
+      "en": "Core thread operations",
+      "ja": "基本的なスレッド操作"
+    },
+    {
+      "index": 19,
+      "en": "There isn’t much here, you just start a thread using ",
+      "ja": "操作は多くありません。"
+    },
+    {
+      "index": 20,
+      "en": " and\nwait for it to close using ",
+      "ja": "でスレッドを開始し、"
+    },
+    {
+      "index": 21,
+      "en": ".",
+      "ja": "で終了を待つだけです。"
+    },
+    {
+      "index": 22,
+      "en": "thread-create/main.c",
+      "ja": "thread-create/main.c"
+    },
+    {
+      "index": 23,
+      "en": "Tip",
+      "ja": "ヒント"
+    },
+    {
+      "index": 24,
+      "en": " is just an alias for ",
+      "ja": "は、Unixでは単に"
+    },
+    {
+      "index": 25,
+      "en": " on Unix, but this is an\nimplementation detail, avoid depending on it to always be true.",
+      "ja": "の別名ですが、これは実装上の詳細です。常にそうであることに依存しないでください。"
+    },
+    {
+      "index": 26,
+      "en": "The second parameter is the function which will serve as the entry point for\nthe thread, the last parameter is a ",
+      "ja": "第2引数はスレッドの入口になる関数で、最後の引数は、スレッドに任意のパラメータを渡すための"
+    },
+    {
+      "index": 27,
+      "en": " argument which can be used to pass\ncustom parameters to the thread. The function ",
+      "ja": "引数です。関数"
+    },
+    {
+      "index": 28,
+      "en": " will now run in a separate\nthread, scheduled pre-emptively by the operating system:",
+      "ja": "は、別のスレッドで、オペレーティングシステムによりプリエンプティブにスケジュールされて動作します。"
+    },
+    {
+      "index": 29,
+      "en": "thread-create/main.c",
+      "ja": "thread-create/main.c"
+    },
+    {
+      "index": 30,
+      "en": "Unlike ",
+      "ja": ""
+    },
+    {
+      "index": 31,
+      "en": " which allows the target thread to pass back a value to\nthe calling thread using a second parameter, ",
+      "ja": "は、第2引数を使って、対象スレッドから呼び出し元のスレッドに値を返せますが、"
+    },
+    {
+      "index": 32,
+      "en": " does not. To\nsend values use ",
+      "ja": "にはその機能がありません。値を送るには、"
+    },
+    {
+      "index": 33,
+      "en": "Inter-thread communication",
+      "ja": "スレッド間通信"
+    },
+    {
+      "index": 34,
+      "en": ".",
+      "ja": "を使ってください。"
+    },
+    {
+      "index": 35,
+      "en": "Synchronization Primitives",
+      "ja": "同期プリミティブ"
+    },
+    {
+      "index": 36,
+      "en": "This section is purposely spartan. This book is not about threads, so I only\ncatalogue any surprises in the libuv APIs here. For the rest you can look at\nthe ",
+      "ja": "この節は意図的に簡潔にしています。本書はスレッドを主題としていないため、ここではlibuv APIで意外に感じる点だけを挙げます。それ以外は、"
+    },
+    {
+      "index": 37,
+      "en": "pthreads(7)",
+      "ja": "pthreads(7)"
+    },
+    {
+      "index": 38,
+      "en": " man pages.",
+      "ja": "のmanページを参照してください。"
+    },
+    {
+      "index": 39,
+      "en": "Mutexes",
+      "ja": "ミューテックス"
+    },
+    {
+      "index": 40,
+      "en": "The mutex functions are a ",
+      "ja": "ミューテックス関数は、pthreadの対応する関数に、"
+    },
+    {
+      "index": 41,
+      "en": "direct",
+      "ja": "直接"
+    },
+    {
+      "index": 42,
+      "en": " map to the pthread equivalents.",
+      "ja": "対応します。"
+    },
+    {
+      "index": 43,
+      "en": "libuv mutex functions",
+      "ja": "libuvのミューテックス関数"
+    },
+    {
+      "index": 44,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 45,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 46,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 47,
+      "en": "\nfunctions will return 0 on success, and an error code otherwise.",
+      "ja": "関数は、成功時に0、それ以外の場合はエラーコードを返します。"
+    },
+    {
+      "index": 48,
+      "en": "If ",
+      "ja": ""
+    },
+    {
+      "index": 49,
+      "en": "libuv",
+      "ja": "libuv"
+    },
+    {
+      "index": 50,
+      "en": " has been compiled with debugging enabled, ",
+      "ja": "がデバッグを有効にしてコンパイルされている場合、"
+    },
+    {
+      "index": 51,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 52,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 53,
+      "en": " will ",
+      "ja": "は、エラー時に"
+    },
+    {
+      "index": 54,
+      "en": " on error.\nSimilarly ",
+      "ja": "します。同様に、"
+    },
+    {
+      "index": 55,
+      "en": " will abort if the error is anything ",
+      "ja": "は、エラーが"
+    },
+    {
+      "index": 56,
+      "en": "other\nthan",
+      "ja": ""
+    },
+    {
+      "index": 57,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 58,
+      "en": ".",
+      "ja": "以外なら、アボートします。"
+    },
+    {
+      "index": 59,
+      "en": "Recursive mutexes are supported, but you should not rely on them. Also, they\nshould not be used with ",
+      "ja": "再帰ミューテックスはサポートされていますが、依存すべきではありません。また、"
+    },
+    {
+      "index": 60,
+      "en": " variables.",
+      "ja": "変数と組み合わせて使うべきでもありません。"
+    },
+    {
+      "index": 61,
+      "en": "The default BSD mutex implementation will raise an error if a thread which has\nlocked a mutex attempts to lock it again. For example, a construct like:",
+      "ja": "BSDのデフォルトのミューテックス実装では、ミューテックスをロックしたスレッドが再びロックしようとするとエラーになります。たとえば、次のような構成です。"
+    },
+    {
+      "index": 62,
+      "en": "can be used to wait until another thread initializes some stuff and then\nunlocks ",
+      "ja": "これは、別のスレッドが何かを初期化してから、"
+    },
+    {
+      "index": 63,
+      "en": " but will lead to your program crashing if in debug mode, or\nreturn an error in the second call to ",
+      "ja": "をアンロックするまで待つために使えますが、デバッグモードではプログラムがクラッシュするか、2回目の"
+    },
+    {
+      "index": 64,
+      "en": ".",
+      "ja": "の呼び出しでエラーになります。"
+    },
+    {
+      "index": 65,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 66,
+      "en": "Mutexes on Windows are always recursive.",
+      "ja": "Windowsのミューテックスは常に再帰的です。"
+    },
+    {
+      "index": 67,
+      "en": "Locks",
+      "ja": "ロック"
+    },
+    {
+      "index": 68,
+      "en": "Read-write locks are a more granular access mechanism. Two readers can access\nshared memory at the same time. A writer may not acquire the lock when it is\nheld by a reader. A reader or writer may not acquire a lock when a writer is\nholding it. Read-write locks are frequently used in databases. Here is a toy\nexample.",
+      "ja": "読み書きロックは、より細かい粒度のアクセス機構です。2つの読み取り側は、同時に共有メモリへアクセスできます。読み取り側がロックを保持している間、書き込み側はロックを取得できません。書き込み側がロックを保持している間は、読み取り側も書き込み側もロックを取得できません。読み書きロックはデータベースでよく使われます。単純な例を示します。"
+    },
+    {
+      "index": 69,
+      "en": "locks/main.c - simple rwlocks",
+      "ja": "locks/main.c - 単純な読み書きロック"
+    },
+    {
+      "index": 70,
+      "en": "Run this and observe how the readers will sometimes overlap. In case of\nmultiple writers, schedulers will usually give them higher priority, so if you\nadd two writers, you’ll see that both writers tend to finish first before the\nreaders get a chance again.",
+      "ja": "実行して、読み取り側の動作がときどき重なる様子を観察してください。書き込み側が複数ある場合、スケジューラは通常、それらに高い優先度を与えます。そのため、書き込み側を2つ追加すると、読み取り側に再び機会が回る前に、両方の書き込み側が先に終了する傾向が見られます。"
+    },
+    {
+      "index": 71,
+      "en": "We also use barriers in the above example so that the main thread can wait for\nall readers and writers to indicate they have ended.",
+      "ja": "上の例では、すべての読み取り側と書き込み側が終了を通知するまでメインスレッドが待てるように、バリアも使っています。"
+    },
+    {
+      "index": 72,
+      "en": "Others",
+      "ja": "その他"
+    },
+    {
+      "index": 73,
+      "en": "libuv also supports ",
+      "ja": "libuvは、"
+    },
+    {
+      "index": 74,
+      "en": "semaphores",
+      "ja": "セマフォ"
+    },
+    {
+      "index": 75,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 76,
+      "en": "condition variables",
+      "ja": "条件変数"
+    },
+    {
+      "index": 77,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 78,
+      "en": "barriers",
+      "ja": "バリア"
+    },
+    {
+      "index": 79,
+      "en": " with APIs\nvery similar to their pthread counterparts.",
+      "ja": "もサポートしており、APIはpthreadの対応するものと非常によく似ています。"
+    },
+    {
+      "index": 80,
+      "en": "In addition, libuv provides a convenience function ",
+      "ja": "さらに、libuvには便利な関数、"
+    },
+    {
+      "index": 81,
+      "en": ". Multiple\nthreads can attempt to call ",
+      "ja": "があります。複数のスレッドが、指定したガードと関数ポインタを使って、"
+    },
+    {
+      "index": 82,
+      "en": " with a given guard and a function\npointer, ",
+      "ja": "の呼び出しを試みることができますが、"
+    },
+    {
+      "index": 83,
+      "en": "only the first one will win, the function will be called once and\nonly once",
+      "ja": "最初の1つだけが成功し、関数は厳密に1回だけ呼び出されます"
+    },
+    {
+      "index": 84,
+      "en": ":",
+      "ja": "。"
+    },
+    {
+      "index": 85,
+      "en": "After all threads are done, ",
+      "ja": "すべてのスレッドが終了した後は、"
+    },
+    {
+      "index": 86,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 87,
+      "en": "libuv v0.11.11 onwards also added a ",
+      "ja": "libuv v0.11.11以降では、スレッドローカルストレージ用の"
+    },
+    {
+      "index": 88,
+      "en": " struct and ",
+      "ja": "構造体と"
+    },
+    {
+      "index": 89,
+      "en": "api",
+      "ja": "API"
+    },
+    {
+      "index": 90,
+      "en": " for\nthread-local storage.",
+      "ja": "も追加されています。"
+    },
+    {
+      "index": 91,
+      "en": "libuv work queue",
+      "ja": "libuvのワークキュー"
+    },
+    {
+      "index": 92,
+      "en": " is a convenience function that allows an application to run\na task in a separate thread, and have a callback that is triggered when the\ntask is done. A seemingly simple function, what makes ",
+      "ja": "は、アプリケーションが別のスレッドでタスクを実行し、タスクの完了時にコールバックを呼び出せるようにする便利な関数です。一見単純な関数ですが、"
+    },
+    {
+      "index": 93,
+      "en": "\ntempting is that it allows potentially any third-party libraries to be used\nwith the event-loop paradigm. When you use event loops, it is ",
+      "ja": "の魅力は、さまざまなサードパーティライブラリをイベントループ方式で使えるようになる点です。イベントループを使う場合、"
+    },
+    {
+      "index": 94,
+      "en": "imperative to\nmake sure that no function which runs periodically in the loop thread blocks\nwhen performing I/O or is a serious CPU hog",
+      "ja": "ループのスレッドで定期的に動く関数が、I/Oでブロックしたり、大量のCPU時間を消費したりしないことを、必ず確認しなければなりません"
+    },
+    {
+      "index": 95,
+      "en": ", because this means that the loop\nslows down and events are not being handled at full capacity.",
+      "ja": "。そうでなければループが遅くなり、イベントを十分な能力で処理できなくなるためです。"
+    },
+    {
+      "index": 96,
+      "en": "However, a lot of existing code out there features blocking functions (for example\na routine which performs I/O under the hood) to be used with threads if you\nwant responsiveness (the classic ‘one thread per client’ server model), and\ngetting them to play with an event loop library generally involves rolling your\nown system of running the task in a separate thread.  libuv just provides\na convenient abstraction for this.",
+      "ja": "しかし、既存のコードには、ブロッキング関数（たとえば内部でI/Oを行うルーチン）を含むものが多くあります。応答性を確保するには、スレッドで使う必要があるコードです（従来の「クライアントごとに1スレッド」というサーバーモデル）。これらをイベントループライブラリと組み合わせるには、通常、タスクを別のスレッドで実行する独自の仕組みを作る必要があります。libuvは、そのための便利な抽象化を提供します。"
+    },
+    {
+      "index": 97,
+      "en": "Here is a simple example inspired by ",
+      "ja": "次は、"
+    },
+    {
+      "index": 98,
+      "en": "node.js is cancer",
+      "ja": "node.js is cancer"
+    },
+    {
+      "index": 99,
+      "en": ". We are going to\ncalculate fibonacci numbers, sleeping a bit along the way, but run it in\na separate thread so that the blocking and CPU bound task does not prevent the\nevent loop from performing other activities.",
+      "ja": "に着想を得た単純な例です。途中で少しスリープしながらフィボナッチ数を計算します。ただし、別のスレッドで実行するので、このブロッキングかつCPU負荷の高いタスクが、イベントループの他の活動を妨げません。"
+    },
+    {
+      "index": 100,
+      "en": "queue-work/main.c - lazy fibonacci",
+      "ja": "queue-work/main.c - のんびりしたフィボナッチ計算"
+    },
+    {
+      "index": 101,
+      "en": "The actual task function is simple, nothing to show that it is going to be\nrun in a separate thread. The ",
+      "ja": "実際のタスク関数は単純で、別のスレッドで動くことを示すものはありません。手掛かりは、"
+    },
+    {
+      "index": 102,
+      "en": " structure is the clue. You can pass\narbitrary data through it using the ",
+      "ja": "構造体です。その"
+    },
+    {
+      "index": 103,
+      "en": " field and use it to\ncommunicate to and from the thread. But be sure you are using proper locks if\nyou are changing things while both threads may be running.",
+      "ja": "フィールドで任意のデータを渡し、スレッドとの間でやり取りできます。ただし、両方のスレッドが動作している間に値を変更する場合は、適切なロックを使ってください。"
+    },
+    {
+      "index": 104,
+      "en": "The trigger is ",
+      "ja": "起動する関数は、"
+    },
+    {
+      "index": 105,
+      "en": ":",
+      "ja": "です。"
+    },
+    {
+      "index": 106,
+      "en": "queue-work/main.c",
+      "ja": "queue-work/main.c"
+    },
+    {
+      "index": 107,
+      "en": "The thread function will be launched in a separate thread, passed the\n",
+      "ja": "スレッド関数は別のスレッドで起動され、"
+    },
+    {
+      "index": 108,
+      "en": " structure and once the function returns, the ",
+      "ja": "構造体を受け取ります。関数が戻ると、"
+    },
+    {
+      "index": 109,
+      "en": "after",
+      "ja": "after"
+    },
+    {
+      "index": 110,
+      "en": " function\nwill be called on the thread the event loop is running in. It will be passed\nthe same structure.",
+      "ja": "関数が、イベントループを実行しているスレッドで呼び出されます。同じ構造体が渡されます。"
+    },
+    {
+      "index": 111,
+      "en": "For writing wrappers to blocking libraries, a common ",
+      "ja": "ブロッキングライブラリのラッパーを書く際によく使われる"
+    },
+    {
+      "index": 112,
+      "en": "pattern",
+      "ja": "パターン"
+    },
+    {
+      "index": 113,
+      "en": "\nis to use a baton to exchange data.",
+      "ja": "は、バトンを使ったデータの受け渡しです。"
+    },
+    {
+      "index": 114,
+      "en": "Since libuv version ",
+      "ja": "libuvのバージョン"
+    },
+    {
+      "index": 115,
+      "en": "0.9.4",
+      "ja": "0.9.4"
+    },
+    {
+      "index": 116,
+      "en": " an additional function, ",
+      "ja": "以降では、追加の関数、"
+    },
+    {
+      "index": 117,
+      "en": ", is\navailable. This allows you to cancel tasks on the libuv work queue. Only tasks\nthat ",
+      "ja": "が利用できます。これにより、libuvのワークキュー上のタスクをキャンセルできます。キャンセルできるのは、"
+    },
+    {
+      "index": 118,
+      "en": "are yet to be started",
+      "ja": "まだ開始していない"
+    },
+    {
+      "index": 119,
+      "en": " can be cancelled. If a task has ",
+      "ja": "タスクだけです。タスクが、"
+    },
+    {
+      "index": 120,
+      "en": "already started\nexecuting, or it has finished executing",
+      "ja": "すでに実行を開始しているか、実行を終了している"
+    },
+    {
+      "index": 121,
+      "en": ", ",
+      "ja": "場合、"
+    },
+    {
+      "index": 122,
+      "en": "will fail",
+      "ja": "は失敗します"
+    },
+    {
+      "index": 123,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 124,
+      "en": " is useful to cleanup pending tasks if the user requests\ntermination. For example, a music player may queue up multiple directories to\nbe scanned for audio files. If the user terminates the program, it should quit\nquickly and not wait until all pending requests are run.",
+      "ja": "は、ユーザーが終了を要求したときに、保留中のタスクを片付けるのに役立ちます。たとえば、音楽プレーヤーは、音声ファイルを探すために複数のディレクトリをキューに入れることがあります。ユーザーがプログラムを終了したら、保留中のすべての要求が実行されるのを待たずに、すぐ終了すべきです。"
+    },
+    {
+      "index": 125,
+      "en": "Let’s modify the fibonacci example to demonstrate ",
+      "ja": "フィボナッチの例を変更して、"
+    },
+    {
+      "index": 126,
+      "en": ". We first set\nup a signal handler for termination.",
+      "ja": "を実演しましょう。まず、終了用のシグナルハンドラを設定します。"
+    },
+    {
+      "index": 127,
+      "en": "queue-cancel/main.c",
+      "ja": "queue-cancel/main.c"
+    },
+    {
+      "index": 128,
+      "en": "When the user triggers the signal by pressing ",
+      "ja": "ユーザーが、"
+    },
+    {
+      "index": 129,
+      "en": " we send\n",
+      "ja": "を押してシグナルを発生させると、"
+    },
+    {
+      "index": 130,
+      "en": " to all the workers. ",
+      "ja": "をすべてのワーカーに送ります。"
+    },
+    {
+      "index": 131,
+      "en": " will return ",
+      "ja": "は、実行待ちでキャンセルできたタスクに対して、"
+    },
+    {
+      "index": 132,
+      "en": " for those\ntasks that are pending execution and could be cancelled.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 133,
+      "en": "queue-cancel/main.c",
+      "ja": "queue-cancel/main.c"
+    },
+    {
+      "index": 134,
+      "en": "For tasks that do get cancelled successfully, the ",
+      "ja": "キャンセルに成功したタスクでは、"
+    },
+    {
+      "index": 135,
+      "en": "after",
+      "ja": "after"
+    },
+    {
+      "index": 136,
+      "en": " function is called\nwith ",
+      "ja": "関数が、"
+    },
+    {
+      "index": 137,
+      "en": " set to ",
+      "ja": "を、"
+    },
+    {
+      "index": 138,
+      "en": ".",
+      "ja": "に設定して呼び出されます。"
+    },
+    {
+      "index": 139,
+      "en": "queue-cancel/main.c",
+      "ja": "queue-cancel/main.c"
+    },
+    {
+      "index": 140,
+      "en": " can also be used with ",
+      "ja": "は、"
+    },
+    {
+      "index": 141,
+      "en": " and ",
+      "ja": "要求と、"
+    },
+    {
+      "index": 142,
+      "en": "\nrequests. For the filesystem family of functions, ",
+      "ja": "要求にも使えます。ファイルシステム系の関数では、"
+    },
+    {
+      "index": 143,
+      "en": " will be\nset to ",
+      "ja": "が、"
+    },
+    {
+      "index": 144,
+      "en": ".",
+      "ja": "に設定されます。"
+    },
+    {
+      "index": 145,
+      "en": "Tip",
+      "ja": "ヒント"
+    },
+    {
+      "index": 146,
+      "en": "A well designed program would have a way to terminate long running workers\nthat have already started executing. Such a worker could periodically check\nfor a variable that only the main process sets to signal termination.",
+      "ja": "適切に設計されたプログラムには、すでに実行を開始した長時間動作するワーカーを終了させる方法があるでしょう。そのようなワーカーは、メインプロセスだけが終了を通知するために設定する変数を、定期的に確認できます。"
+    },
+    {
+      "index": 147,
+      "en": "Inter-thread communication",
+      "ja": "スレッド間通信"
+    },
+    {
+      "index": 148,
+      "en": "Sometimes you want various threads to actually send each other messages ",
+      "ja": "複数のスレッドに、互いにメッセージを送り合ってほしい場合があります。たとえば、"
+    },
+    {
+      "index": 149,
+      "en": "while",
+      "ja": "動作中"
+    },
+    {
+      "index": 150,
+      "en": "\nthey are running. For example you might be running some long duration task in\na separate thread (perhaps using ",
+      "ja": "の別のスレッドで、長時間のタスク（"
+    },
+    {
+      "index": 151,
+      "en": ") but want to notify progress\nto the main thread. This is a simple example of having a download manager\ninforming the user of the status of running downloads.",
+      "ja": "を使う場合など）を実行しつつ、メインスレッドに進捗を通知したい場合です。ここでは、ダウンロードマネージャーが、実行中のダウンロードの状態をユーザーに知らせる単純な例を示します。"
+    },
+    {
+      "index": 152,
+      "en": "progress/main.c",
+      "ja": "progress/main.c"
+    },
+    {
+      "index": 153,
+      "en": "The async thread communication works ",
+      "ja": "非同期のスレッド間通信は、"
+    },
+    {
+      "index": 154,
+      "en": "on loops",
+      "ja": "ループ上"
+    },
+    {
+      "index": 155,
+      "en": " so although any thread can be\nthe message sender, only threads with libuv loops can be receivers (or rather\nthe loop is the receiver). libuv will invoke the callback (",
+      "ja": "で動作します。そのため、どのスレッドでもメッセージの送信者になれますが、受信者になれるのはlibuvのループを持つスレッドだけです（正確には、受信者はループです）。libuvはメッセージを受け取ると、非同期ウォッチャーを渡してコールバック（"
+    },
+    {
+      "index": 156,
+      "en": ")\nwith the async watcher whenever it receives a message.",
+      "ja": "）を呼び出します。"
+    },
+    {
+      "index": 157,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 158,
+      "en": "It is important to realize that since the message send is ",
+      "ja": "メッセージの送信は、"
+    },
+    {
+      "index": 159,
+      "en": "async",
+      "ja": "非同期"
+    },
+    {
+      "index": 160,
+      "en": ", the callback\nmay be invoked immediately after ",
+      "ja": "であるため、別のスレッドで、"
+    },
+    {
+      "index": 161,
+      "en": " is called in another\nthread, or it may be invoked after some time. libuv may also combine\nmultiple calls to ",
+      "ja": "を呼び出した直後にコールバックが呼ばれる場合も、しばらく後に呼ばれる場合もあることを理解する必要があります。また、libuvは複数回の"
+    },
+    {
+      "index": 162,
+      "en": " and invoke your callback only once. The\nonly guarantee that libuv makes is – The callback function is called ",
+      "ja": "の呼び出しをまとめ、コールバックを1回だけ呼び出すこともあります。libuvが保証するのは、コールバック関数が、"
+    },
+    {
+      "index": 163,
+      "en": "at\nleast once",
+      "ja": "少なくとも1回"
+    },
+    {
+      "index": 164,
+      "en": " after the call to ",
+      "ja": "、"
+    },
+    {
+      "index": 165,
+      "en": ". If you have no pending\ncalls to ",
+      "ja": "の呼び出し後に呼び出されることだけです。保留中の"
+    },
+    {
+      "index": 166,
+      "en": ", the callback won’t be called. If you make two\nor more calls, and libuv hasn’t had a chance to run the callback yet, it\n",
+      "ja": "の呼び出しがなければ、コールバックは呼ばれません。2回以上呼び出していて、libuvがまだコールバックを実行する機会を得ていない場合、libuvは、"
+    },
+    {
+      "index": 167,
+      "en": "may",
+      "ja": "場合によっては"
+    },
+    {
+      "index": 168,
+      "en": " invoke your callback ",
+      "ja": "コールバックを"
+    },
+    {
+      "index": 169,
+      "en": "only once",
+      "ja": "1回だけ"
+    },
+    {
+      "index": 170,
+      "en": " for the multiple invocations of\n",
+      "ja": "呼び出すことがあります。これは、複数回の"
+    },
+    {
+      "index": 171,
+      "en": ". Your callback will never be called twice for just one\nevent.",
+      "ja": "呼び出しに対してです。1つのイベントだけでコールバックが2回呼ばれることはありません。"
+    },
+    {
+      "index": 172,
+      "en": "progress/main.c",
+      "ja": "progress/main.c"
+    },
+    {
+      "index": 173,
+      "en": "In the download function, we modify the progress indicator and queue the message\nfor delivery with ",
+      "ja": "ダウンロード関数では、進捗表示を更新し、"
+    },
+    {
+      "index": 174,
+      "en": ". Remember: ",
+      "ja": "で配信用のメッセージをキューに入れます。注意してください。"
+    },
+    {
+      "index": 175,
+      "en": " is also\nnon-blocking and will return immediately.",
+      "ja": "もノンブロッキングで、直ちに戻ります。"
+    },
+    {
+      "index": 176,
+      "en": "progress/main.c",
+      "ja": "progress/main.c"
+    },
+    {
+      "index": 177,
+      "en": "The callback is a standard libuv pattern, extracting the data from the watcher.",
+      "ja": "コールバックは、ウォッチャーからデータを取り出す、標準的なlibuvのパターンです。"
+    },
+    {
+      "index": 178,
+      "en": "Finally it is important to remember to clean up the watcher.",
+      "ja": "最後に、ウォッチャーを片付けることを忘れないでください。"
+    },
+    {
+      "index": 179,
+      "en": "progress/main.c",
+      "ja": "progress/main.c"
+    },
+    {
+      "index": 180,
+      "en": "After this example, which showed the abuse of the ",
+      "ja": "この例では、"
+    },
+    {
+      "index": 181,
+      "en": " field, ",
+      "ja": "フィールドを不適切に使っていました。この例の後、"
+    },
+    {
+      "index": 182,
+      "en": "bnoordhuis",
+      "ja": "bnoordhuis"
+    },
+    {
+      "index": 183,
+      "en": "\npointed out that using the ",
+      "ja": "が、"
+    },
+    {
+      "index": 184,
+      "en": " field is not thread safe, and\n",
+      "ja": "フィールドの使用はスレッドセーフではなく、"
+    },
+    {
+      "index": 185,
+      "en": " is actually only meant to wake up the event loop. Use\na mutex or rwlock to ensure accesses are performed in the right order.",
+      "ja": "は実際にはイベントループを起こすためだけのものだと指摘しました。アクセスが適切な順序で行われるように、ミューテックスまたは読み書きロックを使ってください。"
+    },
+    {
+      "index": 186,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 187,
+      "en": "mutexes and rwlocks ",
+      "ja": "ミューテックスと読み書きロックは、シグナルハンドラ内では、"
+    },
+    {
+      "index": 188,
+      "en": "DO NOT",
+      "ja": "動作しません"
+    },
+    {
+      "index": 189,
+      "en": " work inside a signal handler, whereas\n",
+      "ja": "。一方、"
+    },
+    {
+      "index": 190,
+      "en": " does.",
+      "ja": "は動作します。"
+    },
+    {
+      "index": 191,
+      "en": "One use case where ",
+      "ja": ""
+    },
+    {
+      "index": 192,
+      "en": " is required is when interoperating with\nlibraries that require thread affinity for their functionality. For example in\nnode.js, a v8 engine instance, contexts and its objects are bound to the thread\nthat the v8 instance was started in. Interacting with v8 data structures from\nanother thread can lead to undefined results. Now consider some node.js module\nwhich binds a third party library. It may go something like this:",
+      "ja": "が必要な用途の1つは、機能のために特定のスレッドとの結び付きが必要なライブラリと相互運用する場合です。たとえばnode.jsでは、v8エンジンのインスタンス、コンテキスト、そのオブジェクトは、v8インスタンスを開始したスレッドに結び付いています。別のスレッドからv8のデータ構造を操作すると、未定義の結果につながる可能性があります。ここで、サードパーティライブラリを結び付けるnode.jsモジュールを考えてみましょう。次のようになるかもしれません。"
+    },
+    {
+      "index": 193,
+      "en": "In node, the third party library is set up with a JavaScript callback to be\ninvoked for more information:",
+      "ja": "nodeでは、追加情報を得るために呼び出すJavaScriptコールバックを使って、サードパーティライブラリを設定します。"
+    },
+    {
+      "index": 194,
+      "en": " is supposed to be non-blocking but the third party lib is\nblocking, so the binding uses ",
+      "ja": "はノンブロッキングであるはずですが、サードパーティライブラリはブロッキングなので、バインディングでは、"
+    },
+    {
+      "index": 195,
+      "en": ".",
+      "ja": "を使います。"
+    },
+    {
+      "index": 196,
+      "en": "The actual work being done in a separate thread wants to invoke the progress\ncallback, but cannot directly call into v8 to interact with JavaScript. So\nit uses ",
+      "ja": "実際の処理は別のスレッドで動作しており、進捗コールバックを呼びたいのですが、JavaScriptを操作するためにv8を直接呼び出すことはできません。そのため、"
+    },
+    {
+      "index": 197,
+      "en": ".",
+      "ja": "を使います。"
+    },
+    {
+      "index": 198,
+      "en": "The async callback, invoked in the main loop thread, which is the v8 thread,\nthen interacts with v8 to invoke the JavaScript callback.",
+      "ja": "メインループのスレッド、すなわちv8のスレッドで呼ばれる非同期コールバックが、v8とやり取りしてJavaScriptのコールバックを呼び出します。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 16,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

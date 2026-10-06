@@ -1,0 +1,844 @@
+{
+  "page": "guide/networking",
+  "at": "2026-10-04T20:39:54.278354+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/networking.rst",
+      "sha256": "6d12921724fd84c70c256f27b894df5b41a113d0ad87688b733b4af03bb68e73"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/networking.md",
+      "sha256": "41063fca40b78497b757d6e4d4a5d8f8bc55b5a28d433396787552935ac8b90a"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/networking.md",
+      "sha256": "4ad0e7c096f983d841f7b8e8fdc127b763ed204a62ddb594113838f1e1616e44"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 8 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Networking",
+      "ja": "ネットワーク"
+    },
+    {
+      "index": 1,
+      "en": "Networking in libuv is not much different from directly using the BSD socket\ninterface, some things are easier, all are non-blocking, but the concepts stay\nthe same. In addition libuv offers utility functions to abstract the annoying,\nrepetitive and low-level tasks like setting up sockets using the BSD socket\nstructures, DNS lookup, and tweaking various socket parameters.",
+      "ja": "libuvのネットワーク処理は、BSDソケットインターフェイスを直接使う場合と大きくは変わりません。簡単になる部分があり、すべてノンブロッキングですが、概念は同じです。さらにlibuvは、BSDソケット構造体によるソケットの設定、DNS検索、各種ソケットパラメータの調整といった、面倒で反復的な低レベルの作業を抽象化するユーティリティ関数を提供します。"
+    },
+    {
+      "index": 2,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 3,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 4,
+      "en": " structures are used for network I/O.",
+      "ja": "構造体は、ネットワークI/Oに使います。"
+    },
+    {
+      "index": 5,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 6,
+      "en": "The code samples in this chapter exist to show certain libuv APIs. They are\nnot examples of good quality code. They leak memory and don’t always close\nconnections properly.",
+      "ja": "この章のコードサンプルは、特定のlibuv APIを示すためのものです。良質なコードの例ではありません。メモリリークがあり、接続を常に適切に閉じるわけでもありません。"
+    },
+    {
+      "index": 7,
+      "en": "TCP",
+      "ja": "TCP"
+    },
+    {
+      "index": 8,
+      "en": "TCP is a connection oriented, stream protocol and is therefore based on the\nlibuv streams infrastructure.",
+      "ja": "TCPはコネクション指向のストリームプロトコルなので、libuvのストリーム基盤に基づいています。"
+    },
+    {
+      "index": 9,
+      "en": "Server",
+      "ja": "サーバー"
+    },
+    {
+      "index": 10,
+      "en": "Server sockets proceed by:",
+      "ja": "サーバーソケットでは、次の手順を実行します。"
+    },
+    {
+      "index": 11,
+      "en": " the TCP handle.",
+      "ja": "でTCPハンドルを初期化します。"
+    },
+    {
+      "index": 12,
+      "en": " it.",
+      "ja": "でバインドします。"
+    },
+    {
+      "index": 13,
+      "en": "Call ",
+      "ja": "ハンドルに対して"
+    },
+    {
+      "index": 14,
+      "en": " on the handle to have a callback invoked whenever a new\nconnection is established by a client.",
+      "ja": "を呼び出し、クライアントが新しい接続を確立するたびにコールバックが呼び出されるようにします。"
+    },
+    {
+      "index": 15,
+      "en": "Use ",
+      "ja": ""
+    },
+    {
+      "index": 16,
+      "en": " to accept the connection.",
+      "ja": "を使って接続を受け入れます。"
+    },
+    {
+      "index": 17,
+      "en": "Use ",
+      "ja": ""
+    },
+    {
+      "index": 18,
+      "en": "stream operations",
+      "ja": "ストリーム操作"
+    },
+    {
+      "index": 19,
+      "en": " to communicate with the\nclient.",
+      "ja": "でクライアントと通信します。"
+    },
+    {
+      "index": 20,
+      "en": "Here is a simple echo server",
+      "ja": "単純なエコーサーバーを示します。"
+    },
+    {
+      "index": 21,
+      "en": "tcp-echo-server/main.c - The listen socket",
+      "ja": "tcp-echo-server/main.c - リスニングソケット"
+    },
+    {
+      "index": 22,
+      "en": "You can see the utility function ",
+      "ja": "ユーティリティ関数、"
+    },
+    {
+      "index": 23,
+      "en": " being used to convert from\na human readable IP address, port pair to the sockaddr_in structure required by\nthe BSD socket APIs. The reverse can be obtained using ",
+      "ja": "は、人が読めるIPアドレスとポートの組を、BSDソケットAPIが必要とするsockaddr_in構造体に変換するために使っています。逆方向の変換には、"
+    },
+    {
+      "index": 24,
+      "en": ".",
+      "ja": "を使えます。"
+    },
+    {
+      "index": 25,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 26,
+      "en": "There are ",
+      "ja": "ip4関数に対応する"
+    },
+    {
+      "index": 27,
+      "en": " analogues for the ip4 functions.",
+      "ja": "関数もあります。"
+    },
+    {
+      "index": 28,
+      "en": "Most of the setup functions are synchronous since they are CPU-bound.\n",
+      "ja": "設定関数の多くはCPU処理が中心なので、同期的に実行されます。"
+    },
+    {
+      "index": 29,
+      "en": " is where we return to libuv’s callback style. The second\narguments is the backlog queue – the maximum length of queued connections.",
+      "ja": "で、libuvのコールバック形式に戻ります。第2引数はバックログキュー、すなわち待機中の接続の最大数です。"
+    },
+    {
+      "index": 30,
+      "en": "When a connection is initiated by clients, the callback is required to set up\na handle for the client socket and associate the handle using ",
+      "ja": "クライアントが接続を開始したとき、コールバックはクライアントソケット用のハンドルを設定し、"
+    },
+    {
+      "index": 31,
+      "en": ".\nIn this case we also establish interest in reading from this stream.",
+      "ja": "でそのハンドルを関連付ける必要があります。この例では、このストリームからの読み取りも監視対象にします。"
+    },
+    {
+      "index": 32,
+      "en": "tcp-echo-server/main.c - Accepting the client",
+      "ja": "tcp-echo-server/main.c - クライアントの受け入れ"
+    },
+    {
+      "index": 33,
+      "en": "The remaining set of functions is very similar to the streams example and can\nbe found in the code. Just remember to call ",
+      "ja": "残りの関数はストリームの例と非常によく似ており、コードで確認できます。ソケットが不要になったら、"
+    },
+    {
+      "index": 34,
+      "en": " when the socket isn’t\nrequired. This can be done even in the ",
+      "ja": "を呼び出すことを忘れないでください。接続を受け入れるつもりがなければ、"
+    },
+    {
+      "index": 35,
+      "en": " callback if you are not\ninterested in accepting the connection.",
+      "ja": "のコールバック内でも呼び出せます。"
+    },
+    {
+      "index": 36,
+      "en": "Client",
+      "ja": "クライアント"
+    },
+    {
+      "index": 37,
+      "en": "Where you do bind/listen/accept on the server, on the client side it’s simply\na matter of calling ",
+      "ja": "サーバーではbind/listen/acceptを行いますが、クライアント側では単に"
+    },
+    {
+      "index": 38,
+      "en": ". The same ",
+      "ja": "を呼び出すだけです。"
+    },
+    {
+      "index": 39,
+      "en": " style\ncallback of ",
+      "ja": "形式の、"
+    },
+    {
+      "index": 40,
+      "en": " is used by ",
+      "ja": "と同じコールバックを、"
+    },
+    {
+      "index": 41,
+      "en": ". Try:",
+      "ja": "でも使います。試してみましょう。"
+    },
+    {
+      "index": 42,
+      "en": "where ",
+      "ja": "ここで、"
+    },
+    {
+      "index": 43,
+      "en": " will be called after the connection is established. The\ncallback receives the ",
+      "ja": "は接続が確立した後に呼び出されます。コールバックは、"
+    },
+    {
+      "index": 44,
+      "en": " struct, which has a member ",
+      "ja": "構造体を受け取ります。この構造体には、ソケットを指す"
+    },
+    {
+      "index": 45,
+      "en": "\npointing to the socket.",
+      "ja": "メンバーがあります。"
+    },
+    {
+      "index": 46,
+      "en": "UDP",
+      "ja": "UDP"
+    },
+    {
+      "index": 47,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 48,
+      "en": "User Datagram Protocol",
+      "ja": "User Datagram Protocol"
+    },
+    {
+      "index": 49,
+      "en": " offers connectionless, unreliable network\ncommunication. Hence libuv doesn’t offer a stream. Instead libuv provides\nnon-blocking UDP support via the ",
+      "ja": "は、コネクションレスで、信頼性を保証しないネットワーク通信を提供します。そのため、libuvはストリームを提供しません。代わりに、受信用の"
+    },
+    {
+      "index": 50,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 51,
+      "en": " handle (for receiving) and\n",
+      "ja": "ハンドルと、送信用の"
+    },
+    {
+      "index": 52,
+      "en": "uv_udp_send_t",
+      "ja": "uv_udp_send_t"
+    },
+    {
+      "index": 53,
+      "en": " request (for sending) and related functions. That said, the\nactual API for reading/writing is very similar to normal stream reads. To look\nat how UDP can be used, the example shows the first stage of obtaining an IP\naddress from a ",
+      "ja": "要求、および関連関数によって、ノンブロッキングUDPをサポートします。ただし、実際の読み書きAPIは、通常のストリームの読み取りと非常によく似ています。UDPの使い方を見るため、この例では、"
+    },
+    {
+      "index": 54,
+      "en": "DHCP",
+      "ja": "DHCP"
+    },
+    {
+      "index": 55,
+      "en": " server – DHCP Discover.",
+      "ja": "サーバーからIPアドレスを取得する最初の段階、DHCP Discoverを示します。"
+    },
+    {
+      "index": 56,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 57,
+      "en": "You will have to run ",
+      "ja": ""
+    },
+    {
+      "index": 58,
+      "en": "udp-dhcp",
+      "ja": "udp-dhcp"
+    },
+    {
+      "index": 59,
+      "en": " as ",
+      "ja": "は、"
+    },
+    {
+      "index": 60,
+      "en": "root",
+      "ja": "root"
+    },
+    {
+      "index": 61,
+      "en": " since it uses well known port\nnumbers below 1024.",
+      "ja": "として実行する必要があります。1024未満のウェルノウンポート番号を使うためです。"
+    },
+    {
+      "index": 62,
+      "en": "udp-dhcp/main.c - Setup and send UDP packets",
+      "ja": "udp-dhcp/main.c - UDPパケットの設定と送信"
+    },
+    {
+      "index": 63,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 64,
+      "en": "The IP address ",
+      "ja": "IPアドレス"
+    },
+    {
+      "index": 65,
+      "en": " is used to bind to all interfaces. The IP\naddress ",
+      "ja": "は、すべてのインターフェイスにバインドするために使います。IPアドレス"
+    },
+    {
+      "index": 66,
+      "en": " is a broadcast address meaning that packets\nwill be sent to all interfaces on the subnet.  port ",
+      "ja": "はブロードキャストアドレスで、サブネット上のすべてのインターフェイスにパケットを送ることを意味します。ポート"
+    },
+    {
+      "index": 67,
+      "en": " means that the OS\nrandomly assigns a port.",
+      "ja": "は、OSがランダムにポートを割り当てることを意味します。"
+    },
+    {
+      "index": 68,
+      "en": "First we setup the receiving socket to bind on all interfaces on port 68 (DHCP\nclient) and start a read on it. This will read back responses from any DHCP\nserver that replies. We use the UV_UDP_REUSEADDR flag to play nice with any\nother system DHCP clients that are running on this computer on the same port.\nThen we setup a similar send socket and use ",
+      "ja": "まず、受信用ソケットを、すべてのインターフェイスのポート68（DHCPクライアント）にバインドし、読み取りを開始します。これにより、応答するDHCPサーバーからの応答を読み取ります。このコンピュータで同じポートを使っている他のシステムDHCPクライアントと共存するため、UV_UDP_REUSEADDRフラグを使います。次に、同様の送信用ソケットを設定し、"
+    },
+    {
+      "index": 69,
+      "en": " to send\na ",
+      "ja": "を使って、"
+    },
+    {
+      "index": 70,
+      "en": "broadcast message",
+      "ja": "ブロードキャストメッセージ"
+    },
+    {
+      "index": 71,
+      "en": " on port 67 (DHCP server).",
+      "ja": "をポート67（DHCPサーバー）へ送ります。"
+    },
+    {
+      "index": 72,
+      "en": "It is ",
+      "ja": "ブロードキャストフラグの設定は、"
+    },
+    {
+      "index": 73,
+      "en": "necessary",
+      "ja": "必須"
+    },
+    {
+      "index": 74,
+      "en": " to set the broadcast flag, otherwise you will get an\n",
+      "ja": "です。設定しないと、"
+    },
+    {
+      "index": 75,
+      "en": " error ",
+      "ja": "エラーになります"
+    },
+    {
+      "index": 76,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 77,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 78,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 79,
+      "en": ". The exact message being sent is not relevant to this\nbook and you can study the code if you are interested. As usual the read and\nwrite callbacks will receive a status code of < 0 if something went wrong.",
+      "ja": "。送信するメッセージの具体的な内容は本書の主題ではないため、興味があればコードを調べてください。通常どおり、問題が発生した場合、読み取り・書き込みのコールバックは0未満のステータスコードを受け取ります。"
+    },
+    {
+      "index": 80,
+      "en": "Since UDP sockets are not connected to a particular peer, the read callback\nreceives an extra parameter about the sender of the packet.",
+      "ja": "UDPソケットは特定の相手に接続されていないため、読み取りコールバックは、パケットの送信者に関する追加パラメータを受け取ります。"
+    },
+    {
+      "index": 81,
+      "en": " may be zero if there is no more data to be read. If ",
+      "ja": "は、読み取るデータがもうない場合に0になることがあります。"
+    },
+    {
+      "index": 82,
+      "en": " is NULL,\nit indicates there is nothing to read (the callback shouldn’t do anything), if\nnot NULL, it indicates that an empty datagram was received from the host at\n",
+      "ja": "がNULLなら、読み取るものがないことを示します（コールバックは何もすべきではありません）。NULLでなければ、"
+    },
+    {
+      "index": 83,
+      "en": ". The ",
+      "ja": "にあるホストから空のデータグラムを受信したことを示します。"
+    },
+    {
+      "index": 84,
+      "en": " parameter may be ",
+      "ja": "パラメータは、アロケータが提供したバッファがデータを収容するのに十分な大きさでない場合、"
+    },
+    {
+      "index": 85,
+      "en": " if the buffer\nprovided by your allocator was not large enough to hold the data. ",
+      "ja": "になることがあります。"
+    },
+    {
+      "index": 86,
+      "en": "In this case\nthe OS will discard the data that could not fit",
+      "ja": "この場合、OSは収まらなかったデータを破棄します"
+    },
+    {
+      "index": 87,
+      "en": " (That’s UDP for you!).",
+      "ja": "（これがUDPというものです！）。"
+    },
+    {
+      "index": 88,
+      "en": "udp-dhcp/main.c - Reading packets",
+      "ja": "udp-dhcp/main.c - パケットの読み取り"
+    },
+    {
+      "index": 89,
+      "en": "UDP Options",
+      "ja": "UDPオプション"
+    },
+    {
+      "index": 90,
+      "en": "Time-to-live",
+      "ja": "生存時間"
+    },
+    {
+      "index": 91,
+      "en": "The TTL of packets sent on the socket can be changed using ",
+      "ja": "ソケットから送信するパケットのTTLは、"
+    },
+    {
+      "index": 92,
+      "en": ".",
+      "ja": "で変更できます。"
+    },
+    {
+      "index": 93,
+      "en": "IPv6 stack only",
+      "ja": "IPv6スタックのみ"
+    },
+    {
+      "index": 94,
+      "en": "IPv6 sockets can be used for both IPv4 and IPv6 communication. If you want to\nrestrict the socket to IPv6 only, pass the ",
+      "ja": "IPv6ソケットは、IPv4とIPv6の両方の通信に使えます。ソケットをIPv6のみに制限したい場合は、"
+    },
+    {
+      "index": 95,
+      "en": " flag to\n",
+      "ja": "フラグを、"
+    },
+    {
+      "index": 96,
+      "en": ".",
+      "ja": "に渡します。"
+    },
+    {
+      "index": 97,
+      "en": "Multicast",
+      "ja": "マルチキャスト"
+    },
+    {
+      "index": 98,
+      "en": "A socket can (un)subscribe to a multicast group using:",
+      "ja": "ソケットは、次の関数でマルチキャストグループへの参加・離脱ができます。"
+    },
+    {
+      "index": 99,
+      "en": "where ",
+      "ja": "ここで、"
+    },
+    {
+      "index": 100,
+      "en": " is ",
+      "ja": "は、"
+    },
+    {
+      "index": 101,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 102,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 103,
+      "en": "The concepts of multicasting are nicely explained in ",
+      "ja": "マルチキャストの概念は、"
+    },
+    {
+      "index": 104,
+      "en": "this guide",
+      "ja": "このガイド"
+    },
+    {
+      "index": 105,
+      "en": ".",
+      "ja": "でわかりやすく説明されています。"
+    },
+    {
+      "index": 106,
+      "en": "Local loopback of multicast packets is enabled by default ",
+      "ja": "マルチキャストパケットのローカルループバックは、デフォルトで有効です"
+    },
+    {
+      "index": 107,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 108,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 109,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 110,
+      "en": ", use\n",
+      "ja": "。"
+    },
+    {
+      "index": 111,
+      "en": " to switch it off.",
+      "ja": "で無効にできます。"
+    },
+    {
+      "index": 112,
+      "en": "The packet time-to-live for multicast packets can be changed using\n",
+      "ja": "マルチキャストパケットの生存時間は、"
+    },
+    {
+      "index": 113,
+      "en": ".",
+      "ja": "で変更できます。"
+    },
+    {
+      "index": 114,
+      "en": "Querying DNS",
+      "ja": "DNS問い合わせ"
+    },
+    {
+      "index": 115,
+      "en": "libuv provides asynchronous DNS resolution. For this it provides its own\n",
+      "ja": "libuvは非同期のDNS名前解決を提供します。そのために、独自の"
+    },
+    {
+      "index": 116,
+      "en": " replacement ",
+      "ja": "代替関数を提供しています"
+    },
+    {
+      "index": 117,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 118,
+      "en": "3",
+      "ja": "3"
+    },
+    {
+      "index": 119,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 120,
+      "en": ". In the callback you can\nperform normal socket operations on the retrieved addresses. Let’s connect to\nLibera.chat to see an example of DNS resolution.",
+      "ja": "。コールバックでは、取得したアドレスに対して通常のソケット操作を行えます。DNS名前解決の例として、Libera.chatに接続してみましょう。"
+    },
+    {
+      "index": 121,
+      "en": "dns/main.c",
+      "ja": "dns/main.c"
+    },
+    {
+      "index": 122,
+      "en": "If ",
+      "ja": ""
+    },
+    {
+      "index": 123,
+      "en": " returns non-zero, something went wrong in the setup and\nyour callback won’t be invoked at all. All arguments can be freed immediately\nafter ",
+      "ja": "が0以外を返した場合は、設定で問題が発生しており、コールバックは一切呼び出されません。すべての引数は、"
+    },
+    {
+      "index": 124,
+      "en": " returns. The ",
+      "ja": "から戻った直後に解放できます。"
+    },
+    {
+      "index": 125,
+      "en": "hostname",
+      "ja": "hostname"
+    },
+    {
+      "index": 126,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 127,
+      "en": "servname",
+      "ja": "servname"
+    },
+    {
+      "index": 128,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 129,
+      "en": "hints",
+      "ja": "hints"
+    },
+    {
+      "index": 130,
+      "en": "\nstructures are documented in ",
+      "ja": "の各構造体については、"
+    },
+    {
+      "index": 131,
+      "en": "the getaddrinfo man page",
+      "ja": "getaddrinfoのmanページ"
+    },
+    {
+      "index": 132,
+      "en": ". The\ncallback can be ",
+      "ja": "で説明されています。コールバックは、"
+    },
+    {
+      "index": 133,
+      "en": " in which case the function will run synchronously.",
+      "ja": "にもでき、その場合、関数は同期的に実行されます。"
+    },
+    {
+      "index": 134,
+      "en": "In the resolver callback, you can pick any IP from the linked list of ",
+      "ja": "リゾルバのコールバックでは、"
+    },
+    {
+      "index": 135,
+      "en": ". This also demonstrates ",
+      "ja": "の連結リストから任意のIPを選べます。この例は、"
+    },
+    {
+      "index": 136,
+      "en": ". It is necessary to\ncall ",
+      "ja": "の実演にもなっています。コールバック内で、"
+    },
+    {
+      "index": 137,
+      "en": " in the callback.",
+      "ja": "を呼び出す必要があります。"
+    },
+    {
+      "index": 138,
+      "en": "dns/main.c",
+      "ja": "dns/main.c"
+    },
+    {
+      "index": 139,
+      "en": "libuv also provides the inverse ",
+      "ja": "libuvは、逆引き用の"
+    },
+    {
+      "index": 140,
+      "en": "uv_getnameinfo",
+      "ja": "uv_getnameinfo"
+    },
+    {
+      "index": 141,
+      "en": ".",
+      "ja": "も提供します。"
+    },
+    {
+      "index": 142,
+      "en": "Network interfaces",
+      "ja": "ネットワークインターフェイス"
+    },
+    {
+      "index": 143,
+      "en": "Information about the system’s network interfaces can be obtained through libuv\nusing ",
+      "ja": "システムのネットワークインターフェイス情報は、libuvの"
+    },
+    {
+      "index": 144,
+      "en": ". This simple program just prints out all the\ninterface details so you get an idea of the fields that are available. This is\nuseful to allow your service to bind to IP addresses when it starts.",
+      "ja": "で取得できます。この単純なプログラムは、すべてのインターフェイスの詳細を表示するだけなので、利用できるフィールドを把握できます。サービスが起動時にIPアドレスへバインドできるようにする場合に有用です。"
+    },
+    {
+      "index": 145,
+      "en": "interfaces/main.c",
+      "ja": "interfaces/main.c"
+    },
+    {
+      "index": 146,
+      "en": " is true for loopback interfaces. Note that if a physical\ninterface has multiple IPv4/IPv6 addresses, the name will be reported multiple\ntimes, with each address being reported once.",
+      "ja": "は、ループバックインターフェイスではtrueです。物理インターフェイスに複数のIPv4/IPv6アドレスがある場合、各アドレスが1回ずつ報告されるため、同じ名前が複数回報告されることに注意してください。"
+    },
+    {
+      "index": 147,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 148,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 149,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 150,
+      "en": "https://beej.us/guide/bgnet/html/#broadcast-packetshello-world",
+      "ja": "https://beej.us/guide/bgnet/html/#broadcast-packetshello-world"
+    },
+    {
+      "index": 151,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 152,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 153,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 154,
+      "en": "https://tldp.org/HOWTO/Multicast-HOWTO-6.html#ss6.1",
+      "ja": "https://tldp.org/HOWTO/Multicast-HOWTO-6.html#ss6.1"
+    },
+    {
+      "index": 155,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 156,
+      "en": "3",
+      "ja": "3"
+    },
+    {
+      "index": 157,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 158,
+      "en": "libuv use the system ",
+      "ja": "libuvは、libuvのスレッドプール内で、システムの"
+    },
+    {
+      "index": 159,
+      "en": " in the libuv threadpool. libuv\nv0.8.0 and earlier also included ",
+      "ja": "を使います。libuv v0.8.0以前では、代替として、"
+    },
+    {
+      "index": 160,
+      "en": "c-ares",
+      "ja": "c-ares"
+    },
+    {
+      "index": 161,
+      "en": " as an alternative, but this has been\nremoved in v0.9.0.",
+      "ja": "も含まれていましたが、v0.9.0で削除されています。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 8,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

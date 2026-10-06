@@ -1,0 +1,1254 @@
+{
+  "page": "guide/processes",
+  "at": "2026-10-04T21:01:12.272630+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/processes.rst",
+      "sha256": "3077d63729eabd43f0ec723d806fd0dc8a0f8b26b5f5acd650a2f8c10527d75e"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/processes.md",
+      "sha256": "6e39406629c50e8b54dd9d596f14b94e1ff8dae28f35e3b243c61b28ebcf76a6"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/processes.md",
+      "sha256": "83f0a726ac34f70186191ba91b91e9fc6cfadc0f76b9f34d8380481673857666"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 20 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Processes",
+      "ja": "プロセス"
+    },
+    {
+      "index": 1,
+      "en": "libuv offers considerable child process management, abstracting the platform\ndifferences and allowing communication with the child process using streams or\nnamed pipes.",
+      "ja": "libuvは、プラットフォーム間の違いを抽象化し、ストリームや名前付きパイプを使って子プロセスと通信できる、充実した子プロセス管理機能を提供します。"
+    },
+    {
+      "index": 2,
+      "en": "A common idiom in Unix is for every process to do one thing and do it well. In\nsuch a case, a process often uses multiple child processes to achieve tasks\n(similar to using pipes in shells). A multi-process model with messages\nmay also be easier to reason about compared to one with threads and shared\nmemory.",
+      "ja": "Unixでよく使われる考え方は、各プロセスが1つのことを行い、それをうまく行うというものです。その場合、プロセスは、タスクを達成するために複数の子プロセスを使うことがよくあります（シェルでパイプを使うのと似ています）。メッセージを使うマルチプロセスモデルは、スレッドと共有メモリを使うモデルよりも、考えやすい場合があります。"
+    },
+    {
+      "index": 3,
+      "en": "A common refrain against event-based programs is that they cannot take\nadvantage of multiple cores in modern computers. In a multi-threaded program\nthe kernel can perform scheduling and assign different threads to different\ncores, improving performance. But an event loop has only one thread.  The\nworkaround can be to launch multiple processes instead, with each process\nrunning an event loop, and each process getting assigned to a separate CPU\ncore.",
+      "ja": "イベント駆動プログラムに対するよくある批判は、現代のコンピュータの複数コアを活用できないというものです。マルチスレッドプログラムでは、カーネルがスケジューリングを行い、異なるスレッドを別々のコアに割り当てて性能を高められます。しかし、イベントループにはスレッドが1つしかありません。代わりに複数のプロセスを起動し、各プロセスがイベントループを実行して、それぞれを別のCPUコアに割り当てるという方法があります。"
+    },
+    {
+      "index": 4,
+      "en": "Spawning child processes",
+      "ja": "子プロセスの起動"
+    },
+    {
+      "index": 5,
+      "en": "The simplest case is when you simply want to launch a process and know when it\nexits. This is achieved using ",
+      "ja": "最も単純なのは、プロセスを起動して、終了したときを知りたい場合です。これには、"
+    },
+    {
+      "index": 6,
+      "en": ".",
+      "ja": "を使います。"
+    },
+    {
+      "index": 7,
+      "en": "spawn/main.c",
+      "ja": "spawn/main.c"
+    },
+    {
+      "index": 8,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 9,
+      "en": " is implicitly initialized with zeros since it is a global\nvariable.  If you change ",
+      "ja": "はグローバル変数なので、暗黙にゼロ初期化されます。"
+    },
+    {
+      "index": 10,
+      "en": " to a local variable, remember to\ninitialize it to null out all unused fields:",
+      "ja": "をローカル変数に変更する場合は、未使用のすべてのフィールドが空になるよう、忘れずに初期化してください。"
+    },
+    {
+      "index": 11,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 12,
+      "en": " struct only acts as the handle, all options are set via\n",
+      "ja": "構造体はハンドルとしてのみ機能し、すべてのオプションは、"
+    },
+    {
+      "index": 13,
+      "en": ". To simply launch a process, you need to set only the\n",
+      "ja": "で設定します。単にプロセスを起動するには、"
+    },
+    {
+      "index": 14,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 15,
+      "en": " fields. ",
+      "ja": "フィールドだけを設定すれば十分です。"
+    },
+    {
+      "index": 16,
+      "en": " is the program to execute. Since\n",
+      "ja": "は、実行するプログラムです。"
+    },
+    {
+      "index": 17,
+      "en": " uses ",
+      "ja": "は内部で、"
+    },
+    {
+      "index": 18,
+      "en": "execvp(3)",
+      "ja": "execvp(3)"
+    },
+    {
+      "index": 19,
+      "en": " internally, there is no need to supply the full\npath. Finally as per underlying conventions, ",
+      "ja": "を使うため、完全なパスを指定する必要はありません。最後に、基になる規約に従い、"
+    },
+    {
+      "index": 20,
+      "en": "the arguments array has to be\none larger than the number of arguments, with the last element being NULL",
+      "ja": "引数の配列は引数の数より1要素多くし、最後の要素をNULLにする必要があります"
+    },
+    {
+      "index": 21,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 22,
+      "en": "After the call to ",
+      "ja": ""
+    },
+    {
+      "index": 23,
+      "en": ", ",
+      "ja": "の呼び出し後、"
+    },
+    {
+      "index": 24,
+      "en": " will contain the process\nID of the child process.",
+      "ja": "には、子プロセスのプロセスIDが格納されます。"
+    },
+    {
+      "index": 25,
+      "en": "The exit callback will be invoked with the ",
+      "ja": "終了コールバックには、"
+    },
+    {
+      "index": 26,
+      "en": "exit status",
+      "ja": "終了ステータス"
+    },
+    {
+      "index": 27,
+      "en": " and the type of ",
+      "ja": "と、終了の原因になった"
+    },
+    {
+      "index": 28,
+      "en": "signal",
+      "ja": "シグナル"
+    },
+    {
+      "index": 29,
+      "en": "\nwhich caused the exit.",
+      "ja": "の種類が渡されます。"
+    },
+    {
+      "index": 30,
+      "en": "Note that it is important ",
+      "ja": "終了コールバックより前には、"
+    },
+    {
+      "index": 31,
+      "en": "not",
+      "ja": "決して"
+    },
+    {
+      "index": 32,
+      "en": " to call ",
+      "ja": "、"
+    },
+    {
+      "index": 33,
+      "en": " before the exit callback.",
+      "ja": "を呼び出さないことが重要です。"
+    },
+    {
+      "index": 34,
+      "en": "spawn/main.c",
+      "ja": "spawn/main.c"
+    },
+    {
+      "index": 35,
+      "en": "It is ",
+      "ja": "プロセス終了後、プロセスウォッチャーを閉じることは、"
+    },
+    {
+      "index": 36,
+      "en": "required",
+      "ja": "必須"
+    },
+    {
+      "index": 37,
+      "en": " to close the process watcher after the process exits.",
+      "ja": "です。"
+    },
+    {
+      "index": 38,
+      "en": "Changing process parameters",
+      "ja": "プロセスパラメータの変更"
+    },
+    {
+      "index": 39,
+      "en": "Before the child process is launched you can control the execution environment\nusing fields in ",
+      "ja": "子プロセスを起動する前に、"
+    },
+    {
+      "index": 40,
+      "en": ".",
+      "ja": "のフィールドを使って実行環境を制御できます。"
+    },
+    {
+      "index": 41,
+      "en": "Change execution directory",
+      "ja": "実行ディレクトリの変更"
+    },
+    {
+      "index": 42,
+      "en": "Set ",
+      "ja": ""
+    },
+    {
+      "index": 43,
+      "en": " to the corresponding directory.",
+      "ja": "に、対象のディレクトリを設定します。"
+    },
+    {
+      "index": 44,
+      "en": "Set environment variables",
+      "ja": "環境変数の設定"
+    },
+    {
+      "index": 45,
+      "en": " is a null-terminated array of strings, each of the\nform ",
+      "ja": "は、NULLで終端した文字列配列で、各文字列は、"
+    },
+    {
+      "index": 46,
+      "en": " used to set up the environment variables for the process. Set\nthis to ",
+      "ja": "形式です。これを使ってプロセスの環境変数を設定します。"
+    },
+    {
+      "index": 47,
+      "en": " to inherit the environment from the parent (this) process.",
+      "ja": "に設定すると、親（この）プロセスの環境を引き継ぎます。"
+    },
+    {
+      "index": 48,
+      "en": "Option flags",
+      "ja": "オプションフラグ"
+    },
+    {
+      "index": 49,
+      "en": "Setting ",
+      "ja": ""
+    },
+    {
+      "index": 50,
+      "en": " to a bitwise OR of the following flags,\nmodifies the child process behaviour:",
+      "ja": "に、次のフラグのビット単位ORを設定すると、子プロセスの動作が変わります。"
+    },
+    {
+      "index": 51,
+      "en": " - sets the child’s execution user ID to ",
+      "ja": " - 子プロセスの実行ユーザーIDを、"
+    },
+    {
+      "index": 52,
+      "en": ".",
+      "ja": "に設定します。"
+    },
+    {
+      "index": 53,
+      "en": " - sets the child’s execution group ID to ",
+      "ja": " - 子プロセスの実行グループIDを、"
+    },
+    {
+      "index": 54,
+      "en": ".",
+      "ja": "に設定します。"
+    },
+    {
+      "index": 55,
+      "en": "Changing the UID/GID is only supported on Unix, ",
+      "ja": "UID/GIDの変更はUnixでのみサポートされています。Windowsでは、"
+    },
+    {
+      "index": 56,
+      "en": " will fail on\nWindows with ",
+      "ja": "は、"
+    },
+    {
+      "index": 57,
+      "en": ".",
+      "ja": "で失敗します。"
+    },
+    {
+      "index": 58,
+      "en": " - No quoting or escaping of\n",
+      "ja": " - Windowsでは、"
+    },
+    {
+      "index": 59,
+      "en": " is done on Windows. Ignored on Unix.",
+      "ja": "の引用やエスケープを行いません。Unixでは無視されます。"
+    },
+    {
+      "index": 60,
+      "en": " - Starts the child process in a new session, which\nwill keep running after the parent process exits. See example below.",
+      "ja": " - 子プロセスを新しいセッションで開始し、親プロセスが終了した後も動作し続けるようにします。以下の例を参照してください。"
+    },
+    {
+      "index": 61,
+      "en": "Detaching processes",
+      "ja": "プロセスの切り離し"
+    },
+    {
+      "index": 62,
+      "en": "Passing the flag ",
+      "ja": "フラグ、"
+    },
+    {
+      "index": 63,
+      "en": " can be used to launch daemons, or\nchild processes which are independent of the parent so that the parent exiting\ndoes not affect it.",
+      "ja": "を渡すと、デーモンや、親から独立した子プロセスを起動できます。親が終了しても影響を受けません。"
+    },
+    {
+      "index": 64,
+      "en": "detach/main.c",
+      "ja": "detach/main.c"
+    },
+    {
+      "index": 65,
+      "en": "Just remember that the handle is still monitoring the child, so your program\nwon’t exit. Use ",
+      "ja": "ただし、ハンドルは引き続き子プロセスを監視しているため、プログラムは終了しないことに注意してください。"
+    },
+    {
+      "index": 66,
+      "en": " if you want to be more ",
+      "ja": "を使うと、より、"
+    },
+    {
+      "index": 67,
+      "en": "fire-and-forget",
+      "ja": "起動後は待たずに済ませる"
+    },
+    {
+      "index": 68,
+      "en": ".",
+      "ja": "形にできます。"
+    },
+    {
+      "index": 69,
+      "en": "Sending signals to processes",
+      "ja": "プロセスへのシグナル送信"
+    },
+    {
+      "index": 70,
+      "en": "libuv wraps the standard ",
+      "ja": "libuvは、Unixの標準の、"
+    },
+    {
+      "index": 71,
+      "en": " system call on Unix and implements one\nwith similar semantics on Windows, with ",
+      "ja": "システムコールをラップし、Windowsでも同様の意味を持つ機能を実装しています。ただし、"
+    },
+    {
+      "index": 72,
+      "en": "one caveat",
+      "ja": "注意点が1つあります"
+    },
+    {
+      "index": 73,
+      "en": ": all of ",
+      "ja": "。"
+    },
+    {
+      "index": 74,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 75,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 76,
+      "en": ", lead to termination of the process. The signature\nof ",
+      "ja": "は、すべてプロセスを終了させます。"
+    },
+    {
+      "index": 77,
+      "en": " is:",
+      "ja": "のシグネチャは、次のとおりです。"
+    },
+    {
+      "index": 78,
+      "en": "For processes started using libuv, you may use ",
+      "ja": "libuvで開始したプロセスには、代わりに、"
+    },
+    {
+      "index": 79,
+      "en": " instead,\nwhich accepts the ",
+      "ja": "を使えます。これは、pidではなく、"
+    },
+    {
+      "index": 80,
+      "en": " watcher as the first argument, rather than\nthe pid. In this case, ",
+      "ja": "ウォッチャーを第1引数として受け取ります。この場合、終了コールバックが呼び出された後に、ウォッチャーに対して、"
+    },
+    {
+      "index": 81,
+      "en": "remember to call",
+      "ja": "必ず呼び出してください"
+    },
+    {
+      "index": 82,
+      "en": " on the watcher _after_\nthe exit callback has been called.",
+      "ja": "を。"
+    },
+    {
+      "index": 83,
+      "en": "Signals",
+      "ja": "シグナル"
+    },
+    {
+      "index": 84,
+      "en": "libuv provides wrappers around Unix signals with ",
+      "ja": "libuvは、Unixのシグナルのラッパーを提供し、"
+    },
+    {
+      "index": 85,
+      "en": "some Windows support",
+      "ja": "Windowsにも部分的に対応"
+    },
+    {
+      "index": 86,
+      "en": " as well.",
+      "ja": "しています。"
+    },
+    {
+      "index": 87,
+      "en": "Use ",
+      "ja": ""
+    },
+    {
+      "index": 88,
+      "en": " to initialize\na handle and associate it with a loop. To listen for particular signals on\nthat handler, use ",
+      "ja": "でハンドルを初期化し、ループに関連付けます。そのハンドルで特定のシグナルを待ち受けるには、ハンドラ関数を渡して、"
+    },
+    {
+      "index": 89,
+      "en": " with the handler function. Each handler\ncan only be associated with one signal number, with subsequent calls to\n",
+      "ja": "を使います。各ハンドラに関連付けられるシグナル番号は1つだけで、その後の、"
+    },
+    {
+      "index": 90,
+      "en": " overwriting earlier associations. Use ",
+      "ja": "の呼び出しは、前の関連付けを上書きします。"
+    },
+    {
+      "index": 91,
+      "en": " to\nstop watching. Here is a small example demonstrating the various possibilities:",
+      "ja": "で監視を停止します。さまざまな使い方を示す小さな例を挙げます。"
+    },
+    {
+      "index": 92,
+      "en": "signal/main.c",
+      "ja": "signal/main.c"
+    },
+    {
+      "index": 93,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 94,
+      "en": " is similar to ",
+      "ja": "は、"
+    },
+    {
+      "index": 95,
+      "en": "\nin that it will process only one event. UV_RUN_ONCE blocks if there are no\npending events, while UV_RUN_NOWAIT will return immediately. We use NOWAIT\nso that one of the loops isn’t starved because the other one has no pending\nactivity.",
+      "ja": "と同様に、1つのイベントだけを処理します。UV_RUN_ONCEは、保留中のイベントがなければブロックしますが、UV_RUN_NOWAITは直ちに戻ります。ここではNOWAITを使い、一方のループに保留中の活動がないために、もう一方のループが実行機会を失わないようにしています。"
+    },
+    {
+      "index": 96,
+      "en": "Send ",
+      "ja": "プロセスに、"
+    },
+    {
+      "index": 97,
+      "en": " to the process, and you’ll find the handler being invoked\n4 times, one for each ",
+      "ja": "を送ると、"
+    },
+    {
+      "index": 98,
+      "en": ". The handler just stops each handle,\nso that the program exits. This sort of dispatch to all handlers is very\nuseful. A server using multiple event loops could ensure that all data was\nsafely saved before termination, simply by every loop adding a watcher for\n",
+      "ja": "ごとに1回、計4回ハンドラが呼び出されます。ハンドラは、各ハンドルを停止するだけなので、プログラムは終了します。すべてのハンドラへのこのような通知は、非常に役立ちます。複数のイベントループを使うサーバーでは、各ループに、"
+    },
+    {
+      "index": 99,
+      "en": ".",
+      "ja": "のウォッチャーを追加するだけで、終了前にすべてのデータを安全に保存するようにできます。"
+    },
+    {
+      "index": 100,
+      "en": "Child Process I/O",
+      "ja": "子プロセスのI/O"
+    },
+    {
+      "index": 101,
+      "en": "A normal, newly spawned process has its own set of file descriptors, with 0,\n1 and 2 being ",
+      "ja": "通常、新しく起動されたプロセスには独自のファイル記述子があり、0、1、2は、それぞれ、"
+    },
+    {
+      "index": 102,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 103,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 104,
+      "en": " respectively. Sometimes you\nmay want to share file descriptors with the child. For example, perhaps your\napplications launches a sub-command and you want any errors to go in the log\nfile, but ignore ",
+      "ja": "です。子プロセスとファイル記述子を共有したい場合もあります。たとえば、アプリケーションがサブコマンドを起動し、エラーはログファイルに入れたい一方、"
+    },
+    {
+      "index": 105,
+      "en": ". For this you’d like to have ",
+      "ja": "は無視したいとします。その場合、子プロセスの、"
+    },
+    {
+      "index": 106,
+      "en": " of the\nchild be the same as the stderr of the parent. In this case, libuv supports\n",
+      "ja": "を、親のstderrと同じものにしたいでしょう。libuvは、このようにファイル記述子を、"
+    },
+    {
+      "index": 107,
+      "en": "inheriting",
+      "ja": "継承"
+    },
+    {
+      "index": 108,
+      "en": " file descriptors. In this sample, we invoke the test program,\nwhich is:",
+      "ja": "することをサポートしています。この例では、次のテストプログラムを呼び出します。"
+    },
+    {
+      "index": 109,
+      "en": "proc-streams/test.c",
+      "ja": "proc-streams/test.c"
+    },
+    {
+      "index": 110,
+      "en": "The actual program ",
+      "ja": "実際のプログラム、"
+    },
+    {
+      "index": 111,
+      "en": " runs this while sharing only ",
+      "ja": "は、"
+    },
+    {
+      "index": 112,
+      "en": ".\nThe file descriptors of the child process are set using the ",
+      "ja": "だけを共有して、このテストを実行します。子プロセスのファイル記述子は、"
+    },
+    {
+      "index": 113,
+      "en": " field in\n",
+      "ja": "フィールド（"
+    },
+    {
+      "index": 114,
+      "en": ". First set the ",
+      "ja": "）で設定します。まず、"
+    },
+    {
+      "index": 115,
+      "en": " field to the number of\nfile descriptors being set. ",
+      "ja": "フィールドに、設定するファイル記述子の数を設定します。"
+    },
+    {
+      "index": 116,
+      "en": " is an array of\n",
+      "ja": "は、"
+    },
+    {
+      "index": 117,
+      "en": ", which is:",
+      "ja": "の配列で、次のようになっています。"
+    },
+    {
+      "index": 118,
+      "en": "where flags can have several values. Use ",
+      "ja": "flagsには、いくつかの値を指定できます。使用しない場合は、"
+    },
+    {
+      "index": 119,
+      "en": " if it isn’t going to be\nused. If the first three ",
+      "ja": "を使います。最初の3つの、"
+    },
+    {
+      "index": 120,
+      "en": " fields are marked as ",
+      "ja": "フィールドを、"
+    },
+    {
+      "index": 121,
+      "en": " they’ll\nredirect to ",
+      "ja": "にすると、"
+    },
+    {
+      "index": 122,
+      "en": ".",
+      "ja": "へリダイレクトされます。"
+    },
+    {
+      "index": 123,
+      "en": "Since we want to pass on an existing descriptor, we’ll use ",
+      "ja": "既存の記述子を渡したいので、"
+    },
+    {
+      "index": 124,
+      "en": ".\nThen we set the ",
+      "ja": "を使います。次に、"
+    },
+    {
+      "index": 125,
+      "en": " to ",
+      "ja": "を、"
+    },
+    {
+      "index": 126,
+      "en": ".",
+      "ja": "に設定します。"
+    },
+    {
+      "index": 127,
+      "en": "proc-streams/main.c",
+      "ja": "proc-streams/main.c"
+    },
+    {
+      "index": 128,
+      "en": "If you run ",
+      "ja": ""
+    },
+    {
+      "index": 129,
+      "en": " you’ll see that only the line “This is stderr” will\nbe displayed. Try marking ",
+      "ja": "を実行すると、「This is stderr」という行だけが表示されます。"
+    },
+    {
+      "index": 130,
+      "en": " as being inherited and see the output.",
+      "ja": "も継承するようにして、出力を確認してください。"
+    },
+    {
+      "index": 131,
+      "en": "It is dead simple to apply this redirection to streams.  By setting ",
+      "ja": "このリダイレクトをストリームに適用するのは、とても簡単です。"
+    },
+    {
+      "index": 132,
+      "en": "\nto ",
+      "ja": "を、"
+    },
+    {
+      "index": 133,
+      "en": " and setting ",
+      "ja": "に設定し、"
+    },
+    {
+      "index": 134,
+      "en": " to the stream in the\nparent process, the child process can treat that stream as standard I/O. This\ncan be used to implement something like ",
+      "ja": "に親プロセスのストリームを設定すると、子プロセスはそのストリームを標準I/Oとして扱えます。これを使って、"
+    },
+    {
+      "index": 135,
+      "en": "CGI",
+      "ja": "CGI"
+    },
+    {
+      "index": 136,
+      "en": ".",
+      "ja": "のようなものを実装できます。"
+    },
+    {
+      "index": 137,
+      "en": "A sample CGI script/executable is:",
+      "ja": "CGIスクリプト・実行ファイルの例を示します。"
+    },
+    {
+      "index": 138,
+      "en": "cgi/tick.c",
+      "ja": "cgi/tick.c"
+    },
+    {
+      "index": 139,
+      "en": "The CGI server combines the concepts from this chapter and ",
+      "ja": "CGIサーバーでは、この章と、"
+    },
+    {
+      "index": 140,
+      "en": "Networking",
+      "ja": "ネットワーク"
+    },
+    {
+      "index": 141,
+      "en": " so\nthat every client is sent ten ticks after which that connection is closed.",
+      "ja": "の概念を組み合わせ、各クライアントに10回のtickを送った後、その接続を閉じます。"
+    },
+    {
+      "index": 142,
+      "en": "cgi/main.c",
+      "ja": "cgi/main.c"
+    },
+    {
+      "index": 143,
+      "en": "Here we simply accept the TCP connection and pass on the socket (",
+      "ja": "ここでは単にTCP接続を受け入れ、ソケット（"
+    },
+    {
+      "index": 144,
+      "en": "stream",
+      "ja": "ストリーム"
+    },
+    {
+      "index": 145,
+      "en": ") to\n",
+      "ja": "）を、"
+    },
+    {
+      "index": 146,
+      "en": ".",
+      "ja": "に渡します。"
+    },
+    {
+      "index": 147,
+      "en": "cgi/main.c",
+      "ja": "cgi/main.c"
+    },
+    {
+      "index": 148,
+      "en": "The ",
+      "ja": "CGIスクリプトの、"
+    },
+    {
+      "index": 149,
+      "en": " of the CGI script is set to the socket so that whatever our tick\nscript prints, gets sent to the client. By using processes, we can offload the\nread/write buffering to the operating system, so in terms of convenience this\nis great. Just be warned that creating processes is a costly task.",
+      "ja": "をソケットに設定するため、tickスクリプトが出力したものは、すべてクライアントに送られます。プロセスを使うと、読み書きのバッファリングをオペレーティングシステムに任せられるので、とても便利です。ただし、プロセスの作成は高コストな処理であることに注意してください。"
+    },
+    {
+      "index": 150,
+      "en": "Parent-child IPC",
+      "ja": "親子間IPC"
+    },
+    {
+      "index": 151,
+      "en": "A parent and child can have one or two way communication over a pipe created by\nsettings ",
+      "ja": "親と子は、"
+    },
+    {
+      "index": 152,
+      "en": " to a bit-wise combination of\n",
+      "ja": "に、"
+    },
+    {
+      "index": 153,
+      "en": " and ",
+      "ja": "と、"
+    },
+    {
+      "index": 154,
+      "en": " or ",
+      "ja": "または、"
+    },
+    {
+      "index": 155,
+      "en": ". The\nread/write flag is from the perspective of the child process.  In this case,\nthe ",
+      "ja": "をビット単位で組み合わせて設定して作るパイプで、単方向または双方向に通信できます。読み書きフラグは、子プロセスの視点で指定します。この場合、"
+    },
+    {
+      "index": 156,
+      "en": " field must be set to point to an initialized,\nunopened ",
+      "ja": "フィールドは、初期化済みで、まだ開いていない、"
+    },
+    {
+      "index": 157,
+      "en": " instance.",
+      "ja": "インスタンスを指すように設定する必要があります。"
+    },
+    {
+      "index": 158,
+      "en": "New stdio Pipes",
+      "ja": "新しいstdioパイプ"
+    },
+    {
+      "index": 159,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 160,
+      "en": " structure represents more than just ",
+      "ja": "構造体は、単に、"
+    },
+    {
+      "index": 161,
+      "en": "pipe(7)",
+      "ja": "pipe(7)"
+    },
+    {
+      "index": 162,
+      "en": " (or ",
+      "ja": "（または、"
+    },
+    {
+      "index": 163,
+      "en": "),\nbut supports any streaming file-like objects. On Windows, the only object of\nthat description is the ",
+      "ja": "）だけを表すものではなく、ストリームとして扱えるファイル状のオブジェクト全般をサポートします。Windowsでは、この条件に当てはまるのは、"
+    },
+    {
+      "index": 164,
+      "en": "Named Pipe",
+      "ja": "名前付きパイプ"
+    },
+    {
+      "index": 165,
+      "en": ".  On Unix, this could be any of ",
+      "ja": "だけです。Unixでは、"
+    },
+    {
+      "index": 166,
+      "en": "Unix\nDomain Socket",
+      "ja": "Unixドメインソケット"
+    },
+    {
+      "index": 167,
+      "en": ", or derived from ",
+      "ja": "、"
+    },
+    {
+      "index": 168,
+      "en": "mkfifo(1)",
+      "ja": "mkfifo(1)"
+    },
+    {
+      "index": 169,
+      "en": ", or it could actually be a\n",
+      "ja": "によるもの、あるいは、実際の、"
+    },
+    {
+      "index": 170,
+      "en": "pipe(7)",
+      "ja": "pipe(7)"
+    },
+    {
+      "index": 171,
+      "en": ".  When ",
+      "ja": "などです。"
+    },
+    {
+      "index": 172,
+      "en": " initializes a ",
+      "ja": "が、"
+    },
+    {
+      "index": 173,
+      "en": " due to the\n",
+      "ja": "を、"
+    },
+    {
+      "index": 174,
+      "en": "UV_CREATE_PIPE",
+      "ja": "UV_CREATE_PIPE"
+    },
+    {
+      "index": 175,
+      "en": " flag, it opts for creating a ",
+      "ja": "フラグに基づいて初期化する場合は、"
+    },
+    {
+      "index": 176,
+      "en": "socketpair(2)",
+      "ja": "socketpair(2)"
+    },
+    {
+      "index": 177,
+      "en": ".",
+      "ja": "の作成を選びます。"
+    },
+    {
+      "index": 178,
+      "en": "This is intended for the purpose of allowing multiple libuv processes to\ncommunicate with IPC. This is discussed below.",
+      "ja": "これは、複数のlibuvプロセスがIPCで通信できるようにするためのものです。以下で説明します。"
+    },
+    {
+      "index": 179,
+      "en": "Arbitrary process IPC",
+      "ja": "任意のプロセス間のIPC"
+    },
+    {
+      "index": 180,
+      "en": "Since domain sockets ",
+      "ja": "ドメインソケットは、"
+    },
+    {
+      "index": 181,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 182,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 183,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 184,
+      "en": " can have a well known name and a location in the\nfile-system they can be used for IPC between unrelated processes. The ",
+      "ja": "既知の名前と、ファイルシステム内の場所を持てるので、無関係なプロセス間のIPCに使えます。オープンソースのデスクトップ環境で使われる、"
+    },
+    {
+      "index": 185,
+      "en": "D-BUS",
+      "ja": "D-BUS"
+    },
+    {
+      "index": 186,
+      "en": "\nsystem used by open source desktop environments uses domain sockets for event\nnotification. Various applications can then react when a contact comes online\nor new hardware is detected. The MySQL server also runs a domain socket on\nwhich clients can interact with it.",
+      "ja": "システムは、イベント通知にドメインソケットを使います。これにより、連絡先がオンラインになったときや、新しいハードウェアが検出されたときに、さまざまなアプリケーションが反応できます。MySQLサーバーも、クライアントが対話できるドメインソケットを動かしています。"
+    },
+    {
+      "index": 187,
+      "en": "When using domain sockets, a client-server pattern is usually followed with the\ncreator/owner of the socket acting as the server. After the initial setup,\nmessaging is no different from TCP, so we’ll re-use the echo server example.",
+      "ja": "ドメインソケットを使う場合、通常は、ソケットの作成者・所有者がサーバーになるクライアント・サーバーパターンに従います。初期設定が済めば、メッセージのやり取りはTCPと変わらないため、エコーサーバーの例を再利用します。"
+    },
+    {
+      "index": 188,
+      "en": "pipe-echo-server/main.c",
+      "ja": "pipe-echo-server/main.c"
+    },
+    {
+      "index": 189,
+      "en": "We name the socket ",
+      "ja": "ソケットには、"
+    },
+    {
+      "index": 190,
+      "en": " which means it will be created in the local\ndirectory. This socket now behaves no different from TCP sockets as far as\nthe stream API is concerned. You can test this server using ",
+      "ja": "という名前を付け、ローカルディレクトリに作成します。ストリームAPIから見れば、このソケットはTCPソケットと同じように振る舞います。このサーバーは、"
+    },
+    {
+      "index": 191,
+      "en": "socat",
+      "ja": "socat"
+    },
+    {
+      "index": 192,
+      "en": ":",
+      "ja": "でテストできます。"
+    },
+    {
+      "index": 193,
+      "en": "A client which wants to connect to a domain socket will use:",
+      "ja": "ドメインソケットに接続するクライアントは、次を使います。"
+    },
+    {
+      "index": 194,
+      "en": "where ",
+      "ja": "ここで、"
+    },
+    {
+      "index": 195,
+      "en": " will be ",
+      "ja": "は、"
+    },
+    {
+      "index": 196,
+      "en": " or similar. On Unix systems, ",
+      "ja": "などです。Unixシステムでは、"
+    },
+    {
+      "index": 197,
+      "en": " must\npoint to a valid file (e.g. ",
+      "ja": "は、有効なファイル（たとえば、"
+    },
+    {
+      "index": 198,
+      "en": "). On Windows, ",
+      "ja": "）を指す必要があります。Windowsでは、"
+    },
+    {
+      "index": 199,
+      "en": " follows a\n",
+      "ja": "は、"
+    },
+    {
+      "index": 200,
+      "en": " format.",
+      "ja": "形式に従います。"
+    },
+    {
+      "index": 201,
+      "en": "Sending file descriptors over pipes",
+      "ja": "パイプでのファイル記述子の送信"
+    },
+    {
+      "index": 202,
+      "en": "The cool thing about domain sockets is that file descriptors can be exchanged\nbetween processes by sending them over a domain socket. This allows processes\nto hand off their I/O to other processes. Applications include load-balancing\nservers, worker processes and other ways to make optimum use of CPU. libuv only\nsupports sending ",
+      "ja": "ドメインソケットの便利な点は、ドメインソケットを通じてファイル記述子を送ることで、プロセス間でそれらを交換できることです。これにより、プロセスはI/Oを他のプロセスへ引き継げます。用途には、負荷分散サーバー、ワーカープロセス、その他のCPUを最適に活用する方法があります。現時点でlibuvがパイプを通じて送信できるのは、"
+    },
+    {
+      "index": 203,
+      "en": "TCP sockets or other pipes",
+      "ja": "TCPソケットまたは他のパイプ"
+    },
+    {
+      "index": 204,
+      "en": " over pipes for now.",
+      "ja": "だけです。"
+    },
+    {
+      "index": 205,
+      "en": "To demonstrate, we will look at an echo server implementation that hands off\nclients to worker processes in a round-robin fashion. This program is a bit\ninvolved, and while only snippets are included in the book, it is recommended\nto read the full code to really understand it.",
+      "ja": "実演として、クライアントをラウンドロビン方式でワーカープロセスに引き渡すエコーサーバーの実装を見てみます。このプログラムはやや複雑で、本書には抜粋だけを載せています。十分に理解するには、コード全体を読むことを勧めます。"
+    },
+    {
+      "index": 206,
+      "en": "The worker process is quite simple, since the file-descriptor is handed over to\nit by the master.",
+      "ja": "ワーカープロセスは、マスタープロセスからファイル記述子を渡されるので、とても単純です。"
+    },
+    {
+      "index": 207,
+      "en": "multi-echo-server/worker.c",
+      "ja": "multi-echo-server/worker.c"
+    },
+    {
+      "index": 208,
+      "en": " is the pipe connected to the master process on the other end, along\nwhich new file descriptors get sent. It is important to set the ",
+      "ja": "は、反対側のマスタープロセスに接続されたパイプで、新しいファイル記述子が送られてきます。このパイプがプロセス間通信に使われることを示すため、"
+    },
+    {
+      "index": 209,
+      "en": "\nargument of ",
+      "ja": "引数、つまり、"
+    },
+    {
+      "index": 210,
+      "en": " to 1 to indicate this pipe will be used for\ninter-process communication! Since the master will write the file handle to the\nstandard input of the worker, we connect the pipe to ",
+      "ja": "の引数を1に設定することが重要です。マスタープロセスは、ワーカーの標準入力にファイルハンドルを書き込むので、パイプを、"
+    },
+    {
+      "index": 211,
+      "en": " using\n",
+      "ja": "に、"
+    },
+    {
+      "index": 212,
+      "en": ".",
+      "ja": "で接続します。"
+    },
+    {
+      "index": 213,
+      "en": "multi-echo-server/worker.c",
+      "ja": "multi-echo-server/worker.c"
+    },
+    {
+      "index": 214,
+      "en": "First we call ",
+      "ja": "まず、"
+    },
+    {
+      "index": 215,
+      "en": " to ensure that a handle is available\nto read out. If your program could deal with different types of handles,\n",
+      "ja": "で、読み出せるハンドルがあることを確認します。異なる種類のハンドルを扱うプログラムでは、"
+    },
+    {
+      "index": 216,
+      "en": " can be used to determine the type.\nAlthough ",
+      "ja": "で種類を判定できます。このコードの、"
+    },
+    {
+      "index": 217,
+      "en": " seems odd in this code, it actually makes sense. What\n",
+      "ja": "は奇妙に見えるかもしれませんが、実際には筋が通っています。通常、"
+    },
+    {
+      "index": 218,
+      "en": " traditionally does is get a file descriptor (the client) from\nanother file descriptor (The listening socket). Which is exactly what we do\nhere. Fetch the file descriptor (",
+      "ja": "が行うのは、別のファイル記述子（リスニングソケット）から、ファイル記述子（クライアント）を取得することです。ここで行うことも、まさに同じです。ファイル記述子（"
+    },
+    {
+      "index": 219,
+      "en": ") from ",
+      "ja": "）を、"
+    },
+    {
+      "index": 220,
+      "en": ". From this point\nthe worker does standard echo server stuff.",
+      "ja": "から取得します。ここから先、ワーカーは標準的なエコーサーバーの処理を行います。"
+    },
+    {
+      "index": 221,
+      "en": "Turning now to the master, let’s take a look at how the workers are launched to\nallow load balancing.",
+      "ja": "次に、マスタープロセスに移り、負荷分散のためにワーカーをどのように起動するかを見てみましょう。"
+    },
+    {
+      "index": 222,
+      "en": "multi-echo-server/main.c",
+      "ja": "multi-echo-server/main.c"
+    },
+    {
+      "index": 223,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 224,
+      "en": " structure wraps the process, and the pipe between the\nmaster and the individual process.",
+      "ja": "構造体は、プロセスと、マスター・個々のプロセス間のパイプをまとめます。"
+    },
+    {
+      "index": 225,
+      "en": "multi-echo-server/main.c",
+      "ja": "multi-echo-server/main.c"
+    },
+    {
+      "index": 226,
+      "en": "In setting up the workers, we use the nifty libuv function ",
+      "ja": "ワーカーの設定では、便利なlibuv関数、"
+    },
+    {
+      "index": 227,
+      "en": " to\nget the number of CPUs so we can launch an equal number of workers. Again it is\nimportant to initialize the pipe acting as the IPC channel with the third\nargument as 1. We then indicate that the child process’ ",
+      "ja": "でCPU数を取得し、同じ数のワーカーを起動できるようにします。ここでも、IPCチャネルになるパイプの初期化時に、第3引数を1にすることが重要です。次に、子プロセスの、"
+    },
+    {
+      "index": 228,
+      "en": " is to be\na readable pipe (from the point of view of the child). Everything is\nstraightforward till here. The workers are launched and waiting for file\ndescriptors to be written to their standard input.",
+      "ja": "を、読み取り可能なパイプ（子プロセスの視点で）にすることを示します。ここまでは単純です。ワーカーは起動され、標準入力にファイル記述子が書き込まれるのを待っています。"
+    },
+    {
+      "index": 229,
+      "en": "It is in ",
+      "ja": "クライアントソケットを受け入れ、ラウンドロビン方式で次のワーカーに渡すのは、"
+    },
+    {
+      "index": 230,
+      "en": " (the TCP infrastructure is initialized in\n",
+      "ja": "です（TCPの基盤は、"
+    },
+    {
+      "index": 231,
+      "en": "), that we accept the client socket and pass it along to the next\nworker in the round-robin.",
+      "ja": "で初期化します）。"
+    },
+    {
+      "index": 232,
+      "en": "multi-echo-server/main.c",
+      "ja": "multi-echo-server/main.c"
+    },
+    {
+      "index": 233,
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "index": 234,
+      "en": " call handles all the abstraction and it is simply a matter of\npassing in the handle (",
+      "ja": "の呼び出しがすべての抽象化を処理するので、ハンドル（"
+    },
+    {
+      "index": 235,
+      "en": ") as the right argument. With this our\nmulti-process echo server is operational.",
+      "ja": "）を適切な引数として渡すだけです。これで、マルチプロセスのエコーサーバーが動作します。"
+    },
+    {
+      "index": 236,
+      "en": "Thanks to Kyle for ",
+      "ja": ""
+    },
+    {
+      "index": 237,
+      "en": "pointing out",
+      "ja": "指摘"
+    },
+    {
+      "index": 238,
+      "en": " that ",
+      "ja": "してくれたKyleに感謝します。"
+    },
+    {
+      "index": 239,
+      "en": " requires a non-empty\nbuffer even when sending handles.",
+      "ja": "では、ハンドルを送る場合でも、空ではないバッファが必要です。"
+    },
+    {
+      "index": 240,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 241,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 242,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 243,
+      "en": "In this section domain sockets stands in for named pipes on Windows as\nwell.",
+      "ja": "この節では、ドメインソケットという言葉は、Windowsの名前付きパイプも含む意味で使っています。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 20,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}
