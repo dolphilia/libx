@@ -1,0 +1,374 @@
+76: Description
+77: See key input for how these are used.
+78: These key codes are inspired by the USB HID Usage Tables v1.12 (p. 53-60), but re-arranged to map to 7-bit ASCII for printable keys (function keys are put in the 256+ range).
+79: The naming of the key codes follow these rules:
+80: The US keyboard layout is used
+81: Names of printable alphanumeric characters are used (e.g. "A", "R", "3", etc.)
+82: For non-alphanumeric characters, Unicode:ish names are used (e.g. "COMMA", "LEFT_SQUARE_BRACKET", etc.). Note that some names do not correspond to the Unicode standard (usually for brevity)
+83: Keys that lack a clear US mapping are named "WORLD_x"
+84: For non-printable keys, custom names are used (e.g. "F4", "BACKSPACE", etc.) 
+88: Macros
+89: #define GLFW_KEY_SPACE   32
+91: #define GLFW_KEY_APOSTROPHE   39  /* ' */
+93: #define GLFW_KEY_COMMA   44  /* , */
+95: #define GLFW_KEY_MINUS   45  /* - */
+97: #define GLFW_KEY_PERIOD   46  /* . */
+99: #define GLFW_KEY_SLASH   47  /* / */
+101: #define GLFW_KEY_0   48
+103: #define GLFW_KEY_1   49
+105: #define GLFW_KEY_2   50
+107: #define GLFW_KEY_3   51
+109: #define GLFW_KEY_4   52
+111: #define GLFW_KEY_5   53
+113: #define GLFW_KEY_6   54
+115: #define GLFW_KEY_7   55
+117: #define GLFW_KEY_8   56
+119: #define GLFW_KEY_9   57
+121: #define GLFW_KEY_SEMICOLON   59  /* ; */
+123: #define GLFW_KEY_EQUAL   61  /* = */
+125: #define GLFW_KEY_A   65
+127: #define GLFW_KEY_B   66
+129: #define GLFW_KEY_C   67
+131: #define GLFW_KEY_D   68
+133: #define GLFW_KEY_E   69
+135: #define GLFW_KEY_F   70
+137: #define GLFW_KEY_G   71
+139: #define GLFW_KEY_H   72
+141: #define GLFW_KEY_I   73
+143: #define GLFW_KEY_J   74
+145: #define GLFW_KEY_K   75
+147: #define GLFW_KEY_L   76
+149: #define GLFW_KEY_M   77
+151: #define GLFW_KEY_N   78
+153: #define GLFW_KEY_O   79
+155: #define GLFW_KEY_P   80
+157: #define GLFW_KEY_Q   81
+159: #define GLFW_KEY_R   82
+161: #define GLFW_KEY_S   83
+163: #define GLFW_KEY_T   84
+165: #define GLFW_KEY_U   85
+167: #define GLFW_KEY_V   86
+169: #define GLFW_KEY_W   87
+171: #define GLFW_KEY_X   88
+173: #define GLFW_KEY_Y   89
+175: #define GLFW_KEY_Z   90
+177: #define GLFW_KEY_LEFT_BRACKET   91  /* [ */
+179: #define GLFW_KEY_BACKSLASH   92  /* \ */
+181: #define GLFW_KEY_RIGHT_BRACKET   93  /* ] */
+183: #define GLFW_KEY_GRAVE_ACCENT   96  /* ` */
+185: #define GLFW_KEY_WORLD_1   161 /* non-US #1 */
+187: #define GLFW_KEY_WORLD_2   162 /* non-US #2 */
+189: #define GLFW_KEY_ESCAPE   256
+191: #define GLFW_KEY_ENTER   257
+193: #define GLFW_KEY_TAB   258
+195: #define GLFW_KEY_BACKSPACE   259
+197: #define GLFW_KEY_INSERT   260
+199: #define GLFW_KEY_DELETE   261
+201: #define GLFW_KEY_RIGHT   262
+203: #define GLFW_KEY_LEFT   263
+205: #define GLFW_KEY_DOWN   264
+207: #define GLFW_KEY_UP   265
+209: #define GLFW_KEY_PAGE_UP   266
+211: #define GLFW_KEY_PAGE_DOWN   267
+213: #define GLFW_KEY_HOME   268
+215: #define GLFW_KEY_END   269
+217: #define GLFW_KEY_CAPS_LOCK   280
+219: #define GLFW_KEY_SCROLL_LOCK   281
+221: #define GLFW_KEY_NUM_LOCK   282
+223: #define GLFW_KEY_PRINT_SCREEN   283
+225: #define GLFW_KEY_PAUSE   284
+227: #define GLFW_KEY_F1   290
+229: #define GLFW_KEY_F2   291
+231: #define GLFW_KEY_F3   292
+233: #define GLFW_KEY_F4   293
+235: #define GLFW_KEY_F5   294
+237: #define GLFW_KEY_F6   295
+239: #define GLFW_KEY_F7   296
+241: #define GLFW_KEY_F8   297
+243: #define GLFW_KEY_F9   298
+245: #define GLFW_KEY_F10   299
+247: #define GLFW_KEY_F11   300
+249: #define GLFW_KEY_F12   301
+251: #define GLFW_KEY_F13   302
+253: #define GLFW_KEY_F14   303
+255: #define GLFW_KEY_F15   304
+257: #define GLFW_KEY_F16   305
+259: #define GLFW_KEY_F17   306
+261: #define GLFW_KEY_F18   307
+263: #define GLFW_KEY_F19   308
+265: #define GLFW_KEY_F20   309
+267: #define GLFW_KEY_F21   310
+269: #define GLFW_KEY_F22   311
+271: #define GLFW_KEY_F23   312
+273: #define GLFW_KEY_F24   313
+275: #define GLFW_KEY_F25   314
+277: #define GLFW_KEY_KP_0   320
+279: #define GLFW_KEY_KP_1   321
+281: #define GLFW_KEY_KP_2   322
+283: #define GLFW_KEY_KP_3   323
+285: #define GLFW_KEY_KP_4   324
+287: #define GLFW_KEY_KP_5   325
+289: #define GLFW_KEY_KP_6   326
+291: #define GLFW_KEY_KP_7   327
+293: #define GLFW_KEY_KP_8   328
+295: #define GLFW_KEY_KP_9   329
+297: #define GLFW_KEY_KP_DECIMAL   330
+299: #define GLFW_KEY_KP_DIVIDE   331
+301: #define GLFW_KEY_KP_MULTIPLY   332
+303: #define GLFW_KEY_KP_SUBTRACT   333
+305: #define GLFW_KEY_KP_ADD   334
+307: #define GLFW_KEY_KP_ENTER   335
+309: #define GLFW_KEY_KP_EQUAL   336
+311: #define GLFW_KEY_LEFT_SHIFT   340
+313: #define GLFW_KEY_LEFT_CONTROL   341
+315: #define GLFW_KEY_LEFT_ALT   342
+317: #define GLFW_KEY_LEFT_SUPER   343
+319: #define GLFW_KEY_RIGHT_SHIFT   344
+321: #define GLFW_KEY_RIGHT_CONTROL   345
+323: #define GLFW_KEY_RIGHT_ALT   346
+325: #define GLFW_KEY_RIGHT_SUPER   347
+327: #define GLFW_KEY_MENU   348
+329: #define GLFW_KEY_LAST   GLFW_KEY_MENU
+332: Macro Definition Documentation
+334: ◆ GLFW_KEY_SPACE
+340:           #define GLFW_KEY_SPACE   32
+348: ◆ GLFW_KEY_APOSTROPHE
+354:           #define GLFW_KEY_APOSTROPHE   39  /* ' */
+362: ◆ GLFW_KEY_COMMA
+368:           #define GLFW_KEY_COMMA   44  /* , */
+376: ◆ GLFW_KEY_MINUS
+382:           #define GLFW_KEY_MINUS   45  /* - */
+390: ◆ GLFW_KEY_PERIOD
+396:           #define GLFW_KEY_PERIOD   46  /* . */
+404: ◆ GLFW_KEY_SLASH
+410:           #define GLFW_KEY_SLASH   47  /* / */
+418: ◆ GLFW_KEY_0
+424:           #define GLFW_KEY_0   48
+432: ◆ GLFW_KEY_1
+438:           #define GLFW_KEY_1   49
+446: ◆ GLFW_KEY_2
+452:           #define GLFW_KEY_2   50
+460: ◆ GLFW_KEY_3
+466:           #define GLFW_KEY_3   51
+474: ◆ GLFW_KEY_4
+480:           #define GLFW_KEY_4   52
+488: ◆ GLFW_KEY_5
+494:           #define GLFW_KEY_5   53
+502: ◆ GLFW_KEY_6
+508:           #define GLFW_KEY_6   54
+516: ◆ GLFW_KEY_7
+522:           #define GLFW_KEY_7   55
+530: ◆ GLFW_KEY_8
+536:           #define GLFW_KEY_8   56
+544: ◆ GLFW_KEY_9
+550:           #define GLFW_KEY_9   57
+558: ◆ GLFW_KEY_SEMICOLON
+564:           #define GLFW_KEY_SEMICOLON   59  /* ; */
+572: ◆ GLFW_KEY_EQUAL
+578:           #define GLFW_KEY_EQUAL   61  /* = */
+586: ◆ GLFW_KEY_A
+592:           #define GLFW_KEY_A   65
+600: ◆ GLFW_KEY_B
+606:           #define GLFW_KEY_B   66
+614: ◆ GLFW_KEY_C
+620:           #define GLFW_KEY_C   67
+628: ◆ GLFW_KEY_D
+634:           #define GLFW_KEY_D   68
+642: ◆ GLFW_KEY_E
+648:           #define GLFW_KEY_E   69
+656: ◆ GLFW_KEY_F
+662:           #define GLFW_KEY_F   70
+670: ◆ GLFW_KEY_G
+676:           #define GLFW_KEY_G   71
+684: ◆ GLFW_KEY_H
+690:           #define GLFW_KEY_H   72
+698: ◆ GLFW_KEY_I
+704:           #define GLFW_KEY_I   73
+712: ◆ GLFW_KEY_J
+718:           #define GLFW_KEY_J   74
+726: ◆ GLFW_KEY_K
+732:           #define GLFW_KEY_K   75
+740: ◆ GLFW_KEY_L
+746:           #define GLFW_KEY_L   76
+754: ◆ GLFW_KEY_M
+760:           #define GLFW_KEY_M   77
+768: ◆ GLFW_KEY_N
+774:           #define GLFW_KEY_N   78
+782: ◆ GLFW_KEY_O
+788:           #define GLFW_KEY_O   79
+796: ◆ GLFW_KEY_P
+802:           #define GLFW_KEY_P   80
+810: ◆ GLFW_KEY_Q
+816:           #define GLFW_KEY_Q   81
+824: ◆ GLFW_KEY_R
+830:           #define GLFW_KEY_R   82
+838: ◆ GLFW_KEY_S
+844:           #define GLFW_KEY_S   83
+852: ◆ GLFW_KEY_T
+858:           #define GLFW_KEY_T   84
+866: ◆ GLFW_KEY_U
+872:           #define GLFW_KEY_U   85
+880: ◆ GLFW_KEY_V
+886:           #define GLFW_KEY_V   86
+894: ◆ GLFW_KEY_W
+900:           #define GLFW_KEY_W   87
+908: ◆ GLFW_KEY_X
+914:           #define GLFW_KEY_X   88
+922: ◆ GLFW_KEY_Y
+928:           #define GLFW_KEY_Y   89
+936: ◆ GLFW_KEY_Z
+942:           #define GLFW_KEY_Z   90
+950: ◆ GLFW_KEY_LEFT_BRACKET
+956:           #define GLFW_KEY_LEFT_BRACKET   91  /* [ */
+964: ◆ GLFW_KEY_BACKSLASH
+970:           #define GLFW_KEY_BACKSLASH   92  /* \ */
+978: ◆ GLFW_KEY_RIGHT_BRACKET
+984:           #define GLFW_KEY_RIGHT_BRACKET   93  /* ] */
+992: ◆ GLFW_KEY_GRAVE_ACCENT
+998:           #define GLFW_KEY_GRAVE_ACCENT   96  /* ` */
+1006: ◆ GLFW_KEY_WORLD_1
+1012:           #define GLFW_KEY_WORLD_1   161 /* non-US #1 */
+1020: ◆ GLFW_KEY_WORLD_2
+1026:           #define GLFW_KEY_WORLD_2   162 /* non-US #2 */
+1034: ◆ GLFW_KEY_ESCAPE
+1040:           #define GLFW_KEY_ESCAPE   256
+1048: ◆ GLFW_KEY_ENTER
+1054:           #define GLFW_KEY_ENTER   257
+1062: ◆ GLFW_KEY_TAB
+1068:           #define GLFW_KEY_TAB   258
+1076: ◆ GLFW_KEY_BACKSPACE
+1082:           #define GLFW_KEY_BACKSPACE   259
+1090: ◆ GLFW_KEY_INSERT
+1096:           #define GLFW_KEY_INSERT   260
+1104: ◆ GLFW_KEY_DELETE
+1110:           #define GLFW_KEY_DELETE   261
+1118: ◆ GLFW_KEY_RIGHT
+1124:           #define GLFW_KEY_RIGHT   262
+1132: ◆ GLFW_KEY_LEFT
+1138:           #define GLFW_KEY_LEFT   263
+1146: ◆ GLFW_KEY_DOWN
+1152:           #define GLFW_KEY_DOWN   264
+1160: ◆ GLFW_KEY_UP
+1166:           #define GLFW_KEY_UP   265
+1174: ◆ GLFW_KEY_PAGE_UP
+1180:           #define GLFW_KEY_PAGE_UP   266
+1188: ◆ GLFW_KEY_PAGE_DOWN
+1194:           #define GLFW_KEY_PAGE_DOWN   267
+1202: ◆ GLFW_KEY_HOME
+1208:           #define GLFW_KEY_HOME   268
+1216: ◆ GLFW_KEY_END
+1222:           #define GLFW_KEY_END   269
+1230: ◆ GLFW_KEY_CAPS_LOCK
+1236:           #define GLFW_KEY_CAPS_LOCK   280
+1244: ◆ GLFW_KEY_SCROLL_LOCK
+1250:           #define GLFW_KEY_SCROLL_LOCK   281
+1258: ◆ GLFW_KEY_NUM_LOCK
+1264:           #define GLFW_KEY_NUM_LOCK   282
+1272: ◆ GLFW_KEY_PRINT_SCREEN
+1278:           #define GLFW_KEY_PRINT_SCREEN   283
+1286: ◆ GLFW_KEY_PAUSE
+1292:           #define GLFW_KEY_PAUSE   284
+1300: ◆ GLFW_KEY_F1
+1306:           #define GLFW_KEY_F1   290
+1314: ◆ GLFW_KEY_F2
+1320:           #define GLFW_KEY_F2   291
+1328: ◆ GLFW_KEY_F3
+1334:           #define GLFW_KEY_F3   292
+1342: ◆ GLFW_KEY_F4
+1348:           #define GLFW_KEY_F4   293
+1356: ◆ GLFW_KEY_F5
+1362:           #define GLFW_KEY_F5   294
+1370: ◆ GLFW_KEY_F6
+1376:           #define GLFW_KEY_F6   295
+1384: ◆ GLFW_KEY_F7
+1390:           #define GLFW_KEY_F7   296
+1398: ◆ GLFW_KEY_F8
+1404:           #define GLFW_KEY_F8   297
+1412: ◆ GLFW_KEY_F9
+1418:           #define GLFW_KEY_F9   298
+1426: ◆ GLFW_KEY_F10
+1432:           #define GLFW_KEY_F10   299
+1440: ◆ GLFW_KEY_F11
+1446:           #define GLFW_KEY_F11   300
+1454: ◆ GLFW_KEY_F12
+1460:           #define GLFW_KEY_F12   301
+1468: ◆ GLFW_KEY_F13
+1474:           #define GLFW_KEY_F13   302
+1482: ◆ GLFW_KEY_F14
+1488:           #define GLFW_KEY_F14   303
+1496: ◆ GLFW_KEY_F15
+1502:           #define GLFW_KEY_F15   304
+1510: ◆ GLFW_KEY_F16
+1516:           #define GLFW_KEY_F16   305
+1524: ◆ GLFW_KEY_F17
+1530:           #define GLFW_KEY_F17   306
+1538: ◆ GLFW_KEY_F18
+1544:           #define GLFW_KEY_F18   307
+1552: ◆ GLFW_KEY_F19
+1558:           #define GLFW_KEY_F19   308
+1566: ◆ GLFW_KEY_F20
+1572:           #define GLFW_KEY_F20   309
+1580: ◆ GLFW_KEY_F21
+1586:           #define GLFW_KEY_F21   310
+1594: ◆ GLFW_KEY_F22
+1600:           #define GLFW_KEY_F22   311
+1608: ◆ GLFW_KEY_F23
+1614:           #define GLFW_KEY_F23   312
+1622: ◆ GLFW_KEY_F24
+1628:           #define GLFW_KEY_F24   313
+1636: ◆ GLFW_KEY_F25
+1642:           #define GLFW_KEY_F25   314
+1650: ◆ GLFW_KEY_KP_0
+1656:           #define GLFW_KEY_KP_0   320
+1664: ◆ GLFW_KEY_KP_1
+1670:           #define GLFW_KEY_KP_1   321
+1678: ◆ GLFW_KEY_KP_2
+1684:           #define GLFW_KEY_KP_2   322
+1692: ◆ GLFW_KEY_KP_3
+1698:           #define GLFW_KEY_KP_3   323
+1706: ◆ GLFW_KEY_KP_4
+1712:           #define GLFW_KEY_KP_4   324
+1720: ◆ GLFW_KEY_KP_5
+1726:           #define GLFW_KEY_KP_5   325
+1734: ◆ GLFW_KEY_KP_6
+1740:           #define GLFW_KEY_KP_6   326
+1748: ◆ GLFW_KEY_KP_7
+1754:           #define GLFW_KEY_KP_7   327
+1762: ◆ GLFW_KEY_KP_8
+1768:           #define GLFW_KEY_KP_8   328
+1776: ◆ GLFW_KEY_KP_9
+1782:           #define GLFW_KEY_KP_9   329
+1790: ◆ GLFW_KEY_KP_DECIMAL
+1796:           #define GLFW_KEY_KP_DECIMAL   330
+1804: ◆ GLFW_KEY_KP_DIVIDE
+1810:           #define GLFW_KEY_KP_DIVIDE   331
+1818: ◆ GLFW_KEY_KP_MULTIPLY
+1824:           #define GLFW_KEY_KP_MULTIPLY   332
+1832: ◆ GLFW_KEY_KP_SUBTRACT
+1838:           #define GLFW_KEY_KP_SUBTRACT   333
+1846: ◆ GLFW_KEY_KP_ADD
+1852:           #define GLFW_KEY_KP_ADD   334
+1860: ◆ GLFW_KEY_KP_ENTER
+1866:           #define GLFW_KEY_KP_ENTER   335
+1874: ◆ GLFW_KEY_KP_EQUAL
+1880:           #define GLFW_KEY_KP_EQUAL   336
+1888: ◆ GLFW_KEY_LEFT_SHIFT
+1894:           #define GLFW_KEY_LEFT_SHIFT   340
+1902: ◆ GLFW_KEY_LEFT_CONTROL
+1908:           #define GLFW_KEY_LEFT_CONTROL   341
+1916: ◆ GLFW_KEY_LEFT_ALT
+1922:           #define GLFW_KEY_LEFT_ALT   342
+1930: ◆ GLFW_KEY_LEFT_SUPER
+1936:           #define GLFW_KEY_LEFT_SUPER   343
+1944: ◆ GLFW_KEY_RIGHT_SHIFT
+1950:           #define GLFW_KEY_RIGHT_SHIFT   344
+1958: ◆ GLFW_KEY_RIGHT_CONTROL
+1964:           #define GLFW_KEY_RIGHT_CONTROL   345
+1972: ◆ GLFW_KEY_RIGHT_ALT
+1978:           #define GLFW_KEY_RIGHT_ALT   346
+1986: ◆ GLFW_KEY_RIGHT_SUPER
+1992:           #define GLFW_KEY_RIGHT_SUPER   347
+2000: ◆ GLFW_KEY_MENU
+2006:           #define GLFW_KEY_MENU   348
+2014: ◆ GLFW_KEY_LAST
+2020:           #define GLFW_KEY_LAST   GLFW_KEY_MENU

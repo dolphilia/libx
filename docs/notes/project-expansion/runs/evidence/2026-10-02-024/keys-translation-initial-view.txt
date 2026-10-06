@@ -1,0 +1,499 @@
+1: ---
+2: title: "キーボードキートークン"
+3: description: "GLFW 3.5.1 キーボードキートークン"
+4: ---
+8: ## 説明
+10: これらの使用方法については、キー入力を参照してください。
+12: これらのキーコードは *USB HID Usage Tables v1.12*（53～60 ページ）を参考にしていますが、印字可能キーを 7 ビット ASCII に対応させるために再配置されています（ファンクションキーは 256 以上の範囲に配置されます）。
+14: キーコードの命名は次の規則に従います。
+16: - 米国キーボード配列を使用します
+17: - 印字可能な英数字の名前を使用します（例: "A"、"R"、"3" など）
+18: - 英数字以外の文字には Unicode 風の名前を使用します（例: "COMMA"、"LEFT_SQUARE_BRACKET" など）。一部の名前は、通常は簡潔さのため Unicode 標準と対応しないことに注意してください
+19: - 米国配列との明確な対応がないキーは "WORLD_x" と命名します
+20: - 印字できないキーには独自の名前を使用します（例: "F4"、"BACKSPACE" など）
+29:  マクロ
+32: #define 
+33: GLFW_KEY_SPACE   32
+39: #define 
+40: GLFW_KEY_APOSTROPHE   39 /* ' */
+46: #define 
+47: GLFW_KEY_COMMA   44 /* , */
+53: #define 
+54: GLFW_KEY_MINUS   45 /* - */
+60: #define 
+61: GLFW_KEY_PERIOD   46 /* . */
+67: #define 
+68: GLFW_KEY_SLASH   47 /* / */
+74: #define 
+75: GLFW_KEY_0   48
+81: #define 
+82: GLFW_KEY_1   49
+88: #define 
+89: GLFW_KEY_2   50
+95: #define 
+96: GLFW_KEY_3   51
+102: #define 
+103: GLFW_KEY_4   52
+109: #define 
+110: GLFW_KEY_5   53
+116: #define 
+117: GLFW_KEY_6   54
+123: #define 
+124: GLFW_KEY_7   55
+130: #define 
+131: GLFW_KEY_8   56
+137: #define 
+138: GLFW_KEY_9   57
+144: #define 
+145: GLFW_KEY_SEMICOLON   59 /* ; */
+151: #define 
+152: GLFW_KEY_EQUAL   61 /* = */
+158: #define 
+159: GLFW_KEY_A   65
+165: #define 
+166: GLFW_KEY_B   66
+172: #define 
+173: GLFW_KEY_C   67
+179: #define 
+180: GLFW_KEY_D   68
+186: #define 
+187: GLFW_KEY_E   69
+193: #define 
+194: GLFW_KEY_F   70
+200: #define 
+201: GLFW_KEY_G   71
+207: #define 
+208: GLFW_KEY_H   72
+214: #define 
+215: GLFW_KEY_I   73
+221: #define 
+222: GLFW_KEY_J   74
+228: #define 
+229: GLFW_KEY_K   75
+235: #define 
+236: GLFW_KEY_L   76
+242: #define 
+243: GLFW_KEY_M   77
+249: #define 
+250: GLFW_KEY_N   78
+256: #define 
+257: GLFW_KEY_O   79
+263: #define 
+264: GLFW_KEY_P   80
+270: #define 
+271: GLFW_KEY_Q   81
+277: #define 
+278: GLFW_KEY_R   82
+284: #define 
+285: GLFW_KEY_S   83
+291: #define 
+292: GLFW_KEY_T   84
+298: #define 
+299: GLFW_KEY_U   85
+305: #define 
+306: GLFW_KEY_V   86
+312: #define 
+313: GLFW_KEY_W   87
+319: #define 
+320: GLFW_KEY_X   88
+326: #define 
+327: GLFW_KEY_Y   89
+333: #define 
+334: GLFW_KEY_Z   90
+340: #define 
+341: GLFW_KEY_LEFT_BRACKET   91 /* [ */
+347: #define 
+348: GLFW_KEY_BACKSLASH   92 /* \ */
+354: #define 
+355: GLFW_KEY_RIGHT_BRACKET   93 /* ] */
+361: #define 
+362: GLFW_KEY_GRAVE_ACCENT   96 /* ` */
+368: #define 
+369: GLFW_KEY_WORLD_1   161 /* non-US #1 */
+375: #define 
+376: GLFW_KEY_WORLD_2   162 /* non-US #2 */
+382: #define 
+383: GLFW_KEY_ESCAPE   256
+389: #define 
+390: GLFW_KEY_ENTER   257
+396: #define 
+397: GLFW_KEY_TAB   258
+403: #define 
+404: GLFW_KEY_BACKSPACE   259
+410: #define 
+411: GLFW_KEY_INSERT   260
+417: #define 
+418: GLFW_KEY_DELETE   261
+424: #define 
+425: GLFW_KEY_RIGHT   262
+431: #define 
+432: GLFW_KEY_LEFT   263
+438: #define 
+439: GLFW_KEY_DOWN   264
+445: #define 
+446: GLFW_KEY_UP   265
+452: #define 
+453: GLFW_KEY_PAGE_UP   266
+459: #define 
+460: GLFW_KEY_PAGE_DOWN   267
+466: #define 
+467: GLFW_KEY_HOME   268
+473: #define 
+474: GLFW_KEY_END   269
+480: #define 
+481: GLFW_KEY_CAPS_LOCK   280
+487: #define 
+488: GLFW_KEY_SCROLL_LOCK   281
+494: #define 
+495: GLFW_KEY_NUM_LOCK   282
+501: #define 
+502: GLFW_KEY_PRINT_SCREEN   283
+508: #define 
+509: GLFW_KEY_PAUSE   284
+515: #define 
+516: GLFW_KEY_F1   290
+522: #define 
+523: GLFW_KEY_F2   291
+529: #define 
+530: GLFW_KEY_F3   292
+536: #define 
+537: GLFW_KEY_F4   293
+543: #define 
+544: GLFW_KEY_F5   294
+550: #define 
+551: GLFW_KEY_F6   295
+557: #define 
+558: GLFW_KEY_F7   296
+564: #define 
+565: GLFW_KEY_F8   297
+571: #define 
+572: GLFW_KEY_F9   298
+578: #define 
+579: GLFW_KEY_F10   299
+585: #define 
+586: GLFW_KEY_F11   300
+592: #define 
+593: GLFW_KEY_F12   301
+599: #define 
+600: GLFW_KEY_F13   302
+606: #define 
+607: GLFW_KEY_F14   303
+613: #define 
+614: GLFW_KEY_F15   304
+620: #define 
+621: GLFW_KEY_F16   305
+627: #define 
+628: GLFW_KEY_F17   306
+634: #define 
+635: GLFW_KEY_F18   307
+641: #define 
+642: GLFW_KEY_F19   308
+648: #define 
+649: GLFW_KEY_F20   309
+655: #define 
+656: GLFW_KEY_F21   310
+662: #define 
+663: GLFW_KEY_F22   311
+669: #define 
+670: GLFW_KEY_F23   312
+676: #define 
+677: GLFW_KEY_F24   313
+683: #define 
+684: GLFW_KEY_F25   314
+690: #define 
+691: GLFW_KEY_KP_0   320
+697: #define 
+698: GLFW_KEY_KP_1   321
+704: #define 
+705: GLFW_KEY_KP_2   322
+711: #define 
+712: GLFW_KEY_KP_3   323
+718: #define 
+719: GLFW_KEY_KP_4   324
+725: #define 
+726: GLFW_KEY_KP_5   325
+732: #define 
+733: GLFW_KEY_KP_6   326
+739: #define 
+740: GLFW_KEY_KP_7   327
+746: #define 
+747: GLFW_KEY_KP_8   328
+753: #define 
+754: GLFW_KEY_KP_9   329
+760: #define 
+761: GLFW_KEY_KP_DECIMAL   330
+767: #define 
+768: GLFW_KEY_KP_DIVIDE   331
+774: #define 
+775: GLFW_KEY_KP_MULTIPLY   332
+781: #define 
+782: GLFW_KEY_KP_SUBTRACT   333
+788: #define 
+789: GLFW_KEY_KP_ADD   334
+795: #define 
+796: GLFW_KEY_KP_ENTER   335
+802: #define 
+803: GLFW_KEY_KP_EQUAL   336
+809: #define 
+810: GLFW_KEY_LEFT_SHIFT   340
+816: #define 
+817: GLFW_KEY_LEFT_CONTROL   341
+823: #define 
+824: GLFW_KEY_LEFT_ALT   342
+830: #define 
+831: GLFW_KEY_LEFT_SUPER   343
+837: #define 
+838: GLFW_KEY_RIGHT_SHIFT   344
+844: #define 
+845: GLFW_KEY_RIGHT_CONTROL   345
+851: #define 
+852: GLFW_KEY_RIGHT_ALT   346
+858: #define 
+859: GLFW_KEY_RIGHT_SUPER   347
+865: #define 
+866: GLFW_KEY_MENU   348
+872: #define 
+873: GLFW_KEY_LAST   GLFW_KEY_MENU
+881: ## マクロ定義の詳細
+885: ## [◆ ](#gaddb2c23772b97fd7e26e8ee66f1ad014)GLFW_KEY_SPACE
+893: | \#define GLFW_KEY_SPACE   32 |
+905: ## [◆ ](#ga6059b0b048ba6980b6107fffbd3b4b24)GLFW_KEY_APOSTROPHE
+913: | \#define GLFW_KEY_APOSTROPHE   39 /\* ' \*/ |
+925: ## [◆ ](#gab3d5d72e59d3055f494627b0a524926c)GLFW_KEY_COMMA
+933: | \#define GLFW_KEY_COMMA   44 /\* , \*/ |
+945: ## [◆ ](#gac556b360f7f6fca4b70ba0aecf313fd4)GLFW_KEY_MINUS
+953: | \#define GLFW_KEY_MINUS   45 /\* - \*/ |
+965: ## [◆ ](#ga37e296b650eab419fc474ff69033d927)GLFW_KEY_PERIOD
+973: | \#define GLFW_KEY_PERIOD   46 /\* . \*/ |
+985: ## [◆ ](#gadf3d753b2d479148d711de34b83fd0db)GLFW_KEY_SLASH
+993: | \#define GLFW_KEY_SLASH   47 /\* / \*/ |
+1005: ## [◆ ](#ga50391730e9d7112ad4fd42d0bd1597c1)GLFW_KEY_0
+1013: | \#define GLFW_KEY_0   48 |
+1025: ## [◆ ](#ga05e4cae9ddb8d40cf6d82c8f11f2502f)GLFW_KEY_1
+1033: | \#define GLFW_KEY_1   49 |
+1045: ## [◆ ](#gadc8e66b3a4c4b5c39ad1305cf852863c)GLFW_KEY_2
+1053: | \#define GLFW_KEY_2   50 |
+1065: ## [◆ ](#ga812f0273fe1a981e1fa002ae73e92271)GLFW_KEY_3
+1073: | \#define GLFW_KEY_3   51 |
+1085: ## [◆ ](#ga9e14b6975a9cc8f66cdd5cb3d3861356)GLFW_KEY_4
+1093: | \#define GLFW_KEY_4   52 |
+1105: ## [◆ ](#ga4d74ddaa5d4c609993b4d4a15736c924)GLFW_KEY_5
+1113: | \#define GLFW_KEY_5   53 |
+1125: ## [◆ ](#ga9ea4ab80c313a227b14d0a7c6f810b5d)GLFW_KEY_6
+1133: | \#define GLFW_KEY_6   54 |
+1145: ## [◆ ](#gab79b1cfae7bd630cfc4604c1f263c666)GLFW_KEY_7
+1153: | \#define GLFW_KEY_7   55 |
+1165: ## [◆ ](#gadeaa109a0f9f5afc94fe4a108e686f6f)GLFW_KEY_8
+1173: | \#define GLFW_KEY_8   56 |
+1185: ## [◆ ](#ga2924cb5349ebbf97c8987f3521c44f39)GLFW_KEY_9
+1193: | \#define GLFW_KEY_9   57 |
+1205: ## [◆ ](#ga84233de9ee5bb3e8788a5aa07d80af7d)GLFW_KEY_SEMICOLON
+1213: | \#define GLFW_KEY_SEMICOLON   59 /\* ; \*/ |
+1225: ## [◆ ](#gae1a2de47240d6664423c204bdd91bd17)GLFW_KEY_EQUAL
+1233: | \#define GLFW_KEY_EQUAL   61 /\* = \*/ |
+1245: ## [◆ ](#ga03e842608e1ea323370889d33b8f70ff)GLFW_KEY_A
+1253: | \#define GLFW_KEY_A   65 |
+1265: ## [◆ ](#ga8e3fb647ff3aca9e8dbf14fe66332941)GLFW_KEY_B
+1273: | \#define GLFW_KEY_B   66 |
+1285: ## [◆ ](#ga00ccf3475d9ee2e679480d540d554669)GLFW_KEY_C
+1293: | \#define GLFW_KEY_C   67 |
+1305: ## [◆ ](#ga011f7cdc9a654da984a2506479606933)GLFW_KEY_D
+1313: | \#define GLFW_KEY_D   68 |
+1325: ## [◆ ](#gabf48fcc3afbe69349df432b470c96ef2)GLFW_KEY_E
+1333: | \#define GLFW_KEY_E   69 |
+1345: ## [◆ ](#ga5df402e02aca08444240058fd9b42a55)GLFW_KEY_F
+1353: | \#define GLFW_KEY_F   70 |
+1365: ## [◆ ](#gae74ecddf7cc96104ab23989b1cdab536)GLFW_KEY_G
+1373: | \#define GLFW_KEY_G   71 |
+1385: ## [◆ ](#gad4cc98fc8f35f015d9e2fb94bf136076)GLFW_KEY_H
+1393: | \#define GLFW_KEY_H   72 |
+1405: ## [◆ ](#ga274655c8bfe39742684ca393cf8ed093)GLFW_KEY_I
+1413: | \#define GLFW_KEY_I   73 |
+1425: ## [◆ ](#ga65ff2aedb129a3149ad9cb3e4159a75f)GLFW_KEY_J
+1433: | \#define GLFW_KEY_J   74 |
+1445: ## [◆ ](#ga4ae8debadf6d2a691badae0b53ea3ba0)GLFW_KEY_K
+1453: | \#define GLFW_KEY_K   75 |
+1465: ## [◆ ](#gaaa8b54a13f6b1eed85ac86f82d550db2)GLFW_KEY_L
+1473: | \#define GLFW_KEY_L   76 |
+1485: ## [◆ ](#ga4d7f0260c82e4ea3d6ebc7a21d6e3716)GLFW_KEY_M
+1493: | \#define GLFW_KEY_M   77 |
+1505: ## [◆ ](#gae00856dfeb5d13aafebf59d44de5cdda)GLFW_KEY_N
+1513: | \#define GLFW_KEY_N   78 |
+1525: ## [◆ ](#gaecbbb79130df419d58dd7f09a169efe9)GLFW_KEY_O
+1533: | \#define GLFW_KEY_O   79 |
+1545: ## [◆ ](#ga8fc15819c1094fb2afa01d84546b33e1)GLFW_KEY_P
+1553: | \#define GLFW_KEY_P   80 |
+1565: ## [◆ ](#gafdd01e38b120d67cf51e348bb47f3964)GLFW_KEY_Q
+1573: | \#define GLFW_KEY_Q   81 |
+1585: ## [◆ ](#ga4ce6c70a0c98c50b3fe4ab9a728d4d36)GLFW_KEY_R
+1593: | \#define GLFW_KEY_R   82 |
+1605: ## [◆ ](#ga1570e2ccaab036ea82bed66fc1dab2a9)GLFW_KEY_S
+1613: | \#define GLFW_KEY_S   83 |
+1625: ## [◆ ](#ga90e0560422ec7a30e7f3f375bc9f37f9)GLFW_KEY_T
+1633: | \#define GLFW_KEY_T   84 |
+1645: ## [◆ ](#gacad52f3bf7d378fc0ffa72a76769256d)GLFW_KEY_U
+1653: | \#define GLFW_KEY_U   85 |
+1665: ## [◆ ](#ga22c7763899ecf7788862e5f90eacce6b)GLFW_KEY_V
+1673: | \#define GLFW_KEY_V   86 |
+1685: ## [◆ ](#gaa06a712e6202661fc03da5bdb7b6e545)GLFW_KEY_W
+1693: | \#define GLFW_KEY_W   87 |
+1705: ## [◆ ](#gac1c42c0bf4192cea713c55598b06b744)GLFW_KEY_X
+1713: | \#define GLFW_KEY_X   88 |
+1725: ## [◆ ](#gafd9f115a549effdf8e372a787c360313)GLFW_KEY_Y
+1733: | \#define GLFW_KEY_Y   89 |
+1745: ## [◆ ](#gac489e208c26afda8d4938ed88718760a)GLFW_KEY_Z
+1753: | \#define GLFW_KEY_Z   90 |
+1765: ## [◆ ](#gad1c8d9adac53925276ecb1d592511d8a)GLFW_KEY_LEFT_BRACKET
+1773: | \#define GLFW_KEY_LEFT_BRACKET   91 /\* \[ \*/ |
+1785: ## [◆ ](#gab8155ea99d1ab27ff56f24f8dc73f8d1)GLFW_KEY_BACKSLASH
+1793: | \#define GLFW_KEY_BACKSLASH   92 /\* \\ \*/ |
+1805: ## [◆ ](#ga86ef225fd6a66404caae71044cdd58d8)GLFW_KEY_RIGHT_BRACKET
+1813: | \#define GLFW_KEY_RIGHT_BRACKET   93 /\* \] \*/ |
+1825: ## [◆ ](#ga7a3701fb4e2a0b136ff4b568c3c8d668)GLFW_KEY_GRAVE_ACCENT
+1833: | \#define GLFW_KEY_GRAVE_ACCENT   96 /\* \` \*/ |
+1845: ## [◆ ](#gadc78dad3dab76bcd4b5c20114052577a)GLFW_KEY_WORLD_1
+1853: | \#define GLFW_KEY_WORLD_1   161 /\* non-US \#1 \*/ |
+1865: ## [◆ ](#ga20494bfebf0bb4fc9503afca18ab2c5e)GLFW_KEY_WORLD_2
+1873: | \#define GLFW_KEY_WORLD_2   162 /\* non-US \#2 \*/ |
+1885: ## [◆ ](#gaac6596c350b635c245113b81c2123b93)GLFW_KEY_ESCAPE
+1893: | \#define GLFW_KEY_ESCAPE   256 |
+1905: ## [◆ ](#ga9555a92ecbecdbc1f3435219c571d667)GLFW_KEY_ENTER
+1913: | \#define GLFW_KEY_ENTER   257 |
+1925: ## [◆ ](#ga6908a4bda9950a3e2b73f794bbe985df)GLFW_KEY_TAB
+1933: | \#define GLFW_KEY_TAB   258 |
+1945: ## [◆ ](#ga6c0df1fe2f156bbd5a98c66d76ff3635)GLFW_KEY_BACKSPACE
+1953: | \#define GLFW_KEY_BACKSPACE   259 |
+1965: ## [◆ ](#ga373ac7365435d6b0eb1068f470e34f47)GLFW_KEY_INSERT
+1973: | \#define GLFW_KEY_INSERT   260 |
+1985: ## [◆ ](#gadb111e4df74b8a715f2c05dad58d2682)GLFW_KEY_DELETE
+1993: | \#define GLFW_KEY_DELETE   261 |
+2005: ## [◆ ](#ga06ba07662e8c291a4a84535379ffc7ac)GLFW_KEY_RIGHT
+2013: | \#define GLFW_KEY_RIGHT   262 |
+2025: ## [◆ ](#gae12a010d33c309a67ab9460c51eb2462)GLFW_KEY_LEFT
+2033: | \#define GLFW_KEY_LEFT   263 |
+2045: ## [◆ ](#gae2e3958c71595607416aa7bf082be2f9)GLFW_KEY_DOWN
+2053: | \#define GLFW_KEY_DOWN   264 |
+2065: ## [◆ ](#ga2f3342b194020d3544c67e3506b6f144)GLFW_KEY_UP
+2073: | \#define GLFW_KEY_UP   265 |
+2085: ## [◆ ](#ga3ab731f9622f0db280178a5f3cc6d586)GLFW_KEY_PAGE_UP
+2093: | \#define GLFW_KEY_PAGE_UP   266 |
+2105: ## [◆ ](#gaee0a8fa442001cc2147812f84b59041c)GLFW_KEY_PAGE_DOWN
+2113: | \#define GLFW_KEY_PAGE_DOWN   267 |
+2125: ## [◆ ](#ga41452c7287195d481e43207318c126a7)GLFW_KEY_HOME
+2133: | \#define GLFW_KEY_HOME   268 |
+2145: ## [◆ ](#ga86587ea1df19a65978d3e3b8439bedd9)GLFW_KEY_END
+2153: | \#define GLFW_KEY_END   269 |
+2165: ## [◆ ](#ga92c1d2c9d63485f3d70f94f688d48672)GLFW_KEY_CAPS_LOCK
+2173: | \#define GLFW_KEY_CAPS_LOCK   280 |
+2185: ## [◆ ](#gaf622b63b9537f7084c2ab649b8365630)GLFW_KEY_SCROLL_LOCK
+2193: | \#define GLFW_KEY_SCROLL_LOCK   281 |
+2205: ## [◆ ](#ga3946edc362aeff213b2be6304296cf43)GLFW_KEY_NUM_LOCK
+2213: | \#define GLFW_KEY_NUM_LOCK   282 |
+2225: ## [◆ ](#gaf964c2e65e97d0cf785a5636ee8df642)GLFW_KEY_PRINT_SCREEN
+2233: | \#define GLFW_KEY_PRINT_SCREEN   283 |
+2245: ## [◆ ](#ga8116b9692d87382afb5849b6d8907f18)GLFW_KEY_PAUSE
+2253: | \#define GLFW_KEY_PAUSE   284 |
+2265: ## [◆ ](#gafb8d66c573acf22e364049477dcbea30)GLFW_KEY_F1
+2273: | \#define GLFW_KEY_F1   290 |
+2285: ## [◆ ](#ga0900750aff94889b940f5e428c07daee)GLFW_KEY_F2
+2293: | \#define GLFW_KEY_F2   291 |
+2305: ## [◆ ](#gaed7cd729c0147a551bb8b7bb36c17015)GLFW_KEY_F3
+2313: | \#define GLFW_KEY_F3   292 |
+2325: ## [◆ ](#ga9b61ebd0c63b44b7332fda2c9763eaa6)GLFW_KEY_F4
+2333: | \#define GLFW_KEY_F4   293 |
+2345: ## [◆ ](#gaf258dda9947daa428377938ed577c8c2)GLFW_KEY_F5
+2353: | \#define GLFW_KEY_F5   294 |
+2365: ## [◆ ](#ga6dc2d3f87b9d51ffbbbe2ef0299d8e1d)GLFW_KEY_F6
+2373: | \#define GLFW_KEY_F6   295 |
+2385: ## [◆ ](#gacca6ef8a2162c52a0ac1d881e8d9c38a)GLFW_KEY_F7
+2393: | \#define GLFW_KEY_F7   296 |
+2405: ## [◆ ](#gac9d39390336ae14e4a93e295de43c7e8)GLFW_KEY_F8
+2413: | \#define GLFW_KEY_F8   297 |
+2425: ## [◆ ](#gae40de0de1c9f21cd26c9afa3d7050851)GLFW_KEY_F9
+2433: | \#define GLFW_KEY_F9   298 |
+2445: ## [◆ ](#ga718d11d2f7d57471a2f6a894235995b1)GLFW_KEY_F10
+2453: | \#define GLFW_KEY_F10   299 |
+2465: ## [◆ ](#ga0bc04b11627e7d69339151e7306b2832)GLFW_KEY_F11
+2473: | \#define GLFW_KEY_F11   300 |
+2485: ## [◆ ](#gaf5908fa9b0a906ae03fc2c61ac7aa3e2)GLFW_KEY_F12
+2493: | \#define GLFW_KEY_F12   301 |
+2505: ## [◆ ](#gad637f4308655e1001bd6ad942bc0fd4b)GLFW_KEY_F13
+2513: | \#define GLFW_KEY_F13   302 |
+2525: ## [◆ ](#gaf14c66cff3396e5bd46e803c035e6c1f)GLFW_KEY_F14
+2533: | \#define GLFW_KEY_F14   303 |
+2545: ## [◆ ](#ga7f70970db6e8be1794da8516a6d14058)GLFW_KEY_F15
+2553: | \#define GLFW_KEY_F15   304 |
+2565: ## [◆ ](#gaa582dbb1d2ba2050aa1dca0838095b27)GLFW_KEY_F16
+2573: | \#define GLFW_KEY_F16   305 |
+2585: ## [◆ ](#ga972ce5c365e2394b36104b0e3125c748)GLFW_KEY_F17
+2593: | \#define GLFW_KEY_F17   306 |
+2605: ## [◆ ](#gaebf6391058d5566601e357edc5ea737c)GLFW_KEY_F18
+2613: | \#define GLFW_KEY_F18   307 |
+2625: ## [◆ ](#gaec011d9ba044058cb54529da710e9791)GLFW_KEY_F19
+2633: | \#define GLFW_KEY_F19   308 |
+2645: ## [◆ ](#ga82b9c721ada04cd5ca8de767da38022f)GLFW_KEY_F20
+2653: | \#define GLFW_KEY_F20   309 |
+2665: ## [◆ ](#ga356afb14d3440ff2bb378f74f7ebc60f)GLFW_KEY_F21
+2673: | \#define GLFW_KEY_F21   310 |
+2685: ## [◆ ](#ga90960bd2a155f2b09675324d3dff1565)GLFW_KEY_F22
+2693: | \#define GLFW_KEY_F22   311 |
+2705: ## [◆ ](#ga43c21099aac10952d1be909a8ddee4d5)GLFW_KEY_F23
+2713: | \#define GLFW_KEY_F23   312 |
+2725: ## [◆ ](#ga8150374677b5bed3043408732152dea2)GLFW_KEY_F24
+2733: | \#define GLFW_KEY_F24   313 |
+2745: ## [◆ ](#gaa4bbd93ed73bb4c6ae7d83df880b7199)GLFW_KEY_F25
+2753: | \#define GLFW_KEY_F25   314 |
+2765: ## [◆ ](#ga10515dafc55b71e7683f5b4fedd1c70d)GLFW_KEY_KP_0
+2773: | \#define GLFW_KEY_KP_0   320 |
+2785: ## [◆ ](#gaf3a29a334402c5eaf0b3439edf5587c3)GLFW_KEY_KP_1
+2793: | \#define GLFW_KEY_KP_1   321 |
+2805: ## [◆ ](#gaf82d5a802ab8213c72653d7480c16f13)GLFW_KEY_KP_2
+2813: | \#define GLFW_KEY_KP_2   322 |
+2825: ## [◆ ](#ga7e25ff30d56cd512828c1d4ae8d54ef2)GLFW_KEY_KP_3
+2833: | \#define GLFW_KEY_KP_3   323 |
+2845: ## [◆ ](#gada7ec86778b85e0b4de0beea72234aea)GLFW_KEY_KP_4
+2853: | \#define GLFW_KEY_KP_4   324 |
+2865: ## [◆ ](#ga9a5be274434866c51738cafbb6d26b45)GLFW_KEY_KP_5
+2873: | \#define GLFW_KEY_KP_5   325 |
+2885: ## [◆ ](#gafc141b0f8450519084c01092a3157faa)GLFW_KEY_KP_6
+2893: | \#define GLFW_KEY_KP_6   326 |
+2905: ## [◆ ](#ga8882f411f05d04ec77a9563974bbfa53)GLFW_KEY_KP_7
+2913: | \#define GLFW_KEY_KP_7   327 |
+2925: ## [◆ ](#gab2ea2e6a12f89d315045af520ac78cec)GLFW_KEY_KP_8
+2933: | \#define GLFW_KEY_KP_8   328 |
+2945: ## [◆ ](#gafb21426b630ed4fcc084868699ba74c1)GLFW_KEY_KP_9
+2953: | \#define GLFW_KEY_KP_9   329 |
+2965: ## [◆ ](#ga4e231d968796331a9ea0dbfb98d4005b)GLFW_KEY_KP_DECIMAL
+2973: | \#define GLFW_KEY_KP_DECIMAL   330 |
+2985: ## [◆ ](#gabca1733780a273d549129ad0f250d1e5)GLFW_KEY_KP_DIVIDE
+2993: | \#define GLFW_KEY_KP_DIVIDE   331 |
+3005: ## [◆ ](#ga9ada267eb0e78ed2ada8701dd24a56ef)GLFW_KEY_KP_MULTIPLY
+3013: | \#define GLFW_KEY_KP_MULTIPLY   332 |
+3025: ## [◆ ](#gaa3dbd60782ff93d6082a124bce1fa236)GLFW_KEY_KP_SUBTRACT
+3033: | \#define GLFW_KEY_KP_SUBTRACT   333 |
+3045: ## [◆ ](#gad09c7c98acc79e89aa6a0a91275becac)GLFW_KEY_KP_ADD
+3053: | \#define GLFW_KEY_KP_ADD   334 |
+3065: ## [◆ ](#ga4f728f8738f2986bd63eedd3d412e8cf)GLFW_KEY_KP_ENTER
+3073: | \#define GLFW_KEY_KP_ENTER   335 |
+3085: ## [◆ ](#gaebdc76d4a808191e6d21b7e4ad2acd97)GLFW_KEY_KP_EQUAL
+3093: | \#define GLFW_KEY_KP_EQUAL   336 |
+3105: ## [◆ ](#ga8a530a28a65c44ab5d00b759b756d3f6)GLFW_KEY_LEFT_SHIFT
+3113: | \#define GLFW_KEY_LEFT_SHIFT   340 |
+3125: ## [◆ ](#ga9f97b743e81460ac4b2deddecd10a464)GLFW_KEY_LEFT_CONTROL
+3133: | \#define GLFW_KEY_LEFT_CONTROL   341 |
+3145: ## [◆ ](#ga7f27dabf63a7789daa31e1c96790219b)GLFW_KEY_LEFT_ALT
+3153: | \#define GLFW_KEY_LEFT_ALT   342 |
+3165: ## [◆ ](#gafb1207c91997fc295afd1835fbc5641a)GLFW_KEY_LEFT_SUPER
+3173: | \#define GLFW_KEY_LEFT_SUPER   343 |
+3185: ## [◆ ](#gaffca36b99c9dce1a19cb9befbadce691)GLFW_KEY_RIGHT_SHIFT
+3193: | \#define GLFW_KEY_RIGHT_SHIFT   344 |
+3205: ## [◆ ](#gad1ca2094b2694e7251d0ab1fd34f8519)GLFW_KEY_RIGHT_CONTROL
+3213: | \#define GLFW_KEY_RIGHT_CONTROL   345 |
+3225: ## [◆ ](#ga687b38009131cfdd07a8d05fff8fa446)GLFW_KEY_RIGHT_ALT
+3233: | \#define GLFW_KEY_RIGHT_ALT   346 |
+3245: ## [◆ ](#gad4547a3e8e247594acb60423fe6502db)GLFW_KEY_RIGHT_SUPER
+3253: | \#define GLFW_KEY_RIGHT_SUPER   347 |
+3265: ## [◆ ](#ga9845be48a745fc232045c9ec174d8820)GLFW_KEY_MENU
+3273: | \#define GLFW_KEY_MENU   348 |
+3285: ## [◆ ](#ga442cbaef7bfb9a4ba13594dd7fbf2789)GLFW_KEY_LAST
+3293: | \#define GLFW_KEY_LAST   GLFW_KEY_MENU |
