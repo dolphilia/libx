@@ -1,0 +1,37 @@
+/* プロジェクトテンプレート共通スタイル */
+@import '@docs/theme/css/starlight-overrides.css';
+
+/* プロジェクト固有の追加スタイルは必要に応じて記述 */
+
+/* 原資料の注記表は、短いラベルより説明本文に幅を割り当てる。 */
+.sl-markdown-content .admonitionblock table {
+  width: 100%;
+  table-layout: fixed;
+}
+.sl-markdown-content .admonitionblock col:first-child {
+  width: 20% !important;
+}
+.sl-markdown-content .admonitionblock col:last-child {
+  width: 80% !important;
+}
+
+@media (max-width: 640px) {
+  /* XMLと図の比較表は表の内側だけで横スクロールできる。 */
+  .sl-markdown-content table.tableblock {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  /* 狭い画面の注記はラベルと説明を縦に並べる。 */
+  .sl-markdown-content .admonitionblock colgroup {
+    display: none;
+  }
+  .sl-markdown-content .admonitionblock table,
+  .sl-markdown-content .admonitionblock tbody,
+  .sl-markdown-content .admonitionblock tr,
+  .sl-markdown-content .admonitionblock td {
+    display: block;
+    width: 100%;
+  }
+}
