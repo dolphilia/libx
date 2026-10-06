@@ -6136,3 +6136,29 @@
 - 既存生成器/共有実装を利用。overlayと実本文/生成物/判断・レビュー証拠/台帳を一致させる。EXCLUSIONSとEXTERNAL_LINK_REPORTはtimestamp以外の内容同一を照合してHEADへ復元。元checkout mainの他作業差分保持。専用UI/preview終了・viewport復元。未検証本文差分なし。
 - workflow配信対象外のorigin/codex/awesome-editorial-isolated-20261007へ検証済み差分のみcommit/pushする。まだ保存準備、成功は送信後にremoteHEAD照合する。外部公開/dispatch/PR/定期設定なし。
 - 次167 github-igorbarinov-awesome-bitcoin-readme-md。/private/tmp/libx-awesome-editorial-20261007で固定raw/旧英日hash照合→全文→編集→3別パスreview→生成/保全/build/HTML/UI/global。
+
+### バッチ166送信確認・167全文読了 (2026-10-06T21:00:57.426Z)
+
+- 166 commit 7bb42fe8fa110353c1b0c6ee264233a7b9f61648 → origin/codex/awesome-editorial-isolated-20261007 push exit0 5f2dbe、remoteHEAD一致8d827e。配信対象外・外部公開なし。
+- 167 Bitcoin固定raw213/旧EN213/旧JA290全文読了（c196d4/86910b/47b5f6、省略なし/hash a73fcd）。合計716単位。AES数値/更新頻度/暗号方式/PreReason反転等を修正し、主題項目/数値/条件と権利放棄/作者帰属を保持する。proof f45e0b8988ff442d8bb03975a7d8e32010af60ecc98717edc896bf07cac3f1fc。本文未変更inventoried。
+
+- 2026-10-06T21:04:21.070Z batch167全文編集・3別パス全文レビュー完了（raw213/旧EN213/旧JA290→EN190/JA242単位、155list/27heading/26alias）。overlayと実英日本文を反映。proof 8399fd09a04769c8741fa7122478d5cd447f473a12aa0dbf2fcf70972242c40e。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified225→commit/push。
+
+- 2026-10-06T21:07:32.947Z batch167-generation-gates-passed-build-pending。224完了813残保留4。進捗ae476dd0c4b9712e68199baa81035f476c12d13626a4c493e1cb065cdc41c93f。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML27見出し155list/26alias/英日PCmobile実UI→global→verified225/commit/push。
+
+- 2026-10-06T21:10:52.792Z batch167-old-ja-cpp-anchor-fixed-regeneration-pending。224完了813残保留4。進捗13501b6398e3a6a6fd1dbe23174b16aa0236bb96ce993cb9796f6ef508066a7c。次最終JA40426d再生成/通常gate/保全/anchor→systems再build→27旧有用ID/27alias/HTML→英日PCmobile実UI/global→verified225。
+
+- 2026-10-06T21:16:53.639Z batch167-generation-gates-passed-build-pending。224完了813残保留4。進捗7aff24bfdc361bad89e1ab3c29c0db6966d5194bd02b56c88b2b072342cd73ed。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML27見出し155list/27alias/英日PCmobile実UI→global→verified225/commit/push。
+
+- 2026-10-06T21:18:27.865Z batch167-four-ui-content-reviewed-global-pending。224完了813残保留4。進捗aef960c965ca65ae55dc99454a13bd1423288f6e74377cc6c7c0b877126d48e0。次全1037台帳global/全2074hash/diff→verified225→commit/push/hash照合→168 Non-Financial Blockchain fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T21:19:08.693Z batch167-verified225-save-push-pending。225完了812残保留4。進捗980fe960ddb3927d79e16b79dfb0a2c65801b6a782c491fee30fd285a49e890e。次225完了812残保留4。Bitcoin全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次168 github-machinomy-awesome-non-financial-blockchain-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ167 Bitcoin検証完了・保存準備 (2026-10-06T21:19:12.966Z)
+
+- raw213/旧EN213/旧JA290全文読了→英日編集→raw/EN ROW0-190・EN/JA主要190単位/JA全244単位・JA単独の別パス全文review。155項目/25主題分類+License・27見出し、全URL/コード/条件/数値保持。software developers対象復元、実収録範囲/固定時点の案内、評価を原文へ帰属。不完全な22手動目次除去。26既存JA英語IDを空の見出し内別名保持。CC0画像を同じ文字リンクへ、Igorの著作権/関連権/隣接権放棄とBlockchainU作者帰属を保持。最終hash EN b500003242d9f1952aa85a6c8d1f4592b0ca856afa8cd0d6b7342464c2ae2262 / JA 40426dffb7641ad5fbe4a03632fea70810faf783026e951424e0b4328293a3db。
+- JA AES-250→AES-256-GCM、1日1回→2回、PreReason反転/30上場企業、secp25及→secp256k1/Schnorr、decode/Rust serialize欠落/清算価格/softfork/airgap/秘密分散/imperative/RPCラッパー/SQL Server/Loppリストを修正。4KB gzip・MIT・約30ドル・無料/追跡なし・6言語/Project discontinued等保持。別パスでBlockstream.info API欠落を復元しexhaustive/比較対象を修正。変更3単位を2a7cf3で全文再読、未変更239JA単位hash一致で既存ENJA読了を再利用、最終JA全文6589d6、旧C++自然IDを第27別名で保持して48e419で変更見出し全文再読。
+- replay2回各1037組2074文書・2passes、通常8gate、全2074本文hash保全/全fragment incoming監査、対象systems fresh統合build/全7開始・現在・manifest一致、HTML27見出し155list52TOC/27alias・旧有用ID・英日Java/Scala相互参照・権利通知/出典/統合HTML一致/正規HTMLgate、英日PC/mobile実表示と目次・言語・版・隣接操作、global/diff検査合格。verified225/残812/保留4。状態移行後も同じ検査入力を照合してglobal証拠再利用。使用モデルは現Codexセッション、API識別子取得不能、委任/ローカルLLMなし。
+- 既存生成器を使用。本文/overlay/判断・レビュー証拠/生成物/台帳対応。EXCLUSIONS timestampのみを同一内容照合後HEAD復元。EXTERNAL_LINK_REPORTはBitcoin159linkの件数維持・CC0文字リンク化に伴う集合hash変更を保存。元main他作業差分保持。所有UI/preview終了/viewport復元。未検証本文差分なし。
+- 配信workflow対象外origin/codex/awesome-editorial-isolated-20261007へ検証済み差分のみcommit/push。まだ保存準備、送信後remoteHEAD照合。外部公開/dispatch/PR/定期設定なし。
+- 次168 github-machinomy-awesome-non-financial-blockchain-readme-md。/private/tmp/libx-awesome-editorial-20261007で固定raw/旧英日hash→全文→編集→3別パスreview→生成/保全/build/HTML/UI/global。

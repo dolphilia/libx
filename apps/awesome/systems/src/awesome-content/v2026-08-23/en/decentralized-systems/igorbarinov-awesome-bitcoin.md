@@ -1,41 +1,16 @@
 ---
 title: "Awesome Bitcoin"
-description: "A curated collection of resources and projects focused on Bitcoin."
+description: "Bitcoin developer tools, APIs, wallets, language libraries, nodes, and learning resources."
 licenseSource: "github-igorbarinov-awesome-bitcoin-readme-md"
 ---
 
 # Awesome Bitcoin
 
-A curated collection of resources and projects focused on Bitcoin.
-
-## List of content
-
-- [Utilities](#utilities)
-- [Blockchain API and Web services](#blockchain-api-and-web-services)
-- [Wallets API](#wallets-api)
-- [Open Source wallets](#open-source-wallets)
-- [Blockchain Explorers](#blockchain-explorers)
-- [C Libraries](#c-libraries)
-- [C++ Libraries](#c-libraries-1)
-- [JavaScript Libraries](#javascript-libraries)
-- [PHP Libraries](#php-libraries)
-- [Ruby Libraries](#ruby-libraries)
-- [Python Libraries](#python-libraries)
-- [Java Libraries](#java-libraries)
-- [Scala Libraries](#scala-libraries)
-- [Swift Libraries](#swift-libraries)
-- [.Net Libraries](#net-libraries)
-- [Haskell Libraries](#haskell-libraries)
-- [Playgrounds](#playgrounds)
-- [Blockchain dump](#blockchain-dump)
-- [Full nodes](#full-nodes)
-- [Read](#read)
-- [Course](#course)
-- [Additional Resources](#additional-resources)
+This list collects Bitcoin services and tools for software developers: utilities, blockchain and market data APIs, wallets, privacy projects, explorers, language libraries, development playgrounds, blockchain data tools, full nodes, and learning resources. Capabilities, figures, prices, and evaluations describe the fixed source; they are not live updates.
 
 
 ## Utilities
-* [Nigiri](https://github.com/vulpemventures/nigiri/) - CLI to quickly fire up a a Bitcoin regtest box along with Electrs and Esplora. Includes faucet and push commands.
+* [Nigiri](https://github.com/vulpemventures/nigiri/) - CLI to quickly fire up a Bitcoin regtest box along with Electrs and Esplora. Includes faucet and push commands.
 * [hal](https://github.com/stevenroose/hal) - Bitcoin CLI swiss-army-knife (based on rust-bitcoin).
 * [BitKey](https://bitkey.io) - Live USB for airgapped transactions and Bitcoin swiss army knife.
 * [PaperVault](https://github.com/boazeb/papervault) - Offline paper-based secret storage using AES-256-GCM and Shamir's Secret Sharing. Create printable encrypted backups of seed phrases with threshold key splitting.
@@ -59,7 +34,7 @@ A curated collection of resources and projects focused on Bitcoin.
 * [dont-trust-verify](https://dont-trust-verify.com) - Bitcoin-only client-side tools and self-custody education: 22 calculators, validators and decoders (BIP-39 validator, tx-stuck checker, fee estimator, wallet installer SHA-256 verifier, self-custody score quiz), plus primary-sourced guides and hardware wallet reviews. No signup, no tracking, EN + TH.
 
 ## Blockchain API and Web services
-* [3xpl.com](https://3xpl.com/) - Fastest ad-free universal block explorer.
+* [3xpl.com](https://3xpl.com/) - An ad-free universal block explorer, described in the source as the fastest.
 * [Bitquery.io](https://bitquery.io/) - Bitquery provides blockchain data, offering real-time streaming APIs for 40+ chains, NFT APIs, and a money flow investigation tool.
 * [block.io](https://block.io)
 * [blockchair.com](https://blockchair.com/) - Universal blockchain explorer and search engine.
@@ -69,10 +44,10 @@ A curated collection of resources and projects focused on Bitcoin.
 * [Chain.com](https://chain.com)
 * [Coinbase Wallet](https://wallet.coinbase.com/)
 * [Chainradar API](https://github.com/yasaricli/chainradar-api) - Blockchain Explorer API for Chainradar.
-* [One-Time Address](https://github.com/alexk111/One-Time-Address) A better way to share your Bitcoin address.
+* [One-Time Address](https://github.com/alexk111/One-Time-Address) A way to share your Bitcoin address, described in the source as better.
 * [Cryptocurrency Alerting](https://cryptocurrencyalerting.com/blockchain-alerts.html) - Bitcoin wallet monitoring and blockchain alerts.
 * [BTC Connect](https://developers.particle.network/reference/introduction-to-btc-connect) - Unified Bitcoin Layer-1 and Layer-2 wallet connection and account abstraction.
-* [Tatum](https://tatum.io/blockchain-api) - The blockchain development platform to build Web3 application. The go-to blockchain data API for Web3 developers.
+* [Tatum](https://tatum.io/blockchain-api) - The blockchain development platform to build Web3 application. Described in the source as a go-to blockchain data API for Web3 developers.
 * [mempool.space](https://mempool.space/docs/api/rest) - Open source and self hostable REST, WebSocket and Electrum RPC API
 * [Bitview](https://bitview.space/) - An open source Bitcoin Core data extractor and visualizer (aka FOSS Glassnode)
 * [Maestro](https://www.gomaestro.org/) - A high-performance Bitcoin RPC and UTXO indexer API that powers applications with real-time blockchain data, mempool monitoring, and event notifications.
@@ -107,7 +82,7 @@ A curated collection of resources and projects focused on Bitcoin.
 * [Jam](https://jamapp.org/) - User friendly frontend for Joinmarket
 
 ## Blockchain Explorers
-* [3xpl.com](https://3xpl.com/bitcoin) - Fastest ad-free universal block explorer.
+* [3xpl.com](https://3xpl.com/bitcoin) - An ad-free universal block explorer, described in the source as the fastest.
 * [Chain.so](http://chain.so)
 * [Blockchain.com](https://blockchain.com)
 * [Blockchair.com](https://blockchair.com/bitcoin) - Universal blockchain explorer and search engine.
@@ -179,7 +154,7 @@ A curated collection of resources and projects focused on Bitcoin.
 
 ## .Net Libraries
 * [NBitcoin](https://github.com/MetacoSA/NBitcoin) - Comprehensive Bitcoin library for the .NET framework.
-* [BitcoinLib](https://github.com/cryptean/bitcoinlib) - The most complete, up-to-date, battle-tested .net Library and RPC Wrapper for Bitcoin and Altcoins in C#.
+* [BitcoinLib](https://github.com/cryptean/bitcoinlib) - A .NET library and RPC wrapper for Bitcoin and altcoins in C#, described in the source as the most complete, up-to-date, and battle-tested.
 
 ## Haskell Libraries
 * [Haskoin-core](https://github.com/haskoin/haskoin-core) - Haskoin Core is a library of Bitcoin and Bitcoin Cash functions written in Haskell.
@@ -231,7 +206,7 @@ A curated collection of resources and projects focused on Bitcoin.
 * [A brief history of Bitcoin development...](https://www.youtube.com/watch?v=ZfFNce6CVsE)
 * [bitcoin-resources.com](https://bitcoin-resources.com/) Meta-list of Bitcoin resources, from books, articles, to podcasts.
 * [Jameson Lopp Bitcoin Resource List](https://www.lopp.net/bitcoin-information.html) Very detailed curated Bitcoin resource list and meta-list by J. Lopp
-* [Svrgnty.com: Everything Bitcoin](https://svrgnty.com/) A curated list of the best Bitcoin resources.
+* [Svrgnty.com: Everything Bitcoin](https://svrgnty.com/) A curated list of Bitcoin resources, described in the source as the best.
 * [River Learn](https://river.com/learn) A collection of educational resources to learn about Bitcoin basics, investing, technology, and more.
 * [BitcoinCompanies](https://bitcoincompanies.co/) - Corporate Bitcoin treasury map and leaderboard with claimed vs verified holdings.
 * [Learn me a Bitcoin - Greg Walker](https://learnmeabitcoin.com/) - extensive learning resource for bitcoin developers
@@ -248,6 +223,6 @@ Created by BlockchainU fellows.
 
 ### License
 
-[![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+[CC0](https://creativecommons.org/publicdomain/zero/1.0/)
 
 To the extent possible under law, [Igor Barinov](https://github.com/igorbarinov/) has waived all copyright and related or neighboring rights to this work.
