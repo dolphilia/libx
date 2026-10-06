@@ -3,7 +3,7 @@
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
 - 検証済み: 36件 / 今回の公開済み: 35件 / 公開待ち: 1件
-- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -49,6 +49,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-time / v1-10 / new | verified | verified | 932:GNU Time1.10の原文3・独自訳3・原英語GFDL/111単位全文review/7編集原稿/522再生成ZIPを70a733878で統合Pages公開・公開後確認完了。本番46d5e609、libx.dev267配信照合/未説明差分0。934–935:GNU ed1.22.6原文12/訳12の196単位・15説明コメント全文意味reviewを引継ぎ、原稿キット・独立rebuild・正式検証・公開へ。重大不具合/着手済み/既存更新優先、上限・停止指示遵守。 932:GNU Time1.10の原文3・独自訳3・原英語GFDL/111単位全文review/7編集原稿/522再生成ZIPを70a733878で統合Pages公開・公開後確認完了。本番46d5e609、libx.dev267配信照合/未説明差分0。934–935:GNU ed1.22.6原文12/訳12の196単位・15説明コメント全文意味reviewを引継ぎ、原稿キット・独立rebuild・正式検証・公開へ。重大不具合/着手済み/既存更新優先、上限・停止指示遵守。 |
 | gnu-ed / v1-22-6 / new | verified | verified | 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント/25定本/589原稿キットを限定1ad5ec225で統合Pages本番78634eae公開・公開後確認完了。5745artifact・307固定/独自domainHTTP/404/CAS・言語切替合格、未説明差分0。938:Diffutils3.12第5〜9章19英日/91単位review・125独立再生成・130targetbuild・11290参照・285localHTTP・代表導線合格。Ed実公開成果物をbaselineとしてroot限定登録→verified→限定commit/push/Pages公開。Workers/定期なし。 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント/25定本/589原稿キットを限定1ad5ec225で統合Pages本番78634eae公開・公開後確認完了。5745artifact・307固定/独自domainHTTP/404/CAS・言語切替合格、未説明差分0。938:Diffutils3.12第5〜9章19英日/91単位review・125独立再生成・130targetbuild・11290参照・285localHTTP・代表導線合格。Ed実公開成果物をbaselineとしてroot限定登録→verified→限定commit/push/Pages公開。Workers/定期なし。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 938:検証済みDiffutils第5〜9章の限定85filesを0521e6399ab13182ce782d8d40902e4f9f554934/codex/expand-gnu-diffutils-20261007へcommit/push成功。PagesPreview37531607740進行中→成果物/HTTP/404/代表確認→CAS基準Ed1ad5ec225でProduction→公開後確認と記録。936GNU edは本番78634eae/307固定・独自domain/404/言語切替合格、published記録済み。保存branch codex/save-document-expansion-20261007 ec3449b9031be1999ceb40357145ab3afb6f87a7 push成功、今回の公開後/verified記録を続けて保存。 938:検証済みDiffutils第5〜9章の限定85filesを0521e6399ab13182ce782d8d40902e4f9f554934/codex/expand-gnu-diffutils-20261007へcommit/push成功。PagesPreview37531607740進行中→成果物/HTTP/404/代表確認→CAS基準Ed1ad5ec225でProduction→公開後確認と記録。936GNU edは本番78634eae/307固定・独自domain/404/言語切替合格、published記録済み。保存branch codex/save-document-expansion-20261007 ec3449b9031be1999ceb40357145ab3afb6f87a7 push成功、今回の公開後/verified記録を続けて保存。 |
+| gnu-grep / v3-12 / update | source-locked | source-locked | 939:GNU grep3.12第5〜6章3英日/21単位の草稿と別パス全文reviewを保存。既存24whole reviewと12原資料SHA再利用。旧49定本文を保持して正式6原稿/context/sourcekit/独立rebuild/検証へ。Diffutils Preview37531607740→ProductionCAS1ad優先。次の公開baselineはDiffutils実公開後に確定し、草稿は配信除外保存branchへ。 939:GNU grep3.12第5〜6章3英日/21単位の草稿と別パス全文reviewを保存。既存24whole reviewと12原資料SHA再利用。旧49定本文を保持して正式6原稿/context/sourcekit/独立rebuild/検証へ。Diffutils Preview37531607740→ProductionCAS1ad優先。次の公開baselineはDiffutils実公開後に確定し、草稿は配信除外保存branchへ。 |
 
 ## 登録済みの既存文書
 
