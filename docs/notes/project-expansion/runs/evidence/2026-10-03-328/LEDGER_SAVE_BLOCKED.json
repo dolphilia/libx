@@ -1,0 +1,43 @@
+{
+  "status": "failed",
+  "checkedAt": "2026-10-03T00:57:21.359Z",
+  "candidateRevision": 64,
+  "operationRevision": 483,
+  "errors": [
+    "lua:v5-5-1:6a71e80a0b5319b024f50336c65e12cecf4f98c8fd1003b7022ff2ca0ef582cb: ハッシュ失効 packages/theme/src/css/starlight-overrides.css",
+    "glfw:v3-5-1:bea53421297ae73253a9b5a9ed490c79faf1d55014218cd130613b798d360ec8: ハッシュ失効 packages/theme/src/css/starlight-overrides.css",
+    "glfw:v3-5-1:bf30aa02219e4b8f344708a5e480b0fdf7827a469d60cdf07578bd569652a471: ハッシュ失効 packages/theme/src/css/starlight-overrides.css"
+  ],
+  "reason": "共有CSSの並行変更により既存3操作の現在ルート向け証拠が失効。候補CASは全文台帳を検査するため保存前に拒否し、C64/O483のまま。最新CSSを検証したと偽ってハッシュを置換しない。",
+  "css": {
+    "path": "packages/theme/src/css/starlight-overrides.css",
+    "currentSha256": "0e0258b9719bd69fd55da4171f8db66837805df4b2c29d6d8cb8c3c43710bd2c"
+  },
+  "affected": [
+    {
+      "id": "lua:v5-5-1:6a71e80a0b5319b024f50336c65e12cecf4f98c8fd1003b7022ff2ca0ef582cb",
+      "state": "verified",
+      "publication": "published",
+      "expected": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8",
+      "isolatedWorkspace": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx",
+      "isolatedSha256": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8"
+    },
+    {
+      "id": "glfw:v3-5-1:bea53421297ae73253a9b5a9ed490c79faf1d55014218cd130613b798d360ec8",
+      "state": "verified",
+      "publication": "published",
+      "expected": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8",
+      "isolatedWorkspace": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx",
+      "isolatedSha256": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8"
+    },
+    {
+      "id": "glfw:v3-5-1:bf30aa02219e4b8f344708a5e480b0fdf7827a469d60cdf07578bd569652a471",
+      "state": "verified",
+      "publication": "published",
+      "expected": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8",
+      "isolatedWorkspace": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx",
+      "isolatedSha256": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8"
+    }
+  ],
+  "next": "共有変更を保護したまま現行CSSの影響を特定し、隔離作業場所でLua/GLFWの必要な表示回帰を検証してから証拠と台帳を更新。新規zlibの独立調査は保存証拠から継続できる。重大な表示破損が未確認のため緊急修正と断定しない。"
+}

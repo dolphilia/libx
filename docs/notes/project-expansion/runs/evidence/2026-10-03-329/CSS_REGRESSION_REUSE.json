@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-03T01:09:05.474Z",
+  "css": {
+    "path": "packages/theme/src/css/starlight-overrides.css",
+    "sha256": "32c4bd9be2424d59df8c685423ea54045af46b1b11131dcf67a31666cb42d16e"
+  },
+  "previousCssSha256": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8",
+  "operationIds": [
+    "lua:v5-5-1:6a71e80a0b5319b024f50336c65e12cecf4f98c8fd1003b7022ff2ca0ef582cb",
+    "glfw:v3-5-1:bea53421297ae73253a9b5a9ed490c79faf1d55014218cd130613b798d360ec8",
+    "glfw:v3-5-1:bf30aa02219e4b8f344708a5e480b0fdf7827a469d60cdf07578bd569652a471"
+  ],
+  "scope": "共有CSSの2差分に限る回帰確認。本文全文レビューの再実施ではない。",
+  "contentReview": "原典・英日Markdown・本文の構造/文字列/属性値/順序の同一性を確認し、既存全文レビューを保持。Astro空scope属性名のハッシュ差のみ一対一対応で許容。",
+  "machine": {
+    "wholeArticles": 186,
+    "structure": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/CSS_STATIC_REGRESSION.json",
+      "sha256": "3d50b7fdf9493d382af7b7ad8b065fbabb1528887faaef22ae600b6db0ff2ae6"
+    },
+    "build": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/SELECTIVE_BUILD.log",
+      "sha256": "4e88439e8666be1debe82376000adc3ef50ebad30009bb6009184af84b5397f8"
+    },
+    "lua": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/LUA_CONTENT.log",
+      "sha256": "4052d368130c88ba39f83ccde7debc2a4a3d43e2504595551b96596edc603659"
+    },
+    "glfw": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/GLFW_CONTENT.log",
+      "sha256": "691c8d75296ed2031d5ebe5c81307a301a3b95b9ffab46e015a67a0cbdf55552"
+    },
+    "links": 7556,
+    "errors": 0
+  },
+  "display": {
+    "desktopPages": 8,
+    "mobilePages": 4,
+    "viewport": [
+      390,
+      844
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/NATIVE_DESKTOP.json",
+        "sha256": "a2f62ee4988dc18b0a72ff1563e0fbd411aca6e11782f95ba669c8fc898a31a6"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/NATIVE_MOBILE.json",
+        "sha256": "5d85e0319ddfd043060bb7cae9f7bc4b2791bb47cfabe3693f71eaeb141503b1"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/ANCHOR_DESKTOP.json",
+        "sha256": "336e7b6b19c48c5beeedfeabedd06d5c2e6dbc7a8f753ea61f02d5b71c5d074e"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/ANCHOR_DESKTOP.png",
+        "sha256": "9c7e836e7364c2e8fc4e82a5a38d228021bdb2b0520d007a976b4be3db9077eb"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/MOBILE_lua_ja.png",
+        "sha256": "e8379003f1b90ea543237b078427daa6dc945f68dc2cae1b9096e9d495858a0c"
+      }
+    ],
+    "findings": "本文表示・横方向のbody overflowなし・見出し/空アンカーの16px余白を確認。デスクトップlua_Alloc見出し移動とスクリーンショット、モバイル英日APIのスクリーンショットを確認。モバイルgeometryはscroll完了前なので移動完了位置の証拠に使わない。"
+  },
+  "limitations": [
+    "Lua旧固定tar/GLFW固定入力からの再生成は入力不在でスキップ。Lua新bugsのみ固定原資料4件から再生成一致。既存canonical証拠を保持し全文再生成済みと偽らない。",
+    "共有CSSは検証中にfallback追加で変わったためV2を再ビルド。初版CURRENT_CSS.cssは失効した試験入力として保存。",
+    "他者の共有CSS変更を修正・公開していない。出版済み成果物と公開記録は保持。今回の検証は現在ローカルの差分のみ。"
+  ],
+  "workspace": "/private/tmp/libx-css-regression-20261003-329",
+  "cleanup": "検証タブ53を閉じviewportをreset、preview19656/19657を停止。"
+}
