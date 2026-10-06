@@ -1,0 +1,7 @@
+7318: XXH_PUBLIC_API XXH128_hash_t
+7319: XXH3_128bits_withSecretandSeed(XXH_NOESCAPE const void* input, size_t len, XXH_NOESCAPE const void* secret, size_t secretSize, XXH64_hash_t seed)
+7320: {
+7321:     if (len <= XXH3_MIDSIZE_MAX)
+7322:         return XXH3_128bits_internal(input, len, seed, XXH3_kSecret, sizeof(XXH3_kSecret), NULL);
+7323:     return XXH3_hashLong_128b_withSecret(input, len, seed, secret, secretSize);
+7324: }

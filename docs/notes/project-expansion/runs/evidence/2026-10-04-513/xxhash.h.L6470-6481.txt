@@ -1,0 +1,12 @@
+6470: {
+6471:     return XXH3_64bits_internal(input, length, 0, XXH3_kSecret, sizeof(XXH3_kSecret), XXH3_hashLong_64b_default);
+6472: }
+6473: 
+6474: /*! @ingroup XXH3_family */
+6475: XXH_PUBLIC_API XXH64_hash_t
+6476: XXH3_64bits_withSecret(XXH_NOESCAPE const void* input, size_t length, XXH_NOESCAPE const void* secret, size_t secretSize)
+6477: {
+6478:     return XXH3_64bits_internal(input, length, 0, secret, secretSize, XXH3_hashLong_64b_withSecret);
+6479: }
+6480: 
+6481: /*! @ingroup XXH3_family */

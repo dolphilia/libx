@@ -1,0 +1,49 @@
+7268: XXH3_128bits_internal(const void* input, size_t len,
+7269:                       XXH64_hash_t seed64, const void* XXH_RESTRICT secret, size_t secretLen,
+7270:                       XXH3_hashLong128_f f_hl128)
+7271: {
+7272:     XXH_ASSERT(secretLen >= XXH3_SECRET_SIZE_MIN);
+7273:     /*
+7274:      * If an action is to be taken if `secret` conditions are not respected,
+7275:      * it should be done here.
+7276:      * For now, it's a contract pre-condition.
+7277:      * Adding a check and a branch here would cost performance at every hash.
+7278:      */
+7279:     if (len <= 16)
+7280:         return XXH3_len_0to16_128b((const xxh_u8*)input, len, (const xxh_u8*)secret, seed64);
+7281:     if (len <= 128)
+7282:         return XXH3_len_17to128_128b((const xxh_u8*)input, len, (const xxh_u8*)secret, secretLen, seed64);
+7283:     if (len <= XXH3_MIDSIZE_MAX)
+7284:         return XXH3_len_129to240_128b((const xxh_u8*)input, len, (const xxh_u8*)secret, secretLen, seed64);
+7285:     return f_hl128(input, len, seed64, secret, secretLen);
+7286: }
+7287: 
+7288: 
+7289: /* ===   Public XXH128 API   === */
+7290: 
+7291: /*! @ingroup XXH3_family */
+7292: XXH_PUBLIC_API XXH128_hash_t XXH3_128bits(XXH_NOESCAPE const void* input, size_t len)
+7293: {
+7294:     return XXH3_128bits_internal(input, len, 0,
+7295:                                  XXH3_kSecret, sizeof(XXH3_kSecret),
+7296:                                  XXH3_hashLong_128b_default);
+7297: }
+7298: 
+7299: /*! @ingroup XXH3_family */
+7300: XXH_PUBLIC_API XXH128_hash_t
+7301: XXH3_128bits_withSecret(XXH_NOESCAPE const void* input, size_t len, XXH_NOESCAPE const void* secret, size_t secretSize)
+7302: {
+7303:     return XXH3_128bits_internal(input, len, 0,
+7304:                                  (const xxh_u8*)secret, secretSize,
+7305:                                  XXH3_hashLong_128b_withSecret);
+7306: }
+7307: 
+7308: /*! @ingroup XXH3_family */
+7309: XXH_PUBLIC_API XXH128_hash_t
+7310: XXH3_128bits_withSeed(XXH_NOESCAPE const void* input, size_t len, XXH64_hash_t seed)
+7311: {
+7312:     return XXH3_128bits_internal(input, len, seed,
+7313:                                  XXH3_kSecret, sizeof(XXH3_kSecret),
+7314:                                  XXH3_hashLong_128b_withSeed);
+7315: }
+7316: 

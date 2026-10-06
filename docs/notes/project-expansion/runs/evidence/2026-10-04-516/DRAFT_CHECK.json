@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-03T16:31:30.660Z",
+  "status": "partial-translation-draft-not-whole-page-review",
+  "source": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/generated/group___x_x_h3__family.html",
+    "sha256": "e9e007b82be7e1c6211ac86f243e09653dd1d3b6e3bc2d8e0e15a76a17d0f2b9"
+  },
+  "canonical": {
+    "path": "apps/xxhash/src/content/docs/v0-8-4/en/02-api/14-group___x_x_h3__family.md",
+    "sha256": "ca32cf569d86e1d148b7571214ffbe733d89e584d199fd7cc7c6b8c7092c8459"
+  },
+  "draft": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/drafts/ja/14-api-xxh3-family.combined-unreviewed.md",
+    "sha256": "275cada79aea846446ccb04ba8ecfdc62d4a6c4370ffce271b0e7e66e4252a22"
+  },
+  "translatedSections": [
+    "Detailed Descriptionの概要",
+    "10件のマクロ定義説明",
+    "XXH3_state_t型定義",
+    "XXH3_64bits/withSeed/withSecretの詳細",
+    "createState/freeState/copyState/reset/reset_withSeedの詳細",
+    "reset_withSecret/update/digestの詳細",
+    "128bits/128bits_withSeed/128bits_withSecretの詳細",
+    "128bit streaming reset3種/update/digestの詳細",
+    "isEqual/cmp/canonicalFromHash/hashFromCanonicalの詳細",
+    "64/128reset_withSecretandSeed・128bits_withSecretandSeed・XXH128の詳細",
+    "出典/ライセンスfallback注記"
+  ],
+  "additionalSourceIssues": [
+    {
+      "function": "XXH3_128bits_withSecretandSeed",
+      "kind": "upstream-return-and-parameter-description-mismatch",
+      "observation": "宣言はXXH128_hash_tだがReturnsはXXH_OK/XXH_ERROR。input/lengthの説明もdata/lenを参照。",
+      "resolution": "原文保持。固定実装の戻り値と引数を照合し、全文レビュー前にLibx補足。"
+    },
+    {
+      "function": "XXH3_128bits/XXH3_128bits_withSeed",
+      "kind": "len/length-parameter-name-mismatch",
+      "resolution": "原文保持。最終レビュー前に注記。"
+    },
+    {
+      "function": "XXH3_128bits_withSeed",
+      "kind": "seed-zero-note-references-XXH3_64bits",
+      "resolution": "原文とリンクを保持。固定実装照合後にLibx注記。"
+    }
+  ],
+  "sourceIssue": {
+    "kind": "upstream-parameter-name-mismatch",
+    "function": "XXH3_64bits_withSecret",
+    "signatureParameter": "len",
+    "preconditionParameter": "length",
+    "resolution": "原文保持。固定実装照合とLibx注記は最終レビュー前に実施。"
+  },
+  "remaining": [
+    "XXH3_generateSecret以降の関数詳細",
+    "一覧のbrief説明/Moreリンク",
+    "全引数・前提条件・戻り値・Note/NULLとメモリ範囲",
+    "tooltip説明の訳と別全文レビュー",
+    "JA native/全リンク/検索/統合"
+  ],
+  "machine": {
+    "tagsAndAttributesExactExceptLocale": true,
+    "APIAnchorTextExact": true,
+    "hrefOrderedExactExceptLocale": true,
+    "idsExact": 106
+  },
+  "wholePageCompleted": false,
+  "inApp": false,
+  "buildNeeded": false,
+  "reviewedPages": 25,
+  "pendingPages": 31,
+  "localLLM": false
+}

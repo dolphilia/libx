@@ -1,0 +1,51 @@
+2280: /*!
+2281:  * @def XXH_NO_STREAM
+2282:  * @brief Disables the streaming API.
+2283:  *
+2284:  * When xxHash is not inlined and the streaming functions are not used, disabling
+2285:  * the streaming functions can improve code size significantly, especially with
+2286:  * the @ref XXH3_family which tends to make constant folded copies of itself.
+2287:  */
+2288: #  define XXH_NO_STREAM
+2289: #  undef XXH_NO_STREAM /* don't actually */
+2290: #endif /* XXH_DOXYGEN */
+2291: /*!
+2292:  * @}
+2293:  */
+2294: 
+2295: #ifndef XXH_FORCE_MEMORY_ACCESS   /* can be defined externally, on command line for example */
+2296:    /* prefer __packed__ structures (method 1) for GCC
+2297:     * < ARMv7 with unaligned access (e.g. Raspbian armhf) still uses byte shifting, so we use memcpy
+2298:     * which for some reason does unaligned loads. */
+2299: #  if defined(__GNUC__) && !(defined(__ARM_ARCH) && __ARM_ARCH < 7 && defined(__ARM_FEATURE_UNALIGNED))
+2300: #    define XXH_FORCE_MEMORY_ACCESS 1
+2301: #  endif
+2302: #endif
+2303: 
+2304: #ifndef XXH_SIZE_OPT
+2305:    /* default to 1 for -Os or -Oz */
+2306: #  if (defined(__GNUC__) || defined(__clang__)) && defined(__OPTIMIZE_SIZE__)
+2307: #    define XXH_SIZE_OPT 1
+2308: #  else
+2309: #    define XXH_SIZE_OPT 0
+2310: #  endif
+2311: #endif
+2312: 
+2313: #ifndef XXH_FORCE_ALIGN_CHECK  /* can be defined externally */
+2314:    /* don't check on sizeopt, x86, aarch64, or arm when unaligned access is available */
+2315: #  if XXH_SIZE_OPT >= 1 || \
+2316:       defined(__i386)  || defined(__x86_64__) || defined(__aarch64__) || defined(__ARM_FEATURE_UNALIGNED) \
+2317:    || defined(_M_IX86) || defined(_M_X64)     || defined(_M_ARM64)    || defined(_M_ARM) /* visual */
+2318: #    define XXH_FORCE_ALIGN_CHECK 0
+2319: #  else
+2320: #    define XXH_FORCE_ALIGN_CHECK 1
+2321: #  endif
+2322: #endif
+2323: 
+2324: #ifndef XXH_NO_INLINE_HINTS
+2325: #  if XXH_SIZE_OPT >= 1 || defined(__NO_INLINE__)  /* -O0, -fno-inline */
+2326: #    define XXH_NO_INLINE_HINTS 1
+2327: #  else
+2328: #    define XXH_NO_INLINE_HINTS 0
+2329: #  endif
+2330: #endif

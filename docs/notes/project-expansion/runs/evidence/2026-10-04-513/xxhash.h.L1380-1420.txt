@@ -1,0 +1,41 @@
+1380: /*!
+1381:  * @brief Calculates 128-bit unseeded variant of XXH3 of @p data.
+1382:  *
+1383:  * @param data The block of data to be hashed, at least @p length bytes in size.
+1384:  * @param len  The length of @p data, in bytes.
+1385:  *
+1386:  * @return The calculated 128-bit variant of XXH3 value.
+1387:  *
+1388:  * The 128-bit variant of XXH3 has more strength, but it has a bit of overhead
+1389:  * for shorter inputs.
+1390:  *
+1391:  * This is equivalent to @ref XXH3_128bits_withSeed() with a seed of `0`, however
+1392:  * it may have slightly better performance due to constant propagation of the
+1393:  * defaults.
+1394:  *
+1395:  * @see XXH3_128bits_withSeed(), XXH3_128bits_withSecret(): other seeding variants
+1396:  * @see @ref single_shot_example "Single Shot Example" for an example.
+1397:  */
+1398: XXH_PUBLIC_API XXH_PUREF XXH128_hash_t XXH3_128bits(XXH_NOESCAPE const void* data, size_t len);
+1399: /*! @brief Calculates 128-bit seeded variant of XXH3 hash of @p data.
+1400:  *
+1401:  * @param data The block of data to be hashed, at least @p length bytes in size.
+1402:  * @param len  The length of @p data, in bytes.
+1403:  * @param seed The 64-bit seed to alter the hash result predictably.
+1404:  *
+1405:  * @return The calculated 128-bit variant of XXH3 value.
+1406:  *
+1407:  * @note
+1408:  *    seed == 0 produces the same results as @ref XXH3_64bits().
+1409:  *
+1410:  * This variant generates a custom secret on the fly based on default secret
+1411:  * altered using the @p seed value.
+1412:  *
+1413:  * While this operation is decently fast, note that it's not completely free.
+1414:  *
+1415:  * @see XXH3_128bits(), XXH3_128bits_withSecret(): other seeding variants
+1416:  * @see @ref single_shot_example "Single Shot Example" for an example.
+1417:  */
+1418: XXH_PUBLIC_API XXH_PUREF XXH128_hash_t XXH3_128bits_withSeed(XXH_NOESCAPE const void* data, size_t len, XXH64_hash_t seed);
+1419: /*!
+1420:  * @brief Calculates 128-bit variant of XXH3 with a custom "secret".

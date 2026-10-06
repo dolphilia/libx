@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-03T16:27:07.807Z",
+  "status": "fixed-source-analysis-complete-annotation-pending",
+  "source": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/sources/xxhash.h",
+    "sha256": "3dc8d161e867a62d3417f7885b55fdaded8b7b497e2f165d05c94f4fe24f2ca4"
+  },
+  "fixedCommit": "c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0",
+  "issues": [
+    {
+      "function": "XXH3_64bits_withSecret",
+      "observation": "APIの宣言・引数説明はdata/len、前提条件はlength。定義はinput/lengthで受け、同じlengthを内部へ渡す。",
+      "proposedAnnotation": "原文の前提条件のlengthは、API引数一覧のlen（入力データのバイト長）を指す。原文の表記を保持し、この注記で補足する。",
+      "lines": [
+        1190,
+        1201,
+        6470,
+        6481
+      ]
+    },
+    {
+      "function": "XXH3_128bits/XXH3_128bits_withSeed",
+      "observation": "引数一覧はdata/lenだがdata説明にlengthを使用。定義もinput/lenで受ける。",
+      "proposedAnnotation": "引数dataの説明中のlengthは、この関数のlenを指す。",
+      "lines": [
+        1380,
+        1420,
+        7292,
+        7316
+      ]
+    },
+    {
+      "function": "XXH3_128bits_withSeed",
+      "observation": "原文seed==0注記はXXH3_64bitsへの参照。固定実装では128bit internalを用い、短・中入力は128bitsと同じseed0/既定secret。長入力でもseed0は既定secretを使う128bit internalへ戻る。",
+      "proposedAnnotation": "seed == 0のときの128ビット全体の結果はXXH3_128bits()と同等。原文のXXH3_64bits()への参照はそのまま掲載し、この注記で実装との相違を補足する。",
+      "lines": [
+        1408,
+        7234,
+        7249,
+        7292,
+        7316
+      ]
+    }
+  ],
+  "test": {
+    "status": "passed",
+    "command": "cc -std=c99 -O2 -I docs/notes/document-import/xxhash/v0-8-4/sources zero-seed-test.c -o test; ./test",
+    "cases": 66,
+    "patterns": 3,
+    "lengths": [
+      0,
+      1,
+      3,
+      4,
+      8,
+      9,
+      16,
+      17,
+      31,
+      32,
+      63,
+      64,
+      127,
+      128,
+      129,
+      239,
+      240,
+      241,
+      255,
+      256,
+      1024,
+      4096
+    ],
+    "scope": "ローカルC99ビルドで128bit結果のlow64/high64両方を比較。任意長・全プラットフォームの実行試験ではない。",
+    "sourceCode": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/zero-seed-test.c",
+      "sha256": "47b800b4aa392bdf842d6073412de4fca0f0c21d16b40a5ec0287254daa5293a"
+    },
+    "output": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/TEST_OUTPUT.txt",
+      "sha256": "2ba36fc286a7e746b42fe0afa590650b2a3623b8ea2c7c0c22d41779d5d0f0fd"
+    }
+  },
+  "wholePageReviewed": false,
+  "annotationApplied": false
+}

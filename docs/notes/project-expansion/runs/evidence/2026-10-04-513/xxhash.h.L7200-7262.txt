@@ -1,0 +1,63 @@
+7200:     XXH_ASSERT(secretSize >= sizeof(acc) + XXH_SECRET_MERGEACCS_START);
+7201:     return XXH3_finalizeLong_128b(acc, secret, secretSize, (xxh_u64)len);
+7202: }
+7203: 
+7204: /*
+7205:  * It's important for performance that XXH3_hashLong() is not inlined.
+7206:  */
+7207: XXH_NO_INLINE XXH_PUREF XXH128_hash_t
+7208: XXH3_hashLong_128b_default(const void* XXH_RESTRICT input, size_t len,
+7209:                            XXH64_hash_t seed64,
+7210:                            const void* XXH_RESTRICT secret, size_t secretLen)
+7211: {
+7212:     (void)seed64; (void)secret; (void)secretLen;
+7213:     return XXH3_hashLong_128b_internal(input, len, XXH3_kSecret, sizeof(XXH3_kSecret),
+7214:                                        XXH3_accumulate, XXH3_scrambleAcc);
+7215: }
+7216: 
+7217: /*
+7218:  * It's important for performance to pass @p secretLen (when it's static)
+7219:  * to the compiler, so that it can properly optimize the vectorized loop.
+7220:  *
+7221:  * When the secret size is unknown, or on GCC 12 where the mix of NO_INLINE and FORCE_INLINE
+7222:  * breaks -Og, this is XXH_NO_INLINE.
+7223:  */
+7224: XXH3_WITH_SECRET_INLINE XXH128_hash_t
+7225: XXH3_hashLong_128b_withSecret(const void* XXH_RESTRICT input, size_t len,
+7226:                               XXH64_hash_t seed64,
+7227:                               const void* XXH_RESTRICT secret, size_t secretLen)
+7228: {
+7229:     (void)seed64;
+7230:     return XXH3_hashLong_128b_internal(input, len, (const xxh_u8*)secret, secretLen,
+7231:                                        XXH3_accumulate, XXH3_scrambleAcc);
+7232: }
+7233: 
+7234: XXH_FORCE_INLINE XXH128_hash_t
+7235: XXH3_hashLong_128b_withSeed_internal(const void* XXH_RESTRICT input, size_t len,
+7236:                                 XXH64_hash_t seed64,
+7237:                                 XXH3_f_accumulate f_acc,
+7238:                                 XXH3_f_scrambleAcc f_scramble,
+7239:                                 XXH3_f_initCustomSecret f_initSec)
+7240: {
+7241:     if (seed64 == 0)
+7242:         return XXH3_hashLong_128b_internal(input, len,
+7243:                                            XXH3_kSecret, sizeof(XXH3_kSecret),
+7244:                                            f_acc, f_scramble);
+7245:     {   XXH_ALIGN(XXH_SEC_ALIGN) xxh_u8 secret[XXH_SECRET_DEFAULT_SIZE];
+7246:         f_initSec(secret, seed64);
+7247:         return XXH3_hashLong_128b_internal(input, len, (const xxh_u8*)secret, sizeof(secret),
+7248:                                            f_acc, f_scramble);
+7249:     }
+7250: }
+7251: 
+7252: /*
+7253:  * It's important for performance that XXH3_hashLong is not inlined.
+7254:  */
+7255: XXH_NO_INLINE XXH128_hash_t
+7256: XXH3_hashLong_128b_withSeed(const void* input, size_t len,
+7257:                             XXH64_hash_t seed64, const void* XXH_RESTRICT secret, size_t secretLen)
+7258: {
+7259:     (void)secret; (void)secretLen;
+7260:     return XXH3_hashLong_128b_withSeed_internal(input, len, seed64,
+7261:                 XXH3_accumulate, XXH3_scrambleAcc, XXH3_initCustomSecret);
+7262: }

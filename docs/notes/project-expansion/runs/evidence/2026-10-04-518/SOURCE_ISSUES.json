@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-03T16:35:37.084Z",
+  "status": "fixed-source-and-example-diagnostics-complete-annotation-pending",
+  "source": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/sources/xxhash.h",
+    "sha256": "3dc8d161e867a62d3417f7885b55fdaded8b7b497e2f165d05c94f4fe24f2ca4"
+  },
+  "previousIssues": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/SOURCE_ISSUES.json",
+    "sha256": "b6e2393163d42203c4629e7a29182e0f6d83a45b8bf7bf079747d1fd5d5b138e"
+  },
+  "issues": [
+    {
+      "function": "XXH3_128bits_withSecretandSeed",
+      "observation": "API宣言・実装の戻り値はXXH128_hash_t。原文ReturnsにはXXH_OK/XXH_ERROR。引数input/lengthの説明にもdata/lenが残る。",
+      "proposedAnnotation": "この関数は128ビットのハッシュ値を返す。XXH_OK/XXH_ERRORを返す初期化関数とは異なる。説明内のdata/lenは公開宣言のinput/lengthを指す。",
+      "lines": [
+        1982,
+        1999,
+        7318,
+        7324
+      ]
+    },
+    {
+      "function": "XXH3_generateSecret C example",
+      "observation": "原文argv != 3はchar**とintの比較。ccのsyntax-onlyはexit0だが警告を出す。",
+      "proposedAnnotation": "原文のargv != 3は引数個数の確認としては不適切。引数個数はargcで確認する。コードは原文保持。"
+    },
+    {
+      "function": "XXH3_generateSecret_fromSeed C++ example",
+      "observation": "HashFastの引数名はs、seedは未宣言。c++のsyntax-onlyでexit1。",
+      "proposedAnnotation": "原文のHashFastの呼び出しは未宣言seedを参照する。コンストラクター引数sを使用する必要がある。コードは原文保持。"
+    }
+  ],
+  "syntaxChecks": {
+    "originalC": {
+      "exitCode": 0,
+      "warning": "pointer-integer-compare",
+      "diagnostics": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-518/xxh3-example-518.c.diagnostics.txt",
+        "sha256": "56f788ac673f1ba7662927cbada4908cd87eb5c442a257353f401f53349cdce4"
+      }
+    },
+    "originalCpp": {
+      "exitCode": 1,
+      "error": "undeclared identifier seed",
+      "diagnostics": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-518/xxh3-example-518.cpp.diagnostics.txt",
+        "sha256": "c979e4ca87eb6558fc0d3a1fad1f315c38de71aec1d0a84b57325ff3f405c9bd"
+      }
+    },
+    "correctedC": {
+      "exitCode": 0,
+      "change": "argv != 3 → argc != 3",
+      "diagnostics": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-518/xxh3-example-518.corrected.c.diagnostics.txt",
+        "sha256": "e4c5d99fc244aa3f686c2c151a7d9c6a6f18498ecb737dcb5cfb10ed9704ec8c"
+      }
+    },
+    "correctedCpp": {
+      "exitCode": 0,
+      "change": "HashFastのgenerateSecret_fromSeed(secret, seed) → (secret, s)",
+      "diagnostics": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-518/xxh3-example-518.corrected.cpp.diagnostics.txt",
+        "sha256": "e4c5d99fc244aa3f686c2c151a7d9c6a6f18498ecb737dcb5cfb10ed9704ec8c"
+      }
+    },
+    "flags": [
+      "-fsyntax-only",
+      "-DXXH_INLINE_ALL",
+      "C99/C++11",
+      "修正版のみ-Werror"
+    ],
+    "scope": "固定ヘッダーを用いたローカル構文検査。例の実行・性能比較・HashSlow/HashFast同等性は検証していない。"
+  },
+  "wholePageReviewed": false,
+  "annotationApplied": false
+}

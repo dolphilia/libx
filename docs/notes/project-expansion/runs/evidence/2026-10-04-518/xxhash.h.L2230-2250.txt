@@ -1,0 +1,21 @@
+2230:  * Additionally, sometimes the forced inlining can be detrimental to performance,
+2231:  * depending on the architecture.
+2232:  *
+2233:  * XXH_NO_INLINE_HINTS marks all internal functions as static, giving the
+2234:  * compiler full control on whether to inline or not.
+2235:  *
+2236:  * When not optimizing (-O0), using `-fno-inline` with GCC or Clang, or if
+2237:  * @ref XXH_SIZE_OPT >= 1, this will automatically be defined.
+2238:  */
+2239: #  define XXH_NO_INLINE_HINTS 0
+2240: 
+2241: /*!
+2242:  * @def XXH3_INLINE_SECRET
+2243:  * @brief Determines whether to inline the XXH3 withSecret code.
+2244:  *
+2245:  * When the secret size is known, the compiler can improve the performance
+2246:  * of XXH3_64bits_withSecret() and XXH3_128bits_withSecret().
+2247:  *
+2248:  * However, if the secret size is not known, it doesn't have any benefit. This
+2249:  * happens when xxHash is compiled into a global symbol. Therefore, if
+2250:  * @ref XXH_INLINE_ALL is *not* defined, this will be defined to 0.

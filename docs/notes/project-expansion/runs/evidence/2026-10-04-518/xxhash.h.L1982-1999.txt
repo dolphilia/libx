@@ -1,0 +1,18 @@
+1982:  * @brief Calculates 128-bit seeded variant of XXH3 hash of @p data.
+1983:  *
+1984:  * @param input      The memory segment to be hashed, at least @p len bytes in size.
+1985:  * @param length     The length of @p data, in bytes.
+1986:  * @param secret     The secret used to alter hash result predictably.
+1987:  * @param secretSize The length of @p secret, in bytes (must be >= XXH3_SECRET_SIZE_MIN)
+1988:  * @param seed64     The 64-bit seed to alter the hash result predictably.
+1989:  *
+1990:  * @return @ref XXH_OK on success.
+1991:  * @return @ref XXH_ERROR on failure.
+1992:  *
+1993:  * @see XXH3_64bits_withSecretandSeed(): contract is the same.
+1994:  */
+1995: XXH_PUBLIC_API XXH_PUREF XXH128_hash_t
+1996: XXH3_128bits_withSecretandSeed(XXH_NOESCAPE const void* input, size_t length,
+1997:                                XXH_NOESCAPE const void* secret, size_t secretSize,
+1998:                                XXH64_hash_t seed64);
+1999: 
