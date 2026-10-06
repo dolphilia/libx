@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-04T03:25:54.514Z",
+  "status": "partial-research-not-eligibility",
+  "priority": "new-projects-first",
+  "mdbook": {
+    "fixedVersion": "0.5.4",
+    "scope": "公式guide目次31章と必要なinclude・版置換・例・素材。全ファイル分類は未完。",
+    "license": "固定本体MPL-2.0の注釈付き適用を設計中。専用表記の不在と運用判断を区別する。履行設計未完なのでrightsはunknownを維持。",
+    "conversion": "guide-helperはguide/guide-helperに所在。版置換と実include、エスケープされた説明用構文を区別する。試験未実施。"
+  },
+  "jq": {
+    "fixedVersion": "1.8.2",
+    "manualVersion": "1.8",
+    "license": "固定COPYINGと公式footerはdocs配下CC BY 3.0を明示。本体MIT fallbackで置換しない。帰属・原URI・変更表示・全文条件へのリンク設計を完了してからrights判定。",
+    "conversion": "固定manual/v1.8/manual.yml、build_website.py、manual.html.j2を基準に全節・entry・例のprogram/input/outputとアンカーを保全。試験未実施。",
+    "japaneseLead": {
+      "url": "https://dev.classmethod.jp/articles/jq-manual-japanese-translation-roughly/",
+      "displayedDate": "2013-07-10",
+      "observation": "著者によるjq Manual日本語訳の案内を確認。公開日だけから対象版を断定しない。全文の範囲差分・品質評価は未実施。訳文を再利用しない。"
+    }
+  },
+  "japaneseResearch": {
+    "status": "incomplete",
+    "queries": [
+      "mdBook 日本語 翻訳",
+      "mdBook 0.5 日本語",
+      "mdBook Documentation 日本語",
+      "mdbook 公式ドキュメント 日本語訳",
+      "jq 1.8 マニュアル 日本語",
+      "jq 日本語マニュアル",
+      "jq Manual 1.8 日本語",
+      "jq マニュアル 1.7 翻訳"
+    ],
+    "limitations": "mdBookを使用した別プロジェクトの訳をmdBookツールの訳と混同しない。公式言語一覧・翻訳パス・公式案内と既存jq訳の範囲照合が未完。未発見・追加価値の採点を確定しない。"
+  },
+  "dependencyProbe": {
+    "command": "/Users/dolphilia/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -c import yaml,jinja2,markdown",
+    "result": "ModuleNotFoundError: No module named yaml",
+    "scope": "最初のyaml importで停止したため、jinja2/markdownの利用可否は未確認。依存インストールなし。共有rootの依存変更なし。",
+    "next": "既存の隔離checkoutで利用可能なparserを調べ、必要なら一時領域のみへ依存を準備。"
+  },
+  "remaining": [
+    "全ファイル分類と権利履行設計",
+    "公式日本語案内と既存訳の範囲照合",
+    "隔離変換・全例/アンカー/素材の保全試験",
+    "工数実測・採点・別選定照合"
+  ]
+}
