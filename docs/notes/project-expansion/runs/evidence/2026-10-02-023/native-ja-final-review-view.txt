@@ -1,0 +1,443 @@
+1: ---
+2: title: "ネイティブアクセス"
+3: description: "GLFW 3.5.1 ネイティブアクセス"
+4: ---
+6: # ネイティブアクセス
+10: ## 説明
+12: **ネイティブアクセス関数を使用することは、自分が何をしているか、およびその使用によって生じた問題をどう修正するかを理解していると表明することです。理解していない場合は使用すべきではありません。**
+14: glfw3native.h をインクルードする前に、ウィンドウシステム API マクロを 0 個以上、コンテキスト作成 API マクロを 0 個以上定義できます。
+16: 選択するバックエンドは、ライブラリのコンパイル対象と一致していなければなりません。一致しない場合はリンク時エラーになります。
+18: 利用可能なウィンドウ API マクロは次のとおりです。
+20: - `GLFW_EXPOSE_NATIVE_WIN32`
+21: - `GLFW_EXPOSE_NATIVE_COCOA`
+22: - `GLFW_EXPOSE_NATIVE_X11`
+23: - `GLFW_EXPOSE_NATIVE_WAYLAND`
+25: 利用可能なコンテキスト API マクロは次のとおりです。
+27: - `GLFW_EXPOSE_NATIVE_WGL`
+28: - `GLFW_EXPOSE_NATIVE_NSGL`
+29: - `GLFW_EXPOSE_NATIVE_GLX`
+30: - `GLFW_EXPOSE_NATIVE_EGL`
+31: - `GLFW_EXPOSE_NATIVE_OSMESA`
+33: これらのマクロは、宣言するネイティブアクセス関数と、インクルードするプラットフォーム固有ヘッダーを選択します。どれを定義すべきかは、必然的にプラットフォーム固有となる利用側のコードで処理します。
+35: プラットフォーム固有ヘッダーをインクルードしたくない場合は、glfw3native.h ヘッダーをインクルードする前に `GLFW_NATIVE_INCLUDE_NONE` を定義してください。
+41: \#define GLFW_EXPOSE_NATIVE_WIN32
+47: \#define GLFW_EXPOSE_NATIVE_WGL
+53: \#define GLFW_NATIVE_INCLUDE_NONE
+59: \#include \<GLFW/glfw3native.h\>
+67: [glfw3native.h](https://www.glfw.org/docs/3.5.1/glfw3native_8h.html)
+73: ネイティブアクセス関数のヘッダー。
+88:  関数
+91: const char * 
+92: glfwGetWin32Adapter (GLFWmonitor *monitor)
+96: 指定されたモニターのアダプターデバイス名を返します。
+103: const char * 
+104: glfwGetWin32Monitor (GLFWmonitor *monitor)
+108: 指定されたモニターのディスプレイデバイス名を返します。
+115: HWND 
+116: glfwGetWin32Window (GLFWwindow *window)
+120: 指定されたウィンドウの HWND を返します。
+127: HGLRC 
+128: glfwGetWGLContext (GLFWwindow *window)
+132: 指定されたウィンドウの HGLRC を返します。
+139: CGDirectDisplayID 
+140: glfwGetCocoaMonitor (GLFWmonitor *monitor)
+144: 指定されたモニターの CGDirectDisplayID を返します。
+151: id 
+152: glfwGetCocoaWindow (GLFWwindow *window)
+156: 指定されたウィンドウの NSWindow を返します。
+163: id 
+164: glfwGetCocoaView (GLFWwindow *window)
+168: 指定されたウィンドウの NSView を返します。
+175: id 
+176: glfwGetNSGLContext (GLFWwindow *window)
+180: 指定されたウィンドウの NSOpenGLContext を返します。
+187: Display * 
+188: glfwGetX11Display (void)
+192: GLFW が使用する Display を返します。
+199: RRCrtc 
+200: glfwGetX11Adapter (GLFWmonitor *monitor)
+204: 指定されたモニターの RRCrtc を返します。
+211: RROutput 
+212: glfwGetX11Monitor (GLFWmonitor *monitor)
+216: 指定されたモニターの RROutput を返します。
+223: Window 
+224: glfwGetX11Window (GLFWwindow *window)
+228: 指定されたウィンドウの Window を返します。
+235: void 
+236: glfwSetX11SelectionString (const char *string)
+240: 現在のプライマリ選択を指定された文字列に設定します。
+247: const char * 
+248: glfwGetX11SelectionString (void)
+252: 現在のプライマリ選択の内容を文字列として返します。
+259: GLXContext 
+260: glfwGetGLXContext (GLFWwindow *window)
+264: 指定されたウィンドウの GLXContext を返します。
+271: GLXWindow 
+272: glfwGetGLXWindow (GLFWwindow *window)
+276: 指定されたウィンドウの GLXWindow を返します。
+283: int 
+284: glfwGetGLXFBConfig (GLFWwindow *window, GLXFBConfig *config)
+288: 指定されたウィンドウの GLXWindow に対応する GLXFBConfig を取得します。
+295: struct wl_display * 
+296: glfwGetWaylandDisplay (void)
+300: GLFW が使用する struct wl_display* を返します。
+307: struct wl_output * 
+308: glfwGetWaylandMonitor (GLFWmonitor *monitor)
+312: 指定されたモニターの struct wl_output* を返します。
+319: struct wl_surface * 
+320: glfwGetWaylandWindow (GLFWwindow *window)
+324: 指定されたウィンドウのメイン struct wl_surface* を返します。
+331: EGLDisplay 
+332: glfwGetEGLDisplay (void)
+336: GLFW が使用する EGLDisplay を返します。
+343: EGLContext 
+344: glfwGetEGLContext (GLFWwindow *window)
+348: 指定されたウィンドウの EGLContext を返します。
+355: EGLSurface 
+356: glfwGetEGLSurface (GLFWwindow *window)
+360: 指定されたウィンドウの EGLSurface を返します。
+367: int 
+368: glfwGetEGLConfig (GLFWwindow *window, EGLConfig *config)
+372: 指定されたウィンドウの EGLSurface に対応する EGLConfig を取得します。
+379: int 
+380: glfwGetOSMesaColorBuffer (GLFWwindow *window, int *width, int *height, int *format, void **buffer)
+384: 指定されたウィンドウに関連付けられたカラーバッファを取得します。
+391: int 
+392: glfwGetOSMesaDepthBuffer (GLFWwindow *window, int *width, int *height, int *bytesPerValue, void **buffer)
+396: 指定されたウィンドウに関連付けられた深度バッファを取得します。
+403: OSMesaContext 
+404: glfwGetOSMesaContext (GLFWwindow *window)
+408: 指定されたウィンドウの OSMesaContext を返します。
+417: ## 関数の詳細
+421: ## [◆ ](#gad4d3e9242536c0ba6be88a98f4c73a41)glfwGetWin32Adapter()
+429: | const char \* glfwGetWin32Adapter | ( | GLFWmonitor \*  | *monitor* | ) |  |
+435: 戻り値  
+436: 指定されたモニターの UTF-8 エンコードされたアダプターデバイス名（例: `\\.\DISPLAY1`）。エラーが発生した場合は `NULL`。
+440: エラー  
+441: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+445: スレッドセーフ性  
+446: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+450: 導入バージョン  
+451: バージョン 3.1 で追加されました。
+459: ## [◆ ](#gac845f7dbe4c1d7fdd682a3c6fdae6766)glfwGetWin32Monitor()
+467: | const char \* glfwGetWin32Monitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+473: 戻り値  
+474: 指定されたモニターの UTF-8 エンコードされたディスプレイデバイス名（例: `\\.\DISPLAY1\Monitor0`）。エラーが発生した場合は `NULL`。
+478: エラー  
+479: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+483: スレッドセーフ性  
+484: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+488: 導入バージョン  
+489: バージョン 3.1 で追加されました。
+497: ## [◆ ](#gafe5079aa79038b0079fc09d5f0a8e667)glfwGetWin32Window()
+505: | HWND glfwGetWin32Window | ( | GLFWwindow \*  | *window* | ) |  |
+511: 戻り値  
+512: 指定されたウィンドウの `HWND`。エラーが発生した場合は `NULL`。
+516: エラー  
+517: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+521: 備考  
+522: ウィンドウに関連付けられた `HDC` は、[GetDC](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc) 関数で照会できます。
+528: HDC dc = GetDC(glfwGetWin32Window(window));
+536: [glfwGetWin32Window](/docs/glfw/v3-5-1/ja/04-reference/08-native-access/#gafe5079aa79038b0079fc09d5f0a8e667)
+542: HWND glfwGetWin32Window(GLFWwindow \*window)
+548: 指定されたウィンドウの HWND を返します。
+556: この DC はプライベートであり、解放する必要はありません。
+560: スレッドセーフ性  
+561: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+565: 導入バージョン  
+566: バージョン 3.0 で追加されました。
+574: ## [◆ ](#gadc4010d91d9cc1134d040eeb1202a143)glfwGetWGLContext()
+582: | HGLRC glfwGetWGLContext | ( | GLFWwindow \*  | *window* | ) |  |
+588: 戻り値  
+589: 指定されたウィンドウの `HGLRC`。エラーが発生した場合は `NULL`。
+593: エラー  
+594: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE、GLFW_NO_WINDOW_CONTEXT があります。
+598: 備考  
+599: ウィンドウに関連付けられた `HDC` は、[GetDC](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc) 関数で照会できます。
+605: HDC dc = GetDC(glfwGetWin32Window(window));
+611: この DC はプライベートであり、解放する必要はありません。
+615: スレッドセーフ性  
+616: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+620: 導入バージョン  
+621: バージョン 3.0 で追加されました。
+629: ## [◆ ](#gaf22f429aec4b1aab316142d66d9be3e6)glfwGetCocoaMonitor()
+637: | CGDirectDisplayID glfwGetCocoaMonitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+643: 戻り値  
+644: 指定されたモニターの `CGDirectDisplayID`。エラーが発生した場合は `kCGNullDirectDisplay`。
+648: エラー  
+649: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+653: スレッドセーフ性  
+654: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+658: 導入バージョン  
+659: バージョン 3.1 で追加されました。
+667: ## [◆ ](#gac3ed9d495d0c2bb9652de5a50c648715)glfwGetCocoaWindow()
+675: | id glfwGetCocoaWindow | ( | GLFWwindow \*  | *window* | ) |  |
+681: 戻り値  
+682: 指定されたウィンドウの `NSWindow`。エラーが発生した場合は `nil`。
+686: エラー  
+687: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+691: スレッドセーフ性  
+692: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+696: 導入バージョン  
+697: バージョン 3.0 で追加されました。
+705: ## [◆ ](#ga7274fb6595894e880fc95dc63156e9b1)glfwGetCocoaView()
+713: | id glfwGetCocoaView | ( | GLFWwindow \*  | *window* | ) |  |
+719: 戻り値  
+720: 指定されたウィンドウの `NSView`。エラーが発生した場合は `nil`。
+724: エラー  
+725: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+729: スレッドセーフ性  
+730: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+734: 導入バージョン  
+735: バージョン 3.4 で追加されました。
+743: ## [◆ ](#ga559e002e3cd63c979881770cd4dc63bc)glfwGetNSGLContext()
+751: | id glfwGetNSGLContext | ( | GLFWwindow \*  | *window* | ) |  |
+757: 戻り値  
+758: 指定されたウィンドウの `NSOpenGLContext`。エラーが発生した場合は `nil`。
+762: エラー  
+763: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE、GLFW_NO_WINDOW_CONTEXT があります。
+767: スレッドセーフ性  
+768: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+772: 導入バージョン  
+773: バージョン 3.0 で追加されました。
+781: ## [◆ ](#ga6e7822385cc8a1cc3b18f60352830189)glfwGetX11Display()
+789: | Display \* glfwGetX11Display | (   | void  |     | )   |     |
+795: 戻り値  
+796: GLFW が使用する `Display`。エラーが発生した場合は `NULL`。
+800: エラー  
+801: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+805: スレッドセーフ性  
+806: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+810: 導入バージョン  
+811: バージョン 3.0 で追加されました。
+819: ## [◆ ](#ga088fbfa80f50569402b41be71ad66e40)glfwGetX11Adapter()
+827: | RRCrtc glfwGetX11Adapter | ( | GLFWmonitor \*  | *monitor* | ) |  |
+833: 戻り値  
+834: 指定されたモニターの `RRCrtc`。エラーが発生した場合は `None`。
+838: エラー  
+839: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+843: スレッドセーフ性  
+844: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+848: 導入バージョン  
+849: バージョン 3.1 で追加されました。
+857: ## [◆ ](#gab2f8cc043905e9fa9b12bfdbbcfe874c)glfwGetX11Monitor()
+865: | RROutput glfwGetX11Monitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+871: 戻り値  
+872: 指定されたモニターの `RROutput`。エラーが発生した場合は `None`。
+876: エラー  
+877: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+881: スレッドセーフ性  
+882: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+886: 導入バージョン  
+887: バージョン 3.1 で追加されました。
+895: ## [◆ ](#ga90ca676322740842db446999a1b1f21d)glfwGetX11Window()
+903: | Window glfwGetX11Window | ( | GLFWwindow \*  | *window* | ) |  |
+909: 戻り値  
+910: 指定されたウィンドウの `Window`。エラーが発生した場合は `None`。
+914: エラー  
+915: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+919: スレッドセーフ性  
+920: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+924: 導入バージョン  
+925: バージョン 3.0 で追加されました。
+933: ## [◆ ](#ga55f879ab02d93367f966186b6f0133f7)glfwSetX11SelectionString()
+941: | void glfwSetX11SelectionString | (   | const char \*  | *string* | )   |     |
+947: 引数  
+950: | \[in\] | string | UTF-8 エンコード文字列。 |
+954: エラー  
+955: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE、GLFW_PLATFORM_ERROR があります。
+959: ポインターの有効期間  
+960: 指定された文字列は、この関数から戻る前にコピーされます。
+964: スレッドセーフ性  
+965: この関数は、メインスレッドからのみ呼び出さなければなりません。
+969: 関連項目  
+970: クリップボードの入出力
+972: glfwGetX11SelectionString
+974: glfwSetClipboardString
+978: 導入バージョン  
+979: バージョン 3.3 で追加されました。
+987: ## [◆ ](#gae084ef64dc0db140b455b1427256d3f7)glfwGetX11SelectionString()
+995: | const char \* glfwGetX11SelectionString | (   | void  |     | )   |     |
+1001: 選択が空の場合、または内容を変換できない場合は `NULL` を返し、GLFW_FORMAT_UNAVAILABLE エラーを生成します。
+1003: 戻り値  
+1004: UTF-8 エンコード文字列としての選択内容。エラーが発生した場合は `NULL`。
+1008: エラー  
+1009: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE、GLFW_PLATFORM_ERROR があります。
+1013: ポインターの有効期間  
+1014: 戻り値の文字列は GLFW によって確保および解放されます。自分で解放してはいけません。次に glfwGetX11SelectionString または glfwSetX11SelectionString が呼び出されるか、ライブラリが終了するまで有効です。
+1018: スレッドセーフ性  
+1019: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1023: 関連項目  
+1024: クリップボードの入出力
+1026: glfwSetX11SelectionString
+1028: glfwGetClipboardString
+1032: 導入バージョン  
+1033: バージョン 3.3 で追加されました。
+1041: ## [◆ ](#ga62d884114b0abfcdc2930e89f20867e2)glfwGetGLXContext()
+1049: | GLXContext glfwGetGLXContext | ( | GLFWwindow \*  | *window* | ) |  |
+1055: 戻り値  
+1056: 指定されたウィンドウの `GLXContext`。エラーが発生した場合は `NULL`。
+1060: エラー  
+1061: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT、GLFW_PLATFORM_UNAVAILABLE があります。
+1065: スレッドセーフ性  
+1066: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1070: 導入バージョン  
+1071: バージョン 3.0 で追加されました。
+1079: ## [◆ ](#ga1ed27b8766e859a21381e8f8ce18d049)glfwGetGLXWindow()
+1087: | GLXWindow glfwGetGLXWindow | ( | GLFWwindow \*  | *window* | ) |  |
+1093: 戻り値  
+1094: 指定されたウィンドウの `GLXWindow`。エラーが発生した場合は `None`。
+1098: エラー  
+1099: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT、GLFW_PLATFORM_UNAVAILABLE があります。
+1103: スレッドセーフ性  
+1104: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1108: 導入バージョン  
+1109: バージョン 3.2 で追加されました。
+1117: ## [◆ ](#gada0e83394c2258396bff9ba6b73abf98)glfwGetGLXFBConfig()
+1125: | int glfwGetGLXFBConfig | ( | GLFWwindow \*  | *window*, |
+1126: |  |  | GLXFBConfig \*  | *config*  |
+1127: |  | ) |  |  |
+1133: 引数  
+1136: | \[in\]  | window | `GLXWindow` を問い合わせるウィンドウ。 |
+1137: | \[out\] | config | 利用可能な場合は、ウィンドウの `GLXWindow` に対応する `GLXFBConfig`。 |
+1141: 戻り値  
+1142: 成功した場合は `GLFW_TRUE`。エラーが発生した場合は `GLFW_FALSE`。
+1146: エラー  
+1147: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT、GLFW_PLATFORM_UNAVAILABLE があります。
+1151: 備考  
+1152: `GLXFBConfig` は不透明型です。コア GLX は無効値を定義していないため、ほかの GLFW 関数とは異なり、エラー時に出力引数 `config` はクリアされません。
+1156: スレッドセーフ性  
+1157: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1161: 導入バージョン  
+1162: バージョン 3.5 で追加されました。
+1170: ## [◆ ](#gacbe11f93ce20621de82989bbba94e62a)glfwGetWaylandDisplay()
+1178: | struct wl_display \* glfwGetWaylandDisplay | (   | void  |     | )   |     |
+1184: 戻り値  
+1185: GLFW が使用する `struct wl_display*`。エラーが発生した場合は `NULL`。
+1189: エラー  
+1190: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+1194: スレッドセーフ性  
+1195: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1199: 導入バージョン  
+1200: バージョン 3.2 で追加されました。
+1208: ## [◆ ](#ga4f16066bd4c59e2f99418adfcb43dd16)glfwGetWaylandMonitor()
+1216: | struct wl_output \* glfwGetWaylandMonitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+1222: 戻り値  
+1223: 指定されたモニターの `struct wl_output*`。エラーが発生した場合は `NULL`。
+1227: エラー  
+1228: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+1232: スレッドセーフ性  
+1233: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1237: 導入バージョン  
+1238: バージョン 3.2 で追加されました。
+1246: ## [◆ ](#ga5c597f2841229d9626f0811cca41ceb3)glfwGetWaylandWindow()
+1254: | struct wl_surface \* glfwGetWaylandWindow | ( | GLFWwindow \*  | *window* | ) |  |
+1260: 戻り値  
+1261: 指定されたウィンドウのメイン `struct wl_surface*`。エラーが発生した場合は `NULL`。
+1265: エラー  
+1266: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_UNAVAILABLE があります。
+1270: スレッドセーフ性  
+1271: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1275: 導入バージョン  
+1276: バージョン 3.2 で追加されました。
+1284: ## [◆ ](#ga1cd8d973f47aacb5532d368147cc3138)glfwGetEGLDisplay()
+1292: | EGLDisplay glfwGetEGLDisplay | (   | void  |     | )   |     |
+1298: 戻り値  
+1299: GLFW が使用する `EGLDisplay`。エラーが発生した場合は `EGL_NO_DISPLAY`。
+1303: エラー  
+1304: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+1308: 備考  
+1309: EGL は必要に応じて初期化されるため、EGL を介して最初のコンテキストが作成されるまで、この関数は `EGL_NO_DISPLAY` を返します。
+1313: スレッドセーフ性  
+1314: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1318: 導入バージョン  
+1319: バージョン 3.0 で追加されました。
+1327: ## [◆ ](#ga671c5072becd085f4ab5771a9c8efcf1)glfwGetEGLContext()
+1335: | EGLContext glfwGetEGLContext | ( | GLFWwindow \*  | *window* | ) |  |
+1341: 戻り値  
+1342: 指定されたウィンドウの `EGLContext`。エラーが発生した場合は `EGL_NO_CONTEXT`。
+1346: エラー  
+1347: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT があります。
+1351: スレッドセーフ性  
+1352: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1356: 導入バージョン  
+1357: バージョン 3.0 で追加されました。
+1365: ## [◆ ](#ga2199b36117a6a695fec8441d8052eee6)glfwGetEGLSurface()
+1373: | EGLSurface glfwGetEGLSurface | ( | GLFWwindow \*  | *window* | ) |  |
+1379: 戻り値  
+1380: 指定されたウィンドウの `EGLSurface`。エラーが発生した場合は `EGL_NO_SURFACE`。
+1384: エラー  
+1385: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT があります。
+1389: スレッドセーフ性  
+1390: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1394: 導入バージョン  
+1395: バージョン 3.0 で追加されました。
+1403: ## [◆ ](#gaada9744377463b229b4817eb96384e8c)glfwGetEGLConfig()
+1411: | int glfwGetEGLConfig | ( | GLFWwindow \*  | *window*, |
+1412: |  |  | EGLConfig \*  | *config*  |
+1413: |  | ) |  |  |
+1419: 引数  
+1422: | \[in\]  | window | `EGLSurface` を問い合わせるウィンドウ。 |
+1423: | \[out\] | config | 利用可能な場合は、ウィンドウの `EGLSurface` に対応する `EGLConfig`。 |
+1427: 戻り値  
+1428: 成功した場合は `GLFW_TRUE`。エラーが発生した場合は `GLFW_FALSE`。
+1432: エラー  
+1433: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT があります。
+1437: 備考  
+1438: `EGLConfig` は不透明型です。コア EGL は無効値を定義していないため、ほかの GLFW 関数とは異なり、エラー時に出力引数 `config` はクリアされません。
+1442: スレッドセーフ性  
+1443: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1447: 導入バージョン  
+1448: バージョン 3.5 で追加されました。
+1456: ## [◆ ](#ga3b36e3e3dcf308b776427b6bd73cc132)glfwGetOSMesaColorBuffer()
+1464: | int glfwGetOSMesaColorBuffer | ( | GLFWwindow \*  | *window*, |
+1465: |  |  | int \*  | *width*, |
+1466: |  |  | int \*  | *height*, |
+1467: |  |  | int \*  | *format*, |
+1468: |  |  | void \*\*  | *buffer*  |
+1469: |  | ) |  |  |
+1475: 引数  
+1478: | \[in\] | window | カラーバッファを取得するウィンドウ。 |
+1479: | \[out\] | width | カラーバッファの幅を格納する場所、または `NULL`。 |
+1480: | \[out\] | height | カラーバッファの高さを格納する場所、または `NULL`。 |
+1481: | \[out\] | format | カラーバッファの OSMesa ピクセル形式を格納する場所、または `NULL`。 |
+1482: | \[out\] | buffer | カラーバッファのアドレスを格納する場所、または `NULL`。 |
+1486: 戻り値  
+1487: 成功した場合は `GLFW_TRUE`。エラーが発生した場合は `GLFW_FALSE`。
+1491: エラー  
+1492: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT があります。
+1496: スレッドセーフ性  
+1497: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1501: 導入バージョン  
+1502: バージョン 3.3 で追加されました。
+1510: ## [◆ ](#ga6b64039ffc88a7a2f57f0956c0c75d53)glfwGetOSMesaDepthBuffer()
+1518: | int glfwGetOSMesaDepthBuffer | ( | GLFWwindow \*  | *window*, |
+1519: |  |  | int \*  | *width*, |
+1520: |  |  | int \*  | *height*, |
+1521: |  |  | int \*  | *bytesPerValue*, |
+1522: |  |  | void \*\*  | *buffer*  |
+1523: |  | ) |  |  |
+1529: 引数  
+1532: | \[in\] | window | 深度バッファを取得するウィンドウ。 |
+1533: | \[out\] | width | 深度バッファの幅を格納する場所、または `NULL`。 |
+1534: | \[out\] | height | 深度バッファの高さを格納する場所、または `NULL`。 |
+1535: | \[out\] | bytesPerValue | 深度バッファ要素あたりのバイト数を格納する場所、または `NULL`。 |
+1536: | \[out\] | buffer | 深度バッファのアドレスを格納する場所、または `NULL`。 |
+1540: 戻り値  
+1541: 成功した場合は `GLFW_TRUE`。エラーが発生した場合は `GLFW_FALSE`。
+1545: エラー  
+1546: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT があります。
+1550: スレッドセーフ性  
+1551: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1555: 導入バージョン  
+1556: バージョン 3.3 で追加されました。
+1564: ## [◆ ](#ga9e47700080094eb569cb053afaa88773)glfwGetOSMesaContext()
+1572: | OSMesaContext glfwGetOSMesaContext | ( | GLFWwindow \*  | *window* | ) |  |
+1578: 戻り値  
+1579: 指定されたウィンドウの `OSMesaContext`。エラーが発生した場合は `NULL`。
+1583: エラー  
+1584: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_NO_WINDOW_CONTEXT があります。
+1588: スレッドセーフ性  
+1589: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+1593: 導入バージョン  
+1594: バージョン 3.3 で追加されました。

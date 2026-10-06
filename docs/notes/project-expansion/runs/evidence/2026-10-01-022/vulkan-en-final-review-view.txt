@@ -1,0 +1,154 @@
+1: ---
+2: title: "Vulkan support reference"
+3: description: "GLFW 3.5.1 Vulkan support reference"
+4: ---
+6: # Vulkan support reference
+10: ## Description
+12: This is the reference documentation for Vulkan related functions and types. For more task-oriented information, see the Vulkan guide.
+21:  Typedefs
+24: typedef void(* 
+25: GLFWvkproc) (void)
+29: Vulkan API function pointer type.
+45:  Functions
+48: int 
+49: glfwVulkanSupported (void)
+53: Returns whether the Vulkan loader and an ICD have been found.
+60: const char ** 
+61: glfwGetRequiredInstanceExtensions (uint32_t *count)
+65: Returns the Vulkan instance extensions required by GLFW.
+72: GLFWvkproc 
+73: glfwGetInstanceProcAddress (VkInstance instance, const char *procname)
+77: Returns the address of the specified Vulkan instance function.
+84: int 
+85: glfwGetPhysicalDevicePresentationSupport (VkInstance instance, VkPhysicalDevice device, uint32_t queuefamily)
+89: Returns whether the specified queue family can present images.
+96: VkResult 
+97: glfwCreateWindowSurface (VkInstance instance, GLFWwindow *window, const VkAllocationCallbacks *allocator, VkSurfaceKHR *surface)
+101: Creates a Vulkan surface for the specified window.
+110: ## Typedef Documentation
+114: ## [◆ ](#ga70c01918dc9d233a4fbe0681a43018af)GLFWvkproc
+122: | typedef void(\* GLFWvkproc) (void) |
+128: Generic function pointer used for returning Vulkan API function pointers without forcing a cast from a regular pointer.
+130: See also  
+131: Querying Vulkan function pointers
+133: glfwGetInstanceProcAddress
+137: Since  
+138: Added in version 3.2.
+144: ## Function Documentation
+148: ## [◆ ](#ga2e7f30931e02464b5bc8d0d4b6f9fe2b)glfwVulkanSupported()
+156: | int glfwVulkanSupported | (   | void  |     | )   |     |
+162: This function returns whether the Vulkan loader and any minimally functional ICD have been found.
+164: The availability of a Vulkan loader and even an ICD does not by itself guarantee that surface creation or even instance creation is possible. Call glfwGetRequiredInstanceExtensions to check whether the extensions necessary for Vulkan surface creation are available and glfwGetPhysicalDevicePresentationSupport to check whether a queue family of a physical device supports image presentation.
+166: Returns  
+167: `GLFW_TRUE` if Vulkan is minimally available, or `GLFW_FALSE` otherwise.
+171: Errors  
+172: Possible errors include GLFW_NOT_INITIALIZED.
+176: Thread safety  
+177: This function may be called from any thread.
+181: See also  
+182: Querying for Vulkan support
+186: Since  
+187: Added in version 3.2.
+195: ## [◆ ](#ga99ad342d82f4a3421e2864978cb6d1d6)glfwGetRequiredInstanceExtensions()
+203: | const char \*\* glfwGetRequiredInstanceExtensions | ( | uint32_t \*  | *count* | ) |  |
+209: This function returns an array of names of Vulkan instance extensions required by GLFW for creating Vulkan surfaces for GLFW windows. If successful, the list will always contain `VK_KHR_surface`, so if you don't require any additional extensions you can pass this list directly to the `VkInstanceCreateInfo` struct.
+211: If Vulkan is not available on the machine, this function returns `NULL` and generates a GLFW_API_UNAVAILABLE error. Call glfwVulkanSupported to check whether Vulkan is at least minimally available.
+213: If Vulkan is available but no set of extensions allowing window surface creation was found, this function returns `NULL`. You may still use Vulkan for off-screen rendering and compute work.
+215: Parameters  
+218: | \[out\] | count | Where to store the number of extensions in the returned array. This is set to zero if an error occurred. |
+222: Returns  
+223: An array of ASCII encoded extension names, or `NULL` if an error occurred.
+227: Errors  
+228: Possible errors include GLFW_NOT_INITIALIZED and GLFW_API_UNAVAILABLE.
+232: Remarks  
+233: Additional extensions may be required by future versions of GLFW. You should check if any extensions you wish to enable are already in the returned array, as it is an error to specify an extension more than once in the `VkInstanceCreateInfo` struct.
+237: Pointer lifetime  
+238: The returned array is allocated and freed by GLFW. You should not free it yourself. It is guaranteed to be valid only until the library is terminated.
+242: Thread safety  
+243: This function may be called from any thread.
+247: See also  
+248: Querying required Vulkan extensions
+250: glfwCreateWindowSurface
+254: Since  
+255: Added in version 3.2.
+263: ## [◆ ](#gadf228fac94c5fd8f12423ec9af9ff1e9)glfwGetInstanceProcAddress()
+271: | GLFWvkproc glfwGetInstanceProcAddress | ( | VkInstance  | *instance*, |
+272: |  |  | const char \*  | *procname*  |
+273: |  | ) |  |  |
+279: This function returns the address of the specified Vulkan core or extension function for the specified instance. If instance is set to `NULL` it can return any function exported from the Vulkan loader, including at least the following functions:
+281: - `vkEnumerateInstanceExtensionProperties`
+282: - `vkEnumerateInstanceLayerProperties`
+283: - `vkCreateInstance`
+284: - `vkGetInstanceProcAddr`
+286: If Vulkan is not available on the machine, this function returns `NULL` and generates a GLFW_API_UNAVAILABLE error. Call glfwVulkanSupported to check whether Vulkan is at least minimally available.
+288: This function is equivalent to calling `vkGetInstanceProcAddr` with a platform-specific query of the Vulkan loader as a fallback.
+290: Parameters  
+293: | \[in\] | instance | The Vulkan instance to query, or `NULL` to retrieve functions related to instance creation. |
+294: | \[in\] | procname | The ASCII encoded name of the function. |
+298: Returns  
+299: The address of the function, or `NULL` if an error occurred.
+303: Errors  
+304: Possible errors include GLFW_NOT_INITIALIZED and GLFW_API_UNAVAILABLE.
+308: Pointer lifetime  
+309: The returned function pointer is valid until the library is terminated.
+313: Thread safety  
+314: This function may be called from any thread.
+318: See also  
+319: Querying Vulkan function pointers
+323: Since  
+324: Added in version 3.2.
+332: ## [◆ ](#gaff3823355cdd7e2f3f9f4d9ea9518d92)glfwGetPhysicalDevicePresentationSupport()
+340: | int glfwGetPhysicalDevicePresentationSupport | ( | VkInstance  | *instance*, |
+341: |  |  | VkPhysicalDevice  | *device*, |
+342: |  |  | uint32_t  | *queuefamily*  |
+343: |  | ) |  |  |
+349: This function returns whether the specified queue family of the specified physical device supports presentation to the platform GLFW was built for.
+351: If Vulkan or the required window surface creation instance extensions are not available on the machine, or if the specified instance was not created with the required extensions, this function returns `GLFW_FALSE` and generates a GLFW_API_UNAVAILABLE error. Call glfwVulkanSupported to check whether Vulkan is at least minimally available and glfwGetRequiredInstanceExtensions to check what instance extensions are required.
+353: Parameters  
+356: | \[in\] | instance    | The instance that the physical device belongs to.     |
+357: | \[in\] | device      | The physical device that the queue family belongs to. |
+358: | \[in\] | queuefamily | The index of the queue family to query.               |
+362: Returns  
+363: `GLFW_TRUE` if the queue family supports presentation, or `GLFW_FALSE` otherwise.
+367: Errors  
+368: Possible errors include GLFW_NOT_INITIALIZED, GLFW_API_UNAVAILABLE and GLFW_PLATFORM_ERROR.
+372: Remarks  
+373: **macOS:** This function currently always returns `GLFW_TRUE`, as the `VK_MVK_macos_surface` and `VK_EXT_metal_surface` extensions do not provide a `vkGetPhysicalDevice*PresentationSupport` type function.
+377: Thread safety  
+378: This function may be called from any thread. For synchronization details of Vulkan objects, see the Vulkan specification.
+382: See also  
+383: Querying for Vulkan presentation support
+387: Since  
+388: Added in version 3.2.
+396: ## [◆ ](#ga1a24536bec3f80b08ead18e28e6ae965)glfwCreateWindowSurface()
+404: | VkResult glfwCreateWindowSurface | ( | VkInstance  | *instance*, |
+405: |  |  | GLFWwindow \*  | *window*, |
+406: |  |  | const VkAllocationCallbacks \*  | *allocator*, |
+407: |  |  | VkSurfaceKHR \*  | *surface*  |
+408: |  | ) |  |  |
+414: This function creates a Vulkan surface for the specified window.
+416: If the Vulkan loader or at least one minimally functional ICD were not found, this function returns `VK_ERROR_INITIALIZATION_FAILED` and generates a GLFW_API_UNAVAILABLE error. Call glfwVulkanSupported to check whether Vulkan is at least minimally available.
+418: If the required window surface creation instance extensions are not available or if the specified instance was not created with these extensions enabled, this function returns `VK_ERROR_EXTENSION_NOT_PRESENT` and generates a GLFW_API_UNAVAILABLE error. Call glfwGetRequiredInstanceExtensions to check what instance extensions are required.
+420: The window surface cannot be shared with another API so the window must have been created with the client api hint set to `GLFW_NO_API` otherwise it generates a GLFW_INVALID_VALUE error and returns `VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`.
+422: The window surface must be destroyed before the specified Vulkan instance. It is the responsibility of the caller to destroy the window surface. GLFW does not destroy it for you. Call `vkDestroySurfaceKHR` to destroy the surface.
+424: Parameters  
+427: | \[in\] | instance | The Vulkan instance to create the surface in. |
+428: | \[in\] | window | The window to create the surface for. |
+429: | \[in\] | allocator | The allocator to use, or `NULL` to use the default allocator. |
+430: | \[out\] | surface | Where to store the handle of the surface. This is set to `VK_NULL_HANDLE` if an error occurred. |
+434: Returns  
+435: `VK_SUCCESS` if successful, or a Vulkan error code if an error occurred.
+439: Errors  
+440: Possible errors include GLFW_NOT_INITIALIZED, GLFW_API_UNAVAILABLE, GLFW_PLATFORM_ERROR and GLFW_INVALID_VALUE
+444: Remarks  
+445: If an error occurs before the creation call is made, GLFW returns the Vulkan error code most appropriate for the error. Appropriate use of glfwVulkanSupported and glfwGetRequiredInstanceExtensions should eliminate almost all occurrences of these errors.
+447: **macOS:** GLFW prefers the `VK_EXT_metal_surface` extension, with the `VK_MVK_macos_surface` extension as a fallback. The name of the selected extension, if any, is included in the array returned by glfwGetRequiredInstanceExtensions.
+449: **macOS:** This function creates and sets a `CAMetalLayer` instance for the window content view, which is required for MoltenVK to function.
+451: **X11:** By default GLFW prefers the `VK_KHR_xcb_surface` extension, with the `VK_KHR_xlib_surface` extension as a fallback. You can make `VK_KHR_xlib_surface` the preferred extension by setting the GLFW_X11_XCB_VULKAN_SURFACE init hint. The name of the selected extension, if any, is included in the array returned by glfwGetRequiredInstanceExtensions.
+455: Thread safety  
+456: This function may be called from any thread. For synchronization details of Vulkan objects, see the Vulkan specification.
+460: See also  
+461: Creating a Vulkan window surface
+463: glfwGetRequiredInstanceExtensions
+467: Since  
+468: Added in version 3.2.

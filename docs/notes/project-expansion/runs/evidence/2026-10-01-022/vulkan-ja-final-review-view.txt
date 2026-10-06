@@ -1,0 +1,154 @@
+1: ---
+2: title: "Vulkan サポートリファレンス"
+3: description: "GLFW 3.5.1 Vulkan サポートリファレンス"
+4: ---
+6: # Vulkan サポートリファレンス
+10: ## 説明
+12: これは Vulkan 関連の関数と型のリファレンスドキュメントです。作業目的に沿った情報については、Vulkan ガイドを参照してください。
+21:  型定義
+24: typedef void(* 
+25: GLFWvkproc) (void)
+29: Vulkan API 関数ポインター型。
+45:  関数
+48: int 
+49: glfwVulkanSupported (void)
+53: Vulkan ローダーと ICD が見つかったかどうかを返します。
+60: const char ** 
+61: glfwGetRequiredInstanceExtensions (uint32_t *count)
+65: GLFW が必要とする Vulkan インスタンス拡張を返します。
+72: GLFWvkproc 
+73: glfwGetInstanceProcAddress (VkInstance instance, const char *procname)
+77: 指定された Vulkan インスタンス関数のアドレスを返します。
+84: int 
+85: glfwGetPhysicalDevicePresentationSupport (VkInstance instance, VkPhysicalDevice device, uint32_t queuefamily)
+89: 指定されたキューファミリーがイメージを表示できるかどうかを返します。
+96: VkResult 
+97: glfwCreateWindowSurface (VkInstance instance, GLFWwindow *window, const VkAllocationCallbacks *allocator, VkSurfaceKHR *surface)
+101: 指定されたウィンドウ用の Vulkan サーフェスを作成します。
+110: ## 型定義の詳細
+114: ## [◆ ](#ga70c01918dc9d233a4fbe0681a43018af)GLFWvkproc
+122: | typedef void(\* GLFWvkproc) (void) |
+128: 通常のポインターからのキャストを強制せずに Vulkan API 関数ポインターを返すために使用する、汎用関数ポインターです。
+130: 関連項目  
+131: Vulkan 関数ポインターの照会
+133: glfwGetInstanceProcAddress
+137: 導入バージョン  
+138: バージョン 3.2 で追加されました。
+144: ## 関数の詳細
+148: ## [◆ ](#ga2e7f30931e02464b5bc8d0d4b6f9fe2b)glfwVulkanSupported()
+156: | int glfwVulkanSupported | (   | void  |     | )   |     |
+162: この関数は、Vulkan ローダーと、最低限機能するいずれかの ICD が見つかったかどうかを返します。
+164: Vulkan ローダーや ICD が利用可能であっても、それだけではサーフェス作成やインスタンス作成が可能であるとは保証されません。Vulkan サーフェス作成に必要な拡張が利用可能かを確認するには glfwGetRequiredInstanceExtensions を、物理デバイスのキューファミリーがイメージ表示をサポートするかを確認するには glfwGetPhysicalDevicePresentationSupport を呼び出してください。
+166: 戻り値  
+167: Vulkan が最低限利用可能な場合は `GLFW_TRUE`、それ以外の場合は `GLFW_FALSE`。
+171: エラー  
+172: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+176: スレッドセーフ性  
+177: この関数は、どのスレッドからでも呼び出せます。
+181: 関連項目  
+182: Vulkan サポートの照会
+186: 導入バージョン  
+187: バージョン 3.2 で追加されました。
+195: ## [◆ ](#ga99ad342d82f4a3421e2864978cb6d1d6)glfwGetRequiredInstanceExtensions()
+203: | const char \*\* glfwGetRequiredInstanceExtensions | ( | uint32_t \*  | *count* | ) |  |
+209: この関数は、GLFW ウィンドウ用の Vulkan サーフェスを作成するために GLFW が必要とする Vulkan インスタンス拡張名の配列を返します。成功した場合、リストには必ず `VK_KHR_surface` が含まれます。そのため、追加の拡張が不要であれば、このリストを `VkInstanceCreateInfo` 構造体へ直接渡せます。
+211: マシン上で Vulkan が利用できない場合、この関数は `NULL` を返し、GLFW_API_UNAVAILABLE エラーを生成します。Vulkan が最低限利用可能かを確認するには、glfwVulkanSupported を呼び出してください。
+213: Vulkan は利用可能でも、ウィンドウサーフェス作成を可能にする拡張の組み合わせが見つからない場合、この関数は `NULL` を返します。その場合でも、オフスクリーンレンダリングや計算処理には Vulkan を使用できます。
+215: 引数  
+218: | \[out\] | count | 戻り値の配列に含まれる拡張数を格納する場所。エラーが発生した場合は 0 に設定されます。 |
+222: 戻り値  
+223: ASCII エンコードされた拡張名の配列。エラーが発生した場合は `NULL`。
+227: エラー  
+228: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_API_UNAVAILABLE があります。
+232: 備考  
+233: 将来の GLFW バージョンでは、追加の拡張が必要になる可能性があります。`VkInstanceCreateInfo` 構造体で同じ拡張を複数回指定するとエラーになるため、有効化したい拡張が戻り値の配列にすでに含まれていないか確認してください。
+237: ポインターの有効期間  
+238: 戻り値の配列は GLFW によって確保および解放されます。自分で解放してはいけません。ライブラリが終了するまでのみ有効であることが保証されます。
+242: スレッドセーフ性  
+243: この関数は、どのスレッドからでも呼び出せます。
+247: 関連項目  
+248: 必要な Vulkan 拡張の照会
+250: glfwCreateWindowSurface
+254: 導入バージョン  
+255: バージョン 3.2 で追加されました。
+263: ## [◆ ](#gadf228fac94c5fd8f12423ec9af9ff1e9)glfwGetInstanceProcAddress()
+271: | GLFWvkproc glfwGetInstanceProcAddress | ( | VkInstance  | *instance*, |
+272: |  |  | const char \*  | *procname*  |
+273: |  | ) |  |  |
+279: この関数は、指定されたインスタンスについて、指定された Vulkan コア関数または拡張関数のアドレスを返します。instance が `NULL` の場合、少なくとも次の関数を含む、Vulkan ローダーがエクスポートする任意の関数を返せます。
+281: - `vkEnumerateInstanceExtensionProperties`
+282: - `vkEnumerateInstanceLayerProperties`
+283: - `vkCreateInstance`
+284: - `vkGetInstanceProcAddr`
+286: マシン上で Vulkan が利用できない場合、この関数は `NULL` を返し、GLFW_API_UNAVAILABLE エラーを生成します。Vulkan が最低限利用可能かを確認するには、glfwVulkanSupported を呼び出してください。
+288: この関数は、プラットフォーム固有の Vulkan ローダー照会をフォールバックとして使用して `vkGetInstanceProcAddr` を呼び出すことと同等です。
+290: 引数  
+293: | \[in\] | instance | 問い合わせる Vulkan インスタンス。インスタンス作成関連の関数を取得する場合は `NULL`。 |
+294: | \[in\] | procname | ASCII エンコードされた関数名。 |
+298: 戻り値  
+299: 関数のアドレス。エラーが発生した場合は `NULL`。
+303: エラー  
+304: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_API_UNAVAILABLE があります。
+308: ポインターの有効期間  
+309: 戻り値の関数ポインターは、ライブラリが終了するまで有効です。
+313: スレッドセーフ性  
+314: この関数は、どのスレッドからでも呼び出せます。
+318: 関連項目  
+319: Vulkan 関数ポインターの照会
+323: 導入バージョン  
+324: バージョン 3.2 で追加されました。
+332: ## [◆ ](#gaff3823355cdd7e2f3f9f4d9ea9518d92)glfwGetPhysicalDevicePresentationSupport()
+340: | int glfwGetPhysicalDevicePresentationSupport | ( | VkInstance  | *instance*, |
+341: |  |  | VkPhysicalDevice  | *device*, |
+342: |  |  | uint32_t  | *queuefamily*  |
+343: |  | ) |  |  |
+349: この関数は、指定された物理デバイスの指定されたキューファミリーが、GLFW のビルド対象プラットフォームへの表示をサポートするかどうかを返します。
+351: マシン上で Vulkan または必要なウィンドウサーフェス作成用インスタンス拡張が利用できない場合、あるいは指定されたインスタンスが必要な拡張を有効にして作成されていない場合、この関数は `GLFW_FALSE` を返し、GLFW_API_UNAVAILABLE エラーを生成します。Vulkan が最低限利用可能かを確認するには glfwVulkanSupported を、必要なインスタンス拡張を確認するには glfwGetRequiredInstanceExtensions を呼び出してください。
+353: 引数  
+356: | \[in\] | instance    | 物理デバイスが属するインスタンス。 |
+357: | \[in\] | device      | キューファミリーが属する物理デバイス。 |
+358: | \[in\] | queuefamily | 問い合わせるキューファミリーのインデックス。 |
+362: 戻り値  
+363: キューファミリーが表示をサポートする場合は `GLFW_TRUE`、それ以外の場合は `GLFW_FALSE`。
+367: エラー  
+368: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_API_UNAVAILABLE、GLFW_PLATFORM_ERROR があります。
+372: 備考  
+373: **macOS:** `VK_MVK_macos_surface` および `VK_EXT_metal_surface` 拡張は `vkGetPhysicalDevice*PresentationSupport` 型の関数を提供しないため、現在この関数は常に `GLFW_TRUE` を返します。
+377: スレッドセーフ性  
+378: この関数は、どのスレッドからでも呼び出せます。Vulkan オブジェクトの同期の詳細については、Vulkan 仕様を参照してください。
+382: 関連項目  
+383: Vulkan 表示サポートの照会
+387: 導入バージョン  
+388: バージョン 3.2 で追加されました。
+396: ## [◆ ](#ga1a24536bec3f80b08ead18e28e6ae965)glfwCreateWindowSurface()
+404: | VkResult glfwCreateWindowSurface | ( | VkInstance  | *instance*, |
+405: |  |  | GLFWwindow \*  | *window*, |
+406: |  |  | const VkAllocationCallbacks \*  | *allocator*, |
+407: |  |  | VkSurfaceKHR \*  | *surface*  |
+408: |  | ) |  |  |
+414: この関数は、指定されたウィンドウ用の Vulkan サーフェスを作成します。
+416: Vulkan ローダー、または最低限機能する ICD が 1 つも見つからない場合、この関数は `VK_ERROR_INITIALIZATION_FAILED` を返し、GLFW_API_UNAVAILABLE エラーを生成します。Vulkan が最低限利用可能かを確認するには、glfwVulkanSupported を呼び出してください。
+418: 必要なウィンドウサーフェス作成用インスタンス拡張が利用できない場合、または指定されたインスタンスがそれらの拡張を有効にして作成されていない場合、この関数は `VK_ERROR_EXTENSION_NOT_PRESENT` を返し、GLFW_API_UNAVAILABLE エラーを生成します。必要なインスタンス拡張を確認するには、glfwGetRequiredInstanceExtensions を呼び出してください。
+420: ウィンドウサーフェスは別の API と共有できないため、ウィンドウはクライアント API ヒントを `GLFW_NO_API` に設定して作成されていなければなりません。そうでない場合、GLFW_INVALID_VALUE エラーを生成し、`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR` を返します。
+422: ウィンドウサーフェスは、指定された Vulkan インスタンスより先に破棄しなければなりません。ウィンドウサーフェスを破棄する責任は呼び出し側にあります。GLFW は代わりに破棄しません。サーフェスを破棄するには `vkDestroySurfaceKHR` を呼び出してください。
+424: 引数  
+427: | \[in\] | instance | サーフェスを作成する Vulkan インスタンス。 |
+428: | \[in\] | window | サーフェスを作成する対象のウィンドウ。 |
+429: | \[in\] | allocator | 使用するアロケーター。デフォルトのアロケーターを使用する場合は `NULL`。 |
+430: | \[out\] | surface | サーフェスのハンドルを格納する場所。エラーが発生した場合は `VK_NULL_HANDLE` に設定されます。 |
+434: 戻り値  
+435: 成功した場合は `VK_SUCCESS`。エラーが発生した場合は Vulkan エラーコード。
+439: エラー  
+440: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_API_UNAVAILABLE、GLFW_PLATFORM_ERROR、GLFW_INVALID_VALUE があります。
+444: 備考  
+445: 作成呼び出しが行われる前にエラーが発生した場合、GLFW はそのエラーに最も適した Vulkan エラーコードを返します。glfwVulkanSupported と glfwGetRequiredInstanceExtensions を適切に使用すれば、これらのエラーのほぼすべてを回避できます。
+447: **macOS:** GLFW は `VK_EXT_metal_surface` 拡張を優先し、`VK_MVK_macos_surface` 拡張をフォールバックとして使用します。拡張が選択された場合、その名前は glfwGetRequiredInstanceExtensions が返す配列に含まれます。
+449: **macOS:** この関数は、MoltenVK の動作に必要な `CAMetalLayer` インスタンスを作成し、ウィンドウのコンテンツビューに設定します。
+451: **X11:** デフォルトでは、GLFW は `VK_KHR_xcb_surface` 拡張を優先し、`VK_KHR_xlib_surface` 拡張をフォールバックとして使用します。GLFW_X11_XCB_VULKAN_SURFACE 初期化ヒントを設定すると、`VK_KHR_xlib_surface` を優先拡張にできます。拡張が選択された場合、その名前は glfwGetRequiredInstanceExtensions が返す配列に含まれます。
+455: スレッドセーフ性  
+456: この関数は、どのスレッドからでも呼び出せます。Vulkan オブジェクトの同期の詳細については、Vulkan 仕様を参照してください。
+460: 関連項目  
+461: Vulkan ウィンドウサーフェスの作成
+463: glfwGetRequiredInstanceExtensions
+467: 導入バージョン  
+468: バージョン 3.2 で追加されました。

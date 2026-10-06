@@ -1,0 +1,442 @@
+1: ---
+2: title: "Native access"
+3: description: "GLFW 3.5.1 Native access"
+4: ---
+8: ## Description
+10: **By using the native access functions you assert that you know what you're doing and how to fix problems caused by using them. If you don't, you shouldn't be using them.**
+12: Before the inclusion of glfw3native.h, you may define zero or more window system API macro and zero or more context creation API macros.
+14: The chosen backends must match those the library was compiled for. Failure to do this will cause a link-time error.
+16: The available window API macros are:
+18: - `GLFW_EXPOSE_NATIVE_WIN32`
+19: - `GLFW_EXPOSE_NATIVE_COCOA`
+20: - `GLFW_EXPOSE_NATIVE_X11`
+21: - `GLFW_EXPOSE_NATIVE_WAYLAND`
+23: The available context API macros are:
+25: - `GLFW_EXPOSE_NATIVE_WGL`
+26: - `GLFW_EXPOSE_NATIVE_NSGL`
+27: - `GLFW_EXPOSE_NATIVE_GLX`
+28: - `GLFW_EXPOSE_NATIVE_EGL`
+29: - `GLFW_EXPOSE_NATIVE_OSMESA`
+31: These macros select which of the native access functions that are declared and which platform-specific headers to include. It is then up your (by definition platform-specific) code to handle which of these should be defined.
+33: If you do not want the platform-specific headers to be included, define `GLFW_NATIVE_INCLUDE_NONE` before including the glfw3native.h header.
+39: \#define GLFW_EXPOSE_NATIVE_WIN32
+45: \#define GLFW_EXPOSE_NATIVE_WGL
+51: \#define GLFW_NATIVE_INCLUDE_NONE
+57: \#include \<GLFW/glfw3native.h\>
+65: [glfw3native.h](https://www.glfw.org/docs/3.5.1/glfw3native_8h.html)
+71: The header of the native access functions.
+86:  Functions
+89: const char * 
+90: glfwGetWin32Adapter (GLFWmonitor *monitor)
+94: Returns the adapter device name of the specified monitor.
+101: const char * 
+102: glfwGetWin32Monitor (GLFWmonitor *monitor)
+106: Returns the display device name of the specified monitor.
+113: HWND 
+114: glfwGetWin32Window (GLFWwindow *window)
+118: Returns the HWND of the specified window.
+125: HGLRC 
+126: glfwGetWGLContext (GLFWwindow *window)
+130: Returns the HGLRC of the specified window.
+137: CGDirectDisplayID 
+138: glfwGetCocoaMonitor (GLFWmonitor *monitor)
+142: Returns the CGDirectDisplayID of the specified monitor.
+149: id 
+150: glfwGetCocoaWindow (GLFWwindow *window)
+154: Returns the NSWindow of the specified window.
+161: id 
+162: glfwGetCocoaView (GLFWwindow *window)
+166: Returns the NSView of the specified window.
+173: id 
+174: glfwGetNSGLContext (GLFWwindow *window)
+178: Returns the NSOpenGLContext of the specified window.
+185: Display * 
+186: glfwGetX11Display (void)
+190: Returns the Display used by GLFW.
+197: RRCrtc 
+198: glfwGetX11Adapter (GLFWmonitor *monitor)
+202: Returns the RRCrtc of the specified monitor.
+209: RROutput 
+210: glfwGetX11Monitor (GLFWmonitor *monitor)
+214: Returns the RROutput of the specified monitor.
+221: Window 
+222: glfwGetX11Window (GLFWwindow *window)
+226: Returns the Window of the specified window.
+233: void 
+234: glfwSetX11SelectionString (const char *string)
+238: Sets the current primary selection to the specified string.
+245: const char * 
+246: glfwGetX11SelectionString (void)
+250: Returns the contents of the current primary selection as a string.
+257: GLXContext 
+258: glfwGetGLXContext (GLFWwindow *window)
+262: Returns the GLXContext of the specified window.
+269: GLXWindow 
+270: glfwGetGLXWindow (GLFWwindow *window)
+274: Returns the GLXWindow of the specified window.
+281: int 
+282: glfwGetGLXFBConfig (GLFWwindow *window, GLXFBConfig *config)
+286: Retrieves the GLXFBConfig of the specified window's GLXWindow.
+293: struct wl_display * 
+294: glfwGetWaylandDisplay (void)
+298: Returns the struct wl_display* used by GLFW.
+305: struct wl_output * 
+306: glfwGetWaylandMonitor (GLFWmonitor *monitor)
+310: Returns the struct wl_output* of the specified monitor.
+317: struct wl_surface * 
+318: glfwGetWaylandWindow (GLFWwindow *window)
+322: Returns the main struct wl_surface* of the specified window.
+329: EGLDisplay 
+330: glfwGetEGLDisplay (void)
+334: Returns the EGLDisplay used by GLFW.
+341: EGLContext 
+342: glfwGetEGLContext (GLFWwindow *window)
+346: Returns the EGLContext of the specified window.
+353: EGLSurface 
+354: glfwGetEGLSurface (GLFWwindow *window)
+358: Returns the EGLSurface of the specified window.
+365: int 
+366: glfwGetEGLConfig (GLFWwindow *window, EGLConfig *config)
+370: Retrieves the EGLConfig of the specified window's EGLSurface.
+377: int 
+378: glfwGetOSMesaColorBuffer (GLFWwindow *window, int *width, int *height, int *format, void **buffer)
+382: Retrieves the color buffer associated with the specified window.
+389: int 
+390: glfwGetOSMesaDepthBuffer (GLFWwindow *window, int *width, int *height, int *bytesPerValue, void **buffer)
+394: Retrieves the depth buffer associated with the specified window.
+401: OSMesaContext 
+402: glfwGetOSMesaContext (GLFWwindow *window)
+406: Returns the OSMesaContext of the specified window.
+415: ## Function Documentation
+419: ## [◆ ](#gad4d3e9242536c0ba6be88a98f4c73a41)glfwGetWin32Adapter()
+427: | const char \* glfwGetWin32Adapter | ( | GLFWmonitor \*  | *monitor* | ) |  |
+433: Returns  
+434: The UTF-8 encoded adapter device name (for example `\\.\DISPLAY1`) of the specified monitor, or `NULL` if an error occurred.
+438: Errors  
+439: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+443: Thread safety  
+444: This function may be called from any thread. Access is not synchronized.
+448: Since  
+449: Added in version 3.1.
+457: ## [◆ ](#gac845f7dbe4c1d7fdd682a3c6fdae6766)glfwGetWin32Monitor()
+465: | const char \* glfwGetWin32Monitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+471: Returns  
+472: The UTF-8 encoded display device name (for example `\\.\DISPLAY1\Monitor0`) of the specified monitor, or `NULL` if an error occurred.
+476: Errors  
+477: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+481: Thread safety  
+482: This function may be called from any thread. Access is not synchronized.
+486: Since  
+487: Added in version 3.1.
+495: ## [◆ ](#gafe5079aa79038b0079fc09d5f0a8e667)glfwGetWin32Window()
+503: | HWND glfwGetWin32Window | ( | GLFWwindow \*  | *window* | ) |  |
+509: Returns  
+510: The `HWND` of the specified window, or `NULL` if an error occurred.
+514: Errors  
+515: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+519: Remarks  
+520: The `HDC` associated with the window can be queried with the [GetDC](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc) function.
+526: HDC dc = GetDC(glfwGetWin32Window(window));
+534: [glfwGetWin32Window](/docs/glfw/v3-5-1/en/04-reference/08-native-access/#gafe5079aa79038b0079fc09d5f0a8e667)
+540: HWND glfwGetWin32Window(GLFWwindow \*window)
+546: Returns the HWND of the specified window.
+554: This DC is private and does not need to be released.
+558: Thread safety  
+559: This function may be called from any thread. Access is not synchronized.
+563: Since  
+564: Added in version 3.0.
+572: ## [◆ ](#gadc4010d91d9cc1134d040eeb1202a143)glfwGetWGLContext()
+580: | HGLRC glfwGetWGLContext | ( | GLFWwindow \*  | *window* | ) |  |
+586: Returns  
+587: The `HGLRC` of the specified window, or `NULL` if an error occurred.
+591: Errors  
+592: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_UNAVAILABLE and GLFW_NO_WINDOW_CONTEXT.
+596: Remarks  
+597: The `HDC` associated with the window can be queried with the [GetDC](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc) function.
+603: HDC dc = GetDC(glfwGetWin32Window(window));
+609: This DC is private and does not need to be released.
+613: Thread safety  
+614: This function may be called from any thread. Access is not synchronized.
+618: Since  
+619: Added in version 3.0.
+627: ## [◆ ](#gaf22f429aec4b1aab316142d66d9be3e6)glfwGetCocoaMonitor()
+635: | CGDirectDisplayID glfwGetCocoaMonitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+641: Returns  
+642: The `CGDirectDisplayID` of the specified monitor, or `kCGNullDirectDisplay` if an error occurred.
+646: Errors  
+647: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+651: Thread safety  
+652: This function may be called from any thread. Access is not synchronized.
+656: Since  
+657: Added in version 3.1.
+665: ## [◆ ](#gac3ed9d495d0c2bb9652de5a50c648715)glfwGetCocoaWindow()
+673: | id glfwGetCocoaWindow | ( | GLFWwindow \*  | *window* | ) |  |
+679: Returns  
+680: The `NSWindow` of the specified window, or `nil` if an error occurred.
+684: Errors  
+685: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+689: Thread safety  
+690: This function may be called from any thread. Access is not synchronized.
+694: Since  
+695: Added in version 3.0.
+703: ## [◆ ](#ga7274fb6595894e880fc95dc63156e9b1)glfwGetCocoaView()
+711: | id glfwGetCocoaView | ( | GLFWwindow \*  | *window* | ) |  |
+717: Returns  
+718: The `NSView` of the specified window, or `nil` if an error occurred.
+722: Errors  
+723: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+727: Thread safety  
+728: This function may be called from any thread. Access is not synchronized.
+732: Since  
+733: Added in version 3.4.
+741: ## [◆ ](#ga559e002e3cd63c979881770cd4dc63bc)glfwGetNSGLContext()
+749: | id glfwGetNSGLContext | ( | GLFWwindow \*  | *window* | ) |  |
+755: Returns  
+756: The `NSOpenGLContext` of the specified window, or `nil` if an error occurred.
+760: Errors  
+761: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_UNAVAILABLE and GLFW_NO_WINDOW_CONTEXT.
+765: Thread safety  
+766: This function may be called from any thread. Access is not synchronized.
+770: Since  
+771: Added in version 3.0.
+779: ## [◆ ](#ga6e7822385cc8a1cc3b18f60352830189)glfwGetX11Display()
+787: | Display \* glfwGetX11Display | (   | void  |     | )   |     |
+793: Returns  
+794: The `Display` used by GLFW, or `NULL` if an error occurred.
+798: Errors  
+799: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+803: Thread safety  
+804: This function may be called from any thread. Access is not synchronized.
+808: Since  
+809: Added in version 3.0.
+817: ## [◆ ](#ga088fbfa80f50569402b41be71ad66e40)glfwGetX11Adapter()
+825: | RRCrtc glfwGetX11Adapter | ( | GLFWmonitor \*  | *monitor* | ) |  |
+831: Returns  
+832: The `RRCrtc` of the specified monitor, or `None` if an error occurred.
+836: Errors  
+837: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+841: Thread safety  
+842: This function may be called from any thread. Access is not synchronized.
+846: Since  
+847: Added in version 3.1.
+855: ## [◆ ](#gab2f8cc043905e9fa9b12bfdbbcfe874c)glfwGetX11Monitor()
+863: | RROutput glfwGetX11Monitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+869: Returns  
+870: The `RROutput` of the specified monitor, or `None` if an error occurred.
+874: Errors  
+875: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+879: Thread safety  
+880: This function may be called from any thread. Access is not synchronized.
+884: Since  
+885: Added in version 3.1.
+893: ## [◆ ](#ga90ca676322740842db446999a1b1f21d)glfwGetX11Window()
+901: | Window glfwGetX11Window | ( | GLFWwindow \*  | *window* | ) |  |
+907: Returns  
+908: The `Window` of the specified window, or `None` if an error occurred.
+912: Errors  
+913: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+917: Thread safety  
+918: This function may be called from any thread. Access is not synchronized.
+922: Since  
+923: Added in version 3.0.
+931: ## [◆ ](#ga55f879ab02d93367f966186b6f0133f7)glfwSetX11SelectionString()
+939: | void glfwSetX11SelectionString | (   | const char \*  | *string* | )   |     |
+945: Parameters  
+948: | \[in\] | string | A UTF-8 encoded string. |
+952: Errors  
+953: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_UNAVAILABLE and GLFW_PLATFORM_ERROR.
+957: Pointer lifetime  
+958: The specified string is copied before this function returns.
+962: Thread safety  
+963: This function must only be called from the main thread.
+967: See also  
+968: Clipboard input and output
+970: glfwGetX11SelectionString
+972: glfwSetClipboardString
+976: Since  
+977: Added in version 3.3.
+985: ## [◆ ](#gae084ef64dc0db140b455b1427256d3f7)glfwGetX11SelectionString()
+993: | const char \* glfwGetX11SelectionString | (   | void  |     | )   |     |
+999: If the selection is empty or if its contents cannot be converted, `NULL` is returned and a GLFW_FORMAT_UNAVAILABLE error is generated.
+1001: Returns  
+1002: The contents of the selection as a UTF-8 encoded string, or `NULL` if an error occurred.
+1006: Errors  
+1007: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_UNAVAILABLE and GLFW_PLATFORM_ERROR.
+1011: Pointer lifetime  
+1012: The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the next call to glfwGetX11SelectionString or glfwSetX11SelectionString, or until the library is terminated.
+1016: Thread safety  
+1017: This function must only be called from the main thread.
+1021: See also  
+1022: Clipboard input and output
+1024: glfwSetX11SelectionString
+1026: glfwGetClipboardString
+1030: Since  
+1031: Added in version 3.3.
+1039: ## [◆ ](#ga62d884114b0abfcdc2930e89f20867e2)glfwGetGLXContext()
+1047: | GLXContext glfwGetGLXContext | ( | GLFWwindow \*  | *window* | ) |  |
+1053: Returns  
+1054: The `GLXContext` of the specified window, or `NULL` if an error occurred.
+1058: Errors  
+1059: Possible errors include GLFW_NOT_INITIALIZED, GLFW_NO_WINDOW_CONTEXT and GLFW_PLATFORM_UNAVAILABLE.
+1063: Thread safety  
+1064: This function may be called from any thread. Access is not synchronized.
+1068: Since  
+1069: Added in version 3.0.
+1077: ## [◆ ](#ga1ed27b8766e859a21381e8f8ce18d049)glfwGetGLXWindow()
+1085: | GLXWindow glfwGetGLXWindow | ( | GLFWwindow \*  | *window* | ) |  |
+1091: Returns  
+1092: The `GLXWindow` of the specified window, or `None` if an error occurred.
+1096: Errors  
+1097: Possible errors include GLFW_NOT_INITIALIZED, GLFW_NO_WINDOW_CONTEXT and GLFW_PLATFORM_UNAVAILABLE.
+1101: Thread safety  
+1102: This function may be called from any thread. Access is not synchronized.
+1106: Since  
+1107: Added in version 3.2.
+1115: ## [◆ ](#gada0e83394c2258396bff9ba6b73abf98)glfwGetGLXFBConfig()
+1123: | int glfwGetGLXFBConfig | ( | GLFWwindow \*  | *window*, |
+1124: |  |  | GLXFBConfig \*  | *config*  |
+1125: |  | ) |  |  |
+1131: Parameters  
+1134: | \[in\]  | window | The window whose `GLXWindow` to query.                     |
+1135: | \[out\] | config | The `GLXFBConfig` of the window `GLXWindow`, if available. |
+1139: Returns  
+1140: `GLFW_TRUE` if successful, or `GLFW_FALSE` if an error occurred.
+1144: Errors  
+1145: Possible errors include GLFW_NOT_INITIALIZED, GLFW_NO_WINDOW_CONTEXT and GLFW_PLATFORM_UNAVAILABLE.
+1149: Remarks  
+1150: `GLXFBConfig` is an opaque type. Unlike other GLFW functions, the `config` out parameter is not cleared on error, as core GLX does not define any invalid value.
+1154: Thread safety  
+1155: This function may be called from any thread. Access is not synchronized.
+1159: Since  
+1160: Added in version 3.5
+1168: ## [◆ ](#gacbe11f93ce20621de82989bbba94e62a)glfwGetWaylandDisplay()
+1176: | struct wl_display \* glfwGetWaylandDisplay | (   | void  |     | )   |     |
+1182: Returns  
+1183: The `struct wl_display*` used by GLFW, or `NULL` if an error occurred.
+1187: Errors  
+1188: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+1192: Thread safety  
+1193: This function may be called from any thread. Access is not synchronized.
+1197: Since  
+1198: Added in version 3.2.
+1206: ## [◆ ](#ga4f16066bd4c59e2f99418adfcb43dd16)glfwGetWaylandMonitor()
+1214: | struct wl_output \* glfwGetWaylandMonitor | ( | GLFWmonitor \*  | *monitor* | ) |  |
+1220: Returns  
+1221: The `struct wl_output*` of the specified monitor, or `NULL` if an error occurred.
+1225: Errors  
+1226: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+1230: Thread safety  
+1231: This function may be called from any thread. Access is not synchronized.
+1235: Since  
+1236: Added in version 3.2.
+1244: ## [◆ ](#ga5c597f2841229d9626f0811cca41ceb3)glfwGetWaylandWindow()
+1252: | struct wl_surface \* glfwGetWaylandWindow | ( | GLFWwindow \*  | *window* | ) |  |
+1258: Returns  
+1259: The main `struct wl_surface*` of the specified window, or `NULL` if an error occurred.
+1263: Errors  
+1264: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_UNAVAILABLE.
+1268: Thread safety  
+1269: This function may be called from any thread. Access is not synchronized.
+1273: Since  
+1274: Added in version 3.2.
+1282: ## [◆ ](#ga1cd8d973f47aacb5532d368147cc3138)glfwGetEGLDisplay()
+1290: | EGLDisplay glfwGetEGLDisplay | (   | void  |     | )   |     |
+1296: Returns  
+1297: The `EGLDisplay` used by GLFW, or `EGL_NO_DISPLAY` if an error occurred.
+1301: Errors  
+1302: Possible errors include GLFW_NOT_INITIALIZED.
+1306: Remarks  
+1307: Because EGL is initialized on demand, this function will return `EGL_NO_DISPLAY` until the first context has been created via EGL.
+1311: Thread safety  
+1312: This function may be called from any thread. Access is not synchronized.
+1316: Since  
+1317: Added in version 3.0.
+1325: ## [◆ ](#ga671c5072becd085f4ab5771a9c8efcf1)glfwGetEGLContext()
+1333: | EGLContext glfwGetEGLContext | ( | GLFWwindow \*  | *window* | ) |  |
+1339: Returns  
+1340: The `EGLContext` of the specified window, or `EGL_NO_CONTEXT` if an error occurred.
+1344: Errors  
+1345: Possible errors include GLFW_NOT_INITIALIZED and GLFW_NO_WINDOW_CONTEXT.
+1349: Thread safety  
+1350: This function may be called from any thread. Access is not synchronized.
+1354: Since  
+1355: Added in version 3.0.
+1363: ## [◆ ](#ga2199b36117a6a695fec8441d8052eee6)glfwGetEGLSurface()
+1371: | EGLSurface glfwGetEGLSurface | ( | GLFWwindow \*  | *window* | ) |  |
+1377: Returns  
+1378: The `EGLSurface` of the specified window, or `EGL_NO_SURFACE` if an error occurred.
+1382: Errors  
+1383: Possible errors include GLFW_NOT_INITIALIZED and GLFW_NO_WINDOW_CONTEXT.
+1387: Thread safety  
+1388: This function may be called from any thread. Access is not synchronized.
+1392: Since  
+1393: Added in version 3.0.
+1401: ## [◆ ](#gaada9744377463b229b4817eb96384e8c)glfwGetEGLConfig()
+1409: | int glfwGetEGLConfig | ( | GLFWwindow \*  | *window*, |
+1410: |  |  | EGLConfig \*  | *config*  |
+1411: |  | ) |  |  |
+1417: Parameters  
+1420: | \[in\]  | window | The window whose `EGLSurface` to query.                   |
+1421: | \[out\] | config | The `EGLConfig` of the window `EGLSurface`, if available. |
+1425: Returns  
+1426: `GLFW_TRUE` if successful, or `GLFW_FALSE` if an error occurred.
+1430: Errors  
+1431: Possible errors include GLFW_NOT_INITIALIZED and GLFW_NO_WINDOW_CONTEXT.
+1435: Remarks  
+1436: `EGLConfig` is an opaque type. Unlike other GLFW functions, the `config` out parameter is not cleared on error, as core EGL does not define any invalid value.
+1440: Thread safety  
+1441: This function may be called from any thread. Access is not synchronized.
+1445: Since  
+1446: Added in version 3.5.
+1454: ## [◆ ](#ga3b36e3e3dcf308b776427b6bd73cc132)glfwGetOSMesaColorBuffer()
+1462: | int glfwGetOSMesaColorBuffer | ( | GLFWwindow \*  | *window*, |
+1463: |  |  | int \*  | *width*, |
+1464: |  |  | int \*  | *height*, |
+1465: |  |  | int \*  | *format*, |
+1466: |  |  | void \*\*  | *buffer*  |
+1467: |  | ) |  |  |
+1473: Parameters  
+1476: | \[in\] | window | The window whose color buffer to retrieve. |
+1477: | \[out\] | width | Where to store the width of the color buffer, or `NULL`. |
+1478: | \[out\] | height | Where to store the height of the color buffer, or `NULL`. |
+1479: | \[out\] | format | Where to store the OSMesa pixel format of the color buffer, or `NULL`. |
+1480: | \[out\] | buffer | Where to store the address of the color buffer, or `NULL`. |
+1484: Returns  
+1485: `GLFW_TRUE` if successful, or `GLFW_FALSE` if an error occurred.
+1489: Errors  
+1490: Possible errors include GLFW_NOT_INITIALIZED and GLFW_NO_WINDOW_CONTEXT.
+1494: Thread safety  
+1495: This function may be called from any thread. Access is not synchronized.
+1499: Since  
+1500: Added in version 3.3.
+1508: ## [◆ ](#ga6b64039ffc88a7a2f57f0956c0c75d53)glfwGetOSMesaDepthBuffer()
+1516: | int glfwGetOSMesaDepthBuffer | ( | GLFWwindow \*  | *window*, |
+1517: |  |  | int \*  | *width*, |
+1518: |  |  | int \*  | *height*, |
+1519: |  |  | int \*  | *bytesPerValue*, |
+1520: |  |  | void \*\*  | *buffer*  |
+1521: |  | ) |  |  |
+1527: Parameters  
+1530: | \[in\] | window | The window whose depth buffer to retrieve. |
+1531: | \[out\] | width | Where to store the width of the depth buffer, or `NULL`. |
+1532: | \[out\] | height | Where to store the height of the depth buffer, or `NULL`. |
+1533: | \[out\] | bytesPerValue | Where to store the number of bytes per depth buffer element, or `NULL`. |
+1534: | \[out\] | buffer | Where to store the address of the depth buffer, or `NULL`. |
+1538: Returns  
+1539: `GLFW_TRUE` if successful, or `GLFW_FALSE` if an error occurred.
+1543: Errors  
+1544: Possible errors include GLFW_NOT_INITIALIZED and GLFW_NO_WINDOW_CONTEXT.
+1548: Thread safety  
+1549: This function may be called from any thread. Access is not synchronized.
+1553: Since  
+1554: Added in version 3.3.
+1562: ## [◆ ](#ga9e47700080094eb569cb053afaa88773)glfwGetOSMesaContext()
+1570: | OSMesaContext glfwGetOSMesaContext | ( | GLFWwindow \*  | *window* | ) |  |
+1576: Returns  
+1577: The `OSMesaContext` of the specified window, or `NULL` if an error occurred.
+1581: Errors  
+1582: Possible errors include GLFW_NOT_INITIALIZED and GLFW_NO_WINDOW_CONTEXT.
+1586: Thread safety  
+1587: This function may be called from any thread. Access is not synchronized.
+1591: Since  
+1592: Added in version 3.3.
