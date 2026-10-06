@@ -1,0 +1,81 @@
+
+index.hbs
+index.hbs is the handlebars template that is used to render the book. The
+markdown files are processed to html and then injected in that template.
+If you want to change the layout or style of your book, chances are that you
+will have to modify this template a little bit. Here is what you need to know.
+Data
+A lot of data is exposed to the handlebars template with the “context”. In the
+handlebars template you can access this information by using
+
+Here is a list of the properties that are exposed:
+
+
+language Language of the book in the form en, as specified in book.toml (if not specified, defaults to en). To use in <html lang="{{ language }}"> for example.
+
+
+title Title used for the current page. This is identical to {{ chapter_title }} - {{ book_title }} unless book_title is not set in which case it just defaults to the chapter_title.
+
+
+book_title Title of the book, as specified in book.toml
+
+
+chapter_title Title of the current chapter, as listed in SUMMARY.md
+
+
+path Relative path to the original markdown file from the source
+directory
+
+
+content This is the rendered markdown.
+
+
+path_to_root This is a path containing exclusively ../’s that points
+to the root of the book from the current file. Since the original directory
+structure is maintained, it is useful to prepend relative links with this
+path_to_root.
+
+
+previous and next These are objects used for linking to the previous and next chapter. They contain the properties title and link of the corresponding chapter.
+
+
+chapters Is an array of dictionaries of the form
+
+containing all the chapters of the book. It is used for example to construct
+the table of contents (sidebar).
+
+
+Handlebars helpers
+In addition to the properties you can access, there are some handlebars helpers
+at your disposal.
+toc
+The toc helper is used like this
+
+and outputs something that looks like this, depending on the structure of your
+book
+
+If you would like to make a toc with another structure, you have access to the
+chapters property containing all the data. The only limitation at the moment
+is that you would have to do it with JavaScript instead of with a handlebars
+helper.
+
+resource
+The path to a static file.
+It implicitly includes path_to_root,
+and accounts for files that are renamed with a hash in their filename.
+
+fa
+mdBook includes a copy of Font Awesome Free’s
+MIT-licensed SVG files. It accepts three positional arguments:
+
+Type: one of “solid”, “regular”, and “brands” (light and duotone are not
+currently supported)
+Icon: anything chosen from the
+free icon set
+ID (optional): if included, an HTML ID attribute will be added to the
+icon’s wrapping <span> tag
+
+For example, this handlebars syntax will become this HTML:
+
+
+

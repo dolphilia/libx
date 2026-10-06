@@ -1,0 +1,14 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+const E='docs/notes/project-expansion/runs/evidence/2026-10-04-659', A='/private/tmp/libx-mdbook-astro-trial-655/apps/mdbook-trial', S='/private/tmp/libx-mdbook-trial-654/source/crates/mdbook-html/front-end/css';
+const {default:postcss}=await import('/private/tmp/libx-jq-footer-integration-20261004/node_modules/.pnpm/postcss@8.5.3/node_modules/postcss/lib/postcss.mjs');
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const boundary=JSON.parse(fs.readFileSync('docs/notes/project-expansion/runs/evidence/2026-10-04-651/MDBOOK_BOUNDARY.json'));
+for(const n of ['general.css','variables.css']){const b=fs.readFileSync(S+'/'+n);assert.equal(sha(b),boundary.records.find(x=>x.path==='crates/mdbook-html/front-end/css/'+n).sha256);fs.writeFileSync(E+'/'+n,b);}
+const g=postcss.parse(fs.readFileSync(S+'/general.css','utf8'));const mapped=[];
+g.walkRules(r=>{const ss=r.selectors.filter(s=>s.startsWith('.content ')&&s!=='.content main');if(!ss.length)return;const c=r.clone();c.selectors=ss.map(s=>s.replace(/^\.content\s+/,'.mdbook-guide '));mapped.push({original:ss,mapped:c.selectors,css:c.toString()});});
+const v=postcss.parse(fs.readFileSync(S+'/variables.css','utf8'));const palettes=[];
+for(const [selector,target] of [[':root','.mdbook-guide'],['.light, html:not(.js)','.mdbook-guide'],['.coal','html.dark .mdbook-guide']]){
+ const r=v.nodes.find(n=>n.type==='rule'&&n.selector===selector);assert(r,selector);const declarations=r.nodes.filter(n=>n.type==='decl'&&(selector===':root'?['--mono-font','--code-font-size'].includes(n.prop):/^--(quote-|warning-border|table-|blockquote-)/.test(n.prop)));assert(declarations.length);palettes.push({sourceSelector:selector,target,properties:declarations.map(n=>({name:n.prop,value:n.value})),css:target+' {\n'+declarations.map(n=>'  '+n.toString()+';').join('\n')+'\n}'});
+}
+const p=A+'/public/mdbook-runtime/document.css';const before=fs.readFileSync(p);const extra='\n/* Libx maps original .content descendants onto its document wrapper; site chrome/layout stays in the shared template. */\n.mdbook-guide { overflow-wrap: break-word; }\n'+mapped.map(x=>x.css).join('\n')+'\n'+palettes.map(x=>x.css).join('\n')+'\n';fs.writeFileSync(p,before.toString()+extra);
+fs.writeFileSync(E+'/CONTENT_CONTEXT_REPAIR.json',JSON.stringify({status:'applied-native-pending',beforeSha256:sha(before),afterSha256:sha(fs.readFileSync(p)),originalContentDescendantRules:mapped,palettes,excludedOriginalLayout:['.content viewport padding and .content main max-width/centering belong to upstream site chrome; Libx shared layout remains authoritative'],bodyTextOrAssetsChanged:false,sharedPackagesChanged:false,conversionGatePassed:false},null,2)+'\n',{flag:'wx'});console.log('元content文脈',mapped.length,'規則/semantic palette復元');
