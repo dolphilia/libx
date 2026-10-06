@@ -1,44 +1,27 @@
 ---
 title: "Awesome Wardley Maps Community Hub"
-description: "A curated collection of resources and projects focused on Wardley Maps Community Hub."
+description: "Wardley mapping learning resources, practical examples, apps, development tools, templates and communities."
 licenseSource: "github-wardley-maps-community-awesome-wardley-maps-readme-md"
 ---
 
 # Awesome Wardley Maps Community Hub
 
-A curated collection of resources and projects focused on Wardley Maps Community Hub.
-
-## Contents
-
-- [Quick Start](#quick-start)
-- [Community](#community)
-- [Reading](#reading)
-- [Videos](#videos)
-- [Courses](#courses)
-- [Certifications](#certifications)
-- [Maps in the Wild](#maps-in-the-wild)
-- [Research Papers](#research-papers)
-- [Apps](#apps)
-- [Tools & Scripts](#tools--scripts)
-- [Templates](#templates)
-- [Events](#events)
-- [Workshops](#workshops)
-- [Meetups](#meetups)
+[Wardley Mapping](https://en.wikipedia.org/wiki/Wardley_map) visualizes user needs, components, dependencies and their characteristics to examine an environment, anticipate changes, compare what-if scenarios and choose a direction and actions. This hub brings together introductory material, books, courses, practical examples, research papers, mapping apps, development tools and templates, alongside communities, events and workshops.
 
 ## Quick Start
 
 - [Investing in innovation](https://www.youtube.com/watch?v=Gfq3ocmadZo&list=PLP0vnsXbJsRVkWG7pjboonlrbISxtSN9I) - How situational awareness can put your business on the map (5:51).
 - [My basics for business strategy](https://medium.com/hackernoon/my-basics-for-mapping-a-business-5b20f364b216) - In 11 diagrams by [Simon Wardley](https://twitter.com/swardley).
-- [Getting Strategic on Peace and Justice](https://vimeo.com/363571089) - An engaging animation by [Sue Borchardt](https://vimeo.com/researchartist) (5:39).
+- [Getting Strategic on Peace and Justice](https://vimeo.com/363571089) - An animation by [Sue Borchardt](https://vimeo.com/researchartist) (5:39).
 - [From Cloud to DevOps to Serverless in under 10 minutes using maps](https://www.youtube.com/watch?v=7DSfguWPPWA ) - A basic introduction to change in the IT industry using the concept of Wardley maps by Simon Wardley (9:56).
 
 ## Community
 
 - [Wardley Mapping Forum](https://community.wardleymaps.com/) - A place to discuss everything connected with Wardley Maps.
-- [mapcamp.slack.com](https://mapcamp.slack.com/) - Join Map Camp on Slack [here](https://map-camp-slack-invite.herokuapp.com/).
+- [mapcamp.slack.com](https://mapcamp.slack.com/) - Map Camp on Slack; [invitation link](https://map-camp-slack-invite.herokuapp.com/).
 - [LinkedIn Group](https://www.linkedin.com/groups/13604539/) - Wardley Maps Community.
-- [Mapping Maps Newsletter](https://twitter.com/MappingMapsNews) - Subscribe [here](https://bit.ly/2QlF0Wx). Newsletter [archive](https://bit.ly/2P9MEPu).
-- [#WardleyMaps](https://twitter.com/search?q=%23WardleyMaps) - Join the conversation.
+- [Mapping Maps Newsletter](https://twitter.com/MappingMapsNews) - [Subscription](https://bit.ly/2QlF0Wx) and newsletter [archive](https://bit.ly/2P9MEPu).
+- [#WardleyMaps](https://twitter.com/search?q=%23WardleyMaps) - A hashtag for Wardley mapping conversations.
 - [r/wardleymaps](https://www.reddit.com/r/wardleymaps/) - Subreddit for Wardley Maps.
 
 ## Reading
@@ -47,7 +30,7 @@ A curated collection of resources and projects focused on Wardley Maps Community
   - E-book - PDF and Kindle [downloads](https://github.com/andrewharmellaw/wardley-maps-book/releases).
   - Audiobook - MP3 [downloads](https://feststelltaste.github.io/wardley-maps-audiobook/).
   - [Spanish Translation](https://mapasdewardley.com/estrategia/el-libro-de-simon-wardley/) - Mapas de Wardley. El uso de la inteligencia topográfica en la estrategia empresarial.
-- [Simon Wardley's SlideShares](https://www.slideshare.net/swardley/presentations) - A collection of useful presentation slide decks on a range of topics.
+- [Simon Wardley's SlideShares](https://www.slideshare.net/swardley/presentations) - A collection of presentation slide decks on a range of topics.
 - [Glossary](https://community.wardleymaps.com/t/mapping-glossary/280)
 - [Wardleypedia](http://wardleypedia.org/mediawiki/index.php/Main_Page) - A Wiki Encyclopedia dedicated to the strategy mapping techniques pioneered by Simon Wardley.
 - [Wardley map](https://en.wikipedia.org/wiki/Wardley_map) - Wikipedia entry.
@@ -55,10 +38,9 @@ A curated collection of resources and projects focused on Wardley Maps Community
 - [Practical Introduction to Wardley Mapping](https://leanpub.com/practicalintroductiontowardleymapping) - A step-by-step guide to creating and using Wardley Maps by [E. Alex Hudson](https://twitter.com/ealexhudson). PDF/iPad/Kindle.
 - [The Art of Strategy](https://medium.com/@erik_schon/the-art-of-strategy-ac4165c0c085) - Sun Tzu, Boyd & Wardley on situational awareness, OODA "Loops" and Wardley mapping by [Erik Schön](https://twitter.com/erik_schon). [PDF](https://leanpub.com/TheArtOfStrategy)/[Paperback](https://www.amazon.com/ART-STRATEGY-Towards-Business-Agility/dp/B086PTDZT1).
 - [Reaching Cloud Velocity: A Leader's Guide to Success in the AWS Cloud](https://www.goodreads.com/book/show/53503300-reaching-cloud-velocity) - Chapter 2.3 Mapping Your Way Through.
-- [Draw your company strategy: A practical workbook for mapping business strategy](https://www.amazon.com/-/es/Joaqu%C3%ADn-Pe%C3%B1a-Fern%C3%A1ndez/dp/B09QFJ4QDG/) - Visual cards reviewing concepts as user needs, climatic patterns, doctrines, gameplays. Revision of concepts, examples and other strategy topics.
-- [Cuaderno de trabajo para dibujar estrategias: Método y práctica para la estrategia empresarial (Spanish Edition)](https://www.amazon.com/Cuaderno-trabajo-para-dibujar-estrategias/dp/B09KN2M1FP/) -Fichas visuales en las que se repasan conceptos como necesidades de los usuarios, patrones climáticos, doctrinas, esquemas de juego. Repaso de conceptos, ejemplos y otros temas de estrategia.
+- [Draw your company strategy: A practical workbook for mapping business strategy](https://www.amazon.com/-/es/Joaqu%C3%ADn-Pe%C3%B1a-Fern%C3%A1ndez/dp/B09QFJ4QDG/) - Visual cards reviewing user needs, climatic patterns, doctrines and gameplays, with concepts, examples and other strategy topics.
+- [Cuaderno de trabajo para dibujar estrategias: Método y práctica para la estrategia empresarial (Spanish Edition)](https://www.amazon.com/Cuaderno-trabajo-para-dibujar-estrategias/dp/B09KN2M1FP/) - Visual cards reviewing user needs, climatic patterns, doctrines and gameplays, with concepts, examples and other strategy topics. In Spanish.
 - [Wardley Leadership Strategies](https://www.wardleyleadershipstrategies.com/) - The Compendium of Wardley Mapping Leadership Gameplays and Strategies
-
 
 ## Videos
 
@@ -72,7 +54,7 @@ A curated collection of resources and projects focused on Wardley Maps Community
 - [Wardley Mapping](https://learn.leadingedgeforum.com/p/wardley-mapping/?product_id=277424) - Learn how to stimulate future ideas and strategies with the Leading Edge Forum.
 - [LearnWardleyMapping.com](https://learnwardleymapping.com/) - Video chapter summaries of Simon Wardley's book, 15-minute introductory course, and a quick reference.
 - [User Strategy Development with Wardley Maps in Miro](https://www.coursera.org/projects/user-strategy-development-wardley-maps-miro) - Tricia Bagley, Coursera Project Network.
-- [Business Stragy with Wardley Mapping](https://github.com/wardley-maps-community/awesome-wardley-maps/blob/af644b811bcd41c0a1d48f03b80083baa318771d/courses.coryfoy.com/p/business-strategy-with-wardley-mapping) - [Cory Foy](https://twitter.com/cory_foy).
+- [Business Strategy with Wardley Mapping](https://github.com/wardley-maps-community/awesome-wardley-maps/blob/af644b811bcd41c0a1d48f03b80083baa318771d/courses.coryfoy.com/p/business-strategy-with-wardley-mapping) - [Cory Foy](https://twitter.com/cory_foy).
 - [Spanish, Acelera tu aprendizaje en Mapas de Wardley](https://mapasdewardley.com/estrategia/acelera-tu-aprendizaje/) - Joaquín Peña Fernández, MapasdeWardley.com.
 - [Learn about Wardley Maps using Claude](https://claude-chatbot.streamlit.app/) - An AI Application using Claude to help learn Wardley Maps
 - [Learn about Wardley Maps using OpenAI](https://learnwardleymapping.streamlit.app/) - Streamlit and OpenAI application to learn Wardley Maps.
@@ -84,17 +66,17 @@ A curated collection of resources and projects focused on Wardley Maps Community
 
 ## Maps in the Wild
 
-Blog posts and other interesting examples of Wardley maps. Ordered by date, newest first.
+Blog posts and other examples of Wardley maps, kept in the order of the source list.
 - [What do I use maps for?](https://blog.gardeviance.org/2023/06/what-do-i-use-maps-for.html) - Simon Wardley lists a range of examples. Jun 08, 2023.
 - [How to Build a YouTube Video Query AI Model on Wardley Mapping with Python and OpenAI](https://medium.com/prompt-engineering/how-to-build-a-youtube-video-query-ai-model-with-python-and-openai-5b4b26cf9411) - Blog post on how to create a question & answer application AI app using OpenAI, Streamlit and Python. Full source code provided.
 - [How to Create a Powerful Chatbot in Minutes with Streamlit and OpenAI GPT-3.5](https://medium.com/prompt-engineering/how-to-create-a-powerful-chatbot-in-minutes-with-streamlit-and-openai-gpt-3-5-7954e8e05db0) - Blog post on how to create a Wardley Map chatbot using OpenAI, Streamlit and Python. Full source code provided.
-- [Twitter thread on Wardley Mapping ChatGPT Prompt Enineering](https://twitter.com/mcraddock/status/1641537955507347476) - Twitter thread on Wardley Mapping Prompt Engineering for ChatGPT with many examples.
-- [Central Bank Digital Currency competitive analysis](https://joapen.com/blog/2022/12/15/central-bank-digital-currency-competitive-analysis/) - Comparison of scenarios between China, EEUU and Europe.
+- [Twitter thread on Wardley Mapping ChatGPT Prompt Engineering](https://twitter.com/mcraddock/status/1641537955507347476) - Twitter thread on Wardley Mapping Prompt Engineering for ChatGPT with many examples.
+- [Central Bank Digital Currency competitive analysis](https://joapen.com/blog/2022/12/15/central-bank-digital-currency-competitive-analysis/) - Comparison of scenarios in China, the United States and Europe.
 - [How Open Source Machine Learning Software Shapes AI](https://maxlangenkamp.me/posts/mloss_essay/) - A 4k word summary of Max Langenkamp's Master of Engineering thesis. September 27, 2022.
 - [How will cars be refueled by 2032?](https://joapen.com/blog/2022/08/29/how-will-cars-be-refueled-by-2032/) - By Joaquín Peña Fernández. August 29, 2022.
 - [Zalando, a Wardley map about how they play the game](https://joapen.com/blog/2021/09/16/zalando-a-wardley-map-about-how-they-play-the-game/) - By Joaquín Peña Fernández. Sep 16, 2021.
 - [Those virtual battlegrounds…](https://swardley.medium.com/those-virtual-battlegrounds-feb3da18e0f0) - Why video games will become a new battleground for the soul of a country by Simon Wardley. Sep 8, 2021.
-- [Skills as a System](https://www.linkedin.com/pulse/skills-system-guy-dickinson/) the way we use job rolesis prone to bias, blocks innovation, and slows down organisations. by Guy Dickinson. June 13, 2021
+- [Skills as a System](https://www.linkedin.com/pulse/skills-system-guy-dickinson/) - The way we use job roles is prone to bias, blocks innovation and slows down organisations. By Guy Dickinson. June 13, 2021.
 - [Digital Sovereignty](https://swardley.medium.com/digital-sovereignty-17853157e40a) - Look before you leap by Simon Wardley. Oct 22, 2020.
 - [How to use Wardley Mapping to understand how you deliver customer value](https://medium.com/@stephanwillemse/how-to-use-wardley-mapping-to-understand-how-you-deliver-customer-value-43abdad264cf) - Sep 15, 2020.
 - [The What, The Why and Some How of Wardley Mapping](https://www.infoq.com/presentations/interview-wardley-maps/) - A conversation with Simon Wardley. Aug 4, 2020.
@@ -103,7 +85,7 @@ Blog posts and other interesting examples of Wardley maps. Ordered by date, newe
 - [Thoughts on 'value' in the Value Chain](https://www.abusedbits.com/2020/07/thoughts-on-value-in-value-chain.html) - It is important to understand the need and outcome. It is vital to understand the value desired. Jul 17, 2020.
 - [Would you survive the loss of your phone?](https://www.kda.zone/post/would-you-survive-the-loss-of-your-phone) - How to use Wardley mapping to increase resilience using personal security as an example. Jun 18, 2020.
 - [Estratégia com Wardley Maps](https://targetteal.com/pt/blog/estrategia-wardley-maps/) - Jun 7, 2020.
-- [Wenn Customizing zur Legacy wird](https://www.innoq.com/de/blog/customizing-zu-legacy/) - Analyse eines ERP-Systems mit Wardley Maps und strategischem Domain-driven Design. Jun 2, 2020.
+- [Wenn Customizing zur Legacy wird](https://www.innoq.com/de/blog/customizing-zu-legacy/) - Analysis of an ERP system using Wardley maps and strategic domain-driven design. Jun 2, 2020.
 - [Your story never had a chance](https://medium.com/@azmolek/your-story-never-had-a-chance-d118e0ace8f8) - Gameplay, fractal patterns, feedback loops, doctrine. May 9, 2020.
 - [Mapping the blog](https://www.onyszko.com/mapping-the-blog/) - Applying Wardley maps to personal blog user needs. Apr 20, 2020.
 - [Research Skills Framework](https://www.researchskills.net/) - The RSF [Map](https://www.researchskills.net/framework/map) and Mapping Kit build upon Simon Wardley's maps. Retrieved Mar 30, 2020.
@@ -129,11 +111,11 @@ Blog posts and other interesting examples of Wardley maps. Ordered by date, newe
 - [Plotting a path to a greener web with Wardley mapping](https://www.thegreenwebfoundation.org/news/plotting-a-path-to-a-greener-web-with-wardley-mapping/) - The Green Web Foundation. Mar 20, 2019.
 - [UN Global Platform - Handbook on Information Technology Strategy](https://marketplace.officialstatistics.org/un-global-platform-handbook-on-information-technology-strategy) - Covers the development of your IT strategy using Wardley Maps to predict the future, understand which methodologies are best suited to developing and delivery information management systems. Download the [Wardley map source files](https://marketplace.officialstatistics.org/template-wardley-maps) used to create the Handbook on IT Strategy. Mar 13, 2019.
 - [UN Privacy Preserving Techniques Handbook](https://marketplace.officialstatistics.org/privacy-preserving-techniques-handbook) - Two use cases: giving NSOs access to new sources of (sensitive) Big Data; and enabling Big Data Collaborations Across Multiple NSO. Download [Wardley maps slide deck](https://docs.google.com/presentation/d/1hIcTcwp7SEnh3SEfRCiJ7SDPZGeFRWLhzHYDDkSfKTc). Mar 12, 2019.
-- [The Art of Strategy](https://erik-schon.medium.com/the-art-of-strategy-811c00a96fad) - A curated atlas of Wardley mapping examples. Mar 6, 2019 - Present.
+- [The Art of Strategy](https://erik-schon.medium.com/the-art-of-strategy-811c00a96fad) - A curated atlas of Wardley mapping examples. Mar 6, 2019 – “Present” in the source list.
 - [Burja Mapping](https://medium.com/@tasshin/why-map-power-e97969527d57) - Combines Samo Burja's Empire Theory with a form of mapping similar to that pioneered by Simon Wardley. Jan 2, 2019.
 - [Research heresies](https://www.myddelton.co.uk/blog/research-heresies) - Three ways to think about user needs and user research and how Wardley maps can help us think about where to do user research. Nov 2, 2018.
 - [What is an expert?](https://swardley.medium.com/what-is-an-expert-886274b2c1aa) - Oct 31, 2018.
-- [Rebooting GDS](https://medium.com/hackernoon/rebooting-gds-96b1595096fa) - How to stop the organisation from actively harming itself by focusing on doctrine and spend control. Oct 30, 2018.
+- [Rebooting GDS](https://medium.com/hackernoon/rebooting-gds-96b1595096fa) - Focusing on doctrine and spend control to stop an organisation from actively harming itself. Oct 30, 2018.
 - [A Platform Design Example Explained](https://stories.platformdesigntoolkit.com/pdt-bootcamp-example-explained-34e08f9dd4b3) - Exploring and designing a platform in the renewable energy context. Oct 28, 2019.
 - [Understanding Platforms through Value Chain Maps](https://stories.platformdesigntoolkit.com/platform-value-chain-z-shape-385f759faffa) - Why is a Platforms' Wardley (Value Chain) Map Z-Shaped? Oct 11, 2018.
 - [Healthcare information technology strategy](https://wardle.org/strategy/2018/07/19/mapping.html) - How can we make best use of technology to support healthcare? Jul 19, 2018.
@@ -173,51 +155,48 @@ Blog posts and other interesting examples of Wardley maps. Ordered by date, newe
 
 ### Mapping
 
-- [OnlineWardleyMaps](https://github.com/damonsk/onlinewardleymaps) - Online open source mapping tool. For updates follow [@MapsAsCode](https://twitter.com/MapsAsCode) on Twitter. Hosted version available [here](https://onlinewardleymaps.com/). Online documentation [Wardley Maps as Code](https://docs.onlinewardleymaps.com/).
-- [Wardley Maps for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=damonsk.vscode-wardley-maps) - Render and edit Wardley maps within Visual Studio Code. This VSCode extention leverages the engine from OnlineWardleyMaps.com. Online documentation [Wardley Maps as Code](https://docs.onlinewardleymaps.com/).
-- [Wardley Maps for Obsidian.md](https://github.com/damonsk/obsidian-wardley-maps) - Render and edit Wardley maps within Obsidian.md. This community plugin leverages the engine from OnlineWardleyMaps.com. Online documentation [Wardley Maps as Code](https://docs.onlinewardleymaps.com/).
+- [OnlineWardleyMaps](https://github.com/damonsk/onlinewardleymaps) - Online open source mapping tool. Hosted version available [here](https://onlinewardleymaps.com/). Online documentation [Wardley Maps as Code](https://docs.onlinewardleymaps.com/).
+- [Wardley Maps for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=damonsk.vscode-wardley-maps) - Render and edit Wardley maps within Visual Studio Code. This VS Code extension uses the engine from OnlineWardleyMaps.com. Online documentation [Wardley Maps as Code](https://docs.onlinewardleymaps.com/).
+- [Wardley Maps for Obsidian.md](https://github.com/damonsk/obsidian-wardley-maps) - Render and edit Wardley maps within Obsidian.md. This community plugin uses the engine from OnlineWardleyMaps.com. Online documentation [Wardley Maps as Code](https://docs.onlinewardleymaps.com/).
 - [Wardley Maps for Jupyter Notebooks (ipywardley)](https://github.com/anjackson/ipywardley) - A plugin for generating Wardley maps in Jupyter Notebooks.
-- [MapScript](https://observablehq.com/collection/@ajbouh/mapscript) - Note MapScript is built on Observable. Read their [Terms of Service](https://observablehq.com/terms-of-service). MapScript [feature requests](https://mapscript.canny.io/feature-requests). Hosted version available [here](https://mapscript.org).
+- [MapScript](https://observablehq.com/collection/@ajbouh/mapscript) - Built on Observable; see its [Terms of Service](https://observablehq.com/terms-of-service). [Feature requests](https://mapscript.canny.io/feature-requests). Hosted version available [here](https://mapscript.org).
 - [Go-Wardley](https://github.com/DavidGamba/go-wardley) - Generates a Wardley map in SVG format from a HCL-based map description file.
-- [Mapkeep](https://mapkeep.com/) - Multiplayer Wardley Maps at a click of a button. Collaborate on your maps with others. Host your maps for free. For updates, you can follow [@mapkeep on Mastodon](https://mastodon.social/@mapkeep), [@mapkeep on X](https://twitter.com/mapkeep), [mapkeep on LinkedIn](https://www.linkedin.com/company/mapkeep), subscribe to the [YouTube Channel](https://www.youtube.com/@mapkeep), or subscribe to the [News and Updates blog](https://blog.mapkeep.com/).
-- [Glamorous Toolkit](https://gtoolkit.com) - A moldable and programmable environment in which Wardley Maps can be intertwinned with knowledge management and multi language notebooks. Follow [@feenkcom](https://twitter.com/feenkcom) to learn more.
-- [Excalidraw](https://excalidraw.com) - Online diagram tool creates quick and easy, handdrawn diagrams and maps. keyboard shortcut '0', browse libraries and Add the "Wardley Maps Symbols" lib.
-- [Flowchart fun](https://flowchart.fun) - text based tool to generate quick flowcharts. Excellent way to quickly create a Value Chain - very useful in conversation or during a meeting.
-- [wardleyToGo](https://owulveryck.github.io/wardleyToGo/demo/) is a SDK to do map-as-code **and** a high level language (`wtg`) to express map-as-data. The set of tools allows an easy integration of the map in CI, and the online demo allows to desing maps online.
+- [Mapkeep](https://mapkeep.com/) - Collaborative Wardley mapping with free map hosting. [YouTube channel](https://www.youtube.com/@mapkeep) and [news and updates blog](https://blog.mapkeep.com/).
+- [Glamorous Toolkit](https://gtoolkit.com) - A moldable and programmable environment in which Wardley Maps can be combined with knowledge management and multilingual notebooks.
+- [Excalidraw](https://excalidraw.com) - Online diagram tool for hand-drawn diagrams and maps. Use keyboard shortcut '0' to browse libraries and add the "Wardley Maps Symbols" library.
+- [Flowchart fun](https://flowchart.fun) - Text-based flowchart tool for creating a value chain during a conversation or meeting.
+- [wardleyToGo](https://owulveryck.github.io/wardleyToGo/demo/) - An SDK for map-as-code and a high-level language (`wtg`) for map-as-data. Its tools support integration of maps into CI, and the online demo provides map design.
 - [Map](https://map.tranquil.systems) - Native macOS app to build wardley maps using its own `wmap` syntax (Apple Silicon only). GPLv3. It includes a QuickLook plugin to preview `wmap` files as images, and sharing to collaboratively edit maps.
 - [Map for Linux](https://map.tranquil.systems/map-for-linux) - GTK4 Linux app to build wardley maps using the `wmap` syntax. AGPLv3.
 - [wmap](https://map.tranquil.systems/cli) - A command line tool to render `wmap` formatted maps to PNG or SVG.
 
-### Doctrine Assessement
+### Doctrine Assessment<a id="doctrine-assessement"></a>
 
 - [Doctrine](https://github.com/cdaniel/doctrine/) - A simple tool for visualising how competitive a company is in light of Wardley's doctrine. Hosted version available [here](https://doctrine.wardleymaps.com/).
-
-### Commercial Enterprise Platforms
-
 
 ## Tools & Scripts
 
 ### Development
-- [Join the Wardley AI Development Group on X/Twitter](https://twitter.com/i/communities/1670015410542985218)
-- [An Exploration into Wardley Mapping Language Code](https://medium.com/@mcraddock/an-exploration-into-wardley-mapping-language-mode-aa87763a8b17) - Create your own Wardley Mapping code editor in two easy steps.
-- [Convert WM format to Many](https://wm2many.streamlit.app/) - A simple streamlit app to convert the OnlineWardleyMaps OWM format to JSON, TOML, JSON Graph and Cypher text.
+- [Wardley AI Development Group on X/Twitter](https://twitter.com/i/communities/1670015410542985218)
+- [An Exploration into Wardley Mapping Language Code](https://medium.com/@mcraddock/an-exploration-into-wardley-mapping-language-mode-aa87763a8b17) - Create your own Wardley Mapping code editor in two steps.
+- [Convert WM format to Many](https://wm2many.streamlit.app/) - A Streamlit app to convert the OnlineWardleyMaps OWM format to JSON, TOML, JSON Graph and Cypher text.
 - [cli-owm](https://github.com/monkeypants/cli-owm) - Command-line tool that renders OnlineWardleyMaps DSL text to SVG. Pipes stdin to stdout, ships as npm package and standalone binaries. Uses the OnlineWardleyMaps parser.
 - [Exploring Prompt Engineering using Wardley Maps](https://medium.com/prompt-engineering) - A series of blog posts about AI, Python and Wardley Mapping.
 - [wiki-plugin-wmap](https://www.npmjs.com/package/wiki-plugin-wmap) - A plugin for [fedwiki](http://fed.wiki.org/view/welcome-visitors) that enables you to write maps in `wmap` syntax and create links to other wiki pages from components.
 - [tree-sitter-wmap](https://git.sr.ht/~rbdr/tree-sitter-wmap) - A `wmap` syntax parser using tree sitter with a bundled neovim plugin that provides syntax highlighting.
-- [wmap-parser-swift](https://git.sr.ht/~rbdr/wmap-parser-swift) - A Library for Swift that parses wardley maps using `wmap` syntax for macOS and iOS development.
-- [wmap-parser-js](https://www.npmjs.com/package/wmap-parser) - A pure javascript parser for wardley maps using `wmap` syntax that can run on the browser or node.
-- [wmap-parser-rust](https://crates.io/crates/wmap-parser) - A rust parser for wardley maps using `wmap` syntax.
-- [wmap-parser-c](https://git.sr.ht/~rbdr/wmap-parser-c) - A high performance ANSI C parser for wardley maps using `wmap` syntax.
-- [wmap-renderer-canvas](https://www.npmjs.com/package/wmap-renderer-canvas) - A javascript renderer that creates maps in a canvas element for wardley maps that use the `wmap` syntax, can be used exclusively on the browser or on nodeJS.
-- [wmap-renderer-svg](https://www.npmjs.com/package/wmap-renderer-svg) - A browser only renderer that creates SVGs for wardley maps that use the `wmap` syntax.
-- [wmap-renderer-rust](https://crates.io/crates/wmap-renderer) A rust renderer that generates cairo surfaces, SVGs and PNGs for wardley maps that use the `wmap` syntax.
+- [wmap-parser-swift](https://git.sr.ht/~rbdr/wmap-parser-swift) - A Swift library that parses wardley maps using `wmap` syntax for macOS and iOS development.
+- [wmap-parser-js](https://www.npmjs.com/package/wmap-parser) - A pure JavaScript parser for wardley maps using `wmap` syntax that can run in a browser or Node.js.
+- [wmap-parser-rust](https://crates.io/crates/wmap-parser) - A Rust parser for wardley maps using `wmap` syntax.
+- [wmap-parser-c](https://git.sr.ht/~rbdr/wmap-parser-c) - Described in the source as a high-performance ANSI C parser for Wardley maps using `wmap` syntax.
+- [wmap-renderer-canvas](https://www.npmjs.com/package/wmap-renderer-canvas) - A JavaScript renderer that creates maps in a canvas element for wardley maps that use the `wmap` syntax, runs in a browser or Node.js.
+- [wmap-renderer-svg](https://www.npmjs.com/package/wmap-renderer-svg) - A browser-only renderer that creates SVGs for wardley maps that use the `wmap` syntax.
+- [wmap-renderer-rust](https://crates.io/crates/wmap-renderer) - A Rust renderer that generates Cairo surfaces, SVGs and PNGs for wardley maps that use the `wmap` syntax.
 
-#### ChatGPT
+### ChatGPT
 - [Wardley Map Analyst](https://chat.openai.com/g/g-Cic0bH5CF-wardley-map-analyst) - Analyzes and visualizes Wardley Maps from text
-- [Learn Wardley Mapping](https://chat.openai.com/g/g-sg6zS89Hi-learn-wardley-mapping) - I guide you in learning and applying Wardley Maps.
+- [Learn Wardley Mapping](https://chat.openai.com/g/g-sg6zS89Hi-learn-wardley-mapping) - Guidance for learning and applying Wardley maps.
 - [Introduction to Wardley Mapping](https://chat.openai.com/g/g-v6OW6JOQ7-introduction-to-wardley-mapping) - A quick introduction to Wardley Mapping
-- [Wardley Map Syntax Expert](https://chat.openai.com/g/g-6vfuL6SXd-wardley-map-syntax-expert) - Expert in analyzing and fixing Wardley Map syntax
+- [Wardley Map Syntax Expert](https://chat.openai.com/g/g-6vfuL6SXd-wardley-map-syntax-expert) - Analysis and repair of Wardley map syntax.
 
 ## Templates
 
@@ -234,7 +213,7 @@ Blog posts and other interesting examples of Wardley maps. Ordered by date, newe
 - [yEd Palette](https://github.com/colugo/yed-wardley) - Wardley maps palette for yEd.
 - [Google Slides Mapping Template](https://docs.google.com/presentation/d/11_7D5KAgEUY3FxKg0K2whpwnC4jZOrS_TO2bpD5PV5A/edit#slide=id.g1aa7821e59_2_0) - Template for Google Slides.
 
-### Doctrine Assessement
+### Doctrine Assessment<a id="doctrine-assessement-1"></a>
 
 - [Doctrine Grid Tool](https://justin.stach.uk/doctrine_grid_tool) - Based on Google Forms and Google Sheets.
 
@@ -242,7 +221,7 @@ Blog posts and other interesting examples of Wardley maps. Ordered by date, newe
 
 - [Map Camp 2021](https://www.mapcamp.co.uk/) - A virtual event on October 13, 2021.
 - [Map Camp 2020](https://leadingedgeforum.com/research/map-camp-2020/) - A free all-day online event on October 13, 2020.
-- [Map Camp](https://www.map-camp.com/) - Follow Map Camp on [Twitter](https://twitter.com/map_camp) and [LinkedIn](https://www.linkedin.com/company/map-camp/).
+- [Map Camp](https://www.map-camp.com/)
 
 ## Workshops
 
@@ -281,9 +260,3 @@ Blog posts and other interesting examples of Wardley maps. Ordered by date, newe
   - USA
     - California
       - [San Diego](https://www.meetup.com/San-Diego-Business-Strategy-Meetup-Group/)
-
-## License
-
-[![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0)
-
-To the extent possible under law, the Wardley Maps Community has waived all copyright and related or neighboring rights to this work.

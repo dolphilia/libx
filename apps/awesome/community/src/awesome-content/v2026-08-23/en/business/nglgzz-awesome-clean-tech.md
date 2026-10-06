@@ -1,34 +1,18 @@
 ---
 title: "Awesome Clean Tech"
-description: "A curated collection of resources and projects focused on Clean Tech."
+description: "Companies, resources, and research on clean technology and climate change."
 licenseSource: "github-nglgzz-awesome-clean-tech-readme-md"
 ---
 
 # Awesome Clean Tech
 
-A curated collection of resources and projects focused on Clean Tech.
+Clean technology includes processes, products, and services that reduce environmental harm through significant improvements in energy efficiency, sustainable resource use, or environmental protection. This list groups companies working to address climate change by agriculture, food, materials, water, energy, and social impact, and includes further resources and research on the problems and solutions.
 
-## Contents
-
-- [Companies](#companies)
-  - [Vegetation & Agriculture](#vegetation--agriculture)
-  - [Food](#food)
-  - [Materials](#materials)
-  - [Water](#water)
-  - [Energy](#energy)
-  - [Social Impact](#social-impact)
-- [More Resources](#more-resources)
-- [Research](#research)
+Company locations, founding years, capabilities, rankings, and other time-dependent statements reflect the recorded source. Dates and figures are retained as stated in that source.
 
 ## Companies
 
-The format for companies is the following:
-
-```
-- [Company Name](https://github.com/nglgzz/awesome-clean-tech/blob/763f76ede222c7e9c652d57a3085a5e802e9ed31/URL) | Based in | Founded Year
-
-Short description.
-```
+Company entries list the name, location, and founding year, followed by a short description.
 
 ### Vegetation & Agriculture
 
@@ -54,7 +38,7 @@ Short description.
 
 - [Peckas Tomater](http://www.peckas.com) | Sweden | 2015
 
-  Combined tomato and fish farm grown in a system where fish basin waste water nourishes tomatoes, and the tomato bed in turn cleans the water which goes back to the fish basins. Their fish is grown without antibiotics and the tomates does not need fertilizers.
+  Combines tomato and fish farming in a system where wastewater from fish tanks nourishes tomatoes; the tomato beds clean the water before it returns to the fish tanks. Fish are raised without antibiotics, and the tomatoes do not need fertilizers.
 
 - [Phytoponics](https://phytoponics.com/) | UK | 2016
 
@@ -66,13 +50,13 @@ Short description.
 
 - [Vultus](https://www.vultus.io/) | Sweden | 2016
 
-  Uses satellite imaging to save fertilizer usage up to 30%, and track crops health. This allows farmers to reduce their Nitrous Oxide emissions, a greenhouse gas that is 298 times more potent than CO2.
+  Uses satellite imaging to save fertilizer usage up to 30%, and track crop health. This allows farmers to reduce their Nitrous Oxide emissions, a greenhouse gas that is 298 times more potent than CO2.
 
 ### Food
 
 - [Foods for Tomorrow / Heura](https://www.heurafoods.com/en-GB/home) | Barcelona, Spain | 2017
 
-  Created an ingredient named Heura which represents a new generation of plant-based proteins using innovative production techniques to get textures never seen on the vegetal realm. Heura needs 94% less water than to produce the same amount of veal protein and only 0.5kg of soy per kg produced.
+  Created an ingredient called Heura, representing a new generation of plant-based proteins made with innovative production techniques to achieve textures not previously seen in plant-based foods. Heura needs 94% less water than to produce the same amount of veal protein and only 0.5kg of soy per kg produced.
 
 - [Impossible Foods](https://impossiblefoods.com/) | California, USA | 2011
 
@@ -84,7 +68,7 @@ Short description.
 
 - [Karma](https://new.karma.life/) | Sweden | 2016
 
-  Helps restaurants, cafes, and grocery stores selling their surplus food at a discounted price. As a result, users get food for less and businesses receive an additional revenue stream — all while reducing food waste.
+  Helps restaurants, cafes, and grocery stores sell their surplus food at a discounted price. As a result, users get food for less and businesses receive an additional revenue stream — all while reducing food waste.
 
 - [Olio](https://olioex.com/) | UK | 2015
 
@@ -92,17 +76,17 @@ Short description.
 
 - [Too Good To Go](https://toogoodtogo.com/en) | France | 2016
 
-  Gives the possibility for restaurants, stores, bakeries and cafés to sell unsold food at the end of the day. Since it is impossible to know in advance what will be the unsolds of the day, the users get a "surprise basket" of about 500g of food. Pretty much like Karma, but more present in France.
+  Gives the possibility for restaurants, stores, bakeries and cafés to sell unsold food at the end of the day. Since it is impossible to know in advance which food will remain unsold that day, users get a "surprise basket" of about 500g of food. Pretty much like Karma, but more present in France.
 
 ### Materials
 
 - [Boston Metal](https://www.bostonmetal.com/) | Boston, USA | 2012
 
-  Developed a new technology to produce emission free steel in a scalable and cost effective manner. As of 2020 they produced more than 1.000kg of metal alloys since the commissioning of their first reactor.
+  Developed a new technology to produce emission free steel in a scalable and cost effective manner. As of 2020 they produced more than 1.000 kg of metal alloys (the source’s numerical notation) since the commissioning of their first reactor.
 
 - [Cellugy](https://cellugy.com/) | Denmark | 2018
 
-  Offers a biomaterial produced from food and vegetable waste, that can be used for packaging as an alternative to plastic. This material is translucent, resistent, and home compostable.
+  Offers a biomaterial produced from food and vegetable waste, that can be used for packaging as an alternative to plastic. This material is translucent, resistant, and home-compostable.
 
 - [Organicbasics](https://organicbasics.com) | Denmark | 2015
 
@@ -110,7 +94,7 @@ Short description.
 
 - [SkyCool Systems](http://skycoolsystems.com) | California, USA | 2016
 
-  Manufacture add-ons to vapor-compression based cooling systems, which reduce their electricity usage while being CO2 neutral themselves.
+  Manufacture add-ons to vapor-compression cooling systems, which reduce their electricity usage while being CO2 neutral themselves.
 
 ### Water
 
@@ -132,11 +116,11 @@ Short description.
 
 - [Refill App](https://refill.org.uk/) | UK | 2015
 
-  This is an app which lets you find free water refill stations across the UK. Currently there are more than 20,000 free stations across the nation. The app also tracks saved bottles, saved carbon and donates 13p every time you refill a bottle to planet protecting campaings.
+  This is an app which lets you find free water refill stations across the UK. Currently there are more than 20,000 free stations across the nation. The app also tracks saved bottles, saved carbon and donates 13p every time you refill a bottle to planet-protecting campaigns.
 
 - [Seabin Project](https://seabinproject.com/) | Australia | 2016
 
-  Their mission is to reduce plastic in the oceans through a floating rubbish bin that collect pollutants on the water surface. As of October 2019 they have deployed 719 Seabins and are capturing almost 3 tonnes of rubbish per day.
+  Their mission is to reduce plastic in the oceans through a floating rubbish bin that collects pollutants on the water surface. As of October 2019 they have deployed 719 Seabins and are capturing almost 3 tonnes of rubbish per day.
 
 - [Solar Water Solutions](https://solarwatersolutions.fi/en/) | Finland | 2015
 
@@ -156,9 +140,9 @@ Short description.
 
   Using Direct Air Capture technology, Carbon Engineering aims to take existing CO<sub>2</sub> directly out of the air, then use the gas to make carbon neutral synthetic fuels for planes, trucks, and ships. Carbon Engineering is funded by several government and sustainability-focused agencies as well as by private investors, including Bill Gates and oil sands magnate Norman Murray Edwards.
 
-- [ChargePoint](https://www.chargepoint.com/) | California,USA | 2007
+- [ChargePoint](https://www.chargepoint.com/) | California, USA | 2007
 
-  ChargePoint operates a open electric vehicle (EV) charging network and makes technology used in it.
+  ChargePoint operates an open electric vehicle (EV) charging network and makes technology used in it.
 
 - [ElectricityMap.org](https://www.electricitymap.org/) | Denmark/France | 2017
 
@@ -174,7 +158,7 @@ Short description.
 
 - [Inspire](https://www.helloinspire.com/) | Philadelphia, USA | 2014
 
-  Simplifying consumer adoption of clean energy by offering an array of affordable clean energy plans to homeowners that integrate with smart home technologies.
+  Simplifies consumer adoption of clean energy by offering homeowners a range of affordable clean energy plans that integrate with smart home technologies.
 
 - [Marcel](https://www.marcel.cab/engagements-rse/) | France | 2011
 
@@ -190,15 +174,15 @@ Short description.
 
 - [Open Climate Fix](https://openclimatefix.github.io) | London, England | 2019
 
-  Non-profit research and development lab, focused on reducing greenhouse gas emissions by solving machine learning problems. As of 2019 they are working on a forecasting system to reduce gas turbines backups on power grids that use solar energy.
+  Non-profit research and development lab, focused on reducing greenhouse gas emissions by solving machine learning problems. As of 2019 they are working on a forecasting system to reduce gas-turbine backup on power grids that use solar energy.
 
 - [Redflow](https://redflow.com/) | Brisbane, Australia | 2001
 
-  Manufacture zinc-bromine flow batteries that tolerate daily hard work in harsh conditions with minimal reduction in capacity over time, solutions for the residential and industrial installations.
+  Manufactures zinc-bromine flow batteries for residential and industrial installations. The batteries tolerate demanding daily use in harsh conditions with minimal reduction in capacity over time.
 
 - [Rocky Mountain Institute](https://rmi.org/) | Colorado, USA | 1982
 
-  Influential research institute whose mission statement is "...to transform global energy use to create a clean, prosperous, and secure low-carbon future". Co-founded by Amory Lovins, physicist and auther of "Soft Energy Paths".
+  Influential research institute whose mission statement is "...to transform global energy use to create a clean, prosperous, and secure low-carbon future". Co-founded by Amory Lovins, physicist and author of "Soft Energy Paths".
 
 - [Siemens](https://new.siemens.com/in/en.html) | Germany | 1847
 
@@ -218,11 +202,11 @@ Short description.
 
 - [Tesla](https://www.tesla.com/solarpanels) | California, USA | 2003
 
-  Specialized in electric car manufacturing and through, its SolarCity subsidiary, solar panel manufacturing.
+  Specializes in electric car manufacturing and, through its SolarCity subsidiary, solar panel manufacturing.
 
 - [Ushva Clean Technology](http://www.ushva.com/) | Mumbai, India | 2015
 
-  They believe in optimizing the energy consumption without compromising with the convenience and then neutralizing the remaining energy requirement. Their vision is to provide accessibility to affordable power derived from renewable resources, free of geographic and transmission constraints.
+  They believe in optimizing energy consumption without compromising convenience and then neutralizing the remaining energy requirement. Their vision is to provide accessibility to affordable power derived from renewable resources, free of geographic and transmission constraints.
 
 - [Vestas](https://www.vestas.com/) | Denmark | 1945
 
@@ -240,7 +224,7 @@ Short description.
 
 - [Doconomy](https://doconomy.com/) | Sweden | 2018
 
-  Fintech company promoting the reduction in consumption, by providing a credit card which uses CO2 emissions as spending limit.
+  Fintech company promoting reduced consumption by providing a credit card that uses CO2 emissions as a spending limit.
 
 - [Ducky](https://www.ducky.eco/en/) | Norway | 2014
 
@@ -287,7 +271,3 @@ Short description.
 - [Mercator Research Institute on Global Commons and Climate Change](https://www.mcc-berlin.net/en.html) - Providing solution-oriented policy pathways for governing the global commons to enhance sustainable development and human well-being.
 - [NASA climate](http://climate.nasa.gov/) - Vital signs of the planet, facts, and solutions.
 - [U.N Climate Change National Inventory Submissions](https://unfccc.int/process-and-meetings/transparency-and-reporting/reporting-and-review-under-the-convention/greenhouse-gas-inventories-annex-i-parties/national-inventory-submissions-2019) - This contains country specific climate reports from several U.N countries. It has data from 2003 onwards.
-
-## License
-
-This work and all contributions to it are released into the public domain under the terms of the [CC0 1.0](https://github.com/nglgzz/awesome-clean-tech/blob/763f76ede222c7e9c652d57a3085a5e802e9ed31/LICENSE).

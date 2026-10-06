@@ -1,27 +1,12 @@
 ---
 title: "Awesome Whisper"
-description: "A curated collection of resources and projects focused on Whisper."
+description: "Apps, web interfaces, CLI tools, libraries, and model variants for Whisper speech recognition, with guides, videos, and API services."
 licenseSource: "github-sindresorhus-awesome-whisper-readme-md"
 ---
 
 # Awesome Whisper
 
-A curated collection of resources and projects focused on Whisper.
-
-## Contents
-
-- [Official](#official)
-- [Model variants](#model-variants)
-- [Apps](#apps)
-- [Web apps](#web-apps)
-- [CLI tools](#cli-tools)
-- [Playgrounds](#playgrounds)
-- [Packages](#packages)
-- [Articles](#articles)
-- [Videos](#videos)
-- [Community](#community)
-- [Third-party APIs](#third-party-apis)
-- [Related lists](#related-lists)
+Whisper is OpenAI's open-source speech recognition system. Find transcription apps, web interfaces, command-line tools, libraries, and model variants, along with articles, videos, and third-party APIs.
 
 ## Official
 
@@ -39,10 +24,12 @@ A curated collection of resources and projects focused on Whisper.
 - [whisper-timestamped](https://github.com/linto-ai/whisper-timestamped) - Adds word-level timestamps and confidence scores.
 - [whisper-openvino](https://github.com/zhuzilin/whisper-openvino) - Whisper running on OpenVINO.
 - [whisper.tflite](https://github.com/usefulsensors/openai-whisper) - Whisper running on TensorFlow Lite.
-- [Whisper variants](https://huggingface.co/models?other=whisper) - Various Whisper variants on Hugging Faces.
+- [Whisper variants](https://huggingface.co/models?other=whisper) - Various Whisper variants on Hugging Face.
 - [Whisper-AT](https://github.com/YuanGongND/whisper-at) - Whisper that can recognize non-speech audio events in addition to speech.
 
 ## Apps
+
+FOSS denotes free and open-source software.
 
 - [Aiko](https://sindresorhus.com/aiko) - Audio transcription iOS and macOS app.
 - [MacWhisper](https://goodsnooze.gumroad.com/l/macwhisper) - Audio transcription macOS app. (Freemium)
@@ -65,8 +52,6 @@ A curated collection of resources and projects focused on Whisper.
 - [Screenpipe](https://screenpi.pe) - 24/7 local screen and audio recording with AI search. (FOSS)
 
 ## Web apps
-
-
 
 ### Hosted
 
@@ -94,7 +79,7 @@ A curated collection of resources and projects focused on Whisper.
 
 ## Playgrounds
 
-- [Hugging Faces](https://huggingface.co/spaces/openai/whisper) - Whisper demo running on Hugging Faces. ([Source](https://huggingface.co/spaces/openai/whisper/tree/main))
+- [Hugging Face](https://huggingface.co/spaces/openai/whisper) - Whisper demo running on Hugging Face. ([Source](https://huggingface.co/spaces/openai/whisper/tree/main))
 - [Monster API](https://whisperui.monsterapi.ai) - Whisper demo running on Monster API. ([Source](https://github.com/saharmor/whisper-playground))
 - [Web Whisper](https://whisper.r3d.red) - Whisper demo by Pluja. ([Source](https://codeberg.org/pluja/web-whisper))
 - [YouTube Video Transcription](https://github.com/ArthurFDLR/whisper-youtube) - Running on Colab.
@@ -125,9 +110,9 @@ A curated collection of resources and projects focused on Whisper.
 
 ## Third-party APIs
 
-*APIs that use Whisper.*
+APIs that use Whisper.
 
-- [Whisper+](https://www.oneai.com/speech-to-text) - Extension of the Whisper model which adds powerful features such as speaker identification custom vocabulary, summarization, and chapter generation.
+- [Whisper+](https://www.oneai.com/speech-to-text) - Extension of the Whisper model with speaker identification, custom vocabulary, summarization, and chapter generation.
 - [Replicate](https://replicate.com/openai/whisper) - Use Whisper running on Replicate.
 
 ## Related lists
