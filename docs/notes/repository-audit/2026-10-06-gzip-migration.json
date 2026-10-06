@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "status": "completed",
+  "date": "2026-10-06",
+  "timezone": "Asia/Tokyo",
+  "scope": "ユーザー指定の100MiB超過の未追跡レビューJSON2件のみをgzip保存へ移行。本文・判断内容・レビュー状態・入力ハッシュは変更しない。",
+  "files": [
+    {
+      "logicalPath": "docs/notes/document-import/awesome/editorial/v2026-08-23/github-agamm-awesome-developer-first-readme-md.json",
+      "storagePath": "docs/notes/document-import/awesome/editorial/v2026-08-23/github-agamm-awesome-developer-first-readme-md.json.gz",
+      "originalBytes": 196364766,
+      "compressedBytes": 17933326,
+      "decompressedSha256": "dd49bfb55447ba58dc9e6abdd599a1878889d8a01f7d5f94fad8301de8e8515b",
+      "gzipSha256": "01fd4d33eaef960a7c34f5f54e7659b6ec193d8083b121ad40104b720d074081",
+      "roundTripMatches": true,
+      "plainFileRemoved": true,
+      "sourceId": "github-agamm-awesome-developer-first-readme-md",
+      "originalMiB": 187.27,
+      "compressedMiB": 17.1,
+      "owner": "awesome/community"
+    },
+    {
+      "logicalPath": "docs/notes/document-import/awesome/editorial/v2026-08-23/github-szenergy-awesome-lidar-readme-md.json",
+      "storagePath": "docs/notes/document-import/awesome/editorial/v2026-08-23/github-szenergy-awesome-lidar-readme-md.json.gz",
+      "originalBytes": 158258420,
+      "compressedBytes": 13302914,
+      "decompressedSha256": "a094fe82934c8783a92beeb97c38069542516281ea53bed175a9141086201205",
+      "gzipSha256": "18eed83b7f8eb5a71659b6799ea03b04f15776245a3b04644db0f3fca564d5ef",
+      "roundTripMatches": true,
+      "plainFileRemoved": true,
+      "sourceId": "github-szenergy-awesome-lidar-readme-md",
+      "originalMiB": 150.93,
+      "compressedMiB": 12.69,
+      "owner": "awesome/systems"
+    }
+  ],
+  "storageContract": {
+    "logicalPath": "<version>/<sourceId>.json",
+    "physicalPath": "移行した2件は<version>/<sourceId>.json.gz",
+    "read": "editorial-utils.mjsのjsonは通常JSONとgzipを透過的に読み込む。jsonExistsは圧縮版も存在として判定。",
+    "write": "saveは明示した.json.gzまたは既存の圧縮版へgzip level9で保存し、同じディレクトリの一時ファイルから原子的に置換する。圧縮移行前の非圧縮版が残っていればgzip新規保存を拒否。",
+    "duplicates": "同じ記録の両形式があれば停止し、古い資料を黙って優先しない。gzip破損・JSON構文エラーも伝播。",
+    "references": "台帳・レビュー内の論理パスとハッシュは維持。元JSONは同一bytesの圧縮版を検証してから削除。圧縮ファイルはGitの除外対象ではない。"
+  },
+  "implementation": [
+    "scripts/importers/awesome/editorial-utils.mjs",
+    "scripts/importers/awesome/editorial-overlays.mjs",
+    "scripts/importers/awesome/validate-awesome-editorial.mjs",
+    "tests/runtime/awesome-editorial-json.test.js"
+  ],
+  "verification": {
+    "beforeReview": [
+      {
+        "sourceId": "github-agamm-awesome-developer-first-readme-md",
+        "status": 0,
+        "signal": null,
+        "stdout": "Awesome editorial validation: OK (1 pairs, 1 verified; 未レビューを完了扱いにしない)\n",
+        "stderr": ""
+      },
+      {
+        "sourceId": "github-szenergy-awesome-lidar-readme-md",
+        "status": 0,
+        "signal": null,
+        "stdout": "Awesome editorial validation: OK (1 pairs, 1 verified; 未レビューを完了扱いにしない)\n",
+        "stderr": ""
+      }
+    ],
+    "afterReview": [
+      {
+        "sourceId": "github-agamm-awesome-developer-first-readme-md",
+        "status": 0,
+        "stdout": "Awesome editorial validation: OK (1 pairs, 1 verified; 未レビューを完了扱いにしない)\n",
+        "stderr": "",
+        "logicalRead": true,
+        "saveRoundTripExact": true,
+        "regenerationHashMatches": true
+      },
+      {
+        "sourceId": "github-szenergy-awesome-lidar-readme-md",
+        "status": 0,
+        "stdout": "Awesome editorial validation: OK (1 pairs, 1 verified; 未レビューを完了扱いにしない)\n",
+        "stderr": "",
+        "logicalRead": true,
+        "saveRoundTripExact": true,
+        "regenerationHashMatches": true
+      }
+    ],
+    "workingTreeSizes": {
+      "mode": "working-tree",
+      "fileCount": 49277,
+      "totalBytes": 3374028347,
+      "warnBytes": 52428800,
+      "limitBytes": 104857600,
+      "largestFile": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-664/GENERATOR.zip",
+        "bytes": 46357829
+      },
+      "warnings": [],
+      "errors": []
+    },
+    "tests": {
+      "passed": 25,
+      "files": [
+        "tests/runtime/awesome-editorial-json.test.js",
+        "tests/runtime/awesome-editorial-overlays.test.js",
+        "tests/runtime/awesome-provenance-notes.test.js",
+        "tests/runtime/awesome-attribution-links.test.js"
+      ],
+      "newCases": 5,
+      "coverage": "通常/gzipの読み書き、UTF-8、論理/物理パス、決定的なgzip保存、形式重複、破損、serialize失敗時の既存保全、原子的置換失敗時cleanup、圧縮判断記録の表示トークン/ハッシュ検査"
+    },
+    "codeChecks": "変更したJS4ファイルのESLint・Prettier合格。25件のruntimeテスト実行で構文と読込も確認。移行記録と初回監査記録のPrettierも合格。",
+    "body": "2件を所有する異なる子アプリの英日再生成結果が判断記録のhashesと一致。既存内容レビューを移行前後とも--require-completeで確認し、双方exit0。実データは隔離コピーをsaveで更新して展開後SHAが元JSONと一致。",
+    "build": "本文・UI・ビルド出力を変更していないためサイトビルドは未実施。"
+  },
+  "unrelatedFailures": [
+    {
+      "test": "現行の外部リンク報告は移動に依存しない取得元IDで本文を照合する",
+      "reason": "既存EXTERNAL_LINK_REPORT.jsonが現在の英語定本と不一致。検査スクリプトの読込経路は今回変更した3つのgzip対応モジュールを使用せず、独立した既存報告検査でも同じ診断を確認。"
+    },
+    {
+      "test": "入れ子の本文・asset検査",
+      "reason": "隔離fixtureへのtranslation-link-labels.mjsコピー不足。gzip変更前の処理を復元した隔離コピーでも同じERR_MODULE_NOT_FOUND。"
+    },
+    {
+      "test": "入れ子出典生成",
+      "reason": "隔離fixtureへのeditorial-attribution-links.mjsコピー不足。gzip変更前の処理を復元した隔離コピーでも同じERR_MODULE_NOT_FOUND。"
+    }
+  ],
+  "remaining": "指定2件の移行残件なし。既存の所有先テスト3件の失敗は対象外として保持。ローカル保存用refsにある旧巨大blobやGit履歴は変更しない。commit/push/deploy未実施。"
+}

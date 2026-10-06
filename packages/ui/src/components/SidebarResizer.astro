@@ -273,12 +273,13 @@ const {
 
     // 折りたたみ/展開ボタンのクリックイベント
     const toggleCollapse = () => {
+      const widthBeforeToggle = sidebar.offsetWidth;
       const isCollapsed = sidebar.classList.toggle('sidebar-collapsed');
 
       if (isCollapsed) {
         // 現在の幅を一時保存
         if (!localStorage.getItem(`${storageKey}-width-before-collapse`)) {
-          localStorage.setItem(`${storageKey}-width-before-collapse`, sidebar.offsetWidth);
+          localStorage.setItem(`${storageKey}-width-before-collapse`, widthBeforeToggle);
         }
 
         // 折りたたみ幅に設定
@@ -287,8 +288,10 @@ const {
         // 以前の幅に戻す
         const widthBeforeCollapse =
           localStorage.getItem(`${storageKey}-width-before-collapse`) || initialWidth;
-        sidebar.style.width = `${widthBeforeCollapse}px`;
+        const restoredWidth = Number(widthBeforeCollapse);
+        sidebar.style.width = `${Math.min(maxWidth, Math.max(minWidth, Number.isFinite(restoredWidth) ? restoredWidth : initialWidth))}px`;
         localStorage.removeItem(`${storageKey}-width-before-collapse`);
+        sidebar.scrollLeft = 0;
       }
 
       // 折りたたみ状態をローカルストレージに保存

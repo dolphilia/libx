@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "properties": { "path": { "type": "string", "minLength": 1 }, "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" } },
+      "required": ["path", "sha256"],
+      "additionalProperties": false
+    },
+    "ids": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "cycle": { "type": "integer", "minimum": 1 },
+    "startedAt": { "type": "string", "minLength": 1 },
+    "endedAt": { "type": ["string", "null"] },
+    "result": { "enum": ["complete", "partial", "no-change"] },
+    "phase": { "type": "string", "minLength": 1 },
+    "model": {
+      "type": "object",
+      "properties": {
+        "configured": { "type": "string", "minLength": 1 },
+        "configurationEvidence": { "type": "string", "minLength": 1 },
+        "runtime": { "type": ["string", "null"] },
+        "runtimeStatus": { "type": "string", "minLength": 1 },
+        "localLLMUsed": { "type": "boolean" }
+      },
+      "required": ["configured", "configurationEvidence", "runtime", "runtimeStatus", "localLLMUsed"],
+      "additionalProperties": false
+    },
+    "tools": { "$ref": "#/$defs/notes" },
+    "inputs": { "type": "array", "items": { "$ref": "#/$defs/artifact" } },
+    "outputs": { "type": "array", "items": { "$ref": "#/$defs/artifact" } },
+    "discoveryIds": { "$ref": "#/$defs/ids" },
+    "detailIds": { "$ref": "#/$defs/ids" },
+    "newOperationIds": { "$ref": "#/$defs/ids" },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["passed", "failed", "pending"] },
+          "evidence": { "type": "array", "items": { "$ref": "#/$defs/artifact" } }
+        },
+        "required": ["name", "status", "evidence"],
+        "additionalProperties": false
+      }
+    },
+    "decisions": { "$ref": "#/$defs/notes" },
+    "unresolved": { "$ref": "#/$defs/notes" },
+    "nextAction": { "type": "string", "minLength": 1 },
+    "resumeCondition": { "type": "string", "minLength": 1 }
+  },
+  "required": ["schemaVersion", "id", "cycle", "startedAt", "endedAt", "result", "phase", "model", "tools", "inputs", "outputs", "discoveryIds", "detailIds", "newOperationIds", "checks", "decisions", "unresolved", "nextAction", "resumeCondition"],
+  "additionalProperties": true
+}

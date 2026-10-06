@@ -43,6 +43,9 @@ export interface LicenseSource {
   id: string;
   name: string;
   author: string;
+  copyrightNotice?: string;
+  provenanceNotes?: Array<{ en: string; ja: string }>;
+  attributionLinks?: Array<{ url: string; label: { en: string; ja: string } }>;
   license: string;
   licenseUrl: string;
   sourceUrl: string;
@@ -290,6 +293,26 @@ function isLicensingConfig(value: unknown): value is LicensingConfig {
       isNonEmptyString(source.id) &&
       isNonEmptyString(source.name) &&
       isNonEmptyString(source.author) &&
+      isOptionalString(source.copyrightNotice) &&
+      (source.provenanceNotes === undefined ||
+        (Array.isArray(source.provenanceNotes) &&
+          source.provenanceNotes.every(
+            (note) => isRecord(note) && isNonEmptyString(note.en) && isNonEmptyString(note.ja)
+          ))) &&
+      (source.attributionLinks === undefined ||
+        (Array.isArray(source.attributionLinks) &&
+          source.attributionLinks.every(
+            (link) =>
+              isRecord(link) &&
+              isNonEmptyString(link.url) &&
+              (/^https?:\/\//.test(link.url) ||
+                (link.url.startsWith('/') &&
+                  !link.url.startsWith('//') &&
+                  !link.url.includes('\\'))) &&
+              isRecord(link.label) &&
+              isNonEmptyString(link.label.en) &&
+              isNonEmptyString(link.label.ja)
+          ))) &&
       isNonEmptyString(source.license) &&
       isNonEmptyString(source.licenseUrl) &&
       isNonEmptyString(source.sourceUrl)

@@ -22,6 +22,11 @@ export const docsSchema = z
     prev: z.object({ text: z.string(), link: z.string() }).optional(),
     next: z.object({ text: z.string(), link: z.string() }).optional(),
     licenseSource: z.string().optional(),
+    documentContext: z.array(z.object({
+      kind: z.enum(['source', 'editorial']),
+      html: z.string().min(1),
+      context: z.object({ anchor: z.string().min(1), label: z.string().min(1) }).strict().optional(),
+    }).strict()).optional(),
     toc: z
       .object({
         minLevel: z.number().int().min(2).max(6).optional(),

@@ -1,0 +1,292 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "effectiveDate": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "preferred": {
+          "const": "gpt-6.1-sol"
+        },
+        "localLLMAllowed": {
+          "const": false
+        }
+      },
+      "required": [
+        "preferred",
+        "localLLMAllowed"
+      ],
+      "additionalProperties": false
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "discovery": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "detail": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "newPerCycle": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "activeNew": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "awaitingRelease": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "eligible": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "readyUpdates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "oldUpdateDays": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "monitorProjects": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "monitorMinutes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "discovery",
+        "detail",
+        "newPerCycle",
+        "activeNew",
+        "active",
+        "awaitingRelease",
+        "eligible",
+        "readyUpdates",
+        "oldUpdateDays",
+        "monitorProjects",
+        "monitorMinutes"
+      ],
+      "additionalProperties": false
+    },
+    "minimumScore": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "weights": {
+      "type": "object",
+      "properties": {
+        "additionalValue": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "practicality": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "quality": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maintenance": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reuse": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "additionalValue",
+        "practicality",
+        "quality",
+        "maintenance",
+        "reuse"
+      ],
+      "additionalProperties": false
+    },
+    "intervalDays": {
+      "type": "object",
+      "properties": {
+        "monitor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidate": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "monitor",
+        "candidate"
+      ],
+      "additionalProperties": false
+    },
+    "externalPublication": {
+      "enum": [
+        "requires-user-instruction",
+        "authorized-verified-awaiting-release"
+      ]
+    },
+    "scheduling": {
+      "const": "not-requested"
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "licenseHandling": {
+      "type": "object",
+      "properties": {
+        "fallback": {
+          "const": "software-license-with-annotation"
+        },
+        "annotationRequired": {
+          "const": true
+        },
+        "preserveOriginalNotice": {
+          "const": true
+        },
+        "explicitConditionsTakePriority": {
+          "const": true
+        }
+      },
+      "required": [
+        "fallback",
+        "annotationRequired",
+        "preserveOriginalNotice",
+        "explicitConditionsTakePriority"
+      ],
+      "additionalProperties": false
+    },
+    "publicationRules": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "const": "registered-verified-awaiting-release"
+        },
+        "platform": {
+          "const": "integrated-cloudflare-pages"
+        },
+        "additionalApprovalRequired": {
+          "const": false
+        },
+        "revalidateCurrentEvidence": {
+          "const": true
+        },
+        "isolateUnrelatedChanges": {
+          "const": true
+        },
+        "respectGoalPause": {
+          "const": true
+        }
+      },
+      "required": [
+        "scope",
+        "platform",
+        "additionalApprovalRequired",
+        "revalidateCurrentEvidence",
+        "isolateUnrelatedChanges",
+        "respectGoalPause"
+      ],
+      "additionalProperties": false
+    },
+    "workPriority": {
+      "enum": [
+        "maintenance-first",
+        "new-projects-first"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "plan",
+    "effectiveDate",
+    "model",
+    "limits",
+    "minimumScore",
+    "weights",
+    "intervalDays",
+    "externalPublication",
+    "scheduling",
+    "changes"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "externalPublication": {
+            "const": "authorized-verified-awaiting-release"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "authorization",
+          "publicationRules",
+          "licenseHandling"
+        ]
+      }
+    }
+  ]
+}

@@ -5,28 +5,51 @@ import { resolveApp } from '../packages/project-config/src/app-registry.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
+import { parseFragment } from 'parse5';
+import { createRequire } from 'node:module';
 import { commitPreparedDirectory } from './selective-output.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MAX_INDEX_BYTES = 2 * 1024 * 1024;
+// Use the parser and slugger already pinned by Astro's Markdown renderer.
+const require = createRequire(import.meta.url);
+const astroRequire = createRequire(require.resolve('astro/package.json'));
+const markdownRequire = createRequire(astroRequire.resolve('@astrojs/markdown-remark'));
+const [{ unified }, { default: remarkParse }, { default: GithubSlugger }] = await Promise.all([
+  import(markdownRequire.resolve('unified')),
+  import(markdownRequire.resolve('remark-parse')),
+  import(markdownRequire.resolve('github-slugger')),
+]);
+const markdown = unified().use(remarkParse);
+const walkMarkdown = (node) => [node, ...(node.children ?? []).flatMap(walkMarkdown)];
+const htmlText = (node) => node.value ?? (node.childNodes ?? []).map(htmlText).join('');
+const headingText = (node) =>
+  node.type === 'html'
+    ? htmlText(parseFragment(node.value))
+    : (node.value ?? (node.children ?? []).map(headingText).join(''));
 
 function stripMarkdown(value) {
-  return value
+  const withoutMarkup = value
     .replace(/<a\s+id=["'][^"']+["']\s*><\/a>/gi, '')
     .replace(/<[^>]+>/g, ' ')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-    .replace(/[`*_~>#|]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1');
+  // Decode HTML text before stripping Markdown delimiters, which would split
+  // numeric references such as &#95; inside API names. Remove real markup
+  // first so encoded <tags> remain searchable text rather than disappearing.
+  return (
+    htmlText(parseFragment(withoutMarkup))
+      // Preserve underscores inside API identifiers while removing emphasis delimiters.
+      .replace(/(?<![\p{Letter}\p{Number}])_+|_+(?![\p{Letter}\p{Number}])/gu, ' ')
+      .replace(/[`*~>#|]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+  );
 }
 
 export function slugifyHeading(value) {
-  return stripMarkdown(value)
-    .toLocaleLowerCase('en')
-    .replace(/[^\p{Letter}\p{Number}\s_-]/gu, '')
-    .trim()
-    .replace(/\s+/g, '-');
+  const heading = markdown.parse(`# ${value}`).children.find((node) => node.type === 'heading');
+  return new GithubSlugger().slug(heading ? headingText(heading) : value);
 }
 
 export function extractSearchEntry(source, relativePath, baseUrl, version, lang) {
@@ -35,29 +58,72 @@ export function extractSearchEntry(source, relativePath, baseUrl, version, lang)
     .replace(/\.(?:md|mdx)$/i, '')
     .split(path.sep)
     .join('/');
-  const headings = [...content.matchAll(/^(#{1,6})\s+(.+)$/gm)].map((match) => {
-    const explicitId = match[2].match(/<a\s+id=["']([^"']+)["']/i)?.[1];
-    const text = stripMarkdown(match[2]);
-    return { text, slug: explicitId ?? slugifyHeading(match[2]) };
-  });
-  const anchors = [...content.matchAll(/<a\s+id=["']([^"']+)["']/gi)].map((match) => match[1]);
+  const ast = markdown.parse(content);
+  const markdownNodes = walkMarkdown(ast);
+  const slugger = new GithubSlugger();
+  const headings = markdownNodes
+    .filter((node) => node.type === 'heading')
+    .map((node) => {
+      const text = headingText(node);
+      const slug = slugger.slug(text);
+      const explicitId = node.children
+        .filter((child) => child.type === 'html')
+        .map((child) => child.value.match(/<a\s+id=["']([^"']+)["']/i)?.[1])
+        .find(Boolean);
+      return { text, slug: explicitId ?? slug };
+    });
+  const walk = (node) => [node, ...(node.childNodes ?? []).flatMap(walk)];
+  // Remove only Markdown code ranges; keep text inside real inline HTML links.
+  let anchorContent = content;
+  const codeRanges = markdownNodes
+    .filter((node) => node.type === 'code' || node.type === 'inlineCode')
+    .map((node) => [node.position.start.offset, node.position.end.offset])
+    .sort((a, b) => b[0] - a[0]);
+  for (const [start, end] of codeRanges)
+    anchorContent = anchorContent.slice(0, start) + anchorContent.slice(end);
+  const nodes = walk(parseFragment(anchorContent));
+  const attr = (node, name) => node.attrs?.find((value) => value.name === name)?.value;
+  const nodeText = (node) => node.value ?? (node.childNodes ?? []).map(nodeText).join('');
+  const anchors = nodes
+    .flatMap((node) => [attr(node, 'id'), node.tagName === 'a' ? attr(node, 'name') : undefined])
+    .filter(Boolean);
   const identifiers = [
     ...content.matchAll(
-      /\b(?:luaL?_[A-Za-z0-9_]+|LUA_[A-Z0-9_]+|glfw[A-Za-z0-9_]+|GLFW_[A-Z0-9_]+)\b/g
+      /\b(?:luaL?_[A-Za-z0-9_]+|LUA_[A-Z0-9_]+|glfw[A-Za-z0-9_]+|GLFW_[A-Z0-9_]+|xml_[A-Za-z0-9_]+|xpath_[A-Za-z0-9_]+|PUGIXML_[A-Z0-9_]+)\b/g
     ),
   ].map((match) => match[0]);
   const uniqueIdentifiers = [...new Set(identifiers)];
+  const url = `${baseUrl.replace(/\/$/, '')}/${version}/${lang}/${route}/`;
+  const symbols = uniqueIdentifiers.flatMap((name) => {
+    let anchor = anchors.find((value) => value === name || value.endsWith(`-${name}`));
+    if (!anchor) {
+      for (const node of nodes) {
+        if (node.tagName !== 'a' || nodeText(node).trim() !== name) continue;
+        const href = attr(node, 'href');
+        if (!href) continue;
+        const target = new URL(href, `https://index.invalid${url}`);
+        const candidate = decodeURIComponent(target.hash.slice(1));
+        if (
+          target.origin === 'https://index.invalid' &&
+          target.pathname.replace(/\/$/, '') === url.replace(/\/$/, '') &&
+          anchors.includes(candidate)
+        ) {
+          anchor = candidate;
+          break;
+        }
+      }
+    }
+    // Mentions still match body text; only real local targets get exact-symbol ranking.
+    return anchor ? [{ name, anchor }] : [];
+  });
   return {
     title: String(data.title ?? headings[0]?.text ?? route),
     description: String(data.description ?? ''),
-    url: `${baseUrl.replace(/\/$/, '')}/${version}/${lang}/${route}/`,
+    url,
     headings,
     anchors: [...new Set(anchors)],
-    identifiers: uniqueIdentifiers,
-    symbols: uniqueIdentifiers.map((name) => ({
-      name,
-      anchor: anchors.find((anchor) => anchor === name || anchor.endsWith(`-${name}`)) ?? name,
-    })),
+    identifiers: symbols.map((symbol) => symbol.name),
+    symbols,
     text: stripMarkdown(content),
   };
 }

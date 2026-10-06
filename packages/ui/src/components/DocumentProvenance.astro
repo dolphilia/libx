@@ -8,9 +8,10 @@ interface Props {
   lang: LocaleKey;
   version: string;
   licenseSource?: string;
+  documentContext?: Array<{ kind: 'source' | 'editorial'; html: string; context?: { anchor: string; label: string } }>;
 }
 
-const { projectConfig, lang, version, licenseSource } = Astro.props;
+const { projectConfig, lang, version, licenseSource, documentContext = [] } = Astro.props;
 const licensing = projectConfig.licensing;
 const sourceId = licenseSource ?? licensing.defaultSource;
 const source = licensing.sources.find((item: LicenseSource) => item.id === sourceId);
@@ -37,16 +38,20 @@ const attributionText = getLicenseTemplate(
 ---
 
 {
-  licensing.showAttribution && (
+  (licensing.showAttribution || documentContext.length > 0) && (
     <aside class="document-provenance" aria-labelledby="document-provenance-title">
       <div class="provenance-header">
-        <h2 id="document-provenance-title">{translate('sourceStatus.title', lang)}</h2>
+        <h2 id="document-provenance-title">{documentContext.length > 0 || Astro.slots.has('default') ? (lang === 'ja' ? '出典・編集注記' : 'Source and editorial notes') : translate('sourceStatus.title', lang)}</h2>
         <span class="provenance-status">
           {translate(isCanonical ? 'sourceStatus.canonical' : 'sourceStatus.translation', lang)}
         </span>
       </div>
 
       <p class="attribution-text">{attributionText}</p>
+      {source.copyrightNotice && <p class="attribution-text">{source.copyrightNotice}</p>}
+      {source.provenanceNotes?.map((note) => (
+        <p class="attribution-text">{lang === 'ja' ? note.ja : note.en}</p>
+      ))}
 
       <dl class="provenance-metadata">
         <div>
@@ -70,7 +75,21 @@ const attributionText = getLicenseTemplate(
         <a href={source.licenseUrl} target="_blank" rel="noopener">
           {source.license} {translate('license.links.license', lang)}
         </a>
+        {source.attributionLinks?.map((link) => (
+          <a href={link.url} target="_blank" rel="noopener">
+            {lang === 'ja' ? link.label.ja : link.label.en}
+          </a>
+        ))}
       </div>
+      {documentContext.some((note) => note.kind === 'editorial') && <p class="attribution-text">{lang === 'ja' ? '編集注記中の位置表現（上・下など）は、移動前の本文中の位置を指します。対象箇所のリンクから本文を確認できます。' : 'Positional wording in editorial notes (above or below) refers to the original location in the document. Follow the section link to read it in context.'}</p>}
+      {documentContext.map((note) => (
+        <details class="page-document-context" data-context-kind={note.kind}>
+          <summary>{note.kind === 'source' ? (lang === 'ja' ? 'ページの出典詳細' : 'Page source details') : (lang === 'ja' ? '原文に関する編集注記' : 'Editorial notes on the source')}{note.context && ` — ${note.context.label}`}</summary>
+          {note.context && <p>{lang === 'ja' ? '対象箇所：' : 'Section: '}<a href={`#${note.context.anchor}`}>{note.context.label}</a></p>}
+          <div class="sl-markdown-content" set:html={note.html} />
+        </details>
+      ))}
+      <slot />
     </aside>
   )
 }
@@ -82,6 +101,13 @@ const attributionText = getLicenseTemplate(
     border-block-start: 1px solid var(--sl-color-hairline);
     color: var(--sl-color-gray-2);
     font-size: var(--sl-text-sm);
+  }
+
+  summary { cursor: pointer; color: var(--sl-color-white); font-weight: 600; }
+  details[open] > summary { margin-block-end: 1rem; }
+  .page-document-context { margin-block-start: 1rem; overflow-wrap: anywhere; }
+  @media print {
+    details::details-content { content-visibility: visible; }
   }
 
   .provenance-header {
@@ -153,7 +179,7 @@ const attributionText = getLicenseTemplate(
   }
 
   @media (max-width: 40rem) {
-    .provenance-header {
+      .provenance-header {
       align-items: flex-start;
     }
 
