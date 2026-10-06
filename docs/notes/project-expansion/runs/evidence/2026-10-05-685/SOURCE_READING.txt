@@ -1,0 +1,3667 @@
+## api.html
+API documentation
+Error handling
+Version-checking macros and functions
+uv_loop_t
+— Event loop
+uv_handle_t
+— Base handle
+uv_req_t
+— Base request
+uv_timer_t
+— Timer handle
+uv_prepare_t
+— Prepare handle
+uv_check_t
+— Check handle
+uv_idle_t
+— Idle handle
+uv_async_t
+— Async handle
+uv_poll_t
+— Poll handle
+uv_signal_t
+— Signal handle
+uv_process_t
+— Process handle
+uv_stream_t
+— Stream handle
+uv_tcp_t
+— TCP handle
+uv_pipe_t
+— Pipe handle
+uv_tty_t
+— TTY handle
+uv_udp_t
+— UDP handle
+uv_fs_event_t
+— FS Event handle
+uv_fs_poll_t
+— FS Poll handle
+File system operations
+Thread pool work scheduling
+DNS utility functions
+Shared library handling
+Threading and synchronization utilities
+Miscellaneous utilities
+Metrics operations
+
+## design.html
+Design overview
+libuv is cross-platform support library which was originally written for
+Node.js
+. It’s designed
+around the event-driven asynchronous I/O model.
+The library provides much more than a simple abstraction over different I/O polling mechanisms:
+‘handles’ and ‘streams’ provide a high level abstraction for sockets and other entities;
+cross-platform file I/O and threading functionality is also provided, amongst other things.
+Here is a diagram illustrating the different parts that compose libuv and what subsystem they
+relate to:
+Handles and requests
+libuv provides users with 2 abstractions to work with, in combination with the event loop:
+handles and requests.
+Handles represent long-lived objects capable of performing certain operations while active. Some examples:
+A prepare handle gets its callback called once every loop iteration when active.
+A TCP server handle that gets its connection callback called every time there is a new connection.
+Requests represent (typically) short-lived operations. These operations can be performed over a
+handle: write requests are used to write data on a handle; or standalone: getaddrinfo requests
+don’t need a handle they run directly on the loop.
+Guidelines for dealing with handles and requests:
+If
+uv_foo_init()
+succeeds in initializing the handle, you must call
+uv_close()
+. If the handle’s init function errors, you don’t
+need to do anything.
+Only handles are closed, not requests. For example,
+uv_tcp_t
+is a handle,
+uv_write_t
+is a request.
+The handle’s memory can only be reclaimed or reused from inside the
+uv_close_cb
+or afterwards, not before.
+Most handles have init + start/stop functions; some handles don’t.
+Example:
+uv_tcp_t
+vs.
+uv_process_t
+;
+uv_spawn()
+combines handle initialization and process start into one.
+Requests are closed automatically when they complete, or when they are
+cancelled with
+uv_cancel()
+.
+No additional cleanup is needed except for
+uv_fs_t
+and
+uv_getaddrinfo_t
+requests. For
+uv_fs_t
+, call
+uv_fs_req_cleanup()
+once you are done with it; for
+uv_getaddrinfo_t
+, that’s
+uv_freeaddrinfo()
+.
+The request’s memory can only be reclaimed or reused from that point onward.
+The I/O loop
+The I/O (or event) loop is the central part of libuv. It establishes the content for all I/O
+operations, and it’s meant to be tied to a single thread. One can run multiple event loops
+as long as each runs in a different thread. The libuv event loop (or any other API involving
+the loop or handles, for that matter)
+is not thread-safe
+except where stated otherwise.
+The event loop follows the rather usual single threaded asynchronous I/O approach: all (network)
+I/O is performed on non-blocking sockets which are polled using the best mechanism available
+on the given platform: epoll on Linux, kqueue on OSX and other BSDs, event ports on SunOS and IOCP
+on Windows. As part of a loop iteration the loop will block waiting for I/O activity on sockets
+which have been added to the poller and callbacks will be fired indicating socket conditions
+(readable, writable hangup) so handles can read, write or perform the desired I/O operation.
+In order to better understand how the event loop operates, the following diagram illustrates all
+stages of a loop iteration:
+The loop concept of ‘now’ is initially set.
+Due timers are run if the loop was run with
+UV_RUN_DEFAULT
+. All active timers scheduled
+for a time before the loop’s concept of
+now
+get their callbacks called.
+If the loop is
+alive
+an iteration is started, otherwise the loop will exit immediately. So,
+when is a loop considered to be
+alive
+? If a loop has active and ref’d handles, active
+requests or closing handles it’s considered to be
+alive
+.
+Pending callbacks are called. All I/O callbacks are called right after polling for I/O, for the
+most part. There are cases, however, in which calling such a callback is deferred for the next
+loop iteration. If the previous iteration deferred any I/O callback it will be run at this point.
+Idle handle callbacks are called. Despite the unfortunate name, idle handles are run on every
+loop iteration, if they are active.
+Prepare handle callbacks are called. Prepare handles get their callbacks called right before
+the loop will block for I/O.
+Poll timeout is calculated. Before blocking for I/O the loop calculates for how long it should
+block. These are the rules when calculating the timeout:
+If the loop was run with the
+UV_RUN_NOWAIT
+flag, the timeout is 0.
+If the loop is going to be stopped (
+uv_stop()
+was called), the timeout is 0.
+If there are no active handles or requests, the timeout is 0.
+If there are any idle handles active, the timeout is 0.
+If there are any handles pending to be closed, the timeout is 0.
+If none of the above cases matches, the timeout of the closest timer is taken, or
+if there are no active timers, infinity.
+The loop blocks for I/O. At this point the loop will block for I/O for the duration calculated
+in the previous step. All I/O related handles that were monitoring a given file descriptor
+for a read or write operation get their callbacks called at this point.
+Check handle callbacks are called. Check handles get their callbacks called right after the
+loop has blocked for I/O. Check handles are essentially the counterpart of prepare handles.
+Close callbacks are called. If a handle was closed by calling
+uv_close()
+it will
+get the close callback called.
+The loop concept of ‘now’ is updated.
+Due timers are run. Note that ‘now’ is not updated again until the next loop iteration.
+So if a timer became due while other timers were being processed, it won’t be run until
+the following event loop iteration.
+Iteration ends. If the loop was run with
+UV_RUN_NOWAIT
+or
+UV_RUN_ONCE
+modes the
+iteration ends and
+uv_run()
+will return. If the loop was run with
+UV_RUN_DEFAULT
+it will continue from the start if it’s still
+alive
+, otherwise it will also end.
+Important
+libuv uses a thread pool to make asynchronous file I/O operations possible, but
+network I/O is
+always
+performed in a single thread, each loop’s thread.
+Note
+While the polling mechanism is different, libuv makes the execution model consistent
+across Unix systems and Windows.
+File I/O
+Unlike network I/O, there are no platform-specific file I/O primitives libuv could rely on,
+so the current approach is to run blocking file I/O operations in a thread pool.
+For a thorough explanation of the cross-platform file I/O landscape, check out
+this post
+.
+libuv currently uses a global thread pool on which all loops can queue work. 3 types of
+operations are currently run on this pool:
+File system operations
+DNS functions (getaddrinfo and getnameinfo)
+User specified code via
+uv_queue_work()
+Warning
+See the
+Thread pool work scheduling
+section for more details, but keep in mind the thread pool size
+is quite limited.
+
+## dns.html
+DNS utility functions
+libuv provides asynchronous variants of
+getaddrinfo
+and
+getnameinfo
+.
+Data types
+type
+uv_getaddrinfo_t
+getaddrinfo
+request type.
+typedef
+void
+(
+*
+uv_getaddrinfo_cb
+)
+(
+uv_getaddrinfo_t
+*
+req
+,
+int
+status
+,
+struct
+addrinfo
+*
+res
+)
+Callback which will be called with the getaddrinfo request result once
+complete. In case it was cancelled,
+status
+will have a value of
+UV_ECANCELED
+.
+type
+uv_getnameinfo_t
+getnameinfo
+request type.
+typedef
+void
+(
+*
+uv_getnameinfo_cb
+)
+(
+uv_getnameinfo_t
+*
+req
+,
+int
+status
+,
+const
+char
+*
+hostname
+,
+const
+char
+*
+service
+)
+Callback which will be called with the getnameinfo request result once
+complete. In case it was cancelled,
+status
+will have a value of
+UV_ECANCELED
+.
+Public members
+uv_loop_t
+*
+uv_getaddrinfo_t
+.
+loop
+Loop that started this getaddrinfo request and where completion will be
+reported. Readonly.
+struct
+addrinfo
+*
+uv_getaddrinfo_t
+.
+addrinfo
+Pointer to a
+struct addrinfo
+containing the result. Must be freed by the user
+with
+uv_freeaddrinfo()
+.
+Changed in version 1.3.0:
+the field is declared as public.
+uv_loop_t
+*
+uv_getnameinfo_t
+.
+loop
+Loop that started this getnameinfo request and where completion will be
+reported. Readonly.
+char[NI_MAXHOST]
+uv_getnameinfo_t.host
+Char array containing the resulting host. It’s null terminated.
+Changed in version 1.3.0:
+the field is declared as public.
+char[NI_MAXSERV]
+uv_getnameinfo_t.service
+Char array containing the resulting service. It’s null terminated.
+Changed in version 1.3.0:
+the field is declared as public.
+See also
+The
+uv_req_t
+members also apply.
+API
+int
+uv_getaddrinfo
+(
+uv_loop_t
+*
+loop
+,
+uv_getaddrinfo_t
+*
+req
+,
+uv_getaddrinfo_cb
+getaddrinfo_cb
+,
+const
+char
+*
+node
+,
+const
+char
+*
+service
+,
+const
+struct
+addrinfo
+*
+hints
+)
+Asynchronous
+getaddrinfo(3)
+.
+Either node or service may be NULL but not both.
+hints
+is a pointer to a struct addrinfo with additional address type
+constraints, or NULL. Consult
+man -s 3 getaddrinfo
+for more details.
+Returns 0 on success or an error code < 0 on failure. If successful, the
+callback will get called sometime in the future with the lookup result,
+which is either:
+status == 0, the res argument points to a valid
+struct addrinfo
+, or
+status < 0, the res argument is NULL. See the UV_EAI_* constants.
+Call
+uv_freeaddrinfo()
+to free the addrinfo structure.
+Changed in version 1.3.0:
+the callback parameter is now allowed to be NULL,
+in which case the request will run
+synchronously
+.
+void
+uv_freeaddrinfo
+(
+struct
+addrinfo
+*
+ai
+)
+Free the struct addrinfo. Passing NULL is allowed and is a no-op.
+int
+uv_getnameinfo
+(
+uv_loop_t
+*
+loop
+,
+uv_getnameinfo_t
+*
+req
+,
+uv_getnameinfo_cb
+getnameinfo_cb
+,
+const
+struct
+sockaddr
+*
+addr
+,
+int
+flags
+)
+Asynchronous
+getnameinfo(3)
+.
+Returns 0 on success or an error code < 0 on failure. If successful, the
+callback will get called sometime in the future with the lookup result.
+Consult
+man -s 3 getnameinfo
+for more details.
+Changed in version 1.3.0:
+the callback parameter is now allowed to be NULL,
+in which case the request will run
+synchronously
+.
+See also
+The
+uv_req_t
+API functions also apply.
+
+## guide/about.html
+About
+Nikhil Marathe
+started writing this book one
+afternoon (June 16, 2012) when he didn’t feel like programming. He had recently
+been stung by the lack of good documentation on libuv while working on
+node-taglib
+. Although reference
+documentation was present, there were no comprehensive tutorials. This book is
+the output of that need and tries to be accurate. That said, the book may have
+mistakes. Pull requests are encouraged.
+Nikhil is indebted to Marc Lehmann’s comprehensive
+man page
+about libev which
+describes much of the semantics of the two libraries.
+This book was made using
+Sphinx
+and
+vim
+.
+Note
+In 2017 the libuv project incorporated the Nikhil’s work into the official
+documentation and it’s maintained there henceforth.
+
+## guide/basics.html
+Basics of libuv
+libuv enforces an
+asynchronous
+,
+event-driven
+style of programming.  Its
+core job is to provide an event loop and callback based notifications of I/O
+and other activities.  libuv offers core utilities like timers, non-blocking
+networking support, asynchronous file system access, child processes and more.
+Event loops
+In event-driven programming, an application expresses interest in certain events
+and respond to them when they occur. The responsibility of gathering events
+from the operating system or monitoring other sources of events is handled by
+libuv, and the user can register callbacks to be invoked when an event occurs.
+The event-loop usually keeps running
+forever
+. In pseudocode:
+Some examples of events are:
+File is ready for writing
+A socket has data ready to be read
+A timer has timed out
+This event loop is encapsulated by
+uv_run()
+– the end-all function when using
+libuv.
+The most common activity of systems programs is to deal with input and output,
+rather than a lot of number-crunching. The problem with using conventional
+input/output functions (
+read
+,
+fprintf
+, etc.) is that they are
+blocking
+. The actual write to a hard disk or reading from a network, takes
+a disproportionately long time compared to the speed of the processor. The
+functions don’t return until the task is done, so that your program is doing
+nothing. For programs which require high performance this is a major roadblock
+as other activities and other I/O operations are kept waiting.
+One of the standard solutions is to use threads. Each blocking I/O operation is
+started in a separate thread (or in a thread pool). When the blocking function
+gets invoked in the thread, the operating system can schedule another thread to run,
+which actually needs the CPU.
+The approach followed by libuv uses another style, which is the
+asynchronous,
+non-blocking
+style. Most modern operating systems provide event notification
+subsystems. For example, a normal
+read
+call on a socket would block until
+the sender actually sent something. Instead, the application can request the
+operating system to watch the socket and put an event notification in the
+queue. The application can inspect the events at its convenience (perhaps doing
+some number crunching before to use the processor to the maximum) and grab the
+data. It is
+asynchronous
+because the application expressed interest at one
+point, then used the data at another point (in time and space). It is
+non-blocking
+because the application process was free to do other tasks.
+This fits in well with libuv’s event-loop approach, since the operating system
+events can be treated as just another libuv event. The non-blocking ensures
+that other events can continue to be handled as fast as they come in
+[
+1
+]
+.
+Note
+How the I/O is run in the background is not of our concern, but due to the
+way our computer hardware works, with the thread as the basic unit of the
+processor, libuv and OSes will usually run background/worker threads and/or
+polling to perform tasks in a non-blocking manner.
+Bert Belder, one of the libuv core developers, has a small video explaining the
+architecture of libuv and its background. If you have no prior experience with
+libuv, it is a quick, useful watch.
+libuv’s event loop is explained in more detail in the
+documentation
+.
+Hello World
+With the basics out of the way, let’s write our first libuv program. It does
+nothing, except start a loop which will exit immediately.
+helloworld/main.c
+This program quits immediately because it has no events to process. A libuv
+event loop has to be told to watch out for events using the various API
+functions.
+Starting with libuv v1.0, users should allocate the memory for the loops before
+initializing it with
+uv_loop_init(uv_loop_t
+*)
+. This allows you to plug in
+custom memory management. Remember to de-initialize the loop using
+uv_loop_close(uv_loop_t
+*)
+and then delete the storage. The examples never
+close loops since the program quits after the loop ends and the system will
+reclaim memory. Production grade projects, especially long running systems
+programs, should take care to release correctly.
+Default loop
+A default loop is provided by libuv and can be accessed using
+uv_default_loop()
+. You should use this loop if you only want a single
+loop.
+default-loop/main.c
+Note
+node.js uses the default loop as its main loop. If you are writing bindings
+you should be aware of this.
+Error handling
+Initialization functions or synchronous functions which may fail return a negative number on error. Async functions that may fail will pass a status parameter to their callbacks. The error messages are defined as
+UV_E*
+constants
+.
+You can use the
+uv_strerror(int)
+and
+uv_err_name(int)
+functions
+to get a
+const
+char
+*
+describing the error or the error name respectively.
+I/O read callbacks (such as for files and sockets) are passed a parameter
+nread
+. If
+nread
+is less than 0, there was an error (UV_EOF is the end of file error, which you may want to handle differently).
+Handles and Requests
+libuv works by the user expressing interest in particular events. This is
+usually done by creating a
+handle
+to an I/O device, timer or process.
+Handles are opaque structs named as
+uv_TYPE_t
+where type signifies what the
+handle is used for.
+libuv watchers
+Handles represent long-lived objects. Async operations on such handles are
+identified using
+requests
+. A request is short-lived (usually used across
+only one callback) and usually indicates one I/O operation on a handle.
+Requests are used to preserve context between the initiation and the callback
+of individual actions. For example, an UDP socket is represented by
+a
+uv_udp_t
+, while individual writes to the socket use a
+uv_udp_send_t
+structure that is passed to the callback after the write is done.
+Handles are setup by a corresponding:
+function.
+Callbacks are functions which are called by libuv whenever an event the watcher
+is interested in has taken place. Application specific logic will usually be
+implemented in the callback. For example, an IO watcher’s callback will receive
+the data read from a file, a timer callback will be triggered on timeout and so
+on.
+Idling
+Here is an example of using an idle handle. The callback is called once on
+every turn of the event loop. A use case for idle handles is discussed in
+Utilities
+. Let us use an idle watcher to look at the watcher life cycle
+and see how
+uv_run()
+will now block because a watcher is present. The idle
+watcher is stopped when the count is reached and
+uv_run()
+exits since no
+event watchers are active.
+idle-basic/main.c
+Storing context
+In callback based programming style you’ll often want to pass some ‘context’ –
+application specific information – between the call site and the callback. All
+handles and requests have a
+void*
+data
+member which you can set to the
+context and cast back in the callback. This is a common pattern used throughout
+the C library ecosystem. In addition
+uv_loop_t
+also has a similar data
+member.
+[
+1
+]
+Depending on the capacity of the hardware of course.
+
+## guide/eventloops.html
+Advanced event loops
+libuv provides considerable user control over event loops, and you can achieve
+interesting results by juggling multiple loops. You can also embed libuv’s
+event loop into another event loop based library – imagine a Qt based UI, and
+Qt’s event loop driving a libuv backend which does intensive system level
+tasks.
+Stopping an event loop
+uv_stop()
+can be used to stop an event loop. The earliest the loop will
+stop running is
+on the next iteration
+, possibly later. This means that events
+that are ready to be processed in this iteration of the loop will still be
+processed, so
+uv_stop()
+can’t be used as a kill switch. When
+uv_stop()
+is called, the loop
+won’t
+block for i/o on this iteration. The semantics of
+these things can be a bit difficult to understand, so let’s look at
+uv_run()
+where all the control flow occurs.
+src/unix/core.c - uv_run
+stop_flag
+is set by
+uv_stop()
+. Now all libuv callbacks are invoked
+within the event loop, which is why invoking
+uv_stop()
+in them will still
+lead to this iteration of the loop occurring. First libuv updates timers, then
+runs pending timer, idle and prepare callbacks, and invokes any pending I/O
+callbacks. If you were to call
+uv_stop()
+in any of them,
+stop_flag
+would be set. This causes
+uv_backend_timeout()
+to return
+0
+, which is
+why the loop does not block on I/O. If on the other hand, you called
+uv_stop()
+in one of the check handlers, I/O has already finished and is not
+affected.
+uv_stop()
+is useful to shutdown a loop when a result has been computed or
+there is an error, without having to ensure that all handlers are stopped one
+by one.
+Here is a simple example that stops the loop and demonstrates how the current
+iteration of the loop still takes places.
+uvstop/main.c
+
+## guide/filesystem.html
+Filesystem
+Simple filesystem read/write is achieved using the
+uv_fs_*
+functions and the
+uv_fs_t
+struct.
+Note
+The libuv filesystem operations are different from
+socket operations
+. Socket operations use the non-blocking operations provided
+by the operating system. Filesystem operations use blocking functions
+internally, but invoke these functions in a
+thread pool
+and notify
+watchers registered with the event loop when application interaction is
+required.
+All filesystem functions have two forms -
+synchronous
+and
+asynchronous
+.
+The
+synchronous
+forms automatically get called (and
+block
+) if the
+callback is null. The return value of functions is a
+libuv error code
+. This is usually only useful for synchronous calls.
+The
+asynchronous
+form is called when a callback is passed and the return
+value is 0.
+Reading/Writing files
+A file descriptor is obtained using
+flags
+and
+mode
+are standard
+Unix flags
+.
+libuv takes care of converting to the appropriate Windows flags.
+File descriptors are closed using
+Filesystem operation callbacks have the signature:
+Let’s see a simple implementation of
+cat
+. We start with registering
+a callback for when the file is opened:
+uvcat/main.c - opening a file
+The
+result
+field of a
+uv_fs_t
+is the file descriptor in case of the
+uv_fs_open
+callback. If the file is successfully opened, we start reading it.
+uvcat/main.c - read callback
+In the case of a read call, you should pass an
+initialized
+buffer which will
+be filled with data before the read callback is triggered. The
+uv_fs_*
+operations map almost directly to certain POSIX functions, so EOF is indicated
+in this case by
+result
+being 0. In the case of streams or pipes, the
+UV_EOF
+constant would have been passed as a status instead.
+Here you see a common pattern when writing asynchronous programs. The
+uv_fs_close()
+call is performed synchronously.
+Usually tasks which are
+one-off, or are done as part of the startup or shutdown stage are performed
+synchronously, since we are interested in fast I/O when the program is going
+about its primary task and dealing with multiple I/O sources
+. For solo tasks
+the performance difference usually is negligible and may lead to simpler code.
+Filesystem writing is similarly simple using
+uv_fs_write()
+.
+Your callback
+will be triggered after the write is complete
+.  In our case the callback
+simply drives the next read. Thus read and write proceed in lockstep via
+callbacks.
+uvcat/main.c - write callback
+Warning
+Due to the way filesystems and disk drives are configured for performance,
+a write that ‘succeeds’ may not be committed to disk yet.
+We set the dominos rolling in
+main()
+:
+uvcat/main.c
+Warning
+The
+uv_fs_req_cleanup()
+function must always be called on filesystem
+requests to free internal memory allocations in libuv.
+Filesystem operations
+All the standard filesystem operations like
+unlink
+,
+rmdir
+,
+stat
+are
+supported asynchronously and have intuitive argument order. They follow the
+same patterns as the read/write/open calls, returning the result in the
+uv_fs_t.result
+field. The full list:
+Filesystem operations
+Buffers and Streams
+The basic I/O handle in libuv is the stream (
+uv_stream_t
+). TCP sockets, TTYs,
+and pipes for file I/O and IPC are all treated as stream subclasses.
+Streams are initialized using custom functions for each subclass, then operated
+upon using
+The stream based functions are simpler to use than the filesystem ones and
+libuv will automatically keep reading from a stream when
+uv_read_start()
+is
+called once, until
+uv_read_stop()
+is called.
+The discrete unit of data is the buffer –
+uv_buf_t
+. This is simply
+a collection of a pointer to bytes (
+uv_buf_t.base
+) and the length
+(
+uv_buf_t.len
+). The
+uv_buf_t
+is lightweight and passed around by value.
+What does require management is the actual bytes, which have to be allocated
+and freed by the application.
+Error
+THIS PROGRAM DOES NOT ALWAYS WORK, NEED SOMETHING BETTER
+To demonstrate streams we will need to use
+uv_pipe_t
+. This allows streaming
+local files
+[
+2
+]
+. Here is a simple tee utility using libuv.  Doing all operations
+asynchronously shows the power of evented I/O. The two writes won’t block each
+other, but we have to be careful to copy over the buffer data to ensure we don’t
+free a buffer until it has been written.
+The program is to be executed as:
+We start off opening pipes on the files we require. libuv pipes to a file are
+opened as bidirectional by default.
+uvtee/main.c - read on pipes
+The third argument of
+uv_pipe_init()
+should be set to 1 for IPC using named
+pipes. This is covered in
+Processes
+. The
+uv_pipe_open()
+call
+associates the pipe with the file descriptor, in this case
+0
+(standard
+input).
+We start monitoring
+stdin
+. The
+alloc_buffer
+callback is invoked as new
+buffers are required to hold incoming data.
+read_stdin
+will be called with
+these buffers.
+uvtee/main.c - reading buffers
+The standard
+malloc
+is sufficient here, but you can use any memory allocation
+scheme. For example, node.js uses its own slab allocator which associates
+buffers with V8 objects.
+The read callback
+nread
+parameter is less than 0 on any error. This error
+might be EOF, in which case we close all the streams, using the generic close
+function
+uv_close()
+which deals with the handle based on its internal type.
+Otherwise
+nread
+is a non-negative number and we can attempt to write that
+many bytes to the output streams. Finally remember that buffer allocation and
+deallocation is application responsibility, so we free the data.
+The allocation callback may return a buffer with length zero if it fails to
+allocate memory. In this case, the read callback is invoked with error
+UV_ENOBUFS. libuv will continue to attempt to read the stream though, so you
+must explicitly call
+uv_close()
+if you want to stop when allocation fails.
+The read callback may be called with
+nread
+=
+0
+, indicating that at this
+point there is nothing to be read. Most applications will just ignore this.
+uvtee/main.c - Write to pipe
+write_data()
+makes a copy of the buffer obtained from read. This buffer
+does not get passed through to the write callback trigged on write completion. To
+get around this we wrap a write request and a buffer in
+write_req_t
+and
+unwrap it in the callbacks. We make a copy so we can free the two buffers from
+the two calls to
+write_data
+independently of each other. While acceptable
+for a demo program like this, you’ll probably want smarter memory management,
+like reference counted buffers or a pool of buffers in any major application.
+Warning
+If your program is meant to be used with other programs it may knowingly or
+unknowingly be writing to a pipe. This makes it susceptible to
+aborting on
+receiving a SIGPIPE
+. It is a good idea to insert:
+in the initialization stages of your application.
+File change events
+All modern operating systems provide APIs to put watches on individual files or
+directories and be informed when the files are modified. libuv wraps common
+file change notification libraries
+[
+1
+]
+. This is one of the more
+inconsistent parts of libuv. File change notification systems are themselves
+extremely varied across platforms so getting everything working everywhere is
+difficult. To demonstrate, I’m going to build a simple utility which runs
+a command whenever any of the watched files change:
+Note
+Currently this example only works on OSX and Windows.
+Refer to the
+notes of uv_fs_event_start
+function.
+The file change notification is started using
+uv_fs_event_init()
+:
+onchange/main.c - The setup
+The third argument is the actual file or directory to monitor. The last
+argument,
+flags
+, can be:
+UV_FS_EVENT_WATCH_ENTRY
+and
+UV_FS_EVENT_STAT
+don’t do anything (yet).
+UV_FS_EVENT_RECURSIVE
+will start watching subdirectories as well on
+supported platforms.
+The callback will receive the following arguments:
+uv_fs_event_t
+*handle
+- The handle. The
+path
+field of the handle
+is the file on which the watch was set.
+const
+char
+*filename
+- If a directory is being monitored, this is the
+file which was changed. Only non-
+null
+on Linux and Windows. May be
+null
+even on those platforms.
+int
+events
+- one of
+UV_RENAME
+or
+UV_CHANGE
+, or a bitwise OR of
+both.
+int
+status
+- If
+status
+<
+0
+, there is an
+libuv error
+.
+In our example we simply print the arguments and run the command using
+system()
+.
+onchange/main.c - file change notification callback
+[
+1
+]
+inotify on Linux, FSEvents on Darwin, kqueue on BSDs,
+ReadDirectoryChangesW on Windows, event ports on Solaris, unsupported on Cygwin
+[
+2
+]
+see
+Parent-child IPC
+
+## guide/introduction.html
+Introduction
+This ‘book’ is a small set of tutorials about using
+libuv
+as
+a high performance evented I/O library which offers the same API on Windows and Unix.
+It is meant to cover the main areas of libuv, but is not a comprehensive
+reference discussing every function and data structure. The
+official libuv
+documentation
+may be consulted for full details.
+This book is still a work in progress, so sections may be incomplete, but
+I hope you will enjoy it as it grows.
+Who this book is for
+If you are reading this book, you are either:
+a systems programmer, creating low-level programs such as daemons or network
+services and clients. You have found that the event loop approach is well
+suited for your application and decided to use libuv.
+a node.js module writer, who wants to wrap platform APIs
+written in C or C++ with a set of (a)synchronous APIs that are exposed to
+JavaScript. You will use libuv purely in the context of node.js. For
+this you will require some other resources as the book does not cover parts
+specific to v8/node.js.
+This book assumes that you are comfortable with the C programming language.
+Background
+The
+node.js
+project began in 2009 as a JavaScript environment decoupled
+from the browser. Using Google’s
+V8
+and Marc Lehmann’s
+libev
+, node.js
+combined a model of I/O – evented – with a language that was well suited to
+the style of programming; due to the way it had been shaped by browsers. As
+node.js grew in popularity, it was important to make it work on Windows, but
+libev ran only on Unix. The Windows equivalent of kernel event notification
+mechanisms like kqueue or (e)poll is IOCP. libuv was an abstraction around libev
+or IOCP depending on the platform, providing users an API based on libev.
+In the node-v0.9.0 version of libuv
+libev was removed
+.
+Since then libuv has continued to mature and become a high quality standalone
+library for system programming. Users outside of node.js include Mozilla’s
+Rust
+programming language, and a
+variety
+of language bindings.
+This book and the code is based on libuv version
+v1.42.0
+.
+Code
+All the example code and the source of the book is included as part of
+the
+libuv
+project on GitHub.
+Clone or Download
+libuv
+, then build it:
+There is no need to
+make
+install
+. To build the examples run
+make
+in the
+docs/code/
+directory.
+
+## guide/networking.html
+Networking
+Networking in libuv is not much different from directly using the BSD socket
+interface, some things are easier, all are non-blocking, but the concepts stay
+the same. In addition libuv offers utility functions to abstract the annoying,
+repetitive and low-level tasks like setting up sockets using the BSD socket
+structures, DNS lookup, and tweaking various socket parameters.
+The
+uv_tcp_t
+and
+uv_udp_t
+structures are used for network I/O.
+Note
+The code samples in this chapter exist to show certain libuv APIs. They are
+not examples of good quality code. They leak memory and don’t always close
+connections properly.
+TCP
+TCP is a connection oriented, stream protocol and is therefore based on the
+libuv streams infrastructure.
+Server
+Server sockets proceed by:
+uv_tcp_init
+the TCP handle.
+uv_tcp_bind
+it.
+Call
+uv_listen
+on the handle to have a callback invoked whenever a new
+connection is established by a client.
+Use
+uv_accept
+to accept the connection.
+Use
+stream operations
+to communicate with the
+client.
+Here is a simple echo server
+tcp-echo-server/main.c - The listen socket
+You can see the utility function
+uv_ip4_addr
+being used to convert from
+a human readable IP address, port pair to the sockaddr_in structure required by
+the BSD socket APIs. The reverse can be obtained using
+uv_ip4_name
+.
+Note
+There are
+uv_ip6_*
+analogues for the ip4 functions.
+Most of the setup functions are synchronous since they are CPU-bound.
+uv_listen
+is where we return to libuv’s callback style. The second
+arguments is the backlog queue – the maximum length of queued connections.
+When a connection is initiated by clients, the callback is required to set up
+a handle for the client socket and associate the handle using
+uv_accept
+.
+In this case we also establish interest in reading from this stream.
+tcp-echo-server/main.c - Accepting the client
+The remaining set of functions is very similar to the streams example and can
+be found in the code. Just remember to call
+uv_close
+when the socket isn’t
+required. This can be done even in the
+uv_listen
+callback if you are not
+interested in accepting the connection.
+Client
+Where you do bind/listen/accept on the server, on the client side it’s simply
+a matter of calling
+uv_tcp_connect
+. The same
+uv_connect_cb
+style
+callback of
+uv_listen
+is used by
+uv_tcp_connect
+. Try:
+where
+on_connect
+will be called after the connection is established. The
+callback receives the
+uv_connect_t
+struct, which has a member
+.handle
+pointing to the socket.
+UDP
+The
+User Datagram Protocol
+offers connectionless, unreliable network
+communication. Hence libuv doesn’t offer a stream. Instead libuv provides
+non-blocking UDP support via the
+uv_udp_t
+handle (for receiving) and
+uv_udp_send_t
+request (for sending) and related functions. That said, the
+actual API for reading/writing is very similar to normal stream reads. To look
+at how UDP can be used, the example shows the first stage of obtaining an IP
+address from a
+DHCP
+server – DHCP Discover.
+Note
+You will have to run
+udp-dhcp
+as
+root
+since it uses well known port
+numbers below 1024.
+udp-dhcp/main.c - Setup and send UDP packets
+Note
+The IP address
+0.0.0.0
+is used to bind to all interfaces. The IP
+address
+255.255.255.255
+is a broadcast address meaning that packets
+will be sent to all interfaces on the subnet.  port
+0
+means that the OS
+randomly assigns a port.
+First we setup the receiving socket to bind on all interfaces on port 68 (DHCP
+client) and start a read on it. This will read back responses from any DHCP
+server that replies. We use the UV_UDP_REUSEADDR flag to play nice with any
+other system DHCP clients that are running on this computer on the same port.
+Then we setup a similar send socket and use
+uv_udp_send
+to send
+a
+broadcast message
+on port 67 (DHCP server).
+It is
+necessary
+to set the broadcast flag, otherwise you will get an
+EACCES
+error
+[
+1
+]
+. The exact message being sent is not relevant to this
+book and you can study the code if you are interested. As usual the read and
+write callbacks will receive a status code of < 0 if something went wrong.
+Since UDP sockets are not connected to a particular peer, the read callback
+receives an extra parameter about the sender of the packet.
+nread
+may be zero if there is no more data to be read. If
+addr
+is NULL,
+it indicates there is nothing to read (the callback shouldn’t do anything), if
+not NULL, it indicates that an empty datagram was received from the host at
+addr
+. The
+flags
+parameter may be
+UV_UDP_PARTIAL
+if the buffer
+provided by your allocator was not large enough to hold the data.
+In this case
+the OS will discard the data that could not fit
+(That’s UDP for you!).
+udp-dhcp/main.c - Reading packets
+UDP Options
+Time-to-live
+The TTL of packets sent on the socket can be changed using
+uv_udp_set_ttl
+.
+IPv6 stack only
+IPv6 sockets can be used for both IPv4 and IPv6 communication. If you want to
+restrict the socket to IPv6 only, pass the
+UV_UDP_IPV6ONLY
+flag to
+uv_udp_bind
+.
+Multicast
+A socket can (un)subscribe to a multicast group using:
+where
+membership
+is
+UV_JOIN_GROUP
+or
+UV_LEAVE_GROUP
+.
+The concepts of multicasting are nicely explained in
+this guide
+.
+Local loopback of multicast packets is enabled by default
+[
+2
+]
+, use
+uv_udp_set_multicast_loop
+to switch it off.
+The packet time-to-live for multicast packets can be changed using
+uv_udp_set_multicast_ttl
+.
+Querying DNS
+libuv provides asynchronous DNS resolution. For this it provides its own
+getaddrinfo
+replacement
+[
+3
+]
+. In the callback you can
+perform normal socket operations on the retrieved addresses. Let’s connect to
+Libera.chat to see an example of DNS resolution.
+dns/main.c
+If
+uv_getaddrinfo
+returns non-zero, something went wrong in the setup and
+your callback won’t be invoked at all. All arguments can be freed immediately
+after
+uv_getaddrinfo
+returns. The
+hostname
+,
+servname
+and
+hints
+structures are documented in
+the getaddrinfo man page
+. The
+callback can be
+NULL
+in which case the function will run synchronously.
+In the resolver callback, you can pick any IP from the linked list of
+struct
+addrinfo(s)
+. This also demonstrates
+uv_tcp_connect
+. It is necessary to
+call
+uv_freeaddrinfo
+in the callback.
+dns/main.c
+libuv also provides the inverse
+uv_getnameinfo
+.
+Network interfaces
+Information about the system’s network interfaces can be obtained through libuv
+using
+uv_interface_addresses
+. This simple program just prints out all the
+interface details so you get an idea of the fields that are available. This is
+useful to allow your service to bind to IP addresses when it starts.
+interfaces/main.c
+is_internal
+is true for loopback interfaces. Note that if a physical
+interface has multiple IPv4/IPv6 addresses, the name will be reported multiple
+times, with each address being reported once.
+[
+1
+]
+https://beej.us/guide/bgnet/html/#broadcast-packetshello-world
+[
+2
+]
+https://tldp.org/HOWTO/Multicast-HOWTO-6.html#ss6.1
+[
+3
+]
+libuv use the system
+getaddrinfo
+in the libuv threadpool. libuv
+v0.8.0 and earlier also included
+c-ares
+as an alternative, but this has been
+removed in v0.9.0.
+
+## guide/processes.html
+Processes
+libuv offers considerable child process management, abstracting the platform
+differences and allowing communication with the child process using streams or
+named pipes.
+A common idiom in Unix is for every process to do one thing and do it well. In
+such a case, a process often uses multiple child processes to achieve tasks
+(similar to using pipes in shells). A multi-process model with messages
+may also be easier to reason about compared to one with threads and shared
+memory.
+A common refrain against event-based programs is that they cannot take
+advantage of multiple cores in modern computers. In a multi-threaded program
+the kernel can perform scheduling and assign different threads to different
+cores, improving performance. But an event loop has only one thread.  The
+workaround can be to launch multiple processes instead, with each process
+running an event loop, and each process getting assigned to a separate CPU
+core.
+Spawning child processes
+The simplest case is when you simply want to launch a process and know when it
+exits. This is achieved using
+uv_spawn
+.
+spawn/main.c
+Note
+options
+is implicitly initialized with zeros since it is a global
+variable.  If you change
+options
+to a local variable, remember to
+initialize it to null out all unused fields:
+The
+uv_process_t
+struct only acts as the handle, all options are set via
+uv_process_options_t
+. To simply launch a process, you need to set only the
+file
+and
+args
+fields.
+file
+is the program to execute. Since
+uv_spawn
+uses
+execvp(3)
+internally, there is no need to supply the full
+path. Finally as per underlying conventions,
+the arguments array has to be
+one larger than the number of arguments, with the last element being NULL
+.
+After the call to
+uv_spawn
+,
+uv_process_t.pid
+will contain the process
+ID of the child process.
+The exit callback will be invoked with the
+exit status
+and the type of
+signal
+which caused the exit.
+Note that it is important
+not
+to call
+uv_close
+before the exit callback.
+spawn/main.c
+It is
+required
+to close the process watcher after the process exits.
+Changing process parameters
+Before the child process is launched you can control the execution environment
+using fields in
+uv_process_options_t
+.
+Change execution directory
+Set
+uv_process_options_t.cwd
+to the corresponding directory.
+Set environment variables
+uv_process_options_t.env
+is a null-terminated array of strings, each of the
+form
+VAR=VALUE
+used to set up the environment variables for the process. Set
+this to
+NULL
+to inherit the environment from the parent (this) process.
+Option flags
+Setting
+uv_process_options_t.flags
+to a bitwise OR of the following flags,
+modifies the child process behaviour:
+UV_PROCESS_SETUID
+- sets the child’s execution user ID to
+uv_process_options_t.uid
+.
+UV_PROCESS_SETGID
+- sets the child’s execution group ID to
+uv_process_options_t.gid
+.
+Changing the UID/GID is only supported on Unix,
+uv_spawn
+will fail on
+Windows with
+UV_ENOTSUP
+.
+UV_PROCESS_WINDOWS_VERBATIM_ARGUMENTS
+- No quoting or escaping of
+uv_process_options_t.args
+is done on Windows. Ignored on Unix.
+UV_PROCESS_DETACHED
+- Starts the child process in a new session, which
+will keep running after the parent process exits. See example below.
+Detaching processes
+Passing the flag
+UV_PROCESS_DETACHED
+can be used to launch daemons, or
+child processes which are independent of the parent so that the parent exiting
+does not affect it.
+detach/main.c
+Just remember that the handle is still monitoring the child, so your program
+won’t exit. Use
+uv_unref()
+if you want to be more
+fire-and-forget
+.
+Sending signals to processes
+libuv wraps the standard
+kill(2)
+system call on Unix and implements one
+with similar semantics on Windows, with
+one caveat
+: all of
+SIGTERM
+,
+SIGINT
+and
+SIGKILL
+, lead to termination of the process. The signature
+of
+uv_kill
+is:
+For processes started using libuv, you may use
+uv_process_kill
+instead,
+which accepts the
+uv_process_t
+watcher as the first argument, rather than
+the pid. In this case,
+remember to call
+uv_close
+on the watcher _after_
+the exit callback has been called.
+Signals
+libuv provides wrappers around Unix signals with
+some Windows support
+as well.
+Use
+uv_signal_init()
+to initialize
+a handle and associate it with a loop. To listen for particular signals on
+that handler, use
+uv_signal_start()
+with the handler function. Each handler
+can only be associated with one signal number, with subsequent calls to
+uv_signal_start()
+overwriting earlier associations. Use
+uv_signal_stop()
+to
+stop watching. Here is a small example demonstrating the various possibilities:
+signal/main.c
+Note
+uv_run(loop,
+UV_RUN_NOWAIT)
+is similar to
+uv_run(loop,
+UV_RUN_ONCE)
+in that it will process only one event. UV_RUN_ONCE blocks if there are no
+pending events, while UV_RUN_NOWAIT will return immediately. We use NOWAIT
+so that one of the loops isn’t starved because the other one has no pending
+activity.
+Send
+SIGUSR1
+to the process, and you’ll find the handler being invoked
+4 times, one for each
+uv_signal_t
+. The handler just stops each handle,
+so that the program exits. This sort of dispatch to all handlers is very
+useful. A server using multiple event loops could ensure that all data was
+safely saved before termination, simply by every loop adding a watcher for
+SIGINT
+.
+Child Process I/O
+A normal, newly spawned process has its own set of file descriptors, with 0,
+1 and 2 being
+stdin
+,
+stdout
+and
+stderr
+respectively. Sometimes you
+may want to share file descriptors with the child. For example, perhaps your
+applications launches a sub-command and you want any errors to go in the log
+file, but ignore
+stdout
+. For this you’d like to have
+stderr
+of the
+child be the same as the stderr of the parent. In this case, libuv supports
+inheriting
+file descriptors. In this sample, we invoke the test program,
+which is:
+proc-streams/test.c
+The actual program
+proc-streams
+runs this while sharing only
+stderr
+.
+The file descriptors of the child process are set using the
+stdio
+field in
+uv_process_options_t
+. First set the
+stdio_count
+field to the number of
+file descriptors being set.
+uv_process_options_t.stdio
+is an array of
+uv_stdio_container_t
+, which is:
+where flags can have several values. Use
+UV_IGNORE
+if it isn’t going to be
+used. If the first three
+stdio
+fields are marked as
+UV_IGNORE
+they’ll
+redirect to
+/dev/null
+.
+Since we want to pass on an existing descriptor, we’ll use
+UV_INHERIT_FD
+.
+Then we set the
+fd
+to
+stderr
+.
+proc-streams/main.c
+If you run
+proc-stream
+you’ll see that only the line “This is stderr” will
+be displayed. Try marking
+stdout
+as being inherited and see the output.
+It is dead simple to apply this redirection to streams.  By setting
+flags
+to
+UV_INHERIT_STREAM
+and setting
+data.stream
+to the stream in the
+parent process, the child process can treat that stream as standard I/O. This
+can be used to implement something like
+CGI
+.
+A sample CGI script/executable is:
+cgi/tick.c
+The CGI server combines the concepts from this chapter and
+Networking
+so
+that every client is sent ten ticks after which that connection is closed.
+cgi/main.c
+Here we simply accept the TCP connection and pass on the socket (
+stream
+) to
+invoke_cgi_script
+.
+cgi/main.c
+The
+stdout
+of the CGI script is set to the socket so that whatever our tick
+script prints, gets sent to the client. By using processes, we can offload the
+read/write buffering to the operating system, so in terms of convenience this
+is great. Just be warned that creating processes is a costly task.
+Parent-child IPC
+A parent and child can have one or two way communication over a pipe created by
+settings
+uv_stdio_container_t.flags
+to a bit-wise combination of
+UV_CREATE_PIPE
+and
+UV_READABLE_PIPE
+or
+UV_WRITABLE_PIPE
+. The
+read/write flag is from the perspective of the child process.  In this case,
+the
+uv_stream_t*
+stream
+field must be set to point to an initialized,
+unopened
+uv_pipe_t
+instance.
+New stdio Pipes
+The
+uv_pipe_t
+structure represents more than just
+pipe(7)
+(or
+|
+),
+but supports any streaming file-like objects. On Windows, the only object of
+that description is the
+Named Pipe
+.  On Unix, this could be any of
+Unix
+Domain Socket
+, or derived from
+mkfifo(1)
+, or it could actually be a
+pipe(7)
+.  When
+uv_spawn
+initializes a
+uv_pipe_t
+due to the
+UV_CREATE_PIPE
+flag, it opts for creating a
+socketpair(2)
+.
+This is intended for the purpose of allowing multiple libuv processes to
+communicate with IPC. This is discussed below.
+Arbitrary process IPC
+Since domain sockets
+[
+1
+]
+can have a well known name and a location in the
+file-system they can be used for IPC between unrelated processes. The
+D-BUS
+system used by open source desktop environments uses domain sockets for event
+notification. Various applications can then react when a contact comes online
+or new hardware is detected. The MySQL server also runs a domain socket on
+which clients can interact with it.
+When using domain sockets, a client-server pattern is usually followed with the
+creator/owner of the socket acting as the server. After the initial setup,
+messaging is no different from TCP, so we’ll re-use the echo server example.
+pipe-echo-server/main.c
+We name the socket
+echo.sock
+which means it will be created in the local
+directory. This socket now behaves no different from TCP sockets as far as
+the stream API is concerned. You can test this server using
+socat
+:
+A client which wants to connect to a domain socket will use:
+where
+name
+will be
+echo.sock
+or similar. On Unix systems,
+name
+must
+point to a valid file (e.g.
+/tmp/echo.sock
+). On Windows,
+name
+follows a
+\\?\pipe\echo.sock
+format.
+Sending file descriptors over pipes
+The cool thing about domain sockets is that file descriptors can be exchanged
+between processes by sending them over a domain socket. This allows processes
+to hand off their I/O to other processes. Applications include load-balancing
+servers, worker processes and other ways to make optimum use of CPU. libuv only
+supports sending
+TCP sockets or other pipes
+over pipes for now.
+To demonstrate, we will look at an echo server implementation that hands off
+clients to worker processes in a round-robin fashion. This program is a bit
+involved, and while only snippets are included in the book, it is recommended
+to read the full code to really understand it.
+The worker process is quite simple, since the file-descriptor is handed over to
+it by the master.
+multi-echo-server/worker.c
+queue
+is the pipe connected to the master process on the other end, along
+which new file descriptors get sent. It is important to set the
+ipc
+argument of
+uv_pipe_init
+to 1 to indicate this pipe will be used for
+inter-process communication! Since the master will write the file handle to the
+standard input of the worker, we connect the pipe to
+stdin
+using
+uv_pipe_open
+.
+multi-echo-server/worker.c
+First we call
+uv_pipe_pending_count()
+to ensure that a handle is available
+to read out. If your program could deal with different types of handles,
+uv_pipe_pending_type()
+can be used to determine the type.
+Although
+accept
+seems odd in this code, it actually makes sense. What
+accept
+traditionally does is get a file descriptor (the client) from
+another file descriptor (The listening socket). Which is exactly what we do
+here. Fetch the file descriptor (
+client
+) from
+queue
+. From this point
+the worker does standard echo server stuff.
+Turning now to the master, let’s take a look at how the workers are launched to
+allow load balancing.
+multi-echo-server/main.c
+The
+child_worker
+structure wraps the process, and the pipe between the
+master and the individual process.
+multi-echo-server/main.c
+In setting up the workers, we use the nifty libuv function
+uv_cpu_info
+to
+get the number of CPUs so we can launch an equal number of workers. Again it is
+important to initialize the pipe acting as the IPC channel with the third
+argument as 1. We then indicate that the child process’
+stdin
+is to be
+a readable pipe (from the point of view of the child). Everything is
+straightforward till here. The workers are launched and waiting for file
+descriptors to be written to their standard input.
+It is in
+on_new_connection
+(the TCP infrastructure is initialized in
+main()
+), that we accept the client socket and pass it along to the next
+worker in the round-robin.
+multi-echo-server/main.c
+The
+uv_write2
+call handles all the abstraction and it is simply a matter of
+passing in the handle (
+client
+) as the right argument. With this our
+multi-process echo server is operational.
+Thanks to Kyle for
+pointing out
+that
+uv_write2()
+requires a non-empty
+buffer even when sending handles.
+[
+1
+]
+In this section domain sockets stands in for named pipes on Windows as
+well.
+
+## guide/threads.html
+Threads
+Wait a minute? Why are we on threads? Aren’t event loops supposed to be
+the
+way
+to do
+web-scale programming
+? Well… no. Threads are still the medium in
+which processors do their jobs. Threads are therefore mighty useful sometimes, even
+though you might have to wade through various synchronization primitives.
+Threads are used internally to fake the asynchronous nature of all of the system
+calls. libuv also uses threads to allow you, the application, to perform a task
+asynchronously that is actually blocking, by spawning a thread and collecting
+the result when it is done.
+Today there are two predominant thread libraries: the Windows threads
+implementation and POSIX’s
+pthreads(7)
+. libuv’s thread API is analogous to
+the pthreads API and often has similar semantics.
+A notable aspect of libuv’s thread facilities is that it is a self contained
+section within libuv. Whereas other features intimately depend on the event
+loop and callback principles, threads are complete agnostic, they block as
+required, signal errors directly via return values, and, as shown in the
+first example
+, don’t even require a running
+event loop.
+libuv’s thread API is also very limited since the semantics and syntax of
+threads are different on all platforms, with different levels of completeness.
+This chapter makes the following assumption:
+There is only one event loop,
+running in one thread (the main thread)
+. No other thread interacts
+with the event loop (except using
+uv_async_send
+).
+Core thread operations
+There isn’t much here, you just start a thread using
+uv_thread_create()
+and
+wait for it to close using
+uv_thread_join()
+.
+thread-create/main.c
+Tip
+uv_thread_t
+is just an alias for
+pthread_t
+on Unix, but this is an
+implementation detail, avoid depending on it to always be true.
+The second parameter is the function which will serve as the entry point for
+the thread, the last parameter is a
+void
+*
+argument which can be used to pass
+custom parameters to the thread. The function
+hare
+will now run in a separate
+thread, scheduled pre-emptively by the operating system:
+thread-create/main.c
+Unlike
+pthread_join()
+which allows the target thread to pass back a value to
+the calling thread using a second parameter,
+uv_thread_join()
+does not. To
+send values use
+Inter-thread communication
+.
+Synchronization Primitives
+This section is purposely spartan. This book is not about threads, so I only
+catalogue any surprises in the libuv APIs here. For the rest you can look at
+the
+pthreads(7)
+man pages.
+Mutexes
+The mutex functions are a
+direct
+map to the pthread equivalents.
+libuv mutex functions
+The
+uv_mutex_init()
+,
+uv_mutex_init_recursive()
+and
+uv_mutex_trylock()
+functions will return 0 on success, and an error code otherwise.
+If
+libuv
+has been compiled with debugging enabled,
+uv_mutex_destroy()
+,
+uv_mutex_lock()
+and
+uv_mutex_unlock()
+will
+abort()
+on error.
+Similarly
+uv_mutex_trylock()
+will abort if the error is anything
+other
+than
+EAGAIN
+or
+EBUSY
+.
+Recursive mutexes are supported, but you should not rely on them. Also, they
+should not be used with
+uv_cond_t
+variables.
+The default BSD mutex implementation will raise an error if a thread which has
+locked a mutex attempts to lock it again. For example, a construct like:
+can be used to wait until another thread initializes some stuff and then
+unlocks
+a_mutex
+but will lead to your program crashing if in debug mode, or
+return an error in the second call to
+uv_mutex_lock()
+.
+Note
+Mutexes on Windows are always recursive.
+Locks
+Read-write locks are a more granular access mechanism. Two readers can access
+shared memory at the same time. A writer may not acquire the lock when it is
+held by a reader. A reader or writer may not acquire a lock when a writer is
+holding it. Read-write locks are frequently used in databases. Here is a toy
+example.
+locks/main.c - simple rwlocks
+Run this and observe how the readers will sometimes overlap. In case of
+multiple writers, schedulers will usually give them higher priority, so if you
+add two writers, you’ll see that both writers tend to finish first before the
+readers get a chance again.
+We also use barriers in the above example so that the main thread can wait for
+all readers and writers to indicate they have ended.
+Others
+libuv also supports
+semaphores
+,
+condition variables
+and
+barriers
+with APIs
+very similar to their pthread counterparts.
+In addition, libuv provides a convenience function
+uv_once()
+. Multiple
+threads can attempt to call
+uv_once()
+with a given guard and a function
+pointer,
+only the first one will win, the function will be called once and
+only once
+:
+After all threads are done,
+i
+==
+1
+.
+libuv v0.11.11 onwards also added a
+uv_key_t
+struct and
+api
+for
+thread-local storage.
+libuv work queue
+uv_queue_work()
+is a convenience function that allows an application to run
+a task in a separate thread, and have a callback that is triggered when the
+task is done. A seemingly simple function, what makes
+uv_queue_work()
+tempting is that it allows potentially any third-party libraries to be used
+with the event-loop paradigm. When you use event loops, it is
+imperative to
+make sure that no function which runs periodically in the loop thread blocks
+when performing I/O or is a serious CPU hog
+, because this means that the loop
+slows down and events are not being handled at full capacity.
+However, a lot of existing code out there features blocking functions (for example
+a routine which performs I/O under the hood) to be used with threads if you
+want responsiveness (the classic ‘one thread per client’ server model), and
+getting them to play with an event loop library generally involves rolling your
+own system of running the task in a separate thread.  libuv just provides
+a convenient abstraction for this.
+Here is a simple example inspired by
+node.js is cancer
+. We are going to
+calculate fibonacci numbers, sleeping a bit along the way, but run it in
+a separate thread so that the blocking and CPU bound task does not prevent the
+event loop from performing other activities.
+queue-work/main.c - lazy fibonacci
+The actual task function is simple, nothing to show that it is going to be
+run in a separate thread. The
+uv_work_t
+structure is the clue. You can pass
+arbitrary data through it using the
+void*
+data
+field and use it to
+communicate to and from the thread. But be sure you are using proper locks if
+you are changing things while both threads may be running.
+The trigger is
+uv_queue_work
+:
+queue-work/main.c
+The thread function will be launched in a separate thread, passed the
+uv_work_t
+structure and once the function returns, the
+after
+function
+will be called on the thread the event loop is running in. It will be passed
+the same structure.
+For writing wrappers to blocking libraries, a common
+pattern
+is to use a baton to exchange data.
+Since libuv version
+0.9.4
+an additional function,
+uv_cancel()
+, is
+available. This allows you to cancel tasks on the libuv work queue. Only tasks
+that
+are yet to be started
+can be cancelled. If a task has
+already started
+executing, or it has finished executing
+,
+uv_cancel()
+will fail
+.
+uv_cancel()
+is useful to cleanup pending tasks if the user requests
+termination. For example, a music player may queue up multiple directories to
+be scanned for audio files. If the user terminates the program, it should quit
+quickly and not wait until all pending requests are run.
+Let’s modify the fibonacci example to demonstrate
+uv_cancel()
+. We first set
+up a signal handler for termination.
+queue-cancel/main.c
+When the user triggers the signal by pressing
+Ctrl+C
+we send
+uv_cancel()
+to all the workers.
+uv_cancel()
+will return
+0
+for those
+tasks that are pending execution and could be cancelled.
+queue-cancel/main.c
+For tasks that do get cancelled successfully, the
+after
+function is called
+with
+status
+set to
+UV_ECANCELED
+.
+queue-cancel/main.c
+uv_cancel()
+can also be used with
+uv_fs_t
+and
+uv_getaddrinfo_t
+requests. For the filesystem family of functions,
+uv_fs_t.errorno
+will be
+set to
+UV_ECANCELED
+.
+Tip
+A well designed program would have a way to terminate long running workers
+that have already started executing. Such a worker could periodically check
+for a variable that only the main process sets to signal termination.
+Inter-thread communication
+Sometimes you want various threads to actually send each other messages
+while
+they are running. For example you might be running some long duration task in
+a separate thread (perhaps using
+uv_queue_work
+) but want to notify progress
+to the main thread. This is a simple example of having a download manager
+informing the user of the status of running downloads.
+progress/main.c
+The async thread communication works
+on loops
+so although any thread can be
+the message sender, only threads with libuv loops can be receivers (or rather
+the loop is the receiver). libuv will invoke the callback (
+print_progress
+)
+with the async watcher whenever it receives a message.
+Warning
+It is important to realize that since the message send is
+async
+, the callback
+may be invoked immediately after
+uv_async_send
+is called in another
+thread, or it may be invoked after some time. libuv may also combine
+multiple calls to
+uv_async_send
+and invoke your callback only once. The
+only guarantee that libuv makes is – The callback function is called
+at
+least once
+after the call to
+uv_async_send
+. If you have no pending
+calls to
+uv_async_send
+, the callback won’t be called. If you make two
+or more calls, and libuv hasn’t had a chance to run the callback yet, it
+may
+invoke your callback
+only once
+for the multiple invocations of
+uv_async_send
+. Your callback will never be called twice for just one
+event.
+progress/main.c
+In the download function, we modify the progress indicator and queue the message
+for delivery with
+uv_async_send
+. Remember:
+uv_async_send
+is also
+non-blocking and will return immediately.
+progress/main.c
+The callback is a standard libuv pattern, extracting the data from the watcher.
+Finally it is important to remember to clean up the watcher.
+progress/main.c
+After this example, which showed the abuse of the
+data
+field,
+bnoordhuis
+pointed out that using the
+data
+field is not thread safe, and
+uv_async_send()
+is actually only meant to wake up the event loop. Use
+a mutex or rwlock to ensure accesses are performed in the right order.
+Note
+mutexes and rwlocks
+DO NOT
+work inside a signal handler, whereas
+uv_async_send
+does.
+One use case where
+uv_async_send
+is required is when interoperating with
+libraries that require thread affinity for their functionality. For example in
+node.js, a v8 engine instance, contexts and its objects are bound to the thread
+that the v8 instance was started in. Interacting with v8 data structures from
+another thread can lead to undefined results. Now consider some node.js module
+which binds a third party library. It may go something like this:
+In node, the third party library is set up with a JavaScript callback to be
+invoked for more information:
+lib.do
+is supposed to be non-blocking but the third party lib is
+blocking, so the binding uses
+uv_queue_work
+.
+The actual work being done in a separate thread wants to invoke the progress
+callback, but cannot directly call into v8 to interact with JavaScript. So
+it uses
+uv_async_send
+.
+The async callback, invoked in the main loop thread, which is the v8 thread,
+then interacts with v8 to invoke the JavaScript callback.
+
+## guide/utilities.html
+Utilities
+This chapter catalogues tools and techniques which are useful for common tasks.
+The
+libev man page
+already covers some patterns which can be adopted to
+libuv through simple API changes. It also covers parts of the libuv API that
+don’t require entire chapters dedicated to them.
+Timers
+Timers invoke the callback after a certain time has elapsed since the timer was
+started. libuv timers can also be set to invoke at regular intervals instead of
+just once.
+Simple use is to init a watcher and start it with a
+timeout
+, and optional
+repeat
+.
+Timers can be stopped at any time.
+will start a repeating timer, which first starts 5 seconds (the
+timeout
+) after the execution
+of
+uv_timer_start
+, then repeats every 2 seconds (the
+repeat
+). Use:
+to stop the timer. This can be used safely from within the callback as well.
+The repeat interval can be modified at any time with:
+which will take effect
+when possible
+. If this function is called from
+a timer callback, it means:
+If the timer was non-repeating, the timer has already been stopped. Use
+uv_timer_start
+again.
+If the timer is repeating, the next timeout has already been scheduled, so
+the old repeat interval will be used once more before the timer switches to
+the new interval.
+The utility function:
+applies
+only to repeating timers
+and is equivalent to stopping the timer
+and then starting it with both initial
+timeout
+and
+repeat
+set to the
+old
+repeat
+value. If the timer hasn’t been started it fails (error code
+UV_EINVAL
+) and returns -1.
+An actual timer example is in the
+reference count section
+.
+Event loop reference count
+The event loop only runs as long as there are active handles. This system
+works by having every handle increase the reference count of the event loop
+when it is started and decreasing the reference count when stopped. It is also
+possible to manually change the reference count of handles using:
+These functions can be used to allow a loop to exit even when a watcher is
+active or to use custom objects to keep the loop alive.
+The latter can be used with interval timers. You might have a garbage collector
+which runs every X seconds, or your network service might send a heartbeat to
+others periodically, but you don’t want to have to stop them along all clean
+exit paths or error scenarios. Or you want the program to exit when all your
+other watchers are done. In that case just unref the timer immediately after
+creation so that if it is the only watcher running then
+uv_run
+will still
+exit.
+This is also used in node.js where some libuv methods are being bubbled up to
+the JS API. A
+uv_handle_t
+(the superclass of all watchers) is created per
+JS object and can be ref/unrefed.
+ref-timer/main.c
+We initialize the garbage collector timer, then immediately
+unref
+it.
+Observe how after 9 seconds, when the fake job is done, the program
+automatically exits, even though the garbage collector is still running.
+Idler pattern
+The callbacks of idle handles are invoked once per event loop. The idle
+callback can be used to perform some very low priority activity. For example,
+you could dispatch a summary of the daily application performance to the
+developers for analysis during periods of idleness, or use the application’s
+CPU time to perform SETI calculations :) An idle watcher is also useful in
+a GUI application. Say you are using an event loop for a file download. If the
+TCP socket is still being established and no other events are present your
+event loop will pause (
+block
+), which means your progress bar will freeze
+and the user will face an unresponsive application. In such a case queue up and
+idle watcher to keep the UI operational.
+idle-compute/main.c
+Here we initialize the idle watcher and queue it up along with the actual
+events we are interested in.
+crunch_away
+will now be called repeatedly
+until the user types something and presses Return. Then it will be interrupted
+for a brief amount as the loop deals with the input data, after which it will
+keep calling the idle callback again.
+idle-compute/main.c
+Passing data to worker thread
+When using
+uv_queue_work
+you’ll usually need to pass complex data through
+to the worker thread. The solution is to use a
+struct
+and set
+uv_work_t.data
+to point to it. A slight variation is to have the
+uv_work_t
+itself as the first member of this struct (called a baton
+[
+1
+]
+).
+This allows cleaning up the work request and all the data in one free call.
+Here we create the baton and queue the task.
+Now the task function can extract the data it needs:
+We then free the baton which also frees the watcher.
+External I/O with polling
+Usually third-party libraries will handle their own I/O, and keep track of
+their sockets and other files internally. In this case it isn’t possible to use
+the standard stream I/O operations, but the library can still be integrated
+into the libuv event loop. All that is required is that the library allow you
+to access the underlying file descriptors and provide functions that process
+tasks in small increments as decided by your application. Some libraries though
+will not allow such access, providing only a standard blocking function which
+will perform the entire I/O transaction and only then return. It is unwise to
+use these in the event loop thread, use the
+Thread pool work scheduling
+instead. Of
+course, this will also mean losing granular control on the library.
+The
+uv_poll
+section of libuv simply watches file descriptors using the
+operating system notification mechanism. In some sense, all the I/O operations
+that libuv implements itself are also backed by
+uv_poll
+like code. Whenever
+the OS notices a change of state in file descriptors being polled, libuv will
+invoke the associated callback.
+Here we will walk through a simple download manager that will use
+libcurl
+to
+download files. Rather than give all control to libcurl, we’ll instead be
+using the libuv event loop, and use the non-blocking, async
+multi
+interface to
+progress with the download whenever libuv notifies of I/O readiness.
+uvwget/main.c - The setup
+The way each library is integrated with libuv will vary. In the case of
+libcurl, we can register two callbacks. The socket callback
+handle_socket
+is invoked whenever the state of a socket changes and we have to start polling
+it.
+start_timeout
+is called by libcurl to notify us of the next timeout
+interval, after which we should drive libcurl forward regardless of I/O status.
+This is so that libcurl can handle errors or do whatever else is required to
+get the download moving.
+Our downloader is to be invoked as:
+So we add each argument as a URL
+uvwget/main.c - Adding urls
+We let libcurl directly write the data to a file, but much more is possible if
+you so desire.
+start_timeout
+will be called immediately the first time by libcurl, so
+things are set in motion. This simply starts a libuv
+timer
+which
+drives
+curl_multi_socket_action
+with
+CURL_SOCKET_TIMEOUT
+whenever it
+times out.
+curl_multi_socket_action
+is what drives libcurl, and what we
+call whenever sockets change state. But before we go into that, we need to poll
+on sockets whenever
+handle_socket
+is called.
+uvwget/main.c - Setting up polling
+We are interested in the socket fd
+s
+, and the
+action
+. For every socket
+we create a
+uv_poll_t
+handle if it doesn’t exist, and associate it with the
+socket using
+curl_multi_assign
+. This way
+socketp
+points to it whenever
+the callback is invoked.
+In the case that the download is done or fails, libcurl requests removal of the
+poll. So we stop and free the poll handle.
+Depending on what events libcurl wishes to watch for, we start polling with
+UV_READABLE
+or
+UV_WRITABLE
+. Now libuv will invoke the poll callback
+whenever the socket is ready for reading or writing. Calling
+uv_poll_start
+multiple times on the same handle is acceptable, it will just update the events
+mask with the new value.
+curl_perform
+is the crux of this program.
+uvwget/main.c - Driving libcurl.
+The first thing we do is to stop the timer, since there has been some progress
+in the interval. Then depending on what event triggered the callback, we set
+the correct flags. Then we call
+curl_multi_socket_action
+with the socket
+that progressed and the flags informing about what events happened. At this
+point libcurl does all of its internal tasks in small increments, and will
+attempt to return as fast as possible, which is exactly what an evented program
+wants in its main thread. libcurl keeps queueing messages into its own queue
+about transfer progress. In our case we are only interested in transfers that
+are completed. So we extract these messages, and clean up handles whose
+transfers are done.
+uvwget/main.c - Reading transfer status.
+Check & Prepare watchers
+TODO
+Loading libraries
+libuv provides a cross platform API to dynamically load
+shared libraries
+.
+This can be used to implement your own plugin/extension/module system and is
+used by node.js to implement
+require()
+support for bindings. The usage is
+quite simple as long as your library exports the right symbols. Be careful with
+sanity and security checks when loading third party code, otherwise your
+program will behave unpredictably. This example implements a very simple
+plugin system which does nothing except print the name of the plugin.
+Let us first look at the interface provided to plugin authors.
+plugin/plugin.h
+You can similarly add more functions that plugin authors can use to do useful
+things in your application
+[
+2
+]
+. A sample plugin using this API is:
+plugin/hello.c
+Our interface defines that all plugins should have an
+initialize
+function
+which will be called by the application. This plugin is compiled as a shared
+library and can be loaded by running our application:
+Note
+The shared library filename will be different depending on platforms. On
+Linux it is
+libhello.so
+.
+This is done by using
+uv_dlopen
+to first load the shared library
+libhello.dylib
+. Then we get access to the
+initialize
+function using
+uv_dlsym
+and invoke it.
+plugin/main.c
+uv_dlopen
+expects a path to the shared library and sets the opaque
+uv_lib_t
+pointer. It returns 0 on success, -1 on error. Use
+uv_dlerror
+to get the error message.
+uv_dlsym
+stores a pointer to the symbol in the second argument in the third
+argument.
+init_plugin_function
+is a function pointer to the sort of
+function we are looking for in the application’s plugins.
+TTY
+Text terminals have supported basic formatting for a long time, with a
+pretty
+standardised
+command set. This formatting is often used by programs to
+improve the readability of terminal output. For example
+grep
+--colour
+.
+libuv provides the
+uv_tty_t
+abstraction (a stream) and related functions to
+implement the ANSI escape codes across all platforms. By this I mean that libuv
+converts ANSI codes to the Windows equivalent, and provides functions to get
+terminal information.
+The first thing to do is to initialize a
+uv_tty_t
+with the file descriptor
+it reads/writes from. This is achieved with:
+The
+unused
+parameter is now auto-detected and ignored. It previously needed
+to be set to use
+uv_read_start()
+on the stream.
+It is then best to use
+uv_tty_set_mode
+to set the mode to
+normal
+which enables most TTY formatting, flow-control and other settings.
+Other
+modes
+are also available.
+Remember to call
+uv_tty_reset_mode
+when your program exits to restore the
+state of the terminal. Just good manners. Another set of good manners is to be
+aware of redirection. If the user redirects the output of your command to
+a file, control sequences should not be written as they impede readability and
+grep
+. To check if the file descriptor is indeed a TTY, call
+uv_guess_handle
+with the file descriptor and compare the return value with
+UV_TTY
+.
+Here is a simple example which prints white text on a red background:
+tty/main.c
+The final TTY helper is
+uv_tty_get_winsize()
+which is used to get the
+width and height of the terminal and returns
+0
+on success. Here is a small
+program which does some animation using the function and character position
+escape codes.
+tty-gravity/main.c
+The escape codes are:
+Code
+Meaning
+2
+J
+Clear part of the screen, 2 is entire screen
+H
+Moves cursor to certain position, default top-left
+n
+B
+Moves cursor down by n lines
+n
+C
+Moves cursor right by n columns
+m
+Obeys string of display settings, in this case green background (40+2), white text (30+7)
+As you can see this is very useful to produce nicely formatted output, or even
+console based arcade games if that tickles your fancy. For fancier control you
+can try
+ncurses
+.
+Changed in version 1.23.1::
+the
+readable
+parameter is now unused and ignored.
+The appropriate value will now be auto-detected from the kernel.
+[
+1
+]
+I was first introduced to the term baton in this context, in Konstantin
+Käfer’s excellent slides on writing node.js bindings –
+https://kkaefer.github.io/node-cpp-modules/#baton
+(
+video
+)
+[
+2
+]
+mfp is My Fancy Plugin
+
+## handle.html
+uv_handle_t
+— Base handle
+uv_handle_t
+is the base type for all libuv handle types.
+Structures are aligned so that any libuv handle can be cast to
+uv_handle_t
+.
+All API functions defined here work with any handle type.
+Libuv handles are not movable. Pointers to handle structures passed to
+functions must remain valid for the duration of the requested operation. Take
+care when using stack allocated handles.
+Data types
+type
+uv_handle_t
+The base libuv handle type.
+enum
+uv_handle_type
+The kind of the libuv handle.
+type
+uv_any_handle
+Union of all handle types.
+typedef
+void
+(
+*
+uv_alloc_cb
+)
+(
+uv_handle_t
+*
+handle
+,
+size_t
+suggested_size
+,
+uv_buf_t
+*
+buf
+)
+Type definition for callback passed to
+uv_read_start()
+and
+uv_udp_recv_start()
+. The user must allocate memory and fill the supplied
+uv_buf_t
+structure. If NULL is assigned as the buffer’s base or 0 as its length,
+a
+UV_ENOBUFS
+error will be triggered in the
+uv_udp_recv_cb
+or the
+uv_read_cb
+callback.
+Each buffer is used only once and the user is responsible for freeing it in the
+uv_udp_recv_cb
+or the
+uv_read_cb
+callback.
+A suggested size (65536 at the moment in most cases) is provided, but it’s just an indication,
+not related in any way to the pending data to be read. The user is free to allocate the amount
+of memory they decide.
+As an example, applications with custom allocation schemes such as using freelists, allocation
+pools or slab based allocators may decide to use a different size which matches the memory
+chunks they already have.
+Example:
+typedef
+void
+(
+*
+uv_close_cb
+)
+(
+uv_handle_t
+*
+handle
+)
+Type definition for callback passed to
+uv_close()
+.
+Public members
+uv_loop_t
+*
+uv_handle_t
+.
+loop
+Pointer to the
+uv_loop_t
+the handle is running on. Readonly.
+uv_handle_type
+uv_handle_t
+.
+type
+The
+uv_handle_type
+, indicating the type of the underlying handle. Readonly.
+void
+*
+uv_handle_t
+.
+data
+Space for user-defined arbitrary data. libuv does not use this field.
+API
+UV_HANDLE_TYPE_MAP
+(
+iter_macro
+)
+Macro that expands to a series of invocations of
+iter_macro
+for
+each of the handle types.
+iter_macro
+is invoked with two
+arguments: the name of the
+uv_handle_type
+element without the
+UV_
+prefix, and the name of the corresponding structure type
+without the
+uv_
+prefix and
+_t
+suffix.
+int
+uv_is_active
+(
+const
+uv_handle_t
+*
+handle
+)
+Returns non-zero if the handle is active, zero if it’s inactive. What
+“active” means depends on the type of handle:
+A uv_async_t handle is always active and cannot be deactivated, except
+by closing it with uv_close().
+A uv_pipe_t, uv_tcp_t, uv_udp_t, etc. handle - basically any handle that
+deals with i/o - is active when it is doing something that involves i/o,
+like reading, writing, connecting, accepting new connections, etc.
+A uv_check_t, uv_idle_t, uv_timer_t, etc. handle is active when it has
+been started with a call to uv_check_start(), uv_idle_start(), etc.
+Rule of thumb: if a handle of type
+uv_foo_t
+has a
+uv_foo_start()
+function, then it’s active from the moment that function is called.
+Likewise,
+uv_foo_stop()
+deactivates the handle again.
+int
+uv_is_closing
+(
+const
+uv_handle_t
+*
+handle
+)
+Returns non-zero if the handle is closing or closed, zero otherwise.
+Note
+This function should only be used between the initialization of the handle and the
+arrival of the close callback.
+void
+uv_close
+(
+uv_handle_t
+*
+handle
+,
+uv_close_cb
+close_cb
+)
+Request handle to be closed.
+close_cb
+will be called asynchronously after
+this call. This MUST be called on each handle before memory is released.
+Moreover, the memory can only be released in
+close_cb
+or after it has
+returned.
+Handles that wrap file descriptors are closed immediately but
+close_cb
+will still be deferred to the next iteration of the event loop.
+It gives you a chance to free up any resources associated with the handle.
+In-progress requests, like uv_connect_t or uv_write_t, are cancelled and
+have their callbacks called asynchronously with status=UV_ECANCELED.
+close_cb
+can be
+NULL
+in cases where no cleanup or deallocation is
+necessary.
+void
+uv_ref
+(
+uv_handle_t
+*
+handle
+)
+Reference the given handle. References are idempotent, that is, if a handle
+is already referenced calling this function again will have no effect.
+See
+Reference counting
+.
+void
+uv_unref
+(
+uv_handle_t
+*
+handle
+)
+Un-reference the given handle. References are idempotent, that is, if a handle
+is not referenced calling this function again will have no effect.
+See
+Reference counting
+.
+int
+uv_has_ref
+(
+const
+uv_handle_t
+*
+handle
+)
+Returns non-zero if the handle referenced, zero otherwise.
+See
+Reference counting
+.
+size_t
+uv_handle_size
+(
+uv_handle_type
+type
+)
+Returns the size of the given handle type. Useful for FFI binding writers
+who don’t want to know the structure layout.
+Miscellaneous API functions
+The following API functions take a
+uv_handle_t
+argument but they work
+just for some handle types.
+int
+uv_send_buffer_size
+(
+uv_handle_t
+*
+handle
+,
+int
+*
+value
+)
+Gets or sets the size of the send buffer that the operating
+system uses for the socket.
+If
+*value
+== 0, then it will set
+*value
+to the current send buffer size.
+If
+*value
+> 0 then it will use
+*value
+to set the new send buffer size.
+On success, zero is returned. On error, a negative result is
+returned.
+This function works for TCP, pipe and UDP handles on Unix and for TCP and
+UDP handles on Windows.
+Note
+Linux will set double the size and return double the size of the original set value.
+int
+uv_recv_buffer_size
+(
+uv_handle_t
+*
+handle
+,
+int
+*
+value
+)
+Gets or sets the size of the receive buffer that the operating
+system uses for the socket.
+If
+*value
+== 0, then it will set
+*value
+to the current receive buffer size.
+If
+*value
+> 0 then it will use
+*value
+to set the new receive buffer size.
+On success, zero is returned. On error, a negative result is
+returned.
+This function works for TCP, pipe and UDP handles on Unix and for TCP and
+UDP handles on Windows.
+Note
+Linux will set double the size and return double the size of the original set value.
+int
+uv_fileno
+(
+const
+uv_handle_t
+*
+handle
+,
+uv_os_fd_t
+*
+fd
+)
+Gets the platform dependent file descriptor equivalent.
+The following handles are supported: TCP, pipes, TTY, UDP and poll. Passing
+any other handle type will fail with
+UV_EINVAL
+.
+If a handle doesn’t have an attached file descriptor yet or the handle
+itself has been closed, this function will return
+UV_EBADF
+.
+Warning
+Be very careful when using this function. libuv assumes it’s in control of the file
+descriptor so any change to it may lead to malfunction.
+uv_loop_t
+*
+uv_handle_get_loop
+(
+const
+uv_handle_t
+*
+handle
+)
+Returns
+handle->loop
+.
+New in version 1.19.0.
+void
+*
+uv_handle_get_data
+(
+const
+uv_handle_t
+*
+handle
+)
+Returns
+handle->data
+.
+New in version 1.19.0.
+void
+uv_handle_set_data
+(
+uv_handle_t
+*
+handle
+,
+void
+*
+data
+)
+Sets
+handle->data
+to
+data
+.
+New in version 1.19.0.
+uv_handle_type
+uv_handle_get_type
+(
+const
+uv_handle_t
+*
+handle
+)
+Returns
+handle->type
+.
+New in version 1.19.0.
+const
+char
+*
+uv_handle_type_name
+(
+uv_handle_type
+type
+)
+Returns the name for the equivalent struct for a given handle type,
+e.g.
+“pipe”
+(as in
+uv_pipe_t
+) for
+UV_NAMED_PIPE
+.
+If no such handle type exists, this returns
+NULL
+.
+New in version 1.19.0.
+Reference counting
+The libuv event loop (if run in the default mode) will run until there are no
+active
+and
+referenced handles left. The user can force the loop to exit early
+by unreferencing handles which are active, for example by calling
+uv_unref()
+after calling
+uv_timer_start()
+.
+A handle can be referenced or unreferenced, the refcounting scheme doesn’t use
+a counter, so both operations are idempotent.
+All handles are referenced when active by default, see
+uv_is_active()
+for a more detailed explanation on what being
+active
+involves.
+
+## index.html
+Welcome to the libuv documentation
+Overview
+libuv is a multi-platform support library with a focus on asynchronous I/O. It
+was primarily developed for use by
+Node.js
+, but it’s also used by
+Luvit
+,
+Julia
+,
+uvloop
+, and
+others
+.
+Note
+In case you find errors in this documentation you can help by sending
+pull requests
+!
+Features
+Full-featured event loop backed by epoll, kqueue, IOCP, event ports.
+Asynchronous TCP and UDP sockets
+Asynchronous DNS resolution
+Asynchronous file and file system operations
+File system events
+ANSI escape code controlled TTY
+IPC with socket sharing, using Unix domain sockets or named pipes (Windows)
+Child processes
+Thread pool
+Signal handling
+High resolution clock
+Threading and synchronization primitives
+Documentation
+Design overview
+API documentation
+User guide
+Upgrading
+Downloads
+libuv can be downloaded from
+here
+.
+Installation
+Installation instructions can be found in the
+README
+.
+
+## loop.html
+uv_loop_t
+— Event loop
+The event loop is the central part of libuv’s functionality. It takes care
+of polling for i/o and scheduling callbacks to be run based on different sources
+of events.
+Data types
+type
+uv_loop_t
+Loop data type.
+enum
+uv_loop_option
+Additional loop options.
+See
+uv_loop_configure()
+.
+enum
+uv_run_mode
+Mode used to run the loop with
+uv_run()
+.
+typedef
+void
+(
+*
+uv_walk_cb
+)
+(
+uv_handle_t
+*
+handle
+,
+void
+*
+arg
+)
+Type definition for callback passed to
+uv_walk()
+.
+Public members
+void
+*
+uv_loop_t
+.
+data
+Space for user-defined arbitrary data. libuv does not use and does not
+touch this field.
+API
+int
+uv_loop_init
+(
+uv_loop_t
+*
+loop
+)
+Initializes the given
+uv_loop_t
+structure.
+int
+uv_loop_configure
+(
+uv_loop_t
+*
+loop
+,
+uv_loop_option
+option
+,
+...
+)
+New in version 1.0.2.
+Set additional loop options.  You should normally call this before the
+first call to
+uv_run()
+unless mentioned otherwise.
+Returns 0 on success or a UV_E* error code on failure.  Be prepared to
+handle UV_ENOSYS; it means the loop option is not supported by the platform.
+Supported options:
+UV_LOOP_BLOCK_SIGNAL: Block a signal when polling for new events.  The
+second argument to
+uv_loop_configure()
+is the signal number.
+This operation is currently only implemented for SIGPROF signals,
+to suppress unnecessary wakeups when using a sampling profiler.
+Requesting other signals will fail with UV_EINVAL.
+UV_METRICS_IDLE_TIME: Accumulate the amount of idle time the event loop
+spends in the event provider.
+This option is necessary to use
+uv_metrics_idle_time()
+.
+UV_LOOP_USE_IO_URING_SQPOLL: Enable SQPOLL io_uring instance to handle
+asynchronous file system operations.
+Changed in version 1.39.0:
+added the UV_METRICS_IDLE_TIME option.
+Changed in version 1.49.0:
+added the UV_LOOP_USE_IO_URING_SQPOLL option.
+int
+uv_loop_close
+(
+uv_loop_t
+*
+loop
+)
+Releases all internal loop resources. Call this function only when the loop
+has finished executing and all open handles and requests have been closed,
+or it will return UV_EBUSY. After this function returns, the user can free
+the memory allocated for the loop.
+uv_loop_t
+*
+uv_default_loop
+(
+void
+)
+Returns the initialized default loop. It may return NULL in case of
+allocation failure.
+This function is just a convenient way for having a global loop throughout
+an application, the default loop is in no way different than the ones
+initialized with
+uv_loop_init()
+. As such, the default loop can (and
+should) be closed with
+uv_loop_close()
+so the resources associated
+with it are freed.
+Warning
+This function is not thread safe.
+int
+uv_run
+(
+uv_loop_t
+*
+loop
+,
+uv_run_mode
+mode
+)
+This function runs the event loop. It will act differently depending on the
+specified mode:
+UV_RUN_DEFAULT: Runs the event loop until there are no more active and
+referenced handles or requests. Returns non-zero if
+uv_stop()
+was called and there are still active handles or requests.  Returns
+zero in all other cases.
+UV_RUN_ONCE: Poll for i/o once. Note that this function blocks if
+there are no pending callbacks. Returns zero when done (no active handles
+or requests left), or non-zero if more callbacks are expected (meaning
+you should run the event loop again sometime in the future).
+UV_RUN_NOWAIT: Poll for i/o once but don’t block if there are no
+pending callbacks. Returns zero if done (no active handles
+or requests left), or non-zero if more callbacks are expected (meaning
+you should run the event loop again sometime in the future).
+uv_run()
+is not reentrant. It must not be called from a callback.
+int
+uv_loop_alive
+(
+const
+uv_loop_t
+*
+loop
+)
+Returns non-zero if there are referenced active handles, active
+requests or closing handles in the loop.
+void
+uv_stop
+(
+uv_loop_t
+*
+loop
+)
+Stop the event loop, causing
+uv_run()
+to end as soon as
+possible. This will happen not sooner than the next loop iteration.
+If this function was called before blocking for i/o, the loop won’t block
+for i/o on this iteration.
+size_t
+uv_loop_size
+(
+void
+)
+Returns the size of the
+uv_loop_t
+structure. Useful for FFI binding
+writers who don’t want to know the structure layout.
+int
+uv_backend_fd
+(
+const
+uv_loop_t
+*
+loop
+)
+Get backend file descriptor. Only kqueue, epoll and event ports are
+supported.
+This can be used in conjunction with
+uv_run(loop, UV_RUN_NOWAIT)
+to
+poll in one thread and run the event loop’s callbacks in another see
+test/test-embed.c for an example.
+Note
+Embedding a kqueue fd in another kqueue pollset doesn’t work on all platforms. It’s not
+an error to add the fd but it never generates events.
+int
+uv_backend_timeout
+(
+const
+uv_loop_t
+*
+loop
+)
+Get the poll timeout. The return value is in milliseconds, or -1 for no
+timeout.
+uint64_t
+uv_now
+(
+const
+uv_loop_t
+*
+loop
+)
+Return the current timestamp in milliseconds. The timestamp is cached at
+the start of the event loop tick, see
+uv_update_time()
+for details
+and rationale.
+The timestamp increases monotonically from some arbitrary point in time.
+Don’t make assumptions about the starting point, you will only get
+disappointed.
+Note
+Use
+uv_hrtime()
+if you need sub-millisecond granularity.
+void
+uv_update_time
+(
+uv_loop_t
+*
+loop
+)
+Update the event loop’s concept of “now”. Libuv caches the current time
+at the start of the event loop tick in order to reduce the number of
+time-related system calls.
+You won’t normally need to call this function unless you have callbacks
+that block the event loop for longer periods of time, where “longer” is
+somewhat subjective but probably on the order of a millisecond or more.
+void
+uv_walk
+(
+uv_loop_t
+*
+loop
+,
+uv_walk_cb
+walk_cb
+,
+void
+*
+arg
+)
+Walk the list of handles:
+walk_cb
+will be executed with the given
+arg
+.
+int
+uv_loop_fork
+(
+uv_loop_t
+*
+loop
+)
+New in version 1.12.0.
+Reinitialize any kernel state necessary in the child process after
+a
+fork(2)
+system call.
+Previously started watchers will continue to be started in the
+child process.
+It is necessary to explicitly call this function on every event
+loop created in the parent process that you plan to continue to
+use in the child, including the default loop (even if you don’t
+continue to use it in the parent). This function must be called
+before calling
+uv_run()
+or any other API function using
+the loop in the child. Failure to do so will result in undefined
+behaviour, possibly including duplicate events delivered to both
+parent and child or aborting the child process.
+When possible, it is preferred to create a new loop in the child
+process instead of reusing a loop created in the parent. New loops
+created in the child process after the fork should not use this
+function.
+This function is not implemented on Windows, where it returns
+UV_ENOSYS
+.
+Caution
+This function is experimental. It may contain bugs, and is subject to
+change or removal. API and ABI stability is not guaranteed.
+Note
+On Mac OS X, if directory FS event handles were in use in the
+parent process
+for any event loop
+, the child process will no
+longer be able to use the most efficient FSEvent
+implementation. Instead, uses of directory FS event handles in
+the child will fall back to the same implementation used for
+files and on other kqueue-based systems.
+Caution
+On AIX and SunOS, FS event handles that were already started in
+the parent process at the time of forking will
+not
+deliver
+events in the child process; they must be closed and restarted.
+On all other platforms, they will continue to work normally
+without any further intervention.
+Caution
+Any previous value returned from
+uv_backend_fd()
+is now
+invalid. That function must be called again to determine the
+correct backend file descriptor.
+void
+*
+uv_loop_get_data
+(
+const
+uv_loop_t
+*
+loop
+)
+Returns
+loop->data
+.
+New in version 1.19.0.
+void
+uv_loop_set_data
+(
+uv_loop_t
+*
+loop
+,
+void
+*
+data
+)
+Sets
+loop->data
+to
+data
+.
+New in version 1.19.0.
+
+## request.html
+uv_req_t
+— Base request
+uv_req_t
+is the base type for all libuv request types.
+Structures are aligned so that any libuv request can be cast to
+uv_req_t
+.
+All API functions defined here work with any request type.
+Data types
+type
+uv_req_t
+The base libuv request structure.
+type
+uv_any_req
+Union of all request types.
+enum
+uv_req_type
+The kind of the libuv request.
+Public members
+void
+*
+uv_req_t
+.
+data
+Space for user-defined arbitrary data. libuv does not use this field.
+uv_req_type
+uv_req_t
+.
+type
+The
+uv_req_type
+, indicating the type of the request. Readonly.
+API
+UV_REQ_TYPE_MAP
+(
+iter_macro
+)
+Macro that expands to a series of invocations of
+iter_macro
+for
+each of the request types.
+iter_macro
+is invoked with two
+arguments: the name of the
+uv_req_type
+element without the
+UV_
+prefix, and the name of the corresponding structure type without the
+uv_
+prefix and
+_t
+suffix.
+int
+uv_cancel
+(
+uv_req_t
+*
+req
+)
+Cancel a pending request. Fails if the request is executing or has finished
+executing. Write requests are an exception: cancellation of a write that is
+already in progress will attempt to interrupt it (the callback may report
+a partial write), and cancellation of an already-completed write is a
+successful no-op.
+Returns 0 on success, or an error code < 0 on failure.
+Only cancellation of
+uv_write_t
+,
+uv_fs_t
+,
+uv_getaddrinfo_t
+,
+uv_getnameinfo_t
+,
+uv_random_t
+and
+uv_work_t
+requests is currently
+supported.
+Cancelled requests have their callbacks invoked some time in the future.
+It’s
+not
+safe to free the memory associated with the request until the
+callback is called.
+Here is how cancellation is reported to the callback:
+A
+uv_fs_t
+request has its req->result field set to
+UV_ECANCELED
+.
+A
+uv_work_t
+,
+uv_getaddrinfo_t
+,
+uv_getnameinfo_t
+or
+uv_random_t
+request has its
+callback invoked with status ==
+UV_ECANCELED
+.
+A
+uv_write_t
+request has its callback invoked with
+status ==
+UV_ECANCELED
+. Use
+uv_write_nwritten()
+from the
+callback to determine how many bytes were written before cancellation.
+Fully cancelled writes (where no bytes were written) may have their
+callbacks called out of order with respect to other writes on the same
+stream. Note that cancelled writes may still succeed or fail with
+other errors if the kernel finished processing the write before the
+cancellation took effect.
+size_t
+uv_req_size
+(
+uv_req_type
+type
+)
+Returns the size of the given request type. Useful for FFI binding writers
+who don’t want to know the structure layout.
+void
+*
+uv_req_get_data
+(
+const
+uv_req_t
+*
+req
+)
+Returns
+req->data
+.
+New in version 1.19.0.
+void
+uv_req_set_data
+(
+uv_req_t
+*
+req
+,
+void
+*
+data
+)
+Sets
+req->data
+to
+data
+.
+New in version 1.19.0.
+uv_req_type
+uv_req_get_type
+(
+const
+uv_req_t
+*
+req
+)
+Returns
+req->type
+.
+New in version 1.19.0.
+const
+char
+*
+uv_req_type_name
+(
+uv_req_type
+type
+)
+Returns the name for the equivalent struct for a given request type,
+e.g.
+“connect”
+(as in
+uv_connect_t
+) for
+UV_CONNECT
+.
+If no such request type exists, this returns
+NULL
+.
+New in version 1.19.0.
+
+## threadpool.html
+Thread pool work scheduling
+libuv provides a threadpool which can be used to run user code and get notified
+in the loop thread. This thread pool is internally used to run all file system
+operations, as well as getaddrinfo and getnameinfo requests.
+Its default size is 4, but it can be changed at startup time by setting the
+UV_THREADPOOL_SIZE
+environment variable to any value (the absolute maximum
+is 1024).
+Changed in version 1.30.0:
+the maximum UV_THREADPOOL_SIZE allowed was increased from 128 to 1024.
+Changed in version 1.45.0:
+threads now have an 8 MB stack instead of the
+(sometimes too low) platform default.
+Changed in version 1.50.0:
+threads now have a default name of libuv-worker.
+The threadpool is global and shared across all event loops. When a particular
+function makes use of the threadpool (e.g. when using
+uv_queue_work()
+)
+libuv preallocates and initializes the maximum number of threads allowed by
+UV_THREADPOOL_SIZE
+. More threads usually means more throughput but a higher
+memory footprint. Thread stacks grow lazily on most platforms though.
+Note
+Note that even though a global thread pool which is shared across all events
+loops is used, the functions are not thread safe.
+Data types
+type
+uv_work_t
+Work request type.
+typedef
+void
+(
+*
+uv_work_cb
+)
+(
+uv_work_t
+*
+req
+)
+Callback passed to
+uv_queue_work()
+which will be run on the thread
+pool.
+typedef
+void
+(
+*
+uv_after_work_cb
+)
+(
+uv_work_t
+*
+req
+,
+int
+status
+)
+Callback passed to
+uv_queue_work()
+which will be called on the loop
+thread after the work on the threadpool has been completed. If the work
+was cancelled using
+uv_cancel()
+status
+will be
+UV_ECANCELED
+.
+Public members
+uv_loop_t
+*
+uv_work_t
+.
+loop
+Loop that started this request and where completion will be reported.
+Readonly.
+See also
+The
+uv_req_t
+members also apply.
+API
+int
+uv_queue_work
+(
+uv_loop_t
+*
+loop
+,
+uv_work_t
+*
+req
+,
+uv_work_cb
+work_cb
+,
+uv_after_work_cb
+after_work_cb
+)
+Initializes a work request which will run the given
+work_cb
+in a thread
+from the threadpool. Once
+work_cb
+is completed,
+after_work_cb
+will be
+called on the loop thread.
+This request can be cancelled with
+uv_cancel()
+.
+See also
+The
+uv_req_t
+API functions also apply.

@@ -1,0 +1,9 @@
+{
+ "scope":"候補選定のためのguide9章の主要説明・目次・原注意書きとoverview/design/API/threadpoolの確認。全42本文の内容レビューではない。抽出資料の保存だけを全文読了と扱わない。",
+ "observedStructure":["C既習者向けにイベントループ、ハンドル/リクエスト、ファイル、ネットワーク、スレッド、子プロセス、ループ制御、各種ユーティリティを導入。","designはハンドル/リクエストの生存期間、close callback後のメモリ解放、ネットワークI/Oとthreadpoolの違いを説明。","API27項目とサンプル全文37取り込み元を併せた固定範囲。動画は補助説明で本文に基本概念あり。多重echoサーバーは原文が全文コードの参照を勧めており、固定docs/codeも保管済み。"],
+ "originalLimitations":[{"page":"guide/introduction","finding":"原ガイドとサンプルはv1.42.0に基づくと明示、work in progress。"},{"page":"guide","finding":"公式組み込み後、十分なレビューが行われていないという原warning。"},{"page":"guide/filesystem","finding":"uvteeに動作が不安定という原Error注意。ファイル監視例はOSX/Windows限定と明示。"},{"page":"guide/networking","finding":"例はAPI紹介用でメモリリーク/接続未closeを含み良質な実用コードではないと原注記。"},{"page":"guide/utilities#check-prepare-watchers","finding":"原節はTODOのみ。prepare/checkのAPI説明は同一固定範囲内にあるが、ガイド説明を補作しない。"}],
+ "fixedInputDiscrepancies":[{"id":"uv-fs-errorno","guide":"docs/src/guide/threads.rst:281-283はuv_fs_t.errornoがUV_ECANCELEDになると説明。","reference":"docs/src/fs.rst:202-206はuv_fs_t.resultが負数でエラーと説明。include/uv.h:1466以降の公開structにはssize_t resultがありerrornoはない。","impact":"v1.53.0を対象に旧ガイド記載をそのまま現行メンバーとして利用すると誤る。","handling":"原文を無言で置換しない。正式採用時は対応する固定版APIリンクと版差の編集注記をfooterへ入れる。全体の選定品質評価とレビュー範囲へ反映。"},{"id":"run-once-event-wording","guide":"docs/src/guide/processes.rst:155-158はUV_RUN_ONCE/NOWAITがone eventを処理すると説明。","reference":"docs/src/loop.rst:126-134はI/Oを一度pollすると説明。","impact":"単一コールバックだけを処理する保証と誤解し得る。","handling":"原ガイドの字面を保持し、固定APIの実行モード説明へのfooter注記を正式採用前に設計。APIとコードの詳細照合は未完。"}],
+ "selfContained":"unknown。概念説明と参照APIは同一範囲に揃うが、旧ガイドと現行APIの主要契約差の評価が未完。",
+ "workload":"unknown。コード/API宣言を除く33,056語で通常3万語上限を超える。再利用可能な変換器と測定はあるが、必要な42章を削らず別枠の保守負荷判断を採用前に残す。",
+ "next":"既存日本語訳の版/範囲調査を完了し、原制約・少なくとも上記2差異を採点品質と別枠判断へ反映する。推測でpass/採用しない。"
+}

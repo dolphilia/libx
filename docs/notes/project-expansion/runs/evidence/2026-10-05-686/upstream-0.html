@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html
+  lang="ja"
+
+
+data-admin-domain="//blog.hatena.ne.jp"
+data-admin-origin="https://blog.hatena.ne.jp"
+data-author="kimito_k"
+data-avail-langs="ja en"
+data-blog="kimitok.hateblo.jp"
+data-blog-host="kimitok.hateblo.jp"
+data-blog-is-public="1"
+data-blog-name="自由課題"
+data-blog-owner="kimito_k"
+data-blog-show-ads="1"
+data-blog-show-sleeping-ads="1"
+data-blog-uri="https://kimitok.hateblo.jp/"
+data-blog-uuid="12704346814673887722"
+data-blogs-uri-base="https://kimitok.hateblo.jp"
+data-brand="hatenablog"
+data-data-layer="{&quot;hatenablog&quot;:{&quot;admin&quot;:{},&quot;analytics&quot;:{&quot;brand_property_id&quot;:&quot;&quot;,&quot;measurement_id&quot;:&quot;&quot;,&quot;non_sampling_property_id&quot;:&quot;&quot;,&quot;property_id&quot;:&quot;UA-47492000-1&quot;,&quot;separated_property_id&quot;:&quot;UA-29716941-22&quot;},&quot;blog&quot;:{&quot;blog_id&quot;:&quot;12704346814673887722&quot;,&quot;content_seems_japanese&quot;:&quot;true&quot;,&quot;disable_ads&quot;:&quot;&quot;,&quot;enable_ads&quot;:&quot;true&quot;,&quot;entry_show_footer_related_entries&quot;:&quot;true&quot;,&quot;force_pc_view&quot;:&quot;false&quot;,&quot;is_public&quot;:&quot;true&quot;,&quot;is_responsive_view&quot;:&quot;false&quot;,&quot;is_sleeping&quot;:&quot;true&quot;,&quot;lang&quot;:&quot;ja&quot;,&quot;name&quot;:&quot;\u81ea\u7531\u8ab2\u984c&quot;,&quot;owner_name&quot;:&quot;kimito_k&quot;,&quot;uri&quot;:&quot;https://kimitok.hateblo.jp/&quot;},&quot;brand&quot;:&quot;hatenablog&quot;,&quot;page_id&quot;:&quot;entry&quot;,&quot;permalink_entry&quot;:{&quot;author_name&quot;:&quot;kimito_k&quot;,&quot;categories&quot;:&quot;C\tnode.js&quot;,&quot;character_count&quot;:901,&quot;date&quot;:&quot;2014-03-30&quot;,&quot;entry_id&quot;:&quot;12921228815720983021&quot;,&quot;first_category&quot;:&quot;C&quot;,&quot;hour&quot;:&quot;18&quot;,&quot;title&quot;:&quot;node.js\u3092\u652f\u3048\u308blibuv\u306e\u30c1\u30e5\u30fc\u30c8\u30ea\u30a2\u30eb\&quot;uvbook\&quot; :\u76ee\u6b21&quot;,&quot;uri&quot;:&quot;https://kimitok.hateblo.jp/entry/2014/03/30/184206&quot;},&quot;pro&quot;:&quot;free&quot;,&quot;router_type&quot;:&quot;blogs&quot;}}"
+data-device="pc"
+data-dont-recommend-pro="false"
+data-global-domain="https://hatena.blog"
+data-globalheader-color="b"
+data-globalheader-type="pc"
+data-has-touch-view="1"
+data-help-url="https://help.hatenablog.com"
+data-page="entry"
+data-parts-domain="https://hatenablog-parts.com"
+data-plus-available=""
+data-pro="false"
+data-router-type="blogs"
+data-sentry-dsn="https://03a33e4781a24cf2885099fed222b56d@sentry.io/1195218"
+data-sentry-environment="production"
+data-sentry-sample-rate="0.1"
+data-show-heading-anchor-link="1"
+data-static-domain="https://cdn.blog.st-hatena.com"
+data-version="89f69427ebf1344326896140241320"
+
+
+
+
+
+
+  data-initial-state="{}"
+
+  >
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+
+  
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  
+
+
+  
+
+  <meta name="robots" content="max-image-preview:large" />
+
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=7; IE=9; IE=10; IE=11" />
+  <title>node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次 - 自由課題</title>
+
+  
+  <link rel="canonical" href="https://kimitok.hateblo.jp/entry/2014/03/30/184206"/>
+
+
+
+  
+
+<meta itemprop="name" content="node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次 - 自由課題"/>
+
+  <meta itemprop="image" content="https://ogimage.blog.st-hatena.com/12704346814673887722/12921228815720983021/1398349676"/>
+
+
+  <meta property="og:title" content="node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次 - 自由課題"/>
+<meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://kimitok.hateblo.jp/entry/2014/03/30/184206"/>
+
+  <meta property="og:image" content="https://ogimage.blog.st-hatena.com/12704346814673887722/12921228815720983021/1398349676"/>
+
+<meta property="og:image:alt" content="node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次 - 自由課題"/>
+    <meta property="og:description" content="はじめに node.jsの基礎となるライブラリにlibuvというものがあります。以前からnode.jsの仕組みについて気になっていたので調べようと思ったところ、uvbookというlibuvのチュートリアルがあったので訳してみることにしました。 この文書のライセンスについて この文書のライセンスは Creative Commons - Attributionであり、翻訳前の原文は https://github.com/nikhilm/uvbook となります。掲載するにあたり、見出しのスタイルなど、文書の体裁・フォーマットを一部変更しています。また、関連するコードはパブリックドメインです。 目次…" />
+<meta property="og:site_name" content="自由課題"/>
+
+  <meta property="article:published_time" content="2014-03-30T09:42:06Z" />
+
+    <meta property="article:tag" content="C" />
+    <meta property="article:tag" content="node.js" />
+      <meta name="twitter:card"  content="summary_large_image" />
+    <meta name="twitter:image" content="https://ogimage.blog.st-hatena.com/12704346814673887722/12921228815720983021/1398349676" />  <meta name="twitter:title" content="node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次 - 自由課題" />    <meta name="twitter:description" content="はじめに node.jsの基礎となるライブラリにlibuvというものがあります。以前からnode.jsの仕組みについて気になっていたので調べようと思ったところ、uvbookというlibuvのチュートリアルがあったので訳してみることにしました。 この文書のライセンスについて この文書のライセンスは Creative Co…" />  <meta name="twitter:app:name:iphone" content="はてなブログアプリ" />
+  <meta name="twitter:app:id:iphone" content="583299321" />
+  <meta name="twitter:app:url:iphone" content="hatenablog:///open?uri=https%3A%2F%2Fkimitok.hateblo.jp%2Fentry%2F2014%2F03%2F30%2F184206" />
+  
+    <meta name="description" content="はじめに node.jsの基礎となるライブラリにlibuvというものがあります。以前からnode.jsの仕組みについて気になっていたので調べようと思ったところ、uvbookというlibuvのチュートリアルがあったので訳してみることにしました。 この文書のライセンスについて この文書のライセンスは Creative Commons - Attributionであり、翻訳前の原文は https://github.com/nikhilm/uvbook となります。掲載するにあたり、見出しのスタイルなど、文書の体裁・フォーマットを一部変更しています。また、関連するコードはパブリックドメインです。 目次…" />
+    <meta name="google-site-verification" content="VoGEs_K7YuPd28WVdlZNnPQY7a7AlMFc-cefJkj2Gp4" />
+
+
+  
+<script
+  id="embed-gtm-data-layer-loader"
+  data-data-layer-page-specific="{&quot;hatenablog&quot;:{&quot;blogs_permalink&quot;:{&quot;has_related_entries_with_elasticsearch&quot;:&quot;true&quot;,&quot;is_author_pro&quot;:&quot;false&quot;,&quot;is_blog_sleeping&quot;:&quot;true&quot;,&quot;blog_afc_issued&quot;:&quot;false&quot;,&quot;entry_afc_issued&quot;:&quot;false&quot;}}}"
+>
+(function() {
+  function loadDataLayer(elem, attrName) {
+    if (!elem) { return {}; }
+    var json = elem.getAttribute(attrName);
+    if (!json) { return {}; }
+    return JSON.parse(json);
+  }
+
+  var globalVariables = loadDataLayer(
+    document.documentElement,
+    'data-data-layer'
+  );
+  var pageSpecificVariables = loadDataLayer(
+    document.getElementById('embed-gtm-data-layer-loader'),
+    'data-data-layer-page-specific'
+  );
+
+  var variables = [globalVariables, pageSpecificVariables];
+
+  if (!window.dataLayer) {
+    window.dataLayer = [];
+  }
+
+  for (var i = 0; i < variables.length; i++) {
+    window.dataLayer.push(variables[i]);
+  }
+})();
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P4CXTW');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://kimitok.hateblo.jp/icon/favicon">
+<link rel="apple-touch-icon" href="https://kimitok.hateblo.jp/icon/touch">
+<link rel="icon" sizes="192x192" href="https://kimitok.hateblo.jp/icon/link">
+
+  
+
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://kimitok.hateblo.jp/feed"/>
+<link rel="alternate" type="application/rss+xml" title="RSS2.0" href="https://kimitok.hateblo.jp/rss"/>
+
+  <link rel="alternate" type="application/json+oembed" href="https://hatena.blog/oembed?url=https%3A%2F%2Fkimitok.hateblo.jp%2Fentry%2F2014%2F03%2F30%2F184206&amp;format=json" title="oEmbed Profile of node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次"/>
+<link rel="alternate" type="text/xml+oembed" href="https://hatena.blog/oembed?url=https%3A%2F%2Fkimitok.hateblo.jp%2Fentry%2F2014%2F03%2F30%2F184206&amp;format=xml" title="oEmbed Profile of node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次"/>
+  
+  <link rel="author" href="http://www.hatena.ne.jp/kimito_k/">
+
+  
+
+  
+
+
+  
+    
+<link rel="stylesheet" type="text/css" href="https://cdn.blog.st-hatena.com/css/blog.css?version=89f69427ebf1344326896140241320"/>
+
+    
+  <link rel="stylesheet" type="text/css" href="https://usercss.blog.st-hatena.com/blog_style/12704346814673887722/76ba36e38e7410697ba0617bcc644fd932fe1d6d"/>
+  
+  
+  
+
+  
+
+  
+<script> </script>
+
+  
+<style>
+  div#google_afc_user,
+  div.google-afc-user-container,
+  div.google_afc_image,
+  div.google_afc_blocklink {
+      display: block !important;
+  }
+</style>
+
+
+  
+    <script src="https://cdn.pool.st-hatena.com/valve/valve.js" async></script>
+<script id="test-valve-definition">
+  var valve = window.valve || [];
+
+  valve.push(function(v) {
+    
+    
+
+    v.config({
+      service: 'blog',
+      content: {
+        result: 'adtrust',
+        documentIds: ["blog:entry:12921228815720983021"]
+      }
+    });
+    v.defineDFPSlot({"sizes":[[300,250],[336,280]],"slotId":"google_afc_user_container_0","unit":"/4374287/blo_pc_com_6_3328_0_no"});    v.defineDFPSlot({"lazy":1,"sizes":{"mappings":[[[320,568],[[336,280],[300,250],"fluid"]],[[0,0],[[300,250]]]]},"slotId":"sleeping-ad-in-entry","unit":"/4374287/blog_pc_entry_sleep_in-article"});    v.defineDFPSlot({"lazy":"","sizes":[[300,250],[336,280],[468,60],"fluid"],"slotId":"google_afc_user_container_1","unit":"/4374287/blog_user"});
+    v.sealDFPSlots();
+  });
+</script>
+
+  
+
+  
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","dateModified":"2014-03-30T09:42:06+09:00","datePublished":"2014-03-30T18:42:06+09:00","description":"はじめに node.jsの基礎となるライブラリにlibuvというものがあります。以前からnode.jsの仕組みについて気になっていたので調べようと思ったところ、uvbookというlibuvのチュートリアルがあったので訳してみることにしました。 この文書のライセンスについて この文書のライセンスは Creative Commons - Attributionであり、翻訳前の原文は https://github.com/nikhilm/uvbook となります。掲載するにあたり、見出しのスタイルなど、文書の体裁・フォーマットを一部変更しています。また、関連するコードはパブリックドメインです。 目次…","headline":"node.jsを支えるlibuvのチュートリアル\"uvbook\" :目次","image":["https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png"],"mainEntityOfPage":{"@id":"https://kimitok.hateblo.jp/entry/2014/03/30/184206","@type":"WebPage"}}</script>
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-47492000-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-47492000-1');
+</script>
+
+
+  
+
+</head>
+
+  <body class="page-entry category-C category-node.js globalheader-ng-enabled">
+    
+    
+
+<div id="globalheader-container"
+  data-brand="hatenablog"
+  
+  >
+  <iframe id="globalheader" height="37" frameborder="0" allowTransparency="true"></iframe>
+</div>
+
+
+  
+  
+  
+    <nav class="
+      blog-controlls
+      
+    ">
+      <div class="blog-controlls-blog-icon">
+        <a href="https://kimitok.hateblo.jp/">
+          <img src="https://cdn.image.st-hatena.com/image/square/55acb1147ff9a18c467cfe33f01324ed5d37c0af/backend=imagemagick;height=128;version=1;width=128/https%3A%2F%2Fcdn.user.blog.st-hatena.com%2Fcustom_blog_icon%2F66557048%2F1514225629812614" alt="自由課題"/>
+        </a>
+      </div>
+      <div class="blog-controlls-title">
+        <a href="https://kimitok.hateblo.jp/">自由課題</a>
+      </div>
+      <a href="https://blog.hatena.ne.jp/kimito_k/kimitok.hateblo.jp/subscribe?utm_campaign=subscribe_blog&amp;utm_medium=button&amp;utm_source=blogs_topright_button" class="blog-controlls-subscribe-btn test-blog-header-controlls-subscribe">
+        読者になる
+      </a>
+    </nav>
+  
+
+  <div id="container">
+    <div id="container-inner">
+      <header id="blog-title" data-brand="hatenablog">
+  <div id="blog-title-inner" >
+    <div id="blog-title-content">
+      <h1 id="title"><a href="https://kimitok.hateblo.jp/">自由課題</a></h1>
+      
+        <h2 id="blog-description">学んだり、考えたり、試したりしたこと。</h2>
+      
+    </div>
+  </div>
+</header>
+
+      
+
+
+      
+      
+
+
+
+
+<div id="content" class="hfeed"
+  
+  >
+  <div id="content-inner">
+    <div id="wrapper">
+      <div id="main">
+        <div id="main-inner">
+          
+  <article class="entry no-entry sleeping-ads" style="display: block !important;">
+    <div class="entry-inner">
+      <div class="entry-content">
+        
+        
+        <div class="variable-mobileWeb-ad">
+          <div id="google_afc_user_container_0" class="sleeping-ad" style="display: block !important;"></div>
+        </div>
+        
+
+        
+        <p class="sleeping-ads-notice" style="display: none;">この広告は、90日以上更新していないブログに表示しています。</p>
+      </div>
+    </div>
+  </article>
+
+
+          
+
+
+  
+
+
+          
+  
+  <!-- google_ad_section_start -->
+  <!-- rakuten_ad_target_begin -->
+  
+  
+  
+
+  
+
+  
+    
+      
+        <article class="entry hentry test-hentry js-entry-article date-first autopagerize_page_element chars-1200 words-100 mode-markdown entry-odd" id="entry-12921228815720983021" data-keyword-campaign="" data-uuid="12921228815720983021" data-publication-type="entry">
+  <div class="entry-inner">
+    <header class="entry-header">
+  
+    <div class="date entry-date first">
+    <a href="https://kimitok.hateblo.jp/archive/2014/03/30" rel="nofollow">
+      <time datetime="2014-03-30T09:42:06Z" title="2014-03-30T09:42:06Z">
+        <span class="date-year">2014</span><span class="hyphen">-</span><span class="date-month">03</span><span class="hyphen">-</span><span class="date-day">30</span>
+      </time>
+    </a>
+      </div>
+  <h1 class="entry-title">
+  <a href="https://kimitok.hateblo.jp/entry/2014/03/30/184206" class="entry-title-link bookmark">node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次</a>
+</h1>
+
+  
+  
+
+  <div class="entry-categories categories">
+    
+    <a href="https://kimitok.hateblo.jp/archive/category/C" class="entry-category-link category-C">C</a>
+    
+    <a href="https://kimitok.hateblo.jp/archive/category/node.js" class="entry-category-link category-node.js">node.js</a>
+    
+  </div>
+
+
+  
+
+  
+
+</header>
+
+    
+
+
+    <div class="entry-content hatenablog-entry">
+  
+    <h1>はじめに</h1>
+
+<p><a href="http://nodejs.org">node.js</a>の基礎となるライブラリに<a href="https://github.com/joyent/libuv">libuv</a>というものがあります。以前からnode.jsの仕組みについて気になっていたので調べようと思ったところ、<a href="https://github.com/nikhilm/uvbook">uvbook</a>というlibuvの<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%C1%A5%E5%A1%BC%A5%C8%A5%EA%A5%A2%A5%EB">チュートリアル</a>があったので訳してみることにしました。</p>
+
+<h4>この文書のライセンスについて</h4>
+
+<p>この文書のライセンスは<a href="http://creativecommons.org/licenses/by/3.0/"> Creative Commons - Attribution</a>であり、翻訳前の原文は <a href="https://github.com/nikhilm/uvbook">https://github.com/nikhilm/uvbook</a> となります。掲載するにあたり、見出しのスタイルなど、文書の体裁・フォーマットを一部変更しています。また、関連するコードは<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D1%A5%D6%A5%EA%A5%C3%A5%AF%A5%C9%A5%E1%A5%A4%A5%F3">パブリックドメイン</a>です。</p>
+
+<h1>目次</h1>
+
+<p><a href="http://kimitok.hateblo.jp/entry/2014/03/30/184849">イントロダクション</a><br/>
+<a href="http://kimitok.hateblo.jp/entry/2014/03/30/185544">基礎</a><br/>
+<a href="http://kimitok.hateblo.jp/entry/2014/04/01/230114">ファイルシステム</a><br/>
+<a href="http://kimitok.hateblo.jp/entry/2014/04/13/181506">ネットワーク処理</a><br/>
+<a href="http://kimitok.hateblo.jp/entry/2014/04/16/223643">スレッド</a><br/>
+<a href="http://kimitok.hateblo.jp/entry/2014/04/20/142712">プロセス</a><br/>
+<a href="http://kimitok.hateblo.jp/entry/2014/04/23/202913">イベントループ</a><br/>
+<a href="http://kimitok.hateblo.jp/entry/2014/04/24/231854">ユーティリティ  </a></p>
+
+<h1>この書籍について</h1>
+
+<p><a href="http://nikhilism.com">Nikhil Marathe</a>はプログラミングをする気のなかったある日(2012年6月16日)の午後にこの書籍を書き始めました。彼は<a href="https://github.com/nikhilm/node-taglib">node-taglib</a>の仕事をしている間、libuvのよいドキュメントのなさに苦しめられていました。リファレンスが存在しているのにも関わらず、包括的な<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%C1%A5%E5%A1%BC%A5%C8%A5%EA%A5%A2%A5%EB">チュートリアル</a>がありませんでした。この書籍はその要求に対するアウトプットであり、正確を期す努力をしています。それは、Nikhilが若く未熟であり、ある点でひどく誤っている可能性があるということです。もしあなたが間違いを見つけた場合、彼はあなたに<a href="nsm.nikhil@gmail.com">教えて</a>ほしいと思っています。また、<a href="https://github.com/nikhilm/uvbook">レポジトリをfork </a>し、pull reqestを送ることによりこの書籍に貢献することができます。</p>
+
+<p>Nikhilは2つのライブラリの意味に関して記載されているMarc Lehmannによるlibevについての素晴らしい<a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod">man page</a>のおかげでこの書籍を執筆することができました。</p>
+
+<p>この書籍は<a href="http://sphinx.pocoo.org/">Sphinx</a>と<a href="http://www.vim.org">vim</a>によって作成されました。</p>
+
+<h2>ライセンス</h2>
+
+<p>この書籍の内容は<a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons - Attribution</a>に基いてライセンスされています。すべてのコードは <strong>public domain</strong> です。</p>
+
+    
+    
+
+
+
+
+    
+
+  
+</div>
+
+    
+  <footer class="entry-footer">
+    
+    <div class="entry-tags-wrapper">
+  <div class="entry-tags">  </div>
+</div>
+
+    <p class="entry-footer-section track-inview-by-gtm" data-gtm-track-json="{&quot;area&quot;: &quot;finish_reading&quot;}">
+  <span class="author vcard"><span class="fn" data-load-nickname="1" data-user-name="kimito_k" >kimito_k</span></span>
+  <span class="entry-footer-time"><a href="https://kimitok.hateblo.jp/entry/2014/03/30/184206"><time data-relative datetime="2014-03-30T09:42:06Z" title="2014-03-30T09:42:06Z" class="updated">2014-03-30 18:42</time></a></span>
+  
+  
+  
+    <span class="
+      entry-footer-subscribe
+      
+    " data-test-blog-controlls-subscribe>
+      <a href="https://blog.hatena.ne.jp/kimito_k/kimitok.hateblo.jp/subscribe?utm_source=blogs_entry_footer&amp;utm_campaign=subscribe_blog&amp;utm_medium=button">
+        読者になる
+      </a>
+    </span>
+  
+</p>
+
+    
+  <div
+    class="hatena-star-container"
+    data-hatena-star-container
+    data-hatena-star-url="https://kimitok.hateblo.jp/entry/2014/03/30/184206"
+    data-hatena-star-title="node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :目次"
+    data-hatena-star-variant="profile-icon"
+    data-hatena-star-profile-url-template="https://blog.hatena.ne.jp/{username}/"
+  ></div>
+
+
+    
+<div class="social-buttons">
+  
+  
+    <div class="social-button-item">
+      <a href="https://b.hatena.ne.jp/entry/s/kimitok.hateblo.jp/entry/2014/03/30/184206" class="hatena-bookmark-button" data-hatena-bookmark-url="https://kimitok.hateblo.jp/entry/2014/03/30/184206" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="この記事をはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only.gif" alt="この記事をはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <div class="fb-share-button" data-layout="box_count" data-href="https://kimitok.hateblo.jp/entry/2014/03/30/184206"></div>
+    </div>
+  
+  
+    
+    
+    <div class="social-button-item">
+      <a
+          class="entry-share-button entry-share-button-twitter test-share-button-twitter"
+          href="https://x.com/intent/tweet?text=node.js%E3%82%92%E6%94%AF%E3%81%88%E3%82%8Blibuv%E3%81%AE%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB%22uvbook%22+%3A%E7%9B%AE%E6%AC%A1+-+%E8%87%AA%E7%94%B1%E8%AA%B2%E9%A1%8C&amp;url=https%3A%2F%2Fkimitok.hateblo.jp%2Fentry%2F2014%2F03%2F30%2F184206"
+          title="X（Twitter）で投稿する"
+        ></a>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+
+    
+  
+  
+    
+    <div class="google-afc-image test-google-rectangle-ads">      
+      
+      <div id="google_afc_user_container_1" class="google-afc-user-container google_afc_blocklink2_5 google_afc_boder" data-test-unit="/4374287/blog_user"></div>
+      
+        <a href="http://blog.hatena.ne.jp/guide/pro" class="open-pro-modal js-hide-on-smartphone-app" data-guide-pro-modal-ad-url="https://hatena.blog/guide/pro/modal/ad">広告を非表示にする</a>
+      
+    </div>
+  
+  
+
+
+    <div class="customized-footer">
+      
+
+        
+
+          <div class="entry-footer-modules" id="entry-footer-secondary-modules">      
+<div class="hatena-module hatena-module-related-entries" >
+      
+  <!-- Hatena-Epic-has-related-entries-with-elasticsearch:true -->
+  <div class="hatena-module-title">
+    関連記事
+  </div>
+  <div class="hatena-module-body">
+    <ul class="related-entries hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+          
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="https://kimitok.hateblo.jp/archive/2015/05/12" rel="nofollow">
+    <time datetime="2015-05-12T13:45:34Z" title="2015年5月12日">
+      2015-05-12
+    </time>
+  </a>
+</div>
+
+          <a href="https://kimitok.hateblo.jp/entry/2015/05/12/224534" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">The NoTCP Manifesto 日本語訳</a>
+
+
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">はじめに インターネット通信の高速化については個人的に結構前…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+          
+                      <a class="urllist-image-link related-entries-image-link" href="https://kimitok.hateblo.jp/entry/2014/12/31/173508">
+  <img alt="NetBeansにおけるアーキテクチャの質問(日本語訳)" src="https://cdn.image.st-hatena.com/image/square/8c274f052d77f1d5e28e08bc088c150bcd86b62d/backend=imagemagick;height=100;version=1;width=100/http%3A%2F%2Fecx.images-amazon.com%2Fimages%2FI%2F51-JMndYPjL.jpg" class="urllist-image related-entries-image" title="NetBeansにおけるアーキテクチャの質問(日本語訳)" width="100" height="100" loading="lazy">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="https://kimitok.hateblo.jp/archive/2014/12/31" rel="nofollow">
+    <time datetime="2014-12-31T08:35:08Z" title="2014年12月31日">
+      2014-12-31
+    </time>
+  </a>
+</div>
+
+          <a href="https://kimitok.hateblo.jp/entry/2014/12/31/173508" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">NetBeansにおけるアーキテクチャの質問(日本語訳)</a>
+
+
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">はじめに インターフェイスを設計するために読んだ技術書まとめ…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+          
+                      <a class="urllist-image-link related-entries-image-link" href="https://kimitok.hateblo.jp/entry/2014/05/21/233438">
+  <img alt="Polymerのデータバインディングについて(公式ドキュメント日本語訳)" src="https://cdn.image.st-hatena.com/image/square/8f149c08d45e46a0eb8f38a335abcd355b984b65/backend=imagemagick;height=100;version=1;width=100/https%3A%2F%2Fraw.githubusercontent.com%2FPolymer%2Fdocs%2Fmaster%2Fimages%2Fdatabinding%2Fexample-1.png" class="urllist-image related-entries-image" title="Polymerのデータバインディングについて(公式ドキュメント日本語訳)" width="100" height="100" loading="lazy">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="https://kimitok.hateblo.jp/archive/2014/05/21" rel="nofollow">
+    <time datetime="2014-05-21T14:34:38Z" title="2014年5月21日">
+      2014-05-21
+    </time>
+  </a>
+</div>
+
+          <a href="https://kimitok.hateblo.jp/entry/2014/05/21/233438" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">Polymerのデータバインディングについて(公式ドキュメント日本語訳)</a>
+
+
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">はじめに 最近気になっていたWeb Componentsを本格的に触り始め…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+          
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="https://kimitok.hateblo.jp/archive/2014/04/23" rel="nofollow">
+    <time datetime="2014-04-23T11:29:13Z" title="2014年4月23日">
+      2014-04-23
+    </time>
+  </a>
+</div>
+
+          <a href="https://kimitok.hateblo.jp/entry/2014/04/23/202913" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :イベントループ</a>
+
+
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">この文書はuvbookの日本語翻訳の一部となります。文書そのもの…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+          
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="https://kimitok.hateblo.jp/archive/2014/04/16" rel="nofollow">
+    <time datetime="2014-04-16T13:36:43Z" title="2014年4月16日">
+      2014-04-16
+    </time>
+  </a>
+</div>
+
+          <a href="https://kimitok.hateblo.jp/entry/2014/04/16/223643" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">node.jsを支えるlibuvのチュートリアル&quot;uvbook&quot; :スレッド</a>
+
+
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">この文書はuvbookの日本語翻訳の一部となります。文書そのもの…</div>
+      </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+  </div>
+        
+
+      
+    </div>
+    
+  <div class="comment-box js-comment-box">
+    
+    <ul class="comment js-comment">
+      <li class="read-more-comments" style="display: none;"><a>もっと読む</a></li>
+    </ul>
+    
+      <a class="leave-comment-title js-leave-comment-title">コメントを書く</a>
+    
+  </div>
+
+  </footer>
+
+  </div>
+</article>
+
+      
+      
+    
+  
+
+  
+  <!-- rakuten_ad_target_end -->
+  <!-- google_ad_section_end -->
+  
+  
+  
+  <div class="pager pager-permalink permalink">
+    
+      
+      <span class="pager-prev">
+        <a href="https://kimitok.hateblo.jp/entry/2014/03/30/184849" rel="prev">
+          <span class="pager-arrow">&laquo; </span>
+          node.jsを支えるlibuvのチュートリアル&quot;uv…
+        </a>
+      </span>
+    
+    
+      
+      <span class="pager-next">
+        <a href="https://kimitok.hateblo.jp/entry/2014/03/26/224713" rel="next">
+          リーダブルコードを書くこと、あるいはコ…
+          <span class="pager-arrow"> &raquo;</span>
+        </a>
+      </span>
+    
+  </div>
+
+
+  
+
+
+
+        </div>
+      </div>
+
+      <aside id="box1">
+  <div id="box1-inner">
+  </div>
+</aside>
+
+    </div><!-- #wrapper -->
+
+    
+<aside id="box2">
+  
+  <div id="box2-inner">
+    
+      
+
+<div class="hatena-module hatena-module-profile">
+  <div class="hatena-module-title">
+    プロフィール
+  </div>
+  <div class="hatena-module-body">
+    
+    <a href="https://kimitok.hateblo.jp/about" class="profile-icon-link">
+      <img src="https://cdn.profile-image.st-hatena.com/users/kimito_k/profile.png?1390102342"
+      alt="id:kimito_k" class="profile-icon" />
+    </a>
+    
+
+    
+    <span class="id">
+      <a href="https://kimitok.hateblo.jp/about" class="hatena-id-link"><span data-load-nickname="1" data-user-name="kimito_k">id:kimito_k</span></a>
+      
+  
+  
+
+
+    </span>
+    
+
+    
+
+    
+
+    
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+  
+  >
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once>
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">
+    </span>
+  </div>
+</div>
+
+    
+
+    
+
+    <div class="profile-about">
+      <a href="https://kimitok.hateblo.jp/about">このブログについて</a>
+    </div>
+
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-search-box">
+  <div class="hatena-module-title">
+    検索
+  </div>
+  <div class="hatena-module-body">
+    <form class="search-form" role="search" action="https://kimitok.hateblo.jp/search" method="get">
+  <input type="text" name="q" class="search-module-input" value="" placeholder="記事を検索" required>
+  <input type="submit" value="検索" class="search-module-button" />
+</form>
+
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-links">
+  <div class="hatena-module-title">
+    リンク
+  </div>
+  <div class="hatena-module-body">
+    <ul class="hatena-urllist">
+      
+        <li>
+          <a href="https://twitter.com/kimito_k">twitterアカウント(kimito_k)</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-recent-entries ">
+  <div class="hatena-module-title">
+    <a href="https://kimitok.hateblo.jp/archive">
+      最新記事
+    </a>
+  </div>
+  <div class="hatena-module-body">
+    <ul class="recent-entries hatena-urllist ">
+  
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          
+          <a href="https://kimitok.hateblo.jp/entry/2021/06/30/053001" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">Jetson Nanoで自律走行ラジコンを作る(6)</a>
+
+
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          
+          <a href="https://kimitok.hateblo.jp/entry/2021/06/25/074350" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">Jetson Nanoで自律走行ラジコンを作る(5)</a>
+
+
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          
+          <a href="https://kimitok.hateblo.jp/entry/2021/06/21/050050" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">Jetson Nanoで自律走行ラジコンを作る(4)</a>
+
+
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          
+          <a href="https://kimitok.hateblo.jp/entry/2021/06/10/080826" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">Jetson Nanoで自律走行ラジコンを作る(3)</a>
+
+
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          
+          <a href="https://kimitok.hateblo.jp/entry/2021/06/10/080443" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">「Jetson Nanoで自律走行ラジコンを作る」シリーズ　記事一覧</a>
+
+
+
+
+          
+          
+
+                </div>
+    </li>
+  
+</ul>
+
+      </div>
+</div>
+
+    
+  </div>
+</aside>
+
+
+  </div>
+</div>
+
+
+
+
+      
+
+      
+
+
+    </div>
+  </div>
+  
+<footer id="footer" data-brand="hatenablog">
+  <div id="footer-inner">
+    
+      <div style="display:none !important" class="guest-footer js-guide-register test-blogs-register-guide" data-action="guide-register">
+  <div class="guest-footer-content">
+    <h3>はてなブログをはじめよう！</h3>
+    <p>kimito_kさんは、はてなブログを使っています。あなたもはてなブログをはじめてみませんか？</p>
+    <div class="guest-footer-btn-container">
+      <div  class="guest-footer-btn">
+        <a class="btn btn-register js-inherit-ga" href="https://blog.hatena.ne.jp/register?via=200227" target="_blank">はてなブログをはじめる（無料）</a>
+      </div>
+      <div  class="guest-footer-btn js-hide-on-smartphone-app">
+        <a href="https://hatena.blog/guide" target="_blank">はてなブログとは</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <address class="footer-address">
+      <a href="https://kimitok.hateblo.jp/">
+        <img src="https://cdn.image.st-hatena.com/image/square/55acb1147ff9a18c467cfe33f01324ed5d37c0af/backend=imagemagick;height=128;version=1;width=128/https%3A%2F%2Fcdn.user.blog.st-hatena.com%2Fcustom_blog_icon%2F66557048%2F1514225629812614" width="16" height="16" alt="自由課題"/>
+        <span class="footer-address-name">自由課題</span>
+      </a>
+    </address>
+    <p class="services">
+      Powered by <a href="https://hatena.blog/">Hatena Blog</a>
+      |
+        <a href="https://blog.hatena.ne.jp/-/abuse_report?target_url=https%3A%2F%2Fkimitok.hateblo.jp%2Fentry%2F2014%2F03%2F30%2F184206" class="report-abuse-link test-report-abuse-link" target="_blank">ブログを報告する</a>
+    </p>
+  </div>
+</footer>
+
+
+  
+  <script async src="https://s.hatena.ne.jp/js/widget/star.js"></script>
+  
+  
+  <script>
+    if (typeof window.Hatena === 'undefined') {
+      window.Hatena = {};
+    }
+    if (!Hatena.hasOwnProperty('Star')) {
+      Hatena.Star = {
+        VERSION: 2,
+      };
+    }
+  </script>
+
+
+  
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=719729204785177&version=v25.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  
+  
+
+<div class="quote-box">
+  <div class="tooltip-quote tooltip-quote-stock">
+    <i class="blogicon-quote" title="引用をストック"></i>
+  </div>
+  <div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet">
+    <a class="js-tweet-quote" target="_blank" data-track-name="quote-tweet" data-track-once>
+      <img src="https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=89f69427ebf1344326896140241320" title="引用して投稿する" >
+    </a>
+  </div>
+</div>
+
+<div class="quote-stock-panel" id="quote-stock-message-box" style="position: absolute; z-index: 3000">
+  <div class="message-box" id="quote-stock-succeeded-message" style="display: none">
+    <p>引用をストックしました</p>
+    <button class="btn btn-primary" id="quote-stock-show-editor-button" data-track-name="curation-quote-edit-button">ストック一覧を見る</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="message-box" id="quote-login-required-message" style="display: none">
+    <p>引用するにはまずログインしてください</p>
+    <button class="btn btn-primary" id="quote-login-button">ログイン</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="quote-stock-failed-message" style="display: none">
+    <p>引用をストックできませんでした。再度お試しください</p>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="unstockable-quote-message-box" style="display: none; position: absolute; z-index: 3000;">
+    <p>限定公開記事のため引用できません。</p>
+  </div>
+</div>
+
+<script type="x-underscore-template" id="js-requote-button-template">
+  <div class="requote-button js-requote-button">
+    <button class="requote-button-btn tipsy-top" title="引用する"><i class="blogicon-quote"></i></button>
+  </div>
+</script>
+
+
+
+  
+  <div id="hidden-subscribe-button" style="display: none;">
+    <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+  
+  >
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once>
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">
+    </span>
+  </div>
+</div>
+
+  </div>
+
+  
+
+
+
+    
+
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+<script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/jquery.min.js?v=1.12.4&amp;version=89f69427ebf1344326896140241320"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.blog.st-hatena.com/js/texts-ja.js?version=89f69427ebf1344326896140241320"></script>
+
+
+
+  <script id="vendors-js" data-env="production" src="https://cdn.blog.st-hatena.com/js/vendors.js?version=89f69427ebf1344326896140241320" crossorigin="anonymous"></script>
+
+<script id="hatenablog-js" data-env="production" src="https://cdn.blog.st-hatena.com/js/hatenablog.js?version=89f69427ebf1344326896140241320" crossorigin="anonymous" data-page-id="entry"></script>
+
+
+  <script>Hatena.Diary.GlobalHeader.init()</script>
+
+
+
+
+
+
+
+    
+  <script id="valve-dmp" data-service="blog" src="https://cdn.pool.st-hatena.com/valve/dmp.js" data-test-id="dmpjs" async></script>
+
+
+    
+
+
+
+
+
+  </body>
+</html>
+

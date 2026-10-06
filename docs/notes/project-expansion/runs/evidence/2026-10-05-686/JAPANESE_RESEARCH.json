@@ -1,0 +1,12 @@
+{
+ "checkedAt":"2026-10-05",
+ "targetVersion":"1.53.0",
+ "targetScope":"公式利用ガイド9章・design・公開API27項目・移行等のreader42",
+ "queries":["libuv 1.53.0 日本語 翻訳 ドキュメント","libuv uvbook 日本語 翻訳","site:libuv.org documentation translation japanese","libuv 日本語 API リファレンス 翻訳","site:github.com/libuv/libuv Japanese translation documentation","site:libuv.org uvbook translation"],
+ "officialChecks":[{"url":"https://libuv.org/","finding":"公式入口の文書リンクは英語docs.libuv.org。翻訳案内は取得表示内で未発見。"},{"url":"https://docs.libuv.org/en/v1.x/","finding":"英語のdesign/API/guide目次を確認。取得表示内で日本語切替・翻訳案内は未発見。移動するブランチの本文を固定入力へ置換しない。"},{"fixedSource":"840404ce8ba7cc0204be52389a6cfff9f2c90fb6","paths":["README.md","CONTRIBUTING.md","docs/src/conf.py","docs全99file"],"finding":"README公式/other resourcesの案内に日本語訳を発見せず。docs99一覧にlocale/i18n/translations/ja/po未発見。conf language未指定。これは公式リポジトリ外の訳がない証明ではない。"},{"url":"https://raw.githubusercontent.com/nikhilm/uvbook/master/README.md","finding":"原著者repoは公式docsに統合され、現在は積極的に保守していないと案内。日本語訳の案内は取得README内で未発見。移動するmasterは調査用、採用原文ではない。"}],
+ "japaneseMaterial":{"author":"kimito_k","toc":"https://kimitok.hateblo.jp/entry/2014/03/30/184206","introduction":"https://kimitok.hateblo.jp/entry/2014/03/30/184849","filesystem":"https://kimitok.hateblo.jp/entry/2014/04/01/230114","type":"旧uvbook日本語翻訳","versionEvidence":"取得Introductionのコード欄はlibuv v0.11.1に基づくと明示。2014年掲載。","tocScope":"Introduction/Basics/Filesystem/Networking/Threads/Processes/Eventloops/Utilitiesの8章リンクとAbout説明。design・公式API27項目・1.53.0追加API一式の掲載をこの目次からは確認できない。","confirmedDiffs":["旧Filesystem例のuv_fs_read/writeはbuffer,length形。固定1.53.0はconst uv_buf_t bufs[], unsigned int nbufs形。旧版差であり翻訳者の品質不良と評価しない。","旧Filesystemはerrorno/uv_last_error方式。固定1.53.0は負のresult/エラーコード方式。","固定streamは1.53.0追加uv_write_nwrittenを含む。固定asyncは1.53.0のseq_cst保証変更を含む。旧0.11.1ベースの紹介範囲と異なる。"],"rights":"目次はCC BY3.0リンク/コードpublic domainとの表示。今回既存日本語訳を再利用せず、固定英語原文を新訳する場合も別訳の権利を混同しない。","coverageReview":"目次/Introduction/Filesystemを実取得・確認。他6リンク本文の全文レビューは未実施。まとまった旧チュートリアルがあることを認め、ガイドが未翻訳とは主張しない。"},
+ "status":"older",
+ "conclusion":"調査範囲では旧0.11.1ベースの体系的チュートリアル訳を確認。対象1.53.0の公式API全範囲を満たす日本語訳は未発見。現行API契約・版差と固定範囲一式を日本語で読める追加価値はあるが、日本語訳不存在や唯一性は断定しない。",
+ "failuresAndRecovery":["Webの固定READMEと目次はcache miss。READMEは既存固定archiveから確認。目次と原著者READMEはsandbox DNS失敗を保存後、公開URL読み取りを許可済み範囲で取得、200。","最初のentry-content抽出は広告のみ。DOMで複数entry-contentを確認し実記事を選び直した。"],
+ "limitations":["一般検索は完全網羅を保証しない。","既存訳の全8章の正確性・更新履歴は未レビュー。","採用には自立性・3万語超別枠工数判断・採点・別照合が引き続き必要。"]
+}

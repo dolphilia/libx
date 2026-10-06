@@ -1,0 +1,14 @@
+from pathlib import Path
+from bs4 import BeautifulSoup
+import json,hashlib,re
+out=Path('docs/notes/project-expansion/runs/evidence/2026-10-05-685');meta=json.loads(Path('docs/notes/project-expansion/runs/evidence/2026-10-05-684/TRIAL_PREPARED.json').read_text());manifest=json.loads(Path('docs/notes/project-expansion/runs/evidence/2026-10-05-684/TRIAL_SOURCE_MANIFEST.json').read_text());work=Path(manifest['workspace']);assert all(hashlib.sha256((work/x['path']).read_bytes()).hexdigest()==x['sha256'] for x in manifest['files']);rows=[];readings=[]
+for r in meta['rows']:
+ if r['referenceOnly']:continue
+ p=Path(r['file']);soup=BeautifulSoup(p.read_text().split('---\n',2)[2].replace('&#10;','\n'),'html.parser');body=soup.select_one('article.libuv-document');code=body.select('pre');total=len(re.findall(r"\b[\w'-]+\b",body.get_text(' ',strip=True)));codeLines=sum(len(e.get_text().splitlines()) for e in code);codeBytes=sum(len(e.get_text().encode()) for e in code)
+ for e in body.select('pre, a.headerlink, span.linenos'):e.decompose()
+ prose=len(re.findall(r"\b[\w'-]+\b",body.get_text(' ',strip=True)));external=[{'text':a.get_text(' ',strip=True),'href':a['href']} for a in body.select('a[href]') if a['href'].startswith(('https:','http:'))];todo=[e.get_text(' ',strip=True) for e in body.select('p') if re.search(r'\bTODO\b|work in progress|not thoroughly reviewed|1\.42\.0',e.get_text(),re.I)]
+ rows.append({'page':r['page'],'slug':r['slug'],'file':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'allTokensIncludingCode':total,'nonPreWordsIncludingApiDeclarations':prose,'codeBlocks':len(code),'codeLines':codeLines,'codeBytes':codeBytes,'externalReferences':external,'explicitLimitations':todo})
+ if r['page'].startswith('guide/') or r['page'] in ['index.html','design.html','api.html','loop.html','handle.html','request.html','threadpool.html','dns.html']:
+  readings.append('## '+r['page']+'\n'+body.get_text('\n',strip=True))
+(out/'SOURCE_READING.txt').write_text('\n\n'.join(readings)+'\n');result={'hashInputsMatched':len(manifest['files']),'readerPages':len(rows),'method':'Regex word boundaries over article text; nonPre removes literal code blocks and display line numbers, but includes API declarations and inline code. Index reference excluded. No inferred hours.','nonPreWordsIncludingApiDeclarations':sum(r['nonPreWordsIncludingApiDeclarations'] for r in rows),'allTokensIncludingCode':sum(r['allTokensIncludingCode'] for r in rows),'codeBlocks':sum(r['codeBlocks'] for r in rows),'codeLines':sum(r['codeLines'] for r in rows),'codeBytes':sum(r['codeBytes'] for r in rows),'rows':rows}
+(out/'WORKLOAD_MEASUREMENT.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print({k:v for k,v in result.items() if k!='rows'});print('readingChars',sum(map(len,readings)))
