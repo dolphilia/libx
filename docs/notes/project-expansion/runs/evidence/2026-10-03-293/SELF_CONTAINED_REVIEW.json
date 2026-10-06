@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-02T21:47:01.288238+00:00",
+  "status": "passed-for-source-scope",
+  "source": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/README.md",
+  "sha256": "c588125722bcd6e91e7e322fe9ce90252a5eca5c9fdf81ec967a3d45102010d6",
+  "readSegments": [
+    [
+      1,
+      300
+    ],
+    [
+      301,
+      590
+    ]
+  ],
+  "fullSourceRead": true,
+  "modelConfigured": "gpt-6-astra",
+  "runtime": null,
+  "localLLMUsed": false,
+  "scopeDecision": "独立した全公式利用ガイドとしてsource利用に必要な主要説明あり。設置/C89/struct/typeflags/所有権/reference/detach/delete/arrayobject/parseopts/printbuffer/fullmonitor例/caveats8節全てあり。外部Windows工具設定は依存工具案内、issues/chatsに不足主要説明を合成する必要なし。全API完全referenceとは称さない。",
+  "criticalTranslationRules": [
+    "ownershiptransfer後mustntdelete",
+    "ParseWithLength非NUL入力/ParseWithOptstrailingdefaultallowed",
+    "PrintPreallocatedextra5bytes",
+    "一般非threadsafeかつ3条件の全て保持",
+    "UTF8nonvalidation/zerocharacterunsupported",
+    "CaseSensitive/duplicatesfirstmatch",
+    "NESTING1000/floatliteral63/IEEEdouble限定"
+  ],
+  "sourceFindings": [
+    {
+      "id": "cmake-minimum",
+      "readmeLine": 99,
+      "status": "confirmed-reference-disagreement",
+      "reason": "README says>=2.8.5, fixedCMakeLists line2 requires3.0.",
+      "action": "Keepupstream, annotatedfixedconfigurationreference beforepublication."
+    },
+    {
+      "id": "object-reference-api",
+      "readmeLine": 268,
+      "status": "confirmed-name-mismatch",
+      "reason": "ObjectparagraphusesAddItemReferenceToArray; fixedheader235-236 hasseparateObjectsignature withkey.",
+      "action": "Retainupstream andannotateactualObjectAPI, no silentcanonicalcorrection."
+    },
+    {
+      "id": "helper-allocation-failure",
+      "status": "review-risk-not-runtime-tested",
+      "reason": "Helperexample allocatesresolution beforeAddNumber failure gotoend, attachesonlyafterbothnumbers; unattachedresolution notfreedbyDelete(monitor). AddItemreturn failures ignoredinmanualexample too.",
+      "action": "Annotateexamplefailurehandlinglimitations; notclaimtestedcompleteerrorhandling."
+    },
+    {
+      "id": "toc-vcpkg-case",
+      "status": "pending-conversion-repair",
+      "reason": "TOChref#Vcpkgcase differsusualslug#vcpkg",
+      "action": "Checktargetgeneration andrecordonehrefnormalization ifneeded."
+    }
+  ],
+  "findingsDisposition": "小さな原文不整合は出典と注記を付けて保持可能。本文の要約/削除/未執筆API生成不要。未採用trial、訳/全内容レビュー/機械検証は別gate。",
+  "codeRuntimeVerified": false
+}

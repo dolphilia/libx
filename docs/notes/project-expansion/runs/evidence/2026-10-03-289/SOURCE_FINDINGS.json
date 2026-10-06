@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-10-02T21:37:22.475636+00:00",
+  "status": "pending-disposition",
+  "findings": [
+    {
+      "id": "continue-output",
+      "source": "control-flow.markdown",
+      "lines": [
+        188,
+        192
+      ],
+      "status": "confirmed-text-inconsistency",
+      "reason": "print(i) occurs beforecontinue; source lists outputs1,3,4 rather than1,2,3,4. Read program controlflow, not runtime execution.",
+      "action": "Keep upstreamcode unchanged incanonical; add clearly marked editorial note beforepublication, or explicit documentedcorrection afterfixedVMtest."
+    },
+    {
+      "id": "callback-receiver",
+      "source": "functions.markdown",
+      "lines": [
+        199,
+        208
+      ],
+      "status": "confirmed-text-inconsistency",
+      "reason": "contextMenu.onClick(1) registersrightclick oncontextMenu, but2calls useearlierlink. Priorlinkconfiguredleftbutton0; displayedcommentscannotmatchthatreceiver.",
+      "action": "Clearly annotatebothintendedcontextMenu calls; no silentrewriteofupstream."
+    },
+    {
+      "id": "list-remove-output",
+      "source": "lists.markdown",
+      "lines": [
+        123,
+        134
+      ],
+      "status": "context-continuation-inconsistent",
+      "reason": "Previoussampleleavesletters[c,d]; removeAt(1) thenreturnsd notannotatedc. Ifnewstateintendeditisnotdeclared.",
+      "action": "Recordstateambiguity andeditorialnote usingpreviousstate; retainupstream."
+    },
+    {
+      "id": "map-sample-state",
+      "source": "maps.markdown",
+      "lines": [
+        49,
+        85
+      ],
+      "status": "context-reset-ambiguous",
+      "reason": "capitals redefinedwithoneGeorgia:null entry beforecount3/Atlantaexamples thatmatcholder3entrymap. Samplesnotacompletesingleprogram.",
+      "action": "Noteindependentexamplecontexts; do not claimsequentialexpectedoutputsverified."
+    },
+    {
+      "id": "metaclass-todo",
+      "source": "classes.markdown",
+      "lines": [
+        470,
+        472
+      ],
+      "status": "pending-scope-sufficiency",
+      "reason": "Metaclasses/staticmembersintroTODO. Staticfields/inheritance explanation andexamplesevidence exist, butcoverage mustcheckClassAPI/otherpages beforeoverallpass."
+    },
+    {
+      "id": "iterator-sentinel",
+      "source": "control-flow.markdown",
+      "lines": [
+        251,
+        266
+      ],
+      "status": "pending-cross-reference",
+      "reason": "Truthy-only rule anddesugaring exclude null too; proseonlymentionsfalse/anythingelse. NeedSequenceAPI contractread beforeannotationdecision."
+    }
+  ],
+  "runtimeTests": "not performed",
+  "canonicalOrTranslationChanges": "none"
+}

@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-02T22:03:22.071626+00:00",
+  "candidate": "cjson",
+  "version": "1.7.19",
+  "scope": "Entirefixed READMEusageguide + originalLICENSE + fullCONTRIBUTORS",
+  "scores": {
+    "additionalValue": {
+      "value": 3,
+      "reason": "公式翻訳案内と固定版翻訳ファイルは未発見、調査した一般/指定サイト検索でも全ガイド訳未発見。所有権/長さ指定解析/出力バッファ/8注意事項を同一全ガイドで日本語提供する具体的価値。未知有料記事を低品質や部分訳と断定せず、旧版と本文同一なので版差分では加点しない。",
+      "evidence": [
+        "JAPANESE_RESEARCH.json",
+        "../2026-10-03-293/SELF_CONTAINED_REVIEW.json"
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "C/C++読者向けJSON解析・生成・メモリー所有権を、導入方式4種・struct・全monitor例・制限と併せて扱える。Espressif公式componentregistryにも同版系が配布され組込み利用の実際の導入経路がある。既存uthash/fmt/Ninja等のC/C++読者と関連。利用実績や読者要望は未測定なので最高点としない。",
+      "evidence": [
+        "JAPANESE_RESEARCH.json",
+        "../2026-10-03-292/README.md"
+      ]
+    },
+    "quality": {
+      "value": 3,
+      "reason": "全guideは32見出し/15codeで導入から操作/制約まで自立。固定CMake最低版・objectreference名称の不一致とhelper失敗経路のリスクを293で確認。原文保持と明示注記が必要なので品質を高得点としない。",
+      "evidence": [
+        "../2026-10-03-293/SELF_CONTAINED_REVIEW.json"
+      ]
+    },
+    "maintenance": {
+      "value": 4,
+      "reason": "タグ/commit固定・単一README+NOTICE+帰属の3入力。正式1.7.18→1.7.19実差分はREADME/LICENSE同一、帰属3名追加のみ。全範囲の小規模差分を自動検出可能。将来の変更量や原文誤り解消を保証せず最高点としない。",
+      "evidence": [
+        "MAINTENANCE.json",
+        "CONTRIBUTORS.md.diff",
+        "../2026-10-03-296/MEASUREMENT_WORKLOAD.json"
+      ]
+    },
+    "reuse": {
+      "value": 4,
+      "reason": "Markdown/HTML全体変換と通常テンプレートが実Astro3ページで成立。sharedUI変更なし、15code保持とcopy/anchor/mobileは既存検査・themeを再利用。アプリ固有HTML変換plugin/依存追加とhref2補正が必要なので最高点としない。",
+      "evidence": [
+        "../2026-10-03-295/ASTRO_BUILD_CHECK.json",
+        "../2026-10-03-295/NATIVE_CHECK.json",
+        "../2026-10-03-296/NATIVE_CONVERSION.json"
+      ]
+    }
+  },
+  "weightedTotal": 70,
+  "calculation": "3/5*30 +4/5*25 +3/5*20 +4/5*15 +4/5*10 =70",
+  "recommendation": "全6必須条件を満たし採点基準70点と追加価値/実用性各3点を満たす。全利用ガイドを固定版で日本語提供する新規候補として採用を推薦するが、別確認パスによる照合前にeligible/selectedへ変更しない。",
+  "selectionReview": "pending"
+}

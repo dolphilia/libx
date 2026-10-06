@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-02T21:39:17.998670+00:00",
+  "status": "pending-disposition",
+  "findings": [
+    {
+      "id": "interpret-module",
+      "source": "embedding/index.markdown",
+      "lines": [
+        156,
+        184
+      ],
+      "status": "confirmed-header-contract-inconsistency",
+      "reason": "固定header321-325は指定resolvedmodule内でsource実行。my_module例と全code specialmain文の説明が不整合。",
+      "action": "Retainupstream andclearlyannotateusesexplicitmoduleargument, notalwaysmain; neverrewritecanonicals silently."
+    },
+    {
+      "id": "configuration-struct",
+      "source": "embedding/configuring-the-vm.markdown",
+      "lines": [
+        9,
+        23
+      ],
+      "status": "confirmed-incomplete-listing",
+      "reason": "固定header156-272にはresolveModuleFn/userDataあり、docslistingにない。initdefaults重要条件は同文書が明示。",
+      "action": "Noteexcerpt isnotcompletefixedheader; preserveoriginal andlinkfixedheaderreference, do notgenerateunwrittenmanual."
+    },
+    {
+      "id": "call-slot-capacity",
+      "source": "embedding/calling-wren-from-c.markdown",
+      "lines": [
+        121,
+        158
+      ],
+      "status": "confirmed-fragment-precondition-missing",
+      "reason": "receiverfragmentensures1slot, argumentexamplewrites1 requiring2slots. slotguideexplicitlyrequiresensurebeforeuse.",
+      "action": "Editorialcrossreferencepriorguide; no claimcompleteexampleexecutesvalidated."
+    },
+    {
+      "id": "call-result-enum",
+      "source": "embedding/calling-wren-from-c.markdown",
+      "lines": [
+        175,
+        179
+      ],
+      "status": "confirmed-name-inconsistency",
+      "reason": "wrenCall returnsWrenInterpretResult, header275-280 WREN_RESULT_COMPILE_ERROR; docsWREN_ERROR_COMPILE isdifferentcallbackenum.",
+      "action": "Clearlyannotatenamingdistinction whilepreservingoriginal."
+    }
+  ],
+  "priorFindingsReference": "2026-10-03-289/SOURCE_FINDINGS.json",
+  "runtimeTests": "not performed",
+  "canonicalOrTranslationChanges": "none",
+  "resolvedCrossPage": [
+    "WrenConfiguration initrequiredisexplainedembeddingindex/configuring",
+    "errorprinting isoptionalhosterrorcallback, notVMdefault"
+  ]
+}

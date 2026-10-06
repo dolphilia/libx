@@ -1,0 +1,21 @@
+from pathlib import Path
+import json,hashlib,datetime,re
+r=Path('/Users/dolphilia/github/libx');base=r/'docs/notes/project-expansion/runs/evidence';e=base/'2026-10-03-298';ledger=json.loads((r/'docs/notes/project-expansion/CANDIDATES.json').read_text());c=next(x for x in ledger['candidates'] if x['id']=='cjson');verified=[]
+for group in list(c['conditions'].values())+list(c['scores'].values())+[c['japaneseResearch']]:
+ for ref in group['evidence']:
+  p=r/ref['path'];assert hashlib.sha256(p.read_bytes()).hexdigest()==ref['sha256'];verified.append(ref)
+fixed=json.loads((base/'2026-10-03-292/FIXED_INPUTS.json').read_text());tree=json.loads((base/'2026-10-03-292/FIXED_TREE.json').read_text());boundary=json.loads((base/'2026-10-03-293/BOUNDARY_LICENSE.json').read_text());assert not tree.get('truncated');assert {(x['path'],x['sha']) for x in tree['tree']}=={(x['path'],x['gitBlob']) for x in boundary['records']}
+for ref in fixed['inputs']:assert hashlib.sha256((base/'2026-10-03-292'/ref['path']).read_bytes()).hexdigest()==ref['sha256']
+for name,cycle in [('README.md','292'),('LICENSE','292'),('CONTRIBUTORS.md','293')]:
+ b=(base/('2026-10-03-'+cycle)/name).read_bytes();blob=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest();assert blob==next(x['sha'] for x in tree['tree'] if x['path']==name)
+assert 'associated documentation files' in (base/'2026-10-03-292/LICENSE').read_text()
+check=json.loads((base/'2026-10-03-295/ASTRO_BUILD_CHECK.json').read_text());app=Path('/private/tmp/libx-wren-trial-20261003-283/apps/cjson-trial');
+for x in check['records']:
+ p=app/'dist/v1-7-19/en/docs'/x['page']/'index.html';assert hashlib.sha256(p.read_bytes()).hexdigest()==x['htmlSha256'];assert x['codeExact'] and x['normalizedProseExact'] and x['originalIdsRetained']
+assert (app/'dist/assets/cJSON-LICENSE.txt').read_bytes()==(base/'2026-10-03-292/LICENSE').read_bytes()
+maint=json.loads((base/'2026-10-03-297/MAINTENANCE.json').read_text());assert all(x['equal'] for x in maint['records'][:2]);assert maint['records'][2]['addedLines']==3 and maint['records'][2]['removedLines']==0
+score=sum(c['scores'][k]['value']/5*v for k,v in {'additionalValue':30,'practicality':25,'quality':20,'maintenance':15,'reuse':10}.items());assert score==70
+checks={'rights':'固定MITにはassociateddocumentationが明示され原READMEにも通知あり。帰属全体/rawnotice/provenance履行設計と試験実体に一致。fallback不要。','boundary':'全267treeと分類のpath/Gitblobを現物照合。README独立全guide+LICENSE+CONTRIBUTORS、開発/試験/Unity別文書除外理由を確認。必要章を削る変更なし。','fixedInput':'7取得入力sha256と採用3blobを再計算。正式1.7.19 commit c859b25…と採用物一致。','selfContained':'293原文全590行reviewを参照し目次/struct/ownership/parse/print/fullmonitor例/8caveatsを照合。主要説明を外部素材から補完しない。CMake/API不一致とfailurehandlingリスクは注記を条件に保持。','conversion':'294全3HTMLと295actualAstro全3のexact比較、現build3SHAとrawlicenseを再照合。295–296nativecopy1863文字/anchor/mobile390/desktop1280/nativeMITlink観測と一致。正式JA/統合検査は未実施の別gate。','workload':'296全3page4083wordtokens/guide32heading15code、図表0/リンク118/API言及52を確認。7–14h初回/1–4h通常小更新は計画見積り。API全項目referenceではない範囲、currentCodex担当、source3注記リスクを含む。'}
+scoringAudit={'additionalValue':'3点:限定調査で全訳未発見という根拠と、全体構成を日本語提供する利点。既知有料記事は未確認のまま、不存在/低品質/旧版差分の加点なし。調査不足の項目を架空の差分として合格にしない。','practicality':'4点:導入・操作・所有権・制限というC読者の直接利用に加えEspressifvendorcomponentの実導入経路。読者実績なしを明示。','quality':'3点:自立した全guideは成立するが固定資料との不一致/失敗例制約があり低め評価。注記を正式生成の必須操作へ残す。','maintenance':'4点:採用全3sourceの固定版間実差分が小さい。将来安定保証はしない。','reuse':'4点:通常Astro/sharedtheme試験成立、専用pluginsと依存追加/リンク補正を必要として最高評価を避ける。'}
+d={'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'passed','method':'推薦文の承認だけでなく全6条件の参照ファイルhash/固定tree/blob/actualbuild/noticeを別検査パスで再計算し、各条件と採点を現物・限定調査記録へ照合。Nativeは295–296当該観測を参照、全翻訳レビューは主張しない。','verifiedReferences':verified,'conditions':checks,'scoreAudit':scoringAudit,'total':score,'adoptionConditions':['正式取り込みは全README/通知/帰属を保持','原文CMake/API名/例failurehandling3注記を英日出典付き表示','有料記事未読/限定日本語調査を維持し読者価値を過大表現しない','正式定本再生成/全訳/別工程全文review/全機械UI回帰検査後のみverified・Pages公開'],'limits':'verified10, published10, release0, activeNew0, active0, eligible0 before update; new1/active2 caps permit next formal operation','scopeUnchanged':True}
+(e/'SELECTION_REVIEW.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'status':d['status'],'references':len(verified),'score':score}))
