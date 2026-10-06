@@ -1,0 +1,905 @@
+{
+  "page": "01-guide/03-syntax.md",
+  "titleEN": "Syntax",
+  "titleJA": "構文",
+  "sourceCanonicalSHA256": "12277400470a293c62815f68e46fca7a285bc265b277ee75b0393f6cba19701d",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Syntax",
+      "originalInnerHTML": "Syntax",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Wren’s syntax is designed to be familiar to people coming from C-like languages\nwhile being a bit simpler and more streamlined.",
+      "originalInnerHTML": "Wren’s syntax is designed to be familiar to people coming from C-like languages\nwhile being a bit simpler and more streamlined.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "Scripts are stored in plain text files with a ⟦CODE0⟧ file extension. Wren does\nnot compile ahead of time: programs are run directly from source, from top to\nbottom like a typical scripting language. (Internally, programs are compiled to\nbytecode for <a href=\"/docs/wren/v0-4-0/en/01-guide/22-performance/\">efficiency</a>, but that’s an implementation detail.)",
+      "originalInnerHTML": "Scripts are stored in plain text files with a <code>.wren</code> file extension. Wren does\nnot compile ahead of time: programs are run directly from source, from top to\nbottom like a typical scripting language. (Internally, programs are compiled to\nbytecode for <a href=\"/docs/wren/v0-4-0/en/01-guide/22-performance/\">efficiency</a>, but that’s an implementation detail.)",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>.wren</code>"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "tag": "h2",
+      "sourceHTML": "Comments <a class=\"header-anchor\" href=\"#comments\" name=\"comments\">#</a>",
+      "originalInnerHTML": "Comments <a class=\"header-anchor\" href=\"#comments\" name=\"comments\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "Line comments start with ⟦CODE0⟧ and end at the end of the line:",
+      "originalInnerHTML": "Line comments start with <code>//</code> and end at the end of the line:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>//</code>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "Block comments start with ⟦CODE0⟧ and end with ⟦CODE1⟧. They can span multiple lines:",
+      "originalInnerHTML": "Block comments start with <code>/*</code> and end with <code>*/</code>. They can span multiple lines:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>/*</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>*/</code>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "Unlike C, block comments can nest in Wren:",
+      "originalInnerHTML": "Unlike C, block comments can nest in Wren:",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "This is handy because it lets you easily comment out an entire block of code,\neven if the code already contains block comments.",
+      "originalInnerHTML": "This is handy because it lets you easily comment out an entire block of code,\neven if the code already contains block comments.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "h2",
+      "sourceHTML": "Reserved words <a class=\"header-anchor\" href=\"#reserved-words\" name=\"reserved-words\">#</a>",
+      "originalInnerHTML": "Reserved words <a class=\"header-anchor\" href=\"#reserved-words\" name=\"reserved-words\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "One way to get a quick feel for a language’s style is to see what words it\nreserves. Here’s what Wren has:",
+      "originalInnerHTML": "One way to get a quick feel for a language’s style is to see what words it\nreserves. Here’s what Wren has:",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "h2",
+      "sourceHTML": "Identifiers <a class=\"header-anchor\" href=\"#identifiers\" name=\"identifiers\">#</a>",
+      "originalInnerHTML": "Identifiers <a class=\"header-anchor\" href=\"#identifiers\" name=\"identifiers\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "Naming rules are similar to other programming languages. Identifiers start with\na letter or underscore and may contain letters, digits, and underscores. Case\nis sensitive.",
+      "originalInnerHTML": "Naming rules are similar to other programming languages. Identifiers start with\na letter or underscore and may contain letters, digits, and underscores. Case\nis sensitive.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "Identifiers that start with underscore (⟦CODE0⟧) are special in Wren. They are used\nto indicate <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#fields\">fields</a> in classes.",
+      "originalInnerHTML": "Identifiers that start with underscore (<code>_</code>) are special in Wren. They are used\nto indicate <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#fields\">fields</a> in classes.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>_</code>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "tag": "h2",
+      "sourceHTML": "Newlines <a class=\"header-anchor\" href=\"#newlines\" name=\"newlines\">#</a>",
+      "originalInnerHTML": "Newlines <a class=\"header-anchor\" href=\"#newlines\" name=\"newlines\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "Newlines (⟦CODE0⟧) are meaningful in Wren. They are used to separate statements:",
+      "originalInnerHTML": "Newlines (<code>\\n</code>) are meaningful in Wren. They are used to separate statements:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>\\n</code>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "Sometimes, though, a statement doesn’t fit on a single line and jamming a\nnewline in the middle would trip it up. To handle that, Wren has a very simple\nrule: It ignores a newline following any token that can’t end a statement.",
+      "originalInnerHTML": "Sometimes, though, a statement doesn’t fit on a single line and jamming a\nnewline in the middle would trip it up. To handle that, Wren has a very simple\nrule: It ignores a newline following any token that can’t end a statement.",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "In practice, this means you can put each statement on its own line and wrap\nthem across lines as needed without too much trouble.",
+      "originalInnerHTML": "In practice, this means you can put each statement on its own line and wrap\nthem across lines as needed without too much trouble.",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "h2",
+      "sourceHTML": "Blocks <a class=\"header-anchor\" href=\"#blocks\" name=\"blocks\">#</a>",
+      "originalInnerHTML": "Blocks <a class=\"header-anchor\" href=\"#blocks\" name=\"blocks\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Wren uses curly braces to define <em>blocks</em>. You can use a block anywhere a\nstatement is allowed, like in <a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/\">control flow</a> statements.\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#methods\">Method</a> and <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> bodies are also\nblocks. For example, here we have a block for the then case, and a single\nstatement for the else:",
+      "originalInnerHTML": "Wren uses curly braces to define <em>blocks</em>. You can use a block anywhere a\nstatement is allowed, like in <a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/\">control flow</a> statements.\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#methods\">Method</a> and <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> bodies are also\nblocks. For example, here we have a block for the then case, and a single\nstatement for the else:",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "Blocks have two similar but not identical forms. Typically, blocks contain a\nseries of statements like:",
+      "originalInnerHTML": "Blocks have two similar but not identical forms. Typically, blocks contain a\nseries of statements like:",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "Blocks of this form when used for method and function bodies automatically\nreturn ⟦CODE0⟧ after the block has completed. If you want to return a different\nvalue, you need an explicit ⟦CODE1⟧ statement.",
+      "originalInnerHTML": "Blocks of this form when used for method and function bodies automatically\nreturn <code>null</code> after the block has completed. If you want to return a different\nvalue, you need an explicit <code>return</code> statement.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>return</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "However, it’s pretty common to have a method or function that just evaluates and\nreturns the result of a single expression. Some other languages use ⟦CODE0⟧ to\ndefine these. Wren uses:",
+      "originalInnerHTML": "However, it’s pretty common to have a method or function that just evaluates and\nreturns the result of a single expression. Some other languages use <code>=&gt;</code> to\ndefine these. Wren uses:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>=&gt;</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "If there is no newline after the ⟦CODE0⟧ (or after the parameter list in a\n<a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>), then the block may only contain a single\nexpression, and it automatically returns the result of it. It’s exactly the same\nas doing:",
+      "originalInnerHTML": "If there is no newline after the <code>{</code> (or after the parameter list in a\n<a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>), then the block may only contain a single\nexpression, and it automatically returns the result of it. It’s exactly the same\nas doing:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>{</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "Statements are not allowed in this form (since they don’t produce values), which\nmeans nothing starting with ⟦CODE0⟧, ⟦CODE1⟧, ⟦CODE2⟧, ⟦CODE3⟧,  ⟦CODE4⟧,\n⟦CODE5⟧, or ⟦CODE6⟧. If you want a block that contains a single statement,\nput a newline in there:",
+      "originalInnerHTML": "Statements are not allowed in this form (since they don’t produce values), which\nmeans nothing starting with <code>class</code>, <code>for</code>, <code>if</code>, <code>import</code>,  <code>return</code>,\n<code>var</code>, or <code>while</code>. If you want a block that contains a single statement,\nput a newline in there:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>class</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>for</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>if</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>import</code>"
+        },
+        {
+          "token": "⟦CODE4⟧",
+          "html": "<code>return</code>"
+        },
+        {
+          "token": "⟦CODE5⟧",
+          "html": "<code>var</code>"
+        },
+        {
+          "token": "⟦CODE6⟧",
+          "html": "<code>while</code>"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "Using an initial newline after the ⟦CODE0⟧ does feel a little weird or magical, but\nnewlines are already significant in Wren, so it’s not totally unreasonable. The nice\nthing about this syntax as opposed to something like ⟦CODE1⟧ is that the <em>end</em> of\nthe block has an explicit delimiter. That helps when chaining:",
+      "originalInnerHTML": "Using an initial newline after the <code>{</code> does feel a little weird or magical, but\nnewlines are already significant in Wren, so it’s not totally unreasonable. The nice\nthing about this syntax as opposed to something like <code>=&gt;</code> is that the <em>end</em> of\nthe block has an explicit delimiter. That helps when chaining:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>{</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>=&gt;</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "h2",
+      "sourceHTML": "Precedence and Associativity <a class=\"header-anchor\" href=\"#precedence-and-associativity\" name=\"precedence-and-associativity\">#</a>",
+      "originalInnerHTML": "Precedence and Associativity <a class=\"header-anchor\" href=\"#precedence-and-associativity\" name=\"precedence-and-associativity\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "We’ll talk about Wren’s different expression forms and what they mean in the\nnext few pages. But if you want to see how they interact with each other\ngrammatically, here’s the whole table.",
+      "originalInnerHTML": "We’ll talk about Wren’s different expression forms and what they mean in the\nnext few pages. But if you want to see how they interact with each other\ngrammatically, here’s the whole table.",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "It shows which expressions have higher <em>precedence</em>—which ones bind more\ntightly than others—and their <em>associativity</em>—how a series of the\nsame kind of expression is ordered. Wren mostly follows C, except that it fixes\n<a href=\"http://www.lysator.liu.se/c/dmr-on-or.html\">the bitwise operator mistake</a>. The full precedence table, from\ntightest to loosest, is:",
+      "originalInnerHTML": "It shows which expressions have higher <em>precedence</em>—which ones bind more\ntightly than others—and their <em>associativity</em>—how a series of the\nsame kind of expression is ordered. Wren mostly follows C, except that it fixes\n<a href=\"http://www.lysator.liu.se/c/dmr-on-or.html\">the bitwise operator mistake</a>. The full precedence table, from\ntightest to loosest, is:",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "th",
+      "sourceHTML": "Prec",
+      "originalInnerHTML": "Prec",
+      "protected": []
+    },
+    {
+      "id": "30",
+      "tag": "th",
+      "sourceHTML": "Operator",
+      "originalInnerHTML": "Operator",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "th",
+      "sourceHTML": "Description",
+      "originalInnerHTML": "Description",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "th",
+      "sourceHTML": "Associates",
+      "originalInnerHTML": "Associates",
+      "protected": []
+    },
+    {
+      "id": "33",
+      "tag": "td",
+      "sourceHTML": "1",
+      "originalInnerHTML": "1",
+      "protected": []
+    },
+    {
+      "id": "34",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧",
+      "originalInnerHTML": "<code>()</code> <code>[]</code> <code>.</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>[]</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>.</code>"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "tag": "td",
+      "sourceHTML": "Grouping, <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">Subscript, Method call</a>",
+      "originalInnerHTML": "Grouping, <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">Subscript, Method call</a>",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "37",
+      "tag": "td",
+      "sourceHTML": "2",
+      "originalInnerHTML": "2",
+      "protected": []
+    },
+    {
+      "id": "38",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧",
+      "originalInnerHTML": "<code>-</code> <code>!</code> <code>~</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>-</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>!</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>~</code>"
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Negate, Not, Complement</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Negate, Not, Complement</a>",
+      "protected": []
+    },
+    {
+      "id": "40",
+      "tag": "td",
+      "sourceHTML": "Right",
+      "originalInnerHTML": "Right",
+      "protected": []
+    },
+    {
+      "id": "41",
+      "tag": "td",
+      "sourceHTML": "3",
+      "originalInnerHTML": "3",
+      "protected": []
+    },
+    {
+      "id": "42",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧",
+      "originalInnerHTML": "<code>*</code> <code>/</code> <code>%</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>*</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>/</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>%</code>"
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Multiply, Divide, Modulo</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Multiply, Divide, Modulo</a>",
+      "protected": []
+    },
+    {
+      "id": "44",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "45",
+      "tag": "td",
+      "sourceHTML": "4",
+      "originalInnerHTML": "4",
+      "protected": []
+    },
+    {
+      "id": "46",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧",
+      "originalInnerHTML": "<code>+</code> <code>-</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>+</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>-</code>"
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Add, Subtract</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Add, Subtract</a>",
+      "protected": []
+    },
+    {
+      "id": "48",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "49",
+      "tag": "td",
+      "sourceHTML": "5",
+      "originalInnerHTML": "5",
+      "protected": []
+    },
+    {
+      "id": "50",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧",
+      "originalInnerHTML": "<code>..</code> <code>...</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>..</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>...</code>"
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Inclusive range, Exclusive range</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Inclusive range, Exclusive range</a>",
+      "protected": []
+    },
+    {
+      "id": "52",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "53",
+      "tag": "td",
+      "sourceHTML": "6",
+      "originalInnerHTML": "6",
+      "protected": []
+    },
+    {
+      "id": "54",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧",
+      "originalInnerHTML": "<code>&lt;&lt;</code> <code>&gt;&gt;</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>&lt;&lt;</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>&gt;&gt;</code>"
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Left shift, Right shift</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Left shift, Right shift</a>",
+      "protected": []
+    },
+    {
+      "id": "56",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "57",
+      "tag": "td",
+      "sourceHTML": "7",
+      "originalInnerHTML": "7",
+      "protected": []
+    },
+    {
+      "id": "58",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>&amp;</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>&amp;</code>"
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Bitwise and</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Bitwise and</a>",
+      "protected": []
+    },
+    {
+      "id": "60",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "61",
+      "tag": "td",
+      "sourceHTML": "8",
+      "originalInnerHTML": "8",
+      "protected": []
+    },
+    {
+      "id": "62",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>^</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>^</code>"
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Bitwise xor</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Bitwise xor</a>",
+      "protected": []
+    },
+    {
+      "id": "64",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "65",
+      "tag": "td",
+      "sourceHTML": "9",
+      "originalInnerHTML": "9",
+      "protected": []
+    },
+    {
+      "id": "66",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>|</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>|</code>"
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Bitwise or</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Bitwise or</a>",
+      "protected": []
+    },
+    {
+      "id": "68",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "69",
+      "tag": "td",
+      "sourceHTML": "10",
+      "originalInnerHTML": "10",
+      "protected": []
+    },
+    {
+      "id": "70",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧ ⟦CODE3⟧",
+      "originalInnerHTML": "<code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>&lt;</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>&lt;=</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>&gt;</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>&gt;=</code>"
+        }
+      ]
+    },
+    {
+      "id": "71",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Comparison</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Comparison</a>",
+      "protected": []
+    },
+    {
+      "id": "72",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "73",
+      "tag": "td",
+      "sourceHTML": "11",
+      "originalInnerHTML": "11",
+      "protected": []
+    },
+    {
+      "id": "74",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>is</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>is</code>"
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Type test</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Type test</a>",
+      "protected": []
+    },
+    {
+      "id": "76",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "77",
+      "tag": "td",
+      "sourceHTML": "12",
+      "originalInnerHTML": "12",
+      "protected": []
+    },
+    {
+      "id": "78",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧ ⟦CODE1⟧",
+      "originalInnerHTML": "<code>==</code> <code>!=</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>==</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>!=</code>"
+        }
+      ]
+    },
+    {
+      "id": "79",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Equals, Not equal</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">Equals, Not equal</a>",
+      "protected": []
+    },
+    {
+      "id": "80",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "81",
+      "tag": "td",
+      "sourceHTML": "13",
+      "originalInnerHTML": "13",
+      "protected": []
+    },
+    {
+      "id": "82",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>&amp;&amp;</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>&amp;&amp;</code>"
+        }
+      ]
+    },
+    {
+      "id": "83",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#logical-operators\">Logical and</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#logical-operators\">Logical and</a>",
+      "protected": []
+    },
+    {
+      "id": "84",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "85",
+      "tag": "td",
+      "sourceHTML": "14",
+      "originalInnerHTML": "14",
+      "protected": []
+    },
+    {
+      "id": "86",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>||</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>||</code>"
+        }
+      ]
+    },
+    {
+      "id": "87",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#logical-operators\">Logical or</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#logical-operators\">Logical or</a>",
+      "protected": []
+    },
+    {
+      "id": "88",
+      "tag": "td",
+      "sourceHTML": "Left",
+      "originalInnerHTML": "Left",
+      "protected": []
+    },
+    {
+      "id": "89",
+      "tag": "td",
+      "sourceHTML": "15",
+      "originalInnerHTML": "15",
+      "protected": []
+    },
+    {
+      "id": "90",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>?:</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>?:</code>"
+        }
+      ]
+    },
+    {
+      "id": "91",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#the-conditional-operator-\">Conditional</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#the-conditional-operator-\">Conditional</a>",
+      "protected": []
+    },
+    {
+      "id": "92",
+      "tag": "td",
+      "sourceHTML": "Right",
+      "originalInnerHTML": "Right",
+      "protected": []
+    },
+    {
+      "id": "93",
+      "tag": "td",
+      "sourceHTML": "16",
+      "originalInnerHTML": "16",
+      "protected": []
+    },
+    {
+      "id": "94",
+      "tag": "td",
+      "sourceHTML": "⟦CODE0⟧",
+      "originalInnerHTML": "<code>=</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>=</code>"
+        }
+      ]
+    },
+    {
+      "id": "95",
+      "tag": "td",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/#assignment\">Assignment</a>, <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#setters\">Setter</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/#assignment\">Assignment</a>, <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#setters\">Setter</a>",
+      "protected": []
+    },
+    {
+      "id": "96",
+      "tag": "td",
+      "sourceHTML": "Right",
+      "originalInnerHTML": "Right",
+      "protected": []
+    },
+    {
+      "id": "97",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/04-values/\">Values →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/02-getting-started/\">← Getting Started</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/04-values/\">Values →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/02-getting-started/\">← Getting Started</a>",
+      "protected": []
+    }
+  ]
+}

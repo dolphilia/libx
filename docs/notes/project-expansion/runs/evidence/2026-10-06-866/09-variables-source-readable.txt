@@ -1,0 +1,39 @@
+1 [h1] Variables
+
+2 [p] Variables are named slots for storing values. You define a new variable in Wren
+using a ⟦CODE0⟧ statement, like so:
+
+3 [p] This creates a new variable ⟦CODE0⟧ in the current scope and initializes it with
+the result of the expression following the ⟦CODE1⟧. Once a variable has been
+defined, it can be accessed by name as you would expect.
+
+4 [h2] Scope <a class="header-anchor" href="#scope" name="scope">#</a>
+
+5 [p] Wren has true block scope: a variable exists from the point where it is defined
+until the end of the <a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">block</a> where that definition appears.
+
+6 [p] Variables defined at the top level of a script are <em>top-level</em> and are visible
+to the <a href="/docs/wren/v0-4-0/en/01-guide/14-modularity/">module</a> system. All other variables are <em>local</em>.
+Declaring a variable in an inner scope with the same name as an outer one is
+called <em>shadowing</em> and is not an error (although it’s not something you likely
+intend to do much).
+
+7 [p] Declaring a variable with the same name in the <em>same</em> scope <em>is</em> an error.
+
+8 [h2] Assignment <a class="header-anchor" href="#assignment" name="assignment">#</a>
+
+9 [p] After a variable has been declared, you can assign to it using ⟦CODE0⟧
+
+10 [p] An assignment walks up the scope stack to find where the named variable is
+declared. It’s an error to assign to a variable that isn’t defined. Wren
+doesn’t roll with implicit variable definition.
+
+11 [p] When used in a larger expression, an assignment expression evaluates to the
+assigned value.
+
+12 [p] If the left-hand side is some more complex expression than a bare variable name,
+then it isn’t an assignment. Instead, it’s calling a <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#setters">setter method</a>.
+
+13 [p] <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/11-functions/">Functions →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/">← Control Flow</a>

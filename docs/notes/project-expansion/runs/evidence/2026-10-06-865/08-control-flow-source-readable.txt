@@ -1,0 +1,177 @@
+1 [h1] Control Flow
+
+2 [p] Control flow is used to determine which chunks of code are executed and how many
+times. <em>Branching</em> statements and expressions decide whether or not to execute
+some code and <em>looping</em> ones execute something more than once.
+
+3 [h2] Truth <a class="header-anchor" href="#truth" name="truth">#</a>
+
+4 [p] All control flow is based on <em>deciding</em> whether or not to do something. This
+decision depends on some expression’s value. We take the entire universe of
+possible objects and divide them into two buckets: some we consider “true” and
+the rest are “false”. If the expression results in a value in the true bucket,
+we do one thing. Otherwise, we do something else.
+
+5 [p] Obviously, the boolean ⟦CODE0⟧ is in the “true” bucket and ⟦CODE1⟧ is in
+“false”, but what about values of other types? The choice is ultimately
+arbitrary, and different languages have different rules. Wren’s rules follow
+Ruby:
+
+6 [li] The boolean value ⟦CODE0⟧ is false.
+
+7 [li] The null value ⟦CODE0⟧ is false.
+
+8 [li] Everything else is true.
+
+9 [p] This means ⟦CODE0⟧, empty strings, and empty collections are all considered “true”
+values.
+
+10 [h2] If statements <a class="header-anchor" href="#if-statements" name="if-statements">#</a>
+
+11 [p] The simplest branching statement, ⟦CODE0⟧ lets you conditionally skip a chunk of
+code. It looks like this:
+
+12 [p] That evaluates the parenthesized expression after ⟦CODE0⟧. If it’s true, then the
+statement after the condition is evaluated. Otherwise it is skipped. Instead of
+a statement, you can have a <a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">block</a>:
+
+13 [p] You may also provide an ⟦CODE0⟧ branch. It will be executed if the condition is
+false:
+
+14 [p] And, of course, it can take a block too:
+
+15 [h2] Logical operators <a class="header-anchor" href="#logical-operators" name="logical-operators">#</a>
+
+16 [p] Unlike most other <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">operators</a> in Wren which are just a special syntax for
+<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">method calls</a>, the ⟦CODE0⟧ and ⟦CODE1⟧ operators are special. This is because they
+only conditionally evaluate the right operand—they short-circuit.
+
+17 [p] A ⟦CODE0⟧ (“logical and”) expression evaluates the left-hand argument. If it’s
+false, it returns that value. Otherwise it evaluates and returns the right-hand
+argument.
+
+18 [p] A ⟦CODE0⟧ (“logical or”) expression is reversed. If the left-hand argument is
+<em>true</em>, it’s returned, otherwise the right-hand argument is evaluated and
+returned:
+
+19 [h2] The conditional operator ⟦CODE0⟧ <a class="header-anchor" href="#the-conditional-operator-" name="the-conditional-operator-">#</a>
+
+20 [p] Also known as the “ternary” operator since it takes three arguments, Wren has
+the little “if statement in the form of an expression” you know and love from C
+and similar languages.
+
+21 [p] It takes a condition expression, followed by ⟦CODE0⟧, followed by a then
+expression, a ⟦CODE1⟧, then an else expression. Just like ⟦CODE2⟧, it evaluates the
+condition. If true, it evaluates and returns the then expression. Otherwise
+it does the else expression.
+
+22 [h2] While statements <a class="header-anchor" href="#while-statements" name="while-statements">#</a>
+
+23 [p] It’s hard to write a useful program without executing some chunk of code
+repeatedly. To do that, you use looping statements. There are two in Wren, and
+they should be familiar if you’ve used other imperative languages.
+
+24 [p] The simplest, a ⟦CODE0⟧ statement executes a chunk of code as long as a
+condition continues to hold. For example:
+
+25 [p] This evaluates the expression ⟦CODE0⟧. If it is true, then it executes the
+following body. After that, it loops back to the top, and evaluates the
+condition again. It keeps doing this as long as the condition evaluates to
+something true.
+
+26 [p] The condition for a while loop can be any expression, and must be surrounded by
+parentheses. The body of the loop is usually a curly block but can also be a
+single statement:
+
+27 [h2] For statements <a class="header-anchor" href="#for-statements" name="for-statements">#</a>
+
+28 [p] While statements are useful when you want to loop indefinitely or according to
+some complex condition. But in most cases, you’re looping through
+a <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">list</a>, a series of numbers, or some other “sequence” object.
+That’s what ⟦CODE0⟧ is, uh, for. It looks like this:
+
+29 [p] A ⟦CODE0⟧ loop has three components:
+
+30 [li] 
+<p>A <em>variable name</em> to bind. In the example, that’s ⟦CODE0⟧. Wren will create
+   a new variable with that name whose scope is the body of the loop.</p>
+
+
+31 [li] 
+<p>A <em>sequence expression</em>. This determines what you’re looping over. It gets
+   evaluated <em>once</em> before the body of the loop. In this case, it’s a list
+   literal, but it can be any expression.</p>
+
+
+32 [li] 
+<p>A <em>body</em>. This is a curly block or a single statement. It gets executed once
+   for each iteration of the loop.</p>
+
+
+33 [h2] Break statements <a class="header-anchor" href="#break-statements" name="break-statements">#</a>
+
+34 [p] Sometimes, right in the middle of a loop body, you decide you want to bail out
+and stop. To do that, you can use a ⟦CODE0⟧ statement. It’s just the ⟦CODE1⟧
+keyword all by itself. That immediately exits out of the nearest enclosing
+⟦CODE2⟧ or ⟦CODE3⟧ loop.
+
+35 [h2] Continue statements <a class="header-anchor" href="#continue-statements" name="continue-statements">#</a>
+
+36 [p] During the execution of a loop body, you might decide that you want to skip the 
+rest of this iteration and move on to the next one. You can use a ⟦CODE0⟧ 
+statement to do that. It’s just the ⟦CODE1⟧ keyword all by itself. Execution
+will immediately jump to the beginning of the next loop iteration (and check the
+loop conditions).
+
+37 [h2] Numeric ranges <a class="header-anchor" href="#numeric-ranges" name="numeric-ranges">#</a>
+
+38 [p] Lists are one common use for ⟦CODE0⟧ loops, but sometimes you want to walk over a
+sequence of numbers, or loop a number of times. For that, you can create a
+<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">range</a>, like so:
+
+39 [p] This loops over the numbers from 1 to 100, including 100 itself. If you want to
+leave off the last value, use three dots instead of two:
+
+40 [p] This looks like some special “range” syntax in the ⟦CODE0⟧ loop, but it’s actually
+just a pair of operators. The ⟦CODE1⟧ and ⟦CODE2⟧ syntax are infix “range” operators.
+Like <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">other operators</a>, they are special syntax for a regular method
+call. The number type implements them and returns a <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">range object</a> that knows
+how to iterate over a series of numbers.
+
+41 [h2] The iterator protocol <a class="header-anchor" href="#the-iterator-protocol" name="the-iterator-protocol">#</a>
+
+42 [p] Lists and ranges cover the two most common kinds of loops, but you should also
+be able to define your own sequences. To enable that, the semantics of ⟦CODE0⟧
+are defined in terms of an “iterator protocol”. The loop itself doesn’t know
+anything about lists or ranges, it just knows how to call two particular
+methods on the object that resulted from evaluating the sequence expression.
+
+43 [p] When you write a loop like this:
+
+44 [p] Wren sees it something like this:
+
+45 [p] First, Wren evaluates the sequence expression and stores it in a hidden
+variable (written ⟦CODE0⟧ in the example but in reality it doesn’t have a name
+you can use). It also creates a hidden “iterator” variable and initializes it
+to ⟦CODE1⟧.
+
+46 [p] Each iteration, it calls ⟦CODE0⟧ on the sequence, passing in the current
+iterator value. (In the first iteration, it passes in ⟦CODE1⟧.) The sequence’s
+job is to take that iterator and advance it to the next element in the
+sequence. (Or, in the case where the iterator is ⟦CODE2⟧, to advance it to the
+<em>first</em> element). It then returns either the new iterator, or ⟦CODE3⟧ to
+indicate that there are no more elements.
+
+47 [p] If ⟦CODE0⟧ is returned, Wren exits out of the loop and we’re done. If anything
+else is returned, that means that we have advanced to a new valid element. To
+get that, Wren then calls ⟦CODE1⟧ on the sequence and passes in the
+iterator value that it just got from calling ⟦CODE2⟧. The sequence uses
+that to look up and return the appropriate element.
+
+48 [p] The built-in <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">List</a> and <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">Range</a> types implement
+⟦CODE0⟧ and ⟦CODE1⟧ to walk over their respective sequences. You
+can implement the same methods in your classes to make your own types iterable.
+
+49 [p] <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/09-variables/">Variables →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">← Method Calls</a>

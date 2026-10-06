@@ -1,0 +1,127 @@
+1 [h1] Method Calls
+
+2 [p] Wren is deeply object oriented, so most code consists of invoking methods on
+objects, usually something like this:
+
+3 [p] You have a <em>receiver</em> expression (here ⟦CODE0⟧) followed by a ⟦CODE1⟧, then a name
+(⟦CODE2⟧) and an argument list in parentheses (⟦CODE3⟧). Multiple arguments
+are separated by commas:
+
+4 [p] The argument list can also be empty:
+
+5 [p] The VM executes a method call like so:
+
+6 [li] Evaluate the receiver and arguments from left to right.
+
+7 [li] Look up the method on the receiver’s <a href="/docs/wren/v0-4-0/en/01-guide/10-classes/">class</a>.
+
+8 [li] Invoke it, passing in the argument values.
+
+9 [h2] Signature <a class="header-anchor" href="#signature" name="signature">#</a>
+
+10 [p] Unlike most other dynamically-typed languages, in Wren a class can have multiple
+methods with the same <em>name</em>, as long as they have different <em>signatures</em>. The
+signature includes the method’s name along with the number of arguments it
+takes. In technical terms, this means you can <em>overload by arity</em>.
+
+11 [p] For example, the <a href="/docs/wren/v0-4-0/en/02-reference/17-modules-random-random/">Random</a> class has two methods for getting a random integer.
+One takes a minimum and maximum value and returns a value in that range. The
+other only takes a maximum value and uses 0 as the minimum:
+
+12 [p] In a language like Python or JavaScript, these would both call a single ⟦CODE0⟧
+method, which has some kind of “optional” parameter. The body of the method
+figures out how many arguments were passed and uses control flow to handle the
+two different behaviors. That means first parameter represents “max unless
+another parameter was passed, in which case it’s min”. 
+
+13 [p] This type of ‘variadic’ code isn’t ideal, so Wren doesn’t encourage it.
+
+14 [p] In Wren, these are calls to two entirely separate methods, ⟦CODE0⟧ and
+⟦CODE1⟧. This makes it easier to define “overloads” like this since you don’t
+need optional parameters or any kind of control flow to handle the different
+cases.
+
+15 [p] It’s also faster to execute. Since we know how many arguments are passed at
+compile time, we can compile this to directly call the right method and avoid
+any “if I got two arguments do this…” runtime work.
+
+16 [h2] Getters <a class="header-anchor" href="#getters" name="getters">#</a>
+
+17 [p] Some methods exist to expose a stored or computed property of an object. These
+are <em>getters</em> and have no parentheses:
+
+18 [p] A getter is <em>not</em> the same as a method with an empty argument list. The ⟦CODE0⟧ is
+part of the signature, so ⟦CODE1⟧ and ⟦CODE2⟧ have different signatures.
+Unlike Ruby’s optional parentheses, Wren wants to make sure you call a getter
+like a getter and a ⟦CODE3⟧ method like a ⟦CODE4⟧ method. These don’t work:
+
+19 [p] If you’re defining some member that doesn’t need any parameters, you need to
+decide if it should be a getter or a method with an empty ⟦CODE0⟧ parameter list.
+The general guidelines are:
+
+20 [li] If it modifies the object or has some other side effect, make it a method:
+
+21 [li] If the method supports multiple arities, make the zero-parameter case a ⟦CODE0⟧
+    method to be consistent with the other versions:
+
+22 [li] Otherwise, it can probably be a getter.
+
+23 [h2] Setters <a class="header-anchor" href="#setters" name="setters">#</a>
+
+24 [p] A getter lets an object expose a public “property” that you can <em>read</em>.
+Likewise, a <em>setter</em> lets you write to a property:
+
+25 [p] Despite the ⟦CODE0⟧, this is just another syntax for a method call. From the
+language’s perspective, the above line is just a call to the ⟦CODE1⟧
+method on ⟦CODE2⟧, passing in ⟦CODE3⟧.
+
+26 [p] Since the ⟦CODE0⟧ is in the setter’s signature, an object can have both a getter
+and setter with the same name without a collision. Defining both lets you
+provide a read/write property.
+
+27 [h2] Operators <a class="header-anchor" href="#operators" name="operators">#</a>
+
+28 [p] Wren has most of the same operators you know and love with the same precedence
+and associativity. We have three prefix operators:
+
+29 [p] They are just method calls on their operand without any other arguments. An
+expression like ⟦CODE0⟧ means “call the ⟦CODE1⟧ method on ⟦CODE2⟧”.
+
+30 [p] We also have a slew of infix operators—they have operands on both sides.
+They are:
+
+31 [p] Like prefix operators, they are all funny ways of writing method calls. The left
+operand is the receiver, and the right operand gets passed to it. So ⟦CODE0⟧ is
+semantically interpreted as “invoke the ⟦CODE1⟧ method on ⟦CODE2⟧, passing it ⟦CODE3⟧”.
+
+32 [p] Note that ⟦CODE0⟧ is both a prefix and an infix operator. Since they have different
+signatures (⟦CODE1⟧ and ⟦CODE2⟧), there’s no ambiguity between them.
+
+33 [p] Most of these are probably familiar already. The ⟦CODE0⟧ and ⟦CODE1⟧ operators are
+“range” operators. The number type implements those to create <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">range</a>
+objects, but they are method calls like other operators.
+
+34 [p] The ⟦CODE0⟧ keyword is a “type test” operator. The base <a href="/docs/wren/v0-4-0/en/02-reference/09-modules-core-object/">Object</a> class implements
+it to tell if an object is an instance of a given class. You’ll rarely need to,
+but you can override ⟦CODE1⟧ in your own classes. That can be useful for things
+like mocks or proxies where you want an object to masquerade as a certain class.
+
+35 [h2] Subscripts <a class="header-anchor" href="#subscripts" name="subscripts">#</a>
+
+36 [p] Another familiar syntax from math is <em>subscripting</em> using square brackets
+(⟦CODE0⟧). It’s handy for working with collection-like objects. For example:
+
+37 [p] You know the refrain by now. In Wren, these are method calls. In the above
+examples, the signature is ⟦CODE0⟧. Subscript operators may also take multiple
+arguments, which is useful for things like multi-dimensional arrays:
+
+38 [p] These examples are subscript “getters”, and there are also
+corresponding <em>subscript setters</em>:
+
+39 [p] These are equivalent to method calls whose signature is ⟦CODE0⟧ and whose
+arguments are both the subscript (or subscripts) and the value on the right-hand
+side.
+
+40 [p] <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/">Control Flow →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/06-maps/">← Maps</a>

@@ -1,0 +1,266 @@
+1 [h1]
+EN: Concurrency
+JA: 並行処理
+
+2 [p]
+EN: Lightweight concurrency is a key feature of Wren and it is expressed using
+fibers. They control how all code is executed, and take the place of
+exceptions in error handling.
+JA: 軽量な並行処理はWrenの重要な機能で、ファイバーを使って表します。ファイバーは、すべてのコードの実行方法を制御し、エラー処理では例外の代わりになります。
+
+3 [p]
+EN: Fibers are a bit like threads except they are cooperatively scheduled. That
+means Wren doesn’t pause one fiber and switch to another until you tell it to.
+You don’t have to worry about context switches at random times and all of the
+headaches those cause.
+JA: ファイバーはスレッドに少し似ていますが、協調的にスケジュールします。つまり、指示しない限り、Wrenは一つのファイバーを一時停止して別のファイバーへ切り替えません。思いがけないタイミングでのコンテキスト切り替えや、それに伴う問題を心配する必要がありません。
+
+4 [p]
+EN: Wren takes care of all of the fibers in the VM, so they don’t use OS thread
+resources, or require heavyweight context switches. Each just needs a bit of
+memory for its stack. A fiber will get garbage collected like any other object
+when not referenced any more, so you can create them freely.
+JA: WrenはVM内のすべてのファイバーを管理するため、OSのスレッド資源を使わず、重いコンテキスト切り替えも必要ありません。各ファイバーに必要なのは、スタックのための少量のメモリーだけです。参照されなくなると、ほかのオブジェクトと同じようにガベージコレクションの対象になるので、自由に作成できます。
+
+5 [p]
+EN: They are lightweight enough that you can, for example, have a separate fiber for
+each entity in a game. Wren can handle thousands of them without breaking a
+sweat. For example, when you run Wren in interactive mode, it creates a new
+fiber for every line of code you type in.
+JA: 例えば、ゲーム内の各エンティティーに別々のファイバーを割り当てられるほど軽量です。Wrenは何千ものファイバーを余裕で処理できます。例えば、対話モードでWrenを実行すると、入力したコードの各行について新しいファイバーを作ります。
+
+6 [h2]
+EN: Creating fibers #
+JA: ファイバーの作成 #
+
+7 [p]
+EN: All Wren code runs within the context of a fiber. When you first start a Wren
+script, a main fiber is created for you automatically. You can spawn new fibers
+using the Fiber class’s constructor:
+JA: すべてのWrenコードは、ファイバーのコンテキスト内で実行します。最初にWrenスクリプトを開始すると、メインファイバーを自動的に作成します。Fiberクラスのコンストラクターを使うと、新しいファイバーを作れます。
+
+UNCHANGED CODE 1
+
+var fiber = Fiber.new {
+  System.print("This runs in a separate fiber.")
+}
+
+
+8 [p]
+EN: It takes a function containing the code the fiber should execute. The
+function can take zero or one parameter, but no more than that. Creating the
+fiber does not immediately run it. It just wraps the function and sits there,
+waiting to be activated.
+JA: コンストラクターは、そのファイバーが実行するコードを含む関数を受け取ります。関数のパラメーターはゼロ個か一個で、それより多くはできません。ファイバーを作っても、直ちに実行するわけではありません。関数を包んで、起動を待つだけです。
+
+9 [h2]
+EN: Invoking fibers #
+JA: ファイバーの呼び出し #
+
+10 [p]
+EN: Once you’ve created a fiber, you run it by calling its call() method:
+JA: ファイバーを作成したら、そのcall()メソッドを呼び出して実行します。
+
+UNCHANGED CODE 2
+
+fiber.call()
+
+
+11 [p]
+EN: This suspends the current fiber and executes the called one until it reaches the
+end of its body or until it passes control to yet another fiber. If it reaches
+the end of its body, it is considered done:
+JA: これにより、現在のファイバーを中断し、呼び出したファイバーを、本体の終わりに達するか、さらに別のファイバーへ制御を渡すまで実行します。本体の終わりに達したら、完了と見なします。
+
+UNCHANGED CODE 3
+
+var fiber = Fiber.new {
+  System.print("It's alive!")
+}
+
+System.print(fiber.isDone) //> false
+fiber.call() //> It's alive!
+System.print(fiber.isDone) //> true
+
+
+12 [p]
+EN: When a called fiber finishes, it automatically passes control back to the
+fiber that called it. It’s a runtime error to try to call a fiber that is
+already done.
+JA: 呼び出したファイバーが終了すると、それを呼び出したファイバーへ、自動的に制御を戻します。すでに完了したファイバーを呼び出そうとすると、実行時エラーになります。
+
+13 [h2]
+EN: Yielding #
+JA: yieldによる制御の返却 #
+
+14 [p]
+EN: The main difference between fibers and functions is that a fiber can be
+suspended in the middle of its operation and then resumed later. Calling
+another fiber is one way to suspend a fiber, but that’s more or less the same
+as one function calling another.
+JA: ファイバーと関数の主な違いは、ファイバーを処理の途中で中断し、後で再開できることです。別のファイバーを呼び出すのは、ファイバーを中断する一つの方法ですが、それはおおむね、一つの関数が別の関数を呼ぶのと同じです。
+
+15 [p]
+EN: Things get interesting when a fiber yields. A yielded fiber passes control
+back to the fiber that ran it, but remembers where it is. The next time the
+fiber is called, it picks up right where it left off and keeps going.
+JA: 興味深いのは、ファイバーがyieldするときです。yieldしたファイバーは、それを実行したファイバーへ制御を戻しますが、現在の位置を覚えています。次にそのファイバーを呼び出すと、中断した位置から、そのまま実行を続けます。
+
+16 [p]
+EN: You make a fiber yield by calling the static yield() method on Fiber:
+JA: Fiberの静的yield()メソッドを呼び出すと、ファイバーをyieldさせられます。
+
+UNCHANGED CODE 4
+
+var fiber = Fiber.new {
+  System.print("Before yield")
+  Fiber.yield()
+  System.print("Resumed")
+}
+
+System.print("Before call") //> Before call
+fiber.call() //> Before yield
+System.print("Calling again") //> Calling again
+fiber.call() //> Resumed
+System.print("All done") //> All done
+
+
+17 [p]
+EN: Note that even though this program uses concurrency, it is still
+deterministic. You can reason precisely about what it’s doing and aren’t at
+the mercy of a thread scheduler playing Russian roulette with your code.
+JA: このプログラムは並行処理を使っていても、決定的である点に注意してください。何を行うかを正確に推論でき、コードでロシアンルーレットをするスレッドスケジューラーに振り回されません。
+
+18 [h2]
+EN: Passing values #
+JA: 値を渡す #
+
+19 [p]
+EN: Calling and yielding fibers is used for passing control, but it can also pass
+data. When you call a fiber, you can optionally pass a value to it.
+JA: ファイバーの呼び出しとyieldは制御を渡すために使いますが、データも渡せます。ファイバーを呼び出す際、必要に応じて値を渡せます。
+
+20 [p]
+EN: If you create a fiber using a function that takes a parameter, you can pass a
+value to it through call():
+JA: パラメーターを取る関数でファイバーを作成した場合、call()を通じて値を渡せます。
+
+UNCHANGED CODE 5
+
+var fiber = Fiber.new {|param|
+  System.print(param)
+}
+
+fiber.call("Here you go") //> Here you go
+
+
+21 [p]
+EN: If the fiber has yielded and is waiting to resume, the value you pass to call
+becomes the return value of the yield() call when it resumes:
+JA: ファイバーがyieldして再開を待っている場合、callに渡した値は、再開時にyield()呼び出しの戻り値になります。
+
+UNCHANGED CODE 6
+
+var fiber = Fiber.new {|param|
+  System.print(param)
+  var result = Fiber.yield()
+  System.print(result)
+}
+
+fiber.call("First") //> First
+fiber.call("Second") //> Second
+
+
+22 [p]
+EN: Fibers can also pass values back when they yield. If you pass an argument to
+yield(), that will become the return value of the call() that was used to
+invoke the fiber:
+JA: ファイバーは、yieldするときに値を返すこともできます。yield()に引数を渡すと、ファイバーの呼び出しに使ったcall()の戻り値になります。
+
+UNCHANGED CODE 7
+
+var fiber = Fiber.new {
+  Fiber.yield("Reply")
+}
+
+System.print(fiber.call()) //> Reply
+
+
+23 [p]
+EN: This is sort of like how a function call may return a value, except that a fiber
+may return a whole sequence of values, one every time it yields.
+JA: 関数呼び出しが値を返すのに少し似ていますが、ファイバーはyieldのたびに一つずつ、値の列全体を返せます。
+
+24 [h2]
+EN: Full coroutines #
+JA: 完全なコルーチン #
+
+25 [p]
+EN: What we’ve seen so far is very similar to what you can do with languages like
+Python and C# that have generators. Those let you define a function call that
+you can suspend and resume. When using the function, it appears like a sequence
+you can iterate over.
+JA: ここまでの機能は、ジェネレーターを持つPythonやC#などの言語でできることによく似ています。ジェネレーターでは、中断して再開できる関数呼び出しを定義できます。使う側からは、反復処理できるシーケンスのように見えます。
+
+26 [p]
+EN: Wren’s fibers can do that, but they can do much more. Like Lua, they are full
+coroutines—they can suspend from anywhere in the callstack. The function
+you use to create a fiber can call a method that calls another method that calls
+some third method which finally calls yield. When that happens, all of those
+method calls — the entire callstack — gets suspended. For example:
+JA: Wrenのファイバーにもそれができますが、さらに多くのことができます。Luaと同様、完全なコルーチンであり、コールスタックのどこからでも中断できます。ファイバーの作成に使った関数がメソッドを呼び、そのメソッドが別のメソッドを呼び、それが三つ目のメソッドを呼んで、最後にyieldを呼ぶこともできます。そのとき、それらすべてのメソッド呼び出し、つまりコールスタック全体を中断します。例えば、次のようになります。
+
+UNCHANGED CODE 8
+
+var fiber = Fiber.new {
+  (1..10).each {|i|
+    Fiber.yield(i)
+  }
+}
+
+
+27 [p]
+EN: Here, we’re calling yield() from within a function being
+passed to the each() method. This works fine in Wren because that inner
+yield() call will suspend the call to each() and the function passed to it
+as a callback.
+JA: ここでは、each()メソッドに渡す関数の中からyield()を呼び出しています。Wrenでは、内側のyield()呼び出しが、each()の呼び出しと、そのコールバックとして渡した関数を中断するので、問題なく動作します。
+
+28 [h2]
+EN: Transferring control #
+JA: 制御の移譲 #
+
+29 [p]
+EN: Fibers have one more trick up their sleeves. When you execute a fiber using
+call(), the fiber tracks which fiber it will return to when it yields. This
+lets you build up a chain of fiber calls that will eventually unwind back to
+the main fiber when all of the called ones yield or finish.
+JA: ファイバーには、もう一つの機能があります。call()を使ってファイバーを実行すると、yield時にどのファイバーへ戻るかを記録します。これにより、ファイバー呼び出しの連鎖を作れます。呼び出したファイバーがすべてyieldまたは終了すると、最終的にメインファイバーまで戻ります。
+
+30 [p]
+EN: This is usually what you want. But if you’re doing something low level, like
+writing your own scheduler to manage a pool of fibers, you may not want to treat
+them explicitly like a stack.
+JA: 通常は、この動作を望むでしょう。しかし、ファイバーのプールを管理する独自のスケジューラーを書くような低水準の処理では、ファイバーを明示的にスタックとして扱いたくない場合もあります。
+
+31 [p]
+EN: For rare cases like that, fibers also have a transfer() method. This switches
+execution to the transferred fiber and “forgets” the fiber that was transferred
+from. The previous one is suspended, leaving it in whatever state it was in.
+You can resume the previous fiber by explicitly transferring back to it, or even
+calling it. If you don’t, execution stops when the last transferred fiber
+returns.
+JA: そのようなまれな場合のために、ファイバーにはtransfer()メソッドもあります。これは移譲先のファイバーへ実行を切り替え、移譲元のファイバーを「忘れます」。移譲元は、その時点の状態のまま中断します。明示的にそちらへ再び制御を移譲するか、呼び出すことで再開できます。そうしなければ、最後の移譲先のファイバーが戻ったときに、実行が停止します。
+
+32 [p]
+EN: Where call() and yield() are analogous to calling and returning from
+functions, transfer() works more like an unstructured goto. It lets you freely
+switch control between a number of fibers, all of which act as peers to one
+another.
+JA: call()とyield()が関数の呼び出しと復帰に似ているのに対し、transfer()は構造化されていないgotoのように動作します。対等な複数のファイバーの間で、自由に制御を切り替えられます。
+
+33 [p]
+EN: 
+Error Handling →
+← Classes
+JA: エラー処理 →← クラス

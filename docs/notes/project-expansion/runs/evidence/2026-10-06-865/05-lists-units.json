@@ -1,0 +1,240 @@
+{
+  "page": "01-guide/05-lists.md",
+  "titleEN": "Lists",
+  "titleJA": "リスト",
+  "sourceCanonicalSHA256": "704d40f8c4a7147148e749f21a6459f1a603e49f16400338f2f5405e158af746",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Lists",
+      "originalInnerHTML": "Lists",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "A list is a compound object that holds a collection of elements identified by\ninteger index. You can create a list by placing a sequence of comma-separated\nexpressions inside square brackets:",
+      "originalInnerHTML": "A list is a compound object that holds a collection of elements identified by\ninteger index. You can create a list by placing a sequence of comma-separated\nexpressions inside square brackets:",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "Here, we’ve created a list of three elements. Notice that the elements don’t\nhave to be the same type.",
+      "originalInnerHTML": "Here, we’ve created a list of three elements. Notice that the elements don’t\nhave to be the same type.",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "h2",
+      "sourceHTML": "Accessing elements <a class=\"header-anchor\" href=\"#accessing-elements\" name=\"accessing-elements\">#</a>",
+      "originalInnerHTML": "Accessing elements <a class=\"header-anchor\" href=\"#accessing-elements\" name=\"accessing-elements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "You can access an element from a list by calling the <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts\">subscript\noperator</a> on it with the index of the\nelement you want. Like most languages, indexes start at zero:",
+      "originalInnerHTML": "You can access an element from a list by calling the <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts\">subscript\noperator</a> on it with the index of the\nelement you want. Like most languages, indexes start at zero:",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "Negative indices counts backwards from the end:",
+      "originalInnerHTML": "Negative indices counts backwards from the end:",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "It’s a runtime error to pass an index outside of the bounds of the list. If you\ndon’t know what those bounds are, you can find out using count:",
+      "originalInnerHTML": "It’s a runtime error to pass an index outside of the bounds of the list. If you\ndon’t know what those bounds are, you can find out using count:",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "h2",
+      "sourceHTML": "Slices and ranges <a class=\"header-anchor\" href=\"#slices-and-ranges\" name=\"slices-and-ranges\">#</a>",
+      "originalInnerHTML": "Slices and ranges <a class=\"header-anchor\" href=\"#slices-and-ranges\" name=\"slices-and-ranges\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "Sometimes you want to copy a chunk of elements from a list. You can do that by\npassing a <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range</a> to the subscript operator, like so:",
+      "originalInnerHTML": "Sometimes you want to copy a chunk of elements from a list. You can do that by\npassing a <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range</a> to the subscript operator, like so:",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "This returns a new list containing the elements of the original list whose\nindices are within the given range. Both inclusive and exclusive ranges work\nand do what you expect.",
+      "originalInnerHTML": "This returns a new list containing the elements of the original list whose\nindices are within the given range. Both inclusive and exclusive ranges work\nand do what you expect.",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "Negative bounds also work like they do when passing a single number, so to copy\na list, you can just do:",
+      "originalInnerHTML": "Negative bounds also work like they do when passing a single number, so to copy\na list, you can just do:",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "h2",
+      "sourceHTML": "Adding elements <a class=\"header-anchor\" href=\"#adding-elements\" name=\"adding-elements\">#</a>",
+      "originalInnerHTML": "Adding elements <a class=\"header-anchor\" href=\"#adding-elements\" name=\"adding-elements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "Lists are <em>mutable</em>, meaning their contents can be changed. You can swap out an\nexisting element in the list using the subscript setter:",
+      "originalInnerHTML": "Lists are <em>mutable</em>, meaning their contents can be changed. You can swap out an\nexisting element in the list using the subscript setter:",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "It’s an error to set an element that’s out of bounds. To grow a list, you can\nuse ⟦CODE0⟧ to append a single item to the end:",
+      "originalInnerHTML": "It’s an error to set an element that’s out of bounds. To grow a list, you can\nuse <code>add</code> to append a single item to the end:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>add</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "You can insert a new element at a specific position using ⟦CODE0⟧:",
+      "originalInnerHTML": "You can insert a new element at a specific position using <code>insert</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>insert</code>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "The first argument is the index to insert at, and the second is the value to\ninsert. All elements following the inserted one will be pushed down to\nmake room for it.",
+      "originalInnerHTML": "The first argument is the index to insert at, and the second is the value to\ninsert. All elements following the inserted one will be pushed down to\nmake room for it.",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "It’s valid to “insert” after the last element in the list, but only <em>right</em>\nafter it. Like other methods, you can use a negative index to count from the\nback. Doing so counts back from the size of the list <em>after</em> it’s grown by one:",
+      "originalInnerHTML": "It’s valid to “insert” after the last element in the list, but only <em>right</em>\nafter it. Like other methods, you can use a negative index to count from the\nback. Doing so counts back from the size of the list <em>after</em> it’s grown by one:",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "h2",
+      "sourceHTML": "Adding lists together <a class=\"header-anchor\" href=\"#adding-lists-together\" name=\"adding-lists-together\">#</a>",
+      "originalInnerHTML": "Adding lists together <a class=\"header-anchor\" href=\"#adding-lists-together\" name=\"adding-lists-together\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Lists have the ability to be added together via the ⟦CODE0⟧ operator. This is often known as concatenation.",
+      "originalInnerHTML": "Lists have the ability to be added together via the <code>+</code> operator. This is often known as concatenation.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>+</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "sourceHTML": "Removing elements <a class=\"header-anchor\" href=\"#removing-elements\" name=\"removing-elements\">#</a>",
+      "originalInnerHTML": "Removing elements <a class=\"header-anchor\" href=\"#removing-elements\" name=\"removing-elements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "The opposite of ⟦CODE0⟧ is ⟦CODE1⟧. It removes a single element from a\ngiven position in the list. ",
+      "originalInnerHTML": "The opposite of <code>insert</code> is <code>removeAt</code>. It removes a single element from a\ngiven position in the list. ",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>insert</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>removeAt</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "To remove a specific <em>value</em> instead, use ⟦CODE0⟧. The first value that \nmatches using regular equality will be removed.",
+      "originalInnerHTML": "To remove a specific <em>value</em> instead, use <code>remove</code>. The first value that \nmatches using regular equality will be removed.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>remove</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "In both cases, all following items are shifted up to fill in the gap.",
+      "originalInnerHTML": "In both cases, all following items are shifted up to fill in the gap.",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "Both the ⟦CODE0⟧ and ⟦CODE1⟧ method return the removed item:",
+      "originalInnerHTML": "Both the <code>remove</code> and <code>removeAt</code> method return the removed item:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>remove</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>removeAt</code>"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "If ⟦CODE0⟧ couldn’t find the value in the list, it returns null:",
+      "originalInnerHTML": "If <code>remove</code> couldn’t find the value in the list, it returns null:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>remove</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "If you want to remove everything from the list, you can clear it:",
+      "originalInnerHTML": "If you want to remove everything from the list, you can clear it:",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/06-maps/\">Maps →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/\">← Values</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/06-maps/\">Maps →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/\">← Values</a>",
+      "protected": []
+    }
+  ]
+}

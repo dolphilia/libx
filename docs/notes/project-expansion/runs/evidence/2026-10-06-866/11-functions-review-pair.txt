@@ -1,0 +1,181 @@
+1 [h1]
+EN: Functions
+JA: 関数
+
+2 [p]
+EN: Like many languages today, functions in Wren are little bundles of code 
+you can store in a variable, or pass as an argument to a method. 
+JA: 今日の多くの言語と同様、Wrenの関数は小さなコードのまとまりで、変数に保存したり、メソッドの引数として渡したりできます。
+
+3 [p]
+EN: Notice there’s a difference between <em>function</em> and <em>method</em>.
+JA: <em>関数</em>と<em>メソッド</em>には違いがある点に注意してください。
+
+4 [p]
+EN: Since Wren is object-oriented, most of your code will live in methods on
+classes, but free-floating functions are still eminently handy. 
+JA: Wrenはオブジェクト指向なので、コードの大半はクラスのメソッドに置きますが、独立した関数も非常に便利です。
+
+5 [p]
+EN: Functions are objects like everything else in Wren, instances of the ⟦CODE0⟧
+class.
+JA: Wrenのほかのものと同じように、関数もオブジェクトで、⟦CODE0⟧クラスのインスタンスです。
+
+6 [h2]
+EN: Creating a function <a class="header-anchor" href="#creating-a-function" name="creating-a-function">#</a>
+JA: 関数の作成 <a class="header-anchor" href="#creating-a-function" name="creating-a-function">#</a>
+
+7 [p]
+EN: To create a function, we call ⟦CODE0⟧, which takes a block to execute.
+To call the function, we use ⟦CODE1⟧ on the function instance.
+JA: 関数を作るには、実行するブロックを受け取る⟦CODE0⟧を呼び出します。関数を呼び出すには、その関数インスタンスの⟦CODE1⟧を使います。
+
+8 [p]
+EN: Note that we’ll see a shorthand syntax for creating a function below.
+JA: 後で、関数を作成するための短い構文も説明します。
+
+9 [h2]
+EN: Function parameters <a class="header-anchor" href="#function-parameters" name="function-parameters">#</a>
+JA: 関数のパラメーター <a class="header-anchor" href="#function-parameters" name="function-parameters">#</a>
+
+10 [p]
+EN: Of course, functions aren’t very useful if you can’t pass values to them. The
+function above takes no arguments. To change that, you can provide a parameter
+list surrounded by ⟦CODE0⟧ immediately after the opening brace of the body.
+JA: もちろん、値を渡せなければ、関数はあまり役に立ちません。上の関数は引数を受け取りません。引数を受け取るようにするには、本体の開始の波括弧の直後に、⟦CODE0⟧で囲んだパラメーターリストを置きます。
+
+11 [p]
+EN: To pass arguments to the function, pass them to the ⟦CODE0⟧ method:
+JA: 関数へ引数を渡すには、⟦CODE0⟧メソッドに渡します。
+
+12 [p]
+EN: It’s an error to call a function with fewer arguments than its parameter list
+expects. If you pass too <em>many</em> arguments, the extras are ignored.
+JA: パラメーターリストが要求する個数より少ない引数で関数を呼び出すと、エラーになります。引数が<em>多すぎる</em>場合、余分な引数は無視します。
+
+13 [h2]
+EN: Returning values <a class="header-anchor" href="#returning-values" name="returning-values">#</a>
+JA: 値を返す <a class="header-anchor" href="#returning-values" name="returning-values">#</a>
+
+14 [p]
+EN: The body of a function is a <a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">block</a>. If it is a single
+expression—more precisely if there is no newline after the ⟦CODE0⟧ or
+parameter list—then the function implicitly returns the value of the
+expression.
+JA: 関数の本体は<a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">ブロック</a>です。一つの式だけであれば、より正確には⟦CODE0⟧またはパラメーターリストの後に改行がなければ、関数は暗黙にその式の値を返します。
+
+15 [p]
+EN: Otherwise, the body returns ⟦CODE0⟧ by default. You can explicitly return a
+value using a ⟦CODE1⟧ statement. In other words, these two functions do the
+same thing:
+JA: そうでない場合、本体は既定で⟦CODE0⟧を返します。⟦CODE1⟧文を使うと、値を明示的に返せます。言い換えると、次の二つの関数は同じ動作をします。
+
+16 [p]
+EN: The return value is handed back to you when using ⟦CODE0⟧:
+JA: ⟦CODE0⟧を使うと、その戻り値を受け取れます。
+
+17 [h2]
+EN: Closures <a class="header-anchor" href="#closures" name="closures">#</a>
+JA: クロージャー <a class="header-anchor" href="#closures" name="closures">#</a>
+
+18 [p]
+EN: As you expect, functions are closures—they can access variables defined
+outside of their scope. They will hold onto closed-over variables even after
+leaving the scope where the function is defined:
+JA: 予想どおり、関数はクロージャーであり、自分のスコープの外で定義した変数にアクセスできます。関数を定義したスコープを離れた後も、閉じ込めた変数を保持します。
+
+19 [p]
+EN: Here, the ⟦CODE0⟧ method returns the function created on its second line. That
+function references a variable ⟦CODE1⟧ declared outside of the function. Even after
+the function is returned from ⟦CODE2⟧, it is still able to read and assign
+to⟦CODE3⟧:
+JA: ここでは、⟦CODE0⟧メソッドは、二行目で作った関数を返します。その関数は、関数の外で宣言した変数⟦CODE1⟧を参照します。⟦CODE2⟧から関数を返した後でも、⟦CODE3⟧を読み取ったり、代入したりできます。
+
+20 [h2]
+EN: Callable classes <a class="header-anchor" href="#callable-classes" name="callable-classes">#</a>
+JA: 呼び出し可能なクラス <a class="header-anchor" href="#callable-classes" name="callable-classes">#</a>
+
+21 [p]
+EN: Because ⟦CODE0⟧ is a class, and responds to ⟦CODE1⟧, any class can respond to 
+⟦CODE2⟧ and be used in place of a function. This is particularly handy when 
+the function is passed to a method to be called, like a callback or event.
+JA: ⟦CODE0⟧はクラスであり、⟦CODE1⟧に応答するので、どのクラスでも⟦CODE2⟧に応答することで関数の代わりに使えます。コールバックやイベントのように、呼び出すために関数をメソッドへ渡す場面で、特に便利です。
+
+22 [h2]
+EN: Block arguments <a class="header-anchor" href="#block-arguments" name="block-arguments">#</a>
+JA: ブロック引数 <a class="header-anchor" href="#block-arguments" name="block-arguments">#</a>
+
+23 [p]
+EN: Very frequently, functions are passed to methods to be called. There are 
+countless examples of this in Wren, like <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">list</a> can be filtered
+using a method ⟦CODE0⟧ which accepts a function:
+JA: 呼び出すために関数をメソッドへ渡すのは、非常によくある操作です。Wrenには数え切れないほどの例があります。例えば、関数を受け取る⟦CODE0⟧メソッドを使って、<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">リスト</a>を絞り込めます。
+
+24 [p]
+EN: This syntax is a bit less fun to read and write, so Wren implements the 
+<em>block argument</em> concept. When a function is being passed to a method, 
+and is the last argument to the method, it can use a shorter syntax: 
+<em>just the block part</em>.
+JA: この構文は少し読み書きしづらいため、Wrenには<em>ブロック引数</em>という概念があります。関数をメソッドへ渡す際、それが最後の引数であれば、<em>ブロック部分だけ</em>という短い構文を使えます。
+
+25 [p]
+EN: Let’s use a block argument for ⟦CODE0⟧, it’s the last (only) argument:
+JA: ⟦CODE0⟧でブロック引数を使ってみましょう。これは最後の、そして唯一の引数です。
+
+26 [p]
+EN: We’ve seen this before in a previous page using ⟦CODE0⟧ and ⟦CODE1⟧:
+JA: 前のページでは、⟦CODE0⟧と⟦CODE1⟧を使う同じ構文をすでに見ました。
+
+27 [h2]
+EN: Block argument example <a class="header-anchor" href="#block-argument-example" name="block-argument-example">#</a>
+JA: ブロック引数の例 <a class="header-anchor" href="#block-argument-example" name="block-argument-example">#</a>
+
+28 [p]
+EN: Let’s look at a complete example, so we can see both ends.
+JA: 全体の例を見て、渡す側と受け取る側の両方を確認しましょう。
+
+29 [p]
+EN: Here’s a fictional class for something that will call a function
+when a click event is sent to it. It allows us to pass just a 
+function and assume the left mouse button, or to pass a button and a function.
+JA: 次は、クリックイベントが送られてきたときに関数を呼び出すものを表す、架空のクラスです。関数だけを渡してマウスの左ボタンを想定することも、ボタンと関数を渡すこともできます。
+
+30 [p]
+EN: Now that we’ve got the clickable class, let’s use it.
+We’ll start by using the method that accepts just a function
+because we’re fine with it just being the default left mouse button.
+JA: クリック可能なクラスができたので、使ってみましょう。既定の左ボタンでよいので、まずは関数だけを受け取るメソッドを使います。
+
+31 [p]
+EN: Now let’s try with the extra button argument:
+JA: 今度は、ボタンの引数を追加して試しましょう。
+
+32 [p]
+EN: Notice that we still pass the other arguments normally, 
+it’s only the last argument that is special.
+JA: ほかの引数は通常どおり渡しており、特別なのは最後の引数だけという点に注意してください。
+
+33 [p]
+EN: <strong>Just a regular function</strong> 
+JA: <strong>普通の関数にすぎない</strong>
+
+34 [p]
+EN: Block arguments are purely syntax sugar for creating a function and passing it
+in one little blob of syntax. These two are equivalent:
+JA: ブロック引数は、関数を作成して渡す操作を一つの小さな構文にまとめた、純粋な糖衣構文です。次の二つは同じです。
+
+35 [p]
+EN: And this is just as valid:
+JA: 次の書き方も、同じように有効です。
+
+36 [p]
+EN: <strong>Fn.new</strong> <br/>
+As you may have noticed by now, ⟦CODE0⟧ accepts a block argument for the ⟦CODE1⟧.
+All the constructor does is return that argument right back to you!
+JA: <strong>Fn.new</strong><br/>ここまででお気付きかもしれませんが、⟦CODE0⟧は⟦CODE1⟧のためのブロック引数を受け取ります。このコンストラクターが行うのは、その引数をそのまま返すことだけです！
+
+37 [p]
+EN: <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/10-classes/">Classes →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">← Variables</a>
+JA: <br/><hr/><a class="right" href="/docs/wren/v0-4-0/en/01-guide/10-classes/">クラス →</a><a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">← 変数</a>

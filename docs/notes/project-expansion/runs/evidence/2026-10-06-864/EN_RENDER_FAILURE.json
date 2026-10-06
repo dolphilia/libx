@@ -1,0 +1,10 @@
+{
+  "status": "failed-first-rendered-code-check",
+  "at": "2026-10-05T21:10:25.445546+00:00",
+  "page": "01-guide/01-overview.md",
+  "cause": "HTML pre consumes immediate leading LF; canonical source leading newline was not retained in rendered DOM",
+  "fix": "Wrap existing rawpre content in code when not already present; retain inner text/markup and encode LF. No original or prose changes.",
+  "oldBuildBeforeLockRepair": true,
+  "secondObservedProblem": "Literal <stdio.h> interpreted as HTML tag and raw &writeFn;/&errorFn; parser interpretations differed. C examples would be broken for readers.",
+  "resolvedFormat": "Decode existing character references once, strip only complete outer code container, escape plaintext rawpre and rewrap code; all353 rawpre have no span formatting. Preserve source semicolons/header angle text and LF."
+}

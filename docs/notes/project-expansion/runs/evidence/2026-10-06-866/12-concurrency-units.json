@@ -1,0 +1,308 @@
+{
+  "page": "01-guide/12-concurrency.md",
+  "titleEN": "Concurrency",
+  "titleJA": "並行処理",
+  "sourceCanonicalSHA256": "f4c48f687a2b653150bf386207a3c9b4b4a1e810d89a9b5cc8015bde9874e8ec",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Concurrency",
+      "originalInnerHTML": "Concurrency",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Lightweight concurrency is a key feature of Wren and it is expressed using\n<em>fibers</em>. They control how all code is executed, and take the place of\nexceptions in <a href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">error handling</a>.",
+      "originalInnerHTML": "Lightweight concurrency is a key feature of Wren and it is expressed using\n<em>fibers</em>. They control how all code is executed, and take the place of\nexceptions in <a href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">error handling</a>.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "Fibers are a bit like threads except they are <em>cooperatively</em> scheduled. That\nmeans Wren doesn’t pause one fiber and switch to another until you tell it to.\nYou don’t have to worry about context switches at random times and all of the\nheadaches those cause.",
+      "originalInnerHTML": "Fibers are a bit like threads except they are <em>cooperatively</em> scheduled. That\nmeans Wren doesn’t pause one fiber and switch to another until you tell it to.\nYou don’t have to worry about context switches at random times and all of the\nheadaches those cause.",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "Wren takes care of all of the fibers in the VM, so they don’t use OS thread\nresources, or require heavyweight context switches. Each just needs a bit of\nmemory for its stack. A fiber will get garbage collected like any other object\nwhen not referenced any more, so you can create them freely.",
+      "originalInnerHTML": "Wren takes care of all of the fibers in the VM, so they don’t use OS thread\nresources, or require heavyweight context switches. Each just needs a bit of\nmemory for its stack. A fiber will get garbage collected like any other object\nwhen not referenced any more, so you can create them freely.",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "They are lightweight enough that you can, for example, have a separate fiber for\neach entity in a game. Wren can handle thousands of them without breaking a\nsweat. For example, when you run Wren in interactive mode, it creates a new\nfiber for every line of code you type in.",
+      "originalInnerHTML": "They are lightweight enough that you can, for example, have a separate fiber for\neach entity in a game. Wren can handle thousands of them without breaking a\nsweat. For example, when you run Wren in interactive mode, it creates a new\nfiber for every line of code you type in.",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "h2",
+      "sourceHTML": "Creating fibers <a class=\"header-anchor\" href=\"#creating-fibers\" name=\"creating-fibers\">#</a>",
+      "originalInnerHTML": "Creating fibers <a class=\"header-anchor\" href=\"#creating-fibers\" name=\"creating-fibers\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "All Wren code runs within the context of a fiber. When you first start a Wren\nscript, a main fiber is created for you automatically. You can spawn new fibers\nusing the Fiber class’s constructor:",
+      "originalInnerHTML": "All Wren code runs within the context of a fiber. When you first start a Wren\nscript, a main fiber is created for you automatically. You can spawn new fibers\nusing the Fiber class’s constructor:",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "It takes a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> containing the code the fiber should execute. The\nfunction can take zero or one parameter, but no more than that. Creating the\nfiber does not immediately run it. It just wraps the function and sits there,\nwaiting to be activated.",
+      "originalInnerHTML": "It takes a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> containing the code the fiber should execute. The\nfunction can take zero or one parameter, but no more than that. Creating the\nfiber does not immediately run it. It just wraps the function and sits there,\nwaiting to be activated.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "h2",
+      "sourceHTML": "Invoking fibers <a class=\"header-anchor\" href=\"#invoking-fibers\" name=\"invoking-fibers\">#</a>",
+      "originalInnerHTML": "Invoking fibers <a class=\"header-anchor\" href=\"#invoking-fibers\" name=\"invoking-fibers\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "Once you’ve created a fiber, you run it by calling its ⟦CODE0⟧ method:",
+      "originalInnerHTML": "Once you’ve created a fiber, you run it by calling its <code>call()</code> method:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>call()</code>"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "This suspends the current fiber and executes the called one until it reaches the\nend of its body or until it passes control to yet another fiber. If it reaches\nthe end of its body, it is considered <em>done</em>:",
+      "originalInnerHTML": "This suspends the current fiber and executes the called one until it reaches the\nend of its body or until it passes control to yet another fiber. If it reaches\nthe end of its body, it is considered <em>done</em>:",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "When a called fiber finishes, it automatically passes control <em>back</em> to the\nfiber that called it. It’s a runtime error to try to call a fiber that is\nalready done.",
+      "originalInnerHTML": "When a called fiber finishes, it automatically passes control <em>back</em> to the\nfiber that called it. It’s a runtime error to try to call a fiber that is\nalready done.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "h2",
+      "sourceHTML": "Yielding <a class=\"header-anchor\" href=\"#yielding\" name=\"yielding\">#</a>",
+      "originalInnerHTML": "Yielding <a class=\"header-anchor\" href=\"#yielding\" name=\"yielding\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "The main difference between fibers and functions is that a fiber can be\nsuspended in the middle of its operation and then resumed later. Calling\nanother fiber is one way to suspend a fiber, but that’s more or less the same\nas one function calling another.",
+      "originalInnerHTML": "The main difference between fibers and functions is that a fiber can be\nsuspended in the middle of its operation and then resumed later. Calling\nanother fiber is one way to suspend a fiber, but that’s more or less the same\nas one function calling another.",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "Things get interesting when a fiber <em>yields</em>. A yielded fiber passes control\n<em>back</em> to the fiber that ran it, but <em>remembers where it is</em>. The next time the\nfiber is called, it picks up right where it left off and keeps going.",
+      "originalInnerHTML": "Things get interesting when a fiber <em>yields</em>. A yielded fiber passes control\n<em>back</em> to the fiber that ran it, but <em>remembers where it is</em>. The next time the\nfiber is called, it picks up right where it left off and keeps going.",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "You make a fiber yield by calling the static ⟦CODE0⟧ method on Fiber:",
+      "originalInnerHTML": "You make a fiber yield by calling the static <code>yield()</code> method on Fiber:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>yield()</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "Note that even though this program uses <em>concurrency</em>, it is still\n<em>deterministic</em>. You can reason precisely about what it’s doing and aren’t at\nthe mercy of a thread scheduler playing Russian roulette with your code.",
+      "originalInnerHTML": "Note that even though this program uses <em>concurrency</em>, it is still\n<em>deterministic</em>. You can reason precisely about what it’s doing and aren’t at\nthe mercy of a thread scheduler playing Russian roulette with your code.",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "h2",
+      "sourceHTML": "Passing values <a class=\"header-anchor\" href=\"#passing-values\" name=\"passing-values\">#</a>",
+      "originalInnerHTML": "Passing values <a class=\"header-anchor\" href=\"#passing-values\" name=\"passing-values\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Calling and yielding fibers is used for passing control, but it can also pass\n<em>data</em>. When you call a fiber, you can optionally pass a value to it.",
+      "originalInnerHTML": "Calling and yielding fibers is used for passing control, but it can also pass\n<em>data</em>. When you call a fiber, you can optionally pass a value to it.",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "If you create a fiber using a function that takes a parameter, you can pass a\nvalue to it through ⟦CODE0⟧:",
+      "originalInnerHTML": "If you create a fiber using a function that takes a parameter, you can pass a\nvalue to it through <code>call()</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>call()</code>"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "If the fiber has yielded and is waiting to resume, the value you pass to call\nbecomes the return value of the ⟦CODE0⟧ call when it resumes:",
+      "originalInnerHTML": "If the fiber has yielded and is waiting to resume, the value you pass to call\nbecomes the return value of the <code>yield()</code> call when it resumes:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>yield()</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "Fibers can also pass values <em>back</em> when they yield. If you pass an argument to\n⟦CODE0⟧, that will become the return value of the ⟦CODE1⟧ that was used to\ninvoke the fiber:",
+      "originalInnerHTML": "Fibers can also pass values <em>back</em> when they yield. If you pass an argument to\n<code>yield()</code>, that will become the return value of the <code>call()</code> that was used to\ninvoke the fiber:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>yield()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>call()</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "This is sort of like how a function call may return a value, except that a fiber\nmay return a whole sequence of values, one every time it yields.",
+      "originalInnerHTML": "This is sort of like how a function call may return a value, except that a fiber\nmay return a whole sequence of values, one every time it yields.",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "h2",
+      "sourceHTML": "Full coroutines <a class=\"header-anchor\" href=\"#full-coroutines\" name=\"full-coroutines\">#</a>",
+      "originalInnerHTML": "Full coroutines <a class=\"header-anchor\" href=\"#full-coroutines\" name=\"full-coroutines\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "What we’ve seen so far is very similar to what you can do with languages like\nPython and C# that have <em>generators</em>. Those let you define a function call that\nyou can suspend and resume. When using the function, it appears like a sequence\nyou can iterate over.",
+      "originalInnerHTML": "What we’ve seen so far is very similar to what you can do with languages like\nPython and C# that have <em>generators</em>. Those let you define a function call that\nyou can suspend and resume. When using the function, it appears like a sequence\nyou can iterate over.",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "Wren’s fibers can do that, but they can do much more. Like Lua, they are full\n<em>coroutines</em>—they can suspend from anywhere in the callstack. The function\nyou use to create a fiber can call a method that calls another method that calls\nsome third method which finally calls yield. When that happens, <em>all</em> of those\nmethod calls — the entire callstack — gets suspended. For example:",
+      "originalInnerHTML": "Wren’s fibers can do that, but they can do much more. Like Lua, they are full\n<em>coroutines</em>—they can suspend from anywhere in the callstack. The function\nyou use to create a fiber can call a method that calls another method that calls\nsome third method which finally calls yield. When that happens, <em>all</em> of those\nmethod calls — the entire callstack — gets suspended. For example:",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "Here, we’re calling ⟦CODE0⟧ from within a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> being\npassed to the ⟦CODE1⟧ method. This works fine in Wren because that inner\n⟦CODE2⟧ call will suspend the call to ⟦CODE3⟧ and the function passed to it\nas a callback.",
+      "originalInnerHTML": "Here, we’re calling <code>yield()</code> from within a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> being\npassed to the <code>each()</code> method. This works fine in Wren because that inner\n<code>yield()</code> call will suspend the call to <code>each()</code> and the function passed to it\nas a callback.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>yield()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>each()</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>yield()</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>each()</code>"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "tag": "h2",
+      "sourceHTML": "Transferring control <a class=\"header-anchor\" href=\"#transferring-control\" name=\"transferring-control\">#</a>",
+      "originalInnerHTML": "Transferring control <a class=\"header-anchor\" href=\"#transferring-control\" name=\"transferring-control\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "Fibers have one more trick up their sleeves. When you execute a fiber using\n⟦CODE0⟧, the fiber tracks which fiber it will return to when it yields. This\nlets you build up a chain of fiber calls that will eventually unwind back to\nthe main fiber when all of the called ones yield or finish.",
+      "originalInnerHTML": "Fibers have one more trick up their sleeves. When you execute a fiber using\n<code>call()</code>, the fiber tracks which fiber it will return to when it yields. This\nlets you build up a chain of fiber calls that will eventually unwind back to\nthe main fiber when all of the called ones yield or finish.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>call()</code>"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "This is usually what you want. But if you’re doing something low level, like\nwriting your own scheduler to manage a pool of fibers, you may not want to treat\nthem explicitly like a stack.",
+      "originalInnerHTML": "This is usually what you want. But if you’re doing something low level, like\nwriting your own scheduler to manage a pool of fibers, you may not want to treat\nthem explicitly like a stack.",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "For rare cases like that, fibers also have a ⟦CODE0⟧ method. This switches\nexecution to the transferred fiber and “forgets” the fiber that was transferred\n<em>from</em>. The previous one is suspended, leaving it in whatever state it was in.\nYou can resume the previous fiber by explicitly transferring back to it, or even\ncalling it. If you don’t, execution stops when the last transferred fiber\nreturns.",
+      "originalInnerHTML": "For rare cases like that, fibers also have a <code>transfer()</code> method. This switches\nexecution to the transferred fiber and “forgets” the fiber that was transferred\n<em>from</em>. The previous one is suspended, leaving it in whatever state it was in.\nYou can resume the previous fiber by explicitly transferring back to it, or even\ncalling it. If you don’t, execution stops when the last transferred fiber\nreturns.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>transfer()</code>"
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "Where ⟦CODE0⟧ and ⟦CODE1⟧ are analogous to calling and returning from\nfunctions, ⟦CODE2⟧ works more like an unstructured goto. It lets you freely\nswitch control between a number of fibers, all of which act as peers to one\nanother.",
+      "originalInnerHTML": "Where <code>call()</code> and <code>yield()</code> are analogous to calling and returning from\nfunctions, <code>transfer()</code> works more like an unstructured goto. It lets you freely\nswitch control between a number of fibers, all of which act as peers to one\nanother.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>call()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>yield()</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>transfer()</code>"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">Error Handling →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">← Classes</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">Error Handling →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">← Classes</a>",
+      "protected": []
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+1 [h1]
+EN: Functions
+JA: 関数
+
+2 [p]
+EN: Like many languages today, functions in Wren are little bundles of code 
+you can store in a variable, or pass as an argument to a method. 
+JA: 今日の多くの言語と同様、Wrenの関数は小さなコードのまとまりで、変数に保存したり、メソッドの引数として渡したりできます。
+
+3 [p]
+EN: Notice there’s a difference between function and method.
+JA: 関数とメソッドには違いがある点に注意してください。
+
+4 [p]
+EN: Since Wren is object-oriented, most of your code will live in methods on
+classes, but free-floating functions are still eminently handy. 
+JA: Wrenはオブジェクト指向なので、コードの大半はクラスのメソッドに置きますが、独立した関数も非常に便利です。
+
+5 [p]
+EN: Functions are objects like everything else in Wren, instances of the Fn
+class.
+JA: Wrenのほかのものと同じように、関数もオブジェクトで、Fnクラスのインスタンスです。
+
+6 [h2]
+EN: Creating a function #
+JA: 関数の作成 #
+
+7 [p]
+EN: To create a function, we call Fn.new, which takes a block to execute.
+To call the function, we use .call() on the function instance.
+JA: 関数を作るには、実行するブロックを受け取るFn.newを呼び出します。関数を呼び出すには、その関数インスタンスの.call()を使います。
+
+UNCHANGED CODE 1
+
+var sayHello = Fn.new { System.print("hello") }
+
+sayHello.call() //> hello
+
+
+8 [p]
+EN: Note that we’ll see a shorthand syntax for creating a function below.
+JA: 後で、関数を作成するための短い構文も説明します。
+
+9 [h2]
+EN: Function parameters #
+JA: 関数のパラメーター #
+
+10 [p]
+EN: Of course, functions aren’t very useful if you can’t pass values to them. The
+function above takes no arguments. To change that, you can provide a parameter
+list surrounded by | immediately after the opening brace of the body.
+JA: もちろん、値を渡せなければ、関数はあまり役に立ちません。上の関数は引数を受け取りません。引数を受け取るようにするには、本体の開始の波括弧の直後に、|で囲んだパラメーターリストを置きます。
+
+11 [p]
+EN: To pass arguments to the function, pass them to the call method:
+JA: 関数へ引数を渡すには、callメソッドに渡します。
+
+UNCHANGED CODE 2
+
+var sayMessage = Fn.new {|recipient, message|
+  System.print("message for %(recipient): %(message)")
+}
+
+sayMessage.call("Bob", "Good day!")
+
+
+12 [p]
+EN: It’s an error to call a function with fewer arguments than its parameter list
+expects. If you pass too many arguments, the extras are ignored.
+JA: パラメーターリストが要求する個数より少ない引数で関数を呼び出すと、エラーになります。引数が多すぎる場合、余分な引数は無視します。
+
+13 [h2]
+EN: Returning values #
+JA: 値を返す #
+
+14 [p]
+EN: The body of a function is a block. If it is a single
+expression—more precisely if there is no newline after the { or
+parameter list—then the function implicitly returns the value of the
+expression.
+JA: 関数の本体はブロックです。一つの式だけであれば、より正確には{またはパラメーターリストの後に改行がなければ、関数は暗黙にその式の値を返します。
+
+15 [p]
+EN: Otherwise, the body returns null by default. You can explicitly return a
+value using a return statement. In other words, these two functions do the
+same thing:
+JA: そうでない場合、本体は既定でnullを返します。return文を使うと、値を明示的に返せます。言い換えると、次の二つの関数は同じ動作をします。
+
+UNCHANGED CODE 3
+
+Fn.new { "return value" }
+
+Fn.new {
+  return "return value"
+}
+
+
+16 [p]
+EN: The return value is handed back to you when using call:
+JA: callを使うと、その戻り値を受け取れます。
+
+UNCHANGED CODE 4
+
+var fn = Fn.new { "some value" }
+var result = fn.call()
+System.print(result) //> some value
+
+
+17 [h2]
+EN: Closures #
+JA: クロージャー #
+
+18 [p]
+EN: As you expect, functions are closures—they can access variables defined
+outside of their scope. They will hold onto closed-over variables even after
+leaving the scope where the function is defined:
+JA: 予想どおり、関数はクロージャーであり、自分のスコープの外で定義した変数にアクセスできます。関数を定義したスコープを離れた後も、閉じ込めた変数を保持します。
+
+UNCHANGED CODE 5
+
+class Counter {
+  static create() {
+    var i = 0
+    return Fn.new { i = i + 1 }
+  }
+}
+
+
+19 [p]
+EN: Here, the create method returns the function created on its second line. That
+function references a variable i declared outside of the function. Even after
+the function is returned from create, it is still able to read and assign
+toi:
+JA: ここでは、createメソッドは、二行目で作った関数を返します。その関数は、関数の外で宣言した変数iを参照します。createから関数を返した後でも、iを読み取ったり、代入したりできます。
+
+UNCHANGED CODE 6
+
+var counter = Counter.create()
+System.print(counter.call()) //> 1
+System.print(counter.call()) //> 2
+System.print(counter.call()) //> 3
+
+
+20 [h2]
+EN: Callable classes #
+JA: 呼び出し可能なクラス #
+
+21 [p]
+EN: Because Fn is a class, and responds to call(), any class can respond to 
+call() and be used in place of a function. This is particularly handy when 
+the function is passed to a method to be called, like a callback or event.
+JA: Fnはクラスであり、call()に応答するので、どのクラスでもcall()に応答することで関数の代わりに使えます。コールバックやイベントのように、呼び出すために関数をメソッドへ渡す場面で、特に便利です。
+
+UNCHANGED CODE 7
+
+class Callable {
+  construct new() {}
+  call(name, version) {
+    System.print("called %(name) with version %(version)")
+  }
+}
+
+var fn = Callable.new()
+fn.call("wren", "0.4.0")
+
+
+22 [h2]
+EN: Block arguments #
+JA: ブロック引数 #
+
+23 [p]
+EN: Very frequently, functions are passed to methods to be called. There are 
+countless examples of this in Wren, like list can be filtered
+using a method where which accepts a function:
+JA: 呼び出すために関数をメソッドへ渡すのは、非常によくある操作です。Wrenには数え切れないほどの例があります。例えば、関数を受け取るwhereメソッドを使って、リストを絞り込めます。
+
+UNCHANGED CODE 8
+
+var list = [1, 2, 3, 4, 5]
+var filtered = list.where(Fn.new {|value| value > 3 }) 
+System.print(filtered.toList) //> [4, 5]
+
+
+24 [p]
+EN: This syntax is a bit less fun to read and write, so Wren implements the 
+block argument concept. When a function is being passed to a method, 
+and is the last argument to the method, it can use a shorter syntax: 
+just the block part.
+JA: この構文は少し読み書きしづらいため、Wrenにはブロック引数という概念があります。関数をメソッドへ渡す際、それが最後の引数であれば、ブロック部分だけという短い構文を使えます。
+
+25 [p]
+EN: Let’s use a block argument for list.where, it’s the last (only) argument:
+JA: list.whereでブロック引数を使ってみましょう。これは最後の、そして唯一の引数です。
+
+UNCHANGED CODE 9
+
+var list = [1, 2, 3, 4, 5]
+var filtered = list.where {|value| value > 3 } 
+System.print(filtered.toList) //> [4, 5]
+
+
+26 [p]
+EN: We’ve seen this before in a previous page using map and where:
+JA: 前のページでは、mapとwhereを使う同じ構文をすでに見ました。
+
+UNCHANGED CODE 10
+
+numbers.map {|n| n * 2 }.where {|n| n < 100 }
+
+
+27 [h2]
+EN: Block argument example #
+JA: ブロック引数の例 #
+
+28 [p]
+EN: Let’s look at a complete example, so we can see both ends.
+JA: 全体の例を見て、渡す側と受け取る側の両方を確認しましょう。
+
+29 [p]
+EN: Here’s a fictional class for something that will call a function
+when a click event is sent to it. It allows us to pass just a 
+function and assume the left mouse button, or to pass a button and a function.
+JA: 次は、クリックイベントが送られてきたときに関数を呼び出すものを表す、架空のクラスです。関数だけを渡してマウスの左ボタンを想定することも、ボタンと関数を渡すこともできます。
+
+UNCHANGED CODE 11
+
+class Clickable {
+  construct new() {
+    _fn = null
+    _button = 0
+  }
+  
+  onClick(fn) {
+    _fn = fn
+  }
+
+  onClick(button, fn) {
+    _button = button
+    _fn = fn
+  }
+
+  fireEvent(button) {
+    if(_fn && button == _button) {
+      _fn.call(button)
+    }
+  }
+}
+
+
+30 [p]
+EN: Now that we’ve got the clickable class, let’s use it.
+We’ll start by using the method that accepts just a function
+because we’re fine with it just being the default left mouse button.
+JA: クリック可能なクラスができたので、使ってみましょう。既定の左ボタンでよいので、まずは関数だけを受け取るメソッドを使います。
+
+UNCHANGED CODE 12
+
+var link = Clickable.new()
+
+link.onClick {|button|
+  System.print("I was clicked by button %(button)")
+}
+
+// send a left mouse click
+// normally this would happen from elsewhere
+
+link.fireEvent(0)  //> I was clicked by button 0
+
+
+31 [p]
+EN: Now let’s try with the extra button argument:
+JA: 今度は、ボタンの引数を追加して試しましょう。
+
+UNCHANGED CODE 13
+
+var contextMenu = Clickable.new()
+
+contextMenu.onClick(1) {|button|
+  System.print("I was right-clicked")
+}
+
+link.fireEvent(0)  //> (nothing happened)
+link.fireEvent(1)  //> I was right-clicked
+
+
+32 [p]
+EN: Notice that we still pass the other arguments normally, 
+it’s only the last argument that is special.
+JA: ほかの引数は通常どおり渡しており、特別なのは最後の引数だけという点に注意してください。
+
+33 [p]
+EN: Just a regular function 
+JA: 普通の関数にすぎない
+
+34 [p]
+EN: Block arguments are purely syntax sugar for creating a function and passing it
+in one little blob of syntax. These two are equivalent:
+JA: ブロック引数は、関数を作成して渡す操作を一つの小さな構文にまとめた、純粋な糖衣構文です。次の二つは同じです。
+
+UNCHANGED CODE 14
+
+onClick(Fn.new { System.print("clicked") })
+onClick { System.print("clicked") }
+
+
+35 [p]
+EN: And this is just as valid:
+JA: 次の書き方も、同じように有効です。
+
+UNCHANGED CODE 15
+
+var onEvent = Fn.new {|button|
+  System.print("clicked by button %(button)")
+}
+
+onClick(onEvent)
+onClick(1, onEvent)
+
+
+36 [p]
+EN: Fn.new 
+As you may have noticed by now, Fn accepts a block argument for the Fn.new.
+All the constructor does is return that argument right back to you!
+JA: Fn.newここまででお気付きかもしれませんが、FnはFn.newのためのブロック引数を受け取ります。このコンストラクターが行うのは、その引数をそのまま返すことだけです！
+
+37 [p]
+EN: 
+Classes →
+← Variables
+JA: クラス →← 変数

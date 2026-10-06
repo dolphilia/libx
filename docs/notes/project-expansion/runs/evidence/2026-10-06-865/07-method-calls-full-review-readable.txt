@@ -1,0 +1,286 @@
+1 [h1]
+EN: Method Calls
+JA: メソッド呼び出し
+
+2 [p]
+EN: Wren is deeply object oriented, so most code consists of invoking methods on
+objects, usually something like this:
+JA: Wrenは徹底したオブジェクト指向言語なので、多くのコードはオブジェクトのメソッドを呼び出すもので、通常は次のような形になります。
+
+UNCHANGED CODE 1
+
+System.print("Heyoo!") //> Heyoo!
+
+
+3 [p]
+EN: You have a receiver expression (here System) followed by a ., then a name
+(print) and an argument list in parentheses (("Heyoo!")). Multiple arguments
+are separated by commas:
+JA: レシーバーとなる式（ここではSystem）に続けて、.、名前（print）、丸括弧で囲んだ引数リスト（("Heyoo!")）を書きます。引数が複数ある場合は、コンマで区切ります。
+
+UNCHANGED CODE 2
+
+list.insert(3, "item")
+
+
+4 [p]
+EN: The argument list can also be empty:
+JA: 引数リストは空でもかまいません。
+
+UNCHANGED CODE 3
+
+list.clear()
+
+
+5 [p]
+EN: The VM executes a method call like so:
+JA: VMは、次の手順でメソッド呼び出しを実行します。
+
+6 [li]
+EN: Evaluate the receiver and arguments from left to right.
+JA: レシーバーと引数を左から右へ評価する。
+
+7 [li]
+EN: Look up the method on the receiver’s class.
+JA: レシーバーのクラスでメソッドを探す。
+
+8 [li]
+EN: Invoke it, passing in the argument values.
+JA: 引数の値を渡して、そのメソッドを呼び出す。
+
+9 [h2]
+EN: Signature #
+JA: シグネチャ #
+
+10 [p]
+EN: Unlike most other dynamically-typed languages, in Wren a class can have multiple
+methods with the same name, as long as they have different signatures. The
+signature includes the method’s name along with the number of arguments it
+takes. In technical terms, this means you can overload by arity.
+JA: ほかの多くの動的型付け言語とは異なり、Wrenではシグネチャが違っていれば、同じ名前のメソッドを一つのクラスに複数定義できます。シグネチャには、メソッド名と受け取る引数の数が含まれます。専門的に言うと、引数の個数によるオーバーロードが可能です。
+
+11 [p]
+EN: For example, the Random class has two methods for getting a random integer.
+One takes a minimum and maximum value and returns a value in that range. The
+other only takes a maximum value and uses 0 as the minimum:
+JA: 例えば、Randomクラスには、乱数の整数を得るメソッドが二つあります。一方は最小値と最大値を受け取り、その範囲の値を返します。もう一方は最大値だけを受け取り、最小値に0を使います。
+
+UNCHANGED CODE 4
+
+var random = Random.new()
+random.int(3, 10)
+random.int(4)
+
+
+12 [p]
+EN: In a language like Python or JavaScript, these would both call a single int()
+method, which has some kind of “optional” parameter. The body of the method
+figures out how many arguments were passed and uses control flow to handle the
+two different behaviors. That means first parameter represents “max unless
+another parameter was passed, in which case it’s min”. 
+JA: PythonやJavaScriptのような言語では、どちらも何らかの「省略可能な」パラメーターを持つ一つのint()メソッドを呼び出します。メソッドの本体で渡された引数の数を調べ、制御フローを使って二つの動作を処理します。つまり、最初のパラメーターは「別のパラメーターが渡されていなければmax、渡されていればmin」を表します。
+
+13 [p]
+EN: This type of ‘variadic’ code isn’t ideal, so Wren doesn’t encourage it.
+JA: この種の「可変引数」のコードは理想的ではないため、Wrenでは推奨していません。
+
+14 [p]
+EN: In Wren, these are calls to two entirely separate methods, int(_,_) and
+int(_). This makes it easier to define “overloads” like this since you don’t
+need optional parameters or any kind of control flow to handle the different
+cases.
+JA: Wrenでは、これらはint(_,_)とint(_)という、完全に別々の二つのメソッドへの呼び出しです。省略可能なパラメーターも、場合分けのための制御フローも必要ないので、このような「オーバーロード」を定義しやすくなります。
+
+15 [p]
+EN: It’s also faster to execute. Since we know how many arguments are passed at
+compile time, we can compile this to directly call the right method and avoid
+any “if I got two arguments do this…” runtime work.
+JA: 実行も速くなります。渡す引数の数はコンパイル時に分かるため、適切なメソッドを直接呼び出すコードを生成でき、「引数が二つならこうする……」という実行時の処理を避けられます。
+
+16 [h2]
+EN: Getters #
+JA: ゲッター #
+
+17 [p]
+EN: Some methods exist to expose a stored or computed property of an object. These
+are getters and have no parentheses:
+JA: オブジェクトが保存しているプロパティーや、計算して求めるプロパティーを公開するためのメソッドがあります。これらはゲッターで、丸括弧を付けません。
+
+UNCHANGED CODE 5
+
+"string".count    //> 6
+(1..10).min       //> 1
+1.23.sin          //> 0.9424888019317
+[1, 2, 3].isEmpty //> false
+
+
+18 [p]
+EN: A getter is not the same as a method with an empty argument list. The () is
+part of the signature, so count and count() have different signatures.
+Unlike Ruby’s optional parentheses, Wren wants to make sure you call a getter
+like a getter and a () method like a () method. These don’t work:
+JA: ゲッターは、空の引数リストを持つメソッドと同じではありません。()はシグネチャの一部なので、countとcount()はシグネチャが異なります。Rubyの省略可能な丸括弧とは違い、Wrenはゲッターをゲッターとして、()メソッドを()メソッドとして呼び出すことを求めます。次の呼び出しは使えません。
+
+UNCHANGED CODE 6
+
+"string".count()
+[1, 2, 3].clear
+
+
+19 [p]
+EN: If you’re defining some member that doesn’t need any parameters, you need to
+decide if it should be a getter or a method with an empty () parameter list.
+The general guidelines are:
+JA: パラメーターが不要なメンバーを定義する場合は、ゲッターにするか、空の()パラメーターリストを持つメソッドにするかを決める必要があります。一般的な指針は次のとおりです。
+
+20 [li]
+EN: If it modifies the object or has some other side effect, make it a method:
+JA: オブジェクトを変更するか、何らかの副作用があるなら、メソッドにする。
+
+UNCHANGED CODE 7
+
+list.clear()
+
+
+21 [li]
+EN: If the method supports multiple arities, make the zero-parameter case a ()
+    method to be consistent with the other versions:
+JA: メソッドが複数の引数個数に対応するなら、ほかの版と一貫するよう、引数がゼロの場合も()メソッドにする。
+
+UNCHANGED CODE 8
+
+Fiber.yield()
+Fiber.yield("value")
+
+
+22 [li]
+EN: Otherwise, it can probably be a getter.
+JA: それ以外なら、おそらくゲッターにできます。
+
+23 [h2]
+EN: Setters #
+JA: セッター #
+
+24 [p]
+EN: A getter lets an object expose a public “property” that you can read.
+Likewise, a setter lets you write to a property:
+JA: ゲッターは、読み取れる公開「プロパティー」をオブジェクトに持たせます。同様に、セッターはプロパティーへの書き込みを可能にします。
+
+UNCHANGED CODE 9
+
+person.height = 74 // Grew up!
+
+
+25 [p]
+EN: Despite the =, this is just another syntax for a method call. From the
+language’s perspective, the above line is just a call to the height=(_)
+method on person, passing in 74.
+JA: =があっても、これはメソッド呼び出しの別の書き方にすぎません。言語の立場から見ると、上の行は単にpersonのheight=(_)メソッドに74を渡して呼び出しています。
+
+26 [p]
+EN: Since the =(_) is in the setter’s signature, an object can have both a getter
+and setter with the same name without a collision. Defining both lets you
+provide a read/write property.
+JA: =(_)はセッターのシグネチャに含まれるため、オブジェクトに同じ名前のゲッターとセッターを定義しても衝突しません。両方を定義すると、読み書きできるプロパティーを提供できます。
+
+27 [h2]
+EN: Operators #
+JA: 演算子 #
+
+28 [p]
+EN: Wren has most of the same operators you know and love with the same precedence
+and associativity. We have three prefix operators:
+JA: Wrenには、なじみのある演算子の大半が、同じ優先順位と結合性で備わっています。前置演算子は三つあります。
+
+UNCHANGED CODE 10
+
+! ~ -
+
+
+29 [p]
+EN: They are just method calls on their operand without any other arguments. An
+expression like !possible means “call the ! method on possible”.
+JA: これらは、ほかの引数を渡さずにオペランドのメソッドを呼び出すだけです。!possibleのような式は、「possibleの!メソッドを呼び出す」という意味です。
+
+30 [p]
+EN: We also have a slew of infix operators—they have operands on both sides.
+They are:
+JA: 両側にオペランドを持つ、中置演算子も多数あります。次のとおりです。
+
+UNCHANGED CODE 11
+
+* / % + - .. ... << >> < <= > >= == != & ^ | is
+
+
+31 [p]
+EN: Like prefix operators, they are all funny ways of writing method calls. The left
+operand is the receiver, and the right operand gets passed to it. So a + b is
+semantically interpreted as “invoke the +(_) method on a, passing it b”.
+JA: 前置演算子と同様、これらもすべて、メソッド呼び出しの変わった書き方です。左のオペランドがレシーバーで、右のオペランドを引数として渡します。したがって、a + bは意味上、「aの+(_)メソッドにbを渡して呼び出す」と解釈します。
+
+32 [p]
+EN: Note that - is both a prefix and an infix operator. Since they have different
+signatures (- and -(_)), there’s no ambiguity between them.
+JA: -には前置演算子と中置演算子の両方がある点に注意してください。シグネチャが-と-(_)で異なるので、両者に曖昧さはありません。
+
+33 [p]
+EN: Most of these are probably familiar already. The .. and ... operators are
+“range” operators. The number type implements those to create range
+objects, but they are method calls like other operators.
+JA: これらの大半は、すでになじみがあるでしょう。..と...は「範囲」演算子です。数値型は、範囲オブジェクトを作成するためにこれらを実装していますが、ほかの演算子と同じように、メソッド呼び出しです。
+
+34 [p]
+EN: The is keyword is a “type test” operator. The base Object class implements
+it to tell if an object is an instance of a given class. You’ll rarely need to,
+but you can override is in your own classes. That can be useful for things
+like mocks or proxies where you want an object to masquerade as a certain class.
+JA: isキーワードは「型の検査」の演算子です。基底のObjectクラスがこれを実装し、オブジェクトが指定したクラスのインスタンスかどうかを調べます。必要になることはまれですが、自分のクラスでisをオーバーライドすることもできます。これは、特定のクラスに見せかけたいモックやプロキシーなどに役立ちます。
+
+35 [h2]
+EN: Subscripts #
+JA: 添字 #
+
+36 [p]
+EN: Another familiar syntax from math is subscripting using square brackets
+([]). It’s handy for working with collection-like objects. For example:
+JA: 数学でおなじみの別の構文に、角括弧（[]）による添字があります。コレクションのようなオブジェクトを扱う際に便利です。例えば、次のように使います。
+
+UNCHANGED CODE 12
+
+list[0]    // Get the first item in a list.
+map["key"] // Get the value associated with "key".
+
+
+37 [p]
+EN: You know the refrain by now. In Wren, these are method calls. In the above
+examples, the signature is [_]. Subscript operators may also take multiple
+arguments, which is useful for things like multi-dimensional arrays:
+JA: もうお分かりでしょう。Wrenでは、これらもメソッド呼び出しです。上の例でのシグネチャは[_]です。添字演算子には複数の引数も渡せるため、多次元配列などに便利です。
+
+UNCHANGED CODE 13
+
+matrix[3, 5]
+
+
+38 [p]
+EN: These examples are subscript “getters”, and there are also
+corresponding subscript setters:
+JA: これらの例は添字の「ゲッター」ですが、対応する添字セッターもあります。
+
+UNCHANGED CODE 14
+
+list[0] = "item"
+map["key"] = "value"
+
+
+39 [p]
+EN: These are equivalent to method calls whose signature is [_]=(_) and whose
+arguments are both the subscript (or subscripts) and the value on the right-hand
+side.
+JA: これらは、シグネチャが[_]=(_)で、添字（一つまたは複数）と右辺の値を引数に取るメソッド呼び出しと同じです。
+
+40 [p]
+EN: 
+Control Flow →
+← Maps
+JA: 制御フロー →← マップ

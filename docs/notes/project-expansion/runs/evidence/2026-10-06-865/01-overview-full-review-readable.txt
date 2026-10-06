@@ -1,0 +1,76 @@
+1 [h1]
+EN: Wren overview
+JA: Wrenの概要
+
+2 [h2]
+EN: Wren is a small, fast, class-based concurrent scripting language #
+JA: Wrenは小さく高速な、クラスを中心とする並行スクリプト言語です #
+
+3 [p]
+EN: Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in
+a familiar, modern syntax.
+JA: Luaほどの小さなパッケージにSmalltalkを収め、Erlangをひとさじ加え、なじみのある現代的な構文で包んだものを想像してください。
+
+UNCHANGED CODE 1
+
+System.print("Hello, world!")
+
+class Wren {
+  flyTo(city) {
+    System.print("Flying to %(city)")
+  }
+}
+
+var adjectives = Fiber.new {
+  ["small", "clean", "fast"].each {|word| Fiber.yield(word) }
+}
+
+while (!adjectives.isDone) System.print(adjectives.call())
+
+
+4 [li]
+EN: 
+Wren is small. The VM implementation is under 4,000 semicolons.
+    You can skim the whole thing in an afternoon. It’s small, but not
+    dense. It is readable and lovingly-commented.
+
+JA: Wrenは小さい。 VMの実装に含まれるセミコロンは4,000個未満です。午後のひとときで全体に目を通せます。小さくても、詰め込みすぎではありません。読みやすく、丁寧にコメントが付いています。
+
+5 [li]
+EN: 
+Wren is fast. A fast single-pass compiler to tight bytecode, and a
+    compact object representation help Wren compete with other dynamic
+    languages.
+
+JA: Wrenは高速。 高速な単一パスのコンパイラが無駄の少ないバイトコードを生成し、コンパクトなオブジェクト表現とともに、Wrenがほかの動的言語に匹敵する性能を発揮するのに役立ちます。
+
+6 [li]
+EN: 
+Wren is class-based. There are lots of scripting languages out there,
+    but many have unusual or non-existent object models. Wren places
+    classes front and center.
+
+JA: Wrenはクラスを中心とする。 スクリプト言語は数多くありますが、珍しいオブジェクトモデルを持つものや、そもそもオブジェクトモデルを持たないものもあります。Wrenではクラスを中心に据えています。
+
+7 [li]
+EN: 
+Wren is concurrent. Lightweight fibers are core to the execution
+    model and let you organize your program into a flock of communicating
+    coroutines.
+
+JA: Wrenは並行処理を備える。 軽量なファイバーが実行モデルの中核を担い、相互に通信するコルーチンの群れとしてプログラムを構成できます。
+
+8 [li]
+EN: 
+Wren is a scripting language. Wren is intended for embedding in
+    applications. It has no dependencies, a small standard library,
+    and an easy-to-use C API. It compiles cleanly as C99, C++98
+    or anything later.
+
+JA: Wrenはスクリプト言語。 Wrenはアプリケーションへの組み込みを目的としています。依存関係はなく、小さな標準ライブラリと使いやすいC APIを備えています。C99、C++98、またはそれ以降で問題なくコンパイルできます。
+
+9 [p]
+EN: You can try it in your browser! 
+If you like the sound of this, let’s get started.  
+Excited? You’re also welcome to get involved!
+JA: ブラウザーで試せます！気に入ったら、始めてみましょう。わくわくしましたか？ 開発への参加も歓迎します！

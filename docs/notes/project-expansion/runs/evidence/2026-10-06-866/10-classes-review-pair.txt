@@ -1,0 +1,594 @@
+1 [h1]
+EN: Classes
+JA: クラス
+
+2 [p]
+EN: Every value in Wren is an object, and every object is an instance of a class.
+Even ⟦CODE0⟧ and ⟦CODE1⟧ are full-featured objects—instances of the
+<a href="/docs/wren/v0-4-0/en/02-reference/01-modules-core-bool/">Bool</a> class.
+JA: Wrenのすべての値はオブジェクトで、すべてのオブジェクトはクラスのインスタンスです。⟦CODE0⟧と⟦CODE1⟧も、完全な機能を持つオブジェクトで、<a href="/docs/wren/v0-4-0/en/02-reference/01-modules-core-bool/">Bool</a>クラスのインスタンスです。
+
+3 [p]
+EN: Classes define an objects <em>behavior</em> and <em>state</em>. Behavior is defined by
+<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/"><em>methods</em></a> which live in the class. Every object of the same
+class supports the same methods. State is defined in <em>fields</em>, whose values are
+stored in each instance.
+JA: クラスは、オブジェクトの<em>振る舞い</em>と<em>状態</em>を定義します。振る舞いは、クラスに置く<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/"><em>メソッド</em></a>で定義します。同じクラスのオブジェクトは、すべて同じメソッドに対応します。状態は<em>フィールド</em>で定義し、その値は各インスタンスに保存します。
+
+4 [h2]
+EN: Defining a class <a class="header-anchor" href="#defining-a-class" name="defining-a-class">#</a>
+JA: クラスの定義 <a class="header-anchor" href="#defining-a-class" name="defining-a-class">#</a>
+
+5 [p]
+EN: Classes are created using the ⟦CODE0⟧ keyword, unsurprisingly:
+JA: 予想どおり、クラスは⟦CODE0⟧キーワードで作成します。
+
+6 [p]
+EN: This creates a class named ⟦CODE0⟧ with no methods or fields.
+JA: これで、メソッドもフィールドも持たない、⟦CODE0⟧というクラスを作成します。
+
+7 [h2]
+EN: Methods <a class="header-anchor" href="#methods" name="methods">#</a>
+JA: メソッド <a class="header-anchor" href="#methods" name="methods">#</a>
+
+8 [p]
+EN: To let our unicorn do stuff, we need to give it methods.
+JA: ユニコーンが何かできるようにするには、メソッドを与える必要があります。
+
+9 [p]
+EN: This defines a ⟦CODE0⟧ method that takes no arguments. To add parameters, put
+their names inside the parentheses:
+JA: これで、引数を取らない⟦CODE0⟧メソッドを定義します。パラメーターを追加するには、丸括弧の中にその名前を書きます。
+
+10 [p]
+EN: Since the number of parameters is part of a method’s <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature">signature</a> a class can
+define multiple methods with the same name:
+JA: パラメーターの個数はメソッドの<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature">シグネチャ</a>の一部なので、一つのクラスに同じ名前のメソッドを複数定義できます。
+
+11 [p]
+EN: It’s often natural to have the same conceptual operation work with different
+sets of arguments. In other languages, you’d define a single method for the
+operation and have to check for missing optional arguments. In Wren, they are
+different methods that you implement separately.
+JA: 同じ概念的な操作を、異なる引数の組で使えるようにするのは、自然なことです。ほかの言語では、操作のために一つのメソッドを定義し、省略可能な引数が渡されていないかを調べる必要があります。Wrenでは、これらを別々のメソッドとして、それぞれ実装します。
+
+12 [p]
+EN: In addition to named methods with parameter lists, Wren has a bunch of other
+different syntaxes for methods. Your classes can define all of them.
+JA: パラメーターリストを持つ名前付きメソッドに加え、Wrenには、メソッドのためのさまざまな構文があります。自分のクラスでも、そのすべてを定義できます。
+
+13 [h3]
+EN: Getters <a class="header-anchor" href="#getters" name="getters">#</a>
+JA: ゲッター <a class="header-anchor" href="#getters" name="getters">#</a>
+
+14 [p]
+EN: A getter leaves off the parameter list and the parentheses:
+JA: ゲッターでは、パラメーターリストと丸括弧を省きます。
+
+15 [h3]
+EN: Setters <a class="header-anchor" href="#setters" name="setters">#</a>
+JA: セッター <a class="header-anchor" href="#setters" name="setters">#</a>
+
+16 [p]
+EN: A setter has ⟦CODE0⟧ after the name, followed by a single parenthesized parameter:
+JA: セッターでは、名前の後に⟦CODE0⟧を置き、その後に丸括弧で囲んだ一つのパラメーターを書きます。
+
+17 [p]
+EN: By convention, the parameter is usually named ⟦CODE0⟧ but you can call it
+whatever makes your heart flutter.
+JA: 慣例として、このパラメーターには通常⟦CODE0⟧という名前を付けますが、好きな名前を付けてかまいません。
+
+18 [h3]
+EN: Operators <a class="header-anchor" href="#operators" name="operators">#</a>
+JA: 演算子 <a class="header-anchor" href="#operators" name="operators">#</a>
+
+19 [p]
+EN: Prefix operators, like getters, have no parameter list:
+JA: 前置演算子には、ゲッターと同様、パラメーターリストがありません。
+
+20 [p]
+EN: Infix operators, like setters, have a single parenthesized parameter for the
+right-hand operand:
+JA: 中置演算子には、セッターと同様、右のオペランドのための、丸括弧で囲んだ一つのパラメーターがあります。
+
+21 [p]
+EN: A subscript operator puts the parameters inside square brackets and can have
+more than one:
+JA: 添字演算子では、角括弧の中にパラメーターを書きます。複数のパラメーターも使えます。
+
+22 [p]
+EN: Unlike with named methods, you can’t define a subscript operator with an empty
+parameter list.
+JA: 名前付きメソッドとは異なり、パラメーターリストが空の添字演算子は定義できません。
+
+23 [p]
+EN: As the name implies, a subscript setter looks like a combination of a subscript
+operator and a setter:
+JA: 名前が示すとおり、添字セッターは、添字演算子とセッターを組み合わせた形になります。
+
+24 [h2]
+EN: Method Scope <a class="header-anchor" href="#method-scope" name="method-scope">#</a>
+JA: メソッドのスコープ <a class="header-anchor" href="#method-scope" name="method-scope">#</a>
+
+25 [p]
+EN: Up to this point, “<a href="/docs/wren/v0-4-0/en/01-guide/09-variables/#scope">scope</a>” has been used to talk exclusively about
+<a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">variables</a>. In a procedural language like C, or a functional one like Scheme,
+that’s the only kind of scope there is. But object-oriented languages like Wren
+introduce another kind of scope: <em>object scope</em>. It contains the methods that
+are available on an object. When you write:
+JA: ここまで、<a href="/docs/wren/v0-4-0/en/01-guide/09-variables/#scope">スコープ</a>という語は、<a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">変数</a>についてだけ使ってきました。Cのような手続き型言語や、Schemeのような関数型言語では、スコープはこの一種類だけです。しかし、Wrenのようなオブジェクト指向言語には、もう一つの<em>オブジェクトスコープ</em>があります。これは、そのオブジェクトで利用できるメソッドを含みます。次のように書くと、
+
+26 [p]
+EN: You’re saying “look up the method ⟦CODE0⟧ in the scope of the object
+⟦CODE1⟧”. In this case, the fact that you want to look up a <em>method</em>
+⟦CODE2⟧ and not a <em>variable</em> ⟦CODE3⟧ is explicit. That’s what ⟦CODE4⟧ does and
+the object to the left of the period is the object you want to look up the
+method on.
+JA: 「オブジェクト⟦CODE1⟧のスコープで、メソッド⟦CODE0⟧を探す」と指示しています。この場合、探したいものが<em>変数</em>⟦CODE3⟧ではなく、<em>メソッド</em>⟦CODE2⟧であることは明示されています。それを表すのが⟦CODE4⟧であり、ピリオドの左側のオブジェクトが、メソッドを探す対象です。
+
+27 [h3]
+EN: ⟦CODE0⟧ <a class="header-anchor" href="#this" name="this">#</a>
+JA: ⟦CODE0⟧ <a class="header-anchor" href="#this" name="this">#</a>
+
+28 [p]
+EN: Things get more interesting when you’re inside the body of a method. When the
+method is called on some object and the body is being executed, you often need
+to access that object itself. You can do that using ⟦CODE0⟧.
+JA: メソッドの本体の中では、もう少し複雑になります。あるオブジェクトのメソッドが呼び出され、その本体を実行しているときには、そのオブジェクト自身へアクセスしたいことがよくあります。⟦CODE0⟧を使うと、それができます。
+
+29 [p]
+EN: The ⟦CODE0⟧ keyword works sort of like a variable, but has special behavior. It
+always refers to the instance whose method is currently being executed. This
+lets you invoke methods on “yourself”.
+JA: ⟦CODE0⟧キーワードは、変数のように働きますが、特別な振る舞いがあります。常に、現在実行しているメソッドを持つインスタンスを参照します。これにより、「自分自身」のメソッドを呼び出せます。
+
+30 [p]
+EN: It’s an error to refer to ⟦CODE0⟧ outside of a method. However, it’s perfectly
+fine to use it inside a <a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">function</a> declared <em>inside</em> a method. When you do,
+⟦CODE1⟧ still refers to the instance whose <em>method</em> is being called:
+JA: メソッドの外で⟦CODE0⟧を参照すると、エラーになります。しかし、メソッドの<em>中</em>で宣言した<a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">関数</a>の中なら、問題なく使えます。その場合も、⟦CODE1⟧は、呼び出された<em>メソッド</em>を持つインスタンスを参照します。
+
+31 [p]
+EN: This is unlike Lua and JavaScript which can “forget” ⟦CODE0⟧ when you create a
+callback inside a method. Wren does what you want here and retains the
+reference to the original object.
+JA: これは、メソッドの中でコールバックを作ると、⟦CODE0⟧を「忘れる」場合があるLuaやJavaScriptとは異なります。Wrenでは、この場面で意図どおり、元のオブジェクトへの参照を保持します。
+
+32 [p]
+EN: (In technical terms, a function’s closure includes ⟦CODE0⟧. Wren can do this
+because it makes a distinction between methods and functions.)
+JA: （専門的に言うと、関数のクロージャーには⟦CODE0⟧も含まれます。Wrenがこれをできるのは、メソッドと関数を区別しているためです。）
+
+33 [h3]
+EN: Implicit ⟦CODE0⟧ <a class="header-anchor" href="#implicit-this" name="implicit-this">#</a>
+JA: 暗黙の⟦CODE0⟧ <a class="header-anchor" href="#implicit-this" name="implicit-this">#</a>
+
+34 [p]
+EN: Using ⟦CODE0⟧ every time you want to call a method on yourself works, but it’s
+tedious and verbose, which is why some languages don’t require it. You can do a
+“self send” by calling a method (or getter or setter) without any explicit
+receiver:
+JA: 自分自身のメソッドを呼ぶたびに⟦CODE0⟧を使うことはできますが、面倒で冗長です。そのため、一部の言語では必須にしていません。明示的なレシーバーなしでメソッド（またはゲッターやセッター）を呼び出すと、「自己への送信」ができます。
+
+35 [p]
+EN: Code like this gets tricky when there is also a variable outside of the class
+with the same name. Consider:
+JA: クラスの外にも同じ名前の変数があると、このようなコードは複雑になります。次の例を考えてください。
+
+36 [p]
+EN: Should ⟦CODE0⟧ print “variable” or “Francis”? A method body has a foot in
+each of two worlds. It is surrounded by the lexical scope where it’s defined in
+the program, but it also has the object scope of the methods on ⟦CODE1⟧.
+JA: ⟦CODE0⟧は「variable」と「Francis」のどちらを表示すべきでしょうか？ メソッドの本体は、二つの世界にまたがっています。プログラム内で定義した位置のレキシカルスコープに囲まれていますが、同時に、⟦CODE1⟧のメソッドからなるオブジェクトスコープも持ちます。
+
+37 [p]
+EN: Which scope wins? Every language has to decide how to handle this and there
+is a surprising plethora of approaches. Wren’s approach to resolving a name
+inside a method works like this:
+JA: どちらのスコープが優先されるのでしょうか？ 各言語は、これをどう扱うか決める必要があり、驚くほど多くの方法があります。Wrenは、メソッド内の名前を次の手順で解決します。
+
+38 [li]
+EN: If there is a local variable inside the method with that name, that wins.
+JA: メソッド内にその名前のローカル変数があれば、それを優先する。
+
+39 [li]
+EN: Else, if the name starts with a lowercase letter, treat it like a method on
+    ⟦CODE0⟧.
+JA: そうでなく、名前が小文字で始まるなら、⟦CODE0⟧のメソッドとして扱う。
+
+40 [li]
+EN: Otherwise, look for a variable with that name in the surrounding scope.
+JA: それ以外なら、周囲のスコープでその名前の変数を探す。
+
+41 [p]
+EN: So, in the above example, we hit case #2 and it prints “Francis”. Distinguishing
+self sends from outer variables based on the <em>case</em> of the first letter in the
+name probably seems weird but it works surprisingly well. Method names are
+lowercase in Wren. Class names are capitalized.
+JA: したがって、上の例では二番目の場合に該当し、「Francis」を表示します。名前の最初の文字の<em>大小</em>によって、自己への送信と外側の変数を区別するのは、奇妙に思えるかもしれませんが、意外にうまく機能します。Wrenのメソッド名は小文字で、クラス名は大文字で始まります。
+
+42 [p]
+EN: Most of the time, when you’re in a method and want to access a name from outside
+of the class, it’s usually the name of some other class. This rule makes that
+work.
+JA: メソッドの中からクラスの外の名前へアクセスしたいとき、その名前はたいてい、別のクラスの名前です。この規則によって、それが機能します。
+
+43 [p]
+EN: Here’s an example that shows all three cases:
+JA: 次は、三つの場合をすべて示す例です。
+
+44 [p]
+EN: It’s a bit of a strange rule, but Ruby works more or less the same way.
+JA: 少し変わった規則ですが、Rubyも、おおむね同じように動作します。
+
+45 [h2]
+EN: Constructors <a class="header-anchor" href="#constructors" name="constructors">#</a>
+JA: コンストラクター <a class="header-anchor" href="#constructors" name="constructors">#</a>
+
+46 [p]
+EN: We’ve seen how to define kinds of objects and how to declare methods on them.
+Our unicorns can prance around, but we don’t actually <em>have</em> any unicorns to do
+it. To create <em>instances</em> of a class, we need a <em>constructor</em>. You define one
+like so:
+JA: オブジェクトの種類を定義し、そのメソッドを宣言する方法を見てきました。ユニコーンは跳ね回れますが、そうするためのユニコーン自体を、まだ<em>持っていません</em>。クラスの<em>インスタンス</em>を作るには、<em>コンストラクター</em>が必要です。次のように定義します。
+
+47 [p]
+EN: The ⟦CODE0⟧ keyword says we’re defining a constructor, and ⟦CODE1⟧ is its
+name. In Wren, all constructors have names. The word “new” isn’t special to
+Wren, it’s just a common constructor name.
+JA: ⟦CODE0⟧キーワードは、コンストラクターを定義していることを表し、⟦CODE1⟧は、その名前です。Wrenでは、すべてのコンストラクターに名前があります。「new」はWrenで特別な語ではなく、よく使われるコンストラクター名にすぎません。
+
+48 [p]
+EN: To make a unicorn now, we call the constructor method on the class itself:
+JA: ユニコーンを作るには、クラス自身のコンストラクターメソッドを呼び出します。
+
+49 [p]
+EN: Giving constructors names is handy because it means you can have more than one,
+and each can clarify how it creates the instance:
+JA: コンストラクターに名前を付けると、複数のコンストラクターを持て、それぞれがどのようにインスタンスを作るか明確にできるので、便利です。
+
+50 [p]
+EN: Note that we have to declare a constructor because, unlike some other
+languages, Wren doesn’t give you a default one. This is useful because some
+classes aren’t designed to be constructed. If you have an abstract base class
+that just contains methods to be inherited by other classes, it doesn’t need
+and won’t have a constructor.
+JA: ほかの一部の言語とは異なり、Wrenは既定のコンストラクターを提供しないため、自分で宣言する必要があります。これは、構築することを想定していないクラスもあるので、役立ちます。ほかのクラスが継承するメソッドだけを含む抽象基底クラスなら、コンストラクターは不要で、持つこともありません。
+
+51 [p]
+EN: Like other methods, constructors can obviously have arguments, and can be
+overloaded by <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature">arity</a>. A constructor <em>must</em> be a named method with
+a (possibly empty) argument list. Operators, getters, and setters cannot be
+constructors.
+JA: ほかのメソッドと同様、コンストラクターにも当然、引数を渡せ、<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature">引数の個数</a>によるオーバーロードもできます。コンストラクターは、空でもよい引数リストを持つ名前付きメソッドで<em>なければなりません</em>。演算子、ゲッター、セッターをコンストラクターにはできません。
+
+52 [p]
+EN: A constructor returns the instance of the class being created, even if you 
+don’t explicitly use ⟦CODE0⟧. It is valid to use ⟦CODE1⟧ inside of a 
+constructor, but it is an error to have an expression after the return.
+That rule applies to ⟦CODE2⟧ as well, return handles that implicitly inside
+a constructor, so just ⟦CODE3⟧ is enough.
+JA: コンストラクターは、⟦CODE0⟧を明示的に使わなくても、作成しているクラスのインスタンスを返します。コンストラクター内で⟦CODE1⟧を使うことはできますが、returnの後に式を書くとエラーになります。この規則は⟦CODE2⟧にも当てはまります。コンストラクター内では、returnがそれを暗黙に扱うため、⟦CODE3⟧だけで十分です。
+
+53 [p]
+EN: A constructor is actually a pair of methods. You get a method on the class:
+JA: 実際には、コンストラクターは二つのメソッドの組です。クラス側に、次のメソッドができます。
+
+54 [p]
+EN: That creates the new instance, then it invokes the <em>initializer</em> on that
+instance. This is where the constructor body you defined gets run.
+JA: これは新しいインスタンスを作り、続いて、そのインスタンスの<em>初期化メソッド</em>を呼び出します。定義したコンストラクター本体を実行するのは、こちらです。
+
+55 [p]
+EN: This distinction is important because it means inside the body of the
+constructor, you can access ⟦CODE0⟧, assign <a href="#fields">fields</a>, call superclass
+constructors, etc.
+JA: この区別は重要です。これにより、コンストラクターの本体の中で⟦CODE0⟧へアクセスし、<a href="#fields">フィールド</a>へ代入し、スーパークラスのコンストラクターを呼び出すことなどができます。
+
+56 [h2]
+EN: Fields <a class="header-anchor" href="#fields" name="fields">#</a>
+JA: フィールド <a class="header-anchor" href="#fields" name="fields">#</a>
+
+57 [p]
+EN: All state stored in instances is stored in <em>fields</em>. Each field has a name
+that starts with an underscore.
+JA: インスタンスに保存する状態は、すべて<em>フィールド</em>に保存します。各フィールドの名前は、アンダースコアで始まります。
+
+58 [p]
+EN: Here, ⟦CODE0⟧ and ⟦CODE1⟧ in the ⟦CODE2⟧ <a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#methods">getter</a> refer
+to fields on the rectangle instance. You can think of them like ⟦CODE3⟧
+and ⟦CODE4⟧ in other languages.
+JA: ここでは、⟦CODE2⟧<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#methods">ゲッター</a>内の⟦CODE0⟧と⟦CODE1⟧は、長方形のインスタンスのフィールドを参照します。ほかの言語の⟦CODE3⟧や⟦CODE4⟧のようなものと考えられます。
+
+59 [p]
+EN: When a field name appears, Wren looks for the nearest enclosing class and looks
+up the field on the instance of that class. Field names cannot be used outside
+of an instance method. They <em>can</em> be used inside a <a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">function</a>
+in a method. Wren will look outside any nested functions until it finds an
+enclosing method.
+JA: フィールド名が現れると、Wrenは、最も内側の、その位置を囲むクラスを探し、そのクラスのインスタンスでフィールドを探します。フィールド名は、インスタンスメソッドの外では使えません。メソッド内の<a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">関数</a>の中では<em>使えます</em>。Wrenは、入れ子になった関数の外側を、その位置を囲むメソッドが見つかるまで探します。
+
+60 [p]
+EN: Unlike <a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">variables</a>, fields are implicitly declared by simply
+assigning to them. If you access a field before it has been initialized, its
+value is ⟦CODE0⟧.
+JA: <a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">変数</a>とは異なり、フィールドは、代入するだけで暗黙に宣言されます。初期化する前にフィールドへアクセスすると、その値は⟦CODE0⟧です。
+
+61 [h3]
+EN: Encapsulation <a class="header-anchor" href="#encapsulation" name="encapsulation">#</a>
+JA: カプセル化 <a class="header-anchor" href="#encapsulation" name="encapsulation">#</a>
+
+62 [p]
+EN: All fields are <em>private</em> in Wren—an object’s fields can only be directly
+accessed from within methods defined on the object’s class. 
+JA: Wrenでは、すべてのフィールドは<em>非公開</em>です。オブジェクトのフィールドへ直接アクセスできるのは、そのオブジェクトのクラスで定義したメソッドの内部だけです。
+
+63 [p]
+EN: In short, if you want to make a property of an object visible,
+<strong>you need to define a getter to expose it</strong>:
+JA: つまり、オブジェクトのプロパティーを外から見えるようにするには、<strong>それを公開するゲッターを定義する必要があります</strong>。
+
+64 [p]
+EN: To allow outside code to modify the field,
+<strong>you need to provide setters to provide access</strong>:
+JA: 外側のコードからフィールドを変更できるようにするには、<strong>アクセス用のセッターを提供する必要があります</strong>。
+
+65 [p]
+EN: This might be different from what you’re used to, so here are two important facts:
+JA: なじみのある動作とは違うかもしれませんので、重要な二つの事実を挙げます。
+
+66 [li]
+EN: You can’t access fields from a base class.
+JA: 基底クラスのフィールドにはアクセスできません。
+
+67 [li]
+EN: You can’t access fields on another instance of your own class.
+JA: 自分と同じクラスの別インスタンスのフィールドにはアクセスできません。
+
+68 [p]
+EN: Here is an example in code:
+JA: 次は、コードによる例です。
+
+69 [p]
+EN: One thing we’ve learned in the past forty years of software engineering is that
+encapsulating state tends to make code easier to maintain, so Wren defaults to
+keeping your object’s state pretty tightly bundled up. Don’t feel that you have
+to or even should define getters or setters for most of your object’s fields.
+JA: 過去40年のソフトウェア工学で学んだことの一つは、状態をカプセル化するとコードを保守しやすくなる傾向があることです。そのため、Wrenでは、既定でオブジェクトの状態をかなり厳密に閉じ込めます。オブジェクトのフィールドの大半について、ゲッターやセッターを定義しなければならない、あるいは定義すべきだと考える必要はありません。
+
+70 [h2]
+EN: Metaclasses and static members <a class="header-anchor" href="#metaclasses-and-static-members" name="metaclasses-and-static-members">#</a>
+JA: メタクラスと静的メンバー <a class="header-anchor" href="#metaclasses-and-static-members" name="metaclasses-and-static-members">#</a>
+
+71 [p]
+EN: <strong>TODO</strong>
+JA: <strong>TODO</strong>
+
+72 [h3]
+EN: Static fields <a class="header-anchor" href="#static-fields" name="static-fields">#</a>
+JA: 静的フィールド <a class="header-anchor" href="#static-fields" name="static-fields">#</a>
+
+73 [p]
+EN: A name that starts with <em>two</em> underscores is a <em>static</em> field. They work
+similar to <a href="#fields">fields</a> except the data is stored on the class itself, and
+not the instance. They can be used in <em>both</em> instance and static methods.
+JA: アンダースコア<em>二つ</em>で始まる名前は、<em>静的</em>フィールドです。<a href="#fields">フィールド</a>と同様に働きますが、データはインスタンスではなく、クラス自身に保存します。インスタンスメソッドと静的メソッドの<em>両方</em>で使えます。
+
+74 [p]
+EN: Just like instance fields, static fields are initially ⟦CODE0⟧:
+JA: インスタンスフィールドと同様、静的フィールドの初期値は⟦CODE0⟧です。
+
+75 [p]
+EN: They can be used from static methods:
+JA: 静的メソッドから使えます。
+
+76 [p]
+EN: And also instance methods. When you do so, there is still only one static field
+shared among all instances of the class:
+JA: インスタンスメソッドからも使えます。その場合も、クラスのすべてのインスタンスで共有する静的フィールドは一つだけです。
+
+77 [h2]
+EN: Inheritance <a class="header-anchor" href="#inheritance" name="inheritance">#</a>
+JA: 継承 <a class="header-anchor" href="#inheritance" name="inheritance">#</a>
+
+78 [p]
+EN: A class can inherit from a “parent” or <em>superclass</em>. When you invoke a method
+on an object of some class, if it can’t be found, it walks up the chain of
+superclasses looking for it there.
+JA: クラスは、「親」または<em>スーパークラス</em>から継承できます。あるクラスのオブジェクトでメソッドを呼び出し、それが見つからない場合は、スーパークラスの連鎖を上へたどって探します。
+
+79 [p]
+EN: By default, any new class inherits from Object, which is the superclass from
+which all other classes ultimately descend. You can specify a different parent
+class using ⟦CODE0⟧ when you declare the class:
+JA: 既定では、新しいクラスはObjectを継承します。Objectは、ほかのすべてのクラスが最終的に派生するスーパークラスです。クラスの宣言時に⟦CODE0⟧を使うと、別の親クラスを指定できます。
+
+80 [p]
+EN: This declares a new class Pegasus that inherits from Unicorn.
+JA: これで、Unicornを継承する、新しいPegasusクラスを宣言します。
+
+81 [p]
+EN: Note that you should not create classes that inherit from the built-in types
+(Bool, Num, String, Range, List). The built-in types expect their internal bit
+representation to be very specific and get horribly confused when you invoke one
+of the inherited built-in methods on the derived type.
+JA: 組み込み型（Bool、Num、String、Range、List）を継承するクラスを作るべきではない点に注意してください。組み込み型は、内部のビット表現が非常に特定の形であることを前提とします。派生型で、継承した組み込みメソッドを呼び出すと、ひどく混乱してしまいます。
+
+82 [p]
+EN: The metaclass hierarchy does <em>not</em> parallel the regular class hierarchy. So, if
+Pegasus inherits from Unicorn, Pegasus’s metaclass does not inherit from
+Unicorn’s metaclass. In more prosaic terms, this means that static methods are
+not inherited.
+JA: メタクラスの階層は、通常のクラス階層と<em>同じ継承関係にはなりません</em>。したがって、PegasusがUnicornを継承していても、PegasusのメタクラスはUnicornのメタクラスを継承しません。より平易に言うと、静的メソッドは継承しません。
+
+83 [p]
+EN: This also means constructors are not inherited:
+JA: これは、コンストラクターも継承しないという意味です。
+
+84 [p]
+EN: Each class gets to control how it may be constructed independently of its base
+classes. However, constructor <em>initializers</em> are inherited since those are
+instance methods on the new object.
+JA: 各クラスは、基底クラスから独立して、自分をどのように構築できるか制御します。ただし、コンストラクターの<em>初期化メソッド</em>は、新しいオブジェクトのインスタンスメソッドなので、継承します。
+
+85 [p]
+EN: This means you can do ⟦CODE0⟧ calls inside a constructor:
+JA: つまり、コンストラクター内で⟦CODE0⟧の呼び出しができます。
+
+86 [h2]
+EN: Super <a class="header-anchor" href="#super" name="super">#</a>
+JA: Super <a class="header-anchor" href="#super" name="super">#</a>
+
+87 [p]
+EN: <strong>TODO: Integrate better into page. Should explain this before mentioning
+super above.</strong>
+JA: <strong>TODO：ページによりよく組み込む。上でsuperに言及する前に、これを説明するべき。</strong>
+
+88 [p]
+EN: Sometimes you want to invoke a method on yourself, but using methods defined in
+one of your <a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#inheritance">superclasses</a>. You typically do this in
+an overridden method when you want to access the original method being
+overridden.
+JA: 自分自身のメソッドを呼び出しつつ、<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#inheritance">スーパークラス</a>の一つで定義したメソッドを使いたい場合があります。通常は、オーバーライドしたメソッドから、オーバーライド元のメソッドにアクセスしたいときに行います。
+
+89 [p]
+EN: To do that, you can use the special ⟦CODE0⟧ keyword as the receiver in a method
+call:
+JA: そのためには、メソッド呼び出しのレシーバーとして、特別な⟦CODE0⟧キーワードを使えます。
+
+90 [p]
+EN: You can also use ⟦CODE0⟧ without a method name inside a constructor to invoke a
+base class constructor:
+JA: コンストラクター内では、メソッド名なしの⟦CODE0⟧を使って、基底クラスのコンストラクターを呼び出すこともできます。
+
+91 [h2]
+EN: Attributes <a class="header-anchor" href="#attributes" name="attributes">#</a>
+JA: 属性 <a class="header-anchor" href="#attributes" name="attributes">#</a>
+
+92 [p]
+EN: <small><strong>experimental stage</strong>: subject to minor changes</small>
+JA: <small><strong>実験段階</strong>：小さな変更が加わる可能性があります</small>
+
+93 [p]
+EN: A class and methods within a class can be tagged with ‘meta attributes’.
+JA: クラスや、クラス内のメソッドには、「メタ属性」を付けられます。
+
+94 [p]
+EN: Like this:
+JA: 次のように書きます。
+
+95 [p]
+EN: These attributes are metadata, they give you a way to annotate and store
+any additional information about a class, which you can optionally access at runtime.
+This information can also be used by external tools, to provide additional
+hints and information from code to the tool.
+JA: これらの属性はメタデータです。クラスについての任意の追加情報を注記し、保存する方法を提供し、必要に応じて実行時にアクセスできます。この情報は外部ツールでも利用でき、コードからツールへ追加のヒントや情報を提供できます。
+
+96 [p]
+EN: <small>
+Since this feature has just been introduced, <strong>take note</strong>.</small>
+JA: <small>この機能は導入されたばかりなので、<strong>注意してください</strong>。</small>
+
+97 [p]
+EN: <strong>Currently</strong> there are no attributes with a built-in meaning. 
+Attributes are user-defined metadata. This may not remain 
+true as some may become well defined through convention or potentially
+through use by Wren itself. 
+
+JA: <strong>現時点では</strong>、組み込みの意味を持つ属性はありません。属性は、ユーザーが定義するメタデータです。ただし、慣例や、Wren自身による利用によって明確に定義される属性が出てくる可能性があり、この状態が続くとは限りません。
+
+98 [p]
+EN: Attributes are placed before a class or method definition,
+and use the ⟦CODE0⟧ hash/pound symbol. 
+JA: 属性は、クラスまたはメソッドの定義の前に置き、⟦CODE0⟧のハッシュ記号を使います。
+
+99 [p]
+EN: They can be 
+JA: 次の形式を使えます。
+
+100 [li]
+EN: a ⟦CODE0⟧ on it’s own
+JA: ⟦CODE0⟧だけ
+
+101 [li]
+EN: a ⟦CODE0⟧
+JA: ⟦CODE0⟧
+
+102 [li]
+EN: a ⟦CODE0⟧
+JA: ⟦CODE0⟧
+
+103 [p]
+EN: An attribute <em>key</em> can only be a ⟦CODE0⟧. This is the same type of name 
+as a method name, a class name or variable name, an identifier that matches
+the Wren identifier rules. A name results in a String value at runtime.
+JA: 属性の<em>キー</em>に使えるのは、⟦CODE0⟧だけです。これは、メソッド名、クラス名、変数名と同じ種類の名前で、Wrenの識別子の規則に従う識別子です。名前は、実行時にはStringの値になります。
+
+104 [p]
+EN: An attribute <em>value</em> can be any of these literal values: ⟦CODE0⟧.
+Values cannot contain expressions, just a value, there is no compile time 
+evaluation.
+JA: 属性の<em>値</em>には、⟦CODE0⟧というリテラル値のいずれかを使えます。値には式を含められず、値だけを指定します。コンパイル時の評価はありません。
+
+105 [p]
+EN: Groups can span multiple lines, methods have their own attributes, and duplicate
+keys are valid.
+JA: グループは複数行にまたがれます。メソッドには独自の属性があり、キーの重複も有効です。
+
+106 [h3]
+EN: Accessing attributes at runtime <a class="header-anchor" href="#accessing-attributes-at-runtime" name="accessing-attributes-at-runtime">#</a>
+JA: 実行時に属性へアクセスする <a class="header-anchor" href="#accessing-attributes-at-runtime" name="accessing-attributes-at-runtime">#</a>
+
+107 [p]
+EN: By default, attributes are compiled out and ignored.
+JA: 既定では、属性はコンパイル時に除外して無視します。
+
+108 [p]
+EN: For an attribute to be visible at runtime, mark it for runtime
+access using an exclamation:
+JA: 属性を実行時に見えるようにするには、感嘆符を使って、実行時アクセスの対象として指定します。
+
+109 [p]
+EN: Attributes at runtime are stored on the class. You can access them via 
+⟦CODE0⟧. The ⟦CODE1⟧ field on a class will 
+be null if a class has no attributes or if it’s attributes aren’t marked.
+JA: 実行時の属性は、クラスに保存します。⟦CODE0⟧でアクセスできます。クラスに属性がない場合、または実行時アクセスの指定がない場合、そのクラスの⟦CODE1⟧フィールドはnullになります。
+
+110 [p]
+EN: If the class contains class or method attributes, it will be an object with
+two getters:
+JA: クラスにクラス属性またはメソッド属性があれば、これは二つのゲッターを持つオブジェクトになります。
+
+111 [li]
+EN: ⟦CODE0⟧ for the class attributes
+JA: クラス属性のための⟦CODE0⟧
+
+112 [li]
+EN: ⟦CODE0⟧ for the method attributes
+JA: メソッド属性のための⟦CODE0⟧
+
+113 [p]
+EN: Attributes are stored by group in a regular Wren Map. 
+Keys that are not grouped, use ⟦CODE0⟧ as the group key.
+JA: 属性は、通常のWren Map内に、グループごとに保存します。グループに属さないキーでは、グループのキーとして⟦CODE0⟧を使います。
+
+114 [p]
+EN: Values are stored in a list, since duplicate keys are allowed, multiple
+values need to be stored. They’re stored in order of definition.
+JA: キーの重複が許されるため、複数の値を保存する必要があり、値はリストに保存します。保存順は、定義した順です。
+
+115 [p]
+EN: Method attributes are stored in a map by method signature, and each method
+has it’s own attributes that match the above structure. The method signature
+is prefixed by ⟦CODE0⟧ or ⟦CODE1⟧ as needed.
+JA: メソッド属性は、メソッドのシグネチャをキーとするマップに保存します。各メソッドには、上の構造に合う独自の属性があります。必要に応じて、メソッドのシグネチャの前に⟦CODE0⟧または⟦CODE1⟧を付けます。
+
+116 [p]
+EN: Let’s see what that looks like:
+JA: どのような形になるか、見てみましょう。
+
+117 [p]
+EN: <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/12-concurrency/">Concurrency →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">← Functions</a>
+JA: <br/><hr/><a class="right" href="/docs/wren/v0-4-0/en/01-guide/12-concurrency/">並行処理 →</a><a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">← 関数</a>
