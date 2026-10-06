@@ -1,0 +1,343 @@
+1 [h1]
+EN: Configuring the VM
+JA: VMの設定
+
+2 [p]
+EN: When you create a Wren VM, you tweak it by passing in a pointer to a
+WrenConfiguration structure. Since Wren has no global state, you can configure
+each VM differently if your application happens to run multiple.
+JA: Wren VMを作るとき、WrenConfiguration構造体へのポインターを渡して、設定を調整します。Wrenにはグローバルな状態がないので、アプリケーションで複数のVMを実行する場合、それぞれを別々に設定できます。
+
+3 [p]
+EN: The struct looks like:
+JA: 構造体は、次のようになっています。
+
+4 [p]
+EN: Most fields have useful defaults, which you can (and should) initialize by
+calling:
+JA: ほとんどのフィールドには、有用な既定値があります。次を呼び出して初期化できますし、そうするべきです。
+
+5 [p]
+EN: Calling this ensures that your VM doesn’t get uninitialized configuration when
+new fields are added to WrenConfiguration. Here is what each field does, roughly
+categorized:
+JA: これを呼び出すことで、WrenConfigurationへ新しいフィールドを追加しても、VMへ未初期化の設定を渡さずに済みます。各フィールドの働きを、大まかに分類して説明します。
+
+6 [h2]
+EN: Binding #
+JA: 束縛 #
+
+7 [p]
+EN: The VM is isolated from the outside world. These callbacks let the VM request
+access to imported code and foreign functionality.
+JA: VMは外の世界から隔離されています。これらのコールバックを使い、VMはインポートするコードや外部機能へのアクセスを要求できます。
+
+8 [h3]
+EN: loadModuleFn #
+JA: loadModuleFn #
+
+9 [p]
+EN: This is the callback Wren uses to load an imported module. The VM itself does
+not know how to talk to the file system, so when an import statement is
+executed, it relies on the host application to locate and read the source code
+for a module.
+JA: インポートしたモジュールを読み込むためにWrenが使うコールバックです。VM自身は、ファイルシステムとのやり取りを知りません。そのため、import文を実行するとき、ホストアプリケーションに頼って、モジュールのソースコードを探し、読み込みます。
+
+10 [p]
+EN: The signature of this function is:
+JA: この関数のシグネチャは、次のとおりです。
+
+11 [p]
+EN: When a module is imported, Wren calls this and passes in the module’s name. The
+host should return the source code for that module in a WrenLoadModuleResult struct.
+JA: モジュールをインポートするとき、Wrenは、この関数を呼び出し、モジュール名を渡します。ホストは、そのモジュールのソースコードをWrenLoadModuleResult構造体で返すべきです。
+
+12 [p]
+EN: The module loader is only be called once for any given module name. Wren caches
+the result internally so subsequent imports of the same module use the
+previously loaded code.
+JA: モジュールローダーは、一つのモジュール名につき一度だけ呼び出します。Wrenは内部で結果をキャッシュするので、同じモジュールの後続のインポートでは、すでに読み込んだコードを使います。
+
+13 [p]
+EN: If your host application isn’t able to load a module with some name, it should
+make sure the source value is NULL when returned. Wren will then report that as a runtime error.
+JA: ホストアプリケーションが、指定した名前のモジュールを読み込めない場合、戻り値のsourceをNULLにします。Wrenは、それを実行時エラーとして報告します。
+
+14 [p]
+EN: If you don’t use any import statements, you can leave the loadModuleFn field in
+the configuration set to NULL (the default).
+JA: import文を使わない場合、設定のloadModuleFnフィールドは、既定値のNULLのままにできます。
+
+15 [p]
+EN: Additionally, the WrenLoadModuleResult allows us to add a callback for when Wren is 
+done with the source, so we can free the memory if needed.
+JA: さらに、WrenLoadModuleResultには、Wrenがsourceを使い終えたときのコールバックを追加できます。必要なら、メモリーを解放するために使えます。
+
+16 [h3]
+EN: bindForeignMethodFn #
+JA: bindForeignMethodFn #
+
+17 [p]
+EN: The callback Wren uses to find a foreign method and bind it to a class. See
+this page for details. If your application defines no foreign
+methods, you can leave this NULL.
+JA: Wrenが外部メソッドを探し、クラスへ束縛するために使うコールバックです。詳細はこのページを参照してください。アプリケーションが外部メソッドを定義しない場合、NULLのままにできます。
+
+18 [h3]
+EN: bindForeignClassFn #
+JA: bindForeignClassFn #
+
+19 [p]
+EN: The callback Wren uses to find a foreign class and get its foreign methods. See
+this page for details. If your application defines no foreign
+classes, you can leave this NULL.
+JA: Wrenが外部クラスを探し、その外部メソッドを取得するために使うコールバックです。詳細はこのページを参照してください。アプリケーションが外部クラスを定義しない場合、NULLのままにできます。
+
+20 [h2]
+EN: Diagnostics #
+JA: 診断 #
+
+21 [p]
+EN: These let you wire up some minimal output so you can tell if your code is doing
+what you expect.
+JA: これらを使って、最小限の出力を結び付け、コードが期待どおりに動いているか確認できます。
+
+22 [h3]
+EN: writeFn #
+JA: writeFn #
+
+23 [p]
+EN: This is the callback Wren uses to output text when System.print() or the other
+related functions are called. This is the minimal connection the VM has with the
+outside world and lets you do rudimentary “printf debugging”. Its signature is:
+JA: System.print()や関連するほかの関数を呼び出したときに、テキストを出力するためにWrenが使うコールバックです。VMと外の世界との最小限の接続であり、基本的な「printfデバッグ」を行えます。そのシグネチャは、次のとおりです。
+
+24 [p]
+EN: Wren does not have a default implementation for this. It’s up to you to wire
+it up to printf() or some other way to show the text. If you leave it NULL,
+calls to System.print() and others silently do nothing.
+JA: Wrenには、この既定の実装はありません。printf()など、テキストを表示する手段へ結び付けるのは、利用者の責任です。NULLのままにすると、System.print()などの呼び出しは、何もせず、出力もありません。
+
+25 [h3]
+EN: errorFn #
+JA: errorFn #
+
+26 [p]
+EN: Wren uses this callback to report compile time and runtime errors. Its signature
+is:
+JA: Wrenは、このコールバックでコンパイル時エラーと実行時エラーを報告します。そのシグネチャは、次のとおりです。
+
+27 [p]
+EN: The type parameter is one of:
+JA: type引数は、次のいずれかです。
+
+28 [p]
+EN: When a compile error occurs, errorFn is called once with type
+WREN_ERROR_COMPILE, the name of the module and line where the error occurs,
+and the error message.
+JA: コンパイルエラーが起きると、errorFnを一度呼び出します。種類WREN_ERROR_COMPILE、エラーが起きたモジュール名と行、エラーメッセージを渡します。
+
+29 [p]
+EN: Runtime errors include stack traces. To handle this, Wren first calls errorFn
+with WREN_ERROR_RUNTIME, no module or line, and the runtime error’s message.
+After that, it calls errorFn again using type WREN_ERROR_STACK_TRACE, once
+for each line in the stack trace. Each of those calls has the module and line
+where the method or function is defined and message is the name of the method
+or function.
+JA: 実行時エラーには、スタックトレースがあります。これを扱うため、Wrenは、まずerrorFnを、WREN_ERROR_RUNTIME、モジュールと行なし、実行時エラーのメッセージを使って呼び出します。その後、種類WREN_ERROR_STACK_TRACEを使い、スタックトレースの各行につき一度、errorFnを再び呼び出します。各呼び出しには、メソッドや関数を定義したモジュールと行があり、messageには、メソッドや関数の名前を渡します。
+
+30 [p]
+EN: If you leave this NULL, Wren does not report any errors.
+JA: NULLのままにすると、Wrenは、どのエラーも報告しません。
+
+31 [h2]
+EN: Memory Management #
+JA: メモリー管理 #
+
+32 [p]
+EN: These fields control how the VM allocates and manages memory.
+JA: これらのフィールドは、VMによるメモリーの割り当てと管理を制御します。
+
+33 [h3]
+EN: reallocateFn #
+JA: reallocateFn #
+
+34 [p]
+EN: This lets you provide a custom memory allocation function. Its signature is:
+JA: 独自のメモリー割り当て関数を指定できます。そのシグネチャは、次のとおりです。
+
+35 [p]
+EN: Wren uses this one function to allocate, grow, shrink, and deallocate memory.
+When called, memory is the existing pointer to the block of memory if an
+allocation is being changed or freed. If Wren is requesting new memory, then
+memory is NULL.
+JA: Wrenは、この一つの関数を使って、メモリーの割り当て、拡大、縮小、解放を行います。割り当てを変更したり解放したりする場合、呼び出し時のmemoryは、そのメモリーブロックへの既存のポインターです。新しいメモリーを要求する場合、memoryはNULLです。
+
+36 [p]
+EN: newSize is the number of bytes of memory being requested. If memory is being
+freed, this is zero. Your callback should allocate the proper amount of memory
+and return it.
+JA: newSizeは、要求するメモリーのバイト数です。メモリーを解放する場合、これは0です。コールバックは、適切な量のメモリーを割り当て、それを返すべきです。
+
+37 [p]
+EN: If you don’t provide a custom allocator, the VM uses a default one that relies
+on realloc and free.
+JA: 独自のアロケーターを指定しなければ、VMは、reallocとfreeを使う既定のものを使います。
+
+38 [h3]
+EN: initialHeapSize #
+JA: initialHeapSize #
+
+39 [p]
+EN: This defines the total number of bytes of memory the VM will allocate before
+triggering the first garbage collection. Setting this to a smaller number
+reduces the amount of memory Wren will have allocated at one time, but causes it
+to collect garbage more frequently.
+JA: 最初のガベージコレクションを起動する前に、VMが割り当てるメモリーの総バイト数を定義します。小さな数値にすると、Wrenが一度に割り当てるメモリー量は減りますが、ガベージコレクションの頻度は増えます。
+
+40 [p]
+EN: If you set this to zero, Wren uses a default size of 10MB.
+JA: 0に設定すると、Wrenは、既定の10MBを使います。
+
+41 [h3]
+EN: minHeapSize #
+JA: minHeapSize #
+
+42 [p]
+EN: After a garbage collection occurs, the threshold for the next collection is
+determined based on the number of bytes remaining in use. This allows Wren to
+grow or shrink its memory usage automatically based on how much memory is
+actually needed.
+JA: ガベージコレクションの後、次の回収のしきい値は、使用中として残ったバイト数に基づいて決めます。これにより、実際に必要なメモリー量に応じて、Wrenは、自動でメモリー使用量を増減できます。
+
+43 [p]
+EN: This can be used to ensure that the heap does not get too small, which can
+in turn lead to a large number of collections afterwards as the heap grows
+back to a usable size.
+JA: ヒープが小さくなりすぎないようにするために使えます。小さすぎると、使えるサイズまで再びヒープが大きくなる過程で、何度も回収が起きる場合があります。
+
+44 [p]
+EN: If zero, this defaults to 1MB.
+JA: 0の場合、既定値は1MBです。
+
+45 [h3]
+EN: heapGrowthPercent #
+JA: heapGrowthPercent #
+
+46 [p]
+EN: Wren tunes the rate of garbage collection based on how much memory is still in
+use after a collection. This number controls that. It determines the amount of
+additional memory Wren will use after a collection, as a percentage of the
+current heap size.
+JA: Wrenは、回収後にまだ使っているメモリー量に基づき、ガベージコレクションの頻度を調整します。この数値で、その調整を制御します。回収後に追加で使うメモリー量を、現在のヒープサイズに対する割合で決めます。
+
+47 [p]
+EN: For example, say that this is 50. After a garbage collection, there are 400
+bytes of memory still in use. That means the next collection will be triggered
+after a total of 600 bytes are allocated (including the 400 already in use.)
+JA: 例えば、50とします。ガベージコレクション後、まだ400バイトを使っています。この場合、合計600バイトを割り当てた時点で、次の回収を起動します。（すでに使用中の400バイトも含みます。）
+
+48 [p]
+EN: Setting this to a smaller number wastes less memory, but triggers more
+frequent garbage collections.
+JA: 小さな数値にすると、無駄なメモリーは減りますが、ガベージコレクションの頻度は増えます。
+
+49 [p]
+EN: If set to zero, the VM uses a default of 50.
+JA: 0に設定すると、VMは、既定値の50を使います。
+
+50 [p]
+EN: ← Storing C Data
+JA: ← Cデータの保存
+
+SOURCE/JA CODE 1 EXACT:
+
+typedef struct
+{
+  WrenReallocateFn reallocateFn;
+  WrenLoadModuleFn loadModuleFn;
+  WrenBindForeignMethodFn bindForeignMethodFn;
+  WrenBindForeignClassFn bindForeignClassFn;
+  WrenWriteFn writeFn;
+  WrenErrorFn errorFn;
+  size_t initialHeapSize;
+  size_t minHeapSize;
+  int heapGrowthPercent;
+} WrenConfiguration;
+
+
+SOURCE/JA CODE 2 EXACT:
+
+wrenInitConfiguration(&configuration);
+
+
+SOURCE/JA CODE 3 EXACT:
+
+WrenLoadModuleResult loadModule(WrenVM* vm, const char* name)
+
+
+SOURCE/JA CODE 4 EXACT:
+
+WrenLoadModuleResult myLoadModule(WrenVM* vm, const char* name) {
+  WrenLoadModuleResult result = {0};
+    result.source = getSourceForModule(name);
+  return result;
+}
+
+
+SOURCE/JA CODE 5 EXACT:
+
+
+static void loadModuleComplete(WrenVM* vm, 
+                               const char* module,
+                               WrenLoadModuleResult result) 
+{
+  if(result.source) {
+    //for example, if we used malloc to allocate
+    //our source string, we use free to release it.
+    free((void*)result.source);
+  }
+}
+
+WrenLoadModuleResult myLoadModule(WrenVM* vm, const char* name) {
+  WrenLoadModuleResult result = {0};
+    result.onComplete = loadModuleComplete;
+    result.source = getSourceForModule(name);
+  return result;
+}
+
+
+SOURCE/JA CODE 6 EXACT:
+
+void write(WrenVM* vm, const char* text)
+
+
+SOURCE/JA CODE 7 EXACT:
+
+void error(
+      WrenVM* vm, 
+      WrenErrorType type,
+      const char* module,
+      int line,
+      const char* message)
+
+
+SOURCE/JA CODE 8 EXACT:
+
+typedef enum
+{
+  // A syntax or resolution error detected at compile time.
+  WREN_ERROR_COMPILE,
+
+  // The error message for a runtime error.
+  WREN_ERROR_RUNTIME,
+
+  // One entry of a runtime error's stack trace.
+  WREN_ERROR_STACK_TRACE
+} WrenErrorType;
+
+
+SOURCE/JA CODE 9 EXACT:
+
+void* reallocate(void* memory, size_t newSize, void* userData)
+

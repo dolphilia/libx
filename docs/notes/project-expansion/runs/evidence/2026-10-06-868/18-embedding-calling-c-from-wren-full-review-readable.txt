@@ -1,0 +1,191 @@
+1 [h1]
+EN: Calling C from Wren
+JA: WrenからCを呼び出す
+
+2 [p]
+EN: When we are ensconced within the world of Wren, the external C world is
+“foreign” to us. There are two reasons we might want to bring some foreign
+flavor into our VM:
+JA: Wrenの世界の中にいるとき、外側のCの世界は「外部」です。VMへ外部の機能を持ち込みたい理由は、二つあります。
+
+3 [li]
+EN: We want to execute code written in C.
+JA: Cで書いたコードを実行したい。
+
+4 [li]
+EN: We want to store raw C data.
+JA: 生のCデータを保存したい。
+
+5 [p]
+EN: Since Wren is object-oriented, behavior lives in methods, so for the former we
+have foreign methods. Likewise, data lives in objects, so for the latter, we
+define foreign classes. This page is about the first, foreign methods. The
+next page covers foreign classes.
+JA: Wrenはオブジェクト指向なので、振る舞いはメソッドに置きます。そのため、前者には外部メソッドがあります。同様に、データはオブジェクトに置くので、後者には外部クラスを定義します。このページでは、前者の外部メソッドを扱います。次のページでは、外部クラスを説明します。
+
+6 [p]
+EN: A foreign method looks to Wren like a regular method. It is defined on a Wren
+class, it has a name and signature, and calls to it are dynamically dispatched.
+The only difference is that the body of the method is written in C.
+JA: Wrenから見ると、外部メソッドは通常のメソッドと同じです。Wrenのクラスで定義し、名前とシグネチャを持ち、呼び出しは動的にディスパッチします。唯一の違いは、メソッドの本体をCで書くことです。
+
+7 [p]
+EN: A foreign method is declared in Wren like so:
+JA: 外部メソッドは、Wrenで次のように宣言します。
+
+8 [p]
+EN: The foreign keyword tells Wren that the method add() is declared on Math,
+but implemented in C. Both static and instance methods can be foreign.
+JA: foreignキーワードは、メソッドadd()をMathで宣言しますが、Cで実装することを、Wrenへ伝えます。静的メソッドもインスタンスメソッドも、外部メソッドにできます。
+
+9 [h2]
+EN: Binding Foreign Methods #
+JA: 外部メソッドの束縛 #
+
+10 [p]
+EN: When you call a foreign method, Wren needs to figure out which C function to
+execute. This process is called binding. Binding is performed on-demand by the
+VM. When a class that declares a foreign method is executed – when the class
+statement itself is evaluated – the VM asks the host application for the C
+function that should be used for the foreign method.
+JA: 外部メソッドを呼び出すとき、Wrenは、どのC関数を実行するか知る必要があります。この処理を束縛と呼びます。VMは、必要になったときに束縛します。外部メソッドを宣言するクラスを実行する時点、つまりclass文自身を評価する時点で、VMはホストアプリケーションに、その外部メソッドで使うC関数を問い合わせます。
+
+11 [p]
+EN: It does this through the bindForeignMethodFn callback you give it when you
+first configure the VM. This callback isn’t the foreign method itself.
+It’s the binding function your app uses to look up foreign methods.
+JA: この処理には、最初にVMを設定するときに渡す、bindForeignMethodFnコールバックを使います。このコールバックは、外部メソッド自身ではありません。アプリが外部メソッドを探すための、束縛用の関数です。
+
+12 [p]
+EN: Its signature is:
+JA: そのシグネチャは、次のとおりです。
+
+13 [p]
+EN: Every time a foreign method is first declared, the VM invokes this callback. It
+passes in the module containing the class declaration, the name of the class
+containing the method, the method’s signature, and whether or not it’s a static
+method. In the above example, it would pass something like:
+JA: 外部メソッドを最初に宣言するたび、VMはこのコールバックを呼び出します。クラス宣言を含むモジュール、メソッドを持つクラスの名前、メソッドのシグネチャ、静的メソッドかどうかを渡します。上の例なら、次のような情報を渡します。
+
+14 [p]
+EN: When you configure the VM, you give it a C callback that looks up the
+appropriate function for the given foreign method and returns a pointer to it.
+Something like:
+JA: VMを設定するとき、指定した外部メソッドに適した関数を探し、そのポインターを返すCのコールバックを渡します。例えば、次のようにします。
+
+15 [p]
+EN: This implementation is pretty tedious, but you get the idea. Feel free to do
+something more clever here in your host application.
+JA: この実装はかなり面倒ですが、考え方は分かるでしょう。ホストアプリケーションでは、もっと気の利いた方法を使ってかまいません。
+
+16 [p]
+EN: The important part is that it returns a pointer to a C function to use for that
+foreign method. Wren does this binding step once when the class definition is
+first executed. It then keeps the function pointer you return and associates it
+with that method. This way, calls to the foreign method are fast.
+JA: 重要なのは、その外部メソッドに使うC関数のポインターを返すことです。Wrenがこの束縛を行うのは、クラス定義を最初に実行したときの一度だけです。その後は、返された関数ポインターを保持し、そのメソッドに対応付けます。これにより、外部メソッドの呼び出しが速くなります。
+
+17 [h2]
+EN: Implementing a Foreign Method #
+JA: 外部メソッドの実装 #
+
+18 [p]
+EN: All C functions for foreign methods have the same signature:
+JA: 外部メソッドのためのC関数は、すべて同じシグネチャを持ちます。
+
+19 [p]
+EN: Arguments passed from Wren are not passed as C arguments, and the method’s
+return value is not a C return value. Instead – you guessed it – we go through
+the slot array.
+JA: Wrenからの引数は、Cの引数として渡すわけではなく、メソッドの戻り値も、Cの戻り値ではありません。代わりに、お察しのとおり、スロット配列を経由します。
+
+20 [p]
+EN: When a foreign method is called from Wren, the VM sets up the slot array with
+the receiver and arguments to the call. As in calling Wren from C, the receiver
+object is in slot zero, and arguments are in consecutive slots after that.
+JA: Wrenから外部メソッドを呼び出すと、VMは、レシーバーと引数を使ってスロット配列を準備します。CからWrenを呼び出す場合と同じく、レシーバーオブジェクトはスロット0に置き、引数は、その後の連続したスロットに置きます。
+
+21 [p]
+EN: You use the slot API to read those arguments, and then perform whatever work you
+want to in C. If you want the foreign method to return a value, place it in slot
+zero. Like so:
+JA: スロットAPIで引数を読み取り、Cで必要な処理を行います。外部メソッドから値を返したいなら、スロット0へ入れます。次のように行います。
+
+22 [p]
+EN: While your foreign method is executing, the VM is completely suspended. No other
+fibers run until your foreign method returns. You should not try to resume the
+VM from within a foreign method by calling wrenCall() or wrenInterpret().
+The VM is not re-entrant.
+JA: 外部メソッドの実行中、VMは完全に中断しています。外部メソッドが戻るまで、ほかのファイバーは実行しません。外部メソッドの中からwrenCall()やwrenInterpret()を呼んでVMを再開しようとしてはいけません。VMは再入可能ではありません。
+
+23 [p]
+EN: This covers foreign behavior, but what about foreign state? For that, we need
+a foreign class…
+JA: 外部の振る舞いは、これで扱えます。それでは、外部の状態はどうするのでしょうか？ そのためには、外部クラスが必要です。
+
+24 [p]
+EN: Storing C Data →
+← Calling Wren from C
+JA: Cデータの保存 →← CからWrenを呼び出す
+
+SOURCE/JA CODE 1 EXACT:
+
+class Math {
+  foreign static add(a, b)
+}
+
+
+SOURCE/JA CODE 2 EXACT:
+
+WrenForeignMethodFn bindForeignMethodFn(
+    WrenVM* vm,
+    const char* module,
+    const char* className,
+    bool isStatic,
+    const char* signature);
+
+
+SOURCE/JA CODE 3 EXACT:
+
+bindForeignMethodFn(vm, "main", "Math", true, "add(_,_)");
+
+
+SOURCE/JA CODE 4 EXACT:
+
+WrenForeignMethodFn bindForeignMethod(
+    WrenVM* vm,
+    const char* module,
+    const char* className,
+    bool isStatic,
+    const char* signature)
+{
+  if (strcmp(module, "main") == 0)
+  {
+    if (strcmp(className, "Math") == 0)
+    {
+      if (isStatic && strcmp(signature, "add(_,_)") == 0)
+      {
+        return mathAdd; // C function for Math.add(_,_).
+      }
+      // Other foreign methods on Math...
+    }
+    // Other classes in main...
+  }
+  // Other modules...
+}
+
+
+SOURCE/JA CODE 5 EXACT:
+
+void foreignMethod(WrenVM* vm);
+
+
+SOURCE/JA CODE 6 EXACT:
+
+void mathAdd(WrenVM* vm)
+{
+  double a = wrenGetSlotDouble(vm, 1);
+  double b = wrenGetSlotDouble(vm, 2);
+  wrenSetSlotDouble(vm, 0, a + b);
+}
+

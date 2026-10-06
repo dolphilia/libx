@@ -1,0 +1,129 @@
+1 [h1]
+EN: Calling C from Wren
+JA: WrenからCを呼び出す
+
+2 [p]
+EN: When we are ensconced within the world of Wren, the external C world is
+“foreign” to us. There are two reasons we might want to bring some foreign
+flavor into our VM:
+JA: Wrenの世界の中にいるとき、外側のCの世界は「外部」です。VMへ外部の機能を持ち込みたい理由は、二つあります。
+
+3 [li]
+EN: We want to execute code written in C.
+JA: Cで書いたコードを実行したい。
+
+4 [li]
+EN: We want to store raw C data.
+JA: 生のCデータを保存したい。
+
+5 [p]
+EN: Since Wren is object-oriented, behavior lives in methods, so for the former we
+have <strong>foreign methods</strong>. Likewise, data lives in objects, so for the latter, we
+define <strong>foreign classes</strong>. This page is about the first, foreign methods. The
+<a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">next page</a> covers foreign classes.
+JA: Wrenはオブジェクト指向なので、振る舞いはメソッドに置きます。そのため、前者には<strong>外部メソッド</strong>があります。同様に、データはオブジェクトに置くので、後者には<strong>外部クラス</strong>を定義します。このページでは、前者の外部メソッドを扱います。<a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">次のページ</a>では、外部クラスを説明します。
+
+6 [p]
+EN: A foreign method looks to Wren like a regular method. It is defined on a Wren
+class, it has a name and signature, and calls to it are dynamically dispatched.
+The only difference is that the <em>body</em> of the method is written in C.
+JA: Wrenから見ると、外部メソッドは通常のメソッドと同じです。Wrenのクラスで定義し、名前とシグネチャを持ち、呼び出しは動的にディスパッチします。唯一の違いは、メソッドの<em>本体</em>をCで書くことです。
+
+7 [p]
+EN: A foreign method is declared in Wren like so:
+JA: 外部メソッドは、Wrenで次のように宣言します。
+
+8 [p]
+EN: The ⟦CODE0⟧ keyword tells Wren that the method ⟦CODE1⟧ is declared on ⟦CODE2⟧,
+but implemented in C. Both static and instance methods can be foreign.
+JA: ⟦CODE0⟧キーワードは、メソッド⟦CODE1⟧を⟦CODE2⟧で宣言しますが、Cで実装することを、Wrenへ伝えます。静的メソッドもインスタンスメソッドも、外部メソッドにできます。
+
+9 [h2]
+EN: Binding Foreign Methods <a class="header-anchor" href="#binding-foreign-methods" name="binding-foreign-methods">#</a>
+JA: 外部メソッドの束縛 <a class="header-anchor" href="#binding-foreign-methods" name="binding-foreign-methods">#</a>
+
+10 [p]
+EN: When you call a foreign method, Wren needs to figure out which C function to
+execute. This process is called <em>binding</em>. Binding is performed on-demand by the
+VM. When a class that declares a foreign method is executed – when the ⟦CODE0⟧
+statement itself is evaluated – the VM asks the host application for the C
+function that should be used for the foreign method.
+JA: 外部メソッドを呼び出すとき、Wrenは、どのC関数を実行するか知る必要があります。この処理を<em>束縛</em>と呼びます。VMは、必要になったときに束縛します。外部メソッドを宣言するクラスを実行する時点、つまり⟦CODE0⟧文自身を評価する時点で、VMはホストアプリケーションに、その外部メソッドで使うC関数を問い合わせます。
+
+11 [p]
+EN: It does this through the ⟦CODE0⟧ callback you give it when you
+first <a href="/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/">configure the VM</a>. This callback isn’t the foreign method itself.
+It’s the binding function your app uses to <em>look up</em> foreign methods.
+JA: この処理には、最初に<a href="/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/">VMを設定</a>するときに渡す、⟦CODE0⟧コールバックを使います。このコールバックは、外部メソッド自身ではありません。アプリが外部メソッドを<em>探す</em>ための、束縛用の関数です。
+
+12 [p]
+EN: Its signature is:
+JA: そのシグネチャは、次のとおりです。
+
+13 [p]
+EN: Every time a foreign method is first declared, the VM invokes this callback. It
+passes in the module containing the class declaration, the name of the class
+containing the method, the method’s signature, and whether or not it’s a static
+method. In the above example, it would pass something like:
+JA: 外部メソッドを最初に宣言するたび、VMはこのコールバックを呼び出します。クラス宣言を含むモジュール、メソッドを持つクラスの名前、メソッドのシグネチャ、静的メソッドかどうかを渡します。上の例なら、次のような情報を渡します。
+
+14 [p]
+EN: When you configure the VM, you give it a C callback that looks up the
+appropriate function for the given foreign method and returns a pointer to it.
+Something like:
+JA: VMを設定するとき、指定した外部メソッドに適した関数を探し、そのポインターを返すCのコールバックを渡します。例えば、次のようにします。
+
+15 [p]
+EN: This implementation is pretty tedious, but you get the idea. Feel free to do
+something more clever here in your host application.
+JA: この実装はかなり面倒ですが、考え方は分かるでしょう。ホストアプリケーションでは、もっと気の利いた方法を使ってかまいません。
+
+16 [p]
+EN: The important part is that it returns a pointer to a C function to use for that
+foreign method. Wren does this binding step <em>once</em> when the class definition is
+first executed. It then keeps the function pointer you return and associates it
+with that method. This way, <em>calls</em> to the foreign method are fast.
+JA: 重要なのは、その外部メソッドに使うC関数のポインターを返すことです。Wrenがこの束縛を行うのは、クラス定義を最初に実行したときの<em>一度だけ</em>です。その後は、返された関数ポインターを保持し、そのメソッドに対応付けます。これにより、外部メソッドの<em>呼び出し</em>が速くなります。
+
+17 [h2]
+EN: Implementing a Foreign Method <a class="header-anchor" href="#implementing-a-foreign-method" name="implementing-a-foreign-method">#</a>
+JA: 外部メソッドの実装 <a class="header-anchor" href="#implementing-a-foreign-method" name="implementing-a-foreign-method">#</a>
+
+18 [p]
+EN: All C functions for foreign methods have the same signature:
+JA: 外部メソッドのためのC関数は、すべて同じシグネチャを持ちます。
+
+19 [p]
+EN: Arguments passed from Wren are not passed as C arguments, and the method’s
+return value is not a C return value. Instead – you guessed it – we go through
+the <a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">slot array</a>.
+JA: Wrenからの引数は、Cの引数として渡すわけではなく、メソッドの戻り値も、Cの戻り値ではありません。代わりに、お察しのとおり、<a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">スロット配列</a>を経由します。
+
+20 [p]
+EN: When a foreign method is called from Wren, the VM sets up the slot array with
+the receiver and arguments to the call. As in calling Wren from C, the receiver
+object is in slot zero, and arguments are in consecutive slots after that.
+JA: Wrenから外部メソッドを呼び出すと、VMは、レシーバーと引数を使ってスロット配列を準備します。CからWrenを呼び出す場合と同じく、レシーバーオブジェクトはスロット0に置き、引数は、その後の連続したスロットに置きます。
+
+21 [p]
+EN: You use the slot API to read those arguments, and then perform whatever work you
+want to in C. If you want the foreign method to return a value, place it in slot
+zero. Like so:
+JA: スロットAPIで引数を読み取り、Cで必要な処理を行います。外部メソッドから値を返したいなら、スロット0へ入れます。次のように行います。
+
+22 [p]
+EN: While your foreign method is executing, the VM is completely suspended. No other
+fibers run until your foreign method returns. You should <em>not</em> try to resume the
+VM from within a foreign method by calling ⟦CODE0⟧ or ⟦CODE1⟧.
+The VM is not re-entrant.
+JA: 外部メソッドの実行中、VMは完全に中断しています。外部メソッドが戻るまで、ほかのファイバーは実行しません。外部メソッドの中から⟦CODE0⟧や⟦CODE1⟧を呼んでVMを再開しようと<em>してはいけません</em>。VMは再入可能ではありません。
+
+23 [p]
+EN: This covers foreign behavior, but what about foreign <em>state</em>? For that, we need
+a foreign <em>class</em>…
+JA: 外部の振る舞いは、これで扱えます。それでは、外部の<em>状態</em>はどうするのでしょうか？ そのためには、外部<em>クラス</em>が必要です。
+
+24 [p]
+EN: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">Storing C Data →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/">← Calling Wren from C</a>
+JA: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">Cデータの保存 →</a><a href="/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/">← CからWrenを呼び出す</a>

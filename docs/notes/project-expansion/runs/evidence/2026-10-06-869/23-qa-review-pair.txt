@@ -1,0 +1,199 @@
+1 [h1]
+EN: Q &amp; A
+JA: Q&amp;A
+
+2 [h2]
+EN: Why did you create Wren? <a class="header-anchor" href="#why-did-you-create-wren" name="why-did-you-create-wren">#</a>
+JA: なぜWrenを作ったのですか？ <a class="header-anchor" href="#why-did-you-create-wren" name="why-did-you-create-wren">#</a>
+
+3 [p]
+EN: Other creative endeavors aren’t immediately met with existential crises, but
+for some reason programmers don’t seem to like new languages. Here’s the niche
+I’m trying to fill:
+JA: ほかの創作活動は、始めた途端に存在意義を問われたりしませんが、なぜかプログラマーは、新しい言語を好まないようです。私が埋めようとしている分野は、次のとおりです。
+
+4 [p]
+EN: There are a few scripting languages used for embedding in applications. Lua is
+the main one. TCL used to be. There’s also Guile, increasingly JavaScript, and
+some applications embed Python. I’m an ex-game developer, so when I think
+“scripting”, I tend to think “game scripting”.
+JA: アプリケーションへ組み込むために使う、スクリプト言語はいくつかあります。中心はLuaです。以前はTCLでした。Guileもあり、JavaScriptも増えていて、Pythonを組み込むアプリケーションもあります。私は元ゲーム開発者なので、「スクリプト」と聞くと、「ゲームのスクリプト」を考えがちです。
+
+5 [p]
+EN: Lua is nice: it’s small, simple, and fast. But—and I don’t mean this as a
+criticism—it’s also weird if you’re used to languages like C++ and Java.
+The syntax is different. The semantics, especially the object model are
+unusual. Anyone can get used to 1-based indexing, but things like metatables
+really show that objects were bolted onto Lua after the fact.
+JA: Luaは良い言語です。小さく、単純で、高速です。しかし、批判するつもりではありませんが、C++やJavaなどに慣れていると、変わった言語でもあります。構文が違います。意味論、特にオブジェクトのモデルは独特です。1から始まるインデックスには誰でも慣れますが、メタテーブルなどを見ると、Luaへ後からオブジェクトを付け加えたことが、よく分かります。
+
+6 [p]
+EN: I think there’s room for a language as simple as Lua, but that feels natural to
+someone with an OOP background. Wren is my attempt at that.
+JA: Luaと同じくらい単純で、オブジェクト指向の経験がある人に自然に感じられる言語には、余地があると思います。Wrenは、それを目指す私の試みです。
+
+7 [h2]
+EN: Why classes? <a class="header-anchor" href="#why-classes" name="why-classes">#</a>
+JA: なぜクラスなのですか？ <a class="header-anchor" href="#why-classes" name="why-classes">#</a>
+
+8 [p]
+EN: Thanks to JavaScript’s popularity, lots of people are discovering prototypes
+right now, and the paradigm is experiencing a popularity boom. I think
+prototypes are interesting, but after <a href="http://finch.stuffwithstuff.com/">several years playing with them</a>,
+I concluded (like many people on the original Self project that invented
+prototypes) that classes are more usable.
+JA: JavaScriptの人気のおかげで、多くの人が今、プロトタイプを知り、その方式の人気が高まっています。プロトタイプは面白いと思いますが、<a href="http://finch.stuffwithstuff.com/">数年間試した</a>後、プロトタイプを考案した元のSelfプロジェクトの多くの人々と同様に、クラスの方が使いやすいと結論付けました。
+
+9 [p]
+EN: Here’s an example of that kind of object-oriented programming in Lua:
+JA: Luaで、そのようなオブジェクト指向のプログラミングを行う例を示します。
+
+10 [p]
+EN: Here’s the same example in Wren:
+JA: 同じ例をWrenで示します。
+
+11 [p]
+EN: Classes have a reputation for complexity because most of the widely used
+languages with them are quite complex: C++, Java, C#, Ruby, and Python. I hope
+to show with Wren that it is those languages that are complex, and not classes
+themselves.
+JA: クラスは複雑だと言われますが、それは、クラスを持つ広く使われた言語のほとんど、C++、Java、C#、Ruby、Pythonが、とても複雑だからです。複雑なのは、その言語であり、クラス自身ではないことを、Wrenで示したいと思います。
+
+12 [p]
+EN: Smalltalk, the language that inspired most of those languages, is famously
+simple. Its syntax <a href="http://www.jarober.com/blog/blogView?showComments=true&amp;title=Readability+is+Key&amp;entry=3506312690">fits on an index card</a>. My aim is to keep Wren that
+minimal while still having the expressive power of <a href="/docs/wren/v0-4-0/en/01-guide/10-classes/">classes</a>.
+JA: それらの多くに影響を与えたSmalltalkは、単純なことで有名です。構文は、<a href="http://www.jarober.com/blog/blogView?showComments=true&amp;title=Readability+is+Key&amp;entry=3506312690">索引カードに収まります</a>。私の目標は、Wrenをそれほど小さく保ちながら、<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/">クラス</a>の表現力も持たせることです。
+
+13 [h2]
+EN: Why compile to bytecode? <a class="header-anchor" href="#why-compile-to-bytecode" name="why-compile-to-bytecode">#</a>
+JA: なぜバイトコードへコンパイルするのですか？ <a class="header-anchor" href="#why-compile-to-bytecode" name="why-compile-to-bytecode">#</a>
+
+14 [p]
+EN: The <a href="/docs/wren/v0-4-0/en/01-guide/22-performance/">performance page</a> has more details, but the short answer
+is that bytecode is a nice trade-off between performance and simplicity. Also:
+JA: 詳しくは<a href="/docs/wren/v0-4-0/en/01-guide/22-performance/">性能のページ</a>にありますが、短く言えば、バイトコードは性能と単純さの良い折り合いだからです。ほかにも、次の理由があります。
+
+15 [li]
+EN: 
+<p>Many devices like iPhones and game consoles don’t allow executing code
+    generated at runtime, which rules out just-in-time compilation.</p>
+
+JA: <p>iPhoneやゲーム機などの多くの機器は、実行時に生成したコードの実行を許可しないため、JITコンパイルを使えません。</p>
+
+16 [li]
+EN: 
+<p>I think <a href="/docs/wren/v0-4-0/en/01-guide/12-concurrency/">fibers</a> are a really powerful tool, and implementing them is
+    straightforward in a bytecode VM that doesn’t use the native stack.</p>
+
+JA: <p><a href="/docs/wren/v0-4-0/en/01-guide/12-concurrency/">ファイバー</a>は、とても強力な道具だと思います。ネイティブスタックを使わないバイトコードVMなら、その実装は簡単です。</p>
+
+17 [h2]
+EN: Why is the VM stack-based instead of register-based? <a class="header-anchor" href="#why-is-the-vm-stack-based-instead-of-register-based" name="why-is-the-vm-stack-based-instead-of-register-based">#</a>
+JA: なぜVMはレジスター方式ではなく、スタック方式なのですか？ <a class="header-anchor" href="#why-is-the-vm-stack-based-instead-of-register-based" name="why-is-the-vm-stack-based-instead-of-register-based">#</a>
+
+18 [p]
+EN: Bytecode VMs come in two flavors. Stack-based VMs have short (usually one byte)
+instructions whose operands are implicitly understood to be at the top of the
+stack. That means you often have a couple of instructions to push some stuff on
+the stack and then an instruction to do something.
+JA: バイトコードVMには、二つの方式があります。スタック方式のVMは、短い、通常1バイトの命令を持ち、そのオペランドは暗黙にスタックの先頭にあると分かります。そのため、何かをスタックへプッシュするいくつかの命令と、その後に何かを行う命令が並ぶことがよくあります。
+
+19 [p]
+EN: Register-based VMs have big instructions (usually 32 bits) that contain both an
+opcode and a couple of numbers indicating where in the stack the operands can
+be found. This is cool because it means, that, for example, this Lua statement:
+JA: レジスター方式のVMには、大きな、通常32ビットの命令があり、オペコードと、スタック内のオペランドの場所を示すいくつかの数値を含みます。便利なのは、例えば次のLuaの文を、
+
+20 [p]
+EN: Can be a single bytecode instruction. In a stack-based language, it would be
+four—push ⟦CODE0⟧, push ⟦CODE1⟧, add, store ⟦CODE2⟧. (Though note that in both cases
+you’ve got 32 total bits of code.)
+JA: 一つのバイトコード命令にできることです。スタック方式の言語なら、⟦CODE0⟧をプッシュ、⟦CODE1⟧をプッシュ、加算、⟦CODE2⟧へ保存、という四つになります。（ただし、どちらもコードは合計32ビットである点に注意してください。）
+
+21 [p]
+EN: Lua used to be stack-based and switched to register-based and got a speed
+boost. Why not use registers for Wren?
+JA: Luaは、以前はスタック方式でしたが、レジスター方式へ変えて高速になりました。なぜWrenもレジスターを使わないのでしょうか？
+
+22 [p]
+EN: I’ve implemented a <a href="http://finch.stuffwithstuff.com/">register-based VM
+before</a>. I think it’s a cool model, but I
+don’t think it would bring much benefit for Wren. It’s more effort to compile,
+and I’m trying to keep Wren’s implementation as simple as possible.
+JA: 私は、<a href="http://finch.stuffwithstuff.com/">以前、レジスター方式のVMを実装しました</a>。良いモデルだと思いますが、Wrenには大きな利点をもたらさないと思います。コンパイルにより多くの手間がかかり、私は、Wrenの実装をできるだけ単純に保とうとしています。
+
+23 [p]
+EN: In return for that complexity, you can generate fewer instructions. However, I
+don’t think Wren would be able to take advantage of that. Wren doesn’t
+currently have any dedicated instructions for arithmetic. Operators are just
+regular method calls and can call user-defined procedures.
+JA: その複雑さと引き換えに、命令数を減らせます。しかし、Wrenは、その利点を使えないと思います。現在、Wrenには算術演算専用の命令がありません。演算子は通常のメソッド呼び出しであり、利用者が定義した手続きを呼び出すこともできます。
+
+24 [p]
+EN: The calling convention for methods requires all of their parameters to be at
+the top of the caller’s stack so that they can become bottom of the callee’s
+stack frame window. To call ⟦CODE0⟧ in Wren, we still have to push the arguments on
+top of the stack. Likewise, the method calling convention places the return
+value where the first argument was, so we’d have to move it back down to the
+destination slot after the call.
+JA: メソッドの呼び出し規約は、すべての引数を呼び出し元のスタック先頭へ置くことを必要とします。それを、呼び出し先のスタックフレーム領域の底にできるようにするためです。Wrenで⟦CODE0⟧を呼び出すには、やはり引数をスタックの先頭へプッシュする必要があります。同様に、呼び出し規約は、戻り値を最初の引数があった場所へ置くので、呼び出し後、それを宛先スロットへ戻す必要があります。
+
+25 [p]
+EN: It may be worth having dedicated instructions for arithmetic that special case
+the built-in types before falling back to user-defined operator methods (which
+I assume is what Lua does since they added operator overloading late in the
+language’s development). If that happens, it may be possible to switch to
+register-based.
+JA: 利用者定義の演算子メソッドへフォールバックする前に、組み込み型を特別扱いする算術命令を用意する価値はあるかもしれません。（Luaは、言語の開発後期に演算子のオーバーロードを追加したので、そうしていると推測します。）そうなれば、レジスター方式へ移れるかもしれません。
+
+26 [p]
+EN: But I’m not convinced it would be an actual performance win. A lot of details
+of the language affect whether a register-based VM is better. For example,
+assignments are statements in Lua but expressions in Wren, which would make
+them harder to compile to efficient register-based code.
+JA: しかし、実際に性能上の利点になるとは確信していません。レジスター方式のVMが有利かどうかは、言語の細かな仕様の多くに左右されます。例えば、代入はLuaでは文ですが、Wrenでは式なので、効率的なレジスター方式のコードへコンパイルするのが難しくなります。
+
+27 [h2]
+EN: What about your other languages? <a class="header-anchor" href="#what-about-your-other-languages" name="what-about-your-other-languages">#</a>
+JA: ほかに作った言語は、どうするのですか？ <a class="header-anchor" href="#what-about-your-other-languages" name="what-about-your-other-languages">#</a>
+
+28 [p]
+EN: This is a strange question if you don’t happen to know <a href="http://journal.stuffwithstuff.com">who I am</a>. In the
+past, I’ve hacked on and blogged about a couple of other hobby languages like
+<a href="http://finch.stuffwithstuff.com/">Finch</a> and <a href="http://magpie-lang.org/">Magpie</a>.
+JA: <a href="http://journal.stuffwithstuff.com">私が誰か</a>を知らなければ、奇妙な質問でしょう。以前、<a href="http://finch.stuffwithstuff.com/">Finch</a>や<a href="http://magpie-lang.org/">Magpie</a>など、ほかにも趣味の言語を作り、ブログへ書きました。
+
+29 [p]
+EN: I started Finch to learn more about implementing an interpreter and also about
+the prototype paradigm. I learned a ton about both. Critically, I learned that
+I really prefer classes over prototypes. I started retrofitting classes into
+Finch but realized it was too big of a change, and thus Wren was born.
+JA: Finchは、インタープリターの実装と、プロトタイプ方式を、もっと知るために始めました。どちらについても、多くを学びました。特に、私はプロトタイプよりクラスを強く好むと分かりました。Finchへクラスを後付けし始めましたが、大きすぎる変更だと気付き、こうしてWrenが生まれました。
+
+30 [p]
+EN: Wren is a replacement for Finch to me. I gave it a new name mainly so that I
+can keep Finch around in case other people want to take it and do something
+with it. I don’t have any intention to work on it anymore.
+JA: 私にとって、WrenはFinchの代わりです。名前を変えた主な理由は、ほかの人がFinchを引き継いで何かしたい場合に、残しておくためです。私には、もうFinchで作業する意図はありません。
+
+31 [p]
+EN: Magpie is a trickier one. I really like the ideas behind Magpie. It’s the
+general-purpose language I wish I had much of the time. I love pattern matching
+and multiple dispatch. I like how it integrates the event-based IO of <a href="https://github.com/joyent/libuv">libuv</a>
+with the simplicity of fibers.
+JA: Magpieは、もう少し難しい話です。私は、Magpieの考え方がとても好きです。多くの場面で、こんな汎用言語が欲しいと思う言語です。パターンマッチングと多重ディスパッチが大好きです。<a href="https://github.com/joyent/libuv">libuv</a>のイベント駆動IOを、ファイバーの単純さと結び付けるところも気に入っています。
+
+32 [p]
+EN: But it’s also a much more challenging project. As a general-purpose language,
+there’s a ton of library work to do before Magpie is useful for anything. It
+has some unresolved GC issues. And I’m frankly not skilled enough right now to
+implement multiple dispatch efficiently.
+JA: しかし、はるかに難しいプロジェクトでもあります。汎用言語なので、何かに使えるようになるまでに、大量のライブラリー作業が必要です。GCには、未解決の問題があります。そして、正直なところ、今の私には、多重ディスパッチを効率的に実装するだけの技量がありません。
+
+33 [p]
+EN: Meanwhile, since I started working on Magpie, <a href="http://julialang.org/">Julia</a>
+appeared and <a href="http://opendylan.org/">Dylan</a> <em>re</em>appeared. I created Magpie
+partially to carry the torch of multiple dispatch, but others are starting to
+spread that light now.
+JA: その間、Magpieを作り始めてから、<a href="http://julialang.org/">Julia</a>が現れ、<a href="http://opendylan.org/">Dylan</a>が<em>再び</em>現れました。Magpieを作った理由の一つは、多重ディスパッチの火を受け継ぐことでしたが、今は、ほかの人たちが、その光を広げ始めています。

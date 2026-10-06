@@ -1,0 +1,208 @@
+{
+  "page": "01-guide/18-embedding-calling-c-from-wren.md",
+  "titleEN": "Calling C from Wren",
+  "titleJA": "WrenからCを呼び出す",
+  "sourceCanonicalSHA256": "695e8c3734c25137124c8f1ab4b02b7d236ce882aff93624621449c6854aacae",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Calling C from Wren",
+      "originalInnerHTML": "Calling C from Wren",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "When we are ensconced within the world of Wren, the external C world is\n“foreign” to us. There are two reasons we might want to bring some foreign\nflavor into our VM:",
+      "originalInnerHTML": "When we are ensconced within the world of Wren, the external C world is\n“foreign” to us. There are two reasons we might want to bring some foreign\nflavor into our VM:",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "li",
+      "sourceHTML": "We want to execute code written in C.",
+      "originalInnerHTML": "We want to execute code written in C.",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "li",
+      "sourceHTML": "We want to store raw C data.",
+      "originalInnerHTML": "We want to store raw C data.",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "Since Wren is object-oriented, behavior lives in methods, so for the former we\nhave <strong>foreign methods</strong>. Likewise, data lives in objects, so for the latter, we\ndefine <strong>foreign classes</strong>. This page is about the first, foreign methods. The\n<a href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">next page</a> covers foreign classes.",
+      "originalInnerHTML": "Since Wren is object-oriented, behavior lives in methods, so for the former we\nhave <strong>foreign methods</strong>. Likewise, data lives in objects, so for the latter, we\ndefine <strong>foreign classes</strong>. This page is about the first, foreign methods. The\n<a href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">next page</a> covers foreign classes.",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "A foreign method looks to Wren like a regular method. It is defined on a Wren\nclass, it has a name and signature, and calls to it are dynamically dispatched.\nThe only difference is that the <em>body</em> of the method is written in C.",
+      "originalInnerHTML": "A foreign method looks to Wren like a regular method. It is defined on a Wren\nclass, it has a name and signature, and calls to it are dynamically dispatched.\nThe only difference is that the <em>body</em> of the method is written in C.",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "A foreign method is declared in Wren like so:",
+      "originalInnerHTML": "A foreign method is declared in Wren like so:",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ keyword tells Wren that the method ⟦CODE1⟧ is declared on ⟦CODE2⟧,\nbut implemented in C. Both static and instance methods can be foreign.",
+      "originalInnerHTML": "The <code>foreign</code> keyword tells Wren that the method <code>add()</code> is declared on <code>Math</code>,\nbut implemented in C. Both static and instance methods can be foreign.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>foreign</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>add()</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>Math</code>"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "tag": "h2",
+      "sourceHTML": "Binding Foreign Methods <a class=\"header-anchor\" href=\"#binding-foreign-methods\" name=\"binding-foreign-methods\">#</a>",
+      "originalInnerHTML": "Binding Foreign Methods <a class=\"header-anchor\" href=\"#binding-foreign-methods\" name=\"binding-foreign-methods\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "When you call a foreign method, Wren needs to figure out which C function to\nexecute. This process is called <em>binding</em>. Binding is performed on-demand by the\nVM. When a class that declares a foreign method is executed – when the ⟦CODE0⟧\nstatement itself is evaluated – the VM asks the host application for the C\nfunction that should be used for the foreign method.",
+      "originalInnerHTML": "When you call a foreign method, Wren needs to figure out which C function to\nexecute. This process is called <em>binding</em>. Binding is performed on-demand by the\nVM. When a class that declares a foreign method is executed – when the <code>class</code>\nstatement itself is evaluated – the VM asks the host application for the C\nfunction that should be used for the foreign method.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>class</code>"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "It does this through the ⟦CODE0⟧ callback you give it when you\nfirst <a href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">configure the VM</a>. This callback isn’t the foreign method itself.\nIt’s the binding function your app uses to <em>look up</em> foreign methods.",
+      "originalInnerHTML": "It does this through the <code>bindForeignMethodFn</code> callback you give it when you\nfirst <a href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">configure the VM</a>. This callback isn’t the foreign method itself.\nIt’s the binding function your app uses to <em>look up</em> foreign methods.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>bindForeignMethodFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "Its signature is:",
+      "originalInnerHTML": "Its signature is:",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "Every time a foreign method is first declared, the VM invokes this callback. It\npasses in the module containing the class declaration, the name of the class\ncontaining the method, the method’s signature, and whether or not it’s a static\nmethod. In the above example, it would pass something like:",
+      "originalInnerHTML": "Every time a foreign method is first declared, the VM invokes this callback. It\npasses in the module containing the class declaration, the name of the class\ncontaining the method, the method’s signature, and whether or not it’s a static\nmethod. In the above example, it would pass something like:",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "When you configure the VM, you give it a C callback that looks up the\nappropriate function for the given foreign method and returns a pointer to it.\nSomething like:",
+      "originalInnerHTML": "When you configure the VM, you give it a C callback that looks up the\nappropriate function for the given foreign method and returns a pointer to it.\nSomething like:",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "This implementation is pretty tedious, but you get the idea. Feel free to do\nsomething more clever here in your host application.",
+      "originalInnerHTML": "This implementation is pretty tedious, but you get the idea. Feel free to do\nsomething more clever here in your host application.",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "The important part is that it returns a pointer to a C function to use for that\nforeign method. Wren does this binding step <em>once</em> when the class definition is\nfirst executed. It then keeps the function pointer you return and associates it\nwith that method. This way, <em>calls</em> to the foreign method are fast.",
+      "originalInnerHTML": "The important part is that it returns a pointer to a C function to use for that\nforeign method. Wren does this binding step <em>once</em> when the class definition is\nfirst executed. It then keeps the function pointer you return and associates it\nwith that method. This way, <em>calls</em> to the foreign method are fast.",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "h2",
+      "sourceHTML": "Implementing a Foreign Method <a class=\"header-anchor\" href=\"#implementing-a-foreign-method\" name=\"implementing-a-foreign-method\">#</a>",
+      "originalInnerHTML": "Implementing a Foreign Method <a class=\"header-anchor\" href=\"#implementing-a-foreign-method\" name=\"implementing-a-foreign-method\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "All C functions for foreign methods have the same signature:",
+      "originalInnerHTML": "All C functions for foreign methods have the same signature:",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Arguments passed from Wren are not passed as C arguments, and the method’s\nreturn value is not a C return value. Instead – you guessed it – we go through\nthe <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">slot array</a>.",
+      "originalInnerHTML": "Arguments passed from Wren are not passed as C arguments, and the method’s\nreturn value is not a C return value. Instead – you guessed it – we go through\nthe <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">slot array</a>.",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "When a foreign method is called from Wren, the VM sets up the slot array with\nthe receiver and arguments to the call. As in calling Wren from C, the receiver\nobject is in slot zero, and arguments are in consecutive slots after that.",
+      "originalInnerHTML": "When a foreign method is called from Wren, the VM sets up the slot array with\nthe receiver and arguments to the call. As in calling Wren from C, the receiver\nobject is in slot zero, and arguments are in consecutive slots after that.",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "You use the slot API to read those arguments, and then perform whatever work you\nwant to in C. If you want the foreign method to return a value, place it in slot\nzero. Like so:",
+      "originalInnerHTML": "You use the slot API to read those arguments, and then perform whatever work you\nwant to in C. If you want the foreign method to return a value, place it in slot\nzero. Like so:",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "While your foreign method is executing, the VM is completely suspended. No other\nfibers run until your foreign method returns. You should <em>not</em> try to resume the\nVM from within a foreign method by calling ⟦CODE0⟧ or ⟦CODE1⟧.\nThe VM is not re-entrant.",
+      "originalInnerHTML": "While your foreign method is executing, the VM is completely suspended. No other\nfibers run until your foreign method returns. You should <em>not</em> try to resume the\nVM from within a foreign method by calling <code>wrenCall()</code> or <code>wrenInterpret()</code>.\nThe VM is not re-entrant.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenCall()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>wrenInterpret()</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "This covers foreign behavior, but what about foreign <em>state</em>? For that, we need\na foreign <em>class</em>…",
+      "originalInnerHTML": "This covers foreign behavior, but what about foreign <em>state</em>? For that, we need\na foreign <em>class</em>…",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">Storing C Data →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/\">← Calling Wren from C</a>",
+      "originalInnerHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">Storing C Data →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/\">← Calling Wren from C</a>",
+      "protected": []
+    }
+  ]
+}

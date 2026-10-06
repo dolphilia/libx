@@ -1,0 +1,367 @@
+{
+  "page": "01-guide/16-embedding.md",
+  "titleEN": "Embedding",
+  "titleJA": "Wrenの組み込み",
+  "sourceCanonicalSHA256": "d186daedcc6e7ac820d60a7e75996be6e5a140a760521acf44423c3cea325c4a",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Embedding",
+      "originalInnerHTML": "Embedding",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Wren is designed to be a scripting language that lives inside a host\napplication, so the embedding API is as important as any of its language\nfeatures. Designing this API well requires satisfying several constraints:",
+      "originalInnerHTML": "Wren is designed to be a scripting language that lives inside a host\napplication, so the embedding API is as important as any of its language\nfeatures. Designing this API well requires satisfying several constraints:",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>Wren is dynamically typed, but C is not.</strong> A variable can hold a value of\n   any type in Wren, but that’s definitely not the case in C unless you define\n   some sort of variant type, which ultimately just kicks the problem down the\n   road. Eventually, we have to move data across the boundary between statically and dynamically typed code.</p>\n",
+      "originalInnerHTML": "\n<p><strong>Wren is dynamically typed, but C is not.</strong> A variable can hold a value of\n   any type in Wren, but that’s definitely not the case in C unless you define\n   some sort of variant type, which ultimately just kicks the problem down the\n   road. Eventually, we have to move data across the boundary between statically and dynamically typed code.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>Wren uses garbage collection, but C manages memory manually.</strong> GC adds a\n   few constraints on the API. The VM must be able to find every Wren object\n   that is still usable, even if that object is being referenced from native C\n   code. Otherwise, Wren could free an object that’s still in use.</p>\n<p>Also, we ideally don’t want to let native C code see a bare pointer to a\nchunk of memory managed by Wren. Many garbage collection strategies involve\n<a href=\"https://en.wikipedia.org/wiki/Tracing_garbage_collection#Copying_vs._mark-and-sweep_vs._mark-and-don.27t-sweep\">moving objects</a> in memory. If we allow C code to point directly to an\nobject, that pointer will be left dangling when the object moves. Wren’s GC\ndoesn’t move objects today, but we would like to keep that option for the\nfuture.</p>\n",
+      "originalInnerHTML": "\n<p><strong>Wren uses garbage collection, but C manages memory manually.</strong> GC adds a\n   few constraints on the API. The VM must be able to find every Wren object\n   that is still usable, even if that object is being referenced from native C\n   code. Otherwise, Wren could free an object that’s still in use.</p>\n<p>Also, we ideally don’t want to let native C code see a bare pointer to a\nchunk of memory managed by Wren. Many garbage collection strategies involve\n<a href=\"https://en.wikipedia.org/wiki/Tracing_garbage_collection#Copying_vs._mark-and-sweep_vs._mark-and-don.27t-sweep\">moving objects</a> in memory. If we allow C code to point directly to an\nobject, that pointer will be left dangling when the object moves. Wren’s GC\ndoesn’t move objects today, but we would like to keep that option for the\nfuture.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>The embedding API needs to be fast.</strong> Users may add layers of abstraction\n   on top of the API to make it more pleasant to work with, but the base API\n   defines the <em>maximum</em> performance you can get out of the system. It’s the\n   bottom of the stack, so there’s no way for a user to optimize around it if\n   it’s too slow. There is no lower level alternative.</p>\n",
+      "originalInnerHTML": "\n<p><strong>The embedding API needs to be fast.</strong> Users may add layers of abstraction\n   on top of the API to make it more pleasant to work with, but the base API\n   defines the <em>maximum</em> performance you can get out of the system. It’s the\n   bottom of the stack, so there’s no way for a user to optimize around it if\n   it’s too slow. There is no lower level alternative.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>We want the API to be pleasant to use.</strong> This is the last constraint\n   because it’s the softest. Of course, we want a beautiful, usable API. But we\n   really <em>need</em> to handle the above, so we’re willing to make things a bit more\n   of a chore to reach the first three goals.</p>\n",
+      "originalInnerHTML": "\n<p><strong>We want the API to be pleasant to use.</strong> This is the last constraint\n   because it’s the softest. Of course, we want a beautiful, usable API. But we\n   really <em>need</em> to handle the above, so we’re willing to make things a bit more\n   of a chore to reach the first three goals.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "Fortunately, we aren’t the first people to tackle this. If you’re familiar with\n<a href=\"https://www.lua.org/pil/24.html\">Lua’s C API</a>, you’ll find Wren’s similar.",
+      "originalInnerHTML": "Fortunately, we aren’t the first people to tackle this. If you’re familiar with\n<a href=\"https://www.lua.org/pil/24.html\">Lua’s C API</a>, you’ll find Wren’s similar.",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "h3",
+      "sourceHTML": "Performance and safety <a class=\"header-anchor\" href=\"#performance-and-safety\" name=\"performance-and-safety\">#</a>",
+      "originalInnerHTML": "Performance and safety <a class=\"header-anchor\" href=\"#performance-and-safety\" name=\"performance-and-safety\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "When code is safely snuggled within the confines of the VM, it’s pretty safe.\nMethod calls are dynamically checked and generate runtime errors which can be\ncaught and handled. The stack grows if it gets close to overflowing. In general,\nwhen you’re within Wren code, it tries very hard to avoid crashing and burning.",
+      "originalInnerHTML": "When code is safely snuggled within the confines of the VM, it’s pretty safe.\nMethod calls are dynamically checked and generate runtime errors which can be\ncaught and handled. The stack grows if it gets close to overflowing. In general,\nwhen you’re within Wren code, it tries very hard to avoid crashing and burning.",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "This is why you use a high level language after all—it’s safer and more\nproductive than C. C, meanwhile, really assumes you know what you’re doing. You\ncan cast pointers in invalid ways, misinterpret bits, use memory after freeing\nit, etc. What you get in return is blazing performance. Many of the reasons C is\nfast are because it takes all the governors and guardrails off.",
+      "originalInnerHTML": "This is why you use a high level language after all—it’s safer and more\nproductive than C. C, meanwhile, really assumes you know what you’re doing. You\ncan cast pointers in invalid ways, misinterpret bits, use memory after freeing\nit, etc. What you get in return is blazing performance. Many of the reasons C is\nfast are because it takes all the governors and guardrails off.",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "Wren’s embedding API defines the border between those worlds, and takes on some\nof the characteristics of C. When you call any of the embedding API functions,\nit assumes you are calling them correctly. If you invoke a Wren method from C\nthat expects three arguments, it trusts that you gave it three arguments.",
+      "originalInnerHTML": "Wren’s embedding API defines the border between those worlds, and takes on some\nof the characteristics of C. When you call any of the embedding API functions,\nit assumes you are calling them correctly. If you invoke a Wren method from C\nthat expects three arguments, it trusts that you gave it three arguments.",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "In debug builds, Wren has assertions to check as many things as it can, but in\nrelease builds, Wren expects you to do the right thing. This means you need to\ntake care when using the embedding API, just like you do in all C code you\nwrite. In return, you get an API that is quite fast.",
+      "originalInnerHTML": "In debug builds, Wren has assertions to check as many things as it can, but in\nrelease builds, Wren expects you to do the right thing. This means you need to\ntake care when using the embedding API, just like you do in all C code you\nwrite. In return, you get an API that is quite fast.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "h2",
+      "sourceHTML": "Including Wren <a class=\"header-anchor\" href=\"#including-wren\" name=\"including-wren\">#</a>",
+      "originalInnerHTML": "Including Wren <a class=\"header-anchor\" href=\"#including-wren\" name=\"including-wren\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "There are two (well, three) ways to get the Wren VM into your program:",
+      "originalInnerHTML": "There are two (well, three) ways to get the Wren VM into your program:",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>Link to the static or dynamic library.</strong> When you <a href=\"/docs/wren/v0-4-0/en/01-guide/02-getting-started/\">build Wren</a>, it\n    generates both shared and static libraries in ⟦CODE0⟧ that you can link to.</p>\n",
+      "originalInnerHTML": "\n<p><strong>Link to the static or dynamic library.</strong> When you <a href=\"/docs/wren/v0-4-0/en/01-guide/02-getting-started/\">build Wren</a>, it\n    generates both shared and static libraries in <code>lib</code> that you can link to.</p>\n",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>lib</code>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>Include the source directly in your application.</strong> If you want to include\n    the source directly in your program, you don’t need to run any build steps.\n    Just add the source files in ⟦CODE0⟧ to your project. They should compile\n    cleanly as C99 or C++98 or anything later.</p>\n",
+      "originalInnerHTML": "\n<p><strong>Include the source directly in your application.</strong> If you want to include\n    the source directly in your program, you don’t need to run any build steps.\n    Just add the source files in <code>src/vm</code> to your project. They should compile\n    cleanly as C99 or C++98 or anything later.</p>\n",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>src/vm</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "In either case, you also want to add ⟦CODE0⟧ to your include path so you\ncan find the <a href=\"https://github.com/wren-lang/wren/blob/main/src/include/wren.h\">public header for Wren</a>:",
+      "originalInnerHTML": "In either case, you also want to add <code>src/include</code> to your include path so you\ncan find the <a href=\"https://github.com/wren-lang/wren/blob/main/src/include/wren.h\">public header for Wren</a>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>src/include</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "Wren depends only on the C standard library, so you don’t usually need to link\nto anything else. On some platforms (at least BSD and Linux) some of the math\nfunctions in ⟦CODE0⟧ are implemented in a separate library, <a href=\"https://en.wikipedia.org/wiki/C_mathematical_functions#libm\">libm</a>, that you\nhave to explicitly link to.",
+      "originalInnerHTML": "Wren depends only on the C standard library, so you don’t usually need to link\nto anything else. On some platforms (at least BSD and Linux) some of the math\nfunctions in <code>math.h</code> are implemented in a separate library, <a href=\"https://en.wikipedia.org/wiki/C_mathematical_functions#libm\">libm</a>, that you\nhave to explicitly link to.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>math.h</code>"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "If your program is in C++ but you are linking to the Wren library compiled as C,\nthis header handles the differences in calling conventions between C and C++:",
+      "originalInnerHTML": "If your program is in C++ but you are linking to the Wren library compiled as C,\nthis header handles the differences in calling conventions between C and C++:",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "sourceHTML": "Creating a Wren VM <a class=\"header-anchor\" href=\"#creating-a-wren-vm\" name=\"creating-a-wren-vm\">#</a>",
+      "originalInnerHTML": "Creating a Wren VM <a class=\"header-anchor\" href=\"#creating-a-wren-vm\" name=\"creating-a-wren-vm\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "Once you’ve integrated the code into your executable, you need to create a\nvirtual machine. To do that, you create a ⟦CODE0⟧ object and\ninitialize it.",
+      "originalInnerHTML": "Once you’ve integrated the code into your executable, you need to create a\nvirtual machine. To do that, you create a <code>WrenConfiguration</code> object and\ninitialize it.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>WrenConfiguration</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "This gives you a basic configuration that has reasonable defaults for\neverything. We’ll <a href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">learn more</a> about what you can configure later,\nbut for now we’ll just add the ⟦CODE0⟧, so that we can print text.",
+      "originalInnerHTML": "This gives you a basic configuration that has reasonable defaults for\neverything. We’ll <a href=\"/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/\">learn more</a> about what you can configure later,\nbut for now we’ll just add the <code>writeFn</code>, so that we can print text.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>writeFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "First we need a function that will do something with the output\nthat Wren sends us from ⟦CODE0⟧ (or ⟦CODE1⟧). <em>Note that it doesn’t\ninclude a newline in the output.</em>",
+      "originalInnerHTML": "First we need a function that will do something with the output\nthat Wren sends us from <code>System.print</code> (or <code>System.write</code>). <em>Note that it doesn’t\ninclude a newline in the output.</em>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>System.print</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>System.write</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "And then, we update the configuration to point to it.",
+      "originalInnerHTML": "And then, we update the configuration to point to it.",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "With this ready, you can create the VM:",
+      "originalInnerHTML": "With this ready, you can create the VM:",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "This allocates memory for a new VM and initializes it. The Wren C implementation\nhas no global state, so every single bit of data Wren uses is bundled up inside\na WrenVM. You can have multiple Wren VMs running independently of each other\nwithout any problems, even concurrently on different threads.",
+      "originalInnerHTML": "This allocates memory for a new VM and initializes it. The Wren C implementation\nhas no global state, so every single bit of data Wren uses is bundled up inside\na WrenVM. You can have multiple Wren VMs running independently of each other\nwithout any problems, even concurrently on different threads.",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "⟦CODE0⟧ stores its own copy of the configuration, so after calling it, you\ncan discard the WrenConfiguration struct you filled in. Now you have a live\nVM, waiting to run some code!",
+      "originalInnerHTML": "<code>wrenNewVM()</code> stores its own copy of the configuration, so after calling it, you\ncan discard the WrenConfiguration struct you filled in. Now you have a live\nVM, waiting to run some code!",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenNewVM()</code>"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "tag": "h2",
+      "sourceHTML": "Executing Wren code <a class=\"header-anchor\" href=\"#executing-wren-code\" name=\"executing-wren-code\">#</a>",
+      "originalInnerHTML": "Executing Wren code <a class=\"header-anchor\" href=\"#executing-wren-code\" name=\"executing-wren-code\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "You execute a string of Wren source code like so:",
+      "originalInnerHTML": "You execute a string of Wren source code like so:",
+      "protected": []
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "The string is a series of one or more statements separated by newlines. Wren\ncopies the string, so you can free it after calling this. When you call\n⟦CODE0⟧, Wren first compiles your source to bytecode. If an error\noccurs, it returns immediately with ⟦CODE1⟧.",
+      "originalInnerHTML": "The string is a series of one or more statements separated by newlines. Wren\ncopies the string, so you can free it after calling this. When you call\n<code>wrenInterpret()</code>, Wren first compiles your source to bytecode. If an error\noccurs, it returns immediately with <code>WREN_RESULT_COMPILE_ERROR</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenInterpret()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>WREN_RESULT_COMPILE_ERROR</code>"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "Otherwise, Wren spins up a new <a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">fiber</a> and executes the code in that. Your\ncode can in turn spawn whatever other fibers it wants. It keeps running fibers\nuntil they all complete or one <a href=\"/docs/wren/v0-4-0/en/02-reference/03-modules-core-fiber/#fiber.suspend()\">suspends</a>.",
+      "originalInnerHTML": "Otherwise, Wren spins up a new <a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">fiber</a> and executes the code in that. Your\ncode can in turn spawn whatever other fibers it wants. It keeps running fibers\nuntil they all complete or one <a href=\"/docs/wren/v0-4-0/en/02-reference/03-modules-core-fiber/#fiber.suspend()\">suspends</a>.",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "If a <a href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">runtime error</a> occurs (and another fiber doesn’t handle it), Wren aborts\nfibers all the way back to the main one and returns ⟦CODE0⟧.\nOtherwise, when the last fiber successfully returns, it returns\n⟦CODE1⟧.",
+      "originalInnerHTML": "If a <a href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">runtime error</a> occurs (and another fiber doesn’t handle it), Wren aborts\nfibers all the way back to the main one and returns <code>WREN_RESULT_RUNTIME_ERROR</code>.\nOtherwise, when the last fiber successfully returns, it returns\n<code>WREN_RESULT_SUCCESS</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>WREN_RESULT_RUNTIME_ERROR</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>WREN_RESULT_SUCCESS</code>"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "sourceHTML": "All code passed to ⟦CODE0⟧ runs in a special “main” module. That way,\ntop-level names defined in one call can be accessed in later ones. It’s similar\nto a REPL session.",
+      "originalInnerHTML": "All code passed to <code>wrenInterpret()</code> runs in a special “main” module. That way,\ntop-level names defined in one call can be accessed in later ones. It’s similar\nto a REPL session.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenInterpret()</code>"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "tag": "h2",
+      "sourceHTML": "Shutting down a VM <a class=\"header-anchor\" href=\"#shutting-down-a-vm\" name=\"shutting-down-a-vm\">#</a>",
+      "originalInnerHTML": "Shutting down a VM <a class=\"header-anchor\" href=\"#shutting-down-a-vm\" name=\"shutting-down-a-vm\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "Once the party is over and you’re ready to end your relationship with a VM, you\nneed to free any memory it allocated. You do that like so:",
+      "originalInnerHTML": "Once the party is over and you’re ready to end your relationship with a VM, you\nneed to free any memory it allocated. You do that like so:",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "After calling that, you obviously cannot use the ⟦CODE0⟧ you passed to it\nagain. It’s dead.",
+      "originalInnerHTML": "After calling that, you obviously cannot use the <code>WrenVM*</code> you passed to it\nagain. It’s dead.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>WrenVM*</code>"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "sourceHTML": "Note that Wren will yell at you if you still have any live <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/#handles\">WrenHandle</a>\nobjects when you call this. This makes sure you haven’t lost track of any of\nthem (which leaks memory) and you don’t try to use any of them after the VM has\nbeen freed.",
+      "originalInnerHTML": "Note that Wren will yell at you if you still have any live <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/#handles\">WrenHandle</a>\nobjects when you call this. This makes sure you haven’t lost track of any of\nthem (which leaks memory) and you don’t try to use any of them after the VM has\nbeen freed.",
+      "protected": []
+    },
+    {
+      "id": "38",
+      "tag": "h2",
+      "sourceHTML": "A complete example <a class=\"header-anchor\" href=\"#a-complete-example\" name=\"a-complete-example\">#</a>",
+      "originalInnerHTML": "A complete example <a class=\"header-anchor\" href=\"#a-complete-example\" name=\"a-complete-example\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "39",
+      "tag": "p",
+      "sourceHTML": "Below is a complete example of the above.\nYou can find this file in the <a href=\"https://github.com/wren-lang/wren/blob/main/example/embedding/main.c\">example</a> folder.",
+      "originalInnerHTML": "Below is a complete example of the above.\nYou can find this file in the <a href=\"https://github.com/wren-lang/wren/blob/main/example/embedding/main.c\">example</a> folder.",
+      "protected": []
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "sourceHTML": "Next, we’ll learn to make that VM do useful stuff…",
+      "originalInnerHTML": "Next, we’ll learn to make that VM do useful stuff…",
+      "protected": []
+    },
+    {
+      "id": "41",
+      "tag": "p",
+      "sourceHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">Slots and Handles →</a>",
+      "originalInnerHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">Slots and Handles →</a>",
+      "protected": []
+    }
+  ]
+}
