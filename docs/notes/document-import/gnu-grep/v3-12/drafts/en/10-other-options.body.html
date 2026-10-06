@@ -1,0 +1,60 @@
+<div class="gnu-grep-original-content" id="Other-Options">
+<h4 class="subsection" id="Other-Options-1"><span>2.1.7 Other Options</span></h4>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-option-delimiter"></a>
+<a id="index-_002d_002d"></a><span><samp class="option">--</samp></span></dt>
+<dd><p>Delimit the option list.  Any later argument is not treated as an
+option even if it begins with ‘<samp class="samp">-</samp>’.  For example,
+‘<samp class="samp">grep -- -PAT -file1 file2</samp>’ searches for the pattern ‘<samp class="samp">-PAT</samp>’
+in the files named <samp class="file">-file1</samp> and <samp class="file">file2</samp>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-line-buffering"></a>
+<a id="index-_002d_002dline_002dbuffered"></a><span><samp class="option">--line-buffered</samp></span></dt>
+<dd><p>Use line buffering for standard output, regardless of output device.
+By default, standard output is line buffered for interactive devices,
+and is fully buffered otherwise.  With full buffering, the output
+buffer is flushed when full; with line buffering, the buffer is also
+flushed after every output line.  The buffer size is system dependent.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dbinary"></a>
+<a class="index-entry-id" id="index-MS_002dWindows-binary-I_002fO"></a>
+<a class="index-entry-id" id="index-binary-I_002fO"></a>
+<a id="index-_002dU"></a><span><samp class="option">-U</samp></span></dt>
+<dt><samp class="option">--binary</samp></dt>
+<dd><p>On platforms that distinguish between text and binary I/O,
+use the latter when reading and writing files other
+than the user’s terminal, so that all input bytes are read and written
+as-is.  This overrides the default behavior where <code class="command">grep</code>
+follows the operating system’s advice whether to use text or binary
+I/O.  On MS-Windows when <code class="command">grep</code> uses text I/O it reads a
+carriage return–newline pair as a newline and a Control-Z as
+end-of-file, and it writes a newline as a carriage return–newline
+pair.
+</p>
+<p>When using text I/O <samp class="option">--byte-offset</samp> (<samp class="option">-b</samp>) counts and
+<samp class="option">--binary-files</samp> heuristics apply to input data after text-I/O
+processing.  Also, the <samp class="option">--binary-files</samp> heuristics need not agree
+with the <samp class="option">--binary</samp> option; that is, they may treat the data as
+text even if <samp class="option">--binary</samp> is given, or vice versa.
+See <a class="xref" href="/docs/gnu-grep/v3-12/en/01-guide/09-file-directory-selection/#File-and-Directory-Selection">File and Directory Selection</a>.
+</p>
+<p>This option has no effect on GNU and other POSIX-compatible platforms,
+which do not distinguish text from binary I/O.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dnull_002ddata"></a>
+<a class="index-entry-id" id="index-zero_002dterminated-lines"></a>
+<a id="index-_002dz"></a><span><samp class="option">-z</samp></span></dt>
+<dt><samp class="option">--null-data</samp></dt>
+<dd><p>Treat input and output data as sequences of lines, each terminated by
+a zero byte (the ASCII NUL character) instead of a newline.
+Like the <samp class="option">-Z</samp> or <samp class="option">--null</samp> option,
+this option can be used with commands like
+‘<samp class="samp">sort -z</samp>’ to process arbitrary file names.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>

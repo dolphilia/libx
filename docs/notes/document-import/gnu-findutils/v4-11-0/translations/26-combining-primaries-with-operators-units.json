@@ -1,0 +1,159 @@
+{
+  "slug": "26-combining-primaries-with-operators",
+  "bodySHA256": "2936e058a7d20843a2237ca1468ba13003f7845875529a594168e9ffc808e0d4",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧2.13 Combining Primaries With Operators⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Combining-Primaries-With-Operators-1\"><span>2.13 Combining Primaries With Operators</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Operators build a complex expression from tests and actions. The operators are, in order of decreasing precedence:",
+      "tokens": {},
+      "sourceHTML": "<p>Operators build a complex expression from tests and actions.\nThe operators are, in order of decreasing precedence:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Force precedence. True if ⟦0⟧ is true.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">expr</var>"
+      },
+      "sourceHTML": "<p>Force precedence.  True if <var class=\"var\">expr</var> is true.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "True if ⟦0⟧ is false. In some shells, it is necessary to protect the ‘⟦1⟧’ from shell interpretation by quoting it. The ‘⟦2⟧’ operator does not exist in POSIX, so ‘⟦3⟧’ is an equivalent and more portable choice.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">expr</var>",
+        "⟦1⟧": "<samp class=\"samp\">!</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-not</samp>",
+        "⟦3⟧": "<samp class=\"samp\">!</samp>"
+      },
+      "sourceHTML": "<p>True if <var class=\"var\">expr</var> is false.  In some shells, it is necessary to\nprotect the ‘<samp class=\"samp\">!</samp>’ from shell interpretation by quoting it.\nThe ‘<samp class=\"samp\">-not</samp>’ operator does not exist in POSIX, so ‘<samp class=\"samp\">!</samp>’ is an\nequivalent and more portable choice.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "And; ⟦0⟧ is not evaluated if ⟦1⟧ is false. The ‘⟦2⟧’ operator does not exist in POSIX, so ‘⟦3⟧’ is an equivalent and more portable choice.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">expr2</var>",
+        "⟦1⟧": "<var class=\"var\">expr1</var>",
+        "⟦2⟧": "<samp class=\"samp\">-and</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-a</samp>"
+      },
+      "sourceHTML": "<p>And; <var class=\"var\">expr2</var> is not evaluated if <var class=\"var\">expr1</var> is false.\nThe ‘<samp class=\"samp\">-and</samp>’ operator does not exist in POSIX, so ‘<samp class=\"samp\">-a</samp>’ is an\nequivalent and more portable choice.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Or; ⟦0⟧ is not evaluated if ⟦1⟧ is true. The ‘⟦2⟧’ operator does not exist in POSIX, so ‘⟦3⟧’ is an equivalent and more portable choice.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">expr2</var>",
+        "⟦1⟧": "<var class=\"var\">expr1</var>",
+        "⟦2⟧": "<samp class=\"samp\">-or</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-o</samp>"
+      },
+      "sourceHTML": "<p>Or; <var class=\"var\">expr2</var> is not evaluated if <var class=\"var\">expr1</var> is true.\nThe ‘<samp class=\"samp\">-or</samp>’ operator does not exist in POSIX, so ‘<samp class=\"samp\">-o</samp>’ is an\nequivalent and more portable choice.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "List; both ⟦0⟧ and ⟦1⟧ are always evaluated. True if ⟦2⟧ is true. The value of ⟦3⟧ is discarded. This operator lets you do multiple independent operations on one traversal, without depending on whether other operations succeeded. The two operations ⟦4⟧ and ⟦5⟧ are not always fully independent, since ⟦6⟧ might have side effects like touching or deleting files, or it might use ‘⟦7⟧’ which would also affect ⟦8⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">expr1</var>",
+        "⟦1⟧": "<var class=\"var\">expr2</var>",
+        "⟦2⟧": "<var class=\"var\">expr2</var>",
+        "⟦3⟧": "<var class=\"var\">expr1</var>",
+        "⟦4⟧": "<var class=\"var\">expr1</var>",
+        "⟦5⟧": "<var class=\"var\">expr2</var>",
+        "⟦6⟧": "<var class=\"var\">expr1</var>",
+        "⟦7⟧": "<samp class=\"samp\">-prune</samp>",
+        "⟦8⟧": "<var class=\"var\">expr2</var>"
+      },
+      "sourceHTML": "<p>List; both <var class=\"var\">expr1</var> and <var class=\"var\">expr2</var> are always evaluated.  True if\n<var class=\"var\">expr2</var> is true.  The value of <var class=\"var\">expr1</var> is discarded.  This\noperator lets you do multiple independent operations on one traversal,\nwithout depending on whether other operations succeeded.  The two\noperations <var class=\"var\">expr1</var> and <var class=\"var\">expr2</var> are not always fully\nindependent, since <var class=\"var\">expr1</var> might have side effects like touching\nor deleting files, or it might use ‘<samp class=\"samp\">-prune</samp>’ which would also\naffect <var class=\"var\">expr2</var>.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Please note that ‘⟦0⟧’ when specified implicitly (for example by two tests appearing without an explicit operator between them) or explicitly has higher precedence than ‘⟦1⟧’. This means that ‘⟦2⟧’ will never print ‘⟦3⟧’ .",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-a</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-o</samp>",
+        "⟦2⟧": "<samp class=\"samp\">find afile bfile -name afile -o -name bfile -print</samp>",
+        "⟦3⟧": "<samp class=\"samp\">afile</samp>"
+      },
+      "sourceHTML": "<p>Please note that ‘<samp class=\"samp\">-a</samp>’ when specified implicitly (for example by\ntwo tests appearing without an explicit operator between them)\nor explicitly has higher precedence than ‘<samp class=\"samp\">-o</samp>’.\nThis means that ‘<samp class=\"samp\">find afile bfile -name afile -o -name bfile -print</samp>’\nwill never print ‘<samp class=\"samp\">afile</samp>’ .\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "⟦0⟧ searches the directory tree rooted at each file name by evaluating the expression from left to right, according to the rules of precedence, until the outcome is known (the left hand side is false for ‘⟦1⟧’, true for ‘⟦2⟧’), at which point ⟦3⟧ moves on to the next file name.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<samp class=\"samp\">-and</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-or</samp>",
+        "⟦3⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p><code class=\"code\">find</code> searches the directory tree rooted at each file name by\nevaluating the expression from left to right, according to the rules\nof precedence, until the outcome is known (the left hand side is false\nfor ‘<samp class=\"samp\">-and</samp>’, true for ‘<samp class=\"samp\">-or</samp>’), at which point <code class=\"code\">find</code>\nmoves on to the next file name.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "There are two other tests that can be useful in complex expressions:",
+      "tokens": {},
+      "sourceHTML": "<p>There are two other tests that can be useful in complex expressions:\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-true⟦4⟧⟦5⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dtrue\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-true</strong></span></dt>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "Always true.",
+      "tokens": {},
+      "sourceHTML": "<p>Always true.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-false⟦4⟧⟦5⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dfalse\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-false</strong></span></dt>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "Always false.",
+      "tokens": {},
+      "sourceHTML": "<p>Always false.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

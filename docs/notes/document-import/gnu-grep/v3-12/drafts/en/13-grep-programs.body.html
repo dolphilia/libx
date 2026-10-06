@@ -1,0 +1,105 @@
+<div class="gnu-grep-original-content" id="grep-Programs">
+<h3 class="section" id="grep-Programs-1"><span>2.4 <code class="command">grep</code> Programs</span></h3>
+<a class="index-entry-id" id="index-grep-programs"></a>
+<a class="index-entry-id" id="index-variants-of-grep"></a>
+<p><code class="command">grep</code> searches the named input files
+for lines containing a match to the given patterns.
+By default, <code class="command">grep</code> prints the matching lines.
+A file named <samp class="file">-</samp> stands for standard input.
+If no input is specified, <code class="command">grep</code> searches the working
+directory <samp class="file">.</samp> if given a command-line option specifying
+recursion; otherwise, <code class="command">grep</code> searches standard input.
+There are four major variants of <code class="command">grep</code>,
+controlled by the following options.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-_002d_002dbasic_002dregexp"></a>
+<a class="index-entry-id" id="index-matching-basic-regular-expressions"></a>
+<a id="index-_002dG"></a><span><samp class="option">-G</samp></span></dt>
+<dt><samp class="option">--basic-regexp</samp></dt>
+<dd><p>Interpret patterns as basic regular expressions (BREs).
+This is the default.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dextended_002dregexp"></a>
+<a class="index-entry-id" id="index-matching-extended-regular-expressions"></a>
+<a id="index-_002dE"></a><span><samp class="option">-E</samp></span></dt>
+<dt><samp class="option">--extended-regexp</samp></dt>
+<dd><p>Interpret patterns as extended regular expressions (EREs).
+(<samp class="option">-E</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dfixed_002dstrings"></a>
+<a class="index-entry-id" id="index-matching-fixed-strings"></a>
+<a id="index-_002dF"></a><span><samp class="option">-F</samp></span></dt>
+<dt><samp class="option">--fixed-strings</samp></dt>
+<dd><p>Interpret patterns as fixed strings, not regular expressions.
+(<samp class="option">-F</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dperl_002dregexp"></a>
+<a class="index-entry-id" id="index-matching-Perl_002dcompatible-regular-expressions"></a>
+<a id="index-_002dP"></a><span><samp class="option">-P</samp></span></dt>
+<dt><samp class="option">--perl-regexp</samp></dt>
+<dd><p>Interpret patterns as Perl-compatible regular expressions (PCREs).
+</p>
+<p>For documentation, refer to <a class="url" href="https://www.pcre.org/">https://www.pcre.org/</a>, with these caveats:
+</p><ul class="itemize mark-bullet">
+<li>In a UTF-8 locale, Perl treats data as UTF-8 only under certain
+conditions, e.g., if <code class="command">perl</code> is invoked with the <samp class="option">-C</samp>
+option or the <code class="env">PERL_UNICODE</code> environment variable set appropriately.
+Similarly, <code class="command">pcre2grep</code> treats data as UTF-8 only if
+invoked with <samp class="option">-u</samp> or <samp class="option">-U</samp>.
+In contrast, in a UTF-8 locale <code class="command">grep</code> and <code class="command">git grep</code>
+always treat data as UTF-8.
+
+</li><li>In Perl and <code class="command">git grep -P</code>, ‘<samp class="samp">\d</samp>’ matches all Unicode digits,
+even if they are not ASCII.
+For example, ‘<samp class="samp">\d</samp>’ matches
+“٣”
+(U+0663 ARABIC-INDIC DIGIT THREE).
+In contrast, in ‘<samp class="samp">grep -P</samp>’, ‘<samp class="samp">\d</samp>’ matches only
+the ten ASCII digits, regardless of locale.
+In <code class="command">pcre2grep</code>, ‘<samp class="samp">\d</samp>’ ordinarily behaves like Perl and
+<code class="command">git grep -P</code>, but when given the <samp class="option">--posix-digit</samp> option
+it behaves like ‘<samp class="samp">grep -P</samp>’.
+(On all platforms, ‘<samp class="samp">\D</samp>’ matches the complement of ‘<samp class="samp">\d</samp>’.)
+
+</li><li>The pattern ‘<samp class="samp">[[:digit:]]</samp>’ matches all Unicode digits
+in Perl, ‘<samp class="samp">grep -P</samp>’, <code class="command">git grep -P</code>, and <code class="command">pcre2grep</code>,
+so you can use it
+to get the effect of Perl’s ‘<samp class="samp">\d</samp>’ on all these platforms.
+In other words, in Perl and <code class="command">git grep -P</code>,
+‘<samp class="samp">\d</samp>’ is equivalent to ‘<samp class="samp">[[:digit:]]</samp>’,
+whereas in ‘<samp class="samp">grep -P</samp>’, ‘<samp class="samp">\d</samp>’ is equivalent to ‘<samp class="samp">[0-9]</samp>’,
+and <code class="command">pcre2grep</code> ordinarily follows Perl but
+when given <samp class="option">--posix-digit</samp> it follows ‘<samp class="samp">grep -P</samp>’.
+
+<p>(On all these platforms, ‘<samp class="samp">[[:digit:]]</samp>’ is equivalent to ‘<samp class="samp">\p{Nd}</samp>’
+and to ‘<samp class="samp">\p{General_Category: Decimal_Number}</samp>’.)
+</p>
+</li><li>If <code class="command">grep</code> is built with PCRE2 version 10.43 (2024) or later,
+‘<samp class="samp">(?aD)</samp>’ causes ‘<samp class="samp">\d</samp>’ to behave like ‘<samp class="samp">[0-9]</samp>’ and
+‘<samp class="samp">(?-aD)</samp>’ causes it to behave like ‘<samp class="samp">[[:digit:]]</samp>’.
+
+</li><li>Although PCRE tracks the syntax and semantics of Perl’s regular
+expressions, the match is not always exact.  Perl
+evolves and a Perl installation may predate or postdate the PCRE2
+installation on the same host, or their Unicode versions may differ,
+or Perl and PCRE2 may disagree about an obscure construct.
+
+</li><li>By default, <code class="command">grep</code> applies each regexp to a line at a time,
+so the ‘<samp class="samp">(?s)</samp>’ directive (making ‘<samp class="samp">.</samp>’ match line breaks)
+is generally ineffective.
+However, with <samp class="option">-z</samp> (<samp class="option">--null-data</samp>) it can work:
+<div class="example">
+<pre class="gnu-grep-literal">$ printf 'a\nb\n' |grep -zP '(?s)a.b'&#10;a&#10;b&#10;</pre></div>
+<p>But beware: with the <samp class="option">-z</samp> (<samp class="option">--null-data</samp>) and a file
+containing no NUL byte, grep must read the entire file into memory
+before processing any of it.
+Thus, it will exhaust memory and fail for some large files.
+</p></li></ul>
+</dd>
+</dl>
+<hr/>
+</div>

@@ -1,0 +1,39 @@
+<div class="gnu-grep-original-content" id="Matching-Non_002dASCII">
+<h3 class="section" id="Matching-Non_002dASCII-and-Non_002dprintable-Characters"><span>3.9 Matching Non-ASCII and Non-printable Characters</span></h3>
+<a class="index-entry-id" id="index-non_002dASCII-matching"></a>
+<a class="index-entry-id" id="index-non_002dprintable-matching"></a>
+<p>In a regular expression, non-ASCII and non-printable characters other
+than newline are not special, and represent themselves.  For example,
+in a locale using UTF-8 the command ‘<samp class="samp">grep 'Λ ω'</samp>’ (where the
+white space between ‘<samp class="samp">Λ</samp>’ and the ‘<samp class="samp">ω</samp>’ is a tab character)
+searches for ‘<samp class="samp">Λ</samp>’ (Unicode character U+039B GREEK CAPITAL LETTER
+LAMBDA), followed by a tab (U+0009 TAB), followed by ‘<samp class="samp">ω</samp>’ (U+03C9
+GREEK SMALL LETTER OMEGA).
+</p>
+<p>Suppose you want to limit your pattern to only printable characters
+(or even only printable ASCII characters) to keep your script readable
+or portable, but you also want to match specific non-ASCII or non-null
+non-printable characters.  If you are using the <samp class="option">-P</samp>
+(<samp class="option">--perl-regexp</samp>) option, PCREs give you several ways to do
+this.  Otherwise, if you are using Bash, the GNU project’s shell, you
+can represent these characters via ANSI-C quoting.  For example, the
+Bash commands ‘<samp class="samp">grep $'Λ\tω'</samp>’ and ‘<samp class="samp">grep $'\u039B\t\u03C9'</samp>’
+both search for the same three-character string ‘<samp class="samp">Λ ω</samp>’
+mentioned earlier.  However, because Bash translates ANSI-C quoting
+before <code class="command">grep</code> sees the pattern, this technique should not be
+used to match printable ASCII characters; for example, ‘<samp class="samp">grep
+$'\u005E'</samp>’ is equivalent to ‘<samp class="samp">grep '^'</samp>’ and matches any line, not
+just lines containing the character ‘<samp class="samp">^</samp>’ (U+005E CIRCUMFLEX
+ACCENT).
+</p>
+<p>Since PCREs and ANSI-C quoting are GNU extensions to POSIX, portable
+shell scripts written in ASCII should use other methods to match
+specific non-ASCII characters.  For example, in a UTF-8 locale the
+command ‘<samp class="samp">grep "$(printf '\316\233\t\317\211\n')"</samp>’ is a portable
+albeit hard-to-read alternative to Bash’s ‘<samp class="samp">grep $'Λ\tω'</samp>’.
+However, none of these techniques will let you put a null character
+directly into a command-line pattern; null characters can appear only
+in a pattern specified via the <samp class="option">-f</samp> (<samp class="option">--file</samp>) option.
+</p>
+<hr/>
+</div>

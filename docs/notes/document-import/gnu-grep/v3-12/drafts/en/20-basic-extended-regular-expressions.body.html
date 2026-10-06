@@ -1,0 +1,29 @@
+<div class="gnu-grep-original-content" id="Basic-vs-Extended">
+<h3 class="section" id="Basic-vs-Extended-Regular-Expressions"><span>3.6 Basic vs Extended Regular Expressions</span></h3>
+<a class="index-entry-id" id="index-basic-regular-expressions"></a>
+<p>Basic regular expressions differ from extended regular expressions
+in the following ways:
+</p>
+<ul class="itemize mark-bullet">
+<li>The characters ‘<samp class="samp">?</samp>’, ‘<samp class="samp">+</samp>’,
+‘<samp class="samp">{</samp>’, ‘<samp class="samp">|</samp>’, ‘<samp class="samp">(</samp>’, and ‘<samp class="samp">)</samp>’ lose their special meaning;
+instead use the backslashed versions ‘<samp class="samp">\?</samp>’, ‘<samp class="samp">\+</samp>’, ‘<samp class="samp">\{</samp>’,
+‘<samp class="samp">\|</samp>’, ‘<samp class="samp">\(</samp>’, and ‘<samp class="samp">\)</samp>’.  Also, a backslash is needed
+before an interval expression’s closing ‘<samp class="samp">}</samp>’.
+
+</li><li>An unmatched ‘<samp class="samp">\)</samp>’ is invalid.
+
+</li><li>If an unescaped ‘<samp class="samp">^</samp>’ appears neither first, nor directly after
+‘<samp class="samp">\(</samp>’ or ‘<samp class="samp">\|</samp>’, it is treated like an ordinary character and
+is not an anchor.
+
+</li><li>If an unescaped ‘<samp class="samp">$</samp>’ appears neither last, nor directly before
+‘<samp class="samp">\|</samp>’ or ‘<samp class="samp">\)</samp>’, it is treated like an ordinary character and
+is not an anchor.
+
+</li><li>If an unescaped ‘<samp class="samp">*</samp>’ appears first, or appears directly after
+‘<samp class="samp">\(</samp>’ or ‘<samp class="samp">\|</samp>’ or anchoring ‘<samp class="samp">^</samp>’, it is treated like an
+ordinary character and is not a repetition operator.
+</li></ul>
+<hr/>
+</div>

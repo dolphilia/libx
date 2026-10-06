@@ -1,0 +1,171 @@
+{
+  "slug": "25-filesystems",
+  "bodySHA256": "475b4976a5f283955ebf0a4179c7b533666c599b18e99e4d07fd282defe3b624",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧2.12 Filesystems⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Filesystems-1\"><span>2.12 Filesystems</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "A ⟦0⟧filesystem⟦1⟧ is a section of a disk, either on the local host or mounted from a remote host over a network. Searching network filesystems can be slow, so it is common to make ⟦2⟧ avoid them.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"dfn\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p>A <em class=\"dfn\">filesystem</em> is a section of a disk, either on the local host or\nmounted from a remote host over a network.  Searching network\nfilesystems can be slow, so it is common to make <code class=\"code\">find</code> avoid\nthem.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "There are two ways to avoid searching certain filesystems. One way is to tell ⟦0⟧ to only search within the same filesystem as the start-point currently being searched:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p>There are two ways to avoid searching certain filesystems.  One way is\nto tell <code class=\"code\">find</code> to only search within the same filesystem as the\nstart-point currently being searched:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "dt",
+      "text": "⟦0⟧Option: ⟦1⟧⟦2⟧⟦3⟧-mount⟦4⟧⟦5⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dmount\"><span class=\"category-def\">Option: </span><span><strong class=\"def-name\">-mount</strong></span></dt>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Ignore files on other devices. Do not visit or search inside mount points. Do not search inside directories within other file systems even if they are the target of a symbolic link and ⟦0⟧ is following symbolic links (e.g. due to the ‘⟦1⟧’ or ‘⟦2⟧’ option).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<samp class=\"samp\">-L</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-H</samp>"
+      },
+      "sourceHTML": "<p>Ignore files on other devices.  Do not visit or search inside mount\npoints.  Do not search inside directories within other file systems\neven if they are the target of a symbolic link and <code class=\"code\">find</code> is\nfollowing symbolic links (e.g. due to the ‘<samp class=\"samp\">-L</samp>’ or ‘<samp class=\"samp\">-H</samp>’\noption).\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "dt",
+      "text": "⟦0⟧Option: ⟦1⟧⟦2⟧⟦3⟧-xdev⟦4⟧⟦5⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dxdev\"><span class=\"category-def\">Option: </span><span><strong class=\"def-name\">-xdev</strong></span></dt>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Visit mount points but not their children (that is, don’t descend into directories on other devices). Using ⟦0⟧ has the same effect as ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">-mount -xdev</code>",
+        "⟦1⟧": "<samp class=\"samp\">-mount</samp>"
+      },
+      "sourceHTML": "<p>Visit mount points but not their children (that is,\ndon’t descend into directories on other devices).\nUsing <code class=\"code\">-mount -xdev</code> has the same effect as ‘<samp class=\"samp\">-mount</samp>’.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Here we see that normally, ⟦0⟧ will search inside a file system which is mounted at ‘⟦1⟧’:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<samp class=\"samp\">tree/bound1</samp>"
+      },
+      "sourceHTML": "<p>Here we see that normally, <code class=\"code\">find</code> will search inside a file\nsystem which is mounted at ‘<samp class=\"samp\">tree/bound1</samp>’:\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "If we specify ‘⟦0⟧’ then we will visit the mount point but not search inside it:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-xdev</samp>"
+      },
+      "sourceHTML": "<p>If we specify ‘<samp class=\"samp\">-xdev</samp>’ then we will visit the mount point but not\nsearch inside it:\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "If we specify ‘⟦0⟧’ we will not visit the mount point at all:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-mount</samp>"
+      },
+      "sourceHTML": "<p>If we specify ‘<samp class=\"samp\">-mount</samp>’ we will not visit the mount point at all:\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "We used the ‘⟦0⟧’ directive of ‘⟦1⟧’ in those examples to shows the device number for each item, to illustrate that the files are on different devices. See ⟦2⟧Print File Information⟦3⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">%D</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-printf</samp>",
+        "⟦2⟧": "<a class=\"xref\" href=\"/docs/gnu-findutils/source/v4-11-0/manual.html#Print-File-Information\">",
+        "⟦3⟧": "</a>"
+      },
+      "sourceHTML": "<p>We used the ‘<samp class=\"samp\">%D</samp>’ directive of ‘<samp class=\"samp\">-printf</samp>’ in those examples to\nshows the device number for each item, to illustrate that the files\nare on different devices.  See <a class=\"xref\" href=\"/docs/gnu-findutils/source/v4-11-0/manual.html#Print-File-Information\">Print File Information</a>.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "The other way to avoid particular filesystems is to check the type of filesystem each file is on, and not descend directories that are on undesirable filesystem types:",
+      "tokens": {},
+      "sourceHTML": "<p>The other way to avoid particular filesystems is to check the type of\nfilesystem each file is on, and not descend directories that are on\nundesirable filesystem types:\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "dt",
+      "text": "⟦0⟧Test: ⟦1⟧⟦2⟧⟦3⟧-fstype⟦4⟧ ⟦5⟧⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "<var class=\"def-var-arguments\">type</var>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dfstype\"><span class=\"category-def\">Test: </span><span><strong class=\"def-name\">-fstype</strong> <var class=\"def-var-arguments\">type</var></span></dt>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "True if the file is on a filesystem of type ⟦0⟧. The valid filesystem types vary among different versions of Unix; an incomplete list of filesystem types that are accepted on some version of Unix or another is:",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">type</var>"
+      },
+      "sourceHTML": "<p>True if the file is on a filesystem of type <var class=\"var\">type</var>.  The valid\nfilesystem types vary among different versions of Unix; an incomplete\nlist of filesystem types that are accepted on some version of Unix or\nanother is:\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "You can use ‘⟦0⟧’ with the ‘⟦1⟧’ directive to see the types of your filesystems. ‘⟦2⟧’ is usually used with ‘⟦3⟧’ to avoid searching remote filesystems (see ⟦4⟧Directories⟦5⟧).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-printf</samp>",
+        "⟦1⟧": "<samp class=\"samp\">%F</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-fstype</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-prune</samp>",
+        "⟦4⟧": "<a class=\"pxref\" href=\"/docs/gnu-findutils/v4-11-0/en/01-guide/24-directories/#Directories\">",
+        "⟦5⟧": "</a>"
+      },
+      "sourceHTML": "<p>You can use ‘<samp class=\"samp\">-printf</samp>’ with the ‘<samp class=\"samp\">%F</samp>’ directive to see the\ntypes of your filesystems.  ‘<samp class=\"samp\">-fstype</samp>’ is usually\nused with ‘<samp class=\"samp\">-prune</samp>’ to avoid searching remote filesystems\n(see <a class=\"pxref\" href=\"/docs/gnu-findutils/v4-11-0/en/01-guide/24-directories/#Directories\">Directories</a>).\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}
