@@ -1,0 +1,9 @@
+<div class="gnu-diffutils-original-content" id="Backups">
+<h3 class="section" id="Backup-Files"><span>10.8 バックアップファイル</span></h3>
+<a class="index-entry-id" id="index-backup-file-strategy"></a>
+<p>通常、<code class="command">patch</code>はパッチが元の入力に完全一致しない場合にバックアップを作成します。この場合は ‘<samp class="samp">patch -R</samp>’ で適用を取り消しても元のデータを復元できない可能性があるためです（<a class="pxref" href="#Reversed-Patches">逆向きパッチの適用</a>参照）。ただし POSIX 準拠時には、<code class="command">patch</code>は既定ではバックアップを作りません。<a class="xref" href="#patch-and-POSIX"><code class="command">patch</code>と POSIX 標準</a>を参照してください。</p>
+<p><samp class="option">--backup</samp>（<samp class="option">-b</samp>）オプションは、元の入力との一致に関係なく<code class="command">patch</code>にバックアップを作らせます。<samp class="option">--backup-if-mismatch</samp>オプションは不一致のファイルについて<code class="command">patch</code>にバックアップを作らせ、POSIX 非準拠時の既定です。<samp class="option">--no-backup-if-mismatch</samp>オプションは不一致のパッチでも<code class="command">patch</code>にバックアップを作らせず、POSIX 準拠時の既定です。</p>
+<p>存在しないファイルをバックアップする場合は、その状態を表すプレースホルダーとして、空で読み取り不可のバックアップファイルを作ります。</p>
+<hr/>
+</div>
+

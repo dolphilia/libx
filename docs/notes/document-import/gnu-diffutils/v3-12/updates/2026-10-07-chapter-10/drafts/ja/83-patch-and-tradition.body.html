@@ -1,0 +1,21 @@
+<div class="gnu-diffutils-original-content" id="patch-and-Tradition">
+<h3 class="section" id="GNU-patch-and-Traditional-patch"><span>10.13 GNU <code class="command">patch</code>と従来の<code class="command">patch</code></span></h3>
+<a class="index-entry-id" id="index-traditional-patch"></a>
+<p>現在の GNU <code class="command">patch</code>は通常 POSIX 標準に従います。少数の例外については、<a class="xref" href="#patch-and-POSIX"><code class="command">patch</code>と POSIX 標準</a>を参照してください。</p>
+<p>残念ながら POSIX は<code class="command">patch</code>の動作をいくつかの重要な点で再定義しました。従来の<code class="command">patch</code>や GNU <code class="command">patch</code>の2.1以前の版と相互運用する必要がある場合は、次の違いに注意してください。</p>
+<ul class="itemize mark-bullet">
+<li>従来の<code class="command">patch</code>では<samp class="option">-p</samp>のオペランドは省略でき、引数のない<samp class="option">-p</samp>は<samp class="option">-p0</samp>と同等でした。現在<samp class="option">-p</samp>にはオペランドが必須で、<samp class="option">-p 0</samp>は<samp class="option">-p0</samp>と同等です。互換性を最大限に保つには<samp class="option">-p0</samp>や<samp class="option">-p1</samp>のような指定を使ってください。<p>また、従来の<code class="command">patch</code>はパス接頭辞を除く際に単にスラッシュを数えましたが、現在の<code class="command">patch</code>はパス名の構成要素を数えます。つまり連続する1個以上のスラッシュは1個と数えます。移植性を最大限に保つには、ファイル名に<samp class="file">//</samp>を含むパッチを送らないでください。</p></li><li>従来の<code class="command">patch</code>ではバックアップが既定で有効でした。現在は<samp class="option">--backup</samp>（<samp class="option">-b</samp>）で有効にします。<p>反対に POSIX の<code class="command">patch</code>では、不一致でもバックアップを作りません。GNU <code class="command">patch</code>では、<samp class="option">--no-backup-if-mismatch</samp>オプションまたは POSIX 準拠でこの動作を有効にします。</p> <p>従来の<code class="command">patch</code>の<samp class="option">-b <var class="var">suffix</var></samp>オプションは、GNU <code class="command">patch</code>の ‘<samp class="samp">-b -z <var class="var">suffix</var></samp>’ オプション群と同等です。</p></li><li>従来の<code class="command">patch</code>は、パッチのヘッダーから対象名を推定するのに複雑で説明も不十分な方法を使っていました。POSIX 非準拠で、落とし穴もありました。現在<code class="command">patch</code>は、同様に複雑ですが説明が充実した別の方法を使い、任意で POSIX 準拠にできます。落とし穴が減ることを期待しています。コンテキスト diff のヘッダーと ‘<samp class="samp">Index:</samp>’ 行の名前が接頭辞除去後にすべて同じなら、2つの方法には互換性があります。各ヘッダーの名前に含まれるスラッシュ数がすべて同じなら、通常パッチは互換になります。</li><li>従来の<code class="command">patch</code>は質問を標準エラーへ送り、標準エラー、標準出力、<samp class="file">/dev/tty</samp>、標準入力の順で、最初に端末だったファイルから回答を読みました。現在<code class="command">patch</code>は質問を標準出力へ送り、<samp class="file">/dev/tty</samp>から回答を読みます。一部の回答の既定値も変わり、<code class="command">patch</code>が既定の回答を使って無限ループに陥ることを防いでいます。</li><li>従来の<code class="command">patch</code>は、失敗したハンクの数を終了ステータスとし、本当の問題がある場合は1で終了しました。現在<code class="command">patch</code>は一部のハンクが失敗すれば1、本当の問題があれば2で終了します。</li><li>GNU <code class="command">patch</code>、従来の<code class="command">patch</code>、POSIX 準拠の<code class="command">patch</code>のいずれを使う人にも実行してもらう説明を送る場合、オプションは次のものに限ってください。この一覧ではスペースに意味があり、オペランドは必須です。<div class="example"> <pre class="example-preformatted"><samp class="option">-c</samp>
+<samp class="option">-d <var class="var">dir</var></samp>
+<samp class="option">-D <var class="var">define</var></samp>
+<samp class="option">-e</samp>
+<samp class="option">-l</samp>
+<samp class="option">-n</samp>
+<samp class="option">-N</samp>
+<samp class="option">-o <var class="var">outfile</var></samp>
+<samp class="option">-p<var class="var">num</var></samp>
+<samp class="option">-R</samp>
+<samp class="option">-r <var class="var">rejectfile</var></samp>
+</pre></div></li></ul>
+<hr/>
+</div>
+

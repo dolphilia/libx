@@ -1,0 +1,85 @@
+<div class="gnu-diffutils-original-content" id="patch-and-Tradition">
+<h3 class="section" id="GNU-patch-and-Traditional-patch"><span>10.13 GNU <code class="command">patch</code> and Traditional <code class="command">patch</code></span></h3>
+<a class="index-entry-id" id="index-traditional-patch"></a>
+<p>The current version of GNU <code class="command">patch</code> normally follows the
+POSIX standard.  See <a class="xref" href="#patch-and-POSIX"><code class="command">patch</code> and the POSIX Standard</a>, for the few exceptions
+to this general rule.
+</p>
+<p>Unfortunately, POSIX redefined the behavior of <code class="command">patch</code> in
+several important ways.  You should be aware of the following
+differences if you must interoperate with traditional <code class="command">patch</code>,
+or with GNU <code class="command">patch</code> version 2.1 and earlier.
+</p>
+<ul class="itemize mark-bullet">
+<li>In traditional <code class="command">patch</code>, the <samp class="option">-p</samp> option’s operand was
+optional, and a bare <samp class="option">-p</samp> was equivalent to <samp class="option">-p0</samp>.  The
+<samp class="option">-p</samp> option now requires an operand, and <samp class="option">-p 0</samp> is now
+equivalent to <samp class="option">-p0</samp>.  For maximum compatibility, use options
+like <samp class="option">-p0</samp> and <samp class="option">-p1</samp>.
+
+<p>Also, traditional <code class="command">patch</code> simply counted slashes when
+stripping path prefixes; <code class="command">patch</code> now counts pathname
+components.  That is, a sequence of one or more adjacent slashes now
+counts as a single slash.  For maximum portability, avoid sending
+patches containing <samp class="file">//</samp> in file names.
+</p>
+</li><li>In traditional <code class="command">patch</code>, backups were enabled by default.  This
+behavior is now enabled with the <samp class="option">--backup</samp> (<samp class="option">-b</samp>)
+option.
+
+<p>Conversely, in POSIX <code class="command">patch</code>, backups are never made,
+even when there is a mismatch.  In GNU <code class="command">patch</code>, this
+behavior is enabled with the <samp class="option">--no-backup-if-mismatch</samp> option,
+or by conforming to POSIX.
+</p>
+<p>The <samp class="option">-b <var class="var">suffix</var></samp> option of traditional <code class="command">patch</code> is
+equivalent to the ‘<samp class="samp">-b -z <var class="var">suffix</var></samp>’ options of GNU
+<code class="command">patch</code>.
+</p>
+</li><li>Traditional <code class="command">patch</code> used a complicated (and incompletely
+documented) method to intuit the name of the file to be patched from
+the patch header.  This method did not conform to POSIX, and had
+a few gotchas.  Now <code class="command">patch</code> uses a different, equally
+complicated (but better documented) method that is optionally
+POSIX-conforming; we hope it has fewer gotchas.  The two methods
+are compatible if the file names in the context diff header and the
+‘<samp class="samp">Index:</samp>’ line are all identical after prefix-stripping.  Your
+patch is normally compatible if each header’s file names all contain
+the same number of slashes.
+
+</li><li>When traditional <code class="command">patch</code> asked the user a question, it sent
+the question to standard error and looked for an answer from the first
+file in the following list that was a terminal: standard error,
+standard output, <samp class="file">/dev/tty</samp>, and standard input.  Now
+<code class="command">patch</code> sends questions to standard output and gets answers
+from <samp class="file">/dev/tty</samp>.  Defaults for some answers have been changed so
+that <code class="command">patch</code> never goes into an infinite loop when using
+default answers.
+
+</li><li>Traditional <code class="command">patch</code> exited with a status value that counted
+the number of bad hunks, or with status 1 if there was real trouble.
+Now <code class="command">patch</code> exits with status 1 if some hunks failed, or with
+2 if there was real trouble.
+
+</li><li>Limit yourself to the following options when sending instructions
+meant to be executed by anyone running GNU <code class="command">patch</code>,
+traditional <code class="command">patch</code>, or a <code class="command">patch</code> that conforms to
+POSIX.  Spaces are significant in the following list, and
+operands are required.
+
+<div class="example">
+<pre class="example-preformatted"><samp class="option">-c</samp>
+<samp class="option">-d <var class="var">dir</var></samp>
+<samp class="option">-D <var class="var">define</var></samp>
+<samp class="option">-e</samp>
+<samp class="option">-l</samp>
+<samp class="option">-n</samp>
+<samp class="option">-N</samp>
+<samp class="option">-o <var class="var">outfile</var></samp>
+<samp class="option">-p<var class="var">num</var></samp>
+<samp class="option">-R</samp>
+<samp class="option">-r <var class="var">rejectfile</var></samp>
+</pre></div>
+</li></ul>
+<hr/>
+</div>

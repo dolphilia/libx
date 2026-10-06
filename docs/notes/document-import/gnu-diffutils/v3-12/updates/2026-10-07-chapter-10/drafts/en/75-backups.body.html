@@ -1,0 +1,25 @@
+<div class="gnu-diffutils-original-content" id="Backups">
+<h3 class="section" id="Backup-Files"><span>10.8 Backup Files</span></h3>
+<a class="index-entry-id" id="index-backup-file-strategy"></a>
+<p>Normally, <code class="command">patch</code> creates a backup file if the patch does not
+exactly match the original input file, because in that case the
+original data might not be recovered if you undo the patch with
+‘<samp class="samp">patch -R</samp>’ (see <a class="pxref" href="#Reversed-Patches">Applying Reversed Patches</a>).  However, when conforming
+to POSIX, <code class="command">patch</code> does not create backup files by
+default.  See <a class="xref" href="#patch-and-POSIX"><code class="command">patch</code> and the POSIX Standard</a>.
+</p>
+<p>The <samp class="option">--backup</samp> (<samp class="option">-b</samp>) option causes <code class="command">patch</code> to
+make a backup file regardless of whether the patch matches the
+original input.  The <samp class="option">--backup-if-mismatch</samp> option causes
+<code class="command">patch</code> to create backup files for mismatches files; this is
+the default when not conforming to POSIX.  The
+<samp class="option">--no-backup-if-mismatch</samp> option causes <code class="command">patch</code> to not
+create backup files, even for mismatched patches; this is the default
+when conforming to POSIX.
+</p>
+<p>When backing up a file that does not exist, an empty, unreadable
+backup file is created as a placeholder to represent the nonexistent
+file.
+</p>
+<hr/>
+</div>

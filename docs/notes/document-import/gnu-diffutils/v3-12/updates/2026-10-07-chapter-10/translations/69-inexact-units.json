@@ -1,0 +1,107 @@
+{
+  "slug": "69-inexact",
+  "bodySHA256": "8549505e8dd7b20a793e5921499afb9e57f93957ee27e020f109ffc6bf72ae32",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧10.3.3 Helping ⟦1⟧ Find Inexact Matches⟦2⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"Helping-patch-Find-Inexact-Matches\"><span>10.3.3 Helping <code class=\"command\">patch</code> Find Inexact Matches</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "For context diffs, and to a lesser extent normal diffs, ⟦0⟧ can detect when the line numbers mentioned in the patch are incorrect, and it attempts to find the correct place to apply each hunk of the patch. As a first guess, it takes the line number mentioned in the hunk, plus or minus any offset used in applying the previous hunk. If that is not the correct place, ⟦1⟧ scans both forward and backward for a set of lines matching the context given in the hunk.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>For context diffs, and to a lesser extent normal diffs, <code class=\"command\">patch</code> can\ndetect when the line numbers mentioned in the patch are incorrect, and\nit attempts to find the correct place to apply each hunk of the patch.\nAs a first guess, it takes the line number mentioned in the hunk, plus\nor minus any offset used in applying the previous hunk.  If that is not\nthe correct place, <code class=\"command\">patch</code> scans both forward and backward for a\nset of lines matching the context given in the hunk.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "First ⟦0⟧ looks for a place where all lines of the context match. If it cannot find such a place, and it is reading a context or unified diff, and the maximum fuzz factor is set to 1 or more, then ⟦1⟧ makes another scan, ignoring the first and last line of context. If that fails, and the maximum fuzz factor is set to 2 or more, it makes another scan, ignoring the first two and last two lines of context are ignored. It continues similarly if the maximum fuzz factor is larger.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>First <code class=\"command\">patch</code> looks for a place where all lines of the context\nmatch.  If it cannot find such a place, and it is reading a context or\nunified diff, and the maximum fuzz factor is set to 1 or more, then\n<code class=\"command\">patch</code> makes another scan, ignoring the first and last line of\ncontext.  If that fails, and the maximum fuzz factor is set to 2 or\nmore, it makes another scan, ignoring the first two and last two lines\nof context are ignored.  It continues similarly if the maximum fuzz\nfactor is larger.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The ⟦0⟧ (⟦1⟧) option sets the maximum fuzz factor to ⟦2⟧. This option only applies to context and unified diffs; it ignores up to ⟦3⟧ lines while looking for the place to install a hunk. Note that a larger fuzz factor increases the odds of making a faulty patch. The default fuzz factor is 2; there is no point to setting it to more than the number of lines of context in the diff, ordinarily 3.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--fuzz=<var class=\"var\">lines</var></samp>",
+        "⟦1⟧": "<samp class=\"option\">-F <var class=\"var\">lines</var></samp>",
+        "⟦2⟧": "<var class=\"var\">lines</var>",
+        "⟦3⟧": "<var class=\"var\">lines</var>"
+      },
+      "sourceHTML": "<p>The <samp class=\"option\">--fuzz=<var class=\"var\">lines</var></samp> (<samp class=\"option\">-F <var class=\"var\">lines</var></samp>) option sets the\nmaximum fuzz factor to <var class=\"var\">lines</var>.  This option only applies to context\nand unified diffs; it ignores up to <var class=\"var\">lines</var> lines while looking for\nthe place to install a hunk.  Note that a larger fuzz factor increases\nthe odds of making a faulty patch.  The default fuzz factor is 2; there\nis no point to setting it to more than the number of lines of context\nin the diff, ordinarily 3.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "If ⟦0⟧ cannot find a place to install a hunk of the patch, it writes the hunk out to a reject file (see ⟦1⟧Reject File Names⟦2⟧, for information on how reject files are named). It writes out rejected hunks in context format no matter what form the input patch is in. If the input is a normal or ⟦3⟧ diff, many of the contexts are simply null. The line numbers on the hunks in the reject file may be different from those in the patch file: they show the approximate location where ⟦4⟧ thinks the failed hunks belong in the new file rather than in the old one.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<a class=\"pxref\" href=\"#Reject-Names\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "<code class=\"command\">ed</code>",
+        "⟦4⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>If <code class=\"command\">patch</code> cannot find a place to install a hunk of the patch, it\nwrites the hunk out to a reject file (see <a class=\"pxref\" href=\"#Reject-Names\">Reject File Names</a>, for information\non how reject files are named).  It writes out rejected hunks in context\nformat no matter what form the input patch is in.  If the input is a\nnormal or <code class=\"command\">ed</code> diff, many of the contexts are simply null.  The\nline numbers on the hunks in the reject file may be different from those\nin the patch file: they show the approximate location where <code class=\"command\">patch</code>\nthinks the failed hunks belong in the new file rather than in the old\none.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "If the ⟦0⟧ option is given, then as it completes each hunk ⟦1⟧ tells you whether the hunk succeeded or failed, and if it failed, on which line (in the new file) ⟦2⟧ thinks the hunk should go. If this is different from the line number specified in the diff, it tells you the offset. A single large offset ⟦3⟧may⟦4⟧ indicate that ⟦5⟧ installed a hunk in the wrong place. ⟦6⟧ also tells you if it used a fuzz factor to make the match, in which case you should also be slightly suspicious.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--verbose</samp>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "<code class=\"command\">patch</code>",
+        "⟦3⟧": "<em class=\"emph\">",
+        "⟦4⟧": "</em>",
+        "⟦5⟧": "<code class=\"command\">patch</code>",
+        "⟦6⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>If the <samp class=\"option\">--verbose</samp> option is given, then\nas it completes each hunk <code class=\"command\">patch</code> tells you whether the hunk\nsucceeded or failed, and if it failed, on which line (in the new file)\n<code class=\"command\">patch</code> thinks the hunk should go.  If this is different from the\nline number specified in the diff, it tells you the offset.  A single\nlarge offset <em class=\"emph\">may</em> indicate that <code class=\"command\">patch</code> installed a hunk in\nthe wrong place.  <code class=\"command\">patch</code> also tells you if it used a fuzz factor\nto make the match, in which case you should also be slightly suspicious.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "⟦0⟧ cannot tell if the line numbers are off in an ⟦1⟧ script, and can only detect wrong line numbers in a normal diff when it finds a change or delete command. It may have the same problem with a context diff using a fuzz factor equal to or greater than the number of lines of context shown in the diff (typically 3). In these cases, you should probably look at a context diff between your original and patched input files to see if the changes make sense. Compiling without errors is a pretty good indication that the patch worked, but not a guarantee.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<code class=\"command\">ed</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">patch</code> cannot tell if the line numbers are off in an <code class=\"command\">ed</code>\nscript, and can only detect wrong line numbers in a normal diff when it\nfinds a change or delete command.  It may have the same problem with a\ncontext diff using a fuzz factor equal to or greater than the number of\nlines of context shown in the diff (typically 3).  In these cases, you\nshould probably look at a context diff between your original and patched\ninput files to see if the changes make sense.  Compiling without errors\nis a pretty good indication that the patch worked, but not a guarantee.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "A patch against an empty file applies to a nonexistent file, and vice versa. See ⟦0⟧Creating and Removing Files⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"xref\" href=\"#Creating-and-Removing\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<p>A patch against an empty file applies to a nonexistent file, and vice\nversa.  See <a class=\"xref\" href=\"#Creating-and-Removing\">Creating and Removing Files</a>.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "⟦0⟧ usually produces the correct results, even when it must make many guesses. However, the results are guaranteed only when the patch is applied to an exact copy of the file that the patch was generated from.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">patch</code> usually produces the correct results, even when it must\nmake many guesses.  However, the results are guaranteed only when\nthe patch is applied to an exact copy of the file that the patch was\ngenerated from.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

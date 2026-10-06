@@ -3,7 +3,7 @@
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
 - 検証済み: 37件 / 今回の公開済み: 36件 / 公開待ち: 1件
-- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -50,6 +50,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-ed / v1-22-6 / new | verified | verified | 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント/25定本/589原稿キットを限定1ad5ec225で統合Pages本番78634eae公開・公開後確認完了。5745artifact・307固定/独自domainHTTP/404/CAS・言語切替合格、未説明差分0。938:Diffutils3.12第5〜9章19英日/91単位review・125独立再生成・130targetbuild・11290参照・285localHTTP・代表導線合格。Ed実公開成果物をbaselineとしてroot限定登録→verified→限定commit/push/Pages公開。Workers/定期なし。 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント/25定本/589原稿キットを限定1ad5ec225で統合Pages本番78634eae公開・公開後確認完了。5745artifact・307固定/独自domainHTTP/404/CAS・言語切替合格、未説明差分0。938:Diffutils3.12第5〜9章19英日/91単位review・125独立再生成・130targetbuild・11290参照・285localHTTP・代表導線合格。Ed実公開成果物をbaselineとしてroot限定登録→verified→限定commit/push/Pages公開。Workers/定期なし。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 938:GNU Diffutils3.12第5〜9章19英日/91単位を限定0521e6399で統合Pages本番公開・公開後確認完了。125定本/1134kit/11290参照/公開HTTP・404・CAS・対訳表示合格、未説明差分0。941:GNUgrep第5〜6章3英日/21単位、6description誤記修正本文変更0/旧49保持/55独立/762kit e7e202ea/3034参照/60target/145localHTTP/検索合格。Diffutils実公開artifactを統合基準として再認定、root20files限定登録→verified限定commit/push/Pages公開へ。 938:GNU Diffutils3.12第5〜9章19英日/91単位を限定0521e6399で統合Pages本番公開・公開後確認完了。125定本/1134kit/11290参照/公開HTTP・404・CAS・対訳表示合格、未説明差分0。941:GNUgrep第5〜6章3英日/21単位、6description誤記修正本文変更0/旧49保持/55独立/762kit e7e202ea/3034参照/60target/145localHTTP/検索合格。Diffutils実公開artifactを統合基準として再認定、root20files限定登録→verified限定commit/push/Pages公開へ。 |
 | gnu-grep / v3-12 / update | verified | verified | 942:GNUgrep第5〜6章3英日/21単位・6description修正本文変更0/旧49保持、55独立/762kit/60target/5833統合/3034参照/145HTTP/404/検索/対訳合格。限定21filesを24382f21d02193f3d8bca9ad717a2138c2f543c2/codex/expand-gnu-grep-20261007へcommit/push成功。PagesPreview37537417228進行中→artifact/HTTP/404/代表表示→CAS基準Diffutils0521でProduction→公開後確認/記録・保存へ。938Diffutilsは本番d5583696/346配信・独自domain/404/CAS/対訳確認・公開記録完了。保存branch1caa6019c push成功、今回公開後/verified記録を保存へ 942:GNUgrep第5〜6章3英日/21単位・6description修正本文変更0/旧49保持、55独立/762kit/60target/5833統合/3034参照/145HTTP/404/検索/対訳合格。限定21filesを24382f21d02193f3d8bca9ad717a2138c2f543c2/codex/expand-gnu-grep-20261007へcommit/push成功。PagesPreview37537417228進行中→artifact/HTTP/404/代表表示→CAS基準Diffutils0521でProduction→公開後確認/記録・保存へ。938Diffutilsは本番d5583696/346配信・独自domain/404/CAS/対訳確認・公開記録完了。保存branch1caa6019c push成功、今回公開後/verified記録を保存へ |
+| gnu-diffutils / v3-12 / update | source-locked | source-locked | 943:GNU Diffutils3.12第10章21英日/120単位の保存草稿・別工程全文レビュー済み。既存62ガイド/125MDを保持し、正式42原稿・参照/脚注・GFDL/フッター・ソースキット・独立再生成・対象/統合buildと代表表示へ。GNU grep Preview37537417228の完了後artifact検査→CAS052本番公開を優先。草稿は配信除外保存ブランチのみ。 943:GNU Diffutils3.12第10章21英日/120単位の保存草稿・別工程全文レビュー済み。既存62ガイド/125MDを保持し、正式42原稿・参照/脚注・GFDL/フッター・ソースキット・独立再生成・対象/統合buildと代表表示へ。GNU grep Preview37537417228の完了後artifact検査→CAS052本番公開を優先。草稿は配信除外保存ブランチのみ。 |
 
 ## 登録済みの既存文書
 

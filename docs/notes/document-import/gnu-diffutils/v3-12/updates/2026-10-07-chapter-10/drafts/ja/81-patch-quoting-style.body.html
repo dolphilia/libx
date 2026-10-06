@@ -1,0 +1,21 @@
+<div class="gnu-diffutils-original-content" id="patch-Quoting-Style">
+<h4 class="subsection" id="patch-Quoting-Style-1"><span>10.11.3 <code class="command">patch</code>の引用形式</span></h4>
+<a class="index-entry-id" id="index-quoting-style"></a>
+<p><code class="command">patch</code>は診断メッセージ内のファイル名を、複数の形式で出力できます。句読点や改行などの特殊文字を含む場合でも、曖昧さなく名前を示すのに役立ちます。<samp class="option">--quoting-style=<var class="var">word</var></samp>オプションは出力形式を制御します。<var class="var">word</var>には次のいずれかを指定します。</p>
+<dl class="table">
+<dt>‘<samp class="samp">literal</samp>’</dt>
+<dd><p>名前をそのまま出力します。</p></dd>
+<dt>‘<samp class="samp">shell</samp>’</dt>
+<dd><p>シェルのメタ文字を含む、または出力が曖昧になる場合に、シェル用の引用をします。</p></dd>
+<dt>‘<samp class="samp">shell-always</samp>’</dt>
+<dd><p>通常は不要でも、シェル用の引用をします。</p></dd>
+<dt>‘<samp class="samp">c</samp>’</dt>
+<dd><p>C 言語の文字列として引用します。</p></dd>
+<dt>‘<samp class="samp">escape</samp>’</dt>
+<dd><p>‘<samp class="samp">c</samp>’ と同様ですが、周囲の二重引用符を省きます。</p></dd>
+</dl>
+<a class="index-entry-id" id="index-QUOTING_005fSTYLE"></a>
+<p><samp class="option">--quoting-style</samp>オプションの既定値は、<code class="env">QUOTING_STYLE</code>環境変数で指定できます。未設定なら ‘<samp class="samp">shell</samp>’ が既定ですが、将来の<code class="command">patch</code>では変わるかもしれません。</p>
+<hr/>
+</div>
+

@@ -1,0 +1,30 @@
+<div class="gnu-diffutils-original-content" id="Backup-Names">
+<h3 class="section" id="Backup-File-Names"><span>10.9 バックアップファイル名</span></h3>
+<a class="index-entry-id" id="index-backup-file-names"></a>
+<p>通常、<code class="command">patch</code>は元の入力ファイルをバックアップへ改名し、名前に拡張子 ‘<samp class="samp">.orig</samp>’ を付けます。‘<samp class="samp">.orig</samp>’ では名前が長すぎる場合は ‘<samp class="samp">~</samp>’ を付けます。<a class="footnote" href="#FOOT1" id="DOCF1"><sup>1</sup></a> <samp class="option">-z <var class="var">backup-suffix</var></samp>または<samp class="option">--suffix=<var class="var">backup-suffix</var></samp>オプションを使うと、<code class="command">patch</code>は代わりに<var class="var">backup-suffix</var>をバックアップの拡張子にします。</p>
+<a class="index-entry-id" id="index-SIMPLE_005fBACKUP_005fSUFFIX"></a>
+<p><code class="env">SIMPLE_BACKUP_SUFFIX</code>環境変数でも拡張子を指定できますが、オプション指定が優先されます。</p>
+<p><code class="command">patch</code>は GNU Emacs と同じように、番号付きのバックアップも作れます。この方式ではファイルごとに1つだけ残す代わりに、<code class="command">patch</code>は適用のたびに新しいバックアップ名を作ります。たとえば<samp class="file">sink</samp>のバックアップは、順に<samp class="file">sink.~1~</samp>、<samp class="file">sink.~2~</samp>、<samp class="file">sink.~3~</samp>などとなります。</p>
+<a class="index-entry-id" id="index-PATCH_005fVERSION_005fCONTROL"></a>
+<a class="index-entry-id" id="index-VERSION_005fCONTROL-1"></a>
+<p><samp class="option">-V <var class="var">backup-style</var></samp>または<samp class="option">--version-control=<var class="var">backup-style</var></samp>オプションは、バックアップ名を作る方式を引数に取ります。<code class="env">PATCH_VERSION_CONTROL</code>環境変数でも<code class="command">patch</code>のバックアップ方式を制御できますが、<samp class="option">-V</samp>オプションが優先されます。<code class="env">PATCH_VERSION_CONTROL</code>が未設定なら<code class="env">VERSION_CONTROL</code>環境変数を使います。これらはバックアップ名を制御するもので、リビジョン管理システムの選択には影響しません（<a class="pxref" href="#Revision-Control">リビジョン管理</a>参照）。</p>
+<p>これらの環境変数の値と<samp class="option">-V</samp>オプションの引数は、GNU Emacs の<code class="code">version-control</code>変数と同様です（Emacs のバックアップ版については、<cite class="cite">The GNU Emacs Manual</cite>の<a data-manual="emacs" href="https://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Backup-Names">Backup Names</a>参照）。より説明的な同義語も認識します。有効な値は以下のとおりで、一意に識別できる省略形も使えます。</p>
+<dl class="table">
+<dt><samp class="option">t</samp></dt>
+<dt><samp class="option">numbered</samp></dt>
+<dd><p>常に番号付きバックアップを作ります。</p>
+</dd>
+<dt><samp class="option">nil</samp></dt>
+<dt><samp class="option">existing</samp></dt>
+<dd><p>すでに番号付きバックアップがあるファイルには番号付き、それ以外には単純なバックアップを作ります。これが既定です。</p>
+</dd>
+<dt><samp class="option">never</samp></dt>
+<dt><samp class="option">simple</samp></dt>
+<dd><p>常に単純なバックアップを作ります。</p></dd>
+</dl>
+<p>ディレクトリ名などの接頭辞を付けてバックアップ名を作るよう<code class="command">patch</code>に指定することもできます。<samp class="option">--prefix=<var class="var">prefix</var></samp>（<samp class="option">-B <var class="var">prefix</var></samp>）オプションは<var class="var">prefix</var>を名前の先頭に付けます。<samp class="option">--basename-prefix=<var class="var">prefix</var></samp>（<samp class="option">-Y <var class="var">prefix</var></samp>）は代わりに、バックアップ名の最後のファイル名構成要素の先頭に<var class="var">prefix</var>を付けます。たとえば<samp class="option">-Y ~</samp>なら、<samp class="file">dir/file.c</samp>のバックアップ名は<samp class="file">dir/~file.c</samp>です。どちらかの接頭辞オプションを使うと、接尾辞方式のオプションは無視されます。</p>
+<p><samp class="option">-o</samp>で出力ファイルを指定した場合、バックアップされるのは入力ではなく出力ファイルです。</p>
+<p>バックアップ名を制御するオプションは、作成するかどうかには影響しません。たとえば<samp class="option">--no-backup-if-mismatch</samp>を指定するとバックアップは作られないため、この節のオプションはどれも効果がありません。</p>
+<hr/>
+</div>
+

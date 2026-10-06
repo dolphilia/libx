@@ -1,0 +1,12 @@
+<div class="gnu-diffutils-original-content" id="Patching-Timestamps">
+<h3 class="section" id="Updating-Timestamps-on-Patched-Files"><span>10.5 パッチ適用済みファイルのタイムスタンプの更新</span></h3>
+<a class="index-entry-id" id="index-timestamps-on-patched-files"></a>
+<p><code class="command">patch</code>はファイルを更新すると、通常は最終更新時刻を現在時刻に設定します。<code class="command">patch</code>でソフトウェア配布物を追跡している場合、このために<code class="command">make</code>がパッチ適用済みファイルを古いと誤認することがあります。たとえば<samp class="file">syntax.c</samp>が<samp class="file">syntax.y</samp>に依存し、<code class="command">patch</code>が<samp class="file">syntax.c</samp>、次に<samp class="file">syntax.y</samp>を更新すると、実際の内容は最新でも<samp class="file">syntax.c</samp>は通常、<samp class="file">syntax.y</samp>より古いと見なされます。</p>
+<p><samp class="option">--set-utc</samp>（<samp class="option">-Z</samp>）オプションを指定すると、<code class="command">patch</code>はパッチ適用済みファイルの更新時刻とアクセス時刻を、コンテキスト diff のヘッダーのタイムスタンプに設定します。ヘッダーにタイムゾーンの指定がなければ、協定世界時（UTC、GMT とも呼ばれます）を使うものと見なします。</p>
+<p><samp class="option">--set-time</samp>（<samp class="option">-T</samp>）オプションは<samp class="option">-Z</samp>または<samp class="option">--set-utc</samp>と同様ですが、ヘッダーのタイムスタンプを UTC ではなくローカル時刻と見なします。他のタイムゾーンの人が使いにくく、夏時間の調整で時計を戻す際にローカル時刻が曖昧になるため、このオプションは推奨しません。ヘッダーにタイムゾーン指定があれば、<samp class="option">--set-utc</samp>（<samp class="option">-Z</samp>）と同等です。</p>
+<p>元ファイルの最終更新時刻が diff ヘッダーの時刻と一致しない場合、または内容がパッチと完全には一致しない場合、<code class="command">patch</code>は通常タイムスタンプを設定しません。ただし<samp class="option">--force</samp>（<samp class="option">-f</samp>）オプションを指定すると、無条件に設定します。</p>
+<p>現在の<code class="command">diff</code>形式の制限により、<code class="command">patch</code>は内容の変わらないファイルの時刻を更新できません。また、現在時刻以外の値を設定する場合は、パッチ適用済みファイルに依存する全ファイルも（たとえば ‘<samp class="samp">make
+clean</samp>’ で）削除すべきです。そうすれば、後の<code class="command">make</code>の起動時に、パッチ適用済みファイルの時刻による混乱を防げます。</p>
+<hr/>
+</div>
+
