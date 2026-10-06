@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-03T11:00:12.065Z",
+  "status": "partial-not-eligible",
+  "sourceCommit": "c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0",
+  "fixedInputs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-432/COMPONENT_NOTICE_INPUTS.json",
+    "sha256": "8797670f2cbab99e49a0f4f55ca1b5581cca3a47c03213d5e843aa1ebb630465"
+  },
+  "correction": {
+    "historicalDraft": "2026-10-03-431/SCOPE_AND_WORKLOAD_DRAFT.json",
+    "document": "build/make/README.md",
+    "earlierProspectiveMapping": "BSD-2-Clause",
+    "correctComponentFallback": "GPL-2.0-or-later",
+    "basis": "同じ固定コミットのbuild/make/multiconf.make冒頭にYann Collet著作権・GPL version2 or laterの明示。READMEはmulticonf.makeの利用ガイド。専用ライセンス未発見時の成分本体適用というユーザー承認に従う。過去draftは改変しない。"
+  },
+  "componentNotices": [
+    {
+      "scope": "build/make/README.md",
+      "originalHeader": "sources/build/make/multiconf.make",
+      "copyright": "Copyright (C) Yann Collet",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "scope": "tests/collisions/README.md",
+      "originalHeaders": [
+        "sources/tests/collisions/main.c",
+        "sources/tests/collisions/sort.cc",
+        "sources/tests/collisions/hashes.h"
+      ],
+      "copyright": "Copyright (C) 2019-2021 Yann Collet",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "scope": "tests/collisions/allcodecs/README.md",
+      "originalHeader": "sources/tests/collisions/allcodecs/dummy.c",
+      "copyright": "Copyright (C) 2020 Yann Collet",
+      "license": "GPL-2.0-or-later"
+    }
+  ],
+  "implementationPlan": [
+    "各該当ページにソフトウェア本体成分のGPLv2以降を文書にも適用する運用判断の注釈、非公式翻訳・変更表示を付ける。権利者の新許諾とは記録しない。",
+    "原ソース冒頭の著作権・GPL許諾/免責全文と固定GPL原文を改変せずnoticeページ/原本へ保存・リンクする。",
+    "英語定本・日本語・変換器/原本等の変更対応を取得可能にし、ライセンス保持と変更表示を検証する。"
+  ],
+  "wiki": {
+    "observedPages": [
+      "Home",
+      "Collision ratio comparison",
+      "Performance comparison"
+    ],
+    "provisionalBoundary": "別時点の比較・衝突試験結果の参照資料。0.8.4利用/API/仕様は固定リリースソース全体と公式public生成物。比較Wikiは使用API手順を補うため新規執筆する根拠にはしない。本文リンク全件と全文自立性を確認後に正式境界判断。",
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-432/JAPANESE_AND_WIKI_READS.json",
+        "sha256": "565a97e04b77a0ae78d9896c4ec6b22e48eb5df2e0301256fa472ff30fb43abc"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-432/WIKI_COMPARISON_READS.json",
+        "sha256": "d99cbfb937c5186b7b6bdc3a3347f48a1809fe81304960a22f139f6c47b928aa"
+      }
+    ]
+  },
+  "japaneseResearch": {
+    "status": "incomplete",
+    "observed": [
+      {
+        "url": "https://qiita.com/DogFortune/items/8819f1ddfea293e6a9ba",
+        "scope": "0.7.2 Windows/macOSの速度試用記事。0.8.4 API一式訳ではない。"
+      },
+      {
+        "url": "https://zenn.dev/dogfortune/articles/1fb0ad0932ba89",
+        "scope": ".NET System.IO.Hashingの実装経験記事。C版0.8.4 API/CLI/仕様一式訳ではない。"
+      },
+      {
+        "url": "https://qiita.com/sator_imaging/items/36c390c0536a6750b788",
+        "scope": "C#/Unity XXH32最小実装紹介。対象文書一式訳ではない。"
+      }
+    ],
+    "pending": [
+      "公式言語一覧・固定tree翻訳ディレクトリ・公式案内コミュニティ訳の確認",
+      "0.8.4と対象範囲に限定した検索・比較"
+    ],
+    "caveat": "日本語文書不存在を断定しない。記事本文を翻訳原資料や技術的正確性の根拠として再使用しない。"
+  },
+  "unresolved": [
+    "図・バッジ等第三者素材の参照/掲載方針",
+    "全43本文の通知と帰属の最終設計",
+    "全文自立性/文書境界の最終判定",
+    "日本語調査/Libx試験変換/工数/採点"
+  ]
+}

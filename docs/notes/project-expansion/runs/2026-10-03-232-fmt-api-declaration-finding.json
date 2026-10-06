@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-232-fmt-api-declaration-finding",
+  "cycle": 232,
+  "startedAt": "2026-10-02T15:46:59.793Z",
+  "endedAt": "2026-10-02T15:49:04.035Z",
+  "result": "partial",
+  "phase": "canonical-content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full API source explanatory text reading",
+    "84declaration parsed HTML element inspection",
+    "Fixed5header excerpts/type comparison",
+    "Declaration repair map construction",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "9288d8a0321b89c752444f3f34b9553011534c6906f952c5d06accf3a1717fc1"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6863914a164a22e685b78b1ce154368285f5e5fdc9bfcdcbccdd1f7af77bc0e6"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "9c0e4bcbeefd9fc60f984af864d5bc91ba9a16f5c4ab832db4fb458bf3b77a40"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-232/DECLARATION_FINDING.json",
+      "sha256": "ae3a1f8156836a073cf98b13684d4625f9e26b27904791b2bbdfb7c358f83206"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-232/HEADER_VALIDATION.json",
+      "sha256": "116449dc5b2320166d10a579f7abb43db3c75c9fd84c2aec69167de1c61d2c00"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/DECLARATION_REPAIR_MAP.json",
+      "sha256": "1a5afe1a8a56f74e7613ea70f1bfe85bd692e8644c6aaac88b41aa9640391e4b"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "ecf07b1c0a0cc2dfb3df592988e7266cf8a5426a58e6fcfa63a1f9e34580f29f"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "89077364f96e523fc7a4d8cfe37107c9376f1ca659632ab7a7262818260297a2"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "f75eb4f6f2e018120bdab700c5e6ca9639a0a2e0895d72a0e605b8007e58f1b0"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "All84 generated declaration HTML source check",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-232/DECLARATION_FINDING.json",
+          "sha256": "ae3a1f8156836a073cf98b13684d4625f9e26b27904791b2bbdfb7c358f83206"
+        }
+      ]
+    },
+    {
+      "name": "11return types verified against fixedheaders",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-232/HEADER_VALIDATION.json",
+          "sha256": "116449dc5b2320166d10a579f7abb43db3c75c9fd84c2aec69167de1c61d2c00"
+        }
+      ]
+    },
+    {
+      "name": "API fullsemantic and repair application",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "テンプレート型表示欠落を上流生成HTML一致では合格にしない",
+    "11件すべてを固定ヘッダーで確認、元HTMLと元ソースは変更しない",
+    "API全文意味/JAレビューは未完了を維持"
+  ],
+  "unresolved": [
+    "API11宣言表示修復",
+    "API84説明全文意味/JAレビュー",
+    "CI固定と最終QA/公開"
+  ],
+  "nextAction": "fmt API11宣言のテンプレート戻り型をDECLARATION_REPAIR_MAPの固定ヘッダー根拠でHTMLエスケープ修復。変換器と機械検査に未知HTML要素拒否/修復宣言表示の完全一致を追加し再生成・再検証。修正後にAPI84説明の全文意味レビュー/JA、CI固定、全英日QAから公開へ。",
+  "resumeCondition": "232:APIの元説明文を全文確認中、公式生成HTML内11戻り型の角括弧未escapeを発見。5固定ヘッダーの原行で11型を確認し修復対応表保存、canonical機械完了を解除。API意味レビューは未完了、他4EN/4JAレビューSHA維持。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

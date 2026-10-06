@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-02T09:48:33.801Z",
+  "previousTurnClassification": "progress: clean e254079 push/Preview run36990750769 dispatch/revision327",
+  "failedRun": 36990750769,
+  "commit": "e25407901b2f3743cc65b5773b02e9785fa1ae76",
+  "conclusion": "failure",
+  "failedStep": "Unit and runtime tests",
+  "runtime": {
+    "passed": 226,
+    "failed": 4,
+    "reason": "pandoc ENOENT: importer regeneration/rollback/full fidelity tests need the executable"
+  },
+  "externalPreview": "deploy-preview skipped; not deployed",
+  "production": "not-performed",
+  "fix": "Add quality-check-only setup of official Pandoc3.8.3 matching local conversion, arm64/x86_64 release ZIP SHA256 verification and isolated runner temp PATH. Root and private workflow receive only identical added step; their differing production baseline configuration is preserved.",
+  "workflowFormat": "passed",
+  "fixValidation": "pending official ZIP extraction/executable/importer tests and new clean commit/Preview CI",
+  "unchanged": "All documentation and translation bytes unchanged; failed tests not skipped.",
+  "nextAction": "公式ZIPをSHA照合・展開しその実binaryでimporter runtime全4再生成検査を確認。workflowのみ追補commit/push、新コミットPreviewを1回dispatch。失敗した旧runは再起動しない。"
+}

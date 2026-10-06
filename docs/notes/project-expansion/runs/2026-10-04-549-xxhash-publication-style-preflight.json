@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-549-xxhash-publication-style-preflight",
+  "cycle": 549,
+  "startedAt": "2026-10-03T20:49:55.828Z",
+  "endedAt": "2026-10-03T20:50:00.990Z",
+  "result": "partial",
+  "phase": "verified",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "policy/plan priority readback",
+    "private final-dist smoke",
+    "private Prettier preflight",
+    "CAS ledger checkpoint"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "170776241eb13a9b1e82a33d18709738efa8c588c0a3a577412e0224f04b5456"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/plans/CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md",
+      "sha256": "2fe60b586b02ae4fea3925e228a588938be77a5171849a4468a4251eb391a2cd"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-549/FORMAT.log",
+      "sha256": "55675eba142639f50411ff42de9ac5ec8d2533a0516cad2824a4227c7f320f6f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-549/SMOKE.log",
+      "sha256": "6199aa49b14d91dfb1988cb550a0346d8c14d69e6de97f3701aec4bbbceffd9f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-549/register.mjs",
+      "sha256": "5ffc2397d5857e5b41cbd7a6f2d109932ea0437d4aa6cc60d94d2c488a944a86"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7d023b535ec1d6f312e6d0b29f25cbf9467f5ca597978a3ceb9dfd23152f4539"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "new-projects-first plan and policy",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/POLICY.json",
+          "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+        },
+        {
+          "path": "docs/plans/CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md",
+          "sha256": "2fe60b586b02ae4fea3925e228a588938be77a5171849a4468a4251eb391a2cd"
+        }
+      ]
+    },
+    {
+      "name": "final integrated smoke 13/13",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-549/SMOKE.log",
+          "sha256": "6199aa49b14d91dfb1988cb550a0346d8c14d69e6de97f3701aec4bbbceffd9f"
+        }
+      ]
+    },
+    {
+      "name": "publication style preflight",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-549/FORMAT.log",
+          "sha256": "55675eba142639f50411ff42de9ac5ec8d2533a0516cad2824a4227c7f320f6f"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "計画とPOLICYの新規作成・公開優先が一致。重大な既知不具合以外の公開済み定期巡回は低優先。",
+    "13 smoke合格。61整形指摘があるためcommit/公開を未実施とし、固定原文を変更せず分類して修正する。",
+    "内容のverified判定と未完了の公開前CI準備を区別し、publishedへ変更しない。"
+  ],
+  "unresolved": [
+    "公開前整形61指摘の分類・コード修正",
+    "commit/push/CI/Production反映と外部検証"
+  ],
+  "nextAction": "専用 /private/tmp/libx-xxhash-integration-20261004 で公開前整形61指摘を分類。固定原文/生成入力/レビュー証拠は既存同種の方針でPrettier対象外としバイト列を保持、変更コードは整形する。原文・本文SHAと全文review照合、再生成/check:contentを確認。source束に含むimporter変更時は決定的束を再生成し新SHA/全memberを検証、必要なbuild/機械/表示gateを再更新する。format/lint/typecheck合格後、isolated source限定commit/push→既存Pages workflow expected_production_commit=4f0ee6d00b08e3fe7b39f7466a545c4c944d6b26→CI artifact/Pages canonical/HTTP/source.gz確認。root共通変更と別Awesome作業を保護し、公開済み定期巡回より新規公開を優先。",
+  "resumeCondition": "専用 /private/tmp/libx-xxhash-integration-20261004 で公開前整形61指摘を分類。固定原文/生成入力/レビュー証拠は既存同種の方針でPrettier対象外としバイト列を保持、変更コードは整形する。原文・本文SHAと全文review照合、再生成/check:contentを確認。source束に含むimporter変更時は決定的束を再生成し新SHA/全memberを検証、必要なbuild/機械/表示gateを再更新する。format/lint/typecheck合格後、isolated source限定commit/push→既存Pages workflow expected_production_commit=4f0ee6d00b08e3fe7b39f7466a545c4c944d6b26→CI artifact/Pages canonical/HTTP/source.gz確認。root共通変更と別Awesome作業を保護し、公開済み定期巡回より新規公開を優先。",
+  "counts": {
+    "verified": 14,
+    "published": 13,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

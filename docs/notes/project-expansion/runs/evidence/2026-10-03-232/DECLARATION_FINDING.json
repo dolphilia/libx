@@ -1,0 +1,175 @@
+{
+  "status": "needs-repair",
+  "scope": "Unknown HTML elements inside84API declarations; semantic review not yet complete",
+  "declarations": 84,
+  "findings": [
+    {
+      "declarationIndex": 4,
+      "rendered": "template <typename OutputIt, typename... T>\nremove_cvref_t format_to(OutputIt&& out, format_string<T...> fmt, T&&... args);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename OutputIt, typename...&nbsp;T&gt;\n</div><div>remove_cvref_t<OutputIt> format_to(OutputIt&& out, format_string&lt;T...> fmt, T&&... args);</div></code>",
+      "unexpected": [
+        {
+          "tag": "outputit",
+          "attributes": [],
+          "rawOpening": "<OutputIt>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 5,
+      "rendered": "template <typename OutputIt, typename... T>\nformat_to_n_result format_to_n(OutputIt out, size_t n, format_string<T...> fmt, T&&... args);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename OutputIt, typename...&nbsp;T&gt;\n</div><div>format_to_n_result<OutputIt> format_to_n(OutputIt out, size_t n, format_string&lt;T...> fmt, T&&... args);</div></code>",
+      "unexpected": [
+        {
+          "tag": "outputit",
+          "attributes": [],
+          "rawOpening": "<OutputIt>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 17,
+      "rendered": "template <typename Context, typename... T, int NUM_ARGS, int NUM_NAMED_ARGS, ullong DESC>\ndetail::format_arg_store make_format_args(T&... args);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename Context, typename...&nbsp;T, int&nbsp;NUM_ARGS, int&nbsp;NUM_NAMED_ARGS, ullong&nbsp;DESC&gt;\n</div><div>detail::format_arg_store<Context, NUM_ARGS, NUM_NAMED_ARGS, DESC> make_format_args(T&... args);</div></code>",
+      "unexpected": [
+        {
+          "tag": "context,",
+          "attributes": [
+            {
+              "name": "num_args,",
+              "value": ""
+            },
+            {
+              "name": "num_named_args,",
+              "value": ""
+            },
+            {
+              "name": "desc",
+              "value": ""
+            }
+          ],
+          "rawOpening": "<Context, NUM_ARGS, NUM_NAMED_ARGS, DESC>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 25,
+      "rendered": "template <typename T>\nnamed_arg arg(const char* name, const T& arg);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>named_arg<T> arg(const char* name, const T& arg);</div></code>",
+      "unexpected": [
+        {
+          "tag": "t",
+          "attributes": [],
+          "rawOpening": "<T>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 32,
+      "rendered": "template <typename Enum>\nunderlying_t underlying(Enum e);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename Enum&gt;\n</div><div>underlying_t<Enum> underlying(Enum e);</div></code>",
+      "unexpected": [
+        {
+          "tag": "enum",
+          "attributes": [],
+          "rawOpening": "<Enum>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 34,
+      "rendered": "template <typename T>\ngroup_digits_view group_digits(T value);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>group_digits_view<T> group_digits(T value);</div></code>",
+      "unexpected": [
+        {
+          "tag": "t",
+          "attributes": [],
+          "rawOpening": "<T>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 52,
+      "rendered": "template <typename Range>\njoin_view join(Range&& r, string_view sep);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename Range&gt;\n</div><div>join_view<decltype(detail::range_begin(r)), decltype(detail::range_end(r))> join(Range&& r, string_view sep);</div></code>",
+      "unexpected": [
+        {
+          "tag": "decltype(detail::range_begin(r)),",
+          "attributes": [
+            {
+              "name": "decltype(detail::range_end(r))",
+              "value": ""
+            }
+          ],
+          "rawOpening": "<decltype(detail::range_begin(r)), decltype(detail::range_end(r))>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 53,
+      "rendered": "template <typename It, typename Sentinel>\njoin_view join(It begin, Sentinel end, string_view sep);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename It, typename Sentinel&gt;\n</div><div>join_view<It, Sentinel> join(It begin, Sentinel end, string_view sep);</div></code>",
+      "unexpected": [
+        {
+          "tag": "it,",
+          "attributes": [
+            {
+              "name": "sentinel",
+              "value": ""
+            }
+          ],
+          "rawOpening": "<It, Sentinel>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 54,
+      "rendered": "template <typename T>\njoin_view join(std::initializer_list<T> list, string_view sep);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>join_view<const T*, const T*> join(std::initializer_list&lt;T> list, string_view sep);</div></code>",
+      "unexpected": [
+        {
+          "tag": "const",
+          "attributes": [
+            {
+              "name": "t*,",
+              "value": ""
+            },
+            {
+              "name": "const",
+              "value": ""
+            },
+            {
+              "name": "t*",
+              "value": ""
+            }
+          ],
+          "rawOpening": "<const T*, const T*>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 64,
+      "rendered": "template <typename T>\ndetail::styled_arg> styled(const T& value, text_style ts);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>detail::styled_arg<remove_cvref_t<T>> styled(const T& value, text_style ts);</div></code>",
+      "unexpected": [
+        {
+          "tag": "remove_cvref_t<t",
+          "attributes": [],
+          "rawOpening": "<remove_cvref_t<T>"
+        }
+      ]
+    },
+    {
+      "declarationIndex": 69,
+      "rendered": "template <typename T>\ndetail::streamed_view streamed(const T& value);",
+      "raw": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>detail::streamed_view<T> streamed(const T& value);</div></code>",
+      "unexpected": [
+        {
+          "tag": "t",
+          "attributes": [],
+          "rawOpening": "<T>"
+        }
+      ]
+    }
+  ]
+}

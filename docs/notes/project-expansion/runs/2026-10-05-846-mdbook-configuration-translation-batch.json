@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-846-mdbook-configuration-translation-batch",
+  "cycle": 846,
+  "startedAt": "2026-10-05T14:31:15.931682+00:00",
+  "endedAt": "2026-10-05T14:41:42.267Z",
+  "result": "partial",
+  "phase": "mdBook設定5章翻訳・別パス全文review・差分検査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "saved drafts",
+    "separate-pass full review",
+    "delta DOM/code/SVG/refs",
+    "selective Astro build",
+    "native mobile/desktop representatives"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/PROGRESS_BEFORE.json",
+      "sha256": "5af7857c84e57b0c1834c89edb624e1bd7d4bd547c0a3f51f382d013011b2fa3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/CONTENT_MAP_BEFORE.json",
+      "sha256": "3ca1f2a281891ecf657df8cb7ec53bbf0edd92ced97104fa69b196c8e5ec61df"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/REVIEW_MANIFEST_BEFORE.json",
+      "sha256": "593b4bd8a912b5deba65591099972dd4a02e6a01618a6df6cbf5983b1766eed1"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/CONTENT_MAP_FROZEN.json",
+      "sha256": "912a0fbf08eeeccf106a4e79644945e0247cce4c9aa81f4e6890b1d7d5437c0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/REVIEW_MANIFEST_FROZEN.json",
+      "sha256": "76c4522e02c1ecffb7814467d2f5cb6016447751d255697c166cfda06795712f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/PROGRESS_FROZEN.json",
+      "sha256": "2bff6bad151aee0cbd648d3acb03147412380d30de250a7256a2905d8d92e47f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/BATCH_CHECK.json",
+      "sha256": "32d0c132aa299e1c83ddaae991b6db00ec961f289edd3a2c511b163a5286c762"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/SELECTIVE_BUILD.log",
+      "sha256": "c24fc6f0561f0956f3fab4a728b7da8be69255dd68be9c7323edf75e9fd29d6f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/BROWSER_REPRESENTATIVES.json",
+      "sha256": "6772784fe3a4be55b3ee56e534032b57db3ba816612671efc5875e91cd4e47bd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/REVIEW_RECORD_CORRECTION.json",
+      "sha256": "26d7306b5fa95f82273f2f4d42ce34aec823ccb650963441ff62a61ac16ae4da"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/GLOBAL_CSS_SNAPSHOT.txt",
+      "sha256": "f28753244bf42ebd23f8729e880e01e3510c50ca6abef44c944fb45573c33c7d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "5章review/差分検査/61page build/代表表示",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/REVIEW_MANIFEST_FROZEN.json",
+          "sha256": "76c4522e02c1ecffb7814467d2f5cb6016447751d255697c166cfda06795712f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/BATCH_CHECK.json",
+          "sha256": "32d0c132aa299e1c83ddaae991b6db00ec961f289edd3a2c511b163a5286c762"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/SELECTIVE_BUILD.log",
+          "sha256": "c24fc6f0561f0956f3fab4a728b7da8be69255dd68be9c7323edf75e9fd29d6f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-846/BROWSER_REPRESENTATIVES.json",
+          "sha256": "6772784fe3a4be55b3ee56e534032b57db3ba816612671efc5875e91cd4e47bd"
+        }
+      ]
+    },
+    {
+      "name": "全31/sourceoffer/release",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "旧20review・旧51検査はSHA同一で再利用。",
+    "324行は従来coverageと一致。findingsの327だけ訂正、旧frozen不変。",
+    "既定値・原sourceの不整合は保持。原文技術監査を広げない。",
+    "今回5章のみ生成・表示、61page build。未訳参照はpending。",
+    "Workers/定期なし、未公開。"
+  ],
+  "unresolved": [
+    "6章JA/review、15参照、可搬再生成/source-offer/全検証/統合公開。"
+  ],
+  "nextAction": "847:固有機能22、CI10、開発11/12/13、貢献31の6章を翻訳・別パスreview。全31後に可搬再生成/source-offer/正式検証/Pages公開。",
+  "resumeCondition": "847:固有機能22、CI10、開発11/12/13、貢献31の6章を翻訳・別パスreview。全31後に可搬再生成/source-offer/正式検証/Pages公開。"
+}
