@@ -1,0 +1,1733 @@
+{
+  "sourceSha256": "c0a1763208acbe1a764312626eefd14312f2d3cb615944623aae8a80922836d1",
+  "blocks": [
+    {
+      "id": 0,
+      "tag": "h2",
+      "html": "Introduction"
+    },
+    {
+      "id": 1,
+      "tag": "p",
+      "html": "Ninja is yet another build system.  It takes as input the\ninterdependencies of files (typically source code and output\nexecutables) and orchestrates building them, <em>quickly</em>."
+    },
+    {
+      "id": 2,
+      "tag": "p",
+      "html": "Ninja joins a sea of other build systems.  Its distinguishing goal is\nto be fast.  It is born from\n<a href=\"http://neugierig.org/software/chromium/notes/2011/02/ninja.html\">my\nwork on the Chromium browser project</a>, which has over 30,000 source\nfiles and whose other build systems (including one built from custom\nnon-recursive Makefiles) would take ten seconds to start building\nafter changing one file.  Ninja is under a second."
+    },
+    {
+      "id": 3,
+      "tag": "h3",
+      "html": "Philosophical overview"
+    },
+    {
+      "id": 4,
+      "tag": "p",
+      "html": "Where other build systems are high-level languages, Ninja aims to be\nan assembler."
+    },
+    {
+      "id": 5,
+      "tag": "p",
+      "html": "Build systems get slow when they need to make decisions.  When you are\nin an edit-compile cycle you want it to be as fast as possible — you\nwant the build system to do the minimum work necessary to figure out\nwhat needs to be built immediately."
+    },
+    {
+      "id": 6,
+      "tag": "p",
+      "html": "Ninja contains the barest functionality necessary to describe\narbitrary dependency graphs.  Its lack of syntax makes it impossible\nto express complex decisions."
+    },
+    {
+      "id": 7,
+      "tag": "p",
+      "html": "Instead, Ninja is intended to be used with a separate program\ngenerating its input files.  The generator program (like the\n<span class=\"monospaced\">./configure</span> found in autotools projects) can analyze system\ndependencies and make as many decisions as possible up front so that\nincremental builds stay fast.  Going beyond autotools, even build-time\ndecisions like \"which compiler flags should I use?\"  or \"should I\nbuild a debug or release-mode binary?\"  belong in the <span class=\"monospaced\">.ninja</span> file\ngenerator."
+    },
+    {
+      "id": 8,
+      "tag": "h3",
+      "html": "Design goals"
+    },
+    {
+      "id": 9,
+      "tag": "p",
+      "html": "Here are the design goals of Ninja:"
+    },
+    {
+      "id": 10,
+      "tag": "p",
+      "html": "\nvery fast (i.e., instant) incremental builds, even for very large\n  projects.\n"
+    },
+    {
+      "id": 11,
+      "tag": "p",
+      "html": "\nvery little policy about how code is built.  Different projects and\n  higher-level build systems have different opinions about how code\n  should be built; for example, should built objects live alongside\n  the sources or should all build output go into a separate directory?\n  Is there a \"package\" rule that builds a distributable package of\n  the project?  Sidestep these decisions by trying to allow either to\n  be implemented, rather than choosing, even if that results in\n  more verbosity.\n"
+    },
+    {
+      "id": 12,
+      "tag": "p",
+      "html": "\nget dependencies correct, and in particular situations that are\n  difficult to get right with Makefiles (e.g. outputs need an implicit\n  dependency on the command line used to generate them; to build C\n  source code you need to use gcc’s <span class=\"monospaced\">-M</span> flags for header\n  dependencies).\n"
+    },
+    {
+      "id": 13,
+      "tag": "p",
+      "html": "\nwhen convenience and speed are in conflict, prefer speed.\n"
+    },
+    {
+      "id": 14,
+      "tag": "p",
+      "html": "Some explicit <em>non-goals</em>:"
+    },
+    {
+      "id": 15,
+      "tag": "p",
+      "html": "\nconvenient syntax for writing build files by hand.  <em>You should\n  generate your ninja files using another program</em>.  This is how we\n  can sidestep many policy decisions.\n"
+    },
+    {
+      "id": 16,
+      "tag": "p",
+      "html": "\nbuilt-in rules. <em>Out of the box, Ninja has no rules for\n  e.g. compiling C code.</em>\n"
+    },
+    {
+      "id": 17,
+      "tag": "p",
+      "html": "\nbuild-time customization of the build. <em>Options belong in\n  the program that generates the ninja files</em>.\n"
+    },
+    {
+      "id": 18,
+      "tag": "p",
+      "html": "\nbuild-time decision-making ability such as conditionals or search\n  paths. <em>Making decisions is slow.</em>\n"
+    },
+    {
+      "id": 19,
+      "tag": "p",
+      "html": "To restate, Ninja is faster than other build systems because it is\npainfully simple.  You must tell Ninja exactly what to do when you\ncreate your project’s <span class=\"monospaced\">.ninja</span> files."
+    },
+    {
+      "id": 20,
+      "tag": "h3",
+      "html": "Comparison to Make"
+    },
+    {
+      "id": 21,
+      "tag": "p",
+      "html": "Ninja is closest in spirit and functionality to Make, relying on\nsimple dependencies between file timestamps."
+    },
+    {
+      "id": 22,
+      "tag": "p",
+      "html": "But fundamentally, make has a lot of <em>features</em>: suffix rules,\nfunctions, built-in rules that e.g. search for RCS files when building\nsource.  Make’s language was designed to be written by humans.  Many\nprojects find make alone adequate for their build problems."
+    },
+    {
+      "id": 23,
+      "tag": "p",
+      "html": "In contrast, Ninja has almost no features; just those necessary to get\nbuilds correct while punting most complexity to generation of the\nninja input files.  Ninja by itself is unlikely to be useful for most\nprojects."
+    },
+    {
+      "id": 24,
+      "tag": "p",
+      "html": "Here are some of the features Ninja adds to Make.  (These sorts of\nfeatures can often be implemented using more complicated Makefiles,\nbut they are not part of make itself.)"
+    },
+    {
+      "id": 25,
+      "tag": "p",
+      "html": "\nNinja has special support for discovering extra dependencies at build\n  time, making it easy to get <a href=\"#ref_headers\">header dependencies</a>\n  correct for C/C++ code.\n"
+    },
+    {
+      "id": 26,
+      "tag": "p",
+      "html": "\nA build edge may have multiple outputs.\n"
+    },
+    {
+      "id": 27,
+      "tag": "p",
+      "html": "\nOutputs implicitly depend on the command line that was used to generate\n  them, which means that changing e.g. compilation flags will cause\n  the outputs to rebuild.\n"
+    },
+    {
+      "id": 28,
+      "tag": "p",
+      "html": "\nOutput directories are always implicitly created before running the\n  command that relies on them.\n"
+    },
+    {
+      "id": 29,
+      "tag": "p",
+      "html": "\nRules can provide shorter descriptions of the command being run, so\n  you can print e.g. <span class=\"monospaced\">CC foo.o</span> instead of a long command line while\n  building.\n"
+    },
+    {
+      "id": 30,
+      "tag": "p",
+      "html": "\nBuilds are always run in parallel, based by default on the number of\n  CPUs your system has.  Underspecified build dependencies will result\n  in incorrect builds.\n"
+    },
+    {
+      "id": 31,
+      "tag": "p",
+      "html": "\nCommand output is always buffered.  This means commands running in\n  parallel don’t interleave their output, and when a command fails we\n  can print its failure output next to the full command line that\n  produced the failure.\n"
+    },
+    {
+      "id": 32,
+      "tag": "h2",
+      "html": "Using Ninja for your project"
+    },
+    {
+      "id": 33,
+      "tag": "p",
+      "html": "Ninja currently works on Unix-like systems and Windows. It’s seen the\nmost testing on Linux (and has the best performance there) but it runs\nfine on Mac OS X and FreeBSD."
+    },
+    {
+      "id": 34,
+      "tag": "p",
+      "html": "If your project is small, Ninja’s speed impact is likely unnoticeable.\n(However, even for small projects it sometimes turns out that Ninja’s\nlimited syntax forces simpler build rules that result in faster\nbuilds.)  Another way to say this is that if you’re happy with the\nedit-compile cycle time of your project already then Ninja won’t help."
+    },
+    {
+      "id": 35,
+      "tag": "p",
+      "html": "There are many other build systems that are more user-friendly or\nfeatureful than Ninja itself.  For some recommendations: the Ninja\nauthor found <a href=\"http://gittup.org/tup/\">the tup build system</a> influential\nin Ninja’s design, and thinks <a href=\"https://github.com/apenwarr/redo\">redo</a>'s\ndesign is quite clever."
+    },
+    {
+      "id": 36,
+      "tag": "p",
+      "html": "Ninja’s benefit comes from using it in conjunction with a smarter\nmeta-build system."
+    },
+    {
+      "id": 37,
+      "tag": "dt",
+      "html": "\n<a href=\"https://gn.googlesource.com/gn/\">gn</a>\n"
+    },
+    {
+      "id": 38,
+      "tag": "p",
+      "html": "\nThe meta-build system used to\ngenerate build files for Google Chrome and related projects (v8,\nnode.js), as well as Google Fuchsia.  gn can generate Ninja files for\nall platforms supported by Chrome.\n"
+    },
+    {
+      "id": 39,
+      "tag": "dt",
+      "html": "\n<a href=\"https://cmake.org/\">CMake</a>\n"
+    },
+    {
+      "id": 40,
+      "tag": "p",
+      "html": "\nA widely used meta-build system that\ncan generate Ninja files on Linux as of CMake version 2.8.8.  Newer versions\nof CMake support generating Ninja files on Windows and Mac OS X too.\n"
+    },
+    {
+      "id": 41,
+      "tag": "dt",
+      "html": "\n<a href=\"https://github.com/ninja-build/ninja/wiki/List-of-generators-producing-ninja-build-files\">others</a>\n"
+    },
+    {
+      "id": 42,
+      "tag": "p",
+      "html": "\nNinja ought to fit perfectly into other meta-build software\nlike <a href=\"https://premake.github.io/\">premake</a>.  If you do this work,\nplease let us know!\n"
+    },
+    {
+      "id": 43,
+      "tag": "h3",
+      "html": "Running Ninja"
+    },
+    {
+      "id": 44,
+      "tag": "p",
+      "html": "Run <span class=\"monospaced\">ninja</span>.  By default, it looks for a file named <span class=\"monospaced\">build.ninja</span> in\nthe current directory and builds all out-of-date targets.  You can\nspecify which targets (files) to build as command line arguments."
+    },
+    {
+      "id": 45,
+      "tag": "p",
+      "html": "There is also a special syntax <span class=\"monospaced\">target^</span> for specifying a target\nas the first output of some rule containing the source you put in\nthe command line, if one exists. For example, if you specify target as\n<span class=\"monospaced\">foo.c^</span> then <span class=\"monospaced\">foo.o</span> will get built (assuming you have those targets\nin your build files)."
+    },
+    {
+      "id": 46,
+      "tag": "p",
+      "html": "<span class=\"monospaced\">ninja -h</span> prints help output.  Many of Ninja’s flags intentionally\nmatch those of Make; e.g <span class=\"monospaced\">ninja -C build -j 20</span> changes into the\n<span class=\"monospaced\">build</span> directory and runs 20 build commands in parallel.  (Note that\nNinja defaults to running commands in parallel anyway, so typically\nyou don’t need to pass <span class=\"monospaced\">-j</span>.)"
+    },
+    {
+      "id": 47,
+      "tag": "h3",
+      "html": "GNU Jobserver support"
+    },
+    {
+      "id": 48,
+      "tag": "p",
+      "html": "Since version 1.13., Ninja builds can follow the\n<a href=\"https://https://www.gnu.org/software/make/manual/html_node/Job-Slots.html\">GNU Make jobserver</a>\nclient protocol. This is useful when Ninja is invoked as part of a larger\nbuild system controlled by a top-level GNU Make instance, or any other\njobserver pool implementation, as it allows better coordination between\nconcurrent build tasks."
+    },
+    {
+      "id": 49,
+      "tag": "p",
+      "html": "This feature is automatically enabled under the following conditions:"
+    },
+    {
+      "id": 50,
+      "tag": "p",
+      "html": "\nDry-run (i.e. <span class=\"monospaced\">-n</span> or <span class=\"monospaced\">--dry-run</span>) is not enabled.\n"
+    },
+    {
+      "id": 51,
+      "tag": "p",
+      "html": "\nNo explicit job count (e.g. <span class=\"monospaced\">-j&lt;COUNT&gt;</span>) is passed on the command\n  line.\n"
+    },
+    {
+      "id": 52,
+      "tag": "p",
+      "html": "\nThe <span class=\"monospaced\">MAKEFLAGS</span> environment variable is defined and describes a valid\n  jobserver mode using <span class=\"monospaced\">--jobserver-auth=SEMAPHORE_NAME</span> on Windows, or\n  <span class=\"monospaced\">--jobserver-auth=fifo:PATH</span> on Posix.\n"
+    },
+    {
+      "id": 53,
+      "tag": "p",
+      "html": "In this case, Ninja will use the jobserver pool of job slots to control\nparallelism, instead of its default parallel implementation."
+    },
+    {
+      "id": 54,
+      "tag": "p",
+      "html": "Note that load-average limitations (i.e. when using <span class=\"monospaced\">-l&lt;count&gt;</span>)\nare still being enforced in this mode."
+    },
+    {
+      "id": 55,
+      "tag": "td",
+      "html": "On Posix, only the FIFO-based version of the protocol, which is\nimplemented by GNU Make 4.4 and higher, is supported. Ninja will detect\nwhen a pipe-based jobserver is being used (i.e. when <span class=\"monospaced\">MAKEFLAGS</span> contains\n<span class=\"monospaced\">--jobserver-auth=&lt;read&gt;,&lt;write&gt;</span>) and will print a warning, but will\notherwise ignore it."
+    },
+    {
+      "id": 56,
+      "tag": "h3",
+      "html": "Environment variables"
+    },
+    {
+      "id": 57,
+      "tag": "p",
+      "html": "Ninja supports two environment variables to control its behavior:\n<span class=\"monospaced\">NINJA_STATUS</span>, the progress status printed before the rule being run."
+    },
+    {
+      "id": 58,
+      "tag": "p",
+      "html": "Several placeholders are available:"
+    },
+    {
+      "id": 59,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%s</span>\n"
+    },
+    {
+      "id": 60,
+      "tag": "p",
+      "html": "\nThe number of started edges.\n"
+    },
+    {
+      "id": 61,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%t</span>\n"
+    },
+    {
+      "id": 62,
+      "tag": "p",
+      "html": "\nThe total number of edges that must be run to complete the build.\n"
+    },
+    {
+      "id": 63,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%p</span>\n"
+    },
+    {
+      "id": 64,
+      "tag": "p",
+      "html": "\nThe percentage of finished edges.\n"
+    },
+    {
+      "id": 65,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%r</span>\n"
+    },
+    {
+      "id": 66,
+      "tag": "p",
+      "html": "\nThe number of currently running edges.\n"
+    },
+    {
+      "id": 67,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%u</span>\n"
+    },
+    {
+      "id": 68,
+      "tag": "p",
+      "html": "\nThe number of remaining edges to start.\n"
+    },
+    {
+      "id": 69,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%f</span>\n"
+    },
+    {
+      "id": 70,
+      "tag": "p",
+      "html": "\nThe number of finished edges.\n"
+    },
+    {
+      "id": 71,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%o</span>\n"
+    },
+    {
+      "id": 72,
+      "tag": "p",
+      "html": "\nOverall rate of finished edges per second\n"
+    },
+    {
+      "id": 73,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%c</span>\n"
+    },
+    {
+      "id": 74,
+      "tag": "p",
+      "html": "\nCurrent rate of finished edges per second (average over builds\nspecified by <span class=\"monospaced\">-j</span> or its default)\n"
+    },
+    {
+      "id": 75,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%e</span>\n"
+    },
+    {
+      "id": 76,
+      "tag": "p",
+      "html": "\nElapsed time in seconds. <em>(Available since Ninja 1.2.)</em>\n"
+    },
+    {
+      "id": 77,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%E</span>\n"
+    },
+    {
+      "id": 78,
+      "tag": "p",
+      "html": "\nRemaining time (ETA) in seconds. <em>(Available since Ninja 1.12.)</em>\n"
+    },
+    {
+      "id": 79,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%w</span>\n"
+    },
+    {
+      "id": 80,
+      "tag": "p",
+      "html": "\nElapsed time in [h:]mm:ss format. <em>(Available since Ninja 1.12.)</em>\n"
+    },
+    {
+      "id": 81,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%W</span>\n"
+    },
+    {
+      "id": 82,
+      "tag": "p",
+      "html": "\nRemaining time (ETA) in [h:]mm:ss format. <em>(Available since Ninja 1.12.)</em>\n"
+    },
+    {
+      "id": 83,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%P</span>\n"
+    },
+    {
+      "id": 84,
+      "tag": "p",
+      "html": "\nThe percentage (in ppp% format) of time elapsed out of predicted total runtime. <em>(Available since Ninja 1.12.)</em>\n"
+    },
+    {
+      "id": 85,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">%%</span>\n"
+    },
+    {
+      "id": 86,
+      "tag": "p",
+      "html": "\nA plain <span class=\"monospaced\">%</span> character.\n"
+    },
+    {
+      "id": 87,
+      "tag": "p",
+      "html": "The default progress status is <span class=\"monospaced\">\"[%f/%t] \"</span> (note the trailing space\nto separate from the build rule). Another example of possible progress status\ncould be <span class=\"monospaced\">\"[%u/%r/%f] \"</span>."
+    },
+    {
+      "id": 88,
+      "tag": "p",
+      "html": "If <span class=\"monospaced\">MAKEFLAGS</span> is defined in the environment, if may alter how\nNinja dispatches parallel build commands. See the GNU Jobserver support\nsection for details."
+    },
+    {
+      "id": 89,
+      "tag": "h3",
+      "html": "Extra tools"
+    },
+    {
+      "id": 90,
+      "tag": "p",
+      "html": "The <span class=\"monospaced\">-t</span> flag on the Ninja command line runs some tools that we have\nfound useful during Ninja’s development.  The current tools are:"
+    },
+    {
+      "id": 91,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">query</span>\n<br>\n"
+    },
+    {
+      "id": 92,
+      "tag": "p",
+      "html": "\ndump the inputs and outputs of a given target.\n"
+    },
+    {
+      "id": 93,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">browse</span>\n<br>\n"
+    },
+    {
+      "id": 94,
+      "tag": "p",
+      "html": "\nbrowse the dependency graph in a web browser.  Clicking a\nfile focuses the view on that file, showing inputs and outputs.  This\nfeature requires a Python installation. By default, port 8000 is used\nand a web browser will be opened. This can be changed as follows:\n"
+    },
+    {
+      "id": 95,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">graph</span>\n<br>\n"
+    },
+    {
+      "id": 96,
+      "tag": "p",
+      "html": "\noutput a file in the syntax used by <span class=\"monospaced\">graphviz</span>, an automatic\ngraph layout tool.  Use it like:\n"
+    },
+    {
+      "id": 97,
+      "tag": "p",
+      "html": "In the Ninja source tree, <span class=\"monospaced\">ninja graph.png</span>\ngenerates an image for Ninja itself.  If no target is given generate a\ngraph for all root targets."
+    },
+    {
+      "id": 98,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">targets</span>\n<br>\n"
+    },
+    {
+      "id": 99,
+      "tag": "p",
+      "html": "\noutput a list of targets either by rule or by depth.  If used\nlike <span class=\"monospaced\">ninja -t targets rule <em>name</em></span> it prints the list of targets\nusing the given rule to be built.  If no rule is given, it prints the source\nfiles (the leaves of the graph).  If used like\n<span class=\"monospaced\">ninja -t targets depth <em>digit</em></span> it\nprints the list of targets in a depth-first manner starting by the root\ntargets (the ones with no outputs). Indentation is used to mark dependencies.\nIf the depth is zero it prints all targets. If no arguments are provided\n<span class=\"monospaced\">ninja -t targets depth 1</span> is assumed. In this mode targets may be listed\nseveral times. If used like this <span class=\"monospaced\">ninja -t targets all</span> it\nprints all the targets available without indentation and it is faster\nthan the <em>depth</em> mode.\n"
+    },
+    {
+      "id": 100,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">commands</span>\n<br>\n"
+    },
+    {
+      "id": 101,
+      "tag": "p",
+      "html": "\ngiven a list of targets, print a list of commands which, if\nexecuted in order, may be used to rebuild those targets, assuming that all\noutput files are out of date.\n"
+    },
+    {
+      "id": 102,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">inputs</span>\n<br>\n"
+    },
+    {
+      "id": 103,
+      "tag": "p",
+      "html": "\ngiven a list of targets, print a list of all inputs used to\nrebuild those targets.\n<em>Available since Ninja 1.11.</em>\n"
+    },
+    {
+      "id": 104,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">multi-inputs</span>\n<br>\n"
+    },
+    {
+      "id": 105,
+      "tag": "p",
+      "html": "\nprint one or more sets of inputs required to build targets.\nEach line will consist of a target, a delimiter, an input and a terminator character.\nThe list produced by the tool can be helpful if one would like to know which targets\nthat are affected by a certain input.\n"
+    },
+    {
+      "id": 106,
+      "tag": "p",
+      "html": "The output will be a series of lines with the following elements:"
+    },
+    {
+      "id": 107,
+      "tag": "p",
+      "html": "The default <span class=\"monospaced\">&lt;delimiter&gt;</span> is a single TAB character.\nThe delimiter can be modified to any string using the <span class=\"monospaced\">--delimiter</span> argument."
+    },
+    {
+      "id": 108,
+      "tag": "p",
+      "html": "The default <span class=\"monospaced\">&lt;terminator&gt;</span> is a line terminator (i.e. <span class=\"monospaced\">\\n</span> on Posix and <span class=\"monospaced\">\\r\\n</span> on Windows).\nThe terminator can be changed to <span class=\"monospaced\">\\0</span> by using the <span class=\"monospaced\">--print0</span> argument."
+    },
+    {
+      "id": 109,
+      "tag": "p",
+      "html": "Example usage of the <span class=\"monospaced\">multi-inputs</span> tool:"
+    },
+    {
+      "id": 110,
+      "tag": "p",
+      "html": "Example of produced output from the <span class=\"monospaced\">multi-inputs</span> tool:"
+    },
+    {
+      "id": 111,
+      "tag": "p",
+      "html": "<em>Note that a given input may appear for several targets if it is used by more\nthan one targets.</em>\n<em>Available since Ninja 1.13.</em>"
+    },
+    {
+      "id": 112,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">clean</span>\n<br>\n"
+    },
+    {
+      "id": 113,
+      "tag": "p",
+      "html": "\nremove built files. By default, it removes all built files\nexcept for those created by the generator.  Adding the <span class=\"monospaced\">-g</span> flag also\nremoves built files created by the generator (see <a href=\"#ref_rule\">the rule reference for the <span class=\"monospaced\">generator</span> attribute</a>).  Additional arguments are\ntargets, which removes the given targets and recursively all files\nbuilt for them.\n"
+    },
+    {
+      "id": 114,
+      "tag": "p",
+      "html": "If used like <span class=\"monospaced\">ninja -t clean -r <em>rules</em></span> it removes all files built using\nthe given rules."
+    },
+    {
+      "id": 115,
+      "tag": "p",
+      "html": "Files created but not referenced in the graph are not removed. This\ntool takes in account the <span class=\"monospaced\">-v</span> and the <span class=\"monospaced\">-n</span> options (note that <span class=\"monospaced\">-n</span>\nimplies <span class=\"monospaced\">-v</span>)."
+    },
+    {
+      "id": 116,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">cleandead</span>\n<br>\n"
+    },
+    {
+      "id": 117,
+      "tag": "p",
+      "html": "\nremove files produced by previous builds that are no longer in the\nbuild file. <em>Available since Ninja 1.10.</em>\n"
+    },
+    {
+      "id": 118,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">compdb</span>\n<br>\n"
+    },
+    {
+      "id": 119,
+      "tag": "p",
+      "html": "\ngiven a list of rules, each of which is expected to be a\nC family language compiler rule whose first input is the name of the\nsource file, prints on standard output a compilation database in the\n<a href=\"http://clang.llvm.org/docs/JSONCompilationDatabase.html\">JSON format</a> expected\nby the Clang tooling interface.\n<em>Available since Ninja 1.2.</em>\n"
+    },
+    {
+      "id": 120,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">compdb-targets</span>\n<br>\n"
+    },
+    {
+      "id": 121,
+      "tag": "p",
+      "html": "\nlike <span class=\"monospaced\">compdb</span>, but takes a list of targets instead of rules,\nand expects at least one target. The resulting compilation database contains\nall commands required to build the indicated targets, and <em>only</em> those\ncommands.\n"
+    },
+    {
+      "id": 122,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">deps</span>\n<br>\n"
+    },
+    {
+      "id": 123,
+      "tag": "p",
+      "html": "\nshow all dependencies stored in the <span class=\"monospaced\">.ninja_deps</span> file. When given a\ntarget, show just the target’s dependencies. <em>Available since Ninja 1.4.</em>\n"
+    },
+    {
+      "id": 124,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">missingdeps</span>\n<br>\n"
+    },
+    {
+      "id": 125,
+      "tag": "p",
+      "html": "\ngiven a list of targets, look for targets that depend on\na generated file, but do not have a properly (possibly transitive) dependency\non the generator.  Such targets may cause build flakiness on clean builds.\n"
+    },
+    {
+      "id": 126,
+      "tag": "p",
+      "html": "The broken targets can be found assuming deps log / depfile dependency\ninformation is correct.  Any target that depends on a generated file (output\nof a generator-target) implicitly, but does not have an explicit or order-only\ndependency path to the generator-target, is considered broken."
+    },
+    {
+      "id": 127,
+      "tag": "p",
+      "html": "The tool’s findings can be verified by trying to build the listed targets in\na clean outdir without building any other targets.  The build should fail for\neach of them with a missing include error or equivalent pointing to the\ngenerated file.\n<em>Available since Ninja 1.11.</em>"
+    },
+    {
+      "id": 128,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">recompact</span>\n<br>\n"
+    },
+    {
+      "id": 129,
+      "tag": "p",
+      "html": "\nrecompact the <span class=\"monospaced\">.ninja_deps</span> file. <em>Available since Ninja 1.4.</em>\n"
+    },
+    {
+      "id": 130,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">restat</span>\n<br>\n"
+    },
+    {
+      "id": 131,
+      "tag": "p",
+      "html": "\nupdates all recorded file modification timestamps in the <span class=\"monospaced\">.ninja_log</span>\nfile. <em>Available since Ninja 1.10.</em>\n"
+    },
+    {
+      "id": 132,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">rules</span>\n<br>\n"
+    },
+    {
+      "id": 133,
+      "tag": "p",
+      "html": "\noutput the list of all rules. It can be used to know which rule name\nto pass to <span class=\"monospaced\">ninja -t targets rule <em>name</em></span> or <span class=\"monospaced\">ninja -t compdb</span>. Adding the <span class=\"monospaced\">-d</span>\nflag also prints the description of the rules.\n"
+    },
+    {
+      "id": 134,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">msvc</span>\n<br>\n"
+    },
+    {
+      "id": 135,
+      "tag": "p",
+      "html": "\nAvailable on Windows hosts only.\nHelper tool to invoke the <span class=\"monospaced\">cl.exe</span> compiler with a pre-defined set of\nenvironment variables, as in:\n"
+    },
+    {
+      "id": 136,
+      "tag": "p",
+      "html": "Where <span class=\"monospaced\">ENVFILE</span> is a binary file that contains an environment block suitable\nfor CreateProcessA() on Windows (i.e. a series of zero-terminated strings that\nlook like NAME=VALUE, followed by an extra zero terminator). Note that this uses\nthe local codepage encoding."
+    },
+    {
+      "id": 137,
+      "tag": "p",
+      "html": "This tool also supports a deprecated way of parsing the compiler’s output when\nthe <span class=\"monospaced\">/showIncludes</span> flag is used, and generating a GCC-compatible depfile from it:"
+    },
+    {
+      "id": 138,
+      "tag": "p",
+      "html": "When using this option, <span class=\"monospaced\">-p STRING</span> can be used to pass the localized line prefix\nthat <span class=\"monospaced\">cl.exe</span> uses to output dependency information. For English-speaking regions\nthis is <span class=\"monospaced\">\"Note: including file: \"</span> without the double quotes, but will be different\nfor other regions."
+    },
+    {
+      "id": 139,
+      "tag": "p",
+      "html": "Note that Ninja supports this natively now, with the use of <span class=\"monospaced\">deps = msvc</span> and\n<span class=\"monospaced\">msvc_deps_prefix</span> in Ninja files. Native support also avoids launching an extra\ntool process each time the compiler must be called, which can speed up builds\nnoticeably on Windows."
+    },
+    {
+      "id": 140,
+      "tag": "td",
+      "html": "\n<span class=\"monospaced\">wincodepage</span>\n<br>\n"
+    },
+    {
+      "id": 141,
+      "tag": "p",
+      "html": "\nAvailable on Windows hosts (<em>since Ninja 1.11</em>).\nPrints the Windows code page whose encoding is expected in the build file.\nThe output has the form:\n"
+    },
+    {
+      "id": 142,
+      "tag": "p",
+      "html": "Additional lines may be added in future versions of Ninja."
+    },
+    {
+      "id": 143,
+      "tag": "p",
+      "html": "The <span class=\"monospaced\">&lt;codepage&gt;</span> is one of:"
+    },
+    {
+      "id": 144,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">UTF-8</span>\n"
+    },
+    {
+      "id": 145,
+      "tag": "p",
+      "html": "\nEncode as UTF-8.\n"
+    },
+    {
+      "id": 146,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">ANSI</span>\n"
+    },
+    {
+      "id": 147,
+      "tag": "p",
+      "html": "\nEncode to the system-wide ANSI code page.\n"
+    },
+    {
+      "id": 148,
+      "tag": "h2",
+      "html": "Writing your own Ninja files"
+    },
+    {
+      "id": 149,
+      "tag": "p",
+      "html": "The remainder of this manual is only useful if you are constructing\nNinja files yourself: for example, if you’re writing a meta-build\nsystem or supporting a new language."
+    },
+    {
+      "id": 150,
+      "tag": "h3",
+      "html": "Conceptual overview"
+    },
+    {
+      "id": 151,
+      "tag": "p",
+      "html": "Ninja evaluates a graph of dependencies between files, and runs\nwhichever commands are necessary to make your build target up to date\nas determined by file modification times.  If you are familiar with\nMake, Ninja is very similar."
+    },
+    {
+      "id": 152,
+      "tag": "p",
+      "html": "A build file (default name: <span class=\"monospaced\">build.ninja</span>) provides a list of <em>rules</em> — short names for longer commands, like how to run the compiler — along with a list of <em>build</em> statements saying how to build files\nusing the rules — which rule to apply to which inputs to produce\nwhich outputs."
+    },
+    {
+      "id": 153,
+      "tag": "p",
+      "html": "Conceptually, <span class=\"monospaced\">build</span> statements describe the dependency graph of your\nproject, while <span class=\"monospaced\">rule</span> statements describe how to generate the files\nalong a given edge of the graph."
+    },
+    {
+      "id": 154,
+      "tag": "h3",
+      "html": "Syntax example"
+    },
+    {
+      "id": 155,
+      "tag": "p",
+      "html": "Here’s a basic <span class=\"monospaced\">.ninja</span> file that demonstrates most of the syntax.\nIt will be used as an example for the following sections."
+    },
+    {
+      "id": 156,
+      "tag": "h3",
+      "html": "Variables"
+    },
+    {
+      "id": 157,
+      "tag": "p",
+      "html": "Despite the non-goal of being convenient to write by hand, to keep\nbuild files readable (debuggable), Ninja supports declaring shorter\nreusable names for strings.  A declaration like the following"
+    },
+    {
+      "id": 158,
+      "tag": "p",
+      "html": "can be used on the right side of an equals sign, dereferencing it with\na dollar sign, like this:"
+    },
+    {
+      "id": 159,
+      "tag": "p",
+      "html": "Variables can also be referenced using curly braces like <span class=\"monospaced\">${in}</span>."
+    },
+    {
+      "id": 160,
+      "tag": "p",
+      "html": "Variables might better be called \"bindings\", in that a given variable\ncannot be changed, only shadowed.  There is more on how shadowing works\nlater in this document."
+    },
+    {
+      "id": 161,
+      "tag": "h3",
+      "html": "Rules"
+    },
+    {
+      "id": 162,
+      "tag": "p",
+      "html": "Rules declare a short name for a command line.  They begin with a line\nconsisting of the <span class=\"monospaced\">rule</span> keyword and a name for the rule.  Then\nfollows an indented set of <span class=\"monospaced\">variable = value</span> lines."
+    },
+    {
+      "id": 163,
+      "tag": "p",
+      "html": "The basic example above declares a new rule named <span class=\"monospaced\">cc</span>, along with the\ncommand to run.  In the context of a rule, the <span class=\"monospaced\">command</span> variable\ndefines the command to run, <span class=\"monospaced\">$in</span> expands to the list of\ninput files (<span class=\"monospaced\">foo.c</span>), and <span class=\"monospaced\">$out</span> to the output files (<span class=\"monospaced\">foo.o</span>) for the\ncommand.  A full list of special variables is provided in\n<a href=\"#ref_rule\">the reference</a>."
+    },
+    {
+      "id": 164,
+      "tag": "h3",
+      "html": "Build statements"
+    },
+    {
+      "id": 165,
+      "tag": "p",
+      "html": "Build statements declare a relationship between input and output\nfiles.  They begin with the <span class=\"monospaced\">build</span> keyword, and have the format\n<span class=\"monospaced\">build <em>outputs</em>: <em>rulename</em> <em>inputs</em></span>.  Such a declaration says that\nall of the output files are derived from the input files.  When the\noutput files are missing or when the inputs change, Ninja will run the\nrule to regenerate the outputs."
+    },
+    {
+      "id": 166,
+      "tag": "p",
+      "html": "The basic example above describes how to build <span class=\"monospaced\">foo.o</span>, using the <span class=\"monospaced\">cc</span>\nrule."
+    },
+    {
+      "id": 167,
+      "tag": "p",
+      "html": "In the scope of a <span class=\"monospaced\">build</span> block (including in the evaluation of its\nassociated <span class=\"monospaced\">rule</span>), the variable <span class=\"monospaced\">$in</span> is the list of inputs and the\nvariable <span class=\"monospaced\">$out</span> is the list of outputs."
+    },
+    {
+      "id": 168,
+      "tag": "p",
+      "html": "A build statement may be followed by an indented set of <span class=\"monospaced\">key = value</span>\npairs, much like a rule.  These variables will shadow any variables\nwhen evaluating the variables in the command.  For example:"
+    },
+    {
+      "id": 169,
+      "tag": "p",
+      "html": "For more discussion of how scoping works, consult <a href=\"#ref_scope\">the reference</a>."
+    },
+    {
+      "id": 170,
+      "tag": "p",
+      "html": "If you need more complicated information passed from the build\nstatement to the rule (for example, if the rule needs \"the file\nextension of the first input\"), pass that through as an extra\nvariable, like how <span class=\"monospaced\">cflags</span> is passed above."
+    },
+    {
+      "id": 171,
+      "tag": "p",
+      "html": "If the top-level Ninja file is specified as an output of any build\nstatement and it is out of date, Ninja will rebuild and reload it\nbefore building the targets requested by the user."
+    },
+    {
+      "id": 172,
+      "tag": "h3",
+      "html": "Generating Ninja files from code"
+    },
+    {
+      "id": 173,
+      "tag": "p",
+      "html": "<span class=\"monospaced\">misc/ninja_syntax.py</span> in the Ninja distribution is a tiny Python\nmodule to facilitate generating Ninja files.  It allows you to make\nPython calls like <span class=\"monospaced\">ninja.rule(name='foo', command='bar',\ndepfile='$out.d')</span> and it will generate the appropriate syntax.  Feel\nfree to just inline it into your project’s build system if it’s\nuseful."
+    },
+    {
+      "id": 174,
+      "tag": "h2",
+      "html": "More details"
+    },
+    {
+      "id": 175,
+      "tag": "h3",
+      "html": "The <span class=\"monospaced\">phony</span> rule"
+    },
+    {
+      "id": 176,
+      "tag": "p",
+      "html": "The special rule name <span class=\"monospaced\">phony</span> can be used to create aliases for other\ntargets.  For example:"
+    },
+    {
+      "id": 177,
+      "tag": "p",
+      "html": "This makes <span class=\"monospaced\">ninja foo</span> build the longer path.  Semantically, the\n<span class=\"monospaced\">phony</span> rule is equivalent to a plain rule where the <span class=\"monospaced\">command</span> does\nnothing, but phony rules are handled specially in that they aren’t\nprinted when run, logged (see below), nor do they contribute to the\ncommand count printed as part of the build process."
+    },
+    {
+      "id": 178,
+      "tag": "p",
+      "html": "When a <span class=\"monospaced\">phony</span> target is used as an input to another build rule, the\nother build rule will, semantically, consider the inputs of the\n<span class=\"monospaced\">phony</span> rule as its own. Therefore, <span class=\"monospaced\">phony</span> rules can be used to group\ninputs, e.g. header files."
+    },
+    {
+      "id": 179,
+      "tag": "p",
+      "html": "<span class=\"monospaced\">phony</span> can also be used to create dummy targets for files which\nmay not exist at build time.  If a phony build statement is written\nwithout any dependencies, the target will be considered out of date if\nit does not exist.  Without a phony build statement, Ninja will report\nan error if the file does not exist and is required by the build."
+    },
+    {
+      "id": 180,
+      "tag": "p",
+      "html": "To create a rule that never rebuilds, use a build rule without any input:"
+    },
+    {
+      "id": 181,
+      "tag": "h3",
+      "html": "Default target statements"
+    },
+    {
+      "id": 182,
+      "tag": "p",
+      "html": "By default, if no targets are specified on the command line, Ninja\nwill build every output that is not named as an input elsewhere.\nYou can override this behavior using a default target statement.\nA default target statement causes Ninja to build only a given subset\nof output files if none are specified on the command line."
+    },
+    {
+      "id": 183,
+      "tag": "p",
+      "html": "Default target statements begin with the <span class=\"monospaced\">default</span> keyword, and have\nthe format <span class=\"monospaced\">default <em>targets</em></span>.  A default target statement must appear\nafter the build statement that declares the target as an output file.\nThey are cumulative, so multiple statements may be used to extend\nthe list of default targets.  For example:"
+    },
+    {
+      "id": 184,
+      "tag": "p",
+      "html": "This causes Ninja to build the <span class=\"monospaced\">foo</span>, <span class=\"monospaced\">bar</span> and <span class=\"monospaced\">baz</span> targets by\ndefault."
+    },
+    {
+      "id": 185,
+      "tag": "h3",
+      "html": "The Ninja log"
+    },
+    {
+      "id": 186,
+      "tag": "p",
+      "html": "For each built file, Ninja keeps a log of the command used to build\nit.  Using this log Ninja can know when an existing output was built\nwith a different command line than the build files specify (i.e., the\ncommand line changed) and knows to rebuild the file."
+    },
+    {
+      "id": 187,
+      "tag": "p",
+      "html": "The log file is kept in the build root in a file called <span class=\"monospaced\">.ninja_log</span>.\nIf you provide a variable named <span class=\"monospaced\">builddir</span> in the outermost scope,\n<span class=\"monospaced\">.ninja_log</span> will be kept in that directory instead."
+    },
+    {
+      "id": 188,
+      "tag": "h3",
+      "html": "Version compatibility"
+    },
+    {
+      "id": 189,
+      "tag": "p",
+      "html": "<em>Available since Ninja 1.2.</em>"
+    },
+    {
+      "id": 190,
+      "tag": "p",
+      "html": "Ninja version labels follow the standard major.minor.patch format,\nwhere the major version is increased on backwards-incompatible\nsyntax/behavioral changes and the minor version is increased on new\nbehaviors.  Your <span class=\"monospaced\">build.ninja</span> may declare a variable named\n<span class=\"monospaced\">ninja_required_version</span> that asserts the minimum Ninja version\nrequired to use the generated file.  For example,"
+    },
+    {
+      "id": 191,
+      "tag": "p",
+      "html": "declares that the build file relies on some feature that was\nintroduced in Ninja 1.1 (perhaps the <span class=\"monospaced\">pool</span> syntax), and that\nNinja 1.1 or greater must be used to build.  Unlike other Ninja\nvariables, this version requirement is checked immediately when\nthe variable is encountered in parsing, so it’s best to put it\nat the top of the build file."
+    },
+    {
+      "id": 192,
+      "tag": "p",
+      "html": "Ninja always warns if the major versions of Ninja and the\n<span class=\"monospaced\">ninja_required_version</span> don’t match; a major version change hasn’t\ncome up yet so it’s difficult to predict what behavior might be\nrequired."
+    },
+    {
+      "id": 193,
+      "tag": "h3",
+      "html": "C/C++ header dependencies"
+    },
+    {
+      "id": 194,
+      "tag": "p",
+      "html": "To get C/C++ header dependencies (or any other build dependency that\nworks in a similar way) correct Ninja has some extra functionality."
+    },
+    {
+      "id": 195,
+      "tag": "p",
+      "html": "The problem with headers is that the full list of files that a given\nsource file depends on can only be discovered by the compiler:\ndifferent preprocessor defines and include paths cause different files\nto be used.  Some compilers can emit this information while building,\nand Ninja can use that to get its dependencies perfect."
+    },
+    {
+      "id": 196,
+      "tag": "p",
+      "html": "Consider: if the file has never been compiled, it must be built anyway,\ngenerating the header dependencies as a side effect.  If any file is\nlater modified (even in a way that changes which headers it depends\non) the modification will cause a rebuild as well, keeping the\ndependencies up to date."
+    },
+    {
+      "id": 197,
+      "tag": "p",
+      "html": "When loading these special dependencies, Ninja implicitly adds extra\nbuild edges such that it is not an error if the listed dependency is\nmissing.  This allows you to delete a header file and rebuild without\nthe build aborting due to a missing input."
+    },
+    {
+      "id": 198,
+      "tag": "h4",
+      "html": "depfile"
+    },
+    {
+      "id": 199,
+      "tag": "p",
+      "html": "<span class=\"monospaced\">gcc</span> (and other compilers like <span class=\"monospaced\">clang</span>) support emitting dependency\ninformation in the syntax of a Makefile.  (Any command that can write\ndependencies in this form can be used, not just <span class=\"monospaced\">gcc</span>.)"
+    },
+    {
+      "id": 200,
+      "tag": "p",
+      "html": "To bring this information into Ninja requires cooperation.  On the\nNinja side, the <span class=\"monospaced\">depfile</span> attribute on the <span class=\"monospaced\">build</span> must point to a\npath where this data is written.  (Ninja only supports the limited\nsubset of the Makefile syntax emitted by compilers.)  Then the command\nmust know to write dependencies into the <span class=\"monospaced\">depfile</span> path.\nUse it like in the following example:"
+    },
+    {
+      "id": 201,
+      "tag": "p",
+      "html": "The <span class=\"monospaced\">-MD</span> flag to <span class=\"monospaced\">gcc</span> tells it to output header dependencies, and\nthe <span class=\"monospaced\">-MF</span> flag tells it where to write them."
+    },
+    {
+      "id": 202,
+      "tag": "h4",
+      "html": "deps"
+    },
+    {
+      "id": 203,
+      "tag": "p",
+      "html": "<em>(Available since Ninja 1.3.)</em>"
+    },
+    {
+      "id": 204,
+      "tag": "p",
+      "html": "It turns out that for large projects (and particularly on Windows,\nwhere the file system is slow) loading these dependency files on\nstartup is slow."
+    },
+    {
+      "id": 205,
+      "tag": "p",
+      "html": "Ninja 1.3 can instead process dependencies just after they’re generated\nand save a compacted form of the same information in a Ninja-internal\ndatabase."
+    },
+    {
+      "id": 206,
+      "tag": "p",
+      "html": "Ninja supports this processing in two forms."
+    },
+    {
+      "id": 207,
+      "tag": "p",
+      "html": "\n<span class=\"monospaced\">deps = gcc</span> specifies that the tool outputs <span class=\"monospaced\">gcc</span>-style dependencies\n   in the form of Makefiles.  Adding this to the above example will\n   cause Ninja to process the <span class=\"monospaced\">depfile</span> immediately after the\n   compilation finishes, then delete the <span class=\"monospaced\">.d</span> file (which is only used\n   as a temporary).\n"
+    },
+    {
+      "id": 208,
+      "tag": "p",
+      "html": "\n<span class=\"monospaced\">deps = msvc</span> specifies that the tool outputs header dependencies\n   in the form produced by the Visual Studio compiler’s\n   <a href=\"http://msdn.microsoft.com/en-us/library/hdkef6tk(v=vs.90).aspx\"><span class=\"monospaced\">/showIncludes</span>\n   flag</a>.  Briefly, this means the tool outputs specially-formatted lines\n   to its stdout.  Ninja then filters these lines from the displayed\n   output.  No <span class=\"monospaced\">depfile</span> attribute is necessary, but the localized string\n   in front of the header file path should be globally defined. For instance,\n   <span class=\"monospaced\">msvc_deps_prefix = Note: including file:</span>\n   for an English Visual Studio (the default).\n"
+    },
+    {
+      "id": 209,
+      "tag": "p",
+      "html": "If the include directory directives are using absolute paths, your depfile\nmay result in a mixture of relative and absolute paths. Paths used by other\nbuild rules need to match exactly. Therefore, it is recommended to use\nrelative paths in these cases."
+    },
+    {
+      "id": 210,
+      "tag": "h3",
+      "html": "Pools"
+    },
+    {
+      "id": 211,
+      "tag": "p",
+      "html": "<em>Available since Ninja 1.1.</em>"
+    },
+    {
+      "id": 212,
+      "tag": "p",
+      "html": "Pools allow you to allocate one or more rules or edges a finite number\nof concurrent jobs which is more tightly restricted than the default\nparallelism."
+    },
+    {
+      "id": 213,
+      "tag": "p",
+      "html": "This can be useful, for example, to restrict a particular expensive rule\n(like link steps for huge executables), or to restrict particular build\nstatements which you know perform poorly when run concurrently."
+    },
+    {
+      "id": 214,
+      "tag": "p",
+      "html": "Each pool has a <span class=\"monospaced\">depth</span> variable which is specified in the build file.\nThe pool is then referred to with the <span class=\"monospaced\">pool</span> variable on either a rule\nor a build statement."
+    },
+    {
+      "id": 215,
+      "tag": "p",
+      "html": "No matter what pools you specify, ninja will never run more concurrent jobs\nthan the default parallelism, or the number of jobs specified on the command\nline (with <span class=\"monospaced\">-j</span>)."
+    },
+    {
+      "id": 216,
+      "tag": "h4",
+      "html": "The <span class=\"monospaced\">console</span> pool"
+    },
+    {
+      "id": 217,
+      "tag": "p",
+      "html": "<em>Available since Ninja 1.5.</em>"
+    },
+    {
+      "id": 218,
+      "tag": "p",
+      "html": "There exists a pre-defined pool named <span class=\"monospaced\">console</span> with a depth of 1. It has\nthe special property that any task in the pool has direct access to the\nstandard input, output and error streams provided to Ninja, which are\nnormally connected to the user’s console (hence the name) but could be\nredirected. This can be useful for interactive tasks or long-running tasks\nwhich produce status updates on the console (such as test suites)."
+    },
+    {
+      "id": 219,
+      "tag": "p",
+      "html": "While a task in the <span class=\"monospaced\">console</span> pool is running, Ninja’s regular output (such\nas progress status and output from concurrent tasks) is buffered until\nit completes."
+    },
+    {
+      "id": 220,
+      "tag": "h2",
+      "html": "Ninja file reference"
+    },
+    {
+      "id": 221,
+      "tag": "p",
+      "html": "A file is a series of declarations.  A declaration can be one of:"
+    },
+    {
+      "id": 222,
+      "tag": "p",
+      "html": "\nA rule declaration, which begins with <span class=\"monospaced\">rule <em>rulename</em></span>, and\n   then has a series of indented lines defining variables.\n"
+    },
+    {
+      "id": 223,
+      "tag": "p",
+      "html": "\nA build edge, which looks like <span class=\"monospaced\">build <em>output1</em> <em>output2</em>:\n   <em>rulename</em> <em>input1</em> <em>input2</em></span>.<br>\n   Implicit dependencies may be tacked on the end with <span class=\"monospaced\">|\n   <em>dependency1</em> <em>dependency2</em></span>.<br>\n   Order-only dependencies may be tacked on the end with <span class=\"monospaced\">||\n   <em>dependency1</em> <em>dependency2</em></span>.  (See <a href=\"#ref_dependencies\">the reference on    dependency types</a>.)\n   Validations may be tacked on the end with <span class=\"monospaced\">|@ <em>validation1</em> <em>validation2</em></span>.\n   (See <a href=\"#validations\">the reference on validations</a>.)\n"
+    },
+    {
+      "id": 224,
+      "tag": "p",
+      "html": "Implicit outputs <em>(available since Ninja 1.7)</em> may be added before\nthe <span class=\"monospaced\">:</span> with <span class=\"monospaced\">| <em>output1</em> <em>output2</em></span> and do not appear in <span class=\"monospaced\">$out</span>.\n(See <a href=\"#ref_outputs\">the reference on output types</a>.)"
+    },
+    {
+      "id": 225,
+      "tag": "p",
+      "html": "\nVariable declarations, which look like <span class=\"monospaced\"><em>variable</em> = <em>value</em></span>.\n"
+    },
+    {
+      "id": 226,
+      "tag": "p",
+      "html": "\nDefault target statements, which look like <span class=\"monospaced\">default <em>target1</em> <em>target2</em></span>.\n"
+    },
+    {
+      "id": 227,
+      "tag": "p",
+      "html": "\nReferences to more files, which look like <span class=\"monospaced\">subninja <em>path</em></span> or\n   <span class=\"monospaced\">include <em>path</em></span>.  The difference between these is explained below\n   <a href=\"#ref_scope\">in the discussion about scoping</a>.\n"
+    },
+    {
+      "id": 228,
+      "tag": "p",
+      "html": "\nA pool declaration, which looks like <span class=\"monospaced\">pool <em>poolname</em></span>. Pools are explained\n   <a href=\"#ref_pool\">in the section on pools</a>.\n"
+    },
+    {
+      "id": 229,
+      "tag": "h3",
+      "html": "Lexical syntax"
+    },
+    {
+      "id": 230,
+      "tag": "p",
+      "html": "Ninja is mostly encoding agnostic, as long as the bytes Ninja cares\nabout (like slashes in paths) are ASCII.  This means e.g. UTF-8 or\nISO-8859-1 input files ought to work."
+    },
+    {
+      "id": 231,
+      "tag": "p",
+      "html": "Comments begin with <span class=\"monospaced\">#</span> and extend to the end of the line."
+    },
+    {
+      "id": 232,
+      "tag": "p",
+      "html": "Newlines are significant.  Statements like <span class=\"monospaced\">build foo bar</span> are a set\nof space-separated tokens that end at the newline.  Newlines and\nspaces within a token must be escaped."
+    },
+    {
+      "id": 233,
+      "tag": "p",
+      "html": "There is only one escape character, <span class=\"monospaced\">$</span>, and it has the following\nbehaviors:"
+    },
+    {
+      "id": 234,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">$</span> followed by a newline\n"
+    },
+    {
+      "id": 235,
+      "tag": "p",
+      "html": "\nescape the newline (continue the current line\nacross a line break).\n"
+    },
+    {
+      "id": 236,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">$</span> followed by text\n"
+    },
+    {
+      "id": 237,
+      "tag": "p",
+      "html": "\na variable reference.\n"
+    },
+    {
+      "id": 238,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">${varname}</span>\n"
+    },
+    {
+      "id": 239,
+      "tag": "p",
+      "html": "\nalternate syntax for <span class=\"monospaced\">$varname</span>.\n"
+    },
+    {
+      "id": 240,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">$</span> followed by space\n"
+    },
+    {
+      "id": 241,
+      "tag": "p",
+      "html": "\na space.  (This is only necessary in lists of\npaths, where a space would otherwise separate filenames.  See below.)\n"
+    },
+    {
+      "id": 242,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">$:</span> \n"
+    },
+    {
+      "id": 243,
+      "tag": "p",
+      "html": "\na colon.  (This is only necessary in <span class=\"monospaced\">build</span> lines, where a colon\nwould otherwise terminate the list of outputs.)\n"
+    },
+    {
+      "id": 244,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">$$</span>\n"
+    },
+    {
+      "id": 245,
+      "tag": "p",
+      "html": "\na literal <span class=\"monospaced\">$</span>.\n"
+    },
+    {
+      "id": 246,
+      "tag": "p",
+      "html": "A <span class=\"monospaced\">build</span> or <span class=\"monospaced\">default</span> statement is first parsed as a space-separated\nlist of filenames and then each name is expanded.  This means that\nspaces within a variable will result in spaces in the expanded\nfilename."
+    },
+    {
+      "id": 247,
+      "tag": "p",
+      "html": "In a <span class=\"monospaced\">name = value</span> statement, whitespace at the beginning of a value\nis always stripped.  Whitespace at the beginning of a line after a\nline continuation is also stripped."
+    },
+    {
+      "id": 248,
+      "tag": "p",
+      "html": "Other whitespace is only significant if it’s at the beginning of a\nline.  If a line is indented more than the previous one, it’s\nconsidered part of its parent’s scope; if it is indented less than the\nprevious one, it closes the previous scope."
+    },
+    {
+      "id": 249,
+      "tag": "h3",
+      "html": "Top-level variables"
+    },
+    {
+      "id": 250,
+      "tag": "p",
+      "html": "Two variables are significant when declared in the outermost file scope."
+    },
+    {
+      "id": 251,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">builddir</span>\n"
+    },
+    {
+      "id": 252,
+      "tag": "p",
+      "html": "\na directory for some Ninja output files.  See <a href=\"#ref_log\">the   discussion of the build log</a>.  (You can also store other build output\n  in this directory.)\n"
+    },
+    {
+      "id": 253,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">ninja_required_version</span>\n"
+    },
+    {
+      "id": 254,
+      "tag": "p",
+      "html": "\nthe minimum version of Ninja required to process\n  the build correctly.  See <a href=\"#ref_versioning\">the discussion of versioning</a>.\n"
+    },
+    {
+      "id": 255,
+      "tag": "h3",
+      "html": "Rule variables"
+    },
+    {
+      "id": 256,
+      "tag": "p",
+      "html": "A <span class=\"monospaced\">rule</span> block contains a list of <span class=\"monospaced\">key = value</span> declarations that\naffect the processing of the rule.  Here is a full list of special\nkeys."
+    },
+    {
+      "id": 257,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">command</span> (<em>required</em>)\n"
+    },
+    {
+      "id": 258,
+      "tag": "p",
+      "html": "\nthe command line to run.  Each <span class=\"monospaced\">rule</span> may\n  have only one <span class=\"monospaced\">command</span> declaration. See <a href=\"#ref_rule_command\">the next   section</a> for more details on quoting and executing multiple commands.\n"
+    },
+    {
+      "id": 259,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">depfile</span>\n"
+    },
+    {
+      "id": 260,
+      "tag": "p",
+      "html": "\npath to an optional <span class=\"monospaced\">Makefile</span> that contains extra\n  <em>implicit dependencies</em> (see <a href=\"#ref_dependencies\">the reference on   dependency types</a>).  This is explicitly to support C/C++ header\n  dependencies; see <a href=\"#ref_headers\">the full discussion</a>.\n"
+    },
+    {
+      "id": 261,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">deps</span>\n"
+    },
+    {
+      "id": 262,
+      "tag": "p",
+      "html": "\n<em>(Available since Ninja 1.3.)</em> if present, must be one of\n  <span class=\"monospaced\">gcc</span> or <span class=\"monospaced\">msvc</span> to specify special dependency processing.  See\n   <a href=\"#ref_headers\">the full discussion</a>.  The generated database is\n   stored as <span class=\"monospaced\">.ninja_deps</span> in the <span class=\"monospaced\">builddir</span>, see <a href=\"#ref_toplevel\">the    discussion of <span class=\"monospaced\">builddir</span></a>.\n"
+    },
+    {
+      "id": 263,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">msvc_deps_prefix</span>\n"
+    },
+    {
+      "id": 264,
+      "tag": "p",
+      "html": "\n<em>(Available since Ninja 1.5.)</em> defines the string\n  which should be stripped from msvc’s /showIncludes output. Only\n  needed when <span class=\"monospaced\">deps = msvc</span> and no English Visual Studio version is used.\n"
+    },
+    {
+      "id": 265,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">description</span>\n"
+    },
+    {
+      "id": 266,
+      "tag": "p",
+      "html": "\na short description of the command, used to pretty-print\n  the command as it’s running.  The <span class=\"monospaced\">-v</span> flag controls whether to print\n  the full command or its description; if a command fails, the full command\n  line will always be printed before the command’s output.\n"
+    },
+    {
+      "id": 267,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">dyndep</span>\n"
+    },
+    {
+      "id": 268,
+      "tag": "p",
+      "html": "\n<em>(Available since Ninja 1.10.)</em> Used only on build statements.\n  If present, must name one of the build statement inputs.  Dynamically\n  discovered dependency information will be loaded from the file.\n  See the <a href=\"#ref_dyndep\">dynamic dependencies</a> section for details.\n"
+    },
+    {
+      "id": 269,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">generator</span>\n"
+    },
+    {
+      "id": 270,
+      "tag": "p",
+      "html": "\nif present, specifies that this rule is used to\n  re-invoke the generator program.  Files built using <span class=\"monospaced\">generator</span>\n  rules are treated specially in two ways: firstly, they will not be\n  rebuilt if the command line changes; and secondly, they are not\n  cleaned by default.\n"
+    },
+    {
+      "id": 271,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">in</span>\n"
+    },
+    {
+      "id": 272,
+      "tag": "p",
+      "html": "\nthe space-separated list of files provided as inputs to the build line\n  referencing this <span class=\"monospaced\">rule</span>, shell-quoted if it appears in commands.  (<span class=\"monospaced\">$in</span> is\n  provided solely for convenience; if you need some subset or variant of this\n  list of files, just construct a new variable with that list and use\n  that instead.)\n"
+    },
+    {
+      "id": 273,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">in_newline</span>\n"
+    },
+    {
+      "id": 274,
+      "tag": "p",
+      "html": "\nthe same as <span class=\"monospaced\">$in</span> except that multiple inputs are\n  separated by newlines rather than spaces.  (For use with\n  <span class=\"monospaced\">$rspfile_content</span>; this works around a bug in the MSVC linker where\n  it uses a fixed-size buffer for processing input.)\n"
+    },
+    {
+      "id": 275,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">out</span>\n"
+    },
+    {
+      "id": 276,
+      "tag": "p",
+      "html": "\nthe space-separated list of files provided as outputs to the build line\n  referencing this <span class=\"monospaced\">rule</span>, shell-quoted if it appears in commands.\n"
+    },
+    {
+      "id": 277,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">restat</span>\n"
+    },
+    {
+      "id": 278,
+      "tag": "p",
+      "html": "\nif present, causes Ninja to re-stat the command’s outputs\n  after execution of the command.  Each output whose modification time\n  the command did not change will be treated as though it had never\n  needed to be built.  This may cause the output’s reverse\n  dependencies to be removed from the list of pending build actions.\n"
+    },
+    {
+      "id": 279,
+      "tag": "dt",
+      "html": "\n<span class=\"monospaced\">rspfile</span>, <span class=\"monospaced\">rspfile_content</span>\n"
+    },
+    {
+      "id": 280,
+      "tag": "p",
+      "html": "\nif present (both), Ninja will use a\n  response file for the given command, i.e. write the selected string\n  (<span class=\"monospaced\">rspfile_content</span>) to the given file (<span class=\"monospaced\">rspfile</span>) before calling the\n  command and delete the file after successful execution of the\n  command.\n"
+    },
+    {
+      "id": 281,
+      "tag": "p",
+      "html": "This is particularly useful on Windows OS, where the maximal length of\na command line is limited and response files must be used instead."
+    },
+    {
+      "id": 282,
+      "tag": "p",
+      "html": "Use it like in the following example:"
+    },
+    {
+      "id": 283,
+      "tag": "h4",
+      "html": "Interpretation of the <span class=\"monospaced\">command</span> variable"
+    },
+    {
+      "id": 284,
+      "tag": "p",
+      "html": "Fundamentally, command lines behave differently on Unixes and Windows."
+    },
+    {
+      "id": 285,
+      "tag": "p",
+      "html": "On Unixes, commands are arrays of arguments.  The Ninja <span class=\"monospaced\">command</span>\nvariable is passed directly to <span class=\"monospaced\">sh -c</span>, which is then responsible for\ninterpreting that string into an argv array.  Therefore, the quoting\nrules are those of the shell, and you can use all the normal shell\noperators, like <span class=\"monospaced\">&amp;&amp;</span> to chain multiple commands, or <span class=\"monospaced\">VAR=value cmd</span> to\nset environment variables."
+    },
+    {
+      "id": 286,
+      "tag": "p",
+      "html": "On Windows, commands are strings, so Ninja passes the <span class=\"monospaced\">command</span> string\ndirectly to <span class=\"monospaced\">CreateProcess</span>.  (In the common case of simply executing\na compiler this means there is less overhead.)  Consequently, the\nquoting rules are determined by the called program, which on Windows\nare usually provided by the C library.  If you need shell\ninterpretation of the command (such as the use of <span class=\"monospaced\">&amp;&amp;</span> to chain\nmultiple commands), make the command execute the Windows shell by\nprefixing the command with <span class=\"monospaced\">cmd /c</span>. Ninja may error with \"invalid parameter\"\nwhich usually indicates that the command line length has been exceeded."
+    },
+    {
+      "id": 287,
+      "tag": "h3",
+      "html": "Build outputs"
+    },
+    {
+      "id": 288,
+      "tag": "p",
+      "html": "There are two types of build outputs which are subtly different."
+    },
+    {
+      "id": 289,
+      "tag": "p",
+      "html": "\n<em>Explicit outputs</em>, as listed in a build line.  These are\n   available as the <span class=\"monospaced\">$out</span> variable in the rule.\n"
+    },
+    {
+      "id": 290,
+      "tag": "p",
+      "html": "This is the standard form of output to be used for e.g. the\nobject file of a compile command."
+    },
+    {
+      "id": 291,
+      "tag": "p",
+      "html": "\n<em>Implicit outputs</em>, as listed in a build line with the syntax <span class=\"monospaced\">|\n   <em>out1</em> <em>out2</em></span> before the <span class=\"monospaced\">:</span> of a build line <em>(available since\n   Ninja 1.7)</em>.  The semantics are identical to explicit outputs,\n  the only difference is that implicit outputs don’t show up in the\n  <span class=\"monospaced\">$out</span> variable.\n"
+    },
+    {
+      "id": 292,
+      "tag": "p",
+      "html": "This is for expressing outputs that don’t show up on the\ncommand line of the command."
+    },
+    {
+      "id": 293,
+      "tag": "h3",
+      "html": "Build dependencies"
+    },
+    {
+      "id": 294,
+      "tag": "p",
+      "html": "There are three types of build dependencies which are subtly different."
+    },
+    {
+      "id": 295,
+      "tag": "p",
+      "html": "\n<em>Explicit dependencies</em>, as listed in a build line.  These are\n   available as the <span class=\"monospaced\">$in</span> variable in the rule.  Changes in these files\n   cause the output to be rebuilt; if these files are missing and\n   Ninja doesn’t know how to build them, the build is aborted.\n"
+    },
+    {
+      "id": 296,
+      "tag": "p",
+      "html": "This is the standard form of dependency to be used e.g. for the\nsource file of a compile command."
+    },
+    {
+      "id": 297,
+      "tag": "p",
+      "html": "\n<em>Implicit dependencies</em>, either as picked up from\n   a <span class=\"monospaced\">depfile</span> attribute on a rule or from the syntax <span class=\"monospaced\">| <em>dep1</em>\n   <em>dep2</em></span> on the end of a build line.  The semantics are identical to\n   explicit dependencies, the only difference is that implicit dependencies\n   don’t show up in the <span class=\"monospaced\">$in</span> variable.\n"
+    },
+    {
+      "id": 298,
+      "tag": "p",
+      "html": "This is for expressing dependencies that don’t show up on the\ncommand line of the command; for example, for a rule that runs a\nscript that reads a hardcoded file, the hardcoded file should\nbe an implicit dependency, as changes to the file should cause\nthe output to rebuild, even though it doesn’t show up in the arguments."
+    },
+    {
+      "id": 299,
+      "tag": "p",
+      "html": "Note that dependencies as loaded through depfiles have slightly different\nsemantics, as described in the <a href=\"#ref_rule\">rule reference</a>."
+    },
+    {
+      "id": 300,
+      "tag": "p",
+      "html": "\n<em>Order-only dependencies</em>, expressed with the syntax <span class=\"monospaced\">|| <em>dep1</em>\n   <em>dep2</em></span> on the end of a build line.  When these are out of date, the\n   output is not rebuilt until they are built, but changes in order-only\n   dependencies alone do not cause the output to be rebuilt.\n"
+    },
+    {
+      "id": 301,
+      "tag": "p",
+      "html": "Order-only dependencies can be useful for bootstrapping dependencies\nthat are only discovered during build time: for example, to generate a\nheader file before starting a subsequent compilation step.  (Once the\nheader is used in compilation, a generated dependency file will then\nexpress the implicit dependency.)"
+    },
+    {
+      "id": 302,
+      "tag": "p",
+      "html": "File paths are compared as is, which means that an absolute path and a\nrelative path, pointing to the same file, are considered different by Ninja."
+    },
+    {
+      "id": 303,
+      "tag": "h3",
+      "html": "Validations"
+    },
+    {
+      "id": 304,
+      "tag": "p",
+      "html": "<em>Available since Ninja 1.11.</em>"
+    },
+    {
+      "id": 305,
+      "tag": "p",
+      "html": "Validations listed on the build line cause the specified files to be\nadded to the top level of the build graph (as if they were specified\non the Ninja command line) whenever the build line is a transitive\ndependency of one of the targets specified on the command line or a\ndefault target."
+    },
+    {
+      "id": 306,
+      "tag": "p",
+      "html": "Validations are added to the build graph regardless of whether the output\nfiles of the build statement are dirty are not, and the dirty state of\nthe build statement that outputs the file being used as a validation\nhas no effect on the dirty state of the build statement that requested it."
+    },
+    {
+      "id": 307,
+      "tag": "p",
+      "html": "A build edge can list another build edge as a validation even if the second\nedge depends on the first."
+    },
+    {
+      "id": 308,
+      "tag": "p",
+      "html": "Validations are designed to handle rules that perform error checking but\ndon’t produce any artifacts needed by the build, for example, static\nanalysis tools.  Marking the static analysis rule as an implicit input\nof the main build rule of the source files or of the rules that depend\non the main build rule would slow down the critical path of the build,\nbut using a validation would allow the build to proceed in parallel with\nthe static analysis rule once the main build rule is complete."
+    },
+    {
+      "id": 309,
+      "tag": "h3",
+      "html": "Variable expansion"
+    },
+    {
+      "id": 310,
+      "tag": "p",
+      "html": "Variables are expanded in paths (in a <span class=\"monospaced\">build</span> or <span class=\"monospaced\">default</span> statement)\nand on the right side of a <span class=\"monospaced\">name = value</span> statement."
+    },
+    {
+      "id": 311,
+      "tag": "p",
+      "html": "When a <span class=\"monospaced\">name = value</span> statement is evaluated, its right-hand side is\nexpanded immediately (according to the below scoping rules), and\nfrom then on <span class=\"monospaced\">$name</span> expands to the static string as the result of the\nexpansion.  It is never the case that you’ll need to \"double-escape\" a\nvalue to prevent it from getting expanded twice."
+    },
+    {
+      "id": 312,
+      "tag": "p",
+      "html": "All variables are expanded immediately as they’re encountered in parsing,\nwith one important exception: variables in <span class=\"monospaced\">rule</span> blocks are expanded\nwhen the rule is <em>used</em>, not when it is declared.  In the following\nexample, the <span class=\"monospaced\">demo</span> rule prints \"this is a demo of bar\"."
+    },
+    {
+      "id": 313,
+      "tag": "h3",
+      "html": "Evaluation and scoping"
+    },
+    {
+      "id": 314,
+      "tag": "p",
+      "html": "Top-level variable declarations are scoped to the file they occur in."
+    },
+    {
+      "id": 315,
+      "tag": "p",
+      "html": "Rule declarations are also scoped to the file they occur in.\n<em>(Available since Ninja 1.6)</em>"
+    },
+    {
+      "id": 316,
+      "tag": "p",
+      "html": "The <span class=\"monospaced\">subninja</span> keyword, used to include another <span class=\"monospaced\">.ninja</span> file,\nintroduces a new scope.  The included <span class=\"monospaced\">subninja</span> file may use the\nvariables and rules from the parent file, and shadow their values for the file’s\nscope, but it won’t affect values of the variables in the parent."
+    },
+    {
+      "id": 317,
+      "tag": "p",
+      "html": "To include another <span class=\"monospaced\">.ninja</span> file in the current scope, much like a C\n<span class=\"monospaced\">#include</span> statement, use <span class=\"monospaced\">include</span> instead of <span class=\"monospaced\">subninja</span>."
+    },
+    {
+      "id": 318,
+      "tag": "p",
+      "html": "Variable declarations indented in a <span class=\"monospaced\">build</span> block are scoped to the\n<span class=\"monospaced\">build</span> block.  The full lookup order for a variable expanded in a\n<span class=\"monospaced\">build</span> block (or the <span class=\"monospaced\">rule</span> is uses) is:"
+    },
+    {
+      "id": 319,
+      "tag": "p",
+      "html": "\nSpecial built-in variables (<span class=\"monospaced\">$in</span>, <span class=\"monospaced\">$out</span>).\n"
+    },
+    {
+      "id": 320,
+      "tag": "p",
+      "html": "\nBuild-level variables from the <span class=\"monospaced\">build</span> block.\n"
+    },
+    {
+      "id": 321,
+      "tag": "p",
+      "html": "\nRule-level variables from the <span class=\"monospaced\">rule</span> block (i.e. <span class=\"monospaced\">$command</span>).\n   (Note from the above discussion on expansion that these are\n   expanded \"late\", and may make use of in-scope bindings like <span class=\"monospaced\">$in</span>.)\n"
+    },
+    {
+      "id": 322,
+      "tag": "p",
+      "html": "\nFile-level variables from the file that the <span class=\"monospaced\">build</span> line was in.\n"
+    },
+    {
+      "id": 323,
+      "tag": "p",
+      "html": "\nVariables from the file that included that file using the\n   <span class=\"monospaced\">subninja</span> keyword.\n"
+    },
+    {
+      "id": 324,
+      "tag": "h2",
+      "html": "Dynamic Dependencies"
+    },
+    {
+      "id": 325,
+      "tag": "p",
+      "html": "<em>Available since Ninja 1.10.</em>"
+    },
+    {
+      "id": 326,
+      "tag": "p",
+      "html": "Some use cases require implicit dependency information to be dynamically\ndiscovered from source file content <em>during the build</em> in order to build\ncorrectly on the first run (e.g. Fortran module dependencies).  This is\nunlike <a href=\"#ref_headers\">header dependencies</a> which are only needed on the\nsecond run and later to rebuild correctly.  A build statement may have a\n<span class=\"monospaced\">dyndep</span> binding naming one of its inputs to specify that dynamic\ndependency information must be loaded from the file.  For example:"
+    },
+    {
+      "id": 327,
+      "tag": "p",
+      "html": "This specifies that file <span class=\"monospaced\">foo</span> is a dyndep file.  Since it is an input,\nthe build statement for <span class=\"monospaced\">out</span> can never be executed before <span class=\"monospaced\">foo</span> is built.\nAs soon as <span class=\"monospaced\">foo</span> is finished Ninja will read it to load dynamically\ndiscovered dependency information for <span class=\"monospaced\">out</span>.  This may include additional\nimplicit inputs and/or outputs.  Ninja will update the build graph\naccordingly and the build will proceed as if the information was known\noriginally."
+    },
+    {
+      "id": 328,
+      "tag": "h3",
+      "html": "Dyndep file reference"
+    },
+    {
+      "id": 329,
+      "tag": "p",
+      "html": "Files specified by <span class=\"monospaced\">dyndep</span> bindings use the same <a href=\"#ref_lexer\">lexical syntax</a>\nas <a href=\"#ref_ninja_file\">ninja build files</a> and have the following layout."
+    },
+    {
+      "id": 330,
+      "tag": "p",
+      "html": "\nA version number in the form <span class=\"monospaced\">&lt;major&gt;[.&lt;minor&gt;][&lt;suffix&gt;]</span>:\n"
+    },
+    {
+      "id": 331,
+      "tag": "p",
+      "html": "Currently the version number must always be <span class=\"monospaced\">1</span> or <span class=\"monospaced\">1.0</span> but may have\nan arbitrary suffix."
+    },
+    {
+      "id": 332,
+      "tag": "p",
+      "html": "\nOne or more build statements of the form:\n"
+    },
+    {
+      "id": 333,
+      "tag": "p",
+      "html": "Every statement must specify exactly one explicit output and must use\nthe rule name <span class=\"monospaced\">dyndep</span>.  The <span class=\"monospaced\">| imp-outs...</span> and <span class=\"monospaced\">| imp-ins...</span> portions\nare optional."
+    },
+    {
+      "id": 334,
+      "tag": "p",
+      "html": "\nAn optional <span class=\"monospaced\">restat</span> <a href=\"#ref_rule\">variable binding</a> on each build statement.\n"
+    },
+    {
+      "id": 335,
+      "tag": "p",
+      "html": "The build statements in a dyndep file must have a one-to-one correspondence\nto build statements in the <a href=\"#ref_ninja_file\">ninja build file</a> that name the\ndyndep file in a <span class=\"monospaced\">dyndep</span> binding.  No dyndep build statement may be omitted\nand no extra build statements may be specified."
+    },
+    {
+      "id": 336,
+      "tag": "h3",
+      "html": "Dyndep Examples"
+    },
+    {
+      "id": 337,
+      "tag": "h4",
+      "html": "Fortran Modules"
+    },
+    {
+      "id": 338,
+      "tag": "p",
+      "html": "Consider a Fortran source file <span class=\"monospaced\">foo.f90</span> that provides a module\n<span class=\"monospaced\">foo.mod</span> (an implicit output of compilation) and another source file\n<span class=\"monospaced\">bar.f90</span> that uses the module (an implicit input of compilation).  This\nimplicit dependency must be discovered before we compile either source\nin order to ensure that <span class=\"monospaced\">bar.f90</span> never compiles before <span class=\"monospaced\">foo.f90</span>, and\nthat <span class=\"monospaced\">bar.f90</span> recompiles when <span class=\"monospaced\">foo.mod</span> changes.  We can achieve this\nas follows:"
+    },
+    {
+      "id": 339,
+      "tag": "p",
+      "html": "In this example the order-only dependencies ensure that <span class=\"monospaced\">foobar.dd</span> is\ngenerated before either source compiles.  The hypothetical <span class=\"monospaced\">fscan</span> tool\nscans the source files, assumes each will be compiled to a <span class=\"monospaced\">.o</span> of the\nsame name, and writes <span class=\"monospaced\">foobar.dd</span> with content such as:"
+    },
+    {
+      "id": 340,
+      "tag": "p",
+      "html": "Ninja will load this file to add <span class=\"monospaced\">foo.mod</span> as an implicit output of\n<span class=\"monospaced\">foo.o</span> and implicit input of <span class=\"monospaced\">bar.o</span>.  This ensures that the Fortran\nsources are always compiled in the proper order and recompiled when\nneeded."
+    },
+    {
+      "id": 341,
+      "tag": "h4",
+      "html": "Tarball Extraction"
+    },
+    {
+      "id": 342,
+      "tag": "p",
+      "html": "Consider a tarball <span class=\"monospaced\">foo.tar</span> that we want to extract.  The extraction time\ncan be recorded with a <span class=\"monospaced\">foo.tar.stamp</span> file so that extraction repeats if\nthe tarball changes, but we also would like to re-extract if any of the\noutputs is missing.  However, the list of outputs depends on the content\nof the tarball and cannot be spelled out explicitly in the ninja build file.\nWe can achieve this as follows:"
+    },
+    {
+      "id": 343,
+      "tag": "p",
+      "html": "In this example the order-only dependency ensures that <span class=\"monospaced\">foo.tar.dd</span> is\nbuilt before the tarball extracts.  The hypothetical <span class=\"monospaced\">scantar</span> tool\nwill read the tarball (e.g. via <span class=\"monospaced\">tar tf</span>) and write <span class=\"monospaced\">foo.tar.dd</span> with\ncontent such as:"
+    },
+    {
+      "id": 344,
+      "tag": "p",
+      "html": "Ninja will load this file to add <span class=\"monospaced\">file1.txt</span> and <span class=\"monospaced\">file2.txt</span> as implicit\noutputs of <span class=\"monospaced\">foo.tar.stamp</span>, and to mark the build statement for <span class=\"monospaced\">restat</span>.\nOn future builds, if any implicit output is missing the tarball will be\nextracted again.  The <span class=\"monospaced\">restat</span> binding tells Ninja to tolerate the fact\nthat the implicit outputs may not have modification times newer than\nthe tarball itself (avoiding re-extraction on every build)."
+    }
+  ],
+  "residual": [
+    "Important"
+  ]
+}

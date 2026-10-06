@@ -1,0 +1,291 @@
+0	はじめに
+1	Ninjaも数あるビルドシステムの一つです。ファイル間の依存関係（通常はソースコードと出力される実行ファイル）を入力として受け取り、それらを<em>素早く</em>ビルドするよう処理を調整します。
+2	Ninjaは多くのビルドシステムの中でも、速さを目標としている点が特徴です。Ninjaは<a href="http://neugierig.org/software/chromium/notes/2011/02/ninja.html">私がChromiumブラウザープロジェクトで行った作業</a>から生まれました。このプロジェクトには3万個を超えるソースファイルがあり、他のビルドシステム（独自の再帰しないMakefileで構築したものを含む）では、1ファイルを変更してからビルドを開始するまで10秒かかっていました。Ninjaなら1秒未満です。
+3	設計思想の概要
+4	他のビルドシステムを高水準言語にたとえるなら、Ninjaはアセンブラーを目指しています。
+5	ビルドシステムは判断を行う必要があると遅くなります。編集とコンパイルを繰り返すときは、できるだけ速く動いてほしいものです。つまり、直ちにビルドが必要なものを特定するために、必要最小限の作業だけを行ってほしいのです。
+6	Ninjaは任意の依存グラフを記述するための最小限の機能を備えています。構文が限られているため、複雑な判断を表現することはできません。
+7	Ninjaは、入力ファイルを生成する別のプログラムと組み合わせて使うことを想定しています。生成プログラム（autotoolsプロジェクトにある<span class="monospaced">./configure</span>のようなもの）は、システムの依存関係を解析し、できる限り多くの判断を事前に済ませて、差分ビルドの速さを保てます。autotoolsよりさらに踏み込んで、「どのコンパイラーフラグを使うか」「デバッグ版とリリース版のどちらのバイナリーをビルドするか」といったビルド時の判断も、<span class="monospaced">.ninja</span>ファイルの生成プログラムで行うべきです。
+8	設計目標
+9	Ninjaの設計目標は次のとおりです。
+10	非常に大きなプロジェクトでも、差分ビルドが非常に速い（つまり即座に実行される）こと。
+11	コードのビルド方法について、ほとんど方針を押し付けないこと。プロジェクトや上位のビルドシステムごとに、望ましいビルド方法は異なります。たとえば、ビルドしたオブジェクトをソースの隣に置くか、すべてのビルド出力を別のディレクトリに置くか。プロジェクトの配布用パッケージをビルドする「package」ルールを用意するか。どちらかを選ぶのではなく、多少記述が長くなっても両方を実装できるようにして、こうした判断を避けます。
+12	依存関係を正しく扱うこと。特に、Makefileでは正しく扱いにくい場合も対象にします。たとえば、出力には、その生成に使ったコマンドラインへの暗黙の依存関係が必要です。また、Cソースをビルドするには、ヘッダーの依存関係のためにgccの<span class="monospaced">-M</span>フラグを使う必要があります。
+13	便利さと速さが両立しない場合は、速さを優先すること。
+14	明示的に<em>目標としていないこと</em>もあります。
+15	ビルドファイルを手書きするための便利な構文。<em>Ninjaファイルは別のプログラムで生成してください</em>。それにより、多くの方針判断を避けられます。
+16	組み込みルール。<em>Ninjaには、たとえばCコードのコンパイル用のルールは最初から用意されていません。</em>
+17	ビルド時のビルド設定の変更。<em>オプションはNinjaファイルを生成するプログラムで扱うものです</em>。
+18	条件分岐や検索パスなど、ビルド時に判断する機能。<em>判断には時間がかかります。</em>
+19	言い換えると、Ninjaが他のビルドシステムより速いのは、極端に単純だからです。プロジェクトの<span class="monospaced">.ninja</span>ファイルを作るときに、実行すべきことを正確にNinjaへ伝えなければなりません。
+20	Makeとの比較
+21	Ninjaは、ファイルのタイムスタンプ間の単純な依存関係に基づく点で、思想も機能もMakeに最も近いものです。
+22	ただし、makeには本質的に多くの<em>機能</em>があります。サフィックスルール、関数、ソースのビルド時にRCSファイルを探すような組み込みルールなどです。Makeの言語は人間が書くことを想定して設計されています。多くのプロジェクトでは、makeだけでビルドの課題を十分に解決できます。
+23	それに対し、Ninjaにはほとんど機能がありません。正しいビルドに必要なものだけを備え、複雑さの大部分をNinja入力ファイルの生成へ委ねています。多くのプロジェクトでは、Ninjaだけを使っても役立つとは限りません。
+24	NinjaがMakeに追加する機能をいくつか挙げます。（こうした機能は、より複雑なMakefileで実装できることもありますが、makeそのものの機能ではありません。）
+25	Ninjaはビルド時に追加の依存関係を見つけるための特別な機能を備えており、C/C++コードの<a href="#ref_headers">ヘッダー依存関係</a>を正しく扱いやすくなっています。
+26	一つのビルドエッジが複数の出力を持てます。
+27	出力は、その生成に使ったコマンドラインに暗黙に依存します。そのため、たとえばコンパイルフラグを変更すると、出力が再ビルドされます。
+28	出力ディレクトリは、それを必要とするコマンドを実行する前に、必ず暗黙に作成されます。
+29	ルールには実行するコマンドの短い説明を指定できます。そのため、ビルド中に長いコマンドラインの代わりに、たとえば<span class="monospaced">CC foo.o</span>と表示できます。
+30	ビルドは常に並列で実行され、既定の並列数はシステムのCPU数に基づきます。ビルドの依存関係を十分に指定していないと、正しくないビルドになります。
+31	コマンドの出力は常にバッファーに蓄えられます。そのため、並列実行中のコマンドの出力が混ざりません。また、コマンドが失敗したときには、その失敗時の出力と、それを生成した完全なコマンドラインを並べて表示できます。
+32	プロジェクトでNinjaを使う
+33	Ninjaは現在、Unix系システムとWindowsで動作します。Linuxで最も多くテストされており、性能もLinuxが最も良いですが、Mac OS XとFreeBSDでも問題なく動作します。
+34	小さなプロジェクトでは、Ninjaによる速度の違いはほとんど分からないかもしれません。（ただし、小さなプロジェクトでも、Ninjaの限られた構文によってビルドルールが単純になり、ビルドが速くなることがあります。）言い換えると、今のプロジェクトの編集・コンパイルの所要時間に満足しているなら、Ninjaは役に立ちません。
+35	Ninjaそのものより使いやすく、機能が豊富なビルドシステムは多数あります。例を挙げると、Ninjaの作者は<a href="http://gittup.org/tup/">tupビルドシステム</a>がNinjaの設計に影響を与えたと述べ、<a href="https://github.com/apenwarr/redo">redo</a>の設計も非常に巧妙だと考えています。
+36	Ninjaの利点は、より高度なメタビルドシステムと組み合わせて使うことで得られます。
+38	Google Chromeとその関連プロジェクト（v8、node.js）、およびGoogle Fuchsiaのビルドファイルを生成するために使われているメタビルドシステムです。gnは、Chromeが対応するすべてのプラットフォーム向けにNinjaファイルを生成できます。
+40	広く使われているメタビルドシステムで、CMake 2.8.8以降ではLinux上でNinjaファイルを生成できます。より新しいCMakeは、WindowsとMac OS X上でのNinjaファイル生成にも対応しています。
+41	<a href="https://github.com/ninja-build/ninja/wiki/List-of-generators-producing-ninja-build-files">その他</a>
+42	Ninjaは<a href="https://premake.github.io/">premake</a>のような他のメタビルドソフトウェアにも、うまく組み込めるはずです。このような取り組みを行ったら、ぜひ知らせてください。
+43	Ninjaを実行する
+44	<span class="monospaced">ninja</span>を実行します。既定では、現在のディレクトリにある<span class="monospaced">build.ninja</span>というファイルを探し、更新が必要なすべてのターゲットをビルドします。ビルドするターゲット（ファイル）をコマンドライン引数で指定することもできます。
+45	<span class="monospaced">target^</span>という特別な構文もあります。コマンドラインで指定したソースを含むルールが存在する場合、そのルールの最初の出力をターゲットとして指定します。たとえば、ターゲットを<span class="monospaced">foo.c^</span>と指定すると、<span class="monospaced">foo.o</span>がビルドされます（ビルドファイルにそのターゲットがあると仮定します）。
+46	<span class="monospaced">ninja -h</span>はヘルプを表示します。Ninjaのフラグの多くは、意図的にMakeに合わせてあります。たとえば、<span class="monospaced">ninja -C build -j 20</span>は<span class="monospaced">build</span>ディレクトリへ移動し、20個のビルドコマンドを並列実行します。（なお、Ninjaはもともと既定でコマンドを並列実行するため、通常は<span class="monospaced">-j</span>を指定する必要はありません。）
+47	GNU jobserverへの対応
+48	バージョン1.13以降、Ninjaのビルドは<a href="https://www.gnu.org/software/make/manual/html_node/Job-Slots.html">GNU Make jobserver</a>のクライアントプロトコルに従えます。最上位のGNU Makeや、その他のjobserverプールの実装が制御する大きなビルドシステムの一部としてNinjaを呼び出すときに便利です。並列ビルドタスク間の連携を改善できるためです。
+49	この機能は、次の条件を満たすと自動的に有効になります。
+50	ドライラン（<span class="monospaced">-n</span>または<span class="monospaced">--dry-run</span>）が有効になっていないこと。
+51	コマンドラインで並列ジョブ数（たとえば<span class="monospaced">-j&lt;COUNT&gt;</span>）を明示的に指定していないこと。
+52	環境変数<span class="monospaced">MAKEFLAGS</span>が定義され、Windowsでは<span class="monospaced">--jobserver-auth=SEMAPHORE_NAME</span>、Posixでは<span class="monospaced">--jobserver-auth=fifo:PATH</span>によって有効なjobserverモードを指定していること。
+53	この場合、Ninjaは既定の並列実行の実装の代わりに、jobserverのジョブ枠のプールを使って並列数を制御します。
+54	このモードでも、負荷平均による制限（<span class="monospaced">-l&lt;count&gt;</span>を使用した場合）は引き続き適用されます。
+55	Posixでは、GNU Make 4.4以降が実装するFIFO方式のプロトコルだけに対応しています。パイプ方式のjobserverが使われている場合（<span class="monospaced">MAKEFLAGS</span>に<span class="monospaced">--jobserver-auth=&lt;read&gt;,&lt;write&gt;</span>が含まれる場合）、Ninjaはそれを検出して警告を表示しますが、それ以外の処理は行わず無視します。
+56	環境変数
+57	Ninjaは動作を制御する二つの環境変数に対応しています。<span class="monospaced">NINJA_STATUS</span>は、実行するルールの前に表示する進捗状況です。
+58	次のプレースホルダーを使えます。
+60	開始したエッジの数。
+62	ビルドの完了までに実行する必要があるエッジの総数。
+64	完了したエッジの割合。
+66	現在実行中のエッジの数。
+68	まだ開始していないエッジの数。
+70	完了したエッジの数。
+72	完了したエッジの、1秒あたりの全体的な処理数。
+74	完了したエッジの、1秒あたりの現在の処理数（<span class="monospaced">-j</span>で指定した並列数、または既定の並列数の範囲での平均）。
+76	経過時間（秒）。<em>（Ninja 1.2以降で利用可能。）</em>
+78	残り時間（ETA、秒）。<em>（Ninja 1.12以降で利用可能。）</em>
+80	[h:]mm:ss形式の経過時間。<em>（Ninja 1.12以降で利用可能。）</em>
+82	[h:]mm:ss形式の残り時間（ETA）。<em>（Ninja 1.12以降で利用可能。）</em>
+84	予測した総実行時間に対する経過時間の割合（ppp%形式）。<em>（Ninja 1.12以降で利用可能。）</em>
+86	通常の<span class="monospaced">%</span>文字。
+87	既定の進捗表示は<span class="monospaced">"[%f/%t] "</span>です（ビルドルールとの区切りのため、末尾に空白がある点に注意してください）。他の例として、<span class="monospaced">"[%u/%r/%f] "</span>という進捗表示も考えられます。
+88	環境変数<span class="monospaced">MAKEFLAGS</span>が定義されていると、Ninjaの並列ビルドコマンドの割り当て方法が変わることがあります。詳しくはGNU jobserverへの対応の節を参照してください。
+89	追加ツール
+90	Ninjaのコマンドラインにある<span class="monospaced">-t</span>フラグは、Ninjaの開発中に便利だと分かったツールを実行します。現在のツールは次のとおりです。
+92	指定したターゲットの入力と出力を表示します。
+94	Webブラウザーで依存グラフを閲覧します。ファイルをクリックすると、そのファイルに表示を絞り、入力と出力を表示します。この機能にはPythonのインストールが必要です。既定ではポート8000を使い、Webブラウザーを開きます。次のように変更できます。
+96	自動グラフ配置ツール<span class="monospaced">graphviz</span>が使う構文でファイルを出力します。次のように使います。
+97	Ninjaのソースツリーでは、<span class="monospaced">ninja graph.png</span>でNinja自身のグラフ画像を生成できます。ターゲットを指定しない場合は、すべてのルートターゲットのグラフを生成します。
+99	ルール別または深さ別にターゲットの一覧を出力します。<span class="monospaced">ninja -t targets rule <em>name</em></span>のように使うと、指定したルールでビルドするターゲットの一覧を表示します。ルールを指定しない場合は、ソースファイル（グラフの葉）を表示します。<span class="monospaced">ninja -t targets depth <em>digit</em></span>のように使うと、ルートターゲット（その先に出力のないターゲット）から深さ優先でターゲットの一覧を表示します。依存関係はインデントで示されます。深さが0ならすべてのターゲットを表示します。引数がない場合は<span class="monospaced">ninja -t targets depth 1</span>として扱います。このモードでは、同じターゲットが複数回表示されることがあります。<span class="monospaced">ninja -t targets all</span>を使うと、利用可能なすべてのターゲットをインデントなしで表示し、<em>depth</em>モードより速く動作します。
+101	ターゲットの一覧を指定すると、すべての出力ファイルに更新が必要であると仮定した場合に、それらのターゲットを再ビルドするために順番に実行できるコマンドの一覧を表示します。
+103	ターゲットの一覧を指定すると、それらの再ビルドに使うすべての入力の一覧を表示します。<em>Ninja 1.11以降で利用可能です。</em>
+105	ターゲットのビルドに必要な入力の集合を一つ以上表示します。各行は、ターゲット、区切り文字列、入力、終端文字で構成されます。この一覧は、ある入力がどのターゲットに影響するかを知りたいときに便利です。
+106	出力は、次の要素からなる行の列になります。
+107	既定の<span class="monospaced">&lt;delimiter&gt;</span>はTAB文字一つです。<span class="monospaced">--delimiter</span>引数で任意の文字列に変更できます。
+108	既定の<span class="monospaced">&lt;terminator&gt;</span>は行の終端文字です（Posixでは<span class="monospaced">\n</span>、Windowsでは<span class="monospaced">\r\n</span>）。<span class="monospaced">--print0</span>引数を使うと、終端文字を<span class="monospaced">\0</span>に変更できます。
+109	<span class="monospaced">multi-inputs</span>ツールの使用例です。
+110	<span class="monospaced">multi-inputs</span>ツールが生成する出力の例です。
+111	<em>同じ入力を複数のターゲットが使う場合、その入力は複数のターゲットについて表示されることに注意してください。</em> <em>Ninja 1.13以降で利用可能です。</em>
+113	ビルドしたファイルを削除します。既定では、生成プログラムが作成したファイルを除き、ビルドしたすべてのファイルを削除します。<span class="monospaced">-g</span>フラグを加えると、生成プログラムが作成したビルド済みファイルも削除します（<a href="#ref_rule">ルールリファレンスの<span class="monospaced">generator</span>属性</a>を参照してください）。追加の引数はターゲットです。指定したターゲットと、それらのためにビルドしたすべてのファイルを再帰的に削除します。
+114	<span class="monospaced">ninja -t clean -r <em>rules</em></span>のように使うと、指定したルールでビルドしたすべてのファイルを削除します。
+115	作成されていてもグラフで参照されていないファイルは削除しません。このツールは<span class="monospaced">-v</span>と<span class="monospaced">-n</span>のオプションも考慮します（<span class="monospaced">-n</span>は<span class="monospaced">-v</span>も意味する点に注意してください）。
+117	以前のビルドで生成されたものの、現在のビルドファイルには含まれなくなったファイルを削除します。<em>Ninja 1.10以降で利用可能です。</em>
+119	ルールの一覧を指定すると、Clangのツールインターフェースが想定する<a href="http://clang.llvm.org/docs/JSONCompilationDatabase.html">JSON形式</a>のコンパイルデータベースを標準出力へ出力します。各ルールは、最初の入力がソースファイル名であるC系言語のコンパイラールールであると想定します。<em>Ninja 1.2以降で利用可能です。</em>
+121	<span class="monospaced">compdb</span>に似ていますが、ルールの代わりにターゲットの一覧を受け取り、少なくとも一つのターゲットが必要です。生成されるコンパイルデータベースには、指定したターゲットのビルドに必要なすべてのコマンド、かつ<em>それらのコマンドだけ</em>が含まれます。
+123	<span class="monospaced">.ninja_deps</span>ファイルに保存されたすべての依存関係を表示します。ターゲットを指定すると、そのターゲットの依存関係だけを表示します。<em>Ninja 1.4以降で利用可能です。</em>
+125	ターゲットの一覧を指定すると、生成されたファイルに依存しているにもかかわらず、その生成プログラムへの適切な依存関係（推移的なものを含む）がないターゲットを探します。そのようなターゲットは、クリーンビルドが不安定になる原因になります。
+126	depsログまたはdepfileの依存関係情報が正しければ、このような不正なターゲットを見つけられます。生成されたファイル（生成ターゲットの出力）に暗黙に依存している一方で、生成ターゲットまでの明示的依存関係または順序のみの依存関係の経路がないターゲットは、不正と判断されます。
+127	このツールの結果は、他のターゲットを一切ビルドせず、クリーンな出力ディレクトリで一覧のターゲットだけをビルドしてみることで確認できます。各ターゲットは、生成されたファイルについてのインクルード欠落エラー、または同等のエラーで失敗するはずです。<em>Ninja 1.11以降で利用可能です。</em>
+129	<span class="monospaced">.ninja_deps</span>ファイルを再コンパクト化します。<em>Ninja 1.4以降で利用可能です。</em>
+131	<span class="monospaced">.ninja_log</span>ファイルに記録された、すべてのファイルの更新時刻を更新します。<em>Ninja 1.10以降で利用可能です。</em>
+133	すべてのルールの一覧を出力します。<span class="monospaced">ninja -t targets rule <em>name</em></span>または<span class="monospaced">ninja -t compdb</span>に渡すルール名を調べるために使えます。<span class="monospaced">-d</span>フラグを加えると、ルールの説明も表示します。
+135	Windowsホストだけで利用できます。事前に定義した環境変数の組を使い、次のように<span class="monospaced">cl.exe</span>コンパイラーを呼び出す補助ツールです。
+136	<span class="monospaced">ENVFILE</span>は、WindowsのCreateProcessA()に適した環境ブロックを含むバイナリーファイルです。つまり、NAME=VALUEのような形のゼロ終端文字列を連ね、最後に追加のゼロ終端を置いたものです。ローカルのコードページのエンコーディングを使うことに注意してください。
+137	このツールは、<span class="monospaced">/showIncludes</span>フラグ使用時のコンパイラー出力を解析し、GCC互換のdepfileを生成する、非推奨の方法にも対応しています。
+138	このオプションでは、<span class="monospaced">-p STRING</span>を使い、<span class="monospaced">cl.exe</span>が依存関係情報の出力に使う、ローカライズされた行頭の文字列を渡せます。英語圏では、二重引用符を除いた<span class="monospaced">"Note: including file: "</span>ですが、他の地域では異なります。
+139	現在のNinjaは、Ninjaファイル内の<span class="monospaced">deps = msvc</span>と<span class="monospaced">msvc_deps_prefix</span>を使い、この機能に直接対応しています。この直接対応では、コンパイラーを呼ぶたびに追加のツールプロセスを起動する必要もなく、Windowsでのビルドが大幅に速くなることがあります。
+141	Windowsホストで利用できます（<em>Ninja 1.11以降</em>）。ビルドファイルに想定されるエンコーディングのWindowsコードページを表示します。出力は次の形式です。
+142	Ninjaの将来のバージョンでは、追加の行が出力される場合があります。
+143	<span class="monospaced">&lt;codepage&gt;</span>は、次のいずれかです。
+145	UTF-8でエンコードします。
+147	システム全体のANSIコードページでエンコードします。
+148	独自のNinjaファイルを書く
+149	このマニュアルの残りは、Ninjaファイルを自分で構築する場合にだけ役立ちます。たとえば、メタビルドシステムを書いたり、新しい言語に対応したりする場合です。
+150	概念の概要
+151	Ninjaはファイル間の依存グラフを評価し、ファイルの更新時刻から判断してビルドターゲットを最新にするために必要なコマンドを実行します。Makeを知っているなら、Ninjaは非常によく似ています。
+152	ビルドファイル（既定の名前は<span class="monospaced">build.ninja</span>）には、コンパイラーの実行方法など、長いコマンドの短い名前である<em>ルール</em>の一覧と、ルールを使ったファイルのビルド方法を示す<em>build</em>文の一覧が含まれます。build文は、どのルールをどの入力へ適用し、どの出力を生成するかを指定します。
+153	概念上、<span class="monospaced">build</span>文はプロジェクトの依存グラフを記述し、<span class="monospaced">rule</span>文は、グラフのあるエッジに沿ってファイルを生成する方法を記述します。
+154	構文の例
+155	構文の大部分を示す、基本的な<span class="monospaced">.ninja</span>ファイルを挙げます。以降の節では、このファイルを例として使います。
+156	変数
+157	手書きの便利さは目標にしていませんが、ビルドファイルを読みやすく（デバッグしやすく）するため、Ninjaでは文字列に短く再利用可能な名前を付けられます。次のような宣言を、
+158	等号の右辺でドル記号によって参照できます。たとえば次のように使います。
+159	<span class="monospaced">${in}</span>のように、波括弧を使って変数を参照することもできます。
+160	変数は変更できず、シャドーイングしかできないため、「束縛」と呼ぶ方が適切かもしれません。シャドーイングの仕組みについては、この文書の後半で詳しく説明します。
+161	ルール
+162	ルールはコマンドラインの短い名前を宣言します。<span class="monospaced">rule</span>キーワードとルール名からなる行で始まり、その後にインデントした<span class="monospaced">variable = value</span>の行を並べます。
+163	前述の基本例では、<span class="monospaced">cc</span>という新しいルールを、実行するコマンドとともに宣言しています。ルール内では、<span class="monospaced">command</span>変数が実行するコマンドを定義し、<span class="monospaced">$in</span>はそのコマンドの入力ファイルの一覧（<span class="monospaced">foo.c</span>）へ、<span class="monospaced">$out</span>は出力ファイルの一覧（<span class="monospaced">foo.o</span>）へ展開されます。特殊変数の完全な一覧は、<a href="#ref_rule">リファレンス</a>を参照してください。
+164	build文
+165	build文は、入力ファイルと出力ファイルの関係を宣言します。<span class="monospaced">build</span>キーワードで始まり、<span class="monospaced">build <em>outputs</em>: <em>rulename</em> <em>inputs</em></span>という形式です。この宣言は、すべての出力ファイルが入力ファイルから生成されることを示します。出力ファイルが存在しないか入力が変わったとき、Ninjaはルールを実行し、出力を再生成します。
+166	前述の基本例では、<span class="monospaced">cc</span>ルールを使って<span class="monospaced">foo.o</span>をビルドする方法を記述しています。
+167	<span class="monospaced">build</span>ブロックのスコープ内（関連する<span class="monospaced">rule</span>の評価時も含む）では、<span class="monospaced">$in</span>変数は入力の一覧、<span class="monospaced">$out</span>変数は出力の一覧です。
+168	build文の後にも、ルールと同様に、インデントした<span class="monospaced">key = value</span>の組を並べられます。これらの変数は、コマンド内の変数を評価するとき、他の変数をシャドーイングします。たとえば次のとおりです。
+169	スコープの仕組みについて詳しくは、<a href="#ref_scope">リファレンス</a>を参照してください。
+170	build文からルールへ、より複雑な情報（たとえば「最初の入力のファイル拡張子」）を渡す必要がある場合は、前述の<span class="monospaced">cflags</span>のように、追加の変数として渡してください。
+171	最上位のNinjaファイルがいずれかのbuild文の出力に指定されており、更新が必要な場合、Ninjaはユーザーが要求したターゲットをビルドする前に、そのファイルを再ビルドして再読み込みします。
+172	コードからNinjaファイルを生成する
+173	Ninjaの配布物にある<span class="monospaced">misc/ninja_syntax.py</span>は、Ninjaファイルの生成を簡単にする小さなPythonモジュールです。<span class="monospaced">ninja.rule(name='foo', command='bar', depfile='$out.d')</span>のようにPythonから呼び出すと、適切な構文を生成します。役に立つなら、プロジェクトのビルドシステムへそのまま組み込んでかまいません。
+174	より詳しい説明
+175	<span class="monospaced">phony</span>ルール
+176	特別なルール名<span class="monospaced">phony</span>を使うと、他のターゲットに別名を付けられます。たとえば次のとおりです。
+177	これにより、<span class="monospaced">ninja foo</span>で長いパスのファイルをビルドできます。意味上、<span class="monospaced">phony</span>ルールは<span class="monospaced">command</span>が何もしない通常のルールと同じですが、phonyルールは特別に扱われます。実行時に表示されず、ログにも記録されず（後述）、ビルド中に表示されるコマンド数にも含まれません。
+178	<span class="monospaced">phony</span>ターゲットが別のビルドルールの入力に使われると、そのビルドルールは、意味上、<span class="monospaced">phony</span>ルールの入力を自身の入力として扱います。そのため、<span class="monospaced">phony</span>ルールで、ヘッダーファイルなどの入力をまとめられます。
+179	<span class="monospaced">phony</span>は、ビルド時には存在しないかもしれないファイルのダミーターゲットを作るためにも使えます。依存関係のないphonyのbuild文を記述した場合、そのターゲットが存在しなければ更新が必要と判断されます。phonyのbuild文がない場合、ビルドに必要なファイルが存在しなければ、Ninjaはエラーを報告します。
+180	再ビルドされないルールを作るには、入力のないビルドルールを使います。
+181	既定のターゲットを指定する文
+182	コマンドラインにターゲットの指定がない場合、既定では、他の場所で入力として指定されていないすべての出力をNinjaがビルドします。default文を使うと、この動作を変更できます。default文を指定すると、コマンドラインでターゲットを指定しなかった場合に、出力ファイルの指定した一部だけをビルドします。
+183	default文は<span class="monospaced">default</span>キーワードで始まり、<span class="monospaced">default <em>targets</em></span>という形式です。ターゲットを出力ファイルとして宣言するbuild文の後に置く必要があります。default文は累積するため、複数の文で既定のターゲットの一覧を拡張できます。たとえば次のとおりです。
+184	これにより、Ninjaは既定で<span class="monospaced">foo</span>、<span class="monospaced">bar</span>、<span class="monospaced">baz</span>ターゲットをビルドします。
+185	Ninjaのログ
+186	Ninjaは、ビルドしたファイルごとに、そのビルドに使ったコマンドをログに記録します。このログを使うことで、既存の出力がビルドファイルに指定されたものとは異なるコマンドラインでビルドされたこと（つまりコマンドラインが変わったこと）を検出し、そのファイルを再ビルドすべきだと判断できます。
+187	ログはビルドのルートにある<span class="monospaced">.ninja_log</span>というファイルへ保存します。最も外側のスコープに<span class="monospaced">builddir</span>という変数を指定すると、<span class="monospaced">.ninja_log</span>は代わりにそのディレクトリへ保存されます。
+188	バージョン互換性
+189	<em>Ninja 1.2以降で利用可能です。</em>
+190	Ninjaのバージョン表記は、標準的なmajor.minor.patch形式に従います。後方互換性のない構文や動作の変更ではメジャーバージョンが、新しい動作の追加ではマイナーバージョンが上がります。<span class="monospaced">build.ninja</span>には<span class="monospaced">ninja_required_version</span>という変数を宣言し、生成したファイルを使うために必要なNinjaの最低バージョンを指定できます。たとえば、
+191	この宣言は、ビルドファイルがNinja 1.1で導入された機能（たとえば<span class="monospaced">pool</span>構文）に依存し、ビルドにNinja 1.1以降が必要であることを示します。他のNinja変数と異なり、このバージョン要件は、解析中に変数を見つけた時点ですぐに確認します。そのため、ビルドファイルの先頭に置くのが適切です。
+192	Ninja自身と<span class="monospaced">ninja_required_version</span>のメジャーバージョンが一致しない場合、Ninjaは必ず警告します。メジャーバージョンの変更はまだ起きていないため、どのような動作が必要になるかを予測するのは困難です。
+193	C/C++のヘッダー依存関係
+194	Ninjaには、C/C++のヘッダー依存関係（または同様の仕組みのビルド依存関係）を正しく扱うための追加機能があります。
+195	ヘッダーの問題は、あるソースファイルが依存するファイルの完全な一覧を、コンパイラーだけが発見できることです。プリプロセッサーの定義やインクルードパスが変わると、使われるファイルも変わります。一部のコンパイラーはビルド中にこの情報を出力でき、Ninjaはそれを使って依存関係を正確に扱えます。
+196	ファイルがまだコンパイルされたことがなければ、いずれにしてもビルドが必要で、その副作用としてヘッダー依存関係が生成されます。その後に何らかのファイルが変更されると（依存するヘッダーの組が変わるような変更であっても）、その変更によって再ビルドされ、依存関係も最新に保たれます。
+197	こうした特殊な依存関係を読み込むとき、Ninjaは、列挙された依存ファイルが存在しなくてもエラーにならないよう、追加のビルドエッジを暗黙に作成します。これにより、ヘッダーファイルを削除して再ビルドしても、入力の欠落によってビルドが中断されません。
+199	<span class="monospaced">gcc</span>（および<span class="monospaced">clang</span>などの他のコンパイラー）は、Makefileの構文で依存関係情報を出力できます。（<span class="monospaced">gcc</span>に限らず、この形式で依存関係を書き出せるコマンドなら使えます。）
+200	この情報をNinjaへ取り込むには、連携が必要です。Ninja側では、<span class="monospaced">build</span>の<span class="monospaced">depfile</span>属性に、このデータを書き出すパスを指定しなければなりません。（Ninjaが対応するのは、コンパイラーが出力するMakefile構文の限られた部分だけです。）コマンド側も、依存関係を<span class="monospaced">depfile</span>のパスへ書き出す必要があります。次の例のように使います。
+201	<span class="monospaced">gcc</span>の<span class="monospaced">-MD</span>フラグはヘッダー依存関係の出力を指示し、<span class="monospaced">-MF</span>フラグはその出力先を指示します。
+203	<em>（Ninja 1.3以降で利用可能。）</em>
+204	大きなプロジェクトでは、これらの依存関係ファイルを起動時に読み込む処理が遅くなることが分かりました。ファイルシステムが遅いWindowsでは、特に顕著です。
+205	Ninja 1.3では、依存関係が生成された直後に処理し、同じ情報を小さくまとめた形式でNinja内部のデータベースへ保存できます。
+206	Ninjaは二つの形式でこの処理に対応しています。
+207	<span class="monospaced">deps = gcc</span>は、ツールがMakefile形式で<span class="monospaced">gcc</span>方式の依存関係を出力することを指定します。前述の例にこれを加えると、コンパイル終了直後に<span class="monospaced">depfile</span>を処理し、その後、<span class="monospaced">.d</span>ファイルを削除します（このファイルは一時的に使うだけです）。
+208	<span class="monospaced">deps = msvc</span>は、ツールがVisual Studioコンパイラーの<a href="http://msdn.microsoft.com/en-us/library/hdkef6tk(v=vs.90).aspx"><span class="monospaced">/showIncludes</span>フラグ</a>の形式でヘッダー依存関係を出力することを指定します。つまり、ツールは特別な書式の行を標準出力へ出力し、Ninjaはそれらの行を表示する出力から取り除きます。<span class="monospaced">depfile</span>属性は不要ですが、ヘッダーファイルのパスの前に付くローカライズされた文字列を、全体で定義する必要があります。たとえば英語版Visual Studioでは、<span class="monospaced">msvc_deps_prefix = Note: including file:</span>です（これが既定値です）。
+209	インクルードディレクトリの指定に絶対パスを使うと、depfileに相対パスと絶対パスが混在する場合があります。他のビルドルールで使うパスと完全に一致させる必要があるため、このような場合は相対パスを使うことを推奨します。
+210	プール
+211	<em>Ninja 1.1以降で利用可能です。</em>
+212	プールを使うと、一つ以上のルールやエッジに対し、既定の並列数より厳しく制限した、有限の並列ジョブ数を割り当てられます。
+213	たとえば、大きな実行ファイルのリンク処理のような負荷の高い特定のルールや、並列実行すると性能が落ちることが分かっている特定のbuild文を制限するために使えます。
+214	各プールには、ビルドファイル内で指定する<span class="monospaced">depth</span>変数があります。ルールまたはbuild文の<span class="monospaced">pool</span>変数で、そのプールを参照します。
+215	どのようなプールを指定しても、Ninjaが同時に実行するジョブ数は、既定の並列数またはコマンドラインの<span class="monospaced">-j</span>で指定したジョブ数を超えません。
+216	<span class="monospaced">console</span>プール
+217	<em>Ninja 1.5以降で利用可能です。</em>
+218	<span class="monospaced">console</span>という名前の、深さが1の定義済みプールがあります。このプールのタスクは、Ninjaに渡された標準入力、標準出力、標準エラーのストリームへ直接アクセスできます。これらは通常、ユーザーのコンソールに接続されています（名前の由来でもあります）が、リダイレクトされることもあります。対話型のタスクや、テストスイートのようにコンソールへ状況を表示する長時間のタスクに便利です。
+219	<span class="monospaced">console</span>プールのタスクが実行中は、Ninjaの通常の出力（進捗表示や並列タスクの出力など）は、そのタスクが完了するまでバッファーに蓄えられます。
+220	Ninjaファイルのリファレンス
+221	ファイルは宣言を並べたものです。宣言には次の種類があります。
+222	ルール宣言。<span class="monospaced">rule <em>rulename</em></span>で始まり、その後に変数を定義するインデントした行を並べます。
+223	ビルドエッジ。<span class="monospaced">build <em>output1</em> <em>output2</em>: <em>rulename</em> <em>input1</em> <em>input2</em></span>という形式です。<br>末尾に<span class="monospaced">| <em>dependency1</em> <em>dependency2</em></span>を加えると、暗黙の依存関係を追加できます。<br><span class="monospaced">|| <em>dependency1</em> <em>dependency2</em></span>を加えると、順序のみの依存関係を追加できます（<a href="#ref_dependencies">依存関係の種類のリファレンス</a>を参照）。<span class="monospaced">|@ <em>validation1</em> <em>validation2</em></span>を加えると、検証を追加できます（<a href="#validations">検証のリファレンス</a>を参照）。
+224	暗黙の出力<em>（Ninja 1.7以降で利用可能）</em>は、<span class="monospaced">:</span>の前に<span class="monospaced">| <em>output1</em> <em>output2</em></span>を加えることで指定でき、<span class="monospaced">$out</span>には含まれません（<a href="#ref_outputs">出力の種類のリファレンス</a>を参照）。
+225	変数宣言。<span class="monospaced"><em>variable</em> = <em>value</em></span>という形式です。
+226	既定のターゲットを指定する文。<span class="monospaced">default <em>target1</em> <em>target2</em></span>という形式です。
+227	追加のファイルへの参照。<span class="monospaced">subninja <em>path</em></span>または<span class="monospaced">include <em>path</em></span>という形式です。違いは、後述の<a href="#ref_scope">スコープの説明</a>で解説します。
+228	プール宣言。<span class="monospaced">pool <em>poolname</em></span>という形式です。プールについては、<a href="#ref_pool">プールの節</a>で説明しています。
+229	字句構文
+230	Ninjaは、パス内のスラッシュなど、Ninjaが解釈するバイトがASCIIであれば、ほとんどの場合エンコーディングを問いません。したがって、UTF-8やISO-8859-1などの入力ファイルも動作するはずです。
+231	コメントは<span class="monospaced">#</span>で始まり、行末まで続きます。
+232	改行には意味があります。<span class="monospaced">build foo bar</span>のような文は、空白で区切られたトークンの列で、改行で終わります。トークン内の改行と空白はエスケープする必要があります。
+233	エスケープ文字は<span class="monospaced">$</span>の一つだけで、次のように動作します。
+234	<span class="monospaced">$</span>の後に改行
+235	改行をエスケープします（改行をまたいで現在の行を継続します）。
+236	<span class="monospaced">$</span>の後にテキスト
+237	変数の参照です。
+239	<span class="monospaced">$varname</span>の別の構文です。
+240	<span class="monospaced">$</span>の後に空白
+241	空白になります。（空白がファイル名の区切りになるパスの一覧でだけ必要です。後述します。）
+243	コロンになります。（コロンが出力の一覧を終わらせる<span class="monospaced">build</span>行でだけ必要です。）
+245	通常の<span class="monospaced">$</span>文字になります。
+246	<span class="monospaced">build</span>文と<span class="monospaced">default</span>文は、まず空白で区切られたファイル名の一覧として解析され、その後、各名前が展開されます。したがって、変数内の空白は、展開後のファイル名の中の空白になります。
+247	<span class="monospaced">name = value</span>文では、値の先頭にある空白文字は常に取り除かれます。行継続後の行の先頭にある空白文字も取り除かれます。
+248	その他の空白文字は、行頭にある場合だけ意味を持ちます。ある行が直前の行より深くインデントされている場合は、親のスコープの一部とみなします。直前の行より浅い場合は、直前のスコープを閉じます。
+249	最上位の変数
+250	最も外側のファイルスコープで宣言したときに意味を持つ変数は、二つあります。
+252	Ninjaの一部の出力ファイルのためのディレクトリです。<a href="#ref_log">ビルドログの説明</a>を参照してください。（他のビルド出力も、このディレクトリへ保存できます。）
+254	ビルドを正しく処理するために必要なNinjaの最低バージョンです。<a href="#ref_versioning">バージョンの説明</a>を参照してください。
+255	ルールの変数
+256	<span class="monospaced">rule</span>ブロックには、ルールの処理に影響する<span class="monospaced">key = value</span>宣言の一覧が含まれます。特殊なキーの完全な一覧を示します。
+257	<span class="monospaced">command</span>（<em>必須</em>）
+258	実行するコマンドラインです。各<span class="monospaced">rule</span>に含められる<span class="monospaced">command</span>宣言は一つだけです。引用符や複数のコマンドの実行について詳しくは、<a href="#ref_rule_command">次の節</a>を参照してください。
+260	追加の<em>暗黙の依存関係</em>を含む<span class="monospaced">Makefile</span>のパスです。指定は任意です（<a href="#ref_dependencies">依存関係の種類のリファレンス</a>を参照）。これは明確にC/C++のヘッダー依存関係に対応するためのものです。<a href="#ref_headers">詳しい説明</a>を参照してください。
+262	<em>（Ninja 1.3以降で利用可能。）</em>指定する場合、特殊な依存関係処理を指定するために<span class="monospaced">gcc</span>または<span class="monospaced">msvc</span>のいずれかでなければなりません。<a href="#ref_headers">詳しい説明</a>を参照してください。生成されるデータベースは、<span class="monospaced">builddir</span>内に<span class="monospaced">.ninja_deps</span>として保存されます。<a href="#ref_toplevel"><span class="monospaced">builddir</span>の説明</a>を参照してください。
+264	<em>（Ninja 1.5以降で利用可能。）</em>msvcの/showIncludes出力から取り除く文字列を定義します。<span class="monospaced">deps = msvc</span>を使い、英語版でないVisual Studioを使う場合にだけ必要です。
+266	コマンドの実行中に見やすく表示するための、コマンドの短い説明です。<span class="monospaced">-v</span>フラグは、完全なコマンドと説明のどちらを表示するかを制御します。コマンドが失敗した場合は、完全なコマンドラインを、そのコマンドの出力より前に必ず表示します。
+268	<em>（Ninja 1.10以降で利用可能。）</em>build文でだけ使います。指定する場合、build文の入力の一つを指定しなければなりません。そのファイルから、動的に発見した依存関係情報を読み込みます。詳しくは、<a href="#ref_dyndep">動的依存関係</a>の節を参照してください。
+270	指定されている場合、このルールが生成プログラムを再実行するために使われることを示します。<span class="monospaced">generator</span>ルールでビルドしたファイルは、二つの点で特別に扱われます。第一に、コマンドラインが変わっても再ビルドされません。第二に、既定の削除対象になりません。
+272	この<span class="monospaced">rule</span>を参照するbuild行に入力として渡されたファイルの、空白で区切られた一覧です。コマンド内ではシェル向けにクォートされます。（<span class="monospaced">$in</span>は便利さのためだけに用意されています。このファイル一覧の一部や変形した一覧が必要なら、それを含む新しい変数を作り、代わりに使ってください。）
+274	複数の入力を空白ではなく改行で区切ることを除き、<span class="monospaced">$in</span>と同じです。（<span class="monospaced">$rspfile_content</span>で使います。入力処理に固定長バッファーを使うMSVCリンカーの不具合を回避するためのものです。）
+276	この<span class="monospaced">rule</span>を参照するbuild行に出力として渡されたファイルの、空白で区切られた一覧です。コマンド内ではシェル向けにクォートされます。
+278	指定されている場合、コマンドの実行後に、Ninjaはコマンドの出力を再度statします。コマンドが更新時刻を変更しなかった出力は、最初からビルドする必要がなかったものとして扱います。その結果、その出力に依存するものが、実行待ちのビルド処理の一覧から取り除かれる場合があります。
+280	両方を指定すると、Ninjaはそのコマンドに応答ファイルを使います。つまり、コマンドを呼び出す前に、指定した文字列（<span class="monospaced">rspfile_content</span>）を指定したファイル（<span class="monospaced">rspfile</span>）へ書き込み、コマンドが正常終了した後にそのファイルを削除します。
+281	これは、コマンドラインの最大長が制限されていて、代わりに応答ファイルを使う必要があるWindows OSで特に便利です。
+282	次の例のように使います。
+283	<span class="monospaced">command</span>変数の解釈
+284	Unix系システムとWindowsでは、コマンドラインの動作が根本的に異なります。
+285	Unix系システムでは、コマンドは引数の配列です。Ninjaの<span class="monospaced">command</span>変数はそのまま<span class="monospaced">sh -c</span>へ渡され、shがその文字列をargv配列へ解釈します。そのため、引用符の規則はシェルのものになります。複数のコマンドをつなぐ<span class="monospaced">&amp;&amp;</span>や、環境変数を設定する<span class="monospaced">VAR=value cmd</span>など、通常のシェル演算子をすべて使えます。
+286	Windowsではコマンドは文字列なので、Ninjaは<span class="monospaced">command</span>文字列を直接<span class="monospaced">CreateProcess</span>へ渡します。（単にコンパイラーを実行する一般的な場合には、オーバーヘッドが小さくなります。）したがって、引用符の規則は呼び出されたプログラムが決めます。Windowsでは通常、Cライブラリーがその規則を提供します。複数のコマンドをつなぐ<span class="monospaced">&amp;&amp;</span>の使用など、シェルによる解釈が必要な場合は、コマンドの先頭に<span class="monospaced">cmd /c</span>を付け、Windowsのシェルを実行させてください。Ninjaが「invalid parameter」エラーを出す場合は、通常、コマンドラインの長さの制限を超えたことを示します。
+287	ビルドの出力
+288	ビルドの出力には、わずかに異なる二つの種類があります。
+289	<em>明示的出力</em>。build行に列挙する出力です。ルール内では<span class="monospaced">$out</span>変数として利用できます。
+290	コンパイルコマンドのオブジェクトファイルなどに使う、標準的な出力の形式です。
+291	<em>暗黙の出力</em>。build行の<span class="monospaced">:</span>より前に、<span class="monospaced">| <em>out1</em> <em>out2</em></span>という構文で列挙する出力です<em>（Ninja 1.7以降で利用可能）</em>。意味は明示的出力と同じですが、暗黙の出力が<span class="monospaced">$out</span>変数に含まれない点だけが異なります。
+292	コマンドのコマンドラインには現れない出力を表現するためのものです。
+293	ビルドの依存関係
+294	ビルドの依存関係には、わずかに異なる三つの種類があります。
+295	<em>明示的依存関係</em>。build行に列挙する依存関係です。ルール内では<span class="monospaced">$in</span>変数として利用できます。これらのファイルが変更されると、出力が再ビルドされます。これらのファイルが存在せず、Ninjaがビルド方法も知らない場合、ビルドは中断します。
+296	コンパイルコマンドのソースファイルなどに使う、標準的な依存関係の形式です。
+297	<em>暗黙の依存関係</em>。ルールの<span class="monospaced">depfile</span>属性から取り込むか、build行の末尾の<span class="monospaced">| <em>dep1</em> <em>dep2</em></span>という構文で指定します。意味は明示的依存関係と同じですが、暗黙の依存関係が<span class="monospaced">$in</span>変数に含まれない点だけが異なります。
+298	コマンドのコマンドラインには現れない依存関係を表現するためのものです。たとえば、固定したファイル名のファイルを読むスクリプトを実行するルールでは、そのファイルを暗黙の依存関係にするべきです。引数には現れなくても、そのファイルを変更したら出力を再ビルドする必要があるためです。
+299	depfileから読み込む依存関係は、<a href="#ref_rule">ルールリファレンス</a>で説明しているとおり、意味がわずかに異なる点に注意してください。
+300	<em>順序のみの依存関係</em>。build行の末尾に<span class="monospaced">|| <em>dep1</em> <em>dep2</em></span>という構文で指定します。これらの依存先に更新が必要な場合、そのビルドが終わるまで出力は再ビルドされません。ただし、順序のみの依存先の変更だけでは、出力の再ビルドは発生しません。
+301	順序のみの依存関係は、ビルド時に初めて発見する依存関係の初期準備に便利です。たとえば、後続のコンパイル処理を始める前にヘッダーファイルを生成する場合です。（そのヘッダーがコンパイルで使われると、生成された依存関係ファイルが暗黙の依存関係を表すようになります。）
+302	ファイルパスはそのまま比較します。したがって、同じファイルを指していても、絶対パスと相対パスはNinjaでは別のものとして扱います。
+303	検証
+304	<em>Ninja 1.11以降で利用可能です。</em>
+305	build行が、コマンドラインで指定されたターゲットまたは既定のターゲットの推移的な依存先である場合、その行に列挙した検証のファイルを、ビルドグラフの最上位へ追加します。Ninjaのコマンドラインで指定した場合と同じ扱いになります。
+306	検証は、build文の出力ファイルに更新が必要かどうかに関係なく、ビルドグラフへ追加されます。また、検証として使うファイルを出力するbuild文の更新の必要性は、その検証を要求したbuild文の更新の必要性に影響しません。
+307	あるビルドエッジは、別のビルドエッジが自身に依存していても、そのエッジを検証として列挙できます。
+308	検証は、静的解析ツールなど、エラーチェックを行うものの、ビルドに必要な生成物を出力しないルールを扱うために設計されています。静的解析ルールを、ソースファイルの主要なビルドルールや、そのルールに依存するルールの暗黙の入力にすると、ビルドのクリティカルパスが遅くなります。検証を使えば、主要なビルドルールが完了した後、ビルドの続きと静的解析ルールを並列に実行できます。
+309	変数の展開
+310	変数は、パス（<span class="monospaced">build</span>文または<span class="monospaced">default</span>文の中）と、<span class="monospaced">name = value</span>文の右辺で展開されます。
+311	<span class="monospaced">name = value</span>文を評価すると、その右辺は直ちに展開されます（後述のスコープ規則に従います）。それ以降、<span class="monospaced">$name</span>は、展開結果の固定された文字列に展開されます。二重に展開されることを防ぐために、値を「二重にエスケープ」する必要はありません。
+312	すべての変数は、解析中に現れた時点で直ちに展開されます。ただし、一つ重要な例外があります。<span class="monospaced">rule</span>ブロックの変数は、宣言時ではなく、ルールを<em>使う</em>ときに展開されます。次の例では、<span class="monospaced">demo</span>ルールは「this is a demo of bar」と表示します。
+313	評価とスコープ
+314	最上位の変数宣言のスコープは、宣言したファイルです。
+315	ルール宣言のスコープも、宣言したファイルです。<em>（Ninja 1.6以降で利用可能。）</em>
+316	別の<span class="monospaced">.ninja</span>ファイルを取り込む<span class="monospaced">subninja</span>キーワードは、新しいスコープを作ります。取り込まれた<span class="monospaced">subninja</span>ファイルは、親ファイルの変数とルールを利用でき、自身のファイルスコープ内でその値をシャドーイングできますが、親ファイルの変数の値には影響しません。
+317	Cの<span class="monospaced">#include</span>文のように、現在のスコープへ別の<span class="monospaced">.ninja</span>ファイルを取り込むには、<span class="monospaced">subninja</span>ではなく<span class="monospaced">include</span>を使います。
+318	<span class="monospaced">build</span>ブロック内でインデントした変数宣言のスコープは、その<span class="monospaced">build</span>ブロックです。<span class="monospaced">build</span>ブロック（または、そのブロックで使う<span class="monospaced">rule</span>）で展開する変数の検索順序は、次のとおりです。
+319	特殊な組み込み変数（<span class="monospaced">$in</span>、<span class="monospaced">$out</span>）。
+320	<span class="monospaced">build</span>ブロックのビルド単位の変数。
+321	<span class="monospaced">rule</span>ブロックのルール単位の変数（つまり<span class="monospaced">$command</span>）。（前述の展開の説明のとおり、これらは「遅れて」展開され、<span class="monospaced">$in</span>のようにスコープ内にある束縛を利用できます。）
+322	<span class="monospaced">build</span>行があるファイルの、ファイル単位の変数。
+323	そのファイルを<span class="monospaced">subninja</span>キーワードで取り込んだファイルの変数。
+324	動的依存関係
+325	<em>Ninja 1.10以降で利用可能です。</em>
+326	初回から正しくビルドするために、<em>ビルド中</em>にソースファイルの内容から暗黙の依存関係情報を動的に発見する必要がある場合があります。たとえば、Fortranモジュールの依存関係です。これは、2回目以降の正しい再ビルドにだけ必要な<a href="#ref_headers">ヘッダー依存関係</a>とは異なります。build文には、入力の一つを指定する<span class="monospaced">dyndep</span>束縛を設け、そのファイルから動的依存関係情報を読み込む必要があることを指定できます。たとえば次のとおりです。
+327	これは、ファイル<span class="monospaced">foo</span>がdyndepファイルであることを指定します。入力なので、<span class="monospaced">foo</span>がビルドされる前に<span class="monospaced">out</span>のbuild文を実行することはありません。<span class="monospaced">foo</span>が完成するとすぐに、Ninjaはそれを読み込み、<span class="monospaced">out</span>について動的に発見した依存関係情報を取り込みます。追加の暗黙の入力や出力が含まれることもあります。Ninjaはそれに従ってビルドグラフを更新し、最初からその情報が分かっていたかのようにビルドを進めます。
+328	Dyndepファイルのリファレンス
+329	<span class="monospaced">dyndep</span>束縛で指定するファイルは、<a href="#ref_ninja_file">Ninjaビルドファイル</a>と同じ<a href="#ref_lexer">字句構文</a>を使い、次の構成になります。
+330	<span class="monospaced">&lt;major&gt;[.&lt;minor&gt;][&lt;suffix&gt;]</span>という形式のバージョン番号。
+331	現在、バージョン番号は必ず<span class="monospaced">1</span>または<span class="monospaced">1.0</span>でなければなりませんが、任意の接尾辞を付けられます。
+332	次の形式のbuild文を一つ以上。
+333	各文は、明示的出力をちょうど一つ指定し、ルール名に<span class="monospaced">dyndep</span>を使わなければなりません。<span class="monospaced">| imp-outs...</span>と<span class="monospaced">| imp-ins...</span>の部分は任意です。
+334	各build文に、任意で<span class="monospaced">restat</span>の<a href="#ref_rule">変数束縛</a>を指定できます。
+335	dyndepファイル内のbuild文は、<span class="monospaced">dyndep</span>束縛でそのdyndepファイルを指定している<a href="#ref_ninja_file">Ninjaビルドファイル</a>内のbuild文と、一対一に対応しなければなりません。dyndepのbuild文を省略しても、余分なbuild文を指定してもいけません。
+336	Dyndepの例
+337	Fortranモジュール
+338	モジュール<span class="monospaced">foo.mod</span>を提供するFortranソースファイル<span class="monospaced">foo.f90</span>（モジュールはコンパイルの暗黙の出力）と、そのモジュールを使う別のソースファイル<span class="monospaced">bar.f90</span>（モジュールはコンパイルの暗黙の入力）を考えます。<span class="monospaced">bar.f90</span>を<span class="monospaced">foo.f90</span>より先にコンパイルせず、<span class="monospaced">foo.mod</span>が変わったときに<span class="monospaced">bar.f90</span>を再コンパイルすることを保証するには、いずれかのソースをコンパイルする前に、この暗黙の依存関係を発見しなければなりません。次のように実現できます。
+339	この例では、順序のみの依存関係によって、いずれのソースのコンパイルよりも前に<span class="monospaced">foobar.dd</span>が生成されます。仮想的な<span class="monospaced">fscan</span>ツールはソースファイルを走査し、それぞれが同名の<span class="monospaced">.o</span>へコンパイルされると想定して、次のような内容を<span class="monospaced">foobar.dd</span>へ書き込みます。
+340	Ninjaはこのファイルを読み込み、<span class="monospaced">foo.mod</span>を<span class="monospaced">foo.o</span>の暗黙の出力、かつ<span class="monospaced">bar.o</span>の暗黙の入力として追加します。これにより、Fortranソースが常に適切な順番でコンパイルされ、必要なときに再コンパイルされます。
+341	tarballの展開
+342	展開したいtarball<span class="monospaced">foo.tar</span>を考えます。tarballが変わった場合に再度展開するため、展開時刻を<span class="monospaced">foo.tar.stamp</span>ファイルへ記録できます。ただし、出力のいずれかが存在しない場合にも、再度展開したいとします。しかし、出力の一覧はtarballの内容に依存するため、Ninjaビルドファイルに明示的に列挙できません。次のように実現できます。
+343	この例では、順序のみの依存関係によって、tarballの展開前に<span class="monospaced">foo.tar.dd</span>がビルドされます。仮想的な<span class="monospaced">scantar</span>ツールは、たとえば<span class="monospaced">tar tf</span>でtarballを読み、次のような内容を<span class="monospaced">foo.tar.dd</span>へ書き込みます。
+344	Ninjaはこのファイルを読み込み、<span class="monospaced">file1.txt</span>と<span class="monospaced">file2.txt</span>を<span class="monospaced">foo.tar.stamp</span>の暗黙の出力として追加し、build文に<span class="monospaced">restat</span>を指定します。その後のビルドでは、暗黙の出力のいずれかが存在しなければ、tarballが再度展開されます。<span class="monospaced">restat</span>束縛は、暗黙の出力の更新時刻がtarball自体より新しくなくても、Ninjaが許容するように指定します（毎回のビルドで再度展開されることを避けます）。
