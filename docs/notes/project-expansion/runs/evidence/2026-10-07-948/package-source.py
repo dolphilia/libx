@@ -26,7 +26,7 @@ for parent in [A,N]:
  for p in sorted(parent.rglob('*')):
   if not p.is_file() or p.is_symlink():continue
   rel=p.relative_to(W)
-  if any(part in ['node_modules','dist','.astro','__pycache__']for part in rel.parts) or p==P/'source.zip' or p.name in ['PROGRESS.json','PLANNED_ROUTES.json','CANONICAL_BINDING.json']:continue
+  if any(part in ['node_modules','dist','.astro','__pycache__']for part in rel.parts) or p.name=='source.zip' or p.name in ['PROGRESS.json','PLANNED_ROUTES.json','CANONICAL_BINDING.json']:continue
   dest=B/'workspace'/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,dest)
 evidence=[Path('docs/notes/project-expansion/runs/evidence/2026-10-06-913')/name for name in ['REVIEW_FROZEN.json','CANONICAL_BINDING_BATCH5.json','BATCH5_DELTA_BINDING.json']]
 for rel in evidence:
