@@ -1,0 +1,329 @@
+<hr><h3><a name="lua_insert"><code>lua_insert</code></a></h3><p>
+<span class="apii">[-1, +1, &ndash;]</span>
+<pre class="api">void lua_insert (lua_State *L, int index);</pre>
+
+<p>
+Moves the top element into the given valid index,
+shifting up the elements above this index to open space.
+This function cannot be called with a pseudo-index,
+because a pseudo-index is not an actual stack position.
+
+
+
+
+
+<hr><h3><a name="lua_Integer"><code>lua_Integer</code></a></h3>
+<pre class="api">typedef ... lua_Integer;</pre>
+
+<p>
+The type of integers in Lua.
+
+
+<p>
+By default this type is <code>long long</code>,
+(usually a 64-bit two's complement integer),
+but that can be changed to <code>long</code> or <code>int</code>
+(usually a 32-bit two's complement integer).
+(See <code>LUA_INT_TYPE</code> in <code>luaconf.h</code>.)
+
+
+<p>
+Lua also defines the constants
+<a name="pdf-LUA_MININTEGER"><code>LUA_MININTEGER</code></a> and <a name="pdf-LUA_MAXINTEGER"><code>LUA_MAXINTEGER</code></a>,
+with the minimum and the maximum values that fit in this type.
+
+
+
+
+
+<hr><h3><a name="lua_isboolean"><code>lua_isboolean</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isboolean (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a boolean,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_iscfunction"><code>lua_iscfunction</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_iscfunction (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a C&nbsp;function,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isfunction"><code>lua_isfunction</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isfunction (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a function
+(either C or Lua), and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isinteger"><code>lua_isinteger</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isinteger (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is an integer
+(that is, the value is a number and is represented as an integer),
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_islightuserdata"><code>lua_islightuserdata</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_islightuserdata (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a light userdata,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isnil"><code>lua_isnil</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isnil (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is <b>nil</b>,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isnone"><code>lua_isnone</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isnone (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the given index is not valid,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isnoneornil"><code>lua_isnoneornil</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isnoneornil (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the given index is not valid
+or if the value at this index is <b>nil</b>,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isnumber"><code>lua_isnumber</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isnumber (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a number
+or a string convertible to a number,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isstring"><code>lua_isstring</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isstring (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a string
+or a number (which is always convertible to a string),
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_istable"><code>lua_istable</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_istable (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a table,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isthread"><code>lua_isthread</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isthread (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a thread,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isuserdata"><code>lua_isuserdata</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isuserdata (lua_State *L, int index);</pre>
+
+<p>
+Returns 1 if the value at the given index is a userdata
+(either full or light), and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_isyieldable"><code>lua_isyieldable</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_isyieldable (lua_State *L);</pre>
+
+<p>
+Returns 1 if the given coroutine can yield,
+and 0&nbsp;otherwise.
+
+
+
+
+
+<hr><h3><a name="lua_KContext"><code>lua_KContext</code></a></h3>
+<pre class="api">typedef ... lua_KContext;</pre>
+
+<p>
+The type for continuation-function contexts.
+It must be a numeric type.
+This type is defined as <code>intptr_t</code>
+when <code>intptr_t</code> is available,
+so that it can store pointers too.
+Otherwise, it is defined as <code>ptrdiff_t</code>.
+
+
+
+
+
+<hr><h3><a name="lua_KFunction"><code>lua_KFunction</code></a></h3>
+<pre class="api">typedef int (*lua_KFunction) (lua_State *L, int status, lua_KContext ctx);</pre>
+
+<p>
+Type for continuation functions (see <a href="#4.5">&sect;4.5</a>).
+
+
+
+
+
+<hr><h3><a name="lua_len"><code>lua_len</code></a></h3><p>
+<span class="apii">[-0, +1, <em>e</em>]</span>
+<pre class="api">void lua_len (lua_State *L, int index);</pre>
+
+<p>
+Returns the length of the value at the given index.
+It is equivalent to the '<code>#</code>' operator in Lua (see <a href="#3.4.7">&sect;3.4.7</a>) and
+may trigger a metamethod for the "length" event (see <a href="#2.4">&sect;2.4</a>).
+The result is pushed on the stack.
+
+
+
+
+
+<hr><h3><a name="lua_load"><code>lua_load</code></a></h3><p>
+<span class="apii">[-0, +1, &ndash;]</span>
+<pre class="api">int lua_load (lua_State *L,
+              lua_Reader reader,
+              void *data,
+              const char *chunkname,
+              const char *mode);</pre>
+
+<p>
+Loads a Lua chunk without running it.
+If there are no errors,
+<code>lua_load</code> pushes the compiled chunk as a Lua
+function on top of the stack.
+Otherwise, it pushes an error message.
+
+
+<p>
+The <code>lua_load</code> function uses a user-supplied <code>reader</code> function
+to read the chunk (see <a href="#lua_Reader"><code>lua_Reader</code></a>).
+The <code>data</code> argument is an opaque value passed to the reader function.
+
+
+<p>
+The <code>chunkname</code> argument gives a name to the chunk,
+which is used for error messages and in debug information (see <a href="#4.7">&sect;4.7</a>).
+
+
+<p>
+<code>lua_load</code> automatically detects whether the chunk is text or binary
+and loads it accordingly (see program <code>luac</code>).
+The string <code>mode</code> works as in function <a href="#pdf-load"><code>load</code></a>,
+with the addition that
+a <code>NULL</code> value is equivalent to the string "<code>bt</code>".
+Moreover, it may have a '<code>B</code>' instead of a '<code>b</code>',
+meaning a <em>fixed buffer</em> with the binary dump.
+
+
+<p>
+A fixed buffer means that the address returned by the reader function
+will contain the chunk until everything created by the chunk has
+been collected;
+therefore, Lua can avoid copying to internal structures
+some parts of the chunk.
+(In general, a fixed buffer would keep its contents
+until the end of the program,
+for instance with the chunk in ROM.)
+Moreover, for a fixed buffer,
+the reader function should return the entire chunk in the first read.
+(As an example, <a href="#luaL_loadbufferx"><code>luaL_loadbufferx</code></a> does that,
+which means that you can use it to load fixed buffers.)
+
+
+<p>
+The function <a href="#lua_load"><code>lua_load</code></a> fully preserves the Lua stack
+through the calls to the reader function,
+except that it may push some values for internal use
+before the first call,
+and it restores the stack size to its original size plus one
+(for the pushed result) after the last call.
+
+
+<p>
+<code>lua_load</code> can return
+<a href="#pdf-LUA_OK"><code>LUA_OK</code></a>, <a href="#pdf-LUA_ERRSYNTAX"><code>LUA_ERRSYNTAX</code></a>, or <a href="#pdf-LUA_ERRMEM"><code>LUA_ERRMEM</code></a>.
+The function may also return other values corresponding to
+errors raised by the read function (see <a href="#4.4.1">&sect;4.4.1</a>).
+
+
+<p>
+If the resulting function has upvalues,
+its first upvalue is set to the value of the global environment
+stored at index <code>LUA_RIDX_GLOBALS</code> in the registry (see <a href="#4.3">&sect;4.3</a>).
+When loading main chunks,
+this upvalue will be the <code>_ENV</code> variable (see <a href="#2.2">&sect;2.2</a>).
+Other upvalues are initialized with <b>nil</b>.
+
+
+
+
+
