@@ -33,9 +33,9 @@ Original sources: [GNU diffutils](https://www.gnu.org/software/diffutils/), [off
 - [原英語GFDL Texinfo / original GFDL Texinfo](https://libx.dev/docs/gnu-diffutils/source/v3-12/original/doc/fdl.texi)
 - [Libxの編集用原稿・再生成キット / editable source and rebuild kit](https://libx.dev/docs/gnu-diffutils/source/v3-12/source.zip)
 
-`edited/en/01-guide/`と`edited/ja/01-guide/`には配信に使用する原文・訳文のMarkdown原稿があり、`edited/en/02-reference/01-gfdl.md`には原英語GFDL参照ページがあります。同じ87原稿と優先編集入力を`source.zip`に収録しています。Markdown内のHTMLはテキストエディターで編集できます。改行・タブの数値文字参照はコードの空白と変数の斜体を保持します。
+`edited/en/01-guide/`と`edited/ja/01-guide/`には配信に使用する原文・訳文のMarkdown原稿があり、`edited/en/02-reference/01-gfdl.md`には原英語GFDL参照ページがあります。同じ125原稿と優先編集入力を`source.zip`に収録しています。Markdown内のHTMLはテキストエディターで編集できます。改行・タブの数値文字参照はコードの空白と変数の斜体を保持します。
 
-The kit contains the unchanged original Texinfo/Info/notices/archive, the fixed complete English manual, all 87 editable Markdown documents, translation units and independent Japanese translation JSON, conversion helpers, and app/shared files required to rebuild. It excludes installed dependencies, generated build output, host operation progress, and a recursive copy of `source.zip`. `SOURCE_COMPONENTS.json` records each member's SHA256 and byte length.
+The kit contains the unchanged original Texinfo/Info/notices/archive, the fixed complete English manual, all 125 editable Markdown documents, translation units and independent Japanese translation JSON, conversion helpers, and app/shared files required to rebuild. It excludes installed dependencies, generated build output, host operation progress, and a recursive copy of `source.zip`. `SOURCE_COMPONENTS.json` records each member's SHA256 and byte length.
 
 ## 再生成 / Regeneration
 
@@ -47,6 +47,12 @@ python3 docs/notes/document-import/gnu-diffutils/v3-12/regenerate-en.py
 python3 docs/notes/document-import/gnu-diffutils/v3-12/extract-units.py
 python3 docs/notes/document-import/gnu-diffutils/v3-12/regenerate-ja.py
 node docs/notes/document-import/gnu-diffutils/v3-12/check-content.mjs
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/prepare-drafts.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/extract-units.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/render-drafts.py
+export LIBX_UPDATE_WORKSPACE="$PWD"
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/apply-update.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/prepare-context.py
 pnpm --filter=apps-gnu-diffutils build
 ```
 
@@ -63,3 +69,7 @@ Original: Comparing and Merging Files; GNU Diffutils version 3.12; document revi
 The original Detailed-Unified section contains adjacent descriptions of single-line and empty hunk positions using both start and end terminology. Libx preserves both paragraphs and adds a bilingual footer note with a fixed original link. 原文の単一行や空のhunkの開始・終了位置に関する隣接した説明を保持し、英日フッター注記と固定原典リンクで補っています。
 
 原文の説明不足・記述上の相違や元サイト固有の機能は、注記・静的表示・固定全文の原典で補います。原著プログラムの技術監査や元サイトの完全再現は提供範囲に含めません。
+
+7 October 2026: Added complete chapters5–9 (19 paired sections), retaining previous43paired pages and English GFDL reference;125editable Markdown documents in total. Original15additional example blocks remain literal. Added paragraphs and original English were reviewed in a separate saved workspace; only1Japanese qualifier was clarified and rechecked. The original archive/revision is unchanged.
+
+2026年10月7日：第5〜9章の全19節を英日で追加し、既存43英日ページと英語GFDL参照を保持しました。定本は合計125原稿です。追加15ブロックの例は原文の静的表示です。追加分の日本語優先入力は `updates/2026-10-07-chapters-5-9/translations/*-ja.json`、既存分は従来の `translations/*-ja.json` です。保存後の別パスで19節全文を確認し、1箇所の日本語を明確化しました。意味レビューを機械検査で代替しません。第10〜18章・付録・索引は固定原文へのリンクで提供します。
