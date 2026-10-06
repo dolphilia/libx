@@ -1,11 +1,11 @@
 ---
 title: "Awesome Game Boy Development"
-description: "An index entry for the Awesome Game Boy Development list. The upstream content is not reproduced in this snapshot."
+description: "A reference to resources for Game Boy development. The original list’s body is not reproduced in this snapshot."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Game Boy Development
 
-An index entry for the Awesome Game Boy Development list. The upstream content is not reproduced in this snapshot.
+Explore resources for Game Boy development through the original Awesome Game Boy Development list. This snapshot links to the list without reproducing its body.
 
-- [Open the original repository](https://github.com/gbdev/awesome-gbdev/blob/cac923ae87a0faa1afe8f2e296bd4722d59205c9/README.md)
+- [Read the original list](https://github.com/gbdev/awesome-gbdev/blob/cac923ae87a0faa1afe8f2e296bd4722d59205c9/README.md)
