@@ -1,284 +1,240 @@
 ---
 title: "Awesome Waves"
-description: "Wavesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "WavesのdApp開発資料、ツール、ネットワーク、プロジェクトとコミュニティ。"
 licenseSource: "github-msmolyakov-awesome-waves-readme-md"
 ---
 
 # Awesome Waves
 
-Wavesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+Wavesは、Web 3.0アプリケーションと分散型ソリューションのための、オープンソースのブロックチェーンプラットフォーム兼開発ツール群です。Waves上で分散型アプリケーションを作るための資料をまとめています。機能、プロジェクトの状況、評価は固定原文の記述に基づきます。
 
-## 目次
+## 公式 <a id="official"></a>
 
-- [Official](#official)
-- [Learn](#learn)
-- [Articles](#articles)
-- [Products](#products)
-  - [Wallet](#wallet)
-  - [Explorer](#explorer)
-  - [Other](#other)
-- [Playground](#playground)
-  - [Testnet](#testnet)
-  - [Stagenet](#stagenet)
-  - [Docker images](#docker-images)
-- [Frameworks and tools](#frameworks-and-tools)
-  - [The Ride programming language](#the-ride-programming-language)
-  - [Client libraries](#client-libraries)
-  - [Blockchain utils](#blockchain-utils)
-  - [Other tools](#other-tools)
-- [Built on Waves](#built-on-waves)
-  - [Catalogs](#catalogs)
-  - [Games](#games)
-  - [Projects](#projects)
-- [Community](#community)
-  - [International](#international)
-  - [Africa](#africa)
-  - [Dutch](#dutch)
-  - [French](#french)
-  - [Greek](#greek)
-  - [Hindi](#hindi)
-  - [Japanese](#japanese)
-  - [Philippine](#philippine)
-  - [Portuguese](#portuguese)
-  - [Russian](#russian)
-  - [Spanish](#spanish)
-  - [Turkish](#turkish)
-
-## 公式
-
-- [Official website](https://wavesprotocol.org/)
-- [Blog on Medium](https://medium.com/wavesprotocol)
+- [公式サイト](https://wavesprotocol.org/)
+- [Mediumブログ](https://medium.com/wavesprotocol)
 - [Waves on GitHub](https://github.com/wavesplatform/)
-- [Documentation](https://docs.wavesprotocol.org/)
+- [文書](https://docs.wavesprotocol.org/)
 
-## 学習
+## 学習 <a id="learn"></a>
 
-- [Ride introduction](https://github.com/wavesplatform/ride-introduction) - Shortest and simplest explanation of Ride.\
-Available in other languages: [French](https://medium.com/@crashartifacts/introduction-%C3%A0-ride-ad6c413f98ee).
-- [Mastering Web3 with Waves](https://stepik.org/course/54415) - The dApps programming online course on Stepik.\
-Available in other languages: [Deutsch](https://stepik.org/course/56101), [Dutch](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/stepik.org/course/56120), [French](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/stepik.org/course/55963), [Greek](https://stepik.org/course/56168), [Hindi](https://stepik.org/course/56024), [Japanese](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/stepik.org/course/56157), [Portuguese](https://stepik.org/course/56162), [Russian](https://stepik.org/course/56401), [Spanish](https://stepik.org/course/56010), [Turkish](https://stepik.org/course/56131).
-- [Mastering Web3 with Waves (on Medium)](https://medium.com/mastering-web3-with-waves) - All materials of the Stepik course as articles on Medium.\
-Available in other languages: [Deutcsh](https://medium.com/web3withwavesde), [Dutch](https://medium.com/leer-web3-0-met-waves), [French](https://medium.com/ma%C3%AEtriser-le-web-3-0-avec-waves), [Hindi](https://link.medium.com/D6jo2gBtw5), [Portuguese](https://medium.com/dominando-web-3-0-com-waves), [Spanish](https://medium.com/dominando-web3-0-con-waves).
-- [Ride Cheat Sheet PNG](https://www.signature-chain.com/web3-pdf/cheat-sheet.png) - Quick overview of important Ride key points.\
-Available in other format: [PDF](https://www.signature-chain.com/web3-pdf/cheat-sheet.pdf) - [PSD](https://www.signature-chain.com/web3-pdf/cheat-sheet.psd) ([Font](https://fonts.google.com/specimen/Open+Sans)).\
-Available in other languages: [PNG French](https://www.signature-chain.com/web3-pdf/cheat-sheet_FR.png) - [PDF French](https://www.signature-chain.com/web3-pdf/cheat-sheet_FR.pdf).
+- [Ride入門](https://github.com/wavesplatform/ride-introduction) - 原文では、最も短く簡潔なRideの解説と紹介されています。\
+他言語版： [フランス語](https://medium.com/@crashartifacts/introduction-%C3%A0-ride-ad6c413f98ee)。
+- [Mastering Web3 with Waves](https://stepik.org/course/54415) - Stepikで受講できるdAppプログラミングのオンライン講座。\
+他言語版： [ドイツ語](https://stepik.org/course/56101)、[オランダ語](https://stepik.org/course/56120)、[フランス語](https://stepik.org/course/55963)、[ギリシャ語](https://stepik.org/course/56168)、[ヒンディー語](https://stepik.org/course/56024)、[日本語](https://stepik.org/course/56157)、[ポルトガル語](https://stepik.org/course/56162)、[ロシア語](https://stepik.org/course/56401)、[スペイン語](https://stepik.org/course/56010)、[トルコ語](https://stepik.org/course/56131)。
+- [Mastering Web3 with Waves（Medium版）](https://medium.com/mastering-web3-with-waves) - Stepik講座の全教材をMediumの記事として掲載。\
+他言語版： [ドイツ語](https://medium.com/web3withwavesde)、[オランダ語](https://medium.com/leer-web3-0-met-waves)、[フランス語](https://medium.com/ma%C3%AEtriser-le-web-3-0-avec-waves)、[ヒンディー語](https://link.medium.com/D6jo2gBtw5)、[ポルトガル語](https://medium.com/dominando-web-3-0-com-waves)、[スペイン語](https://medium.com/dominando-web3-0-con-waves)。
+- [Rideチートシート（PNG）](https://www.signature-chain.com/web3-pdf/cheat-sheet.png) - Rideの重要な要点を手早く確認できる資料。\
+他の形式： [PDF](https://www.signature-chain.com/web3-pdf/cheat-sheet.pdf) - [PSD](https://www.signature-chain.com/web3-pdf/cheat-sheet.psd) ([フォント](https://fonts.google.com/specimen/Open+Sans)).\
+他言語版： [フランス語版PNG](https://www.signature-chain.com/web3-pdf/cheat-sheet_FR.png) - [フランス語版PDF](https://www.signature-chain.com/web3-pdf/cheat-sheet_FR.pdf)。
 
-## 記事
+## 記事 <a id="articles"></a>
 
-- [How to Build, Deploy and Test a Waves Ride dApp](https://medium.com/wavesprotocol/how-to-build-deploy-and-test-a-waves-ride-dapp-785311f58c2) - How to write simple decentralized appication(dApp) and run it on Waves node. ([ru](https://habr.com/ru/company/waves/blog/459773/))
-- [How to: Waves dApps — DAO. Example using Ride-language for smart contracts](https://medium.com/@alexpupyshev/how-to-waves-dapps-dao-example-using-ride-language-for-smart-contracts-3b0ca55e48a8) - How to create the simple DAO dApp for voting and collective investing in projects. ([ru](https://habr.com/ru/post/447808/))
-- [How to: Waves dApps — Prediction Markets example with Ride-language. Part 1](https://medium.com/@alexpupyshev/how-to-waves-dapps-prediction-markets-example-with-ride-language-part-1-27b642f2fd0d) - How to create the simple Prediction Market dApp (like Augur or Gnosis) to create new markets, trade shares and win if the prediction will come true.
-- [Simple voting on the Waves blockchain](https://docs.wavesprotocol.org/en/smart-contracts/simple-voting-on-the-waves-blockchain.html) - The head of the HOA (homeowners association) asks the tenants of the building: "Dear residents, do you agree with the construction of the kids' playground in the yard of your building?". Objective: implement such voting among tenants on the Waves blockchain.
-- [How to use Waves Signer](https://medium.com/@izhur27/getting-started-with-waves-signer-893017c9b7ae) - How to authorize and sign transactions on your website.
-- [Understanding Waves Signer — Nuxt.js integration step-by-step](https://medium.com/auctionlance/understanding-waves-signer-nuxt-js-integration-step-by-step-fe33e19c2eb8) - How to create demo app for authenticating with Waves Signer and Nuxt.js for SSR (server-side rendering).
-- [Certificado, Part 1. How to build your first blockchain-based app in 15 minutes](https://medium.com/wavesprotocol/how-to-build-your-first-blockchain-based-app-in-15-minutes-83de36826143) - Tutorial on how to create blockchain-based certificate storage ([ru](https://vk.com/@wavesplatform-kak-sozdat-pervoe-prilozhenie-na-blokcheine-za-15-minut)).
-- [Certificado, Part 2. What are Smart Contracts and how to use them in your app](https://medium.com/wavesprotocol/what-are-smart-contracts-and-how-to-use-them-in-your-app-a1c0d62d1a5) - Tutorial on how to create blockchain-based certificate storage ([ru](https://vk.com/@wavesplatform-chto-takoe-smart-kontrakty-i-kak-ih-ispolzovat-v-prilozhenii)).
-- [How to: offer a free trial for your dApp](https://medium.com/wavesprotocol/make-your-dapp-free-for-a-user-d560b38ec598) - Detailed guide to lowering the barrier for users of a dApp ([ru](https://vk.com/@wavesplatform-how-to-besplatnye-dlya-polzovatelya-decentralizovannye-prilo)).
-- [Blockchain Trigger: a tool for automatic smart contract invocation](https://medium.com/wavesprotocol/blockchain-trigger-a-tool-for-automatic-smart-contract-invocation-1cb2748c53be) - Calling a smart contract, users experience some issues, which hampers mass adoption of blockchain. An instrument called Blockchain Trigger could help resolve these issues ([ru](https://vk.com/@wavesprotocol-instrument-dlya-dlya-avtomaticheskogo-vyzova-smart-kontrakto)).
-- [How to avoid common mistakes in dApp development](https://medium.com/wavesprotocol/how-to-avoid-common-mistakes-in-dapp-development-61015e700459) - How can we avoid the most common mistakes when developing dApps for Web 3.0 ([ru](https://vk.com/@wavesprotocol-kak-izbezhat-oshibok-pri-razrabotke-dapp)).
-- [How to write decentralized oracles in Ride](https://medium.com/wavesprotocol/how-to-write-decentralized-oracles-in-ride-f2c096812b18) - How can we resolve the issue of supplying real-world data to the blockchain? Introducing Oraculus - a smart contract for creating decentralized oracles ([ru](https://vk.com/@wavesprotocol-kak-napisat-decentralizovannyi-orakul-na-ride)).
-- [Billy — motivation bot for Slack and Microsoft Teams](https://medium.com/@ikardanov/billy-motivation-and-recognition-bot-for-slack-and-microsoft-teams-d05167e4a7f9) - A tool built on the Waves blockchain to reward team members in a non-financial way ([ru](https://vc.ru/tribuna/128472-billy-bot-dlya-motivacii-personala)).
-- [How to build a dApp for team motivation](https://medium.com/wavesprotocol/how-to-build-a-dapp-for-team-motivation-8943504e3feb) - Billy is DApp in the form of a bot that allows for an incentive and reward system aiming to motivate employees through Slack, a business communication platform ([ru](https://vk.com/@wavesprotocol-kak-sozdat-dapp-dlya-motivacii-sotrudnikov)).
-- [How to add crypto payments to your online store?](https://medium.com/wavesprotocol/how-to-add-crypto-payments-to-your-online-store-b528b739cdfb) - How to add crypto payment options to your online store with the help of Pay Crypto Widget developed in the Waves ecosystem.
+- [How to Build, Deploy and Test a Waves Ride dApp](https://medium.com/wavesprotocol/how-to-build-deploy-and-test-a-waves-ride-dapp-785311f58c2) - 簡単な分散型アプリケーション（dApp）を書き、Wavesノードで実行する方法。 ([ロシア語版](https://habr.com/ru/company/waves/blog/459773/))
+- [How to: Waves dApps — DAO. Example using Ride-language for smart contracts](https://medium.com/@alexpupyshev/how-to-waves-dapps-dao-example-using-ride-language-for-smart-contracts-3b0ca55e48a8) - 投票やプロジェクトへの共同投資を行う簡単なDAOのdAppを作る方法。 ([ロシア語版](https://habr.com/ru/post/447808/))
+- [How to: Waves dApps — Prediction Markets example with Ride-language. Part 1](https://medium.com/@alexpupyshev/how-to-waves-dapps-prediction-markets-example-with-ride-language-part-1-27b642f2fd0d) - AugurやGnosisのような簡単な予測市場のdAppを作る方法。新しい市場の作成、持分の取引、予測が当たった場合の報酬を扱います。
+- [Simple voting on the Waves blockchain](https://docs.wavesprotocol.org/en/smart-contracts/simple-voting-on-the-waves-blockchain.html) - 住宅所有者組合（HOA）の代表が住民に、建物の庭に子どもの遊び場を作ることへの賛否を尋ねる例。この投票をWavesブロックチェーン上で実装します。
+- [How to use Waves Signer](https://medium.com/@izhur27/getting-started-with-waves-signer-893017c9b7ae) - ウェブサイトで認証を行い、トランザクションに署名する方法。
+- [Understanding Waves Signer — Nuxt.js integration step-by-step](https://medium.com/auctionlance/understanding-waves-signer-nuxt-js-integration-step-by-step-fe33e19c2eb8) - Waves SignerとNuxt.jsを使い、サーバーサイドレンダリング（SSR）に対応する認証のデモアプリを作る方法。
+- [Certificado, Part 1. How to build your first blockchain-based app in 15 minutes](https://medium.com/wavesprotocol/how-to-build-your-first-blockchain-based-app-in-15-minutes-83de36826143) - ブロックチェーンに証明書を保存する仕組みを作るチュートリアル。 ([ロシア語版](https://vk.com/@wavesplatform-kak-sozdat-pervoe-prilozhenie-na-blokcheine-za-15-minut))。
+- [Certificado, Part 2. What are Smart Contracts and how to use them in your app](https://medium.com/wavesprotocol/what-are-smart-contracts-and-how-to-use-them-in-your-app-a1c0d62d1a5) - ブロックチェーンに証明書を保存する仕組みを作るチュートリアル。 ([ロシア語版](https://vk.com/@wavesplatform-chto-takoe-smart-kontrakty-i-kak-ih-ispolzovat-v-prilozhenii))。
+- [How to: offer a free trial for your dApp](https://medium.com/wavesprotocol/make-your-dapp-free-for-a-user-d560b38ec598) - dApp利用者の利用開始の障壁を下げる詳しいガイド。 ([ロシア語版](https://vk.com/@wavesplatform-how-to-besplatnye-dlya-polzovatelya-decentralizovannye-prilo))。
+- [Blockchain Trigger: a tool for automatic smart contract invocation](https://medium.com/wavesprotocol/blockchain-trigger-a-tool-for-automatic-smart-contract-invocation-1cb2748c53be) - スマートコントラクトの呼び出し時に利用者が直面する問題を、ブロックチェーンの普及を妨げる要因と捉え、それを解決するツールとしてBlockchain Triggerを紹介する記事。 ([ロシア語版](https://vk.com/@wavesprotocol-instrument-dlya-dlya-avtomaticheskogo-vyzova-smart-kontrakto))。
+- [How to avoid common mistakes in dApp development](https://medium.com/wavesprotocol/how-to-avoid-common-mistakes-in-dapp-development-61015e700459) - Web 3.0のdApp開発でよくある間違いを避ける方法。 ([ロシア語版](https://vk.com/@wavesprotocol-kak-izbezhat-oshibok-pri-razrabotke-dapp))。
+- [How to write decentralized oracles in Ride](https://medium.com/wavesprotocol/how-to-write-decentralized-oracles-in-ride-f2c096812b18) - 現実世界のデータをブロックチェーンに供給する問題への対処方法。分散型オラクルを作るスマートコントラクト、Oraculusを紹介します。 ([ロシア語版](https://vk.com/@wavesprotocol-kak-napisat-decentralizovannyi-orakul-na-ride))。
+- [Billy — motivation bot for Slack and Microsoft Teams](https://medium.com/@ikardanov/billy-motivation-and-recognition-bot-for-slack-and-microsoft-teams-d05167e4a7f9) - Wavesブロックチェーンを基盤とし、金銭以外の形でチームのメンバーに報酬を与えるツール。 ([ロシア語版](https://vc.ru/tribuna/128472-billy-bot-dlya-motivacii-personala))。
+- [How to build a dApp for team motivation](https://medium.com/wavesprotocol/how-to-build-a-dapp-for-team-motivation-8943504e3feb) - Billyはボット型のdAppで、業務用コミュニケーションプラットフォームSlackを通じて従業員の意欲を高める、インセンティブと報酬の仕組みを提供します。 ([ロシア語版](https://vk.com/@wavesprotocol-kak-sozdat-dapp-dlya-motivacii-sotrudnikov))。
+- [How to add crypto payments to your online store?](https://medium.com/wavesprotocol/how-to-add-crypto-payments-to-your-online-store-b528b739cdfb) - Wavesエコシステムで開発されたPay Crypto Widgetを使い、オンラインストアに暗号資産での支払いを追加する方法。
 
-## プロダクト
+## プロダクト <a id="products"></a>
 
-### ウォレット
+### ウォレット <a id="wallet"></a>
 
-- [Waves.Exchange Wallet](https://waves.exchange/) - Web & desktop client by Waves.Exchange enables you to join the ecosystem and enjoy the full range of digital asset management features.
-- [Waves Keeper](https://wavesprotocol.org/protocol/keeper) - Official browser extension allows to manage private keys and interact securely and seamlessly with Waves-enabled web services and dApps.
-- [iOS wallet](https://itunes.apple.com/us/app/waves-wallet/id1233158971) - Wallet for iPhone by Waves.Exchange.
-- [Android wallet](https://play.google.com/store/apps/details?id=com.wavesplatform.wallet) - Wallet for Android devices by Waves.Exchange.
-- [WavesFX](https://github.com/wavesfx/wavesfx) - A community-driven native desktop wallet for Windows, macOS and Linux, which offers users multi-network and multi-address functionality.
+- [Waves.Exchange Wallet](https://waves.exchange/) - Waves.Exchangeによるウェブおよびデスクトップ用クライアント。原文では、エコシステムに参加し、幅広いデジタル資産管理機能を利用できると紹介されています。
+- [Waves Keeper](https://wavesprotocol.org/protocol/keeper) - 秘密鍵を管理し、Waves対応のウェブサービスやdAppとやり取りする公式ブラウザー拡張。原文では安全で円滑に利用できると紹介されています。
+- [iOSウォレット](https://itunes.apple.com/us/app/waves-wallet/id1233158971) - Waves.ExchangeによるiPhone用ウォレット。
+- [Androidウォレット](https://play.google.com/store/apps/details?id=com.wavesplatform.wallet) - Waves.ExchangeによるAndroid端末用ウォレット。
+- [WavesFX](https://github.com/wavesfx/wavesfx) - コミュニティ主導で開発されたWindows、macOS、Linux用のネイティブデスクトップウォレット。複数のネットワークとアドレスに対応。
 
-### エクスプローラー
+### エクスプローラー <a id="explorer"></a>
 
-- [Waves Explorer](https://wavesexplorer.com) - Official Waves Explorer.
-- [Dev PyWaves](http://dev.pywaves.org) - Blockchain explorer by PyWaves.
-- [w8io](https://w8io.ru/) - Blockchain explorer by [deemru](https://github.com/deemru).
+- [Waves Explorer](https://wavesexplorer.com) - Wavesの公式エクスプローラー。
+- [Dev PyWaves](http://dev.pywaves.org) - PyWavesによるブロックチェーンエクスプローラー。
+- [w8io](https://w8io.ru/) - [deemru](https://github.com/deemru)によるブロックチェーンエクスプローラー。
 
-### その他
+### その他 <a id="other"></a>
 
-- [WavesLabs](https://waveslabs.com/) - An initiative to support talented developers and promising startups focused on building the decentralised technologies that will form the backbone to Web 3.0.
-- [Node](https://github.com/wavesplatform/Waves) - Waves Node repository on GitHub.
-- [GRPC Server](https://grpc.wavesnodes.com:6870) - Public GRPC interface for Mainnet.
-- [Go Node](https://github.com/wavesplatform/gowaves) - Go libraries and tools for Waves blockchain, alternative implementation of Node (work in progress).
-- [Waves Data Service](https://api.wavesplatform.com/v0/docs/#/) - Official data service. Simple and convenient way to get data from Waves blockchain.
-- [Waves Oracles](https://oracles.wavesexplorer.com/) - Catalog of Oracles.
-- [Token Rating](https://tokenrating.wavesexplorer.com) - Provides a means to rate and aggregate the opinions of the entire Waves community about tokens (projects) issued on the Waves platform.
-- [WavesCap](https://wavescap.com/) - CoinMarketCap for Waves assets.
-- [ItemMarket](https://item.market/) - Decentralised platform where everyone can tokenize, sell and buy somebody's in-game items in the form of tokens. ([read more](https://medium.com/wavesprotocol/item-market-is-launched-cabefe915c04))
+- [WavesLabs](https://waveslabs.com/) - Web 3.0向けの分散型技術を構築する開発者とスタートアップを支援する取り組み。原文では才能ある開発者と有望なスタートアップ、その技術をWeb 3.0の将来の基盤と紹介しています。
+- [Node](https://github.com/wavesplatform/Waves) - GitHub上のWaves Nodeリポジトリ。
+- [GRPC Server](https://grpc.wavesnodes.com:6870) - メインネット用の公開GRPCインターフェース。
+- [Go Node](https://github.com/wavesplatform/gowaves) - Wavesブロックチェーン用のGoライブラリとツール。Nodeの別実装で、原文では開発途中とされています。
+- [Waves Data Service](https://api.wavesplatform.com/v0/docs/#/) - Wavesブロックチェーンからデータを取得する公式サービス。原文では簡単で便利な方法と紹介されています。
+- [Waves Oracles](https://oracles.wavesexplorer.com/) - オラクルのカタログ。
+- [Token Rating](https://tokenrating.wavesexplorer.com) - Waves上で発行されたトークン（プロジェクト）を、Wavesコミュニティ全体で評価し、その意見を集約する手段を提供。
+- [WavesCap](https://wavescap.com/) - Waves資産向けのCoinMarketCapに相当するサービス。
+- [ItemMarket](https://item.market/) - 誰でもゲーム内のアイテムをトークン化して売却し、他者のアイテムを購入できる分散型プラットフォーム。 ([詳しい説明](https://medium.com/wavesprotocol/item-market-is-launched-cabefe915c04))
 
-## プレイグラウンド
+## 試用環境 <a id="プレイグラウンド"></a> <a id="playground"></a>
 
-### テストネット
+### テストネット <a id="testnet"></a>
 
-Testnet is stable network and has fully copied configurations and nodes version from mainnet, but allows to earn free Waves tokens to test something what you need.
+原文では、テストネットはメインネットの設定とノードのバージョンを複製した安定したネットワークで、テスト用のWavesトークンを無料で入手できると説明されています。
 
-- [Explorer](https://wavesexplorer.com/testnet) - Official testnet explorer. It has a [faucet](https://wavesexplorer.com/testnet/faucet) for getting a few free Waves tokens.
-- [Node API](https://nodes-testnet.wavesnodes.com/) - API of testnet nodes.
-- [Data Service](https://api-test.wavesplatform.com/v0/docs/) - Official data service for testnet.
+- [エクスプローラー](https://wavesexplorer.com/testnet) - 公式テストネットエクスプローラー。無料のWavesトークンを少量入手できる[フォーセット](https://wavesexplorer.com/testnet/faucet)があります。
+- [ノードAPI](https://nodes-testnet.wavesnodes.com/) - テストネットノードのAPI。
+- [データサービス](https://api-test.wavesplatform.com/v0/docs/) - テストネット用の公式データサービス。
 
-### ステージネット
+### ステージネット <a id="stagenet"></a>
 
-Stagenet is unstable network to test release candidates of the official Waves products before shipping these to the Mainnet and Testnet. But you can also to earn free Waves tokens to test something what you need. For example, a compatibility of your service or DApp with an upcoming releases.
+原文では、ステージネットは、公式Waves製品をメインネットとテストネットへ提供する前にリリース候補を試す、不安定なネットワークと説明されています。無料のWavesトークンで、今後のリリースとサービスやdAppとの互換性などをテストできます。
 
-- [Explorer](https://wavesexplorer.com/stagenet) - Official explorer. It has a [faucet](https://wavesexplorer.com/stagenet/faucet) for getting a few free Waves tokens.
-- [Node API](https://nodes-stagenet.wavesnodes.com/) - Swagger REST API of Waves Node.
-- [IDE](https://stagenet.waves-ide.com) - Online IDE to create Ride smart contracts on Stagenet.
+- [エクスプローラー](https://wavesexplorer.com/stagenet) - 公式エクスプローラー。無料のWavesトークンを少量入手できる[フォーセット](https://wavesexplorer.com/stagenet/faucet)があります。
+- [ノードAPI](https://nodes-stagenet.wavesnodes.com/) - Waves NodeのSwagger REST API。
+- [IDE](https://stagenet.waves-ide.com) - ステージネットでRideスマートコントラクトを作るオンラインIDE。
 
-### Docker イメージ
+### Dockerイメージ <a id="docker-イメージ"></a> <a id="docker-images"></a>
 
-- [WavesNode](https://hub.docker.com/r/wavesplatform/wavesnode) - Docker Image for Waves Platform node. Supports any official or custom networks.
-- [K8s by loxal](https://hub.docker.com/r/loxal/waves-node) - The container was built in order to run as a fire-and-forget `StatefulSet` in a Kubernetes cluster.
-- [waves-private-node](https://hub.docker.com/r/wavesplatform/waves-private-node) - Private local Waves Node. The easiest way to run your own isolated node to develop smart contracts and any experiments.
-- [explorer](https://hub.docker.com/r/wavesplatform/explorer) - Waves Explorer for your node.
+- [WavesNode](https://hub.docker.com/r/wavesplatform/wavesnode) - Waves PlatformノードのDockerイメージ。公式・独自のネットワークに対応。
+- [K8s by loxal](https://hub.docker.com/r/loxal/waves-node) - Kubernetesクラスターで、起動後の管理作業を必要としない`StatefulSet`として動かすためのコンテナ。
+- [waves-private-node](https://hub.docker.com/r/wavesplatform/waves-private-node) - 非公開のローカルWavesノード。原文では、スマートコントラクトの開発や実験用の隔離されたノードを動かす最も簡単な方法と紹介されています。
+- [explorer](https://hub.docker.com/r/wavesplatform/explorer) - 自分のノード用のWaves Explorer。
 
-## フレームワークとツール
+## フレームワークとツール <a id="frameworks-and-tools"></a>
 
-### Ride プログラミング言語
+### Rideプログラミング言語 <a id="ride-プログラミング言語"></a> <a id="the-ride-programming-language"></a>
 
-- [Waves IDE](https://waves-ide.com/) - Online IDE to create smart contracts on Ride.
-- [ride-examples](https://github.com/wavesplatform/ride-examples) - Examples of scripts for accounts and assets using Ride.
-- [waves-ride](https://marketplace.visualstudio.com/items?itemName=wavesplatform.waves-ride) - Visual Studio Code extension to support Ride.
-- [vim-ride](https://github.com/rosmanov/vim-ride) - Vim plugin for Ride syntax highlighting.
-- [surfboard](https://github.com/wavesplatform/Surfboard) - CLI to work with the Ride language and testing.
-- [Paddle](https://github.com/msmolyakov/paddle) - Java library to write tests for your dApps and other smart contracts.
+- [Waves IDE](https://waves-ide.com/) - Rideでスマートコントラクトを作るオンラインIDE。
+- [ride-examples](https://github.com/wavesplatform/ride-examples) - Rideを使うアカウントおよび資産用スクリプトの例。
+- [waves-ride](https://marketplace.visualstudio.com/items?itemName=wavesplatform.waves-ride) - RideをサポートするVisual Studio Code拡張。
+- [vim-ride](https://github.com/rosmanov/vim-ride) - Rideの構文強調表示を行うVimプラグイン。
+- [surfboard](https://github.com/wavesplatform/Surfboard) - Ride言語の操作とテスト用のCLI。
+- [Paddle](https://github.com/msmolyakov/paddle) - dAppやその他のスマートコントラクトのテストを書くJavaライブラリ。
 
-### クライアントライブラリ
-#### C/C++
-- [waves-c](https://github.com/wavesplatform/waves-c) - C library to work with Waves.
-- [wavespp](https://github.com/wavesplatform/wavespp) - C++ wrapper for the [waves-c](https://github.com/wavesplatform/waves-c) library.
-- [nanos-app-waves](https://github.com/wavesplatform/nanos-app-waves) - Waves wallet application for Ledger Nano S.
-#### C#
-- [WavesCS](https://github.com/wavesplatform/WavesCS) - C# library to interact with the Waves blockchain.
-#### Java/Kotlin
-- [WavesSDK-android](https://github.com/wavesplatform/WavesSDK-android) - Kotlin SDK for Mobile Apps on Android.
-- [WavesJ](https://github.com/wavesplatform/WavesJ) - Java library to interact with the Waves blockchain and DEX.
-- [waves-crypto-java](https://github.com/msmolyakov/waves-crypto-java) - Library to work with cryptographic primitives used in the Waves blockchain.
-#### JavaScript/TypeScript
-- [Waves Signer](https://github.com/wavesplatform/signer) - library to interact with the Waves blockchain from your web app ([example provider](https://github.com/waves-exchange/provider-web)).
-- [vue-waves-signer](https://github.com/opensolutionsweb3/vue-waves-signer) - Waves Signer implementation for Vue.js.
-- [pay-crypto-widget](https://github.com/vlzhr/pay-crypto-widget) - JS widget for accepting crypto payments on your website.
-- [crypto-donate](https://github.com/vlzhr/crypto-donate) - HTML widget allowing to donate Waves tokens to content authors.
-- [waves-transactions](https://github.com/wavesplatform/waves-transactions) - JS library to build and sign transactions.
-- [ts-lib-crypto](https://github.com/wavesplatform/ts-lib-crypto) - Typescript implementations like signature verification and protocol entries used in Waves protocol.
-#### Go
-- [go-lib-crypto](https://github.com/wavesplatform/go-lib-crypto) - GoLang implementation of the unified crypto primitives for Waves.
-#### PHP
-- [WavesKit](https://github.com/deemru/WavesKit) - All-in-one Waves Platform development kit for the PHP language.
-#### Python
-- [PyWaves](https://github.com/PyWaves/PyWaves) - Object-oriented library for the Waves blockchain platform.
-- [ERC20 Gateway Framework](https://github.com/PyWaves/Waves-ERC20-Gateway) - Allows to easily establish a gateway between any ERC-20 token and the Waves blockchain ([example](https://github.com/iammortimer/TN-WAVES-Gateway)).
-- [Waves-Gateway-Framework](https://github.com/jansenmarc/WavesGatewayFramework) - A framework to connect other cryptocurrencies to the Waves blockchain ([LTC example](https://github.com/jansenmarc/WavesGatewayLTCExample)).
-#### Rust
-- [WavesRS](https://github.com/petermz/WavesRs) - A Rust interface for the Waves blockchain.
-- [waves-lib-rust](https://github.com/waves-rust/waves-lib-rust) - Library to work with Waves blockchain.
-#### Swift
-- [WavesSDK-iOS](https://github.com/wavesplatform/WavesSDK-iOS) - SDK for Mobile Apps on iOS.
+## クライアントライブラリ <a id="client-libraries"></a>
+### C/C++
+- [waves-c](https://github.com/wavesplatform/waves-c) - Wavesを操作するCライブラリ。
+- [wavespp](https://github.com/wavesplatform/wavespp) - [waves-c](https://github.com/wavesplatform/waves-c)ライブラリのC++ラッパー。
+- [nanos-app-waves](https://github.com/wavesplatform/nanos-app-waves) - Ledger Nano S用のWavesウォレットアプリケーション。
+### C#
+- [WavesCS](https://github.com/wavesplatform/WavesCS) - Wavesブロックチェーンを操作するC#ライブラリ。
+### Java/Kotlin
+- [WavesSDK-android](https://github.com/wavesplatform/WavesSDK-android) - Androidモバイルアプリ向けのKotlin SDK。
+- [WavesJ](https://github.com/wavesplatform/WavesJ) - WavesブロックチェーンとDEXを操作するJavaライブラリ。
+- [waves-crypto-java](https://github.com/msmolyakov/waves-crypto-java) - Wavesブロックチェーンで使われる暗号プリミティブを操作するライブラリ。
+### JavaScript/TypeScript
+- [Waves Signer](https://github.com/wavesplatform/signer) - ウェブアプリからWavesブロックチェーンを操作するライブラリ ([プロバイダーの例](https://github.com/waves-exchange/provider-web))。
+- [vue-waves-signer](https://github.com/opensolutionsweb3/vue-waves-signer) - Vue.js向けのWaves Signer実装。
+- [pay-crypto-widget](https://github.com/vlzhr/pay-crypto-widget) - ウェブサイトで暗号資産の支払いを受け付けるJavaScriptウィジェット。
+- [crypto-donate](https://github.com/vlzhr/crypto-donate) - コンテンツの作者にWavesトークンを寄付できるHTMLウィジェット。
+- [waves-transactions](https://github.com/wavesplatform/waves-transactions) - トランザクションを作成して署名するJavaScriptライブラリ。
+- [ts-lib-crypto](https://github.com/wavesplatform/ts-lib-crypto) - Wavesプロトコルで使われる署名検証やプロトコルの項目などのTypeScript実装。
+### Go
+- [go-lib-crypto](https://github.com/wavesplatform/go-lib-crypto) - Waves用の共通暗号プリミティブのGo実装。
+### PHP
+- [WavesKit](https://github.com/deemru/WavesKit) - PHP向けの統合Waves Platform開発キット。
+### Python
+- [PyWaves](https://github.com/PyWaves/PyWaves) - Wavesブロックチェーンプラットフォーム用のオブジェクト指向ライブラリ。
+- [ERC20 Gateway Framework](https://github.com/PyWaves/Waves-ERC20-Gateway) - 任意のERC-20トークンとWavesブロックチェーンの間にゲートウェイを設けるフレームワーク ([例](https://github.com/iammortimer/TN-WAVES-Gateway))。
+- [Waves-Gateway-Framework](https://github.com/jansenmarc/WavesGatewayFramework) - 他の暗号資産をWavesブロックチェーンに接続するフレームワーク ([LTCの例](https://github.com/jansenmarc/WavesGatewayLTCExample))。
+### Rust
+- [WavesRS](https://github.com/petermz/WavesRs) - Wavesブロックチェーン用のRustインターフェース。
+- [waves-lib-rust](https://github.com/waves-rust/waves-lib-rust) - Wavesブロックチェーンを操作するライブラリ。
+### Swift
+- [WavesSDK-iOS](https://github.com/wavesplatform/WavesSDK-iOS) - iOSモバイルアプリ向けのSDK。
 
-### ブロックチェーンユーティリティ
-- [chaincmp](https://github.com/wavesplatform/gowaves/blob/master/cmd/chaincmp) - Utility to compare blockchains on a different nodes.
-- [Node Tools extension](https://github.com/msmolyakov/waves-node-tools-extension) - Waves Node extension to allow miner to automate payouts for its lessors and to receive notifications about mining progress.
-- [Nodes on map](http://waves-nodes-map.ikardanov.com/) - All nodes of the Waves Mainnet on the world map.
+## ブロックチェーンユーティリティ <a id="blockchain-utils"></a>
+- [chaincmp](https://github.com/wavesplatform/gowaves/blob/master/cmd/chaincmp) - 異なるノード上のブロックチェーンを比較するユーティリティ。
+- [Node Tools extension](https://github.com/msmolyakov/waves-node-tools-extension) - マイナーがリース提供者への報酬支払いを自動化し、マイニングの進行状況の通知を受け取るためのWaves Node拡張。
+- [ノードの地図](http://waves-nodes-map.ikardanov.com/) - Wavesメインネットの全ノードを世界地図に表示。
 
-### その他 tools
-- [sh-Ride-brush](https://github.com/msmolyakov/sh-Ride-brush) - SyntaxHighlighter brush for the Ride language.
-- [Ride for Pygments](https://github.com/pygments/pygments/blob/master/pygments/lexers/ride.py) - The [Pygments](https://github.com/pygments/pygments) highlighter oficially supports the Ride out of the box.
+## その他のツール <a id="その他-tools"></a> <a id="other-tools"></a>
+- [sh-Ride-brush](https://github.com/msmolyakov/sh-Ride-brush) - Ride言語用のSyntaxHighlighterの構文定義。
+- [Ride for Pygments](https://github.com/pygments/pygments/blob/master/pygments/lexers/ride.py) - [Pygments](https://github.com/pygments/pygments)の強調表示ツールは、Rideを公式に標準サポートしています。
 
-## Waves 上に構築
+## Waves上のアプリケーション <a id="waves-上に構築"></a> <a id="built-on-waves"></a>
 
-### カタログ
+### カタログ <a id="catalogs"></a>
 
-- [Waves on DappRadar](https://dappradar.com/rankings/protocol/waves) - Waves dApps published on the DappRadar.
-- [dAppOcean](https://www.dappocean.io/) - Ecosystem of decentralized applications based on the Waves blockchain.
+- [Waves on DappRadar](https://dappradar.com/rankings/protocol/waves) - DappRadarに掲載されたWavesのdApp。
+- [dAppOcean](https://www.dappocean.io/) - Wavesブロックチェーンを基盤とする分散型アプリケーションのエコシステム。
 
-### ゲーム
-- [NyanCat: The Crypto Race](https://nyancat.io/) - Build your own Nyan Cat collection, race against other players and get your reward in weekly Leaderboards with the prize fund up to $2000!
-- [Shadow Era](http://www.shadowera.com/) - Shadow Era is a free to play online collectible trading card game for iOS, Android, PC and Mac.
-- [Coin Flip](https://www.coin-flip.io/) - Choose the coin side, make a bet and see if you are lucky.
-- [Dice Roller](https://www.dice-roller.io/) - Choose the dice sides, make a bet and see if you are lucky.
-- [Ride On Waves](https://www.waves-rider.io/) - You can choose how many WAVES you want to bet. This is the game with a floating bet from 0.5 and up to 6 WAVES.
+### ゲーム <a id="games"></a>
+- [NyanCat: The Crypto Race](https://nyancat.io/) - Nyan Catを集めて他のプレイヤーと競走するゲーム。原文では、週ごとのランキングに応じた報酬があり、賞金総額は最大2000ドルと紹介されています。
+- [Shadow Era](http://www.shadowera.com/) - iOS、Android、PC、Mac向けの無料で遊べるオンライン対戦型コレクションカードゲーム。
+- [Coin Flip](https://www.coin-flip.io/) - コインの面を選び、結果に賭けるゲーム。
+- [Dice Roller](https://www.dice-roller.io/) - サイコロの面を選び、結果に賭けるゲーム。
+- [Ride On Waves](https://www.waves-rider.io/) - 賭け額を変えられるゲーム。原文では0.5〜6 WAVESと紹介されています。
 
-### プロジェクト
+### プロジェクト <a id="projects"></a>
 
-- [Neutrino](https://github.com/ventuary-lab/neutrino-contract) - An algorithmic price-stable cryptocurrency protocol collateralized by WAVES token.
-- [Billy](https://iambilly.app) - A motivation tool for teams. Billy offers a product to create an atmosphere of cooperation, focus the company on the core values, and incentivize sharing by creating an in-team economy.
-- [Ventuary-DAO](https://alpha.ventuary.space/) - Sandbox dedicated to filtering dApp ideas and stimulating the Waves community to take part in Web 3.0 adoption.
-- [Tokenomica](https://tokenomica.com/) - Security Tokens Issuance Platform. Create and trade digital assets with ease and confidence.
-- [LIGA](https://ligatokens.io/) - A platform with tokenized sport events, enabling you to deal with real-time rates and to trade your personal predictions with others.
-- [WaveFlow](https://waveflow.xyz/) - Allows you to create new or use existing exchangers that provide a constant supply and demand for certain traded pairs. Algorithmic pricing is used to ensure consistency of supply and demand - the more popular the token is, the higher its price is set. Each exchanger is a dApp written in Ride ([example of trading bot](https://github.com/vlzhr/waveflow-trading-bot)).
-- [Lombardini](https://lombardini.io/) - Borrow WBTC for WAVES instantly.
-- [Blockchain Cars](http://blockchaincars.io/) - Transport as a Service.
-- [WavesAffi](https://github.com/bettexproject/WavesAffi) - Decentralized affiliate program on Waves blockchain.
-- [One Million Pixel Waves](https://www.onemillionpixelwaves.com/) - Smart Contract powered website entirely running on the Waves blockchain where anyone can own a piece of the blockchain and immortalize it with an image and a link.
-- [Signature Chain](https://www.signature-chain.com/) - Signature Chain's primary goal is to develop a platform allowing the certification of files and documents.
-- [Auctionlance Platform](https://beta.auctionlance.com) - Freelancer marketplace where clients hire and pay freelancers with Waves, Waves tokens and other cryptocurrencies.
+- [Neutrino](https://github.com/ventuary-lab/neutrino-contract) - WAVESトークンを担保とする、アルゴリズムによる価格安定型の暗号資産プロトコル。
+- [Billy](https://iambilly.app) - チームの意欲を高めるツール。チーム内の経済を作ることで、協力する雰囲気づくり、企業の中核的な価値観への集中、共有の促進を図ります。
+- [Ventuary-DAO](https://alpha.ventuary.space/) - dAppのアイデアを選別し、WavesコミュニティのWeb 3.0導入への参加を促すためのサンドボックス。
+- [Tokenomica](https://tokenomica.com/) - デジタル資産を作成・取引するセキュリティトークン発行プラットフォーム。原文では容易に、自信を持って利用できると紹介されています。
+- [LIGA](https://ligatokens.io/) - スポーツイベントをトークン化するプラットフォーム。リアルタイムのレートを扱い、自分の予測を他者と取引できます。
+- [WaveFlow](https://waveflow.xyz/) - 交換サービスを新たに作成するか、既存のものを使い、特定の取引ペアに継続的な供給と需要を提供。供給と需要の一貫性を保つためにアルゴリズムで価格を決め、人気のあるトークンほど高い価格を設定します。各交換サービスはRideで書かれたdAppです ([取引ボットの例](https://github.com/vlzhr/waveflow-trading-bot))。
+- [Lombardini](https://lombardini.io/) - 原文では、WAVESでWBTCを即座に借りるサービスと紹介されています。
+- [Blockchain Cars](http://blockchaincars.io/) - サービスとしての交通手段（Transport as a Service）。
+- [WavesAffi](https://github.com/bettexproject/WavesAffi) - Wavesブロックチェーン上の分散型アフィリエイトプログラム。
+- [One Million Pixel Waves](https://www.onemillionpixelwaves.com/) - Wavesブロックチェーンだけで動作する、スマートコントラクトを使ったウェブサイト。誰でもブロックチェーンの一区画を所有し、画像とリンクで永続的に記録できます。
+- [Signature Chain](https://www.signature-chain.com/) - ファイルと文書の証明を行うプラットフォームの開発を主な目的としています。
+- [Auctionlance Platform](https://beta.auctionlance.com) - 依頼者がフリーランスを雇い、Waves、Wavesトークン、その他の暗号資産で支払うマーケットプレイス。
 
 
-## コミュニティ
+## コミュニティ <a id="community"></a>
 
-### 国際
+### 国際 <a id="international"></a>
 
-- [Waves Dev Jedi. Ride for dApps](https://t.me/waves_ride_dapps_dev) - Telegram chat for dApps developers.
-- [Discord](https://discordapp.com/invite/cnFmDyA) - Official Discord.
-- [Waves Community Portal](https://wavescommunity.com/) - Official portal features some of the tools and projects that make up Waves ecosystem.
-- [Waves Community Forum](https://forum.wavesplatform.com/) - Official forum.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/wavesplatform) - The best place to ask your tech questions. Use tags `wavesplatform` and `ride`.
+- [Waves Dev Jedi. Ride for dApps](https://t.me/waves_ride_dapps_dev) - dApp開発者向けのTelegramチャット。
+- [Discord](https://discordapp.com/invite/cnFmDyA) - 公式Discord。
+- [Waves Community Portal](https://wavescommunity.com/) - Wavesエコシステムを構成するツールやプロジェクトを紹介する公式ポータル。
+- [Waves Community Forum](https://forum.wavesplatform.com/) - 公式フォーラム。
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/wavesplatform) - 原文では、技術的な質問をするのに最適な場所と紹介されています。該当するタグは`wavesplatform`と`ride`です。
 
-### アフリカ
+### アフリカ <a id="africa"></a>
 
-- [Telegram](https://t.me/wavesafrica) - Waves community of passionate developers and web 3.0 enthusiasts across Africa.
+- [Telegram](https://t.me/wavesafrica) - アフリカ各地の意欲的な開発者とWeb 3.0愛好者によるWavesコミュニティ。
 
-### オランダ語
+### オランダ語 <a id="dutch"></a>
 
-- [Telegram](https://t.me/wavesdappsnl) - Telegram-chat voor ontwikkelaars dApps.
+- [Telegram](https://t.me/wavesdappsnl) - dApp開発者向けのTelegramチャット。
 
-### フランス語
+### フランス語 <a id="french"></a>
 
-- [Telegram](https://t.me/wavesdappsFR) - Chat Telegram pour les développeurs dApps.
-- [Dev France on Youtube](https://www.youtube.com/channel/UC2DS9ktTKWGW3NHHV2Ja3_A) - Une chaîne dédiée à l'apprentissage du développement d'applications décentralisées (dApp) sur la Blockchain Waves.
-- [Dev France on Facebook](https://www.facebook.com/wavesfr)
-- [Dev France on Twitter](https://twitter.com/WavesDevFr)
+- [Telegram](https://t.me/wavesdappsFR) - dApp開発者向けのTelegramチャット。
+- [Dev FranceのYouTube](https://www.youtube.com/channel/UC2DS9ktTKWGW3NHHV2Ja3_A) - Wavesブロックチェーン上の分散型アプリケーション（dApp）の開発を学ぶチャンネル。
+- [Dev FranceのFacebook](https://www.facebook.com/wavesfr)
+- [Dev FranceのTwitter](https://twitter.com/WavesDevFr)
 
-### ギリシャ語
+### ギリシャ語 <a id="greek"></a>
 
-- [Telegram](https://t.me/wavesdappsgr) - Telegram κοινότητα για προγραμματιστές dApps.
+- [Telegram](https://t.me/wavesdappsgr) - dApp開発者向けのTelegramコミュニティ。
 
-### ヒンディー語
+### ヒンディー語 <a id="hindi"></a>
 
-- [Telegram](https://t.me/wavesdappsid) - सॉफ्टवेयर डेवलपर्स के लिए टेलीग्राम चैट.
+- [Telegram](https://t.me/wavesdappsid) - ソフトウェア開発者向けのTelegramチャット。
 
-### 日本語
+### 日本語 <a id="japanese"></a>
 
-- [Telegram](https://t.me/wavesjapandevs) - DApps開発者のためのTelegramチャット.
+- [Telegram](https://t.me/wavesjapandevs) - dApp開発者向けのTelegramチャット。
 
-### フィリピン
+### フィリピン <a id="philippine"></a>
 
-- [Telegram](https://t.me/wavesDevPh) - Telegram Waves Developers Philippines.
+- [Telegram](https://t.me/wavesDevPh) - フィリピンのWaves開発者向けのTelegramチャット。
 
-### ポルトガル語
+### ポルトガル語 <a id="portuguese"></a>
 
-- [Telegram - WavesBrasil](https://t.me/WavesBrasil) - Chat de Telegram para a Comunidade da Waves.
-- [Telegram - Waves Dev Jedi 🇧🇷 🇵🇹](https://t.me/joinchat/DtIEA0mI2HvmVbyBBodOew) - Chat de Telegram para desenvolvedores dApps.
-- [Telegram - Waves Portugal](https://t.me/WavesPortugal) - Chat da Comunidade Portuguesa da Waves.
+- [Telegram - WavesBrasil](https://t.me/WavesBrasil) - Wavesコミュニティ向けのTelegramチャット。
+- [Telegram - Waves Dev Jedi（ブラジル・ポルトガル）](https://t.me/joinchat/DtIEA0mI2HvmVbyBBodOew) - dApp開発者向けのTelegramチャット。
+- [Telegram - Waves Portugal](https://t.me/WavesPortugal) - ポルトガルのWavesコミュニティのチャット。
 
-### ロシア語
+### ロシア語 <a id="russian"></a>
 
-- [Telegram](https://t.me/tradisys_russia) - Telegram чат для разработчиков dApps.
+- [Telegram](https://t.me/tradisys_russia) - dApp開発者向けのTelegramチャット。
 
-### スペイン語
+### スペイン語 <a id="spanish"></a>
 
-- [Telegram](https://t.me/wavesdappsES) - Telegram chat para desarrolladores de dApps.
+- [Telegram](https://t.me/wavesdappsES) - dApp開発者向けのTelegramチャット。
 
-### トルコ語
+### トルコ語 <a id="turkish"></a>
 
-- [Telegram](https://t.me/wavesdappstu) - Yazılım geliştiriciler için Telegram sohbet.
-
-## 貢献
-
-貢献を歓迎します！
-
-素晴らしいものを見つけた、または修正したい場合は、気軽にプルリクエストを送ってください。まず [contribution guidelines](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/CONTRIBUTING.md) をお読みください。
-
-提案をお待ちしています！
+- [Telegram](https://t.me/wavesdappstu) - ソフトウェア開発者向けのTelegramチャット。

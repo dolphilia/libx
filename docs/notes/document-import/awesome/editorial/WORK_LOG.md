@@ -6183,3 +6183,31 @@
 - replay2回各1037組2074文書・2passes、通常8gate、全2074hash保全/全fragment incoming0、systems fresh統合build/全7開始・現在・manifest入力一致、HTML11見出し39項目20TOC/2alias/全旧有用ID・権利/復元導入/出典2URL/統合HTML一致/正規HTMLgate、英日PCmobile実表示と目次・言語・版・隣接操作、global/diff合格。verified226/残811/保留4。同じ検査入力照合で状態更新後のglobal証拠を再利用。使用モデル現Codexセッション/API識別子取得不能、委任/ローカルLLMなし。
 - 生成検査の完了前に先行したbuildを停止し、証拠には不採用。通常8gate終了後の入力を確定してfresh buildを実施。EXCLUSIONS timestampのみHEAD復元。EXTERNAL_LINK_REPORTは欠落原文URL3復元により対象50→53/全体138561→138564の実変更を保存。元main他作業差分保持。所有UI/preview終了/viewport復元。
 - 保存対象は本バッチ本文/overlay/判断・レビュー証拠/生成物/台帳。配信workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/pushしremote HEAD照合。まだ送信準備、外部公開/PR/dispatch/定期設定なし。次169 github-msmolyakov-awesome-waves-readme-mdの固定raw/旧英日全文から進める。
+
+### バッチ168送信確認・169全文読了 (2026-10-06T21:35:56.814Z)
+
+- 168 commit dbb8708551eb575219eaeb16e8cffa8231e503ee → origin/codex/awesome-editorial-isolated-20261007 push exit0 1c441c、remote HEAD一致551ab0。外部公開なし。
+- 169 raw208/旧EN206/旧JA206単位を全文読了。raw ca6d41、EN02208e/c2b0ac、JAe4fa34/262d12（分割、省略なし）。先行一括eb715bは出力省略のため証拠不採用。現行ハッシュbf8a7cと一致。本文未変更。日本語全文と導入復元、コースURL、H4階層を修正。次 169全文編集→3別パスreview→overlay/生成/保全/anchor/build/HTML/UI/global→verified227→commit/push。
+
+- 2026-10-06T21:40:10.261Z batch169全文編集・3別パス全文レビュー完了（raw208/旧EN206/旧JA206→EN168/JA244単位、122list/43heading/38alias）。overlayと実英日本文を反映。proof bcc3017d0e0eec2feb7c3ed9cfacc28e4b745adf689f8bd649e2073a11d83c02。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified227→commit/push。
+
+- 2026-10-06T21:43:27.633Z batch169-generation-gates-passed-build-pending。226完了811残保留4。進捗ff9133681ed556c73ab43933b1d480ec17cd4e27b50f231f233718c18307f2c8。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML43見出し122list/38alias/英日PCmobile実UI→global→verified227/commit/push。
+
+- 2026-10-06T21:45:40.457Z batch169-eof-normalized-same-content-review-gates-build-pending。226完了811残保留4。進捗de07767c923bf9fa8841b1f5f884f9b8ccd63fae88fd5123f7c82d48781d3d2c。次内容同一証拠で全文review再利用。末尾修正後2replay/8gate/guard/anchor→fresh build/HTML/4UI/global→verified227→commit/push。
+
+- 2026-10-06T21:49:27.302Z batch169-generation-gates-passed-build-pending。226完了811残保留4。進捗9d3caf1b31ac89903ebf0270f3963807088be58cca36a3ce30bc09a9ec6624ed。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML43見出し122list/38alias/英日PCmobile実UI→global→verified227/commit/push。
+
+- 2026-10-06T21:49:27.490Z batch169-generation-gates-passed-build-pending。226完了811残保留4。進捗e240d512e94f5036580e21f7761a35750a221ccf3f6f14a58b97eb6cf92dec71。次末尾修正後の8gate/2replay/全2074guard/anchor合格。fresh systems統合build→全7入力hash/HTML43head122list/38alias/4UI/global→verified227/commit/push。
+
+- 2026-10-06T21:58:01.404Z batch169-four-ui-content-reviewed-global-pending。226完了811残保留4。進捗fff814d21b2d0097d12d5772f58ef42e6ae3cddfea3a61e981b1ebea77b923b4。次全1037台帳global/全2074hash/diff→verified227→commit/push/hash照合→170 Tor fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T21:59:03.087Z batch169-verified227-save-push-pending。227完了810残保留4。進捗89843886ea53b3f91c681305f954efd4feb88632182a2a5407ad5a0d699dd3b4。次227完了810残保留4。Waves全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次170 github-polycarbohydrate-awesome-tor-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ169 Waves検証完了・保存準備 (2026-10-06T21:59:08.410Z)
+
+- raw208/旧EN206/旧JA206を全文読了。最初の一括出力eb715bは省略のため不採用、EN02208e/c2b0ac、JAe4fa34/262d12で全分割読了。固定原文のWaves定義復元、116説明を全文翻訳。122資料/42分類/43見出し、9言語別クライアントライブラリ・12地域言語コミュニティを保持。別パスraw全文3a3c32/d87490/812913+変更6単位1c14a3、最終ENJA全文da825c/42e084、JA単独af6558/e8ec6c。実モデル現Codexセッション/API識別子取得不能、委任/ローカルLLMなし。
+- 3StepikコースURLを原文のホスト/ID56120/55963/56157で修復。全10講座言語/6Medium言語、PNG/PDF/PSD/フォント/仏語2形式、TestnetとStagenet差、StatefulSet、暗号プリミティブ、2000ドル/0.5〜6WAVES、アルゴリズム価格付け、全補助URL保持。別パスで投票の組合代表/全ウォレット機能/他者アイテム売買/WaveFlow新規作成を補完。Lombardiniのfor WAVESへ原文にない担保条件を付けない。
+- 9H4→H3、Client libraries/後続utils/tools→H2、順序維持。33英語と5変更JA旧IDを空aliasで保持。国旗2つは地域名へ文字化。33手動目次/作者PR貢献募集/装飾除去を全入力単位対応記録。主題開発コミュニティ・寄付widgetは保持。原文本文にlicense節なし、既存CC0出典を実表示で確認。最終EN 5babfda9fb3415c41b88b0688c2d7c4a285c54f4db65581351aacd63108e9a3b / JA c93ec60111abf7d8a2b80499f84bfbca982cf1e109e4b50c01d5ae0ad802dfae。
+- replay2回各1037組2074文書2passes・通常8gate・全2074hash保全/全fragment incoming0・systems fresh統合build/全7開始現在manifest入力一致・HTML43見出し122資料84TOC/38alias/全旧有用ID/出典2URL/統合HTML一致/正規HTMLgate・英日PCmobile実表示/目次/言語/版/隣接操作・global/diff合格。verified227/残810/保留4。状態更新後は全検査入力一致証拠でglobal再利用。EXCLUSIONS項目内timestampのみHEAD復元f0ded7。外部リンク報告は投稿URL除去と3修復により165→164/全体138564→138563の実変更を保存。
+- EOFの余分な空行を1個ずつ除去しcf672dで全意味単位・metadata・URL・codeが同一と証明、読了証拠を再利用。変更前buildはSIGINT後exit0でも統合未完了のため不採用2186ca、変更後build01e2bb/e18493を採用。補助HTML検査のURL部分一致誤判定f2c0f1を正しい固定GitHubパス判定へ修正しda239cで再検査、正規HTMLgate2a58dd合格。
+- 元main他作業差分保持。所有UI/preview終了/viewport復元。本バッチ検証済み本文/overlay/判断証拠/生成物/台帳のみ保存し、workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合。まだ送信準備、外部公開/PR/dispatch/定期設定なし。次170 github-polycarbohydrate-awesome-tor-readme-md 固定raw/旧英日全文から継続。
