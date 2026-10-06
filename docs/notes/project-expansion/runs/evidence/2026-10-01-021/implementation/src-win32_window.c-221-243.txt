@@ -1,0 +1,23 @@
+221: }
+222: 
+223: // Updates the cursor image according to its cursor mode
+224: //
+225: static void updateCursorImage(_GLFWwindow* window)
+226: {
+227:     if (window->cursorMode == GLFW_CURSOR_NORMAL ||
+228:         window->cursorMode == GLFW_CURSOR_CAPTURED)
+229:     {
+230:         if (window->cursor)
+231:             SetCursor(window->cursor->win32.handle);
+232:         else
+233:             SetCursor(LoadCursorW(NULL, IDC_ARROW));
+234:     }
+235:     else
+236:     {
+237:         // NOTE: Via Remote Desktop, setting the cursor to NULL does not hide it.
+238:         // HACK: When running locally, it is set to NULL, but when connected via Remote
+239:         //       Desktop, this is a transparent cursor.
+240:         SetCursor(_glfw.win32.blankCursor);
+241:     }
+242: }
+243: 

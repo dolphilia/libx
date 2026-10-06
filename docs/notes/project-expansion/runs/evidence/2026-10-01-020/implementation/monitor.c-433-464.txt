@@ -1,0 +1,32 @@
+GLFWAPI const GLFWvidmode* glfwGetVideoModes(GLFWmonitor* handle, int* count)
+{
+    assert(count != NULL);
+
+    *count = 0;
+
+    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+
+    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
+    assert(monitor != NULL);
+
+    if (!refreshVideoModes(monitor))
+        return NULL;
+
+    *count = monitor->modeCount;
+    return monitor->modes;
+}
+
+GLFWAPI const GLFWvidmode* glfwGetVideoMode(GLFWmonitor* handle)
+{
+    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+
+    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
+    assert(monitor != NULL);
+
+    if (!_glfw.platform.getVideoMode(monitor, &monitor->currentMode))
+        return NULL;
+
+    return &monitor->currentMode;
+}
+
+GLFWAPI void glfwSetGamma(GLFWmonitor* handle, float gamma)

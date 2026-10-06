@@ -1,0 +1,343 @@
+77: Description
+78: This is the reference documentation for monitor related functions and types. For more task-oriented information, see the Monitor guide. 
+81: Typedefs
+82: typedef struct GLFWmonitor GLFWmonitor
+83:  Opaque monitor object.  
+85: typedef void(* GLFWmonitorfun) (GLFWmonitor *monitor, int event)
+86:  The function pointer type for monitor configuration callbacks.  
+88: typedef struct GLFWvidmode GLFWvidmode
+89:  Video mode type.  
+91: typedef struct GLFWgammaramp GLFWgammaramp
+92:  Gamma ramp.  
+96: Functions
+97: GLFWmonitor ** glfwGetMonitors (int *count)
+98:  Returns the currently connected monitors.  
+100: GLFWmonitor * glfwGetPrimaryMonitor (void)
+101:  Returns the primary monitor.  
+103: void glfwGetMonitorPos (GLFWmonitor *monitor, int *xpos, int *ypos)
+104:  Returns the position of the monitor's viewport on the virtual screen.  
+106: void glfwGetMonitorWorkarea (GLFWmonitor *monitor, int *xpos, int *ypos, int *width, int *height)
+107:  Retrieves the work area of the monitor.  
+109: void glfwGetMonitorPhysicalSize (GLFWmonitor *monitor, int *widthMM, int *heightMM)
+110:  Returns the physical size of the monitor.  
+112: void glfwGetMonitorContentScale (GLFWmonitor *monitor, float *xscale, float *yscale)
+113:  Retrieves the content scale for the specified monitor.  
+115: const char * glfwGetMonitorName (GLFWmonitor *monitor)
+116:  Returns the name of the specified monitor.  
+118: void glfwSetMonitorUserPointer (GLFWmonitor *monitor, void *pointer)
+119:  Sets the user pointer of the specified monitor.  
+121: void * glfwGetMonitorUserPointer (GLFWmonitor *monitor)
+122:  Returns the user pointer of the specified monitor.  
+124: GLFWmonitorfun glfwSetMonitorCallback (GLFWmonitorfun callback)
+125:  Sets the monitor configuration callback.  
+127: const GLFWvidmode * glfwGetVideoModes (GLFWmonitor *monitor, int *count)
+128:  Returns the available video modes for the specified monitor.  
+130: const GLFWvidmode * glfwGetVideoMode (GLFWmonitor *monitor)
+131:  Returns the current mode of the specified monitor.  
+133: void glfwSetGamma (GLFWmonitor *monitor, float gamma)
+134:  Generates a gamma ramp and sets it for the specified monitor.  
+136: const GLFWgammaramp * glfwGetGammaRamp (GLFWmonitor *monitor)
+137:  Returns the current gamma ramp for the specified monitor.  
+139: void glfwSetGammaRamp (GLFWmonitor *monitor, const GLFWgammaramp *ramp)
+140:  Sets the current gamma ramp for the specified monitor.  
+143: Typedef Documentation
+145: ◆ GLFWmonitor
+151:           typedef struct GLFWmonitor GLFWmonitor
+155: Opaque monitor object.
+156: See alsoMonitor objects
+157: SinceAdded in version 3.0. 
+162: ◆ GLFWmonitorfun
+168:           typedef void(* GLFWmonitorfun) (GLFWmonitor *monitor, int event)
+172: This is the function pointer type for monitor configuration callbacks. A monitor callback function has the following signature: void function_name(GLFWmonitor* monitor, int event)
+173: GLFWmonitorstruct GLFWmonitor GLFWmonitorOpaque monitor object.Definition glfw3.h:1396
+174: Parameters
+176:     [in]monitorThe monitor that was connected or disconnected. 
+177:     [in]eventOne of GLFW_CONNECTED or GLFW_DISCONNECTED. Future releases may add more events.
+181: See alsoMonitor configuration changes 
+183: glfwSetMonitorCallback
+184: SinceAdded in version 3.0. 
+189: ◆ GLFWvidmode
+195:           typedef struct GLFWvidmode GLFWvidmode
+199: This describes a single video mode.
+200: See alsoVideo modes 
+202: glfwGetVideoMode 
+204: glfwGetVideoModes
+205: SinceAdded in version 1.0. GLFW 3: Added refresh rate member. 
+210: ◆ GLFWgammaramp
+216:           typedef struct GLFWgammaramp GLFWgammaramp
+220: This describes the gamma ramp for a monitor.
+221: See alsoGamma ramp 
+223: glfwGetGammaRamp 
+225: glfwSetGammaRamp
+226: SinceAdded in version 3.0. 
+230: Function Documentation
+232: ◆ glfwGetMonitors()
+238:           GLFWmonitor ** glfwGetMonitors 
+239:           (
+240:           int * 
+241:           count)
+246: This function returns an array of handles for all currently connected monitors. The primary monitor is always first in the returned array. If no monitors were found, this function returns NULL.
+247: Parameters
+249:     [out]countWhere to store the number of monitors in the returned array. This is set to zero if an error occurred. 
+253: ReturnsAn array of monitor handles, or NULL if no monitors were found or if an error occurred.
+254: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+255: Pointer lifetimeThe returned array is allocated and freed by GLFW. You should not free it yourself. It is guaranteed to be valid only until the monitor configuration changes or the library is terminated.
+256: Thread safetyThis function must only be called from the main thread.
+257: See alsoRetrieving monitors 
+259: Monitor configuration changes 
+261: glfwGetPrimaryMonitor
+262: SinceAdded in version 3.0. 
+267: ◆ glfwGetPrimaryMonitor()
+273:           GLFWmonitor * glfwGetPrimaryMonitor 
+274:           (
+275:           void 
+276:           )
+281: This function returns the primary monitor. This is usually the monitor where elements like the task bar or global menu bar are located.
+282: ReturnsThe primary monitor, or NULL if no monitors were found or if an error occurred.
+283: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+284: Thread safetyThis function must only be called from the main thread.
+285: RemarksThe primary monitor is always first in the array returned by glfwGetMonitors.
+286: See alsoRetrieving monitors 
+288: glfwGetMonitors
+289: SinceAdded in version 3.0. 
+294: ◆ glfwGetMonitorPos()
+300:           void glfwGetMonitorPos 
+301:           (
+302:           GLFWmonitor * 
+303:           monitor, 
+308:           int * 
+309:           xpos, 
+314:           int * 
+315:           ypos 
+319:           )
+324: This function returns the position, in screen coordinates, of the upper-left corner of the specified monitor.
+325: Any or all of the position arguments may be NULL. If an error occurs, all non-NULL position arguments will be set to zero.
+326: Parameters
+328:     [in]monitorThe monitor to query. 
+329:     [out]xposWhere to store the monitor x-coordinate, or NULL. 
+330:     [out]yposWhere to store the monitor y-coordinate, or NULL.
+334: ErrorsPossible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+335: Thread safetyThis function must only be called from the main thread.
+336: See alsoMonitor properties
+337: SinceAdded in version 3.0. 
+342: ◆ glfwGetMonitorWorkarea()
+348:           void glfwGetMonitorWorkarea 
+349:           (
+350:           GLFWmonitor * 
+351:           monitor, 
+356:           int * 
+357:           xpos, 
+362:           int * 
+363:           ypos, 
+368:           int * 
+369:           width, 
+374:           int * 
+375:           height 
+379:           )
+384: This function returns the position, in screen coordinates, of the upper-left corner of the work area of the specified monitor along with the work area size in screen coordinates. The work area is defined as the area of the monitor not occluded by the window system task bar where present. If no task bar exists then the work area is the monitor resolution in screen coordinates.
+385: Any or all of the position and size arguments may be NULL. If an error occurs, all non-NULL position and size arguments will be set to zero.
+386: Parameters
+388:     [in]monitorThe monitor to query. 
+389:     [out]xposWhere to store the monitor x-coordinate, or NULL. 
+390:     [out]yposWhere to store the monitor y-coordinate, or NULL. 
+391:     [out]widthWhere to store the monitor width, or NULL. 
+392:     [out]heightWhere to store the monitor height, or NULL.
+396: ErrorsPossible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+397: Thread safetyThis function must only be called from the main thread.
+398: See alsoWork area
+399: SinceAdded in version 3.3. 
+404: ◆ glfwGetMonitorPhysicalSize()
+410:           void glfwGetMonitorPhysicalSize 
+411:           (
+412:           GLFWmonitor * 
+413:           monitor, 
+418:           int * 
+419:           widthMM, 
+424:           int * 
+425:           heightMM 
+429:           )
+434: This function returns the size, in millimetres, of the display area of the specified monitor.
+435: Some platforms do not provide accurate monitor size information, either because the monitor EDID data is incorrect or because the driver does not report it accurately.
+436: Any or all of the size arguments may be NULL. If an error occurs, all non-NULL size arguments will be set to zero.
+437: Parameters
+439:     [in]monitorThe monitor to query. 
+440:     [out]widthMMWhere to store the width, in millimetres, of the monitor's display area, or NULL. 
+441:     [out]heightMMWhere to store the height, in millimetres, of the monitor's display area, or NULL.
+445: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+446: RemarksWin32: On Windows 8 and earlier the physical size is calculated from the current resolution and system DPI instead of querying the monitor EDID data.
+447: Thread safetyThis function must only be called from the main thread.
+448: See alsoMonitor properties
+449: SinceAdded in version 3.0. 
+454: ◆ glfwGetMonitorContentScale()
+460:           void glfwGetMonitorContentScale 
+461:           (
+462:           GLFWmonitor * 
+463:           monitor, 
+468:           float * 
+469:           xscale, 
+474:           float * 
+475:           yscale 
+479:           )
+484: This function retrieves the content scale for the specified monitor. The content scale is the ratio between the current DPI and the platform's default DPI. This is especially important for text and any UI elements. If the pixel dimensions of your UI scaled by this look appropriate on your machine then it should appear at a reasonable size on other machines regardless of their DPI and scaling settings. This relies on the system DPI and scaling settings being somewhat correct.
+485: The content scale may depend on both the monitor resolution and pixel density and on user settings. It may be very different from the raw DPI calculated from the physical size and current resolution.
+486: Parameters
+488:     [in]monitorThe monitor to query. 
+489:     [out]xscaleWhere to store the x-axis content scale, or NULL. 
+490:     [out]yscaleWhere to store the y-axis content scale, or NULL.
+494: ErrorsPossible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+495: RemarksWayland: Fractional scaling information is not yet available for monitors, so this function only returns integer content scales.
+496: Thread safetyThis function must only be called from the main thread.
+497: See alsoContent scale 
+499: glfwGetWindowContentScale
+500: SinceAdded in version 3.3. 
+505: ◆ glfwGetMonitorName()
+511:           const char * glfwGetMonitorName 
+512:           (
+513:           GLFWmonitor * 
+514:           monitor)
+519: This function returns a human-readable name, encoded as UTF-8, of the specified monitor. The name typically reflects the make and model of the monitor and is not guaranteed to be unique among the connected monitors.
+520: Parameters
+522:     [in]monitorThe monitor to query. 
+526: ReturnsThe UTF-8 encoded name of the monitor, or NULL if an error occurred.
+527: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+528: Pointer lifetimeThe returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected or the library is terminated.
+529: Thread safetyThis function must only be called from the main thread.
+530: See alsoMonitor properties
+531: SinceAdded in version 3.0. 
+536: ◆ glfwSetMonitorUserPointer()
+542:           void glfwSetMonitorUserPointer 
+543:           (
+544:           GLFWmonitor * 
+545:           monitor, 
+550:           void * 
+551:           pointer 
+555:           )
+560: This function sets the user-defined pointer of the specified monitor. The current value is retained until the monitor is disconnected. The initial value is NULL.
+561: This function may be called from the monitor callback, even for a monitor that is being disconnected.
+562: Parameters
+564:     [in]monitorThe monitor whose pointer to set. 
+565:     [in]pointerThe new value.
+569: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+570: Thread safetyThis function may be called from any thread. Access is not synchronized.
+571: See alsoUser pointer 
+573: glfwGetMonitorUserPointer
+574: SinceAdded in version 3.3. 
+579: ◆ glfwGetMonitorUserPointer()
+585:           void * glfwGetMonitorUserPointer 
+586:           (
+587:           GLFWmonitor * 
+588:           monitor)
+593: This function returns the current value of the user-defined pointer of the specified monitor. The initial value is NULL.
+594: This function may be called from the monitor callback, even for a monitor that is being disconnected.
+595: Parameters
+597:     [in]monitorThe monitor whose pointer to return.
+601: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+602: Thread safetyThis function may be called from any thread. Access is not synchronized.
+603: See alsoUser pointer 
+605: glfwSetMonitorUserPointer
+606: SinceAdded in version 3.3. 
+611: ◆ glfwSetMonitorCallback()
+617:           GLFWmonitorfun glfwSetMonitorCallback 
+618:           (
+619:           GLFWmonitorfun 
+620:           callback)
+625: This function sets the monitor configuration callback, or removes the currently set callback. This is called when a monitor is connected to or disconnected from the system.
+626: Parameters
+628:     [in]callbackThe new callback, or NULL to remove the currently set callback. 
+632: ReturnsThe previously set callback, or NULL if no callback was set or the library had not been initialized.
+633: Callback signaturevoid function_name(GLFWmonitor* monitor, int event)
+634:  For more information about the callback parameters, see the function pointer type.
+635: ErrorsPossible errors include GLFW_NOT_INITIALIZED.
+636: Thread safetyThis function must only be called from the main thread.
+637: See alsoMonitor configuration changes
+638: SinceAdded in version 3.0. 
+643: ◆ glfwGetVideoModes()
+649:           const GLFWvidmode * glfwGetVideoModes 
+650:           (
+651:           GLFWmonitor * 
+652:           monitor, 
+657:           int * 
+658:           count 
+662:           )
+667: This function returns an array of all video modes supported by the specified monitor. The returned array is sorted in ascending order, first by color bit depth (the sum of all channel depths), then by resolution area (the product of width and height), then resolution width and finally by refresh rate.
+668: Parameters
+670:     [in]monitorThe monitor to query. 
+671:     [out]countWhere to store the number of video modes in the returned array. This is set to zero if an error occurred. 
+675: ReturnsAn array of video modes, or NULL if an error occurred.
+676: ErrorsPossible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+677: Pointer lifetimeThe returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected, this function is called again for that monitor or the library is terminated.
+678: Thread safetyThis function must only be called from the main thread.
+679: See alsoVideo modes 
+681: glfwGetVideoMode
+682: SinceAdded in version 1.0. GLFW 3: Changed to return an array of modes for a specific monitor. 
+687: ◆ glfwGetVideoMode()
+693:           const GLFWvidmode * glfwGetVideoMode 
+694:           (
+695:           GLFWmonitor * 
+696:           monitor)
+701: This function returns the current video mode of the specified monitor. If you have created a full screen window for that monitor, the return value will depend on whether that window is iconified.
+702: Parameters
+704:     [in]monitorThe monitor to query. 
+708: ReturnsThe current mode of the monitor, or NULL if an error occurred.
+709: ErrorsPossible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+710: Pointer lifetimeThe returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected or the library is terminated.
+711: Thread safetyThis function must only be called from the main thread.
+712: See alsoVideo modes 
+714: glfwGetVideoModes
+715: SinceAdded in version 3.0. Replaces glfwGetDesktopMode. 
+720: ◆ glfwSetGamma()
+726:           void glfwSetGamma 
+727:           (
+728:           GLFWmonitor * 
+729:           monitor, 
+734:           float 
+735:           gamma 
+739:           )
+744: This function generates an appropriately sized gamma ramp from the specified exponent and then calls glfwSetGammaRamp with it. The value must be a finite number greater than zero.
+745: The software controlled gamma ramp is applied in addition to the hardware gamma correction, which today is usually an approximation of sRGB gamma. This means that setting a perfectly linear ramp, or gamma 1.0, will produce the default (usually sRGB-like) behavior.
+746: For gamma correct rendering with OpenGL or OpenGL ES, see the GLFW_SRGB_CAPABLE hint.
+747: Parameters
+749:     [in]monitorThe monitor whose gamma ramp to set. 
+750:     [in]gammaThe desired exponent.
+754: ErrorsPossible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_VALUE, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+755: RemarksWayland: Monitor gamma is a privileged protocol, so this function cannot be implemented and emits GLFW_FEATURE_UNAVAILABLE.
+756: Thread safetyThis function must only be called from the main thread.
+757: See alsoGamma ramp
+758: SinceAdded in version 3.0. 
+763: ◆ glfwGetGammaRamp()
+769:           const GLFWgammaramp * glfwGetGammaRamp 
+770:           (
+771:           GLFWmonitor * 
+772:           monitor)
+777: This function returns the current gamma ramp of the specified monitor.
+778: Parameters
+780:     [in]monitorThe monitor to query. 
+784: ReturnsThe current gamma ramp, or NULL if an error occurred.
+785: ErrorsPossible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+786: RemarksWayland: Monitor gamma is a privileged protocol, so this function cannot be implemented and emits GLFW_FEATURE_UNAVAILABLE while returning NULL.
+787: Pointer lifetimeThe returned structure and its arrays are allocated and freed by GLFW. You should not free them yourself. They are valid until the specified monitor is disconnected, this function is called again for that monitor or the library is terminated.
+788: Thread safetyThis function must only be called from the main thread.
+789: See alsoGamma ramp
+790: SinceAdded in version 3.0. 
+795: ◆ glfwSetGammaRamp()
+801:           void glfwSetGammaRamp 
+802:           (
+803:           GLFWmonitor * 
+804:           monitor, 
+809:           const GLFWgammaramp * 
+810:           ramp 
+814:           )
+819: This function sets the current gamma ramp for the specified monitor. The original gamma ramp for that monitor is saved by GLFW the first time this function is called and is restored by glfwTerminate.
+820: The software controlled gamma ramp is applied in addition to the hardware gamma correction, which today is usually an approximation of sRGB gamma. This means that setting a perfectly linear ramp, or gamma 1.0, will produce the default (usually sRGB-like) behavior.
+821: For gamma correct rendering with OpenGL or OpenGL ES, see the GLFW_SRGB_CAPABLE hint.
+822: Parameters
+824:     [in]monitorThe monitor whose gamma ramp to set. 
+825:     [in]rampThe gamma ramp to use.
+829: ErrorsPossible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+830: RemarksThe size of the specified gamma ramp should match the size of the current ramp for that monitor.
+832: Win32: The gamma ramp size must be 256.
+834: Wayland: Monitor gamma is a privileged protocol, so this function cannot be implemented and emits GLFW_FEATURE_UNAVAILABLE.
+835: Pointer lifetimeThe specified gamma ramp is copied before this function returns.
+836: Thread safetyThis function must only be called from the main thread.
+837: See alsoGamma ramp
+838: SinceAdded in version 3.0. 

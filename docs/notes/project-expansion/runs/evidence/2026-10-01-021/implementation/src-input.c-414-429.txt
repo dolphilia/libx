@@ -1,0 +1,16 @@
+414: void _glfwInputJoystick(_GLFWjoystick* js, int event)
+415: {
+416:     assert(js != NULL);
+417:     assert(event == GLFW_CONNECTED || event == GLFW_DISCONNECTED);
+418: 
+419:     if (event == GLFW_CONNECTED)
+420:         js->connected = GLFW_TRUE;
+421:     else if (event == GLFW_DISCONNECTED)
+422:         js->connected = GLFW_FALSE;
+423: 
+424:     if (_glfw.callbacks.joystick)
+425:         _glfw.callbacks.joystick((int) (js - _glfw.joysticks), event);
+426: }
+427: 
+428: // Notifies shared code of the new value of a joystick axis
+429: //

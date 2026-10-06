@@ -1,0 +1,1190 @@
+1: ---
+2: title: "Input reference"
+3: description: "GLFW 3.5.1 Input reference"
+4: ---
+6: # Input reference
+10: ## Description
+12: This is the reference documentation for input related functions and types. For more task-oriented information, see the Input guide.
+21:  Modules
+25: Gamepad axes
+29: Gamepad axes.
+37: Gamepad buttons
+41: Gamepad buttons.
+49: Joystick hat states
+53: Joystick hat states.
+61: Joysticks
+65: Joystick IDs.
+73: Keyboard key tokens
+77: Keyboard key tokens.
+85: Modifier key flags
+89: Modifier key flags.
+97: Mouse buttons
+101: Mouse button IDs.
+109: Standard cursor shapes
+113: Standard system cursor shapes.
+129:  Macros
+132: #define 
+133: GLFW_KEY_UNKNOWN   -1
+148:  Typedefs
+151: typedef struct GLFWcursor 
+152: GLFWcursor
+156: Opaque cursor object.
+163: typedef void(* 
+164: GLFWmousebuttonfun) (GLFWwindow *window, int button, int action, int mods)
+168: The function pointer type for mouse button callbacks.
+175: typedef void(* 
+176: GLFWcursorposfun) (GLFWwindow *window, double xpos, double ypos)
+180: The function pointer type for cursor position callbacks.
+187: typedef void(* 
+188: GLFWcursorenterfun) (GLFWwindow *window, int entered)
+192: The function pointer type for cursor enter/leave callbacks.
+199: typedef void(* 
+200: GLFWscrollfun) (GLFWwindow *window, double xoffset, double yoffset)
+204: The function pointer type for scroll callbacks.
+211: typedef void(* 
+212: GLFWkeyfun) (GLFWwindow *window, int key, int scancode, int action, int mods)
+216: The function pointer type for keyboard key callbacks.
+223: typedef void(* 
+224: GLFWcharfun) (GLFWwindow *window, unsigned int codepoint)
+228: The function pointer type for Unicode character callbacks.
+235: typedef void(* 
+236: GLFWcharmodsfun) (GLFWwindow *window, unsigned int codepoint, int mods)
+240: The function pointer type for Unicode character with modifiers callbacks.
+247: typedef void(* 
+248: GLFWdropfun) (GLFWwindow *window, int path_count, const char *paths[])
+252: The function pointer type for path drop callbacks.
+259: typedef void(* 
+260: GLFWjoystickfun) (int jid, int event)
+264: The function pointer type for joystick configuration callbacks.
+271: typedef struct GLFWgamepadstate 
+272: GLFWgamepadstate
+276: Gamepad input state.
+292:  Functions
+295: int 
+296: glfwGetInputMode (GLFWwindow *window, int mode)
+300: Returns the value of an input option for the specified window.
+307: void 
+308: glfwSetInputMode (GLFWwindow *window, int mode, int value)
+312: Sets an input option for the specified window.
+319: int 
+320: glfwRawMouseMotionSupported (void)
+324: Returns whether raw mouse motion is supported.
+331: const char * 
+332: glfwGetKeyName (int key, int scancode)
+336: Returns the layout-specific name of the specified printable key.
+343: int 
+344: glfwGetKeyScancode (int key)
+348: Returns the platform-specific scancode of the specified key.
+355: int 
+356: glfwGetKey (GLFWwindow *window, int key)
+360: Returns the last reported state of a keyboard key for the specified window.
+367: int 
+368: glfwGetMouseButton (GLFWwindow *window, int button)
+372: Returns the last reported state of a mouse button for the specified window.
+379: void 
+380: glfwGetCursorPos (GLFWwindow *window, double *xpos, double *ypos)
+384: Retrieves the position of the cursor relative to the content area of the window.
+391: void 
+392: glfwSetCursorPos (GLFWwindow *window, double xpos, double ypos)
+396: Sets the position of the cursor, relative to the content area of the window.
+403: GLFWcursor * 
+404: glfwCreateCursor (const GLFWimage *image, int xhot, int yhot)
+408: Creates a custom cursor.
+415: GLFWcursor * 
+416: glfwCreateStandardCursor (int shape)
+420: Creates a cursor with a standard shape.
+427: void 
+428: glfwDestroyCursor (GLFWcursor *cursor)
+432: Destroys a cursor.
+439: void 
+440: glfwSetCursor (GLFWwindow *window, GLFWcursor *cursor)
+444: Sets the cursor for the window.
+451: GLFWkeyfun 
+452: glfwSetKeyCallback (GLFWwindow *window, GLFWkeyfun callback)
+456: Sets the key callback.
+463: GLFWcharfun 
+464: glfwSetCharCallback (GLFWwindow *window, GLFWcharfun callback)
+468: Sets the Unicode character callback.
+475: GLFWcharmodsfun 
+476: glfwSetCharModsCallback (GLFWwindow *window, GLFWcharmodsfun callback)
+480: Sets the Unicode character with modifiers callback.
+487: GLFWmousebuttonfun 
+488: glfwSetMouseButtonCallback (GLFWwindow *window, GLFWmousebuttonfun callback)
+492: Sets the mouse button callback.
+499: GLFWcursorposfun 
+500: glfwSetCursorPosCallback (GLFWwindow *window, GLFWcursorposfun callback)
+504: Sets the cursor position callback.
+511: GLFWcursorenterfun 
+512: glfwSetCursorEnterCallback (GLFWwindow *window, GLFWcursorenterfun callback)
+516: Sets the cursor enter/leave callback.
+523: GLFWscrollfun 
+524: glfwSetScrollCallback (GLFWwindow *window, GLFWscrollfun callback)
+528: Sets the scroll callback.
+535: GLFWdropfun 
+536: glfwSetDropCallback (GLFWwindow *window, GLFWdropfun callback)
+540: Sets the path drop callback.
+547: int 
+548: glfwJoystickPresent (int jid)
+552: Returns whether the specified joystick is present.
+559: const float * 
+560: glfwGetJoystickAxes (int jid, int *count)
+564: Returns the values of all axes of the specified joystick.
+571: const unsigned char * 
+572: glfwGetJoystickButtons (int jid, int *count)
+576: Returns the state of all buttons of the specified joystick.
+583: const unsigned char * 
+584: glfwGetJoystickHats (int jid, int *count)
+588: Returns the state of all hats of the specified joystick.
+595: const char * 
+596: glfwGetJoystickName (int jid)
+600: Returns the name of the specified joystick.
+607: const char * 
+608: glfwGetJoystickGUID (int jid)
+612: Returns the SDL compatible GUID of the specified joystick.
+619: void 
+620: glfwSetJoystickUserPointer (int jid, void *pointer)
+624: Sets the user pointer of the specified joystick.
+631: void * 
+632: glfwGetJoystickUserPointer (int jid)
+636: Returns the user pointer of the specified joystick.
+643: int 
+644: glfwJoystickIsGamepad (int jid)
+648: Returns whether the specified joystick has a gamepad mapping.
+655: GLFWjoystickfun 
+656: glfwSetJoystickCallback (GLFWjoystickfun callback)
+660: Sets the joystick configuration callback.
+667: int 
+668: glfwUpdateGamepadMappings (const char *string)
+672: Adds the specified SDL_GameControllerDB gamepad mappings.
+679: const char * 
+680: glfwGetGamepadName (int jid)
+684: Returns the human-readable gamepad name for the specified joystick.
+691: int 
+692: glfwGetGamepadState (int jid, GLFWgamepadstate *state)
+696: Retrieves the state of the specified joystick remapped as a gamepad.
+703: void 
+704: glfwSetClipboardString (GLFWwindow *window, const char *string)
+708: Sets the clipboard to the specified string.
+715: const char * 
+716: glfwGetClipboardString (GLFWwindow *window)
+720: Returns the contents of the clipboard as a string.
+727: double 
+728: glfwGetTime (void)
+732: Returns the GLFW time.
+739: void 
+740: glfwSetTime (double time)
+744: Sets the GLFW time.
+751: uint64_t 
+752: glfwGetTimerValue (void)
+756: Returns the current value of the raw timer.
+763: uint64_t 
+764: glfwGetTimerFrequency (void)
+768: Returns the frequency, in Hz, of the raw timer.
+777: ## Macro Definition Documentation
+781: ## [◆ ](#gada11d965c4da13090ad336e030e4d11f)GLFW_RELEASE
+789: | \#define GLFW_RELEASE   0 |
+795: The key or mouse button was released.
+803: ## [◆ ](#ga2485743d0b59df3791c45951c4195265)GLFW_PRESS
+811: | \#define GLFW_PRESS   1 |
+817: The key or mouse button was pressed.
+825: ## [◆ ](#gac96fd3b9fc66c6f0eebaf6532595338f)GLFW_REPEAT
+833: | \#define GLFW_REPEAT   2 |
+839: The key was held down until it repeated.
+847: ## [◆ ](#ga99aacc875b6b27a072552631e13775c7)GLFW_KEY_UNKNOWN
+855: | \#define GLFW_KEY_UNKNOWN   -1 |
+865: ## Typedef Documentation
+869: ## [◆ ](#ga89261ae18c75e863aaf2656ecdd238f4)GLFWcursor
+877: | typedef struct GLFWcursor GLFWcursor |
+883: Opaque cursor object.
+885: See also  
+886: Cursor objects
+890: Since  
+891: Added in version 3.1.
+899: ## [◆ ](#ga0184dcb59f6d85d735503dcaae809727)GLFWmousebuttonfun
+907: | typedef void(\* GLFWmousebuttonfun) (GLFWwindow \*window, int button, int action, int mods) |
+913: This is the function pointer type for mouse button callback functions. A mouse button callback function has the following signature:
+919: void function_name(GLFWwindow\* window, int button, int action, int mods)
+927: [GLFWwindow](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga3c96d80d363e67d13a41b5d1821f3242)
+933: struct GLFWwindow GLFWwindow
+939: Opaque window object.
+945: **Definition** glfw3.h:1408
+953: Parameters  
+956: | \[in\] | window | The window that received the event. |
+957: | \[in\] | button | The mouse button that was pressed or released. |
+958: | \[in\] | action | One of `GLFW_PRESS` or `GLFW_RELEASE`. Future releases may add more actions. |
+959: | \[in\] | mods | Bit field describing which modifier keys were held down. |
+963: See also  
+964: Mouse button input
+966: glfwSetMouseButtonCallback
+970: Since  
+971: Added in version 1.0. **GLFW 3:** Added window handle and modifier mask parameters.
+979: ## [◆ ](#gad6fae41b3ac2e4209aaa87b596c57f68)GLFWcursorposfun
+987: | typedef void(\* GLFWcursorposfun) (GLFWwindow \*window, double xpos, double ypos) |
+993: This is the function pointer type for cursor position callbacks. A cursor position callback function has the following signature:
+999: void function_name(GLFWwindow\* window, double xpos, double ypos);
+1005: Parameters  
+1008: | \[in\] | window | The window that received the event. |
+1009: | \[in\] | xpos | The new cursor x-coordinate, relative to the left edge of the content area. |
+1010: | \[in\] | ypos | The new cursor y-coordinate, relative to the top edge of the content area. |
+1014: See also  
+1015: Cursor position
+1017: glfwSetCursorPosCallback
+1021: Since  
+1022: Added in version 3.0. Replaces `GLFWmouseposfun`.
+1030: ## [◆ ](#gaa93dc4818ac9ab32532909d53a337cbe)GLFWcursorenterfun
+1038: | typedef void(\* GLFWcursorenterfun) (GLFWwindow \*window, int entered) |
+1044: This is the function pointer type for cursor enter/leave callbacks. A cursor enter/leave callback function has the following signature:
+1050: void function_name(GLFWwindow\* window, int entered)
+1056: Parameters  
+1059: | \[in\] | window | The window that received the event. |
+1060: | \[in\] | entered | `GLFW_TRUE` if the cursor entered the window's content area, or `GLFW_FALSE` if it left it. |
+1064: See also  
+1065: Cursor enter/leave events
+1067: glfwSetCursorEnterCallback
+1071: Since  
+1072: Added in version 3.0.
+1080: ## [◆ ](#gaf656112c33de3efdb227fa58f0134cf5)GLFWscrollfun
+1088: | typedef void(\* GLFWscrollfun) (GLFWwindow \*window, double xoffset, double yoffset) |
+1094: This is the function pointer type for scroll callbacks. A scroll callback function has the following signature:
+1100: void function_name(GLFWwindow\* window, double xoffset, double yoffset)
+1106: Parameters  
+1109: | \[in\] | window  | The window that received the event. |
+1110: | \[in\] | xoffset | The scroll offset along the x-axis. |
+1111: | \[in\] | yoffset | The scroll offset along the y-axis. |
+1115: See also  
+1116: Scroll input
+1118: glfwSetScrollCallback
+1122: Since  
+1123: Added in version 3.0. Replaces `GLFWmousewheelfun`.
+1131: ## [◆ ](#ga5bd751b27b90f865d2ea613533f0453c)GLFWkeyfun
+1139: | typedef void(\* GLFWkeyfun) (GLFWwindow \*window, int key, int scancode, int action, int mods) |
+1145: This is the function pointer type for keyboard key callbacks. A keyboard key callback function has the following signature:
+1151: void function_name(GLFWwindow\* window, int key, int scancode, int action, int mods)
+1157: Parameters  
+1160: | \[in\] | window | The window that received the event. |
+1161: | \[in\] | key | The keyboard key that was pressed or released. |
+1162: | \[in\] | scancode | The platform-specific scancode of the key. |
+1163: | \[in\] | action | `GLFW_PRESS`, `GLFW_RELEASE` or `GLFW_REPEAT`. Future releases may add more actions. |
+1164: | \[in\] | mods | Bit field describing which modifier keys were held down. |
+1168: See also  
+1169: Key input
+1171: glfwSetKeyCallback
+1175: Since  
+1176: Added in version 1.0. **GLFW 3:** Added window handle, scancode and modifier mask parameters.
+1184: ## [◆ ](#ga1ab90a55cf3f58639b893c0f4118cb6e)GLFWcharfun
+1192: | typedef void(\* GLFWcharfun) (GLFWwindow \*window, unsigned int codepoint) |
+1198: This is the function pointer type for Unicode character callbacks. A Unicode character callback function has the following signature:
+1204: void function_name(GLFWwindow\* window, unsigned int codepoint)
+1210: Parameters  
+1213: | \[in\] | window    | The window that received the event.      |
+1214: | \[in\] | codepoint | The Unicode code point of the character. |
+1218: See also  
+1219: Text input
+1221: glfwSetCharCallback
+1225: Since  
+1226: Added in version 2.4. **GLFW 3:** Added window handle parameter.
+1234: ## [◆ ](#gac3cf64f90b6219c05ac7b7822d5a4b8f)GLFWcharmodsfun
+1242: | typedef void(\* GLFWcharmodsfun) (GLFWwindow \*window, unsigned int codepoint, int mods) |
+1248: This is the function pointer type for Unicode character with modifiers callbacks. It is called for each input character, regardless of what modifier keys are held down. A Unicode character with modifiers callback function has the following signature:
+1254: void function_name(GLFWwindow\* window, unsigned int codepoint, int mods)
+1260: Parameters  
+1263: | \[in\] | window | The window that received the event. |
+1264: | \[in\] | codepoint | The Unicode code point of the character. |
+1265: | \[in\] | mods | Bit field describing which modifier keys were held down. |
+1269: See also  
+1270: Text input
+1272: glfwSetCharModsCallback
+1276: **Deprecated:**  
+1277: Scheduled for removal in version 4.0.
+1281: Since  
+1282: Added in version 3.1.
+1290: ## [◆ ](#gaaba73c3274062c18723b7f05862d94b2)GLFWdropfun
+1298: | typedef void(\* GLFWdropfun) (GLFWwindow \*window, int path_count, const char \*paths\[\]) |
+1304: This is the function pointer type for path drop callbacks. A path drop callback function has the following signature:
+1310: void function_name(GLFWwindow\* window, int path_count, const char\* paths\[\])
+1316: Parameters  
+1319: | \[in\] | window     | The window that received the event.                 |
+1320: | \[in\] | path_count | The number of dropped paths.                        |
+1321: | \[in\] | paths      | The UTF-8 encoded file and/or directory path names. |
+1325: Pointer lifetime  
+1326: The path array and its strings are valid until the callback function returns.
+1330: See also  
+1331: Path drop input
+1333: glfwSetDropCallback
+1337: Since  
+1338: Added in version 3.1.
+1346: ## [◆ ](#gaa21ad5986ae9a26077a40142efb56243)GLFWjoystickfun
+1354: | typedef void(\* GLFWjoystickfun) (int jid, int event) |
+1360: This is the function pointer type for joystick configuration callbacks. A joystick configuration callback function has the following signature:
+1366: void function_name(int jid, int event)
+1372: Parameters  
+1375: | \[in\] | jid | The joystick that was connected or disconnected. |
+1376: | \[in\] | event | One of `GLFW_CONNECTED` or `GLFW_DISCONNECTED`. Future releases may add more events. |
+1380: See also  
+1381: Joystick configuration changes
+1383: glfwSetJoystickCallback
+1387: Since  
+1388: Added in version 3.2.
+1396: ## [◆ ](#ga61acfb1f28f751438dd221225c5e725d)GLFWgamepadstate
+1404: | typedef struct GLFWgamepadstate GLFWgamepadstate |
+1410: This describes the input state of a gamepad.
+1412: See also  
+1413: Gamepad input
+1415: glfwGetGamepadState
+1419: Since  
+1420: Added in version 3.3.
+1426: ## Function Documentation
+1430: ## [◆ ](#gaf5b859dbe19bdf434e42695ea45cc5f4)glfwGetInputMode()
+1438: | int glfwGetInputMode | ( | GLFWwindow \*  | *window*, |
+1439: |  |  | int  | *mode*  |
+1440: |  | ) |  |  |
+1446: This function returns the value of an input option for the specified window. The mode must be one of GLFW_CURSOR, GLFW_STICKY_KEYS, GLFW_STICKY_MOUSE_BUTTONS, GLFW_LOCK_KEY_MODS or GLFW_RAW_MOUSE_MOTION.
+1448: > **Libx reference note (GLFW 3.5.1):** The upstream mode lists omit `GLFW_UNLIMITED_MOUSE_BUTTONS`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583) accepts this mode and returns its current value. The upstream lists are preserved.
+1450: Parameters  
+1453: | \[in\] | window | The window to query. |
+1454: | \[in\] | mode | One of `GLFW_CURSOR`, `GLFW_STICKY_KEYS`, `GLFW_STICKY_MOUSE_BUTTONS`, `GLFW_LOCK_KEY_MODS` or `GLFW_RAW_MOUSE_MOTION`. |
+1458: Errors  
+1459: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+1463: Thread safety  
+1464: This function must only be called from the main thread.
+1468: See also  
+1469: glfwSetInputMode
+1473: Since  
+1474: Added in version 3.0.
+1482: ## [◆ ](#gaa92336e173da9c8834558b54ee80563b)glfwSetInputMode()
+1490: | void glfwSetInputMode | ( | GLFWwindow \*  | *window*, |
+1491: |  |  | int  | *mode*, |
+1492: |  |  | int  | *value*  |
+1493: |  | ) |  |  |
+1499: This function sets an input mode option for the specified window. The mode must be one of GLFW_CURSOR, GLFW_STICKY_KEYS, GLFW_STICKY_MOUSE_BUTTONS, GLFW_LOCK_KEY_MODS GLFW_RAW_MOUSE_MOTION, or GLFW_UNLIMITED_MOUSE_BUTTONS.
+1501: If the mode is `GLFW_CURSOR`, the value must be one of the following cursor modes:
+1503: - `GLFW_CURSOR_NORMAL` makes the cursor visible and behaving normally.
+1504: - `GLFW_CURSOR_HIDDEN` makes the cursor invisible when it is over the content area of the window but does not restrict the cursor from leaving.
+1505: - `GLFW_CURSOR_DISABLED` hides and grabs the cursor, providing virtual and unlimited cursor movement. This is useful for implementing for example 3D camera controls.
+1506: - `GLFW_CURSOR_CAPTURED` makes the cursor visible and confines it to the content area of the window.
+1508: If the mode is `GLFW_STICKY_KEYS`, the value must be either `GLFW_TRUE` to enable sticky keys, or `GLFW_FALSE` to disable it. If sticky keys are enabled, a key press will ensure that glfwGetKey returns `GLFW_PRESS` the next time it is called even if the key had been released before the call. This is useful when you are only interested in whether keys have been pressed but not when or in which order.
+1510: If the mode is `GLFW_STICKY_MOUSE_BUTTONS`, the value must be either `GLFW_TRUE` to enable sticky mouse buttons, or `GLFW_FALSE` to disable it. If sticky mouse buttons are enabled, a mouse button press will ensure that glfwGetMouseButton returns `GLFW_PRESS` the next time it is called even if the mouse button had been released before the call. This is useful when you are only interested in whether mouse buttons have been pressed but not when or in which order.
+1512: If the mode is `GLFW_LOCK_KEY_MODS`, the value must be either `GLFW_TRUE` to enable lock key modifier bits, or `GLFW_FALSE` to disable them. If enabled, callbacks that receive modifier bits will also have the GLFW_MOD_CAPS_LOCK bit set when the event was generated with Caps Lock on, and the GLFW_MOD_NUM_LOCK bit when Num Lock was on.
+1514: If the mode is `GLFW_RAW_MOUSE_MOTION`, the value must be either `GLFW_TRUE` to enable raw (unscaled and unaccelerated) mouse motion when the cursor is disabled, or `GLFW_FALSE` to disable it. If raw motion is not supported, attempting to set this will emit GLFW_FEATURE_UNAVAILABLE. Call glfwRawMouseMotionSupported to check for support.
+1516: > **Libx reference note (GLFW 3.5.1):** The paragraph above names `GLFW_FEATURE_UNAVAILABLE`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687) instead emits `GLFW_PLATFORM_ERROR` when raw mouse motion is unsupported, matching the description of `glfwRawMouseMotionSupported`. The upstream wording is preserved above.
+1518: If the mode is `GLFW_UNLIMITED_MOUSE_BUTTONS`, the value must be either `GLFW_TRUE` to disable the mouse button limit when calling the mouse button callback, or `GLFW_FALSE` to limit the mouse buttons sent to the callback to the mouse button token values up to `GLFW_MOUSE_BUTTON_LAST`.
+1520: > **Libx reference note (GLFW 3.5.1):** The parameter table below omits `GLFW_UNLIMITED_MOUSE_BUTTONS`, although this paragraph describes it. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693) accepts this mode. The upstream table is preserved.
+1522: Parameters  
+1525: | \[in\] | window | The window whose input mode to set. |
+1526: | \[in\] | mode | One of `GLFW_CURSOR`, `GLFW_STICKY_KEYS`, `GLFW_STICKY_MOUSE_BUTTONS`, `GLFW_LOCK_KEY_MODS` or `GLFW_RAW_MOUSE_MOTION`. |
+1527: | \[in\] | value | The new value of the specified input mode. |
+1531: Errors  
+1532: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see above).
+1536: Thread safety  
+1537: This function must only be called from the main thread.
+1541: See also  
+1542: glfwGetInputMode
+1546: Since  
+1547: Added in version 3.0. Replaces `glfwEnable` and `glfwDisable`.
+1555: ## [◆ ](#gae4ee0dbd0d256183e1ea4026d897e1c2)glfwRawMouseMotionSupported()
+1563: | int glfwRawMouseMotionSupported | (   | void  |     | )   |     |
+1569: This function returns whether raw mouse motion is supported on the current system. This status does not change after GLFW has been initialized so you only need to check this once. If you attempt to enable raw motion on a system that does not support it, GLFW_PLATFORM_ERROR will be emitted.
+1571: Raw mouse motion is closer to the actual motion of the mouse across a surface. It is not affected by the scaling and acceleration applied to the motion of the desktop cursor. That processing is suitable for a cursor while raw motion is better for controlling for example a 3D camera. Because of this, raw mouse motion is only provided when the cursor is disabled.
+1573: Returns  
+1574: `GLFW_TRUE` if raw mouse motion is supported on the current machine, or `GLFW_FALSE` otherwise.
+1578: Errors  
+1579: Possible errors include GLFW_NOT_INITIALIZED.
+1583: Thread safety  
+1584: This function must only be called from the main thread.
+1588: See also  
+1589: Raw mouse motion
+1591: glfwSetInputMode
+1595: Since  
+1596: Added in version 3.3.
+1604: ## [◆ ](#gaeaed62e69c3bd62b7ff8f7b19913ce4f)glfwGetKeyName()
+1612: | const char \* glfwGetKeyName | (   | int  | *key*,      |
+1613: |                              |     | int  | *scancode*  |
+1614: |                              | )   |      |             |
+1620: This function returns the name of the specified printable key, encoded as UTF-8. This is typically the character that key would produce without any modifier keys, intended for displaying key bindings to the user. For dead keys, it is typically the diacritic it would add to a character.
+1622: **Do not use this function** for text input. You will break text input for many languages even if it happens to work for yours.
+1624: If the key is `GLFW_KEY_UNKNOWN`, the scancode is used to identify the key, otherwise the scancode is ignored. If you specify a non-printable key, or `GLFW_KEY_UNKNOWN` and a scancode that maps to a non-printable key, this function returns `NULL` but does not emit an error.
+1626: This behavior allows you to always pass in the arguments in the key callback without modification.
+1628: The printable keys are:
+1630: - `GLFW_KEY_APOSTROPHE`
+1631: - `GLFW_KEY_COMMA`
+1632: - `GLFW_KEY_MINUS`
+1633: - `GLFW_KEY_PERIOD`
+1634: - `GLFW_KEY_SLASH`
+1635: - `GLFW_KEY_SEMICOLON`
+1636: - `GLFW_KEY_EQUAL`
+1637: - `GLFW_KEY_LEFT_BRACKET`
+1638: - `GLFW_KEY_RIGHT_BRACKET`
+1639: - `GLFW_KEY_BACKSLASH`
+1640: - `GLFW_KEY_WORLD_1`
+1641: - `GLFW_KEY_WORLD_2`
+1642: - `GLFW_KEY_0` to `GLFW_KEY_9`
+1643: - `GLFW_KEY_A` to `GLFW_KEY_Z`
+1644: - `GLFW_KEY_KP_0` to `GLFW_KEY_KP_9`
+1645: - `GLFW_KEY_KP_DECIMAL`
+1646: - `GLFW_KEY_KP_DIVIDE`
+1647: - `GLFW_KEY_KP_MULTIPLY`
+1648: - `GLFW_KEY_KP_SUBTRACT`
+1649: - `GLFW_KEY_KP_ADD`
+1650: - `GLFW_KEY_KP_EQUAL`
+1652: Names for printable keys depend on keyboard layout, while names for non-printable keys are the same across layouts but depend on the application language and should be localized along with other user interface text.
+1654: Parameters  
+1657: | \[in\] | key      | The key to query, or `GLFW_KEY_UNKNOWN`. |
+1658: | \[in\] | scancode | The scancode of the key to query.        |
+1662: Returns  
+1663: The UTF-8 encoded, layout-specific name of the key, or `NULL`.
+1667: Errors  
+1668: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_VALUE, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+1672: Remarks  
+1673: The contents of the returned string may change when a keyboard layout change event is received.
+1677: Pointer lifetime  
+1678: The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the library is terminated.
+1682: Thread safety  
+1683: This function must only be called from the main thread.
+1687: See also  
+1688: Key names
+1692: Since  
+1693: Added in version 3.2.
+1701: ## [◆ ](#ga67ddd1b7dcbbaff03e4a76c0ea67103a)glfwGetKeyScancode()
+1709: | int glfwGetKeyScancode | (   | int  | *key* | )   |     |
+1715: This function returns the platform-specific scancode of the specified key.
+1717: If the specified key token corresponds to a physical key not supported on the current platform then this method will return `-1`. Calling this function with anything other than a key token will return `-1` and generate a GLFW_INVALID_ENUM error.
+1719: Parameters  
+1722: | \[in\] | key | Any key token. |
+1726: Returns  
+1727: The platform-specific scancode for the key, or `-1` if the key is not supported on the current platform or an error occurred.
+1731: Errors  
+1732: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+1736: Thread safety  
+1737: This function may be called from any thread.
+1741: See also  
+1742: Key input
+1746: Since  
+1747: Added in version 3.3.
+1755: ## [◆ ](#gadd341da06bc8d418b4dc3a3518af9ad2)glfwGetKey()
+1763: | int glfwGetKey | ( | GLFWwindow \*  | *window*, |
+1764: |  |  | int  | *key*  |
+1765: |  | ) |  |  |
+1771: This function returns the last state reported for the specified key to the specified window. The returned state is one of `GLFW_PRESS` or `GLFW_RELEASE`. The action `GLFW_REPEAT` is only reported to the key callback.
+1773: If the GLFW_STICKY_KEYS input mode is enabled, this function returns `GLFW_PRESS` the first time you call it for a key that was pressed, even if that key has already been released.
+1775: The key functions deal with physical keys, with key tokens named after their use on the standard US keyboard layout. If you want to input text, use the Unicode character callback instead.
+1777: The modifier key bit masks are not key tokens and cannot be used with this function.
+1779: **Do not use this function** to implement text input.
+1781: Parameters  
+1784: | \[in\] | window | The desired window. |
+1785: | \[in\] | key | The desired keyboard key. `GLFW_KEY_UNKNOWN` is not a valid key for this function. |
+1789: Returns  
+1790: One of `GLFW_PRESS` or `GLFW_RELEASE`.
+1794: Errors  
+1795: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+1799: Thread safety  
+1800: This function must only be called from the main thread.
+1804: See also  
+1805: Key input
+1809: Since  
+1810: Added in version 1.0. **GLFW 3:** Added window handle parameter.
+1818: ## [◆ ](#gac1473feacb5996c01a7a5a33b5066704)glfwGetMouseButton()
+1826: | int glfwGetMouseButton | ( | GLFWwindow \*  | *window*, |
+1827: |  |  | int  | *button*  |
+1828: |  | ) |  |  |
+1834: This function returns the last state reported for the specified mouse button to the specified window. The returned state is one of `GLFW_PRESS` or `GLFW_RELEASE`.
+1836: If the GLFW_STICKY_MOUSE_BUTTONS input mode is enabled, this function returns `GLFW_PRESS` the first time you call it for a mouse button that was pressed, even if that mouse button has already been released.
+1838: The GLFW_UNLIMITED_MOUSE_BUTTONS input mode does not effect the limit on buttons which can be polled with this function.
+1840: Parameters  
+1843: | \[in\] | window | The desired window. |
+1844: | \[in\] | button | The desired mouse button token. |
+1848: Returns  
+1849: One of `GLFW_PRESS` or `GLFW_RELEASE`.
+1853: Errors  
+1854: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+1858: Thread safety  
+1859: This function must only be called from the main thread.
+1863: See also  
+1864: Mouse button input
+1868: Since  
+1869: Added in version 1.0. **GLFW 3:** Added window handle parameter.
+1877: ## [◆ ](#ga01d37b6c40133676b9cea60ca1d7c0cc)glfwGetCursorPos()
+1885: | void glfwGetCursorPos | ( | GLFWwindow \*  | *window*, |
+1886: |  |  | double \*  | *xpos*, |
+1887: |  |  | double \*  | *ypos*  |
+1888: |  | ) |  |  |
+1894: This function returns the position of the cursor, in screen coordinates, relative to the upper-left corner of the content area of the specified window.
+1896: If the cursor is disabled (with `GLFW_CURSOR_DISABLED`) then the cursor position is unbounded and limited only by the minimum and maximum values of a `double`.
+1898: The coordinate can be converted to their integer equivalents with the `floor` function. Casting directly to an integer type works for positive coordinates, but fails for negative ones.
+1900: Any or all of the position arguments may be `NULL`. If an error occurs, all non-`NULL` position arguments will be set to zero.
+1902: Parameters  
+1905: | \[in\] | window | The desired window. |
+1906: | \[out\] | xpos | Where to store the cursor x-coordinate, relative to the left edge of the content area, or `NULL`. |
+1907: | \[out\] | ypos | Where to store the cursor y-coordinate, relative to the to top edge of the content area, or `NULL`. |
+1911: Errors  
+1912: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+1916: Thread safety  
+1917: This function must only be called from the main thread.
+1921: See also  
+1922: Cursor position
+1924: glfwSetCursorPos
+1928: Since  
+1929: Added in version 3.0. Replaces `glfwGetMousePos`.
+1937: ## [◆ ](#ga04b03af936d906ca123c8f4ee08b39e7)glfwSetCursorPos()
+1945: | void glfwSetCursorPos | ( | GLFWwindow \*  | *window*, |
+1946: |  |  | double  | *xpos*, |
+1947: |  |  | double  | *ypos*  |
+1948: |  | ) |  |  |
+1954: This function sets the position, in screen coordinates, of the cursor relative to the upper-left corner of the content area of the specified window. The window must have input focus. If the window does not have input focus when this function is called, it fails silently.
+1956: **Do not use this function** to implement things like camera controls. GLFW already provides the `GLFW_CURSOR_DISABLED` cursor mode that hides the cursor, transparently re-centers it and provides unconstrained cursor motion. See glfwSetInputMode for more information.
+1958: If the cursor mode is `GLFW_CURSOR_DISABLED` then the cursor position is unconstrained and limited only by the minimum and maximum values of a `double`.
+1960: Parameters  
+1963: | \[in\] | window | The desired window. |
+1964: | \[in\] | xpos | The desired x-coordinate, relative to the left edge of the content area. |
+1965: | \[in\] | ypos | The desired y-coordinate, relative to the top edge of the content area. |
+1969: Errors  
+1970: Possible errors include GLFW_NOT_INITIALIZED, GLFW_PLATFORM_ERROR and GLFW_FEATURE_UNAVAILABLE (see remarks).
+1974: Remarks  
+1975: **Wayland:** This function will only work when the cursor mode is `GLFW_CURSOR_DISABLED`, otherwise it will emit GLFW_FEATURE_UNAVAILABLE.
+1979: Thread safety  
+1980: This function must only be called from the main thread.
+1984: See also  
+1985: Cursor position
+1987: glfwGetCursorPos
+1991: Since  
+1992: Added in version 3.0. Replaces `glfwSetMousePos`.
+2000: ## [◆ ](#ga556f604f73af156c0db0e97c081373c3)glfwCreateCursor()
+2008: | GLFWcursor \* glfwCreateCursor | ( | const GLFWimage \*  | *image*, |
+2009: |  |  | int  | *xhot*, |
+2010: |  |  | int  | *yhot*  |
+2011: |  | ) |  |  |
+2017: Creates a new custom cursor image that can be set for a window with glfwSetCursor. The cursor can be destroyed with glfwDestroyCursor. Any remaining cursors are destroyed by glfwTerminate.
+2019: The pixels are 32-bit, little-endian, non-premultiplied RGBA, i.e. eight bits per channel with the red channel first. They are arranged canonically as packed sequential rows, starting from the top-left corner.
+2021: The cursor hotspot is specified in pixels, relative to the upper-left corner of the cursor image. Like all other coordinate systems in GLFW, the X-axis points to the right and the Y-axis points down.
+2023: Parameters  
+2026: | \[in\] | image | The desired cursor image.                                   |
+2027: | \[in\] | xhot  | The desired x-coordinate, in pixels, of the cursor hotspot. |
+2028: | \[in\] | yhot  | The desired y-coordinate, in pixels, of the cursor hotspot. |
+2032: Returns  
+2033: The handle of the created cursor, or `NULL` if an error occurred.
+2037: Errors  
+2038: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_VALUE and GLFW_PLATFORM_ERROR.
+2042: Pointer lifetime  
+2043: The specified image data is copied before this function returns.
+2047: Thread safety  
+2048: This function must only be called from the main thread.
+2052: See also  
+2053: Cursor objects
+2055: glfwDestroyCursor
+2057: glfwCreateStandardCursor
+2061: Since  
+2062: Added in version 3.1.
+2070: ## [◆ ](#gaf2fb2eb2c9dd842d1cef8a34e3c6403e)glfwCreateStandardCursor()
+2078: | GLFWcursor \* glfwCreateStandardCursor | ( | int  | *shape* | ) |  |
+2084: Returns a cursor with a standard shape, that can be set for a window with glfwSetCursor. The images for these cursors come from the system cursor theme and their exact appearance will vary between platforms.
+2086: Most of these shapes are guaranteed to exist on every supported platform but a few may not be present. See the table below for details.
+2088: | Cursor shape | Windows | macOS | X11 | Wayland |
+2090: | GLFW_ARROW_CURSOR | Yes | Yes | Yes | Yes |
+2091: | GLFW_IBEAM_CURSOR | Yes | Yes | Yes | Yes |
+2092: | GLFW_CROSSHAIR_CURSOR | Yes | Yes | Yes | Yes |
+2093: | GLFW_POINTING_HAND_CURSOR | Yes | Yes | Yes | Yes |
+2094: | GLFW_RESIZE_EW_CURSOR | Yes | Yes | Yes | Yes |
+2095: | GLFW_RESIZE_NS_CURSOR | Yes | Yes | Yes | Yes |
+2096: | GLFW_RESIZE_NWSE_CURSOR | Yes | Yes<sup>1</sup> | Maybe<sup>2</sup> | Maybe<sup>2</sup> |
+2097: | GLFW_RESIZE_NESW_CURSOR | Yes | Yes<sup>1</sup> | Maybe<sup>2</sup> | Maybe<sup>2</sup> |
+2098: | GLFW_RESIZE_ALL_CURSOR | Yes | Yes | Yes | Yes |
+2099: | GLFW_NOT_ALLOWED_CURSOR | Yes | Yes | Maybe<sup>2</sup> | Maybe<sup>2</sup> |
+2101: 1\) This uses a private system API and may fail in the future.
+2103: 2\) This uses a newer standard that not all cursor themes support.
+2105: If the requested shape is not available, this function emits a GLFW_CURSOR_UNAVAILABLE error and returns `NULL`.
+2107: Parameters  
+2110: | \[in\] | shape | One of the standard shapes. |
+2114: Returns  
+2115: A new cursor ready to use or `NULL` if an error occurred.
+2119: Errors  
+2120: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM, GLFW_CURSOR_UNAVAILABLE and GLFW_PLATFORM_ERROR.
+2124: Thread safety  
+2125: This function must only be called from the main thread.
+2129: See also  
+2130: Standard cursor creation
+2132: glfwCreateCursor
+2136: Since  
+2137: Added in version 3.1.
+2145: ## [◆ ](#ga81b952cd1764274d0db7fb3c5a79ba6a)glfwDestroyCursor()
+2153: | void glfwDestroyCursor | ( | GLFWcursor \*  | *cursor* | ) |  |
+2159: This function destroys a cursor previously created with glfwCreateCursor. Any remaining cursors will be destroyed by glfwTerminate.
+2161: If the specified cursor is current for any window, that window will be reverted to the default cursor. This does not affect the cursor mode.
+2163: Parameters  
+2166: | \[in\] | cursor | The cursor object to destroy. |
+2170: Errors  
+2171: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+2175: Reentrancy  
+2176: This function must not be called from a callback.
+2180: Thread safety  
+2181: This function must only be called from the main thread.
+2185: See also  
+2186: Cursor objects
+2188: glfwCreateCursor
+2192: Since  
+2193: Added in version 3.1.
+2201: ## [◆ ](#gad3b4f38c8d5dae036bc8fa959e18343e)glfwSetCursor()
+2209: | void glfwSetCursor | ( | GLFWwindow \*  | *window*, |
+2210: |  |  | GLFWcursor \*  | *cursor*  |
+2211: |  | ) |  |  |
+2217: This function sets the cursor image to be used when the cursor is over the content area of the specified window. The set cursor will only be visible when the cursor mode of the window is `GLFW_CURSOR_NORMAL`.
+2219: > **Libx reference note (GLFW 3.5.1):** The NORMAL-only statement above is incomplete for capture-supporting backends. The fixed [Win32](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242), [X11](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474), and [Wayland](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353) implementations also select the cursor image in `GLFW_CURSOR_CAPTURED`. The fixed [Cocoa implementation](https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683) reports `GLFW_FEATURE_UNIMPLEMENTED` for captured mode. The upstream wording is preserved above.
+2221: On some platforms, the set cursor may not be visible unless the window also has input focus.
+2223: Parameters  
+2226: | \[in\] | window | The window to set the cursor for. |
+2227: | \[in\] | cursor | The cursor to set, or `NULL` to switch back to the default arrow cursor. |
+2231: Errors  
+2232: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+2236: Thread safety  
+2237: This function must only be called from the main thread.
+2241: See also  
+2242: Cursor objects
+2246: Since  
+2247: Added in version 3.1.
+2255: ## [◆ ](#ga1caf18159767e761185e49a3be019f8d)glfwSetKeyCallback()
+2263: | GLFWkeyfun glfwSetKeyCallback | ( | GLFWwindow \*  | *window*, |
+2264: |  |  | GLFWkeyfun  | *callback*  |
+2265: |  | ) |  |  |
+2271: This function sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
+2273: The key functions deal with physical keys, with layout independent key tokens named after their values in the standard US keyboard layout. If you want to input text, use the character callback instead.
+2275: When a window loses input focus, it will generate synthetic key release events for all pressed keys with associated key tokens. You can tell these events from user-generated events by the fact that the synthetic ones are generated after the focus loss event has been processed, i.e. after the window focus callback has been called.
+2277: The scancode of a key is specific to that platform or sometimes even to that machine. Scancodes are intended to allow users to bind keys that don't have a GLFW key token. Such keys have `key` set to `GLFW_KEY_UNKNOWN`, their state is not saved and so it cannot be queried with glfwGetKey.
+2279: Sometimes GLFW needs to generate synthetic key events, in which case the scancode may be zero.
+2281: Parameters  
+2284: | \[in\] | window | The window whose callback to set. |
+2285: | \[in\] | callback | The new key callback, or `NULL` to remove the currently set callback. |
+2289: Returns  
+2290: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+2294: Callback signature  
+2299: void function_name(GLFWwindow\* window, int key, int scancode, int action, int mods)
+2305: For more information about the callback parameters, see the function pointer type.
+2309: Errors  
+2310: Possible errors include GLFW_NOT_INITIALIZED.
+2314: Thread safety  
+2315: This function must only be called from the main thread.
+2319: See also  
+2320: Key input
+2324: Since  
+2325: Added in version 1.0. **GLFW 3:** Added window handle parameter and return value.
+2333: ## [◆ ](#gab25c4a220fd8f5717718dbc487828996)glfwSetCharCallback()
+2341: | GLFWcharfun glfwSetCharCallback | ( | GLFWwindow \*  | *window*, |
+2342: |  |  | GLFWcharfun  | *callback*  |
+2343: |  | ) |  |  |
+2349: This function sets the character callback of the specified window, which is called when a Unicode character is input.
+2351: The character callback is intended for Unicode text input. As it deals with characters, it is keyboard layout dependent, whereas the key callback is not. Characters do not map 1:1 to physical keys, as a key may produce zero, one or more characters. If you want to know whether a specific physical key was pressed or released, see the key callback instead.
+2353: The character callback behaves as system text input normally does and will not be called if modifier keys are held down that would prevent normal text input on that platform, for example a Super (Command) key on macOS or Alt key on Windows.
+2355: Parameters  
+2358: | \[in\] | window | The window whose callback to set. |
+2359: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+2363: Returns  
+2364: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+2368: Callback signature  
+2373: void function_name(GLFWwindow\* window, unsigned int codepoint)
+2379: For more information about the callback parameters, see the function pointer type.
+2383: Errors  
+2384: Possible errors include GLFW_NOT_INITIALIZED.
+2388: Thread safety  
+2389: This function must only be called from the main thread.
+2393: See also  
+2394: Text input
+2398: Since  
+2399: Added in version 2.4. **GLFW 3:** Added window handle parameter and return value.
+2407: ## [◆ ](#ga0b7f4ad13c2b17435ff13b6dcfb4e43c)glfwSetCharModsCallback()
+2415: | GLFWcharmodsfun glfwSetCharModsCallback | ( | GLFWwindow \*  | *window*, |
+2416: |  |  | GLFWcharmodsfun  | *callback*  |
+2417: |  | ) |  |  |
+2423: This function sets the character with modifiers callback of the specified window, which is called when a Unicode character is input regardless of what modifier keys are used.
+2425: The character with modifiers callback is intended for implementing custom Unicode character input. For regular Unicode text input, see the character callback. Like the character callback, the character with modifiers callback deals with characters and is keyboard layout dependent. Characters do not map 1:1 to physical keys, as a key may produce zero, one or more characters. If you want to know whether a specific physical key was pressed or released, see the key callback instead.
+2427: Parameters  
+2430: | \[in\] | window | The window whose callback to set. |
+2431: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+2435: Returns  
+2436: The previously set callback, or `NULL` if no callback was set or an error occurred.
+2440: Callback signature  
+2445: void function_name(GLFWwindow\* window, unsigned int codepoint, int mods)
+2451: For more information about the callback parameters, see the function pointer type.
+2455: **Deprecated:**  
+2456: Scheduled for removal in version 4.0.
+2460: Errors  
+2461: Possible errors include GLFW_NOT_INITIALIZED.
+2465: Thread safety  
+2466: This function must only be called from the main thread.
+2470: See also  
+2471: Text input
+2475: Since  
+2476: Added in version 3.1.
+2484: ## [◆ ](#ga6ab84420974d812bee700e45284a723c)glfwSetMouseButtonCallback()
+2492: | GLFWmousebuttonfun glfwSetMouseButtonCallback | ( | GLFWwindow \*  | *window*, |
+2493: |  |  | GLFWmousebuttonfun  | *callback*  |
+2494: |  | ) |  |  |
+2500: This function sets the mouse button callback of the specified window, which is called when a mouse button is pressed or released.
+2502: When a window loses input focus, it will generate synthetic mouse button release events for all pressed mouse buttons with associated button tokens. You can tell these events from user-generated events by the fact that the synthetic ones are generated after the focus loss event has been processed, i.e. after the window focus callback has been called.
+2504: The reported `button` value can be higher than `GLFW_MOUSE_BUTTON_LAST` if the button does not have an associated button token and the GLFW_UNLIMITED_MOUSE_BUTTONS input mode is set.
+2506: Parameters  
+2509: | \[in\] | window | The window whose callback to set. |
+2510: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+2514: Returns  
+2515: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+2519: Callback signature  
+2524: void function_name(GLFWwindow\* window, int button, int action, int mods)
+2530: For more information about the callback parameters, see the function pointer type.
+2534: Errors  
+2535: Possible errors include GLFW_NOT_INITIALIZED.
+2539: Thread safety  
+2540: This function must only be called from the main thread.
+2544: See also  
+2545: Mouse button input
+2549: Since  
+2550: Added in version 1.0. **GLFW 3:** Added window handle parameter and return value.
+2558: ## [◆ ](#gac1f879ab7435d54d4d79bb469fe225d7)glfwSetCursorPosCallback()
+2566: | GLFWcursorposfun glfwSetCursorPosCallback | ( | GLFWwindow \*  | *window*, |
+2567: |  |  | GLFWcursorposfun  | *callback*  |
+2568: |  | ) |  |  |
+2574: This function sets the cursor position callback of the specified window, which is called when the cursor is moved. The callback is provided with the position, in screen coordinates, relative to the upper-left corner of the content area of the window.
+2576: Parameters  
+2579: | \[in\] | window | The window whose callback to set. |
+2580: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+2584: Returns  
+2585: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+2589: Callback signature  
+2594: void function_name(GLFWwindow\* window, double xpos, double ypos);
+2600: For more information about the callback parameters, see the function pointer type.
+2604: Errors  
+2605: Possible errors include GLFW_NOT_INITIALIZED.
+2609: Thread safety  
+2610: This function must only be called from the main thread.
+2614: See also  
+2615: Cursor position
+2619: Since  
+2620: Added in version 3.0. Replaces `glfwSetMousePosCallback`.
+2628: ## [◆ ](#gad27f8ad0142c038a281466c0966817d8)glfwSetCursorEnterCallback()
+2636: | GLFWcursorenterfun glfwSetCursorEnterCallback | ( | GLFWwindow \*  | *window*, |
+2637: |  |  | GLFWcursorenterfun  | *callback*  |
+2638: |  | ) |  |  |
+2644: This function sets the cursor boundary crossing callback of the specified window, which is called when the cursor enters or leaves the content area of the window.
+2646: Parameters  
+2649: | \[in\] | window | The window whose callback to set. |
+2650: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+2654: Returns  
+2655: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+2659: Callback signature  
+2664: void function_name(GLFWwindow\* window, int entered)
+2670: For more information about the callback parameters, see the function pointer type.
+2674: Errors  
+2675: Possible errors include GLFW_NOT_INITIALIZED.
+2679: Thread safety  
+2680: This function must only be called from the main thread.
+2684: See also  
+2685: Cursor enter/leave events
+2689: Since  
+2690: Added in version 3.0.
+2698: ## [◆ ](#ga571e45a030ae4061f746ed56cb76aede)glfwSetScrollCallback()
+2706: | GLFWscrollfun glfwSetScrollCallback | ( | GLFWwindow \*  | *window*, |
+2707: |  |  | GLFWscrollfun  | *callback*  |
+2708: |  | ) |  |  |
+2714: This function sets the scroll callback of the specified window, which is called when a scrolling device is used, such as a mouse wheel or scrolling area of a touchpad.
+2716: The scroll callback receives all scrolling input, like that from a mouse wheel or a touchpad scrolling area.
+2718: Parameters  
+2721: | \[in\] | window | The window whose callback to set. |
+2722: | \[in\] | callback | The new scroll callback, or `NULL` to remove the currently set callback. |
+2726: Returns  
+2727: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+2731: Callback signature  
+2736: void function_name(GLFWwindow\* window, double xoffset, double yoffset)
+2742: For more information about the callback parameters, see the function pointer type.
+2746: Errors  
+2747: Possible errors include GLFW_NOT_INITIALIZED.
+2751: Thread safety  
+2752: This function must only be called from the main thread.
+2756: See also  
+2757: Scroll input
+2761: Since  
+2762: Added in version 3.0. Replaces `glfwSetMouseWheelCallback`.
+2770: ## [◆ ](#gab773f0ee0a07cff77a210cea40bc1f6b)glfwSetDropCallback()
+2778: | GLFWdropfun glfwSetDropCallback | ( | GLFWwindow \*  | *window*, |
+2779: |  |  | GLFWdropfun  | *callback*  |
+2780: |  | ) |  |  |
+2786: This function sets the path drop callback of the specified window, which is called when one or more dragged paths are dropped on the window.
+2788: Because the path array and its strings may have been generated specifically for that event, they are not guaranteed to be valid after the callback has returned. If you wish to use them after the callback returns, you need to make a deep copy.
+2790: Parameters  
+2793: | \[in\] | window | The window whose callback to set. |
+2794: | \[in\] | callback | The new file drop callback, or `NULL` to remove the currently set callback. |
+2798: Returns  
+2799: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+2803: Callback signature  
+2808: void function_name(GLFWwindow\* window, int path_count, const char\* paths\[\])
+2814: For more information about the callback parameters, see the function pointer type.
+2818: Errors  
+2819: Possible errors include GLFW_NOT_INITIALIZED.
+2823: Thread safety  
+2824: This function must only be called from the main thread.
+2828: See also  
+2829: Path drop input
+2833: Since  
+2834: Added in version 3.1.
+2842: ## [◆ ](#gaed0966cee139d815317f9ffcba64c9f1)glfwJoystickPresent()
+2850: | int glfwJoystickPresent | (   | int  | *jid* | )   |     |
+2856: This function returns whether the specified joystick is present.
+2858: There is no need to call this function before other functions that accept a joystick ID, as they all check for presence before performing any other work.
+2860: > **Libx reference note (GLFW 3.5.1):** The all-functions statement above has an exception. The fixed [user-pointer functions](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255) check whether the joystick object is allocated rather than polling for a connection. As their own descriptions state, they may be used in the disconnection callback. The fixed [callback path](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426) marks the joystick disconnected before invoking that callback. The upstream wording is preserved above.
+2862: Parameters  
+2865: | \[in\] | jid | The joystick to query. |
+2869: Returns  
+2870: `GLFW_TRUE` if the joystick is present, or `GLFW_FALSE` otherwise.
+2874: Errors  
+2875: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+2879: Thread safety  
+2880: This function must only be called from the main thread.
+2884: See also  
+2885: Joystick input
+2889: Since  
+2890: Added in version 3.0. Replaces `glfwGetJoystickParam`.
+2898: ## [◆ ](#gaeb1c0191d3140a233a682987c61eb408)glfwGetJoystickAxes()
+2906: | const float \* glfwGetJoystickAxes | (   | int     | *jid*,   |
+2907: |                                    |     | int \*  | *count*  |
+2908: |                                    | )   |         |          |
+2914: This function returns the values of all axes of the specified joystick. Each element in the array is a value between -1.0 and 1.0.
+2916: If the specified joystick is not present this function will return `NULL` but will not generate an error. This can be used instead of first calling glfwJoystickPresent.
+2918: Parameters  
+2921: | \[in\] | jid | The joystick to query. |
+2922: | \[out\] | count | Where to store the number of axis values in the returned array. This is set to zero if the joystick is not present or an error occurred. |
+2926: Returns  
+2927: An array of axis values, or `NULL` if the joystick is not present or an error occurred.
+2931: Errors  
+2932: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+2936: Pointer lifetime  
+2937: The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected or the library is terminated.
+2941: Thread safety  
+2942: This function must only be called from the main thread.
+2946: See also  
+2947: Joystick axis states
+2951: Since  
+2952: Added in version 3.0. Replaces `glfwGetJoystickPos`.
+2960: ## [◆ ](#ga5ffe34739d3dc97efe432ed2d81d9938)glfwGetJoystickButtons()
+2968: | const unsigned char \* glfwGetJoystickButtons | (   | int     | *jid*,   |
+2969: |                                               |     | int \*  | *count*  |
+2970: |                                               | )   |         |          |
+2976: This function returns the state of all buttons of the specified joystick. Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.
+2978: For backward compatibility with earlier versions that did not have glfwGetJoystickHats, the button array also includes all hats, each represented as four buttons. The hats are in the same order as returned by **glfwGetJoystickHats** and are in the order *up*, *right*, *down* and *left*. To disable these extra buttons, set the GLFW_JOYSTICK_HAT_BUTTONS init hint before initialization.
+2980: If the specified joystick is not present this function will return `NULL` but will not generate an error. This can be used instead of first calling glfwJoystickPresent.
+2982: Parameters  
+2985: | \[in\] | jid | The joystick to query. |
+2986: | \[out\] | count | Where to store the number of button states in the returned array. This is set to zero if the joystick is not present or an error occurred. |
+2990: Returns  
+2991: An array of button states, or `NULL` if the joystick is not present or an error occurred.
+2995: Errors  
+2996: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+3000: Pointer lifetime  
+3001: The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected or the library is terminated.
+3005: Thread safety  
+3006: This function must only be called from the main thread.
+3010: See also  
+3011: Joystick button states
+3015: Since  
+3016: Added in version 2.2. **GLFW 3:** Changed to return a dynamic array.
+3024: ## [◆ ](#ga06e660841b3e79c54da4f54a932c5a2c)glfwGetJoystickHats()
+3032: | const unsigned char \* glfwGetJoystickHats | (   | int     | *jid*,   |
+3033: |                                            |     | int \*  | *count*  |
+3034: |                                            | )   |         |          |
+3040: This function returns the state of all hats of the specified joystick. Each element in the array is one of the following values:
+3042: | Name                  | Value                               |
+3044: | `GLFW_HAT_CENTERED`   | 0                                   |
+3045: | `GLFW_HAT_UP`         | 1                                   |
+3046: | `GLFW_HAT_RIGHT`      | 2                                   |
+3047: | `GLFW_HAT_DOWN`       | 4                                   |
+3048: | `GLFW_HAT_LEFT`       | 8                                   |
+3049: | `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` \| `GLFW_HAT_UP`   |
+3050: | `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` \| `GLFW_HAT_DOWN` |
+3051: | `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` \| `GLFW_HAT_UP`    |
+3052: | `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` \| `GLFW_HAT_DOWN`  |
+3054: The diagonal directions are bitwise combinations of the primary (up, right, down and left) directions and you can test for these individually by ANDing it with the corresponding direction.
+3060: if (hats\[2\] & GLFW_HAT_RIGHT)
+3066: {
+3072: // State of hat 2 could be right-up, right or right-down
+3078: }
+3086: [GLFW_HAT_RIGHT](/docs/glfw/v3-5-1/en/04-reference/13-joystick-hat-states/#ga252586e3bbde75f4b0e07ad3124867f5)
+3092: \#define GLFW_HAT_RIGHT
+3098: **Definition** glfw3.h:357
+3106: If the specified joystick is not present this function will return `NULL` but will not generate an error. This can be used instead of first calling glfwJoystickPresent.
+3108: Parameters  
+3111: | \[in\] | jid | The joystick to query. |
+3112: | \[out\] | count | Where to store the number of hat states in the returned array. This is set to zero if the joystick is not present or an error occurred. |
+3116: Returns  
+3117: An array of hat states, or `NULL` if the joystick is not present or an error occurred.
+3121: Errors  
+3122: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+3126: Pointer lifetime  
+3127: The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+3131: Thread safety  
+3132: This function must only be called from the main thread.
+3136: See also  
+3137: Joystick hat states
+3141: Since  
+3142: Added in version 3.3.
+3150: ## [◆ ](#gac6a8e769e18e0bcfa9097793fc2c3978)glfwGetJoystickName()
+3158: | const char \* glfwGetJoystickName | (   | int  | *jid* | )   |     |
+3164: This function returns the name, encoded as UTF-8, of the specified joystick. The returned string is allocated and freed by GLFW. You should not free it yourself.
+3166: If the specified joystick is not present this function will return `NULL` but will not generate an error. This can be used instead of first calling glfwJoystickPresent.
+3168: Parameters  
+3171: | \[in\] | jid | The joystick to query. |
+3175: Returns  
+3176: The UTF-8 encoded name of the joystick, or `NULL` if the joystick is not present or an error occurred.
+3180: Errors  
+3181: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+3185: Pointer lifetime  
+3186: The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected or the library is terminated.
+3190: Thread safety  
+3191: This function must only be called from the main thread.
+3195: See also  
+3196: Joystick name
+3200: Since  
+3201: Added in version 3.0.
+3209: ## [◆ ](#ga6659411aec3c7fcef27780e2cb2d9600)glfwGetJoystickGUID()
+3217: | const char \* glfwGetJoystickGUID | (   | int  | *jid* | )   |     |
+3223: This function returns the SDL compatible GUID, as a UTF-8 encoded hexadecimal string, of the specified joystick. The returned string is allocated and freed by GLFW. You should not free it yourself.
+3225: The GUID is what connects a joystick to a gamepad mapping. A connected joystick will always have a GUID even if there is no gamepad mapping assigned to it.
+3227: If the specified joystick is not present this function will return `NULL` but will not generate an error. This can be used instead of first calling glfwJoystickPresent.
+3229: The GUID uses the format introduced in SDL 2.0.5. This GUID tries to uniquely identify the make and model of a joystick but does not identify a specific unit, e.g. all wired Xbox 360 controllers will have the same GUID on that platform. The GUID for a unit may vary between platforms depending on what hardware information the platform specific APIs provide.
+3231: Parameters  
+3234: | \[in\] | jid | The joystick to query. |
+3238: Returns  
+3239: The UTF-8 encoded GUID of the joystick, or `NULL` if the joystick is not present or an error occurred.
+3243: Errors  
+3244: Possible errors include GLFW_NOT_INITIALIZED, GLFW_INVALID_ENUM and GLFW_PLATFORM_ERROR.
+3248: Pointer lifetime  
+3249: The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected or the library is terminated.
+3253: Thread safety  
+3254: This function must only be called from the main thread.
+3258: See also  
+3259: Gamepad input
+3263: Since  
+3264: Added in version 3.3.
+3272: ## [◆ ](#ga6b2f72d64d636b48a727b437cbb7489e)glfwSetJoystickUserPointer()
+3280: | void glfwSetJoystickUserPointer | (   | int      | *jid*,     |
+3281: |                                 |     | void \*  | *pointer*  |
+3282: |                                 | )   |          |            |
+3288: This function sets the user-defined pointer of the specified joystick. The current value is retained until the joystick is disconnected. The initial value is `NULL`.
+3290: This function may be called from the joystick callback, even for a joystick that is being disconnected.
+3292: Parameters  
+3295: | \[in\] | jid     | The joystick whose pointer to set. |
+3296: | \[in\] | pointer | The new value.                     |
+3300: Errors  
+3301: Possible errors include GLFW_NOT_INITIALIZED.
+3305: Thread safety  
+3306: This function may be called from any thread. Access is not synchronized.
+3310: See also  
+3311: Joystick user pointer
+3313: glfwGetJoystickUserPointer
+3317: Since  
+3318: Added in version 3.3.
+3326: ## [◆ ](#ga18cefd7265d1fa04f3fd38a6746db5f3)glfwGetJoystickUserPointer()
+3334: | void \* glfwGetJoystickUserPointer | (   | int  | *jid* | )   |     |
+3340: This function returns the current value of the user-defined pointer of the specified joystick. The initial value is `NULL`.
+3342: This function may be called from the joystick callback, even for a joystick that is being disconnected.
+3344: Parameters  
+3347: | \[in\] | jid | The joystick whose pointer to return. |
+3351: Errors  
+3352: Possible errors include GLFW_NOT_INITIALIZED.
+3356: Thread safety  
+3357: This function may be called from any thread. Access is not synchronized.
+3361: See also  
+3362: Joystick user pointer
+3364: glfwSetJoystickUserPointer
+3368: Since  
+3369: Added in version 3.3.
+3377: ## [◆ ](#gad0f676860f329d80f7e47e9f06a96f00)glfwJoystickIsGamepad()
+3385: | int glfwJoystickIsGamepad | (   | int  | *jid* | )   |     |
+3391: This function returns whether the specified joystick is both present and has a gamepad mapping.
+3393: If the specified joystick is present but does not have a gamepad mapping this function will return `GLFW_FALSE` but will not generate an error. Call glfwJoystickPresent to check if a joystick is present regardless of whether it has a mapping.
+3395: Parameters  
+3398: | \[in\] | jid | The joystick to query. |
+3402: Returns  
+3403: `GLFW_TRUE` if a joystick is both present and has a gamepad mapping, or `GLFW_FALSE` otherwise.
+3407: Errors  
+3408: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+3412: Thread safety  
+3413: This function must only be called from the main thread.
+3417: See also  
+3418: Gamepad input
+3420: glfwGetGamepadState
+3424: Since  
+3425: Added in version 3.3.
+3433: ## [◆ ](#ga2f60a0e5b7bd8d1b7344dc0a7cb32b4c)glfwSetJoystickCallback()
+3441: | GLFWjoystickfun glfwSetJoystickCallback | ( | GLFWjoystickfun  | *callback* | ) |  |
+3447: This function sets the joystick configuration callback, or removes the currently set callback. This is called when a joystick is connected to or disconnected from the system.
+3449: For joystick connection and disconnection events to be delivered on all platforms, you need to call one of the event processing functions. Joystick disconnection may also be detected and the callback called by joystick functions. The function will then return whatever it returns if the joystick is not present.
+3451: Parameters  
+3454: | \[in\] | callback | The new callback, or `NULL` to remove the currently set callback. |
+3458: Returns  
+3459: The previously set callback, or `NULL` if no callback was set or the library had not been initialized.
+3463: Callback signature  
+3468: void function_name(int jid, int event)
+3474: For more information about the callback parameters, see the function pointer type.
+3478: Errors  
+3479: Possible errors include GLFW_NOT_INITIALIZED.
+3483: Thread safety  
+3484: This function must only be called from the main thread.
+3488: See also  
+3489: Joystick configuration changes
+3493: Since  
+3494: Added in version 3.2.
+3502: ## [◆ ](#gaed5104612f2fa8e66aa6e846652ad00f)glfwUpdateGamepadMappings()
+3510: | int glfwUpdateGamepadMappings | (   | const char \*  | *string* | )   |     |
+3516: This function parses the specified ASCII encoded string and updates the internal list with any gamepad mappings it finds. This string may contain either a single gamepad mapping or many mappings separated by newlines. The parser supports the full format of the `gamecontrollerdb.txt` source file including empty lines and comments.
+3518: See Gamepad mappings for a description of the format.
+3520: If there is already a gamepad mapping for a given GUID in the internal list, it will be replaced by the one passed to this function. If the library is terminated and re-initialized the internal list will revert to the built-in default.
+3522: Parameters  
+3525: | \[in\] | string | The string containing the gamepad mappings. |
+3529: Returns  
+3530: `GLFW_TRUE` if successful, or `GLFW_FALSE` if an error occurred.
+3534: Errors  
+3535: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_VALUE.
+3539: Thread safety  
+3540: This function must only be called from the main thread.
+3544: See also  
+3545: Gamepad input
+3547: glfwJoystickIsGamepad
+3549: glfwGetGamepadName
+3553: Since  
+3554: Added in version 3.3.
+3562: ## [◆ ](#ga8aea73a1a25cc6c0486a617019f56728)glfwGetGamepadName()
+3570: | const char \* glfwGetGamepadName | (   | int  | *jid* | )   |     |
+3576: This function returns the human-readable name of the gamepad from the gamepad mapping assigned to the specified joystick.
+3578: If the specified joystick is not present or does not have a gamepad mapping this function will return `NULL` but will not generate an error. Call glfwJoystickPresent to check whether it is present regardless of whether it has a mapping.
+3580: Parameters  
+3583: | \[in\] | jid | The joystick to query. |
+3587: Returns  
+3588: The UTF-8 encoded name of the gamepad, or `NULL` if the joystick is not present, does not have a mapping or an error occurred.
+3592: Errors  
+3593: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+3597: Pointer lifetime  
+3598: The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected, the gamepad mappings are updated or the library is terminated.
+3602: Thread safety  
+3603: This function must only be called from the main thread.
+3607: See also  
+3608: Gamepad input
+3610: glfwJoystickIsGamepad
+3614: Since  
+3615: Added in version 3.3.
+3623: ## [◆ ](#gadccddea8bce6113fa459de379ddaf051)glfwGetGamepadState()
+3631: | int glfwGetGamepadState | ( | int  | *jid*, |
+3632: |  |  | GLFWgamepadstate \*  | *state*  |
+3633: |  | ) |  |  |
+3639: This function retrieves the state of the specified joystick remapped to an Xbox-like gamepad.
+3641: If the specified joystick is not present or does not have a gamepad mapping this function will return `GLFW_FALSE` but will not generate an error. Call glfwJoystickPresent to check whether it is present regardless of whether it has a mapping.
+3643: The Guide button may not be available for input as it is often hooked by the system or the Steam client.
+3645: Not all devices have all the buttons or axes provided by GLFWgamepadstate. Unavailable buttons and axes will always report `GLFW_RELEASE` and 0.0 respectively.
+3647: Parameters  
+3650: | \[in\] | jid | The joystick to query. |
+3651: | \[out\] | state | The gamepad input state of the joystick. |
+3655: Returns  
+3656: `GLFW_TRUE` if successful, or `GLFW_FALSE` if no joystick is connected, it has no gamepad mapping or an error occurred.
+3660: Errors  
+3661: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_ENUM.
+3665: Thread safety  
+3666: This function must only be called from the main thread.
+3670: See also  
+3671: Gamepad input
+3673: glfwUpdateGamepadMappings
+3675: glfwJoystickIsGamepad
+3679: Since  
+3680: Added in version 3.3.
+3688: ## [◆ ](#gaba1f022c5eb07dfac421df34cdcd31dd)glfwSetClipboardString()
+3696: | void glfwSetClipboardString | ( | GLFWwindow \*  | *window*, |
+3697: |  |  | const char \*  | *string*  |
+3698: |  | ) |  |  |
+3704: This function sets the system clipboard to the specified, UTF-8 encoded string.
+3706: Parameters  
+3709: | \[in\] | window | Deprecated. Any valid window or `NULL`. |
+3710: | \[in\] | string | A UTF-8 encoded string.                 |
+3714: Errors  
+3715: Possible errors include GLFW_NOT_INITIALIZED and GLFW_PLATFORM_ERROR.
+3719: Remarks  
+3720: **Win32:** The clipboard on Windows has a single global lock for reading and writing. GLFW tries to acquire it a few times, which is almost always enough. If it cannot acquire the lock then this function emits GLFW_PLATFORM_ERROR and returns. It is safe to try this multiple times.
+3724: Pointer lifetime  
+3725: The specified string is copied before this function returns.
+3729: Thread safety  
+3730: This function must only be called from the main thread.
+3734: See also  
+3735: Clipboard input and output
+3737: glfwGetClipboardString
+3741: Since  
+3742: Added in version 3.0.
+3750: ## [◆ ](#ga71a5b20808ea92193d65c21b82580355)glfwGetClipboardString()
+3758: | const char \* glfwGetClipboardString | ( | GLFWwindow \*  | *window* | ) |  |
+3764: This function returns the contents of the system clipboard, if it contains or is convertible to a UTF-8 encoded string. If the clipboard is empty or if its contents cannot be converted, `NULL` is returned and a GLFW_FORMAT_UNAVAILABLE error is generated.
+3766: Parameters  
+3769: | \[in\] | window | Deprecated. Any valid window or `NULL`. |
+3773: Returns  
+3774: The contents of the clipboard as a UTF-8 encoded string, or `NULL` if an error occurred.
+3778: Errors  
+3779: Possible errors include GLFW_NOT_INITIALIZED, GLFW_FORMAT_UNAVAILABLE and GLFW_PLATFORM_ERROR.
+3783: Remarks  
+3784: **Win32:** The clipboard on Windows has a single global lock for reading and writing. GLFW tries to acquire it a few times, which is almost always enough. If it cannot acquire the lock then this function emits GLFW_PLATFORM_ERROR and returns. It is safe to try this multiple times.
+3788: Pointer lifetime  
+3789: The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the next call to glfwGetClipboardString or glfwSetClipboardString, or until the library is terminated.
+3793: Thread safety  
+3794: This function must only be called from the main thread.
+3798: See also  
+3799: Clipboard input and output
+3801: glfwSetClipboardString
+3805: Since  
+3806: Added in version 3.0.
+3814: ## [◆ ](#gaa6cf4e7a77158a3b8fd00328b1720a4a)glfwGetTime()
+3822: | double glfwGetTime | (   | void  |     | )   |     |
+3828: This function returns the current GLFW time, in seconds. Unless the time has been set using glfwSetTime it measures time elapsed since GLFW was initialized.
+3830: This function and glfwSetTime are helper functions on top of glfwGetTimerFrequency and glfwGetTimerValue.
+3832: The resolution of the timer is system dependent, but is usually on the order of a few micro- or nanoseconds. It uses the highest-resolution monotonic time source on each operating system.
+3834: Returns  
+3835: The current time, in seconds, or zero if an error occurred.
+3839: Errors  
+3840: Possible errors include GLFW_NOT_INITIALIZED.
+3844: Thread safety  
+3845: This function may be called from any thread. Reading and writing of the internal base time is not atomic, so it needs to be externally synchronized with calls to glfwSetTime.
+3849: See also  
+3850: Time input
+3854: Since  
+3855: Added in version 1.0.
+3863: ## [◆ ](#gaf59589ef6e8b8c8b5ad184b25afd4dc0)glfwSetTime()
+3871: | void glfwSetTime | (   | double  | *time* | )   |     |
+3877: This function sets the current GLFW time, in seconds. The value must be a positive finite number less than or equal to 18446744073.0, which is approximately 584.5 years.
+3879: > **Libx reference note (GLFW 3.5.1):** The upstream paragraph says positive. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507) also permits zero: it rejects non-finite values, values below 0.0, and values above 18446744073.0. The upstream wording is preserved above.
+3881: This function and glfwGetTime are helper functions on top of glfwGetTimerFrequency and glfwGetTimerValue.
+3883: Parameters  
+3886: | \[in\] | time | The new value, in seconds. |
+3890: Errors  
+3891: Possible errors include GLFW_NOT_INITIALIZED and GLFW_INVALID_VALUE.
+3895: Remarks  
+3896: The upper limit of GLFW time is calculated as floor((2<sup>64</sup> - 1) / 10<sup>9</sup>) and is due to implementations storing nanoseconds in 64 bits. The limit may be increased in the future.
+3900: Thread safety  
+3901: This function may be called from any thread. Reading and writing of the internal base time is not atomic, so it needs to be externally synchronized with calls to glfwGetTime.
+3905: See also  
+3906: Time input
+3910: Since  
+3911: Added in version 2.2.
+3919: ## [◆ ](#ga09b2bd37d328e0b9456c7ec575cc26aa)glfwGetTimerValue()
+3927: | uint64_t glfwGetTimerValue | (   | void  |     | )   |     |
+3933: This function returns the current value of the raw timer, measured in 1 / frequency seconds. To get the frequency, call glfwGetTimerFrequency.
+3935: Returns  
+3936: The value of the timer, or zero if an error occurred.
+3940: Errors  
+3941: Possible errors include GLFW_NOT_INITIALIZED.
+3945: Thread safety  
+3946: This function may be called from any thread.
+3950: See also  
+3951: Time input
+3953: glfwGetTimerFrequency
+3957: Since  
+3958: Added in version 3.2.
+3966: ## [◆ ](#ga3289ee876572f6e91f06df3a24824443)glfwGetTimerFrequency()
+3974: | uint64_t glfwGetTimerFrequency | (   | void  |     | )   |     |
+3980: This function returns the frequency, in Hz, of the raw timer.
+3982: Returns  
+3983: The frequency of the timer, in Hz, or zero if an error occurred.
+3987: Errors  
+3988: Possible errors include GLFW_NOT_INITIALIZED.
+3992: Thread safety  
+3993: This function may be called from any thread.
+3997: See also  
+3998: Time input
+4000: glfwGetTimerValue
+4004: Since  
+4005: Added in version 3.2.

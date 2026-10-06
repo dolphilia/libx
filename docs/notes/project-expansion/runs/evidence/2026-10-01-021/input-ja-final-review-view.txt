@@ -1,0 +1,1190 @@
+1: ---
+2: title: "入力リファレンス"
+3: description: "GLFW 3.5.1 入力リファレンス"
+4: ---
+6: # 入力リファレンス
+10: ## 説明
+12: これは、入力関連の関数と型に関するリファレンスドキュメントです。作業手順を中心とした情報については、入力ガイドを参照してください。
+21:  モジュール
+25: ゲームパッド軸
+29: ゲームパッド軸。
+37: ゲームパッドボタン
+41: ゲームパッドボタン。
+49: ジョイスティックハット状態
+53: ジョイスティックハット状態。
+61: ジョイスティック
+65: ジョイスティック ID。
+73: キーボードキートークン
+77: キーボードキートークン。
+85: 修飾キーフラグ
+89: 修飾キーフラグ。
+97: マウスボタン
+101: マウスボタン ID。
+109: 標準カーソル形状
+113: 標準システムカーソル形状。
+129:  マクロ
+132: #define 
+133: GLFW_KEY_UNKNOWN   -1
+148:  型定義
+151: typedef struct GLFWcursor 
+152: GLFWcursor
+156: 不透明なカーソルオブジェクト。
+163: typedef void(* 
+164: GLFWmousebuttonfun) (GLFWwindow *window, int button, int action, int mods)
+168: マウスボタンコールバックの関数ポインター型。
+175: typedef void(* 
+176: GLFWcursorposfun) (GLFWwindow *window, double xpos, double ypos)
+180: カーソル位置コールバックの関数ポインター型。
+187: typedef void(* 
+188: GLFWcursorenterfun) (GLFWwindow *window, int entered)
+192: カーソル進入・退出コールバックの関数ポインター型。
+199: typedef void(* 
+200: GLFWscrollfun) (GLFWwindow *window, double xoffset, double yoffset)
+204: スクロールコールバックの関数ポインター型。
+211: typedef void(* 
+212: GLFWkeyfun) (GLFWwindow *window, int key, int scancode, int action, int mods)
+216: キーボードキーコールバックの関数ポインター型。
+223: typedef void(* 
+224: GLFWcharfun) (GLFWwindow *window, unsigned int codepoint)
+228: Unicode 文字コールバックの関数ポインター型。
+235: typedef void(* 
+236: GLFWcharmodsfun) (GLFWwindow *window, unsigned int codepoint, int mods)
+240: 修飾キー付き Unicode 文字コールバックの関数ポインター型。
+247: typedef void(* 
+248: GLFWdropfun) (GLFWwindow *window, int path_count, const char *paths[])
+252: パスのドロップコールバックの関数ポインター型。
+259: typedef void(* 
+260: GLFWjoystickfun) (int jid, int event)
+264: ジョイスティック構成コールバックの関数ポインター型。
+271: typedef struct GLFWgamepadstate 
+272: GLFWgamepadstate
+276: ゲームパッド入力状態。
+292:  関数
+295: int 
+296: glfwGetInputMode (GLFWwindow *window, int mode)
+300: 指定されたウィンドウの入力オプション値を返します。
+307: void 
+308: glfwSetInputMode (GLFWwindow *window, int mode, int value)
+312: 指定されたウィンドウの入力オプションを設定します。
+319: int 
+320: glfwRawMouseMotionSupported (void)
+324: 生のマウス移動がサポートされているかを返します。
+331: const char * 
+332: glfwGetKeyName (int key, int scancode)
+336: 指定された印字可能キーのレイアウト固有名を返します。
+343: int 
+344: glfwGetKeyScancode (int key)
+348: 指定されたキーのプラットフォーム固有スキャンコードを返します。
+355: int 
+356: glfwGetKey (GLFWwindow *window, int key)
+360: 指定されたウィンドウについて、キーボードキーの最後に報告された状態を返します。
+367: int 
+368: glfwGetMouseButton (GLFWwindow *window, int button)
+372: 指定されたウィンドウについて、マウスボタンの最後に報告された状態を返します。
+379: void 
+380: glfwGetCursorPos (GLFWwindow *window, double *xpos, double *ypos)
+384: ウィンドウのコンテンツ領域を基準としたカーソル位置を取得します。
+391: void 
+392: glfwSetCursorPos (GLFWwindow *window, double xpos, double ypos)
+396: ウィンドウのコンテンツ領域を基準としたカーソル位置を設定します。
+403: GLFWcursor * 
+404: glfwCreateCursor (const GLFWimage *image, int xhot, int yhot)
+408: カスタムカーソルを作成します。
+415: GLFWcursor * 
+416: glfwCreateStandardCursor (int shape)
+420: 標準形状のカーソルを作成します。
+427: void 
+428: glfwDestroyCursor (GLFWcursor *cursor)
+432: カーソルを破棄します。
+439: void 
+440: glfwSetCursor (GLFWwindow *window, GLFWcursor *cursor)
+444: ウィンドウのカーソルを設定します。
+451: GLFWkeyfun 
+452: glfwSetKeyCallback (GLFWwindow *window, GLFWkeyfun callback)
+456: キーコールバックを設定します。
+463: GLFWcharfun 
+464: glfwSetCharCallback (GLFWwindow *window, GLFWcharfun callback)
+468: Unicode 文字コールバックを設定します。
+475: GLFWcharmodsfun 
+476: glfwSetCharModsCallback (GLFWwindow *window, GLFWcharmodsfun callback)
+480: 修飾キー付き Unicode 文字コールバックを設定します。
+487: GLFWmousebuttonfun 
+488: glfwSetMouseButtonCallback (GLFWwindow *window, GLFWmousebuttonfun callback)
+492: マウスボタンコールバックを設定します。
+499: GLFWcursorposfun 
+500: glfwSetCursorPosCallback (GLFWwindow *window, GLFWcursorposfun callback)
+504: カーソル位置コールバックを設定します。
+511: GLFWcursorenterfun 
+512: glfwSetCursorEnterCallback (GLFWwindow *window, GLFWcursorenterfun callback)
+516: カーソル進入・退出コールバックを設定します。
+523: GLFWscrollfun 
+524: glfwSetScrollCallback (GLFWwindow *window, GLFWscrollfun callback)
+528: スクロールコールバックを設定します。
+535: GLFWdropfun 
+536: glfwSetDropCallback (GLFWwindow *window, GLFWdropfun callback)
+540: パスのドロップコールバックを設定します。
+547: int 
+548: glfwJoystickPresent (int jid)
+552: 指定されたジョイスティックが存在するかを返します。
+559: const float * 
+560: glfwGetJoystickAxes (int jid, int *count)
+564: 指定されたジョイスティックの全軸の値を返します。
+571: const unsigned char * 
+572: glfwGetJoystickButtons (int jid, int *count)
+576: 指定されたジョイスティックの全ボタンの状態を返します。
+583: const unsigned char * 
+584: glfwGetJoystickHats (int jid, int *count)
+588: 指定されたジョイスティックの全ハットの状態を返します。
+595: const char * 
+596: glfwGetJoystickName (int jid)
+600: 指定されたジョイスティックの名前を返します。
+607: const char * 
+608: glfwGetJoystickGUID (int jid)
+612: 指定されたジョイスティックの SDL 互換 GUID を返します。
+619: void 
+620: glfwSetJoystickUserPointer (int jid, void *pointer)
+624: 指定されたジョイスティックのユーザーポインターを設定します。
+631: void * 
+632: glfwGetJoystickUserPointer (int jid)
+636: 指定されたジョイスティックのユーザーポインターを返します。
+643: int 
+644: glfwJoystickIsGamepad (int jid)
+648: 指定されたジョイスティックにゲームパッドマッピングがあるかを返します。
+655: GLFWjoystickfun 
+656: glfwSetJoystickCallback (GLFWjoystickfun callback)
+660: ジョイスティック構成コールバックを設定します。
+667: int 
+668: glfwUpdateGamepadMappings (const char *string)
+672: 指定された SDL_GameControllerDB ゲームパッドマッピングを追加します。
+679: const char * 
+680: glfwGetGamepadName (int jid)
+684: 指定されたジョイスティックの人間が読めるゲームパッド名を返します。
+691: int 
+692: glfwGetGamepadState (int jid, GLFWgamepadstate *state)
+696: ゲームパッドとして再マッピングされた、指定されたジョイスティックの状態を取得します。
+703: void 
+704: glfwSetClipboardString (GLFWwindow *window, const char *string)
+708: クリップボードを指定された文字列に設定します。
+715: const char * 
+716: glfwGetClipboardString (GLFWwindow *window)
+720: クリップボードの内容を文字列として返します。
+727: double 
+728: glfwGetTime (void)
+732: GLFW 時刻を返します。
+739: void 
+740: glfwSetTime (double time)
+744: GLFW 時刻を設定します。
+751: uint64_t 
+752: glfwGetTimerValue (void)
+756: 生タイマーの現在値を返します。
+763: uint64_t 
+764: glfwGetTimerFrequency (void)
+768: 生タイマーの周波数を Hz 単位で返します。
+777: ## マクロ定義の詳細
+781: ## [◆ ](#gada11d965c4da13090ad336e030e4d11f)GLFW_RELEASE
+789: | \#define GLFW_RELEASE   0 |
+795: キーまたはマウスボタンが解放されました。
+803: ## [◆ ](#ga2485743d0b59df3791c45951c4195265)GLFW_PRESS
+811: | \#define GLFW_PRESS   1 |
+817: キーまたはマウスボタンが押されました。
+825: ## [◆ ](#gac96fd3b9fc66c6f0eebaf6532595338f)GLFW_REPEAT
+833: | \#define GLFW_REPEAT   2 |
+839: キーがリピートするまで押し続けられました。
+847: ## [◆ ](#ga99aacc875b6b27a072552631e13775c7)GLFW_KEY_UNKNOWN
+855: | \#define GLFW_KEY_UNKNOWN   -1 |
+865: ## 型定義の詳細
+869: ## [◆ ](#ga89261ae18c75e863aaf2656ecdd238f4)GLFWcursor
+877: | typedef struct GLFWcursor GLFWcursor |
+883: 不透明なカーソルオブジェクトです。
+885: 関連項目  
+886: カーソルオブジェクト
+890: 導入バージョン  
+891: バージョン 3.1 で追加されました。
+899: ## [◆ ](#ga0184dcb59f6d85d735503dcaae809727)GLFWmousebuttonfun
+907: | typedef void(\* GLFWmousebuttonfun) (GLFWwindow \*window, int button, int action, int mods) |
+913: これは、マウスボタンコールバック関数の関数ポインター型です。マウスボタンコールバック関数は、次のシグネチャを持ちます。
+919: void function_name(GLFWwindow\* window, int button, int action, int mods)
+927: [GLFWwindow](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga3c96d80d363e67d13a41b5d1821f3242)
+933: struct GLFWwindow GLFWwindow
+939: 不透明なウィンドウオブジェクトです。
+945: **定義** glfw3.h:1408
+953: 引数  
+956: | \[in\] | window | イベントを受け取ったウィンドウ。 |
+957: | \[in\] | button | 押された、または解放されたマウスボタン。 |
+958: | \[in\] | action | `GLFW_PRESS` または `GLFW_RELEASE` のいずれか。将来のリリースでアクションが追加される可能性があります。 |
+959: | \[in\] | mods | どの修飾キーが押されていたかを表すビットフィールド。 |
+963: 関連項目  
+964: マウスボタン入力
+966: glfwSetMouseButtonCallback
+970: 導入バージョン  
+971: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルと修飾キーマスクの引数が追加されました。
+979: ## [◆ ](#gad6fae41b3ac2e4209aaa87b596c57f68)GLFWcursorposfun
+987: | typedef void(\* GLFWcursorposfun) (GLFWwindow \*window, double xpos, double ypos) |
+993: これは、カーソル位置コールバックの関数ポインター型です。カーソル位置コールバック関数は、次のシグネチャを持ちます。
+999: void function_name(GLFWwindow\* window, double xpos, double ypos);
+1005: 引数  
+1008: | \[in\] | window | イベントを受け取ったウィンドウ。 |
+1009: | \[in\] | xpos | コンテンツ領域の左端を基準とした、新しいカーソルの X 座標。 |
+1010: | \[in\] | ypos | コンテンツ領域の上端を基準とした、新しいカーソルの Y 座標。 |
+1014: 関連項目  
+1015: カーソル位置
+1017: glfwSetCursorPosCallback
+1021: 導入バージョン  
+1022: バージョン 3.0 で追加されました。`GLFWmouseposfun` を置き換えます。
+1030: ## [◆ ](#gaa93dc4818ac9ab32532909d53a337cbe)GLFWcursorenterfun
+1038: | typedef void(\* GLFWcursorenterfun) (GLFWwindow \*window, int entered) |
+1044: これは、カーソル進入・退出コールバックの関数ポインター型です。カーソル進入・退出コールバック関数は、次のシグネチャを持ちます。
+1050: void function_name(GLFWwindow\* window, int entered)
+1056: 引数  
+1059: | \[in\] | window | イベントを受け取ったウィンドウ。 |
+1060: | \[in\] | entered | カーソルがウィンドウのコンテンツ領域へ入った場合は `GLFW_TRUE`、出た場合は `GLFW_FALSE`。 |
+1064: 関連項目  
+1065: カーソルの進入・退出イベント
+1067: glfwSetCursorEnterCallback
+1071: 導入バージョン  
+1072: バージョン 3.0 で追加されました。
+1080: ## [◆ ](#gaf656112c33de3efdb227fa58f0134cf5)GLFWscrollfun
+1088: | typedef void(\* GLFWscrollfun) (GLFWwindow \*window, double xoffset, double yoffset) |
+1094: これは、スクロールコールバックの関数ポインター型です。スクロールコールバック関数は、次のシグネチャを持ちます。
+1100: void function_name(GLFWwindow\* window, double xoffset, double yoffset)
+1106: 引数  
+1109: | \[in\] | window  | イベントを受け取ったウィンドウ。 |
+1110: | \[in\] | xoffset | X 軸方向のスクロールオフセット。 |
+1111: | \[in\] | yoffset | Y 軸方向のスクロールオフセット。 |
+1115: 関連項目  
+1116: スクロール入力
+1118: glfwSetScrollCallback
+1122: 導入バージョン  
+1123: バージョン 3.0 で追加されました。`GLFWmousewheelfun` を置き換えます。
+1131: ## [◆ ](#ga5bd751b27b90f865d2ea613533f0453c)GLFWkeyfun
+1139: | typedef void(\* GLFWkeyfun) (GLFWwindow \*window, int key, int scancode, int action, int mods) |
+1145: これは、キーボードキーコールバックの関数ポインター型です。キーボードキーコールバック関数は、次のシグネチャを持ちます。
+1151: void function_name(GLFWwindow\* window, int key, int scancode, int action, int mods)
+1157: 引数  
+1160: | \[in\] | window | イベントを受け取ったウィンドウ。 |
+1161: | \[in\] | key | 押された、または解放されたキーボードキー。 |
+1162: | \[in\] | scancode | キーのプラットフォーム固有スキャンコード。 |
+1163: | \[in\] | action | `GLFW_PRESS`、`GLFW_RELEASE`、または `GLFW_REPEAT`。将来のリリースでアクションが追加される可能性があります。 |
+1164: | \[in\] | mods | どの修飾キーが押されていたかを表すビットフィールド。 |
+1168: 関連項目  
+1169: キー入力
+1171: glfwSetKeyCallback
+1175: 導入バージョン  
+1176: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドル、スキャンコード、修飾キーマスクの引数が追加されました。
+1184: ## [◆ ](#ga1ab90a55cf3f58639b893c0f4118cb6e)GLFWcharfun
+1192: | typedef void(\* GLFWcharfun) (GLFWwindow \*window, unsigned int codepoint) |
+1198: これは、Unicode 文字コールバックの関数ポインター型です。Unicode 文字コールバック関数は、次のシグネチャを持ちます。
+1204: void function_name(GLFWwindow\* window, unsigned int codepoint)
+1210: 引数  
+1213: | \[in\] | window    | イベントを受け取ったウィンドウ。      |
+1214: | \[in\] | codepoint | 文字の Unicode コードポイント。 |
+1218: 関連項目  
+1219: テキスト入力
+1221: glfwSetCharCallback
+1225: 導入バージョン  
+1226: バージョン 2.4 で追加されました。**GLFW 3:** ウィンドウハンドルの引数が追加されました。
+1234: ## [◆ ](#gac3cf64f90b6219c05ac7b7822d5a4b8f)GLFWcharmodsfun
+1242: | typedef void(\* GLFWcharmodsfun) (GLFWwindow \*window, unsigned int codepoint, int mods) |
+1248: これは、修飾キー付き Unicode 文字コールバックの関数ポインター型です。どの修飾キーが押されているかにかかわらず、入力文字ごとに呼び出されます。修飾キー付き Unicode 文字コールバック関数は、次のシグネチャを持ちます。
+1254: void function_name(GLFWwindow\* window, unsigned int codepoint, int mods)
+1260: 引数  
+1263: | \[in\] | window | イベントを受け取ったウィンドウ。 |
+1264: | \[in\] | codepoint | 文字の Unicode コードポイント。 |
+1265: | \[in\] | mods | どの修飾キーが押されていたかを表すビットフィールド。 |
+1269: 関連項目  
+1270: テキスト入力
+1272: glfwSetCharModsCallback
+1276: **非推奨:**  
+1277: バージョン 4.0 で削除される予定です。
+1281: 導入バージョン  
+1282: バージョン 3.1 で追加されました。
+1290: ## [◆ ](#gaaba73c3274062c18723b7f05862d94b2)GLFWdropfun
+1298: | typedef void(\* GLFWdropfun) (GLFWwindow \*window, int path_count, const char \*paths\[\]) |
+1304: これは、パスのドロップコールバックの関数ポインター型です。パスのドロップコールバック関数は、次のシグネチャを持ちます。
+1310: void function_name(GLFWwindow\* window, int path_count, const char\* paths\[\])
+1316: 引数  
+1319: | \[in\] | window     | イベントを受け取ったウィンドウ。                 |
+1320: | \[in\] | path_count | ドロップされたパスの数。                        |
+1321: | \[in\] | paths      | UTF-8 でエンコードされたファイルおよびディレクトリのパス名。 |
+1325: ポインターの有効期間  
+1326: パス配列とその文字列は、コールバック関数が戻るまで有効です。
+1330: 関連項目  
+1331: パスのドロップ入力
+1333: glfwSetDropCallback
+1337: 導入バージョン  
+1338: バージョン 3.1 で追加されました。
+1346: ## [◆ ](#gaa21ad5986ae9a26077a40142efb56243)GLFWjoystickfun
+1354: | typedef void(\* GLFWjoystickfun) (int jid, int event) |
+1360: これは、ジョイスティック構成コールバックの関数ポインター型です。ジョイスティック構成コールバック関数は、次のシグネチャを持ちます。
+1366: void function_name(int jid, int event)
+1372: 引数  
+1375: | \[in\] | jid | 接続または切断されたジョイスティック。 |
+1376: | \[in\] | event | `GLFW_CONNECTED` または `GLFW_DISCONNECTED` のいずれか。将来のリリースでイベントが追加される可能性があります。 |
+1380: 関連項目  
+1381: ジョイスティック構成の変更
+1383: glfwSetJoystickCallback
+1387: 導入バージョン  
+1388: バージョン 3.2 で追加されました。
+1396: ## [◆ ](#ga61acfb1f28f751438dd221225c5e725d)GLFWgamepadstate
+1404: | typedef struct GLFWgamepadstate GLFWgamepadstate |
+1410: これは、ゲームパッドの入力状態を表します。
+1412: 関連項目  
+1413: ゲームパッド入力
+1415: glfwGetGamepadState
+1419: 導入バージョン  
+1420: バージョン 3.3 で追加されました。
+1426: ## 関数の詳細
+1430: ## [◆ ](#gaf5b859dbe19bdf434e42695ea45cc5f4)glfwGetInputMode()
+1438: | int glfwGetInputMode | ( | GLFWwindow \*  | *window*, |
+1439: |  |  | int  | *mode*  |
+1440: |  | ) |  |  |
+1446: この関数は、指定されたウィンドウの入力オプション値を返します。モードは GLFW_CURSOR、GLFW_STICKY_KEYS、GLFW_STICKY_MOUSE_BUTTONS、GLFW_LOCK_KEY_MODS、または GLFW_RAW_MOUSE_MOTION のいずれかでなければなりません。
+1448: > **Libx参照注記（GLFW 3.5.1）:** 上流のモード一覧には `GLFW_UNLIMITED_MOUSE_BUTTONS` がありません。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583)はこのモードを受け付け、現在の値を返します。上流の一覧は保持しています。
+1450: 引数  
+1453: | \[in\] | window | 照会するウィンドウ。 |
+1454: | \[in\] | mode | `GLFW_CURSOR`、`GLFW_STICKY_KEYS`、`GLFW_STICKY_MOUSE_BUTTONS`、`GLFW_LOCK_KEY_MODS`、または `GLFW_RAW_MOUSE_MOTION` のいずれか。 |
+1458: エラー  
+1459: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_INVALID_ENUM があります。
+1463: スレッドセーフ性  
+1464: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1468: 関連項目  
+1469: glfwSetInputMode
+1473: 導入バージョン  
+1474: バージョン 3.0 で追加されました。
+1482: ## [◆ ](#gaa92336e173da9c8834558b54ee80563b)glfwSetInputMode()
+1490: | void glfwSetInputMode | ( | GLFWwindow \*  | *window*, |
+1491: |  |  | int  | *mode*, |
+1492: |  |  | int  | *value*  |
+1493: |  | ) |  |  |
+1499: この関数は、指定されたウィンドウの入力モードオプションを設定します。モードは GLFW_CURSOR、GLFW_STICKY_KEYS、GLFW_STICKY_MOUSE_BUTTONS、GLFW_LOCK_KEY_MODS、GLFW_RAW_MOUSE_MOTION、または GLFW_UNLIMITED_MOUSE_BUTTONS のいずれかでなければなりません。
+1501: モードが `GLFW_CURSOR` の場合、値は次のカーソルモードのいずれかでなければなりません。
+1503: - `GLFW_CURSOR_NORMAL` はカーソルを表示し、通常どおり動作させます。
+1504: - `GLFW_CURSOR_HIDDEN` は、カーソルがウィンドウのコンテンツ領域上にあるとき非表示にしますが、領域外へ出ることは制限しません。
+1505: - `GLFW_CURSOR_DISABLED` はカーソルを非表示にして捕捉し、仮想的で無制限のカーソル移動を提供します。これは、たとえば3Dカメラ制御の実装に役立ちます。
+1506: - `GLFW_CURSOR_CAPTURED` はカーソルを表示し、ウィンドウのコンテンツ領域内に制限します。
+1508: モードが `GLFW_STICKY_KEYS` の場合、値はスティッキーキーを有効にする `GLFW_TRUE`、または無効にする `GLFW_FALSE` でなければなりません。スティッキーキーが有効な場合、呼び出し前にキーが解放されていても、キーが押されると次回の glfwGetKey は `GLFW_PRESS` を返します。これは、キーがいつ、どの順序で押されたかではなく、押されたかどうかだけに関心がある場合に役立ちます。
+1510: モードが `GLFW_STICKY_MOUSE_BUTTONS` の場合、値はスティッキーマウスボタンを有効にする `GLFW_TRUE`、または無効にする `GLFW_FALSE` でなければなりません。スティッキーマウスボタンが有効な場合、呼び出し前にマウスボタンが解放されていても、ボタンが押されると次回の glfwGetMouseButton は `GLFW_PRESS` を返します。これは、ボタンがいつ、どの順序で押されたかではなく、押されたかどうかだけに関心がある場合に役立ちます。
+1512: モードが `GLFW_LOCK_KEY_MODS` の場合、値はロックキー修飾ビットを有効にする `GLFW_TRUE`、または無効にする `GLFW_FALSE` でなければなりません。有効な場合、修飾ビットを受け取るコールバックでは、Caps Lock がオンの状態でイベントが生成されると GLFW_MOD_CAPS_LOCK ビットが、Num Lock がオンなら GLFW_MOD_NUM_LOCK ビットも設定されます。
+1514: モードが `GLFW_RAW_MOUSE_MOTION` の場合、値はカーソル無効時の生の（拡大縮小も加速もされない）マウス移動を有効にする `GLFW_TRUE`、または無効にする `GLFW_FALSE` でなければなりません。生の移動がサポートされていない場合、設定しようとすると GLFW_FEATURE_UNAVAILABLE が発生します。サポートの確認には glfwRawMouseMotionSupported を呼び出してください。
+1516: > **Libx参照注記（GLFW 3.5.1）:** 上の段落は `GLFW_FEATURE_UNAVAILABLE` と記載しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687)は raw mouse motion が未対応の場合、`GLFW_PLATFORM_ERROR` を発生させます。これは `glfwRawMouseMotionSupported` の説明と一致します。上流の記述は上に保持しています。
+1518: モードが `GLFW_UNLIMITED_MOUSE_BUTTONS` の場合、値はマウスボタンコールバック呼び出し時のボタン制限を無効にする `GLFW_TRUE`、またはコールバックへ送るボタンを `GLFW_MOUSE_BUTTON_LAST` までのマウスボタントークン値に制限する `GLFW_FALSE` でなければなりません。
+1520: > **Libx参照注記（GLFW 3.5.1）:** この段落には説明がありますが、下の引数表には `GLFW_UNLIMITED_MOUSE_BUTTONS` がありません。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693)はこのモードを受け付けます。上流の表は保持しています。
+1522: 引数  
+1525: | \[in\] | window | 入力モードを設定するウィンドウ。 |
+1526: | \[in\] | mode | `GLFW_CURSOR`、`GLFW_STICKY_KEYS`、`GLFW_STICKY_MOUSE_BUTTONS`、`GLFW_LOCK_KEY_MODS`、または `GLFW_RAW_MOUSE_MOTION` のいずれか。 |
+1527: | \[in\] | value | 指定された入力モードの新しい値。 |
+1531: エラー  
+1532: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_PLATFORM_ERROR、および GLFW_FEATURE_UNAVAILABLE（上記を参照）があります。
+1536: スレッドセーフ性  
+1537: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1541: 関連項目  
+1542: glfwGetInputMode
+1546: 導入バージョン  
+1547: バージョン 3.0 で追加されました。`glfwEnable` と `glfwDisable` を置き換えます。
+1555: ## [◆ ](#gae4ee0dbd0d256183e1ea4026d897e1c2)glfwRawMouseMotionSupported()
+1563: | int glfwRawMouseMotionSupported | (   | void  |     | )   |     |
+1569: この関数は、現在のシステムで生のマウス移動がサポートされているかを返します。この状態は GLFW の初期化後に変化しないため、確認は一度だけでかまいません。サポートしていないシステムで生の移動を有効にしようとすると、GLFW_PLATFORM_ERROR が発生します。
+1571: 生のマウス移動は、面上での実際のマウスの動きに近いものです。デスクトップカーソルの移動に適用される拡大縮小や加速の影響を受けません。その処理はカーソルには適していますが、たとえば3Dカメラの制御には生の移動の方が適しています。このため、生のマウス移動はカーソルが無効な場合にのみ提供されます。
+1573: 戻り値  
+1574: 現在のマシンで生のマウス移動がサポートされている場合は `GLFW_TRUE`、それ以外の場合は `GLFW_FALSE`。
+1578: エラー  
+1579: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+1583: スレッドセーフ性  
+1584: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1588: 関連項目  
+1589: 生のマウス移動
+1591: glfwSetInputMode
+1595: 導入バージョン  
+1596: バージョン 3.3 で追加されました。
+1604: ## [◆ ](#gaeaed62e69c3bd62b7ff8f7b19913ce4f)glfwGetKeyName()
+1612: | const char \* glfwGetKeyName | (   | int  | *key*,      |
+1613: |                              |     | int  | *scancode*  |
+1614: |                              | )   |      |             |
+1620: この関数は、指定された印字可能キーの名前を UTF-8 エンコードで返します。これは通常、そのキーが修飾キーなしで生成する文字であり、ユーザーへキーバインドを表示するためのものです。デッドキーの場合は通常、文字へ付加されるダイアクリティカルマークです。
+1622: テキスト入力に**この関数を使用しないでください**。自分の言語ではたまたま動作しても、多くの言語のテキスト入力を壊します。
+1624: キーが `GLFW_KEY_UNKNOWN` の場合、キーの識別にスキャンコードが使用されます。それ以外の場合、スキャンコードは無視されます。印字不可能なキー、または `GLFW_KEY_UNKNOWN` と印字不可能なキーに対応するスキャンコードを指定すると、この関数は `NULL` を返しますが、エラーは発生させません。
+1626: この動作により、キーコールバックの引数を常に変更せず渡せます。
+1628: 印字可能なキーは次のとおりです。
+1630: - `GLFW_KEY_APOSTROPHE`
+1631: - `GLFW_KEY_COMMA`
+1632: - `GLFW_KEY_MINUS`
+1633: - `GLFW_KEY_PERIOD`
+1634: - `GLFW_KEY_SLASH`
+1635: - `GLFW_KEY_SEMICOLON`
+1636: - `GLFW_KEY_EQUAL`
+1637: - `GLFW_KEY_LEFT_BRACKET`
+1638: - `GLFW_KEY_RIGHT_BRACKET`
+1639: - `GLFW_KEY_BACKSLASH`
+1640: - `GLFW_KEY_WORLD_1`
+1641: - `GLFW_KEY_WORLD_2`
+1642: - `GLFW_KEY_0` to `GLFW_KEY_9`
+1643: - `GLFW_KEY_A` to `GLFW_KEY_Z`
+1644: - `GLFW_KEY_KP_0` to `GLFW_KEY_KP_9`
+1645: - `GLFW_KEY_KP_DECIMAL`
+1646: - `GLFW_KEY_KP_DIVIDE`
+1647: - `GLFW_KEY_KP_MULTIPLY`
+1648: - `GLFW_KEY_KP_SUBTRACT`
+1649: - `GLFW_KEY_KP_ADD`
+1650: - `GLFW_KEY_KP_EQUAL`
+1652: 印字可能なキーの名前はキーボードレイアウトに依存します。一方、印字不可能なキーの名前はレイアウト間で共通ですが、アプリケーションの言語に依存するため、他のユーザーインターフェイス文字列とともにローカライズすべきです。
+1654: 引数  
+1657: | \[in\] | key      | 照会するキー、または `GLFW_KEY_UNKNOWN`。 |
+1658: | \[in\] | scancode | 照会するキーのスキャンコード。        |
+1662: 戻り値  
+1663: UTF-8 でエンコードされたレイアウト固有のキー名、または `NULL`。
+1667: エラー  
+1668: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE、GLFW_INVALID_ENUM、および GLFW_PLATFORM_ERROR があります。
+1672: 備考  
+1673: キーボードレイアウト変更イベントを受け取ると、返される文字列の内容が変わることがあります。
+1677: ポインターの有効期間  
+1678: 返される文字列は GLFW が割り当て、解放します。自分で解放しないでください。ライブラリが終了するまで有効です。
+1682: スレッドセーフ性  
+1683: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1687: 関連項目  
+1688: キー名
+1692: 導入バージョン  
+1693: バージョン 3.2 で追加されました。
+1701: ## [◆ ](#ga67ddd1b7dcbbaff03e4a76c0ea67103a)glfwGetKeyScancode()
+1709: | int glfwGetKeyScancode | (   | int  | *key* | )   |     |
+1715: この関数は、指定されたキーのプラットフォーム固有スキャンコードを返します。
+1717: 指定されたキートークンが現在のプラットフォームでサポートされていない物理キーに対応する場合、この関数は `-1` を返します。キートークン以外を指定して呼び出すと、`-1` を返し、GLFW_INVALID_ENUM エラーを発生させます。
+1719: 引数  
+1722: | \[in\] | key | 任意のキートークン。 |
+1726: 戻り値  
+1727: キーのプラットフォーム固有スキャンコード。キーが現在のプラットフォームでサポートされていない場合、またはエラーが発生した場合は `-1`。
+1731: エラー  
+1732: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_INVALID_ENUM があります。
+1736: スレッドセーフ性  
+1737: この関数は、任意のスレッドから呼び出せます。
+1741: 関連項目  
+1742: キー入力
+1746: 導入バージョン  
+1747: バージョン 3.3 で追加されました。
+1755: ## [◆ ](#gadd341da06bc8d418b4dc3a3518af9ad2)glfwGetKey()
+1763: | int glfwGetKey | ( | GLFWwindow \*  | *window*, |
+1764: |  |  | int  | *key*  |
+1765: |  | ) |  |  |
+1771: この関数は、指定されたウィンドウへ最後に報告された、指定されたキーの状態を返します。返される状態は `GLFW_PRESS` または `GLFW_RELEASE` のいずれかです。`GLFW_REPEAT` アクションはキーコールバックだけに報告されます。
+1773: GLFW_STICKY_KEYS 入力モードが有効な場合、押されたキーについて最初にこの関数を呼び出すと、そのキーがすでに解放されていても `GLFW_PRESS` を返します。
+1775: キー関数は物理キーを扱い、キートークンは標準的な米国キーボードレイアウトでの用途に基づいて命名されています。テキストを入力する場合は、代わりに Unicode 文字コールバックを使用してください。
+1777: 修飾キーのビットマスクはキートークンではなく、この関数では使用できません。
+1779: テキスト入力の実装に**この関数を使用しないでください**。
+1781: 引数  
+1784: | \[in\] | window | 対象のウィンドウ。 |
+1785: | \[in\] | key | 対象のキーボードキー。`GLFW_KEY_UNKNOWN` はこの関数では有効なキーではありません。 |
+1789: 戻り値  
+1790: `GLFW_PRESS` または `GLFW_RELEASE` のいずれか。
+1794: エラー  
+1795: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_INVALID_ENUM があります。
+1799: スレッドセーフ性  
+1800: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1804: 関連項目  
+1805: キー入力
+1809: 導入バージョン  
+1810: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルの引数が追加されました。
+1818: ## [◆ ](#gac1473feacb5996c01a7a5a33b5066704)glfwGetMouseButton()
+1826: | int glfwGetMouseButton | ( | GLFWwindow \*  | *window*, |
+1827: |  |  | int  | *button*  |
+1828: |  | ) |  |  |
+1834: この関数は、指定されたウィンドウへ最後に報告された、指定されたマウスボタンの状態を返します。返される状態は `GLFW_PRESS` または `GLFW_RELEASE` のいずれかです。
+1836: GLFW_STICKY_MOUSE_BUTTONS 入力モードが有効な場合、押されたマウスボタンについて最初にこの関数を呼び出すと、そのボタンがすでに解放されていても `GLFW_PRESS` を返します。
+1838: GLFW_UNLIMITED_MOUSE_BUTTONS 入力モードは、この関数でポーリングできるボタンの上限には影響しません。
+1840: 引数  
+1843: | \[in\] | window | 対象のウィンドウ。 |
+1844: | \[in\] | button | 対象のマウスボタントークン。 |
+1848: 戻り値  
+1849: `GLFW_PRESS` または `GLFW_RELEASE` のいずれか。
+1853: エラー  
+1854: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_INVALID_ENUM があります。
+1858: スレッドセーフ性  
+1859: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1863: 関連項目  
+1864: マウスボタン入力
+1868: 導入バージョン  
+1869: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルの引数が追加されました。
+1877: ## [◆ ](#ga01d37b6c40133676b9cea60ca1d7c0cc)glfwGetCursorPos()
+1885: | void glfwGetCursorPos | ( | GLFWwindow \*  | *window*, |
+1886: |  |  | double \*  | *xpos*, |
+1887: |  |  | double \*  | *ypos*  |
+1888: |  | ) |  |  |
+1894: この関数は、指定されたウィンドウのコンテンツ領域の左上隅を基準としたカーソル位置をスクリーン座標で返します。
+1896: カーソルが（`GLFW_CURSOR_DISABLED` で）無効になっている場合、カーソル位置は制約されず、`double` の最小値と最大値によってのみ制限されます。
+1898: 座標は `floor` 関数で対応する整数値へ変換できます。整数型への直接キャストは正の座標では機能しますが、負の座標では正しく機能しません。
+1900: 位置を受け取る引数は、一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` でない位置の引数はすべてゼロに設定されます。
+1902: 引数  
+1905: | \[in\] | window | 対象のウィンドウ。 |
+1906: | \[out\] | xpos | コンテンツ領域の左端を基準としたカーソルの X 座標を格納する場所、または `NULL`。 |
+1907: | \[out\] | ypos | コンテンツ領域の上端を基準としたカーソルの Y 座標を格納する場所、または `NULL`。 |
+1911: エラー  
+1912: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+1916: スレッドセーフ性  
+1917: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1921: 関連項目  
+1922: カーソル位置
+1924: glfwSetCursorPos
+1928: 導入バージョン  
+1929: バージョン 3.0 で追加されました。`glfwGetMousePos` を置き換えます。
+1937: ## [◆ ](#ga04b03af936d906ca123c8f4ee08b39e7)glfwSetCursorPos()
+1945: | void glfwSetCursorPos | ( | GLFWwindow \*  | *window*, |
+1946: |  |  | double  | *xpos*, |
+1947: |  |  | double  | *ypos*  |
+1948: |  | ) |  |  |
+1954: この関数は、指定されたウィンドウのコンテンツ領域の左上隅を基準としたカーソル位置をスクリーン座標で設定します。ウィンドウは入力フォーカスを持っていなければなりません。この関数の呼び出し時にウィンドウが入力フォーカスを持っていない場合、何も報告せず失敗します。
+1956: カメラ制御などの実装に**この関数を使用しないでください**。GLFW は、カーソルを非表示にし、透過的に中央へ戻し、制約のないカーソル移動を提供する `GLFW_CURSOR_DISABLED` カーソルモードをすでに備えています。詳しくは glfwSetInputMode を参照してください。
+1958: カーソルモードが `GLFW_CURSOR_DISABLED` の場合、カーソル位置は制約されず、`double` の最小値と最大値によってのみ制限されます。
+1960: 引数  
+1963: | \[in\] | window | 対象のウィンドウ。 |
+1964: | \[in\] | xpos | コンテンツ領域の左端を基準とした、要求する X 座標。 |
+1965: | \[in\] | ypos | コンテンツ領域の上端を基準とした、要求する Y 座標。 |
+1969: エラー  
+1970: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR、および GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+1974: 備考  
+1975: **Wayland:** この関数は、カーソルモードが `GLFW_CURSOR_DISABLED` の場合にのみ動作します。それ以外の場合は GLFW_FEATURE_UNAVAILABLE を発生させます。
+1979: スレッドセーフ性  
+1980: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1984: 関連項目  
+1985: カーソル位置
+1987: glfwGetCursorPos
+1991: 導入バージョン  
+1992: バージョン 3.0 で追加されました。`glfwSetMousePos` を置き換えます。
+2000: ## [◆ ](#ga556f604f73af156c0db0e97c081373c3)glfwCreateCursor()
+2008: | GLFWcursor \* glfwCreateCursor | ( | const GLFWimage \*  | *image*, |
+2009: |  |  | int  | *xhot*, |
+2010: |  |  | int  | *yhot*  |
+2011: |  | ) |  |  |
+2017: glfwSetCursor でウィンドウへ設定できる、新しいカスタムカーソル画像を作成します。カーソルは glfwDestroyCursor で破棄できます。残っているカーソルは glfwTerminate によって破棄されます。
+2019: ピクセルは32ビット、リトルエンディアン、アルファを事前乗算していない RGBA、つまり赤チャンネルを先頭とする各チャンネル8ビットです。左上隅から始まる、パックされた連続行として標準的に配置されます。
+2021: カーソルのホットスポットは、カーソル画像の左上隅を基準としてピクセル単位で指定します。GLFW の他のすべての座標系と同様に、X 軸は右向き、Y 軸は下向きです。
+2023: 引数  
+2026: | \[in\] | image | 要求するカーソル画像。                                   |
+2027: | \[in\] | xhot  | カーソルホットスポットに要求する X 座標（ピクセル）。 |
+2028: | \[in\] | yhot  | カーソルホットスポットに要求する Y 座標（ピクセル）。 |
+2032: 戻り値  
+2033: 作成されたカーソルのハンドル。エラーが発生した場合は `NULL`。
+2037: エラー  
+2038: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE、および GLFW_PLATFORM_ERROR があります。
+2042: ポインターの有効期間  
+2043: 指定された画像データは、この関数が戻る前にコピーされます。
+2047: スレッドセーフ性  
+2048: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2052: 関連項目  
+2053: カーソルオブジェクト
+2055: glfwDestroyCursor
+2057: glfwCreateStandardCursor
+2061: 導入バージョン  
+2062: バージョン 3.1 で追加されました。
+2070: ## [◆ ](#gaf2fb2eb2c9dd842d1cef8a34e3c6403e)glfwCreateStandardCursor()
+2078: | GLFWcursor \* glfwCreateStandardCursor | ( | int  | *shape* | ) |  |
+2084: glfwSetCursor でウィンドウへ設定できる標準形状のカーソルを返します。これらのカーソル画像はシステムのカーソルテーマから取得されるため、正確な外観はプラットフォームによって異なります。
+2086: これらの形状の大部分は、サポートされるすべてのプラットフォームに存在することが保証されていますが、一部は存在しない場合があります。詳しくは次の表を参照してください。
+2088: | カーソル形状 | Windows | macOS | X11 | Wayland |
+2090: | GLFW_ARROW_CURSOR | あり | あり | あり | あり |
+2091: | GLFW_IBEAM_CURSOR | あり | あり | あり | あり |
+2092: | GLFW_CROSSHAIR_CURSOR | あり | あり | あり | あり |
+2093: | GLFW_POINTING_HAND_CURSOR | あり | あり | あり | あり |
+2094: | GLFW_RESIZE_EW_CURSOR | あり | あり | あり | あり |
+2095: | GLFW_RESIZE_NS_CURSOR | あり | あり | あり | あり |
+2096: | GLFW_RESIZE_NWSE_CURSOR | あり | あり<sup>1</sup> | 場合による<sup>2</sup> | 場合による<sup>2</sup> |
+2097: | GLFW_RESIZE_NESW_CURSOR | あり | あり<sup>1</sup> | 場合による<sup>2</sup> | 場合による<sup>2</sup> |
+2098: | GLFW_RESIZE_ALL_CURSOR | あり | あり | あり | あり |
+2099: | GLFW_NOT_ALLOWED_CURSOR | あり | あり | 場合による<sup>2</sup> | 場合による<sup>2</sup> |
+2101: 1\) 非公開のシステム API を使用しているため、将来動作しなくなる可能性があります。
+2103: 2\) 一部のカーソルテーマがサポートしていない新しい標準を使用しています。
+2105: 要求された形状が利用できない場合、この関数は GLFW_CURSOR_UNAVAILABLE エラーを発生させ、`NULL` を返します。
+2107: 引数  
+2110: | \[in\] | shape | 標準形状のいずれか。 |
+2114: 戻り値  
+2115: 使用可能な新しいカーソル。エラーが発生した場合は `NULL`。
+2119: エラー  
+2120: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_CURSOR_UNAVAILABLE、GLFW_PLATFORM_ERROR があります。
+2124: スレッドセーフ性  
+2125: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2129: 関連項目  
+2130: 標準カーソルの作成
+2132: glfwCreateCursor
+2136: 導入バージョン  
+2137: バージョン 3.1 で追加されました。
+2145: ## [◆ ](#ga81b952cd1764274d0db7fb3c5a79ba6a)glfwDestroyCursor()
+2153: | void glfwDestroyCursor | ( | GLFWcursor \*  | *cursor* | ) |  |
+2159: この関数は、以前 glfwCreateCursor で作成したカーソルを破棄します。残っているカーソルは glfwTerminate によって破棄されます。
+2161: 指定されたカーソルがいずれかのウィンドウで現在使用されている場合、そのウィンドウは既定のカーソルへ戻されます。これはカーソルモードには影響しません。
+2163: 引数  
+2166: | \[in\] | cursor | 破棄するカーソルオブジェクト。 |
+2170: エラー  
+2171: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR があります。
+2175: 再入可能性  
+2176: この関数は、コールバックから呼び出してはなりません。
+2180: スレッドセーフ性  
+2181: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2185: 関連項目  
+2186: カーソルオブジェクト
+2188: glfwCreateCursor
+2192: 導入バージョン  
+2193: バージョン 3.1 で追加されました。
+2201: ## [◆ ](#gad3b4f38c8d5dae036bc8fa959e18343e)glfwSetCursor()
+2209: | void glfwSetCursor | ( | GLFWwindow \*  | *window*, |
+2210: |  |  | GLFWcursor \*  | *cursor*  |
+2211: |  | ) |  |  |
+2217: この関数は、カーソルが指定されたウィンドウのコンテンツ領域上にあるときに使用するカーソル画像を設定します。設定したカーソルは、ウィンドウのカーソルモードが `GLFW_CURSOR_NORMAL` の場合にのみ表示されます。
+2219: > **Libx参照注記（GLFW 3.5.1）:** 上の「NORMAL の場合のみ」という説明は、キャプチャーに対応するバックエンドについては不完全です。固定版の [Win32](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242)、[X11](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474)、[Wayland](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353) の実装は、`GLFW_CURSOR_CAPTURED` でもカーソル画像を選択します。固定版の [Cocoa 実装](https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683)は、キャプチャーモードに対して `GLFW_FEATURE_UNIMPLEMENTED` を報告します。上流の記述は上に保持しています。
+2221: 一部のプラットフォームでは、ウィンドウが入力フォーカスも持っていなければ、設定したカーソルが表示されないことがあります。
+2223: 引数  
+2226: | \[in\] | window | カーソルを設定するウィンドウ。 |
+2227: | \[in\] | cursor | 設定するカーソル。既定の矢印カーソルへ戻す場合は `NULL`。 |
+2231: エラー  
+2232: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR があります。
+2236: スレッドセーフ性  
+2237: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2241: 関連項目  
+2242: カーソルオブジェクト
+2246: 導入バージョン  
+2247: バージョン 3.1 で追加されました。
+2255: ## [◆ ](#ga1caf18159767e761185e49a3be019f8d)glfwSetKeyCallback()
+2263: | GLFWkeyfun glfwSetKeyCallback | ( | GLFWwindow \*  | *window*, |
+2264: |  |  | GLFWkeyfun  | *callback*  |
+2265: |  | ) |  |  |
+2271: この関数は、指定されたウィンドウのキーコールバックを設定します。このコールバックは、キーが押されたとき、リピートしたとき、または解放されたときに呼び出されます。
+2273: キー関数は物理キーを扱い、レイアウトに依存しないキートークンは標準的な米国キーボードレイアウトでの値に基づいて命名されています。テキストを入力する場合は、代わりに文字コールバックを使用してください。
+2275: ウィンドウが入力フォーカスを失うと、関連するキートークンを持つ押下中のすべてのキーについて、合成されたキー解放イベントが生成されます。合成イベントはフォーカス喪失イベントの処理後、つまりウィンドウフォーカスコールバックの呼び出し後に生成されるため、ユーザー生成イベントと区別できます。
+2277: キーのスキャンコードは、そのプラットフォーム、場合によってはそのマシンに固有です。スキャンコードは、GLFW キートークンのないキーをユーザーが割り当てられるようにするためのものです。このようなキーでは `key` が `GLFW_KEY_UNKNOWN` に設定され、状態は保存されないため、glfwGetKey では照会できません。
+2279: GLFW が合成キーイベントを生成する必要がある場合があり、そのときスキャンコードはゼロになることがあります。
+2281: 引数  
+2284: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2285: | \[in\] | callback | 新しいキーコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2289: 戻り値  
+2290: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+2294: コールバックのシグネチャ  
+2299: void function_name(GLFWwindow\* window, int key, int scancode, int action, int mods)
+2305: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2309: エラー  
+2310: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2314: スレッドセーフ性  
+2315: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2319: 関連項目  
+2320: キー入力
+2324: 導入バージョン  
+2325: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルの引数と戻り値が追加されました。
+2333: ## [◆ ](#gab25c4a220fd8f5717718dbc487828996)glfwSetCharCallback()
+2341: | GLFWcharfun glfwSetCharCallback | ( | GLFWwindow \*  | *window*, |
+2342: |  |  | GLFWcharfun  | *callback*  |
+2343: |  | ) |  |  |
+2349: この関数は、指定されたウィンドウの文字コールバックを設定します。このコールバックは、Unicode 文字が入力されたときに呼び出されます。
+2351: 文字コールバックは Unicode テキスト入力を目的とします。文字を扱うためキーボードレイアウトに依存しますが、キーコールバックは依存しません。1つのキーがゼロ個、1個、または複数の文字を生成することがあるため、文字と物理キーは1対1に対応しません。特定の物理キーが押されたか、または解放されたかを知るには、代わりにキーコールバックを参照してください。
+2353: 文字コールバックは通常のシステムテキスト入力と同様に動作し、macOS の Super（Command）キーや Windows の Alt キーなど、そのプラットフォームで通常のテキスト入力を妨げる修飾キーが押されている場合は呼び出されません。
+2355: 引数  
+2358: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2359: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2363: 戻り値  
+2364: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+2368: コールバックのシグネチャ  
+2373: void function_name(GLFWwindow\* window, unsigned int codepoint)
+2379: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2383: エラー  
+2384: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2388: スレッドセーフ性  
+2389: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2393: 関連項目  
+2394: テキスト入力
+2398: 導入バージョン  
+2399: バージョン 2.4 で追加されました。**GLFW 3:** ウィンドウハンドルの引数と戻り値が追加されました。
+2407: ## [◆ ](#ga0b7f4ad13c2b17435ff13b6dcfb4e43c)glfwSetCharModsCallback()
+2415: | GLFWcharmodsfun glfwSetCharModsCallback | ( | GLFWwindow \*  | *window*, |
+2416: |  |  | GLFWcharmodsfun  | *callback*  |
+2417: |  | ) |  |  |
+2423: この関数は、指定されたウィンドウの修飾キー付き文字コールバックを設定します。このコールバックは、使用されている修飾キーにかかわらず Unicode 文字が入力されたときに呼び出されます。
+2425: 修飾キー付き文字コールバックは、独自の Unicode 文字入力を実装するためのものです。通常の Unicode テキスト入力については、文字コールバックを参照してください。文字コールバックと同様に、修飾キー付き文字コールバックは文字を扱い、キーボードレイアウトに依存します。1 つのキーから生成される文字は 0 個、1 個、または複数個の場合があるため、文字と物理キーは 1 対 1 には対応しません。特定の物理キーが押されたか離されたかを知りたい場合は、代わりにキーコールバックを参照してください。
+2427: 引数  
+2430: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2431: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2435: 戻り値  
+2436: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはエラーが発生した場合は `NULL`。
+2440: コールバックのシグネチャ  
+2445: void function_name(GLFWwindow\* window, unsigned int codepoint, int mods)
+2451: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2455: **非推奨:**  
+2456: バージョン 4.0 で削除される予定です。
+2460: エラー  
+2461: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2465: スレッドセーフ性  
+2466: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2470: 関連項目  
+2471: テキスト入力
+2475: 導入バージョン  
+2476: バージョン 3.1 で追加されました。
+2484: ## [◆ ](#ga6ab84420974d812bee700e45284a723c)glfwSetMouseButtonCallback()
+2492: | GLFWmousebuttonfun glfwSetMouseButtonCallback | ( | GLFWwindow \*  | *window*, |
+2493: |  |  | GLFWmousebuttonfun  | *callback*  |
+2494: |  | ) |  |  |
+2500: この関数は、指定されたウィンドウのマウスボタンコールバックを設定します。このコールバックは、マウスボタンが押されたとき、または離されたときに呼び出されます。
+2502: ウィンドウが入力フォーカスを失うと、対応するボタントークンを持つ押下中のすべてのマウスボタンについて、合成されたボタン解放イベントが生成されます。この合成イベントは、フォーカス喪失イベントが処理された後、つまりウィンドウフォーカスコールバックが呼び出された後に生成されるため、ユーザーが生成したイベントと区別できます。
+2504: ボタンに対応するボタントークンがなく、GLFW_UNLIMITED_MOUSE_BUTTONS 入力モードが設定されている場合、通知される `button` の値は `GLFW_MOUSE_BUTTON_LAST` より大きくなることがあります。
+2506: 引数  
+2509: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2510: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2514: 戻り値  
+2515: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+2519: コールバックのシグネチャ  
+2524: void function_name(GLFWwindow\* window, int button, int action, int mods)
+2530: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2534: エラー  
+2535: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2539: スレッドセーフ性  
+2540: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2544: 関連項目  
+2545: マウスボタン入力
+2549: 導入バージョン  
+2550: バージョン 1.0 で追加されました。**GLFW 3:** ウィンドウハンドルの引数と戻り値が追加されました。
+2558: ## [◆ ](#gac1f879ab7435d54d4d79bb469fe225d7)glfwSetCursorPosCallback()
+2566: | GLFWcursorposfun glfwSetCursorPosCallback | ( | GLFWwindow \*  | *window*, |
+2567: |  |  | GLFWcursorposfun  | *callback*  |
+2568: |  | ) |  |  |
+2574: この関数は、指定されたウィンドウのカーソル位置コールバックを設定します。このコールバックは、カーソルが移動したときに呼び出されます。コールバックには、ウィンドウのコンテンツ領域の左上隅を基準としたスクリーン座標での位置が渡されます。
+2576: 引数  
+2579: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2580: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2584: 戻り値  
+2585: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+2589: コールバックのシグネチャ  
+2594: void function_name(GLFWwindow\* window, double xpos, double ypos);
+2600: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2604: エラー  
+2605: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2609: スレッドセーフ性  
+2610: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2614: 関連項目  
+2615: カーソル位置
+2619: 導入バージョン  
+2620: バージョン 3.0 で追加されました。`glfwSetMousePosCallback` を置き換えます。
+2628: ## [◆ ](#gad27f8ad0142c038a281466c0966817d8)glfwSetCursorEnterCallback()
+2636: | GLFWcursorenterfun glfwSetCursorEnterCallback | ( | GLFWwindow \*  | *window*, |
+2637: |  |  | GLFWcursorenterfun  | *callback*  |
+2638: |  | ) |  |  |
+2644: この関数は、指定されたウィンドウのカーソル境界通過コールバックを設定します。このコールバックは、カーソルがウィンドウのコンテンツ領域に入ったとき、またはそこから出たときに呼び出されます。
+2646: 引数  
+2649: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2650: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2654: 戻り値  
+2655: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+2659: コールバックのシグネチャ  
+2664: void function_name(GLFWwindow\* window, int entered)
+2670: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2674: エラー  
+2675: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2679: スレッドセーフ性  
+2680: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2684: 関連項目  
+2685: カーソルの進入・退出イベント
+2689: 導入バージョン  
+2690: バージョン 3.0 で追加されました。
+2698: ## [◆ ](#ga571e45a030ae4061f746ed56cb76aede)glfwSetScrollCallback()
+2706: | GLFWscrollfun glfwSetScrollCallback | ( | GLFWwindow \*  | *window*, |
+2707: |  |  | GLFWscrollfun  | *callback*  |
+2708: |  | ) |  |  |
+2714: この関数は、指定されたウィンドウのスクロールコールバックを設定します。このコールバックは、マウスホイールやタッチパッドのスクロール領域など、スクロール装置が使用されたときに呼び出されます。
+2716: スクロールコールバックは、マウスホイールやタッチパッドのスクロール領域などからの、すべてのスクロール入力を受け取ります。
+2718: 引数  
+2721: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2722: | \[in\] | callback | 新しいスクロールコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2726: 戻り値  
+2727: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+2731: コールバックのシグネチャ  
+2736: void function_name(GLFWwindow\* window, double xoffset, double yoffset)
+2742: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2746: エラー  
+2747: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2751: スレッドセーフ性  
+2752: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2756: 関連項目  
+2757: スクロール入力
+2761: 導入バージョン  
+2762: バージョン 3.0 で追加されました。`glfwSetMouseWheelCallback` を置き換えます。
+2770: ## [◆ ](#gab773f0ee0a07cff77a210cea40bc1f6b)glfwSetDropCallback()
+2778: | GLFWdropfun glfwSetDropCallback | ( | GLFWwindow \*  | *window*, |
+2779: |  |  | GLFWdropfun  | *callback*  |
+2780: |  | ) |  |  |
+2786: この関数は、指定されたウィンドウのパスドロップコールバックを設定します。このコールバックは、ドラッグされた 1 つ以上のパスがウィンドウ上にドロップされたときに呼び出されます。
+2788: パス配列とその文字列は、そのイベント専用に生成されている可能性があるため、コールバックから戻った後も有効であるとは保証されません。コールバックから戻った後に使用する場合は、ディープコピーを作成する必要があります。
+2790: 引数  
+2793: | \[in\] | window | コールバックを設定するウィンドウ。 |
+2794: | \[in\] | callback | 新しいファイルドロップコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+2798: 戻り値  
+2799: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+2803: コールバックのシグネチャ  
+2808: void function_name(GLFWwindow\* window, int path_count, const char\* paths\[\])
+2814: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+2818: エラー  
+2819: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+2823: スレッドセーフ性  
+2824: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2828: 関連項目  
+2829: パスのドロップ入力
+2833: 導入バージョン  
+2834: バージョン 3.1 で追加されました。
+2842: ## [◆ ](#gaed0966cee139d815317f9ffcba64c9f1)glfwJoystickPresent()
+2850: | int glfwJoystickPresent | (   | int  | *jid* | )   |     |
+2856: この関数は、指定されたジョイスティックが存在するかどうかを返します。
+2858: ジョイスティック ID を受け取るほかの関数は、いずれも処理を行う前にジョイスティックの存在を確認するため、それらの関数より先にこの関数を呼び出す必要はありません。
+2860: > **Libx参照注記（GLFW 3.5.1）:** 上の「いずれも」という説明には例外があります。固定版の[ユーザーポインター関数](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255)は、接続状態をポーリングせず、ジョイスティックオブジェクトが確保されているかを確認します。各関数の説明どおり、切断コールバック中でも使用できます。固定版の[コールバック処理](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426)は、切断状態にしてからコールバックを呼び出します。上流の記述は上に保持しています。
+2862: 引数  
+2865: | \[in\] | jid | 問い合わせるジョイスティック。 |
+2869: 戻り値  
+2870: ジョイスティックが存在する場合は `GLFW_TRUE`、それ以外の場合は `GLFW_FALSE`。
+2874: エラー  
+2875: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_PLATFORM_ERROR があります。
+2879: スレッドセーフ性  
+2880: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2884: 関連項目  
+2885: ジョイスティック入力
+2889: 導入バージョン  
+2890: バージョン 3.0 で追加されました。`glfwGetJoystickParam` を置き換えます。
+2898: ## [◆ ](#gaeb1c0191d3140a233a682987c61eb408)glfwGetJoystickAxes()
+2906: | const float \* glfwGetJoystickAxes | (   | int     | *jid*,   |
+2907: |                                    |     | int \*  | *count*  |
+2908: |                                    | )   |         |          |
+2914: この関数は、指定されたジョイスティックの全軸の値を返します。配列の各要素は -1.0 以上 1.0 以下の値です。
+2916: 指定されたジョイスティックが存在しない場合、この関数は `NULL` を返しますが、エラーは生成しません。このため、先に glfwJoystickPresent を呼び出す代わりに使用できます。
+2918: 引数  
+2921: | \[in\] | jid | 問い合わせるジョイスティック。 |
+2922: | \[out\] | count | 戻り値の配列に含まれる軸の値の数を格納する場所。ジョイスティックが存在しない場合、またはエラーが発生した場合は 0 に設定されます。 |
+2926: 戻り値  
+2927: 軸の値の配列。ジョイスティックが存在しない場合、またはエラーが発生した場合は `NULL`。
+2931: エラー  
+2932: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_PLATFORM_ERROR があります。
+2936: ポインターの有効期間  
+2937: 戻り値の配列は GLFW によって確保および解放されます。自分で解放してはいけません。指定されたジョイスティックが切断されるか、ライブラリが終了するまで有効です。
+2941: スレッドセーフ性  
+2942: この関数は、メインスレッドからのみ呼び出さなければなりません。
+2946: 関連項目  
+2947: ジョイスティックの軸状態
+2951: 導入バージョン  
+2952: バージョン 3.0 で追加されました。`glfwGetJoystickPos` を置き換えます。
+2960: ## [◆ ](#ga5ffe34739d3dc97efe432ed2d81d9938)glfwGetJoystickButtons()
+2968: | const unsigned char \* glfwGetJoystickButtons | (   | int     | *jid*,   |
+2969: |                                               |     | int \*  | *count*  |
+2970: |                                               | )   |         |          |
+2976: この関数は、指定されたジョイスティックの全ボタンの状態を返します。配列の各要素は `GLFW_PRESS` または `GLFW_RELEASE` のいずれかです。
+2978: glfwGetJoystickHats がなかった以前のバージョンとの後方互換性のため、ボタン配列には、各ハットを 4 つのボタンとして表現した全ハットも含まれます。ハットの順序は **glfwGetJoystickHats** が返す順序と同じで、各ハットは*上*、*右*、*下*、*左*の順です。この追加ボタンを無効にするには、初期化前に GLFW_JOYSTICK_HAT_BUTTONS 初期化ヒントを設定します。
+2980: 指定されたジョイスティックが存在しない場合、この関数は `NULL` を返しますが、エラーは生成しません。このため、先に glfwJoystickPresent を呼び出す代わりに使用できます。
+2982: 引数  
+2985: | \[in\] | jid | 問い合わせるジョイスティック。 |
+2986: | \[out\] | count | 戻り値の配列に含まれるボタン状態の数を格納する場所。ジョイスティックが存在しない場合、またはエラーが発生した場合は 0 に設定されます。 |
+2990: 戻り値  
+2991: ボタン状態の配列。ジョイスティックが存在しない場合、またはエラーが発生した場合は `NULL`。
+2995: エラー  
+2996: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_PLATFORM_ERROR があります。
+3000: ポインターの有効期間  
+3001: 戻り値の配列は GLFW によって確保および解放されます。自分で解放してはいけません。指定されたジョイスティックが切断されるか、ライブラリが終了するまで有効です。
+3005: スレッドセーフ性  
+3006: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3010: 関連項目  
+3011: ジョイスティックのボタン状態
+3015: 導入バージョン  
+3016: バージョン 2.2 で追加されました。**GLFW 3:** 動的配列を返すように変更されました。
+3024: ## [◆ ](#ga06e660841b3e79c54da4f54a932c5a2c)glfwGetJoystickHats()
+3032: | const unsigned char \* glfwGetJoystickHats | (   | int     | *jid*,   |
+3033: |                                            |     | int \*  | *count*  |
+3034: |                                            | )   |         |          |
+3040: この関数は、指定されたジョイスティックの全ハットの状態を返します。配列の各要素は次のいずれかの値です。
+3042: | 名前                  | 値                                  |
+3044: | `GLFW_HAT_CENTERED`   | 0                                   |
+3045: | `GLFW_HAT_UP`         | 1                                   |
+3046: | `GLFW_HAT_RIGHT`      | 2                                   |
+3047: | `GLFW_HAT_DOWN`       | 4                                   |
+3048: | `GLFW_HAT_LEFT`       | 8                                   |
+3049: | `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` \| `GLFW_HAT_UP`   |
+3050: | `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` \| `GLFW_HAT_DOWN` |
+3051: | `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` \| `GLFW_HAT_UP`    |
+3052: | `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` \| `GLFW_HAT_DOWN`  |
+3054: 斜め方向は、基本方向（上、右、下、左）のビット単位の組み合わせです。対応する方向との AND を取ることで、各方向を個別に検査できます。
+3060: if (hats\[2\] & GLFW_HAT_RIGHT)
+3066: {
+3072: // ハット 2 の状態は右上、右、右下のいずれか
+3078: }
+3086: [GLFW_HAT_RIGHT](/docs/glfw/v3-5-1/ja/04-reference/13-joystick-hat-states/#ga252586e3bbde75f4b0e07ad3124867f5)
+3092: \#define GLFW_HAT_RIGHT
+3098: **定義** glfw3.h:357
+3106: 指定されたジョイスティックが存在しない場合、この関数は `NULL` を返しますが、エラーは生成しません。このため、先に glfwJoystickPresent を呼び出す代わりに使用できます。
+3108: 引数  
+3111: | \[in\] | jid | 問い合わせるジョイスティック。 |
+3112: | \[out\] | count | 戻り値の配列に含まれるハット状態の数を格納する場所。ジョイスティックが存在しない場合、またはエラーが発生した場合は 0 に設定されます。 |
+3116: 戻り値  
+3117: ハット状態の配列。ジョイスティックが存在しない場合、またはエラーが発生した場合は `NULL`。
+3121: エラー  
+3122: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_PLATFORM_ERROR があります。
+3126: ポインターの有効期間  
+3127: 戻り値の配列は GLFW によって確保および解放されます。自分で解放してはいけません。指定されたジョイスティックが切断されるか、そのジョイスティックに対してこの関数が再び呼び出されるか、ライブラリが終了するまで有効です。
+3131: スレッドセーフ性  
+3132: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3136: 関連項目  
+3137: ジョイスティックのハット状態
+3141: 導入バージョン  
+3142: バージョン 3.3 で追加されました。
+3150: ## [◆ ](#gac6a8e769e18e0bcfa9097793fc2c3978)glfwGetJoystickName()
+3158: | const char \* glfwGetJoystickName | (   | int  | *jid* | )   |     |
+3164: この関数は、指定されたジョイスティックの名前を UTF-8 エンコードで返します。戻り値の文字列は GLFW によって確保および解放されます。自分で解放してはいけません。
+3166: 指定されたジョイスティックが存在しない場合、この関数は `NULL` を返しますが、エラーは生成しません。このため、先に glfwJoystickPresent を呼び出す代わりに使用できます。
+3168: 引数  
+3171: | \[in\] | jid | 問い合わせるジョイスティック。 |
+3175: 戻り値  
+3176: UTF-8 エンコードされたジョイスティック名。ジョイスティックが存在しない場合、またはエラーが発生した場合は `NULL`。
+3180: エラー  
+3181: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_PLATFORM_ERROR があります。
+3185: ポインターの有効期間  
+3186: 戻り値の文字列は GLFW によって確保および解放されます。自分で解放してはいけません。指定されたジョイスティックが切断されるか、ライブラリが終了するまで有効です。
+3190: スレッドセーフ性  
+3191: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3195: 関連項目  
+3196: ジョイスティック名
+3200: 導入バージョン  
+3201: バージョン 3.0 で追加されました。
+3209: ## [◆ ](#ga6659411aec3c7fcef27780e2cb2d9600)glfwGetJoystickGUID()
+3217: | const char \* glfwGetJoystickGUID | (   | int  | *jid* | )   |     |
+3223: この関数は、指定されたジョイスティックの SDL 互換 GUID を、UTF-8 エンコードされた 16 進文字列として返します。戻り値の文字列は GLFW によって確保および解放されます。自分で解放してはいけません。
+3225: GUID は、ジョイスティックをゲームパッドマッピングに関連付けるものです。接続されたジョイスティックには、ゲームパッドマッピングが割り当てられていなくても常に GUID があります。
+3227: 指定されたジョイスティックが存在しない場合、この関数は `NULL` を返しますが、エラーは生成しません。このため、先に glfwJoystickPresent を呼び出す代わりに使用できます。
+3229: GUID は SDL 2.0.5 で導入された形式を使用します。この GUID はジョイスティックのメーカーとモデルを一意に識別しようとしますが、個々の製品個体までは識別しません。たとえば、そのプラットフォーム上では、すべての有線 Xbox 360 コントローラーが同じ GUID を持ちます。プラットフォーム固有 API が提供するハードウェア情報に応じて、同じ個体でもプラットフォーム間で GUID が異なる場合があります。
+3231: 引数  
+3234: | \[in\] | jid | 問い合わせるジョイスティック。 |
+3238: 戻り値  
+3239: UTF-8 エンコードされたジョイスティックの GUID。ジョイスティックが存在しない場合、またはエラーが発生した場合は `NULL`。
+3243: エラー  
+3244: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM、GLFW_PLATFORM_ERROR があります。
+3248: ポインターの有効期間  
+3249: 戻り値の文字列は GLFW によって確保および解放されます。自分で解放してはいけません。指定されたジョイスティックが切断されるか、ライブラリが終了するまで有効です。
+3253: スレッドセーフ性  
+3254: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3258: 関連項目  
+3259: ゲームパッド入力
+3263: 導入バージョン  
+3264: バージョン 3.3 で追加されました。
+3272: ## [◆ ](#ga6b2f72d64d636b48a727b437cbb7489e)glfwSetJoystickUserPointer()
+3280: | void glfwSetJoystickUserPointer | (   | int      | *jid*,     |
+3281: |                                 |     | void \*  | *pointer*  |
+3282: |                                 | )   |          |            |
+3288: この関数は、指定されたジョイスティックのユーザー定義ポインターを設定します。現在の値は、ジョイスティックが切断されるまで保持されます。初期値は `NULL` です。
+3290: この関数は、切断処理中のジョイスティックに対しても、ジョイスティックコールバックから呼び出せます。
+3292: 引数  
+3295: | \[in\] | jid     | ポインターを設定するジョイスティック。 |
+3296: | \[in\] | pointer | 新しい値。 |
+3300: エラー  
+3301: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3305: スレッドセーフ性  
+3306: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+3310: 関連項目  
+3311: ジョイスティックのユーザーポインター
+3313: glfwGetJoystickUserPointer
+3317: 導入バージョン  
+3318: バージョン 3.3 で追加されました。
+3326: ## [◆ ](#ga18cefd7265d1fa04f3fd38a6746db5f3)glfwGetJoystickUserPointer()
+3334: | void \* glfwGetJoystickUserPointer | (   | int  | *jid* | )   |     |
+3340: この関数は、指定されたジョイスティックのユーザー定義ポインターの現在値を返します。初期値は `NULL` です。
+3342: この関数は、切断処理中のジョイスティックに対しても、ジョイスティックコールバックから呼び出せます。
+3344: 引数  
+3347: | \[in\] | jid | ポインターを返すジョイスティック。 |
+3351: エラー  
+3352: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3356: スレッドセーフ性  
+3357: この関数は、どのスレッドからでも呼び出せます。アクセスは同期されません。
+3361: 関連項目  
+3362: ジョイスティックのユーザーポインター
+3364: glfwSetJoystickUserPointer
+3368: 導入バージョン  
+3369: バージョン 3.3 で追加されました。
+3377: ## [◆ ](#gad0f676860f329d80f7e47e9f06a96f00)glfwJoystickIsGamepad()
+3385: | int glfwJoystickIsGamepad | (   | int  | *jid* | )   |     |
+3391: この関数は、指定されたジョイスティックが存在し、かつゲームパッドマッピングを持つかどうかを返します。
+3393: 指定されたジョイスティックが存在していてもゲームパッドマッピングを持たない場合、この関数は `GLFW_FALSE` を返しますが、エラーは生成しません。マッピングの有無にかかわらずジョイスティックが存在するかを確認するには、glfwJoystickPresent を呼び出してください。
+3395: 引数  
+3398: | \[in\] | jid | 問い合わせるジョイスティック。 |
+3402: 戻り値  
+3403: ジョイスティックが存在し、かつゲームパッドマッピングを持つ場合は `GLFW_TRUE`、それ以外の場合は `GLFW_FALSE`。
+3407: エラー  
+3408: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM があります。
+3412: スレッドセーフ性  
+3413: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3417: 関連項目  
+3418: ゲームパッド入力
+3420: glfwGetGamepadState
+3424: 導入バージョン  
+3425: バージョン 3.3 で追加されました。
+3433: ## [◆ ](#ga2f60a0e5b7bd8d1b7344dc0a7cb32b4c)glfwSetJoystickCallback()
+3441: | GLFWjoystickfun glfwSetJoystickCallback | ( | GLFWjoystickfun  | *callback* | ) |  |
+3447: この関数は、ジョイスティック構成コールバックを設定するか、現在設定されているコールバックを削除します。このコールバックは、ジョイスティックがシステムに接続されたとき、またはシステムから切断されたときに呼び出されます。
+3449: すべてのプラットフォームでジョイスティックの接続・切断イベントを受け取るには、いずれかのイベント処理関数を呼び出す必要があります。ジョイスティック関数によって切断が検出され、コールバックが呼び出される場合もあります。その場合、その関数はジョイスティックが存在しないときの戻り値を返します。
+3451: 引数  
+3454: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+3458: 戻り値  
+3459: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+3463: コールバックのシグネチャ  
+3468: void function_name(int jid, int event)
+3474: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+3478: エラー  
+3479: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3483: スレッドセーフ性  
+3484: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3488: 関連項目  
+3489: ジョイスティック構成の変更
+3493: 導入バージョン  
+3494: バージョン 3.2 で追加されました。
+3502: ## [◆ ](#gaed5104612f2fa8e66aa6e846652ad00f)glfwUpdateGamepadMappings()
+3510: | int glfwUpdateGamepadMappings | (   | const char \*  | *string* | )   |     |
+3516: この関数は、指定された ASCII エンコード文字列を解析し、見つかったゲームパッドマッピングで内部リストを更新します。この文字列には、単一のゲームパッドマッピング、または改行で区切られた複数のマッピングを含められます。パーサーは、空行やコメントを含む `gamecontrollerdb.txt` ソースファイルの完全な形式をサポートします。
+3518: 形式の説明については、ゲームパッドマッピングを参照してください。
+3520: 指定された GUID のゲームパッドマッピングが内部リストにすでに存在する場合、この関数に渡されたマッピングで置き換えられます。ライブラリを終了して再初期化すると、内部リストは組み込みのデフォルトに戻ります。
+3522: 引数  
+3525: | \[in\] | string | ゲームパッドマッピングを含む文字列。 |
+3529: 戻り値  
+3530: 成功した場合は `GLFW_TRUE`、エラーが発生した場合は `GLFW_FALSE`。
+3534: エラー  
+3535: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE があります。
+3539: スレッドセーフ性  
+3540: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3544: 関連項目  
+3545: ゲームパッド入力
+3547: glfwJoystickIsGamepad
+3549: glfwGetGamepadName
+3553: 導入バージョン  
+3554: バージョン 3.3 で追加されました。
+3562: ## [◆ ](#ga8aea73a1a25cc6c0486a617019f56728)glfwGetGamepadName()
+3570: | const char \* glfwGetGamepadName | (   | int  | *jid* | )   |     |
+3576: この関数は、指定されたジョイスティックに割り当てられたゲームパッドマッピングから、人が読めるゲームパッド名を返します。
+3578: 指定されたジョイスティックが存在しないか、ゲームパッドマッピングを持たない場合、この関数は `NULL` を返しますが、エラーは生成しません。マッピングの有無にかかわらず存在を確認するには、glfwJoystickPresent を呼び出してください。
+3580: 引数  
+3583: | \[in\] | jid | 問い合わせるジョイスティック。 |
+3587: 戻り値  
+3588: UTF-8 エンコードされたゲームパッド名。ジョイスティックが存在しない場合、マッピングを持たない場合、またはエラーが発生した場合は `NULL`。
+3592: エラー  
+3593: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM があります。
+3597: ポインターの有効期間  
+3598: 戻り値の文字列は GLFW によって確保および解放されます。自分で解放してはいけません。指定されたジョイスティックが切断されるか、ゲームパッドマッピングが更新されるか、ライブラリが終了するまで有効です。
+3602: スレッドセーフ性  
+3603: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3607: 関連項目  
+3608: ゲームパッド入力
+3610: glfwJoystickIsGamepad
+3614: 導入バージョン  
+3615: バージョン 3.3 で追加されました。
+3623: ## [◆ ](#gadccddea8bce6113fa459de379ddaf051)glfwGetGamepadState()
+3631: | int glfwGetGamepadState | ( | int  | *jid*, |
+3632: |  |  | GLFWgamepadstate \*  | *state*  |
+3633: |  | ) |  |  |
+3639: この関数は、指定されたジョイスティックを Xbox 風ゲームパッドに再マッピングした状態を取得します。
+3641: 指定されたジョイスティックが存在しないか、ゲームパッドマッピングを持たない場合、この関数は `GLFW_FALSE` を返しますが、エラーは生成しません。マッピングの有無にかかわらず存在を確認するには、glfwJoystickPresent を呼び出してください。
+3643: ガイドボタンはシステムや Steam クライアントによってフックされることが多いため、入力に使用できない場合があります。
+3645: すべてのデバイスが GLFWgamepadstate の提供する全ボタンおよび全軸を備えているわけではありません。使用できないボタンと軸は、それぞれ常に `GLFW_RELEASE` と 0.0 を通知します。
+3647: 引数  
+3650: | \[in\] | jid | 問い合わせるジョイスティック。 |
+3651: | \[out\] | state | ジョイスティックのゲームパッド入力状態。 |
+3655: 戻り値  
+3656: 成功した場合は `GLFW_TRUE`。ジョイスティックが接続されていない場合、ゲームパッドマッピングがない場合、またはエラーが発生した場合は `GLFW_FALSE`。
+3660: エラー  
+3661: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_ENUM があります。
+3665: スレッドセーフ性  
+3666: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3670: 関連項目  
+3671: ゲームパッド入力
+3673: glfwUpdateGamepadMappings
+3675: glfwJoystickIsGamepad
+3679: 導入バージョン  
+3680: バージョン 3.3 で追加されました。
+3688: ## [◆ ](#gaba1f022c5eb07dfac421df34cdcd31dd)glfwSetClipboardString()
+3696: | void glfwSetClipboardString | ( | GLFWwindow \*  | *window*, |
+3697: |  |  | const char \*  | *string*  |
+3698: |  | ) |  |  |
+3704: この関数は、システムのクリップボードに指定された UTF-8 エンコード文字列を設定します。
+3706: 引数  
+3709: | \[in\] | window | 非推奨。有効な任意のウィンドウ、または `NULL`。 |
+3710: | \[in\] | string | UTF-8 エンコード文字列。 |
+3714: エラー  
+3715: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR があります。
+3719: 備考  
+3720: **Win32:** Windows のクリップボードには、読み書き用の単一のグローバルロックがあります。GLFW は数回ロックの取得を試み、ほとんどの場合はそれで十分です。ロックを取得できない場合、この関数は GLFW_PLATFORM_ERROR を生成して戻ります。この関数を複数回試行しても安全です。
+3724: ポインターの有効期間  
+3725: 指定された文字列は、この関数から戻る前にコピーされます。
+3729: スレッドセーフ性  
+3730: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3734: 関連項目  
+3735: クリップボードの入出力
+3737: glfwGetClipboardString
+3741: 導入バージョン  
+3742: バージョン 3.0 で追加されました。
+3750: ## [◆ ](#ga71a5b20808ea92193d65c21b82580355)glfwGetClipboardString()
+3758: | const char \* glfwGetClipboardString | ( | GLFWwindow \*  | *window* | ) |  |
+3764: この関数は、システムのクリップボードに UTF-8 エンコード文字列が含まれているか、その形式に変換できる場合に、クリップボードの内容を返します。クリップボードが空の場合、または内容を変換できない場合は `NULL` を返し、GLFW_FORMAT_UNAVAILABLE エラーを生成します。
+3766: 引数  
+3769: | \[in\] | window | 非推奨。有効な任意のウィンドウ、または `NULL`。 |
+3773: 戻り値  
+3774: UTF-8 エンコード文字列としてのクリップボードの内容。エラーが発生した場合は `NULL`。
+3778: エラー  
+3779: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_FORMAT_UNAVAILABLE、GLFW_PLATFORM_ERROR があります。
+3783: 備考  
+3784: **Win32:** Windows のクリップボードには、読み書き用の単一のグローバルロックがあります。GLFW は数回ロックの取得を試み、ほとんどの場合はそれで十分です。ロックを取得できない場合、この関数は GLFW_PLATFORM_ERROR を生成して戻ります。この関数を複数回試行しても安全です。
+3788: ポインターの有効期間  
+3789: 戻り値の文字列は GLFW によって確保および解放されます。自分で解放してはいけません。次に glfwGetClipboardString または glfwSetClipboardString が呼び出されるか、ライブラリが終了するまで有効です。
+3793: スレッドセーフ性  
+3794: この関数は、メインスレッドからのみ呼び出さなければなりません。
+3798: 関連項目  
+3799: クリップボードの入出力
+3801: glfwSetClipboardString
+3805: 導入バージョン  
+3806: バージョン 3.0 で追加されました。
+3814: ## [◆ ](#gaa6cf4e7a77158a3b8fd00328b1720a4a)glfwGetTime()
+3822: | double glfwGetTime | (   | void  |     | )   |     |
+3828: この関数は、現在の GLFW 時刻を秒単位で返します。glfwSetTime で時刻を設定していない場合は、GLFW の初期化から経過した時間を測定します。
+3830: この関数と glfwSetTime は、glfwGetTimerFrequency と glfwGetTimerValue の上に構築されたヘルパー関数です。
+3832: タイマーの分解能はシステムに依存しますが、通常は数マイクロ秒または数ナノ秒程度です。各オペレーティングシステムで最も高分解能な単調増加時刻源を使用します。
+3834: 戻り値  
+3835: 現在時刻（秒単位）。エラーが発生した場合は 0。
+3839: エラー  
+3840: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3844: スレッドセーフ性  
+3845: この関数は、どのスレッドからでも呼び出せます。内部基準時刻の読み書きはアトミックではないため、glfwSetTime の呼び出しとの間で外部同期が必要です。
+3849: 関連項目  
+3850: 時刻入力
+3854: 導入バージョン  
+3855: バージョン 1.0 で追加されました。
+3863: ## [◆ ](#gaf59589ef6e8b8c8b5ad184b25afd4dc0)glfwSetTime()
+3871: | void glfwSetTime | (   | double  | *time* | )   |     |
+3877: この関数は、現在の GLFW 時刻を秒単位で設定します。値は、約 584.5 年に相当する 18446744073.0 以下の、正の有限数でなければなりません。
+3879: > **Libx参照注記（GLFW 3.5.1）:** 上流の段落は「正の」と記載しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507)はゼロも許容し、有限でない値、0.0 未満、18446744073.0 を超える値を拒否します。上流の記述は上に保持しています。
+3881: この関数と glfwGetTime は、glfwGetTimerFrequency と glfwGetTimerValue の上に構築されたヘルパー関数です。
+3883: 引数  
+3886: | \[in\] | time | 新しい値（秒単位）。 |
+3890: エラー  
+3891: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE があります。
+3895: 備考  
+3896: GLFW 時刻の上限は floor((2<sup>64</sup> - 1) / 10<sup>9</sup>) として計算されます。これは、ナノ秒を 64 ビットで格納する実装によるものです。この上限は将来引き上げられる可能性があります。
+3900: スレッドセーフ性  
+3901: この関数は、どのスレッドからでも呼び出せます。内部基準時刻の読み書きはアトミックではないため、glfwGetTime の呼び出しとの間で外部同期が必要です。
+3905: 関連項目  
+3906: 時刻入力
+3910: 導入バージョン  
+3911: バージョン 2.2 で追加されました。
+3919: ## [◆ ](#ga09b2bd37d328e0b9456c7ec575cc26aa)glfwGetTimerValue()
+3927: | uint64_t glfwGetTimerValue | (   | void  |     | )   |     |
+3933: この関数は、生のタイマーの現在値を 1 / 周波数 秒単位で返します。周波数を取得するには、glfwGetTimerFrequency を呼び出してください。
+3935: 戻り値  
+3936: タイマーの値。エラーが発生した場合は 0。
+3940: エラー  
+3941: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3945: スレッドセーフ性  
+3946: この関数は、どのスレッドからでも呼び出せます。
+3950: 関連項目  
+3951: 時刻入力
+3953: glfwGetTimerFrequency
+3957: 導入バージョン  
+3958: バージョン 3.2 で追加されました。
+3966: ## [◆ ](#ga3289ee876572f6e91f06df3a24824443)glfwGetTimerFrequency()
+3974: | uint64_t glfwGetTimerFrequency | (   | void  |     | )   |     |
+3980: この関数は、生のタイマーの周波数を Hz 単位で返します。
+3982: 戻り値  
+3983: タイマーの周波数（Hz 単位）。エラーが発生した場合は 0。
+3987: エラー  
+3988: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+3992: スレッドセーフ性  
+3993: この関数は、どのスレッドからでも呼び出せます。
+3997: 関連項目  
+3998: 時刻入力
+4000: glfwGetTimerValue
+4004: 導入バージョン  
+4005: バージョン 3.2 で追加されました。

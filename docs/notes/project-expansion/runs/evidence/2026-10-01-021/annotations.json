@@ -1,0 +1,84 @@
+{
+  "method": "source-preserving explicit notes",
+  "annotations": [
+    {
+      "id": "unlimited-getter",
+      "function": "glfwGetInputMode",
+      "passages": {
+        "en": "This function returns the value of an input option for the specified window. The mode must be one of <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_CURSOR\" class=\"el\">GLFW_CURSOR</a>, <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_STICKY_KEYS\" class=\"el\">GLFW_STICKY_KEYS</a>, <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_STICKY_MOUSE_BUTTONS\" class=\"el\">GLFW_STICKY_MOUSE_BUTTONS</a>, <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_LOCK_KEY_MODS\" class=\"el\">GLFW_LOCK_KEY_MODS</a> or <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_RAW_MOUSE_MOTION\" class=\"el\">GLFW_RAW_MOUSE_MOTION</a>.",
+        "ja": "この関数は、指定されたウィンドウの入力オプション値を返します。モードは <a href=\"/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_CURSOR\" class=\"el\">GLFW_CURSOR</a>、<a href=\"/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_STICKY_KEYS\" class=\"el\">GLFW_STICKY_KEYS</a>、<a href=\"/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_STICKY_MOUSE_BUTTONS\" class=\"el\">GLFW_STICKY_MOUSE_BUTTONS</a>、<a href=\"/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_LOCK_KEY_MODS\" class=\"el\">GLFW_LOCK_KEY_MODS</a>、または <a href=\"/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_RAW_MOUSE_MOTION\" class=\"el\">GLFW_RAW_MOUSE_MOTION</a> のいずれかでなければなりません。"
+      },
+      "notes": {
+        "en": "> **Libx reference note (GLFW 3.5.1):** The upstream mode lists omit `GLFW_UNLIMITED_MOUSE_BUTTONS`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583) accepts this mode and returns its current value. The upstream lists are preserved.",
+        "ja": "> **Libx参照注記（GLFW 3.5.1）:** 上流のモード一覧には `GLFW_UNLIMITED_MOUSE_BUTTONS` がありません。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583)はこのモードを受け付け、現在の値を返します。上流の一覧は保持しています。"
+      }
+    },
+    {
+      "id": "raw-motion-error",
+      "function": "glfwSetInputMode",
+      "passages": {
+        "en": "If the mode is `GLFW_RAW_MOUSE_MOTION`, the value must be either `GLFW_TRUE` to enable raw (unscaled and unaccelerated) mouse motion when the cursor is disabled, or `GLFW_FALSE` to disable it. If raw motion is not supported, attempting to set this will emit <a href=\"/docs/glfw/v3-5-1/en/04-reference/02-error-codes/#ga526fba20a01504a8086c763b6ca53ce5\" class=\"el\">GLFW_FEATURE_UNAVAILABLE</a>. Call <a href=\"/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gae4ee0dbd0d256183e1ea4026d897e1c2\" class=\"el\">glfwRawMouseMotionSupported</a> to check for support.",
+        "ja": "モードが `GLFW_RAW_MOUSE_MOTION` の場合、値はカーソル無効時の生の（拡大縮小も加速もされない）マウス移動を有効にする `GLFW_TRUE`、または無効にする `GLFW_FALSE` でなければなりません。生の移動がサポートされていない場合、設定しようとすると <a href=\"/docs/glfw/v3-5-1/ja/04-reference/02-error-codes/#ga526fba20a01504a8086c763b6ca53ce5\" class=\"el\">GLFW_FEATURE_UNAVAILABLE</a> が発生します。サポートの確認には <a href=\"/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gae4ee0dbd0d256183e1ea4026d897e1c2\" class=\"el\">glfwRawMouseMotionSupported</a> を呼び出してください。"
+      },
+      "notes": {
+        "en": "> **Libx reference note (GLFW 3.5.1):** The paragraph above names `GLFW_FEATURE_UNAVAILABLE`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687) instead emits `GLFW_PLATFORM_ERROR` when raw mouse motion is unsupported, matching the description of `glfwRawMouseMotionSupported`. The upstream wording is preserved above.",
+        "ja": "> **Libx参照注記（GLFW 3.5.1）:** 上の段落は `GLFW_FEATURE_UNAVAILABLE` と記載しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687)は raw mouse motion が未対応の場合、`GLFW_PLATFORM_ERROR` を発生させます。これは `glfwRawMouseMotionSupported` の説明と一致します。上流の記述は上に保持しています。"
+      }
+    },
+    {
+      "id": "unlimited-setter",
+      "function": "glfwSetInputMode",
+      "passages": {
+        "en": "If the mode is `GLFW_UNLIMITED_MOUSE_BUTTONS`, the value must be either `GLFW_TRUE` to disable the mouse button limit when calling the mouse button callback, or `GLFW_FALSE` to limit the mouse buttons sent to the callback to the mouse button token values up to `GLFW_MOUSE_BUTTON_LAST`.",
+        "ja": "モードが `GLFW_UNLIMITED_MOUSE_BUTTONS` の場合、値はマウスボタンコールバック呼び出し時のボタン制限を無効にする `GLFW_TRUE`、またはコールバックへ送るボタンを `GLFW_MOUSE_BUTTON_LAST` までのマウスボタントークン値に制限する `GLFW_FALSE` でなければなりません。"
+      },
+      "notes": {
+        "en": "> **Libx reference note (GLFW 3.5.1):** The parameter table below omits `GLFW_UNLIMITED_MOUSE_BUTTONS`, although this paragraph describes it. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693) accepts this mode. The upstream table is preserved.",
+        "ja": "> **Libx参照注記（GLFW 3.5.1）:** この段落には説明がありますが、下の引数表には `GLFW_UNLIMITED_MOUSE_BUTTONS` がありません。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693)はこのモードを受け付けます。上流の表は保持しています。"
+      }
+    },
+    {
+      "id": "captured-cursor",
+      "function": "glfwSetCursor",
+      "passages": {
+        "en": "This function sets the cursor image to be used when the cursor is over the content area of the specified window. The set cursor will only be visible when the <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#cursor_mode\" class=\"el\">cursor mode</a> of the window is `GLFW_CURSOR_NORMAL`.",
+        "ja": "この関数は、カーソルが指定されたウィンドウのコンテンツ領域上にあるときに使用するカーソル画像を設定します。設定したカーソルは、ウィンドウの<a href=\"/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#cursor_mode\" class=\"el\">カーソルモード</a>が `GLFW_CURSOR_NORMAL` の場合にのみ表示されます。"
+      },
+      "notes": {
+        "en": "> **Libx reference note (GLFW 3.5.1):** The NORMAL-only statement above is incomplete for capture-supporting backends. The fixed [Win32](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242), [X11](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474), and [Wayland](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353) implementations also select the cursor image in `GLFW_CURSOR_CAPTURED`. The fixed [Cocoa implementation](https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683) reports `GLFW_FEATURE_UNIMPLEMENTED` for captured mode. The upstream wording is preserved above.",
+        "ja": "> **Libx参照注記（GLFW 3.5.1）:** 上の「NORMAL の場合のみ」という説明は、キャプチャーに対応するバックエンドについては不完全です。固定版の [Win32](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242)、[X11](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474)、[Wayland](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353) の実装は、`GLFW_CURSOR_CAPTURED` でもカーソル画像を選択します。固定版の [Cocoa 実装](https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683)は、キャプチャーモードに対して `GLFW_FEATURE_UNIMPLEMENTED` を報告します。上流の記述は上に保持しています。"
+      }
+    },
+    {
+      "id": "joystick-presence-exception",
+      "function": "glfwJoystickPresent",
+      "passages": {
+        "en": "There is no need to call this function before other functions that accept a joystick ID, as they all check for presence before performing any other work.",
+        "ja": "ジョイスティック ID を受け取るほかの関数は、いずれも処理を行う前にジョイスティックの存在を確認するため、それらの関数より先にこの関数を呼び出す必要はありません。"
+      },
+      "notes": {
+        "en": "> **Libx reference note (GLFW 3.5.1):** The all-functions statement above has an exception. The fixed [user-pointer functions](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255) check whether the joystick object is allocated rather than polling for a connection. As their own descriptions state, they may be used in the disconnection callback. The fixed [callback path](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426) marks the joystick disconnected before invoking that callback. The upstream wording is preserved above.",
+        "ja": "> **Libx参照注記（GLFW 3.5.1）:** 上の「いずれも」という説明には例外があります。固定版の[ユーザーポインター関数](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255)は、接続状態をポーリングせず、ジョイスティックオブジェクトが確保されているかを確認します。各関数の説明どおり、切断コールバック中でも使用できます。固定版の[コールバック処理](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426)は、切断状態にしてからコールバックを呼び出します。上流の記述は上に保持しています。"
+      }
+    },
+    {
+      "id": "time-zero",
+      "function": "glfwSetTime",
+      "passages": {
+        "en": "This function sets the current GLFW time, in seconds. The value must be a positive finite number less than or equal to 18446744073.0, which is approximately 584.5 years.",
+        "ja": "この関数は、現在の GLFW 時刻を秒単位で設定します。値は、約 584.5 年に相当する 18446744073.0 以下の、正の有限数でなければなりません。"
+      },
+      "notes": {
+        "en": "> **Libx reference note (GLFW 3.5.1):** The upstream paragraph says positive. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507) also permits zero: it rejects non-finite values, values below 0.0, and values above 18446744073.0. The upstream wording is preserved above.",
+        "ja": "> **Libx参照注記（GLFW 3.5.1）:** 上流の段落は「正の」と記載しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507)はゼロも許容し、有限でない値、0.0 未満、18446744073.0 を超える値を拒否します。上流の記述は上に保持しています。"
+      }
+    }
+  ],
+  "translationChanges": [
+    {
+      "from": "非乗算済み RGBA",
+      "to": "アルファを事前乗算していない RGBA",
+      "reason": "non-premultiplied alpha terminology"
+    }
+  ]
+}

@@ -1,0 +1,401 @@
+1: ---
+2: title: "モニターリファレンス"
+3: description: "GLFW 3.5.1 モニターリファレンス"
+4: ---
+6: # モニターリファレンス
+10: ## 説明
+12: これは、モニター関連の関数と型に関するリファレンスドキュメントです。作業手順を中心とした情報については、モニターガイドを参照してください。
+21:  型定義
+24: typedef struct GLFWmonitor 
+25: GLFWmonitor
+29: 不透明なモニターオブジェクト。
+36: typedef void(* 
+37: GLFWmonitorfun) (GLFWmonitor *monitor, int event)
+41: モニター構成コールバックの関数ポインター型。
+48: typedef struct GLFWvidmode 
+49: GLFWvidmode
+53: ビデオモード型。
+60: typedef struct GLFWgammaramp 
+61: GLFWgammaramp
+65: ガンマランプ。
+81:  関数
+84: GLFWmonitor ** 
+85: glfwGetMonitors (int *count)
+89: 現在接続されているモニターを返します。
+96: GLFWmonitor * 
+97: glfwGetPrimaryMonitor (void)
+101: プライマリモニターを返します。
+108: void 
+109: glfwGetMonitorPos (GLFWmonitor *monitor, int *xpos, int *ypos)
+113: 仮想スクリーン上のモニターのビューポート位置を返します。
+120: void 
+121: glfwGetMonitorWorkarea (GLFWmonitor *monitor, int *xpos, int *ypos, int *width, int *height)
+125: モニターの作業領域を取得します。
+132: void 
+133: glfwGetMonitorPhysicalSize (GLFWmonitor *monitor, int *widthMM, int *heightMM)
+137: モニターの物理的な大きさを返します。
+144: void 
+145: glfwGetMonitorContentScale (GLFWmonitor *monitor, float *xscale, float *yscale)
+149: 指定されたモニターのコンテンツスケールを取得します。
+156: const char * 
+157: glfwGetMonitorName (GLFWmonitor *monitor)
+161: 指定されたモニターの名前を返します。
+168: void 
+169: glfwSetMonitorUserPointer (GLFWmonitor *monitor, void *pointer)
+173: 指定されたモニターのユーザーポインターを設定します。
+180: void * 
+181: glfwGetMonitorUserPointer (GLFWmonitor *monitor)
+185: 指定されたモニターのユーザーポインターを返します。
+192: GLFWmonitorfun 
+193: glfwSetMonitorCallback (GLFWmonitorfun callback)
+197: モニター構成コールバックを設定します。
+204: const GLFWvidmode * 
+205: glfwGetVideoModes (GLFWmonitor *monitor, int *count)
+209: 指定されたモニターで利用可能なビデオモードを返します。
+216: const GLFWvidmode * 
+217: glfwGetVideoMode (GLFWmonitor *monitor)
+221: 指定されたモニターの現在のモードを返します。
+228: void 
+229: glfwSetGamma (GLFWmonitor *monitor, float gamma)
+233: ガンマランプを生成し、指定されたモニターへ設定します。
+240: const GLFWgammaramp * 
+241: glfwGetGammaRamp (GLFWmonitor *monitor)
+245: 指定されたモニターの現在のガンマランプを返します。
+252: void 
+253: glfwSetGammaRamp (GLFWmonitor *monitor, const GLFWgammaramp *ramp)
+257: 指定されたモニターの現在のガンマランプを設定します。
+266: ## 型定義の詳細
+270: ## [◆ ](#ga8d9efd1cde9426692c73fe40437d0ae3)GLFWmonitor
+278: | typedef struct GLFWmonitor GLFWmonitor |
+284: 不透明なモニターオブジェクトです。
+286: 関連項目  
+287: モニターオブジェクト
+291: 導入バージョン  
+292: バージョン 3.0 で追加されました。
+300: ## [◆ ](#gaabe16caca8dea952504dfdebdf4cd249)GLFWmonitorfun
+308: | typedef void(\* GLFWmonitorfun) (GLFWmonitor \*monitor, int event) |
+314: これは、モニター構成コールバックの関数ポインター型です。モニターコールバック関数は、次のシグネチャを持ちます。
+320: void function_name(GLFWmonitor\* monitor, int event)
+328: [GLFWmonitor](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga8d9efd1cde9426692c73fe40437d0ae3)
+334: struct GLFWmonitor GLFWmonitor
+340: 不透明なモニターオブジェクトです。
+346: **定義** glfw3.h:1396
+354: 引数  
+357: | \[in\] | monitor | 接続または切断されたモニター。 |
+358: | \[in\] | event | `GLFW_CONNECTED` または `GLFW_DISCONNECTED` のいずれか。将来のリリースでイベントが追加される可能性があります。 |
+362: 関連項目  
+363: モニター構成の変更
+365: glfwSetMonitorCallback
+369: 導入バージョン  
+370: バージョン 3.0 で追加されました。
+378: ## [◆ ](#ga902c2816ac9b34b757282daab59b2565)GLFWvidmode
+386: | typedef struct GLFWvidmode GLFWvidmode |
+392: これは、1つのビデオモードを表します。
+394: 関連項目  
+395: ビデオモード
+397: glfwGetVideoMode
+399: glfwGetVideoModes
+403: 導入バージョン  
+404: バージョン 1.0 で追加されました。**GLFW 3:** リフレッシュレートのメンバーが追加されました。
+412: ## [◆ ](#ga939cf093cb0af0498b7b54dc2e181404)GLFWgammaramp
+420: | typedef struct GLFWgammaramp GLFWgammaramp |
+426: これは、モニターのガンマランプを表します。
+428: 関連項目  
+429: ガンマランプ
+431: glfwGetGammaRamp
+433: glfwSetGammaRamp
+437: 導入バージョン  
+438: バージョン 3.0 で追加されました。
+444: ## 関数の詳細
+448: ## [◆ ](#ga70b1156d5d24e9928f145d6c864369d2)glfwGetMonitors()
+456: | GLFWmonitor \*\* glfwGetMonitors | ( | int \*  | *count* | ) |  |
+462: この関数は、現在接続されているすべてのモニターのハンドル配列を返します。返される配列では、プライマリモニターが常に先頭です。モニターが見つからなかった場合、この関数は `NULL` を返します。
+464: 引数  
+467: | \[out\] | count | 返される配列内のモニター数を格納する場所。エラーが発生した場合はゼロに設定されます。 |
+471: 戻り値  
+472: モニターハンドルの配列。モニターが見つからなかった場合、またはエラーが発生した場合は `NULL`。
+476: エラー  
+477: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+481: ポインターの有効期間  
+482: 返される配列は GLFW が割り当て、解放します。自分で解放しないでください。モニター構成が変更されるか、ライブラリが終了するまでのみ有効であることが保証されます。
+486: スレッドセーフ性  
+487: この関数は、メインスレッドからのみ呼び出さなければなりません。
+491: 関連項目  
+492: モニターの取得
+494: モニター構成の変更
+496: glfwGetPrimaryMonitor
+500: 導入バージョン  
+501: バージョン 3.0 で追加されました。
+509: ## [◆ ](#gac3adb24947eb709e1874028272e5dfc5)glfwGetPrimaryMonitor()
+517: | GLFWmonitor \* glfwGetPrimaryMonitor | ( | void  |  | ) |  |
+523: この関数はプライマリモニターを返します。通常、これはタスクバーやグローバルメニューバーなどの要素が配置されているモニターです。
+525: 戻り値  
+526: プライマリモニター。モニターが見つからなかった場合、またはエラーが発生した場合は `NULL`。
+530: エラー  
+531: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+535: スレッドセーフ性  
+536: この関数は、メインスレッドからのみ呼び出さなければなりません。
+540: 備考  
+541: glfwGetMonitors が返す配列では、プライマリモニターが常に先頭です。
+545: 関連項目  
+546: モニターの取得
+548: glfwGetMonitors
+552: 導入バージョン  
+553: バージョン 3.0 で追加されました。
+561: ## [◆ ](#ga102f54e7acc9149edbcf0997152df8c9)glfwGetMonitorPos()
+569: | void glfwGetMonitorPos | ( | GLFWmonitor \*  | *monitor*, |
+570: |  |  | int \*  | *xpos*, |
+571: |  |  | int \*  | *ypos*  |
+572: |  | ) |  |  |
+578: この関数は、指定されたモニターの左上隅の位置をスクリーン座標で返します。
+580: 位置を受け取る引数は、一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` でない位置の引数はすべてゼロに設定されます。
+582: 引数  
+585: | \[in\]  | monitor | 照会するモニター。                               |
+586: | \[out\] | xpos    | モニターの X 座標を格納する場所、または `NULL`。 |
+587: | \[out\] | ypos    | モニターの Y 座標を格納する場所、または `NULL`。 |
+591: エラー  
+592: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+596: スレッドセーフ性  
+597: この関数は、メインスレッドからのみ呼び出さなければなりません。
+601: 関連項目  
+602: モニターのプロパティ
+606: 導入バージョン  
+607: バージョン 3.0 で追加されました。
+615: ## [◆ ](#ga7387a3bdb64bfe8ebf2b9e54f5b6c9d0)glfwGetMonitorWorkarea()
+623: | void glfwGetMonitorWorkarea | ( | GLFWmonitor \*  | *monitor*, |
+624: |  |  | int \*  | *xpos*, |
+625: |  |  | int \*  | *ypos*, |
+626: |  |  | int \*  | *width*, |
+627: |  |  | int \*  | *height*  |
+628: |  | ) |  |  |
+634: この関数は、指定されたモニターの作業領域の左上隅の位置と作業領域の大きさを、スクリーン座標で返します。作業領域は、ウィンドウシステムのタスクバーが存在する場合に、それによって覆われていないモニター領域として定義されます。タスクバーが存在しない場合、作業領域はスクリーン座標で表したモニター解像度です。
+636: 位置と大きさを受け取る引数は、一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` でない位置と大きさの引数はすべてゼロに設定されます。
+638: 引数  
+641: | \[in\]  | monitor | 照会するモニター。                               |
+642: | \[out\] | xpos    | モニターの X 座標を格納する場所、または `NULL`。 |
+643: | \[out\] | ypos    | モニターの Y 座標を格納する場所、または `NULL`。 |
+644: | \[out\] | width   | モニターの幅を格納する場所、または `NULL`。        |
+645: | \[out\] | height  | モニターの高さを格納する場所、または `NULL`。       |
+649: エラー  
+650: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+654: スレッドセーフ性  
+655: この関数は、メインスレッドからのみ呼び出さなければなりません。
+659: 関連項目  
+660: 作業領域
+664: 導入バージョン  
+665: バージョン 3.3 で追加されました。
+673: ## [◆ ](#ga7d8bffc6c55539286a6bd20d32a8d7ea)glfwGetMonitorPhysicalSize()
+681: | void glfwGetMonitorPhysicalSize | ( | GLFWmonitor \*  | *monitor*, |
+682: |  |  | int \*  | *widthMM*, |
+683: |  |  | int \*  | *heightMM*  |
+684: |  | ) |  |  |
+690: この関数は、指定されたモニターの表示領域の大きさをミリメートル単位で返します。
+692: 一部のプラットフォームでは、モニターの [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data) データが誤っているか、ドライバーが正確に報告しないため、正確なモニターサイズ情報が提供されません。
+694: 大きさを受け取る引数は、一部またはすべてを `NULL` にできます。エラーが発生した場合、`NULL` でない大きさの引数はすべてゼロに設定されます。
+696: 引数  
+699: | \[in\] | monitor | 照会するモニター。 |
+700: | \[out\] | widthMM | モニター表示領域の幅をミリメートル単位で格納する場所、または `NULL`。 |
+701: | \[out\] | heightMM | モニター表示領域の高さをミリメートル単位で格納する場所、または `NULL`。 |
+705: エラー  
+706: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+710: 備考  
+711: **Win32:** Windows 8 以前では、モニターの EDID データを照会する代わりに、現在の解像度とシステム DPI から物理的な大きさを計算します。
+715: スレッドセーフ性  
+716: この関数は、メインスレッドからのみ呼び出さなければなりません。
+720: 関連項目  
+721: モニターのプロパティ
+725: 導入バージョン  
+726: バージョン 3.0 で追加されました。
+734: ## [◆ ](#gad3152e84465fa620b601265ebfcdb21b)glfwGetMonitorContentScale()
+742: | void glfwGetMonitorContentScale | ( | GLFWmonitor \*  | *monitor*, |
+743: |  |  | float \*  | *xscale*, |
+744: |  |  | float \*  | *yscale*  |
+745: |  | ) |  |  |
+751: この関数は、指定されたモニターのコンテンツスケールを取得します。コンテンツスケールは、現在の DPI とプラットフォームの既定の DPI との比率です。これは、テキストやあらゆる UI 要素で特に重要です。この値で拡大縮小した UI のピクセル寸法が使用中のマシンで適切に見えるなら、他のマシンでも、その DPI やスケーリング設定にかかわらず妥当な大きさで表示されるはずです。これは、システムの DPI とスケーリング設定がある程度正しいことを前提とします。
+753: コンテンツスケールは、モニターの解像度とピクセル密度、およびユーザー設定の両方に依存することがあります。物理的な大きさと現在の解像度から計算した生の DPI とは大きく異なる場合があります。
+755: 引数  
+758: | \[in\]  | monitor | 照会するモニター。                               |
+759: | \[out\] | xscale  | X 軸方向のコンテンツスケールを格納する場所、または `NULL`。 |
+760: | \[out\] | yscale  | Y 軸方向のコンテンツスケールを格納する場所、または `NULL`。 |
+764: エラー  
+765: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+769: 備考  
+770: **Wayland:** モニターの小数スケーリング情報はまだ利用できないため、この関数は整数のコンテンツスケールだけを返します。
+774: スレッドセーフ性  
+775: この関数は、メインスレッドからのみ呼び出さなければなりません。
+779: 関連項目  
+780: コンテンツスケール
+782: glfwGetWindowContentScale
+786: 導入バージョン  
+787: バージョン 3.3 で追加されました。
+795: ## [◆ ](#ga7af83e13489d90379588fb331b9e4b68)glfwGetMonitorName()
+803: | const char \* glfwGetMonitorName | ( | GLFWmonitor \*  | *monitor* | ) |  |
+809: この関数は、指定されたモニターの人間が読める名前を UTF-8 エンコードで返します。この名前は通常、モニターのメーカーとモデルを反映しますが、接続されているモニター間で一意であることは保証されません。
+811: 引数  
+814: | \[in\] | monitor | 照会するモニター。 |
+818: 戻り値  
+819: UTF-8 でエンコードされたモニター名。エラーが発生した場合は `NULL`。
+823: エラー  
+824: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+828: ポインターの有効期間  
+829: 返される文字列は GLFW が割り当て、解放します。自分で解放しないでください。指定されたモニターが切断されるか、ライブラリが終了するまで有効です。
+833: スレッドセーフ性  
+834: この関数は、メインスレッドからのみ呼び出さなければなりません。
+838: 関連項目  
+839: モニターのプロパティ
+843: 導入バージョン  
+844: バージョン 3.0 で追加されました。
+852: ## [◆ ](#ga702750e24313a686d3637297b6e85fda)glfwSetMonitorUserPointer()
+860: | void glfwSetMonitorUserPointer | ( | GLFWmonitor \*  | *monitor*, |
+861: |  |  | void \*  | *pointer*  |
+862: |  | ) |  |  |
+868: この関数は、指定されたモニターのユーザー定義ポインターを設定します。現在の値は、モニターが切断されるまで保持されます。初期値は `NULL` です。
+870: この関数は、切断処理中のモニターに対しても、モニターコールバックから呼び出せます。
+872: 引数  
+875: | \[in\] | monitor | ポインターを設定するモニター。 |
+876: | \[in\] | pointer | 新しい値。                    |
+880: エラー  
+881: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+885: スレッドセーフ性  
+886: この関数は、任意のスレッドから呼び出せます。アクセスは同期されません。
+890: 関連項目  
+891: ユーザーポインター
+893: glfwGetMonitorUserPointer
+897: 導入バージョン  
+898: バージョン 3.3 で追加されました。
+906: ## [◆ ](#ga1adbfbfb8cd58b23cfee82e574fbbdc5)glfwGetMonitorUserPointer()
+914: | void \* glfwGetMonitorUserPointer | ( | GLFWmonitor \*  | *monitor* | ) |  |
+920: この関数は、指定されたモニターのユーザー定義ポインターの現在値を返します。初期値は `NULL` です。
+922: この関数は、切断処理中のモニターに対しても、モニターコールバックから呼び出せます。
+924: 引数  
+927: | \[in\] | monitor | ポインターを返すモニター。 |
+931: エラー  
+932: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+936: スレッドセーフ性  
+937: この関数は、任意のスレッドから呼び出せます。アクセスは同期されません。
+941: 関連項目  
+942: ユーザーポインター
+944: glfwSetMonitorUserPointer
+948: 導入バージョン  
+949: バージョン 3.3 で追加されました。
+957: ## [◆ ](#gab39df645587c8518192aa746c2fb06c3)glfwSetMonitorCallback()
+965: | GLFWmonitorfun glfwSetMonitorCallback | ( | GLFWmonitorfun  | *callback* | ) |  |
+971: この関数は、モニター構成コールバックを設定するか、現在設定されているコールバックを削除します。このコールバックは、モニターがシステムへ接続されたとき、またはシステムから切断されたときに呼び出されます。
+973: 引数  
+976: | \[in\] | callback | 新しいコールバック。現在設定されているコールバックを削除する場合は `NULL`。 |
+980: 戻り値  
+981: 以前に設定されていたコールバック。コールバックが設定されていなかった場合、またはライブラリが初期化されていなかった場合は `NULL`。
+985: コールバックのシグネチャ  
+990: void function_name(GLFWmonitor\* monitor, int event)
+996: コールバックの引数について詳しくは、関数ポインター型を参照してください。
+1000: エラー  
+1001: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED があります。
+1005: スレッドセーフ性  
+1006: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1010: 関連項目  
+1011: モニター構成の変更
+1015: 導入バージョン  
+1016: バージョン 3.0 で追加されました。
+1024: ## [◆ ](#gad2e24d2843cb7d6c26202cddd530fc1b)glfwGetVideoModes()
+1032: | const GLFWvidmode \* glfwGetVideoModes | ( | GLFWmonitor \*  | *monitor*, |
+1033: |  |  | int \*  | *count*  |
+1034: |  | ) |  |  |
+1040: この関数は、指定されたモニターがサポートするすべてのビデオモードの配列を返します。返される配列は、まず色ビット深度（すべてのチャンネル深度の合計）、次に解像度の面積（幅と高さの積）、続いて解像度の幅、最後にリフレッシュレートの昇順で並びます。
+1042: 引数  
+1045: | \[in\] | monitor | 照会するモニター。 |
+1046: | \[out\] | count | 返される配列内のビデオモード数を格納する場所。エラーが発生した場合はゼロに設定されます。 |
+1050: 戻り値  
+1051: ビデオモードの配列。エラーが発生した場合は `NULL`。
+1055: エラー  
+1056: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+1060: ポインターの有効期間  
+1061: 返される配列は GLFW が割り当て、解放します。自分で解放しないでください。指定されたモニターが切断されるか、そのモニターについてこの関数が再び呼び出されるか、ライブラリが終了するまで有効です。
+1065: スレッドセーフ性  
+1066: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1070: 関連項目  
+1071: ビデオモード
+1073: glfwGetVideoMode
+1077: 導入バージョン  
+1078: バージョン 1.0 で追加されました。**GLFW 3:** 特定のモニターのモード配列を返すように変更されました。
+1086: ## [◆ ](#gaba376fa7e76634b4788bddc505d6c9d5)glfwGetVideoMode()
+1094: | const GLFWvidmode \* glfwGetVideoMode | ( | GLFWmonitor \*  | *monitor* | ) |  |
+1100: この関数は、指定されたモニターの現在のビデオモードを返します。そのモニターにフルスクリーンウィンドウを作成している場合、戻り値はそのウィンドウがアイコン化されているかどうかによって決まります。
+1102: 引数  
+1105: | \[in\] | monitor | 照会するモニター。 |
+1109: 戻り値  
+1110: モニターの現在のモード。エラーが発生した場合は `NULL`。
+1114: エラー  
+1115: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED と GLFW_PLATFORM_ERROR があります。
+1119: ポインターの有効期間  
+1120: 返される配列は GLFW が割り当て、解放します。自分で解放しないでください。指定されたモニターが切断されるか、ライブラリが終了するまで有効です。
+1122: > **Libx参照注記（GLFW 3.5.1）:** 上の有効期間の原文は「配列」と表記しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/monitor.c#L451-L461)は、モニター内に格納された単一の `GLFWvidmode` へのポインターを返します。配列を返す関数は `glfwGetVideoModes` です。上の原文表記に対応する訳文は保持しています。
+1126: スレッドセーフ性  
+1127: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1131: 関連項目  
+1132: ビデオモード
+1134: glfwGetVideoModes
+1138: 導入バージョン  
+1139: バージョン 3.0 で追加されました。`glfwGetDesktopMode` を置き換えます。
+1147: ## [◆ ](#ga6ac582625c990220785ddd34efa3169a)glfwSetGamma()
+1155: | void glfwSetGamma | ( | GLFWmonitor \*  | *monitor*, |
+1156: |  |  | float  | *gamma*  |
+1157: |  | ) |  |  |
+1163: この関数は、指定された指数から適切な大きさのガンマランプを生成し、それを指定して glfwSetGammaRamp を呼び出します。値はゼロより大きい有限数でなければなりません。
+1165: ソフトウェア制御のガンマランプは、現在では通常 sRGB ガンマの近似であるハードウェアガンマ補正に*加えて*適用されます。つまり、完全に線形なランプ、すなわちガンマ 1.0 を設定すると、既定の（通常は sRGB に似た）動作になります。
+1167: OpenGL または OpenGL ES でガンマ補正されたレンダリングを行うには、GLFW_SRGB_CAPABLE ヒントを参照してください。
+1169: 引数  
+1172: | \[in\] | monitor | ガンマランプを設定するモニター。 |
+1173: | \[in\] | gamma   | 要求する指数。                |
+1177: エラー  
+1178: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_INVALID_VALUE、GLFW_PLATFORM_ERROR、および GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+1182: 備考  
+1183: **Wayland:** モニターガンマは特権プロトコルであるため、この関数は実装できず、GLFW_FEATURE_UNAVAILABLE を発生させます。
+1187: スレッドセーフ性  
+1188: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1192: 関連項目  
+1193: ガンマランプ
+1197: 導入バージョン  
+1198: バージョン 3.0 で追加されました。
+1206: ## [◆ ](#ga76ba90debcf0062b5c4b73052b24f96f)glfwGetGammaRamp()
+1214: | const GLFWgammaramp \* glfwGetGammaRamp | ( | GLFWmonitor \*  | *monitor* | ) |  |
+1220: この関数は、指定されたモニターの現在のガンマランプを返します。
+1222: 引数  
+1225: | \[in\] | monitor | 照会するモニター。 |
+1229: 戻り値  
+1230: 現在のガンマランプ。エラーが発生した場合は `NULL`。
+1234: エラー  
+1235: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR、および GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+1239: 備考  
+1240: **Wayland:** モニターガンマは特権プロトコルであるため、この関数は実装できず、`NULL` を返しながら GLFW_FEATURE_UNAVAILABLE を発生させます。
+1244: ポインターの有効期間  
+1245: 返される構造体とその配列は GLFW が割り当て、解放します。自分で解放しないでください。指定されたモニターが切断されるか、そのモニターについてこの関数が再び呼び出されるか、ライブラリが終了するまで有効です。
+1249: スレッドセーフ性  
+1250: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1254: 関連項目  
+1255: ガンマランプ
+1259: 導入バージョン  
+1260: バージョン 3.0 で追加されました。
+1268: ## [◆ ](#ga583f0ffd0d29613d8cd172b996bbf0dd)glfwSetGammaRamp()
+1276: | void glfwSetGammaRamp | ( | GLFWmonitor \*  | *monitor*, |
+1277: |  |  | const GLFWgammaramp \*  | *ramp*  |
+1278: |  | ) |  |  |
+1284: この関数は、指定されたモニターの現在のガンマランプを設定します。そのモニターの元のガンマランプは、この関数が最初に呼び出されたときに GLFW によって保存され、glfwTerminate によって復元されます。
+1286: ソフトウェア制御のガンマランプは、現在では通常 sRGB ガンマの近似であるハードウェアガンマ補正に*加えて*適用されます。つまり、完全に線形なランプ、すなわちガンマ 1.0 を設定すると、既定の（通常は sRGB に似た）動作になります。
+1288: OpenGL または OpenGL ES でガンマ補正されたレンダリングを行うには、GLFW_SRGB_CAPABLE ヒントを参照してください。
+1290: 引数  
+1293: | \[in\] | monitor | ガンマランプを設定するモニター。 |
+1294: | \[in\] | ramp    | 使用するガンマランプ。               |
+1298: エラー  
+1299: 発生する可能性のあるエラーには、GLFW_NOT_INITIALIZED、GLFW_PLATFORM_ERROR、および GLFW_FEATURE_UNAVAILABLE（備考を参照）があります。
+1303: 備考  
+1304: 指定するガンマランプの大きさは、そのモニターの現在のランプの大きさと一致させるべきです。
+1306: **Win32:** ガンマランプの大きさは 256 でなければなりません。
+1308: **Wayland:** モニターガンマは特権プロトコルであるため、この関数は実装できず、GLFW_FEATURE_UNAVAILABLE を発生させます。
+1312: ポインターの有効期間  
+1313: 指定されたガンマランプは、この関数が戻る前にコピーされます。
+1317: スレッドセーフ性  
+1318: この関数は、メインスレッドからのみ呼び出さなければなりません。
+1322: 関連項目  
+1323: ガンマランプ
+1327: 導入バージョン  
+1328: バージョン 3.0 で追加されました。

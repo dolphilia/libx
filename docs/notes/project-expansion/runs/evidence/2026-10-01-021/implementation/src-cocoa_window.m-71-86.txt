@@ -1,0 +1,16 @@
+71: // Updates the cursor image according to its cursor mode
+72: //
+73: static void updateCursorImage(_GLFWwindow* window)
+74: {
+75:     if (window->cursorMode == GLFW_CURSOR_NORMAL)
+76:     {
+77:         showCursor(window);
+78: 
+79:         if (window->cursor)
+80:             [(NSCursor*) window->cursor->ns.object set];
+81:         else
+82:             [[NSCursor arrowCursor] set];
+83:     }
+84:     else
+85:         hideCursor(window);
+86: }

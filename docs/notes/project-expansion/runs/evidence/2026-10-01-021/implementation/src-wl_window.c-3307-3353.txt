@@ -1,0 +1,47 @@
+3307: void _glfwSetCursorWayland(_GLFWwindow* window, _GLFWcursor* cursor)
+3308: {
+3309:     if (!_glfw.wl.pointer)
+3310:         return;
+3311: 
+3312:     if (window->wl.surface != _glfw.wl.pointerSurface)
+3313:         return;
+3314: 
+3315:     // Update pointer lock to match cursor mode
+3316:     if (window->cursorMode == GLFW_CURSOR_DISABLED)
+3317:     {
+3318:         if (window->wl.confinedPointer)
+3319:             unconfinePointer(window);
+3320:         if (!window->wl.lockedPointer)
+3321:             lockPointer(window);
+3322:     }
+3323:     else if (window->cursorMode == GLFW_CURSOR_CAPTURED)
+3324:     {
+3325:         if (window->wl.lockedPointer)
+3326:             unlockPointer(window);
+3327:         if (!window->wl.confinedPointer)
+3328:             confinePointer(window);
+3329:     }
+3330:     else if (window->cursorMode == GLFW_CURSOR_NORMAL ||
+3331:              window->cursorMode == GLFW_CURSOR_HIDDEN)
+3332:     {
+3333:         if (window->wl.lockedPointer)
+3334:             unlockPointer(window);
+3335:         else if (window->wl.confinedPointer)
+3336:             unconfinePointer(window);
+3337:     }
+3338: 
+3339:     if (window->cursorMode == GLFW_CURSOR_NORMAL ||
+3340:         window->cursorMode == GLFW_CURSOR_CAPTURED)
+3341:     {
+3342:         if (cursor)
+3343:             setCursorImage(window, &cursor->wl);
+3344:         else
+3345:         {
+3346:             struct wl_cursor* defaultCursor =
+3347:                 wl_cursor_theme_get_cursor(_glfw.wl.cursorTheme, "left_ptr");
+3348:             if (!defaultCursor)
+3349:             {
+3350:                 _glfwInputError(GLFW_PLATFORM_ERROR,
+3351:                                 "Wayland: Standard cursor not found");
+3352:                 return;
+3353:             }

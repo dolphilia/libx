@@ -1,0 +1,14 @@
+1494: GLFWAPI void glfwSetTime(double time)
+1495: {
+1496:     _GLFW_REQUIRE_INIT();
+1497: 
+1498:     if (!isfinite(time) || time < 0.0 || time > 18446744073.0)
+1499:     {
+1500:         _glfwInputError(GLFW_INVALID_VALUE, "Invalid time %f", time);
+1501:         return;
+1502:     }
+1503: 
+1504:     _glfw.timer.offset = _glfwPlatformGetTimerValue() -
+1505:         (uint64_t) (time * _glfwPlatformGetTimerFrequency());
+1506: }
+1507: 

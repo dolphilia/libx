@@ -1,0 +1,31 @@
+1225: GLFWAPI void glfwSetJoystickUserPointer(int jid, void* pointer)
+1226: {
+1227:     _GLFWjoystick* js;
+1228: 
+1229:     assert(jid >= GLFW_JOYSTICK_1);
+1230:     assert(jid <= GLFW_JOYSTICK_LAST);
+1231: 
+1232:     _GLFW_REQUIRE_INIT();
+1233: 
+1234:     js = _glfw.joysticks + jid;
+1235:     if (!js->allocated)
+1236:         return;
+1237: 
+1238:     js->userPointer = pointer;
+1239: }
+1240: 
+1241: GLFWAPI void* glfwGetJoystickUserPointer(int jid)
+1242: {
+1243:     _GLFWjoystick* js;
+1244: 
+1245:     assert(jid >= GLFW_JOYSTICK_1);
+1246:     assert(jid <= GLFW_JOYSTICK_LAST);
+1247: 
+1248:     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+1249: 
+1250:     js = _glfw.joysticks + jid;
+1251:     if (!js->allocated)
+1252:         return NULL;
+1253: 
+1254:     return js->userPointer;
+1255: }
