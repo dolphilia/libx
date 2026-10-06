@@ -1,0 +1,284 @@
+{
+  "title": "Basic filters",
+  "entries": [
+    {
+      "title": "Identity: `.`",
+      "body": "\nThe absolute simplest filter is `.` .  This filter takes its\ninput and produces the same value as output.  That is, this\nis the identity operator.\n\nSince jq by default pretty-prints all output, a trivial\nprogram consisting of nothing but `.` can be used to format\nJSON output from, say, `curl`.\n\nAlthough the identity filter never modifies the value of its\ninput, jq processing can sometimes make it appear as though\nit does.  For example, using the current implementation of\njq, we would see that the expression:\n\n    1E1234567890 | .\n\nproduces `1.7976931348623157e+308` on at least one platform.\nThis is because, in the process of parsing the number, this\nparticular version of jq has converted it to an IEEE754\ndouble-precision representation, losing precision.\n\nThe way in which jq handles numbers has changed over time\nand further changes are likely within the parameters set by\nthe relevant JSON standards.  Moreover, build configuration\noptions can alter how jq processes numbers.\n\nThe following remarks are therefore offered with the\nunderstanding that they are intended to be descriptive of the\ncurrent version of jq and should not be interpreted as being\nprescriptive:\n\n(1) Any arithmetic operation on a number that has not\nalready been converted to an IEEE754 double precision\nrepresentation will trigger a conversion to the IEEE754\nrepresentation.\n\n(2) jq will attempt to maintain the original decimal\nprecision of number literals (if the `--disable-decnum`\nbuild configuration option was not used), but in expressions\nsuch `1E1234567890`, precision will be lost if the exponent\nis too large.\n\n(3) Comparisons are carried out using the untruncated\nbig decimal representation of numbers if available, as\nillustrated in one of the following examples.\n\nThe examples below use the builtin function `have_decnum` in\norder to demonstrate the expected effects of using / not\nusing the `--disable-decnum` build configuration option, and\nalso to allow automated tests derived from these examples to\npass regardless of whether that option is used.\n",
+      "examples": [
+        {
+          "program": ".",
+          "input": "\"Hello, world!\"",
+          "output": [
+            "\"Hello, world!\""
+          ]
+        },
+        {
+          "program": ".",
+          "input": "0.12345678901234567890123456789",
+          "output": [
+            "0.12345678901234567890123456789"
+          ]
+        },
+        {
+          "program": "[., tojson] == if have_decnum then [12345678909876543212345,\"12345678909876543212345\"] else [12345678909876543000000,\"12345678909876543000000\"] end",
+          "input": "12345678909876543212345",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "[1234567890987654321,-1234567890987654321 | tojson] == if have_decnum then [\"1234567890987654321\",\"-1234567890987654321\"] else [\"1234567890987654400\",\"-1234567890987654400\"] end",
+          "input": "null",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": ". < 0.12345678901234567890123456788",
+          "input": "0.12345678901234567890123456789",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "map([., . == 1]) | tojson == if have_decnum then \"[[1,true],[1.000,true],[1.0,true],[1.00,true]]\" else \"[[1,true],[1,true],[1,true],[1,true]]\" end",
+          "input": "[1, 1.000, 1.0, 100e-2]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": ". as $big | [$big, $big + 1] | map(. > 10000000000000000000000000000000) | . == if have_decnum then [true, false] else [false, false] end",
+          "input": "10000000000000000000000000000001",
+          "output": [
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Object Identifier-Index: `.foo`, `.foo.bar`",
+      "body": "\nThe simplest *useful* filter has the form `.foo`. When given a\nJSON object (aka dictionary or hash) as input, `.foo` produces\nthe value at the key \"foo\" if the key is present, or null otherwise.\n\nA filter of the form `.foo.bar` is equivalent to `.foo | .bar`.\n\nThe `.foo` syntax only works for simple, identifier-like keys, that\nis, keys that are all made of alphanumeric characters and\nunderscore, and which do not start with a digit.\n\nIf the key contains special characters or starts with a digit,\nyou need to surround it with double quotes like this:\n`.\"foo$\"`, or else `.[\"foo$\"]`.\n\nFor example `.[\"foo::bar\"]` and `.[\"foo.bar\"]` work while\n`.foo::bar` does not.\n",
+      "examples": [
+        {
+          "program": ".foo",
+          "input": "{\"foo\": 42, \"bar\": \"less interesting data\"}",
+          "output": [
+            "42"
+          ]
+        },
+        {
+          "program": ".foo",
+          "input": "{\"notfoo\": true, \"alsonotfoo\": false}",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": ".[\"foo\"]",
+          "input": "{\"foo\": 42}",
+          "output": [
+            "42"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Optional Object Identifier-Index: `.foo?`",
+      "body": "\nJust like `.foo`, but does not output an error when `.` is not an\nobject.\n",
+      "examples": [
+        {
+          "program": ".foo?",
+          "input": "{\"foo\": 42, \"bar\": \"less interesting data\"}",
+          "output": [
+            "42"
+          ]
+        },
+        {
+          "program": ".foo?",
+          "input": "{\"notfoo\": true, \"alsonotfoo\": false}",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": ".[\"foo\"]?",
+          "input": "{\"foo\": 42}",
+          "output": [
+            "42"
+          ]
+        },
+        {
+          "program": "[.foo?]",
+          "input": "[1,2]",
+          "output": [
+            "[]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Object Index: `.[<string>]`",
+      "body": "\nYou can also look up fields of an object using syntax like\n`.[\"foo\"]` (`.foo` above is a shorthand version of this, but\nonly for identifier-like strings).\n"
+    },
+    {
+      "title": "Array Index: `.[<number>]`",
+      "body": "\nWhen the index value is an integer, `.[<number>]` can index\narrays.  Arrays are zero-based, so `.[2]` returns the third\nelement.\n\nNegative indices are allowed, with -1 referring to the last\nelement, -2 referring to the next to last element, and so on.\n",
+      "examples": [
+        {
+          "program": ".[0]",
+          "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+          "output": [
+            "{\"name\":\"JSON\", \"good\":true}"
+          ]
+        },
+        {
+          "program": ".[2]",
+          "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": ".[-2]",
+          "input": "[1,2,3]",
+          "output": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Array/String Slice: `.[<number>:<number>]`",
+      "body": "\nThe `.[<number>:<number>]` syntax can be used to return a\nsubarray of an array or substring of a string. The array\nreturned by `.[10:15]` will be of length 5, containing the\nelements from index 10 (inclusive) to index 15 (exclusive).\nEither index may be negative (in which case it counts\nbackwards from the end of the array), or omitted (in which\ncase it refers to the start or end of the array).\nIndices are zero-based.\n",
+      "examples": [
+        {
+          "program": ".[2:4]",
+          "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+          "output": [
+            "[\"c\", \"d\"]"
+          ]
+        },
+        {
+          "program": ".[2:4]",
+          "input": "\"abcdefghi\"",
+          "output": [
+            "\"cd\""
+          ]
+        },
+        {
+          "program": ".[:3]",
+          "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+          "output": [
+            "[\"a\", \"b\", \"c\"]"
+          ]
+        },
+        {
+          "program": ".[-2:]",
+          "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+          "output": [
+            "[\"d\", \"e\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Array/Object Value Iterator: `.[]`",
+      "body": "\nIf you use the `.[index]` syntax, but omit the index\nentirely, it will return *all* of the elements of an\narray. Running `.[]` with the input `[1,2,3]` will produce the\nnumbers as three separate results, rather than as a single\narray. A filter of the form `.foo[]` is equivalent to\n`.foo | .[]`.\n\nYou can also use this on an object, and it will return all\nthe values of the object.\n\nNote that the iterator operator is a generator of values.\n",
+      "examples": [
+        {
+          "program": ".[]",
+          "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+          "output": [
+            "{\"name\":\"JSON\", \"good\":true}",
+            "{\"name\":\"XML\", \"good\":false}"
+          ]
+        },
+        {
+          "program": ".[]",
+          "input": "[]",
+          "output": []
+        },
+        {
+          "program": ".foo[]",
+          "input": "{\"foo\":[1,2,3]}",
+          "output": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "program": ".[]",
+          "input": "{\"a\": 1, \"b\": 1}",
+          "output": [
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`.[]?`",
+      "body": "\nLike `.[]`, but no errors will be output if . is not an array\nor object. A filter of the form `.foo[]?` is equivalent to\n`.foo | .[]?`.\n"
+    },
+    {
+      "title": "Comma: `,`",
+      "body": "\nIf two filters are separated by a comma, then the\nsame input will be fed into both and the two filters' output\nvalue streams will be concatenated in order: first, all of the\noutputs produced by the left expression, and then all of the\noutputs produced by the right. For instance, filter `.foo,\n.bar`, produces both the \"foo\" fields and \"bar\" fields as\nseparate outputs.\n\nThe `,` operator is one way to construct generators.\n",
+      "examples": [
+        {
+          "program": ".foo, .bar",
+          "input": "{\"foo\": 42, \"bar\": \"something else\", \"baz\": true}",
+          "output": [
+            "42",
+            "\"something else\""
+          ]
+        },
+        {
+          "program": ".user, .projects[]",
+          "input": "{\"user\":\"stedolan\", \"projects\": [\"jq\", \"wikiflow\"]}",
+          "output": [
+            "\"stedolan\"",
+            "\"jq\"",
+            "\"wikiflow\""
+          ]
+        },
+        {
+          "program": ".[4,2]",
+          "input": "[\"a\",\"b\",\"c\",\"d\",\"e\"]",
+          "output": [
+            "\"e\"",
+            "\"c\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pipe: `|`",
+      "body": "\nThe | operator combines two filters by feeding the output(s) of\nthe one on the left into the input of the one on the right. It's\nsimilar to the Unix shell's pipe, if you're used to that.\n\nIf the one on the left produces multiple results, the one on\nthe right will be run for each of those results. So, the\nexpression `.[] | .foo` retrieves the \"foo\" field of each\nelement of the input array.  This is a cartesian product,\nwhich can be surprising.\n\nNote that `.a.b.c` is the same as `.a | .b | .c`.\n\nNote too that `.` is the input value at the particular stage\nin a \"pipeline\", specifically: where the `.` expression appears.\nThus `.a | . | .b` is the same as `.a.b`, as the `.` in the\nmiddle refers to whatever value `.a` produced.\n",
+      "examples": [
+        {
+          "program": ".[] | .name",
+          "input": "[{\"name\":\"JSON\", \"good\":true}, {\"name\":\"XML\", \"good\":false}]",
+          "output": [
+            "\"JSON\"",
+            "\"XML\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Parenthesis",
+      "body": "\nParenthesis work as a grouping operator just as in any typical\nprogramming language.\n",
+      "examples": [
+        {
+          "program": "(. + 2) * 5",
+          "input": "1",
+          "output": [
+            "15"
+          ]
+        }
+      ]
+    }
+  ]
+}

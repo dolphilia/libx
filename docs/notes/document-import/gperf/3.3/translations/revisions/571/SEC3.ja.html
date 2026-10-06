@@ -1,0 +1,9 @@
+<H1><A NAME="SEC3" HREF="#TOC3">2 はじめに</A></H1>
+
+<P>
+<CODE>gperf</CODE>は、C++で書かれた完全ハッシュ関数生成器です。利用者が指定した<VAR>n</VAR>個の要素からなるキーワード集合<VAR>W</VAR>を、完全ハッシュ関数<VAR>F</VAR>に変換します。<VAR>F</VAR>は、<VAR>W</VAR>内のキーワードを0..<VAR>k</VAR>の範囲に一意に対応付けます。ここで<VAR>k</VAR> &#62;= <VAR>n-1</VAR>です。<VAR>k</VAR> = <VAR>n-1</VAR>なら、<VAR>F</VAR>は<EM>最小</EM>完全ハッシュ関数です。<CODE>gperf</CODE>は、0..<VAR>k</VAR>の範囲に対応する静的な検索テーブルと、2つのC関数を生成します。これらの関数は、検索テーブルを高々1回調べることで、指定した文字列<VAR>s</VAR>が<VAR>W</VAR>に含まれるかどうかを判定します。
+</P>
+<P>
+<CODE>gperf</CODE>は現在、GNU C、GNU C++、GNU Java、GNU Pascal、GNU Modula 3、GNU indentを含む、実用および研究用の複数のコンパイラや言語処理ツールで、字句解析器の予約語認識器を生成するために使われています。<CODE>gperf</CODE>の完全なC++ソースコードは、<CODE>https://ftp.gnu.org/pub/gnu/gperf/</CODE>から入手できます。<CODE>gperf</CODE>の設計と実装をより詳しく説明した論文は、Second USENIX C++ Conferenceの論文集、または<CODE>http://www.cs.wustl.edu/~schmidt/resume.html</CODE>で入手できます。
+</P>
+

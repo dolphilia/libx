@@ -1,0 +1,476 @@
+{
+  "v1-8-2/ja/01-guide/00-introduction": [],
+  "v1-8-2/ja/01-guide/01-invoking-jq": [
+    {
+      "depth": 2,
+      "slug": "invoking-jq",
+      "text": "jqの起動"
+    }
+  ],
+  "v1-8-2/ja/01-guide/02-basic-filters": [
+    {
+      "depth": 2,
+      "slug": "basic-filters",
+      "text": "基本フィルター"
+    },
+    {
+      "depth": 3,
+      "slug": "identity",
+      "text": "恒等フィルター：."
+    },
+    {
+      "depth": 3,
+      "slug": "object-identifier-index",
+      "text": "オブジェクトの識別子による索引：.foo、.foo.bar"
+    },
+    {
+      "depth": 3,
+      "slug": "optional-object-identifier-index",
+      "text": "オブジェクトの識別子による索引（エラーを抑制）：.foo?"
+    },
+    {
+      "depth": 3,
+      "slug": "object-index",
+      "text": "オブジェクトの索引：.[<string>]"
+    },
+    {
+      "depth": 3,
+      "slug": "array-index",
+      "text": "配列の索引：.[<number>]"
+    },
+    {
+      "depth": 3,
+      "slug": "array-string-slice",
+      "text": "配列・文字列のスライス：.[<number>:<number>]"
+    },
+    {
+      "depth": 3,
+      "slug": "array-object-value-iterator",
+      "text": "配列・オブジェクトの値のイテレーター：.[]"
+    },
+    {
+      "depth": 3,
+      "slug": ".[]?",
+      "text": ".[]?"
+    },
+    {
+      "depth": 3,
+      "slug": "comma",
+      "text": "カンマ：,"
+    },
+    {
+      "depth": 3,
+      "slug": "pipe",
+      "text": "パイプ：|"
+    },
+    {
+      "depth": 3,
+      "slug": "parenthesis",
+      "text": "丸括弧"
+    }
+  ],
+  "v1-8-2/ja/01-guide/03-types-and-values": [
+    {
+      "depth": 2,
+      "slug": "types-and-values",
+      "text": "型と値"
+    },
+    {
+      "depth": 3,
+      "slug": "array-construction",
+      "text": "配列の構築：[]"
+    },
+    {
+      "depth": 3,
+      "slug": "object-construction",
+      "text": "オブジェクトの構築：{}"
+    },
+    {
+      "depth": 3,
+      "slug": "recursive-descent",
+      "text": "再帰的な走査：.."
+    }
+  ],
+  "v1-8-2/ja/01-guide/04-builtin-operators-and-functions": [
+    {
+      "depth": 2,
+      "slug": "builtin-operators-and-functions",
+      "text": "組込み演算子と関数"
+    },
+    {
+      "depth": 3,
+      "slug": "addition",
+      "text": "加算：+"
+    },
+    {
+      "depth": 3,
+      "slug": "subtraction",
+      "text": "減算：-"
+    },
+    {
+      "depth": 3,
+      "slug": "multiplication-division-modulo",
+      "text": "乗算・除算・剰余：*、/、%"
+    },
+    {
+      "depth": 3,
+      "slug": "abs",
+      "text": "abs"
+    },
+    {
+      "depth": 3,
+      "slug": "length",
+      "text": "length"
+    },
+    {
+      "depth": 3,
+      "slug": "utf8bytelength",
+      "text": "utf8bytelength"
+    },
+    {
+      "depth": 3,
+      "slug": "keys-keys_unsorted",
+      "text": "keys, keys_unsorted"
+    },
+    {
+      "depth": 3,
+      "slug": "has",
+      "text": "has(key)"
+    },
+    {
+      "depth": 3,
+      "slug": "in",
+      "text": "in"
+    },
+    {
+      "depth": 3,
+      "slug": "map-map_values",
+      "text": "map(f), map_values(f)"
+    },
+    {
+      "depth": 3,
+      "slug": "pick",
+      "text": "pick(pathexps)"
+    },
+    {
+      "depth": 3,
+      "slug": "path",
+      "text": "path(path_expression)"
+    },
+    {
+      "depth": 3,
+      "slug": "del",
+      "text": "del(path_expression)"
+    },
+    {
+      "depth": 3,
+      "slug": "getpath",
+      "text": "getpath(PATHS)"
+    },
+    {
+      "depth": 3,
+      "slug": "setpath",
+      "text": "setpath(PATHS; VALUE)"
+    },
+    {
+      "depth": 3,
+      "slug": "delpaths",
+      "text": "delpaths(PATHS)"
+    },
+    {
+      "depth": 3,
+      "slug": "to_entries-from_entries-with_entries",
+      "text": "to_entries, from_entries, with_entries(f)"
+    },
+    {
+      "depth": 3,
+      "slug": "select",
+      "text": "select(boolean_expression)"
+    },
+    {
+      "depth": 3,
+      "slug": "arrays-objects-iterables-booleans-numbers-normals-finites-strings-nulls-values-scalars",
+      "text": "arrays, objects, iterables, booleans, numbers, normals, finites, strings, nulls, values, scalars"
+    },
+    {
+      "depth": 3,
+      "slug": "empty",
+      "text": "empty"
+    },
+    {
+      "depth": 3,
+      "slug": "error",
+      "text": "error, error(message)"
+    },
+    {
+      "depth": 3,
+      "slug": "halt",
+      "text": "halt"
+    },
+    {
+      "depth": 3,
+      "slug": "halt_error",
+      "text": "halt_error, halt_error(exit_code)"
+    },
+    {
+      "depth": 3,
+      "slug": "$__loc__",
+      "text": "$__loc__"
+    },
+    {
+      "depth": 3,
+      "slug": "paths",
+      "text": "paths, paths(node_filter)"
+    },
+    {
+      "depth": 3,
+      "slug": "add",
+      "text": "add, add(generator)"
+    },
+    {
+      "depth": 3,
+      "slug": "any",
+      "text": "any, any(condition), any(generator; condition)"
+    },
+    {
+      "depth": 3,
+      "slug": "all",
+      "text": "all, all(condition), all(generator; condition)"
+    },
+    {
+      "depth": 3,
+      "slug": "flatten",
+      "text": "flatten, flatten(depth)"
+    },
+    {
+      "depth": 3,
+      "slug": "range",
+      "text": "range(upto), range(from; upto), range(from; upto; by)"
+    },
+    {
+      "depth": 3,
+      "slug": "floor",
+      "text": "floor"
+    },
+    {
+      "depth": 3,
+      "slug": "sqrt",
+      "text": "sqrt"
+    },
+    {
+      "depth": 3,
+      "slug": "tonumber",
+      "text": "tonumber"
+    },
+    {
+      "depth": 3,
+      "slug": "toboolean",
+      "text": "toboolean"
+    },
+    {
+      "depth": 3,
+      "slug": "tostring",
+      "text": "tostring"
+    },
+    {
+      "depth": 3,
+      "slug": "type",
+      "text": "type"
+    },
+    {
+      "depth": 3,
+      "slug": "infinite-nan-isinfinite-isnan-isfinite-isnormal",
+      "text": "infinite, nan, isinfinite, isnan, isfinite, isnormal"
+    },
+    {
+      "depth": 3,
+      "slug": "sort-sort_by",
+      "text": "sort, sort_by(path_expression)"
+    },
+    {
+      "depth": 3,
+      "slug": "group_by",
+      "text": "group_by(path_expression)"
+    },
+    {
+      "depth": 3,
+      "slug": "min-max-min_by-max_by",
+      "text": "min, max, min_by(path_exp), max_by(path_exp)"
+    },
+    {
+      "depth": 3,
+      "slug": "unique-unique_by",
+      "text": "unique, unique_by(path_exp)"
+    },
+    {
+      "depth": 3,
+      "slug": "reverse",
+      "text": "reverse"
+    },
+    {
+      "depth": 3,
+      "slug": "contains",
+      "text": "contains(element)"
+    },
+    {
+      "depth": 3,
+      "slug": "indices",
+      "text": "indices(s)"
+    },
+    {
+      "depth": 3,
+      "slug": "index-rindex",
+      "text": "index(s), rindex(s)"
+    },
+    {
+      "depth": 3,
+      "slug": "inside",
+      "text": "inside"
+    },
+    {
+      "depth": 3,
+      "slug": "startswith",
+      "text": "startswith(str)"
+    },
+    {
+      "depth": 3,
+      "slug": "endswith",
+      "text": "endswith(str)"
+    },
+    {
+      "depth": 3,
+      "slug": "combinations",
+      "text": "combinations, combinations(n)"
+    },
+    {
+      "depth": 3,
+      "slug": "ltrimstr",
+      "text": "ltrimstr(str)"
+    },
+    {
+      "depth": 3,
+      "slug": "rtrimstr",
+      "text": "rtrimstr(str)"
+    },
+    {
+      "depth": 3,
+      "slug": "trimstr",
+      "text": "trimstr(str)"
+    },
+    {
+      "depth": 3,
+      "slug": "trim-ltrim-rtrim",
+      "text": "trim, ltrim, rtrim"
+    },
+    {
+      "depth": 3,
+      "slug": "explode",
+      "text": "explode"
+    },
+    {
+      "depth": 3,
+      "slug": "implode",
+      "text": "implode"
+    },
+    {
+      "depth": 3,
+      "slug": "split-1",
+      "text": "split(str)"
+    },
+    {
+      "depth": 3,
+      "slug": "join",
+      "text": "join(str)"
+    },
+    {
+      "depth": 3,
+      "slug": "ascii_downcase-ascii_upcase",
+      "text": "ascii_downcase, ascii_upcase"
+    },
+    {
+      "depth": 3,
+      "slug": "while",
+      "text": "while(cond; update)"
+    },
+    {
+      "depth": 3,
+      "slug": "repeat",
+      "text": "repeat(exp)"
+    },
+    {
+      "depth": 3,
+      "slug": "until",
+      "text": "until(cond; next)"
+    },
+    {
+      "depth": 3,
+      "slug": "recurse",
+      "text": "recurse(f), recurse, recurse(f; condition)"
+    },
+    {
+      "depth": 3,
+      "slug": "walk",
+      "text": "walk(f)"
+    },
+    {
+      "depth": 3,
+      "slug": "have_literal_numbers",
+      "text": "have_literal_numbers"
+    },
+    {
+      "depth": 3,
+      "slug": "have_decnum",
+      "text": "have_decnum"
+    },
+    {
+      "depth": 3,
+      "slug": "$jq_build_configuration",
+      "text": "$JQ_BUILD_CONFIGURATION"
+    },
+    {
+      "depth": 3,
+      "slug": "$env-env",
+      "text": "$ENV, env"
+    },
+    {
+      "depth": 3,
+      "slug": "transpose",
+      "text": "transpose"
+    },
+    {
+      "depth": 3,
+      "slug": "bsearch",
+      "text": "bsearch(x)"
+    },
+    {
+      "depth": 3,
+      "slug": "string-interpolation",
+      "text": "文字列への式の埋込み：\\(exp)"
+    },
+    {
+      "depth": 3,
+      "slug": "convert-to-from-json",
+      "text": "JSONへの変換とJSONからの変換"
+    },
+    {
+      "depth": 3,
+      "slug": "format-strings-and-escaping",
+      "text": "文字列の書式設定とエスケープ"
+    },
+    {
+      "depth": 3,
+      "slug": "dates",
+      "text": "日付"
+    },
+    {
+      "depth": 3,
+      "slug": "sql-style-operators",
+      "text": "SQL形式の演算子"
+    },
+    {
+      "depth": 3,
+      "slug": "builtins",
+      "text": "builtins"
+    }
+  ]
+}
