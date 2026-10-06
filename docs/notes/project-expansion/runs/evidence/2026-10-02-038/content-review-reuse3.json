@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "method": "mechanical-preservation-plus-ai-delta-content-review",
+  "checkedAt": "2026-10-01T17:00:10.782032+00:00",
+  "priorFullReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T16:56:03.346Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "99990d9f57f85f6c92848577329920daf89852e13f6ae436fe811e89a4463f39",
+      "coverage": [
+        [
+          1,
+          547
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "8edcc9a7282a1e0e2e94c4f8ffcd706927f45820b8734c042cacec0d61a68ba6",
+      "coverage": [
+        [
+          1,
+          415
+        ]
+      ]
+    },
+    "results": [
+      "注記追加後のEN547行・JA415行の全非空本文を編集と別工程で派生全文実読（全非空semantic本文と原行番号保持。URL/空anchorのみ表示除去）。原文全説明・例・3名称表を照合。コンテキストをカレントにする順序、座標とpixel、閉じるcallbackからdestroy禁止、main-thread terminate、key-repeat/physical key、MBCSのscope、default反転、GLU禁止と例外を保持。",
+      "固定CMakeLists.txt118–126へ照合した英日注記がglfw3,の原文表記と実際のglfw/glfw3出力名を区別。JA2接続詞修正、空の表見出し区切りセルを英日/変換器で正規化。表の見出しと35名称行は保全し、実画面で見つけたraw pipe露出を修正。22コードblock・35名称行・29見出し/75URL/29id・本文byte保全は別機械検査。",
+      "カーソル位置はEN double instead of intに対しJA intではなくdoubleという自然な語順。この1箇所のinlineコード順序差は意味照合して機械正規化し、コードblockは原文byte一致。全pixel・実機API・code compileは未検証。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/second-final-review-view-method.json",
+        "sha256": "04737e9bff19e6c1cb04c85f47d6d2d74f2b8d2a9d6274ededd7c085c95866ee"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-en-second-readable-view.txt",
+        "sha256": "5685c51ace1284f685911736c992cfc216aea37c00d5a0d59ba0bce148566874"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-ja-second-readable-view.txt",
+        "sha256": "f1f0885d2dbbd9f318b5bdc9c7c0b1e8b102006521e7bb9706326a9c735b4f91"
+      }
+    ]
+  },
+  "changedRange": {
+    "source": [
+      [
+        54,
+        57
+      ]
+    ],
+    "translation": [
+      [
+        48,
+        48
+      ]
+    ]
+  },
+  "reviewResult": "原文はGLFW3の複数スレッド対応、カレントは一度に1スレッド、任意/メインスレッドの利用可能関数の区別。JA48行の全説明を別パス実読して対応と条件保持を確認。日本語強調区切りunderscore→asteriskだけを変更し語句/意味は不変。",
+  "mechanicalResult": "EN547行不変。JA415行は強調区切り1箇所を逆変換すると第2全文レビュー済みraw本文とbyte完全一致。",
+  "artifacts": [
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/moving.md",
+      "sha256": "2bee1d54f8260a131c4ca45c9e359149341cc52532e1eaef5b33165e6e37f03a"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "99990d9f57f85f6c92848577329920daf89852e13f6ae436fe811e89a4463f39"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "405ea4bf04b1f416315668ce88b994c7c5b17a7d382fb1633d05b0a6c43f3469"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-en-second-final-review-view.txt",
+      "sha256": "99990d9f57f85f6c92848577329920daf89852e13f6ae436fe811e89a4463f39"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-ja-second-final-review-view.txt",
+      "sha256": "8edcc9a7282a1e0e2e94c4f8ffcd706927f45820b8734c042cacec0d61a68ba6"
+    },
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/MOVING_CODE_CHECK3.json",
+      "sha256": "9a55544bd658951965790aed8f9bb78f90d3ec15e05539623d95e07cb59f4901"
+    }
+  ]
+}

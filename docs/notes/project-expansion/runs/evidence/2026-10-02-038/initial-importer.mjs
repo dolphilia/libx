@@ -1,0 +1,666 @@
+#!/usr/bin/env node
+
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  assertSafeImportTarget,
+  comparePathDescriptions,
+  describePath,
+  hashFile,
+  prepareImportForCheck,
+  prepareImportOutput,
+} from './safe-import-output.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const rootDir = path.resolve(__dirname, '../..');
+// Astro normalizes dots out of content IDs, so the libx version ID must not
+// contain dots. The upstream display version remains GLFW 3.5.1.
+const version = 'v3-5-1';
+const defaultSourceRoot = path.join(
+  rootDir,
+  '.tmp/document-import/glfw/01-source/repository/glfw-3.5.1'
+);
+const allowedOutputRoot = path.join(rootDir, 'apps/glfw/src/content/docs');
+const defaultOutputRoot = path.join(allowedOutputRoot, version, 'en');
+const defaultAssetOutput = path.join(rootDir, 'apps/glfw/public/assets/glfw-3.5.1/spaces.svg');
+const reportPath = path.join(rootDir, '.tmp/document-import/glfw/05-reports/import-manifest.json');
+
+function optionValue(args, name, fallback) {
+  const equals = args.find((argument) => argument.startsWith(`${name}=`));
+  if (equals) return equals.slice(name.length + 1);
+  const index = args.indexOf(name);
+  return index >= 0 && args[index + 1] && !args[index + 1].startsWith('--')
+    ? args[index + 1]
+    : fallback;
+}
+
+const cliArguments = process.argv.slice(2);
+const sourceRoot = path.resolve(optionValue(cliArguments, '--source', defaultSourceRoot));
+const outputRoot = assertSafeImportTarget(
+  optionValue(cliArguments, '--output', defaultOutputRoot),
+  allowedOutputRoot,
+  'en'
+);
+const checkOnly = cliArguments.includes('--check');
+const allowMissingSource = cliArguments.includes('--allow-missing-source');
+const dryRun = cliArguments.includes('--dry-run');
+const siteBase = `/docs/glfw/${version}/en`;
+
+if (checkOnly && allowMissingSource && !fs.existsSync(sourceRoot)) {
+  console.log(`GLFW固定入力がないため再現性検査をスキップします: ${sourceRoot}`);
+  process.exit(0);
+}
+
+if (dryRun) {
+  if (!fs.existsSync(sourceRoot)) throw new Error(`取得元が存在しません: ${sourceRoot}`);
+  console.log('GLFWインポート dry-run');
+  console.log(`取得元: ${sourceRoot}`);
+  console.log(`定本出力先: ${outputRoot}`);
+  console.log(`画像出力先: ${defaultAssetOutput}`);
+  console.log('ファイルは変更していません');
+  process.exit(0);
+}
+
+const guides = [
+  [
+    'main.md',
+    '01-overview/01-introduction.md',
+    'Introduction',
+    'Official documentation entry point',
+  ],
+  [
+    'quick.md',
+    '02-getting-started/01-getting-started.md',
+    'Getting started',
+    'Create a window and render with GLFW',
+  ],
+  [
+    'compile.md',
+    '02-getting-started/02-compiling-glfw.md',
+    'Compiling GLFW',
+    'Compile the GLFW library from source',
+  ],
+  [
+    'build.md',
+    '02-getting-started/03-building-applications.md',
+    'Building applications',
+    'Build and link applications that use GLFW',
+  ],
+  [
+    'intro.md',
+    '03-guides/01-introduction-to-the-api.md',
+    'Introduction to the API',
+    'Initialization, errors, coordinates and version management',
+  ],
+  [
+    'context.md',
+    '03-guides/02-context-guide.md',
+    'Context guide',
+    'OpenGL and OpenGL ES context management',
+  ],
+  [
+    'monitor.md',
+    '03-guides/03-monitor-guide.md',
+    'Monitor guide',
+    'Monitor objects, modes and gamma ramps',
+  ],
+  [
+    'window.md',
+    '03-guides/04-window-guide.md',
+    'Window guide',
+    'Window creation, properties and events',
+  ],
+  [
+    'input.md',
+    '03-guides/05-input-guide.md',
+    'Input guide',
+    'Keyboard, mouse, joystick and gamepad input',
+  ],
+  ['vulkan.md', '03-guides/06-vulkan-guide.md', 'Vulkan guide', 'Use GLFW with Vulkan'],
+  [
+    'compat.md',
+    '03-guides/07-standards-conformance.md',
+    'Standards conformance',
+    'Platform standards and extension requirements',
+  ],
+  [
+    'internal.md',
+    '03-guides/08-internal-structure.md',
+    'Internal structure',
+    'Internal interfaces and platform organization',
+  ],
+  [
+    'moving.md',
+    '05-migration-and-history/01-moving-from-2-to-3.md',
+    'Moving from GLFW 2 to 3',
+    'Migration guide for GLFW 2 users',
+  ],
+  [
+    'news.md',
+    '05-migration-and-history/02-release-notes.md',
+    'Release notes for version 3.5',
+    'Changes introduced in GLFW 3.5',
+  ],
+];
+
+const references = [
+  [
+    'group__init.html',
+    '01-initialization-version-error.md',
+    'Initialization, version and error reference',
+  ],
+  ['group__errors.html', '02-error-codes.md', 'Error codes'],
+  ['group__window.html', '03-window-reference.md', 'Window reference'],
+  ['group__context.html', '04-context-reference.md', 'Context reference'],
+  ['group__monitor.html', '05-monitor-reference.md', 'Monitor reference'],
+  ['group__input.html', '06-input-reference.md', 'Input reference'],
+  ['group__vulkan.html', '07-vulkan-support-reference.md', 'Vulkan support reference'],
+  ['group__native.html', '08-native-access.md', 'Native access'],
+  ['group__keys.html', '09-keyboard-key-tokens.md', 'Keyboard key tokens'],
+  ['group__mods.html', '10-modifier-key-flags.md', 'Modifier key flags'],
+  ['group__buttons.html', '11-mouse-buttons.md', 'Mouse buttons'],
+  ['group__joysticks.html', '12-joysticks.md', 'Joysticks'],
+  ['group__hat__state.html', '13-joystick-hat-states.md', 'Joystick hat states'],
+  ['group__gamepad__buttons.html', '14-gamepad-buttons.md', 'Gamepad buttons'],
+  ['group__gamepad__axes.html', '15-gamepad-axes.md', 'Gamepad axes'],
+  ['group__shapes.html', '16-standard-cursor-shapes.md', 'Standard cursor shapes'],
+  ['struct_g_l_f_wallocator.html', '17-glfwallocator.md', 'GLFWallocator structure'],
+  ['struct_g_l_f_wgamepadstate.html', '18-glfwgamepadstate.md', 'GLFWgamepadstate structure'],
+  ['struct_g_l_f_wgammaramp.html', '19-glfwgammaramp.md', 'GLFWgammaramp structure'],
+  ['struct_g_l_f_wimage.html', '20-glfwimage.md', 'GLFWimage structure'],
+  ['struct_g_l_f_wvidmode.html', '21-glfwvidmode.md', 'GLFWvidmode structure'],
+  ['deprecated.html', '22-deprecated-list.md', 'Deprecated list'],
+];
+
+const sourceToOutput = new Map(guides.map(([source, output]) => [source, output]));
+const htmlToOutput = new Map(
+  references.map(([source, output]) => [source, `04-reference/${output}`])
+);
+const groupRefToHtml = new Map([
+  ['init', 'group__init.html'],
+  ['errors', 'group__errors.html'],
+  ['window', 'group__window.html'],
+  ['context', 'group__context.html'],
+  ['monitor', 'group__monitor.html'],
+  ['input', 'group__input.html'],
+  ['vulkan', 'group__vulkan.html'],
+  ['native', 'group__native.html'],
+  ['keys', 'group__keys.html'],
+  ['mods', 'group__mods.html'],
+  ['buttons', 'group__buttons.html'],
+  ['joysticks', 'group__joysticks.html'],
+  ['hat_state', 'group__hat__state.html'],
+  ['gamepad_buttons', 'group__gamepad__buttons.html'],
+  ['gamepad_axes', 'group__gamepad__axes.html'],
+  ['shapes', 'group__shapes.html'],
+]);
+const doxygenPageToSource = new Map();
+
+for (const [source] of guides) {
+  const text = fs.readFileSync(path.join(sourceRoot, 'docs', source), 'utf8');
+  for (const match of text.matchAll(/^#{1,6}\s+.+?\s+\{#([^}]+)\}\s*$/gm)) {
+    doxygenPageToSource.set(match[1], source);
+  }
+  for (const match of text.matchAll(/^@anchor\s+(\S+)\s*$/gm)) {
+    doxygenPageToSource.set(match[1], source);
+  }
+}
+
+const symbolTargets = new Map();
+for (const [htmlFile] of references.filter(([name]) => name.startsWith('group__'))) {
+  const html = fs.readFileSync(path.join(sourceRoot, 'docs/html', htmlFile), 'utf8');
+  for (const match of html.matchAll(/<a[^>]+href="([^"]+)"[^>]*>([^<]+)<\/a>/g)) {
+    const [, href, label] = match;
+    if (href.startsWith(`${htmlFile}#`)) {
+      symbolTargets.set(decodeEntities(label.trim()), href);
+    }
+  }
+  for (const match of html.matchAll(
+    /<a id="([^"]+)"[^>]*><\/a>\s*<h2 class="memtitle">[\s\S]*?<\/span>([A-Za-z_][A-Za-z0-9_]*)(?:\(\))?<\/h2>/g
+  )) {
+    symbolTargets.set(match[2], `${htmlFile}#${match[1]}`);
+  }
+}
+
+function decodeEntities(value) {
+  return value
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&amp;', '&')
+    .replaceAll('&#160;', ' ');
+}
+
+function frontmatter(title, description) {
+  return `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(description)}\n---\n\n`;
+}
+
+function targetForRef(ref) {
+  if (ref === 'glfw3') {
+    return 'https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h';
+  }
+  const guideSource = doxygenPageToSource.get(ref);
+  if (guideSource) {
+    const output = sourceToOutput.get(guideSource).replace(/\.md$/, '');
+    return `${siteBase}/${output}/#${ref}`;
+  }
+
+  const groupHtml = groupRefToHtml.get(ref);
+  if (groupHtml) return rewriteHref(groupHtml);
+
+  const symbolHref = symbolTargets.get(ref);
+  if (symbolHref) {
+    return rewriteHref(symbolHref);
+  }
+
+  return `https://www.glfw.org/docs/3.5.1/search.html?q=${encodeURIComponent(ref)}`;
+}
+
+function rewriteHref(href) {
+  if (/^(?:https?:|mailto:|#)/.test(href)) return href;
+  const [file, anchor] = href.split('#');
+  const guideSource = [...doxygenPageToSource.entries()].find(([, source]) => {
+    const outputHtml = source.replace(/\.md$/, '_guide.html');
+    return file === outputHtml || file === source.replace(/\.md$/, '_8md.html');
+  });
+
+  if (guideSource) {
+    const output = sourceToOutput.get(guideSource[1]).replace(/\.md$/, '');
+    return `${siteBase}/${output}/${anchor ? `#${anchor}` : ''}`;
+  }
+
+  const referenceOutput = htmlToOutput.get(file);
+  if (referenceOutput) {
+    return `${siteBase}/${referenceOutput.replace(/\.md$/, '')}/${anchor ? `#${anchor}` : ''}`;
+  }
+
+  return `https://www.glfw.org/docs/3.5.1/${href}`;
+}
+
+function expandSnippet(sourceFile, snippetName) {
+  const candidates = [
+    path.join(sourceRoot, 'examples', sourceFile),
+    path.join(sourceRoot, sourceFile),
+  ];
+  const snippetFile = candidates.find((candidate) => fs.existsSync(candidate));
+  if (!snippetFile) throw new Error(`Could not find snippet source ${sourceFile}`);
+
+  const marker = `//! [${snippetName}]`;
+  const lines = fs.readFileSync(snippetFile, 'utf8').split(/\r?\n/);
+  const start = lines.indexOf(marker);
+  const end = lines.indexOf(marker, start + 1);
+  if (start === -1 || end === -1) {
+    throw new Error(`Could not find snippet ${snippetName} in ${sourceFile}`);
+  }
+
+  const language = path.extname(sourceFile).slice(1) || 'text';
+  return `\`\`\`${language}\n${lines
+    .slice(start + 1, end)
+    .join('\n')
+    .trimEnd()}\n\`\`\``;
+}
+
+function normalizeGuide(source, readableGuideLabels = false, additionalGuideLabels = {}) {
+  let text = source.replace(/^\[TOC\]\s*$/gm, '');
+  text = text.replace(/^(#{1,6})\s+(.+?)\s+\{#([^}]+)\}\s*$/gm, '<a id="$3"></a>\n\n$1 $2');
+  text = text.replace(/^@anchor\s+(\S+)\s*$/gm, '<a id="$1"></a>');
+  text = text.replace(
+    /\[([^\]]+)\]\(@ref\s+([^\s)]+)\)/g,
+    (_, label, ref) => `[${label}](${targetForRef(ref)})`
+  );
+  const guideLabels = {
+    news: 'Release notes', quick_guide: 'Getting started', intro_guide: 'Introduction to the API',
+    window_guide: 'Window guide', context_guide: 'Context guide', vulkan_guide: 'Vulkan guide',
+    monitor_guide: 'Monitor guide', input_guide: 'Input guide', compile_guide: 'Compiling GLFW',
+    build_guide: 'Building applications', moving_guide: 'Moving from GLFW 2 to 3',
+    guarantees_limitations: 'Guarantees and limitations', compat_guide: 'Standards conformance',
+    compile_deps: 'Installing dependencies', compile_options: 'CMake options',
+    compile_generate: 'Generating build files with CMake', compile_compile: 'Compiling the library',
+    build_macros: 'GLFW header option macros',
+    build_link_cmake_package: 'With CMake and installed GLFW binaries',
+    build_link_cmake_source: 'With CMake and GLFW source',
+    init: 'Initialization, version and error reference',
+    context: 'Context reference', window_creation: 'Creating a window',
+    buffer_swap: 'Buffer swapping',
+    monitor: 'Monitor reference',
+    ...additionalGuideLabels,
+  };
+  text = text.replace(/@ref\s+([A-Za-z0-9_]+)/g, (_, ref) =>
+    `[${readableGuideLabels ? (guideLabels[ref] ?? ref) : ref}](${targetForRef(ref)})`
+  );
+  text = text.replace(/@b\s+([A-Za-z0-9_]+)/g, '`$1`');
+  text = text.replace(/\]\(modules\.html\)/g, `](${siteBase}/)`);
+  text = text.replace(/src="spaces\.svg"/g, 'src="/docs/glfw/assets/glfw-3.5.1/spaces.svg"');
+  text = text.replace(/^@note\s+/gm, '> **Note:** ');
+  text = text.replace(/^@warning\s+/gm, '> **Warning:** ');
+  text = text.replace(/^@snippet\s+(\S+)\s+(\S+)\s*$/gm, (_, sourceFile, snippetName) =>
+    expandSnippet(sourceFile, snippetName)
+  );
+  return text.trimEnd() + '\n';
+}
+
+function annotateInputGuide(source) {
+  const notes = [
+    ['or objects from your callbacks.',
+      '> **Libx reference note (GLFW 3.5.1):** The statement above about all input callbacks has an exception: the joystick callback receives a joystick ID and an event, with no window handle. See @ref joystick_event and the callback example in that section.'],
+    ['useful values for a disconnected joystick and only before the monitor callback\nreturns.',
+      '> **Libx reference note (GLFW 3.5.1):** The paragraph above says "monitor callback" in a section about joystick callbacks. It also includes @ref glfwGetJoystickName among functions that return useful values after disconnection. In the [fixed 3.5.1 implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1169-L1195), the joystick is marked disconnected before the joystick callback runs, and this function returns `NULL` for a disconnected joystick. @ref glfwGetJoystickUserPointer can still be queried during that callback. Obtain and copy any needed joystick name before disconnection; the lifetime stated in its reference ends on disconnection. These clarifications supplement the preserved upstream text.'],
+  ];
+  for (const [passage, note] of notes) {
+    if (!source.includes(passage)) throw new Error(`Missing fixed input guide passage: ${passage}`);
+    source = source.replace(passage, `${passage}\n\n${note}`);
+  }
+  const passage = 'mask.\n\nBefore an axis';
+  if (!source.includes(passage)) throw new Error('Missing fixed gamepad mapping passage');
+  return source.replace(passage, 'mask.\n\n> **Libx reference note (GLFW 3.5.1):** The upstream example above calls `a7` the eighth button. In this mapping format it denotes the eighth axis (index 7). The [fixed mapping parser](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L210-L228) interprets `a` as an axis and `b` as a button. The upstream wording is preserved above.\n\nBefore an axis');
+}
+
+function annotateStandardsGuide(source) {
+  const notes = [
+    ['extensions, gamma ramp support will not function.',
+      '> **Libx reference note (GLFW 3.5.1):** The wording above can suggest that both extensions must be present. The [fixed gamma-ramp implementation](https://github.com/glfw/glfw/blob/3.5.1/src/x11_monitor.c#L540-L574) first uses RandR when available and its gamma support is not marked broken, then falls back to Xf86vidmode when available. One usable path is sufficient; the upstream wording is preserved above.'],
+    ['formats.  If GLX 1.3 is not supported, @ref glfwInit will fail.',
+      '> **Libx reference note (GLFW 3.5.1):** The sentence above names @ref glfwInit. In the [fixed X11 window-creation implementation](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L1963-L1985), GLX initialization happens when creating a window with a native OpenGL context. The [GLX version check](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L348-L360) rejects GLX 1.x below 1.3 at that stage. Windows using `GLFW_NO_API` and the EGL path do not take that GLX initialization branch. This clarifies the failure stage without changing the upstream sentence.'],
+    ['available, calling @ref glfwSwapInterval will have no effect.',
+      '> **Libx reference note (GLFW 3.5.1):** The comma inside `GLX_MESA_swap_control,` above is part of the upstream wording; the [fixed extension lookup](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L380-L386) uses `GLX_MESA_swap_control` without it. The [fixed swap-interval implementation](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L188-L205) prefers EXT, then MESA, then SGI, which differs from the order stated above.'],
+    ['related to context creation will have no effect or cause errors when used.',
+      '> **Libx reference note (GLFW 3.5.1):** The extension names above use singular `extension`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/wgl_context.c#L482-L483) names `WGL_ARB_extensions_string` and `WGL_EXT_extensions_string`, with plural `extensions`. Its [extension-string query](https://github.com/glfw/glfw/blob/3.5.1/src/wgl_context.c#L363-L375) uses the ARB function when available, falling back to EXT, contrary to the preference stated above. The upstream names and preference are preserved above.'],
+  ];
+  for (const [passage, note] of notes) {
+    if (!source.includes(passage)) throw new Error(`Missing fixed standards guide passage: ${passage}`);
+    source = source.replace(passage, `${passage}\n\n${note}`);
+  }
+  return source;
+}
+
+function annotateInitializationReference(markdown) {
+  const annotations = [
+    ['This is only semantic sugar for the number 0. You can instead use `0` or `false` or `_False` or `GL_FALSE` or `VK_FALSE` or anything else that is equal to zero.',
+      '> **Libx reference note (GLFW 3.5.1):** The upstream descriptions of `GLFW_TRUE` and `GLFW_FALSE` above include `_True` and `_False`. The [fixed GLFW header](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L303-L320) defines `GLFW_TRUE` as 1 and `GLFW_FALSE` as 0, but does not declare or define `_True` or `_False`. These names cannot be assumed to be supplied by GLFW. Use `GLFW_TRUE`/`GLFW_FALSE` or 1/0 when relying on GLFW alone. The upstream wording is preserved above.'],
+    ['This function may deallocate the specified memory block. This memory block will have been allocated with the same allocator.',
+      '> **Libx reference note (GLFW 3.5.1):** The upstream paragraph below about returning `NULL` is inconsistent with this callback\'s `void` return type. The [fixed declaration](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L1571) and [deallocation implementation](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L296-L300) provide no return value and do not test a deallocation result for `NULL`. The `GLFW_OUT_OF_MEMORY` checks on allocation and reallocation are separate. The upstream paragraph is preserved below.'],
+    ['If you specify an allocator struct, every member must be a valid function pointer. If any member is `NULL`, this function will emit <a href="/docs/glfw/v3-5-1/en/04-reference/02-error-codes/#gaaf2ef9aa8202c2b82ac2d921e554c687" class="el">GLFW_INVALID_VALUE</a> and the init allocator will be unchanged.',
+      '> **Libx reference note (GLFW 3.5.1):** In the upstream sentence above, the function-pointer requirement applies to `allocate`, `reallocate` and `deallocate`. The [fixed struct](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L2142-L2160) also has a `void* user` member, which is a user pointer. The [fixed setter](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L471-L482) checks the three callbacks and copies `user` without requiring it to be non-`NULL`. The upstream wording is preserved above.'],
+    ['| \\[in\\] | description | Where to store the error description pointer, or `NULL`. |',
+      '> **Libx reference note (GLFW 3.5.1):** The upstream parameter table above labels `description` as `[in]`, while its explanation describes a destination. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L499-L521) writes the error-description pointer to `*description` when a destination is provided. Pass the address of a `const char*` variable to receive that pointer, or `NULL` to omit it. The `[in]` label is preserved above.'],
+    ['See also  \ninit_hints',
+      '> **Libx reference note (GLFW 3.5.1):** The upstream `init_hints` reference above is plain text. Its target is [Initialization hints](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#init_hints).'],
+  ];
+  for (const [passage, note] of annotations) {
+    if (markdown.split(passage).length !== 2) {
+      throw new Error('Initialization reference annotation passage is missing or ambiguous');
+    }
+    markdown = markdown.replace(passage, `${passage}\n\n${note}`);
+  }
+  return markdown;
+}
+
+function annotateErrorCodes(markdown) {
+  const annotations = [
+    ['A bug in GLFW or the underlying operating system. Report the bug to our [issue tracker](https://github.com/glfw/glfw/issues).',
+      '> **Libx reference note (GLFW 3.5.1):** The analysis above is the upstream wording. The [fixed allocation and reallocation paths](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L249-L294) set `GLFW_OUT_OF_MEMORY` when the corresponding allocator callback returns `NULL`. This error by itself does not identify a bug as the cause of that failure. The upstream analysis is preserved above.'],
+    ['Some pre-installed Windows graphics drivers do not support OpenGL. AMD only supports OpenGL ES via EGL, while Nvidia and Intel only support it via a WGL or GLX extension. macOS does not provide OpenGL ES at all. The Mesa EGL, OpenGL and OpenGL ES libraries do not interface with the Nvidia binary driver. Older graphics drivers do not support Vulkan.',
+      '> **Libx reference note (GLFW 3.5.1):** These are examples from the [fixed 3.5.1 documentation](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L728-L734). They are not a compatibility check for a particular driver or machine. The upstream examples are preserved above.'],
+  ];
+  for (const [passage, note] of annotations) {
+    if (markdown.split(passage).length !== 2) {
+      throw new Error('Error codes annotation passage is missing or ambiguous');
+    }
+    markdown = markdown.replace(passage, `${passage}\n\n${note}`);
+  }
+  return markdown;
+}
+
+function annotateWindowReference(markdown) {
+  const annotations = [
+    {
+      "id": "ga7fb0be51407783b41adbf5bec0b09d80",
+      "name": "GLFW_FLOATING",
+      "passage": "Window decoration <a href=\"/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_FLOATING_hint\" class=\"el\">window hint</a> and <a href=\"/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_FLOATING_attrib\" class=\"el\">window attribute</a>.",
+      "note": "> **Libx reference note (GLFW 3.5.1):** The upstream brief and detailed descriptions call `GLFW_FLOATING` a decoration setting. The [fixed window guide](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L211-L216) describes floating above other regular windows, also called topmost or always-on-top, and the [fixed hint implementation](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L360-L362) stores the floating setting. Window decorations are controlled separately by `GLFW_DECORATED`. The upstream wording is preserved above."
+    },
+    {
+      "id": "gade3593916b4c507900aa2d6844810e00",
+      "name": "GLFW_CONTEXT_ROBUSTNESS",
+      "passage": "Context client API revision number <a href=\"/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_hint\" class=\"el\">hint</a> and <a href=\"/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_attrib\" class=\"el\">attribute</a>.",
+      "note": "> **Libx reference note (GLFW 3.5.1):** The upstream detailed description above says revision number. The [fixed window guide](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L442-L447) defines this hint as the context robustness strategy, and the [fixed hint implementation](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L412-L414) stores `context.robustness`. It is separate from the `GLFW_CONTEXT_REVISION` attribute. The upstream detailed wording is preserved above."
+    },
+    {
+      "id": "ga3555a418df92ad53f917597fe2f64aeb",
+      "name": "glfwCreateWindow()",
+      "passage": "**Win32:** If the executable has an icon resource named `GLFW_ICON,` it will be set as the initial icon for the window. If no such icon is present, the `IDI_APPLICATION` icon will be used instead. To set a different icon, see <a href=\"/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#gadd7ccd39fe7a7d1f0904666ae5932dc5\" class=\"el\">glfwSetWindowIcon</a>.",
+      "note": "> **Libx reference note (GLFW 3.5.1):** The comma in the upstream code-formatted name `GLFW_ICON,` is preserved above. The [fixed Win32 implementation](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L1294-L1297) looks up the resource name `GLFW_ICON`, without a comma."
+    },
+    {
+      "id": "ga1abb6d690e8c88e0c8cd1751356dbca8",
+      "name": "glfwSetWindowPos()",
+      "passage": "| \\[in\\] | window | The window to query. |\n| \\[in\\] | xpos | The x-coordinate of the upper-left corner of the content area. |\n| \\[in\\] | ypos | The y-coordinate of the upper-left corner of the content area. |",
+      "note": "> **Libx reference note (GLFW 3.5.1):** The upstream parameter table calls `window` a window to query. The [fixed setter implementation](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L596-L607) passes this window to the platform position setter when it is windowed. Here `window` identifies the window whose position is to be set; the full-screen no-op described above still applies. The upstream table is preserved above."
+    },
+    {
+      "id": "gad09f0bd7a6307c4533b7061828480a84",
+      "name": "glfwGetWindowOpacity()",
+      "passage": "The opacity (or alpha) value is a positive finite number between zero and one, where zero is fully transparent and one is fully opaque. If the system does not support whole window transparency, this function always returns one.",
+      "note": "> **Libx reference note (GLFW 3.5.1):** The upstream word positive conflicts with the explicit zero endpoint. The [fixed opacity setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796) checks for a finite value in the inclusive range 0 to 1; zero is included. Whether whole-window transparency is supported still depends on the platform. The upstream wording is preserved above."
+    },
+    {
+      "id": "gac31caeb3d1088831b13d2c8a156802e9",
+      "name": "glfwSetWindowOpacity()",
+      "passage": "The opacity (or alpha) value is a positive finite number between zero and one, where zero is fully transparent and one is fully opaque.",
+      "note": "> **Libx reference note (GLFW 3.5.1):** The upstream word positive conflicts with the explicit zero endpoint. The [fixed opacity setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796) checks for a finite value in the inclusive range 0 to 1; zero is included. Whether whole-window transparency is supported still depends on the platform. The upstream wording is preserved above."
+    },
+    {
+      "id": "ga52527a5904b47d802b6b4bb519cdebc7",
+      "name": "glfwRestoreWindow()",
+      "passage": "**Wayland:** Restoring a window from maximization is not currently part of any common Wayland protocol, so this function can only restore windows from maximization.",
+      "note": "> **Libx reference note (GLFW 3.5.1):** The upstream remark contradicts itself about restoring from maximization. In the [fixed Wayland implementation](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L2688-L2710), the comment says that minimization cannot be unset, while the windowed branch unsets maximization through libdecor or xdg-toplevel, or clears the stored maximized flag. This explains the fixed 3.5.1 behavior and does not establish the capabilities of current Wayland protocols. The upstream remark is preserved above."
+    }
+  ];
+  for (const { id, name, passage, note } of annotations) {
+    const heading = `## <span class="permalink">[◆\u00a0](#${id})</span>${name}`;
+    const start = markdown.indexOf(heading);
+    if (start < 0 || markdown.split(heading).length !== 2) {
+      throw new Error('Window reference annotation heading is missing or ambiguous');
+    }
+    const end = markdown.indexOf('\n## ', start + heading.length);
+    const section = markdown.slice(start, end === -1 ? undefined : end);
+    if (section.split(passage).length !== 2) {
+      throw new Error('Window reference annotation passage is missing or ambiguous');
+    }
+    const annotated = section.replace(passage, `${passage}\n\n${note}`);
+    markdown = markdown.slice(0, start) + annotated + (end === -1 ? '' : markdown.slice(end));
+  }
+  return markdown;
+}
+
+function annotateMonitorReference(markdown) {
+  const passage = 'The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected or the library is terminated.';
+  const note = '> **Libx reference note (GLFW 3.5.1):** The upstream lifetime paragraph above says array. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/monitor.c#L451-L461) returns a pointer to a single `GLFWvidmode` stored in the monitor. The array-returning function is `glfwGetVideoModes`. The upstream wording is preserved above.';
+  if (markdown.split(passage).length !== 2) {
+    throw new Error('Monitor reference annotation passage is missing or ambiguous');
+  }
+  return markdown.replace(passage, `${passage}\n\n${note}`);
+}
+
+function annotateInputReference(markdown) {
+  const annotations = [
+  {
+    "passage": "This function returns the value of an input option for the specified window. The mode must be one of <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_CURSOR\" class=\"el\">GLFW_CURSOR</a>, <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_STICKY_KEYS\" class=\"el\">GLFW_STICKY_KEYS</a>, <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_STICKY_MOUSE_BUTTONS\" class=\"el\">GLFW_STICKY_MOUSE_BUTTONS</a>, <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_LOCK_KEY_MODS\" class=\"el\">GLFW_LOCK_KEY_MODS</a> or <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_RAW_MOUSE_MOTION\" class=\"el\">GLFW_RAW_MOUSE_MOTION</a>.",
+    "note": "> **Libx reference note (GLFW 3.5.1):** The upstream mode lists omit `GLFW_UNLIMITED_MOUSE_BUTTONS`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583) accepts this mode and returns its current value. The upstream lists are preserved."
+  },
+  {
+    "passage": "If the mode is `GLFW_RAW_MOUSE_MOTION`, the value must be either `GLFW_TRUE` to enable raw (unscaled and unaccelerated) mouse motion when the cursor is disabled, or `GLFW_FALSE` to disable it. If raw motion is not supported, attempting to set this will emit <a href=\"/docs/glfw/v3-5-1/en/04-reference/02-error-codes/#ga526fba20a01504a8086c763b6ca53ce5\" class=\"el\">GLFW_FEATURE_UNAVAILABLE</a>. Call <a href=\"/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gae4ee0dbd0d256183e1ea4026d897e1c2\" class=\"el\">glfwRawMouseMotionSupported</a> to check for support.",
+    "note": "> **Libx reference note (GLFW 3.5.1):** The paragraph above names `GLFW_FEATURE_UNAVAILABLE`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687) instead emits `GLFW_PLATFORM_ERROR` when raw mouse motion is unsupported, matching the description of `glfwRawMouseMotionSupported`. The upstream wording is preserved above."
+  },
+  {
+    "passage": "If the mode is `GLFW_UNLIMITED_MOUSE_BUTTONS`, the value must be either `GLFW_TRUE` to disable the mouse button limit when calling the mouse button callback, or `GLFW_FALSE` to limit the mouse buttons sent to the callback to the mouse button token values up to `GLFW_MOUSE_BUTTON_LAST`.",
+    "note": "> **Libx reference note (GLFW 3.5.1):** The parameter table below omits `GLFW_UNLIMITED_MOUSE_BUTTONS`, although this paragraph describes it. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693) accepts this mode. The upstream table is preserved."
+  },
+  {
+    "passage": "This function sets the cursor image to be used when the cursor is over the content area of the specified window. The set cursor will only be visible when the <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#cursor_mode\" class=\"el\">cursor mode</a> of the window is `GLFW_CURSOR_NORMAL`.",
+    "note": "> **Libx reference note (GLFW 3.5.1):** The NORMAL-only statement above is incomplete for capture-supporting backends. The fixed [Win32](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242), [X11](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474), and [Wayland](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353) implementations also select the cursor image in `GLFW_CURSOR_CAPTURED`. The fixed [Cocoa implementation](https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683) reports `GLFW_FEATURE_UNIMPLEMENTED` for captured mode. The upstream wording is preserved above."
+  },
+  {
+    "passage": "There is no need to call this function before other functions that accept a joystick ID, as they all check for presence before performing any other work.",
+    "note": "> **Libx reference note (GLFW 3.5.1):** The all-functions statement above has an exception. The fixed [user-pointer functions](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255) check whether the joystick object is allocated rather than polling for a connection. As their own descriptions state, they may be used in the disconnection callback. The fixed [callback path](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426) marks the joystick disconnected before invoking that callback. The upstream wording is preserved above."
+  },
+  {
+    "passage": "This function sets the current GLFW time, in seconds. The value must be a positive finite number less than or equal to 18446744073.0, which is approximately 584.5 years.",
+    "note": "> **Libx reference note (GLFW 3.5.1):** The upstream paragraph says positive. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507) also permits zero: it rejects non-finite values, values below 0.0, and values above 18446744073.0. The upstream wording is preserved above."
+  }
+];
+  for (const { passage, note } of annotations) {
+    if (markdown.split(passage).length !== 2) {
+      throw new Error("Input reference annotation passage is missing or ambiguous");
+    }
+    markdown = markdown.replace(passage, `${passage}\n\n${note}`);
+  }
+  return markdown;
+}
+
+function normalizeReferenceHtml(source, sourceFile) {
+  const match = source.match(/<div class="contents">([\s\S]*?)<\/div><!-- contents -->/);
+  if (!match) throw new Error(`Could not find Doxygen contents in ${sourceFile}`);
+
+  let markdown = execFileSync('pandoc', ['-f', 'html', '-t', 'gfm', '--wrap=none'], {
+    input: match[1],
+    encoding: 'utf8',
+    maxBuffer: 16 * 1024 * 1024,
+  });
+
+  markdown = markdown.replace(
+    /\]\(([^)]+\.html(?:#[^)]+)?)\)/g,
+    (_, href) => `](${rewriteHref(href)})`
+  );
+  markdown = markdown.replace(
+    /href="([^"]+\.html(?:#[^"]+)?)"/g,
+    (_, href) => `href="${rewriteHref(href)}"`
+  );
+  if (sourceFile === 'group__init.html') markdown = annotateInitializationReference(markdown);
+  if (sourceFile === 'group__errors.html') markdown = annotateErrorCodes(markdown);
+  if (sourceFile === 'group__window.html') markdown = annotateWindowReference(markdown);
+  if (sourceFile === 'group__monitor.html') markdown = annotateMonitorReference(markdown);
+  if (sourceFile === 'group__input.html') markdown = annotateInputReference(markdown);
+  if (sourceFile === 'group__keys.html') {
+    // Preserve the ASCII key character through Markdown smart punctuation.
+    const apostropheComment = "/\\* ' \\*/";
+    if (markdown.split(apostropheComment).length !== 2) {
+      throw new Error('Keyboard apostrophe comment is missing or ambiguous');
+    }
+    markdown = markdown.replace(apostropheComment, "`/* ' */`");
+  }
+  return markdown.trimEnd() + '\n';
+}
+
+function markdownFiles(directory) {
+  if (!fs.existsSync(directory)) return [];
+  return fs
+    .readdirSync(directory, { withFileTypes: true })
+    .flatMap((entry) => {
+      const entryPath = path.join(directory, entry.name);
+      return entry.isDirectory()
+        ? markdownFiles(entryPath)
+        : entry.isFile() && entry.name.endsWith('.md')
+          ? [entryPath]
+          : [];
+    })
+    .sort();
+}
+
+function generateDocumentation(destination) {
+  for (const [sourceFile, outputFile, title, description] of guides) {
+    const source = fs.readFileSync(path.join(sourceRoot, 'docs', sourceFile), 'utf8');
+    const referenceNote = sourceFile === 'intro.md'
+      ? '> **Libx reference note (GLFW 3.5.1):** The initialization section below restricts calls before initialization to the main thread. However, the reference for @ref glfwGetVersion and @ref glfwGetVersionString in the same fixed version explicitly permits calls before initialization and from any thread. As this guide states under version compatibility, the reference takes precedence over a guide. Consult each function\'s reference for its thread restrictions.\n\n'
+      : '';
+    const additionalLabels = sourceFile === 'window.md' ? {
+      window: 'Window reference', monitor_monitors: 'Retrieving monitors',
+      monitor_modes: 'Video modes', monitor_event: 'Monitor configuration changes',
+      events: 'Event processing', window_focus: 'Window input focus',
+      window_iconify: 'Window iconification', window_maximize: 'Window maximization',
+      window_hide: 'Window visibility', window_transparency: 'Window transparency',
+      cursor_enter: 'Cursor enter/leave events',
+    } : sourceFile === 'input.md' ? { input: 'Input reference', gamepad_mapping: 'Gamepad mappings', joystick_event: 'Joystick configuration changes' } : sourceFile === 'vulkan.md' ? { vulkan: 'Vulkan support reference', context_less: 'Windows without contexts' } : {};
+    const annotatedSource = sourceFile === 'input.md' ? annotateInputGuide(source)
+      : sourceFile === 'compat.md' ? annotateStandardsGuide(source) : source;
+    const output = frontmatter(title, description) + normalizeGuide(referenceNote + annotatedSource, ['main.md', 'quick.md', 'compile.md', 'build.md', 'intro.md', 'context.md', 'monitor.md', 'window.md', 'input.md', 'vulkan.md'].includes(sourceFile), additionalLabels);
+    const target = path.join(destination, outputFile);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, output);
+  }
+
+  for (const [sourceFile, outputFile, title] of references) {
+    const source = fs.readFileSync(path.join(sourceRoot, 'docs/html', sourceFile), 'utf8');
+    const output =
+      frontmatter(title, `GLFW 3.5.1 ${title}`) +
+      (['group__init.html', 'group__errors.html', 'group__window.html', 'group__context.html', 'group__monitor.html', 'group__input.html', 'group__vulkan.html', 'group__native.html', 'group__keys.html', 'group__mods.html', 'group__buttons.html', 'group__joysticks.html', 'group__hat__state.html', 'group__gamepad__buttons.html', 'group__gamepad__axes.html', 'group__shapes.html', 'struct_g_l_f_wallocator.html', 'struct_g_l_f_wgamepadstate.html', 'struct_g_l_f_wgammaramp.html', 'struct_g_l_f_wimage.html', 'struct_g_l_f_wvidmode.html', 'deprecated.html'].includes(sourceFile) ? `# ${title}\n\n` : '') +
+      normalizeReferenceHtml(source, sourceFile);
+    const target = path.join(destination, '04-reference', outputFile);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, output);
+  }
+}
+
+function validateGeneratedDocumentation(destination) {
+  const files = markdownFiles(destination);
+  const expectedCount = guides.length + references.length;
+  if (files.length !== expectedCount) {
+    throw new Error(`生成ページ数が一致しません: ${files.length}/${expectedCount}`);
+  }
+  for (const filePath of files) {
+    const source = fs.readFileSync(filePath, 'utf8');
+    if (/^@(?:ref|snippet|anchor|note|warning|b)\b/m.test(source)) {
+      throw new Error(`未処理のDoxygen命令があります: ${path.relative(destination, filePath)}`);
+    }
+    if (/\]\((?!https?:|mailto:|#|\/)[^)]+\.html(?:#[^)]+)?\)/.test(source)) {
+      throw new Error(`未変換の相対HTMLリンクがあります: ${path.relative(destination, filePath)}`);
+    }
+  }
+}
+
+const sourceImage = path.join(sourceRoot, 'docs/spaces.svg');
+if (!fs.existsSync(sourceImage)) throw new Error(`画像が存在しません: ${sourceImage}`);
+
+if (checkOnly) {
+  const result = prepareImportForCheck({
+    targetPath: outputRoot,
+    generate: generateDocumentation,
+    validate: validateGeneratedDocumentation,
+  });
+  const imageMatches =
+    fs.existsSync(defaultAssetOutput) && hashFile(sourceImage) === hashFile(defaultAssetOutput);
+  console.log(`定本ファイル: ${result.after.length}件`);
+  console.log(`定本差分: ${result.matches ? 'なし' : 'あり'}`);
+  console.log(`画像差分: ${imageMatches ? 'なし' : 'あり'}`);
+  if (!result.matches || !imageMatches) process.exitCode = 1;
+} else {
+  const result = prepareImportOutput({
+    targetPath: outputRoot,
+    generate: generateDocumentation,
+    validate: validateGeneratedDocumentation,
+  });
+  fs.mkdirSync(path.dirname(defaultAssetOutput), { recursive: true });
+  fs.copyFileSync(sourceImage, defaultAssetOutput);
+
+  const manifest = {
+    generatedAt: new Date().toISOString(),
+    source: sourceRoot,
+    output: outputRoot,
+    before: result.before,
+    after: result.after,
+    asset: {
+      path: path.relative(rootDir, defaultAssetOutput),
+      sha256: hashFile(defaultAssetOutput),
+    },
+  };
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+  fs.writeFileSync(reportPath, `${JSON.stringify(manifest, null, 2)}\n`);
+
+  if (!comparePathDescriptions(result.after, describePath(outputRoot))) {
+    throw new Error('確定後の定本ハッシュが準備済み出力と一致しません');
+  }
+  console.log(`Generated ${guides.length} guides and ${references.length} reference pages`);
+  console.log(`Output: ${outputRoot}`);
+  console.log(`Manifest: ${reportPath}`);
+}
