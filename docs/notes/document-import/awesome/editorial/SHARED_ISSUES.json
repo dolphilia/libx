@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "issues": [
+    {
+      "id": "language-label-mobile-wrap",
+      "status": "resolved",
+      "discoveredDuring": "v2026-08-23/github-josephmisiti-awesome-machine-learning-readme-md",
+      "problem": "390px幅で日本語ラベルが3行となりボタン枠から出た",
+      "change": "LanguageSelector.astroでdropdown-labelにwhite-space: nowrap",
+      "sourceHash": "0ecb9bec9c0998830518f3f6a3b9f4c29bbcf2a52d30d03ea323fde0ccd4e833",
+      "validation": {
+        "passed": true,
+        "tool": "cua_repl",
+        "method": "Astro preview（loopbackのみ）",
+        "checkedAt": "2026-10-01T09:12:41.844Z",
+        "samples": [
+          {
+            "app": "science",
+            "langs": [
+              "en",
+              "ja"
+            ],
+            "viewport": "desktop/default",
+            "observed": [
+              "本文全文",
+              "固定READMEリンク",
+              "文書の出典",
+              "原文・ライセンスリンク"
+            ]
+          },
+          {
+            "app": "science",
+            "langs": [
+              "en",
+              "ja"
+            ],
+            "viewport": "390x844",
+            "observed": [
+              "本文と出典の折返し",
+              "修正後の日本語ラベル一行表示",
+              "メニューから英語へ切替成功"
+            ]
+          },
+          {
+            "app": "overview",
+            "langs": [
+              "ja"
+            ],
+            "viewport": "390x844",
+            "observed": [
+              "共通の日本語ラベル一行表示のみ。overview全文レビューとはしない"
+            ]
+          }
+        ],
+        "viewportReset": true,
+        "urls": [
+          "http://127.0.0.1:4328/docs/awesome/v2026-08-23/ja/computer-science/josephmisiti-awesome-machine-learning/",
+          "http://127.0.0.1:4328/docs/awesome/v2026-08-23/en/computer-science/josephmisiti-awesome-machine-learning/",
+          "http://127.0.0.1:4329/docs/awesome/v2026-08-23/ja/overview/sindresorhus-awesome/"
+        ]
+      },
+      "build": {
+        "passed": true,
+        "command": "pnpm build:selective --projects=awesome/science,awesome/overview --local",
+        "builtApps": [
+          "overview",
+          "science",
+          "web",
+          "languages",
+          "systems",
+          "creative",
+          "community"
+        ],
+        "log": "0094a3f1488f783f1c999eb42624102cbd5a9d94072072d643c6fc0505ea9067"
+      }
+    },
+    {
+      "id": "source-explicit-copyright-notice",
+      "status": "resolved",
+      "discoveredDuring": "v2026-08-23/github-tomodachi94-awesome-computercraft-readme-md",
+      "problem": "原文SPDXの2024年・awesome-computercraft contributorsが出典設定では所有者tomodachi94だけとなっていた。",
+      "change": "LicenseSourceの任意copyrightNoticeと共通表示を追加。固定commit/path/document hash/実在SPDX行へ結び付くPROVENANCE_NOTICESをレジストリ再生成へ統合。",
+      "validation": {
+        "runtimePassed": true,
+        "runtimeLog": "6191581cad767a3bc284d5e24e3d13d8264ae33ec27835801e22668d52135175",
+        "provenanceContractLog": "7eb41aaf38a79f274ce7b05c66117efcd43a80a17c0f02580945a9cf48aa0df7",
+        "buildPassed": true,
+        "buildLog": "5576e05f770f10195f76da1956c3a46930cb5e7bfca184e1259d99480a4cf8bf",
+        "htmlPassed": true,
+        "htmlLog": "d2c7e57445d46604b16ec0a8bf33b51856d8f2f237607c8ea9471bad79404a8c",
+        "preview": "ComputerCraft英日で著作権者・年・CC-BY-SA-4.0を確認。共有表示の別アプリ確認待ち。",
+        "previewPassed": true,
+        "previewEvidence": {
+          "passed": true,
+          "tool": "cua_repl",
+          "checkedAt": "2026-10-01T10:26:08.021Z",
+          "url": "http://127.0.0.1:4332/docs/awesome/v2026-08-23/",
+          "samples": [
+            {
+              "langs": [
+                "en",
+                "ja"
+              ],
+              "viewport": "1400x900",
+              "observed": [
+                "序文・略語・本文・24分類のH2〜H4目次・出典",
+                "日本語中級上級H4へ-0.234px、英語Basics H4へ0.156pxで到達"
+              ]
+            },
+            {
+              "langs": [
+                "ja",
+                "en"
+              ],
+              "viewport": "390x844",
+              "observed": [
+                "題名・序文・略語の折返し",
+                "日本語モバイル目次展開、中級上級H4へ0.070pxで到達",
+                "旧英語別名moderate-or-advancedへ-0.234pxで到達",
+                "日本語出典のcontributors・Copyright2024・CC-BY-SA-4.0・原文とライセンスリンク",
+                "横はみ出しなし（clientWidth/scrollWidthとも375px）"
+              ]
+            },
+            {
+              "app": "science",
+              "lang": "ja",
+              "viewport": "390x844",
+              "observed": [
+                "任意通知を持たない案内ページの出典・CC0表示が維持。別アプリの共通表示確認であり新規内容レビューと数えない。"
+              ]
+            }
+          ],
+          "viewportReset": true
+        }
+      }
+    },
+    {
+      "id": "concurrent-lua-source-contract",
+      "status": "external-to-awesome-batch",
+      "problem": "document-provenance-contractの旧テストはGLFW/Lua本文すべてにlicenseSourceを置かない前提。並行作業のLua既知問題ページは版別原文を表示するlicenseSourceを追加しており衝突。",
+      "evidence": {
+        "log": "f4ee7c0ab08b67218494aa426a6e5a2c47b8ac305572e50a774e35f69b10797a",
+        "files": [
+          "apps/lua/src/content/docs/v5-5-1/en/07-migration-and-known-issues/03-known-issues.md",
+          "apps/lua/src/content/docs/v5-5-1/ja/07-migration-and-known-issues/03-known-issues.md"
+        ],
+        "ownership": "並行作業の変更。Awesome編集から上書き・削除しない。"
+      },
+      "next": "別作業の変更が確定後、Luaの版別出典の意図に沿って既存テストを調整する担当が必要。今回の関連24テストは別途合格。"
+    },
+    {
+      "id": "source-additional-attribution-links",
+      "status": "resolved",
+      "discoveredDuring": "v2026-08-23/github-awesome-selfhosted-awesome-selfhosted-readme-md",
+      "problem": "SelfhostedのLicense節にはライセンス本文と著者一覧のリンクがあるが共通出典には表示されていなかった。",
+      "change": "固定原文の該当証拠行へ結び付けた任意attributionLinksと英日ラベルを出典レジストリ・設定検証・共通表示・HTML検査へ追加。",
+      "validation": {
+        "passed": true,
+        "tests": 13,
+        "runtimeLog": "329e53b6bb96ab41b3f4ce48a321fdb13c614740620ee52dfdb44a84a0d37055",
+        "typecheckLog": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildLog": "69d802110288835de9d9e49f981a50495a69f67879d07fe6cbdfa9c3f6793243",
+        "htmlLog": "5d9942c03b74178489ee861515a46c15a6be197cb623a9f4a47d2b4baa98ceb6",
+        "preview": {
+          "passed": true,
+          "tool": "cua_repl",
+          "checkedAt": "2026-10-01T14:56:59.097Z",
+          "url": "http://127.0.0.1:4330/docs/awesome/v2026-08-23/",
+          "samples": [
+            {
+              "lang": "ja",
+              "viewport": "1400x900",
+              "items": 1305,
+              "warnings": 67,
+              "headings": 100,
+              "noHorizontalOverflow": true,
+              "observed": [
+                "序文・一般分類の日本語・自動目次・依存凡例・原文固定commit・CC-BY-SA-3.0・LICENSE/AUTHORS追加帰属リンク"
+              ],
+              "navigation": "自動目次の外部サービスへの依存をクリックして到達",
+              "headingTop": -0.171875
+            },
+            {
+              "lang": "ja",
+              "viewport": "390x844",
+              "items": 1305,
+              "warnings": 67,
+              "licenseLegend": 40,
+              "noHorizontalOverflow": true,
+              "observed": [
+                "冒頭・日本語ラベル・モバイル目次展開・ライセンス凡例全40件・依存凡例・旧anti-features別名・出典4リンクの折返し"
+              ],
+              "headingTop": -0.125,
+              "legacyTop": 0.15625
+            },
+            {
+              "lang": "en",
+              "viewport": "390x844",
+              "items": 1305,
+              "warnings": 67,
+              "noHorizontalOverflow": true,
+              "observed": [
+                "英語序文・67依存警告・帰属4リンクの折返し・Talkyardの列挙修正と横溢れ解消・日本語メニューからEnglishへ対応ルート切替"
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375
+            },
+            {
+              "lang": "en",
+              "viewport": "1400x900",
+              "items": 1305,
+              "warnings": 67,
+              "licenseLegend": 40,
+              "noHorizontalOverflow": true,
+              "observed": [
+                "英語序文・自動目次・全40ライセンス凡例・固定原文commit・CC-BY-SA-3.0・LICENSE/AUTHORS帰属4リンク"
+              ],
+              "headingTop": 0.140625
+            }
+          ],
+          "viewportReset": true,
+          "temporaryTabClosed": true,
+          "note": "初回英語モバイル408px横溢れはTalkyardのサービス名連結による。原文の意味を保った列挙へ修正後、再ビルドし375px一致を確認。ローカルAstroプレビューのみ。",
+          "completedAt": "2026-10-01T15:05:49.445Z"
+        }
+      }
+    },
+    {
+      "id": "material-fixed-mit-notice",
+      "status": "resolved",
+      "sourceId": "github-sachin1092-awesome-material-readme-md",
+      "version": "v2026-08-23",
+      "at": "2026-10-02T03:29:50.817Z",
+      "licensePath": "LICENSE",
+      "licenseHash": "1d1b3f7ba6da287664f9802d079bbe42c728e626217460df849ebee7f7c90f90",
+      "copyright": "Copyright (c) 2015 Sachin Shinde",
+      "reason": "Web Tools MIT通知不足を受け既verified全4MIT出典を照合。PostCSS/BEM/Chartingは通知を保持、Materialのみ著作権者・年が不足。固定LICENSE全文で確認し再検証が必要。",
+      "resolvedAt": "2026-10-02T03:54:47.121Z",
+      "resolution": "バッチ45でMaterialの固定raw/baseline英日/成果物英日の5入力全文と全70/4/68単位を再レビュー。本文53資料と版/数量/URL/技術用途保持、ENJA hash不変。固定MIT LICENSE全22行/hashとCopyright (c) 2015 Sachin Shindeを不変blob保存し共通出典へ英日原文通知補完。全1037組2074文書2pass再生成・翻訳672・publish672/7・metadata56・外部URL616/139290・7設定と他6不変・全7freshbuild3者入力hash一致・全2074HTML参照/対象2・英日desktop/mobile4全体/出典/横幅・TOC2・言語切替1・git diffを再検証。"
+    }
+  ]
+}
