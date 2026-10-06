@@ -1,0 +1,545 @@
+{
+  "slug": "08-commands",
+  "bodySHA256": "28b7eb27f81195643da3d9f52679f13a6ae176de26c71f194c7617235b277b4c",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧7 Commands⟦1⟧ ¶⟦2⟧⟦3⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<a class=\"copiable-link\" href=\"#Commands-1\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Commands-1\"><span>7 Commands<a class=\"copiable-link\" href=\"#Commands-1\"> ¶</a></span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "All ⟦0⟧ commands are single characters, though some require additional parameters. If a command’s parameters extend over several lines, then each line except for the last must be terminated with a backslash (‘⟦1⟧’).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<samp class=\"samp\">\\</samp>"
+      },
+      "sourceHTML": "<p>All <code class=\"command\">ed</code> commands are single characters, though some require\nadditional parameters. If a command’s parameters extend over several lines,\nthen each line except for the last must be terminated with a backslash\n(‘<samp class=\"samp\">\\</samp>’).\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "In general, at most one command is allowed per line. However, most commands accept a print suffix, which is any of ‘⟦0⟧’ (print), ‘⟦1⟧’ (list), or ‘⟦2⟧’ (enumerate), to print the last line affected by the command. It is not portable to give more than one print suffix, but ⟦3⟧ allows any combination of non-repeated print suffixes and combines their effects. If any suffix letter is given, it must immediately follow the command.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">p</samp>",
+        "⟦1⟧": "<samp class=\"samp\">l</samp>",
+        "⟦2⟧": "<samp class=\"samp\">n</samp>",
+        "⟦3⟧": "<code class=\"command\">ed</code>"
+      },
+      "sourceHTML": "<p>In general, at most one command is allowed per line. However, most\ncommands accept a print suffix, which is any of ‘<samp class=\"samp\">p</samp>’ (print),\n‘<samp class=\"samp\">l</samp>’ (list), or ‘<samp class=\"samp\">n</samp>’ (enumerate), to print the last line\naffected by the command. It is not portable to give more than one print\nsuffix, but <code class=\"command\">ed</code> allows any combination of non-repeated print\nsuffixes and combines their effects. If any suffix letter is given, it\nmust immediately follow the command.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The ‘⟦0⟧’, ‘⟦1⟧’, ‘⟦2⟧’, ‘⟦3⟧’, and ‘⟦4⟧’ commands take an optional ⟦5⟧ parameter, separated from the command letter by one or more whitespace characters.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">e</samp>",
+        "⟦1⟧": "<samp class=\"samp\">E</samp>",
+        "⟦2⟧": "<samp class=\"samp\">f</samp>",
+        "⟦3⟧": "<samp class=\"samp\">r</samp>",
+        "⟦4⟧": "<samp class=\"samp\">w</samp>",
+        "⟦5⟧": "<var class=\"var\">file</var>"
+      },
+      "sourceHTML": "<p>The ‘<samp class=\"samp\">e</samp>’, ‘<samp class=\"samp\">E</samp>’, ‘<samp class=\"samp\">f</samp>’, ‘<samp class=\"samp\">r</samp>’, and ‘<samp class=\"samp\">w</samp>’ commands take an\noptional <var class=\"var\">file</var> parameter, separated from the command letter by one or\nmore whitespace characters.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "An interrupt (typically ⟦0⟧Control-C⟦1⟧) has the effect of aborting the current command and returning the editor to command mode.",
+      "tokens": {
+        "⟦0⟧": "<kbd class=\"key\">",
+        "⟦1⟧": "</kbd>"
+      },
+      "sourceHTML": "<p>An interrupt (typically <kbd class=\"key\">Control-C</kbd>) has the effect of aborting the\ncurrent command and returning the editor to command mode.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "⟦0⟧ recognizes the following commands. The commands are shown together with the default address or address range supplied if none is specified (in parenthesis).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">ed</code> recognizes the following commands. The commands are shown\ntogether with the default address or address range supplied if none is\nspecified (in parenthesis).\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Appends text to the buffer after the addressed line. The address ‘⟦0⟧’ (zero) is valid for this command; it places the entered text at the beginning of the buffer. Text is entered in input mode. The current address is set to the address of the last line entered or, if there were none, to the addressed line.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>Appends text to the buffer after the addressed line. The address\n‘<samp class=\"samp\">0</samp>’ (zero) is valid for this command; it places the entered text at\nthe beginning of the buffer. Text is entered in input mode. The current\naddress is set to the address of the last line entered or, if there were\nnone, to the addressed line.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Changes lines in the buffer. The addressed lines are deleted from the buffer, and text is inserted in their place. Text is entered in input mode. The current address is set to the address of the last line entered or, if there were none, to the new address of the line after the last line deleted; if the lines deleted were originally at the end of the buffer, the current address is set to the address of the new last line; if no lines remain in the buffer, the current address is set to zero. The lines deleted are copied to the cut buffer.",
+      "tokens": {},
+      "sourceHTML": "<p>Changes lines in the buffer. The addressed lines are deleted from the\nbuffer, and text is inserted in their place. Text is entered in input mode.\nThe current address is set to the address of the last line entered or, if\nthere were none, to the new address of the line after the last line deleted;\nif the lines deleted were originally at the end of the buffer, the current\naddress is set to the address of the new last line; if no lines remain in\nthe buffer, the current address is set to zero. The lines deleted are copied\nto the cut buffer.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Deletes the addressed lines from the buffer. The current address is set to the new address of the line after the last line deleted; if the lines deleted were originally at the end of the buffer, the current address is set to the address of the new last line; if no lines remain in the buffer, the current address is set to zero. The lines deleted are copied to the cut buffer.",
+      "tokens": {},
+      "sourceHTML": "<p>Deletes the addressed lines from the buffer. The current address is set to\nthe new address of the line after the last line deleted; if the lines\ndeleted were originally at the end of the buffer, the current address is set\nto the address of the new last line; if no lines remain in the buffer, the\ncurrent address is set to zero. The lines deleted are copied to the cut\nbuffer.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "Edits ⟦0⟧, and sets the default filename. If ⟦1⟧ is not specified, then the default filename is used. Any lines in the buffer are deleted before the new file is read. If ⟦2⟧ does not exist, a warning is printed in place of a byte count and the resulting buffer is left empty. The current address is set to the address of the last line in the buffer.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<var class=\"var\">file</var>",
+        "⟦2⟧": "<var class=\"var\">file</var>"
+      },
+      "sourceHTML": "<p>Edits <var class=\"var\">file</var>, and sets the default filename. If <var class=\"var\">file</var> is not\nspecified, then the default filename is used. Any lines in the buffer are\ndeleted before the new file is read. If <var class=\"var\">file</var> does not exist, a warning\nis printed in place of a byte count and the resulting buffer is left empty.\nThe current address is set to the address of the last line in the buffer.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "If ⟦0⟧ is prefixed with a bang (!), then it is interpreted as a shell command whose output is to be read, (see ⟦1⟧shell escape command⟦2⟧ ‘⟦3⟧’ below). In this case the default filename is unchanged. To edit a file whose name begins with a bang, prefix the name with ⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<a class=\"pxref\" href=\"#shell-escape-command\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "<samp class=\"samp\">!</samp>",
+        "⟦4⟧": "<samp class=\"file\">./</samp>"
+      },
+      "sourceHTML": "<p>If <var class=\"var\">file</var> is prefixed with a bang (!), then it is interpreted as a shell\ncommand whose output is to be read, (see <a class=\"pxref\" href=\"#shell-escape-command\">shell escape command</a> ‘<samp class=\"samp\">!</samp>’\nbelow). In this case the default filename is unchanged. To edit a file whose\nname begins with a bang, prefix the name with <samp class=\"file\">./</samp>.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "A warning is printed if the buffer modified flag is set. If another ‘⟦0⟧’ or ‘⟦1⟧’ command is given with no intervening error or buffer-modifying command, it is executed without warning, and any changes to the buffer are lost.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">e</samp>",
+        "⟦1⟧": "<samp class=\"samp\">q</samp>"
+      },
+      "sourceHTML": "<p>A warning is printed if the buffer modified flag is set. If another ‘<samp class=\"samp\">e</samp>’\nor ‘<samp class=\"samp\">q</samp>’ command is given with no intervening error or buffer-modifying\ncommand, it is executed without warning, and any changes to the buffer are\nlost.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "Edits ⟦0⟧ unconditionally. This is similar to the ‘⟦1⟧’ command, except that unwritten changes are discarded without warning.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<samp class=\"samp\">e</samp>"
+      },
+      "sourceHTML": "<p>Edits <var class=\"var\">file</var> unconditionally. This is similar to the ‘<samp class=\"samp\">e</samp>’ command,\nexcept that unwritten changes are discarded without warning.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "Sets the default filename to ⟦0⟧, whether or not ⟦1⟧ names an existing file. If ⟦2⟧ is not specified, then the default filename is printed. Tilde expansion is performed on ⟦3⟧; if ⟦4⟧ starts with ⟦5⟧, the ⟦6⟧ is expanded to specify your home directory ⟦7⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<var class=\"var\">file</var>",
+        "⟦2⟧": "<var class=\"var\">file</var>",
+        "⟦3⟧": "<var class=\"var\">file</var>",
+        "⟦4⟧": "<var class=\"var\">file</var>",
+        "⟦5⟧": "<samp class=\"file\">~/</samp>",
+        "⟦6⟧": "<samp class=\"file\">~</samp>",
+        "⟦7⟧": "<samp class=\"file\">$HOME</samp>"
+      },
+      "sourceHTML": "<p>Sets the default filename to <var class=\"var\">file</var>, whether or not <var class=\"var\">file</var> names an\nexisting file. If <var class=\"var\">file</var> is not specified, then the default filename is\nprinted. Tilde expansion is performed on <var class=\"var\">file</var>; if <var class=\"var\">file</var> starts\nwith <samp class=\"file\">~/</samp>, the <samp class=\"file\">~</samp> is expanded to specify your home directory\n<samp class=\"file\">$HOME</samp>.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "Global command. The global command makes two passes over the file. On the first pass, all the addressed lines matching a regular expression ⟦0⟧ are marked. The suffix ‘⟦1⟧’ is a GNU extension which makes ⟦2⟧ match ⟦3⟧ in a case-insensitive manner. Then, going sequentially from the beginning of the file to the end of the file, the given ⟦4⟧ is executed for each marked line, with the current address set to the address of that line. Any line modified by the ⟦5⟧ is unmarked. The final value of the current address is the value assigned by the last command in the last ⟦6⟧ executed. If there were no matching lines, the current address is unchanged. The execution of ⟦7⟧ stops on the first error.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">re</var>",
+        "⟦1⟧": "<samp class=\"samp\">I</samp>",
+        "⟦2⟧": "<code class=\"command\">ed</code>",
+        "⟦3⟧": "<var class=\"var\">re</var>",
+        "⟦4⟧": "<var class=\"var\">command-list</var>",
+        "⟦5⟧": "<var class=\"var\">command-list</var>",
+        "⟦6⟧": "<var class=\"var\">command-list</var>",
+        "⟦7⟧": "<var class=\"var\">command-list</var>"
+      },
+      "sourceHTML": "<p>Global command. The global command makes two passes over the file. On the\nfirst pass, all the addressed lines matching a regular expression <var class=\"var\">re</var>\nare marked. The suffix ‘<samp class=\"samp\">I</samp>’ is a GNU extension which makes <code class=\"command\">ed</code>\nmatch <var class=\"var\">re</var> in a case-insensitive manner. Then, going sequentially from\nthe beginning of the file to the end of the file, the given\n<var class=\"var\">command-list</var> is executed for each marked line, with the current\naddress set to the address of that line. Any line modified by the\n<var class=\"var\">command-list</var> is unmarked. The final value of the current address is\nthe value assigned by the last command in the last <var class=\"var\">command-list</var>\nexecuted. If there were no matching lines, the current address is unchanged.\nThe execution of <var class=\"var\">command-list</var> stops on the first error.\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "The first command of ⟦0⟧ must appear on the same line as the ‘⟦1⟧’ command. The other commands of ⟦2⟧ must appear on separate lines. All lines of a multi-line ⟦3⟧ except the last line must be terminated with a backslash (‘⟦4⟧’). Any commands are allowed, except for ‘⟦5⟧’, ‘⟦6⟧’, ‘⟦7⟧’, and ‘⟦8⟧’. The ‘⟦9⟧’ terminating the input mode of commands ‘⟦10⟧’, ‘⟦11⟧’, and ‘⟦12⟧’ can be omitted if it would be the last line of ⟦13⟧. By default, a newline alone in ⟦14⟧ is equivalent to a ‘⟦15⟧’ command. If ⟦16⟧ is invoked with the command-line option ⟦17⟧, then a newline in ⟦18⟧ is equivalent to a ‘⟦19⟧’ command.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">command-list</var>",
+        "⟦1⟧": "<samp class=\"samp\">g</samp>",
+        "⟦2⟧": "<var class=\"var\">command-list</var>",
+        "⟦3⟧": "<var class=\"var\">command-list</var>",
+        "⟦4⟧": "<samp class=\"samp\">\\</samp>",
+        "⟦5⟧": "<samp class=\"samp\">g</samp>",
+        "⟦6⟧": "<samp class=\"samp\">G</samp>",
+        "⟦7⟧": "<samp class=\"samp\">v</samp>",
+        "⟦8⟧": "<samp class=\"samp\">V</samp>",
+        "⟦9⟧": "<samp class=\"samp\">.</samp>",
+        "⟦10⟧": "<samp class=\"samp\">a</samp>",
+        "⟦11⟧": "<samp class=\"samp\">c</samp>",
+        "⟦12⟧": "<samp class=\"samp\">i</samp>",
+        "⟦13⟧": "<var class=\"var\">command-list</var>",
+        "⟦14⟧": "<var class=\"var\">command-list</var>",
+        "⟦15⟧": "<samp class=\"samp\">p</samp>",
+        "⟦16⟧": "<code class=\"command\">ed</code>",
+        "⟦17⟧": "<samp class=\"option\">-G</samp>",
+        "⟦18⟧": "<var class=\"var\">command-list</var>",
+        "⟦19⟧": "<samp class=\"samp\">.+1p</samp>"
+      },
+      "sourceHTML": "<p>The first command of <var class=\"var\">command-list</var> must appear on the same line as the\n‘<samp class=\"samp\">g</samp>’ command. The other commands of <var class=\"var\">command-list</var> must appear on\nseparate lines. All lines of a multi-line <var class=\"var\">command-list</var> except the last\nline must be terminated with a backslash (‘<samp class=\"samp\">\\</samp>’). Any commands are\nallowed, except for ‘<samp class=\"samp\">g</samp>’, ‘<samp class=\"samp\">G</samp>’, ‘<samp class=\"samp\">v</samp>’, and ‘<samp class=\"samp\">V</samp>’. The ‘<samp class=\"samp\">.</samp>’\nterminating the input mode of commands ‘<samp class=\"samp\">a</samp>’, ‘<samp class=\"samp\">c</samp>’, and ‘<samp class=\"samp\">i</samp>’ can\nbe omitted if it would be the last line of <var class=\"var\">command-list</var>. By default, a\nnewline alone in <var class=\"var\">command-list</var> is equivalent to a ‘<samp class=\"samp\">p</samp>’ command. If\n<code class=\"command\">ed</code> is invoked with the command-line option <samp class=\"option\">-G</samp>, then a\nnewline in <var class=\"var\">command-list</var> is equivalent to a ‘<samp class=\"samp\">.+1p</samp>’ command.\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "Interactive global command. Interactively edits the addressed lines matching a regular expression ⟦0⟧. The suffix ‘⟦1⟧’ is a GNU extension which makes ⟦2⟧ match ⟦3⟧ in a case-insensitive manner. For each matching line, the line is printed, the current address is set, and the user is prompted to enter a ⟦4⟧. The final value of the current address is the value assigned by the last command executed. If there were no matching lines, the current address is unchanged.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">re</var>",
+        "⟦1⟧": "<samp class=\"samp\">I</samp>",
+        "⟦2⟧": "<code class=\"command\">ed</code>",
+        "⟦3⟧": "<var class=\"var\">re</var>",
+        "⟦4⟧": "<var class=\"var\">command-list</var>"
+      },
+      "sourceHTML": "<p>Interactive global command. Interactively edits the addressed lines\nmatching a regular expression <var class=\"var\">re</var>. The suffix ‘<samp class=\"samp\">I</samp>’ is a GNU\nextension which makes <code class=\"command\">ed</code> match <var class=\"var\">re</var> in a case-insensitive\nmanner. For each matching line, the line is printed, the current address is\nset, and the user is prompted to enter a <var class=\"var\">command-list</var>. The final value\nof the current address is the value assigned by the last command executed.\nIf there were no matching lines, the current address is unchanged.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "The format of ⟦0⟧ is the same as that of the ‘⟦1⟧’ command. A newline alone acts as an empty command list. A single ‘⟦2⟧’ repeats the last non-empty command list.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">command-list</var>",
+        "⟦1⟧": "<samp class=\"samp\">g</samp>",
+        "⟦2⟧": "<samp class=\"samp\">&amp;</samp>"
+      },
+      "sourceHTML": "<p>The format of <var class=\"var\">command-list</var> is the same as that of the ‘<samp class=\"samp\">g</samp>’\ncommand. A newline alone acts as an empty command list. A single ‘<samp class=\"samp\">&amp;</samp>’\nrepeats the last non-empty command list.\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "Prints a help message explaining the reason for the most recent ‘⟦0⟧’ notification.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">?</samp>"
+      },
+      "sourceHTML": "<p>Prints a help message explaining the reason for the most recent ‘<samp class=\"samp\">?</samp>’\nnotification.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "p",
+      "text": "Toggles the printing of help messages (see the ‘⟦0⟧’ command above). If the help mode is being turned on, also prints the help message corresponding to the most recent ‘⟦1⟧’ notification. By default, help messages are not printed.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">h</samp>",
+        "⟦1⟧": "<samp class=\"samp\">?</samp>"
+      },
+      "sourceHTML": "<p>Toggles the printing of help messages (see the ‘<samp class=\"samp\">h</samp>’ command above). If\nthe help mode is being turned on, also prints the help message corresponding\nto the most recent ‘<samp class=\"samp\">?</samp>’ notification. By default, help messages are not\nprinted.\n</p>"
+    },
+    {
+      "index": 20,
+      "tag": "p",
+      "text": "Inserts text in the buffer before the addressed line. The address ‘⟦0⟧’ (zero) is valid for this command; it places the entered text at the beginning of the buffer. Text is entered in input mode. The current address is set to the address of the last line entered or, if there were none, to the addressed line.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>Inserts text in the buffer before the addressed line. The address\n‘<samp class=\"samp\">0</samp>’ (zero) is valid for this command; it places the entered text at\nthe beginning of the buffer. Text is entered in input mode. The current\naddress is set to the address of the last line entered or, if there were\nnone, to the addressed line.\n</p>"
+    },
+    {
+      "index": 21,
+      "tag": "p",
+      "text": "Joins the addressed lines, replacing them by a single line containing their joined text. If only one address is given, this command does nothing. If lines are joined, the lines replaced are copied to the cut buffer and the current address is set to the address of the joined line. Else, the current address is unchanged.",
+      "tokens": {},
+      "sourceHTML": "<p>Joins the addressed lines, replacing them by a single line containing their\njoined text. If only one address is given, this command does nothing. If\nlines are joined, the lines replaced are copied to the cut buffer and the\ncurrent address is set to the address of the joined line. Else, the current\naddress is unchanged.\n</p>"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "text": "Marks the addressed line with a lower case letter ‘⟦0⟧’. The line can then be addressed as ‘⟦1⟧’ (i.e., a single quote followed by ‘⟦2⟧’) in subsequent commands. The mark is not cleared until the line is deleted or otherwise modified. The current address is unchanged.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">x</samp>",
+        "⟦1⟧": "<samp class=\"samp\">'x</samp>",
+        "⟦2⟧": "<samp class=\"samp\">x</samp>"
+      },
+      "sourceHTML": "<p>Marks the addressed line with a lower case letter ‘<samp class=\"samp\">x</samp>’. The line can\nthen be addressed as ‘<samp class=\"samp\">'x</samp>’ (i.e., a single quote followed by ‘<samp class=\"samp\">x</samp>’)\nin subsequent commands. The mark is not cleared until the line is deleted or\notherwise modified. The current address is unchanged.\n</p>"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "text": "List command. Prints the addressed lines unambiguously. The end of each line is marked with a ‘⟦0⟧’, and every ‘⟦1⟧’ character within the text is printed with a preceding backslash. Special characters are printed as escape sequences. The current address is set to the address of the last line printed.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">$</samp>",
+        "⟦1⟧": "<samp class=\"samp\">$</samp>"
+      },
+      "sourceHTML": "<p>List command. Prints the addressed lines unambiguously. The end of each\nline is marked with a ‘<samp class=\"samp\">$</samp>’, and every ‘<samp class=\"samp\">$</samp>’ character within the\ntext is printed with a preceding backslash. Special characters are\nprinted as escape sequences. The current address is set to the address\nof the last line printed.\n</p>"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "text": "Moves lines in the buffer. The addressed lines are moved to after the right-hand destination address. The destination address ‘⟦0⟧’ (zero) is valid for this command; it moves the addressed lines to the beginning of the buffer. It is an error if the destination address falls within the range of lines to be moved. The current address is set to the new address of the last line moved.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>Moves lines in the buffer. The addressed lines are moved to after the\nright-hand destination address. The destination address ‘<samp class=\"samp\">0</samp>’ (zero)\nis valid for this command; it moves the addressed lines to the beginning\nof the buffer. It is an error if the destination address falls within\nthe range of lines to be moved. The current address is set to the new\naddress of the last line moved.\n</p>"
+    },
+    {
+      "index": 25,
+      "tag": "p",
+      "text": "Number command. Prints the addressed lines, preceding each line by its line number and a ⟦0⟧tab⟦1⟧. The current address is set to the address of the last line printed.",
+      "tokens": {
+        "⟦0⟧": "<kbd class=\"key\">",
+        "⟦1⟧": "</kbd>"
+      },
+      "sourceHTML": "<p>Number command. Prints the addressed lines, preceding each line by its\nline number and a <kbd class=\"key\">tab</kbd>. The current address is set to the address\nof the last line printed.\n</p>"
+    },
+    {
+      "index": 26,
+      "tag": "p",
+      "text": "Prints the addressed lines. The current address is set to the address of the last line printed.",
+      "tokens": {},
+      "sourceHTML": "<p>Prints the addressed lines. The current address is set to the address of\nthe last line printed.\n</p>"
+    },
+    {
+      "index": 27,
+      "tag": "p",
+      "text": "Toggles the command prompt on and off. Unless a prompt string is specified with the command-line option ⟦0⟧, the command prompt is by default turned off. The default prompt string is an asterisk (‘⟦1⟧’).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-p</samp>",
+        "⟦1⟧": "<samp class=\"samp\">*</samp>"
+      },
+      "sourceHTML": "<p>Toggles the command prompt on and off. Unless a prompt string is specified\nwith the command-line option <samp class=\"option\">-p</samp>, the command prompt is by default\nturned off. The default prompt string is an asterisk (‘<samp class=\"samp\">*</samp>’).\n</p>"
+    },
+    {
+      "index": 28,
+      "tag": "p",
+      "text": "Quits ⟦0⟧. A warning is printed if the buffer modified flag is set. If another ‘⟦1⟧’ or ‘⟦2⟧’ command is given with no intervening error or buffer-modifying command, it is executed without warning, and any changes to the buffer are lost.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<samp class=\"samp\">e</samp>",
+        "⟦2⟧": "<samp class=\"samp\">q</samp>"
+      },
+      "sourceHTML": "<p>Quits <code class=\"command\">ed</code>. A warning is printed if the buffer modified flag is set.\nIf another ‘<samp class=\"samp\">e</samp>’ or ‘<samp class=\"samp\">q</samp>’ command is given with no intervening error\nor buffer-modifying command, it is executed without warning, and any changes\nto the buffer are lost.\n</p>"
+    },
+    {
+      "index": 29,
+      "tag": "p",
+      "text": "Quits ⟦0⟧ unconditionally. This is similar to the ‘⟦1⟧’ command, except that unwritten changes are discarded without warning.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<samp class=\"samp\">q</samp>"
+      },
+      "sourceHTML": "<p>Quits <code class=\"command\">ed</code> unconditionally. This is similar to the ‘<samp class=\"samp\">q</samp>’ command,\nexcept that unwritten changes are discarded without warning.\n</p>"
+    },
+    {
+      "index": 30,
+      "tag": "p",
+      "text": "Reads ⟦0⟧ and appends it after the addressed line. If ⟦1⟧ is not specified, then the default filename is used. If there is no default filename prior to the command, then the default filename is set to ⟦2⟧. Otherwise, the default filename is unchanged. The address ‘⟦3⟧’ (zero) is valid for this command; it reads the file at the beginning of the buffer. The current address is set to the address of the last line read or, if there were none, to the addressed line.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<var class=\"var\">file</var>",
+        "⟦2⟧": "<var class=\"var\">file</var>",
+        "⟦3⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>Reads <var class=\"var\">file</var> and appends it after the addressed line. If <var class=\"var\">file</var>\nis not specified, then the default filename is used. If there is no\ndefault filename prior to the command, then the default filename is set\nto <var class=\"var\">file</var>. Otherwise, the default filename is unchanged. The address\n‘<samp class=\"samp\">0</samp>’ (zero) is valid for this command; it reads the file at the\nbeginning of the buffer. The current address is set to the address of\nthe last line read or, if there were none, to the addressed line.\n</p>"
+    },
+    {
+      "index": 31,
+      "tag": "p",
+      "text": "If ⟦0⟧ is prefixed with a bang (!), then it is interpreted as a shell command whose output is to be read, (see ⟦1⟧shell escape command⟦2⟧ ‘⟦3⟧’ below). In this case the default filename is unchanged. To read a file whose name begins with a bang, prefix the name with ⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<a class=\"pxref\" href=\"#shell-escape-command\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "<samp class=\"samp\">!</samp>",
+        "⟦4⟧": "<samp class=\"file\">./</samp>"
+      },
+      "sourceHTML": "<p>If <var class=\"var\">file</var> is prefixed with a bang (!), then it is interpreted as a shell\ncommand whose output is to be read, (see <a class=\"pxref\" href=\"#shell-escape-command\">shell escape command</a> ‘<samp class=\"samp\">!</samp>’\nbelow). In this case the default filename is unchanged. To read a file whose\nname begins with a bang, prefix the name with <samp class=\"file\">./</samp>.\n</p>"
+    },
+    {
+      "index": 32,
+      "tag": "p",
+      "text": "Copies (i.e., transfers) the addressed lines to after the right-hand destination address. If the destination address is ‘⟦0⟧’ (zero), the lines are copied at the beginning of the buffer. The current address is set to the address of the last line copied.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>Copies (i.e., transfers) the addressed lines to after the right-hand\ndestination address. If the destination address is ‘<samp class=\"samp\">0</samp>’ (zero), the\nlines are copied at the beginning of the buffer. The current address is\nset to the address of the last line copied.\n</p>"
+    },
+    {
+      "index": 33,
+      "tag": "p",
+      "text": "Undoes the effect of the last command that modified anything in the buffer and restores the current address to what it was before the command. The global commands ‘⟦0⟧’, ‘⟦1⟧’, ‘⟦2⟧’, and ‘⟦3⟧’ are treated as a single command by undo. ‘⟦4⟧’ is its own inverse; it can undo only the last command.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">g</samp>",
+        "⟦1⟧": "<samp class=\"samp\">G</samp>",
+        "⟦2⟧": "<samp class=\"samp\">v</samp>",
+        "⟦3⟧": "<samp class=\"samp\">V</samp>",
+        "⟦4⟧": "<samp class=\"samp\">u</samp>"
+      },
+      "sourceHTML": "<p>Undoes the effect of the last command that modified anything in the buffer\nand restores the current address to what it was before the command. The\nglobal commands ‘<samp class=\"samp\">g</samp>’, ‘<samp class=\"samp\">G</samp>’, ‘<samp class=\"samp\">v</samp>’, and ‘<samp class=\"samp\">V</samp>’ are treated as a\nsingle command by undo. ‘<samp class=\"samp\">u</samp>’ is its own inverse; it can undo only the\nlast command.\n</p>"
+    },
+    {
+      "index": 34,
+      "tag": "p",
+      "text": "This is similar to the ‘⟦0⟧’ command except that it applies ⟦1⟧ to each of the addressed lines not matching the regular expression ⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">g</samp>",
+        "⟦1⟧": "<var class=\"var\">command-list</var>",
+        "⟦2⟧": "<var class=\"var\">re</var>"
+      },
+      "sourceHTML": "<p>This is similar to the ‘<samp class=\"samp\">g</samp>’ command except that it applies\n<var class=\"var\">command-list</var> to each of the addressed lines not matching the\nregular expression <var class=\"var\">re</var>.\n</p>"
+    },
+    {
+      "index": 35,
+      "tag": "p",
+      "text": "This is similar to the ‘⟦0⟧’ command except that it interactively edits the addressed lines not matching the regular expression ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">G</samp>",
+        "⟦1⟧": "<var class=\"var\">re</var>"
+      },
+      "sourceHTML": "<p>This is similar to the ‘<samp class=\"samp\">G</samp>’ command except that it interactively\nedits the addressed lines not matching the regular expression <var class=\"var\">re</var>.\n</p>"
+    },
+    {
+      "index": 36,
+      "tag": "p",
+      "text": "Writes the addressed lines to ⟦0⟧. Any previous contents of ⟦1⟧ are lost without warning. If there is no default filename, then the default filename is set to ⟦2⟧, otherwise it is unchanged. If no filename is specified, then the default filename is used. If the whole buffer is written, then the buffer modified flag is cleared. The current address is unchanged.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<var class=\"var\">file</var>",
+        "⟦2⟧": "<var class=\"var\">file</var>"
+      },
+      "sourceHTML": "<p>Writes the addressed lines to <var class=\"var\">file</var>. Any previous contents of\n<var class=\"var\">file</var> are lost without warning. If there is no default filename, then\nthe default filename is set to <var class=\"var\">file</var>, otherwise it is unchanged. If no\nfilename is specified, then the default filename is used. If the whole\nbuffer is written, then the buffer modified flag is cleared. The current\naddress is unchanged.\n</p>"
+    },
+    {
+      "index": 37,
+      "tag": "p",
+      "text": "If ⟦0⟧ is prefixed with a bang (!), then it is interpreted as a shell command and the addressed lines are written to its standard input, (see ⟦1⟧shell escape command⟦2⟧ ‘⟦3⟧’ below). In this case the default filename is unchanged. Writing the buffer to a shell command does not clear the buffer modified flag. To write to a file whose name begins with a bang, prefix the name with ⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<a class=\"pxref\" href=\"#shell-escape-command\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "<samp class=\"samp\">!</samp>",
+        "⟦4⟧": "<samp class=\"file\">./</samp>"
+      },
+      "sourceHTML": "<p>If <var class=\"var\">file</var> is prefixed with a bang (!), then it is interpreted as a shell\ncommand and the addressed lines are written to its standard input,\n(see <a class=\"pxref\" href=\"#shell-escape-command\">shell escape command</a> ‘<samp class=\"samp\">!</samp>’ below). In this case the default\nfilename is unchanged. Writing the buffer to a shell command does not clear\nthe buffer modified flag. To write to a file whose name begins with a bang,\nprefix the name with <samp class=\"file\">./</samp>.\n</p>"
+    },
+    {
+      "index": 38,
+      "tag": "p",
+      "text": "Writes the addressed lines to ⟦0⟧, and then executes a ‘⟦1⟧’ command.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<samp class=\"samp\">q</samp>"
+      },
+      "sourceHTML": "<p>Writes the addressed lines to <var class=\"var\">file</var>, and then executes a ‘<samp class=\"samp\">q</samp>’\ncommand.\n</p>"
+    },
+    {
+      "index": 39,
+      "tag": "p",
+      "text": "Appends the addressed lines to the end of ⟦0⟧. This is similar to the ‘⟦1⟧’ command, except that the previous contents of ⟦2⟧ are not clobbered. The current address is unchanged.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">file</var>",
+        "⟦1⟧": "<samp class=\"samp\">w</samp>",
+        "⟦2⟧": "<var class=\"var\">file</var>"
+      },
+      "sourceHTML": "<p>Appends the addressed lines to the end of <var class=\"var\">file</var>. This is similar to the\n‘<samp class=\"samp\">w</samp>’ command, except that the previous contents of <var class=\"var\">file</var> are not\nclobbered. The current address is unchanged.\n</p>"
+    },
+    {
+      "index": 40,
+      "tag": "p",
+      "text": "Copies (puts) the contents of the cut buffer to after the addressed line. The current address is set to the address of the last line copied.",
+      "tokens": {},
+      "sourceHTML": "<p>Copies (puts) the contents of the cut buffer to after the addressed\nline. The current address is set to the address of the last line copied.\n</p>"
+    },
+    {
+      "index": 41,
+      "tag": "p",
+      "text": "Copies (yanks) the addressed lines to the cut buffer. The current address is unchanged. The cut buffer is overwritten by subsequent ‘⟦0⟧’, ‘⟦1⟧’, ‘⟦2⟧’, ‘⟦3⟧’, or ‘⟦4⟧’ commands. The cut buffer is deleted when a new file is read with ‘⟦5⟧’ or ‘⟦6⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">c</samp>",
+        "⟦1⟧": "<samp class=\"samp\">d</samp>",
+        "⟦2⟧": "<samp class=\"samp\">j</samp>",
+        "⟦3⟧": "<samp class=\"samp\">s</samp>",
+        "⟦4⟧": "<samp class=\"samp\">y</samp>",
+        "⟦5⟧": "<samp class=\"samp\">e</samp>",
+        "⟦6⟧": "<samp class=\"samp\">E</samp>"
+      },
+      "sourceHTML": "<p>Copies (yanks) the addressed lines to the cut buffer. The current address is\nunchanged. The cut buffer is overwritten by subsequent ‘<samp class=\"samp\">c</samp>’, ‘<samp class=\"samp\">d</samp>’,\n‘<samp class=\"samp\">j</samp>’, ‘<samp class=\"samp\">s</samp>’, or ‘<samp class=\"samp\">y</samp>’ commands. The cut buffer is deleted when a\nnew file is read with ‘<samp class=\"samp\">e</samp>’ or ‘<samp class=\"samp\">E</samp>’.\n</p>"
+    },
+    {
+      "index": 42,
+      "tag": "p",
+      "text": "Scroll. Prints ⟦0⟧ lines at a time starting at addressed line, and sets window size to ⟦1⟧. If ⟦2⟧ is not specified, then the current window size is used. Window size defaults to screen size minus two lines, or to 22 if screen size can’t be determined. The environment variable ⟦3⟧ can be used to set the initial window size. ⟦4⟧ and ⟦5⟧ are not limited by screen size. The current address is set to the address of the last line printed.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>",
+        "⟦1⟧": "<var class=\"var\">n</var>",
+        "⟦2⟧": "<var class=\"var\">n</var>",
+        "⟦3⟧": "<var class=\"var\">LINES</var>",
+        "⟦4⟧": "<var class=\"var\">LINES</var>",
+        "⟦5⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>Scroll. Prints <var class=\"var\">n</var> lines at a time starting at addressed line, and sets\nwindow size to <var class=\"var\">n</var>. If <var class=\"var\">n</var> is not specified, then the current window\nsize is used. Window size defaults to screen size minus two lines, or to 22\nif screen size can’t be determined. The environment variable <var class=\"var\">LINES</var> can\nbe used to set the initial window size. <var class=\"var\">LINES</var> and <var class=\"var\">n</var> are not\nlimited by screen size. The current address is set to the address of the\nlast line printed.\n</p>"
+    },
+    {
+      "index": 43,
+      "tag": "p",
+      "text": "Shell escape command. Executes ⟦0⟧ via ⟦1⟧. If the first character of ⟦2⟧ is ‘⟦3⟧’, then it is replaced by the text of the previous ‘⟦4⟧’. Thus, ‘⟦5⟧’ repeats the previous ‘⟦6⟧’. ⟦7⟧ does not process ⟦8⟧ for backslash (‘⟦9⟧’) escapes. However, each unescaped ‘⟦10⟧’ is replaced with the default filename, and the backslash is removed from each escaped ‘⟦11⟧’. When the shell returns from execution, a ‘⟦12⟧’ is printed to the standard output. The current address is unchanged.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">command</var>",
+        "⟦1⟧": "<code class=\"command\">sh</code>",
+        "⟦2⟧": "<var class=\"var\">command</var>",
+        "⟦3⟧": "<samp class=\"samp\">!</samp>",
+        "⟦4⟧": "<samp class=\"samp\">!<var class=\"var\">command</var></samp>",
+        "⟦5⟧": "<samp class=\"samp\">!!</samp>",
+        "⟦6⟧": "<samp class=\"samp\">!<var class=\"var\">command</var></samp>",
+        "⟦7⟧": "<code class=\"command\">ed</code>",
+        "⟦8⟧": "<var class=\"var\">command</var>",
+        "⟦9⟧": "<samp class=\"samp\">\\</samp>",
+        "⟦10⟧": "<samp class=\"samp\">%</samp>",
+        "⟦11⟧": "<samp class=\"samp\">%</samp>",
+        "⟦12⟧": "<samp class=\"samp\">!</samp>"
+      },
+      "sourceHTML": "<p>Shell escape command. Executes <var class=\"var\">command</var> via <code class=\"command\">sh</code>. If the first\ncharacter of <var class=\"var\">command</var> is ‘<samp class=\"samp\">!</samp>’, then it is replaced by the text of\nthe previous ‘<samp class=\"samp\">!<var class=\"var\">command</var></samp>’. Thus, ‘<samp class=\"samp\">!!</samp>’ repeats the previous\n‘<samp class=\"samp\">!<var class=\"var\">command</var></samp>’. <code class=\"command\">ed</code> does not process <var class=\"var\">command</var> for\nbackslash (‘<samp class=\"samp\">\\</samp>’) escapes. However, each unescaped ‘<samp class=\"samp\">%</samp>’ is replaced\nwith the default filename, and the backslash is removed from each escaped\n‘<samp class=\"samp\">%</samp>’. When the shell returns from execution, a ‘<samp class=\"samp\">!</samp>’ is printed to\nthe standard output. The current address is unchanged.\n</p>"
+    },
+    {
+      "index": 44,
+      "tag": "p",
+      "text": "If one or more addresses are specified, the addressed lines are written to the standard input of ⟦0⟧ and then replaced with the lines read from the standard output and standard error of ⟦1⟧. Two byte counts are printed; one for the bytes written to ⟦2⟧ and the other for the bytes read from ⟦3⟧. The current address is set to the address of the last line read or, if there were none, to the line before the first addressed line.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">command</var>",
+        "⟦1⟧": "<var class=\"var\">command</var>",
+        "⟦2⟧": "<var class=\"var\">command</var>",
+        "⟦3⟧": "<var class=\"var\">command</var>"
+      },
+      "sourceHTML": "<p>If one or more addresses are specified, the addressed lines are written to\nthe standard input of <var class=\"var\">command</var> and then replaced with the lines read\nfrom the standard output and standard error of <var class=\"var\">command</var>. Two byte\ncounts are printed; one for the bytes written to <var class=\"var\">command</var> and the other\nfor the bytes read from <var class=\"var\">command</var>. The current address is set to the\naddress of the last line read or, if there were none, to the line before the\nfirst addressed line.\n</p>"
+    },
+    {
+      "index": 45,
+      "tag": "p",
+      "text": "Begins a comment; the rest of the line, up to a newline, is ignored. If a line address followed by a semicolon is given, then the current address is set to that address. Otherwise, the current address is unchanged.",
+      "tokens": {},
+      "sourceHTML": "<p>Begins a comment; the rest of the line, up to a newline, is ignored. If a\nline address followed by a semicolon is given, then the current address is\nset to that address. Otherwise, the current address is unchanged.\n</p>"
+    },
+    {
+      "index": 46,
+      "tag": "p",
+      "text": "Prints the line number of the addressed line. The current address is unchanged.",
+      "tokens": {},
+      "sourceHTML": "<p>Prints the line number of the addressed line. The current address is\nunchanged.\n</p>"
+    },
+    {
+      "index": 47,
+      "tag": "p",
+      "text": "Null command. An address alone prints the addressed line. A ⟦0⟧newline⟦1⟧ alone is equivalent to ‘⟦2⟧’. The current address is set to the address of the printed line.",
+      "tokens": {
+        "⟦0⟧": "<kbd class=\"key\">",
+        "⟦1⟧": "</kbd>",
+        "⟦2⟧": "<samp class=\"samp\">+1p</samp>"
+      },
+      "sourceHTML": "<p>Null command. An address alone prints the addressed line. A <kbd class=\"key\">newline</kbd>\nalone is equivalent to ‘<samp class=\"samp\">+1p</samp>’. The current address is set to the address\nof the printed line.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

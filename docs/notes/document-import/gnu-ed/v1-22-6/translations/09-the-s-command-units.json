@@ -1,0 +1,165 @@
+{
+  "slug": "09-the-s-command",
+  "bodySHA256": "6abc56bcabfacf345af4fa349aac0ee058d4b698f827ead31e430becfedee95b",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧8 Substitute command⟦1⟧ ¶⟦2⟧⟦3⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<a class=\"copiable-link\" href=\"#Substitute-command\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Substitute-command\"><span>8 Substitute command<a class=\"copiable-link\" href=\"#Substitute-command\"> ¶</a></span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The substitute command ‘⟦0⟧’ replaces text in the addressed lines matching a regular expression ⟦1⟧ with ⟦2⟧. By default, only the first match in each line is replaced. The syntax of the ‘⟦3⟧’ command is:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">s</samp>",
+        "⟦1⟧": "<var class=\"var\">re</var>",
+        "⟦2⟧": "<var class=\"var\">replacement</var>",
+        "⟦3⟧": "<samp class=\"samp\">s</samp>"
+      },
+      "sourceHTML": "<p>The substitute command ‘<samp class=\"samp\">s</samp>’ replaces text in the addressed lines\nmatching a regular expression <var class=\"var\">re</var> with <var class=\"var\">replacement</var>. By default,\nonly the first match in each line is replaced. The syntax of the ‘<samp class=\"samp\">s</samp>’\ncommand is:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "The ‘⟦0⟧’ command accepts any combination of the following optional suffixes:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">s</samp>"
+      },
+      "sourceHTML": "<p>The ‘<samp class=\"samp\">s</samp>’ command accepts any combination of the following optional\nsuffixes:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "‘⟦0⟧’: replace every match in the line, not just the first.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">global</samp>"
+      },
+      "sourceHTML": "<p>‘<samp class=\"samp\">global</samp>’: replace every match in the line, not just the first.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "A positive number causes only the ⟦0⟧th match to be replaced. ‘⟦1⟧’ and ‘⟦2⟧’ can’t be specified in the same command.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">count</var>",
+        "⟦1⟧": "<samp class=\"samp\">g</samp>",
+        "⟦2⟧": "<samp class=\"samp\"><var class=\"var\">count</var></samp>"
+      },
+      "sourceHTML": "<p>A positive number causes only the <var class=\"var\">count</var>th match to be replaced.\n‘<samp class=\"samp\">g</samp>’ and ‘<samp class=\"samp\"><var class=\"var\">count</var></samp>’ can’t be specified in the same command.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "The usual print suffixes. See ⟦0⟧print suffixes⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"xref\" href=\"#print-suffixes\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<p>The usual print suffixes. See <a class=\"xref\" href=\"#print-suffixes\">print suffixes</a>.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "The suffix ‘⟦0⟧’ is a GNU extension which makes ⟦1⟧ match ⟦2⟧ in a case-insensitive manner.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">I</samp>",
+        "⟦1⟧": "<code class=\"command\">ed</code>",
+        "⟦2⟧": "<var class=\"var\">re</var>"
+      },
+      "sourceHTML": "<p>The suffix ‘<samp class=\"samp\">I</samp>’ is a GNU extension which makes <code class=\"command\">ed</code> match\n<var class=\"var\">re</var> in a case-insensitive manner.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "It is an error if no substitutions are performed on any of the addressed lines. The current address is set to the address of the last line on which a substitution occurred. If a line is split, a substitution is considered to have occurred on each of the new lines. If no substitution is performed, the current address is unchanged. The last line modified is copied to the cut buffer.",
+      "tokens": {},
+      "sourceHTML": "<p>It is an error if no substitutions are performed on any of the addressed\nlines. The current address is set to the address of the last line on which a\nsubstitution occurred. If a line is split, a substitution is considered to\nhave occurred on each of the new lines. If no substitution is performed, the\ncurrent address is unchanged. The last line modified is copied to the cut\nbuffer.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "⟦0⟧ and ⟦1⟧ may be delimited by any character other than ⟦2⟧space⟦3⟧, ⟦4⟧newline⟦5⟧, and the characters used by the form of the ‘⟦6⟧’ command shown below. If the last delimiter is omitted, then the last line affected is printed as if the print suffix ‘⟦7⟧’ were specified. The last delimiter can’t be omitted if the ‘⟦8⟧’ command is part of a ‘⟦9⟧’ or ‘⟦10⟧’ ⟦11⟧ and is not the last command in the list, because the meaning of the following escaped newline would become ambiguous.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">re</var>",
+        "⟦1⟧": "<var class=\"var\">replacement</var>",
+        "⟦2⟧": "<kbd class=\"key\">",
+        "⟦3⟧": "</kbd>",
+        "⟦4⟧": "<kbd class=\"key\">",
+        "⟦5⟧": "</kbd>",
+        "⟦6⟧": "<samp class=\"samp\">s</samp>",
+        "⟦7⟧": "<samp class=\"samp\">p</samp>",
+        "⟦8⟧": "<samp class=\"samp\">s</samp>",
+        "⟦9⟧": "<samp class=\"samp\">g</samp>",
+        "⟦10⟧": "<samp class=\"samp\">v</samp>",
+        "⟦11⟧": "<var class=\"var\">command-list</var>"
+      },
+      "sourceHTML": "<p><var class=\"var\">re</var> and <var class=\"var\">replacement</var> may be delimited by any character other\nthan <kbd class=\"key\">space</kbd>, <kbd class=\"key\">newline</kbd>, and the characters used by the form of\nthe ‘<samp class=\"samp\">s</samp>’ command shown below. If the last delimiter is omitted, then\nthe last line affected is printed as if the print suffix ‘<samp class=\"samp\">p</samp>’ were\nspecified. The last delimiter can’t be omitted if the ‘<samp class=\"samp\">s</samp>’ command\nis part of a ‘<samp class=\"samp\">g</samp>’ or ‘<samp class=\"samp\">v</samp>’ <var class=\"var\">command-list</var> and is not the last\ncommand in the list, because the meaning of the following escaped\nnewline would become ambiguous.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "An unescaped ‘⟦0⟧’ in ⟦1⟧ is replaced by the currently matched text. The character sequence ‘⟦2⟧’ where ⟦3⟧ is a number in the range [1,9], is replaced by the ⟦4⟧th backreference expression of the matched text. If the corresponding backreference expression does not match, then the character sequence ‘⟦5⟧’ is replaced by the empty string. If ⟦6⟧ consists of a single ‘⟦7⟧’, then ⟦8⟧ from the last substitution is used.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">&amp;</samp>",
+        "⟦1⟧": "<var class=\"var\">replacement</var>",
+        "⟦2⟧": "<samp class=\"samp\">\\<var class=\"var\">m</var></samp>",
+        "⟦3⟧": "<var class=\"var\">m</var>",
+        "⟦4⟧": "<var class=\"var\">m</var>",
+        "⟦5⟧": "<samp class=\"samp\">\\<var class=\"var\">m</var></samp>",
+        "⟦6⟧": "<var class=\"var\">replacement</var>",
+        "⟦7⟧": "<samp class=\"samp\">%</samp>",
+        "⟦8⟧": "<var class=\"var\">replacement</var>"
+      },
+      "sourceHTML": "<p>An unescaped ‘<samp class=\"samp\">&amp;</samp>’ in <var class=\"var\">replacement</var> is replaced by the currently\nmatched text. The character sequence ‘<samp class=\"samp\">\\<var class=\"var\">m</var></samp>’ where <var class=\"var\">m</var> is a\nnumber in the range [1,9], is replaced by the <var class=\"var\">m</var>th backreference\nexpression of the matched text. If the corresponding backreference\nexpression does not match, then the character sequence ‘<samp class=\"samp\">\\<var class=\"var\">m</var></samp>’ is\nreplaced by the empty string. If <var class=\"var\">replacement</var> consists of a single\n‘<samp class=\"samp\">%</samp>’, then <var class=\"var\">replacement</var> from the last substitution is used.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "A line can be split by including a newline escaped with a backslash (‘⟦0⟧’) in ⟦1⟧. Each backslash in ⟦2⟧ removes the special meaning (if any) of the following character.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\</samp>",
+        "⟦1⟧": "<var class=\"var\">replacement</var>",
+        "⟦2⟧": "<var class=\"var\">replacement</var>"
+      },
+      "sourceHTML": "<p>A line can be split by including a newline escaped with a backslash\n(‘<samp class=\"samp\">\\</samp>’) in <var class=\"var\">replacement</var>. Each backslash in <var class=\"var\">replacement</var>\nremoves the special meaning (if any) of the following character.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "⟦0⟧ can repeat the last substitution using the following alternative syntax for the ‘⟦1⟧’ command:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<samp class=\"samp\">s</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">ed</code> can repeat the last substitution using the following\nalternative syntax for the ‘<samp class=\"samp\">s</samp>’ command:\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "This form of the ‘⟦0⟧’ command accepts the suffixes ‘⟦1⟧’ and ‘⟦2⟧’ described above, and any combination of the suffixes ‘⟦3⟧’ and ‘⟦4⟧’. The suffix ‘⟦5⟧’ toggles the global suffix of the last substitution and resets ⟦6⟧ to 1. The suffix ‘⟦7⟧’ toggles the print suffixes of the last substitution. The suffix ‘⟦8⟧’ causes the ⟦9⟧ of the last search to be used instead of the ⟦10⟧ of the last substitution (if the search happened after the substitution).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">s</samp>",
+        "⟦1⟧": "<samp class=\"samp\">g</samp>",
+        "⟦2⟧": "<samp class=\"samp\"><var class=\"var\">count</var></samp>",
+        "⟦3⟧": "<samp class=\"samp\">p</samp>",
+        "⟦4⟧": "<samp class=\"samp\">r</samp>",
+        "⟦5⟧": "<samp class=\"samp\">g</samp>",
+        "⟦6⟧": "<var class=\"var\">count</var>",
+        "⟦7⟧": "<samp class=\"samp\">p</samp>",
+        "⟦8⟧": "<samp class=\"samp\">r</samp>",
+        "⟦9⟧": "<var class=\"var\">re</var>",
+        "⟦10⟧": "<var class=\"var\">re</var>"
+      },
+      "sourceHTML": "<p>This form of the ‘<samp class=\"samp\">s</samp>’ command accepts the suffixes ‘<samp class=\"samp\">g</samp>’ and\n‘<samp class=\"samp\"><var class=\"var\">count</var></samp>’ described above, and any combination of the suffixes\n‘<samp class=\"samp\">p</samp>’ and ‘<samp class=\"samp\">r</samp>’. The suffix ‘<samp class=\"samp\">g</samp>’ toggles the global suffix of the\nlast substitution and resets <var class=\"var\">count</var> to 1. The suffix ‘<samp class=\"samp\">p</samp>’ toggles\nthe print suffixes of the last substitution. The suffix ‘<samp class=\"samp\">r</samp>’ causes the\n<var class=\"var\">re</var> of the last search to be used instead of the <var class=\"var\">re</var> of the last\nsubstitution (if the search happened after the substitution).\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}
