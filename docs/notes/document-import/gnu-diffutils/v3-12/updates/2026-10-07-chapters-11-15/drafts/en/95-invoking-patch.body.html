@@ -1,0 +1,36 @@
+<div class="gnu-diffutils-original-content" id="Invoking-patch">
+<h2 class="chapter" id="Invoking-patch-1"><span>15 Invoking <code class="command">patch</code></span></h2>
+<a class="index-entry-id" id="index-invoking-patch"></a>
+<a class="index-entry-id" id="index-patch-invocation"></a>
+<p>Normally <code class="command">patch</code> is invoked like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">patch &lt;<var class="var">patchfile</var>
+</pre></div>
+<p>The full format for invoking <code class="command">patch</code> is:
+</p>
+<div class="example">
+<pre class="example-preformatted">patch <var class="var">options</var>... <span class="r">[</span><var class="var">origfile</var> <span class="r">[</span><var class="var">patchfile</var><span class="r">]</span><span class="r">]</span>
+</pre></div>
+<p>You can also specify where to read the patch from with the <samp class="option">-i
+<var class="var">patchfile</var></samp> or <samp class="option">--input=<var class="var">patchfile</var></samp> option.
+If you do not specify <var class="var">patchfile</var>, or if <var class="var">patchfile</var> is
+<samp class="file">-</samp>, <code class="command">patch</code> reads the patch (that is, the <code class="command">diff</code> output)
+from the standard input.
+</p>
+<p>If you do not specify an input file on the command line, <code class="command">patch</code>
+tries to intuit from the <em class="dfn">leading text</em> (any text in the patch
+that comes before the <code class="command">diff</code> output) which file to edit.
+See <a class="xref" href="#Multiple-Patches">Multiple Patches in a File</a>.
+</p>
+<p>By default, <code class="command">patch</code> replaces the original input file with the
+patched version, possibly after renaming the original file into a
+backup file (see <a class="pxref" href="#Backup-Names">Backup File Names</a>, for a description of how
+<code class="command">patch</code> names backup files).  You can also specify where to
+put the output with the <samp class="option">-o <var class="var">file</var></samp> or
+<samp class="option">--output=<var class="var">file</var></samp> option; however, do not use this option
+if <var class="var">file</var> is one of the input files.
+</p>
+<hr/>
+
+</div>

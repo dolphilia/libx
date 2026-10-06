@@ -1,0 +1,12 @@
+<div class="gnu-diffutils-original-content" id="Generating-Smaller-Patches">
+<h3 class="section" id="Generating-Smaller-Patches-1"><span>11.4 小さなパッチを生成する</span></h3>
+<a class="index-entry-id" id="index-patches_002c-shrinking"></a>
+<p>パッチを生成する最も簡単な方法は「<samp class="samp">diff -Naur</samp>」を使うことです（<a class="pxref" href="#Tips-for-Patch-Producers">パッチ作成者へのヒント</a>参照）。ただし、作成前に一部のファイルを改名・削除すれば、パッチを小さくできることがあります。パッケージの旧版に新版にはないファイルがある場合や、両バージョン間で改名されたファイルがある場合は、利用者がパッチ適用前に旧版のディレクトリで実行する <code class="command">rm</code> と <code class="command">mv</code> のコマンド一覧を作ります。その後、自分でも作業用ディレクトリでそれらを実行します。</p>
+<p>他のファイルから容易に再生成できるためパッチに含める必要がないファイル（たとえば <samp class="file">TAGS</samp> や <code class="command">yacc</code>・<code class="command">makeinfo</code> の出力）があれば、<code class="command">diff</code> に <samp class="option">-x
+<var class="var">pattern</var></samp> オプションを指定して除外します（<a class="pxref" href="#Comparing-Directories">ディレクトリを比較する</a>参照）。受取人が生成ツールを持たないため派生ファイルを変更するパッチを含める場合は、依存元のファイルのパッチより後にそのパッチを置き、受取人側のタイムスタンプが <code class="command">make</code> を混乱させないようにします。</p>
+<p>これで「<samp class="samp">diff -Naur</samp>」を使ってパッチを作れます。必ず作業用ディレクトリを先、新版のディレクトリを後に指定してください。</p>
+<p>パッチの先頭に、適用前に実行すべき <code class="command">rm</code> と <code class="command">mv</code> コマンドを知らせる注記を加えます。その後、作業用ディレクトリを削除できます。</p>
+<p>コンテキスト行を減らしてもパッチを小さくできます。ただし、パッチが入力ファイルと厳密に一致しない場合、<code class="command">patch</code> が正常に動作するには通常少なくとも2行が必要なことを覚えておいてください。</p>
+<hr/>
+</div>
+

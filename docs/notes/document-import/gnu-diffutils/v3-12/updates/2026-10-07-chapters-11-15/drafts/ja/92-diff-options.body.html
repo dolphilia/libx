@@ -1,0 +1,233 @@
+<div class="gnu-diffutils-original-content" id="diff-Options">
+<h3 class="section" id="Options-to-diff"><span>13.1 <code class="command">diff</code> のオプション</span></h3>
+<a class="index-entry-id" id="index-diff-options"></a>
+<a class="index-entry-id" id="index-options-for-diff"></a>
+<p>GNU <code class="command">diff</code> が受け付けるすべてのオプションを以下にまとめます。ほとんどのオプションには同等の名前が2つあり、一方は「<samp class="samp">-</samp>」を前置した1文字、他方は「<samp class="samp">--</samp>」を前置した長い名前です。引数を取らない1文字のオプションは、複数をコマンドラインの1語にまとめられます。<samp class="option">-ac</samp> は <samp class="option">-a -c</samp> と同等です。長い名前のオプションは、一意に識別できる任意の接頭部分まで省略できます。角括弧（[ と ]）は省略可能な引数を表します。</p>
+<dl class="table">
+<dt><samp class="option">-a</samp></dt>
+<dt><samp class="option">--text</samp></dt>
+<dd><p>テキストに見えないファイルも含め、すべてのファイルをテキストとして扱い、行単位で比較します。<a class="xref" href="#Binary">バイナリファイルとテキスト比較の強制</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-b</samp></dt>
+<dt><samp class="option">--ignore-space-change</samp></dt>
+<dd><p>空白の量の変化を無視します。<a class="xref" href="#White-Space">空白とタブの間隔による相違を抑える</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-B</samp></dt>
+<dt><samp class="option">--ignore-blank-lines</samp></dt>
+<dd><p>空行の挿入・削除だけの変更を無視します。<a class="xref" href="#Blank-Lines">すべて空行である相違を抑える</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--binary</samp></dt>
+<dd><p>バイナリモードでデータを読み書きします。<a class="xref" href="#Binary">バイナリファイルとテキスト比較の強制</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-c</samp></dt>
+<dd><p>コンテキスト出力形式を使い、3行のコンテキストを表示します。<a class="xref" href="#Context-Format">コンテキスト形式</a>を参照してください。</p>
+</dd>
+<dt><a id="index-color_002c-distinguishing-different-context"></a><span><samp class="option">--color [=<var class="var">when</var>]</samp></span></dt>
+<dd><p>ヘッダー、追加行、削除行などの異なるコンテキストを区別するために、色を使うか指定します。<var class="var">when</var> は省略するか、次のいずれかにします。</p><ul class="itemize mark-bullet">
+<li>none <a class="index-entry-id" id="index-none-color-option"></a> 色をまったく使いません。–color オプションを指定しない場合のデフォルトです。</li><li>auto <a class="index-entry-id" id="index-auto-color-option"></a> <a class="index-entry-id" id="index-terminal_002c-using-color-iff"></a> 標準出力が端末の場合だけ色を使います。</li><li>always <a class="index-entry-id" id="index-always-color-option"></a> 常に色を使います。</li></ul>
+<p><samp class="option">--color</samp> を指定して <var class="var">when</var> を省略すると、<samp class="option">--color=auto</samp> と同等になります。</p>
+</dd>
+<dt><samp class="option">-C <var class="var">lines</var></samp></dt>
+<dt><samp class="option">--context<span class="r">[</span>=<var class="var">lines</var><span class="r">]</span></samp></dt>
+<dd><p>コンテキスト出力形式を使い、<var class="var">lines</var>（整数）行のコンテキストを表示します。<var class="var">lines</var> を省略した場合は3行です。<a class="xref" href="#Context-Format">コンテキスト形式</a>を参照してください。<code class="command">patch</code> が正常に動作するには、通常少なくとも2行のコンテキストが必要です。</p>
+<p>互換性のため、<code class="command">diff</code> は旧式のオプション構文 <samp class="option">-<var class="var">lines</var></samp> もサポートします。これは <samp class="option">-c</samp>、<samp class="option">-p</samp>、または <samp class="option">-u</samp> と組み合わせると有効になります。新しいスクリプトでは、代わりに <samp class="option">-U <var class="var">lines</var></samp>（<samp class="option">-C <var class="var">lines</var></samp>）を使ってください。</p>
+</dd>
+<dt><samp class="option">--changed-group-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、両ファイルの異なる行を含む行グループを if-then-else 形式で出力します。<a class="xref" href="#Line-Group-Formats">行グループ形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-d</samp></dt>
+<dt><samp class="option">--minimal</samp></dt>
+<dd><p>アルゴリズムを変更し、より小さな変更集合を見つけられる可能性があります。その分 <code class="command">diff</code> は遅くなり、場合によっては大幅に遅くなります。<a class="xref" href="#diff-Performance"><code class="command">diff</code> の性能のトレードオフ</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-D <var class="var">name</var></samp></dt>
+<dt><samp class="option">--ifdef=<var class="var">name</var></samp></dt>
+<dd><p>プリプロセッサーマクロ <var class="var">name</var> を条件とする、マージ済みの「<samp class="samp">#ifdef</samp>」形式の出力を作ります。<a class="xref" href="#If_002dthen_002delse">if-then-else によるファイルのマージ</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-e</samp></dt>
+<dt><samp class="option">--ed</samp></dt>
+<dd><p>有効な <code class="command">ed</code> スクリプトとなる出力を作ります。<a class="xref" href="#ed-Scripts"><code class="command">ed</code> スクリプト</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-E</samp></dt>
+<dt><samp class="option">--ignore-tab-expansion</samp></dt>
+<dd><p>タブ展開による変化を無視します。<a class="xref" href="#White-Space">空白とタブの間隔による相違を抑える</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-f</samp></dt>
+<dt><samp class="option">--forward-ed</samp></dt>
+<dd><p><code class="command">ed</code> スクリプトに多少似た出力を作りますが、変更はファイル内で現れる順に並びます。<a class="xref" href="#Forward-ed">順方向の <code class="command">ed</code> スクリプト</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-F <var class="var">regexp</var></samp></dt>
+<dt><samp class="option">--show-function-line=<var class="var">regexp</var></samp></dt>
+<dd><p>コンテキスト形式と unified 形式で、各相違ハンクの前にある、<var class="var">regexp</var> に最後に一致した行の一部を表示します。<a class="xref" href="#Specified-Headings">正規表現に一致する行を表示する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--from-file=<var class="var">file</var></samp></dt>
+<dd><p><var class="var">file</var> を各オペランドと比較します。<var class="var">file</var> はディレクトリでもかまいません。</p>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dd><p>使用方法の概要を出力して終了します。</p>
+</dd>
+<dt><samp class="option">--horizon-lines=<var class="var">lines</var></samp></dt>
+<dd><p>共通する先頭部分の末尾 <var class="var">lines</var> 行と、共通する末尾部分の先頭 <var class="var">lines</var> 行を捨てません。<a class="xref" href="#diff-Performance"><code class="command">diff</code> の性能のトレードオフ</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-i</samp></dt>
+<dt><samp class="option">--ignore-case</samp></dt>
+<dd><p>大文字・小文字の変化を無視し、両者を同等とみなします。<a class="xref" href="#Case-Folding">大文字・小文字の相違を抑える</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-I <var class="var">regexp</var></samp></dt>
+<dt><samp class="option">--ignore-matching-lines=<var class="var">regexp</var></samp></dt>
+<dd><p><var class="var">regexp</var> に一致する行の挿入・削除だけの変更を無視します。<a class="xref" href="#Specified-Lines">すべての行が正規表現に一致する相違を抑える</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--ignore-file-name-case</samp></dt>
+<dd><p>ファイル名の比較で大文字・小文字を無視します。たとえば <samp class="file">d</samp> と <samp class="file">e</samp> の再帰的比較では、<samp class="file">d/Init</samp> と <samp class="file">e/inIt</samp> の内容を比較することがあります。トップレベルでは「<samp class="samp">diff d inIt</samp>」が <samp class="file">d/Init</samp> と <samp class="file">inIt</samp> の内容を比較することがあります。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-l</samp></dt>
+<dt><samp class="option">--paginate</samp></dt>
+<dd><p>出力を <code class="command">pr</code> に渡してページに分割します。<a class="xref" href="#Pagination"><code class="command">diff</code> 出力のページ分割</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-L <var class="var">label</var></samp></dt>
+<dt><samp class="option">--label=<var class="var">label</var></samp></dt>
+<dd><p>コンテキスト形式（<a class="pxref" href="#Context-Format">コンテキスト形式</a>参照）と unified 形式（<a class="pxref" href="#Unified-Format">unified 形式</a>参照）のヘッダーで、ファイル名の代わりに <var class="var">label</var> を使います。<a class="xref" href="#RCS">RCS スクリプト</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--left-column</samp></dt>
+<dd><p>横並び形式で、共通する2行の左側の列だけを表示します。<a class="xref" href="#Side-by-Side-Format">横並び形式の制御</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--line-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、すべての入力行を if-then-else 形式で出力します。<a class="xref" href="#Line-Formats">行形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-n</samp></dt>
+<dt><samp class="option">--rcs</samp></dt>
+<dd><p>RCS 形式の diff を出力します。<samp class="option">-f</samp> と似ていますが、各コマンドで対象行数を指定します。<a class="xref" href="#RCS">RCS スクリプト</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-N</samp></dt>
+<dt><samp class="option">--new-file</samp></dt>
+<dd><p>一方のファイルが存在しない場合は、存在するが空であると扱います。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--new-group-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、第2ファイルだけから取った行グループを if-then-else 形式で出力します。<a class="xref" href="#Line-Group-Formats">行グループ形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--new-line-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、第2ファイルだけから取った1行を if-then-else 形式で出力します。<a class="xref" href="#Line-Formats">行形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--no-dereference</samp></dt>
+<dd><p>シンボリックリンクの参照先ではなく、リンク自体を処理します。2つのリンクが等しいとみなされるのは、参照先の名前が厳密に同じ場合だけです。</p>
+</dd>
+<dt><samp class="option">--old-group-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、第1ファイルだけから取った行グループを if-then-else 形式で出力します。<a class="xref" href="#Line-Group-Formats">行グループ形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--old-line-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、第1ファイルだけから取った1行を if-then-else 形式で出力します。<a class="xref" href="#Line-Formats">行形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-p</samp></dt>
+<dt><samp class="option">--show-c-function</samp></dt>
+<dd><p>各変更がどの C 関数内にあるかを示します。<a class="xref" href="#C-Function-Headings">C 関数の見出しを表示する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--palette=<var class="var">palette</var></samp></dt>
+<dd><p>色付き出力が有効なときの配色を指定します。デフォルトは「<samp class="samp">rs=0:hd=1:ad=32:de=31:ln=36</samp>」で、削除行は赤、追加行は緑、行番号はシアン、ヘッダーは太字になります。</p>
+<p>サポートされる機能は次のとおりです。</p>
+<dl class="table">
+<dt><a id="index-ad-capability"></a><span><code class="code">ad=32</code></span></dt>
+<dd>
+<p>追加行の SGR 部分文字列。デフォルトは緑の前景色です。</p>
+</dd>
+<dt><a id="index-de-capability"></a><span><code class="code">de=31</code></span></dt>
+<dd>
+<p>削除行の SGR 部分文字列。デフォルトは赤の前景色です。</p>
+</dd>
+<dt><a id="index-hd-capability"></a><span><code class="code">hd=1</code></span></dt>
+<dd>
+<p>ハンクヘッダーの SGR 部分文字列。デフォルトは太字の前景表示です。</p>
+</dd>
+<dt><a id="index-ln-capability"></a><span><code class="code">ln=36</code></span></dt>
+<dd>
+<p>行番号の SGR 部分文字列。デフォルトはシアンの前景色です。</p></dd>
+</dl>
+</dd>
+<dt><samp class="option">-q</samp></dt>
+<dt><samp class="option">--brief</samp></dt>
+<dd><p>相違の詳細を示さず、ファイルが異なるかどうかだけを報告します。<a class="xref" href="#Brief">異なるファイルの概要を示す</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-r</samp></dt>
+<dt><samp class="option">--recursive</samp></dt>
+<dd><p>ディレクトリを比較するとき、見つかったサブディレクトリを再帰的に比較します。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-s</samp></dt>
+<dt><samp class="option">--report-identical-files</samp></dt>
+<dd><p>2つのファイルが同じ場合に報告します。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-S <var class="var">file</var></samp></dt>
+<dt><samp class="option">--starting-file=<var class="var">file</var></samp></dt>
+<dd><p>ディレクトリを比較するとき、ファイル <var class="var">file</var> から開始します。中断した比較を再開するために使います。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--speed-large-files</samp></dt>
+<dd><p>ヒューリスティックを使って、多数の小さな変更が散在する大きなファイルの処理を速めます。<a class="xref" href="#diff-Performance"><code class="command">diff</code> の性能のトレードオフ</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--strip-trailing-cr</samp></dt>
+<dd><p>入力行の末尾にあるキャリッジリターンを除去します。<a class="xref" href="#Binary">バイナリファイルとテキスト比較の強制</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--suppress-common-lines</samp></dt>
+<dd><p>横並び形式で共通行を表示しません。<a class="xref" href="#Side-by-Side-Format">横並び形式の制御</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-t</samp></dt>
+<dt><samp class="option">--expand-tabs</samp></dt>
+<dd><p>入力ファイル内のタブによる整列を維持するため、出力でタブを空白へ展開します。<a class="xref" href="#Tabs">タブ位置の整列を維持する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-T</samp></dt>
+<dt><samp class="option">--initial-tab</samp></dt>
+<dd><p>通常形式とコンテキスト形式で、行のテキストの前に空白の代わりにタブを出力します。これによって行内のタブによる整列が通常どおりに見えます。<a class="xref" href="#Tabs">タブ位置の整列を維持する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--tabsize=<var class="var">columns</var></samp></dt>
+<dd><p>タブ位置が表示上 <var class="var">columns</var> 列ごと（デフォルト8）に設定されていると仮定します。<a class="xref" href="#Tabs">タブ位置の整列を維持する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--suppress-blank-empty</samp></dt>
+<dd><p>通常形式、コンテキスト形式、unified 形式で空行を表現するとき、改行前の空白を出力しません。<a class="xref" href="#Trailing-Blanks">末尾の空白を省く</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--to-file=<var class="var">file</var></samp></dt>
+<dd><p>各オペランドを <var class="var">file</var> と比較します。<var class="var">file</var> はディレクトリでもかまいません。</p>
+</dd>
+<dt><samp class="option">-u</samp></dt>
+<dd><p>unified 出力形式を使い、3行のコンテキストを表示します。<a class="xref" href="#Unified-Format">unified 形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--unchanged-group-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、両ファイルに共通する行グループを if-then-else 形式で出力します。<a class="xref" href="#Line-Group-Formats">行グループ形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--unchanged-line-format=<var class="var">format</var></samp></dt>
+<dd><p><var class="var">format</var> を使い、両ファイルに共通する1行を if-then-else 形式で出力します。<a class="xref" href="#Line-Formats">行形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--unidirectional-new-file</samp></dt>
+<dd><p>第1ファイルが存在しない場合は、存在するが空であると扱います。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-U <var class="var">lines</var></samp></dt>
+<dt><samp class="option">--unified<span class="r">[</span>=<var class="var">lines</var><span class="r">]</span></samp></dt>
+<dd><p>unified 出力形式を使い、<var class="var">lines</var>（整数）行のコンテキストを表示します。<var class="var">lines</var> を省略した場合は3行です。<a class="xref" href="#Unified-Format">unified 形式</a>を参照してください。<code class="command">patch</code> が正常に動作するには、通常少なくとも2行のコンテキストが必要です。</p>
+<p>古いシステムでは、<code class="command">diff</code> は <samp class="option">-u</samp> と組み合わせると有効になる旧式のオプション <samp class="option">-<var class="var">lines</var></samp> をサポートします。POSIX 1003.1-2001（<a class="pxref" href="#Standards-conformance">規格への適合</a>参照）はこれを認めていないため、代わりに <samp class="option">-U <var class="var">lines</var></samp> を使ってください。</p>
+</dd>
+<dt><samp class="option">-v</samp></dt>
+<dt><samp class="option">--version</samp></dt>
+<dd><p>バージョン情報を出力して終了します。</p>
+</dd>
+<dt><samp class="option">-w</samp></dt>
+<dt><samp class="option">--ignore-all-space</samp></dt>
+<dd><p>行を比較するとき空白を無視します。<a class="xref" href="#White-Space">空白とタブの間隔による相違を抑える</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-W <var class="var">columns</var></samp></dt>
+<dt><samp class="option">--width=<var class="var">columns</var></samp></dt>
+<dd><p>横並び形式で、1行あたり最大 <var class="var">columns</var> 列（デフォルト130）の表示を出力します。<a class="xref" href="#Side-by-Side-Format">横並び形式の制御</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-x <var class="var">pattern</var></samp></dt>
+<dt><samp class="option">--exclude=<var class="var">pattern</var></samp></dt>
+<dd><p>ディレクトリを比較するとき、基本名が <var class="var">pattern</var> に一致するファイルとサブディレクトリを無視します。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-X <var class="var">file</var></samp></dt>
+<dt><samp class="option">--exclude-from=<var class="var">file</var></samp></dt>
+<dd><p>ディレクトリを比較するとき、<var class="var">file</var> に含まれるいずれかのパターンに基本名が一致するファイルとサブディレクトリを無視します。<a class="xref" href="#Comparing-Directories">ディレクトリを比較する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-y</samp></dt>
+<dt><samp class="option">--side-by-side</samp></dt>
+<dd><p>横並び出力形式を使います。<a class="xref" href="#Side-by-Side-Format">横並び形式の制御</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-Z</samp></dt>
+<dt><samp class="option">--ignore-trailing-space</samp></dt>
+<dd><p>行末の空白を無視します。<a class="xref" href="#White-Space">空白とタブの間隔による相違を抑える</a>を参照してください。</p></dd>
+</dl>
+<hr/>
+</div>
+

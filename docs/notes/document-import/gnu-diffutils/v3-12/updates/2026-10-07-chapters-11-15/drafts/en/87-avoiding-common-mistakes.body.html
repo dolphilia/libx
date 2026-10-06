@@ -1,0 +1,55 @@
+<div class="gnu-diffutils-original-content" id="Avoiding-Common-Mistakes">
+<h3 class="section" id="Avoiding-Common-Mistakes-1"><span>11.3 Avoiding Common Mistakes</span></h3>
+<a class="index-entry-id" id="index-common-mistakes-with-patches"></a>
+<a class="index-entry-id" id="index-patch_002c-common-mistakes"></a>
+<p>When producing a patch for multiple files, apply <code class="command">diff</code> to
+directories whose names do not have slashes.  This reduces confusion
+when the patch consumer specifies the <samp class="option">-p<var class="var">number</var></samp> option,
+since this option can have surprising results when the old and new
+file names have different numbers of slashes.  For example, do not
+send a patch with a header that looks like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">diff -Naur v2.0.29/prog/README prog/README
+--- v2.0.29/prog/README	2002-03-10 23:30:39.942229878 -0800
++++ prog/README	2002-03-17 20:49:32.442260588 -0800
+</pre></div>
+<p>because the two file names have different numbers of slashes, and
+different versions of <code class="command">patch</code> interpret the file names
+differently.  To avoid confusion, send output that looks like this
+instead:
+</p>
+<div class="example">
+<pre class="example-preformatted">diff -Naur v2.0.29/prog/README v2.0.30/prog/README
+--- v2.0.29/prog/README	2002-03-10 23:30:39.942229878 -0800
++++ v2.0.30/prog/README	2002-03-17 20:49:32.442260588 -0800
+</pre></div>
+<p>Make sure you have specified the file names correctly, either in a
+context diff header or with an ‘<samp class="samp">Index:</samp>’ line.  Take care to not send out
+reversed patches, since these make people wonder whether they have
+already applied the patch.
+</p>
+<p>Avoid sending patches that compare backup file names like
+<samp class="file">README.orig</samp> or <samp class="file">README~</samp>, since this might confuse
+<code class="command">patch</code> into patching a backup file instead of the real file.
+Instead, send patches that compare the same base file names in
+different directories, e.g. <samp class="file">old/README</samp> and <samp class="file">new/README</samp>.
+</p>
+<p>To save people from partially applying a patch before other patches that
+should have gone before it, you can make the first patch in the patch
+file update a file with a name like <samp class="file">patchlevel.h</samp> or
+<samp class="file">version.c</samp>, which contains a patch level or version number.  If
+the input file contains the wrong version number, <code class="command">patch</code> will
+complain immediately.
+</p>
+<p>An even clearer way to prevent this problem is to put a ‘<samp class="samp">Prereq:</samp>’
+line before the patch.  If the leading text in the patch file contains a
+line that starts with ‘<samp class="samp">Prereq:</samp>’, <code class="command">patch</code> takes the next word
+from that line (normally a version number) and checks whether the next
+input file contains that word, preceded and followed by either
+white space or a newline.  If not, <code class="command">patch</code> prompts you for
+confirmation before proceeding.  This makes it difficult to accidentally
+apply patches in the wrong order.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,43 @@
+<div class="gnu-diffutils-original-content" id="Invoking-cmp">
+<h2 class="chapter" id="Invoking-cmp-1"><span>12 Invoking <code class="command">cmp</code></span></h2>
+<a class="index-entry-id" id="index-invoking-cmp"></a>
+<a class="index-entry-id" id="index-cmp-invocation"></a>
+<p>The <code class="command">cmp</code> command compares two files, and if they differ,
+tells the first byte and line number where they differ or reports
+that one file is a prefix of the other.  Bytes and
+lines are numbered starting with 1.  The arguments of <code class="command">cmp</code>
+are as follows:
+</p>
+<div class="example">
+<pre class="example-preformatted">cmp <var class="var">options</var>... <var class="var">from-file</var> <span class="r">[</span><var class="var">to-file</var> <span class="r">[</span><var class="var">from-skip</var> <span class="r">[</span><var class="var">to-skip</var><span class="r">]</span><span class="r">]</span><span class="r">]</span>
+</pre></div>
+<p>The file name <samp class="file">-</samp> is always the standard input.  <code class="command">cmp</code>
+also uses the standard input if one file name is omitted.  The
+<var class="var">from-skip</var> and <var class="var">to-skip</var> operands specify how many bytes to
+ignore at the start of each file; they are equivalent to the
+<samp class="option">--ignore-initial=<var class="var">from-skip</var>:<var class="var">to-skip</var></samp> option.
+</p>
+<p>By default, <code class="command">cmp</code> outputs nothing if the two files have the
+same contents.  If the two files have bytes that differ, <code class="command">cmp</code>
+reports the location of the first difference to standard output:
+</p>
+<div class="example">
+<pre class="example-preformatted"><var class="var">from-file</var> <var class="var">to-file</var> differ: char <var class="var">byte-number</var>, line <var class="var">line-number</var>
+</pre></div>
+<p>If one file is a prefix of the other, <code class="command">cmp</code> reports the
+shorter file’s name to standard error, followed by a blank and extra
+information about the shorter file:
+</p>
+<div class="example">
+<pre class="example-preformatted">cmp: EOF on <var class="var">shorter-file</var> <var class="var">extra-info</var>
+</pre></div>
+<p>The message formats can differ outside the POSIX locale.
+POSIX allows but does not require the EOF diagnostic’s file
+name to be followed by a blank and additional information.
+</p>
+<p>An exit status of 0 means no differences were found, 1 means some
+differences were found, and 2 means trouble.
+</p>
+<hr/>
+
+</div>

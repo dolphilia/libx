@@ -1,0 +1,384 @@
+<div class="gnu-diffutils-original-content" id="diff-Options">
+<h3 class="section" id="Options-to-diff"><span>13.1 Options to <code class="command">diff</code></span></h3>
+<a class="index-entry-id" id="index-diff-options"></a>
+<a class="index-entry-id" id="index-options-for-diff"></a>
+<p>Below is a summary of all of the options that GNU
+<code class="command">diff</code> accepts.  Most options have two equivalent names, one
+of which is a single letter preceded by ‘<samp class="samp">-</samp>’, and the other of
+which is a long name preceded by ‘<samp class="samp">--</samp>’.  Multiple single letter
+options (unless they take an argument) can be combined into a single
+command line word: <samp class="option">-ac</samp> is equivalent to <samp class="option">-a -c</samp>.  Long
+named options can be abbreviated to any unique prefix of their name.
+Brackets ([ and ]) indicate that an option takes an optional argument.
+</p>
+<dl class="table">
+<dt><samp class="option">-a</samp></dt>
+<dt><samp class="option">--text</samp></dt>
+<dd><p>Treat all files as text and compare them line-by-line, even if they
+do not seem to be text.  See <a class="xref" href="#Binary">Binary Files and Forcing Text Comparisons</a>.
+</p>
+</dd>
+<dt><samp class="option">-b</samp></dt>
+<dt><samp class="option">--ignore-space-change</samp></dt>
+<dd><p>Ignore changes in amount of white space.  See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+</p>
+</dd>
+<dt><samp class="option">-B</samp></dt>
+<dt><samp class="option">--ignore-blank-lines</samp></dt>
+<dd><p>Ignore changes that just insert or delete blank lines.  See <a class="xref" href="#Blank-Lines">Suppressing Differences Whose Lines Are All Blank</a>.
+</p>
+</dd>
+<dt><samp class="option">--binary</samp></dt>
+<dd><p>Read and write data in binary mode.  See <a class="xref" href="#Binary">Binary Files and Forcing Text Comparisons</a>.
+</p>
+</dd>
+<dt><samp class="option">-c</samp></dt>
+<dd><p>Use the context output format, showing three lines of context.
+See <a class="xref" href="#Context-Format">Context Format</a>.
+</p>
+</dd>
+<dt><a id="index-color_002c-distinguishing-different-context"></a><span><samp class="option">--color [=<var class="var">when</var>]</samp></span></dt>
+<dd><p>Specify whether to use color for distinguishing different contexts,
+like header, added or removed lines.  <var class="var">when</var> may be omitted, or
+one of:
+</p><ul class="itemize mark-bullet">
+<li>none
+<a class="index-entry-id" id="index-none-color-option"></a>
+Do not use color at all.  This is the default when no –color option
+is specified.
+</li><li>auto
+<a class="index-entry-id" id="index-auto-color-option"></a>
+<a class="index-entry-id" id="index-terminal_002c-using-color-iff"></a>
+Use color only if standard output is a terminal.
+</li><li>always
+<a class="index-entry-id" id="index-always-color-option"></a>
+Always use color.
+</li></ul>
+<p>Specifying <samp class="option">--color</samp> and no <var class="var">when</var> is equivalent to
+<samp class="option">--color=auto</samp>.
+</p>
+</dd>
+<dt><samp class="option">-C <var class="var">lines</var></samp></dt>
+<dt><samp class="option">--context<span class="r">[</span>=<var class="var">lines</var><span class="r">]</span></samp></dt>
+<dd><p>Use the context output format, showing <var class="var">lines</var> (an integer) lines of
+context, or three if <var class="var">lines</var> is not given.  See <a class="xref" href="#Context-Format">Context Format</a>.
+For proper operation, <code class="command">patch</code> typically needs at least two lines of
+context.
+</p>
+<p>For compatibility <code class="command">diff</code> also supports an obsolete option
+syntax <samp class="option">-<var class="var">lines</var></samp> that has effect when combined with
+<samp class="option">-c</samp>, <samp class="option">-p</samp>, or <samp class="option">-u</samp>.  New scripts should use
+<samp class="option">-U <var class="var">lines</var></samp> (<samp class="option">-C <var class="var">lines</var></samp>) instead.
+</p>
+</dd>
+<dt><samp class="option">--changed-group-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output a line group containing differing lines from
+both files in if-then-else format.  See <a class="xref" href="#Line-Group-Formats">Line Group Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">-d</samp></dt>
+<dt><samp class="option">--minimal</samp></dt>
+<dd><p>Change the algorithm perhaps find a smaller set of changes.  This makes
+<code class="command">diff</code> slower (sometimes much slower).  See <a class="xref" href="#diff-Performance"><code class="command">diff</code> Performance Tradeoffs</a>.
+</p>
+</dd>
+<dt><samp class="option">-D <var class="var">name</var></samp></dt>
+<dt><samp class="option">--ifdef=<var class="var">name</var></samp></dt>
+<dd><p>Make merged ‘<samp class="samp">#ifdef</samp>’ format output, conditional on the preprocessor
+macro <var class="var">name</var>.  See <a class="xref" href="#If_002dthen_002delse">Merging Files with If-then-else</a>.
+</p>
+</dd>
+<dt><samp class="option">-e</samp></dt>
+<dt><samp class="option">--ed</samp></dt>
+<dd><p>Make output that is a valid <code class="command">ed</code> script.  See <a class="xref" href="#ed-Scripts"><code class="command">ed</code> Scripts</a>.
+</p>
+</dd>
+<dt><samp class="option">-E</samp></dt>
+<dt><samp class="option">--ignore-tab-expansion</samp></dt>
+<dd><p>Ignore changes due to tab expansion.
+See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+</p>
+</dd>
+<dt><samp class="option">-f</samp></dt>
+<dt><samp class="option">--forward-ed</samp></dt>
+<dd><p>Make output that looks vaguely like an <code class="command">ed</code> script but has changes
+in the order they appear in the file.  See <a class="xref" href="#Forward-ed">Forward <code class="command">ed</code> Scripts</a>.
+</p>
+</dd>
+<dt><samp class="option">-F <var class="var">regexp</var></samp></dt>
+<dt><samp class="option">--show-function-line=<var class="var">regexp</var></samp></dt>
+<dd><p>In context and unified format, for each hunk of differences, show some
+of the last preceding line that matches <var class="var">regexp</var>.  See <a class="xref" href="#Specified-Headings">Showing Lines That Match Regular Expressions</a>.
+</p>
+</dd>
+<dt><samp class="option">--from-file=<var class="var">file</var></samp></dt>
+<dd><p>Compare <var class="var">file</var> to each operand; <var class="var">file</var> may be a directory.
+</p>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dd><p>Output a summary of usage and then exit.
+</p>
+</dd>
+<dt><samp class="option">--horizon-lines=<var class="var">lines</var></samp></dt>
+<dd><p>Do not discard the last <var class="var">lines</var> lines of the common prefix
+and the first <var class="var">lines</var> lines of the common suffix.
+See <a class="xref" href="#diff-Performance"><code class="command">diff</code> Performance Tradeoffs</a>.
+</p>
+</dd>
+<dt><samp class="option">-i</samp></dt>
+<dt><samp class="option">--ignore-case</samp></dt>
+<dd><p>Ignore changes in case; consider upper- and lower-case letters
+equivalent.  See <a class="xref" href="#Case-Folding">Suppressing Case Differences</a>.
+</p>
+</dd>
+<dt><samp class="option">-I <var class="var">regexp</var></samp></dt>
+<dt><samp class="option">--ignore-matching-lines=<var class="var">regexp</var></samp></dt>
+<dd><p>Ignore changes that just insert or delete lines that match <var class="var">regexp</var>.
+See <a class="xref" href="#Specified-Lines">Suppressing Differences Whose Lines All Match a Regular Expression</a>.
+</p>
+</dd>
+<dt><samp class="option">--ignore-file-name-case</samp></dt>
+<dd><p>Ignore case when comparing file names.  For example, recursive
+comparison of <samp class="file">d</samp> to <samp class="file">e</samp> might compare the contents of
+<samp class="file">d/Init</samp> and <samp class="file">e/inIt</samp>.  At the top level, ‘<samp class="samp">diff d inIt</samp>’
+might compare the contents of <samp class="file">d/Init</samp> and <samp class="file">inIt</samp>.
+See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">-l</samp></dt>
+<dt><samp class="option">--paginate</samp></dt>
+<dd><p>Pass the output through <code class="command">pr</code> to paginate it.  See <a class="xref" href="#Pagination">Paginating <code class="command">diff</code> Output</a>.
+</p>
+</dd>
+<dt><samp class="option">-L <var class="var">label</var></samp></dt>
+<dt><samp class="option">--label=<var class="var">label</var></samp></dt>
+<dd><p>Use <var class="var">label</var> instead of the file name in the context format
+(see <a class="pxref" href="#Context-Format">Context Format</a>) and unified format (see <a class="pxref" href="#Unified-Format">Unified Format</a>)
+headers.  See <a class="xref" href="#RCS">RCS Scripts</a>.
+</p>
+</dd>
+<dt><samp class="option">--left-column</samp></dt>
+<dd><p>Print only the left column of two common lines in side by side format.
+See <a class="xref" href="#Side-by-Side-Format">Controlling Side by Side Format</a>.
+</p>
+</dd>
+<dt><samp class="option">--line-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output all input lines in if-then-else format.
+See <a class="xref" href="#Line-Formats">Line Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">-n</samp></dt>
+<dt><samp class="option">--rcs</samp></dt>
+<dd><p>Output RCS-format diffs; like <samp class="option">-f</samp> except that each command
+specifies the number of lines affected.  See <a class="xref" href="#RCS">RCS Scripts</a>.
+</p>
+</dd>
+<dt><samp class="option">-N</samp></dt>
+<dt><samp class="option">--new-file</samp></dt>
+<dd><p>If one file is missing, treat it as present but empty.
+See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">--new-group-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output a group of lines taken from just the second
+file in if-then-else format.  See <a class="xref" href="#Line-Group-Formats">Line Group Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">--new-line-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output a line taken from just the second file in
+if-then-else format.  See <a class="xref" href="#Line-Formats">Line Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">--no-dereference</samp></dt>
+<dd><p>Act on symbolic links themselves instead of what they point to.
+Two symbolic links are deemed equal only when each points to
+precisely the same name.
+</p>
+</dd>
+<dt><samp class="option">--old-group-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output a group of lines taken from just the first
+file in if-then-else format.  See <a class="xref" href="#Line-Group-Formats">Line Group Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">--old-line-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output a line taken from just the first file in
+if-then-else format.  See <a class="xref" href="#Line-Formats">Line Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">-p</samp></dt>
+<dt><samp class="option">--show-c-function</samp></dt>
+<dd><p>Show which C function each change is in.  See <a class="xref" href="#C-Function-Headings">Showing C Function Headings</a>.
+</p>
+</dd>
+<dt><samp class="option">--palette=<var class="var">palette</var></samp></dt>
+<dd><p>Specify what color palette to use when colored output is enabled.  It
+defaults to ‘<samp class="samp">rs=0:hd=1:ad=32:de=31:ln=36</samp>’ for red deleted lines,
+green added lines, cyan line numbers, bold header.
+</p>
+<p>Supported capabilities are as follows.
+</p>
+<dl class="table">
+<dt><a id="index-ad-capability"></a><span><code class="code">ad=32</code></span></dt>
+<dd>
+<p>SGR substring for added lines.
+The default is green foreground.
+</p>
+</dd>
+<dt><a id="index-de-capability"></a><span><code class="code">de=31</code></span></dt>
+<dd>
+<p>SGR substring for deleted lines.
+The default is red foreground.
+</p>
+</dd>
+<dt><a id="index-hd-capability"></a><span><code class="code">hd=1</code></span></dt>
+<dd>
+<p>SGR substring for chunk header.
+The default is bold foreground.
+</p>
+</dd>
+<dt><a id="index-ln-capability"></a><span><code class="code">ln=36</code></span></dt>
+<dd>
+<p>SGR substring for line numbers.
+The default is cyan foreground.
+</p></dd>
+</dl>
+</dd>
+<dt><samp class="option">-q</samp></dt>
+<dt><samp class="option">--brief</samp></dt>
+<dd><p>Report only whether the files differ, not the details of the
+differences.  See <a class="xref" href="#Brief">Summarizing Which Files Differ</a>.
+</p>
+</dd>
+<dt><samp class="option">-r</samp></dt>
+<dt><samp class="option">--recursive</samp></dt>
+<dd><p>When comparing directories, recursively compare any subdirectories
+found.  See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">-s</samp></dt>
+<dt><samp class="option">--report-identical-files</samp></dt>
+<dd><p>Report when two files are the same.  See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">-S <var class="var">file</var></samp></dt>
+<dt><samp class="option">--starting-file=<var class="var">file</var></samp></dt>
+<dd><p>When comparing directories, start with the file <var class="var">file</var>.  This is
+used for resuming an aborted comparison.  See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">--speed-large-files</samp></dt>
+<dd><p>Use heuristics to speed handling of large files that have numerous
+scattered small changes.  See <a class="xref" href="#diff-Performance"><code class="command">diff</code> Performance Tradeoffs</a>.
+</p>
+</dd>
+<dt><samp class="option">--strip-trailing-cr</samp></dt>
+<dd><p>Strip any trailing carriage return at the end of an input line.
+See <a class="xref" href="#Binary">Binary Files and Forcing Text Comparisons</a>.
+</p>
+</dd>
+<dt><samp class="option">--suppress-common-lines</samp></dt>
+<dd><p>Do not print common lines in side by side format.
+See <a class="xref" href="#Side-by-Side-Format">Controlling Side by Side Format</a>.
+</p>
+</dd>
+<dt><samp class="option">-t</samp></dt>
+<dt><samp class="option">--expand-tabs</samp></dt>
+<dd><p>Expand tabs to spaces in the output, to preserve the alignment of tabs
+in the input files.  See <a class="xref" href="#Tabs">Preserving Tab Stop Alignment</a>.
+</p>
+</dd>
+<dt><samp class="option">-T</samp></dt>
+<dt><samp class="option">--initial-tab</samp></dt>
+<dd><p>Output a tab rather than a space before the text of a line in normal or
+context format.  This causes the alignment of tabs in the line to look
+normal.  See <a class="xref" href="#Tabs">Preserving Tab Stop Alignment</a>.
+</p>
+</dd>
+<dt><samp class="option">--tabsize=<var class="var">columns</var></samp></dt>
+<dd><p>Assume that tab stops are set every <var class="var">columns</var> (default 8) print
+columns.  See <a class="xref" href="#Tabs">Preserving Tab Stop Alignment</a>.
+</p>
+</dd>
+<dt><samp class="option">--suppress-blank-empty</samp></dt>
+<dd><p>Suppress any blanks before newlines when printing the representation
+of an empty line, when outputting normal, context, or unified format.
+See <a class="xref" href="#Trailing-Blanks">Omitting trailing blanks</a>.
+</p>
+</dd>
+<dt><samp class="option">--to-file=<var class="var">file</var></samp></dt>
+<dd><p>Compare each operand to <var class="var">file</var>; <var class="var">file</var> may be a directory.
+</p>
+</dd>
+<dt><samp class="option">-u</samp></dt>
+<dd><p>Use the unified output format, showing three lines of context.
+See <a class="xref" href="#Unified-Format">Unified Format</a>.
+</p>
+</dd>
+<dt><samp class="option">--unchanged-group-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output a group of common lines taken from both files
+in if-then-else format.  See <a class="xref" href="#Line-Group-Formats">Line Group Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">--unchanged-line-format=<var class="var">format</var></samp></dt>
+<dd><p>Use <var class="var">format</var> to output a line common to both files in if-then-else
+format.  See <a class="xref" href="#Line-Formats">Line Formats</a>.
+</p>
+</dd>
+<dt><samp class="option">--unidirectional-new-file</samp></dt>
+<dd><p>If a first file is missing, treat it as present but empty.
+See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">-U <var class="var">lines</var></samp></dt>
+<dt><samp class="option">--unified<span class="r">[</span>=<var class="var">lines</var><span class="r">]</span></samp></dt>
+<dd><p>Use the unified output format, showing <var class="var">lines</var> (an integer) lines of
+context, or three if <var class="var">lines</var> is not given.  See <a class="xref" href="#Unified-Format">Unified Format</a>.
+For proper operation, <code class="command">patch</code> typically needs at least two lines of
+context.
+</p>
+<p>On older systems, <code class="command">diff</code> supports an obsolete option
+<samp class="option">-<var class="var">lines</var></samp> that has effect when combined with <samp class="option">-u</samp>.
+POSIX 1003.1-2001 (see <a class="pxref" href="#Standards-conformance">Standards conformance</a>) does not allow
+this; use <samp class="option">-U <var class="var">lines</var></samp> instead.
+</p>
+</dd>
+<dt><samp class="option">-v</samp></dt>
+<dt><samp class="option">--version</samp></dt>
+<dd><p>Output version information and then exit.
+</p>
+</dd>
+<dt><samp class="option">-w</samp></dt>
+<dt><samp class="option">--ignore-all-space</samp></dt>
+<dd><p>Ignore white space when comparing lines.  See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+</p>
+</dd>
+<dt><samp class="option">-W <var class="var">columns</var></samp></dt>
+<dt><samp class="option">--width=<var class="var">columns</var></samp></dt>
+<dd><p>Output at most <var class="var">columns</var> (default 130) print columns per line in
+side by side format.  See <a class="xref" href="#Side-by-Side-Format">Controlling Side by Side Format</a>.
+</p>
+</dd>
+<dt><samp class="option">-x <var class="var">pattern</var></samp></dt>
+<dt><samp class="option">--exclude=<var class="var">pattern</var></samp></dt>
+<dd><p>When comparing directories, ignore files and subdirectories whose basenames
+match <var class="var">pattern</var>.  See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">-X <var class="var">file</var></samp></dt>
+<dt><samp class="option">--exclude-from=<var class="var">file</var></samp></dt>
+<dd><p>When comparing directories, ignore files and subdirectories whose basenames
+match any pattern contained in <var class="var">file</var>.  See <a class="xref" href="#Comparing-Directories">Comparing Directories</a>.
+</p>
+</dd>
+<dt><samp class="option">-y</samp></dt>
+<dt><samp class="option">--side-by-side</samp></dt>
+<dd><p>Use the side by side output format.  See <a class="xref" href="#Side-by-Side-Format">Controlling Side by Side Format</a>.
+</p>
+</dd>
+<dt><samp class="option">-Z</samp></dt>
+<dt><samp class="option">--ignore-trailing-space</samp></dt>
+<dd><p>Ignore white space at line end.  See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+</p></dd>
+</dl>
+<hr/>
+</div>

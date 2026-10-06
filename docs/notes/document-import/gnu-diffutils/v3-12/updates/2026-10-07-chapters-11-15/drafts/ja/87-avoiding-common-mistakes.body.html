@@ -1,0 +1,23 @@
+<div class="gnu-diffutils-original-content" id="Avoiding-Common-Mistakes">
+<h3 class="section" id="Avoiding-Common-Mistakes-1"><span>11.3 よくある間違いを避ける</span></h3>
+<a class="index-entry-id" id="index-common-mistakes-with-patches"></a>
+<a class="index-entry-id" id="index-patch_002c-common-mistakes"></a>
+<p>複数ファイルのパッチを作成するときは、名前にスラッシュを含まないディレクトリに <code class="command">diff</code> を適用してください。旧ファイル名と新ファイル名でスラッシュの数が異なると <samp class="option">-p<var class="var">number</var></samp> オプションが予期しない結果になることがあるため、これによってパッチ利用者がそのオプションを指定する際の混乱を減らせます。たとえば、次のようなヘッダーを持つパッチは送らないでください。</p>
+<div class="example">
+<pre class="example-preformatted">diff -Naur v2.0.29/prog/README prog/README
+--- v2.0.29/prog/README	2002-03-10 23:30:39.942229878 -0800
++++ prog/README	2002-03-17 20:49:32.442260588 -0800
+</pre></div>
+<p>2つのファイル名のスラッシュ数が異なり、<code class="command">patch</code> のバージョンによってファイル名の解釈も異なるためです。混乱を避けるには、代わりに次のような出力を送ってください。</p>
+<div class="example">
+<pre class="example-preformatted">diff -Naur v2.0.29/prog/README v2.0.30/prog/README
+--- v2.0.29/prog/README	2002-03-10 23:30:39.942229878 -0800
++++ v2.0.30/prog/README	2002-03-17 20:49:32.442260588 -0800
+</pre></div>
+<p>コンテキスト diff のヘッダーか「<samp class="samp">Index:</samp>」行で、ファイル名を正しく指定していることを確認してください。逆向きのパッチは、受取人に適用済みかどうか迷わせるので、送らないよう注意します。</p>
+<p><samp class="file">README.orig</samp> や <samp class="file">README~</samp> のようなバックアップファイル名を比較するパッチは避けてください。<code class="command">patch</code> が混乱して実ファイルではなくバックアップへ適用するおそれがあります。代わりに、<samp class="file">old/README</samp> と <samp class="file">new/README</samp> のように、異なるディレクトリにある同じ基本ファイル名を比較するパッチを送ります。</p>
+<p>先に適用すべき別のパッチより前にパッチが部分的に適用されるのを防ぐため、パッチファイルの最初のパッチで、パッチレベルやバージョン番号を含む <samp class="file">patchlevel.h</samp> や <samp class="file">version.c</samp> のような名前のファイルを更新できます。入力ファイルのバージョン番号が違っていれば、<code class="command">patch</code> はすぐに問題を報告します。</p>
+<p>この問題をより明確に防ぐ方法は、パッチの前に「<samp class="samp">Prereq:</samp>」行を置くことです。パッチファイルの先頭テキストに「<samp class="samp">Prereq:</samp>」で始まる行があると、<code class="command">patch</code> はその行の次の語（通常はバージョン番号）を取り出し、次の入力ファイルに、その語が前後を空白または改行で囲まれて含まれるか確認します。含まれなければ、<code class="command">patch</code> は続行前に確認を求めます。これにより、誤った順序でパッチを適用しにくくなります。</p>
+<hr/>
+</div>
+

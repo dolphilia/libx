@@ -1,0 +1,19 @@
+<div class="gnu-diffutils-original-content" id="Invoking-patch">
+<h2 class="chapter" id="Invoking-patch-1"><span>15 <code class="command">patch</code> の起動</span></h2>
+<a class="index-entry-id" id="index-invoking-patch"></a>
+<a class="index-entry-id" id="index-patch-invocation"></a>
+<p>通常、<code class="command">patch</code> は次のように起動します。</p>
+<div class="example">
+<pre class="example-preformatted">patch &lt;<var class="var">patchfile</var>
+</pre></div>
+<p><code class="command">patch</code> の完全な起動形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">patch <var class="var">options</var>... <span class="r">[</span><var class="var">origfile</var> <span class="r">[</span><var class="var">patchfile</var><span class="r">]</span><span class="r">]</span>
+</pre></div>
+<p><samp class="option">-i
+<var class="var">patchfile</var></samp> または <samp class="option">--input=<var class="var">patchfile</var></samp> オプションでも、パッチの読み取り元を指定できます。<var class="var">patchfile</var> を指定しない場合、または <var class="var">patchfile</var> が <samp class="file">-</samp> の場合、<code class="command">patch</code> は標準入力からパッチ（すなわち <code class="command">diff</code> の出力）を読みます。</p>
+<p>コマンドラインで入力ファイルを指定しなければ、<code class="command">patch</code> は<em class="dfn">先頭テキスト</em>（パッチ内で <code class="command">diff</code> の出力より前にあるテキスト）から、編集するファイルを推測します。<a class="xref" href="#Multiple-Patches">1つのファイルに複数のパッチ</a>を参照してください。</p>
+<p>デフォルトでは、<code class="command">patch</code> は元の入力ファイルをパッチ適用後の版に置き換えます。その前に元のファイルをバックアップ名へ改名することがあります（<code class="command">patch</code> による命名方法は<a class="pxref" href="#Backup-Names">バックアップファイル名</a>参照）。<samp class="option">-o <var class="var">file</var></samp> または <samp class="option">--output=<var class="var">file</var></samp> オプションで出力先を指定することもできます。ただし、<var class="var">file</var> が入力ファイルの1つである場合は、このオプションを使わないでください。</p>
+<hr/>
+</div>
+

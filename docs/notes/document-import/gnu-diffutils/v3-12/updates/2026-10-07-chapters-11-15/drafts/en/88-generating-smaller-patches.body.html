@@ -1,0 +1,37 @@
+<div class="gnu-diffutils-original-content" id="Generating-Smaller-Patches">
+<h3 class="section" id="Generating-Smaller-Patches-1"><span>11.4 Generating Smaller Patches</span></h3>
+<a class="index-entry-id" id="index-patches_002c-shrinking"></a>
+<p>The simplest way to generate a patch is to use ‘<samp class="samp">diff -Naur</samp>’
+(see <a class="pxref" href="#Tips-for-Patch-Producers">Tips for Patch Producers</a>), but you might be able to reduce
+the size of the patch by renaming or removing some files before making
+the patch.  If the older version of the package contains any files
+that the newer version does not, or if any files have been renamed
+between the two versions, make a list of <code class="command">rm</code> and <code class="command">mv</code>
+commands for the user to execute in the old version directory before
+applying the patch.  Then run those commands yourself in the scratch
+directory.
+</p>
+<p>If there are any files that you don’t need to include in the patch
+because they can easily be rebuilt from other files (for example,
+<samp class="file">TAGS</samp> and output from <code class="command">yacc</code> and <code class="command">makeinfo</code>),
+exclude them from the patch by giving <code class="command">diff</code> the <samp class="option">-x
+<var class="var">pattern</var></samp> option (see <a class="pxref" href="#Comparing-Directories">Comparing Directories</a>).  If you want
+your patch to modify a derived file because your recipients lack tools
+to build it, make sure that the patch for the derived file follows any
+patches for files that it depends on, so that the recipients’
+timestamps will not confuse <code class="command">make</code>.
+</p>
+<p>Now you can create the patch using ‘<samp class="samp">diff -Naur</samp>’.  Make sure to
+specify the scratch directory first and the newer directory second.
+</p>
+<p>Add to the top of the patch a note telling the user any <code class="command">rm</code> and
+<code class="command">mv</code> commands to run before applying the patch.  Then you can
+remove the scratch directory.
+</p>
+<p>You can also shrink the patch size by using fewer lines of context,
+but bear in mind that <code class="command">patch</code> typically needs at least two
+lines for proper operation when patches do not exactly match the input
+files.
+</p>
+<hr/>
+</div>

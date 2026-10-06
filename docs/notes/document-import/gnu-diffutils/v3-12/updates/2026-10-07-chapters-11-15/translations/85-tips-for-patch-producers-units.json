@@ -1,0 +1,63 @@
+{
+  "slug": "85-tips-for-patch-producers",
+  "bodySHA256": "074341a3e15fc1ee34ceb8b034d98e1b189fb1158e3ac5bcc83607d6c90eff83",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧11.1 Tips for Patch Producers⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Tips-for-Patch-Producers-1\"><span>11.1 Tips for Patch Producers</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "To create a patch that changes an older version of a package into a newer version, first make a copy of the older and newer versions in adjacent subdirectories. It is common to do that by unpacking ⟦0⟧ archives of the two versions.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">tar</code>"
+      },
+      "sourceHTML": "<p>To create a patch that changes an older version of a package into a\nnewer version, first make a copy of the older and newer versions in\nadjacent subdirectories.  It is common to do that by unpacking\n<code class=\"command\">tar</code> archives of the two versions.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "To generate the patch, use the command ‘⟦0⟧’ where ⟦1⟧ and ⟦2⟧ identify the old and new directories. The names ⟦3⟧ and ⟦4⟧ should not contain any slashes. The ⟦5⟧ option lets the patch create and remove files; ⟦6⟧ lets the patch update non-text files; ⟦7⟧ generates useful timestamps and enough context; and ⟦8⟧ lets the patch update subdirectories. Here is an example command, using Bourne shell syntax:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">diff -Naur <var class=\"var\">old</var>\n<var class=\"var\">new</var></samp>",
+        "⟦1⟧": "<var class=\"var\">old</var>",
+        "⟦2⟧": "<var class=\"var\">new</var>",
+        "⟦3⟧": "<var class=\"var\">old</var>",
+        "⟦4⟧": "<var class=\"var\">new</var>",
+        "⟦5⟧": "<samp class=\"option\">-N</samp>",
+        "⟦6⟧": "<samp class=\"option\">-a</samp>",
+        "⟦7⟧": "<samp class=\"option\">-u</samp>",
+        "⟦8⟧": "<samp class=\"option\">-r</samp>"
+      },
+      "sourceHTML": "<p>To generate the patch, use the command ‘<samp class=\"samp\">diff -Naur <var class=\"var\">old</var>\n<var class=\"var\">new</var></samp>’ where <var class=\"var\">old</var> and <var class=\"var\">new</var> identify the old and new\ndirectories.  The names <var class=\"var\">old</var> and <var class=\"var\">new</var> should not contain any\nslashes.  The <samp class=\"option\">-N</samp> option lets the patch create and remove\nfiles; <samp class=\"option\">-a</samp> lets the patch update non-text files; <samp class=\"option\">-u</samp>\ngenerates useful timestamps and enough context; and <samp class=\"option\">-r</samp> lets\nthe patch update subdirectories.  Here is an example command, using\nBourne shell syntax:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Tell your recipients how to apply the patches. This should include which working directory to use, and which ⟦0⟧ options to use; the option ‘⟦1⟧’ is recommended. Test your procedure by pretending to be a recipient and applying your patches to a copy of the original files.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<samp class=\"samp\">-p1</samp>"
+      },
+      "sourceHTML": "<p>Tell your recipients how to apply the patches.  This should include\nwhich working directory to use, and which <code class=\"command\">patch</code> options to\nuse; the option ‘<samp class=\"samp\">-p1</samp>’ is recommended.  Test your procedure by\npretending to be a recipient and applying your patches to a copy of\nthe original files.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "See ⟦0⟧Avoiding Common Mistakes⟦1⟧, for how to avoid common mistakes when generating a patch.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"xref\" href=\"#Avoiding-Common-Mistakes\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<p>See <a class=\"xref\" href=\"#Avoiding-Common-Mistakes\">Avoiding Common Mistakes</a>, for how to avoid common mistakes when\ngenerating a patch.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}
