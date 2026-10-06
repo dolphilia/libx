@@ -6350,3 +6350,32 @@
 - 初回buildは6073eb exit1、ENOSPCでsystems成果物目録保存に失敗。検査を無効化せず、今回の再生成可能なdist/.tmp/group-outputsだけ削除（316a62）、過去temp44 JSON等を原バイト解凍一致確認後lossless gzipへ保存（b0968c、約185599137bytes削減）。画像は保存blob一致0件のため保持。失敗logと圧縮manifest/復元手順を進捗証拠に記録し、入力不変更の2replay/8gate/全2074hash/参照を再利用して再build、最後に成功確認。
 - EXCLUSIONS判断全一致のtimestampだけ復元、外部リンク報告の通常107資料復元に伴う実差分は保持。元main他作業差分保全。実モデルCodex current session/API識別子取得不能、ローカルLLM/委任なし。所有UI/preview終了・viewport復元。
 - 本バッチの検証済み本文/overlay/判断・レビュー/生成物/台帳/証拠をorigin/codex/awesome-editorial-isolated-20261007へcommit/pushしremote HEAD照合。外部公開/PR/dispatch/定期設定なし。次175 github-zolagonano-awesome-zeronet-readme-md固定raw/旧英日全文から継続。
+
+### バッチ174送信確認・175全文確認再開 (2026-10-06T23:43:03.573Z)
+
+- 174 Ripple commit bbce5fd5b5e2b0ba74e6601da828f597b6af49a4、push fd3d08 exit0、remote HEAD一致964463、clean 40684終了確認。58対象のみステージ/body-review hash一致d7109c、workflow同一SHA041044（前回全文829681を再利用）、配信対象外。primaryはGNU別作業54追加・旧241すべて保持、295差分c3c3424d…7e1f7b。232完了805残保留4。
+- 175 raw280行/旧EN277行/旧JA276行を662dfb/3159c5/13ebe6/424ac1/0e6a1f/eb1722で全全文読了。現在のinput hash一致を確認。原文→EN草稿の別パス06a426+86c8b1全文、表セルずれと二重httpsのみ構文修正、切り詰め原文interne…sは推測せず保持して注記。英日・JA単独の別パスは未実施。旧英日HTML見出し28有用IDを05badeで照合し、JA自然見出し変更には旧日本語ID/英語ID aliasを加える予定。本文未変更。次ZeroNet raw/旧英日全unit分類→表セル/inlineCode86/boolean/mirror構文修正/暗号化・保守警告・鍵盗難警告条件の保全確認。旧HTML有用IDをJAaliasで保持。EN編集→JA→3別パス全文review→2replay/8gate/2074hash/anchor/build/HTML/4UI/global→verified233→commit/push→176。
+
+- 2026-10-06T23:45:32.539Z batch175 ZeroNet全3別pass全文review完了。raw→EN06a426+86c8b1、英日b53c9d+422451、JA単独fb909c、見出しalias変更全行54ee64。raw186/旧英日184→EN152/JA216(32alias64html)。全116表行/86inlineCode厳密一致/12真偽/警告条件保全。overlay/本文/レビュー/台帳反映、まだtranslated-ja。次2replay/通常8gate/全2074hash/fragment→systems build全7input hash/HTML28head/26table/116表行/27TOC/32alias/86code/英日PCmobile4UI→global→verified233→commit/push→176。
+
+- 2026-10-06T23:49:14.050Z batch175-generation-gates-passed-build-pending。232完了805残保留4。進捗56fe6dedb1ee7061097318df12706100159dac382eec323416353d1257757e52。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML28見出し/116表行/32alias/旧有用ID保持/英日PCmobile実UI→global→verified233/commit/push。
+
+- 2026-10-06T23:49:47.746Z batch175-gates-all2074-anchor-complete-build-running。232完了805残保留4。進捗f88e1304dedaa075dc88b5cf19d73e32fddb41cc24da39565e10cf915509dd3c。次systems統合build55845 actualexit→全7input/28head24table116row86code/32JAalias/全旧有用ID HTML→4実UI/global→verified233/commit/push→176 Neuroscience。176 raw/旧英日全読了f61b81+920d40、temp草稿のみ。権利放棄固有声明は本文削除前にPROVENANCE_NOTES設定/未編集英日HTMLと実表示へ保存する。
+
+- 2026-10-06T23:53:51.360Z batch175-build-html-complete-four-ui-pending。232完了805残保留4。進捗505073b7fd7074908a7e46dbccdb2684b8e1fd50424c1b2cc6e42fcd029b3349。次英日PC1440/mobile390導入/ID表6列/表内長アドレスのスクロールと全列到達/警告/自動目次/出典2リンク/言語/版/隣接操作実UI→global→verified233→commit/push→176 Neuroscience。
+
+- 2026-10-06T23:57:34.751Z batch175-four-ui-content-reviewed-global-pending。232完了805残保留4。進捗90d3d48f3a1640e42345b4a9155ad875bc24d41eaee76128657c86d734555a72。次全1037台帳global/全2074hash/diff→verified233→commit/push/hash照合→176 Neuroscience fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T23:58:40.774Z batch175-verified233-save-push-pending。233完了804残保留4。進捗8eec8e888b18f719ea59d2acfa9258f3923422b7c9e9856707acdcfb057daf3c。次233完了804残保留4。ZeroNet全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次176 github-analyticalmonk-awesome-neuroscience-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ175 ZeroNet検証完了・保存準備 (2026-10-06T23:58:47.561Z)
+
+- 固定raw280行186単位、旧EN277行184単位/旧JA276行184単位を662dfb/3159c5/13ebe6/424ac1/0e6a1f/eb1722で全文読了。raw→EN06a426+86c8b1、EN→JA b53c9d+422451、JA単独fb909c全文、alias構造変更54ee64全変更行再読。EN全diff dc0eb2/JA全diff c70f6d。実モデルCodex current session/APIモデル識別子取得不能。最終EN 4eb655054a3e4c346b6aa706aab66ee110175e477ce2f599a8593b504625ecee/JA 91b27e705a854868bba37c373fa099b1eeeaa4fbb0ea8955152b17f1f26d46e0。
+- 原文のP2P定義・Wikipediaと公式サイトを復元し、24表116行/92資料行/27分類/3communityを保持。全86inlineCode識別子の実value厳密一致、12真偽セルをYes/No・はい/いいえへ。0net-preview blocklistの余分空セルのみ除去し列対応修復、DevCenter鏡像URLの二重httpsを修正。NetTalkのinterne…sを推測で補わず原文の省略を明記。100GB/HiddenService v3/Onion v3/2D/P2P維持と段階的改善/E2Eかつ送受信者名公開/保守終了と不推奨/未完成Rust2件/導入注意/公開プロキシの秘密鍵アクセスとなりすまし・サインイン禁止を保全。一般見出し・案内を翻訳し正式Zite名・N/Aを同定と慣例のため保持。Support/Donation・個人支援URL等運営部分を除き技術/セキュリティ/携帯コンテナー3記事は保持。
+- rawにLicense章なし。既存zolagonano/awesome-zeronet/固定commit README/CC0の出典を英日4画面で確認。旧28有用見出しを32空aliasと自然IDで保持しaliasを見出し内へ置いて独立段落化・表吸収を防止。全入力単位対応54ee64、表真偽/識別子証拠1d4d49、overlay再生一致後に本文反映。
+- 2replay各1037組2074文書2passes/通常8gate081d15 exit0、全2074本文hash保全/fragment incoming0、systems fresh統合build c808fd session55845 exit0、全7アプリ開始現在成果物入力hash一致、正規HTMLgate、英日28head/24table/116row/86code/3list/54TOC/32JAalias・旧ID・出典2URLの統合HTML一致4b1720 exit0。global 78fc78 session77345 actual exit0/diff合格、233完了804残保留4。状態変更後の検査入力同一を照合してglobal証拠再利用。
+- 英日PC1440/mobile390の導入・6列ID表先頭/末尾・全警告・出典全文と2リンク・目次到達、言語切替、Next Neuroscience/back、旧版ZeroNet本文/backを実確認。全幅scroll1425/375でページ横溢れなし。英語PC表末尾158/158、ENmobile567/567、JAmobile416.5/417へ表内スクロール到達。日本語の真偽値は狭いセルで縦折返すが読める。smoothscroll途中や不一致見出し・二重テキストlocator・End/大scrollの未到達は合格証拠に含めず、現在DOMの可視linkと出典見出しクリックの実表示で確認。所有tab16終了、viewport復元、preview74139は5c9f07 exit0。
+- EXCLUSIONS判断不変timestampだけ復元、外部リンク報告の導入リンク復元・誤URL修正に伴う差分は保持。元main他作業には変更しない。検査無効化/importでの編集破棄/外部公開/PR/dispatch/定期設定/Workers/ローカルLLM/委任なし。
+- 検証済み変更をorigin/codex/awesome-editorial-isolated-20261007へcommit/push/remote照合。次176 github-analyticalmonk-awesome-neuroscience-readme-md。固定rawと旧英日全文の先行読了証拠をhash照合して再利用し、権利放棄注記の出典表示を未編集本文のscience build/英日PC実表示で事前確認してから本文編集。
+
+- 175保存時の追加記録: heredoc作成がENOSPC(ec4e53)で開始前失敗。globalは78fc78 actual exit0/OK。本worktree統合dist173MB・group-outputs174MBのみcaed86で整理、個別appと保存済みHTML/ビルド証拠・元mainを保持。容量8790a3約150MiBから回復。workflow hash同一で829681全文証拠再利用、c9eaedでbranch非配信対象/未送信0/main既存295件全保持と現在297件確認。233verified反映と同一入力監査2ebe7c actual exit0。
