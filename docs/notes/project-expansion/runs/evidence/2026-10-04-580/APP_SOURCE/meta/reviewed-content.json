@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "scope": [
+    "01-guide/01-user-guide.md",
+    "01-guide/02-cli.md"
+  ],
+  "completedPages": 2,
+  "unreviewedPages": 0,
+  "pages": [
+    {
+      "id": "01-guide/01-user-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-03T23:13:30.619Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/gperf/3.3/sources/gperf-3.3/doc/gperf.html",
+        "sha256": "52f09b87bdf78054a77bd7b58f89c774c94e5d94d55aad3ac6e45394a1ae0e6d",
+        "coverage": [
+          [
+            1,
+            2570
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "apps/gperf/src/content/docs/v3-3/en/01-guide/01-user-guide.md",
+        "sha256": "2f4dfe30ffa47fe858a77045f63352675fb2f4b292b7a7083844595fd14dc6dd",
+        "coverage": [
+          [
+            1,
+            2581
+          ]
+        ]
+      },
+      "translation": {
+        "path": "apps/gperf/src/content/docs/v3-3/ja/01-guide/01-user-guide.md",
+        "sha256": "41d31440e4ccb320b5ebd9ed239a11bc5c4a035cbea107068822b732d736ff55",
+        "coverage": [
+          [
+            1,
+            1626
+          ]
+        ]
+      },
+      "findings": [
+        {
+          "id": "whole-guide-review",
+          "status": "passed",
+          "detail": "固定原文・同一原文を保持するEN本文・JA本文の全27機能節、表題/目次/原通知/GPL/書誌/索引/footer、両言語導入・全3編集注記を別工程で確認。機械checksだけで意味を合格にしていない。"
+        },
+        {
+          "id": "version-and-date",
+          "status": "passed",
+          "detail": "software3.3とguide edition3.2(2024-10-28)、CLI April2025を混同せず、取得日2026-10-03と変更日2026-10-04(JST)を区別。"
+        },
+        {
+          "id": "protected-permission-GPL",
+          "status": "passed-original-English",
+          "detail": "原許諾通知とGPL章は全量原英語保持。GPL全文は570のCOPYING全量読解+guide全文差分読解と現行原fragment SHA/文字列同一を照合。新規承認済み翻訳や改変GPLとは記録しない。",
+          "evidence": [
+            {
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-570/GUIDE_PARTIAL_REVIEW.json",
+              "sha256": "f464d9848a6de1355fe17be92e8fefdb0cb70b3daeefc1f37aaadccf9f4e3cc6"
+            }
+          ]
+        },
+        {
+          "id": "fixed-source-differences",
+          "status": "passed-with-separate-annotations",
+          "detail": "NULLの原文曖昧さ、CLI/guide jump差、導入とprototypeの型差を原文内で直さず、英日3注記で分離。固定output.cc/options.ccの注記根拠を保持し独立実行済みとは主張しない。"
+        },
+        {
+          "id": "section-three-wording",
+          "status": "fixed-and-rechecked",
+          "detail": "0..kを要素数と誤読し得る訳を範囲表現へ版本化修正。n/k/n-1最小条件・高々1probeを保持。"
+        },
+        {
+          "id": "bibliography-index",
+          "status": "passed",
+          "detail": "書誌の名称・刊行情報15項目は原表記を保持。索引語を訳し原アルファベットgroup/二重参照/コード語/全targetsを保持。"
+        },
+        {
+          "id": "remaining-publication-gates",
+          "status": "pending-independent-gates",
+          "detail": "全文内容review2/2の合格はsourcearchive/UI/native/全サイト参照/統合/外部公開の完了を意味しない。後続本文変更は影響reviewを再実施。"
+        }
+      ]
+    },
+    {
+      "id": "01-guide/02-cli.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-03T23:13:30.619Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/gperf/3.3/sources/gperf-3.3/doc/gperf.1",
+        "sha256": "02bfec00bb7fa820b68e88fb67d1b88c23d5531e71db8bffa53be2e3e6d62aa2",
+        "coverage": [
+          [
+            1,
+            220
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "apps/gperf/src/content/docs/v3-3/en/01-guide/02-cli.md",
+        "sha256": "d91b1e82892efa31bcb26e383569421871208fd91208e9e6d1ab1ea2ab10b6b9",
+        "coverage": [
+          [
+            1,
+            131
+          ]
+        ]
+      },
+      "translation": {
+        "path": "apps/gperf/src/content/docs/v3-3/ja/01-guide/02-cli.md",
+        "sha256": "a00c8de44774e30a0c0e288ea89a1cc0e5de0bd305ced22080807aa85c1fe42c",
+        "coverage": [
+          [
+            1,
+            131
+          ]
+        ]
+      },
+      "findings": [
+        {
+          "id": "cli-option-coverage",
+          "status": "passed",
+          "detail": "固定man全220行を今回全文読解し、英日全35定義/追加output-file/書式/著者/報告/権利/See Alsoを照合。全数値・既定値・限定条件を保持。"
+        },
+        {
+          "id": "original-jump-difference",
+          "status": "passed-with-preserved-source-difference",
+          "detail": "奇数必須は原man通り訳し、guideの切上げとの差を原コードoptions.cc853〜865へたどる別注記で説明。0ランダム動作は実行確認済みにしない。"
+        },
+        {
+          "id": "original-GPL",
+          "status": "passed-original-English",
+          "detail": "固定COPYING全文（序文/0〜17/適用方法/例/終端）を今回全量読解。英日本文のGPL preは同一全文を原英語で保持。原copyright/license/warrantyも全量保持。"
+        },
+        {
+          "id": "dated-modification-and-editorial-parity",
+          "status": "fixed-and-rechecked",
+          "detail": "変更日不足と英語CLIの編集注記欠落を修正。2026-10-04(JST)を明記し、CLI全体GPL-3.0-or-laterの条件と非公式変更を両言語で示す。修正後の英日導入・原通知・全注記を再読解。"
+        },
+        {
+          "id": "whole-page-review-not-publication",
+          "status": "passed-with-final-gates-pending",
+          "detail": "本内容reviewは現行英日2本文のSHAに束縛。対応sourcearchive/UIと全サイト参照/表示/統合検証は未完、公開を許可する完了記録ではない。後続本文変更では影響範囲のreviewを再実施。"
+        },
+        {
+          "id": "original-parameter-type-difference",
+          "status": "passed-with-source-difference-annotation",
+          "detail": "同じ固定guide4.2の導入char*/intと掲載prototype const char*/size_tの差を英日別注記で明示。追加全文を今回読解、旧CLI全文prefix同一をSHA/文字列で確認。コード実行済みや原文修正とは主張しない。",
+          "evidence": [
+            {
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-572/CLI_REVIEW_DELTA.json",
+              "sha256": "8772efa27c5d0b4234eadc104298ca6a58a8974542464db7b3726b1defa4b1f8"
+            }
+          ]
+        },
+        {
+          "id": "573-current-input-identity",
+          "status": "passed-reused-whole-review",
+          "detail": "572英日全文と現行CLI SHA同一を確認し全量reviewを再利用。無変更の本文を再翻訳しない。"
+        }
+      ]
+    }
+  ],
+  "reviewEvidence": "docs/notes/project-expansion/runs/evidence/2026-10-04-573/CONTENT_REVIEW.json"
+}

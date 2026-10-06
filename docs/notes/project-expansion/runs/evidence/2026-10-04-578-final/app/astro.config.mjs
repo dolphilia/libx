@@ -1,0 +1,30 @@
+// @ts-check
+import { defineDocsConfig } from '@docs/config';
+import { loadProjectConfig } from '@docs/project-config';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectConfig = await loadProjectConfig(__dirname);
+const fallbackSite = 'https://libx.dev';
+
+// https://astro.build/config
+const config = defineDocsConfig({
+  site: projectConfig.paths.siteUrl ?? fallbackSite,
+  base: projectConfig.paths.baseUrl,
+  rootDir: __dirname,
+
+});
+
+config.integrations = [...(config.integrations ?? []), {
+    name: 'gperf-functional-code-copy',
+    hooks: {
+      'astro:config:setup': ({ injectScript }) => {
+        injectScript('page', 'import "/src/scripts-gperf-code-copy.js";');
+      },
+    },
+}];
+
+config.markdown = { ...config.markdown, smartypants: false };
+export default config;
