@@ -1,0 +1,103 @@
+<div class="gnu-sed-original-content">
+<h2 class="chapter" id="sed-scripts-1"><span>3 <code class="command">sed</code> scripts</span></h2>
+<hr/>
+<div class="section-level-extent" id="sed-script-overview">
+<h3 class="section" id="sed-script-overview-1"><span>3.1 <code class="command">sed</code> script overview</span></h3>
+<a class="index-entry-id" id="index-sed-script-structure"></a>
+<a class="index-entry-id" id="index-Script-structure"></a>
+<p>A <code class="command">sed</code> program consists of one or more <code class="command">sed</code> commands,
+passed in by one or more of the
+<samp class="option">-e</samp>, <samp class="option">-f</samp>, <samp class="option">--expression</samp>, and <samp class="option">--file</samp>
+options, or the first non-option argument if zero of these
+options are used.
+This document will refer to “the” <code class="command">sed</code> script;
+this is understood to mean the in-order concatenation
+of all of the <var class="var">script</var>s and <var class="var">script-file</var>s passed in.
+See <a class="xref" href="#Overview">Overview</a>.
+</p>
+<a class="index-entry-id" id="index-sed-commands-syntax"></a>
+<a class="index-entry-id" id="index-syntax_002c-sed-commands"></a>
+<a class="index-entry-id" id="index-addresses_002c-syntax"></a>
+<a class="index-entry-id" id="index-syntax_002c-addresses"></a>
+<p><code class="command">sed</code> commands follow this syntax:
+</p>
+<div class="example">
+<pre class="example-preformatted">[addr]<var class="var">X</var>[options]
+</pre></div>
+<p><var class="var">X</var> is a single-letter <code class="command">sed</code> command.
+<code class="code">[addr]</code> is an optional line address. If <code class="code">[addr]</code> is specified,
+the command <var class="var">X</var> will be executed only on the matched lines.
+<code class="code">[addr]</code> can be a single line number, a regular expression,
+or a range of lines (see <a class="pxref" href="#sed-addresses">Addresses: selecting lines</a>).
+Additional <code class="code">[options]</code> are used for some <code class="command">sed</code> commands.
+</p>
+<a class="index-entry-id" id="index-d_002c-example"></a>
+<a class="index-entry-id" id="index-address-range_002c-example"></a>
+<a class="index-entry-id" id="index-example_002c-address-range"></a>
+<p>The following example deletes  lines 30 to 35 in the input.
+<code class="code">30,35</code> is an address range. <code class="command">d</code> is the delete command:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed '30,35d' input.txt &gt; output.txt
+</pre></div>
+<a class="index-entry-id" id="index-q_002c-example"></a>
+<a class="index-entry-id" id="index-regular-expression_002c-example"></a>
+<a class="index-entry-id" id="index-example_002c-regular-expression"></a>
+<p>The following example prints all input until a line
+starting with the string ‘<samp class="samp">foo</samp>’ is found. If such line is found,
+<code class="command">sed</code> will terminate with exit status 42.
+If such line was not found (and no other error occurred), <code class="command">sed</code>
+will exit with status 0.
+<code class="code">/^foo/</code> is a regular-expression address.
+<code class="command">q</code> is the quit command. <code class="code">42</code> is the command option.
+</p>
+<div class="example">
+<pre class="example-preformatted">sed '/^foo/q42' input.txt &gt; output.txt
+</pre></div>
+<a class="index-entry-id" id="index-multiple-sed-commands"></a>
+<a class="index-entry-id" id="index-sed-commands_002c-multiple"></a>
+<a class="index-entry-id" id="index-newline_002c-command-separator"></a>
+<a class="index-entry-id" id="index-semicolons_002c-command-separator"></a>
+<a class="index-entry-id" id="index-_003b_002c-command-separator"></a>
+<a class="index-entry-id" id="index-_002de_002c-example-1"></a>
+<a class="index-entry-id" id="index-_002df_002c-example-1"></a>
+<p>Commands within a <var class="var">script</var> or <var class="var">script-file</var> can be
+separated by semicolons (<code class="code">;</code>) or newlines (ASCII 10).
+Multiple scripts can be specified with <samp class="option">-e</samp> or <samp class="option">-f</samp>
+options.
+</p>
+<p>The following examples are all equivalent. They perform two <code class="command">sed</code>
+operations: deleting any lines matching the regular expression <code class="code">/^foo/</code>,
+and replacing all occurrences of the string ‘<samp class="samp">hello</samp>’ with ‘<samp class="samp">world</samp>’:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed '/^foo/d ; s/hello/world/g' input.txt &gt; output.txt
+
+sed -e '/^foo/d' -e 's/hello/world/g' input.txt &gt; output.txt
+
+echo '/^foo/d' &gt; script.sed
+echo 's/hello/world/g' &gt;&gt; script.sed
+sed -f script.sed input.txt &gt; output.txt
+
+echo 's/hello/world/g' &gt; script2.sed
+sed -e '/^foo/d' -f script2.sed input.txt &gt; output.txt
+</pre></div>
+<a class="index-entry-id" id="index-a_002c-and-semicolons"></a>
+<a class="index-entry-id" id="index-c_002c-and-semicolons"></a>
+<a class="index-entry-id" id="index-e_002c-and-semicolons"></a>
+<a class="index-entry-id" id="index-i_002c-and-semicolons"></a>
+<a class="index-entry-id" id="index-r_002c-and-semicolons"></a>
+<a class="index-entry-id" id="index-R_002c-and-semicolons"></a>
+<a class="index-entry-id" id="index-w_002c-and-semicolons"></a>
+<a class="index-entry-id" id="index-W_002c-and-semicolons"></a>
+<p>Commands <code class="command">a</code>, <code class="command">c</code>, <code class="command">e</code>, <code class="command">i</code>,
+<code class="command">r</code>, <code class="command">R</code>, <code class="command">w</code>, <code class="command">W</code>, due to their
+syntax, cannot be followed by semicolons working as command separators
+and thus should be terminated
+with newlines or be placed at the end of a <var class="var">script</var> or <var class="var">script-file</var>.
+Commands can also be preceded with optional non-significant
+whitespace characters.
+See <a class="xref" href="#Multiple-commands-syntax">Multiple commands syntax</a>.
+</p>
+<hr/>
+</div></div>

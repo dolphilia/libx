@@ -1,0 +1,188 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="Multiple-commands-syntax">
+<h3 class="section" id="Multiple-commands-syntax-1"><span>3.8 Multiple commands syntax</span></h3>
+<p>There are several methods to specify multiple commands in a <code class="command">sed</code>
+program.
+</p>
+<p>Using newlines is most natural when running a sed script from a file
+(using the <samp class="option">-f</samp> option).
+</p>
+<p>On the command line, all <code class="command">sed</code> commands may be separated by newlines.
+Alternatively, you may specify each command as an argument to an <samp class="option">-e</samp>
+option:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 6 | sed '1d
+3d
+5d'
+2
+4
+6
+
+$ seq 6 | sed -e 1d -e 3d -e 5d
+2
+4
+6
+</pre></div></div>
+<p>A semicolon (‘<samp class="samp">;</samp>’) may be used to separate most simple commands:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 6 | sed '1d;3d;5d'
+2
+4
+6
+</pre></div></div>
+<p>The <code class="code">{</code>,<code class="code">}</code>,<code class="code">b</code>,<code class="code">t</code>,<code class="code">T</code>,<code class="code">:</code> commands can
+be separated with a semicolon (this is a non-portable GNU <code class="command">sed</code> extension).
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 4 | sed '{1d;3d}'
+2
+4
+
+$ seq 6 | sed '{1d;3d};5d'
+2
+4
+6
+</pre></div></div>
+<p>Labels used in <code class="code">b</code>,<code class="code">t</code>,<code class="code">T</code>,<code class="code">:</code> commands are read
+until a semicolon.  Leading and trailing whitespace is ignored.  In
+the examples below the label is ‘<samp class="samp">x</samp>’.  The first example works
+with GNU <code class="command">sed</code>.  The second is a portable equivalent.  For more
+information about branching and labels see <a class="pxref" href="#Branching-and-flow-control">Branching and Flow Control</a>.
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed '/1/b x ; s/^/=/ ; :x ; 3d'
+1
+=2
+
+$ seq 3 | sed -e '/1/bx' -e 's/^/=/' -e ':x' -e '3d'
+1
+=2
+</pre></div></div>
+<div class="subsection-level-extent" id="Commands-Requiring-a-newline">
+<h4 class="subsection"><span>3.8.1 Commands Requiring a newline</span></h4>
+<p>The following commands cannot be separated by a semicolon and
+require a newline:
+</p>
+<dl class="table">
+<dt><code class="code">a</code>,<code class="code">c</code>,<code class="code">i</code> (append/change/insert)</dt>
+<dd>
+<p>All characters following <code class="code">a</code>,<code class="code">c</code>,<code class="code">i</code> commands are taken
+as the text to append/change/insert.  Using a semicolon leads to
+undesirable results:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 2 | sed '1aHello ; 2d'
+1
+Hello ; 2d
+2
+</pre></div></div>
+<p>Separate the commands using <samp class="option">-e</samp> or a newline:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 2 | sed -e 1aHello -e 2d
+1
+Hello
+
+$ seq 2 | sed '1aHello
+2d'
+1
+Hello
+</pre></div></div>
+<p>Note that specifying the text to add (‘<samp class="samp">Hello</samp>’) immediately
+after <code class="code">a</code>,<code class="code">c</code>,<code class="code">i</code> is itself a GNU <code class="command">sed</code> extension.
+A portable, POSIX-compliant alternative is:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 2 | sed '1a\
+Hello
+2d'
+1
+Hello
+</pre></div></div>
+</dd>
+<dt><code class="code">#</code> (comment)</dt>
+<dd>
+<p>All characters following ‘<samp class="samp">#</samp>’ until the next newline are ignored.
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed '# this is a comment ; 2d'
+1
+2
+3
+
+
+$ seq 3 | sed '# this is a comment
+2d'
+1
+3
+</pre></div></div>
+</dd>
+<dt><code class="code">r</code>,<code class="code">R</code>,<code class="code">w</code>,<code class="code">W</code> (reading and writing files)</dt>
+<dd>
+<p>The <code class="code">r</code>,<code class="code">R</code>,<code class="code">w</code>,<code class="code">W</code> commands parse the filename
+until end of the line.  If whitespace, comments or semicolons are found,
+they will be included in the filename, leading to unexpected results:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 2 | sed '1w hello.txt ; 2d'
+1
+2
+
+$ ls -log
+total 4
+-rw-rw-r-- 1 2 Jan 23 23:03 hello.txt ; 2d
+
+$ cat 'hello.txt ; 2d'
+1
+</pre></div></div>
+<p>Note that <code class="command">sed</code> silently ignores read/write errors in
+<code class="code">r</code>,<code class="code">R</code>,<code class="code">w</code>,<code class="code">W</code> commands (such as missing files).
+In the following example, <code class="command">sed</code> tries to read a file named
+‘<samp class="samp"><samp class="file">hello.txt ; N</samp></samp>’. The file is missing, and the error is silently
+ignored:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ echo x | sed '1rhello.txt ; N'
+x
+</pre></div></div>
+</dd>
+<dt><code class="code">e</code> (command execution)</dt>
+<dd>
+<p>Any characters following the <code class="code">e</code> command until the end of the line
+will be sent to the shell.  If whitespace, comments or semicolons are found,
+they will be included in the shell command, leading to unexpected results:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ echo a | sed '1e touch foo#bar'
+a
+
+$ ls -1
+foo#bar
+
+$ echo a | sed '1e touch foo ; s/a/b/'
+sh: 1: s/a/b/: not found
+a
+</pre></div></div>
+</dd>
+<dt><code class="code">s///[we]</code> (substitute with <code class="code">e</code> or <code class="code">w</code> flags)</dt>
+<dd>
+<p>In a substitution command, the <code class="code">w</code> flag writes the substitution
+result to a file, and the <code class="code">e</code> flag executes the substitution result
+as a shell command.  As with the <code class="code">r/R/w/W/e</code> commands, these
+must be terminated with a newline.  If whitespace, comments or semicolons
+are found, they will be included in the shell command or filename, leading to
+unexpected results:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ echo a | sed 's/a/b/w1.txt#foo'
+b
+
+$ ls -1
+1.txt#foo
+</pre></div></div>
+</dd>
+</dl>
+<hr/>
+</div>
+</div></div>

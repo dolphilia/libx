@@ -1,0 +1,181 @@
+<div class="gnu-sed-original-content"><div class="section-level-extent" id="The-_0022s_0022-Command">
+<h3 class="section" id="The-s-Command"><span>3.3 The <code class="code">s</code> Command</span></h3>
+<p>The <code class="code">s</code> command (as in substitute) is probably the most important
+in <code class="command">sed</code> and has a lot of different options.  The syntax of
+the <code class="code">s</code> command is
+‘<samp class="samp">s/<var class="var">regexp</var>/<var class="var">replacement</var>/<var class="var">flags</var></samp>’.
+</p>
+<p>Its basic concept is simple: the <code class="code">s</code> command attempts to match
+the pattern space against the supplied regular expression <var class="var">regexp</var>;
+if the match is successful, then that portion of the
+pattern space which was matched is replaced with <var class="var">replacement</var>.
+</p>
+<p>For details about <var class="var">regexp</var> syntax see <a class="pxref" href="#Regexp-Addresses">Regular
+Expression Addresses</a>.
+</p>
+<a class="index-entry-id" id="index-Backreferences_002c-in-regular-expressions"></a>
+<a class="index-entry-id" id="index-Parenthesized-substrings"></a>
+<p>The <var class="var">replacement</var> can contain <code class="code">\<var class="var">n</var></code> (<var class="var">n</var> being
+a number from 1 to 9, inclusive) references, which refer to
+the portion of the match which is contained between the <var class="var">n</var>th
+<code class="code">\(</code> and its matching <code class="code">\)</code>.
+Also, the <var class="var">replacement</var> can contain unescaped <code class="code">&amp;</code>
+characters which reference the whole matched portion
+of the pattern space.
+</p>
+<p>The <code class="code">/</code>
+characters may be uniformly replaced by any other single
+character within any given <code class="code">s</code> command.  The <code class="code">/</code>
+character (or whatever other character is used in its stead)
+can appear in the <var class="var">regexp</var> or <var class="var">replacement</var>
+only if it is preceded by a <code class="code">\</code> character.
+</p>
+<a class="index-entry-id" id="index-GNU-extensions_002c-case-modifiers-in-s-commands"></a>
+<p>Finally, as a GNU <code class="command">sed</code> extension, you can include a
+special sequence made of a backslash and one of the letters
+<code class="code">L</code>, <code class="code">l</code>, <code class="code">U</code>, <code class="code">u</code>, or <code class="code">E</code>.
+The meaning is as follows:
+</p>
+<dl class="table">
+<dt><code class="code">\L</code></dt>
+<dd><p>Turn the replacement
+to lowercase until a <code class="code">\U</code> or <code class="code">\E</code> is found,
+</p>
+</dd>
+<dt><code class="code">\l</code></dt>
+<dd><p>Turn the
+next character to lowercase,
+</p>
+</dd>
+<dt><code class="code">\U</code></dt>
+<dd><p>Turn the replacement to uppercase
+until a <code class="code">\L</code> or <code class="code">\E</code> is found,
+</p>
+</dd>
+<dt><code class="code">\u</code></dt>
+<dd><p>Turn the next character
+to uppercase,
+</p>
+</dd>
+<dt><code class="code">\E</code></dt>
+<dd><p>Stop case conversion started by <code class="code">\L</code> or <code class="code">\U</code>.
+</p></dd>
+</dl>
+<p>When the <code class="code">g</code> flag is being used, case conversion does not
+propagate from one occurrence of the regular expression to
+another.  For example, when the following command is executed
+with ‘<samp class="samp">a-b-</samp>’ in pattern space:
+</p><div class="example">
+<pre class="example-preformatted">s/\(b\?\)-/x\u\1/g
+</pre></div>
+<p>the output is ‘<samp class="samp">axxB</samp>’.  When replacing the first ‘<samp class="samp">-</samp>’,
+the ‘<samp class="samp">\u</samp>’ sequence only affects the empty replacement of
+‘<samp class="samp">\1</samp>’.  It does not affect the <code class="code">x</code> character that is
+added to pattern space when replacing <code class="code">b-</code> with <code class="code">xB</code>.
+</p>
+<p>On the other hand, <code class="code">\l</code> and <code class="code">\u</code> do affect the remainder
+of the replacement text if they are followed by an empty substitution.
+With ‘<samp class="samp">a-b-</samp>’ in pattern space, the following command:
+</p><div class="example">
+<pre class="example-preformatted">s/\(b\?\)-/\u\1x/g
+</pre></div>
+<p>will replace ‘<samp class="samp">-</samp>’ with ‘<samp class="samp">X</samp>’ (uppercase) and ‘<samp class="samp">b-</samp>’ with
+‘<samp class="samp">Bx</samp>’.  If this behavior is undesirable, you can prevent it by
+adding a ‘<samp class="samp">\E</samp>’ sequence—after ‘<samp class="samp">\1</samp>’ in this case.
+</p>
+<p>To include a literal <code class="code">\</code>, <code class="code">&amp;</code>, or newline in the final
+replacement, be sure to precede the desired <code class="code">\</code>, <code class="code">&amp;</code>,
+or newline in the <var class="var">replacement</var> with a <code class="code">\</code>.
+</p>
+<a class="index-entry-id" id="index-s-command_002c-option-flags"></a>
+<a class="index-entry-id" id="index-Substitution-of-text_002c-options"></a>
+<p>The <code class="code">s</code> command can be followed by zero or more of the
+following <var class="var">flags</var>:
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-Replacing-all-text-matching-regexp-in-a-line"></a>
+<a id="index-Global-substitution"></a><span><code class="code">g</code></span></dt>
+<dd><p>Apply the replacement to <em class="emph">all</em> matches to the <var class="var">regexp</var>,
+not just the first.
+</p>
+</dd>
+<dt><a id="index-Replacing-only-nth-match-of-regexp-in-a-line"></a><span><code class="code"><var class="var">number</var></code></span></dt>
+<dd><p>Only replace the <var class="var">number</var>th match of the <var class="var">regexp</var>.
+</p>
+<a class="index-entry-id" id="index-GNU-extensions_002c-g-and-number-modifier"></a>
+<p>interaction in <code class="code">s</code> command
+<a class="index-entry-id" id="index-Mixing-g-and-number-modifiers-in-the-s-command"></a>
+Note: the <small class="sc">POSIX</small> standard does not specify what should happen
+when you mix the <code class="code">g</code> and <var class="var">number</var> modifiers,
+and currently there is no widely agreed upon meaning
+across <code class="command">sed</code> implementations.
+For GNU <code class="command">sed</code>, the interaction is defined to be:
+ignore matches before the <var class="var">number</var>th,
+and then match and replace all matches from
+the <var class="var">number</var>th on.
+</p>
+</dd>
+<dt><a id="index-Text_002c-printing-after-substitution"></a><span><code class="code">p</code></span></dt>
+<dd><p>If the substitution was made, then print the new pattern space.
+</p>
+<p>Note: when both the <code class="code">p</code> and <code class="code">e</code> options are specified,
+the relative ordering of the two produces very different results.
+In general, <code class="code">ep</code> (evaluate then print) is what you want,
+but operating the other way round can be useful for debugging.
+For this reason, the current version of GNU <code class="command">sed</code> interprets
+specially the presence of <code class="code">p</code> options both before and after
+<code class="code">e</code>, printing the pattern space before and after evaluation,
+while in general flags for the <code class="code">s</code> command show their
+effect just once.  This behavior, although documented, might
+change in future versions.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-_002fdev_002fstdout-file-1"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-_002fdev_002fstderr-file"></a>
+<a id="index-Text_002c-writing-to-a-file-after-substitution"></a><span><code class="code">w <var class="var">filename</var></code></span></dt>
+<dd><p>If the substitution was made, then write out the result to the named file.
+As a GNU <code class="command">sed</code> extension, two special values of <var class="var">filename</var> are
+supported: <samp class="file">/dev/stderr</samp>, which writes the result to the standard
+error, and <samp class="file">/dev/stdout</samp>, which writes to the standard
+output.<a class="footnote" href="#FOOT3" id="DOCF3"><sup>3</sup></a>
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Subprocesses"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-evaluating-Bourne_002dshell-commands"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-subprocesses"></a>
+<a id="index-Evaluate-Bourne_002dshell-commands_002c-after-substitution"></a><span><code class="code">e</code></span></dt>
+<dd><p>This command allows one to pipe input from a shell command
+into pattern space.  If a substitution was made, the command
+that is found in pattern space is executed and pattern space
+is replaced with its output.  A trailing newline is suppressed;
+results are undefined if the command to be executed contains
+a <small class="sc">NUL</small> character.  This is a GNU <code class="command">sed</code> extension.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Case_002dinsensitive-matching"></a>
+<a id="index-GNU-extensions_002c-I-modifier"></a><span><code class="code">I</code></span></dt>
+<dt><code class="code">i</code></dt>
+<dd><p>The <code class="code">I</code> modifier to regular-expression matching is a GNU
+extension which makes <code class="command">sed</code> match <var class="var">regexp</var> in a
+case-insensitive manner.
+</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-M-modifier"></a><span><code class="code">M</code></span></dt>
+<dt><code class="code">m</code></dt>
+<dd><p>The <code class="code">M</code> modifier to regular-expression matching is a GNU <code class="command">sed</code>
+extension which directs GNU <code class="command">sed</code> to match the regular expression
+in <cite class="cite">multi-line</cite> mode.  The modifier causes <code class="code">^</code> and <code class="code">$</code> to
+match respectively (in addition to the normal behavior) the empty string
+after a newline, and the empty string before a newline.  There are
+special character sequences
+(<code class="code">\`</code> and <code class="code">\'</code>)
+which always match the beginning or the end of the buffer.
+In addition,
+the period character does not match a new-line character in
+multi-line mode.
+</p>
+</dd>
+</dl>
+<hr/>
+</div><div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF3" id="FOOT3">(3)</a></h5><p>This is equivalent to <code class="code">p</code> unless the <samp class="option">-i</samp>
+option is being used.</p></div></div>

@@ -1,0 +1,143 @@
+{
+  "slug": "02-overview",
+  "bodySHA256": "6cba31c17f565e74ca8d17f69f1bbcd412c1b9397398f45b264699551800325f",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧2 Running sed⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Running-sed\"><span>2 Running sed</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "This chapter covers how to run ⟦0⟧. Details of ⟦1⟧ scripts and individual ⟦2⟧ commands are discussed in the next chapter.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>",
+        "⟦2⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>This chapter covers how to run <code class=\"command\">sed</code>. Details of <code class=\"command\">sed</code>\nscripts and individual <code class=\"command\">sed</code> commands are discussed in the\nnext chapter.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "h3",
+      "text": "⟦0⟧2.1 Overview⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Overview-1\"><span>2.1 Overview</span></h3>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Normally ⟦0⟧ is invoked like this:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>Normally <code class=\"command\">sed</code> is invoked like this:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "For example, to change every ‘⟦0⟧’ to ‘⟦1⟧’ in the file ⟦2⟧:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦1⟧": "<samp class=\"samp\">world</samp>",
+        "⟦2⟧": "<samp class=\"file\">input.txt</samp>"
+      },
+      "sourceHTML": "<p>For example, to change every ‘<samp class=\"samp\">hello</samp>’ to ‘<samp class=\"samp\">world</samp>’\nin the file <samp class=\"file\">input.txt</samp>:\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Without the ‘⟦0⟧’ (global) modifier, ⟦1⟧ affects only the first instance per line.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">g</samp>",
+        "⟦1⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>Without the ‘<samp class=\"samp\">g</samp>’ (global) modifier, <code class=\"command\">sed</code> affects\nonly the first instance per line.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "If you do not specify ⟦0⟧, or if ⟦1⟧ is ⟦2⟧, ⟦3⟧ filters the contents of the standard input. The following commands are equivalent:",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">INPUTFILE</var>",
+        "⟦1⟧": "<var class=\"var\">INPUTFILE</var>",
+        "⟦2⟧": "<samp class=\"file\">-</samp>",
+        "⟦3⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>If you do not specify <var class=\"var\">INPUTFILE</var>, or if <var class=\"var\">INPUTFILE</var> is <samp class=\"file\">-</samp>,\n<code class=\"command\">sed</code> filters the contents of the standard input. The following\ncommands are equivalent:\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "⟦0⟧ writes output to standard output. Use ⟦1⟧ to edit files in-place instead of printing to standard output. See also the ⟦2⟧ and ⟦3⟧ commands for writing output to other files. The following command modifies ⟦4⟧ and does not produce any output:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<samp class=\"option\">-i</samp>",
+        "⟦2⟧": "<code class=\"code\">W</code>",
+        "⟦3⟧": "<code class=\"code\">s///w</code>",
+        "⟦4⟧": "<samp class=\"file\">file.txt</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code> writes output to standard output. Use <samp class=\"option\">-i</samp> to edit\nfiles in-place instead of printing to standard output.\nSee also the <code class=\"code\">W</code> and <code class=\"code\">s///w</code> commands for writing output to\nother files. The following command modifies <samp class=\"file\">file.txt</samp> and\ndoes not produce any output:\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "By default ⟦0⟧ prints all processed input (except input that has been modified/deleted by commands such as ⟦1⟧). Use ⟦2⟧ to suppress output, and the ⟦3⟧ command to print specific lines. The following command prints only line 45 of the input file:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">d</code>",
+        "⟦2⟧": "<samp class=\"option\">-n</samp>",
+        "⟦3⟧": "<code class=\"code\">p</code>"
+      },
+      "sourceHTML": "<p>By default <code class=\"command\">sed</code> prints all processed input (except input\nthat has been modified/deleted by commands such as <code class=\"command\">d</code>).\nUse <samp class=\"option\">-n</samp> to suppress output, and the <code class=\"code\">p</code> command\nto print specific lines. The following command prints only line 45\nof the input file:\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "⟦0⟧ treats multiple input files as one long stream. The following example prints the first line of the first file (⟦1⟧) and the last line of the last file (⟦2⟧). Use ⟦3⟧ to reverse this behavior.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<samp class=\"file\">one.txt</samp>",
+        "⟦2⟧": "<samp class=\"file\">three.txt</samp>",
+        "⟦3⟧": "<samp class=\"option\">-s</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code> treats multiple input files as one long stream.\nThe following example prints the first line of the first file\n(<samp class=\"file\">one.txt</samp>) and the last line of the last file (<samp class=\"file\">three.txt</samp>).\nUse <samp class=\"option\">-s</samp> to reverse this behavior.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "Without ⟦0⟧ or ⟦1⟧ options, ⟦2⟧ uses the first non-option parameter as the ⟦3⟧, and the following non-option parameters as input files. If ⟦4⟧ or ⟦5⟧ options are used to specify a ⟦6⟧, all non-option parameters are taken as input files. Options ⟦7⟧ and ⟦8⟧ can be combined, and can appear multiple times (in which case the final effective ⟦9⟧ will be concatenation of all the individual ⟦10⟧s).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-e</samp>",
+        "⟦1⟧": "<samp class=\"option\">-f</samp>",
+        "⟦2⟧": "<code class=\"command\">sed</code>",
+        "⟦3⟧": "<var class=\"var\">script</var>",
+        "⟦4⟧": "<samp class=\"option\">-e</samp>",
+        "⟦5⟧": "<samp class=\"option\">-f</samp>",
+        "⟦6⟧": "<var class=\"var\">script</var>",
+        "⟦7⟧": "<samp class=\"option\">-e</samp>",
+        "⟦8⟧": "<samp class=\"option\">-f</samp>",
+        "⟦9⟧": "<var class=\"var\">script</var>",
+        "⟦10⟧": "<var class=\"var\">script</var>"
+      },
+      "sourceHTML": "<p>Without <samp class=\"option\">-e</samp> or <samp class=\"option\">-f</samp> options, <code class=\"command\">sed</code> uses\nthe first non-option parameter as the <var class=\"var\">script</var>, and the following\nnon-option parameters as input files.\nIf <samp class=\"option\">-e</samp> or <samp class=\"option\">-f</samp> options are used to specify a <var class=\"var\">script</var>,\nall non-option parameters are taken as input files.\nOptions <samp class=\"option\">-e</samp> and <samp class=\"option\">-f</samp> can be combined, and can appear\nmultiple times (in which case the final effective <var class=\"var\">script</var> will be\nconcatenation of all the individual <var class=\"var\">script</var>s).\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "The following examples are equivalent:",
+      "tokens": {},
+      "sourceHTML": "<p>The following examples are equivalent:\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

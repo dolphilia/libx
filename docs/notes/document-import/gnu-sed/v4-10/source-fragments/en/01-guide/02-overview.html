@@ -1,0 +1,99 @@
+<div class="gnu-sed-original-content">
+<h2 class="chapter" id="Running-sed"><span>2 Running sed</span></h2>
+<p>This chapter covers how to run <code class="command">sed</code>. Details of <code class="command">sed</code>
+scripts and individual <code class="command">sed</code> commands are discussed in the
+next chapter.
+</p>
+<hr/>
+<div class="section-level-extent" id="Overview">
+<h3 class="section" id="Overview-1"><span>2.1 Overview</span></h3>
+<p>Normally <code class="command">sed</code> is invoked like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed SCRIPT INPUTFILE...
+</pre></div>
+<p>For example, to change every ‘<samp class="samp">hello</samp>’ to ‘<samp class="samp">world</samp>’
+in the file <samp class="file">input.txt</samp>:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed 's/hello/world/g' input.txt &gt; output.txt
+</pre></div>
+<p>Without the ‘<samp class="samp">g</samp>’ (global) modifier, <code class="command">sed</code> affects
+only the first instance per line.
+</p>
+<a class="index-entry-id" id="index-stdin"></a>
+<a class="index-entry-id" id="index-standard-input"></a>
+<p>If you do not specify <var class="var">INPUTFILE</var>, or if <var class="var">INPUTFILE</var> is <samp class="file">-</samp>,
+<code class="command">sed</code> filters the contents of the standard input. The following
+commands are equivalent:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed 's/hello/world/g' input.txt &gt; output.txt
+sed 's/hello/world/g' &lt; input.txt &gt; output.txt
+cat input.txt | sed 's/hello/world/g' - &gt; output.txt
+</pre></div>
+<a class="index-entry-id" id="index-stdout"></a>
+<a class="index-entry-id" id="index-output"></a>
+<a class="index-entry-id" id="index-standard-output"></a>
+<a class="index-entry-id" id="index-_002di_002c-example"></a>
+<p><code class="command">sed</code> writes output to standard output. Use <samp class="option">-i</samp> to edit
+files in-place instead of printing to standard output.
+See also the <code class="code">W</code> and <code class="code">s///w</code> commands for writing output to
+other files. The following command modifies <samp class="file">file.txt</samp> and
+does not produce any output:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -i 's/hello/world/' file.txt
+</pre></div>
+<a class="index-entry-id" id="index-_002dn_002c-example"></a>
+<a class="index-entry-id" id="index-p_002c-example"></a>
+<a class="index-entry-id" id="index-suppressing-output"></a>
+<a class="index-entry-id" id="index-output_002c-suppressing"></a>
+<p>By default <code class="command">sed</code> prints all processed input (except input
+that has been modified/deleted by commands such as <code class="command">d</code>).
+Use <samp class="option">-n</samp> to suppress output, and the <code class="code">p</code> command
+to print specific lines. The following command prints only line 45
+of the input file:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -n '45p' file.txt
+</pre></div>
+<a class="index-entry-id" id="index-multiple-files"></a>
+<a class="index-entry-id" id="index-_002ds_002c-example"></a>
+<p><code class="command">sed</code> treats multiple input files as one long stream.
+The following example prints the first line of the first file
+(<samp class="file">one.txt</samp>) and the last line of the last file (<samp class="file">three.txt</samp>).
+Use <samp class="option">-s</samp> to reverse this behavior.
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -n  '1p ; $p' one.txt two.txt three.txt
+</pre></div>
+<a class="index-entry-id" id="index-_002de_002c-example"></a>
+<a class="index-entry-id" id="index-_002d_002dexpression_002c-example"></a>
+<a class="index-entry-id" id="index-_002df_002c-example"></a>
+<a class="index-entry-id" id="index-_002d_002dfile_002c-example"></a>
+<a class="index-entry-id" id="index-script-parameter"></a>
+<a class="index-entry-id" id="index-parameters_002c-script"></a>
+<p>Without <samp class="option">-e</samp> or <samp class="option">-f</samp> options, <code class="command">sed</code> uses
+the first non-option parameter as the <var class="var">script</var>, and the following
+non-option parameters as input files.
+If <samp class="option">-e</samp> or <samp class="option">-f</samp> options are used to specify a <var class="var">script</var>,
+all non-option parameters are taken as input files.
+Options <samp class="option">-e</samp> and <samp class="option">-f</samp> can be combined, and can appear
+multiple times (in which case the final effective <var class="var">script</var> will be
+concatenation of all the individual <var class="var">script</var>s).
+</p>
+<p>The following examples are equivalent:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed 's/hello/world/' input.txt &gt; output.txt
+
+sed -e 's/hello/world/' input.txt &gt; output.txt
+sed --expression='s/hello/world/' input.txt &gt; output.txt
+
+echo 's/hello/world/' &gt; myscript.sed
+sed -f myscript.sed input.txt &gt; output.txt
+sed --file=myscript.sed input.txt &gt; output.txt
+</pre></div>
+<hr/>
+</div></div>
