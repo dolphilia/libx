@@ -1,0 +1,21 @@
+<hr><h3><a name="luaL_newstate"><code>luaL_newstate</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_State *luaL_newstate (void);</pre>
+
+<p>
+Creates a new Lua state.
+It calls <a href="#lua_newstate"><code>lua_newstate</code></a> with <a href="#luaL_alloc"><code>luaL_alloc</code></a> as
+the allocator function and the result of <code>luaL_makeseed(NULL)</code>
+as the seed,
+and then sets a warning function and a panic function (see <a href="#4.4">&sect;4.4</a>)
+that print messages to the standard error output.
+
+
+<p>
+Returns the new state,
+or <code>NULL</code> if there is a memory allocation error.
+
+
+
+
+

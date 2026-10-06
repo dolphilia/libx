@@ -1,0 +1,42 @@
+<hr><h3><a name="lua_toclose"><code>lua_toclose</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">void lua_toclose (lua_State *L, int index);</pre>
+
+<p>
+Marks the given index in the stack as a
+to-be-closed slot (see <a href="#3.3.8">&sect;3.3.8</a>).
+Like a to-be-closed variable in Lua,
+the value at that slot in the stack will be closed
+when it goes out of scope.
+Here, in the context of a C function,
+to go out of scope means that the running function returns to Lua,
+or there is an error,
+or the slot is removed from the stack through
+<a href="#lua_settop"><code>lua_settop</code></a> or <a href="#lua_pop"><code>lua_pop</code></a>,
+or there is a call to <a href="#lua_closeslot"><code>lua_closeslot</code></a>.
+A slot marked as to-be-closed should not be removed from the stack
+by any other function in the API except <a href="#lua_settop"><code>lua_settop</code></a> or <a href="#lua_pop"><code>lua_pop</code></a>,
+unless previously deactivated by <a href="#lua_closeslot"><code>lua_closeslot</code></a>.
+
+
+<p>
+This function raises an error if the value at the given slot
+neither has a <code>__close</code> metamethod nor is a false value.
+
+
+<p>
+This function should not be called for an index
+that is equal to or below an active to-be-closed slot.
+
+
+<p>
+Note that, both in case of errors and of a regular return,
+by the time the <code>__close</code> metamethod runs,
+the C&nbsp;stack was already unwound,
+so that any automatic C&nbsp;variable declared in the calling function
+(e.g., a buffer) will be out of scope.
+
+
+
+
+

@@ -1,0 +1,125 @@
+<h2>2.6 &ndash; <a name="2.6">Coroutines</a></h2>
+
+<p>
+Lua supports coroutines,
+also called <em>collaborative multithreading</em>.
+A coroutine in Lua represents an independent thread of execution.
+Unlike threads in multithread systems, however,
+a coroutine only suspends its execution by explicitly calling
+a yield function.
+
+
+<p>
+You create a coroutine by calling <a href="#pdf-coroutine.create"><code>coroutine.create</code></a>.
+Its sole argument is a function
+that is the main function of the coroutine.
+The <code>create</code> function only creates a new coroutine and
+returns a handle to it (an object of type <em>thread</em>);
+it does not start the coroutine.
+
+
+<p>
+You execute a coroutine by calling <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a>.
+When you first call <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a>,
+passing as its first argument
+a thread returned by <a href="#pdf-coroutine.create"><code>coroutine.create</code></a>,
+the coroutine starts its execution by
+calling its main function.
+Extra arguments passed to <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a> are passed
+as arguments to that function.
+After the coroutine starts running,
+it runs until it terminates or <em>yields</em>.
+
+
+<p>
+A coroutine can terminate its execution in two ways:
+normally, when its main function returns
+(explicitly or implicitly, after the last instruction);
+and abnormally, if there is an unprotected error.
+In case of normal termination,
+<a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a> returns <b>true</b>,
+plus any values returned by the coroutine main function.
+In case of errors, <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a> returns <b>false</b>
+plus the error object.
+In this case, the coroutine does not unwind its stack,
+so that it is possible to inspect it after the error
+with the debug API.
+
+
+<p>
+A coroutine yields by calling <a href="#pdf-coroutine.yield"><code>coroutine.yield</code></a>.
+When a coroutine yields,
+the corresponding <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a> returns immediately,
+even if the yield happens inside nested function calls
+(that is, not in the main function,
+but in a function directly or indirectly called by the main function).
+In the case of a yield, <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a> also returns <b>true</b>,
+plus any values passed to <a href="#pdf-coroutine.yield"><code>coroutine.yield</code></a>.
+The next time you resume the same coroutine,
+it continues its execution from the point where it yielded,
+with the call to <a href="#pdf-coroutine.yield"><code>coroutine.yield</code></a> returning any extra
+arguments passed to <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a>.
+
+
+<p>
+Like <a href="#pdf-coroutine.create"><code>coroutine.create</code></a>,
+the <a href="#pdf-coroutine.wrap"><code>coroutine.wrap</code></a> function also creates a coroutine,
+but instead of returning the coroutine itself,
+it returns a function that, when called, resumes the coroutine.
+Any arguments passed to this function
+go as extra arguments to <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a>.
+<a href="#pdf-coroutine.wrap"><code>coroutine.wrap</code></a> returns all the values returned by <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a>,
+except the first one (the boolean error code).
+Unlike <a href="#pdf-coroutine.resume"><code>coroutine.resume</code></a>,
+the function created by <a href="#pdf-coroutine.wrap"><code>coroutine.wrap</code></a>
+propagates any error to the caller.
+In this case,
+the function also closes the coroutine (see <a href="#pdf-coroutine.close"><code>coroutine.close</code></a>).
+
+
+<p>
+As an example of how coroutines work,
+consider the following code:
+
+<pre>
+     function foo (a)
+       print("foo", a)
+       return coroutine.yield(2*a)
+     end
+     
+     co = coroutine.create(function (a,b)
+           print("co-body", a, b)
+           local r = foo(a+1)
+           print("co-body", r)
+           local r, s = coroutine.yield(a+b, a-b)
+           print("co-body", r, s)
+           return b, "end"
+     end)
+     
+     print("main", coroutine.resume(co, 1, 10))
+     print("main", coroutine.resume(co, "r"))
+     print("main", coroutine.resume(co, "x", "y"))
+     print("main", coroutine.resume(co, "x", "y"))
+</pre><p>
+When you run it, it produces the following output:
+
+<pre>
+     co-body 1       10
+     foo     2
+     main    true    4
+     co-body r
+     main    true    11      -9
+     co-body x       y
+     main    true    10      end
+     main    false   cannot resume dead coroutine
+</pre>
+
+<p>
+You can also create and manipulate coroutines through the C API:
+see functions <a href="#lua_newthread"><code>lua_newthread</code></a>, <a href="#lua_resume"><code>lua_resume</code></a>,
+and <a href="#lua_yield"><code>lua_yield</code></a>.
+
+
+
+
+
