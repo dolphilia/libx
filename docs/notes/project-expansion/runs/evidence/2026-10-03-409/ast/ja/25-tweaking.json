@@ -1,0 +1,1563 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "Tweaking.md",
+    "slug": "25-tweaking",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Tweaking.md",
+    "sourceSHA256": "4d8865c5fe27e03b41f17c0ce0ecae3d16b3383aad486b511513e853b4d052bb",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/25-tweaking.md",
+    "canonicalInputSHA256": "4d8865c5fe27e03b41f17c0ce0ecae3d16b3383aad486b511513e853b4d052bb",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/25-tweaking.md",
+    "canonicalSHA256": "319225296c1a7acff552099ca8c3e0db5193f0483b4da71cb5fadf8af36b106c",
+    "title": "Tweaking",
+    "excluded": [],
+    "sourceNote": "The original SPDLOG_NO_THREAD_ID text says %t is undefined; the separately fixed 1.17.0 tweakme.h comment says zero is logged. The original dated statement is preserved."
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogの性能を最大限引き出すために、",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 847
+            },
+            "end": {
+              "line": 5,
+              "column": 22,
+              "offset": 868
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/blob/master/include/spdlog/tweakme.h",
+          "children": [
+            {
+              "type": "text",
+              "value": "tweakme.h",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 23,
+                  "offset": 869
+                },
+                "end": {
+                  "line": 5,
+                  "column": 32,
+                  "offset": 878
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 22,
+              "offset": 868
+            },
+            "end": {
+              "line": 5,
+              "column": 104,
+              "offset": 950
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "ヘッダーファイルを編集できます。",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 104,
+              "offset": 950
+            },
+            "end": {
+              "line": 5,
+              "column": 120,
+              "offset": 966
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 847
+        },
+        "end": {
+          "line": 5,
+          "column": 120,
+          "offset": 966
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "以下は、spdlogでLinuxの高速クロックCLOCK_REALTIME_COARSEを使う例です。",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 968
+            },
+            "end": {
+              "line": 7,
+              "column": 52,
+              "offset": 1019
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 968
+        },
+        "end": {
+          "line": 7,
+          "column": 52,
+          "offset": 1019
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "例のコードは原資料のまま保持しています。コード内コメントの日本語訳を以下に示します。",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 1021
+            },
+            "end": {
+              "line": 9,
+              "column": 43,
+              "offset": 1063
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 1021
+        },
+        "end": {
+          "line": 9,
+          "column": 43,
+          "offset": 1063
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "spread": false,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "このファイルを編集すると、性能をさらに引き出し、サポートする機能をカスタマイズできます。",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 3,
+                      "offset": 1067
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 47,
+                      "offset": 1111
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 3,
+                  "offset": 1067
+                },
+                "end": {
+                  "line": 11,
+                  "column": 47,
+                  "offset": 1111
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1,
+              "offset": 1065
+            },
+            "end": {
+              "line": 11,
+              "column": 47,
+              "offset": 1111
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Linuxでは、より高速なCLOCK_REALTIME_COARSEクロックを使えます。このクロックは精度が低く、カーネルのHZに応じて数十ミリ秒ずれることがあります。通常のクロックの代わりに使うには、コメントを外します（",
+                  "position": {
+                    "start": {
+                      "line": 12,
+                      "column": 3,
+                      "offset": 1114
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 114,
+                      "offset": 1225
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_CLOCK_COARSE",
+                  "position": {
+                    "start": {
+                      "line": 12,
+                      "column": 114,
+                      "offset": 1225
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 135,
+                      "offset": 1246
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 12,
+                      "column": 135,
+                      "offset": 1246
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 137,
+                      "offset": 1248
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 12,
+                  "column": 3,
+                  "offset": 1114
+                },
+                "end": {
+                  "line": 12,
+                  "column": 137,
+                  "offset": 1248
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 1,
+              "offset": 1112
+            },
+            "end": {
+              "line": 12,
+              "column": 137,
+              "offset": 1248
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "スレッドIDのログ記録が不要な場合（ログパターンに%tがない場合）、コメントを外します。各ログ呼び出しでスレッドIDを問い合わせなくなります。警告：このフラグが有効なときにログパターンにスレッドID（%t）が含まれると、結果は未定義です（",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 3,
+                      "offset": 1251
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 122,
+                      "offset": 1370
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_NO_THREAD_ID",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 122,
+                      "offset": 1370
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 143,
+                      "offset": 1391
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 143,
+                      "offset": 1391
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 145,
+                      "offset": 1393
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 3,
+                  "offset": 1251
+                },
+                "end": {
+                  "line": 13,
+                  "column": 145,
+                  "offset": 1393
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1,
+              "offset": 1249
+            },
+            "end": {
+              "line": 13,
+              "column": 145,
+              "offset": 1393
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "スレッドローカルストレージを使わないようにするには、コメントを外します。警告：プログラムがforkする場合、子プロセスのログに未定義のスレッドIDが現れるのを防ぐため、このフラグのコメントを外してください（",
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 3,
+                      "offset": 1396
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 106,
+                      "offset": 1499
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_NO_TLS",
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 106,
+                      "offset": 1499
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 121,
+                      "offset": 1514
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 121,
+                      "offset": 1514
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 123,
+                      "offset": 1516
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 14,
+                  "column": 3,
+                  "offset": 1396
+                },
+                "end": {
+                  "line": 14,
+                  "column": 123,
+                  "offset": 1516
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 1,
+              "offset": 1394
+            },
+            "end": {
+              "line": 14,
+              "column": 123,
+              "offset": 1516
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "アトミックなログレベルを使わないようにするには、コメントを外します。異なるスレッドがロガーのログレベルを同時に変更することが決してないコードでのみ使ってください（",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 3,
+                      "offset": 1519
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 84,
+                      "offset": 1600
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_NO_ATOMIC_LEVELS",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 84,
+                      "offset": 1600
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 109,
+                      "offset": 1625
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 109,
+                      "offset": 1625
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 111,
+                      "offset": 1627
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 3,
+                  "offset": 1519
+                },
+                "end": {
+                  "line": 15,
+                  "column": 111,
+                  "offset": 1627
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1,
+              "offset": 1517
+            },
+            "end": {
+              "line": 15,
+              "column": 111,
+              "offset": 1627
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Windowsのファイル名にwchar_tを使えるようにするには、コメントを外します（",
+                  "position": {
+                    "start": {
+                      "line": 16,
+                      "column": 3,
+                      "offset": 1630
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 46,
+                      "offset": 1673
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_WCHAR_FILENAMES",
+                  "position": {
+                    "start": {
+                      "line": 16,
+                      "column": 46,
+                      "offset": 1673
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 70,
+                      "offset": 1697
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 16,
+                      "column": 70,
+                      "offset": 1697
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 72,
+                      "offset": 1699
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 16,
+                  "column": 3,
+                  "offset": 1630
+                },
+                "end": {
+                  "line": 16,
+                  "column": 72,
+                  "offset": 1699
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1,
+              "offset": 1628
+            },
+            "end": {
+              "line": 16,
+              "column": 72,
+              "offset": 1699
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "デフォルトの行末（Linuxでは\"\\n\"、Windowsでは\"\\r\\n\"）を上書きするには、コメントを外します（",
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 3,
+                      "offset": 1702
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 59,
+                      "offset": 1758
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_EOL",
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 59,
+                      "offset": 1758
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 71,
+                      "offset": 1770
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 71,
+                      "offset": 1770
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 73,
+                      "offset": 1772
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 3,
+                  "offset": 1702
+                },
+                "end": {
+                  "line": 17,
+                  "column": 73,
+                  "offset": 1772
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1,
+              "offset": 1700
+            },
+            "end": {
+              "line": 17,
+              "column": 73,
+              "offset": 1772
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "spdlogのfmtではなく、独自に用意したfmtライブラリを使うには、コメントを外します。この場合、spdlogは",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 3,
+                      "offset": 1775
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 61,
+                      "offset": 1833
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "<fmt/format.h>",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 61,
+                      "offset": 1833
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 77,
+                      "offset": 1849
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "をインクルードしようとするため、-Iフラグを適切に設定してください（",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 77,
+                      "offset": 1849
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 111,
+                      "offset": 1883
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_FMT_EXTERNAL",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 111,
+                      "offset": 1883
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 132,
+                      "offset": 1904
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 132,
+                      "offset": 1904
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 134,
+                      "offset": 1906
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 18,
+                  "column": 3,
+                  "offset": 1775
+                },
+                "end": {
+                  "line": 18,
+                  "column": 134,
+                  "offset": 1906
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 1,
+              "offset": 1773
+            },
+            "end": {
+              "line": 18,
+              "column": 134,
+              "offset": 1906
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "wchar_tのサポート（UTF-8への変換）を有効にするには、コメントを外します（",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 3,
+                      "offset": 1909
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 45,
+                      "offset": 1951
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_WCHAR_TO_UTF8_SUPPORT",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 45,
+                      "offset": 1951
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 75,
+                      "offset": 1981
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 75,
+                      "offset": 1981
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 77,
+                      "offset": 1983
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 3,
+                  "offset": 1909
+                },
+                "end": {
+                  "line": 19,
+                  "column": 77,
+                  "offset": 1983
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1,
+              "offset": 1907
+            },
+            "end": {
+              "line": 19,
+              "column": 77,
+              "offset": 1983
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "子プロセスがログファイルのファイル記述子を継承しないようにするには、コメントを外します（",
+                  "position": {
+                    "start": {
+                      "line": 20,
+                      "column": 3,
+                      "offset": 1986
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 47,
+                      "offset": 2030
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_PREVENT_CHILD_FD",
+                  "position": {
+                    "start": {
+                      "line": 20,
+                      "column": 47,
+                      "offset": 2030
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 72,
+                      "offset": 2055
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 20,
+                      "column": 72,
+                      "offset": 2055
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 74,
+                      "offset": 2057
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 20,
+                  "column": 3,
+                  "offset": 1986
+                },
+                "end": {
+                  "line": 20,
+                  "column": 74,
+                  "offset": 2057
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 1,
+              "offset": 1984
+            },
+            "end": {
+              "line": 20,
+              "column": 74,
+              "offset": 2057
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "レベル名をカスタマイズするには、コメントを外します（例：\"MY TRACE\"。",
+                  "position": {
+                    "start": {
+                      "line": 21,
+                      "column": 3,
+                      "offset": 2060
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 42,
+                      "offset": 2099
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_LEVEL_NAMES",
+                  "position": {
+                    "start": {
+                      "line": 21,
+                      "column": 42,
+                      "offset": 2099
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 62,
+                      "offset": 2119
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 21,
+                      "column": 62,
+                      "offset": 2119
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 64,
+                      "offset": 2121
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 21,
+                  "column": 3,
+                  "offset": 2060
+                },
+                "end": {
+                  "line": 21,
+                  "column": 64,
+                  "offset": 2121
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1,
+              "offset": 2058
+            },
+            "end": {
+              "line": 21,
+              "column": 64,
+              "offset": 2121
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "レベル名の略記をカスタマイズするには、コメントを外します（例：\"MT\"）。略記は1文字より長くても構いません（",
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 3,
+                      "offset": 2124
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 58,
+                      "offset": 2179
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_SHORT_LEVEL_NAMES",
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 58,
+                      "offset": 2179
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 84,
+                      "offset": 2205
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 84,
+                      "offset": 2205
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 86,
+                      "offset": 2207
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 22,
+                  "column": 3,
+                  "offset": 2124
+                },
+                "end": {
+                  "line": 22,
+                  "column": 86,
+                  "offset": 2207
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 1,
+              "offset": 2122
+            },
+            "end": {
+              "line": 22,
+              "column": 86,
+              "offset": 2207
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "デフォルトロガーの作成を無効にするには、コメントを外します。デフォルトロガーが不要なら、ごくわずかな初期化時間を削減できる可能性があります（",
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 3,
+                      "offset": 2210
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 73,
+                      "offset": 2280
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_DISABLE_DEFAULT_LOGGER",
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 73,
+                      "offset": 2280
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 104,
+                      "offset": 2311
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 104,
+                      "offset": 2311
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 106,
+                      "offset": 2313
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 3,
+                  "offset": 2210
+                },
+                "end": {
+                  "line": 23,
+                  "column": 106,
+                  "offset": 2313
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1,
+              "offset": 2208
+            },
+            "end": {
+              "line": 23,
+              "column": 106,
+              "offset": 2313
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "コストゼロのコンパイル時レベルを設定するには、コメントを外してレベルを設定します（デフォルトはINFO）。SPDLOG_DEBUG(..)、SPDLOG_INFO(..)などのマクロは、有効でなければ空の文へ展開されます（",
+                  "position": {
+                    "start": {
+                      "line": 24,
+                      "column": 3,
+                      "offset": 2316
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 114,
+                      "offset": 2427
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_ACTIVE_LEVEL",
+                  "position": {
+                    "start": {
+                      "line": 24,
+                      "column": 114,
+                      "offset": 2427
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 135,
+                      "offset": 2448
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 24,
+                      "column": 135,
+                      "offset": 2448
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 137,
+                      "offset": 2450
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 24,
+                  "column": 3,
+                  "offset": 2316
+                },
+                "end": {
+                  "line": 24,
+                  "column": 137,
+                  "offset": 2450
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 1,
+              "offset": 2314
+            },
+            "end": {
+              "line": 24,
+              "column": 137,
+              "offset": 2450
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "関数名に使うマクロのコメントを外し、必要なら変更します。これはコンパイラーに依存します。clang/gccでは",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 3,
+                      "offset": 2453
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 58,
+                      "offset": 2508
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "__PRETTY_FUNCTION__",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 58,
+                      "offset": 2508
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 79,
+                      "offset": 2529
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "、msvcでは",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 79,
+                      "offset": 2529
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 86,
+                      "offset": 2536
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "__FUNCTION__",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 86,
+                      "offset": 2536
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 100,
+                      "offset": 2550
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "が適する場合があります。未定義ならデフォルトは",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 100,
+                      "offset": 2550
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 123,
+                      "offset": 2573
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "__FUNCTION__",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 123,
+                      "offset": 2573
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 137,
+                      "offset": 2587
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "で、すべてのコンパイラーで動作するはずです（",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 137,
+                      "offset": 2587
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 159,
+                      "offset": 2609
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_FUNCTION",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 159,
+                      "offset": 2609
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 176,
+                      "offset": 2626
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 176,
+                      "offset": 2626
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 178,
+                      "offset": 2628
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 25,
+                  "column": 3,
+                  "offset": 2453
+                },
+                "end": {
+                  "line": 25,
+                  "column": 178,
+                  "offset": 2628
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1,
+              "offset": 2451
+            },
+            "end": {
+              "line": 25,
+              "column": 178,
+              "offset": 2628
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 1065
+        },
+        "end": {
+          "line": 25,
+          "column": 178,
+          "offset": 2628
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "\n///////////////////////////////////////////////////////////////////////////////\n//\n// Edit this file to squeeze more performance, and to customize supported\n// features\n//\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Under Linux, the much faster CLOCK_REALTIME_COARSE clock can be used.\n// This clock is less accurate - can be off by dozens of millis - depending on\n// the kernel HZ.\n// Uncomment to use it instead of the regular clock.\n//\n#define SPDLOG_CLOCK_COARSE\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment if thread id logging is not needed (i.e. no %t in the log pattern).\n// This will prevent spdlog from querying the thread id on each log call.\n//\n// WARNING: If the log pattern contains thread id (i.e, %t) while this flag is\n// on, the result is undefined.\n//\n// #define SPDLOG_NO_THREAD_ID\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to prevent spdlog from using thread local storage.\n//\n// WARNING: if your program forks, UNCOMMENT this flag to prevent undefined\n// thread ids in the children logs.\n//\n// #define SPDLOG_NO_TLS\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to avoid spdlog's usage of atomic log levels\n// Use only if your code never modifies a logger's log levels concurrently by\n// different threads.\n//\n// #define SPDLOG_NO_ATOMIC_LEVELS\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to enable usage of wchar_t for file names on Windows.\n//\n// #define SPDLOG_WCHAR_FILENAMES\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to override default eol (\"\\n\" or \"\\r\\n\" under Linux/Windows)\n//\n// #define SPDLOG_EOL \";-)\\n\"\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to use your own copy of the fmt library instead of spdlog's copy.\n// In this case spdlog will try to include <fmt/format.h> so set your -I flag\n// accordingly.\n//\n// #define SPDLOG_FMT_EXTERNAL\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to enable wchar_t support (convert to utf8)\n//\n// #define SPDLOG_WCHAR_TO_UTF8_SUPPORT\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to prevent child processes from inheriting log file descriptors\n//\n// #define SPDLOG_PREVENT_CHILD_FD\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to customize level names (e.g. \"MY TRACE\")\n//\n// #define SPDLOG_LEVEL_NAMES { \"MY TRACE\", \"MY DEBUG\", \"MY INFO\", \"MY WARNING\",\n// \"MY ERROR\", \"MY CRITICAL\", \"OFF\" }\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to customize short level names (e.g. \"MT\")\n// These can be longer than one character.\n//\n// #define SPDLOG_SHORT_LEVEL_NAMES { \"T\", \"D\", \"I\", \"W\", \"E\", \"C\", \"O\" }\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to disable default logger creation.\n// This might save some (very) small initialization time if no default logger is needed.\n//\n// #define SPDLOG_DISABLE_DEFAULT_LOGGER\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment and set to compile time level with zero cost (default is INFO).\n// Macros like SPDLOG_DEBUG(..), SPDLOG_INFO(..)  will expand to empty statements if not enabled\n//\n// #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment (and change if desired) macro to use for function names.\n// This is compiler dependent.\n// __PRETTY_FUNCTION__ might be nicer in clang/gcc, and __FUNCTION__ in msvc.\n// Defaults to __FUNCTION__ (should work on all compilers) if not defined.\n//\n// #define SPDLOG_FUNCTION __PRETTY_FUNCTION__\n///////////////////////////////////////////////////////////////////////////////\n",
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1,
+          "offset": 2630
+        },
+        "end": {
+          "line": 141,
+          "column": 4,
+          "offset": 7807
+        }
+      }
+    }
+  ],
+  "changes": []
+}

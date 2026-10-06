@@ -1,0 +1,743 @@
+{
+  "language": "en",
+  "source": {
+    "name": "Flush-policy.md",
+    "slug": "10-flush-policy",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Flush-policy.md",
+    "sourceSHA256": "2a3b8cc2b86a1a6a5688903544ea0bb30c289ef61013cbb1a1d280ef5b648c69",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/10-flush-policy.md",
+    "canonicalInputSHA256": "2a3b8cc2b86a1a6a5688903544ea0bb30c289ef61013cbb1a1d280ef5b648c69",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/10-flush-policy.md",
+    "canonicalSHA256": "f73ea05926dfebb007d15870ba09c1a6275b44beccd863626bb29e0924ddbb4e",
+    "title": "Flush policy",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "By default spdlog lets the underlying libc flush whenever it sees fit in order to achieve good performance. You can override this using the following options:",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 1014
+            },
+            "end": {
+              "line": 5,
+              "column": 159,
+              "offset": 1172
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 1014
+        },
+        "end": {
+          "line": 5,
+          "column": 159,
+          "offset": 1172
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Manual flush",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 5,
+              "offset": 1179
+            },
+            "end": {
+              "line": 8,
+              "column": 17,
+              "offset": 1191
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 8,
+          "column": 1,
+          "offset": 1175
+        },
+        "end": {
+          "line": 8,
+          "column": 17,
+          "offset": 1191
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can use the ",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 1192
+            },
+            "end": {
+              "line": 9,
+              "column": 17,
+              "offset": 1208
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "logger->flush()",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 17,
+              "offset": 1208
+            },
+            "end": {
+              "line": 9,
+              "column": 38,
+              "offset": 1229
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " function to instruct a logger to flush its contents. The logger will in turn call the ",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 38,
+              "offset": 1229
+            },
+            "end": {
+              "line": 9,
+              "column": 125,
+              "offset": 1316
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "flush()",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 125,
+              "offset": 1316
+            },
+            "end": {
+              "line": 9,
+              "column": 138,
+              "offset": 1329
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " function on each of the underlying sinks.",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 138,
+              "offset": 1329
+            },
+            "end": {
+              "line": 9,
+              "column": 180,
+              "offset": 1371
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 1192
+        },
+        "end": {
+          "line": 9,
+          "column": 180,
+          "offset": 1371
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Note:",
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 3,
+                  "offset": 1375
+                },
+                "end": {
+                  "line": 11,
+                  "column": 8,
+                  "offset": 1380
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1,
+              "offset": 1373
+            },
+            "end": {
+              "line": 11,
+              "column": 10,
+              "offset": 1382
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " If using an async logger, ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 10,
+              "offset": 1382
+            },
+            "end": {
+              "line": 11,
+              "column": 37,
+              "offset": 1409
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "logger->flush()",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 37,
+              "offset": 1409
+            },
+            "end": {
+              "line": 11,
+              "column": 58,
+              "offset": 1430
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " posts a message to the queue requesting the flush operation, so the function returns immediately. This is different from some older versions of spdlog (which would synchronously wait until the message was received and the flush completed). Currently there is no need to explicitly call ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 58,
+              "offset": 1430
+            },
+            "end": {
+              "line": 11,
+              "column": 345,
+              "offset": 1717
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "logger->flush()",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 345,
+              "offset": 1717
+            },
+            "end": {
+              "line": 11,
+              "column": 366,
+              "offset": 1738
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "  or ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 366,
+              "offset": 1738
+            },
+            "end": {
+              "line": 11,
+              "column": 371,
+              "offset": 1743
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::shutdown()",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 371,
+              "offset": 1743
+            },
+            "end": {
+              "line": 11,
+              "column": 395,
+              "offset": 1767
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " before shutting down, it is done automatically at destruction while program exits. However, if you want to flush all the async logger manually before  \"immediately\" exit function such as ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 395,
+              "offset": 1767
+            },
+            "end": {
+              "line": 11,
+              "column": 583,
+              "offset": 1955
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "abort()",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 583,
+              "offset": 1955
+            },
+            "end": {
+              "line": 11,
+              "column": 596,
+              "offset": 1968
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " or ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 596,
+              "offset": 1968
+            },
+            "end": {
+              "line": 11,
+              "column": 600,
+              "offset": 1972
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "_exit(-1)",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 600,
+              "offset": 1972
+            },
+            "end": {
+              "line": 11,
+              "column": 615,
+              "offset": 1987
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", please call ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 615,
+              "offset": 1987
+            },
+            "end": {
+              "line": 11,
+              "column": 629,
+              "offset": 2001
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::shutdown()",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 629,
+              "offset": 2001
+            },
+            "end": {
+              "line": 11,
+              "column": 653,
+              "offset": 2025
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " before those functions.",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 653,
+              "offset": 2025
+            },
+            "end": {
+              "line": 11,
+              "column": 677,
+              "offset": 2049
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 1373
+        },
+        "end": {
+          "line": 11,
+          "column": 677,
+          "offset": 2049
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Severity based flush",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 5,
+              "offset": 2055
+            },
+            "end": {
+              "line": 13,
+              "column": 25,
+              "offset": 2075
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1,
+          "offset": 2051
+        },
+        "end": {
+          "line": 13,
+          "column": 25,
+          "offset": 2075
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can set the minimum log level that will trigger automatic flush.",
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 1,
+              "offset": 2076
+            },
+            "end": {
+              "line": 14,
+              "column": 69,
+              "offset": 2144
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 14,
+          "column": 1,
+          "offset": 2076
+        },
+        "end": {
+          "line": 14,
+          "column": 69,
+          "offset": 2144
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For example, this will trigger flush whenever errors or more severe messages are logged:",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1,
+              "offset": 2146
+            },
+            "end": {
+              "line": 16,
+              "column": 89,
+              "offset": 2234
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 16,
+          "column": 1,
+          "offset": 2146
+        },
+        "end": {
+          "line": 16,
+          "column": 89,
+          "offset": 2234
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "my_logger->flush_on(spdlog::level::err); ",
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 2235
+        },
+        "end": {
+          "line": 19,
+          "column": 4,
+          "offset": 2287
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Interval based flush",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 5,
+              "offset": 2293
+            },
+            "end": {
+              "line": 21,
+              "column": 25,
+              "offset": 2313
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1,
+          "offset": 2289
+        },
+        "end": {
+          "line": 21,
+          "column": 25,
+          "offset": 2313
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlog supports setting flush interval. This is implemented by a single worker thread that periodically calls flush() on each logger.",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 1,
+              "offset": 2314
+            },
+            "end": {
+              "line": 22,
+              "column": 134,
+              "offset": 2447
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 22,
+          "column": 1,
+          "offset": 2314
+        },
+        "end": {
+          "line": 22,
+          "column": 134,
+          "offset": 2447
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For example, turn on periodic flush with interval of 5 seconds for all registered loggers:",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1,
+              "offset": 2450
+            },
+            "end": {
+              "line": 25,
+              "column": 91,
+              "offset": 2540
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 2450
+        },
+        "end": {
+          "line": 25,
+          "column": 91,
+          "offset": 2540
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::flush_every(std::chrono::seconds(5));",
+      "position": {
+        "start": {
+          "line": 26,
+          "column": 1,
+          "offset": 2541
+        },
+        "end": {
+          "line": 28,
+          "column": 4,
+          "offset": 2597
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Note",
+              "position": {
+                "start": {
+                  "line": 30,
+                  "column": 3,
+                  "offset": 2601
+                },
+                "end": {
+                  "line": 30,
+                  "column": 7,
+                  "offset": 2605
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 1,
+              "offset": 2599
+            },
+            "end": {
+              "line": 30,
+              "column": 9,
+              "offset": 2607
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " Use this only on thread safe loggers, since the periodic flush happens from a different thread.",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 9,
+              "offset": 2607
+            },
+            "end": {
+              "line": 30,
+              "column": 105,
+              "offset": 2703
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1,
+          "offset": 2599
+        },
+        "end": {
+          "line": 30,
+          "column": 105,
+          "offset": 2703
+        }
+      }
+    }
+  ],
+  "changes": []
+}

@@ -1,0 +1,340 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "Setting-up-JSON-logging-with-spdlog.md",
+    "slug": "22-setting-up-json-logging-with-spdlog",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Setting-up-JSON-logging-with-spdlog.md",
+    "sourceSHA256": "e255a28eb890a544519f4aa9c75ffd93ac1ebf5f952d7c0433d8a2342c8f978d",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/22-setting-up-json-logging-with-spdlog.md",
+    "canonicalInputSHA256": "e255a28eb890a544519f4aa9c75ffd93ac1ebf5f952d7c0433d8a2342c8f978d",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/22-setting-up-json-logging-with-spdlog.md",
+    "canonicalSHA256": "74be9ff4e5484bdd6ab2b68abdf06d3542ec24a728d287da0998a391873f4574",
+    "title": "Setting up JSON logging with spdlog",
+    "excluded": [],
+    "sourceNote": "The original examples contain a nested set_pattern expression and curly quotes, and warn about escaping. They are preserved without a claim of successful compilation or safe serialization."
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogを使うJSONの例を見かけなかったので、私たちが使った方法を共有します。人間が読めるログと、JSONによる機械可読なログを用意するのは難しくありません。",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 897
+            },
+            "end": {
+              "line": 5,
+              "column": 83,
+              "offset": 979
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 897
+        },
+        "end": {
+          "line": 5,
+          "column": 83,
+          "offset": 979
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "// Set up the opening brace and an array named \"log\"\n// we're setting a global format here but as per the docs you can set this on an individual log as well\nspdlog::set_pattern(set_pattern(\"{\\n \\\"log\\\": [\");\n\nauto mylogger = spdlog::basic_logger_mt(\"json_logger\", \"mylog.json\");\nmylogger->info(\"\"); // this initializes the log file with the opening brace and the \"log\" array as above\n\n// We have some extra formatting on the log level %l below to keep color coding when dumping json to the console and we use a full ISO 8601 time/date format\nstd::string jsonpattern = {\"{\\\"time\\\": \\\"%Y-%m-%dT%H:%M:%S.%f%z\\\", \\\"name\\\": \\\"%n\\\", \\\"level\\\": \\\"%^%l%$\\\", \\\"process\\\": %P, \\\"thread\\\": %t, \\\"message\\\": \\\"%v\\\"},\"};\n\nspdlog::set_pattern(jsonpattern);",
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 981
+        },
+        "end": {
+          "line": 19,
+          "column": 4,
+          "offset": 1734
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "その後は、通常どおり好きな内容を記録します。たとえば次のようにします。",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1,
+              "offset": 1736
+            },
+            "end": {
+              "line": 21,
+              "column": 36,
+              "offset": 1771
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1,
+          "offset": 1736
+        },
+        "end": {
+          "line": 21,
+          "column": 36,
+          "offset": 1771
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "mylogger->info(“We have started.”);",
+      "position": {
+        "start": {
+          "line": 22,
+          "column": 1,
+          "offset": 1772
+        },
+        "end": {
+          "line": 24,
+          "column": 4,
+          "offset": 1818
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "次のような構造のログエントリーが得られます。ただし、実際にはすべて1行になります。",
+          "position": {
+            "start": {
+              "line": 26,
+              "column": 1,
+              "offset": 1820
+            },
+            "end": {
+              "line": 26,
+              "column": 42,
+              "offset": 1861
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 26,
+          "column": 1,
+          "offset": 1820
+        },
+        "end": {
+          "line": 26,
+          "column": 42,
+          "offset": 1861
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "json",
+      "meta": null,
+      "value": "{\n     \"time\": \"2021-01-10T13:44:14.567117-07:00\",\n     \"name\": \"json_logger\",\n     \"level\": \"info\",\n     \"process\": 6828,\n     \"thread\": 23392,\n     \"message\": \"We have started.\"\n}",
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1,
+          "offset": 1862
+        },
+        "end": {
+          "line": 36,
+          "column": 4,
+          "offset": 2055
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "ログメッセージへ入れる内容が有効なJSONであることは、自分で確認する必要があります。必要なら完全なJSONオブジェクトを使い、必要なだけ複雑にできます。多くのC++用JSONライブラリは、JSONとして解析できるstd::stringを出力でき、それをspdlogの引数へ渡せます。また、この例のようにプレーンテキストのメッセージを使うこともできます。",
+          "position": {
+            "start": {
+              "line": 38,
+              "column": 1,
+              "offset": 2057
+            },
+            "end": {
+              "line": 38,
+              "column": 178,
+              "offset": 2234
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 38,
+          "column": 1,
+          "offset": 2057
+        },
+        "end": {
+          "line": 38,
+          "column": 178,
+          "offset": 2234
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "ログ記録が終わったら、\"log\"配列を閉じる必要があります。私たちはログをdropして、自分たちで片付ける処理も行います。",
+          "position": {
+            "start": {
+              "line": 40,
+              "column": 1,
+              "offset": 2236
+            },
+            "end": {
+              "line": 40,
+              "column": 62,
+              "offset": 2297
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 40,
+          "column": 1,
+          "offset": 2236
+        },
+        "end": {
+          "line": 40,
+          "column": 62,
+          "offset": 2297
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "auto mylogger = spdlog::get(\"json_logger\");\n\n// All we're doing below is setting the same log format, without the \",\" at the end\nstd::string jsonlastlogpattern = { \"{\\\"time\\\": \\\"%Y-%m-%dT%H:%M:%S.%f%z\\\", \\\"name\\\": \\\"%n\\\", \\\"level\\\": \\\"%^%l%$\\\", \\\"process\\\": %P, \\\"thread\\\": %t, \\\"message\\\": \\\"%v\\\"}\" };\nspdlog::set_pattern(jsonlastlogpattern);\n\n// below is our last log entry\nmylogger->info(\"Finished.\");\n\n// set the last pattern to close out the \"log\" json array and the closing brace\nspdlog::set_pattern(\"]\\n}\");\n\n// this writes out the closed array to the file\nmylogger->info(\"\");\nspdlog::drop(\"json_logger\");",
+      "position": {
+        "start": {
+          "line": 41,
+          "column": 1,
+          "offset": 2298
+        },
+        "end": {
+          "line": 57,
+          "column": 4,
+          "offset": 2921
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "最終的に、次のようなログファイルになります。私たちの設定・drop処理は、実際の作業とは別のスレッドで行うため、スレッドIDが異なります。",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 1,
+              "offset": 2923
+            },
+            "end": {
+              "line": 59,
+              "column": 70,
+              "offset": 2992
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 59,
+          "column": 1,
+          "offset": 2923
+        },
+        "end": {
+          "line": 59,
+          "column": 70,
+          "offset": 2992
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "json",
+      "meta": null,
+      "value": "{\n   \"log\": [\n      {\n         \"time\": \"2021-01-10T13:44:14.567117-07:00\",\n         \"name\": \"json_logger\",\n         \"level\": \"info\",\n         \"process\": 6828,\n         \"thread\": 23392,\n         \"message\": \"We have started.\"\n      },\n      {\n         \"time\": \"2021-01-10T13:44:23.932518-07:00\",\n         \"name\": \"json_logger\",\n         \"level\": \"info\",\n         \"process\": 6828,\n         \"thread\": 8048,\n         \"message\": \"We are doing something.\"\n      },\n      {\n         \"time\": \"2021-01-10T13:44:26.927726-07:00\",\n         \"name\": \"json_logger\",\n         \"level\": \"info\",\n         \"process\": 6828,\n         \"thread\": 8048,\n         \"message\": \"Look a number 123.456\"\n      },\n      {\n         \"time\": \"2021-01-10T13:44:29.631340-07:00\",\n         \"name\": \"json_logger\",\n         \"level\": \"info\",\n         \"process\": 6828,\n         \"thread\": 23392,\n         \"message\": \"Finished.\"\n      }\n   ]\n}",
+      "position": {
+        "start": {
+          "line": 60,
+          "column": 1,
+          "offset": 2993
+        },
+        "end": {
+          "line": 97,
+          "column": 4,
+          "offset": 3903
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "コンパイル時に有効にした最小ログレベルに注意してください。\"info\"を無効にしている場合、最初のJSONの設定と最後に閉じる処理では、より高い重大度を使う必要があります。",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 1,
+              "offset": 3905
+            },
+            "end": {
+              "line": 99,
+              "column": 87,
+              "offset": 3991
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 99,
+          "column": 1,
+          "offset": 3905
+        },
+        "end": {
+          "line": 99,
+          "column": 87,
+          "offset": 3991
+        }
+      }
+    }
+  ],
+  "changes": []
+}

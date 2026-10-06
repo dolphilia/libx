@@ -1,0 +1,1462 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "Creating-loggers.md",
+    "slug": "05-creating-loggers",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Creating-loggers.md",
+    "sourceSHA256": "ffe58404fee5d1f5cb90a5738016aae1d828b73bec81e41c4c5a5861fd38bb62",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/05-creating-loggers.md",
+    "canonicalInputSHA256": "ffe58404fee5d1f5cb90a5738016aae1d828b73bec81e41c4c5a5861fd38bb62",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/05-creating-loggers.md",
+    "canonicalSHA256": "deb8b55613c00aa910d98b7f0b3d7c3c7ad7cd51802fd7b03a7a2347f10e0f8a",
+    "title": "Creating loggers",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "各ロガーは、1個以上の ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 710
+            },
+            "end": {
+              "line": 5,
+              "column": 13,
+              "offset": 722
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "std::shared_ptr<spdlog::sink>",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 13,
+              "offset": 722
+            },
+            "end": {
+              "line": 5,
+              "column": 44,
+              "offset": 753
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を格納したvectorを持ちます。",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 44,
+              "offset": 753
+            },
+            "end": {
+              "line": 5,
+              "column": 62,
+              "offset": 771
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 710
+        },
+        "end": {
+          "line": 5,
+          "column": 62,
+          "offset": 771
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "ログ呼び出しのたびに、ログレベルが条件を満たしていれば、ロガーはそれぞれの ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 773
+            },
+            "end": {
+              "line": 7,
+              "column": 39,
+              "offset": 811
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "sink(log_msg)",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 39,
+              "offset": 811
+            },
+            "end": {
+              "line": 7,
+              "column": 54,
+              "offset": 826
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " 関数を呼び出します。",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 54,
+              "offset": 826
+            },
+            "end": {
+              "line": 7,
+              "column": 65,
+              "offset": 837
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 773
+        },
+        "end": {
+          "line": 7,
+          "column": 65,
+          "offset": 837
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogのsinkは、スレッドセーフかどうかを示すため、",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 839
+            },
+            "end": {
+              "line": 9,
+              "column": 31,
+              "offset": 869
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "_mt",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 31,
+              "offset": 869
+            },
+            "end": {
+              "line": 9,
+              "column": 36,
+              "offset": 874
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "（マルチスレッド）または ",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 36,
+              "offset": 874
+            },
+            "end": {
+              "line": 9,
+              "column": 49,
+              "offset": 887
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "_st",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 49,
+              "offset": 887
+            },
+            "end": {
+              "line": 9,
+              "column": 54,
+              "offset": 892
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "（シングルスレッド）の接尾辞を持ちます。シングルスレッドのsinkは複数のスレッドから同時に使用できませんが、ロックを行わないため、より高速になる場合があります。",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 54,
+              "offset": 892
+            },
+            "end": {
+              "line": 9,
+              "column": 135,
+              "offset": 973
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 839
+        },
+        "end": {
+          "line": 9,
+          "column": 135,
+          "offset": 973
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "ファクトリ関数を使ったロガーの作成",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 5,
+              "offset": 979
+            },
+            "end": {
+              "line": 11,
+              "column": 22,
+              "offset": 996
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 975
+        },
+        "end": {
+          "line": 11,
+          "column": 22,
+          "offset": 996
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "//Create and return a shared_ptr to a multithreaded console logger.\n#include \"spdlog/sinks/stdout_color_sinks.h\"\nauto console = spdlog::stdout_color_mt(\"some_unique_name\");",
+      "position": {
+        "start": {
+          "line": 12,
+          "column": 1,
+          "offset": 997
+        },
+        "end": {
+          "line": 16,
+          "column": 4,
+          "offset": 1180
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "このコードはコンソールロガーを作成し、\"some_unique_name\"をIDとしてspdlogのグローバルレジストリに登録し、shared_ptrとして返します。",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1,
+              "offset": 1181
+            },
+            "end": {
+              "line": 17,
+              "column": 84,
+              "offset": 1264
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 1181
+        },
+        "end": {
+          "line": 17,
+          "column": 84,
+          "offset": 1264
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlog::get(\"...\")を使ったロガーへのアクセス",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 5,
+              "offset": 1270
+            },
+            "end": {
+              "line": 19,
+              "column": 36,
+              "offset": 1301
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1,
+          "offset": 1266
+        },
+        "end": {
+          "line": 19,
+          "column": 36,
+          "offset": 1301
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "スレッドセーフな ",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 1,
+              "offset": 1302
+            },
+            "end": {
+              "line": 20,
+              "column": 10,
+              "offset": 1311
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::get(\"logger_name\")",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 10,
+              "offset": 1311
+            },
+            "end": {
+              "line": 20,
+              "column": 38,
+              "offset": 1339
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を使うと、どこからでもロガーへアクセスできます。共有ポインターを返します。",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 38,
+              "offset": 1339
+            },
+            "end": {
+              "line": 20,
+              "column": 76,
+              "offset": 1377
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1,
+          "offset": 1302
+        },
+        "end": {
+          "line": 20,
+          "column": 76,
+          "offset": 1377
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "注意：",
+              "position": {
+                "start": {
+                  "line": 22,
+                  "column": 3,
+                  "offset": 1381
+                },
+                "end": {
+                  "line": 22,
+                  "column": 6,
+                  "offset": 1384
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 1,
+              "offset": 1379
+            },
+            "end": {
+              "line": 22,
+              "column": 8,
+              "offset": 1386
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 8,
+              "offset": 1386
+            },
+            "end": {
+              "line": 22,
+              "column": 9,
+              "offset": 1387
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::get",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 9,
+              "offset": 1387
+            },
+            "end": {
+              "line": 22,
+              "column": 22,
+              "offset": 1400
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " はmutexをロックするため、コードを遅くする可能性があります。注意して使用してください。少なくとも頻繁に実行されるコード経路では、返された ",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 22,
+              "offset": 1400
+            },
+            "end": {
+              "line": 22,
+              "column": 94,
+              "offset": 1472
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "shared_ptr<spdlog::logger>",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 94,
+              "offset": 1472
+            },
+            "end": {
+              "line": 22,
+              "column": 122,
+              "offset": 1500
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を保存して直接使うことを推奨します。",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 122,
+              "offset": 1500
+            },
+            "end": {
+              "line": 22,
+              "column": 141,
+              "offset": 1519
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 22,
+          "column": 1,
+          "offset": 1379
+        },
+        "end": {
+          "line": 22,
+          "column": 141,
+          "offset": 1519
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "コンストラクターで設定する、",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 1,
+              "offset": 1521
+            },
+            "end": {
+              "line": 24,
+              "column": 15,
+              "offset": 1535
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "shared_ptr<spdlog::logger>",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 15,
+              "offset": 1535
+            },
+            "end": {
+              "line": 24,
+              "column": 43,
+              "offset": 1563
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " 型のprivateメンバーを持たせる方法が有効です。",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 43,
+              "offset": 1563
+            },
+            "end": {
+              "line": 24,
+              "column": 70,
+              "offset": 1590
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1,
+          "offset": 1521
+        },
+        "end": {
+          "line": 24,
+          "column": 70,
+          "offset": 1590
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "class MyClass\n{\nprivate:\n   std::shared_ptr<spdlog::logger> _logger;\npublic:\n   MyClass()\n   {\n     //set _logger to some existing logger\n     _logger = spdlog::get(\"some_logger\");\n     //or create directly\n     //_logger = spdlog::rotating_file_logger_mt(\"my_logger\", ...);\n   }\n};",
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 1591
+        },
+        "end": {
+          "line": 39,
+          "column": 4,
+          "offset": 1884
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "注意2：",
+              "position": {
+                "start": {
+                  "line": 41,
+                  "column": 3,
+                  "offset": 1888
+                },
+                "end": {
+                  "line": 41,
+                  "column": 7,
+                  "offset": 1892
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 1,
+              "offset": 1886
+            },
+            "end": {
+              "line": 41,
+              "column": 9,
+              "offset": 1894
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " 手動で作成したロガー（直接構築するもの。下記の",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 9,
+              "offset": 1894
+            },
+            "end": {
+              "line": 41,
+              "column": 33,
+              "offset": 1918
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "#ロガーの手動作成",
+          "children": [
+            {
+              "type": "text",
+              "value": "ロガーの手動作成",
+              "position": {
+                "start": {
+                  "line": 41,
+                  "column": 34,
+                  "offset": 1919
+                },
+                "end": {
+                  "line": 41,
+                  "column": 42,
+                  "offset": 1927
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 33,
+              "offset": 1918
+            },
+            "end": {
+              "line": 41,
+              "column": 54,
+              "offset": 1939
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "を参照）は自動登録されず、",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 54,
+              "offset": 1939
+            },
+            "end": {
+              "line": 41,
+              "column": 67,
+              "offset": 1952
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "get(\"...\")",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 67,
+              "offset": 1952
+            },
+            "end": {
+              "line": 41,
+              "column": 79,
+              "offset": 1964
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " の呼び出しでは見つかりません。",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 79,
+              "offset": 1964
+            },
+            "end": {
+              "line": 41,
+              "column": 95,
+              "offset": 1980
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 41,
+          "column": 1,
+          "offset": 1886
+        },
+        "end": {
+          "line": 41,
+          "column": 95,
+          "offset": 1980
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "そのようなロガーを登録するには、",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 1,
+              "offset": 1982
+            },
+            "end": {
+              "line": 43,
+              "column": 17,
+              "offset": 1998
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "register_logger(...)",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 17,
+              "offset": 1998
+            },
+            "end": {
+              "line": 43,
+              "column": 39,
+              "offset": 2020
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " 関数を使います。",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 39,
+              "offset": 2020
+            },
+            "end": {
+              "line": 43,
+              "column": 48,
+              "offset": 2029
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 43,
+          "column": 1,
+          "offset": 1982
+        },
+        "end": {
+          "line": 43,
+          "column": 48,
+          "offset": 2029
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::register_logger(my_logger);\n...\nauto the_same_logger = spdlog::get(\"mylogger\");",
+      "position": {
+        "start": {
+          "line": 44,
+          "column": 1,
+          "offset": 2030
+        },
+        "end": {
+          "line": 48,
+          "column": 4,
+          "offset": 2128
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "ローテーションするファイルロガーの作成",
+          "position": {
+            "start": {
+              "line": 50,
+              "column": 5,
+              "offset": 2134
+            },
+            "end": {
+              "line": 50,
+              "column": 24,
+              "offset": 2153
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 50,
+          "column": 1,
+          "offset": 2130
+        },
+        "end": {
+          "line": 50,
+          "column": 24,
+          "offset": 2153
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "//Create rotating file multi-threaded logger\n#include \"spdlog/sinks/rotating_file_sink.h\"\nauto file_logger = spdlog::rotating_logger_mt(\"file_logger\", \"logs/mylogfile\", 1048576 * 5, 3);\n...\nauto same_logger= spdlog::get(\"file_logger\");",
+      "position": {
+        "start": {
+          "line": 51,
+          "column": 1,
+          "offset": 2154
+        },
+        "end": {
+          "line": 57,
+          "column": 4,
+          "offset": 2400
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "非同期ロガーの作成",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 5,
+              "offset": 2406
+            },
+            "end": {
+              "line": 59,
+              "column": 14,
+              "offset": 2415
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 59,
+          "column": 1,
+          "offset": 2402
+        },
+        "end": {
+          "line": 59,
+          "column": 14,
+          "offset": 2415
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include \"spdlog/async.h\"\nvoid async_example()\n{\n    // default thread pool settings can be modified *before* creating the async logger:\n    // spdlog::init_thread_pool(8192, 1); // queue with 8k items and 1 backing thread.\n    auto async_file = spdlog::basic_logger_mt<spdlog::async_factory>(\"async_file_logger\", \"logs/async_log.txt\");\n    // alternatively:\n    // auto async_file = spdlog::create_async<spdlog::sinks::basic_file_sink_mt>(\"async_file_logger\", \"logs/async_log.txt\");\n   \n}",
+      "position": {
+        "start": {
+          "line": 60,
+          "column": 1,
+          "offset": 2416
+        },
+        "end": {
+          "line": 71,
+          "column": 4,
+          "offset": 2916
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "非同期ログでは、spdlogは専用のメッセージキューを持つ、共有のグローバルスレッドプールを使います。",
+          "position": {
+            "start": {
+              "line": 72,
+              "column": 1,
+              "offset": 2917
+            },
+            "end": {
+              "line": 72,
+              "column": 52,
+              "offset": 2968
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 72,
+          "column": 1,
+          "offset": 2917
+        },
+        "end": {
+          "line": 72,
+          "column": 52,
+          "offset": 2968
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "そのために、メッセージキュー内に固定数の",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 1,
+              "offset": 2970
+            },
+            "end": {
+              "line": 74,
+              "column": 21,
+              "offset": 2990
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "事前割り当て済みスロット",
+              "position": {
+                "start": {
+                  "line": 74,
+                  "column": 23,
+                  "offset": 2992
+                },
+                "end": {
+                  "line": 74,
+                  "column": 35,
+                  "offset": 3004
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 21,
+              "offset": 2990
+            },
+            "end": {
+              "line": 74,
+              "column": 37,
+              "offset": 3006
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "を作成します（64ビット環境で1スロット約256バイト）。この設定は ",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 37,
+              "offset": 3006
+            },
+            "end": {
+              "line": 74,
+              "column": 72,
+              "offset": 3041
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::init_thread_pool(queue_size, backing_threads_count)",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 72,
+              "offset": 3041
+            },
+            "end": {
+              "line": 74,
+              "column": 133,
+              "offset": 3102
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " で変更できます。",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 133,
+              "offset": 3102
+            },
+            "end": {
+              "line": 74,
+              "column": 142,
+              "offset": 3111
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 74,
+          "column": 1,
+          "offset": 2970
+        },
+        "end": {
+          "line": 74,
+          "column": 142,
+          "offset": 3111
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "メッセージを記録しようとしたときにキューが満杯であれば、呼び出し元は空きスロットができるまでブロックします（デフォルトの動作）。または、ロガーを ",
+          "position": {
+            "start": {
+              "line": 76,
+              "column": 1,
+              "offset": 3113
+            },
+            "end": {
+              "line": 76,
+              "column": 74,
+              "offset": 3186
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "async_overflow_policy==overrun_oldest",
+          "position": {
+            "start": {
+              "line": 76,
+              "column": 74,
+              "offset": 3186
+            },
+            "end": {
+              "line": 76,
+              "column": 113,
+              "offset": 3225
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " で構築した場合、キュー内の最も古いメッセージを新しいメッセージで即座に上書きします。",
+          "position": {
+            "start": {
+              "line": 76,
+              "column": 113,
+              "offset": 3225
+            },
+            "end": {
+              "line": 76,
+              "column": 156,
+              "offset": 3268
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 76,
+          "column": 1,
+          "offset": 3113
+        },
+        "end": {
+          "line": 76,
+          "column": 156,
+          "offset": 3268
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "ロガーの手動作成",
+          "position": {
+            "start": {
+              "line": 78,
+              "column": 5,
+              "offset": 3274
+            },
+            "end": {
+              "line": 78,
+              "column": 13,
+              "offset": 3282
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 78,
+          "column": 1,
+          "offset": 3270
+        },
+        "end": {
+          "line": 78,
+          "column": 13,
+          "offset": 3282
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto sink = std::make_shared<spdlog::sinks::stdout_sink_mt>();\nauto my_logger = std::make_shared<spdlog::logger>(\"mylogger\", sink);\n\n// Optionally register the logger.  This is only needed if you want to access it with spdlog::get(\"mylogger\")\nspdlog::register_logger(my_logger);",
+      "position": {
+        "start": {
+          "line": 79,
+          "column": 1,
+          "offset": 3283
+        },
+        "end": {
+          "line": 85,
+          "column": 4,
+          "offset": 3572
+        }
+      }
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "[!NOTE]\nファクトリ関数は内部で、ログレベルなどのグローバルな状態をロガーに設定します。\n手動で作成したロガーには、グローバルな状態は設定されません。\nロガーにグローバルな状態を設定したい場合は、",
+              "position": {
+                "start": {
+                  "line": 87,
+                  "column": 3,
+                  "offset": 3576
+                },
+                "end": {
+                  "line": 90,
+                  "column": 25,
+                  "offset": 3683
+                }
+              }
+            },
+            {
+              "type": "inlineCode",
+              "value": "spdlog::initialize_logger()",
+              "position": {
+                "start": {
+                  "line": 90,
+                  "column": 25,
+                  "offset": 3683
+                },
+                "end": {
+                  "line": 90,
+                  "column": 54,
+                  "offset": 3712
+                }
+              }
+            },
+            {
+              "type": "text",
+              "value": " を呼び出してください。",
+              "position": {
+                "start": {
+                  "line": 90,
+                  "column": 54,
+                  "offset": 3712
+                },
+                "end": {
+                  "line": 90,
+                  "column": 66,
+                  "offset": 3724
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 87,
+              "column": 3,
+              "offset": 3576
+            },
+            "end": {
+              "line": 90,
+              "column": 66,
+              "offset": 3724
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 87,
+          "column": 1,
+          "offset": 3574
+        },
+        "end": {
+          "line": 90,
+          "column": 66,
+          "offset": 3724
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "複数のsinkを持つロガーの作成",
+          "position": {
+            "start": {
+              "line": 92,
+              "column": 5,
+              "offset": 3730
+            },
+            "end": {
+              "line": 92,
+              "column": 21,
+              "offset": 3746
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 92,
+          "column": 1,
+          "offset": 3726
+        },
+        "end": {
+          "line": 92,
+          "column": 21,
+          "offset": 3746
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "std::vector<spdlog::sink_ptr> sinks;\nsinks.push_back(std::make_shared<spdlog::sinks::stdout_sink_st>());\nsinks.push_back(std::make_shared<spdlog::sinks::daily_file_sink_st>(\"logfile\", 23, 59));\nauto combined_logger = std::make_shared<spdlog::logger>(\"name\", begin(sinks), end(sinks));\n//register it if you need to access it globally\nspdlog::register_logger(combined_logger);",
+      "position": {
+        "start": {
+          "line": 93,
+          "column": 1,
+          "offset": 3747
+        },
+        "end": {
+          "line": 100,
+          "column": 4,
+          "offset": 4132
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "同じ出力ファイルを使う複数のファイルロガーの作成",
+          "position": {
+            "start": {
+              "line": 102,
+              "column": 5,
+              "offset": 4138
+            },
+            "end": {
+              "line": 102,
+              "column": 29,
+              "offset": 4162
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 102,
+          "column": 1,
+          "offset": 4134
+        },
+        "end": {
+          "line": 102,
+          "column": 29,
+          "offset": 4162
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "異なるロガーから同じ出力ファイルへ書き込みたい場合、すべてのロガーで同じsinkを共有する必要があります。そうしなければ、予期しない結果になる可能性があります。",
+          "position": {
+            "start": {
+              "line": 103,
+              "column": 1,
+              "offset": 4163
+            },
+            "end": {
+              "line": 103,
+              "column": 81,
+              "offset": 4243
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 103,
+          "column": 1,
+          "offset": 4163
+        },
+        "end": {
+          "line": 103,
+          "column": 81,
+          "offset": 4243
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto sharedFileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(\"fileName.txt\");\nauto firstLogger = std::make_shared<spdlog::logger>(\"firstLoggerName\", sharedFileSink);\nauto secondLogger = std::make_unique<spdlog::logger>(\"secondLoggerName\", sharedFileSink);",
+      "position": {
+        "start": {
+          "line": 104,
+          "column": 1,
+          "offset": 4244
+        },
+        "end": {
+          "line": 108,
+          "column": 4,
+          "offset": 4523
+        }
+      }
+    }
+  ],
+  "changes": []
+}

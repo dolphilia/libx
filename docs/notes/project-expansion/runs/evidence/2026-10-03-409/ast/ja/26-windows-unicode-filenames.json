@@ -1,0 +1,120 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "Windows-unicode-filenames.md",
+    "slug": "26-windows-unicode-filenames",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Windows-unicode-filenames.md",
+    "sourceSHA256": "4515b41ba4dbbc627ab5f188755fd3b53e514f551683ff2ecd2f419975faea67",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/26-windows-unicode-filenames.md",
+    "canonicalInputSHA256": "4515b41ba4dbbc627ab5f188755fd3b53e514f551683ff2ecd2f419975faea67",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/26-windows-unicode-filenames.md",
+    "canonicalSHA256": "43b20029894e8a0e12958fe019bc146480a50085040527578eeb740dafa7445d",
+    "title": "Windows unicode filenames",
+    "excluded": [],
+    "sourceNote": "The original spd namespace alias is not declared on this page. It is retained without silently adding code."
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogは、WindowsでUnicodeのファイル名をサポートしています。有効にするには、",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 837
+            },
+            "end": {
+              "line": 5,
+              "column": 49,
+              "offset": 885
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "tweakme.h",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 49,
+              "offset": 885
+            },
+            "end": {
+              "line": 5,
+              "column": 60,
+              "offset": 896
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " ファイルの次の行のコメントを外し、ファイル名を指定するときにSPDLOG_FILENAME_T（またはL..）マクロを使ってください。",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 60,
+              "offset": 896
+            },
+            "end": {
+              "line": 5,
+              "column": 128,
+              "offset": 964
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 837
+        },
+        "end": {
+          "line": 5,
+          "column": 128,
+          "offset": 964
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#define SPDLOG_WCHAR_FILENAMES",
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 966
+        },
+        "end": {
+          "line": 9,
+          "column": 4,
+          "offset": 1007
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "auto file_logger = spd::rotating_logger_mt(\"file_logger\", L\"logs/mylogfile\", 1048576 * 5, 3);\nauto file_logger2 = spd::rotating_logger_mt(\"file_logger2\", SPDLOG_FILENAME_T(\"logs/mylogfile2\"), 1048576 * 5, 3);",
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 1009
+        },
+        "end": {
+          "line": 14,
+          "column": 4,
+          "offset": 1228
+        }
+      }
+    }
+  ],
+  "changes": []
+}
