@@ -1,0 +1,110 @@
+{
+  "method": "ai-content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "reviewedAt": "2026-10-02T15:20:14.749Z",
+  "scope": "Partial page-level semantic review; independent from226 mechanical preservation; no API/Syntax semantic pass",
+  "pages": [
+    {
+      "page": "01-docs/01-home.md",
+      "status": "passed",
+      "source": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/doc/index.md",
+        "sha256": "7bd818adb42b88f3718b5679b12145eaaf6fa8649e2a31a4ca9907a615f5d497"
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/01-docs/01-home.md",
+        "sha256": "7f97926e32749ceecfacfdf949f3ba459eddc22435e2b079ddfdd2d40996464d"
+      },
+      "coverage": [
+        "Safety",
+        "Extensibility",
+        "Performance",
+        "Unicode support",
+        "Fast compilation",
+        "Small binary footprint",
+        "Portability",
+        "Open source"
+      ],
+      "findings": [
+        "All8 features read in full; conditions can/usually/if available/where possible and source numerical ranges preserved.",
+        "Original invalid nested paragraphs normalized by official HTML; post-code prose retained as sibling text.",
+        "Ranking and contributor claims retained as fixed-source assertions, not verified as present-day facts."
+      ],
+      "translation": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/translations/ja/01-docs/01-home.md",
+        "sha256": "9446cf6f71a494b03b338ad71ebdf1e5f32657424a49a8bf2f34e5bde3d1fb84"
+      },
+      "bilingualReview": "passed",
+      "separateReadabilityReview": "passed",
+      "translationFindings": [
+        "Initial safety sentence had incorrect word order around fmt::format anchor/bold; corrected to APIs prevent overflow via automatic memory management.",
+        "After correction all8 JA feature texts read again, against EN claims and qualifiers.",
+        "Full page display/final verification pending;4 JA API target links pending."
+      ]
+    },
+    {
+      "page": "01-docs/02-get-started.md",
+      "status": "passed",
+      "source": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/doc/get-started.md",
+        "sha256": "01db6557c0b0c113b48d6e98d0879a07cc2bfa2f26ad2c03e58752a1cc33f949"
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/01-docs/02-get-started.md",
+        "sha256": "41c5557942246b22ccb1e2fbddf44074a2262ab34b4ec5afaed1e220d4867357"
+      },
+      "coverage": [
+        "Intro",
+        "CMake",
+        "Alternative Targets",
+        "Installation",
+        "Debian/Ubuntu",
+        "Homebrew",
+        "Conda",
+        "vcpkg",
+        "Conan",
+        "Building from Source",
+        "Building the Docs",
+        "Build Systems",
+        "build2",
+        "Meson",
+        "Android NDK",
+        "Other"
+      ],
+      "findings": [
+        "All source and canonical prose, targets, lists and commands read in full.",
+        "Three CMake methods, CMake3.11 condition, shared/PIC/test/install conditions, docs dependencies and output preserved.",
+        "FetchContent10.2.1 commit and build2~10.0.0 examples intentionally fixed-source faithful.",
+        "Source-only HTML comments retained in source archive; not rendered as article prose."
+      ],
+      "translationReview": "pending"
+    },
+    {
+      "page": "02-license/01-license.md",
+      "status": "passed",
+      "source": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/LICENSE",
+        "sha256": "a65fcc5a1095fc33cc37e4fff69366e49d7e92f613558a2b95ed1b70e33758b4"
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/02-license/01-license.md",
+        "sha256": "1ce1210825f34aca0c8f1a3bdc3a8adb4c38b6be543fcc5ffb4b93beaeccb255"
+      },
+      "findings": [
+        "Original notice read in full: copyright, permission, inclusion obligation, warranty disclaimer and liability limitation retained verbatim.",
+        "Fixed commit source link; no software-license fallback needed because associated documentation explicitly included."
+      ],
+      "translationReview": "pending"
+    }
+  ],
+  "unreviewedCanonicalPages": [
+    "01-docs/03-api.md",
+    "01-docs/04-syntax.md"
+  ],
+  "projectFinalVerification": "pending"
+}

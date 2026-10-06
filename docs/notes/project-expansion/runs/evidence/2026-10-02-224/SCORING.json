@@ -1,0 +1,99 @@
+{
+  "candidate": "fmt",
+  "version": "12.2.0",
+  "scores": {
+    "additionalValue": {
+      "value": 3,
+      "reason": "対象12.2の公式4文書の全文訳は公式入力・一般検索の範囲では未発見。導入・API・書式を同一固定版で読める具体的追加価値があり、ユーザー指定候補でもある。検索未発見を不存在としないため3点。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/JAPANESE_RESEARCH_LIMITS.json",
+          "sha256": "c4500ec3792789277871cb99d57043373530d57d13c261475919ffce72a8c8d0"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "C/C++文書読者がCMake/他buildsystem導入、型安全format、ユーザー定義formatter、chrono/range/Unicode利用を同一公式ガイドで確認できる。固定READMEはspdlog/PyTorch等での使用を列挙し、ユーザー自身が候補指定。星数や利用者数の推測は根拠にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/BOUNDARY_REVALIDATED.json",
+          "sha256": "f4169996711dcf3e47b58bc9c87e39bde91aeee0e31ad38b7b58f11fe76e169e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/USER_INSTRUCTION.json",
+          "sha256": "ec4f48f555a115abe7b07b06cc81cb51d0b44d126db640862f6d68a030b62dca"
+        }
+      ]
+    },
+    "quality": {
+      "value": 4,
+      "reason": "公式4項目の自立した目次、導入例・書式文法/10表・61要求API+23メンバーの説明を生成し、全174コードと本文を保全した。上流ID/chrono/file::参照の不具合18件は根拠付き修復。全ライブラリAPIやC11全説明まで充足と主張せず、元の古い版指定例も保持するため5点にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/BOUNDARY_REVALIDATED.json",
+          "sha256": "f4169996711dcf3e47b58bc9c87e39bde91aeee0e31ad38b7b58f11fe76e169e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-223/THEME_CONTENT_PRESERVATION_FINAL.json",
+          "sha256": "e515a9c6bbaf23560c76a4dfb40c937ed8c922a7e2518aa967f511dab9365e57"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 3,
+      "reason": "タグcommitと全142入力固定、12ヘッダAPI生成・依存ハッシュ・修復対応表・リンク検査により差分管理できる。一方Doxygen/MkDocs/Pandocと独自生成ID補正を要し、通常Markdownより維持負担がある。更新6–12hは条件付き見積で、過去版差分の実測ではない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/WORKLOAD.json",
+          "sha256": "eea7ac765c0690fe9603352320075077ad5ac96a8d4f82dd106bd40217846d9e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/BOUNDARY_REVALIDATED.json",
+          "sha256": "f4169996711dcf3e47b58bc9c87e39bde91aeee0e31ad38b7b58f11fe76e169e"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 4,
+      "reason": "既存Pandoc/rawHTML保持・Astro正規テンプレート・共通プラグインと全本文/コード/アンカー/参照の比較器を4文書で実証し、1280/390px表示も通過。再生成経路と修復マップは正式importerへ移せる。cxx固有の固定ツール整備は必要で無修正の汎用化ではないため5点にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-223/THEME_TRIAL_SETUP.json",
+          "sha256": "88bf915c60e610679f883909c95a19e28fcbaa08461376e514bffcb61a7cfa41"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-223/DISPLAY_AUDIT.json",
+          "sha256": "454da540c271683c667098cbb8e7458e1334de73afa488ea3a0cf8814111195c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-222/FMT_REPAIR_MAP_V2.json",
+          "sha256": "05e343bfd9ba58f21f021b6e5469afa70d8561ea6b8ac9ae111a4abdccb22e4d"
+        }
+      ]
+    }
+  },
+  "total": 71,
+  "weights": {
+    "additionalValue": 30,
+    "practicality": 25,
+    "quality": 20,
+    "maintenance": 15,
+    "reuse": 10
+  },
+  "decision": "全必須条件と別確認が通れば71点/追加価値3/実用性4でeligible。固定版の公式C++4文書とAPI展開を全文日本語で提供する。公開済みの巡回より新規着手を優先。",
+  "basis": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/WORKLOAD.json",
+      "sha256": "eea7ac765c0690fe9603352320075077ad5ac96a8d4f82dd106bd40217846d9e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/JAPANESE_RESEARCH_LIMITS.json",
+      "sha256": "c4500ec3792789277871cb99d57043373530d57d13c261475919ffce72a8c8d0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-224/BOUNDARY_REVALIDATED.json",
+      "sha256": "f4169996711dcf3e47b58bc9c87e39bde91aeee0e31ad38b7b58f11fe76e169e"
+    }
+  ]
+}

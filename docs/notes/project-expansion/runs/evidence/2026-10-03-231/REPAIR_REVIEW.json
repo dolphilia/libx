@@ -1,0 +1,29 @@
+{
+  "method": "ai-code-review",
+  "reviewedAt": "2026-10-02T15:44:39.999Z",
+  "scope": "Fmt app only; explicit JA rawHTML heading AST promotion before Astro heading collection",
+  "plugin": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/app-support/rehype-explicit-headings.mjs",
+    "sha256": "8a96da90e36e61d294c218874be0e655cf66c6f398166bdf7eec751c2effc469"
+  },
+  "config": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/app-support/astro.config.mjs",
+    "sha256": "1314aa2a034b58d04281ad662e4bc74073b6bb45e71bedd592c264dc325e3bfa"
+  },
+  "findings": [
+    "Scoped to v12-2-0/ja, originalEN bypass. Only explicit source-safe heading IDs promoted.",
+    "Inline code text/entity decoding retained; neighboring raw code/table HTML kept. No dependency or sharedtheme change.",
+    "ActualDOM nativeTOC GetStarted15/Syntax12 labels andfragmentIDs exact, both mobile/desktopTOC components present. Browser interaction still pending.",
+    "First verifier applied /en/ replacement to externalConda URL; corrected verifier to restrict relocation to /docs/fmt/v12-2-0/en/. Actualcontent never changed."
+  ],
+  "verification": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/TOC_REPAIR_VERIFIED.json",
+    "sha256": "1130045d21b8c4078f9b2e17a014979884a3269ab58b9fae05d346f232c9b214"
+  },
+  "status": "passed",
+  "limitations": [
+    "Fullprojectdisplay/browser QA pending",
+    "API original semantic/JA lastpage pending",
+    "CI pinned Pandoc pending"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "status": "passed-with-limited-scope",
+  "method": "ai-content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "reviewedAt": "2026-10-02T16:14:31.012Z",
+  "draft": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/translation-drafts/ja/03-api-segments.json",
+    "sha256": "00b60d266f1ac37abb1a3d5f87faeace03b43d227d025795292925998649fedd"
+  },
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-236/API_TRANSLATION_SEGMENTS.json",
+    "sha256": "13c8aadb8a29bac7b90341af8743e1647647a75e2dca453422a7d64527c83b1c"
+  },
+  "newRange": {
+    "start": 60,
+    "end": 139,
+    "count": 80
+  },
+  "previousRange": {
+    "start": 0,
+    "end": 59,
+    "count": 60,
+    "review": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-236/PARTIAL_SEGMENT_CONTENT_REVIEW.json",
+      "sha256": "412dad6ecae46984e06f194a444b9f92c88a72bbbcb70e90580f32b869472594"
+    },
+    "originalReviewedDraftRetained": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/DRAFT.before.json",
+      "sha256": "959f8852d03bcaf24a1676357e55cb81c39231cda1840cb499eece3f372c2a56"
+    },
+    "unchanged": true
+  },
+  "scope": "All original60-139 read in two nontruncated chunks. All actual Japanese80 entries independently reread after authoring, and109/113/114 reread after correction. This excludes code examples/declarations; full-page bilingual/code review awaits assembled body.",
+  "meaningChecked": [
+    "Default C++20consteval checks and oldercompiler FMT_STRING alternative",
+    "Unused arguments allowed",
+    "Typeerasure compiletimecheck andsize rationale",
+    "Argumentreference lifetimes/default Context; viewparameter-only usage",
+    "Namedarg runtime fmt::arg versus sufficiently-newcompiler literal checks",
+    "preC++17stringview API subset anddifferent-std library/client caveat",
+    "Locale-independent comma thousands separator",
+    "Internalbuffer direct-use restriction versusmemory_buffer",
+    "InlineSIZE andPOD mayuninitialized/moves",
+    "errno notpreserved/noerrorcommunication througherrno",
+    "Errorcode/stdgenericcategory/implementationdefined output",
+    "Allocator outputcontainer only andoccasional sprintf fallback",
+    "Defaultlocaleindependence/L/stdlocaleoverloads/headercost",
+    "Legacychecks requiresC++14/no-opC++11/forced ordinarystring rejection"
+  ],
+  "readabilityReview": "All80entries read in sequence; API identifiers and literal example output unchanged, exception/default/may clauses retained. Empty generated paragraphs remain empty.",
+  "corrections": [
+    {
+      "index": 109,
+      "reason": "Avoid choosing an unsupported logical alternative for upstream trivially copyable/constructible; retain slash phrasing in Japanese."
+    },
+    {
+      "index": 113,
+      "reason": "other object translated as別のオブジェクト; do not invent an identifier in prose."
+    },
+    {
+      "index": 114,
+      "reason": "Clarify the other basic_memory_buffer object versus this object without inventing a parameter identifier."
+    }
+  ],
+  "fullPageReview": "pending",
+  "renderedCodeLinkAndLayoutReview": "pending",
+  "remaining": 146
+}

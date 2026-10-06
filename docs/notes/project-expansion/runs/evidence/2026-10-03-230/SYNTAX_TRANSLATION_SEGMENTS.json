@@ -1,0 +1,2063 @@
+{
+  "method": "Codex full paragraph/list/table-effect translation; original protectedinline/16pre preserved, no localLLM",
+  "mappings": [
+    {
+      "label": "p0/inline0",
+      "original": "fmt::format",
+      "translated": "fmt::format",
+      "elementPreserved": true
+    },
+    {
+      "label": "p0/inline1",
+      "original": "fmt::print",
+      "translated": "fmt::print",
+      "elementPreserved": true
+    },
+    {
+      "label": "p0",
+      "original": "The formatting functions in this library — most notably\nfmt::format and fmt::print —\naccept format strings written in the syntax described here.",
+      "translated": "このライブラリの書式設定関数、特にfmt::formatとfmt::printは、ここで説明する構文で記述された書式文字列を受け取ります。"
+    },
+    {
+      "label": "p1/inline0",
+      "original": "replacement fields",
+      "translated": "置換フィールド",
+      "elementPreserved": true
+    },
+    {
+      "label": "p1/inline1",
+      "original": "{",
+      "translated": "{",
+      "elementPreserved": true
+    },
+    {
+      "label": "p1/inline2",
+      "original": "}",
+      "translated": "}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p1/inline3",
+      "original": "{{",
+      "translated": "{{",
+      "elementPreserved": true
+    },
+    {
+      "label": "p1/inline4",
+      "original": "{",
+      "translated": "{",
+      "elementPreserved": true
+    },
+    {
+      "label": "p1/inline5",
+      "original": "}}",
+      "translated": "}}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p1/inline6",
+      "original": "}",
+      "translated": "}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p1",
+      "original": "A format string is plain text with embedded replacement fields\ndelimited by the braces { and }. Characters outside of any\nreplacement field are copied to the output unchanged. To emit a literal\nbrace, double it: {{ yields a single { in the output, and }}\nyields a single }.",
+      "translated": "書式文字列は、波括弧{と}で囲まれた置換フィールドを埋め込んだ通常のテキストです。置換フィールドの外側にある文字は、そのまま出力にコピーされます。波括弧自体を出力するには二重にします。{{は1つの{を、}}は1つの}を出力します。"
+    },
+    {
+      "label": "p2",
+      "original": "A replacement field is described by the grammar below.",
+      "translated": "置換フィールドは、次の文法で記述されます。"
+    },
+    {
+      "label": "p4/inline0",
+      "original": "arg_id",
+      "translated": "arg_id",
+      "elementPreserved": true
+    },
+    {
+      "label": "p4/inline1",
+      "original": "fmt::arg",
+      "translated": "fmt::arg",
+      "elementPreserved": true
+    },
+    {
+      "label": "p4/inline2",
+      "original": "arg_id",
+      "translated": "arg_id",
+      "elementPreserved": true
+    },
+    {
+      "label": "p4/inline3",
+      "original": "automatic",
+      "translated": "自動",
+      "elementPreserved": true
+    },
+    {
+      "label": "p4/inline4",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "p4",
+      "original": "An arg_id selects which argument to format. It may be a non-negative\ninteger (positional reference) or an identifier matching the name of an\nargument passed via fmt::arg (named reference). When\narg_id is omitted, arguments are consumed in left-to-right order; this\nautomatic indexing must be used uniformly throughout the format string\n— mixing automatic and explicit numeric ids is a compile-time error (or\na format_error at runtime).",
+      "translated": "arg_idは、どの引数を書式設定するかを選びます。非負整数による位置参照、またはfmt::argで渡した引数の名前に一致する識別子による名前参照を指定できます。arg_idを省略すると、引数は左から右へ順に使われます。この自動インデックス指定は書式文字列全体で統一する必要があります。自動指定と明示的な数値IDを混在させると、コンパイル時エラーになります（実行時にはformat_errorになります）。"
+    },
+    {
+      "label": "p5/inline0",
+      "original": "format_spec",
+      "translated": "format_spec",
+      "elementPreserved": true
+    },
+    {
+      "label": "p5/inline1",
+      "original": ":",
+      "translated": ":",
+      "elementPreserved": true
+    },
+    {
+      "label": "p5",
+      "original": "A format_spec, introduced by :, describes how the value should be\nrendered. Its grammar is type-dependent; the form used by the standard\nbuilt-in types is documented in the next section.",
+      "translated": ":の後に置くformat_specは、値をどのように表示するかを記述します。その文法は型によって異なります。標準の組み込み型で使われる形式は、次の節で説明します。"
+    },
+    {
+      "label": "p6",
+      "original": "For example:",
+      "translated": "例："
+    },
+    {
+      "label": "p7/inline0",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p7/inline1",
+      "original": "precision",
+      "translated": "precision",
+      "elementPreserved": true
+    },
+    {
+      "label": "p7/inline2",
+      "original": "format_spec",
+      "translated": "format_spec",
+      "elementPreserved": true
+    },
+    {
+      "label": "p7/inline3",
+      "original": "{}",
+      "translated": "{}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p7/inline4",
+      "original": "{arg_id}",
+      "translated": "{arg_id}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p7/inline5",
+      "original": "arg_id",
+      "translated": "arg_id",
+      "elementPreserved": true
+    },
+    {
+      "label": "p7/inline6",
+      "original": "format_spec",
+      "translated": "format_spec",
+      "elementPreserved": true
+    },
+    {
+      "label": "p7",
+      "original": "A width or precision inside a format_spec may itself be written as\na nested replacement field — {} or {arg_id} — in which case it takes\nits value from an integer argument at runtime. Nested fields accept only\nan arg_id; they cannot themselves contain a format_spec.",
+      "translated": "format_specの中のwidthやprecision自体を、{}または{arg_id}という入れ子の置換フィールドとして書くこともできます。この場合、実行時に整数引数から値を取得します。入れ子のフィールドに指定できるのはarg_idだけで、その中にさらにformat_specを含めることはできません。"
+    },
+    {
+      "label": "p8/inline0",
+      "original": "format_spec",
+      "translated": "format_spec",
+      "elementPreserved": true
+    },
+    {
+      "label": "p8/inline1",
+      "original": "formatter",
+      "translated": "formatter",
+      "elementPreserved": true
+    },
+    {
+      "label": "p8",
+      "original": "The grammar below describes the format_spec shared by the built-in\ntypes — integers, floating-point values, characters, strings, booleans,\nand pointers — as well as by any user-defined type whose formatter\nreuses fmt's parser.",
+      "translated": "次の文法は、整数、浮動小数点数、文字、文字列、真偽値、ポインターという組み込み型と、formatterがfmtのパーサーを再利用するユーザー定義型に共通するformat_specを記述しています。"
+    },
+    {
+      "label": "p10/inline0",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "p10",
+      "original": "Whether a particular option is meaningful depends on the value being\nformatted; options that do not apply to a value's type are diagnosed at\ncompile time when possible and otherwise raise a format_error.",
+      "translated": "各オプションが意味を持つかどうかは、書式設定する値によって決まります。値の型に適用できないオプションは、可能であればコンパイル時に診断され、それ以外の場合はformat_errorを送出します。"
+    },
+    {
+      "label": "p11/inline0",
+      "original": "align",
+      "translated": "align",
+      "elementPreserved": true
+    },
+    {
+      "label": "p11/inline1",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p11",
+      "original": "The align field selects where padding is placed when width makes the\nfield wider than the value's natural rendering.",
+      "translated": "alignは、widthによってフィールドが値の通常の表示より広くなるときに、どこへ詰め物を入れるかを選びます。"
+    },
+    {
+      "label": "p12/inline0",
+      "original": "fill",
+      "translated": "fill",
+      "elementPreserved": true
+    },
+    {
+      "label": "p12/inline1",
+      "original": "{",
+      "translated": "{",
+      "elementPreserved": true
+    },
+    {
+      "label": "p12/inline2",
+      "original": "}",
+      "translated": "}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p12/inline3",
+      "original": "align",
+      "translated": "align",
+      "elementPreserved": true
+    },
+    {
+      "label": "p12",
+      "original": "The fill character is any single Unicode code point other than { or\n}, encoded the same way as the format string. It supplies the padding\ncharacter in place of the default space. A fill character is recognized\nonly when it is immediately followed by an align character — otherwise\nit would be indistinguishable from an option in another position — so to\nuse a custom fill you must also specify an alignment.",
+      "translated": "fill文字は、{と}以外の単一のUnicodeコードポイントで、書式文字列と同じ方法でエンコードします。既定の空白の代わりに使う詰め文字を指定します。fill文字として認識されるのは、その直後にalign文字がある場合だけです。そうでなければ、別の位置にあるオプションと区別できません。したがって、独自の詰め文字を使うときは配置方法も指定する必要があります。"
+    },
+    {
+      "label": "p13/inline0",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p13",
+      "original": "Alignment has no observable effect when the value's natural rendering is\nalready at least as wide as width; the value is never truncated to\nfit.",
+      "translated": "値の通常の表示がすでにwidth以上の幅を持つ場合、配置指定による見た目の変化はありません。幅に合わせるために値が切り詰められることはありません。"
+    },
+    {
+      "label": "p14/inline0",
+      "original": "sign",
+      "translated": "sign",
+      "elementPreserved": true
+    },
+    {
+      "label": "p14",
+      "original": "The sign field controls how the sign of a numeric value is emitted. It\napplies to signed integer and floating-point types only.",
+      "translated": "signは、数値の符号をどのように出力するかを制御します。符号付き整数と浮動小数点型だけに適用されます。"
+    },
+    {
+      "label": "p15/inline0",
+      "original": "-0.0",
+      "translated": "-0.0",
+      "elementPreserved": true
+    },
+    {
+      "label": "p15",
+      "original": "The sign of -0.0 is preserved in floating-point output.",
+      "translated": "浮動小数点数の出力では、-0.0の符号が保持されます。"
+    },
+    {
+      "label": "p16/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "p16/inline1",
+      "original": "alternate form",
+      "translated": "代替形式",
+      "elementPreserved": true
+    },
+    {
+      "label": "p16",
+      "original": "The # flag selects an alternate form whose exact meaning depends on\nthe presentation type:",
+      "translated": "#フラグは代替形式を選びます。正確な意味は表示型によって異なります："
+    },
+    {
+      "label": "p17/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "p17",
+      "original": "The # flag is not accepted by non-numeric types.",
+      "translated": "数値以外の型では、#フラグは使えません。"
+    },
+    {
+      "label": "p18/inline0",
+      "original": "0",
+      "translated": "0",
+      "elementPreserved": true
+    },
+    {
+      "label": "p18/inline1",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p18/inline2",
+      "original": "0x",
+      "translated": "0x",
+      "elementPreserved": true
+    },
+    {
+      "label": "p18/inline3",
+      "original": "{:+08d}",
+      "translated": "{:+08d}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p18/inline4",
+      "original": "120",
+      "translated": "120",
+      "elementPreserved": true
+    },
+    {
+      "label": "p18/inline5",
+      "original": "+0000120",
+      "translated": "+0000120",
+      "elementPreserved": true
+    },
+    {
+      "label": "p18",
+      "original": "A 0 placed immediately before width enables sign-aware zero padding\nfor numeric types. Zeros are inserted between the sign (or base prefix,\nif any) and the most significant digit, so that a sign or 0x prefix\nstays adjacent to the digits rather than being separated by spaces. For\nexample, {:+08d} applied to 120 produces +0000120.",
+      "translated": "widthの直前に0を置くと、数値型に対して符号を考慮したゼロ埋めが有効になります。ゼロは、符号（または基数接頭辞がある場合はその接頭辞）と最上位桁の間に挿入されます。そのため、符号や0x接頭辞は空白で数字から離されず、数字に隣接したままになります。たとえば、120に{:+08d}を適用すると、+0000120になります。"
+    },
+    {
+      "label": "p19",
+      "original": "Zero padding:",
+      "translated": "ゼロ埋めの性質："
+    },
+    {
+      "label": "p20/inline0",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p20/inline1",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p20/inline2",
+      "original": "align",
+      "translated": "align",
+      "elementPreserved": true
+    },
+    {
+      "label": "p20/inline3",
+      "original": "fill",
+      "translated": "fill",
+      "elementPreserved": true
+    },
+    {
+      "label": "p20/inline4",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p20",
+      "original": "width is a non-negative decimal integer giving the minimum number of\ncharacters that the field should occupy. If the formatted value is\nshorter than width, it is padded according to align and fill; if\nit is longer, the value is written in full. width never causes the\nvalue to be truncated.",
+      "translated": "widthは、フィールドが占める文字数の最小値を表す非負の10進整数です。書式設定した値がwidthより短ければ、alignとfillに従って埋めます。長ければ、値全体を出力します。widthが原因で値が切り詰められることはありません。"
+    },
+    {
+      "label": "p21/inline0",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p21/inline1",
+      "original": "{}",
+      "translated": "{}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p21/inline2",
+      "original": "{arg_id}",
+      "translated": "{arg_id}",
+      "elementPreserved": true
+    },
+    {
+      "label": "p21",
+      "original": "To supply width at runtime, write the field as {} to consume the\nnext argument, or as {arg_id} to reference an integer argument by\nposition or by name.",
+      "translated": "実行時にwidthを指定するには、次の引数を使う{}、または位置や名前で整数引数を参照する{arg_id}をフィールドに記述します。"
+    },
+    {
+      "label": "p22/inline0",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p22",
+      "original": "When formatting strings, \"width\" is measured in display columns using a\nUnicode-aware estimate (East Asian wide and fullwidth characters, plus\ncommon emoji ranges, count as two columns; everything else counts as\none). This keeps fixed width values visually consistent in monospace\nrenderings that combine Latin and CJK text.",
+      "translated": "文字列の書式設定では、Unicodeを考慮した推定で「幅」を表示列数として測ります。東アジアの幅広文字・全角文字と一般的な絵文字の範囲は2列、それ以外は1列と数えます。これにより、ラテン文字とCJK文字を組み合わせた等幅表示でも、固定のwidth値が見た目に一貫した幅になります。"
+    },
+    {
+      "label": "p23/inline0",
+      "original": "precision",
+      "translated": "precision",
+      "elementPreserved": true
+    },
+    {
+      "label": "p23/inline1",
+      "original": ".",
+      "translated": ".",
+      "elementPreserved": true
+    },
+    {
+      "label": "p23/inline2",
+      "original": "width",
+      "translated": "width",
+      "elementPreserved": true
+    },
+    {
+      "label": "p23",
+      "original": "precision is a non-negative decimal integer (introduced by .) whose\nmeaning depends on the value being formatted. As with width, it may be\nsupplied as a nested replacement field for runtime evaluation.",
+      "translated": "precisionは、.の後に置く非負の10進整数で、その意味は書式設定する値によって異なります。widthと同じく、入れ子の置換フィールドで指定して実行時に評価することもできます。"
+    },
+    {
+      "label": "p24/inline0",
+      "original": "precision",
+      "translated": "precision",
+      "elementPreserved": true
+    },
+    {
+      "label": "p24/inline1",
+      "original": "precision",
+      "translated": "precision",
+      "elementPreserved": true
+    },
+    {
+      "label": "p24",
+      "original": "A precision is not accepted for integer, character, boolean, or\npointer types. When a precision limits the number of characters taken\nfrom a C string, the string must still be null-terminated.",
+      "translated": "整数、文字、真偽値、ポインター型ではprecisionを指定できません。precisionでC文字列から取り出す文字数を制限する場合でも、その文字列はヌル終端されている必要があります。"
+    },
+    {
+      "label": "p25/inline0",
+      "original": "L",
+      "translated": "L",
+      "elementPreserved": true
+    },
+    {
+      "label": "p25",
+      "original": "The L flag selects locale-sensitive formatting for numeric types. The\nformatter inspects the C++ locale supplied to the formatting function\n(or the global locale, if none was passed) and inserts the locale's\ndigit grouping characters and — for floating-point values — its decimal\npoint. The flag has no effect on non-numeric types.",
+      "translated": "Lフラグは、数値型に対してロケールに応じた書式設定を選びます。フォーマッターは書式設定関数に渡されたC++ロケールを調べ、渡されていなければグローバルロケールを使います。そのロケールの桁区切り文字と、浮動小数点数では小数点を挿入します。このフラグは数値以外の型には影響しません。"
+    },
+    {
+      "label": "p26/inline0",
+      "original": "type",
+      "translated": "type",
+      "elementPreserved": true
+    },
+    {
+      "label": "p26",
+      "original": "The type field chooses the representation for the value. Specifiers\nare grouped below by the value categories they apply to.",
+      "translated": "値の表現はtypeで選びます。以下では、適用される値の種類ごとに指定子をまとめています。"
+    },
+    {
+      "label": "p27/inline0",
+      "original": "Integers, booleans, and characters:",
+      "translated": "整数、真偽値、文字：",
+      "elementPreserved": true
+    },
+    {
+      "label": "p27",
+      "original": "Integers, booleans, and characters:",
+      "translated": "整数、真偽値、文字："
+    },
+    {
+      "label": "p28/inline0",
+      "original": "Floating-point values:",
+      "translated": "浮動小数点数：",
+      "elementPreserved": true
+    },
+    {
+      "label": "p28",
+      "original": "Floating-point values:",
+      "translated": "浮動小数点数："
+    },
+    {
+      "label": "p29/inline0",
+      "original": "Strings and characters:",
+      "translated": "文字列と文字：",
+      "elementPreserved": true
+    },
+    {
+      "label": "p29",
+      "original": "Strings and characters:",
+      "translated": "文字列と文字："
+    },
+    {
+      "label": "p30/inline0",
+      "original": "Pointers:",
+      "translated": "ポインター：",
+      "elementPreserved": true
+    },
+    {
+      "label": "p30",
+      "original": "Pointers:",
+      "translated": "ポインター："
+    },
+    {
+      "label": "p31/inline0",
+      "original": "char*",
+      "translated": "char*",
+      "elementPreserved": true
+    },
+    {
+      "label": "p31/inline1",
+      "original": "const char*",
+      "translated": "const char*",
+      "elementPreserved": true
+    },
+    {
+      "label": "p31/inline2",
+      "original": "p",
+      "translated": "p",
+      "elementPreserved": true
+    },
+    {
+      "label": "p31",
+      "original": "A C string (char* or const char*) accepts both the string\npresentation types and p, so the same value can be formatted as either\ntext or an address.",
+      "translated": "C文字列（char*またはconst char*）では、文字列の表示型とpの両方を使えます。そのため、同じ値をテキストとしてもアドレスとしても書式設定できます。"
+    },
+    {
+      "label": "p32/inline0",
+      "original": "std::tm",
+      "translated": "std::tm",
+      "elementPreserved": true
+    },
+    {
+      "label": "p32",
+      "original": "The format specification for chrono duration and time point types as\nwell as std::tm has the following syntax:",
+      "translated": "chronoの期間型・時点型とstd::tmの書式指定は、次の構文を使います："
+    },
+    {
+      "label": "p34/inline0",
+      "original": "std::chrono::duration",
+      "translated": "std::chrono::duration",
+      "elementPreserved": true
+    },
+    {
+      "label": "p34",
+      "original": "Literal chars are copied unchanged to the output. Precision is valid\nonly for std::chrono::duration types with a floating-point\nrepresentation type.",
+      "translated": "リテラル文字は、そのまま出力にコピーされます。精度を指定できるのは、表現型が浮動小数点型であるstd::chrono::durationだけです。"
+    },
+    {
+      "label": "p35/inline0",
+      "original": "chrono_type",
+      "translated": "chrono_type",
+      "elementPreserved": true
+    },
+    {
+      "label": "p35",
+      "original": "The available presentation types (chrono_type) are:",
+      "translated": "利用できる表示型（chrono_type）は次のとおりです："
+    },
+    {
+      "label": "p36/inline0",
+      "original": "'d'",
+      "translated": "'d'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p36/inline1",
+      "original": "std::tm",
+      "translated": "std::tm",
+      "elementPreserved": true
+    },
+    {
+      "label": "p36",
+      "original": "Specifiers that have a calendaric component such as 'd' (the day of\nmonth) are valid only for std::tm and time points but not durations.",
+      "translated": "日付の要素を持つ指定子、たとえば月内の日を表す'd'は、std::tmと時点に対してだけ有効で、期間には使えません。"
+    },
+    {
+      "label": "p37/inline0",
+      "original": "padding_modifier",
+      "translated": "padding_modifier",
+      "elementPreserved": true
+    },
+    {
+      "label": "p37",
+      "original": "The available padding modifiers (padding_modifier) are:",
+      "translated": "利用できる桁埋め修飾子（padding_modifier）は次のとおりです："
+    },
+    {
+      "label": "p38/inline0",
+      "original": "'H'",
+      "translated": "'H'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline1",
+      "original": "'I'",
+      "translated": "'I'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline2",
+      "original": "'M'",
+      "translated": "'M'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline3",
+      "original": "'S'",
+      "translated": "'S'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline4",
+      "original": "'U'",
+      "translated": "'U'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline5",
+      "original": "'V'",
+      "translated": "'V'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline6",
+      "original": "'W'",
+      "translated": "'W'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline7",
+      "original": "'Y'",
+      "translated": "'Y'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline8",
+      "original": "'d'",
+      "translated": "'d'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline9",
+      "original": "'j'",
+      "translated": "'j'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38/inline10",
+      "original": "'m'",
+      "translated": "'m'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p38",
+      "original": "These modifiers are only supported for the 'H', 'I', 'M', 'S',\n'U', 'V', 'W', 'Y', 'd', 'j' and 'm' presentation types.",
+      "translated": "これらの修飾子を使える表示型は、'H'、'I'、'M'、'S'、'U'、'V'、'W'、'Y'、'd'、'j'、'm'だけです。"
+    },
+    {
+      "label": "p39",
+      "original": "Example:",
+      "translated": "例："
+    },
+    {
+      "label": "p40",
+      "original": "The format specification for range types has the following syntax:",
+      "translated": "範囲型の書式指定は、次の構文を使います："
+    },
+    {
+      "label": "p41/inline0",
+      "original": "'n'",
+      "translated": "'n'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p41",
+      "original": "The 'n' option formats the range without the opening and closing\nbrackets.",
+      "translated": "'n'オプションは、範囲の前後の括弧を付けずに書式設定します。"
+    },
+    {
+      "label": "p42/inline0",
+      "original": "range_type",
+      "translated": "range_type",
+      "elementPreserved": true
+    },
+    {
+      "label": "p42",
+      "original": "The available presentation types for range_type are:",
+      "translated": "range_typeで利用できる表示型は次のとおりです："
+    },
+    {
+      "label": "p43/inline0",
+      "original": "range_type",
+      "translated": "range_type",
+      "elementPreserved": true
+    },
+    {
+      "label": "p43/inline1",
+      "original": "'s'",
+      "translated": "'s'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p43/inline2",
+      "original": "'?s'",
+      "translated": "'?s'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p43/inline3",
+      "original": "'n'",
+      "translated": "'n'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p43/inline4",
+      "original": "range_underlying_spec",
+      "translated": "range_underlying_spec",
+      "elementPreserved": true
+    },
+    {
+      "label": "p43/inline5",
+      "original": "'s'",
+      "translated": "'s'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p43/inline6",
+      "original": "'?s'",
+      "translated": "'?s'",
+      "elementPreserved": true
+    },
+    {
+      "label": "p43",
+      "original": "If range_type is 's' or '?s', the range element type must be a\ncharacter type. The 'n' option and range_underlying_spec are\nmutually exclusive with 's' and '?s'.",
+      "translated": "range_typeが's'または'?s'の場合、範囲の要素型は文字型でなければなりません。'n'オプションとrange_underlying_specは、's'および'?s'と併用できません。"
+    },
+    {
+      "label": "p44/inline0",
+      "original": "range_underlying_spec",
+      "translated": "range_underlying_spec",
+      "elementPreserved": true
+    },
+    {
+      "label": "p44",
+      "original": "The range_underlying_spec is parsed based on the formatter of the\nrange's element type.",
+      "translated": "range_underlying_specは、範囲の要素型のフォーマッターに基づいて解析されます。"
+    },
+    {
+      "label": "p45/inline0",
+      "original": "range_underlying_spec",
+      "translated": "range_underlying_spec",
+      "elementPreserved": true
+    },
+    {
+      "label": "p45",
+      "original": "By default, a range of characters or strings is printed escaped and\nquoted. But if any range_underlying_spec is provided (even if it is\nempty), then the characters or strings are printed according to the\nprovided specification.",
+      "translated": "既定では、文字や文字列の範囲はエスケープされ、引用符で囲んで出力されます。ただし、range_underlying_specを指定した場合は、空であっても、その指定に従って文字や文字列が出力されます。"
+    },
+    {
+      "label": "p46",
+      "original": "Examples:",
+      "translated": "例："
+    },
+    {
+      "label": "p47",
+      "original": "The example below ties together several elements introduced above —\nnested replacement fields, fill characters, and centering — to draw a\nfixed-width box around a message:",
+      "translated": "次の例は、ここまでに説明した入れ子の置換フィールド、詰め文字、中央配置を組み合わせ、メッセージの周囲に固定幅の枠を描きます："
+    },
+    {
+      "label": "p48",
+      "original": "Output:",
+      "translated": "出力："
+    },
+    {
+      "label": "li0/inline0",
+      "original": "0b",
+      "translated": "0b",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline1",
+      "original": "0B",
+      "translated": "0B",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline2",
+      "original": "0",
+      "translated": "0",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline3",
+      "original": "0x",
+      "translated": "0x",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline4",
+      "original": "0X",
+      "translated": "0X",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline5",
+      "original": "0x",
+      "translated": "0x",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline6",
+      "original": "x",
+      "translated": "x",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline7",
+      "original": "0X",
+      "translated": "0X",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0/inline8",
+      "original": "X",
+      "translated": "X",
+      "elementPreserved": true
+    },
+    {
+      "label": "li0",
+      "original": "For integers rendered in binary, octal, or hexadecimal, it prepends\nthe appropriate base prefix (0b/0B, 0, or 0x/0X). The case\nof the prefix follows the case of the type specifier — 0x for x,\n0X for X, and so on.",
+      "translated": "2進、8進、16進で表示する整数には、適切な基数接頭辞（0b/0B、0、0x/0X）を前に付けます。接頭辞の大文字・小文字は型指定子に従います。xには0x、Xには0Xという対応です。"
+    },
+    {
+      "label": "li1/inline0",
+      "original": "g",
+      "translated": "g",
+      "elementPreserved": true
+    },
+    {
+      "label": "li1/inline1",
+      "original": "G",
+      "translated": "G",
+      "elementPreserved": true
+    },
+    {
+      "label": "li1",
+      "original": "For floating-point values, it forces the decimal point to appear in\nthe output even if no fractional digits would otherwise be emitted,\nand prevents the g/G presentation types from removing trailing\nzeros from the significand.",
+      "translated": "浮動小数点数では、本来なら小数部の数字が出力されない場合にも小数点を表示させ、g/Gの表示型が仮数部の末尾のゼロを取り除くことを防ぎます。"
+    },
+    {
+      "label": "li2",
+      "original": "applies only to numeric types;",
+      "translated": "数値型だけに適用されます。"
+    },
+    {
+      "label": "li3/inline0",
+      "original": "inf",
+      "translated": "inf",
+      "elementPreserved": true
+    },
+    {
+      "label": "li3/inline1",
+      "original": "nan",
+      "translated": "nan",
+      "elementPreserved": true
+    },
+    {
+      "label": "li3",
+      "original": "has no effect on inf or nan;",
+      "translated": "infやnanには影響しません。"
+    },
+    {
+      "label": "li4/inline0",
+      "original": "align",
+      "translated": "align",
+      "elementPreserved": true
+    },
+    {
+      "label": "li4",
+      "original": "is ignored when an explicit align is also present.",
+      "translated": "明示的なalignも指定されている場合は無視されます。"
+    },
+    {
+      "label": "heading0",
+      "original": "Format String Syntax",
+      "translated": "書式文字列の構文"
+    },
+    {
+      "label": "heading1",
+      "original": "Format Specification",
+      "translated": "書式指定"
+    },
+    {
+      "label": "heading2",
+      "original": "Fill and alignment",
+      "translated": "詰め文字と配置"
+    },
+    {
+      "label": "heading3",
+      "original": "Sign",
+      "translated": "符号"
+    },
+    {
+      "label": "heading4/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "heading4",
+      "original": "Alternate form (#)",
+      "translated": "代替形式（#）"
+    },
+    {
+      "label": "heading5/inline0",
+      "original": "0",
+      "translated": "0",
+      "elementPreserved": true
+    },
+    {
+      "label": "heading5",
+      "original": "Zero padding (0)",
+      "translated": "ゼロ埋め（0）"
+    },
+    {
+      "label": "heading6",
+      "original": "Width",
+      "translated": "幅"
+    },
+    {
+      "label": "heading7",
+      "original": "Precision",
+      "translated": "精度"
+    },
+    {
+      "label": "heading8/inline0",
+      "original": "L",
+      "translated": "L",
+      "elementPreserved": true
+    },
+    {
+      "label": "heading8",
+      "original": "Locale (L)",
+      "translated": "ロケール（L）"
+    },
+    {
+      "label": "heading9",
+      "original": "Presentation type",
+      "translated": "表示型"
+    },
+    {
+      "label": "heading10",
+      "original": "Chrono Format Specification",
+      "translated": "chronoの書式指定"
+    },
+    {
+      "label": "heading11",
+      "original": "Range Format Specification",
+      "translated": "範囲の書式指定"
+    },
+    {
+      "label": "heading12",
+      "original": "A Combined Example",
+      "translated": "組み合わせた例"
+    },
+    {
+      "label": "table0/head0",
+      "original": "Option",
+      "translated": "オプション"
+    },
+    {
+      "label": "table0/head1",
+      "original": "Effect",
+      "translated": "効果"
+    },
+    {
+      "label": "table0/effect1",
+      "original": "Left-align; pad on the right. Default for non-numeric types.",
+      "translated": "左寄せし、右側を埋めます。数値以外の型の既定です。"
+    },
+    {
+      "label": "table0/effect2",
+      "original": "Right-align; pad on the left. Default for numeric types.",
+      "translated": "右寄せし、左側を埋めます。数値型の既定です。"
+    },
+    {
+      "label": "table0/effect3",
+      "original": "Center the value; if the padding cannot be split evenly, the extra padding character goes on the right.",
+      "translated": "中央に配置します。埋める文字数を均等に分けられない場合、余分な1文字は右側に置きます。"
+    },
+    {
+      "label": "table1/head0",
+      "original": "Option",
+      "translated": "オプション"
+    },
+    {
+      "label": "table1/head1",
+      "original": "Effect",
+      "translated": "効果"
+    },
+    {
+      "label": "table1/effect1/inline0",
+      "original": "+",
+      "translated": "+",
+      "elementPreserved": true
+    },
+    {
+      "label": "table1/effect1/inline1",
+      "original": "-",
+      "translated": "-",
+      "elementPreserved": true
+    },
+    {
+      "label": "table1/effect1",
+      "original": "Always emit a sign (+ for nonnegative values, - for negative).",
+      "translated": "常に符号を出力します（非負の値には+、負の値には-）。"
+    },
+    {
+      "label": "table1/effect2/inline0",
+      "original": "-",
+      "translated": "-",
+      "elementPreserved": true
+    },
+    {
+      "label": "table1/effect2",
+      "original": "Emit - only for negative values. This is the default.",
+      "translated": "負の値にだけ-を出力します。これが既定です。"
+    },
+    {
+      "label": "table1/type3",
+      "original": "space",
+      "translated": "空白"
+    },
+    {
+      "label": "table1/effect3/inline0",
+      "original": "-",
+      "translated": "-",
+      "elementPreserved": true
+    },
+    {
+      "label": "table1/effect3",
+      "original": "Emit a leading space for nonnegative values and - for negative ones; useful for aligning columns of signed numbers.",
+      "translated": "非負の値には先頭に空白、負の値には-を出力します。符号付き数値を列に揃えるのに便利です。"
+    },
+    {
+      "label": "table2/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table2/head1/inline0",
+      "original": ".precision",
+      "translated": ".precision",
+      "elementPreserved": true
+    },
+    {
+      "label": "table2/head1",
+      "original": "Meaning of .precision",
+      "translated": ".precisionの意味"
+    },
+    {
+      "label": "table2/effect1",
+      "original": "Digits emitted after the decimal point.",
+      "translated": "小数点以下に出力する桁数。"
+    },
+    {
+      "label": "table2/effect2",
+      "original": "Total number of significant digits.",
+      "translated": "有効数字の総数。"
+    },
+    {
+      "label": "table2/effect3",
+      "original": "Digits after the decimal point in the hexadecimal significand. If omitted, just enough digits are emitted to round-trip the value exactly.",
+      "translated": "16進の仮数部で、小数点以下の桁数。省略すると、値を正確に往復変換できるだけの桁数を出力します。"
+    },
+    {
+      "label": "table2/type4/inline0",
+      "original": "s",
+      "translated": "s",
+      "elementPreserved": true
+    },
+    {
+      "label": "table2/type4/inline1",
+      "original": "?",
+      "translated": "?",
+      "elementPreserved": true
+    },
+    {
+      "label": "table2/type4",
+      "original": "Strings (s, ?, or default)",
+      "translated": "文字列（s、?、または既定）"
+    },
+    {
+      "label": "table2/effect4",
+      "original": "Upper bound on the number of code points copied from the value.",
+      "translated": "値からコピーするコードポイント数の上限。"
+    },
+    {
+      "label": "table3/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table3/head1",
+      "original": "Effect",
+      "translated": "効果"
+    },
+    {
+      "label": "table3/effect1/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect1/inline1",
+      "original": "0b",
+      "translated": "0b",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect1",
+      "original": "Base 2. The # flag adds a 0b prefix.",
+      "translated": "2進数。#フラグで0b接頭辞を付けます。"
+    },
+    {
+      "label": "table3/effect2/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect2/inline1",
+      "original": "0B",
+      "translated": "0B",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect2",
+      "original": "Base 2. The # flag adds a 0B prefix.",
+      "translated": "2進数。#フラグで0B接頭辞を付けます。"
+    },
+    {
+      "label": "table3/effect3/inline0",
+      "original": "bool",
+      "translated": "bool",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect3",
+      "original": "Render the integer as the character with that code point. Not allowed for bool.",
+      "translated": "整数を、そのコードポイントの文字として表示します。boolには使えません。"
+    },
+    {
+      "label": "table3/effect4",
+      "original": "Base 10. The default for integer types.",
+      "translated": "10進数。整数型の既定です。"
+    },
+    {
+      "label": "table3/effect5",
+      "original": "Base 8.",
+      "translated": "8進数。"
+    },
+    {
+      "label": "table3/effect6/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect6/inline1",
+      "original": "0x",
+      "translated": "0x",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect6",
+      "original": "Base 16, lower-case digits. The # flag adds a 0x prefix.",
+      "translated": "16進数で、数字に小文字を使います。#フラグで0x接頭辞を付けます。"
+    },
+    {
+      "label": "table3/effect7/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect7/inline1",
+      "original": "0X",
+      "translated": "0X",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect7",
+      "original": "Base 16, upper-case digits. The # flag adds a 0X prefix.",
+      "translated": "16進数で、数字に大文字を使います。#フラグで0X接頭辞を付けます。"
+    },
+    {
+      "label": "table3/type8",
+      "original": "none",
+      "translated": "指定なし"
+    },
+    {
+      "label": "table3/effect8/inline0",
+      "original": "d",
+      "translated": "d",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect8/inline1",
+      "original": "c",
+      "translated": "c",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect8/inline2",
+      "original": "true",
+      "translated": "true",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect8/inline3",
+      "original": "false",
+      "translated": "false",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect8/inline4",
+      "original": "bool",
+      "translated": "bool",
+      "elementPreserved": true
+    },
+    {
+      "label": "table3/effect8",
+      "original": "Same as d for integers, c for characters, and the textual form (true/false) for bool.",
+      "translated": "整数にはd、文字にはc、boolにはテキスト表現（true/false）を使う場合と同じです。"
+    },
+    {
+      "label": "table4/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table4/head1",
+      "original": "Effect",
+      "translated": "効果"
+    },
+    {
+      "label": "table4/effect1/inline0",
+      "original": "1.8p+1",
+      "translated": "1.8p+1",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect1/inline1",
+      "original": "p",
+      "translated": "p",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect1/inline2",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect1/inline3",
+      "original": "0x",
+      "translated": "0x",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect1",
+      "original": "Hexadecimal-significand form (e.g. 1.8p+1). Lower-case digits and a lower-case p for the binary exponent. The # flag adds a 0x prefix.",
+      "translated": "16進の仮数部を使う形式（例：1.8p+1）。数字には小文字を使い、2進指数には小文字のpを使います。#フラグで0x接頭辞を付けます。"
+    },
+    {
+      "label": "table4/effect2/inline0",
+      "original": "a",
+      "translated": "a",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect2",
+      "original": "Same as a, but upper-case throughout.",
+      "translated": "aと同じですが、全体に大文字を使います。"
+    },
+    {
+      "label": "table4/effect3/inline0",
+      "original": "e",
+      "translated": "e",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect3",
+      "original": "Scientific notation with a lower-case e for the decimal exponent.",
+      "translated": "10進指数に小文字のeを使う科学表記。"
+    },
+    {
+      "label": "table4/effect4/inline0",
+      "original": "E",
+      "translated": "E",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect4",
+      "original": "Scientific notation with an upper-case E.",
+      "translated": "大文字のEを使う科学表記。"
+    },
+    {
+      "label": "table4/effect5",
+      "original": "Fixed-point notation.",
+      "translated": "固定小数点表記。"
+    },
+    {
+      "label": "table4/effect6/inline0",
+      "original": "f",
+      "translated": "f",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect6/inline1",
+      "original": "nan",
+      "translated": "nan",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect6/inline2",
+      "original": "NAN",
+      "translated": "NAN",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect6/inline3",
+      "original": "inf",
+      "translated": "inf",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect6/inline4",
+      "original": "INF",
+      "translated": "INF",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect6",
+      "original": "Same as f, but renders nan as NAN and inf as INF.",
+      "translated": "fと同じですが、nanはNAN、infはINFと表示します。"
+    },
+    {
+      "label": "table4/effect7/inline0",
+      "original": "#",
+      "translated": "#",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect7/inline1",
+      "original": "0",
+      "translated": "0",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect7/inline2",
+      "original": "1",
+      "translated": "1",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect7",
+      "original": "General form: scientific notation when the exponent would be less than −4 or not less than the precision, otherwise fixed-point; trailing zeros are removed from the fractional part unless # is set. A precision of 0 is interpreted as 1.",
+      "translated": "一般形式。指数が−4未満、または精度以上になる場合は科学表記、それ以外は固定小数点表記を使います。#を指定しない限り、小数部の末尾のゼロは取り除かれます。精度0は1として扱います。"
+    },
+    {
+      "label": "table4/effect8/inline0",
+      "original": "g",
+      "translated": "g",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect8/inline1",
+      "original": "E",
+      "translated": "E",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect8/inline2",
+      "original": "INF",
+      "translated": "INF",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect8/inline3",
+      "original": "NAN",
+      "translated": "NAN",
+      "elementPreserved": true
+    },
+    {
+      "label": "table4/effect8",
+      "original": "Same as g, but uses E for the exponent and upper-case INF/NAN.",
+      "translated": "gと同じですが、指数にはE、INF/NANには大文字を使います。"
+    },
+    {
+      "label": "table4/type9",
+      "original": "none",
+      "translated": "指定なし"
+    },
+    {
+      "label": "table4/effect9",
+      "original": "Shortest round-trip representation: the formatted value, when parsed back into the same floating-point type, reproduces the input bit for bit.",
+      "translated": "往復変換可能な最短表現。書式設定した値を同じ浮動小数点型として読み戻すと、入力がビット単位で再現されます。"
+    },
+    {
+      "label": "table5/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table5/head1",
+      "original": "Effect",
+      "translated": "効果"
+    },
+    {
+      "label": "table5/effect1/inline0",
+      "original": "bool",
+      "translated": "bool",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect1/inline1",
+      "original": "true",
+      "translated": "true",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect1/inline2",
+      "original": "false",
+      "translated": "false",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect1",
+      "original": "Plain string output. Default for string types and for bool (which is rendered as true or false).",
+      "translated": "通常の文字列出力。文字列型とboolの既定で、boolはtrueまたはfalseとして表示されます。"
+    },
+    {
+      "label": "table5/effect2/inline0",
+      "original": "bool",
+      "translated": "bool",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect2",
+      "original": "Character output. Default for character types. Not allowed for bool.",
+      "translated": "文字出力。文字型の既定です。boolには使えません。"
+    },
+    {
+      "label": "table5/effect3/inline0",
+      "original": "\\n",
+      "translated": "\\n",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect3/inline1",
+      "original": "\\t",
+      "translated": "\\t",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect3/inline2",
+      "original": "\\\"",
+      "translated": "\\\"",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect3/inline3",
+      "original": "\\u{...}",
+      "translated": "\\u{...}",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect3",
+      "original": "Debug output: the value is wrapped in single quotes (characters) or double quotes (strings), and non-printable, non-ASCII, and special characters are escaped using C-style escape sequences such as \\n, \\t, \\\", and \\u{...}.",
+      "translated": "デバッグ出力。値を、文字なら単一引用符、文字列なら二重引用符で囲みます。表示不能な文字、非ASCII文字、特殊文字は、\\n、\\t、\\\"、\\u{...}などのC形式のエスケープシーケンスでエスケープします。"
+    },
+    {
+      "label": "table5/type4",
+      "original": "none",
+      "translated": "指定なし"
+    },
+    {
+      "label": "table5/effect4/inline0",
+      "original": "s",
+      "translated": "s",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect4/inline1",
+      "original": "bool",
+      "translated": "bool",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect4/inline2",
+      "original": "c",
+      "translated": "c",
+      "elementPreserved": true
+    },
+    {
+      "label": "table5/effect4",
+      "original": "Same as s for strings and bool, and as c for characters.",
+      "translated": "文字列とboolにはs、文字にはcを使う場合と同じです。"
+    },
+    {
+      "label": "table6/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table6/head1",
+      "original": "Effect",
+      "translated": "効果"
+    },
+    {
+      "label": "table6/effect1/inline0",
+      "original": "0x",
+      "translated": "0x",
+      "elementPreserved": true
+    },
+    {
+      "label": "table6/effect1",
+      "original": "Hexadecimal address prefixed by 0x. Default for pointer types.",
+      "translated": "0x接頭辞を付けた16進アドレス。ポインター型の既定です。"
+    },
+    {
+      "label": "table6/type2",
+      "original": "none",
+      "translated": "指定なし"
+    },
+    {
+      "label": "table6/effect2/inline0",
+      "original": "p",
+      "translated": "p",
+      "elementPreserved": true
+    },
+    {
+      "label": "table6/effect2",
+      "original": "Same as p.",
+      "translated": "pを使う場合と同じです。"
+    },
+    {
+      "label": "table7/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table7/head1",
+      "original": "Meaning",
+      "translated": "意味"
+    },
+    {
+      "label": "table7/effect1/inline0",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect1",
+      "original": "\n    The abbreviated weekday name, e.g. \"Sat\". If the value does not contain a\n    valid weekday, an exception of type format_error is thrown.\n  ",
+      "translated": "曜日の短縮名（例：\"Sat\"）。値に有効な曜日が含まれていない場合、format_error型の例外を送出します。"
+    },
+    {
+      "label": "table7/effect2/inline0",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect2",
+      "original": "\n    The full weekday name, e.g. \"Saturday\". If the value does not contain a\n    valid weekday, an exception of type format_error is thrown.\n  ",
+      "translated": "曜日の完全な名前（例：\"Saturday\"）。値に有効な曜日が含まれていない場合、format_error型の例外を送出します。"
+    },
+    {
+      "label": "table7/effect3/inline0",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect3",
+      "original": "\n    The abbreviated month name, e.g. \"Nov\". If the value does not contain a\n    valid month, an exception of type format_error is thrown.\n  ",
+      "translated": "月の短縮名（例：\"Nov\"）。値に有効な月が含まれていない場合、format_error型の例外を送出します。"
+    },
+    {
+      "label": "table7/effect4/inline0",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect4",
+      "original": "\n    The full month name, e.g. \"November\". If the value does not contain a valid\n    month, an exception of type format_error is thrown.\n  ",
+      "translated": "月の完全な名前（例：\"November\"）。値に有効な月が含まれていない場合、format_error型の例外を送出します。"
+    },
+    {
+      "label": "table7/effect5/inline0",
+      "original": "%Ec",
+      "translated": "%Ec",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect5",
+      "original": "\n    The date and time representation, e.g. \"Sat Nov 12 22:04:00 1955\". The\n    modified command %Ec produces the locale's alternate date and\n    time representation.\n  ",
+      "translated": "日付と時刻の表現（例：\"Sat Nov 12 22:04:00 1955\"）。修飾したコマンド%Ecは、ロケールの代替の日付・時刻表現を出力します。"
+    },
+    {
+      "label": "table7/effect6/inline0",
+      "original": "%EC",
+      "translated": "%EC",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect6",
+      "original": "\n    The year divided by 100 using floored division, e.g. \"19\". If the result\n    is a single decimal digit, it is prefixed with 0. The modified command\n    %EC produces the locale's alternative representation of the\n    century.\n  ",
+      "translated": "年を100で割り、切り下げた値（例：\"19\"）。結果が10進1桁の場合、先頭に0を付けます。修飾したコマンド%ECは、ロケールの世紀の代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect7/inline0",
+      "original": "%Od",
+      "translated": "%Od",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect7",
+      "original": "\n    The day of month as a decimal number. If the result is a single decimal\n    digit, it is prefixed with 0. The modified command %Od\n    produces the locale's alternative representation.\n  ",
+      "translated": "月内の日を10進数で表します。結果が10進1桁の場合、先頭に0を付けます。修飾したコマンド%Odは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect8/inline0",
+      "original": "%m/%d/%y",
+      "translated": "%m/%d/%y",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect8",
+      "original": "Equivalent to %m/%d/%y, e.g. \"11/12/55\".",
+      "translated": "%m/%d/%yと同じです（例：\"11/12/55\"）。"
+    },
+    {
+      "label": "table7/effect9/inline0",
+      "original": "%Oe",
+      "translated": "%Oe",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect9",
+      "original": "\n    The day of month as a decimal number. If the result is a single decimal\n    digit, it is prefixed with a space. The modified command %Oe\n    produces the locale's alternative representation.\n  ",
+      "translated": "月内の日を10進数で表します。結果が10進1桁の場合、先頭に空白を付けます。修飾したコマンド%Oeは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect10/inline0",
+      "original": "%Y-%m-%d",
+      "translated": "%Y-%m-%d",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect10",
+      "original": "Equivalent to %Y-%m-%d, e.g. \"1955-11-12\".",
+      "translated": "%Y-%m-%dと同じです（例：\"1955-11-12\"）。"
+    },
+    {
+      "label": "table7/effect11",
+      "original": "\n    The last two decimal digits of the ISO week-based year. If the result is a\n    single digit it is prefixed by 0.\n  ",
+      "translated": "ISO週基準の年の下2桁を10進数で表します。結果が1桁の場合、先頭に0を付けます。"
+    },
+    {
+      "label": "table7/effect12",
+      "original": "\n    The ISO week-based year as a decimal number. If the result is less than\n    four digits it is left-padded with 0 to four digits.\n  ",
+      "translated": "ISO週基準の年を10進数で表します。結果が4桁未満の場合、左側を0で埋めて4桁にします。"
+    },
+    {
+      "label": "table7/effect13/inline0",
+      "original": "%b",
+      "translated": "%b",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect13",
+      "original": "Equivalent to %b, e.g. \"Nov\".",
+      "translated": "%bと同じです（例：\"Nov\"）。"
+    },
+    {
+      "label": "table7/effect14/inline0",
+      "original": "%OH",
+      "translated": "%OH",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect14",
+      "original": "\n    The hour (24-hour clock) as a decimal number. If the result is a single\n    digit, it is prefixed with 0. The modified command %OH\n    produces the locale's alternative representation.\n  ",
+      "translated": "時を24時間制の10進数で表します。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%OHは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect15/inline0",
+      "original": "%OI",
+      "translated": "%OI",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect15",
+      "original": "\n    The hour (12-hour clock) as a decimal number. If the result is a single\n    digit, it is prefixed with 0. The modified command %OI\n    produces the locale's alternative representation.\n  ",
+      "translated": "時を12時間制の10進数で表します。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%OIは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect16",
+      "original": "\n    If the type being formatted is a specialization of duration, the decimal\n    number of days without padding. Otherwise, the day of the year as a decimal\n    number. Jan 1 is 001. If the result is less than three digits, it is\n    left-padded with 0 to three digits.\n  ",
+      "translated": "書式設定する型がdurationの特殊化の場合、日数を桁埋めなしの10進数で表します。それ以外の場合、年内の日を10進数で表します。1月1日は001です。結果が3桁未満の場合、左側を0で埋めて3桁にします。"
+    },
+    {
+      "label": "table7/effect17/inline0",
+      "original": "%Om",
+      "translated": "%Om",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect17",
+      "original": "\n    The month as a decimal number. Jan is 01. If the result is a single digit,\n    it is prefixed with 0. The modified command %Om produces the\n    locale's alternative representation.\n  ",
+      "translated": "月を10進数で表します。1月は01です。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%Omは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect18/inline0",
+      "original": "%OM",
+      "translated": "%OM",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect18",
+      "original": "\n    The minute as a decimal number. If the result is a single digit, it\n    is prefixed with 0. The modified command %OM produces the\n    locale's alternative representation.\n  ",
+      "translated": "分を10進数で表します。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%OMは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect19",
+      "original": "A new-line character.",
+      "translated": "改行文字。"
+    },
+    {
+      "label": "table7/effect20",
+      "original": "The AM/PM designations associated with a 12-hour clock.",
+      "translated": "12時間制で使うAM/PMの表記。"
+    },
+    {
+      "label": "table7/effect21",
+      "original": "The duration's unit suffix.",
+      "translated": "期間の単位を表す接尾辞。"
+    },
+    {
+      "label": "table7/effect22/inline0",
+      "original": ".count()",
+      "translated": ".count()",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect22",
+      "original": "\n    The duration's numeric value (as if extracted via .count()).\n  ",
+      "translated": "期間の数値（.count()で取得した値と同様）。"
+    },
+    {
+      "label": "table7/effect23",
+      "original": "The 12-hour clock time, e.g. \"10:04:00 PM\".",
+      "translated": "12時間制の時刻（例：\"10:04:00 PM\"）。"
+    },
+    {
+      "label": "table7/effect24/inline0",
+      "original": "%H:%M",
+      "translated": "%H:%M",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect24",
+      "original": "Equivalent to %H:%M, e.g. \"22:04\".",
+      "translated": "%H:%Mと同じです（例：\"22:04\"）。"
+    },
+    {
+      "label": "table7/effect25/inline0",
+      "original": "%OS",
+      "translated": "%OS",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect25",
+      "original": "\n    Seconds as a decimal number. If the number of seconds is less than 10, the\n    result is prefixed with 0. If the precision of the input cannot be exactly\n    represented with seconds, then the format is a decimal floating-point number\n    with a fixed format and a precision matching that of the precision of the\n    input (or to a microseconds precision if the conversion to floating-point\n    decimal seconds cannot be made within 18 fractional digits). The modified\n    command %OS produces the locale's alternative representation.\n  ",
+      "translated": "秒を10進数で表します。秒数が10未満の場合、先頭に0を付けます。入力の精度を秒で正確に表せない場合は、入力の精度に合わせた精度の固定形式の10進浮動小数点数で表示します。ただし、小数点以下18桁以内で10進浮動小数点秒に変換できない場合は、マイクロ秒の精度を使います。修飾したコマンド%OSは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect26",
+      "original": "A horizontal-tab character.",
+      "translated": "水平タブ文字。"
+    },
+    {
+      "label": "table7/effect27/inline0",
+      "original": "%H:%M:%S",
+      "translated": "%H:%M:%S",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect27",
+      "original": "Equivalent to %H:%M:%S.",
+      "translated": "%H:%M:%Sと同じです。"
+    },
+    {
+      "label": "table7/effect28/inline0",
+      "original": "%Ou",
+      "translated": "%Ou",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect28",
+      "original": "\n    The ISO weekday as a decimal number (1-7), where Monday is 1. The modified\n    command %Ou produces the locale's alternative representation.\n  ",
+      "translated": "ISOの曜日を10進数（1〜7）で表し、月曜日を1とします。修飾したコマンド%Ouは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect29/inline0",
+      "original": "%OU",
+      "translated": "%OU",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect29",
+      "original": "\n    The week number of the year as a decimal number. The first Sunday of the\n    year is the first day of week 01. Days of the same year prior to that are\n    in week 00. If the result is a single digit, it is prefixed with 0.\n    The modified command %OU produces the locale's alternative\n    representation.\n  ",
+      "translated": "年内の週番号を10進数で表します。その年の最初の日曜日が第01週の初日です。同じ年のそれより前の日は第00週に入ります。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%OUは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect30/inline0",
+      "original": "%OV",
+      "translated": "%OV",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect30",
+      "original": "\n    The ISO week-based week number as a decimal number. If the result is a\n    single digit, it is prefixed with 0. The modified command %OV\n    produces the locale's alternative representation.\n  ",
+      "translated": "ISO週基準の週番号を10進数で表します。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%OVは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect31/inline0",
+      "original": "%Ow",
+      "translated": "%Ow",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect31",
+      "original": "\n    The weekday as a decimal number (0-6), where Sunday is 0. The modified\n    command %Ow produces the locale's alternative representation.\n  ",
+      "translated": "曜日を10進数（0〜6）で表し、日曜日を0とします。修飾したコマンド%Owは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect32/inline0",
+      "original": "%OW",
+      "translated": "%OW",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect32",
+      "original": "\n    The week number of the year as a decimal number. The first Monday of the\n    year is the first day of week 01. Days of the same year prior to that are\n    in week 00. If the result is a single digit, it is prefixed with 0.\n    The modified command %OW produces the locale's alternative\n    representation.\n  ",
+      "translated": "年内の週番号を10進数で表します。その年の最初の月曜日が第01週の初日です。同じ年のそれより前の日は第00週に入ります。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%OWは、ロケールの代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect33/inline0",
+      "original": "%Ex",
+      "translated": "%Ex",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect33",
+      "original": "\n    The date representation, e.g. \"11/12/55\". The modified command\n    %Ex produces the locale's alternate date representation.\n  ",
+      "translated": "日付の表現（例：\"11/12/55\"）。修飾したコマンド%Exは、ロケールの代替の日付表現を出力します。"
+    },
+    {
+      "label": "table7/effect34/inline0",
+      "original": "%EX",
+      "translated": "%EX",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect34",
+      "original": "\n    The time representation, e.g. \"10:04:00\". The modified command\n    %EX produces the locale's alternate time representation.\n  ",
+      "translated": "時刻の表現（例：\"10:04:00\"）。修飾したコマンド%EXは、ロケールの代替の時刻表現を出力します。"
+    },
+    {
+      "label": "table7/effect35/inline0",
+      "original": "%Oy",
+      "translated": "%Oy",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect35/inline1",
+      "original": "%Ey",
+      "translated": "%Ey",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect35/inline2",
+      "original": "%EC",
+      "translated": "%EC",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect35",
+      "original": "\n    The last two decimal digits of the year. If the result is a single digit\n    it is prefixed by 0. The modified command %Oy produces the\n    locale's alternative representation. The modified command %Ey\n    produces the locale's alternative representation of offset from\n    %EC (year only).\n  ",
+      "translated": "年の下2桁を10進数で表します。結果が1桁の場合、先頭に0を付けます。修飾したコマンド%Oyは、ロケールの代替表現を出力します。修飾したコマンド%Eyは、%ECからの差のロケールによる代替表現を出力します（年だけ）。"
+    },
+    {
+      "label": "table7/effect36/inline0",
+      "original": "%EY",
+      "translated": "%EY",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect36",
+      "original": "\n    The year as a decimal number. If the result is less than four digits it is\n    left-padded with 0 to four digits. The modified command %EY\n    produces the locale's alternative full year representation.\n  ",
+      "translated": "年を10進数で表します。結果が4桁未満の場合、左側を0で埋めて4桁にします。修飾したコマンド%EYは、ロケールの完全な年の代替表現を出力します。"
+    },
+    {
+      "label": "table7/effect37/inline0",
+      "original": "%Ez",
+      "translated": "%Ez",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect37/inline1",
+      "original": "%Oz",
+      "translated": "%Oz",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect37/inline2",
+      "original": ":",
+      "translated": ":",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect37/inline3",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect37",
+      "original": "\n    The offset from UTC in the ISO 8601:2004 format. For example -0430 refers\n    to 4 hours 30 minutes behind UTC. If the offset is zero, +0000 is used.\n    The modified commands %Ez and %Oz insert a\n    : between the hours and minutes: -04:30. If the offset\n    information is not available, an exception of type\n    format_error is thrown.\n  ",
+      "translated": "UTCからのオフセットをISO 8601:2004形式で表します。たとえば、-0430はUTCより4時間30分遅れていることを示します。オフセットがゼロの場合は+0000を使います。修飾したコマンド%Ezと%Ozは、時と分の間に:を挿入します（-04:30）。オフセット情報が利用できない場合は、format_error型の例外を送出します。"
+    },
+    {
+      "label": "table7/effect38/inline0",
+      "original": "format_error",
+      "translated": "format_error",
+      "elementPreserved": true
+    },
+    {
+      "label": "table7/effect38",
+      "original": "\n    The time zone abbreviation. If the time zone abbreviation is not available,\n    an exception of type format_error is thrown.\n  ",
+      "translated": "タイムゾーンの略称。タイムゾーンの略称が利用できない場合は、format_error型の例外を送出します。"
+    },
+    {
+      "label": "table7/effect39",
+      "original": "A % character.",
+      "translated": "%文字。"
+    },
+    {
+      "label": "table8/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table8/head1",
+      "original": "Meaning",
+      "translated": "意味"
+    },
+    {
+      "label": "table8/effect1",
+      "original": "Pad a numeric result with spaces.",
+      "translated": "数値の結果を空白で埋めます。"
+    },
+    {
+      "label": "table8/effect2",
+      "original": "Do not pad a numeric result string.",
+      "translated": "数値の結果の文字列を埋めません。"
+    },
+    {
+      "label": "table8/effect3",
+      "original": "Pad a numeric result string with zeros.",
+      "translated": "数値の結果の文字列をゼロで埋めます。"
+    },
+    {
+      "label": "table9/head0",
+      "original": "Type",
+      "translated": "型"
+    },
+    {
+      "label": "table9/head1",
+      "original": "Meaning",
+      "translated": "意味"
+    },
+    {
+      "label": "table9/type1",
+      "original": "none",
+      "translated": "指定なし"
+    },
+    {
+      "label": "table9/effect1",
+      "original": "Default format.",
+      "translated": "既定の書式。"
+    },
+    {
+      "label": "table9/effect2",
+      "original": "String format. The range is formatted as a string.",
+      "translated": "文字列形式。範囲を文字列として書式設定します。"
+    },
+    {
+      "label": "table9/effect3",
+      "original": "Debug format. The range is formatted as an escaped string.",
+      "translated": "デバッグ形式。範囲をエスケープした文字列として書式設定します。"
+    }
+  ],
+  "separateReviewCorrections": [
+    {
+      "kind": "readability",
+      "from": "どこへ詰め物を入れるか",
+      "to": "どこに詰め文字を入れるか"
+    },
+    {
+      "kind": "conditionClarity",
+      "from": "それ以外の場合、年内の日を10進数で表します。1月1日は001です。結果が3桁未満の場合、左側を0で埋めて3桁にします。",
+      "to": "それ以外の場合は、年内の日を10進数で表し、1月1日を001とします。この場合、結果が3桁未満なら、左側を0で埋めて3桁にします。",
+      "reason": "Keep duration day count without padding; three-digit padding belongs to calendar-day branch."
+    }
+  ]
+}

@@ -1,0 +1,1718 @@
+[
+  {
+    "index": 0,
+    "tag": "p",
+    "id": null,
+    "text": "The {fmt} library API consists of the following components:"
+  },
+  {
+    "index": 1,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/base.h: the base API providing main formatting\nfunctions for char/UTF-8 with C++20 compile-time checks and minimal\ndependencies"
+  },
+  {
+    "index": 2,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/format.h: fmt::format and other formatting\nfunctions as well as locale support"
+  },
+  {
+    "index": 3,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/ranges.h: formatting of ranges and tuples"
+  },
+  {
+    "index": 4,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/chrono.h: date and time formatting"
+  },
+  {
+    "index": 5,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/std.h: formatters for standard library types"
+  },
+  {
+    "index": 6,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/compile.h: format string compilation"
+  },
+  {
+    "index": 7,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/color.h: terminal colors and text styles"
+  },
+  {
+    "index": 8,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/os.h: system APIs"
+  },
+  {
+    "index": 9,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/ostream.h: std::ostream support"
+  },
+  {
+    "index": 10,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/args.h: dynamic argument lists"
+  },
+  {
+    "index": 11,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/printf.h: safe printf"
+  },
+  {
+    "index": 12,
+    "tag": "li",
+    "id": null,
+    "text": "fmt/xchar.h: optional wchar_t support"
+  },
+  {
+    "index": 13,
+    "tag": "p",
+    "id": null,
+    "text": "All functions and types provided by the library reside in namespace\nfmt and macros have prefix FMT_."
+  },
+  {
+    "index": 14,
+    "tag": "h2",
+    "id": "c-module-api",
+    "text": "C++ Module API"
+  },
+  {
+    "index": 15,
+    "tag": "p",
+    "id": null,
+    "text": "With the C++ module API, the headers listed above don't need to be\nincluded. You can use the import fmt; statement instead. All other\nfunctionality, listed below, remains the same."
+  },
+  {
+    "index": 16,
+    "tag": "h2",
+    "id": "base-api",
+    "text": "Base API"
+  },
+  {
+    "index": 17,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/base.h defines the base API which provides main formatting\nfunctions for char/UTF-8 with C++20 compile-time checks. It has\nminimal include dependencies for better compile times. This header is\nonly beneficial when using {fmt} as a library (the default) and not in\nthe header-only mode. It also provides formatter specializations for\nthe following types:"
+  },
+  {
+    "index": 18,
+    "tag": "li",
+    "id": null,
+    "text": "int, long long"
+  },
+  {
+    "index": 19,
+    "tag": "li",
+    "id": null,
+    "text": "unsigned, unsigned long long"
+  },
+  {
+    "index": 20,
+    "tag": "li",
+    "id": null,
+    "text": "float, double, long double"
+  },
+  {
+    "index": 21,
+    "tag": "li",
+    "id": null,
+    "text": "bool"
+  },
+  {
+    "index": 22,
+    "tag": "li",
+    "id": null,
+    "text": "char"
+  },
+  {
+    "index": 23,
+    "tag": "li",
+    "id": null,
+    "text": "const char*, fmt::string_view"
+  },
+  {
+    "index": 24,
+    "tag": "li",
+    "id": null,
+    "text": "const void*"
+  },
+  {
+    "index": 25,
+    "tag": "p",
+    "id": null,
+    "text": "The following functions use format string syntax similar\nto that of\nstr.format\nin Python. They take fmt and args as arguments."
+  },
+  {
+    "index": 26,
+    "tag": "p",
+    "id": null,
+    "text": "fmt is a format string that contains literal text and replacement\nfields surrounded by braces {}. The fields are replaced with formatted\narguments in the resulting string.\nfmt::format_string is a format string which can be\nimplicitly constructed from a string literal or a constexpr string and\nis checked at compile time in C++20. To pass a runtime format string\nwrap it in fmt::runtime."
+  },
+  {
+    "index": 27,
+    "tag": "p",
+    "id": null,
+    "text": "args is an argument list representing objects to be formatted."
+  },
+  {
+    "index": 28,
+    "tag": "p",
+    "id": null,
+    "text": "I/O errors are reported as\nstd::system_error\nexceptions unless specified otherwise."
+  },
+  {
+    "index": 29,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and writes the output to stdout."
+  },
+  {
+    "index": 30,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 31,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 32,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and writes the output to the file f."
+  },
+  {
+    "index": 33,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 34,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 35,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and writes the output to stdout followed by a newline. "
+  },
+  {
+    "index": 36,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and writes the output to the file f followed by a newline. "
+  },
+  {
+    "index": 37,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt, writes the result to the output iterator out and returns the iterator past the end of the output range. format_to does not append a terminating null character."
+  },
+  {
+    "index": 38,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 39,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 40,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt, writes up to n characters of the result to the output iterator out and returns the total (not truncated) output size and the iterator past the end of the output range. format_to_n does not append a terminating null character. "
+  },
+  {
+    "index": 41,
+    "tag": "p",
+    "id": null,
+    "text": "Iterator past the end of the output range. "
+  },
+  {
+    "index": 42,
+    "tag": "p",
+    "id": null,
+    "text": "Total (not truncated) output size. "
+  },
+  {
+    "index": 43,
+    "tag": "p",
+    "id": null,
+    "text": "Returns the number of chars in the output of format(fmt, args...). "
+  },
+  {
+    "index": 44,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 45,
+    "tag": "h3",
+    "id": "formatting-user-defined-types",
+    "text": "Formatting User-Defined Types"
+  },
+  {
+    "index": 46,
+    "tag": "p",
+    "id": null,
+    "text": "The {fmt} library provides formatters for many standard C++ types. See\nfmt/ranges.h for ranges and tuples including standard\ncontainers such as std::vector, fmt/chrono.h for date\nand time formatting and fmt/std.h for other standard\nlibrary types."
+  },
+  {
+    "index": 47,
+    "tag": "p",
+    "id": null,
+    "text": "There are two ways to make a user-defined type formattable: providing a\nformat_as function or specializing the formatter struct template.\nFormatting of non-void pointer types is intentionally disallowed and\nthey cannot be made formattable via either extension API."
+  },
+  {
+    "index": 48,
+    "tag": "p",
+    "id": null,
+    "text": "Use format_as if you want to make your type formattable as some other\ntype with the same format specifiers. The format_as function should\ntake an object of your type and return an object of a formattable type.\nIt should be defined in the same namespace as your type."
+  },
+  {
+    "index": 49,
+    "tag": "p",
+    "id": null,
+    "text": "Example (run):"
+  },
+  {
+    "index": 50,
+    "tag": "p",
+    "id": null,
+    "text": "Using a specialization is more complex, but gives you full control over\nparsing and formatting. To use this method, specialize the formatter\nstruct template for your type and implement parse and format\nmethods."
+  },
+  {
+    "index": 51,
+    "tag": "p",
+    "id": null,
+    "text": "The recommended way of defining a formatter is by reusing an existing\none via inheritance or composition. This way you can support standard\nformat specifiers without implementing them yourself. For example:"
+  },
+  {
+    "index": 52,
+    "tag": "p",
+    "id": null,
+    "text": "Note that formatter<string_view>::format is defined in fmt/format.h\nso it has to be included in the source file. Since parse is inherited\nfrom formatter<string_view> it will recognize all string format\nspecifications, for example"
+  },
+  {
+    "index": 53,
+    "tag": "p",
+    "id": null,
+    "text": "will return \"      blue\"."
+  },
+  {
+    "index": 54,
+    "tag": "p",
+    "id": null,
+    "text": "In general the formatter has the following form:"
+  },
+  {
+    "index": 55,
+    "tag": "p",
+    "id": null,
+    "text": "It is recommended to at least support fill, align and width that apply\nto the whole object and have the same semantics as in standard\nformatters."
+  },
+  {
+    "index": 56,
+    "tag": "p",
+    "id": null,
+    "text": "You can also write a formatter for a hierarchy of classes:"
+  },
+  {
+    "index": 57,
+    "tag": "p",
+    "id": null,
+    "text": "Providing both a formatter specialization and a format_as overload\nis disallowed."
+  },
+  {
+    "index": 58,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs a context object. References to the arguments are stored in the object so make sure they have appropriate lifetimes. "
+  },
+  {
+    "index": 59,
+    "tag": "h3",
+    "id": "compile-time-checks",
+    "text": "Compile-Time Checks"
+  },
+  {
+    "index": 60,
+    "tag": "p",
+    "id": null,
+    "text": "Compile-time format string checks are enabled by default on compilers\nthat support C++20 consteval. On older compilers you can use the\nFMT_STRING macro defined in fmt/format.h instead."
+  },
+  {
+    "index": 61,
+    "tag": "p",
+    "id": null,
+    "text": "Unused arguments are allowed as in Python's str.format and ordinary\nfunctions."
+  },
+  {
+    "index": 62,
+    "tag": "p",
+    "id": null,
+    "text": "See Type Erasure for an example of how to enable\ncompile-time checks in your own functions with fmt::format_string\nwhile avoiding template bloat."
+  },
+  {
+    "index": 63,
+    "tag": "p",
+    "id": null,
+    "text": "A compile-time format string. Use format_string in the public API to prevent type deduction. "
+  },
+  {
+    "index": 64,
+    "tag": "p",
+    "id": null,
+    "text": "Creates a runtime format string."
+  },
+  {
+    "index": 65,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 66,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 67,
+    "tag": "h3",
+    "id": "type-erasure",
+    "text": "Type Erasure"
+  },
+  {
+    "index": 68,
+    "tag": "p",
+    "id": null,
+    "text": "You can create your own formatting function with compile-time checks and\nsmall binary footprint, for example\n(run):"
+  },
+  {
+    "index": 69,
+    "tag": "p",
+    "id": null,
+    "text": "Note that vlog is not parameterized on argument types which improves\ncompile times and reduces binary code size compared to a fully\nparameterized version."
+  },
+  {
+    "index": 70,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs an object that stores references to arguments and can be implicitly converted to format_args. Context can be omitted in which case it defaults to context. See arg for lifetime considerations. "
+  },
+  {
+    "index": 71,
+    "tag": "p",
+    "id": null,
+    "text": "A view of a collection of formatting arguments. To avoid lifetime issues it should only be used as a parameter type in type-erased functions such as vformat: "
+  },
+  {
+    "index": 72,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 73,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs a basic_format_args object from format_arg_store. "
+  },
+  {
+    "index": 74,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs a basic_format_args object from a dynamic list of arguments. "
+  },
+  {
+    "index": 75,
+    "tag": "p",
+    "id": null,
+    "text": "Returns the argument with the specified id. "
+  },
+  {
+    "index": 76,
+    "tag": "p",
+    "id": null,
+    "text": "Visits an argument dispatching to the appropriate visit method based on the argument type. For example, if the argument type is double then vis(value) will be called with the value of type double. "
+  },
+  {
+    "index": 77,
+    "tag": "h3",
+    "id": "named-arguments",
+    "text": "Named Arguments"
+  },
+  {
+    "index": 78,
+    "tag": "p",
+    "id": null,
+    "text": "Returns a named argument to be used in a formatting function. It should only be used in a call to a formatting function."
+  },
+  {
+    "index": 79,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 80,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 81,
+    "tag": "p",
+    "id": null,
+    "text": "Named arguments passed with fmt::arg are not supported in compile-time checks, but \"answer\"_a=42 are compile-time checked in sufficiently new compilers. See operator\"\"_a(). "
+  },
+  {
+    "index": 82,
+    "tag": "h3",
+    "id": "compatibility",
+    "text": "Compatibility"
+  },
+  {
+    "index": 83,
+    "tag": "p",
+    "id": null,
+    "text": "An implementation of std::basic_string_view for pre-C++17 providing a subset of the API. fmt::basic_string_view is used in the public API even if std::basic_string_view is available to prevent issues when a library is compiled with a different -std option than the client code (which is not recommended). "
+  },
+  {
+    "index": 84,
+    "tag": "h2",
+    "id": "format-api",
+    "text": "Format API"
+  },
+  {
+    "index": 85,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/format.h defines the full format API providing additional\nformatting functions and locale support."
+  },
+  {
+    "index": 86,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 87,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and returns the result as a string."
+  },
+  {
+    "index": 88,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 89,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 90,
+    "tag": "p",
+    "id": null,
+    "text": "User-defined literal equivalent of fmt::arg, but with compile-time checks."
+  },
+  {
+    "index": 91,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 92,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 93,
+    "tag": "h3",
+    "id": "utilities",
+    "text": "Utilities"
+  },
+  {
+    "index": 94,
+    "tag": "p",
+    "id": null,
+    "text": "Converts p to const void* for pointer formatting."
+  },
+  {
+    "index": 95,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 96,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 97,
+    "tag": "p",
+    "id": null,
+    "text": "Converts e to the underlying type."
+  },
+  {
+    "index": 98,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 99,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 100,
+    "tag": "p",
+    "id": null,
+    "text": "Returns a view that formats an integer value using ',' as a locale-independent thousands separator."
+  },
+  {
+    "index": 101,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 102,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 103,
+    "tag": "p",
+    "id": null,
+    "text": "A contiguous memory buffer with an optional growing ability. It is an internal class and shouldn't be used directly, only via memory_buffer. "
+  },
+  {
+    "index": 104,
+    "tag": "p",
+    "id": null,
+    "text": "Returns the size of this buffer. "
+  },
+  {
+    "index": 105,
+    "tag": "p",
+    "id": null,
+    "text": "Returns the capacity of this buffer. "
+  },
+  {
+    "index": 106,
+    "tag": "p",
+    "id": null,
+    "text": "Returns a pointer to the buffer data (not null-terminated). "
+  },
+  {
+    "index": 107,
+    "tag": "p",
+    "id": null,
+    "text": "Clears this buffer. "
+  },
+  {
+    "index": 108,
+    "tag": "p",
+    "id": null,
+    "text": "Appends data to the end of the buffer. "
+  },
+  {
+    "index": 109,
+    "tag": "p",
+    "id": null,
+    "text": "A dynamically growing memory buffer for trivially copyable/constructible types with the first SIZE elements stored in the object itself. Most commonly used via the memory_buffer alias for char."
+  },
+  {
+    "index": 110,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 111,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 112,
+    "tag": "p",
+    "id": null,
+    "text": "This will append \"The answer is 42.\" to out. The buffer content can be converted to std::string with to_string(out). "
+  },
+  {
+    "index": 113,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs a basic_memory_buffer object moving the content of the other object to it. "
+  },
+  {
+    "index": 114,
+    "tag": "p",
+    "id": null,
+    "text": "Moves the content of the other basic_memory_buffer object to this one. "
+  },
+  {
+    "index": 115,
+    "tag": "p",
+    "id": null,
+    "text": "Resizes the buffer to contain count elements. If T is a POD type new elements may not be initialized. "
+  },
+  {
+    "index": 116,
+    "tag": "p",
+    "id": null,
+    "text": "Increases the buffer capacity to new_capacity. "
+  },
+  {
+    "index": 117,
+    "tag": "h3",
+    "id": "system-errors",
+    "text": "System Errors"
+  },
+  {
+    "index": 118,
+    "tag": "p",
+    "id": null,
+    "text": "{fmt} does not use errno to communicate errors to the user, but it may\ncall system functions which set errno. Users should not make any\nassumptions about the value of errno being preserved by library\nfunctions."
+  },
+  {
+    "index": 119,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs std::system_error with a message formatted with fmt::format(fmt, args...). error_code is a system error code as given by errno."
+  },
+  {
+    "index": 120,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 121,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 122,
+    "tag": "p",
+    "id": null,
+    "text": "Formats an error message for an error returned by an operating system or a language runtime, for example a file opening error, and writes it to out. The format is the same as the one used by std::system_error(ec, message) where ec is std::error_code(error_code, std::generic_category()). It is implementation-defined but normally looks like: "
+  },
+  {
+    "index": 123,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 124,
+    "tag": "p",
+    "id": null,
+    "text": "where <message> is the passed message and <system-message> is the system message corresponding to the error code. error_code is a system error code as given by errno. "
+  },
+  {
+    "index": 125,
+    "tag": "h3",
+    "id": "custom-allocators",
+    "text": "Custom Allocators"
+  },
+  {
+    "index": 126,
+    "tag": "p",
+    "id": null,
+    "text": "The {fmt} library supports custom dynamic memory allocators. A custom\nallocator class can be specified as a template argument to\nfmt::basic_memory_buffer:"
+  },
+  {
+    "index": 127,
+    "tag": "p",
+    "id": null,
+    "text": "It is also possible to write a formatting function that uses a custom\nallocator:"
+  },
+  {
+    "index": 128,
+    "tag": "p",
+    "id": null,
+    "text": "The allocator will be used for the output container only. Formatting\nfunctions normally don't do any allocations for built-in and string\ntypes except for non-default floating-point formatting that occasionally\nfalls back on sprintf."
+  },
+  {
+    "index": 129,
+    "tag": "h3",
+    "id": "locale",
+    "text": "Locale"
+  },
+  {
+    "index": 130,
+    "tag": "p",
+    "id": null,
+    "text": "All formatting is locale-independent by default. Use the 'L' format\nspecifier to insert the appropriate number separator characters from the\nlocale:"
+  },
+  {
+    "index": 131,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/format.h provides the following overloads of formatting functions\nthat take std::locale as a parameter. The locale type is a template\nparameter to avoid the expensive <locale> include."
+  },
+  {
+    "index": 132,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 133,
+    "tag": "h3",
+    "id": "legacy-compile-time-checks",
+    "text": "Legacy Compile-Time Checks"
+  },
+  {
+    "index": 134,
+    "tag": "p",
+    "id": null,
+    "text": "FMT_STRING enables compile-time checks on older compilers. It requires\nC++14 or later and is a no-op in C++11."
+  },
+  {
+    "index": 135,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs a legacy compile-time format string from a string literal s."
+  },
+  {
+    "index": 136,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 137,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 138,
+    "tag": "p",
+    "id": null,
+    "text": "To force the use of legacy compile-time checks, define the preprocessor\nvariable FMT_ENFORCE_COMPILE_STRING. When set, functions accepting\nFMT_STRING will fail to compile with regular strings."
+  },
+  {
+    "index": 139,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 140,
+    "tag": "h2",
+    "id": "range-and-tuple-formatting",
+    "text": "Range and Tuple Formatting"
+  },
+  {
+    "index": 141,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/ranges.h provides formatting support for ranges and tuples:"
+  },
+  {
+    "index": 142,
+    "tag": "p",
+    "id": null,
+    "text": "Using fmt::join, you can separate tuple elements with a custom\nseparator:"
+  },
+  {
+    "index": 143,
+    "tag": "p",
+    "id": null,
+    "text": "Returns a view that formats range with elements separated by sep."
+  },
+  {
+    "index": 144,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 145,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 146,
+    "tag": "p",
+    "id": null,
+    "text": "fmt::join applies passed format specifiers to the range elements: "
+  },
+  {
+    "index": 147,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 148,
+    "tag": "p",
+    "id": null,
+    "text": "Returns a view that formats the iterator range [begin, end) with elements separated by sep. "
+  },
+  {
+    "index": 149,
+    "tag": "p",
+    "id": null,
+    "text": "Returns an object that formats std::initializer_list with elements separated by sep."
+  },
+  {
+    "index": 150,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 151,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 152,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 153,
+    "tag": "h2",
+    "id": "date-and-time-formatting",
+    "text": "Date and Time Formatting"
+  },
+  {
+    "index": 154,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/chrono.h provides formatters for"
+  },
+  {
+    "index": 155,
+    "tag": "li",
+    "id": null,
+    "text": "std::chrono::duration"
+  },
+  {
+    "index": 156,
+    "tag": "li",
+    "id": null,
+    "text": "std::chrono::time_point"
+  },
+  {
+    "index": 157,
+    "tag": "li",
+    "id": null,
+    "text": "std::tm"
+  },
+  {
+    "index": 158,
+    "tag": "p",
+    "id": null,
+    "text": "The format syntax is described in Chrono Format\nSpecifications."
+  },
+  {
+    "index": 159,
+    "tag": "p",
+    "id": null,
+    "text": "Example:"
+  },
+  {
+    "index": 160,
+    "tag": "p",
+    "id": null,
+    "text": "Converts given time since epoch as std::time_t value into calendar time, expressed in Coordinated Universal Time (UTC). Unlike std::gmtime, this function is thread-safe on most platforms. "
+  },
+  {
+    "index": 161,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 162,
+    "tag": "h2",
+    "id": "standard-library-types-formatting",
+    "text": "Standard Library Types Formatting"
+  },
+  {
+    "index": 163,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/std.h provides formatters for:"
+  },
+  {
+    "index": 164,
+    "tag": "li",
+    "id": null,
+    "text": "std::atomic"
+  },
+  {
+    "index": 165,
+    "tag": "li",
+    "id": null,
+    "text": "std::atomic_flag"
+  },
+  {
+    "index": 166,
+    "tag": "li",
+    "id": null,
+    "text": "std::bitset"
+  },
+  {
+    "index": 167,
+    "tag": "li",
+    "id": null,
+    "text": "std::error_code"
+  },
+  {
+    "index": 168,
+    "tag": "li",
+    "id": null,
+    "text": "std::exception"
+  },
+  {
+    "index": 169,
+    "tag": "li",
+    "id": null,
+    "text": "std::filesystem::path"
+  },
+  {
+    "index": 170,
+    "tag": "li",
+    "id": null,
+    "text": "std::monostate"
+  },
+  {
+    "index": 171,
+    "tag": "li",
+    "id": null,
+    "text": "std::optional"
+  },
+  {
+    "index": 172,
+    "tag": "li",
+    "id": null,
+    "text": "std::source_location"
+  },
+  {
+    "index": 173,
+    "tag": "li",
+    "id": null,
+    "text": "std::thread::id"
+  },
+  {
+    "index": 174,
+    "tag": "li",
+    "id": null,
+    "text": "std::variant"
+  },
+  {
+    "index": 175,
+    "tag": "h3",
+    "id": "variants",
+    "text": "Variants"
+  },
+  {
+    "index": 176,
+    "tag": "p",
+    "id": null,
+    "text": "A std::variant can be formatted only if every alternative is\nformattable, and requires the __cpp_lib_variant library\nfeature."
+  },
+  {
+    "index": 177,
+    "tag": "p",
+    "id": null,
+    "text": "Example:"
+  },
+  {
+    "index": 178,
+    "tag": "h2",
+    "id": "bit-fields-and-packed-structs",
+    "text": "Bit-Fields and Packed Structs"
+  },
+  {
+    "index": 179,
+    "tag": "p",
+    "id": null,
+    "text": "To format a bit-field or a field of a struct with\n__attribute__((packed)) applied to it, you need to convert it to the\nunderlying or compatible type via a cast or a unary +\n(godbolt):"
+  },
+  {
+    "index": 180,
+    "tag": "p",
+    "id": null,
+    "text": "This is a known limitation of \"perfect\" forwarding in C++."
+  },
+  {
+    "index": 181,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 182,
+    "tag": "h2",
+    "id": "compile-time-support",
+    "text": "Compile-Time Support"
+  },
+  {
+    "index": 183,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/compile.h provides format string compilation and compile-time\n(constexpr) formatting enabled via the FMT_COMPILE macro or the\n_cf user-defined literal defined in namespace fmt::literals. Format\nstrings marked with FMT_COMPILE or _cf are parsed, checked and\nconverted into efficient formatting code at compile-time. This supports\narguments of built-in and string types as well as user-defined types\nwith format methods taking the format context type as a template\nparameter in their formatter specializations. For example\n(run):"
+  },
+  {
+    "index": 184,
+    "tag": "p",
+    "id": null,
+    "text": "Format string compilation can generate more binary code compared to the\ndefault API and is only recommended in places where formatting is a\nperformance bottleneck."
+  },
+  {
+    "index": 185,
+    "tag": "p",
+    "id": null,
+    "text": "The same APIs support formatting at compile time e.g. in constexpr and\nconsteval functions. Additionally there is an experimental\nFMT_STATIC_FORMAT that allows formatting into a string of the exact\nrequired size at compile time. Compile-time formatting works with\nbuilt-in and user-defined formatters that have constexpr format\nmethods. Example:"
+  },
+  {
+    "index": 186,
+    "tag": "p",
+    "id": null,
+    "text": "Converts a string literal s into a format string that will be parsed at compile time and converted into efficient formatting code. Requires C++17 constexpr if compiler support."
+  },
+  {
+    "index": 187,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 188,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 189,
+    "tag": "p",
+    "id": null,
+    "text": "Formats arguments according to the format string fmt_str and produces a string of the exact required size at compile time. Both the format string and the arguments must be compile-time expressions."
+  },
+  {
+    "index": 190,
+    "tag": "p",
+    "id": null,
+    "text": "The resulting string can be accessed as a C string via c_str() or as a fmt::string_view via str()."
+  },
+  {
+    "index": 191,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 192,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 193,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 194,
+    "tag": "h2",
+    "id": "terminal-colors-and-text-styles",
+    "text": "Terminal Colors and Text Styles"
+  },
+  {
+    "index": 195,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/color.h provides support for terminal color and text style output."
+  },
+  {
+    "index": 196,
+    "tag": "p",
+    "id": null,
+    "text": "Formats a string and prints it to stdout using ANSI escape sequences to specify text formatting."
+  },
+  {
+    "index": 197,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 198,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 199,
+    "tag": "p",
+    "id": null,
+    "text": "Creates a text style from the foreground (text) color. "
+  },
+  {
+    "index": 200,
+    "tag": "p",
+    "id": null,
+    "text": "Creates a text style from the background color. "
+  },
+  {
+    "index": 201,
+    "tag": "p",
+    "id": null,
+    "text": "Returns an argument that will be formatted using ANSI escape sequences, to be used in a formatting function."
+  },
+  {
+    "index": 202,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 203,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 204,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 205,
+    "tag": "h2",
+    "id": "system-apis",
+    "text": "System APIs"
+  },
+  {
+    "index": 206,
+    "tag": "p",
+    "id": null,
+    "text": "A fast buffered output stream for writing from a single thread. Writing from multiple threads without external synchronization may result in a data race. "
+  },
+  {
+    "index": 207,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and writes the output to the file. "
+  },
+  {
+    "index": 208,
+    "tag": "p",
+    "id": null,
+    "text": "Opens a file for writing. Supported parameters passed in params:"
+  },
+  {
+    "index": 209,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 210,
+    "tag": "p",
+    "id": null,
+    "text": "<integer>: Flags passed to open (file::WRONLY | file::CREATE | file::TRUNC by default)"
+  },
+  {
+    "index": 211,
+    "tag": "p",
+    "id": null,
+    "text": "buffer_size=<integer>: Output buffer size"
+  },
+  {
+    "index": 212,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 213,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 214,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 215,
+    "tag": "p",
+    "id": null,
+    "text": "Constructs a std::system_error object with the description of the form "
+  },
+  {
+    "index": 216,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 217,
+    "tag": "p",
+    "id": null,
+    "text": "where <message> is the formatted message and <system-message> is the system message corresponding to the error code. error_code is a Windows error code as given by GetLastError. If error_code is not a valid error code such as -1, the system message will look like \"error -1\"."
+  },
+  {
+    "index": 218,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 219,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 220,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 221,
+    "tag": "h2",
+    "id": "stdostream-support",
+    "text": "std::ostream Support"
+  },
+  {
+    "index": 222,
+    "tag": "p",
+    "id": null,
+    "text": "fmt/ostream.h provides std::ostream support including formatting of\nuser-defined types that have an overloaded insertion operator\n(operator<<). In order to make a type formattable via std::ostream\nyou should provide a formatter specialization inherited from\nostream_formatter:"
+  },
+  {
+    "index": 223,
+    "tag": "p",
+    "id": null,
+    "text": "Returns a view that formats value via an ostream operator<<."
+  },
+  {
+    "index": 224,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 225,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 226,
+    "tag": "p",
+    "id": null,
+    "text": "Prints formatted data to the stream os."
+  },
+  {
+    "index": 227,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 228,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 229,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 230,
+    "tag": "h2",
+    "id": "dynamic-argument-lists",
+    "text": "Dynamic Argument Lists"
+  },
+  {
+    "index": 231,
+    "tag": "p",
+    "id": null,
+    "text": "The header fmt/args.h provides dynamic_format_arg_store, a\nbuilder-like API that can be used to construct format argument lists\ndynamically."
+  },
+  {
+    "index": 232,
+    "tag": "p",
+    "id": null,
+    "text": "A dynamic list of formatting arguments with storage."
+  },
+  {
+    "index": 233,
+    "tag": "p",
+    "id": null,
+    "text": "It can be implicitly converted into fmt::basic_format_args for passing into type-erased formatting functions such as fmt::vformat. "
+  },
+  {
+    "index": 234,
+    "tag": "p",
+    "id": null,
+    "text": "Adds an argument into the dynamic store for later passing to a formatting function."
+  },
+  {
+    "index": 235,
+    "tag": "p",
+    "id": null,
+    "text": "Note that custom types and string types (but not string views) are copied into the store dynamically allocating memory if necessary."
+  },
+  {
+    "index": 236,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 237,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 238,
+    "tag": "p",
+    "id": null,
+    "text": "Adds a reference to the argument into the dynamic store for later passing to a formatting function."
+  },
+  {
+    "index": 239,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 240,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 241,
+    "tag": "p",
+    "id": null,
+    "text": "Adds named argument into the dynamic store for later passing to a formatting function. std::reference_wrapper is supported to avoid copying of the argument. The name is always copied into the store. "
+  },
+  {
+    "index": 242,
+    "tag": "p",
+    "id": null,
+    "text": "Erase all elements from the store. "
+  },
+  {
+    "index": 243,
+    "tag": "p",
+    "id": null,
+    "text": "Reserves space to store at least new_cap arguments including new_cap_named named arguments. "
+  },
+  {
+    "index": 244,
+    "tag": "p",
+    "id": null,
+    "text": "Returns the number of elements in the store. "
+  },
+  {
+    "index": 245,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 246,
+    "tag": "h2",
+    "id": "safe-printf",
+    "text": "Safe printf"
+  },
+  {
+    "index": 247,
+    "tag": "p",
+    "id": null,
+    "text": "The header fmt/printf.h provides printf-like formatting\nfunctionality. The following functions use printf format string\nsyntax\nwith the POSIX extension for positional arguments. Unlike their standard\ncounterparts, the fmt functions are type-safe and throw an exception\nif an argument type doesn't match its format specification."
+  },
+  {
+    "index": 248,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and writes the output to stdout."
+  },
+  {
+    "index": 249,
+    "tag": "p",
+    "id": null,
+    "text": "Example:"
+  },
+  {
+    "index": 250,
+    "tag": "p",
+    "id": null,
+    "text": "fmt::printf(\"Elapsed time: %.2f seconds\", 1.23); "
+  },
+  {
+    "index": 251,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and writes the output to f."
+  },
+  {
+    "index": 252,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 253,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 254,
+    "tag": "p",
+    "id": null,
+    "text": "Formats args according to specifications in fmt and returns the result as string."
+  },
+  {
+    "index": 255,
+    "tag": "p",
+    "id": null,
+    "text": "Example: "
+  },
+  {
+    "index": 256,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 257,
+    "tag": "p",
+    "id": null,
+    "text": ""
+  },
+  {
+    "index": 258,
+    "tag": "h2",
+    "id": "wide-strings",
+    "text": "Wide Strings"
+  },
+  {
+    "index": 259,
+    "tag": "p",
+    "id": null,
+    "text": "The optional header fmt/xchar.h provides support for wchar_t and\nexotic character types."
+  },
+  {
+    "index": 260,
+    "tag": "p",
+    "id": null,
+    "text": "Converts value to std::wstring using the default format for type T. "
+  },
+  {
+    "index": 261,
+    "tag": "h2",
+    "id": "compatibility-with-c20-stdformat",
+    "text": "Compatibility with C++20 std::format"
+  },
+  {
+    "index": 262,
+    "tag": "p",
+    "id": null,
+    "text": "{fmt} implements nearly all of the C++20 formatting\nlibrary with the\nfollowing differences:"
+  },
+  {
+    "index": 263,
+    "tag": "p",
+    "id": null,
+    "text": "Names are defined in the fmt namespace instead of std to avoid\ncollisions with standard library implementations."
+  },
+  {
+    "index": 264,
+    "tag": "p",
+    "id": null,
+    "text": "Width calculation doesn't use grapheme clusterization. The latter has\nbeen implemented in a separate branch but hasn't been integrated yet."
+  },
+  {
+    "index": 265,
+    "tag": "p",
+    "id": null,
+    "text": "The default floating-point representation in {fmt} uses the smallest\nprecision that provides round-trip guarantees similarly to other\nlanguages like Java and Python. std::format is currently specified\nin terms of std::to_chars which tries to generate the smallest\nnumber of characters (ignoring redundant digits and sign in exponent)\nand may produce more decimal digits than necessary."
+  },
+  {
+    "index": 266,
+    "tag": "h2",
+    "id": "configuration-options",
+    "text": "Configuration Options"
+  },
+  {
+    "index": 267,
+    "tag": "p",
+    "id": null,
+    "text": "{fmt} provides configuration via CMake options and preprocessor macros\nto enable or disable features and to optimize for binary size. For\nexample, you can disable OS-specific APIs defined in fmt/os.h with\n-DFMT_OS=OFF when configuring CMake."
+  },
+  {
+    "index": 268,
+    "tag": "h3",
+    "id": "cmake-options",
+    "text": "CMake Options"
+  },
+  {
+    "index": 269,
+    "tag": "li",
+    "id": null,
+    "text": "FMT_OS: When set to OFF, disables OS-specific APIs\n(fmt/os.h)."
+  },
+  {
+    "index": 270,
+    "tag": "li",
+    "id": null,
+    "text": "FMT_UNICODE: When set to OFF, disables Unicode support on\nWindows/MSVC. Unicode support is always enabled on other platforms."
+  },
+  {
+    "index": 271,
+    "tag": "h3",
+    "id": "macros",
+    "text": "Macros"
+  },
+  {
+    "index": 272,
+    "tag": "p",
+    "id": null,
+    "text": "FMT_HEADER_ONLY: Enables the header-only mode when defined. It\nis an alternative to using the fmt::fmt-header-only CMake target.\nDefault: not defined."
+  },
+  {
+    "index": 273,
+    "tag": "p",
+    "id": null,
+    "text": "FMT_USE_EXCEPTIONS: Disables the use of exceptions when set to\n0. Default: 1 (0 if compiled with -fno-exceptions)."
+  },
+  {
+    "index": 274,
+    "tag": "p",
+    "id": null,
+    "text": "FMT_USE_LOCALE: When set to 0, disables locale support.\nDefault: 1 (0 when FMT_OPTIMIZE_SIZE > 1)."
+  },
+  {
+    "index": 275,
+    "tag": "p",
+    "id": null,
+    "text": "FMT_CUSTOM_ASSERT_FAIL: When set to 1, allows users to provide\na custom fmt::assert_fail function which is called on assertion\nfailures and, if exceptions are disabled, on runtime errors. Default:\n0."
+  },
+  {
+    "index": 276,
+    "tag": "p",
+    "id": null,
+    "text": "FMT_BUILTIN_TYPES: When set to 0, disables built-in handling\nof arithmetic and string types other than int. This reduces library\nsize at the cost of per-call overhead. Default: 1."
+  },
+  {
+    "index": 277,
+    "tag": "p",
+    "id": null,
+    "text": "FMT_OPTIMIZE_SIZE: Controls binary size optimizations:"
+  },
+  {
+    "index": 278,
+    "tag": "li",
+    "id": null,
+    "text": "0 - off (default)"
+  },
+  {
+    "index": 279,
+    "tag": "li",
+    "id": null,
+    "text": "1 - disables locale support and applies some optimizations"
+  },
+  {
+    "index": 280,
+    "tag": "li",
+    "id": null,
+    "text": "2 - disables some Unicode features, named arguments and applies\nmore aggressive optimizations"
+  },
+  {
+    "index": 281,
+    "tag": "h3",
+    "id": "binary-size-optimization",
+    "text": "Binary Size Optimization"
+  },
+  {
+    "index": 282,
+    "tag": "p",
+    "id": null,
+    "text": "To minimize the binary footprint of {fmt} as much as possible at the\ncost of some features, you can use the following configuration:"
+  },
+  {
+    "index": 283,
+    "tag": "li",
+    "id": null,
+    "text": "FMT_OS=OFF"
+  },
+  {
+    "index": 284,
+    "tag": "li",
+    "id": null,
+    "text": "FMT_BUILTIN_TYPES=0"
+  },
+  {
+    "index": 285,
+    "tag": "li",
+    "id": null,
+    "text": "FMT_OPTIMIZE_SIZE=2"
+  }
+]
