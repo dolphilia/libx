@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {readLedger,hashFile} from '../../../../../../scripts/project-expansion/ledger.mjs';
+const dir='docs/notes/project-expansion/runs/evidence/2026-10-05-674';
+const ref=path=>({path,sha256:hashFile(path)}), get=n=>JSON.parse(fs.readFileSync(dir+'/'+n));
+const save=(p,d)=>fs.writeFileSync(p,JSON.stringify(d,null,2)+'\n',{flag:'wx'});
+const doc=structuredClone(readLedger(process.cwd()).candidates);assert.equal(doc.revision,152);
+const c=doc.candidates.find(x=>x.id==='rapidjson');assert.equal(get('WARNING_COVERAGE.json').warningRows,630);assert.equal(get('SELF_CONTAINED_DECISION.json').matrix.length,11);
+const names=['WARNING_COVERAGE.json','SELF_CONTAINED_DECISION.json','CYCLE_RESULT.json'];
+c.conditions.selfContained.status='pass';c.conditions.selfContained.reason+=' 674:全630warningのconcept/guide/隣接原文/実装内部/疎説明分類と固定引用を完了。544source位置、137warning行の個別説明不足は原文のまま保持。13guide+収録APIconcept/commentが主要11利用場面の説明を収録し、Issue/chatから新本文を生成しなくてよいことをmatrixで確認しselfContained pass。原文品質・全API意味/JA全文reviewの承認ではない。673issueと137疎説明を工数/reviewへ引継ぐ。';c.conditions.selfContained.evidence.push(...names.map(n=>ref(dir+'/'+n)));
+c.conditions.workload.reason+=' 674:個別説明不足137warning行（81type/state+56auxiliary）をAPI原文品質/全文review範囲に保持。630warningのtemplate重複544source位置への区別で全文範囲や52729語の分母を減らさない。';c.conditions.workload.evidence.push(ref(dir+'/WARNING_COVERAGE.json'),ref(dir+'/SELF_CONTAINED_DECISION.json'));
+c.decision='674:630warning全行を固定原文説明と対応付け、主要11利用場面が収録範囲で自立する根拠を確認しselfContained pass。137個別疎説明と673issueを残し、語数/範囲削減なし。workload/日本語調査/採点/独立採用評価は未完で採用0。';
+c.resumeCondition=get('CYCLE_RESULT.json').next;
+const inputs=['docs/notes/project-expansion/CANDIDATES.json','docs/notes/project-expansion/POLICY.json','docs/notes/project-expansion/runs/evidence/2026-10-05-667/CONVERSION_MAP.json','docs/notes/project-expansion/runs/evidence/2026-10-05-670/ASTRO_TRIAL_PACKET.tar.gz'].map(ref);
+const outputs=fs.readdirSync(dir).filter(n=>n!=='PATCH.json').map(n=>ref(dir+'/'+n));
+save('docs/notes/project-expansion/runs/2026-10-05-674-rapidjson-warning-coverage-self-contained-decision.json',{schemaVersion:1,id:'2026-10-05-674-rapidjson-warning-coverage-self-contained-decision',cycle:674,startedAt:new Date(fs.statSync(dir).birthtimeMs).toISOString(),endedAt:new Date().toISOString(),result:'partial',phase:'RapidJSON630警告分類・主要説明自立性評価',model:{configured:'gpt-6.1-sol',configurationEvidence:'docs/notes/project-expansion/POLICY.json',runtime:null,runtimeStatus:'actual runtime model identifier not independently exposed; no local LLM',localLLMUsed:false},tools:['functions.exec','python3','node'],inputs,outputs,discoveryIds:[],detailIds:['rapidjson'],newOperationIds:[],checks:[{name:'630 source warnings classified with fixed original references',status:'passed',evidence:[ref(dir+'/WARNING_COVERAGE.json')]},{name:'11 essential use cases covered within original scope',status:'passed',evidence:[ref(dir+'/SELF_CONTAINED_DECISION.json')]},{name:'Workload/Japanese availability/scoring/independent selection/fullJAreview',status:'pending',evidence:[ref(dir+'/CYCLE_RESULT.json')]}],decisions:[c.decision,'全buildを隔離app絶対workdirで実施。rootapp/shared/Awesome/user差分編集なし。外部公開/Workers/ローカルLLM/定期実行なし。'],unresolved:get('CYCLE_RESULT.json').remaining,nextAction:c.resumeCondition,resumeCondition:'671packet/hashと固定原文保持。原文自立性、日本語可用性、全量工数、独立採用評価を証拠で判定する。'});
+save(dir+'/PATCH.json',{name:'CANDIDATES',expectedRevision:152,expectedInputs:inputs,document:doc});
+console.log('674 prepared');

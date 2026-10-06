@@ -1,0 +1,170 @@
+{
+  "count": 10,
+  "status": "original-source-and-fixed-generator-warnings",
+  "rows": [
+    {
+      "source": "design.rst",
+      "line": 22,
+      "level": "WARNING",
+      "message": "Explicit markup ends without a blank line; unexpected unindent.",
+      "sourceExcerpt": "\n.. only:: Graphical\n\n   .. image:: static/architecture.png\n   :scale: 75%\n   :align: center\n   :alt: Picture of libuv architecture\n\n.. only:: Textual\n\n   .. literalinclude:: static/architecture.txt\n\nHandles and requests\n^^^^^^^^^^^^^^^^^^^^\n\nlibuv provides users with 2 abstractions to work with, in combination with the event loop:\nhandles and requests.\n\nHandles represent long-lived objects capable of performing certain operations while active. Some examples:",
+      "sourceSha256": "3b823869f1152dae6d5f1b3201ade736f73bd4f232f700afd783c4cf9c4c65a4",
+      "generatedSha256": "e78f8458994fcec0325c0f195af5315170c17d7b1d3aa0b3ed85c265c358cd98",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    },
+    {
+      "source": "dns.rst",
+      "line": 54,
+      "level": "WARNING",
+      "message": "Error in declarator or parameters",
+      "sourceExcerpt": "\n    Loop that started this getnameinfo request and where completion will be\n    reported. Readonly.\n\n.. c:member:: char[NI_MAXHOST] uv_getnameinfo_t.host\n\n    Char array containing the resulting host. It's null terminated.\n\n    .. versionchanged:: 1.3.0 the field is declared as public.\n\n.. c:member:: char[NI_MAXSERV] uv_getnameinfo_t.service\n\n    Char array containing the resulting service. It's null terminated.\n\n    .. versionchanged:: 1.3.0 the field is declared as public.\n\n.. seealso:: The :c:type:`uv_req_t` members also apply.\n\n",
+      "sourceSha256": "8a35059186247951fa2274823414798cd1c5bd4e82d5837a1429b46c202bd3d4",
+      "generatedSha256": "1561a7685daaac5c7876d28a8a43b6fd02c9215e48767f49227617f7788b1f74",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [
+        {
+          "id": null,
+          "text": "\n char[NI_MAXHOST]   uv_getnameinfo_t.host"
+        },
+        {
+          "id": null,
+          "text": "\n char[NI_MAXSERV]   uv_getnameinfo_t.service"
+        }
+      ],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    },
+    {
+      "source": "dns.rst",
+      "line": 60,
+      "level": "WARNING",
+      "message": "Error in declarator or parameters",
+      "sourceExcerpt": "    Char array containing the resulting host. It's null terminated.\n\n    .. versionchanged:: 1.3.0 the field is declared as public.\n\n.. c:member:: char[NI_MAXSERV] uv_getnameinfo_t.service\n\n    Char array containing the resulting service. It's null terminated.\n\n    .. versionchanged:: 1.3.0 the field is declared as public.\n\n.. seealso:: The :c:type:`uv_req_t` members also apply.\n\n\nAPI\n---\n\n.. c:function:: int uv_getaddrinfo(uv_loop_t* loop, uv_getaddrinfo_t* req, uv_getaddrinfo_cb getaddrinfo_cb, const char* node, const char* service, const struct addrinfo* hints)\n\n    Asynchronous :man:`getaddrinfo(3)`.",
+      "sourceSha256": "8a35059186247951fa2274823414798cd1c5bd4e82d5837a1429b46c202bd3d4",
+      "generatedSha256": "1561a7685daaac5c7876d28a8a43b6fd02c9215e48767f49227617f7788b1f74",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [
+        {
+          "id": null,
+          "text": "\n char[NI_MAXHOST]   uv_getnameinfo_t.host"
+        },
+        {
+          "id": null,
+          "text": "\n char[NI_MAXSERV]   uv_getnameinfo_t.service"
+        }
+      ],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    },
+    {
+      "source": "guide/filesystem.rst",
+      "line": 212,
+      "level": "WARNING",
+      "message": "line number spec is out of range(1-79): '62-80'",
+      "sourceExcerpt": "We start off opening pipes on the files we require. libuv pipes to a file are\nopened as bidirectional by default.\n\n.. rubric:: uvtee/main.c - read on pipes\n.. literalinclude:: ../../code/uvtee/main.c\n    :language: c\n    :linenos:\n    :lines: 62-80\n    :emphasize-lines: 4,5,15\n\nThe third argument of ``uv_pipe_init()`` should be set to 1 for IPC using named\npipes. This is covered in :doc:`processes`. The ``uv_pipe_open()`` call\nassociates the pipe with the file descriptor, in this case ``0`` (standard\ninput).\n\nWe start monitoring ``stdin``. The ``alloc_buffer`` callback is invoked as new\nbuffers are required to hold incoming data. ``read_stdin`` will be called with\nthese buffers.\n",
+      "sourceSha256": "e7ff2e8ccec2d504db9856c1818b0fe470b10d08189e563afa80844f9314e685",
+      "generatedSha256": "e946d175be966f64d5f053346407868114ef5b8c2c92a8d27e4dd8d3914e84f7",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    },
+    {
+      "source": "guide/threads.rst",
+      "line": 41,
+      "level": "WARNING",
+      "message": "line number spec is out of range(1-35): '26-36'",
+      "sourceExcerpt": "\n.. _thread-create-example:\n\n.. rubric:: thread-create/main.c\n.. literalinclude:: ../../code/thread-create/main.c\n    :language: c\n    :linenos:\n    :lines: 26-36\n    :emphasize-lines: 3-7\n\n.. tip::\n\n    ``uv_thread_t`` is just an alias for ``pthread_t`` on Unix, but this is an\n    implementation detail, avoid depending on it to always be true.\n\nThe second parameter is the function which will serve as the entry point for\nthe thread, the last parameter is a ``void *`` argument which can be used to pass\ncustom parameters to the thread. The function ``hare`` will now run in a separate\nthread, scheduled pre-emptively by the operating system:",
+      "sourceSha256": "48155bf8a2759cb4ed4a3547a5dc8fcf9c354d02607aae81006dc8e915a06946",
+      "generatedSha256": "0b1df177e84c94c0dc6b94e35ac7a80dbf9ca7651958278144b296c5dff82845",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    },
+    {
+      "source": "misc.rst",
+      "line": 906,
+      "level": "ERROR",
+      "message": "Error in \"code-block\" directive:",
+      "sourceExcerpt": "    Causes the calling thread to sleep for `msec` milliseconds.\n\n    .. versionadded:: 1.34.0\n\n.. code-block:: c\n    #include <uv.h>\n    #include <stdio.h>\n    int main() {\n        printf(\"Sleeping for 1 second...\\n\");\n        uv_sleep(1000);\n        printf(\"Awake!\\n\");\n        return 0;\n    }\n\nString manipulation functions\n-----------------------------\n\nThese string utilities are needed internally for dealing with Windows, and are\nexported to allow clients to work uniformly with this data when the libuv API",
+      "sourceSha256": "df0c9962d8cf18c500583e034a0b2dceb7b13ea1e446c0a6c37bed8fac3c63c3",
+      "generatedSha256": "d874118d2ae1553c1661a09956559f2d94da67c12ce1fad0c3c40344fd6a6fda",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [],
+      "sleepExampleRendered": false,
+      "platformsPresent": null
+    },
+    {
+      "source": "tcp.rst",
+      "line": 112,
+      "level": "ERROR",
+      "message": "Unexpected indentation.",
+      "sourceExcerpt": "\n    .. note::\n        Ensure that the socket options are supported by the underlying operating system.\n        Currently supported platforms:\n          - AIX\n          - DragonFlyBSD\n          - FreeBSD\n          - illumos\n          - Linux\n          - macOS\n          - NetBSD\n          - Solaris\n          - Windows\n\n.. c:function:: int uv_tcp_simultaneous_accepts(uv_tcp_t* handle, int enable)\n\n    Enable / disable simultaneous asynchronous accept requests that are\n    queued by the operating system when listening for new TCP connections.\n",
+      "sourceSha256": "e2e4205fb2e3ac32fcce34e8db9f0621c7c597397028e4fec741f77ea4c3dabe",
+      "generatedSha256": "d5263637075cef721ff32ff2e911d140ff973ddadca45bb24b08b3eb9799f8c8",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [],
+      "sleepExampleRendered": null,
+      "platformsPresent": true
+    },
+    {
+      "source": "udp.rst",
+      "line": 451,
+      "level": "WARNING",
+      "message": "Parsing of expression failed. Using fallback parser. Error was:",
+      "sourceExcerpt": "        can't be sent immediately).\n\n    .. versionchanged:: 1.27.0 added support for connected sockets\n\n.. c:function:: int uv_udp_try_send2(uv_udp_t* handle, unsigned int count, uv_buf_t* bufs[/*count*/], unsigned int nbufs[/*count*/], struct sockaddr* addrs[/*count*/], unsigned int flags)\n\n    Like :c:func:`uv_udp_try_send`, but can send multiple datagrams.\n    Lightweight abstraction around :man:`sendmmsg(2)`, with a :man:`sendmsg(2)`\n    fallback loop for platforms that do not support the former. The handle must\n    be fully initialized; call c:func:`uv_udp_bind` first.\n\n    :returns: >= 0: number of datagrams sent. Zero only if `count` was zero.\n        < 0: negative error code. Only if sending the first datagram fails,\n        otherwise returns a positive send count. ``UV_EAGAIN`` when datagrams\n        cannot be sent right now; fall back to :c:func:`uv_udp_send`.\n\n    .. versionadded:: 1.50.0\n\n.. c:function:: int uv_udp_recv_start(uv_udp_t* handle, uv_alloc_cb alloc_cb, uv_udp_recv_cb recv_cb)",
+      "sourceSha256": "09f01b976b6bfba11e09c663ced430e89af45c0c5daeb96f298f487c2de5bb0f",
+      "generatedSha256": "dddbadcb261f97794ad57fb2cd1a1516760473013ba7ed50079631ea7494af30",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [
+        {
+          "id": "c.uv_udp_try_send2",
+          "text": "\n int   uv_udp_try_send2 ( uv_udp_t   * handle ,  unsigned   int   count ,  uv_buf_t   * bufs [ /*count*/ ] ,  unsigned   int   nbufs [ /*count*/ ] ,  struct   sockaddr   * addrs [ /*count*/ ] ,  unsigned   int   flags ) ¶"
+        }
+      ],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    },
+    {
+      "source": "udp.rst",
+      "line": 451,
+      "level": "WARNING",
+      "message": "Parsing of expression failed. Using fallback parser. Error was:",
+      "sourceExcerpt": "        can't be sent immediately).\n\n    .. versionchanged:: 1.27.0 added support for connected sockets\n\n.. c:function:: int uv_udp_try_send2(uv_udp_t* handle, unsigned int count, uv_buf_t* bufs[/*count*/], unsigned int nbufs[/*count*/], struct sockaddr* addrs[/*count*/], unsigned int flags)\n\n    Like :c:func:`uv_udp_try_send`, but can send multiple datagrams.\n    Lightweight abstraction around :man:`sendmmsg(2)`, with a :man:`sendmsg(2)`\n    fallback loop for platforms that do not support the former. The handle must\n    be fully initialized; call c:func:`uv_udp_bind` first.\n\n    :returns: >= 0: number of datagrams sent. Zero only if `count` was zero.\n        < 0: negative error code. Only if sending the first datagram fails,\n        otherwise returns a positive send count. ``UV_EAGAIN`` when datagrams\n        cannot be sent right now; fall back to :c:func:`uv_udp_send`.\n\n    .. versionadded:: 1.50.0\n\n.. c:function:: int uv_udp_recv_start(uv_udp_t* handle, uv_alloc_cb alloc_cb, uv_udp_recv_cb recv_cb)",
+      "sourceSha256": "09f01b976b6bfba11e09c663ced430e89af45c0c5daeb96f298f487c2de5bb0f",
+      "generatedSha256": "dddbadcb261f97794ad57fb2cd1a1516760473013ba7ed50079631ea7494af30",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [
+        {
+          "id": "c.uv_udp_try_send2",
+          "text": "\n int   uv_udp_try_send2 ( uv_udp_t   * handle ,  unsigned   int   count ,  uv_buf_t   * bufs [ /*count*/ ] ,  unsigned   int   nbufs [ /*count*/ ] ,  struct   sockaddr   * addrs [ /*count*/ ] ,  unsigned   int   flags ) ¶"
+        }
+      ],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    },
+    {
+      "source": "udp.rst",
+      "line": 451,
+      "level": "WARNING",
+      "message": "Parsing of expression failed. Using fallback parser. Error was:",
+      "sourceExcerpt": "        can't be sent immediately).\n\n    .. versionchanged:: 1.27.0 added support for connected sockets\n\n.. c:function:: int uv_udp_try_send2(uv_udp_t* handle, unsigned int count, uv_buf_t* bufs[/*count*/], unsigned int nbufs[/*count*/], struct sockaddr* addrs[/*count*/], unsigned int flags)\n\n    Like :c:func:`uv_udp_try_send`, but can send multiple datagrams.\n    Lightweight abstraction around :man:`sendmmsg(2)`, with a :man:`sendmsg(2)`\n    fallback loop for platforms that do not support the former. The handle must\n    be fully initialized; call c:func:`uv_udp_bind` first.\n\n    :returns: >= 0: number of datagrams sent. Zero only if `count` was zero.\n        < 0: negative error code. Only if sending the first datagram fails,\n        otherwise returns a positive send count. ``UV_EAGAIN`` when datagrams\n        cannot be sent right now; fall back to :c:func:`uv_udp_send`.\n\n    .. versionadded:: 1.50.0\n\n.. c:function:: int uv_udp_recv_start(uv_udp_t* handle, uv_alloc_cb alloc_cb, uv_udp_recv_cb recv_cb)",
+      "sourceSha256": "09f01b976b6bfba11e09c663ced430e89af45c0c5daeb96f298f487c2de5bb0f",
+      "generatedSha256": "dddbadcb261f97794ad57fb2cd1a1516760473013ba7ed50079631ea7494af30",
+      "bodySystemMessages": [],
+      "relatedDefinitions": [
+        {
+          "id": "c.uv_udp_try_send2",
+          "text": "\n int   uv_udp_try_send2 ( uv_udp_t   * handle ,  unsigned   int   count ,  uv_buf_t   * bufs [ /*count*/ ] ,  unsigned   int   nbufs [ /*count*/ ] ,  struct   sockaddr   * addrs [ /*count*/ ] ,  unsigned   int   flags ) ¶"
+        }
+      ],
+      "sleepExampleRendered": null,
+      "platformsPresent": null
+    }
+  ],
+  "decision": "Do not change original RST silently. Missing example/API signature must be retained from exact fixed input and normalization decisions recorded separately with footer notes. Full range/directive/content equality not yet verified."
+}

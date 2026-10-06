@@ -1,0 +1,77 @@
+{
+  "scores": {
+    "additionalValue": {
+      "value": 3,
+      "reason": "部分的日本語記事はあるが公式ガイド・API全範囲は確認した探索先では未発見。全体系の追加価値3。不存在や実需を推測して4にはしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-675/JAPANESE_RESEARCH.json",
+          "sha256": "984ef774996a47da07b57adb2d5b6baf63129f37fc430457b5dda689339f1998"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "主要11場面のDOM/SAX/stream/encoding/JSONPointer/Schemaの具体的操作とC++での入出力処理が収録され、既存C/C++文書の用途に接続する。公式Wiki用途は歴史的説明として補助のみ。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-674/SELF_CONTAINED_DECISION.json",
+          "sha256": "fe1cb35081ef813690f639768b9689cb75f3165c2f2b40a10a802e212dd37ed6"
+        }
+      ]
+    },
+    "quality": {
+      "value": 3,
+      "reason": "13guide全読と原文probeで主要説明は自立。ただし12確認済み原文問題、137個別疎説明warningがあり、正誤を区別する注記とレビューが必要。整った原文という4評価は付けない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-673/GUIDE_CONTENT_REVIEW.json",
+          "sha256": "a2892e3ef13f09bcd853d62ad5b015dd2d7e5053aaa2d74e43744542fd6da22b"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-673/ORIGINAL_ISSUE_REGISTER.json",
+          "sha256": "3c33508a0a3a1292438b562e634d180bef9effec1bc6ab077680c42d571550f9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-674/WARNING_COVERAGE.json",
+          "sha256": "01d5a04c221e79002bbe358eba5cc5292a91bc0f94a2325af0f34f2ba95e5489"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 2,
+      "reason": "版/入力/ソース提供は固定可能だが生成器差/63anchor/tooltip runtime/外部画像/原文issue管理が必要。更新時の独立差分/回帰負担が大きい。成熟年齢やコミット頻度だけの減点ではない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-675/WORKLOAD_DECISION.json",
+          "sha256": "b2d39db248c73abca498b538c19e06dcb40868c9562082dedcf86d8c1ac3ce31"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 4,
+      "reason": "既存Doxygen parse5/rawHTML/共有footer方式が217ページ全量試験で再利用できた。固有anchor/CSS/runtime補正が残るため汎用5にはしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-671/ASTRO_TRIAL_PACKET.tar.gz",
+          "sha256": "0a5f76438f2fa9ee13cd1423642fe3626cb38756a3bcd012df1d9068313389a2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-675/WORKLOAD_DECISION.json",
+          "sha256": "b2d39db248c73abca498b538c19e06dcb40868c9562082dedcf86d8c1ac3ce31"
+        }
+      ]
+    }
+  },
+  "weights": {
+    "additionalValue": 30,
+    "practicality": 25,
+    "quality": 20,
+    "maintenance": 15,
+    "reuse": 10
+  },
+  "total": 64,
+  "threshold": 70,
+  "decision": "64点で基準未達、採用0。試験に掛けた工数を採用理由にしない。",
+  "reopenCondition": "具体的な追加価値、原文品質改善、再利用可能な生成/anchor/runtime方式による保守負荷低減の新証拠が得られた場合に再採点する。変更のない同じ調査や自動加点で再開しない。"
+}

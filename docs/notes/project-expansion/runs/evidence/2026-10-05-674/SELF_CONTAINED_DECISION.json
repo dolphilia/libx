@@ -1,0 +1,194 @@
+{
+  "status": "pass-major-explanations-in-fixed-scope",
+  "requirements": "利用に必要な主要説明が収録範囲内にあり、Issue/chat/videoを組み合わせて新規執筆しなくてよい（計画のselfContained条件）。",
+  "matrix": [
+    {
+      "task": "導入と最小parse/modify/write",
+      "inScopeOriginalSources": [
+        "readme.md",
+        "doc/tutorial.md"
+      ],
+      "anchorEvidence": {
+        "file": "readme.md",
+        "sha256": "ac1612175441cca1241174db73c9fcbe763c1280a3aad84ed4944efcfd55ac0e",
+        "line": 71,
+        "excerpt": "## Installation\n\nRapidJSON is a header-only C++ library. Just copy the `include/rapidjson` folder to system or project's include path.\n\nRapidJSON uses following software as its dependencies:\n* [CMake](https://cmake.org/) as a general build tool\n* (optional)[Doxygen](http://www.doxygen.org) to build documentation\n* (optional)[googletest](https://github.com/google/googletest) for unit and performance testing\n\nTo generate user documentation and run tests please proceed with the steps below:"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "値型判定・数値範囲・null入り文字列",
+      "inScopeOriginalSources": [
+        "doc/tutorial.md",
+        "doc/faq.md"
+      ],
+      "anchorEvidence": {
+        "file": "doc/tutorial.md",
+        "sha256": "52f902207c0846dba960dacfabce870fcaf48e80ab6a9fc8f952cc8938260b6b",
+        "line": 191,
+        "excerpt": "## Querying Number {#QueryNumber}\n\nJSON provide a single numerical type called Number. Number can be integer or real numbers. RFC 4627 says the range of Number is specified by parser.\n\nAs C++ provides several integer and floating point number types, the DOM tries to handle these with widest possible range and good performance.\n\nWhen a Number is parsed, it is stored in the DOM as either one of the following type:\n\nType       | Description\n-----------|---------------------------------------"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "array/object探索・変更・コピーとmove",
+      "inScopeOriginalSources": [
+        "doc/tutorial.md",
+        "include/rapidjson/document.h"
+      ],
+      "anchorEvidence": {
+        "file": "doc/tutorial.md",
+        "sha256": "52f902207c0846dba960dacfabce870fcaf48e80ab6a9fc8f952cc8938260b6b",
+        "line": 295,
+        "excerpt": "## Move Semantics {#MoveSemantics}\n\nA very special decision during design of RapidJSON is that, assignment of value does not copy the source value to destination value. Instead, the value from source is moved to the destination. For example,\n\n~~~~~~~~~~cpp\nValue a(123);\nValue b(456);\nb = a;         // a becomes a Null value, b becomes number 123.\n~~~~~~~~~~\n"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "文字列/DOM allocator・寿命",
+      "inScopeOriginalSources": [
+        "doc/tutorial.md",
+        "doc/dom.md"
+      ],
+      "anchorEvidence": {
+        "file": "doc/tutorial.md",
+        "sha256": "52f902207c0846dba960dacfabce870fcaf48e80ab6a9fc8f952cc8938260b6b",
+        "line": 362,
+        "excerpt": "## Create String {#CreateString}\nRapidJSON provide two strategies for storing string.\n\n1. copy-string: allocates a buffer, and then copy the source data into it.\n2. const-string: simply store a pointer of string.\n\nCopy-string is always safe because it owns a copy of the data. Const-string can be used for storing string literal, and in-situ parsing which we will mentioned in Document section.\n\nTo make memory allocation customizable, RapidJSON requires user to pass an instance of allocator, whenever an operation may require allocation. This design is needed to prevent storing a allocator (or Document) pointer per Value.\n"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "parse flags・エラー処理・in-situ制約",
+      "inScopeOriginalSources": [
+        "doc/dom.md",
+        "doc/faq.md"
+      ],
+      "anchorEvidence": {
+        "file": "doc/dom.md",
+        "sha256": "b9df02c0d1a0d49930f24c51878f6b39cd37cbc58aebe266f75a69deaca61022",
+        "line": 129,
+        "excerpt": "## Parse Error {#ParseError}\n\nWhen the parse processing succeeded, the `Document` contains the parse results. When there is an error, the original DOM is *unchanged*. And the error state of parsing can be obtained by `bool HasParseError()`,  `ParseErrorCode GetParseError()` and `size_t GetParseOffset()`.\n\nParse Error Code                            | Description\n--------------------------------------------|---------------------------------------------------\n`kParseErrorNone`                           | No error.\n`kParseErrorDocumentEmpty`                  | The document is empty.\n`kParseErrorDocumentRootNotSingular`        | The document root must not follow by other values.\n`kParseErrorValueInvalid`                   | Invalid value."
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "memory/file/iostream・customstream contract",
+      "inScopeOriginalSources": [
+        "doc/stream.md",
+        "include/rapidjson/stream.h"
+      ],
+      "anchorEvidence": {
+        "file": "doc/stream.md",
+        "sha256": "e3029e9167c3e5358c6a9f8cbaa4545629c18990784457f955c253abfa9755cd",
+        "line": 289,
+        "excerpt": "# Custom Stream {#CustomStream}\n\nIn addition to memory/file streams, user can create their own stream classes which fits RapidJSON's API. For example, you may create network stream, stream from compressed file, etc.\n\nRapidJSON combines different types using templates. A class containing all required interface can be a stream. The Stream interface is defined in comments of `rapidjson/rapidjson.h`:\n\n~~~~~~~~~~cpp\nconcept Stream {\n    typename Ch;    //!< Character type of the stream.\n"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "Unicode codeunit・BOM・validation/transcoding",
+      "inScopeOriginalSources": [
+        "doc/encoding.md",
+        "doc/stream.md",
+        "include/rapidjson/encodings.h"
+      ],
+      "anchorEvidence": {
+        "file": "doc/encoding.md",
+        "sha256": "94854fd70e39e3581023eb6c3e574818b5a2951e407629125e68c09cbaea3dc5",
+        "line": 112,
+        "excerpt": "# Validation & Transcoding {#ValidationTranscoding}\n\nWhen RapidJSON parses a JSON, it can validate the input JSON, whether it is a valid sequence of a specified encoding. This option can be turned on by adding `kParseValidateEncodingFlag` in `parseFlags` template parameter.\n\nIf the input encoding and output encoding is different, `Reader` and `Writer` will automatically transcode (convert) the text. In this case, `kParseValidateEncodingFlag` is not necessary, as it must decode the input sequence. And if the sequence was unable to be decoded, it must be invalid.\n\n## Transcoder {#Transcoder}\n\nAlthough the encoding functions in RapidJSON are designed for JSON parsing/generation, user may abuse them for transcoding of non-JSON strings.\n"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "Reader/Writerイベントとfalse中断・Reset",
+      "inScopeOriginalSources": [
+        "doc/sax.md",
+        "include/rapidjson/reader.h",
+        "include/rapidjson/writer.h"
+      ],
+      "anchorEvidence": {
+        "file": "doc/sax.md",
+        "sha256": "b7763a105c86e15c2ceebadc9130bdc14a9d77e38b3eb15b48f89f3e8741ac18",
+        "line": 96,
+        "excerpt": "## Handler {#Handler}\n\nAs the previous example showed, user needs to implement a handler, which consumes the events (function calls) from `Reader`. The handler must contain the following member functions.\n\n~~~~~~~~~~cpp\nclass Handler {\n    bool Null();\n    bool Bool(bool b);\n    bool Int(int i);\n    bool Uint(unsigned i);"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "pointer解決・親作成・allocator・error",
+      "inScopeOriginalSources": [
+        "doc/pointer.md",
+        "include/rapidjson/pointer.h"
+      ],
+      "anchorEvidence": {
+        "file": "doc/pointer.md",
+        "sha256": "26b1867343fe9712cb1712828aef556e0e35875c34c3ca09123a352995237949",
+        "line": 180,
+        "excerpt": "# Error Handling {#ErrorHandling}\n\nA `Pointer` parses a source string in its constructor. If there is parsing error, `Pointer::IsValid()` returns `false`. And you can use `Pointer::GetParseErrorCode()` and `GetParseErrorOffset()` to retrieve the error information.\n\nNote that, all resolving functions assumes valid pointer. Resolving with an invalid pointer causes assertion failure.\n\n# URI Fragment Representation {#URIFragment}\n\nIn addition to the string representation of JSON pointer that we are using till now, [RFC6901] also defines the URI fragment representation of JSON pointer. URI fragment is specified in [RFC3986] \"Uniform Resource Identifier (URI): Generic Syntax\".\n"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "schema DOM/SAX/serialization・remoteproviderとDraftv4制約",
+      "inScopeOriginalSources": [
+        "doc/schema.md",
+        "include/rapidjson/schema.h"
+      ],
+      "anchorEvidence": {
+        "file": "doc/schema.md",
+        "sha256": "f8f00af1bc9dcf33f4488914021c84e478996a8d870f3916598a495def0f3321",
+        "line": 55,
+        "excerpt": "## Validation during parsing/serialization\n\nUnlike most JSON Schema validator implementations, RapidJSON provides a SAX-based schema validator. Therefore, you can parse a JSON from a stream while validating it on the fly. If the validator encounters a JSON value that invalidates the supplied schema, the parsing will be terminated immediately. This design is especially useful for parsing large JSON files.\n\n### DOM parsing\n\nFor using DOM in parsing, `Document` needs some preparation and finalizing tasks, in addition to receiving SAX events, thus it needs some work to route the reader, validator and the document. `SchemaValidatingReader` is a helper class that doing such work.\n\n~~~cpp\n#include \"rapidjson/filereadstream.h\""
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    },
+    {
+      "task": "内部設計/実装/歴史的性能の位置づけ",
+      "inScopeOriginalSources": [
+        "doc/internals.md",
+        "doc/performance.md",
+        "CHANGELOG.md"
+      ],
+      "anchorEvidence": {
+        "file": "doc/internals.md",
+        "sha256": "53bd886a93f6d718be181ce1225499fdd13f828958c3449bb0485a65306a2d77",
+        "line": 7,
+        "excerpt": "# Architecture {#Architecture}\n\n## SAX and DOM\n\nThe basic relationships of SAX and DOM is shown in the following UML diagram.\n\n![Architecture UML class diagram](diagram/architecture.png)\n\nThe core of the relationship is the `Handler` concept. From the SAX side, `Reader` parses a JSON from a stream and publish events to a `Handler`. `Writer` implements the `Handler` concept to handle the same set of events. From the DOM side, `Document` implements the `Handler` concept to build a DOM according to the events. `Value` supports a `Value::Accept(Handler&)` function, which traverses the DOM to publish events.\n"
+      },
+      "assessment": "主要説明は固定収録範囲内。原文の誤記/古い説明は673issue register・guide reviewと区別して保持。"
+    }
+  ],
+  "warningAssessment": {
+    "warnings": 630,
+    "uniqueSourcePositions": 544,
+    "counts": {
+      "implementation-member": 52,
+      "guide-description": 88,
+      "implementation-trait": 2,
+      "implementation-function": 2,
+      "sparse-auxiliary-api-reference": 56,
+      "sparse-type-or-state-reference": 81,
+      "original-delegation-description": 84,
+      "original-concept-description": 238,
+      "adjacent-original-description": 6,
+      "implementation-hook": 7,
+      "implementation-specialization": 10,
+      "generator-macro-artifact": 4
+    },
+    "individualSparseReferenceRows": 137,
+    "meaning": "137件の個別説明不足（81型/状態+56補助API）は残る。残り493行も各API全文説明の承認ではなく、元concept/guide/隣接原文/実装内部への対応を確認したもの。"
+  },
+  "judgement": "13guideと収録API concept/原文commentsに導入からDOM/SAX・stream/encoding・pointer/schemaの主要手順と制約が揃うため自立性gateはpass。630警告を理由にコードから本文を新規生成する必要はない。署名/原文説明不足を保存し、日本語全文レビューと原文品質採点へ残す。",
+  "requiredAtAdoption": [
+    "673原文問題12件のfooter注記・対応と、GUIDE_CONTENT_REVIEWの追加照合事項を翻訳/review工程へ引継ぐ。",
+    "184reader+33source listingの全体範囲を維持。説明不足のAPIや問題章を分母から除外しない。",
+    "原文が疎い箇所を推測の新説明で埋めず、原文の限界と用途/対象版を明記する。"
+  ],
+  "limits": [
+    "selfContained passは原文品質5点や全文semanticレビュー合格を意味しない。",
+    "全217page/APIの意味確認、日本語全文レビューは未完。",
+    "137疎説明行の個別使用法が揃うとの主張はしない。外部問い合わせ/投稿/公開は実施せず。"
+  ]
+}
