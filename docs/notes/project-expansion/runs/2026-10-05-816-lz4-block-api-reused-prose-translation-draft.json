@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-816-lz4-block-api-reused-prose-translation-draft",
+  "cycle": 816,
+  "startedAt": "2026-10-05T06:25:03.956Z",
+  "endedAt": "2026-10-05T06:27:39.381Z",
+  "result": "partial",
+  "phase": "LZ4 block API全35説明区画の既存訳範囲照合と組立・草稿構造検査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex source-prefix/translation-label comparison",
+    "deterministic translation assembler",
+    "draft-only structure checker",
+    "read-only canonical/review SHA checks",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/BASELINE_OPERATIONS.json",
+      "sha256": "4a61e59987327f3a7a09437dea72b3cc449764fb42cc2ef7adabf987a99628c1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/BASELINE_PROGRESS.json",
+      "sha256": "96e68ecc0ed1169ead86b0c8543927e5f59ae0f0bfb900d660dadc052b344401"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "eaf1df4a1eb164731e4df8d43ea0bcc342a36a8a929f8bfcac97528a07a09d00"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-815/API_PREPARATION.json",
+      "sha256": "d04abfe84aae508b630e877b9a0d5e3c8740139c781262b127b8033d4f8df256"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4_manual.html",
+      "sha256": "d3ba8f6d993890c7c6c077354944c67aa85b319a3a74a361ab5d5590fea37772"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/04-api/01-block-api.md",
+      "sha256": "cd288e805419b1199f452c9e0d3d33150113125255c519d63b62ec49ac16b50c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/lz4.h",
+      "sha256": "26b82efc53d1570f3b54eef02e9c4764c1ad374ff03cac04e2ced5ea4d4c552f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-806/COMMENT_BINDINGS.json",
+      "sha256": "ea69d017a4a2134d2d0fb590384bf5eb8859e0148e60009e4d9237c9d79f551d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-806/COMMENTS_A.json",
+      "sha256": "9ea67417b679ccae8fb32764408bce0ba438ab8fddb36326d0076a2ef437f483"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-806/COMMENTS_B.json",
+      "sha256": "6f05ac4e7e5f646f75832866ab7f915c22c8cb0e492aab7c4cd8a1ef00cdde9d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/PROSE_JA.json",
+      "sha256": "855a3ce53046222bf5b75f8ed1f4ebd2cc727fd6e66bb86a962f528ee09ff946"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/LABELS_JA.json",
+      "sha256": "9390f494913f9c875c6d867b9a6477724395f6577d2a3653f5d365068b67c73d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/REUSE_DECISIONS.json",
+      "sha256": "5e4846b040559507838b6ca12458744bf7b3f3d58067f377b27c7221a4735da5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/assemble-api.py",
+      "sha256": "3926cd70a9d9968a7dacd3849d6ffeb16017beb1e83fb1d208954575fa116eb6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/API-editorial.html",
+      "sha256": "3675647d39445513a7fb9b631743dfeaea63a705a73abf219cfb580f47f4d781"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/draft/API-body.md",
+      "sha256": "0c0582361ed54052573c9524eb2b918b361a3fa63d03ae8c8dd0396a5c321abb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/draft/01-block-api.md",
+      "sha256": "c93c81ec75672030d2a075c52ee38a0fa04516c59cff760901aaee7790d55919"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/check-api-draft.py",
+      "sha256": "9cfb1da03f6e4b9eac3b3504d3d4075f1566a4143edb986b7f4b17d629d2d64f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/DRAFT_STRUCTURE.json",
+      "sha256": "fac9180e7b6303b9b126fb0c6de75a44643dd108297b6ebafe8cd485881f0695"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/record-draft-cycle.mjs",
+      "sha256": "18ad36be4034c00c59863e4eecf4dd4f133645476bdf71f45533044e7ced9376"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "定本27とレビュー24組のlive SHA整合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/lz4/v1-10-0/canonical/revisions/802/CANONICAL_LOCK.json",
+          "sha256": "9d2b72008cc0f62a2df65e125cbac369bdb9a0f766b8390c8f8813fd02c541b9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/BASELINE_REVIEW_MANIFEST.json",
+          "sha256": "eaf1df4a1eb164731e4df8d43ea0bcc342a36a8a929f8bfcac97528a07a09d00"
+        }
+      ]
+    },
+    {
+      "name": "草稿のみ35区画API/数値/URL/図/外部code保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/DRAFT_STRUCTURE.json",
+          "sha256": "fac9180e7b6303b9b126fb0c6de75a44643dd108297b6ebafe8cd485881f0695"
+        }
+      ]
+    },
+    {
+      "name": "新block API page別工程全文review/最終機械/取込/build/DOM",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/PROSE_JA.json",
+          "sha256": "855a3ce53046222bf5b75f8ed1f4ebd2cc727fd6e66bb86a962f528ee09ff946"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/LABELS_JA.json",
+          "sha256": "9390f494913f9c875c6d867b9a6477724395f6577d2a3653f5d365068b67c73d"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/REUSE_DECISIONS.json",
+          "sha256": "5e4846b040559507838b6ca12458744bf7b3f3d58067f377b27c7221a4735da5"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/assemble-api.py",
+          "sha256": "3926cd70a9d9968a7dacd3849d6ffeb16017beb1e83fb1d208954575fa116eb6"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/API-editorial.html",
+          "sha256": "3675647d39445513a7fb9b631743dfeaea63a705a73abf219cfb580f47f4d781"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/draft/API-body.md",
+          "sha256": "0c0582361ed54052573c9524eb2b918b361a3fa63d03ae8c8dd0396a5c321abb"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/draft/01-block-api.md",
+          "sha256": "c93c81ec75672030d2a075c52ee38a0fa04516c59cff760901aaee7790d55919"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/check-api-draft.py",
+          "sha256": "9cfb1da03f6e4b9eac3b3504d3d4075f1566a4143edb986b7f4b17d629d2d64f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/DRAFT_STRUCTURE.json",
+          "sha256": "fac9180e7b6303b9b126fb0c6de75a44643dd108297b6ebafe8cd485881f0695"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-816/record-draft-cycle.mjs",
+          "sha256": "18ad36be4034c00c59863e4eecf4dd4f133645476bdf71f45533044e7ced9376"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "35固定原文説明が元ヘッダーコメントからlabel/装飾を除いた同文であることと、既存日本語の除去firstlineをCodex全件再読して再利用判断を保存。タイトルや版ラベルを原manual本文へ無断追加しない。",
+    "35説明・12見出し・目次10リンクを組立。815準備の目次11リンクという表現は10リンク/11named anchorの混同で、816の実数確認に訂正。図4行はheaderでなくmanual自身の原図を保持。",
+    "草稿構造は35区画/API識別子/数値/URL/図/全宣言等を検査。Python Unicode境界が日本語隣接APIを誤検出したためASCII識別子境界へ修正し、明示的なbody先頭改行1つだけを許容して範囲外完全一致。内容reviewの代用にしない。",
+    "PROGRESS/REVIEW_MANIFESTは24/27合格・3pendingのまま。草稿未取込、CLI実行/表示未実施、外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "reuseChoices": [
+      {
+        "manualSlot": 0,
+        "headerComment": 2
+      },
+      {
+        "manualSlot": 1,
+        "headerComment": 5
+      },
+      {
+        "manualSlot": 2,
+        "headerComment": 8
+      },
+      {
+        "manualSlot": 3,
+        "headerComment": 11
+      },
+      {
+        "manualSlot": 4,
+        "headerComment": 12
+      },
+      {
+        "manualSlot": 5,
+        "headerComment": 14
+      },
+      {
+        "manualSlot": 6,
+        "headerComment": 15
+      },
+      {
+        "manualSlot": 7,
+        "headerComment": 16
+      },
+      {
+        "manualSlot": 8,
+        "headerComment": 17
+      },
+      {
+        "manualSlot": 9,
+        "headerComment": 18
+      },
+      {
+        "manualSlot": 10,
+        "headerComment": 20
+      },
+      {
+        "manualSlot": 11,
+        "headerComment": 21
+      },
+      {
+        "manualSlot": 12,
+        "headerComment": 22
+      },
+      {
+        "manualSlot": 13,
+        "headerComment": 23
+      },
+      {
+        "manualSlot": 14,
+        "headerComment": 24
+      },
+      {
+        "manualSlot": 15,
+        "headerComment": 25
+      },
+      {
+        "manualSlot": 16,
+        "headerComment": 26
+      },
+      {
+        "manualSlot": 17,
+        "headerComment": 27
+      },
+      {
+        "manualSlot": 18,
+        "headerComment": 28
+      },
+      {
+        "manualSlot": 19,
+        "headerComment": 29
+      },
+      {
+        "manualSlot": 20,
+        "headerComment": 30
+      },
+      {
+        "manualSlot": 21,
+        "headerComment": 31
+      },
+      {
+        "manualSlot": 22,
+        "headerComment": 32
+      },
+      {
+        "manualSlot": 23,
+        "headerComment": 33
+      },
+      {
+        "manualSlot": 24,
+        "headerComment": 35
+      },
+      {
+        "manualSlot": 25,
+        "headerComment": 36
+      },
+      {
+        "manualSlot": 26,
+        "headerComment": 37
+      },
+      {
+        "manualSlot": 27,
+        "headerComment": 38
+      },
+      {
+        "manualSlot": 28,
+        "headerComment": 39
+      },
+      {
+        "manualSlot": 29,
+        "headerComment": 40
+      },
+      {
+        "manualSlot": 30,
+        "headerComment": 42
+      },
+      {
+        "manualSlot": 31,
+        "headerComment": 43
+      },
+      {
+        "manualSlot": 32,
+        "headerComment": 45
+      },
+      {
+        "manualSlot": 33,
+        "headerComment": 50
+      },
+      {
+        "manualSlot": 34,
+        "headerComment": 51
+      }
+    ],
+    "contentReview": []
+  },
+  "unresolved": [
+    "block API pageのsource/EN/JA別工程全文reviewと最終機械/DOM/隔離build未実施",
+    "日本語/full review残り3、全表示/統合/finalgates・GPL対応Libx sourcekit未完",
+    "外部リンクHTTP可用性/画像ロード未確認"
+  ],
+  "nextAction": "817でOPERATIONS892・802定本27SHA・24review組・816草稿SHAを照合。doc/lz4_manual.html/EN/JA全量を分割非省略で別工程全文review。全35説明・12見出し・目次10リンク/11named anchors・宣言内コメント・ASCII図と条件/戻り値/メモリ寿命を確認。機械検査→隔離取込/build/全DOM確認後にpageをpassedへ。残り3ページ（NEWS/manual2）、全gates/sourcekit/統合未完。",
+  "resumeCondition": "OPERATIONS892・816草稿SHA照合後817でblock API manualの別工程全文reviewへ。"
+}

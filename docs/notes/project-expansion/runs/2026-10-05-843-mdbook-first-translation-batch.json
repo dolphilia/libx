@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-843-mdbook-first-translation-batch",
+  "cycle": 843,
+  "startedAt": "2026-10-05T13:45:00.000Z",
+  "endedAt": "2026-10-05T14:04:35.112Z",
+  "result": "partial",
+  "phase": "mdBook正規app/31定本と第1バッチ5章翻訳・別パス全文レビュー・対象ビルド/JA代表表示",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "canonical template",
+    "fixed source/static evidence reuse",
+    "same Codex separate-pass full content review",
+    "isolated selective Astro build",
+    "DOM/source SHA/CUA representatives"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/BASELINE_OPERATIONS.json",
+      "sha256": "733f30410873709e427bcf2b85b76d046263a1749c329322b6cef3d4c3e880dd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/OPERATION_PLAN.json",
+      "sha256": "f748f3c60567626cade5fc00ea6f333420c0d57d4818f6d21f91afa39dfb6ef9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/CONTENT_MAP_FROZEN.json",
+      "sha256": "549105f82efaaff0a6d675a712c1d1e1994b23c55aae19a3eae1515579ed3391"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/REVIEW_MANIFEST_FROZEN.json",
+      "sha256": "88d0e8fcf0708b972f6988e544ddcf6d2aff6c97b7a8861a0323c1b245ca1088"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/PROGRESS_FROZEN.json",
+      "sha256": "80337ec126ebfb5aa9b7155d0905689dc38bd6f3be0c999073acf63ec56faf31"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/BATCH_CHECK.json",
+      "sha256": "a20dce329df1fd394e26f2dcb80b2bd6afcada4c9de75af665d829ae3c469da9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/BATCH_ONE_BUILD_FINAL.log",
+      "sha256": "a527fb4b3cb4e69d92d703d76fcc0a5c5144bba76d7c41c89c8579d4720c950b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/BROWSER_REPRESENTATIVES.json",
+      "sha256": "487ad7c26715b9429e1711aa4fa5baf855123a91130079101ea2ca354d43861b"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [
+    "mdbook:v0-5-4:efc4b53bf3770ff71cd62c74fc7eb9a4c0515cd352d4e7e2259cd168d645e153"
+  ],
+  "checks": [
+    {
+      "name": "5章翻訳/別パスreview/31EN5JA構造と41page対象build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/BATCH_CHECK.json",
+          "sha256": "a20dce329df1fd394e26f2dcb80b2bd6afcada4c9de75af665d829ae3c469da9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/REVIEW_MANIFEST_FROZEN.json",
+          "sha256": "88d0e8fcf0708b972f6988e544ddcf6d2aff6c97b7a8861a0323c1b245ca1088"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/BATCH_ONE_BUILD_FINAL.log",
+          "sha256": "a527fb4b3cb4e69d92d703d76fcc0a5c5144bba76d7c41c89c8579d4720c950b"
+        }
+      ]
+    },
+    {
+      "name": "Japanese table/code/footer representatives",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-843/BROWSER_REPRESENTATIVES.json",
+          "sha256": "487ad7c26715b9429e1711aa4fa5baf855123a91130079101ea2ca354d43861b"
+        }
+      ]
+    },
+    {
+      "name": "all31 review/link closure/source-offer/release",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "旧842入力をSHA照合して再利用。root他変更と分離した正式cloneを使う。",
+    "コードのliteral角括弧をHTML entityで保存するだけでDOM全文不変。SVG/hiddencode/TeX静的提供、機能説明は原典本が対象とフッターに明記。",
+    "翻訳保存後に別パス全文読解。日本語語順によるinlinecode並び変更を発見し、pre全文同一・段落別inline識別子集合と意味を照合。",
+    "初回Python構文/バイナリーwrite問題はsource SHA guardで採用前検出、訂正後原資料hash一致。初buildはpendingJA次章warning、残26を合格にしない。",
+    "重複本文注記をフッターへ集約し限定DOM照合。Workers/定期設定なし。公開条件未達のmdBookはpushしていない。"
+  ],
+  "unresolved": [
+    "残26JA/review、JA未訳target47、可搬再生成/最終source-offer/全release検証/公開。"
+  ],
+  "nextAction": "844:CLI個別7章（init/build/watch/serve/test/clean/completions）を翻訳→別パス全文レビュー。合格済み5章はSHA維持、残26/最終source-offer/全体検証/公開は未完。",
+  "resumeCondition": "OPERATIONS最新mdBook translatingと専用843/保存5reviewから続行。バッチ完了はgoal完了ではない。"
+}

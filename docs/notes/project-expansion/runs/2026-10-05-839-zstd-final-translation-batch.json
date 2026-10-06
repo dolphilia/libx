@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-839-zstd-final-translation-batch",
+  "cycle": 839,
+  "startedAt": "2026-10-05T12:14:05.394Z",
+  "endedAt": "2026-10-05T12:39:58.240Z",
+  "result": "partial",
+  "phase": "残り4章翻訳・別パス全文レビュー・可搬定本再生成・全章構造/リンク・代表操作",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "same Codex separate-pass full content review",
+    "source hash locked portable canonical generator",
+    "selective isolated build / Markdown AST / rendered DOM",
+    "CUA locale/search/mobile/table keyboard/code feedback",
+    "local HTTP download SHA"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/PROGRESS_BEFORE.json",
+      "sha256": "40c3b8e2a48102faf8434b9bc02b5a8ce6af6445ffe4083674486568bfc5e036"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/REVIEW_BEFORE.json",
+      "sha256": "be1650fd06a8c9e7daa83a8ff04eaefc7ba71612658d5128f3e48de3389cd08a"
+    },
+    {
+      "path": "docs/notes/document-import/zstd/v1-5-7/source/zstd_compression_format.md",
+      "sha256": "81d08d9af1e3011190cae694d1b775b46db4743728733522a4119a5cb7558bb5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/REVIEW_MANIFEST_FROZEN.json",
+      "sha256": "818cb38e0276d73e35c4c730867a2bd671b526533c2a704b26ed70e4f65b9e52"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/PROGRESS_FROZEN.json",
+      "sha256": "22696379b9bca7e1dcad0c8bf8f45519c89edd80698646b6ba920791238c0ed0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/CONTENT_MAP_FROZEN.json",
+      "sha256": "dc726c4a176c15108b125342dda1e8ea1fd2e160957fd876bd45b5b55f430d67"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/BATCH_CHECK.json",
+      "sha256": "f2870c7033b49dbdafa0e1483e1e7a623e1edcb2154444d6ec02e3becca0d4c8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/SELECTIVE_BUILD_ISOLATED_FINAL.log",
+      "sha256": "79eb6fbacc301d945ba24982e2e3956c8941dc5e4a640a22006be681416d984d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/REPLAY_CHECK.json",
+      "sha256": "e83d6b91da9e878f1442a1be7060c4bd6a7b35d902092bb7c527013b68a9846f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/BROWSER_REPRESENTATIVES.json",
+      "sha256": "e8c77039e441d858af303306d448250461f17a60294a04b19abcebedecbf6982"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zstd"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "full 9 chapter translation/review/canonical/batch checks",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/REVIEW_MANIFEST_FROZEN.json",
+          "sha256": "818cb38e0276d73e35c4c730867a2bd671b526533c2a704b26ed70e4f65b9e52"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/BATCH_CHECK.json",
+          "sha256": "f2870c7033b49dbdafa0e1483e1e7a623e1edcb2154444d6ec02e3becca0d4c8"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-839/REPLAY_CHECK.json",
+          "sha256": "e83d6b91da9e878f1442a1be7060c4bd6a7b35d902092bb7c527013b68a9846f"
+        }
+      ]
+    },
+    {
+      "name": "formal integration and external publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "838で合格済み5章の入力SHA同一を確認し再reviewしない。残り4章は草稿保存後に原文/定本/訳文を別パス全文読解。",
+    "原ABEF表相違はoriginal unchangedと英日注記で対応し、原典の技術監査を拡大しない。",
+    "原文/通知はローカルHTTPでbyte同一。言語同章切替・Huffman検索・390px本文はみ出しなし/コードと表個別overflow・表ArrowRight39px移動、コードコピー実63字のUI貼り付け一致を確認。",
+    "rootでの対象buildはapp未追加により対象なしで失敗。直ちに専用cloneへ修正し23page build成功。合格証拠は専用clone最終ログのみ。",
+    "Root他変更混在なし。公開条件未達のためpush/外部公開なし。Workers/定期設定なし。"
+  ],
+  "unresolved": [
+    "正式content gateとshared integration/release差分・公開・公開後確認は未完。",
+    "未確認を合格にしていない。コードコピーはclipboard toolの空読み取り後、UI貼り付けによって期待式63字と一致を確認。"
+  ],
+  "nextAction": "専用checkoutに可搬check:content/review packetを組み込み、統合・内容/整合性・差分限定release検証を完了。コードコピーはUI貼り付けで期待する63字の式と実一致。全公開条件後に対象push→統合Cloudflare Pages→公開後確認。",
+  "resumeCondition": "OPERATIONS最新Zstd案件/9章review/PROGRESSと専用cloneから未完工程へ。バッチ完了をgoal完了にしない。"
+}

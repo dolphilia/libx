@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-847-mdbook-final-translation-batch",
+  "cycle": 847,
+  "startedAt": "2026-10-05T14:42:08.781947+00:00",
+  "endedAt": "2026-10-05T14:56:49.191Z",
+  "result": "partial",
+  "phase": "mdBook最後6章翻訳・別パス全文review・content-reviewed",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "saved drafts",
+    "separate-pass full review including fixed auxiliary sources",
+    "delta DOM/code/SVG/refs",
+    "selective Astro build",
+    "native details/mobile representatives"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/PROGRESS_BEFORE.json",
+      "sha256": "2bff6bad151aee0cbd648d3acb03147412380d30de250a7256a2905d8d92e47f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/CONTENT_MAP_BEFORE.json",
+      "sha256": "912a0fbf08eeeccf106a4e79644945e0247cce4c9aa81f4e6890b1d7d5437c0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/REVIEW_MANIFEST_BEFORE.json",
+      "sha256": "76c4522e02c1ecffb7814467d2f5cb6016447751d255697c166cfda06795712f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/CONTENT_MAP_FROZEN.json",
+      "sha256": "9cfe3ab1e38df3cb05e600c2523de6378dc54f884317abda9d90f9908e99763f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/REVIEW_MANIFEST_FROZEN.json",
+      "sha256": "0d3a7b40a8e856ecdf42d024f08aaec6ae734af76404ffc50723a05b63bdec76"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/PROGRESS_FROZEN.json",
+      "sha256": "c19b39a01f9043b77b9a0d3910f0629347ef11d13afff4e72d13896cdde430c7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/BATCH_CHECK.json",
+      "sha256": "53753f635b9184feb99bbf0eb797c5dbf9564b9f86716f98d5a1db66bad8076d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/SELECTIVE_BUILD_VERIFIED.log",
+      "sha256": "4d043f843719a3b9d990cda881d014e636bb5e46b1f6ed77321ba0866d3a51a2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/BROWSER_REPRESENTATIVES.json",
+      "sha256": "92445df681110355c6c01d0f0f8e14cabe7784fd42da8dbd5949b1aa6758dd21"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全31review/新6JA検査/67page build/代表表示",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/REVIEW_MANIFEST_FROZEN.json",
+          "sha256": "0d3a7b40a8e856ecdf42d024f08aaec6ae734af76404ffc50723a05b63bdec76"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/BATCH_CHECK.json",
+          "sha256": "53753f635b9184feb99bbf0eb797c5dbf9564b9f86716f98d5a1db66bad8076d"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/SELECTIVE_BUILD_VERIFIED.log",
+          "sha256": "4d043f843719a3b9d990cda881d014e636bb5e46b1f6ed77321ba0866d3a51a2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-847/BROWSER_REPRESENTATIVES.json",
+          "sha256": "92445df681110355c6c01d0f0f8e14cabe7784fd42da8dbd5949b1aa6758dd21"
+        }
+      ]
+    },
+    {
+      "name": "可搬再生成/source-offer/正式release",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "旧25review/旧56検査をSHA同一で再利用。",
+    "6JAのcode/metadata/link/SVG/full sourceauxを確認。JAコード識別子Book1とcode内altを原保持へ修正、段落34リンク交換は語順として明示許容。",
+    "全31レビューと180内部参照/target0に合格。正式verifiedとはまだしない。",
+    "原sourceのAPI/誤記を黙って修正しない、図素材通知はfooter。",
+    "Workers/定期なし、未公開。"
+  ],
+  "unresolved": [
+    "可搬再生成/source-offer/配布条件/正式gates/統合公開。"
+  ],
+  "nextAction": "848:全31英日文書の可搬再生成、source-offer/build contextと配布条件を整備し正式検証・登録。検証済み差分だけ統合Pagesへ公開/公開後確認。",
+  "resumeCondition": "848:全31英日文書の可搬再生成、source-offer/build contextと配布条件を整備し正式検証・登録。検証済み差分だけ統合Pagesへ公開/公開後確認。"
+}

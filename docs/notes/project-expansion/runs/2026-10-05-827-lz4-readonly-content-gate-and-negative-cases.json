@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-827-lz4-readonly-content-gate-and-negative-cases",
+  "cycle": 827,
+  "startedAt": "2026-10-05T07:27:20.362Z",
+  "endedAt": "2026-10-05T07:45:17.203Z",
+  "result": "partial",
+  "phase": "LZ4 read-only check:content実装・全固定入力/review/構造検査と12異常系",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex checker implementation",
+    "read-only fixed source replay",
+    "full reviewed SHA/restoration binding",
+    "ordered protected structure and decoded API audit",
+    "real ID/footer/license/local href verification",
+    "disposable negative fixtures",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/BASELINE_OPERATIONS.json",
+      "sha256": "52e2dcd1d908f901d2748153ffb928c60ee7478266d95a3fcd382c946ee60281"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/BASELINE_PROGRESS.json",
+      "sha256": "84d2073a445c609a33cc188788408f256663bbe58be8a35a5d652588c74898ea"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "2899103c32bd3587b0c2f0d027bb53da0297ecbe640d2397ed725d586f0694f1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/COMMON_DIFFERENCE_ANALYSIS.json",
+      "sha256": "28de7e0a7e43b506b9b51009b7b0975686f571191a3c3ca65e16faed41270cf7"
+    },
+    {
+      "path": "docs/notes/document-import/lz4/v1-10-0/canonical/revisions/802/CANONICAL_LOCK.json",
+      "sha256": "9d2b72008cc0f62a2df65e125cbac369bdb9a0f766b8390c8f8813fd02c541b9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/check-content.mjs",
+      "sha256": "e73454cb40570312c1ef495d87f90ceea18a448d3f84509c74075e903428c7d8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/package.json",
+      "sha256": "047667a98718c5bacb5dc995c4476ba9d66ce204778e4afdd1d19ce49982015a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/CHECK_CONTENT.log",
+      "sha256": "e408ef7713451fc59aff79648b0bda404352cb81a6da0f1c86539f320c21c71f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/CHECK_CONTENT.json",
+      "sha256": "3b3f4a7efd14ab84da32b27d877369ab7864a928bf7181ac5477e6117d72bc1d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/NEGATIVE_CHECKS.json",
+      "sha256": "7ce5ca39756d78d2a76dcd287e9ef9859313807801625ab0413daa75802ffbbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/test-content-gate.mjs",
+      "sha256": "cb8896f318b71e1daa820c6673d3aadacfd505d9a416f708722d84fb36106218"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/FIRST_CHECK_FOOTER_FAILURE.log",
+      "sha256": "b6b4b0d4664103f1931e59f131c1bc2e0931cb9359b5e840ae9fc8257a84faf5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/IMPLEMENTATION.json",
+      "sha256": "1e0ecfa763f0e52c06e9371a5ae3620cb529df26bf782773ad70f6da80f0f0b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/record-content-gate.mjs",
+      "sha256": "5130b6afb21c2cdb3b685c9d5f965ca6ee609bb9f21045281de87cc39504e85b"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "read-only check:content全文・固定原文/再生成/review/保護対象/ID/通知/license/内部リンク",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/CHECK_CONTENT.json",
+          "sha256": "3b3f4a7efd14ab84da32b27d877369ab7864a928bf7181ac5477e6117d72bc1d"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/CHECK_CONTENT.log",
+          "sha256": "e408ef7713451fc59aff79648b0bda404352cb81a6da0f1c86539f320c21c71f"
+        }
+      ]
+    },
+    {
+      "name": "正常1＋12異常系を独立copyで拒否・全input不変",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/NEGATIVE_CHECKS.json",
+          "sha256": "7ce5ca39756d78d2a76dcd287e9ef9859313807801625ab0413daa75802ffbbc"
+        }
+      ]
+    },
+    {
+      "name": "選択build/links/integrity/display・GPL sourcekit・共有統合",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/IMPLEMENTATION.json",
+          "sha256": "1e0ecfa763f0e52c06e9371a5ae3620cb529df26bf782773ad70f6da80f0f0b4"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "隔離appにcheck-content.mjsとpackage check:contentを追加。証拠rootの既定はrepository、隔離のみ明示ENV/CLIを使う。共有コード・ユーザー/Awesomeは変更しない。",
+    "208固定input/27EN再生成・27全文review/live byte・5限定復元chain・orderedheading/code/inline/image/未処理命令・decoded API・125実ID対・license registry/原通知/本文とfooter370内部hrefを検査。共通46を無視して0にせず明示不変条件へ対応。",
+    "初回sourcefooter位置をframeworkの先頭と誤認し失敗。実source context要素の完全一致へ訂正、失敗log保存。正常再実行0error。正常1と12破損/欠落ケース全期待結果、各inputと実app不変。",
+    "構造gateをpassedへ、canonicalは維持。他4gatesとsourcekit/統合は未完。page内容review27を再実施したとはしない。外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "canonicalPages": 27,
+    "reviewedJapanesePages": 27,
+    "originalFilesChecked": 208,
+    "renderedPages": 54,
+    "namedIdPairs": 125,
+    "localBodyAndFooterLinks": 370,
+    "limitedMaintenancePages": 5
+  },
+  "unresolved": [
+    "選択build/links/integrity/display gates未完",
+    "GPL対応Libx sourcekitと共有checkout統合/証拠可搬性未完",
+    "外部HTTP可用性/画像ロード未確認"
+  ],
+  "nextAction": "828でOPERATIONS904・canonical27/review27/liveJA・827checker/package SHAを照合。隔離workspaceでpnpm build:selective --projects=lz4、pnpm check:links、pnpm check:integrity、git diff --checkを実行し対象/他appエラーを分ける。現app check:contentを再実行し再生成/構造を確認。表示はローカルAstroのみ、GPL対応Libx sourcekitと共有保護下統合は未完。外部公開/定期設定なし。",
+  "resumeCondition": "OPERATIONS904・827全SHA照合後828へ。"
+}

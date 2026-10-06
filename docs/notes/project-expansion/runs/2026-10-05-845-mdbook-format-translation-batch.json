@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-845-mdbook-format-translation-batch",
+  "cycle": 845,
+  "startedAt": "2026-10-05T14:12:00.000Z",
+  "endedAt": "2026-10-05T14:25:47.517Z",
+  "result": "partial",
+  "phase": "mdBook形式/表示8章翻訳・別パス全文review・画像静的化・差分検査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "saved drafts",
+    "separate-pass full review",
+    "DOM/code/table/SVG/definition/source refs",
+    "selective Astro build",
+    "native Markdown/footnote/TeX representatives",
+    "three-batch reflection"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/PROGRESS_BEFORE.json",
+      "sha256": "053907a789b42e37c71a68f3a3aba0f56cd42e650bf8697a17149da6b2789627"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/CONTENT_MAP_BEFORE.json",
+      "sha256": "adaba60def92229d16113ff5862b1491b7e85bdbc47fab0f45140030dacd701a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/REVIEW_MANIFEST_BEFORE.json",
+      "sha256": "b0c7cdc0e8ca650f95748278b4ab22518a498c5a358b166b067ab0cc06365c06"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/CANONICAL_20_BEFORE.md.txt",
+      "sha256": "585af9f5b89433bcf00c96bf5b6536dab2309619265842e1375d96235672f00c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/CANONICAL_26_BEFORE.md.txt",
+      "sha256": "14bddeaeb5a06cc0d36e55ee53ba75792a2130dd1575bb7fece046594b03af95"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/CONTENT_MAP_FROZEN.json",
+      "sha256": "3ca1f2a281891ecf657df8cb7ec53bbf0edd92ced97104fa69b196c8e5ec61df"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/REVIEW_MANIFEST_FROZEN.json",
+      "sha256": "593b4bd8a912b5deba65591099972dd4a02e6a01618a6df6cbf5983b1766eed1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/PROGRESS_FROZEN.json",
+      "sha256": "5af7857c84e57b0c1834c89edb624e1bd7d4bd547c0a3f51f382d013011b2fa3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/BATCH_CHECK.json",
+      "sha256": "da783785a8c545cc28b5448b2fd49fdf36df8081ae1013fcb3f225ac6886e329"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/SELECTIVE_BUILD_VERIFIED.log",
+      "sha256": "8d3402e07c2f54640a88706b2440e69fdd78ebd5e4a93e99469baafa51e67d5f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/BROWSER_REPRESENTATIVES.json",
+      "sha256": "f8757d2fd2f60f1fbeb0542e04fd8195a2a138c76bd52eb76b193c9ef6192559"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/FIRST_THREE_BATCH_REFLECTION.json",
+      "sha256": "2b5ab3ed06f15eec4b12538b8f747a307dc4cc814099c49721c8bd15b6af3a1c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "8章review/差分検査/56page finalbuild/代表表示",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/REVIEW_MANIFEST_FROZEN.json",
+          "sha256": "593b4bd8a912b5deba65591099972dd4a02e6a01618a6df6cbf5983b1766eed1"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/BATCH_CHECK.json",
+          "sha256": "da783785a8c545cc28b5448b2fd49fdf36df8081ae1013fcb3f225ac6886e329"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/SELECTIVE_BUILD_VERIFIED.log",
+          "sha256": "8d3402e07c2f54640a88706b2440e69fdd78ebd5e4a93e99469baafa51e67d5f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-845/BROWSER_REPRESENTATIVES.json",
+          "sha256": "f8757d2fd2f60f1fbeb0542e04fd8195a2a138c76bd52eb76b193c9ef6192559"
+        }
+      ]
+    },
+    {
+      "name": "全31/sourceoffer/release",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "12reviewはSHA同一で再利用。新8JA＋EN2注記のみ検査。",
+    "原例のliteralとgeometry保持、SVG license原誤記は消さず素材別通知のEN/JA補足で対応。原文技術監査を広げない。",
+    "元画像拡大widgetの複製だけCSS非表示。原文/code/linkは消さずfigureを静的に1つ表示。元機能は原典案内。",
+    "工数振り返り保存、草稿/review→代表で必要修正をまとめ→finalbuildと改善。中間ログの合格は最終公開gatesへ読み替えない。",
+    "Workers/定期なし、mdBookは未公開。"
+  ],
+  "unresolved": [
+    "11JA/reviewと23未訳参照、可搬再生成/最終source-offer/全検証/統合公開。"
+  ],
+  "nextAction": "846:設定5章（15/16/17/18/19）を翻訳・別パスreview。未確認11章（設定5、固有機能22、CI10、開発11/12/13、貢献31）。全31/可搬再生成/source-offer/正式release前は未公開。",
+  "resumeCondition": "最新OPERATIONS/20reviewと専用843から846へ。"
+}

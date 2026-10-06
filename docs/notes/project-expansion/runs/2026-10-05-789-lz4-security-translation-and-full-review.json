@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-789-lz4-security-translation-and-full-review",
+  "cycle": 789,
+  "startedAt": "2026-10-05T04:11:59.722Z",
+  "endedAt": "2026-10-05T04:15:36.178Z",
+  "result": "partial",
+  "phase": "LZ4 SECURITY逐次日本語訳・別工程全文AIreview",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex single-page translation",
+    "separate full source/canonical/Japanese reading and correction",
+    "metadata-only assembler",
+    "protected-token/DOM audit",
+    "isolated Astro build",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/BASELINE_OPERATIONS.json",
+      "sha256": "bbf65bd0cc19ff16b01f2123549f990c08b78b9e58a3865a1408613874d93f1d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/BASELINE_PROGRESS.json",
+      "sha256": "ae016323ef74b3f5382328cc8f55a65efd4fc3d14ecc8346371b45c4d80e83aa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "da7f7d065aabed93a1ee923d6581d14683fccfb11368f0c365df51876863348d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/SECURITY.md",
+      "sha256": "45156d03a137a23adf8d424aa29bd02212c47678e98b910dabea4f228b671404"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/01-overview/04-security.md",
+      "sha256": "695af5785d27c14017d519a9d27ca21795a18981e9476b3721805bc120fb2288"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/CONTENT_REVIEW_SECURITY.json",
+      "sha256": "965487f1a2c1b574e0b59e49a6bbc643a25635e1f1ea0924eb926a84ce4b1dc8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/MACHINE_SECURITY.json",
+      "sha256": "b2cf1da857d67081a6b25d175116c91d48f554b9a3cc316ad11568ff8c7b362f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/BUILD.log",
+      "sha256": "41c613f0469b6576363dc02e7c8418ecf125222582b1b64e6bd0a64717313007"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/check-reviewed-markdown.mjs",
+      "sha256": "3f59d2995377383cc726ba16f5fda17f4e70246c6860d74d7cd333fd5b77f8b0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/translation/04-security.md",
+      "sha256": "c4723f046504e133d200cad553a8b7e53603d3c9e68f948dcdf2188a013ad704"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/SECURITY-body.md",
+      "sha256": "976fe45d77e2e7e30144c6534408a608c2caaeb4fcb689f909f8a9eeb7a45158"
+    },
+    {
+      "path": "docs/notes/document-import/lz4/v1-10-0/reviews/revisions/789/REVIEW_MANIFEST.json",
+      "sha256": "6d8d94b0f9c83dcb56cc4cc839c1485d4475c4a82263690688b6b12644416f32"
+    },
+    {
+      "path": "docs/notes/document-import/lz4/v1-10-0/PROGRESS.json",
+      "sha256": "4ad46e0245bb5a91b0ec7a0abd5dd4bbf35e6eb3c6ecb69f090b29ca23881499"
+    },
+    {
+      "path": "docs/notes/document-import/lz4/v1-10-0/assemble-translation.py",
+      "sha256": "6385515106af32eb73f429e1aeb7ee981d409e3572fccda70d33e6207e88df36"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "17原文/25定本/22訳文の全文別工程意味review・修正再確認",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/CONTENT_REVIEW_SECURITY.json",
+          "sha256": "965487f1a2c1b574e0b59e49a6bbc643a25635e1f1ea0924eb926a84ce4b1dc8"
+        }
+      ]
+    },
+    {
+      "name": "禁止強調/報告2項目/90日・single=1人対応/全codeURL/anchor/footer・build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/MACHINE_SECURITY.json",
+          "sha256": "b2cf1da857d67081a6b25d175116c91d48f554b9a3cc316ad11568ff8c7b362f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-789/BUILD.log",
+          "sha256": "41c613f0469b6576363dc02e7c8418ecf125222582b1b64e6bd0a64717313007"
+        }
+      ]
+    },
+    {
+      "name": "全27翻訳review・最終gates",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/lz4/v1-10-0/reviews/revisions/789/REVIEW_MANIFEST.json",
+          "sha256": "6d8d94b0f9c83dcb56cc4cc839c1485d4475c4a82263690688b6b12644416f32"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "reasonable-effortを強める初稿の最善表現を修正し全文再読。公開前90日依頼は期限内修正保証へ変えない。",
+    "数値の機械比較で原文singleと訳文1人の表記差を検出。単一の実在語句対応と件数を明示照合し、数字差の一律無視をしない。",
+    "JA/review2/27。英語27sha保持、機械と意味reviewを分離。公開・定期設定なし。"
+  ],
+  "unresolved": [
+    "日本語/全文review25ページ、finalgates全件・表示/統合・GPL対応sourcekit未完",
+    "外部リンクlive状態未確認"
+  ],
+  "nextAction": "build/README.mdの全文を逐次訳し、原VS2022/VS2010差は本文を勝手に直さずJA footerへ保持。現在JA2/27・全文review2/27、未完25。引き続き各ページreview後に次へ。",
+  "resumeCondition": "OPERATIONS865・現在2reviewedのsource/en/jaSHAを照合し790から残り25へ。"
+}

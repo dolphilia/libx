@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-844-mdbook-cli-translation-batch",
+  "cycle": 844,
+  "startedAt": "2026-10-05T14:04:00.000Z",
+  "endedAt": "2026-10-05T14:11:14.515Z",
+  "result": "partial",
+  "phase": "mdBook CLI7章翻訳/別パス全文review/新範囲検査と対象build",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "saved drafts",
+    "separate-pass full review",
+    "input SHA reuse",
+    "selective Astro build",
+    "DOM/link scopes/CUA CLI representative"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/PROGRESS_BEFORE.json",
+      "sha256": "80337ec126ebfb5aa9b7155d0905689dc38bd6f3be0c999073acf63ec56faf31"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/CONTENT_MAP_BEFORE.json",
+      "sha256": "549105f82efaaff0a6d675a712c1d1e1994b23c55aae19a3eae1515579ed3391"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/REVIEW_MANIFEST_BEFORE.json",
+      "sha256": "88d0e8fcf0708b972f6988e544ddcf6d2aff6c97b7a8861a0323c1b245ca1088"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/CONTENT_MAP_FROZEN.json",
+      "sha256": "adaba60def92229d16113ff5862b1491b7e85bdbc47fab0f45140030dacd701a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/REVIEW_MANIFEST_FROZEN.json",
+      "sha256": "b0c7cdc0e8ca650f95748278b4ab22518a498c5a358b166b067ab0cc06365c06"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/PROGRESS_FROZEN.json",
+      "sha256": "053907a789b42e37c71a68f3a3aba0f56cd42e650bf8697a17149da6b2789627"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/BATCH_CHECK.json",
+      "sha256": "8ba496ab7fd05cf6fa896fc354c81a74d8d5a5ab4224476125991b67831b4521"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/SELECTIVE_BUILD.log",
+      "sha256": "325ed191b3d10a07be5c4b8981df9be84a95bb9382a592a32a16c4b383cf7ed8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/BROWSER_REPRESENTATIVE.json",
+      "sha256": "34b3c8f88d585e1a9215b43707e33c2e8815fad96d79ab2127a419be268288c7"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "CLI7全文review/構造/対象48page build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/REVIEW_MANIFEST_FROZEN.json",
+          "sha256": "b0c7cdc0e8ca650f95748278b4ab22518a498c5a358b166b067ab0cc06365c06"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/BATCH_CHECK.json",
+          "sha256": "8ba496ab7fd05cf6fa896fc354c81a74d8d5a5ab4224476125991b67831b4521"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-844/SELECTIVE_BUILD.log",
+          "sha256": "325ed191b3d10a07be5c4b8981df9be84a95bb9382a592a32a16c4b383cf7ed8"
+        }
+      ]
+    },
+    {
+      "name": "全31/sourceoffer/release",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "旧5reviewと31EN構造合格を同SHAで再利用。new7とリンク閉包変化のみ検査。",
+    "原include arg-watcher全文を追加保存しwatch/serveのreviewへSHA/全行coverageを結び付けた。",
+    "原指示のsample実行はLibxの品質要件へ拡大せず、翻訳による意味欠落だけ確認。",
+    "Workers/定期設定なし、mdBook公開条件未達でpushなし。"
+  ],
+  "unresolved": [
+    "残19JA/review、JA未訳targets33参照、可搬再生成/最終source-offer/全検証/統合公開。"
+  ],
+  "nextAction": "845:形式/原目次/Markdown/MathJax/テーマと関連8章を翻訳・別パスreview。残19、全31/可搬再生成/source-offer/正式release未完。",
+  "resumeCondition": "OPERATIONS最新12reviewと専用843から845へ。"
+}

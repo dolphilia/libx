@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-826-lz4-canonical-replay-and-common-check-investigation",
+  "cycle": 826,
+  "startedAt": "2026-10-05T07:14:05.386Z",
+  "endedAt": "2026-10-05T07:20:22.873Z",
+  "result": "partial",
+  "phase": "LZ4定本再生成一致・共通翻訳検査46差分の全件調査と専用check要件確定",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "read-only canonical replay",
+    "existing common translation checker",
+    "AST/decoded HTML exact invariant probes",
+    "live full reviewed SHA check",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/BASELINE_OPERATIONS.json",
+      "sha256": "6b2cd51a8b73318ea90e5d324613979b77d3867f42b68138674fdb6ea1dcf56e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/BASELINE_PROGRESS.json",
+      "sha256": "84d2073a445c609a33cc188788408f256663bbe58be8a35a5d652588c74898ea"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "2899103c32bd3587b0c2f0d027bb53da0297ecbe640d2397ed725d586f0694f1"
+    },
+    {
+      "path": "apps/glfw/check-content.mjs",
+      "sha256": "257f16fd437d9454d51de56278fd4c417a1db304d48b70e01a97efbaf879da80"
+    },
+    {
+      "path": "apps/lua/check-content.mjs",
+      "sha256": "3e96dca3c94c3d3416b3791dc3661afaa8eee632e142a96ae29c504f80efd090"
+    },
+    {
+      "path": "scripts/content-validation.js",
+      "sha256": "3062d67005014ee10830e3ecc694fe2396ebb36c7c67e9d4a85ad7f1edb77fa8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-802/generate-canonical.py",
+      "sha256": "0cf558e6b742dffa5569cfbc4cb75115a075dad84c979fc261211ae612c7bace"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/COMMON_TRANSLATION_CHECK.json",
+      "sha256": "f31ca859ef7dd4c2871ffe579e41b18a241e9dd99d5375b2de8593bae1c44add"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/CANONICAL_REPLAY.log",
+      "sha256": "10842e9e31b0fe8b36080df4dd176f9ca24138f7a2fda43f69c22d40f698e37e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/probe-common-differences.mjs",
+      "sha256": "bf3557852fc721a3a302acfb7aa0736063dcfa0ef9e0c84ca74f2c3f6774d49d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/COMMON_DIFFERENCE_ANALYSIS.json",
+      "sha256": "28de7e0a7e43b506b9b51009b7b0975686f571191a3c3ca65e16faed41270cf7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/CHECK_EXECUTION.json",
+      "sha256": "73af6d6fc13c8f1b98f1b318ef22925751e16c57a7d72677e75ba0c531363f0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/record-check-investigation.mjs",
+      "sha256": "b66da6e54c94a7a117f691ef4f7f28c3e88bfbb9c10c9ee5614a45a8cc12a2eb"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "定本/固定原文通知/生成mapの3再生成出力一致",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/CANONICAL_REPLAY.log",
+          "sha256": "10842e9e31b0fe8b36080df4dd176f9ca24138f7a2fda43f69c22d40f698e37e"
+        }
+      ]
+    },
+    {
+      "name": "共通翻訳検査",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/COMMON_TRANSLATION_CHECK.json",
+          "sha256": "f31ca859ef7dd4c2871ffe579e41b18a241e9dd99d5375b2de8593bae1c44add"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/CHECK_EXECUTION.json",
+          "sha256": "73af6d6fc13c8f1b98f1b318ef22925751e16c57a7d72677e75ba0c531363f0a"
+        }
+      ]
+    },
+    {
+      "name": "全46差分の限定根拠調査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/COMMON_DIFFERENCE_ANALYSIS.json",
+          "sha256": "28de7e0a7e43b506b9b51009b7b0975686f571191a3c3ca65e16faed41270cf7"
+        }
+      ]
+    },
+    {
+      "name": "read-only専用check:content/全finalgates",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-826/CHECK_EXECUTION.json",
+          "sha256": "73af6d6fc13c8f1b98f1b318ef22925751e16c57a7d72677e75ba0c531363f0a"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "定本27・原文と通知・生成mapは全再生成一致。原文/EN/JA内容不変、27reviewを保持。",
+    "共通checkはexit1/46errorのまま保存。27frontmatterはdocumentContext翻訳/編集注記がimmutable対象になり、他キー/source全href/commit/SHAは一致。18追加spanは実EN生成見出しID/JA各1へ対応、原explicit IDs保全。",
+    "block APIの共通text-node抽出はEN1/JA0だがdecoded本文の完全一致LZ4_decompress_safeは双方5。817HTML文字参照保護の差による抽出非対称を確認。API全検査は専用checkerで別途明示する。",
+    "共通checker/共有パッケージを変更して0に見せない。専用scriptまだ未実装。外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "commonFindings": 46,
+    "classifiedFindings": 46,
+    "frontmatter": 27,
+    "extraAnchorPages": 18,
+    "identifierDifferencePages": 1,
+    "existingFullReviewsMaintained": 27
+  },
+  "unresolved": [
+    "LZ4専用read-only check:content未実装、全content gate未合格",
+    "全link/integrity/build/display gates・GPL sourcekit・統合未完",
+    "外部HTTP/画像ロード未確認"
+  ],
+  "nextAction": "827でOPERATIONS903・canonical27/review27/liveJAと826差分46根拠SHAを照合。隔離apps/lz4にread-only check-content.mjs/package check:contentを実装。27固定source/EN再生成差分・27review/限定復元chain・本文全API/code/図/table/数値/構造・原型とJA explicit IDs対応・825href対応/内部href・source通知/license参照を検査する。translated documentContextは固定hash/href/license+review bindingで検査し、共通46を無視して0にしない。evidence root指定は隔離だけで明示し統合/sourcekitでportableにする。検査missing/corrupt failと無変更を確認。全gates/表示/GPL sourcekit/統合未完。",
+  "resumeCondition": "OPERATIONS903・826全SHA照合後827へ。"
+}

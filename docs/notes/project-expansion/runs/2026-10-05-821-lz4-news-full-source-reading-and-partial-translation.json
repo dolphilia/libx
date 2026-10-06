@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-821-lz4-news-full-source-reading-and-partial-translation",
+  "cycle": 821,
+  "startedAt": "2026-10-05T06:48:52.360Z",
+  "endedAt": "2026-10-05T06:50:37.600Z",
+  "result": "partial",
+  "phase": "LZ4 NEWS原文366行全読解・41版対応・先頭101行部分翻訳",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex full source reading",
+    "Codex partial Japanese translation",
+    "metadata-only source/line mapping",
+    "draft protected-token checker",
+    "read-only canonical/review SHA checks",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/BASELINE_OPERATIONS.json",
+      "sha256": "e5e8cebbc99214f3662e9bce46551aa31c642b06e8b08369f32b045766de67eb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/BASELINE_PROGRESS.json",
+      "sha256": "529b8eb0ba9552f8e9d4cf202aadd66756a58456f839b8fb06d3a31dd873cca1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "b4cd19566a6240d51e46f5efd0011c3cc1ea76b1b945fa7872d691eb5679957a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/NEWS",
+      "sha256": "8fe6e56a9c40846fdf47caa045bef1e0db7c7f020164fd127de0fa1222c2f7f8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/01-overview/03-history.md",
+      "sha256": "b12511b14fbedd0a07551c75f3eeafdf32a471124497ce1fd0d44fab75fab361"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/HISTORY_PREPARATION.json",
+      "sha256": "d25082c8b62778fcf2a2281340da37cf6f925207ecdc6e0cd00b7a26f58df033"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/PARTIAL_DRAFT_STRUCTURE.json",
+      "sha256": "3c2d79f384864982dbb81c9fec800fc2e1743b30fad2dbdaa64ceb7ab1755688"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/prepare-history.py",
+      "sha256": "0fed162663348464129769718452c4690f4fc60e505b7e0c198b8af5de387593"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/PATH_NORMALIZATION_NOTE.json",
+      "sha256": "072c642e46c1fd9c4b63b264276dfb6ec5a736507a26c30aa30c4ff4b26bcd7d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/draft/NEWS_PART_01.txt",
+      "sha256": "a99f3e2add095b6977aceff6745da62cfe3600289cbabb5fc722ce11096c9271"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/record-draft-cycle.mjs",
+      "sha256": "77a740e86da24eb12702ea4cb0976bebc459977e9abdd5967dfa784757a8a8ae"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "定本27とレビュー26組のlive SHA整合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/lz4/v1-10-0/canonical/revisions/802/CANONICAL_LOCK.json",
+          "sha256": "9d2b72008cc0f62a2df65e125cbac369bdb9a0f766b8390c8f8813fd02c541b9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/BASELINE_REVIEW_MANIFEST.json",
+          "sha256": "b4cd19566a6240d51e46f5efd0011c3cc1ea76b1b945fa7872d691eb5679957a"
+        }
+      ]
+    },
+    {
+      "name": "NEWS定本preの全原文復元一致と先頭101行草稿token保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/HISTORY_PREPARATION.json",
+          "sha256": "d25082c8b62778fcf2a2281340da37cf6f925207ecdc6e0cd00b7a26f58df033"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/PARTIAL_DRAFT_STRUCTURE.json",
+          "sha256": "3c2d79f384864982dbb81c9fec800fc2e1743b30fad2dbdaa64ceb7ab1755688"
+        }
+      ]
+    },
+    {
+      "name": "NEWS全翻訳/別工程全文review/取込/最終機械/build/DOM",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-821/HISTORY_PREPARATION.json",
+          "sha256": "d25082c8b62778fcf2a2281340da37cf6f925207ecdc6e0cd00b7a26f58df033"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前のcombined出力で省略が生じたNEWS先頭1–140を単独再取得し、141–260/261–366と合わせ原文全366行を読んだ。41版の履歴を全件対象とし古い版を要約/省略しない。",
+    "v1.10.0–v1.9.0の先頭101行をCodexで翻訳。API/数値/inlinecode/CLIoption/報告者・カテゴリ/空行/版の機械検査合格。性能主張は原上流の過去記録で、独自測定ではない。",
+    "原文のoldAPI/原誤記（stduni.hなど）を自動修正しない。残り265行の翻訳と全量別工程reviewは未実施。部分草稿未取込で26/27合格維持。外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "initialSourceReading": [
+      [
+        1,
+        140
+      ],
+      [
+        141,
+        260
+      ],
+      [
+        261,
+        366
+      ]
+    ],
+    "partialTranslation": [
+      [
+        1,
+        101
+      ]
+    ],
+    "contentReview": []
+  },
+  "unresolved": [
+    "原文102–366の翻訳",
+    "全source/EN/JA別工程全文review",
+    "全protected token/原通知/過去時点の性能と安全修正の意味確認",
+    "pre文字参照保護と隔離取込/build/全DOM",
+    "全案件表示/統合/finalgates/GPL対応Libx sourcekit",
+    "外部リンクHTTP可用性/画像ロード未確認"
+  ],
+  "nextAction": "822でOPERATIONS897・802定本27SHA・26review組・821草稿SHA照合。NEWS残り原文102–366（v1.8.3–r105）の翻訳を全件保存し、41版全366行を要約せず保持。全草稿完成後source/EN/JA別工程全文review→pre記号保護/全token/隔離取込/build/DOM。全日本語参照整合・gates/GPL sourcekit/統合未完。",
+  "resumeCondition": "OPERATIONS897・821 partial草稿SHA照合後822へ。"
+}

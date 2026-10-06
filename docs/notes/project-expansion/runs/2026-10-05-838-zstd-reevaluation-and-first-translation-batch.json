@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-838-zstd-reevaluation-and-first-translation-batch",
+  "cycle": 838,
+  "startedAt": "2026-10-05T11:49:35Z",
+  "endedAt": "2026-10-05T12:14:05.394Z",
+  "result": "partial",
+  "phase": "再開照合・旧候補新基準再評価・Zstandard正式定本・5章翻訳/別パスレビュー/バッチ検証",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "current ledger one-time check / existing evidence SHA reuse",
+    "isolated production checkout and canonical create-project",
+    "offline pnpm install / selective build",
+    "same Codex separate-pass full content review",
+    "Markdown AST and rendered DOM/link/code/anchor equivalence",
+    "CUA desktop/mobile source footer inspection"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/BASELINE_OPERATIONS.json",
+      "sha256": "fcfc6c6bc1541c00f8981033c1ebaf719b90027b2d7c9c8a2daf6db04535b923"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/BASELINE_CANDIDATES.json",
+      "sha256": "3f8a90d69baa0be9aff3fb8bafc3427747dc743ad9a5532d5c48b056d2532ff4"
+    },
+    {
+      "path": "docs/notes/document-import/zstd/v1-5-7/source/zstd_compression_format.md",
+      "sha256": "81d08d9af1e3011190cae694d1b775b46db4743728733522a4119a5cb7558bb5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/SELECTION_REVIEW.json",
+      "sha256": "ca2db8e73bfb7f8a00f8de630794d9a9033f25629e3111f2d85af966aa9a4977"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/OPERATION_PLAN.json",
+      "sha256": "de032725cb66103d95185eb611ad92cff3de808d43cde0319788977f8f4072fa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/REVIEW_MANIFEST_FROZEN.json",
+      "sha256": "be1650fd06a8c9e7daa83a8ff04eaefc7ba71612658d5128f3e48de3389cd08a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/PROGRESS_FROZEN.json",
+      "sha256": "40c3b8e2a48102faf8434b9bc02b5a8ce6af6445ffe4083674486568bfc5e036"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/CONTENT_MAP_FROZEN.json",
+      "sha256": "2aa07c308e611c08497e7f1af4860520f7231702f2d572bce8ea0091bb8cf350"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/BATCH_CHECK.json",
+      "sha256": "785fa124101b5b2c3cbaf3e1d055950197e84c57e7854f47f9a914137f3af3e8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/SELECTIVE_BUILD.log",
+      "sha256": "2c00d4433eb3ec35b49e7ec831449840e389a03b12839c30f0c60afd744a838e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/BROWSER_REPRESENTATIVES.json",
+      "sha256": "219a0b795c0d8a76f61f7407ba2395abd5cb5d66f4aed4c97301a484847d58d5"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zstd",
+    "mdbook",
+    "rapidjson"
+  ],
+  "newOperationIds": [
+    "zstd:v1-5-7:56ef77d1af6aa98ba1c9bf0be6c51bc948dde4b51f4d0f0639d6457867f09c81"
+  ],
+  "checks": [
+    {
+      "name": "saved selection evidence under current policy",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/SELECTION_REVIEW.json",
+          "sha256": "ca2db8e73bfb7f8a00f8de630794d9a9033f25629e3111f2d85af966aa9a4977"
+        }
+      ]
+    },
+    {
+      "name": "first batch structure/DOM/build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/BATCH_CHECK.json",
+          "sha256": "785fa124101b5b2c3cbaf3e1d055950197e84c57e7854f47f9a914137f3af3e8"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/SELECTIVE_BUILD.log",
+          "sha256": "2c00d4433eb3ec35b49e7ec831449840e389a03b12839c30f0c60afd744a838e"
+        }
+      ]
+    },
+    {
+      "name": "complete project display/integration/publication",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-838/BROWSER_REPRESENTATIVES.json",
+          "sha256": "219a0b795c0d8a76f61f7407ba2395abd5cb5d66f4aed4c97301a484847d58d5"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規/公開待ち0、重大不具合なし。LZ4入口はsame-order入力順変動のみで本文欠落なし、低重大度保守候補を保持。",
+    "Zstd旧66点/必須6pass/固定根拠18file同SHA/旧選定inputHashを再利用し現行最低60点で別パス採用。旧103記録は改変せず加点なし。",
+    "mdBook/RapidJSONは静的表示と原典リンク方式で再評価対象へ戻したが、新方式未試験でdeferred保持。",
+    "5章719原行の日本語全文review、9EN機械対応と14rendered article確認。英語未review4章を内容合格としない。",
+    "未完成root appなし。公開条件未達、push/外部公開なし。Workers/定期設定なし。"
+  ],
+  "unresolved": [
+    "4章未訳/未review。15リンクは未訳予定JA宛てで正式リンクgate未合格。",
+    "可搬canonical再生成器と全案件機械/表示/統合gateは未完。",
+    "表ArrowRight直後0でkeyboard成功未確認、言語selector/codecopy/download bytes未実施。"
+  ],
+  "nextAction": "第2バッチ:4シーケンス/6FSE/7Huffman/9付録・履歴を翻訳・別パス全文review。付録草稿から続行。可搬再生成器・全9章最終link・原文download bytes・言語操作・codecopy・table keyboardは後工程。",
+  "resumeCondition": "新規1件枠を保持、OPERATIONSの838案件とPROGRESS/REVIEW hashを照合。5章合格を再利用し未確認4章のみ進め、全条件合格後に限定push→統合Pages→公開後確認。"
+}

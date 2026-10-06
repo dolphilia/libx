@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-781-resume-policy-and-css-corrections",
+  "cycle": 781,
+  "startedAt": "2026-10-05T02:45:26+00:00",
+  "endedAt": "2026-10-05T02:54:56.639Z",
+  "result": "complete",
+  "phase": "既存保留2件のCSS限定build/display再検証",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "実行モデルの識別情報は独立取得できない。設定を実モデル確認と扱わない。",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "repository read",
+    "pnpm selective build",
+    "DOM exact comparison",
+    "CUA native/read-only DOM geometry",
+    "ledger CAS",
+    "node test"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/BASELINE_OPERATIONS.json",
+      "sha256": "d124bcf49d6420e70990557c428716463663c1f761babd5bd538b8552fb02947"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/BASELINE_POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/BASELINE_CANDIDATES.json",
+      "sha256": "cdc7b981c2d48d586ae8b0db67117343cc0afd3433c4774ebbd6dca26cc2196e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/CURRENT_CSS.css",
+      "sha256": "c2707722da49f2700ce3ced8f6bd7f301fb81495bd2a1e4d134e811557909fae"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/CSS_REVALIDATION.json",
+      "sha256": "ece4996ece531fd7585bb85853424cc7a21283b390ea01181794ef73b5638477"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/NATIVE_DISPLAY.json",
+      "sha256": "46adaf7ae48e3c3ddf3f82c8adabc82a0cb9d6c2e04e84f69d10223a3a47281d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/SOURCE_PARITY.json",
+      "sha256": "a0f47f057bb51cf829516645caa574f37bd6cbf412c9dedbfe524d0e09b8a42e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/CSS_STATIC_REGRESSION.json",
+      "sha256": "d28981c24fe0329f174efc871591b5efe585242c0bfd7c4b6ffae9bbbde672d7"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "台帳15回帰test",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/LEDGER_TESTS_FINAL.log",
+          "sha256": "69b321908b1f386c8b217ae8fe730e427ae3790d678e4e0b58120f73d81663fa"
+        }
+      ]
+    },
+    {
+      "name": "Lua/GLFW186現行本文保全と隔離build/display",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/CSS_REVALIDATION.json",
+          "sha256": "ece4996ece531fd7585bb85853424cc7a21283b390ea01181794ef73b5638477"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "最新ユーザー指示でmaintenance-firstとexternalPublication=requires-user-instructionへ変更。古い公開許可は履歴として保持。",
+    "Lua/GLFW修正2件をverifiedへ復帰。外部公開なし。旧原典・訳文reviewを上書きしない。",
+    "最初のbaselineビルドはCSSコピーの相対path失敗により旧CSSで実行。baselineとして保存し、絶対pathで現行CSSを適用後、新規buildとDOM差分照合を実施。",
+    "台帳テスト初回14/15。publicationRulesを削除すると承認モードのfixtureが失敗するため、将来公開指示時のゲートとして保持し、現在の公開許可はexternalPublicationで停止。最終15/15。",
+    "root previewは待受EPERMで終了。隔離Astro localhostプレビューだけ権限切替して検証。"
+  ],
+  "unresolved": [
+    "GLFW全文review案件1件のCSS失効は次サイクルで現在証拠を再照合して更新。",
+    "LZ4範囲/権利/日本語/変換/工数/採点は未完。CommonMark追加価値未評価。"
+  ],
+  "nextAction": "782:GLFW全文review案件の70英日本文が186DOM検査で覆われること、旧review/bindingsと現行CSSの一致を再照合し検証済みへ復帰。その後LZ4全208fileの範囲分類・権利設計へ。",
+  "resumeCondition": "781証拠とcurrent CSS/現行本文hashが一致すること。新規は全6pass/70点/枠確認後のみ。",
+  "counts": {
+    "verified": 16,
+    "published": 17,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 1,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-782-glfw-review-css-revalidation",
+  "cycle": 782,
+  "startedAt": "2026-10-05T02:56:20.647Z",
+  "endedAt": "2026-10-05T02:56:26.632Z",
+  "result": "complete",
+  "phase": "GLFW既存全文レビュー案件のCSS失効復旧",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "ledger read/CAS",
+    "70 current source hash check",
+    "186 DOM evidence scope check"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-782/BASELINE_OPERATIONS.json",
+      "sha256": "eff364979ad5ebc880d43309949088feb5e7a06232d6074854a132961bd3ae47"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/BUILD.log",
+      "sha256": "12588927bf5cf95fa63fb6f9a3821ba9ed2b4a4a0935681e3be56f8333b8765d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/NATIVE_DISPLAY.json",
+      "sha256": "46adaf7ae48e3c3ddf3f82c8adabc82a0cb9d6c2e04e84f69d10223a3a47281d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-782/GLFW_REVALIDATION.json",
+      "sha256": "8269b15b15a6f9aa009a74d65ea81878b63fac5d708698e8e0c025f1887e6555"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "35組70本文とcurrent CSS対応を別再開パスで照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-782/GLFW_REVALIDATION.json",
+          "sha256": "8269b15b15a6f9aa009a74d65ea81878b63fac5d708698e8e0c025f1887e6555"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "保留最後の1件をverifiedへ復帰。本文変更なし・旧全文review保存・機械と代表表示の限定再検証。外部公開なし。",
+    "前サイクル2修正件の完了後に着手し作業中上限2を維持。"
+  ],
+  "unresolved": [
+    "LZ4候補の全境界・ライセンス履行・日本語・変換・工数・採点は未完。"
+  ],
+  "nextAction": "783:LZ4固定208fileを全分類し、公開API/使用例の欠落を含め読者範囲と固定原典を確定。異なる条件を一律BSDへ統合しない。",
+  "resumeCondition": "783開始時に台帳と781/782証拠hashを照合。外部公開/定期実行なし。",
+  "counts": {
+    "verified": 17,
+    "published": 17,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

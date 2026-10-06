@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-813-lz4-cli-manual-source-reading-and-draft",
+  "cycle": 813,
+  "startedAt": "2026-10-05T06:14:16.950Z",
+  "endedAt": "2026-10-05T06:15:22.847Z",
+  "result": "partial",
+  "phase": "LZ4 CLI manual全原文読解と未review日本語草稿",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex full initial source reading",
+    "Codex translation draft",
+    "read-only canonical/review SHA checks",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/BASELINE_OPERATIONS.json",
+      "sha256": "626d5c63766c2f4a79d9cef013e2abe2b81db4c82419335d81aa336278d7b6de"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/BASELINE_PROGRESS.json",
+      "sha256": "58ca0cdfb653d36b9aae06b81763f759f0d68f6c69f2596fe8897811a3e6c985"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "ef1d11f765329a4c1fcf0f29b6acad43ff8277ae9382bf0758de2f07edf26434"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/programs/lz4.1.md",
+      "sha256": "dab60aab6e9890a5d547e4f501fc334cb067c17054ff186dfd94eba468231f3f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/07-cli/02-lz4-command.md",
+      "sha256": "5f4af1042124bd82ed8ae0a911e15697cbd7245a209e2de4297a7b77bf69ced8"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/MANUAL_PREPARATION.json",
+      "sha256": "8c310eaa950b5b7bf41b6f8bc32dc5058882e56ef04aee7dfa6e9450f034ef0b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/CLI_MANUAL_DRAFT.md",
+      "sha256": "a75dd8a0eeba8a573238cd049521a08369ec937bc2248802ed031a92f5ba69d2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/record-draft-cycle.mjs",
+      "sha256": "25f51a9a34d60ca2c6076d0b4f0fdc5f80212b385ef42e1c8fd74cfd510a42aa"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "定本27とレビュー23組のlive SHA整合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/lz4/v1-10-0/canonical/revisions/802/CANONICAL_LOCK.json",
+          "sha256": "9d2b72008cc0f62a2df65e125cbac369bdb9a0f766b8390c8f8813fd02c541b9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/BASELINE_REVIEW_MANIFEST.json",
+          "sha256": "ef1d11f765329a4c1fcf0f29b6acad43ff8277ae9382bf0758de2f07edf26434"
+        }
+      ]
+    },
+    {
+      "name": "CLI manual別工程全文review/機械/取込/build/DOM",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/MANUAL_PREPARATION.json",
+          "sha256": "8c310eaa950b5b7bf41b6f8bc32dc5058882e56ef04aee7dfa6e9450f034ef0b"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/CLI_MANUAL_DRAFT.md",
+          "sha256": "a75dd8a0eeba8a573238cd049521a08369ec937bc2248802ed031a92f5ba69d2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-813/record-draft-cycle.mjs",
+          "sha256": "25f51a9a34d60ca2c6076d0b4f0fdc5f80212b385ef42e1c8fd74cfd510a42aa"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全原文を読み、SYNOPSISからAUTHORまで日本語草稿を保存。コード/引数/数値/URLの原表記を草稿へ保持したが機械検査は未実施。",
+    "暗黙出力先とscript明示推奨、元ファイル保持と成功時削除、矛盾引数は最後、辞書互換、checksum/thread/environment/benchmark条件を訳した。意味合否は別工程全文reviewを待つ。",
+    "未review草稿は隔離アプリへ未取込。PROGRESS/REVIEW_MANIFESTの23/27 passed・4pendingを維持。外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "initialSourceReading": [
+      [
+        1,
+        273
+      ]
+    ],
+    "contentReview": []
+  },
+  "unresolved": [
+    "見出しIDは草稿仮置き。定本DOMの実在IDと照合する",
+    "Markdownの強調・inline code・数値と全オプション範囲を機械検査する",
+    "日本語用出典/ライセンス/原文注記フッターとfrontmatterを組み立てる",
+    "source/EN/JAの別工程全文review、隔離取込・Astro build・DOM検査",
+    "日本語/full review残り4、全表示/統合/finalgates・GPL対応Libx sourcekit未完",
+    "外部リンクHTTP可用性/画像ロード未確認"
+  ],
+  "nextAction": "814でOPERATIONS889・802定本27SHA・レビュー済23組・813草稿SHAを照合。programs/lz4.1.md草稿の見出しID/Markdown構造を確認し、frontmatter/footerを組み立て、source/EN/JA別工程全文review→機械→隔離取込/build/DOM。草稿を合格扱いにしない。残り4ページ（NEWS/manual2/CLI1）、日本語参照整合・finalgates/sourcekit/統合未完。",
+  "resumeCondition": "OPERATIONS889・813草稿SHA照合後814でCLI manualを継続。"
+}

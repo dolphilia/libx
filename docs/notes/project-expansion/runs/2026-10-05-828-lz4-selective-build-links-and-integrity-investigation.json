@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-828-lz4-selective-build-links-and-integrity-investigation",
+  "cycle": 828,
+  "startedAt": "2026-10-05T07:45:54.983Z",
+  "endedAt": "2026-10-05T07:57:01.938Z",
+  "result": "partial",
+  "phase": "LZ4選択build/links/content合格・global layout integrity差とuntracked whitespace調査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "isolated selective Astro/integrated build",
+    "read-only links/integrity/content commands",
+    "temporary per-file no-index diff checks",
+    "read-only shared layout status/SHA comparison",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/BASELINE_OPERATIONS.json",
+      "sha256": "aec20ab6c2be33596ea2c2bb981fa9ca6d13eea474ed97a22235a9da29afb3ae"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/BASELINE_PROGRESS.json",
+      "sha256": "84d2073a445c609a33cc188788408f256663bbe58be8a35a5d652588c74898ea"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "2899103c32bd3587b0c2f0d027bb53da0297ecbe640d2397ed725d586f0694f1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/check-content.mjs",
+      "sha256": "e73454cb40570312c1ef495d87f90ceea18a448d3f84509c74075e903428c7d8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/package.json",
+      "sha256": "047667a98718c5bacb5dc995c4476ba9d66ce204778e4afdd1d19ce49982015a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/SELECTIVE_BUILD.log",
+      "sha256": "94e55d238b8e7cbf76e18c978019b81785da3c720d84de2457dcbc5b397eec31"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/LINKS.log",
+      "sha256": "be9c6daddf38f0b60ad7e170bc5ccd82cadc11247e5af509726db73c83c5d6b1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/INTEGRITY.log",
+      "sha256": "10d0a8e84469b431bfdc476370e238cad9ffdd24a1bc7ddbe33509174b74d280"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/DIFF_CHECK.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/CHECK_CONTENT.log",
+      "sha256": "e408ef7713451fc59aff79648b0bda404352cb81a6da0f1c86539f320c21c71f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/CHECK_CONTENT.json",
+      "sha256": "3b3f4a7efd14ab84da32b27d877369ab7864a928bf7181ac5477e6117d72bc1d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/INTEGRITY_ASSESSMENT.json",
+      "sha256": "1cc6ae94b1fb32170fbe987dd7cd47535b97293400c9a16eaf9d894d0170bb33"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/NEW_FILE_DIFF_CHECK.json",
+      "sha256": "d79c7f5428f17a681ed9756eb39b07e9f65121c441e7f72aaa6538f349806d4c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/SHARED_LAYOUT_CHECK.log",
+      "sha256": "b234b3b5d4586d4fc4ac81a49ea2ada684bc54f3559890bc5dd8e9bfe869f574"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/PIPELINE_RESULTS.json",
+      "sha256": "292fbfea613cca3d0fb4d27065bc875fb2dd0d03c6cfa563dac73448e94fdde5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/record-pipeline-checks.mjs",
+      "sha256": "c2f30938dc788885b2e98d647e615536634be3196cbbaa9d705df41234436247"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "pnpm build:selective --projects=lz4 / local links556 / reviewed content再検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/SELECTIVE_BUILD.log",
+          "sha256": "94e55d238b8e7cbf76e18c978019b81785da3c720d84de2457dcbc5b397eec31"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/LINKS.log",
+          "sha256": "be9c6daddf38f0b60ad7e170bc5ccd82cadc11247e5af509726db73c83c5d6b1"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/CHECK_CONTENT.json",
+          "sha256": "3b3f4a7efd14ab84da32b27d877369ab7864a928bf7181ac5477e6117d72bc1d"
+        }
+      ]
+    },
+    {
+      "name": "pnpm check:integrity",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/INTEGRITY.log",
+          "sha256": "10d0a8e84469b431bfdc476370e238cad9ffdd24a1bc7ddbe33509174b74d280"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/INTEGRITY_ASSESSMENT.json",
+          "sha256": "1cc6ae94b1fb32170fbe987dd7cd47535b97293400c9a16eaf9d894d0170bb33"
+        }
+      ]
+    },
+    {
+      "name": "git diff --check（未追跡LZ4対象外）/追加全109text no-index findings10",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/DIFF_CHECK.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/NEW_FILE_DIFF_CHECK.json",
+          "sha256": "d79c7f5428f17a681ed9756eb39b07e9f65121c441e7f72aaa6538f349806d4c"
+        }
+      ]
+    },
+    {
+      "name": "display/GPL sourcekit/shared integration",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-828/PIPELINE_RESULTS.json",
+          "sha256": "292fbfea613cca3d0fb4d27065bc875fb2dd0d03c6cfa563dac73448e94fdde5"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "選択buildとlocalリンク/contentが合格。build/local links gateをpassedへ。外部HTTP/imageは未確認のまま。",
+    "integrityのrepository/categoryは合格、layout sync31はLZ4以外。28は共有現在とSHAが異なる隔離snapshot、3は共有jq/libuvにも存在。共有readonly確認も3差でexit1。ユーザー/Awesome/他appを変更せずglobal integrity失敗を保持。",
+    "git diff --check 0だけでは新規LZ4を検査できない。全109textへno-indexチェックし10fileのupstream空白/Markdown hardbreak/生成wrapper EOFを検出。原文・定本・27review済み本文は改変せず原記録を残し、次に限定方針を検証する。",
+    "全文review27と827read-only gateを維持。外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "reviewedPagesMaintained": 27,
+    "renderedPages": 54,
+    "localBodyAndFooterLinks": 370,
+    "markdownLinkFiles": 556,
+    "isolatedLayoutDifferences": 31,
+    "sharedLayoutDifferences": 3,
+    "newTextFilesChecked": 109,
+    "whitespaceFindingFiles": 10
+  },
+  "unresolved": [
+    "integrity全体失敗（非LZ4layout差31/共有3）、勝手にユーザー変更を同期しない",
+    "新規LZ4source-preserving whitespace方針未検証",
+    "local browser/display・GPL sourcekit・共有統合/可搬証拠未完",
+    "外部HTTP/image未確認"
+  ],
+  "nextAction": "829でOPERATIONS905・827script/package・全27canonical/review/liveJA SHAを照合。828新規109text検査の10 whitespace findingをsource/review byteと対応し、原文/Markdown hardbreakを改変せず限定gitattributes方針を隔離で用意して実indexを使わないintent-to-add差分検査で再確認。他apps31隔離layout差・共有jq/libuv3差を保護し、integrity全体はfailed保持。独立したlocal Astro browser表示とGPL対応Libx sourcekit準備を進める。統合時は最新共有template/adapterを再調査、勝手に同期しない。外部公開/定期設定なし。",
+  "resumeCondition": "OPERATIONS905・828全SHA照合後829へ。"
+}

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-830-lz4-browser-matrix-and-search-entity-fix",
+  "cycle": 830,
+  "startedAt": "2026-10-05T08:22:48.419Z",
+  "endedAt": "2026-10-05T08:28:24.532Z",
+  "result": "partial",
+  "phase": "英日54desktop/mobile DOM・代表visual・検索漏れ発見と隔離fix",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CUA live DOM/screenshots/UI navigation",
+    "isolated search generator patch",
+    "nine regression fixtures and GLFW/Lua extraction comparison",
+    "existing search tests",
+    "selective Astro build/content gate",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BASELINE_OPERATIONS.json",
+      "sha256": "4c3d839f0e916204652cdeebc9ab2ef4724d93387700db7d70b997cbc3e20539"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BUILD_SEARCH_BEFORE.js",
+      "sha256": "9eeb134c57b806cca0a7146b5fbadc0d73170167e6301f10142a18cb099c6756"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_JA_BEFORE.json",
+      "sha256": "640d61d3f0151f3c65eb5af1afebd116d1ba0f50cf60b61ed2e5739733cb1e32"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_EN_BEFORE.json",
+      "sha256": "9bfe511af69a77c5c3de7c16f8248739e10ab141f10207d3633ad3fb81b14b76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BUILD_SEARCH_BEFORE.js",
+      "sha256": "9eeb134c57b806cca0a7146b5fbadc0d73170167e6301f10142a18cb099c6756"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BUILD_SEARCH_AFTER.js",
+      "sha256": "2e958acdb55e0fd181a82947920c9adb98e8ca42a7af54124a16185770a24650"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_FIX.diff",
+      "sha256": "05cfd477924b8b6469e0b3be71726b90bf43cabe2b17cdda6b6f64b1a9a827f2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_JA_BEFORE.json",
+      "sha256": "640d61d3f0151f3c65eb5af1afebd116d1ba0f50cf60b61ed2e5739733cb1e32"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_EN_BEFORE.json",
+      "sha256": "9bfe511af69a77c5c3de7c16f8248739e10ab141f10207d3633ad3fb81b14b76"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_JA_AFTER.json",
+      "sha256": "fda9585053dd380bab664846cc0369e5115db9cb1e2caf1760935ba863520a94"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_EN_AFTER.json",
+      "sha256": "94785b10a4ec225d8714ca4ecf8234af7f403d712d6a545d5a839e6945510d91"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/test-search-fix.mjs",
+      "sha256": "f2aef6d90b1983787b55d9a57fbb224e1f64cf4f1f5b4a50e83b9cfd7cc287da"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_FIX_TEST.json",
+      "sha256": "aa6b1f3135b83b1c2e70001db3900850630de47b9540c512c3af938458534a2c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BROWSER_AUDIT.json",
+      "sha256": "dac557089712f1697cde42f45ed91893a76152e500ca5e1861201e31009d017e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/TEST_COMPILE.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/UNIT_SEARCH.log",
+      "sha256": "614819ed74c427a8b70a500ce2444f797b57589427e4e7993d0145d20ad4f93d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BUILD.log",
+      "sha256": "90cf2f9e92b996d53a2e0d7d108577e641238700ba62bcf99f16bd57587c6179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/CHECK_CONTENT.log",
+      "sha256": "e408ef7713451fc59aff79648b0bda404352cb81a6da0f1c86539f320c21c71f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/CHECK_CONTENT.json",
+      "sha256": "3b3f4a7efd14ab84da32b27d877369ab7864a928bf7181ac5477e6117d72bc1d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/PROTECTION_AND_RESULTS.json",
+      "sha256": "9d6159b28df2108f3095be5be0d2170b8c352c5581ddb5490fbc8c35c6f3c8cb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/record-cycle.mjs",
+      "sha256": "267fbc6bab53b0235a72cf328f95ef5ba80c0bad72870510f6c2727b1889fb4c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "54英日 desktop/mobile actual DOM and representative visual/UI controls",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BROWSER_AUDIT.json",
+          "sha256": "dac557089712f1697cde42f45ed91893a76152e500ca5e1861201e31009d017e"
+        }
+      ]
+    },
+    {
+      "name": "HTML numeric entity API search regression and isolated repair",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/SEARCH_FIX_TEST.json",
+          "sha256": "aa6b1f3135b83b1c2e70001db3900850630de47b9540c512c3af938458534a2c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/UNIT_SEARCH.log",
+          "sha256": "614819ed74c427a8b70a500ce2444f797b57589427e4e7993d0145d20ad4f93d"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BROWSER_AUDIT.json",
+          "sha256": "dac557089712f1697cde42f45ed91893a76152e500ca5e1861201e31009d017e"
+        }
+      ]
+    },
+    {
+      "name": "selected build and reviewed content bindings",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BUILD.log",
+          "sha256": "90cf2f9e92b996d53a2e0d7d108577e641238700ba62bcf99f16bd57587c6179"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/CHECK_CONTENT.json",
+          "sha256": "3b3f4a7efd14ab84da32b27d877369ab7864a928bf7181ac5477e6117d72bc1d"
+        }
+      ]
+    },
+    {
+      "name": "global display pending downloads/external images; sourcekit/integration/integrity",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/BROWSER_AUDIT.json",
+          "sha256": "dac557089712f1697cde42f45ed91893a76152e500ca5e1861201e31009d017e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-830/PROTECTION_AND_RESULTS.json",
+          "sha256": "9d6159b28df2108f3095be5be0d2170b8c352c5581ddb5490fbc8c35c6f3c8cb"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全英日54pageを1280x720と390x844で実DOM検査。本文/出典存在、全体overflow0、言語一致。代表NEWS/frame API/CLI/モバイル表を視認し幅広表はauto scroll wrapperで保持。H1無し8対は空本文ではなくsourceの構造として記録し無断見出し追加なし。viewport reset済み。",
+    "JA検索で原文に存在するLZ4_decompress_safe派生APIを含むNEWSが漏れた。numeric HTML referenceに対しMarkdown stripが先に#を除去する原因を確認。隔離generatorで実markup除去後/Markdown delimiter除去前にparse5でtextをdecodeする。コード/本文27は変更なし。",
+    "9case/既存unit6/runtime1が合格。LZ4全54entryのtitle/description/url/headings/anchors/identifiers/symbolsは不変、38text不変/16text復号改善。GLFW/Lua186page抽出成功、非entity184pageのtext旧式一致。shared generatorは既存user変更を保持しbeforeSHA不変。",
+    "選択build/content再検査合格。ブラウザーreload後JA検索にNEWS復帰しクリック遷移成功。display全体は外部badge/download等pending、GPLsourcekit/共有統合とglobal integrity失敗を維持。外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "reviewedPagesMaintained": 27,
+    "desktopDOMPages": 54,
+    "mobileDOMPages": 54,
+    "searchFixtures": 9,
+    "existingSearchUnitTests": 6,
+    "existingSearchRuntimeTests": 1,
+    "glfwLuaExtractionPages": 186,
+    "unchangedNonEntityExistingTexts": 184
+  },
+  "unresolved": [
+    "外部badge最終状態/HTTP imageとfooter固定download実取得",
+    "GPL対応Libx sourcekitと可搬再生成/build",
+    "共有generator限定fix統合・最新adapter確認",
+    "非LZ4layout31/共有3でglobal integrity failed"
+  ],
+  "nextAction": "831でOPERATIONS907/830全証拠SHA・27review/live本文・隔離検索generator AFTERと共有BEFORE SHAを照合。Astro session1283/CUA iab tab4が現存すれば続け、footer固定原文/notice/archiveの取得とbyte/MIME、外部badge最終状態を調べdisplay残件を処理。GPL対応Libx sourcekitに英日本文・固定208input/上流archive・canonical/review証拠・今回検索修正を含むビルドsource/必要共有packages/依存lock/再現手順を同梱し可搬replay/buildを検証。共有統合時にgenerator限定patchをSHA照合して適用し、最新template/adapter差を調査。非LZ4 layout31/共有3とユーザー/Awesome変更を保護、外部公開/定期設定なし。",
+  "resumeCondition": "OPERATIONS907・830証拠照合後831へ。"
+}

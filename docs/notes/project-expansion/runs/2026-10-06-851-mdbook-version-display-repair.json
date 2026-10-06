@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-06-851-mdbook-version-display-repair",
+  "cycle": 851,
+  "startedAt": "2026-10-05T16:23:00.119Z",
+  "endedAt": "2026-10-05T16:28:57.875Z",
+  "result": "complete",
+  "phase": "公開後に発見したmdBook版ラベル重なりの限定表示修正",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "scoped app CSS",
+    "source ZIP member/manifest delta",
+    "target/portable reconstruction build",
+    "native JA desktop/EN mobile",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-851/START.json",
+      "sha256": "0be5f8acbeb254eef7400c81d3d3b8abe58acdf78485ac8c272aab813e51a664"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-851/CSS_SOURCE_DELTA.json",
+      "sha256": "70845fb6f900c8539ea5e9359af544c9233042ef8a28da55d090593e978c40ad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-851/DEPENDENCY_CHECK.json",
+      "sha256": "c1aa89b7b7eb791a4b4f7ea33deba3bf2c47375e5072da5486d00930d68c8bf1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-851/FINAL_VERIFICATION.json",
+      "sha256": "ef6fbabc54a177ecf8652b4fb09806a221ebcae419ce009d57716a60e04717cf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-851/BROWSER_REPAIR.json",
+      "sha256": "ea3ddee2b5731768499eed34b90b0ce512f2ccab525bed79e58a4d73c02e0826"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-851/PROGRESS_FROZEN.json",
+      "sha256": "f97ecd0b0b3998f07e682e6abf1652252fe725cc6c3cb36000a5fc63e58c1f0d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Changed CSS/source kit and dependent builds/native display",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-851/FINAL_VERIFICATION.json",
+          "sha256": "ef6fbabc54a177ecf8652b4fb09806a221ebcae419ce009d57716a60e04717cf"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "初回A8本番公開を成功済み事実として保持するが、未解決表示不具合を公開後合格にしない。",
+    "原文/訳文62bytes保持、全文レビューを再実施しない。",
+    "新source ZIPは811membersのうちCSS+manifestだけ変更、他809bytes同一。",
+    "Root未完了変更・RapidJSON試作は公開差分に含めない。"
+  ],
+  "unresolved": [
+    "852修正版公開/公開後確認"
+  ],
+  "nextAction": "852:専用843でCSSとsource.zipの2fileだけcommit/push。Preview→Productionの旧本番期待a8c5c595で再公開し、差分/代表HTTP・英日導入版表示・主要導線を確認。完了後RapidJSON850静的方式再選定へ。",
+  "resumeCondition": "852:専用843でCSSとsource.zipの2fileだけcommit/push。Preview→Productionの旧本番期待a8c5c595で再公開し、差分/代表HTTP・英日導入版表示・主要導線を確認。完了後RapidJSON850静的方式再選定へ。"
+}

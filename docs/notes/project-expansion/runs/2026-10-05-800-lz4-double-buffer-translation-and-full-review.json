@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-800-lz4-double-buffer-translation-and-full-review",
+  "cycle": 800,
+  "startedAt": "2026-10-05T05:09:28.185Z",
+  "endedAt": "2026-10-05T05:11:58.272Z",
+  "result": "partial",
+  "phase": "LZ4 DoubleBuffer例の逐次翻訳・別工程全文review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex single-page translation",
+    "separate full source/canonical/Japanese reading",
+    "metadata-only assembler",
+    "protected-token/DOM audit",
+    "isolated Astro build",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/BASELINE_OPERATIONS.json",
+      "sha256": "d1e6be81f4080fd6b6b714e1cb6443cccae16de5fa29d2a4170265396d28a606"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/BASELINE_PROGRESS.json",
+      "sha256": "1239bca7191d47de56165fbc3008872d618fb8f45f39c34574d9955e92ca527f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "04a1ffd6e8f5a5853c8e6fc81c82922035f07c1f13de5107af72c49cabbd0b98"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/examples/blockStreaming_doubleBuffer.md",
+      "sha256": "186607a249d039a9b558592719845ee13222284d4bc8c90eb577a1697007dab0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/05-examples/03-double-buffer.md",
+      "sha256": "23c97b8d43788ff22a1746012d50c7c567463fd8ad9dc9ef9964982b045804f4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/CONTENT_REVIEW_DOUBLE.json",
+      "sha256": "ad9c34aeffc2d6c72a5da4d616640cfa34f98ac5df17c0693a1076a107203213"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/MACHINE_DOUBLE.json",
+      "sha256": "98079e4f567f21650342fb99b75c77eb2c733399a8cd6f82e6f1514994c5c233"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/BUILD.log",
+      "sha256": "611224e8d442dbfc9d568a63e34cd5d7d77e74fc5677985e1388df5218432cd4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/translation/03-double-buffer.md",
+      "sha256": "9cbfe2e3b25100266d8cc77a9320d7425c9d593f766d59768a5af09d65002e3b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/DOUBLE-body.md",
+      "sha256": "197997dd5206ceb10be8d89bc6a190895a8dc79b5975028f37efba5700675578"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/DOUBLE-editorial.html",
+      "sha256": "ee9e9c048a50cdd0ba13d9218927e52e0ce45e1820529883685bc97d46ad4aff"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/check-reviewed-markdown.mjs",
+      "sha256": "0196f7ecf0859c80a7b79891cb25173c6a496adda73a8d6f5830bc7b79ee8fa7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/CYCLE.json",
+      "sha256": "d3b7e1a37c55d7ccbdb6fdf2f2a1e301aad39d3d6630ec05ca20d097067f7ccc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/RECORD_TOOL.mjs",
+      "sha256": "d652c10c049ce57d22c7bad78a58df428b4e8969124a916f6c1cfcab1364191c"
+    },
+    {
+      "path": "docs/notes/document-import/lz4/v1-10-0/reviews/revisions/800/REVIEW_MANIFEST.json",
+      "sha256": "d6193d768c7f1a85818873d2680d7b92410bd7d313eecc7c2854f6d032c8d04c"
+    },
+    {
+      "path": "docs/notes/document-import/lz4/v1-10-0/PROGRESS.json",
+      "sha256": "68dcc089e322ad9f6b014518d2b8ab76a02b551ec16983ef48d1128c2c7be073"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "原文/定本/日本語全範囲の別工程AI内容review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/CONTENT_REVIEW_DOUBLE.json",
+          "sha256": "ad9c34aeffc2d6c72a5da4d616640cfa34f98ac5df17c0693a1076a107203213"
+        }
+      ]
+    },
+    {
+      "name": "対象pageの保護token/DOM/footerと隔離build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/MACHINE_DOUBLE.json",
+          "sha256": "98079e4f567f21650342fb99b75c77eb2c733399a8cd6f82e6f1514994c5c233"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/BUILD.log",
+          "sha256": "611224e8d442dbfc9d568a63e34cd5d7d77e74fc5677985e1388df5218432cd4"
+        }
+      ]
+    },
+    {
+      "name": "全27翻訳review・finalgates",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/lz4/v1-10-0/reviews/revisions/800/REVIEW_MANIFEST.json",
+          "sha256": "d6193d768c7f1a85818873d2680d7b92410bd7d313eecc7c2854f6d032c8d04c"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "入力2pages/全交互依存と4出力図/圧縮・展開手順を全文照合。",
+    "旧API・always主張・line/Dictonaly/reverse orderの訳判断をfooterへ記録。保護token/DOM/ASCII・隔離build合格。",
+    "日本語/全文review13/27。機械と意味reviewを分離、外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "source": [
+      [
+        1,
+        100
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        108
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        104
+      ]
+    ]
+  },
+  "unresolved": [
+    "日本語/全文review14ページ、全表示/統合/finalgates・GPL対応Libx sourcekit未完",
+    "外部リンク現在HTTP可用性・画像ロード未確認"
+  ],
+  "nextAction": "examples/blockStreaming_lineByLine.mdの逐次訳・別工程全文review。日本語13/27、未確認14。全gates/sourcekit/統合未完。",
+  "resumeCondition": "OPERATIONS876・SOURCE/CANONICAL/REVIEW SHA照合後801へ。"
+}

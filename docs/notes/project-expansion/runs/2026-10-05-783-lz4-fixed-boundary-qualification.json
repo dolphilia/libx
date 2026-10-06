@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-783-lz4-fixed-boundary-qualification",
+  "cycle": 783,
+  "startedAt": "2026-10-05T02:58:09.207Z",
+  "endedAt": "2026-10-05T03:01:33.542398+00:00",
+  "result": "partial",
+  "phase": "LZ4既存候補の固定入力・全文境界確定",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed208 SHA/bytes inventory",
+    "primary README/header/notice read",
+    "web search and translator page observation",
+    "ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/BASELINE_CANDIDATES.json",
+      "sha256": "cdc7b981c2d48d586ae8b0db67117343cc0afd3433c4774ebbd6dca26cc2196e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-780/LZ4_FIXED.tar.gz",
+      "sha256": "eb1a93e934d4fd29df6e2061ba0bf447568561764d758f4a5662c0e29370ffa9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-780/LZ4_INVENTORY.json",
+      "sha256": "03b8be9387785a063a7e0c41d19d1011629769c2364276eb43691ed2576bc616"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/BOUNDARY.json",
+      "sha256": "3912c92dd22a835238098217c6c993adfb571383fa200799c5b982b4aaaf3e2c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/FIXED_INPUT.json",
+      "sha256": "f6e516c414f7f65be96bd68e575f16a4ad0b574426b91262509bb9a2724beaa7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/ASSESSMENT.json",
+      "sha256": "591cbac8ffc167fbb11778cadc69ea0ee04f7d4fc4fd6fd94feb4efba7bc8209"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/FINAL_CHECK.json",
+      "sha256": "74172909d44673b3bb2ed899ad6de9151a828a27a404909532c700241e262332"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/FINAL_LEDGER_TESTS.log",
+      "sha256": "0f2b237b12daa1db4a4220770a9c3fa3840406d51fe16caf4e8742c41aaf1969"
+    },
+    {
+      "path": "docs/notes/project-expansion/README.md",
+      "sha256": "5bbd8b12f9fe9ec8872cfb4265430d72343245d4ff0668d6609c2d34f8615850"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "lz4"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "固定208全member hash/bytesと1.10.0版表示",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/FIXED_INPUT.json",
+          "sha256": "f6e516c414f7f65be96bd68e575f16a4ad0b574426b91262509bb9a2724beaa7"
+        }
+      ]
+    },
+    {
+      "name": "全文境界の分類",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/BOUNDARY.json",
+          "sha256": "3912c92dd22a835238098217c6c993adfb571383fa200799c5b982b4aaaf3e2c"
+        }
+      ]
+    },
+    {
+      "name": "権利/自立性/変換/工数・採点/別選定",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/ASSESSMENT.json",
+          "sha256": "591cbac8ffc167fbb11778cadc69ea0ee04f7d4fc4fd6fd94feb4efba7bc8209"
+        }
+      ]
+    },
+    {
+      "name": "最終台帳15tests・186本文/CSS保護・検証server停止",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/FINAL_CHECK.json",
+          "sha256": "74172909d44673b3bb2ed899ad6de9151a828a27a404909532c700241e262332"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/FINAL_LEDGER_TESTS.log",
+          "sha256": "0f2b237b12daa1db4a4220770a9c3fa3840406d51fe16caf4e8742c41aaf1969"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "予備doc4+CLIだけを全文範囲にしない。公式25入力を保持してHC/File/旧wrapper説明を含める。",
+    "旧版訳を未翻訳と扱わず採点を保留。採用0・新規着手0。",
+    "既存保留3件解消後の独立候補調査。Awesome/user本文・設定を変更せず、外部公開/定期実行なし。"
+  ],
+  "unresolved": [
+    "旧版訳の存在を確認しただけで、対象全範囲の訳が存在しないとは断定しない。",
+    "公式言語一覧/翻訳用ディレクトリ・他の日本語資料と版差分の詳細調査は未完。追加価値得点はnull。",
+    "検索結果を正式本文の翻訳に再利用しない。",
+    "rights/selfContained/conversion/workloadはunknown、全文内容レビュー/翻訳は未開始。"
+  ],
+  "nextAction": "全25原文を読む。素材ごとのライセンス根拠/履行を定め、原manual2とheader2・公開API追加3の対応を照合。日本語調査と実測工数、隔離試験を終えて採点・別選定する。",
+  "resumeCondition": "fixed208・BOUNDARY/ASSESSMENT・台帳hashを照合。変換試験は権利と範囲を確定してから隔離で実行する。"
+}

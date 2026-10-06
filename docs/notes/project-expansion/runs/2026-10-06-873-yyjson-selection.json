@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-06-873-yyjson-selection",
+  "cycle": 873,
+  "startedAt": "2026-10-05T22:49:57.285514+00:00",
+  "endedAt": "2026-10-05T23:03:42.317Z",
+  "result": "complete",
+  "phase": "yyjson固定版ガイド範囲発見/静的試作/別パス選定照合",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "official release/tree/blob API",
+    "bounded primary/Japanese source web research",
+    "Astro static Markdown conversion",
+    "CUA native representative",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "687ae3c2bcd4c7a07817799a2e89770f6cdec899ba2cd684f8bca0d7c80645ac"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/FIXED_INPUTS.json",
+      "sha256": "bd66b3f38e93bac9ca0392b0a3d4c2eeb3375121fdb5147eb4f416e20f2263ea"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/IMAGE_INPUTS.json",
+      "sha256": "5ebff03198f1f2e08336b732ab851ac8f7820659a043f4b59b932f12f5722ddd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/JAPANESE_OBSERVATIONS.json",
+      "sha256": "8088a4aa6674c4eac216085628127fd1ac660cca63c5eb535fd2e006c082e5ec"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/JAPANESE_FETCH.json",
+      "sha256": "ab60aaa2357bf92b825b67f96402e6db2a12e55bcf12f473aa2810410cd42aff"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/SCOPE_WORKLOAD.json",
+      "sha256": "4932c0f5404900e98ea9581d7e02d782dac2f2797bd7f6d9c8c477f84a4e973b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/CONVERSION_PROTOTYPE.json",
+      "sha256": "be8ccae9d2be5a9ebfd6082eb6aef16a805321d11c520441fe57fb4ef991a0eb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/PROTOTYPE_BROWSER.json",
+      "sha256": "8531ffd39125a2b2fedb809a59aa996ca52145eed5ae8e28b8af70420d051663"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/CANDIDATE_DRAFT.json",
+      "sha256": "d992f99e2ffbd05777259ace761780ecdf8c61d9c9b7809c592c7c8f3c68e87b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/SCORING.json",
+      "sha256": "e801bcce6f1982470c1c6bbda3865a01bcbda9c985bb8e06aad734ee09b71519"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/SELECTION_REVIEW.json",
+      "sha256": "273ea2f8eb05ffb550b5ac74e45a474e54bd7d2d76a59ed95cdc68d5291c6149"
+    }
+  ],
+  "discoveryIds": [
+    "yyjson"
+  ],
+  "detailIds": [
+    "yyjson"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "fixed Markdown7/SVG7 and rights/scope",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/FIXED_INPUTS.json",
+          "sha256": "bd66b3f38e93bac9ca0392b0a3d4c2eeb3375121fdb5147eb4f416e20f2263ea"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/IMAGE_INPUTS.json",
+          "sha256": "5ebff03198f1f2e08336b732ab851ac8f7820659a043f4b59b932f12f5722ddd"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/SCOPE_WORKLOAD.json",
+          "sha256": "4932c0f5404900e98ea9581d7e02d782dac2f2797bd7f6d9c8c477f84a4e973b"
+        }
+      ]
+    },
+    {
+      "name": "static representative/code85/table10/6conditions/70/separate selection review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-873/SELECTION_REVIEW.json",
+          "sha256": "273ea2f8eb05ffb550b5ac74e45a474e54bd7d2d76a59ed95cdc68d5291c6149"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "第三者訳未再配布、JAAPI未確認はpartial保持。原文技術完全性・元Doxygen機能再現を要件にしない。",
+    "16英日ガイド/3英語参照の予定範囲。新operation未作成。Wrenの実行可能な公開工程を優先。"
+  ],
+  "unresolved": [
+    "正規app/再生成と16ガイド翻訳・別パス全文意味review",
+    "正式表示/検査/統合/Pages公開・公開後確認"
+  ],
+  "nextAction": "Wren872公開を優先。外部CI待機中は最新の検証済み公開commitを基準にyyjson隔離checkout/正規作成器/原入力・通知・再生成器を準備できる。16ガイドを3〜6k語のバッチ草稿/別パス全文reviewへ。",
+  "resumeCondition": "Wren872公開を優先。外部CI待機中は最新の検証済み公開commitを基準にyyjson隔離checkout/正規作成器/原入力・通知・再生成器を準備できる。16ガイドを3〜6k語のバッチ草稿/別パス全文reviewへ。"
+}

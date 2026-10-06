@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-784-lz4-original-license-and-api-qualification",
+  "cycle": 784,
+  "startedAt": "2026-10-05T03:09:17.428Z",
+  "endedAt": "2026-10-05T03:12:32.717Z",
+  "result": "partial",
+  "phase": "LZ4原著全文・通知履行・API欠落と範囲修正",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原著全文読み",
+    "function identifier inventory",
+    "固定license保存",
+    "web search",
+    "ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/BASELINE_CANDIDATES.json",
+      "sha256": "e6cdf63872d9e4e9e2caa9d333999d7498839923aef30ba46f073ee187ed63fb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/BASELINE_OPERATIONS.json",
+      "sha256": "36a082007a0e540f11df1b3874690d918fd0e7a33602178bcba9553c91ea4d18"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/BOUNDARY.json",
+      "sha256": "3912c92dd22a835238098217c6c993adfb571383fa200799c5b982b4aaaf3e2c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/BOUNDARY.json",
+      "sha256": "5497ce993ae68109286cea33393995b02fee0b6e4c5459bbd53b44dc2a4ac6ac"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/RIGHTS_AND_FULFILLMENT.json",
+      "sha256": "94e94165ec00cccbe368358cd2d2e63654997ed029046dd24e1653ee1b8f5885"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+      "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/QUALIFICATION_PROGRESS.json",
+      "sha256": "938035da1ff14e90118aecc015349172ceeb77e0ec3fa191816b193396e0e7a3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/JAPANESE_SEARCH.json",
+      "sha256": "bfdb1a6ed3a6557429b35fdf0f7b6021c213dcb200a9db78bbe74d274912e6b7"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "lz4"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "原著27全文・4条件",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/BOUNDARY.json",
+          "sha256": "5497ce993ae68109286cea33393995b02fee0b6e4c5459bbd53b44dc2a4ac6ac"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/RIGHTS_AND_FULFILLMENT.json",
+          "sha256": "94e94165ec00cccbe368358cd2d2e63654997ed029046dd24e1653ee1b8f5885"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        }
+      ]
+    },
+    {
+      "name": "忠実変換・工数・採点・別選定",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/QUALIFICATION_PROGRESS.json",
+          "sha256": "938035da1ff14e90118aecc015349172ceeb77e0ec3fa191816b193396e0e7a3"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "採用0・新規operation0。原著全文読みを翻訳/内容レビュー完了として加算しない。",
+    "4旧block/5frame識別子欠落を原著ヘッダー付録で保全し、新説明をコードから作らない。",
+    "30分程度の初期枠を延長し複数licenseと生成省略を解決。実測/限定試験は次cycle。",
+    "Awesome・user変更に触らず外部公開/定期設定なし。"
+  ],
+  "unresolved": [
+    "conversion/workload unknown、採点/別選定未実施",
+    "GPL sourcekit/通知配置の実履行は未実施",
+    "旧日本語訳以外の公式翻訳案内調査と版/範囲不足の採点未完",
+    "原文30101英字token概算、本文語数と分離して実測が必要"
+  ],
+  "nextAction": "原HTML2を公式generatorで再生成して一致/差分を記録。HTML未escape文字・コード図・table・anchor、最大headerを隔離変換/描画。実測語数（原文本文とコード、重複は区別）/API/link/工数、日本語公式案内を調査し採点。",
+  "resumeCondition": "CANDIDATES171と784証拠・固定208原入力を再照合。権利/範囲確認済みなので隔離試験へ進める。通常新規生成は全6条件/採点/別選定後。"
+}

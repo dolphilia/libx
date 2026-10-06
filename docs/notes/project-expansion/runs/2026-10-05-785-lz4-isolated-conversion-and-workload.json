@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-785-lz4-isolated-conversion-and-workload",
+  "cycle": 785,
+  "startedAt": "2026-10-05T03:13:55.539Z",
+  "endedAt": "2026-10-05T03:30:34.481Z",
+  "result": "partial",
+  "phase": "LZ4固定generator再現・全27隔離変換/表示・工数実測",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed official C++ gen_manual",
+    "isolated Astro build/preview",
+    "parse5",
+    "remark AST",
+    "CUA read-only local display",
+    "ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/BASELINE_CANDIDATES.json",
+      "sha256": "99bd9a088da15bf4f6a898d1a4b75ab0de6a26f9dce3c3b278918fa5b942e623"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/BOUNDARY.json",
+      "sha256": "5497ce993ae68109286cea33393995b02fee0b6e4c5459bbd53b44dc2a4ac6ac"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/RIGHTS_AND_FULFILLMENT.json",
+      "sha256": "94e94165ec00cccbe368358cd2d2e63654997ed029046dd24e1653ee1b8f5885"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/GENERATOR_REPRODUCTION.json",
+      "sha256": "6f5b8e188fc115a4498fd88ba8723574b0c20011226bad4f3eff730557c1603e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/TRIAL_MAP.json",
+      "sha256": "de61c6acdd6793b59a3c4b421abe540c9ffdeb1b0b746a141a904147686ab950"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/STATIC_AUDIT.json",
+      "sha256": "0bb96abd185be0495fb0a5e6238eee4faa26177ff2d0d2ae9ef48fc848f38a53"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/MARKDOWN_AUDIT.json",
+      "sha256": "d215c550a521d59f38689aebf0debed1693413b2dad3061e3616d227607da604"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/DISPLAY_OBSERVATIONS.json",
+      "sha256": "921061e1f8d1e023cb9b13a4a3800e06f50076add95eccd7678df50335cccb13"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/WORKLOAD_ASSESSMENT.json",
+      "sha256": "92addea02a1cf2c3ef7618797a1f44b9305702355c9d0d12dcae006c2f84ee3e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+      "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/JAPANESE_PRIMARY_OBSERVATIONS.json",
+      "sha256": "7d72cb4a1c35a4c5bfe570c083b2356723bccc637aa14455db75d2b881059824"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/BUILD.log",
+      "sha256": "26f7aff4c33ebb9b2044d79cc51006d7b2f34a829924418ecb624ad86419440f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/UNINTENDED_ROOT_BUILD.log",
+      "sha256": "de0c3f4567698d970983af2b4e296534e056d20ec4f1594c71ac128fef8de69c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "lz4"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "固定generator manual2 byte parity",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/GENERATOR_REPRODUCTION.json",
+          "sha256": "6f5b8e188fc115a4498fd88ba8723574b0c20011226bad4f3eff730557c1603e"
+        }
+      ]
+    },
+    {
+      "name": "27変換本文・19Markdown ASTと機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/STATIC_AUDIT.json",
+          "sha256": "0bb96abd185be0495fb0a5e6238eee4faa26177ff2d0d2ae9ef48fc848f38a53"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/MARKDOWN_AUDIT.json",
+          "sha256": "d215c550a521d59f38689aebf0debed1693413b2dad3061e3616d227607da604"
+        }
+      ]
+    },
+    {
+      "name": "qualification sample display/workload",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/DISPLAY_OBSERVATIONS.json",
+          "sha256": "921061e1f8d1e023cb9b13a4a3800e06f50076add95eccd7678df50335cccb13"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/WORKLOAD_ASSESSMENT.json",
+          "sha256": "92addea02a1cf2c3ef7618797a1f44b9305702355c9d0d12dcae006c2f84ee3e"
+        }
+      ]
+    },
+    {
+      "name": "採点・別選定・正式文書工程",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+          "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "採用0・正式new0。試験合格を正式verified/全文内容reviewに繰り上げない。",
+    "必須6条件をqualificationとしてpass。日本語資料・採点・別選定後に正規テンプレートを使う。",
+    "rawHTML内記号の変化・reference links8件・INSTALL原Markdownを修正して再build/検査。",
+    "誤って共有rootの通常astro buildを1回実行。候補試験へ採用せずlog保存、186本文SHA不変を確認。巻き戻しなし。",
+    "preview終了・tabclose・viewportreset。Awesome/user本文編集・外部公開・定期実行なし。"
+  ],
+  "unresolved": [
+    "採点と別選定未実施",
+    "正式LZ4 app/source metadataとGPL/BSD/Frame通知/sourcekitの履行は未実施",
+    "翻訳・全内容review・正式全gate未開始",
+    "全外部リンク・正式メタデータ・検索/言語/404表示は未確認"
+  ],
+  "nextAction": "786で日本語調査と5採点・別選定を記録し、条件/score合格時のみ正規テンプレートdry-run→隔離formal app作成。",
+  "resumeCondition": "CANDIDATES172・固定27/208・785証拠hashとCASを照合。試験作業場/private/tmp/libx-lz4-trial-785を正式appと混同しない。"
+}

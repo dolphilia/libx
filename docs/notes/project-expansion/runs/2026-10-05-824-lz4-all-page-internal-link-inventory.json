@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-824-lz4-all-page-internal-link-inventory",
+  "cycle": 824,
+  "startedAt": "2026-10-05T07:03:49.202Z",
+  "endedAt": "2026-10-05T07:06:27.756Z",
+  "result": "partial",
+  "phase": "LZ4全英日54ページの内部リンク・anchor在庫と日本語参照整合範囲確定",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "read-only full rendered-page link inventory",
+    "live reviewed translation SHA checks",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/BASELINE_OPERATIONS.json",
+      "sha256": "3e3ab2c60600cf4a16b7c38dcf652627bd19a42cc7936ad18d7a7d3ba2d636c2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/BASELINE_PROGRESS.json",
+      "sha256": "8228c59bb6b72821882396b60788421f423e385ab97adf446a4607df88d62613"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/BASELINE_REVIEW_MANIFEST.json",
+      "sha256": "9f9a100a8112732aca879460b89639dbea042edd9277c09368ab065bc6193411"
+    },
+    {
+      "path": "docs/notes/document-import/lz4/v1-10-0/canonical/revisions/802/CANONICAL_LOCK.json",
+      "sha256": "9d2b72008cc0f62a2df65e125cbac369bdb9a0f766b8390c8f8813fd02c541b9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/audit-internal-links.mjs",
+      "sha256": "4b48e77c964d2d993ee4dcd00189ae5f63d9c10d2cca961ccaaf949f883ffdd6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/INTERNAL_LINK_INVENTORY.json",
+      "sha256": "86fb3b37b3b61151f167c3e5efbb5f938f58f6a792eef1c054914ce1c3c9e053"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/record-link-inventory.mjs",
+      "sha256": "18b3730bfaa59a906560a53bb42ac3b680a3fb3267cb856c959a30f7b6544c71"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "英日54ページの154対象内部実リンクのファイル/anchor現況",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/INTERNAL_LINK_INVENTORY.json",
+          "sha256": "86fb3b37b3b61151f167c3e5efbb5f938f58f6a792eef1c054914ce1c3c9e053"
+        }
+      ]
+    },
+    {
+      "name": "日本語5ページ13実リンクのlanguage参照限定修正と再review",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/INTERNAL_LINK_INVENTORY.json",
+          "sha256": "86fb3b37b3b61151f167c3e5efbb5f938f58f6a792eef1c054914ce1c3c9e053"
+        }
+      ]
+    },
+    {
+      "name": "全finalgates/表示/GPL sourcekit/統合",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-824/INTERNAL_LINK_INVENTORY.json",
+          "sha256": "86fb3b37b3b61151f167c3e5efbb5f938f58f6a792eef1c054914ce1c3c9e053"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全文レビュー27/27とlive SHAを照合し維持。全英日54本文の154内部実リンクに欠落ファイル/anchor0を確認したが、総合link gateとはしない。",
+    "日本語overview/Block/examples/library/CLIの5ページ13実リンクがENへ向く。raw定義11箇所、重複使用を含む全13個のJA対応先は存在。先に範囲とURL対応を保存し、文脈意味確認と変更ページreviewSHA更新は次825。",
+    "原外部href・EN定本・原文未変更。外部HTTP/画像ロード、browser表示、全gates/GPL sourcekit/統合は未完。外部公開/定期設定なし。"
+  ],
+  "coverage": {
+    "renderedPages": 54,
+    "localArticleLinks": 154,
+    "contentReview": "existing27 maintained; localization deltas not yet reviewed"
+  },
+  "unresolved": [
+    "unlocalized refsの文脈を読み日本語対応表と限定差分を作成・意味再確認",
+    "変更pageのreview snapshot/manifest SHA更新・再build/DOM",
+    "全content/link/integrity gateとbrowser表示/GPL sourcekit/統合",
+    "外部HTTPリンク/画像ロード"
+  ],
+  "nextAction": "825でOPERATIONS901・802定本27SHA・27review/liveJA SHAと824全54ページDOM在庫SHAを照合。日本語5ページの英語行き13実リンク（raw定義11箇所）を文脈確認し、対応するreview済み日本語同一page/anchorへ限定修正する。URL対応表・旧review復元と意味確認を保存し5page snapshot/manifest SHAを更新、隔離再build/全DOM/internal link再検査。原外部リンクとEN定本は保持。check:content・全gates/GPL sourcekit/表示/統合未完。",
+  "resumeCondition": "OPERATIONS901・824全inventory/SHA照合後825へ。"
+}
