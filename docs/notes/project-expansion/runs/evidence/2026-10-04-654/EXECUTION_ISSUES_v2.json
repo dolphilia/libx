@@ -1,0 +1,23 @@
+{
+  "status": "recorded-and-corrected-with-specific-tests",
+  "issues": [
+    {
+      "firstBuild": "failed before any renderer success",
+      "reason": "Adapter used old sections key; fixed 0.5.4 Book uses items.",
+      "fixedSource": "crates/mdbook-core/src/book.rs:26-28",
+      "correction": "v2 changes only sections to items; original script/log preserved; rerun all outputs required.",
+      "originalLogSha256": "6ef7e39dc53c959c7522a92f77884ef50cd0f087f6e39258e80cd727690318c4"
+    },
+    {
+      "stage": "Astro raw HTML trial v1",
+      "reason": "Block-boundary blank newlines normalized by Markdown; no content loss established in this first failure.",
+      "correction": "v2 explicitly ignores whitespace-only root/div/main children for DOM comparison; inline/code/style/content exact unchanged."
+    },
+    {
+      "stage": "Astro raw HTML trial v2",
+      "evidence": "ASTRO_v2.log",
+      "reason": "CommonMark HTML block ends at blank lines inside pre/code; code split/indentation corrupted. This is a real portability failure, not accepted normalization.",
+      "correction": "v3 encodes LF only inside pre as numeric character references, independently asserts original-versus-encoded DOM equality, then checks complete Astro DOM equality. All31 pass; app behavior still unverified."
+    }
+  ]
+}

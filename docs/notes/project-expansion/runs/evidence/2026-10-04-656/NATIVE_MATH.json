@@ -1,0 +1,40 @@
+{
+  "math": [
+    {
+      "class": "MathJax_Preview",
+      "tag": "SPAN",
+      "text": ""
+    },
+    {
+      "class": "MathJax",
+      "tag": "SPAN",
+      "text": "∫xdx=x22+C∫xdx=x22+C"
+    },
+    {
+      "class": "",
+      "tag": "math",
+      "text": "∫xdx=x22+C"
+    },
+    {
+      "class": "MathJax_Preview",
+      "tag": "SPAN",
+      "text": ""
+    },
+    {
+      "class": "MathJax_Display",
+      "tag": "DIV",
+      "text": "μ=1N∑i=0xiμ=1N∑i=0xi"
+    },
+    {
+      "class": "MathJax",
+      "tag": "SPAN",
+      "text": "μ=1N∑i=0xiμ=1N∑i=0xi"
+    },
+    {
+      "class": "",
+      "tag": "math",
+      "text": "μ=1N∑i=0xi"
+    }
+  ],
+  "visible": "MathJax support\n\nmdBook has optional support for math equations through MathJax.\n\nTo enable MathJax, you need to add the\nmathjax-support\nkey to your\nbook.toml\nunder the\noutput.html\nsection.\n\n[output.html]\nmathjax-support = true\n\n\nNote: The usual delimiters MathJax uses are not yet supported. You can’t currently use\n$$ ... $$\nas delimiters and the\n\\[ ... \\]\ndelimiters need an extra backslash to work. Hopefully this limitation will be lifted soon.\n\nNote: When you use double backslashes in MathJax blocks (for example in commands such as\n\\begin{cases} \\frac 1 2 \\\\ \\frac 3 4 \\end{cases}\n) you need to add two extra backslashes (e.g.,\n\\begin{cases} \\frac 1 2 \\\\\\\\ \\frac 3 4 \\end{cases}\n).\n\nInline equations\n\nInline equations are delimited by\n\\\\(\nand\n\\\\)\n. So for example, to render the following inline equation \n∫xdx=\nx\n2\n2\n+C\n∫\n𝑥\n𝑑\n𝑥\n=\n𝑥\n2\n2\n+\n𝐶\n you would write the following:\n\n\\\\( \\int x dx = \\frac{x^2}{2} + C \\\\)\n\nBlock equations\n\nBlock equations are delimited by\n\\\\[\nand\n\\\\]\n. To render the following equation\n\nμ=\n1\nN\n∑\ni=0\nx\ni\n𝜇\n=\n1\n𝑁\n∑\n𝑖\n=\n0\n𝑥\n𝑖\n\nyou would write:\n\n\\\\[ \\mu = \\frac{1}{N} \\sum_{i=0} x_i \\\\]\n"
+}

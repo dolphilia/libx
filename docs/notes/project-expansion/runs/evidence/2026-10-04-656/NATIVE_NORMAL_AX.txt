@@ -1,0 +1,118 @@
+Browser tab: 123, Title: "Creating a book | mdBook conversion trial", URL: "http://127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 73-74, 77, 80-83, 85-87, 92, 97, 100, 102, 105-107, 111-112, 114, 119, 121, 123-126, 128-129, 131, 133, 136-212, 215-357
+~1 AXWebArea Creating a book | mdBook conversion trial, URL: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/
+~				70 heading Creating a book, Value: 1, ID: creating-a-book
+~					71 link Description: Creating a book, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#creating-a-book
+~				72 text Once you have the mdbook CLI tool installed, you can use it to create and render a book.
++				73 heading Initializing a book, Value: 2, ID: initializing-a-book
++					74 link Description: Initializing a book, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#initializing-a-book
+~				75 text The mdbook init command will create a new directory containing an empty book for you to get started. Give it the name of the directory that you want to create:
+~				76 button Copy to clipboard
++					77 image
+~				78 text mdbook init my-first-book
+
+~				79 text It will ask a few questions before generating the book. After answering the questions, you can change the current directory into the new book:
++				80 button Copy to clipboard
++					81 image
++				82 container
++					83 text cd  my-first-book
+
+~				84 text There are several ways to render a book, but one of the easiest methods is to use the serve command, which will build your book and start a local webserver:
++				85 button Copy to clipboard
++					86 image
++				87 text mdbook serve --open
+
++				88 text The --open option will open your default web browser to view your new book. You can leave the server running even while you edit the content of the book, and mdbook will automatically rebuild the output  and  automatically refresh your web browser. Check out the 
+~				89 link Description: CLI Guide, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/02-cli-index/
++				90 text  for more information about other mdbook commands and CLI options.
+~				91 heading Anatomy of a book, Value: 2, ID: anatomy-of-a-book
++					92 link Description: Anatomy of a book, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#anatomy-of-a-book
+~				93 text A book is built from several files which define the settings and layout of the book.
+~				94 heading book.toml, Value: 3, ID: booktoml
+~					95 link Description: book.toml, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#booktoml
+~				96 text In the root of your book, there is a book.toml file which contains settings for describing how to build your book. This is written in the 
++				97 link Description: TOML markup language, Value: toml.io/
+~				98 text . The default settings are usually good enough to get you started. When you are interested in exploring more features and options that mdBook provides, check out the 
+~				99 link Description: Configuration chapter, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/15-format-configuration-index/
++				100 text  for more details. A very basic book.toml can be as simple as this:
+~				101 button Copy to clipboard
++					102 image
+~					104 text [book] title  =  "My First Book"
++				105 heading SUMMARY.md, Value: 3, ID: summarymd
++					106 link Description: SUMMARY.md, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#summarymd
++				107 text The next major part of a book is the summary file located at src/SUMMARY.md . This file contains a list of all the chapters in the book. Before a chapter can be viewed, it must be added to this list. Here’s a basic summary file with a few chapters:
+~				108 button Copy to clipboard
+~					109 image
+~				110 container
++					111 text # Summary 
+
+[ Introduction ]( README.md )
+
+ -  [ My First Chapter ]( my-first-chapter.md )
+ -  [ Nested example ]( nested/README.md )
+     -  [ Sub-chapter ]( nested/sub-chapter.md )
+
++				112 text Try opening up src/SUMMARY.md in your editor and adding a few chapters. If any of the chapter files do not exist, mdbook will automatically create them for you. For more details on other formatting options for the summary file, check out the 
+~				113 link Description: Summary chapter, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/23-format-summary/
++				114 text .
+~				115 heading Source files, Value: 3, ID: source-files
+~					116 link Description: Source files, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#source-files
+~				117 text The content of your book is all contained in the src directory. Each chapter is a separate Markdown file. Typically, each chapter starts with a level 1 heading with the title of the chapter.
+~				118 button Copy to clipboard
++					119 image
+~				120 container
++					121 text # My First Chapter 
+
+Fill out your content here.
+
+~				122 text The precise layout of the files is up to you. The organization of the files will correspond to the HTML files generated, so keep in mind that the file layout is part of the URL of each chapter. While the mdbook serve command is running, you can open any of the chapter files and start editing them. Each time you save the file, mdbook will rebuild the book and refresh your web browser. Check out the 
++				123 link Description: Markdown chapter, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/20-format-markdown/
++				124 text  for more information on formatting the content of your chapters. All other files in the src directory will be included in the output. So if you have images or other static files, just include them somewhere in the src directory.
++				125 heading Publishing a book, Value: 2, ID: publishing-a-book
++					126 link Description: Publishing a book, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#publishing-a-book
+~				127 text Once you’ve written your book, you may want to host it somewhere for others to view. The first step is to build the output of the book. This can be done with the mdbook build command in the same directory where the book.toml file is located:
++				128 button Copy to clipboard
++					129 image
+~				130 text mdbook build
+
++				131 text This will generate a directory named book which contains the HTML content of your book. You can then place this directory on any web server to host it. For more information about publishing and deploying, check out the 
+~				132 link Description: Continuous Integration chapter, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/10-continuous-integration/
++				133 text  for more.
+~				134 link Description: Previous Reading books, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/30-guide-reading
+~				135 link Description: Next Command-line tool, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/02-cli-index
++			136 container Source and editorial notes
++				137 heading Source and editorial notes, Value: 2, ID: document-provenance-title
++					138 text Source and editorial notes
++				139 text Canonical language
++				140 text This document is "mdBook Documentation 0.5.4" by mdBook contributors, formatted for libx.
++				141 definition list
++					142 container Source
++						143 text Source
++					144 text mdBook Documentation 0.5.4
++					145 container Upstream version
++						146 text Upstream version
++					147 text mdBook 0.5.4
++					148 container License
++						149 text License
++					150 text MPL-2.0
++				151 link Description: Open original, Value: github.com/rust-lang/mdBook/tree/2ea30c00f00647d2b3f4c0f79b3e0e1eabc0b66d/guide
++				152 link Description: MPL-2.0License, Value: mozilla.org/MPL/2.0/
++				153 text Positional wording in editorial notes (above or below) refers to the original location in the document. Follow the section link to read it in context.
++				154 button (collapsed) Page source details, Secondary Actions: Expand
++					155 text Page source details
++				156 button (collapsed) Editorial notes on the source, Secondary Actions: Expand
++					157 text Editorial notes on the source
++			158 container ON THIS PAGE
++				159 heading ON THIS PAGE, Value: 3, ID: starlight-toc-heading
++					160 text ON THIS PAGE
++				161 content list
++					162 link Description: Initializing a book, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#initializing-a-book
++					163 container
++						164 link Description: Anatomy of a book, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#anatomy-of-a-book
++						165 content list
++							166 link Description: book.toml, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#booktoml
++							167 link Description: SUMMARY.md, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#summarymd
++							168 link Description: Source files, Value: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/#source-files
++					169 link Description: Publishing a book, Value: …
+The focused UI element is 1 AXWebArea Creating a book | mdBook conversion trial, URL: 127.0.0.1:4656/docs/mdbook-trial/v0-5-4/en/01-guide/28-guide-creating/
