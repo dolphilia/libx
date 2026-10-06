@@ -1,0 +1,71 @@
+FULL REVIEW 08-often-used-commands
+0 EN 3.4 Often-Used Commands
+JA 3.4 よく使うコマンド
+1 EN If you use sed at all, you will quite likely want to know these commands.
+JA sedを使うなら、おそらくこれらのコマンドを知りたくなるでしょう。
+2 dt EN=JA LITERAL #
+3 EN [No addresses allowed.]
+JA ［アドレスは指定できません。］
+4 EN The # character begins a comment; the comment continues until the next newline.
+JA #文字でコメントが始まり、次の改行まで続きます。
+5 EN If you are concerned about portability, be aware that some implementations of sed (which are not POSIX conforming) may only support a single one-line comment, and then only when the very first character of the script is a #.
+JA 移植性を気にする場合は、一部のsed実装（POSIXに準拠しないもの）が、スクリプトの最初の文字が#である場合に限り、1行のコメント一つだけをサポートすることがある点に注意してください。
+6 EN Warning: if the first two characters of the sed script are #n, then the -n (no-autoprint) option is forced. If you want to put a comment in the first line of your script and that comment begins with the letter ‘n’ and you do not want this behavior, then be sure to either use a capital ‘N’, or place at least one space before the ‘n’.
+JA 警告：sedスクリプトの最初の2文字が#nの場合、-n（自動表示なし）オプションが強制されます。スクリプトの先頭行に文字「n」で始まるコメントを書き、この動作を避けたい場合は、大文字の「N」を使うか、「n」の前に少なくとも一つの空白を置いてください。
+7 dt EN=JA LITERAL q [exit-code]
+8 EN Exit sed without processing any more commands or input.
+JA これ以上コマンドや入力を処理せず、sedを終了します。
+9 EN Example: stop after printing the second line:
+JA 例：2行目を表示した後に停止します。
+10 pre EN=JA LITERAL $ seq 3 | sed 2q
+1
+2
+11 EN This command accepts only one address. Note that the current pattern space is printed if auto-print is not disabled with the -n options. The ability to return an exit code from the sed script is a GNU sed extension.
+JA このコマンドにはアドレスを一つだけ指定できます。-nオプションで自動表示を無効にしていなければ、現在のパターンスペースが表示されることに注意してください。sedスクリプトから終了コードを返す機能はGNU sed拡張です。
+12 EN See also the GNU sed extension Q command which quits silently without printing the current pattern space.
+JA 現在のパターンスペースを表示せず、出力なしで終了するGNU sed拡張のQコマンドも参照してください。
+13 dt EN=JA LITERAL d
+14 EN Delete the pattern space; immediately start next cycle.
+JA パターンスペースを削除し、直ちに次のサイクルを開始します。
+15 EN Example: delete the second input line:
+JA 例：入力の2行目を削除します。
+16 pre EN=JA LITERAL $ seq 3 | sed 2d
+1
+3
+17 dt EN=JA LITERAL p
+18 EN Print out the pattern space (to the standard output). This command is usually only used in conjunction with the -n command-line option.
+JA パターンスペースを標準出力へ表示します。このコマンドは、通常、コマンドラインオプション-nと併用します。
+19 EN Example: print only the second input line:
+JA 例：入力の2行目だけを表示します。
+20 pre EN=JA LITERAL $ seq 3 | sed -n 2p
+2
+21 dt EN=JA LITERAL n
+22 EN If auto-print is not disabled, print the pattern space, then, regardless, replace the pattern space with the next line of input. If there is no more input then sed exits without processing any more commands.
+JA 自動表示が無効になっていなければ、パターンスペースを表示します。その後、自動表示の設定にかかわらず、パターンスペースを次の入力行で置き換えます。入力がもうなければ、sedは残りのコマンドを処理せず終了します。
+23 EN This command is useful to skip lines (e.g. process every Nth line).
+JA このコマンドは、行を飛ばす場合（たとえばN行ごとに処理する場合）に役立ちます。
+24 EN Example: perform substitution on every 3rd line (i.e. two n commands skip two lines):
+JA 例：3行ごとに置換を行います。二つのnコマンドで2行を飛ばします。
+25 pre EN=JA LITERAL $ seq 6 | sed 'n;n;s/./x/'
+1
+2
+x
+4
+5
+x
+26 EN GNU sed provides an extension address syntax of first~step to achieve the same result:
+JA GNU sedには、同じ結果を得るための拡張アドレス構文first~stepがあります。
+27 pre EN=JA LITERAL $ seq 6 | sed '0~3s/./x/'
+1
+2
+x
+4
+5
+x
+28 dt EN=JA LITERAL { commands }
+29 EN A group of commands may be enclosed between { and } characters. This is particularly useful when you want a group of commands to be triggered by a single address (or address-range) match.
+JA {文字と}文字の間に、コマンドのグループを囲めます。単一のアドレス（またはアドレス範囲）への一致で、一連のコマンドを実行したい場合に特に役立ちます。
+30 EN Example: perform substitution then print the second input line:
+JA 例：入力の2行目で置換を行い、その後で表示します。
+31 pre EN=JA LITERAL $ seq 3 | sed -n '2{s/2/X/ ; p}'
+X

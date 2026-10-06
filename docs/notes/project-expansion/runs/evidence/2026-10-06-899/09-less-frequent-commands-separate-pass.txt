@@ -1,0 +1,228 @@
+FULL REVIEW 09-less-frequent-commands
+0 EN 3.5 Less Frequently-Used Commands
+JA 3.5 使用頻度の低いコマンド
+1 EN Though perhaps less frequently used than those in the previous section, some very small yet useful sed scripts can be built with these commands.
+JA 前の節のコマンドほど頻繁には使わないかもしれませんが、これらを使えば、ごく短くても役立つsedスクリプトを作れます。
+2 dt EN=JA LITERAL y/source-chars/dest-chars/
+3 EN Transliterate any characters in the pattern space which match any of the source-chars with the corresponding character in dest-chars.
+JA パターンスペースにある文字のうち、source-charsのいずれかに一致する文字を、対応するdest-charsの文字へ置き換えます。
+4 EN Example: transliterate ‘a-j’ into ‘0-9’:
+JA 例：「a-j」を「0-9」へ文字単位で置き換えます。
+5 pre EN=JA LITERAL $ echo hello world | sed 'y/abcdefghij/0123456789/'
+74llo worl3
+6 EN (The / characters may be uniformly replaced by any other single character within any given y command.)
+JA （一つのyコマンド内では、/文字をすべて同じ別の1文字へ置き換えられます。）
+7 EN Instances of the / (or whatever other character is used in its stead), \, or newlines can appear in the source-chars or dest-chars lists, provide that each instance is escaped by a \. The source-chars and dest-chars lists must contain the same number of characters (after de-escaping).
+JA source-charsやdest-charsのリストには、/（またはその代わりに使った文字）、\、改行を含められます。ただし、それぞれを\でエスケープする必要があります。source-charsとdest-charsのリストの文字数は、エスケープを解いた後に同じでなければなりません。
+8 EN See the tr command from GNU coreutils for similar functionality.
+JA 同様の機能については、GNU coreutilsのtrコマンドを参照してください。
+9 dt EN=JA LITERAL a text
+10 EN Appending text after a line. This is a GNU extension to the standard a command - see below for details.
+JA 行の後にtextを追加します。これは標準のaコマンドへのGNU拡張です。詳細は以下を参照してください。
+11 EN Example: Add ‘hello’ after the second line:
+JA 例：2行目の後に「hello」を追加します。
+12 pre EN=JA LITERAL $ seq 3 | sed '2a hello'
+1
+2
+hello
+3
+13 EN Leading whitespace after the a command is ignored. The text to add is read until the end of the line.
+JA aコマンドの直後の空白は無視されます。追加するテキストは行末まで読み込まれます。
+14 dt EN=JA LITERAL a\
+15 dt EN=JA LITERAL text
+16 EN Appending text after a line.
+JA 行の後にtextを追加します。
+17 EN Example: Add ‘hello’ after the second line (-| indicates printed output lines):
+JA 例：2行目の後に「hello」を追加します（-|は表示される出力行を示します）。
+18 pre EN=JA LITERAL $ seq 3 | sed '2a\
+hello'
+-|1
+-|2
+-|hello
+-|3
+19 EN The a command queues the lines of text which follow this command (each but the last ending with a \, which are removed from the output) to be output at the end of the current cycle, or when the next input line is read.
+JA aコマンドは、このコマンドの後に続くテキストの各行をキューに入れ、現在のサイクルの最後、または次の入力行を読み込むときに出力します。最後の行以外は\で終えます。これらのバックスラッシュは出力から取り除かれます。
+20 EN As a GNU extension, this command accepts two addresses.
+JA GNU拡張として、このコマンドにはアドレスを二つ指定できます。
+21 EN Escape sequences in text are processed, so you should use \\ in text to print a single backslash.
+JA text内のエスケープシーケンスは処理されるので、バックスラッシュを一つ表示するには、text内に\\を使ってください。
+22 EN The commands resume after the last line without a backslash (\) - ‘world’ in the following example:
+JA バックスラッシュ（\）のない最後の行の後から、コマンドの処理を再開します。次の例では「world」がその行です。
+23 pre EN=JA LITERAL $ seq 3 | sed '2a\
+hello\
+world
+3s/./X/'
+-|1
+-|2
+-|hello
+-|world
+-|X
+24 EN As a GNU extension, the a command and text can be separated into two -e parameters, enabling easier scripting:
+JA GNU拡張として、aコマンドとtextを二つの-e引数に分けて指定でき、スクリプトを書きやすくなります。
+25 pre EN=JA LITERAL $ seq 3 | sed -e '2a\' -e hello
+1
+2
+hello
+3
+
+$ sed -e '2a\' -e "$VAR"
+26 dt EN=JA LITERAL i text
+27 EN insert text before a line. This is a GNU extension to the standard i command - see below for details.
+JA 行の前にtextを挿入します。これは標準のiコマンドへのGNU拡張です。詳細は以下を参照してください。
+28 EN Example: Insert ‘hello’ before the second line:
+JA 例：2行目の前に「hello」を挿入します。
+29 pre EN=JA LITERAL $ seq 3 | sed '2i hello'
+1
+hello
+2
+3
+30 EN Leading whitespace after the i command is ignored. The text to add is read until the end of the line.
+JA iコマンドの直後の空白は無視されます。追加するテキストは行末まで読み込まれます。
+31 dt EN=JA LITERAL i\
+32 dt EN=JA LITERAL text
+33 EN Immediately output the lines of text which follow this command.
+JA このコマンドの後に続くテキストの各行を、直ちに出力します。
+34 EN Example: Insert ‘hello’ before the second line (-| indicates printed output lines):
+JA 例：2行目の前に「hello」を挿入します（-|は表示される出力行を示します）。
+35 pre EN=JA LITERAL $ seq 3 | sed '2i\
+hello'
+-|1
+-|hello
+-|2
+-|3
+36 EN As a GNU extension, this command accepts two addresses.
+JA GNU拡張として、このコマンドにはアドレスを二つ指定できます。
+37 EN Escape sequences in text are processed, so you should use \\ in text to print a single backslash.
+JA text内のエスケープシーケンスは処理されるので、バックスラッシュを一つ表示するには、text内に\\を使ってください。
+38 EN The commands resume after the last line without a backslash (\) - ‘world’ in the following example:
+JA バックスラッシュ（\）のない最後の行の後から、コマンドの処理を再開します。次の例では「world」がその行です。
+39 pre EN=JA LITERAL $ seq 3 | sed '2i\
+hello\
+world
+s/./X/'
+-|X
+-|hello
+-|world
+-|X
+-|X
+40 EN As a GNU extension, the i command and text can be separated into two -e parameters, enabling easier scripting:
+JA GNU拡張として、iコマンドとtextを二つの-e引数に分けて指定でき、スクリプトを書きやすくなります。
+41 pre EN=JA LITERAL $ seq 3 | sed -e '2i\' -e hello
+1
+hello
+2
+3
+
+$ sed -e '2i\' -e "$VAR"
+42 dt EN=JA LITERAL c text
+43 EN Replaces the line(s) with text. This is a GNU extension to the standard c command - see below for details.
+JA 行をtextに置き換えます。これは標準のcコマンドへのGNU拡張です。詳細は以下を参照してください。
+44 EN Example: Replace the 2nd to 9th lines with the word ‘hello’:
+JA 例：2〜9行目を単語「hello」に置き換えます。
+45 pre EN=JA LITERAL $ seq 10 | sed '2,9c hello'
+1
+hello
+10
+46 EN Leading whitespace after the c command is ignored. The text to add is read until the end of the line.
+JA cコマンドの直後の空白は無視されます。追加するテキストは行末まで読み込まれます。
+47 dt EN=JA LITERAL c\
+48 dt EN=JA LITERAL text
+49 EN Delete the lines matching the address or address-range, and output the lines of text which follow this command.
+JA アドレスまたはアドレス範囲に一致する行を削除し、このコマンドの後に続くテキストの各行を出力します。
+50 EN Example: Replace 2nd to 4th lines with the words ‘hello’ and ‘world’ (-| indicates printed output lines):
+JA 例：2〜4行目を単語「hello」と「world」に置き換えます（-|は表示される出力行を示します）。
+51 pre EN=JA LITERAL $ seq 5 | sed '2,4c\
+hello\
+world'
+-|1
+-|hello
+-|world
+-|5
+52 EN If no addresses are given, each line is replaced.
+JA アドレスを指定しなければ、各行を置き換えます。
+53 EN A new cycle is started after this command is done, since the pattern space will have been deleted. In the following example, the c starts a new cycle and the substitution command is not performed on the replaced text:
+JA このコマンドの処理後は、パターンスペースが削除されているため、新しいサイクルを開始します。次の例では、cが新しいサイクルを開始し、置き換えたテキストに置換コマンドは適用されません。
+54 pre EN=JA LITERAL $ seq 3 | sed '2c\
+hello
+s/./X/'
+-|X
+-|hello
+-|X
+55 EN As a GNU extension, the c command and text can be separated into two -e parameters, enabling easier scripting:
+JA GNU拡張として、cコマンドとtextを二つの-e引数に分けて指定でき、スクリプトを書きやすくなります。
+56 pre EN=JA LITERAL $ seq 3 | sed -e '2c\' -e hello
+1
+hello
+3
+
+$ sed -e '2c\' -e "$VAR"
+57 dt EN=JA LITERAL =
+58 EN Print out the current input line number (with a trailing newline).
+JA 現在の入力行番号を、末尾の改行とともに表示します。
+59 pre EN=JA LITERAL $ printf '%s\n' aaa bbb ccc | sed =
+1
+aaa
+2
+bbb
+3
+ccc
+60 EN As a GNU extension, this command accepts two addresses.
+JA GNU拡張として、このコマンドにはアドレスを二つ指定できます。
+61 dt EN=JA LITERAL l n
+62 EN Print the pattern space in an unambiguous form: non-printable characters (and the \ character) are printed in C-style escaped form; long lines are split, with a trailing \ character to indicate the split; the end of each line is marked with a $.
+JA パターンスペースを曖昧さのない形式で表示します。表示不能文字と\文字はC形式のエスケープ表記で表示し、長い行は分割して、その末尾の\文字で分割を示します。各行の末尾は$で示します。
+63 EN n specifies the desired line-wrap length; a length of 0 (zero) means to never wrap long lines. If omitted, the default as specified on the command line is used. The n parameter is a GNU sed extension.
+JA nは折り返し幅を指定します。0（ゼロ）は長い行を折り返さないことを意味します。省略すると、コマンドラインで指定した既定値を使います。引数nはGNU sed拡張です。
+64 dt EN=JA LITERAL r filename
+65 EN Reads file filename. Example:
+JA ファイルfilenameを読み込みます。例：
+66 pre EN=JA LITERAL $ seq 3 | sed '2r/etc/hostname'
+1
+2
+fencepost.gnu.org
+3
+67 EN Queue the contents of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. Note that if filename cannot be read, it is treated as if it were an empty file, without any error indication.
+JA filenameの内容を読み込み待ちのキューに入れ、現在のサイクルの最後、または次の入力行を読み込むときに、出力ストリームへ挿入します。filenameを読めなければ、エラーを通知せず、空のファイルであるかのように扱います。
+68 EN As a GNU sed extension, the special value /dev/stdin is supported for the file name, which reads the contents of the standard input.
+JA GNU sed拡張として、ファイル名には特殊な値/dev/stdinを指定でき、標準入力の内容を読み込みます。
+69 EN As a GNU extension, this command accepts two addresses. The file will then be reread and inserted on each of the addressed lines.
+JA GNU拡張として、このコマンドにはアドレスを二つ指定できます。その場合、アドレスで選ばれた各行で、ファイルを再度読み込んで挿入します。
+70 EN As a GNU sed extension, the r command accepts a zero address, inserting a file before the first line of the input see Adding a header to multiple files.
+JA GNU sed拡張として、rコマンドにはアドレス0を指定でき、入力の最初の行の前にファイルを挿入します。複数ファイルへのヘッダー追加を参照してください。
+71 dt EN=JA LITERAL w filename
+72 EN Write the pattern space to filename. As a GNU sed extension, two special values of filename are supported: /dev/stderr, which writes the result to the standard error, and /dev/stdout, which writes to the standard output.4
+JA パターンスペースをfilenameへ書き込みます。GNU sed拡張として、filenameには二つの特殊な値を指定できます。/dev/stderrは結果を標準エラー出力へ、/dev/stdoutは標準出力へ書き込みます4。
+73 EN The file will be created (or truncated) before the first input line is read; all w commands (including instances of the w flag on successful s commands) which refer to the same filename are output without closing and reopening the file.
+JA 最初の入力行を読み込む前に、ファイルを作成するか、既存ファイルを切り詰めます。同じfilenameを参照するすべてのwコマンド（置換が成功したsコマンドのwフラグも含みます）は、ファイルを閉じて開き直すことなく出力します。
+74 dt EN=JA LITERAL D
+75 EN If pattern space contains no newline, start a normal new cycle as if the d command was issued. Otherwise, delete text in the pattern space up to the first newline, and restart cycle with the resultant pattern space, without reading a new line of input.
+JA パターンスペースに改行がなければ、dコマンドを実行した場合と同じように、通常の新しいサイクルを開始します。それ以外の場合は、最初の改行までのテキストを削除し、残ったパターンスペースを使ってサイクルを再開します。新しい入力行は読み込みません。
+76 dt EN=JA LITERAL N
+77 EN Add a newline to the pattern space, then append the next line of input to the pattern space. If there is no more input then sed exits without processing any more commands.
+JA パターンスペースに改行を追加し、その後に次の入力行を追加します。入力がもうなければ、sedは残りのコマンドを処理せず終了します。
+78 EN When -z is used, a zero byte (the ascii ‘NUL’ character) is added between the lines (instead of a new line).
+JA -zを使う場合は、改行の代わりにゼロバイト（ASCIIの「NUL」文字）を行の間に追加します。
+79 EN By default sed does not terminate if there is no ’next’ input line. This is a GNU extension which can be disabled with --posix. See N command on the last line.
+JA 既定では、sedは「次の」入力行がなくても終了しません。これはGNU拡張で、--posixで無効にできます。最終行でのNコマンドを参照してください。
+80 dt EN=JA LITERAL P
+81 EN Print out the portion of the pattern space up to the first newline.
+JA パターンスペースの最初の改行までの部分を表示します。
+82 dt EN=JA LITERAL h
+83 EN Replace the contents of the hold space with the contents of the pattern space.
+JA ホールドスペースの内容をパターンスペースの内容で置き換えます。
+84 dt EN=JA LITERAL H
+85 EN Append a newline to the contents of the hold space, and then append the contents of the pattern space to that of the hold space.
+JA ホールドスペースの内容に改行を追加し、その後にパターンスペースの内容を追加します。
+86 dt EN=JA LITERAL g
+87 EN Replace the contents of the pattern space with the contents of the hold space.
+JA パターンスペースの内容をホールドスペースの内容で置き換えます。
+88 dt EN=JA LITERAL G
+89 EN Append a newline to the contents of the pattern space, and then append the contents of the hold space to that of the pattern space.
+JA パターンスペースの内容に改行を追加し、その後にホールドスペースの内容を追加します。
+90 dt EN=JA LITERAL x
+91 EN Exchange the contents of the hold and pattern spaces.
+JA ホールドスペースとパターンスペースの内容を交換します。
+92 EN (4)
+JA (4)
+93 EN This is equivalent to p unless the -i option is being used.
+JA -iオプションを使っている場合を除き、pと同じです。
