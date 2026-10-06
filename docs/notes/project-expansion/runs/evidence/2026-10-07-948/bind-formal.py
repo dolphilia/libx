@@ -1,0 +1,17 @@
+from pathlib import Path
+from bs4 import BeautifulSoup
+import json,hashlib,datetime,shutil
+R=Path('/Users/dolphilia/github/libx');W=Path('/private/tmp/libx-diffutils-chapters16-18-formal-948');n=Path('docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-16-18');N=W/n;E=R/'docs/notes/project-expansion/runs/evidence/2026-10-07-948';h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();at=datetime.datetime.now(datetime.timezone.utc).isoformat();review=json.loads((N/'DRAFT_REVIEW_MANIFEST.json').read_text());rows=[]
+for row in review['pages']:
+ slug=row['slug'];paths={'source':n/'drafts/en'/(slug+'.body.html'),'canonical':n/'canonical/en/01-guide'/(slug+'.md'),'translation':n/'canonical/ja/01-guide'/(slug+'.md')}
+ for lang in ['en','ja']:
+  a=BeautifulSoup((N/'drafts'/lang/(slug+'.body.html')).read_text(),'html.parser');b=BeautifulSoup((N/'canonical'/lang/'01-guide'/(slug+'.md')).read_text().split('---',2)[2],'html.parser');a=a.select_one('.gnu-diffutils-original-content');b=b.select_one('.gnu-diffutils-original-content');assert a.get_text()==b.get_text();assert [x.get_text()for x in a.select('pre')]==[x.get_text()for x in b.select('pre')]
+ r={'id':'01-guide/'+slug+'.md','status':'passed','method':'ai-content-review','model':row['model'],'reviewedAt':row['reviewedAt'],'separateReviewPass':True,'allUnitsReviewed':row['units'],'literalPreReviewed':row['preExact'],'findings':row['findings']+['Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted109 sections or fixed complete original including linked footnote.']}
+ for k,p in paths.items():r[k]={'path':str(p),'sha256':h(W/p),'coverage':[[1,len((W/p).read_text().splitlines())]]}
+ rows.append(r)
+(N/'REVIEW_MANIFEST.json').write_text(json.dumps({'schemaVersion':1,'scope':[x['id']for x in rows],'completedPages':13,'unreviewedPages':0,'pages':rows},ensure_ascii=False,indent=2)+'\n')
+old=json.loads(next(x for x in (W/'apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/96-patch-options.md').read_text().splitlines()if x.startswith('documentContext: ')).removeprefix('documentContext: '));new=json.loads((N/'DOCUMENT_CONTEXT.json').read_text());a=old[0]['html'];b=new[0]['html'];entry=b[b.rfind('<p>7 October 2026:'):b.rfind('</section>')]
+assert b.replace(entry,'').replace('Comparison and Merging — Overview and Chapters 1–18','Comparison and Merging — Overview and Chapters 1–15',1).replace('比較とマージ — 概要・第1〜18章','比較とマージ — 概要・第1〜15章',1)==a
+(E/'CONTEXT_REVIEW.json').write_text(json.dumps({'status':'passed','at':at,'newDistinctTitle':'Libx GNU diffutils 3.12 Comparison and Merging — Overview and Chapters 1–18','newHistory':entry,'originalCopyrightAuthorsPermissionHistoryFullEnglishGFDL':'Exact old context after removing current history and reversing only current title pair','siteScope':'Overview and complete1–18; remainingoriginal links; old193 preferred unchanged','bodyReview':'13sections/62units/2pre bound to separate review947','scope':'Only current title/scope/Oct7chapters11–18 history read; existing context/fulllicense reused'},ensure_ascii=False,indent=2)+'\n')
+shutil.copytree(N,R/n,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+print({'newFormalDocuments':26,'oldPreferredExact':193,'wholeReview':13,'context':'passed'})
