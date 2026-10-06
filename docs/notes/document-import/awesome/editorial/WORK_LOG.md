@@ -6263,3 +6263,35 @@
 - 全1037組2074文書2passesを2回再生成、通常8gate・全2074hash/全fragment incoming0、対象systems fresh統合buildと全7開始現在manifest hash一致、正規HTMLgate、英日13head/46list/24TOC/JA16alias/全旧有用ID/画像表0/固定README・CC0・作者3URL/完全権利放棄通知/統合HTML一致、英日PCmobile実UIで導入・空分類・学術研究・目次・出典/言語/版/隣接切替を確認。global 4ec5af actual exit0/diff合格、verified229/残808/保留4。状態変更後の全本文/overlay/review/経路/検査実装/出典data/config同一証拠でglobal再利用。
 - EXCLUSIONSは全判断を再帰比較してtimestampsのみHEADへ復元。外部リンク報告はLicenseの本文リンク/バッジを出典へ集約した実差分のみ保持。元main他作業差分保全。実モデルは現Codex/API識別子取得不能、委任・ローカルLLMなし。所有UI/preview終了・viewport復元。
 - 本バッチの検証済み本文/overlay/判断・レビュー・事前出典証拠/出典data-config/生成物/台帳のみを、配信workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合。まだ保存準備、外部公開/PR/dispatch/定期設定なし。次172 github-substrate-developer-hub-awesome-substrate-readme-mdの固定raw/旧英日全文から継続。
+
+### バッチ171送信確認・172全文読了 (2026-10-06T22:37:35.465Z)
+
+- 171 Blockchain AI commit 546ea7542959577910490c20c278974d03186df4、origin/codex/awesome-editorial-isolated-20261007 push ee31e9 exit0、remote HEAD一致4d9ead/clean。ステージ61対象のみと本文-reviewハッシュ一致6b0e96、workflow全文0f2d84の配信対象外。外部公開なし。
+- 172 fixedraw245行/旧EN242行/旧JA255行を2ca1f7+d8bd55/858a7e+5780cb/c85aa9+b23f1fで省略なし全文読了。原文導入とawesome-dotリンク欠落、white-glove/Frontier/nominated proof-of-stake/air-gapped/codec/faucet/vested tokens等誤訳を確認。本文未変更。次 Substrate導入/awesome-dotリンク/コミュニティ編集を復元。全166非TOCリストと補助URL/15分類/inline code保持、15手動TOC整理、白いグローブ/Frontier/Proof-of-Stake/エアギャップ/codec/faucet/vested tokens等の誤訳を修正→3全文別pass→再生成/8gate/全保全/参照/build/HTML/4UI/global→verified230→commit/push。
+
+- 2026-10-06T22:41:49.657Z batch172全文編集・3別パス全文レビュー完了（raw202/旧EN199/旧JA244→EN184/JA214単位、166list/16heading/15alias）。overlayと実英日本文を反映。proof 676fd2d6d5949db2c48068b6393b0081ac3a46d3e2a85e19ac2d2398af9599f6。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified230→commit/push。
+
+- 2026-10-06T22:44:52.194Z batch172-list-wrap-corrected-gates-rerun。229完了808残保留4。進捗729475ba3eb141ee94cff730cbd4efe05c7ee84fa0eefd4f318c58c3205307a7。次2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified230→commit/push。
+
+- 2026-10-06T22:48:19.263Z batch172-generation-gates-passed-build-pending。229完了808残保留4。進捗bfd3aa841ce7768766542424e208409618fe22ba1c6a0e93722839c460d7ba83。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML16見出し166list/15alias/英日PCmobile実UI→global→verified230/commit/push。
+
+- 2026-10-06T22:53:05.093Z batch172-duplicate-alias-corrected-gates-rerun。229完了808残保留4。進捗3081a59b523222c27fc052852b03ff71b0f61a7a7672991b82a5a89cd8c7d64c。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML16見出し166list/15alias/英日PCmobile実UI→global→verified230/commit/push。
+
+- 2026-10-06T22:53:22.001Z batch172-duplicate-alias-corrected-gates-rerun。229完了808残保留4。進捗a8e569b208b8dcbf9cd50cfe95e0a509884e46712c462a11e00812fddfedb507。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML16見出し166list/15alias/英日PCmobile実UI→global→verified230/commit/push。
+
+- 2026-10-06T22:56:27.853Z batch172-generation-gates-passed-build-pending。229完了808残保留4。進捗4e566eb4dd5757ee8fadf3050f1b2a8838f5966692f68cd8402184c8df759efe。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML16見出し166list/14alias/英日PCmobile実UI→global→verified230/commit/push。
+
+- 2026-10-06T22:58:02.539Z batch172-build-html-complete-four-ui-pending。229完了808残保留4。進捗1bd85e5c85f40d30fde13c49b08b65806a57aca100b4e28a4cb86ff5038b7e0c。次英日PC1440/mobile390の導入/長い資料/目次到達/出典/言語/版/隣接操作を実表示→global→verified230→commit/push/hash照合→173 Ethereum全文。
+
+- 2026-10-06T23:01:38.461Z batch172-four-ui-content-reviewed-global-pending。229完了808残保留4。進捗756f1fc1921fb4bee6a483bd883c4c2e6abe02c23176d272efbc2e8462314ac5。次全1037台帳global/全2074hash/diff→verified230→commit/push/hash照合→173 Ethereum fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T23:02:48.969Z batch172-verified230-save-push-pending。230完了807残保留4。進捗0cef0964617ce5bc4b03b422f8df669fac2f3e2d9ed2afa55b2a495ae4c09dab。次230完了807残保留4。Substrate全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次173 github-ttumiel-Awesome-Ethereum-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ172 Substrate検証完了・保存準備 (2026-10-06T23:02:54.040Z)
+
+- 固定raw245行202単位、旧EN242行199単位、旧JA255行244単位を2ca1f7+d8bd55/858a7e+5780cb/c85aa9+b23f1fで全文読了。raw→EN別パスe7653f+dcc4ee、ENJA全184主要単位b708df/fd5ba2/0878e4と導入/scale-value変更単位8f4ea9、JA単独全223行8f4ea9+6d5960。後続のSCALE Codec空別名削除は5bee48で変更見出しraw/EN/JA再読、7f928bの全文同一証拠で他本文レビューを再利用。EN全文diff57b49a、JA433行diff aa1872+6033eb（3e9925省略出力は不採用）。最終EN f9d4f6976d17ad2f39f9860b699649ffbceb7e71762fb88e31db8c64b0bc7ee8/JA 0c66bd1c95ea4877cbc75df8f5232af13266e94ca44a46eb96b801e4a38f1544。
+- 原文のコミュニティ編集/Substrate定義（アップグレード可能・モジュール式・効率的・Rust/Parity/ソース）とawesome-dot案内を復元。15分類/166非TOC資料/補助URL/入れ子/正式名/年/頻度/無料有料/C++17/40超/100%/no-std wasmを保持。white-glove/Frontier/NPoS/air-gap/codec/faucet/vested tokens/poCの誤訳、Polkadot誤字を補正。評価/保証・安全性は固定原文へ帰属。正式論文動画原題は同定用に維持。16見出し/14JA旧英語別名を保持、手動15TOCと装飾を自動目次へ。Unlicense/作者/固定版READMEとライセンスURLは既存出典設定を維持。
+- 一時案の入れ子Docs/Crowdcastリンク抽出欠落と補助表示のfrontmatter offsetは本文反映前に修正し全体再読。通常翻訳検査の実失敗 b507c3 exit1はBase英語の行折返しだけが原因。同じ項目を1行へ統合、d1a2f8で固定raw/変更EN/対応JA全文再読。リンク/code/意味を維持し検査実装不変更。HTML検査は5c0d4d exit1で重複scale-codecを検出、自然見出しがIDを保持するため空aliasだけ削除、59b8f7でレビュー/overlay/台帳対応後全再生成/build再検査。3efd76でレビュー/overlay/台帳を対応後に全生成gateを再実施。
+- 2回replay各1037組2074文書2passes/通常8gate/全2074hash/全fragment監査、対象systems fresh統合buildと全7開始現在manifest hash、正規HTMLgate、英日16head/166list/30TOC/JA14alias/旧有用ID/画像表0/固定README・Unlicense2URL/統合HTML一致、英日PCmobile実UIと目次/出典/言語/版/隣接操作を確認。global 52b24e actual exit0/diff合格、230完了807残保留4。状態変更後の同一入力証拠でglobal再利用。
+- EXCLUSIONS判断同一を再帰比較しtimestampsのみHEADへ復元。外部リンク報告はawesome-dotと原文序文URL復元の実差分を保持。元main他作業差分保全。実モデルCodex current session/API識別子取得不能。所有UI/preview終了・viewport復元。
+- 保存対象は本バッチの検証済み本文/overlay/判断・レビュー/生成物/台帳/証拠のみ。origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合を行う。外部公開/PR/dispatch/定期設定なし。次173 github-ttumiel-Awesome-Ethereum-readme-mdの固定raw/旧英日全文から継続。
