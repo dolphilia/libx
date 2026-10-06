@@ -1,11 +1,11 @@
 ---
 title: "Awesome CakePHP"
-description: "An index entry for the Awesome CakePHP list. The upstream content is not reproduced in this snapshot."
+description: "A reference to resources for the CakePHP framework. The original list’s body is not reproduced here."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome CakePHP
 
-An index entry for the Awesome CakePHP list. The upstream content is not reproduced in this snapshot.
+Find resources for CakePHP, a PHP framework, through the original Awesome CakePHP list. Its body is not reproduced in this snapshot.
 
-- [Open the original repository](https://github.com/friendsofcake/awesome-cakephp/blob/b35566a0db5f0b6168989a914f692bafa5dad390/README.md)
+- [Read the original list](https://github.com/friendsofcake/awesome-cakephp/blob/b35566a0db5f0b6168989a914f692bafa5dad390/README.md)

@@ -1,35 +1,16 @@
 ---
 title: "Awesome OpenTofu"
-description: "A curated collection of resources and projects focused on OpenTofu."
+description: "OpenTofu resources covering official documentation, version-specific features, infrastructure tools, community channels, and learning materials."
 licenseSource: "github-virtualroot-awesome-opentofu-readme-md"
 ---
 
 # Awesome OpenTofu
 
-A curated collection of resources and projects focused on OpenTofu.
-
-## Contents 
-
-- [Official](#official)
-- [Community](#community)
-- [Features](#features)
-- [Tools](#tools)
-  - [Environment managers](#environment-managers)
-  - [Wrappers](#wrappers)
-  - [CI](#ci)
-  - [Tests](#tests)
-  - [State](#state)
-  - [Providers](#providers)
-  - [Platforms](#platforms)
-  - [Registry](#registry)
-  - [Helpers](#helpers)
-- [Learning](#learning)
-- [Media](#media)
-- [Podcasts](#podcasts)
+This list brings together official resources, version-specific features, and tools for OpenTofu: version managers, wrappers, CI workflows, testing, state management, providers, registries, and editor support. It also includes community channels, courses, books, videos, and podcasts. [OpenTofu](https://opentofu.org/) is an open-source, community-driven alternative to Terraform for declarative infrastructure management.
 
 ## Official
 
-- [OpenTofu repository](https://github.com/opentofu/opentofu) 🎉
+- [OpenTofu repository](https://github.com/opentofu/opentofu)
 - [Fork announcement](https://opentofu.org/announcement)
 - [Registry](https://github.com/opentofu/registry)
 - [Registry MCP Server](https://github.com/opentofu/opentofu-mcp-server#opentofu-mcp-server)
@@ -39,7 +20,7 @@ A curated collection of resources and projects focused on OpenTofu.
 
 ## Community
 
-*Communication channels, meetups, newsletters, and forums.*
+*Official channels for community discussions and project updates.*
 
 - [OpenTofu GitHub Discussion](https://github.com/orgs/opentofu/discussions)
 - [OpenTofu LinkedIn](https://www.linkedin.com/company/opentofuorg/)
@@ -47,8 +28,6 @@ A curated collection of resources and projects focused on OpenTofu.
 - [OpenTofu Twitter](https://twitter.com/opentofuorg)
 
 ## Features
-
-
 
 - [1.10 - Enhanced moved and removed blocks](https://opentofu.org/docs/v1.10/intro/whats-new/#enhanced-moved-and-removed-blocks)
 - [1.10 - External key providers](https://opentofu.org/docs/v1.10/intro/whats-new/#external-key-providers)
@@ -64,8 +43,6 @@ A curated collection of resources and projects focused on OpenTofu.
 - [1.7 - Provider-defined functions](https://opentofu.org/docs/v1.7/intro/whats-new/#provider-defined-functions)
 - [1.7 - Removed block](https://opentofu.org/docs/v1.7/intro/whats-new/#removed-block)
 - [CanI.TF - Feature parity between Terraform and OpenTofu](https://cani.tf/)
-
-
 
 ## Tools
 
@@ -149,9 +126,9 @@ A curated collection of resources and projects focused on OpenTofu.
 
 ### Helpers
 
-- [OpenTofu Language Server](https://github.com/opentofu/tofu-ls) - The OpenTofu Language Server.
-- [VS Code Extension](https://open-vsx.org/extension/OpenTofu/vscode-opentofu) - Extension for Visual Studio Code with the OpenTofu Language Server adds editing features for OpenTofu files such as syntax highlighting, IntelliSense, code navigation, code formatting, module explorer.
-- [zed Extension](https://github.com/ashpool37/zed-extension-opentofu) - Extension for the Zed Editor.
+- [OpenTofu Language Server](https://github.com/opentofu/tofu-ls) - Language server for OpenTofu.
+- [VS Code Extension](https://open-vsx.org/extension/OpenTofu/vscode-opentofu) - Visual Studio Code extension using the OpenTofu Language Server. Adds syntax highlighting, IntelliSense, code navigation, formatting, and a module explorer for OpenTofu files.
+- [Zed Extension](https://github.com/ashpool37/zed-extension-opentofu) - Extension for the Zed Editor.
 - [terratag](https://github.com/env0/terratag) - CLI tool allowing for tags or labels to be applied across an entire set of OpenTofu/Terraform files.
 - [tfupdate](https://github.com/minamijoyo/tfupdate) - Update version constraints in your Terraform / OpenTofu configurations.
 
@@ -175,7 +152,6 @@ A curated collection of resources and projects focused on OpenTofu.
 
 ## Podcasts
 
-
 - [SE Radio: Christian Mesh on OpenTofu](https://se-radio.net/2025/01/se-radio-652-christian-mesh-on-opentofu/)
 - [Kubernetes Podcast - OpenTofu, with Ohad Maislish](https://kubernetespodcast.com/episode/232-opentofu/)
 - [TheIaCPodcast - Expert Panel on OpenTofu GA Release, Licensing, and OSS Future](https://www.theiacpodcast.com/episode/expert-panel-on-opentofu-ga-release-licensing-and-oss-future)
@@ -185,4 +161,4 @@ A curated collection of resources and projects focused on OpenTofu.
 - [OpenObservability - Terraform is no longer open source. Is OpenTF the successor?](https://www.youtube.com/watch?v=5QdUs9VKq5g)
 - [TheCloudGambit - The Future of OpenTF](https://www.thecloudgambit.com/2236725/13576531-the-future-of-opentf-with-ohad-maislish)
 - [Oxide and Friends - Fork in the road for Terraform?](https://www.youtube.com/watch?v=QaU94LY891M)
-- [Changelog -  OpenTF for an open Terraform](https://changelog.com/podcast/556)
+- [Changelog - OpenTF for an open Terraform](https://changelog.com/podcast/556)

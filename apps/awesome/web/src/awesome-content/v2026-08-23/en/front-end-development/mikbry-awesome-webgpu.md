@@ -1,28 +1,12 @@
 ---
 title: "Awesome WebGPU"
-description: "A curated collection of resources and projects focused on WebGPU."
+description: "WebGPU specifications, browser support notes, tutorials, libraries, debugging tools, demos, and community resources."
 licenseSource: "github-mikbry-awesome-webgpu-readme-md"
 ---
 
 # Awesome WebGPU
 
-A curated collection of resources and projects focused on WebGPU.
-
-## Contents
-
-- [Websites](#websites)
-- [Browser support](#browser-support)
-- [Articles](#articles)
-- [Tutorials](#tutorials)
-- [Books](#books)
-- [Libraries](#libraries)
-- [Debuggers and Profilers](#debuggers-and-profilers)
-- [Gists](#gists)
-- [Demos](#demos)
-- [Videos](#videos)
-- [Presentations](#presentations)
-- [Community](#community)
-- [Bug reporting](#bug-reporting)
+[WebGPU](https://www.w3.org/TR/webgpu/) is a [W3C](https://www.w3.org/) web standard for modern 3D graphics and GPU computing across desktop and mobile. Unlike WebGL, it is not a port of an existing native API; it borrows concepts from Metal, Vulkan, and Direct3D12. The fixed source describes it as a work in progress aimed at performance on recent GPUs; the resources below cover specifications, browser support, learning, libraries, debugging, demos, and community discussions.
 
 ## Websites
 
@@ -36,7 +20,6 @@ A curated collection of resources and projects focused on WebGPU.
 ### WGSL (WebGPU Shading Language) Specifications
 - [Working Draft](https://www.w3.org/TR/WGSL/)
 - [Editor's Draft](https://gpuweb.github.io/gpuweb/wgsl/)
-
 
 ### API documentations
 - [API quick reference and documentation](https://webgpu.rocks/) - WebGPU.rocks.
@@ -52,22 +35,22 @@ A curated collection of resources and projects focused on WebGPU.
 - [WebGPU Experts Blog](https://www.webgpuexperts.com/blog) - Monthly news about WebGPU.
 
 ## Browser support
-> This is an experimental technology
+The fixed source describes WebGPU as experimental; the support and configuration notes below reflect that source.
 - [Implementation status](https://github.com/gpuweb/gpuweb/wiki/Implementation-Status) - Official W3C Group.
 - [WebGPU browser support overview](https://caniuse.com/webgpu) - CanIUse.com WebGPU.
 
 ### Chrome
-> Chrome and Blink/Chromium based browsers support WebGPU
+The source reports support in Chrome and Blink/Chromium-based browsers.
 - [Desktop](https://www.google.com/chrome/) - WebGPU supported by default on Windows and macOS.
 - [Android](https://developer.chrome.com/blog/new-in-webgpu-121) - WebGPU is supported by default.
 - [Edge](https://www.microsoft.com/edge/) - WebGPU is supported by default.
 
 ### Firefox
-> WebGPU support is still experimental
+The source describes WebGPU support as still experimental.
 - [Firefox Nightly](https://nightly.mozilla.org/) - Go to `about:config` and set `dom.webgpu.enabled` to true.
 
 ### Safari
-> WebGPU support is still experimental
+The source describes WebGPU support as still experimental.
 - [macOS Safari TP](https://developer.apple.com/safari/resources/) - WebGPU is enabled by default since 190.
 - [macOS Safari](https://www.apple.com/safari/) - WebGPU enabled by default on macOS 26 Tahoe or later; earlier versions require the `WebGPU` feature flag.
 - [iOS/iPadOS Safari](https://mil-tokyo.github.io/webdnn/docs/tips/enable_webgpu_ios.html) - WebGPU supported by default on iOS/iPadOS 26 or later; earlier versions require `Settings` &rightarrow; `Safari` &rightarrow; `Advanced` &rightarrow; `Feature Flags` &rightarrow; `WebGPU`.
@@ -125,7 +108,7 @@ A curated collection of resources and projects focused on WebGPU.
 - [wgpu](https://github.com/gfx-rs/wgpu) - Mozilla implementation used in Firefox. Like Dawn, can be used as a standalone package.
 - [webgpu-headers](https://github.com/webgpu-native/webgpu-headers) - C/C++ headers.
 - [sokol](https://github.com/floooh/sokol/) - Simple STB-style cross-platform libraries for C and C++.
-- [RedGPU](https://github.com/redcamel/RedGPU) - JavaScript WbeGPU library, by [@redcamel](https://github.com/redcamel).
+- [RedGPU](https://github.com/redcamel/RedGPU) - JavaScript WebGPU library, by [@redcamel](https://github.com/redcamel).
 - [WebGPU .NET](https://github.com/WaveEngine/WebGPU.NET) - .NET bindings, built on top of wgpu.
 - [Deno](https://deno.com/) - Runtime for JavaScript, TypeScript, and WebAssembly based on the V8 engine.
 - [RedCube](https://github.com/Reon90/redcube) - glTF viewer based on a WebGPU backend.
@@ -135,23 +118,23 @@ A curated collection of resources and projects focused on WebGPU.
 - [WebGPU-C++](https://github.com/eliemichel/WebGPU-Cpp) - A single-file zero-overhead C++ idiomatic wrapper, by @eliemichel.
 - [Use.GPU](https://usegpu.live) - Reactive/declarative WebGPU runtime.
 - [GEngine](https://github.com/hpugis/GEngine) - A basic rendering engine based on WebGPU, by junwei.gu.
-- [Thimbleberry](https://github.com/mighdoll/thimbleberry) - Reusuable WebGPU shaders and support functions.
+- [Thimbleberry](https://github.com/mighdoll/thimbleberry) - Reusable WebGPU shaders and support functions.
 - [WebRTX](https://github.com/codedhead/webrtx) - WebGPU Ray Tracing Extension.
 - [SWGPU](https://github.com/jay19240/SWGPU) - A Simple WebGPU Game Engine.
 - [React Native WebGPU](https://github.com/wcandillon/react-native-webgpu) - React Native implementation of WebGPU using Dawn.
 - [TypeGPU](https://typegpu.com/) - TypeScript API for constructing, writing to and reading from GPU buffers with inferred type-safety.
-- [WESL](https://github.com/wgsl-tooling-wg/wesl-spec/blob/main/README.md) - WGSL extensions for `import`, `@if`, and more. 
+- [WESL](https://github.com/wgsl-tooling-wg/wesl-spec/blob/main/README.md) - WGSL extensions for `import`, `@if`, and more.
 - [WebGpGpu.ts](https://github.com/eddow/webgpgpu) - A WebGPU framework to access compute shaders, browser or server-side, without the steep learning curve.
 - [spark.js](https://ludicon.com/sparkjs/) - A real-time GPU texture compression library for WebGPU.
 - [zephyr3d](https://zephyr3d.org/) - A TypeScript-based 3D rendering engine with WebGPU/WebGL support.
-- [ChartGPU](https://github.com/chartgpu/chartgpu) - High-performance charting library built on WebGPU, handles 1M+ data points at 60fps.
+- [ChartGPU](https://github.com/chartgpu/chartgpu) - High-performance charting library built on WebGPU; the source reports handling 1M+ data points at 60fps.
 
 ## Debuggers and Profilers
-- [webgpu-inspector](https://github.com/brendan-duncan/webgpu_inspector) - Inspection debugger for WebGpu.
+- [webgpu-inspector](https://github.com/brendan-duncan/webgpu_inspector) - Inspection debugger for WebGPU.
 - [webgpu-profiler](https://crates.io/crates/wgpu-profiler) - A profiler for Rust + WebGPU.
 
-These have not been updated for a while:
-- [webgpu-devtools](https://github.com/takahirox/webgpu-devtools) - Web browser extention.
+The source notes that the following have not been updated for a while:
+- [webgpu-devtools](https://github.com/takahirox/webgpu-devtools) - Web browser extension.
 - [webgpu-debugger](https://github.com/webgpu/webgpu-debugger) - Early stage debugger.
 
 ## Gists
@@ -160,7 +143,7 @@ These have not been updated for a while:
 
 ## Demos
 
-Right now, demos work best on Chrome/Edge.
+The source reports that demos work best on Chrome/Edge.
 
 - [WebGPU Samples](https://webgpu.github.io/webgpu-samples/) - A set of samples and demos demonstrating the use of the WebGPU API - [Repository](https://github.com/webgpu/webgpu-samples)
 - [WebGPU first-person exploration of the Sponza Palace](https://toji.github.io/webgpu-test/) - Scene render comparison between WebGL, WebGL 2.0 and WebGPU, by Brandon Jones - [Repository](https://github.com/toji/webgpu-test)
@@ -222,9 +205,3 @@ Right now, demos work best on Chrome/Edge.
 - [Webkit](https://bugs.webkit.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=WebGPU)
 - [Firefox](https://bugzilla.mozilla.org/buglist.cgi?product=Core&component=Graphics%3A%20WebGPU)
 - [Chromium](https://bugs.chromium.org/p/chromium/issues/list?q=component:Blink%3EWebGPU)
-
----
-
-To the extent possible under law, [Mik Bry](https://github.com/mikbry) has waived all copyright and related or neighboring rights to this work.
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/mikbry/awesome-webgpu/blob/d0324dc7725f9e3384daad3fc1ac596769802b51/contributing.md) first.

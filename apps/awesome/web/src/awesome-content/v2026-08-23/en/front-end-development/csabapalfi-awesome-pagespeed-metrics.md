@@ -1,49 +1,12 @@
 ---
 title: "Awesome Page Speed Metrics"
-description: "A curated collection of resources and projects focused on Page Speed Metrics."
+description: "Concepts, metrics, tools, and specifications for measuring page speed and user experience through lab tests and real-user data."
 licenseSource: "github-csabapalfi-awesome-pagespeed-metrics-readme-md"
 ---
 
 # Awesome Page Speed Metrics
 
-A curated collection of resources and projects focused on Page Speed Metrics.
-
-## Contents
-
-
-
-- [Concepts](#concepts)
-  - [Lab Data (Synthetic Measurements)](#lab-data-synthetic-measurements)
-  - [Field Data (Real User Monitoring - RUM)](#field-data-real-user-monitoring---rum)
-  - [Critical rendering path](#critical-rendering-path)
-  - [Long tasks](#long-tasks)
-  - [User-centric metrics](#user-centric-metrics)
-- [Rendering metrics](#rendering-metrics)
-  - [First Contentful Paint (FCP)](#first-contentful-paint-fcp)
-  - [Largest Contentful Paint (LCP)](#largest-contentful-paint-lcp)
-  - [Cumulative Layout Shift (CLS)](#cumulative-layout-shift-cls)
-  - [Visually Complete](#visually-complete)
-  - [Speed Index](#speed-index)
-  - [(Hero) Element Timing](#hero-element-timing)
-- [Interactivity metrics](#interactivity-metrics)
-  - [Time to Interactive (TTI)](#time-to-interactive-tti)
-  - [Total Blocking Time (TBT)](#total-blocking-time-tbt)
-  - [First Input Delay (FID)](#first-input-delay-fid)
-  - [Max Potential First Input Delay](#max-potential-first-input-delay)
-- [Network metrics](#network-metrics)
-  - [DNS latency](#dns-latency)
-  - [TCP and SSL/TLS latency](#tcp-and-ssltls-latency)
-  - [Time to First Byte (TTFB)](#time-to-first-byte-ttfb)
-  - [Transferred bytes](#transferred-bytes)
-- [Other metrics](#other-metrics)
-  - [Google PageSpeed Insights score](#google-pagespeed-insights-score)
-  - [User Timing](#user-timing)
-  - [Server Timing](#server-timing)
-  - [Frame rate](#frame-rate)
-  - [DOMContentLoaded](#domcontentloaded)
-  - [window.load](#windowload)
-
-
+This guide explains page-speed concepts and metrics for rendering, interactivity, networks, and browser or server timing, with tools, specifications, articles, and code examples for lab tests and real-user monitoring. Definitions, browser support, and tool availability reflect the recorded source. If you are getting started, see [web.dev/metrics](https://web.dev/metrics/) first.
 
 ## Concepts
 
@@ -52,15 +15,13 @@ A curated collection of resources and projects focused on Page Speed Metrics.
 Make a request to your page with a tool and evaluate performance. Be sure to make it realistic (e.g. by throttling network and CPU) and reduce noise (e.g. by running multiple times).
 
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse/) - A tool built on Google Chrome to audit web pages. You can run it from Chrome DevTools, a Chrome Extension or from the command line (even with headless Chrome).
-- [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) - Free and hosted Lighthouse reporting (and more) by Google.
-- [WebpageTest](https://www.webpagetest.org/) - Free and hosted web performance testing (also an open source project).
+- [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) - Hosted Lighthouse reporting and other data from Google, described by the source as free.
+- [WebpageTest](https://www.webpagetest.org/) - Hosted web performance testing, described by the source as free; also an open source project.
 - [Sitespeed.io](https://www.sitespeed.io/) - A set of open source performance monitoring tools.
 - [Calibre](https://calibreapp.com) - Web performance monitoring SaaS.
 - [treo.sh](https://treo.sh/) - Web performance monitoring SaaS.
 - [SpeedCurve](https://speedcurve.com/) - Web performance monitoring SaaS.
-- [AwesomeTechStack](https://awesometechstack.com/) - Website awesomeness monitoring Tool.
-
----
+- [AwesomeTechStack](https://awesometechstack.com/) - Website monitoring tool.
 
 ### Field Data (Real User Monitoring - RUM)
 
@@ -78,7 +39,7 @@ Collect performance data from real users visiting your page. Be mindful of the a
 
 ### Critical rendering path
 
-The critical rendering path is **everything that happens between receiving network bytes and rendering something on the screen**. To optimize any rendering metrics like [First Contentful Paint (FCP)](#first-contentful-paint-fcp) or [Speed Index](#speed-index) you have to understand how the critical rendering path works.
+The critical rendering path is everything that happens between receiving network bytes and rendering something on the screen. To optimize any rendering metrics like [First Contentful Paint (FCP)](#first-contentful-paint-fcp) or [Speed Index](#speed-index) you have to understand how the critical rendering path works.
 
 - [Critical rendering path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/)
 
@@ -86,7 +47,7 @@ The critical rendering path is **everything that happens between receiving netwo
 
 The browser Main Thread that handles user input is also the one executing JavaScript (among many other things). Blocking the Main Thread for too long can make your page unresponsive.
 
-A user perceives any visual change within 100ms as instant. Any task blocking the Main Thread by **taking longer than 50ms is considered a long task** (as it might make the browser unresponsive to user input).
+The source describes visual changes within 100ms as being perceived as instant. Any task blocking the Main Thread by taking longer than 50ms is considered a long task (as it might make the browser unresponsive to user input).
 
 To optimize interactivity metrics like [Total Blocking Time (TBT)](#total-blocking-time-tbt) and [First Input Delay (FID)](#first-input-delay-fid) you have to understand long tasks and how to avoid them as much as possible.
 
@@ -102,8 +63,6 @@ It's important to track metrics relevant to users and their experience. To measu
 - Is it useful/meaningful? - Has enough content rendered that users can engage with it? (e.g. [LCP](https://github.com/csabapalfi/awesome-web-performance-metrics/#largest-contentful-paint-lcp))
 - Is it usable - Can users interact with the page, or is it still busy loading? (e.g [TBT](https://github.com/csabapalfi/awesome-web-performance-metrics/#total-blocking-time-tbt))
 - Is it delightful/smooth? - Are the interactions smooth and natural, free of lag and jank?
-
----
 
 ## Rendering metrics
 
@@ -127,7 +86,7 @@ The Largest Contentful Paint (LCP) metric reports the render time of the largest
 
 ### Cumulative Layout Shift (CLS)
 
- A layout shift occurs any time a visible element changes its position from one frame to the next. CLS measures the sum total of all individual layout shift scores for every unexpected layout shift that occurs during the entire lifespan of the page.
+ A layout shift occurs any time a visible element changes its position from one frame to the next. The source defines CLS here as the sum of individual scores for unexpected layout shifts throughout the entire lifespan of the page.
 
 - Lab: Lighthouse/WPT
 - Field: Chrome 77+
@@ -136,7 +95,7 @@ The Largest Contentful Paint (LCP) metric reports the render time of the largest
 
 ### Visually Complete
 
-The Visually Complete is the time from the start of the initial navigation until the **visible (above the fold) part of your page is no longer changing**. (e.g. WPT measures this using a color histogram of the page based on video/screenshots recording).
+The Visually Complete is the time from the start of the initial navigation until the visible (above the fold) part of your page is no longer changing. (e.g. WPT measures this using a color histogram of the page based on video/screenshots recording).
 
 - Lab: WPT
 - Field: N/A
@@ -144,7 +103,7 @@ The Visually Complete is the time from the start of the initial navigation until
 
 ### Speed Index
 
-Speed Index shows **how quickly the contents of a page are visibly populated** (lower numbers are better). This is done by frequently measuring visual completeness during loading. The quicker the page is more visually complete the lower the value.
+Speed Index shows how quickly the contents of a page are visibly populated (lower numbers are better). This is done by frequently measuring visual completeness during loading. The quicker the page is more visually complete the lower the value.
 
 - Lab: Lighthouse, WPT (but slightly different spec)
 - Field: N/A
@@ -154,7 +113,7 @@ Speed Index shows **how quickly the contents of a page are visibly populated** (
 
 ### (Hero) Element Timing
 
-Element Timing captures **when specific elements are painted** by the browser. Hero elements can be defined as the largest h1, img or background image (or custom ones using the Element Timing API)
+Element Timing captures when specific elements are painted by the browser. Hero elements can be defined as the largest h1, img or background image (or custom ones using the Element Timing API)
 
 - Lab: WPT
 - Field: Chrome 77+
@@ -162,13 +121,11 @@ Element Timing captures **when specific elements are painted** by the browser. H
 - [Spec - Element Timing API](https://wicg.github.io/element-timing/)
 - [Blogpost - Hero Element Timing - SpeedCurve](https://speedcurve.com/blog/web-performance-monitoring-hero-times/)
 
----
-
 ## Interactivity metrics
 
 ### Time to Interactive (TTI)
 
-Time to interactive is **the time it takes for the page to become fully interactive** (as in Main Thread quiet for 5s). Sometimes called Consistently Interactice and not to be confused with First Interactive or First CPU Idle. (Warning: one of the most confusing and misunderstood metrics).
+Time to interactive is the time it takes for the page to become fully interactive (as in Main Thread quiet for 5s). Sometimes called Consistently Interactive and not to be confused with First Interactive or First CPU Idle. Distinguish these metrics when interpreting results.
 
 - Lab: Lighthouse, WPT
 - Field: Not recommended as users interacting with your page can skew field measurements of TTI
@@ -186,7 +143,7 @@ The Total Blocking Time (TBT) metric measures the total amount of time between F
 
 ### First Input Delay (FID)
 
-First Input Delay (FID) measures **the time from when a user first interacts with your site to the time when the browser is actually able to respond** to that interaction. An interaction can be when users click a link, tap on a button, or use a custom, JavaScript-powered control.
+First Input Delay (FID) measures the time from when a user first interacts with your site to the time when the browser is actually able to respond to that interaction. An interaction can be when users click a link, tap on a button, or use a custom, JavaScript-powered control.
 
 - Lab: N/A (as it requires the user to interact with the page)
 - Field: IE9+ (and Safari, Chrome, Firefox) (with polyfill - 0.4KB)
@@ -200,8 +157,6 @@ The maximum potential [First Input Delay](#first-input-delay-fid) that your user
 - Lab: Lighthouse
 - Field: N/A
 - [Docs - Max Potential FID - web.dev](https://web.dev/lighthouse-max-potential-fid/)
-
----
 
 ## Network metrics
 
@@ -253,7 +208,7 @@ var ttfb = pageNav.responseStart - pageNav.requestStart;
 
 You can measure the byte weight of your assets with a number of tools. You would normally track these Lab only as the numbers are usually the same in the Field (but be mindful of device type or geographical location specific pages).
 
-Measuring own (and third-party) JavaScript bytes is crucial as JavaScript is the main cause of high [TTI](#time-to-interactive-tti) or [FID](#first-input-delay-fid) values.
+The source emphasizes measuring first- and third-party JavaScript bytes, describing JavaScript as the main cause of high [TTI](#time-to-interactive-tti) or [FID](#first-input-delay-fid) values.
 
 - Lab: Lighthouse (budgets), Sitespeed.io, custom tools
 - Field: N/A - but numbers usually the same as in Lab
@@ -261,8 +216,6 @@ Measuring own (and third-party) JavaScript bytes is crucial as JavaScript is the
 - [Lighthouse Performance Budgets](https://developers.google.com/web/tools/lighthouse/audits/budgets)
 - [Can You Afford It?: Real-world Web Performance Budgets](https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/)
 - [Which third party scripts are most excessive](https://github.com/patrickhulce/third-party-web)
-
----
 
 ## Other metrics
 
@@ -288,10 +241,10 @@ Surface any backend server timing metrics (e.g. database latency, etc.) in the d
 
 ### Frame rate
 
- The frame rate is the **frequency at which the browser can display frames**. A frame represents the amount of work a browser does in one event loop iteration such as processing DOM events, resizing, scrolling, rendering, CSS animations, etc. A frame rate of 60 fps (frames per second) is a common target for a good responsive user experience. This means the browser should process a frame in about 16.7 ms.
+ The frame rate is the frequency at which the browser can display frames. A frame represents the amount of work a browser does in one event loop iteration such as processing DOM events, resizing, scrolling, rendering, CSS animations, etc. A frame rate of 60 fps (frames per second) is a common target for a good responsive user experience. This means the browser should process a frame in about 16.7 ms.
 
 - Lab: Chrome and FF Devtools
-- Field: No browser implements the Frame Timing API yet but you can roll your own fps meter using `requestAnimationFrame`
+- Field: The source reports no browser implementation of the Frame Timing API at the time; you can build an fps meter using `requestAnimationFrame`
 - [Docs - Frame Timing API](https://developer.mozilla.org/en-US/docs/Web/API/Frame_Timing_API)
 - [Docs - Chrome Devtools - FPS](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/#analyze_frames_per_second)
 - [Docs - Firefox Developer Tools - Frame rate](https://developer.mozilla.org/en-US/docs/Tools/Performance/Frame_rate)
@@ -303,9 +256,3 @@ Surface any backend server timing metrics (e.g. database latency, etc.) in the d
 ### window.load
 
 - [Docs - `window.load`](https://developer.mozilla.org/en-US/docs/Web/Events/load)
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, Csaba Palfi has waived all copyright and related or neighboring rights to this work.

@@ -1,42 +1,12 @@
 ---
 title: "Awesome Static Website Services"
-description: "A curated collection of resources and projects focused on Static Website Services."
+description: "Services and libraries for adding media, forms, comments, search, analytics, commerce, and other features to static websites."
 licenseSource: "github-agarrharr-awesome-static-website-services-readme-md"
 ---
 
 # Awesome Static Website Services
 
-A curated collection of resources and projects focused on Static Website Services.
-
-## Table of Contents
-
-- [Audio](#audio)
-- [Books](#books)
-- [Calendar and Scheduling](#calendar-and-scheduling)
-- [Images](#images)
-- [Maps](#maps)
-- [Presentations](#presentations)
-- [Video](#video)
-- [Code](#code)
-- [Functions as a Service FaaS](#functions-as-a-service)
-- [GraphQL](#GraphQL)
-- [Community](#community)
-  - [Comments](#comments)
-  - [Forms](#forms)
-  - [Live Chat](#live-chat)
-  - [Newsletters](#newsletters)
-  - [Social Media](#social-media)
-  - [Surveys](#surveys)
-- [E-Commerce](#e-commerce)
-- [Payments](#payments)
-- [Search](#search)
-- [Analytics](#analytics)
-- [Authentication](#authentication)
-- [Utilities](#utilities)
-- [Other](#other)
-- [Related Lists](#related-lists)
-
----
+Find services and libraries for adding media, calendars, maps, code, server-side functions, community features, commerce, payments, search, analytics, authentication, and utilities to static websites. Features, prices, quotas, providers, and service status follow the fixed source rather than current offerings.
 
 ## Audio
 
@@ -47,12 +17,12 @@ A curated collection of resources and projects focused on Static Website Service
 ## Books
 
 - [Goodreads API and widgets](https://www.goodreads.com/api) - Allows you to access any of the Goodreads data. Widgets are found on the widgets tab on your [settings page](https://www.goodreads.com/user/edit).
-- [Open Library Open API](https://openlibrary.org/developers/api) — Allows to retrieve book data from the biggest books open dataset on Earth, without any tracking.
+- [Open Library Open API](https://openlibrary.org/developers/api) — Retrieve book data without tracking from an open dataset described by the source as the world’s largest.
 
 ## Calendar and Scheduling
 
 - [Google Calendar](http://calendar.google.com/) - Embeddable calendar that you can collaborate with other people.
-- [Booking.js](http://booking.timekit.io/) - Beautiful embeddable booking widget.
+- [Booking.js](http://booking.timekit.io/) - Embeddable booking widget.
 - [zenplanner](http://zenplanner.com/) - Paid - Online scheduling for fitness.
 
 ## Images
@@ -63,12 +33,12 @@ A curated collection of resources and projects focused on Static Website Service
 ## Maps
 
 - [Google Maps](http://maps.google.com/) - Google maps are easily embeddable.
-- [Mapbox](https://www.mapbox.com/) - Really nice looking embeddable maps.
-- [uMap](https://umap.openstreetmap.fr/en/) - Create and embed personalized maps, based on the great [OpenStreetMap](https://openstreetmap.org) dataset.
+- [Mapbox](https://www.mapbox.com/) - Embeddable maps.
+- [uMap](https://umap.openstreetmap.fr/en/) - Create and embed personalized maps, based on the [OpenStreetMap](https://openstreetmap.org) dataset.
 
 ## Presentations
 
-- [Prezi](https://prezi.com/) - Online presentations with really transitions that can zoom and rotate.
+- [Prezi](https://prezi.com/) - Online presentations with transitions that zoom and rotate.
 - [Reveal.js](http://lab.hakim.se/reveal-js/) - HTML presentation framework.
 - [Slides.com](http://slides.com/) - A place for creating, presenting and sharing slide decks.
 - [SpeakerDeck](https://speakerdeck.com/) - Upload your slides as a PDF, and get an online, shareable presentation.
@@ -81,7 +51,7 @@ A curated collection of resources and projects focused on Static Website Service
 - [Vevo](http://www.vevo.com/) - Embeddable music videos.
 - [Wistia](http://wistia.com/) - Free plan has a limit of 25 videos.
 
-### Code
+## Code
 
 - [Codepen](http://codepen.io/) - A playground of embeddable front-end code examples.
 - [JS Bin](http://jsbin.com/) - Embeddable front-end code examples.
@@ -94,17 +64,17 @@ A curated collection of resources and projects focused on Static Website Service
 - [1Backend](https://github.com/1backend/1backend) - Deploy your backend in seconds. Free tier included. Open source.
 - [AWS Lambda](https://aws.amazon.com/lambda/) - AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume
 - [Google Cloud Functions](https://cloud.google.com/functions/) - Create single-purpose, stand-alone functions that respond to Cloud events without the need to manage a server or runtime environment
-- [Webtask by Auth0](https://webtask.io/) - Call code on the server with simple HTTP, easier to set up by far than Lambda or Google's
+- [Webtask by Auth0](https://webtask.io/) - Call code on the server with simple HTTP, described by the source as much easier to set up than Lambda or Google’s offering
 - [Azure Functions](https://azure.microsoft.com/en-us/services/functions/) - by Microsoft - same premise as Lambda on the Azure cloud
 - [IronWorkers](https://www.iron.io/platform/ironworker/) - by Iron.io - Run code in a multilanguage containerized environment with unlimited scale and simple pricing
 - [IronFunctions](http://open.iron.io/) - by Iron.io - IronFunctions is an open source serverless computing platform for any cloud - private, public, or hybrid.
-- [OpenWhisk by IBM](https://console.ng.bluemix.net/openwhisk/) - part of their BlueMix hosting platform, and open source, ties into their Watson AI ecosystem nicely
+- [OpenWhisk by IBM](https://console.ng.bluemix.net/openwhisk/) - part of their BlueMix hosting platform, and open source, integrates with their Watson AI ecosystem
 - [StackPath EdgeEngine](https://www.stackpath.com/products/edgeengine/) - Write functions as a service in the language of your choice and deploy them to a global network of data centers. All the networking, including intelligent routing and load balancing, is managed by StackPath over a private backbone.
 - [Cloud 66](https://www.cloud66.com/) - Build and deploy static websites to your own cloud account. 
 - [Vercel](https://vercel.com/home#features) - Vercel lets people write functions as a service in their language of choice and deploy as part of a monorepo.
 - [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/#features) - Full-stack static app hosting including serverless Functions, authentication, CDN and more
 - [Qoddi](https://qoddi.com) - Full stack app hosting with data storage included, similar to Heroku with a developer centric approach. Free to use up to 3 apps.
-- [Autocode](https://autocode.com) - Autocode turns functions into scalable web services in an instant, no configuration required; serverless hosting available with an in-browser IDE, an API library that’s easy to use, and seamlessly managed authentication.
+- [Autocode](https://autocode.com) - Turns functions into scalable web services without configuration. Serverless hosting includes an in-browser IDE, an API library, and managed authentication.
 
 ## GraphQL
 
@@ -138,20 +108,20 @@ A curated collection of resources and projects focused on Static Website Service
 - [99 Inbound](https://www.99inbound.com) - Form endpoint service with email/Slack notifications and third party app integrations (e.g. MailChimp)
 - [Getform](http://getform.io/) - Form backend platform for designers and developers, with email and integrations.
 - [HeyForm](https://heyform.net/) - Free, easy-to-use drag & drop form maker capable of crafting powerful online forms. Includes 40+ field types, integrations, analytics, and more.
-- [Form.taxi](https://form.taxi/) - Backend to handle form submissions easily and reliably, with email notifications, file uploads and GDPR-compliant data processing.
+- [Form.taxi](https://form.taxi/) - Form submission backend with email notifications and file uploads; the source describes its data processing as GDPR-compliant.
 
 #### Normal Forms
 
-- [Formcarry](https://formcarry.com) - Hassle-free HTML form endpoints for your form, powerful dashboard, reliable spam blocking, attachment uploads and Zapier integrations.
+- [Formcarry](https://formcarry.com) - HTML form endpoints with a dashboard, spam blocking, attachment uploads, and Zapier integrations.
 - [Formcake](https://formcake.com) - The form backend built for developers: Zapier integrations, simple endpoint API, unlimited forms.
 - [Google Forms](https://www.google.com/forms/about/) - Saves results into Google Sheets and can email you when there is a submission.
-- [FormKeep](https://formkeep.com/) - Paid - View form submissions in a beautiful web interface. It has spam filtering and it integrates with webhooks such as Gmail, Trello, and Basecamp.
-- [123 Contact Form](http://www.123contactform.com/) - Connects to other online services such at MailChimp, Salesforce, and Google Drive. It also integrates with payment Processers and includes security and analytics.
+- [FormKeep](https://formkeep.com/) - Paid - View form submissions in a web interface. It has spam filtering and it integrates with webhooks such as Gmail, Trello, and Basecamp.
+- [123 Contact Form](http://www.123contactform.com/) - Connects to other online services such as MailChimp, Salesforce, and Google Drive. It also integrates with payment processors and includes security and analytics.
 - [FormAssembly](http://www.formassembly.com/) - Allows you to build any kind of form that can include complex branching logic and multiple pages.
 - [FormSite](https://www.formsite.com/) - Form builder with payments and form management.
 - [FormStack](https://www.formstack.com/) - Forms with A/B testing, partial submission, analytics, and integrations.
 - [Sheetsu](https://sheetsu.com/) - POST and GET your data to Google Spreadsheet.
-- [Typeform](http://www.typeform.com/) - Awesome forms that can be embedded.
+- [Typeform](http://www.typeform.com/) - Embeddable forms.
 - [Wufoo](http://www.wufoo.com/) - Free or Paid - Forms that you can build with a form designer, with notifications, reports, and payments.
 - [Zoho](https://www.zoho.com/crm/help/web-forms/set-up-web-forms.html) - Forms with file upload and captcha.
 - [GitHub Issues](https://help.github.com/articles/about-issues/) - This is an interesting way for developers to get comments/questions. See [github.com/sindresorhus/ama](https://github.com/sindresorhus/ama) for an example.
@@ -200,10 +170,10 @@ A curated collection of resources and projects focused on Static Website Service
 
 - [Google Forms](https://www.google.co.nz/forms/about/) - You can use Google forms for surveys or for forms on your site.
 - [SurveyMonkey](https://www.surveymonkey.com/) - Easy to use and free surveys.
-- [Typeform](http://www.typeform.com/) - Really beautiful forms.
+- [Typeform](http://www.typeform.com/) - Forms.
 - [Qualaroo](https://qualaroo.com/) - Embed surveys anywhere on your website that comes up from the bottom right side of the screen.
 - [Insight Stash](https://insightstash.com/) - Fast, Simple survey forms.
-- [Formware](https://formware.io/) - Create stunning surveys with unlimited responses for free.
+- [Formware](https://formware.io/) - Create surveys with unlimited responses for free.
 
 ## E-Commerce
 
@@ -223,7 +193,7 @@ A curated collection of resources and projects focused on Static Website Service
 
 ## Search
 
-Self-hosted:
+### Self-hosted
 
 - [lunr.js](http://lunrjs.com/) - Simple full-text search in your browser.
 - [itemsjs](https://github.com/itemsapi/itemsjs) - Full text, faceted, almost dependency free search engine in javascript
@@ -241,7 +211,7 @@ Self-hosted:
 - [Jets.js](https://jets.js.org/) - Native CSS search engine
 - [Hulipaa](https://github.com/sambuccid/hulipaa) - Static full-text search engine capable of handling thousands of pages with a minimalist searchbar UI to add to your static website.
 
-Third party integration:
+### Third-party integration
 
 - [Google Custom Search Engine](https://cse.google.com/cse/) - Search your site with a custom Google Search.
 - [Algolia](https://www.algolia.com/) - Hosted Search API that delivers instant and relevant results from the first keystroke.
@@ -250,14 +220,14 @@ Third party integration:
 ## Analytics
 
 - [Google Analytics](http://www.google.com/analytics/) - Freemium web analytics service offered by Google.
-- [Simple Analytics](https://simpleanalytics.io/) - 💲 - Simple, clean, and friendly analytics.
+- [Simple Analytics](https://simpleanalytics.io/) - Marked as paid in the source. Analytics described as simple, clean, and friendly.
 
 ## Authentication
 
 - [Uthentic](https://uthentic.net) - Serverless, passwordless login for static sites in 2 lines of code.
 
 ## Utilities
-- [BulkPicTools](https://bulkpictools.com) - A privacy-first, browser-based batch image processor for static site creators, leveraging WebAssembly for local compression and conversion.
+- [BulkPicTools](https://bulkpictools.com) - A privacy-focused, browser-based batch image processor for static site creators, leveraging WebAssembly for local compression and conversion.
 
 ## Other
 
@@ -267,11 +237,3 @@ Third party integration:
 
 - [Awesome Static Hosting](https://github.com/b-long/awesome-static-hosting)
 - [Awesome Azure Static Web Apps](https://github.com/staticwebdev/awesome-azure-static-web-apps)
-
-----
-
-## License
-
-[![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Adam Garrett-Harris](https://twitter.com/agarrharr) has waived all copyright and related or neighboring rights to this work.

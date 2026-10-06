@@ -1,63 +1,32 @@
 ---
 title: "Awesome jQuery Tips Everyone Should Know"
-description: "jQuery Tips Everyone Should Knowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "イベント、フォーム、画像、アニメーション、セレクター、DOM更新、AJAXに関するjQueryのコード例を案内します。"
 licenseSource: "github-AllThingsSmitty-jquery-tips-everyone-should-know-readme-md"
 ---
 
 # Awesome jQuery Tips Everyone Should Know
 
-jQuery Tips Everyone Should Knowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+イベント、フォーム、画像、アニメーション、セレクター、DOM更新、AJAXに関するjQueryのコード例を探せます。ブラウザー対応情報は固定原文に沿っています。各コードは特定の処理パターンを示す例です。
 
-## 目次
+## ヒント<a id="tips"></a>
 
-- [ヒント](#tips)
-- [サポート](#support)
-- [翻訳](#translations)
-- [貢献ガイドライン](https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know/blob/f54990999a702137c41040c079a1f25237ca8faa/CONTRIBUTING.md)
+### `noConflict()`を使う<a id="use-noconflict"></a>
 
-## ヒント
-
-1. [`noConflict()`を使う](#use-noconflict)
-1. [jQueryが読み込まれたか確認する](#checking-if-jquery-loaded)
-1. [要素が存在するか確認する](#check-whether-an-element-exists)
-1. [`.on()`バインディングを使い、`.click()`は使わない](#use-on-binding-instead-of-click)
-1. [ページ先頭へ戻るボタン](#back-to-top-button)
-1. [画像をプリロードする](#preload-images)
-1. [画像が読み込まれたか確認する](#checking-if-images-are-loaded)
-1. [壊れた画像を自動的に修正する](#fix-broken-images-automatically)
-1. [AJAXでフォームを送信する](#post-a-form-with-ajax)
-1. [ホバー時にクラスを切り替える](#toggle-classes-on-hover)
-1. [入力フィールドを無効化する](#disabling-input-fields)
-1. [リンクの読み込みを止める](#stop-the-loading-of-links)
-1. [jQueryセレクターをキャッシュする](#cache-jquery-selectors)
-1. [フェード／スライドを切り替える](#toggle-fadeslide)
-1. [シンプルなアコーディオン](#simple-accordion)
-1. [二つのDivを同じ高さにする](#make-two-divs-the-same-height)
-1. [外部リンクを新しいタブ／ウィンドウで開く](#open-external-links-in-new-tabwindow)
-1. [テキストで要素を見つける](#find-element-by-text)
-1. [可視性の変更時にトリガーする](#trigger-on-visibility-change)
-1. [AJAX呼出しのエラー処理](#ajax-call-error-handling)
-1. [プラグイン呼出しを連鎖する](#chain-plugin-calls)
-1. [リスト項目をアルファベット順に並べ替える](#sort-list-items-alphabetically)
-1. [右クリックを無効化する](#disable-right-click)
-
-### `noConflict()`を使う
-
-jQueryが使う`$`エイリアスは、他のJavaScriptライブラリでも使われます。jQueryが別ライブラリの`$`オブジェクトと競合しないよう、ドキュメントの先頭で`noConflict()`メソッドを使います。
+ほかのJavaScriptライブラリーも`$`エイリアスを使う場合があります。jQueryを読み込んだ後に`noConflict()`を呼び出すと、読み込み前の値へ戻せます。
 
 ```javascript
 jQuery.noConflict();
 ```
 
-これ以降は`jQuery`変数名で、`$`の代わりにjQueryオブジェクトを参照します（例: `jQuery('div p').hide()`）。同じページに複数のjQueryバージョンがある場合（推奨しません）、`noConflict()`を使い特定のバージョンへエイリアスを設定できます。
+その後は、`jQuery`からこのインスタンスを参照し、`$`の代わりに使います（例: `jQuery('div p').hide()`）。複数の版を読み込んでいる場合などは、返されたインスタンスをローカルな別名で保持することもできます。
 
 ```javascript
 let $x = jQuery.noConflict();
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+`noConflict()`はこのjQueryインスタンスへの参照を返し、以前の`$`を復元します。グローバルな`jQuery`変数も先に読み込んだ版へ戻す必要がある場合は`noConflict(true)`を使います。[jQuery.noConflict()](https://api.jquery.com/jQuery.noConflict/)を参照してください。
 
-### jQueryが読み込まれたか確認する
+### jQueryが読み込まれたか確認する<a id="checking-if-jquery-loaded"></a>
 
 jQueryで何かを行う前に、まず読み込まれていることを確かめる必要があります。
 
@@ -69,10 +38,9 @@ if (typeof jQuery == "undefined") {
 }
 ```
 
-これで準備完了です。
+グローバル変数が定義されているかをメッセージで区別します。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
-### 要素が存在するか確認する
+### 要素が存在するか確認する<a id="check-whether-an-element-exists"></a>
 
 HTML要素を使う前に、それがDOMの一部であることを確認する必要があります。
 
@@ -82,29 +50,25 @@ if ($("#selector").length) {
 }
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### `.on()`バインディングを使い、`.click()`は使わない<a id="use-on-binding-instead-of-click"></a>
 
-### `.on()`バインディングを使い、`.click()`は使わない
-
-`.on()`を使うと、複数イベントを追加できるなど、`.click()`より多くの利点があります。
+原文では、複数のイベント名を指定する例として次の断片を示しています。
 
 ```javascript
 .on('click tap hover')
 ```
 
-また、動的に作成された要素にもバインディングが適用されます（DOM要素へ動的追加される要素を毎回手動でバインドする必要はありません）。
+`.on()`に一致条件の`selector`を渡す委譲ハンドラーでは、後から追加された子孫要素も処理できます。直接バインドする場合は、呼び出し時に選択された既存の要素が対象です。[jQueryの`.on()`資料](https://api.jquery.com/on/)を参照してください。
 
-さらに名前空間を設定できます。
+原文の`tap`イベントには、それを発生させる仕組みが必要です。`hover`疑似イベントはjQuery 1.9で削除されているため、ポインターの出入りには`mouseenter mouseleave`を使います。上下の断片を完全な呼び出しにするには対象オブジェクトとハンドラーも必要です。次のように名前空間を指定できます。
 
 ```javascript
 .on('click.menuOpening')
 ```
 
-名前空間により特定イベントを解除できます（例: `.off('click.menuOpening')`）。
+名前空間を使うと、ほかのクリックハンドラーを残し、一致するハンドラーだけを解除できます（例: `.off('click.menuOpening')`）。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
-
-### ページ先頭へ戻るボタン
+### ページ先頭へ戻るボタン<a id="back-to-top-button"></a>
 
 jQueryの`animate`・`scrollTop`メソッドを使えば、単純な先頭スクロールアニメーションにプラグインは不要です。
 
@@ -117,22 +81,20 @@ $(".container").on("click", ".back-to-top", function (e) {
 ```
 
 ```html
-
+<!-- Create an anchor tag -->
 <div class="container">
   <a href="#" class="back-to-top">Back to top</a>
 </div>
 ```
 
-`scrollTop`値を変えると、スクロールバーの到達位置が変わります。実際には、ドキュメント本体を800ミリ秒かけて先頭へスクロールするようアニメーションさせています。
+`scrollTop`値を変えると、スクロールの到達位置が変わります。この例では800ミリ秒かけて先頭へ移動します。
 
 > **注記:**
-> `scrollTop`には[不安定な挙動](https://github.com/jquery/api.jquery.com/issues/417)があるため注意してください。
+> 原文では、スクロールする要素に依存する[scrollTopの挙動の報告](https://github.com/jquery/api.jquery.com/issues/417)を参照しています。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### 画像をプリロードする<a id="preload-images"></a>
 
-### 画像をプリロードする
-
-Webページで最初は表示されない画像（ホバー時など）を多く使う場合は、プリロードすることが合理的です。
+ホバー時に使う画像などを、表示する前に読み込み始めます。
 
 ```javascript
 $.preloadImages = function () {
@@ -144,11 +106,9 @@ $.preloadImages = function () {
 $.preloadImages("img/hover-on.png", "img/hover-off.png");
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### 画像が読み込まれたか確認する<a id="checking-if-images-are-loaded"></a>
 
-### 画像が読み込まれたか確認する
-
-スクリプトを続行するために、画像が完全に読み込まれたか確認する必要があることがあります。
+選択した各画像の読み込み完了イベントにハンドラーを登録します。
 
 ```javascript
 $("img").on("load", function () {
@@ -156,13 +116,11 @@ $("img").on("load", function () {
 });
 ```
 
-特定の画像だけが読み込まれたか確認するには、`<img>`タグをIDまたはクラスに置き換えることもできます。
+特定の画像を対象にするには、imgセレクターをIDまたはクラスのセレクターへ置き換えます。これは今後の完了イベントを待つ処理であり、すでに読み込みが終わったかを調べる処理ではありません。[jQueryのloadイベント資料](https://api.jquery.com/load-event/)を参照してください。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### 壊れた画像を自動的に修正する<a id="fix-broken-images-automatically"></a>
 
-### 壊れた画像を自動的に修正する
-
-サイトで壊れた画像リンクを見つけた際、それらを一つずつ置換するのは大変です。この単純なコードで多くの手間を省けます。
+画像の読み込みエラー時に、代替画像を指定します。クラスを付けて、代替画像への繰り返し置換を防ぎます。
 
 ```javascript
 $("img").on("error", function () {
@@ -180,9 +138,7 @@ $("img").on("error", function () {
 });
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
-
-### AJAXでフォームを送信する
+### AJAXでフォームを送信する<a id="post-a-form-with-ajax"></a>
 
 jQuery AJAXメソッドは、テキスト、HTML、XML、JSONをリクエストする一般的な手段です。AJAXでフォームを送るには、`val()`メソッドでユーザー入力を収集できます。
 
@@ -194,44 +150,38 @@ $.post("sign_up.php", {
 });
 ```
 
-ただし、これらの`val()`呼出しはすべてコストが高く、`.val()`を`<textarea>`要素に使うとブラウザーが報告する値から改行文字が取り除かれます。ユーザー入力を収集するより良い方法は、文字列として収集する`serialize()`関数を使うことです。
+各フィールドを個別に読む代わりに、`serialize()`で送信対象のフォーム部品をURLエンコードした文字列にまとめられます。すべての部品が対象になるわけではないため、[シリアライズの条件](https://api.jquery.com/serialize/)を参照してください。また原文では、`.val()`がブラウザーの報告する`<textarea>`の値から復帰文字（CR）を除くことに言及しています。[値を取得するAPIの資料](https://api.jquery.com/val/)にも説明があります。
 
 ```javascript
 $.post("sign_up", $("#sign-up-form").serialize());
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### ホバー時にクラスを切り替える<a id="toggle-classes-on-hover"></a>
 
-### ホバー時にクラスを切り替える
-
-ユーザーがページ上のクリック可能な要素にホバーしたとき、見た目を変えたいとします。ホバー中は要素へクラスを追加し、ホバーを止めたらクラスを削除できます。
+ポインターが要素に入ったときにクラスを追加し、出たときに削除します。原文の`.on("hover", handlerIn, handlerOut)`は、イベント名と2ハンドラーを受け取る`.hover()`メソッドを混同しています。[jQueryの`.hover()`資料](https://api.jquery.com/hover/)に従い、`.on()`で`mouseenter`と`mouseleave`へ別々のハンドラーを登録します。
 
 ```javascript
-$(".btn").on(
-  "hover",
-  function () {
+$(".btn")
+  .on("mouseenter", function () {
     $(this).addClass("hover");
-  },
-  function () {
+  })
+  .on("mouseleave", function () {
     $(this).removeClass("hover");
-  }
-);
+  });
 ```
 
-必要なCSSを追加します。さらに簡単な方法が必要なら、`toggleClass`メソッドを使います。
+必要なCSSを追加します。代わりに、ポインターの出入りでクラスを切り替えることもできます。
 
 ```javascript
-$(".btn").on("hover", function () {
+$(".btn").on("mouseenter mouseleave", function () {
   $(this).toggleClass("hover");
 });
 ```
 
 > **注記:**
-> この場合はCSSのほうが高速な解決策かもしれませんが、知っておく価値はあります。
+> 原文では、ホバー時のスタイル設定にCSSを使う方法にも言及しています。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
-
-### 入力フィールドを無効化する
+### 入力フィールドを無効化する<a id="disabling-input-fields"></a>
 
 フォーム送信ボタンまたはテキスト入力を、ユーザーが特定の操作（例: 「規約を読みました」チェックボックス）を行うまで無効にしたい場合があります。入力に`disabled`属性を追加し、必要なときに有効化します。
 
@@ -245,9 +195,7 @@ $('input[type="submit"]').prop("disabled", true);
 $('input[type="submit"]').prop("disabled", false);
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
-
-### リンクの読み込みを止める
+### リンクの読み込みを止める<a id="stop-the-loading-of-links"></a>
 
 リンクを特定のWebページへ遷移させず、ページも再読み込みせず、別のスクリプトを起動するなど別のことをさせたい場合があります。既定の動作を防ぐには次を使います。
 
@@ -257,11 +205,9 @@ $("a.no-link").on("click", function (e) {
 });
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### jQueryセレクターをキャッシュする<a id="cache-jquery-selectors"></a>
 
-### jQueryセレクターをキャッシュする
-
-どのプロジェクトでも、同じセレクターを何度も書くことがあります。`$('.element')`セレクターは、以前に実行済みかどうかに関係なく毎回DOM全体を検索します。代わりにセレクターを一度実行し、結果を変数へ格納できます。
+`$('.element')`を繰り返し呼ぶと、前回の結果を再利用せず新たに要素を選択します。一度選択した結果を変数へ格納できます。
 
 ```javascript
 var blocks = $("#blocks").find("li");
@@ -279,13 +225,11 @@ $("#showBlocks").on("click", function () {
 });
 ```
 
-jQueryセレクターのキャッシュは優れた性能改善になります。
+選択結果を再利用すると繰り返し検索を避けられます。ただし、選択後に追加された要素は自動的には含まれません。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### フェード／スライドを切り替える<a id="toggle-fadeslide"></a>
 
-### フェード／スライドを切り替える
-
-スライドとフェードはjQueryのアニメーションで一般的です。クリック時に要素を表示するには`fadeIn`・`slideDown`メソッドが適していますが、最初のクリックで現れ、二度目のクリックで消えるようにするには次を使えます。
+`fadeIn`と`slideDown`は要素を表示するメソッドです。クリックごとに表示と非表示を切り替えるには、次のメソッドを使います。最初の動作は要素が初めに表示されているかに依存します。
 
 ```javascript
 // Fade
@@ -299,11 +243,9 @@ $(".btn").on("click", function () {
 });
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### シンプルなアコーディオン<a id="simple-accordion"></a>
 
-### シンプルなアコーディオン
-
-素早くアコーディオンを作るシンプルな方法です。
+クリックした見出しの直後にあるパネルを開閉し、ほかの内容パネルを閉じます。
 
 ```javascript
 // Close all panels
@@ -320,19 +262,17 @@ $("#accordion")
   });
 ```
 
-このスクリプトを追加すれば、Webページ側では動作に必要なHTMLを用意するだけです。
+HTMLでは各パネルを見出しの直後に配置する必要があります。パネルを閉じるルールは文書全体から選択するため、対象範囲を意図したアコーディオンへ合わせてください。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### 二つのDivを同じ高さにする<a id="make-two-divs-the-same-height"></a>
 
-### 二つのDivを同じ高さにする
-
-内容に関係なく二つのdivを同じ高さにしたい場合があります。
+あるdivの現在の内容の高さを使って、別のdivの最小高さを設定します。
 
 ```javascript
 $(".div").css("min-height", $(".main-div").height());
 ```
 
-この例は`min-height`を設定するため、メインdivより大きくはできますが、小さくはなりません。より柔軟な方法は、要素群をループして最も高い要素の高さを`height`に設定することです。
+この例は`min-height`を設定するため、対象要素がより高くなることもあります。表示上の高さが等しくなる保証はありません。要素群の最大の高さを`height`に設定するには、各要素を測定してその値を適用します。
 
 ```javascript
 var $columns = $(".column");
@@ -345,7 +285,7 @@ $columns.each(function () {
 $columns.height(height);
 ```
 
-_すべての_列を同じ高さにしたい場合は次を使います。
+行ごとに列をまとめる場合、次の例は各行の現在の高さをその行の列に設定します。行同士の高さは異なる場合があります。
 
 ```javascript
 var $rows = $(".same-height-columns");
@@ -357,11 +297,9 @@ $rows.each(function () {
 > **注記:**
 > これは[CSS](http://codepen.io/AllThingsSmitty/pen/KMPqoO)で複数の方法により実現できますが、必要に応じてjQueryでの方法を知っておくと便利です。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### 外部リンクを新しいタブ／ウィンドウで開く<a id="open-external-links-in-new-tabwindow"></a>
 
-### 外部リンクを新しいタブ／ウィンドウで開く
-
-外部リンクを新しいブラウザータブまたはウィンドウで開き、同一オリジンのリンクは同じタブまたはウィンドウで開くようにします。
+原文では、hrefがhttpまたは//から始まるリンクの表示先を変え、現在のオリジン文字列から始まるリンクだけ元の表示先へ戻しています。これは文字列の接頭辞比較であり、厳密なオリジン比較ではありません。同一オリジンでもプロトコル相対URLは最初の指定のままで、別のホストが同じ接頭辞を持つ場合もあります。
 
 ```javascript
 $('a[href^="http"]').attr("target", "_blank");
@@ -369,22 +307,18 @@ $('a[href^="//"]').attr("target", "_blank");
 $('a[href^="' + window.location.origin + '"]').attr("target", "_self");
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### テキストで要素を見つける<a id="find-element-by-text"></a>
 
-### テキストで要素を見つける
-
-jQueryの`contains()`セレクターを使うと、要素コンテンツ内のテキストを見つけられます。テキストが存在しない場合は、その要素を隠します。
+jQueryの`:contains()`セレクターは、子孫要素も含むテキストを大文字と小文字を区別して照合します。[セレクター資料](https://api.jquery.com/contains-selector/)を参照してください。この例は、検索語を含まない`div`要素を隠します。検索語を引用符で囲んだセレクターへそのまま挿入できることが前提で、任意の引用符やバックスラッシュへの処理はありません。
 
 ```javascript
 var search = $("#search").val();
 $('div:not(:contains("' + search + '"))').hide();
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### 可視性の変更時にトリガーする<a id="trigger-on-visibility-change"></a>
 
-### 可視性の変更時にトリガーする
-
-ユーザーがタブからフォーカスを外したとき、またはタブへ再度フォーカスしたときにJavaScriptを起動します。
+タブの切り替えなどで文書の状態が表示中と非表示の間で変わったときに、ハンドラーを実行します。
 
 ```javascript
 $(document).on("visibilitychange", function (e) {
@@ -396,11 +330,9 @@ $(document).on("visibilitychange", function (e) {
 });
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### AJAX呼出しのエラー処理<a id="ajax-call-error-handling"></a>
 
-### AJAX呼出しのエラー処理
-
-AJAX呼出しが404または500エラーを返すと、エラーハンドラーが実行されます。ハンドラーが未定義の場合、他のjQueryコードが意図どおり動かないことがあります。グローバルAJAXエラーハンドラーを定義するには次を使います。
+404や500など、AJAXリクエストの失敗に対応するグローバルハンドラーを登録します。リクエストでグローバルイベントを無効にすると、このイベントは発生しません。[ajaxError資料](https://api.jquery.com/ajaxError/)を参照してください。
 
 ```javascript
 $(document).on("ajaxError", function (e, xhr, settings, error) {
@@ -408,11 +340,9 @@ $(document).on("ajaxError", function (e, xhr, settings, error) {
 });
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### プラグイン呼出しを連鎖する<a id="chain-plugin-calls"></a>
 
-### プラグイン呼出しを連鎖する
-
-jQueryではプラグインメソッド呼出しを「連鎖」できるため、DOMの繰返し検索と複数のjQueryオブジェクト作成を抑えられます。次のスニペットがプラグインメソッド呼出しだとします。
+同じ要素を繰り返し検索する代わりに、対応するメソッドを一つの選択結果へ連鎖して呼び出せます。原文では、まず個別の呼び出しを示しています。
 
 ```javascript
 $("#elem").show();
@@ -420,13 +350,13 @@ $("#elem").html("bla");
 $("#elem").otherStuff();
 ```
 
-連鎖を使うと大幅に改善できます。
+各メソッドが次のメソッドに対応するjQueryオブジェクトを返す場合、呼び出しをまとめられます。
 
 ```javascript
 $("#elem").show().html("bla").otherStuff();
 ```
 
-代替として、要素を（`$`を先頭に付けた）変数へキャッシュできます。
+`$`を先頭に付けた変数へ保存する方法でも、選択結果を再利用できます。原文のこの例は要素を非表示にし、直前の表示する例とは動作が異なります。
 
 ```javascript
 var $elem = $("#elem");
@@ -435,30 +365,28 @@ $elem.html("bla");
 $elem.otherStuff();
 ```
 
-jQueryの連鎖と[キャッシュ](#cache-jquery-selectors)は、より短く高速なコードにつながるベストプラクティスです。
+連鎖と[キャッシュ](#cache-jquery-selectors)は、どちらも選択結果を再利用できます。メソッドの戻り値と必要な動作に合わせて使います。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+### リスト項目をアルファベット順に並べ替える<a id="sort-list-items-alphabetically"></a>
 
-### リスト項目をアルファベット順に並べ替える
-
-リストの項目が多くなりすぎることがあります。CMSがコンテンツを生成し、それらをアルファベット順にしたい場合を考えます。
+項目のテキストを大文字に変換して比較し、その順にリストへ配置します。原文の比較関数は同じテキストにも1を返すため、[配列の並べ替えの仕様](https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.sort)に従い、同値の場合に0を返すよう補正しています。
 
 ```javascript
 var ul = $("#list"),
   lis = $("li", ul).get();
 
 lis.sort(function (a, b) {
-  return $(a).text().toUpperCase() < $(b).text().toUpperCase() ? -1 : 1;
+  var aText = $(a).text().toUpperCase();
+  var bText = $(b).text().toUpperCase();
+  return aText < bText ? -1 : aText > bText ? 1 : 0;
 });
 
 ul.append(lis);
 ```
 
-これで完了です。
+大文字に変換した文字列の比較であり、言語別の照合順序による並べ替えではありません。
 
-<sup>[目次に戻る](#table-of-contents)</sup>
-
-### 右クリックを無効化する
+### 右クリックを無効化する<a id="disable-right-click"></a>
 
 右クリックを無効にしたい場合、ページ全体に対して設定できます。
 
@@ -480,15 +408,11 @@ $(document).ready(function () {
 });
 ```
 
-<sup>[目次に戻る](#table-of-contents)</sup>
+## サポート<a id="support"></a>
 
-## サポート
+固定原文ではChrome、Firefox、Safari、Opera、Edge、IE11を挙げています。原文の対応情報であり、現在のjQueryリリースでの動作を保証するものではありません。
 
-Chrome、Firefox、Safari、Opera、Edge、IE11の現行バージョン。
-
-<sup>[目次に戻る](#table-of-contents)</sup>
-
-## 翻訳
+## 翻訳<a id="translations"></a>
 
 - [български](https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know/tree/master/translations/bg-BG)
 - [Español](https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know/tree/master/translations/es-ES)
@@ -499,5 +423,3 @@ Chrome、Firefox、Safari、Opera、Edge、IE11の現行バージョン。
 - [Pусский](https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know/tree/master/translations/ru-RU)
 - [简体中文](https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know/tree/master/translations/zh-CN)
 - [繁體中文](https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know/tree/master/translations/zh-TW)
-
-<sup>[目次に戻る](#table-of-contents)</sup>

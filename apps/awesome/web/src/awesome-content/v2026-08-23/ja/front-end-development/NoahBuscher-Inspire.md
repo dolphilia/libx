@@ -1,102 +1,108 @@
 ---
 title: "Awesome Inspire"
-description: "Inspireを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "ウェブのフロントエンド向けに、デザインの着想、素材、エディター、共同作業、バックエンド、テスト、読み物を案内します。"
 licenseSource: "github-NoahBuscher-Inspire-readme-md"
 ---
 
 # Awesome Inspire
 
-Inspireを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+現代的なウェブのフロントエンドを設計・構築するための資料です。レイアウトの着想やデザイン素材から、エディター、共同作業ツール、バックエンド、テスト、読み物まで探せます。料金と対応環境の条件は固定原文の記載に沿っています。
 
-## 構想
-##### レイアウトの選択肢やスタイルの方向性について、全体像をつかむのに適したサイトです。
+## 構想<a id="レイアウトの選択肢やスタイルの方向性について全体像をつかむのに適したサイトです"></a>
 
-* [Awwwards](http://www.awwwards.com/) - さまざまなスタイルの優れたサイトを多数掲載。
-* [CodeMyUI](https://codemyui.com/) - 優れた UI を作る洗練された CSS/JavaScript コードスニペット集。
-* [CodePen](http://codepen.io/) - ユーザーが投稿したコードの構想やスニペットを集める中心的なリポジトリ。実験に最適です。
-* [Codrops](https://tympanus.net/codrops/) - 最新のウェブ動向について記事やチュートリアルを公開するウェブデザイン・開発ブログ。
-* [CodyHouse](https://codyhouse.co/) - 優れた UI 要素のチュートリアルとショーケース。
-* [CSS Winner](http://www.csswinner.com/) - レビュー済みの優れたウェブサイト一覧。
-* [Designer News](https://www.designernews.co/) - インターネット上の優れたデザイン・開発リンク。
-* [Dribbble](https://dribbble.com/) - 才能ある人々によるアイコン、落書き、サイトなどのスナップ。
-* [Httpster](http://httpster.net/) - インターネット上の優れたサイトを厳選したリスト。
-* [Landings](https://landings.dev/) - 好みに応じて、デザインの参考になる最適なランディングページを検索。
-* [OnePageLove](https://onepagelove.com/) - 1ページサイトや一般的なウェブサイトデザインの優れた着想源。
-* [SaaS Pages](https://saaspages.xyz) - 着想を届けるため特別に作られた Netlify ページの分析。
+レイアウトの選択肢やスタイルの方向性を探せます。
+
+* [Awwwards](http://www.awwwards.com/) - さまざまなスタイルのウェブサイトを掲載。
+* [CodeMyUI](https://codemyui.com/) - UIの効果を作るCSS/JavaScriptスニペット集。
+* [CodePen](http://codepen.io/) - ユーザーが投稿したコードの構想やスニペットを集める中心的なリポジトリ。実験にも役立つ。
+* [Codrops](https://tympanus.net/codrops/) - ウェブの動向について記事やチュートリアルを公開するウェブデザイン・開発ブログ。
+* [CodyHouse](https://codyhouse.co/) - UI要素のチュートリアルと展示例。
+* [CSS Winner](http://www.csswinner.com/) - レビュー済みのウェブサイト一覧。
+* [Designer News](https://www.designernews.co/) - ウェブ上のデザイン・開発リンク。
+* [Dribbble](https://dribbble.com/) - 利用者が共有するアイコン、スケッチ、サイトなどの画像。
+* [Httpster](http://httpster.net/) - ウェブサイトのリスト。
+* [Landings](https://landings.dev/) - 好みに応じて、デザインの参考になるランディングページを検索。
+* [OnePageLove](https://onepagelove.com/) - 1ページサイトや一般的なウェブサイトデザインの着想源。
+* [SaaS Pages](https://saaspages.xyz) - デザインの着想を得るためのNetlifyページの分析。
 * [Siiimple](https://siiimple.com/) - よりシンプルなサイトを集めた別のリスト。
-* [SiteInspire](http://www.siteinspire.com/) - 着想を得られます。
+* [SiteInspire](http://www.siteinspire.com/) - デザインの着想源。
 * [TheBestDesigns](https://www.thebestdesigns.com/) - ウェブ全体から手作業で選んだサイトの総合リスト。
 
-## 制作
-##### サイトの基本的な枠組みを構築するのに適したサイトです。
+## 制作<a id="サイトの基本的な枠組みを構築するのに適したサイトです"></a>
 
-* 色 🎨
+ウェブサイトの基本的な枠組みを構築するための資料です。
+
+* 色
   * [ColorsWall](https://colorswall.com/) - カラーパレットを保存する場所。
-  * [Coolors](https://coolors.co/) - 非常に高速な配色生成器。
+  * [Coolors](https://coolors.co/) - 原文で高速と紹介される配色生成ツール。
   * [Kuler](https://color.adobe.com/) - サイト向けの独自カラースウォッチを簡単に作成・閲覧。
-  * [uiGradients](https://uigradients.com/) - 美しいグラデーション生成器。
+  * [uiGradients](https://uigradients.com/) - グラデーション生成ツール。
   * [Spectral](http://jxnblk.com/Spectral/) - 最小限のカラースウォッチ作成ツール。
 * フォント
   * [Google Fonts](https://www.google.com/fonts) - 無料で使いやすいウェブフォントを多数提供。
 * フレームワーク
-  * [Bootstrap](http://getbootstrap.com) - 現代的なウェブサイトやウェブアプリの構築に広く使われるフレームワーク。
+  * [Bootstrap](http://getbootstrap.com) - 現代的なウェブサイトやウェブアプリを構築するフレームワーク。
     * [Bootswatch](http://bootswatch.com) - Bootstrap 向け無料テーマの一覧。
 * アイコン
-  * [Icon Scout](https://iconscout.com) - 高品質なアイコン、イラスト、ストック写真を一か所で入手。
+  * [Icon Scout](https://iconscout.com) - アイコン、イラスト、ストック写真を一か所で入手。
   * [Iconmonstr](http://iconmonstr.com) - 無料でシンプルなアイコンのコレクション。
-  * [Ionicons](http://ionicons.com) - 無料アイコンのもう一つの優れたコレクション。
+  * [Ionicons](http://ionicons.com) - 無料アイコンのもう一つのコレクション。
 * 画像
   * [AllTheFreeStock](http://allthefreestock.com/) - 無料のストック画像、動画、音声、アイコンを一か所に集約。
-  * [TheStocks.im](http://thestocks.im) - 優れたストック写真サイトのコレクション。
-  * [Unsplash](https://unsplash.com) - 無料で高品質なストック写真。
+  * [TheStocks.im](http://thestocks.im) - ストック写真サイトのコレクション。
+  * [Unsplash](https://unsplash.com) - 無料のストック写真。
 * リソース
   * [CSS3 Animation Cheat Sheet](http://www.justinaguilar.com/animations/) - CSS3 アニメーションスニペット集。
   * [MDN](https://developer.mozilla.org) - HTML、CSS、JavaScript などのドキュメント
   * [User Inter Faces](http://uifaces.com) - ユーザー画像向けのダミー画像を取得。
   * [YMNNJQ](http://youmightnotneedjquery.com) - jQuery の関数を素の JavaScript で確認。ライブラリ不要。
 
-## ツール
-##### すべての画家には筆が必要です。まあ……大半の画家には。
+## ツール<a id="すべての画家には筆が必要ですまあ大半の画家には"></a>
+
+デザイン、編集、ファイル転送に使うツールです。
 
 * デザインツール
   * [Figma](https://figma.com) - ウェブベースのベクターグラフィックスエディター
   * [Sketch](https://sketchapp.com)［macOS 専用］- プロ向けベクターグラフィックスエディター
 * IDE
-  * [DevSession](https://devsession.js.org/) - ローカルディレクトリから共同作業用オンライン IDE を開きます。
+  * [DevSession](https://devsession.js.org/) - ローカルディレクトリから共同作業用オンラインIDEを開く。
 * [FileZilla](https://filezilla-project.org) - ターミナルでの FTP が不安な人向け
-* [Hyper](https://hyper.is) - 美しく拡張可能なコマンドラインインターフェース
-* [Taskade](https://www.taskade.com/)［macOS 専用］- 美しいタスクリストとアウトラインを作成。
+* [Hyper](https://hyper.is) - 拡張可能なコマンドラインインターフェース
+* [Taskade](https://www.taskade.com/)［macOS 専用］- タスクリストとアウトラインを作成。
 * テキストエディター
   * [Atom](https://atom.io) - 21世紀向けの改造可能なテキストエディター。
   * [Brackets](http://brackets.io/) - ライブプレビューを備えた現代的なオープンソースエディター。
-  * [Nova](https://nova.app)［macOS 専用］- 美しいネイティブテキストエディター。
-  * [Sublime Text](https://www.sublimetext.com) - 開発者に広く使われるテキストエディター。
+  * [Nova](https://nova.app)［macOS 専用］- ネイティブテキストエディター。
+  * [Sublime Text](https://www.sublimetext.com) - 開発者向けのテキストエディター。
     * テーマ
-      * [Flatron](https://github.com/noahbuscher/Flatron) - フラットで紫色、非常に魅力的。
-      * [Predawn](https://github.com/jamiewilson/predawn) - 美しいダークインターフェースと構文テーマ。
+      * [Flatron](https://github.com/noahbuscher/Flatron) - フラットで紫色のテーマ。
+      * [Predawn](https://github.com/jamiewilson/predawn) - 暗色のインターフェースと構文用のテーマ。
   * [VSCode](https://code.visualstudio.com/) - 無料のテキストエディター
 * [WinSCP](http://winscp.net) - MEAN スタックや VPS サーバーへファイルをアップロード。
 
-## 共同作業
-##### チームで作業しますか？ これらのリンクが役立ちます。
+## 共同作業<a id="チームで作業しますか-これらのリンクが役立ちます"></a>
 
-* [Cloud9](https://c9.io) - クラウド上で他の人と共同作業する優れた落ち着いた方法。
-* [Gist](https://gist.github.com) - コードとテキストをすばやく共有。小さなリポジトリのように使えます。
+チームで共同作業するためのツールです。
+
+* [Cloud9](https://c9.io) - クラウド上で他の人と共同作業。
+* [Gist](https://gist.github.com) - コードとテキストをすばやく共有。小さなリポジトリのように利用可能。
 * [Invoice Ninja](https://www.invoiceninja.com) - オープンソースの請求書作成プラットフォーム。
 * [Red Pen](https://redpen.io) - デザインを共有し、途切れなくフィードバックを取得。
-* [Scratchpad](http://scratchpad.io) - ウェブサイトのコーディングとプレビューを行うシンプルなリアルタイム共同作業ツール。
+* [Scratchpad](http://scratchpad.io) - ウェブサイトのコーディングとプレビューに使うシンプルなRTCツール。
 
-## バックエンド
-##### 優れたウェブアプリには優れたバックエンドが必要です。
+## バックエンド<a id="優れたウェブアプリには優れたバックエンドが必要です"></a>
+
+ウェブアプリケーション向けのバックエンドサービスです。
 
 * [Auth0](https://auth0.com/) - 認証を代行。
-* [DigitalOcean](https://www.digitalocean.com/) - 安価で高品質な VPS ホスティング企業。
+* [DigitalOcean](https://www.digitalocean.com/) - 原文で安価と紹介されるVPSホスティング企業。
 * [Firebase](https://www.firebase.com) - サイト向けのリアルタイム・フロントエンドデータベース。
 * [Hasura](https://hasura.io) - アプリのバックエンドを高速に構築・デプロイするプラットフォーム。
 * [Heroku](https://www.heroku.com) - 非常に簡単に拡張できるクラウドアプリケーションプラットフォーム。
 
-## テスト
-##### 公開前に、サイトが成功する準備を整えたか確認するための優れたツールです。
+## テスト<a id="公開前にサイトが成功する準備を整えたか確認するための優れたツールです"></a>
+
+公開前にウェブサイトを確認するためのツールです。
 
 * [Browserling](https://www.browserling.com/) - ウェブサイトをクロスブラウザーでテスト。
 * [Checkbot](https://www.checkbot.io) - ウェブサイトが50以上の SEO、速度、セキュリティのベストプラクティスに従っているかテストするブラウザー拡張機能。
@@ -108,22 +114,15 @@ Inspireを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 * [WooRank](https://www.woorank.com/) - SEO 要素、W3 検証、その他多数の変数をレビューするツール。基本サービスは無料。
 * [Yslow](http://yslow.org) - サイト読み込みを遅くする複数の原因を分析し、修正方法を見つけるツール。
 
-## おすすめの記事
-##### 空き時間に読むものが必要ですか？
+## おすすめの記事<a id="空き時間に読むものが必要ですか"></a>
 
-* [1stWebDesign](http://www.1stwebdesigner.com/blog/) - ウェブ開発とデザインに関する良質で分かりやすいブログ。
+ウェブデザインと開発についての読み物です。
+
+* [1stWebDesign](http://www.1stwebdesigner.com/blog/) - ウェブ開発とデザインに関する分かりやすいブログ。
 * [A List Apart](http://alistapart.com) - コーディングからビジネス慣行まで、ゲスト投稿と書籍全文を掲載。
-* [Codrops](http://tympanus.net/codrops/) - 現代のウェブ開発者とデザイナー向けデザイン技法の優れたコレクション。
-* [CSS-Tricks](https://css-tricks.com/) - CSS に関するあらゆる内容を扱う優れたブログ
-* [GoodUI](http://goodui.org) - 少なくとも悪くはありません。
-* [Insert HTML](http://www.inserthtml.com) - ウェブ開発者向けの現在と将来の技法・技術を扱うブログ。
+* [Codrops](http://tympanus.net/codrops/) - 現代のウェブ開発者とデザイナー向けのデザイン技法集。
+* [CSS-Tricks](https://css-tricks.com/) - CSS関連の話題を扱うブログ。
+* [GoodUI](http://goodui.org)
+* [Insert HTML](http://www.inserthtml.com) - 原文で現在・今後のものと紹介される、ウェブ開発者向けの技法・技術を扱うブログ。
 * [Mentor](http://www.mentor.so/) - 他のデザイナーや開発者からランダムな助言を取得。
 * [Smashing Magazine](http://www.smashingmagazine.com) - デジタルデザイン全般を扱う雑誌。
-
-## ライセンス
-
-[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
-
-法律で認められる範囲において、[Noah Buscher](http://noahbuscher.com) はこの作品に関するすべての著作権および関連する権利、隣接権を放棄しています。
-
-<div align="center">:heart:</div>

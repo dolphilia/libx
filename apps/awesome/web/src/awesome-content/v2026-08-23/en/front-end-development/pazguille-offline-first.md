@@ -1,37 +1,23 @@
 ---
 title: "Awesome Offline-First"
-description: "A curated collection of resources and projects focused on Offline-First."
+description: "Specifications, articles, talks, storage and synchronization tools, books, and application examples for offline-first web development."
 licenseSource: "github-pazguille-offline-first-readme-md"
 ---
 
 # Awesome Offline-First
 
-A curated collection of resources and projects focused on Offline-First.
-
-## Table of Contents
-- [W3C Specification](#w3c-specification)
-- [Newsletter](#newsletter)
-- [Posts](#posts)
-- [Presentations](#presentations)
-  - [Videos](#videos)
-  - [Slides](#slides)
-- [Tools](#tools)
-- [Books](#books)
-- [Showcase](#showcase)
-- [Who to Follow](#who-to-follow)
-- [Contributing](#contributing)
+Offline-first web applications are designed to remain useful without an internet connection. This list brings together web specifications, articles and talks, storage and synchronization tools, books, and examples of offline-capable applications. Descriptions and technology references reflect the fixed source rather than a claim about current support.
 
 ## W3C Specification
 
 [Offline Web Applications](http://www.w3.org/TR/offline-webapps/)
-> This specification highlights features (SQL, offline application caching APIs as well as online/offline events, status, and the localStorage API) from HTML5 and provides brief tutorials on how these features might be used to create Web applications that work offline.
+Introduces HTML5 features for offline web applications: SQL, application caching APIs, online/offline events and status, and the localStorage API. Includes brief tutorials on using these features.
 
 [Service Workers](http://www.w3.org/TR/service-workers/)
-> This specification describes a method that enables applications to take advantage of persistent background processing, including hooks to enable bootstrapping of web applications while offline.
+Describes persistent background processing, including hooks for bootstrapping web applications while offline.
 
 [IndexedDB](http://www.w3.org/TR/IndexedDB/)
-> This specification defines APIs for a database of records holding simple values and hierarchical objects. Each record consists of a key and some value. Moreover, the database maintains indexes over records it stores. An application developer directly uses an API to locate records either by their key or by using an index. A query language can be layered on this API. An indexed database can be implemented using a persistent B-tree data structure.
-
+Defines APIs for a database of key/value records containing simple values or hierarchical objects. Records can be located by key or by index. A query language can be layered on the API, and the indexed database can be implemented with a persistent B-tree.
 
 ## Newsletter
 [The Offline First Reader](http://offlinefirst.us4.list-manage1.com/subscribe?u=12d36bbe9418ed6a43127cd62&id=7fc00bfaef). A monthly reader featuring all things Offline First, covering theory, technology and user experience for new offline use cases.
@@ -515,7 +501,7 @@ A curated collection of resources and projects focused on Offline-First.
 [Introducing Hoodie: Full Stack App Development for Front-End Developers](https://www.toptal.com/front-end/introducing-hoodie-full-stack-app-development-for-front-end-developers)
 (Alvaro Oliveira - Sep 24, 2014)
 
-[Offline-first: a new paradigm in web development](https://github.com/pazguille/offline-first/blob/d778c2757eb534063fda6a00e69f2fa6098171a4/ttps:/translate.google.com/translate?hl=en&sl=nl&tl=en&u=http%3A%2F%2Fwww.e-sites.nl%2Fblog%2F400-offline-first-een-nieuw-paradigma-in-web-development.html)
+[Offline-first: a new paradigm in web development](https://translate.google.com/translate?hl=en&sl=nl&tl=en&u=http%3A%2F%2Fwww.e-sites.nl%2Fblog%2F400-offline-first-een-nieuw-paradigma-in-web-development.html)
 (Boye Oomens - Sep 16, 2014)
 
 [Building A Simple Cross-Browser Offline To-Do List With IndexedDB And WebSQL](https://www.smashingmagazine.com/2014/09/building-simple-cross-browser-offline-todo-list-indexeddb-websql/)
@@ -533,7 +519,7 @@ A curated collection of resources and projects focused on Offline-First.
 [Working offline](https://developer.mozilla.org/en-US/Apps/Fundamentals/Offline)
 (Aug 12, 2014)
 
-[Offline First - the new paradigm in web development done Neptune style](http://scn.sap.com/community/developer-center/front-end/blog/2014/08/05/offline-first--the-new-paradigm-in-web-development-done-neptune-style) (Njål Stabell - Augt 5, 2014)
+[Offline First - the new paradigm in web development done Neptune style](http://scn.sap.com/community/developer-center/front-end/blog/2014/08/05/offline-first--the-new-paradigm-in-web-development-done-neptune-style) (Njål Stabell - Aug 5, 2014)
 
 [Breaking Development: Offline First is the new Mobile First](http://www.lukew.com/ff/entry.asp?1902)
 (Luke Wroblewski - Jul 29, 2014)
@@ -600,14 +586,13 @@ A curated collection of resources and projects focused on Offline-First.
 (Michiel B. de Jong - 2011)
 
 [5 Reasons Why There are no Killer Offline Web Applications](https://www.sitepoint.com/killer-offline-web-applications/)
-(Craig Buckler - Feb 16, 2010
+(Craig Buckler - Feb 16, 2010)
 
 [Offline Web Applications](https://hacks.mozilla.org/2010/01/offline-web-applications/)
 (Paul Rouget - Jan 7, 2010)
 
 [Let's take this offline](http://diveintohtml5.info/offline.html)
 (Mark Pilgrim)
-
 
 ## Presentations
 
@@ -867,55 +852,54 @@ A curated collection of resources and projects focused on Offline-First.
 
 [offline-plugin](https://github.com/NekR/offline-plugin/): Offline plugin (ServiceWorker, AppCache) for webpack.
 
-[Pinterest Service Workers](https://github.com/pinterest/service-workers):A collection of utilities for creating/testing/experimenting with service workers.
+[Pinterest Service Workers](https://github.com/pinterest/service-workers): A collection of utilities for creating, testing, and experimenting with service workers.
 
-[Kinto](http://www.kinto-storage.org/): Add synchronisation and sharing abilities to your Web application in seconds.
+[Kinto](http://www.kinto-storage.org/): Adds synchronization and sharing capabilities to web applications.
 
-[bottle-service](https://github.com/bahmutov/bottle-service): Instant web applications restored from ServiceWorker cache.
+[bottle-service](https://github.com/bahmutov/bottle-service): Restores web applications from a ServiceWorker cache.
 
-[react-boilerplate](https://github.com/mxstbr/react-boilerplate): Quick setup for performance orientated, offline-first React.js applications.
+[react-boilerplate](https://github.com/mxstbr/react-boilerplate): A starting point for performance-oriented, offline-first React.js applications.
 
-[Haywire](https://github.com/omnia-salud/haywire): A minimal javascript library for network issues detection.
+[Haywire](https://github.com/omnia-salud/haywire): A minimal JavaScript library for detecting network issues.
 
 [sw-toolbox](https://github.com/GoogleChrome/sw-toolbox): A collection of tools for service workers.
 
-[UpUp](https://www.talater.com/upup/): An Offline First library designed to be the easiest way to add offline capabilities to a site.
+[UpUp](https://www.talater.com/upup/): An Offline First library for adding offline capabilities to a site.
 
-[simple-serviceworker-tutorial](https://github.com/jakearchibald/simple-serviceworker-tutorial): A really simple ServiceWorker example, designed to be an interactive introduction to ServiceWorker.
+[simple-serviceworker-tutorial](https://github.com/jakearchibald/simple-serviceworker-tutorial): An interactive example introducing ServiceWorker.
 
 [Hyperboot](https://github.com/substack/hyperboot): Offline webapp bootloader.
 
 [MakeDrive](https://github.com/mozilla/makedrive): A cloud-based Dropbox® equivalent for browser filesystems. Designed for use with Mozilla Webmaker tools and services.
-See the [Mozilla MakeDrive Wiki page](https://wiki.mozilla.org/Webmaker/MakeDrive) for background info.
+Background: [Mozilla MakeDrive Wiki](https://wiki.mozilla.org/Webmaker/MakeDrive).
 
 [ApplicationCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache): HTML5 provides an application caching mechanism that lets web-based applications run offline.
 
-[IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API): IndexedDB is an API for client-side storage of significant amounts of structured data and for high performance searches on this data using indexes.
+[IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API): An API for client-side storage of substantial amounts of structured data, with indexes for efficient searches.
 
 [ServiceWorkers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API): A Service Worker acts like a proxy on the client. For page requests and requests made by pages, you get a fetch event that you can respond to yourself, creating offline experiences.
 
-[localForage](https://github.com/localForage/localForage): Offline storage, improved. Wraps IndexedDB, WebSQL, or localStorage using a simple but powerful API.
+[localForage](https://github.com/localForage/localForage): Offline storage through an API wrapping IndexedDB, WebSQL, or localStorage.
 
-[remoteStorage](https://remotestorage.io/): remoteStorage enabled apps automatically sync your data across all of your devices, from desktop to tablet to smartphone, and even your TV.
+[remoteStorage](https://remotestorage.io/): remoteStorage-enabled apps automatically synchronize data across devices, including desktops, tablets, smartphones, and TVs.
 
-[pouchdb](https://pouchdb.com/): PouchDB is an open-source JavaScript database inspired by Apache CouchDB that is designed to run well within the browser.
+[pouchdb](https://pouchdb.com/): An open-source JavaScript database inspired by Apache CouchDB and designed to run in the browser.
 
-[Offline.js](http://github.hubspot.com/offline/docs/welcome/): An awesome JavaScript library to improve the experience of your app when your users lose connection.
+[Offline.js](http://github.hubspot.com/offline/docs/welcome/): A JavaScript library for handling loss of connectivity in applications.
 
 [Hoodie](http://hood.ie/): Hoodie is an Offline First and noBackend architecture for frontend-only web apps on the web and on iOS.
 
-[Offline States](http://offlinestat.es/): What show applications when we have not internet connection.
+[Offline States](http://offlinestat.es/): Examples of what applications show without an internet connection.
 
 [appCache Nanny](https://github.com/gr2m/appcache-nanny):  JavaScript APIs for appCache
 
-[bro-fs](https://github.com/vitalets/bro-fs): Promise-based wrapper over [HTML5 Filesystem API](https://www.w3.org/TR/file-system-api/) allowing to work with sandboxed filesystem in Chrome.
+[bro-fs](https://github.com/vitalets/bro-fs): A Promise-based wrapper over the [HTML5 Filesystem API](https://www.w3.org/TR/file-system-api/) for working with a sandboxed filesystem in Chrome.
 
 [Orbit.js](http://orbitjs.com/): Framework for orchestrating access, transformation, and synchronization between data sources.
 
-[workbox](https://github.com/GoogleChrome/workbox): JavaScript libraries for Offline Caching
+[workbox](https://github.com/GoogleChrome/workbox): JavaScript libraries for offline caching.
 
 [rxdb](https://github.com/pubkey/rxdb)
-
 
 ## Books
 
@@ -938,31 +922,16 @@ See the [Mozilla MakeDrive Wiki page](https://wiki.mozilla.org/Webmaker/MakeDriv
 (by Peter Lubbers, Brian Albers and Frank Salim)
 
 ## Showcase
-[Minutes.io](https://minutes.io): Awesome offline first minute taking app built with [Hoodie](http://hood.ie/).
+[Minutes.io](https://minutes.io): An offline-first meeting-minutes application built with [Hoodie](http://hood.ie/).
 
-[2048](https://gabrielecirulli.github.io/2048/): The original 2048 is a great game to pin to your homescreen. 
+[2048](https://gabrielecirulli.github.io/2048/): The original 2048 game, which can be pinned to the home screen.
 
-[hospitalrun.io](http://hospitalrun.io/): Open source software for developing world hospitals.
+[hospitalrun.io](http://hospitalrun.io/): Open-source software for hospitals in the developing world.
 
 [pokedex.org](https://www.pokedex.org/): An index of Pokémon, built as a client-side JavaScript webapp. Powered by ServiceWorker, PouchDB, virtual-dom, and web workers.
 
-[Soundslice](https://www.soundslice.com/): Learn and teach music better with interactive notation with [offline mode](https://www.soundslice.com/blog/29/introducing-soundslice-offline-mode/).
+[Soundslice](https://www.soundslice.com/): Interactive music notation for learning and teaching, with an [offline mode](https://www.soundslice.com/blog/29/introducing-soundslice-offline-mode/).
 
-## Who to Follow
-- [Matthew Riley](https://github.com/tofumatt): Works at mozilla, creator of localForage (localstroage, IndexedDb and WebSQL Wrapper)
-- [Jake Archibald](https://github.com/jakearchibald): Self described service worker fanatic, works at google helping make offline web apps a thing.
-
-## Contributing
-Sharing, suggestions and contributions are always welcome! If you want to contribute, you are highly encouraged to do so. Please read the [contribution guidelines](https://github.com/pazguille/offline-first/blob/d778c2757eb534063fda6a00e69f2fa6098171a4/CONTRIBUTING.md).
-
-Thanks to all [contributors](https://github.com/pazguille/offline-first/graphs/contributors).
-
-## Maintained by
-- Guille Paz (Frontend Web Developer & Web standards lover)
-- E-mail: [guille87paz@gmail.com](mailto:guille87paz@gmail.com)
-- Twitter: [@pazguille](https://twitter.com/pazguille)
-- Web: [https://pazguille.me/](https://pazguille.me/)
-
-
-## License
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+## <a id="who-to-follow"></a>Developers
+- [Matthew Riley](https://github.com/tofumatt): Creator of localForage, a wrapper for localStorage, IndexedDB, and WebSQL. The fixed source lists Mozilla as his workplace.
+- [Jake Archibald](https://github.com/jakearchibald): A self-described service worker enthusiast. The fixed source describes his work at Google helping to enable offline web applications.

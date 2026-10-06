@@ -1,0 +1,51 @@
+{
+  "status": "passed-for-fragments110-142-only",
+  "cycle": 356,
+  "checkedAt": "2026-10-03T03:30:10.836Z",
+  "canonical": "src/content/docs/v1-3-2/en/01-api/06-gzip.md",
+  "canonicalSHA256": "090f5f87f49c379eba1df4922743422543d442c1351dd426c9cafaa8aa21c414",
+  "method": "英語canonical全対応範囲129–142をrawHTMLで読解して翻訳後、日本語生成全decodedtext（注記/全14blocks）を別読解。原稿作成の自己申告や機械一致を内容reviewへ代用しない。",
+  "fragments": [
+    {
+      "start": 110,
+      "end": 128,
+      "draft": "meta/translation-drafts/06-gzip-110-128.md",
+      "sha256": "484c78ea3a7f2fb64ccddd3bdd3a53ac7d115b7f1c706ec1a6b2887b4184e4c3",
+      "meaning": "passed",
+      "japaneseReadability": "passed"
+    },
+    {
+      "start": 129,
+      "end": 142,
+      "draft": "meta/translation-drafts/06-gzip-129-142.md",
+      "sha256": "29a0edcd329a91cceb767aae16b845cfe11a7e4f70cc26f7ca5423839db53202",
+      "meaning": "passed",
+      "japaneseReadability": "passed"
+    }
+  ],
+  "judgments": [
+    "gz wrapper RFC1952とzlib区別、gzFile semiopaque inlinecommentだけ訳し型不変。",
+    "gzopen全mode字/例示/strategy参照/T reading不可/G/N/a/+/x/e、連結追記非検査、透過2byte検出、全NULL/errno/open-blockとN再設定を保持。原文ENONBLOCKを注記付き保持。",
+    "gzdopen fd取得/e/N/gzclose所有/dupとリーク・二重close/invalidfd-1のみ検出・遅延を保持。",
+    "buffer8192/開直後かつreadwrite前/遅延3倍/64K128K/printf最大・returns、setparams事前flushと全4errors保持。",
+    "gzread len/int・連結/trailingignore・同時writer EOF再開/OKとBUF区別/未完了は-1非returnでcloseまでerror遅延・nonblock EAGAIN/EWOULDBLOCKと遅延errorを保持。",
+    "fread/fwrite fullitems/size_tとpointercapable unsigned/積overflow・partialitemとgztell・size!=1データ損失/size==1代案を保持。write部分非0<len/int不適合も保持。",
+    "printf format/実byte/負error/8191-or-buffer-1/超過0/安全sprintf代替不可時の限定overflow/非ANSI/未提供STREAM/compileflags/非blockBUF何も書かずを全保持。",
+    "puts終端除外/文字数とpartial/int超過、gets len-1/改行転送/EOF/null終端条件/untouched/遅延errorと再結合責任、putc unsignedchar/value/-1を保持。",
+    "getc byte/-1/遅延error/macro検査省略NULLと構造体/非block errnoと原文gzread再試行注記。",
+    "ungetc最低1/既存未読失敗可能/開直後outputbuffer容量/seek-rewind破棄/-1 pendingseek強制とEOF後gztell、flush書込限定/全pending/Z_FINISH完了後newmember/連結read/多用圧縮率代償を保持。"
+  ],
+  "fixes": [],
+  "remainingBlocks": [
+    143,
+    163
+  ],
+  "wholePageReview": "pending",
+  "native": "pending",
+  "model": {
+    "preferred": "gpt-6.1-sol",
+    "configuredLastObserved": "gpt-6-astra",
+    "actual": null,
+    "localLLM": false
+  }
+}

@@ -1,55 +1,18 @@
 ---
 title: "Awesome CSS Protips"
-description: "A curated collection of resources and projects focused on CSS Protips."
+description: "CSS techniques and examples for layout, selectors, typography, spacing, forms, and browser compatibility."
 licenseSource: "github-AllThingsSmitty-css-protips-readme-md"
 ---
 
 # Awesome CSS Protips
 
-A curated collection of resources and projects focused on CSS Protips.
-
-## Contents
-
-- [Protips](#protips)
-- [Support](#support)
-- [Translations](#translations)
-- [Contribution Guidelines](https://github.com/AllThingsSmitty/css-protips/blob/e95123993037bbcd1bd97170cfa02087155c3690/CONTRIBUTING.md)
+CSS techniques with code examples and demos for layout, selectors, typography, spacing, forms, and browser compatibility. Browser support statements and linked translations reflect the fixed source; individual techniques have their own conditions and limitations.
 
 ## Protips
 
-1. [Use a CSS Reset](#use-a-css-reset)
-1. [Inherit `box-sizing`](#inherit-box-sizing)
-1. [Use `unset` Instead of Resetting All Properties](#use-unset-instead-of-resetting-all-properties)
-1. [Use `:not()` to Apply/Unapply Borders on Navigation](#use-not-to-applyunapply-borders-on-navigation)
-1. [Check if Font Is Installed Locally](#check-if-font-is-installed-locally)
-1. [Add `line-height` to `body`](#add-line-height-to-body)
-1. [Set `:focus` for Form Elements](#set-focus-for-form-elements)
-1. [Vertically-Center Anything](#vertically-center-anything)
-1. [Use `aspect-ratio` Instead of Height/Width](#use-aspect-ratio-instead-of-heightwidth)
-1. [Comma-Separated Lists](#comma-separated-lists)
-1. [Select Items Using Negative `nth-child`](#select-items-using-negative-nth-child)
-1. [Use SVG for Icons](#use-svg-for-icons)
-1. [Use the "Lobotomized Owl" Selector](#use-the-lobotomized-owl-selector)
-1. [Use `max-height` for Pure CSS Sliders](#use-max-height-for-pure-css-sliders)
-1. [Equal-Width Table Cells](#equal-width-table-cells)
-1. [Get Rid of Margin Hacks With Flexbox](#get-rid-of-margin-hacks-with-flexbox)
-1. [Use Attribute Selectors with Empty Links](#use-attribute-selectors-with-empty-links)
-1. [Control Specificity Better With `:is()`](#control-specificity-better-with-is)
-1. [Style "Default" Links](#style-default-links)
-1. [Intrinsic Ratio Boxes](#intrinsic-ratio-boxes)
-1. [Style Broken Images](#style-broken-images)
-1. [Use `rem` for Global Sizing; Use `em` for Local Sizing](#use-rem-for-global-sizing-use-em-for-local-sizing)
-1. [Hide Autoplay Videos That Aren't Muted](#hide-autoplay-videos-that-arent-muted)
-1. [Use `:root` for Flexible Type](#use-root-for-flexible-type)
-1. [Set `font-size` on Form Elements for a Better Mobile Experience](#set-font-size-on-form-elements-for-a-better-mobile-experience)
-1. [Use Pointer Events to Control Mouse Events](#use-pointer-events-to-control-mouse-events)
-1. [Set `display: none` on Line Breaks Used as Spacing](#set-display-none-on-line-breaks-used-as-spacing)
-1. [Use `:empty` to Hide Empty HTML Elements](#use-empty-to-hide-empty-html-elements)
-1. [Use `margin-inline` instead of `margin`](#use-margin-inline-instead-of-margin)
-
 ### Use a CSS Reset
 
-CSS resets help enforce style consistency across different browsers with a clean slate for styling elements. There are plenty of reset patterns to find, or you can use a more simplified reset approach:
+A CSS reset reduces differences in browser defaults. This example clears margins and padding and sets the box-sizing model:
 
 ```css
 *,
@@ -61,14 +24,14 @@ CSS resets help enforce style consistency across different browsers with a clean
 }
 ```
 
-Now elements will be stripped of margins and padding, and `box-sizing` lets you manage layouts with the CSS box model.
+Elements and pseudo-elements use `box-sizing: border-box` with zero margins and padding.
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/kkrkLL)
+<a id="demo"></a>
+
+[Demo](https://codepen.io/AllThingsSmitty/pen/kkrkLL)
 
 > **TIP:**
 > If you follow the [Inherit `box-sizing`](#inherit-box-sizing) tip below you might opt to not include the `box-sizing` property in your CSS reset.
-
-<sup>[Back to top](#contents)</sup>
 
 ### Inherit `box-sizing`
 
@@ -86,15 +49,15 @@ html {
 }
 ```
 
-This makes it easier to change `box-sizing` in plugins or other components that leverage other behavior.
+A component can change its box-sizing value and pass that value to descendants that inherit it.
 
-#### [Demo](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
+<a id="demo-1"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
 
 ### Use `unset` Instead of Resetting All Properties
 
-When resetting an element's properties, it's not necessary to reset each individual property:
+The source compares individual reset declarations with a shorthand reset. These examples change the button’s default appearance; retain a visible focus style when applying them:
 
 ```css
 button {
@@ -107,15 +70,13 @@ button {
 }
 ```
 
-You can specify all of an element's properties using the `all` shorthand. Setting the value to `unset` changes an element's properties to their initial values:
+The `all` shorthand resets properties together. With `unset`, inherited properties inherit and other properties take their initial values. `all` does not reset `direction`, `unicode-bidi`, or custom properties; see the [CSS Cascading and Inheritance specification](https://www.w3.org/TR/css-cascade-5/#valdef-all-unset).
 
 ```css
 button {
   all: unset;
 }
 ```
-
-<sup>[Back to top](#contents)</sup>
 
 ### Use `:not()` to Apply/Unapply Borders on Navigation
 
@@ -145,15 +106,15 @@ Instead of putting on the border...
 }
 ```
 
-Here, the CSS selector is read as a human would describe it.
+The last child is excluded from the border rule.
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/LkymvO)
+<a id="demo-2"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/LkymvO)
 
 ### Check if Font Is Installed Locally
 
-You can check if a font is installed locally before fetching it remotely, which is a good performance tip, too.
+The font source list tries a locally installed font before the remote URL:
 
 ```css
 @font-face {
@@ -168,13 +129,11 @@ code {
 }
 ```
 
-H/T to Adam Argyle for sharing this protip and [demo](https://codepen.io/argyleink/pen/VwYJpgR).
-
-<sup>[Back to top](#contents)</sup>
+This technique and [demo](https://codepen.io/argyleink/pen/VwYJpgR) were shared by Adam Argyle.
 
 ### Add `line-height` to `body`
 
-You don't need to add `line-height` to each `<p>`, `<h*>`, _et al_. separately. Instead, add it to `body`:
+Set `line-height` on `body` so that paragraphs and headings can inherit it, unless another rule overrides it:
 
 ```css
 body {
@@ -182,15 +141,15 @@ body {
 }
 ```
 
-This way textual elements can inherit from `body` easily.
+The unitless value scales with each element’s own font size.
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/VjbdYd)
+<a id="demo-3"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/VjbdYd)
 
 ### Set `:focus` for Form Elements
 
-Sighted keyboard users rely on focus to determine where keyboard events go in the page. Make focus for form elements stand out and consistent than a browser's default implementation:
+A visible focus indicator helps keyboard users locate the active element. This example gives links and form controls a consistent outline:
 
 ```css
 a:focus,
@@ -204,13 +163,13 @@ textarea:focus {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/ePzoOP/)
+<a id="demo-4"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/ePzoOP/)
 
 ### Vertically-Center Anything
 
-No, it's not black magic, you really can center elements vertically. You can do this with flexbox...
+Use Flexbox to center the content in both directions:
 
 ```css
 html,
@@ -225,7 +184,7 @@ body {
 }
 ```
 
-...and also with CSS Grid:
+CSS Grid provides another approach:
 
 ```css
 body {
@@ -236,15 +195,15 @@ body {
 ```
 
 > **TIP:**
-> Want to center something else? Vertically, horizontally...anything, anytime, anywhere? CSS-Tricks has [a nice write-up](https://css-tricks.com/centering-css-complete-guide/) on doing all of that.
+> CSS-Tricks covers more centering patterns in [this guide](https://css-tricks.com/centering-css-complete-guide/).
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/GqmGqZ)
+<a id="demo-5"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/GqmGqZ)
 
 ### Use `aspect-ratio` Instead of Height/Width
 
-The `aspect-ratio` property allows you to easily size elements and maintain consistent width-to-height ratio. This is incredibly useful in responsive web design to prevent layout shift. Use `object-fit` with it to prevent disrupting the layout if the height/width values of images changes.
+The `aspect-ratio` property supplies a preferred width-to-height ratio when at least one dimension is sized automatically. It can reserve space for an image in a responsive layout. The `object-fit` property controls how the image fits inside its box; this example crops it to fill the box.
 
 ```css
 img {
@@ -255,13 +214,13 @@ img {
 
 Learn more about the `aspect-ratio` property in this [web.dev post](https://web.dev/articles/aspect-ratio).
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/MWxwoNx/)
+<a id="demo-6"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/MWxwoNx/)
 
 ### Comma-Separated Lists
 
-Make list items look like a real, comma-separated list:
+Add commas between list items using generated content:
 
 ```css
 ul > li:not(:last-child)::after {
@@ -272,13 +231,11 @@ ul > li:not(:last-child)::after {
 Use the `:not()` pseudo-class and no comma will be added to the last item.
 
 > **NOTE:**
-> This tip may not be ideal for accessibility, specifically screen readers. And copy/paste from the browser doesn't work with CSS-generated content. Proceed with caution.
-
-<sup>[Back to top](#contents)</sup>
+> CSS-generated text may not be available to screen readers or included when copying text from the browser. Do not rely on it for essential content.
 
 ### Select Items Using Negative `nth-child`
 
-Use negative `nth-child` in CSS to select items 1 through n.
+Use negative `nth-child` to select elements by their position among element siblings. Here, list items in the first three positions are displayed.
 
 ```css
 li {
@@ -291,7 +248,7 @@ li:nth-child(-n + 3) {
 }
 ```
 
-Or, since you've already learned a little about [using `:not()`](#use-not-to-applyunapply-borders-on-navigation), try:
+Alternatively, keep the initial hiding rule and replace the first selection rule with [a `:not()` selector](#use-not-to-applyunapply-borders-on-navigation) to display items after the first three positions:
 
 ```css
 /* select all items except the first 3 and display them */
@@ -300,13 +257,13 @@ li:not(:nth-child(-n + 3)) {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/WxjKZp)
+<a id="demo-7"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/WxjKZp)
 
 ### Use SVG for Icons
 
-There's no reason not to use SVG for icons:
+SVG can be used for icons that need to scale across resolutions:
 
 ```css
 .logo {
@@ -314,10 +271,10 @@ There's no reason not to use SVG for icons:
 }
 ```
 
-SVG scales well for all resolution types and is supported in all browsers [back to IE9](http://caniuse.com/#search=svg). Ditch your .png, .jpg, or .gif-jif-whatev files.
+The source presents SVG as an alternative to PNG, JPG, and GIF icons, with support [back to IE9](http://caniuse.com/#search=svg).
 
 > **NOTE:**
-> If you have SVG icon-only buttons for sighted users and the SVG fails to load, this will help maintain accessibility:
+> The source suggests displaying the `aria-label` text when an SVG icon fails to load in an icon-only button:
 
 ```css
 .no-svg .icon-only::after {
@@ -325,11 +282,9 @@ SVG scales well for all resolution types and is supported in all browsers [back 
 }
 ```
 
-<sup>[Back to top](#contents)</sup>
-
 ### Use the "Lobotomized Owl" Selector
 
-It may have a strange name but using the universal selector (`*`) with the adjacent sibling selector (`+`) can provide a powerful CSS capability:
+Combine the universal selector (`*`) with the adjacent sibling selector (`+`) to add spacing between sibling elements:
 
 ```css
 * + * {
@@ -337,18 +292,18 @@ It may have a strange name but using the universal selector (`*`) with the adjac
 }
 ```
 
-In this example, all elements in the flow of the document that follow other elements will receive `margin-top: 1.5em`.
+In this example, an element with an immediately preceding element sibling receives `margin-top: 1.5em`.
 
 > **TIP:**
 > For more on the "lobotomized owl" selector, read [Heydon Pickering's post](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls) on _A List Apart_.
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/grRvWq)
+<a id="demo-8"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/grRvWq)
 
 ### Use `max-height` for Pure CSS Sliders
 
-Implement CSS-only sliders using `max-height` with overflow hidden:
+Change a content panel’s height limit on hover using `max-height` and overflow rules:
 
 ```css
 .slider {
@@ -363,13 +318,11 @@ Implement CSS-only sliders using `max-height` with overflow hidden:
 }
 ```
 
-The element expands to the `max-height` value on hover and the slider displays as a result of the overflow.
-
-<sup>[Back to top](#contents)</sup>
+On hover, the height limit changes from 200px to 600px and vertical scrolling is enabled. The actual height still depends on the content and other sizing rules; the limit does not force a height of 600px. See the [CSS maximum-size properties](https://www.w3.org/TR/css-sizing-3/#max-size-properties).
 
 ### Equal-Width Table Cells
 
-Tables can be a pain to work with. Try using `table-layout: fixed` to keep cells at equal width:
+The source uses `table-layout: fixed` for equal-width table columns:
 
 ```css
 .calendar {
@@ -377,15 +330,15 @@ Tables can be a pain to work with. Try using `table-layout: fixed` to keep cells
 }
 ```
 
-Pain-free table layouts.
+Fixed table layout also depends on the table width and any widths set on columns or cells in the first row. This declaration alone does not guarantee equal columns; see the [CSS table layout specification](https://www.w3.org/TR/css-tables-3/).
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/jALALm)
+<a id="demo-9"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/jALALm)
 
 ### Get Rid of Margin Hacks With Flexbox
 
-When working with column gutters you can get rid of `nth-`, `first-`, and `last-child` hacks by using flexbox's `space-between` property:
+Use Flexbox with `justify-content: space-between` for gaps between columns instead of margin rules involving `nth-`, `first-`, and `last-child` selectors:
 
 ```css
 .list {
@@ -398,13 +351,11 @@ When working with column gutters you can get rid of `nth-`, `first-`, and `last-
 }
 ```
 
-Now column gutters always appear evenly-spaced.
-
-<sup>[Back to top](#contents)</sup>
+Available space is distributed evenly between the flex items.
 
 ### Use Attribute Selectors with Empty Links
 
-Display links when the `<a>` element has no text value but the `href` attribute has a link:
+For an empty `<a>` element whose `href` begins with http, display the URL as generated text:
 
 ```css
 a[href^="http"]:empty::before {
@@ -412,18 +363,18 @@ a[href^="http"]:empty::before {
 }
 ```
 
-That's really convenient.
+The generated text displays the link destination.
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/zBzXRx)
+<a id="demo-10"></a>
+
+[Demo](https://codepen.io/AllThingsSmitty/pen/zBzXRx)
 
 > **NOTE:**
-> This tip may not be ideal for accessibility, specifically screen readers. And copy/paste from the browser doesn't work with CSS-generated content. Proceed with caution.
-
-<sup>[Back to top](#contents)</sup>
+> CSS-generated text may not be available to screen readers or included when copying text from the browser. Do not rely on it for essential content.
 
 ### Control Specificity Better with `:is()`
 
-The `:is()` pseudo-class is used to target multiple selectors at once, reducing redundancy and enhancing code readability. This is incredibly useful for writing large selectors in a more compact form.
+The `:is()` pseudo-class groups selector alternatives, allowing a long selector list to be written more compactly.
 
 ```css
 :is(section, article, aside, nav) :is(h1, h2, h3, h4, h5, h6) {
@@ -431,7 +382,7 @@ The `:is()` pseudo-class is used to target multiple selectors at once, reducing 
 }
 ```
 
-The above ruleset is equivalent to the following number selector rules...
+For these type selectors, the ruleset selects the same elements as the expanded selector list below:
 
 ```css
 section h1,
@@ -462,9 +413,9 @@ nav h6 {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/rNRVxdx)
+<a id="demo-11"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/rNRVxdx)
 
 ### Style "Default" Links
 
@@ -477,13 +428,11 @@ a[href]:not([class]) {
 }
 ```
 
-Now links that are inserted via a CMS, which don't usually have a `class` attribute, will have a distinction without generically affecting the cascade.
-
-<sup>[Back to top](#contents)</sup>
+This rule styles links with an href attribute and no class attribute, including CMS-inserted links that meet those conditions.
 
 ### Intrinsic Ratio Boxes
 
-To create a box with an intrinsic ratio, all you need to do is apply top or bottom padding to a div:
+Use percentage padding with a zero-height container and an absolutely positioned child to construct a ratio box:
 
 ```css
 .container {
@@ -502,15 +451,15 @@ To create a box with an intrinsic ratio, all you need to do is apply top or bott
 }
 ```
 
-Using 20% for padding makes the height of the box equal to 20% of its width. No matter the width of the viewport, the child div will keep its aspect ratio (100% / 20% = 5:1).
+Percentage padding is based on the containing block’s width in this horizontal layout. When the container spans that width, `padding-bottom: 20%` creates the 5:1 ratio shown here (100% / 20% = 5:1); see the [CSS box model specification](https://www.w3.org/TR/CSS21/box.html#padding-properties).
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/jALZvE)
+<a id="demo-12"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/jALZvE)
 
 ### Style Broken Images
 
-Make broken images more aesthetically-pleasing with a little bit of CSS:
+The source proposes CSS rules for styling an image that fails to load:
 
 ```css
 img {
@@ -525,7 +474,7 @@ img {
 }
 ```
 
-Now add pseudo-elements rules to display a user message and URL reference of the broken image:
+The pattern uses pseudo-elements to show a message and the image URL. Its rendering depends on browser behavior for broken images:
 
 ```css
 img::before {
@@ -544,8 +493,6 @@ img::after {
 > **TIP:**
 > Learn more about styling for this pattern in [Ire Aderinokun's post](http://bitsofco.de/styling-broken-images/).
 
-<sup>[Back to top](#contents)</sup>
-
 ### Use `rem` for Global Sizing; Use `em` for Local Sizing
 
 After setting the base font size at the root (`html { font-size: 100%; }`), set the font size for textual elements to `em`:
@@ -560,7 +507,7 @@ p {
 }
 ```
 
-Then set the font-size for modules to `rem`:
+Then set the `font-size` for modules to `rem`:
 
 ```css
 article {
@@ -572,13 +519,11 @@ aside .module {
 }
 ```
 
-Now each module becomes compartmentalized and easier to style, more maintainable, and flexible.
-
-<sup>[Back to top](#contents)</sup>
+Module sizes are based on the root font size; their text sizes are based on the inherited font size.
 
 ### Hide Autoplay Videos That Aren't Muted
 
-This is a great trick for a custom user stylesheet. Avoid overloading a user with sound from a video that autoplays when the page is loaded. If the sound isn't muted, don't show the video:
+For a custom user stylesheet, the source hides video elements that have `autoplay` but lack a `muted` attribute. This CSS rule controls visibility:
 
 ```css
 video[autoplay]:not([muted]) {
@@ -586,13 +531,11 @@ video[autoplay]:not([muted]) {
 }
 ```
 
-Once again, we're taking advantage of using the [`:not()`](#use-not-to-applyunapply-borders-on-navigation) pseudo-class.
-
-<sup>[Back to top](#contents)</sup>
+The [`:not()`](#use-not-to-applyunapply-borders-on-navigation) pseudo-class excludes elements with the muted attribute.
 
 ### Use `:root` for Flexible Type
 
-The type font size in a responsive layout should be able to adjust with each viewport. You can calculate the font size based on the viewport height and width using `:root`:
+Use `:root` to calculate `font-size` from the viewport height and width:
 
 ```css
 :root {
@@ -600,7 +543,7 @@ The type font size in a responsive layout should be able to adjust with each vie
 }
 ```
 
-Now you can utilize the `root em` unit based on the value calculated by `:root`:
+Now you can utilize the `rem` unit based on the value calculated by `:root`:
 
 ```css
 body {
@@ -608,13 +551,13 @@ body {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/XKgOkR)
+<a id="demo-13"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/XKgOkR)
 
 ### Set `font-size` on Form Elements for a Better Mobile Experience
 
-To avoid mobile browsers (iOS Safari, _et al_.) from zooming in on HTML form elements when a `<select>` drop-down is tapped, add `font-size` to the selector rule:
+The source proposes a `font-size` of 16px for form controls as a way to avoid automatic zoom on focus in mobile browsers such as iOS Safari. The effect depends on the browser and its settings; this example includes `<select>` along with text inputs and textareas:
 
 ```css
 input[type="text"],
@@ -625,11 +568,9 @@ textarea {
 }
 ```
 
-<sup>[Back to top](#contents)</sup>
+### Use `pointer-events` to Control Mouse Events
 
-### Use Pointer Events to Control Mouse Events
-
-[Pointer events](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events) allow you to specify how the mouse interacts with the element it's touching. To disable the default pointer event on a button, for instance:
+The [pointer-events property](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events) controls whether an element is a target of pointer hit-testing. In this example, the disabled button is excluded from that targeting:
 
 ```css
 button:disabled {
@@ -638,9 +579,7 @@ button:disabled {
 }
 ```
 
-It's that simple.
-
-<sup>[Back to top](#contents)</sup>
+This property controls pointer targeting rather than cancelling an event’s default action. See the [CSS user interaction specification](https://www.w3.org/TR/css-ui-4/#pointer-events-control).
 
 ### Set `display: none` on Line Breaks Used as Spacing
 
@@ -652,11 +591,9 @@ br + br {
 }
 ```
 
-<sup>[Back to top](#contents)</sup>
-
 ### Use `:empty` to Hide Empty HTML Elements
 
-If you have HTML elements that are empty, i.e., the content has yet to be set either by a CMS or dynamically injected (e.g., `<p class="error-message"></p>`) and it's creating unwanted space on your layout, use the `:empty` pseudo-class to hide the element on the layout.
+Use the `:empty` pseudo-class to hide an empty placeholder such as `<p class="error-message"></p>` before a CMS or script supplies its content. The source’s broad selector below matches empty elements throughout the page, so restrict it to the intended placeholders when applying this pattern.
 
 ```css
 :empty {
@@ -665,19 +602,11 @@ If you have HTML elements that are empty, i.e., the content has yet to be set ei
 ```
 
 > **NOTE:**
-> Keep in mind that elements with whitespace aren't considered empty, e.g., `<p class="error-message"> </p>`.
-
-<sup>[Back to top](#contents)</sup>
-
-## Support
-
-Current versions of Chrome, Firefox, Safari, and Edge.
-
-<sup>[Back to top](#contents)</sup>
+> In the [Selectors Level 3 definition](https://www.w3.org/TR/selectors-3/#empty-pseudo), whitespace text makes an element nonempty, as in `<p class="error-message"> </p>`. This is the behavior described by the source.
 
 ### Use `margin-inline` instead of `margin`
 
-`margin-inline` defines the inline start and end margins of an element. So instead of using `margin-left` and `margin-right` we can use the inline property to define both.
+`margin-inline` sets the inline-start and inline-end margins. In horizontal writing modes, it can replace separate `margin-left` and `margin-right` declarations; their start/end mapping also depends on text direction.
 
 ```css
 .div {
@@ -685,7 +614,7 @@ Current versions of Chrome, Firefox, Safari, and Edge.
 }
 ```
 
-The same can be done for `margin-block` with defines the block start and end margins, i.e., `margin-top` and `margin-bottom`.
+The `margin-block` shorthand sets the block-start and block-end margins. In horizontal writing mode these correspond to `margin-top` and `margin-bottom`; the physical mapping depends on writing mode. See [CSS Logical Properties](https://www.w3.org/TR/css-logical-1/#margin-properties).
 
 ```css
 .div {
@@ -693,14 +622,18 @@ The same can be done for `margin-block` with defines the block start and end mar
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/PwoOQGB)
+<a id="demo-14"></a>
 
-<sup>[Back to top](#contents)</sup>
+[Demo](https://codepen.io/AllThingsSmitty/pen/PwoOQGB)
+
+## Support
+
+The fixed source lists Chrome, Firefox, Safari, and Edge as supported browsers. This statement refers to the source’s versions and does not guarantee support for every example in current browsers.
 
 ## Translations
 
 > **NOTE:**
-> I've had less time available to maintain the growing list of translated tips; adding a new tip requires including it with over a dozen translations. For that reason, translated README files are likely to not include all the tips listed on the main README file.
+> The source notes that maintaining more than a dozen translations takes additional time, so translated READMEs may omit tips from the main README.
 
 - [简体中文](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-CN)
 - [正體中文](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-TW)
@@ -717,5 +650,3 @@ The same can be done for `margin-block` with defines the block start and end mar
 - [Português do Europe](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/pt-PT)
 - [Русский](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/ru-RU)
 - [Tiếng Việt](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/vn-VN)
-
-<sup>[Back to top](#contents)</sup>

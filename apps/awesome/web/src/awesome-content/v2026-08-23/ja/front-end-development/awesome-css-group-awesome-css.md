@@ -1,198 +1,144 @@
 ---
-title: "Awesome CSS Awesome Travis"
-description: "CSS Awesome Travisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+title: "Awesome CSS"
+description: "CSS仕様、フレームワーク、パーサー、スタイルガイド、方法論、ツール、ポッドキャスト、動画、書籍、チュートリアルを案内します。"
 licenseSource: "github-awesome-css-group-awesome-css-readme-md"
 ---
 
-# Awesome CSS Awesome Travis
+# Awesome CSS<a id="awesome-css-awesome-travis"></a>
 
-CSS Awesome Travisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+CSSのフレームワーク、仕様、パーサー、プリプロセッサー、スタイルガイド、方法論、ツール、メディア、チュートリアルを収録しています。原文の導入ではCSSを学ぶためではなく書くための一覧と位置づけていますが、記録されたリストにはチュートリアルの節もあります。
 
-## 目次
+## 補足資料<a id="complementary-resources"></a>
 
+CSSに関する疑問は、次の資料やコミュニティを参照してください。
 
+- [CSS - MDN - Mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Reddit (CSS)](https://www.reddit.com/r/css/)
+- [StackOverflow (CSS)](https://stackoverflow.com/questions/tagged/css)
 
+## CSSワーキンググループ<a id="css-working-group"></a>
 
+CSSワーキンググループはCSS仕様を作成・定義します。仕様には策定の進行に応じて[成熟度](https://www.w3.org/2005/10/Process-20051014/tr#maturity-levels)が割り当てられます。詳しくは[CSSワーキンググループのページ](https://www.w3.org/Style/CSS/)を参照してください。
 
-- [CSS Working Group](#css-working-group)
-  - [Editor's Draft :black_nib:](#editors-draft-black_nib)
-- [Parsers :mag:](#parsers-mag)
-- [Preprocessors :pill:](#preprocessors-pill)
-- [Frameworks :art:](#frameworks-art)
-- [Toolkits :wrench:](#toolkits-wrench)
-- [Reset and Normalize](#reset-and-normalize)
-- [CSS Development at Large-Scale Websites](#css-development-at-large-scale-websites)
-- [Code Style Guidelines :book:](#code-style-guidelines-book)
-- [Style Guide](#style-guide)
-- [Style Guide Generators :slot_machine:](#style-guide-generators-slot_machine)
-- [Naming conventions & Methodologies :bulb:](#naming-conventions--methodologies-bulb)
-- [CSS in JS](#css-in-js)
-- [CSS Polyfills](#css-polyfills)
-- [Miscellaneous](#miscellaneous)
-- [Podcasts :radio:](#podcasts-radio)
-- [Twitter :satellite:](#twitter-satellite)
-- [Videos :tv:](#videos-tv)
-  - [2019](#2019)
-  - [2016](#2016)
-  - [2015](#2015)
-- [Books :books:](#books-books)
-- [Tutorials :clapper:](#tutorials-clapper)
-- [Maintainers](#maintainers)
-- [Contribute](#contribute)
+### 編集者草案<a id="編集者草案-black_nib"></a><a id="editors-draft-black_nib"></a>
 
+CSS仕様の編集者草案。
 
+- [W3c/csswg-drafts](https://github.com/w3c/csswg-drafts) - CSS WGの編集者草案リポジトリのミラー。
+- [W3c/css-houdini-drafts](https://github.com/w3c/css-houdini-drafts) - Houdini WGの編集者草案リポジトリのミラー。
 
-<a id="css-working-group"></a>
-## CSSワーキンググループ
+## パーサー<a id="パーサー-mag"></a><a id="parsers-mag"></a>
 
-CSSワーキンググループはCSS仕様の作成と定義を行います。これらの仕様は、設計プロセスを通じて進むにつれて [maturity levels](https://www.w3.org/2005/10/Process-20051014/tr#maturity-levels) に割り当てられます。より詳しく知りたい場合は、 [CSS Working Group Page](https://www.w3.org/Style/CSS/) を訪れてください。
+* [CSSOM](https://github.com/NV/CSSOM) - JavaScriptのみで実装されたCSSオブジェクトモデル。
+* [CSSTree](https://github.com/csstree/csstree) - 構文検証機能を備えた詳細なCSSパーサー。
+* [Gonzales PE](https://github.com/tonyganch/gonzales-pe) - プリプロセッサーにも対応するCSSパーサー。
+* [Mensch](https://github.com/brettstimmerman/mensch) - CSSパーサー。
+* [ParserLib](https://github.com/CSSLint/parser-lib) - CSSLint/parser-lib。
+* [PostCSS](https://github.com/postcss/postcss) - JSプラグインでCSSを変換します。
+* [Rework](https://github.com/reworkcss/rework) - Node.jsでCSSの前処理を行うプラグインフレームワーク。
+* [Stylecow](https://github.com/stylecow/stylecow) - 原リストでは、すべてのブラウザーでモダンCSSを利用するためのツールと紹介されています。
 
-<a id="editors-draft-black_nib"></a>
-### 編集者草案 :black_nib:
+## プリプロセッサー<a id="プリプロセッサー-pill"></a><a id="preprocessors-pill"></a>
 
-*CSS仕様の編集ドラフト*
+プリプロセッサーはCSSを拡張・変換します。
 
-- [W3c/csswg-drafts](https://github.com/w3c/csswg-drafts) - CSS WG Editor Draft リポジトリの鏡。
-- [W3c/css-houdini-drafts](https://github.com/w3c/css-houdini-drafts) - ホウディンイのミラーWGエディタリポジトリ。
+* [LESS](https://github.com/less/less.js) - CSSと後方互換性があり、追加機能にも既存のCSS構文を使用します。
+* [PostCSS](https://github.com/postcss/postcss) - JSプラグインでCSSを変換します。
+* [Sass](https://github.com/sass/sass) - CSS拡張言語。
+* [STYLIS](https://github.com/thysultan/stylis.js) - 軽量CSSプリプロセッサー。
+* [Stylus](http://learnboost.github.io/stylus/) - Node.js向けに構築されたCSS言語。
+* [Vanilla Extract](https://vanilla-extract.style/) - TypeScriptで静的CSSを生成します。型安全で局所的なスコープを持つクラス、変数、テーマを記述できます。
 
-<a id="parsers-mag"></a>
-## パーサー :mag:
+## フレームワーク<a id="フレームワーク-art"></a><a id="frameworks-art"></a>
 
-* [CSSOM](https://github.com/NV/CSSOM) - 純粋なJavaScriptで実装されたCSSオブジェクトモデル。
-* [CSSTree](https://github.com/csstree/csstree) - 詳細なCSSパーサーで、文法検証機能付き。
-* [Gonzales PE](https://github.com/tonyganch/gonzales-pe) - CSSパーサーで事前処理言語に対応
-* [Mensch](https://github.com/brettstimmerman/mensch) - 良いCSSパーサー。
-* [ParserLib](https://github.com/CSSLint/parser-lib) - CSSLintのパーサーライブラリ
-* [PostCSS](https://github.com/postcss/postcss) - JSプラグインでスタイルを変更する。
-* [Rework](https://github.com/reworkcss/rework) - Node.jsにおけるCSS事前処理用のプラグインフレームワーク。
-* [Stylecow](https://github.com/stylecow/stylecow) - 現代的なCSSがすべてのブラウザで利用可能
+* [AgnosticUI](https://www.agnosticui.com/) - React、Vue 3、Svelte、Angularで利用できるCSSコンポーネントの基本要素。原リストではアクセシビリティを備えると紹介されています。
+* [Bonsai](https://www.bonsaicss.com/) - 50kb未満のユーティリティファーストCSSフレームワーク。
+* [Bootstrap](https://getbootstrap.com/) - HTML、CSS、JavaScriptフレームワーク。
+* [Bulma](http://bulma.io/) - FlexboxベースのCSSフレームワーク。変更用にSassのインポートも提供します。
+* [Butter Cake](http://getbuttercake.com/) - 軽量フロントエンドCSSフレームワーク。
+* [Charts.css](https://chartscss.org/) - CSSによるデータ可視化フレームワーク。
+* [Chota](https://jenil.github.io/chota/) - レスポンシブでカスタマイズ可能なマイクロフレームワーク（3kb）。ユーティリティとグリッドシステムを備えています。
+* [Cirrus](https://spiderpig86.github.io/Cirrus/) - コントロール類とシンプルな構造を備えたレスポンシブCSSフレームワーク。
+* [Foundation](http://foundation.zurb.com/) - レスポンシブなフロントエンドフレームワーク。
+* [Gralig](http://gralig.com/) - 控えめな灰色調のCSSライブラリ。
+* [Halfmoon](https://www.gethalfmoon.com/) - ダークモードを備えたレスポンシブなフロントエンドフレームワーク。
+* [Hasser CSS](https://github.com/HeavenMercy/HasserCSS) - 柔軟なGrid、Heroなどのコンポーネントを持つCSSフレームワーク。原リストでは圧縮前のサイズを12kとしています。
+* [Inuit.css](http://inuitcss.com/) - BEMとOOCSSを使用する、拡張性のあるSassベースのフレームワーク。
+* [Material-components-web](https://github.com/material-components/material-components-web) - ウェブ向けの、モジュール構成でカスタマイズ可能なMaterial DesignのUIコンポーネント。
+* [Materialize](http://materializecss.com/) - Material Designベースのレスポンシブなフロントエンドフレームワーク。
+* [Milligram](http://milligram.io) - 最小限の構成を重視するCSSフレームワーク。
+* [Numl](https://numl.design) - レスポンシブなUI向けのHTMLベースの言語とデザインシステム。原リストでは、アクセシビリティを備え、さまざまな見た目に対応すると紹介されています。
+* [Pure.css](http://purecss.io/) - 各種ウェブプロジェクトで利用できる、小規模でレスポンシブなCSSモジュール群。
+* [Semantic UI](http://semantic-ui.com/) - 人が読みやすいHTMLを使用するフレームワーク。
+* [Shorthand Framework](https://github.com/shorthandcss/shorthand) - 各種機能を備えたCSSフレームワーク。
+* [Spectre.css](https://picturepan2.github.io/spectre/index.html) - 軽量でレスポンシブなモダンCSSフレームワーク。
+* [Strawberry](https://github.com/jfet97/strawberry) - 入れ子のflexboxを扱うためのflexboxユーティリティ。
+* [Tachyons](http://tachyons.io/) - 単一用途のクラスを組み合わせる、機能単位のCSSフレームワーク。
+* [Tacit](https://yegor256.github.io/tacit/) - グラフィックデザインの技能を前提としないCSSフレームワーク。
+* [Tailwindcss](https://github.com/tailwindcss/tailwindcss) - UI開発向けのユーティリティファーストCSSフレームワーク。
+* [Tronic247 Material](https://material.pages.dev/) - Material Designのガイドラインに沿った、CSSと一部のJSによるレスポンシブフレームワーク。
+* [UIkit](http://getuikit.com/) - 軽量でモジュール構成のフロントエンドフレームワーク。
+* [Unsemantic](http://unsemantic.com/) - モバイル、タブレット、デスクトップ向けの可変幅グリッド。
+* [Wing](https://kbrsh.github.io/wing/) - 最小限の構成を重視した、軽量でレスポンシブなフレームワーク。
 
-<sub>[⇧ back to top](#contents)</sub>
+さらに多くのフレームワークは[awesome-css-frameworks](https://github.com/troxler/awesome-css-frameworks)を参照してください。
 
-<a id="preprocessors-pill"></a>
-## プリプロセッサー :pill:
+## ツールキット<a id="ツールキット-wrench"></a><a id="toolkits-wrench"></a>
 
-CSSをより速く書ける
+* [Bourbon](http://bourbon.io/) - Sass向けのシンプルで軽量なミックスインライブラリ。
 
-* [LESS](https://github.com/less/less.js) - CSSとの後方互換性を保ち、追加された機能は既存のCSS構文を使用する。
-* [PostCSS](https://github.com/postcss/postcss) - CSSをJSプラグインで変換する。
-* [Sass](https://github.com/sass/sass) - 熟成された、安定した、そして強力なプロフェッショナル向けCSS拡張言語。
-* [STYLIS](https://github.com/thysultan/stylis.js) - 軽量のCSS事前処理言語。
-* [Stylus](http://learnboost.github.io/stylus/) - Node.js向けに設計された、表現力豊かで強力で機能が豊富なCSS言語。
-* [Vanilla Extract](https://vanilla-extract.style/) - TypeScriptで静的CSSを生成します。型安全で、局所スコープのクラス、変数、テーマを書きます。
+## リセットと正規化<a id="reset-and-normalize"></a>
 
-<sub>[⇧ back to top](#contents)</sub>
+- [CSS Checker](https://github.com/ruilisi/css-checker) - 類似・重複するCSSを検出して減らします。
+- [MiniReset.css](https://github.com/jgthms/minireset.css) - 小規模なモダンCSSリセット。
+- [Normalize-OpenType](https://github.com/kennethormandy/normalize-opentype.css) - Normalize.cssに合字、カーニングなどのOpenType機能を追加します。
+- [Normalize](https://github.com/necolas/normalize.css) - HTML要素の既定スタイルについて、ブラウザー間の一貫性を高めるCSSルール群。
+- [Reset.css](https://meyerweb.com/eric/tools/css/reset/) - CSS ToolsのCSSリセット。
+- [Reseter.css](https://github.com/krishdevdb/reseter.css) - 既定スタイルを保持するのではなく、再定義するCSSリセット・正規化ツール。
+- [Sanitize.css](https://github.com/jonathantneal/sanitize.css/) - 原リストでは、既定でスタイルのベストプラクティスを適用するCSSルール群と紹介されています。
+- [Unstyle.css](https://github.com/Martin-Pitt/css-unstyle) - ユーザーエージェントのスタイルを除き、利用者独自の基準でスタイルを指定するための専用スタイルシート。
 
-<a id="frameworks-art"></a>
-## フレームワーク :art:
+## 大規模ウェブサイトのCSS開発<a id="css-development-at-large-scale-websites"></a>
 
-* [AgnosticUI](https://www.agnosticui.com/) - React、Vue 3、Svelte、Angularにも対応するアクセシブルCSSコンポーネントの基本要素
-* [Bonsai](https://www.bonsaicss.com/) - 50kb未満で完全なユーティリティファーストCSSフレームワーク。
-* [Bootstrap](https://getbootstrap.com/) - 最も人気のあるHTML、CSS、JavaScriptフレームワーク。
-* [Bulma](http://bulma.io/) - Flexboxに基づく現代的なCSSフレームワーク。また、Sassのインポートを提供しており、カスタマイズが可能。
-* [Butter Cake](http://getbuttercake.com/) - 現代的な軽量フロントエンドCSSフレームワーク。ウェブ開発をより速く、簡単にする。
-* [Charts.css](https://chartscss.org/) - CSSデータ可視化フレームワーク。
-* [Chota](https://jenil.github.io/chota/) - 反応性でカスタマイズ可能なマイクロフレームワーク（3kb）に加え、便利なユーティリティとグリッドシステムを提供。
-* [Cirrus](https://spiderpig86.github.io/Cirrus/) - 完全にレスポンシブかつ包括的なCSSフレームワークで、美しいコントロールとシンプルな構造を備えています。
-* [Foundation](http://foundation.zurb.com/) - 高度なレスポンシブフロントエンドフレームワーク。
-* [Gralig](http://gralig.com/) - シンプルで、灰っぽい CSS ライブラリ。
-* [Halfmoon](https://www.gethalfmoon.com/) - 反応性のフロントエンドフレームワークで、内蔵されたダークモードを備えたもの
-* [Hasser CSS](https://github.com/HeavenMercy/HasserCSS) - 軽量（12k、圧縮なし）だが便利なCSSフレームワーク。柔軟なグリッド、ヒーローなどがある。
-* [Inuit.css](http://inuitcss.com/) - 強力で、スケーラブルで、Sassベース、BEM、OOCSSフレームワーク。
-* [Material-components-web](https://github.com/material-components/material-components-web) - ウェブ向けのモジュラーかつカスタマイズ可能なマテリアルデザインUIコンポーネント
-* [Materialize](http://materializecss.com/) - マテリアルデザインをベースとした現代的なレスポンシブフロントエンドフレームワーク。
-* [Milligram](http://milligram.io) - ミニマリズムを採用したCSSフレームワーク。
-* [Numl](https://numl.design) - HTMLベースの言語と設計システムで、どんな見た目にも対応し、レスポンシブかつアクセシブルな高品質なウェブインターフェースを作成できます。
-* [Pure.css](http://purecss.io/) - 小さな、反応性のあるCSSモジュールのセットで、すべてのウェブプロジェクトに使える
-* [Semantic UI](http://semantic-ui.com/) - 人間が使いやすいHTMLを用いた強力なフレームワーク。
-* [Shorthand Framework](https://github.com/shorthandcss/shorthand) - 新しい十年向けに豊富な機能を備えたCSSフレームワーク。
-* [Spectre.css](https://picturepan2.github.io/spectre/index.html) - 軽量で反応性があり、現代的なCSSフレームワーク。
-* [Strawberry](https://github.com/jfet97/strawberry) - ネストされたフィックスボックスを扱うためにあなたの生活をより簡単で速くするための、共通のフィックスボックスユーティリティのセット
-* [Tachyons](http://tachyons.io/) - 人間向けの機能的なCSS
-* [Tacit](https://yegor256.github.io/tacit/) - グラフィックデザインのスキルがゼロでも使えるCSSフレームワーク。
-* [Tailwindcss](https://github.com/tailwindcss/tailwindcss) - 用途に応じたCSSフレームワーク。UI開発を高速化する。
-* [Tronic247 Material](https://material.pages.dev/) - CSSと一部のJSを用いた、Material Designガイドラインに従ったレスポンシブフレームワーク。
-* [UIkit](http://getuikit.com/) - 軽量かつモジュラリティの高いフロントエンドフレームワーク。
-* [Unsemantic](http://unsemantic.com/) - モバイル、タブレット、デスクトップ用のフリードグリッド
-* [Wing](https://kbrsh.github.io/wing/) - 極めてシンプルで、軽量かつ反応性のあるフレームワーク。
-
-_[You can find more frameworks at "awesome-css-frameworks"](https://github.com/troxler/awesome-css-frameworks)_
-
-<sub>[⇧ back to top](#contents)</sub>
-
-<a id="toolkits-wrench"></a>
-## ツールキット :wrench:
-
-* [Bourbon](http://bourbon.io/) - Sass用のシンプルで軽量のミックスインライブラリ。
-
-<sub>[⇧ back to top](#contents)</sub>
-
-<a id="reset-and-normalize"></a>
-## リセットと正規化
-
-- [CSS Checker](https://github.com/ruilisi/css-checker) - 似たものや重複したCSSスクリプトを検出・削減
-- [MiniReset.css](https://github.com/jgthms/minireset.css) - ミニマムな現代的なCSSリセット
-- [Normalize-OpenType](https://github.com/kennethormandy/normalize-opentype.css) - オペンタイプ機能—連字、間隔調整、その他—to Normalize.css に追加
-- [Normalize](https://github.com/necolas/normalize.css) - HTML要素のデフォルトスタイルにおいて、よりブラウザ間で一貫性の高い表示を提供するCSSルールのセット
-- [Reset.css](https://meyerweb.com/eric/tools/css/reset/) - CSSツール：リセットCSS。
-- [Reseter.css](https://github.com/krishdevdb/reseter.css) - 未来のCSSリセット/ノーマライザ。代替するのではなく、保持するのではなく再定義する。
-- [Sanitize.css](https://github.com/jonathantneal/sanitize.css/) - 今日のベストプラクティスで即時適用可能なCSSルールのセット。
-- [Unstyle.css](https://github.com/Martin-Pitt/css-unstyle) - ユーザーエージェントのスタイルを除去するための専用のスタイルシート、あなたのベースラインでウェブをスタイルアップ。
-
-<sub>[⇧ back to top](#contents)</sub>
-
-<a id="css-development-at-large-scale-websites"></a>
-## 大規模ウェブサイトのCSS開発
-
-* [Bugsnag's CSS Architecture](http://blog.bugsnag.com/bugsnags-css-architecture) [Max Luster](https://twitter.com/maxluster)によって
-* [CSS at BBC Sport](https://medium.com/@shaunbent/css-at-bbc-sport-part-1-bab546184e66) シャン・ベンツによって
-* [CSS AT HOOTSUITE](http://code.hootsuite.com/css-at-hootsuite/) スティーブ・ミネットによって
-* [GitHub's CSS](http://markdotto.com/2014/07/23/githubs-css/) [Mark Otto](https://twitter.com/mdo)によって
-* [How we do CSS at Ghost](https://dev.ghost.org/css-at-ghost/) パウル・デイビスによって
-* [Lonely Planet](http://ianfeather.co.uk/css-at-lonely-planet/) [Ian Feather](https://twitter.com/ianfeather)によって
-* [Medium’s CSS is actually pretty good.](https://medium.com/@fat/mediums-css-is-actually-pretty-fucking-good-b8e2a6c78b06) [Jacob Thornton](https://twitter.com/fat)によって
-* [Refining The Way We Structure Our CSS At Trello](http://blog.trello.com/refining-the-way-we-structure-our-css-at-trello/) [Bobby Grace](https://twitter.com/bobbygrace)によって
+* [Bugsnag's CSS Architecture](http://blog.bugsnag.com/bugsnags-css-architecture) - 著者: [Max Luster](https://twitter.com/maxluster)
+* [CSS at BBC Sport](https://medium.com/@shaunbent/css-at-bbc-sport-part-1-bab546184e66) - 著者: Shaun Bent
+* [CSS AT HOOTSUITE](http://code.hootsuite.com/css-at-hootsuite/) - 著者: Steve Mynett
+* [GitHub's CSS](http://markdotto.com/2014/07/23/githubs-css/) - 著者: [Mark Otto](https://twitter.com/mdo)
+* [How we do CSS at Ghost](https://dev.ghost.org/css-at-ghost/) - 著者: Paul Davis
+* [Lonely Planet](http://ianfeather.co.uk/css-at-lonely-planet/) - 著者: [Ian Feather](https://twitter.com/ianfeather)
+* [Medium’s CSS is actually pretty good.](https://medium.com/@fat/mediums-css-is-actually-pretty-fucking-good-b8e2a6c78b06) - 著者: [Jacob Thornton](https://twitter.com/fat)
+* [Refining The Way We Structure Our CSS At Trello](http://blog.trello.com/refining-the-way-we-structure-our-css-at-trello/) - 著者: [Bobby Grace](https://twitter.com/bobbygrace)
 * [Scalable-css-reading-list](https://github.com/davidtheclark/scalable-css-reading-list)
 
-<sub>[⇧ back to top](#contents)</sub>
+## コードスタイルガイドライン<a id="コードスタイルガイドライン-book"></a><a id="code-style-guidelines-book"></a>
 
-<a id="code-style-guidelines-book"></a>
-## コードスタイルガイドライン :book:
+* [Code Guide](http://codeguide.co/) - 著者: [Mark Otto](https://twitter.com/mdo)
+* [CSS Guidelines](http://cssguidelin.es/) - 著者: [Harry Roberts](https://twitter.com/csswizardry)
+* [CSS Styleguide](https://github.com/grvcoelho/css) - 著者: [Guilherme Rv Coelho](https://github.com/grvcoelho)
+* [Dropbox (S)CSS Style Guide](https://github.com/dropbox/css-style-guide) - 著者: Dropbox
+* [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html) - 著者: Google
+* [Idiomatic CSS](https://github.com/necolas/idiomatic-css) - 著者: [Nicolas Gallagher](https://twitter.com/necolas)
+* [Official Trello CSS Guide](https://gist.github.com/bobbygrace/9e961e8982f42eb91b80) - 著者: Bobby Grace
+* [Sass Guidelines](https://sass-guidelin.es/) - 著者: [Kitty Giraudel](https://twitter.com/KittyGiraudel)
+* [SASS Style Guide](http://sass-lang.com/styleguide) - 著者: Sassチーム
+* [ThinkUp CSS Style Guide](https://github.com/ThinkUpLLC/ThinkUp/wiki/Code-Style-Guide:-CSS) - 著者: ThinkUp
+* [WordPress CSS Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/) - 著者: WordPress
 
-* [Code Guide](http://codeguide.co/) [Mark Otto](https://twitter.com/mdo)によって
-* [CSS Guidelines](http://cssguidelin.es/) [Harry Roberts](https://twitter.com/csswizardry)によって
-* [CSS Styleguide](https://github.com/grvcoelho/css) [Guilherme Rv Coelho](https://github.com/grvcoelho)によって
-* [Dropbox (S)CSS Style Guide](https://github.com/dropbox/css-style-guide) ドロップボックスによって
-* [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html) Googleによる
-* [Idiomatic CSS](https://github.com/necolas/idiomatic-css) [Nicolas Gallagher](https://twitter.com/necolas)によって
-* [Official Trello CSS Guide](https://gist.github.com/bobbygrace/9e961e8982f42eb91b80) バービー・グレイスによって
-* [Sass Guidelines](https://sass-guidelin.es/) [Kitty Giraudel](https://twitter.com/KittyGiraudel)によって
-* [SASS Style Guide](http://sass-lang.com/styleguide) サスチームによる
-* [ThinkUp CSS Style Guide](https://github.com/ThinkUpLLC/ThinkUp/wiki/Code-Style-Guide:-CSS) ThinkUpによる
-* [WordPress CSS Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/) ワールドプレスによって
+## スタイルガイド<a id="style-guide"></a>
 
-<sub>[⇧ back to top](#contents)</sub>
+* [AUI](http://docs.atlassian.com/aui/latest/docs) - 著者: Atlassian Design
+* [Design Elements](http://rizzo.lonelyplanet.com/styleguide/design-elements/colours) - 著者: lonely planet
+* [Fluent UI](https://github.com/microsoft/fluentui) - 著者: Microsoft
+* [GitHub CSS Style Guide](https://primer.github.io/) - 著者: Github
+* [Lightning Design System](https://www.lightningdesignsystem.com/) - 著者: Salesforce
+* [Patterns](https://ux.mailchimp.com/patterns) - 著者: MailChimp
+* [Solid](http://solid.buzzfeed.com/) - 著者: BuzzFeed
+* [Style Guide](https://www.starbucks.com/static/reference/styleguide/) - 著者: Starbucks
+* [Website Style Guide Resources](http://styleguides.io/examples.html) - 著者: 寄稿者
 
-<a id="style-guide"></a>
-## スタイルガイド
+スタイルガイドの詳しい一覧は[Website Style Guide Resources](http://styleguides.io/)を参照してください。
 
-* [AUI](http://docs.atlassian.com/aui/latest/docs) アタラシアンデザインによって
-* [Design Elements](http://rizzo.lonelyplanet.com/styleguide/design-elements/colours) ロニル・プレートンによって
-* [Fluent UI](https://github.com/microsoft/fluentui) マイクロソフトによって
-* [GitHub CSS Style Guide](https://primer.github.io/) GitHubによる
-* [Lighting Design System](https://www.lightningdesignsystem.com/) サファリースで
-* [Patterns](https://ux.mailchimp.com/patterns) メールチップで
-* [Solid](http://solid.buzzfeed.com/) バズfeedによって
-* [Style Guide](https://www.starbucks.com/static/reference/styleguide/) スターバックスによる
-* [Website Style Guide Resources](http://styleguides.io/examples.html) アワーオスな人々によって
-
-[Website Style Guide Resources](http://styleguides.io/)にスタイルガイドをもっと見られる
-
-<sub>[⇧ back to top](#contents)</sub>
-
-
-<a id="style-guide-generators-slot_machine"></a>
-## スタイルガイド生成ツール :slot_machine:
+## スタイルガイド生成ツール<a id="スタイルガイド生成ツール-slot_machine"></a><a id="style-guide-generators-slot_machine"></a>
 
 - [Hologram](https://github.com/trulia/hologram)
 - [mdcss](https://github.com/jonathantneal/mdcss)
@@ -202,11 +148,7 @@ _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/t
 - [Styledown](https://github.com/styledown/styledown)
 - [Sc5-styleguide](https://github.com/SC5/sc5-styleguide)
 
-<sub>[⇧ back to top](#contents)</sub>
-
-
-<a id="naming-conventions--methodologies-bulb"></a>
-## 命名規則と方法論 :bulb:
+## 命名規則と方法論<a id="命名規則と方法論-bulb"></a><a id="naming-conventions--methodologies-bulb"></a>
 
 * [Atomic Design](http://patternlab.io/resources.html)
 * [Atomic OOBEMITSCSS](https://www.sitepoint.com/atomic-oobemitscss/)
@@ -221,10 +163,6 @@ _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/t
 * [SUIT CSS](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md#u-utilityname)
 * [Title CSS](https://www.sitepoint.com/title-css-simple-approach-css-class-naming/)
 
-<sub>[⇧ back to top](#contents)</sub>
-
-
-<a id="css-in-js"></a>
 ## CSS in JS
 
 * [Aphrodite](https://github.com/Khan/aphrodite)
@@ -239,174 +177,125 @@ _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/t
 * [Styled-components](https://github.com/styled-components/styled-components)
 * [Stylin](https://github.com/sultan99/stylin)
 
+[CSS in JSの技法の比較](https://github.com/MicheleBertoli/css-in-js)も参照してください。
 
-ここに[CSS in JS techniques comparison](https://github.com/MicheleBertoli/css-in-js)があります
+## CSSポリフィル<a id="css-polyfills"></a>
 
-<sub>[⇧ back to top](#contents)</sub>
-
-
-<a id="css-polyfills"></a>
-## CSSポリフィル
-
-* [Polyfill.js](https://github.com/philipwalton/polyfill/) - CSSポリフィルの作成をはるかに簡単にするためのライブラリ
-* [Prefixfree](https://github.com/LeaVerou/prefixfree) - CSSのプレフィックスの地獄から解放されましょう。
+* [Polyfill.js](https://github.com/philipwalton/polyfill/) - CSSポリフィルの作成を支援するライブラリ。
+* [Prefixfree](https://github.com/LeaVerou/prefixfree) - CSSのベンダー接頭辞を扱います。
 * [Fixed-sticky](https://github.com/filamentgroup/fixed-sticky) - CSSのposition:stickyのポリフィル。
-* [Selectivizr](https://github.com/keithclark/selectivizr) - IE6-8でCSS3の擬似クラスおよび属性セレクタをエミュレートするJavaScriptユーティリティ
-* [PIE](https://github.com/lojjic/PIE) - インターネット・エクスプローラーにCSS3ボックスデコレーションプロパティを認識・レンダリングできるようにする。
+* [Selectivizr](https://github.com/keithclark/selectivizr) - Internet Explorer 6～8でCSS3の擬似クラスと属性セレクターを再現するJavaScriptユーティリティ。
+* [PIE](https://github.com/lojjic/PIE) - Internet Explorerで各種CSS3のボックス装飾プロパティを認識・描画できるようにします。
 
+## その他<a id="miscellaneous"></a>
 
-<sub>[⇧ back to top](#contents)</sub>
+* [Beautiful CSS box-shadow examples](https://getcssscan.com/css-box-shadow-examples) - クリックしてコピーできるCSSのbox-shadow例93件。
+* [Can I use](https://caniuse.com/) - CSS、HTML5、その他のフロントエンド技術のブラウザー対応情報。
+* [Flexbox Patterns](https://flexboxpatterns.com/) - 著者: cjcenizal
+* [Glassmorphism CSS Generator](https://ui.glass/generator/) - グラスモーフィズム用のCSSを生成します。
+* [GradientArt](https://gra.dient.art/) - レイヤー、デザインツール、無料クラウドストレージを備えたCSSグラデーションエディター。
+* [CSSとLESSのライブエディター](https://github.com/webextensions/live-css-editor) - Chrome、Firefox、Edge向けのMagic CSS拡張機能。
+* [RevengeCSS](https://github.com/Heydon/REVENGE.CSS) - CSSセレクターで不正なマークアップを検出し、その場所にComic Sansでピンクのエラーメッセージを表示するCSSブックマークレット。
+* [Single Div Project](https://github.com/ManrajGrover/SingleDivProject) - 1つの`<div>`で構築された例。
+* [You Might Not Need JS](http://youmightnotneedjs.com/) - 一般的なJSのUIコンポーネントをCSSで置き換える方法。
+* [Xpath-to-selector](https://github.com/steambap/xpath-to-selector) - XPathをCSSセレクターへ変換します。
 
+## ポッドキャスト<a id="ポッドキャスト-radio"></a><a id="podcasts-radio"></a>
 
-<a id="miscellaneous"></a>
-## その他
+CSS、デザイン、ウェブ開発についてのポッドキャスト。
 
-* [Beautiful CSS box-shadow examples](https://getcssscan.com/css-box-shadow-examples) - キュレーションされた93の美しいCSSボックスシャドウコレクション。クリックでコピー。
-* [Can I use](https://caniuse.com/) - ブラウザでのCSS、HTML5およびその他のフロントエンドウェブ技術のサポート。
-* [Flexbox Patterns](https://flexboxpatterns.com/) cjcenizalによって
-* [Glassmorphism CSS Generator](https://ui.glass/generator/) - グラスモーフィズム用のCSSを生成する。
-* [GradientArt](https://gra.dient.art/) - 高度なCSSグラデーションエディタで、レイヤー機能、デザインツール、無料クラウドストレージを備えた
-* [Live editor for CSS and LESS](https://github.com/webextensions/live-css-editor) - Chrome、FirefoxおよびEdge向けのマジックCSS拡張機能。
-* [RevengeCSS](https://github.com/Heydon/REVENGE.CSS) - CSSのブックマークレットで、セレクタを使って不正なマークアップを検出し、不正なHTMLを書く場所にコミック・サン-serifで表示される醜いピンクのエラーメッセージを表示
-* [Single Div Project](https://github.com/ManrajGrover/SingleDivProject) - 一つ `<div>`。多くの可能性。
-* [You Might Not Need JS](http://youmightnotneedjs.com/) - CSSで一般的なJSUIコンポーネントに代替する方法。
-* [Xpath-to-selector](https://github.com/steambap/xpath-to-selector) - XPathをCSSセレクタに変換する。
+* [CSS Podcast](https://thecsspodcast.libsyn.com/) - Una KravetsとAdam ArgyleによるCSSのポッドキャスト。
+* [Non Breaking Space Show](http://goodstuff.fm/nbsp) - クリエイティブな仕事に携わる人々へのインタビュー。
+* [Shop Talk Show](http://shoptalkshow.com/) - Chris CoyierとDave Rupertによる、フロントエンドのウェブデザイン、開発、UXについてのライブポッドキャスト。
+* [Style Guide Podcast](http://styleguides.io/podcast/index.html) - Anna DebenhamとBrad Frostが司会を務める、スタイルガイドについてのインタビューシリーズ。
+* [Syntax](https://syntax.fm/) - ウェブ開発者向けポッドキャスト。
+* [The Big Web Show](http://5by5.tv/bigwebshow/) - ウェブ出版、アートディレクション、コンテンツ戦略、文字組み、ウェブ技術についてのポッドキャスト。
+* [The Changelog](https://changelog.com/) - オープンソースを中心に、ソフトウェアのニュースと技術的なインタビューを扱うポッドキャスト。
+* [The Web Ahead](http://5by5.tv/webahead/) - 変化する技術とウェブの未来について、世界の専門家と対話する番組。
 
-<sub>[⇧ back to top](#contents)</sub>
+## Twitter<a id="twitter-satellite"></a>
 
-<a id="podcasts-radio"></a>
-## ポッドキャスト :radio:
+以下のアカウント紹介は、肩書きやプロジェクトも含め、記録された原リストに沿っています。
 
-プログラミングしているときには聞いておくべきもの。
-
-* [CSS Podcast](https://thecsspodcast.libsyn.com/) - アン・クラベツとアダム・アーバイ、および開発。
-* [Non Breaking Space Show](http://goodstuff.fm/nbsp) - デジタルアートとそのブログ、UXにおいて、最も優れたそして知的なクリエイティブな人々を発見する。
-* [Shop Talk Show](http://shoptalkshow.com/) - アナ・デベナムとブラッド・フロストがホストする、クリス・コイアとデイブ・ルーパートによるフロントエンドウェブデザインに関するライブポッドキャスト。
-* [Style Guide Podcast](http://styleguides.io/podcast/index.html) - Googleのスタイルガイド、アートディレクション、コンテンツ戦略、デザイン、開発者アドボケートたちによる、CSSの複雑な側面をアクセシビリティからz-indexまで、誰でも理解できるエピソードに分解したインタビューの小さなシリーズ。
-* [Syntax](https://syntax.fm/) - ウェブ開発者向けの美味しいおやつPodcast、タイプグラフィック、ウェブ技術
-* [The Big Web Show](http://5by5.tv/bigwebshow/) - ウェブ出版といったテーマは、すべてオープンソース技術の最新情報をあなたに常に提供することについてです。
-* [The Changelog](https://changelog.com/) - 変更ログのキャッチコピーはこう言っています：「オープンソースは速く進みます。それに追いついてください。」このポッドキャスト、そしてそれ以上のすべて。ウェブ上で重要なすべての内容。
-* [The Web Ahead](http://5by5.tv/webahead/) - 世界の専門家たちと、変化する技術とウェブの未来についての対話。
-
-<sub>[⇧ back to top](#contents)</sub>
-
-
-<a id="twitter-satellite"></a>
-## Twitter :satellite:
-
-フォローすべきアクティブなアカウント。
-
-* [Adam Morse](https://twitter.com/mrmrs_) - ユーザーとオープンソースを擁護する。
-* [Andrey Sitnik](https://twitter.com/andreysitnik) - @Autoprefixer の著者、http://easings.net および @PostCSS の著者
-* [Ben Briggs](https://twitter.com/ben_eb) - 最終年次ウェブテクノロジー学科の学生。node.js、javascript、オープンソースモジュール、クライアントサイド最適化、ウェブパフォーマンス。
-* [Brad Frost](https://twitter.com/brad_frost) - ウェブデザイナー、スピーカー、ライター、コンサルタント、ミュージシャン。
-* [Chris Coyier](https://twitter.com/chriscoyier) - デザイナー @CodePen。執筆者 @Real_CSS_Tricks。
+* [Adam Morse](https://twitter.com/mrmrs_) - ユーザーとオープンソースの推進者。
+* [Andrey Sitnik](https://twitter.com/andreysitnik) - @Autoprefixer、http://easings.net 、@PostCSSの作者。
+* [Ben Briggs](https://twitter.com/ben_eb) - ウェブ技術を学ぶ最終学年の学生。Node.js、JavaScript、オープンソースモジュール、クライアント側の最適化、ウェブ性能に関心があります。
+* [Brad Frost](https://twitter.com/brad_frost) - ウェブデザイナー、登壇者、執筆者、コンサルタント、音楽家。
+* [Chris Coyier](https://twitter.com/chriscoyier) - @CodePenのデザイナー、@Real_CSS_Tricksの執筆者。
 * [Connor Sears](https://twitter.com/connors) - GitHubのデザイナー。
 * [CSS Animation](https://twitter.com/cssanimation)
 * [CSS Commits](https://twitter.com/CSScommits) - @CSSWGの公開Mercurialリポジトリへの最新コミット。
-* [Daniel Glazman](https://twitter.com/glazou) - W3C CSS ワーキンググループ共同議長、起業家、ソフトウェアエンジニア、ゲイク、2人の息子の父、多言語話者、ダック好き。いや。ツイートはすべて私のものだ。
-* [Dave McFarland](https://twitter.com/davemcfarland) - ウェブ開発者、CSS: The Missing Manual、JavaScript & jQueryの著者
-* [Donovan Hutchinson](https://twitter.com/donovanh) - デザイナー、開発者、ライター。時折 http://Hop.ie, でブログを書いている。現在は @cssanimation を開発中。
-* [Dudley Storey](https://twitter.com/dudleystorey) - ウェブ開発のライター、教師、スピーカー。
-* [Eric Bidelman](https://twitter.com/ebidel) - グーグルでクローム、ウェブコンポーネント、ポリマーアンダーキャッチを担当しているエンジニア。
-* [Evangelina Ferreira](https://twitter.com/evaferreira92) - ウェブデザイナー。@multimedial_utn の教授。HTML5＆CSSの狂気をもつ者。時折、翻訳者。
-* [Guy Routledge](https://twitter.com/guyroutledge) - フロントエンド開発者、GA_Londonの講師、http://www.atozcss.com, でのスクリーンキャスト制作者、CSS愛好家。
-* [Harry Roberts](https://twitter.com/csswizardry)- コンサルタントフロントエンドアーキテクト：@google, @Etsy, @kickstarter, @BBC, @Deloitte, @FT, その他。
-* [Heydon Pickering](https://twitter.com/heydonworks) - 米を中程度に消費する。また、UXデザイナー、著者、@smashingmag編集者、プログラマーである。
-* [Jonathan Snook](https://twitter.com/snookca) - デザイナー、開発者、ライター、スピーカー。私はウェブ上のものを作っています。私はSMACSSを書きました。
-* [Kitty Giraudel](https://twitter.com/KittyGiraudel) - 非二元性のアクセシビリティ・多様性を推進する活動家、フロントエンド開発者、著者。
-* [L. David Baron](https://twitter.com/davidbaron) - モzilla開発者、CSSおよびW3C標準の外交家。
-* [Lea Verou](https://twitter.com/LeaVerou) - MIT_CSAILでの研究助手、CSSWG IE、OReillyMedia著者、元W3C職員。
-* [Manoela Ilic](https://twitter.com/crnacura) - ...あだ名 Mary Lou @codrops ༶ CSS & HTML は私のクレヨンです ༶ 認知科学、AI、HCI、UIデザインおよび天体物理学に興味があります ༶ デジタルノマド
-* [Mark Otto](https://twitter.com/mdo) - GitHubとBootstrap。かつてはTwitterで働いていた。大きなネルド。
-* [Maxime Thirouin](https://twitter.com/MoOx) - フリーランスのフロントエンド・vigilante、UI/UX開発者。
-* [Natalie Weizenbaum](https://twitter.com/nex3) - コーダーの女性。@SassCSSのリードデザイナー／開発者。@googleで@dart_langを担当
-* [Nicolas Gallagher](https://twitter.com/necolas) - @twitter でのソフトウェアエンジニア
-* [Nicole Sullivan](https://twitter.com/stubbornella) - GEEK.
-* [Patrick Hamann](https://twitter.com/patrickhamann) - 山に恋する、手作りビールを愛し、新しい食べ物を発見する人
-* [Paul Lewis](https://twitter.com/aerotwist) - グーグルでコードとデザインを楽しむ人物。
-* [Phil Walton](https://twitter.com/philwalton) - グーグルでのエンジニア • オープンソース推進者 • 開発者 • デザイナー • 書き手。
-* [Rachel Andrew](https://twitter.com/rachelandrew) - ウェブ開発者、@grabaperch CMSの半分、CSSワーキンググループの招待専門家。
-* [Remy Sharp](https://twitter.com/rem) - CSSのサイズ単位について
-* [Sara Soueidan](https://twitter.com/SaraSoueidan) - @Codrops CSS リファレンスの著者およびSmashing Book #5の共著者
-* [Scott Jehl](https://twitter.com/scottjehl) - @responsiblerwdの著者。現在、@abookapartから販売中。
-* [Simon](https://twitter.com/simurai) - UIデザイナー、CSSの遊び人。
-* [The Chris Eppstein](https://twitter.com/chriseppstein) - 愛するものは愛し、嫌いなものは嫌い。素晴らしい家族を持つ。コードを書く。LinkedInでスタイルシート技術をリード。
-* [Una Kravets](https://twitter.com/Una) - フロントエンド @IBMDesign。Sassvocate、コミュニティ構築者、そしてハンドクラフト。STEMinist :) オープンソース、すべてのもの。
-* [Zoe M. Gillenwater](https://twitter.com/zomigi) - ウェブデザイナー／開発者。CSS、レスポンシブデザイン（RWD）、UX、およびアクセシビリティに特化。
-* [Zoltán Szőgyényi](https://twitter.com/zoltanszogyenyi) - ウェブ開発者、Themesbergの共同創業者。Glass UIを構築中。
-* [Tab Atkins](https://twitter.com/tabatkins) - CSSワーキンググループのメンバーで、ウェブ標準に携わる開発者。
+* [Daniel Glazman](https://twitter.com/glazou) - W3C CSSワーキンググループの共同議長、起業家、ソフトウェアエンジニア、技術好き、2人の子の父、多言語話者、アヒル好き。「ツイートは自分自身の見解」としています。
+* [Dave McFarland](https://twitter.com/davemcfarland) - ウェブ開発者。CSS: The Missing ManualとJavaScript & jQueryの著者。
+* [Donovan Hutchinson](https://twitter.com/donovanh) - デザイナー、開発者、執筆者。http://Hop.ie で時折ブログを書き、@cssanimationを構築しています。
+* [Dudley Storey](https://twitter.com/dudleystorey) - ウェブ開発についての執筆者、講師、登壇者。
+* [Eric Bidelman](https://twitter.com/ebidel) - GoogleでChrome、ウェブコンポーネント、Polymerに取り組むエンジニア。
+* [Evangelina Ferreira](https://twitter.com/evaferreira92) - ウェブデザイナー、@multimedial_utnの教授。HTML5とCSSの愛好家で、翻訳も行います。
+* [Guy Routledge](https://twitter.com/guyroutledge) - フロントエンド開発者、@GA_Londonの講師、http://www.atozcss.com のスクリーンキャスト制作者。不動産にこだわり、食に関心を持っています。
+* [Harry Roberts](https://twitter.com/csswizardry) - コンサルタントとして働くフロントエンドアーキテクト。@google、@Etsy、@kickstarter、@BBC、@Deloitte、@FTなどに関わっています。
+* [Heydon Pickering](https://twitter.com/heydonworks) - 米をほどほどに食べる人。UXデザイナー、著者、@smashingmagの編集者、プログラマーでもあります。
+* [Jonathan Snook](https://twitter.com/snookca) - デザイナー、開発者、執筆者、登壇者。ウェブ上のものを作り、SMACSSを執筆しました。
+* [Kitty Giraudel](https://twitter.com/KittyGiraudel) - ノンバイナリーで、アクセシビリティと多様性を推進するフロントエンド開発者・著者。
+* [L. David Baron](https://twitter.com/davidbaron) - Mozillaの開発者。CSSとW3C標準の調整に携わっています。
+* [Lea Verou](https://twitter.com/LeaVerou) - @MIT_CSAILの研究助手、@CSSWGの招待専門家、@OReillyMediaの著者、元@W3C職員。
+* [Manoela Ilic](https://twitter.com/crnacura) - Mary Lou（@codrops）とも呼ばれ、CSSとHTMLを「自分のクレヨン」と表現しています。認知科学、AI、HCI、UIデザイン、天体物理学に関心があるデジタルノマド。
+* [Mark Otto](https://twitter.com/mdo) - GitHubとBootstrapに関わり、以前はTwitterで働いていた技術好き。
+* [Maxime Thirouin](https://twitter.com/MoOx) - フリーランスのフロントエンド開発者、UI/UX開発者。
+* [Natalie Weizenbaum](https://twitter.com/nex3) - トランスジェンダーの女性プログラマー。@SassCSSの主任設計者・開発者で、@googleで@dart_langに取り組んでいます。
+* [Nicolas Gallagher](https://twitter.com/necolas) - @twitterのソフトウェアエンジニア。
+* [Nicole Sullivan](https://twitter.com/stubbornella) - 技術好き。
+* [Patrick Hamann](https://twitter.com/patrickhamann) - 山、クラフトビール、新しい食べ物との出会いを好みます。
+* [Paul Lewis](https://twitter.com/aerotwist) - Googleでコードとデザインに取り組む人。
+* [Phil Walton](https://twitter.com/philwalton) - Googleのエンジニア、オープンソース推進者、開発者、デザイナー、執筆者。
+* [Rachel Andrew](https://twitter.com/rachelandrew) - ウェブ開発者。@grabaperch CMSの共同制作者で、CSSワーキンググループの招待専門家。
+* [Remy Sharp](https://twitter.com/rem) - CSSのサイズ単位について扱っています。
+* [Sara Soueidan](https://twitter.com/SaraSoueidan) - @CodropsのCSSリファレンスの著者、Smashing Book #5の共著者。
+* [Scott Jehl](https://twitter.com/scottjehl) - @responsiblerwdの著者。原リストでは@abookapartで販売中と紹介されています。
+* [Simon](https://twitter.com/simurai) - UIデザイナー。CSSでさまざまな表現を試します。
+* [The Chris Eppstein](https://twitter.com/chriseppstein) - 愛を愛し、憎しみを嫌い、家族を大切にするプログラマー。@LinkedInでスタイルシート技術を率いています。
+* [Una Kravets](https://twitter.com/Una) - @IBMDesignのフロントエンド担当。Sassの推進者、コミュニティの作り手、手仕事を好む人。STEM分野のフェミニストで、オープンソースを推進しています。
+* [Zoe M. Gillenwater](https://twitter.com/zomigi) - CSS、RWD、UX、アクセシビリティを専門とするウェブデザイナー・開発者。
+* [Zoltán Szőgyényi](https://twitter.com/zoltanszogyenyi) - ウェブ開発者、Themesbergの共同創業者。Glass UIを構築しています。
+* [앗킨스 탭](https://twitter.com/tabatkins)
 
-<sub>[⇧ back to top](#contents)</sub>
+## 動画<a id="動画-tv"></a><a id="videos-tv"></a>
 
-
-<a id="videos-tv"></a>
-## 動画 :tv:
-
-CSS Must Watch Videosの良いスタディ動画。一部は[AllThingsSmitty/must-watch-css](https://github.com/AllThingsSmitty/must-watch-css)から引用されている。
-
-[I told him on Twitter](https://twitter.com/sota0805/status/527635856031375360)。彼の貴重な努力に感謝しています。
+一部の項目は[AllThingsSmitty/must-watch-css](https://github.com/AllThingsSmitty/must-watch-css)から引用しています。原文では、そのリストへの謝意を[Twitterのメッセージ](https://twitter.com/sota0805/status/527635856031375360)で示しています。
 
 ### 2019
 
-1. [Next-Generation Web Styling](https://www.youtube.com/watch?v=-oyeaIirVC0) - Una Kravets と Adam Argyle が Chrome Dev Summit 2019 で
+1. [Next-Generation Web Styling](https://www.youtube.com/watch?v=-oyeaIirVC0) - Una Kravets & Adam Argyle @ Chrome Dev Summit 2019.
 
 ### 2016
 
-1. [Component-Based Style Reuse](https://www.youtube.com/watch?v=_70Yp8KPXH8) :page_facing_up: [transcript](https://2016.cssconf.com/) :watch: `37:24` - ペイト・ハント @ CSS conf 2016.
-1. [CSS4 Grid: True Layout Finally Arrives](https://www.youtube.com/watch?v=jl164y-Vb5E) :page_facing_up: [transcript](https://2016.cssconf.com/) :watch: `29:27` - ジェン・クラマー @ CSS conf 2016.
-1. [Houdini: Demystifying the Future of CSS](https://www.youtube.com/watch?v=sE3ttkP15f8) :watch: `36:58` @ Google I/O 2016.
+1. [Component-Based Style Reuse](https://www.youtube.com/watch?v=_70Yp8KPXH8) [講演記録](https://2016.cssconf.com/) 再生時間: `37:24` - Pete Hunt @ CSS conf 2016.
+1. [CSS4 Grid: True Layout Finally Arrives](https://www.youtube.com/watch?v=jl164y-Vb5E) [講演記録](https://2016.cssconf.com/) 再生時間: `29:27` - Jen Kramer @ CSS conf 2016.
+1. [Houdini: Demystifying the Future of CSS](https://www.youtube.com/watch?v=sE3ttkP15f8) 再生時間: `36:58` @ Google I/O 2016.
 
 ### 2015
 
-1. [Mdo-ular CSS](http://jqueryuk.com/2015/videos.php?s=mdo-ular-css) :watch: `30:06` - 株式会社jQuery UKのマーク・オットー
-1. [CSS Architecture with SMACSS](https://www.youtube.com/watch?v=6co781JgoqQ) :watch: `30:15` - Caleb Meredith @ DevTipsチャンネル。
-1. [CSS Workflow from the Ground Up](https://www.youtube.com/watch?v=ZVk3GQHfkbU) :watch: `46:06` - ジョンathan スノック @ Generate conf 2015.
+1. [Mdo-ular CSS](http://jqueryuk.com/2015/videos.php?s=mdo-ular-css) 再生時間: `30:06` - Mark Otto @ jQuery UK.
+1. [CSS Architecture with SMACSS](https://www.youtube.com/watch?v=6co781JgoqQ) 再生時間: `30:15` - Caleb Meredith @ DevTipsチャンネル。
+1. [CSS Workflow from the Ground Up](https://www.youtube.com/watch?v=ZVk3GQHfkbU) 再生時間: `46:06` - Jonathan Snook @ Generate conf 2015.
 
-<sub>[⇧ back to top](#contents)</sub>
+## 書籍<a id="書籍-books"></a><a id="books-books"></a>
 
-<a id="books-books"></a>
-## 書籍 :books:
+* [CSS: The Definitive Guide, 4th Edition](http://shop.oreilly.com/product/0636920012726.do) - ウェブの視覚表現を扱います。
+* [CSS: The Missing Manual](http://shop.oreilly.com/product/0636920036357.do) - CSSとデザインの技能に関する書籍。
+* [CSS Secrets](http://shop.oreilly.com/product/0636920031123.do) - 日々のウェブデザインの問題に対する解決策。
+* [Every Layout: Relearn CSS Layout](https://every-layout.dev/) - アルゴリズムによる設計でレスポンシブレイアウトの問題を解決します。
+* [Tiny CSS Projects](https://www.manning.com/books/tiny-css-projects) - 小規模なプロジェクト12件を作りながら、CSSの書き方を学びます。
 
-* [CSS: The Definitive Guide, 4th Edition](http://shop.oreilly.com/product/0636920012726.do)  - ウェブ向けの視覚表示
-* [CSS: The Missing Manual](http://shop.oreilly.com/product/0636920036357.do) – デザインスキルをまったく新しいレベルに引き上げるのに非常に役立ちます
-* [CSS Secrets](http://shop.oreilly.com/product/0636920031123.do) – 日々のウェブデザイン問題に対するより良い解決策
-* [Every Layout: Relearn CSS Layout](https://every-layout.dev/) – アルゴリズム設計を用いたレスポンシブレイアウトの問題解決
-* [Tiny CSS Projects](https://www.manning.com/books/tiny-css-projects) – 12つの小さなプロジェクトを構築しながら、CSSを書く方法を向上させましょう。
+## チュートリアル<a id="チュートリアル-clapper"></a><a id="tutorials-clapper"></a>
 
-<sub>[⇧ back to top](#contents)</sub>
-
-<a id="tutorials-clapper"></a>
-## チュートリアル :clapper:
-
-* [30 Seconds of CSS](https://www.30secondsofcode.org/css/p/1) -  便利なCSSのサンプルを厳選したコレクション。30秒以内で理解できる。
-* [All selectors in CSS](https://medium.com/@ymzEmre/css-cascade-specificity-basic-selectors-c5adc01dd861) - CSSにおけるすべてのセレクタ。
-* [Community Curated CSS Resources](https://hackr.io/tutorials/learn-css) - トップ推奨リソース。
-* [CSS Diner](https://flukeout.github.io/) – CSSの選択子学習に用いるインタラクティブなゲーム化チュートリアル
-* [CSS Grid PlayGround](https://mozilladevelopers.github.io/playground/) - MozillaでCSS Gridを学ぶための簡単なチュートリアル。
-* [CSS Grids videos tutorial](https://cssgrid.io/) - ウェス・ボスによる無料動画講座でCSSグリッドを学ぶ。
-* [CSS Hands-on Tutorial](https://labex.io/tutorials/quick-start-with-css-free-tutorials-413795) - LabExによる無料CSS実践チュートリアル。
-* [CSS Math Functions](https://stackdiary.com/css-math-functions/) - CSS Mathを用いたレスポンシブデザイン
-* [Flexbox video tutorial](https://flexbox.io/) - ウェス・ボスによる無料動画講座でフィクスボックスを学ぶ。
-* [Organize CSS with a Modular Architecture: OOCSS, BEM, SMACSS](https://snipcart.com/blog/organize-css-modular-architecture) - OOCSS、BEM、SMACSSについての詳細な紹介と例
-* [Work With Animations](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Work_with_animations) - アニメーションの確認
-
-<sub>[⇧ back to top](#contents)</sub>
-
-<a id="maintainers"></a>
-## メンテナー
-
-[sotayamashita]: https://github.com/sotayamashita
-[Rishabh04-02]:  https://github.com/Rishabh04-02
-
-[@sotayamashita][sotayamashita], [@Rishabh04-02][Rishabh04-02] そしてあなた！
-
-
-<a id="contribute"></a>
-## コントリビューション
-
-[contributor-covenant]: https://www.contributor-covenant.org/version/1/3/0/code-of-conduct/
-
-気軽に参加してください！イシューを開設またはPRを提出してください。
-
-素晴らしいCSSは [Contributor Covenant][contributor-covenant] の行動規範を遵守しています。
+* [30 Seconds of CSS](https://www.30secondsofcode.org/css/p/1) - CSSのコード例集。原リストでは30秒以内に理解できると紹介されています。
+* [All selectors in CSS](https://medium.com/@ymzEmre/css-cascade-specificity-basic-selectors-c5adc01dd861) - 原リストではCSSの全セレクターを扱うと紹介されています。
+* [Community Curated CSS Resources](https://hackr.io/tutorials/learn-css) - コミュニティで選んだCSS学習資料。
+* [CSS Diner](https://flukeout.github.io/) - CSSセレクターを学ぶ、対話的なゲーム形式のチュートリアル。
+* [CSS Grid PlayGround](https://mozilladevelopers.github.io/playground/) - MozillaによるCSS Grid学習用チュートリアル。
+* [CSS Gridの動画チュートリアル](https://cssgrid.io/) - Wes Bosによる、CSS Gridを学ぶ無料の動画講座。
+* [CSS Hands-on Tutorial](https://labex.io/tutorials/quick-start-with-css-free-tutorials-413795) - LabExによる無料のCSS実践チュートリアル。
+* [CSS Math Functions](https://stackdiary.com/css-math-functions/) - CSSの数学関数を使ったレスポンシブデザイン。
+* [Flexboxの動画チュートリアル](https://flexbox.io/) - Wes Bosによる、flexboxを学ぶ無料の動画講座。
+* [Organize CSS with a Modular Architecture: OOCSS, BEM, SMACSS](https://snipcart.com/blog/organize-css-modular-architecture) - OOCSS、BEM、SMACSSを例とともに詳しく紹介します。
+* [Work With Animations](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Work_with_animations) - アニメーションを検査します。

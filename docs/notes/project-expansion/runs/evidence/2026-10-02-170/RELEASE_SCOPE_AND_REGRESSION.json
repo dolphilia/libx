@@ -1,0 +1,121 @@
+{
+  "checkedAt": "2026-10-02T09:11:23.634Z",
+  "previousTurn": "progress:第169でHTMLアンカー修正と177リンク/28unit/230runtime合格、revision322を保存",
+  "workspace": "/private/tmp/libx-pugixml-integration-20261002",
+  "scope": {
+    "includedShared": [
+      "packages/project-config/src/config-schema.ts",
+      "packages/ui/src/components/DocumentProvenance.astro"
+    ],
+    "reason": "pugixmlの著作権通知・英日出典注釈・固定版ライセンスリンクの検証/表示に必要なoptionalフィールド追加。既存利用はoptionalで不変。",
+    "excludedShared": [
+      "packages/ui/src/components/LanguageSelector.astro"
+    ],
+    "excludedReason": "pugixml取り込みには不要な既存white-space変更。新統合チェックアウトだけを公開基点のファイルへ戻し、共有root/旧隔離コピーを保持。",
+    "rootProtectedFiles": [
+      {
+        "path": "packages/project-config/src/config-schema.ts",
+        "sha256": "f1ca76590a7e23ff03bf35f744fc783dbf0b95a3c83e0b2555c2d1e12dcc82f0",
+        "action": "既存rootと同一の旧隔離コピーを新統合環境へ。rootには書き込まない。"
+      },
+      {
+        "path": "packages/ui/src/components/DocumentProvenance.astro",
+        "sha256": "bda5beefcf1ba3bfc52dad563ca322682bcff603dcc5b33e321a9ff97d2db40c",
+        "action": "既存rootと同一の旧隔離コピーを新統合環境へ。rootには書き込まない。"
+      },
+      {
+        "path": "packages/ui/src/components/LanguageSelector.astro",
+        "sha256": "0ecb9bec9c0998830518f3f6a3b9f4c29bbcf2a52d30d03ea323fde0ccd4e833",
+        "action": "既存rootと同一の旧隔離コピーを新統合環境へ。rootには書き込まない。"
+      }
+    ],
+    "rootProtectedHashesMatch": true
+  },
+  "lockfile": {
+    "before": "第168の非frozen installが既存依存解決を広く更新してしまった。旧状態を別ファイルへ保存し、本番基点のロックへpugixml importerだけ追加。",
+    "after": "33行追加のみ。既存解決を変更せずTOMLと同じ依存宣言/固定解決を再利用。",
+    "validation": "pnpm install --frozen-lockfile --offline成功",
+    "sha256": "d97af79e2f4714bb572c76567d1bd805a78d209fb0fc759c3ae407e2835f2084",
+    "log": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/lock.txt",
+      "sha256": "8fa2e1dd5047be52f65de6d8b8b45da8859d73e748943167227c52cf1b7fede3"
+    }
+  },
+  "tests": {
+    "unit": {
+      "passed": 29,
+      "failed": 0,
+      "newCase": "出典metadataを実行時変換で保持し、不正な通知型/欠落言語/javascriptリンク/空ラベルを拒否",
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/unit.txt",
+        "sha256": "b9124741c5ef968c30cb634fcd351af9b8c86610b0bbea88fdb57b896b730c4d"
+      }
+    },
+    "recursiveContent": {
+      "passedApps": 11,
+      "includes": "Awesome7子とGLFW/Lua/pugixml/TOML",
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/content.txt",
+        "sha256": "05b72e9a67008add7574a5f251716707ad8484b68fcd0b503f6df27d5b4b9ad4"
+      }
+    }
+  },
+  "build": {
+    "passed": [
+      "pugixml",
+      "lua",
+      "glfw",
+      "toml",
+      "landing"
+    ],
+    "templatePages": 7,
+    "logs": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/build.txt",
+        "sha256": "71a4f8455b0aaa79309282ec4eefdf8bddcc397c05781fbdae899d63b827f9d4"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/template.txt",
+        "sha256": "9b53e344287e43883d340977f7d2a2e23781f1d593a22ed3292b3b796e8d2a4d"
+      }
+    ]
+  },
+  "renderedAudit": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/RENDERED_AUDIT.json",
+    "sha256": "570c4ec2e9874d0e692809022262e0068c99fae509ed706d8db6e4ffb564929e"
+  },
+  "assets": {
+    "files": 2639,
+    "MiB": 189.67,
+    "budget": "passed",
+    "log": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/assets.txt",
+      "sha256": "9502794034750c905a4d1f7d7a57b356eebac5873b9ea249340bb1707517549a"
+    }
+  },
+  "integrity": {
+    "status": "passed",
+    "layoutFiles": 38,
+    "log": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/integrity.txt",
+      "sha256": "f6ca005f6f0996cbde5693acee94793b5a7c20ce7bddf17b299b81c5ee71d3e2"
+    }
+  },
+  "links": {
+    "status": "passed",
+    "files": 177,
+    "log": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-170/links.txt",
+      "sha256": "e3eff7580b4005030aa4fde657016f38055425fa132259f5f5498023068afec2"
+    }
+  },
+  "integratedPreview": {
+    "sessionId": 96496,
+    "url": "http://127.0.0.1:4324",
+    "tabId": "10",
+    "checked": "XPath日本語ページの先頭をDOMとスクリーンショットで確認。統合全体の操作/モバイル回帰は次工程。"
+  },
+  "diffCheck": "passed",
+  "productionCurrentState": "pending",
+  "publication": "not-performed"
+}

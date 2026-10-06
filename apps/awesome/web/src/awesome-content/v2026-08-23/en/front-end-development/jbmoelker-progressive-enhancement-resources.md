@@ -1,36 +1,24 @@
 ---
 title: "Awesome Progressive Enhancement Resources"
-description: "A curated collection of resources and projects focused on Progressive Enhancement Resources."
+description: "Resources on progressive enhancement, from its concepts and implementation strategies to feature detection, browser support and testing. Examples cover forms, data visualisations, images, menus and page navigation."
 licenseSource: "github-jbmoelker-progressive-enhancement-resources-readme-md"
 ---
 
 # Awesome Progressive Enhancement Resources
 
-A curated collection of resources and projects focused on Progressive Enhancement Resources.
-
-## Contents
-
-* [The Concept](#the-concept)
-* [Strategies](#strategies)
-* [Feature Detection](#feature-detection)
-* [Support Tables](#support-tables)
-* [Testing Methods](#testing-methods)
-* [Examples](#examples)
-* [Related Articles](#related-articles)
-
+Resources on progressive enhancement, from its concepts and implementation strategies to feature detection, browser support and testing. Examples cover forms, data visualisations, images, menus and page navigation.
 
 ## The Concept
 
-[Progressive Enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement) means gradually improving the user experience after verifying the target environment (e.g. browser) is capable of it. Start with content and ensure you maintain functionality & accessibility.
+[Progressive Enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement) means gradually improving the user experience after verifying the target environment (e.g. browser) is capable of it. Start with content and ensure you maintain functionality and accessibility.
 
 * [Progressive Enhancement: It's about the content](http://cognition.happycog.com/article/progressive-enhancement-its-about-the-content) - Sharing content is the core of the web. Progressive Enhancement ensures access to content.
 * [The Role of Enhancement in Web Design](https://www.nngroup.com/articles/enhancement/) - From the concept of enhancement to the criteria and rules for enriching the user interface.
-* [Understanding Progressive Enhancement](http://alistapart.com/article/understandingprogressiveenhancement) - Apply technologies in an intelligent way, layer-upon-layer, to craft an amazing experience.
-* [Designing with Progressive Enhancement](https://www.filamentgroup.com/dwpe/) - *The book* (400+ pages) on Progressive Enhancement.
+* [Understanding Progressive Enhancement](http://alistapart.com/article/understandingprogressiveenhancement) - Apply technologies layer by layer to improve the user experience.
+* [Designing with Progressive Enhancement](https://www.filamentgroup.com/dwpe/) - A book (400+ pages) on Progressive Enhancement.
 * [Adaptive Web Design](http://adaptivewebdesign.info/2nd-edition/) - Book on Progressive Enhancement from content to design and interaction.
-* [Detecting (HTML5) features](http://diveinto.html5doctor.com/detect.html) - Intro to different feature detection techniques with examples and demos. 
+* [Detecting (HTML5) features](http://diveinto.html5doctor.com/detect.html) - Intro to different feature detection techniques with examples and demos.
 * [Progressive Web Apps](https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/) - Enhancing web sites into native-like apps (progressive, not hybrid).
-
 
 ## Strategies
 
@@ -39,27 +27,24 @@ You can apply Progressive Enhancement in different ways:
 * [The Content-out Approach](https://articles.uie.com/progressive_enhancement/) - Provide wide access to content without technological restrictions.
 * [Make the page usable with only HTML](https://www.gov.uk/service-manual/technology/using-progressive-enhancement#make-the-page-usable-with-only-html) - This sets the baseline for every device and browser.
 * [Test Driven Progressive Enhancement](http://alistapart.com/article/testdriven) - Core functional experience enhanced after testing capabilities.
-* [Cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard) - Set a threshold for collection of enhancements.
-* [Grade components, not browsers](https://www.filamentgroup.com/lab/grade-the-components.html
-) - Component level feature tests and enhancements.
-* [Feature vs Browser vs Form factor detection](http://www.html5rocks.com/en/tutorials/detection/) - As different strategies to tune your app to its environment.
+* [Cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard) - Set a capability threshold for a collection of enhancements.
+* [Grade components, not browsers](https://www.filamentgroup.com/lab/grade-the-components.html) - Component-level feature tests and enhancements.
+* [Feature vs Browser vs Form factor detection](http://www.html5rocks.com/en/tutorials/detection/) - Different strategies to adapt your app to its environment.
 * [Server-side device detection](https://www.smashingmagazine.com/2014/07/server-side-device-detection-with-javascript/) - Use user-agent and other HTTP header info combined with a device database to conditionally serve files.
 * [Writing polyfills](https://addyosmani.com/blog/writing-polyfills/) - If your baseline is still too high for some browsers, consider [polyfills](https://remysharp.com/2010/10/08/what-is-a-polyfill) (aka [Regressive Enhancement](https://twitter.com/SlexAxton/status/25600963629)).
-* [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73) - Setup for instant loading web apps.
-
+* [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73) - An architecture for web apps that load instantly.
 
 ## Feature Detection
 
-Before you try to enhance the experience, you need to ensure the environment is capable of the enhancement. You test this by performing feature detections:
+Before you try to enhance the experience, you need to ensure the environment is capable of the enhancement. You test this by performing feature detection:
 
-* [CSS feature queries](https://www.sitepoint.com/an-introduction-to-css-supports-rule-feature-queries/) ([`CSS.supports()`](https://developer.mozilla.org/en/docs/Web/API/CSS/supports) & [`@supports()`](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports)) - Natively test if specific CSS feature is supported using JS method or CSS declaration.
+* [CSS feature queries](https://www.sitepoint.com/an-introduction-to-css-supports-rule-feature-queries/) ([`CSS.supports()`](https://developer.mozilla.org/en/docs/Web/API/CSS/supports) & [`@supports()`](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports)) - Test native support for a specific CSS feature using a JS method or CSS declaration.
 * [Feature Detect ES6](https://www.npmjs.com/package/feature-detect-es6) - Detect which ES2015 features are available.
 * [SVG requiredFeatures](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures) - Render SVG elements only if their `[requiredFeatures]` evaluate to true.
 * [Modernizr](https://modernizr.com/) - Extensive feature detection suite (supports custom builds).
 * [Feature.js](http://featurejs.com/) - Lightweight feature detection suite.
 * [Conditioner.js](http://conditionerjs.com/) - Conditionally load JS modules based on directives in HTML attributes.
-* [EnhanceJS](https://www.filamentgroup.com/lab/introducing-enhancejs-smarter-safer-apply-progressive-enhancement.html) - Lets you asynchronously load CSS & JS after a set pre-defined feature tests.
-
+* [EnhanceJS](https://www.filamentgroup.com/lab/introducing-enhancejs-smarter-safer-apply-progressive-enhancement.html) - Lets you asynchronously load CSS & JS after a set of predefined feature tests.
 
 ## Support Tables
 
@@ -73,7 +58,7 @@ Different environments (platforms, browsers, versions) have different capabiliti
 * [Accessibility Support](https://a11ysupport.io/) - Compare accessibility support of HTML elements and ARIA roles across browsers & assistive technologies.
 * [State of Web Type](https://github.com/bramstein/stateofwebtype) - Support tables for type and typographic features on the web.
 * [Font Family Reunion](http://fontfamily.io/) - Compatibility tables for default local (system) fonts.
-* [HTML5 Accessibility](http://html5accessibility.com/) - Compare feature support of HTML5 tags, input types and properties across major browsers. 
+* [HTML5 Accessibility](http://html5accessibility.com/) - Compare feature support of HTML5 tags, input types and properties across major browsers.
 * [WAI-ARIA Screen reader compatibility](https://www.powermapper.com/tests/screen-readers/aria/) - ARIA roles and attributes support for different screen reader and browser combinations.
 * [What web can do today](https://whatwebcando.today/) - Lists and checks modern web APIs like access to device system, sensors and actuators.
 * [HTML5 Worker test](https://nolanlawson.github.io/html5workertest/) - Compare which APIs are supported in Web Workers and Service Workers across browsers.
@@ -90,40 +75,38 @@ Different environments (platforms, browsers, versions) have different capabiliti
 * [Edge Platform Status](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/)
 * [Firefox Platform Status](https://platform-status.mozilla.org/)
 * [Webkit Platform Status](https://webkit.org/status/) (Safari)
-* [MDN Compatibility tables](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Structures/Compatibility_tables) - MDN's web technology documentation has a browser compatibility table end the end of each article.
+* [MDN Compatibility tables](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Structures/Compatibility_tables) - MDN's web technology documentation has a browser compatibility table at the end of each article.
 * [MDN Browser Compat Data](https://github.com/mdn/browser-compat-data) - npm module powering the MDN Compatibility tables.
-* [Device Bugs & Quirks](https://github.com/scottjehl/Device-Bugs) - Crowd sourced collection of weird HTML, CSS, and JS quirks in mobile devices, which you won't find in the other support tables.
+* [Device Bugs & Quirks](https://github.com/scottjehl/Device-Bugs) - Crowdsourced collection of weird HTML, CSS, and JS quirks in mobile devices, which you won't find in the other support tables.
 * [Can I Email?](https://www.caniemail.com/) - Support tables for HTML and CSS in emails. Inspired by [Can I use](http://caniuse.com/).
 * [Project Fugu API tracker](https://fugu-tracker.web.app/) - Browser support status overview of web API's filling the "app gap".
 * [iOS PWA Compatibility](https://firt.dev/notes/pwa-ios/) - Support table for PWA features including service worker, manifest, background sync and push notifications (Unofficial, maintained by Maximiliano Firtman).
-
 
 ## Testing Methods
 
 With progressive enhancement you support different experiences in different environments. These are some ways to test all these variations:
 
-* [Open Device Lab](https://opendevicelab.com/) - Lets you *test manually on actual devices* (for free).
+* [Open Device Lab](https://opendevicelab.com/) - Lets you test manually on actual devices (for free).
 * [Text browsers](https://en.wikipedia.org/wiki/Text-based_web_browser) - Good way to test if your content is accessible at the baseline. Try [Lynx](http://lynx.browser.org/) for example.
-* [Testing in Opera Mini](https://dev.opera.com/articles/making-sites-work-opera-mini/#testing-in-opera-mini) - Download the app, emulate on desktop, setup to test local websites. (Opera Mini accounts for over 5% browser usage world wide)
-* [cURL](https://curl.haxx.se/docs/manual.html) - Web page to see the pre-rendered source code of a page.
+* [Testing in Opera Mini](https://dev.opera.com/articles/making-sites-work-opera-mini/#testing-in-opera-mini) - Download the app, emulate on desktop, set up testing for local websites. The original list reports that Opera Mini accounted for over 5% of worldwide browser usage.
+* [cURL](https://curl.haxx.se/docs/manual.html) - Fetch a web page to inspect its pre-rendered source code.
 * [Browserling](https://www.browserling.com/) - Lets you manually test web pages in different versions of browsers on Windows and Android platforms.
 * [Run Internet Explorer using Virtual Machines](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/mac/) - To test IE browsers on other platforms.
 * [Device emulators and simulators](https://developers.google.com/web/tools/chrome-devtools/iterate/device-mode/testing-other-browsers?hl=en#device-emulators-and-simulators)
 * [Configure *Desired Capabilities* in Selenium](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities) - Run automated browser tests in different scenarios.
 * Continuously run automated tests in different browsers using [BrowserStack](https://www.browserstack.com/), [Saucelabs](https://saucelabs.com/) or other alternatives.
-* [Lighthouse](https://github.com/GoogleChrome/lighthouse) - Audit and meassure performance of Progressive Web Apps (via cli or [Chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)).
+* [Lighthouse](https://github.com/GoogleChrome/lighthouse) - Audit and measure the performance of Progressive Web Apps (via CLI or [Chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)).
 * [Progressive Enhancement checklist (1st edition, HTML)](http://adaptivewebdesign.info/1st-edition/read/chapter-6.html#the-progressive-enhancement-checklist), [Checklist of 2nd edition (PDF)](http://adaptivewebdesign.info/2nd-edition/checklist.pdf) - Actionable list to check you've applied Progressive Enhancement best practices. Part of [Adaptive Web Design book](http://adaptivewebdesign.info/).
 * [CSS Feature Toggles](https://chrome.google.com/webstore/detail/css-feature-toggles/aeinmfddnniiloadoappmdnffcbffnjg) - Chrome DevTools extension to toggle support of selected CSS features for testing progressive enhancement fallbacks.
-
 
 ## Examples
 
 ### Custom Form Elements
 
-* [Fancy radio buttons](https://www.sitepoint.com/replacing-radio-buttons-without-replacing-radio-buttons/) - Based on HTML radio buttons, visually enhanced using CSS pseudo classes and elements.
+* [Fancy radio buttons](https://www.sitepoint.com/replacing-radio-buttons-without-replacing-radio-buttons/) - Based on HTML radio buttons, visually enhanced using CSS pseudo-classes and pseudo-elements.
 * [Checkboxes & radio buttons](https://www.filamentgroup.com/dwpe/checkbox-radiobutton/) - With custom focus, hover and checked state. Enhanced asynchronously.
 * [Toggle switch](https://ghinda.net/css-toggle-switch/) - Checkbox or radios, visually enhanced to sliding toggle switches using CSS only.
-* [5-star rating](http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/) - Based on HTML radio buttons, visually enhanced using CSS pseudo classes and elements.
+* [5-star rating](http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/) - Based on HTML radio buttons, visually enhanced using CSS pseudo-classes and pseudo-elements.
 * [jQuery slider](https://github.com/filamentgroup/jQuery-Slider) - Accessible, custom slider widget based on a standard HTML select.
 * [jQuery custom file input](https://www.filamentgroup.com/lab/jquery-custom-file-input-book-designing-with-progressive-enhancement.html) - Article and library.
 * [React isomorphic form](https://github.com/ghengeveld/react-isomorphic-form/) - Set of React form components which can be pre-rendered & handled server-side. They are enhanced client-side without losing state.
@@ -144,26 +127,15 @@ With progressive enhancement you support different experiences in different envi
 
 ### Page Navigation
 
-Asynchronously fetch and transition between static pages using ajax and `history.pushState`:
+Asynchronously fetch and transition between static pages using Ajax and `history.pushState`:
 
 * [Barba.js](http://barbajs.org/) - Add page transitions with event hooks, cache and prefetch support.
 * [SmoothState.js](https://github.com/miguel-perez/smoothState.js) - Add page transitions with event hooks, cache and prefetch support. (requires jQuery).
 * [jquery-pjax](https://github.com/defunkt/jquery-pjax) - Add page transitions with support for multiple containers / content slots (requires jQuery).
-* [MoOx/pjax](https://github.com/MoOx/pjax) - Similar tot jquery-pjax, but without the jQuery dependency.
+* [MoOx/pjax](https://github.com/MoOx/pjax) - Similar to jquery-pjax, but without the jQuery dependency.
 * [Turbolinks](https://github.com/turbolinks/turbolinks) - Add page transitions with event hooks and cache support. Has adapters to bind to native navigation controls on iOS and Android.
-
 
 ## Related Articles
 
 * [Make the web work for everyone](https://hacks.mozilla.org/2016/07/make-the-web-work-for-everyone/) - Plea to developers to consider browser differences and build a resilient web.
-* [How many people are missing out on JavaScript enhancement?](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) - Research on why in 1.1% of page visits JavaScript isn't loaded. 
-
----
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-[Jasper Moelker](https://twitter.com/jbmoelker) waives all rights to this work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
-
-You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
+* [How many people are missing out on JavaScript enhancement?](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) - Research reporting that JavaScript was not loaded in 1.1% of page visits, and examining why.

@@ -1,11 +1,11 @@
 ---
 title: "Awesome Aurelia"
-description: "Awesome Aureliaの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "アプリ用フレームワークAureliaの資料を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Aurelia
 
-Awesome Aureliaの収録案内です。このスナップショットでは上流本文を転載していません。
+アプリ用フレームワークAureliaに関する資料を探せるAwesome Aureliaへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/aurelia-contrib/awesome-aurelia/blob/db81f616303f585cd74f8a4758e4825457966cf8/README.md)
+- [元のリストを読む](https://github.com/aurelia-contrib/awesome-aurelia/blob/db81f616303f585cd74f8a4758e4825457966cf8/README.md)

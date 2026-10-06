@@ -1,0 +1,42 @@
+﻿2026-10-06T13:43:56.1621130Z ##[group]Run set -euo pipefail
+2026-10-06T13:43:56.1621700Z [36;1mset -euo pipefail[0m
+2026-10-06T13:43:56.1622050Z [36;1mcase "$(uname -m)" in[0m
+2026-10-06T13:43:56.1622530Z [36;1m  arm64) architecture=arm64; checksum=3eaeb3bd10982aecba5dd76158745a4f805afb39ab72a519bba2533c98ce002d ;;[0m
+2026-10-06T13:43:56.1623270Z [36;1m  x86_64) architecture=x86_64; checksum=922e35c0210d7ca20ee9327811361d6d7f0ef0adda089e0e74cb3756c3d713f9 ;;[0m
+2026-10-06T13:43:56.1623820Z [36;1m  *) echo "Unsupported macOS architecture" >&2; exit 1 ;;[0m
+2026-10-06T13:43:56.1624270Z [36;1mesac[0m
+2026-10-06T13:43:56.1624630Z [36;1mpandoc_directory="$RUNNER_TEMP/pandoc-3.8.3"[0m
+2026-10-06T13:43:56.1625020Z [36;1mmkdir -p "$pandoc_directory"[0m
+2026-10-06T13:43:56.1625390Z [36;1mpandoc_archive="$pandoc_directory/pandoc.zip"[0m
+2026-10-06T13:43:56.1625830Z [36;1mcurl --fail --location --proto '=https' --proto-redir '=https' \[0m
+2026-10-06T13:43:56.1626500Z [36;1m  "https://github.com/jgm/pandoc/releases/download/3.8.3/pandoc-3.8.3-$architecture-macOS.zip" \[0m
+2026-10-06T13:43:56.1627240Z [36;1m  --output "$pandoc_archive"[0m
+2026-10-06T13:43:56.1627790Z [36;1mprintf '%s  %s\n' "$checksum" "$pandoc_archive" | shasum -a 256 --check[0m
+2026-10-06T13:43:56.1628270Z [36;1munzip -q "$pandoc_archive" -d "$pandoc_directory"[0m
+2026-10-06T13:43:56.1628870Z [36;1mpandoc_binary="$(find "$pandoc_directory" -type f -path '*/bin/pandoc' -print)"[0m
+2026-10-06T13:43:56.1629260Z [36;1mtest -x "$pandoc_binary"[0m
+2026-10-06T13:43:56.1629590Z [36;1m"$pandoc_binary" --version[0m
+2026-10-06T13:43:56.1629960Z [36;1mprintf '%s\n' "$(dirname "$pandoc_binary")" >> "$GITHUB_PATH"[0m
+2026-10-06T13:43:56.1636840Z [36;1mprintf 'UTHASH_PANDOC=%s\n' "$pandoc_binary" >> "$GITHUB_ENV"[0m
+2026-10-06T13:43:56.1637440Z [36;1mprintf 'LIBX_FMT_PANDOC=%s\n' "$pandoc_binary" >> "$GITHUB_ENV"[0m
+2026-10-06T13:43:56.1716910Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-06T13:43:56.1717560Z env:
+2026-10-06T13:43:56.1718940Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-06T13:43:56.1719410Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-06T13:43:56.1720330Z ##[endgroup]
+2026-10-06T13:43:56.2832710Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-06T13:43:56.2834950Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-06T13:43:56.2835370Z 
+2026-10-06T13:43:56.3520780Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-06T13:43:56.5193260Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-06T13:43:56.5194350Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-06T13:43:56.9205140Z 
+2026-10-06T13:43:56.9207050Z 100 41.5M  100 41.5M    0     0  65.0M      0 --:--:-- --:--:-- --:--:-- 65.0M
+2026-10-06T13:43:57.2037460Z /Users/runner/work/_temp/pandoc-3.8.3/pandoc.zip: OK
+2026-10-06T13:43:58.7693420Z pandoc 3.8.3
+2026-10-06T13:43:58.7694260Z Features: +server +lua
+2026-10-06T13:43:58.7695150Z Scripting engine: Lua 5.4
+2026-10-06T13:43:58.7695780Z User data directory: /Users/runner/.local/share/pandoc
+2026-10-06T13:43:58.7696610Z Copyright (C) 2006-2025 John MacFarlane. Web:  https://pandoc.org
+2026-10-06T13:43:58.7697470Z This is free software; see the source for copying conditions. There is no
+2026-10-06T13:43:58.7699640Z warranty, not even for merchantability or fitness for a particular purpose.

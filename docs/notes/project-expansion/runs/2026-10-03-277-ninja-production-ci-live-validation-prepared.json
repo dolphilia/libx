@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-277-ninja-production-ci-live-validation-prepared",
+  "cycle": 277,
+  "startedAt": "2026-10-02T20:26:00.000Z",
+  "endedAt": "2026-10-02T20:30:27.313Z",
+  "result": "partial",
+  "phase": "ninja-production-ci-live-validation-prepared",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Current ledger/AGENTS/POLICY audit",
+    "Exact GitHub Production run read-only polls",
+    "Bounded waits",
+    "Production artifact/safe extract validation preparation",
+    "WholeNinja/2369regression/Cloudflarestate verification preparation",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "169d667f4b2f2e99bff5049412c324562d5d9357467d41607dd49cc996690776"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/CI_0.json",
+      "sha256": "fda8d4011b8237c6765cabd42a54d27010a8f44e84167373b5ef149709c38577"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/CI_1.json",
+      "sha256": "f47517dffcacd321c5b26129477c53fae2d70f7ab76c41c1e9f6636a0ea78c40"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/CI_2.json",
+      "sha256": "c08b59545ae4103f768d19d78ec4561ce2b17cdfda215d23f811d60698e52ccf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/check-existing-ci.mjs",
+      "sha256": "432f9cb895871dd9edf53750ef8c9e77cfdebbcd544124988b563fd01463875a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/download-production-artifacts.py",
+      "sha256": "972c5576660cef06d446998bfddafb12a2ef319710b94a5902af266b034b2558"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/verify-ninja-ci-artifact.mjs",
+      "sha256": "ec141e542a44f8c5bbc0bd9655e178a3fc295e1e8fa349e681f23c96682244c6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/verify-production-state.mjs",
+      "sha256": "537341c353353109ba432b898b5f058bbdd2192328d615dcf2d31b004e006e48"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "45bdc7d76b6da2e6dd7681f245f34ce22c6937a3f41a7cb17251f7085137d483"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "fcb992e9d114c40b154108c10a9b85b4d94b797033f73a245e57a12bb802504f"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Exact live Production run with advanced successful tests",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/CI_0.json",
+          "sha256": "fda8d4011b8237c6765cabd42a54d27010a8f44e84167373b5ef149709c38577"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/CI_1.json",
+          "sha256": "f47517dffcacd321c5b26129477c53fae2d70f7ab76c41c1e9f6636a0ea78c40"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/CI_2.json",
+          "sha256": "c08b59545ae4103f768d19d78ec4561ce2b17cdfda215d23f811d60698e52ccf"
+        }
+      ]
+    },
+    {
+      "name": "Actual Production artifact/state/delivery",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-277/CI_2.json",
+          "sha256": "c08b59545ae4103f768d19d78ec4561ce2b17cdfda215d23f811d60698e52ccf"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前turnはPreviewUI完了と本番dispatchによりprogress。今回は特定live runのverified waitと検証準備。",
+    "テスト成功は全CI/deploy成功の代用にしない。preparedscriptsを実検証結果として扱わない。",
+    "候補readで誤ったstatuskeyを参照したがstateで読み直し、候補台帳変更なし。詳細調査/採用0件。",
+    "既存277CI証拠を上書きせず次cycleへ渡す。"
+  ],
+  "unresolved": [
+    "Content/build/deploy CI live",
+    "Actual production artifact andCloudflarestate",
+    "Actual fixed/customdomain delivery andUI"
+  ],
+  "nextAction": "同本番run37060392684/head068bfeb18b81f5098c669c04bd186605bc3a3834を次cycle新immutable証拠へbounded pollし再dispatchなし。success後277/download-production-artifacts.pyを一度実行しarchivezipdigest/safe extractionを記録（既存fileなら再実行せず内容確認）。/private/tmp/libx-ninja-production-artifact-277を277/verify-ninja-ci-artifact.mjsでactualCI全文確認、277/check-existing-ci.mjsで2369既存記事回帰。277/verify-production-state.mjsにstate277dirとfreshoutputを渡してbefore/prepublish/after確認、別before277archiveのbefore.json一致も確認。state.after正式fixedURLで全配信bytes、libx.dev変換個別分類、主要英日URL/nativeUI検証後published。",
+  "resumeCondition": "277:同run live確認CI_0→1でUnit/runtimeがsuccessへ進行、CI_2現在contentchecks inprogress。artifact未生成。取得/全文/回帰/Cloudflarestateのスクリプトを準備したがactualProductionで未実行なので合格扱いなし。台帳/REPORT一致。candidate現況をread-only参照したのみ詳細採点や状態変更なし。rootユーザー/Awesome変更を取込まず。",
+  "counts": {
+    "verified": 10,
+    "published": 9,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

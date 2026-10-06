@@ -1,64 +1,75 @@
 ---
-title: "Awesome logo of awesome-inertiajs repository"
-description: "A curated collection of resources and projects focused on logo of awesome-inertiajs repository."
+title: "Awesome Inertia.js"
+description: "Inertia.js adapters, React hooks, Laravel integrations, starter kits, editor tools, documentation, and community links."
 licenseSource: "github-innocenzi-awesome-inertiajs-readme-md"
 ---
 
-# Awesome logo of awesome-inertiajs repository
+# Awesome Inertia.js<a id="awesome-logo-of-awesome-inertiajs-repository"></a>
 
-A curated collection of resources and projects focused on logo of awesome-inertiajs repository.
+[Inertia.js](https://inertiajs.com/) builds single-page applications using classic server-side routing and controllers. Find client-side and server-side adapters, a React hook, Laravel integrations, starter kits, editor tools, and official documentation and community links.
 
 ## Useful Links
 
-**Legend**: `💜` Official · `⭐` Featured
+“Official” and “Featured” labels preserve the source’s designations.
 
-- [Documentation](http://inertiajs.com) - Official website and documentation.
-- [Twitter](https://twitter.com/inertiajs) - Official Twitter account.
-- [Discord](https://discord.gg/gwgxN8Y) - Official Discord server.
-- [Kitchen sink](https://github.com/inertiajs/demo-v3) - Demonstration application made with Laravel and Vue.
-- [Organization](https://github.com/inertiajs) - Official GitHub organization.
+- [Documentation](http://inertiajs.com) — Official website and documentation.
+
+- [Twitter](https://twitter.com/inertiajs) — Official Twitter account.
+
+- [Discord](https://discord.gg/gwgxN8Y) — Official Discord server.
+
+- [Kitchen sink](https://github.com/inertiajs/demo-v3) — Demonstration application built with Laravel and Vue.
+
+- [Organization](https://github.com/inertiajs) — Official GitHub organization.
 
 ## Adapters
 
 ### Client-side
 
-- `💜` [Vue.js](https://github.com/inertiajs/inertia/tree/master/packages/vue3)
-- `💜` [React](https://github.com/inertiajs/inertia/tree/master/packages/react)
-- `💜` [Svelte](https://github.com/inertiajs/inertia/tree/master/packages/svelte)
+- [Vue.js](https://github.com/inertiajs/inertia/tree/master/packages/vue3) — Official.
+
+- [React](https://github.com/inertiajs/inertia/tree/master/packages/react) — Official.
+
+- [Svelte](https://github.com/inertiajs/inertia/tree/master/packages/svelte) — Official.
 
 ### Server-side
 
-- `💜` [Laravel](https://github.com/inertiajs/inertia-laravel)
-- `💜` [Rails](https://github.com/inertiajs/inertia-rails)
-- `💜` [Django](https://github.com/inertiajs/inertia-django)
-- `💜` [Phoenix](https://github.com/inertiajs/inertia-phoenix)
-- `⭐` [Adonis](https://github.com/adonisjs/inertia)
+- [Laravel](https://github.com/inertiajs/inertia-laravel) — Official.
+
+- [Rails](https://github.com/inertiajs/inertia-rails) — Official.
+
+- [Django](https://github.com/inertiajs/inertia-django) — Official.
+
+- [Phoenix](https://github.com/inertiajs/inertia-phoenix) — Official.
+
+- [Adonis](https://github.com/adonisjs/inertia) — Featured.
+
 - [Go](https://github.com/petaki/inertia-go)
+
 - [Echo](https://github.com/kohkimakimoto/inertia-echo)
+
 - [FastAPI](https://github.com/hxjo/fastapi-inertia)
+
 - [Grails](https://github.com/matrei/grails-inertia-plugin)
+
 - [Flask](https://github.com/j0ack/flask-inertia)
+
 - [Symfony](https://github.com/nytodev/inertia-bundle)
 
 ## Hooks
 
-- [useApi](https://github.com/offload-project/inertiajs-use-api) - React hook for calling JSON API endpoints from Inertia.js apps, with optional piping into page props.
+- [useApi](https://github.com/offload-project/inertiajs-use-api) — React hook for calling JSON API endpoints from Inertia.js apps, with optional piping of the results into page props.
 
 ## Resources
 
-- `💜` [Starter kit](https://laravel.com/docs/13.x/starter-kits#available-starter-kits) - Laravel's official starter kits for Vue, React and Svelte.
-- `⭐` [Data](https://github.com/spatie/laravel-data) - Larave package for working with data objects, with built-in support for Inertia.
-- `⭐` [Navigation](https://github.com/spatie/laravel-navigation) - Laravel package for generating menus, breadcrumbs and other navigational elements.
-- [Built with Inertia](https://builtwithinertia.com/) - Showcase of products built with Inertia.js.
-- [Jetbrains plugin](https://plugins.jetbrains.com/plugin/17435-inertia-js-support) - PhpStorm/IntelliJ Ultimate plugin for Inertia.js.
-- [Code extension](https://marketplace.visualstudio.com/items?itemName=nhedger.inertia) - Visual Studio Code extension for Inertia.js.
+- [Starter kit](https://laravel.com/docs/13.x/starter-kits#available-starter-kits) — Official. Laravel starter kits for Vue, React, and Svelte.
 
-<p align="center">
-  <br />
-  <br />
-  <br />
-  ·
-  <br />
-  <br />
-  <sub>Contributions welcome! Read the <a href=".github/CONTRIBUTING.md">contribution guidelines</a> first.</sub>
-</p>
+- [Data](https://github.com/spatie/laravel-data) — Featured. Laravel package for working with data objects, with built-in Inertia support.
+
+- [Navigation](https://github.com/spatie/laravel-navigation) — Featured. Laravel package for generating menus, breadcrumbs, and other navigation elements.
+
+- [Built with Inertia](https://builtwithinertia.com/) — Showcase of products built with Inertia.js.
+
+- [Jetbrains plugin](https://plugins.jetbrains.com/plugin/17435-inertia-js-support) — Inertia.js plugin for PhpStorm and IntelliJ Ultimate.
+
+- [Code extension](https://marketplace.visualstudio.com/items?itemName=nhedger.inertia) — Visual Studio Code extension for Inertia.js.

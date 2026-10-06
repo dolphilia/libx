@@ -1,34 +1,14 @@
 ---
 title: "Awesome flexbox"
-description: "A curated collection of resources and projects focused on flexbox."
+description: "CSS Flexbox specifications, guides, browser support, presentations, tools, libraries, projects, courses, and people."
 licenseSource: "github-afonsopacifer-awesome-flexbox-readme-md"
 ---
 
 # Awesome flexbox
 
-A curated collection of resources and projects focused on flexbox.
+Resources for CSS Flexible Box Layout (Flexbox), from the W3C specification and learning materials to browser compatibility, tools, libraries, projects, and courses. Descriptions and support information reflect the fixed source. Items marked “Source highlight” retain the original list’s `:metal:` recommendation marker.
 
-## Table of Contents
-* [W3C Specification](#w3c-specification)
-* [Newsletter](#newsletter)
-* [Books](#books)
-* [Guides](#guides)
-* [Cross Browser](#cross-browser)
- * [Articles](#articles)
- * [Support](#support)
- * [Preprocessors in Action](#preprocessors-in-action)
- * [Polyfills](#polyfills)
-* [Other Interesting Articles](#other-interesting-articles)
-* [Presentations](#presentations)
- * [Videos](#videos)
- * [Slides and Notes](#slides-and-notes)
-* [Tools](#tools)
-* [Libraries and Frameworks](#libraries-and-frameworks)
-* [Featured Projects](#featured-projects)
-* [Courses](#courses)
-* [Who to Follow](#who-to-follow)
-* [Contributing](#contributing)
-* [Licence](#licence)
+Related lists cited by the source: [Awesome Web Components](https://github.com/obetomuniz/awesome-webcomponents) and [Awesome SVG](https://github.com/willianjusten/awesome-svg).
 
 ## W3C Specification
 *The specification describes a CSS box model optimized for user interface design.*
@@ -45,8 +25,8 @@ A curated collection of resources and projects focused on flexbox.
 * [CSS3 Layout Modules 2nd Edition - Rachel Andrew](http://rachelandrew.co.uk/books/css3-layout-modules)
 
 ## Guides
-*Guides for developers or designer start their studies this wonderful technology.*
-* [A guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/):metal:
+Guides for developers and designers learning Flexbox.
+* [A guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) — Source highlight.
 * [A visual guide to CSS3 flexbox properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
 * [flexbox (pt-br)](http://desenvolvimentoparaweb.com/css/flexbox/)
 * [Dive into flexbox](http://bocoup.com/weblog/dive-into-flexbox/)
@@ -65,9 +45,9 @@ A curated collection of resources and projects focused on flexbox.
 * [Webflow Flexbox](https://flexbox.webflow.com/)
 
 ## Cross Browser
-*Tips and tricks for your projects work anywhere :D*
+Tips and techniques for browser compatibility.
 
-#### Articles
+### Articles
 * [6 Reasons to Start Using Flexbox](http://bitsofco.de/6-reasons-to-start-using-flexbox/?utm_campaign=CSS%2BLayout%2BNews&utm_medium=email&utm_source=CSS_Layout_News_31)
 * [Advanced cross-browser flexbox](https://dev.opera.com/articles/advanced-cross-browser-flexbox/)
 * [Are we ready to use flexbox?](http://www.sitepoint.com/are-we-ready-to-use-flexbox/)
@@ -78,22 +58,22 @@ A curated collection of resources and projects focused on flexbox.
 * [Using flexbox: mixing old and new for the best browser support](https://css-tricks.com/using-flexbox/)
 * [Using Modernizr with Flexbox](http://zomigi.com/blog/using-modernizr-with-flexbox/?utm_campaign=CSS%2BLayout%2BNews&utm_medium=email&utm_source=CSS_Layout_News_8)
 
-#### Support
+### Support
 * [Caniuse](http://caniuse.com/flexbox)
 
-#### Preprocessors in action
+### Preprocessors in action
 * [Compass Flexbox](http://compass-style.org/reference/compass/css3/flexbox/)
 * [Sass flex mixin](https://github.com/mastastealth/sass-flex-mixin)
 * [Stylus flex mixin](https://github.com/differui/stylus-flex-mixin)
 
-#### Polyfills
-* [Flexibility](https://github.com/10up/flexibility):metal:
+### Polyfills
+* [Flexibility](https://github.com/10up/flexibility) — Source highlight.
 * [Flexie](https://github.com/doctyper/flexie)
 * [Reflexie](https://github.com/doctyper/reflexie)
 
 ## Other Interesting Articles
 *A list of issues related to flexbox.*
-* [Almost complete guide to flexbox (without flexbox)](http://kyusuf.com/post/almost-complete-guide-to-flexbox-without-flexbox?utm_campaign=CSS%2BLayout%2BNews&utm_medium=email&utm_source=CSS_Layout_News_36):metal:
+* [Almost complete guide to flexbox (without flexbox)](http://kyusuf.com/post/almost-complete-guide-to-flexbox-without-flexbox?utm_campaign=CSS%2BLayout%2BNews&utm_medium=email&utm_source=CSS_Layout_News_36) — Source highlight.
 * [Designing CSS layouts with flexbox is as easy as pie](http://www.smashingmagazine.com/2015/03/02/harnessing-flexbox-for-todays-web-apps/)
 * [Flexbox For Interfaces All The Way: Tracks Case Study](http://www.smashingmagazine.com/2015/11/flexbox-interfaces-tracks-case-study/?utm_source=html5weekly&utm_medium=email)
 * [Flexbox’s Best-Kept Secret](https://medium.com/@samserif/flexbox-s-best-kept-secret-bd3d892826b6#.i0v3krqo0)
@@ -104,9 +84,9 @@ A curated collection of resources and projects focused on flexbox.
 * [Flexbox Cheatsheet](http://jonibologna.com/flexbox-cheatsheet/)
 
 ## Presentations
-*Tired of reading? See an interactive presentation and learn flexbox now.*
+Presentations and videos for learning Flexbox.
 
-#### Videos
+### Videos
 * [CSS Layout o ontem, o hoje e o depois (pt-br)](https://www.youtube.com/watch?v=MjK1MCjqmpU&list=PLnjYA3TxpDpgWE9cXwT5H7wEsG6ql-Q59&index=15)
 * [CSS FlexBox Essentials](https://www.youtube.com/watch?v=G7EIAgfkhmg)
 * [CSS FlexBox Practical Examples (Rebuilding Dribbble.com using FlexBox)](https://www.youtube.com/watch?v=H1lREysgdgc)
@@ -117,7 +97,7 @@ A curated collection of resources and projects focused on flexbox.
 * [HTML5. Desenvolvimento avançado](https://www.youtube.com/watch?v=b9ZrOdTFkNk)
 * [Introduction to Flexbox](https://mijingo.com/lessons/guide-to-flexbox/?utm_campaign=CSS%2BLayout%2BNews&utm_medium=email&utm_source=CSS_Layout_News_34)
 * [Leveling up with flexbox](https://vimeo.com/96406277)
-* [What the flexbox?](http://flexbox.io) - A simple 20 video course that will help you master
+* [What the flexbox?](http://flexbox.io) - A 20-video course for learning Flexbox.
 * [Flexbox Fundamentals](https://egghead.io/lessons/misc-flexbox-fundamentals)
 
 
@@ -132,7 +112,7 @@ A curated collection of resources and projects focused on flexbox.
 * [Grow and Shrink Flex Items](http://www.sketchingwithcss.com/grow-shrink/)
 * [Implementing the Sticky Footer and Holy Grail layout](http://www.sketchingwithcss.com/flex-layouts/)
 
-#### Slides and Notes
+### Slides and Notes
 * [Building responsive layouts presentation](http://zomigi.com/blog/responsive-layouts-css-dev-conf/)
 * [CSS Flexbox: Estruturando layouts sem gambiarras (pr-br)](https://speakerdeck.com/afonsopacifer/flexbox)
 * [CSS3 layout](http://zomigi.com/blog/css3-layout/)
@@ -144,7 +124,7 @@ A curated collection of resources and projects focused on flexbox.
 * [CSS Layout: from Table to Flexbox](https://speakerdeck.com/diogomoretti/css-layout-from-table-to-flexbox)
 
 ## Tools
-*Have a little help to create their projects :D*
+Tools for building Flexbox projects.
 * [Build with Flexbox](http://flexbox.buildwithreact.com/)
 * [CSS flexbox please](http://demo.agektmr.com/flexbox/)
 * [CSS Flexbox snippets for Atom](https://github.com/brenopolanski/css-flexbox-atom-snippets)
@@ -159,12 +139,12 @@ A curated collection of resources and projects focused on flexbox.
 * [Try Flexbox](https://zyxneo.github.io/flexbox/try-flexbox)
 
 ## Libraries and Frameworks
-*A list of incredible libraries based on flexbox.*
+Libraries based on Flexbox.
 * [Bem grid](https://github.com/bem-incubator/bem-grid)
-* [Flexboxgrid](https://github.com/kristoferjoseph/flexboxgrid):metal:
-* [Flex Grid Framework](https://afonsopacifer.github.io/flex-grid-framework/):metal:
+* [Flexboxgrid](https://github.com/kristoferjoseph/flexboxgrid) — Source highlight.
+* [Flex Grid Framework](https://afonsopacifer.github.io/flex-grid-framework/) — Source highlight.
 * [Flexbox Grid for Stylus](http://stylusgrid.com)
-* [Fuux](https://github.com/henriquecustodia/fuux) - Fuux is a Flexbox library that uses the same flexbox interface like classes.
+* [Fuux](https://github.com/henriquecustodia/fuux) - The source describes Fuux as a Flexbox library using classes that follow the Flexbox interface.
 * [Ginger Grid](https://github.com/erwstout/ginger/) - A Flexbox grid framework named after a cute dog.
 * [Bulma](http://bulma.io/) - A modern CSS framework based on Flexbox
 * [Milligram](http://milligram.github.io/) - A minimalist CSS framework
@@ -172,12 +152,12 @@ A curated collection of resources and projects focused on flexbox.
 * [Waffle Grid](https://lucasgruwez.github.io/waffle-grid) - An easy to use flexbox grid system
 
 ## Featured Projects
-*Awesome projects about flexbox.*
-* [Cool examples of flexbox layout](http://codepen.io/collection/KegmA/) - A codepen a collection.
+Projects that use or teach Flexbox.
+* [Cool examples of flexbox layout](http://codepen.io/collection/KegmA/) - A CodePen collection.
 * [flex-box](https://github.com/potch/flex-box) - A Custom Element to make the basics of flexbox easier to use.
 * [Flexbugs](https://github.com/philipwalton/flexbugs) - A community-curated list of flexbox issues and cross-browser workarounds for them.
 * [Flexbox Froggy](http://flexboxfroggy.com/) - A game for learning CSS flexbox.
-* [Flexbox Patterns](http://www.flexboxpatterns.com/) - Examples and source code that will teach you how to build UI components with CSS flexbox! What’s flexbox?
+* [Flexbox Patterns](http://www.flexboxpatterns.com/) - Examples and source code for building UI components with CSS Flexbox.
 * [Flexbox Defense](http://www.flexboxdefense.com/) - Tower Defense with a twist: all towers must be positioned with CSS Flexbox.
 * [Flexbox tester](http://madebymike.com.au/demos/flexbox-tester/) - Understand how to calculate the width of flex items.
 * [Flexbox layout](https://github.com/google/flexbox-layout) - FlexboxLayout is a library project which brings the similar capabilities of CSS Flexible Box Layout Module to Android.
@@ -187,9 +167,9 @@ A curated collection of resources and projects focused on flexbox.
 * [Post Apocalypse Flexbox](https://github.com/afonsopacifer/post-apocalypse-flexbox)
 * [React-flexbox](https://github.com/tcoopman/react-flexbox) - Implementation of css flexbox in react with inline styles.
 * [Reflexbox](https://github.com/jxnblk/reflexbox) - Responsive React flexbox grid system higher order component.
-* [Solved by flexbox](https://github.com/philipwalton/solved-by-flexbox) - A showcase of problems once hard or impossible to solve with CSS alone, now made trivially easy with Flexbox.:metal:
-* [Visualizing Flexbox](http://codepen.io/paultrone/pen/xwxNmQ?utm_campaign=CSS%2BLayout%2BNews&utm_medium=email&utm_source=CSS_Layout_News_6) - A neat little CodePen Demo to play around with Flex properties.
-* [ZEEF CSS Flexbox](https://css-flexbox.zeef.com/afonso.pacifer) - The awesome flexbox on zeef.:metal:
+* [Solved by flexbox](https://github.com/philipwalton/solved-by-flexbox) - Examples of using Flexbox to solve problems that were difficult or impossible with CSS alone. — Source highlight.
+* [Visualizing Flexbox](http://codepen.io/paultrone/pen/xwxNmQ?utm_campaign=CSS%2BLayout%2BNews&utm_medium=email&utm_source=CSS_Layout_News_6) - A CodePen demo for experimenting with Flexbox properties.
+* [ZEEF CSS Flexbox](https://css-flexbox.zeef.com/afonso.pacifer) - The Flexbox collection on ZEEF. — Source highlight.
 * [Flexbox Zombies](http://flexboxzombies.com/p/flexbox-zombies) - A game for learning CSS flexbox.
 
 ## Courses
@@ -197,7 +177,7 @@ A curated collection of resources and projects focused on flexbox.
 * [Learn Flexbox for free](https://scrimba.com/g/gflexbox) - scrimba
 
 ## Who to Follow
-*People who talk about it.*
+People discussing Flexbox in the fixed source.
 * Afonso Pacifer [@afonsopacifer](https://twitter.com/afonsopacifer)
 * Brad Frost [@brad_frost](https://twitter.com/brad_frost)
 * Chris Coyier [@chriscoyier](https://twitter.com/chriscoyier)
@@ -209,9 +189,3 @@ A curated collection of resources and projects focused on flexbox.
 * Richard Herrera [@doctyper](https://twitter.com/doctyper)
 * Sara Soueidan [@SaraSoueidan](https://twitter.com/SaraSoueidan)
 * Sean Fioritto [@sfioritto](https://twitter.com/sfioritto)
-
-## Contributing
-Want to contribute? [Follow these recommendations](https://github.com/afonsopacifer/awesome-flexbox/blob/master/contributing.md).
-
-## License
-[MIT License](https://github.com/afonsopacifer/awesome-flexbox/blob/master/license.md) © [Afonso Pacifer](https://afonsopacifer.github.io/)

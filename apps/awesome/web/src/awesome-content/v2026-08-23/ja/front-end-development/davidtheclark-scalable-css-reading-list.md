@@ -1,11 +1,11 @@
 ---
 title: "Awesome Scalability"
-description: "Awesome Scalabilityの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "CSSの拡張性に関する読み物を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Scalability
 
-Awesome Scalabilityの収録案内です。このスナップショットでは上流本文を転載していません。
+CSSの拡張性に関する読み物を探せるScalable CSS Reading Listへ案内します。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/davidtheclark/scalable-css-reading-list/blob/51fd36db8fddae1cf830abb45ba776d03a2ca1b8/README.md)
+- [元のリストを読む](https://github.com/davidtheclark/scalable-css-reading-list/blob/51fd36db8fddae1cf830abb45ba776d03a2ca1b8/README.md)

@@ -1,79 +1,93 @@
 ---
 title: "Awesome Seed RS"
-description: "Seed RSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "RustとWebAssemblyのSeed向けに、公式資料、書籍、クイックスタート、バンドラー、実装例、プロジェクト、UIライブラリーを案内します。"
 licenseSource: "github-seed-rs-awesome-seed-rs-readme-md"
 ---
 
 # Awesome Seed RS
 
-Seed RSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
-
-## 目次
-
-- [公式リソース](#official-resources)
-- [書籍](#books)
-- [クイックスタート](#quickstarts)
-- [バンドラー](#bundlers)
-- [例](#examples)
-- [Seed を使用するプロジェクト](#projects-using-seed)
-- [ライブラリー](#libraries)
-- [貢献](#contribute)
+Seedは、WebAssemblyで動くWebアプリを作るためのオープンソースのRustフレームワークです。公式資料、書籍、クイックスタート、バンドラー、実装例、Seedを使うプロジェクト、UIやアイコンのライブラリーを探せます。
 
 ## 公式リソース
 
-- ~~Homepage~~
-- [GitHub repo](https://github.com/seed-rs/seed)
-- [Forum](https://seed.discourse.group)
-- [Chat](https://discord.gg/JHHcHp5)
+- ~~ホームページ~~
+
+- [GitHubリポジトリ](https://github.com/seed-rs/seed)
+
+- [フォーラム](https://seed.discourse.group)
+
+- [チャット](https://discord.gg/JHHcHp5)
 
 ## 書籍
-- [Engineering Rust Web Applications](https://erwabook.com/) - Diesel、Rocket、Seed。
-- [Porting a JS app to Rust](https://slowtec.de/posts/2019-12-20-porting-javascript-to-rust-part-1.html) - Rust で JavaScript アプリを WebAssembly へ移植する方法（ブログシリーズ）。
+
+- [Engineering Rust Web Applications](https://erwabook.com/) — Diesel、Rocket、Seed。
+
+- [Porting a JS app to Rust](https://slowtec.de/posts/2019-12-20-porting-javascript-to-rust-part-1.html) — RustでJavaScriptアプリをWebAssemblyへ移植する方法を解説するブログシリーズ。
 
 ## クイックスタート
 
-- [Default quickstart](https://github.com/seed-rs/seed-quickstart) - Rust ライブラリーのみを含みます。
-- [Quickstart with Webpack](https://github.com/seed-rs/seed-quickstart-webpack) - 主な機能: 自動リロード、事前レンダリング、最小化、[TailwindCSS](https://tailwindcss.com/)、Typescript。
+- [標準クイックスタート](https://github.com/seed-rs/seed-quickstart) — Rustライブラリーのみを含む。
+
+- [Webpackを使うクイックスタート](https://github.com/seed-rs/seed-quickstart-webpack) — 自動再読み込み、事前レンダリング、コードの圧縮、[TailwindCSS](https://tailwindcss.com/)、TypeScript。
 
 ## バンドラー
 
-- [Trunk](https://github.com/thedodd/trunk) - Rust 向け WASM ウェブアプリケーションバンドラー。
-- [Web Bundler](https://github.com/panoptix-za/web-bundler) - 公開用の Seed SPA をバンドルします。
-- [Seeder](https://github.com/MartinKavik/seeder) - 一つのコマンドを実行することで Seed アプリをセットアップし、開発サーバーを起動します。
+- [Trunk](https://github.com/thedodd/trunk) — Rust向けのWASM Webアプリケーションバンドラー。
 
-## 例
+- [Web Bundler](https://github.com/panoptix-za/web-bundler) — 公開用にSeedのSPAをバンドル。
 
-- [RealWorld example](https://github.com/seed-rs/seed-rs-realworld) - 「あらゆるデモアプリの母」— [Medium.com](https://medium.com/) クローンの模範的なフルスタック実装。
-- [Dark lang Realworld](https://github.com/MartinKavik/seed-realworld-darklang) - [Dark lang](https://darklang.com/) Realworld を統合した _Quickstart with Webpack_ 上の Seed Realworld 例。
-- [Official examples](https://github.com/seed-rs/seed/tree/master/examples) - 公式リポジトリに含まれる小規模な例。
-- [ERWA mytodo](https://github.com/seed-rs/erwa_mytodo) - Rust フルスタック例。Diesel、Rocket、Seed。
-- [Template for GUIs with seed+gotham](https://gitlab.com/liketechnik/local-gui-seed-gotham) - Gotham、rust-embed、web-view、Seed を使ったローカル／デスクトップ GUI 向けの Electron のようなテンプレート。
-- [Seeded Game of Life](https://github.com/arn-the-long-beard/seeded_game_of_life) - [tutorial](https://dev.to/arnthelongbeard/how-to-only-rust-for-web-frontend-1026) 付きで、[wasm tutorial](https://rustwasm.github.io/docs/book/) に着想を得た純粋な Rust によるライフゲーム。
-- [Dota Underlord Perfect Build](https://github.com/warycat/dotawasm) - Dota Underlord で最適なデッキ構築を支援するアプリ。
-- [Play Seed](https://ide.play-seed.dev) - 複数の既定例を備えたプレイグラウンド。
+- [Seeder](https://github.com/MartinKavik/seeder) — 1つのコマンドでSeedアプリをセットアップし、開発サーバーを起動。
+
+## 実装例<a id="例"></a>
+
+- [RealWorldの実装例](https://github.com/seed-rs/seed-rs-realworld) — [Medium.com](https://medium.com/)のフルスタックのクローン実装。
+
+- [Dark lang Realworld](https://github.com/MartinKavik/seed-realworld-darklang) — Webpackを使うクイックスタートを基に、[Dark lang](https://darklang.com/)のRealworldを統合したSeedのRealworld実装例。
+
+- [公式の実装例](https://github.com/seed-rs/seed/tree/master/examples) — 公式リポジトリに含まれる小規模な実装例。
+
+- [ERWA mytodo](https://github.com/seed-rs/erwa_mytodo) — Diesel、Rocket、Seedを使うRustのフルスタック実装例。
+
+- [seed+gothamのGUIテンプレート](https://gitlab.com/liketechnik/local-gui-seed-gotham) — Gotham、rust-embed、web-view、Seedを使う、ローカル・デスクトップGUI向けのElectronのようなテンプレート。
+
+- [Seeded Game of Life](https://github.com/arn-the-long-beard/seeded_game_of_life) — [チュートリアル](https://dev.to/arnthelongbeard/how-to-only-rust-for-web-frontend-1026)付きの、Rustのみで実装するライフゲーム。[WebAssemblyのチュートリアル](https://rustwasm.github.io/docs/book/)に着想を得ている。
+
+- [Dota Underlord Perfect Build](https://github.com/warycat/dotawasm) — Dota Underlordで最適なデッキの構築を支援するアプリ。
+
+- [Play Seed](https://ide.play-seed.dev) — 複数の既定の実装例を備えたプレイグラウンド。
 
 ## Seed を使用するプロジェクト
 
-- [AdEx Explorer](https://github.com/adexnetwork/adex-explorer) - AdEx 広告プロトコルのペイメントチャネルネットワークに関する厳選情報を表示します。
-- [Kavik.cz](https://github.com/MartinKavik/kavik.cz) - オープンソースの個人ウェブサイト。
-- [benxu.dev/blog](https://github.com/AlterionX/benxu-dev) - 比較的シンプルなオープンソースの個人ブログ。`Seed`、[`maud`](https://maud.lambda.xyz)、[`Rocket`](https://rocket.rs)、[`Diesel`](https://diesel.rs) で構築されています。
-- ~~seed-rs.org~~ - Seed の公式ウェブサイト。
-- [WeightRS](https://gitlab.com/mkroehnert/weightrs) - 体重を追跡するための、最小限でプライバシーに配慮したプログレッシブウェブアプリ。
-- [Music composer](https://github.com/ethanboxx/planters-rdconf-hackathon-project) - 基本的な音楽作曲アプリ。
-- [Play Seed](https://play-seed.dev) - Seed アプリをデモするプレイグラウンド、Play Seed に関するウェブサイト。
-- [Typesync](https://typesync.rutrum.net) - 楽曲歌詞でタイピング速度をテストします。`Seed`、[`Rocket`](https://rocket.rs)、[`Diesel`](https://diesel.rs) を使用します。
-- [CalcuPi](https://dvjn.github.io/CalcuPi) - 円周率の値を近似する美しいモンテカルロシミュレーション。
-- [Love Letter Tracker](https://www.fosskers.ca/en/tools/love-letter) - カードゲーム _Love Letter_ の知識トラッカー。
-- [Whatlang.org](https://whatlang.org/) - whatlang（言語認識ライブラリー）のインタラクティブデモ。
-- [Pslink](https://pslink.teilgedanken.de) - 出版物での利用に焦点を置く URL 短縮ページ（[demo](https://demo.pslink.teilgedanken.de/app/)（ユーザー、パスワード: demo））。`Seed`、[`actix-web`](https://actix.rs/)、[`sqlx`](https://github.com/launchbadge/sqlx) を使用します。
+- [AdEx Explorer](https://github.com/adexnetwork/adex-explorer) — AdEx広告プロトコルのペイメントチャネルネットワークに関する情報を整理して表示。
+
+- [Kavik.cz](https://github.com/MartinKavik/kavik.cz) — オープンソースの個人Webサイト。
+
+- [benxu.dev/blog](https://github.com/AlterionX/benxu-dev) — 比較的シンプルなオープンソースの個人ブログ。`Seed`、[`maud`](https://maud.lambda.xyz)、[`Rocket`](https://rocket.rs)、[`Diesel`](https://diesel.rs)で構築。
+
+- ~~seed-rs.org~~ — Seedの公式Webサイト。
+
+- [WeightRS](https://gitlab.com/mkroehnert/weightrs) — 体重を記録する、最小限の構成でプライバシーに配慮したPWA。
+
+- [Music composer](https://github.com/ethanboxx/planters-rdconf-hackathon-project) — 基本的な作曲アプリ。
+
+- [Play Seed](https://play-seed.dev) — Seedアプリを試せるプレイグラウンド、Play SeedのWebサイト。
+
+- [Typesync](https://typesync.rutrum.net) — 歌詞を使ってタイピング速度を測定。`Seed`、[`Rocket`](https://rocket.rs)、[`Diesel`](https://diesel.rs)を使用。
+
+- [CalcuPi](https://dvjn.github.io/CalcuPi) — 円周率を近似するモンテカルロシミュレーション。
+
+- [Love Letter Tracker](https://www.fosskers.ca/en/tools/love-letter) — カードゲームLove Letterの情報を追跡するツール。
+
+- [Whatlang.org](https://whatlang.org/) — 言語認識ライブラリーwhatlangの対話型デモ。
+
+- [Pslink](https://pslink.teilgedanken.de) — 出版物での利用を目的とするURL短縮ページ（[デモ](https://demo.pslink.teilgedanken.de/app/)のユーザー名・パスワード：demo）。`Seed`、[`actix-web`](https://actix.rs/)、[`sqlx`](https://github.com/launchbadge/sqlx)を使用。
 
 ## ライブラリー
 
-- [Savory](https://gitlab.com/MAlrusayni/savory) - Seed に基づくユーザーインターフェースを構築するライブラリー。
-- [seed-icons](https://crates.io/crates/seed-icons) - Seed ベースのアプリケーションに含めるアイコンコレクションを備えたライブラリー。
-- [Seed Bootstrap](https://github.com/panoptix-za/seed-bootstrap) - [Bootstrap](https://getbootstrap.com/) CSS コンポーネントのコレクション。
-- [seed_heroicons](https://github.com/mh84/seed_heroicons) - Seed ベースのアプリケーションに含める [Heroicons](https://heroicons.com/) を提供するライブラリー。
+- [Savory](https://gitlab.com/MAlrusayni/savory) — Seedを基にユーザーインターフェースを構築するライブラリー。
 
-## 貢献
+- [seed-icons](https://crates.io/crates/seed-icons) — Seedアプリに組み込めるアイコン集を備えたライブラリー。
 
-貢献を歓迎します。まず [contribution guidelines](https://github.com/seed-rs/awesome-seed-rs/blob/3f593f25ad8052807021776cbcc3617794bb35ac/contributing.md) をお読みください。
+- [Seed Bootstrap](https://github.com/panoptix-za/seed-bootstrap) — [Bootstrap](https://getbootstrap.com/)のCSSコンポーネント集。
+
+- [seed_heroicons](https://github.com/mh84/seed_heroicons) — Seedアプリに組み込める[Heroicons](https://heroicons.com/)を提供するライブラリー。

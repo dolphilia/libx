@@ -1,12 +1,12 @@
 ---
 title: "Awesome Nginx Resources"
-description: "A curated collection of resources and projects focused on Nginx Resources."
+description: "Nginx architecture, configuration and module development resources, with Lua, njs, OpenResty, Tengine, tutorials and talks."
 licenseSource: "github-fcambus-nginx-resources-readme-md"
 ---
 
 # Awesome Nginx Resources
 
-A curated collection of resources and projects focused on Nginx Resources.
+Resources for understanding Nginx architecture, configuring and operating servers, and developing modules. The list also covers scripting with Lua and njs, OpenResty and Tengine, practical tutorials, and conference talks.
 
 ## Understanding Nginx
 
@@ -40,12 +40,12 @@ A curated collection of resources and projects focused on Nginx Resources.
 - [Nice nginx features for developers](https://alex.dzyoba.com/blog/nginx-features-for-developers/)
 - [Nice nginx features for operators](https://alex.dzyoba.com/blog/nginx-features-for-operators/)
 - [Avoiding the Top 10 NGINX Configuration Mistakes](https://www.f5.com/company/blog/nginx/avoiding-top-10-nginx-configuration-mistakes)
-- [Gixy - Nginx configuration static analyzer](https://github.com/yandex/gixy) - Maintained forks: [gixy-ng](https://github.com/dvershinin/gixy), [gixy-next](https://github.com/MegaManSec/Gixy-Next)
+- [Gixy - Nginx configuration static analyzer](https://github.com/yandex/gixy) - Forks described in the source as maintained: [gixy-ng](https://github.com/dvershinin/gixy), [gixy-next](https://github.com/MegaManSec/Gixy-Next)
 - [Nginx common configuration - Universal config and snippets](https://github.com/tldr-devops/nginx-common-configuration)
 
 ## Security
 
-- [BunkerWeb - Next-generation, open-source Web Application Firewall (WAF) based on Nginx](https://www.bunkerweb.io)
+- [BunkerWeb - Nginx-based open-source Web Application Firewall (WAF), described in the source as next-generation](https://www.bunkerweb.io)
 
 ## Tutorials
 
@@ -117,7 +117,7 @@ A curated collection of resources and projects focused on Nginx Resources.
 
 ## OpenResty
 
-- [OpenResty - Fast web app server by extending Nginx](https://openresty.org/en/)
+- [OpenResty - Web application server extending Nginx, described in the source as fast](https://openresty.org/en/)
 - [Lapis - A web framework for Lua or MoonScript powered by OpenResty](https://leafo.net/lapis/)
 - [Nginx image processing server with OpenResty and Lua](https://leafo.net/posts/creating_an_image_server.html)
 - [Building an OpenResty events server](https://github.com/cagerton/dropthat/)
@@ -141,9 +141,3 @@ A curated collection of resources and projects focused on Nginx Resources.
 - [NGINX Conference 2015 Videos](https://www.youtube.com/playlist?list=PLGz_X9w9raXdED9BR6GQ61A6d3fBzjpbn)
 - [NGINX Conference 2014 Videos](https://www.youtube.com/playlist?list=PLGz_X9w9raXewvc6tjIGGFZ6DBKHEld3k)
 - [NGINX User Summit 2014 - Lightning talks](https://www.youtube.com/playlist?list=PLGz_X9w9raXfTnRnI6Xl0LMhAKoTVVZv8)
-
-## License
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Frederic Cambus](https://www.cambus.net) has waived all copyright and related or neighboring rights to this work.

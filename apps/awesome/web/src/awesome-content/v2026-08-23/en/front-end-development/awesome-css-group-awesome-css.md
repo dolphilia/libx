@@ -1,111 +1,81 @@
 ---
-title: "Awesome CSS Awesome Travis"
-description: "A curated collection of resources and projects focused on CSS Awesome Travis."
+title: "Awesome CSS"
+description: "CSS specifications, frameworks, parsers, style guides, methodologies, tools, podcasts, videos, books, and tutorials."
 licenseSource: "github-awesome-css-group-awesome-css-readme-md"
 ---
 
-# Awesome CSS Awesome Travis
+# Awesome CSS<a id="awesome-css-awesome-travis"></a>
 
-A curated collection of resources and projects focused on CSS Awesome Travis.
+CSS frameworks, specifications, parsers, preprocessors, style guides, methodologies, tools, media, and tutorials. The original introduction presents the list as a collection for writing CSS rather than learning it; the recorded list nevertheless includes a separate Tutorials section.
 
-## Table of Contents
+## Complementary Resources
 
+For questions about CSS, consult:
 
-
-
-
-- [CSS Working Group](#css-working-group)
-  - [Editor's Draft :black_nib:](#editors-draft-black_nib)
-- [Parsers :mag:](#parsers-mag)
-- [Preprocessors :pill:](#preprocessors-pill)
-- [Frameworks :art:](#frameworks-art)
-- [Toolkits :wrench:](#toolkits-wrench)
-- [Reset and Normalize](#reset-and-normalize)
-- [CSS Development at Large-Scale Websites](#css-development-at-large-scale-websites)
-- [Code Style Guidelines :book:](#code-style-guidelines-book)
-- [Style Guide](#style-guide)
-- [Style Guide Generators :slot_machine:](#style-guide-generators-slot_machine)
-- [Naming conventions & Methodologies :bulb:](#naming-conventions--methodologies-bulb)
-- [CSS in JS](#css-in-js)
-- [CSS Polyfills](#css-polyfills)
-- [Miscellaneous](#miscellaneous)
-- [Podcasts :radio:](#podcasts-radio)
-- [Twitter :satellite:](#twitter-satellite)
-- [Videos :tv:](#videos-tv)
-  - [2019](#2019)
-  - [2016](#2016)
-  - [2015](#2015)
-- [Books :books:](#books-books)
-- [Tutorials :clapper:](#tutorials-clapper)
-- [Maintainers](#maintainers)
-- [Contribute](#contribute)
-
-
+- [CSS - MDN - Mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Reddit (CSS)](https://www.reddit.com/r/css/)
+- [StackOverflow (CSS)](https://stackoverflow.com/questions/tagged/css)
 
 ## CSS Working Group
 
-The CSS Working Group creates and defines CSS specifications. These specifications are assigned [maturity levels](https://www.w3.org/2005/10/Process-20051014/tr#maturity-levels) as they move through the design process. If you would like to learn more, visit [CSS Working Group Page](https://www.w3.org/Style/CSS/).
+The CSS Working Group creates and defines CSS specifications. These specifications are assigned [maturity levels](https://www.w3.org/2005/10/Process-20051014/tr#maturity-levels) as they move through the design process. For details, see the [CSS Working Group Page](https://www.w3.org/Style/CSS/).
 
-### Editor's Draft :black_nib:
+### Editor's Draft<a id="editors-draft-black_nib"></a>
 
 *Editor's drafts of CSS specifications*
 
 - [W3c/csswg-drafts](https://github.com/w3c/csswg-drafts) - Mirror of CSS WG Editor Draft repository.
 - [W3c/css-houdini-drafts](https://github.com/w3c/css-houdini-drafts) - Mirror of Houdini WG Editor repository.
 
-## Parsers :mag:
+## Parsers<a id="parsers-mag"></a>
 
 * [CSSOM](https://github.com/NV/CSSOM) - CSS Object Model implemented in pure JavaScript.
 * [CSSTree](https://github.com/csstree/csstree) - Detailed CSS parser with syntax validator.
 * [Gonzales PE](https://github.com/tonyganch/gonzales-pe) - CSS parser with support for preprocessors.
-* [Mensch](https://github.com/brettstimmerman/mensch) - A decent CSS parser.
+* [Mensch](https://github.com/brettstimmerman/mensch) - CSS parser.
 * [ParserLib](https://github.com/CSSLint/parser-lib) - CSSLint/parser-lib.
 * [PostCSS](https://github.com/postcss/postcss) - Transforming styles with JS plugins.
 * [Rework](https://github.com/reworkcss/rework) - Plugin framework for CSS preprocessing in Node.js.
-* [Stylecow](https://github.com/stylecow/stylecow) - Modern CSS for all browsers.
+* [Stylecow](https://github.com/stylecow/stylecow) - Tool described in the source as making modern CSS work in all browsers.
 
-<sub>[⇧ back to top](#contents)</sub>
+## Preprocessors<a id="preprocessors-pill"></a>
 
-## Preprocessors :pill:
-
-*Write CSS faster*
+Preprocessors extend or transform CSS.
 
 * [LESS](https://github.com/less/less.js) - Backwards compatible with CSS, and the extra features it adds use existing CSS syntax.
 * [PostCSS](https://github.com/postcss/postcss) - Transforming CSS with JS plugins.
-* [Sass](https://github.com/sass/sass) - Mature, stable, and powerful professional-grade CSS extension language.
+* [Sass](https://github.com/sass/sass) - CSS extension language.
 * [STYLIS](https://github.com/thysultan/stylis.js) - Light-weight CSS preprocessor.
-* [Stylus](http://learnboost.github.io/stylus/) - Expressive, robust, feature-rich CSS language built for NodeJs.
+* [Stylus](http://learnboost.github.io/stylus/) - CSS language built for Node.js.
 * [Vanilla Extract](https://vanilla-extract.style/) - Generate static CSS using Typescript. Write type‑safe, locally scoped classes, variables and themes.
 
-<sub>[⇧ back to top](#contents)</sub>
+## Frameworks<a id="frameworks-art"></a>
 
-## Frameworks :art:
-
-* [AgnosticUI](https://www.agnosticui.com/) - Accessible CSS component primitives that also work with React, Vue 3, Svelte, and Angular.
+* [AgnosticUI](https://www.agnosticui.com/) - CSS component primitives for React, Vue 3, Svelte, and Angular, described in the source as accessible.
 * [Bonsai](https://www.bonsaicss.com/) - A complete Utility First CSS Framework for less than 50kb.
-* [Bootstrap](https://getbootstrap.com/) - The most popular HTML, CSS, and JS framework.
+* [Bootstrap](https://getbootstrap.com/) - HTML, CSS, and JavaScript framework.
 * [Bulma](http://bulma.io/) - A modern CSS framework based on Flexbox. Also has Sass import for modification.
-* [Butter Cake](http://getbuttercake.com/) - A Modern Lightweight Front End CSS framework for faster and easier web development.
+* [Butter Cake](http://getbuttercake.com/) - Lightweight front-end CSS framework.
 * [Charts.css](https://chartscss.org/) - CSS data visualization framework.
 * [Chota](https://jenil.github.io/chota/) - A responsive, customizable micro-framework (3kb) with helpful utilities and a grid system.
-* [Cirrus](https://spiderpig86.github.io/Cirrus/) - A fully responsive and comprehensive CSS framework with beautiful controls and simplistic structure.
-* [Foundation](http://foundation.zurb.com/) - advanced responsive front-end framework.
+* [Cirrus](https://spiderpig86.github.io/Cirrus/) - Responsive CSS framework with controls and a simple structure.
+* [Foundation](http://foundation.zurb.com/) - Responsive front-end framework.
 * [Gralig](http://gralig.com/) - A modest, grayish CSS library.
 * [Halfmoon](https://www.gethalfmoon.com/) - A responsive front-end framework with a built-in dark mode.
-* [Hasser CSS](https://github.com/HeavenMercy/HasserCSS) - A lightweight (12k, not minified) but useful CSS framework with flexible Grid, Hero and more.
-* [Inuit.css](http://inuitcss.com/) - Powerful, scalable, Sass-based, BEM, OOCSS framework.
+* [Hasser CSS](https://github.com/HeavenMercy/HasserCSS) - CSS framework with flexible Grid, Hero, and other components; the source gives its unminified size as 12k.
+* [Inuit.css](http://inuitcss.com/) - Scalable Sass-based framework using BEM and OOCSS.
 * [Material-components-web](https://github.com/material-components/material-components-web) - Modular and customizable Material Design UI components for the web.
 * [Materialize](http://materializecss.com/) - A modern responsive front-end framework based on Material Design.
 * [Milligram](http://milligram.io) - A minimalist CSS framework.
-* [Numl](https://numl.design) - An HTML-based language and design system that lets you create responsive and accessible high-quality web interfaces with any look.
+* [Numl](https://numl.design) - HTML-based language and design system for responsive interfaces, described in the source as accessible and adaptable to different visual designs.
 * [Pure.css](http://purecss.io/) - A set of small, responsive CSS modules that you can use in every web project.
-* [Semantic UI](http://semantic-ui.com/) - Powerful framework that uses human-friendly HTML.
-* [Shorthand Framework](https://github.com/shorthandcss/shorthand) - Feature rich CSS framework for the new decade.
+* [Semantic UI](http://semantic-ui.com/) - Framework using human-readable HTML.
+* [Shorthand Framework](https://github.com/shorthandcss/shorthand) - CSS framework with a range of features.
 * [Spectre.css](https://picturepan2.github.io/spectre/index.html) - A lightweight, responsive and modern CSS framework.
-* [Strawberry](https://github.com/jfet97/strawberry) - A set of common flexbox utilities focused on making your life easier and faster with nested flexboxes.
-* [Tachyons](http://tachyons.io/) - Functional CSS for humans.
-* [Tacit](https://yegor256.github.io/tacit/) - CSS framework for dummies with zero skills in graphic design.
-* [Tailwindcss](https://github.com/tailwindcss/tailwindcss) - A utility-first CSS framework for rapid UI development.
+* [Strawberry](https://github.com/jfet97/strawberry) - Flexbox utilities for working with nested flexboxes.
+* [Tachyons](http://tachyons.io/) - Functional CSS framework built from single-purpose classes.
+* [Tacit](https://yegor256.github.io/tacit/) - CSS framework intended for users without graphic design skills.
+* [Tailwindcss](https://github.com/tailwindcss/tailwindcss) - Utility-first CSS framework for UI development.
 * [Tronic247 Material](https://material.pages.dev/) - A responsive framework based on CSS and some JS while following Material Design guidelines.
 * [UIkit](http://getuikit.com/) - A lightweight and modular front-end framework.
 * [Unsemantic](http://unsemantic.com/) - Fluid grid for mobile, tablet, and desktop.
@@ -113,13 +83,9 @@ The CSS Working Group creates and defines CSS specifications. These specificatio
 
 _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/troxler/awesome-css-frameworks)_
 
-<sub>[⇧ back to top](#contents)</sub>
-
-## Toolkits :wrench:
+## Toolkits<a id="toolkits-wrench"></a>
 
 * [Bourbon](http://bourbon.io/) - A simple and lightweight mixin library for Sass.
-
-<sub>[⇧ back to top](#contents)</sub>
 
 ## Reset and Normalize
 
@@ -128,11 +94,9 @@ _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/t
 - [Normalize-OpenType](https://github.com/kennethormandy/normalize-opentype.css) - Adds OpenType features—ligatures, kerning, and more—to Normalize.css.
 - [Normalize](https://github.com/necolas/normalize.css) - A set of CSS rules that provide better cross-browser consistency in the default styling of HTML elements.
 - [Reset.css](https://meyerweb.com/eric/tools/css/reset/) - CSS Tools: Reset CSS.
-- [Reseter.css](https://github.com/krishdevdb/reseter.css) - A Futuristic CSS Reset/Normalizer. That Redifines Instead Of Preserving.
-- [Sanitize.css](https://github.com/jonathantneal/sanitize.css/) - A set of CSS rules that style with today’s best practices out-of-the-box.
+- [Reseter.css](https://github.com/krishdevdb/reseter.css) - CSS reset/normalizer that redefines default styles rather than preserving them.
+- [Sanitize.css](https://github.com/jonathantneal/sanitize.css/) - CSS rules described in the source as applying styling best practices by default.
 - [Unstyle.css](https://github.com/Martin-Pitt/css-unstyle) - Specialised stylesheet for removing user agent styles, style the web with your baseline.
-
-<sub>[⇧ back to top](#contents)</sub>
 
 ## CSS Development at Large-Scale Websites
 
@@ -146,9 +110,7 @@ _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/t
 * [Refining The Way We Structure Our CSS At Trello](http://blog.trello.com/refining-the-way-we-structure-our-css-at-trello/) by [Bobby Grace](https://twitter.com/bobbygrace)
 * [Scalable-css-reading-list](https://github.com/davidtheclark/scalable-css-reading-list)
 
-<sub>[⇧ back to top](#contents)</sub>
-
-## Code Style Guidelines :book:
+## Code Style Guidelines<a id="code-style-guidelines-book"></a>
 
 * [Code Guide](http://codeguide.co/) by [Mark Otto](https://twitter.com/mdo)
 * [CSS Guidelines](http://cssguidelin.es/) by [Harry Roberts](https://twitter.com/csswizardry)
@@ -160,9 +122,7 @@ _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/t
 * [Sass Guidelines](https://sass-guidelin.es/) by [Kitty Giraudel](https://twitter.com/KittyGiraudel)
 * [SASS Style Guide](http://sass-lang.com/styleguide) by Sass team
 * [ThinkUp CSS Style Guide](https://github.com/ThinkUpLLC/ThinkUp/wiki/Code-Style-Guide:-CSS) by ThinkUp
-* [WordPress CSS Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/) by WorldPress
-
-<sub>[⇧ back to top](#contents)</sub>
+* [WordPress CSS Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/) by WordPress
 
 ## Style Guide
 
@@ -170,18 +130,15 @@ _[You can find more frameworks at "awesome-css-frameworks"](https://github.com/t
 * [Design Elements](http://rizzo.lonelyplanet.com/styleguide/design-elements/colours) by lonely planet
 * [Fluent UI](https://github.com/microsoft/fluentui) by Microsoft
 * [GitHub CSS Style Guide](https://primer.github.io/) by Github
-* [Lighting Design System](https://www.lightningdesignsystem.com/) by Salesforce
+* [Lightning Design System](https://www.lightningdesignsystem.com/) by Salesforce
 * [Patterns](https://ux.mailchimp.com/patterns) by MailChimp
 * [Solid](http://solid.buzzfeed.com/) by BuzzFeed
 * [Style Guide](https://www.starbucks.com/static/reference/styleguide/) by Starbucks
-* [Website Style Guide Resources](http://styleguides.io/examples.html) by Awesome people
+* [Website Style Guide Resources](http://styleguides.io/examples.html) by contributors
 
 View more style guides at [Website Style Guide Resources](http://styleguides.io/)
 
-<sub>[⇧ back to top](#contents)</sub>
-
-
-## Style Guide Generators :slot_machine:
+## Style Guide Generators<a id="style-guide-generators-slot_machine"></a>
 
 - [Hologram](https://github.com/trulia/hologram)
 - [mdcss](https://github.com/jonathantneal/mdcss)
@@ -191,10 +148,7 @@ View more style guides at [Website Style Guide Resources](http://styleguides.io/
 - [Styledown](https://github.com/styledown/styledown)
 - [Sc5-styleguide](https://github.com/SC5/sc5-styleguide)
 
-<sub>[⇧ back to top](#contents)</sub>
-
-
-## Naming conventions & Methodologies :bulb:
+## Naming conventions & Methodologies<a id="naming-conventions--methodologies-bulb"></a>
 
 * [Atomic Design](http://patternlab.io/resources.html)
 * [Atomic OOBEMITSCSS](https://www.sitepoint.com/atomic-oobemitscss/)
@@ -208,9 +162,6 @@ View more style guides at [Website Style Guide Resources](http://styleguides.io/
 * [RSCSS](https://rscss.io/)
 * [SUIT CSS](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md#u-utilityname)
 * [Title CSS](https://www.sitepoint.com/title-css-simple-approach-css-class-naming/)
-
-<sub>[⇧ back to top](#contents)</sub>
-
 
 ## CSS in JS
 
@@ -226,58 +177,45 @@ View more style guides at [Website Style Guide Resources](http://styleguides.io/
 * [Styled-components](https://github.com/styled-components/styled-components)
 * [Stylin](https://github.com/sultan99/stylin)
 
-
 Here is a [CSS in JS techniques comparison](https://github.com/MicheleBertoli/css-in-js)
-
-<sub>[⇧ back to top](#contents)</sub>
-
 
 ## CSS Polyfills
 
 * [Polyfill.js](https://github.com/philipwalton/polyfill/) - A library to make creating CSS polyfills much easier.
-* [Prefixfree](https://github.com/LeaVerou/prefixfree) - Break free from CSS prefix hell.
+* [Prefixfree](https://github.com/LeaVerou/prefixfree) - Handles CSS vendor prefixes.
 * [Fixed-sticky](https://github.com/filamentgroup/fixed-sticky) - A CSS position:sticky polyfill.
 * [Selectivizr](https://github.com/keithclark/selectivizr) - A JavaScript utility that emulates CSS3 pseudo-classes and attribute selectors in Internet Explorer 6-8.
 * [PIE](https://github.com/lojjic/PIE) - Allows Internet Explorer to recognize and render various CSS3 box decoration properties.
 
-
-<sub>[⇧ back to top](#contents)</sub>
-
-
 ## Miscellaneous
 
-* [Beautiful CSS box-shadow examples](https://getcssscan.com/css-box-shadow-examples) - Curated collection of 93 beautiful CSS box-shadow. Click to copy.
+* [Beautiful CSS box-shadow examples](https://getcssscan.com/css-box-shadow-examples) - Collection of 93 CSS box-shadow examples that can be copied with a click.
 * [Can I use](https://caniuse.com/) - Browser support for CSS, HTML5 and other front-end web technologies.
 * [Flexbox Patterns](https://flexboxpatterns.com/) by cjcenizal
 * [Glassmorphism CSS Generator](https://ui.glass/generator/) - Generate CSS for glassmorphism.
 * [GradientArt](https://gra.dient.art/) - An advanced CSS gradient editor with layering, design tools and free cloud storage.
 * [Live editor for CSS and LESS](https://github.com/webextensions/live-css-editor) - Magic CSS extension for Chrome, Firefox and Edge.
-* [RevengeCSS](https://github.com/Heydon/REVENGE.CSS) - A CSS bookmarklet that uses selectors to find bad markup, displaying ugly pink error messages in comic sans serif wherever you write bad HTML
-* [Single Div Project](https://github.com/ManrajGrover/SingleDivProject) - One `<div>`. Many possibilities.
+* [RevengeCSS](https://github.com/Heydon/REVENGE.CSS) - A CSS bookmarklet that uses selectors to find bad markup, displaying pink error messages in Comic Sans where it finds invalid HTML
+* [Single Div Project](https://github.com/ManrajGrover/SingleDivProject) - Examples built with one `<div>`.
 * [You Might Not Need JS](http://youmightnotneedjs.com/) - CSS alternatives for common JS UI components.
 * [Xpath-to-selector](https://github.com/steambap/xpath-to-selector) - Convert xpath to css selector.
 
-<sub>[⇧ back to top](#contents)</sub>
+## Podcasts<a id="podcasts-radio"></a>
 
-## Podcasts :radio:
+Podcasts on CSS, design, and web development.
 
-*Something to listen to while programming.*
-
-* [CSS Podcast](https://thecsspodcast.libsyn.com/) - Una Kravets and Adam Argyle,and development.
-* [Non Breaking Space Show](http://goodstuff.fm/nbsp) - Seeking out the best,and smartest creative people on digital art,and the accompanying blog,and UX.
-* [Shop Talk Show](http://shoptalkshow.com/) - A live podcast with Chris Coyier and Dave Rupert about front-end web design,hosted by Anna Debenham and Brad Frost.
-* [Style Guide Podcast](http://styleguides.io/podcast/index.html) - A small batch series of interviews on style guides,art direction,brightest,content strategy,design,Developer Advocates from Google,development,gleefully breakdown complex aspects of CSS into digestible episodes covering everything from accessibility to z-index.
-* [Syntax](https://syntax.fm/) - A Tasty Treats Podcast for Web Developers.,typography,web technology
-* [The Big Web Show](http://5by5.tv/bigwebshow/) - Topics like web publishing,is all about keeping you updated with the latest in Open Source Technology.
-* [The Changelog](https://changelog.com/) - The tagline for the Changelog says it all: “Open Source moves fast. Keep up.” This podcast,and more. It's everything web that matters.
+* [CSS Podcast](https://thecsspodcast.libsyn.com/) - CSS podcast with Una Kravets and Adam Argyle.
+* [Non Breaking Space Show](http://goodstuff.fm/nbsp) - Interviews with creative people about their work.
+* [Shop Talk Show](http://shoptalkshow.com/) - Live podcast with Chris Coyier and Dave Rupert about front-end web design, development, and UX.
+* [Style Guide Podcast](http://styleguides.io/podcast/index.html) - Interview series on style guides, hosted by Anna Debenham and Brad Frost.
+* [Syntax](https://syntax.fm/) - Podcast for web developers.
+* [The Big Web Show](http://5by5.tv/bigwebshow/) - Podcast on web publishing, art direction, content strategy, typography, and web technology.
+* [The Changelog](https://changelog.com/) - Podcast covering software news and technical interviews, with an emphasis on open source.
 * [The Web Ahead](http://5by5.tv/webahead/) - Conversations with world experts on changing technologies and future of the web.
 
-<sub>[⇧ back to top](#contents)</sub>
+## Twitter<a id="twitter-satellite"></a>
 
-
-## Twitter :satellite:
-
-*Active accounts to follow.*
+Account descriptions below follow the recorded source, including the roles and projects it lists.
 
 * [Adam Morse](https://twitter.com/mrmrs_) - Advocate for users and open-source.
 * [Andrey Sitnik](https://twitter.com/andreysitnik) - Author of @Autoprefixer, http://easings.net  and @PostCSS.
@@ -318,16 +256,11 @@ Here is a [CSS in JS techniques comparison](https://github.com/MicheleBertoli/cs
 * [Una Kravets](https://twitter.com/Una) - Front-end @IBMDesign. Sassvocate, community builder, & handcrafter. STEMinist :) Open source all the things.
 * [Zoe M. Gillenwater](https://twitter.com/zomigi) - Web designer/developer specializing in CSS, RWD, UX, & accessibility.
 * [Zoltán Szőgyényi](https://twitter.com/zoltanszogyenyi) - Web developer, Co-founder at Themesberg. I'm building Glass UI.
-* [앗킨스 탭](https://twitter.com/tabatkins) - Literally Jenn Schiffer's Mom.
+* [앗킨스 탭](https://twitter.com/tabatkins)
 
-<sub>[⇧ back to top](#contents)</sub>
+## Videos<a id="videos-tv"></a>
 
-
-## Videos :tv:
-
-*Good study videos from CSS Must Watch Videos. Some items are quoted from [AllThingsSmitty/must-watch-css](https://github.com/AllThingsSmitty/must-watch-css).
-
-[I told him on Twitter](https://twitter.com/sota0805/status/527635856031375360). I appreciate his valuable efforts.*
+Some entries are quoted from [AllThingsSmitty/must-watch-css](https://github.com/AllThingsSmitty/must-watch-css). The source credits that list’s work in a [Twitter message](https://twitter.com/sota0805/status/527635856031375360).
 
 ### 2019
 
@@ -335,33 +268,29 @@ Here is a [CSS in JS techniques comparison](https://github.com/MicheleBertoli/cs
 
 ### 2016
 
-1. [Component-Based Style Reuse](https://www.youtube.com/watch?v=_70Yp8KPXH8) :page_facing_up: [transcript](https://2016.cssconf.com/) :watch: `37:24` - Pete Hunt @ CSS conf 2016.
-1. [CSS4 Grid: True Layout Finally Arrives](https://www.youtube.com/watch?v=jl164y-Vb5E) :page_facing_up: [transcript](https://2016.cssconf.com/) :watch: `29:27` - Jen Kramer @ CSS conf 2016.
-1. [Houdini: Demystifying the Future of CSS](https://www.youtube.com/watch?v=sE3ttkP15f8) :watch: `36:58` @ Google I/O 2016.
+1. [Component-Based Style Reuse](https://www.youtube.com/watch?v=_70Yp8KPXH8) Transcript: [transcript](https://2016.cssconf.com/) Duration: `37:24` - Pete Hunt @ CSS conf 2016.
+1. [CSS4 Grid: True Layout Finally Arrives](https://www.youtube.com/watch?v=jl164y-Vb5E) Transcript: [transcript](https://2016.cssconf.com/) Duration: `29:27` - Jen Kramer @ CSS conf 2016.
+1. [Houdini: Demystifying the Future of CSS](https://www.youtube.com/watch?v=sE3ttkP15f8) Duration: `36:58` @ Google I/O 2016.
 
 ### 2015
 
-1. [Mdo-ular CSS](http://jqueryuk.com/2015/videos.php?s=mdo-ular-css) :watch: `30:06` - Mark Otto @ jQuery UK.
-1. [CSS Architecture with SMACSS](https://www.youtube.com/watch?v=6co781JgoqQ) :watch: `30:15` - Caleb Meredith @ DevTips channel.
-1. [CSS Workflow from the Ground Up](https://www.youtube.com/watch?v=ZVk3GQHfkbU) :watch: `46:06` - Jonathan Snook @ Generate conf 2015.
+1. [Mdo-ular CSS](http://jqueryuk.com/2015/videos.php?s=mdo-ular-css) Duration: `30:06` - Mark Otto @ jQuery UK.
+1. [CSS Architecture with SMACSS](https://www.youtube.com/watch?v=6co781JgoqQ) Duration: `30:15` - Caleb Meredith @ DevTips channel.
+1. [CSS Workflow from the Ground Up](https://www.youtube.com/watch?v=ZVk3GQHfkbU) Duration: `46:06` - Jonathan Snook @ Generate conf 2015.
 
-<sub>[⇧ back to top](#contents)</sub>
-
-## Books :books:
+## Books<a id="books-books"></a>
 
 * [CSS: The Definitive Guide, 4th Edition](http://shop.oreilly.com/product/0636920012726.do)  - Visual Presentation for the Web
-* [CSS: The Missing Manual](http://shop.oreilly.com/product/0636920036357.do) – Really Helpful in Advancing your Design Skills to a whole new Level
+* [CSS: The Missing Manual](http://shop.oreilly.com/product/0636920036357.do) – Book about CSS and design skills.
 * [CSS Secrets](http://shop.oreilly.com/product/0636920031123.do) – Better Solutions to Everyday Web Design Problems
 * [Every Layout: Relearn CSS Layout](https://every-layout.dev/) – Solving responsive layout problems using algorithmic design.
 * [Tiny CSS Projects](https://www.manning.com/books/tiny-css-projects) – Improve the way you write CSS as you build 12 tiny projects.
 
-<sub>[⇧ back to top](#contents)</sub>
+## Tutorials<a id="tutorials-clapper"></a>
 
-## Tutorials :clapper:
-
-* [30 Seconds of CSS](https://www.30secondsofcode.org/css/p/1) -  A curated collection of useful CSS snippets you can understand in 30 seconds or less.
+* [30 Seconds of CSS](https://www.30secondsofcode.org/css/p/1) -  Collection of CSS snippets described in the source as understandable in 30 seconds or less.
 * [All selectors in CSS](https://medium.com/@ymzEmre/css-cascade-specificity-basic-selectors-c5adc01dd861) - All selectors in CSS.
-* [Community Curated CSS Resources](https://hackr.io/tutorials/learn-css) - Top Recommended Resources.
+* [Community Curated CSS Resources](https://hackr.io/tutorials/learn-css) - Community-curated CSS learning resources.
 * [CSS Diner](https://flukeout.github.io/) – Interactive gamified tutorial for learning selection with CSS.
 * [CSS Grid PlayGround](https://mozilladevelopers.github.io/playground/) - Simple tutorial to learn CSS Grid from Mozilla.
 * [CSS Grids videos tutorial](https://cssgrid.io/) - Free video course by Wes Bos to learn CSS Grids.
@@ -370,21 +299,3 @@ Here is a [CSS in JS techniques comparison](https://github.com/MicheleBertoli/cs
 * [Flexbox video tutorial](https://flexbox.io/) - Free video course by Wes Bos to learn flexbox.
 * [Organize CSS with a Modular Architecture: OOCSS, BEM, SMACSS](https://snipcart.com/blog/organize-css-modular-architecture) - In-depth intro to OOCSS, BEM, SMACSS, with examples.
 * [Work With Animations](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Work_with_animations) - Inspecting animations.
-
-<sub>[⇧ back to top](#contents)</sub>
-
-## Maintainers
-
-[sotayamashita]: https://github.com/sotayamashita
-[Rishabh04-02]:  https://github.com/Rishabh04-02
-
-[@sotayamashita][sotayamashita], [@Rishabh04-02][Rishabh04-02] and You!
-
-
-## Contribute
-
-[contributor-covenant]: https://www.contributor-covenant.org/version/1/3/0/code-of-conduct/
-
-Feel free to dive in! Open an issue or submit PRs.
-
-Awesome CSS follows the [Contributor Covenant][contributor-covenant] Code of Conduct.

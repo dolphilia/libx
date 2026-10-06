@@ -1,0 +1,5 @@
+import fs from 'node:fs';import {hashFile,readLedger,report} from '../../../../../../scripts/project-expansion/ledger.mjs';
+const e='docs/notes/project-expansion/runs/evidence/2026-10-06-848',before=JSON.parse(fs.readFileSync(e+'/ROOT_SCOPED_REGISTRATION.json'));
+const ref=p=>({path:p,sha256:hashFile(p)});
+fs.writeFileSync(e+'/COMMIT_PREPARATION.json',JSON.stringify({at:new Date().toISOString(),status:'passed-scoped-diff-check',rootGitAttributes:ref('.gitattributes'),previousRootGitAttributes:before.updatedRegistry.find(r=>r.path==='.gitattributes'),change:'Preserve original trailing whitespace and reviewed EOF blank lines; do not edit fixed content to satisfy git diff whitespace diagnostics. Attribute-only addition, source ZIP build/document inputs unchanged. Source ZIP contains the earlier byte-preservation-only attributes; whitespace diagnostic flags do not affect generation.',sourceOffer:ref('apps/mdbook/public/source/v0-5-4/source.zip'),unrelatedChangesIncluded:false},null,2)+'\n');
+fs.writeFileSync('docs/notes/project-expansion/REPORT.md',report(process.cwd(),readLedger(process.cwd())));

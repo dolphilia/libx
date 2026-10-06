@@ -1,73 +1,16 @@
 ---
 title: "Awesome HTML5"
-description: "A curated collection of resources and projects focused on HTML5."
+description: "HTML elements and browser APIs, with resources on multimedia, accessibility, progressive web apps, storage, communications, performance, mobile apps, and games."
 licenseSource: "github-diegocard-awesome-html5-readme-md"
 ---
 
 # Awesome HTML5
 
-A curated collection of resources and projects focused on HTML5.
-
-## Table of Contents
-- [Articles and standards](#articles-and-standards)
-- [Multimedia capabilities](#multimedia-capabilities)
-  - [Audio](#audio)
-  - [Media capture](#media-capture)
-  - [Picture in Picture](#picture-in-picture)
-  - [Speech synthesis](#speech-synthesis)
-  - [Voice recognition](#voice-recognition)
-  - [Virtual Reality (VR)](#virtual-reality)
-  - [Web animations](#web-animations)
-- [Elements](#elements)
-  - [Canvas](#canvas)
-  - [Head](#head)
-  - [Sectioning](#sectioning)
-  - [Media Elements](#media-elements)
-  - [Forms](#forms)
-  - [Time](#time)
-  - [WebVTT](#webtt)
-  - [HTML Imports](#html-imports)
-- [Development APIs](#development-apis)
-  - [Permissions](#permissions)
-  - [Geolocation](#geolocation)
-  - [Cryptography](#cryptography)
-  - [File](#file)
-  - [Frame timing](#frame-timing)
-  - [requestIdleCallback](#requestidlecallback)
-  - [requestAnimationFrame](#requestanimationframe)
-  - [Web payments](#web-payments)
-- [Semantics](#semantics)
-- [Accessibility](#accessibility)
-- [DOM management](#dom-management)
-  - [Shadow DOM](#shadow-dom)
-  - [Data Binding](#data-binding)
-  - [Web Components](#web-components)
-- [Progressive web apps](#progressive-web-apps)
-  - [Service Workers](#service-workers)
-  - [Offline caching](#offline-caching)
-  - [Push Notifications](#push-notifications)
-- [Client side storage](#client-side-storage)
-- [Performance](#performance)
-- [Mobile](#mobile)
-- [Communications and interoperability](#communications-and-interoperability)
-  - [Web Sockets](#web-sockets)
-  - [WebRTC](#webrtc)
-- [Web Workers](#web-workers)
-- [WebGL](#webgl)
-- [Browser compatibility](#browser-compatibility)
-- [Books](#books)
-- [Game development](#game-development)
-- [Bootcamp](#bootcamp)
-- [Videos and Keynotes](#videos-and-keynotes)
-- [Websites and resources](#websites-and-resources)
-  - [Websites](#websites)
-  - [Weekly news](#weekly-news)
-  - [Twitter](#twitter)
-- [Contributing](#contributing)
+Explore HTML elements and browser APIs through specifications, tutorials, books, and tools. The resources cover multimedia, accessibility, progressive web apps, storage, communications, performance, mobile apps, and games, with related sites and news sources.
 
 ## Articles and standards
 
-* [HTML 5.3](https://w3c.github.io/html/) - Current HTML5 spec
+* [HTML 5.3](https://w3c.github.io/html/) - Described in the original list as the current HTML5 specification.
 * [Progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/)
 * [The extensible web manifesto](https://extensiblewebmanifesto.org/)
 * [Differences between HTML5 and HTML4 from W3C](https://www.w3.org/TR/html5-diff/)
@@ -93,14 +36,14 @@ A curated collection of resources and projects focused on HTML5.
 ### Speech Synthesis
 
 * [Intro to the HTML5 Speech Synthesis API](http://creative-punch.net/2014/10/intro-html5-speech-synthesis-api/)
-* [Another useful intro](https://shapeshed.com/html5-speech-recognition-api/)
+* [Another introduction](https://shapeshed.com/html5-speech-recognition-api/)
 
 ### Voice Recognition
 
 * [Web speech API demo](https://www.google.com/intl/en/chrome/demos/speech.html)
 * [Using the Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
 * [Experimenting with the Web Speech API](https://www.sitepoint.com/experimenting-web-speech-api/)
-* [Free voice recognition library (annyang)](https://www.talater.com/annyang/)
+* [annyang](https://www.talater.com/annyang/) - A free voice recognition library.
 
 ### Virtual Reality
 
@@ -201,7 +144,7 @@ A curated collection of resources and projects focused on HTML5.
 ### requestAnimationFrame
 
 * [Using requestAnimationFrame (CSS Tricks)](https://css-tricks.com/using-requestanimationframe/)
-* [Great article by Paul Irish](https://medium.com/@paul_irish/requestanimationframe-scheduling-for-nerds-9c57f7438ef4#.9gev5fdub)
+* [Article by Paul Irish](https://medium.com/@paul_irish/requestanimationframe-scheduling-for-nerds-9c57f7438ef4#.9gev5fdub)
 
 ### Web payments
 
@@ -210,16 +153,16 @@ A curated collection of resources and projects focused on HTML5.
 ## Semantics
 
 * [Semantic elements from W3Schools](https://www.w3schools.com/html/html5_semantic_elements.asp)
-* [Sections and Outlines of an HTML5 from MDN Document](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines)
+* [HTML5 document sections and outlines (MDN)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines)
 * [HTML5 Semantics from Smashing Magazine](https://www.smashingmagazine.com/2011/11/html5-semantics/)
 * [Lesser known semantics element from W3C & Opera](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting)
 
 ## Accessibility
 
-* [Excellent intro to accessibility from Google's fundamentals](https://developers.google.com/web/fundamentals/accessibility/)
+* [Introduction to accessibility from Google's fundamentals](https://developers.google.com/web/fundamentals/accessibility/)
 * [Accessibility checklist for web developers](https://webaim.org/standards/wcag/checklist)
 * [ARIA from MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
-* [Great Accessibility Style Guide](https://a11y-style-guide.com/style-guide/)
+* [Accessibility Style Guide](https://a11y-style-guide.com/style-guide/)
 * [Designing for Cognitive Differences](https://alistapart.com/article/designing-for-cognitive-differences)
 * [Guide on how HTML elements are supported by screen readers](https://thepaciellogroup.github.io/AT-browser-tests/)
 * [Top 25 Accessibility Testing Tools for Website](https://dynomapper.com/blog/27-accessibility-testing/246-top-25-awesome-accessibility-testing-tools-for-websites)
@@ -294,7 +237,7 @@ A curated collection of resources and projects focused on HTML5.
 * [Google developers best practices](https://developers.google.com/speed/docs/insights/rules)
 * [Optimizing performance from Google Web Fundamentals](https://developers.google.com/web/fundamentals/performance/why-performance-matters/)
 * [Resource hints draft (preconnect and preload)](http://www.w3.org/TR/2014/WD-resource-hints-20141021/)
-* [Prefetching and prerendeding](https://medium.com/@luisvieira_gmr/html5-prefetch-1e54f6dda15d)
+* [Prefetching and prerendering](https://medium.com/@luisvieira_gmr/html5-prefetch-1e54f6dda15d)
 * [Image compression](https://www.html5rocks.com/en/tutorials/speed/img-compression/)
 * [Text compression](https://www.html5rocks.com/en/tutorials/speed/txt-compression/)
 * [Resource timing spec](http://www.w3.org/TR/resource-timing/)
@@ -372,8 +315,8 @@ A curated collection of resources and projects focused on HTML5.
   - [Cocos2d](https://github.com/cocos2d/cocos2d-html5)
 
 ## Bootcamp
-*[Learn coding for free online](https://www.freecodecamp.org/)
-*[Free online cources](https://www.khanacademy.org/)
+* [freeCodeCamp](https://www.freecodecamp.org/) - Learn coding for free online.
+* [Khan Academy](https://www.khanacademy.org/) - Free online courses.
 
 ## Videos and Keynotes
 
@@ -386,14 +329,14 @@ A curated collection of resources and projects focused on HTML5.
 
 ### Websites
 
-* [HTML official reference](https://webplatform.github.io/docs/Main_Page/index.html) (allows collaborative modification of content like wiki)
+* [HTML reference](https://webplatform.github.io/docs/Main_Page/index.html) - Described in the original list as an official reference with wiki-like collaborative content editing.
 * [HTML5 Rocks](https://www.html5rocks.com/en/) (news, tutorials and updates)
-* [HTML5 Gallery](http://html5gallery.com/) (a showcase of sites using HTML5 markup and API's)
+* [HTML5 Gallery](http://html5gallery.com/) (a showcase of sites using HTML5 markup and APIs)
 * [HTML5 development guide from MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML)
-* [W3C Highlights form June 2014](http://www.w3.org/2014/06/w3c-highlights/)
-* [HTML5 Please](https://html5please.com/) (Know when HTML5 feature are ready to use)
+* [W3C Highlights from June 2014](http://www.w3.org/2014/06/w3c-highlights/)
+* [HTML5 Please](https://html5please.com/) (guidance on when HTML5 features are ready to use)
 * [Keen HTML](https://keenhtml.com) (Free interactive lessons to learn HTML)
-* [A Complete Guide to the Table Element ](https://css-tricks.com/complete-guide-table-element/) 
+* [A Complete Guide to the Table Element](https://css-tricks.com/complete-guide-table-element/)
 
 ### Weekly news
 
@@ -416,7 +359,3 @@ A curated collection of resources and projects focused on HTML5.
 * [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness)
 * [lists](https://github.com/jnv/lists)
 * [Community Curated Resources](https://hackr.io/tutorials/learn-html-5)
-
-## Contributing
-
-Your contributions are always welcome!

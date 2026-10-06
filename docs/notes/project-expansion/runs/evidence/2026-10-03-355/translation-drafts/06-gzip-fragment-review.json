@@ -1,0 +1,39 @@
+{
+  "status": "passed-for-fragment110-128-only",
+  "cycle": 355,
+  "checkedAt": "2026-10-03T03:27:37.428Z",
+  "canonical": "src/content/docs/v1-3-2/en/01-api/06-gzip.md",
+  "canonicalSHA256": "090f5f87f49c379eba1df4922743422543d442c1351dd426c9cafaa8aa21c414",
+  "method": "英語canonical全対応範囲110–128をrawHTMLで読解して翻訳後、日本語生成全decodedtext（provenance/inlinecomment/全19blocks）を別読解。原稿作成の自己申告や機械一致を内容reviewへ代用しない。",
+  "fragments": [
+    {
+      "start": 110,
+      "end": 128,
+      "draft": "meta/translation-drafts/06-gzip-110-128.md",
+      "sha256": "484c78ea3a7f2fb64ccddd3bdd3a53ac7d115b7f1c706ec1a6b2887b4184e4c3",
+      "meaning": "passed",
+      "japaneseReadability": "passed"
+    }
+  ],
+  "judgments": [
+    "gz wrapper RFC1952とzlib区別、gzFile semiopaque inlinecommentだけ訳し型不変。",
+    "gzopen全mode字/例示/strategy参照/T reading不可/G/N/a/+/x/e、連結追記非検査、透過2byte検出、全NULL/errno/open-blockとN再設定を保持。原文ENONBLOCKを注記付き保持。",
+    "gzdopen fd取得/e/N/gzclose所有/dupとリーク・二重close/invalidfd-1のみ検出・遅延を保持。",
+    "buffer8192/開直後かつreadwrite前/遅延3倍/64K128K/printf最大・returns、setparams事前flushと全4errors保持。",
+    "gzread len/int・連結/trailingignore・同時writer EOF再開/OKとBUF区別/未完了は-1非returnでcloseまでerror遅延・nonblock EAGAIN/EWOULDBLOCKと遅延errorを保持。",
+    "fread/fwrite fullitems/size_tとpointercapable unsigned/積overflow・partialitemとgztell・size!=1データ損失/size==1代案を保持。write部分非0<len/int不適合も保持。"
+  ],
+  "fixes": [],
+  "remainingBlocks": [
+    129,
+    163
+  ],
+  "wholePageReview": "pending",
+  "native": "pending",
+  "model": {
+    "preferred": "gpt-6.1-sol",
+    "configuredLastObserved": "gpt-6-astra",
+    "actual": null,
+    "localLLM": false
+  }
+}

@@ -1,11 +1,11 @@
 ---
 title: "Awesome FOSS for Developers"
-description: "Awesome FOSS for Developersの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "開発者向けのFOSSに関する資料へ案内します。このスナップショットには元のリストの本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome FOSS for Developers
 
-Awesome FOSS for Developersの収録案内です。このスナップショットでは上流本文を転載していません。
+開発者向けのFOSS（自由かつオープンソースのソフトウェア）に関する資料を探すための案内です。このスナップショットではFOSS for Developersへのリンクを掲載し、リスト本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/tvvocold/FOSS-for-Dev/blob/7efadf348c361ac6955d7371a7a78fa592a8a833/README.md)
+- [元のリストを読む](https://github.com/tvvocold/FOSS-for-Dev/blob/7efadf348c361ac6955d7371a7a78fa592a8a833/README.md)

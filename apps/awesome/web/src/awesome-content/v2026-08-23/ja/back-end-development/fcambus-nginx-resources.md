@@ -1,14 +1,14 @@
 ---
 title: "Awesome Nginx Resources"
-description: "Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Nginxの構造・設定・モジュール開発の資料集。Lua、njs、OpenResty、Tengineの解説、チュートリアル、講演も紹介します。"
 licenseSource: "github-fcambus-nginx-resources-readme-md"
 ---
 
 # Awesome Nginx Resources
 
-Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+Nginxの構造を理解し、サーバーを設定・運用し、モジュールを開発するための資料を紹介します。Luaやnjsによるスクリプティング、OpenRestyとTengine、実践的なチュートリアル、カンファレンスの講演も扱います。
 
-## Nginx を理解する
+## Nginx を理解する<a id="understanding-nginx"></a>
 
 - [Nginx のバージョン体系を理解する](https://www.f5.com/company/blog/nginx/nginx-1-18-1-19-released)
 - [Nginx 作者へのインタビュー](https://web.archive.org/web/20180614224054/http://mindend.com/interview-with-the-creator-of-nginx/)
@@ -16,7 +16,7 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 - [アプリケーションサーバーの前段に Nginx を置く理由](https://www.cambus.net/the-case-for-nginx-in-front-of-application-servers/)
 - [Nginx 最適化：sendfile、tcp_nodelay、tcp_nopush を理解する](https://fv.gs/nginx-optimization-understanding-sendfile-tcp-nodelay-and-tcp-nopush-c55cdd276765)
 
-## アーキテクチャ
+## アーキテクチャ<a id="architecture"></a>
 
 - [The Architecture of Open Source Applications（第2巻）：nginx](https://aosabook.org/en/nginx.html)
 - [Nginx Guts - Nginx の内部を解明する](https://web.archive.org/web/20220202145919/http://www.nginxguts.com/category/nginx/)
@@ -25,7 +25,7 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 - [NGINX の内側：パフォーマンスとスケールをどう設計したか](https://blog.nginx.org/blog/inside-nginx-how-we-designed-for-performance-scale)
 - [NGINX のスレッドプール](https://www.f5.com/company/blog/nginx/thread-pools-boost-performance-9x)
 
-## 設定
+## 設定<a id="configuration"></a>
 
 - [初心者ガイド](https://nginx.org/en/docs/beginners_guide.html)
 - [変数のアルファベット順索引](https://nginx.org/en/docs/varindex.html)
@@ -40,17 +40,17 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 - [開発者に便利な Nginx の機能](https://alex.dzyoba.com/blog/nginx-features-for-developers/)
 - [運用者に便利な Nginx の機能](https://alex.dzyoba.com/blog/nginx-features-for-operators/)
 - [NGINX 設定で避けるべき上位10の誤り](https://www.f5.com/company/blog/nginx/avoiding-top-10-nginx-configuration-mistakes)
-- [Gixy - Nginx 設定の静的解析ツール](https://github.com/yandex/gixy) - 保守中のフォーク：[gixy-ng](https://github.com/dvershinin/gixy)、[gixy-next](https://github.com/MegaManSec/Gixy-Next)
+- [Gixy - Nginx 設定の静的解析ツール](https://github.com/yandex/gixy) - 原文で保守中と紹介されているフォーク：[gixy-ng](https://github.com/dvershinin/gixy)、[gixy-next](https://github.com/MegaManSec/Gixy-Next)
 - [Nginx 共通設定 - 汎用設定とスニペット](https://github.com/tldr-devops/nginx-common-configuration)
 
-## セキュリティ
+## セキュリティ<a id="security"></a>
 
-- [BunkerWeb - Nginx ベースの次世代オープンソース Web Application Firewall（WAF）](https://www.bunkerweb.io)
+- [BunkerWeb - Nginxベースのオープンソースのウェブアプリケーションファイアウォール（WAF）。原文では次世代と紹介されている](https://www.bunkerweb.io)
 
-## チュートリアル
+## チュートリアル<a id="tutorials"></a>
 
 - [NGINX・NGINX Plus 管理者ガイド](https://docs.nginx.com/nginx/admin-guide/)
-- [agentzh の Nginx チュートリアル](https://openresty.org/download/agentzh-nginx-tutorials-en.html)（[ソース](https://github.com/openresty/nginx-tutorials)）
+- [agentzh の Nginx チュートリアル](https://openresty.org/download/agentzh-nginx-tutorials-en.html)（[ソースコード](https://github.com/openresty/nginx-tutorials)）
 - [nginx.conf スクリプティング入門](https://agentzh.org/misc/slides/nginx-conf-scripting/nginx-conf-scripting.html)
 - [NGINX・NGINX Plus による負荷分散](https://www.f5.com/company/blog/nginx/load-balancing-with-nginx-plus)（[第2部](https://www.f5.com/company/blog/nginx/load-balancing-with-nginx-plus-part-2)）
 - [高トラフィック負荷向けに Nginx を最適化する](https://blog.martinfjordvald.com/optimizing-nginx-for-high-traffic-loads/)
@@ -62,19 +62,19 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 - [NGINX・NGINX Plus で A/B テストを行う](https://www.f5.com/company/blog/nginx/performing-a-b-testing-nginx-plus)
 - [Kernel TLS と SSL_sendfile() で NGINX の性能を改善する](https://www.f5.com/company/blog/nginx/improving-nginx-performance-with-kernel-tls)
 
-## モジュール開発
+## モジュール開発<a id="module-development"></a>
 
 - [公式開発ガイド](https://nginx.org/en/docs/dev/development_guide.html)
 - [Nginx モジュール開発ガイド](https://www.evanmiller.org/nginx-modules-guide.html)
 - [Nginx モジュール開発の高度なトピック](https://www.evanmiller.org/nginx-modules-guide-advanced.html)
 
-## API
+## API<a id="apis"></a>
 
 - [Telize - Nginx と Lua で構築した JSON IP・GeoIP REST API（IP 位置情報）](https://www.telize.com)
 - [GIN - JSON-API フレームワーク](https://gin.io/)
 - [Kong - マイクロサービスと API の管理レイヤー](https://github.com/kong/kong)
 
-## ハック
+## ハック<a id="hacks"></a>
 
 - [Nginx JSON ハック](https://web.archive.org/web/20140921162448/http://www.gabrielweinberg.com/blog/2011/07/nginx-json-hacks.html)
 - [Nginx.conf で環境変数を使う](https://web.archive.org/web/20170712003702/https://docs.apitools.com/blog/2014/07/02/using-environment-variables-in-nginx-conf.html)
@@ -84,7 +84,7 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 - [不要なリクエストを捕捉して遅延させる](https://github.com/p0pr0ck5/lua-resty-tarpit)
 - [Nginx：キャッシュ、サムネイル生成、リバースプロキシを行う画像サーバー？](https://charlesleifer.com/blog/nginx-a-caching-thumbnailing-reverse-proxying-image-server-/)
 
-## ヒント
+## ヒント<a id="tips"></a>
 
 - [Nginx にできるとは知らなかったこと](https://www.slideshare.net/slideshow/5-things-you-didnt-know-nginx-could-do/35181267)
 - [Nginx gzip_comp_level の最適点を探す](https://mjanja.ch/2015/03/finding-the-nginx-gzip_comp_level-sweet-spot/)
@@ -117,11 +117,11 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 
 ## OpenResty
 
-- [OpenResty - Nginx を拡張した高速 Web アプリサーバー](https://openresty.org/en/)
+- [OpenResty - Nginxを拡張したウェブアプリケーションサーバー。原文では高速と紹介されている](https://openresty.org/en/)
 - [Lapis - OpenResty が動かす Lua・MoonScript 用 Web フレームワーク](https://leafo.net/lapis/)
 - [OpenResty と Lua による Nginx 画像処理サーバー](https://leafo.net/posts/creating_an_image_server.html)
 - [OpenResty イベントサーバーを構築する](https://github.com/cagerton/dropthat/)
-- [SysAdvent 2014 - OpenResty、Nginx、Lua](https://sysadvent.blogspot.com/2014/12/day-22-largely-unappreciated.html)（[ソース](https://github.com/lusis/sysadvent-2014)）
+- [SysAdvent 2014 - OpenResty、Nginx、Lua](https://sysadvent.blogspot.com/2014/12/day-22-largely-unappreciated.html)（[ソースコード](https://github.com/lusis/sysadvent-2014)）
 - [Ceryx - 動的リバースプロキシ](https://www.sourcelair.com/blog/articles/75/ceryx-dynamic-nginx/)
 - [OpenResty 入門](https://www.openmymind.net/An-Introduction-To-OpenResty-Nginx-Lua/)
 - [Programming OpenResty（OpenResty 作者による執筆）](https://openresty.gitbooks.io/programming-openresty/content/)
@@ -129,10 +129,10 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 
 ## Tengine
 
-- [Tengine Web Server](https://tengine.taobao.org)
+- [Tengineウェブサーバー](https://tengine.taobao.org)
 - [OpenResty と Tengine の違い](https://github.com/openresty/openresty/issues/54)
 
-## 講演
+## 講演<a id="talks"></a>
 
 - [NGINX Conference 2019 動画](https://www.youtube.com/playlist?list=PLGz_X9w9raXflDvBv642YFqT0UTqQGFsH)
 - [NGINX Conference 2018 動画](https://www.youtube.com/playlist?list=PLGz_X9w9raXe_Vc708VKvr5KJ4gnf1WxS)
@@ -141,9 +141,3 @@ Nginx Resourcesを扱う資料や関連プロジェクトをまとめたAwesome�
 - [NGINX Conference 2015 動画](https://www.youtube.com/playlist?list=PLGz_X9w9raXdED9BR6GQ61A6d3fBzjpbn)
 - [NGINX Conference 2014 動画](https://www.youtube.com/playlist?list=PLGz_X9w9raXewvc6tjIGGFZ6DBKHEld3k)
 - [NGINX User Summit 2014 - ライトニングトーク](https://www.youtube.com/playlist?list=PLGz_X9w9raXfTnRnI6Xl0LMhAKoTVVZv8)
-
-## ライセンス
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-法律で認められる範囲で、[Frederic Cambus](https://www.cambus.net) はこの作品に関するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -1,0 +1,15 @@
+{
+  "commit": "840404ce8ba7cc0204be52389a6cfff9f2c90fb6",
+  "originalFile": {
+    "path": "src/uv-common.c",
+    "sha256": "8be5802be4ab39842e549974431be18daddf102fb2f192236344cf8008ca8aea",
+    "bytes": 29951
+  },
+  "lines": [
+    1024,
+    1050
+  ],
+  "excerpt": "int uv_loop_close(uv_loop_t* loop) {\n  struct uv__queue* q;\n  uv_handle_t* h;\n#ifndef NDEBUG\n  void* saved_data;\n#endif\n\n  if (uv__has_active_reqs(loop))\n    return UV_EBUSY;\n\n  uv__queue_foreach(q, &loop->handle_queue) {\n    h = uv__queue_data(q, uv_handle_t, handle_queue);\n    if (!(h->flags & UV_HANDLE_INTERNAL))\n      return UV_EBUSY;\n  }\n\n  uv__loop_close(loop);\n\n#ifndef NDEBUG\n  saved_data = loop->data;\n  memset(loop, -1, sizeof(*loop));\n  loop->data = saved_data;\n#endif\n  if (loop == default_loop_ptr)\n    default_loop_ptr = NULL;\n\n  return 0;",
+  "interpretation": "uv_loop_close returns UV_EBUSY before uv__loop_close cleanup when active requests/non-internal handles remain; cleanup runs on success. Source paragraph already restricts closure to finished/closed handles and requests; review retains this precondition, does not infer errors authorize freeing loop memory.",
+  "effectOnTranslation": "No source or body edit; original precondition and UV_EBUSY retained. This is supporting primary-code review evidence, not a new canonical input."
+}

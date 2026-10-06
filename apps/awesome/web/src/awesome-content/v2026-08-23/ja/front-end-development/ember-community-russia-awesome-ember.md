@@ -1,238 +1,102 @@
 ---
 title: "Awesome Ember.js"
-description: "Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Ember.jsのアドオンと開発ツール、記事、書籍、講座、実装例、コミュニティの参考資料。"
 licenseSource: "github-ember-community-russia-awesome-ember-readme-md"
 ---
 
 # Awesome Ember.js
 
-Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+[Ember.js](https://emberjs.com)はウェブアプリケーション用のJavaScriptフレームワークです。開発に使うアドオンやツールとして、データ処理、認証、テンプレート、UIコンポーネント、テスト、ビルドに関するものを探せます。記事、書籍、講座、実装例、コミュニティの参考資料も紹介します。
 
-## Contents
-- Awesome Ember.js [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
-  - [Contents](#contents)
-  - [Packages](#packages)
-    - [AST](#ast)
-    - [a11y](#a11y)
-    - [Adapters](#adapters)
-    - [Animations](#animations)
-    - [Authentication](#authentication)
-    - [Automation](#automation)
-    - [Benchmarking](#benchmarking)
-    - [Blogging](#blogging)
-    - [Babel](#babel)
-    - [Boilerplating](#boilerplating)
-    - [Broccoli](#broccoli)
-    - [Broccoli read](#broccoli-read)
-    - [Build tools](#build-tools)
-    - [Charts](#charts)
-    - [CI/CD](#cicd)
-    - [Code Splitting](#code-splitting)
-    - [Codestyle](#codestyle)
-    - [Command-line apps](#command-line-apps)
-    - [Command-line utilities](#command-line-utilities)
-    - [Component addons](#component-addons)
-    - [Compression](#compression)
-    - [Content management systems](#content-management-systems)
-    - [Control flow](#control-flow)
-    - [CSS & etc](#css--etc)
-    - [Fonts](#fonts)
-    - [State management](#state-management)
-    - [Styling kits](#styling-kits)
-    - [Data Management](#data-management)
-    - [Data manipulation & Computed](#data-manipulation--computed)
-    - [Data validation](#data-validation)
-    - [Database](#database)
-    - [Date](#date)
-    - [Debugging / Profiling](#debugging--profiling)
-    - [Decorators](#decorators)
-    - [Documentation](#documentation)
-    - [Ember-inspector roadmaps & overview](#ember-inspector-roadmaps--overview)
-    - [End-user customization](#end-user-customization)
-    - [ES6](#es6)
-    - [External Components Integration](#external-components-integration)
-    - [Forms](#forms)
-    - [Functional programming](#functional-programming)
-    - [HTTP](#http)
-    - [Helpers](#helpers)
-    - [Image](#image)
-    - [Include external JS code](#include-external-js-code)
-    - [Infinite Scroll](#infinite-scroll)
-    - [Internalization & Localization](#internalization--localization)
-    - [Inputs](#inputs)
-    - [Job queues](#job-queues)
-    - [Logging](#logging)
-    - [Mad science](#mad-science)
-    - [Math](#math)
-    - [Metrics](#metrics)
-    - [Minifiers](#minifiers)
-    - [Miscellaneous](#miscellaneous)
-    - [Mobile](#mobile)
-    - [Modifiers](#modifiers)
-    - [Parcel](#parcel)
-    - [Payments](#payments)
-    - [Polyfills](#polyfills)
-    - [PWA](#pwa)
-    - [Query Params](#query-params)
-    - [Real-time](#real-time)
-    - [Routing addons](#routing-addons)
-    - [Resolver customization](#resolver-customization)
-    - [Security](#security)
-    - [Service Workers](#service-workers)
-    - [SSR / Server Side Rendering](#ssr--server-side-rendering)
-    - [Static site generators & SEO](#static-site-generators--seo)
-    - [Styling](#styling)
-    - [Templating](#templating)
-    - [Testing](#testing)
-    - [Text](#text)
-    - [Tree Shaking](#tree-shaking)
-    - [TypeScript](#typescript)
-    - [UI libs](#ui-libs)
-    - [UI components](#ui-components)
-    - [UX](#ux)
-    - [VR](#vr)
-    - [VS Code addons](#vs-code-addons)
-    - [Atom addons](#atom-addons)
-    - [VIM](#vim)
-    - [Web Components](#web-components)
-    - [Webpack](#webpack)
-    - [Weird](#weird)
-    - [Resources](#resources)
-    - [Articles](#articles)
-    - [Ember-Cli Articles](#ember-cli-articles)
-    - [Why Articles](#why-articles)
-    - [Jump-Start Articles](#jump-start-articles)
-    - [Articles Glimmer](#articles-glimmer)
-    - [Articles Engines](#articles-engines)
-    - [Articles Ember-Concurrency](#articles-ember-concurrency)
-    - [Articles ES6](#articles-es6)
-    - [Articles TypeScript](#articles-typescript)
-    - [Articles Modern Testing](#articles-modern-testing)
-    - [Articles FastBoot](#articles-fastboot)
-    - [Articles about Data](#articles-about-data)
-    - [Articles about Routing](#articles-about-routing)
-    - [Yarn in Ember Articles](#yarn-in-ember-articles)
-    - [Best-practices](#best-practices)
-    - [Nice to know](#nice-to-know)
-    - [Blogs](#blogs)
-    - [Books](#books)
-    - [Cheatsheets](#cheatsheets)
-    - [Codemods](#codemods)
-    - [Community](#community)
-    - [Contribution Guides](#contribution-guides)
-    - [Courses](#courses)
-    - [Discovery](#discovery)
-    - [Ember Releases](#ember-releases)
-    - [Examples](#examples)
-    - [Examples Glimmer](#examples-glimmer)
-    - [Gists](#gists)
-    - [Gists Ember Data](#gists-ember-data)
-    - [Miscellaneous](#miscellaneous-1)
-    - [Newsletters](#newsletters)
-    - [Podcasts](#podcasts)
-    - [Sandboxes](#sandboxes)
-    - [Screencasts](#screencasts)
-    - [Slides](#slides)
-    - [Styleguides](#styleguides)
-    - [Tools](#tools)
-    - [Tutorials](#tutorials)
-    - [Twitter](#twitter)
-    - [Videos](#videos)
-    - [YouTube channels](#youtube-channels)
-    - [YouTube playlists](#youtube-playlists)
-  - [License](#license)
-
-
-## Packages
+## パッケージ<a id="packages"></a>
 ### AST
 
-- [ember-ast-helpers](https://github.com/cibernox/ember-ast-helpers) - このライブラリは、AST変換を実行するためのユーティリティボックスであり、ASTの細部についてユーザーにできるだけ影響を与えないようにするためのプライベートAPIを隠蔽します
+- [ember-ast-helpers](https://github.com/cibernox/ember-ast-helpers) - ASTの細部の影響をできるだけ抑えて変換を行うユーティリティ。原リストでは、ASTは依然として非公開APIと記載
 - [ember-template-recast](https://github.com/ember-template-lint/ember-template-recast) - 非破壊的なテンプレート変換器
-- [jscodeshift](https://github.com/facebook/jscodeshift) - JavaScriptのコードモッドツールキット
-- [dyfactor](https://github.com/dyfactor/dyfactor) - 実行時情報に基づいてコードモッドを実行するプラットフォーム
+- [jscodeshift](https://github.com/facebook/jscodeshift) - JavaScriptのcodemodツールキット
+- [dyfactor](https://github.com/dyfactor/dyfactor) - 実行時情報に基づいてcodemodを実行するプラットフォーム
 
-### a11y
+### アクセシビリティ<a id="a11y"></a>
 
-- [ember-accessibility](https://github.com/coyote-labs/ember-accessibility) - 開発中にアクセシビリティ違反を特定するためのアドオン
-- [e-a11y-modal](https://github.com/MelSumner/e-a11y-modal) - アクセシブルなEmber.jsアプリケーション向けのシンプルなモーダル
-- [ember-a11y-landmarks](https://github.com/ember-a11y/ember-a11y-landmarks) - Ember.jsアドオンで、より良いアクセシビリティを実現するためのランドマークロールをサポート
-- [ember-a11y](https://github.com/ember-a11y/ember-a11y) - アクセシブルなEmber.jsアプリケーションを構築するためのツールのコレクション
-- [ember-component-focus](https://github.com/ember-a11y/ember-component-focus) - Ember.jsコンポーネントにメソッドを追加するミックスインで、現在フォーカスされている要素を管理する機能を提供
-- [ember-gestures](https://github.com/html-next/ember-gestures) - Ember.jsジェスチャは、アプリ全体でHammerJSマネージャーと認識者を定義・使用しやすくすることで、ジェスチャの使用を簡単に行う方法を提供
-- [ember-steps](https://github.com/rwjblue/ember-steps) - 宣言的に作成されるウィザード、タブ付きUIなど
-- [ember-page-title](https://github.com/tim-evans/ember-page-title) - Ember.jsアプリケーションにおけるページタイトルの管理
-- [ember-self-focused](https://github.com/linkedin/self-focused/tree/master/packages/ember-self-focused) - ルートへのフォーカスの遷移時処理
-- [ember-keyboard](https://github.com/patience-tema-baron/ember-keyboard) - キーボードイベントのサポートを簡単に行うためのEmber.jsアドオン
-- [ember-a11y-testing](https://github.com/ember-a11y/ember-a11y-testing) - Ember.jsテストフレームワーク内で実行可能なアクセシビリティテストのセット
-- [a11y-announcer](https://github.com/ember-a11y/a11y-announcer) - アクセシブルなEmber.jsルート変更アナウンサー
-- [ember-a11y-refocus](https://github.com/MelSumner/ember-a11y-refocus) - Emberアプリケーションに非侵襲的にナビゲーションのナレーション要素を提供
+- [ember-accessibility](https://github.com/coyote-labs/ember-accessibility) - 開発中のアクセシビリティ違反の検出を支援するアドオン
+- [e-a11y-modal](https://github.com/MelSumner/e-a11y-modal) - アクセシブルなEmber.jsアプリケーション向けのモーダル
+- [ember-a11y-landmarks](https://github.com/ember-a11y/ember-a11y-landmarks) - アクセシビリティを改善するランドマークロールの利用を支援するEmber.jsアドオン
+- [ember-a11y](https://github.com/ember-a11y/ember-a11y) - アクセシブルなEmber.jsアプリケーションを構築するツール集
+- [ember-component-focus](https://github.com/ember-a11y/ember-component-focus) - 現在フォーカスされている要素を管理するメソッドをEmber.jsコンポーネントへ追加するミックスイン
+- [ember-gestures](https://github.com/html-next/ember-gestures) - アプリ全体で定義・利用するHammerJSのマネージャーとレコグナイザーによるジェスチャー対応
+- [ember-steps](https://github.com/rwjblue/ember-steps) - ウィザードやタブ付きUIなどを宣言的に作成
+- [ember-page-title](https://github.com/tim-evans/ember-page-title) - Ember.jsアプリケーションのページタイトル管理
+- [ember-self-focused](https://github.com/linkedin/self-focused/tree/master/packages/ember-self-focused) - ルート遷移時に遷移先へフォーカスを移動
+- [ember-keyboard](https://github.com/patience-tema-baron/ember-keyboard) - キーボードイベントを扱うEmber.jsアドオン
+- [ember-a11y-testing](https://github.com/ember-a11y/ember-a11y-testing) - Ember.jsのテストフレームワーク内で実行できるアクセシビリティテスト集
+- [a11y-announcer](https://github.com/ember-a11y/a11y-announcer) - Emberのルート変更をアクセシブルに通知
+- [ember-a11y-refocus](https://github.com/MelSumner/ember-a11y-refocus) - Emberアプリケーションに、操作を妨げないナビゲーション読み上げ要素を提供
 
-### Adapters
+### アダプター<a id="adapters"></a>
 
-- [ember-cli-markdown-resolver](https://github.com/willviles/ember-cli-markdown-resolver) - カスタムフォルダ内のマークダウンファイルを解決し、サービス経由でコンテンツを取得するためのEmber CLIアドオン
-- [ember-cloud-firestore-adapter](https://github.com/rmmmp/ember-cloud-firestore-adapter) - 非公式なEmber Dataアダプタとシリアライザ（Cloud Firestore用）
-- [ember-data-hal-9000](https://github.com/201-created/ember-data-hal-9000) - Ember-dataと互換性のあるEmber-cliアドオンで、HALアダプタ（HATEOAS）を提供
-- [ember-django-adapter](https://github.com/dustinfarris/ember-django-adapter) - Django REST Framework 用 Ember CLI アドオン アダプタ
-- [ember-graphql-adapter](https://github.com/alphasights/ember-graphql-adapter) - Ember Data 用 GraphQL アダプタ
-- [ember-indexeddb](https://github.com/mydea/ember-indexeddb) - EmberおよびEmber DataでIndexedDBと連携するためのユーティリティとアダプタ
-- [ember-localforage-adapter](https://github.com/genkgo/ember-localforage-adapter) - Ember Data でのオフライン使用
-- [ember-local-storage](https://github.com/funkensturm/ember-local-storage) - 計算プロパティがプロキシを返すストレージを提供し、変更を localStorage または sessionStorage に永続化するアドオン
-- [ember-pouch](https://github.com/pouchdb-community/ember-pouch) - Ember Data 用 PouchDB/CouchDB アダプタ
-- [ember-wordpress](https://github.com/oskarrough/ember-wordpress) - Ember.js と WordPress の橋渡し
-- [emberfire](https://github.com/firebase/emberfire) - Firebase 用の公式 Ember Data アダプタ
-- [ninjafire](https://github.com/lineupninja/ninjafire) - TypeScript で書かれた Firebase 用の ORM
+- [ember-cli-markdown-resolver](https://github.com/willviles/ember-cli-markdown-resolver) - カスタムフォルダー内のMarkdownファイルを解決し、サービス経由で内容を取得するEmber CLIアドオン
+- [ember-cloud-firestore-adapter](https://github.com/rmmmp/ember-cloud-firestore-adapter) - Cloud Firestore用の非公式Ember Dataアダプターとシリアライザー
+- [ember-data-hal-9000](https://github.com/201-created/ember-data-hal-9000) - HALアダプター（HATEOAS）を提供する、ember-dataと互換性のあるEmber CLIアドオン
+- [ember-django-adapter](https://github.com/dustinfarris/ember-django-adapter) - Django REST Framework用のEmber CLIアダプターアドオン
+- [ember-graphql-adapter](https://github.com/alphasights/ember-graphql-adapter) - Ember Data用のGraphQLアダプター
+- [ember-indexeddb](https://github.com/mydea/ember-indexeddb) - Emberとember-dataでIndexedDBを扱うユーティリティとアダプター
+- [ember-localforage-adapter](https://github.com/genkgo/ember-localforage-adapter) - Ember Dataのオフライン利用
+- [ember-local-storage](https://github.com/funkensturm/ember-local-storage) - プロキシーを返す計算プロパティ向けのストレージ。変更をlocalStorageまたはsessionStorageに永続化
+- [ember-pouch](https://github.com/pouchdb-community/ember-pouch) - Ember Data用のPouchDB/CouchDBアダプター
+- [ember-wordpress](https://github.com/oskarrough/ember-wordpress) - Ember.jsとWordPressの連携
+- [emberfire](https://github.com/firebase/emberfire) - Firebase用の公式Ember Dataアダプター
+- [ninjafire](https://github.com/lineupninja/ninjafire) - TypeScriptで書かれたFirebase用のORM
 
-### Animations
+### アニメーション<a id="animations"></a>
 
 - [ember-animated](https://github.com/ember-animation/ember-animated) - [Web Animations with Ember js](https://www.youtube.com/watch?v=TSvnutA9PUE)
-- [liquid-fire](https://github.com/ember-animation/liquid-fire) - 野心的な Ember.js アプリケーション向けのアニメーションとトランジション
+- [liquid-fire](https://github.com/ember-animation/liquid-fire) - Ember.jsアプリケーション向けのアニメーションとトランジション
 
-### Authentication
+### 認証<a id="authentication"></a>
 
 - [ember-cli-simple-auth-extensions](https://emberobserver.com/categories/ember-cli-simple-auth-extensions)
-- [ember-simple-auth](https://github.com/simplabs/ember-simple-auth) - Ember.js アプリケーションにおける認証/認可を実装するためのライブラリ
-- [tori](https://github.com/Vestorly/torii) - Ember.js における認証を簡潔に抽象化したセット
+- [ember-simple-auth](https://github.com/simplabs/ember-simple-auth) - Ember.jsアプリケーションに認証・認可を実装するライブラリ
+- [torii](https://github.com/Vestorly/torii) - Ember.jsでの認証を簡潔に抽象化する機能集
 
-### Automation
+### 自動化<a id="automation"></a>
 
-- [ember-cli-deploy](https://github.com/ember-cli-deploy/ember-cli-deploy) - Ember CLI アプリケーション向けのデプロイパイプライン
-- [ember-cli-deploy-webhooks](https://github.com/simplabs/ember-cli-deploy-webhooks) - Ember CLI デプロイプラグイン（デプロイ時にウェブホークを呼び出す）
-- [ember-cli-release](https://github.com/shipshapecode/ember-cli-release) - Ember CLI 用のバージョン管理によるリリース管理アドオン
-- [ember-cli-sri](https://github.com/jonathanKingston/ember-cli-sri) - このプラグインは ember アプリケーションのサブリソースインテグリティ（SRI）ハッシュを生成する
-- [ember-cli-dependency-lint](https://github.com/salsify/ember-cli-dependency-lint) - アプリケーションのアドオン依存関係をチェックし、各依存関係について1バージョンだけを確保する
+- [ember-cli-deploy](https://github.com/ember-cli-deploy/ember-cli-deploy) - Ember CLIアプリケーション向けのデプロイパイプライン
+- [ember-cli-deploy-webhooks](https://github.com/simplabs/ember-cli-deploy-webhooks) - デプロイ時にWebhookを呼び出すEmber CLI Deployプラグイン
+- [ember-cli-release](https://github.com/shipshapecode/ember-cli-release) - バージョン付きリリースを管理するEmber CLIアドオン
+- [ember-cli-sri](https://github.com/jonathanKingston/ember-cli-sri) - EmberアプリケーションのSubresource Integrity（SRI）ハッシュを生成するプラグイン
+- [ember-cli-dependency-lint](https://github.com/salsify/ember-cli-dependency-lint) - アプリケーションのアドオン依存関係を検査し、各依存関係のバージョンが1つだけであることを確認
 
-### Benchmarking
+### ベンチマーク<a id="benchmarking"></a>
 
-- [ember-macro-benchmark](https://github.com/krisselden/ember-macro-benchmark) - Ember.js の2バージョンを実行しているemberアプリのベンチマーク記録
-- [ember-performance](https://github.com/eviltrout/ember-performance) - Ember.js 用のパフォーマンス向上を支援するテストセット
-- [emberperf](http://emberperf.eviltrout.com) - エマーブのパフォーマンス（バージョン間の比較）
+- [ember-macro-benchmark](https://github.com/krisselden/ember-macro-benchmark) - 2つのEmber.jsバージョンで動くEmberアプリケーションのベンチマークを記録
+- [ember-performance](https://github.com/eviltrout/ember-performance) - Ember.jsの性能改善を支援するテスト集
+- [emberperf](http://emberperf.eviltrout.com) - Ember.jsのバージョン間の性能比較
 
-### Blogging
+### ブログ<a id="blogging"></a>
 
-- [empress-blog](https://github.com/empress/empress-blog) - エマーブで構築されたブログシステムの、完全に機能し、SEO対応の静的サイトの実装
-- [ember-cli-blog](https://github.com/broerse/ember-cli-blog) - トム・デールのブログ例をエマーブCLIにアップデートしたもの
-- [ember-tumblr](https://github.com/elwayman02/ember-tumblr) - エマーブでTumblrブログを統合するアドオン
+- [empress-blog](https://github.com/empress/empress-blog) - Ember.jsで構築した静的ブログシステム。原リストでは機能が揃いSEOに対応すると説明
+- [ember-cli-blog](https://github.com/broerse/ember-cli-blog) - Tom Daleのブログ実装例をEmber CLI向けに更新
+- [ember-tumblr](https://github.com/elwayman02/ember-tumblr) - Tumblrブログを統合するEmber.jsアドオン
 
 ### Babel
 
-- [ember-cli-babel-plugin-helpers](https://github.com/dfreeman/ember-cli-babel-plugin-helpers) - エマーブCLIアプリケーションおよびアドオンでBabelプラグインを管理するためのユーティリティ
+- [ember-cli-babel-plugin-helpers](https://github.com/dfreeman/ember-cli-babel-plugin-helpers) - Ember CLIアプリケーションやアドオンでBabelプラグインを管理するユーティリティ
 
-### Boilerplating
+### プロジェクトの雛形<a id="boilerplating"></a>
 
-- [ember-boilerplate](https://github.com/mirego/ember-boilerplate) -  マイレゴでエマーブプロジェクトを構築するための安定したベース
-
+- [ember-boilerplate](https://github.com/mirego/ember-boilerplate) - MiregoがEmber.jsプロジェクトの構築に使う基盤。原リストでは安定した基盤と説明
 
 ### Broccoli
 
-- [broccoli-concat-analyser](https://github.com/stefanpenner/broccoli-concat-analyser) - アセットプロファイリング
-- [broccoli-debug](https://github.com/broccolijs/broccoli-debug) - ブロッコリーパイプラインの作成者向けに、ブロッコリーパイプラインのデバッグを簡単に行えるユーティリティ
-- [broccoli-stew](https://github.com/stefanpenner/broccoli-stew) - ブロッコリーベースのビルドパイプライン開発に必要な便利関数を提供
-- [broccolijs-tutorial](https://github.com/oligriffiths/broccolijs-tutorial) - ブロッコリーツールのチュートリアルリポジトリ
-- [broccoli-rollup](https://github.com/chadhietala/broccoli-rollup) - ブロッコリープラグイン「Rollup」
-- [broccoli-manifest](https://github.com/racido/broccoli-manifest) - HTML5キャッシュマニフェストのブロッコリーパイプラインでのコンパイル
-- [broccoli-glow](https://github.com/locks/broccoli-glow) - 1ファイルから動的コンポーネントを作成など
+- [broccoli-concat-analyser](https://github.com/stefanpenner/broccoli-concat-analyser) - アセットのプロファイリング
+- [broccoli-debug](https://github.com/broccolijs/broccoli-debug) - Broccoliビルドパイプラインの作者向けのデバッグユーティリティ
+- [broccoli-stew](https://github.com/stefanpenner/broccoli-stew) - Broccoliベースのビルドパイプライン開発でよく使う便利な関数を提供
+- [broccolijs-tutorial](https://github.com/oligriffiths/broccolijs-tutorial) - Broccoli.jsのチュートリアルリポジトリ
+- [broccoli-rollup](https://github.com/chadhietala/broccoli-rollup) - Rollup用のBroccoliプラグイン
+- [broccoli-manifest](https://github.com/racido/broccoli-manifest) - BroccoliによるHTML5キャッシュマニフェストのコンパイル
+- [broccoli-glow](https://github.com/locks/broccoli-glow) - 単一ファイルからの動的なコンポーネント作成など
 
-### Broccoli read
+### Broccoliの参考資料<a id="broccoli-read"></a>
 
 - [Debugging a Broccoli Tree](https://dockyard.com/blog/2015/02/02/debugging-a-broccoli-tree)
 - [Debugging Broccoli and Ember-CLI](https://mfeckie.github.io/Debugging-Broccoli-And-Ember/)
@@ -241,338 +105,334 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Ember.js Lazy Assets: Fingerprinting & loading static/dynamic assets on demand](https://codeburst.io/ember-js-lazy-assets-fingerprinting-loading-static-dynamic-assets-on-demand-f09cd7568155)
 - [Thoughts on how to write faster broccoli plugins](https://gist.github.com/Gaurav0/c1eb3a00670eed28e57c2cf92d3f7668)
 
-### Build tools
+### ビルドツール<a id="build-tools"></a>
 
-- [Broccoli](https://github.com/broccolijs/broccoli) - 高速かつ信頼性の高いアセットパイプライン。再構築時間は定数、ビルド定義はコンパクトにサポート
+- [Broccoli](https://github.com/broccolijs/broccoli) - 定数時間での再ビルドと簡潔なビルド定義に対応するアセットパイプライン。原リストでは高速かつ信頼性が高いと説明
 
-### Charts
+### チャート<a id="charts"></a>
 
-- [ember-charts](https://github.com/Addepar/ember-charts) - エマーブとd3.jsフレームワークで構築されたチャートライブラリ
-- [ember-sparkles](https://github.com/LocusEnergy/ember-sparkles) - ember-d3-helpersで構築された、組み立て可能なD3コンポーネントのコレクション
-- [ember-highcharts](https://github.com/ahmadsoe/ember-highcharts) - Highcharts、HighStock、HighMapsのエマーブCLI用コンポーネント
-- [ember-c3](https://github.com/Glavin001/ember-c3) - C3（D3ベースの再利用可能なチャートライブラリなど）のアドオンライブラリ
+- [ember-charts](https://github.com/Addepar/ember-charts) - Ember.jsとd3.jsで構築されたチャートライブラリ
+- [ember-sparkles](https://github.com/LocusEnergy/ember-sparkles) - ember-d3-helpersで構築された、組み合わせ可能なD3コンポーネント集
+- [ember-highcharts](https://github.com/ahmadsoe/ember-highcharts) - Ember CLI用のHighcharts・HighStock・HighMapsコンポーネント
+- [ember-c3](https://github.com/Glavin001/ember-c3) - D3ベースの再利用可能なチャートライブラリC3のアドオン。原リストでは互換性がより高いと記載するが、比較対象は明記されていない
 
 ### CI/CD
 
-- [ember-cli-server-variables](https://github.com/blimmer/ember-cli-server-variables) - エマーブCLIアドオンで、生成されたindex.htmlファイルのheadタグに変数を追加するサポート
-- [ember-ci](https://github.com/mike-north/ember-ci) - エマーブアプリケーション向けの継続的統合ツール
-- [CI with GitHub Actions for Ember Apps](https://crunchingnumbers.live/2020/03/17/ci-with-github-actions-for-ember-apps/) - GitHub ActionsでCI実行時間を短縮
-- [CI with GitHub Actions for Ember Apps: Part 2](https://crunchingnumbers.live/2020/08/31/ci-with-github-actions-for-ember-apps-part-2/) - v2アクションへの移行により実行時間とコストを削減し、継続的デプロイを実現
+- [ember-cli-server-variables](https://github.com/blimmer/ember-cli-server-variables) - 生成されるindex.htmlのheadタグへ変数を追加するEmber CLIアドオン
+- [ember-ci](https://github.com/mike-north/ember-ci) - Ember.jsアプリケーション向けの継続的インテグレーション用ツール
+- [CI with GitHub Actions for Ember Apps](https://crunchingnumbers.live/2020/03/17/ci-with-github-actions-for-ember-apps/) - GitHub ActionsによるCI実行時間の短縮
+- [CI with GitHub Actions for Ember Apps: Part 2](https://crunchingnumbers.live/2020/08/31/ci-with-github-actions-for-ember-apps-part-2/) - v2アクションへの移行、実行時のコスト削減、継続的デプロイ
 
-### Code Splitting
+### コード分割<a id="code-splitting"></a>
 
-- [ember-engines](https://github.com/ember-engines/ember-engines) - このEmber.jsアドオンは、Ember.jsエンジンRFCに記述された機能を実装しています。エンジンは、ユーザーの視点から複数の論理アプリケーションを1つのアプリケーションに組み合わせることを可能にします。
-- [ember-lazy-mount](https://github.com/buschtoens/ember-lazy-mount) - {{mount}}によるエンジンの遅延読み込みルートなしエンジンを許可
-- [ember-cli-bundle-loader](https://github.com/MiguelMadero/ember-cli-bundle-loader) - 複数のバンドルと遅延読み込みを可能にするアドオン
-- [ember-cli-lazy-load](https://github.com/duizendnegen/ember-cli-lazy-load) - Ember.jsアプリケーションをバンドルに分割して、遅延読み込みをサポート
+- [ember-engines](https://github.com/ember-engines/ember-engines) - Ember.js Engines RFCの機能を実装するアドオン。複数の論理アプリケーションを、利用者からは1つのアプリケーションとして見えるように構成
+- [ember-lazy-mount](https://github.com/buschtoens/ember-lazy-mount) - {{mount}}を使った、ルートを持たないエンジンの遅延読み込み
+- [ember-cli-bundle-loader](https://github.com/MiguelMadero/ember-cli-bundle-loader) - 複数のバンドルと遅延読み込みに対応するアドオン
+- [ember-cli-lazy-load](https://github.com/duizendnegen/ember-cli-lazy-load) - Ember.jsアプリケーションを複数のバンドルに分けて遅延読み込み
 
-### Codestyle
+### コードスタイル<a id="codestyle"></a>
 
-- [ember-cli-template-lint](https://github.com/ember-template-lint/ember-cli-template-lint) - Ember CLIとの統合 `ember-template-lint`
-- [ember-cli-alex](https://github.com/yohanmishkin/ember-cli-alex) - Ember.jsアプリ向けのアレクス
-- [ember-prop-types](https://github.com/ciena-blueplanet/ember-prop-types) - Ember.jsアプリおよびアドオン向けのプロパティ管理の改善
+- [ember-cli-template-lint](https://github.com/ember-template-lint/ember-cli-template-lint) - `ember-template-lint`とEmber CLIの統合
+- [ember-cli-alex](https://github.com/yohanmishkin/ember-cli-alex) - Ember.jsアプリケーション用のAlex
+- [ember-prop-types](https://github.com/ciena-blueplanet/ember-prop-types) - Ember.jsアプリケーションやアドオンのプロパティ管理を改善
 
-### Command-line apps
+### コマンドラインアプリケーション<a id="command-line-apps"></a>
 
 - [ember-cli-create](https://github.com/gossi/ember-cli-create) - 新しいEmberプロジェクトを作成するCLIウィザード
-- [@ember/optional-features](https://github.com/emberjs/ember-optional-features) - このアドオンは、ember-sourceのオプション機能を簡単に有効・無効にできるようにします。ここで言う「オプション」とは、将来の見通しにおいて選択的に有効・無効になる機能を指し、デフォルトで有効になる機能とは異なります。これはアプリケーション用にのみ使用される予定です。
-- [ember-cli-rename](https://github.com/trabus/ember-cli-rename) - ember-cli向けアドオンで `ember rename` コマンドを提供
+- [@ember/optional-features](https://github.com/emberjs/ember-optional-features) - ember-sourceのオプション機能を有効・無効に切り替え。原文でいうオプションは、当面は利用者が有効・無効を選べる状態を保つ機能で、既定で有効になる機能ではない。アプリケーション専用で、アドオンは対象外
+- [ember-cli-rename](https://github.com/trabus/ember-cli-rename) - `ember rename`コマンドを提供するEmber CLIアドオン
 
-### Command-line utilities
+### コマンドラインユーティリティ<a id="command-line-utilities"></a>
 
-- [ember-cli-update](https://github.com/ember-cli/ember-cli-update) - Ember CLIのEmber.jsアプリ、アドオン、Glimmer.jsアプリの更新
-- [ember-cli-deprecation-workflow](https://github.com/mixonic/ember-cli-deprecation-workflow) - Ember.jsのアップグレードをしやすくするアドオンで、大規模なコンソールノイズを避けながらデプレケーションを処理できます。
+- [ember-cli-update](https://github.com/ember-cli/ember-cli-update) - Ember CLIのEmber.jsアプリケーション・アドオンとGlimmer.jsアプリケーションを更新
+- [ember-cli-deprecation-workflow](https://github.com/mixonic/ember-cli-deprecation-workflow) - 大量のコンソール出力に埋もれずに非推奨機能への対処を進め、Ember.jsのアップグレードを支援するアドオン
 
-### Component addons
+### コンポーネント用アドオン<a id="component-addons"></a>
 
 - [ember-diff-attrs](https://github.com/workmanw/ember-diff-attrs)
-- [ember-compatibility-helpers](https://github.com/pzuraq/ember-compatibility-helpers) - バックワード互換性を持つEmber.jsアドオンを書くためのヘルパー
+- [ember-compatibility-helpers](https://github.com/pzuraq/ember-compatibility-helpers) - 後方互換性を持つEmber.jsアドオンを書くためのヘルパー
 
-### Compression
+### 圧縮<a id="compression"></a>
 
-- [ember-cli-deploy-brotli](https://github.com/mfeckie/ember-cli-deploy-brotli) - Ember.jsデプロイプラグインでbrotli圧縮をサポート
+- [ember-cli-deploy-brotli](https://github.com/mfeckie/ember-cli-deploy-brotli) - Brotli圧縮に対応するEmber.jsのデプロイプラグイン
 
+### コンテンツ管理システム<a id="content-management-systems"></a>
 
-### Content management systems
+- [ember-admin](https://github.com/DockYard/ember-admin) - モデルを自動検出し、シンプルなCRUDインターフェースですべてのモデルデータを操作
+- [https://authmaker.com/](https://authmaker.com/) - 原リストでは、ゼロから完全に動作するMVPを3日間で公開できると説明
 
-- [ember-admin](https://github.com/DockYard/ember-admin) - モデルを自動的に発見し、すべてのモデルデータをシンプルなCRUDインターフェースで操作
-- [https://authmaker.com/](https://authmaker.com/) -  3日間でゼロから完全に機能するライブMVPへ。
+### 制御フロー<a id="control-flow"></a>
 
-### Control flow
+- Promise
+	- [ember-computed-promise-monitor](https://github.com/NullVoxPopuli/ember-computed-promise-monitor) - 計算プロパティで非同期処理を扱えるようにする
+- Observable
+	- [ember-rx](https://github.com/alexlafroscia/ember-rx) - Ember.jsとRxJS 6の統合
+- ジェネレーター
+	- [ember-concurrency](https://github.com/machty/ember-concurrency) - 簡潔で、キャンセル・再開始が可能な非同期タスクを扱うEmber.jsアドオン
+  - [ember-master-tab](https://github.com/rhyek/ember-master-tab) - Emberアプリケーションの1つのタブだけで関数を実行するためのサービスを提供するライブラリ
 
-- Promises
-	- [ember-computed-promise-monitor](https://github.com/NullVoxPopuli/ember-computed-promise-monitor) - 計算プロパティにasync認識を可能にする
-- Observables
-	- [ember-rx](https://github.com/alexlafroscia/ember-rx) - Ember.jsにおけるRxJS 6の統合
-- Generators
-	- [ember-concurrency](https://github.com/machty/ember-concurrency) - Ember.js に追加されたアドオンで、簡潔で安心できる、キャンセル可能かつ再起動可能な非同期タスクを書くことができます。
-  - [ember-master-tab](https://github.com/rhyek/ember-master-tab) - Emberアプリケーションの一つのタブにのみ関数を実行するためのサービスを提供するライブラリ。
+### CSSなど<a id="css--etc"></a>
 
-### CSS & etc
+- [ember-cli-stylelint](https://github.com/billybonks/ember-cli-stylelint) - Emberアプリケーションにstylelintを追加してCSSを検査
+- [ember-cli-autoprefixer](https://github.com/kimroen/ember-cli-autoprefixer) - スタイルをAutoprefixerで自動処理
+- [ember-cli-sass](https://github.com/aexmachina/ember-cli-sass) - node-sassでEmber CLIアプリケーションのファイルを前処理。ソースマップとインクルードパスに対応
+- [ember-cli-sass-pods](https://github.com/justtal/ember-cli-sass-pods) - podディレクトリ内のSassスタイルファイルを使ってpodのスタイルを指定
+- [ember-component-css](https://github.com/ebryn/ember-component-css) - コンポーネントごとのスタイルを指定できるEmber CLIアドオン
+- [ember-cli-postcss](https://github.com/jeffjewiss/ember-cli-postcss) - Ember CLIとPostCSSの統合
+- [ember-css-modules](https://github.com/salsify/ember-css-modules) - アプリケーション向けのCSS Modules
+- [ember-cli-tailwind](https://github.com/embermap/ember-cli-tailwind) - カスタムUIの迅速な構築に向けた、ユーティリティを中心とするCSSフレームワークTailwind
+- [ember-emotion](https://github.com/alexlafroscia/ember-emotion) - Ember.jsでemotionによるスタイル指定を利用
+- [css-blocks](https://github.com/linkedin/css-blocks) - 原リストで高性能かつ保守しやすいと説明されるスタイルシート
+- [ember-cli-eyeglass](https://github.com/linkedin/eyeglass/tree/master/packages/ember-cli-eyeglass) - node-sassを通じてeyeglass対応のSassファイルをコンパイルするEmber CLIアドオン
 
-- [ember-cli-stylelint](https://github.com/billybonks/ember-cli-stylelint) - あなたのEmberアプリにstyleintを追加し、すべてのCSSをチェックできます。
-- [ember-cli-autoprefixer](https://github.com/kimroen/ember-cli-autoprefixer) - 自動的にあなたのスタイルをautoprefixerで処理します。
-- [ember-cli-sass](https://github.com/aexmachina/ember-cli-sass) - node-sassを使って、ember-cliアプリのファイルを事前処理し、sourceMapsおよびinclude pathsをサポート
-- [ember-cli-sass-pods](https://github.com/justtal/ember-cli-sass-pods) - podディレクトリにあるsassスタイルファイルを使って、podのスタイルを設定できます。
-- [ember-component-css](https://github.com/ebryn/ember-component-css) - Ember CLI向けのPostCSS統合。
-- [ember-cli-postcss](https://github.com/jeffjewiss/ember-cli-postcss) - 野心的なアプリケーション向けのCSSモジュール。
-- [ember-css-modules](https://github.com/salsify/ember-css-modules) - Tailwindは、カスタムユーザインターフェースを迅速に構築するための、ユーティリティ中心のCSSフレームワークです。
-- [ember-cli-tailwind](https://github.com/embermap/ember-cli-tailwind) - Ember.jsでemotionスタイルを使用できます。
-- [ember-emotion](https://github.com/alexlafroscia/ember-emotion) - 高パフォーマンスかつ維持性の高いスタイルシート。
-- [css-blocks](https://github.com/linkedin/css-blocks) - このEmber CLIアドオンにより、node-sassでeyeglassサポートを有効にしたSassファイルのコンパイルが非常に簡単になります。
-- [ember-cli-eyeglass](https://github.com/linkedin/eyeglass/tree/master/packages/ember-cli-eyeglass) - Ember CLIのビルドプロセスの一部として、SVGファイルからウェブフォントを簡単に生成できます。
+### フォント<a id="fonts"></a>
+- [ember-cli-webfont](https://github.com/vitch/ember-cli-webfont) - Ember CLIのビルド工程でSVGファイルからウェブフォントを生成
 
-### Fonts
-- [ember-cli-webfont](https://github.com/vitch/ember-cli-webfont) - Cerebralを使用した複雑なEmber.jsアプリケーション向けの強化されたステート管理。
-
-### State management
+### 状態管理<a id="state-management"></a>
 
 - [ember-buffered-proxy](https://github.com/yapplabs/ember-buffered-proxy)
 - [ember-changeset](https://github.com/poteto/ember-changeset)
-- [ember-cerebraljs](https://github.com/lifeart/ember-cerebraljs) - Emberアプリ向けの予測可能なステート管理。
-- [ember-redux](http://www.ember-redux.com/) - アプリまたはアドオンにTailwind CSSを追加します。
+- [ember-cerebraljs](https://github.com/lifeart/ember-cerebraljs) - Cerebralを使って複雑なEmber.jsアプリケーションの状態管理を強化
+- [ember-redux](http://www.ember-redux.com/) - Emberアプリケーション向けの予測可能な状態管理
 - [ember-state-services](https://github.com/stefanpenner/ember-state-services)
 - [ember-time-machine](https://github.com/offirgolan/ember-time-machine)
 
+### スタイル用ツール<a id="styling-kits"></a>
 
-### Styling kits
+- [ember-cli-tailwind](https://github.com/embermap/ember-cli-tailwind) - アプリケーションやアドオンにTailwind CSSを追加
 
-- [ember-cli-tailwind](https://github.com/embermap/ember-cli-tailwind) - Ember.js向けのCouchDBの保存ライブラリ。
+### データ管理<a id="data-management"></a>
 
-### Data Management
+- [ember-apollo-client](https://github.com/bgentry/ember-apollo-client) - Apollo ClientとGraphQL用のEmber CLIアドオン
+- [ember-cli-sofa](https://github.com/ampatspell/ember-cli-sofa) - Ember.js用のCouchDB永続化ライブラリ
+- [ember-orbit](https://github.com/orbitjs/ember-orbit) - Orbit.jsで構築されたEmber.jsのデータ層
+- [ember-data-storefront](https://github.com/embermap/ember-data-storefront) - よくあるデータ読み込みの問題に対処するAPI集
+- [ember-m3](https://github.com/hjdivad/ember-m3) - DS.Modelに代わるモデル実装を提供するアドオン
+- [ember-cli-zuglet](https://www.ember-cli-zuglet.com/) - Firebaseと統合するEmber.jsアドオン
 
-- [ember-apollo-client](https://github.com/bgentry/ember-apollo-client) - Apollo ClientおよびGraphQL向けのEmber CLI拡張機能
-- [ember-cli-sofa](https://github.com/ampatspell/ember-cli-sofa) - Orbit.jsで構築されたEmber.jsのデータレイヤー。
-- [ember-orbit](https://github.com/orbitjs/ember-orbit) - よくあるデータロード問題を解決するためのAPIのコレクション。
-- [ember-data-storefront](https://github.com/embermap/ember-data-storefront) - よくあるデータ読み込み問題を解決するAPIのコレクション。
-- [ember-m3](https://github.com/hjdivad/ember-m3) - この拡張機能はDS.Modelに対する代替実装を提供します
-- [ember-cli-zuglet](https://www.ember-cli-zuglet.com/) - Ember.js用のFirebaseとの簡単な統合を実現する拡張機能
+### データ操作と計算プロパティ<a id="data-manipulation--computed"></a>
 
-### Data manipulation & Computed
+- [ember-awesome-macros](https://github.com/kellyselden/ember-awesome-macros) - Ember.jsの計算プロパティ用マクロ集
+- [ember-cpm](https://github.com/cibernox/ember-cpm) - Ember.jsの計算プロパティ用マクロ
+- [ember-macaroni](https://github.com/poteto/ember-macaroni) - 計算プロパティ用マクロで、コードの重複やコピー＆ペーストを避けてDRYに保つ
 
-- [ember-awesome-macros](https://github.com/kellyselden/ember-awesome-macros) - Ember.jsの計算マクロのコレクション
-- [ember-cpm](https://github.com/cibernox/ember-cpm) - Ember.js用の計算プロパティマクロ
-- [ember-macaroni](https://github.com/poteto/ember-macaroni) - 計算プロパティマクロ（マクロ）を使ってアプリケーションコードをDRYかつコピーペーストフリーに保持してください
+### データ検証<a id="data-validation"></a>
 
-### Data validation
+- [ember-cp-validations](https://github.com/offirgolan/ember-cp-validations) - Ember.jsの計算プロパティに基づく検証
+- [ember-changeset-validations](https://github.com/poteto/ember-changeset-validations/) - ember-changeset用の検証
+- [ember-model-validator](https://github.com/esbanarango/ember-model-validator) - 多数の検証ファイルや複雑な構造を必要とせず、Ember Dataのモデルに明示的な検証を追加
+- [ember-validated-form](https://github.com/adfinis-sygroup/ember-validated-form) - クライアント側の検証を備えたフォームを作成
+- [ember-line-graph](https://astronomersiva.github.io/ember-line-graph/) - 折れ線グラフを描く、依存関係のないEmberアドオン
 
-- [ember-cp-validations](https://github.com/offirgolan/ember-cp-validations) - Ember.jsの計算プロパティベースのバリデーション
-- [ember-changeset-validations](https://github.com/poteto/ember-changeset-validations/) - ember-changeset用のバリデーション
-- [ember-model-validator](https://github.com/esbanarango/ember-model-validator) - 明確で簡単な方法でEmber Dataモデルにバリデーションを追加できます。複数のバリデーションファイルや複雑な構造を必要とせず、シンプルに実現できます
-- [ember-validated-form](https://github.com/adfinis-sygroup/ember-validated-form) - クライアントサイドバリデーションを簡単にフォームを作成できます
-- [ember-line-graph](https://astronomersiva.github.io/ember-line-graph/) - ゼロ依存のEmber拡張機能でラインチャートを描画します
+### データベース<a id="database"></a>
 
-### Database
+- [ember-indexeddb](https://github.com/mydea/ember-indexeddb) - Emberとember-dataでIndexedDBを扱うユーティリティとアダプター
 
-- [ember-indexeddb](https://github.com/mydea/ember-indexeddb) - EmberおよびEmber DataでIndexedDBと連携するためのユーティリティとアダプタ
+### 日時<a id="date"></a>
 
-### Date
+- [ember-moment](https://github.com/stefanpenner/ember-moment) - moment.jsとEmber.js用のテンプレートヘルパーと計算プロパティ用マクロ
 
-- [ember-moment](https://github.com/stefanpenner/ember-moment) - moment.jsおよびEmber.js用のテンプレートヘルパーと計算プロパティマクロ
+### デバッグとプロファイリング<a id="debugging--profiling"></a>
 
-
-### Debugging / Profiling
-
-- [ember-debug-logger](https://github.com/salsify/ember-debug-logger) - Ember.jsアプリケーション内でvisionmedia/debugライブラリを公開します
-- [ember-devtools](https://github.com/aexmachina/ember-devtools) - 便利なEmber.jsデバッグ関数を収録したコレクの集まり
-- [ember-chrome-devtools](https://github.com/dwickern/ember-chrome-devtools) - Ember.js用のChrome DevTools拡張機能
-- [ember-cli-bundle-analyzer](https://github.com/kaliber5/ember-cli-bundle-analyzer) - Ember CLI拡張機能で、アプリのバンドル出力のサイズと内容をインタラクティブなズーム可能なトレーマップを使って分析します
-- [ember-perf-timeline](https://github.com/ember-best-practices/ember-perf-timeline) - Ember.jsアプリケーションのChromeのTimelineにパフォーマンス情報を追加します
+- [ember-debug-logger](https://github.com/salsify/ember-debug-logger) - Ember.jsアプリケーションでvisionmedia/debugライブラリを利用できるようにする
+- [ember-devtools](https://github.com/aexmachina/ember-devtools) - Ember.jsのデバッグに役立つ関数集
+- [ember-chrome-devtools](https://github.com/dwickern/ember-chrome-devtools) - Ember.js用のChrome DevToolsアドオン
+- [ember-cli-bundle-analyzer](https://github.com/kaliber5/ember-cli-bundle-analyzer) - 拡大可能な対話型ツリーマップで、アプリケーションのバンドル出力のサイズと内容を分析するEmber CLIアドオン
+- [ember-perf-timeline](https://github.com/ember-best-practices/ember-perf-timeline) - Ember.jsアプリケーションの性能情報をChromeのTimelineに追加
 - [ember-cli-route-map](https://github.com/BBVAEngineering/ember-cli-route-map) - Ember.jsアプリケーションのルートマップを生成するコマンド
 - [heimdalljs-visualizer](https://github.com/rwjblue/heimdalljs-visualizer) - heimdalljsデータの可視化ツール
-- [source-map-explorer](https://github.com/danvk/source-map-explorer) - ソースマップを用いてスペース使用量を分析およびデバッグします
-- [ember-dead-code](https://github.com/buschtoens/ember-dead-code) - リアルユーザー監視により、死コードを確実に検出
+- [source-map-explorer](https://github.com/danvk/source-map-explorer) - ソースマップを使って使用領域を分析・デバッグ
+- [ember-dead-code](https://github.com/buschtoens/ember-dead-code) - 実際の利用者の動作を監視して、使われていないコードを検出
 
-### Decorators
+### デコレーター<a id="decorators"></a>
 
-- [Macro Decorators](https://pzuraq.github.io/macro-decorators/) - getter/setterの機能を再利用するデコレーターを作成してコードをDRY化
+- [Macro Decorators](https://pzuraq.github.io/macro-decorators/) - getter/setterの機能を再現するデコレーターを作成し、コードをDRYに保つ
 
-### Documentation
+### ドキュメント<a id="documentation"></a>
 
-- [ember-cli-addon-docs](https://github.com/ember-learn/ember-cli-addon-docs) - Ember.jsアドオン用の簡単で美しいドキュメンテーション
-- [ember-cli-jsdoc](https://github.com/softlayer/ember-cli-jsdoc) - Ember.js CLIアドオンでソースコード内のJSDocコメントからHTMLドキュメンテーションを生成
-- [ember-freestyle](https://github.com/chrislopresto/ember-freestyle) - Ember-freestyleはEmber.jsアプリケーションに迅速にコンポーネントエクスプローラを作成できるEmber.jsアドオン
+- [ember-cli-addon-docs](https://github.com/ember-learn/ember-cli-addon-docs) - Ember.jsアドオン向けのドキュメント
+- [ember-cli-jsdoc](https://github.com/softlayer/ember-cli-jsdoc) - ソースコードのJSDocコメントからHTMLドキュメントを生成するEmber CLIアドオン
+- [ember-freestyle](https://github.com/chrislopresto/ember-freestyle) - Ember.jsアプリケーションのコンポーネントエクスプローラーを作成するアドオン
 
-### Ember-inspector roadmaps & overview
+### Ember Inspectorのロードマップと概要<a id="ember-inspector-roadmaps--overview"></a>
 
 - [Ember Inspector Pairing](https://www.youtube.com/watch?v=rFNR_Fj1G84)
 - [Ember Inspector Sync](https://www.youtube.com/watch?v=PvsfQrKxl_8)
 
-### End-user customization
-- [ember-asset-loader](https://github.com/ember-engines/ember-asset-loader) - Ember.jsアプリケーションにおけるアセットロードサポート
-- [ember-experiments](https://github.com/outdoorsy/ember-experiments) - Ember.js向けの実験、A/B分割テストアドオン
-- [ember-cli-hot-loader](https://github.com/toranb/ember-cli-hot-loader) - emberエコシステムにおけるホットロードがどうなるかを、早期に確認
-- [ember-ast-hot-load](https://github.com/lifeart/ember-ast-hot-load) - ユニバーサルホットロードアドオン
-- [ember-cli-build-notifications](https://github.com/pdud/ember-cli-build-notifications) - ember-cliがビルドエラーを発生した際に通知
-- [ember-feature-flags](https://github.com/kategengler/ember-feature-flags) - 機能フラグを提供するember-cliアドオン
-- [ember-named-yields](https://github.com/knownasilya/ember-named-yields) - Ember.jsコンポーネントにおけるNamed Yields
-- [ember-islands](https://github.com/mitchlloyd/ember-islands) - サーバーでレンダリングされたページのどこかにEmber.jsコンポーネ及をレンダリングして「豊かさの島」を作成
-- [ember-wormhole](https://github.com/yapplabs/ember-wormhole) - DOMのどこかに子ビューをレンダリング
-- [ember-stargate](https://github.com/kaliber5/ember-stargate) - 論理的にアプリ内で定義された場所とは異なるDOMツリーの場所に何かをレンダリングするための、所謂「ポート」と呼ばれるアプローチの現代的なアプローチ
+### 利用者向けのカスタマイズ<a id="end-user-customization"></a>
+- [ember-asset-loader](https://github.com/ember-engines/ember-asset-loader) - Ember.jsアプリケーションのアセット読み込みに対応
+- [ember-experiments](https://github.com/outdoorsy/ember-experiments) - 実験やA/Bテストを行うEmber.jsアドオン
+- [ember-cli-hot-loader](https://github.com/toranb/ember-cli-hot-loader) - Emberのエコシステムでのホットリロードのあり方を試す初期の取り組み
+- [ember-ast-hot-load](https://github.com/lifeart/ember-ast-hot-load) - 汎用ホットリロードアドオン
+- [ember-cli-build-notifications](https://github.com/pdud/ember-cli-build-notifications) - Ember CLIでビルドエラーが起きたときに通知
+- [ember-feature-flags](https://github.com/kategengler/ember-feature-flags) - 機能フラグを提供するEmber CLIアドオン
+- [ember-named-yields](https://github.com/knownasilya/ember-named-yields) - Ember.jsコンポーネントの名前付きyield
+- [ember-islands](https://github.com/mitchlloyd/ember-islands) - サーバーでレンダリングされたページの任意の位置にEmber.jsコンポーネントを配置し、「Islands of Richness」を作成
+- [ember-wormhole](https://github.com/yapplabs/ember-wormhole) - DOMの別の場所に子ビューをレンダリング
+- [ember-stargate](https://github.com/kaliber5/ember-stargate) - アプリケーション内での論理的な定義位置と異なるDOMの場所にレンダリングする、いわゆるポータルの手法
 
 ### ES6
 
-- [ember-concurrency-decorators](https://github.com/machty/ember-concurrency-decorators) -  ember-concurrencyタスクの宣言・設定に用いるデコレーター構文
+- [ember-concurrency-decorators](https://github.com/machty/ember-concurrency-decorators) - ember-concurrencyのタスクを宣言・設定するデコレーター構文
 - [ember-decorators](https://github.com/ember-decorators/ember-decorators) - Ember.jsアプリケーションに役立つデコレーター
-- [@ember-decorators/argument](https://github.com/ember-decorators/argument) - Ember.jsにおけるコンポーネントおよびオブジェクト引数用のデコレーター
+- [@ember-decorators/argument](https://github.com/ember-decorators/argument) - Ember.jsのコンポーネントやオブジェクトの引数用デコレーター
 - [sparkles-decorators](https://github.com/gossi/sparkles-decorators) - Sparkles/Glimmer.jsコンポーネント用のデコレーター
 
-### External Components Integration
+### 外部コンポーネントの統合<a id="external-components-integration"></a>
 
-- [ember-glimmer-component](https://github.com/smfoote/ember-glimmer-component) - Ember.jsにおけるGlimmer.jsのようなコンポーネント
-- [sparkles-component](https://github.com/rwjblue/sparkles-component) - @glimmer.js/component のスタイル API を試すために Ember.js アプリで既存の公開 API を使って開発するための Addon
-- [hooked-components](https://github.com/lifeart/hooked-components) - React Hooks のアプローチを受けて作られた Ember.js のカスタムコンポーネント
-- [ember-functional-component](https://github.com/rwjblue/ember-functional-component) - 「純粋関数」をコンポーネントとして使う試み
-- [ember-lifecycle-component](https://github.com/NullVoxPopuli/ember-lifecycle-component) - テンプレートを必要とする場合に追加のライフサイクルを持つコンポーネント
-- [ember-vue-components](https://github.com/lifeart/ember-vue-components) - Ember 用の Vue.JS コンポーネの API
-- [@alexlafroscia/ember-cli-react](https://github.com/alexlafroscia/ember-cli-react) - Ember.js で React コンポーネントをレンダリング
-- [@AltSchool/ember-cli-react](https://github.com/AltSchool/ember-cli-react) - Ember.js アプリ内で React コンポーネントの階層を使う
+- [ember-glimmer-component](https://github.com/smfoote/ember-glimmer-component) - Ember.jsでGlimmer.jsのようなコンポーネントを利用
+- [sparkles-component](https://github.com/rwjblue/sparkles-component) - 既存の公開APIを通じて、Ember.jsアプリケーションで@glimmer.js/componentのようなAPIを試すアドオン
+- [hooked-components](https://github.com/lifeart/hooked-components) - React Hooksの手法に着想を得たEmber.jsのカスタムコンポーネント
+- [ember-functional-component](https://github.com/rwjblue/ember-functional-component) - 純粋関数をコンポーネントとして使う試み
+- [ember-lifecycle-component](https://github.com/NullVoxPopuli/ember-lifecycle-component) - テンプレートが必要な場合に向けた、追加のライフサイクルを持つコンポーネント
+- [ember-vue-components](https://github.com/lifeart/ember-vue-components) - Ember用のVue.JSコンポーネントAPI
+- [@alexlafroscia/ember-cli-react](https://github.com/alexlafroscia/ember-cli-react) - Ember.jsでReactコンポーネントをレンダリング
+- [@AltSchool/ember-cli-react](https://github.com/AltSchool/ember-cli-react) - Ember.jsアプリケーションでReactのコンポーネント階層を利用
 
-### Forms
+### フォーム<a id="forms"></a>
 
-- [ember-cli-crudities](https://ember-cli-crudities.readthedocs.io) - JSON コンフィギュレーションから構築されるフォームと編集可能なリストビルダー。コンフィギュレーションは静的または動的に読み込める。
-- [ember-form-for](https://github.com/martndemus/ember-form-for) - この Ember.js の Addon が、良いフォームを簡単に作る手段を提供する。
+- [ember-cli-crudities](https://ember-cli-crudities.readthedocs.io) - 静的・動的に読み込めるJSON設定から、フォームと編集可能なリストを構築
+- [ember-form-for](https://github.com/martndemus/ember-form-for) - フォームを構築するEmber.jsアドオン
 
-### Functional programming
+### 関数型プログラミング<a id="functional-programming"></a>
 
-- [Bacon.js](http://baconjs.github.io) - 関数型反応プログラミング
-- [Folktale](http://folktale.origamitower.com) - JavaScript における一般関数型プログラミングのライブラリセット。エレガントでモジュラリティの高いアプリケーションを書くことができ、バグが少なく、再利用性が高まる。
-- [immutable](https://github.com/facebook/immutable-js) - 変更不可能なデータコレクション
-- [Kefir.js](https://github.com/rpominov/kefir) - 高性能かつ低メモリ使用量に焦点を当てた反応ライブラリ
-- [Lazy.js](https://github.com/dtao/lazy.js) - lodash/Underscore に類似したユーティリティライブラリだが、遅延評価を採用しており、多くの場合に優れたパフォーマンスをもたらす。
-- [lodash](https://lodash.com) - 一貫性、カスタマイズ、パフォーマンス、および追加機能を提供するユーティリティライブラリ。より良い、より速い Underscore.js。
-- [mori](http://swannodette.github.io/mori/) - ClojureScript の持続データ構造とサポート API を、シンプルな JavaScript で使うためのライブラリ。
-- [Mout](http://moutjs.com) - 他の既存ソリューションと比べて最大の違いは、必要なモジュール／関数だけをロードできる点。追加の負荷が無い。
-- [Ramda](http://ramdajs.com) - 他の既存ソリューションと比べて、自動カーリングと引数順の逆転によって柔軟な関数型合成を可能にするユーティリティライブラリ。データの変更を避ける。
-- [RxJS](http://reactivex.io) - さまざまな種類のデータを変換・合成・クエリするための関数型反応ライブラリ。
-- [underscore-contrib](http://documentcloud.github.io/underscore-contrib/) - Underscore のユーティリティベルトのブラスボルト
+- [Bacon.js](http://baconjs.github.io) - 関数型リアクティブプログラミング
+- [Folktale](http://folktale.origamitower.com) - JavaScriptの汎用的な関数型プログラミング用ライブラリ集。原リストでは、バグを減らし再利用性を高めたモジュール構成のアプリケーションを支援すると説明
+- [immutable](https://github.com/facebook/immutable-js) - イミュータブルなデータコレクション
+- [Kefir.js](https://github.com/rpominov/kefir) - 高性能と低メモリ使用量を重視するリアクティブライブラリ
+- [Lazy.js](https://github.com/dtao/lazy.js) - lodash/Underscoreに似た、遅延評価を採用するユーティリティライブラリ。原リストでは、多くの場合に性能を改善すると説明
+- [lodash](https://lodash.com) - 一貫性、カスタマイズ、性能、追加機能を重視するユーティリティライブラリ。原リストではUnderscore.jsより優れ、高速であると説明
+- [mori](http://swannodette.github.io/mori/) - 通常のJavaScriptからClojureScriptの永続データ構造と関連APIを利用するライブラリ
+- [Mout](http://moutjs.com) - 必要なモジュール・関数だけを読み込めるユーティリティライブラリ。原文では余分なオーバーヘッドがないと説明
+- [Ramda](http://ramdajs.com) - 自動カリー化と引数順の逆転による柔軟な関数合成を重視するユーティリティライブラリ。データの変更を避ける
+- [RxJS](http://reactivex.io) - さまざまな種類のデータを変換・合成・検索する関数型リアクティブライブラリ
+- [underscore-contrib](http://documentcloud.github.io/underscore-contrib/) - Underscore用の追加ユーティリティ
 
 ### HTTP
 
-- [ember-ajax](https://github.com/ember-cli/ember-ajax) - Ember.js 1.13以降のアプリケーション向けのAJAXリクエスト用サービス
-- [ember-socket-guru](https://github.com/netguru/ember-socket-guru) - Pusher.js、Action Cable、Socket.ioおよびPhoenix Channelsとの簡単な統合を可能にするアドオン
+- [ember-ajax](https://github.com/ember-cli/ember-ajax) - Ember.js 1.13以降のアプリケーションでAJAXリクエストを行うサービス
+- [ember-socket-guru](https://github.com/netguru/ember-socket-guru) - Pusher.js、Action Cable、Socket.io、Phoenix Channelsとの統合を支援するアドオン
 
-### Helpers
+### ヘルパー<a id="helpers"></a>
 
-- [ember-event-helpers](https://github.com/buschtoens/ember-event-helpers) - `{{on}}`モジュールに付随するイベントテンプレートヘルパー
+- [ember-event-helpers](https://github.com/buschtoens/ember-event-helpers) - `{{on}}`モディファイアを補完するイベント用テンプレートヘルパー
 - [ember-render-helpers](https://github.com/buschtoens/ember-render-helpers) - `@ember/render-modifiers`をテンプレートヘルパーとして提供
-- [ember-element-helper](https://github.com/tildeio/ember-element-helper) - Glimmerテンプレート向けの動的要素ヘルパー
-- [ember-composable-helpers](https://github.com/DockYard/ember-composable-helpers) - Ember.jsにおける宣言型テンプレートに用いる可合成ヘルパー
-- [ember-helpers](https://github.com/abcum/ember-helpers) - Ember.js向けのHandlebarsヘルパーのコレクション
-- [ember-d3-helpers](https://github.com/LocusEnergy/ember-d3-helpers) - Ember.jsで構築可能なD3チャートを構築するためのEmber.jsヘルパーのコレクション
-- [ember-math-helpers](https://github.com/shipshapecode/ember-math-helpers) - Ember.js HTMLBarsヘルパーで基本的な算術演算を実行します。
-- [ember-promise-helpers](https://github.com/fivetanley/ember-promise-helpers) - Ember.jsテンプレート向けのPromise型の糖衣
-- [ember-route-action-helper](https://github.com/DockYard/ember-route-action-helper) - ルートのアクションで閉じるアクション
-- [ember-root-url](https://github.com/ef4/ember-root-url) - アプリケーションのrootURLに相対的なURLを維持するためのテンプレートヘルパー
-- [ember-store-helpers](https://github.com/ember-sapporo/ember-store-helpers) - このアドオンはember-dataに関連するヘルパーを提供
-- [ember-truth-helpers](https://github.com/jmurphyau/ember-truth-helpers) - Ember.js HTMLBarsヘルパー：`{{if}}`および`{{unless}}`用のnot、and、or、eqおよびis-array
-- [ember-awesome-macros](https://github.com/kellyselden/ember-awesome-macros) - Ember.jsの計算マクロのコレクション
-- [ember-macro-helpers](https://github.com/kellyselden/ember-macro-helpers) - Ember.jsマクロヘルパーで独自のカスタムマクロを作成
-- [ember-cli-string-helpers](https://github.com/romulomachado/ember-cli-string-helpers) - DockYardのember-composable-helpersから抽出されたStringヘルパーのセット
+- [ember-element-helper](https://github.com/tildeio/ember-element-helper) - Glimmerテンプレート用の動的要素ヘルパー
+- [ember-composable-helpers](https://github.com/DockYard/ember-composable-helpers) - Ember.jsで宣言的なテンプレートを記述する、組み合わせ可能なヘルパー
+- [ember-helpers](https://github.com/abcum/ember-helpers) - Ember.js用のHandlebarsヘルパー集
+- [ember-d3-helpers](https://github.com/LocusEnergy/ember-d3-helpers) - 組み合わせ可能なD3チャートを構築するEmber.jsヘルパー集
+- [ember-math-helpers](https://github.com/shipshapecode/ember-math-helpers) - 基本的な算術演算を行うEmber.jsのHTMLBarsヘルパー
+- [ember-promise-helpers](https://github.com/fivetanley/ember-promise-helpers) - Ember.jsテンプレートでPromiseを扱うための糖衣構文
+- [ember-route-action-helper](https://github.com/DockYard/ember-route-action-helper) - ルート内でクロージャーアクションを上位へ伝播
+- [ember-root-url](https://github.com/ef4/ember-root-url) - URLをアプリケーションのrootURLに対する相対URLとして保つテンプレートヘルパー
+- [ember-store-helpers](https://github.com/ember-sapporo/ember-store-helpers) - ember-data関連のヘルパーを提供するアドオン
+- [ember-truth-helpers](https://github.com/jmurphyau/ember-truth-helpers) - `{{if}}`と`{{unless}}`用のEmber.js HTMLBarsヘルパー：not、and、or、eq、is-array
+- [ember-awesome-macros](https://github.com/kellyselden/ember-awesome-macros) - Ember.jsの計算プロパティ用マクロ集
+- [ember-macro-helpers](https://github.com/kellyselden/ember-macro-helpers) - 独自のマクロを作成するEmber.jsマクロヘルパー
+- [ember-cli-string-helpers](https://github.com/romulomachado/ember-cli-string-helpers) - DockYardのember-composable-helpersから抽出した文字列用ヘルパー集
 
-### Image
+### 画像<a id="image"></a>
 
-- [ember-svg-jar](https://github.com/ivanvotti/ember-svg-jar) - Ember.jsアプリケーションにSVG画像を埋め込む最適な方法
+- [ember-svg-jar](https://github.com/ivanvotti/ember-svg-jar) - Ember.jsアプリケーションにSVG画像を埋め込む
 
-### Include external JS code
+### 外部JavaScriptコードの取り込み<a id="include-external-js-code"></a>
 
-- [ember-auto-import](https://github.com/ef4/ember-auto-import) - npmパッケージからのゼロ設定インポート
-- [ember-cli-cjs-transform](https://github.com/rwjblue/ember-cli-cjs-transform) - CommonJSインポート
-- [ember-cli-es6-transform](https://github.com/sandydoo/ember-cli-es6-transform) - npm、bower、あるいはアプリ内のどこでもからES6モジュールをインポートします。
-- [ember-browserify](https://github.com/ef4/ember-browserify) - browserifyを介してnpmからCommonJSパッケージを簡単に読み込むためのアドオン。
+- [ember-auto-import](https://github.com/ef4/ember-auto-import) - 設定不要でnpmパッケージからインポート
+- [ember-cli-cjs-transform](https://github.com/rwjblue/ember-cli-cjs-transform) - CommonJSのインポート
+- [ember-cli-es6-transform](https://github.com/sandydoo/ember-cli-es6-transform) - npm、bower、アプリケーション内の任意の場所からES6モジュールをインポート
+- [ember-browserify](https://github.com/ef4/ember-browserify) - Browserifyを使ってnpmのCommonJSパッケージを読み込むアドオン
 
-### Infinite Scroll
+### 無限スクロール<a id="infinite-scroll"></a>
 
-- [ember-infinity](https://github.com/ember-infinity/ember-infinity) - Ember CLIアプリ向けのシンプルで柔軟な無限スクロール。
-- [vertical-collection](https://github.com/html-next/vertical-collection) - 60FPS以上での無限スクロールと遮蔽処理。
-- [smoke-and-mirrors](https://github.com/html-next/smoke-and-mirrors) - 野心的なアプリケーション向けの野心的な無限スクロールとsvelteレンダリング。
+- [ember-infinity](https://github.com/ember-infinity/ember-infinity) - Ember CLIアプリケーション向けの、シンプルで柔軟な無限スクロール
+- [vertical-collection](https://github.com/html-next/vertical-collection) - 無限スクロールと表示領域外の要素の描画省略。原リストでは60 FPSを超える速度で動作すると説明
+- [smoke-and-mirrors](https://github.com/html-next/smoke-and-mirrors) - アプリケーション向けの無限スクロールと軽量なレンダリング
 
-### Internalization & Localization
+### 国際化と地域化<a id="internalization--localization"></a>
 
-- [ember-intl](https://github.com/ember-intl/ember-intl) - 複雑なメッセージ文字列を翻訳。日時、数値、相対時間のローカルフォーマット。
-- [ember-intl-analyzer](https://github.com/simplabs/ember-intl-analyzer) - Ember.jsプロジェクト内の使われていない翻訳を検出します。
+- [ember-intl](https://github.com/ember-intl/ember-intl) - 複雑なメッセージ文字列の翻訳と、日時・数値・相対時間の地域に応じた書式設定
+- [ember-intl-analyzer](https://github.com/simplabs/ember-intl-analyzer) - Ember.jsプロジェクト内の未使用の翻訳を検出
 
-### Inputs
+### 入力<a id="inputs"></a>
 
-- [ember-autoresize](https://github.com/tim-evans/ember-autoresize) - Ember.jsコンポーネント向けの自動サイズ調整。
+- [ember-autoresize](https://github.com/tim-evans/ember-autoresize) - Ember.jsコンポーネントの自動サイズ調整
 
-
-### Job queues
+### ジョブキュー<a id="job-queues"></a>
 
 - [ember-data-tasks](https://github.com/knownasilya/ember-data-tasks)
 - [ember-concurrency](http://ember-concurrency.com)
-- [ember-custom-actions](https://github.com/Exelord/ember-custom-actions) - Ember.jsアプリケーション向けのカスタムAPIアクション。
+- [ember-custom-actions](https://github.com/Exelord/ember-custom-actions) - Ember.jsアプリケーション用のカスタムAPIアクション
 - [ember-pipeline](https://github.com/poteto/ember-pipeline)
-- [ember-lifeline](https://github.com/ember-lifeline/ember-lifeline) - オブジェクト内の非同期行動のライフサイクルを管理するEmberアドオン。
+- [ember-lifeline](https://github.com/ember-lifeline/ember-lifeline) - オブジェクト内の非同期動作のライフサイクルを管理するEmberアドオン
 
-### Logging
+### ログ<a id="logging"></a>
 
 - [console.re](https://console.re/)
-- [ember-debug-logger](https://emberobserver.com/addons/ember-debug-logger) - VisionmediaのデバッグログをEmber.jsアプリケーションに公開するEmber.jsアドオン。
-- [ember-logging-service](https://github.com/acquia/ember-logging-service/) - アプリケーション全体で利用可能な汎用かつ拡張可能なログサービスを提供します。
+- [ember-debug-logger](https://emberobserver.com/addons/ember-debug-logger) - Visionmediaのデバッグロガーを利用可能にするEmber.jsアドオン
+- [ember-logging-service](https://github.com/acquia/ember-logging-service/) - アプリケーション全体で利用できる、汎用で拡張可能なログサービスを提供
 - [raygun](https://raygun.com/)
 
-### Mad science
+### 実験的な取り組み<a id="mad-science"></a>
 
-- [ember-elm](https://github.com/nucleartide/ember-elm) - Ember.jsアプリケーション内でElmを書くことができます。
-- [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) - JavaScriptで実装されたアルゴリズムとデータ構造、それぞれの説明とさらに読むためのリンクを含む
+- [ember-elm](https://github.com/nucleartide/ember-elm) - Ember.jsアプリケーションでElmを記述
+- [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) - JavaScriptで実装したアルゴリズムとデータ構造。説明と追加資料へのリンク付き
 
-### Math
+### 数式と計算<a id="math"></a>
 
-- [ember-katex](https://github.com/firecracker/ember-katex) - KaTeXを使ってLaTeXフォーマルをレンダリングします。
-- [ember-math-helpers](https://github.com/shipshapecode/ember-math-helpers) - Ember.js HTMLBarsヘルパーで基本的な算術演算を実行します。
+- [ember-katex](https://github.com/firecracker/ember-katex) - KaTeXを使ってLaTeX数式をレンダリング
+- [ember-math-helpers](https://github.com/shipshapecode/ember-math-helpers) - 基本的な算術演算を行うEmber.jsのHTMLBarsヘルパー
 
-### Metrics
+### 計測<a id="metrics"></a>
 
-- [ember-user-activity](https://github.com/elwayman02/ember-user-activity) - ユーザーの活動および無活動を追跡するEmber.jsアドーン。
-- [ember-metrics](https://github.com/poteto/ember-metrics) - 複数の分析サービスにデータを送信するため、新たなAPIを再実装せずに済みます。
+- [ember-user-activity](https://github.com/elwayman02/ember-user-activity) - 利用者の操作と待機状態を追跡するEmber.jsアドオン
+- [ember-metrics](https://github.com/poteto/ember-metrics) - 新しいAPIを再実装せずに、複数の分析サービスへデータを送信
 
-### Minifiers
-- [ember-hbs-minifier](https://github.com/simplabs/ember-hbs-minifier) - Handlebarsテンプレートから空白文字を削除します。
-- [ember-cli-template-trimmer](https://github.com/lifeart/ember-cli-template-trimmer) - このアドオンはコンパイル段階で改行を削除します。
+### 圧縮ツール<a id="minifiers"></a>
+- [ember-hbs-minifier](https://github.com/simplabs/ember-hbs-minifier) - Handlebarsテンプレートから空白文字を除去
+- [ember-cli-template-trimmer](https://github.com/lifeart/ember-cli-template-trimmer) - コンパイル時に改行を除去するアドオン
 
-### Miscellaneous
+### その他<a id="miscellaneous"></a>
 
-- [diagonal routes](https://alexspeller.com/ember-diagonal/) - 特定のEmberルート定義に対してルート構造、テンプレート、ルートハックがどうなっているかを確認します。
-- [ember data model maker](https://github.com/andycrum/ember-data-model-maker/) - エマーカー モデル マッカーエン（EDMM）
+- [diagonal routes](https://alexspeller.com/ember-diagonal/) - 指定したEmberのルート定義に対応するルート構造、テンプレート、ルートフックを確認
+- [ember data model maker](https://github.com/andycrum/ember-data-model-maker/) - Ember Data Model Maker（EDMM）
 
-### Mobile
+### モバイル<a id="mobile"></a>
 
-- [corber](https://github.com/isleofcode/corber) - Ember.js を使って構築された Cordova および Crosswalk ハイブリッドアプリケーション向けツール
-- [glimmer-native](https://github.com/bakerac4/glimmer-native) - Ember.js/Glimmer.js を使ってネイティブなモバイルアプリを作成したいことはありますか？それなら今、できます！
-- [ember-mobile-bar](https://github.com/nickschot/ember-mobile-bar) - モバイルアプリのような振る舞いを持つ管理された固定（ツール）バー
-- [ember-mobile-core](https://github.com/nickschot/ember-mobile-core) - ember-mobile-* アドオン向けのパン認識子といくつかのユーティリティを提供
-- [ember-mobile-menu](https://github.com/nickschot/ember-mobile-menu) - モバイルデバイスに特化したドラッグ可能なサイドバー
-- [ember-mobile-pane](https://github.com/nickschot/ember-mobile-pane) - モバイルレイアウト ember-mobile-pane
-- [ember-responsive](https://github.com/freshbooks/ember-responsive) - Ember.js で簡単なレスポンシブレイアウトを実現
+- [corber](https://github.com/isleofcode/corber) - Ember.jsで構築したCordova/Crosswalkのハイブリッドアプリケーション用ツール
+- [glimmer-native](https://github.com/bakerac4/glimmer-native) - Ember.js/Glimmer.jsでネイティブのモバイルアプリケーションを作成
+- [ember-mobile-bar](https://github.com/nickschot/ember-mobile-bar) - モバイルアプリケーションのように振る舞う、管理された固定ツールバー
+- [ember-mobile-core](https://github.com/nickschot/ember-mobile-core) - ember-mobile-*アドオン向けのパン認識機能とユーティリティを提供
+- [ember-mobile-menu](https://github.com/nickschot/ember-mobile-menu) - モバイル端末向けに設計したドラッグ可能なサイドバー
+- [ember-mobile-pane](https://github.com/nickschot/ember-mobile-pane) - ember-mobile-paneによるモバイルレイアウト
+- [ember-responsive](https://github.com/freshbooks/ember-responsive) - Ember.jsによるレスポンシブレイアウト
 
-### Modifiers
-- [ember-css-vars](https://github.com/luxferresum/ember-css-vars) - JavaScriptからCSSにデータを露出するためのEmber.jsのmodifier。これにより、データをCSSに簡単に露出できるようになります。
-- [ember-on-modifier](https://github.com/buschtoens/ember-on-modifier) - Modifer RFC #353 に示された `{{on}}` 要素の実装
-- [ember-ref-modifier](https://github.com/lifeart/ember-ref-modifier) - `{{ref}}` 要素の実装
-- [ember-render-modifiers](https://github.com/emberjs/ember-render-modifiers) - RFC #415 に示された did-insert / did-update / will-destroy 要素の実装を実現
-- [ember-functional-modifiers](https://github.com/spencer516/ember-functional-modifiers) - Ember.js 用の機能的なModifier
-- [ember-style-modifier](https://github.com/jelhan/ember-style-modifier) - このアドオンは、要素のスタイルを設定する {{style}} 要素Modifierを提供しています。
-- [ember-simple-animate](https://github.com/abhilashlr/ember-simple-animate) - CSSベースのアニメーションに必要なシンプルなEmber.js アニメートアドオン
+### モディファイア<a id="modifiers"></a>
+- [ember-css-vars](https://github.com/luxferresum/ember-css-vars) - CSS変数を適用するEmberモディファイア。原リストではJavaScriptのデータをCSSへ安全に渡す方法と説明
+- [ember-on-modifier](https://github.com/buschtoens/ember-on-modifier) - Modifiers RFC #353に示された`{{on}}`要素モディファイアの実装
+- [ember-ref-modifier](https://github.com/lifeart/ember-ref-modifier) - `{{ref}}`要素モディファイアの実装
+- [ember-render-modifiers](https://github.com/emberjs/ember-render-modifiers) - RFC #415のdid-insert / did-update / will-destroyモディファイアを実装
+- [ember-functional-modifiers](https://github.com/spencer516/ember-functional-modifiers) - Ember.js用の関数型モディファイア
+- [ember-style-modifier](https://github.com/jelhan/ember-style-modifier) - 要素のスタイルを設定する{{style}}要素モディファイアを提供
+- [ember-simple-animate](https://github.com/abhilashlr/ember-simple-animate) - CSSベースのアニメーション用のシンプルなEmberアドオン
 
 ### Parcel
 
-- [ember-parcel-example](https://github.com/rtablada/ember-parcel-example) - Ember.js + Parcel.js の例
-- [todomvc-demo](https://github.com/devongovett/todomvc-demo) - Glimmer.js + Parcel.js の例
+- [ember-parcel-example](https://github.com/rtablada/ember-parcel-example) - Ember.js + Parcel.jsの実装例
+- [todomvc-demo](https://github.com/devongovett/todomvc-demo) - Glimmer.js + Parcel.jsの実装例
 
-### Payments
+### 決済<a id="payments"></a>
 
-- [ember-credit-card](https://github.com/esbanarango/ember-credit-card) - "1行のコードでクレジットカードフォームを夢のようなものにする"
+- [ember-credit-card](https://github.com/esbanarango/ember-credit-card) - クレジットカード用フォーム。原リストでは1行のコードで作成できると説明
 
-### Polyfills
+### ポリフィル<a id="polyfills"></a>
 
-- [ember-modifier-manager-polyfill](https://github.com/rwjblue/ember-modifier-manager-polyfill) - Ember.js 2.12 から 3.7 までの要素Modifierのポリフィル
-- [ember-angle-bracket-invocation-polyfill](https://github.com/rwjblue/ember-angle-bracket-invocation-polyfill) - このアドオンはRFC 311に記述されたアンガルブラケット呼び出し構文のポリフィルを提供しています。
-- [ember-named-arguments-polyfill](https://github.com/rwjblue/ember-named-arguments-polyfill) - Ember.js 2.10 から 3.0 までに対応した、named arguments のポリフィルサポート
-- [ember-native-class-polyfill](https://github.com/pzuraq/ember-native-class-polyfill) - このアドオンは、Ember.js RFC #240 および #337 で提案されたネイティブクラスの動作をポリフィルするものである
-- [ember-router-service-polyfill](https://github.com/rwjblue/ember-router-service-polyfill) - このアドオンは、Ember.js 2.15 で追加されたember-routing-router-service機能に対して、可能な限りのポリフィルを提供する
-- [ember-fn-helper-polyfill](https://github.com/rwjblue/ember-fn-helper-polyfill) - このアドオンは、RFC #470 で記述された{{fn}}ヘルパーに対してポリフィルを提供する
-- [ember-named-blocks-polyfill](https://github.com/ember-polyfills/ember-named-blocks-polyfill) - このアドオンは、Yieldable Named Blocks機能に対してポリフィルを提供する
+- [ember-modifier-manager-polyfill](https://github.com/rwjblue/ember-modifier-manager-polyfill) - Ember.js 2.12から3.7までの要素モディファイアのポリフィル
+- [ember-angle-bracket-invocation-polyfill](https://github.com/rwjblue/ember-angle-bracket-invocation-polyfill) - RFC 311の山括弧による呼び出し構文のポリフィル
+- [ember-named-arguments-polyfill](https://github.com/rwjblue/ember-named-arguments-polyfill) - Ember.js 2.10から3.0までの名前付き引数のポリフィル
+- [ember-native-class-polyfill](https://github.com/pzuraq/ember-native-class-polyfill) - Ember.js RFC #240と#337で提案されたネイティブクラスの動作のポリフィル
+- [ember-router-service-polyfill](https://github.com/rwjblue/ember-router-service-polyfill) - Ember.js 2.15で追加されたember-routing-router-service機能の、可能な範囲でのポリフィル
+- [ember-fn-helper-polyfill](https://github.com/rwjblue/ember-fn-helper-polyfill) - RFC #470の{{fn}}ヘルパーのポリフィル
+- [ember-named-blocks-polyfill](https://github.com/ember-polyfills/ember-named-blocks-polyfill) - Yieldable Named Blocks機能のポリフィル
 
 ### PWA
 
@@ -581,173 +441,176 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [ember-service-worker-cache-first](https://github.com/DockYard/ember-service-worker-cache-first)
 - [ember-service-worker-index](https://github.com/DockYard/ember-service-worker-index)
 - [ember-service-worker-prember](https://github.com/shipshapecode/ember-service-worker-prember)
-- [ember-service-worker](https://github.com/DockYard/ember-service-worker) - Ember.js 用のService Workersのプラグインアプローチ
-- [ember-web-app](https://github.com/san650/ember-web-app) - このEmber.jsアドオンは、プログレッシブウェブアプリケーションを作成するために必要なmanifest.jsonおよびmetaタグの設定と管理をサポートする
+- [ember-service-worker](https://github.com/DockYard/ember-service-worker) - Ember.js用の、プラグインで機能を追加できるService Workerの仕組み
+- [ember-web-app](https://github.com/san650/ember-web-app) - PWAの作成に必要なmanifest.jsonとmetaタグの設定・管理を支援するEmber.jsアドオン
 
-### Query Params
+### クエリパラメーター<a id="query-params"></a>
 
-- [ember-query-params-service](https://github.com/NullVoxPopuli/ember-query-params-service) - コントローラーにクエリパラメータを*のみ*パースしているものはありますか？
-- [ember-parachute](https://github.com/offirgolan/ember-parachute) - Ember.js 用のクエリパラメータの改善
-- [ember-href-to](https://github.com/intercom/ember-href-to) - {{link-to}}の軽量な代替案
+- [ember-query-params-service](https://github.com/NullVoxPopuli/ember-query-params-service) - クエリパラメーターの解析*だけ*を行うコントローラーはあるか
+- [ember-parachute](https://github.com/offirgolan/ember-parachute) - Ember.jsのクエリパラメーター機能を改善
+- [ember-href-to](https://github.com/intercom/ember-href-to) - {{link-to}}の軽量な代替
 
-### Real-time
+### リアルタイム<a id="real-time"></a>
 
-- [ember-cli-flash](https://github.com/poteto/ember-cli-flash) - ember-cli用のシンプルかつ高度にカスタマイズ可能なフラッシュメッセージ
+- [ember-cli-flash](https://github.com/poteto/ember-cli-flash) - Ember CLI用の、シンプルで細かく設定できるフラッシュメッセージ
 
-### Routing addons
-- [ember-component-routes](https://github.com/wongpeiyi/ember-component-routes) - Ember.jsのルートからコンポーネントを直接レンダリング
-- [ember-redirect](https://github.com/thoov/ember-redirect) - このアドオンは、ルートベースのリダイレクトを最小限の努力で実行するためのシンプルで使いやすい方法を目指している
-- [ember-router-scroll](https://github.com/dollarshaveclub/ember-router-scroll) - ブラウザの履歴スクロール位置を保持しながらトップにスクロール
+### ルーティング用アドオン<a id="routing-addons"></a>
+- [ember-component-routes](https://github.com/wongpeiyi/ember-component-routes) - Ember.jsでルートからコンポーネントを直接レンダリング
+- [ember-redirect](https://github.com/thoov/ember-redirect) - 少ない手間でルートに基づくリダイレクトを行うアドオン
+- [ember-router-scroll](https://github.com/dollarshaveclub/ember-router-scroll) - ブラウザー履歴のスクロール位置を保持しながらページ先頭へスクロール
 
-### Resolver customization
-- [ember-cli-extended-resolver](https://www.npmjs.com/package/ember-cli-extended-resolver) - このアドーンは、デフォルトのファイル構成をより機能ごとにグループ化されたものに変更できるようにする
+### リゾルバーのカスタマイズ<a id="resolver-customization"></a>
+- [ember-cli-extended-resolver](https://www.npmjs.com/package/ember-cli-extended-resolver) - 既定のファイル構造を変更し、機能ごとにグループ化
 
-### Security
+### セキュリティ<a id="security"></a>
 
-- [ember-can](https://github.com/minutebase/ember-can) - Ember.jsアプリ向けのシンプル [authorisation addon](http://ember-can.com)
-- [ember-permissions](https://github.com/Bagaar/ember-permissions) - Emberアプリケーション向けの権限管理
+- [ember-can](https://github.com/minutebase/ember-can) - Ember.jsアプリケーション用のシンプルな[認可アドオン](http://ember-can.com)
+- [ember-permissions](https://github.com/Bagaar/ember-permissions) - Emberアプリケーションの権限管理
 
-### Service Workers
+### Service Worker<a id="service-workers"></a>
 
-- [ember-cli-workbox](https://github.com/BBVAEngineering/ember-cli-workbox/) - サービスワーカーを用いたオフラインキャッシュとしてプログレッシブ強化
-- [ember-service-worker](https://github.com/DockYard/ember-service-worker) - Ember.js 用のService Workersのプラグインアプローチ
-- [ember-service-worker-index](https://github.com/DockYard/ember-service-worker-index) - Ember.jsのサービスワーカープラグインでindex.htmlファイルをキャッシュする
-- [ember-service-worker-asset-cache](https://github.com/DockYard/ember-service-worker-asset-cache) - エマーサービスワーカープラグインで、エマーアプリのアセットファイルをキャッシュする
-- [ember-service-worker-cache-first](https://github.com/DockYard/ember-service-worker-cache-first) - キャッシュ優先のエマーサービスワーカープラグイン
-- [ember-service-worker-cache-fallback](https://github.com/DockYard/ember-service-worker-cache-fallback) - ネットワークリクエストが失敗した場合、キャッシュされたフォールバックバージョンに切り替えるエマーサービスワーカープラグイン
-- [ember-service-worker-emberfire-messaging](https://github.com/Matt-Jensen/ember-service-worker-emberfire-messaging) - Emberfireアプリ用のFirebase Cloud Messagingサービスワーカー対応
-- [ember-service-worker-unregistration](https://github.com/GreatWizard/ember-service-worker-unregistration) - ember-service-workerが無効になった場合、サービスワーカーをアンレジスターするエマーアプリプラグイン
-- [ember-service-worker-request-chaos](https://github.com/maxfierke/ember-service-worker-request-chaos) - NetflixのChaos Monkeyに似たもので、あなたのエマーサービスアプリのAPIリクエストに適用
-- [ember-service-worker-project-entagled-registration](https://github.com/rwjblue/ember-service-worker-project-entagled-registration) - このアドオンは、ember-service-workerと併用して、プロジェクトに適切にペアされたサービスワーカーが使用されていることを確認するためのもの
-- [ember-service-worker-cache-rendered](https://github.com/PrinceCornNM/ember-service-worker-cache-rendered) - エマーサービスワーカープラグインで、レンダリングされたHTMLをキャッシュし、Fastbootに非常に有用
-- [ember-service-worker-update-notify](https://github.com/topaxi/ember-service-worker-update-notify) - サービスワーカーのアップデート通知
-- [ember-service-worker-enqueue](https://github.com/The-Don-Himself/ember-service-worker-enqueue) - 失敗した変更リクエスト（例：POST、PUT、DELETE）をキャッチし、バックグラウンド処理にキューするエマーサービスワーカープラドン
-- [ember-service-worker-prember](https://github.com/shipshapecode/ember-service-worker-prember) - 各premberルートのindex.htmlファイルをキャッシュするエマーサービスワーカープラグイン
+- [ember-cli-workbox](https://github.com/BBVAEngineering/ember-cli-workbox/) - Service Workerを使った、段階的な機能強化としてのオフラインキャッシュ
+- [ember-service-worker](https://github.com/DockYard/ember-service-worker) - Ember.js用の、プラグインで機能を追加できるService Workerの仕組み
+- [ember-service-worker-index](https://github.com/DockYard/ember-service-worker-index) - index.htmlをキャッシュするEmber.jsのService Workerプラグイン
+- [ember-service-worker-asset-cache](https://github.com/DockYard/ember-service-worker-asset-cache) - Ember.jsアプリケーションのアセットファイルをキャッシュするService Workerプラグイン
+- [ember-service-worker-cache-first](https://github.com/DockYard/ember-service-worker-cache-first) - キャッシュを優先するEmber.jsのService Workerプラグイン
+- [ember-service-worker-cache-fallback](https://github.com/DockYard/ember-service-worker-cache-fallback) - ネットワークリクエストが失敗すると、キャッシュ済みの代替版を使うEmber.jsのService Workerプラグイン
+- [ember-service-worker-emberfire-messaging](https://github.com/Matt-Jensen/ember-service-worker-emberfire-messaging) - EmberfireアプリケーションでのFirebase Cloud MessagingのService Worker対応
+- [ember-service-worker-unregistration](https://github.com/GreatWizard/ember-service-worker-unregistration) - ember-service-workerが無効なときにService Workerの登録を解除するEmber.jsプラグイン
+- [ember-service-worker-request-chaos](https://github.com/maxfierke/ember-service-worker-request-chaos) - NetflixのChaos Monkeyのように、Ember.jsのSPAのAPIリクエストに障害を発生させる
+- [ember-service-worker-project-entagled-registration](https://github.com/rwjblue/ember-service-worker-project-entagled-registration) - ember-service-workerと併用し、使用するService Workerがプロジェクトと正しく対応していることを確認するアドオン
+- [ember-service-worker-cache-rendered](https://github.com/PrinceCornNM/ember-service-worker-cache-rendered) - レンダリング済みのHTMLをキャッシュするEmber.jsのService Workerプラグイン。FastBootで役立つ
+- [ember-service-worker-update-notify](https://github.com/topaxi/ember-service-worker-update-notify) - Service Workerの更新通知
+- [ember-service-worker-enqueue](https://github.com/The-Don-Himself/ember-service-worker-enqueue) - POST・PUT・DELETEなどの失敗した変更リクエストを捕捉し、バックグラウンド処理のキューへ入れるEmber.jsのService Workerプラグイン
+- [ember-service-worker-prember](https://github.com/shipshapecode/ember-service-worker-prember) - premberの各ルートのindex.htmlをキャッシュするEmber.jsのService Workerプラグイン
 
-### SSR / Server Side Rendering
+### SSR（サーバー側レンダリング）<a id="ssr--server-side-rendering"></a>
 
-- [ember-fastboot](https://github.com/ember-fastboot/ember-cli-fastboot) - エマーアプリのサーバー側レンダリング
-- [glimmer-ssr-test](https://github.com/josemarluedke/glimmer-ssr-test) - Glimmer.jsアプリをサーバー上でレンダリングする
+- [ember-fastboot](https://github.com/ember-fastboot/ember-cli-fastboot) - Ember.jsアプリケーションのサーバー側レンダリング
+- [glimmer-ssr-test](https://github.com/josemarluedke/glimmer-ssr-test) - Glimmer.jsアプリケーションをサーバー上でレンダリング
 
-### Static site generators & SEO
+### 静的サイト生成とSEO<a id="static-site-generators--seo"></a>
 
-- [ember-meta](https://github.com/shipshapecode/ember-meta) - Prember/エマーアプリブログのメタ情報を設定して、OpenGraph、microdata、Facebook、Twitter、Slackなどに対応
+- [ember-meta](https://github.com/shipshapecode/ember-meta) - Prember/Ember.jsブログのメタ情報を設定し、OpenGraph、microdata、Facebook、Twitter、Slackなどに対応
 - [prember-rss-feed](https://github.com/shipshapecode/prember-rss-feed) - PremberサイトのRSSフィードを配信
-- [prember](https://github.com/ef4/prember) - Fastbootでビルド時にエマーアプリをプリレンダリングする
+- [prember](https://github.com/ef4/prember) - ビルド時にFastBootでEmber.jsアプリケーションをプリレンダリング
 
-### Styling
+### スタイル指定<a id="styling"></a>
 
-- [ember-cli-sass](https://github.com/aexmachina/ember-cli-sass) - node-sassを使って、ember-cliアプリのファイルを事前処理し、sourceMapsおよびinclude pathsをサポート
+- [ember-cli-sass](https://github.com/aexmachina/ember-cli-sass) - node-sassでEmber CLIアプリケーションのファイルを前処理。ソースマップとインクルードパスに対応
 
-### Templating
+### テンプレート<a id="templating"></a>
 
-- [ember-template-component-import](https://github.com/crashco/ember-template-component-import) - このアドオンにより、テンプレートファイル内でコンポーネントへのローカルバインディングを作成するためのimportスタイルの構文を使用できる
-- [ember-cli-jsx-templates](https://github.com/lifeart/ember-cli-jsx-templates) - EmberテンプレートでのTSX/JSXサポート
-- [Emblem.js](https://github.com/machty/emblem.js/) - Handlebars.jsに代替するエマーアプリフレンドリーなインデント構文
+- [ember-template-component-import](https://github.com/crashco/ember-template-component-import) - テンプレートファイル内で、インポートのような構文を使ってコンポーネントへのローカルバインディングを作成
+- [ember-cli-jsx-templates](https://github.com/lifeart/ember-cli-jsx-templates) - EmberテンプレートのTSX/JSX対応
+- [Emblem.js](https://github.com/machty/emblem.js/) - Ember.jsと組み合わせやすい、インデントを使ったHandlebars.jsの代替構文
 
-### Testing
+### テスト<a id="testing"></a>
 
-- [ember-qunit-decorators](https://github.com/mike-north/ember-qunit-decorators) - ES6 または TypeScript のデコレーターを、Ember.js アプリの QUnit テストに使用してください。
-- [ember-cli-addon-tests](https://github.com/tomdale/ember-cli-addon-tests) - Ember CLI アドオンのテストを、実際の Ember.js アプリのコンテキストで行うためのテストヘルパー。
-- [ember-cli-code-coverage](https://github.com/kategengler/ember-cli-code-coverage) - Istanbul を使って Ember アプリのコードカバレッジを取得します。
-- [ember-cli-mirage](http://www.ember-cli-mirage.com/) - に準拠したクライアントサイドサーバーを使って、アプリのビルド、テスト、デモを行います。 [JSON API](http://jsonapi.org/)
-- [ember-cli-mocha](https://github.com/ember-cli/ember-cli-mocha) - Ember CLI アプリ用の Mocha および Chai テスト。
-- [ember-cli-page-object](https://github.com/san650/ember-cli-page-object) - この Ember CLI アドオンは、受け入れテストおよび統合テストにおいてページオブジェクトの構築を容易にします。
-- [ember-cli-yadda](https://github.com/albertjan/ember-cli-yadda) - Ember CLI アプリ用の Cucumber スペックを書きます。
-- [ember-concurrency-test-waiter](https://github.com/bendemboski/ember-concurrency-test-waiter) - Ember-Concurrency タスクにテストウェイトを簡単に有効にします。
-- [ember-exam](https://github.com/trentmwillis/ember-exam) - ランダム化、分割、並列化を用いてテストを実行し、美しいテストを実現します。
-- [ember-percy](https://github.com/percy/ember-percy) - Percy を使って Ember.js で視覚的リグレッションテストを行うアドオン。
-- [ember-qunit](https://github.com/emberjs/ember-qunit) - Ember.js 用の QUnit テストヘルパー。
-- [ember-test-friendly-error-handler](https://github.com/rwjblue/ember-test-friendly-error-handler) - 生産環境では例外を投げない、テスト可能でないエラーハンドラーを構築します。
-- [ember-test-selectors](https://github.com/simplabs/ember-test-selectors) - Ember.js テストにおけるより良い要素セレクタの有効化。
-- [ember-test-setup](https://github.com/kellyselden/ember-test-setup) - 重複を減らすためのテストショートハンドを提供します。
-- [ember-window-mock](https://github.com/kaliber5/ember-window-mock) - window グローバルを、Ember.js サービスとして扱い、テスト中にモックできます。
-- [mirage-glue](https://github.com/izelnakri/mirage-glue) - このプログラムはAPIエンドポイントを読み取り、関連する Mirage フィクスチャファイルにレスポンスを生成または追加します。
-- [ember-sinon](https://github.com/csantero/ember-sinon) - Ember CLI アドオンで sinon.js のサポートを追加します。
+- [ember-qunit-decorators](https://github.com/mike-north/ember-qunit-decorators) - Ember.jsアプリケーションのQUnitテストでES6やTypeScriptのデコレーターを利用
+- [ember-cli-addon-tests](https://github.com/tomdale/ember-cli-addon-tests) - 実際のEmber.jsアプリケーションの中でEmber CLIアドオンをテストするヘルパー
+- [ember-cli-code-coverage](https://github.com/kategengler/ember-cli-code-coverage) - Istanbulを使ったEmberアプリケーションのコードカバレッジ測定
+- [ember-cli-mirage](http://www.ember-cli-mirage.com/) - [JSON API](http://jsonapi.org/)に準拠したクライアント側サーバーで、アプリケーションの構築・テスト・デモを実施
+- [ember-cli-mocha](https://github.com/ember-cli/ember-cli-mocha) - Ember CLIアプリケーション向けのMocha/Chaiテスト
+- [ember-cli-page-object](https://github.com/san650/ember-cli-page-object) - 受け入れテストと統合テストでのページオブジェクトの作成を支援するEmber CLIアドオン
+- [ember-cli-yadda](https://github.com/albertjan/ember-cli-yadda) - Ember CLIアプリケーションのCucumber仕様を記述
+- [ember-concurrency-test-waiter](https://github.com/bendemboski/ember-concurrency-test-waiter) - ember-concurrencyのタスクでテストウェイターを有効化
+- [ember-exam](https://github.com/trentmwillis/ember-exam) - ランダム化・分割・並列化を使ってテストを実行
+- [ember-percy](https://github.com/percy/ember-percy) - Percyで視覚的な回帰テストを行うEmber.jsアドオン
+- [ember-qunit](https://github.com/emberjs/ember-qunit) - Ember.js用のQUnitテストヘルパー
+- [ember-test-friendly-error-handler](https://github.com/rwjblue/ember-test-friendly-error-handler) - 本番環境では例外を投げない、テスト可能なエラーハンドラーを構築
+- [ember-test-selectors](https://github.com/simplabs/ember-test-selectors) - Ember.jsのテストで、より良い要素セレクターを利用
+- [ember-test-setup](https://github.com/kellyselden/ember-test-setup) - 重複を減らすためのテスト用省略記法
+- [ember-window-mock](https://github.com/kaliber5/ember-window-mock) - グローバルのwindowを、テストでモック可能なEmber.jsサービスとして利用
+- [mirage-glue](https://github.com/izelnakri/mirage-glue) - APIエンドポイントを読み、対応するMirageのフィクスチャーファイルにレスポンスを作成・追記するプログラム
+- [ember-sinon](https://github.com/csantero/ember-sinon) - sinon.jsに対応するEmber CLIアドオン
 
-### Text
+### テキスト<a id="text"></a>
 
-- [ember-text-measurer](https://github.com/cibernox/ember-text-measurer) - Ember.js 用のシンプルなサービスで、効率的に文字列の幅を測定します。
+- [ember-text-measurer](https://github.com/cibernox/ember-text-measurer) - 文字列の幅を効率よく測定するEmber.jsサービス
 
-
-### Tree Shaking
-- [ember-cli-tree-shaker](https://github.com/kellyselden/ember-cli-tree-shaker) - Kelly Selden と Alex Navasardyan による新しい tree-shaking およびコード分割の仕事のテスト環境です。
+### ツリーシェイキング<a id="tree-shaking"></a>
+- [ember-cli-tree-shaker](https://github.com/kellyselden/ember-cli-tree-shaker) - Kelly SeldenとAlex Navasardyanによる新しいツリーシェイキングとコード分割の取り組みの実験環境
 
 ### TypeScript
 
-- [ember-cli-typescript](https://github.com/typed-ember/ember-cli-typescript) - Ember.js アプリに TypeScript を使用してください！
-- [ember-typings](https://github.com/typed-ember/ember-typings) - エマーサイのTypescript型定義
-- [ember-typescript-utils](https://github.com/happycollision/ember-typescript-utils) - Typescriptとエマーサイをベースにしたユーティリティ関数
+- [ember-cli-typescript](https://github.com/typed-ember/ember-cli-typescript) - Ember.jsアプリケーションでTypeScriptを利用
+- [ember-typings](https://github.com/typed-ember/ember-typings) - Ember.jsのTypeScript型定義
+- [ember-typescript-utils](https://github.com/happycollision/ember-typescript-utils) - TypeScriptとEmber.js向けのユーティリティ関数
 
+### UIライブラリ<a id="ui-libs"></a>
 
-### UI libs
-
-- [ember-bootstrap](http://www.ember-bootstrap.com/) - オリジナルのブートストラッププラグインとコンポーネントをエマーサイに適応させた、ネイティブなエマーサイコンポーネントのコレクションを提供
-- [Frontile](https://github.com/josemarluedke/frontile) - フロントイルは、一貫性と強力なエマーサイアプリケーションを構築するために必要なレゴ（コンポーネント、ヘルパー、モディファイア、スタイル）を提供することを目的としています
-- [ember-cli-uniq](https://github.com/uniplaces/ember-cli-uniq/) - エマーサイに実装されたユニプラースデザインシステムのデフォルトコンポーネのコレクション
-- [ember-element-ui](https://github.com/aalasolutions/ember-element-ui) - エマーサイ向けにエレメントUIを提供
-- [ember-elements](https://github.com/dunkinbase/ember-elements) - [a UI toolkit in Ember](https://dunkinbase.github.io/ember-elements/)
-- [ember-ghost-casper-template](https://github.com/stonecircle/ember-ghost-casper-template) - GHOSTのデフォルト個人ブロガーテーマの静的サイトバージョン
-- [ember-paper](https://github.com/miguelcobain/ember-paper) - エマーサイにおけるマテリアルデザインアプローチ
-- [ember-radical](https://github.com/healthsparq/ember-radical) - 軽量で完全にアクセシブルなDDAUコンポーネントライブラリ（エマーサイアプリ向け）
+- [ember-bootstrap](http://www.ember-bootstrap.com/) - 元のBootstrapプラグインやコンポーネントを再現する、ネイティブなEmber.jsコンポーネント集
+- [Frontile](https://github.com/josemarluedke/frontile) - Ember.jsアプリケーションの構築に向け、コンポーネント・ヘルパー・モディファイア・スタイルを提供することを目指す
+- [ember-cli-uniq](https://github.com/uniplaces/ember-cli-uniq/) - Uniplaces Design Systemを実装するEmber.jsの既定コンポーネント
+- [ember-element-ui](https://github.com/aalasolutions/ember-element-ui) - Ember用のelement-ui
+- [ember-elements](https://github.com/dunkinbase/ember-elements) - [EmberのUIツールキット](https://dunkinbase.github.io/ember-elements/)
+- [ember-ghost-casper-template](https://github.com/stonecircle/ember-ghost-casper-template) - Ghostの既定の個人ブログ用テーマの静的サイト版
+- [ember-paper](https://github.com/miguelcobain/ember-paper) - Ember.js向けのMaterial Design
+- [ember-radical](https://github.com/healthsparq/ember-radical) - Ember.jsアプリケーション用のDDAUコンポーネントライブラリ。原リストでは軽量でアクセシビリティに全面対応と説明
 - [Nomad UI](https://github.com/hashicorp/nomad/tree/master/ui)
-- [Semantic-UI-Ember](https://github.com/Semantic-Org/Semantic-UI-Ember) - このはセマンティックUIモジュールの公式エマーサイライブラリです
+- [Semantic-UI-Ember](https://github.com/Semantic-Org/Semantic-UI-Ember) - Semantic-UIモジュール用の公式Ember.jsライブラリ
 - [Flexi](https://github.com/html-next/flexi)
 
-### UI components
+### UIコンポーネント<a id="ui-components"></a>
 
-- [ember-attacher](https://kybishop.github.io/ember-attacher/) - ツールチップとポップオーバーを簡単に実現
-- [ember-burger-menu](https://github.com/offirgolan/ember-burger-menu) - CSSトランジションを使用したアニメーションとスタイルを備えたオフキャンバスサイドバーコンポーネント
-- [ember-flatpickr](https://github.com/shipshapecode/ember-flatpickr) - フラットピッカーの日付選択器をラップしたエマーサイのアドオン
-- [ember-power-select](https://github.com/cibernox/ember-power-select) - エマーサイ向けに構築された拡張可能なセレクトコンポーネント
-- [ember-basic-dropdown](https://github.com/cibernox/ember-basic-dropdown) - エマーサイアプリで必要となる基本的なドロップダウンコンポーネント
-- [ember-drag-sort](https://github.com/kaliber5/ember-drag-sort) - 複数リストおよびネストリストをサポートするソート可能なリストコンポーネント
-- [ember-perfect-scroll](https://github.com/imanhodjaev/ember-perfect-scroll) - 完全なスクロールコンポーネント（エマーサイCLIアドオンとして）
+- [ember-attacher](https://kybishop.github.io/ember-attacher/) - ツールチップとポップオーバー
+- [ember-burger-menu](https://github.com/offirgolan/ember-burger-menu) - CSSトランジションによるアニメーションとスタイルを備えた、画面外から出し入れするサイドバーコンポーネント
+- [ember-flatpickr](https://github.com/shipshapecode/ember-flatpickr) - Flatpickrの日付選択機能をラップするEmber.jsアドオン
+- [ember-power-select](https://github.com/cibernox/ember-power-select) - Ember用の拡張可能な選択コンポーネント
+- [ember-basic-dropdown](https://github.com/cibernox/ember-basic-dropdown) - Emberアプリケーション用の基本的なドロップダウン
+- [ember-drag-sort](https://github.com/kaliber5/ember-drag-sort) - 複数のリストと入れ子のリストに対応する、並べ替え可能なリストコンポーネント
+- [ember-perfect-scroll](https://github.com/imanhodjaev/ember-perfect-scroll) - Ember CLIアドオンとして提供するスクロールコンポーネント
 
 ### UX
 
-- [ember-onbeforeunload](https://github.com/jasonmit/ember-onbeforeunload) - ルート間の遷移またはウィンドウの閉じ時に論理を実行
+- [ember-onbeforeunload](https://github.com/jasonmit/ember-onbeforeunload) - ルート間の遷移時やウィンドウを閉じるときに処理を実行
 
 ### VR
 
 - [ember-vr](https://github.com/ember-vr)
 
-### VS Code addons
+### VS Code用アドオン<a id="vs-code-addons"></a>
 
-- [Ember Syntax](https://marketplace.visualstudio.com/items?itemName=dhedgecock.ember-syntax) - エマーサイテンプレートファイルのシンタックスハイライトおよびタグテンプレートによるインラインテンプレート定義のシンタックスハイライト！
-- [Glimmer Templates Syntax for VS Code](https://marketplace.visualstudio.com/items?itemName=lifeart.vscode-glimmer-syntax) - エマーサイドのシンタックスハイライト
-- [ember-language-server](https://github.com/emberwatch/ember-language-server) - エマーサイドプロジェクト向けの言語サーバープロトコル実装
-- [unstable-ember-language-server](https://marketplace.visualstudio.com/items?itemName=lifeart.vscode-ember-unstable) - エマーサイドプロジェクト向けの言語サーバープロトコル実装（不安定、実験的機能を含む）
-- [vscode-ember-colorizer](https://github.com/ciena-blueplanet/vscode-ember-colorizer) - VSCode拡張機能でエマーサイドの.hbs、コントローラー、ルートファイルを色分け・トークン化
-- [ember-module-snippets](https://github.com/candidmetrics/ember-module-snippets) - VSCodeでエマーサイドモジュールのインポートを簡単に行うためのショートカット
+- [Ember Syntax](https://marketplace.visualstudio.com/items?itemName=dhedgecock.ember-syntax) - Ember.jsのテンプレートファイルと、タグ付きテンプレートによるインラインのテンプレート定義の構文を強調表示
+- [Glimmer Templates Syntax for VS Code](https://marketplace.visualstudio.com/items?itemName=lifeart.vscode-glimmer-syntax) - Ember.jsで使うGlimmer構文の強調表示
+- [ember-language-server](https://github.com/emberwatch/ember-language-server) - Ember.jsプロジェクト向けのLanguage Server Protocol実装
+- [unstable-ember-language-server](https://marketplace.visualstudio.com/items?itemName=lifeart.vscode-ember-unstable) - Ember.jsプロジェクト向けのLanguage Server Protocol実装。原リストでは不安定で実験的機能を含むと記載
+- [vscode-ember-colorizer](https://github.com/ciena-blueplanet/vscode-ember-colorizer) - Ember.jsの.hbs、コントローラー、ルートのファイルを色分け・トークン化するVS Code拡張
+- [ember-module-snippets](https://github.com/candidmetrics/ember-module-snippets) - VS CodeでEmber.jsモジュールのインポートを支援するスニペット
 
-### Atom addons
+### Atom用アドオン<a id="atom-addons"></a>
 
 - [Atom Ember Snippets](https://github.com/mattmcmanus/atom-ember-snippets)
 
 ### VIM
 
-- [Unstable language server for neovim](https://gist.github.com/meirish/639e6def0f352f63fef662dce3ca2f98)
+- [Neovim用の不安定な言語サーバー](https://gist.github.com/meirish/639e6def0f352f63fef662dce3ca2f98)
 
 ### Web Components
 
-- [ember-cli-web-components](https://github.com/BBVAEngineering/ember-cli-web-components) - 他のフレームワークでエマーサイドコンポーネントを使用できるようにWeb Componentsに！
-- [shadow-dom](https://github.com/knownasilya/ember-shadow-dom) - コンポーネント内のテンプレートをシャドウDOMのルート内で作成
+- [ember-cli-web-components](https://github.com/BBVAEngineering/ember-cli-web-components) - 他のフレームワークでEmber.jsコンポーネントをWeb Componentsとして利用
+- [shadow-dom](https://github.com/knownasilya/ember-shadow-dom) - Shadow DOMのルート内にコンポーネントのテンプレートを記述
 
 ### Webpack
 
 - [glimmer-compiler-webpack-plugin](https://github.com/tomdale/glimmer-compiler-webpack-plugin)
 
-### Weird
+### 変わった取り組み<a id="weird"></a>
 
 - [ember-dynamic-render-template](https://github.com/miguelcobain/ember-dynamic-render-template) - テンプレート文字列からDOMをレンダリング
 
-### Resources
+## 参考資料<a id="resources"></a>
+
+- [Ember.js Myths](https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/ember-myths.md)
+- [読者の質問](https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/ember-questions.md)
+- [Ember.js開発への参加](https://help-wanted.emberjs.com/core)
+- [Awesome JavaScript](https://github.com/sorrycc/awesome-javascript)
 
 - [Front-End Performance Checklist](https://github.com/thedaviddias/Front-End-Performance-Checklist)
 - [Ember.js approval requirements](https://gist.github.com/PoslinskiNet/2d7a05944ca3c468440a0faea153062b)
 
-### Articles
+### 記事<a id="articles"></a>
 
 - [An Elementary Guide to Ember.js Build Performance](http://hangaroundtheweb.com/2018/02/an-elementary-guide-to-ember-build-performance/)
 - [Ember.js 2019 Roadmap Posts](https://github.com/abhilashlr/emberjs2019-posts)
@@ -764,7 +627,7 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Throttling Ember-Data with Ember-Concurrency](https://medium.com/@mudflye/throttling-ember-data-with-ember-concurrency-ff30d804a1b)
 - [Animation and Predictable Data Loading in Ember.js](https://crunchingnumbers.live/2019/04/02/animation-and-predictable-data-loading-in-ember/)
 - [Make your deprecated CSS stand out](https://ondrejsevcik.com/deprecate-css/)
-- [Ember.js ❤Angle Brackets. A Migration Guide & Cheat Sheet](https://medium.com/@AveryBloom/ff309d6effdf)
+- [Ember.js and Angle Brackets. A Migration Guide & Cheat Sheet](https://medium.com/@AveryBloom/ff309d6effdf)
 - [Coming Soon in Ember Octane - Part 1: Native Classes](https://www.pzuraq.com/coming-soon-in-ember-octane-part-1-native-classes/)
 - [Coming Soon in Ember Octane - Part 2: Angle Brackets Syntax & Named Arguments](https://www.pzuraq.com/coming-soon-in-ember-octane-part-2-angle-brackets-and-named-arguments/)
 - [Coming Soon in Ember Octane - Part 3: Tracked Properties](https://www.pzuraq.com/coming-soon-in-ember-octane-part-3-tracked-properties/)
@@ -867,12 +730,11 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Ember performance tweaks: Optimising Assets](https://abhilashlr.in/ember-performance-tweaks-part-2)
 - [Ember performance tweaks: Search engine optimization](https://abhilashlr.in/ember-performance-tweaks-part-3)
 
-### Ember-Cli Articles
+### Ember CLIの記事<a id="ember-cli-articles"></a>
 - [Ember-cli fingerprinting and dynamic assets](https://medium.com/@ruslanzavacky/ember-cli-fingerprinting-and-dynamic-assets-797a298d8dc6)
 - [Secrets of the Ember-CLI server: Express middleware with Ember-CLI](https://blog.201-created.com/secrets-of-the-ember-cli-server-bde80bb546dd)
 
-
-### Why Articles
+### Emberを選ぶ理由の記事<a id="why-articles"></a>
 - [NYC Planning Labs: Why Choose Ember.js?](https://medium.com/nycplanninglabs/nyc-planning-labs-why-choose-ember-js-fe9ff75f4373)
 - [Why DockYard Builds with Ember.js](https://dockyard.com/blog/2017/10/04/why-dockyard-uses-ember)
 - [Ember.js. Your best bet.](https://medium.com/@alvincrespo/ember-your-best-bet-b5cd7275dc84)
@@ -884,12 +746,12 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Moving from React to Ember 2020](http://medium.com/@nowims/moving-from-react-to-ember-2020-86e082477d45)
 - [Essential Ember Addons: The State of the Ember Addon Ecosystem in 2019](https://0xadada.pub/2019/06/17/essential-ember-addons/)
 
-### Jump-Start Articles
+### 入門記事<a id="jump-start-articles"></a>
 - [The simplest possible Ember Data CRUD Tutorial](https://medium.com/ember-ish/the-simplest-possible-ember-data-crud-16eacee33ae6)
 - [Challenges I face(d) with Ember.js](https://medium.com/@sarbbottam/challenges-i-face-with-ember-js-59bfba30416e)
 - [It’s easier in Ember.js. Probably.](http://www.melsumner.com/blog/development/its-easier-in-ember-probably/)
 
-### Articles Glimmer
+### Glimmerの記事<a id="articles-glimmer"></a>
 - [Alternative View Layers for an Elm App](https://robots.thoughtbot.com/elm-glimmer)
 - [Creating Web Components with Glimmer](https://simplabs.com/blog/2017/08/28/creating-web-components-with-glimmer.html)
 - [Building a PWA with Glimmer.js](https://simplabs.com/blog/2018/07/03/building-a-pwa-with-glimmer-js.html)
@@ -906,32 +768,32 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [What is the current state of more advanced Glimmer VM features?](https://discuss.emberjs.com/t/what-is-the-current-state-of-more-advanced-glimmer-vm-features/18114/4)
 - [UNIT-TESTING GLIMMER COMPONENTS](https://timgthomas.com/2019/11/unit-testing-glimmer-components/)
 
-### Articles Engines
+### Ember Enginesの記事<a id="articles-engines"></a>
 - [CSS in Ember Engines](https://medium.com/@ynotdraw/css-in-ember-engines-230ef8d4cef8)
 - [Enginification](https://simplabs.com/blog/2017/12/04/enginification.html)
 
-### Articles Ember-Concurrency
+### ember-concurrencyの記事<a id="articles-ember-concurrency"></a>
 - [Adopting ember-concurrency or: How I Learned to Stop Worrying and Love the Task](https://engineering.linkedin.com/blog/2016/12/ember-concurrency--or--how-i-learned-to-stop-worrying-and-love-t)
 - [Async or Swim: Replacing your Route models with Ember Concurrency Tasks](https://medium.com/@AveryBloom/async-or-swim-replacing-your-route-models-with-ember-concurrency-tasks-5a230252893a)
 - [ember-concurrency: the solution to so many problems you never knew you had](https://emberway.io/ember-concurrency-the-solution-to-so-many-problems-you-never-knew-you-had-cce6d7731ba9)
 - [PromiseProxyMixin: pure Ember alternative to ember-concurrency](https://lolma.us/en/blog/promise-proxy-mixin/)
 - [Two-Tasks Routes in Ember.js](https://tritarget.org/#Two-Tasks%20Routes%20in%20Ember)
 
-### Articles ES6
+### ES6の記事<a id="articles-es6"></a>
 - [ES Classes in Ember.js](https://medium.com/build-addepar/es-classes-in-ember-js-63e948e9d78e)
 
-### Articles TypeScript
+### TypeScriptの記事<a id="articles-typescript"></a>
 - [ember-cli-typescript v2 beta](https://www.chriskrycho.com/2018/ember-cli-typescript-v2-beta.html)
 - [Ember Typescript Code Coverage - how to gist](https://gist.github.com/lifeart/5f75981d5f6262d1bfc4525aebfcf7d5)
 - [Type-Informed Design](https://www.chriskrycho.com/2018/type-informed-design.html)
-- [Typing Your Ember.js](https://www.chriskrycho.com/typing-your-ember.html) - エマーサイドとTypeScriptの組み合わせ
+- [Typing Your Ember.js](https://www.chriskrycho.com/typing-your-ember.html) - Ember.jsでTypeScriptを利用
 - [Ember.js, TypeScript, and Class Properties](https://www.chriskrycho.com/2018/ember-ts-class-properties.html)
 - [Set your Ember.js project up to use TypeScript](http://www.chriskrycho.com/2017/typing-your-ember-part-1.html)
 - [Class properties — some notes on how things differ from the Ember.Object world](https://www.chriskrycho.com/2018/typing-your-ember-update-part-2.html)
 - [Computed properties, actions, mixins, and class methods](https://www.chriskrycho.com/2018/typing-your-ember-update-part-3.html)
 - [Using Ember Data, and service and controller injections improvements](https://www.chriskrycho.com/2018/typing-your-ember-update-part-4.html)
 
-### Articles Modern Testing
+### 現代的なテストの記事<a id="articles-modern-testing"></a>
 - [Using Fakes from Ember-Sinon-QUnit](https://medium.com/@mudflye/using-fakes-from-ember-sinon-qunit-c9fb7d4d9b1d)
 - [Headless Ember.js Tests in GitLab with Docker](https://medium.com/devopslinks/headless-ember-tests-in-gitlab-with-docker-fd5f05eef436)
 - [Making my Ember.js test suite 3x faster. A story about Mirage](https://mlange.io/blog/making-tests-faster-mirage/making-tests-faster-mirage/)
@@ -951,12 +813,12 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Write Tests Like a Mathematician: Part 3](https://crunchingnumbers.live/2019/10/11/write-tests-like-a-mathematician-part-3/)
 - [Setting up Coveralls for your Ember Addons](http://hangaroundtheweb.com/2020/05/setting-up-coveralls-for-your-ember-addons/)
 
-### Articles FastBoot
+### FastBootの記事<a id="articles-fastboot"></a>
 - [How to integrate Ember FastBoot in Cloud Functions for Firebase](https://cenchat.com/blog/2019/06/06/how-to-setup-ember-fastboot-in-cloud-functions-for-firebase.html)
 - [Ember FastBoot + Google App Engine](https://pulletsforever.com/ember-fastboot-google-app-engine-1d38e1e3ffc2)
 - [Deploying FastBoot apps with ember-cli-deploy](https://www.effective-ember.com/blog/deploying-fastboot-apps-with-ember-cli-deploy)
 
-### Articles about Data
+### データ関連の記事<a id="articles-about-data"></a>
 - [Managing Relations in Ember Data with JSON API](https://www.mediasuite.co.nz/blog/managing-relations-ember-data-json-api/)
 - [Creating a Default Record When a belongsTo Request Errors](https://shipshape.io/blog/ember-data-belongs-to-find-or-create/)
 - [The case against async relationships in Ember Data](https://embermap.com/notes/83-the-case-against-async-relationships)
@@ -970,26 +832,26 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Cascade Deleting Relationships in Ember Data](https://davidtang.io/2017/02/10/cascade-deleting-relationships-in-ember-data.html)
 - [Fit Any Backend Into Ember with Custom Adapters & Serializers](https://emberigniter.com/fit-any-backend-into-ember-custom-adapters-serializers/)
 
-### Articles about Routing
+### ルーティングの記事<a id="articles-about-routing"></a>
 - [How to reset the Ember.js router namespace with this.route()](http://toddsmithsalter.com/how-to-reset-the-route-namespace-with-this-route/)
 - [Ember.js-Router Wildcard/Globbing Routes](https://www.tutorialspoint.com/emberjs/route_glbng_rut.htm)
 - [Ember.js.Route redirecting ‘/’ to ‘/my-own’](https://medium.com/ember-titbits/quest-4-ember-route-defaulting-to-my-own-f22b0dcb336f)
 
-### Yarn in Ember Articles
+### EmberでのYarn利用の記事<a id="yarn-in-ember-articles"></a>
 - [Ember.js and Yarn Workspaces](https://medium.com/square-corner-blog/ember-and-yarn-workspaces-fca69dc5d44a)
 
-### Best-practices
+### ベストプラクティス<a id="best-practices"></a>
 
 - [ember-best-practices](https://github.com/ember-best-practices)
 - [An Ember.js Debugging Flowchart](https://www.mutuallyhuman.com/blog/2016/08/12/an-ember-debugging-flowchart)
 - [Built-in input helpers in Ember.js: when should they be used?](https://balinterdi.com/blog/built-in-input-helpers-in-ember-js-when-and-whether-they-should-be-used/)
 
-### Nice to know
+### 知っておくと役立つこと<a id="nice-to-know"></a>
 
 - [Codemods](https://caseywatts.com/2018/08/23/codemods.html)
 - [Creating runtime assisted Codemods using Telemetry helpers](http://hangaroundtheweb.com/2019/10/creating-runtime-assisted-codemods-using-telemetry-helpers/)
 
-### Blogs
+### ブログ<a id="blogs"></a>
 
 - [lost-in-technology.com](https://www.lost-in-technology.com/blog/)
 - [TODAY I LEARNED / Ember.js](https://til.hashrocket.com/emberjs)
@@ -999,7 +861,7 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [201-created.com](https://blog.201-created.com/)
 - [airpair.com](https://www.airpair.com/ember.js)
 - [alexdiliberto.com](https://alexdiliberto.com/)
-- [balinterdi.com](https://balinterdi.com/blog/) - バルインタ・エルディのブログ
+- [balinterdi.com](https://balinterdi.com/blog/) - Balint Erdiのブログ
 - [codeburst.io](https://codeburst.io/tagged/emberjs)
 - [codementor.io](https://www.codementor.io/community/topic/emberjs)
 - [dockyard.com](https://dockyard.com/blog/categories/ember)
@@ -1009,66 +871,66 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [hackernoon.com](https://hackernoon.com/tagged/ember)
 - [lolma.us](https://lolma.us/en/blog)
 - [madhatted.com](https://madhatted.com/)
-- [medium.com/ember-ish](https://medium.com/ember-ish) - 初心者および中級開発者向けエマーサイドの基本知識
+- [medium.com/ember-ish](https://medium.com/ember-ish) - 初心者と中級開発者向けのEmber.jsの基礎
 - [netguru.co](https://www.netguru.co/blog/topic/ember-js)
-- [programwitherik.com](https://www.programwitherik.com) - エマーサイドチュートリアル
+- [programwitherik.com](https://www.programwitherik.com) - Ember.jsのチュートリアル
 - [rwjblue.com](http://rwjblue.com/)
 - [shipshape.io](https://shipshape.io/blog/)
 - [simplabs.com](https://simplabs.com/blog/)
 - [thejsguy.com](https://thejsguy.com/)
 
-### Books
+### 書籍<a id="books"></a>
 
 - [The Shortest Ember.js Book](https://github.com/ember-learn/the-shortest-ember-book)
 - [A deep dive into the Ember.js runloop](https://github.com/eoinkelly/ember-runloop-handbook)
 - [Developing an Ember.js Edge](https://gumroad.com/l/xlsx)
 - [Ember Data in the Wild](https://leanpub.com/emberdatainthewild)
-- [ember-cli 101](https://leanpub.com/ember-cli-101) - アドロフ・ブイレスによる
-- [Ember.js for Artisans](https://leanpub.com/emberforartisans) - ラーバーで支えられたシングルページアプリケーションの作成
-- [Ember.js in Action](http://manning.com/skeie/) - ジョアキム・ハーゲン・スケイによる
+- [ember-cli 101](https://leanpub.com/ember-cli-101) - 著者：Adolfo Builes
+- [Ember.js for Artisans](https://leanpub.com/emberforartisans) - Laravelをバックエンドとするシングルページアプリケーションの作成
+- [Ember.js in Action](http://manning.com/skeie/) - 著者：Joachim Haagen Skeie
 - [Professor Frisby's Mostly adequate guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide-old/)
 - [Rock and Roll with Ember.js](http://rockandrollwithemberjs.com/)
 - [Ember.js Book (RU)](https://leanpub.com/ember-book)
 - [Pragmatic, balanced FP in JavaScript](https://github.com/getify/Functional-Light-JS)
 
-### Cheatsheets
+### チートシート<a id="cheatsheets"></a>
 
 - [API](https://emberjs.com/api/)
 - [Glimmer.js](https://glimmerjs.com/)
-- [guides](https://guides.emberjs.com/)
-- [Ember Component Cheat Sheet](https://codingitwrong.com/2019/07/23/ember-component-cheat-sheet.html) - オクターン以前
+- [ガイド](https://guides.emberjs.com/)
+- [Ember Component Cheat Sheet](https://codingitwrong.com/2019/07/23/ember-component-cheat-sheet.html) - Octane以前
 
-### Codemods
-- [ember-es6-class-codemod](https://github.com/scalvert/ember-es6-class-codemod) - エマーサイドオブジェクトをES6ネイティブクラスに変換するためのcodemod-cliプロジェクト
-- [ember-native-class-codemod](https://github.com/ember-codemods/ember-native-class-codemod) - エマーサイドアプリコードをネイティブJavaScriptクラス構文とデコレーターに変換するためのcodemod!
-- [ember-cli-mirage-faker-codemod](https://github.com/caseywatts/ember-cli-mirage-faker-codemod) - このcodemodは、ember-cli-mirageを介してfakerをインポートしている状態から、直接fakerからインポートするように移行を支援します。
-- [ember-mocha-codemods](https://github.com/Turbo87/ember-mocha-codemods) - ember-mocha向けのcodemodスクリプト。
-- [ember-module-migrator](https://github.com/rwjblue/ember-module-migrator) - 新しいEmber.jsアプリケーションレイアウト向けの自動移行。
-- [ember-qunit-codemod](https://github.com/rwjblue/ember-qunit-codemod) - このcodemodは、ember-qunit@2の古いmoduleFor*構文から新しい構文に自動的に変換することを目的としています。
-- [ember-test-helpers-codemod](https://github.com/simonihmig/ember-test-helpers-codemod) - Ember.jsのテストを@ember/test-helpersを使用するように変換するためのcodemod。
-- [es5-getter-ember-codemod](https://github.com/rondale-sc/es5-getter-ember-codemod) - このcodemodは、getおよびgetPropertiesの使用を、従来のオブジェクトドット記法に自動的に変換することを目的としています。
-- [qunit-dom-codemod](https://github.com/simplabs/qunit-dom-codemod) - 基本的なcodemodで、あなたのアサーションをqunit-domアサーションに自動的に変換します。
-- [test-selectors-codemod](https://github.com/lorcan/test-selectors-codemod) - ember-test-selectorsのtestSelectorヘルパーの非推奨化を修正するためのcodemod。
-- [ember-on-codemod](https://github.com/craigbilner/ember-on-codemod) - Ember.onの使用を置き換える。
-- [ember-memory-leaks-codemod](https://github.com/rajasegar/ember-memory-leaks-codemod) - Ember.jsアプリケーションにおけるメモリリークを修正するためのcodemodのコレクション。
-- [ember-3x-codemods](https://github.com/rajasegar/ember-3x-codemods) - Ember.js 3.xの非推奨化を解決するための変換を含むcodemod。
-- [ember-computed-getter-codemod](https://github.com/Alonski/ember-computed-getter-codemod) - Ember.jsのComputed Getter codemod。
+### codemod<a id="codemods"></a>
+- [ember-es6-class-codemod](https://github.com/scalvert/ember-es6-class-codemod) - Ember.jsのオブジェクトをES6ネイティブクラスへ変換するcodemod-cliプロジェクト
+- [ember-native-class-codemod](https://github.com/ember-codemods/ember-native-class-codemod) - Emberアプリケーションのコードを、デコレーター付きのネイティブJavaScriptクラス構文へ変換するcodemod
+- [ember-cli-mirage-faker-codemod](https://github.com/caseywatts/ember-cli-mirage-faker-codemod) - ember-cli-mirage経由でfakerをインポートする方式から、fakerから直接インポートする方式への移行を支援
+- [ember-mocha-codemods](https://github.com/Turbo87/ember-mocha-codemods) - ember-mocha用のcodemodスクリプト
+- [ember-module-migrator](https://github.com/rwjblue/ember-module-migrator) - 新しいEmber.jsアプリケーションの配置への自動移行
+- [ember-qunit-codemod](https://github.com/rwjblue/ember-qunit-codemod) - ember-qunit@2の古いmoduleFor*構文から新しい構文へプロジェクトを自動変換
+- [ember-test-helpers-codemod](https://github.com/simonihmig/ember-test-helpers-codemod) - Ember.jsのテストを@ember/test-helpersを使う形へ変換するcodemod
+- [es5-getter-ember-codemod](https://github.com/rondale-sc/es5-getter-ember-codemod) - getとgetPropertiesの使用を、通常のオブジェクトのドット記法へ自動変換
+- [qunit-dom-codemod](https://github.com/simplabs/qunit-dom-codemod) - アサーションをqunit-domのアサーションへ自動変換するcodemod
+- [test-selectors-codemod](https://github.com/lorcan/test-selectors-codemod) - ember-test-selectorsのtestSelectorヘルパーの非推奨化に対応するcodemod
+- [ember-on-codemod](https://github.com/craigbilner/ember-on-codemod) - Ember.onの使用を置き換える
+- [ember-memory-leaks-codemod](https://github.com/rajasegar/ember-memory-leaks-codemod) - Ember.jsアプリケーションのメモリリークを修正するcodemod集
+- [ember-3x-codemods](https://github.com/rajasegar/ember-3x-codemods) - Ember.js 3.xの非推奨機能へ対処する変換をまとめたcodemod
+- [ember-computed-getter-codemod](https://github.com/Alonski/ember-computed-getter-codemod) - Ember.jsのComputed Getter用codemod
 
-### Community
+### コミュニティ<a id="community"></a>
 
-- [Forum](http://discuss.emberjs.com/)
-- [GitHub issues](https://github.com/emberjs/ember.js/issues)
+- [フォーラム](http://discuss.emberjs.com/)
+- [GitHubのIssue](https://github.com/emberjs/ember.js/issues)
 - [Reddit](https://www.reddit.com/r/emberjs/)
 - [Slack](https://embercommunity.slack.com)
 - [Stack Overflow](http://stackoverflow.com/questions/tagged/ember.js)
 - [Telegram](https://t.me/ember_js)
 
-### Contribution Guides
+### Emberコミュニティへの参加ガイド<a id="contribution-guides"></a>
 
 - [How to contribute to the ember times - part1](https://www.kennethlarsen.org/how-to-contribute-to-the-ember-times)
 - [How to contribute ember release post - part2](https://www.kennethlarsen.org/how-to-contribute-ember-release-post)
 
-### Courses
+### 講座<a id="courses"></a>
 
 - [embermap.com](https://embermap.com)
 - [Emberschool.com](https://www.emberschool.com)
@@ -1076,12 +938,12 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Frontend Masters: Advanced Ember.js 2.x - Mike North](https://frontendmasters.com/courses/advanced-ember-2/)
 - [Frontend Masters: Ember.js 2.x - Mike North](https://frontendmasters.com/courses/ember-2/)
 
-### Discovery
+### 関連資料の探索<a id="discovery"></a>
 
-- [emberobserver](https://emberobserver.com/) - Ember Observer。
-- [emberjs.GitHub.io/rfcs/](https://emberjs.github.io/rfcs/) - Ember.js RFCs。
+- [emberobserver](https://emberobserver.com/) - Ember Observer
+- [emberjs.GitHub.io/rfcs/](https://emberjs.github.io/rfcs/) - Ember.jsのRFC
 
-### Ember Releases
+### Emberのリリース<a id="ember-releases"></a>
 
 - [Ember 3.10 Released](https://blog.emberjs.com/2019/05/21/ember-3-10-released.html) - 2019年5月21日
 - [Ember 3.11](https://blog.emberjs.com/2019/07/15/ember-3-11-released.html) - 2019年7月15日
@@ -1097,65 +959,63 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Ember 3.21](https://blog.emberjs.com/2020/09/02/ember-3-21-released.html) - 2020年9月2日
 - [Ember 3.22](https://blog.emberjs.com/2020/10/20/ember-3-22-released.html) - 2020年10月20日
 
-### Examples
-- [A list of open source Ember.js apps](https://github.com/EmberSherpa/open-source-ember-apps)
-- [Simple contact manager demo app for ember-orbit](https://github.com/cerebris/peeps-ember-orbit)
-- [API Docs](https://github.com/ember-learn/ember-api-docs) - このアプリケーションは、バージョン管理されたAPIドキュメントを表示するためのものである。
-- [guides-app](https://github.com/ember-learn/guides-app) - emberjs/guides および Ember.js ドキュメントの代替アプリケーション。
-- [Builds](https://github.com/ember-learn/builds) - Ember.js チームがさまざまなリリースチャンネルを表示するためのアプリケーション。
-- [HospitalRun](https://github.com/HospitalRun/hospitalrun-frontend) - HospitalRun [hospitalrun.io](http://hospitalrun.io/) の Ember.js フロントエンド。
-- [Rancher](https://github.com/rancher/ui) - [Rancher](http://rancher.com) は Kubernetes のエンタープライズ管理ツール。
-- [Super Rentals](https://github.com/ember-learn/super-rentals) - Super Rentals は、Ember.js の使い方を理解するための良いスタートプロジェクト。
-- [Travis CI](https://github.com/travis-ci/travis-web) - [Travis CI](https://travis-ci.org/) の Ember.js ワンダークライアント。
-- [Vault](https://github.com/hashicorp/vault/tree/master/ui/app) - シークレットを管理するツール（Hashicorp）。
-- [ember-osf-web](https://github.com/CenterForOpenScience/ember-osf-web) - Open Science Framework の Ember.js フロントエンド。
-- [ember-graphql-examples](https://github.com/chadian/ember-graphql-examples) - Ember.js で GraphQL を使う例。
-- [ember-rolodex](https://github.com/rtablada/ember-rolodex) - Quick Start から Super Rents までの Ember.js チュートリアルの例。
+### 実装例<a id="examples"></a>
+- [オープンソースのEmber.jsアプリケーション一覧](https://github.com/EmberSherpa/open-source-ember-apps)
+- [ember-orbit用の連絡先管理デモアプリケーション](https://github.com/cerebris/peeps-ember-orbit)
+- [API Docs](https://github.com/ember-learn/ember-api-docs) - バージョン別のAPIドキュメントを表示するために構築されたアプリケーション
+- [guides-app](https://github.com/ember-learn/guides-app) - emberjs/guidesとEmber.js Guidesの代替アプリケーション
+- [Builds](https://github.com/ember-learn/builds) - 各種リリースチャンネルを表示するためにEmber.jsチームが構築したアプリケーション
+- [HospitalRun](https://github.com/HospitalRun/hospitalrun-frontend) - HospitalRunのEmber.jsフロントエンド：[hospitalrun.io](http://hospitalrun.io/)
+- [Rancher](https://github.com/rancher/ui) - Kubernetesの企業向け管理を行う[Rancher](http://rancher.com)
+- [Super Rentals](https://github.com/ember-learn/super-rentals) - Ember.jsでの開発方法に慣れるための入門プロジェクト
+- [Travis CI](https://github.com/travis-ci/travis-web) - [Travis CI](https://travis-ci.org/)のEmber.jsウェブクライアント
+- [Vault](https://github.com/hashicorp/vault/tree/master/ui/app) - シークレットを管理するツール（Hashicorp）
+- [ember-osf-web](https://github.com/CenterForOpenScience/ember-osf-web) - Open Science FrameworkのEmber.jsフロントエンド
+- [ember-graphql-examples](https://github.com/chadian/ember-graphql-examples) - Ember.jsでGraphQLを使う実装例
+- [ember-rolodex](https://github.com/rtablada/ember-rolodex) - Quick StartとSuper Rentsの間を埋めるEmber.jsチュートリアルの実装例
 - [ember-styleguide](https://github.com/ember-learn/ember-styleguide)
 - [Ghost Admin Client](https://github.com/TryGhost/Ghost-Admin)
-- [emberclear](https://github.com/NullVoxPopuli/emberclear) - 暗号化チャット。履歴なし。ログなし。＋MU & TS。
-- [Ember.js nested engines example app + Fastboot.](https://github.com/catz/eng-test)
-- [Percy's frontend web application, built with Ember.js.](https://github.com/percy/percy-web)
-- [Fire Tracker](https://github.com/SCPR/fire-tracker) - KPCCがカリフォルニアの火災を追跡・調査するためのツール。
-- [skylines-project](https://github.com/skylines-project/skylines/tree/master/ember) - ライブトラッキング、飛行データベースおよび競技フレームワーク
+- [emberclear](https://github.com/NullVoxPopuli/emberclear) - 暗号化チャット。履歴なし。ログなし。MU & TS。
+- [入れ子のEmber.jsエンジンとFastBootの実装例](https://github.com/catz/eng-test)
+- [Ember.jsで構築されたPercyのウェブフロントエンド](https://github.com/percy/percy-web)
+- [Fire Tracker](https://github.com/SCPR/fire-tracker) - カリフォルニアの山火事を追跡・調査するKPCCのツール
+- [skylines-project](https://github.com/skylines-project/skylines/tree/master/ember) - リアルタイム追跡、飛行データベース、競技用フレームワーク
 - [PIX](https://github.com/1024pix/pix-editor) - PIX
 - [ember-monorepo-demo](https://github.com/lennyburdette/ember-monorepo-demo)
 - [documize.com](https://github.com/documize/community)
 - [New York City Census Reporting Tool](https://github.com/NYCPlanning/labs-factfinder)
-- [Medicine Inventory](https://github.com/aalasolutions/ember-medical-inventory) - Ember CLI、Corber.io、ember-element-uiを使用したサンプルアプリケーション
-- [octane-ecommerce](https://github.com/betocantu93/octane-ecommerce) - エマーブ Octane + FastBoot + Algolia + PayPal + Formspree ([s](https://docs.google.com/presentation/d/1YaG26Fj-tVjyFV8LvQJkfIH89-HYdkfHfhdRz3bC2-k/edit#slide=id.g56ccd9a7f0_0_33), [v](https://www.youtube.com/watch?v=KnkWs18V9dA&feature=youtu.be), [d](https://octane-ecommerce.herokuapp.com/))。
-- [Rust Package Registry](https://github.com/rust-lang/crates.io) - [crates.io](https://crates.io)
-- [Ember.js RealWorld Implementation](https://github.com/gothinkster/ember-realworld) - Ember.jsコードベースで実世界の例（CRUD、認証、高度なパターンなど）を含み、RealWorld仕様およびAPIに準拠したアプリケーション
+- [Medicine Inventory](https://github.com/aalasolutions/ember-medical-inventory) - Ember CLI、Corber.io、ember-element-uiを使って開発したサンプルアプリケーション
+- [octane-ecommerce](https://github.com/betocantu93/octane-ecommerce) - Ember Octane + FastBoot + Algolia + PayPal + Formspree（[スライド](https://docs.google.com/presentation/d/1YaG26Fj-tVjyFV8LvQJkfIH89-HYdkfHfhdRz3bC2-k/edit#slide=id.g56ccd9a7f0_0_33)、[動画](https://www.youtube.com/watch?v=KnkWs18V9dA&feature=youtu.be)、[デモ](https://octane-ecommerce.herokuapp.com/)）
+- [Rustパッケージレジストリ](https://github.com/rust-lang/crates.io) - [crates.io](https://crates.io)
+- [Ember.js RealWorld Implementation](https://github.com/gothinkster/ember-realworld) - RealWorldの仕様とAPIに準拠したEmber.jsコードベース。CRUD、認証、高度なパターンなど、実践的な実装例を収録
 - [A wild tomster appears](https://github.com/scudco/tomsweeper)
-- [An ember integration for building visual programming editors with blockly.](https://github.com/Program-AR/ember-blockly)
+- [Blocklyでビジュアルプログラミングエディターを構築するためのEmber統合](https://github.com/Program-AR/ember-blockly)
 - [https://www.submarinecablemap.com/](https://www.submarinecablemap.com/)
 - [https://music.apple.com/](https://music.apple.com/)
 - [https://creator.emojible.store/](https://creator.emojible.store/)
 
+### Glimmerの実装例<a id="examples-glimmer"></a>
+- [breethe-client](https://github.com/simplabs/breethe-client) - 世界各地の空気質データ
+- [Glimmeroids](https://github.com/t-sauer/Glimmeroids) - Glimmer.jsによるAsteroidsの実装
+- [glimmer-hn-pwa](https://github.com/mhadaily/glimmer-hn-pwa) - Glimmer.jsによるHacker NewsのPWAデモ
+- [the-chosen](https://github.com/FLarra/the-chosen) - 学習と、スクラムのデイリーミーティングで次に状況を報告する人の選択に向けて作成したGlimmer.jsプロジェクト
+- [glimmer_eats](https://github.com/James-Byrne/glimmer_eats) - Glimmer.jsで構築したPWAデモ
+- [built-with-spaghetti](https://github.com/gordonbisnor/built-with-spaghetti) - ウェブアートへの入口として機能することを目指すBuilt with Spaghetti
+- [glimmer-live-chat](https://github.com/rajasegar/glimmer-live-chat) - Glimmer.jsで構築したライブチャットアプリケーション
+- [glimmer-synth](https://github.com/jimenglish81/glimmer-synth) - WebAudioとGlimmer.jsで構築したシンセサイザー
+- [glimmer-js-online-offline-demo](https://github.com/thomasbrus/glimmer-js-online-offline-demo) - オンライン・オフラインのブラウザーイベントを扱うGlimmer.jsのサンプルアプリケーション
+- [glimmer-qrious](https://github.com/c0urg3tt3/glimmer-qrious) - QRiousライブラリを使ってウェブページにQRコードを生成するGlimmer.jsコンポーネント
+- [glimmerjs-address-book-demo](https://github.com/ttdonovan/glimmerjs-address-book-demo) - Glimmer.jsアプリケーションの実装例：アドレス帳デモ
+- [glimmer-dashboard](https://github.com/JustInToCoding/glimmer-dashboard) - Glimmer.jsのダッシュボード実装例
+- [glimmer-redux-todo](https://github.com/bashmach/glimmer-redux-todo) - Glimmer.jsとReduxで書かれたTodoアプリケーション
+- [glimmer-pong](https://github.com/knownasilya/glimmer-pong) - Glimmer.jsとSVGで書かれたPongゲーム
+- [glimmer-material](https://github.com/cyk/glimmer-material) - Material Components for the WebのGlimmer.jsラッパー
+- [glimmer-of-life](https://github.com/trentmwillis/glimmer-of-life) - Glimmer.jsによるConwayのライフゲームの実装
+- [vorfreude](https://github.com/chadian/vorfreude) - 待ちきれないが待たなければならないときに
+- [endless-hoops](https://github.com/mtmckenna/endless-hoops) - JavaScript・Canvas・Glimmer.jsで書かれたバスケットボールゲーム
+- [glimmer-hangman](https://github.com/BenSchoenmakers94/glimmer-hangman) - Glimmer.jsによるHangmanゲームの実装
 
-### Examples Glimmer
-- [breethe-client](https://github.com/simplabs/breethe-client) - 世界中の場所の空気質データ
-- [Glimmeroids](https://github.com/t-sauer/Glimmeroids) - Glimmer.jsを使用したアステロイドの実装
-- [glimmer-hn-pwa](https://github.com/mhadaily/glimmer-hn-pwa) - Glimmer.jsで構築されたHacker Newsのプログレッシブウェブアプリのデモンストレーション
-- [the-chosen](https://github.com/FLarra/the-chosen) - スクラムディアリーの会議中に、誰が次のステータスを共有するかを判断しやすくするために作成されたGlimmer.jsプロジェクト
-- [glimmer_eats](https://github.com/James-Byrne/glimmer_eats) - Glimmer.jsで構築されたデモPWA
-- [built-with-spaghetti](https://github.com/gordonbisnor/built-with-spaghetti) - Spaghettiで構築されたアプリは、ウェブアートへのゲートウェイとして機能するように設計されている
-- [glimmer-live-chat](https://github.com/rajasegar/glimmer-live-chat) - Glimmer.jsを使用したライブチャットアプリケーション
-- [glimmer-synth](https://github.com/jimenglish81/glimmer-synth) - WebAudioとGlimmer.jsを使用したシンセサイザー
-- [glimmer-js-online-offline-demo](https://github.com/thomasbrus/glimmer-js-online-offline-demo) - Glimmer.jsサンプルアプリ：オンライン／オフラインブラウザイベント
-- [glimmer-qrious](https://github.com/c0urg3tt3/glimmer-qrious) - QRiousライブラリを使用してウェブページにQRコードを生成するGlimmer.jsコンポーネント
-- [glimmerjs-address-book-demo](https://github.com/ttdonovan/glimmerjs-address-book-demo) - Glimmer.jsアプリケーションの例：アドレスブックデモ
-- [glimmer-dashboard](https://github.com/JustInToCoding/glimmer-dashboard) - Glimmer.jsダッシュボードの例
-- [glimmer-redux-todo](https://github.com/bashmach/glimmer-redux-todo) - Glimmer.jsとReduxを使用したタスクアプリ
-- [glimmer-pong](https://github.com/knownasilya/glimmer-pong) - Glimmer.jsとSVGを使用したパングゲーム
-- [glimmer-material](https://github.com/cyk/glimmer-material) - Material Components for the Web 用の Glimmer.js ワッパー
-- [glimmer-of-life](https://github.com/trentmwillis/glimmer-of-life) - Glimmer.js を使って実装した コーネルの「生命のゲーム」
-- [vorfreude](https://github.com/chadian/vorfreude) - 待てないときの言葉
-- [endless-hoops](https://github.com/mtmckenna/endless-hoops) - JavaScript/Canvas/Glimmer.js で書かれたバスケットボールゲーム
-- [glimmer-hangman](https://github.com/BenSchoenmakers94/glimmer-hangman) - Glimmer.js で実装された有名なゲーム「ハンズマン」
-
-
-### Gists
+### Gist<a id="gists"></a>
 - [Forwarding Named Blocks in Glimmer](https://gist.github.com/tomdale/bedb77662b19529f59154ec55e2f4a21)
 - [Multi Named Blocks](https://gist.github.com/pzuraq/0c16d7baef7237b62dfd7529d1969344)
 - [Accessing the Global App Object in an Ember CLI App](https://gist.github.com/lifeart/fcdc59e2aa6a3c78457fecd57e578aa9)
@@ -1177,7 +1037,7 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - ["Why Ember.js" Thoughts](https://gist.github.com/MelSumner/971ba6b7a3c0b01a4cb3a43d3b962dac)
 - [Ember.js approval requirements](https://gist.github.com/PoslinskiNet/2d7a05944ca3c468440a0faea153062b)
 
-### Gists Ember Data
+### Ember DataのGist<a id="gists-ember-data"></a>
 - [Mirage GraphQL example](https://gist.github.com/samselikoff/0e176a76e5be53cbb94e85020fc2b115)
 - [Ember Data | Useful helpers: push-deletion, push-payload](https://gist.github.com/runspired/96618af26fb1c687a74eb30bf15e58b6)
 - [Ember Data | Complex Attrs](https://gist.github.com/runspired/a4b56f7eefe9f8e04f7f0c83e4dfeaf0)
@@ -1192,60 +1052,60 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Ember Data | Nested save](https://gist.github.com/runspired/bc93f1c525837420f7b14d8cdcb2d36a)
 - [Ember Data | Cascade Delete](https://gist.github.com/runspired/e9ee98ccc89fad2a07d9c86f2541a763)
 
-### Miscellaneous
+### その他<a id="miscellaneous-1"></a>
 
-- [builtwithember](http://builtwithember.io/) - Ember.js で動くアプリケーション
-- [emberwatch](https://github.com/emberwatch) - Ember.js コンテンツのコミュニティハブ
+- [builtwithember](http://builtwithember.io/) - Ember.jsで動作するアプリケーション
+- [emberwatch](https://github.com/emberwatch) - Ember.js関連コンテンツのコミュニティ拠点
 
-### Newsletters
+### ニュースレター<a id="newsletters"></a>
 
-- [Ember Weekly](http://www.emberweekly.com/) - Ember.js の最新ニュース、ヒント、コードがあなたのインボックスに直接届けられます
-- [Official Ember Blog](https://emberjs.com/blog/) - 大きな発表、新しい Ember.js バージョンのリリースノートや、連邦議会の情報
-- [statusboard](https://emberjs.com/statusboard/) - STATUS BOARD
-- [The Ember Times](https://the-emberjs-times.ongoodbits.com/) - Ember.js 学習チームからのアップデート
+- [Ember Weekly](http://www.emberweekly.com/) - Ember.jsのニュース、ヒント、コードをメールで配信
+- [Ember公式ブログ](https://emberjs.com/blog/) - Ember.jsの新バージョンのリリースノートやプロジェクト全体の状況などの主な発表
+- [statusboard](https://emberjs.com/statusboard/) - 状況一覧
+- [The Ember Times](https://the-emberjs-times.ongoodbits.com/) - Ember.js Learning Teamからの更新情報
 
-### Podcasts
+### ポッドキャスト<a id="podcasts"></a>
 
 - [embermap](https://embermap.com/topics/the-embermap-podcast)
 - [emberweekend](https://emberweekend.com/episodes)
 
-### Sandboxes
-- [Ember Twiddle](https://ember-twiddle.com/) - 複数ファイルを扱える Ember.js Twiddle で、GitHub に作業を保存できます
-- [Ember @ Glitch](https://ember.glitch.me/) - Glitch.me と Ember.js
-- [Ember @ CodeSandbox](https://codesandbox.io/s/github/mike-north/ember-new-output) - CodeSandbox と Ember.js
-- [Ember Octane @ CodeSandbox](https://codesandbox.io/s/octane-starter-li841) - Ember Octane CodeSuki テンプレート
+### 試せる環境<a id="sandboxes"></a>
+- [Ember Twiddle](https://ember-twiddle.com/) - 複数のファイルを扱え、GitHubに作業を保存できるEmber.jsの実行環境
+- [Ember @ Glitch](https://ember.glitch.me/) - Glitch.meでEmber.jsを利用
+- [Ember @ CodeSandbox](https://codesandbox.io/s/github/mike-north/ember-new-output) - CodeSandboxでEmber.jsを利用
+- [Ember Octane @ CodeSandbox](https://codesandbox.io/s/octane-starter-li841) - Ember Octane用のCodeSandboxテンプレート
 
-### Screencasts
+### スクリーンキャスト<a id="screencasts"></a>
 
 - [BuildLab: Ember.js Screencasts for the determined.](https://www.youtube.com/channel/UC1ssGKlQh87Ubyuv1lEiY0g)
-- [Ember Screencasts](https://www.emberscreencasts.com/) - 忙しい開発者のための週間スクリーンキャスト
-- [EmberCasts](http://www.embercasts.com/) - 次のバージョンの Handlebars を作成中であるため、一時中断中
-- [EmberWatch - Screencasts](http://emberwatch.com/screencasts.html) - Ember.js のスクリーンキャスト一覧
+- [Ember Screencasts](https://www.emberscreencasts.com/) - 忙しい開発者向けの毎週のスクリーンキャスト
+- [EmberCasts](http://www.embercasts.com/) - 原リストでは、作者がHandlebarsの次の版に取り組む間は休止中と記載
+- [EmberWatch - Screencasts](http://emberwatch.com/screencasts.html) - Ember.jsのスクリーンキャスト集
 - [Community Groups App - Creating Records in Ember CLI Mirage (part 2a)](https://www.youtube.com/watch?v=4iqNcTUXurY)
 - [Community Groups App - Creating Records in Ember CLI Mirage (part 2b)](https://www.youtube.com/watch?v=eAI1LxgSOqw)
 - [Community Groups App - Debugging relationships in Ember CLI Mirage (part 3)](https://www.youtube.com/watch?time_continue=1&v=DRzPJ4RMT0w)
 
-### Slides
+### スライド<a id="slides"></a>
 
-- [30 Days Of Ember](https://slides.com/poslinski_net/30-days-of-ember) - ダヴィド・ポスリンスキー。
-- [NaNoWriMo: How can Ember help you write a novel](https://slides.com/emma_be/nanowrimo-ember#/) - @EmmaDelecolle
-- [Slides from Ember JS Berlin talk, Design Patterns in Ember](https://github.com/chadian/ember-js-berlin-design-patterns) - @chadian による投稿
-- [Rainy Day Ember Data](https://speakerdeck.com/tonywok/rainy-day-ember-data) - Tony Schneider (@tonywok) による投稿
-- [Building Realtime Apps with Ember.js and WebSockets](https://www.slideshare.net/BenLimmer/building-realtime-apps-with-emberjs-and-websockets) - Ben Limmer による投稿
-- [Deploying a Location-Aware Ember Application](https://www.slideshare.net/BenLimmer/deploying-a-locationaware-ember-application) -  Ben Limmer による投稿
-- [Developing Desktop Apps with Electron & Ember.js - FITC WebU2017](https://www.slideshare.net/anulman/developing-desktop-apps-with-electron-emberjs-fitc-webu2017) - Aidan Nulman による投稿
+- [30 Days Of Ember](https://slides.com/poslinski_net/30-days-of-ember) - 発表者：Dawid Pośliński
+- [NaNoWriMo: How can Ember help you write a novel](https://slides.com/emma_be/nanowrimo-ember#/) - 発表者：@EmmaDelecolle
+- [Slides from Ember JS Berlin talk, Design Patterns in Ember](https://github.com/chadian/ember-js-berlin-design-patterns) - 発表者：@chadian
+- [Rainy Day Ember Data](https://speakerdeck.com/tonywok/rainy-day-ember-data) - 発表者：Tony Schneider（@tonywok）
+- [Building Realtime Apps with Ember.js and WebSockets](https://www.slideshare.net/BenLimmer/building-realtime-apps-with-emberjs-and-websockets) - 発表者：Ben Limmer
+- [Deploying a Location-Aware Ember Application](https://www.slideshare.net/BenLimmer/deploying-a-locationaware-ember-application) - 発表者：Ben Limmer
+- [Developing Desktop Apps with Electron & Ember.js - FITC WebU2017](https://www.slideshare.net/anulman/developing-desktop-apps-with-electron-emberjs-fitc-webu2017) - 発表者：Aidan Nulman
 - [Developing Desktop Apps with Electron & Ember.js](https://www.slideshare.net/fitc_slideshare/developing-desktop-apps-with-electron-emberjs)
-- [Ember addons, served three ways](https://www.slideshare.net/mikelnorth/ember-addons-served-three-ways) - Mike North による投稿
-- [Ember At Scale](https://www.slideshare.net/chadhietala/ember-at-scale) - Chad Hietala, LinkedIn による投稿
-- [EmberConf 2015 – Ambitious UX for Ambitious Apps](https://www.slideshare.net/sugarpirate/emberconf-2015-ambitious-ux-for-ambitious-apps) - Lauren Elizabeth Tan による投稿
-- [EmberConf 2016 – Idiomatic Ember: Finding the Sweet Spot of Performance & Productivity](https://www.slideshare.net/sugarpirate/emberconf-2016-idiomatic-ember-finding-the-sweet-spot-of-performance-productivity) - Lauren Elizabeth Tan による投稿
-- [Fun with Ember 2.x Features](https://www.slideshare.net/BenLimmer/fun-with-ember-2x-features) - Ben Limmer による投稿
-- [How do I Even Web App](https://www.slideshare.net/lydiaguarino/how-do-i-even-web-app) - Lydia Guarino による『Ember CLI を使ってウェブプログラミングを学ぶ』
-- [Rapid prototyping and easy testing with ember cli mirage](https://www.slideshare.net/KrzysztofBiaek1/rapid-prototyping-and-easy-testing-with-ember-cli-mirage) -  Krzysztof Bialek による投稿
-- [Start Me Up - Building an MVP with EmberJS, Firebase and Material Design](https://www.slideshare.net/PickNBook/start-me-up-building-an-mvp-with-emberjs-firebase-and-material-design) - Brendan O'Hara による投稿
-- [Upgrading Ember.js Apps](https://www.slideshare.net/BenLimmer/upgrading-emberjs-apps) - Ben Limmer による投稿
+- [Ember addons, served three ways](https://www.slideshare.net/mikelnorth/ember-addons-served-three-ways) - 発表者：Mike North
+- [Ember At Scale](https://www.slideshare.net/chadhietala/ember-at-scale) - 発表者：Chad Hietala（LinkedIn）
+- [EmberConf 2015 – Ambitious UX for Ambitious Apps](https://www.slideshare.net/sugarpirate/emberconf-2015-ambitious-ux-for-ambitious-apps) - 発表者：Lauren Elizabeth Tan
+- [EmberConf 2016 – Idiomatic Ember: Finding the Sweet Spot of Performance & Productivity](https://www.slideshare.net/sugarpirate/emberconf-2016-idiomatic-ember-finding-the-sweet-spot-of-performance-productivity) - 発表者：Lauren Elizabeth Tan
+- [Fun with Ember 2.x Features](https://www.slideshare.net/BenLimmer/fun-with-ember-2x-features) - 発表者：Ben Limmer
+- [How do I Even Web App](https://www.slideshare.net/lydiaguarino/how-do-i-even-web-app) - Lydia Guarinoによる、Ember CLIを使ったウェブプログラミング入門
+- [Rapid prototyping and easy testing with ember cli mirage](https://www.slideshare.net/KrzysztofBiaek1/rapid-prototyping-and-easy-testing-with-ember-cli-mirage) - 発表者：Krzysztof Bialek
+- [Start Me Up - Building an MVP with EmberJS, Firebase and Material Design](https://www.slideshare.net/PickNBook/start-me-up-building-an-mvp-with-emberjs-firebase-and-material-design) - 発表者：Brendan O'Hara
+- [Upgrading Ember.js Apps](https://www.slideshare.net/BenLimmer/upgrading-emberjs-apps) - 発表者：Ben Limmer
 
-### Styleguides
+### スタイルガイド<a id="styleguides"></a>
 
 - [ember-styleguide](https://github.com/ember-learn/ember-styleguide)
 - [Softlayer Ember.js](https://github.com/softlayer/ember-style-guide)
@@ -1253,31 +1113,31 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [DockYard Ember.js](https://github.com/DockYard/styleguides/blob/master/engineering/ember.md)
 - [JavaScript Style Guide](https://github.com/DockYard/styleguides/blob/master/engineering/javascript.md)
 
-### Tools
+### ツール<a id="tools"></a>
 
-- [Ember Data Sails Adapter](https://github.com/bmac/ember-data-sails-adapter) - Sails.js ソケット向けの Ember Data アダプタ
-- [Ember Data WordPress Adapter](https://github.com/HeyHumanAgency/Ember-Data-WordPress) - WordPress JSON API 向けの Ember Data アダプタ
-- [Ember Gist](http://ember-gist.joostdvrs.com/) - GitHub Gist を使って Ember CLI に似たアプリのデモ
-- [Ember Inspector](https://github.com/emberjs/ember-inspector) - Chrome または Firefox デベロッパーツールに Ember.js タブを追加し、アプリ内の Ember.js オブジェクトを確認できる。-公式で維持中
-- [Ember Perf](https://github.com/mike-north/ember-perf) - Ember.js アプリ内でユーザーが感じたパフォーマンスデータを測定
-- [ember-cli-diff](http://www.ember-cli-diff.org/) - 新しい Ember アプリの違いを確認できるシンプルなツール
-- [ember-cli](https://ember-cli.com/) - 野心的なウェブアプリケーション向けのコマンドラインインターフェース
-- [ember-data-model-maker](https://andycrum.github.io/ember-data-model-maker/) - Ember-Dataのモデルとパラメータの例を示すUI
-- [Glimmer Playground](https://try.glimmerjs.com/) - Glimmer.jsのプレイグランド
-- [mber](https://github.com/izelnakri/mber) - Ember CLIの代替品。現在はアルファ版。
-- [remote-inspector](https://github.com/joostdevries/ember-cli-remote-inspector) - ネットワーク上で異なるデバイス／ブラウザに実行中のアプリをウェブソケットで確認できる機能
-- [Ember Unused Components](https://github.com/vastec/ember-unused-components) - このスクリプトはあなたのEmberプロジェクト内の使われていないコンポーネントを検索します
+- [Ember Data Sails Adapter](https://github.com/bmac/ember-data-sails-adapter) - Sails.jsのソケット用Ember Dataアダプター
+- [Ember Data WordPress Adapter](https://github.com/HeyHumanAgency/Ember-Data-WordPress) - WordPress JSON API用のEmber Dataアダプター
+- [Ember Gist](http://ember-gist.joostdvrs.com/) - GitHub Gistを使ってEmber CLIに似たアプリケーションをデモ
+- [Ember Inspector](https://github.com/emberjs/ember-inspector) - Chrome/Firefoxの開発者ツールにEmber.jsタブを追加し、アプリケーションのEmber.jsオブジェクトを調査。原リストでは公式に保守されていると記載
+- [Ember Perf](https://github.com/mike-north/ember-perf) - Ember.jsアプリケーションで、利用者が体感する性能のデータを測定
+- [ember-cli-diff](http://www.ember-cli-diff.org/) - 新しいEmberアプリケーション間の違いを確認するツール
+- [ember-cli](https://ember-cli.com/) - ウェブアプリケーション向けのコマンドラインインターフェース
+- [ember-data-model-maker](https://andycrum.github.io/ember-data-model-maker/) - ember-dataのモデルとペイロードの例を作成するUI
+- [Glimmer Playground](https://try.glimmerjs.com/) - Glimmer.jsを試す環境
+- [mber](https://github.com/izelnakri/mber) - Ember CLIの代替。原リストではアルファ版と記載
+- [remote-inspector](https://github.com/joostdevries/ember-cli-remote-inspector) - 異なる端末やブラウザーで動くアプリケーションを、WebSocketを使ってネットワーク越しに調査
+- [Ember Unused Components](https://github.com/vastec/ember-unused-components) - Emberプロジェクトの未使用コンポーネントを検索するスクリプト
 
-### Tutorials
+### チュートリアル<a id="tutorials"></a>
 
 - [How to learn EmberJS in a hurry](https://medium.com/ember-ish/how-to-learn-emberjs-in-a-hurry-c6fdeae256a0)
-- [Discover Ember 2](https://www.ludu.co/course/ember) - ゼロからTwitterクローンを構築する方法を学ぶ
-- [Ember Components: A Deep Dive](http://code.tutsplus.com/tutorials/ember-components-a-deep-dive--net-35551) - Ember.jsコンポーネントの使い方を詳しく見ていきます
-- [Ember runloop handbook](https://github.com/eoinkelly/ember-runloop-handbook) - Ember.jsのループ（runloop）についての詳細な解説
-- [Ember with Phoenix (AKA The PEEP Stack)](https://medium.com/peep-stack) - Ember.jsのフロントエンドを、[JSON API](http://jsonapi.org/)に準拠した[Phoenix](http://www.phoenixframework.org/)バックエンドと並行して開発する方法
-- [Getting into Ember.js](http://code.tutsplus.com/tutorials/getting-into-emberjs--net-30709) - Emberの入門コース（5回分）
-- [Getting Started with Ember.js using Ember CLI](https://thetechcofounder.com/getting-started-with-ember/) - Ember CLIを使ってTodoアプリを構築する
-- [yoember.com/](http://yoember.com/) - Ember.jsチュートリアル：初心者から上級者へ
+- [Discover Ember 2](https://www.ludu.co/course/ember) - Twitterクローンをゼロから構築する方法を学習
+- [Ember Components: A Deep Dive](http://code.tutsplus.com/tutorials/ember-components-a-deep-dive--net-35551) - Ember.jsコンポーネントの使い方の詳しい解説
+- [Ember runloop handbook](https://github.com/eoinkelly/ember-runloop-handbook) - Ember.jsのrunloopの詳しい解説
+- [Ember with Phoenix (AKA The PEEP Stack)](https://medium.com/peep-stack) - [JSON API](http://jsonapi.org/)に準拠する[Phoenix](http://www.phoenixframework.org/)バックエンドと組み合わせて、Ember.jsフロントエンドを開発
+- [Getting into Ember.js](http://code.tutsplus.com/tutorials/getting-into-emberjs--net-30709) - 全5回のEmber入門講座
+- [Getting Started with Ember.js using Ember CLI](https://thetechcofounder.com/getting-started-with-ember/) - Ember CLIでTodoアプリケーションを構築
+- [yoember.com/](http://yoember.com/) - 初心者から上級者向けのEmber.jsチュートリアル
 - [build-pacman](http://www.jeffreybiles.com/build-pacman)
 
 ### Twitter
@@ -1308,7 +1168,7 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Balint Erdi](https://twitter.com/baaz)
 - [Luke Melia](https://twitter.com/lukemelia)
 
-### Videos
+### 動画<a id="videos"></a>
 
 - [Working with Ember Animated & Addon Internals: Ember Concurrency – Ember NYC, May 2019](https://www.youtube.com/watch?v=JbxaVHQFou0)
 - [Ember.js Tutorial: Build a painting game in 20 mins](https://www.youtube.com/watch?v=N4KrBuO0RRE)
@@ -1316,7 +1176,7 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Maintaining an Ember App at Scale, with Chris Ng](https://www.youtube.com/watch?v=gyGZHydh0Hw&feature=em-uploademail)
 - [Jackie Luo: From React to Ember: A Modern Comparison](https://www.youtube.com/watch?v=7yxr4iBrZsw)
 - [Ember San Francisco Meetup at Square, October 2018](https://www.youtube.com/watch?v=ulWhjL0Aj5s)
-- [The Future of Ember js](https://www.youtube.com/watch?v=4b9VbB2bnfw) - EmberConf 2018での発表から得られた情報に基づく、今後のEmber.jsの変更点の要約
+- [The Future of Ember js](https://www.youtube.com/watch?v=4b9VbB2bnfw) - EmberConf 2018の発表を基に、その時点で予定されていたEmber.jsの変更を要約
 - [Ember: The Next 10 Years | Tom Dale | EmberCamp Chicago 2018](https://www.youtube.com/watch?v=9cseB2xoT-0)
 - [Stop Coding: You Have a Product Gap | Sam Selikoff | EmberCamp Chicago 2018](https://www.youtube.com/watch?v=fYHgyIlGttk)
 - [Caveats of the Default Store - Ember London - September 2018](https://www.youtube.com/watch?v=EcKaDu0xo_A)
@@ -1343,7 +1203,7 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Tom Dale on Static Analysis, Upstreaming Glimmer, and Ember in 2018](https://embermap.com/topics/the-embermap-podcast/tom-dale-on-static-analysis-upstreaming-glimmer-and-ember-in-2018)
 - [Tom Dale Talks EmberJS](https://www.slideshare.net/LinkedInPulse/tom-dale-ember-javascript-emberjs-linkedin)
 - [Using TypeScript in Ember](https://pusher.com/sessions/meetup/ember-london/using-typescript-in-ember)
-- [Web App Performance & Ember.js](https://www.youtube.com/watch?v=BelKk7dvA1A) - WebアプリのパフォーマンスとEmber.js
+- [Web App Performance & Ember.js](https://www.youtube.com/watch?v=BelKk7dvA1A) - ウェブアプリケーションの性能とEmber.js
 - [Why Ember CLI uses Broccoli](https://embermap.com/topics/intro-to-broccoli/why-ember-uses-broccoli)
 - [Developing ember apps on glitch.com](https://www.youtube.com/watch?v=uhXA6ECaknw)
 - [Chris Krycho: TypeScript and Ember js - Why and How?](https://www.youtube.com/watch?v=fFzxbBrvytU)
@@ -1363,17 +1223,16 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [GraphQL: The Documentary (Русская версия)](https://www.youtube.com/watch?v=i_rsfHMF3x4) - ロシア語版
 - [Ember and GraphQL: A Quick Example](https://www.youtube.com/watch?v=YxRvXgDIHW8)
 - [Ember Octane Livestream: Build a drum machine](https://www.youtube.com/watch?v=5znpEiwHpL4)
-- [Tracking in the Glimmer VM](https://www.youtube.com/watch?v=BjKERSRpPeI) - クリス・ゲートがEmberにおけるトラッキングの仕組みについて語る
+- [Tracking in the Glimmer VM](https://www.youtube.com/watch?v=BjKERSRpPeI) - Chris Garrettによる、Emberでのトラッキングの仕組みの解説
 - [Commit Porto '19: Thriving through the hype cycle: an Ember.js story (Ricardo Mendes)](https://www.youtube.com/watch?v=ECkbVa0iC4k)
-- [Animating Across Routes with Ember Animated](https://www.youtube.com/watch?v=O4Mt-dDqkk0) - EmberMap動画：跨ルート遷移時のアニメーションを追加
-- [Creating an Ember Application](https://www.youtube.com/watch?v=R2JdP4lb5Xw) - これから始まるシリーズの第1回：Emberについて
+- [Animating Across Routes with Ember Animated](https://www.youtube.com/watch?v=O4Mt-dDqkk0) - ルートをまたぐ遷移のアニメーションを追加するEmberMap動画
+- [Creating an Ember Application](https://www.youtube.com/watch?v=R2JdP4lb5Xw) - 原リストで公開予定とされていたEmber動画シリーズの第1回
 - [Ember and GraphQL: A Quick Example](https://www.youtube.com/watch?v=YxRvXgDIHW8)
-- [Stef & Rob: do we still need the built-in Input component?](https://www.youtube.com/watch?v=c0Rl6o9wLX0) ステファン・ペンナーとロバート・ジャクソンが組み込みInputコンポーネントについて議論
-- [Ember Octane - Great For Beginners](https://www.youtube.com/watch?v=iTPFsXcTAaY&feature=youtu.be) - Ember OctaneでHTMLとCSSだけでもかなり進める
+- [Stef & Rob: do we still need the built-in Input component?](https://www.youtube.com/watch?v=c0Rl6o9wLX0) Stefan PennerとRobert Jacksonが組み込みInputコンポーネントについて議論
+- [Ember Octane - Great For Beginners](https://www.youtube.com/watch?v=iTPFsXcTAaY&feature=youtu.be) - Ember OctaneではHTMLとCSSだけでも開発をある程度進められるという説明
 - [Yet Another Test Runner by Kelly Sheldon @ Ember London](https://www.youtube.com/watch?v=HYwXL3f854Y&list=PL4eq2DPpyBbmvEzhyW9fhMzlctxwrn8JM&index=1)
 
-
-### YouTube channels
+### YouTubeチャンネル<a id="youtube-channels"></a>
 
 - [Amsterdam Ember.js](https://www.youtube.com/channel/UCx9sVlEZLOKxw8OGCtoqULw)
 - [Boston Ember](https://www.youtube.com/channel/UCp_L_YjmXTKR4Q2fg1XahsA)
@@ -1391,11 +1250,7 @@ Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Wicked Good Ember 2016](https://www.youtube.com/playlist?list=PLXOJZupxSq22zfW2KVnXFgLbu--DA7q0G)
 - [May I ask a Question](https://www.youtube.com/channel/UCyErLHzPqLAkL1F-SivFDcA)
 
-### YouTube playlists
+### YouTubeプレイリスト<a id="youtube-playlists"></a>
 - [Ember London 2018](https://www.youtube.com/watch?v=EcKaDu0xo_A&list=PL8xuokhAnn4rUlol6aspg-VYetu9BLsWV)
 - [Intercom Screencasts](https://www.youtube.com/playlist?list=PLpAr6J-75N27wctNT70O0lubaGTPjwi1L)
-- [Ember.js tutorial for beginners in 2020](https://www.youtube.com/watch?v=eQUvN9Ujs1s&list=PLk51HrKSBQ88wDXgPF-QLMfPFlLwcjTlo) - シャウン・チェンによる10回シリーズ
-
-## License
-
-[CC0](https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/LICENSE)
+- [Ember.js tutorial for beginners in 2020](https://www.youtube.com/watch?v=eQUvN9Ujs1s&list=PLk51HrKSBQ88wDXgPF-QLMfPFlLwcjTlo) - Shawn Chenによる全10回のシリーズ

@@ -1,38 +1,12 @@
 ---
 title: "Awesome Building Blocks for Web Apps"
-description: "A curated collection of resources and projects focused on Building Blocks for Web Apps."
+description: "Standalone features and services for integrating UI, authentication, scheduling, notifications, consent, and other functions into web applications."
 licenseSource: "github-componently-com-awesome-building-blocks-for-web-apps-readme-md"
 ---
 
 # Awesome Building Blocks for Web Apps
 
-A curated collection of resources and projects focused on Building Blocks for Web Apps.
-
-## Contents
-
-- [UI Elements](#ui-elements)
-- [Exit Intent Popup](#exit-intent-popup)
-- [Auth](#auth)
-- [Booking](#booking)
-- [Notification](#notification)
-- [Social](#social)
-- [Chat Bot](#chat-bot)
-- [Chat](#chat)
-- [Monitoring](#monitoring)
-- [Content Management](#content-management)
-- [Consent Management](#consent-management)
-- [Media](#media)
-- [Form](#form)
-- [Marketing](#marketing)
-- [Changelog](#changelog)
-- [Telecommunication](#telecommunication)
-- [Social Media](#social-media)
-- [Search](#search)
-- [Feature flags](#feature-flags)
-- [Reviews](#reviews)
-- [Related awesome-lists](#related-awesome-lists)
-
-
+This list collects standalone features and services that can be integrated into web applications instead of building every function from scratch. It covers UI elements, authentication, scheduling, notifications, communication, monitoring, content and consent management, media, forms, marketing, search, feature flags, and related lists.
 
 ## UI Elements
 
@@ -40,15 +14,15 @@ A curated collection of resources and projects focused on Building Blocks for We
 - [Webix](https://webix.com/) - JavaScript UI library and framework for displaying data in different ways.
 - [Highcharts](https://www.highcharts.com/) - Interactive charts for web.
 - [Webatoms](https://www.webatoms.in) - JavaScript bridge for Xamarin.Forms.
-- [Creative Tim](https://www.creative-tim.com/) - Themes for React, Angular, Vue, Lavarel and HTML5.
+- [Creative Tim](https://www.creative-tim.com/) - Themes for React, Angular, Vue, Laravel and HTML5.
 - [Syncfusion](https://www.syncfusion.com/) - Data visualization components and PDF Viewer.
 - [CoreUI](https://coreui.io/pro/vue) - Vue admin template.
-- [UIfort](https://uifort.com/) - UI design systems for all major frontend frameworks.
+- [UIfort](https://uifort.com/) - UI design systems described by the source as supporting all major frontend frameworks.
 - [Semantic UI](https://semantic-ui.com/) - Open source UI component library for React, Meteor, Ember and Angular.
 - [Design Revision's Shards Pro](https://designrevision.com/downloads/shards-pro) - Design blocks for web or mobile apps.
 - [Themesberg](https://themesberg.com) - Bootstrap templates, themes and UI kits.
 - [Treact](https://treact.owaiskhan.me/) - React templates for landing pages, built on Tailwind CSS.
-- [Creative Designs Guru](https://creativedesignsguru.com) - Themes for React, Nextjs and Eleventy, built with Tailwind CSS.
+- [Creative Designs Guru](https://creativedesignsguru.com) - Themes for React, Next.js and Eleventy, built with Tailwind CSS.
 
 ## Exit Intent Popup
 - [Wisepops](https://wisepops.com/) - Contextual popups, banners and bars for mobile and desktop visitors.
@@ -58,10 +32,10 @@ A curated collection of resources and projects focused on Building Blocks for We
 
 ## Auth
 - [Auth0](https://auth0.com/) - Authentication management with native support for Angular, React and VueJS.
-- [Clerk](https://clerk.com) – Complete user management UIs and APIs, purpose-built for React, Next.js, and the modern web.
+- [Clerk](https://clerk.com) – User management UIs and APIs for React, Next.js, and other web applications.
 - [Firebase](https://firebase.google.com) - PaaS from Google, including authentication management.
 - [Okta](https://www.okta.com/) - Authentication and Authorization solution with support for Angular, React and VueJS.
-- [Onelogin](https://www.onelogin.com/) - Authentication focussed on company internal applications.
+- [Onelogin](https://www.onelogin.com/) - Authentication focused on company-internal applications.
 - [Microsoft Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/#security) - Authentication management in Azure, based on Microsoft accounts.
 - [AWS Cognito](https://aws.amazon.com/cognito/) - AWS authentication management. Frontend integration is part of [AWS Amplify](https://aws.amazon.com/de/amplify/).
 
@@ -69,7 +43,7 @@ A curated collection of resources and projects focused on Building Blocks for We
 - [Calendly](https://calendly.com/) - Stand-alone booking solution.
 - [Zoho Bookings](https://www.zoho.com/bookings/) - Online scheduler integrated into Zoho Suite.
 - [Acuity Scheduling](https://acuityscheduling.com/) - Appointment scheduling with extensive API.
-- [10to8](https://10to8.com/) - Booking tool with many features in the free tier.
+- [10to8](https://10to8.com/) - Booking tool described by the source as offering many features in its free tier.
 - [SuperSaaS](https://www.supersaas.com/) - Appointment scheduling with focus on group scheduling.
 - [SimplyBook.Me](https://simplybook.me/) - Booking tool with its own booking directory.
 - [OnceHub](https://www.oncehub.com/) - Scheduling via ScheduleOnce and meeting management via InviteOnce.
@@ -77,14 +51,14 @@ A curated collection of resources and projects focused on Building Blocks for We
 - [OnSched](https://www.onsched.com/) - Scheduling API for marketplaces & applications.
 - [AppointmentPlus](https://www.appointmentplus.com/) - Appointment scheduling with coupons.
 - [Booxi](https://www.booxi.com/) - Booking and online directory components.
-- [Cogsworth Scheduler](https://get.cogsworth.com/) - Online Scheduler for business with a powerful API.
+- [Cogsworth Scheduler](https://get.cogsworth.com/) - Online scheduler for businesses with an API.
 
 ## Notification
 - [OneSignal](https://onesignal.com/) - Mobile and web notifications.
 - [Notific](https://notific.io/) - Notifications including a PHP SDK.
 - [WonderPush](https://www.wonderpush.com/) - Notifications focused on speed.
 - [VWO Engage](https://vwo.com/engage/push-notifications/) - Notifications as part of a larger marketing suite.
-- [Signalize](https://signalize.com/) - Free notifications with paid analytics add on.
+- [Signalize](https://signalize.com/) - Notifications described by the source as free, with a paid analytics add-on.
 
 ## Social
 - [Stream](https://getstream.io/) - Activity feed & chat APIs.
@@ -92,7 +66,7 @@ A curated collection of resources and projects focused on Building Blocks for We
 
 ## Chat Bot
 - [Fresh chat](https://www.freshworks.com/live-chat-software/) - Chatbot in Freshworks support suite.
-- [Tiledesh](https://www.tiledesk.com/) - AI-powered live chat.
+- [Tiledesk](https://www.tiledesk.com/) - AI-powered live chat.
 
 ## Chat
 - [Daily.co](https://www.daily.co/) - Video chat.
@@ -112,11 +86,11 @@ A curated collection of resources and projects focused on Building Blocks for We
 - [Sourcepoint](https://www.sourcepoint.com/) - Compliance management as part of a suite including also ad blocker recovery.
 - [PiwikPro](https://piwik.pro/gdpr-consent-manager/) - Compliance management as part of an analytics tool.
 - [Consent Management Provider](https://www.consentmanager.de/) - German management tool for Cookie Consent.
-- [UniConsent](https://www.uniconsent.com/) - Consent management platform for GDPR, CCPA, COPPA compliance.
-- [TrustArc](https://trustarc.com/) - Privacy management for the CCPA, GDPR, LGPD and 900+ other global regulations.
+- [UniConsent](https://www.uniconsent.com/) - Consent management platform described by the source as supporting GDPR, CCPA, and COPPA compliance.
+- [TrustArc](https://trustarc.com/) - Privacy management described by the source as covering CCPA, GDPR, LGPD, and more than 900 other regulations worldwide.
 - [Cookiebot](https://www.cookiebot.com/) - Cookie tracking manager.
 - [iubenda](https://www.iubenda.com/) - Consent management and terms and conditions generator.
-- [Civic Cookie Control](https://www.civicuk.com/cookie-control/) - Smaller Cookie and GDPR compliance product.
+- [Civic Cookie Control](https://www.civicuk.com/cookie-control/) - Cookie and GDPR compliance product described by the source as smaller.
 - [CCM19](https://www.ccm19.de/) - German cookie consent manager.
 - [CookieInformation](https://cookieinformation.com/) - Focus on compliance reporting via a dashboard.
 - [CookiePro](https://www.cookiepro.com/) - Cookie management as part of a privacy management solution.
@@ -130,7 +104,7 @@ A curated collection of resources and projects focused on Building Blocks for We
 ## Form
 - [Static Forms](https://www.staticforms.xyz/) - Form that sends its results to your email.
 - [FlyingForms](https://flyingforms.io/?utm_source=github-awesome-components&utm_medium=referral&utm_campaign=awesome-list) - Building, versioning and managing forms.
-- [KirokuForms](https://kirokuforms.com/) - Drag-and-drop form builder with generous free tier, email notifications, and full API access.
+- [KirokuForms](https://kirokuforms.com/) - Drag-and-drop form builder with email notifications and full API access. The source describes it as offering a free tier.
 
 ## Marketing
 - [TrustPulse](https://trustpulse.com/) - Shows recent buyers on your website.
@@ -153,7 +127,7 @@ A curated collection of resources and projects focused on Building Blocks for We
 
 ## Search
 - [Algolia](https://www.algolia.com/) - Search for your application.
-- [Search UI](https://github.com/elastic/search-ui) - UI integration for ElastiSearch.
+- [Search UI](https://github.com/elastic/search-ui) - UI integration for Elasticsearch.
 
 ## Feature flags
 - [Optimizely's Rollouts](https://www.optimizely.com/rollouts) - Feature flags combined with A/B testing.

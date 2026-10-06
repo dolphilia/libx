@@ -1,20 +1,12 @@
 ---
 title: "Awesome React Hooks"
-description: "A curated collection of resources and projects focused on React Hooks."
+description: "React Hooks documentation, tutorials, discussions, examples, and libraries, with version and size notes from the fixed source."
 licenseSource: "github-glauberfc-awesome-react-hooks-readme-md"
 ---
 
 # Awesome React Hooks
 
-A curated collection of resources and projects focused on React Hooks.
-
-## Contents
-
-- [Hooks](#hooks)
-- [Tutorials/Articles/Workshops](#tutorialsarticlesworkshops)
-- [Discussions](#discussions)
-- [Examples](#examples)
-- [Extensions/Libraries](#extensionslibraries)
+[React Hooks](https://reactjs.org/docs/hooks-intro.html) were introduced in React 16.8 to use state and other React features without writing a class. Find official documentation, tutorials, discussions, examples, and libraries; version and size notes reflect the fixed source.
 
 ## Hooks
 
@@ -64,11 +56,11 @@ A curated collection of resources and projects focused on React Hooks.
 - [Color Match](https://codesandbox.io/s/jjy215l7w3) - Color Match Game.
 - [React Hooks counter](https://codesandbox.io/s/yjn90lzwrx?module=%2Fsrc%2FApp.js) - Counter using useState of React Hooks.
 - [Toggle component](https://codesandbox.io/s/m449vyk65x) - Toggle component made with React Hooks.
-- [Hooks test](https://github.com/jacobp100/hooks-test) - Somewhat complicated use case solved relatively nicely with React Hooks.
+- [Hooks test](https://github.com/jacobp100/hooks-test) - A somewhat complicated use case implemented with React Hooks.
 - [React Hanger](https://github.com/kitze/react-hanger) - React Hanger example.
-- [React Navigation Hooks](https://github.com/react-navigation/react-navigation-hooks) - React hooks for convenient react-navigation use.
+- [React Navigation Hooks](https://github.com/react-navigation/react-navigation-hooks) - React Hooks for using react-navigation.
 - [Haunted](https://github.com/matthewp/haunted) - React's Hooks API implemented for web components.
-- [useHooks](https://usehooks.com/) - Easy to understand React Hook recipes by [Gabe Ragland](https://twitter.com/gabe_ragland).
+- [useHooks](https://usehooks.com/) - React Hook recipes by [Gabe Ragland](https://twitter.com/gabe_ragland).
 - [Collection of React Hooks](https://nikgraf.github.io/react-hooks/) - Collection of React Hooks.
 - [React Spring demo](https://codesandbox.io/s/ppxnl191zx) - Demo of how react-spring could use React Hooks as a new API.
 - [React Hooks](https://codesandbox.io/s/yq5qowzrvz) - React Hooks useState() and useEffect().
@@ -78,23 +70,19 @@ A curated collection of resources and projects focused on React Hooks.
 ## Extensions/Libraries
 
 - [redux-react-hook](https://github.com/facebookincubator/redux-react-hook) - React Hook for accessing state and dispatch from a Redux store.
-- [react-use](https://github.com/streamich/react-use) - Collection of essential React Hooks.
-- [The Platform](https://github.com/palmerhq/the-platform) - Browser API's turned into React Hooks and Suspense-friendly React elements for common situations.
-- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) - This plugin enforce rule of hooks to avoid common mistakes.
+- [react-use](https://github.com/streamich/react-use) - React Hooks described by the source as essential.
+- [The Platform](https://github.com/palmerhq/the-platform) - Browser APIs exposed as React Hooks and Suspense-friendly React elements for common situations.
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) - Enforces the rules of Hooks to avoid common mistakes.
 - [react-hooks-lib](https://github.com/beizhedenglong/react-hooks-lib) - A set of reusable React Hooks.
-- [use-immer](https://github.com/mweststrate/use-immer) - A hook to use immer as a React hook to manipulate state.
-- [react-hanger](https://github.com/kitze/react-hanger) - A small collection of useful hooks for React 16.7.
+- [use-immer](https://github.com/mweststrate/use-immer) - A React hook for manipulating state with Immer.
+- [react-hanger](https://github.com/kitze/react-hanger) - A small collection of hooks described by the source as targeting React 16.7.
 - [react-firebase-hooks](https://github.com/csfrequency/react-firebase-hooks) - A set of reusable React Hooks for Firebase.
 - [react-intersection-visible-hook](https://github.com/AvraamMavridis/react-intersection-visible-hook) - React hook to track the visibility of a functional component based on IntersectionVisible Observer.
-- [use-timer](https://github.com/thibaultboursier/use-timer) - Simple React hook to handle timer.
+- [use-timer](https://github.com/thibaultboursier/use-timer) - React hook for handling timers.
 - [react-native-hooks](https://github.com/react-native-community/react-native-hooks) - React Native APIs turned into React Hooks for use in stateless React components.
 - [react-with-hooks](https://github.com/yesmeck/react-with-hooks) - Ponyfill for the proposed React Hooks API.
 - [react-hooks-screen-type](https://github.com/pankod/react-hooks-screen-type) - Determining screen size type for Bootstrap 4 grid.
 - [use-http](https://github.com/alex-cory/react-usefetch) - React hooks for making isomorphic HTTP requests.
-- [react-fetch-hook](https://github.com/ilyalesik/react-fetch-hook) - React hook for conveniently use Fetch API.
-- [storeon](https://github.com/storeon/storeon) - hook-based state manager in 173 bytes.
-- [react-hook-form](https://github.com/bluebill1049/react-hook-form) - Performance, flexible and extensible forms with easy to use for validation.
-
-## License
-
-Awesome React hooks is [CC0 licensed](https://github.com/glauberfc/awesome-react-hooks/blob/c6a6b7b72c1d998edfd0cb9039feffb59f564d80/LICENSE.md).
+- [react-fetch-hook](https://github.com/ilyalesik/react-fetch-hook) - React hook for using the Fetch API.
+- [storeon](https://github.com/storeon/storeon) - Hook-based state manager, with a size of 173 bytes given by the source.
+- [react-hook-form](https://github.com/bluebill1049/react-hook-form) - Flexible, extensible forms with easy-to-use validation, described by the source as high-performance.

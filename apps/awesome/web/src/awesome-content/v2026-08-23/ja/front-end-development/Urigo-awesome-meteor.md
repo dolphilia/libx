@@ -1,105 +1,107 @@
 ---
 title: "Awesome Meteor"
-description: "Meteorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
+description: "Meteorのパッケージ、開発ツール、アプリの例、書籍、講座、コミュニティ資料。非推奨資料は別の節に掲載。"
 licenseSource: "github-Urigo-awesome-meteor-readme-md"
 ---
 
 # Awesome Meteor
 
-Meteorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
+Meteorのコレクション、認証、ファイル、デプロイ、テストなどに使うパッケージと開発ツールを探せます。アプリの例、書籍、講座、コミュニティ資料も含み、固定版の上流リストで非推奨とされた資料を別の節にまとめています。
+
+[Meteorの公式資料一覧](https://www.meteor.com/tools/resources)。
 
 ## はじめに
 
-_始め方_
+導入のための資料。
 
-- [Official Meteor tutorial](https://www.meteor.com/tutorials/react/creating-an-app)
-- [Official Guide](http://guide.meteor.com/)
+- [Meteorの公式チュートリアル](https://www.meteor.com/tutorials/react/creating-an-app)
+- [公式ガイド](http://guide.meteor.com/)
 
 ## コレクション
 
-_コレクション用ヘルパーと拡張_
+コレクション用のヘルパーと拡張。
 
-- [simple-schema](https://github.com/aldeed/simple-schema-js) - A JavaScript schema validation package that supports direct validation of MongoDB update modifier objects.
-- [aldeed:collection2](https://github.com/aldeed/meteor-collection2/) - Automatic validation of insert and update operations on the client and server.
-- [dburles:collection-helpers](https://github.com/dburles/meteor-collection-helpers/) – Transform your collections with helpers that you define.
-- [matb33:collection-hooks](https://github.com/Meteor-Community-Packages/meteor-collection-hooks) - Extends Mongo.Collection with before/after hooks for insert/update/remove/find/findOne.
-- [reywood:publish-composite](https://github.com/Meteor-Community-Packages/meteor-publish-composite) - publish a set of related documents from various collections using a reactive join.
-- [jagi:astronomy](https://github.com/jagi/meteor-astronomy/) - The Model layer for Meteor.
-- [cultofcoders:grapher](https://github.com/cult-of-coders/grapher) - Grapher: Meteor Collection Joins + Reactive GraphQL like queries.
-- [sakulstra:aggregate](https://github.com/sakulstra/meteor-aggregate) - Add proper aggregation support for Meteor.
-- [quave:collections](https://github.com/quavedev/collections) - Create collections in a standard way.
+- [simple-schema](https://github.com/aldeed/simple-schema-js) - MongoDBの更新修飾オブジェクトを直接検証できるJavaScriptのスキーマ検証パッケージ。
+- [aldeed:collection2](https://github.com/aldeed/meteor-collection2/) - クライアントとサーバーで挿入・更新操作を自動検証。
+- [dburles:collection-helpers](https://github.com/dburles/meteor-collection-helpers/) - 独自に定義したヘルパーでコレクションを変換。
+- [matb33:collection-hooks](https://github.com/Meteor-Community-Packages/meteor-collection-hooks) - Mongo.Collectionを拡張し、insert/update/remove/find/findOneの前後に実行するフックを提供。
+- [reywood:publish-composite](https://github.com/Meteor-Community-Packages/meteor-publish-composite) - リアクティブな結合を使い、複数のコレクションから関連文書の集合を配信。
+- [jagi:astronomy](https://github.com/jagi/meteor-astronomy/) - Meteorのモデル層。
+- [cultofcoders:grapher](https://github.com/cult-of-coders/grapher) - Meteorコレクションの結合と、GraphQLに似たリアクティブなクエリ。
+- [sakulstra:aggregate](https://github.com/sakulstra/meteor-aggregate) - Meteorに集約処理の対応を追加。
+- [quave:collections](https://github.com/quavedev/collections) - 標準的な方法でコレクションを作成。
 
 ## REST
 
-_Meteor 向け REST サポート_
+MeteorのREST対応。
 
-- [maka:rest](https://atmospherejs.com/maka/rest) - automatically make your Meteor app accessible over HTTP and DDP alike.
-- [vatfree:restivus](https://github.com/vatfree/meteor-restivus) - Make REST endpoints for your Meteor app with incredible ease.
+- [maka:rest](https://atmospherejs.com/maka/rest) - MeteorアプリをHTTPとDDPの両方から自動でアクセス可能にする。
+- [vatfree:restivus](https://github.com/vatfree/meteor-restivus) - MeteorアプリのRESTエンドポイントを作成。
 
 ## フォームとテンプレート
 
-_テンプレート用ヘルパー_
+テンプレート用ヘルパー。
 
-- [uniforms](https://github.com/vazco/uniforms) - Bunch of React components and helpers to easily generate and validate forms. [Seamlessly integrate with `simpl-schema`](https://uniforms.tools/docs/installation).
-- [aldeed:autoform](https://github.com/aldeed/meteor-autoform) - UI components and helpers to easily create basic forms with automatic insert and update events, and automatic reactive validation.
-- [ostrio:templatehelpers](https://github.com/VeliovGroup/Meteor-Template-helpers) - Utility helpers for your Blaze templates.
-- [aldeed:template-extension](https://github.com/aldeed/meteor-template-extension) - A Meteor package: Replace already defined templates, inherit helpers and events from other templates.
-- [kadira:blaze-layout](https://github.com/TeamGrid/blaze-layout) - Layout Manager for Blaze (works well with Meteor FlowRouter)
+- [uniforms](https://github.com/vazco/uniforms) - フォームの生成・検証用Reactコンポーネントとヘルパー。[`simpl-schema`との統合](https://uniforms.tools/docs/installation)。
+- [aldeed:autoform](https://github.com/aldeed/meteor-autoform) - 基本的なフォーム用UIコンポーネントとヘルパー。挿入・更新イベントとリアクティブな検証を自動で行う。
+- [ostrio:templatehelpers](https://github.com/VeliovGroup/Meteor-Template-helpers) - Blazeテンプレート用のユーティリティヘルパー。
+- [aldeed:template-extension](https://github.com/aldeed/meteor-template-extension) - 既存テンプレートの置換と、他のテンプレートからのヘルパー・イベントの継承に対応するMeteorパッケージ。
+- [kadira:blaze-layout](https://github.com/TeamGrid/blaze-layout) - Blazeのレイアウト管理。Meteor FlowRouterと組み合わせて使える。
 
 ## ユーザーと認証
 
-_ユーザーと認証を扱うツール_
+ユーザーと認証を扱うツール。
 
-- [accounts-js](https://github.com/accounts-js/accounts) - A suite of packages aims to provide all the tools you need to build a flexible authentication and accounts management solution for your application.
-- [alanning:roles](https://github.com/Meteor-Community-Packages/meteor-roles) - Roles support for the built-in accounts packages.
-- [meteor-user-status](https://github.com/Meteor-Community-Packages/meteor-user-status) - Keeps track of users and their meta data.
-- [accounts-ui](https://github.com/e-Potek/accounts-ui/) - Accounts UI for React in Meteor 1.3+.
+- [accounts-js](https://github.com/accounts-js/accounts) - 柔軟な認証・アカウント管理をアプリに組み込むためのパッケージ群。
+- [alanning:roles](https://github.com/Meteor-Community-Packages/meteor-roles) - 組み込みのアカウントパッケージにロール機能を追加。
+- [meteor-user-status](https://github.com/Meteor-Community-Packages/meteor-user-status) - ユーザーとそのメタデータを追跡。
+- [accounts-ui](https://github.com/e-Potek/accounts-ui/) - Meteor 1.3以降で使うReact用アカウントUI。
 
 ## 管理
 
-_Meteor アプリを管理するツール_
+Meteorアプリを管理するツール。
 
-- [Meteor Candy](https://www.meteorcandy.com/) - Fastest and easier way to add an admin panel to your app.
-- [yogiben:admin](https://github.com/yogiben/meteor-admin) - A complete admin dashboard solution.
-- [houston:admin](https://github.com/gterrono/houston) - A zero-config, Django Admin-like admin for Meteor.
-- [zodern:pure-admin](https://github.com/zodern/meteor-pure-admin) - An isolated, customizable admin panel for Meteor.
+- [Meteor Candy](https://www.meteorcandy.com/) - アプリに管理画面を追加。
+- [yogiben:admin](https://github.com/yogiben/meteor-admin) - 管理用ダッシュボード。
+- [houston:admin](https://github.com/gterrono/houston) - 設定不要の、Django Adminに似たMeteor用管理画面。
+- [zodern:pure-admin](https://github.com/zodern/meteor-pure-admin) - 分離されており、カスタマイズできるMeteor用管理画面。
 
 ## 監視
 
-_Meteor アプリを監視するツール_
+Meteorアプリを監視するツール。
 
-- [kschingiz:meteor-elastic-apm](https://github.com/kschingiz/meteor-elastic-apm) - Perfomance Monitoring for Meteor based on Elastic APM
-- [monti-apm-agent](https://github.com/monti-apm/monti-apm-agent) - Performance Monitoring for Meteor
-- [lmachens:kadira](https://github.com/lmachens/kadira) - Performance Monitoring for Meteor
+- [kschingiz:meteor-elastic-apm](https://github.com/kschingiz/meteor-elastic-apm) - Elastic APMに基づくMeteorのパフォーマンス監視。
+- [monti-apm-agent](https://github.com/monti-apm/monti-apm-agent) - Meteorのパフォーマンス監視。
+- [lmachens:kadira](https://github.com/lmachens/kadira) - Meteorのパフォーマンス監視。
 
 ## パフォーマンス
 
-_Meteor アプリを高速化するツール_
+Meteorアプリのパフォーマンスを改善するツール。
 
-- [cultofcoders:redis-oplog](https://github.com/cult-of-coders/redis-oplog) - Redis Oplog implementation to fully replace MongoDB Oplog in Meteor
-- [staringatlights:fast-render](https://github.com/abecks/meteor-fast-render) - An active fork of fast-render
-- [epotek:method-cache](https://github.com/e-Potek/method-cache) - Meteor method caching using DataLoader
-- [maestroqadev:pub-sub-lite](https://github.com/adtribute/pub-sub-lite) - Transform publications to be non-reactive.
-- [artillery-engine-meteor](https://github.com/kschingiz/artillery-engine-meteor) - Artillery load testing for MeteorJS applications.
+- [cultofcoders:redis-oplog](https://github.com/cult-of-coders/redis-oplog) - MeteorのMongoDB Oplogを完全に置き換えるRedis Oplogの実装。
+- [staringatlights:fast-render](https://github.com/abecks/meteor-fast-render) - fast-renderのフォーク。固定版の上流リストでは活発にメンテナンスされていると記載されている。
+- [epotek:method-cache](https://github.com/e-Potek/method-cache) - DataLoaderを使うMeteorメソッドのキャッシュ。
+- [maestroqadev:pub-sub-lite](https://github.com/adtribute/pub-sub-lite) - 配信を非リアクティブに変更。
+- [artillery-engine-meteor](https://github.com/kschingiz/artillery-engine-meteor) - MeteorJSアプリ向けのArtillery負荷テスト。
 
 ## デプロイ
 
-_Meteor アプリをデプロイ・保守するツール_
+Meteorアプリをデプロイ・保守するツール。
 
-- [meteor-up](https://github.com/zodern/meteor-up) – Meteor Deployments.
-- [meteor-google-cloud](https://github.com/EducationLink/meteor-google-cloud) - Automate Meteor deployments on Google Cloud App Engine Flexible
-- [mup-aws-beanstalk](https://github.com/zodern/mup-aws-beanstalk) - Deploy Meteor apps to AWS Elastic Beanstalk using Meteor Up
-- [meteor-azure](https://github.com/fractal-code/meteor-azure) - Automate Meteor deployments on Azure App Service
-- [pm2-meteor](https://github.com/andruschka/pm2-meteor) - Simplest way to deploy, scale and run Meteor Apps with PM2.
-- [meteor-hero](https://github.com/jkrup/meteor-hero) - Deploy MeteorJS applications for free with one command utilizing Heroku's service.
-- [meteor-kubernetes-guide](https://github.com/Gregivy/meteor-kubernetes-guide) - Deploy a Meteor app with Kubernetes.
-- [meteorhacks:cluster](https://github.com/lmachens/cluster) - Clustering solution for Meteor with load balancing and service discovery
-- [demeteorizer](https://github.com/onmodulus/demeteorizer) - Converts a Meteor app into a "standard" Node.js application
-- [percolate:migrations](https://github.com/percolatestudio/meteor-migrations) - Simple migration system for Meteor
-- [yamup](https://github.com/bordalix/yamup) - Deploy Meteor apps to your own Ubuntu server (EC2, ...) without dockers
-- [waveshosting](https://github.com/nicolaslopezj/waveshosting) - Web application to manage meteor deployments.
+- [meteor-up](https://github.com/zodern/meteor-up) - Meteorのデプロイ。
+- [meteor-google-cloud](https://github.com/EducationLink/meteor-google-cloud) - Google Cloud App Engine FlexibleへのMeteorのデプロイを自動化。
+- [mup-aws-beanstalk](https://github.com/zodern/mup-aws-beanstalk) - Meteor Upを使ってMeteorアプリをAWS Elastic Beanstalkへデプロイ。
+- [meteor-azure](https://github.com/fractal-code/meteor-azure) - Azure App ServiceへのMeteorのデプロイを自動化。
+- [pm2-meteor](https://github.com/andruschka/pm2-meteor) - PM2を使ってMeteorアプリをデプロイ・スケール・実行。
+- [meteor-hero](https://github.com/jkrup/meteor-hero) - 1つのコマンドでMeteorJSアプリをHerokuへデプロイ。固定版の上流リストでは無料と説明されている。
+- [meteor-kubernetes-guide](https://github.com/Gregivy/meteor-kubernetes-guide) - KubernetesでMeteorアプリをデプロイ。
+- [meteorhacks:cluster](https://github.com/lmachens/cluster) - 負荷分散とサービス検出に対応するMeteorのクラスタリング。
+- [demeteorizer](https://github.com/onmodulus/demeteorizer) - Meteorアプリを「標準的な」Node.jsアプリに変換。
+- [percolate:migrations](https://github.com/percolatestudio/meteor-migrations) - Meteorのシンプルなマイグレーションシステム。
+- [yamup](https://github.com/bordalix/yamup) - Dockerを使わず、自分のUbuntuサーバー（EC2など）へMeteorアプリをデプロイ。
+- [waveshosting](https://github.com/nicolaslopezj/waveshosting) - Meteorのデプロイを管理するWebアプリ。
 
-## Docker イメージ
+### Docker イメージ
 
 - [meteor-docker](https://github.com/zodern/meteor-docker)
 - [meteor-base](https://github.com/disney/meteor-base)
@@ -107,227 +109,226 @@ _Meteor アプリをデプロイ・保守するツール_
 
 ## ルーター
 
-_Routers for Blaze_
+Blaze用のルーター。
 
-- [ostrio:flow-router-extra](https://github.com/VeliovGroup/flow-router) - Carefully extended `flow-router` package. Up-to-date version with support of latest Meteor's releases.
-- [msavin:parrot](https://github.com/msavin/Parrot) - Web router specially designed for building SPAs using Meteor
-- [meteorhacks:picker](https://github.com/meteorhacks/picker) - Server Side Router for Meteor.
-- [iron:router](https://github.com/iron-meteor/iron-router) - A router that works on the server and the browser, designed specifically for Meteor. 
+- [ostrio:flow-router-extra](https://github.com/VeliovGroup/flow-router) - `flow-router`の拡張。固定版の上流リストでは、当時の最新Meteorリリースに対応する最新状態のパッケージと説明されている。
+- [msavin:parrot](https://github.com/msavin/Parrot) - MeteorでSPAを構築するために設計されたWebルーター。
+- [meteorhacks:picker](https://github.com/meteorhacks/picker) - Meteorのサーバー側ルーター。
+- [iron:router](https://github.com/iron-meteor/iron-router) - Meteor向けに設計され、サーバーとブラウザーの両方で動作するルーター。
 
 ## オフライン
 
-_Tools for Meteor offline support_
+Meteorのオフライン対応ツール。
 
-- [ground:db](https://github.com/GroundMeteor/db) - GroundDB is a thin layer providing Meteor offline database and methods.
-- [npdev:collections](https://github.com/CaptainN/npdev-collections) - An easy way to create offline collections with SSR for Meteor
-- [meteor-service-worker](https://github.com/NitroBAY/meteor-service-worker) - Meteor specific service worker implementaion.
-- [quave:pwa](https://github.com/quavedev/pwa) - A Meteor package that allows you to configure your PWA.
+- [ground:db](https://github.com/GroundMeteor/db) - Meteorのオフラインデータベースとメソッドを提供する薄い層、GroundDB。
+- [npdev:collections](https://github.com/CaptainN/npdev-collections) - MeteorでSSRに対応したオフラインコレクションを作成。
+- [meteor-service-worker](https://github.com/NitroBAY/meteor-service-worker) - Meteor固有のService Worker実装。
+- [quave:pwa](https://github.com/quavedev/pwa) - PWAを設定できるMeteorパッケージ。
 
 ## テスト
 
-_テストツール_
+テストツール。
 
-- [meteortesting:mocha](https://github.com/meteortesting/meteor-mocha) - Mocha test driver package for Meteor.
-- [lmieulet:meteor-coverage](https://github.com/serut/meteor-coverage) - Test coverage for Meteor.
-- [hubroedu:mocha](https://github.com/hubroedu/meteor-mocha/) - Decaffed cultofcoders:mocha fork.
-- [antwaremx:meteorman](https://github.com/antwaremx/meteorman) - Meteorman: A DDP Client with GUI to test Meteor methods and publications (like Postman).
+- [meteortesting:mocha](https://github.com/meteortesting/meteor-mocha) - MeteorのMochaテストドライバー。
+- [lmieulet:meteor-coverage](https://github.com/serut/meteor-coverage) - Meteorのテストカバレッジ。
+- [hubroedu:mocha](https://github.com/hubroedu/meteor-mocha/) - cultofcoders:mochaのDecaffed版フォーク。
+- [antwaremx:meteorman](https://github.com/antwaremx/meteorman) - Meteorのメソッドと配信をテストするGUI付きDDPクライアント、Meteorman。Postmanに似た用途。
 
 ## SEO
 
-_検索エンジン最適化ツール_
+検索エンジン最適化ツール。
 
-- [ostrio:spiderable-middleware](https://github.com/VeliovGroup/spiderable-middleware/) - Prerendering (_a.k.a. Spiderable_) with support of ES6 (ECMAScript2015) - Meteor app crawled perfectly by search engines.
+- [ostrio:spiderable-middleware](https://github.com/VeliovGroup/spiderable-middleware/) - ES6（ECMAScript2015）対応のプリレンダリング（Spiderableとも呼ばれる）。検索エンジンがMeteorアプリをクロールできるようにする。
 
 ## ファイル
 
-_Meteor のファイル処理_
+Meteorでのファイル処理。
 
-- [ostrio:files](https://github.com/VeliovGroup/Meteor-Files) - Upload files via DDP, HTTP and WebRTC/DC. To Meteor server FS, AWS, GridFS, DropBox or Google Drive. Fast, secure and robust.
-- [@reactioncommerce/file-collections](https://github.com/reactioncommerce/reaction-file-collections) - Reaction FileCollections is a set of NPM packages that provide the ability to support file uploads, storage, and downloads in Node and Meteor apps, and in browser JavaScript.
-- [netanelgilad:excel](https://github.com/netanelgilad/meteor-excel) - Parsing and generating excel files (xlsx, xls).
-- [mikkelking:slingshot](https://github.com/Back2bikes/meteor-slingshot) - Upload files directly to AWS S3, Google Cloud Storage and others in meteor.
+- [ostrio:files](https://github.com/VeliovGroup/Meteor-Files) - DDP、HTTP、WebRTC/DCによるファイルアップロード。Meteorサーバーのファイルシステム、AWS、GridFS、DropBox、Google Driveに対応。
+- [@reactioncommerce/file-collections](https://github.com/reactioncommerce/reaction-file-collections) - Node、Meteorアプリ、ブラウザーのJavaScriptで、ファイルのアップロード・保存・ダウンロードに対応するNPMパッケージ群、Reaction FileCollections。
+- [netanelgilad:excel](https://github.com/netanelgilad/meteor-excel) - Excelファイル（xlsx、xls）の解析と生成。
+- [mikkelking:slingshot](https://github.com/Back2bikes/meteor-slingshot) - MeteorからAWS S3、Google Cloud Storageなどへファイルを直接アップロード。
 
 ## 検索・並べ替え・ページネーション
 
-_Search, sort and paginate related tools_
+検索、並べ替え、ページネーション用のツール。
 
-- [percolate:find-from-publication](https://github.com/versolearning/find-from-publication) - Enable finding all documents that have been published by a given publication.
-- [meteor-publish-join](https://github.com/nlhuykhang/meteor-publish-join#readme) - A performant NPM package for publishing non-reactive or aggregated values.
-- [tmeasday:publish-counts](https://github.com/percolatestudio/publish-counts) - Publish the count of a cursor, in real time.
-- [meteorhacks:search-source](https://github.com/meteorhacks/search-source) - Reactive Data Source for Search.
-- [matteodem:easy-search](https://github.com/matteodem/meteor-easy-search) - Easy-to-use search with Blaze Components (+ Elastic Search Support)
-- [alethes:pages](https://github.com/alethes/meteor-pages) - Out of the box Meteor pagination.
+- [percolate:find-from-publication](https://github.com/versolearning/find-from-publication) - 指定した配信から公開されたすべての文書を検索できるようにする。
+- [meteor-publish-join](https://github.com/nlhuykhang/meteor-publish-join#readme) - 非リアクティブな値や集約値を配信するNPMパッケージ。
+- [tmeasday:publish-counts](https://github.com/percolatestudio/publish-counts) - カーソルの件数をリアルタイムで配信。
+- [meteorhacks:search-source](https://github.com/meteorhacks/search-source) - 検索用のリアクティブなデータソース。
+- [matteodem:easy-search](https://github.com/matteodem/meteor-easy-search) - BlazeコンポーネントとElastic Searchに対応する検索。
+- [alethes:pages](https://github.com/alethes/meteor-pages) - Meteorのページネーション。
 
 ## モバイル
 
-_モバイル開発_
+モバイル開発。
 
-- [meteor-react-native](https://github.com/TheRealNate/meteor-react-native) - Meteor client for React Native matching Meteor Spec.
-- [meteor-push](https://github.com/activitree/meteor-push) - Push notifications for cordova (ios, android) browser (Chrome, Safari, Firefox).
-- [quave:universal-links](https://github.com/quavedev/universal-links) - A Meteor package that allows you to expose your native iOS settings to enable Universal Links. 
-- [meteoric:ionic](https://github.com/meteoric/meteor-ionic) - Ionic components for Meteor.
-- [driftyco:ionic](https://github.com/driftyco/ionic) - Official Ionic support for Meteor.
-- [martijnwalraven:meteor-ios](https://github.com/martijnwalraven/meteor-ios) - Integrates native iOS apps with the Meteor platform through DDP.
-- [delight-im/Android-DDP](https://github.com/delight-im/Android-DDP) - DDP for clients on Android.
-- [okland:accounts-phone](https://github.com/okland/accounts-phone) - A login service based on mobile phone number for Meteor.
-- [okland:camera-ui](https://github.com/okland/camera-ui) - Meteor package for taking photos with user interface, one function call on desktop and mobile. Allows to choose between camera to photoLibrary on mobile.
-- [percolatestudio/cordova-plugin-safe-reload](https://github.com/percolatestudio/cordova-plugin-safe-reload) - Cordova plugin to watch and recover after a broken Meteor Hot Code Push.
+- [meteor-react-native](https://github.com/TheRealNate/meteor-react-native) - Meteor仕様に準拠したReact Native用Meteorクライアント。
+- [meteor-push](https://github.com/activitree/meteor-push) - Cordova（iOS、Android）とブラウザー（Chrome、Safari、Firefox）のプッシュ通知。
+- [quave:universal-links](https://github.com/quavedev/universal-links) - Universal Linksを有効にするために、ネイティブのiOS設定を公開できるMeteorパッケージ。
+- [meteoric:ionic](https://github.com/meteoric/meteor-ionic) - Meteor用のIonicコンポーネント。
+- [driftyco:ionic](https://github.com/driftyco/ionic) - Meteorの公式Ionic対応。
+- [martijnwalraven:meteor-ios](https://github.com/martijnwalraven/meteor-ios) - DDPを通じてネイティブiOSアプリをMeteorプラットフォームに統合。
+- [delight-im/Android-DDP](https://github.com/delight-im/Android-DDP) - Androidのクライアント向けDDP。
+- [okland:accounts-phone](https://github.com/okland/accounts-phone) - 携帯電話番号に基づくMeteorのログインサービス。
+- [okland:camera-ui](https://github.com/okland/camera-ui) - デスクトップとモバイルで、1回の関数呼び出しによりUIから写真を撮影できるMeteorパッケージ。モバイルではカメラと写真ライブラリを選べる。
+- [percolatestudio/cordova-plugin-safe-reload](https://github.com/percolatestudio/cordova-plugin-safe-reload) - MeteorのHot Code Pushが壊れた際に監視・復旧を行うCordovaプラグイン。
 
 ## データ可視化
 
-_Data Visualization in Meteor: charts, maps, tables, etc._
+チャート、地図、表など、Meteorでのデータ可視化。
 
-- [aldeed:tabular](https://github.com/aldeed/meteor-tabular) - Reactive datatables for large or small datasets.
-- [aslagle:reactive-table](https://github.com/aslagle/reactive-table/) - Reactive table for Meteor, using Blaze.
-- [luixal:blaze-paginated-custom-list](https://github.com/luixal/meteor-blaze-paginated-custom-list) - Reactive and paginated item list.
-- [luixal:meteor-apexcharts](https://github.com/luixal/meteor-apexcharts) - Reactive ApexCharts library packaged for Meteor.
+- [aldeed:tabular](https://github.com/aldeed/meteor-tabular) - 大小のデータセットに対応するリアクティブなデータテーブル。
+- [aslagle:reactive-table](https://github.com/aslagle/reactive-table/) - Blazeを使うMeteorのリアクティブなテーブル。
+- [luixal:blaze-paginated-custom-list](https://github.com/luixal/meteor-blaze-paginated-custom-list) - リアクティブでページネーションに対応した項目リスト。
+- [luixal:meteor-apexcharts](https://github.com/luixal/meteor-apexcharts) - Meteor向けにパッケージ化したリアクティブなApexChartsライブラリ。
 
 ## 分析
 
-_分析_
+アクセス解析ツール。
 
-- [okgrow:analytics](https://github.com/okgrow/analytics/) - Google Analytics, Mixpanel, KISSmetrics (and more) integration for meteor.
-- [quave:analytics](https://github.com/quavedev/analytics) - A Meteor package that allows you to send your page views and more to Google Analytics.
+- [okgrow:analytics](https://github.com/okgrow/analytics/) - MeteorへのGoogle Analytics、Mixpanel、KISSmetricsなどの統合。
+- [quave:analytics](https://github.com/quavedev/analytics) - ページビューなどをGoogle Analyticsへ送信できるMeteorパッケージ。
 
 ## Cron ジョブ
 
-_Meteor の Cron ジョブ_
+MeteorのCronジョブ。
 
-- [msavin:sjobs](https://github.com/msavin/stevejobs/) - A Meteor-first jobs queue / task scheduler.
-- [percolate:synced-cron](https://github.com/percolatestudio/meteor-synced-cron) - Cron system for Meteor. It supports syncronizing jobs between multiple processes.
-- [ostrio:cron-jobs](https://github.com/VeliovGroup/Meteor-CRON-jobs) - Package with similar API to native `setTimeout` and `setInterval` methods, but synced between all running Meteor (NodeJS) instances.
+- [msavin:sjobs](https://github.com/msavin/stevejobs/) - Meteorを中心に設計されたジョブキュー・タスクスケジューラー。
+- [percolate:synced-cron](https://github.com/percolatestudio/meteor-synced-cron) - 複数プロセス間でジョブを同期できるMeteorのCronシステム。
+- [ostrio:cron-jobs](https://github.com/VeliovGroup/Meteor-CRON-jobs) - ネイティブの`setTimeout`や`setInterval`と似たAPIを持ち、実行中のすべてのMeteor（NodeJS）インスタンス間で同期するパッケージ。
 
 ## デバッグツール
 
-_デバッグツール_
+デバッグツール。
 
-- [meteor-devtools-evolved](https://github.com/leonardoventurini/meteor-devtools-evolved) - A chrome extension.
-- [msavin:mongol](https://github.com/msavin/Mongol/) - Visual Editing Tool for Meteor for MongoDB Collections.
-- [msavin:jetsetter](https://github.com/msavin/JetSetter) - Visual Get/Set Tool for Meteor Session Variables.
-- [babrahams:constellation](https://github.com/JackAdams/constellation-distro/) - An extensible dev console for Meteor.
+- [meteor-devtools-evolved](https://github.com/leonardoventurini/meteor-devtools-evolved) - Chrome拡張機能。
+- [msavin:mongol](https://github.com/msavin/Mongol/) - MeteorのMongoDBコレクションを視覚的に編集するツール。
+- [msavin:jetsetter](https://github.com/msavin/JetSetter) - Meteorのセッション変数を視覚的に取得・設定するツール。
+- [babrahams:constellation](https://github.com/JackAdams/constellation-distro/) - 拡張可能なMeteor開発用コンソール。
 
 ## エディタープラグイン
 
-- [meteor-api](https://atom.io/packages/meteor-api) - Meteor addons for Atom.
-- [meteor-zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#meteor) - Completion for the meteor command.
+- [meteor-api](https://atom.io/packages/meteor-api) - Atom用のMeteorアドオン。
+- [meteor-zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#meteor) - meteorコマンドの補完。
 
 ## スキャフォールディング
 
-_スキャフォールディング_
+ひな型生成ツール。
 
-- [Meteor Kitchen](http://www.meteorkitchen.com/) - Code generator for Meteor.
-- [iron-cli](https://github.com/iron-meteor/iron-cli) - A scaffolding command line tool for Meteor applications.
-- [maka-cli](https://github.com/maka-io/maka-cli) - Maka-CLI is a command line tool, which organizes a web application's file structure and automates everyday package installation tasks for various application frameworks.
+- [Meteor Kitchen](http://www.meteorkitchen.com/) - Meteorのコード生成ツール。
+- [iron-cli](https://github.com/iron-meteor/iron-cli) - Meteorアプリのひな型を生成するコマンドラインツール。
+- [maka-cli](https://github.com/maka-io/maka-cli) - Webアプリのファイル構造を整理し、さまざまなアプリケーションフレームワークの日常的なパッケージインストール作業を自動化するコマンドラインツール、Maka-CLI。
 
 ## ツール
 
-- [ESLint-plugin-Meteor](https://github.com/dferber90/eslint-plugin-meteor/) - ESLint plugin for Meteor.
+- [ESLint-plugin-Meteor](https://github.com/dferber90/eslint-plugin-meteor/) - Meteor用のESLintプラグイン。
 
 ## ボイラープレート
 
-- [CaptainN - meteor-react-starter](https://github.com/CaptainN/meteor-react-starter) - A starter project on Meteor with React.
+- [CaptainN - meteor-react-starter](https://github.com/CaptainN/meteor-react-starter) - MeteorとReactによるスタータープロジェクト。
 - [Pup](https://github.com/cleverbeagle/pup)
 - [matteodem - meteor-boilerplate](https://github.com/matteodem/meteor-boilerplate)
-- [React with Webpack + Meteor as a backend](http://julian.io/react-with-webpack-meteor-as-a-backend/)
+- [Webpackを使うReactとMeteorバックエンド](http://julian.io/react-with-webpack-meteor-as-a-backend/)
 
 ## オープンソースアプリ
 
-- [Rocket.Chat](https://rocket.chat/) - Realtime chat application built with Meteor.
-- [Wekan](https://github.com/wekan/wekan) - Open source Trello-like kanban.
-- [Unchained Shop](https://github.com/unchainedshop/unchained) - Open source Commerce platform developed with Meteor.
-- [VulcanJS](https://github.com/VulcanJS/Vulcan) - A toolkit to quickly build apps with React, GraphQL & Meteor.
-- [Nosqlclient](https://github.com/nosqlclient/nosqlclient) - MongoDB management tool.
-- [radgrad2](https://github.com/radgrad/radgrad2) - Meteor based education management system.
-- [coauthor](https://github.com/edemaine/coauthor) - Coauthor supercollaboration/discussion forum.
+- [Rocket.Chat](https://rocket.chat/) - Meteorで構築したリアルタイムチャットアプリ。
+- [Wekan](https://github.com/wekan/wekan) - オープンソースのTrello風カンバン。
+- [Unchained Shop](https://github.com/unchainedshop/unchained) - Meteorで開発したオープンソースのコマースプラットフォーム。
+- [VulcanJS](https://github.com/VulcanJS/Vulcan) - React、GraphQL、Meteorでアプリを素早く構築するためのツールキット。
+- [Nosqlclient](https://github.com/nosqlclient/nosqlclient) - MongoDBの管理ツール。
+- [radgrad2](https://github.com/radgrad/radgrad2) - Meteorを使った教育管理システム。
+- [coauthor](https://github.com/edemaine/coauthor) - 共同作業・議論フォーラム、Coauthor。
 
 ## 国際化
 
-- [Meteor-Internationalization](https://github.com/veliovgroup/Meteor-Internationalization) - Super-Lightweight and fast i18n isomorphic driver for Meteor with support of placeholders.
-- [meteor-accounts-t9n](https://github.com/softwarerero/meteor-accounts-t9n/) - Translations for meteor account's error messages.
-- [meteor-universe-i18n](https://github.com/vazco/meteor-universe-i18n) - Internationalization package for React and Meteor.
+- [Meteor-Internationalization](https://github.com/veliovgroup/Meteor-Internationalization) - プレースホルダーに対応するMeteor用のアイソモーフィックなi18nドライバー。
+- [meteor-accounts-t9n](https://github.com/softwarerero/meteor-accounts-t9n/) - Meteorアカウントのエラーメッセージの翻訳。
+- [meteor-universe-i18n](https://github.com/vazco/meteor-universe-i18n) - ReactとMeteor用の国際化パッケージ。
 
 ## フロントエンドフレームワーク
 
-_Alternative Front End Frameworks to Blaze_
+フロントエンドでBlazeの代わりに使う選択肢。
 
-- [React](http://react-in-meteor.readthedocs.org/en/latest/) - Working with React and Meteor.
-- [Vue](https://github.com/meteor-vue) - Working with Vue and Meteor (plus single-file components & apollo support).
-- [Svelte](https://github.com/zodern/melte) - Build cybernetically enhanced web apps with Meteor and Svelte.
-- [Angular 2](https://github.com/Urigo/angular2-meteor) - Working with Angular 2 and Meteor.
-- [Angular](https://github.com/Urigo/angular-meteor) - Working with Angular and Meteor.
-- [Famo.us](https://github.com/gadicc/meteor-famous-views/) - Famo.us and Meteor.
-- [frozeman:build-client](https://github.com/frozeman/meteor-build-client) - A tool to bundle the client part of a Meteor app.
-- [Asteroid](https://github.com/mondora/asteroid) - An alternative client for a Meteor backend.
-- [ddp.js](https://github.com/mondora/ddp.js) - Isomorphic JavaScript DDP client.
-- [elm](https://github.com/ni-ko-o-kin/meteor-elm-example) - elm as the view layer for a meteor based project.
+- [React](http://react-in-meteor.readthedocs.org/en/latest/) - ReactとMeteorを組み合わせるための資料。
+- [Vue](https://github.com/meteor-vue) - VueとMeteorの組み合わせ。単一ファイルコンポーネントとApolloにも対応。
+- [Svelte](https://github.com/zodern/melte) - MeteorとSvelteによるWebアプリの構築。
+- [Angular 2](https://github.com/Urigo/angular2-meteor) - Angular 2とMeteorの組み合わせ。
+- [Angular](https://github.com/Urigo/angular-meteor) - AngularとMeteorの組み合わせ。
+- [Famo.us](https://github.com/gadicc/meteor-famous-views/) - Famo.usとMeteorの組み合わせ。
+- [frozeman:build-client](https://github.com/frozeman/meteor-build-client) - Meteorアプリのクライアント部分をバンドルするツール。
+- [Asteroid](https://github.com/mondora/asteroid) - Meteorバックエンド用の代替クライアント。
+- [ddp.js](https://github.com/mondora/ddp.js) - アイソモーフィックなJavaScriptのDDPクライアント。
+- [elm](https://github.com/ni-ko-o-kin/meteor-elm-example) - Meteorを使うプロジェクトのビュー層としてのelm。
 
 ## 代替データベース
 
-_MongoDB 用の代替データベース_
+MongoDBの代替となるデータベース。
 
-- [vlasky:mysql](https://github.com/vlasky/meteor-mysql) - Reactive MySQL for Meteor
-- [meteor-pg](https://github.com/Richie765/meteor-pg) - New and improved PostgreSQL support for Meteor
-- [ostrio:neo4jdriver](https://github.com/VeliovGroup/ostrio-neo4jdriver/) - Neo4j Driver for Meteor, with support of GrapheneDB
-- [numtel:pg](https://github.com/numtel/meteor-pg) - Reactive PostgreSQL for Meteor
-- [simple:rethink](https://github.com/Slava/meteor-rethinkdb) - RethinkDB integration for Meteor
+- [vlasky:mysql](https://github.com/vlasky/meteor-mysql) - Meteor用のリアクティブなMySQL。
+- [meteor-pg](https://github.com/Richie765/meteor-pg) - MeteorのPostgreSQL対応。
+- [ostrio:neo4jdriver](https://github.com/VeliovGroup/ostrio-neo4jdriver/) - GrapheneDBに対応するMeteorのNeo4jドライバー。
+- [numtel:pg](https://github.com/numtel/meteor-pg) - Meteor用のリアクティブなPostgreSQL。
+- [simple:rethink](https://github.com/Slava/meteor-rethinkdb) - MeteorへのRethinkDB統合。
 
-# リソース
+## リソース
 
-_新しい Meteor 情報を探す場所_
+Meteorの書籍、講座、チュートリアル、Webサイト、コミュニティ資料。
 
 ## 書籍
 
-- [Meteor Explained](https://gumroad.com/l/meteor-explained)
-- [Secure Meteor](https://www.securemeteor.com/)
-- [meteor-tuts](https://www.meteor-tuts.com/) - Free
-- [Meteor Tips](http://meteortips.com/) - Free
-- [Pro Meteor](https://pdfslide.net/documents/pro-meteor-book.html) - Free
-- [Meteor Cookbook](https://github.com/awatson1978/meteor-cookbook)
+- [Meteor Explained](https://gumroad.com/l/meteor-explained) - Meteorを解説する書籍。
+- [Secure Meteor](https://www.securemeteor.com/) - Meteorのセキュリティを扱う書籍。
+- [meteor-tuts](https://www.meteor-tuts.com/) - 無料。
+- [Meteor Tips](http://meteortips.com/) - Meteorのヒントを扱う無料の書籍。
+- [Pro Meteor](https://pdfslide.net/documents/pro-meteor-book.html) - 無料の書籍。
+- [Meteor Cookbook](https://github.com/awatson1978/meteor-cookbook) - Meteorのクックブック。
 
 ## コース
 
-- #### Free
+### 無料 <a id="free"></a>
 
-  - [How to Create an App](https://www.youtube.com/c/Howtocreateanappdev/videos) - Most updated.
-  - [EventedMind](https://learn-meteor.netlify.app/) - It's old but goes into detail regarding how Meteor internals.
+- [How to Create an App](https://www.youtube.com/c/Howtocreateanappdev/videos) - 固定版の上流リストで、最も新しい状態の資料と紹介されている。
+- [EventedMind](https://learn-meteor.netlify.app/) - 古い資料だが、Meteorの内部の仕組みを詳しく解説。
 
-- #### Paid
-  - [Udemy - Learn React and Meteor in 2021: Build a multiplayer game](https://www.udemy.com/course/modern-web-development-with-react-and-meteor-2021/)
-  - [Udemy - Realtime Applications with Meteor and Vue](https://www.udemy.com/course/meteor-vue) - Course in Spanish.
-  - [leveluptutorials](https://www.leveluptutorials.com/) - Contains some free tutorials but mostly on 1.x.
+### 有料 <a id="paid"></a>
+
+- [Udemy - Learn React and Meteor in 2021: Build a multiplayer game](https://www.udemy.com/course/modern-web-development-with-react-and-meteor-2021/) - ReactとMeteorでマルチプレイヤーゲームを作る2021年の講座。
+- [Udemy - Realtime Applications with Meteor and Vue](https://www.udemy.com/course/meteor-vue) - MeteorとVueによるリアルタイムアプリを扱うスペイン語の講座。
+- [leveluptutorials](https://www.leveluptutorials.com/) - 一部に無料のチュートリアルを含み、主にMeteor 1.xを扱う。
 
 ## チュートリアル
 
-
-- [Phusion Passenger: Meteor tutorial](https://github.com/phusion/passenger/wiki/Phusion-Passenger:-Meteor-tutorial)
-- [When a Meteor finally hits production](https://medium.com/@davidyahalomi/when-a-meteor-finally-hits-production-6c37b81f795b) - Blog post about deploying Meteor apps
-- [Transform any Meteor App into a PWA](https://dev.to/jankapunkt/transform-any-meteor-app-into-a-pwa-4k44)
+- [Phusion Passenger: Meteor tutorial](https://github.com/phusion/passenger/wiki/Phusion-Passenger:-Meteor-tutorial) - Phusion PassengerのMeteorチュートリアル。
+- [When a Meteor finally hits production](https://medium.com/@davidyahalomi/when-a-meteor-finally-hits-production-6c37b81f795b) - Meteorアプリのデプロイについてのブログ記事。
+- [Transform any Meteor App into a PWA](https://dev.to/jankapunkt/transform-any-meteor-app-into-a-pwa-4k44) - MeteorアプリをPWAにする方法。
 
 ## ブログ
 
-- [Official Meteor blog](http://blog.meteor.com)
-- [The Meteor podcast](http://podcast.crater.io)
+- [Meteorの公式ブログ](http://blog.meteor.com)
+- [Meteorのポッドキャスト](http://podcast.crater.io)
 
 ## Web サイト
 
-- [Official website](https://www.meteor.com/)
-- [Official Documentation](http://docs.meteor.com/)
-- [Official Guide](http://guide.meteor.com/)
-- [Atmosphere](https://atmospherejs.com/) - The catalog of Meteor packages, resources and tools.
-- [Packosphere](https://packosphere.com/) - Alternative front-end for Meteor package system, built by [Kelly Copley
-](https://github.com/copleykj)
-- [Discover Meteor](https://book.discovermeteor.com/)
-- [Meteorpedia](http://www.meteorpedia.com) ([infrequently](http://www.meteorpedia.com/special/RecentChanges/) updated)
-- [Meetups](http://meteor.meetup.com/)
+- [公式サイト](https://www.meteor.com/)
+- [公式ドキュメント](http://docs.meteor.com/)
+- [公式ガイド](http://guide.meteor.com/)
+- [Atmosphere](https://atmospherejs.com/) - Meteorのパッケージ、資料、ツールのカタログ。
+- [Packosphere](https://packosphere.com/) - [Kelly Copley](https://github.com/copleykj)が構築した、Meteorパッケージシステムの代替フロントエンド。
+- [Discover Meteor](https://book.discovermeteor.com/) - Meteorを扱う書籍。
+- [Meteorpedia](http://www.meteorpedia.com) - 固定版の上流リストでは[更新頻度が低い](http://www.meteorpedia.com/special/RecentChanges/)と説明されている。
+- [ミートアップ](http://meteor.meetup.com/)
 - [Reddit](https://www.reddit.com/r/meteor)
-- [YouTube](https://www.youtube.com/channel/UC3fBiJrFFMhKlsWM46AsAYw) videos from meetups around the world
-- [Unofficial Meteor FAQ](https://github.com/oortcloud/unofficial-meteor-faq)
+- [YouTube](https://www.youtube.com/channel/UC3fBiJrFFMhKlsWM46AsAYw) - 世界各地のミートアップの動画。
+- [Meteorの非公式FAQ](https://github.com/oortcloud/unofficial-meteor-faq)
 - [The Meteor Chef](https://themeteorchef.com)
 
 ### Q&A
 
 - [Stack Overflow](http://stackoverflow.com/questions/tagged/meteor?sort=newest&pagesize=15)
-- [Meteor forums](https://forums.meteor.com/)
+- [Meteorフォーラム](https://forums.meteor.com/)
 
 ### コミュニティニュースレター
 
@@ -336,15 +337,14 @@ _新しい Meteor 情報を探す場所_
 
 ## ソーシャル
 
-- [Official Twitter Account](https://twitter.com/meteorjs)
-- [Meteor Community Organization Slack Channel](https://github.com/Meteor-Community-Packages/organization#slack)
-
+- [公式Twitterアカウント](https://twitter.com/meteorjs)
+- [Meteor Community OrganizationのSlackチャンネル](https://github.com/Meteor-Community-Packages/organization#slack)
 
 ## 求人情報
 
 - [Awesome Meteor Jobs](https://github.com/harryadel/awesome-meteor-jobs)
 - [We work Meteor](https://www.weworkmeteor.com/)
-- [Official Job Board](https://jobs.meteor.com/)
+- [公式求人掲示板](https://jobs.meteor.com/)
 
 ## 関連
 
@@ -353,27 +353,21 @@ _新しい Meteor 情報を探す場所_
 
 ## Meteor で構築
 
-_Meteor で構築された商用レベルのアプリケーション_
+固定版の上流リストで、Meteorを使った商用レベルのアプリとして紹介されているものです。
 
-- [Qualia](https://www.qualia.com/) - Real Estate Startup
-- [Code Signal](https://codesignal.com/) - Skills-based assessment platform
-- [Pathable](https://github.com/Urigo/awesome-meteor/blob/070dad0cb587e98ad40d252a9659d8bdcab68772/Pathable) - Events managment suite
-- [MaestroQA](https://www.maestroqa.com/) - Quality assurance software
+- [Qualia](https://www.qualia.com/) - 不動産分野のスタートアップ。
+- [Code Signal](https://codesignal.com/) - スキルに基づく評価プラットフォーム。
+- [Pathable](https://github.com/Urigo/awesome-meteor/blob/070dad0cb587e98ad40d252a9659d8bdcab68772/Pathable) - イベント管理ツール群。
+- [MaestroQA](https://www.maestroqa.com/) - 品質保証ソフトウェア。
 
 ## 非推奨
 
-_この節は現在の Meteor バージョンと互換性がなくなったリソース向けです_
+固定版の上流リストでは、以下の資料は当時のMeteorの現行バージョンとの互換性がなくなったと説明されています。
 
-- [Meteor 1.4 + React For Everyone Tutorials](https://www.leveluptutorials.com/tutorials/meteor-1-4-react-for-everyone-tutorials)
-- [Meteor 1.4 For Everyone](https://www.leveluptutorials.com/tutorials/meteor-1-4-for-everyone)
-- [Intermediate Meteor](https://www.leveluptutorials.com/tutorials/intermediate-meteor)
-- [Meteor For Everyone Tutorials](https://www.leveluptutorials.com/tutorials/meteor-for-everyone-tutorials)
-- [tuts+ - Single Page Web Apps with Meteor](http://code.tutsplus.com/courses/single-page-web-apps-with-meteor)
-- [Building a CMS-powered blog in Meteor](https://buttercms.com/blog/meteor-cms-blog-tutorial)
-- [scotch.io - Building a Slack Clone in Meteor](https://scotch.io/tutorials/building-a-slack-clone-in-meteor-js-getting-started)
-
-## [Contributing](https://github.com/urigo/awesome-meteor/blob/master/CONTRIBUTING.md)
-
-Your contributions are always welcome!
-
-Thank you @gillesfabio for creating this repo!
+- [Meteor 1.4 + React For Everyone Tutorials](https://www.leveluptutorials.com/tutorials/meteor-1-4-react-for-everyone-tutorials) - Meteor 1.4とReactのチュートリアル。
+- [Meteor 1.4 For Everyone](https://www.leveluptutorials.com/tutorials/meteor-1-4-for-everyone) - Meteor 1.4の教材。
+- [Intermediate Meteor](https://www.leveluptutorials.com/tutorials/intermediate-meteor) - Meteorの中級教材。
+- [Meteor For Everyone Tutorials](https://www.leveluptutorials.com/tutorials/meteor-for-everyone-tutorials) - Meteorのチュートリアル。
+- [tuts+ - Single Page Web Apps with Meteor](http://code.tutsplus.com/courses/single-page-web-apps-with-meteor) - MeteorによるシングルページWebアプリの講座。
+- [Building a CMS-powered blog in Meteor](https://buttercms.com/blog/meteor-cms-blog-tutorial) - CMSを使うMeteorブログの構築方法。
+- [scotch.io - Building a Slack Clone in Meteor](https://scotch.io/tutorials/building-a-slack-clone-in-meteor-js-getting-started) - MeteorによるSlackクローンの構築方法。

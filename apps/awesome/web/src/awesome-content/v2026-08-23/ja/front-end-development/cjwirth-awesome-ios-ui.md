@@ -1,11 +1,11 @@
 ---
 title: "Awesome iOS UI"
-description: "Awesome iOS UIの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "iOSのユーザーインターフェースに関する資料を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome iOS UI
 
-Awesome iOS UIの収録案内です。このスナップショットでは上流本文を転載していません。
+iOSのユーザーインターフェースに関する資料を探すためのAwesome iOS UIへの案内です。このスナップショットには元のリストの本文を転載していません。
 
-- [元のリポジトリを開く](https://github.com/cjwirth/awesome-ios-ui/blob/2bb9ace467fc5048fbdbb52e8fb558cc3973a422/README.md)
+- [元のリストを読む](https://github.com/cjwirth/awesome-ios-ui/blob/2bb9ace467fc5048fbdbb52e8fb558cc3973a422/README.md)

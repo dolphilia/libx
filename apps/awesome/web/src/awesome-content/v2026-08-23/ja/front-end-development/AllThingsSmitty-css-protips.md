@@ -1,55 +1,18 @@
 ---
 title: "Awesome CSS Protips"
-description: "CSS Protipsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "レイアウト、セレクター、文字組み、余白、フォーム、ブラウザー互換性に関するCSSの技法とコード例を案内します。"
 licenseSource: "github-AllThingsSmitty-css-protips-readme-md"
 ---
 
 # Awesome CSS Protips
 
-CSS Protipsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+レイアウト、セレクター、文字組み、余白、フォーム、ブラウザー互換性に関するCSSの技法を、コード例やデモとともに探せます。ブラウザー対応と上流の翻訳情報は固定原文に沿っています。各技法にはそれぞれ適用条件や制約があります。
 
-## 目次
+## プロ向けヒント<a id="protips"></a>
 
-- [プロ向けヒント](#protips)
-- [サポート](#support)
-- [翻訳](#translations)
-- [貢献ガイドライン](https://github.com/AllThingsSmitty/css-protips/blob/e95123993037bbcd1bd97170cfa02087155c3690/CONTRIBUTING.md)
+### CSSリセットを使う<a id="use-a-css-reset"></a><a id="css-resetを使う"></a>
 
-## プロ向けヒント
-
-1. [Use a CSS Reset](#use-a-css-reset)
-1. [Inherit `box-sizing`](#inherit-box-sizing)
-1. [Use `unset` Instead of Resetting All Properties](#use-unset-instead-of-resetting-all-properties)
-1. [Use `:not()` to Apply/Unapply Borders on Navigation](#use-not-to-applyunapply-borders-on-navigation)
-1. [Check if Font Is Installed Locally](#check-if-font-is-installed-locally)
-1. [Add `line-height` to `body`](#add-line-height-to-body)
-1. [Set `:focus` for Form Elements](#set-focus-for-form-elements)
-1. [Vertically-Center Anything](#vertically-center-anything)
-1. [Use `aspect-ratio` Instead of Height/Width](#use-aspect-ratio-instead-of-heightwidth)
-1. [Comma-Separated Lists](#comma-separated-lists)
-1. [Select Items Using Negative `nth-child`](#select-items-using-negative-nth-child)
-1. [Use SVG for Icons](#use-svg-for-icons)
-1. [Use the "Lobotomized Owl" Selector](#use-the-lobotomized-owl-selector)
-1. [Use `max-height` for Pure CSS Sliders](#use-max-height-for-pure-css-sliders)
-1. [Equal-Width Table Cells](#equal-width-table-cells)
-1. [Get Rid of Margin Hacks With Flexbox](#get-rid-of-margin-hacks-with-flexbox)
-1. [Use Attribute Selectors with Empty Links](#use-attribute-selectors-with-empty-links)
-1. [Control Specificity Better With `:is()`](#control-specificity-better-with-is)
-1. [Style "Default" Links](#style-default-links)
-1. [Intrinsic Ratio Boxes](#intrinsic-ratio-boxes)
-1. [Style Broken Images](#style-broken-images)
-1. [Use `rem` for Global Sizing; Use `em` for Local Sizing](#use-rem-for-global-sizing-use-em-for-local-sizing)
-1. [Hide Autoplay Videos That Aren't Muted](#hide-autoplay-videos-that-arent-muted)
-1. [Use `:root` for Flexible Type](#use-root-for-flexible-type)
-1. [Set `font-size` on Form Elements for a Better Mobile Experience](#set-font-size-on-form-elements-for-a-better-mobile-experience)
-1. [Use Pointer Events to Control Mouse Events](#use-pointer-events-to-control-mouse-events)
-1. [Set `display: none` on Line Breaks Used as Spacing](#set-display-none-on-line-breaks-used-as-spacing)
-1. [Use `:empty` to Hide Empty HTML Elements](#use-empty-to-hide-empty-html-elements)
-1. [Use `margin-inline` instead of `margin`](#use-margin-inline-instead-of-margin)
-
-### CSS Resetを使う
-
-CSS resetは、要素スタイルを白紙から始め、異なるブラウザー間のスタイル一貫性を保つのに役立ちます。多くのresetパターンがありますが、より簡素なreset方法も使えます:
+CSSリセットは、ブラウザーの既定スタイルの差を減らします。この例ではマージンとパディングを取り除き、ボックスサイズの計算方法を設定します。
 
 ```css
 *,
@@ -61,18 +24,18 @@ CSS resetは、要素スタイルを白紙から始め、異なるブラウザ�
 }
 ```
 
-これで要素からmarginとpaddingが除去され、`box-sizing`によりCSSボックスモデルでレイアウトを管理できます。
+要素と疑似要素に`box-sizing: border-box`を適用し、マージンとパディングをゼロにします。
 
-#### [デモ](https://codepen.io/AllThingsSmitty/pen/kkrkLL)
+<a id="デモ"></a>
+
+[デモ](https://codepen.io/AllThingsSmitty/pen/kkrkLL)
 
 > **ヒント:**
-> 下記の[`box-sizing`を継承する](#inherit-box-sizing)ヒントに従う場合、CSS resetに`box-sizing`プロパティを含めない選択もできます。
+> 下記の[`box-sizing`を継承する](#inherit-box-sizing)ヒントに従う場合、CSSリセットに`box-sizing`プロパティを含めない選択もできます。
 
-<sup>[先頭へ戻る](#contents)</sup>
+### `box-sizing`を継承する<a id="inherit-box-sizing"></a>
 
-### `box-sizing`を継承する
-
-`box-sizing`を`html`から継承させます:
+`box-sizing`を`html`から継承させます。
 
 ```css
 html {
@@ -86,15 +49,15 @@ html {
 }
 ```
 
-これにより、別の振る舞いを活用するプラグインや他のコンポーネントで`box-sizing`を変更しやすくなります。
+コンポーネントでボックスサイズの計算方法を変えると、継承する子孫要素にもその値を渡せます。
 
-#### [Demo](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
+<a id="demo"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
 
-### すべてのプロパティをResetせず`unset`を使う
+### すべてのプロパティをResetせず`unset`を使う<a id="use-unset-instead-of-resetting-all-properties"></a>
 
-要素のプロパティをresetする場合、個々のプロパティをすべてresetする必要はありません:
+原文では、個別のリセット指定とショートハンドによるリセットを比較しています。どちらもボタンの既定の外観を変更するため、適用時にはフォーカスを示すスタイルを確保してください。
 
 ```css
 button {
@@ -107,7 +70,7 @@ button {
 }
 ```
 
-`all`短縮形で要素のすべてのプロパティを指定できます。値を`unset`に設定すると、要素のプロパティは初期値に変わります:
+`all`ショートハンドで複数のプロパティをまとめてリセットできます。`unset`は、継承されるプロパティでは継承値、それ以外では初期値を使います。`all`は`direction`、`unicode-bidi`、カスタムプロパティをリセットしません。[CSSのカスケードと継承の仕様](https://www.w3.org/TR/css-cascade-5/#valdef-all-unset)を参照してください。
 
 ```css
 button {
@@ -115,11 +78,9 @@ button {
 }
 ```
 
-<sup>[Back to top](#contents)</sup>
+### ナビゲーションのborder適用／解除に`:not()`を使う<a id="use-not-to-applyunapply-borders-on-navigation"></a>
 
-### ナビゲーションのborder適用／解除に`:not()`を使う
-
-borderを設定して…
+ボーダーを設定し、
 
 ```css
 /* add border */
@@ -128,7 +89,7 @@ borderを設定して…
 }
 ```
 
-…最後の要素で解除する代わりに…
+最後の要素で解除する代わりに、
 
 ```css
 /* remove border */
@@ -137,7 +98,7 @@ borderを設定して…
 }
 ```
 
-…`:not()`疑似クラスを使い、必要な要素だけに適用します:
+`:not()`疑似クラスを使って必要な要素だけに適用します。
 
 ```css
 .nav li:not(:last-child) {
@@ -145,15 +106,15 @@ borderを設定して…
 }
 ```
 
-このCSSセレクターは、人が説明するように読めます。
+ボーダーの適用対象から最後の子要素を除外しています。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/LkymvO)
+<a id="demo-1"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/LkymvO)
 
-### フォントがローカルにインストール済みか確認する
+### フォントがローカルにインストール済みか確認する<a id="check-if-font-is-installed-locally"></a>
 
-リモートから取得する前にフォントがローカルにインストールされているか確認できます。これはパフォーマンス上も良いヒントです。
+フォントの取得元を順に試し、リモートURLから取得する前にローカルにインストールされたフォントを探します。
 
 ```css
 @font-face {
@@ -168,13 +129,11 @@ code {
 }
 ```
 
-このヒントと[デモ](https://codepen.io/argyleink/pen/VwYJpgR)を共有したAdam Argyleに感謝します。
+この技法と[デモ](https://codepen.io/argyleink/pen/VwYJpgR)はAdam Argyleが紹介したものです。
 
-<sup>[Back to top](#contents)</sup>
+### `line-height`を`body`へ追加する<a id="add-line-height-to-body"></a>
 
-### `line-height`を`body`へ追加する
-
-`line-height`を各`<p>`、`<h*>`、_et al_.へ個別に追加する必要はありません。代わりに`body`へ追加します:
+`line-height`を`body`に設定すると、別の指定がなければ段落や見出しへ継承できます。
 
 ```css
 body {
@@ -182,15 +141,15 @@ body {
 }
 ```
 
-これによりテキスト要素は`body`から簡単に継承できます。
+単位のない値は、各要素のフォントサイズに合わせて行の高さを決めます。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/VjbdYd)
+<a id="demo-2"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/VjbdYd)
 
-### フォーム要素に`:focus`を設定する
+### フォーム要素に`:focus`を設定する<a id="set-focus-for-form-elements"></a>
 
-視覚を使うキーボードユーザーは、ページ内のどこへキーボードイベントが届くかをfocusで判断します。フォーム要素のfocusを、ブラウザー既定実装より目立ち一貫したものにします:
+見えるフォーカス表示は、キーボード操作中の要素を把握する助けになります。この例では、リンクとフォーム部品に共通の輪郭線を付けます。
 
 ```css
 a:focus,
@@ -204,13 +163,13 @@ textarea:focus {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/ePzoOP/)
+<a id="demo-3"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/ePzoOP/)
 
-### 何でも垂直中央揃えにする
+### 何でも垂直中央揃えにする<a id="vertically-center-anything"></a>
 
-いいえ、黒魔術ではありません。本当に要素を垂直中央揃えにできます。flexboxで実現できます…
+Flexboxを使って内容を縦横ともに中央へ配置します。
 
 ```css
 html,
@@ -225,7 +184,7 @@ body {
 }
 ```
 
-…CSS Gridでも可能です:
+CSS Gridでも実現できます。
 
 ```css
 body {
@@ -236,15 +195,15 @@ body {
 ```
 
 > **ヒント:**
-> 別のものを中央揃えにしたいですか。垂直、水平、何でも、いつでも、どこでも。CSS-Tricksには、そのすべてを扱う[優れた解説](https://css-tricks.com/centering-css-complete-guide/)があります。
+> ほかの中央配置パターンは、CSS-Tricksの[ガイド](https://css-tricks.com/centering-css-complete-guide/)を参照してください。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/GqmGqZ)
+<a id="demo-4"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/GqmGqZ)
 
-### 高さ／幅の代わりに`aspect-ratio`を使う
+### 高さ／幅の代わりに`aspect-ratio`を使う<a id="use-aspect-ratio-instead-of-heightwidth"></a>
 
-`aspect-ratio`プロパティにより、要素のサイズ設定と一貫した幅対高さ比の維持を簡単に行えます。これはレイアウトシフトを防ぐレスポンシブウェブデザインで非常に役立ちます。画像の高さ／幅値が変わってもレイアウトが崩れないよう、`object-fit`とともに使います。
+`aspect-ratio`プロパティは、少なくとも一方の寸法が自動計算される場合に、幅と高さの望ましい比率を指定します。レスポンシブなレイアウトで画像用の領域を確保できます。`object-fit`プロパティは枠内への画像の収め方を指定し、この例では枠を埋めるよう画像を切り抜きます。
 
 ```css
 img {
@@ -255,13 +214,13 @@ img {
 
 `aspect-ratio`プロパティの詳細は、この[web.dev記事](https://web.dev/articles/aspect-ratio)を参照してください。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/MWxwoNx/)
+<a id="demo-5"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/MWxwoNx/)
 
-### カンマ区切りリスト
+### カンマ区切りリスト<a id="comma-separated-lists"></a>
 
-リスト項目を本物のカンマ区切りリストのように見せます:
+生成コンテンツを使ってリスト項目間にカンマを付けます。
 
 ```css
 ul > li:not(:last-child)::after {
@@ -272,41 +231,39 @@ ul > li:not(:last-child)::after {
 `:not()`疑似クラスを使うと、最後の項目にカンマは追加されません。
 
 > **注記:**
-> このヒントは、特にスクリーンリーダーに関するアクセシビリティには適さない可能性があります。また、ブラウザーでのコピー＆ペーストはCSS生成コンテンツでは機能しません。注意して進めてください。
+> CSSで生成したテキストは、スクリーンリーダーで取得できない場合や、ブラウザーからのコピーに含まれない場合があります。必須の情報を生成コンテンツだけで伝えないでください。
 
-<sup>[Back to top](#contents)</sup>
+### 負の`nth-child`で項目を選択する<a id="select-items-using-negative-nth-child"></a>
 
-### 負の`nth-child`で項目を選択する
-
-CSSで負の`nth-child`を使い、1からnまでの項目を選択します。
+負の`nth-child`を使い、兄弟要素内の位置を基準に選択します。この例では、最初の3つの位置にあるリスト項目を表示します。
 
 ```css
 li {
   display: none;
 }
 
-/* 1から3までの項目を選択して表示する */
+/* select items 1 through 3 and display them */
 li:nth-child(-n + 3) {
   display: block;
 }
 ```
 
-また、すでに[`:not()`の使用](#use-not-to-applyunapply-borders-on-navigation)を少し学んだので、次を試してみてください:
+別の例として、最初の非表示ルールを残し、選択ルールを[`:not()`セレクター](#use-not-to-applyunapply-borders-on-navigation)に置き換えると、最初の3つの位置より後にある項目を表示できます。
 
 ```css
-/* 最初の3つを除くすべての項目を選択して表示する */
+/* select all items except the first 3 and display them */
 li:not(:nth-child(-n + 3)) {
   display: block;
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/WxjKZp)
+<a id="demo-6"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/WxjKZp)
 
-### アイコンにはSVGを使う
+### アイコンにはSVGを使う<a id="use-svg-for-icons"></a>
 
-アイコンにSVGを使わない理由はありません:
+異なる解像度に合わせて拡大縮小するアイコンには、SVGを使えます。
 
 ```css
 .logo {
@@ -314,10 +271,10 @@ li:not(:nth-child(-n + 3)) {
 }
 ```
 
-SVGはあらゆる解像度で適切に拡大縮小され、[IE9まで](http://caniuse.com/#search=svg)のすべてのブラウザーでサポートされています。.png、.jpg、.gif-jif-whatevファイルをやめましょう。
+原文では、SVGをPNG、JPG、GIFアイコンの代替として紹介し、[IE9以降の対応](http://caniuse.com/#search=svg)に言及しています。
 
-> **NOTE:**
-> If you have SVG icon-only buttons for sighted users and the SVG fails to load, this will help maintain accessibility:
+> **注記:**
+> 原文では、アイコンのみのボタンでSVGを読み込めない場合に、`aria-label`の内容を代わりに表示する例を紹介しています。
 
 ```css
 .no-svg .icon-only::after {
@@ -325,11 +282,9 @@ SVGはあらゆる解像度で適切に拡大縮小され、[IE9まで](http://c
 }
 ```
 
-<sup>[Back to top](#contents)</sup>
+### 「ロボトミーされたフクロウ」セレクターを使う<a id="use-the-lobotomized-owl-selector"></a>
 
-### 「ロボトミーされたフクロウ」セレクターを使う
-
-奇妙な名前かもしれませんが、ユニバーサルセレクター（`*`）を隣接兄弟セレクター（`+`）と使うと、強力なCSS機能を得られます:
+全称セレクター（`*`）と隣接兄弟セレクター（`+`）を組み合わせ、兄弟要素間に余白を設けます。
 
 ```css
 * + * {
@@ -337,18 +292,18 @@ SVGはあらゆる解像度で適切に拡大縮小され、[IE9まで](http://c
 }
 ```
 
-この例では、文書フロー内で他の要素に続くすべての要素が`margin-top: 1.5em`を受け取ります。
+この例では、直前に兄弟要素がある要素に`margin-top: 1.5em`が適用されます。
 
-> **TIP:**
-> For more on the "lobotomized owl" selector, read [Heydon Pickering's post](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls) on _A List Apart_.
+> **ヒント:**
+> このセレクターについては、_A List Apart_の[Heydon Pickeringの記事](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls)を参照してください。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/grRvWq)
+<a id="demo-7"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/grRvWq)
 
-### Pure CSSスライダーに`max-height`を使う
+### Pure CSSスライダーに`max-height`を使う<a id="use-max-height-for-pure-css-sliders"></a>
 
-overflow hiddenと`max-height`を使ってCSSのみのスライダーを実装します:
+`max-height`とオーバーフローの指定を使って、ホバー時に内容パネルの高さの上限を変更します。
 
 ```css
 .slider {
@@ -363,13 +318,11 @@ overflow hiddenと`max-height`を使ってCSSのみのスライダーを実装�
 }
 ```
 
-要素はhover時に`max-height`値まで拡張され、overflowの結果としてスライダーが表示されます。
+ホバー時に高さの上限が200pxから600pxへ変わり、縦方向のスクロールが有効になります。実際の高さは内容量やほかのサイズ指定にも依存し、必ず600pxになるわけではありません。[CSSの最大サイズの指定](https://www.w3.org/TR/css-sizing-3/#max-size-properties)を参照してください。
 
-<sup>[Back to top](#contents)</sup>
+### 等幅のテーブルセル<a id="equal-width-table-cells"></a>
 
-### 等幅のテーブルセル
-
-テーブルの扱いは面倒になりがちです。セルを等幅に保つため、`table-layout: fixed`を試してください:
+原文では、テーブルの列を等幅にする例として`table-layout: fixed`を使っています。
 
 ```css
 .calendar {
@@ -377,15 +330,15 @@ overflow hiddenと`max-height`を使ってCSSのみのスライダーを実装�
 }
 ```
 
-苦痛のないテーブルレイアウトです。
+固定テーブルレイアウトは、テーブルの幅と、列や先頭行のセルに指定した幅にも依存します。この宣言だけで等幅になるとは限りません。[CSSのテーブルレイアウト仕様](https://www.w3.org/TR/css-tables-3/)を参照してください。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/jALALm)
+<a id="demo-8"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/jALALm)
 
-### Flexboxでmargin hackをなくす
+### Flexboxでmargin hackをなくす<a id="get-rid-of-margin-hacks-with-flexbox"></a>
 
-列のgutterを扱う際、flexboxの`nth-`、`first-`、`last-child`のhackを`space-between`プロパティでなくせます:
+Flexboxの`justify-content: space-between`を使って列間の余白を設けます。`nth-`、`first-`、`last-child`セレクターを使うマージン指定の代替です。
 
 ```css
 .list {
@@ -398,13 +351,11 @@ overflow hiddenと`max-height`を使ってCSSのみのスライダーを実装�
 }
 ```
 
-これで列のgutterは常に等間隔で表示されます。
+利用できる空間がフレックス項目の間に均等に配分されます。
 
-<sup>[Back to top](#contents)</sup>
+### 空のリンクに属性セレクターを使う<a id="use-attribute-selectors-with-empty-links"></a>
 
-### Use Attribute Selectors with Empty Links
-
-Display links when the `<a>` element has no text value but the `href` attribute has a link:
+空の`<a>`要素で`href`がhttpから始まる場合、URLを生成テキストとして表示します。
 
 ```css
 a[href^="http"]:empty::before {
@@ -412,18 +363,18 @@ a[href^="http"]:empty::before {
 }
 ```
 
-That's really convenient.
+生成されたテキストでリンク先を表示できます。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/zBzXRx)
+<a id="demo-9"></a>
 
-> **NOTE:**
-> This tip may not be ideal for accessibility, specifically screen readers. And copy/paste from the browser doesn't work with CSS-generated content. Proceed with caution.
+[デモ](https://codepen.io/AllThingsSmitty/pen/zBzXRx)
 
-<sup>[Back to top](#contents)</sup>
+> **注記:**
+> CSSで生成したテキストは、スクリーンリーダーで取得できない場合や、ブラウザーからのコピーに含まれない場合があります。必須の情報を生成コンテンツだけで伝えないでください。
 
-### `:is()`で詳細度をより良く制御する
+### `:is()`で詳細度をより良く制御する<a id="control-specificity-better-with-is"></a>
 
-`:is()`疑似クラスは、複数のセレクターを一度に対象にし、冗長性を減らしてコードの可読性を高めます。大きなセレクターをよりコンパクトな形式で書く際に非常に役立ちます。
+`:is()`疑似クラスはセレクターの選択肢をまとめ、長いセレクター一覧を短く記述できます。
 
 ```css
 :is(section, article, aside, nav) :is(h1, h2, h3, h4, h5, h6) {
@@ -431,7 +382,7 @@ That's really convenient.
 }
 ```
 
-上記のルールセットは、次の数多くのセレクター規則と同等です…
+これらの型セレクターでは、上記のルールセットと次の展開したセレクター一覧は同じ要素を選択します。
 
 ```css
 section h1,
@@ -462,11 +413,11 @@ nav h6 {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/rNRVxdx)
+<a id="demo-10"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/rNRVxdx)
 
-### 「既定」リンクをスタイル設定する
+### 「既定」リンクをスタイル設定する<a id="style-default-links"></a>
 
 「既定」リンク用のスタイルを追加します:
 
@@ -477,13 +428,11 @@ a[href]:not([class]) {
 }
 ```
 
-これで通常`class`属性を持たないCMS経由で挿入されたリンクに、カスケードへ全般的な影響を与えず区別を付けられます。
+href属性がありclass属性がないリンクに適用されます。CMSで挿入したリンクも、この条件を満たせば対象になります。
 
-<sup>[Back to top](#contents)</sup>
+### 内在比率ボックス<a id="intrinsic-ratio-boxes"></a>
 
-### 内在比率ボックス
-
-内在比率を持つボックスを作るには、divへ上または下のpaddingを適用するだけです:
+高さをゼロにしたコンテナーへパーセント指定のパディングを加え、子要素を絶対配置して比率を持つボックスを作ります。
 
 ```css
 .container {
@@ -502,15 +451,15 @@ a[href]:not([class]) {
 }
 ```
 
-paddingに20%を使うと、ボックスの高さは幅の20%になります。ビューポートの幅にかかわらず、子divはアスペクト比を保ちます（100% / 20% = 5:1）。
+この横書きレイアウトでは、パーセント指定のパディングは包含ブロックの幅を基準にします。コンテナーがその幅いっぱいに広がる場合、`padding-bottom: 20%`により5:1の比率になります（100% / 20% = 5:1）。[CSSボックスモデル仕様](https://www.w3.org/TR/CSS21/box.html#padding-properties)を参照してください。
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/jALZvE)
+<a id="demo-11"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/jALZvE)
 
-### 壊れた画像をスタイル設定する
+### 壊れた画像をスタイル設定する<a id="style-broken-images"></a>
 
-少しのCSSで壊れた画像をより見栄えよくします:
+原文では、読み込めない画像をCSSで装飾する例を紹介しています。
 
 ```css
 img {
@@ -525,7 +474,7 @@ img {
 }
 ```
 
-次に、壊れた画像のユーザーメッセージとURL参照を表示するため、疑似要素規則を追加します:
+疑似要素を使ってメッセージと画像URLを表示します。読み込めない画像での表示はブラウザーの挙動に依存します。
 
 ```css
 img::before {
@@ -544,11 +493,9 @@ img::after {
 > **ヒント:**
 > このパターンのスタイル設定については、[Ire Aderinokunの記事](http://bitsofco.de/styling-broken-images/)で詳しく学べます。
 
-<sup>[Back to top](#contents)</sup>
+### グローバルなサイズには`rem`、ローカルなサイズには`em`を使う<a id="use-rem-for-global-sizing-use-em-for-local-sizing"></a>
 
-### グローバルなサイズには`rem`、ローカルなサイズには`em`を使う
-
-rootで基準font sizeを設定した後（`html { font-size: 100%; }`）、テキスト要素のfont sizeを`em`へ設定します:
+ルート要素で基準フォントサイズを設定した後（`html { font-size: 100%; }`）、テキスト要素のフォントサイズを`em`へ設定します:
 
 ```css
 h2 {
@@ -560,7 +507,7 @@ p {
 }
 ```
 
-次にモジュールのfont-sizeを`rem`へ設定します:
+次にモジュールの`font-size`を`rem`へ設定します:
 
 ```css
 article {
@@ -572,13 +519,11 @@ aside .module {
 }
 ```
 
-これで各モジュールは区画化され、スタイル設定が容易になり、保守性と柔軟性が高まります。
+モジュールのサイズはルートのフォントサイズを基準にし、その中のテキストは継承したフォントサイズを基準にします。
 
-<sup>[Back to top](#contents)</sup>
+### ミュートされていない自動再生動画を隠す<a id="hide-autoplay-videos-that-arent-muted"></a>
 
-### ミュートされていない自動再生動画を隠す
-
-これはカスタムユーザースタイルシートに最適なテクニックです。ページ読み込み時に自動再生される動画の音でユーザーを圧倒しないようにします。音声がミュートされていない場合は動画を表示しません:
+カスタムユーザースタイルシート向けに、原文では`autoplay`属性があり`muted`属性がない動画を隠しています。このCSSは表示を制御します。
 
 ```css
 video[autoplay]:not([muted]) {
@@ -586,13 +531,11 @@ video[autoplay]:not([muted]) {
 }
 ```
 
-ここでも、[`:not()`](#use-not-to-applyunapply-borders-on-navigation)疑似クラスを活用しています。
+[`:not()`](#use-not-to-applyunapply-borders-on-navigation)疑似クラスで、muted属性がある要素を除外しています。
 
-<sup>[Back to top](#contents)</sup>
+### 柔軟な文字サイズに`:root`を使う<a id="use-root-for-flexible-type"></a>
 
-### 柔軟な文字サイズに`:root`を使う
-
-レスポンシブレイアウトの文字サイズは、各ビューポートに合わせて調整できるべきです。`:root`を使い、ビューポートの高さと幅に基づいてfont-sizeを計算できます:
+`:root`を使って、ビューポートの高さと幅から`font-size`を計算します。
 
 ```css
 :root {
@@ -600,7 +543,7 @@ video[autoplay]:not([muted]) {
 }
 ```
 
-これで`root em`単位を`:root`が計算した値に基づいて利用できます:
+これで`rem`単位を`:root`が計算した値に基づいて利用できます:
 
 ```css
 body {
@@ -608,13 +551,13 @@ body {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/XKgOkR)
+<a id="demo-12"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/XKgOkR)
 
-### モバイル体験を改善するためフォーム要素に`font-size`を設定する
+### モバイル体験を改善するためフォーム要素に`font-size`を設定する<a id="set-font-size-on-form-elements-for-a-better-mobile-experience"></a>
 
-モバイルブラウザー（iOS Safari、_et al_.）が`<select>`ドロップダウンをタップしたときHTMLフォーム要素をズームしないよう、セレクター規則へ`font-size`を追加します:
+原文では、iOS Safariなどのモバイルブラウザーでフォーカス時の自動ズームを避ける方法として、フォーム部品の`font-size`を16pxにする例を紹介しています。効果はブラウザーや設定に依存します。この例は、テキスト入力欄やテキストエリアとともに`<select>`を対象にしています。
 
 ```css
 input[type="text"],
@@ -625,11 +568,9 @@ textarea {
 }
 ```
 
-<sup>[Back to top](#contents)</sup>
+### `pointer-events`でマウス操作を制御する<a id="use-pointer-events-to-control-mouse-events"></a><a id="pointer-eventsでマウスイベントを制御する"></a>
 
-### Pointer Eventsでマウスイベントを制御する
-
-[Pointer events](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events)では、マウスが触れている要素とどのように対話するかを指定できます。たとえばボタンの既定pointer eventを無効にするには:
+[pointer-eventsプロパティ](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events)は、ポインター位置から操作対象を判定するとき、その要素を対象にするかを指定します。この例では、無効なボタンを判定対象から除外します。
 
 ```css
 button:disabled {
@@ -638,11 +579,9 @@ button:disabled {
 }
 ```
 
-とても簡単です。
+このプロパティはポインターの対象判定を制御するもので、イベントの既定動作を取り消すものではありません。[CSSのユーザー操作に関する仕様](https://www.w3.org/TR/css-ui-4/#pointer-events-control)を参照してください。
 
-<sup>[Back to top](#contents)</sup>
-
-### 間隔に使う改行に`display: none`を設定する
+### 間隔に使う改行に`display: none`を設定する<a id="set-display-none-on-line-breaks-used-as-spacing"></a>
 
 [Harry Robertsが指摘した](https://twitter.com/csswizardry/status/1170835532584235008)ように、これはCMSユーザーが間隔のために余分な改行を使うことを防ぐのに役立ちます:
 
@@ -652,11 +591,9 @@ br + br {
 }
 ```
 
-<sup>[Back to top](#contents)</sup>
+### 空のHTML要素を隠すため`:empty`を使う<a id="use-empty-to-hide-empty-html-elements"></a>
 
-### 空のHTML要素を隠すため`:empty`を使う
-
-CMSまたは動的挿入で内容がまだ設定されていない空のHTML要素（例: `<p class="error-message"></p>`）があり、レイアウトに不要な空間を作っている場合、`:empty`疑似クラスを使ってレイアウト上から隠します。
+`:empty`疑似クラスを使うと、CMSやスクリプトが内容を入れる前の空の要素（例: `<p class="error-message"></p>`）を隠せます。原文の次のセレクターはページ内の空の要素すべてに適用されるため、実際には意図した要素へ対象を絞ってください。
 
 ```css
 :empty {
@@ -665,19 +602,11 @@ CMSまたは動的挿入で内容がまだ設定されていない空のHTML要�
 ```
 
 > **注記:**
-> 空白を含む要素は空とは見なされないことに注意してください。例: `<p class="error-message"> </p>`。
+> [Selectors Level 3の定義](https://www.w3.org/TR/selectors-3/#empty-pseudo)では、`<p class="error-message"> </p>`のように空白テキストを含む要素は空とみなされません。原文はこの挙動を説明しています。
 
-<sup>[Back to top](#contents)</sup>
+### `margin-inline`を`margin`の代わりに使う<a id="use-margin-inline-instead-of-margin"></a>
 
-## サポート
-
-Chrome、Firefox、Safari、Edgeの現行バージョン。
-
-<sup>[Back to top](#contents)</sup>
-
-### `margin-inline`を`margin`の代わりに使う
-
-要素のインライン開始・終了marginは`margin-inline`で定義します。`margin-left`と`margin-right`の代わりに、inlineプロパティで両方を定義できます。
+`margin-inline`はインライン方向の開始・終了マージンを設定します。横書きでは、`margin-left`と`margin-right`の個別指定の代わりに使えます。開始・終了と左右の対応は、テキストの方向にも依存します。
 
 ```css
 .div {
@@ -685,7 +614,7 @@ Chrome、Firefox、Safari、Edgeの現行バージョン。
 }
 ```
 
-同じことは、block開始・終了margin、すなわち`margin-block`を`margin-top`と`margin-bottom`で定義する場合にも行えます。
+`margin-block`ショートハンドはブロック方向の開始・終了マージンを設定します。横書きでは`margin-top`と`margin-bottom`に対応しますが、物理方向との対応は書字方向に依存します。[CSS論理プロパティ仕様](https://www.w3.org/TR/css-logical-1/#margin-properties)を参照してください。
 
 ```css
 .div {
@@ -693,14 +622,18 @@ Chrome、Firefox、Safari、Edgeの現行バージョン。
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/PwoOQGB)
+<a id="demo-13"></a>
 
-<sup>[Back to top](#contents)</sup>
+[デモ](https://codepen.io/AllThingsSmitty/pen/PwoOQGB)
 
-## 翻訳
+## サポート<a id="support"></a>
+
+固定原文では、対応ブラウザーにChrome、Firefox、Safari、Edgeを挙げています。原文時点のバージョンに関する記述であり、現在のブラウザーで全例が動作することを保証するものではありません。
+
+## 翻訳<a id="translations"></a>
 
 > **注記:**
-> 増え続ける翻訳済みヒントのリストを保守する時間が少なくなっています。新たなヒントの追加には十数件以上の翻訳への追加が必要です。そのため、翻訳済みREADMEにはメインREADMEにあるすべてのヒントが含まれない可能性があります。
+> 原文では、十数件以上の翻訳の保守に時間がかかるため、翻訳済みREADMEにはメインREADMEのヒントが一部含まれていない場合があると説明しています。
 
 - [简体中文](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-CN)
 - [正體中文](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-TW)
@@ -717,5 +650,3 @@ Chrome、Firefox、Safari、Edgeの現行バージョン。
 - [Português do Europe](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/pt-PT)
 - [Русский](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/ru-RU)
 - [Tiếng Việt](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/vn-VN)
-
-<sup>[Back to top](#contents)</sup>
