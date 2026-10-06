@@ -7,6 +7,7 @@ import { getAwesomeApps, loadAwesomeOwnership, ownerForSource } from './app-owne
 import { prepareImportForCheck } from '../safe-import-output.js';
 import { prepareImportBatch } from '../batch-import-output.js';
 import { notesDir, readJson, rootDir, snapshotVersion, tempDir } from './common.mjs';
+import { assertEditorialPublic } from './editorial-overlays.mjs';
 
 const version = snapshotVersion;
 const layout = getAwesomeApps(rootDir);
@@ -147,6 +148,17 @@ function buildModel() {
       if (!fs.existsSync(inputPath))
         throw new Error(`正規化済み本文がありません: ${source.sourceId}`);
       const markdown = fs.readFileSync(inputPath, 'utf8');
+      assertEditorialPublic(markdown, source.sourceId, version, 'en');
+      const currentPath = path.join(
+        sourceApp(source).directory,
+        'src/awesome-content',
+        version,
+        'en',
+        categorySlug,
+        `${id}.md`
+      );
+      if (fs.existsSync(currentPath))
+        assertEditorialPublic(fs.readFileSync(currentPath, 'utf8'), source.sourceId, version, 'en');
       const parsed = matter(markdown);
       const expectedLicenseSource =
         source.status === 'metadata-only' ? 'sindresorhus-awesome-readme' : source.sourceId;
@@ -258,7 +270,9 @@ function entriesFor(lang) {
       `${entry.slug}.md`
     );
     if (!fs.existsSync(pathname)) return [];
-    const parsed = matter(fs.readFileSync(pathname, 'utf8'));
+    const markdown = fs.readFileSync(pathname, 'utf8');
+    const hasEditorial = assertEditorialPublic(markdown, entry.sourceId, version, 'ja');
+    const parsed = matter(markdown);
     const description = String(parsed.data.description ?? '');
     return [
       {
@@ -266,12 +280,13 @@ function entriesFor(lang) {
         lang,
         moduleKey: entry.moduleKey.replace('/en/', `/${lang}/`),
         title: String(parsed.data.title),
-        description: allReviewComplete
-          ? description.replaceAll(
-              '人手レビュー前',
-              automatedEvidenceReviewed ? '自動証拠レビュー済み' : '人手レビュー済み'
-            )
-          : description,
+        description:
+          allReviewComplete && !hasEditorial
+            ? description.replaceAll(
+                '人手レビュー前',
+                automatedEvidenceReviewed ? '自動証拠レビュー済み' : '人手レビュー済み'
+              )
+            : description,
         licenseSource: String(parsed.data.licenseSource),
       },
     ];

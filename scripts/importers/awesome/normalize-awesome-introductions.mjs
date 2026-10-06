@@ -4,6 +4,7 @@ import path from 'node:path';
 import { notesDir, readJson, rootDir, snapshotVersion, tempDir } from './common.mjs';
 import { applyIntroductionDecision } from './awesome-introduction-utils.mjs';
 import { createAwesomeContentAccess } from './app-ownership.mjs';
+import { assertEditorialPublic } from './editorial-overlays.mjs';
 
 const version = snapshotVersion;
 const check = process.argv.includes('--check');
@@ -43,6 +44,9 @@ if (selectedSourceIds && selectedEntries.length !== selectedSourceIds.size) {
 
 for (const entry of selectedEntries) {
   for (const lang of ['en', 'ja']) {
+    const pathname = content.pathFor(lang, `${entry.slug}.md`);
+    if (assertEditorialPublic(fs.readFileSync(pathname, 'utf8'), entry.sourceId, version, lang))
+      continue;
     applyFile(
       content.pathFor(lang, `${entry.slug}.md`),
       entry.normalized[lang],
@@ -51,6 +55,10 @@ for (const entry of selectedEntries) {
   }
   const canonicalPath = path.join(normalizedRoot, `${entry.sourceId}.md`);
   if (fs.existsSync(canonicalPath)) {
+    if (
+      assertEditorialPublic(fs.readFileSync(canonicalPath, 'utf8'), entry.sourceId, version, 'en')
+    )
+      continue;
     applyFile(canonicalPath, entry.normalized.en, entry.evidence.en);
   }
 }

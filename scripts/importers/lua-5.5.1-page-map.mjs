@@ -24,7 +24,7 @@ export const LUA_PAGE_MAP = [
   readme(
     '01-overview/01-about.md',
     'About Lua 5.5',
-    'Overview, source layout and supported platforms',
+    'Overview of Lua and its official documentation',
     { heading: 'Welcome to Lua 5.5' },
     { anchor: 'install' }
   ),
@@ -428,8 +428,8 @@ export const LUA_PAGE_MAP = [
   {
     source: 'official-bugs.html',
     output: '07-migration-and-known-issues/03-known-issues.md',
-    title: 'Known issues in Lua 5.5.1',
-    description: 'Officially reported bugs for Lua 5.5.1 as of acquisition',
+    title: 'Known issues in Lua 5.5.1 (2026-08-11 snapshot)',
+    description: 'Officially reported bugs for Lua 5.5.1 as of 2026-08-11; later reports are linked separately',
     start: { anchor: '5.5.1' },
     end: { anchor: '5.5.0' },
     kind: 'bugs',

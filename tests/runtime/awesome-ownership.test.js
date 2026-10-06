@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { gzipSync } from 'node:zlib';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -247,17 +249,31 @@ test('案内ページ生成は記録済みの正規化を適用し、現行の�
 
 test('現行の外部リンク報告は移動に依存しない取得元IDで本文を照合する', () => {
   const root = path.resolve(import.meta.dirname, '../..');
+  const version = 'v2026-08-23';
+  const editorialActive = fs.existsSync(
+    path.join(
+      root,
+      'docs/notes/document-import/awesome/editorial/overlays',
+      version,
+      'REGENERATION.json'
+    )
+  );
+  const reportPath = editorialActive
+    ? `docs/notes/document-import/awesome/editorial/${version}/EXTERNAL_LINK_REPORT.json`
+    : 'docs/notes/nested-app-migration/external-links-before.json';
   const output = execFileSync(
     process.execPath,
     [
       'scripts/importers/awesome/generate-awesome-external-link-report.mjs',
       '--snapshot=v2026-08-23',
-      '--report=docs/notes/nested-app-migration/external-links-before.json',
+      `--report=${reportPath}`,
       '--check',
     ],
     { cwd: root, encoding: 'utf8', stdio: 'pipe' }
   );
-  assert.match(output, /OK \(616 pages, 138784 links\)/);
+  const report = JSON.parse(fs.readFileSync(path.join(root, reportPath), 'utf8'));
+  assert.equal(report.summary.pages, 616);
+  assert.ok(output.includes(`OK (616 pages, ${report.summary.externalLinks} links)`));
 });
 
 test('入れ子の本文・asset検査は全子を検査し、他の子の出典登録で欠落を隠さない', (t) => {
@@ -268,6 +284,8 @@ test('入れ子の本文・asset検査は全子を検査し、他の子の出典
   for (const file of [
     'scripts/importers/awesome/validate-awesome-single-app.mjs',
     'scripts/importers/awesome/validate-awesome-translation.mjs',
+    'scripts/importers/awesome/editorial-overlays.mjs',
+    'scripts/importers/awesome/editorial-utils.mjs',
     'scripts/importers/awesome/app-ownership.mjs',
     'scripts/importers/awesome/common.mjs',
     'scripts/jsonc-utils.js',
@@ -357,8 +375,10 @@ test('入れ子出典生成は履歴版の出典と共通出典参照を保持�
   const f = fixture(t);
   const repository = path.resolve(import.meta.dirname, '../..');
   f.write('package.json', { type: 'module' });
+  fs.symlinkSync(path.join(repository, 'node_modules'), path.join(f.root, 'node_modules'));
   for (const file of [
     'scripts/importers/awesome/generate-awesome-source-registry.mjs',
+    'scripts/importers/awesome/editorial-utils.mjs',
     'scripts/importers/awesome/app-ownership.mjs',
     'scripts/importers/awesome/common.mjs',
     'scripts/importers/batch-import-output.js',
@@ -437,4 +457,47 @@ test('入れ子出典生成は履歴版の出典と共通出典参照を保持�
     );
   }
   assert.match(run('--check'), /Awesome source registry check: OK \(2 app\(s\)\)/);
+
+  const raw = 'SPDX-FileCopyrightText: 2024 Contributors\n# Root\n';
+  const rawHash = createHash('sha256').update(raw).digest('hex');
+  const lockFile = path.join(
+    f.root,
+    `docs/notes/document-import/awesome/snapshots/${current}/SOURCES.lock.json`
+  );
+  const lock = JSON.parse(fs.readFileSync(lockFile, 'utf8'));
+  lock.sources.find((source) => source.sourceId === 'Root').documentSha256 = rawHash;
+  f.write(`docs/notes/document-import/awesome/snapshots/${current}/SOURCES.lock.json`, lock);
+  const notes = 'docs/notes/document-import/awesome/editorial';
+  fs.mkdirSync(path.join(f.root, notes, 'baseline/blobs'), { recursive: true });
+  fs.writeFileSync(path.join(f.root, notes, 'baseline/blobs', `${rawHash}.gz`), gzipSync(raw));
+  const notice = {
+    sourceId: 'Root',
+    commitSha: current,
+    documentPath: 'README.md',
+    rawHash,
+    spdxCopyrightLine: 'SPDX-FileCopyrightText: 2024 Contributors',
+    author: 'Contributors',
+    copyrightNotice: 'Copyright 2024 Contributors',
+    reason: '原文の著作権者と年を保持',
+  };
+  f.write(`${notes}/PROVENANCE_NOTICES.json`, { notices: [notice] });
+  run();
+  const regenerated = readJsoncFile(
+    path.join(f.root, 'apps/awesome/overview/src/config/project.config.jsonc')
+  ).licensing.sources.find((source) => source.id === 'Root');
+  assert.equal(regenerated.author, 'Contributors');
+  assert.equal(regenerated.copyrightNotice, 'Copyright 2024 Contributors');
+  assert.equal(regenerated.license, 'MIT');
+  assert.match(run('--check'), /Awesome source registry check: OK/);
+  const configBefore = fs.readFileSync(
+    path.join(f.root, 'apps/awesome/overview/src/config/project.config.jsonc')
+  );
+  f.write(`${notes}/PROVENANCE_NOTICES.json`, {
+    notices: [{ ...notice, copyrightNotice: 'Copyright 2025 Contributors' }],
+  });
+  assert.throws(() => run(), (error) => /固定原文と出典通知が不一致/.test(error.stderr));
+  assert.deepEqual(
+    fs.readFileSync(path.join(f.root, 'apps/awesome/overview/src/config/project.config.jsonc')),
+    configBefore
+  );
 });

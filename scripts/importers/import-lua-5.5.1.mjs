@@ -13,6 +13,12 @@ import {
   prepareImportOutput,
 } from './safe-import-output.js';
 import { LUA_PAGE_MAP, LUA_VERSION, LUA_VERSION_ID } from './lua-5.5.1-page-map.mjs';
+import {
+  LUA_BUGS_PAGE,
+  LUA_BUGS_SOURCE,
+  generateSnapshot,
+  checkSnapshot,
+} from './lua-bugs-2026-10-02.mjs';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const defaultSourceRoot = path.join(rootDir, '.tmp/document-import/lua/02-extracted/lua-5.5.1');
@@ -220,7 +226,13 @@ function renderInline(node, context) {
     if (!label) return anchor;
     return `${anchor}[${label}](${rewriteHref(href, context.page, context.anchorMap)})`;
   }
-  if (tag === 'code' || tag === 'tt') return escapeInlineCode(cleanInline(textContent(node)));
+  if (tag === 'code' || tag === 'tt') {
+    const value = textContent(node);
+    // A literal space is a meaningful format flag/option in the Lua manual.
+    const code =
+      value && /^[ \t\r\n]+$/.test(value) ? value.replace(/[\t\r\n]+/g, ' ') : cleanInline(value);
+    return escapeInlineCode(code);
+  }
   if (tag === 'kbd') return `<kbd>${cleanInline(textContent(node))}</kbd>`;
   if (tag === 'em' || tag === 'i') return `*${cleanInline(inner())}*`;
   if (tag === 'b' || tag === 'strong') return `**${cleanInline(inner())}**`;
@@ -253,9 +265,10 @@ function renderPre(node, context) {
 
 function indentListItem(value, marker) {
   const lines = value.trim().split('\n');
+  const continuationIndent = ' '.repeat(marker.length + 1);
   return `${marker} ${lines[0]}${lines
     .slice(1)
-    .map((line) => `\n  ${line}`)
+    .map((line) => (line ? `\n${continuationIndent}${line}` : '\n'))
     .join('')}`;
 }
 
@@ -270,7 +283,10 @@ function renderMixedChildren(node, context) {
 
   for (const child of node.childNodes ?? []) {
     const childTag = child.tagName?.toLowerCase();
-    if (['p', 'pre', 'ul', 'ol', 'dl', 'blockquote', 'div'].includes(childTag)) {
+    if (
+      ['p', 'pre', 'ul', 'ol', 'dl', 'blockquote', 'div', 'hr'].includes(childTag) ||
+      /^h[1-6]$/.test(childTag ?? '')
+    ) {
       flushInline();
       const value = renderBlock(child, context);
       if (value) parts.push(value);
@@ -318,7 +334,8 @@ function renderBlock(node, context) {
       if (childTag === 'dt') term = cleanInline(renderInline(child, context));
       if (childTag === 'dd') {
         const description = cleanInline(renderMixedChildren(child, context));
-        rows.push(`- **${term}**${description ? `: ${description}` : ''}`);
+        const separator = term.endsWith(':') ? ' ' : ': ';
+        rows.push(`- **${term}**${description ? `${separator}${description}` : ''}`);
         term = '';
       }
     }
@@ -368,10 +385,7 @@ function renderHtmlPage(slice, anchorMap) {
   const minimum = minimumHeadingLevel(slice.nodes);
   const headingShift = slice.page.syntheticHeading ? 2 - minimum : 1 - minimum;
   const context = { page: slice.page, anchorMap, headingShift };
-  const body = slice.nodes
-    .map((node) => renderBlock(node, context))
-    .filter(Boolean)
-    .join('\n\n');
+  const body = renderMixedChildren({ childNodes: slice.nodes }, context);
   const heading = slice.page.syntheticHeading ? `# ${slice.page.title}\n\n` : '';
   return `${heading}${body}`.trim();
 }
@@ -391,7 +405,9 @@ function renderTroffMacro(macro, value) {
   return tokens
     .map((token, index) => {
       const style = styles[index % styles.length];
-      if (style === 'B') return `**${token}**`;
+      // Protect literal command syntax from Markdown smart punctuation.
+      if (style === 'B')
+        return token === '--' || token === "'-'" ? `**\`${token}\`**` : `**${token}**`;
       if (style === 'I') return `*${token}*`;
       return token;
     })
@@ -452,13 +468,10 @@ export function renderHtmlFragmentForTest(html, page = {}) {
   const body = findElement(document, 'body');
   const context = {
     page: { source: 'manual.html', output: 'fixture.md', title: 'Fixture', ...page },
-    anchorMap: new Map(),
-    headingShift: 0,
+    anchorMap: new Map((page.localAnchors ?? []).map((id) => [id, { url: `#${id}` }])),
+    headingShift: page.headingShift ?? 0,
   };
-  return (body?.childNodes ?? [])
-    .map((node) => renderBlock(node, context))
-    .filter(Boolean)
-    .join('\n\n');
+  return renderMixedChildren(body ?? { childNodes: [] }, context);
 }
 
 function frontmatter(page) {
@@ -466,6 +479,7 @@ function frontmatter(page) {
     '---',
     `title: ${quoteYaml(page.title)}`,
     `description: ${quoteYaml(page.description)}`,
+    ...(page.kind === 'bugs' ? ['licenseSource: "lua-bugs-2026-08-11"'] : []),
     '---',
   ].join('\n');
 }
@@ -476,17 +490,25 @@ function renderPage(slice, sources, anchorMap) {
     page.kind === 'man'
       ? renderMan(fs.readFileSync(sources.paths[page.source], 'utf8'), page)
       : renderHtmlPage(slice, anchorMap);
-  return `${frontmatter(page)}\n\n${body}\n`;
+  const snapshotNotice =
+    page.kind === 'bugs'
+      ? '> **Libx snapshot note (2026-08-11):** The text below preserves the official bugs list acquired on this date; it does not describe the current list. For later reports, see the [current official bugs list](https://www.lua.org/bugs.html#5.5.1).\n\n'
+      : '';
+  return `${frontmatter(page)}\n\n${snapshotNotice}${body}\n`;
 }
 
-function validateGenerated(outputRoot, pageSlices, anchorMap) {
-  const expected = LUA_PAGE_MAP.map((page) => page.output).sort();
+function validateGenerated(outputRoot, pageSlices, anchorMap, supplement) {
+  const expected = [
+    ...LUA_PAGE_MAP.map((page) => page.output),
+    ...(supplement ? [LUA_BUGS_PAGE] : []),
+  ].sort();
   const actual = describePath(outputRoot)
     .map((record) => record.path)
     .sort();
   if (JSON.stringify(expected) !== JSON.stringify(actual)) {
     throw new Error('生成されたLua定本のファイル集合がページマップと一致しません');
   }
+  if (supplement) assertSupplement(outputRoot, supplement);
   const anchors = new Map();
   const errors = [];
   for (const page of LUA_PAGE_MAP) {
@@ -517,12 +539,18 @@ function validateGenerated(outputRoot, pageSlices, anchorMap) {
   if (errors.length) throw new Error(`Lua定本検査に失敗しました:\n${errors.join('\n')}`);
 }
 
-function generate(outputRoot, pageSlices, sources, anchorMap) {
+function assertSupplement(outputRoot, supplement) {
+  if (fs.readFileSync(path.join(outputRoot, LUA_BUGS_PAGE), 'utf8') !== supplement.content)
+    throw new Error('新bugs取得版が固定原資料の再生成結果と一致しません');
+}
+
+function generate(outputRoot, pageSlices, sources, anchorMap, supplement) {
   for (const slice of pageSlices) {
     const outputPath = path.join(outputRoot, slice.page.output);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, renderPage(slice, sources, anchorMap));
   }
+  if (supplement) fs.writeFileSync(path.join(outputRoot, LUA_BUGS_PAGE), supplement.content);
 }
 
 export function runCli(args = process.argv.slice(2)) {
@@ -536,7 +564,16 @@ export function runCli(args = process.argv.slice(2)) {
   const checkOnly = args.includes('--check');
   const allowMissingSource = args.includes('--allow-missing-source');
   const dryRun = args.includes('--dry-run');
+  const includeSupplement =
+    args.includes('--with-bugs-2026-10-02') || fs.existsSync(path.join(outputRoot, LUA_BUGS_PAGE));
+  const supplement = includeSupplement
+    ? generateSnapshot(rootDir, renderHtmlFragmentForTest)
+    : null;
   if (checkOnly && allowMissingSource && !fs.existsSync(sourceRoot) && !fs.existsSync(bugsSource)) {
+    if (includeSupplement) {
+      checkSnapshot(rootDir, renderHtmlFragmentForTest);
+      console.log('新bugs取得版の再生成検査は合格しました。旧固定tar55ページの検査とは別です。');
+    }
     console.log(`Lua固定入力がないため再現性検査をスキップします: ${sourceRoot}, ${bugsSource}`);
     return;
   }
@@ -549,15 +586,17 @@ export function runCli(args = process.argv.slice(2)) {
     console.log(`取得元: ${sourceRoot}`);
     console.log(`bugs取得元: ${bugsSource}`);
     console.log(`定本出力先: ${outputRoot}`);
-    console.log(`生成予定: ${LUA_PAGE_MAP.length}ページ、${anchorMap.size}アンカー`);
+    console.log(
+      `生成予定: ${LUA_PAGE_MAP.length + Number(!!supplement)}ページ、旧固定入力${anchorMap.size}アンカー${supplement ? '・新bugs取得版2アンカー' : ''}`
+    );
     console.log('ファイルは変更していません');
     return;
   }
 
   const operations = {
     targetPath: outputRoot,
-    generate: (preparedPath) => generate(preparedPath, pageSlices, sources, anchorMap),
-    validate: (preparedPath) => validateGenerated(preparedPath, pageSlices, anchorMap),
+    generate: (preparedPath) => generate(preparedPath, pageSlices, sources, anchorMap, supplement),
+    validate: (preparedPath) => validateGenerated(preparedPath, pageSlices, anchorMap, supplement),
   };
 
   if (checkOnly) {
@@ -576,13 +615,26 @@ export function runCli(args = process.argv.slice(2)) {
   const report = {
     schemaVersion: 1,
     importer: 'import-lua-5.5.1.mjs',
-    importerVersion: 3,
+    importerVersion: 4,
     upstreamVersion: LUA_VERSION,
     versionId: LUA_VERSION_ID,
     sourceRoot,
     sourceHashes: sources.hashes,
-    pageCount: LUA_PAGE_MAP.length,
+    pageCount: LUA_PAGE_MAP.length + Number(!!supplement),
     anchorCount: anchorMap.size,
+    anchorCountScope: 'original-fixed-inputs',
+    supplements: supplement
+      ? [
+          {
+            source: LUA_BUGS_SOURCE,
+            output: LUA_BUGS_PAGE,
+            sourceAnchors: 2,
+            sourceHashes: supplement.lock.inputs.map(({ path, sha256 }) => ({ path, sha256 })),
+            bytes: fs.statSync(path.join(outputRoot, LUA_BUGS_PAGE)).size,
+            sha256: hashFile(path.join(outputRoot, LUA_BUGS_PAGE)),
+          },
+        ]
+      : [],
     changed: !comparePathDescriptions(result.before, result.after),
     outputs: result.after,
     pages: pageSlices.map(({ page, anchors }) => ({

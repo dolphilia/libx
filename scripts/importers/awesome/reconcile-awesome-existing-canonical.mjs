@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { createAwesomeContentAccess, readAwesomeRouteManifest } from './app-ownership.mjs';
+import { regeneratePair, regeneration } from './editorial-overlays.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
@@ -71,13 +72,12 @@ for (const historical of historicalIncluded) {
   const beforeContent = fs.existsSync(targetPath) ? fs.readFileSync(targetPath) : null;
   const intentionalExclusion = historical.sourceId === 'sindresorhus-awesome-readme';
 
-  if (!intentionalExclusion && apply) {
-    fs.copyFileSync(historicalPath, normalizedPath);
-  }
-
-  const expectedContent = intentionalExclusion
-    ? fs.readFileSync(normalizedPath)
-    : historicalContent;
+  const expectedContent = regeneration(targetVersion)
+    ? Buffer.from(regeneratePair(targetVersion, historical.sourceId).en)
+    : intentionalExclusion
+      ? fs.readFileSync(normalizedPath)
+      : historicalContent;
+  if (apply) fs.writeFileSync(normalizedPath, expectedContent);
   if (!apply && !fs.readFileSync(normalizedPath).equals(expectedContent)) {
     errors.push(`正規化済み入力が継承結果と一致しません: ${historical.sourceId}`);
   }

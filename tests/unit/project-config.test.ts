@@ -123,3 +123,37 @@ test('stripJsonComments preserves comment-like content inside strings', () => {
   );
   assert.equal(parsed.url, 'https://example.com/a//b');
 });
+
+test('provenance metadata preserves valid bilingual notices and rejects malformed links', () => {
+  const source = {
+    ...validConfig.licensing.sources[0],
+    copyrightNotice: 'Copyright (c) Maintainer',
+    provenanceNotes: [{ en: 'Unofficial translation.', ja: '非公式訳。' }],
+    attributionLinks: [
+      { url: 'https://example.com/LICENSE', label: { en: 'License', ja: 'ライセンス' } },
+    ],
+  };
+  const config = (value: unknown) => ({
+    ...validConfig,
+    licensing: { ...validConfig.licensing, sources: [value] },
+  });
+  assert.equal(validateProjectConfigJSON(config(source)), true);
+  const input = config(source);
+  if (!validateProjectConfigJSON(input)) throw new Error('Valid provenance rejected');
+  assert.deepEqual(convertProjectConfigJSONToRuntime(input).licensing.sources[0], source);
+  for (const invalid of [
+    { ...source, copyrightNotice: 123 },
+    { ...source, provenanceNotes: [{ en: 'Notice' }] },
+    {
+      ...source,
+      attributionLinks: [
+        { url: 'javascript:alert(1)', label: { en: 'License', ja: 'ライセンス' } },
+      ],
+    },
+    {
+      ...source,
+      attributionLinks: [{ url: 'https://example.com/LICENSE', label: { en: 'License', ja: '' } }],
+    },
+  ])
+    assert.equal(validateProjectConfigJSON(config(invalid)), false);
+});

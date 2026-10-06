@@ -5,6 +5,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { notesDir, readJson, rootDir, snapshotVersion } from './common.mjs';
 import { applyIntroductionDecision } from './awesome-introduction-utils.mjs';
+import { regeneration, regeneratePair, assertEditorialPublic } from './editorial-overlays.mjs';
 
 const apply = process.argv.includes('--apply');
 const content = createAwesomeContentAccess(snapshotVersion, rootDir);
@@ -28,7 +29,27 @@ const decisions = new Map(
 for (const route of routes) {
   const englishPath = content.pathFor('en', `${route.slug}.md`);
   const japanesePath = content.pathFor('ja', `${route.slug}.md`);
-  const parsed = matter(fs.readFileSync(englishPath, 'utf8'));
+  const englishInput = fs.readFileSync(englishPath, 'utf8');
+  if (regeneration(snapshotVersion)) {
+    assertEditorialPublic(englishInput, route.sourceId, snapshotVersion, 'en');
+    const output = regeneratePair(snapshotVersion, route.sourceId).ja;
+    if (apply) {
+      if (fs.existsSync(japanesePath))
+        assertEditorialPublic(
+          fs.readFileSync(japanesePath, 'utf8'),
+          route.sourceId,
+          snapshotVersion,
+          'ja'
+        );
+      fs.mkdirSync(path.dirname(japanesePath), { recursive: true });
+      fs.writeFileSync(japanesePath, output);
+    } else if (!fs.existsSync(japanesePath) || fs.readFileSync(japanesePath, 'utf8') !== output) {
+      errors.push(`案内ページの日本語が編集差分と一致しません: ${route.slug}`);
+    }
+    generated.push(route.sourceId);
+    continue;
+  }
+  const parsed = matter(englishInput);
   const heading = parsed.content.match(/^#\s+(.+)$/m)?.[1]?.trim();
   const sourceUrl = parsed.content.match(/^- \[[^\]]+\]\((https?:\/\/[^)]+)\)$/m)?.[1];
   if (!heading || !sourceUrl) {

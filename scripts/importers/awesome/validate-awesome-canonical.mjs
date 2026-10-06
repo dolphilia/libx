@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { notesDir, readJson, sha256, snapshotVersion, tempDir } from './common.mjs';
+import { inspectCanonicalMarkup } from './canonical-markup-validation.mjs';
 
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const exclusions = readJson(path.join(notesDir, 'EXCLUSIONS.json'));
@@ -35,10 +36,11 @@ for (const source of included) {
     continue;
   }
   const content = fs.readFileSync(output, 'utf8');
-  if (!content.includes(`licenseSource: ${JSON.stringify(source.sourceId)}`)) {
+  const markup = inspectCanonicalMarkup(content, source.sourceId);
+  if (!markup.sourceMatches) {
     errors.push(`canonical output has incorrect licenseSource: ${source.sourceId}`);
   }
-  if (/<!--[\s\S]*?-->/.test(content))
+  if (markup.comments.length)
     errors.push(`canonical output contains unprocessed HTML comment: ${source.sourceId}`);
   if (/\]\((?:\.{1,2}\/|\/)[^)\s]*\)/m.test(content))
     errors.push(`canonical output contains unresolved relative Markdown link: ${source.sourceId}`);
@@ -52,7 +54,7 @@ for (const entry of metadataOnly) {
     continue;
   }
   const content = fs.readFileSync(output, 'utf8');
-  if (!content.includes('licenseSource: "sindresorhus-awesome-readme"')) {
+  if (!inspectCanonicalMarkup(content, 'sindresorhus-awesome-readme').sourceMatches) {
     errors.push(`metadata-only output has incorrect licenseSource: ${entry.sourceId}`);
   }
 }

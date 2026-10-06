@@ -6,6 +6,8 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import { rootDir, snapshotVersion } from './common.mjs';
 import { getAwesomeApps } from './app-ownership.mjs';
+import { normalizeEditorialCodeTokens } from './editorial-overlays.mjs';
+import { maskMarkdownLinkLabels } from './translation-link-labels.mjs';
 
 const version = snapshotVersion;
 const requireComplete = process.argv.includes('--require-complete');
@@ -55,9 +57,13 @@ function markdownTokens(content) {
   visit(tree);
   return { codeTokens, localDestinations };
 }
-function extract(content) {
+function extract(content, lang) {
   const parsed = matter(content);
   const isRst = /-rst$/.test(parsed.data.licenseSource ?? '');
+  const destinations = isRst ? parsed.content : maskMarkdownLinkLabels(parsed.content);
+  const urlDestinations = isRst
+    ? parsed.content
+    : maskMarkdownLinkLabels(parsed.content, { maskInlineCodeDelimiters: true });
   const markdown = isRst
     ? { codeTokens: [], localDestinations: [] }
     : markdownTokens(parsed.content);
@@ -69,10 +75,10 @@ function extract(content) {
     headingLevels: [...parsed.content.matchAll(/^(#{1,6})\s+.+$/gm)].map(
       (match) => match[1].length
     ),
-    urls: [...parsed.content.matchAll(/https?:\/\/[^\s)>]+/g)].map((match) =>
+    urls: [...urlDestinations.matchAll(/https?:\/\/[^\s)>]+/g)].map((match) =>
       match[0].replace(/[.,;:]$/, '')
     ),
-    listStructure: [...parsed.content.matchAll(/^([ \t]*)([-*+]|\d+\.)\s+(.+)$/gm)].map(
+    listStructure: [...destinations.matchAll(/^([ \t]*)([-*+]|\d+\.)\s+(.+)$/gm)].map(
       (match) => ({
         indent: match[1].length,
         marker: /^\d+\.$/.test(match[2]) ? 'ordered' : 'unordered',
@@ -82,9 +88,15 @@ function extract(content) {
       })
     ),
     rstTargets,
-    codeTokens: isRst
-      ? [...parsed.content.matchAll(/``([^`\n]+)``/g)].map((match) => match[1])
-      : markdown.codeTokens,
+    codeTokens: normalizeEditorialCodeTokens(
+      isRst
+        ? [...parsed.content.matchAll(/``([^`\n]+)``/g)].map((match) => match[1])
+        : markdown.codeTokens,
+      content,
+      parsed.data.licenseSource,
+      version,
+      lang
+    ),
     localDestinations: markdown.localDestinations,
   };
 }
@@ -104,8 +116,8 @@ for (const { appId, directory: contentRoot } of contentRoots) {
     }
     const englishMarkdown = fs.readFileSync(path.join(englishRoot, file), 'utf8');
     const japaneseMarkdown = fs.readFileSync(path.join(japaneseRoot, file), 'utf8');
-    const en = extract(englishMarkdown);
-    const ja = extract(japaneseMarkdown);
+    const en = extract(englishMarkdown, 'en');
+    const ja = extract(japaneseMarkdown, 'ja');
     if (/[⟦⟧]|MARKDOWN_/.test(japaneseMarkdown))
       errors.push(`${appId}: Markdown保護記号が日本語ページに残っています: ${file}`);
     if (/:[ぁ-んァ-ヶ一-龠]+[：:]/.test(japaneseMarkdown))

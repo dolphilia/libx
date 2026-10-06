@@ -12,10 +12,13 @@ import {
   writeJsonAtomic,
 } from './common.mjs';
 import { applyIntroductionDecision } from './awesome-introduction-utils.mjs';
+import { assertFixedEditorialInput, replayEditorialImport } from './editorial-overlays.mjs';
 
 const dryRun = process.argv.includes('--dry-run');
 const diagnoseIntroductions = process.argv.includes('--diagnose-introductions');
 const diagnosticOutput = optionValue(process.argv.slice(2), '--diagnostic-output', null);
+const editorialCapture = optionValue(process.argv.slice(2), '--editorial-capture', null);
+if (editorialCapture && !dryRun) throw new Error('編集用入力保存には --dry-run が必要です');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const included = lock.sources.filter((source) => source.status === 'included');
 const normalizedDir = path.join(tempDir, '03-normalized');
@@ -34,6 +37,14 @@ const prepared = [];
 const introductionDrift = [];
 
 function normalizeIntroduction(content, sourceId) {
+  if (editorialCapture) {
+    const directory = path.resolve(rootDir, editorialCapture);
+    fs.mkdirSync(directory, { recursive: true });
+    fs.writeFileSync(path.join(directory, `${sourceId}.md`), content);
+    return content;
+  }
+  const editorialContent = replayEditorialImport(content, sourceId, snapshotVersion);
+  if (editorialContent !== null) return editorialContent;
   const entry = introductionBySource.get(sourceId);
   if (!entry) return content;
   try {
@@ -75,6 +86,7 @@ for (const source of included) {
       ? path.join(tempDir, '01-source/responses/root-readme.md')
       : path.join(tempDir, '01-source/repositories', source.sourceId, source.documentPath);
   const original = fs.readFileSync(sourcePath, 'utf8');
+  assertFixedEditorialInput(original, source, snapshotVersion);
   let canonical = original;
   const sourceExclusions = [];
   if (source.sourceId === 'sindresorhus-awesome-readme') {
@@ -257,6 +269,10 @@ for (const review of missingReview.results.filter((entry) => entry.decision === 
 }
 
 if (dryRun) {
+  if (editorialCapture) {
+    console.log(JSON.stringify({ captured: prepared.length, directory: editorialCapture }));
+    process.exit(0);
+  }
   console.log(
     JSON.stringify(
       prepared.map((item) => ({

@@ -47,3 +47,29 @@ test('Frontmatter直後にある既知のLua出典通知だけを除去する', 
   );
   assert.equal(removeGeneratedSourceNotice('> 通常の引用\n'), '> 通常の引用\n');
 });
+
+test('説明のあるメタメソッド項目の複数段落と一覧後の本文を保つ', () => {
+  const source = `- **\`__index\`** : インデックスアクセス操作。
+
+  関数の場合は引数を渡して呼び出します。
+- **\`__newindex\`** : インデックス代入。
+
+  関数、テーブル、またはメタ値を使用できます。
+
+  必要なら\`rawset\`を呼び出します。
+- **\`__call\`** : 複数の結果を返せます。
+
+一覧以外のキーも使用します。`;
+
+  assert.equal(collapseDefinitionItems(source), source);
+});
+
+test('定義の区切りを持たない通常の複数段落項目は変更しない', () => {
+  const source = `- **重要**
+
+  最初の段落です。
+
+  次の段落です。`;
+
+  assert.equal(collapseDefinitionItems(source), source);
+});

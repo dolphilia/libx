@@ -5,7 +5,41 @@ const COPY_LABELS = {
 };
 
 function localeFromPath(filePath = '') {
-  return filePath.match(/[\\/]docs[\\/][^\\/]+[\\/]([^\\/]+)[\\/]/)?.[1] ?? 'en';
+  return (
+    filePath.match(/[\\/](?:docs|awesome-content)[\\/][^\\/]+[\\/]([^\\/]+)[\\/]/)?.[1] ?? 'en'
+  );
+}
+
+// Japanese prose has no word spaces, so wide comparison tables can squeeze a
+// description down to a few characters. Keep those cells readable in the
+// existing horizontal scroller without changing their text or inline code.
+function markJapaneseTableProse(table) {
+  const rows = [];
+  function collectRows(node) {
+    if (node.tagName === 'tr') rows.push(node);
+    else if (node !== table && node.tagName === 'table') return;
+    else for (const child of node.children ?? []) collectRows(child);
+  }
+  collectRows(table);
+  const cells = (row) => (row.children ?? []).filter((cell) =>
+    cell.type === 'element' && ['td', 'th'].includes(cell.tagName));
+  if (!rows.some((row) => cells(row).reduce((n, cell) =>
+    n + Math.max(1, Number(cell.properties?.colSpan) || 1), 0) >= 4)) return;
+  function prose(node) {
+    if (node.tagName === 'code' || node.tagName === 'table') return '';
+    if (node.type === 'text') return node.value ?? '';
+    return (node.children ?? []).map(prose).join('');
+  }
+  for (const row of rows) {
+    for (const cell of cells(row)) {
+      if (cell.tagName !== 'td' ||
+          (prose(cell).match(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/gu)?.length ?? 0) < 24) continue;
+      cell.properties ??= {};
+      const existing = cell.properties.className;
+      const classes = Array.isArray(existing) ? existing : String(existing ?? '').split(/\s+/).filter(Boolean);
+      cell.properties.className = [...new Set([...classes, 'docs-table-prose'])];
+    }
+  }
 }
 
 export function enhanceDocumentTree(tree, filePath = '') {
@@ -16,6 +50,28 @@ export function enhanceDocumentTree(tree, filePath = '') {
   function transform(parent) {
     if (!Array.isArray(parent.children)) return;
     parent.children = parent.children.map((node) => {
+      if (locale === 'ja' && node.type === 'element') {
+        if (
+          parent.tagName === 'section' &&
+          (parent.properties?.dataFootnotes !== undefined ||
+            parent.properties?.['data-footnotes'] !== undefined) &&
+          node.tagName === 'h2' &&
+          node.properties?.id === 'footnote-label' &&
+          node.children?.length === 1 &&
+          node.children[0].type === 'text' &&
+          node.children[0].value === 'Footnotes'
+        ) {
+          node.children[0].value = '脚注';
+        }
+        if (
+          node.tagName === 'a' &&
+          (node.properties?.dataFootnoteBackref !== undefined ||
+            node.properties?.['data-footnote-backref'] !== undefined)
+        ) {
+          const reference = node.properties.ariaLabel?.match(/^Back to reference ([\d-]+)$/)?.[1];
+          if (reference) node.properties.ariaLabel = `脚注参照${reference}へ戻る`;
+        }
+      }
       if (node.type === 'element' && node.tagName === 'pre') {
         hasCode = true;
         const language = node.properties?.['data-language'];
@@ -58,6 +114,7 @@ export function enhanceDocumentTree(tree, filePath = '') {
         };
       }
       if (node.type === 'element' && node.tagName === 'table') {
+        if (locale === 'ja') markJapaneseTableProse(node);
         return {
           type: 'element',
           tagName: 'div',

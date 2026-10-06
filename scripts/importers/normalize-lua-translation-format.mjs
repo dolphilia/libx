@@ -38,7 +38,8 @@ export function collapseDefinitionItems(source) {
 
   for (let index = 0; index < lines.length; index++) {
     const line = lines[index];
-    if (!/^- \*\*.+\*\*/.test(line) || !/^\s*$/.test(lines[index + 1] ?? 'x')) {
+    const definitionLabel = line.match(/^- \*\*.+\*\*(\s*[:：]?)\s*$/);
+    if (!definitionLabel || !/^\s*$/.test(lines[index + 1] ?? 'x')) {
       output.push(line);
       continue;
     }
@@ -52,7 +53,7 @@ export function collapseDefinitionItems(source) {
         cursor++;
         continue;
       }
-      const continuation = candidate.match(/^  (.*)$/);
+      const continuation = candidate.match(/^ {2}(.*)$/);
       if (!continuation) break;
       if (/^(?:[-*+] |\d+\. |```|~~~)/.test(continuation[1])) {
         valid = false;
@@ -62,7 +63,11 @@ export function collapseDefinitionItems(source) {
       cursor++;
     }
 
-    if (!valid || fragments.length === 0) {
+    if (
+      !valid ||
+      fragments.length === 0 ||
+      (!definitionLabel[1].trim() && !/^\s*[:：]/.test(fragments[0]))
+    ) {
       output.push(line);
       continue;
     }

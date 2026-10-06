@@ -11,6 +11,8 @@ import {
 } from './app-ownership.mjs';
 import { prepareImportBatch } from '../batch-import-output.js';
 import { notesRootDir, readJson, rootDir, snapshotVersion } from './common.mjs';
+import { attributionLinksBySource } from './editorial-attribution-links.mjs';
+import { provenanceNotesBySource } from './editorial-provenance-notes.mjs';
 
 const project =
   process.argv.find((argument) => argument.startsWith('--project='))?.slice('--project='.length) ??
@@ -64,6 +66,48 @@ const sourceRecords = new Map(
     .filter((source) => source.status === 'included')
     .map((source) => [source.sourceId, source])
 );
+const noticesFile = path.join(notesRootDir, 'editorial/PROVENANCE_NOTICES.json');
+const notices = fs.existsSync(noticesFile) ? readJson(noticesFile).notices : [];
+if (!Array.isArray(notices)) throw new Error('出典通知の記録が不正です');
+const readNoticeInput = notices.length ? (await import('./editorial-utils.mjs')).blob : null;
+const noticeById = new Map();
+for (const notice of notices) {
+  const source = sourceRecords.get(notice.sourceId);
+  if (
+    !source ||
+    noticeById.has(notice.sourceId) ||
+    notice.commitSha !== source.commitSha ||
+    notice.documentPath !== source.documentPath ||
+    notice.rawHash !== source.documentSha256 ||
+    !notice.reason ||
+    typeof notice.author !== 'string' ||
+    !notice.author.trim() ||
+    typeof notice.copyrightNotice !== 'string' ||
+    !notice.copyrightNotice.trim() ||
+    !notice.spdxCopyrightLine ||
+    !readNoticeInput(notice.rawHash).split(/\r?\n/).includes(notice.spdxCopyrightLine) ||
+    notice.spdxCopyrightLine !==
+      `SPDX-FileCopyrightText: ${notice.copyrightNotice.replace(/^Copyright /, '')}`
+  )
+    throw new Error(`固定原文と出典通知が不一致: ${notice.sourceId}`);
+  noticeById.set(notice.sourceId, notice);
+}
+const attributionFile = path.join(notesRootDir, 'editorial/PROVENANCE_ATTRIBUTIONS.json');
+const attributions = fs.existsSync(attributionFile) ? readJson(attributionFile).records : [];
+const attributionById = attributionLinksBySource(
+  attributions,
+  sourceRecords,
+  attributions.length ? (await import('./editorial-utils.mjs')).blob : null
+);
+const provenanceNotesFile = path.join(notesRootDir, 'editorial/PROVENANCE_NOTES.json');
+const provenanceNotes = fs.existsSync(provenanceNotesFile)
+  ? readJson(provenanceNotesFile).records
+  : [];
+const provenanceNotesById = provenanceNotesBySource(
+  provenanceNotes,
+  sourceRecords,
+  provenanceNotes.length ? (await import('./editorial-utils.mjs')).blob : null
+);
 const sources = [...sourceRecords.values()]
   .map((source) => {
     if (!source.licenseSpdx || !licenseUrls[source.licenseSpdx]) {
@@ -75,10 +119,19 @@ const sources = [...sourceRecords.values()]
     return {
       id: source.sourceId,
       name: source.repository,
-      author: owner,
+      author: noticeById.get(source.sourceId)?.author ?? owner,
+      ...(noticeById.has(source.sourceId)
+        ? { copyrightNotice: noticeById.get(source.sourceId).copyrightNotice }
+        : {}),
       license: source.licenseSpdx,
       licenseUrl: licenseUrls[source.licenseSpdx],
       sourceUrl: `https://github.com/${source.repository}/blob/${source.commitSha}/${source.documentPath}`,
+      ...(attributionById.has(source.sourceId)
+        ? { attributionLinks: attributionById.get(source.sourceId) }
+        : {}),
+      ...(provenanceNotesById.has(source.sourceId)
+        ? { provenanceNotes: provenanceNotesById.get(source.sourceId) }
+        : {}),
     };
   })
   .sort((left, right) => left.id.localeCompare(right.id));

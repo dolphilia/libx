@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { prepareImportOutput } from '../safe-import-output.js';
 import { createAwesomeResolver } from './app-ownership.mjs';
+import { assertEditorialPublic, regeneration } from './editorial-overlays.mjs';
 import {
   notesDir,
   readJson,
@@ -20,6 +21,10 @@ if (snapshotVersion !== 'v2026-08-20') {
 const check = process.argv.includes('--check');
 const freezeManifest = process.argv.includes('--freeze-manifest');
 if (check && freezeManifest) throw new Error('--checkと--freeze-manifestは同時に指定できません');
+if (freezeManifest && regeneration(snapshotVersion))
+  throw new Error(
+    '編集基盤の作成後は旧固定マニフェストを上書きせず、editorialの後段差分を保存してください'
+  );
 
 const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
 const categoryId = (value) =>
@@ -63,6 +68,7 @@ const currentPages = included
     });
     if (!fs.existsSync(pathname)) throw new Error(`履歴版定本がありません: ${slug}`);
     const content = fs.readFileSync(pathname, 'utf8');
+    assertEditorialPublic(content, source.sourceId, snapshotVersion, 'en');
     if (!content.includes(`licenseSource: ${JSON.stringify(source.sourceId)}`)) {
       throw new Error(`履歴版のlicenseSourceが一致しません: ${source.sourceId}`);
     }
@@ -105,17 +111,25 @@ if (manifest.pageCount !== included.length || manifest.pages.length !== included
   throw new Error('履歴版定本マニフェストのページ数が一致しません');
 }
 const expectedBySource = new Map(manifest.pages.map((page) => [page.sourceId, page]));
+const hasEditorial = regeneration(snapshotVersion) !== null;
 for (const page of currentPages) {
   const expected = expectedBySource.get(page.sourceId);
-  if (!expected || expected.slug !== page.slug || expected.sha256 !== page.sha256) {
+  if (
+    !expected ||
+    expected.slug !== page.slug ||
+    (!hasEditorial && expected.sha256 !== page.sha256)
+  ) {
     throw new Error(`履歴版定本が固定マニフェストと一致しません: ${page.sourceId}`);
   }
 }
-if (manifest.aggregateSha256 !== aggregateSha256(currentPages)) {
+if (!hasEditorial && manifest.aggregateSha256 !== aggregateSha256(currentPages)) {
   throw new Error('履歴版定本の集約SHA-256が一致しません');
 }
 const overview = currentPages.find((page) => page.sourceId === 'sindresorhus-awesome-readme');
-if (overview?.sha256 !== evidence.currentReconciledEvidence.englishOverviewSha256) {
+if (
+  !hasEditorial &&
+  overview?.sha256 !== evidence.currentReconciledEvidence.englishOverviewSha256
+) {
   throw new Error('履歴版の概要が現在の調整済み証拠ハッシュと一致しません');
 }
 

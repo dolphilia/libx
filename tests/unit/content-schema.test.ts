@@ -30,3 +30,17 @@ test('document IDs are optional stable metadata and cannot be blank or multiline
     assert.throws(() => docsSchema.parse({ title: 'Page', documentId }));
   }
 });
+
+test('page context keeps rich source notes and optional section anchors separate from content', () => {
+  const documentContext = [{
+    kind: 'editorial',
+    html: '<p>Fixed-source discrepancy; <a href="https://example.com/source">source</a>.</p>',
+    context: { anchor: 'api', label: 'API' },
+  }];
+  assert.deepEqual(docsSchema.parse({ title: 'Page', documentContext }).documentContext, documentContext);
+  for (const note of [
+    { kind: 'unknown', html: '<p>Note</p>' },
+    { kind: 'source', html: '' },
+    { kind: 'editorial', html: '<p>Note</p>', context: { anchor: '', label: 'API' } },
+  ]) assert.throws(() => docsSchema.parse({ title: 'Page', documentContext: [note] }));
+});
