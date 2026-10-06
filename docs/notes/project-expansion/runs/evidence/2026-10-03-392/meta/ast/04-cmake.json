@@ -1,0 +1,1509 @@
+{
+  "source": {
+    "name": "CMake.md",
+    "slug": "04-cmake",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/CMake.md",
+    "sourceSHA256": "74e4d8c650094155e121451378fa39dbc9527958f2ac0d4dccfa5e9913675668",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/04-cmake.md",
+    "canonicalInputSHA256": "74e4d8c650094155e121451378fa39dbc9527958f2ac0d4dccfa5e9913675668",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/04-cmake.md",
+    "canonicalSHA256": "4f620bc62d4ff77cab9d9ee11abce6369ba2270aa28f3397d4c7ed712da3ed69",
+    "title": "CMake",
+    "excluded": [],
+    "sourceNote": "This dated Wiki states CMake 3.0+. The separately fixed spdlog 1.17.0 CMakeLists.txt requires 3.10...3.21. The original Wiki instructions are preserved."
+  },
+  "children": [
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "CMake",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 5,
+              "offset": 1207
+            },
+            "end": {
+              "line": 5,
+              "column": 10,
+              "offset": 1212
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 1203
+        },
+        "end": {
+          "line": 5,
+          "column": 10,
+          "offset": 1212
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The library can also be installed using ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 1214
+            },
+            "end": {
+              "line": 7,
+              "column": 41,
+              "offset": 1254
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://www.cmake.org/",
+          "children": [
+            {
+              "type": "text",
+              "value": "CMake",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 42,
+                  "offset": 1255
+                },
+                "end": {
+                  "line": 7,
+                  "column": 47,
+                  "offset": 1260
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 41,
+              "offset": 1254
+            },
+            "end": {
+              "line": 7,
+              "column": 71,
+              "offset": 1284
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ". Version of CMake must be 3.0+ and can be checked by ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 71,
+              "offset": 1284
+            },
+            "end": {
+              "line": 7,
+              "column": 125,
+              "offset": 1338
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "--version",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 125,
+              "offset": 1338
+            },
+            "end": {
+              "line": 7,
+              "column": 136,
+              "offset": 1349
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 136,
+              "offset": 1349
+            },
+            "end": {
+              "line": 7,
+              "column": 137,
+              "offset": 1350
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 1214
+        },
+        "end": {
+          "line": 7,
+          "column": 137,
+          "offset": 1350
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> cmake --version\ncmake version 3.3.1\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+      "position": {
+        "start": {
+          "line": 8,
+          "column": 1,
+          "offset": 1351
+        },
+        "end": {
+          "line": 13,
+          "column": 4,
+          "offset": 1470
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Generate",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 5,
+              "offset": 1476
+            },
+            "end": {
+              "line": 15,
+              "column": 13,
+              "offset": 1484
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1,
+          "offset": 1472
+        },
+        "end": {
+          "line": 15,
+          "column": 13,
+          "offset": 1484
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Generate project in ",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1,
+              "offset": 1486
+            },
+            "end": {
+              "line": 17,
+              "column": 21,
+              "offset": 1506
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "_builds",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 21,
+              "offset": 1506
+            },
+            "end": {
+              "line": 17,
+              "column": 30,
+              "offset": 1515
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " directory using ",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 30,
+              "offset": 1515
+            },
+            "end": {
+              "line": 17,
+              "column": 47,
+              "offset": 1532
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "CMakeLists.txt",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 47,
+              "offset": 1532
+            },
+            "end": {
+              "line": 17,
+              "column": 63,
+              "offset": 1548
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " from current (",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 63,
+              "offset": 1548
+            },
+            "end": {
+              "line": 17,
+              "column": 78,
+              "offset": 1563
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 78,
+              "offset": 1563
+            },
+            "end": {
+              "line": 17,
+              "column": 81,
+              "offset": 1566
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ") directory, run one of the commands depending on the OS and generator you need:",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 81,
+              "offset": 1566
+            },
+            "end": {
+              "line": 17,
+              "column": 161,
+              "offset": 1646
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 1486
+        },
+        "end": {
+          "line": 17,
+          "column": 161,
+          "offset": 1646
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> cmake -H. -B_builds -DCMAKE_BUILD_TYPE=Release # Default generator is Makefile for *nix platform\n> cmake -H. -B_builds -GXcode # Xcode generator on OS X (multi-config, no need for CMAKE_BUILD_TYPE)\n> cmake -H. -B_builds -G\"Visual Studio 12 2013\" # Visual Studio IDE, Windows, multi-config",
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1,
+          "offset": 1647
+        },
+        "end": {
+          "line": 22,
+          "column": 4,
+          "offset": 1949
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "or toolchains:",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 1,
+              "offset": 1951
+            },
+            "end": {
+              "line": 24,
+              "column": 15,
+              "offset": 1965
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1,
+          "offset": 1951
+        },
+        "end": {
+          "line": 24,
+          "column": 15,
+          "offset": 1965
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=/path/to/iOS.cmake -GXcode\n> cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=/path/to/android.cmake -DCMAKE_BUILD_TYPE=Release",
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 1966
+        },
+        "end": {
+          "line": 28,
+          "column": 4,
+          "offset": 2144
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To add examples use ",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 1,
+              "offset": 2146
+            },
+            "end": {
+              "line": 30,
+              "column": 21,
+              "offset": 2166
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_BUILD_EXAMPLE=ON",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 21,
+              "offset": 2166
+            },
+            "end": {
+              "line": 30,
+              "column": 46,
+              "offset": 2191
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " option:",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 46,
+              "offset": 2191
+            },
+            "end": {
+              "line": 30,
+              "column": 54,
+              "offset": 2199
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1,
+          "offset": 2146
+        },
+        "end": {
+          "line": 30,
+          "column": 54,
+          "offset": 2199
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "> cmake -H. -B_builds -DSPDLOG_BUILD_EXAMPLE=ON -DCMAKE_BUILD_TYPE=Release",
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1,
+          "offset": 2200
+        },
+        "end": {
+          "line": 33,
+          "column": 4,
+          "offset": 2287
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Build/test",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 5,
+              "offset": 2293
+            },
+            "end": {
+              "line": 35,
+              "column": 15,
+              "offset": 2303
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1,
+          "offset": 2289
+        },
+        "end": {
+          "line": 35,
+          "column": 15,
+          "offset": 2303
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Open generated project and run build/test targets. Also command line can be used too:",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 1,
+              "offset": 2305
+            },
+            "end": {
+              "line": 37,
+              "column": 86,
+              "offset": 2390
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1,
+          "offset": 2305
+        },
+        "end": {
+          "line": 37,
+          "column": 86,
+          "offset": 2390
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "meta": null,
+      "value": "> cmake --build _builds --config Release\n> cd _builds && ctest -VV -C Release",
+      "position": {
+        "start": {
+          "line": 38,
+          "column": 1,
+          "offset": 2391
+        },
+        "end": {
+          "line": 41,
+          "column": 4,
+          "offset": 2476
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Install",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 5,
+              "offset": 2482
+            },
+            "end": {
+              "line": 43,
+              "column": 12,
+              "offset": 2489
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 43,
+          "column": 1,
+          "offset": 2478
+        },
+        "end": {
+          "line": 43,
+          "column": 12,
+          "offset": 2489
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Headers can be installed along with the ",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 1,
+              "offset": 2491
+            },
+            "end": {
+              "line": 45,
+              "column": 41,
+              "offset": 2531
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://www.cmake.org/cmake/help/v3.3/manual/cmake-packages.7.html#config-file-packages",
+          "children": [
+            {
+              "type": "text",
+              "value": "config",
+              "position": {
+                "start": {
+                  "line": 45,
+                  "column": 42,
+                  "offset": 2532
+                },
+                "end": {
+                  "line": 45,
+                  "column": 48,
+                  "offset": 2538
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 41,
+              "offset": 2531
+            },
+            "end": {
+              "line": 45,
+              "column": 137,
+              "offset": 2627
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " files so library can be found by ",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 137,
+              "offset": 2627
+            },
+            "end": {
+              "line": 45,
+              "column": 171,
+              "offset": 2661
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "find_package(spdlog CONFIG REQUIRED)",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 171,
+              "offset": 2661
+            },
+            "end": {
+              "line": 45,
+              "column": 209,
+              "offset": 2699
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 209,
+              "offset": 2699
+            },
+            "end": {
+              "line": 45,
+              "column": 210,
+              "offset": 2700
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 45,
+          "column": 1,
+          "offset": 2491
+        },
+        "end": {
+          "line": 45,
+          "column": 210,
+          "offset": 2700
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "[spdlog]> cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=/path/to/install -DCMAKE_BUILD_TYPE=Release\n[spdlog]> cmake --build _builds --target install",
+      "position": {
+        "start": {
+          "line": 47,
+          "column": 1,
+          "offset": 2702
+        },
+        "end": {
+          "line": 50,
+          "column": 4,
+          "offset": 2860
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Usage can be tested by building ",
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 1,
+              "offset": 2862
+            },
+            "end": {
+              "line": 52,
+              "column": 33,
+              "offset": 2894
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "examples",
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 33,
+              "offset": 2894
+            },
+            "end": {
+              "line": 52,
+              "column": 43,
+              "offset": 2904
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " as a stand-alone project:",
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 43,
+              "offset": 2904
+            },
+            "end": {
+              "line": 52,
+              "column": 69,
+              "offset": 2930
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 52,
+          "column": 1,
+          "offset": 2862
+        },
+        "end": {
+          "line": 52,
+          "column": 69,
+          "offset": 2930
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "[spdlog/examples]> cmake -H. -B_builds -DCMAKE_PREFIX_PATH=/path/to/install -DCMAKE_BUILD_TYPE=Release\n[spdlog/examples]> cmake --build _builds",
+      "position": {
+        "start": {
+          "line": 53,
+          "column": 1,
+          "offset": 2931
+        },
+        "end": {
+          "line": 56,
+          "column": 4,
+          "offset": 3087
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Cross-compiling for Android with CMake 3.7",
+          "position": {
+            "start": {
+              "line": 58,
+              "column": 5,
+              "offset": 3093
+            },
+            "end": {
+              "line": 58,
+              "column": 47,
+              "offset": 3135
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 58,
+          "column": 1,
+          "offset": 3089
+        },
+        "end": {
+          "line": 58,
+          "column": 47,
+          "offset": 3135
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Cross-compiling with CMake is reported working using CMake version 3.7 which includes native support for configuring the toolchain with Android NDK and SDK (",
+          "position": {
+            "start": {
+              "line": 60,
+              "column": 1,
+              "offset": 3137
+            },
+            "end": {
+              "line": 60,
+              "column": 158,
+              "offset": 3294
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://cmake.org/cmake/help/v3.7/manual/cmake-toolchains.7.html#cross-compiling-for-android",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://cmake.org/cmake/help/v3.7/manual/cmake-toolchains.7.html#cross-compiling-for-android",
+              "position": {
+                "start": {
+                  "line": 60,
+                  "column": 158,
+                  "offset": 3294
+                },
+                "end": {
+                  "line": 60,
+                  "column": 250,
+                  "offset": 3386
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 60,
+              "column": 158,
+              "offset": 3294
+            },
+            "end": {
+              "line": 60,
+              "column": 250,
+              "offset": 3386
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "). Please note that spdlog targets older versions of CMake and this example is a community contribution.",
+          "position": {
+            "start": {
+              "line": 60,
+              "column": 250,
+              "offset": 3386
+            },
+            "end": {
+              "line": 60,
+              "column": 354,
+              "offset": 3490
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 60,
+          "column": 1,
+          "offset": 3137
+        },
+        "end": {
+          "line": 60,
+          "column": 354,
+          "offset": 3490
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Below is an example on to configure and build spdlog using the Android NDK:",
+          "position": {
+            "start": {
+              "line": 62,
+              "column": 1,
+              "offset": 3492
+            },
+            "end": {
+              "line": 62,
+              "column": 76,
+              "offset": 3567
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 62,
+          "column": 1,
+          "offset": 3492
+        },
+        "end": {
+          "line": 62,
+          "column": 76,
+          "offset": 3567
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> git clone https://github.com/gabime/spdlog\n> mkdir build\n> cd build \n> cmake ../spdlog \\\n  -DCMAKE_SYSTEM_NAME=Android \\\n  -DCMAKE_SYSTEM_VERSION=21 \\\n  -DCMAKE_ANDROID_ARCH_ABI=\"armeabi-v7a\" \\\n  -DCMAKE_ANDROID_ARM_NEON=ON \\\n  -DCMAKE_ANDROID_NDK=$HOME/Android/Ndk/android-ndk-r13b/\n> cmake --build .",
+      "position": {
+        "start": {
+          "line": 63,
+          "column": 1,
+          "offset": 3568
+        },
+        "end": {
+          "line": 74,
+          "column": 4,
+          "offset": 3883
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "See the CMake documentation (link above) for the meaning of the CMake configuration options used in the example.",
+          "position": {
+            "start": {
+              "line": 76,
+              "column": 1,
+              "offset": 3885
+            },
+            "end": {
+              "line": 76,
+              "column": 113,
+              "offset": 3997
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 76,
+          "column": 1,
+          "offset": 3885
+        },
+        "end": {
+          "line": 76,
+          "column": 113,
+          "offset": 3997
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Use as static library with ExternalProject_Add as git submodule",
+          "position": {
+            "start": {
+              "line": 78,
+              "column": 4,
+              "offset": 4002
+            },
+            "end": {
+              "line": 78,
+              "column": 67,
+              "offset": 4065
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 78,
+          "column": 1,
+          "offset": 3999
+        },
+        "end": {
+          "line": 78,
+          "column": 67,
+          "offset": 4065
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a short example if you want to use a static library, actually called libspdlogd.a, in your project using CMake.",
+          "position": {
+            "start": {
+              "line": 80,
+              "column": 1,
+              "offset": 4067
+            },
+            "end": {
+              "line": 80,
+              "column": 120,
+              "offset": 4186
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 80,
+          "column": 1,
+          "offset": 4067
+        },
+        "end": {
+          "line": 80,
+          "column": 120,
+          "offset": 4186
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "cd project_dir\\lib\ngit submodule add https://github.com/gabime/spdlog\ncd spdlog\ngit checkout v1.9.2\n...",
+      "position": {
+        "start": {
+          "line": 82,
+          "column": 1,
+          "offset": 4188
+        },
+        "end": {
+          "line": 88,
+          "column": 4,
+          "offset": 4303
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "ExternalProject_Add(spdlog\n    PREFIX spdlog\n    SOURCE_DIR ${PROJECT_SOURCE_DIR}/lib/spdlog\n    CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}\n    -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}\n    -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}\n    -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}\n    -DCMAKE_INSTALL_PREFIX=${STAGING_DIR}\n    -DSPDLOG_BUILD_SHARED=OFF\n)",
+      "position": {
+        "start": {
+          "line": 90,
+          "column": 1,
+          "offset": 4305
+        },
+        "end": {
+          "line": 101,
+          "column": 4,
+          "offset": 4679
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "later also add:",
+          "position": {
+            "start": {
+              "line": 103,
+              "column": 1,
+              "offset": 4681
+            },
+            "end": {
+              "line": 103,
+              "column": 16,
+              "offset": 4696
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 103,
+          "column": 1,
+          "offset": 4681
+        },
+        "end": {
+          "line": 103,
+          "column": 16,
+          "offset": 4696
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "add_dependencies(${PROJECT_NAME} spdlog)",
+      "position": {
+        "start": {
+          "line": 105,
+          "column": 1,
+          "offset": 4698
+        },
+        "end": {
+          "line": 107,
+          "column": 4,
+          "offset": 4751
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And finally use it like this:",
+          "position": {
+            "start": {
+              "line": 109,
+              "column": 1,
+              "offset": 4753
+            },
+            "end": {
+              "line": 109,
+              "column": 30,
+              "offset": 4782
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 109,
+          "column": 1,
+          "offset": 4753
+        },
+        "end": {
+          "line": 109,
+          "column": 30,
+          "offset": 4782
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "PUBLIC ${STAGING_DIR}/include/ # spdlog",
+      "position": {
+        "start": {
+          "line": 111,
+          "column": 1,
+          "offset": 4784
+        },
+        "end": {
+          "line": 113,
+          "column": 4,
+          "offset": 4836
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Inside the C++/H files you can:",
+          "position": {
+            "start": {
+              "line": 115,
+              "column": 1,
+              "offset": 4838
+            },
+            "end": {
+              "line": 115,
+              "column": 32,
+              "offset": 4869
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 115,
+          "column": 1,
+          "offset": 4838
+        },
+        "end": {
+          "line": 115,
+          "column": 32,
+          "offset": 4869
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "C++",
+      "meta": null,
+      "value": "#include \"spdlog/spdlog.h\"",
+      "position": {
+        "start": {
+          "line": 117,
+          "column": 1,
+          "offset": 4871
+        },
+        "end": {
+          "line": 119,
+          "column": 4,
+          "offset": 4908
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Using spdlog in a shared library",
+          "position": {
+            "start": {
+              "line": 121,
+              "column": 4,
+              "offset": 4913
+            },
+            "end": {
+              "line": 121,
+              "column": 36,
+              "offset": 4945
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 121,
+          "column": 1,
+          "offset": 4910
+        },
+        "end": {
+          "line": 121,
+          "column": 36,
+          "offset": 4945
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "When building a shared library, ",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 1,
+              "offset": 4947
+            },
+            "end": {
+              "line": 123,
+              "column": 33,
+              "offset": 4979
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "CMAKE_POSITION_INDEPENDENT_CODE",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 33,
+              "offset": 4979
+            },
+            "end": {
+              "line": 123,
+              "column": 66,
+              "offset": 5012
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " has to be set to ",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 66,
+              "offset": 5012
+            },
+            "end": {
+              "line": 123,
+              "column": 84,
+              "offset": 5030
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "TRUE",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 84,
+              "offset": 5030
+            },
+            "end": {
+              "line": 123,
+              "column": 90,
+              "offset": 5036
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " before adding the ",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 90,
+              "offset": 5036
+            },
+            "end": {
+              "line": 123,
+              "column": 109,
+              "offset": 5055
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 109,
+              "offset": 5055
+            },
+            "end": {
+              "line": 123,
+              "column": 117,
+              "offset": 5063
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " subdirectory.",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 117,
+              "offset": 5063
+            },
+            "end": {
+              "line": 123,
+              "column": 131,
+              "offset": 5077
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 123,
+          "column": 1,
+          "offset": 4947
+        },
+        "end": {
+          "line": 123,
+          "column": 131,
+          "offset": 5077
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Full example:",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 1,
+              "offset": 5079
+            },
+            "end": {
+              "line": 125,
+              "column": 14,
+              "offset": 5092
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 125,
+          "column": 1,
+          "offset": 5079
+        },
+        "end": {
+          "line": 125,
+          "column": 14,
+          "offset": 5092
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "cmake_minimum_required(VERSION 3.10)\n\nproject(cmake_test)\n\nset(CMAKE_CXX_STANDARD 17)\nset(CMAKE_CXX_STANDARD_REQUIRED TRUE)\nset(CMAKE_POSITION_INDEPENDENT_CODE TRUE)\n\nadd_subdirectory(\"${CMAKE_SOURCE_DIR}/spdlog\")\n\nfile(GLOB_RECURSE SOURCES \"${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp\")\nadd_library(test SHARED ${SOURCES})\ntarget_include_directories(test PRIVATE \"${CMAKE_CURRENT_SOURCE_DIR}/src\")\n\ntarget_link_libraries(test PRIVATE spdlog::spdlog)",
+      "position": {
+        "start": {
+          "line": 126,
+          "column": 1,
+          "offset": 5093
+        },
+        "end": {
+          "line": 142,
+          "column": 4,
+          "offset": 5550
+        }
+      }
+    }
+  ],
+  "changes": []
+}
