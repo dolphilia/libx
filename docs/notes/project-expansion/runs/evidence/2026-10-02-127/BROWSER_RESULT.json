@@ -1,0 +1,149 @@
+{
+  "checkedAt": "2026-10-02T05:57:19.334Z",
+  "checks": [
+    {
+      "name": "ja-reproducer-copy",
+      "passed": true,
+      "characters": 825
+    },
+    {
+      "name": "ja-license-copy",
+      "passed": true,
+      "characters": 1064
+    },
+    {
+      "name": "keyboard-language-ja-to-en",
+      "passed": true
+    },
+    {
+      "name": "en-mobile-no-page-overflow",
+      "passed": true,
+      "metrics": {
+        "width": 390,
+        "scrollWidth": 375
+      },
+      "initialEqualityAssertion": false,
+      "explanation": "15pxの縦スクロールバーを除いた幅。横overflow判定はscrollWidth <= innerWidth。"
+    },
+    {
+      "name": "en-ja-dom-codes-identical",
+      "passed": true
+    },
+    {
+      "name": "current-version-retains-page",
+      "passed": true
+    },
+    {
+      "name": "en-mobile-copy",
+      "passed": true
+    },
+    {
+      "name": "previous-opens-old-snapshot",
+      "passed": true
+    },
+    {
+      "name": "next-returns-new-snapshot",
+      "passed": true
+    },
+    {
+      "name": "keyboard-language-en-to-ja",
+      "passed": true
+    },
+    {
+      "name": "ja-mobile-no-page-overflow",
+      "passed": true,
+      "metrics": {
+        "scrollWidth": 375,
+        "unofficial": true,
+        "width": 390
+      },
+      "initialEqualityAssertion": false,
+      "explanation": "15pxの縦スクロールバーを除いた幅。横overflow判定はscrollWidth <= innerWidth。"
+    },
+    {
+      "name": "ja-unofficial-visible",
+      "passed": true
+    },
+    {
+      "name": "ja-previous-old-snapshot",
+      "passed": true
+    },
+    {
+      "name": "ja-next-new-snapshot",
+      "passed": true
+    },
+    {
+      "name": "keyboard-sidebar-collapse",
+      "passed": true
+    },
+    {
+      "name": "lua-sidebar-restores-original-width",
+      "passed": true,
+      "before": {
+        "collapsed": false,
+        "width": 228
+      },
+      "after": {
+        "collapsed": false,
+        "width": 228
+      }
+    },
+    {
+      "name": "glfw-sidebar-restores-original-width",
+      "passed": true,
+      "before": {
+        "style": "",
+        "url": "http://127.0.0.1:8337/docs/glfw/v3-5-1/en/01-overview/01-introduction/",
+        "width": 228
+      },
+      "after": {
+        "collapsed": false,
+        "width": 228
+      }
+    },
+    {
+      "name": "legacy-50px-saved-width-recovers",
+      "passed": true,
+      "beforeLegacy": {
+        "width": 228
+      },
+      "after": {
+        "collapsed": false,
+        "width": 200
+      }
+    },
+    {
+      "name": "reload-sidebar-normal-width",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "screenshots": [
+    "ja-desktop.png",
+    "ja-license.png",
+    "en-desktop.png",
+    "en-mobile.png",
+    "en-mobile-body.png",
+    "ja-mobile-body.png",
+    "ja-mobile-license.png",
+    "ja-mobile-provenance.png",
+    "ja-provenance-desktop.png",
+    "ja-provenance-final.png",
+    "sidebar-lua-repaired.png",
+    "sidebar-glfw-repaired.png"
+  ],
+  "finalScreenshot": "sidebar-lua-final.png",
+  "sidebarRepair": {
+    "apps": [
+      "lua",
+      "glfw"
+    ],
+    "legacySavedWidthRecovery": true,
+    "sourceScope": "packages/ui/src/components/SidebarResizer.astro"
+  },
+  "clipboardRestored": true,
+  "limitations": [
+    "日本語URLの404は既存共通仕様により英語のPage not foundを表示。",
+    "初回表示画像と幅判定の誤判定、bodyへのEnd入力失敗、禁止されたlocalStorage読取失敗は検証手順上の失敗として保持。検証済みの実操作記録で合格を判定。"
+  ]
+}

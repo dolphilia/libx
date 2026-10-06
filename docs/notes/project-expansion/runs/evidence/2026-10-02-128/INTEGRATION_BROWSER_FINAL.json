@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-02T06:42:08.150Z",
+  "status": "passed",
+  "before": {
+    "codes": [
+      "-- To be run with Lua compiled with -fsanitize=undefined\n\nlocal lim = 1e6\n\n-- make major collections non-incremental\ncollectgarbage(\"param\", \"stepmul\", 0)\n\n-- make \"majorminor\" large enough to force a left-shift\n-- when applying the parameter (internal details)\ncollectgarbage(\"param\", \"majorminor\", 2000)\n\ncollectgarbage(); collectgarbage()\n\nlocal M = collectgarbage\"count\"\n\n-- create a large table\nlocal t = {}\nfor i = 1, lim do t[i] = true end\nassert(collectgarbage\"count\" > M + (lim * string.packsize\"j\")/1024)\n\n-- force collector to \"generational major\" mode\ncollectgarbage\"step\"\ncollectgarbage\"step\"\ncollectgarbage\"step\"\nassert(not T or T.gcquery() == \"genmajor\")\n\n-- shrink the table\nfor i = 1, lim do t[i] = nil end\nt[2 * lim] = true\nassert(collectgarbage\"count\" < M * 5/4)\n\ncollectgarbage\"step\"   -- assert violation",
+      "Copyright © 1994–2026 Lua.org, PUC-Rio.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE."
+    ],
+    "provenance": "文書の出典翻訳この文書は Lua.org, PUC-Rio による「Lua 5.5.1 Official Bugs (2026-10-02 snapshot)」を翻訳したものです。出典Lua 5.5.1 Official Bugs (2026-10-02 snapshot)上流バージョンLua 5.5.1ライセンスMIT (software license applied with annotation)原文を開くMIT (software license applied with annotation)ライセンス",
+    "scrollLeft": 0,
+    "width": 218
+  },
+  "after": {
+    "scrollLeft": 0,
+    "width": 218
+  },
+  "mobile": {
+    "codes": [
+      "-- To be run with Lua compiled with -fsanitize=undefined\n\nlocal lim = 1e6\n\n-- make major collections non-incremental\ncollectgarbage(\"param\", \"stepmul\", 0)\n\n-- make \"majorminor\" large enough to force a left-shift\n-- when applying the parameter (internal details)\ncollectgarbage(\"param\", \"majorminor\", 2000)\n\ncollectgarbage(); collectgarbage()\n\nlocal M = collectgarbage\"count\"\n\n-- create a large table\nlocal t = {}\nfor i = 1, lim do t[i] = true end\nassert(collectgarbage\"count\" > M + (lim * string.packsize\"j\")/1024)\n\n-- force collector to \"generational major\" mode\ncollectgarbage\"step\"\ncollectgarbage\"step\"\ncollectgarbage\"step\"\nassert(not T or T.gcquery() == \"genmajor\")\n\n-- shrink the table\nfor i = 1, lim do t[i] = nil end\nt[2 * lim] = true\nassert(collectgarbage\"count\" < M * 5/4)\n\ncollectgarbage\"step\"   -- assert violation",
+      "Copyright © 1994–2026 Lua.org, PUC-Rio.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE."
+    ],
+    "provenance": "文書の出典翻訳この文書は Lua.org, PUC-Rio による「Lua 5.5.1 Official Bugs (2026-10-02 snapshot)」を翻訳したものです。出典Lua 5.5.1 Official Bugs (2026-10-02 snapshot)上流バージョンLua 5.5.1ライセンスMIT (software license applied with annotation)原文を開くMIT (software license applied with annotation)ライセンス",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  "copyExactlyMatched": true,
+  "screenshots": [
+    "integration-desktop.png",
+    "integration-mobile.png"
+  ],
+  "sharedChangesPreserved": true,
+  "copyCharacters": 825,
+  "initialAttempt": "INTEGRATION_BROWSER.json",
+  "initialFailureReason": "同じ操作呼出し内の即時クリップボード読取は0文字だった。クリックと別呼出しに分けた読取で原コード825文字の完全一致を確認。",
+  "clipboardRestored": true
+}

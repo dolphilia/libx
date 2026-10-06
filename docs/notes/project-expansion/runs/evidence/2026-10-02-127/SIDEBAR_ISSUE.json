@@ -1,0 +1,17 @@
+{
+  "discoveredAt": "2026-10-02T05:52:42.421Z",
+  "status": "repair-in-private-checkout",
+  "sharedSource": {
+    "path": "packages/ui/src/components/SidebarResizer.astro",
+    "sha256": "9dbe41e6e4df56229423c9281c2a34d84452904e122a52239849ad6f3300bd4e"
+  },
+  "cause": "classList.toggleで幅50pxになった後にoffsetWidthを保存していたため、再展開が50pxのまま。折りたたみ前に幅を取得して保存し、過去の不正な復元幅をmin/max範囲へ戻す修正を専用コピーで実施。",
+  "protectedRootUnchanged": true,
+  "requiredValidation": [
+    "Lua/GLFWのcollapse→expand実操作、正常幅保持、過去50px復元幅の復旧、キーボード、再読み込み",
+    "共有UI変更後の全体ビルドと既存本文保持",
+    "共有の変更前SHA一致確認と対象ファイルのみ統合"
+  ],
+  "countsCorrection": "Lua既存56(tar55+旧bugs1)+新bugs1=英日各57。第124–126の説明/証拠名の56は誤記で、実ログは57全件合格。",
+  "observations": "新ページ英日/モバイル/コードコピー/前後移動は実操作合格。ページ横幅375対viewport390は15px縦スクロールバー分で横overflowではない。最初の厳密等号判定は訂正する。"
+}

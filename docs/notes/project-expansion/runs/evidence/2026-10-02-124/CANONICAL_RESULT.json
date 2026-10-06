@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-02T05:26:47.718Z",
+  "status": "passed",
+  "canonical": {
+    "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/canonical/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+    "sha256": "78519f85f3f7e6da3dea95fa38b4fc017fb9b9cfa701aec68a1146876582f4a9"
+  },
+  "contentMap": {
+    "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/CONTENT_MAP.json",
+    "sha256": "e2bf29b8073e60f9d2436fb602a3bd258373aa2dfc436018d30ca7b0631be51d"
+  },
+  "tests": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-124/importer-tests-2.txt",
+    "sha256": "29a746a78c5b3df9fa99977997786fecd2d2a0042d2a261cac6e796d2a1be59d"
+  },
+  "full56Regeneration": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-124/final-regeneration.txt",
+    "sha256": "18aaf577a75949abd7b3bcf981e595aaca7fe3ed4f80c1f8f93d6d8ec5bb6950"
+  },
+  "root179ProtectedFilesUnchanged": true,
+  "sourceAndCanonicalCodeAndNoticePreservation": "tested with actual Astro processor, all prose separate from exact code/notice blocks",
+  "repairs": [
+    {
+      "failure": "CLI top-level await/dynamic import cycle unsettled and exited13",
+      "fix": "CLIのdynamic importを非top-level-await callbackにし、providerと既存rendererの依存がsettleするよう修正。"
+    },
+    {
+      "failure": "全text連結比較でP/pre境界空白に差分",
+      "fix": "散文はpre外の全文を比較し、コード/通知は別に全文完全一致する検査へ分離。緩和で省略しない。"
+    }
+  ],
+  "fullContentReview": "pending",
+  "Japanese": "pending",
+  "build": "pending",
+  "display": "pending",
+  "publicRootAppModified": false
+}

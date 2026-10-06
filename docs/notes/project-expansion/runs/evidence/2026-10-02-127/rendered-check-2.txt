@@ -1,0 +1,1692 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 旧全文/リンク/画像/アンカー/コード変化 docs/sample-docs/v2/en/02-components/03-tabs/index.html
++ actual - expected
+... Skipped lines
+
+  {
+    codes: [
+      '<!DOCTYPE html>\n' +
+        '<html>\n' +
+        '  <head>\n' +
+...
+      'basic-usage',
++     'tab-0',
++     'tab-1',
++     'tab-2',
++     'tab-panel-0',
++     'tab-panel-1',
++     'tab-panel-2',
+-     'tab-18',
+-     'tab-19',
+-     'tab-20',
+-     'tab-panel-18',
+-     'tab-panel-19',
+-     'tab-panel-20',
+      'package-manager-instructions',
++     'tab-3',
++     'tab-4',
++     'tab-5',
++     'tab-panel-3',
++     'tab-panel-4',
++     'tab-panel-5',
+-     'tab-21',
+-     'tab-22',
+-     'tab-23',
+-     'tab-panel-21',
+-     'tab-panel-22',
+-     'tab-panel-23',
+      'configuration-examples',
++     'tab-6',
++     'tab-7',
++     'tab-8',
++     'tab-panel-6',
++     'tab-panel-7',
++     'tab-panel-8',
+-     'tab-24',
+-     'tab-25',
+-     'tab-26',
+-     'tab-panel-24',
+-     'tab-panel-25',
+-     'tab-panel-26',
+      'language-specific-examples',
++     'tab-9',
++     'tab-10',
++     'tab-11',
++     'tab-panel-9',
++     'tab-panel-10',
++     'tab-panel-11',
+-     'tab-27',
+-     'tab-28',
+-     'tab-29',
+-     'tab-panel-27',
+-     'tab-panel-28',
+-     'tab-panel-29',
+      'platform-specific-steps',
++     'tab-12',
++     'tab-13',
++     'tab-14',
++     'tab-panel-12',
++     'tab-panel-13',
++     'tab-panel-14',
+-     'tab-30',
+-     'tab-31',
+-     'tab-32',
+-     'tab-panel-30',
+-     'tab-panel-31',
+-     'tab-panel-32',
+      'api-response-formats',
++     'tab-15',
++     'tab-16',
++     'tab-17',
++     'tab-panel-15',
++     'tab-panel-16',
++     'tab-panel-17',
+-     'tab-33',
+-     'tab-34',
+-     'tab-35',
+-     'tab-panel-33',
+-     'tab-panel-34',
+-     'tab-panel-35',
+      'technical-details',
+      'props',
+      'tabs',
+      'tabitem',
+      'using-tabs-in-mdx',
+...
+    links: [
++     '#tab-panel-0',
++     '#tab-panel-1',
++     '#tab-panel-2',
++     '#tab-panel-3',
++     '#tab-panel-4',
++     '#tab-panel-5',
++     '#tab-panel-6',
++     '#tab-panel-7',
++     '#tab-panel-8',
++     '#tab-panel-9',
++     '#tab-panel-10',
++     '#tab-panel-11',
++     '#tab-panel-12',
++     '#tab-panel-13',
++     '#tab-panel-14',
++     '#tab-panel-15',
++     '#tab-panel-16',
++     '#tab-panel-17',
+-     '#tab-panel-18',
+-     '#tab-panel-19',
+-     '#tab-panel-20',
+-     '#tab-panel-21',
+-     '#tab-panel-22',
+-     '#tab-panel-23',
+-     '#tab-panel-24',
+-     '#tab-panel-25',
+-     '#tab-panel-26',
+-     '#tab-panel-27',
+-     '#tab-panel-28',
+-     '#tab-panel-29',
+-     '#tab-panel-30',
+-     '#tab-panel-31',
+-     '#tab-panel-32',
+-     '#tab-panel-33',
+-     '#tab-panel-34',
+-     '#tab-panel-35',
+      '/docs/sample-docs/v2/en/02-components/04-sidebar-generation',
+      '/docs/sample-docs/v2/en/03-advanced/01-customization',
+      '/docs/sample-docs/v2/en/03-advanced/02-automation',
+      'https://github.com/libx-dev/libx-docs',
+      'https://opensource.org/licenses/MIT'
+
+    at file:///private/tmp/libx-lua127-rendered.mjs:9:242
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: {
+    text: '   Tab Component Examples\n' +
+      'This page demonstrates how to use the Tabs component inside documentation.\n' +
+      'Basic Usage\n' +
+      '\n' +
+      "  document.addEventListener('DOMContentLoaded', () => {\n" +
+      '    class DocsTabs extends HTMLElement {\n' +
+      '      // 同期キーごとのタブグループを追跡するマップ\n' +
+      '      static syncedTabs = new Map();\n' +
+      '\n' +
+      '      constructor() {\n' +
+      '        super();\n' +
+      `        const tablist = this.querySelector('[role="tablist"]');\n` +
+      '        if (!tablist) return;\n' +
+      '        \n' +
+      `        this.tabs = [...tablist.querySelectorAll('[role="tab"]')];\n` +
+      `        this.panels = [...this.querySelectorAll(':scope > [role="tabpanel"]')];\n` +
+      '        this.syncKey = this.dataset.syncKey;\n' +
+      '\n' +
+      '        // 同期キーが指定されている場合、同期タブのマップに追加\n' +
+      '        if (this.syncKey) {\n' +
+      '          const syncedTabs = DocsTabs.syncedTabs.get(this.syncKey) || [];\n' +
+      '          syncedTabs.push(this);\n' +
+      '          DocsTabs.syncedTabs.set(this.syncKey, syncedTabs);\n' +
+      '        }\n' +
+      '\n' +
+      '        // タブにイベントリスナーを追加\n' +
+      '        this.tabs.forEach((tab, i) => {\n' +
+      '          // クリックイベント\n' +
+      "          tab.addEventListener('click', (e) => {\n" +
+      '            e.preventDefault();\n' +
+      `            const currentTab = tablist.querySelector('[aria-selected="true"]');\n` +
+      '            if (e.currentTarget !== currentTab) {\n' +
+      '              this.switchTab(e.currentTarget, i);\n' +
+      '            }\n' +
+      '          });\n' +
+      '\n' +
+      '          // キーボードイベント - Starlightスタイルのキーボードナビゲーション\n' +
+      "          tab.addEventListener('keydown', (e) => {\n" +
+      '            const index = this.tabs.indexOf(e.currentTarget);\n' +
+      '            // ユーザーが押したキーに基づいて新しいタブのインデックスを計算\n' +
+      '            const nextIndex =\n' +
+      "              e.key === 'ArrowLeft'\n" +
+      '                ? index - 1\n' +
+      "                : e.key === 'ArrowRight'\n" +
+      '                  ? index + 1\n' +
+      "                  : e.key === 'Home'\n" +
+      '                    ? 0\n' +
+      "                    : e.key === 'End'\n" +
+      '                      ? this.tabs.length - 1\n' +
+      '                      : null;\n' +
+      '            if (nextIndex === null) return;\n' +
+      '            if (this.tabs[nextIndex]) {\n' +
+      '              e.preventDefault();\n' +
+      '              this.switchTab(this.tabs[nextIndex], nextIndex);\n' +
+      '            }\n' +
+      '          });\n' +
+      '        });\n' +
+      '\n' +
+      '        // ローカルストレージから同期タブの状態を復元\n' +
+      "        if (this.syncKey && typeof localStorage !== 'undefined') {\n" +
+      "          const storedLabel = localStorage.getItem('docs-synced-tabs__' + this.syncKey);\n" +
+      '          if (storedLabel) {\n' +
+      '            const tabIndex = this.tabs.findIndex(tab => tab.textContent.trim() === storedLabel);\n' +
+      '            if (tabIndex > 0) { // 最初のタブ以外の場合のみ切り替え\n' +
+      '              this.switchTab(this.tabs[tabIndex], tabIndex, false);\n' +
+      '            }\n' +
+      '          }\n' +
+      '        }\n' +
+      '      }\n' +
+      '\n' +
+      '      switchTab(newTab, index, shouldSync = true) {\n' +
+      '        if (!newTab) return;\n' +
+      '\n' +
+      '        // タブ切り替え前のスクロール位置を保存\n' +
+      '        const previousTabsOffset = shouldSync ? this.getBoundingClientRect().top : 0;\n' +
+      '\n' +
+      '        // すべてのタブを非アクティブにし、すべてのパネルを非表示にする\n' +
+      '        this.tabs.forEach((tab) => {\n' +
+      "          tab.setAttribute('aria-selected', 'false');\n" +
+      "          tab.setAttribute('tabindex', '-1');\n" +
+      '        });\n' +
+      '        this.panels.forEach((oldPanel) => {\n' +
+      '          oldPanel.hidden = true;\n' +
+      '        });\n' +
+      '\n' +
+      '        // 新しいタブとパネルをアクティブにする\n' +
+      '        const newPanel = this.panels[index];\n' +
+      '        if (newPanel) newPanel.hidden = false;\n' +
+      "        newTab.removeAttribute('tabindex');\n" +
+      "        newTab.setAttribute('aria-selected', 'true');\n" +
+      '        \n' +
+      '        if (shouldSync) {\n' +
+      '          newTab.focus();\n' +
+      '          this.syncTabs(newTab);\n' +
+      '          \n' +
+      '          // スクロール位置を調整して、タブ切り替え後も同じ位置に表示されるようにする\n' +
+      '          window.scrollTo({\n' +
+      '            top: window.scrollY + (this.getBoundingClientRect().top - previousTabsOffset),\n' +
+      "            behavior: 'instant'\n" +
+      '          });\n' +
+      '        }\n' +
+      '      }\n' +
+      '\n' +
+      '      // 同期キーを持つすべてのタブグループ間でタブを同期\n' +
+      '      syncTabs(newTab) {\n' +
+      '        if (!this.syncKey) return;\n' +
+      '        const label = newTab.textContent.trim();\n' +
+      '        const syncedTabs = DocsTabs.syncedTabs.get(this.syncKey);\n' +
+      '        if (!syncedTabs) return;\n' +
+      '\n' +
+      '        // 同じ同期キーを持つ他のタブグループも同期\n' +
+      '        for (const receiver of syncedTabs) {\n' +
+      '          if (receiver === this) continue;\n' +
+      '          const labelIndex = receiver.tabs.findIndex((tab) => tab.textContent.trim() === label);\n' +
+      '          if (labelIndex === -1) continue;\n' +
+      '          receiver.switchTab(receiver.tabs[labelIndex], labelIndex, false);\n' +
+      '        }\n' +
+      '\n' +
+      '        // 選択されたタブをローカルストレージに保存\n' +
+      "        if (typeof localStorage !== 'undefined') {\n" +
+      "          localStorage.setItem('docs-synced-tabs__' + this.syncKey, label);\n" +
+      '        }\n' +
+      '      }\n' +
+      '    }\n' +
+      '\n' +
+      '    // カスタム要素として登録\n' +
+      "    customElements.define('docs-tabs', DocsTabs);\n" +
+      '    \n' +
+      '    // 既存のタブを初期化\n' +
+      "    document.querySelectorAll('docs-tabs').forEach(tabs => {\n" +
+      '      // すでに初期化されている場合は何もしない\n' +
+      '      if (tabs._initialized) return;\n' +
+      '      tabs._initialized = true;\n' +
+      '    });\n' +
+      '  });\n' +
+      '        HTML     CSS     JavaScript      Copy code<!DOCTYPE html>\n' +
+      '<html>\n' +
+      '  <head>\n' +
+      '    <title>Hello World</title>\n' +
+      '  </head>\n' +
+      '  <body>\n' +
+      '    <h1>Hello, world!</h1>\n' +
+      '  </body>\n' +
+      '</html>   Copy codebody {\n' +
+      '  font-family: system-ui, sans-serif;\n' +
+      '  color: #333;\n' +
+      '  background-color: #f9f9f9;\n' +
+      '}\n' +
+      '\n' +
+      'h1 {\n' +
+      '  color: navy;\n' +
+      "}   Copy codedocument.addEventListener('DOMContentLoaded', () => {\n" +
+      "  const heading = document.querySelector('h1');\n" +
+      "  heading.addEventListener('click', () => {\n" +
+      "    alert('Heading clicked!');\n" +
+      '  });\n' +
+      '});    \n' +
+      'Package Manager Instructions\n' +
+      'Great for showing steps across different tools:\n' +
+      '      npm     yarn     pnpm      Copy code# Install packages\n' +
+      'npm install @our-package/core\n' +
+      '\n' +
+      '# Add development dependency\n' +
+      'npm install --save-dev @our-package/dev-tools\n' +
+      '\n' +
+      '# Run scripts\n' +
+      'npm run dev   Copy code# Install packages\n' +
+      'yarn add @our-package/core\n' +
+      '\n' +
+      '# Add development dependency\n' +
+      'yarn add --dev @our-package/dev-tools\n' +
+      '\n' +
+      '# Run scripts\n' +
+      'yarn dev   Copy code# Install packages\n' +
+      'pnpm add @our-package/core\n' +
+      '\n' +
+      '# Add development dependency\n' +
+      'pnpm add -D @our-package/dev-tools\n' +
+      '\n' +
+      '# Run scripts\n' +
+      'pnpm dev    \n' +
+      'Configuration Examples\n' +
+      'Compare environments or frameworks:\n' +
+      '      Development     Production     Test      Copy code// development.config.js\n' +
+      'export default {\n' +
+      '  debug: true,\n' +
+      "  apiUrl: 'http://localhost:3000/api',\n" +
+      '  database: {\n' +
+      "    host: 'localhost',\n" +
+      '    port: 5432,\n' +
+      "    name: 'myapp_dev'\n" +
+      '  },\n' +
+      '  logging: {\n' +
+      "    level: 'debug',\n" +
+      '    console: true\n' +
+      '  }\n' +
+      '};   Copy code// production.config.js\n' +
+      'export default {\n' +
+      '  debug: false,\n' +
+      "  apiUrl: 'https://api.myapp.com',\n" +
+      '  database: {\n' +
+      '    host: process.env.DB_HOST,\n' +
+      '    port: process.env.DB_PORT,\n' +
+      '    name: process.env.DB_NAME\n' +
+      '  },\n' +
+      '  logging: {\n' +
+      "    level: 'error',\n" +
+      '    console: false,\n' +
+      "    file: '/var/log/myapp.log'\n" +
+      '  }\n' +
+      '};   Copy code// test.config.js\n' +
+      'export default {\n' +
+      '  debug: true,\n' +
+      "  apiUrl: 'http://localhost:3001/api',\n" +
+      '  database: {\n' +
+      "    host: 'localhost',\n" +
+      '    port: 5433,\n' +
+      "    name: 'myapp_test'\n" +
+      '  },\n' +
+      '  logging: {\n' +
+      "    level: 'warn',\n" +
+      '    console: true\n' +
+      '  }\n' +
+      '};    \n' +
+      'Language-Specific Examples\n' +
+      'Show implementations by language:\n' +
+      '      JavaScript     Python     TypeScript      Copy codeclass User {\n' +
+      '  constructor(name, email) {\n' +
+      '    this.name = name;\n' +
+      '    this.email = email;\n' +
+      '  }\n' +
+      '  \n' +
+      '  greet() {\n' +
+      '    return `Hello, ${this.name}!`;\n' +
+      '  }\n' +
+      '  \n' +
+      '  getProfile() {\n' +
+      '    return {\n' +
+      '      name: this.name,\n' +
+      '      email: this.email\n' +
+      '    };\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+      'console.log(user.greet());   Copy codeclass User:\n' +
+      '    def __init__(self, name, email):\n' +
+      '        self.name = name\n' +
+      '        self.email = email\n' +
+      '    \n' +
+      '    def greet(self):\n' +
+      '        return f"Hello, {self.name}!"\n' +
+      '    \n' +
+      '    def get_profile(self):\n' +
+      '        return {\n' +
+      "            'name': self.name,\n" +
+      "            'email': self.email\n" +
+      '        }\n' +
+      '\n' +
+      "user = User('Taro Tanaka', 'tanaka@example.com')\n" +
+      'print(user.greet())   Copy codeinterface IUser {\n' +
+      '  name: string;\n' +
+      '  email: string;\n' +
+      '  greet(): string;\n' +
+      '  getProfile(): UserProfile;\n' +
+      '}\n' +
+      '\n' +
+      'interface UserProfile {\n' +
+      '  name: string;\n' +
+      '  email: string;\n' +
+      '}\n' +
+      '\n' +
+      'class User implements IUser {\n' +
+      '  constructor(\n' +
+      '    public name: string,\n' +
+      '    public email: string\n' +
+      '  ) {}\n' +
+      '  \n' +
+      '  greet(): string {\n' +
+      '    return `Hello, ${this.name}!`;\n' +
+      '  }\n' +
+      '  \n' +
+      '  getProfile(): UserProfile {\n' +
+      '    return {\n' +
+      '      name: this.name,\n' +
+      '      email: this.email\n' +
+      '    };\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+      'console.log(user.greet());    \n' +
+      'Platform-Specific Steps\n' +
+      'Provide OS-specific instructions:\n' +
+      '      Windows     macOS     Linux      Copy code# Verify Node.js installation\n' +
+      'node --version\n' +
+      'npm --version\n' +
+      '\n' +
+      '# Project setup\n' +
+      'mkdir my-project\n' +
+      'cd my-project\n' +
+      'npm init -y\n' +
+      '\n' +
+      '# Install dependencies\n' +
+      'npm install express\n' +
+      '\n' +
+      '# Start the app\n' +
+      'npm start   Copy code# Install Node.js with Homebrew\n' +
+      'brew install node\n' +
+      '\n' +
+      '# Check versions\n' +
+      'node --version\n' +
+      'npm --version\n' +
+      '\n' +
+      '# Project setup\n' +
+      'mkdir my-project\n' +
+      'cd my-project\n' +
+      'npm init -y\n' +
+      '\n' +
+      '# Install dependencies\n' +
+      'npm install express\n' +
+      '\n' +
+      '# Start the app\n' +
+      'npm start   Copy code# Install Node.js (Ubuntu/Debian)\n' +
+      'curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -\n' +
+      'sudo apt-get install -y nodejs\n' +
+      '\n' +
+      '# Check versions\n' +
+      'node --version\n' +
+      'npm --version\n' +
+      '\n' +
+      '# Project setup\n' +
+      'mkdir my-project\n' +
+      'cd my-project\n' +
+      'npm init -y\n' +
+      '\n' +
+      '# Install dependencies\n' +
+      'npm install express\n' +
+      '\n' +
+      '# Start the app\n' +
+      'npm start    \n' +
+      'API Response Formats\n' +
+      'Display responses in multiple formats:\n' +
+      '      JSON     XML     YAML      Copy code{\n' +
+      '  "status": "success",\n' +
+      '  "data": {\n' +
+      '    "id": 1,\n' +
+      '    "name": "Taro Tanaka",\n' +
+      '    "email": "tanaka@example.com",\n' +
+      '    "profile": {\n' +
+      '      "age": 30,\n' +
+      '      "department": "Engineering",\n' +
+      '      "position": "Developer"\n' +
+      '    },\n' +
+      '    "preferences": {\n' +
+      '      "language": "ja",\n' +
+      '      "theme": "dark",\n' +
+      '      "notifications": true\n' +
+      '    }\n' +
+      '  },\n' +
+      '  "meta": {\n' +
+      '    "timestamp": "2025-01-27T16:00:00Z",\n' +
+      '    "version": "1.0"\n' +
+      '  }\n' +
+      '}   Copy code<?xml version="1.0" encoding="UTF-8"?>\n' +
+      '<response>\n' +
+      '  <status>success</status>\n' +
+      '  <data>\n' +
+      '    <id>1</id>\n' +
+      '    <name>Taro Tanaka</name>\n' +
+      '    <email>tanaka@example.com</email>\n' +
+      '    <profile>\n' +
+      '      <age>30</age>\n' +
+      '      <department>Engineering</department>\n' +
+      '      <position>Developer</position>\n' +
+      '    </profile>\n' +
+      '    <preferences>\n' +
+      '      <language>ja</language>\n' +
+      '      <theme>dark</theme>\n' +
+      '      <notifications>true</notifications>\n' +
+      '    </preferences>\n' +
+      '  </data>\n' +
+      '  <meta>\n' +
+      '    <timestamp>2025-01-27T16:00:00Z</timestamp>\n' +
+      '    <version>1.0</version>\n' +
+      '  </meta>\n' +
+      '</response>   Copy codestatus: success\n' +
+      'data:\n' +
+      '  id: 1\n' +
+      '  name: Taro Tanaka\n' +
+      '  email: tanaka@example.com\n' +
+      '  profile:\n' +
+      '    age: 30\n' +
+      '    department: Engineering\n' +
+      '    position: Developer\n' +
+      '  preferences:\n' +
+      '    langu'... 2053 more characters,
+    ids: [
+      'tab-component-examples',
+      'basic-usage',
+      'tab-0',
+      'tab-1',
+      'tab-2',
+      'tab-panel-0',
+      'tab-panel-1',
+      'tab-panel-2',
+      'package-manager-instructions',
+      'tab-3',
+      'tab-4',
+      'tab-5',
+      'tab-panel-3',
+      'tab-panel-4',
+      'tab-panel-5',
+      'configuration-examples',
+      'tab-6',
+      'tab-7',
+      'tab-8',
+      'tab-panel-6',
+      'tab-panel-7',
+      'tab-panel-8',
+      'language-specific-examples',
+      'tab-9',
+      'tab-10',
+      'tab-11',
+      'tab-panel-9',
+      'tab-panel-10',
+      'tab-panel-11',
+      'platform-specific-steps',
+      'tab-12',
+      'tab-13',
+      'tab-14',
+      'tab-panel-12',
+      'tab-panel-13',
+      'tab-panel-14',
+      'api-response-formats',
+      'tab-15',
+      'tab-16',
+      'tab-17',
+      'tab-panel-15',
+      'tab-panel-16',
+      'tab-panel-17',
+      'technical-details',
+      'props',
+      'tabs',
+      'tabitem',
+      'using-tabs-in-mdx',
+      'best-practices',
+      'organizing-tabs',
+      'accessibility',
+      'performance',
+      'next-steps',
+      'document-provenance-title'
+    ],
+    links: [
+      '#tab-panel-0',
+      '#tab-panel-1',
+      '#tab-panel-2',
+      '#tab-panel-3',
+      '#tab-panel-4',
+      '#tab-panel-5',
+      '#tab-panel-6',
+      '#tab-panel-7',
+      '#tab-panel-8',
+      '#tab-panel-9',
+      '#tab-panel-10',
+      '#tab-panel-11',
+      '#tab-panel-12',
+      '#tab-panel-13',
+      '#tab-panel-14',
+      '#tab-panel-15',
+      '#tab-panel-16',
+      '#tab-panel-17',
+      '/docs/sample-docs/v2/en/02-components/04-sidebar-generation',
+      '/docs/sample-docs/v2/en/03-advanced/01-customization',
+      '/docs/sample-docs/v2/en/03-advanced/02-automation',
+      'https://github.com/libx-dev/libx-docs',
+      'https://opensource.org/licenses/MIT'
+    ],
+    images: [],
+    codes: [
+      '<!DOCTYPE html>\n' +
+        '<html>\n' +
+        '  <head>\n' +
+        '    <title>Hello World</title>\n' +
+        '  </head>\n' +
+        '  <body>\n' +
+        '    <h1>Hello, world!</h1>\n' +
+        '  </body>\n' +
+        '</html>',
+      'body {\n' +
+        '  font-family: system-ui, sans-serif;\n' +
+        '  color: #333;\n' +
+        '  background-color: #f9f9f9;\n' +
+        '}\n' +
+        '\n' +
+        'h1 {\n' +
+        '  color: navy;\n' +
+        '}',
+      "document.addEventListener('DOMContentLoaded', () => {\n" +
+        "  const heading = document.querySelector('h1');\n" +
+        "  heading.addEventListener('click', () => {\n" +
+        "    alert('Heading clicked!');\n" +
+        '  });\n' +
+        '});',
+      '# Install packages\n' +
+        'npm install @our-package/core\n' +
+        '\n' +
+        '# Add development dependency\n' +
+        'npm install --save-dev @our-package/dev-tools\n' +
+        '\n' +
+        '# Run scripts\n' +
+        'npm run dev',
+      '# Install packages\n' +
+        'yarn add @our-package/core\n' +
+        '\n' +
+        '# Add development dependency\n' +
+        'yarn add --dev @our-package/dev-tools\n' +
+        '\n' +
+        '# Run scripts\n' +
+        'yarn dev',
+      '# Install packages\n' +
+        'pnpm add @our-package/core\n' +
+        '\n' +
+        '# Add development dependency\n' +
+        'pnpm add -D @our-package/dev-tools\n' +
+        '\n' +
+        '# Run scripts\n' +
+        'pnpm dev',
+      '// development.config.js\n' +
+        'export default {\n' +
+        '  debug: true,\n' +
+        "  apiUrl: 'http://localhost:3000/api',\n" +
+        '  database: {\n' +
+        "    host: 'localhost',\n" +
+        '    port: 5432,\n' +
+        "    name: 'myapp_dev'\n" +
+        '  },\n' +
+        '  logging: {\n' +
+        "    level: 'debug',\n" +
+        '    console: true\n' +
+        '  }\n' +
+        '};',
+      '// production.config.js\n' +
+        'export default {\n' +
+        '  debug: false,\n' +
+        "  apiUrl: 'https://api.myapp.com',\n" +
+        '  database: {\n' +
+        '    host: process.env.DB_HOST,\n' +
+        '    port: process.env.DB_PORT,\n' +
+        '    name: process.env.DB_NAME\n' +
+        '  },\n' +
+        '  logging: {\n' +
+        "    level: 'error',\n" +
+        '    console: false,\n' +
+        "    file: '/var/log/myapp.log'\n" +
+        '  }\n' +
+        '};',
+      '// test.config.js\n' +
+        'export default {\n' +
+        '  debug: true,\n' +
+        "  apiUrl: 'http://localhost:3001/api',\n" +
+        '  database: {\n' +
+        "    host: 'localhost',\n" +
+        '    port: 5433,\n' +
+        "    name: 'myapp_test'\n" +
+        '  },\n' +
+        '  logging: {\n' +
+        "    level: 'warn',\n" +
+        '    console: true\n' +
+        '  }\n' +
+        '};',
+      'class User {\n' +
+        '  constructor(name, email) {\n' +
+        '    this.name = name;\n' +
+        '    this.email = email;\n' +
+        '  }\n' +
+        '  \n' +
+        '  greet() {\n' +
+        '    return `Hello, ${this.name}!`;\n' +
+        '  }\n' +
+        '  \n' +
+        '  getProfile() {\n' +
+        '    return {\n' +
+        '      name: this.name,\n' +
+        '      email: this.email\n' +
+        '    };\n' +
+        '  }\n' +
+        '}\n' +
+        '\n' +
+        "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+        'console.log(user.greet());',
+      'class User:\n' +
+        '    def __init__(self, name, email):\n' +
+        '        self.name = name\n' +
+        '        self.email = email\n' +
+        '    \n' +
+        '    def greet(self):\n' +
+        '        return f"Hello, {self.name}!"\n' +
+        '    \n' +
+        '    def get_profile(self):\n' +
+        '        return {\n' +
+        "            'name': self.name,\n" +
+        "            'email': self.email\n" +
+        '        }\n' +
+        '\n' +
+        "user = User('Taro Tanaka', 'tanaka@example.com')\n" +
+        'print(user.greet())',
+      'interface IUser {\n' +
+        '  name: string;\n' +
+        '  email: string;\n' +
+        '  greet(): string;\n' +
+        '  getProfile(): UserProfile;\n' +
+        '}\n' +
+        '\n' +
+        'interface UserProfile {\n' +
+        '  name: string;\n' +
+        '  email: string;\n' +
+        '}\n' +
+        '\n' +
+        'class User implements IUser {\n' +
+        '  constructor(\n' +
+        '    public name: string,\n' +
+        '    public email: string\n' +
+        '  ) {}\n' +
+        '  \n' +
+        '  greet(): string {\n' +
+        '    return `Hello, ${this.name}!`;\n' +
+        '  }\n' +
+        '  \n' +
+        '  getProfile(): UserProfile {\n' +
+        '    return {\n' +
+        '      name: this.name,\n' +
+        '      email: this.email\n' +
+        '    };\n' +
+        '  }\n' +
+        '}\n' +
+        '\n' +
+        "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+        'console.log(user.greet());',
+      '# Verify Node.js installation\n' +
+        'node --version\n' +
+        'npm --version\n' +
+        '\n' +
+        '# Project setup\n' +
+        'mkdir my-project\n' +
+        'cd my-project\n' +
+        'npm init -y\n' +
+        '\n' +
+        '# Install dependencies\n' +
+        'npm install express\n' +
+        '\n' +
+        '# Start the app\n' +
+        'npm start',
+      '# Install Node.js with Homebrew\n' +
+        'brew install node\n' +
+        '\n' +
+        '# Check versions\n' +
+        'node --version\n' +
+        'npm --version\n' +
+        '\n' +
+        '# Project setup\n' +
+        'mkdir my-project\n' +
+        'cd my-project\n' +
+        'npm init -y\n' +
+        '\n' +
+        '# Install dependencies\n' +
+        'npm install express\n' +
+        '\n' +
+        '# Start the app\n' +
+        'npm start',
+      '# Install Node.js (Ubuntu/Debian)\n' +
+        'curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -\n' +
+        'sudo apt-get install -y nodejs\n' +
+        '\n' +
+        '# Check versions\n' +
+        'node --version\n' +
+        'npm --version\n' +
+        '\n' +
+        '# Project setup\n' +
+        'mkdir my-project\n' +
+        'cd my-project\n' +
+        'npm init -y\n' +
+        '\n' +
+        '# Install dependencies\n' +
+        'npm install express\n' +
+        '\n' +
+        '# Start the app\n' +
+        'npm start',
+      '{\n' +
+        '  "status": "success",\n' +
+        '  "data": {\n' +
+        '    "id": 1,\n' +
+        '    "name": "Taro Tanaka",\n' +
+        '    "email": "tanaka@example.com",\n' +
+        '    "profile": {\n' +
+        '      "age": 30,\n' +
+        '      "department": "Engineering",\n' +
+        '      "position": "Developer"\n' +
+        '    },\n' +
+        '    "preferences": {\n' +
+        '      "language": "ja",\n' +
+        '      "theme": "dark",\n' +
+        '      "notifications": true\n' +
+        '    }\n' +
+        '  },\n' +
+        '  "meta": {\n' +
+        '    "timestamp": "2025-01-27T16:00:00Z",\n' +
+        '    "version": "1.0"\n' +
+        '  }\n' +
+        '}',
+      '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<response>\n' +
+        '  <status>success</status>\n' +
+        '  <data>\n' +
+        '    <id>1</id>\n' +
+        '    <name>Taro Tanaka</name>\n' +
+        '    <email>tanaka@example.com</email>\n' +
+        '    <profile>\n' +
+        '      <age>30</age>\n' +
+        '      <department>Engineering</department>\n' +
+        '      <position>Developer</position>\n' +
+        '    </profile>\n' +
+        '    <preferences>\n' +
+        '      <language>ja</language>\n' +
+        '      <theme>dark</theme>\n' +
+        '      <notifications>true</notifications>\n' +
+        '    </preferences>\n' +
+        '  </data>\n' +
+        '  <meta>\n' +
+        '    <timestamp>2025-01-27T16:00:00Z</timestamp>\n' +
+        '    <version>1.0</version>\n' +
+        '  </meta>\n' +
+        '</response>',
+      'status: success\n' +
+        'data:\n' +
+        '  id: 1\n' +
+        '  name: Taro Tanaka\n' +
+        '  email: tanaka@example.com\n' +
+        '  profile:\n' +
+        '    age: 30\n' +
+        '    department: Engineering\n' +
+        '    position: Developer\n' +
+        '  preferences:\n' +
+        '    language: ja\n' +
+        '    theme: dark\n' +
+        '    notifications: true\n' +
+        'meta:\n' +
+        '  timestamp: "2025-01-27T16:00:00Z"\n' +
+        '  version: "1.0"',
+      '---\n' +
+        'title: "My Document"\n' +
+        '---\n' +
+        '\n' +
+        "import { Tabs, TabItem } from '@docs/ui';\n" +
+        '\n' +
+        '# Code Samples\n' +
+        '\n' +
+        '<Tabs>\n' +
+        '  <TabItem label="JavaScript">\n' +
+        '    {/* JavaScript sample */}\n' +
+        "    console.log('Hello, World!');\n" +
+        '  </TabItem>\n' +
+        '  <TabItem label="Python">\n' +
+        '    {/* Python sample */}\n' +
+        "    print('Hello, World!')\n" +
+        '  </TabItem>\n' +
+        '</Tabs>'
+    ]
+  },
+  expected: {
+    text: '   Tab Component Examples\n' +
+      'This page demonstrates how to use the Tabs component inside documentation.\n' +
+      'Basic Usage\n' +
+      '\n' +
+      "  document.addEventListener('DOMContentLoaded', () => {\n" +
+      '    class DocsTabs extends HTMLElement {\n' +
+      '      // 同期キーごとのタブグループを追跡するマップ\n' +
+      '      static syncedTabs = new Map();\n' +
+      '\n' +
+      '      constructor() {\n' +
+      '        super();\n' +
+      `        const tablist = this.querySelector('[role="tablist"]');\n` +
+      '        if (!tablist) return;\n' +
+      '        \n' +
+      `        this.tabs = [...tablist.querySelectorAll('[role="tab"]')];\n` +
+      `        this.panels = [...this.querySelectorAll(':scope > [role="tabpanel"]')];\n` +
+      '        this.syncKey = this.dataset.syncKey;\n' +
+      '\n' +
+      '        // 同期キーが指定されている場合、同期タブのマップに追加\n' +
+      '        if (this.syncKey) {\n' +
+      '          const syncedTabs = DocsTabs.syncedTabs.get(this.syncKey) || [];\n' +
+      '          syncedTabs.push(this);\n' +
+      '          DocsTabs.syncedTabs.set(this.syncKey, syncedTabs);\n' +
+      '        }\n' +
+      '\n' +
+      '        // タブにイベントリスナーを追加\n' +
+      '        this.tabs.forEach((tab, i) => {\n' +
+      '          // クリックイベント\n' +
+      "          tab.addEventListener('click', (e) => {\n" +
+      '            e.preventDefault();\n' +
+      `            const currentTab = tablist.querySelector('[aria-selected="true"]');\n` +
+      '            if (e.currentTarget !== currentTab) {\n' +
+      '              this.switchTab(e.currentTarget, i);\n' +
+      '            }\n' +
+      '          });\n' +
+      '\n' +
+      '          // キーボードイベント - Starlightスタイルのキーボードナビゲーション\n' +
+      "          tab.addEventListener('keydown', (e) => {\n" +
+      '            const index = this.tabs.indexOf(e.currentTarget);\n' +
+      '            // ユーザーが押したキーに基づいて新しいタブのインデックスを計算\n' +
+      '            const nextIndex =\n' +
+      "              e.key === 'ArrowLeft'\n" +
+      '                ? index - 1\n' +
+      "                : e.key === 'ArrowRight'\n" +
+      '                  ? index + 1\n' +
+      "                  : e.key === 'Home'\n" +
+      '                    ? 0\n' +
+      "                    : e.key === 'End'\n" +
+      '                      ? this.tabs.length - 1\n' +
+      '                      : null;\n' +
+      '            if (nextIndex === null) return;\n' +
+      '            if (this.tabs[nextIndex]) {\n' +
+      '              e.preventDefault();\n' +
+      '              this.switchTab(this.tabs[nextIndex], nextIndex);\n' +
+      '            }\n' +
+      '          });\n' +
+      '        });\n' +
+      '\n' +
+      '        // ローカルストレージから同期タブの状態を復元\n' +
+      "        if (this.syncKey && typeof localStorage !== 'undefined') {\n" +
+      "          const storedLabel = localStorage.getItem('docs-synced-tabs__' + this.syncKey);\n" +
+      '          if (storedLabel) {\n' +
+      '            const tabIndex = this.tabs.findIndex(tab => tab.textContent.trim() === storedLabel);\n' +
+      '            if (tabIndex > 0) { // 最初のタブ以外の場合のみ切り替え\n' +
+      '              this.switchTab(this.tabs[tabIndex], tabIndex, false);\n' +
+      '            }\n' +
+      '          }\n' +
+      '        }\n' +
+      '      }\n' +
+      '\n' +
+      '      switchTab(newTab, index, shouldSync = true) {\n' +
+      '        if (!newTab) return;\n' +
+      '\n' +
+      '        // タブ切り替え前のスクロール位置を保存\n' +
+      '        const previousTabsOffset = shouldSync ? this.getBoundingClientRect().top : 0;\n' +
+      '\n' +
+      '        // すべてのタブを非アクティブにし、すべてのパネルを非表示にする\n' +
+      '        this.tabs.forEach((tab) => {\n' +
+      "          tab.setAttribute('aria-selected', 'false');\n" +
+      "          tab.setAttribute('tabindex', '-1');\n" +
+      '        });\n' +
+      '        this.panels.forEach((oldPanel) => {\n' +
+      '          oldPanel.hidden = true;\n' +
+      '        });\n' +
+      '\n' +
+      '        // 新しいタブとパネルをアクティブにする\n' +
+      '        const newPanel = this.panels[index];\n' +
+      '        if (newPanel) newPanel.hidden = false;\n' +
+      "        newTab.removeAttribute('tabindex');\n" +
+      "        newTab.setAttribute('aria-selected', 'true');\n" +
+      '        \n' +
+      '        if (shouldSync) {\n' +
+      '          newTab.focus();\n' +
+      '          this.syncTabs(newTab);\n' +
+      '          \n' +
+      '          // スクロール位置を調整して、タブ切り替え後も同じ位置に表示されるようにする\n' +
+      '          window.scrollTo({\n' +
+      '            top: window.scrollY + (this.getBoundingClientRect().top - previousTabsOffset),\n' +
+      "            behavior: 'instant'\n" +
+      '          });\n' +
+      '        }\n' +
+      '      }\n' +
+      '\n' +
+      '      // 同期キーを持つすべてのタブグループ間でタブを同期\n' +
+      '      syncTabs(newTab) {\n' +
+      '        if (!this.syncKey) return;\n' +
+      '        const label = newTab.textContent.trim();\n' +
+      '        const syncedTabs = DocsTabs.syncedTabs.get(this.syncKey);\n' +
+      '        if (!syncedTabs) return;\n' +
+      '\n' +
+      '        // 同じ同期キーを持つ他のタブグループも同期\n' +
+      '        for (const receiver of syncedTabs) {\n' +
+      '          if (receiver === this) continue;\n' +
+      '          const labelIndex = receiver.tabs.findIndex((tab) => tab.textContent.trim() === label);\n' +
+      '          if (labelIndex === -1) continue;\n' +
+      '          receiver.switchTab(receiver.tabs[labelIndex], labelIndex, false);\n' +
+      '        }\n' +
+      '\n' +
+      '        // 選択されたタブをローカルストレージに保存\n' +
+      "        if (typeof localStorage !== 'undefined') {\n" +
+      "          localStorage.setItem('docs-synced-tabs__' + this.syncKey, label);\n" +
+      '        }\n' +
+      '      }\n' +
+      '    }\n' +
+      '\n' +
+      '    // カスタム要素として登録\n' +
+      "    customElements.define('docs-tabs', DocsTabs);\n" +
+      '    \n' +
+      '    // 既存のタブを初期化\n' +
+      "    document.querySelectorAll('docs-tabs').forEach(tabs => {\n" +
+      '      // すでに初期化されている場合は何もしない\n' +
+      '      if (tabs._initialized) return;\n' +
+      '      tabs._initialized = true;\n' +
+      '    });\n' +
+      '  });\n' +
+      '        HTML     CSS     JavaScript      Copy code<!DOCTYPE html>\n' +
+      '<html>\n' +
+      '  <head>\n' +
+      '    <title>Hello World</title>\n' +
+      '  </head>\n' +
+      '  <body>\n' +
+      '    <h1>Hello, world!</h1>\n' +
+      '  </body>\n' +
+      '</html>   Copy codebody {\n' +
+      '  font-family: system-ui, sans-serif;\n' +
+      '  color: #333;\n' +
+      '  background-color: #f9f9f9;\n' +
+      '}\n' +
+      '\n' +
+      'h1 {\n' +
+      '  color: navy;\n' +
+      "}   Copy codedocument.addEventListener('DOMContentLoaded', () => {\n" +
+      "  const heading = document.querySelector('h1');\n" +
+      "  heading.addEventListener('click', () => {\n" +
+      "    alert('Heading clicked!');\n" +
+      '  });\n' +
+      '});    \n' +
+      'Package Manager Instructions\n' +
+      'Great for showing steps across different tools:\n' +
+      '      npm     yarn     pnpm      Copy code# Install packages\n' +
+      'npm install @our-package/core\n' +
+      '\n' +
+      '# Add development dependency\n' +
+      'npm install --save-dev @our-package/dev-tools\n' +
+      '\n' +
+      '# Run scripts\n' +
+      'npm run dev   Copy code# Install packages\n' +
+      'yarn add @our-package/core\n' +
+      '\n' +
+      '# Add development dependency\n' +
+      'yarn add --dev @our-package/dev-tools\n' +
+      '\n' +
+      '# Run scripts\n' +
+      'yarn dev   Copy code# Install packages\n' +
+      'pnpm add @our-package/core\n' +
+      '\n' +
+      '# Add development dependency\n' +
+      'pnpm add -D @our-package/dev-tools\n' +
+      '\n' +
+      '# Run scripts\n' +
+      'pnpm dev    \n' +
+      'Configuration Examples\n' +
+      'Compare environments or frameworks:\n' +
+      '      Development     Production     Test      Copy code// development.config.js\n' +
+      'export default {\n' +
+      '  debug: true,\n' +
+      "  apiUrl: 'http://localhost:3000/api',\n" +
+      '  database: {\n' +
+      "    host: 'localhost',\n" +
+      '    port: 5432,\n' +
+      "    name: 'myapp_dev'\n" +
+      '  },\n' +
+      '  logging: {\n' +
+      "    level: 'debug',\n" +
+      '    console: true\n' +
+      '  }\n' +
+      '};   Copy code// production.config.js\n' +
+      'export default {\n' +
+      '  debug: false,\n' +
+      "  apiUrl: 'https://api.myapp.com',\n" +
+      '  database: {\n' +
+      '    host: process.env.DB_HOST,\n' +
+      '    port: process.env.DB_PORT,\n' +
+      '    name: process.env.DB_NAME\n' +
+      '  },\n' +
+      '  logging: {\n' +
+      "    level: 'error',\n" +
+      '    console: false,\n' +
+      "    file: '/var/log/myapp.log'\n" +
+      '  }\n' +
+      '};   Copy code// test.config.js\n' +
+      'export default {\n' +
+      '  debug: true,\n' +
+      "  apiUrl: 'http://localhost:3001/api',\n" +
+      '  database: {\n' +
+      "    host: 'localhost',\n" +
+      '    port: 5433,\n' +
+      "    name: 'myapp_test'\n" +
+      '  },\n' +
+      '  logging: {\n' +
+      "    level: 'warn',\n" +
+      '    console: true\n' +
+      '  }\n' +
+      '};    \n' +
+      'Language-Specific Examples\n' +
+      'Show implementations by language:\n' +
+      '      JavaScript     Python     TypeScript      Copy codeclass User {\n' +
+      '  constructor(name, email) {\n' +
+      '    this.name = name;\n' +
+      '    this.email = email;\n' +
+      '  }\n' +
+      '  \n' +
+      '  greet() {\n' +
+      '    return `Hello, ${this.name}!`;\n' +
+      '  }\n' +
+      '  \n' +
+      '  getProfile() {\n' +
+      '    return {\n' +
+      '      name: this.name,\n' +
+      '      email: this.email\n' +
+      '    };\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+      'console.log(user.greet());   Copy codeclass User:\n' +
+      '    def __init__(self, name, email):\n' +
+      '        self.name = name\n' +
+      '        self.email = email\n' +
+      '    \n' +
+      '    def greet(self):\n' +
+      '        return f"Hello, {self.name}!"\n' +
+      '    \n' +
+      '    def get_profile(self):\n' +
+      '        return {\n' +
+      "            'name': self.name,\n" +
+      "            'email': self.email\n" +
+      '        }\n' +
+      '\n' +
+      "user = User('Taro Tanaka', 'tanaka@example.com')\n" +
+      'print(user.greet())   Copy codeinterface IUser {\n' +
+      '  name: string;\n' +
+      '  email: string;\n' +
+      '  greet(): string;\n' +
+      '  getProfile(): UserProfile;\n' +
+      '}\n' +
+      '\n' +
+      'interface UserProfile {\n' +
+      '  name: string;\n' +
+      '  email: string;\n' +
+      '}\n' +
+      '\n' +
+      'class User implements IUser {\n' +
+      '  constructor(\n' +
+      '    public name: string,\n' +
+      '    public email: string\n' +
+      '  ) {}\n' +
+      '  \n' +
+      '  greet(): string {\n' +
+      '    return `Hello, ${this.name}!`;\n' +
+      '  }\n' +
+      '  \n' +
+      '  getProfile(): UserProfile {\n' +
+      '    return {\n' +
+      '      name: this.name,\n' +
+      '      email: this.email\n' +
+      '    };\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+      'console.log(user.greet());    \n' +
+      'Platform-Specific Steps\n' +
+      'Provide OS-specific instructions:\n' +
+      '      Windows     macOS     Linux      Copy code# Verify Node.js installation\n' +
+      'node --version\n' +
+      'npm --version\n' +
+      '\n' +
+      '# Project setup\n' +
+      'mkdir my-project\n' +
+      'cd my-project\n' +
+      'npm init -y\n' +
+      '\n' +
+      '# Install dependencies\n' +
+      'npm install express\n' +
+      '\n' +
+      '# Start the app\n' +
+      'npm start   Copy code# Install Node.js with Homebrew\n' +
+      'brew install node\n' +
+      '\n' +
+      '# Check versions\n' +
+      'node --version\n' +
+      'npm --version\n' +
+      '\n' +
+      '# Project setup\n' +
+      'mkdir my-project\n' +
+      'cd my-project\n' +
+      'npm init -y\n' +
+      '\n' +
+      '# Install dependencies\n' +
+      'npm install express\n' +
+      '\n' +
+      '# Start the app\n' +
+      'npm start   Copy code# Install Node.js (Ubuntu/Debian)\n' +
+      'curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -\n' +
+      'sudo apt-get install -y nodejs\n' +
+      '\n' +
+      '# Check versions\n' +
+      'node --version\n' +
+      'npm --version\n' +
+      '\n' +
+      '# Project setup\n' +
+      'mkdir my-project\n' +
+      'cd my-project\n' +
+      'npm init -y\n' +
+      '\n' +
+      '# Install dependencies\n' +
+      'npm install express\n' +
+      '\n' +
+      '# Start the app\n' +
+      'npm start    \n' +
+      'API Response Formats\n' +
+      'Display responses in multiple formats:\n' +
+      '      JSON     XML     YAML      Copy code{\n' +
+      '  "status": "success",\n' +
+      '  "data": {\n' +
+      '    "id": 1,\n' +
+      '    "name": "Taro Tanaka",\n' +
+      '    "email": "tanaka@example.com",\n' +
+      '    "profile": {\n' +
+      '      "age": 30,\n' +
+      '      "department": "Engineering",\n' +
+      '      "position": "Developer"\n' +
+      '    },\n' +
+      '    "preferences": {\n' +
+      '      "language": "ja",\n' +
+      '      "theme": "dark",\n' +
+      '      "notifications": true\n' +
+      '    }\n' +
+      '  },\n' +
+      '  "meta": {\n' +
+      '    "timestamp": "2025-01-27T16:00:00Z",\n' +
+      '    "version": "1.0"\n' +
+      '  }\n' +
+      '}   Copy code<?xml version="1.0" encoding="UTF-8"?>\n' +
+      '<response>\n' +
+      '  <status>success</status>\n' +
+      '  <data>\n' +
+      '    <id>1</id>\n' +
+      '    <name>Taro Tanaka</name>\n' +
+      '    <email>tanaka@example.com</email>\n' +
+      '    <profile>\n' +
+      '      <age>30</age>\n' +
+      '      <department>Engineering</department>\n' +
+      '      <position>Developer</position>\n' +
+      '    </profile>\n' +
+      '    <preferences>\n' +
+      '      <language>ja</language>\n' +
+      '      <theme>dark</theme>\n' +
+      '      <notifications>true</notifications>\n' +
+      '    </preferences>\n' +
+      '  </data>\n' +
+      '  <meta>\n' +
+      '    <timestamp>2025-01-27T16:00:00Z</timestamp>\n' +
+      '    <version>1.0</version>\n' +
+      '  </meta>\n' +
+      '</response>   Copy codestatus: success\n' +
+      'data:\n' +
+      '  id: 1\n' +
+      '  name: Taro Tanaka\n' +
+      '  email: tanaka@example.com\n' +
+      '  profile:\n' +
+      '    age: 30\n' +
+      '    department: Engineering\n' +
+      '    position: Developer\n' +
+      '  preferences:\n' +
+      '    langu'... 2053 more characters,
+    ids: [
+      'tab-component-examples',
+      'basic-usage',
+      'tab-18',
+      'tab-19',
+      'tab-20',
+      'tab-panel-18',
+      'tab-panel-19',
+      'tab-panel-20',
+      'package-manager-instructions',
+      'tab-21',
+      'tab-22',
+      'tab-23',
+      'tab-panel-21',
+      'tab-panel-22',
+      'tab-panel-23',
+      'configuration-examples',
+      'tab-24',
+      'tab-25',
+      'tab-26',
+      'tab-panel-24',
+      'tab-panel-25',
+      'tab-panel-26',
+      'language-specific-examples',
+      'tab-27',
+      'tab-28',
+      'tab-29',
+      'tab-panel-27',
+      'tab-panel-28',
+      'tab-panel-29',
+      'platform-specific-steps',
+      'tab-30',
+      'tab-31',
+      'tab-32',
+      'tab-panel-30',
+      'tab-panel-31',
+      'tab-panel-32',
+      'api-response-formats',
+      'tab-33',
+      'tab-34',
+      'tab-35',
+      'tab-panel-33',
+      'tab-panel-34',
+      'tab-panel-35',
+      'technical-details',
+      'props',
+      'tabs',
+      'tabitem',
+      'using-tabs-in-mdx',
+      'best-practices',
+      'organizing-tabs',
+      'accessibility',
+      'performance',
+      'next-steps',
+      'document-provenance-title'
+    ],
+    links: [
+      '#tab-panel-18',
+      '#tab-panel-19',
+      '#tab-panel-20',
+      '#tab-panel-21',
+      '#tab-panel-22',
+      '#tab-panel-23',
+      '#tab-panel-24',
+      '#tab-panel-25',
+      '#tab-panel-26',
+      '#tab-panel-27',
+      '#tab-panel-28',
+      '#tab-panel-29',
+      '#tab-panel-30',
+      '#tab-panel-31',
+      '#tab-panel-32',
+      '#tab-panel-33',
+      '#tab-panel-34',
+      '#tab-panel-35',
+      '/docs/sample-docs/v2/en/02-components/04-sidebar-generation',
+      '/docs/sample-docs/v2/en/03-advanced/01-customization',
+      '/docs/sample-docs/v2/en/03-advanced/02-automation',
+      'https://github.com/libx-dev/libx-docs',
+      'https://opensource.org/licenses/MIT'
+    ],
+    images: [],
+    codes: [
+      '<!DOCTYPE html>\n' +
+        '<html>\n' +
+        '  <head>\n' +
+        '    <title>Hello World</title>\n' +
+        '  </head>\n' +
+        '  <body>\n' +
+        '    <h1>Hello, world!</h1>\n' +
+        '  </body>\n' +
+        '</html>',
+      'body {\n' +
+        '  font-family: system-ui, sans-serif;\n' +
+        '  color: #333;\n' +
+        '  background-color: #f9f9f9;\n' +
+        '}\n' +
+        '\n' +
+        'h1 {\n' +
+        '  color: navy;\n' +
+        '}',
+      "document.addEventListener('DOMContentLoaded', () => {\n" +
+        "  const heading = document.querySelector('h1');\n" +
+        "  heading.addEventListener('click', () => {\n" +
+        "    alert('Heading clicked!');\n" +
+        '  });\n' +
+        '});',
+      '# Install packages\n' +
+        'npm install @our-package/core\n' +
+        '\n' +
+        '# Add development dependency\n' +
+        'npm install --save-dev @our-package/dev-tools\n' +
+        '\n' +
+        '# Run scripts\n' +
+        'npm run dev',
+      '# Install packages\n' +
+        'yarn add @our-package/core\n' +
+        '\n' +
+        '# Add development dependency\n' +
+        'yarn add --dev @our-package/dev-tools\n' +
+        '\n' +
+        '# Run scripts\n' +
+        'yarn dev',
+      '# Install packages\n' +
+        'pnpm add @our-package/core\n' +
+        '\n' +
+        '# Add development dependency\n' +
+        'pnpm add -D @our-package/dev-tools\n' +
+        '\n' +
+        '# Run scripts\n' +
+        'pnpm dev',
+      '// development.config.js\n' +
+        'export default {\n' +
+        '  debug: true,\n' +
+        "  apiUrl: 'http://localhost:3000/api',\n" +
+        '  database: {\n' +
+        "    host: 'localhost',\n" +
+        '    port: 5432,\n' +
+        "    name: 'myapp_dev'\n" +
+        '  },\n' +
+        '  logging: {\n' +
+        "    level: 'debug',\n" +
+        '    console: true\n' +
+        '  }\n' +
+        '};',
+      '// production.config.js\n' +
+        'export default {\n' +
+        '  debug: false,\n' +
+        "  apiUrl: 'https://api.myapp.com',\n" +
+        '  database: {\n' +
+        '    host: process.env.DB_HOST,\n' +
+        '    port: process.env.DB_PORT,\n' +
+        '    name: process.env.DB_NAME\n' +
+        '  },\n' +
+        '  logging: {\n' +
+        "    level: 'error',\n" +
+        '    console: false,\n' +
+        "    file: '/var/log/myapp.log'\n" +
+        '  }\n' +
+        '};',
+      '// test.config.js\n' +
+        'export default {\n' +
+        '  debug: true,\n' +
+        "  apiUrl: 'http://localhost:3001/api',\n" +
+        '  database: {\n' +
+        "    host: 'localhost',\n" +
+        '    port: 5433,\n' +
+        "    name: 'myapp_test'\n" +
+        '  },\n' +
+        '  logging: {\n' +
+        "    level: 'warn',\n" +
+        '    console: true\n' +
+        '  }\n' +
+        '};',
+      'class User {\n' +
+        '  constructor(name, email) {\n' +
+        '    this.name = name;\n' +
+        '    this.email = email;\n' +
+        '  }\n' +
+        '  \n' +
+        '  greet() {\n' +
+        '    return `Hello, ${this.name}!`;\n' +
+        '  }\n' +
+        '  \n' +
+        '  getProfile() {\n' +
+        '    return {\n' +
+        '      name: this.name,\n' +
+        '      email: this.email\n' +
+        '    };\n' +
+        '  }\n' +
+        '}\n' +
+        '\n' +
+        "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+        'console.log(user.greet());',
+      'class User:\n' +
+        '    def __init__(self, name, email):\n' +
+        '        self.name = name\n' +
+        '        self.email = email\n' +
+        '    \n' +
+        '    def greet(self):\n' +
+        '        return f"Hello, {self.name}!"\n' +
+        '    \n' +
+        '    def get_profile(self):\n' +
+        '        return {\n' +
+        "            'name': self.name,\n" +
+        "            'email': self.email\n" +
+        '        }\n' +
+        '\n' +
+        "user = User('Taro Tanaka', 'tanaka@example.com')\n" +
+        'print(user.greet())',
+      'interface IUser {\n' +
+        '  name: string;\n' +
+        '  email: string;\n' +
+        '  greet(): string;\n' +
+        '  getProfile(): UserProfile;\n' +
+        '}\n' +
+        '\n' +
+        'interface UserProfile {\n' +
+        '  name: string;\n' +
+        '  email: string;\n' +
+        '}\n' +
+        '\n' +
+        'class User implements IUser {\n' +
+        '  constructor(\n' +
+        '    public name: string,\n' +
+        '    public email: string\n' +
+        '  ) {}\n' +
+        '  \n' +
+        '  greet(): string {\n' +
+        '    return `Hello, ${this.name}!`;\n' +
+        '  }\n' +
+        '  \n' +
+        '  getProfile(): UserProfile {\n' +
+        '    return {\n' +
+        '      name: this.name,\n' +
+        '      email: this.email\n' +
+        '    };\n' +
+        '  }\n' +
+        '}\n' +
+        '\n' +
+        "const user = new User('Taro Tanaka', 'tanaka@example.com');\n" +
+        'console.log(user.greet());',
+      '# Verify Node.js installation\n' +
+        'node --version\n' +
+        'npm --version\n' +
+        '\n' +
+        '# Project setup\n' +
+        'mkdir my-project\n' +
+        'cd my-project\n' +
+        'npm init -y\n' +
+        '\n' +
+        '# Install dependencies\n' +
+        'npm install express\n' +
+        '\n' +
+        '# Start the app\n' +
+        'npm start',
+      '# Install Node.js with Homebrew\n' +
+        'brew install node\n' +
+        '\n' +
+        '# Check versions\n' +
+        'node --version\n' +
+        'npm --version\n' +
+        '\n' +
+        '# Project setup\n' +
+        'mkdir my-project\n' +
+        'cd my-project\n' +
+        'npm init -y\n' +
+        '\n' +
+        '# Install dependencies\n' +
+        'npm install express\n' +
+        '\n' +
+        '# Start the app\n' +
+        'npm start',
+      '# Install Node.js (Ubuntu/Debian)\n' +
+        'curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -\n' +
+        'sudo apt-get install -y nodejs\n' +
+        '\n' +
+        '# Check versions\n' +
+        'node --version\n' +
+        'npm --version\n' +
+        '\n' +
+        '# Project setup\n' +
+        'mkdir my-project\n' +
+        'cd my-project\n' +
+        'npm init -y\n' +
+        '\n' +
+        '# Install dependencies\n' +
+        'npm install express\n' +
+        '\n' +
+        '# Start the app\n' +
+        'npm start',
+      '{\n' +
+        '  "status": "success",\n' +
+        '  "data": {\n' +
+        '    "id": 1,\n' +
+        '    "name": "Taro Tanaka",\n' +
+        '    "email": "tanaka@example.com",\n' +
+        '    "profile": {\n' +
+        '      "age": 30,\n' +
+        '      "department": "Engineering",\n' +
+        '      "position": "Developer"\n' +
+        '    },\n' +
+        '    "preferences": {\n' +
+        '      "language": "ja",\n' +
+        '      "theme": "dark",\n' +
+        '      "notifications": true\n' +
+        '    }\n' +
+        '  },\n' +
+        '  "meta": {\n' +
+        '    "timestamp": "2025-01-27T16:00:00Z",\n' +
+        '    "version": "1.0"\n' +
+        '  }\n' +
+        '}',
+      '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<response>\n' +
+        '  <status>success</status>\n' +
+        '  <data>\n' +
+        '    <id>1</id>\n' +
+        '    <name>Taro Tanaka</name>\n' +
+        '    <email>tanaka@example.com</email>\n' +
+        '    <profile>\n' +
+        '      <age>30</age>\n' +
+        '      <department>Engineering</department>\n' +
+        '      <position>Developer</position>\n' +
+        '    </profile>\n' +
+        '    <preferences>\n' +
+        '      <language>ja</language>\n' +
+        '      <theme>dark</theme>\n' +
+        '      <notifications>true</notifications>\n' +
+        '    </preferences>\n' +
+        '  </data>\n' +
+        '  <meta>\n' +
+        '    <timestamp>2025-01-27T16:00:00Z</timestamp>\n' +
+        '    <version>1.0</version>\n' +
+        '  </meta>\n' +
+        '</response>',
+      'status: success\n' +
+        'data:\n' +
+        '  id: 1\n' +
+        '  name: Taro Tanaka\n' +
+        '  email: tanaka@example.com\n' +
+        '  profile:\n' +
+        '    age: 30\n' +
+        '    department: Engineering\n' +
+        '    position: Developer\n' +
+        '  preferences:\n' +
+        '    language: ja\n' +
+        '    theme: dark\n' +
+        '    notifications: true\n' +
+        'meta:\n' +
+        '  timestamp: "2025-01-27T16:00:00Z"\n' +
+        '  version: "1.0"',
+      '---\n' +
+        'title: "My Document"\n' +
+        '---\n' +
+        '\n' +
+        "import { Tabs, TabItem } from '@docs/ui';\n" +
+        '\n' +
+        '# Code Samples\n' +
+        '\n' +
+        '<Tabs>\n' +
+        '  <TabItem label="JavaScript">\n' +
+        '    {/* JavaScript sample */}\n' +
+        "    console.log('Hello, World!');\n" +
+        '  </TabItem>\n' +
+        '  <TabItem label="Python">\n' +
+        '    {/* Python sample */}\n' +
+        "    print('Hello, World!')\n" +
+        '  </TabItem>\n' +
+        '</Tabs>'
+    ]
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
