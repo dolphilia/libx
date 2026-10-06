@@ -1,0 +1,93 @@
+{
+  "id": "01-overview/03-history.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T07:02:54.972714+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/NEWS",
+    "sha256": "8fe6e56a9c40846fdf47caa045bef1e0db7c7f020164fd127de0fa1222c2f7f8",
+    "coverage": [
+      [
+        1,
+        366
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/01-overview/03-history.md",
+    "sha256": "b12511b14fbedd0a07551c75f3eeafdf32a471124497ce1fd0d44fab75fab361",
+    "coverage": [
+      [
+        1,
+        375
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-823/translation/03-history.md",
+    "sha256": "c7ce8b2000af04eccfba1e349a4053682f3d7104230d56ca68492f24c61cadc9",
+    "coverage": [
+      [
+        1,
+        11
+      ]
+    ]
+  },
+  "reviewedRawDraft": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-822/draft/NEWS_JA.txt",
+    "sha256": "d41f7de893ebeecd7075c45e81c116c160f188e83e09ebdf68cbc9c10b2cf478",
+    "coverage": [
+      [
+        1,
+        188
+      ],
+      [
+        189,
+        366
+      ]
+    ]
+  },
+  "reviewedDecodedTranslation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-823/translation/NEWS_JA.txt",
+    "sha256": "9ef0ed612ad2e969f64f659e00186e369b22d674c5cdc0c35df8da4a05109e68",
+    "coverage": [
+      [
+        1,
+        188
+      ],
+      [
+        189,
+        366
+      ]
+    ],
+    "method": "full raw draft read then one saved semantic correction re-read, all other lines unchanged; final encoded pre must decode identically",
+    "correctionEvidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-823/REVIEW_CORRECTION.json",
+      "sha256": "754846ceed35a20b9685fbc0dbfcb4d95165615c1a6023570d818439d991c144"
+    }
+  },
+  "findings": [
+    {
+      "scope": "source→EN全量",
+      "result": "原文366行と定本全375行を非省略出力で別工程全読。原文の全41版・全エントリー・順序・空行を保全。outer pre/文字escapeと本文外provenance以外の無断修正・要約なし。"
+    },
+    {
+      "scope": "v1.10.0–v1.8.0全188行",
+      "result": "全性能X/~/%と対象platform/data/level条件、stdin以外の暗黙stdout廃止、stable/experimental区別、frame状態error後reset再利用、各API/compile macro/版最低値を照合。v1.9.2範囲外writeの十分大入力かつ推奨bound未満出力のAND条件、partial例外read、attached辞書HC破損、1.9.1の入力外read導入版、1.8.3のrare/level9/>64KB、低address/NULL/extDict条件・root/dev/null否定を保持。全報告者の識別子と非@名前・特記事項を確認。"
+    },
+    {
+      "scope": "r131–r105全178行",
+      "result": "旧API/prototype継続、sparse/console/append/framecrc、r124以降の率低下、defaultinstalldir、cross-version tests、GCC/HC/namelessunion修正、strongtypes、platform/version/issue/bit条件を全保持。r119の限定構成・r118のlarge custom formatのaddress overflow、native binaries only、staticinline廃止/CCとMAKE、IO分離/legacyLinux、>4GB/64bit/BDの条件、DESTDIR/Windowsのみexeを照合。"
+    },
+    {
+      "scope": "訳語修正と日本語単独全読",
+      "result": "822日本語生本文366行を1–188/189–366で全文再読し、DESTDIR staged installsの訳を段階的からステージング先へのインストールへ1箇所修正。345行を再読。残り全行不変、全HTML復元一致証明で11行のHTML文字参照版へ対応。"
+    },
+    {
+      "scope": "通知/編集注記全量",
+      "result": "frontmatter1–10全量で非公式訳/固定commit/sourceSHA/原文と通知archive/ライセンス運用判断を照合。各版当時の性能/安全修正記録で独自測定でないことを明示。原LZ4F_frameBound/LZ4_decompressSafe_partial/Skibinki/POSX/stduni.hと1.9.0 reset記述を無断修正しない。GPL対応Libx sourcekit・ブラウザー表示・統合・全finalgatesは未完。"
+    }
+  ]
+}

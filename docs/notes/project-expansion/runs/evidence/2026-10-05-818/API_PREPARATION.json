@@ -1,0 +1,685 @@
+{
+  "status": "prepared-not-translated-not-reviewed",
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4frame_manual.html",
+    "sha256": "16d83fc4920d1df5e26c3de9e1c6c24fe0233033fb1c8c52c0ef689cb20a11d3"
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/04-api/02-frame-api.md",
+    "sha256": "c1cd1bf63b0ba0f6bdaf7f296363ddd2c15df4687194a4fc7ecaa4712a63c1f2"
+  },
+  "headerSource": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/lz4frame.h",
+    "sha256": "b845db4b7ee1bfa64b8f641a94f62e7f636a8b5d673cc61766413782283aaad1"
+  },
+  "headerBindings": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-808/COMMENT_BINDINGS.json",
+    "sha256": "15dfa1189dda1a2da342164a9d67483dc26792b90cebb4f6a51e1d6b377d399f"
+  },
+  "initialSourceReading": [
+    [
+      1,
+      508
+    ]
+  ],
+  "contentReview": [],
+  "slotCount": 25,
+  "slots": [
+    {
+      "index": 0,
+      "kind": "chapter-prose",
+      "canonicalStart": 3072,
+      "canonicalEnd": 3253,
+      "canonicalLines": [
+        35,
+        39
+      ],
+      "text": "\n lz4frame.h implements LZ4 frame specification: see doc/lz4_Frame_format.md .\n LZ4 Frames are compatible with `lz4` CLI,\n and designed to be interoperable with any system.\n",
+      "rawSha256": "3a6b9decbb09c5b426e400b739515d18661f557a2f9ea9465dff07bf0f852454",
+      "exactNormalizedSubstringHeaderIndices": [
+        3
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 3,
+          "ratio": 0.9628
+        },
+        {
+          "index": 50,
+          "ratio": 0.2944
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 1,
+      "kind": "api-description",
+      "canonicalStart": 5693,
+      "canonicalEnd": 5919,
+      "canonicalLines": [
+        101,
+        105
+      ],
+      "text": "  makes it possible to set or read frame parameters.\n  Structure must be first init to 0, using memset() or LZ4F_INIT_FRAMEINFO,\n  setting all parameters to default.\n  It's then possible to update selectively some parameters \n",
+      "rawSha256": "ac803e28162a4ac6c4f8641180167716257e69ff7936164c7ebd7ccb8f3084b6",
+      "exactNormalizedSubstringHeaderIndices": [
+        11
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 11,
+          "ratio": 0.9579
+        },
+        {
+          "index": 3,
+          "ratio": 0.2569
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 2,
+      "kind": "api-description",
+      "canonicalStart": 6546,
+      "canonicalEnd": 6793,
+      "canonicalLines": [
+        114,
+        118
+      ],
+      "text": "  makes it possible to supply advanced compression instructions to streaming interface.\n  Structure must be first init to 0, using memset() or LZ4F_INIT_PREFERENCES,\n  setting all parameters to default.\n  All reserved fields must be set to zero. \n",
+      "rawSha256": "1ccd78e78c7ae6fcaf1b3fb4b1c7e8eb0a2d869608efcc6e2dbc08c03207ca06",
+      "exactNormalizedSubstringHeaderIndices": [
+        12
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 12,
+          "ratio": 0.396
+        },
+        {
+          "index": 9,
+          "ratio": 0.3704
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 3,
+      "kind": "api-description",
+      "canonicalStart": 7120,
+      "canonicalEnd": 8112,
+      "canonicalLines": [
+        126,
+        142
+      ],
+      "text": "  Compress srcBuffer content into an LZ4-compressed frame.\n  It's a one shot operation, all input content is consumed, and all output is generated.\n\n  Note : it's a stateless operation (no LZ4F_cctx state needed).\n  In order to reduce load on the allocator, LZ4F_compressFrame(), by default,\n  uses the stack to allocate space for the compression state and some table.\n  If this usage of the stack is too much for your application,\n  consider compiling `lz4frame.c` with compile-time macro LZ4F_HEAPMODE set to 1 instead.\n  All state allocations will use the Heap.\n  It also means each invocation of LZ4F_compressFrame() will trigger several internal alloc/free invocations.\n\n @dstCapacity MUST be >= LZ4F_compressFrameBound(srcSize, preferencesPtr).\n @preferencesPtr is optional : one can provide NULL, in which case all preferences are set to default.\n @return : number of bytes written into dstBuffer.\n           or an error code if it fails (can be tested using LZ4F_isError())\n \n",
+      "rawSha256": "8cca95cde753ab7eca461d2f5753d9047a0d1390d76337938936500c88b7ac5d",
+      "exactNormalizedSubstringHeaderIndices": [
+        14
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 14,
+          "ratio": 0.988
+        },
+        {
+          "index": 9,
+          "ratio": 0.1734
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 4,
+      "kind": "api-description",
+      "canonicalStart": 8233,
+      "canonicalEnd": 8638,
+      "canonicalLines": [
+        145,
+        150
+      ],
+      "text": "  Returns the maximum possible compressed size with LZ4F_compressFrame() given srcSize and preferences.\n `preferencesPtr` is optional. It can be replaced by NULL, in which case, the function will assume default preferences.\n  Note : this result is only usable with LZ4F_compressFrame().\n         It may also be relevant to LZ4F_compressUpdate() _only if_ no flush() operation is ever performed.\n \n",
+      "rawSha256": "65d5507512378e9d68be64e8c05e0b91923101674f15e7e6a7dabc1c63effeb6",
+      "exactNormalizedSubstringHeaderIndices": [
+        15
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 15,
+          "ratio": 0.9645
+        },
+        {
+          "index": 50,
+          "ratio": 0.2902
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 5,
+      "kind": "api-description",
+      "canonicalStart": 8729,
+      "canonicalEnd": 8790,
+      "canonicalLines": [
+        153,
+        155
+      ],
+      "text": " @return maximum allowed compression level (currently: 12)\n \n",
+      "rawSha256": "05f627d532aa14ac4932b620f33d15406b89d2d653b09f143eb29cb11b6199a6",
+      "exactNormalizedSubstringHeaderIndices": [
+        16
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 16,
+          "ratio": 0.7917
+        },
+        {
+          "index": 49,
+          "ratio": 0.4318
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 6,
+      "kind": "api-description",
+      "canonicalStart": 9384,
+      "canonicalEnd": 10361,
+      "canonicalLines": [
+        170,
+        183
+      ],
+      "text": "  The first thing to do is to create a compressionContext object,\n  which will keep track of operation state during streaming compression.\n  This is achieved using LZ4F_createCompressionContext(), which takes as argument a version,\n  and a pointer to LZ4F_cctx*, to write the resulting pointer into.\n  @version provided MUST be LZ4F_VERSION. It is intended to track potential version mismatch, notably when using DLL.\n  The function provides a pointer to a fully allocated LZ4F_cctx object.\n  @cctxPtr MUST be != NULL.\n  If @return != zero, context creation failed.\n  A created compression context can be employed multiple times for consecutive streaming operations.\n  Once all streaming compression jobs are completed,\n  the state object can be released using LZ4F_freeCompressionContext().\n  Note1 : LZ4F_freeCompressionContext() is always successful. Its return value can be ignored.\n  Note2 : LZ4F_freeCompressionContext() works fine with NULL input pointers (do nothing).\n",
+      "rawSha256": "dddafc3a9fc033c8791dfef81580b40bdb9120af3348d0eb7697d58cc2acc003",
+      "exactNormalizedSubstringHeaderIndices": [
+        19
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 19,
+          "ratio": 0.9824
+        },
+        {
+          "index": 31,
+          "ratio": 0.2482
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 7,
+      "kind": "api-description",
+      "canonicalStart": 10656,
+      "canonicalEnd": 10983,
+      "canonicalLines": [
+        191,
+        197
+      ],
+      "text": "  will write the frame header into dstBuffer.\n  dstCapacity must be >= LZ4F_HEADER_SIZE_MAX bytes.\n `prefsPtr` is optional : NULL can be provided to set all preferences to default.\n @return : number of bytes written into dstBuffer for the header\n           or an error code (which can be tested using LZ4F_isError())\n \n",
+      "rawSha256": "3d9fbb3e6875925051c9ba38433bd73ca52528764fb0eb5cdd5b122911af9331",
+      "exactNormalizedSubstringHeaderIndices": [
+        24
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 24,
+          "ratio": 0.963
+        },
+        {
+          "index": 45,
+          "ratio": 0.5606
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 8,
+      "kind": "api-description",
+      "canonicalStart": 11093,
+      "canonicalEnd": 12216,
+      "canonicalLines": [
+        200,
+        214
+      ],
+      "text": "  Provides minimum dstCapacity required to guarantee success of\n  LZ4F_compressUpdate(), given a srcSize and preferences, for a worst case scenario.\n  When srcSize==0, LZ4F_compressBound() provides an upper bound for LZ4F_flush() and LZ4F_compressEnd() instead.\n  Note that the result is only valid for a single invocation of LZ4F_compressUpdate().\n  When invoking LZ4F_compressUpdate() multiple times,\n  if the output buffer is gradually filled up instead of emptied and re-used from its start,\n  one must check if there is enough remaining capacity before each invocation, using LZ4F_compressBound().\n @return is always the same for a srcSize and prefsPtr.\n  prefsPtr is optional : when NULL is provided, preferences will be set to cover worst case scenario.\n  tech details :\n @return if automatic flushing is not enabled, includes the possibility that internal buffer might already be filled by up to (blockSize-1) bytes.\n  It also includes frame footer (ending + checksum), since it might be generated by LZ4F_compressEnd().\n @return doesn't include frame header, as it was already generated by LZ4F_compressBegin().\n \n",
+      "rawSha256": "1d9db7f538ecc670f1fb821f5dabb559e82b2b2dc2396a1867b76c031da94294",
+      "exactNormalizedSubstringHeaderIndices": [
+        25
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 9,
+          "ratio": 0.1718
+        },
+        {
+          "index": 25,
+          "ratio": 0.1615
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 9,
+      "kind": "api-description",
+      "canonicalStart": 12512,
+      "canonicalEnd": 13367,
+      "canonicalLines": [
+        220,
+        231
+      ],
+      "text": "  LZ4F_compressUpdate() can be called repetitively to compress as much data as necessary.\n  Important rule: dstCapacity MUST be large enough to ensure operation success even in worst case situations.\n  This value is provided by LZ4F_compressBound().\n  If this condition is not respected, LZ4F_compress() will fail (result is an errorCode).\n  After an error, the state is left in a UB state, and must be re-initialized or freed.\n  If previously an uncompressed block was written, buffered data is flushed\n  before appending compressed data is continued.\n `cOptPtr` is optional : NULL can be provided, in which case all options are set to default.\n @return : number of bytes written into `dstBuffer` (it can be zero, meaning input data was just buffered).\n           or an error code if it fails (which can be tested using LZ4F_isError())\n \n",
+      "rawSha256": "e8a5f4626ac8e8df460525dff19fbec4c78f13f31538540959de81e59bec812a",
+      "exactNormalizedSubstringHeaderIndices": [
+        26
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 51,
+          "ratio": 0.3822
+        },
+        {
+          "index": 44,
+          "ratio": 0.2402
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 10,
+      "kind": "api-description",
+      "canonicalStart": 13564,
+      "canonicalEnd": 14247,
+      "canonicalLines": [
+        236,
+        244
+      ],
+      "text": "  When data must be generated and sent immediately, without waiting for a block to be completely filled,\n  it's possible to call LZ4_flush(). It will immediately compress any data buffered within cctx.\n `dstCapacity` must be large enough to ensure the operation will be successful.\n `cOptPtr` is optional : it's possible to provide NULL, all options will be set to default.\n @return : nb of bytes written into dstBuffer (can be zero, when there is no data stored within cctx)\n           or an error code if it fails (which can be tested using LZ4F_isError())\n  Note : LZ4F_flush() is guaranteed to be successful when dstCapacity >= LZ4F_compressBound(0, prefsPtr).\n \n",
+      "rawSha256": "63c1bf08b853017da05f1f3e1cc61c54bebab4b1a1a48d18e080a4cf026a6ada",
+      "exactNormalizedSubstringHeaderIndices": [
+        27
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 27,
+          "ratio": 0.9885
+        },
+        {
+          "index": 28,
+          "ratio": 0.4427
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 11,
+      "kind": "api-description",
+      "canonicalStart": 14462,
+      "canonicalEnd": 15157,
+      "canonicalLines": [
+        249,
+        258
+      ],
+      "text": "  To properly finish an LZ4 frame, invoke LZ4F_compressEnd().\n  It will flush whatever data remained within `cctx` (like LZ4_flush())\n  and properly finalize the frame, with an endMark and a checksum.\n `cOptPtr` is optional : NULL can be provided, in which case all options will be set to default.\n @return : nb of bytes written into dstBuffer, necessarily >= 4 (endMark),\n           or an error code if it fails (which can be tested using LZ4F_isError())\n  Note : LZ4F_compressEnd() is guaranteed to be successful when dstCapacity >= LZ4F_compressBound(0, prefsPtr).\n  A successful call to LZ4F_compressEnd() makes `cctx` available again for another compression task.\n \n",
+      "rawSha256": "4a01e9d8963420e634147e8170f5b7aaa29b2bdb1ce69c11d0f52fd07a007297",
+      "exactNormalizedSubstringHeaderIndices": [
+        28
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 28,
+          "ratio": 0.923
+        },
+        {
+          "index": 27,
+          "ratio": 0.4739
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 12,
+      "kind": "api-description",
+      "canonicalStart": 16163,
+      "canonicalEnd": 16751,
+      "canonicalLines": [
+        275,
+        284
+      ],
+      "text": "  Create an LZ4F_dctx object, to track all decompression operations.\n  @version provided MUST be LZ4F_VERSION.\n  @dctxPtr MUST be valid.\n  The function fills @dctxPtr with the value of a pointer to an allocated and initialized LZ4F_dctx object.\n  The @return is an errorCode, which can be tested using LZ4F_isError().\n  dctx memory can be released using LZ4F_freeDecompressionContext();\n  Result of LZ4F_freeDecompressionContext() indicates current state of decompressionContext when being released.\n  That is, it should be == 0 if decompression has been completed fully and correctly.\n \n",
+      "rawSha256": "5c3d890fad1bb180cc5daffd42f8ff9c7f3af245f467f122450a2eede4dafa25",
+      "exactNormalizedSubstringHeaderIndices": [
+        31
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 31,
+          "ratio": 0.9693
+        },
+        {
+          "index": 50,
+          "ratio": 0.2208
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 13,
+      "kind": "api-description",
+      "canonicalStart": 16934,
+      "canonicalEnd": 17358,
+      "canonicalLines": [
+        290,
+        298
+      ],
+      "text": "  Provide the header size of a frame starting at `src`.\n `srcSize` must be >= LZ4F_MIN_SIZE_TO_KNOW_HEADER_LENGTH,\n  which is enough to decode the header length.\n @return : size of frame header\n           or an error code, which can be tested using LZ4F_isError()\n  note : Frame header size is variable, but is guaranteed to be\n         >= LZ4F_HEADER_SIZE_MIN bytes, and <= LZ4F_HEADER_SIZE_MAX bytes.\n \n",
+      "rawSha256": "bcf29e042db2357131ed12f130fe599515a7a828b4a743d2e4152466423c9b21",
+      "exactNormalizedSubstringHeaderIndices": [
+        33
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 33,
+          "ratio": 0.9639
+        },
+        {
+          "index": 50,
+          "ratio": 0.3216
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 14,
+      "kind": "api-description",
+      "canonicalStart": 17537,
+      "canonicalEnd": 19703,
+      "canonicalLines": [
+        304,
+        346
+      ],
+      "text": "  This function extracts frame parameters (max blockSize, dictID, etc.).\n  Its usage is optional: user can also invoke LZ4F_decompress() directly.\n\n  Extracted information will fill an existing LZ4F_frameInfo_t structure.\n  This can be useful for allocation and dictionary identification purposes.\n\n  LZ4F_getFrameInfo() can work in the following situations :\n\n  1) At the beginning of a new frame, before any invocation of LZ4F_decompress().\n     It will decode header from `srcBuffer`,\n     consuming the header and starting the decoding process.\n\n     Input size must be large enough to contain the full frame header.\n     Frame header size can be known beforehand by LZ4F_headerSize().\n     Frame header size is variable, but is guaranteed to be >= LZ4F_HEADER_SIZE_MIN bytes,\n     and not more than <= LZ4F_HEADER_SIZE_MAX bytes.\n     Hence, blindly providing LZ4F_HEADER_SIZE_MAX bytes or more will always work.\n     It's allowed to provide more input data than the header size,\n     LZ4F_getFrameInfo() will only consume the header.\n\n     If input size is not large enough,\n     aka if it's smaller than header size,\n     function will fail and return an error code.\n\n  2) After decoding has been started,\n     it's possible to invoke LZ4F_getFrameInfo() anytime\n     to extract already decoded frame parameters stored within dctx.\n\n     Note that, if decoding has barely started,\n     and not yet read enough information to decode the header,\n     LZ4F_getFrameInfo() will fail.\n\n  The number of bytes consumed from srcBuffer will be updated in *srcSizePtr (necessarily <= original value).\n  LZ4F_getFrameInfo() only consumes bytes when decoding has not yet started,\n  and when decoding the header has been successful.\n  Decompression must then resume from (srcBuffer + *srcSizePtr).\n\n @return : a hint about how many srcSize bytes LZ4F_decompress() expects for next call,\n           or an error code which can be tested using LZ4F_isError().\n  note 1 : in case of error, dctx is not modified. Decoding operation can resume from beginning safely.\n  note 2 : frame parameters are *copied into* an already allocated LZ4F_frameInfo_t structure.\n \n",
+      "rawSha256": "5e12fa78675012f4933e1313b9c24e43d9fe957c2e9bd44f998f518e3e14ea7e",
+      "exactNormalizedSubstringHeaderIndices": [
+        34
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 34,
+          "ratio": 0.9946
+        },
+        {
+          "index": 3,
+          "ratio": 0.0919
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 15,
+      "kind": "api-description",
+      "canonicalStart": 19932,
+      "canonicalEnd": 22052,
+      "canonicalLines": [
+        353,
+        388
+      ],
+      "text": "  Call this function repetitively to regenerate data compressed in `srcBuffer`.\n\n  The function requires a valid dctx state.\n  It will read up to *srcSizePtr bytes from srcBuffer,\n  and decompress data into dstBuffer, of capacity *dstSizePtr.\n\n  The nb of bytes consumed from srcBuffer will be written into *srcSizePtr (necessarily <= original value).\n  The nb of bytes decompressed into dstBuffer will be written into *dstSizePtr (necessarily <= original value).\n\n  The function does not necessarily read all input bytes, so always check value in *srcSizePtr.\n  Unconsumed source data must be presented again in subsequent invocations.\n\n `dstBuffer` can freely change between each consecutive function invocation.\n `dstBuffer` content will be overwritten.\n\n  Note: if `LZ4F_getFrameInfo()` is called before `LZ4F_decompress()`, srcBuffer must be updated to reflect\n  the number of bytes consumed after reading the frame header. Failure to update srcBuffer before calling\n  `LZ4F_decompress()` will cause decompression failure or, even worse, successful but incorrect decompression.\n  See the `LZ4F_getFrameInfo()` docs for details.\n\n @return : an hint of how many `srcSize` bytes LZ4F_decompress() expects for next call.\n  Schematically, it's the size of the current (or remaining) compressed block + header of next block.\n  Respecting the hint provides some small speed benefit, because it skips intermediate buffers.\n  This is just a hint though, it's always possible to provide any srcSize.\n\n  When a frame is fully decoded, @return will be 0 (no more data expected).\n  When provided with more bytes than necessary to decode a frame,\n  LZ4F_decompress() will stop reading exactly at end of current frame, and @return 0.\n\n  If decompression failed, @return is an error code, which can be tested using LZ4F_isError().\n  After a decompression error, the `dctx` context is not resumable.\n  Use LZ4F_resetDecompressionContext() to return to clean state.\n\n  After a frame is fully decoded, dctx can be used again to decompress another frame.\n \n",
+      "rawSha256": "e3bc2b52df26089b809ae76c552d9ca45aba9d9c7677a1d5e7ec8fe26929ef7d",
+      "exactNormalizedSubstringHeaderIndices": [
+        35
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 35,
+          "ratio": 0.995
+        },
+        {
+          "index": 50,
+          "ratio": 0.1168
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 16,
+      "kind": "api-description",
+      "canonicalStart": 22170,
+      "canonicalEnd": 22431,
+      "canonicalLines": [
+        391,
+        395
+      ],
+      "text": "  In case of an error, the context is left in \"undefined\" state.\n  In which case, it's necessary to reset it, before re-using it.\n  This method can also be used to abruptly stop any unfinished decompression,\n  and start a new one using same context resources. \n",
+      "rawSha256": "a37d87f49965fe0f81e88fa489e117026424479617df55d1aa0ef8d122acb8ab",
+      "exactNormalizedSubstringHeaderIndices": [
+        36
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 36,
+          "ratio": 0.9078
+        },
+        {
+          "index": 9,
+          "ratio": 0.3453
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 17,
+      "kind": "api-description",
+      "canonicalStart": 22790,
+      "canonicalEnd": 23620,
+      "canonicalLines": [
+        405,
+        417
+      ],
+      "text": "  Inits dictionary compression streaming, and writes the frame header into dstBuffer.\n @dstCapacity must be >= LZ4F_HEADER_SIZE_MAX bytes.\n @prefsPtr is optional : one may provide NULL as argument,\n  however, it's the only way to provide dictID in the frame header.\n @dictBuffer must outlive the compression session.\n @return : number of bytes written into dstBuffer for the header,\n           or an error code (which can be tested using LZ4F_isError())\n  NOTE: The LZ4Frame spec allows each independent block to be compressed with the dictionary,\n        but this entry supports a more limited scenario, where only the first block uses the dictionary.\n        This is still useful for small data, which only need one block anyway.\n        For larger inputs, one may be more interested in LZ4F_compressFrame_usingCDict() below.\n \n",
+      "rawSha256": "6be03b22c346b293f2e83d4c09f9f3dce088e27a82a35fef70462d26d9f2b5fc",
+      "exactNormalizedSubstringHeaderIndices": [
+        39
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 39,
+          "ratio": 0.9678
+        },
+        {
+          "index": 45,
+          "ratio": 0.4847
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 18,
+      "kind": "api-description",
+      "canonicalStart": 23960,
+      "canonicalEnd": 24147,
+      "canonicalLines": [
+        425,
+        428
+      ],
+      "text": "  Same as LZ4F_decompress(), using a predefined dictionary.\n  Dictionary is used \"in place\", without any preprocessing.\n  It must remain accessible throughout the entire frame decoding. \n",
+      "rawSha256": "ca4bf72c1c581640b15fddb422324b729c3b6be1623a12e805438859131822a6",
+      "exactNormalizedSubstringHeaderIndices": [
+        40
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 40,
+          "ratio": 0.8403
+        },
+        {
+          "index": 16,
+          "ratio": 0.3083
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 19,
+      "kind": "api-description",
+      "canonicalStart": 24396,
+      "canonicalEnd": 24842,
+      "canonicalLines": [
+        435,
+        439
+      ],
+      "text": "  When compressing multiple messages / blocks using the same dictionary, it's recommended to initialize it just once.\n  LZ4_createCDict() will create a digested dictionary, ready to start future compression operations without startup delay.\n  LZ4_CDict can be created once and shared by multiple threads concurrently, since its usage is read-only.\n @dictBuffer can be released after LZ4_CDict creation, since its content is copied within CDict. \n",
+      "rawSha256": "179cfb89bfd52f79d6114cae935ea4daec1e61e74ca68f936c0ceee753ee6c6c",
+      "exactNormalizedSubstringHeaderIndices": [
+        43
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 43,
+          "ratio": 0.9573
+        },
+        {
+          "index": 9,
+          "ratio": 0.3038
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 20,
+      "kind": "api-description",
+      "canonicalStart": 25161,
+      "canonicalEnd": 25951,
+      "canonicalLines": [
+        447,
+        458
+      ],
+      "text": "  Compress an entire srcBuffer into a valid LZ4 frame using a digested Dictionary.\n @cctx must point to a context created by LZ4F_createCompressionContext().\n  If @cdict==NULL, compress without a dictionary.\n @dstBuffer MUST be >= LZ4F_compressFrameBound(srcSize, preferencesPtr).\n  If this condition is not respected, function will fail (@return an errorCode).\n  The LZ4F_preferences_t structure is optional : one may provide NULL as argument,\n  but it's not recommended, as it's the only way to provide @dictID in the frame header.\n @return : number of bytes written into dstBuffer.\n           or an error code if it fails (can be tested using LZ4F_isError())\n  Note: for larger inputs generating multiple independent blocks,\n        this entry point uses the dictionary for each block. \n",
+      "rawSha256": "026ee152d52e9950a1771f0aac20d02f2930be80d65ad29c002af3e82af386e9",
+      "exactNormalizedSubstringHeaderIndices": [
+        44
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 44,
+          "ratio": 0.9667
+        },
+        {
+          "index": 50,
+          "ratio": 0.2156
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 21,
+      "kind": "api-description",
+      "canonicalStart": 26213,
+      "canonicalEnd": 26674,
+      "canonicalLines": [
+        465,
+        472
+      ],
+      "text": "  Inits streaming dictionary compression, and writes the frame header into dstBuffer.\n @dstCapacity must be >= LZ4F_HEADER_SIZE_MAX bytes.\n @prefsPtr is optional : one may provide NULL as argument,\n  note however that it's the only way to insert a @dictID in the frame header.\n @cdict must outlive the compression session.\n @return : number of bytes written into dstBuffer for the header,\n           or an error code, which can be tested using LZ4F_isError(). \n",
+      "rawSha256": "9706e0839b1953485504d880407b03ba36095445186029472ad5530c74877b53",
+      "exactNormalizedSubstringHeaderIndices": [
+        45
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 45,
+          "ratio": 0.9432
+        },
+        {
+          "index": 39,
+          "ratio": 0.6122
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 22,
+      "kind": "api-description",
+      "canonicalStart": 27025,
+      "canonicalEnd": 27217,
+      "canonicalLines": [
+        481,
+        484
+      ],
+      "text": " @return, in scalar format (size_t),\n          the maximum block size associated with @blockSizeID,\n          or an error code (can be tested using LZ4F_isError()) if @blockSizeID is invalid.\n",
+      "rawSha256": "3fd1ac1ecd3dae4aefed977dd1b06907ae6f4c8c01e1698afb71c26f86dd0992",
+      "exactNormalizedSubstringHeaderIndices": [
+        50
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 50,
+          "ratio": 0.9392
+        },
+        {
+          "index": 3,
+          "ratio": 0.3134
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 23,
+      "kind": "api-description",
+      "canonicalStart": 27491,
+      "canonicalEnd": 28413,
+      "canonicalLines": [
+        491,
+        503
+      ],
+      "text": "  LZ4F_uncompressedUpdate() can be called repetitively to add data stored as uncompressed blocks.\n  Important rule: dstCapacity MUST be large enough to store the entire source buffer as\n  no compression is done for this operation\n  If this condition is not respected, LZ4F_uncompressedUpdate() will fail (result is an errorCode).\n  After an error, the state is left in a UB state, and must be re-initialized or freed.\n  If previously a compressed block was written, buffered data is flushed first,\n  before appending uncompressed data is continued.\n  This operation is only supported when LZ4F_blockIndependent is used.\n `cOptPtr` is optional : NULL can be provided, in which case all options are set to default.\n @return : number of bytes written into `dstBuffer` (it can be zero, meaning input data was just buffered).\n           or an error code if it fails (which can be tested using LZ4F_isError())\n \n",
+      "rawSha256": "82b15f072ad4a98f8085c31a2a21c6453b5178a421b1e126514713a0621bdbef",
+      "exactNormalizedSubstringHeaderIndices": [
+        51
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 44,
+          "ratio": 0.1929
+        },
+        {
+          "index": 9,
+          "ratio": 0.1908
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    },
+    {
+      "index": 24,
+      "kind": "api-description",
+      "canonicalStart": 29163,
+      "canonicalEnd": 29458,
+      "canonicalLines": [
+        522,
+        526
+      ],
+      "text": "  These prototypes make it possible to pass custom allocation/free functions.\n  LZ4F_customMem is provided at state creation time, using LZ4F_create*_advanced() listed below.\n  All allocation/free operations will be completed using these custom variants instead of regular <stdlib.h> ones.\n \n",
+      "rawSha256": "ec1fc9eea9f7cde2d8b03c8cf8cdb9bc39abb8ee2c7b525c28d6a0a30cc84508",
+      "exactNormalizedSubstringHeaderIndices": [
+        53
+      ],
+      "nearestHeaderCandidates": [
+        {
+          "index": 53,
+          "ratio": 0.9418
+        },
+        {
+          "index": 50,
+          "ratio": 0.2442
+        }
+      ],
+      "reuseStatus": "not approved; compare labels/omissions/conditions before translation reuse"
+    }
+  ],
+  "pending": [
+    "全文日本語翻訳（header同文訳は範囲/見出し/API名と条件照合後に再利用可能）",
+    "h1/h2/目次14リンクラベルと全API説明を翻訳、b宣言/inline comment/ASCII図を原文保護",
+    "原文のLZ4_compress/LZ4_flush/LZ4_createCDict/LZ4_CDict/小文字customMemと宣言の相違を保護しfooter注記。辞書寿命・getFrameInfo消費量・圧縮容量・decomp error再開条件を照合",
+    "原文/定本/JA別工程全文review、全構造/数値/URL/識別子/DOM/隔離build"
+  ]
+}

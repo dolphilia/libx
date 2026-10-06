@@ -1,0 +1,366 @@
+v1.10.0
+cli  : マルチスレッド圧縮に対応: 割り当てたスレッド数のX倍に速度が向上
+cli  : 展開とi/oを重ね合わせ、速度が~+60%向上
+cli  : 環境変数LZ4_CLEVELとLZ4_NBWORKERSに対応
+cli  : CLIのライセンスをGPL-2.0-or-laterと、より明確に表示
+cli  : 修正: ディレクトリの圧縮を拒否
+cli  : 複数ファイルでの辞書圧縮ベンチマークを修正
+cli  : 変更: 暗黙の`stdout`を廃止（入力が`stdin`の場合を除く）
+lib  : 新しいレベル2を追加し、中間的な性能（速度と圧縮）を提供
+lib  : 小さなデータでのlz4frame圧縮速度を改善（1KBで最大+160%）
+lib  : HC圧縮速度がわずかに（+5%）向上（レベル3-9）、@JunHe77による
+lib  : 辞書圧縮への対応が安定版の状態に
+lib  : 処理エラー後でもlz4frameの状態を安全にリセットして再利用できる（@QrczakMKが説明）
+lib  : `lz4file` APIを改善、@vsolontsov-volantと@t-matによる
+lib  : 新しい実験的シンボル`LZ4_compress_destSize_extState()`
+build: cmakeの最低バージョンを3.5へ引き上げ
+build: cmakeを改善、@foxeng、@Ohjurot、@LocalSpook、@teo-tsirpanis、@ur4t、@t-matによる
+build: mesonスクリプトを`build/`ディレクトリに配置、@eli-schwartzによる
+build: mesonを改善、@tristan957による
+build: スクリプトで`cmake`からVisual Studioのソリューションを生成
+port : loongArch、risc-v、m68k、mips、sparcアーキテクチャに対応
+port : Visual Studioとの互換性を改善、@t-matによる
+port : freestandingへの対応を改善、@t-matによる
+
+v1.9.4
+perf : aarch64プラットフォームでの展開速度が向上（~+20%）
+perf : CLIの-BD4設定での展開速度が向上（~+70%）
+api  : 新しい関数`LZ4_decompress_safe_partial_usingDict()`、@yawqiによる
+api  : lz4frame: 状態生成時に独自のアロケーターを渡せる
+api  : チェックサムの検証を省略して展開速度を向上できる
+api  : ファイルi/o API用の新しい実験的ユニット`lz4file`、@anjiahao1による
+api  : 新しい実験的関数`LZ4F_uncompressedUpdate()`、@alexmohrによる
+cli  : `--list`が`stdin`入力で動作、@Low-powerによる
+cli  : `--no-crc`は、チェックサムを生成せず（圧縮）、検査もしない（展開）
+cli  : 修正: `--test`と`--list`が不正な入力の解析時にエラーコードを返す
+cli  : 修正: `--test -m`で展開されたファイルの生成物を作らない
+cli  : 修正: `stdin`から渡されたskippable frameに対応、@davidmankinが報告
+build: 修正: Makefileが環境変数で渡されたCFLAGSの指定を尊重
+build: `LZ4_FREESTANDING`、freestanding環境向けの新しいビルドマクロ、@t-matによる
+build: `make`と`make test`が`-j`による並列実行に対応
+build: AS/400との互換性、@jonrumseyによる
+build: Solaris 10との互換性、@pekdonによる
+build: MSVC 2022に対応、@t-matによる
+build: mesonスクリプトを改善、@eli-schwartzによる
+doc  : LZ4ブロック形式を更新し、「implementation notes」節を追加
+
+v1.9.3
+perf: カーネル空間での速度が大きく向上、@terrellnによる
+perf: Visual Studioでの速度が向上、@wolfpldと@remittorに感謝
+perf: 辞書圧縮の速度が向上、@felixhandteによる
+perf: LZ4_compress_HC_destSize()の圧縮率を修正、@hsiangkaoが検出
+perf: 高圧縮モードでのスタック使用量を削減、@Yanpasによる
+api : LZ4_decompress_safe_partial()が未知の圧縮サイズに対応、@jfkthameが要望
+api : 自動フラッシュ使用時のLZ4F_compressBound()を改善、Christopher Harvieによる
+api : 未定義動作（UBs）を起こさずに、NULLからの圧縮・展開とNULLへの圧縮・展開が可能
+api : 32-bitシステムでのアライメント検査（状態初期化）を修正
+api : 例外的な場合のLZ4_saveDictHC()を修正、@IgorKorkinが検出
+cli : `-l`の旧形式が`-m`の複数ファイルに対応、Filipe Calasansによる
+cli : ベンチマークモードが辞書に対応、@rkoradiによる
+cli : 大きな引数を指定した--fastを修正、@picoHzが検出
+build: LZ4_USER_MEMORY_FUNCTIONSで利用者定義のメモリ関数へリンク、Yuriy Levchenkoが提案
+build: contrib/cmake_unofficial/をbuild/cmake/へ移動
+build: visual/*をbuild/へ移動
+build: mesonスクリプトを更新、@nehebによる
+build: tinyccに対応、Anton Kochkovによる
+install: Haikuに対応、Jerome Duvalによる
+doc : LZ4フレーム形式を更新し、EndMarkを明確化
+
+v1.9.2
+fix : decompress_partial()使用時の例外的な状況での範囲外読み取りを修正、@terrellnによる
+fix : compress_fast()で十分に大きな入力を使い、推奨値より小さな出力（< LZ4_compressBound(inputSize)）を渡した場合に、わずかな可能性で生じる範囲外書き込みを修正、@terrellnによる
+fix : LZ4_compress_destSize()でまれに生じるデータ破損バグを修正、@terrellnによる
+fix : HCモードで辞書を接続したストリーミング時のデータ破損バグを修正、@felixhandteによる
+perf: aarch64/GCCでLZ4_FAST_DEC_LOOPを既定で有効化、@prekageoによる
+perf: lz4frameストリーミングAPIの速度を改善、@dreambottleによる
+perf: 外部辞書使用時の遅いパターンでのlz4hcの速度を改善、@terrellnによる
+api: インプレース展開・圧縮への対応を改善
+cli : --listが複数フレームのファイルに対応、@gstedmanによる
+cli: --versionはstdoutへ出力
+cli : -12の別名として--bestオプションを追加、@Low-powerによる
+misc: oss-fuzzへ統合、@cmeister2による。対象の状況を拡張、@terrellnによる
+
+v1.9.1
+fix : 展開関数が入力サイズを数バイト超えて読み取っていた問題を修正（v1.9.0で導入、@ppodolskyと@danlark1が報告）
+api : fix : lz4frameの初期化子とc++との互換性を修正、@degskiが報告
+cli : --listコマンドを追加、@gabrielstedmanのパッチに基づく
+build: Windowsビルドを改善、@JPeterMugaasによる
+build: AIX、Norman Greenによる
+
+v1.9.0
+perf: x86/x64での展開速度が大幅に向上（最大+20%）、@djwatsonによる
+api : changed : 圧縮の_destSize()派生版を安定版APIへ昇格
+api : new : LZ4_resetStream(HC)を置き換えるLZ4_initStream(HC)
+api : changed : 小さなデータで性能を向上させるため、LZ4_resetStream(HC)を推奨リセット関数として変更
+cli : 独自のブロックサイズに対応、@blezsanによる
+build: ソースコードを単一ファイルにまとめられる、Bing Xuによる
+build: mesonビルドを追加、@lzutaoによる
+build: 新しいビルドマクロ: LZ4_DISTANCE_MAX、LZ4_FAST_DEC_LOOP
+install: MidnightBSD、@laffer1による
+install: Windows 10のmsys2、@vtorriによる
+
+v1.8.3
+perf: gccでの展開速度がわずかに向上（~+2%）
+fix : v1.8.2のレベル9で、まれな条件下で> 64KBのファイルに生じる破損を修正（#560）
+cli : 新しいコマンド--fast、@jennifermliuによる
+cli : 経過時間を修正し、cpu負荷の表示を追加（-vv時）（#555）
+api : LZ4_decompress_safe_partial()が、要求したバイト数ちょうどを展開するよう変更（機能要望#566）
+build : Haikuターゲットを追加、@fbrossonによる。MidnightBSDを追加、@laffer1による
+doc : 辞書圧縮に関する文書を更新
+
+v1.8.2
+perf: 小さなファイルでの辞書圧縮が*大幅に*高速化、@felixhandteによる
+perf: 展開速度とバイナリーサイズを改善、Alexey Tourbin（@svpv）による
+perf: HCの圧縮・展開速度がわずかに向上
+perf: 圧縮率がごくわずかに向上
+fix : 低いメモリアドレス（< 0xFFFF）での圧縮に対応
+fix : NULL入力を渡した場合の展開時のセグメンテーション違反を修正、@terrellnによる
+cli : 新しいコマンド--favor-decSpeed
+cli : 小さな入力でのベンチマークモードの精度を改善
+fullbench : _destSize()派生版をベンチマークできる、@felixhandteによる
+doc : ブロック形式の解析制約を明確化、Alexey Tourbin（@svpv）による
+
+v1.8.1
+perf : ultraモード（レベル10+）が高速化し、圧縮力も向上
+perf : 圧縮・展開速度がわずかに向上
+perf : 性能が大きく悪化するケースを修正、@c-morgensternが報告
+fix : extDictと低いメモリアドレスの組合せで展開に失敗する問題を修正（#397）、Julian Scheid（@jscheid）が報告・修正
+cli : 辞書圧縮（`-D`）に対応、Felix Handte @felixhandteによる
+cli : fix : `lz4 -d --rm`でタイムスタンプを保持（#441）
+cli : fix : rootでも/dev/nullのアクセス権を変更しない、@aliceatlasによる
+api : すべての圧縮レベルで`_destSize()`派生版に対応
+build  : `make`と`make test`が`-jX`に対応、@mwgameraが報告
+build  : LZ4LIB_VISIBILITYマクロを制御できる、@mikirによる
+install: manページのディレクトリを修正（#387）、Stuart Cardall（@itoffshore）が報告
+
+v1.8.0
+cli : fix : /dev/nullのアクセス権を変更しない、@Maokaman1が報告
+cli : 後続の引数がすべてファイルであることを指定するGNU区切り--を追加
+API : LZ4_compress_HC_destSize()を追加、Oleg（@remittor）による
+API : LZ4F_resetDecompressionContext()を追加
+API : lz4frame : 負の圧縮レベルで高速圧縮の加速を有効化、Lawrence Chanが要望
+API : lz4frame : ブロックチェックサムと辞書IDを制御できる
+API : fix : 旧展開関数を公開するよう修正、Chen Yufeiが報告
+API : experimental : lz4frame_static : 新しい辞書圧縮API
+build : fix : 静的ライブラリーのインストールを修正、Ido Rosenによる
+build : dragonFlyBSD、OpenBSD、NetBSDに対応
+build : 外部のdefine指定により、コンパイル時にLZ4_MEMORY_USAGEを変更できる
+doc : LZ4フレーム形式をv1.6.0へ更新し、Dictionary-IDフィールドを復元
+doc : lz4 APIマニュアル、Przemyslaw Skibinskiによる
+
+v1.7.5
+lz4hc : 新しい高圧縮モード: レベル10-12は、より強く圧縮するが遅くなる、Przemyslaw Skibinskiによる
+lz4cat : fix : 相対パス（#284）とstdin（#285）で動作（@beiDei8zが報告）
+cli : -r再帰モード使用時の通知の小さな問題を修正
+API : lz4frame : LZ4F_frameBound(0)が*flush()と*End()操作の上限を返す（#290、#280）
+doc : manページのmarkdown版、Takayuki Matsuokaによる（#279）
+build : Makefile : make -jXでのlib+exeの同時実行を修正（#277）
+build : cmake : Michał Górnyによる改善（#296）
+
+v1.7.4.2
+fix : Makefile : リリースビルドがPIEおよび環境変数から渡す独自のコンパイル指定に対応（#274、Antoine Martinが報告）
+
+v1.7.4
+Improved : -mx32モードでの速度が大幅に向上
+cli : fix : Mac OS-Xの32-bitsモードで大きなファイルに対応
+fix : gcc 4.4でのコンパイルを修正（#272）、Antoine Martinが報告
+
+v1.7.3
+Changed : バージョン番号方式へ移行。パッケージ、cli、ライブラリーで同じバージョン番号を使用
+Improved: 展開速度が少し向上
+Improved: 64-bitsシステムでの圧縮速度が少し向上
+Improved: 小さなファイルでの圧縮率と速度が少し向上
+Improved: ARMv6とARMv7での速度が大きく向上
+Fix : 64-bitsのビッグエンディアンターゲットで圧縮率が向上
+cmakeビルドスクリプトを改善、Evan Nemersonによる
+新しいliblz4-dllプロジェクト、Przemyslaw Skibinkiによる
+Makefile: 低消費電力システムでの（再）コンパイルを高速化するため、オブジェクトファイル（*.o）を生成
+cli : new : --rmと--helpコマンド
+cli : new : ファイル属性を保持、Przemyslaw Skibinkiによる
+cli : fix : 一部の不正入力でのクラッシュを修正
+cli : fix : -tでlz4圧縮ファイルを正しく検証、Nick Terrellによる
+cli : fix : fread()のエラーを検出・報告、Hiroshi Fujishimaの報告#243に感謝
+cli : bench : new : -r再帰モード
+lz4cat : コマンドライン一回で複数のファイルをcatできる（#184）
+Added : doc/lz4_manual.html、Przemyslaw Skibinskiによる
+Added : 辞書圧縮とフレーム展開の例、Nick Terrellによる
+Added : Debianパッケージ化、Evgeniy Polyakovによる
+
+r131
+New    : Dos/DJGPPターゲット、Louis Santillanに感謝（#114）
+Added  : lz4frameライブラリー使用例、Zbigniew Jędrzejewski-Szmekによる（#118）
+Changed: liblz4内のxxhashシンボルを変更（名前空間の模倣）
+
+r130:
+Fixed  : sparseモードとコンソールの非互換性を修正、Yongwoon Choが報告（#105）
+Fixed  : フレームcrcがない場合にLZ4IOが早期終了する問題を修正、Yongwoon Choが報告（#106）
+Fixed  : sparseモードと追記モードの非互換性を修正、Takayuki Matsuokaが報告（#110）
+Performance fix : clangでの圧縮速度が大きく向上（+30%）
+New    : 版をまたぐテスト、Takayuki Matsuokaによる
+
+r129:
+Added  : LZ4_compress_fast()、LZ4_compress_fast_continue()
+Added  : LZ4_compress_destSize()
+Changed: 新しいlz4とlz4hcの圧縮API。以前の関数プロトタイプにも引き続き対応
+Changed: sparseファイルへの対応を既定で有効化
+New    : LZ4 CLIで複数ファイルの圧縮・展開性能を改善（#86、Kyle J. HarperとTakayuki Matsuokaの親切な貢献）
+Fixed  : GCC 4.9+の最適化バグを修正。Markus Trippelsdorf、Greg Slazinski、Evan Nemersonが報告
+Changed: 列挙型をLZ4F_名前空間の規則へ変更、Takayuki Matsuokaによる
+Added  : Visualテスト用のAppVeyor CI環境、Takayuki Matsuokaが提案
+Modified: 旧関数が警告を生成、Evan Nemersonが提案、Takayuki Matsuokaが貢献
+Fixed  : バグ#75（未完了のストリーム）を修正、Yongwoon Choが報告
+Updated: 文書をMarkDown形式へ変更
+
+r128:
+New    : lz4cliのsparseファイル対応（Neil Wilsonが要望、Takayuki Matsuokaが貢献）
+New    : コマンド一回で複数ファイルを圧縮する-mコマンド（Kyle J. Harperが提案）
+Fixed  : lz4hcの圧縮率を復元（r124以降はわずかに低下していた）
+New    : lz4 cliが長いコマンドに対応（Takayuki Matsuokaが提案）
+New    : lz4frameとlz4cliでフレーム内容のサイズに対応
+New    : lz4frameがskippable frameに対応、Sergey Cherepanovが要望
+Changed: 既定の"make install"ディレクトリは/usr/local、Ron Johnsonの指摘による
+New    : lz4 cliが「pass-through」モードに対応、Neil Wilsonが要望
+New    : datagenがsparseファイルを生成できる
+New    : scan-buildテスト、Takayuki Matsuokaの親切な支援に感謝
+New    : g++互換性テスト
+New    : armクロスコンパイルテスト、Takayuki Matsuokaの親切な支援に感謝
+Fixed  : FuzzerとframetestのNetBSD互換性を修正（issue #48、Thomas Klausnerが報告）
+Added  : Visualプロジェクトのディレクトリ
+Updated: manページと仕様
+
+r127:
+N/A   : SVNにファイルを追加
+
+r126:
+New   : lz4frame APIをliblz4へ統合
+Fixed : 最高性能設定でのGCC 4.9のバグを修正、Greg Slazinskiが報告
+Fixed : LZ4 HCストリーミングモード内のバグを修正、James Boyleが報告
+Fixed : 古いコンパイラーが無名共用体を受け付けない問題を修正、Cheyi Linが報告
+Changed : lz4がC90互換に
+Changed : -pedanticオプションを追加し、いくつかの小さな警告を修正
+
+r125:
+Changed : エンディアンとアライメントのコードを変更
+Changed : ディレクトリ構造: 新しい"lib"ディレクトリ
+Updated : lz4ioがlz4frameを使用するよう更新
+Improved: 展開速度がわずかに向上
+Fixed : LZ4_compress_limitedOutput(); Christopher Spellerに特に感謝！
+Fixed : clangでの一部のアライメント警告を修正
+Fixed : 非推奨関数LZ4_slideInputBufferHC()を修正
+
+r124:
+New : LZ4 HCストリーミングモード
+Fixed : null preferencesPtr使用時のLZ4F_compressBound()を修正
+Updated : xxHashをr38へ更新
+ライブラリー番号を1.4.0へ更新
+
+r123:
+Added : 実験的なlz4frame API、テストを行ったTakayuki MatsuokaとChristopher Jacksonに感謝
+Fix : s390xへの対応を修正、Nobuhiro Iwamatsuに感謝
+Fix : テストモード（-t）で確認が不要に、Thary Nguyenに感謝
+
+r122:
+Fix : AIXとAIX64への対応を修正（SamG）
+Fix : mipsの64-bitsへの対応を修正（lew van）
+Added : Examplesディレクトリ、Takayuki Matsuokaのコード例を使用
+Updated : フレーム仕様をv1.4.1へ更新
+Updated : xxHashをr36へ更新
+
+r121:
+Added : Makefile : kFreeBSDとHurd向けのインストールを追加（Nobuhiro Iwamatsu）
+Fix : Makefile : OS-XとBSD向けのインストールを修正、Takayuki Matsuokaに感謝
+
+r120:
+Modified : ストリーミングAPIで強い型を使用
+Added : LZ4_versionNumber()を追加、Takayuki Matsuokaに感謝
+Fix : OS-X : ライブラリーのインストール名を修正、Clemens Langに感謝
+Updated : Makefile : ライブラリーのバージョン番号をlz4.hと同期、Takayuki Matsuokaに感謝
+Updated : Makefile : より厳しいコンパイルフラグへ更新
+Added : pkg-configを追加、Zbigniew Jędrzejewski-Szmekに感謝（issue 135）
+Makefile : lz4-testでネイティブバイナリーのみをテスト、Michał Górnyの提案による（issue 136）
+Updated : xxHashをr35へ更新
+
+r119:
+Fix : Issue 134 : 特定の構成の32-bitsモードにおける、悪意のあるアドレス空間オーバーフローの拡張ケースを修正
+
+r118:
+New : LZ4ストリーミングAPI（Fast版）、Takayuki Matsuokaに特に感謝
+New : datagen : パラメーターを指定できる、テスト用合成データ生成器
+Improved : fuzzerを改善。より多くのテストケース・パラメーター、特定テストへの移動に対応
+fix : ppc64leプラットフォームに対応（issue 131）
+fix : Issue 52（大きな独自形式を使った場合の32-bitsモードでの悪意のあるアドレス空間オーバーフロー）を修正
+fix : Makefile : 小さな問題issue 130、ヘッダーファイルのアクセス権を修正
+
+r117:
+Added : lz4cとlz4catのmanページを追加
+Added : Travisでの自動テストを追加、Takayuki Matsuokaに感謝！
+fix : block-dependencyコマンドラインを修正（issue 127）
+fix : lz4fullbenchを修正（issue 128）
+
+r116:
+緊急修正（issue 124と125）
+
+r115:
+Added : POSXシステムへインストールするlz4catユーティリティを追加（issue 118）
+OS-X互換の動的ライブラリーのコンパイル（issue 115）
+
+r114:
+Makefile : -O3指定でライブラリーを正しくコンパイル（issue 114）
+Makefile : ライブラリーのコンパイルがclangに対応
+Makefile : ライブラリーにバージョンを付けてリンク（issue 119）
+lz4.h : static inlineプロトタイプを廃止（issue 116）
+man : ヘッダーとフッターを改善（issue 111）
+Makefile : システム既定の$(CC)と$(MAKE)変数を使用（issue 112）
+xxhash : r34へ更新
+
+r113:
+GCC 32-bitsでの展開速度が大幅に向上。Valery Croizierに感謝！
+LZ4HC : 圧縮レベルをプログラムで指定できるパラメーターに変更（CLIで4から9）
+IOルーチンをコマンドラインから分離（lz4io.c）
+lz4.hへバージョン番号を記載（Francesc Altedが提案）
+
+r112:
+応急修正
+
+r111 :
+Makefile : ライブラリーをインストールする機能を追加
+ライブラリーとプログラムをより明確に分けるよう、ディレクトリーツリーを変更
+
+r110 :
+lz4 & lz4hc : 独自アロケーターで状態とストリーム状態を確保する機能を追加（issue 99）
+fuzzer & fullbench : 新しい関数をテストするよう更新
+man : -lコマンドを文書化（Linuxカーネルの圧縮向けの旧形式）（issue 102）
+cmake : Mika Attilaによる改善版。プログラムとライブラリーをビルド（issue 100）
+xxHash : r33へ更新
+Makefile : cleanでローカルパッケージ.tar.gzも削除
+
+r109 :
+lz4.c : issue 98（LZ4_compress_limitedOutput()）を修正
+Makefile : makefileからバージョン番号を指定できる
+
+r108 :
+lz4.c : > 4 GBのストリームでの64-bits連鎖モード（-BD）の圧縮効率の問題issue 97を修正（報告したRoman Strashkinに感謝）
+
+r107 :
+Makefile : 段階的なインストール先指定用のDESTDIRに対応。Jorge Aparicioに感謝
+Makefile : make installでlz4とlz4cの両方をインストール（Jorge Aparicio）
+Makefile : -Wno-implicit-declarationコンパイル指定を削除
+lz4cli.c : isatty()用に<stduni.h>をインクルード（Luca Barbato）
+lz4.h : LZ4_MAX_INPUT_SIZE定数を導入（Shay Green）
+lz4.h : LZ4_compressBound() : マクロとinlineの定義を統一（Shay Green）
+lz4.h : LZ4_decompressSafe_partial() : コメントを明確化（Shay Green）
+lz4.c : LZ4_compress()で入力サイズ条件を検査（Shay Green）
+bench.c : 空きメモリーサイズの評価のバグを修正
+cmake : bin/ディレクトリへインストール（Richard Yao）
+cmake : Cコンパイラーだけを確認（Elan Ruusamae）
+
+r106 :
+Makefile : make distでパッケージ内のテキストファイルをUnix EoL規則に合わせて変更
+lz4cli.c : HCモードでの小さな表示バグを修正
+
+r105 :
+Makefile : 新しいインストールスクリプトとmanページ、Prasad Panditが貢献
+lz4cli.c : 拡張しやすくするための小さな変更
+COPYING  : ライセンスファイルを追加
+LZ4_Streaming_Format.odt : ファイル名から空白文字を除去
+Makefile : Windowsターゲットにのみ.exe接尾辞を正しく追加

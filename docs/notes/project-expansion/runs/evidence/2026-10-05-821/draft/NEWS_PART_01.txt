@@ -1,0 +1,101 @@
+v1.10.0
+cli  : マルチスレッド圧縮に対応: 割り当てたスレッド数のX倍に速度が向上
+cli  : 展開とi/oを重ね合わせ、速度が~+60%向上
+cli  : 環境変数LZ4_CLEVELとLZ4_NBWORKERSに対応
+cli  : CLIのライセンスをGPL-2.0-or-laterと、より明確に表示
+cli  : 修正: ディレクトリの圧縮を拒否
+cli  : 複数ファイルでの辞書圧縮ベンチマークを修正
+cli  : 変更: 暗黙の`stdout`を廃止（入力が`stdin`の場合を除く）
+lib  : 新しいレベル2を追加し、中間的な性能（速度と圧縮）を提供
+lib  : 小さなデータでのlz4frame圧縮速度を改善（1KBで最大+160%）
+lib  : HC圧縮速度がわずかに（+5%）向上（レベル3-9）、@JunHe77による
+lib  : 辞書圧縮への対応が安定版の状態に
+lib  : 処理エラー後でもlz4frameの状態を安全にリセットして再利用できる（@QrczakMKが説明）
+lib  : `lz4file` APIを改善、@vsolontsov-volantと@t-matによる
+lib  : 新しい実験的シンボル`LZ4_compress_destSize_extState()`
+build: cmakeの最低バージョンを3.5へ引き上げ
+build: cmakeを改善、@foxeng、@Ohjurot、@LocalSpook、@teo-tsirpanis、@ur4t、@t-matによる
+build: mesonスクリプトを`build/`ディレクトリに配置、@eli-schwartzによる
+build: mesonを改善、@tristan957による
+build: スクリプトで`cmake`からVisual Studioのソリューションを生成
+port : loongArch、risc-v、m68k、mips、sparcアーキテクチャに対応
+port : Visual Studioとの互換性を改善、@t-matによる
+port : freestandingへの対応を改善、@t-matによる
+
+v1.9.4
+perf : aarch64プラットフォームでの展開速度が向上（~+20%）
+perf : CLIの-BD4設定での展開速度が向上（~+70%）
+api  : 新しい関数`LZ4_decompress_safe_partial_usingDict()`、@yawqiによる
+api  : lz4frame: 状態生成時に独自のアロケーターを渡せる
+api  : チェックサムの検証を省略して展開速度を向上できる
+api  : ファイルi/o API用の新しい実験的ユニット`lz4file`、@anjiahao1による
+api  : 新しい実験的関数`LZ4F_uncompressedUpdate()`、@alexmohrによる
+cli  : `--list`が`stdin`入力で動作、@Low-powerによる
+cli  : `--no-crc`は、チェックサムを生成せず（圧縮）、検査もしない（展開）
+cli  : 修正: `--test`と`--list`が不正な入力の解析時にエラーコードを返す
+cli  : 修正: `--test -m`で展開されたファイルの生成物を作らない
+cli  : 修正: `stdin`から渡されたskippable frameに対応、@davidmankinが報告
+build: 修正: Makefileが環境変数で渡されたCFLAGSの指定を尊重
+build: `LZ4_FREESTANDING`、freestanding環境向けの新しいビルドマクロ、@t-matによる
+build: `make`と`make test`が`-j`による並列実行に対応
+build: AS/400との互換性、@jonrumseyによる
+build: Solaris 10との互換性、@pekdonによる
+build: MSVC 2022に対応、@t-matによる
+build: mesonスクリプトを改善、@eli-schwartzによる
+doc  : LZ4ブロック形式を更新し、「implementation notes」節を追加
+
+v1.9.3
+perf: カーネル空間での速度が大きく向上、@terrellnによる
+perf: Visual Studioでの速度が向上、@wolfpldと@remittorに感謝
+perf: 辞書圧縮の速度が向上、@felixhandteによる
+perf: LZ4_compress_HC_destSize()の圧縮率を修正、@hsiangkaoが検出
+perf: 高圧縮モードでのスタック使用量を削減、@Yanpasによる
+api : LZ4_decompress_safe_partial()が未知の圧縮サイズに対応、@jfkthameが要望
+api : 自動フラッシュ使用時のLZ4F_compressBound()を改善、Christopher Harvieによる
+api : 未定義動作（UBs）を起こさずに、NULLからの圧縮・展開とNULLへの圧縮・展開が可能
+api : 32-bitシステムでのアライメント検査（状態初期化）を修正
+api : 例外的な場合のLZ4_saveDictHC()を修正、@IgorKorkinが検出
+cli : `-l`の旧形式が`-m`の複数ファイルに対応、Filipe Calasansによる
+cli : ベンチマークモードが辞書に対応、@rkoradiによる
+cli : 大きな引数を指定した--fastを修正、@picoHzが検出
+build: LZ4_USER_MEMORY_FUNCTIONSで利用者定義のメモリ関数へリンク、Yuriy Levchenkoが提案
+build: contrib/cmake_unofficial/をbuild/cmake/へ移動
+build: visual/*をbuild/へ移動
+build: mesonスクリプトを更新、@nehebによる
+build: tinyccに対応、Anton Kochkovによる
+install: Haikuに対応、Jerome Duvalによる
+doc : LZ4フレーム形式を更新し、EndMarkを明確化
+
+v1.9.2
+fix : decompress_partial()使用時の例外的な状況での範囲外読み取りを修正、@terrellnによる
+fix : compress_fast()で十分に大きな入力を使い、推奨値より小さな出力（< LZ4_compressBound(inputSize)）を渡した場合に、わずかな可能性で生じる範囲外書き込みを修正、@terrellnによる
+fix : LZ4_compress_destSize()でまれに生じるデータ破損バグを修正、@terrellnによる
+fix : HCモードで辞書を接続したストリーミング時のデータ破損バグを修正、@felixhandteによる
+perf: aarch64/GCCでLZ4_FAST_DEC_LOOPを既定で有効化、@prekageoによる
+perf: lz4frameストリーミングAPIの速度を改善、@dreambottleによる
+perf: 外部辞書使用時の遅いパターンでのlz4hcの速度を改善、@terrellnによる
+api: インプレース展開・圧縮への対応を改善
+cli : --listが複数フレームのファイルに対応、@gstedmanによる
+cli: --versionはstdoutへ出力
+cli : -12の別名として--bestオプションを追加、@Low-powerによる
+misc: oss-fuzzへ統合、@cmeister2による。対象の状況を拡張、@terrellnによる
+
+v1.9.1
+fix : 展開関数が入力サイズを数バイト超えて読み取っていた問題を修正（v1.9.0で導入、@ppodolskyと@danlark1が報告）
+api : fix : lz4frameの初期化子とc++との互換性を修正、@degskiが報告
+cli : --listコマンドを追加、@gabrielstedmanのパッチに基づく
+build: Windowsビルドを改善、@JPeterMugaasによる
+build: AIX、Norman Greenによる
+
+v1.9.0
+perf: x86/x64での展開速度が大幅に向上（最大+20%）、@djwatsonによる
+api : changed : 圧縮の_destSize()派生版を安定版APIへ昇格
+api : new : LZ4_resetStream(HC)を置き換えるLZ4_initStream(HC)
+api : changed : 小さなデータで性能を向上させるため、LZ4_resetStream(HC)を推奨リセット関数として変更
+cli : 独自のブロックサイズに対応、@blezsanによる
+build: ソースコードを単一ファイルにまとめられる、Bing Xuによる
+build: mesonビルドを追加、@lzutaoによる
+build: 新しいビルドマクロ: LZ4_DISTANCE_MAX、LZ4_FAST_DEC_LOOP
+install: MidnightBSD、@laffer1による
+install: Windows 10のmsys2、@vtorriによる
+
