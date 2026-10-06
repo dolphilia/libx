@@ -6211,3 +6211,29 @@
 - replay2回各1037組2074文書2passes・通常8gate・全2074hash保全/全fragment incoming0・systems fresh統合build/全7開始現在manifest入力一致・HTML43見出し122資料84TOC/38alias/全旧有用ID/出典2URL/統合HTML一致/正規HTMLgate・英日PCmobile実表示/目次/言語/版/隣接操作・global/diff合格。verified227/残810/保留4。状態更新後は全検査入力一致証拠でglobal再利用。EXCLUSIONS項目内timestampのみHEAD復元f0ded7。外部リンク報告は投稿URL除去と3修復により165→164/全体138564→138563の実変更を保存。
 - EOFの余分な空行を1個ずつ除去しcf672dで全意味単位・metadata・URL・codeが同一と証明、読了証拠を再利用。変更前buildはSIGINT後exit0でも統合未完了のため不採用2186ca、変更後build01e2bb/e18493を採用。補助HTML検査のURL部分一致誤判定f2c0f1を正しい固定GitHubパス判定へ修正しda239cで再検査、正規HTMLgate2a58dd合格。
 - 元main他作業差分保持。所有UI/preview終了/viewport復元。本バッチ検証済み本文/overlay/判断証拠/生成物/台帳のみ保存し、workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合。まだ送信準備、外部公開/PR/dispatch/定期設定なし。次170 github-polycarbohydrate-awesome-tor-readme-md 固定raw/旧英日全文から継続。
+
+### バッチ169送信確認・170全文読了 (2026-10-06T22:00:45.813Z)
+
+- 169 commit b6694d140ed1020ff07f2682624b0cbac5abccfd → origin/codex/awesome-editorial-isolated-20261007 push exit0 531a9c、remote HEAD一致b43678。workflow全文a10f11、stage71対象/全body-review-blob一致aaab51。外部公開なし。global417b41後の補助比較ファイル保存漏れ356336は状態更新前に停止。本文/overlay/review/検査実装を変更せず比較入力を保存し、状態更新前後同一b652ddで合格再利用。
+- 170 raw182/旧EN178/旧JA178を全文読了。raw3dc48a/3d5eb5、EN1b4dac/be5f97、JA f071e8/5bcd5f（各1–100/101–187、全出力省略なし）。3入力hashを現在本文と照合。まだ本文未変更。次 170全文編集→3別パスreview→overlay/生成/保全/anchor/build/HTML/UI/global→verified228→commit/push。
+
+- 2026-10-06T22:05:23.017Z batch170全文編集・3別パス全文レビュー完了（raw182/旧EN178/旧JA178→EN171/JA189単位、153list/11heading/11alias）。overlayと実英日本文を反映。proof 08be8aeaae660b80027de8aa833c651aa135d651854ae8b69b1186d7eb3253a2。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified228→commit/push。
+
+- 2026-10-06T22:08:53.319Z batch170-generation-gates-passed-build-pending。227完了810残保留4。進捗463a715bf9b62b22fcff1fdc4eda29b2b5fd76c5311af672ec28260fa24285fb。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML11見出し153list/11alias/英日PCmobile実UI→global→verified228/commit/push。
+
+- 2026-10-06T22:11:42.931Z batch170-gates-anchor-passed-fresh-build-running。227完了810残保留4。進捗3181ca1c3add902ba2ecf08a09d77d396fd6291d805a40fee4f7b989a32421b9。次実行中build15814のexit0と統合結果→全7開始現在manifest hash一致→HTML11head153list20TOC/11alias→4UI/global→verified228→commit/push。
+
+- 2026-10-06T22:16:57.600Z batch170-four-ui-content-reviewed-global-pending。227完了810残保留4。進捗500de7a400d9e113de4c95df65edc914b6d2f34bb975e1ae69064b34703cd47c。次全1037台帳global/全2074hash/diff→verified228→commit/push/hash照合→171 Blockchain AI fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T22:17:43.634Z batch170-verified228-save-push-pending。228完了809残保留4。進捗82b11d4c816706ad4d740b5e0712addee51f377504a0589dcbbcc2c6fed2ef2b。次228完了809残保留4。Tor全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次171 github-steven2358-awesome-blockchain-ai-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ170 Tor検証完了・保存準備 (2026-10-06T22:17:48.210Z)
+
+- raw182/旧EN178/旧JA178を全読了（3dc48a/3d5eb5、1b4dac/be5f97、f071e8/5bcd5f）。固定原文のTor定義、自由なソフトウェア/無料ネットワーク、7000超の世界のボランティアリレー/無作為経路と独立性・品質適合性等無保証を復元。タイトルの画像alt tor-logoをTorへ、公式TorとSnowflakeブラウザーガイドを通常資料リンクへ復元。外部最新版へ更新しない。
+- 153リスト項目（Core Tor親1を含む）/10分類/11見出し、全URL、inline code、対応OS/言語/条件、非推奨、1977–2020/2019–2025/2024等を保持。Tails貢献/Tor支援は対象プロジェクトの通常資料として保持し作者リスト運営と区別。Commmunityの誤字とtoriptabkes2を固定URLのtoriptables2に基づき訂正。原文obsf2/3/4名称は取得時表記のまま保持。
+- EN別パス全raw 7dd4b5/c6a497/f0e79b、ProtonVPNの無料プラン条件再読163881。最終ENJA169主要単位+2EN/20JA空aliasを163881/288d4a/9f2f38で全文比較、4JA修正単位ca72b4で再読。JA単独ca72b4 1–100/4e4767 101–179末尾、H1空白修正はbc0babで3パス再読し840806で他全単位sha同一を証明。set-and-forgetは設定不要ではなく一度設定後の管理不要、HTTPS Everywhereの組み込み方向、Whonixの設計目的、SecureDrop受付の不自然さを修正。一般案内翻訳、正式原題/技術識別子を保持。
+- H1旧IDを英日双方、旧英語見出し/変更JA自然IDを合計11空別名で保持。title/H1検査10e420が検出した余分な空白は本文側のみ修正し検査変更なし。Tor®は原文独立性注意の商標情報として位置・根拠付き保持。rawロゴ/バッジ/10手動目次/作者呼びかけ装飾は全単位対応を記録。最終EN 6d2354f92f521dabdf49c0111012ec99b79295f03bc4d6120936979be72d14d0 / JA 228aa5aea6110b146d438aaf92fd8f5512eb4191d9feb1757ffc19eeee340272。
+- 全1037組2074文書2passesの再生成を2回、通常8gate e0a121 exit0、全2074hash/全fragment incoming監査、対象systems fresh統合buildと全7開始現在manifest hash一致、英日HTML11見出し/153list/20TOC/全旧有用ID/11alias/出典2URL/統合HTML一致/正規HTMLgate、英日PCmobile実表示/目次/言語/版/隣接操作、global 2052ec actual exit0/diff合格。verified228/残809/保留4。同一検査入力の比較証拠で状態更新後のglobalを再利用。
+- 補助HTML判定520205はレポートにないheading.text参照で失敗。実HTML/検査実装450b2dに基づく判定に修正し67103d合格、正規HTMLgate4cb5ce exit0。本文・正規検査を変更して通過させていない。統合build e4d79f exit0、実統合結果41c9f3は全7子サイトfresh。
+- EXCLUSIONSは全判断データを再帰照合しtimestampのみHEADへ復元。EXTERNAL_LINK_REPORTは公式Tor/ブラウザーSnowflakeガイド復元の実変更152→154/全体138563→138565を保存。AGENTS/現行計画/ガイドの元mainと分離worktreeのsha一致0e950d。元main他作業差分を保持。実モデルは現Codexセッション/API識別子取得不能、委任/ローカルLLMなし。所有UI/preview終了/viewport復元。
+- 検証済み本文/overlay/判断・レビュー証拠/生成物/台帳をまとめ、workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合。まだ保存準備、外部公開/PR/dispatch/定期設定なし。次171 github-steven2358-awesome-blockchain-ai-readme-md 固定raw/旧EN/旧JA全文から継続。

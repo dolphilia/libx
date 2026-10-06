@@ -1,66 +1,59 @@
 ---
-title: "Awesome tor-logo"
-description: "tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+title: "Awesome Tor"
+description: "Torのマニュアル、アプリ、ブリッジ、検閲研究、年次報告と内部告発ツール。"
 licenseSource: "github-polycarbohydrate-awesome-tor-readme-md"
 ---
 
-# Awesome tor-logo
+# Awesome Tor<a id="awesome-tor-logo"></a>
 
-tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+[Tor](https://www.torproject.org)は、自由でオープンソースのソフトウェアを基盤とする、匿名通信のための無料のオーバーレイネットワークです。固定原文では、世界各地でボランティアが運営する7,000超のリレーを通り、ランダムな経路で通信を送る仕組みと説明されています。マニュアル、アプリ、ブリッジ、検閲研究、年次報告と内部告発ツールをまとめています。
 
-## 目次
-- [Official Manual](#official-manual)
-- [Applications](#applications)
-  - [Tails](#tails)
-  - [Tor / Tor Browser](#tor--tor-browser)
-  - [Other applications](#other-applications)
-- [Bridges](#bridges)
-- [Bypass Censorship](#bypass-censorship)
-- [Public reception, Impact, News, and Legislation](#public-reception-impact-news-and-legislation)
-- [State of the Onion](#state-of-the-onion)
-- [Whistleblowing](#whistleblowing)
-## 公式マニュアル
-- [About Tor Browser](https://tb-manual.torproject.org/about/) - Tor Browserがプライバシーと匿名性を保護するためにできることを学びます。
-- [Anti-fingerprinting](https://tb-manual.torproject.org/anti-fingerprinting/) - Tor Browserがブラウザーフィンガープリンティングを軽減する方法です。
-- [Bridges](https://tb-manual.torproject.org/bridges/) - obfs4など大半のPluggable Transportsは、「bridge」リレーの利用に依存します。
-- [Circumvention](https://tb-manual.torproject.org/circumvention/) - Torネットワークがブロックされた場合の対処法です。
-- [Downloading](https://tb-manual.torproject.org/downloading/) - Tor Browserのダウンロード方法です。
-- [Installation](https://tb-manual.torproject.org/installation/) - Tor Browserのインストールです。
-- [Known Issues](https://tb-manual.torproject.org/known-issues/) - Torに関する既知の問題です。
-- [Make Tor Browser Portable](https://tb-manual.torproject.org/make-tor-portable/) - Tor Browserをリムーバブルメディアへインストールする方法です。
-- [Managing Identities](https://tb-manual.torproject.org/managing-identities/) - Tor Browserで個人を特定しうる情報を制御する方法を学びます。
-- [Mobile Tor](https://tb-manual.torproject.org/mobile-tor/) - モバイルデバイス向けTorについて学びます。
-- [Onion Services](https://tb-manual.torproject.org/onion-services/) - Torのみを使ってアクセスできるサービスです。
-- [Plugins, add-ons, and JavaScript](https://tb-manual.torproject.org/plugins/) - Tor Browserによるアドオン、プラグイン、JavaScriptの扱い方です。
-- [Running Tor Browser](https://tb-manual.torproject.org/running-tor-browser/) - 初めてTor Browserを使う方法を学びます。
-- [Secure Connections](https://tb-manual.torproject.org/secure-connections/) - Tor BrowserとHTTPSでデータを保護する方法を学びます。
-- [Security Settings](https://tb-manual.torproject.org/security-settings/) - セキュリティと使いやすさのためのTor Browser設定です。
-- [Support](https://tb-manual.torproject.org/support/) - ヘルプの取得、バグ報告、フィードバックの方法です。
-- [Troubleshooting](https://tb-manual.torproject.org/troubleshooting/) - Tor Browserが正しく動かない場合の対処法です。
-- [Updating](https://tb-manual.torproject.org/updating/) - Tor Browserの更新方法です。
-- [Uninstalling](https://tb-manual.torproject.org/uninstalling/) - システムからTor Browserを削除する方法です。
-## アプリケーション
+このリストはTor®の匿名化ソフトウェアとは独立して作成されています。Tor Projectは品質、適合性、その他について一切保証していません。説明、提供状況、機能、評価は固定原文の記述に基づきます。
+
+[ブラウザーでSnowflakeブリッジを提供するガイド](https://polycarbohydrate.github.io/awesome-tor/selfhost-snowflake)では、検閲下の地域の利用者による検閲回避を支援する方法を紹介しています。
+
+## 公式マニュアル <a id="official-manual"></a>
+- [Tor Browserについて](https://tb-manual.torproject.org/about/) - Tor Browserがプライバシーと匿名性を保護するためにできることを学びます。
+- [フィンガープリンティング対策](https://tb-manual.torproject.org/anti-fingerprinting/) - Tor Browserがブラウザーフィンガープリンティングを軽減する方法です。
+- [ブリッジ](https://tb-manual.torproject.org/bridges/) - obfs4など大半のPluggable Transport（差し替え可能な転送方式）は、ブリッジリレーの利用に依存します。
+- [検閲回避](https://tb-manual.torproject.org/circumvention/) - Torネットワークがブロックされた場合の対処法です。
+- [ダウンロード](https://tb-manual.torproject.org/downloading/) - Tor Browserのダウンロード方法です。
+- [インストール](https://tb-manual.torproject.org/installation/) - Tor Browserのインストールです。
+- [既知の問題](https://tb-manual.torproject.org/known-issues/) - Torに関する既知の問題です。
+- [Tor Browserの持ち運び](https://tb-manual.torproject.org/make-tor-portable/) - Tor Browserをリムーバブルメディアへインストールする方法です。
+- [識別情報の管理](https://tb-manual.torproject.org/managing-identities/) - Tor Browserで個人を特定しうる情報を制御する方法を学びます。
+- [モバイル向けTor](https://tb-manual.torproject.org/mobile-tor/) - モバイルデバイス向けTorについて学びます。
+- [Onionサービス](https://tb-manual.torproject.org/onion-services/) - Torのみを使ってアクセスできるサービスです。
+- [プラグイン、アドオン、JavaScript](https://tb-manual.torproject.org/plugins/) - Tor Browserによるアドオン、プラグイン、JavaScriptの扱い方です。
+- [Tor Browserの起動](https://tb-manual.torproject.org/running-tor-browser/) - 初めてTor Browserを使う方法を学びます。
+- [安全な接続](https://tb-manual.torproject.org/secure-connections/) - Tor BrowserとHTTPSでデータを保護する方法を学びます。
+- [セキュリティ設定](https://tb-manual.torproject.org/security-settings/) - セキュリティと使いやすさのためのTor Browser設定です。
+- [サポート](https://tb-manual.torproject.org/support/) - ヘルプの取得、バグ報告、フィードバックの方法です。
+- [トラブルシューティング](https://tb-manual.torproject.org/troubleshooting/) - Tor Browserが正しく動かない場合の対処法です。
+- [更新](https://tb-manual.torproject.org/updating/) - Tor Browserの更新方法です。
+- [アンインストール](https://tb-manual.torproject.org/uninstalling/) - システムからTor Browserを削除する方法です。
+## アプリケーション <a id="applications"></a>
 ### Tails
-*RAM上で動作し痕跡を残さない、持ち運び可能なDebianベースのOSです。主要ブラウザーとしてTor Browserを使います。*
-- [Contribute](https://tails.net/contribute/index.en.html)
-- [Documentation](https://tails.net/doc/index.en.html)
-- [Download](https://tails.net/install/index.en.html)
-- [Homepage](https://tails.net/)
-- [How it works](https://tails.net/about/index.en.html)
-- [News](https://tails.net/news/index.en.html)
-- [Support](https://tails.net/support/index.en.html)
+RAM上で動作し、主要ブラウザーとしてTor Browserを使う、持ち運び可能なDebianベースのOS。原文では痕跡を残さないと紹介されています。
+- [Tailsへの貢献](https://tails.net/contribute/index.en.html)
+- [ドキュメント](https://tails.net/doc/index.en.html)
+- [ダウンロード](https://tails.net/install/index.en.html)
+- [公式サイト](https://tails.net/)
+- [仕組み](https://tails.net/about/index.en.html)
+- [ニュース](https://tails.net/news/index.en.html)
+- [サポート](https://tails.net/support/index.en.html)
 ### Tor / Tor Browser
-*ネットワーク監視やトラフィック分析を行う者から位置情報と利用状況を隠すため、無料で世界規模のボランティアによるオーバーレイネットワークを介してインターネットトラフィックを送る、匿名通信を可能にするオープンソースWebブラウザーです。*
-- [About](https://www.torproject.org/about/history/)
-- [Commmunity](https://community.torproject.org/)
-- [Donate](https://donate.torproject.org/)
-- [Download](https://www.torproject.org/download/)
-- [Support](https://support.torproject.org/)
-- [News](https://blog.torproject.org/)
+世界各地のボランティアが運営する無料のオーバーレイネットワークを介して通信を送る、オープンソースのWebブラウザー。原文では、匿名通信を可能にし、ネットワーク監視やトラフィック分析から位置情報と利用状況を隠すと紹介されています。
+- [Torの歴史](https://www.torproject.org/about/history/)
+- [コミュニティ](https://community.torproject.org/)
+- [Tor Projectへの寄付](https://donate.torproject.org/)
+- [ダウンロード](https://www.torproject.org/download/)
+- [サポート](https://support.torproject.org/)
+- [ニュース](https://blog.torproject.org/)
 - Core Tor / Little-t-tor
-  - [Installation / Verify source code](https://support.torproject.org/little-t-tor/)
-  - [Forum / Support](https://forum.torproject.org/c/support/core-tor/18)
-### その他のアプリケーション
+  - [インストール／ソースコードの検証](https://support.torproject.org/little-t-tor/)
+  - [フォーラム／サポート](https://forum.torproject.org/c/support/core-tor/18)
+### その他のアプリケーション <a id="other-applications"></a>
 - [ansible-relayor](https://github.com/nusenu/ansible-relayor) - Torリレー運用者向けのansibleロールです。
 - [bine](https://github.com/cretz/bine) - Torクライアントとサーバーへアクセスし埋め込むためのGoライブラリです。
 - [Briar](https://briarproject.org/) - 中央集権サーバーを迂回するピアツーピアメッセージングです。Bluetooth、Wi-Fi、またはTorで接続します。
@@ -69,14 +62,14 @@ tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy) - 暗号化DNSプロトコルをサポートする柔軟なDNSプロキシです。
 - [dos-over-tor](https://github.com/skizap/dos-over-tor) - Tor経由の概念実証的DoSストレステストツールです。 
 - [DocTor](https://gitlab.torproject.org/tpo/network-health/doctor/) - 新たに公開された記述子情報の問題を監視する通知サービスです。
-- [eotk](https://github.com/alecmuffett/eotk) - 人気Webサイトへ公式のOnionネットワーキングを提供するため、HTTP/Onionサイトをデプロイするツールです。
+- [eotk](https://github.com/alecmuffett/eotk) - 広く利用されるWebサイトに公式のOnionアクセスを提供するため、HTTP/Onionサイトを配備するツール。
 - [exitmap](https://www.cs.kau.se/philwint/spoiled_onions/) - 不正な出口（spoiled onions）を検出するTor用スキャナーです。
 - [haskell-tor](https://github.com/GaloisInc/haskell-tor) - TorプロトコルのHaskell実装です。
-- [HTTPS Everywhere](https://www.eff.org/https-everywhere) - 組み込みTorで、ブラウザーがHTTPSのみを使って接続するようにします。
+- [HTTPS Everywhere](https://www.eff.org/https-everywhere) - ブラウザーの接続をHTTPSに限定する機能。原文ではTorに組み込まれていると紹介されています。
 - [kalitorify](https://github.com/brainfucksec/kalitorify) - Kali Linux OS向けに、Tor経由の透過プロキシを作成するシェルスクリプトです。
 - [Tor Metrics](https://metrics.torproject.org/) - Torの統計を可視化する調整可能なグラフです。
 - [multitor](https://github.com/trimstray/multitor) - ロードバランシングを備えた複数のTorインスタンスを作成します。
-- [mini-tor](https://github.com/wbenny/mini-tor) - インターネットコンテンツと隠しサービスコンテンツへアクセスする際の最小アプリケーションサイズです。
+- [mini-tor](https://github.com/wbenny/mini-tor) - インターネットや隠しサービスのコンテンツへアクセスするアプリ。原文ではアプリケーションサイズが最小と紹介されています。
 - [node-Tor](https://github.com/Ayms/node-Tor) - サーバー側とブラウザーで動くTorプロトコルのJavaScriptオープンソース実装です。
 - [nyx](https://nyx.torproject.org/) - リレーに関する詳細なリアルタイム情報を含むCLIインターフェースです。
 - [offensive-tor-toolkit](https://github.com/atorrescogollo/offensive-tor-toolkit) - GoでTor経由のBind/Reverse Shell、SOCKSなどを扱います。
@@ -104,8 +97,8 @@ tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [tor-browser-selenium](https://github.com/webfp/tor-browser-selenium) - Selenium WebDriverでTor Browserを自動化するPythonライブラリです。
 - [tor-controller](https://github.com/kragniz/tor-controller) - Kubernetes上でTor Onion Servicesを実行します。
 - [tor-hidden-service](https://hub.docker.com/r/goldy/tor-hidden-service) - v2またはv3のOnion Services用に作られたDockerコンテナーです。
-- [tor-relay-bootstrap](https://github.com/coldhakca/tor-relay-bootstrap) - Debianサーバーを設定不要で運用できるTorリレーへブートストラップするスクリプトです。
-- [Tor.framework](https://github.com/iCepa/Tor.framework) - iOSアプリケーションへTorを埋め込む最も簡単な方法です。
+- [tor-relay-bootstrap](https://github.com/coldhakca/tor-relay-bootstrap) - Debianサーバーを、一度設定した後の管理作業を必要としないTorリレーとして立ち上げるスクリプト。
+- [Tor.framework](https://github.com/iCepa/Tor.framework) - iOSアプリケーションへTorを埋め込む方法。原文では最も簡単な方法と紹介されています。
 - [tor.rb](https://github.com/dryruby/tor.rb) - Tor匿名ネットワークとやり取りするRubyライブラリです。
 - [Tor2web](https://github.com/tor2web/Tor2web) - 一般的なWebブラウザーからTor Hidden Servicesへのアクセスを可能にするHTTPプロキシソフトウェアです。
 - [TorBot](https://github.com/DedSecInside/TorBot) - データ収集用のOnionサイトクローラーです。
@@ -113,18 +106,18 @@ tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [TorChat](https://github.com/prof7bit/TorChat) - Tor Hidden Services上の分散型匿名インスタントメッセンジャーです。
 - [TorCheck](https://check.torproject.org/) - 訪問者がTorを利用しているかどうかを判定します。
 - [torDDoS](https://github.com/r3nt0n/torDDoS) - TorネットワークからWebサイトへのDDoS攻撃を自動化するPythonツールです。
-- [toriptabkes2](https://github.com/ruped24/toriptables2) - iptablesとTorを設定して全トラフィックをTorネットワーク経由へルーティングする匿名化ツールです。
+- [toriptables2](https://github.com/ruped24/toriptables2) - iptablesとTorを設定して全トラフィックをTorネットワーク経由へルーティングする匿名化ツールです。
 - [torps](https://github.com/torps/torps) - Tor Path Simulator（TorPS）は、Torでの経路選択を効率的にシミュレートするツールです。
-- [Torsocks](https://gitlab.torproject.org/tpo/core/torsocks/) - 大半のアプリケーションをTorとともに安全に使えるようにします。
-- [Tortilla](https://www.crowdstrike.com/resources/community-tools/tortilla-tool/) - すべてのTCP/IP・DNSトラフィックを安全、匿名、透過的にTor経由へルーティングするツールです。
+- [Torsocks](https://gitlab.torproject.org/tpo/core/torsocks/) - 原文では、大半のアプリケーションをTorとともに安全に利用できるようにすると紹介されています。
+- [Tortilla](https://www.crowdstrike.com/resources/community-tools/tortilla-tool/) - すべてのTCP/IP・DNSトラフィックをTor経由へルーティングするツール。原文では、安全・匿名・透過的に処理すると紹介されています。
 - [tun2tor](https://github.com/iCepa/tun2tor) - utun（ユーザー空間トンネル）インターフェースを作り、ストリームベースのプロキシへ接続するRustライブラリです。
 - [txtorcon](https://txtorcon.readthedocs.io/en/latest/) - PythonのTwistedネットワーキングライブラリを使う、Tor向けcontrol-spec実装です。
 - [Vanguards](https://github.com/mikeperry-tor/vanguards) - ガードの発見と関連するトラフィック分析攻撃から保護するアドオンです。
-- [Whonix](https://www.whonix.org/) - デスクトップ全体でのTorネットワーク利用により、高度なセキュリティとプライバシーを実現するOSです。
-- [ZeroNet](https://zeronet.io/) - Bitcoin暗号、BitTorrentネットワーク、Torサポートを使う、無料かつ検閲不能なWebサイトです。
-## ブリッジ
+- [Whonix](https://www.whonix.org/) - デスクトップ全体でTorネットワークを利用し、高度なセキュリティとプライバシーの確保を目的として設計されたOS。
+- [ZeroNet](https://zeronet.io/) - Bitcoinの暗号技術、BitTorrentネットワーク、Torサポートを使うWebサイト。原文では無料かつ検閲不能と紹介されています。
+## ブリッジ <a id="bridges"></a>
 - [BridgeDB](https://pythonhosted.org/bridgedb/) - BridgeDBは、Tor Bridgesを配布するために使われるバックエンドサーバー群です。
-- [Conjure](https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/conjure) - Conjureは、屈折ネットワーキング（別名decoy routing）系統の検閲回避システムにおける検閲対抗ツールです。
+- [Conjure](https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/conjure) - refraction networking（別名decoy routing）系統の検閲回避システムに属する検閲対抗ツール。
 - [Flash Proxies](https://crypto.stanford.edu/flashproxy/) - 時代遅れで非推奨のブリッジ種別です。Webブラウザーで動作する小型プロキシです。
 - [fteproxy](https://fteproxy.org/) - 時代遅れで非推奨のブリッジ種別です。Torトラフィックを通常のHTTPに似せます。名称は「Format-Transforming Encryption」を意味します。
 - [meek](https://support.torproject.org/glossary/meek/) - これらのpluggable transportsは、Torを使う代わりに主要Webサイトを閲覧しているように見せます。
@@ -134,30 +127,30 @@ tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [ScrambleSuit](https://github.com/NullHypothesis/scramblesuit) - 時代遅れで非推奨のブリッジ種別です。obfsproxy向けのpluggable transportプロトコルで、純粋なPythonで書かれています。
 - [Snowflake](https://snowflake.torproject.org/) - 通常のビデオ・音声通話のためにインターネットを使っているかのように、インターネット活動を見せます。
 - [Webtunnel](https://blog.torproject.org/introducing-webtunnel-evading-censorship-by-hiding-in-plain-sight/) - WebTunnelはHTTPTに着想を得て、暗号化されたWebトラフィック（HTTPS）を模倣するよう設計された検閲耐性pluggable transportです。
-## 検閲回避
+## 検閲回避 <a id="bypass-censorship"></a>
 - [Firefly](https://github.com/yinghuocho/firefly-proxy) - Great Firewallの回避を助けるプロキシソフトウェアです。
 - [FWlite](https://github.com/v3aqb/fwlite) - shadowsocksを内蔵サポートする検閲対抗HTTPプロキシです。
-- [Google Fi Wireless](https://fi.google.com/) - 中国のGreat Firewallを回避する通話、テキストメッセージ、携帯データ通信を可能にする優れた電話ソリューションです。
+- [Google Fi Wireless](https://fi.google.com/) - 原文では、中国のGreat Firewallを回避して通話、テキストメッセージ、携帯データ通信を利用できる、優れた電話サービスと紹介されています。
 - [Lantern](https://github.com/getlantern/lantern) - あらゆるOSで無料ダウンロードできる検閲回避ツールです。
 - [MTProxy](https://github.com/TelegramMessenger/MTProxy) - 検閲地域のユーザーがTelegramへ接続できるようにします。
 - [NaïveProxy](https://github.com/klzgrad/naiveproxy) - Chromiumのネットワークスタックを利用し、強い検閲耐性と低い検出可能性でトラフィックをカモフラージュします。
 - [nodeunblocker](https://github.com/nfriedly/nodeunblocker.com) - Node.jsを使ってnodeunblocker.comのコピーをホストし、インターネット上の検閲を回避します。
-- [PrivadoVPN](https://privadovpn.com/) - スイス拠点でスイスのプライバシー法に従うVPNです。中国でも回避できます。
-- [ProtonVPN](https://protonvpn.com/) - 中国でも検閲の回避を可能にするVPNです。無料プランでは複数サーバーとプロトコルによる回避を提供し、ログなしポリシーを取ります。
-- [Private Bridges](https://bridges.torproject.org/) - `I need an alternative way of getting bridges!`節へ進み、指示に従ってください。
+- [PrivadoVPN](https://privadovpn.com/) - スイスを拠点とするVPN。原文では、スイスのプライバシー法に従い、中国でも検閲を回避できると紹介されています。
+- [ProtonVPN](https://protonvpn.com/) - 原文では、中国でも検閲を回避できるVPNと紹介されています。無料プランも検閲回避に対応し、複数サーバーとプロトコル、ログを保存しない方針があると説明されています。
+- [非公開ブリッジ](https://bridges.torproject.org/) - `I need an alternative way of getting bridges!`節へ進み、指示に従ってください。
 - [Runet Censorship Bypass](https://github.com/anticensority/runet-censorship-bypass) - ロシアにおける検閲の回避を助けるChromium・Firefox向けブラウザー拡張です。
 - [StegoTorus](https://github.com/SRI-CSL/stegotorus) - Tor匿名化システム向けのカモフラージュプロキシです。
 - [trojan](https://github.com/trojan-gfw/trojan) - GFWの回避を助ける、識別困難なメカニズムです。
-## 公共の受容、影響、ニュース、法制度
+## 社会の受け止め方、影響、ニュース、法制度 <a id="public-reception-impact-news-and-legislation"></a> <a id="公共の受容影響ニュース法制度"></a>
 - [A close look at the Great Firewall of China](https://blog.torproject.org/closer-look-great-firewall-china/) - 中国国内におけるTorの検閲に関する情報です。
 - [Analyzing China's Blocking of Unpublished Tor Bridges](https://www.usenix.org/conference/foci18/presentation/dunna) - 中国が未掲載のTorブリッジをブロックする方法と、その防止に関する研究です。
 - [Anarcho-Tech NYC Wiki](https://github.com/AnarchoTechNYC/meta/wiki) - オンラインでプライバシーと匿名性を保つ方法を説明するWikiです。
 - [Anonymity Bibliography](https://www.freehaven.net/anonbib/) - 1977年〜2020年の匿名性に関する選定論文です。
-- [Dropping Docs on Darknet](https://www.youtube.com/watch?v=eQ2OZKitRwc) - DEF CON 22 — Adrian Crenshawによる、Darknetで文書を公開した人々がどう捕まったかの講演です。
+- [Dropping Docs on Darknet](https://www.youtube.com/watch?v=eQ2OZKitRwc) - DEF CON 22でのAdrian Crenshawによる講演「Dropping Docs on Darknets: How People Got Caught」。
 - [How governments have tried to block Tor](https://www.youtube.com/watch?v=DX46Qv_b7F4) - 28c3における、政府がTorをブロックしようとした方法の解説です。
 - [How the Great Firewall of China is blocked in China](https://www.usenix.org/system/files/conference/foci12/foci12-final2.pdf) - 中国でTorが禁止される仕組みと回避方法を説明する論文です。
 - [Learning more about the GFW's active probing system](https://blog.torproject.org/learning-more-about-gfws-active-probing-system/) - GFWの検閲システムと仕組みに関するページです。
-- [My Experience With the Great Firewall of China](http://blog.zorinaq.com/my-experience-with-the-great-firewall-of-china/) - InfoSec専門家が訪問中に記した、中国のCFWに関するブログです。
+- [My Experience With the Great Firewall of China](http://blog.zorinaq.com/my-experience-with-the-great-firewall-of-china/) - 情報セキュリティの専門家が中国訪問中のファイアウォール体験を記したブログ。
 - [Protocol Misidentification Made Easy with Format-Transforming Encryption](https://kpdyer.com/publications/ccs2013-fte.pdf) - FTEの仕組みを扱います。
 - [Russia Passes Bill Banning Tor](https://www.themoscowtimes.com/2021/12/08/russia-blocks-tor-anonymity-service-a75760) - ロシアがVPNとTorを禁止したことに関する記事です。
 - [Scaling Tor hidden services](https://www.benthamsgaze.org/2015/11/17/scaling-tor-hidden-services/) - 隠しサービスをスケールさせる方法です。
@@ -171,8 +164,8 @@ tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Tor Hidden Services and Deanonyminization](https://www.youtube.com/watch?v=HQXRURfrf8w) - Torとそのサービスが利用者情報の露出に悪用される方法、および攻撃を防ぐ方法に関する講演です。
 - [Tor Overview](https://www.privacyguides.org/en/advanced/tor-overview/) - PrivacyguidesによるTor概要です。
 - [Understanding The Onion Router in 2024](https://www.privacyjournal.net/privacy/tor-network/) - Torとは何かを説明する2024年版の解説です。
-- [What is Tor?](https://www.amnesty.org/en/latest/campaigns/2024/02/what-is-tor-and-how-does-it-advance-human-rights/) - Tor、Onion Services、そして人権を促進する仕組みを非常によく説明します。
-## State of the Onion
+- [What is Tor?](https://www.amnesty.org/en/latest/campaigns/2024/02/what-is-tor-and-how-does-it-advance-human-rights/) - Tor、Onionサービスと人権を促進する仕組みを説明する資料。原文では解説を高く評価しています。
+## State of the Onion年次報告 <a id="state-of-the-onion"></a>
 - [2025](https://blog.torproject.org/state-of-the-onion-2025/) - 2025年のState of the Onion報告です。
 - [2024](https://blog.torproject.org/state-of-the-onion-2024/) - 2024年のState of the Onion報告です。
 - [2023](https://blog.torproject.org/state-of-the-onion-2023/) - 2023年のState of the Onion報告です。
@@ -180,7 +173,7 @@ tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [2021](https://blog.torproject.org/state-of-the-onion-2021/) - 2021年のState of the Onion報告です。
 - [2020](https://blog.torproject.org/state-of-the-onion-2020/) - 2020年のState of the Onion報告です。
 - [2019](https://www.youtube.com/watch?v=W0NR6M_08oM) - 2019年のState of the Onion報告です。
-## 内部告発
-- [GlobaLeaks](https://www.globaleaks.org/) - 誰もが安全な内部告発プラットフォームを容易にセットアップ・維持できる、無料のオープンソースソフトウェアです。
-- [SecureDrop](https://securedrop.org/) - 報道機関やNGOがインストールし、匿名の情報源から文書を安全に受け取るためのオープンソース内部告発者提出システムです。
+## 内部告発 <a id="whistleblowing"></a>
+- [GlobaLeaks](https://www.globaleaks.org/) - 誰でも安全な内部告発プラットフォームを容易に構築・維持できる、自由でオープンソースのソフトウェア。
+- [SecureDrop](https://securedrop.org/) - 報道機関やNGOがインストールし、匿名の情報源から文書を安全に受け取るためのオープンソースの内部告発情報受付システムです。
 - [WikiLeaks](https://wikileaks.org/) - 戦争、スパイ活動、汚職に関する、検閲済みまたは制限された公式資料の大規模データセットの分析・公開を専門とします。
