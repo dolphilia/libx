@@ -1,11 +1,11 @@
 ---
 title: "Awesome PHP"
-description: "Awesome PHPの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "サーバー側のスクリプト言語PHPに関する資料を案内します。このスナップショットにはリスト本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome PHP
 
-Awesome PHPの収録案内です。このスナップショットでは上流本文を転載していません。
+サーバー側で実行するスクリプト言語PHPの資料を探せるAwesome PHPへ案内します。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/ziadoz/awesome-php/blob/426f5688a47f3130ccdb396c534aca5f035f3e75/README.md)
+- [元のリストを読む](https://github.com/ziadoz/awesome-php/blob/426f5688a47f3130ccdb396c534aca5f035f3e75/README.md)

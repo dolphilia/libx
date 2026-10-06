@@ -1,11 +1,11 @@
 ---
 title: "Awesome Erlang"
-description: "Awesome Erlangの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "プログラミング言語Erlangの資料を探すためのAwesome Erlangへの案内です。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Erlang
 
-Awesome Erlangの収録案内です。このスナップショットでは上流本文を転載していません。
+プログラミング言語Erlangの資料を探すには、リンク先のAwesome Erlangを参照してください。このスナップショットにはリスト本文を転載していません。
 
-- [元のリポジトリを開く](https://github.com/drobakowski/awesome-erlang/blob/e7bd186be08ca8ad4c9803cae13d643510d7c2e2/README.md)
+- [元のリストを読む](https://github.com/drobakowski/awesome-erlang/blob/e7bd186be08ca8ad4c9803cae13d643510d7c2e2/README.md)

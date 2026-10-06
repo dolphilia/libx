@@ -1,11 +1,11 @@
 ---
 title: "Awesome D"
-description: "Awesome Dの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "プログラミング言語Dの資料を元のAwesome Dへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome D
 
-Awesome Dの収録案内です。このスナップショットでは上流本文を転載していません。
+プログラミング言語Dの資料を探せるAwesome Dへ案内します。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/dlang-community/awesome-d/blob/508bfd09b260630d896ba6c5e464619d1592e28a/README.md)
+- [元のリストを読む](https://github.com/dlang-community/awesome-d/blob/508bfd09b260630d896ba6c5e464619d1592e28a/README.md)

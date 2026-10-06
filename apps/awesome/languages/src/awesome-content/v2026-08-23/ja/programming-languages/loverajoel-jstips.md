@@ -1,11 +1,11 @@
 ---
 title: "Awesome Jstips"
-description: "Awesome Jstipsの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "JavaScriptのプログラミングのヒントを探すためのJstipsへの案内です。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Jstips
 
-Awesome Jstipsの収録案内です。このスナップショットでは上流本文を転載していません。
+JavaScriptのプログラミングのヒントを探せるJstipsへ案内します。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/loverajoel/jstips/blob/44a1df45df9635bef6d33eeae49fd181b5632205/README.md)
+- [元のリストを読む](https://github.com/loverajoel/jstips/blob/44a1df45df9635bef6d33eeae49fd181b5632205/README.md)
