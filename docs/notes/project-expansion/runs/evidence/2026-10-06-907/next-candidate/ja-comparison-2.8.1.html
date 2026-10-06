@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Diffutils
+(version 2.8.1, 5 April 2002),
+and documents the GNU diff, diff3,
+sdiff, and cmp commands for showing the
+differences between files and the GNU patch command for
+using their output to update files.
+
+Copyright C 1992, 1993, 1994, 1998, 2001, 2002 Free
+Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on 2009年9月22日 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Comparing and Merging Files: 1. 比較が意味するもの</title>
+
+<meta name="description" content="Comparing and Merging Files: 1. 比較が意味するもの">
+<meta name="keywords" content="Comparing and Merging Files: 1. 比較が意味するもの">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="ja" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Comparison"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="diff-ja_1.html#Overview" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Hunks" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja_1.html#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="ae_00af_0094e_00bc_0083a_0081_008cae_0084_008faa_0091_00b3a_0081_0099a_0082_008ba_0082_0082a_0081_00ae"></a>
+<h1 class="chapter">1. 比較が意味するもの</h1>
+<a name="index-introduction"></a>
+
+<p>二つのファイル間の差を考えるときいくつかの方法があります．差を考えるとき
+の一つの方法は，別のファイルを生成するために，まとまった行があるファイル
+から削除，挿入，または変更されているということです．<code>diff</code>は行単
+位で二つのファイルを比較し，異なっている行のまとまりを探し，そして，異なっ
+ているそれぞれのまとまりを報告します．目的によって，いくつかの書式で異なっ
+ている行を報告させることが可能です．
+</p>
+<p><small>GNU</small> <code>diff</code>では，詳細な差異を用いずにファイルが異なっている
+かどうかを表示することが可能です．それは，重要ではない差異の表示を抑制す
+る方法も提供しています．最も一般的なこととして，そのような差は単語や行の
+間の空白の数が変更されているものです．<code>diff</code>は，アルファベットの
+大文字小文字の差や，提供されている正規表現にマッチする行の差の表示を抑制
+する方法も提供しています．これらのオプションは累積されます．例えば，空白
+とアルファベットの大文字小文字の変更を無視することが可能です．
+</p>
+<p>二つのファイルの差を考えるもう一つの方法として，バイトの集合が同一または
+異なっているというのもがあります．<code>cmp</code>は二つのファイル間の差を，
+行単位ではなく，バイト単位で報告します．結果として，バイナリファイルに対
+して<code>diff</code>を使用するより，遥かに役に立つことが多いでしょう．テキ
+ストファイルに対しては，二つのファイルが同一かどうか，または，一つのファ
+イルがもう一方のファイルに前置されているかどうかを知りたいだけのとき，主
+に役に立つでしょう．
+</p>
+<p>バイト単位での変更を考慮する影響を説明するには，行単位での変更を考慮する
+ことと比較することが可能で，例えば単一の改行文字がファイルの最初にある場
+合に何が生じるかを考えてみてください．そのファイルを，最初に改行が無いだ
+けの同一の別ファイルと比較する場合，<code>diff</code>では改行がファイルに追
+加されたことを報告しますが，<code>cmp</code>では二つのファイルはほとんど全
+体が異なっていると報告するでしょう．
+</p>
+<p><code>diff3</code>は，通常三つの入力ファイルを行単位で比較し，差異のある行
+のまとまりを見つけ，それぞれの差異のある行のまとまりを報告します．その出
+力は，同じファイルを変更した二つのものの差を調べることを容易にするように
+設計されています．
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Hunks">1.1 Hunks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Groups of differing lines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#White-Space">1.2 空白とタブのスペースの差を抑制する</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Suppressing differences in white space.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Blank-Lines">1.3 空白行の差を抑制する</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Suppressing differences in blank lines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Case-Folding">1.4 大文字小文字の差を抑制する</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Suppressing differences in alphabetic case.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Specified-Folding">1.5 正規表現にマッチする行を抑制する</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Suppressing differences that match regular expressions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Brief">1.6 ファイルの差の概要</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Summarizing which files are different.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Binary">1.7 バイナリファイルと，テキストファイルの比較の強制</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Comparing binary files or forcing text comparisons.
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Hunks"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Comparison" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#White-Space" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Hunks-1"></a>
+<h2 class="section">1.1 Hunks</h2>
+<a name="index-hunks"></a>
+
+<p>二つのファイルを比較しているとき，<code>diff</code>は，<em>hunk</em>と呼ばれる
+異なっている行のまとまりが疎らに存在している両方のファイルから，共通な行
+の並びを探します．二つの同一ファイルの比較では差異のある行は無いので，一
+つの共通な行の並びが見つかり，hunkはありません．二つの全く異なるファイル
+の比較では，共通の行は無く，両方のファイルのすべての行を含んでいる一つの
+大きなhunkが生成されます．一般的に，二つの与えられたファイル間で，行のマッ
+チを調べる方法はたくさんあります．<code>diff</code>は，大きな共通行の並びを
+探しながら差異のある行を小さなhunkにして，全体のhunkの大きさを最小にする
+よう試みます．
+</p>
+<p>例えば，ファイル&lsquo;<tt>F</tt>&rsquo;は三行&lsquo;<samp>a</samp>&rsquo;，&lsquo;<samp>b</samp>&rsquo;，&lsquo;<samp>c</samp>&rsquo;を含んでいて，
+ファイル&lsquo;<tt>G</tt>&rsquo;は同じ行を逆の順序&lsquo;<samp>c</samp>&rsquo;，&lsquo;<samp>b</samp>&rsquo;，&lsquo;<samp>a</samp>&rsquo;で含んでい
+ると仮定します．<code>diff</code>が行&lsquo;<samp>c</samp>&rsquo;を共通として見つけた場合，コマ
+ンド&lsquo;<samp>diff F G</samp>&rsquo;は以下の出力を生成します．
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">1,2d0
+&lt; a
+&lt; b
+3a2,3
+&gt; b
+&gt; a
+</pre></td></tr></table>
+
+<p>しかし，その代わりに共通行&lsquo;<samp>b</samp>&rsquo;に注目する場合，以下の出力を生成します．
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">1c1
+&lt; a
+---
+&gt; c
+3c3
+&lt; c
+---
+&gt; a
+</pre></td></tr></table>
+
+<p>&lsquo;<samp>a</samp>&rsquo;が共通行として見つかる可能性もあります．<code>diff</code>は常に，ファ
+イル間の最適なマッチしている部分を見つけるわけではありません．それで実行
+がより早くなります．しかし，出力は通常可能な限り短くなるようにします．
+&lsquo;<samp>--minimal</samp>&rsquo;オプションで，このトレードオフを調整することが可能です
+(see section <a href="diff-ja_7.html#diff-Performance"><code>diff</code>の性能のトレードオフ</a>)．
+</p>
+<hr size="6">
+<a name="White-Space"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Hunks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Blank-Lines" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="c_00a9_00bac_0099_00bda_0081_00a8a_0082_00bfa_0083_0096a_0081_00aea_0082_00b9a_0083_009aa_0083_00bca_0082_00b9a_0081_00aeaa_00b7_00aea_0082_0092ae_008a_0091aa_0088_00b6a_0081_0099a_0082_008b"></a>
+<h2 class="section">1.2 空白とタブのスペースの差を抑制する</h2>
+<a name="index-blank-and-tab-difference-suppression"></a>
+<a name="index-tab-and-blank-difference-suppression"></a>
+
+<p>&lsquo;<samp>-E</samp>&rsquo;と&lsquo;<samp>--ignore-tab-expansion</samp>&rsquo;オプションは，入力のタブとス
+ペースの違いを無視します．タブは，次のタブストップまでのスペースの数に等
+しいと考えられます．<code>diff</code>は，タブストップが八文字ごとに設定され
+ている仮定します．
+</p>
+<p>&lsquo;<samp>-b</samp>&rsquo;と&lsquo;<samp>--ignore-space-change</samp>&rsquo;オプションはより強力です．そ
+れらは行末の空白を無視し，それ以外の一つ以上の空白の並びが等価であると考
+えます．これらのオプションを用いると，<code>diff</code>は以下のに行が等価で
+あると考えます．&lsquo;<samp>$</samp>&rsquo;は行末を示します．
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Here lyeth  muche rychnesse  in lytell space.   -- John Heywood$
+Here lyeth muche rychnesse in lytell space. -- John Heywood   $
+</pre></td></tr></table>
+
+<p>&lsquo;<samp>-w</samp>&rsquo;と&lsquo;<samp>--ignore-all-space</samp>&rsquo;オプションは更に強力です．それら
+は，片方の行には空白がありもう一方にはない場合でさえ，その差を無視します．
+<em>空白</em>文字とは，タブ，改行，垂直タブ，改ページ，キャリッジリターン，
+そしてスペースです．ロケールによっては，追加の文字が空白として定義されて
+いるかもしれません．これらのオプションを用いると，<code>diff</code>は以下の
+に行を等価と考えます．&lsquo;<samp>$</samp>&rsquo;は行末を示し，&lsquo;<samp>^M</samp>&rsquo;はキャリッジリター
+ンを示します．
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Here lyeth  muche  rychnesse in lytell space.--  John Heywood$
+  He relyeth much erychnes  seinly tells pace.  --John Heywood   ^M$
+</pre></td></tr></table>
+
+<hr size="6">
+<a name="Blank-Lines"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#White-Space" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Case-Folding" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="c_00a9_00bac_0099_00bde_00a1_008ca_0081_00aeaa_00b7_00aea_0082_0092ae_008a_0091aa_0088_00b6a_0081_0099a_0082_008b"></a>
+<h2 class="section">1.3 空白行の差を抑制する</h2>
+<a name="index-blank-line-difference-suppression"></a>
+
+<p>&lsquo;<samp>-B</samp>&rsquo;と&lsquo;<samp>--ignore-blank-lines</samp>&rsquo;オプションは，空白行の挿入や削
+除を無視します．これらのオプションは，完全に空の行だけに効果があります．
+それらは，空のように見えるが，スペースやタブを含んでいる行には効果があり
+ません．これらのオプションを用いると，例えばファイルが以下のものを含んで
+いると考えます．
+</p><table><tr><td>&nbsp;</td><td><pre class="example">1.  A point is that which has no part.
+
+2.  A line is breadthless length.
+-- Euclid, The Elements, I
+</pre></td></tr></table>
+<p>これは以下を含んでいるファイルと等価です．
+</p><table><tr><td>&nbsp;</td><td><pre class="example">1.  A point is that which has no part.
+2.  A line is breadthless length.
+
+
+-- Euclid, The Elements, I
+</pre></td></tr></table>
+
+<hr size="6">
+<a name="Case-Folding"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Blank-Lines" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Specified-Folding" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="aa_00a4_00a7ae_0096_0087aa_00ad_0097aa_00b0_008fae_0096_0087aa_00ad_0097a_0081_00aeaa_00b7_00aea_0082_0092ae_008a_0091aa_0088_00b6a_0081_0099a_0082_008b"></a>
+<h2 class="section">1.4 大文字小文字の差を抑制する</h2>
+<a name="index-case-difference-suppression"></a>
+
+<p><small>GNU</small> <code>diff</code>では，例えば，&lsquo;<samp>Funky Stuff</samp>&rsquo;，&lsquo;<samp>funky
+STUFF</samp>&rsquo;，そして&lsquo;<samp>fUNKy stuFf</samp>&rsquo;がすべて同じ名前だと考えるように，小文字
+がそれに対応する大文字と等価物として扱うことが可能です．こうするために，
+&lsquo;<samp>-i</samp>&rsquo;や&lsquo;<samp>--ignore-case</samp>&rsquo;オプションを使用してください．
+</p>
+<hr size="6">
+<a name="Specified-Folding"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Case-Folding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Brief" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="ae_00ad_00a3e_00a6_008fe_00a1_00a8c_008f_00bea_0081_00aba_0083_009ea_0083_0083a_0083_0081a_0081_0099a_0082_008be_00a1_008ca_0082_0092ae_008a_0091aa_0088_00b6a_0081_0099a_0082_008b"></a>
+<h2 class="section">1.5 正規表現にマッチする行を抑制する</h2>
+<a name="index-regular-expression-suppression"></a>
+
+<p><code>grep</code>-形式の正規表現にマッチする行の挿入と削除を無視するために，
+&lsquo;<samp>-I <var>regexp</var></samp>&rsquo;や&lsquo;<samp>--ignore-matching-lines=<var>regexp</var></samp>&rsquo;
+オプションを指定してください．シェルのメタ文字がシェルで展開されるのを避
+けるために，正規表現をエスケープしてください．例えば，&lsquo;<samp>diff -I
+'^[[:digit:]]'</samp>&rsquo;は，数字で始まる行のすべての変更を無視します．
+</p>
+<p>しかし&lsquo;<samp>-I</samp>&rsquo;は，hunk内のすべての変更行が &mdash; すべて挿入と削除で &mdash; 
+正規表現にマッチする場合，正規表現を含んでいる行の挿入と削除のみを無視し
+ます．言い替えると，無視できない変更に対し，それに隣接する変更の完全な組
+を無視できるものも含めて<code>diff</code>は出力します．
+</p>
+<p>一つ以上の&lsquo;<samp>-I</samp>&rsquo;オプションを使用して，行を無視するために一つ以上の
+正規表現を指定することが可能です．<code>diff</code>はそれぞれの正規表現に対
+し，それぞれの行のマッチを試みます．
+</p>
+<hr size="6">
+<a name="Brief"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Specified-Folding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Binary" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="a_0083_0095a_0082_00a1a_0082_00a4a_0083_00aba_0081_00aeaa_00b7_00aea_0081_00aeae_00a6_0082e_00a6_0081"></a>
+<h2 class="section">1.6 ファイルの差の概要</h2>
+<a name="index-summarizing-which-files-differ"></a>
+<a name="index-brief-difference-reports"></a>
+
+<p>ファイルが異なっているかどうかを知りたいだけのときで，差異が何かに注目し
+ていないとき，概要を出力する書式を使用することが可能です．この書式では，
+ファイル間の差を表示する代わりに，<code>diff</code>は単純にファイルに差異が
+あるかどうかを報告します．&lsquo;<samp>-q</samp>&rsquo;と&lsquo;<samp>--brief</samp>&rsquo;オプションでこの
+書式を選択します．
+</p>
+<p>この書式は，二つのディレクトリの内容を比較するとき特に役に立ちます．
+<code>diff</code>は，差異があることが分かるとすぐにファイルの解析を停止する
+ことが可能なので，それは普通に行ごとに比較するより遥かに速くもなります．
+</p>
+<p><code>cmp</code>を使用することで，二つのファイルが違っているかどうかを，短
+く示しているものを得ることも可能です．ファイルが異なっているとき，デフォ
+ルトで，最初の差異が発生したところで<code>cmp</code>はバイトと行番号を出力
+します．<code>cmp</code>が出力を生成せず，ファイルが異なっているかどうかを
+終了ステータスだけで報告するようにするため，その情報を抑制するために
+&lsquo;<samp>-s</samp>&rsquo;オプションを使用することも可能です(see section <a href="diff-ja_13.html#Invoking-cmp"><code>cmp</code>の呼び出し</a>)．
+</p>
+<p><code>diff</code>とは異なり，<code>cmp</code>はディレクトリを比較することは不
+可能です．二つのファイルの比較のみ可能です．
+</p>
+<hr size="6">
+<a name="Binary"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Brief" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comparison" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="a_0083_0090a_0082_00a4a_0083_008aa_0083_00aaa_0083_0095a_0082_00a1a_0082_00a4a_0083_00aba_0081_00a8i_00bc_008ca_0083_0086a_0082_00ada_0082_00b9a_0083_0088a_0083_0095a_0082_00a1a_0082_00a4a_0083_00aba_0081_00aeae_00af_0094e_00bc_0083a_0081_00aeaa_00bc_00b7aa_0088_00b6"></a>
+<h2 class="section">1.7 バイナリファイルと，テキストファイルの比較の強制</h2>
+<a name="index-binary-file-diff"></a>
+<a name="index-text-versus-binary-diff"></a>
+
+<p><code>diff</code>が比較している二つのファイルのうちの一方がバイナリ(テキス
+トファイルではない)と考える場合，通常ファイルの組を概要の出力書式が選択
+されているように(see section <a href="#Brief">ファイルの差の概要</a>)扱い，バイナリファイルが異なっていること
+だけを報告します．これは，行単位での比較がバイナリファイルに対して普通は
+意味が無いためです．
+</p>
+<p>ファイルの最初の数バイトを調査して，<code>diff</code>はファイルがテキストか
+バイナリかを決定します．正確なバイト数はシステムに依存しますが，それは通
+常数千になります．ファイルの一部のすべてのバイトが&lsquo;<samp>null</samp>&rsquo;ではない場
+合，<code>diff</code>はファイルがテキストだと考えます．それ以外の場合は，ファ
+イルがバイナリだと考えます．
+</p>
+<p>ファイルがテキストファイルだと<code>diff</code>に強制的に考えさせたいときも
+あるでしょう．例えば，&lsquo;<samp>null</samp>&rsquo;文字が含まれているテキストファイルを比
+較する可能性があります．<code>diff</code>は誤って，これらをテキストファイル
+ではないと決定するでしょう．また，&lsquo;<samp>null</samp>&rsquo;文字を特殊なフォーマットを
+示すために使用するワープロシステムで使用されているフォーマットのファイル
+を比較する可能性もあります．&lsquo;<samp>-a</samp>&rsquo;や&lsquo;<samp>--text</samp>&rsquo;オプションを使用
+することで，<code>diff</code>に強制的にすべてのファイルがテキストファイルで
+あると考えさせ，行ごとにそれらを比較させることが可能です．このオプション
+を使用して比較しているファイルが，実際にはテキストを含んでいない場合，お
+そらくファイルには数個の改行文字しかなく，<code>diff</code>の出力は，ファイ
+ルに含まれているすべての文字からなる長い行の差異を表示するhunkになるでしょ
+う．
+</p>
+<p>すべてのファイルをバイナリファイルだと<code>diff</code>に強制的に考えさせ，
+ファイルが(どのように異なっているかではなく)異なっているかどうかのみを報
+告させることも可能です．このために&lsquo;<samp>-q</samp>&rsquo;や&lsquo;<samp>--brief</samp>&rsquo;オプショ
+ンを使用してください．
+</p>
+<p>バイナリファイルの差は，<code>diff</code>の出力結果がすべての差を取り切れな
+いので，問題が生じると考えられます．この問題で，<code>diff</code>はステータ
+ス2で終了します．しかし，この問題は&lsquo;<samp>--a</samp>&rsquo;や&lsquo;<samp>--text</samp>&rsquo;オプショ
+ンを用いたり，&lsquo;<samp>-q</samp>&rsquo;や&lsquo;<samp>--brief</samp>&rsquo;オプションを用いることで発生
+しないので，これらどちらのオプションでも，<code>diff</code>はバイナリファイ
+ルをテキストファイルのように扱います．
+</p>
+<p>テキストファイルとバイナリファイルで差があるオペレーティングシステムでは，
+<code>diff</code>は通常，すべてのデータをテキストとして読み書きします．代わ
+りにバイナリデータとして<code>diff</code>に読み書きさせるために，
+&lsquo;<samp>--binary</samp>&rsquo;オプションを使用してください．このオプションは，
+<small>GNU</small>や伝統的なUnixシステムのような<small>POSIX</small>-準拠のシステムでは効果
+がありません．しかし，多くのパーソナルコンピュータのオペレーティングシス
+テムでは，行末の改行の後にキャリッジリターンが存在します．そのようなシス
+テムでは，<code>diff</code>は通常入力されるこれらのキャリッジリターンを無視
+し，それぞれの出力の行末にキャリッジリターンを生成しますが，
+&lsquo;<samp>--binary</samp>&rsquo;オプションを用いると<code>diff</code>はそれぞれのキャリッ
+ジリターンをそのまま入力文字として扱い，それぞれの出力の行末にキャリッジ
+リターンを生成しません．<small>POSIX</small>-準拠のシステムで変換する予定のテキス
+トではないファイルを扱うとき，これは役に立つはずです．
+</p>
+<p>&lsquo;<samp>--strip-trailing-cr</samp>&rsquo;で，<code>diff</code>は行末の改行にキャリッジリ
+ターンが続いている入力行を普通の改行として扱います．多くのパーソナルコン
+ピュータのオペレーティングシステムからインポートされた不完全なテキストを
+比較するとき，これは役に立つはずです．このオプションは行が読み込まれる方
+法に影響があり，それは順次，比較される方法と出力の方法に影響していきます．
+</p>
+<p>二つのファイルをバイト単位で比較したい場合，二つのファイルのバイトごとの
+差の値を表示するために，&lsquo;<samp>-l</samp>&rsquo;オプションを用いて<code>cmp</code>プログ
+ラムを使用することが可能です．<small>GNU</small> <code>cmp</code>を用いると，これらの
+バイトの<small>ASCII</small>表現を表示するために&lsquo;<samp>-b</samp>&rsquo;オプションを使用するこ
+とも可能です．詳細はSee section <a href="diff-ja_13.html#Invoking-cmp"><code>cmp</code>の呼び出し</a>.
+</p>
+<p>比較しているファイルのいずれかを<code>diff3</code>がバイナリ(テキストではな
+いファイル)と考える場合，そのような比較は普通意味が無いので，通常はエラー
+を報告します．<code>diff3</code>は，ファイルがバイナリかどうかを
+<code>diff</code>が決定するテストと同じテストを使用します．<code>diff</code>を
+用いるときと同様に，入力ファイルにテキストでないバイトが含まれているが，
+それ以外はテキストファイルに似ている場合，&lsquo;<samp>-a</samp>&rsquo;や&lsquo;<samp>--text</samp>&rsquo;オ
+プションを使用することで，<code>diff3</code>にすべてのファイルをテキストファ
+イルと考えさせ，行単位での比較を強制させることが可能です．
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Comparison" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_3.html#Output-Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="diff-ja.html#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  この文書は<em>新堂 安孝</em>によって<em>2009年9月22日</em>に<a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>を用いて生成されました。
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

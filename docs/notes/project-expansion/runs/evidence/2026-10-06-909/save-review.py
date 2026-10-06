@@ -1,0 +1,25 @@
+from pathlib import Path
+import json,hashlib,datetime,shutil,ast
+N=Path('/private/tmp/libx-gnu-diffutils-formal-909/docs/notes/document-import/gnu-diffutils/v3-12');E=Path(__file__).resolve().parent;rel=Path('docs/notes/document-import/gnu-diffutils/v3-12');h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();ref=lambda p:{'path':str(rel/p.relative_to(N)),'sha256':h(p),'coverage':[[1,len(p.read_text().splitlines())]]};m=json.loads((N/'CONTENT_MAP.json').read_text());at=datetime.datetime.now(datetime.timezone.utc).isoformat()
+findings=[
+'比較する2file/対応するdirectoryfile、diff/cmp/diff3/sdiff/patchの役割、差分で更新を配布する条件と引算/足算説明、全開発者・原許諾・書誌/DOI/計算量とminimal条件を全文保持。',
+'行対バイトの比較、空白/case/regex抑制の併用、先頭改行でdiffとcmpが異なる例、diff3二組の変更とサイズで未読判定する条件を保持。',
+'共通行/hunk/同一と完全相違、a/b/cの3対応可能性と2つの完全出力、最適性と速度の兼ね合い/--minimal(-d)と原典参照を保持。',
+'-E tabstop/-Z末尾空白/-b連続空白/-w存在自体の差という強さを区別。2つの全リテラル例の末尾スペース/$/^Mと改行は無視しない説明を保持。',
+'-Bは空行だけの変更、Euclid例2つの空行位置を保持。既定の-I ^$と-b/-w/-Z併用のPOSIXspace regex条件を保持。',
+'grep式/シェル展開防止/-I各hunkの全挿入全削除一致条件/無視不能が1つあれば周辺変更一式/複数-Iを全文確認。「正規表現を含む行」を「正規表現に一致する行」へ1unitだけ修正し、前後の全行条件と参照を限定再確認。',
+'小文字化による比較/-iと--ignore-case、Funky例の改行、Straße/STRASSE、σ/ς/U+03A3/03C3/03C2、単一U+1FD6対2codepoint0399/0342の説明と文字列を保持。',
+'--brief(-q)の要約と早期停止、cmp最初の位置/一方がprefix/-s/quiet/silentと終了状態、directory非対応の差を保持。',
+'バイナリ判定/NUL/システム依存読取量、差分通知はtrouble扱いではないこと、--text/-a/brief/-q/binaryとCRLF/POSIX無効果/strip-trailing-cr、cmp verbose/printbytes、diff3 errorと強制text条件を保持。原著判定の技術監査や例実行へ拡大しない。',
+'入力snapshotなし/変化中はどの時点にも対応しない可能性、半分読取後0truncate/ディレクトリーから通常file置換と診断失敗、解釈上の注意を全文保持。']
+rows=[]
+for i,r in enumerate(m['items'][:10]):
+ ja=N/'drafts/ja'/r['id'];can=N/'canonical/ja'/r['id'];can.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ja,can);u=N/'translations'/(r['slug']+'-units.json');units=json.loads(u.read_text());rows.append({'id':r['id'],'status':'passed','method':'ai-content-review','model':'gpt-6.1-sol (POLICY preferred;runtime not independently exposed)','reviewedAt':at,'separateReviewPass':True,'allUnitsReviewed':len(units['units']),'literalPreReviewed':r['pre'],'source':ref(N/'source-fragments/en'/r['id'].replace('.md','.html')),'canonical':ref(N/r['canonical']),'translation':ref(can),'originalRaw':{'path':str(rel/'source/original/doc/diffutils.texi'),'sha256':h(N/'source/original/doc/diffutils.texi')},'savedReviewedJADraft':ref(ja),'findings':[findings[i]],'wholeFileCoverageBasis':'Separate complete saved ORIGINAL/current EN/JA body reads in groups1–3,4–6,7–10 without truncation; all headings,61 prose units,6 code/output pre,VAR/literals/links read. One06unit meaning clarification with adjacent hunk/regex conditions reread. Source technical audit/examples execution not performed. License terms reuse908 except current exact copyright line; no Japanese license translation claim.'});r.update(translation='saved',meaningReview='passed',translationCanonical='canonical/ja/'+r['id'],translationSHA256=h(can))
+review={'schemaVersion':1,'scope':[r['id'] for r in m['items']],'completedPages':10,'unreviewedPages':33,'at':at,'reviewMethod':'909 firstten: one separate complete meaning pass each page; one06regex wording clarification only. Remaining33 unreviewed.','pages':rows+[{'id':r['id'],'status':'pending','reason':'Japanese translation and whole meaning review not yet performed'} for r in m['items'][10:]],'originalLicenseTermsReuse':'908/RIGHTS_DRAFT exact GFDL terms except current2022–2025 copyright; current1992–1994/1998/2001–2002/2004/2006/2009–2025docnotice preserved. English-only appendix-license excluded from43 guide translation scope.'};(N/'REVIEW_MANIFEST.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n');m.update(meaningReview='10passed/33pending',Japanese='10saved/33pending');(N/'CONTENT_MAP.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n');shutil.copyfile(N/'REVIEW_MANIFEST.json',E/'REVIEW_FROZEN.json')
+node=next(n for n in ast.parse((E/'save-ja-batch1.py').read_text()).body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='pages' for t in n.targets));initial=ast.literal_eval(node.value);delta=[]
+for slug,v in initial.items():
+ now=json.loads((N/'translations'/(slug+'-ja.json')).read_text());assert len(now)==len(v)
+ for i,(a,b) in enumerate(zip(v,now)):
+  if a!=b:delta.append({'slug':slug,'unit':i,'before':a,'after':b})
+assert len(delta)==1 and delta[0]['slug']=='06-specified-lines' and delta[0]['unit']==2
+(E/'BATCH1_DRAFT_DELTA_BINDING.json').write_text(json.dumps({'status':'passed','at':at,'pages':10,'totalTranslationUnits':61,'changedUnits':delta,'otherNineTranslationInputsExact':True},ensure_ascii=False,indent=2)+'\n');f=json.loads((E/'MEANING_FINDING.json').read_text());f.update(status='passed',deltaReview='Fixed wording read after save, matches preceding grep-style regex and all-insertion/all-deletion condition. Remaining61 units received one whole pass only.',reviewedAt=at);(E/'MEANING_DELTA_REVIEW.json').write_text(json.dumps(f,ensure_ascii=False,indent=2)+'\n');print('909 meaning reviews10/61units/6pre;oneunit clarification;pending33')

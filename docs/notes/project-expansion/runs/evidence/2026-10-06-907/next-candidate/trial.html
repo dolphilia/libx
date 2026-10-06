@@ -1,0 +1,1754 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>GNU diffutils3.12原文変換試験</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:900px;margin:0 auto;padding:24px;color:#172331;background:#fff}h1,h2,h3,h4{line-height:1.35}a{color:#28619b}pre{white-space:pre;overflow:auto;padding:16px;border:1px solid #d0d8e2;background:#f6f8fa;max-width:100%;font-size:14px}code,samp,var{font-family:ui-monospace,monospace}dd{min-width:0;margin-left:24px}dt{margin-top:12px}p,dd,li{overflow-wrap:anywhere}h2,h3,h4{scroll-margin-top:16px}@media(max-width:600px){body{padding:18px}dd{margin-left:16px}}</style><h1>GNU diffutils3.12 原文変換試験 — 概要・第1〜4章</h1><p>採用前の表示試験。原著者David MacKenzie, Paul Eggert, Richard Stallman／Free Software Foundation。文書GFDL1.3-or-later、不変節・表紙文言なし。原著通知・ライセンス全文は固定原文参照。プログラム・掲載例は実行しません。</p><p><a href="manual.html">固定原文全文</a> · <a href="diffutils-3.12/doc/diffutils.texi">原Texinfo</a></p><div class="gnu-diffutils-original-content"><div class="unnumbered-level-extent" id="Overview">
+<h2 class="unnumbered" id="Overview-1"><span>Overview</span></h2>
+<a class="index-entry-id" id="index-overview-of-diff-and-patch"></a>
+<p>Computer users often find occasion to ask how two files differ.  Perhaps
+one file is a newer version of the other file.  Or maybe the two files
+started out as identical copies but were changed by different people.
+</p>
+<p>You can use the <code class="command">diff</code> command to show differences between two
+files, or each corresponding file in two directories.  <code class="command">diff</code>
+outputs differences between files line by line in any of several
+formats, selectable by command line options.  This set of differences is
+often called a <em class="dfn">diff</em> or <em class="dfn">patch</em>.  For files that are identical,
+<code class="command">diff</code> normally produces no output; for binary (non-text) files,
+<code class="command">diff</code> normally reports only that they are different.
+</p>
+<p>You can use the <code class="command">cmp</code> command to show the byte and line numbers
+where two files differ.  <code class="command">cmp</code> can also show all the bytes
+that differ between the two files, side by side.  A way to compare
+two files character by character is the Emacs command <kbd class="kbd">M-x
+compare-windows</kbd>.  See <a data-manual="emacs" href="https://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Other-Window">Other Window</a> in <cite class="cite">The GNU
+Emacs Manual</cite>, for more information on that command.
+</p>
+<p>You can use the <code class="command">diff3</code> command to show differences among three
+files.  When two people have made independent changes to a common
+original, <code class="command">diff3</code> can report the differences between the original
+and the two changed versions, and can produce a merged file that
+contains both persons’ changes together with warnings about conflicts.
+</p>
+<p>You can use the <code class="command">sdiff</code> command to merge two files interactively.
+</p>
+<p>You can use the set of differences produced by <code class="command">diff</code> to distribute
+updates to text files (such as program source code) to other people.
+This method is especially useful when the differences are small compared
+to the complete files.  Given <code class="command">diff</code> output, you can use the
+<code class="command">patch</code> program to update, or <em class="dfn">patch</em>, a copy of the file.  If you
+think of <code class="command">diff</code> as subtracting one file from another to produce
+their difference, you can think of <code class="command">patch</code> as adding the difference
+to one file to reproduce the other.
+</p>
+<p>This manual first concentrates on making diffs, and later shows how to
+use diffs to update files.
+</p>
+<p>GNU <code class="command">diff</code> was written by Paul Eggert, Mike Haertel,
+David Hayes, Richard Stallman, and Len Tower.  Wayne Davison designed and
+implemented the unified output format.  The basic algorithm is described
+by Eugene W. Myers in “An O(ND) Difference Algorithm and its Variations”,
+<cite class="cite">Algorithmica</cite> Vol. 1, 1986, pp. 251–266,
+<a class="url" href="http://dx.doi.org/10.1007/BF01840446">http://dx.doi.org/10.1007/BF01840446</a>; and in “A File
+Comparison Program”, Webb Miller and Eugene W. Myers,
+<cite class="cite">Software—Practice and Experience</cite> Vol. 15, 1985,
+pp. 1025–1040,
+<a class="url" href="http://dx.doi.org/10.1002/spe.4380151102">http://dx.doi.org/10.1002/spe.4380151102</a>.
+The algorithm was independently discovered as described by Esko Ukkonen in
+“Algorithms for Approximate String Matching”,
+<cite class="cite">Information and Control</cite> Vol. 64, 1985, pp. 100–118,
+<a class="url" href="http://dx.doi.org/10.1016/S0019-9958(85)80046-2">http://dx.doi.org/10.1016/S0019-9958(85)80046-2</a>.
+Unless the <samp class="option">--minimal</samp> option is used, <code class="command">diff</code> uses a
+heuristic by Paul Eggert that limits the cost to <em class="math">O(N^1.5 log N)</em>
+at the price of producing suboptimal output for large inputs with many
+differences.  Related algorithms are surveyed by Alfred V. Aho in
+section 6.3 of “Algorithms for Finding Patterns in Strings”,
+<cite class="cite">Handbook of Theoretical Computer Science</cite> (Jan Van Leeuwen,
+ed.), Vol. A, <cite class="cite">Algorithms and Complexity</cite>, Elsevier/MIT Press,
+1990, pp. 255–300.
+</p>
+<p>GNU <code class="command">diff3</code> was written by Randy Smith.  GNU
+<code class="command">sdiff</code> was written by Thomas Lord.  GNU <code class="command">cmp</code>
+was written by Torbjörn Granlund and David MacKenzie.
+</p>
+<p>GNU <code class="command">patch</code> was written mainly by Larry Wall and Paul Eggert;
+several GNU enhancements were contributed by Wayne Davison and
+David MacKenzie.  Parts of this manual are adapted from a manual page
+written by Larry Wall, with his permission.
+</p>
+<hr>
+</div><div class="chapter-level-extent" id="Comparison">
+<h2 class="chapter" id="What-Comparison-Means"><span>1 What Comparison Means</span></h2>
+<a class="index-entry-id" id="index-introduction"></a>
+<p>There are several ways to think about the differences between two files.
+One way to think of the differences is as a series of lines that were
+deleted from, inserted in, or changed in one file to produce the other
+file.  <code class="command">diff</code> compares two files line by line, finds groups of
+lines that differ, and reports each group of differing lines.  It can
+report the differing lines in several formats, which have different
+purposes.
+</p>
+<p>GNU <code class="command">diff</code> can show whether files are different
+without detailing the differences.  It also provides ways to suppress
+certain kinds of differences that are not important to you.  Most
+commonly, such differences are changes in the amount of white space
+between words or lines.  <code class="command">diff</code> also provides ways to suppress
+differences in alphabetic case or in lines that match a regular
+expression that you provide.  These options can accumulate; for
+example, you can ignore changes in both white space and alphabetic
+case.
+</p>
+<p>Another way to think of the differences between two files is as a
+sequence of pairs of bytes that can be either identical or
+different.  <code class="command">cmp</code> reports the differences between two files
+byte by byte, instead of line by line.  As a result, it is often
+more useful than <code class="command">diff</code> for comparing binary files.  For text
+files, <code class="command">cmp</code> is useful mainly when you want to know only whether
+two files are identical, or whether one file is a prefix of the other.
+</p>
+<p>To illustrate the effect that considering changes byte by byte
+can have compared with considering them line by line, think of what
+happens if a single newline character is added to the beginning of a
+file.  If that file is then compared with an otherwise identical file
+that lacks the newline at the beginning, <code class="command">diff</code> will report that a
+blank line has been added to the file, while <code class="command">cmp</code> will report that
+almost every byte of the two files differs.
+</p>
+<p><code class="command">diff3</code> normally compares three input files line by line, finds
+groups of lines that differ, and reports each group of differing lines.
+Its output is designed to make it easy to inspect two different sets of
+changes to the same file.
+</p>
+<p>These commands compare input files without necessarily reading them.
+For example, if <code class="command">diff</code> is asked simply to report whether two
+files differ, and it discovers that the files have different sizes, it
+need not read them to do its job.
+</p>
+<hr>
+<div class="section-level-extent" id="Hunks">
+<h3 class="section" id="Hunks-1"><span>1.1 Hunks</span></h3>
+<a class="index-entry-id" id="index-hunks"></a>
+<p>When comparing two files, <code class="command">diff</code> finds sequences of lines common to
+both files, interspersed with groups of differing lines called
+<em class="dfn">hunks</em>.  Comparing two identical files yields one sequence of
+common lines and no hunks, because no lines differ.  Comparing two
+entirely different files yields no common lines and one large hunk that
+contains all lines of both files.  In general, there are many ways to
+match up lines between two given files.  <code class="command">diff</code> tries to minimize
+the total hunk size by finding large sequences of common lines
+interspersed with small hunks of differing lines.
+</p>
+<p>For example, suppose the file <samp class="file">F</samp> contains the three lines
+‘<samp class="samp">a</samp>’, ‘<samp class="samp">b</samp>’, ‘<samp class="samp">c</samp>’, and the file <samp class="file">G</samp> contains the same
+three lines in reverse order ‘<samp class="samp">c</samp>’, ‘<samp class="samp">b</samp>’, ‘<samp class="samp">a</samp>’.  If
+<code class="command">diff</code> finds the line ‘<samp class="samp">c</samp>’ as common, then the command
+‘<samp class="samp">diff F G</samp>’ produces this output:
+</p>
+<div class="example">
+<pre class="example-preformatted">1,2d0
+&lt; a
+&lt; b
+3a2,3
+&gt; b
+&gt; a
+</pre></div>
+<p>But if <code class="command">diff</code> notices the common line ‘<samp class="samp">b</samp>’ instead, it produces
+this output:
+</p>
+<div class="example">
+<pre class="example-preformatted">1c1
+&lt; a
+---
+&gt; c
+3c3
+&lt; c
+---
+&gt; a
+</pre></div>
+<p>It is also possible to find ‘<samp class="samp">a</samp>’ as the common line.  <code class="command">diff</code>
+does not always find an optimal matching between the files; it takes
+shortcuts to run faster.  But its output is usually close to the
+shortest possible.  You can adjust this tradeoff with the
+<samp class="option">--minimal</samp> (<samp class="option">-d</samp>) option (see <a class="pxref" href="manual.html#diff-Performance"><code class="command">diff</code> Performance Tradeoffs</a>).
+</p>
+<hr>
+</div>
+<div class="section-level-extent" id="White-Space">
+<h3 class="section" id="Suppressing-Differences-in-Blank-and-Tab-Spacing"><span>1.2 Suppressing Differences in Blank and Tab Spacing</span></h3>
+<a class="index-entry-id" id="index-blank-and-tab-difference-suppression"></a>
+<a class="index-entry-id" id="index-tab-and-blank-difference-suppression"></a>
+<p>The <samp class="option">--ignore-tab-expansion</samp> (<samp class="option">-E</samp>) option ignores the
+distinction between tabs and spaces on input.  A tab is considered to be
+equivalent to the number of spaces to the next tab stop (see <a class="pxref" href="manual.html#Tabs">Preserving Tab Stop Alignment</a>).
+</p>
+<p>The <samp class="option">--ignore-trailing-space</samp> (<samp class="option">-Z</samp>) option ignores white
+space at line end.
+</p>
+<p>The <samp class="option">--ignore-space-change</samp> (<samp class="option">-b</samp>) option is stronger than
+<samp class="option">-E</samp> and <samp class="option">-Z</samp> combined.
+It ignores white space at line end, and considers all other sequences of
+one or more white space characters within a line to be equivalent.  With this
+option, <code class="command">diff</code> considers the following two lines to be equivalent,
+where ‘<samp class="samp">$</samp>’ denotes the line end:
+</p>
+<div class="example">
+<pre class="example-preformatted">Here lyeth  muche rychnesse  in lytell space.   -- John Heywood$
+Here lyeth muche rychnesse in lytell space. -- John Heywood   $
+</pre></div>
+<p>The <samp class="option">--ignore-all-space</samp> (<samp class="option">-w</samp>) option is stronger still.
+It ignores differences even if one line has white space where
+the other line has none.  <em class="dfn">White space</em> characters include
+tab, vertical tab, form feed, carriage return, and space;
+some locales may define additional characters to be white space.
+With this option, <code class="command">diff</code> considers the
+following two lines to be equivalent, where ‘<samp class="samp">$</samp>’ denotes the line
+end and ‘<samp class="samp">^M</samp>’ denotes a carriage return:
+</p>
+<div class="example">
+<pre class="example-preformatted">Here lyeth  muche  rychnesse in lytell space.--  John Heywood$
+  He relyeth much erychnes  seinly tells pace.  --John Heywood   ^M$
+</pre></div>
+<p>For many other programs newline is also a white space character, but
+<code class="command">diff</code> is a line-oriented program and a newline character
+always ends a line.  Hence the <samp class="option">-w</samp> or
+<samp class="option">--ignore-all-space</samp> option does not ignore newline-related
+changes; it ignores only other white space changes.
+</p>
+<hr>
+</div>
+<div class="section-level-extent" id="Blank-Lines">
+<h3 class="section" id="Suppressing-Differences-Whose-Lines-Are-All-Blank"><span>1.3 Suppressing Differences Whose Lines Are All Blank</span></h3>
+<a class="index-entry-id" id="index-blank-line-difference-suppression"></a>
+<p>The <samp class="option">--ignore-blank-lines</samp> (<samp class="option">-B</samp>) option ignores changes
+that consist entirely of blank lines.  With this option, for example, a
+file containing
+</p><div class="example">
+<pre class="example-preformatted">1.  A point is that which has no part.
+
+2.  A line is breadthless length.
+-- Euclid, The Elements, I
+</pre></div>
+<p>is considered identical to a file containing
+</p><div class="example">
+<pre class="example-preformatted">1.  A point is that which has no part.
+2.  A line is breadthless length.
+
+
+-- Euclid, The Elements, I
+</pre></div>
+<p>Normally this option affects only lines that are completely empty, but
+if you also specify an option that ignores trailing spaces,
+lines are also affected if they look empty but contain white space.
+In other words, <samp class="option">-B</samp> is equivalent to ‘<samp class="samp">-I '^$'</samp>’ by
+default, but it is equivalent to <samp class="option">-I '^[[:space:]]*$'</samp> if
+<samp class="option">-b</samp>, <samp class="option">-w</samp> or <samp class="option">-Z</samp> is also specified.
+</p>
+<hr>
+</div>
+<div class="section-level-extent" id="Specified-Lines">
+<h3 class="section" id="Suppressing-Differences-Whose-Lines-All-Match-a-Regular-Expression"><span>1.4 Suppressing Differences Whose Lines All Match a Regular Expression</span></h3>
+<a class="index-entry-id" id="index-regular-expression-suppression"></a>
+<p>To ignore insertions and deletions of lines that match a
+<code class="command">grep</code>-style regular expression, use the
+<samp class="option">--ignore-matching-lines=<var class="var">regexp</var></samp> (<samp class="option">-I <var class="var">regexp</var></samp>) option.
+You should escape
+regular expressions that contain shell metacharacters to prevent the
+shell from expanding them.  For example, ‘<samp class="samp">diff -I '^[[:digit:]]'</samp>’ ignores
+all changes to lines beginning with a digit.
+</p>
+<p>However, <samp class="option">-I</samp> only ignores the insertion or deletion of lines that
+contain the regular expression if every changed line in the hunk—every
+insertion and every deletion—matches the regular expression.  In other
+words, for each nonignorable change, <code class="command">diff</code> prints the complete set
+of changes in its vicinity, including the ignorable ones.
+</p>
+<p>You can specify more than one regular expression for lines to ignore by
+using more than one <samp class="option">-I</samp> option.  <code class="command">diff</code> tries to match each
+line against each regular expression.
+</p>
+<hr>
+</div>
+<div class="section-level-extent" id="Case-Folding">
+<h3 class="section" id="Suppressing-Case-Differences"><span>1.5 Suppressing Case Differences</span></h3>
+<a class="index-entry-id" id="index-case-difference-suppression"></a>
+<p>GNU <code class="command">diff</code> can treat capital letters as
+equivalent to their small counterparts, so that, for example, it
+considers ‘<samp class="samp">Funky Stuff</samp>’, ‘<samp class="samp">funky STUFF</samp>’, and ‘<samp class="samp">fUNKy
+stuFf</samp>’ to all be the same.  To request this, use the <samp class="option">-i</samp> or
+<samp class="option">--ignore-case</samp> option.
+</p>
+<p>When ignoring case <code class="command">diff</code> downcases each character before comparing it.
+For example, ‘<samp class="samp">diff -i</samp>’ downcases Greek capital “Δ” to small
+“δ” before comparison.  Although this works for many cases, it may
+have problems in some.  For example:
+</p>
+<ul class="itemize mark-bullet">
+<li>The German word “Straße” is not treated like “STRASSE” as
+many Germans might expect, because the two words downcase to
+“straße” and “strasse” respectively.
+</li><li>The Greek name “Κως” is not treated like “ΚΩΣ”
+even though they both end in sigma,
+because the latter’s trailing “Σ” (U+03A3 GREEK CAPITAL LETTER SIGMA)
+downcases to “σ” (U+03C3 GREEK SMALL LETTER SIGMA) instead
+of to “ς” (U+03C2 GREEK SMALL LETTER FINAL SIGMA).
+</li><li>The ancient Greek phrase “Πάντα ῥεῖ” is not treated like “ΠΆΝΤΑ ῬΕΙ͂”,
+as the former’s trailing “ῖ” is the single character U+1FD6 (GREEK
+SMALL LETTER IOTA WITH PERISPOMENI) whereas the latter’s trailing
+“Ι͂” has two characters, U+0399 (GREEK CAPITAL LETTER IOTA) and
+U+0342 (COMBINING GREEK PERISPOMENI).
+</li></ul>
+<hr>
+</div>
+<div class="section-level-extent" id="Brief">
+<h3 class="section" id="Summarizing-Which-Files-Differ"><span>1.6 Summarizing Which Files Differ</span></h3>
+<a class="index-entry-id" id="index-summarizing-which-files-differ"></a>
+<a class="index-entry-id" id="index-brief-difference-reports"></a>
+<p>When you only want to find out whether files are different, and you
+don’t care what the differences are, you can use the summary output
+format.  In this format, instead of showing the differences between the
+files, <code class="command">diff</code> simply reports whether files differ.  The
+<samp class="option">--brief</samp> (<samp class="option">-q</samp>) option selects this output format.
+</p>
+<p>This format is especially useful when comparing the contents of two
+directories.  It is also much faster than doing the normal line by line
+comparisons, because <code class="command">diff</code> can stop analyzing the files as soon as
+it knows that there are any differences.
+</p>
+<p>You can also get a brief indication of whether two files differ by using
+<code class="command">cmp</code>.  For files that are identical, <code class="command">cmp</code> produces no
+output.  When the files differ, by default, <code class="command">cmp</code> outputs the byte
+and line number where the first difference occurs, or reports that one
+file is a prefix of the other.  You can use
+the <samp class="option">-s</samp>, <samp class="option">--quiet</samp>, or <samp class="option">--silent</samp> option to
+suppress that information, so that <code class="command">cmp</code>
+produces no output and reports whether the files differ using only its
+exit status (see <a class="pxref" href="manual.html#Invoking-cmp">Invoking <code class="command">cmp</code></a>).
+</p>
+<p>Unlike <code class="command">diff</code>, <code class="command">cmp</code> cannot compare directories; it can only
+compare two files.
+</p>
+<hr>
+</div>
+<div class="section-level-extent" id="Binary">
+<h3 class="section" id="Binary-Files-and-Forcing-Text-Comparisons"><span>1.7 Binary Files and Forcing Text Comparisons</span></h3>
+<a class="index-entry-id" id="index-binary-file-diff"></a>
+<a class="index-entry-id" id="index-text-versus-binary-diff"></a>
+<p>If <code class="command">diff</code> thinks that either of the two files it is comparing is
+binary (a non-text file), it normally treats that pair of files much as
+if the summary output format had been selected (see <a class="pxref" href="manual.html#Brief">Summarizing Which Files Differ</a>), and
+reports only that the binary files are different.  This is because line
+by line comparisons are usually not meaningful for binary files.
+This does not count as trouble, even though the resulting output does
+not capture all the differences.
+</p>
+<p><code class="command">diff</code> determines whether a file is text or binary by checking the
+first few bytes in the file; the exact number of bytes is system
+dependent, but it is typically several thousand.  If every byte in
+that part of the file is non-null, <code class="command">diff</code> considers the file to be
+text; otherwise it considers the file to be binary.
+</p>
+<p>Sometimes you might want to force <code class="command">diff</code> to consider files to be
+text.  For example, you might be comparing text files that contain
+null characters; <code class="command">diff</code> would erroneously decide that those are
+non-text files.  Or you might be comparing documents that are in a
+format used by a word processing system that uses null characters to
+indicate special formatting.  You can force <code class="command">diff</code> to consider all
+files to be text files, and compare them line by line, by using the
+<samp class="option">--text</samp> (<samp class="option">-a</samp>) option.  If the files you compare using this
+option do not in fact contain text, they will probably contain few
+newline characters, and the <code class="command">diff</code> output will consist of hunks
+showing differences between long lines of whatever characters the files
+contain.
+</p>
+<p>You can also force <code class="command">diff</code> to report only whether files differ
+(but not how).  Use the <samp class="option">--brief</samp> (<samp class="option">-q</samp>) option for
+this.
+</p>
+<p>In operating systems that distinguish between text and binary files,
+<code class="command">diff</code> normally reads and writes all data as text.  Use the
+<samp class="option">--binary</samp> option to force <code class="command">diff</code> to read and write binary
+data instead.  This option has no effect on a POSIX-compliant system
+like GNU or traditional Unix.  However, many personal computer
+operating systems represent the end of a line with a carriage return
+followed by a newline.  On such systems, <code class="command">diff</code> normally ignores
+these carriage returns on input and generates them at the end of each
+output line, but with the <samp class="option">--binary</samp> option <code class="command">diff</code> treats
+each carriage return as just another input character, and does not
+generate a carriage return at the end of each output line.  This can be
+useful when dealing with non-text files that are meant to be
+interchanged with POSIX-compliant systems.
+</p>
+<p>The <samp class="option">--strip-trailing-cr</samp> causes <code class="command">diff</code> to treat input
+lines that end in carriage return followed by newline as if they end
+in plain newline.  This can be useful when comparing text that is
+imperfectly imported from many personal computer operating systems.
+This option affects how lines are read, which in turn affects how they
+are compared and output.
+</p>
+<p>If you want to compare two files byte by byte, you can use the
+<code class="command">cmp</code> program with the <samp class="option">--verbose</samp> (<samp class="option">-l</samp>)
+option to show the values of each differing byte in the two files.
+With GNU <code class="command">cmp</code>, you can also use the <samp class="option">-b</samp> or
+<samp class="option">--print-bytes</samp> option to show the ASCII representation of
+those bytes.  See <a class="xref" href="manual.html#Invoking-cmp">Invoking <code class="command">cmp</code></a>, for more information.
+</p>
+<p>If <code class="command">diff3</code> thinks that any of the files it is comparing is binary
+(a non-text file), it normally reports an error, because such
+comparisons are usually not useful.  <code class="command">diff3</code> uses the same test as
+<code class="command">diff</code> to decide whether a file is binary.  As with <code class="command">diff</code>, if
+the input files contain a few non-text bytes but otherwise are like
+text files, you can force <code class="command">diff3</code> to consider all files to be text
+files and compare them line by line by using the <samp class="option">-a</samp> or
+<samp class="option">--text</samp> option.
+</p>
+<hr>
+</div>
+<div class="section-level-extent" id="Mutating-Files">
+<h3 class="section" id="Comparing-Files-While-They-Are-Changing"><span>1.8 Comparing Files While They Are Changing</span></h3>
+<a class="index-entry-id" id="index-mutating-files"></a>
+<p>Commands like <code class="command">diff</code> read files and directories by using a
+series of system calls, as operating systems typically do not give a
+program a way to snapshot all its input before processing it.
+If input files change while being read, <code class="command">diff</code> and related
+commands can generate output that does not correspond to any state of
+the input file system.
+</p>
+<p>For example, if some other process truncates a file to zero size when
+<code class="command">diff</code> has read just half the file, <code class="command">diff</code> will use
+the half that it read as its input data.  As another example, if a
+recursive <code class="command">diff</code> determines that a file is a directory, and
+then some other process replaces the directory with a regular file,
+and then <code class="command">diff</code> attempts to descend into the directory,
+<code class="command">diff</code> will issue a diagnostic and fail.
+</p>
+<p>In these situations the output of <code class="command">diff</code> and related programs
+should be interpreted with some care.
+</p>
+<hr>
+</div>
+</div><div class="chapter-level-extent" id="Output-Formats">
+<h2 class="chapter" id="diff-Output-Formats"><span>2 <code class="command">diff</code> Output Formats</span></h2>
+<a class="index-entry-id" id="index-output-formats"></a>
+<a class="index-entry-id" id="index-format-of-diff-output"></a>
+<p><code class="command">diff</code> has several mutually exclusive options for output format.
+The following sections describe each format, illustrating how
+<code class="command">diff</code> reports the differences between two sample input files.
+</p>
+<hr>
+<div class="section-level-extent" id="Sample-diff-Input">
+<h3 class="section" id="Two-Sample-Input-Files"><span>2.1 Two Sample Input Files</span></h3>
+<a class="index-entry-id" id="index-diff-sample-input"></a>
+<a class="index-entry-id" id="index-sample-input-for-diff"></a>
+<p>Here are two sample files that we will use in numerous examples to
+illustrate the output of <code class="command">diff</code> and how various options can change
+it.
+</p>
+<p>This is the file <samp class="file">lao</samp>:
+</p>
+<div class="example">
+<pre class="example-preformatted">The Way that can be told of is not the eternal Way;
+The name that can be named is not the eternal name.
+The Nameless is the origin of Heaven and Earth;
+The Named is the mother of all things.
+Therefore let there always be non-being,
+  so we may see their subtlety,
+And let there always be being,
+  so we may see their outcome.
+The two are the same,
+But after they are produced,
+  they have different names.
+</pre></div>
+<p>This is the file <samp class="file">tzu</samp>:
+</p>
+<div class="example">
+<pre class="example-preformatted">The Nameless is the origin of Heaven and Earth;
+The named is the mother of all things.
+
+Therefore let there always be non-being,
+  so we may see their subtlety,
+And let there always be being,
+  so we may see their outcome.
+The two are the same,
+But after they are produced,
+  they have different names.
+They both may be called deep and profound.
+Deeper and more profound,
+The door of all subtleties!
+</pre></div>
+<p>In this example, the first hunk contains just the first two lines of
+<samp class="file">lao</samp>, the second hunk contains the fourth line of <samp class="file">lao</samp>
+opposing the second and third lines of <samp class="file">tzu</samp>, and the last hunk
+contains just the last three lines of <samp class="file">tzu</samp>.
+</p>
+<hr>
+</div>
+<div class="section-level-extent" id="Context">
+<h3 class="section" id="Showing-Differences-in-Their-Context"><span>2.2 Showing Differences in Their Context</span></h3>
+<a class="index-entry-id" id="index-context-output-format"></a>
+<a class="index-entry-id" id="index-_0021-output-format"></a>
+<p>Usually, when you are looking at the differences between files, you will
+also want to see the parts of the files near the lines that differ, to
+help you understand exactly what has changed.  These nearby parts of the
+files are called the <em class="dfn">context</em>.
+</p>
+<p>GNU <code class="command">diff</code> provides two output formats that show context
+around the differing lines: <em class="dfn">context format</em> and <em class="dfn">unified
+format</em>.  It can optionally show in which function or section of the
+file the differing lines are found.
+</p>
+<p>If you are distributing new versions of files to other people in the
+form of <code class="command">diff</code> output, you should use one of the output formats
+that show context so that they can apply the diffs even if they have
+made small changes of their own to the files.  <code class="command">patch</code> can apply
+the diffs in this case by searching in the files for the lines of
+context around the differing lines; if those lines are actually a few
+lines away from where the diff says they are, <code class="command">patch</code> can adjust
+the line numbers accordingly and still apply the diff correctly.
+See <a class="xref" href="manual.html#Imperfect">Applying Imperfect Patches</a>, for more information on using <code class="command">patch</code> to apply
+imperfect diffs.
+</p>
+<hr>
+<div class="subsection-level-extent" id="Context-Format">
+<h4 class="subsection" id="Context-Format-1"><span>2.2.1 Context Format</span></h4>
+<p>The context output format shows several lines of context around the
+lines that differ.  It is the standard format for distributing updates
+to source code.
+</p>
+<p>To select this output format, use the
+<samp class="option">--context<span class="r">[</span>=<var class="var">lines</var><span class="r">]</span></samp> (<samp class="option">-C <var class="var">lines</var></samp>)
+or <samp class="option">-c</samp> option.  The
+argument <var class="var">lines</var> that some of these options take is the number of
+lines of context to show.  If you do not specify <var class="var">lines</var>, it
+defaults to three.  For proper operation, <code class="command">patch</code> typically needs
+at least two lines of context.
+</p>
+<hr>
+<div class="subsubsection-level-extent" id="Example-Context">
+<h4 class="subsubsection" id="An-Example-of-Context-Format"><span>2.2.1.1 An Example of Context Format</span></h4>
+<p>Here is the output of ‘<samp class="samp">diff -c lao tzu</samp>’ (see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>,
+for the complete contents of the two files).  Notice that up to three
+lines that are not different are shown around each line that is
+different; they are the context lines.  Also notice that the first two
+hunks have run together, because their contents overlap.
+</p>
+<div class="example">
+<pre class="example-preformatted">*** lao	2002-02-21 23:30:39.942229878 -0800
+--- tzu	2002-02-21 23:30:50.442260588 -0800
+***************
+*** 1,7 ****
+- The Way that can be told of is not the eternal Way;
+- The name that can be named is not the eternal name.
+  The Nameless is the origin of Heaven and Earth;
+! The Named is the mother of all things.
+  Therefore let there always be non-being,
+    so we may see their subtlety,
+  And let there always be being,
+--- 1,6 ----
+  The Nameless is the origin of Heaven and Earth;
+! The named is the mother of all things.
+! 
+  Therefore let there always be non-being,
+    so we may see their subtlety,
+  And let there always be being,
+***************
+*** 9,11 ****
+--- 8,13 ----
+  The two are the same,
+  But after they are produced,
+    they have different names.
++ They both may be called deep and profound.
++ Deeper and more profound,
++ The door of all subtleties!
+</pre></div>
+<hr>
+</div>
+<div class="subsubsection-level-extent" id="Less-Context">
+<h4 class="subsubsection" id="An-Example-of-Context-Format-with-Less-Context"><span>2.2.1.2 An Example of Context Format with Less Context</span></h4>
+<p>Here is the output of ‘<samp class="samp">diff -C 1 lao tzu</samp>’ (see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files).  Notice that at
+most one context line is reported here.
+</p>
+<div class="example">
+<pre class="example-preformatted">*** lao	2002-02-21 23:30:39.942229878 -0800
+--- tzu	2002-02-21 23:30:50.442260588 -0800
+***************
+*** 1,5 ****
+- The Way that can be told of is not the eternal Way;
+- The name that can be named is not the eternal name.
+  The Nameless is the origin of Heaven and Earth;
+! The Named is the mother of all things.
+  Therefore let there always be non-being,
+--- 1,4 ----
+  The Nameless is the origin of Heaven and Earth;
+! The named is the mother of all things.
+! 
+  Therefore let there always be non-being,
+***************
+*** 11 ****
+--- 10,13 ----
+    they have different names.
++ They both may be called deep and profound.
++ Deeper and more profound,
++ The door of all subtleties!
+</pre></div>
+<hr>
+</div>
+<div class="subsubsection-level-extent" id="Detailed-Context">
+<h4 class="subsubsection" id="Detailed-Description-of-Context-Format"><span>2.2.1.3 Detailed Description of Context Format</span></h4>
+<p>The context output format starts with a two-line header, which looks
+like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">*** <var class="var">from-file</var> <var class="var">from-file-modification-time</var>
+--- <var class="var">to-file</var> <var class="var">to-file-modification time</var>
+</pre></div>
+<p><a class="index-entry-id" id="index-LC_005fTIME"></a>
+<a class="index-entry-id" id="index-timestamp-format_002c-context-diffs"></a></p>
+<p>The timestamp normally looks like ‘<samp class="samp">2002-02-21 23:30:39.942229878
+-0800</samp>’ to indicate the date, time with fractional seconds, and time
+zone in <a class="uref" href="ftp://ftp.isi.edu/in-notes/rfc2822.txt">Internet RFC
+2822 format</a>.  (The fractional seconds are omitted on hosts that do
+not support fractional timestamps.)  However, a traditional timestamp
+like ‘<samp class="samp">Thu Feb 21 23:30:39 2002</samp>’ is used if the
+<code class="env">LC_TIME</code> locale category is either ‘<samp class="samp">C</samp>’ or ‘<samp class="samp">POSIX</samp>’.
+</p>
+<p>You can change the header’s content with the
+<samp class="option">--label=<var class="var">label</var></samp> option; see <a class="ref" href="manual.html#Alternate-Names">Showing Alternate File Names</a>.
+</p>
+<p>Next come one or more hunks of differences; each hunk shows one area
+where the files differ.  Context format hunks look like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">***************
+*** <var class="var">from-file-line-numbers</var> ****
+  <var class="var">from-file-line</var>
+  <var class="var">from-file-line</var>...
+--- <var class="var">to-file-line-numbers</var> ----
+  <var class="var">to-file-line</var>
+  <var class="var">to-file-line</var>...
+</pre></div>
+<p>If a hunk contains two or more lines, its line numbers look like
+‘<samp class="samp"><var class="var">start</var>,<var class="var">end</var></samp>’.  Otherwise only its end line number
+appears.  An empty hunk is considered to end at the line that precedes
+the hunk.
+</p>
+<p>The lines of context around the lines that differ start with two space
+characters.  The lines that differ between the two files start with one
+of the following indicator characters, followed by a space character:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">!</samp>’</dt>
+<dd><p>A line that is part of a group of one or more lines that changed between
+the two files.  There is a corresponding group of lines marked with
+‘<samp class="samp">!</samp>’ in the part of this hunk for the other file.
+</p>
+</dd>
+<dt>‘<samp class="samp">+</samp>’</dt>
+<dd><p>An “inserted” line in the second file that corresponds to nothing in
+the first file.
+</p>
+</dd>
+<dt>‘<samp class="samp">-</samp>’</dt>
+<dd><p>A “deleted” line in the first file that corresponds to nothing in the
+second file.
+</p></dd>
+</dl>
+<p>If all of the changes in a hunk are insertions, the lines of
+<var class="var">from-file</var> are omitted.  If all of the changes are deletions, the
+lines of <var class="var">to-file</var> are omitted.
+</p>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Unified-Format">
+<h4 class="subsection" id="Unified-Format-1"><span>2.2.2 Unified Format</span></h4>
+<a class="index-entry-id" id="index-unified-output-format"></a>
+<a class="index-entry-id" id="index-_002b_002d-output-format"></a>
+<p>The unified output format is a variation on the context format that is
+more compact because it omits redundant context lines.  To select this
+output format, use the
+<samp class="option">--unified<span class="r">[</span>=<var class="var">lines</var><span class="r">]</span></samp> (<samp class="option">-U <var class="var">lines</var></samp>),
+or <samp class="option">-u</samp> option.
+The argument <var class="var">lines</var> is the number of lines of context to show.
+When it is not given, it defaults to three.
+</p>
+<p>In the early 1990s, only GNU <code class="command">diff</code> could produce this format and
+only GNU <code class="command">patch</code> could automatically apply diffs in this
+format.  For proper operation, <code class="command">patch</code> typically needs at
+least three lines of context.
+</p>
+<hr>
+<div class="subsubsection-level-extent" id="Example-Unified">
+<h4 class="subsubsection" id="An-Example-of-Unified-Format"><span>2.2.2.1 An Example of Unified Format</span></h4>
+<p>Here is the output of the command ‘<samp class="samp">diff -u lao tzu</samp>’
+(see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files):
+</p>
+<div class="example">
+<pre class="example-preformatted">--- lao	2002-02-21 23:30:39.942229878 -0800
++++ tzu	2002-02-21 23:30:50.442260588 -0800
+@@ -1,7 +1,6 @@
+-The Way that can be told of is not the eternal Way;
+-The name that can be named is not the eternal name.
+ The Nameless is the origin of Heaven and Earth;
+-The Named is the mother of all things.
++The named is the mother of all things.
++
+ Therefore let there always be non-being,
+   so we may see their subtlety,
+ And let there always be being,
+@@ -9,3 +8,6 @@
+ The two are the same,
+ But after they are produced,
+   they have different names.
++They both may be called deep and profound.
++Deeper and more profound,
++The door of all subtleties!
+</pre></div>
+<hr>
+</div>
+<div class="subsubsection-level-extent" id="Detailed-Unified">
+<h4 class="subsubsection" id="Detailed-Description-of-Unified-Format"><span>2.2.2.2 Detailed Description of Unified Format</span></h4>
+<p>The unified output format starts with a two-line header, which looks
+like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">--- <var class="var">from-file</var> <var class="var">from-file-modification-time</var>
++++ <var class="var">to-file</var> <var class="var">to-file-modification-time</var>
+</pre></div>
+<p><a class="index-entry-id" id="index-timestamp-format_002c-unified-diffs"></a></p>
+<p>The timestamp looks like ‘<samp class="samp">2002-02-21 23:30:39.942229878 -0800</samp>’
+to indicate the date, time with fractional seconds, and time zone.
+The fractional seconds are omitted on hosts that do not support
+fractional timestamps.
+</p>
+<p>You can change the header’s content with the
+<samp class="option">--label=<var class="var">label</var></samp> option. See <a class="xref" href="manual.html#Alternate-Names">Showing Alternate File Names</a>.
+</p>
+<p>Next come one or more hunks of differences; each hunk shows one area
+where the files differ.  Unified format hunks look like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">@@ <var class="var">from-file-line-numbers</var> <var class="var">to-file-line-numbers</var> @@
+ <var class="var">line-from-either-file</var>
+ <var class="var">line-from-either-file</var>...
+</pre></div>
+<p>If a hunk contains just one line, only its start line number appears.
+Otherwise its line numbers look like ‘<samp class="samp"><var class="var">start</var>,<var class="var">count</var></samp>’.
+An empty hunk is considered to start at the line that follows the hunk.
+</p>
+<p>If a hunk and its context contain two or more lines, its
+line numbers look like ‘<samp class="samp"><var class="var">start</var>,<var class="var">count</var></samp>’.  Otherwise only
+its end line number appears.  An empty hunk is considered to end at
+the line that precedes the hunk.
+</p>
+<p>The lines common to both files begin with a space character.  The lines
+that actually differ between the two files have one of the following
+indicator characters in the left print column:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">+</samp>’</dt>
+<dd><p>A line was added here to the first file.
+</p>
+</dd>
+<dt>‘<samp class="samp">-</samp>’</dt>
+<dd><p>A line was removed here from the first file.
+</p></dd>
+</dl>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Sections">
+<h4 class="subsection" id="Showing-Which-Sections-Differences-Are-in"><span>2.2.3 Showing Which Sections Differences Are in</span></h4>
+<a class="index-entry-id" id="index-headings"></a>
+<a class="index-entry-id" id="index-section-headings"></a>
+<p>Sometimes you might want to know which part of the files each change
+falls in.  If the files are source code, this could mean which
+function was changed.  If the files are documents, it could mean which
+chapter or appendix was changed.  GNU <code class="command">diff</code> can
+show this by displaying the nearest section heading line that precedes
+the differing lines.  Which lines are “section headings” is
+determined by a regular expression.
+</p>
+<hr>
+<div class="subsubsection-level-extent" id="Specified-Headings">
+<h4 class="subsubsection" id="Showing-Lines-That-Match-Regular-Expressions"><span>2.2.3.1 Showing Lines That Match Regular Expressions</span></h4>
+<a class="index-entry-id" id="index-specified-headings"></a>
+<a class="index-entry-id" id="index-regular-expression-matching-headings"></a>
+<p>To show in which sections differences occur for files that are not
+source code for C or similar languages, use the
+<samp class="option">--show-function-line=<var class="var">regexp</var></samp> (<samp class="option">-F <var class="var">regexp</var></samp>) option.
+<code class="command">diff</code>
+considers lines that match the <code class="command">grep</code>-style regular expression
+<var class="var">regexp</var> to be the beginning
+of a section of the file.  Here are suggested regular expressions for
+some common languages:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">^[[:alpha:]$_]</samp>’</dt>
+<dd><p>C, C++, Prolog
+</p></dd>
+<dt>‘<samp class="samp">^(</samp>’</dt>
+<dd><p>Lisp
+</p></dd>
+<dt>‘<samp class="samp">^@node</samp>’</dt>
+<dd><p>Texinfo
+</p></dd>
+</dl>
+<p>This option does not automatically select an output format; in order to
+use it, you must select the context format (see <a class="pxref" href="manual.html#Context-Format">Context Format</a>) or
+unified format (see <a class="pxref" href="manual.html#Unified-Format">Unified Format</a>).  In other output formats it
+has no effect.
+</p>
+<p>The <samp class="option">--show-function-line</samp> (<samp class="option">-F</samp>) option finds the nearest
+unchanged line that precedes each hunk of differences and matches the
+given regular expression.  Then it adds that line to the end of the
+line of asterisks in the context format, or to the ‘<samp class="samp">@@</samp>’ line in
+unified format.  If no matching line exists, this option leaves the output for
+that hunk unchanged.  If that line is more than 40 characters long, it
+outputs only the first 40 characters.  You can specify more than one
+regular expression for such lines; <code class="command">diff</code> tries to match each line
+against each regular expression, starting with the last one given.  This
+means that you can use <samp class="option">-p</samp> and <samp class="option">-F</samp> together, if you wish.
+</p>
+<hr>
+</div>
+<div class="subsubsection-level-extent" id="C-Function-Headings">
+<h4 class="subsubsection" id="Showing-C-Function-Headings"><span>2.2.3.2 Showing C Function Headings</span></h4>
+<a class="index-entry-id" id="index-C-function-headings"></a>
+<a class="index-entry-id" id="index-function-headings_002c-C"></a>
+<p>To show in which functions differences occur for C and similar
+languages, you can use the <samp class="option">--show-c-function</samp> (<samp class="option">-p</samp>) option.
+This option automatically defaults to the context output format
+(see <a class="pxref" href="manual.html#Context-Format">Context Format</a>), with the default number of lines of context.
+You can override that number with <samp class="option">-C <var class="var">lines</var></samp> elsewhere in the
+command line.  You can override both the format and the number with
+<samp class="option">-U <var class="var">lines</var></samp> elsewhere in the command line.
+</p>
+<p>The <samp class="option">--show-c-function</samp> (<samp class="option">-p</samp>) option is equivalent to
+<samp class="option">-F '^[[:alpha:]$_]'</samp> if the unified format is specified, otherwise
+<samp class="option">-c -F '^[[:alpha:]$_]'</samp> (see <a class="pxref" href="manual.html#Specified-Headings">Showing Lines That Match Regular Expressions</a>).  GNU
+<code class="command">diff</code> provides this option for the sake of convenience.
+</p>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Alternate-Names">
+<h4 class="subsection" id="Showing-Alternate-File-Names"><span>2.2.4 Showing Alternate File Names</span></h4>
+<a class="index-entry-id" id="index-alternate-file-names"></a>
+<a class="index-entry-id" id="index-file-name-alternates"></a>
+<p>If you are comparing two files that have meaningless or uninformative
+names, you might want <code class="command">diff</code> to show alternate names in the header
+of the context and unified output formats.  To do this, use the
+<samp class="option">--label=<var class="var">label</var></samp> option.  The first time
+you give this option, its argument replaces the name and date of the
+first file in the header; the second time, its argument replaces the
+name and date of the second file.  If you give this option more than
+twice, <code class="command">diff</code> reports an error.  The <samp class="option">--label</samp> option does not
+affect the file names in the <code class="command">pr</code> header when the <samp class="option">-l</samp> or
+<samp class="option">--paginate</samp> option is used (see <a class="pxref" href="manual.html#Pagination">Paginating <code class="command">diff</code> Output</a>).
+</p>
+<p>Here are the first two lines of the output from ‘<samp class="samp">diff -C 2
+--label=original --label=modified lao tzu</samp>’:
+</p>
+<div class="example">
+<pre class="example-preformatted">*** original
+--- modified
+</pre></div>
+<hr>
+</div>
+</div>
+<div class="section-level-extent" id="Side-by-Side">
+<h3 class="section" id="Showing-Differences-Side-by-Side"><span>2.3 Showing Differences Side by Side</span></h3>
+<a class="index-entry-id" id="index-side-by-side"></a>
+<a class="index-entry-id" id="index-two_002dcolumn-output"></a>
+<a class="index-entry-id" id="index-columnar-output"></a>
+<p><code class="command">diff</code> can produce a side by side difference listing of two files.
+The files are listed in two columns with a gutter between them.  The
+gutter contains one of the following markers:
+</p>
+<dl class="table">
+<dt>white space</dt>
+<dd><p>The corresponding lines are in common.  That is, either the lines are
+identical, or the difference is ignored because of one of the
+<samp class="option">--ignore</samp> options (see <a class="pxref" href="manual.html#White-Space">Suppressing Differences in Blank and Tab Spacing</a>).
+</p>
+</dd>
+<dt>‘<samp class="samp">|</samp>’</dt>
+<dd><p>The corresponding lines differ, and they are either both complete
+or both incomplete.
+</p>
+</dd>
+<dt>‘<samp class="samp">&lt;</samp>’</dt>
+<dd><p>The files differ and only the first file contains the line.
+</p>
+</dd>
+<dt>‘<samp class="samp">&gt;</samp>’</dt>
+<dd><p>The files differ and only the second file contains the line.
+</p>
+</dd>
+<dt>‘<samp class="samp">(</samp>’</dt>
+<dd><p>Only the first file contains the line, but the difference is ignored.
+</p>
+</dd>
+<dt>‘<samp class="samp">)</samp>’</dt>
+<dd><p>Only the second file contains the line, but the difference is ignored.
+</p>
+</dd>
+<dt>‘<samp class="samp">\</samp>’</dt>
+<dd><p>The corresponding lines differ, and only the first line is incomplete.
+</p>
+</dd>
+<dt>‘<samp class="samp">/</samp>’</dt>
+<dd><p>The corresponding lines differ, and only the second line is incomplete.
+</p></dd>
+</dl>
+<p>Normally, an output line is incomplete if and only if the lines that it
+contains are incomplete.  See <a class="xref" href="manual.html#Incomplete-Lines">Incomplete Lines</a>.  However, when an
+output line represents two differing lines, one might be incomplete
+while the other is not.  In this case, the output line is complete,
+but its the gutter is marked ‘<samp class="samp">\</samp>’ if the first line is incomplete,
+‘<samp class="samp">/</samp>’ if the second line is.
+</p>
+<p>Side by side format is sometimes easiest to read, but it has limitations.
+It generates much wider output than usual, and truncates lines that are
+too long to fit.  Also, it relies on lining up output more heavily than
+usual, so its output looks particularly bad if you use varying
+width fonts, nonstandard tab stops, or nonprinting characters.
+</p>
+<p>You can use the <code class="command">sdiff</code> command to interactively merge side by side
+differences.  See <a class="xref" href="manual.html#Interactive-Merging">Interactive Merging with <code class="command">sdiff</code></a>, for more information on merging files.
+</p>
+<hr>
+<div class="subsection-level-extent" id="Side-by-Side-Format">
+<h4 class="subsection" id="Controlling-Side-by-Side-Format"><span>2.3.1 Controlling Side by Side Format</span></h4>
+<a class="index-entry-id" id="index-side-by-side-format"></a>
+<p>The <samp class="option">--side-by-side</samp> (<samp class="option">-y</samp>) option selects side by side
+format.  Because side by side output lines contain two input lines, the
+output is wider than usual: normally 130 print columns, which can fit
+onto a traditional printer line.  You can set the width of the output
+with the <samp class="option">--width=<var class="var">columns</var></samp> (<samp class="option">-W <var class="var">columns</var></samp>)
+option.  The output is split into two halves of equal width, separated by a
+small gutter to mark differences; the right half is aligned to a tab
+stop so that tabs line up.  Input lines that are too long to fit in half
+of an output line are truncated for output.
+</p>
+<p>The <samp class="option">--left-column</samp> option prints only the left column of two
+common lines.  The <samp class="option">--suppress-common-lines</samp> option suppresses
+common lines entirely.
+</p>
+<hr>
+</div>
+<div class="subsection-level-extent" id="Example-Side-by-Side">
+<h4 class="subsection" id="An-Example-of-Side-by-Side-Format"><span>2.3.2 An Example of Side by Side Format</span></h4>
+<p>Here is the output of the command ‘<samp class="samp">diff -y -W 72 lao tzu</samp>’
+(see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files).
+</p>
+<div class="example">
+<pre class="example-preformatted">The Way that can be told of is n   &lt;
+The name that can be named is no   &lt;
+The Nameless is the origin of He        The Nameless is the origin of He
+The Named is the mother of all t   |    The named is the mother of all t
+                                   &gt;
+Therefore let there always be no        Therefore let there always be no
+  so we may see their subtlety,           so we may see their subtlety,
+And let there always be being,          And let there always be being,
+  so we may see their outcome.            so we may see their outcome.
+The two are the same,                   The two are the same,
+But after they are produced,            But after they are produced,
+  they have different names.              they have different names.
+                                   &gt;    They both may be called deep and
+                                   &gt;    Deeper and more profound,
+                                   &gt;    The door of all subtleties!
+</pre></div>
+<hr>
+</div>
+</div>
+<div class="section-level-extent" id="Normal">
+<h3 class="section" id="Showing-Differences-Without-Context"><span>2.4 Showing Differences Without Context</span></h3>
+<a class="index-entry-id" id="index-normal-output-format"></a>
+<a class="index-entry-id" id="index-_003c-output-format"></a>
+<p>The “normal” <code class="command">diff</code> output format shows each hunk of differences
+without any surrounding context.  Sometimes such output is the clearest
+way to see how lines have changed, without the clutter of nearby
+unchanged lines (although you can get similar results with the context
+or unified formats by using 0 lines of context).  However, this format
+is no longer widely used for sending out patches; for that purpose, the
+context format (see <a class="pxref" href="manual.html#Context-Format">Context Format</a>) and the unified format
+(see <a class="pxref" href="manual.html#Unified-Format">Unified Format</a>) are superior.  Normal format is the default for
+compatibility with older versions of <code class="command">diff</code> and the POSIX
+standard.  Use the <samp class="option">--normal</samp> option to select this output
+format explicitly.
+</p>
+<hr>
+<div class="subsection-level-extent" id="Example-Normal">
+<h4 class="subsection" id="An-Example-of-Normal-Format"><span>2.4.1 An Example of Normal Format</span></h4>
+<p>Here is the output of the command ‘<samp class="samp">diff lao tzu</samp>’
+(see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files).
+Notice that it shows only the lines that are different between the two
+files.
+</p>
+<div class="example">
+<pre class="example-preformatted">1,2d0
+&lt; The Way that can be told of is not the eternal Way;
+&lt; The name that can be named is not the eternal name.
+4c2,3
+&lt; The Named is the mother of all things.
+---
+&gt; The named is the mother of all things.
+&gt; 
+11a11,13
+&gt; They both may be called deep and profound.
+&gt; Deeper and more profound,
+&gt; The door of all subtleties!
+</pre></div>
+<hr>
+</div>
+<div class="subsection-level-extent" id="Detailed-Normal">
+<h4 class="subsection" id="Detailed-Description-of-Normal-Format"><span>2.4.2 Detailed Description of Normal Format</span></h4>
+<p>The normal output format consists of one or more hunks of differences;
+each hunk shows one area where the files differ.  Normal format hunks
+look like this:
+</p>
+<div class="example">
+<pre class="example-preformatted"><var class="var">change-command</var>
+&lt; <var class="var">from-file-line</var>
+&lt; <var class="var">from-file-line</var>...
+---
+&gt; <var class="var">to-file-line</var>
+&gt; <var class="var">to-file-line</var>...
+</pre></div>
+<p>There are three types of change commands.  Each consists of a line
+number or comma-separated range of lines in the first file, a single
+character indicating the kind of change to make, and a line number or
+comma-separated range of lines in the second file.  All line numbers are
+the original line numbers in each file.  The types of change commands
+are:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp"><var class="var">l</var>a<var class="var">r</var></samp>’</dt>
+<dd><p>Add the lines in range <var class="var">r</var> of the second file after line <var class="var">l</var> of
+the first file.  For example, ‘<samp class="samp">8a12,15</samp>’ means append lines 12–15
+of file 2 after line 8 of file 1; or, if changing file 2 into file 1,
+delete lines 12–15 of file 2.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">f</var>c<var class="var">t</var></samp>’</dt>
+<dd><p>Replace the lines in range <var class="var">f</var> of the first file with lines in range
+<var class="var">t</var> of the second file.  This is like a combined add and delete, but
+more compact.  For example, ‘<samp class="samp">5,7c8,10</samp>’ means change lines 5–7 of
+file 1 to read as lines 8–10 of file 2; or, if changing file 2 into
+file 1, change lines 8–10 of file 2 to read as lines 5–7 of file 1.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">r</var>d<var class="var">l</var></samp>’</dt>
+<dd><p>Delete the lines in range <var class="var">r</var> from the first file; line <var class="var">l</var> is where
+they would have appeared in the second file had they not been deleted.
+For example, ‘<samp class="samp">5,7d3</samp>’ means delete lines 5–7 of file 1; or, if
+changing file 2 into file 1, append lines 5–7 of file 1 after line 3 of
+file 2.
+</p></dd>
+</dl>
+<hr>
+</div>
+</div>
+<div class="section-level-extent" id="Scripts">
+<h3 class="section" id="Making-Edit-Scripts"><span>2.5 Making Edit Scripts</span></h3>
+<a class="index-entry-id" id="index-script-output-formats"></a>
+<p>Several output modes produce command scripts for editing <var class="var">from-file</var>
+to produce <var class="var">to-file</var>.
+</p>
+<hr>
+<div class="subsection-level-extent" id="ed-Scripts">
+<h4 class="subsection" id="ed-Scripts-1"><span>2.5.1 <code class="command">ed</code> Scripts</span></h4>
+<a class="index-entry-id" id="index-ed-script-output-format"></a>
+<p><code class="command">diff</code> can produce commands that direct the <code class="command">ed</code> text editor
+to change the first file into the second file.  Long ago, this was the
+only output mode that was suitable for editing one file into another
+automatically; today, with <code class="command">patch</code>, it is almost obsolete.  Use the
+<samp class="option">--ed</samp> (<samp class="option">-e</samp>) option to select this output format.
+</p>
+<p>Like the normal format (see <a class="pxref" href="manual.html#Normal">Showing Differences Without Context</a>), this output format does not
+show any context; unlike the normal format, it does not include the
+information necessary to apply the diff in reverse (to produce the first
+file if all you have is the second file and the diff).
+</p>
+<p>If the file <samp class="file">d</samp> contains the output of ‘<samp class="samp">diff -e old new</samp>’, then
+the command ‘<samp class="samp">(cat d &amp;&amp; echo w) | ed - old</samp>’ edits <samp class="file">old</samp> to make
+it a copy of <samp class="file">new</samp>.  More generally, if <samp class="file">d1</samp>, <samp class="file">d2</samp>,
+…, <samp class="file">dN</samp> contain the outputs of ‘<samp class="samp">diff -e old new1</samp>’,
+‘<samp class="samp">diff -e new1 new2</samp>’, …, ‘<samp class="samp">diff -e newN-1 newN</samp>’,
+respectively, then the command ‘<samp class="samp">(cat d1 d2 … dN &amp;&amp; echo w) |
+ed - old</samp>’ edits <samp class="file">old</samp> to make it a copy of <samp class="file">newN</samp>.
+</p>
+<hr>
+<div class="subsubsection-level-extent" id="Example-ed">
+<h4 class="subsubsection" id="Example-ed-Script"><span>2.5.1.1 Example <code class="command">ed</code> Script</span></h4>
+<p>Here is the output of ‘<samp class="samp">diff -e lao tzu</samp>’ (see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files):
+</p>
+<div class="example">
+<pre class="example-preformatted">11a
+They both may be called deep and profound.
+Deeper and more profound,
+The door of all subtleties!
+.
+4c
+The named is the mother of all things.
+
+.
+1,2d
+</pre></div>
+<hr>
+</div>
+<div class="subsubsection-level-extent" id="Detailed-ed">
+<h4 class="subsubsection" id="Detailed-Description-of-ed-Format"><span>2.5.1.2 Detailed Description of <code class="command">ed</code> Format</span></h4>
+<p>The <code class="command">ed</code> output format consists of one or more hunks of
+differences.  The changes closest to the ends of the files come first so
+that commands that change the number of lines do not affect how
+<code class="command">ed</code> interprets line numbers in succeeding commands.  <code class="command">ed</code>
+format hunks look like this:
+</p>
+<div class="example">
+<pre class="example-preformatted"><var class="var">change-command</var>
+<var class="var">to-file-line</var>
+<var class="var">to-file-line</var>...
+.
+</pre></div>
+<p>Because <code class="command">ed</code> uses a single period on a line to indicate the
+end of input, GNU <code class="command">diff</code> protects lines of changes
+that contain a single period on a line by writing two periods instead,
+then writing a subsequent <code class="command">ed</code> command to change the two
+periods into one.  The <code class="command">ed</code> format cannot represent an
+incomplete line, so if the second file ends in a changed incomplete
+line, <code class="command">diff</code> reports an error and then pretends that a newline
+was appended.
+</p>
+<p>There are three types of change commands.  Each consists of a line
+number or comma-separated range of lines in the first file and a single
+character indicating the kind of change to make.  All line numbers are
+the original line numbers in the file.  The types of change commands
+are:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp"><var class="var">l</var>a</samp>’</dt>
+<dd><p>Add text from the second file after line <var class="var">l</var> in the first file.  For
+example, ‘<samp class="samp">8a</samp>’ means to add the following lines after line 8 of file
+1.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">r</var>c</samp>’</dt>
+<dd><p>Replace the lines in range <var class="var">r</var> in the first file with the following
+lines.  Like a combined add and delete, but more compact.  For example,
+‘<samp class="samp">5,7c</samp>’ means change lines 5–7 of file 1 to read as the text file
+2.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">r</var>d</samp>’</dt>
+<dd><p>Delete the lines in range <var class="var">r</var> from the first file.  For example,
+‘<samp class="samp">5,7d</samp>’ means delete lines 5–7 of file 1.
+</p></dd>
+</dl>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Forward-ed">
+<h4 class="subsection" id="Forward-ed-Scripts"><span>2.5.2 Forward <code class="command">ed</code> Scripts</span></h4>
+<a class="index-entry-id" id="index-forward-ed-script-output-format"></a>
+<p><code class="command">diff</code> can produce output that is like an <code class="command">ed</code> script, but
+with hunks in forward (front to back) order.  The format of the commands
+is also changed slightly: command characters precede the lines they
+modify, spaces separate line numbers in ranges, and no attempt is made
+to disambiguate hunk lines consisting of a single period.  Like
+<code class="command">ed</code> format, forward <code class="command">ed</code> format cannot represent incomplete
+lines.
+</p>
+<p>Forward <code class="command">ed</code> format is not very useful, because neither <code class="command">ed</code>
+nor <code class="command">patch</code> can apply diffs in this format.  It exists mainly for
+compatibility with older versions of <code class="command">diff</code>.  Use the <samp class="option">-f</samp> or
+<samp class="option">--forward-ed</samp> option to select it.
+</p>
+<hr>
+</div>
+<div class="subsection-level-extent" id="RCS">
+<h4 class="subsection" id="RCS-Scripts"><span>2.5.3 RCS Scripts</span></h4>
+<a class="index-entry-id" id="index-RCS-script-output-format"></a>
+<p>The RCS output format is designed specifically for use by
+the Revision Control System, which is a set of free programs used for
+organizing different versions and systems of files.  Use the
+<samp class="option">--rcs</samp> (<samp class="option">-n</samp>) option to select this output format.  It
+is like the forward <code class="command">ed</code> format (see <a class="pxref" href="manual.html#Forward-ed">Forward <code class="command">ed</code> Scripts</a>), but it
+can represent arbitrary changes to the contents of a file because it
+avoids the forward <code class="command">ed</code> format’s problems with lines
+consisting of a single period and with incomplete lines.  Instead of
+ending text sections with a line consisting of a single period, each
+command specifies the number of lines it affects; a combination of the
+‘<samp class="samp">a</samp>’ and ‘<samp class="samp">d</samp>’ commands are used instead of ‘<samp class="samp">c</samp>’.  Also, if
+the second file ends in a changed incomplete line, then the output
+also ends in an incomplete line.
+</p>
+<p>Here is the output of ‘<samp class="samp">diff -n lao tzu</samp>’ (see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files):
+</p>
+<div class="example">
+<pre class="example-preformatted">d1 2
+d4 1
+a4 2
+The named is the mother of all things.
+
+a11 3
+They both may be called deep and profound.
+Deeper and more profound,
+The door of all subtleties!
+</pre></div>
+<hr>
+</div>
+</div>
+<div class="section-level-extent" id="If_002dthen_002delse">
+<h3 class="section" id="Merging-Files-with-If_002dthen_002delse"><span>2.6 Merging Files with If-then-else</span></h3>
+<a class="index-entry-id" id="index-merged-output-format"></a>
+<a class="index-entry-id" id="index-if_002dthen_002delse-output-format"></a>
+<a class="index-entry-id" id="index-C-if_002dthen_002delse-output-format"></a>
+<a class="index-entry-id" id="index-ifdef-output-format"></a>
+<p>You can use <code class="command">diff</code> to merge two files of C source code.  The output
+of <code class="command">diff</code> in this format contains all the lines of both files.
+Lines common to both files are output just once; the differing parts are
+separated by the C preprocessor directives <code class="code">#ifdef <var class="var">name</var></code> or
+<code class="code">#ifndef <var class="var">name</var></code>, <code class="code">#else</code>, and <code class="code">#endif</code>.  When
+compiling the output, you select which version to use by either defining
+or leaving undefined the macro <var class="var">name</var>.
+</p>
+<p>To merge two files, use <code class="command">diff</code> with the <samp class="option">-D <var class="var">name</var></samp> or
+<samp class="option">--ifdef=<var class="var">name</var></samp> option.  The argument <var class="var">name</var> is the C
+preprocessor identifier to use in the <code class="code">#ifdef</code> and <code class="code">#ifndef</code>
+directives.
+</p>
+<p>For example, if you change an instance of <code class="code">wait (&amp;s)</code> to
+<code class="code">waitpid (-1, &amp;s, 0)</code> and then merge the old and new files with
+the <samp class="option">--ifdef=HAVE_WAITPID</samp> option, then the affected part of your code
+might look like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">    do {
+#ifndef HAVE_WAITPID
+        if ((w = wait (&amp;s)) &lt; 0  &amp;&amp;  errno != EINTR)
+#else /* HAVE_WAITPID */
+        if ((w = waitpid (-1, &amp;s, 0)) &lt; 0  &amp;&amp;  errno != EINTR)
+#endif /* HAVE_WAITPID */
+            return w;
+    } while (w != child);
+</pre></div>
+<p>You can specify formats for languages other than C by using line group
+formats and line formats, as described in the next sections.
+</p>
+<hr>
+<div class="subsection-level-extent" id="Line-Group-Formats">
+<h4 class="subsection" id="Line-Group-Formats-1"><span>2.6.1 Line Group Formats</span></h4>
+<a class="index-entry-id" id="index-line-group-formats"></a>
+<a class="index-entry-id" id="index-formats-for-if_002dthen_002delse-line-groups"></a>
+<p>Line group formats let you specify formats suitable for many
+applications that allow if-then-else input, including programming
+languages and text formatting languages.  A line group format specifies
+the output format for a contiguous group of similar lines.
+</p>
+<p>For example, the following command compares the TeX files <samp class="file">old</samp>
+and <samp class="file">new</samp>, and outputs a merged file in which old regions are
+surrounded by ‘<samp class="samp">\begin{em}</samp>’-‘<samp class="samp">\end{em}</samp>’ lines, and new
+regions are surrounded by ‘<samp class="samp">\begin{bf}</samp>’-‘<samp class="samp">\end{bf}</samp>’ lines.
+</p>
+<div class="example">
+<pre class="example-preformatted">diff \
+   --old-group-format='\begin{em}
+%&lt;\end{em}
+' \
+   --new-group-format='\begin{bf}
+%&gt;\end{bf}
+' \
+   old new
+</pre></div>
+<p>The following command is equivalent to the above example, but it is a
+little more verbose, because it spells out the default line group formats.
+</p>
+<div class="example">
+<pre class="example-preformatted">diff \
+   --old-group-format='\begin{em}
+%&lt;\end{em}
+' \
+   --new-group-format='\begin{bf}
+%&gt;\end{bf}
+' \
+   --unchanged-group-format='%=' \
+   --changed-group-format='\begin{em}
+%&lt;\end{em}
+\begin{bf}
+%&gt;\end{bf}
+' \
+   old new
+</pre></div>
+<p>Here is a more advanced example, which outputs a diff listing with
+headers containing line numbers in a “plain English” style.
+</p>
+<div class="example">
+<pre class="example-preformatted">diff \
+   --unchanged-group-format='' \
+   --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
+%&lt;' \
+   --new-group-format='-------- %dN line%(N=1?:s) added after %de:
+%&gt;' \
+   --changed-group-format='-------- %dn line%(n=1?:s) changed at %df:
+%&lt;-------- to:
+%&gt;' \
+   old new
+</pre></div>
+<p>To specify a line group format, use <code class="command">diff</code> with one of the options
+listed below.  You can specify up to four line group formats, one for
+each kind of line group.  You should quote <var class="var">format</var>, because it
+typically contains shell metacharacters.
+</p>
+<dl class="table">
+<dt><samp class="option">--old-group-format=<var class="var">format</var></samp></dt>
+<dd><p>These line groups are hunks containing only lines from the first file.
+The default old group format is the same as the changed group format if
+it is specified; otherwise it is a format that outputs the line group as-is.
+</p>
+</dd>
+<dt><samp class="option">--new-group-format=<var class="var">format</var></samp></dt>
+<dd><p>These line groups are hunks containing only lines from the second
+file.  The default new group format is same as the changed group
+format if it is specified; otherwise it is a format that outputs the
+line group as-is.
+</p>
+</dd>
+<dt><samp class="option">--changed-group-format=<var class="var">format</var></samp></dt>
+<dd><p>These line groups are hunks containing lines from both files.  The
+default changed group format is the concatenation of the old and new
+group formats.
+</p>
+</dd>
+<dt><samp class="option">--unchanged-group-format=<var class="var">format</var></samp></dt>
+<dd><p>These line groups contain lines common to both files.  The default
+unchanged group format is a format that outputs the line group as-is.
+</p></dd>
+</dl>
+<p>In a line group format, ordinary characters represent themselves;
+conversion specifications start with ‘<samp class="samp">%</samp>’ and have one of the
+following forms.
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">%&lt;</samp>’</dt>
+<dd><p>stands for the lines from the first file, including the trailing newline.
+Each line is formatted according to the old line format (see <a class="pxref" href="manual.html#Line-Formats">Line Formats</a>).
+</p>
+</dd>
+<dt>‘<samp class="samp">%&gt;</samp>’</dt>
+<dd><p>stands for the lines from the second file, including the trailing newline.
+Each line is formatted according to the new line format.
+</p>
+</dd>
+<dt>‘<samp class="samp">%=</samp>’</dt>
+<dd><p>stands for the lines common to both files, including the trailing newline.
+Each line is formatted according to the unchanged line format.
+</p>
+</dd>
+<dt>‘<samp class="samp">%%</samp>’</dt>
+<dd><p>stands for ‘<samp class="samp">%</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">%c'<var class="var">C</var>'</samp>’</dt>
+<dd><p>where <var class="var">C</var> is a single character, stands for <var class="var">C</var>.
+<var class="var">C</var> may not be a backslash or an apostrophe.
+For example, ‘<samp class="samp">%c':'</samp>’ stands for a colon, even inside
+the then-part of an if-then-else format, which a colon would
+normally terminate.
+</p>
+</dd>
+<dt>‘<samp class="samp">%c'\<var class="var">O</var>'</samp>’</dt>
+<dd><p>where <var class="var">O</var> is a string of 1, 2, or 3 octal digits,
+stands for the character with octal code <var class="var">O</var>.
+For example, ‘<samp class="samp">%c'\0'</samp>’ stands for a null character.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">F</var><var class="var">n</var></samp>’</dt>
+<dd><p>where <var class="var">F</var> is a <code class="code">printf</code> conversion specification and <var class="var">n</var> is one
+of the following letters, stands for <var class="var">n</var>’s value formatted with <var class="var">F</var>.
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">e</samp>’</dt>
+<dd><p>The line number of the line just before the group in the old file.
+</p>
+</dd>
+<dt>‘<samp class="samp">f</samp>’</dt>
+<dd><p>The line number of the first line in the group in the old file;
+equals <var class="var">e</var> + 1.
+</p>
+</dd>
+<dt>‘<samp class="samp">l</samp>’</dt>
+<dd><p>The line number of the last line in the group in the old file.
+</p>
+</dd>
+<dt>‘<samp class="samp">m</samp>’</dt>
+<dd><p>The line number of the line just after the group in the old file;
+equals <var class="var">l</var> + 1.
+</p>
+</dd>
+<dt>‘<samp class="samp">n</samp>’</dt>
+<dd><p>The number of lines in the group in the old file; equals <var class="var">l</var> - <var class="var">f</var> + 1.
+</p>
+</dd>
+<dt>‘<samp class="samp">E, F, L, M, N</samp>’</dt>
+<dd><p>Likewise, for lines in the new file.
+</p>
+</dd>
+</dl>
+<p><a class="index-entry-id" id="index-LC_005fNUMERIC"></a></p>
+<p>The <code class="code">printf</code> conversion specification can be ‘<samp class="samp">%d</samp>’,
+‘<samp class="samp">%o</samp>’, ‘<samp class="samp">%x</samp>’, or ‘<samp class="samp">%X</samp>’, specifying decimal, octal,
+lower case hexadecimal, or upper case hexadecimal output
+respectively.  After the ‘<samp class="samp">%</samp>’ the following options can appear in
+sequence: a series of zero or more flags; an integer
+specifying the minimum field width; and a period followed by an
+optional integer specifying the minimum number of digits.
+The flags are ‘<samp class="samp">-</samp>’ for left-justification, ‘<samp class="samp">'</samp>’ for separating
+the digit into groups as specified by the <code class="env">LC_NUMERIC</code> locale category,
+and ‘<samp class="samp">0</samp>’ for padding with zeros instead of spaces.
+For example, ‘<samp class="samp">%5dN</samp>’ prints the number of new lines in the group
+in a field of width 5 characters, using the <code class="code">printf</code> format <code class="code">"%5d"</code>.
+</p>
+</dd>
+<dt>‘<samp class="samp">(<var class="var">A</var>=<var class="var">B</var>?<var class="var">T</var>:<var class="var">E</var>)</samp>’</dt>
+<dd><p>If <var class="var">A</var> equals <var class="var">B</var> then <var class="var">T</var> else <var class="var">E</var>.
+<var class="var">A</var> and <var class="var">B</var> are each either a decimal constant
+or a single letter interpreted as above.
+This format spec is equivalent to <var class="var">T</var> if
+<var class="var">A</var>’s value equals <var class="var">B</var>’s; otherwise it is equivalent to <var class="var">E</var>.
+</p>
+<p>For example, ‘<samp class="samp">%(N=0?no:%dN) line%(N=1?:s)</samp>’ is equivalent to
+‘<samp class="samp">no lines</samp>’ if <var class="var">N</var> (the number of lines in the group in the
+new file) is 0, to ‘<samp class="samp">1 line</samp>’ if <var class="var">N</var> is 1, and to ‘<samp class="samp">%dN lines</samp>’
+otherwise.
+</p></dd>
+</dl>
+<hr>
+</div>
+<div class="subsection-level-extent" id="Line-Formats">
+<h4 class="subsection" id="Line-Formats-1"><span>2.6.2 Line Formats</span></h4>
+<a class="index-entry-id" id="index-line-formats"></a>
+<p>Line formats control how each line taken from an input file is
+output as part of a line group in if-then-else format.
+</p>
+<p>For example, the following command outputs text with a one-character
+change indicator to the left of the text.  The first character of output
+is ‘<samp class="samp">-</samp>’ for deleted lines, ‘<samp class="samp">|</samp>’ for added lines, and a space for
+unchanged lines.  The formats contain newline characters where newlines
+are desired on output.
+</p>
+<div class="example">
+<pre class="example-preformatted">diff \
+   --old-line-format='-%l
+' \
+   --new-line-format='|%l
+' \
+   --unchanged-line-format=' %l
+' \
+   old new
+</pre></div>
+<p>To specify a line format, use one of the following options.  You should
+quote <var class="var">format</var>, since it often contains shell metacharacters.
+</p>
+<dl class="table">
+<dt><samp class="option">--old-line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats lines just from the first file.
+</p>
+</dd>
+<dt><samp class="option">--new-line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats lines just from the second file.
+</p>
+</dd>
+<dt><samp class="option">--unchanged-line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats lines common to both files.
+</p>
+</dd>
+<dt><samp class="option">--line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats all lines; in effect, it sets all three above options simultaneously.
+</p></dd>
+</dl>
+<p>In a line format, ordinary characters represent themselves;
+conversion specifications start with ‘<samp class="samp">%</samp>’ and have one of the
+following forms.
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">%l</samp>’</dt>
+<dd><p>stands for the contents of the line, not counting its trailing
+newline (if any).  This format ignores whether the line is incomplete;
+See <a class="xref" href="manual.html#Incomplete-Lines">Incomplete Lines</a>.
+</p>
+</dd>
+<dt>‘<samp class="samp">%L</samp>’</dt>
+<dd><p>stands for the contents of the line, including its trailing newline
+(if any).  If a line is incomplete, this format preserves its
+incompleteness.
+</p>
+</dd>
+<dt>‘<samp class="samp">%%</samp>’</dt>
+<dd><p>stands for ‘<samp class="samp">%</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">%c'<var class="var">C</var>'</samp>’</dt>
+<dd><p>where <var class="var">C</var> is a single character, stands for <var class="var">C</var>.
+<var class="var">C</var> may not be a backslash or an apostrophe.
+For example, ‘<samp class="samp">%c':'</samp>’ stands for a colon.
+</p>
+</dd>
+<dt>‘<samp class="samp">%c'\<var class="var">O</var>'</samp>’</dt>
+<dd><p>where <var class="var">O</var> is a string of 1, 2, or 3 octal digits,
+stands for the character with octal code <var class="var">O</var>.
+For example, ‘<samp class="samp">%c'\0'</samp>’ stands for a null character.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">F</var>n</samp>’</dt>
+<dd><p>where <var class="var">F</var> is a <code class="code">printf</code> conversion specification,
+stands for the line number formatted with <var class="var">F</var>.
+For example, ‘<samp class="samp">%.5dn</samp>’ prints the line number using the
+<code class="code">printf</code> format <code class="code">"%.5d"</code>.  See <a class="xref" href="manual.html#Line-Group-Formats">Line Group Formats</a>, for
+more about printf conversion specifications.
+</p>
+</dd>
+</dl>
+<p>The default line format is ‘<samp class="samp">%l</samp>’ followed by a newline character.
+</p>
+<p>If the input contains tab characters and it is important that they line
+up on output, you should ensure that ‘<samp class="samp">%l</samp>’ or ‘<samp class="samp">%L</samp>’ in a line
+format is just after a tab stop (e.g. by preceding ‘<samp class="samp">%l</samp>’ or
+‘<samp class="samp">%L</samp>’ with a tab character), or you should use the <samp class="option">-t</samp> or
+<samp class="option">--expand-tabs</samp> option.
+</p>
+<p>Taken together, the line and line group formats let you specify many
+different formats.  For example, the following command uses a format
+similar to normal <code class="command">diff</code> format.  You can tailor this command
+to get fine control over <code class="command">diff</code> output.
+</p>
+<div class="example">
+<pre class="example-preformatted">diff \
+   --old-line-format='&lt; %l
+' \
+   --new-line-format='&gt; %l
+' \
+   --old-group-format='%df%(f=l?:,%dl)d%dE
+%&lt;' \
+   --new-group-format='%dea%dF%(F=L?:,%dL)
+%&gt;' \
+   --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)
+%&lt;---
+%&gt;' \
+   --unchanged-group-format='' \
+   old new
+</pre></div>
+<hr>
+</div>
+<div class="subsection-level-extent" id="Example-If_002dthen_002delse">
+<h4 class="subsection" id="An-Example-of-If_002dthen_002delse-Format"><span>2.6.3 An Example of If-then-else Format</span></h4>
+<p>Here is the output of ‘<samp class="samp">diff -DTWO lao tzu</samp>’ (see <a class="pxref" href="manual.html#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files):
+</p>
+<div class="example">
+<pre class="example-preformatted">#ifndef TWO
+The Way that can be told of is not the eternal Way;
+The name that can be named is not the eternal name.
+#endif /* ! TWO */
+The Nameless is the origin of Heaven and Earth;
+#ifndef TWO
+The Named is the mother of all things.
+#else /* TWO */
+The named is the mother of all things.
+
+#endif /* TWO */
+Therefore let there always be non-being,
+  so we may see their subtlety,
+And let there always be being,
+  so we may see their outcome.
+The two are the same,
+But after they are produced,
+  they have different names.
+#ifdef TWO
+They both may be called deep and profound.
+Deeper and more profound,
+The door of all subtleties!
+#endif /* TWO */
+</pre></div>
+<hr>
+</div>
+<div class="subsection-level-extent" id="Detailed-If_002dthen_002delse">
+<h4 class="subsection" id="Detailed-Description-of-If_002dthen_002delse-Format"><span>2.6.4 Detailed Description of If-then-else Format</span></h4>
+<p>For lines common to both files, <code class="command">diff</code> uses the unchanged line
+group format.  For each hunk of differences in the merged output
+format, if the hunk contains only lines from the first file,
+<code class="command">diff</code> uses the old line group format; if the hunk contains only
+lines from the second file, <code class="command">diff</code> uses the new group format;
+otherwise, <code class="command">diff</code> uses the changed group format.
+</p>
+<p>The old, new, and unchanged line formats specify the output format of
+lines from the first file, lines from the second file, and lines common
+to both files, respectively.
+</p>
+<p>The option <samp class="option">--ifdef=<var class="var">name</var></samp> is equivalent to
+the following sequence of options using shell syntax:
+</p>
+<div class="example">
+<pre class="example-preformatted">--old-group-format='#ifndef <var class="var">name</var>
+%&lt;#endif /* ! <var class="var">name</var> */
+' \
+--new-group-format='#ifdef <var class="var">name</var>
+%&gt;#endif /* <var class="var">name</var> */
+' \
+--unchanged-group-format='%=' \
+--changed-group-format='#ifndef <var class="var">name</var>
+%&lt;#else /* <var class="var">name</var> */
+%&gt;#endif /* <var class="var">name</var> */
+'
+</pre></div>
+<p>You should carefully check the <code class="command">diff</code> output for proper nesting.
+For example, when using the <samp class="option">-D <var class="var">name</var></samp> or
+<samp class="option">--ifdef=<var class="var">name</var></samp> option, you should check that if the
+differing lines contain any of the C preprocessor directives
+‘<samp class="samp">#ifdef</samp>’, ‘<samp class="samp">#ifndef</samp>’, ‘<samp class="samp">#else</samp>’, ‘<samp class="samp">#elif</samp>’, or
+‘<samp class="samp">#endif</samp>’, they are nested properly and match.  If they don’t, you
+must make corrections manually.  It is a good idea to carefully check
+the resulting code anyway to make sure that it really does what you
+want it to; depending on how the input files were produced, the output
+might contain duplicate or otherwise incorrect code.
+</p>
+<p>The <code class="command">patch</code> <samp class="option">-D <var class="var">name</var></samp> option behaves like
+the <code class="command">diff</code> <samp class="option">-D <var class="var">name</var></samp> option, except it operates on
+a file and a diff to produce a merged file.  See <a class="xref" href="manual.html#patch-Options">Options to <code class="command">patch</code></a>.
+</p>
+<hr>
+</div>
+</div>
+</div><div class="chapter-level-extent" id="Incomplete-Lines">
+<h2 class="chapter" id="Incomplete-Lines-1"><span>3 Incomplete Lines</span></h2>
+<a class="index-entry-id" id="index-incomplete-lines"></a>
+<a class="index-entry-id" id="index-full-lines"></a>
+<a class="index-entry-id" id="index-newline-treatment-by-diff"></a>
+<p>When an input file ends in a non-newline character, its last line is
+called an <em class="dfn">incomplete line</em> because its last character is not a
+newline.  All other lines are called <em class="dfn">full lines</em> and end in a
+newline character.  Incomplete lines do not match full lines unless
+differences in white space are ignored (see <a class="pxref" href="manual.html#White-Space">Suppressing Differences in Blank and Tab Spacing</a>).
+</p>
+<p>An incomplete line is normally distinguished on output from a full
+line by a following line that starts with ‘<samp class="samp">\</samp>’.  However, the
+RCS format (see <a class="pxref" href="manual.html#RCS">RCS Scripts</a>) outputs the incomplete line as-is,
+without any trailing newline or following line.  The side by side
+format normally represents incomplete lines as-is, but in some cases
+uses a ‘<samp class="samp">\</samp>’ or ‘<samp class="samp">/</samp>’ gutter marker.  See <a class="xref" href="manual.html#Side-by-Side">Showing Differences Side by Side</a>.  The
+if-then-else line format preserves a line’s incompleteness with
+‘<samp class="samp">%L</samp>’, and discards the newline with ‘<samp class="samp">%l</samp>’.  See <a class="xref" href="manual.html#Line-Formats">Line Formats</a>.
+Finally, with the <code class="command">ed</code> and forward <code class="command">ed</code>
+output formats (see <a class="pxref" href="manual.html#Output-Formats"><code class="command">diff</code> Output Formats</a>) <code class="command">diff</code> cannot
+represent an incomplete line, so it pretends there was a newline and
+reports an error.
+</p>
+<p>For example, suppose <samp class="file">F</samp> and <samp class="file">G</samp> are one-character files that
+contain just ‘<samp class="samp">f</samp>’ and ‘<samp class="samp">g</samp>’, respectively.  Then ‘<samp class="samp">diff F G</samp>’
+outputs
+</p>
+<div class="example">
+<pre class="example-preformatted">1c1
+&lt; f
+\ No newline at end of file
+---
+&gt; g
+\ No newline at end of file
+</pre></div>
+<p>(The exact message may differ in non-English locales.)
+‘<samp class="samp">diff -n F G</samp>’ outputs the following without a trailing newline:
+</p>
+<div class="example">
+<pre class="example-preformatted">d1 1
+a1 1
+g
+</pre></div>
+<p>‘<samp class="samp">diff -e F G</samp>’ reports two errors and outputs the following:
+</p>
+<div class="example">
+<pre class="example-preformatted">1c
+g
+.
+</pre></div>
+<hr>
+</div><div class="chapter-level-extent" id="Comparing-Directories">
+<h2 class="chapter" id="Comparing-Directories-1"><span>4 Comparing Directories</span></h2>
+<p><a class="index-entry-id" id="index-LC_005fCOLLATE"></a></p>
+<p>You can use <code class="command">diff</code> to compare some or all of the files in two
+directory trees.  When both file name arguments to <code class="command">diff</code> are
+directories, it compares each file that is contained in both
+directories, examining file names in alphabetical order as specified by
+the <code class="env">LC_COLLATE</code> locale category.  Normally
+<code class="command">diff</code> is silent about pairs of files that contain no differences,
+but if you use the <samp class="option">--report-identical-files</samp> (<samp class="option">-s</samp>) option,
+it reports pairs of identical files.  Normally <code class="command">diff</code> reports
+subdirectories common to both directories without comparing
+subdirectories’ files, but if you use the <samp class="option">-r</samp> or
+<samp class="option">--recursive</samp> option, it compares every corresponding pair of files
+in the directory trees, as many levels deep as they go.
+</p>
+<p>If only one file exists, <code class="command">diff</code> normally does not show its
+contents; it merely reports that one file exists but the other does
+not.  You can make <code class="command">diff</code> act as though the missing file is
+empty, so that it outputs the entire contents of the file that
+actually exists.  (It is output as either an insertion or a
+deletion, depending on whether the missing file is in the first or the
+second position.)  To do this, use the <samp class="option">--new-file</samp>
+(<samp class="option">-N</samp>) option.  This option affects command-line arguments as
+well as files found via directory traversal; for example, ‘<samp class="samp">diff
+-N a b</samp>’ treats <samp class="file">a</samp> as empty if <samp class="file">a</samp> does not exist but
+<samp class="file">b</samp> does.
+</p>
+<p>If the older directory contains large files that are not in
+the newer directory, you can make the patch smaller by using the
+<samp class="option">--unidirectional-new-file</samp> option instead of <samp class="option">-N</samp>.
+This option is like <samp class="option">-N</samp> except that it inserts the contents only
+of files that appear in the second directory but not the first (that is,
+files that were added).  At the top of the patch, write instructions for
+the user applying the patch to remove the files that were deleted before
+applying the patch.  See <a class="xref" href="manual.html#Making-Patches">Tips for Making and Using Patches</a>, for more discussion of
+making patches for distribution.
+</p>
+<p>To ignore some files while comparing directories, use the
+<samp class="option">--exclude=<var class="var">pattern</var></samp> (<samp class="option">-x <var class="var">pattern</var></samp>) option.
+This option
+ignores any files or subdirectories whose base names match the shell
+pattern <var class="var">pattern</var>.  Unlike in the shell, a period at the start of
+the base of a file name matches a wildcard at the start of a pattern.
+You should enclose <var class="var">pattern</var> in quotes so that the shell does not
+expand it.  For example, the option <samp class="option">-x '*.[ao]'</samp> ignores any file
+whose name ends with ‘<samp class="samp">.a</samp>’ or ‘<samp class="samp">.o</samp>’.
+</p>
+<p>This option accumulates if you specify it more than once.  For example,
+using the options <samp class="option">-x 'RCS' -x '*,v'</samp> ignores any file or
+subdirectory whose base name is ‘<samp class="samp">RCS</samp>’ or ends with ‘<samp class="samp">,v</samp>’.
+</p>
+<p>If you need to give this option many times, you can instead put the
+patterns in a file, one pattern per line, and use the
+<samp class="option">--exclude-from=<var class="var">file</var></samp> (<samp class="option">-X <var class="var">file</var></samp>) option.
+Trailing white space and empty lines are ignored in the pattern file.
+</p>
+<p>If you have been comparing two directories and stopped partway through,
+later you might want to continue where you left off.  You can do this by
+using the <samp class="option">--starting-file=<var class="var">file</var></samp> (<samp class="option">-S <var class="var">file</var></samp>)
+option.  This compares only the file <var class="var">file</var> and all alphabetically
+later files in the topmost directory level.
+</p>
+<p>If two directories differ only in that file names are lower case in
+one directory and upper case in the upper, <code class="command">diff</code> normally
+reports many differences because it compares file names in a
+case sensitive way.  With the <samp class="option">--ignore-file-name-case</samp> option,
+<code class="command">diff</code> ignores case differences in file names, so that for example
+the contents of the file <samp class="file">Tao</samp> in one directory are compared to
+the contents of the file <samp class="file">TAO</samp> in the other.  The
+<samp class="option">--no-ignore-file-name-case</samp> option cancels the effect of the
+<samp class="option">--ignore-file-name-case</samp> option, reverting to the default
+behavior.
+</p>
+<p>If an <samp class="option">--exclude=<var class="var">pattern</var></samp> (<samp class="option">-x <var class="var">pattern</var></samp>) option,
+or an <samp class="option">--exclude-from=<var class="var">file</var></samp> (<samp class="option">-X <var class="var">file</var></samp>) option,
+is specified while the <samp class="option">--ignore-file-name-case</samp> option is in
+effect, case is ignored when excluding file names matching the
+specified patterns.
+</p>
+<p>To tell <code class="command">diff</code> not to follow a symbolic link, use the
+<samp class="option">--no-dereference</samp> option.
+</p>
+<hr>
+</div></div></html>

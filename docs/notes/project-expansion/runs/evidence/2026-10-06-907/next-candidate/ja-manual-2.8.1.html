@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Diffutils
+(version 2.8.1, 5 April 2002),
+and documents the GNU diff, diff3,
+sdiff, and cmp commands for showing the
+differences between files and the GNU patch command for
+using their output to update files.
+
+Copyright C 1992, 1993, 1994, 1998, 2001, 2002 Free
+Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on 2009年9月22日 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Comparing and Merging Files: ファイルの比較とマージ</title>
+
+<meta name="description" content="Comparing and Merging Files: ファイルの比較とマージ">
+<meta name="keywords" content="Comparing and Merging Files: ファイルの比較とマージ">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="ja" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="a_0083_0095a_0082_00a1a_0082_00a4a_0083_00aba_0081_00aeae_00af_0094e_00bc_0083a_0081_00a8a_0083_009ea_0083_00bca_0082_00b8"></a>
+<h1 class="settitle">ファイルの比較とマージ</h1>
+
+<p>This manual is for GNU Diffutils
+(version 2.8.1, 5 April 2002),
+and documents the <small>GNU</small> <code>diff</code>, <code>diff3</code>,
+<code>sdiff</code>, and <code>cmp</code> commands for showing the
+differences between files and the <small>GNU</small> <code>patch</code> command for
+using their output to update files.
+</p>
+<p>Copyright &copy; 1992, 1993, 1994, 1998, 2001, 2002 Free
+Software Foundation, Inc.
+</p>
+<blockquote><p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being &ldquo;A GNU Manual,&rdquo;
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled &ldquo;GNU Free Documentation
+License.&rdquo;
+</p>
+<p>(a) The FSF&rsquo;s Back-Cover Text is: &ldquo;You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.&rdquo;
+</p></blockquote>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="diff-ja_1.html#Overview">概要</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Preliminary information.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_2.html#Comparison">1. 比較が意味するもの</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            What file comparison means.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_3.html#Output-Formats">2. <code>diff</code>の出力書式</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Formats for two-way difference reports.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_4.html#Incomplete-Lines">3. 不完全な行</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Lines that lack trailing newlines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_5.html#Comparing-Directories">4. ディレクトリの比較</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Comparing files and directories.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_6.html#Adjusting-Output">5. <code>diff</code>の出力をより良くする</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Making <code>diff</code> output prettier.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_7.html#diff-Performance">6. <code>diff</code>の性能のトレードオフ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Making <code>diff</code> smarter or faster.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_8.html#Comparing-Three-Files">7. 三つのファイルの比較</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Formats for three-way difference reports.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_9.html#diff3-Merging">8. 共通の先祖からマージ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Merging from a common ancestor.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_10.html#Interactive-Merging">9. <code>sdiff</code>を用いた対話的なマージ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Interactive merging with <code>sdiff</code>.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_11.html#Merging-with-patch">10. <code>patch</code>を用いてマージする</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Using <code>patch</code> to change old files into new ones.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_12.html#Making-Patches">11. パッチの作成と使用の助言</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Tips for making and using patch distributions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_13.html#Invoking-cmp">12. <code>cmp</code>の呼び出し</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Compare two files byte by byte.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_14.html#Invoking-diff">13. <code>diff</code>の呼び出し</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Compare two files line by line.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_15.html#Invoking-diff3">14. <code>diff3</code>の呼び出し</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Compare three files line by line.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_16.html#Invoking-patch">15. <code>patch</code>の呼び出し</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Apply a diff file to an original.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_17.html#Invoking-sdiff">16. <code>sdiff</code>の呼び出し</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Side-by-side merge of file differences.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_18.html#Standards-conformance">17. 標準への準拠</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Conformance to the <small>POSIX</small> standard.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_19.html#Projects">18. 将来のプロジェクト</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              If you&rsquo;ve found a bug or other shortcoming.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_20.html#Copying-This-Manual">A. このマニュアルのコピーに付いて</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to make copies of this manual.
+</td></tr>
+<tr><td align="left" valign="top"><a href="diff-ja_21.html#Index">B. 索引</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Index.
+</td></tr>
+</table>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_toc.html#SEC_Contents" title="Table of contents">目次</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_21.html#Index" title="見出し">見出し</a>]</td>
+<td valign="middle" align="left">[<a href="diff-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  この文書は<em>新堂 安孝</em>によって<em>2009年9月22日</em>に<a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>を用いて生成されました。
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
