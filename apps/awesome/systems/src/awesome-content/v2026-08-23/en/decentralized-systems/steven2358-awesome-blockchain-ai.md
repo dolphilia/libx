@@ -1,24 +1,12 @@
 ---
 title: "Awesome Blockchain AI"
-description: "A curated collection of resources and projects focused on Blockchain AI."
+description: "Blockchain projects for AI algorithms, data, computation, finance, medicine, and autonomous agents, with background reading and academic research."
 licenseSource: "github-steven2358-awesome-blockchain-ai-readme-md"
 ---
 
 # Awesome Blockchain AI
 
-A curated collection of resources and projects focused on Blockchain AI.
-
-## Contents
-
-- [Recommended reading](#recommended-reading)
-- [Blockchains for AI algorithms](#blockchains-for-ai-algorithms)
-- [Blockchains for data](#blockchains-for-data)
-- [Blockchains for computation](#blockchains-for-computation)
-- [Blockchains for AI in finance](#blockchains-for-ai-in-finance)
-- [Blockchains for AI in medicine](#blockchains-for-ai-in-medicine)
-- [Blockchains for AI in supply chains](#blockchains-for-ai-in-supply-chains)
-- [Blockchains for autonomous agents](#blockchains-for-autonomous-agents)
-- [Academic Research](#academic-research)
+Blockchain projects that use decentralization, immutability, and smart contracts to build AI and machine-learning systems. This list covers algorithms, data, computation, finance, medicine, autonomous agents, background reading, and academic research. Project capabilities, goals, evaluations, and claims reflect the fixed source.
 
 ## Recommended reading
 
@@ -38,15 +26,15 @@ A curated collection of resources and projects focused on Blockchain AI.
 
 ## Blockchains for AI algorithms
 
-- [SingularityNET](https://singularitynet.io/) - SingularityNET is a distributed AI platform on the Ethereum blockchain, with each blockchain node backing up an AI algorithm.
+- [SingularityNET](https://singularitynet.io/) - A distributed AI platform on the Ethereum blockchain, with each blockchain node backing up an AI algorithm.
 - [Intuition Fabric](https://intuitionfabric.com) - The goal of Intuition Fabric is to democratize access to AI through a network of deep learning models that are stored on the interplanetary file system and accessed through the Ethereum blockchain.
 - [OpenMined](https://openmined.org/) - OpenMined is a community focused on building open-source technology for the decentralized ownership of data and intelligence. With OpenMined, AI can be trained on data that it never has access to.
 - [Raven Protocol](https://www.ravenprotocol.com/) - Raven Protocol is a decentralized and distributed deep-learning training protocol.
-- [Thought Network](https://thought.live/) - Thought's blockchain-enabled Fabric fundamentally changes applications by embedding artificial intelligence into every bit of data making it agile, actionable and inherently secure.
-- [MATRIX AI](https://www.matrix.io/) - The Matrix AI Network is a public chain that combines AI technology with blockchain technology to solve the major challenges currently stifling the development and adoption of blockchain technology. Matrix is poised to revolutionize and democratize the field of Artificial Intelligence using a blockchain-powered decentralized computing platform.
+- [Thought Network](https://thought.live/) - Thought’s blockchain-enabled Fabric embeds AI into every bit of data. The source claims this fundamentally changes applications and makes data agile, actionable, and inherently secure.
+- [MATRIX AI](https://www.matrix.io/) - The Matrix AI Network is a public chain combining AI and blockchain technology to address major challenges to blockchain development and adoption. The source presents its blockchain-powered decentralized computing platform as poised to revolutionize and democratize AI.
 - [Cortex Labs](https://www.cortexlabs.ai/) - Cortex Labs is a decentralized AI platform with a virtual machine that allows you to execute AI programs on-chain.
 - [Fetch.ai](https://fetch.ai/) - Fetch.ai is a decentralized machine learning platform based on a distributed ledger, that enables secure sharing, connection and transactions based on any data globally.
-- [Oraichain](https://orai.io/) - Oraichain is the world's first intelligent and secure solution for emerging Web3, scalable Dapps, and decentralized AI.
+- [Oraichain](https://orai.io/) - Described in the source as the world’s first intelligent and secure solution for emerging Web3, scalable Dapps, and decentralized AI.
 - [Bittensor](https://bittensor.com/) - Bittensor is an open-source protocol that powers a decentralized, blockchain-based machine learning network. [Related resources.](https://taostats.io/links/)
 - [Alethea AI](https://alethea.ai/) - A research and development studio building at the intersection of Generative AI and Blockchain.
 - [Vanna Labs](https://www.vannalabs.ai/) - An Ethereum L2 rollup that supports native, seamless, and trustless AI/ML inferences on-chain to empower decentralized applications.
@@ -57,7 +45,7 @@ A curated collection of resources and projects focused on Blockchain AI.
 
 ## Blockchains for data
 
-- [Ocean Protocol](https://oceanprotocol.com/) - Ocean Protocol is a decentralized data exchange protocol that lets people share and monetize data while guaranteeing control, auditability, transparency and compliance to all actors involved. Its network handles storing of the metadata (i.e. who owns what), links to the data itself, and more.
+- [Ocean Protocol](https://oceanprotocol.com/) - A decentralized data exchange protocol for sharing and monetizing data. The source claims it guarantees control, auditability, transparency, and compliance for all participants. Its network stores metadata (who owns what), links to the data itself, and more.
 
 ## Blockchains for computation
 
@@ -75,9 +63,11 @@ A curated collection of resources and projects focused on Blockchain AI.
 ## Blockchains for AI in medicine
 
 - [doc.ai](https://doc.ai/about) - doc.ai aims to decentralize precision medicine on the blockchain by using AI.
-- [BurstIQ](https://www.burstiq.com/) - Healthcare data marketplace with granular ownership and granular consent of data. By using on-chain storage on a custom blockchain, BurstIQ can comply with HIPAA, GDPR, and other regulations.
+- [BurstIQ](https://www.burstiq.com/) - A healthcare data marketplace with granular ownership and consent for data. The source states that on-chain storage on a custom blockchain enables BurstIQ to comply with HIPAA, GDPR, and other regulations.
 
 ## Blockchains for AI in supply chains
+
+The fixed source has no entries in this category.
 
 ## Blockchains for autonomous agents
 
@@ -97,9 +87,3 @@ A curated collection of resources and projects focused on Blockchain AI.
 - [Hyperparameter Optimization](https://doi.org/10.3389/fbloc.2020.00023) - Mittal, A., & Aggarwal, S. (2020). Hyperparameter optimization using sustainable proof of work in blockchain. *Frontiers in Blockchain*, 3, 23.
 - [Proof of Federated Learning](https://doi.org/10.1109/TPDS.2021.3056773) - Qu, X., Wang, S., Hu, Q., & Cheng, X. (2021). Proof of federated learning: A novel energy-recycling consensus algorithm. *IEEE Transactions on Parallel and Distributed Systems*, 32(8), 2074-2085.
 - [Proof of neural architecture](https://doi.org/10.1109/ICBC51069.2021.9461067) - Li, B., Lu, Q., Jiang, W., Jung, T., & Shi, Y. (2021, May). A mining pool solution for novel proof-of-neural-architecture consensus. In *2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC)* (pp. 1-3). IEEE.
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Steven Van Vaerenbergh](https://github.com/steven2358) has waived all copyright and related or neighboring rights to this work.

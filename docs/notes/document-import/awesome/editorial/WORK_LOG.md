@@ -6237,3 +6237,29 @@
 - 補助HTML判定520205はレポートにないheading.text参照で失敗。実HTML/検査実装450b2dに基づく判定に修正し67103d合格、正規HTMLgate4cb5ce exit0。本文・正規検査を変更して通過させていない。統合build e4d79f exit0、実統合結果41c9f3は全7子サイトfresh。
 - EXCLUSIONSは全判断データを再帰照合しtimestampのみHEADへ復元。EXTERNAL_LINK_REPORTは公式Tor/ブラウザーSnowflakeガイド復元の実変更152→154/全体138563→138565を保存。AGENTS/現行計画/ガイドの元mainと分離worktreeのsha一致0e950d。元main他作業差分を保持。実モデルは現Codexセッション/API識別子取得不能、委任/ローカルLLMなし。所有UI/preview終了/viewport復元。
 - 検証済み本文/overlay/判断・レビュー証拠/生成物/台帳をまとめ、workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合。まだ保存準備、外部公開/PR/dispatch/定期設定なし。次171 github-steven2358-awesome-blockchain-ai-readme-md 固定raw/旧EN/旧JA全文から継続。
+
+### バッチ170送信確認・171全文読了 (2026-10-06T22:19:42.414Z)
+
+- Tor170 commit 2814f19be7f301c222908b97dacb85be609cab6b、origin/codex/awesome-editorial-isolated-20261007 push1566f0 exit0、remote HEAD一致077642。staged58のみ/current本文-review一致bfb8d1、未ステージ差分なし。配信workflow751aaa全文対象外。外部公開なし。
+- 171 raw74単位/旧EN73/旧JA73の各全文をb8b023/4e9150/b7c737で省略なし読了。固定raw101行の権利放棄全文/作者URLは既存出典にないため共通出典データへ保存。本文未変更、出典実表示確認後License節移設。次 Steven Van Vaerenbergh権利放棄声明/作者URLを共通出典へ追加→実表示確認後License移設。空サプライチェーン分類は原文未収録注記。EN編集/JA/3全文別pass→再生成/gates/保全/参照/build/HTML/UI/global→verified229/commit/push。
+
+- 2026-10-06T22:23:15.743Z batch171全文編集・3別パス全文レビュー完了（raw74/旧EN73/旧JA73→EN61/JA93単位、46list/13heading/16alias）。overlayと実英日本文を反映。proof dd51eabb4260b520d297d1ace04905a577c63e33ac23ddbebd554ab90bb03700。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified229→commit/push。
+
+- 2026-10-06T22:23:35.390Z batch171-full-reviews-overlay-complete-gates-pending。228完了809残保留4。進捗02a3df5e502bacb3c2333b421215aa516debfec395c5a7b5f5792c05aaf3e764。次171 2replay/8gate/2074hash/全fragment監査後fresh build→全7input/HTML/4UI→global→verified229/commit/push。
+
+- 2026-10-06T22:26:45.494Z batch171-generation-gates-passed-build-pending。228完了809残保留4。進捗4a8ecfacd0cedfd00f054b74cf057b31acb6d19b5ea5f543b791c08fe1a975b9。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML13見出し46list/16alias/英日PCmobile実UI→global→verified229/commit/push。
+
+- 2026-10-06T22:30:33.496Z batch171-build-exited-final-input-html-running。228完了809残保留4。進捗ddb1a2fcbd723dbb537d588c6f2ce67277604f696c0291546369b60e324bb30f。次18134最終7input/HTML/gateのexit0→英日PCmobile4実表示→global→verified229/commit/push→172 Substrate。
+
+- 2026-10-06T22:35:18.649Z batch171-four-ui-content-reviewed-global-pending。228完了809残保留4。進捗c5d1103afbae00ecf1dbca9e18d0e69d9876fabdf7ef76bb4acca412860bd1c3。次全1037台帳global/全2074hash/diff→verified229→commit/push/hash照合→172 Substrate fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T22:36:11.231Z batch171-verified229-save-push-pending。229完了808残保留4。進捗5122042a863c309712514ac62a637e55c9f6c67c03f558b2ad5eee81efc9055c。次229完了808残保留4。Blockchain AI全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次172 github-substrate-developer-hub-awesome-substrate-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ171 Blockchain AI検証完了・保存準備 (2026-10-06T22:36:16.060Z)
+
+- 固定raw74単位102行/旧EN73・旧JA73単位106行をb8b023/4e9150/b7c737で省略なし全文読了。raw→EN別パスb905e6 ROW0–34/c92cbe ROW35–61+追加注記、ENJA624c26 UNIT0–34/dad13a UNIT35–60、2JA変更UNIT17/19と日本語単独全90行を125a4aで再読。EN全diff746eb7/JA全diff ae7435、最終ハッシュEN 7876d60f623cb3a7d4fadeb9db150ac77ded0458f1fc9133c0af50e60096b997 / JA e23168ad52977238765008bcbcea16b095863016827db5687a6d2bbcb1fe4dbb。
+- 定型序文を分散化・改変不能性・smart contractsでAI/ML構築と実収録範囲へ。46資料/3補助リンク/分類順/著者・原題/2017–2021年/巻号頁/ERC-8004/HCS-14/UAIDs/x402/L2/無料予測/暗号化/ステーク/目的保持。Thought/Oraichain/Ocean/BurstIQ/MATRIXの評価・安全・保証を固定原文へ帰属。Ravenの非中央管理と分散、Matrix AI Networkの主体名を補正。12論文の原題・書誌を保持して日本語説明を添える。サプライチェーン分類は原文未収録を英日明記し架空項目を足さない。
+- 手動目次9とAwesome装飾/License画像を整理。13見出し/12分類見出し/JA16旧英語・変更自然IDを保持。License節を移す前に、raw101行のSteven Van Vaerenbergh作者URLと法律上可能な範囲/すべての著作権・関連または隣接権の全文をPROVENANCE_ATTRIBUTIONS/NOTESへ固定commit/hash/行/抜粋sha付き保存し、既存生成器でsystems configへ。英日PCの出典全文と作者URLを実表示しpreflightproof e9a165b5d1b36c3f55e70263c7a4ef12b41a4ce53a34db6e2121d553a91ed1ae。採用CC0不変更。最初の誤コマンド338e96はcommand not foundでbuild前停止し、package正本f6e651のgenerate-source-registry/checkを9b3588で実行、preflightbuild a98931 exit0。検査無効化なし。
+- 全1037組2074文書2passesを2回再生成、通常8gate・全2074hash/全fragment incoming0、対象systems fresh統合buildと全7開始現在manifest hash一致、正規HTMLgate、英日13head/46list/24TOC/JA16alias/全旧有用ID/画像表0/固定README・CC0・作者3URL/完全権利放棄通知/統合HTML一致、英日PCmobile実UIで導入・空分類・学術研究・目次・出典/言語/版/隣接切替を確認。global 4ec5af actual exit0/diff合格、verified229/残808/保留4。状態変更後の全本文/overlay/review/経路/検査実装/出典data/config同一証拠でglobal再利用。
+- EXCLUSIONSは全判断を再帰比較してtimestampsのみHEADへ復元。外部リンク報告はLicenseの本文リンク/バッジを出典へ集約した実差分のみ保持。元main他作業差分保全。実モデルは現Codex/API識別子取得不能、委任・ローカルLLMなし。所有UI/preview終了・viewport復元。
+- 本バッチの検証済み本文/overlay/判断・レビュー・事前出典証拠/出典data-config/生成物/台帳のみを、配信workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/push/remote HEAD照合。まだ保存準備、外部公開/PR/dispatch/定期設定なし。次172 github-substrate-developer-hub-awesome-substrate-readme-mdの固定raw/旧英日全文から継続。
