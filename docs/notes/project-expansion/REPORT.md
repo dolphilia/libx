@@ -2,8 +2,8 @@
 
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
-- 検証済み: 35件 / 今回の公開済み: 34件 / 公開待ち: 1件
-- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 検証済み: 36件 / 今回の公開済み: 35件 / 公開待ち: 1件
+- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -47,8 +47,8 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-findutils / v4-11-0 / new | verified | verified | 921:GNU findutils4.11.0概要と第1〜2章26英日/53編集原稿/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認完了。922:GNU gzip1.15全7章+Topを70点eligible選定し、全8草稿/84単位の別パス全文review完了。923:実公開f4075feから隔離正規作成器で正式定本化し、有効な本文レビューをSHA対応付けて再利用、配布・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 921:GNU findutils4.11.0概要と第1〜2章26英日/53編集原稿/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認完了。922:GNU gzip1.15全7章+Topを70点eligible選定し、全8草稿/84単位の別パス全文review完了。923:実公開f4075feから隔離正規作成器で正式定本化し、有効な本文レビューをSHA対応付けて再利用、配布・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 |
 | gnu-gzip / v1-15 / new | verified | verified | 925:GNU gzip1.15概要+完全第1〜7章8英日/17編集原稿/593再生成ZIPを限定d192c99で統合Pages公開・公開後確認完了。927:GNU Time1.10Top+完全第1〜2章3英日/111単位全文レビュー・代表試作を現行基準70点eligible登録。928:実公開d192c99から隔離正規作成器で正式定本化し、有効本文レビューをSHA対応付けて再利用、通知・配布キット・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 925:GNU gzip1.15概要+完全第1〜7章8英日/17編集原稿/593再生成ZIPを限定d192c99で統合Pages公開・公開後確認完了。927:GNU Time1.10Top+完全第1〜2章3英日/111単位全文レビュー・代表試作を現行基準70点eligible登録。928:実公開d192c99から隔離正規作成器で正式定本化し、有効本文レビューをSHA対応付けて再利用、通知・配布キット・独立再生成・検証公開へ。重大不具合/既存修正/着手済み優先、件数上限維持。MsgPack新許諾または2026-11-01待ち。 |
 | gnu-time / v1-10 / new | verified | verified | 932:GNU Time1.10の原文3・独自訳3・原英語GFDL/111単位全文review/7編集原稿/522再生成ZIPを70a733878で統合Pages公開・公開後確認完了。本番46d5e609、libx.dev267配信照合/未説明差分0。934–935:GNU ed1.22.6原文12/訳12の196単位・15説明コメント全文意味reviewを引継ぎ、原稿キット・独立rebuild・正式検証・公開へ。重大不具合/着手済み/既存更新優先、上限・停止指示遵守。 932:GNU Time1.10の原文3・独自訳3・原英語GFDL/111単位全文review/7編集原稿/522再生成ZIPを70a733878で統合Pages公開・公開後確認完了。本番46d5e609、libx.dev267配信照合/未説明差分0。934–935:GNU ed1.22.6原文12/訳12の196単位・15説明コメント全文意味reviewを引継ぎ、原稿キット・独立rebuild・正式検証・公開へ。重大不具合/着手済み/既存更新優先、上限・停止指示遵守。 |
-| gnu-ed / v1-22-6 / new | verified | verified | 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント別パス全文review、25MD/589sourcekit独立再生成・82HTTP・1015参照・主要導線・統合5745ファイル合格。実公開Time70a733878基準の /private/tmp/libx-gnu-ed-release-936 で限定commit/push→PagesPreview→CASProduction→公開後確認。Workers/定期なし。 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント別パス全文review、25MD/589sourcekit独立再生成・82HTTP・1015参照・主要導線・統合5745ファイル合格。実公開Time70a733878基準の /private/tmp/libx-gnu-ed-release-936 で限定commit/push→PagesPreview→CASProduction→公開後確認。Workers/定期なし。 |
-| gnu-diffutils / v3-12 / update | content-reviewed | content-reviewed | 938:Diffutils第5〜9章19英日ガイド/91単位review・独立125定本再生成・最終format/lint/130routebuild/構造132/kit/assets合格。既存87本文保持。GNU ed本番37529461117進行中（Preview307HTTP合格、公開commit1ad5ec225、CAS基準Time70a733878）。Ed公開後にactualartifactで更新統合、root限定登録・HTTP/導線→verified限定commit/push/Pages公開。合格済み全文review・対象buildの重複なし。 938:Diffutils第5〜9章19英日ガイド/91単位review・独立125定本再生成・最終format/lint/130routebuild/構造132/kit/assets合格。既存87本文保持。GNU ed本番37529461117進行中（Preview307HTTP合格、公開commit1ad5ec225、CAS基準Time70a733878）。Ed公開後にactualartifactで更新統合、root限定登録・HTTP/導線→verified限定commit/push/Pages公開。合格済み全文review・対象buildの重複なし。 |
+| gnu-ed / v1-22-6 / new | verified | verified | 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント/25定本/589原稿キットを限定1ad5ec225で統合Pages本番78634eae公開・公開後確認完了。5745artifact・307固定/独自domainHTTP/404/CAS・言語切替合格、未説明差分0。938:Diffutils3.12第5〜9章19英日/91単位review・125独立再生成・130targetbuild・11290参照・285localHTTP・代表導線合格。Ed実公開成果物をbaselineとしてroot限定登録→verified→限定commit/push/Pages公開。Workers/定期なし。 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメント/25定本/589原稿キットを限定1ad5ec225で統合Pages本番78634eae公開・公開後確認完了。5745artifact・307固定/独自domainHTTP/404/CAS・言語切替合格、未説明差分0。938:Diffutils3.12第5〜9章19英日/91単位review・125独立再生成・130targetbuild・11290参照・285localHTTP・代表導線合格。Ed実公開成果物をbaselineとしてroot限定登録→verified→限定commit/push/Pages公開。Workers/定期なし。 |
+| gnu-diffutils / v3-12 / update | verified | verified | 938:検証済みDiffutils第5〜9章の限定85filesを0521e6399ab13182ce782d8d40902e4f9f554934/codex/expand-gnu-diffutils-20261007へcommit/push成功。PagesPreview37531607740進行中→成果物/HTTP/404/代表確認→CAS基準Ed1ad5ec225でProduction→公開後確認と記録。936GNU edは本番78634eae/307固定・独自domain/404/言語切替合格、published記録済み。保存branch codex/save-document-expansion-20261007 ec3449b9031be1999ceb40357145ab3afb6f87a7 push成功、今回の公開後/verified記録を続けて保存。 938:検証済みDiffutils第5〜9章の限定85filesを0521e6399ab13182ce782d8d40902e4f9f554934/codex/expand-gnu-diffutils-20261007へcommit/push成功。PagesPreview37531607740進行中→成果物/HTTP/404/代表確認→CAS基準Ed1ad5ec225でProduction→公開後確認と記録。936GNU edは本番78634eae/307固定・独自domain/404/言語切替合格、published記録済み。保存branch codex/save-document-expansion-20261007 ec3449b9031be1999ceb40357145ab3afb6f87a7 push成功、今回の公開後/verified記録を続けて保存。 |
 
 ## 登録済みの既存文書
 
@@ -78,11 +78,11 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | pcre2 | v10-49 | 未実施 | 896:固定PCRE2 10.49の5完全manpage英日／別パス全文review5／51pre各言語、固定110原資料・101HTMLと2text参照。限定faae5fa043で統合Pages本番、全artifact・新規/変更HTTP・代表検索/目次/語切替/フッター/source/404合格。821編集用ZIP/10原稿/独立再構築895根拠を保持。公開証拠896 PUBLICATION_RESULT。 |
 | gnu-sed | v4-10 | 未実施 | 901:固定GNU sed4.10完全第1〜3章12英日/別パス全文review12、51pre各言語/4注釈、25編集原稿/14固定原資料/988参照。限定2151cecacで統合Pages本番、597ZIP・全artifact・新規/変更HTTP・代表検索/語切替/フッター/404合格。899代表・12reviewと901修正ZIP独立再構築を再利用。公開証拠901 PUBLICATION_RESULT。 |
 | gnu-grep | v3-12 | 未実施 | 907:固定GNU grep3.12第1〜4章24英日/別パス全文review24、29pre各言語/1注釈、49編集原稿/12固定入力。限定1782ad1a29で統合Pages本番、723ZIP・全artifact・新規変更HTTP・代表検索/語切替/フッター/404合格。903–906の有効レビュー/独立再構築/代表表示を再利用。公開証拠907 PUBLICATION_RESULT。 |
-| gnu-diffutils | v3-12 | 未実施 | 915:GNU diffutils3.12概要+第1〜4章43英日/別パス全文review43/33originalpre157VAR、87編集原稿/12固定入力/932再構築ZIPを限定4e47452c3で統合Pages公開・公開後確認。全artifact・新規変更HTTP・代表検索/言語/版/原典/404合格。909–914有効証拠再利用。公開証拠915 PUBLICATION_RESULT。 |
+| gnu-diffutils | v3-12 | 未実施 | 938:3.12既存87定本文保持、第5〜9章19英日/91単位を追加し、125独立再生成・1134原稿キット・target130/統合5821/11290参照/285HTTP・代表表示合格。Edactual1ad基準・限定公開待ち。 |
 | gnu-findutils | v4-11-0 | 未実施 | 921:GNU findutils4.11.0Top+完全第1〜2章26英日/全文review26・372単位、31pre/146VAR/2tables/完全脚注1、53編集原稿/19原入力/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認。全artifact・対象HTTP・代表検索/日英/版/原典/404合格。917–920有効証拠再利用。 |
 | gnu-gzip | v1-15 | 未実施 | 925:GNU gzip1.15Top+完全第1〜7章8英日/全文review8・84単位、15pre/6VAR、17編集原稿/11原入力/593再生成ZIPを限定d192c99で統合Pages公開・公開後確認。全5614artifact・HTTP176・検索/日英/版/原典/404合格。有効な922–924証拠再利用。 |
 | gnu-time | v1-10 | 未実施 | 932:GNU Time1.10原文3・訳3/111単位全文review/7編集原稿/522再生成ZIPを限定70a733878で統合Pages本番46d5e609公開・公開後確認。5663artifact、267配信、CAS保護、未説明差分0。 |
-| gnu-ed | v1-22-6 | 未実施 | 936:GNU ed1.22.6全12英日ガイド/196単位+15説明コメントreview。25MD/589原稿キット独立再生成、GFDL全原文/著者/通知/履歴保持、6正式検査合格。公開待ち、定期巡回未実施。 |
+| gnu-ed | v1-22-6 | 未実施 | 936:全12英日ガイド/196単位+15説明コメント/25定本/589原稿キットを限定1ad5ec225で本番78634eae公開・公開後確認。5745artifact、307配信/CAS/404/言語切替合格・未説明差分0。 |
 
 ## 候補
 
