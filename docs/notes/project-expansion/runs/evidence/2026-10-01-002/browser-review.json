@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T09:30:35.608345+00:00",
+  "tool": "mcp__cua_repl",
+  "model": "configured:gpt-6.1-sol;runtime:unavailable",
+  "scope": "Lua既知問題1ページとGLFW入口1ページ。全既存ページの表示・内容保証とは別。",
+  "results": {
+    "desktop": "passed; native screenshots/AX state",
+    "mobile": "passed; 390×844、documentWidth=375、横方向のはみ出しなし。狭い画面ではサイドバー後に本文が縦配置。",
+    "keyboard": "passed; LibxからTabでデスクトップは文書タイトル、モバイルは検索ボタンへ実フォーカス移動。GLFW版メニューをEscapeで閉じる操作を確認。実機・複数ブラウザーの完全なフォーカス順は未実施。",
+    "language": "passed; Lua ja→en、GLFW en→jaで同じ版・スラッグへ移動。",
+    "version": "passed; 各サイトは固定1版のみ。版メニューの対象版・日付・現在版を確認。他版への移動は対象版がなく非該当。",
+    "navigation": "passed; Lua既知問題→前ページ→次へリンクを確認。GLFW入口→版入口にAPIリファレンスの全22ページの導線があることを確認。",
+    "provenance": "passed; Luaページ固有の出典名称に2026-08-11取得版、原文リンクはbugs.html#5.5.1。GLFW著作権者、zlib/libpng、固定リリース出典を確認。",
+    "console": "passed; GLFW通常ページのerrorログ0。",
+    "codeFigures": "修正対象2ページにコード・図・表なし。今回は非該当。最大APIページ等の既存ページ全体の再表示検証は未実施。"
+  },
+  "limits": [
+    "既存サイト全体の未実施の内容レビュー、実機・複数ブラウザー検証を完了へ変更しない。",
+    "途中のviewport指定は別の選択タブへ適用され、対象タブの実寸とスクリーンショットでやり直した。",
+    "過去の公開404不具合についてはローカルAstroのみ再確認。現在のProductionの再確認は未実施。"
+  ]
+}

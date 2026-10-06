@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-01T10:28:45.992Z",
+  "method": "browser-display-review",
+  "status": "passed",
+  "origin": "http://127.0.0.1:4322",
+  "scope": [
+    "02-getting-started/02-compiling-glfw.md",
+    "02-getting-started/03-building-applications.md"
+  ],
+  "results": [
+    "デスクトップ日本語コンパイルガイドと英語ビルドガイドの見出し・本文・サイドバー・目次をスクリーンショットで確認。",
+    "コンパイルガイド日本語→English、英語ビルドガイド→日本語で同一パスを維持。英日ラベルと出典・ライセンス導線をAXで確認。",
+    "両日本語ページの390×844表示でbody/root幅375px、画面全体の横はみ出しなし。コード13/21ブロックをDOMで確認。",
+    "日本語コンパイルガイドの先頭コードがsudo apt install libwayland-dev libxkbcommon-dev xorg-devとしてコピーされる。ビルドガイド先頭は#include <GLFW/glfw3.h>と一致。",
+    "モバイルのコード領域は横スクロール可能で、周囲の日本語は折り返される。コンパイルガイドのコピー完了表示を確認。",
+    "CMakeのインストール済み版へのリンクをAX操作でクリックし、URL #build_link_cmake_packageと該当見出しの表示を確認。",
+    "デスクトップでLibxからTabキーによりGLFWドキュメントのリンクへ移動。コンソールwarning/errorは0件。"
+  ],
+  "observations": [
+    "初回のPlaywrightリンク操作ではアンカー移動が反映されず、最新AXインデックスでクリックしたところ到達。初回コピーは空だったがページ再読み込み後のコピーは一致。これらの初回操作を合格根拠にしない。"
+  ],
+  "limits": [
+    "全文の各ピクセル・全コードの横スクロール操作・全リンククリックは未確認。全文内容/コード/リンク整合性は独立した証拠で検査。",
+    "全35対象の表示完了を意味しない。モバイルは日本語のみ。外部公開・Production404は未確認。"
+  ],
+  "artifacts": [
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/02-getting-started/02-compiling-glfw.md",
+      "sha256": "58e7661d4c1fcf0b95dc97290cfa379f3d2287c4a1d4fea3b7d815f1c9493db8"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/02-getting-started/03-building-applications.md",
+      "sha256": "f0e735911c4f6598109ae3354872744bd7b5f95e65190263bed1d1d20603f06e"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/02-getting-started/02-compiling-glfw.md",
+      "sha256": "c5c7ec24ade192be48353f3310700c975fafd5d3d7d8f6d75f471a5405c85266"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/02-getting-started/03-building-applications.md",
+      "sha256": "d564f8c0ec7d9233e3097921faaa3f3956f20d790558bc676d06efa764899cfb"
+    },
+    {
+      "path": "packages/ui/src/components/LanguageSelector.astro",
+      "sha256": "0ecb9bec9c0998830518f3f6a3b9f4c29bbcf2a52d30d03ea323fde0ccd4e833"
+    }
+  ]
+}

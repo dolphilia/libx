@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-01T10:55:00.985Z",
+  "status": "passed",
+  "scope": "API入門の未完了モバイル表表示修正と、共有CSSのLua・GLFWへの影響確認。全35ページの表示完了ではない。",
+  "method": "browser-display-review",
+  "results": [
+    "日本語390×844でviewport390、document/body幅375、表枠327、表929.0390625px。全7APIリンクが各1矩形で途中改行なし。",
+    "表へ実キーボードフォーカスし、ArrowRightでscrollLeft0→40→602、ArrowLeftで0へ戻した。初期化ヒント全7行の左列と右端サポート値を実画面で確認しJPG保存。",
+    "デスクトップ日本語はviewport1280、document幅1265、表枠647。英語も同寸で表917.4765625px、7APIリンク各1矩形。英語表の実画面を確認。",
+    "英語の390×844を別タブ閉鎖後に実適用し再計測：document幅375、表枠327、表917.4765625、8行、7APIリンク各1矩形。",
+    "Lua既知問題ページ：デスクトップ本文・取得版注記・出典・前へ導線を実画面確認。モバイルviewport390/document375。表枠0件。GLFW入口も表枠0件、desktop1280/document1265。限定CSSは両修正ページの本文に作用しない。",
+    "本文・固定原文・コード・参照URLは変更なし。別証拠の全文内容レビューをハッシュ一致で維持。viewport overrideは解除。"
+  ],
+  "limits": [
+    "全ページ・全画面・実機や複数ブラウザーの検証ではない。英語のモバイル表は寸法と矩形のDOM検査、実画面の表確認は日本語モバイルと英語デスクトップ。",
+    "表枠clickが表内リンクを開いたため戻って検証。Home/Endはページ縦移動となったため、明示アンカーへ移動してArrowRight/ArrowLeftで検証し直した。成功判定は後の観測のみ。"
+  ],
+  "artifacts": [
+    {
+      "path": "packages/theme/src/css/starlight-overrides.css",
+      "sha256": "d48504bc93df8e963f7cd91f6a2dc4bad89b43cb6656c04a5d383d3297b09e85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-007/mobile-table-left.jpg",
+      "sha256": "ba09817c3b8ac262792018112a131a25f5f7d98a838905b3236d9586b0f176c3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-007/mobile-table-right.jpg",
+      "sha256": "06f985114f7bbb616cb83bf58c9b9d0e95227e90f10a565a182a90e594bc68c1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-007/ui-input.json",
+      "sha256": "91f8772ab76f92fcead64dc53cc084c869c6c35ee63ec5919054a60adc62a012"
+    }
+  ],
+  "previousPageDisplayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-006/browser-review.json",
+    "sha256": "a97c17dd7de8b0883e7d7beeefc7613ce9b1fdc5eb5dea8a535571b9ce5022e1"
+  }
+}
