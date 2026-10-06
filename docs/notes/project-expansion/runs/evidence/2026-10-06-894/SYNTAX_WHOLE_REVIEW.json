@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-06T04:37:15.394785+00:00",
+  "status": "whole-review-complete-four-clarifications-pending-delta",
+  "separateReviewPass": true,
+  "allUnitsReviewed": 178,
+  "savedJapaneseDraft": {
+    "path": "docs/notes/document-import/pcre2/v10-49/translations/batch-894/pcre2syntax.md",
+    "sha256": "996cee915eac35e3ab103b5407c4f1942c4ccc293c511e9d8c2c7d1dbc56a441",
+    "coverage": [
+      [
+        1,
+        125
+      ]
+    ]
+  },
+  "displayFile": "/private/tmp/libx-pcre2-syntax-review-full-894.txt",
+  "displayCoverage": [
+    [
+      1,
+      1180
+    ]
+  ],
+  "findings": [
+    "全178unitの説明・見出し・40preを原文と保存済み訳文の別パスで照合。ASCII/UTF/UCP、一般分類/スクリプト/二方向分類、クラス/拡張集合、数量/位置/オプション、後読みの255/65535と非アトミック条件を確認。",
+    "部分文字列走査・script run・後方参照と再帰サブルーチン/返却捕捉を区別し、条件/曖昧性/版既定0、制御動詞の即時/失敗時/サブルーチン範囲、calloutの区切り文字、置換の既定/EXTENDED/グループ展開を保持。著者・改訂日・copyrightを保持。",
+    "Unicode Letterを一般の文字や英字と読めるunit29/53/84、および単独スクリプト指定を裸のpと読めるunit42の計4unitを明確化する。原文エンジンの技術監査や原文修正は行わない。"
+  ],
+  "changes": [
+    {
+      "unit": "29",
+      "source": "  C          Other\n  Cc         Control\n  Cf         Format\n  Cn         Unassigned\n  Co         Private use\n  Cs         Surrogate\n\n  L          Letter\n  Lc         Cased letter, the union of Ll, Lu, and Lt\n  L&         Synonym of Lc\n  Ll         Lower case letter\n  Lm         Modifier letter\n  Lo         Other letter\n  Lt         Title case letter\n  Lu         Upper case letter\n\n  M          Mark\n  Mc         Spacing mark\n  Me         Enclosing mark\n  Mn         Non-spacing mark\n\n  N          Number\n  Nd         Decimal number\n  Nl         Letter number\n  No         Other number\n\n  P          Punctuation\n  Pc         Connector punctuation\n  Pd         Dash punctuation\n  Pe         Close punctuation\n  Pf         Final punctuation\n  Pi         Initial punctuation\n  Po         Other punctuation\n  Ps         Open punctuation\n\n  S          Symbol\n  Sc         Currency symbol\n  Sk         Modifier symbol\n  Sm         Mathematical symbol\n  So         Other symbol\n\n  Z          Separator\n  Zl         Line separator\n  Zp         Paragraph separator\n  Zs         Space separator\n",
+      "before": "  C          その他\n  Cc         制御文字\n  Cf         書式文字\n  Cn         未割り当て\n  Co         私用文字\n  Cs         サロゲート\n\n  L          文字\n  Lc         大文字・小文字・タイトルケースのある文字。Ll、Lu、Ltの和集合\n  L&         Lcの同義語\n  Ll         小文字\n  Lm         修飾文字\n  Lo         その他の文字\n  Lt         タイトルケースの文字\n  Lu         大文字\n\n  M          結合マーク\n  Mc         間隔を持つマーク\n  Me         囲みマーク\n  Mn         間隔を持たないマーク\n\n  N          数\n  Nd         10進数字\n  Nl         数を表す文字\n  No         その他の数\n\n  P          句読点\n  Pc         接続句読点\n  Pd         ダッシュ句読点\n  Pe         閉じ句読点\n  Pf         終わりの句読点\n  Pi         始まりの句読点\n  Po         その他の句読点\n  Ps         開き句読点\n\n  S          記号\n  Sc         通貨記号\n  Sk         修飾記号\n  Sm         数学記号\n  So         その他の記号\n\n  Z          区切り\n  Zl         行区切り\n  Zp         段落区切り\n  Zs         空白区切り\n",
+      "after": "  C          その他\n  Cc         制御文字\n  Cf         書式文字\n  Cn         未割り当て\n  Co         私用文字\n  Cs         サロゲート\n\n  L          字母（Letter）\n  Lc         大小区別のある字母（Cased letter）。Ll、Lu、Ltの和集合\n  L&         Lcの同義語\n  Ll         小文字\n  Lm         修飾字母\n  Lo         その他の字母\n  Lt         タイトルケースの字母\n  Lu         大文字\n\n  M          結合マーク\n  Mc         間隔を持つマーク\n  Me         囲みマーク\n  Mn         間隔を持たないマーク\n\n  N          数\n  Nd         10進数字\n  Nl         数を表す文字\n  No         その他の数\n\n  P          句読点\n  Pc         接続句読点\n  Pd         ダッシュ句読点\n  Pe         閉じ句読点\n  Pf         終わりの句読点\n  Pi         始まりの句読点\n  Po         その他の句読点\n  Ps         開き句読点\n\n  S          記号\n  Sc         通貨記号\n  Sk         修飾記号\n  Sm         数学記号\n  So         その他の記号\n\n  Z          区切り\n  Zl         行区切り\n  Zp         段落区切り\n  Zs         空白区切り\n"
+    },
+    {
+      "unit": "42",
+      "source": "\nMany script names and their 4-letter abbreviations are recognized in\n\\p{sc:...} or \\p{scx:...} items, or on their own with \\p (and also \\P of\ncourse). You can obtain a list of these scripts by running this command:\n",
+      "before": "多くのスクリプト名とその4文字の略称は、\\p{sc:...}や\\p{scx:...}の項目で、または\\pの単独の指定で（もちろん\\Pでも）認識されます。これらのスクリプトの一覧は、次のコマンドを実行すると取得できます。",
+      "after": "多くのスクリプト名とその4文字の略称は、\\p{sc:...}や\\p{scx:...}の項目で、または\\pの中にスクリプト名だけを指定して（もちろん\\Pでも）認識されます。これらのスクリプトの一覧は、次のコマンドを実行すると取得できます。"
+    },
+    {
+      "unit": "53",
+      "source": "  [...]       positive character class\n  [^...]      negative character class\n  [x-y]       range (can be used for hex characters)\n  [[:xxx:]]   positive POSIX named set\n  [[:^xxx:]]  negative POSIX named set\n\n  alnum       alphanumeric\n  alpha       alphabetic\n  ascii       0-127\n  blank       space or tab\n  cntrl       control character\n  digit       decimal digit\n  graph       printing, excluding space\n  lower       lower case letter\n  print       printing, including space\n  punct       printing, excluding alphanumeric\n  space       white space\n  upper       upper case letter\n  word        same as \\w\n  xdigit      hexadecimal digit\n",
+      "before": "  [...]       肯定の文字クラス\n  [^...]      否定の文字クラス\n  [x-y]       範囲（16進文字にも使用可能）\n  [[:xxx:]]   肯定のPOSIX名前付き集合\n  [[:^xxx:]]  否定のPOSIX名前付き集合\n\n  alnum       英数字\n  alpha       英字\n  ascii       0〜127\n  blank       スペースまたはタブ\n  cntrl       制御文字\n  digit       10進数字\n  graph       印字可能文字（スペースを除く）\n  lower       小文字\n  print       印字可能文字（スペースを含む）\n  punct       印字可能文字（英数字を除く）\n  space       空白文字\n  upper       大文字\n  word        \\wと同じ\n  xdigit      16進数字\n",
+      "after": "  [...]       肯定の文字クラス\n  [^...]      否定の文字クラス\n  [x-y]       範囲（16進文字にも使用可能）\n  [[:xxx:]]   肯定のPOSIX名前付き集合\n  [[:^xxx:]]  否定のPOSIX名前付き集合\n\n  alnum       字母と数字（alphanumeric）\n  alpha       字母（alphabetic）\n  ascii       0〜127\n  blank       スペースまたはタブ\n  cntrl       制御文字\n  digit       10進数字\n  graph       印字可能文字（スペースを除く）\n  lower       小文字\n  print       印字可能文字（スペースを含む）\n  punct       印字可能文字（字母と数字を除く）\n  space       空白文字\n  upper       大文字\n  word        \\wと同じ\n  xdigit      16進数字\n"
+    },
+    {
+      "unit": "84",
+      "source": "\nIn non-UTF modes, names may contain underscores and ASCII letters and digits;\nin UTF modes, any Unicode letters and Unicode decimal digits are permitted. In\nboth cases, a name must not start with a digit.\n",
+      "before": "UTF以外のモードでは、名前にアンダースコアとASCIIの英字・数字を含められます。UTFモードでは、Unicodeの任意の文字（letter）とUnicodeの10進数字を使用できます。どちらの場合も、名前を数字で始めることはできません。",
+      "after": "UTF以外のモードでは、名前にアンダースコアとASCIIの英字・数字を含められます。UTFモードでは、Unicodeの任意の字母（letter）とUnicodeの10進数字を使用できます。どちらの場合も、名前を数字で始めることはできません。"
+    }
+  ],
+  "formalGates": "pending"
+}
