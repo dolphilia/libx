@@ -1,0 +1,109 @@
+{
+  "slug": "06-environment",
+  "bodySHA256": "9245d885c6e677589441050a660decaa98a535b6fba8f3442a97ca2576e460a5",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧5 Environment⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Environment-1\"><span>5 Environment</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The environment variable ⟦0⟧ can hold a set of default options for ⟦1⟧. These options are interpreted first and can be overridden by explicit command line parameters. As this can cause problems when using scripts, this feature is supported only for ⟦2⟧, ⟦3⟧, and options like ⟦4⟧ that set the compression level; any other options or operands in ⟦5⟧ are silently ignored.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">GZIP</code>",
+        "⟦1⟧": "<code class=\"command\">gzip</code>",
+        "⟦2⟧": "<samp class=\"option\">--rsyncable</samp>",
+        "⟦3⟧": "<samp class=\"option\">--synchronous</samp>",
+        "⟦4⟧": "<samp class=\"option\">-9</samp>",
+        "⟦5⟧": "<code class=\"env\">GZIP</code>"
+      },
+      "sourceHTML": "<p>The environment variable <code class=\"env\">GZIP</code> can hold a set of\ndefault options for <code class=\"command\">gzip</code>.  These options are interpreted\nfirst and can be overridden by explicit command line parameters.  As\nthis can cause problems when using scripts, this feature is supported\nonly for <samp class=\"option\">--rsyncable</samp>, <samp class=\"option\">--synchronous</samp>, and\noptions like <samp class=\"option\">-9</samp> that set the compression level;\nany other options or operands in <code class=\"env\">GZIP</code> are silently ignored.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "You can use an alias or script instead. For example, instead of setting ‘⟦0⟧’ in the environment, if ⟦1⟧ is in the directory ‘⟦2⟧’ you can prepend ⟦3⟧ to your ⟦4⟧ and create an executable script ⟦5⟧ containing the following:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">GZIP=\"-9\"</samp>",
+        "⟦1⟧": "<code class=\"command\">gzip</code>",
+        "⟦2⟧": "<samp class=\"samp\">/usr/bin</samp>",
+        "⟦3⟧": "<samp class=\"file\">$HOME/bin</samp>",
+        "⟦4⟧": "<code class=\"env\">PATH</code>",
+        "⟦5⟧": "<samp class=\"file\">$HOME/bin/gzip</samp>"
+      },
+      "sourceHTML": "<p>You can use an alias or script instead.  For example,\ninstead of setting ‘<samp class=\"samp\">GZIP=\"-9\"</samp>’ in the environment, if\n<code class=\"command\">gzip</code> is in the directory ‘<samp class=\"samp\">/usr/bin</samp>’ you can prepend\n<samp class=\"file\">$HOME/bin</samp> to your <code class=\"env\">PATH</code> and create an executable script\n<samp class=\"file\">$HOME/bin/gzip</samp> containing the following:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The following environment variables are applicable only when using ⟦0⟧ on IBM Z mainframes supporting DEFLATE COMPRESSION CALL instruction:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>"
+      },
+      "sourceHTML": "<p>The following environment variables are applicable only when using\n<code class=\"command\">gzip</code> on IBM Z mainframes supporting DEFLATE COMPRESSION CALL\ninstruction:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Whether DEFLATE COMPRESSION CALL should be used. Default value is ‘⟦0⟧’. Set this to ‘⟦1⟧’ to disable DEFLATE COMPRESSION CALL altogether.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">1</samp>",
+        "⟦1⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>Whether DEFLATE COMPRESSION CALL should be used.  Default value is ‘<samp class=\"samp\">1</samp>’.\nSet this to ‘<samp class=\"samp\">0</samp>’ to disable DEFLATE COMPRESSION CALL altogether.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Compression levels on which DEFLATE COMPRESSION CALL should be used. Represented as a bit mask in decimal or hexadecimal form, where each bit corresponds to a compression level. Default value is ‘⟦0⟧’, which means level 1 only. In order to make use of DEFLATE COMPRESSION CALL by default, that is, on levels 1-6, set this to ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">2</samp>",
+        "⟦1⟧": "<samp class=\"samp\">0x7e</samp>"
+      },
+      "sourceHTML": "<p>Compression levels on which DEFLATE COMPRESSION CALL should be used.\nRepresented as a bit mask in decimal or hexadecimal form, where each bit\ncorresponds to a compression level.  Default value is ‘<samp class=\"samp\">2</samp>’, which means\nlevel 1 only.  In order to make use of DEFLATE COMPRESSION CALL by default, that\nis, on levels 1-6, set this to ‘<samp class=\"samp\">0x7e</samp>’.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Size of deflate blocks produced by DEFLATE COMPRESSION CALL in bytes in decimal or hexadecimal form. Default value is ‘⟦0⟧’ (1 megabyte). When using DEFLATE COMPRESSION CALL to compress a file containing heterogeneous data (e.g. a ‘⟦1⟧’ archive containing text and binary files), setting this to a smaller value may improve compression ratio.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">1048576</samp>",
+        "⟦1⟧": "<samp class=\"samp\">.tar</samp>"
+      },
+      "sourceHTML": "<p>Size of deflate blocks produced by DEFLATE COMPRESSION CALL in bytes in decimal\nor hexadecimal form.  Default value is ‘<samp class=\"samp\">1048576</samp>’ (1 megabyte).  When using\nDEFLATE COMPRESSION CALL to compress a file containing heterogeneous data (e.g.\na ‘<samp class=\"samp\">.tar</samp>’ archive containing text and binary files), setting this to a\nsmaller value may improve compression ratio.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Size of the first fixed deflate block produced by DEFLATE COMPRESSION CALL in bytes in decimal or hexadecimal form. Default value is ‘⟦0⟧’ (4 kilobytes). When using DEFLATE COMPRESSION CALL to compress a small file, setting this to a larger value may improve compression ratio.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">4096</samp>"
+      },
+      "sourceHTML": "<p>Size of the first fixed deflate block produced by DEFLATE COMPRESSION CALL in\nbytes in decimal or hexadecimal form.  Default value is ‘<samp class=\"samp\">4096</samp>’ (4\nkilobytes).  When using DEFLATE COMPRESSION CALL to compress a small file,\nsetting this to a larger value may improve compression ratio.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Value of \"Reserved for IBM\" field of DEFLATE COMPRESSION CALL parameter block. Default value is ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>Value of \"Reserved for IBM\" field of DEFLATE COMPRESSION CALL parameter block.\nDefault value is ‘<samp class=\"samp\">0</samp>’.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "If set to any value, disables compression with DEFLATE COMPRESSION CALL. This variable is normally set during reproducible builds, where DEFLATE COMPRESSION CALL must be disabled, because its output may not be reproducible.",
+      "tokens": {},
+      "sourceHTML": "<p>If set to any value, disables compression with DEFLATE COMPRESSION CALL.  This\nvariable is normally set during reproducible builds, where DEFLATE COMPRESSION\nCALL must be disabled, because its output may not be reproducible.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

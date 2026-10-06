@@ -1,0 +1,99 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Invoking-gzip">
+<h2 class="chapter" id="Invoking-gzip-1"><span>3 <code class="command">gzip</code>の実行</span></h2>
+<a class="index-entry-id" id="index-invoking"></a>
+<a class="index-entry-id" id="index-options"></a>
+<p><code class="command">gzip</code>プログラムの実行形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">gzip <var class="var">option</var> ...&#10;</pre></div>
+<p><code class="command">gzip</code>は次のオプションに対応しています。</p>
+<dl class="table">
+<dt><samp class="option">--stdout</samp></dt>
+<dt><samp class="option">--to-stdout</samp></dt>
+<dt><samp class="option">-c</samp></dt>
+<dd><p>出力を標準出力へ書き出し、元のファイルは変更しません。入力ファイルが複数ある場合、出力は個別に圧縮されたメンバーの連なりになります。より高い圧縮率を得るには、すべての入力ファイルを連結してから圧縮してください。</p>
+</dd>
+<dt><samp class="option">--decompress</samp></dt>
+<dt><samp class="option">--uncompress</samp></dt>
+<dt><samp class="option">-d</samp></dt>
+<dd><p>展開します。</p>
+</dd>
+<dt><samp class="option">--force</samp></dt>
+<dt><samp class="option">-f</samp></dt>
+<dd><p>ファイルに複数のリンクがある場合、対応するファイルがすでに存在する場合、圧縮データを端末から読んだり端末へ書いたりする場合でも、圧縮または展開を強制します。入力データが<code class="command">gzip</code>の認識できる形式でなく、オプション<samp class="option">--stdout</samp>も指定されている場合は、入力データを変更せずに標準出力へコピーします。つまり、<code class="command">zcat</code>を<code class="command">cat</code>と同じように動作させます。<samp class="option">-f</samp>を指定せず、バックグラウンドで実行していない場合、<code class="command">gzip</code>は既存ファイルを上書きしてよいかを確認します。</p>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dt><samp class="option">-h</samp></dt>
+<dd><p>オプションを説明するヘルプメッセージを表示して終了します。</p>
+</dd>
+<dt><samp class="option">--keep</samp></dt>
+<dt><samp class="option">-k</samp></dt>
+<dd><p>圧縮・展開時に入力ファイルを保持し、削除しません。</p>
+</dd>
+<dt><samp class="option">--list</samp></dt>
+<dt><samp class="option">-l</samp></dt>
+<dd><p>各圧縮ファイルについて、次の項目を一覧表示します。</p>
+<div class="example">
+<pre class="example-preformatted">compressed size: size of the compressed file&#10;uncompressed size: size of the uncompressed file&#10;ratio: compression ratio (0.0% if unknown)&#10;uncompressed_name: name of the uncompressed file&#10;</pre></div>
+<p>オプション<samp class="option">--verbose</samp>と組み合わせると、次の項目も表示されます。</p>
+<div class="example">
+<pre class="example-preformatted">method: compression method (deflate,compress,lzh,pack)&#10;crc: the 32-bit CRC of the uncompressed data&#10;date &amp; time: timestamp for the uncompressed file&#10;</pre></div>
+<p>gzip形式でないファイルの<abbr class="abbr">CRC</abbr>はffffffffと表示されます。</p>
+<p><samp class="option">--verbose</samp>を指定すると、サイズが不明なものがある場合を除き、全ファイルの合計サイズと圧縮率も表示します。<samp class="option">--quiet</samp>を指定すると、見出し行と合計行は表示しません。</p>
+</dd>
+<dt><samp class="option">--license</samp></dt>
+<dt><samp class="option">-L</samp></dt>
+<dd><p><code class="command">gzip</code>のライセンスを表示して終了します。</p>
+</dd>
+<dt><samp class="option">--no-name</samp></dt>
+<dt><samp class="option">-n</samp></dt>
+<dd><p>圧縮時には、既定で元のファイル名とタイムスタンプを保存しません。（名前を切り詰める必要があった場合は、元の名前を必ず保存します。）展開時には、元のファイル名が保存されていても復元せず、圧縮ファイル名から<code class="command">gzip</code>の接尾辞を取り除くだけです。元のタイムスタンプが保存されていても復元せず、圧縮ファイルのタイムスタンプをコピーします。展開時には、このオプションが既定です。</p>
+</dd>
+<dt><samp class="option">--name</samp></dt>
+<dt><samp class="option">-N</samp></dt>
+<dd><p>圧縮時には元のファイル名を必ず保存します。元のファイルが通常のファイルであり、そのタイムスタンプが1以上（1970-01-01 00:00:01 UTC以降）で2<sup class="sup">32</sup>未満（うるう秒を数えない場合の2106-02-07 06:28:16 UTCより前）であれば、元の変更タイムスタンプの秒の部分も保存します。圧縮時にはこれが既定です。展開時には、保存されたファイル名とタイムスタンプがあれば復元します。ファイル名の長さに制限があるシステムや、ファイル転送後にタイムスタンプが失われた場合に役立ちます。</p>
+</dd>
+<dt><samp class="option">--quiet</samp></dt>
+<dt><samp class="option">-q</samp></dt>
+<dd><p>すべての警告メッセージを抑制します。</p>
+</dd>
+<dt><samp class="option">--recursive</samp></dt>
+<dt><samp class="option">-r</samp></dt>
+<dd><p>ディレクトリ構造を再帰的にたどります。コマンド行で指定したファイル名のいずれかがディレクトリの場合、<code class="command">gzip</code>はその中へ降りて、見つかったファイルをすべて圧縮します。<code class="command">gunzip</code>の場合は展開します。</p>
+</dd>
+<dt><samp class="option">--rsyncable</samp></dt>
+<dd><p>圧縮データストリームの内部構造を定期的にリセットし、<code class="command">rsync</code>プログラムで扱いやすくします。このフラグで圧縮した2ファイルを同期するとき、<code class="code">rsync</code>は圧縮前の入力の類似性を利用できます。その代わり、圧縮後の出力は通常約1%大きくなります。</p>
+</dd>
+<dt><samp class="option">--suffix <var class="var">suf</var></samp></dt>
+<dt><samp class="option">-S <var class="var">suf</var></samp></dt>
+<dd>
+<p>「<samp class="samp">.gz</samp>」の代わりに接尾辞<var class="var">suf</var>を使います。「<samp class="samp">/</samp>」を含まない限り任意の接尾辞を指定できますが、他のシステムへファイルを転送したときに混乱しないよう、「<samp class="samp">.z</samp>」「<samp class="samp">.gz</samp>」以外の接尾辞は避けてください。空の接尾辞を指定すると、gunzipは接尾辞に関係なく、指定されたすべてのファイルの展開を試みます。たとえば、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">gunzip -S "" *        (*.* for MSDOS)&#10;</pre></div>
+<p>gzipの以前のバージョンは接尾辞「<samp class="samp">.z</samp>」を使っていました。<code class="command">pack</code>との衝突を避けるために変更されました。</p>
+</dd>
+<dt><samp class="option">--synchronous</samp></dt>
+<dd><p>ファイルシステムが対応する場合、出力データを出力ファイルの記憶装置へ転送する同期出力を使います。ファイルシステムのデータはキャッシュされることがあるため、このオプションを使わずに「<samp class="samp">gzip FOO</samp>」のようなコマンドを実行する前後でシステムがクラッシュすると、<samp class="file">FOO</samp>と<samp class="file">FOO.gz</samp>の両方が失われる可能性があります。このオプションを使わない動作が、データを移動するほとんどのアプリケーションと同様、<code class="command">gzip</code>でも既定です。このオプションを使うと<code class="command">gzip</code>の安全性は高まりますが、大幅に遅くなる場合があります。</p>
+</dd>
+<dt><samp class="option">--test</samp></dt>
+<dt><samp class="option">-t</samp></dt>
+<dd><p>検査を行います。圧縮ファイルの整合性を確認します。</p>
+</dd>
+<dt><samp class="option">--verbose</samp></dt>
+<dt><samp class="option">-v</samp></dt>
+<dd><p>詳細表示を行います。圧縮した各ファイルの名前とサイズの減少率を表示します。</p>
+</dd>
+<dt><samp class="option">--version</samp></dt>
+<dt><samp class="option">-V</samp></dt>
+<dd><p>バージョン表示を行います。バージョン番号とコンパイル時のオプションを表示して終了します。</p>
+</dd>
+<dt><samp class="option">--fast</samp></dt>
+<dt><samp class="option">--best</samp></dt>
+<dt><samp class="option">-<var class="var">n</var></samp></dt>
+<dd><p>指定した数字<var class="var">n</var>で圧縮速度を調整します。<samp class="option">-1</samp>または<samp class="option">--fast</samp>は最も速い圧縮方式（圧縮率は低い）を、<samp class="option">--best</samp>または<samp class="option">-9</samp>は最も遅い圧縮方式（最適な圧縮率）を指定します。既定の圧縮レベルは<samp class="option">-6</samp>です。つまり、速度より高い圧縮率を優先します。</p></dd>
+</dl>
+<p>終了ステータス0は成功、1は失敗、2は失敗ではない警告を示します。</p>
+<hr/>
+</div>
+</div>
+

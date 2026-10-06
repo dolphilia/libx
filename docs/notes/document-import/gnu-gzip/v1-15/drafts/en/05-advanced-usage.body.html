@@ -1,0 +1,54 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Advanced-usage">
+
+<h2 class="chapter" id="Advanced-usage-1"><span>4 Advanced usage</span></h2>
+<a class="index-entry-id" id="index-concatenated-files"></a>
+<p>Multiple compressed files can be concatenated.  In this case,
+<code class="command">gunzip</code> will extract all members at once.  If one member is
+damaged, other members might still be recovered after removal of the
+damaged member.  Better compression can be usually obtained if all
+members are decompressed and then recompressed in a single step.
+</p>
+<p>This is an example of concatenating <code class="command">gzip</code> files:
+</p>
+<div class="example">
+<pre class="example-preformatted">gzip -c file1  &gt; foo.gz&#10;gzip -c file2 &gt;&gt; foo.gz&#10;</pre></div>
+<p>Then
+</p>
+<div class="example">
+<pre class="example-preformatted">gunzip -c foo&#10;</pre></div>
+<p>is equivalent to
+</p>
+<div class="example">
+<pre class="example-preformatted">cat file1 file2&#10;</pre></div>
+<p>In case of damage to one member of a ‘<samp class="samp">.gz</samp>’ file, other members can
+still be recovered (if the damaged member is removed).  However,
+you can get better compression by compressing all members at once:
+</p>
+<div class="example">
+<pre class="example-preformatted">cat file1 file2 | gzip &gt; foo.gz&#10;</pre></div>
+<p>compresses better than
+</p>
+<div class="example">
+<pre class="example-preformatted">gzip -c file1 file2 &gt; foo.gz&#10;</pre></div>
+<p>If you want to recompress concatenated files to get better compression, do:
+</p>
+<div class="example">
+<pre class="example-preformatted">zcat old.gz | gzip &gt; new.gz&#10;</pre></div>
+<p>If a compressed file consists of several members, the uncompressed
+size and <abbr class="abbr">CRC</abbr> reported by the <samp class="option">--list</samp> option applies to
+the last member
+only.  If you need the uncompressed size for all members, you can use:
+</p>
+<div class="example">
+<pre class="example-preformatted">zcat file.gz | wc -c&#10;</pre></div>
+<p>If you wish to create a single archive file with multiple members so
+that members can later be extracted independently, use an archiver such
+as <code class="command">tar</code> or <code class="command">zip</code>.  <abbr class="acronym">GNU</abbr> <code class="command">tar</code>
+supports the <samp class="option">-z</samp>
+option to invoke <code class="command">gzip</code> transparently.  <code class="command">gzip</code> is designed as a
+complement to <code class="command">tar</code>, not as a replacement.
+</p>
+<hr/>
+</div>
+</div>

@@ -1,0 +1,33 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Environment">
+<h2 class="chapter" id="Environment-1"><span>5 環境</span></h2>
+<a class="index-entry-id" id="index-Environment"></a>
+<p>環境変数<code class="env">GZIP</code>には、<code class="command">gzip</code>の既定のオプションを指定できます。これらは最初に解釈され、明示的なコマンド行の引数で上書きできます。ただし、スクリプトで問題を起こす可能性があるため、この機能が対応するのは<samp class="option">--rsyncable</samp>、<samp class="option">--synchronous</samp>、および<samp class="option">-9</samp>のような圧縮レベルを設定するオプションだけです。<code class="env">GZIP</code>内のそれ以外のオプションやオペランドは、通知せずに無視します。</p>
+<p>代わりにエイリアスやスクリプトを使えます。たとえば、環境変数で「<samp class="samp">GZIP="-9"</samp>」を設定する代わりに、<code class="command">gzip</code>がディレクトリ「<samp class="samp">/usr/bin</samp>」にある場合、<code class="env">PATH</code>の先頭へ<samp class="file">$HOME/bin</samp>を追加し、次の内容の実行可能なスクリプト<samp class="file">$HOME/bin/gzip</samp>を作れます。</p>
+<div class="example">
+<pre class="example-preformatted">#! /bin/sh&#10;export PATH=/usr/bin&#10;exec gzip -9 "$@"&#10;</pre></div>
+<p>次の環境変数は、DEFLATE COMPRESSION CALL命令に対応するIBM Zメインフレーム上で<code class="command">gzip</code>を使う場合だけ適用されます。</p>
+<dl class="table">
+<dt><samp class="option">DFLTCC</samp></dt>
+<dd><p>DEFLATE COMPRESSION CALLを使うかどうかを指定します。既定値は「<samp class="samp">1</samp>」です。「<samp class="samp">0</samp>」に設定すると、DEFLATE COMPRESSION CALLを完全に無効化します。</p>
+</dd>
+<dt><samp class="option">DFLTCC_LEVEL_MASK</samp></dt>
+<dd><p>DEFLATE COMPRESSION CALLを使う圧縮レベルを指定します。各ビットが1つの圧縮レベルに対応する、10進または16進のビットマスクで表します。既定値は「<samp class="samp">2</samp>」で、レベル1だけを意味します。既定でレベル1〜6にDEFLATE COMPRESSION CALLを使うには、「<samp class="samp">0x7e</samp>」に設定します。</p>
+</dd>
+<dt><samp class="option">DFLTCC_BLOCK_SIZE</samp></dt>
+<dd><p>DEFLATE COMPRESSION CALLが生成するdeflateブロックのバイト単位のサイズを、10進または16進で指定します。既定値は「<samp class="samp">1048576</samp>」（1メガバイト）です。種類の異なるデータを含むファイル（テキストとバイナリを含む「<samp class="samp">.tar</samp>」アーカイブなど）をDEFLATE COMPRESSION CALLで圧縮する場合、この値を小さくすると圧縮率が高まることがあります。</p>
+</dd>
+<dt><samp class="option">DFLTCC_FIRST_FHT_BLOCK_SIZE</samp></dt>
+<dd><p>DEFLATE COMPRESSION CALLが生成する最初の固定deflateブロックのバイト単位のサイズを、10進または16進で指定します。既定値は「<samp class="samp">4096</samp>」（4キロバイト）です。小さなファイルをDEFLATE COMPRESSION CALLで圧縮する場合、この値を大きくすると圧縮率が高まることがあります。</p>
+</dd>
+<dt><samp class="option">DFLTCC_RIBM</samp></dt>
+<dd><p>DEFLATE COMPRESSION CALLのパラメーターブロックにある「Reserved for IBM」フィールドの値です。既定値は「<samp class="samp">0</samp>」です。</p>
+</dd>
+<dt><samp class="option">SOURCE_DATE_EPOCH</samp></dt>
+<dd><p>何らかの値が設定されていると、DEFLATE COMPRESSION CALLによる圧縮を無効にします。この変数は通常、再現可能なビルドで設定されます。その際には、出力が再現できない場合があるため、DEFLATE COMPRESSION CALLを無効にする必要があります。</p>
+</dd>
+</dl>
+<hr/>
+</div>
+</div>
+

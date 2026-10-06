@@ -1,0 +1,18 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Sample">
+<h2 class="chapter" id="Sample-output"><span>2 出力例</span></h2>
+<a class="index-entry-id" id="index-sample"></a>
+<p><code class="command">gzip</code>を実行する実際的な例を示します。</p>
+<p>コマンド「<samp class="samp">gzip -h</samp>」の出力は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">Usage: gzip [OPTION]... [FILE]...&#10;Compress or uncompress FILEs (by default, compress FILES in-place).&#10;&#10;Mandatory arguments to long options are mandatory for short options too.&#10;&#10;  -c, --stdout      write on standard output, keep original files unchanged&#10;  -d, --decompress  decompress&#10;  -f, --force       force overwrite of output file and compress links&#10;  -h, --help        give this help&#10;  -k, --keep        keep (don't delete) input files&#10;  -l, --list        list compressed file contents&#10;  -L, --license     display software license&#10;  -n, --no-name     do not save or restore the original name and timestamp&#10;  -N, --name        save or restore the original name and timestamp&#10;  -q, --quiet       suppress all warnings&#10;  -r, --recursive   operate recursively on directories&#10;      --rsyncable   make rsync-friendly archive&#10;  -S, --suffix=SUF  use suffix SUF on compressed files&#10;      --synchronous synchronous output (safer if system crashes, but slower)&#10;  -t, --test        test compressed file integrity&#10;  -v, --verbose     verbose mode&#10;  -V, --version     display version number&#10;  -1, --fast        compress faster&#10;  -9, --best        compress better&#10;&#10;With no FILE, or when FILE is -, read standard input.&#10;&#10;Report bugs to &lt;bug-gzip@gnu.org&gt;.&#10;</pre></div>
+<p>コマンド「<samp class="samp">gzip -v texinfo.tex</samp>」の出力は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">texinfo.tex:     69.3% -- replaced with texinfo.tex.gz&#10;</pre></div>
+<p>次のコマンドは、現在のディレクトリとその下のディレクトリから通常の「<samp class="samp">.gz</samp>」ファイルをすべて探し（名前に改行を含むファイルは除きます）、元のファイルを失わずに同じ場所へ展開します。最初の失敗が起きた時点で停止します。</p>
+<div class="example">
+<pre class="example-preformatted">find . -name '*&#10;*' -prune -o -name '*.gz' -type f -print |&#10;  sed "&#10;    s/'/'\\\\''/g&#10;    s/^\\(.*\\)\\.gz$/gunzip &lt;'\\1.gz' &gt;'\\1'/&#10;  " |&#10;  sh -e&#10;</pre></div>
+<hr/>
+</div>
+</div>
+
