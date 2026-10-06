@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-03T17:05:03.620Z",
+  "source": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/sources/xxh_x86dispatch.c",
+    "sha256": "f53d7d02e2beaa3b1a05a8dfca615994b5f83ab42997af9a1e2d34c0aaed3423"
+  },
+  "lines": "125–140",
+  "excerpt": " *  - GCC 4.9 and later are known to support AVX512.\n *  - Visual Studio 2017  and later are known to support AVX2.\n *  - The GCC/Clang internal header `<avx512fintrin.h>` is detected. While this\n *    is not allowed to be included directly, it still appears in the builtin\n *    include path and is detectable with `__has_include`.\n *\n * @see XXH_AVX512\n */\n#ifndef XXH_DISPATCH_AVX512\n#  if (defined(__GNUC__) \\\n       && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9))) /* GCC 4.9+ */ \\\n   || (defined(_MSC_VER) && _MSC_VER >= 1910) /* VS 2017+ */ \\\n   || XXH_HAS_INCLUDE(<avx512fintrin.h>) /* GCC/Clang internal header */\n#    define XXH_DISPATCH_AVX512 1   /* enable dispatch towards AVX512 */\n#  else\n#    define XXH_DISPATCH_AVX512 0",
+  "finding": "AVX512説明節はVisual Studio 2017のAVX2対応を記載する。固定コードのAVX512有効化条件は_MSC_VER >= 1910。原文を保持し、この条件を補足。",
+  "scope": "固定ソースの静的照合。実際のコンパイラー対応表や実行は未検証。"
+}

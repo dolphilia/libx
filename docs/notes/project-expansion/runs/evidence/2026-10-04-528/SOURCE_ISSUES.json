@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-03T17:20:05.086Z",
+  "source": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/sources/xxhash.h",
+    "sha256": "3dc8d161e867a62d3417f7885b55fdaded8b7b497e2f165d05c94f4fe24f2ca4"
+  },
+  "excerpts": [
+    {
+      "lines": "1375–1378",
+      "text": "typedef struct {\n    XXH64_hash_t low64;   /*!< `value & 0xFFFFFFFFFFFFFFFF` */\n    XXH64_hash_t high64;  /*!< `value >> 64` */\n} XXH128_hash_t;"
+    },
+    {
+      "lines": "1564",
+      "text": "XXH_PUBLIC_API XXH_PUREF XXH128_hash_t XXH3_128bits_digest (XXH_NOESCAPE const XXH3_state_t* statePtr);"
+    }
+  ],
+  "finding": "原文一般説明はdigestがintまたはlong longを返すと記すが、XXH3_128bits_digestの宣言はXXH128_hash_tで、low64/high64を持つ構造体。原文を保持し別注記で補足。",
+  "scope": "固定ソースの宣言/型定義の静的照合。コード例実行は今回未実施。"
+}
