@@ -1,0 +1,82 @@
+[
+  {
+    "index": 0,
+    "text": "(x)",
+    "feedback": "Copied"
+  },
+  {
+    "index": 1,
+    "text": "(x)",
+    "feedback": "Copied"
+  },
+  {
+    "index": 2,
+    "text": "0",
+    "feedback": "Copied"
+  },
+  {
+    "index": 3,
+    "text": "do { \\\n    svuint64_t input_vec = svld1_u64(mask, xinput + offset);         \\\n    svuint64_t secret_vec = svld1_u64(mask, xsecret + offset);       \\\n    svuint64_t mixed = sveor_u64_x(mask, secret_vec, input_vec);     \\\n    svuint64_t swapped = svtbl_u64(input_vec, kSwap);                \\\n    svuint64_t mixed_lo = svextw_u64_x(mask, mixed);                 \\\n    svuint64_t mixed_hi = svlsr_n_u64_x(mask, mixed, 32);            \\\n    svuint64_t mul = svmad_u64_x(mask, mixed_lo, mixed_hi, swapped); \\\n    acc = svadd_u64_x(mask, acc, mul);                               \\\n} while (0)",
+    "feedback": "Copied"
+  },
+  {
+    "index": 4,
+    "text": "(void)(ptr)  /* disabled */",
+    "feedback": "Copied"
+  },
+  {
+    "index": 5,
+    "text": "void                                                        \\\nXXH3_accumulate_##name(xxh_u64* XXH_RESTRICT acc,           \\\n                       const xxh_u8* XXH_RESTRICT input,    \\\n                       const xxh_u8* XXH_RESTRICT secret,   \\\n                       size_t nbStripes)                    \\\n{                                                           \\\n    size_t n;                                               \\\n    for (n = 0; n < nbStripes; n++ ) {                      \\\n        const xxh_u8* const in = input + n*XXH_STRIPE_LEN;  \\\n        XXH_PREFETCH(in + XXH_PREFETCH_DIST);               \\\n        XXH3_accumulate_512_##name(                         \\\n                 acc,                                       \\\n                 in,                                        \\\n                 secret + n*XXH_SECRET_CONSUME_RATE);       \\\n    }                                                       \\\n}",
+    "feedback": "Copied"
+  },
+  {
+    "index": 6,
+    "text": "(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))",
+    "feedback": "Copied"
+  },
+  {
+    "index": 7,
+    "text": "(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))",
+    "feedback": "Copied"
+  },
+  {
+    "index": 8,
+    "text": "X ## Y",
+    "feedback": "Copied"
+  },
+  {
+    "index": 9,
+    "text": "XXH_CONCAT2(X, Y)",
+    "feedback": "Copied"
+  },
+  {
+    "index": 10,
+    "text": "XXH_CONCAT(__riscv_, op)",
+    "feedback": "Copied"
+  },
+  {
+    "index": 11,
+    "text": "XXH_CONCAT(__riscv_vreinterpret_v_, op)",
+    "feedback": "Copied"
+  },
+  {
+    "index": 12,
+    "text": "{ XXH_PRIME32_3, XXH_PRIME64_1, XXH_PRIME64_2, XXH_PRIME64_3, \\\nXXH_PRIME64_4, XXH_PRIME32_2, XXH_PRIME64_5, XXH_PRIME32_1 }",
+    "feedback": "Copied"
+  },
+  {
+    "index": 13,
+    "text": "(((x) > (y)) ? (y) : (x))",
+    "feedback": "Copied"
+  },
+  {
+    "index": 14,
+    "text": "{\n    XXH_ASSERT((((size_t)acc) & 63) == 0)",
+    "feedback": "Copied"
+  },
+  {
+    "index": 15,
+    "text": "{\n    xxh_u64* const xacc = (xxh_u64*) acc",
+    "feedback": "Copied"
+  }
+]
