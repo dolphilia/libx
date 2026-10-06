@@ -1,0 +1,119 @@
+{
+  "checkedAt": "2026-10-02T23:21:59.962293+00:00",
+  "candidate": "sds",
+  "tag": "2.0.0",
+  "commit": "f74b9b785b63c6d8ea312d7e7864df5267149c85",
+  "fullTreeEntries": 9,
+  "scopeAssessment": "not-finalized; completeREADME892lines31KB + LICENSE24lines; advancedsourceAPIcomment references need complete boundary review. No scope has been dropped to bypass defects.",
+  "readCoverage": {
+    "README.md": [
+      [
+        1,
+        300
+      ],
+      [
+        301,
+        600
+      ],
+      [
+        601,
+        892
+      ]
+    ],
+    "LICENSE": [
+      [
+        1,
+        24
+      ]
+    ],
+    "sds.h": [
+      [
+        1,
+        264
+      ]
+    ],
+    "sdsalloc.h": [
+      [
+        1,
+        41
+      ]
+    ],
+    "testhelp.h": [
+      [
+        1,
+        57
+      ]
+    ],
+    "Makefile": [
+      [
+        1,
+        8
+      ]
+    ],
+    "sds.c": [
+      [
+        1,
+        33
+      ],
+      [
+        186,
+        245
+      ],
+      [
+        268,
+        338
+      ],
+      [
+        1058,
+        1085
+      ]
+    ]
+  },
+  "readingPurpose": "qualification only; not final publication content review",
+  "rights": {
+    "README": "Credits section explicitly references BSD two-clause/LICENSE. Full original notice/conditions/disclaimer must be retained with fixedsource credit and translation annotation.",
+    "sourceCodeComments": "sds.c/sds.h/sdsalloc.h/testhelp.h carry distinct BSD three-clause with Redis noendorsement and additionalcopyright; do not treat repositoryBSD2 as overriding them. Preserve corresponding complete originalnotices if any excerpts adopted.",
+    "fallback": "not-needed forREADME explicitreference; source-specific restrictions takeprecedence",
+    "decision": "Permitted derivative research/conversion for these fixedsources with corresponding original notices; no public derivative yet."
+  },
+  "substantiveSourceIssues": [
+    {
+      "README": "internals struct sdshdr{int len,int free,char buf[]}",
+      "fixedEvidence": "sds.h44-75 uses packed sdshdr5/8/16/32/64 flags,len,alloc; stated v1layout doesnot describe v2 actualheader",
+      "severity": "major technical annotation needed; cannot translate as validv2layout"
+    },
+    {
+      "README": "Stringjoining sdsjoin fourth seplen argument",
+      "fixedEvidence": "sds.h250-251 andsds.c1067 have3args, sdsjoinsds4args; READMEprototype and example cannotcompile",
+      "severity": "major API annotation needed"
+    },
+    {
+      "README": "Trimming prototype voidsdstrim and prose null return",
+      "fixedEvidence": "sds.h237/sds.c682 return sds pointer; samepointer modification noallocation",
+      "severity": "technical annotation needed"
+    },
+    {
+      "README": "Embedding onlysds.c+sds.h",
+      "fixedEvidence": "sds.c38 includes sdsalloc.h",
+      "severity": "missingmandatorybuildfile; annotation needed"
+    },
+    {
+      "README": "Examples printf unmatchedquote/omitted%sargument, quoting s1declared but sindexed, uncastsize_t%d, referencecountstruct missingsemicolon",
+      "fixedEvidence": "README301-309/412-434/540-551/812-814/838-841 actual text",
+      "severity": "do not silently repair source or claim runnable examples"
+    }
+  ],
+  "mechanicalConversion": "not-run",
+  "JapaneseResearch": {
+    "queries": [
+      "\"Simple Dynamic Strings\" 日本語 SDS",
+      "antirez sds 使い方 日本語",
+      "\"sdsjoin\" \"SDS\" 日本語"
+    ],
+    "result": "Search snapshots include Korean/Chinese/English results; this limited search doesnot prove absence of Japanese fulltranslation. Targeted Japanese publisher searches and actualreads remain.",
+    "status": "partial"
+  },
+  "scoring": "not-done",
+  "selfContained": "unknown pending major discrepancy handling and advancedAPI boundary",
+  "nextAction": "Prioritize cJSON release verification; independently complete SDS advancedAPI scope/JP research, then estimate annotation/review burden and run licensed fullscope conversion before eligibility scoring."
+}

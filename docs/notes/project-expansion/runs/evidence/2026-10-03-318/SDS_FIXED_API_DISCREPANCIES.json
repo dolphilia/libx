@@ -1,0 +1,118 @@
+{
+  "status": "partial",
+  "checkedAt": "2026-10-02T23:52:43.875675+00:00",
+  "fixedCommit": "f74b9b785b63c6d8ea312d7e7864df5267149c85",
+  "actualReads": {
+    "sds.h": [
+      [
+        1,
+        264
+      ]
+    ],
+    "sds.c": [
+      [
+        270,
+        287
+      ],
+      [
+        418,
+        545
+      ],
+      [
+        668,
+        740
+      ],
+      [
+        768,
+        890
+      ],
+      [
+        894,
+        933
+      ],
+      [
+        1060,
+        1110
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "symbol": "sdssplitlen",
+      "commentLines": [
+        778,
+        793
+      ],
+      "implementationLines": [
+        794,
+        805
+      ],
+      "issue": "注釈は空文字列でNULLを返すと述べるが、実装はtokens確保に成功すればcount0でtokensを返す。失敗時NULL条件は区別する。",
+      "originalRetained": true,
+      "annotationNeeded": true
+    },
+    {
+      "symbol": "sdssplit",
+      "commentLines": [
+        787,
+        793
+      ],
+      "headerLines": [
+        1,
+        264
+      ],
+      "issue": "sdssplitを例・比較に参照するが固定公開headerに宣言なし。実装API名sdssplitlenとの相違を原文保持の別注釈で示す。",
+      "annotationNeeded": true
+    },
+    {
+      "symbol": "sdstrim",
+      "commentLines": [
+        668,
+        681
+      ],
+      "implementationLines": [
+        682,
+        695
+      ],
+      "issue": "コメントの全参照置換の断定と例出力Hello Worldは、固定実装が再確保なしで元sを返し、例の入力HelloWorldに空白なしであることと一致しない。",
+      "annotationNeeded": true
+    },
+    {
+      "symbol": "sdsjoin",
+      "headerLines": [
+        250,
+        251
+      ],
+      "implementationLines": [
+        1065,
+        1091
+      ],
+      "issue": "READMEの4引数joinは固定sdsjoin3引数と不一致。4引数sdsjoinsdsと区別し原文を編集せず注釈する。",
+      "annotationNeeded": true
+    },
+    {
+      "symbol": "sdsTest",
+      "headerLines": [
+        260,
+        262
+      ],
+      "implementationLines": [
+        1093,
+        1102
+      ],
+      "issue": "REDIS_TESTで2引数宣言、SDS_TEST_MAINで引数なし定義。テスト専用、実利用APIから別枠にするが原宣言を隠さない。",
+      "annotationNeeded": true
+    }
+  ],
+  "machineScopeMapReviewed": {
+    "totalUniqueHeaderFunctions": 41,
+    "inlineDefinitions": 6,
+    "publicNonTestFunctionsWithImmediateSourceComment": 34,
+    "testConditionalDeclaration": 1
+  },
+  "notFinalContentReview": true,
+  "noSoftwareCodeExecuted": true,
+  "unresolved": [
+    "型macro最終範囲/全文変換/日本語比較/工数/採点"
+  ]
+}
