@@ -1,0 +1,557 @@
+{
+  "checkedAt": "2026-10-02T14:08:00.285Z",
+  "status": "passed",
+  "scope": "Official API page ::: requests all have corresponding rendered declarations in the same order; operator quoted IDs are malformed upstream and need documented conversion repair; all12 configured input headers generated file XML. This verifies requested API expansion coverage, not all public APIs or semantic translation review.",
+  "sourceCommit": "1be298e1bd68957e4cd352e1f676f00e07dcfb57",
+  "anchorIssues": [
+    {
+      "identifier": "operator\"\"_a()",
+      "renderedId": null,
+      "declaration": "template<detail::fixed_stringS>autooperator\"\"_a();",
+      "anchorStatus": "upstream-quoted-operator-id-malformed"
+    },
+    {
+      "identifier": "operator\"\"_cf",
+      "renderedId": null,
+      "declaration": "template<detail::fixed_stringStr>autooperator\"\"_cf();",
+      "anchorStatus": "upstream-quoted-operator-id-malformed"
+    }
+  ],
+  "duplicateIds": [
+    "print",
+    "println",
+    "format",
+    "format",
+    "format_to",
+    "formatted_size",
+    "join",
+    "join",
+    "ptr",
+    "ptr",
+    "operator",
+    "print",
+    "print"
+  ],
+  "requests": [
+    {
+      "identifier": "print(format_string<T...>, T&&...)",
+      "renderedId": "print",
+      "declaration": "template<typename...T>voidprint(format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "print(FILE*, format_string<T...>, T&&...)",
+      "renderedId": "print",
+      "declaration": "template<typename...T>voidprint(FILE*f,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "println(format_string<T...>, T&&...)",
+      "renderedId": "println",
+      "declaration": "template<typename...T>voidprintln(format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "println(FILE*, format_string<T...>, T&&...)",
+      "renderedId": "println",
+      "declaration": "template<typename...T>voidprintln(FILE*f,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_to(OutputIt&&, format_string<T...>, T&&...)",
+      "renderedId": "format_to",
+      "declaration": "template<typenameOutputIt,typename...T>remove_cvref_tformat_to(OutputIt&&out,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_to_n(OutputIt, size_t, format_string<T...>, T&&...)",
+      "renderedId": "format_to_n",
+      "declaration": "template<typenameOutputIt,typename...T>format_to_n_resultformat_to_n(OutputItout,size_tn,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_to_n_result",
+      "renderedId": "format_to_n_result",
+      "declaration": "template<typenameOutputIt>structformat_to_n_result;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "formatted_size(format_string<T...>, T&&...)",
+      "renderedId": "formatted_size",
+      "declaration": "template<typename...T>size_tformatted_size(format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "basic_format_parse_context",
+      "renderedId": "basic_format_parse_context",
+      "declaration": "template<typenameChar>usingbasic_format_parse_context=parse_context<Char>;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "context",
+      "renderedId": "context",
+      "declaration": "classcontext;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_context",
+      "renderedId": "format_context",
+      "declaration": "usingformat_context=context;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "fstring",
+      "renderedId": "fstring",
+      "declaration": "template<typename...T>structfstring;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_string",
+      "renderedId": "format_string",
+      "declaration": "template<typename...T>usingformat_string=typenamefstring<T...>::t;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "runtime(string_view)",
+      "renderedId": "runtime",
+      "declaration": "runtime_format_string<>runtime(string_views);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "make_format_args(T&...)",
+      "renderedId": "make_format_args",
+      "declaration": "template<typenameContext,typename...T,intNUM_ARGS,intNUM_NAMED_ARGS,ullongDESC>detail::format_arg_storemake_format_args(T&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "basic_format_args",
+      "renderedId": "basic_format_args",
+      "declaration": "template<typenameContext>classbasic_format_args;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_args",
+      "renderedId": "format_args",
+      "declaration": "usingformat_args=basic_format_args<context>;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "basic_format_arg",
+      "renderedId": "basic_format_arg",
+      "declaration": "template<typenameContext>classbasic_format_arg;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "arg(const char*, const T&)",
+      "renderedId": "arg",
+      "declaration": "template<typenameT>named_argarg(constchar*name,constT&arg);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "basic_string_view",
+      "renderedId": "basic_string_view",
+      "declaration": "template<typenameChar>classbasic_string_view;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "string_view",
+      "renderedId": "string_view",
+      "declaration": "usingstring_view=basic_string_view<char>;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format(format_string<T...>, T&&...)",
+      "renderedId": "format",
+      "declaration": "template<typename...T>std::stringformat(format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "vformat(string_view, format_args)",
+      "renderedId": "vformat",
+      "declaration": "std::stringvformat(string_viewfmt,format_argsargs);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "operator\"\"_a()",
+      "renderedId": null,
+      "declaration": "template<detail::fixed_stringS>autooperator\"\"_a();",
+      "anchorStatus": "upstream-quoted-operator-id-malformed"
+    },
+    {
+      "identifier": "ptr(T)",
+      "renderedId": "ptr",
+      "declaration": "template<typenameT>constvoid*ptr(Tp);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "underlying(Enum)",
+      "renderedId": "underlying",
+      "declaration": "template<typenameEnum>underlying_tunderlying(Enume);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "to_string(const T&)",
+      "renderedId": "to_string",
+      "declaration": "template<typenameT>std::stringto_string(constT&value);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "group_digits(T)",
+      "renderedId": "group_digits",
+      "declaration": "template<typenameT>group_digits_viewgroup_digits(Tvalue);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "detail::buffer",
+      "renderedId": "detail::buffer",
+      "declaration": "template<typenameT>classdetail::buffer;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "basic_memory_buffer",
+      "renderedId": "basic_memory_buffer",
+      "declaration": "template<typenameT,size_tSIZE,typenameAllocator>classbasic_memory_buffer;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "system_error",
+      "renderedId": "system_error",
+      "declaration": "template<typename...T>std::system_errorsystem_error(interror_code,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_system_error",
+      "renderedId": "format_system_error",
+      "declaration": "voidformat_system_error(detail::buffer<char>&out,interror_code,constchar*message);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format(locale_ref, format_string<T...>, T&&...)",
+      "renderedId": "format",
+      "declaration": "template<typename...T>std::stringformat(locale_refloc,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "format_to(OutputIt, locale_ref, format_string<T...>, T&&...)",
+      "renderedId": "format_to",
+      "declaration": "template<typenameOutputIt,typename...T>OutputItformat_to(OutputItout,locale_refloc,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "formatted_size(locale_ref, format_string<T...>, T&&...)",
+      "renderedId": "formatted_size",
+      "declaration": "template<typename...T>size_tformatted_size(locale_refloc,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "FMT_STRING",
+      "renderedId": "FMT_STRING",
+      "declaration": "FMT_STRING(s)",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "join(Range&&, string_view)",
+      "renderedId": "join",
+      "declaration": "template<typenameRange>join_viewjoin(Range&&r,string_viewsep);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "join(It, Sentinel, string_view)",
+      "renderedId": "join",
+      "declaration": "template<typenameIt,typenameSentinel>join_viewjoin(Itbegin,Sentinelend,string_viewsep);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "join(std::initializer_list<T>, string_view)",
+      "renderedId": "join",
+      "declaration": "template<typenameT>join_viewjoin(std::initializer_list<T>list,string_viewsep);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "gmtime(std::time_t)",
+      "renderedId": "gmtime",
+      "declaration": "std::tmgmtime(std::time_ttime);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "ptr(const std::unique_ptr<T, Deleter>&)",
+      "renderedId": "ptr",
+      "declaration": "template<typenameT,typenameDeleter>constvoid*ptr(conststd::unique_ptr<T,Deleter>&p);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "ptr(const std::shared_ptr<T>&)",
+      "renderedId": "ptr",
+      "declaration": "template<typenameT>constvoid*ptr(conststd::shared_ptr<T>&p);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "operator\"\"_cf",
+      "renderedId": null,
+      "declaration": "template<detail::fixed_stringStr>autooperator\"\"_cf();",
+      "anchorStatus": "upstream-quoted-operator-id-malformed"
+    },
+    {
+      "identifier": "FMT_COMPILE",
+      "renderedId": "FMT_COMPILE",
+      "declaration": "FMT_COMPILE(s)",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "FMT_STATIC_FORMAT",
+      "renderedId": "FMT_STATIC_FORMAT",
+      "declaration": "FMT_STATIC_FORMAT(fmt_str,...)",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "print(text_style, format_string<T...>, T&&...)",
+      "renderedId": "print",
+      "declaration": "template<typename...T>voidprint(text_stylets,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "fg(detail::color_type)",
+      "renderedId": "fg",
+      "declaration": "text_stylefg(detail::color_typeforeground);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "bg(detail::color_type)",
+      "renderedId": "bg",
+      "declaration": "text_stylebg(detail::color_typebackground);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "styled(const T&, text_style)",
+      "renderedId": "styled",
+      "declaration": "template<typenameT>detail::styled_arg>styled(constT&value,text_stylets);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "ostream",
+      "renderedId": "ostream",
+      "declaration": "classostream;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "output_file(cstring_view, T...)",
+      "renderedId": "output_file",
+      "declaration": "template<typename...T>ostreamoutput_file(cstring_viewpath,T...params);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "windows_error",
+      "renderedId": "windows_error",
+      "declaration": "template<typename...T>std::system_errorwindows_error(interror_code,string_viewmessage,constT&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "streamed(const T&)",
+      "renderedId": "streamed",
+      "declaration": "template<typenameT>detail::streamed_viewstreamed(constT&value);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "print(std::ostream&, format_string<T...>, T&&...)",
+      "renderedId": "print",
+      "declaration": "template<typename...T>voidprint(std::ostream&os,format_string<T...>fmt,T&&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "dynamic_format_arg_store",
+      "renderedId": "dynamic_format_arg_store",
+      "declaration": "template<typenameContext>classdynamic_format_arg_store;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "printf(string_view, const T&...)",
+      "renderedId": "printf",
+      "declaration": "template<typename...T>intprintf(string_viewfmt,constT&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "fprintf(std::FILE*, string_view, const T&...)",
+      "renderedId": "fprintf",
+      "declaration": "template<typename...T>intfprintf(std::FILE*f,string_viewfmt,constT&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "sprintf(string_view, const T&...)",
+      "renderedId": "sprintf",
+      "declaration": "template<typename...T>std::stringsprintf(string_viewfmt,constT&...args);",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "wstring_view",
+      "renderedId": "wstring_view",
+      "declaration": "usingwstring_view=basic_string_view<wchar_t>;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "wformat_context",
+      "renderedId": "wformat_context",
+      "declaration": "usingwformat_context=buffered_context<wchar_t>;",
+      "anchorStatus": "present"
+    },
+    {
+      "identifier": "to_wstring(const T&)",
+      "renderedId": "to_wstring",
+      "declaration": "template<typenameT>std::wstringto_wstring(constT&value);",
+      "anchorStatus": "present"
+    }
+  ],
+  "topLevelBlocks": 61,
+  "totalDefinitionBlocks": 84,
+  "memberBlocks": 23,
+  "headers": [
+    {
+      "path": "include/fmt/args.h",
+      "sha256": "ce9705a22f68469891cba708b3c4ae459edb3f41c8a83f891e93013d485190f8",
+      "xmlSha256": "554035854cb4eaad3c4c7eb9b29e8431bb924f32b94f65910ad284df6c2b8663"
+    },
+    {
+      "path": "include/fmt/base.h",
+      "sha256": "888315df369b34360880a89998ce24191e7c1b2b0606666ec8fddb31f0cae2fb",
+      "xmlSha256": "8a4105834c0ad32407a4a490e87430de731cd10af26e60bff48b3399b49e057d"
+    },
+    {
+      "path": "include/fmt/chrono.h",
+      "sha256": "a2e569b0f671e89e7691cdd8653d4f695da25174d9c203a2434ce62ed34a2b40",
+      "xmlSha256": "4b29148ce0ce19a97b7c80284d835bf09681be92ac66fb0a7f53bd2c9e91ecce"
+    },
+    {
+      "path": "include/fmt/color.h",
+      "sha256": "80db3364b9f5b8247f4012d05d1353be1d0aed7c1b5bd65bdcd2817d50b64e7c",
+      "xmlSha256": "9e0efb8341ff645bee3effdf51e127c2cec28140660a9b037c45a420bff8c1c7"
+    },
+    {
+      "path": "include/fmt/compile.h",
+      "sha256": "91b48c183ab0d2e0f433bee1b690036d478f0ae1d6fa79259c24d3eed5fbc011",
+      "xmlSha256": "18e8c304f53409a072721db7d8cefcac63e263982e31cda994ab46a26580480d"
+    },
+    {
+      "path": "include/fmt/format.h",
+      "sha256": "b95f7c5b45d3d93e7cd8e691ae3040282ebcfe2d9c390f2c19d15ffcfae80a9c",
+      "xmlSha256": "0245d3a97c780327e6240080826aeb9b3d3a366c4514af3b3e5936caf094ba83"
+    },
+    {
+      "path": "include/fmt/os.h",
+      "sha256": "b43e2f2e3683bcc930d8011199b811ecb6c4480d876ad453e15f6a58ec7ccc80",
+      "xmlSha256": "0e53003083c5d1ff82c6a9a085276ae45928c3dfca8e1247150037547105d1f9"
+    },
+    {
+      "path": "include/fmt/ostream.h",
+      "sha256": "663ab18a9c1cf8e7687d61ceb1acdcecd8c6484621855453fe83bc467c1b44c5",
+      "xmlSha256": "330c8801cac14bc494f3373f1450b0ea487b24f71ebf172de1dc98520969e9b0"
+    },
+    {
+      "path": "include/fmt/printf.h",
+      "sha256": "9c3421258aff344e27b36fe9f894b361d1865875aa781e4b392e60b2f1ebecc1",
+      "xmlSha256": "1c5001c8f3dbc2b12529bc54b39cb28e7ee94488ddfbe861d934e0151d40aee6"
+    },
+    {
+      "path": "include/fmt/ranges.h",
+      "sha256": "0a9297b2feb4443413807ff5bc03e82b4671c150fdfadc869b009ff90b6015a1",
+      "xmlSha256": "8dec2e21d3ad899f132a20736ed99d1b6222f6914292214d3182468f17f013e3"
+    },
+    {
+      "path": "include/fmt/std.h",
+      "sha256": "0aadd4893c93961a619d3bedbb8ac399dbbd5be18498df6933ea8eae88117d03",
+      "xmlSha256": "85c9f2f5cd5483e79fd1482821a3f36ec6ba4bee12ed1af6aaf1cc77eec57760"
+    },
+    {
+      "path": "include/fmt/xchar.h",
+      "sha256": "1d68c1ed984d18ea267f02583e91e8297be8d23ccd3659fc5c3145bc1cbf2f25",
+      "xmlSha256": "834fc34e9fee8d0d7350f5c55b0cce2b6607ff88b6eed1161cc29cde28b7ff2b"
+    }
+  ],
+  "apiHtmlSha256": "9fabc6c71b71cb4b8ff9f05b505b8b29add456ce8e7c32dd8db59a1b0e8e6eb5",
+  "declarations": [
+    "\ntemplate <typename... T>\nvoid print(format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename... T>\nvoid print(FILE* f, format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename... T>\nvoid println(format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename... T>\nvoid println(FILE* f, format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename OutputIt, typename... T>\nremove_cvref_t format_to(OutputIt&& out, format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename OutputIt, typename... T>\nformat_to_n_result format_to_n(OutputIt out, size_t n, format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename OutputIt>\nstruct format_to_n_result;\n",
+    "OutputIt out;",
+    "size_t size;",
+    "\ntemplate <typename... T>\nsize_t formatted_size(format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename Char>\nusing basic_format_parse_context = parse_context<Char>;\n",
+    "\nclass context;\n",
+    "constexpr context(iterator out, format_args args, locale_ref loc);",
+    "\nusing format_context = context;\n",
+    "\ntemplate <typename... T>\nstruct fstring;\n",
+    "\ntemplate <typename... T>\nusing format_string = typename fstring<T...>::t;\n",
+    "\nruntime_format_string<> runtime(string_view s);\n",
+    "\ntemplate <typename Context, typename... T, int NUM_ARGS, int NUM_NAMED_ARGS, ullong DESC>\ndetail::format_arg_store make_format_args(T&... args);\n",
+    "\ntemplate <typename Context>\nclass basic_format_args;\n",
+    "constexpr basic_format_args(const store<NUM_ARGS, NUM_NAMED_ARGS, DESC>& s);",
+    "constexpr basic_format_args(const format_arg* args, int count, bool has_named);",
+    "format_arg get(int id);",
+    "\nusing format_args = basic_format_args<context>;\n",
+    "\ntemplate <typename Context>\nclass basic_format_arg;\n",
+    "decltype(vis(0)) visit(Visitor&& vis);",
+    "\ntemplate <typename T>\nnamed_arg arg(const char* name, const T& arg);\n",
+    "\ntemplate <typename Char>\nclass basic_string_view;\n",
+    "\nusing string_view = basic_string_view<char>;\n",
+    "\ntemplate <typename... T>\nstd::string format(format_string<T...> fmt, T&&... args);\n",
+    "\nstd::string vformat(string_view fmt, format_args args);\n",
+    "\ntemplate <detail::fixed_string S>\nauto operator\"\"_a();\n",
+    "\ntemplate <typename T>\nconst void* ptr(T p);\n",
+    "\ntemplate <typename Enum>\nunderlying_t underlying(Enum e);\n",
+    "\ntemplate <typename T>\nstd::string to_string(const T& value);\n",
+    "\ntemplate <typename T>\ngroup_digits_view group_digits(T value);\n",
+    "\ntemplate <typename T>\nclass detail::buffer;\n",
+    "size_t size();",
+    "size_t capacity();",
+    "T * data();",
+    "void clear();",
+    "void append(const U* begin, const U* end);",
+    "\ntemplate <typename T, size_t SIZE, typename Allocator>\nclass basic_memory_buffer;\n",
+    "basic_memory_buffer(basic_memory_buffer&& other);",
+    "basic_memory_buffer & operator=(basic_memory_buffer&& other);",
+    "void resize(size_t count);",
+    "void reserve(size_t new_capacity);",
+    "\ntemplate <typename... T>\nstd::system_error system_error(int error_code, format_string<T...> fmt, T&&... args);\n",
+    "\nvoid format_system_error(detail::buffer<char>& out, int error_code, const char* message);\n",
+    "\ntemplate <typename... T>\nstd::string format(locale_ref loc, format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename OutputIt, typename... T>\nOutputIt format_to(OutputIt out, locale_ref loc, format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename... T>\nsize_t formatted_size(locale_ref loc, format_string<T...> fmt, T&&... args);\n",
+    "\nFMT_STRING(s)\n",
+    "\ntemplate <typename Range>\njoin_view join(Range&& r, string_view sep);\n",
+    "\ntemplate <typename It, typename Sentinel>\njoin_view join(It begin, Sentinel end, string_view sep);\n",
+    "\ntemplate <typename T>\njoin_view join(std::initializer_list<T> list, string_view sep);\n",
+    "\nstd::tm gmtime(std::time_t time);\n",
+    "\ntemplate <typename T, typename Deleter>\nconst void* ptr(const std::unique_ptr<T, Deleter>& p);\n",
+    "\ntemplate <typename T>\nconst void* ptr(const std::shared_ptr<T>& p);\n",
+    "\ntemplate <detail::fixed_string Str>\nauto operator\"\"_cf();\n",
+    "\nFMT_COMPILE(s)\n",
+    "\nFMT_STATIC_FORMAT(fmt_str, ...)\n",
+    "\ntemplate <typename... T>\nvoid print(text_style ts, format_string<T...> fmt, T&&... args);\n",
+    "\ntext_style fg(detail::color_type foreground);\n",
+    "\ntext_style bg(detail::color_type background);\n",
+    "\ntemplate <typename T>\ndetail::styled_arg> styled(const T& value, text_style ts);\n",
+    "\nclass ostream;\n",
+    "void print(format_string<T...> fmt, T&&... args);",
+    "\ntemplate <typename... T>\nostream output_file(cstring_view path, T... params);\n",
+    "\ntemplate <typename... T>\nstd::system_error windows_error(int error_code, string_view message, const T&... args);\n",
+    "\ntemplate <typename T>\ndetail::streamed_view streamed(const T& value);\n",
+    "\ntemplate <typename... T>\nvoid print(std::ostream& os, format_string<T...> fmt, T&&... args);\n",
+    "\ntemplate <typename Context>\nclass dynamic_format_arg_store;\n",
+    "void push_back(const T& arg);",
+    "void push_back(std::reference_wrapper<T> arg);",
+    "void push_back(const named_arg<T, char_type>& arg);",
+    "void clear();",
+    "void reserve(size_t new_cap, size_t new_cap_named);",
+    "size_t size();",
+    "\ntemplate <typename... T>\nint printf(string_view fmt, const T&... args);\n",
+    "\ntemplate <typename... T>\nint fprintf(std::FILE* f, string_view fmt, const T&... args);\n",
+    "\ntemplate <typename... T>\nstd::string sprintf(string_view fmt, const T&... args);\n",
+    "\nusing wstring_view = basic_string_view<wchar_t>;\n",
+    "\nusing wformat_context = buffered_context<wchar_t>;\n",
+    "\ntemplate <typename T>\nstd::wstring to_wstring(const T& value);\n"
+  ],
+  "conversionPreservation": "not-performed",
+  "workloadEstimate": "pending"
+}

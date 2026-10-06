@@ -1,0 +1,176 @@
+{
+  "checkedAt": "2026-10-02T14:10:05.913Z",
+  "status": "failed",
+  "method": "All4 generated official HTML articles → Pandoc3.8.3 GFM → HTML with explicit raw HTML preservation of top-level blocks containing pre (including grammar links); exact code/ordered links/images comparison and whitespace-normalized table text comparison. Source unchanged. Trial is not canonical or translation.",
+  "results": [
+    {
+      "page": "index",
+      "checks": {
+        "codes": "passed",
+        "tables": "passed",
+        "links": "passed",
+        "prose": "passed",
+        "images": "passed"
+      },
+      "counts": {
+        "codes": 4,
+        "tables": 0,
+        "links": 9,
+        "prose": 1,
+        "images": 1
+      },
+      "differences": {},
+      "pandocWarnings": ""
+    },
+    {
+      "page": "get-started",
+      "checks": {
+        "codes": "failed",
+        "tables": "passed",
+        "links": "failed",
+        "prose": "passed",
+        "images": "passed"
+      },
+      "counts": {
+        "codes": 20,
+        "tables": 0,
+        "links": 19,
+        "prose": 1,
+        "images": 0
+      },
+      "differences": {
+        "codes": {
+          "before": [
+            "include(FetchContent)\n\nFetchContent_Declare(\n  fmt\n  GIT_REPOSITORY https://github.com/fmtlib/fmt\n  GIT_TAG        e69e5f977d458f2650bb346dadf2ad30c5320281) # 10.2.1\nFetchContent_MakeAvailable(fmt)\n\ntarget_link_libraries(<your-target> fmt::fmt)",
+            "find_package(fmt)\ntarget_link_libraries(<your-target> fmt::fmt)",
+            "add_subdirectory(fmt)\ntarget_link_libraries(<your-target> fmt::fmt)",
+            "apt install libfmt-dev",
+            "brew install fmt",
+            "conda install -c conda-forge fmt",
+            "git clone https://github.com/Microsoft/vcpkg.git\ncd vcpkg\n./bootstrap-vcpkg.sh\n./vcpkg integrate install\n./vcpkg install fmt",
+            "conan install -r conancenter --requires=\"fmt/[*]\" --build=missing",
+            "mkdir build  # Create a directory to hold the build output.\ncd build\ncmake ..     # Generate native build scripts.",
+            "cmake -DBUILD_SHARED_LIBS=TRUE ..",
+            "cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE ..",
+            "make doc",
+            ":\nrole: prerequisite\nlocation: https://pkg.cppget.org/1/stable",
+            "depends: fmt ~10.0.0",
+            "import fmt = fmt%lib{fmt}\nlib{mylib} : cxx{**} ... $fmt",
+            "meson wrap install fmt",
+            "fmt = subproject('fmt')\nfmt_dep = fmt.get_variable('fmt_dep')",
+            "my_build_target = executable(\n  'name', 'src/main.cc', dependencies: [fmt_dep])",
+            "fmt = subproject('fmt', default_options: 'default_library=static')\nfmt_dep = fmt.get_variable('fmt_dep')",
+            "fmt = subproject('fmt', default_options: ['header-only=true'])\nfmt_dep = fmt.get_variable('fmt_header_only_dep')"
+          ],
+          "after": [
+            "include(FetchContent)\n\nFetchContent_Declare( fmt GIT_REPOSITORY https://github.com/fmtlib/fmt\nGIT_TAG e69e5f977d458f2650bb346dadf2ad30c5320281) # 10.2.1\nFetchContent_MakeAvailable(fmt)\ntarget_link_libraries(<your-target> fmt::fmt)",
+            "find_package(fmt)\ntarget_link_libraries(<your-target> fmt::fmt)",
+            "add_subdirectory(fmt)\ntarget_link_libraries(<your-target> fmt::fmt)",
+            "apt install libfmt-dev",
+            "brew install fmt",
+            "conda install -c conda-forge fmt",
+            "git clone https://github.com/Microsoft/vcpkg.git\ncd vcpkg\n./bootstrap-vcpkg.sh\n./vcpkg integrate install\n./vcpkg install fmt",
+            "conan install -r conancenter --requires=\"fmt/[*]\" --build=missing",
+            "mkdir build  # Create a directory to hold the build output.\ncd build\ncmake ..     # Generate native build scripts.",
+            "cmake -DBUILD_SHARED_LIBS=TRUE ..",
+            "cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE ..",
+            "make doc",
+            ":\nrole: prerequisite\nlocation: https://pkg.cppget.org/1/stable",
+            "depends: fmt ~10.0.0",
+            "import fmt = fmt%lib{fmt}\nlib{mylib} : cxx{**} ... $fmt",
+            "meson wrap install fmt",
+            "fmt = subproject('fmt')\nfmt_dep = fmt.get_variable('fmt_dep')",
+            "my_build_target = executable(\n  'name', 'src/main.cc', dependencies: [fmt_dep])",
+            "fmt = subproject('fmt', default_options: 'default_library=static')\nfmt_dep = fmt.get_variable('fmt_dep')",
+            "fmt = subproject('fmt', default_options: ['header-only=true'])\nfmt_dep = fmt.get_variable('fmt_header_only_dep')"
+          ]
+        },
+        "links": {
+          "before": [
+            "https://godbolt.org/z/P7h6cd6o3",
+            "#build-systems",
+            "https://cmake.org/cmake/help/v3.30/module/FetchContent.html",
+            "#installation",
+            "https://brew.sh/",
+            "https://docs.conda.io/en/latest/",
+            "https://github.com/conda-forge/fmt-feedstock",
+            "https://conan.io/",
+            "https://www.python.org/",
+            "http://www.stack.nl/~dimitri/doxygen/",
+            "https://www.mkdocs.org/",
+            "https://build2.org",
+            "https://cppget.org/fmt/",
+            "https://github.com/build2-packaging/fmt",
+            "https://mesonbuild.com/Wrapdb-projects.html",
+            "https://github.com/fmtlib/fmt/blob/master/support/Android.mk",
+            "https://developer.android.com/tools/sdk/ndk/index.html",
+            "https://github.com/fmtlib/fmt/releases",
+            "https://github.com/fmtlib/fmt"
+          ],
+          "after": [
+            "https://godbolt.org/z/P7h6cd6o3",
+            "#build-systems",
+            "https://cmake.org/cmake/help/v3.30/module/FetchContent.html",
+            "https://github.com/fmtlib/fmt",
+            "#installation",
+            "https://brew.sh/",
+            "https://docs.conda.io/en/latest/",
+            "https://github.com/conda-forge/fmt-feedstock",
+            "https://conan.io/",
+            "https://www.python.org/",
+            "http://www.stack.nl/~dimitri/doxygen/",
+            "https://www.mkdocs.org/",
+            "https://build2.org",
+            "https://cppget.org/fmt/",
+            "https://github.com/build2-packaging/fmt",
+            "https://mesonbuild.com/Wrapdb-projects.html",
+            "https://github.com/fmtlib/fmt/blob/master/support/Android.mk",
+            "https://developer.android.com/tools/sdk/ndk/index.html",
+            "https://github.com/fmtlib/fmt/releases",
+            "https://github.com/fmtlib/fmt"
+          ]
+        }
+      },
+      "pandocWarnings": ""
+    },
+    {
+      "page": "api",
+      "checks": {
+        "codes": "passed",
+        "tables": "passed",
+        "links": "passed",
+        "prose": "passed",
+        "images": "passed"
+      },
+      "counts": {
+        "codes": 134,
+        "tables": 0,
+        "links": 50,
+        "prose": 1,
+        "images": 0
+      },
+      "differences": {},
+      "pandocWarnings": ""
+    },
+    {
+      "page": "syntax",
+      "checks": {
+        "codes": "passed",
+        "tables": "passed",
+        "links": "passed",
+        "prose": "passed",
+        "images": "passed"
+      },
+      "counts": {
+        "codes": 16,
+        "tables": 10,
+        "links": 13,
+        "prose": 1,
+        "images": 0
+      },
+      "differences": {},
+      "pandocWarnings": ""
+    }
+  ],
+  "semanticFullReview": "not-performed"
+}

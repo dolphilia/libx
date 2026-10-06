@@ -1,0 +1,179 @@
+---
+import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
+
+interface Props {
+  baseUrl: string;
+  version: string;
+  lang: LocaleKey;
+}
+
+const { baseUrl, version, lang } = Astro.props;
+const indexUrl = `${baseUrl.replace(/\/$/, '')}/search/${version}/${lang}.json`;
+---
+
+<div
+  class="docs-search"
+  data-search-root
+  data-index-url={indexUrl}
+  data-no-results={translate('search.noResults', lang)}
+  data-error={translate('search.error', lang)}
+>
+  <button
+    type="button"
+    class="search-trigger"
+    data-search-trigger
+    aria-haspopup="dialog"
+    aria-label={translate('search.label', lang)}
+  >
+    <span>{translate('search.label', lang)}</span><kbd>/</kbd>
+  </button>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title">
+    <form method="dialog" class="search-header">
+      <label id="search-dialog-title" for="docs-search-input">
+        {translate('search.searchResults', lang)}
+      </label>
+      <button type="submit" aria-label={translate('search.closeSearch', lang)}>×</button>
+    </form>
+    <input
+      id="docs-search-input"
+      type="search"
+      autocomplete="off"
+      placeholder={translate('search.placeholder', lang)}
+      data-search-input
+    />
+    <p class="search-status" data-search-status aria-live="polite"></p>
+    <ol class="search-results" data-search-results></ol>
+  </dialog>
+</div>
+
+<script>
+  const roots = document.querySelectorAll<HTMLElement>(
+    '[data-search-root]:not([data-search-ready])'
+  );
+  for (const root of roots) {
+    root.dataset.searchReady = 'true';
+    const trigger = root.querySelector<HTMLButtonElement>('[data-search-trigger]');
+    let initialized = false;
+    const open = async () => {
+      if (!initialized) {
+        initialized = true;
+        const { initializeSearch } = await import('../scripts/search-client.js');
+        initializeSearch(root);
+      }
+      root.dispatchEvent(new CustomEvent('docs-search:open'));
+    };
+    trigger?.addEventListener('click', open);
+    window.addEventListener('keydown', (event) => {
+      const target = event.target as HTMLElement | null;
+      if (event.key === '/' && !target?.matches('input, textarea, select, [contenteditable]')) {
+        event.preventDefault();
+        open();
+      }
+    });
+  }
+</script>
+
+<style>
+  .search-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.25rem;
+    padding-inline: 0.75rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.375rem;
+    background: var(--sl-color-bg-sidebar);
+    color: var(--sl-color-text);
+    cursor: pointer;
+  }
+
+  .search-trigger kbd {
+    color: var(--sl-color-gray-2);
+  }
+
+  @media (max-width: 49.999em) {
+    .search-trigger {
+      inline-size: 2.5rem;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .search-trigger span,
+    .search-trigger kbd {
+      display: none;
+    }
+
+    .search-trigger::before {
+      content: '⌕';
+      font-size: 1.25rem;
+    }
+  }
+
+  .search-dialog {
+    inline-size: min(42rem, calc(100% - 2rem));
+    max-block-size: min(42rem, calc(100% - 2rem));
+    padding: 1rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+  }
+
+  .search-dialog::backdrop {
+    background: rgb(0 0 0 / 0.65);
+  }
+
+  .search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: 0.75rem;
+    font-weight: 700;
+  }
+
+  .search-header button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  [data-search-input] {
+    inline-size: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.375rem;
+    background: var(--sl-color-bg-sidebar);
+    color: inherit;
+    font: inherit;
+  }
+
+  .search-results {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .search-results :global(a) {
+    display: block;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.375rem;
+    color: var(--sl-color-text);
+    text-decoration: none;
+  }
+
+  .search-results :global(a:hover),
+  .search-results :global(a:focus),
+  .search-results :global(a[aria-current='true']) {
+    background: var(--sl-color-bg-sidebar);
+    outline: 2px solid var(--sl-color-accent);
+  }
+
+  .search-results :global(small) {
+    display: block;
+    color: var(--sl-color-gray-2);
+  }
+</style>

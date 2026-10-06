@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T12:29:28.810Z",
+  "status": "partial",
+  "tool": "cua_repl",
+  "observations": [
+    {
+      "scope": "native Chrome guest JA390x844",
+      "result": "実Width390/Height844。readonly Console: innerWidth390/innerHeight844/documentWidth390、検索dialog背景rgb(22,22,24)。検索スレッド安全性をDown/Returnで選択、URL#_thread_safetyへ移動し閉じる。背景透明だった修正前の実画像と修正後の不透明な実画像を別途目視。"
+    },
+    {
+      "scope": "JA/EN Macro table390",
+      "result": "HASH_ADD_INT/HASH_REPLACE_INT等API識別子が一行で表示。EN実Console: page390px、末尾2tableblockのclientWidth342、scrollWidth650/1078、overflowX auto、code nowrap。EN画像をDevTools Capture screenshotからネイティブ保存UIで保存しローカル画像確認。"
+    },
+    {
+      "scope": "pugixml JA XPath desktop regression",
+      "result": "検索xpath_queryで背景rgb(255,255,255)をDOM実測し画像確認。結果XPath xpath_queryをクリックしてURL#source-xpath_query/実target存在/dialog closedを確認。"
+    },
+    {
+      "scope": "uthash light desktop",
+      "result": "再読込後dialog背景rgb(255,255,255)、tableblock overflow auto/nowrap確認。"
+    }
+  ],
+  "image": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-214/uthash-en-mobile-390.png",
+    "sha256": "8109b17b8b8aa69533a7242684f37a24b032a05220fdf66be6ceec59105c49c3"
+  },
+  "attempts": [
+    {
+      "scope": "EN表の横操作",
+      "result": "native App.scroll(table,right,1)は縦に移動した。scrollLeft移動未証明のため横操作を合格にしない。"
+    },
+    {
+      "scope": "画像保存",
+      "result": "GoTo入力一部欠損とclipboard timeout後AX確認。最終保存先2026-10-02-214/ファイル名を確認し保存。実ファイルをview_imageで確認。"
+    }
+  ],
+  "remaining": [
+    "表の実横操作/難しい長いコードの表示",
+    "モバイルの英日切替・版切替・カテゴリ/前後/404/出典の残確認",
+    "root限定統合と最新共有差分確認・全Production成果物検証"
+  ],
+  "limitations": [
+    "BUILT_HTML内の390px未検証という旧記述は当該機械レポート生成時点の状態。この追加実寸証拠で更新する。",
+    "全文内容レビューは210から本文SHA不変のため再利用。display全体はpending。",
+    "rootアプリ/landing/lock未統合。公開なし。"
+  ]
+}

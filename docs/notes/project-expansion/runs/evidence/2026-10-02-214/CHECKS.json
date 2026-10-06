@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T12:29:28.812Z",
+  "status": "passed-partial-verification",
+  "builds": [
+    {
+      "project": "uthash",
+      "routes": 21
+    },
+    {
+      "project": "pugixml",
+      "routes": 29
+    },
+    {
+      "project": "template",
+      "routes": 7
+    }
+  ],
+  "lint": {
+    "status": "passed",
+    "exitCode": 0,
+    "scope": "Search.astro + uthash astro config"
+  },
+  "builtHTML": {
+    "status": "passed",
+    "pages": 16,
+    "evidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-214/BUILT_HTML.json",
+      "sha256": "bbda30b84b94fbf32956060915d81fd37f82899345d2f73f4d97b19f7baf20e1"
+    }
+  },
+  "changes": [
+    "共有Searchの未定義sl-color変数を既存colorテーマ変数へ置換。rootが保存beforeとbyte同一であることをCAS確認して限定適用。",
+    "uthash限定tableblockにoverflow auto/inline code nowrapを追加。記事sl-markdown-contentへスコープ修正して最終build。",
+    "生成astro configの重複rootDirを除去。"
+  ],
+  "fullContentReview": "210別工程8ページの原文/EN/JA SHAは不変。CSS/configのみ。",
+  "limits": [
+    "統合Production全体buildは未実施",
+    "表示検証全体未完"
+  ]
+}

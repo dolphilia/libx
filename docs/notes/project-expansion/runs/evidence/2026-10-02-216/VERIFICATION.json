@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T12:51:43.384Z",
+  "status": "passed",
+  "review": {
+    "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-210/REVIEW_MANIFEST.json",
+    "sha256": "e4cd245acccc783a009323795ae1de03ba42dc4dc000c08d1c7ebbe5ca4aa2dc"
+  },
+  "bodyBinding": "全8原文/EN/JA full review、root/private ENJA全16 SHA一致。再翻訳なし。",
+  "checks": [
+    {
+      "name": "root check:content",
+      "status": "passed",
+      "pages": 8,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-216/ROOT_CONTENT.log",
+        "sha256": "a7db73edb8babcbf0e1283dc975aced95bb5ab530d6e40ce57816f99b574fe37"
+      }
+    },
+    {
+      "name": "root check:integrity",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-216/ROOT_INTEGRITY.log",
+        "sha256": "42fd14648ba2d46ea0e97a15d61a290c9f2fd9761b5c3baefed1546c5bce7c42"
+      }
+    },
+    {
+      "name": "full clean-baseline integrated build",
+      "status": "passed",
+      "targets": 15,
+      "groups": [
+        "awesome"
+      ],
+      "reused": 0,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-216/FULL_BUILD.log",
+        "sha256": "c781c36b14194b5c1bbb9a709ae015ebac878248add9977e548e9f403c60fd4e"
+      },
+      "inventory": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-216/FULL_BUILD_INVENTORY.json",
+        "sha256": "d9d3e76945faf1460fb99e7dcff89eee139f4f199bbb08a8c470c3a359f48284"
+      }
+    },
+    {
+      "name": "integrated all16 article/link/sourceID/license/RSS preservation",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-216/BUILT_HTML_INTEGRATED.json",
+        "sha256": "f3d16d88e1fb39d8bbccab5aa07aea996ef6e69c0213b3440e1c6830a7b05026"
+      }
+    },
+    {
+      "name": "local display",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-216/DISPLAY_AUDIT.json",
+        "sha256": "d90ac50bc06ded8d70f3b465e03533f3650b89fa550aa44b5811fb0fd12b658a"
+      }
+    },
+    {
+      "name": "scoped root git diff --check",
+      "status": "passed",
+      "exitCode": 0
+    }
+  ],
+  "integration": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-216/ROOT_INTEGRATION.json",
+    "sha256": "56fac51598e750061c9980fa3f9dd35670f5446eca82a0f77ec7498099325be6"
+  },
+  "limits": [
+    "rootの旧調査・変換試験資料の全体リンク検査失敗は213の証拠を保持。candidateの213私有docsリンク検査と16実配信HTML内部target/fragment検査は合格。過去資料の編集/一括除外は行わない。",
+    "root依存グラフtypes20を保持し、新importerのみ同specの現行tomlから追加。clean公開候補はpublished baseのtypes24グラフで独立して全文生成/検証。",
+    "外部公開は未実施。"
+  ]
+}

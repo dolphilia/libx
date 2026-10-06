@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T12:07:04.649Z",
+  "status": "passed-private-checks-root-links-failed",
+  "privateRoot": "/private/tmp/libx-official-uthash-20261002",
+  "checks": [
+    {
+      "name": "pnpm check:integrity",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-213/INTEGRITY_FINAL.log",
+        "sha256": "b98ecff6061bba66aa80dde98f9c5a4e33d64442e60e748102c9bb09e62b6d61"
+      },
+      "scope": "private全アプリ・カテゴリ・42レイアウト"
+    },
+    {
+      "name": "pnpm check:links",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-213/LINKS_FINAL.log",
+        "sha256": "179ae7824727bbf6a8849c86156224e1ad2d9bd904b692ec04505b543cc38a45"
+      },
+      "scope": "private README/docs213ファイル"
+    },
+    {
+      "name": "link-check regression tests",
+      "status": "passed",
+      "tests": 3,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-213/LINK_TESTS_FINAL.log",
+        "sha256": "41af1cfaa3835170fb55a045e8ccabff6b804a63307c4b19e114297753398dd7"
+      }
+    },
+    {
+      "name": "ESLint changed link checker/test",
+      "status": "passed",
+      "exitCode": 0
+    },
+    {
+      "name": "pnpm build:template",
+      "status": "passed",
+      "routes": 7,
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-213/TEMPLATE_BUILD.log",
+        "sha256": "695680777532056bb6d0e9e7e908cce688c00419d58e3180a4db769d1e976eda"
+      }
+    },
+    {
+      "name": "pnpm build:selective --projects=uthash",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-213/SELECTIVE_BUILD.log",
+        "sha256": "1dfe495c07ed547bff779d154fdb2ea276ddc7d10ef3a08638bcfe5a28122850"
+      },
+      "scope": "uthashのみの選択的統合。全Productionサイトではない。"
+    },
+    {
+      "name": "root pnpm check:links",
+      "status": "failed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-213/ROOT_LINKS.log",
+        "sha256": "08f455e9027ed689bcf9b3b4fa5e9c18877476e968e59fdd31dd011776d66653"
+      },
+      "reason": "rootには固定原文/過去試験変換/調査保存資料の相対参照欠損がある。公開候補には入れない。資料を改変/削除したり検査対象から一括除外して合格にしない。"
+    }
+  ],
+  "checkerChange": {
+    "sourceMarkers": "remarkの次の見出しID規則に合わせて空行を許容。字句の大文字小文字/コード内無効マーカー/孤立マーカーの回帰を検査。",
+    "splitContext": "link-context.jsonに列挙した全分割草稿の連結が対象全文とbyte同一のときだけ、fragmentを全文へ照合。結合差分/存在しないIDはエラー。",
+    "context": {
+      "path": "docs/notes/document-import/uthash/v2-4-0/translation-segments/ja/01-userguide/link-context.json",
+      "sha256": "9591e77be82c455f695badf573f04000601237f5b9c29845b0eb94ddff373c32"
+    }
+  },
+  "landing": {
+    "change": "privateのみuthashの5行追加へ整理、既存装飾の再整形を除去。root landing/lock/app未変更。",
+    "diff": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-213/landing.diff.patch",
+      "sha256": "ac698300357be7799775cd323749faeeb446e186ac30efd9d726e05776431184"
+    }
+  },
+  "limits": [
+    "private整合性合格をroot統合完了とは扱わない。",
+    "root app不在、公開除外を維持。"
+  ]
+}

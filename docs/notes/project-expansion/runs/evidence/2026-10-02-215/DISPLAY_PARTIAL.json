@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T12:37:50.000Z",
+  "status": "partial",
+  "tool": "cua_repl native Chrome guest",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "documentWidth": 390
+  },
+  "observations": [
+    {
+      "scope": "EN API表の実横操作",
+      "result": "Convenience表をクリック/Right後、TabでGeneral表のcontainerにfocusを移しRight3回。画像で表の左側が移動しfocus枠が表示。readonly Consoleで表scrollLeft40/120px、各client342/scroll650/1078、documentWidth390。214の未証明だった実横操作を今回合格。"
+    },
+    {
+      "scope": "EN UserGuide完全例",
+      "result": "実URL#_a_complete_example、コード画像でインデント/識別子/複数関数を確認。readonly DOMで147行pre client342/scroll648/overflow auto、documentWidth390。コード自体の横キー操作は未実施。"
+    },
+    {
+      "scope": "JAライセンス→EN",
+      "result": "JA通知と参考訳/原通知保持説明/390px内のheader/カテゴリ/本文を実画像確認。言語メニューEnglishクリックで同じ02-license/01-licenseのen URLへ移動。"
+    },
+    {
+      "scope": "版選択",
+      "result": "uthash2.4.0メニューを開き唯一の同版を選択。URLの版保持と閉じるを確認。複数版なしのため別版移動は対象外。"
+    },
+    {
+      "scope": "mobile404/入口",
+      "result": "JA __verification_missing__ 実404レスポンスがConsole/画面に表示。英語404は既存制約。Go to Home→/docs/uthash→ENUserGuide最終URLと実本文を確認。"
+    },
+    {
+      "scope": "mobileカテゴリ/前後/出典",
+      "result": "sidebarガイド/ライセンス表示と通常utringbufferを確認。ENutringbuffer末尾の著作者/ソフトウェアlicense注釈/版/原文・licenseリンクを実画像確認。Next utstackクリックで05-utstack、Previous utringbufferクリックで04-utringbufferに戻る。"
+    },
+    {
+      "scope": "後片付け",
+      "result": "一時Device toolbar Value1→0をAX確認後DevTools閉じる。pugi一時tab22を閉じ、uthash19をhandoff保存。Guest task windowは残す。"
+    }
+  ],
+  "attempts": [
+    {
+      "scope": "ページ末尾",
+      "result": "HTMLコンテンツ自体をクリックすると中央のsidebar utringbufferリンクへ移動した。super+Endは末尾へ移動しなかった。実URL/画像を確認後、通常スクロールと明示リンクで検証を続けた。"
+    }
+  ],
+  "remaining": [
+    "RSS図と長いコードの実横操作など残表示",
+    "root限定統合/最新共有差分/全Production候補build/公開"
+  ],
+  "contentReview": "review210の全8ページ本文不変。表示検証の追加のみ。",
+  "evidenceImage": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-214/uthash-en-mobile-390.png",
+    "sha256": "8109b17b8b8aa69533a7242684f37a24b032a05220fdf66be6ceec59105c49c3"
+  },
+  "limits": [
+    "nativeAXはスクロール範囲により省略されるため、画像/URL/Console実測を分けて記録。",
+    "全表示と統合未完をverifiedにしない。"
+  ]
+}
