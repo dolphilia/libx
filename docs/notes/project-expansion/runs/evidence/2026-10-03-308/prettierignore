@@ -1,0 +1,45 @@
+# 文書本文には、説明用の不完全なコード例や独自MDX構文が含まれる。
+**/*.md
+**/*.mdx
+
+# 正本から生成・同期される成果物は生成経路側で整形する。
+**/public/sidebar/**
+**/public/search/**
+**/public/sw.js
+# Awesomeの証拠JSONは専用生成器の決定的な形式を正本とする。
+docs/notes/document-import/awesome/**/*.json
+# 入れ子移行の保存目録・計測値は専用ツールの出力形式を保持する。
+docs/notes/nested-app-migration/*.json
+
+# ビルド・一時出力
+**/dist/**
+**/.astro/**
+.tmp/**
+.backups/**
+
+# TOML固定入力・対応表の証拠JSONは原SHAを保持する。
+docs/notes/document-import/toml/**/*.json
+
+# Luaのbugs固定入力と証拠JSONは取得SHAを保持する。
+docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/**
+docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/**/*.json
+
+# pugixmlの固定原資料・切り出し・レビュー・取得段階の保存コピーはSHAを保持する。
+docs/notes/document-import/pugixml/v1-16/source/**
+docs/notes/document-import/pugixml/v1-16/source-fragments/**
+docs/notes/document-import/pugixml/v1-16/review/**/*.json
+docs/notes/document-import/pugixml/v1-16/staging/**
+
+# uthashの固定入力・定本・全文レビュー証拠は検証済みSHAを保持する。
+docs/notes/document-import/uthash/**
+# 取得・選定の保存証拠は元のバイト列を保持する。
+docs/notes/project-expansion/runs/evidence/**
+
+# fmtの固定原資料・取得HTML・定本・翻訳・レビュー証拠はSHAを保持する。
+docs/notes/document-import/fmt/**
+
+# Ninjaの固定入力・定本・翻訳・レビュー証拠はSHAを保持する。
+docs/notes/document-import/ninja/**
+
+# cJSON固定入力・定本・翻訳・レビュー証拠のSHAを保持する。
+docs/notes/document-import/cjson/**

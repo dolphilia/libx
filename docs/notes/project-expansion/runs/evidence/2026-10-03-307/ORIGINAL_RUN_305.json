@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-305-cjson-content-mechanical-check",
+  "cycle": 305,
+  "startedAt": "2026-10-02T22:34:20.000Z",
+  "endedAt": "2026-10-02T22:36:09.436Z",
+  "result": "partial",
+  "phase": "cjson-content-mechanical-check",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Read-onlyNodechecker",
+    "PinnedPythonMarkdowncanonical regeneration --check",
+    "Japaneseassembler --check",
+    "pnpm apps-cjson check:content",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f12ff07444379231a2ff64f4fca45321e5fd6188d656fd3d83d8ef957d6e60e7"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "be228b721e6ff9651ba382959ddc25687739182116ede016db93050bef7e4600"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/CANONICAL_REGENERATION.json",
+      "sha256": "e6d5158c3fbc6835854157d94bfe6d0506cdb76c42f290aec80f77081a19164a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/CONTENT_CHECK.json",
+      "sha256": "aa6a1f9f71ea03c3200fa981213f71da75f9e44cef3603c43af8748becc527fd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/JA_REGENERATION.json",
+      "sha256": "c9da94e90ad748b421f4047cfb961ea38d248e55a3528dec447a6e9eb4100e6a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/PNPM_CHECK.log",
+      "sha256": "31579187f41f0d9bd95543f44186174b2e1259eec339a2051ab3dcaedf14069f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/package.json",
+      "sha256": "1aa87dd77bc8b6988081284af553fad4d1a180ca6e52db6539dc0216d70853b2"
+    },
+    {
+      "path": "scripts/importers/check-cjson-content.mjs",
+      "sha256": "19f13117aed9b9785217812ed0d69dad489a59f737f39d27ffcf641c21f6e5ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8d23fbe23bdebd11015bb1d8ea34a28519281a5aa889efe4771700b3717c09fd"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Allscope structure/links/integrity and regeneration",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/CANONICAL_REGENERATION.json",
+          "sha256": "e6d5158c3fbc6835854157d94bfe6d0506cdb76c42f290aec80f77081a19164a"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/CONTENT_CHECK.json",
+          "sha256": "aa6a1f9f71ea03c3200fa981213f71da75f9e44cef3603c43af8748becc527fd"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/JA_REGENERATION.json",
+          "sha256": "c9da94e90ad748b421f4047cfb961ea38d248e55a3528dec447a6e9eb4100e6a"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/PNPM_CHECK.log",
+          "sha256": "31579187f41f0d9bd95543f44186174b2e1259eec339a2051ab3dcaedf14069f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-305/package.json",
+          "sha256": "1aa87dd77bc8b6988081284af553fad4d1a180ca6e52db6539dc0216d70853b2"
+        },
+        {
+          "path": "scripts/importers/check-cjson-content.mjs",
+          "sha256": "19f13117aed9b9785217812ed0d69dad489a59f737f39d27ffcf641c21f6e5ed"
+        }
+      ]
+    },
+    {
+      "name": "Native/integration/publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "305:read-only check:content実装、専用pnpm check:content exit0。固定8sourceSHA/Gitblob・review全3scopeの現行SHA/全coverage・実ENJA6本文とdistの全文/全コード/一覧/IDs/32copybuttons・全内部route及び別ページ含む全fragment・原MITasset合格。PythonMarkdown3.7定本とJA別assemblerの--check双方一致。native/統合/公開pending。"
+  ],
+  "unresolved": [
+    "Formalnative fullscope display and interaction",
+    "Integration regression/Pages publication"
+  ],
+  "nextAction": "正式cJSONローカルpreviewで全3ENJAのdesktop/mobile表示、目次/言語/前後/出典、keyboard/32copy/404復帰を実証。全qualityと統合回帰後に公開待ち登録、クリーンな限定差分のみ統合Pagesへ公開。",
+  "resumeCondition": "305:read-only check:content実装、専用pnpm check:content exit0。固定8sourceSHA/Gitblob・review全3scopeの現行SHA/全coverage・実ENJA6本文とdistの全文/全コード/一覧/IDs/32copybuttons・全内部route及び別ページ含む全fragment・原MITasset合格。PythonMarkdown3.7定本とJA別assemblerの--check双方一致。native/統合/公開pending。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}
