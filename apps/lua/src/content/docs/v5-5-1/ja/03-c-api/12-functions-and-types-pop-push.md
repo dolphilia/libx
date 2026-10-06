@@ -37,11 +37,11 @@ void lua_pushboolean (lua_State *L, int b);
 void lua_pushcclosure (lua_State *L, lua_CFunction fn, int n);
 ```
 
-新しいCクロージャーをスタックへプッシュします。この関数はC関数へのポインターを受け取り、呼び出されると対応するC関数を実行する、型`function`のLua値をスタックへプッシュします。引数`n`は、この関数が持つ上位値の数を示します（[§4.2](/docs/lua/v5-5-1/ja/03-c-api/03-c-closures/#4.2)を参照）。
+新しいCクロージャーをスタックへプッシュします。この関数はC関数へのポインターを受け取り、呼び出されると対応するC関数を実行する、型`function`のLua値をスタックへプッシュします。引数`n`は、この関数が持つアップバリューの数を示します（[§4.2](/docs/lua/v5-5-1/ja/03-c-api/03-c-closures/#4.2)を参照）。
 
 Luaから呼び出し可能なすべての関数は、引数を受け取り結果を返すための正しいプロトコルに従う必要があります（[`lua_CFunction`](/docs/lua/v5-5-1/ja/03-c-api/07-functions-and-types-a-c/#lua_CFunction)を参照）。
 
-C関数を作成するとき、上位値と呼ばれるいくつかの値を関連付けられます。関数が呼び出されるたびに、その関数はこれらの上位値へアクセスできます。この関連付けをCクロージャーと呼びます（[§4.2](/docs/lua/v5-5-1/ja/03-c-api/03-c-closures/#4.2)を参照）。Cクロージャーを作成するには、最初に上位値の初期値をスタックへプッシュする必要があります。（複数の上位値がある場合、最初の値を最初にプッシュします。）次に[`lua_pushcclosure`](/docs/lua/v5-5-1/ja/03-c-api/12-functions-and-types-pop-push/#lua_pushcclosure)を呼び出し、関数に関連付ける値の数を引数`n`で指定して、C関数を作成しスタックへプッシュします。[`lua_pushcclosure`](/docs/lua/v5-5-1/ja/03-c-api/12-functions-and-types-pop-push/#lua_pushcclosure)はこれらの値もスタックからポップします。
+C関数を作成するとき、アップバリューと呼ばれるいくつかの値を関連付けられます。関数が呼び出されるたびに、その関数はこれらのアップバリューへアクセスできます。この関連付けをCクロージャーと呼びます（[§4.2](/docs/lua/v5-5-1/ja/03-c-api/03-c-closures/#4.2)を参照）。Cクロージャーを作成するには、最初にアップバリューの初期値をスタックへプッシュする必要があります。（複数のアップバリューがある場合、最初の値を最初にプッシュします。）次に[`lua_pushcclosure`](/docs/lua/v5-5-1/ja/03-c-api/12-functions-and-types-pop-push/#lua_pushcclosure)を呼び出し、関数に関連付ける値の数を引数`n`で指定して、C関数を作成しスタックへプッシュします。[`lua_pushcclosure`](/docs/lua/v5-5-1/ja/03-c-api/12-functions-and-types-pop-push/#lua_pushcclosure)はこれらの値もスタックからポップします。
 
 `n`の最大値は255です。
 
@@ -57,7 +57,7 @@ C関数を作成するとき、上位値と呼ばれるいくつかの値を関�
 void lua_pushcfunction (lua_State *L, lua_CFunction f);
 ```
 
-C関数をスタックへプッシュします。この関数は上位値なしの[`lua_pushcclosure`](/docs/lua/v5-5-1/ja/03-c-api/12-functions-and-types-pop-push/#lua_pushcclosure)と等価です。
+C関数をスタックへプッシュします。この関数はアップバリューなしの[`lua_pushcclosure`](/docs/lua/v5-5-1/ja/03-c-api/12-functions-and-types-pop-push/#lua_pushcclosure)と等価です。
 
 ---
 
@@ -70,9 +70,9 @@ const char *lua_pushexternalstring (lua_State *L,
                 const char *s, size_t len, lua_Alloc falloc, void *ud);
 ```
 
-*外部文字列*、つまりLuaが管理しないメモリを使う文字列を作成します。ポインター`s`は文字列内容を保持する外部バッファーを指し、`len`は文字列の長さです。文字列の末尾にはゼロが必要です。つまり条件`s[len] == '\0'`を満たす必要があります。Luaのすべての文字列と同様、長さはLua整数に収まらなければなりません。
+*外部文字列*、つまりLuaが管理しないメモリを使う文字列を作成します。ポインター`s`は文字列内容を保持する外部バッファーを指し、`len`は文字列の長さです。文字列の末尾にはゼロを置くべきです。つまり、条件`s[len] == '\0'`を満たすべきです。Luaのすべての文字列と同様、長さはLua整数に収まらなければなりません。
 
-`falloc`が`NULL`でなければ、外部バッファーが不要になったときにLuaがその関数を呼び出します。この呼び出しまでバッファーの内容を変更してはいけません。関数は、指定された`ud`、ブロックとしての文字列`s`、以前のサイズとして長さに1（末尾のゼロ用）を加えた値、新しいサイズとして0を指定して呼び出されます。
+`falloc`が`NULL`でなければ、外部バッファーが不要になったときにLuaがその関数を呼び出します。この呼び出しまでバッファーの内容を変更するべきではありません。関数は、指定された`ud`、ブロックとしての文字列`s`、以前のサイズとして長さに1（末尾のゼロ用）を加えた値、新しいサイズとして0を指定して呼び出されます。
 
 外部バッファーを使う場合でも、Luaは文字列のヘッダーを割り当てる必要があります。メモリ割り当てエラーの場合、Luaはエラーを発生させる前に`falloc`を呼び出します。
 

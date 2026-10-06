@@ -24,24 +24,24 @@ This function is a generic interface to the garbage collector. It performs diffe
 - **"`restart`"**: Restarts automatic execution of the garbage collector.
 - **"`count`"**: Returns the total memory in use by Lua in Kbytes. The value has a fractional part, so that it multiplied by 1024 gives the exact number of bytes in use by Lua.
 - **"`step`"**: Performs a garbage-collection step. This option may be followed by an extra argument, an integer with the step size.
-  
+
   If the size is a positive `n`, the collector acts as if `n` new bytes have been allocated. If the size is zero, the collector performs a basic step. In incremental mode, a basic step corresponds to the current step size. In generational mode, a basic step performs a full minor collection or an incremental step, if the collector has scheduled one.
-  
+
   In incremental mode, the function returns **true** if the step finished a collection cycle. In generational mode, the function returns **true** if the step finished a major collection.
 - **"`isrunning`"**: Returns a boolean that tells whether the collector is running (i.e., not stopped).
 - **"`incremental`"**: Changes the collector mode to incremental and returns the previous mode.
 - **"`generational`"**: Changes the collector mode to generational and returns the previous mode.
 - **"`param`"**: Changes and/or retrieves the values of a parameter of the collector. This option must be followed by one or two extra arguments: The name of the parameter being changed or retrieved (a string) and an optional new value for that parameter, an integer in the range *[0,100000]*. The first argument must have one of the following values:
-  
+
   - **"`minormul`"**: The minor multiplier.
   - **"`majorminor`"**: The major-minor multiplier.
   - **"`minormajor`"**: The minor-major multiplier.
   - **"`pause`"**: The garbage-collector pause.
   - **"`stepmul`"**: The step multiplier.
   - **"`stepsize`"**: The step size.
-  
+
   The call always returns the previous value of the parameter. If the call does not give a new value, the value is left unchanged.
-  
+
   Lua stores these values in a compressed format, so, the value returned as the previous value may not be exactly the last value set.
 
 See [§2.5](/docs/lua/v5-5-1/en/02-language/05-garbage-collection/#2.5) for more details about garbage collection and some of these options.
@@ -52,37 +52,13 @@ This function should not be called by a finalizer.
 
 ## <a id="pdf-dofile"></a>`dofile ([filename])`
 
-Opens the named file and executes its content as a Lua chunk, returning all values returned by the chunk. When called without arguments,
-
-`dofile`
-
-executes the content of the standard input (
-
-`stdin`
-
-). In case of errors,
-
-`dofile`
-
-propagates the error to its caller. (That is,
-
-`dofile`
-
-does not run in protected mode.)
+Opens the named file and executes its content as a Lua chunk, returning all values returned by the chunk. When called without arguments, `dofile` executes the content of the standard input (`stdin`). In case of errors, `dofile` propagates the error to its caller. (That is, `dofile` does not run in protected mode.)
 
 ---
 
 ## <a id="pdf-error"></a>`error (message [, level])`
 
-Raises an error (see
-
-[§2.3](/docs/lua/v5-5-1/en/02-language/03-error-handling/#2.3)
-
-) with
-
-`message`
-
-as the error object. This function never returns.
+Raises an error (see [§2.3](/docs/lua/v5-5-1/en/02-language/03-error-handling/#2.3)) with `message` as the error object. This function never returns.
 
 Usually, `error` adds some information about the error position at the beginning of the message, if the message is a string. The `level` argument specifies how to get the error position. With level 1 (the default), the error position is where the `error` function was called. Level 2 points the error to where the function that called `error` was called; and so on. Passing a level 0 avoids the addition of error position information to the message.
 
@@ -90,11 +66,7 @@ Usually, `error` adds some information about the error position at the beginning
 
 ## <a id="pdf-_G"></a>`_G`
 
-A global variable (not a function) that holds the global environment (see
-
-[§2.2](/docs/lua/v5-5-1/en/02-language/02-scopes-variables-and-environments/#2.2)
-
-). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
+A global variable (not a function) that holds the global environment (see [§2.2](/docs/lua/v5-5-1/en/02-language/02-scopes-variables-and-environments/#2.2)). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
 
 ---
 
@@ -176,15 +148,7 @@ Calls the function `f` with the given arguments in *protected mode*. This means 
 
 ## <a id="pdf-print"></a>`print (···)`
 
-Receives any number of arguments and prints their values to
-
-`stdout`
-
-, converting each argument to a string following the same rules of
-
-[`tostring`](/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring)
-
-.
+Receives any number of arguments and prints their values to `stdout`, converting each argument to a string following the same rules of [`tostring`](/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring).
 
 The function `print` is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use [`string.format`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.format) and [`io.write`](/docs/lua/v5-5-1/en/05-standard-library/10-input-and-output/#pdf-io.write).
 
@@ -192,89 +156,25 @@ The function `print` is not intended for formatted output, but only as a quick w
 
 ## <a id="pdf-rawequal"></a>`rawequal (v1, v2)`
 
-Checks whether
-
-`v1`
-
-is equal to
-
-`v2`
-
-, without invoking the
-
-`__eq`
-
-metamethod. Returns a boolean.
+Checks whether `v1` is equal to `v2`, without invoking the `__eq` metamethod. Returns a boolean.
 
 ---
 
 ## <a id="pdf-rawget"></a>`rawget (table, index)`
 
-Gets the real value of
-
-`table[index]`
-
-, without using the
-
-`__index`
-
-metavalue.
-
-`table`
-
-must be a table;
-
-`index`
-
-may be any value.
+Gets the real value of `table[index]`, without using the `__index` metavalue. `table` must be a table; `index` may be any value.
 
 ---
 
 ## <a id="pdf-rawlen"></a>`rawlen (v)`
 
-Returns the length of the object
-
-`v`
-
-, which must be a table or a string, without invoking the
-
-`__len`
-
-metamethod. Returns an integer.
+Returns the length of the object `v`, which must be a table or a string, without invoking the `__len` metamethod. Returns an integer.
 
 ---
 
 ## <a id="pdf-rawset"></a>`rawset (table, index, value)`
 
-Sets the real value of
-
-`table[index]`
-
-to
-
-`value`
-
-, without using the
-
-`__newindex`
-
-metavalue.
-
-`table`
-
-must be a table,
-
-`index`
-
-any value different from
-
-**nil**
-
-and NaN, and
-
-`value`
-
-any Lua value.
+Sets the real value of `table[index]` to `value`, without using the `__newindex` metavalue. `table` must be a table, `index` any value different from **nil** and NaN, and `value` any Lua value.
 
 This function returns `table`.
 

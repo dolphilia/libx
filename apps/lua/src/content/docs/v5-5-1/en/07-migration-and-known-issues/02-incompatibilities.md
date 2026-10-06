@@ -18,7 +18,7 @@ The standard paths in the official distribution may change between versions.
 ## 8.1 – <a id="8.1"></a>Incompatibilities in the Language
 
 - The word **global** is a reserved word. Do not use it as a regular name.
-  
+
   The compilation option `LUA_COMPAT_GLOBAL` (see `luaconf.h`) makes `global` a regular word.
 - The control variable in **for** loops is read only. If you need to change it, declare a local variable with the same name in the loop body.
 - A chain of `__call` metamethods can have at most 15 objects.

@@ -31,7 +31,7 @@ void luaL_openlibs (lua_State *L);
 void luaL_openselectedlibs (lua_State *L, int load, int preload);
 ```
 
-ステート`L`で、選択した標準ライブラリを開き（ロードし）、またはプリロードします。（*プリロード*とは、ライブラリーローダーをテーブル[`package.preload`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-package.preload)へ追加し、後からプログラムがそのライブラリをrequireできるようにすることです。[`require`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-require)自体は*package*ライブラリによって提供される点に注意してください。プログラムがそのライブラリを読み込まなければ、何もrequireできません。）
+ステート`L`で、選択した標準ライブラリを開き（ロードし）、プリロードします。（*プリロード*とは、ライブラリーローダーをテーブル[`package.preload`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-package.preload)へ追加し、後からプログラムがそのライブラリをrequireできるようにすることです。[`require`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-require)自体は*package*ライブラリによって提供される点に注意してください。プログラムがそのライブラリを読み込まなければ、何もrequireできません。）
 
 整数`load`は読み込むライブラリを選びます。整数`preload`は、読み込まれなかったライブラリのうち、プリロードするものを選びます。どちらも、次の定数をビット単位ORで組み合わせたマスクです。
 

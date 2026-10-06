@@ -42,7 +42,7 @@ Luaはアロケーター関数に次の動作を仮定します。
 
 `nsize`が0なら、アロケーターは`free`のように動作し、その後`NULL`を返さなければなりません。
 
-`nsize`が0でなければ、アロケーターは`realloc`のように動作しなければなりません。特に、要求を満たせない場合に限り`NULL`を返します。
+`nsize`が0でなければ、アロケーターは`realloc`のように動作しなければなりません。特に、要求を満たせない場合には、かつその場合に限り、`NULL`を返します。
 
 次は、補助ライブラリの関数[`luaL_alloc`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_alloc)に対応する、アロケーター関数の簡単な実装です。
 
@@ -154,7 +154,7 @@ void lua_callk (lua_State *L,
                 lua_KFunction k);
 ```
 
-この関数は、呼び出された関数がyieldすることを許可する点（[§4.5](/docs/lua/v5-5-1/ja/03-c-api/07-functions-and-types-a-c/#lua_call)を参照）を除き、[`lua_call`](/docs/lua/v5-5-1/ja/03-c-api/06-handling-yields-in-c/#4.5)とまったく同様に動作します。
+この関数は、呼び出された関数がyieldすることを許可する点（[§4.5](/docs/lua/v5-5-1/ja/03-c-api/06-handling-yields-in-c/#4.5)を参照）を除き、[`lua_call`](/docs/lua/v5-5-1/ja/03-c-api/07-functions-and-types-a-c/#lua_call)とまったく同様に動作します。
 
 ---
 

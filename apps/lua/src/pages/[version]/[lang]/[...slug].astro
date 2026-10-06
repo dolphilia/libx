@@ -57,7 +57,40 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 }
 
 const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
-const { Content, headings } = await entry.render();
+const { Content, headings: markdownHeadings } = await entry.render();
+// Optional app metadata registers headings from preserved raw HTML.
+const headingModules = import.meta.glob('../../../data/document-headings.json', {
+  eager: true,
+  import: 'default',
+});
+const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<
+  string,
+  typeof markdownHeadings
+>;
+const extraModules = import.meta.glob('../../../data/document-extras.json', {
+  eager: true,
+  import: 'default',
+});
+const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<
+  string,
+  {
+    downloads?: Array<{
+      url: string;
+      labels: Record<string, string>;
+      notices: Record<string, string>;
+    }>;
+  }
+>;
+const rawHeadings = headingMap[entry.slug] ?? [];
+const trailingIndex = markdownHeadings.findIndex((heading) =>
+  ['source-and-notices', '出典と通知'].includes(heading.slug)
+);
+const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
+const headings = [
+  ...markdownHeadings.slice(0, splitIndex),
+  ...rawHeadings,
+  ...markdownHeadings.slice(splitIndex),
+];
 
 // バージョンと言語をパラメータから取得
 const { version: versionParam, lang: langParam } = Astro.params;
@@ -141,6 +174,7 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
   title={entry.data.title}
   description={entry.data.description}
   licenseSource={entry.data.licenseSource}
+  documentContext={entry.data.documentContext}
   hasToc={hasToc}
   lang={lang}
   version={version}
@@ -154,6 +188,18 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
     slot="mobile-toc"
   />
   <Content />
+  <Fragment slot="document-context">
+  {
+    (documentExtras[version]?.downloads ?? []).map((download) => (
+      <aside aria-label={download.labels[lang] ?? download.labels.en}>
+        <p>
+          <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
+        </p>
+        <p>{download.notices[lang] ?? download.notices.en}</p>
+      </aside>
+    ))
+  }
+  </Fragment>
 
   {/* ページナビゲーション */}
   <div class="navigation-container">

@@ -27,7 +27,7 @@ Precompiled chunks are *not* portable across different architectures. Moreover, 
 
 - **-l**: produce a listing of the compiled bytecode for Lua's virtual machine. Listing bytecodes is useful to learn about Lua's virtual machine. If no files are given, then **luac** loads **luac.out** and lists its contents. Use **-l** **-l** for a full listing.
 
-- **-o** *file*: output to *file*, instead of the default **luac.out**. (You can use **'-'** for standard output, but not on platforms that open standard output in text mode.) The output file may be one of the given files because all files are loaded before the output file is written. Be careful not to overwrite precious files.
+- **-o** *file*: output to *file*, instead of the default **luac.out**. (You can use **`'-'`** for standard output, but not on platforms that open standard output in text mode.) The output file may be one of the given files because all files are loaded before the output file is written. Be careful not to overwrite precious files.
 
 - **-p**: load files but do not generate any output file. Used mainly for syntax checking and for testing precompiled chunks: corrupted files will probably generate errors when loaded. If no files are given, then **luac** loads **luac.out** and tests its contents. No messages are displayed if the file loads without errors.
 
@@ -35,7 +35,7 @@ Precompiled chunks are *not* portable across different architectures. Moreover, 
 
 - **-v**: show version information.
 
-- **--**: stop handling options.
+- **`--`**: stop handling options.
 
 - **-**: stop handling options and process standard input.
 

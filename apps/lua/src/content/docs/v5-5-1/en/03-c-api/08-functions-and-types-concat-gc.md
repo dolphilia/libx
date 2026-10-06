@@ -96,7 +96,7 @@ This function performs several tasks, according to the value of the parameter `w
 - **<a id="pdf-LUA_GCINC"></a>`LUA_GCINC`**: Changes the collector to incremental mode. Returns the previous mode (`LUA_GCGEN` or `LUA_GCINC`).
 - **<a id="pdf-LUA_GCGEN"></a>`LUA_GCGEN`**: Changes the collector to generational mode. Returns the previous mode (`LUA_GCGEN` or `LUA_GCINC`).
 - **<a id="pdf-LUA_GCPARAM"></a>`LUA_GCPARAM` (int param, int val)**: Changes and/or returns the value of a parameter of the collector. If `val` is -1, the call only returns the current value. The argument `param` must have one of the following values:
-  
+
   - **<a id="pdf-LUA_GCPMINORMUL"></a>`LUA_GCPMINORMUL`**: The minor multiplier.
   - **<a id="pdf-LUA_GCPMAJORMINOR"></a>`LUA_GCPMAJORMINOR`**: The major-minor multiplier.
   - **<a id="pdf-LUA_GCPMINORMAJOR"></a>`LUA_GCPMINORMAJOR`**: The minor-major multiplier.

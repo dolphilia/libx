@@ -15,7 +15,7 @@ int luaL_ref (lua_State *L, int t);
 
 インデックス`t`のテーブルに、スタック最上部のオブジェクトの*参照*を作成して返します（そしてオブジェクトをポップします）。
 
-参照システムはテーブルの整数キーを使います。参照は一意な整数キーです。[`luaL_ref`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_ref)は返すキーの一意性を保証します。項目1は内部使用のために予約されています。[`luaL_ref`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_ref)を初めて使う前に、テーブルの整数キーは正しいシーケンス（欠落なし）を構成し、項目1の値は偽、つまりシーケンスが空なら**nil**、それ以外なら**false**であるべきです。[`luaL_ref`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_ref)を初めて使った後は、テーブルの整数キーを手動で設定してはいけません。
+参照システムはテーブルの整数キーを使います。参照は一意な整数キーです。[`luaL_ref`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_ref)は返すキーの一意性を保証します。項目1は内部使用のために予約されています。[`luaL_ref`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_ref)を初めて使う前に、テーブルの整数キーは正しいシーケンス（欠落なし）を構成し、項目1の値は偽、つまりシーケンスが空なら**nil**、それ以外なら**false**であるべきです。[`luaL_ref`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_ref)を初めて使った後は、テーブルの整数キーを手動で設定するべきではありません。
 
 `lua_rawgeti(L,t,r)`または`lua_geti(L,t,r)`を呼び出すと、参照`r`が参照するオブジェクトを取得できます。関数[`luaL_unref`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_unref)は参照を解放します。
 
@@ -61,9 +61,9 @@ void luaL_requiref (lua_State *L, const char *modname,
 void luaL_setfuncs (lua_State *L, const luaL_Reg *l, int nup);
 ```
 
-配列`l`（[`luaL_Reg`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_Reg)を参照）のすべての関数を、スタック最上部（省略可能な上位値より下、次を参照）のテーブルへ登録します。
+配列`l`（[`luaL_Reg`](/docs/lua/v5-5-1/ja/04-auxiliary-library/06-functions-and-types-ref-where/#luaL_Reg)を参照）のすべての関数を、スタック最上部（省略可能なアップバリューより下、次を参照）のテーブルへ登録します。
 
-`nup`が0でない場合、すべての関数は`nup`個の上位値を持って作成されます。この上位値は、ライブラリテーブルの上に事前にプッシュされた`nup`個の値のコピーで初期化されます。これらの値は登録後にスタックからポップされます。
+`nup`が0でない場合、すべての関数は`nup`個のアップバリューを持って作成されます。このアップバリューは、ライブラリテーブルの上に事前にプッシュされた`nup`個の値のコピーで初期化されます。これらの値は登録後にスタックからポップされます。
 
 `NULL`値を持つ関数はプレースホルダーを表し、**false**で埋められます。
 

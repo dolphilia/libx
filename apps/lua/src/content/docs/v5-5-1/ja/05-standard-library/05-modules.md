@@ -27,39 +27,11 @@ description: "パッケージとモジュール読み込みのリファレンス
 
 パッケージのコンパイル時設定の一部を表す文字列です。この文字列は次の行の列です。
 
-- 第1行はディレクトリ区切り文字列です。デフォルトはWindowsでは'
-  
-  `\`
-  
-  '、そのほかのすべてのシステムでは'
-  
-  `/`
-  
-  'です。
-- 第2行はパス内のテンプレートを区切る文字です。デフォルトは'
-  
-  `;`
-  
-  'です。
-- 第3行はテンプレート内の置換地点を示す文字列です。デフォルトは'
-  
-  `?`
-  
-  'です。
-- 第4行は、Windowsのパス内で実行ファイルのディレクトリへ置き換えられる文字列です。デフォルトは'
-  
-  `!`
-  
-  'です。
-- 第5行は、
-  
-  `luaopen_`
-  
-  関数名を構築するとき、その後のすべてのテキストを無視するための記号です。デフォルトは'
-  
-  `-`
-  
-  'です。
+- 第1行はディレクトリ区切り文字列です。デフォルトはWindowsでは'`\`'、そのほかのすべてのシステムでは'`/`'です。
+- 第2行はパス内のテンプレートを区切る文字です。デフォルトは'`;`'です。
+- 第3行はテンプレート内の置換地点を示す文字列です。デフォルトは'`?`'です。
+- 第4行は、Windowsのパス内で実行ファイルのディレクトリへ置き換えられる文字列です。デフォルトは'`!`'です。
+- 第5行は、`luaopen_`関数名を構築するとき、その後のすべてのテキストを無視するための記号です。デフォルトは'`-`'です。
 
 ---
 
@@ -67,7 +39,7 @@ description: "パッケージとモジュール読み込みのリファレンス
 
 [`require`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-require)がCローダーを検索するために使うパスを持つ文字列です。
 
-Luaは、環境変数<a id="pdf-LUA_CPATH_5_5"></a>`LUA_CPATH_5_5`、環境変数<a id="pdf-LUA_CPATH"></a>`LUA_CPATH`、または`luaconf.h`で定義されたデフォルトパスを使い、Luaパス[`package.path`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-package.cpath)と同じ方法でCパス[`package.cpath`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-package.path)を初期化します。
+Luaは、環境変数<a id="pdf-LUA_CPATH_5_5"></a>`LUA_CPATH_5_5`、環境変数<a id="pdf-LUA_CPATH"></a>`LUA_CPATH`、または`luaconf.h`で定義されたデフォルトパスを使い、Luaパス[`package.path`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-package.path)と同じ方法でCパス[`package.cpath`](/docs/lua/v5-5-1/ja/05-standard-library/05-modules/#pdf-package.cpath)を初期化します。
 
 ---
 

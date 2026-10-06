@@ -47,7 +47,7 @@ description: "テーブルライブラリのリファレンス"
 
 ## <a id="pdf-table.remove"></a>`table.remove (list [, pos])`
 
-`list`の位置`pos`にある要素を削除し、削除した要素の値を返します。`pos`が1から`#list`までの整数の場合、要素`list[pos+1],list[pos+2],···,list[#list]`を前へずらし、要素`list[#list]`を消去します。`#list`が0の場合、インデックス`pos`は0でもよく、また`#list + 1`でも構いません。
+`list`の位置`pos`にある要素を削除し、削除した要素の値を返します。`pos`が1から`#list`までの整数の場合、要素`list[pos+1],list[pos+2],···,list[#list]`を前へずらし、要素`list[#list]`を消去します。インデックス`pos`には`#list + 1`も指定でき、`#list`が0の場合は0も指定できます。
 
 `pos`のデフォルト値は`#list`なので、呼び出し`table.remove(l)`はリスト`l`の最後の要素を削除します。
 

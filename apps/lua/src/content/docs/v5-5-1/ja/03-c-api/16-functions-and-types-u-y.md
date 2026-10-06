@@ -23,7 +23,7 @@ typedef ... lua_Unsigned;
 int lua_upvalueindex (int i);
 ```
 
-実行中の関数の`i`番目の上位値を表す疑似インデックスを返します（[§4.2](/docs/lua/v5-5-1/ja/03-c-api/03-c-closures/#4.2)を参照）。`i`は範囲*[1,256]*内でなければなりません。
+実行中の関数の`i`番目のアップバリューを表す疑似インデックスを返します（[§4.2](/docs/lua/v5-5-1/ja/03-c-api/03-c-closures/#4.2)を参照）。`i`は範囲<em>[1,256]</em>内でなければなりません。
 
 ---
 
@@ -59,7 +59,7 @@ Luaが警告を発するために呼び出す警告関数の型です。第1引�
 void lua_warning (lua_State *L, const char *msg, int tocont);
 ```
 
-指定されたメッセージで警告を発します。`tocont`がtrueの呼び出しにあるメッセージは、この関数の別の呼び出しで継続する必要があります。
+指定されたメッセージで警告を発します。`tocont`がtrueの呼び出しにあるメッセージは、この関数の別の呼び出しで継続するべきです。
 
 警告の詳細については[`warn`](/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-warn)を参照してください。
 
@@ -125,6 +125,6 @@ C関数が[`lua_yieldk`](/docs/lua/v5-5-1/ja/03-c-api/16-functions-and-types-u-y
 
 コルーチンが再びresumeされると、Luaは指定された継続関数`k`を呼び出し、yieldしたC関数の実行を継続します（[§4.5](/docs/lua/v5-5-1/ja/03-c-api/06-handling-yields-in-c/#4.5)を参照）。この継続関数は以前の関数と同じスタックを受け取ります。そこではすべての結果（`nresults`）が除去され、[`lua_resume`](/docs/lua/v5-5-1/ja/03-c-api/13-functions-and-types-raw-resume/#lua_resume)へ渡された引数に置き換えられています。さらに、継続関数は[`lua_yieldk`](/docs/lua/v5-5-1/ja/03-c-api/16-functions-and-types-u-y/#lua_yieldk)へ渡された値`ctx`を受け取ります。
 
-通常、この関数は返りません。コルーチンが最終的にresumeすると、継続関数の実行を続けます。ただし、行フックまたはカウントフック（[§4.7](/docs/lua/v5-5-1/ja/03-c-api/17-debug-interface/#4.7)を参照）の内部からこの関数を呼び出すという特殊な場合があります。この場合、継続なし（おそらく[`lua_yield`](/docs/lua/v5-5-1/ja/03-c-api/16-functions-and-types-u-y/#lua_yield)の形式）、結果なしで`lua_yieldk`を呼び出し、フックは呼び出し直後に返るべきです。Luaはyieldし、コルーチンが再びresumeすると、フックを発動させた（Lua）関数の通常の実行を継続します。
+通常、この関数は返りません。コルーチンが最終的にresumeすると、継続関数の実行を続けます。ただし、行フックまたはカウントフック（[§4.7](/docs/lua/v5-5-1/ja/03-c-api/17-debug-interface/#4.7)を参照）の内部からこの関数を呼び出すという特殊な場合があります。この場合、継続なし（おそらく[`lua_yield`](/docs/lua/v5-5-1/ja/03-c-api/16-functions-and-types-u-y/#lua_yield)の形式）、結果なしで`lua_yieldk`を呼び出すべきです。また、フックは呼び出し直後に返るべきです。Luaはyieldし、コルーチンが再びresumeすると、フックを発動させた（Lua）関数の通常の実行を継続します。
 
 継続関数を持たない保留中のC呼び出し（*C呼び出し境界*と呼びます）があるスレッドから呼び出した場合、またはresume内で実行されていないスレッド（通常はメインスレッド）から呼び出した場合、この関数はエラーを発生させる可能性があります。
