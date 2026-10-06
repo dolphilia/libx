@@ -1,0 +1,971 @@
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>Click to return to the <a href="index.html">uthash home page</a>.</p></div>
+<div class="admonitionblock">
+<table><tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">This ChangeLog may be incomplete and/or incorrect. See the git commit log.</td>
+</tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_2_4_0_2026_06_25">Version 2.4.0 (2026-06-25)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+add utarray_replace (thanks, xunicatt!)
+</p>
+</li>
+<li>
+<p>
+add LL_REVERSE/DL_REVERSE/CDL_REVERSE (thanks, xunicatt!)
+</p>
+</li>
+<li>
+<p>
+add CDL_CONCAT (thanks, xunicatt!)
+</p>
+</li>
+<li>
+<p>
+remove <code>oom</code> (deprecated in v2.2.0) in favor of <code>utarray_oom</code>
+</p>
+</li>
+<li>
+<p>
+remove HASH_DEFINE_OWN_STDINT (added in v2.2.0), on the theory nobody uses it
+</p>
+</li>
+<li>
+<p>
+use __typeof on the MCST Elbrus C Compiler (thanks, utf-4096!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_2_3_0_2021_02_25">Version 2.3.0 (2021-02-25)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+remove HASH_FCN; the HASH_FUNCTION and HASH_KEYCMP macros now behave similarly
+</p>
+</li>
+<li>
+<p>
+remove uthash_memcmp (deprecated in v2.1.0) in favor of HASH_KEYCMP
+</p>
+</li>
+<li>
+<p>
+silence -Wswitch-default warnings (thanks, Olaf Bergmann!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_2_2_0_2020_12_17">Version 2.2.0 (2020-12-17)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+add HASH_NO_STDINT for platforms without C99 &lt;stdint.h&gt;
+</p>
+</li>
+<li>
+<p>
+silence many -Wcast-qual warnings (thanks, Olaf Bergmann!)
+</p>
+</li>
+<li>
+<p>
+skip hash computation when finding in an empty hash (thanks, Huansong Fu!)
+</p>
+</li>
+<li>
+<p>
+rename oom to utarray_oom, in utarray.h (thanks, Hong Xu!)
+</p>
+</li>
+<li>
+<p>
+rename oom to utstring_oom, in utstring.h (thanks, Hong Xu!)
+</p>
+</li>
+<li>
+<p>
+remove MurmurHash/HASH_MUR
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_2_1_0_2018_12_20">Version 2.1.0 (2018-12-20)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+silence some Clang static analysis warnings
+</p>
+</li>
+<li>
+<p>
+add LL_INSERT_INORDER and LL_LOWER_BOUND etc (thanks, Jeffrey Lovitz and Mattias Eriksson!)
+</p>
+</li>
+<li>
+<p>
+add uthash_bzero for platforms without &lt;string.h&gt;
+</p>
+</li>
+<li>
+<p>
+fix a missing HASH_BLOOM_ADD in HASH_SELECT (thanks, Pawel Veselov!)
+</p>
+</li>
+<li>
+<p>
+permit malloc failure to be recoverable via HASH_NONFATAL_OOM (thanks, Pawel Veselov!)
+</p>
+</li>
+<li>
+<p>
+avoid repeated calls to uthash_strlen in HASH_FIND_STR
+</p>
+</li>
+<li>
+<p>
+rename uthash_memcmp to HASH_KEYCMP, leaving the old name for compatibility
+</p>
+</li>
+<li>
+<p>
+add utstack.h
+</p>
+</li>
+<li>
+<p>
+remove libut
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_2_0_2_2017_03_02">Version 2.0.2 (2017-03-02)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+fix segfault in HASH_ADD_INORDER etc (thanks, Yana Kireyonok!)
+</p>
+</li>
+<li>
+<p>
+remove spurious cast to unsigned in utstring_len (thanks, Michal Sestrienka!)
+</p>
+</li>
+<li>
+<p>
+add uthash_memcmp and uthash_strlen for platforms without &lt;stdlib.h&gt; (thanks, Pawel Veselov!)
+</p>
+</li>
+<li>
+<p>
+fix a C++ incompatibility in utringbuffer
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_2_0_1_2016_07_05">Version 2.0.1 (2016-07-05)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+in-order insertion macros HASH_ADD_INORDER etc (thanks, Thilo Schulz!)
+</p>
+</li>
+<li>
+<p>
+by-hashvalue insertion macros HASH_ADD_BYHASHVALUE etc
+</p>
+</li>
+<li>
+<p>
+during key comparison, check hashvalue before doing a full memcmp
+</p>
+</li>
+<li>
+<p>
+add utringbuffer.h
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_9_1_2014_11_18">Version 1.9.9.1 (2014-11-18)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+inclusion of experimental libut bundle with utvector in opt/
+</p>
+</li>
+<li>
+<p>
+use shift in Bernstein hash instead of multiply (thanks, Jimmy Zhuo!)
+</p>
+</li>
+<li>
+<p>
+switch ssize_t types in utarray/utstring to size_t (thanks, Hong Xu!)
+</p>
+</li>
+<li>
+<p>
+fix utstring pointer math on &gt;4GB strings (thanks, Thomas Bottesch!)
+</p>
+</li>
+<li>
+<p>
+change FNV hash to FNV-1a varation (thanks, dwest1975!)
+</p>
+</li>
+<li>
+<p>
+fix bug in HASH_REPLACE_STR (thanks, Ilya Kaliman!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_9_2014_02_25">Version 1.9.9 (2014-02-25)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+made HASH_ADD_STR compatible with char* or char[] (thanks, Samuel Thibault!)
+</p>
+</li>
+<li>
+<p>
+fixed header inclusion of sys/types.h for ssize_t (thanks, Fernando Campos!)
+</p>
+</li>
+<li>
+<p>
+added LL_COUNT/DL_COUNT/CDL_COUNT (thansk, Paul Praet!)
+</p>
+</li>
+<li>
+<p>
+added LRU cache example in <code>tests/lru_cache</code> (thanks, Oliver Lorenz!)
+</p>
+</li>
+<li>
+<p>
+fix LL_DELETE2 for VS2008 (thanks, Greg Davydouski!)
+</p>
+</li>
+<li>
+<p>
+fix missing argument in <code>HASH_REPLACE_STR</code> (thanks, Alex!)
+</p>
+</li>
+<li>
+<p>
+bump version number in source files to match docs (thanks, John Crow!)
+</p>
+</li>
+<li>
+<p>
+add <code>HASH_OVERHEAD</code> macro to get overhead size for hash table
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_8_2013_03_10">Version 1.9.8 (2013-03-10)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<code>HASH_REPLACE</code> now in uthash (thanks, Nick Vatamaniuc!)
+</p>
+</li>
+<li>
+<p>
+fixed clang warnings (thanks wynnw!)
+</p>
+</li>
+<li>
+<p>
+fixed <code>utarray_insert</code> when inserting past array end (thanks Rob Willett!)
+</p>
+</li>
+<li>
+<p>
+you can now find <a href="http://troydhanson.github.io/uthash/">uthash on GitHub</a>
+</p>
+</li>
+<li>
+<p>
+there’s a <a href="https://groups.google.com/d/forum/uthash">uthash Google Group</a>
+</p>
+</li>
+<li>
+<p>
+uthash has been downloaded 29,000+ times since 2006 on SourceForge
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_7_2012_10_09">Version 1.9.7 (2012-10-09)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+utstring now supports substring search using <code>utstring_find</code> (thanks, Joe Wei!)
+</p>
+</li>
+<li>
+<p>
+utlist now supports element <em>prepend</em> and <em>replace</em> (thanks, Zoltán Lajos Kis!)
+</p>
+</li>
+<li>
+<p>
+utlist element prev/next fields can now have any names (thanks, Pawel S. Veselov!)
+</p>
+</li>
+<li>
+<p>
+uthash cast quiets a clang warning (thanks, Roman Divacky and Baptiste Daroussin!)
+</p>
+</li>
+<li>
+<p>
+uthash userguide example shows how to check key uniqueness (thanks, Richard Cook!)
+</p>
+</li>
+<li>
+<p>
+uthash HASH_MUR compiles under MSVC++ 10 in C mode (thanks, Arun Kirthi Cherian!)
+</p>
+</li>
+<li>
+<p>
+<code>utstring_printf</code> now supports format checking (thanks, Donald Carr!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_6_2012_04_28">Version 1.9.6 (2012-04-28)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+add utarray_prev (thanks, Ben Hiett!)
+</p>
+</li>
+<li>
+<p>
+add parens/casts for greater compatibility (thanks, Atis, Debasis Ganguly, and Steve McClellan!)
+</p>
+</li>
+<li>
+<p>
+added ifndef to uthash_malloc and related hooks (thanks, Holger Machens!)
+</p>
+</li>
+<li>
+<p>
+edit examples so they do not leak memory (thanks, 任晶磊!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_5_2011_11_16">Version 1.9.5 (2011-11-16)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+added <code>utarray_renew</code>
+</p>
+</li>
+<li>
+<p>
+fixed memory leak in <code>uthash_clear</code> when using Bloom filter (thanks, Jan Hättig!)
+</p>
+</li>
+<li>
+<p>
+utarray now copies the UT_icd on array creation rather than storing a pointer
+</p>
+</li>
+<li>
+<p>
+add parentheses to <code>HASH_ADD</code> to fix preprocessing of certain arguments (thanks, Aaron Rosen!)
+</p>
+</li>
+<li>
+<p>
+more parenthesizations for greater macro argument flexibility
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_4_2011_06_05">Version 1.9.4 (2011-06-05)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+uthash now supports MurmurHash v3
+</p>
+</li>
+<li>
+<p>
+utlist now includes concatenation macros (<code>LL_CONCAT</code> and <code>DL_CONCAT</code>)
+</p>
+</li>
+<li>
+<p>
+utarray now supports binary search (<code>utarray_find</code>)
+</p>
+</li>
+<li>
+<p>
+utstring now supports a new-or-clear-existing macro (<code>utstring_renew</code>)
+</p>
+</li>
+<li>
+<p>
+documented technique for a multi-level hash table
+</p>
+</li>
+<li>
+<p>
+clarified scope requirements for <code>UT_icd</code> in the utarray documentation
+</p>
+</li>
+<li>
+<p>
+fixed termination when <code>utstring_clear</code> is followed by <code>utstring_body</code>
+</p>
+</li>
+<li>
+<p>
+fixed utarray_inserta macro when used with complex arguments
+</p>
+</li>
+<li>
+<p>
+on Visual Studio define missing type <code>uint8_t</code>
+</p>
+</li>
+<li>
+<p>
+Debian/Ubuntu include uthash in the package <code>uthash-dev</code>.
+</p>
+</li>
+<li>
+<p>
+uthash has been downloaded 16,211 times.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Thanks to Yu Feng, Richard Cook, Dino Ciuffetti, Chris Groer, and Arun Cherian
+for feedback and fixes in this release!</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_3_2010_10_31">Version 1.9.3 (2010-10-31)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+fix an <code>ifdef</code> for compatibility with Intel compiler (thanks, degski!)
+</p>
+</li>
+<li>
+<p>
+fix <code>HASH_ITER</code> macro to satisfy C++ casting rules (thanks, Erik Bai!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_2_2010_10_04">Version 1.9.2 (2010-10-04)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+new <code>HASH_ITER</code> macro for more convenient deletion-safe iteration
+</p>
+</li>
+<li>
+<p>
+<code>hashscan</code> can now run on FreeBSD 8.1 and later (thanks, Markus Gebert!)
+</p>
+</li>
+<li>
+<p>
+More parens to evaluate complex macro arguments properly (thanks, ngg!)
+</p>
+</li>
+<li>
+<p>
+Add sz parameter to the <code>uthash_free</code> hook for platforms that do their own memory management. Hopefully this minor API change doesn’t cause too much breakage for people. (thanks, Niall Douglas!)
+</p>
+</li>
+<li>
+<p>
+uthash has been downloaded 12,294 times
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_1_2010_05_15">Version 1.9.1 (2010-05-15)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Fix a redefinition warning when using <code>uthash.h</code> and <code>utstring.h</code> together
+</p>
+</li>
+<li>
+<p>
+Fix a bug in <code>utstring_init</code>
+</p>
+</li>
+<li>
+<p>
+Added <code>HASH_FIND_PTR</code> and <code>HASH_ADD_PTR</code> (thanks, Niall Douglas!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_9_2010_03_31">Version 1.9 (2010-03-31)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+uthash now supports Visual Studio 2008 and 2010 in C or C++ code!
+</p>
+</li>
+<li>
+<p>
+new headers <a href="utarray.html">utarray.h</a> and <a href="utstring.html">utstring.h</a>
+        are now included. These implement dynamic arrays and strings using macros
+</p>
+</li>
+<li>
+<p>
+<a href="utlist.html">utlist.h</a> now has deletion-safe iterators and search macros
+</p>
+</li>
+<li>
+<p>
+the test suite now runs under Visual Studio (thanks again degski!)
+</p>
+</li>
+<li>
+<p>
+special thanks for suggesting utarray and utlist features to Charalampos P.!
+</p>
+</li>
+<li>
+<p>
+uthash has been downloaded 9,616 times
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_8_2009_09_08">Version 1.8 (2009-09-08)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Added the <code>hashscan</code> utility that can report on the size and quality of
+  hash tables in a running process (Linux-only)
+</p>
+</li>
+<li>
+<p>
+Added Bloom filter support. This has the potential to speed up certain
+  types of programs that look up non-existant keys in sufficient numbers.
+</p>
+</li>
+<li>
+<p>
+Restored the MurmurHash, which can once again be used, if an additional
+  symbol is defined. This is a "safety" by which the user declares they
+  understand that <code>-fno-strict-aliasing</code> flag must be used if they are
+  using MurmurHash under gcc with optimization.
+</p>
+</li>
+<li>
+<p>
+Unified the bucket/table malloc hooks; now there is only one malloc hook
+</p>
+</li>
+<li>
+<p>
+Re-organized the manual into a main section and advanced topics section
+</p>
+</li>
+<li>
+<p>
+Fixed a bug in <code>utlist.h</code> where sorting a singly-linked list threw a
+  compile-time error.
+</p>
+</li>
+<li>
+<p>
+Fixed a bug in <code>utlist.h</code> where a doubly-linked list that is sorted
+  did not maintain the special <code>head-&gt;prev</code> pointer back to the list tail.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_7_2009_06_11">Version 1.7 (2009-06-11)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+The MurmurHash has been removed, and Jenkin’s hash is once again the default.
+  While MurmurHash performed well, it’s unsafe with regard to the strict
+  aliasing rule. This results in incorrect code when compiled with optimization.
+  It’s not possible to enable <code>-fno-strict-aliasing</code> from within a header file.
+</p>
+</li>
+<li>
+<p>
+The linked list macros in <code>utlist.h</code> now comply with the strict-aliasing
+  rule so they generate correct code under high optimization levels (O2 or O3).
+  The use of the <code>__typeof__</code> extension, which was originally a GNU extension,
+  may reduce portability to other compilers that do not support this extension.
+  This extension is used in the singly-linked list macros and the sort macros.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_6_2009_05_08">Version 1.6 (2009-05-08)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Special thanks to Alfred Heisner for contributing several enhancements:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Support for two new hash functions:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+the Paul Hsieh hash function (<code>HASH_SFH</code>)
+</p>
+</li>
+<li>
+<p>
+Austin Appleby’s MurmurHash function (<code>HASH_MUR</code>)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Because of its excellent performance, MurmurHash is now the default hash function.
+</p>
+</li>
+<li>
+<p>
+<code>keystats</code> now has much better elapsed time accuracy under Cygwin and MinGW
+</p>
+</li>
+<li>
+<p>
+fixed casting in <code>HASH_FNV</code>, <code>HASH_SAX</code> and <code>HASH_OAT</code> for non-char keys
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This release also includes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a new <code>HASH_CLEAR</code> operation clears a hash table in one step.
+</p>
+</li>
+<li>
+<p>
+a new <code>HASH_SELECT</code> operation inserts those elements from one hash that
+  satisfy a given condition into another hash. The selected items have
+  dual presence in both hash tables. For example a game could select the
+  visible polygons from a hash of all polygons.
+</p>
+</li>
+<li>
+<p>
+fixed a compile-time error which occurred if the final argument to
+  <code>HASH_ADD_KEYPTR</code> was a pointer to an array member like <code>&amp;a[i]</code>
+</p>
+</li>
+<li>
+<p>
+added another test script <code>tests/all_funcs</code> which executes the test suite
+  using every supported hash function
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>And lastly,</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a new, separate header called <a href="utlist.html">utlist.h</a> is included which
+  provides <em>linked list macros</em> for C structures, similar in style to the
+  uthash macros
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_5_2009_02_19">Version 1.5 (2009-02-19)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+now thread-safe for concurrent readers
+</p>
+</li>
+<li>
+<p>
+use scratch variables on stack rather than in table (thanks, Petter Arvidsson!).
+  This change made HASH_FIND about 13% faster and enabled reader concurrency.
+</p>
+</li>
+<li>
+<p>
+made <a href="license.html">BSD license</a> terms even more permissive
+</p>
+</li>
+<li>
+<p>
+added <a href="userguide.pdf">PDF version</a> of User Guide
+</p>
+</li>
+<li>
+<p>
+added <a href="http://troydhanson.wordpress.com/feed/">update news</a> <span class="image">
+<img src="rss.png" alt="(RSS)">
+</span>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_4_2008_09_23">Version 1.4 (2008-09-23)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Add <code>HASH_COUNT</code> for counting items in the hash
+</p>
+</li>
+<li>
+<p>
+Compatibility with C++. Satisfy additional casting requirements.
+  Also in the <code>tests/</code> directory, running <code>make cplusplus</code> now compiles
+  all the test programs with the C++ compiler.
+</p>
+</li>
+<li>
+<p>
+Eliminate <code>elmt</code> pointer from the UT_hash_handle. Calculate elmt
+  from hash handle address by subtracting <code>hho</code> (hash handle offset).
+</p>
+</li>
+<li>
+<p>
+Contributed by L.S.Chin:
+  Cast <code>void*</code> to char* before pointer arithmetic to suppress compiler
+  warnings. We assume compilers abide to C standards which impose
+  requirement that <code>sizeof(void*) == sizeof(char*)</code>.
+</p>
+</li>
+<li>
+<p>
+Return meaningful exit status from do_tests per Tiago Cunha,
+  so that package manager-based install can verify tests are successful
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_3_2008_07_27">Version 1.3 (2008-07-27)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+use integer-only math-- no floating point! Support FPU-less CPU’s.
+</p>
+</li>
+<li>
+<p>
+eliminate <code>hash_q</code> metric, which measured the fraction of items with
+  non-ideal chain positions. We only need to know if this fraction
+  is below 0.5. This is now determined using fast bitwise tests.
+</p>
+</li>
+<li>
+<p>
+when an item is added to the hash, calculate the key’s hash value
+  upfront and store it, instead of recomputing it as needed. This hashv
+  is stored in the hash handle. Potentially major speed benefit for
+  bucket expansion algorithm. Deleting is marginally improved too.
+</p>
+</li>
+<li>
+<p>
+fixed a minor bug in the calculation of the max ideal chain length;
+  line 446 in v1.2 erroneously calculated a/b*2 instead of a/(b*2).
+  The effect of this bug was that bucket expansion could occur more
+  readily because the per-bucket <em>max chain length multiplier factor</em>
+  (which delays bucket expansion when certain buckets are overused)
+  was set to a lower, expansion-favoring value than intended.
+</p>
+</li>
+<li>
+<p>
+improved source commenting and improved variable names in structures
+</p>
+</li>
+<li>
+<p>
+remove <code>HASH_JSW</code>. Lengthy random number array made code less readable
+</p>
+</li>
+<li>
+<p>
+add <code>HASH_SRT(hh,hash,cmp)</code> as a generalized <code>HASH_SORT(hash,cmp)</code>.
+  It was an omission in uthash 1.2 that there was no sort macro for
+  hash handles with names other than hh.
+</p>
+</li>
+<li>
+<p>
+Corrected <code>HASH_FSCK</code> so it works with any name for the hash handle.
+</p>
+</li>
+<li>
+<p>
+behave properly in pathological <code>HASH_DEL(a,a)</code> case where the same
+  variable references the head and the deletee (advancing the head
+  then loses the correct reference to the deletee); fix by using
+  scratch area in the hash table to store deletee hash handle.
+</p>
+</li>
+<li>
+<p>
+made tests runnable on MinGW
+</p>
+</li>
+<li>
+<p>
+3000+ downloads since uthash-1.0
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_2_2006_11_22">Version 1.2 (2006-11-22)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+new <code>HASH_SORT</code> macro
+</p>
+</li>
+<li>
+<p>
+Cygwin support
+</p>
+</li>
+<li>
+<p>
+User Guide now features a clickable Table of Contents.
+  (The technique for generating the TOC on the browser was contributed
+  back to the AsciiDoc project and incorporated into AsciiDoc v8.1.0).
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_1_2006_06_28">Version 1.1 (2006-06-28)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+uthash-1.1 released
+</p>
+</li>
+<li>
+<p>
+supports several built-in user-selectable hash functions
+</p>
+</li>
+<li>
+<p>
+new keystats utility quantifies performance of hash functions
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_0_2006_06_02">Version 1.0 (2006-06-02)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Initial release
+</p>
+</li>
+</ul></div>
+</div>
+</div>

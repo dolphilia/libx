@@ -1,0 +1,9 @@
+[
+  "    .SECONDEXPANSION:\n    ONEVAR = onefile\n    TWOVAR = twofile\n    myfile: $(ONEVAR) $$(TWOVAR)\n\n",
+  "    .SECONDEXPANSION:\n    AVAR = top\n    onefile: $(AVAR)\n    twofile: $$(AVAR)\n    AVAR = bottom\n\n",
+  "    .SECONDEXPANSION:\n    main_OBJS := main.o try.o test.o\n    lib_OBJS := lib.o api.o\n\n    main lib: $$($$@_OBJS)\n\n",
+  "    main_SRCS := main.c try.c test.c\n    lib_SRCS := lib.c api.c\n\n    .SECONDEXPANSION:\n    main lib: $$(patsubst %.c,%.o,$$($$@_SRCS))\n\n",
+  "    .SECONDEXPANSION:\n\n    foo: foo.1 bar.1 $$< $$^ $$+    # line #1\n\n    foo: foo.2 bar.2 $$< $$^ $$+    # line #2\n\n    foo: foo.3 bar.3 $$< $$^ $$+    # line #3\n\n",
+  "    .SECONDEXPANSION:\n\n    foo: bar\n\n    foo foz: fo%: bo%\n\n    %oo: $$< $$^ $$+ $$*\n\n",
+  "    .SECONDEXPANSION:\n\n    /tmp/foo.o:\n\n    %.o: $$(addsuffix /%.c,foo bar) foo.h\n            @echo $^\n\n"
+]

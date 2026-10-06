@@ -1,11 +1,11 @@
 ---
 title: "Awesome Cordova"
-description: "Awesome Cordovaの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "ハイブリッドアプリ向けのCordova資料を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Cordova
 
-Awesome Cordovaの収録案内です。このスナップショットでは上流本文を転載していません。
+ハイブリッドアプリ向けのJavaScript APIであるCordovaの資料を探すための案内です。このスナップショットにはAwesome Cordovaの本文を転載していません。
 
-- [元のリポジトリを開く](https://github.com/busterc/awesome-cordova/blob/47533432ce5a3f07aec6c05a65d19f0dafd9b68b/README.md)
+- [元のリストを読む](https://github.com/busterc/awesome-cordova/blob/47533432ce5a3f07aec6c05a65d19f0dafd9b68b/README.md)

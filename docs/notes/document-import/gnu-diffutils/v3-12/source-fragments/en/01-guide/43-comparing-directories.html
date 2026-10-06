@@ -1,0 +1,85 @@
+<div class="gnu-diffutils-original-content" id="Comparing-Directories">
+<h2 class="chapter" id="Comparing-Directories-1"><span>4 Comparing Directories</span></h2>
+<a class="index-entry-id" id="index-LC_005fCOLLATE"></a>
+<p>You can use <code class="command">diff</code> to compare some or all of the files in two
+directory trees.  When both file name arguments to <code class="command">diff</code> are
+directories, it compares each file that is contained in both
+directories, examining file names in alphabetical order as specified by
+the <code class="env">LC_COLLATE</code> locale category.  Normally
+<code class="command">diff</code> is silent about pairs of files that contain no differences,
+but if you use the <samp class="option">--report-identical-files</samp> (<samp class="option">-s</samp>) option,
+it reports pairs of identical files.  Normally <code class="command">diff</code> reports
+subdirectories common to both directories without comparing
+subdirectories’ files, but if you use the <samp class="option">-r</samp> or
+<samp class="option">--recursive</samp> option, it compares every corresponding pair of files
+in the directory trees, as many levels deep as they go.
+</p>
+<p>If only one file exists, <code class="command">diff</code> normally does not show its
+contents; it merely reports that one file exists but the other does
+not.  You can make <code class="command">diff</code> act as though the missing file is
+empty, so that it outputs the entire contents of the file that
+actually exists.  (It is output as either an insertion or a
+deletion, depending on whether the missing file is in the first or the
+second position.)  To do this, use the <samp class="option">--new-file</samp>
+(<samp class="option">-N</samp>) option.  This option affects command-line arguments as
+well as files found via directory traversal; for example, ‘<samp class="samp">diff
+-N a b</samp>’ treats <samp class="file">a</samp> as empty if <samp class="file">a</samp> does not exist but
+<samp class="file">b</samp> does.
+</p>
+<p>If the older directory contains large files that are not in
+the newer directory, you can make the patch smaller by using the
+<samp class="option">--unidirectional-new-file</samp> option instead of <samp class="option">-N</samp>.
+This option is like <samp class="option">-N</samp> except that it inserts the contents only
+of files that appear in the second directory but not the first (that is,
+files that were added).  At the top of the patch, write instructions for
+the user applying the patch to remove the files that were deleted before
+applying the patch.  See <a class="xref" href="#Making-Patches">Tips for Making and Using Patches</a>, for more discussion of
+making patches for distribution.
+</p>
+<p>To ignore some files while comparing directories, use the
+<samp class="option">--exclude=<var class="var">pattern</var></samp> (<samp class="option">-x <var class="var">pattern</var></samp>) option.
+This option
+ignores any files or subdirectories whose base names match the shell
+pattern <var class="var">pattern</var>.  Unlike in the shell, a period at the start of
+the base of a file name matches a wildcard at the start of a pattern.
+You should enclose <var class="var">pattern</var> in quotes so that the shell does not
+expand it.  For example, the option <samp class="option">-x '*.[ao]'</samp> ignores any file
+whose name ends with ‘<samp class="samp">.a</samp>’ or ‘<samp class="samp">.o</samp>’.
+</p>
+<p>This option accumulates if you specify it more than once.  For example,
+using the options <samp class="option">-x 'RCS' -x '*,v'</samp> ignores any file or
+subdirectory whose base name is ‘<samp class="samp">RCS</samp>’ or ends with ‘<samp class="samp">,v</samp>’.
+</p>
+<p>If you need to give this option many times, you can instead put the
+patterns in a file, one pattern per line, and use the
+<samp class="option">--exclude-from=<var class="var">file</var></samp> (<samp class="option">-X <var class="var">file</var></samp>) option.
+Trailing white space and empty lines are ignored in the pattern file.
+</p>
+<p>If you have been comparing two directories and stopped partway through,
+later you might want to continue where you left off.  You can do this by
+using the <samp class="option">--starting-file=<var class="var">file</var></samp> (<samp class="option">-S <var class="var">file</var></samp>)
+option.  This compares only the file <var class="var">file</var> and all alphabetically
+later files in the topmost directory level.
+</p>
+<p>If two directories differ only in that file names are lower case in
+one directory and upper case in the upper, <code class="command">diff</code> normally
+reports many differences because it compares file names in a
+case sensitive way.  With the <samp class="option">--ignore-file-name-case</samp> option,
+<code class="command">diff</code> ignores case differences in file names, so that for example
+the contents of the file <samp class="file">Tao</samp> in one directory are compared to
+the contents of the file <samp class="file">TAO</samp> in the other.  The
+<samp class="option">--no-ignore-file-name-case</samp> option cancels the effect of the
+<samp class="option">--ignore-file-name-case</samp> option, reverting to the default
+behavior.
+</p>
+<p>If an <samp class="option">--exclude=<var class="var">pattern</var></samp> (<samp class="option">-x <var class="var">pattern</var></samp>) option,
+or an <samp class="option">--exclude-from=<var class="var">file</var></samp> (<samp class="option">-X <var class="var">file</var></samp>) option,
+is specified while the <samp class="option">--ignore-file-name-case</samp> option is in
+effect, case is ignored when excluding file names matching the
+specified patterns.
+</p>
+<p>To tell <code class="command">diff</code> not to follow a symbolic link, use the
+<samp class="option">--no-dereference</samp> option.
+</p>
+<hr/>
+</div>

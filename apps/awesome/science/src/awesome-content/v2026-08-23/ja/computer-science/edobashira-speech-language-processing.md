@@ -1,11 +1,11 @@
 ---
 title: "Awesome Speech and Natural Language Processing"
-description: "Awesome Speech and Natural Language Processingの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "音声処理と自然言語処理の資料を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Speech and Natural Language Processing
 
-Awesome Speech and Natural Language Processingの収録案内です。このスナップショットでは上流本文を転載していません。
+音声処理と自然言語処理に関する資料を探すためのSpeech and Natural Language Processingへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/edobashira/speech-language-processing/blob/d1d815f2231302430c741c7429f70e7d9428ebbf/README.rst)
+- [元のリストを読む](https://github.com/edobashira/speech-language-processing/blob/d1d815f2231302430c741c7429f70e7d9428ebbf/README.rst)

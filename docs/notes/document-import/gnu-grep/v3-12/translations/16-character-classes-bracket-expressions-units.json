@@ -1,0 +1,273 @@
+{
+  "slug": "16-character-classes-bracket-expressions",
+  "bodySHA256": "72aaaa0d05a4b23acf9e73eb714c3fd9acd29c25aae8c6bdc197bcbcd5788a12",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧3.2 Character Classes and Bracket Expressions⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Character-Classes-and-Bracket-Expressions-1\"><span>3.2 Character Classes and Bracket Expressions</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "A ⟦0⟧bracket expression⟦1⟧ is a list of characters enclosed by ‘⟦2⟧’ and ‘⟦3⟧’. It matches any single character in that list. If the first character of the list is the caret ‘⟦4⟧’, then it matches any character ⟦5⟧not⟦6⟧ in the list, and it is unspecified whether it matches an encoding error. For example, the regular expression ‘⟦7⟧’ matches any single digit, whereas ‘⟦8⟧’ matches any single character that is not an opening or closing parenthesis, and might or might not match an encoding error.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"dfn\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<samp class=\"samp\">[</samp>",
+        "⟦3⟧": "<samp class=\"samp\">]</samp>",
+        "⟦4⟧": "<samp class=\"samp\">^</samp>",
+        "⟦5⟧": "<strong class=\"strong\">",
+        "⟦6⟧": "</strong>",
+        "⟦7⟧": "<samp class=\"samp\">[0123456789]</samp>",
+        "⟦8⟧": "<samp class=\"samp\">[^()]</samp>"
+      },
+      "sourceHTML": "<p>A <em class=\"dfn\">bracket expression</em> is a list of characters enclosed by ‘<samp class=\"samp\">[</samp>’ and\n‘<samp class=\"samp\">]</samp>’.\nIt matches any single character in that list.\nIf the first character of the list is the caret ‘<samp class=\"samp\">^</samp>’,\nthen it matches any character <strong class=\"strong\">not</strong> in the list,\nand it is unspecified whether it matches an encoding error.\nFor example, the regular expression\n‘<samp class=\"samp\">[0123456789]</samp>’ matches any single digit,\nwhereas ‘<samp class=\"samp\">[^()]</samp>’ matches any single character that is not\nan opening or closing parenthesis, and might or might not match an\nencoding error.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Within a bracket expression, a ⟦0⟧range expression⟦1⟧ consists of two characters separated by a hyphen. In the default C locale, it matches any single character that appears between the two characters in ASCII order, inclusive. For example, ‘⟦2⟧’ is equivalent to ‘⟦3⟧’. In other locales the behavior is unspecified: ‘⟦4⟧’ might be equivalent to ‘⟦5⟧’ or ‘⟦6⟧’ or some other bracket expression, or it might fail to match any character, or the set of characters that it matches might be erratic, or it might be invalid. To obtain the traditional interpretation of bracket expressions, you can use the ‘⟦7⟧’ locale by setting the ⟦8⟧ environment variable to the value ‘⟦9⟧’.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"dfn\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<samp class=\"samp\">[a-d]</samp>",
+        "⟦3⟧": "<samp class=\"samp\">[abcd]</samp>",
+        "⟦4⟧": "<samp class=\"samp\">[a-d]</samp>",
+        "⟦5⟧": "<samp class=\"samp\">[abcd]</samp>",
+        "⟦6⟧": "<samp class=\"samp\">[aBbCcDd]</samp>",
+        "⟦7⟧": "<samp class=\"samp\">C</samp>",
+        "⟦8⟧": "<code class=\"env\">LC_ALL</code>",
+        "⟦9⟧": "<samp class=\"samp\">C</samp>"
+      },
+      "sourceHTML": "<p>Within a bracket expression, a <em class=\"dfn\">range expression</em> consists of two\ncharacters separated by a hyphen.\nIn the default C locale, it matches any single character that appears\nbetween the two characters in ASCII order, inclusive.\nFor example, ‘<samp class=\"samp\">[a-d]</samp>’ is equivalent to ‘<samp class=\"samp\">[abcd]</samp>’.\nIn other locales the behavior is unspecified:\n‘<samp class=\"samp\">[a-d]</samp>’ might be equivalent to\n‘<samp class=\"samp\">[abcd]</samp>’ or ‘<samp class=\"samp\">[aBbCcDd]</samp>’ or some other bracket expression,\nor it might fail to match any character, or the set of\ncharacters that it matches might be erratic, or it might be invalid.\nTo obtain the traditional interpretation\nof bracket expressions, you can use the ‘<samp class=\"samp\">C</samp>’ locale by setting the\n<code class=\"env\">LC_ALL</code> environment variable to the value ‘<samp class=\"samp\">C</samp>’.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Finally, certain named classes of characters are predefined within bracket expressions, as follows. Their interpretation depends on the ⟦0⟧ locale; for example, ‘⟦1⟧’ means the character class of numbers and letters in the current locale.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">LC_CTYPE</code>",
+        "⟦1⟧": "<samp class=\"samp\">[[:alnum:]]</samp>"
+      },
+      "sourceHTML": "<p>Finally, certain named classes of characters are predefined within\nbracket expressions, as follows.\nTheir interpretation depends on the <code class=\"env\">LC_CTYPE</code> locale;\nfor example, ‘<samp class=\"samp\">[[:alnum:]]</samp>’ means the character class of numbers and letters\nin the current locale.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Alphanumeric characters: ‘⟦0⟧’ and ‘⟦1⟧’; in the ‘⟦2⟧’ locale and ASCII character encoding, this is the same as ‘⟦3⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[:alpha:]</samp>",
+        "⟦1⟧": "<samp class=\"samp\">[:digit:]</samp>",
+        "⟦2⟧": "<samp class=\"samp\">C</samp>",
+        "⟦3⟧": "<samp class=\"samp\">[0-9A-Za-z]</samp>"
+      },
+      "sourceHTML": "<p>Alphanumeric characters:\n‘<samp class=\"samp\">[:alpha:]</samp>’ and ‘<samp class=\"samp\">[:digit:]</samp>’; in the ‘<samp class=\"samp\">C</samp>’ locale and ASCII\ncharacter encoding, this is the same as ‘<samp class=\"samp\">[0-9A-Za-z]</samp>’.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Alphabetic characters: ‘⟦0⟧’ and ‘⟦1⟧’; in the ‘⟦2⟧’ locale and ASCII character encoding, this is the same as ‘⟦3⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[:lower:]</samp>",
+        "⟦1⟧": "<samp class=\"samp\">[:upper:]</samp>",
+        "⟦2⟧": "<samp class=\"samp\">C</samp>",
+        "⟦3⟧": "<samp class=\"samp\">[A-Za-z]</samp>"
+      },
+      "sourceHTML": "<p>Alphabetic characters:\n‘<samp class=\"samp\">[:lower:]</samp>’ and ‘<samp class=\"samp\">[:upper:]</samp>’; in the ‘<samp class=\"samp\">C</samp>’ locale and ASCII\ncharacter encoding, this is the same as ‘<samp class=\"samp\">[A-Za-z]</samp>’.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Blank characters: space and tab.",
+      "tokens": {},
+      "sourceHTML": "<p>Blank characters:\nspace and tab.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Control characters. In ASCII, these characters have octal codes 000 through 037, and 177 (DEL). In other character sets, these are the equivalent characters, if any.",
+      "tokens": {},
+      "sourceHTML": "<p>Control characters.\nIn ASCII, these characters have octal codes 000\nthrough 037, and 177 (DEL).\nIn other character sets, these are\nthe equivalent characters, if any.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Digits: ⟦0⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">0 1 2 3 4 5 6 7 8 9</code>"
+      },
+      "sourceHTML": "<p>Digits: <code class=\"code\">0 1 2 3 4 5 6 7 8 9</code>.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "Graphical characters: ‘⟦0⟧’ and ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[:alnum:]</samp>",
+        "⟦1⟧": "<samp class=\"samp\">[:punct:]</samp>"
+      },
+      "sourceHTML": "<p>Graphical characters:\n‘<samp class=\"samp\">[:alnum:]</samp>’ and ‘<samp class=\"samp\">[:punct:]</samp>’.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "Lower-case letters; in the ‘⟦0⟧’ locale and ASCII character encoding, this is ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">C</samp>",
+        "⟦1⟧": "<code class=\"code\">a b c d e f g h i j k l m n o p q r s t u v w x y z</code>"
+      },
+      "sourceHTML": "<p>Lower-case letters; in the ‘<samp class=\"samp\">C</samp>’ locale and ASCII character\nencoding, this is\n<code class=\"code\">a b c d e f g h i j k l m n o p q r s t u v w x y z</code>.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "Printable characters: ‘⟦0⟧’, ‘⟦1⟧’, and space.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[:alnum:]</samp>",
+        "⟦1⟧": "<samp class=\"samp\">[:punct:]</samp>"
+      },
+      "sourceHTML": "<p>Printable characters:\n‘<samp class=\"samp\">[:alnum:]</samp>’, ‘<samp class=\"samp\">[:punct:]</samp>’, and space.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "Punctuation characters; in the ‘⟦0⟧’ locale and ASCII character encoding, this is ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">C</samp>",
+        "⟦1⟧": "<code class=\"code\">! \" # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \\ ] ^ _ ` { | } ~</code>"
+      },
+      "sourceHTML": "<p>Punctuation characters; in the ‘<samp class=\"samp\">C</samp>’ locale and ASCII character\nencoding, this is\n<code class=\"code\">! \" # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \\ ] ^ _ ` { | } ~</code>.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "Space characters: in the ‘⟦0⟧’ locale, this is tab, newline, vertical tab, form feed, carriage return, and space. See ⟦1⟧Usage⟦2⟧, for more discussion of matching newlines.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">C</samp>",
+        "⟦1⟧": "<a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/24-usage/#Usage\">",
+        "⟦2⟧": "</a>"
+      },
+      "sourceHTML": "<p>Space characters: in the ‘<samp class=\"samp\">C</samp>’ locale, this is\ntab, newline, vertical tab, form feed, carriage return, and space.\nSee <a class=\"xref\" href=\"/docs/gnu-grep/v3-12/en/01-guide/24-usage/#Usage\">Usage</a>, for more discussion of matching newlines.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "Upper-case letters: in the ‘⟦0⟧’ locale and ASCII character encoding, this is ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">C</samp>",
+        "⟦1⟧": "<code class=\"code\">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code>"
+      },
+      "sourceHTML": "<p>Upper-case letters: in the ‘<samp class=\"samp\">C</samp>’ locale and ASCII character\nencoding, this is\n<code class=\"code\">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code>.\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "Hexadecimal digits: ⟦0⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f</code>"
+      },
+      "sourceHTML": "<p>Hexadecimal digits:\n<code class=\"code\">0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f</code>.\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "Note that the brackets in these class names are part of the symbolic names, and must be included in addition to the brackets delimiting the bracket expression.",
+      "tokens": {},
+      "sourceHTML": "<p>Note that the brackets in these class names are\npart of the symbolic names, and must be included in addition to\nthe brackets delimiting the bracket expression.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "If you mistakenly omit the outer brackets, and search for say, ‘⟦0⟧’, GNU ⟦1⟧ prints a diagnostic and exits with status 2, on the assumption that you did not intend to search for the regular expression ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[:upper:]</samp>",
+        "⟦1⟧": "<code class=\"command\">grep</code>",
+        "⟦2⟧": "<samp class=\"samp\">[:epru]</samp>"
+      },
+      "sourceHTML": "<p>If you mistakenly omit the outer brackets, and search for say, ‘<samp class=\"samp\">[:upper:]</samp>’,\nGNU <code class=\"command\">grep</code> prints a diagnostic and exits with status 2, on\nthe assumption that you did not intend to search for the\nregular expression ‘<samp class=\"samp\">[:epru]</samp>’.\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "Special characters lose their special meaning inside bracket expressions.",
+      "tokens": {},
+      "sourceHTML": "<p>Special characters lose their special meaning inside bracket expressions.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "p",
+      "text": "ends the bracket expression if it’s not the first list item. So, if you want to make the ‘⟦0⟧’ character a list item, you must put it first.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">]</samp>"
+      },
+      "sourceHTML": "<p>ends the bracket expression if it’s not the first list item.\nSo, if you want to make the ‘<samp class=\"samp\">]</samp>’ character a list item,\nyou must put it first.\n</p>"
+    },
+    {
+      "index": 20,
+      "tag": "p",
+      "text": "represents the open collating symbol.",
+      "tokens": {},
+      "sourceHTML": "<p>represents the open collating symbol.\n</p>"
+    },
+    {
+      "index": 21,
+      "tag": "p",
+      "text": "represents the close collating symbol.",
+      "tokens": {},
+      "sourceHTML": "<p>represents the close collating symbol.\n</p>"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "text": "represents the open equivalence class.",
+      "tokens": {},
+      "sourceHTML": "<p>represents the open equivalence class.\n</p>"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "text": "represents the close equivalence class.",
+      "tokens": {},
+      "sourceHTML": "<p>represents the close equivalence class.\n</p>"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "text": "represents the open character class symbol, and should be followed by a valid character class name.",
+      "tokens": {},
+      "sourceHTML": "<p>represents the open character class symbol, and should be followed by a\nvalid character class name.\n</p>"
+    },
+    {
+      "index": 25,
+      "tag": "p",
+      "text": "represents the close character class symbol.",
+      "tokens": {},
+      "sourceHTML": "<p>represents the close character class symbol.\n</p>"
+    },
+    {
+      "index": 26,
+      "tag": "p",
+      "text": "represents the range if it’s not first or last in a list or the ending point of a range. To make the ‘⟦0⟧’ a list item, it is best to put it last.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-</samp>"
+      },
+      "sourceHTML": "<p>represents the range if it’s not first or last in a list or the ending point\nof a range.  To make the ‘<samp class=\"samp\">-</samp>’ a list item, it is best to put it last.\n</p>"
+    },
+    {
+      "index": 27,
+      "tag": "p",
+      "text": "represents the characters not in the list. If you want to make the ‘⟦0⟧’ character a list item, place it anywhere but first.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">^</samp>"
+      },
+      "sourceHTML": "<p>represents the characters not in the list.\nIf you want to make the ‘<samp class=\"samp\">^</samp>’\ncharacter a list item, place it anywhere but first.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

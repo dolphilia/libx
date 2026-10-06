@@ -1,11 +1,11 @@
 ---
 title: "Awesome Cordova"
-description: "An index entry for the Awesome Cordova list. The upstream content is not reproduced in this snapshot."
+description: "Find Cordova resources for hybrid apps in the original list. This snapshot contains a reference entry only."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Cordova
 
-An index entry for the Awesome Cordova list. The upstream content is not reproduced in this snapshot.
+Explore resources for Cordova, the JavaScript API for hybrid apps, through the Awesome Cordova list. Its body is not reproduced in this snapshot.
 
-- [Open the original repository](https://github.com/busterc/awesome-cordova/blob/47533432ce5a3f07aec6c05a65d19f0dafd9b68b/README.md)
+- [Read the original list](https://github.com/busterc/awesome-cordova/blob/47533432ce5a3f07aec6c05a65d19f0dafd9b68b/README.md)
