@@ -1,0 +1,64 @@
+<div class="gnu-diffutils-original-content" id="Merge-Commands">
+<h3 class="section" id="Merge-Commands-1"><span>9.2 Merge Commands</span></h3>
+<a class="index-entry-id" id="index-merge-commands"></a>
+<a class="index-entry-id" id="index-merging-interactively"></a>
+<p>Groups of common lines, with a blank gutter, are copied from the first
+file to the output.  After each group of differing lines, <code class="command">sdiff</code>
+prompts with ‘<samp class="samp">%</samp>’ and pauses, waiting for one of the following
+commands.  Follow each command with <kbd class="key">RET</kbd>.
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">e</samp>’</dt>
+<dd><p>Discard both versions.
+Invoke a text editor on an empty temporary file,
+then copy the resulting file to the output.
+</p>
+</dd>
+<dt>‘<samp class="samp">eb</samp>’</dt>
+<dd><p>Concatenate the two versions, edit the result in a temporary file,
+then copy the edited result to the output.
+</p>
+</dd>
+<dt>‘<samp class="samp">ed</samp>’</dt>
+<dd><p>Like ‘<samp class="samp">eb</samp>’, except precede each version with a header that
+shows what file and lines the version came from.
+</p>
+</dd>
+<dt>‘<samp class="samp">el</samp>’</dt>
+<dt>‘<samp class="samp">e1</samp>’</dt>
+<dd><p>Edit a copy of the left version, then copy the result to the output.
+</p>
+</dd>
+<dt>‘<samp class="samp">er</samp>’</dt>
+<dt>‘<samp class="samp">e2</samp>’</dt>
+<dd><p>Edit a copy of the right version, then copy the result to the output.
+</p>
+</dd>
+<dt>‘<samp class="samp">l</samp>’</dt>
+<dt>‘<samp class="samp">1</samp>’</dt>
+<dd><p>Copy the left version to the output.
+</p>
+</dd>
+<dt>‘<samp class="samp">q</samp>’</dt>
+<dd><p>Quit.
+</p>
+</dd>
+<dt>‘<samp class="samp">r</samp>’</dt>
+<dt>‘<samp class="samp">2</samp>’</dt>
+<dd><p>Copy the right version to the output.
+</p>
+</dd>
+<dt>‘<samp class="samp">s</samp>’</dt>
+<dd><p>Silently copy common lines.
+</p>
+</dd>
+<dt>‘<samp class="samp">v</samp>’</dt>
+<dd><p>Verbosely copy common lines.  This is the default.
+</p></dd>
+</dl>
+<a class="index-entry-id" id="index-EDITOR"></a>
+<p>The text editor invoked is specified by the <code class="env">EDITOR</code> environment
+variable if it is set.  The default is system-dependent.
+</p>
+<hr/>
+</div>

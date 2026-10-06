@@ -1,0 +1,49 @@
+<div class="gnu-diffutils-original-content" id="Which-Changes">
+<h3 class="section" id="Selecting-Which-Changes-to-Incorporate"><span>8.1 Selecting Which Changes to Incorporate</span></h3>
+<a class="index-entry-id" id="index-overlapping-change_002c-selection-of"></a>
+<a class="index-entry-id" id="index-unmerged-change"></a>
+<p>You can select all unmerged changes from <var class="var">older</var> to <var class="var">yours</var> for merging
+into <var class="var">mine</var> with the <samp class="option">--ed</samp> (<samp class="option">-e</samp>) option.  You can
+select only the nonoverlapping unmerged changes with
+<samp class="option">--easy-only</samp> (<samp class="option">-3</samp>),
+and you can select only the overlapping changes with
+<samp class="option">--overlap-only</samp> (<samp class="option">-x</samp>).
+</p>
+<p>The <samp class="option">-e</samp>, <samp class="option">-3</samp> and <samp class="option">-x</samp> options select only
+<em class="dfn">unmerged changes</em>, i.e. changes where <var class="var">mine</var> and <var class="var">yours</var>
+differ; they ignore changes from <var class="var">older</var> to <var class="var">yours</var> where
+<var class="var">mine</var> and <var class="var">yours</var> are identical, because they assume that such
+changes have already been merged.  If this assumption is not a safe
+one, you can use the <samp class="option">--show-all</samp> (<samp class="option">-A</samp>) option
+(see <a class="pxref" href="#Marking-Conflicts">Marking Conflicts</a>).
+</p>
+<p>Here is the output of the command <code class="command">diff3</code> with each of these three
+options (see <a class="pxref" href="#Sample-diff3-Input">A Third Sample Input File</a>, for the complete contents of the files).
+Notice that <samp class="option">-e</samp> outputs the union of the disjoint sets of changes
+output by <samp class="option">-3</samp> and <samp class="option">-x</samp>.
+</p>
+<p>Output of ‘<samp class="samp">diff3 -e lao tzu tao</samp>’:
+</p><div class="example">
+<pre class="example-preformatted">11a
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+.
+8c
+  so we may see their result.
+.
+</pre></div>
+<p>Output of ‘<samp class="samp">diff3 -3 lao tzu tao</samp>’:
+</p><div class="example">
+<pre class="example-preformatted">8c
+  so we may see their result.
+.
+</pre></div>
+<p>Output of ‘<samp class="samp">diff3 -x lao tzu tao</samp>’:
+</p><div class="example">
+<pre class="example-preformatted">11a
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+.
+</pre></div>
+<hr/>
+</div>

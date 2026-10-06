@@ -1,0 +1,8 @@
+<div class="gnu-diffutils-original-content" id="Trailing-Blanks">
+<h3 class="section" id="Omitting-trailing-blanks"><span>5.2 行末の空白を省く</span></h3>
+<a class="index-entry-id" id="index-trailing-blanks"></a>
+<p>normal または context 形式で行を出力するとき、または unified 形式で未変更の行を出力するとき、<code class="command">diff</code> は通常、各行の直前に空白を出力します。そのため、空の行では入力に行末の空白がなくても、<code class="command">diff</code> の出力には行末の空白が含まれます。たとえば context 形式で未変更の空行を出力するとき、<code class="command">diff</code> は通常、先頭に空白が2つある行を出力します。</p>
+<p>テキストエディターやメールソフトの中には、行末の空白を常に削除するものがあるため、行末の空白を含む diff 出力ファイルの扱いで問題になる場合があります。<samp class="option">--suppress-blank-empty</samp> オプションでこの問題を避けられます。このオプションでは、入力に元からあった行末の空白を除き、<code class="command">diff</code> が normal、context、unified 形式の出力行末の空白を省きます。出力形式が少し変わり、入力行の末尾に空白がない限り、出力行の末尾が空白になることはありません。テキストエディターやメール送信によって出力が損なわれにくい形式で、GNU <code class="command">patch</code> でも使用できます。</p>
+<hr/>
+</div>
+

@@ -1,0 +1,16 @@
+<div class="gnu-diffutils-original-content" id="Merging-Incomplete-Lines">
+<h3 class="section" id="How-diff3-Merges-Incomplete-Lines"><span>8.4 How <code class="command">diff3</code> Merges Incomplete Lines</span></h3>
+<a class="index-entry-id" id="index-incomplete-line-merging"></a>
+<p>With <samp class="option">-m</samp>, incomplete lines (see <a class="pxref" href="#Incomplete-Lines">Incomplete Lines</a>) are simply
+copied to the output as they are found; if the merged output ends in an
+conflict and one of the input files ends in an incomplete
+line, succeeding ‘<samp class="samp">|||||||</samp>’, ‘<samp class="samp">=======</samp>’ or ‘<samp class="samp">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>’
+brackets appear somewhere other than the start of a line because
+they are appended to the incomplete line.
+</p>
+<p>Without <samp class="option">-m</samp>, if an <code class="command">ed</code> script option is specified and an
+incomplete line is found, <code class="command">diff3</code> generates a warning and acts as
+if a newline had been present.
+</p>
+<hr/>
+</div>

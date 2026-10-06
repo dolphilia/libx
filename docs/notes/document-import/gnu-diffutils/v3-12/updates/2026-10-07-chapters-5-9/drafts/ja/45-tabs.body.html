@@ -1,0 +1,12 @@
+<div class="gnu-diffutils-original-content" id="Tabs">
+<h3 class="section" id="Preserving-Tab-Stop-Alignment"><span>5.1 タブ位置の整列を保持する</span></h3>
+<a class="index-entry-id" id="index-tab-stop-alignment"></a>
+<a class="index-entry-id" id="index-aligning-tab-stops"></a>
+<p>タブ文字はカーソルを次のタブ位置へ移動します。タブ位置は通常、表示の8桁ごとにあります。これは <samp class="option">--tabsize=<var class="var">columns</var></samp> オプションで変更できます。</p>
+<p><code class="command">diff</code> の出力形式の中には、挿入・削除・変更を示す1文字または2文字がテキスト行の前に付くものがあります。これらの文字が加わると、タブが次のタブ位置へ進み、行の列の位置がずれることがあります。GNU <code class="command">diff</code> は、タブで揃えた列を正しく整列させる方法を2つ提供します。</p>
+<p>1つ目は、<code class="command">diff</code> が出力前にすべてのタブを適切な数の空白に変換する方法です。<samp class="option">--expand-tabs</samp>（<samp class="option">-t</samp>）オプションで選択します。この形式の出力を <code class="command">patch</code> で使うには、<code class="command">patch</code> に <samp class="option">-l</samp> または <samp class="option">--ignore-white-space</samp> オプションを指定する必要があります（詳しくは <a class="pxref" href="#Changed-White-Space">空白を変更したパッチの適用</a> を参照）。</p>
+<p>もう1つは、行頭の変更種別を示す文字の後に、空白ではなくタブ文字を加える方法です。後続のすべてのタブ文字が、元のファイルと同じタブ位置に対する相対位置に来るため、出力が正しく整列します。欠点は、長い行がさらに長くなり、画面や紙の1行に収まらなくなることです。また、変更種別を示す文字の後に空白がない unified 出力形式では機能しません。<samp class="option">-T</samp> または <samp class="option">--initial-tab</samp> オプションで選択します。</p>
+<p>GNU <code class="command">diff</code> は現在、出力装置がタブ位置を守り、各文字をOSが指定した列幅で表示し、文字コードのエラーを含む各バイトを1桁で表示すると仮定しています。残念ながら、文字コードのエラーや非ASCII文字ではこの仮定が成り立たないことが多く、複雑な入力データは出力で正しく整列しない場合があります。<samp class="option">--ignore-tab-expansion</samp>（<samp class="option">-E</samp>）オプションに基づく解析も、表示装置の動作と異なる場合があります。</p>
+<hr/>
+</div>
+

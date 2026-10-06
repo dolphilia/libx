@@ -1,0 +1,26 @@
+<div class="gnu-diffutils-original-content" id="diff3-Hunks">
+<h3 class="section" id="diff3-Hunks-1"><span>7.4 <code class="command">diff3</code> の hunk</span></h3>
+<a class="index-entry-id" id="index-hunks-for-diff3"></a>
+<a class="index-entry-id" id="index-diff3-hunks"></a>
+<p>入力ファイルの2つまたは3つで異なる行の集まりを、<code class="command">diff</code> の hunk（<a class="pxref" href="#Hunks">hunk</a> を参照）にならって <em class="dfn">diff3 の hunk</em> と呼びます。<code class="command">diff3</code> の hunk で3つの入力ファイルがすべて異なる場合は <em class="dfn">3方向の hunk</em>、2つだけが異なる場合は <em class="dfn">2方向の hunk</em> と呼びます。</p>
+<p><code class="command">diff</code> と同様に、複数の解が可能です。「<samp class="samp">A</samp>」「<samp class="samp">B</samp>」「<samp class="samp">C</samp>」を比較するとき、<code class="command">diff3</code> は通常、2つのコマンド「<samp class="samp">diff A B</samp>」と「<samp class="samp">diff A C</samp>」が出力する2方向の hunk をまとめることで、<code class="command">diff3</code> の hunk を求めます。これが出力の大きさを最小にするとは限りませんが、例外はまれなはずです。</p>
+<p>たとえば <samp class="file">F</samp> に「<samp class="samp">a</samp>」「<samp class="samp">b</samp>」「<samp class="samp">f</samp>」の3行があり、<samp class="file">G</samp> に「<samp class="samp">g</samp>」「<samp class="samp">b</samp>」「<samp class="samp">g</samp>」、<samp class="file">H</samp> に「<samp class="samp">a</samp>」「<samp class="samp">b</samp>」「<samp class="samp">h</samp>」があるとします。「<samp class="samp">diff3 F G H</samp>」は次のように出力するかもしれません。</p>
+<div class="example">
+<pre class="example-preformatted">====2
+1:1c
+3:1c
+  a
+2:1c
+  g
+====
+1:3c
+  f
+2:3c
+  g
+3:3c
+  h
+</pre></div>
+<p>これは、1番目と3番目のファイルの「<samp class="samp">a</samp>」と2番目のファイルの「<samp class="samp">g</samp>」を含む2方向の hunk を求め、次に3つのファイルで共通する1行「<samp class="samp">b</samp>」、最後に各ファイルの最終行を含む3方向の hunk を求めたためです。</p>
+<hr/>
+</div>
+
