@@ -1,0 +1,187 @@
+{
+  "manual": "pcre2",
+  "slug": "01-guide/01-pcre2",
+  "sourceCanonicalSHA256": "b2e0590253343f9b67e2f77f0acc37e0347c0e11dad1e2c080ad27d02bebbef8",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h2",
+      "text": "INTRODUCTION",
+      "html": "INTRODUCTION"
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "text": "\nPCRE2 is the name used for a revised API for the PCRE library, which is a set\nof functions, written in C, that implement regular expression pattern matching\nusing the same syntax and semantics as Perl, with just a few differences. After\nnearly two decades, the limitations of the original API were making development\nincreasingly difficult. The new API is more extensible, and it was simplified\nby abolishing the separate \"study\" optimizing function; in PCRE2, patterns are\nautomatically optimized where possible. Since forking from PCRE1, the code has\nbeen extensively refactored and new features introduced. The old library is now\nobsolete and is no longer maintained.\n",
+      "html": "\nPCRE2 is the name used for a revised API for the PCRE library, which is a set\nof functions, written in C, that implement regular expression pattern matching\nusing the same syntax and semantics as Perl, with just a few differences. After\nnearly two decades, the limitations of the original API were making development\nincreasingly difficult. The new API is more extensible, and it was simplified\nby abolishing the separate \"study\" optimizing function; in PCRE2, patterns are\nautomatically optimized where possible. Since forking from PCRE1, the code has\nbeen extensively refactored and new features introduced. The old library is now\nobsolete and is no longer maintained.\n"
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "text": "\nAs well as Perl-style regular expression patterns, some features that appeared\nin Python and the original PCRE before they appeared in Perl are available\nusing the Python syntax. There is also support for some .NET and Oniguruma\nsyntax items, and there are options for requesting minor changes that give\nbetter ECMAScript (JavaScript) compatibility.\n",
+      "html": "\nAs well as Perl-style regular expression patterns, some features that appeared\nin Python and the original PCRE before they appeared in Perl are available\nusing the Python syntax. There is also support for some .NET and Oniguruma\nsyntax items, and there are options for requesting minor changes that give\nbetter ECMAScript (JavaScript) compatibility.\n"
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "text": "\nThe source code for PCRE2 can be compiled to support strings of 8-bit, 16-bit,\nor 32-bit code units, which means that up to three separate libraries may be\ninstalled, one for each code unit size. The size of a code unit is not related\nto the bit size of the underlying hardware. In a 64-bit environment that also\nsupports 32-bit applications, versions of PCRE2 that are compiled in both\n64-bit and 32-bit modes may be needed.\n",
+      "html": "\nThe source code for PCRE2 can be compiled to support strings of 8-bit, 16-bit,\nor 32-bit code units, which means that up to three separate libraries may be\ninstalled, one for each code unit size. The size of a code unit is not related\nto the bit size of the underlying hardware. In a 64-bit environment that also\nsupports 32-bit applications, versions of PCRE2 that are compiled in both\n64-bit and 32-bit modes may be needed.\n"
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "text": "\nThe original work to extend PCRE to 16-bit and 32-bit code units was done by\nZoltan Herczeg and Christian Persch, respectively. In all three cases, strings\ncan be interpreted either as one character per code unit, or as UTF-encoded\nUnicode, with support for Unicode general category properties. Unicode support\nis optional at build time (but is the default). However, processing strings as\nUTF code units must be enabled explicitly at run time. The version of Unicode\nin use can be discovered by running\n",
+      "html": "\nThe original work to extend PCRE to 16-bit and 32-bit code units was done by\nZoltan Herczeg and Christian Persch, respectively. In all three cases, strings\ncan be interpreted either as one character per code unit, or as UTF-encoded\nUnicode, with support for Unicode general category properties. Unicode support\nis optional at build time (but is the default). However, processing strings as\nUTF code units must be enabled explicitly at run time. The version of Unicode\nin use can be discovered by running\n"
+    },
+    {
+      "id": "6",
+      "tag": "pre",
+      "text": "  pcre2test -C\n",
+      "html": "<code>  pcre2test -C\n</code>"
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "text": "\nThe three libraries contain identical sets of functions, with names ending in\n_8, _16, or _32, respectively (for example, pcre2_compile_8()). However,\nby defining PCRE2_CODE_UNIT_WIDTH to be 8, 16, or 32, a program that uses just\none code unit width can be written using generic names such as\npcre2_compile(), and the documentation is written assuming that this is\nthe case.\n",
+      "html": "\nThe three libraries contain identical sets of functions, with names ending in\n_8, _16, or _32, respectively (for example, <b>pcre2_compile_8()</b>). However,\nby defining PCRE2_CODE_UNIT_WIDTH to be 8, 16, or 32, a program that uses just\none code unit width can be written using generic names such as\n<b>pcre2_compile()</b>, and the documentation is written assuming that this is\nthe case.\n"
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "text": "\nIn addition to the Perl-compatible matching function, PCRE2 contains an\nalternative function that matches the same compiled patterns in a different\nway. In certain circumstances, the alternative function has some advantages.\nFor a discussion of the two matching algorithms, see the\npcre2matching\npage.\n",
+      "html": "\nIn addition to the Perl-compatible matching function, PCRE2 contains an\nalternative function that matches the same compiled patterns in a different\nway. In certain circumstances, the alternative function has some advantages.\nFor a discussion of the two matching algorithms, see the\n<a href=\"/docs/pcre2/v10-49/en/01-guide/03-pcre2matching/\"><b>pcre2matching</b></a>\npage.\n"
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "text": "\nDetails of exactly which Perl regular expression features are and are not\nsupported by PCRE2 are given in separate documents. See the\npcre2pattern\nand\npcre2compat\npages. There is a syntax summary in the\npcre2syntax\npage.\n",
+      "html": "\nDetails of exactly which Perl regular expression features are and are not\nsupported by PCRE2 are given in separate documents. See the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2pattern.html\"><b>pcre2pattern</b></a>\nand\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2compat.html\"><b>pcre2compat</b></a>\npages. There is a syntax summary in the\n<a href=\"/docs/pcre2/v10-49/en/01-guide/05-pcre2syntax/\"><b>pcre2syntax</b></a>\npage.\n"
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "text": "\nSome features of PCRE2 can be included, excluded, or changed when the library\nis built. The\npcre2_config()\nfunction makes it possible for a client to discover which features are\navailable. The features themselves are described in the\npcre2build\npage. Documentation about building PCRE2 for various operating systems can be\nfound in the\nREADME\nand\nNON-AUTOTOOLS-BUILD\nfiles in the source distribution.\n",
+      "html": "\nSome features of PCRE2 can be included, excluded, or changed when the library\nis built. The\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2_config.html\"><b>pcre2_config()</b></a>\nfunction makes it possible for a client to discover which features are\navailable. The features themselves are described in the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2build.html\"><b>pcre2build</b></a>\npage. Documentation about building PCRE2 for various operating systems can be\nfound in the\n<a href=\"/docs/pcre2/source/v10-49/html/README.txt\"><b>README</b></a>\nand\n<a href=\"/docs/pcre2/source/v10-49/html/NON-AUTOTOOLS-BUILD.txt\"><b>NON-AUTOTOOLS-BUILD</b></a>\nfiles in the source distribution.\n"
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "text": "\nThe libraries contains a number of undocumented internal functions and data\ntables that are used by more than one of the exported external functions, but\nwhich are not intended for use by external callers. Their names all begin with\n\"_pcre2\", which hopefully will not provoke any name clashes. In some\nenvironments, it is possible to control which external symbols are exported\nwhen a shared library is built, and in these cases the undocumented symbols are\nnot exported.\n",
+      "html": "\nThe libraries contains a number of undocumented internal functions and data\ntables that are used by more than one of the exported external functions, but\nwhich are not intended for use by external callers. Their names all begin with\n\"_pcre2\", which hopefully will not provoke any name clashes. In some\nenvironments, it is possible to control which external symbols are exported\nwhen a shared library is built, and in these cases the undocumented symbols are\nnot exported.\n"
+    },
+    {
+      "id": "13",
+      "tag": "h2",
+      "text": "SECURITY CONSIDERATIONS",
+      "html": "SECURITY CONSIDERATIONS"
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "text": "\nIf you are using PCRE2 in a non-UTF application that permits users to supply\narbitrary patterns for compilation, you should be aware of a feature that\nallows users to turn on UTF support from within a pattern. For example, an\n8-bit pattern that begins with \"(*UTF)\" turns on UTF-8 mode, which interprets\npatterns and subjects as strings of UTF-8 code units instead of individual\n8-bit characters. This causes both the pattern and any data against which it is\nmatched to be checked for UTF-8 validity. If the data string is very long, such\na check might use sufficiently many resources as to cause your application to\nlose performance.\n",
+      "html": "\nIf you are using PCRE2 in a non-UTF application that permits users to supply\narbitrary patterns for compilation, you should be aware of a feature that\nallows users to turn on UTF support from within a pattern. For example, an\n8-bit pattern that begins with \"(*UTF)\" turns on UTF-8 mode, which interprets\npatterns and subjects as strings of UTF-8 code units instead of individual\n8-bit characters. This causes both the pattern and any data against which it is\nmatched to be checked for UTF-8 validity. If the data string is very long, such\na check might use sufficiently many resources as to cause your application to\nlose performance.\n"
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "text": "\nOne way of guarding against this possibility is to use the\npcre2_pattern_info() function to check the compiled pattern's options for\nPCRE2_UTF. Alternatively, you can set the PCRE2_NEVER_UTF option when calling\npcre2_compile(). This causes a compile time error if the pattern contains\na UTF-setting sequence.\n",
+      "html": "\nOne way of guarding against this possibility is to use the\n<b>pcre2_pattern_info()</b> function to check the compiled pattern's options for\nPCRE2_UTF. Alternatively, you can set the PCRE2_NEVER_UTF option when calling\n<b>pcre2_compile()</b>. This causes a compile time error if the pattern contains\na UTF-setting sequence.\n"
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "text": "\nThe use of Unicode properties for character types such as \\d can also be\nenabled from within the pattern, by specifying \"(*UCP)\". This feature can be\ndisallowed by setting the PCRE2_NEVER_UCP option.\n",
+      "html": "\nThe use of Unicode properties for character types such as \\d can also be\nenabled from within the pattern, by specifying \"(*UCP)\". This feature can be\ndisallowed by setting the PCRE2_NEVER_UCP option.\n"
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "text": "\nIf your application is one that supports UTF, be aware that validity checking\ncan take time. If the same data string is to be matched many times, you can use\nthe PCRE2_NO_UTF_CHECK option for the second and subsequent matches to avoid\nrunning redundant checks.\n",
+      "html": "\nIf your application is one that supports UTF, be aware that validity checking\ncan take time. If the same data string is to be matched many times, you can use\nthe PCRE2_NO_UTF_CHECK option for the second and subsequent matches to avoid\nrunning redundant checks.\n"
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "text": "\nThe use of the \\C escape sequence in a UTF-8 or UTF-16 pattern can lead to\nproblems, because it may leave the current matching point in the middle of a\nmulti-code-unit character. The PCRE2_NEVER_BACKSLASH_C option can be used by an\napplication to lock out the use of \\C, causing a compile-time error if it is\nencountered. It is also possible to build PCRE2 with the use of \\C permanently\ndisabled.\n",
+      "html": "\nThe use of the \\C escape sequence in a UTF-8 or UTF-16 pattern can lead to\nproblems, because it may leave the current matching point in the middle of a\nmulti-code-unit character. The PCRE2_NEVER_BACKSLASH_C option can be used by an\napplication to lock out the use of \\C, causing a compile-time error if it is\nencountered. It is also possible to build PCRE2 with the use of \\C permanently\ndisabled.\n"
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "text": "\nAnother way that performance can be hit is by running a pattern that has a very\nlarge search tree against a string that will never match. Nested unlimited\nrepeats in a pattern are a common example. PCRE2 provides some protection\nagainst this: see the pcre2_set_match_limit() function in the\npcre2api\npage. There is a similar function called pcre2_set_depth_limit() that can\nbe used to restrict the amount of memory that is used.\n",
+      "html": "\nAnother way that performance can be hit is by running a pattern that has a very\nlarge search tree against a string that will never match. Nested unlimited\nrepeats in a pattern are a common example. PCRE2 provides some protection\nagainst this: see the <b>pcre2_set_match_limit()</b> function in the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2api.html\"><b>pcre2api</b></a>\npage. There is a similar function called <b>pcre2_set_depth_limit()</b> that can\nbe used to restrict the amount of memory that is used.\n"
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "text": "USER DOCUMENTATION",
+      "html": "USER DOCUMENTATION"
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "text": "\nThe user documentation for PCRE2 comprises a number of different sections. In\nthe \"man\" format, each of these is a separate \"man page\". In the HTML format,\neach is a separate page, linked from the index page. In the plain text format,\nthe descriptions of the pcre2grep and pcre2test programs are in\nfiles called pcre2grep.txt and pcre2test.txt, respectively. The\nremaining sections, except for the pcre2demo section (which is a program\nlisting), and the short pages for individual functions, are concatenated in\npcre2.txt, for ease of searching. The sections are as follows:\n",
+      "html": "\nThe user documentation for PCRE2 comprises a number of different sections. In\nthe \"man\" format, each of these is a separate \"man page\". In the HTML format,\neach is a separate page, linked from the index page. In the plain text format,\nthe descriptions of the <b>pcre2grep</b> and <b>pcre2test</b> programs are in\nfiles called <b>pcre2grep.txt</b> and <b>pcre2test.txt</b>, respectively. The\nremaining sections, except for the <b>pcre2demo</b> section (which is a program\nlisting), and the short pages for individual functions, are concatenated in\n<b>pcre2.txt</b>, for ease of searching. The sections are as follows:\n"
+    },
+    {
+      "id": "22",
+      "tag": "pre",
+      "text": "  pcre2              this document\n  pcre2-config       show PCRE2 installation configuration information\n  pcre2api           details of PCRE2's native C API\n  pcre2build         building PCRE2\n  pcre2callout       details of the pattern callout feature\n  pcre2compat        discussion of Perl compatibility\n  pcre2convert       details of pattern conversion functions\n  pcre2demo          a demonstration C program that uses PCRE2\n  pcre2grep          description of the pcre2grep command (8-bit only)\n  pcre2jit           discussion of just-in-time optimization support\n  pcre2limits        details of size and other limits\n  pcre2matching      discussion of the two matching algorithms\n  pcre2partial       details of the partial matching facility\n  pcre2pattern       syntax and semantics of supported regular expression patterns\n  pcre2perform       discussion of performance issues\n  pcre2posix         the POSIX-compatible C API for the 8-bit library\n  pcre2sample        discussion of the pcre2demo program\n  pcre2serialize     details of pattern serialization\n  pcre2syntax        quick syntax reference\n  pcre2test          description of the pcre2test command\n  pcre2unicode       discussion of Unicode and UTF support\n",
+      "html": "<code>  pcre2              this document\n  pcre2-config       show PCRE2 installation configuration information\n  pcre2api           details of PCRE2's native C API\n  pcre2build         building PCRE2\n  pcre2callout       details of the pattern callout feature\n  pcre2compat        discussion of Perl compatibility\n  pcre2convert       details of pattern conversion functions\n  pcre2demo          a demonstration C program that uses PCRE2\n  pcre2grep          description of the pcre2grep command (8-bit only)\n  pcre2jit           discussion of just-in-time optimization support\n  pcre2limits        details of size and other limits\n  pcre2matching      discussion of the two matching algorithms\n  pcre2partial       details of the partial matching facility\n  pcre2pattern       syntax and semantics of supported regular expression patterns\n  pcre2perform       discussion of performance issues\n  pcre2posix         the POSIX-compatible C API for the 8-bit library\n  pcre2sample        discussion of the pcre2demo program\n  pcre2serialize     details of pattern serialization\n  pcre2syntax        quick syntax reference\n  pcre2test          description of the pcre2test command\n  pcre2unicode       discussion of Unicode and UTF support\n</code>"
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "text": "\nIn the \"man\" and HTML formats, there is also a short page for each C library\nfunction, listing its arguments and results.\n",
+      "html": "\nIn the \"man\" and HTML formats, there is also a short page for each C library\nfunction, listing its arguments and results.\n"
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "25",
+      "tag": "h2",
+      "text": "AUTHORS",
+      "html": "AUTHORS"
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "text": "\nThe current maintainers of PCRE2 are Nicholas Wilson and Zoltan Herczeg.\n",
+      "html": "\nThe current maintainers of PCRE2 are Nicholas Wilson and Zoltan Herczeg.\n"
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "text": "\nPCRE2 was written by Philip Hazel, of the University Computing Service,\nCambridge, England. Many others have also contributed.\n",
+      "html": "\nPCRE2 was written by Philip Hazel, of the University Computing Service,\nCambridge, England. Many others have also contributed.\n"
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "text": "\nTo contact the maintainers, please use the GitHub issues tracker or PCRE2\nmailing list, as described at the project page:\nhttps://github.com/PCRE2Project/pcre2\n",
+      "html": "\nTo contact the maintainers, please use the GitHub issues tracker or PCRE2\nmailing list, as described at the project page:\n<a href=\"https://github.com/PCRE2Project/pcre2\">https://github.com/PCRE2Project/pcre2</a>\n"
+    },
+    {
+      "id": "29",
+      "tag": "h2",
+      "text": "REVISION",
+      "html": "REVISION"
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "text": "\nLast updated: 22 February 2025\n\nCopyright © 1997-2021 University of Cambridge.\n\n",
+      "html": "\nLast updated: 22 February 2025\n<br/>\nCopyright © 1997-2021 University of Cambridge.\n<br/>\n"
+    }
+  ]
+}

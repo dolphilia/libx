@@ -1,0 +1,1075 @@
+{
+  "manual": "pcre2syntax",
+  "slug": "01-guide/05-pcre2syntax",
+  "sourceCanonicalSHA256": "8b5655c2ebcbb62c16e10f6fac666721b2373db0693a4d50c276b16d583b4065",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h2",
+      "text": "PCRE2 REGULAR EXPRESSION SYNTAX SUMMARY",
+      "html": "PCRE2 REGULAR EXPRESSION SYNTAX SUMMARY"
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "text": "\nThe full syntax and semantics of the regular expression patterns that are\nsupported by PCRE2 are described in the\npcre2pattern\ndocumentation. This document contains a quick-reference summary of the pattern\nsyntax followed by the syntax of replacement strings in substitution function.\nThe full description of the latter is in the\npcre2api\ndocumentation.\n",
+      "html": "\nThe full syntax and semantics of the regular expression patterns that are\nsupported by PCRE2 are described in the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2pattern.html\"><b>pcre2pattern</b></a>\ndocumentation. This document contains a quick-reference summary of the pattern\nsyntax followed by the syntax of replacement strings in substitution function.\nThe full description of the latter is in the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2api.html\"><b>pcre2api</b></a>\ndocumentation.\n"
+    },
+    {
+      "id": "3",
+      "tag": "h2",
+      "text": "QUOTING",
+      "html": "QUOTING"
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "5",
+      "tag": "pre",
+      "text": "  \\x         where x is non-alphanumeric is a literal x\n  \\Q...\\E    treat enclosed characters as literal\n",
+      "html": "<code>  \\x         where x is non-alphanumeric is a literal x\n  \\Q...\\E    treat enclosed characters as literal\n</code>"
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "text": "\nNote that white space inside \\Q...\\E is always treated as literal, even if\nPCRE2_EXTENDED is set, causing most other white space to be ignored. Note also\nthat PCRE2's handling of \\Q...\\E has some differences from Perl's. See the\npcre2pattern\ndocumentation for details.\n",
+      "html": "\nNote that white space inside \\Q...\\E is always treated as literal, even if\nPCRE2_EXTENDED is set, causing most other white space to be ignored. Note also\nthat PCRE2's handling of \\Q...\\E has some differences from Perl's. See the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2pattern.html\"><b>pcre2pattern</b></a>\ndocumentation for details.\n"
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "8",
+      "tag": "h2",
+      "text": "BRACED ITEMS",
+      "html": "BRACED ITEMS"
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "text": "\nWith one exception, wherever brace characters { and } are required to enclose\ndata for constructions such as \\g{2} or \\k{name}, space and/or horizontal tab\ncharacters that follow { or precede } are allowed and are ignored. In the case\nof quantifiers, they may also appear before or after the comma. The exception\nis \\u{...} which is not Perl-compatible and is recognized only when\nPCRE2_EXTRA_ALT_BSUX is set. This is an ECMAScript compatibility feature, and\nfollows ECMAScript's behaviour.\n",
+      "html": "\nWith one exception, wherever brace characters { and } are required to enclose\ndata for constructions such as \\g{2} or \\k{name}, space and/or horizontal tab\ncharacters that follow { or precede } are allowed and are ignored. In the case\nof quantifiers, they may also appear before or after the comma. The exception\nis \\u{...} which is not Perl-compatible and is recognized only when\nPCRE2_EXTRA_ALT_BSUX is set. This is an ECMAScript compatibility feature, and\nfollows ECMAScript's behaviour.\n"
+    },
+    {
+      "id": "10",
+      "tag": "h2",
+      "text": "ESCAPED CHARACTERS",
+      "html": "ESCAPED CHARACTERS"
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "text": "\nThis table applies to ASCII and Unicode environments. An unrecognized escape\nsequence causes an error.\n",
+      "html": "\nThis table applies to ASCII and Unicode environments. An unrecognized escape\nsequence causes an error.\n"
+    },
+    {
+      "id": "12",
+      "tag": "pre",
+      "text": "  \\a         alarm, that is, the BEL character (hex 07)\n  \\cx        \"control-x\", where x is a non-control ASCII character\n  \\e         escape (hex 1B)\n  \\f         form feed (hex 0C)\n  \\n         newline (hex 0A)\n  \\r         carriage return (hex 0D)\n  \\t         tab (hex 09)\n  \\0dd       character with octal code 0dd\n  \\ddd       character with octal code ddd, or backreference\n  \\o{ddd..}  character with octal code ddd..\n  \\N{U+hh..} character with Unicode code point hh.. (Unicode mode only)\n  \\xhh       character with hex code hh\n  \\x{hh..}   character with hex code hh..\n",
+      "html": "<code>  \\a         alarm, that is, the BEL character (hex 07)\n  \\cx        \"control-x\", where x is a non-control ASCII character\n  \\e         escape (hex 1B)\n  \\f         form feed (hex 0C)\n  \\n         newline (hex 0A)\n  \\r         carriage return (hex 0D)\n  \\t         tab (hex 09)\n  \\0dd       character with octal code 0dd\n  \\ddd       character with octal code ddd, or backreference\n  \\o{ddd..}  character with octal code ddd..\n  \\N{U+hh..} character with Unicode code point hh.. (Unicode mode only)\n  \\xhh       character with hex code hh\n  \\x{hh..}   character with hex code hh..\n</code>"
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "text": "\n\\N{U+hh..} is synonymous with \\x{hh..} but is not supported in environments\nthat use EBCDIC code (mainly IBM mainframes). Note that \\N not followed by an\nopening curly bracket has a different meaning (see below).\n",
+      "html": "\n\\N{U+hh..} is synonymous with \\x{hh..} but is not supported in environments\nthat use EBCDIC code (mainly IBM mainframes). Note that \\N not followed by an\nopening curly bracket has a different meaning (see below).\n"
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "text": "\nIf PCRE2_ALT_BSUX or PCRE2_EXTRA_ALT_BSUX is set (\"ALT_BSUX mode\"), the\nfollowing are also recognized:\n",
+      "html": "\nIf PCRE2_ALT_BSUX or PCRE2_EXTRA_ALT_BSUX is set (\"ALT_BSUX mode\"), the\nfollowing are also recognized:\n"
+    },
+    {
+      "id": "16",
+      "tag": "pre",
+      "text": "  \\U         the character \"U\"\n  \\uhhhh     character with hex code hhhh\n  \\u{hh..}   character with hex code hh.. but only for EXTRA_ALT_BSUX\n",
+      "html": "<code>  \\U         the character \"U\"\n  \\uhhhh     character with hex code hhhh\n  \\u{hh..}   character with hex code hh.. but only for EXTRA_ALT_BSUX\n</code>"
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "text": "\nWhen \\x is not followed by {, one or two hexadecimal digits are read,\nbut in ALT_BSUX mode \\x must be followed by two hexadecimal digits to be\nrecognized as a hexadecimal escape; otherwise it matches a literal \"x\".\nLikewise, if \\u (in ALT_BSUX mode) is not followed by four hexadecimal digits\nor (in EXTRA_ALT_BSUX mode) a sequence of hex digits in curly brackets, it\nmatches a literal \"u\".\n",
+      "html": "\nWhen \\x is not followed by {, one or two hexadecimal digits are read,\nbut in ALT_BSUX mode \\x must be followed by two hexadecimal digits to be\nrecognized as a hexadecimal escape; otherwise it matches a literal \"x\".\nLikewise, if \\u (in ALT_BSUX mode) is not followed by four hexadecimal digits\nor (in EXTRA_ALT_BSUX mode) a sequence of hex digits in curly brackets, it\nmatches a literal \"u\".\n"
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "text": "\nNote that \\0dd is always an octal code. The treatment of backslash followed by\na non-zero digit is complicated; for details see the section\n\"Non-printing characters\"\nin the\npcre2pattern\ndocumentation, where details of escape processing in EBCDIC environments are\nalso given.\n",
+      "html": "\nNote that \\0dd is always an octal code. The treatment of backslash followed by\na non-zero digit is complicated; for details see the section\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2pattern.html#digitsafterbackslash\">\"Non-printing characters\"</a>\nin the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2pattern.html\"><b>pcre2pattern</b></a>\ndocumentation, where details of escape processing in EBCDIC environments are\nalso given.\n"
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "text": "CHARACTER TYPES",
+      "html": "CHARACTER TYPES"
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "22",
+      "tag": "pre",
+      "text": "  .          any character except newline;\n               in dotall mode, any character whatsoever\n  \\C         one code unit, even in UTF mode (best avoided)\n  \\d         a decimal digit\n  \\D         a character that is not a decimal digit\n  \\h         a horizontal white space character\n  \\H         a character that is not a horizontal white space character\n  \\N         a character that is not a newline\n  \\p{xx}     a character with the xx property\n  \\P{xx}     a character without the xx property\n  \\R         a newline sequence\n  \\s         a white space character\n  \\S         a character that is not a white space character\n  \\v         a vertical white space character\n  \\V         a character that is not a vertical white space character\n  \\w         a \"word\" character\n  \\W         a \"non-word\" character\n  \\X         a Unicode extended grapheme cluster\n",
+      "html": "<code>  .          any character except newline;\n               in dotall mode, any character whatsoever\n  \\C         one code unit, even in UTF mode (best avoided)\n  \\d         a decimal digit\n  \\D         a character that is not a decimal digit\n  \\h         a horizontal white space character\n  \\H         a character that is not a horizontal white space character\n  \\N         a character that is not a newline\n  \\p{xx}     a character with the xx property\n  \\P{xx}     a character without the xx property\n  \\R         a newline sequence\n  \\s         a white space character\n  \\S         a character that is not a white space character\n  \\v         a vertical white space character\n  \\V         a character that is not a vertical white space character\n  \\w         a \"word\" character\n  \\W         a \"non-word\" character\n  \\X         a Unicode extended grapheme cluster\n</code>"
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "text": "\n\\C is dangerous because it may leave the current matching point in the middle\nof a UTF-8 or UTF-16 character. The application can lock out the use of \\C by\nsetting the PCRE2_NEVER_BACKSLASH_C option. It is also possible to build PCRE2\nwith the use of \\C permanently disabled.\n",
+      "html": "\n\\C is dangerous because it may leave the current matching point in the middle\nof a UTF-8 or UTF-16 character. The application can lock out the use of \\C by\nsetting the PCRE2_NEVER_BACKSLASH_C option. It is also possible to build PCRE2\nwith the use of \\C permanently disabled.\n"
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "text": "\nBy default, \\d, \\s, and \\w match only ASCII characters, even in UTF-8 mode\nor in the 16-bit and 32-bit libraries. However, if locale-specific matching is\nhappening, \\s and \\w may also match characters with code points in the range\n128-255. If the PCRE2_UCP option is set, the behaviour of these escape\nsequences is changed to use Unicode properties and they match many more\ncharacters, but there are some option settings that can restrict individual\nsequences to matching only ASCII characters.\n",
+      "html": "\nBy default, \\d, \\s, and \\w match only ASCII characters, even in UTF-8 mode\nor in the 16-bit and 32-bit libraries. However, if locale-specific matching is\nhappening, \\s and \\w may also match characters with code points in the range\n128-255. If the PCRE2_UCP option is set, the behaviour of these escape\nsequences is changed to use Unicode properties and they match many more\ncharacters, but there are some option settings that can restrict individual\nsequences to matching only ASCII characters.\n"
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "text": "\nProperty descriptions in \\p and \\P are matched caselessly; hyphens,\nunderscores, and ASCII white space characters are ignored, in accordance with\nUnicode's \"loose matching\" rules. For example, \\p{Bidi_Class=al} is the same\nas \\p{ bidi class = AL }.\n",
+      "html": "\nProperty descriptions in \\p and \\P are matched caselessly; hyphens,\nunderscores, and ASCII white space characters are ignored, in accordance with\nUnicode's \"loose matching\" rules. For example, \\p{Bidi_Class=al} is the same\nas \\p{ bidi class = AL }.\n"
+    },
+    {
+      "id": "27",
+      "tag": "h2",
+      "text": "GENERAL CATEGORY PROPERTIES FOR \\p and \\P",
+      "html": "GENERAL CATEGORY PROPERTIES FOR \\p and \\P"
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "29",
+      "tag": "pre",
+      "text": "  C          Other\n  Cc         Control\n  Cf         Format\n  Cn         Unassigned\n  Co         Private use\n  Cs         Surrogate\n\n  L          Letter\n  Lc         Cased letter, the union of Ll, Lu, and Lt\n  L&         Synonym of Lc\n  Ll         Lower case letter\n  Lm         Modifier letter\n  Lo         Other letter\n  Lt         Title case letter\n  Lu         Upper case letter\n\n  M          Mark\n  Mc         Spacing mark\n  Me         Enclosing mark\n  Mn         Non-spacing mark\n\n  N          Number\n  Nd         Decimal number\n  Nl         Letter number\n  No         Other number\n\n  P          Punctuation\n  Pc         Connector punctuation\n  Pd         Dash punctuation\n  Pe         Close punctuation\n  Pf         Final punctuation\n  Pi         Initial punctuation\n  Po         Other punctuation\n  Ps         Open punctuation\n\n  S          Symbol\n  Sc         Currency symbol\n  Sk         Modifier symbol\n  Sm         Mathematical symbol\n  So         Other symbol\n\n  Z          Separator\n  Zl         Line separator\n  Zp         Paragraph separator\n  Zs         Space separator\n",
+      "html": "<code>  C          Other\n  Cc         Control\n  Cf         Format\n  Cn         Unassigned\n  Co         Private use\n  Cs         Surrogate\n\n  L          Letter\n  Lc         Cased letter, the union of Ll, Lu, and Lt\n  L&amp;         Synonym of Lc\n  Ll         Lower case letter\n  Lm         Modifier letter\n  Lo         Other letter\n  Lt         Title case letter\n  Lu         Upper case letter\n\n  M          Mark\n  Mc         Spacing mark\n  Me         Enclosing mark\n  Mn         Non-spacing mark\n\n  N          Number\n  Nd         Decimal number\n  Nl         Letter number\n  No         Other number\n\n  P          Punctuation\n  Pc         Connector punctuation\n  Pd         Dash punctuation\n  Pe         Close punctuation\n  Pf         Final punctuation\n  Pi         Initial punctuation\n  Po         Other punctuation\n  Ps         Open punctuation\n\n  S          Symbol\n  Sc         Currency symbol\n  Sk         Modifier symbol\n  Sm         Mathematical symbol\n  So         Other symbol\n\n  Z          Separator\n  Zl         Line separator\n  Zp         Paragraph separator\n  Zs         Space separator\n</code>"
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "text": "\nFrom release 10.45, when caseless matching is set, Ll, Lu, and Lt are all\nequivalent to Lc.\n",
+      "html": "\nFrom release 10.45, when caseless matching is set, Ll, Lu, and Lt are all\nequivalent to Lc.\n"
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "32",
+      "tag": "h2",
+      "text": "PCRE2 SPECIAL CATEGORY PROPERTIES FOR \\p and \\P",
+      "html": "PCRE2 SPECIAL CATEGORY PROPERTIES FOR \\p and \\P"
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "34",
+      "tag": "pre",
+      "text": "  Xan        Alphanumeric: union of properties L and N\n  Xps        POSIX space: property Z or tab, NL, VT, FF, CR\n  Xsp        Perl space: property Z or tab, NL, VT, FF, CR\n  Xuc        Universally-named character: one that can be\n               represented by a Universal Character Name\n  Xwd        Perl word: property Xan or underscore\n",
+      "html": "<code>  Xan        Alphanumeric: union of properties L and N\n  Xps        POSIX space: property Z or tab, NL, VT, FF, CR\n  Xsp        Perl space: property Z or tab, NL, VT, FF, CR\n  Xuc        Universally-named character: one that can be\n               represented by a Universal Character Name\n  Xwd        Perl word: property Xan or underscore\n</code>"
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "text": "\nPerl and POSIX space are now the same. Perl added VT to its space character set\nat release 5.18.\n",
+      "html": "\nPerl and POSIX space are now the same. Perl added VT to its space character set\nat release 5.18.\n"
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "37",
+      "tag": "h2",
+      "text": "BINARY PROPERTIES FOR \\p AND \\P",
+      "html": "BINARY PROPERTIES FOR \\p AND \\P"
+    },
+    {
+      "id": "38",
+      "tag": "p",
+      "text": "\nUnicode defines a number of binary properties, that is, properties whose only\nvalues are true or false. You can obtain a list of those that are recognized by\n\\p and \\P, along with their abbreviations, by running this command:\n",
+      "html": "\nUnicode defines a number of binary properties, that is, properties whose only\nvalues are true or false. You can obtain a list of those that are recognized by\n\\p and \\P, along with their abbreviations, by running this command:\n"
+    },
+    {
+      "id": "39",
+      "tag": "pre",
+      "text": "  pcre2test -LP\n",
+      "html": "<code>  pcre2test -LP\n</code>"
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "41",
+      "tag": "h2",
+      "text": "SCRIPT MATCHING WITH \\p AND \\P",
+      "html": "SCRIPT MATCHING WITH \\p AND \\P"
+    },
+    {
+      "id": "42",
+      "tag": "p",
+      "text": "\nMany script names and their 4-letter abbreviations are recognized in\n\\p{sc:...} or \\p{scx:...} items, or on their own with \\p (and also \\P of\ncourse). You can obtain a list of these scripts by running this command:\n",
+      "html": "\nMany script names and their 4-letter abbreviations are recognized in\n\\p{sc:...} or \\p{scx:...} items, or on their own with \\p (and also \\P of\ncourse). You can obtain a list of these scripts by running this command:\n"
+    },
+    {
+      "id": "43",
+      "tag": "pre",
+      "text": "  pcre2test -LS\n",
+      "html": "<code>  pcre2test -LS\n</code>"
+    },
+    {
+      "id": "44",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "45",
+      "tag": "h2",
+      "text": "THE BIDI_CLASS PROPERTY FOR \\p AND \\P",
+      "html": "THE BIDI_CLASS PROPERTY FOR \\p AND \\P"
+    },
+    {
+      "id": "46",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "47",
+      "tag": "pre",
+      "text": "  \\p{Bidi_Class:<class>}   matches a character with the given class\n  \\p{BC:<class>}           matches a character with the given class\n",
+      "html": "<code>  \\p{Bidi_Class:&lt;class&gt;}   matches a character with the given class\n  \\p{BC:&lt;class&gt;}           matches a character with the given class\n</code>"
+    },
+    {
+      "id": "48",
+      "tag": "p",
+      "text": "\nThe recognized classes are:\n",
+      "html": "\nThe recognized classes are:\n"
+    },
+    {
+      "id": "49",
+      "tag": "pre",
+      "text": "  AL          Arabic letter\n  AN          Arabic number\n  B           paragraph separator\n  BN          boundary neutral\n  CS          common separator\n  EN          European number\n  ES          European separator\n  ET          European terminator\n  FSI         first strong isolate\n  L           left-to-right\n  LRE         left-to-right embedding\n  LRI         left-to-right isolate\n  LRO         left-to-right override\n  NSM         non-spacing mark\n  ON          other neutral\n  PDF         pop directional format\n  PDI         pop directional isolate\n  R           right-to-left\n  RLE         right-to-left embedding\n  RLI         right-to-left isolate\n  RLO         right-to-left override\n  S           segment separator\n  WS          white space\n",
+      "html": "<code>  AL          Arabic letter\n  AN          Arabic number\n  B           paragraph separator\n  BN          boundary neutral\n  CS          common separator\n  EN          European number\n  ES          European separator\n  ET          European terminator\n  FSI         first strong isolate\n  L           left-to-right\n  LRE         left-to-right embedding\n  LRI         left-to-right isolate\n  LRO         left-to-right override\n  NSM         non-spacing mark\n  ON          other neutral\n  PDF         pop directional format\n  PDI         pop directional isolate\n  R           right-to-left\n  RLE         right-to-left embedding\n  RLI         right-to-left isolate\n  RLO         right-to-left override\n  S           segment separator\n  WS          white space\n</code>"
+    },
+    {
+      "id": "50",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "51",
+      "tag": "h2",
+      "text": "CHARACTER CLASSES",
+      "html": "CHARACTER CLASSES"
+    },
+    {
+      "id": "52",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "53",
+      "tag": "pre",
+      "text": "  [...]       positive character class\n  [^...]      negative character class\n  [x-y]       range (can be used for hex characters)\n  [[:xxx:]]   positive POSIX named set\n  [[:^xxx:]]  negative POSIX named set\n\n  alnum       alphanumeric\n  alpha       alphabetic\n  ascii       0-127\n  blank       space or tab\n  cntrl       control character\n  digit       decimal digit\n  graph       printing, excluding space\n  lower       lower case letter\n  print       printing, including space\n  punct       printing, excluding alphanumeric\n  space       white space\n  upper       upper case letter\n  word        same as \\w\n  xdigit      hexadecimal digit\n",
+      "html": "<code>  [...]       positive character class\n  [^...]      negative character class\n  [x-y]       range (can be used for hex characters)\n  [[:xxx:]]   positive POSIX named set\n  [[:^xxx:]]  negative POSIX named set\n\n  alnum       alphanumeric\n  alpha       alphabetic\n  ascii       0-127\n  blank       space or tab\n  cntrl       control character\n  digit       decimal digit\n  graph       printing, excluding space\n  lower       lower case letter\n  print       printing, including space\n  punct       printing, excluding alphanumeric\n  space       white space\n  upper       upper case letter\n  word        same as \\w\n  xdigit      hexadecimal digit\n</code>"
+    },
+    {
+      "id": "54",
+      "tag": "p",
+      "text": "\nIn PCRE2, POSIX character set names recognize only ASCII characters by default,\nbut some of them use Unicode properties if PCRE2_UCP is set. You can use\n\\Q...\\E inside a character class.\n",
+      "html": "\nIn PCRE2, POSIX character set names recognize only ASCII characters by default,\nbut some of them use Unicode properties if PCRE2_UCP is set. You can use\n\\Q...\\E inside a character class.\n"
+    },
+    {
+      "id": "55",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "56",
+      "tag": "p",
+      "text": "\nWhen PCRE2_ALT_EXTENDED_CLASS is set, UTS#18 extended character classes may be\nused, allowing nested character classes, combined using set operators.\n",
+      "html": "\nWhen PCRE2_ALT_EXTENDED_CLASS is set, UTS#18 extended character classes may be\nused, allowing nested character classes, combined using set operators.\n"
+    },
+    {
+      "id": "57",
+      "tag": "pre",
+      "text": "  [x&&[^y]]   UTS#18 extended character class\n\n  x||y        set union (OR)\n  x&&y        set intersection (AND)\n  x--y        set difference (AND NOT)\n  x~~y        set symmetric difference (XOR)\n\n",
+      "html": "<code>  [x&amp;&amp;[^y]]   UTS#18 extended character class\n\n  x||y        set union (OR)\n  x&amp;&amp;y        set intersection (AND)\n  x--y        set difference (AND NOT)\n  x~~y        set symmetric difference (XOR)\n\n</code>"
+    },
+    {
+      "id": "58",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "59",
+      "tag": "h2",
+      "text": "PERL EXTENDED CHARACTER CLASSES",
+      "html": "PERL EXTENDED CHARACTER CLASSES"
+    },
+    {
+      "id": "60",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "61",
+      "tag": "pre",
+      "text": "  (?[...])                Perl extended character class\n  (?[\\p{Thai} & \\p{Nd}])  operators; white space ignored\n  (?[(x - y) & z])        parentheses for grouping\n\n  (?[ [^3] & \\p{Nd} ])    [...] is a nested ordinary class\n  (?[ [:alpha:] - [z] ])  POSIX set is allowed outside [...]\n  (?[ \\d - [3] ])         backslash-escaped set is allowed outside [...]\n  (?[ !\\n & [:ascii:] ])  backslash-escaped character is allowed outside [...]\n                      all other characters or ranges must be enclosed in [...]\n\n  x|y, x+y                set union (OR)\n  x&y                     set intersection (AND)\n  x-y                     set difference (AND NOT)\n  x^y                     set symmetric difference (XOR)\n  !x                      set complement (NOT)\n",
+      "html": "<code>  (?[...])                Perl extended character class\n  (?[\\p{Thai} &amp; \\p{Nd}])  operators; white space ignored\n  (?[(x - y) &amp; z])        parentheses for grouping\n\n  (?[ [^3] &amp; \\p{Nd} ])    [...] is a nested ordinary class\n  (?[ [:alpha:] - [z] ])  POSIX set is allowed outside [...]\n  (?[ \\d - [3] ])         backslash-escaped set is allowed outside [...]\n  (?[ !\\n &amp; [:ascii:] ])  backslash-escaped character is allowed outside [...]\n                      all other characters or ranges must be enclosed in [...]\n\n  x|y, x+y                set union (OR)\n  x&amp;y                     set intersection (AND)\n  x-y                     set difference (AND NOT)\n  x^y                     set symmetric difference (XOR)\n  !x                      set complement (NOT)\n</code>"
+    },
+    {
+      "id": "62",
+      "tag": "p",
+      "text": "\nInside a Perl extended character class, [...] switches mode to be interpreted\nas an ordinary character class. Outside of a nested [...], the only items\npermitted are backslash-escapes, POSIX sets, operators, and parentheses. Inside\na nested ordinary class, ^ has its usual meaning (inverts the class when used\nas the first character); outside of a nested class, ^ is the XOR operator.\n",
+      "html": "\nInside a Perl extended character class, [...] switches mode to be interpreted\nas an ordinary character class. Outside of a nested [...], the only items\npermitted are backslash-escapes, POSIX sets, operators, and parentheses. Inside\na nested ordinary class, ^ has its usual meaning (inverts the class when used\nas the first character); outside of a nested class, ^ is the XOR operator.\n"
+    },
+    {
+      "id": "63",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "64",
+      "tag": "h2",
+      "text": "QUANTIFIERS",
+      "html": "QUANTIFIERS"
+    },
+    {
+      "id": "65",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "66",
+      "tag": "pre",
+      "text": "  ?           0 or 1, greedy\n  ?+          0 or 1, possessive\n  ??          0 or 1, lazy\n  *           0 or more, greedy\n  *+          0 or more, possessive\n  *?          0 or more, lazy\n  +           1 or more, greedy\n  ++          1 or more, possessive\n  +?          1 or more, lazy\n  {n}         exactly n\n  {n,m}       at least n, no more than m, greedy\n  {n,m}+      at least n, no more than m, possessive\n  {n,m}?      at least n, no more than m, lazy\n  {n,}        n or more, greedy\n  {n,}+       n or more, possessive\n  {n,}?       n or more, lazy\n  {,m}        zero up to m, greedy\n  {,m}+       zero up to m, possessive\n  {,m}?       zero up to m, lazy\n",
+      "html": "<code>  ?           0 or 1, greedy\n  ?+          0 or 1, possessive\n  ??          0 or 1, lazy\n  *           0 or more, greedy\n  *+          0 or more, possessive\n  *?          0 or more, lazy\n  +           1 or more, greedy\n  ++          1 or more, possessive\n  +?          1 or more, lazy\n  {n}         exactly n\n  {n,m}       at least n, no more than m, greedy\n  {n,m}+      at least n, no more than m, possessive\n  {n,m}?      at least n, no more than m, lazy\n  {n,}        n or more, greedy\n  {n,}+       n or more, possessive\n  {n,}?       n or more, lazy\n  {,m}        zero up to m, greedy\n  {,m}+       zero up to m, possessive\n  {,m}?       zero up to m, lazy\n</code>"
+    },
+    {
+      "id": "67",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "68",
+      "tag": "h2",
+      "text": "ANCHORS AND SIMPLE ASSERTIONS",
+      "html": "ANCHORS AND SIMPLE ASSERTIONS"
+    },
+    {
+      "id": "69",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "70",
+      "tag": "pre",
+      "text": "  \\b          word boundary\n  \\B          not a word boundary\n  ^           start of subject\n                also after an internal newline in multiline mode\n                (after any newline if PCRE2_ALT_CIRCUMFLEX is set)\n  \\A          start of subject\n  $           end of subject\n                also before newline at end of subject\n                also before internal newline in multiline mode\n  \\Z          end of subject\n                also before newline at end of subject\n  \\z          end of subject\n  \\G          first matching position in subject\n",
+      "html": "<code>  \\b          word boundary\n  \\B          not a word boundary\n  ^           start of subject\n                also after an internal newline in multiline mode\n                (after any newline if PCRE2_ALT_CIRCUMFLEX is set)\n  \\A          start of subject\n  $           end of subject\n                also before newline at end of subject\n                also before internal newline in multiline mode\n  \\Z          end of subject\n                also before newline at end of subject\n  \\z          end of subject\n  \\G          first matching position in subject\n</code>"
+    },
+    {
+      "id": "71",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "72",
+      "tag": "h2",
+      "text": "REPORTED MATCH POINT SETTING",
+      "html": "REPORTED MATCH POINT SETTING"
+    },
+    {
+      "id": "73",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "74",
+      "tag": "pre",
+      "text": "  \\K          set reported start of match\n",
+      "html": "<code>  \\K          set reported start of match\n</code>"
+    },
+    {
+      "id": "75",
+      "tag": "p",
+      "text": "\nFrom release 10.38 \\K is not permitted by default in lookaround assertions,\nfor compatibility with Perl. However, if the PCRE2_EXTRA_ALLOW_LOOKAROUND_BSK\noption is set, the previous behaviour is re-enabled. When this option is set,\n\\K is honoured in positive assertions, but ignored in negative ones.\n",
+      "html": "\nFrom release 10.38 \\K is not permitted by default in lookaround assertions,\nfor compatibility with Perl. However, if the PCRE2_EXTRA_ALLOW_LOOKAROUND_BSK\noption is set, the previous behaviour is re-enabled. When this option is set,\n\\K is honoured in positive assertions, but ignored in negative ones.\n"
+    },
+    {
+      "id": "76",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "77",
+      "tag": "h2",
+      "text": "ALTERNATION",
+      "html": "ALTERNATION"
+    },
+    {
+      "id": "78",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "79",
+      "tag": "pre",
+      "text": "  expr|expr|expr...\n",
+      "html": "<code>  expr|expr|expr...\n</code>"
+    },
+    {
+      "id": "80",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "81",
+      "tag": "h2",
+      "text": "CAPTURING",
+      "html": "CAPTURING"
+    },
+    {
+      "id": "82",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "83",
+      "tag": "pre",
+      "text": "  (...)           capture group\n  (?<name>...)    named capture group (Perl)\n  (?'name'...)    named capture group (Perl)\n  (?P<name>...)   named capture group (Python)\n  (?:...)         non-capture group\n  (?|...)         non-capture group; reset group numbers for\n                   capture groups in each alternative\n",
+      "html": "<code>  (...)           capture group\n  (?&lt;name&gt;...)    named capture group (Perl)\n  (?'name'...)    named capture group (Perl)\n  (?P&lt;name&gt;...)   named capture group (Python)\n  (?:...)         non-capture group\n  (?|...)         non-capture group; reset group numbers for\n                   capture groups in each alternative\n</code>"
+    },
+    {
+      "id": "84",
+      "tag": "p",
+      "text": "\nIn non-UTF modes, names may contain underscores and ASCII letters and digits;\nin UTF modes, any Unicode letters and Unicode decimal digits are permitted. In\nboth cases, a name must not start with a digit.\n",
+      "html": "\nIn non-UTF modes, names may contain underscores and ASCII letters and digits;\nin UTF modes, any Unicode letters and Unicode decimal digits are permitted. In\nboth cases, a name must not start with a digit.\n"
+    },
+    {
+      "id": "85",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "86",
+      "tag": "h2",
+      "text": "ATOMIC GROUPS",
+      "html": "ATOMIC GROUPS"
+    },
+    {
+      "id": "87",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "88",
+      "tag": "pre",
+      "text": "  (?>...)         atomic non-capture group\n  (*atomic:...)   atomic non-capture group\n",
+      "html": "<code>  (?&gt;...)         atomic non-capture group\n  (*atomic:...)   atomic non-capture group\n</code>"
+    },
+    {
+      "id": "89",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "90",
+      "tag": "h2",
+      "text": "COMMENT",
+      "html": "COMMENT"
+    },
+    {
+      "id": "91",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "92",
+      "tag": "pre",
+      "text": "  (?#....)        comment (not nestable)\n",
+      "html": "<code>  (?#....)        comment (not nestable)\n</code>"
+    },
+    {
+      "id": "93",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "94",
+      "tag": "h2",
+      "text": "OPTION SETTING",
+      "html": "OPTION SETTING"
+    },
+    {
+      "id": "95",
+      "tag": "p",
+      "text": "\nChanges of these options within a group are automatically cancelled at the end\nof the group.\n",
+      "html": "\nChanges of these options within a group are automatically cancelled at the end\nof the group.\n"
+    },
+    {
+      "id": "96",
+      "tag": "pre",
+      "text": "  (?a)            all ASCII options\n  (?aD)           restrict \\d to ASCII in UCP mode\n  (?aS)           restrict \\s to ASCII in UCP mode\n  (?aW)           restrict \\w to ASCII in UCP mode\n  (?aP)           restrict all POSIX classes to ASCII in UCP mode\n  (?aT)           restrict POSIX digit classes to ASCII in UCP mode\n  (?i)            caseless\n  (?J)            allow duplicate named groups\n  (?m)            multiline\n  (?n)            no auto capture\n  (?r)            restrict caseless to either ASCII or non-ASCII\n  (?s)            single line (dotall)\n  (?U)            default ungreedy (lazy)\n  (?x)            ignore white space except in classes or \\Q...\\E\n  (?xx)           as (?x) but also ignore space and tab in classes\n  (?-...)         unset the given option(s)\n  (?^)            unset imnrsx options\n",
+      "html": "<code>  (?a)            all ASCII options\n  (?aD)           restrict \\d to ASCII in UCP mode\n  (?aS)           restrict \\s to ASCII in UCP mode\n  (?aW)           restrict \\w to ASCII in UCP mode\n  (?aP)           restrict all POSIX classes to ASCII in UCP mode\n  (?aT)           restrict POSIX digit classes to ASCII in UCP mode\n  (?i)            caseless\n  (?J)            allow duplicate named groups\n  (?m)            multiline\n  (?n)            no auto capture\n  (?r)            restrict caseless to either ASCII or non-ASCII\n  (?s)            single line (dotall)\n  (?U)            default ungreedy (lazy)\n  (?x)            ignore white space except in classes or \\Q...\\E\n  (?xx)           as (?x) but also ignore space and tab in classes\n  (?-...)         unset the given option(s)\n  (?^)            unset imnrsx options\n</code>"
+    },
+    {
+      "id": "97",
+      "tag": "p",
+      "text": "\n(?aP) implies (?aT) as well, though this has no additional effect. However, it\nmeans that (?-aP) also implies (?-aT) and disables all ASCII restrictions for\nPOSIX classes.\n",
+      "html": "\n(?aP) implies (?aT) as well, though this has no additional effect. However, it\nmeans that (?-aP) also implies (?-aT) and disables all ASCII restrictions for\nPOSIX classes.\n"
+    },
+    {
+      "id": "98",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "99",
+      "tag": "p",
+      "text": "\nUnsetting x or xx unsets both. Several options may be set at once, and a\nmixture of setting and unsetting such as (?i-x) is allowed, but there may be\nonly one hyphen. Setting (but no unsetting) is allowed after (?^ for example\n(?^in). An option setting may appear at the start of a non-capture group, for\nexample (?i:...).\n",
+      "html": "\nUnsetting x or xx unsets both. Several options may be set at once, and a\nmixture of setting and unsetting such as (?i-x) is allowed, but there may be\nonly one hyphen. Setting (but no unsetting) is allowed after (?^ for example\n(?^in). An option setting may appear at the start of a non-capture group, for\nexample (?i:...).\n"
+    },
+    {
+      "id": "100",
+      "tag": "p",
+      "text": "\nThe following are recognized only at the very start of a pattern or after one\nof the newline or \\R sequences or options with similar syntax. More than one\nof them may appear. For the first three, d is a decimal number.\n",
+      "html": "\nThe following are recognized only at the very start of a pattern or after one\nof the newline or \\R sequences or options with similar syntax. More than one\nof them may appear. For the first three, d is a decimal number.\n"
+    },
+    {
+      "id": "101",
+      "tag": "pre",
+      "text": "  (*LIMIT_DEPTH=d)     set the backtracking limit to d\n  (*LIMIT_HEAP=d)      set the heap size limit to d * 1024 bytes\n  (*LIMIT_MATCH=d)     set the match limit to d\n  (*CASELESS_RESTRICT) set PCRE2_EXTRA_CASELESS_RESTRICT when matching\n  (*NOTEMPTY)          set PCRE2_NOTEMPTY when matching\n  (*NOTEMPTY_ATSTART)  set PCRE2_NOTEMPTY_ATSTART when matching\n  (*NO_AUTO_POSSESS)   no auto-possessification (PCRE2_NO_AUTO_POSSESS)\n  (*NO_DOTSTAR_ANCHOR) no .* anchoring (PCRE2_NO_DOTSTAR_ANCHOR)\n  (*NO_JIT)            disable JIT optimization\n  (*NO_START_OPT)      no start-match optimization (PCRE2_NO_START_OPTIMIZE)\n  (*TURKISH_CASING)    set PCRE2_EXTRA_TURKISH_CASING when matching\n  (*UTF)               set appropriate UTF mode for the library in use\n  (*UCP)               set PCRE2_UCP (use Unicode properties for \\d etc)\n",
+      "html": "<code>  (*LIMIT_DEPTH=d)     set the backtracking limit to d\n  (*LIMIT_HEAP=d)      set the heap size limit to d * 1024 bytes\n  (*LIMIT_MATCH=d)     set the match limit to d\n  (*CASELESS_RESTRICT) set PCRE2_EXTRA_CASELESS_RESTRICT when matching\n  (*NOTEMPTY)          set PCRE2_NOTEMPTY when matching\n  (*NOTEMPTY_ATSTART)  set PCRE2_NOTEMPTY_ATSTART when matching\n  (*NO_AUTO_POSSESS)   no auto-possessification (PCRE2_NO_AUTO_POSSESS)\n  (*NO_DOTSTAR_ANCHOR) no .* anchoring (PCRE2_NO_DOTSTAR_ANCHOR)\n  (*NO_JIT)            disable JIT optimization\n  (*NO_START_OPT)      no start-match optimization (PCRE2_NO_START_OPTIMIZE)\n  (*TURKISH_CASING)    set PCRE2_EXTRA_TURKISH_CASING when matching\n  (*UTF)               set appropriate UTF mode for the library in use\n  (*UCP)               set PCRE2_UCP (use Unicode properties for \\d etc)\n</code>"
+    },
+    {
+      "id": "102",
+      "tag": "p",
+      "text": "\nNote that LIMIT_DEPTH, LIMIT_HEAP, and LIMIT_MATCH can only reduce the value of\nthe limits set by the caller of pcre2_match() or pcre2_dfa_match(),\nnot increase them. LIMIT_RECURSION is an obsolete synonym for LIMIT_DEPTH. The\napplication can lock out the use of (*UTF) and (*UCP) by setting the\nPCRE2_NEVER_UTF or PCRE2_NEVER_UCP options, respectively, at compile time.\n",
+      "html": "\nNote that LIMIT_DEPTH, LIMIT_HEAP, and LIMIT_MATCH can only reduce the value of\nthe limits set by the caller of <b>pcre2_match()</b> or <b>pcre2_dfa_match()</b>,\nnot increase them. LIMIT_RECURSION is an obsolete synonym for LIMIT_DEPTH. The\napplication can lock out the use of (*UTF) and (*UCP) by setting the\nPCRE2_NEVER_UTF or PCRE2_NEVER_UCP options, respectively, at compile time.\n"
+    },
+    {
+      "id": "103",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "104",
+      "tag": "h2",
+      "text": "NEWLINE CONVENTION",
+      "html": "NEWLINE CONVENTION"
+    },
+    {
+      "id": "105",
+      "tag": "p",
+      "text": "\nThese are recognized only at the very start of the pattern or after option\nsettings with a similar syntax.\n",
+      "html": "\nThese are recognized only at the very start of the pattern or after option\nsettings with a similar syntax.\n"
+    },
+    {
+      "id": "106",
+      "tag": "pre",
+      "text": "  (*CR)           carriage return only\n  (*LF)           linefeed only\n  (*CRLF)         carriage return followed by linefeed\n  (*ANYCRLF)      all three of the above\n  (*ANY)          any Unicode newline sequence\n  (*NUL)          the NUL character (binary zero)\n",
+      "html": "<code>  (*CR)           carriage return only\n  (*LF)           linefeed only\n  (*CRLF)         carriage return followed by linefeed\n  (*ANYCRLF)      all three of the above\n  (*ANY)          any Unicode newline sequence\n  (*NUL)          the NUL character (binary zero)\n</code>"
+    },
+    {
+      "id": "107",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "108",
+      "tag": "h2",
+      "text": "WHAT \\R MATCHES",
+      "html": "WHAT \\R MATCHES"
+    },
+    {
+      "id": "109",
+      "tag": "p",
+      "text": "\nThese are recognized only at the very start of the pattern or after option\nsetting with a similar syntax.\n",
+      "html": "\nThese are recognized only at the very start of the pattern or after option\nsetting with a similar syntax.\n"
+    },
+    {
+      "id": "110",
+      "tag": "pre",
+      "text": "  (*BSR_ANYCRLF)  CR, LF, or CRLF\n  (*BSR_UNICODE)  any Unicode newline sequence\n",
+      "html": "<code>  (*BSR_ANYCRLF)  CR, LF, or CRLF\n  (*BSR_UNICODE)  any Unicode newline sequence\n</code>"
+    },
+    {
+      "id": "111",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "112",
+      "tag": "h2",
+      "text": "LOOKAHEAD AND LOOKBEHIND ASSERTIONS",
+      "html": "LOOKAHEAD AND LOOKBEHIND ASSERTIONS"
+    },
+    {
+      "id": "113",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "114",
+      "tag": "pre",
+      "text": "  (?=...)                     )\n  (*pla:...)                  ) positive lookahead\n  (*positive_lookahead:...)   )\n\n  (?!...)                     )\n  (*nla:...)                  ) negative lookahead\n  (*negative_lookahead:...)   )\n\n  (?<=...)                    )\n  (*plb:...)                  ) positive lookbehind\n  (*positive_lookbehind:...)  )\n\n  (?<!...)                    )\n  (*nlb:...)                  ) negative lookbehind\n  (*negative_lookbehind:...)  )\n",
+      "html": "<code>  (?=...)                     )\n  (*pla:...)                  ) positive lookahead\n  (*positive_lookahead:...)   )\n\n  (?!...)                     )\n  (*nla:...)                  ) negative lookahead\n  (*negative_lookahead:...)   )\n\n  (?&lt;=...)                    )\n  (*plb:...)                  ) positive lookbehind\n  (*positive_lookbehind:...)  )\n\n  (?&lt;!...)                    )\n  (*nlb:...)                  ) negative lookbehind\n  (*negative_lookbehind:...)  )\n</code>"
+    },
+    {
+      "id": "115",
+      "tag": "p",
+      "text": "\nEach top-level branch of a lookbehind must have a limit for the number of\ncharacters it matches. If any branch can match a variable number of characters,\nthe maximum for each branch is limited to a value set by the caller of\npcre2_compile() or defaulted. The default is set when PCRE2 is built\n(ultimate default 255). If every branch matches a fixed number of characters,\nthe limit for each branch is 65535 characters.\n",
+      "html": "\nEach top-level branch of a lookbehind must have a limit for the number of\ncharacters it matches. If any branch can match a variable number of characters,\nthe maximum for each branch is limited to a value set by the caller of\n<b>pcre2_compile()</b> or defaulted. The default is set when PCRE2 is built\n(ultimate default 255). If every branch matches a fixed number of characters,\nthe limit for each branch is 65535 characters.\n"
+    },
+    {
+      "id": "116",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "117",
+      "tag": "h2",
+      "text": "NON-ATOMIC LOOKAROUND ASSERTIONS",
+      "html": "NON-ATOMIC LOOKAROUND ASSERTIONS"
+    },
+    {
+      "id": "118",
+      "tag": "p",
+      "text": "\nThese assertions are specific to PCRE2 and are not Perl-compatible.\n",
+      "html": "\nThese assertions are specific to PCRE2 and are not Perl-compatible.\n"
+    },
+    {
+      "id": "119",
+      "tag": "pre",
+      "text": "  (?*...)                                )\n  (*napla:...)                           ) synonyms\n  (*non_atomic_positive_lookahead:...)   )\n\n  (?<*...)                               )\n  (*naplb:...)                           ) synonyms\n  (*non_atomic_positive_lookbehind:...)  )\n",
+      "html": "<code>  (?*...)                                )\n  (*napla:...)                           ) synonyms\n  (*non_atomic_positive_lookahead:...)   )\n\n  (?&lt;*...)                               )\n  (*naplb:...)                           ) synonyms\n  (*non_atomic_positive_lookbehind:...)  )\n</code>"
+    },
+    {
+      "id": "120",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "121",
+      "tag": "h2",
+      "text": "SUBSTRING SCAN ASSERTION",
+      "html": "SUBSTRING SCAN ASSERTION"
+    },
+    {
+      "id": "122",
+      "tag": "p",
+      "text": "\nThis feature is not Perl-compatible.\n",
+      "html": "\nThis feature is not Perl-compatible.\n"
+    },
+    {
+      "id": "123",
+      "tag": "pre",
+      "text": "  (*scan_substring:(grouplist)...)  scan captured substring\n  (*scs:(grouplist)...)             scan captured substring\n",
+      "html": "<code>  (*scan_substring:(grouplist)...)  scan captured substring\n  (*scs:(grouplist)...)             scan captured substring\n</code>"
+    },
+    {
+      "id": "124",
+      "tag": "p",
+      "text": "\nThe comma-separated list \"grouplist\" may identify groups in any of the\nfollowing ways:\n",
+      "html": "\nThe comma-separated list \"grouplist\" may identify groups in any of the\nfollowing ways:\n"
+    },
+    {
+      "id": "125",
+      "tag": "pre",
+      "text": "  n       absolute reference\n  +n      relative reference\n  -n      relative reference\n  <name>  name\n  'name'  name\n",
+      "html": "<code>  n       absolute reference\n  +n      relative reference\n  -n      relative reference\n  &lt;name&gt;  name\n  'name'  name\n</code>"
+    },
+    {
+      "id": "126",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "127",
+      "tag": "h2",
+      "text": "SCRIPT RUNS",
+      "html": "SCRIPT RUNS"
+    },
+    {
+      "id": "128",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "129",
+      "tag": "pre",
+      "text": "  (*script_run:...)           ) script run, can be backtracked into\n  (*sr:...)                   )\n\n  (*atomic_script_run:...)    ) atomic script run\n  (*asr:...)                  )\n",
+      "html": "<code>  (*script_run:...)           ) script run, can be backtracked into\n  (*sr:...)                   )\n\n  (*atomic_script_run:...)    ) atomic script run\n  (*asr:...)                  )\n</code>"
+    },
+    {
+      "id": "130",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "131",
+      "tag": "h2",
+      "text": "BACKREFERENCES",
+      "html": "BACKREFERENCES"
+    },
+    {
+      "id": "132",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "133",
+      "tag": "pre",
+      "text": "  \\n              reference by number (can be ambiguous)\n  \\gn             reference by number\n  \\g{n}           reference by number\n  \\g+n            relative reference by number (PCRE2 extension)\n  \\g-n            relative reference by number\n  \\g{+n}          relative reference by number (PCRE2 extension)\n  \\g{-n}          relative reference by number\n  \\k<name>        reference by name (Perl)\n  \\k'name'        reference by name (Perl)\n  \\g{name}        reference by name (Perl)\n  \\k{name}        reference by name (.NET)\n  (?P=name)       reference by name (Python)\n",
+      "html": "<code>  \\n              reference by number (can be ambiguous)\n  \\gn             reference by number\n  \\g{n}           reference by number\n  \\g+n            relative reference by number (PCRE2 extension)\n  \\g-n            relative reference by number\n  \\g{+n}          relative reference by number (PCRE2 extension)\n  \\g{-n}          relative reference by number\n  \\k&lt;name&gt;        reference by name (Perl)\n  \\k'name'        reference by name (Perl)\n  \\g{name}        reference by name (Perl)\n  \\k{name}        reference by name (.NET)\n  (?P=name)       reference by name (Python)\n</code>"
+    },
+    {
+      "id": "134",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "135",
+      "tag": "h2",
+      "text": "SUBROUTINE REFERENCES (POSSIBLY RECURSIVE)",
+      "html": "SUBROUTINE REFERENCES (POSSIBLY RECURSIVE)"
+    },
+    {
+      "id": "136",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "137",
+      "tag": "pre",
+      "text": "  (?R)            recurse whole pattern\n  (?n)            call subroutine by absolute number\n  (?+n)           call subroutine by relative number\n  (?-n)           call subroutine by relative number\n  (?&name)        call subroutine by name (Perl)\n  (?P>name)       call subroutine by name (Python)\n  \\g<name>        call subroutine by name (Oniguruma)\n  \\g'name'        call subroutine by name (Oniguruma)\n  \\g<n>           call subroutine by absolute number (Oniguruma)\n  \\g'n'           call subroutine by absolute number (Oniguruma)\n  \\g<+n>          call subroutine by relative number (PCRE2 extension)\n  \\g'+n'          call subroutine by relative number (PCRE2 extension)\n  \\g<-n>          call subroutine by relative number (PCRE2 extension)\n  \\g'-n'          call subroutine by relative number (PCRE2 extension)\n",
+      "html": "<code>  (?R)            recurse whole pattern\n  (?n)            call subroutine by absolute number\n  (?+n)           call subroutine by relative number\n  (?-n)           call subroutine by relative number\n  (?&amp;name)        call subroutine by name (Perl)\n  (?P&gt;name)       call subroutine by name (Python)\n  \\g&lt;name&gt;        call subroutine by name (Oniguruma)\n  \\g'name'        call subroutine by name (Oniguruma)\n  \\g&lt;n&gt;           call subroutine by absolute number (Oniguruma)\n  \\g'n'           call subroutine by absolute number (Oniguruma)\n  \\g&lt;+n&gt;          call subroutine by relative number (PCRE2 extension)\n  \\g'+n'          call subroutine by relative number (PCRE2 extension)\n  \\g&lt;-n&gt;          call subroutine by relative number (PCRE2 extension)\n  \\g'-n'          call subroutine by relative number (PCRE2 extension)\n</code>"
+    },
+    {
+      "id": "138",
+      "tag": "p",
+      "text": "\nThe variants using parentheses (?...) may also specify a list of capture groups\nto return, which shall be retained in the calling subexpression if set during\nthe recursion (this feature is not supported by Perl).\n",
+      "html": "\nThe variants using parentheses (?...) may also specify a list of capture groups\nto return, which shall be retained in the calling subexpression if set during\nthe recursion (this feature is not supported by Perl).\n"
+    },
+    {
+      "id": "139",
+      "tag": "pre",
+      "text": "  (?R(grouplist))       recurse whole pattern, returning capture groups\n                          (PCRE2 extension)\n  (?n(grouplist))       )\n  (?+n(grouplist))      ) call subroutine, returning capture groups\n  (?-n(grouplist))      )   (PCRE2 extension)\n  (?&name(grouplist))   )\n  (?P>name(grouplist))  )\n",
+      "html": "<code>  (?R(grouplist))       recurse whole pattern, returning capture groups\n                          (PCRE2 extension)\n  (?n(grouplist))       )\n  (?+n(grouplist))      ) call subroutine, returning capture groups\n  (?-n(grouplist))      )   (PCRE2 extension)\n  (?&amp;name(grouplist))   )\n  (?P&gt;name(grouplist))  )\n</code>"
+    },
+    {
+      "id": "140",
+      "tag": "p",
+      "text": "\nThe comma-separated list \"grouplist\" uses the same syntax as\n(*scan_substring:(grouplist)...), and may identify groups in any of the\nfollowing ways:\n",
+      "html": "\nThe comma-separated list \"grouplist\" uses the same syntax as\n(*scan_substring:(grouplist)...), and may identify groups in any of the\nfollowing ways:\n"
+    },
+    {
+      "id": "141",
+      "tag": "pre",
+      "text": "  n       absolute reference\n  +n      relative reference\n  -n      relative reference\n  <name>  name\n  'name'  name\n",
+      "html": "<code>  n       absolute reference\n  +n      relative reference\n  -n      relative reference\n  &lt;name&gt;  name\n  'name'  name\n</code>"
+    },
+    {
+      "id": "142",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "143",
+      "tag": "h2",
+      "text": "CONDITIONAL PATTERNS",
+      "html": "CONDITIONAL PATTERNS"
+    },
+    {
+      "id": "144",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "145",
+      "tag": "pre",
+      "text": "  (?(condition)yes-pattern)\n  (?(condition)yes-pattern|no-pattern)\n\n  (?(n)                absolute reference condition\n  (?(+n)               relative reference condition (PCRE2 extension)\n  (?(-n)               relative reference condition (PCRE2 extension)\n  (?(<name>)           named reference condition (Perl)\n  (?('name')           named reference condition (Perl)\n  (?(name)             named reference condition (PCRE2, deprecated)\n  (?(R)                overall recursion condition\n  (?(Rn)               specific numbered group recursion condition\n  (?(R&name)           specific named group recursion condition\n  (?(DEFINE)           define groups for reference\n  (?(VERSION[>]=n[.m]) test PCRE2 version\n  (?(assert)           assertion condition\n",
+      "html": "<code>  (?(condition)yes-pattern)\n  (?(condition)yes-pattern|no-pattern)\n\n  (?(n)                absolute reference condition\n  (?(+n)               relative reference condition (PCRE2 extension)\n  (?(-n)               relative reference condition (PCRE2 extension)\n  (?(&lt;name&gt;)           named reference condition (Perl)\n  (?('name')           named reference condition (Perl)\n  (?(name)             named reference condition (PCRE2, deprecated)\n  (?(R)                overall recursion condition\n  (?(Rn)               specific numbered group recursion condition\n  (?(R&amp;name)           specific named group recursion condition\n  (?(DEFINE)           define groups for reference\n  (?(VERSION[&gt;]=n[.m]) test PCRE2 version\n  (?(assert)           assertion condition\n</code>"
+    },
+    {
+      "id": "146",
+      "tag": "p",
+      "text": "\nNote the ambiguity of (?(R) and (?(Rn) which might be named reference\nconditions or recursion tests. Such a condition is interpreted as a reference\ncondition if the relevant named group exists.\n\n\nThe parts within brackets for the VERSION conditional syntax could be ommited.\nThe fractional part of the version number defaults to 0 in that case.\n",
+      "html": "\nNote the ambiguity of (?(R) and (?(Rn) which might be named reference\nconditions or recursion tests. Such a condition is interpreted as a reference\ncondition if the relevant named group exists.\n<br/>\n<br/>\nThe parts within brackets for the VERSION conditional syntax could be ommited.\nThe fractional part of the version number defaults to 0 in that case.\n"
+    },
+    {
+      "id": "147",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "148",
+      "tag": "h2",
+      "text": "BACKTRACKING CONTROL",
+      "html": "BACKTRACKING CONTROL"
+    },
+    {
+      "id": "149",
+      "tag": "p",
+      "text": "\nAll backtracking control verbs may be in the form (*VERB:NAME). For (*MARK) the\nname is mandatory, for the others it is optional. (*SKIP) changes its behaviour\nif :NAME is present. The others just set a name for passing back to the caller,\nbut this is not a name that (*SKIP) can see. The following act immediately they\nare reached:\n",
+      "html": "\nAll backtracking control verbs may be in the form (*VERB:NAME). For (*MARK) the\nname is mandatory, for the others it is optional. (*SKIP) changes its behaviour\nif :NAME is present. The others just set a name for passing back to the caller,\nbut this is not a name that (*SKIP) can see. The following act immediately they\nare reached:\n"
+    },
+    {
+      "id": "150",
+      "tag": "pre",
+      "text": "  (*ACCEPT)       force successful match\n  (*FAIL)         force backtrack; synonym (*F)\n  (*MARK:NAME)    set name to be passed back; synonym (*:NAME)\n",
+      "html": "<code>  (*ACCEPT)       force successful match\n  (*FAIL)         force backtrack; synonym (*F)\n  (*MARK:NAME)    set name to be passed back; synonym (*:NAME)\n</code>"
+    },
+    {
+      "id": "151",
+      "tag": "p",
+      "text": "\nThe following act only when a subsequent match failure causes a backtrack to\nreach them. They all force a match failure, but they differ in what happens\nafterwards. Those that advance the start-of-match point do so only if the\npattern is not anchored.\n",
+      "html": "\nThe following act only when a subsequent match failure causes a backtrack to\nreach them. They all force a match failure, but they differ in what happens\nafterwards. Those that advance the start-of-match point do so only if the\npattern is not anchored.\n"
+    },
+    {
+      "id": "152",
+      "tag": "pre",
+      "text": "  (*COMMIT)       overall failure, no advance of starting point\n  (*PRUNE)        advance to next starting character\n  (*SKIP)         advance to current matching position\n  (*SKIP:NAME)    advance to position corresponding to an earlier\n                  (*MARK:NAME); if not found, the (*SKIP) is ignored\n  (*THEN)         local failure, backtrack to next alternation\n",
+      "html": "<code>  (*COMMIT)       overall failure, no advance of starting point\n  (*PRUNE)        advance to next starting character\n  (*SKIP)         advance to current matching position\n  (*SKIP:NAME)    advance to position corresponding to an earlier\n                  (*MARK:NAME); if not found, the (*SKIP) is ignored\n  (*THEN)         local failure, backtrack to next alternation\n</code>"
+    },
+    {
+      "id": "153",
+      "tag": "p",
+      "text": "\nThe effect of one of these verbs in a group called as a subroutine is confined\nto the subroutine call.\n",
+      "html": "\nThe effect of one of these verbs in a group called as a subroutine is confined\nto the subroutine call.\n"
+    },
+    {
+      "id": "154",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "155",
+      "tag": "h2",
+      "text": "CALLOUTS",
+      "html": "CALLOUTS"
+    },
+    {
+      "id": "156",
+      "tag": "p",
+      "text": "\n",
+      "html": "\n"
+    },
+    {
+      "id": "157",
+      "tag": "pre",
+      "text": "  (?C)            callout (assumed number 0)\n  (?Cn)           callout with numerical data n\n  (?C\"text\")      callout with string data\n",
+      "html": "<code>  (?C)            callout (assumed number 0)\n  (?Cn)           callout with numerical data n\n  (?C\"text\")      callout with string data\n</code>"
+    },
+    {
+      "id": "158",
+      "tag": "p",
+      "text": "\nThe allowed string delimiters are ` ' \" ^ % # $ (which are the same for the\nstart and the end), and the starting delimiter { matched with the ending\ndelimiter }. To encode the ending delimiter within the string, double it.\n",
+      "html": "\nThe allowed string delimiters are ` ' \" ^ % # $ (which are the same for the\nstart and the end), and the starting delimiter { matched with the ending\ndelimiter }. To encode the ending delimiter within the string, double it.\n"
+    },
+    {
+      "id": "159",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "160",
+      "tag": "h2",
+      "text": "REPLACEMENT STRINGS",
+      "html": "REPLACEMENT STRINGS"
+    },
+    {
+      "id": "161",
+      "tag": "p",
+      "text": "\nIf the PCRE2_SUBSTITUTE_LITERAL option is set, a replacement string for\npcre2_substitute() is not interpreted. Otherwise, by default, the only\nspecial character is the dollar character in one of the following forms:\n",
+      "html": "\nIf the PCRE2_SUBSTITUTE_LITERAL option is set, a replacement string for\n<b>pcre2_substitute()</b> is not interpreted. Otherwise, by default, the only\nspecial character is the dollar character in one of the following forms:\n"
+    },
+    {
+      "id": "162",
+      "tag": "pre",
+      "text": "  $$                  insert a dollar character\n  $n or ${n}          insert the contents of group n\n  $<name>             insert the contents of named group\n  $0 or $&            insert the entire matched substring\n  $`                  insert the substring that precedes the match\n  $'                  insert the substring that follows the match\n  $_                  insert the entire input string\n  $+                  insert the highest-numbered capture group which matched\n  $*MARK or ${*MARK}  insert a control verb name\n",
+      "html": "<code>  $$                  insert a dollar character\n  $n or ${n}          insert the contents of group n\n  $&lt;name&gt;             insert the contents of named group\n  $0 or $&amp;            insert the entire matched substring\n  $`                  insert the substring that precedes the match\n  $'                  insert the substring that follows the match\n  $_                  insert the entire input string\n  $+                  insert the highest-numbered capture group which matched\n  $*MARK or ${*MARK}  insert a control verb name\n</code>"
+    },
+    {
+      "id": "163",
+      "tag": "p",
+      "text": "\nFor ${n}, n can be a name or a number. If PCRE2_SUBSTITUTE_EXTENDED is set,\nthere is additional interpretation:\n",
+      "html": "\nFor ${n}, n can be a name or a number. If PCRE2_SUBSTITUTE_EXTENDED is set,\nthere is additional interpretation:\n"
+    },
+    {
+      "id": "164",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "165",
+      "tag": "p",
+      "text": "\n1. Backslash is an escape character, and the forms described in \"ESCAPED\nCHARACTERS\" above are recognized. Also:\n",
+      "html": "\n1. Backslash is an escape character, and the forms described in \"ESCAPED\nCHARACTERS\" above are recognized. Also:\n"
+    },
+    {
+      "id": "166",
+      "tag": "pre",
+      "text": "  \\Q...\\E can be used to suppress interpretation\n  \\l      force the next character to lower case\n  \\u      force the next character to upper case\n  \\L      force subsequent characters to lower case\n  \\U      force subsequent characters to upper case\n  \\u\\L    force next character to upper case, then all lower\n  \\l\\U    force next character to lower case, then all upper\n  \\E      end \\L or \\U case forcing\n  \\b      backspace character (note: as in character class in pattern)\n  \\v      vertical tab character (note: not the same as in a pattern)\n",
+      "html": "<code>  \\Q...\\E can be used to suppress interpretation\n  \\l      force the next character to lower case\n  \\u      force the next character to upper case\n  \\L      force subsequent characters to lower case\n  \\U      force subsequent characters to upper case\n  \\u\\L    force next character to upper case, then all lower\n  \\l\\U    force next character to lower case, then all upper\n  \\E      end \\L or \\U case forcing\n  \\b      backspace character (note: as in character class in pattern)\n  \\v      vertical tab character (note: not the same as in a pattern)\n</code>"
+    },
+    {
+      "id": "167",
+      "tag": "p",
+      "text": "\n2. The Python form \\g<n>, where the angle brackets are part of the syntax and\nn is either a group name or a number, is recognized as an alternative way\nof inserting the contents of a group, for example \\g<3>.\n",
+      "html": "\n2. The Python form \\g&lt;n&gt;, where the angle brackets are part of the syntax and\n<i>n</i> is either a group name or a number, is recognized as an alternative way\nof inserting the contents of a group, for example \\g&lt;3&gt;.\n"
+    },
+    {
+      "id": "168",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "169",
+      "tag": "p",
+      "text": "\n3. Capture substitution supports the following additional forms:\n",
+      "html": "\n3. Capture substitution supports the following additional forms:\n"
+    },
+    {
+      "id": "170",
+      "tag": "pre",
+      "text": "  ${n:-string}             default for unset group\n  ${n:+string1:string2}    values for set/unset group\n",
+      "html": "<code>  ${n:-string}             default for unset group\n  ${n:+string1:string2}    values for set/unset group\n</code>"
+    },
+    {
+      "id": "171",
+      "tag": "p",
+      "text": "\nThe substitution strings themselves are expanded. Backslash can be used to\nescape colons and closing curly brackets.\n",
+      "html": "\nThe substitution strings themselves are expanded. Backslash can be used to\nescape colons and closing curly brackets.\n"
+    },
+    {
+      "id": "172",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "173",
+      "tag": "h2",
+      "text": "SEE ALSO",
+      "html": "SEE ALSO"
+    },
+    {
+      "id": "174",
+      "tag": "p",
+      "text": "\npcre2pattern(3), pcre2api(3), pcre2callout(3),\npcre2matching(3), pcre2(3).\n",
+      "html": "\n<b>pcre2pattern</b>(3), <b>pcre2api</b>(3), <b>pcre2callout</b>(3),\n<b>pcre2matching</b>(3), <b>pcre2</b>(3).\n"
+    },
+    {
+      "id": "175",
+      "tag": "h2",
+      "text": "AUTHOR",
+      "html": "AUTHOR"
+    },
+    {
+      "id": "176",
+      "tag": "p",
+      "text": "\nPhilip Hazel\n\nRetired from University Computing Service\n\nCambridge, England.\n\n",
+      "html": "\nPhilip Hazel\n<br/>\nRetired from University Computing Service\n<br/>\nCambridge, England.\n<br/>\n"
+    },
+    {
+      "id": "177",
+      "tag": "h2",
+      "text": "REVISION",
+      "html": "REVISION"
+    },
+    {
+      "id": "178",
+      "tag": "p",
+      "text": "\nLast updated: 14 October 2025\n\nCopyright © 1997-2024 University of Cambridge.\n\n",
+      "html": "\nLast updated: 14 October 2025\n<br/>\nCopyright © 1997-2024 University of Cambridge.\n<br/>\n"
+    }
+  ]
+}

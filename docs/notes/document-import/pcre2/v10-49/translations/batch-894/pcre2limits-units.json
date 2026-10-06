@@ -1,0 +1,103 @@
+{
+  "manual": "pcre2limits",
+  "slug": "01-guide/04-pcre2limits",
+  "sourceCanonicalSHA256": "de54a8e237200609a2fcd9127314c606ca95f7e41d6e4175c27d9089dbc1b0fd",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h2",
+      "text": "\nSIZE AND OTHER LIMITATIONS\n",
+      "html": "\nSIZE AND OTHER LIMITATIONS\n"
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "text": "\nThere are some size limitations in PCRE2 but it is hoped that they will never\nin practice be relevant.\n",
+      "html": "\nThere are some size limitations in PCRE2 but it is hoped that they will never\nin practice be relevant.\n"
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "text": "\nThe maximum size of a compiled pattern is approximately 64 thousand code units\nfor the 8-bit and 16-bit libraries if PCRE2 is compiled with the default\ninternal linkage size, which is 2 bytes for these libraries. If you want to\nprocess regular expressions that are truly enormous, you can compile PCRE2 with\nan internal linkage size of 3 or 4 (when building the 16-bit library, 3 is\nrounded up to 4). See the README file in the source distribution and the\npcre2build\ndocumentation for details. In these cases the limit is substantially larger.\nHowever, the speed of execution is slower. In the 32-bit library, the internal\nlinkage size is always 4.\n",
+      "html": "\nThe maximum size of a compiled pattern is approximately 64 thousand code units\nfor the 8-bit and 16-bit libraries if PCRE2 is compiled with the default\ninternal linkage size, which is 2 bytes for these libraries. If you want to\nprocess regular expressions that are truly enormous, you can compile PCRE2 with\nan internal linkage size of 3 or 4 (when building the 16-bit library, 3 is\nrounded up to 4). See the <b>README</b> file in the source distribution and the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2build.html\"><b>pcre2build</b></a>\ndocumentation for details. In these cases the limit is substantially larger.\nHowever, the speed of execution is slower. In the 32-bit library, the internal\nlinkage size is always 4.\n"
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "text": "\nThe maximum length of a source pattern string is essentially unlimited; it is\nthe largest number a PCRE2_SIZE variable can hold. However, the program that\ncalls pcre2_compile() can specify a smaller limit.\n",
+      "html": "\nThe maximum length of a source pattern string is essentially unlimited; it is\nthe largest number a PCRE2_SIZE variable can hold. However, the program that\ncalls <b>pcre2_compile()</b> can specify a smaller limit.\n"
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "text": "\nThe maximum length (in code units) of a subject string is one less than the\nlargest number a PCRE2_SIZE variable can hold. PCRE2_SIZE is an unsigned\ninteger type, usually defined as size_t. Its maximum value (that is\n~(PCRE2_SIZE)0) is reserved as a special indicator for zero-terminated strings\nand unset offsets.\n",
+      "html": "\nThe maximum length (in code units) of a subject string is one less than the\nlargest number a PCRE2_SIZE variable can hold. PCRE2_SIZE is an unsigned\ninteger type, usually defined as size_t. Its maximum value (that is\n~(PCRE2_SIZE)0) is reserved as a special indicator for zero-terminated strings\nand unset offsets.\n"
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "text": "\nAll values in repeating quantifiers must be less than 65536.\n",
+      "html": "\nAll values in repeating quantifiers must be less than 65536.\n"
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "text": "\nThere are two different limits that apply to branches of lookbehind assertions.\nIf every branch in such an assertion matches a fixed number of characters,\nthe maximum length of any branch is 65535 characters. If any branch matches a\nvariable number of characters, then the maximum matching length for every\nbranch is limited. The default limit is set at compile time, defaulting to 255,\nbut can be changed by the calling program.\n",
+      "html": "\nThere are two different limits that apply to branches of lookbehind assertions.\nIf every branch in such an assertion matches a fixed number of characters,\nthe maximum length of any branch is 65535 characters. If any branch matches a\nvariable number of characters, then the maximum matching length for every\nbranch is limited. The default limit is set at compile time, defaulting to 255,\nbut can be changed by the calling program.\n"
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "text": "\nThere is no limit to the number of parenthesized groups, but there can be no\nmore than 65535 capture groups, and there is a limit to the depth of nesting of\nparenthesized subpatterns of all kinds. This is imposed in order to limit the\namount of system stack used at compile time. The default limit can be specified\nwhen PCRE2 is built; if not, the default is set to 250. An application can\nchange this limit by calling pcre2_set_parens_nest_limit() to set the limit in\na compile context.\n",
+      "html": "\nThere is no limit to the number of parenthesized groups, but there can be no\nmore than 65535 capture groups, and there is a limit to the depth of nesting of\nparenthesized subpatterns of all kinds. This is imposed in order to limit the\namount of system stack used at compile time. The default limit can be specified\nwhen PCRE2 is built; if not, the default is set to 250. An application can\nchange this limit by calling pcre2_set_parens_nest_limit() to set the limit in\na compile context.\n"
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "text": "\nThe maximum length of the name for a named capture group as well as the number\nof such groups is configurable at build time. The maximum length for the name\ndefaults to\n128 code units, and the maximum number of such groups to\n10000.\n",
+      "html": "\nThe maximum length of the name for a named capture group as well as the number\nof such groups is configurable at build time. The maximum length for the name\ndefaults to\n128 code units, and the maximum number of such groups to\n10000.\n"
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "text": "\nThe maximum length of a name in a (*MARK), (*PRUNE), (*SKIP), or (*THEN) verb\nis 255 code units for the 8-bit library and 65535 code units for the 16-bit and\n32-bit libraries.\n",
+      "html": "\nThe maximum length of a name in a (*MARK), (*PRUNE), (*SKIP), or (*THEN) verb\nis 255 code units for the 8-bit library and 65535 code units for the 16-bit and\n32-bit libraries.\n"
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "text": "\nThe maximum length of a string argument to a callout is the largest number a\n32-bit unsigned integer can hold.\n",
+      "html": "\nThe maximum length of a string argument to a callout is the largest number a\n32-bit unsigned integer can hold.\n"
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "text": "\nThe maximum amount of heap memory used for matching is controlled by the heap\nlimit, which can be set in a pattern or in a match context. The default is a\nvery large number, effectively unlimited.\n",
+      "html": "\nThe maximum amount of heap memory used for matching is controlled by the heap\nlimit, which can be set in a pattern or in a match context. The default is a\nvery large number, effectively unlimited.\n"
+    },
+    {
+      "id": "13",
+      "tag": "h2",
+      "text": "\nAUTHOR\n",
+      "html": "\nAUTHOR\n"
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "text": "\nPhilip Hazel\n\nRetired from University Computing Service\n\nCambridge, England.\n\n",
+      "html": "\nPhilip Hazel\n<br/>\nRetired from University Computing Service\n<br/>\nCambridge, England.\n<br/>\n"
+    },
+    {
+      "id": "15",
+      "tag": "h2",
+      "text": "\nREVISION\n",
+      "html": "\nREVISION\n"
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "text": "\nLast updated: 03 September 2025\n\nCopyright © 1997-2023 University of Cambridge.\n\n",
+      "html": "\nLast updated: 03 September 2025\n<br/>\nCopyright © 1997-2023 University of Cambridge.\n<br/>\n"
+    }
+  ]
+}

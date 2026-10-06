@@ -1,0 +1,313 @@
+{
+  "manual": "pcre2matching",
+  "slug": "01-guide/03-pcre2matching",
+  "sourceCanonicalSHA256": "7aab88c5dde1884422a4065516548520d9b2085aabaaf277bc55bd944fb5620b",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h2",
+      "text": "PCRE2 MATCHING ALGORITHMS",
+      "html": "PCRE2 MATCHING ALGORITHMS"
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "text": "\nThis document describes the two different algorithms that are available in\nPCRE2 for matching a compiled regular expression against a given subject\nstring. The \"standard\" algorithm is the one provided by the pcre2_match()\nfunction. This works in the same way as Perl's matching function, and provides a\nPerl-compatible matching operation. The just-in-time (JIT) optimization that is\ndescribed in the\npcre2jit\ndocumentation is compatible with this function.\n",
+      "html": "\nThis document describes the two different algorithms that are available in\nPCRE2 for matching a compiled regular expression against a given subject\nstring. The \"standard\" algorithm is the one provided by the <b>pcre2_match()</b>\nfunction. This works in the same way as Perl's matching function, and provides a\nPerl-compatible matching operation. The just-in-time (JIT) optimization that is\ndescribed in the\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2jit.html\"><b>pcre2jit</b></a>\ndocumentation is compatible with this function.\n"
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "text": "\nAn alternative algorithm is provided by the pcre2_dfa_match() function;\nit operates in a different way, and is not Perl-compatible. This alternative\nhas advantages and disadvantages compared with the standard algorithm, and\nthese are described below.\n",
+      "html": "\nAn alternative algorithm is provided by the <b>pcre2_dfa_match()</b> function;\nit operates in a different way, and is not Perl-compatible. This alternative\nhas advantages and disadvantages compared with the standard algorithm, and\nthese are described below.\n"
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "text": "\nWhen there is only one possible way in which a given subject string can match a\npattern, the two algorithms give the same answer. A difference arises, however,\nwhen there are multiple possibilities. For example, if the anchored pattern\n",
+      "html": "\nWhen there is only one possible way in which a given subject string can match a\npattern, the two algorithms give the same answer. A difference arises, however,\nwhen there are multiple possibilities. For example, if the anchored pattern\n"
+    },
+    {
+      "id": "5",
+      "tag": "pre",
+      "text": "  ^<.*>\n",
+      "html": "<code>  ^&lt;.*&gt;\n</code>"
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "text": "\nis matched against the string\n",
+      "html": "\nis matched against the string\n"
+    },
+    {
+      "id": "7",
+      "tag": "pre",
+      "text": "  <something> <something else> <something further>\n",
+      "html": "<code>  &lt;something&gt; &lt;something else&gt; &lt;something further&gt;\n</code>"
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "text": "\nthere are three possible answers. The standard algorithm finds only one of\nthem, whereas the alternative algorithm finds all three.\n",
+      "html": "\nthere are three possible answers. The standard algorithm finds only one of\nthem, whereas the alternative algorithm finds all three.\n"
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "10",
+      "tag": "h2",
+      "text": "REGULAR EXPRESSIONS AS TREES",
+      "html": "REGULAR EXPRESSIONS AS TREES"
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "text": "\nThe set of strings that are matched by a regular expression can be represented\nas a tree structure. An unlimited repetition in the pattern makes the tree of\ninfinite size, but it is still a tree. Matching the pattern to a given subject\nstring (from a given starting point) can be thought of as a search of the tree.\nThere are two ways to search a tree: depth-first and breadth-first, and these\ncorrespond to the two matching algorithms provided by PCRE2.\n",
+      "html": "\nThe set of strings that are matched by a regular expression can be represented\nas a tree structure. An unlimited repetition in the pattern makes the tree of\ninfinite size, but it is still a tree. Matching the pattern to a given subject\nstring (from a given starting point) can be thought of as a search of the tree.\nThere are two ways to search a tree: depth-first and breadth-first, and these\ncorrespond to the two matching algorithms provided by PCRE2.\n"
+    },
+    {
+      "id": "12",
+      "tag": "h2",
+      "text": "THE STANDARD MATCHING ALGORITHM",
+      "html": "THE STANDARD MATCHING ALGORITHM"
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "text": "\nIn the terminology of Jeffrey Friedl's book \"Mastering Regular Expressions\",\nthe standard algorithm is an \"NFA algorithm\". It conducts a depth-first search\nof the pattern tree. That is, it proceeds along a single path through the tree,\nchecking that the subject matches what is required. When there is a mismatch,\nthe algorithm tries any alternatives at the current point, and if they all\nfail, it backs up to the previous branch point in the tree, and tries the next\nalternative branch at that level. This often involves backing up (moving to the\nleft) in the subject string as well. The order in which repetition branches are\ntried is controlled by the greedy or ungreedy nature of the quantifier.\n",
+      "html": "\nIn the terminology of Jeffrey Friedl's book \"Mastering Regular Expressions\",\nthe standard algorithm is an \"NFA algorithm\". It conducts a depth-first search\nof the pattern tree. That is, it proceeds along a single path through the tree,\nchecking that the subject matches what is required. When there is a mismatch,\nthe algorithm tries any alternatives at the current point, and if they all\nfail, it backs up to the previous branch point in the tree, and tries the next\nalternative branch at that level. This often involves backing up (moving to the\nleft) in the subject string as well. The order in which repetition branches are\ntried is controlled by the greedy or ungreedy nature of the quantifier.\n"
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "text": "\nIf a leaf node is reached, a matching string has been found, and at that point\nthe algorithm stops. Thus, if there is more than one possible match, this\nalgorithm returns the first one that it finds. Whether this is the shortest,\nthe longest, or some intermediate length depends on the way the alternations\nand the greedy or ungreedy repetition quantifiers are specified in the\npattern.\n",
+      "html": "\nIf a leaf node is reached, a matching string has been found, and at that point\nthe algorithm stops. Thus, if there is more than one possible match, this\nalgorithm returns the first one that it finds. Whether this is the shortest,\nthe longest, or some intermediate length depends on the way the alternations\nand the greedy or ungreedy repetition quantifiers are specified in the\npattern.\n"
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "text": "\nBecause it ends up with a single path through the tree, it is relatively\nstraightforward for this algorithm to keep track of the substrings that are\nmatched by portions of the pattern in parentheses. This provides support for\ncapturing parentheses and backreferences.\n",
+      "html": "\nBecause it ends up with a single path through the tree, it is relatively\nstraightforward for this algorithm to keep track of the substrings that are\nmatched by portions of the pattern in parentheses. This provides support for\ncapturing parentheses and backreferences.\n"
+    },
+    {
+      "id": "16",
+      "tag": "h2",
+      "text": "THE ALTERNATIVE MATCHING ALGORITHM",
+      "html": "THE ALTERNATIVE MATCHING ALGORITHM"
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "text": "\nThis algorithm conducts a breadth-first search of the tree. Starting from the\nfirst matching point in the subject, it scans the subject string from left to\nright, once, character by character, and as it does this, it remembers all the\npaths through the tree that represent valid matches. In Friedl's terminology,\nthis is a kind of \"DFA algorithm\", though it is not implemented as a\ntraditional finite state machine (it keeps multiple states active\nsimultaneously).\n",
+      "html": "\nThis algorithm conducts a breadth-first search of the tree. Starting from the\nfirst matching point in the subject, it scans the subject string from left to\nright, once, character by character, and as it does this, it remembers all the\npaths through the tree that represent valid matches. In Friedl's terminology,\nthis is a kind of \"DFA algorithm\", though it is not implemented as a\ntraditional finite state machine (it keeps multiple states active\nsimultaneously).\n"
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "text": "\nAlthough the general principle of this matching algorithm is that it scans the\nsubject string only once, without backtracking, there is one exception: when a\nlookaround assertion is encountered, the characters following or preceding the\ncurrent point have to be independently inspected.\n",
+      "html": "\nAlthough the general principle of this matching algorithm is that it scans the\nsubject string only once, without backtracking, there is one exception: when a\nlookaround assertion is encountered, the characters following or preceding the\ncurrent point have to be independently inspected.\n"
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "text": "\nThe scan continues until either the end of the subject is reached, or there are\nno more unterminated paths. At this point, terminated paths represent the\ndifferent matching possibilities (if there are none, the match has failed).\nThus, if there is more than one possible match, this algorithm finds all of\nthem, and in particular, it finds the longest. The matches are returned in\nthe output vector in decreasing order of length. There is an option to stop the\nalgorithm after the first match (which is necessarily the shortest) is found.\n",
+      "html": "\nThe scan continues until either the end of the subject is reached, or there are\nno more unterminated paths. At this point, terminated paths represent the\ndifferent matching possibilities (if there are none, the match has failed).\nThus, if there is more than one possible match, this algorithm finds all of\nthem, and in particular, it finds the longest. The matches are returned in\nthe output vector in decreasing order of length. There is an option to stop the\nalgorithm after the first match (which is necessarily the shortest) is found.\n"
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "text": "\nNote that the size of vector needed to contain all the results depends on the\nnumber of simultaneous matches, not on the number of capturing parentheses in\nthe pattern. Using pcre2_match_data_create_from_pattern() to create the\nmatch data block is therefore not advisable when doing DFA matching.\n",
+      "html": "\nNote that the size of vector needed to contain all the results depends on the\nnumber of simultaneous matches, not on the number of capturing parentheses in\nthe pattern. Using <b>pcre2_match_data_create_from_pattern()</b> to create the\nmatch data block is therefore not advisable when doing DFA matching.\n"
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "text": "\nNote also that all the matches that are found start at the same point in the\nsubject. If the pattern\n",
+      "html": "\nNote also that all the matches that are found start at the same point in the\nsubject. If the pattern\n"
+    },
+    {
+      "id": "22",
+      "tag": "pre",
+      "text": "  cat(er(pillar)?)?\n",
+      "html": "<code>  cat(er(pillar)?)?\n</code>"
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "text": "\nis matched against the string \"the caterpillar catchment\", the result is the\nthree strings \"caterpillar\", \"cater\", and \"cat\" that start at the fifth\ncharacter of the subject. The algorithm does not automatically move on to find\nmatches that start at later positions.\n",
+      "html": "\nis matched against the string \"the caterpillar catchment\", the result is the\nthree strings \"caterpillar\", \"cater\", and \"cat\" that start at the fifth\ncharacter of the subject. The algorithm does not automatically move on to find\nmatches that start at later positions.\n"
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "text": "\nPCRE2's \"auto-possessification\" optimization usually applies to character\nrepeats at the end of a pattern (as well as internally). For example, the\npattern \"a\\d+\" is compiled as if it were \"a\\d++\" because there is no point\neven considering the possibility of backtracking into the repeated digits. For\nDFA matching, this means that only one possible match is found. If you really\ndo want multiple matches in such cases, either use an ungreedy repeat\n(\"a\\d+?\") or set the PCRE2_NO_AUTO_POSSESS option when compiling.\n",
+      "html": "\nPCRE2's \"auto-possessification\" optimization usually applies to character\nrepeats at the end of a pattern (as well as internally). For example, the\npattern \"a\\d+\" is compiled as if it were \"a\\d++\" because there is no point\neven considering the possibility of backtracking into the repeated digits. For\nDFA matching, this means that only one possible match is found. If you really\ndo want multiple matches in such cases, either use an ungreedy repeat\n(\"a\\d+?\") or set the PCRE2_NO_AUTO_POSSESS option when compiling.\n"
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "text": "\nThere are a number of features of PCRE2 regular expressions that are not\nsupported or behave differently in the alternative matching function. Those\nthat are not supported cause an error if encountered.\n",
+      "html": "\nThere are a number of features of PCRE2 regular expressions that are not\nsupported or behave differently in the alternative matching function. Those\nthat are not supported cause an error if encountered.\n"
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "text": "\n1. Because the algorithm finds all possible matches, the greedy or ungreedy\nnature of repetition quantifiers is not relevant (though it may affect\nauto-possessification, as just described). During matching, greedy and ungreedy\nquantifiers are treated in exactly the same way. However, possessive\nquantifiers can make a difference when what follows could also match what is\nquantified, for example in a pattern like this:\n",
+      "html": "\n1. Because the algorithm finds all possible matches, the greedy or ungreedy\nnature of repetition quantifiers is not relevant (though it may affect\nauto-possessification, as just described). During matching, greedy and ungreedy\nquantifiers are treated in exactly the same way. However, possessive\nquantifiers can make a difference when what follows could also match what is\nquantified, for example in a pattern like this:\n"
+    },
+    {
+      "id": "28",
+      "tag": "pre",
+      "text": "  ^a++\\w!\n",
+      "html": "<code>  ^a++\\w!\n</code>"
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "text": "\nThis pattern matches \"aaab!\" but not \"aaa!\", which would be matched by a\nnon-possessive quantifier. Similarly, if an atomic group is present, it is\nmatched as if it were a standalone pattern at the current point, and the\nlongest match is then \"locked in\" for the rest of the overall pattern.\n",
+      "html": "\nThis pattern matches \"aaab!\" but not \"aaa!\", which would be matched by a\nnon-possessive quantifier. Similarly, if an atomic group is present, it is\nmatched as if it were a standalone pattern at the current point, and the\nlongest match is then \"locked in\" for the rest of the overall pattern.\n"
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "text": "",
+      "html": ""
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "text": "\n2. When dealing with multiple paths through the tree simultaneously, it is not\nstraightforward to keep track of captured substrings for the different matching\npossibilities, and PCRE2's implementation of this algorithm does not attempt to\ndo this. This means that no captured substrings are available.\n",
+      "html": "\n2. When dealing with multiple paths through the tree simultaneously, it is not\nstraightforward to keep track of captured substrings for the different matching\npossibilities, and PCRE2's implementation of this algorithm does not attempt to\ndo this. This means that no captured substrings are available.\n"
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "text": "\n3. Because no substrings are captured, a number of related features are not\navailable:\n\n\n(a) Backreferences;\n\n\n(b) Conditional expressions that use a backreference as the condition or test\nfor a specific group recursion;\n\n\n(c) Script runs;\n\n\n(d) Scan substring assertions.\n",
+      "html": "\n3. Because no substrings are captured, a number of related features are not\navailable:\n<br/>\n<br/>\n(a) Backreferences;\n<br/>\n<br/>\n(b) Conditional expressions that use a backreference as the condition or test\nfor a specific group recursion;\n<br/>\n<br/>\n(c) Script runs;\n<br/>\n<br/>\n(d) Scan substring assertions.\n"
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "text": "\n4. Because many paths through the tree may be active, the \\K escape sequence,\nwhich resets the start of the match when encountered (but may be on some paths\nand not on others), is not supported.\n",
+      "html": "\n4. Because many paths through the tree may be active, the \\K escape sequence,\nwhich resets the start of the match when encountered (but may be on some paths\nand not on others), is not supported.\n"
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "text": "\n5. Callouts are supported, but the value of the capture_top field is\nalways 1, and the value of the capture_last field is always 0.\n",
+      "html": "\n5. Callouts are supported, but the value of the <i>capture_top</i> field is\nalways 1, and the value of the <i>capture_last</i> field is always 0.\n"
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "text": "\n6. The \\C escape sequence, which (in the standard algorithm) always matches a\nsingle code unit, even in a UTF mode, is not supported in UTF modes because\nthe alternative algorithm moves through the subject string one character (not\ncode unit) at a time, for all active paths through the tree.\n",
+      "html": "\n6. The \\C escape sequence, which (in the standard algorithm) always matches a\nsingle code unit, even in a UTF mode, is not supported in UTF modes because\nthe alternative algorithm moves through the subject string one character (not\ncode unit) at a time, for all active paths through the tree.\n"
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "text": "\n7. Except for (*FAIL), the backtracking control verbs such as (*PRUNE) are not\nsupported. (*FAIL) is supported, and behaves like a failing negative assertion.\n",
+      "html": "\n7. Except for (*FAIL), the backtracking control verbs such as (*PRUNE) are not\nsupported. (*FAIL) is supported, and behaves like a failing negative assertion.\n"
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "text": "\n8. The PCRE2_MATCH_INVALID_UTF option for pcre2_compile() is not\nsupported by pcre2_dfa_match().\n",
+      "html": "\n8. The PCRE2_MATCH_INVALID_UTF option for <b>pcre2_compile()</b> is not\nsupported by <b>pcre2_dfa_match()</b>.\n"
+    },
+    {
+      "id": "38",
+      "tag": "h2",
+      "text": "ADVANTAGES OF THE ALTERNATIVE ALGORITHM",
+      "html": "ADVANTAGES OF THE ALTERNATIVE ALGORITHM"
+    },
+    {
+      "id": "39",
+      "tag": "p",
+      "text": "\nThe main advantage of the alternative algorithm is that all possible matches\n(at a single point in the subject) are automatically found, and in particular,\nthe longest match is found. To find more than one match at the same point using\nthe standard algorithm, you have to do kludgy things with callouts.\n",
+      "html": "\nThe main advantage of the alternative algorithm is that all possible matches\n(at a single point in the subject) are automatically found, and in particular,\nthe longest match is found. To find more than one match at the same point using\nthe standard algorithm, you have to do kludgy things with callouts.\n"
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "text": "\nPartial matching is possible with this algorithm, though it has some\nlimitations. The\npcre2partial\ndocumentation gives details of partial matching and discusses multi-segment\nmatching.\n",
+      "html": "\nPartial matching is possible with this algorithm, though it has some\nlimitations. The\n<a href=\"/docs/pcre2/source/v10-49/html/pcre2partial.html\"><b>pcre2partial</b></a>\ndocumentation gives details of partial matching and discusses multi-segment\nmatching.\n"
+    },
+    {
+      "id": "41",
+      "tag": "h2",
+      "text": "DISADVANTAGES OF THE ALTERNATIVE ALGORITHM",
+      "html": "DISADVANTAGES OF THE ALTERNATIVE ALGORITHM"
+    },
+    {
+      "id": "42",
+      "tag": "p",
+      "text": "\nThe alternative algorithm suffers from a number of disadvantages:\n",
+      "html": "\nThe alternative algorithm suffers from a number of disadvantages:\n"
+    },
+    {
+      "id": "43",
+      "tag": "p",
+      "text": "\n1. It is substantially slower than the standard algorithm. This is partly\nbecause it has to search for all possible matches, but is also because it is\nless susceptible to optimization.\n",
+      "html": "\n1. It is substantially slower than the standard algorithm. This is partly\nbecause it has to search for all possible matches, but is also because it is\nless susceptible to optimization.\n"
+    },
+    {
+      "id": "44",
+      "tag": "p",
+      "text": "\n2. Capturing parentheses and other features such as backreferences that rely on\nthem are not supported.\n",
+      "html": "\n2. Capturing parentheses and other features such as backreferences that rely on\nthem are not supported.\n"
+    },
+    {
+      "id": "45",
+      "tag": "p",
+      "text": "\n3. Matching within invalid UTF strings is not supported.\n",
+      "html": "\n3. Matching within invalid UTF strings is not supported.\n"
+    },
+    {
+      "id": "46",
+      "tag": "p",
+      "text": "\n4. Although atomic groups are supported, their use does not provide the\nperformance advantage that it does for the standard algorithm.\n",
+      "html": "\n4. Although atomic groups are supported, their use does not provide the\nperformance advantage that it does for the standard algorithm.\n"
+    },
+    {
+      "id": "47",
+      "tag": "p",
+      "text": "\n5. JIT optimization is not supported.\n",
+      "html": "\n5. JIT optimization is not supported.\n"
+    },
+    {
+      "id": "48",
+      "tag": "h2",
+      "text": "AUTHOR",
+      "html": "AUTHOR"
+    },
+    {
+      "id": "49",
+      "tag": "p",
+      "text": "\nPhilip Hazel\n\nRetired from University Computing Service\n\nCambridge, England.\n\n",
+      "html": "\nPhilip Hazel\n<br/>\nRetired from University Computing Service\n<br/>\nCambridge, England.\n<br/>\n"
+    },
+    {
+      "id": "50",
+      "tag": "h2",
+      "text": "REVISION",
+      "html": "REVISION"
+    },
+    {
+      "id": "51",
+      "tag": "p",
+      "text": "\nLast updated: 22 February 2025\n\nCopyright © 1997-2024 University of Cambridge.\n\n",
+      "html": "\nLast updated: 22 February 2025\n<br/>\nCopyright © 1997-2024 University of Cambridge.\n<br/>\n"
+    }
+  ]
+}
