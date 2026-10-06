@@ -1,0 +1,784 @@
+{
+  "page": "reference/request",
+  "at": "2026-10-04T21:45:15.522491+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/request.rst",
+      "sha256": "c798691f4f5cf400bbcd21a8e0610372d7457295d02fda0ba61348021cf16219"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/request.md",
+      "sha256": "2ccb1370b4f58072342de319cae337ea797e1b1884b2bd6c060f37c1151afffa"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/request.md",
+      "sha256": "a186d769b8bb18b7f7db48356728e103fe27cfb5868ded0450f48ba76f39e749"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 1 code block, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — Base request",
+      "ja": " — 基底リクエスト"
+    },
+    {
+      "index": 1,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 2,
+      "en": " is the base type for all libuv request types.",
+      "ja": "は、libuvのすべてのリクエスト型の基底型です。"
+    },
+    {
+      "index": 3,
+      "en": "Structures are aligned so that any libuv request can be cast to ",
+      "ja": "構造体は、libuvのどのリクエストも、"
+    },
+    {
+      "index": 4,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 5,
+      "en": ".\nAll API functions defined here work with any request type.",
+      "ja": "にキャストできるように配置されています。ここで定義するすべてのAPI関数は、どのリクエスト型でも使えます。"
+    },
+    {
+      "index": 6,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 7,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 8,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 9,
+      "en": "The base libuv request structure.",
+      "ja": "libuvの基底リクエスト構造体です。"
+    },
+    {
+      "index": 10,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 11,
+      "en": "uv_any_req",
+      "ja": "uv_any_req"
+    },
+    {
+      "index": 12,
+      "en": "Union of all request types.",
+      "ja": "すべてのリクエスト型の共用体です。"
+    },
+    {
+      "index": 13,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 14,
+      "en": "uv_req_type",
+      "ja": "uv_req_type"
+    },
+    {
+      "index": 15,
+      "en": "The kind of the libuv request.",
+      "ja": "libuvリクエストの種類です。"
+    },
+    {
+      "index": 16,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 17,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 18,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 19,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 20,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 21,
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "index": 22,
+      "en": "Space for user-defined arbitrary data. libuv does not use this field.",
+      "ja": "ユーザーが定義する任意のデータのための領域です。libuvはこのフィールドを使いません。"
+    },
+    {
+      "index": 23,
+      "en": "uv_req_type",
+      "ja": "uv_req_type"
+    },
+    {
+      "index": 24,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 25,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 26,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 27,
+      "en": "The ",
+      "ja": "リクエストの型を示す、"
+    },
+    {
+      "index": 28,
+      "en": ", indicating the type of the request. Readonly.",
+      "ja": "です。読み取り専用です。"
+    },
+    {
+      "index": 29,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 30,
+      "en": "UV_REQ_TYPE_MAP",
+      "ja": "UV_REQ_TYPE_MAP"
+    },
+    {
+      "index": 31,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 32,
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "index": 33,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 34,
+      "en": "Macro that expands to a series of invocations of ",
+      "ja": "各リクエスト型について、"
+    },
+    {
+      "index": 35,
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "index": 36,
+      "en": " for\neach of the request types. ",
+      "ja": "を呼び出す列に展開されるマクロです。"
+    },
+    {
+      "index": 37,
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "index": 38,
+      "en": " is invoked with two\narguments: the name of the ",
+      "ja": "は、2つの引数で呼び出されます。1つ目は、"
+    },
+    {
+      "index": 39,
+      "en": "uv_req_type",
+      "ja": "uv_req_type"
+    },
+    {
+      "index": 40,
+      "en": " element without the ",
+      "ja": "の要素名から、"
+    },
+    {
+      "index": 41,
+      "en": "UV_",
+      "ja": "UV_"
+    },
+    {
+      "index": 42,
+      "en": "\nprefix, and the name of the corresponding structure type without the\n",
+      "ja": "の接頭辞を除いた名前です。2つ目は、対応する構造体の型名から、"
+    },
+    {
+      "index": 43,
+      "en": "uv_",
+      "ja": "uv_"
+    },
+    {
+      "index": 44,
+      "en": " prefix and ",
+      "ja": "の接頭辞と、"
+    },
+    {
+      "index": 45,
+      "en": "_t",
+      "ja": "_t"
+    },
+    {
+      "index": 46,
+      "en": " suffix.",
+      "ja": "の接尾辞を除いた名前です。"
+    },
+    {
+      "index": 47,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 48,
+      "en": "uv_cancel",
+      "ja": "uv_cancel"
+    },
+    {
+      "index": 49,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 50,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 51,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 52,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 53,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 54,
+      "en": "Cancel a pending request. Fails if the request is executing or has finished\nexecuting. Write requests are an exception: cancellation of a write that is\nalready in progress will attempt to interrupt it (the callback may report\na partial write), and cancellation of an already-completed write is a\nsuccessful no-op.",
+      "ja": "保留中のリクエストをキャンセルします。実行中または実行を終えたリクエストでは失敗します。書き込みリクエストは例外です。進行中の書き込みのキャンセルでは、中断を試みます。コールバックが部分書き込みを報告することがあります。すでに完了した書き込みのキャンセルは、何もせず成功します。"
+    },
+    {
+      "index": 55,
+      "en": "Returns 0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 56,
+      "en": "Only cancellation of ",
+      "ja": "現在、キャンセルをサポートするリクエストは、"
+    },
+    {
+      "index": 57,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 58,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 59,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 60,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 61,
+      "en": " and ",
+      "ja": "と、"
+    },
+    {
+      "index": 62,
+      "en": " requests is currently\nsupported.",
+      "ja": "だけです。"
+    },
+    {
+      "index": 63,
+      "en": "Cancelled requests have their callbacks invoked some time in the future.\nIt’s ",
+      "ja": "キャンセルしたリクエストのコールバックは、後で呼び出されます。コールバックが呼び出されるまでは、リクエストに関連するメモリーを解放しては、"
+    },
+    {
+      "index": 64,
+      "en": "not",
+      "ja": "いけません"
+    },
+    {
+      "index": 65,
+      "en": " safe to free the memory associated with the request until the\ncallback is called.",
+      "ja": "。"
+    },
+    {
+      "index": 66,
+      "en": "Here is how cancellation is reported to the callback:",
+      "ja": "キャンセルは、次のようにコールバックへ通知されます。"
+    },
+    {
+      "index": 67,
+      "en": "A ",
+      "ja": "リクエストが、"
+    },
+    {
+      "index": 68,
+      "en": " request has its req->result field set to ",
+      "ja": "の場合は、req->resultフィールドが、"
+    },
+    {
+      "index": 69,
+      "en": "UV_ECANCELED",
+      "ja": "UV_ECANCELED"
+    },
+    {
+      "index": 70,
+      "en": ".",
+      "ja": "に設定されます。"
+    },
+    {
+      "index": 71,
+      "en": "A ",
+      "ja": "リクエストが、"
+    },
+    {
+      "index": 72,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 73,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 74,
+      "en": " or ",
+      "ja": "または、"
+    },
+    {
+      "index": 75,
+      "en": " request has its\ncallback invoked with status == ",
+      "ja": "の場合は、status == "
+    },
+    {
+      "index": 76,
+      "en": "UV_ECANCELED",
+      "ja": "UV_ECANCELED"
+    },
+    {
+      "index": 77,
+      "en": ".",
+      "ja": "としてコールバックが呼び出されます。"
+    },
+    {
+      "index": 78,
+      "en": "A ",
+      "ja": "リクエストが、"
+    },
+    {
+      "index": 79,
+      "en": " request has its callback invoked with\nstatus == ",
+      "ja": "の場合は、status == "
+    },
+    {
+      "index": 80,
+      "en": "UV_ECANCELED",
+      "ja": "UV_ECANCELED"
+    },
+    {
+      "index": 81,
+      "en": ". Use ",
+      "ja": "としてコールバックが呼び出されます。コールバック内で、"
+    },
+    {
+      "index": 82,
+      "en": " from the\ncallback to determine how many bytes were written before cancellation.\nFully cancelled writes (where no bytes were written) may have their\ncallbacks called out of order with respect to other writes on the same\nstream. Note that cancelled writes may still succeed or fail with\nother errors if the kernel finished processing the write before the\ncancellation took effect.",
+      "ja": "を使い、キャンセル前に書き込まれたバイト数を確認してください。完全にキャンセルされた書き込み、つまり1バイトも書き込まなかった書き込みでは、同じストリームの他の書き込みとは順序が異なる形でコールバックが呼ばれることがあります。キャンセルが効く前にカーネルが書き込みの処理を終えた場合、キャンセルした書き込みでも、成功したり、別のエラーで失敗したりすることがある点に注意してください。"
+    },
+    {
+      "index": 83,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 84,
+      "en": "uv_req_size",
+      "ja": "uv_req_size"
+    },
+    {
+      "index": 85,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 86,
+      "en": "uv_req_type",
+      "ja": "uv_req_type"
+    },
+    {
+      "index": 87,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 88,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 89,
+      "en": "Returns the size of the given request type. Useful for FFI binding writers\nwho don’t want to know the structure layout.",
+      "ja": "指定したリクエスト型のサイズを返します。構造体の配置を知りたくないFFIバインディングの作成者に役立ちます。"
+    },
+    {
+      "index": 90,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 91,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 92,
+      "en": "uv_req_get_data",
+      "ja": "uv_req_get_data"
+    },
+    {
+      "index": 93,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 94,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 95,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 96,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 97,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 98,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 99,
+      "en": "Returns ",
+      "ja": "戻り値は、"
+    },
+    {
+      "index": 100,
+      "en": "req->data",
+      "ja": "req->data"
+    },
+    {
+      "index": 101,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 102,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 103,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 104,
+      "en": "uv_req_set_data",
+      "ja": "uv_req_set_data"
+    },
+    {
+      "index": 105,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 106,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 107,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 108,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 109,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 110,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 111,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 112,
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "index": 113,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 114,
+      "en": "Sets ",
+      "ja": "次のフィールド、"
+    },
+    {
+      "index": 115,
+      "en": "req->data",
+      "ja": "req->data"
+    },
+    {
+      "index": 116,
+      "en": " to ",
+      "ja": "を、"
+    },
+    {
+      "index": 117,
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "index": 118,
+      "en": ".",
+      "ja": "に設定します。"
+    },
+    {
+      "index": 119,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 120,
+      "en": "uv_req_type",
+      "ja": "uv_req_type"
+    },
+    {
+      "index": 121,
+      "en": "uv_req_get_type",
+      "ja": "uv_req_get_type"
+    },
+    {
+      "index": 122,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 123,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 124,
+      "en": "uv_req_t",
+      "ja": "uv_req_t"
+    },
+    {
+      "index": 125,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 126,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 127,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 128,
+      "en": "Returns ",
+      "ja": "戻り値は、"
+    },
+    {
+      "index": 129,
+      "en": "req->type",
+      "ja": "req->type"
+    },
+    {
+      "index": 130,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 131,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 132,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 133,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 134,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 135,
+      "en": "uv_req_type_name",
+      "ja": "uv_req_type_name"
+    },
+    {
+      "index": 136,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 137,
+      "en": "uv_req_type",
+      "ja": "uv_req_type"
+    },
+    {
+      "index": 138,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 139,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 140,
+      "en": "Returns the name for the equivalent struct for a given request type,\ne.g. ",
+      "ja": "指定したリクエスト型に対応する構造体の名前を返します。たとえば、"
+    },
+    {
+      "index": 141,
+      "en": "“connect”",
+      "ja": "「connect」"
+    },
+    {
+      "index": 142,
+      "en": " (as in ",
+      "ja": "という、"
+    },
+    {
+      "index": 143,
+      "en": ") for ",
+      "ja": "に対応する名前が、"
+    },
+    {
+      "index": 144,
+      "en": "UV_CONNECT",
+      "ja": "UV_CONNECT"
+    },
+    {
+      "index": 145,
+      "en": ".",
+      "ja": "に対して返されます。"
+    },
+    {
+      "index": 146,
+      "en": "If no such request type exists, this returns ",
+      "ja": "該当するリクエスト型がなければ、"
+    },
+    {
+      "index": 147,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 148,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 149,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 1,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

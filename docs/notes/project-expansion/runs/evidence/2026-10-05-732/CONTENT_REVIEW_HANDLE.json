@@ -1,0 +1,77 @@
+{
+  "page": "reference/handle",
+  "status": "passed",
+  "at": "2026-10-04T21:54:27.743959+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-text review after731 translation; complete source/current EN/current JA and footer read. One cited ordinary word translated during review, then actual output/build/API/code checks rerun. Semantic and mechanical reviews distinct.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/handle.rst",
+      "sha256": "8bd15a65a57b0d07e71c06ca367e4dd4a99eab195287b041804eba539ae8e6bb"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/handle.md",
+      "sha256": "08d22720dbd88c1c93aa6f91aaf0c1851a7fd469e5cb54784c27bdac5f788616"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/handle.md",
+      "sha256": "0538aa83350793e88f630e18398730d292c36963713dc36eb78726be22f49cb3"
+    }
+  ],
+  "coverage": {
+    "original": "all handle.rst including all literalinclude directives/full inline code/ref/footnote",
+    "canonical": "all current article/code/footer",
+    "translation": "all current Japanese article/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "complete source/EN/JA/code/footer",
+      "result": "Complete original handle.rst and current full EN/JA read in separate review after731 full translation. All351mapped nodes/24declarations/two code blocks/all headings/admonitions/version/footer covered, no unread ranges. Final ordinary cited active corrected to アクティブ; API/code unchanged."
+    },
+    {
+      "scope": "types, allocation and handle lifetime",
+      "result": "Aligned casts/base/union/full enum preserved. Not movable and valid pointers throughout requested operation/stack caution retained. alloc callback buffer allocation, baseNULL or length0 ENOBUFS, one-use/free responsibility, 65536 advisory unrelated pending data and custom allocators retained. Close must precede memory release, only in/after callback, fd immediate close but deferred callback, in-flight req async canceled, nullable callback retained."
+    },
+    {
+      "scope": "activity and references",
+      "result": "Async always active unless closed, stream/socket I/O activity and check/idle/timer start/stop distinction retained. is_closing valid init-through-closecallback range and nonzero/zero values retained. ref/unref idempotence, no counter and active AND referenced default-run requirement retained; unref after timer-start ordering exact."
+    },
+    {
+      "scope": "miscellaneous functions/platform conditions",
+      "result": "FFI size, *value0 read versus positive set, return0/negative, Unix TCP/pipe/UDP versus Windows TCP/UDP, Linux double-size caveat for send/receive retained. fileno supported five handle types, EINVAL versus unattached/closed EBADF and no interfering fd warning retained. Loop/data/type getters/setter, pipe naming/NULL fallback and allfive1.19notes retained."
+    },
+    {
+      "scope": "source and validation boundary",
+      "result": "Fixed licences/commit/original source and unofficial JA notices remain footer. Original EN/RST and previous23reviewed inputs unchanged. Signatures/code and actual rendered output rechecked after small prose correction, distinct from this semantic review. Prebuild setup731 reused unchanged, Astro build732 rerun; native/runtime/whole project not claimed."
+    }
+  ],
+  "corrections": [
+    "Ordinary cited active translated to アクティブ; original declarations/code retained."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-732/READABILITY_CORRECTION.json",
+      "sha256": "d97d0a4a5fd4cef4838f7046badca815d592609f377d9f97dfc8fd036fc7a3d9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-732/API_VERIFICATION.json",
+      "sha256": "732aba2d03d866b3412a1c94e75728046fbcdffb3299e0377194168f9a655b39"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-732/RENDER_VERIFICATION.json",
+      "sha256": "2a10d9d35bba577a86c676e40fae7f86da3ac2fdee05ea276f482d82286bdc6f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-732/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "21ecc83b6ed6cf05a01265acfa16bda6fcb7686e441f4ad5fdb4b11239b74334"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

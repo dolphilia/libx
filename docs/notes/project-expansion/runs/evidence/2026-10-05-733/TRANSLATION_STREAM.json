@@ -1,0 +1,2299 @@
+{
+  "page": "reference/stream",
+  "at": "2026-10-04T21:57:40.258210+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/stream.rst",
+      "sha256": "eaf5239705b37beb496dab820bb3414578b64ad86cd5299ff0f1ce9f43868f5c"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/stream.md",
+      "sha256": "f1bde4022c89437fde02790b70101e0bf3b0c8e5c8f5705337c142d033b6261f"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/stream.md",
+      "sha256": "70a88f5c8eb891fba8ff5e8abf87035ce1ba802502e52d0b0ef3d71c5fbd136b"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 1 code block, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — Stream handle",
+      "ja": " — ストリームハンドル"
+    },
+    {
+      "index": 1,
+      "en": "Stream handles provide an abstraction of a duplex communication channel.\n",
+      "ja": "ストリームハンドルは、双方向の通信路を抽象化します。"
+    },
+    {
+      "index": 2,
+      "en": " is an abstract type, libuv provides 3 stream implementations\nin the form of ",
+      "ja": "は抽象型です。libuvは、"
+    },
+    {
+      "index": 3,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 4,
+      "en": " and ",
+      "ja": "と、"
+    },
+    {
+      "index": 5,
+      "en": ".",
+      "ja": "という3種類のストリーム実装を提供します。"
+    },
+    {
+      "index": 6,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 7,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 8,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 9,
+      "en": "Stream handle type.",
+      "ja": "ストリームハンドルの型です。"
+    },
+    {
+      "index": 10,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 11,
+      "en": "uv_connect_t",
+      "ja": "uv_connect_t"
+    },
+    {
+      "index": 12,
+      "en": "Connect request type.",
+      "ja": "接続リクエストの型です。"
+    },
+    {
+      "index": 13,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 14,
+      "en": "uv_shutdown_t",
+      "ja": "uv_shutdown_t"
+    },
+    {
+      "index": 15,
+      "en": "Shutdown request type.",
+      "ja": "シャットダウンリクエストの型です。"
+    },
+    {
+      "index": 16,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 17,
+      "en": "uv_write_t",
+      "ja": "uv_write_t"
+    },
+    {
+      "index": 18,
+      "en": "Write request type. Careful attention must be paid when reusing objects of\nthis type. When a stream is in non-blocking mode, write requests sent\nwith ",
+      "ja": "書き込みリクエストの型です。この型のオブジェクトを再利用するときは、十分注意してください。ストリームが非ブロッキングモードの場合、"
+    },
+    {
+      "index": 19,
+      "en": " will be queued. Reusing objects at this point is undefined\nbehaviour. It is safe to reuse the ",
+      "ja": "で送った書き込みリクエストはキューに入ります。この時点でオブジェクトを再利用すると、未定義動作になります。"
+    },
+    {
+      "index": 20,
+      "en": " object only after the\ncallback passed to ",
+      "ja": "オブジェクトを安全に再利用できるのは、"
+    },
+    {
+      "index": 21,
+      "en": " is fired.",
+      "ja": "へ渡したコールバックが呼び出された後だけです。"
+    },
+    {
+      "index": 22,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 23,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 24,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 25,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 26,
+      "en": "uv_read_cb",
+      "ja": "uv_read_cb"
+    },
+    {
+      "index": 27,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 28,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 29,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 30,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 31,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 32,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 33,
+      "en": "ssize_t",
+      "ja": "ssize_t"
+    },
+    {
+      "index": 34,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 35,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 36,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 37,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 38,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 39,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 40,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 41,
+      "en": "Callback called when data was read on a stream.",
+      "ja": "ストリームからデータを読み取ったときに呼び出されるコールバックです。"
+    },
+    {
+      "index": 42,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 43,
+      "en": " is > 0 if there is data available or < 0 on error. When we’ve\nreached EOF, ",
+      "ja": "は、利用できるデータがあれば0より大きく、エラー時は0未満です。EOFに達すると、"
+    },
+    {
+      "index": 44,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 45,
+      "en": " will be set to ",
+      "ja": "は、"
+    },
+    {
+      "index": 46,
+      "en": ". When ",
+      "ja": "に設定されます。"
+    },
+    {
+      "index": 47,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 48,
+      "en": " < 0,\nthe ",
+      "ja": " < 0の場合、"
+    },
+    {
+      "index": 49,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 50,
+      "en": " parameter might not point to a valid buffer; in that case\n",
+      "ja": "パラメーターが有効なバッファを指していない可能性があります。その場合、"
+    },
+    {
+      "index": 51,
+      "en": "buf.len",
+      "ja": "buf.len"
+    },
+    {
+      "index": 52,
+      "en": " and ",
+      "ja": "と、"
+    },
+    {
+      "index": 53,
+      "en": "buf.base",
+      "ja": "buf.base"
+    },
+    {
+      "index": 54,
+      "en": " are both set to 0.",
+      "ja": "は両方とも0に設定されます。"
+    },
+    {
+      "index": 55,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 56,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 57,
+      "en": " might be 0, which does ",
+      "ja": "が0になる場合もありますが、これはエラーやEOFを、"
+    },
+    {
+      "index": 58,
+      "en": "not",
+      "ja": "意味しません"
+    },
+    {
+      "index": 59,
+      "en": " indicate an error or EOF. This\nis equivalent to ",
+      "ja": "。"
+    },
+    {
+      "index": 60,
+      "en": " or ",
+      "ja": "や、"
+    },
+    {
+      "index": 61,
+      "en": " under ",
+      "ja": "での、"
+    },
+    {
+      "index": 62,
+      "en": ".",
+      "ja": "と同等です。"
+    },
+    {
+      "index": 63,
+      "en": "The callee is responsible for stopping/closing the stream when an error happens\nby calling ",
+      "ja": "エラーが発生したときは、コールバック側が、"
+    },
+    {
+      "index": 64,
+      "en": " or ",
+      "ja": "または、"
+    },
+    {
+      "index": 65,
+      "en": ". Trying to read\nfrom the stream again is undefined.",
+      "ja": "を呼び出してストリームを停止または閉じる責任があります。そのストリームから再び読み取ろうとした場合の動作は未定義です。"
+    },
+    {
+      "index": 66,
+      "en": "The callee is responsible for freeing the buffer, libuv does not reuse it.\nThe buffer may be a null buffer (where ",
+      "ja": "バッファの解放はコールバック側の責任であり、libuvは再利用しません。エラー時には、バッファがヌルバッファ、つまり、"
+    },
+    {
+      "index": 67,
+      "en": "buf->base",
+      "ja": "buf->base"
+    },
+    {
+      "index": 68,
+      "en": " == NULL and ",
+      "ja": " == NULLかつ、"
+    },
+    {
+      "index": 69,
+      "en": "buf->len",
+      "ja": "buf->len"
+    },
+    {
+      "index": 70,
+      "en": " == 0)\non error.",
+      "ja": " == 0の場合があります。"
+    },
+    {
+      "index": 71,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 72,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 73,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 74,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 75,
+      "en": "uv_write_cb",
+      "ja": "uv_write_cb"
+    },
+    {
+      "index": 76,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 77,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 78,
+      "en": "uv_write_t",
+      "ja": "uv_write_t"
+    },
+    {
+      "index": 79,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 80,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 81,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 82,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 83,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 84,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 85,
+      "en": "Callback called after data was written on a stream. ",
+      "ja": "ストリームにデータを書き込んだ後に呼び出されるコールバックです。"
+    },
+    {
+      "index": 86,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 87,
+      "en": " will be 0 in\ncase of success, < 0 otherwise.",
+      "ja": "は、成功時は0、それ以外は0未満です。"
+    },
+    {
+      "index": 88,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 89,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 90,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 91,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 92,
+      "en": "uv_connect_cb",
+      "ja": "uv_connect_cb"
+    },
+    {
+      "index": 93,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 94,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 95,
+      "en": "uv_connect_t",
+      "ja": "uv_connect_t"
+    },
+    {
+      "index": 96,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 97,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 98,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 99,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 100,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 101,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 102,
+      "en": "Callback called after a connection started by ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 103,
+      "en": " is done.\n",
+      "ja": "で開始した接続が完了した後に呼び出されるコールバックです。"
+    },
+    {
+      "index": 104,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 105,
+      "en": " will be 0 in case of success, < 0 otherwise.",
+      "ja": "は、成功時は0、それ以外は0未満です。"
+    },
+    {
+      "index": 106,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 107,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 108,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 109,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 110,
+      "en": "uv_shutdown_cb",
+      "ja": "uv_shutdown_cb"
+    },
+    {
+      "index": 111,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 112,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 113,
+      "en": "uv_shutdown_t",
+      "ja": "uv_shutdown_t"
+    },
+    {
+      "index": 114,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 115,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 116,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 117,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 118,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 119,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 120,
+      "en": "Callback called after a shutdown request has been completed. ",
+      "ja": "シャットダウンリクエストが完了した後に呼び出されるコールバックです。"
+    },
+    {
+      "index": 121,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 122,
+      "en": " will\nbe 0 in case of success, < 0 otherwise.",
+      "ja": "は、成功時は0、それ以外は0未満です。"
+    },
+    {
+      "index": 123,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 124,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 125,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 126,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 127,
+      "en": "uv_connection_cb",
+      "ja": "uv_connection_cb"
+    },
+    {
+      "index": 128,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 129,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 130,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 131,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 132,
+      "en": "server",
+      "ja": "server"
+    },
+    {
+      "index": 133,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 134,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 135,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 136,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 137,
+      "en": "Callback called when a stream server has received an incoming connection.\nThe user can accept the connection by calling ",
+      "ja": "ストリームサーバーに接続が到着したときに呼び出されるコールバックです。ユーザーは、"
+    },
+    {
+      "index": 138,
+      "en": ".\n",
+      "ja": "を呼び出して接続を受け付けられます。"
+    },
+    {
+      "index": 139,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 140,
+      "en": " will be 0 in case of success, < 0 otherwise.",
+      "ja": "は、成功時は0、それ以外は0未満です。"
+    },
+    {
+      "index": 141,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 142,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 143,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 144,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 145,
+      "en": "write_queue_size",
+      "ja": "write_queue_size"
+    },
+    {
+      "index": 146,
+      "en": "Contains the amount of queued bytes waiting to be sent. Readonly.",
+      "ja": "送信を待つ、キュー内のバイト数が入っています。読み取り専用です。"
+    },
+    {
+      "index": 147,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 148,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 149,
+      "en": "uv_connect_t",
+      "ja": "uv_connect_t"
+    },
+    {
+      "index": 150,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 151,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 152,
+      "en": "Pointer to the stream where this connection request is running.",
+      "ja": "この接続リクエストが動作しているストリームへのポインターです。"
+    },
+    {
+      "index": 153,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 154,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 155,
+      "en": "uv_shutdown_t",
+      "ja": "uv_shutdown_t"
+    },
+    {
+      "index": 156,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 157,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 158,
+      "en": "Pointer to the stream where this shutdown request is running.",
+      "ja": "このシャットダウンリクエストが動作しているストリームへのポインターです。"
+    },
+    {
+      "index": 159,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 160,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 161,
+      "en": "uv_write_t",
+      "ja": "uv_write_t"
+    },
+    {
+      "index": 162,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 163,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 164,
+      "en": "Pointer to the stream where this write request is running.",
+      "ja": "この書き込みリクエストが動作しているストリームへのポインターです。"
+    },
+    {
+      "index": 165,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 166,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 167,
+      "en": "uv_write_t",
+      "ja": "uv_write_t"
+    },
+    {
+      "index": 168,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 169,
+      "en": "send_handle",
+      "ja": "send_handle"
+    },
+    {
+      "index": 170,
+      "en": "Pointer to the stream being sent using this write request.",
+      "ja": "この書き込みリクエストで送信するストリームへのポインターです。"
+    },
+    {
+      "index": 171,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 172,
+      "en": "The ",
+      "ja": "次の型、"
+    },
+    {
+      "index": 173,
+      "en": " members also apply.",
+      "ja": "のメンバーも適用されます。"
+    },
+    {
+      "index": 174,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 175,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 176,
+      "en": "uv_shutdown",
+      "ja": "uv_shutdown"
+    },
+    {
+      "index": 177,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 178,
+      "en": "uv_shutdown_t",
+      "ja": "uv_shutdown_t"
+    },
+    {
+      "index": 179,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 180,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 181,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 182,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 183,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 184,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 185,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 186,
+      "en": "uv_shutdown_cb",
+      "ja": "uv_shutdown_cb"
+    },
+    {
+      "index": 187,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 188,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 189,
+      "en": "Shutdown the outgoing (write) side of a duplex stream. It waits for pending\nwrite requests to complete. The ",
+      "ja": "双方向ストリームの送信側、つまり書き込み側をシャットダウンします。保留中の書き込みリクエストの完了を待ちます。"
+    },
+    {
+      "index": 190,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 191,
+      "en": " should refer to a initialized stream.\n",
+      "ja": "は、初期化済みのストリームを指す必要があります。"
+    },
+    {
+      "index": 192,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 193,
+      "en": " should be an uninitialized shutdown request struct. The ",
+      "ja": "は、未初期化のシャットダウンリクエスト構造体でなければなりません。"
+    },
+    {
+      "index": 194,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 195,
+      "en": " is called\nafter shutdown is complete.",
+      "ja": "は、シャットダウン完了後に呼び出されます。"
+    },
+    {
+      "index": 196,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 197,
+      "en": "uv_listen",
+      "ja": "uv_listen"
+    },
+    {
+      "index": 198,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 199,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 200,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 201,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 202,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 203,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 204,
+      "en": "backlog",
+      "ja": "backlog"
+    },
+    {
+      "index": 205,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 206,
+      "en": "uv_connection_cb",
+      "ja": "uv_connection_cb"
+    },
+    {
+      "index": 207,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 208,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 209,
+      "en": "Start listening for incoming connections. ",
+      "ja": "接続の待ち受けを開始します。"
+    },
+    {
+      "index": 210,
+      "en": "backlog",
+      "ja": "backlog"
+    },
+    {
+      "index": 211,
+      "en": " indicates the number of\nconnections the kernel might queue, same as ",
+      "ja": "は、カーネルがキューに入れられる接続数を表し、"
+    },
+    {
+      "index": 212,
+      "en": "listen(2)",
+      "ja": "listen(2)"
+    },
+    {
+      "index": 213,
+      "en": ". When a new\nincoming connection is received the ",
+      "ja": "と同じです。新しい接続が到着すると、"
+    },
+    {
+      "index": 214,
+      "en": " callback is\ncalled.",
+      "ja": "コールバックが呼び出されます。"
+    },
+    {
+      "index": 215,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 216,
+      "en": "uv_accept",
+      "ja": "uv_accept"
+    },
+    {
+      "index": 217,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 218,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 219,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 220,
+      "en": "server",
+      "ja": "server"
+    },
+    {
+      "index": 221,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 222,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 223,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 224,
+      "en": "client",
+      "ja": "client"
+    },
+    {
+      "index": 225,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 226,
+      "en": "This call is used in conjunction with ",
+      "ja": "この関数は、"
+    },
+    {
+      "index": 227,
+      "en": " to accept incoming\nconnections. Call this function after receiving a ",
+      "ja": "と組み合わせて接続を受け付けるために使います。"
+    },
+    {
+      "index": 228,
+      "en": "\nto accept the connection. Before calling this function the client handle must\nbe initialized. < 0 return value indicates an error.",
+      "ja": "を受け取った後に呼び出して、接続を受け付けてください。この関数を呼び出す前に、clientハンドルを初期化する必要があります。0未満の戻り値はエラーを示します。"
+    },
+    {
+      "index": 229,
+      "en": "When the ",
+      "ja": "次のコールバック、"
+    },
+    {
+      "index": 230,
+      "en": " callback is called it is guaranteed that\nthis function will complete successfully the first time. If you attempt to use\nit more than once, it may fail. It is suggested to only call this function once\nper ",
+      "ja": "が呼び出された場合、最初の呼び出しではこの関数の成功が保証されます。複数回使おうとすると、失敗することがあります。そのため、"
+    },
+    {
+      "index": 231,
+      "en": " call.",
+      "ja": "の呼び出しごとに、この関数を1回だけ呼び出すことを推奨します。"
+    },
+    {
+      "index": 232,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 233,
+      "en": "server",
+      "ja": "server"
+    },
+    {
+      "index": 234,
+      "en": " and ",
+      "ja": "と、"
+    },
+    {
+      "index": 235,
+      "en": "client",
+      "ja": "client"
+    },
+    {
+      "index": 236,
+      "en": " must be handles running on the same loop.",
+      "ja": "は、同じループで動作するハンドルでなければなりません。"
+    },
+    {
+      "index": 237,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 238,
+      "en": "uv_read_start",
+      "ja": "uv_read_start"
+    },
+    {
+      "index": 239,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 240,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 241,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 242,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 243,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 244,
+      "en": "uv_alloc_cb",
+      "ja": "uv_alloc_cb"
+    },
+    {
+      "index": 245,
+      "en": "alloc_cb",
+      "ja": "alloc_cb"
+    },
+    {
+      "index": 246,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 247,
+      "en": "uv_read_cb",
+      "ja": "uv_read_cb"
+    },
+    {
+      "index": 248,
+      "en": "read_cb",
+      "ja": "read_cb"
+    },
+    {
+      "index": 249,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 250,
+      "en": "Read data from an incoming stream. The ",
+      "ja": "受信ストリームからデータを読み取ります。"
+    },
+    {
+      "index": 251,
+      "en": " callback will\nbe made several times until there is no more data to read or\n",
+      "ja": "コールバックは、読み取るデータがなくなるか、"
+    },
+    {
+      "index": 252,
+      "en": " is called.",
+      "ja": "が呼び出されるまで、繰り返し呼び出されます。"
+    },
+    {
+      "index": 253,
+      "en": "Changed in version 1.38.0: ",
+      "ja": "バージョン1.38.0での変更: "
+    },
+    {
+      "index": 254,
+      "en": " now consistently\nreturns ",
+      "ja": "を2回呼び出した場合は、一貫して、"
+    },
+    {
+      "index": 255,
+      "en": "UV_EALREADY",
+      "ja": "UV_EALREADY"
+    },
+    {
+      "index": 256,
+      "en": " when called twice, and ",
+      "ja": "を返し、ストリームが閉じる処理中の場合は、"
+    },
+    {
+      "index": 257,
+      "en": "UV_EINVAL",
+      "ja": "UV_EINVAL"
+    },
+    {
+      "index": 258,
+      "en": " when the\nstream is closing. With older libuv versions, it returns ",
+      "ja": "を返すようになりました。以前のlibuvでは、"
+    },
+    {
+      "index": 259,
+      "en": "UV_EALREADY",
+      "ja": "UV_EALREADY"
+    },
+    {
+      "index": 260,
+      "en": "\non Windows but not UNIX, and ",
+      "ja": "はWindowsでは返しましたがUNIXでは返さず、"
+    },
+    {
+      "index": 261,
+      "en": "UV_EINVAL",
+      "ja": "UV_EINVAL"
+    },
+    {
+      "index": 262,
+      "en": " on UNIX but not Windows.",
+      "ja": "はUNIXでは返しましたがWindowsでは返しませんでした。"
+    },
+    {
+      "index": 263,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 264,
+      "en": "uv_read_stop",
+      "ja": "uv_read_stop"
+    },
+    {
+      "index": 265,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 266,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 267,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 268,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 269,
+      "en": "Stop reading data from the stream. The ",
+      "ja": "ストリームからのデータの読み取りを停止します。"
+    },
+    {
+      "index": 270,
+      "en": " callback will\nno longer be called.",
+      "ja": "コールバックは、以後呼び出されません。"
+    },
+    {
+      "index": 271,
+      "en": "This function is idempotent and may be safely called on a stopped stream.",
+      "ja": "この関数は冪等であり、停止したストリームでも安全に呼び出せます。"
+    },
+    {
+      "index": 272,
+      "en": "This function will always succeed; hence, checking its return value is\nunnecessary. A non-zero return indicates that finishing releasing resources\nmay be pending on the next input event on that TTY on Windows, and does not\nindicate failure.",
+      "ja": "この関数は常に成功するため、戻り値の検査は不要です。0以外の戻り値は、WindowsのそのTTYで次の入力イベントが起きるまで、リソースの解放完了が保留されている可能性を示しており、失敗を示すものではありません。"
+    },
+    {
+      "index": 273,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 274,
+      "en": "uv_write",
+      "ja": "uv_write"
+    },
+    {
+      "index": 275,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 276,
+      "en": "uv_write_t",
+      "ja": "uv_write_t"
+    },
+    {
+      "index": 277,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 278,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 279,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 280,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 281,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 282,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 283,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 284,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 285,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 286,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 287,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 288,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 289,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 290,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 291,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 292,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 293,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 294,
+      "en": "uv_write_cb",
+      "ja": "uv_write_cb"
+    },
+    {
+      "index": 295,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 296,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 297,
+      "en": "Write data to stream. Buffers are written in order. Example:",
+      "ja": "ストリームへデータを書き込みます。バッファは順番に書き込まれます。例:"
+    },
+    {
+      "index": 298,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 299,
+      "en": "The memory pointed to by the buffers must remain valid until the callback gets called.\nThis also holds for ",
+      "ja": "バッファが指すメモリーは、コールバックが呼び出されるまで有効でなければなりません。この条件は、"
+    },
+    {
+      "index": 300,
+      "en": ".",
+      "ja": "にも適用されます。"
+    },
+    {
+      "index": 301,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 302,
+      "en": "uv_write2",
+      "ja": "uv_write2"
+    },
+    {
+      "index": 303,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 304,
+      "en": "uv_write_t",
+      "ja": "uv_write_t"
+    },
+    {
+      "index": 305,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 306,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 307,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 308,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 309,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 310,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 311,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 312,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 313,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 314,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 315,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 316,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 317,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 318,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 319,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 320,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 321,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 322,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 323,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 324,
+      "en": "send_handle",
+      "ja": "send_handle"
+    },
+    {
+      "index": 325,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 326,
+      "en": "uv_write_cb",
+      "ja": "uv_write_cb"
+    },
+    {
+      "index": 327,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 328,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 329,
+      "en": "Extended write function for sending handles over a pipe. The pipe must be\ninitialized with ",
+      "ja": "パイプを通じてハンドルを送るための、拡張された書き込み関数です。パイプは、"
+    },
+    {
+      "index": 330,
+      "en": "ipc",
+      "ja": "ipc"
+    },
+    {
+      "index": 331,
+      "en": " == 1.",
+      "ja": " == 1として初期化する必要があります。"
+    },
+    {
+      "index": 332,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 333,
+      "en": "send_handle",
+      "ja": "send_handle"
+    },
+    {
+      "index": 334,
+      "en": " must be a TCP, pipe and UDP handle on Unix, or a TCP\nhandle on Windows, which is a server or a connection (listening or\nconnected state). Bound sockets or pipes will be assumed to be servers.",
+      "ja": "は、UnixではTCP・pipe・UDPのハンドル、WindowsではTCPのハンドルでなければなりません。サーバーまたは接続、つまり待ち受け中か接続済みの状態である必要があります。バインド済みのソケットやパイプは、サーバーとみなされます。"
+    },
+    {
+      "index": 335,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 336,
+      "en": "uv_try_write",
+      "ja": "uv_try_write"
+    },
+    {
+      "index": 337,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 338,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 339,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 340,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 341,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 342,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 343,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 344,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 345,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 346,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 347,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 348,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 349,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 350,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 351,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 352,
+      "en": "Same as ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 353,
+      "en": ", but won’t queue a write request if it can’t be\ncompleted immediately.",
+      "ja": "と同様ですが、即座に完了できない場合は、書き込みリクエストをキューに入れません。"
+    },
+    {
+      "index": 354,
+      "en": "Will return either:",
+      "ja": "次のいずれかを返します。"
+    },
+    {
+      "index": 355,
+      "en": "> 0: number of bytes written (can be less than the supplied buffer size).",
+      "ja": "0より大きい値: 書き込んだバイト数です。渡したバッファのサイズより小さいことがあります。"
+    },
+    {
+      "index": 356,
+      "en": "< 0: negative error code (",
+      "ja": "0未満の値: 負のエラーコードです。"
+    },
+    {
+      "index": 357,
+      "en": " is returned if no data can be sent\nimmediately).",
+      "ja": "は、すぐにデータを送れない場合に返します。"
+    },
+    {
+      "index": 358,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 359,
+      "en": "uv_try_write2",
+      "ja": "uv_try_write2"
+    },
+    {
+      "index": 360,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 361,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 362,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 363,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 364,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 365,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 366,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 367,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 368,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 369,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 370,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 371,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 372,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 373,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 374,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 375,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 376,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 377,
+      "en": "send_handle",
+      "ja": "send_handle"
+    },
+    {
+      "index": 378,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 379,
+      "en": "Same as ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 380,
+      "en": " and extended write function for sending\nhandles over a pipe like c:func:",
+      "ja": "と同様であり、c:func:"
+    },
+    {
+      "index": 381,
+      "en": "uv_write2",
+      "ja": "uv_write2"
+    },
+    {
+      "index": 382,
+      "en": ".",
+      "ja": "のように、パイプを通じてハンドルを送る拡張書き込み関数です。"
+    },
+    {
+      "index": 383,
+      "en": "Try to send a handle is not supported on Windows,\nwhere it returns ",
+      "ja": "Windowsではハンドルの送信を試みる機能をサポートせず、"
+    },
+    {
+      "index": 384,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 385,
+      "en": "New in version 1.42.0.",
+      "ja": "バージョン1.42.0で追加。"
+    },
+    {
+      "index": 386,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 387,
+      "en": "uv_write_nwritten",
+      "ja": "uv_write_nwritten"
+    },
+    {
+      "index": 388,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 389,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 390,
+      "en": "uv_write_t",
+      "ja": "uv_write_t"
+    },
+    {
+      "index": 391,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 392,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 393,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 394,
+      "en": "Returns the number of bytes written by a write request. Only valid when\ncalled from within the write callback (",
+      "ja": "書き込みリクエストによって書き込まれたバイト数を返します。書き込みコールバック（"
+    },
+    {
+      "index": 395,
+      "en": ").",
+      "ja": "）の中から呼び出した場合だけ有効です。"
+    },
+    {
+      "index": 396,
+      "en": "This is primarily useful when a write has been cancelled via\n",
+      "ja": "主に、"
+    },
+    {
+      "index": 397,
+      "en": " and the callback receives ",
+      "ja": "によって書き込みがキャンセルされ、コールバックが、"
+    },
+    {
+      "index": 398,
+      "en": "\nstatus, to determine how many bytes were actually written before\ncancellation. Note that cancelled writes may still succeed or fail\nwith other errors if the kernel finished processing the write before\nthe cancellation took effect.",
+      "ja": "のステータスを受け取ったときに、キャンセル前に実際に書き込まれたバイト数を確認するために役立ちます。キャンセルが効く前にカーネルが書き込みを処理し終えた場合は、キャンセルした書き込みでも成功したり、別のエラーで失敗したりすることがある点に注意してください。"
+    },
+    {
+      "index": 399,
+      "en": "New in version 1.53.0.",
+      "ja": "バージョン1.53.0で追加。"
+    },
+    {
+      "index": 400,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 401,
+      "en": "uv_is_readable",
+      "ja": "uv_is_readable"
+    },
+    {
+      "index": 402,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 403,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 404,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 405,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 406,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 407,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 408,
+      "en": "Returns 1 if the stream is readable, 0 otherwise.",
+      "ja": "ストリームが読み取り可能なら1、それ以外なら0を返します。"
+    },
+    {
+      "index": 409,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 410,
+      "en": "uv_is_writable",
+      "ja": "uv_is_writable"
+    },
+    {
+      "index": 411,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 412,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 413,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 414,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 415,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 416,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 417,
+      "en": "Returns 1 if the stream is writable, 0 otherwise.",
+      "ja": "ストリームが書き込み可能なら1、それ以外なら0を返します。"
+    },
+    {
+      "index": 418,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 419,
+      "en": "uv_stream_set_blocking",
+      "ja": "uv_stream_set_blocking"
+    },
+    {
+      "index": 420,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 421,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 422,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 423,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 424,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 425,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 426,
+      "en": "blocking",
+      "ja": "blocking"
+    },
+    {
+      "index": 427,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 428,
+      "en": "Enable or disable blocking mode for a stream.",
+      "ja": "ストリームのブロッキングモードを有効または無効にします。"
+    },
+    {
+      "index": 429,
+      "en": "When blocking mode is enabled all writes complete synchronously. The\ninterface remains unchanged otherwise, e.g. completion or failure of the\noperation will still be reported through a callback which is made\nasynchronously.",
+      "ja": "ブロッキングモードを有効にすると、すべての書き込みが同期的に完了します。それ以外のインターフェイスは変わりません。たとえば、操作の完了や失敗は、引き続き非同期に呼び出すコールバックを通じて通知します。"
+    },
+    {
+      "index": 430,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 431,
+      "en": "Relying too much on this API is not recommended. It is likely to change\nsignificantly in the future.",
+      "ja": "このAPIへ過度に依存することは推奨しません。将来、大きく変わる可能性があります。"
+    },
+    {
+      "index": 432,
+      "en": "Currently only works on Windows for ",
+      "ja": "現在、Windowsでは、"
+    },
+    {
+      "index": 433,
+      "en": " handles.\nOn UNIX platforms, all ",
+      "ja": "のハンドルでだけ動作します。UNIX系プラットフォームでは、すべての、"
+    },
+    {
+      "index": 434,
+      "en": " handles are supported.",
+      "ja": "ハンドルをサポートします。"
+    },
+    {
+      "index": 435,
+      "en": "Also libuv currently makes no ordering guarantee when the blocking mode\nis changed after write requests have already been submitted. Therefore it is\nrecommended to set the blocking mode immediately after opening or creating\nthe stream.",
+      "ja": "また、libuvは現在、書き込みリクエストをすでに送った後でブロッキングモードを変更した場合の順序を保証しません。そのため、ストリームを開くか作成した直後に、ブロッキングモードを設定することを推奨します。"
+    },
+    {
+      "index": 436,
+      "en": "Changed in version 1.4.0: ",
+      "ja": "バージョン1.4.0での変更: "
+    },
+    {
+      "index": 437,
+      "en": "UNIX implementation added.",
+      "ja": "UNIXの実装を追加しました。"
+    },
+    {
+      "index": 438,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 439,
+      "en": "uv_stream_get_write_queue_size",
+      "ja": "uv_stream_get_write_queue_size"
+    },
+    {
+      "index": 440,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 441,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 442,
+      "en": "uv_stream_t",
+      "ja": "uv_stream_t"
+    },
+    {
+      "index": 443,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 444,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 445,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 446,
+      "en": "Returns ",
+      "ja": "戻り値は、"
+    },
+    {
+      "index": 447,
+      "en": "stream->write_queue_size",
+      "ja": "stream->write_queue_size"
+    },
+    {
+      "index": 448,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 449,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 450,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 451,
+      "en": "The ",
+      "ja": "次の型、"
+    },
+    {
+      "index": 452,
+      "en": " API functions also apply.",
+      "ja": "のAPI関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 1,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

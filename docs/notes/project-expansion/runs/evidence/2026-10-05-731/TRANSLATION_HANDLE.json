@@ -1,0 +1,1789 @@
+{
+  "page": "reference/handle",
+  "at": "2026-10-04T21:50:28.446230+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/handle.rst",
+      "sha256": "8bd15a65a57b0d07e71c06ca367e4dd4a99eab195287b041804eba539ae8e6bb"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/handle.md",
+      "sha256": "08d22720dbd88c1c93aa6f91aaf0c1851a7fd469e5cb54784c27bdac5f788616"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/handle.md",
+      "sha256": "65858cdc4b45c543740c1a427ff3c193fe0e63c403a736caf27a75f716a29675"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 2 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — Base handle",
+      "ja": " — 基底ハンドル"
+    },
+    {
+      "index": 1,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 2,
+      "en": " is the base type for all libuv handle types.",
+      "ja": "は、libuvのすべてのハンドル型の基底型です。"
+    },
+    {
+      "index": 3,
+      "en": "Structures are aligned so that any libuv handle can be cast to ",
+      "ja": "構造体は、libuvのどのハンドルも、"
+    },
+    {
+      "index": 4,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 5,
+      "en": ".\nAll API functions defined here work with any handle type.",
+      "ja": "にキャストできるように配置されています。ここで定義するすべてのAPI関数は、どのハンドル型でも使えます。"
+    },
+    {
+      "index": 6,
+      "en": "Libuv handles are not movable. Pointers to handle structures passed to\nfunctions must remain valid for the duration of the requested operation. Take\ncare when using stack allocated handles.",
+      "ja": "libuvのハンドルは移動できません。関数に渡したハンドル構造体へのポインターは、要求した操作が続く間、有効でなければなりません。スタック上に確保したハンドルを使うときは注意してください。"
+    },
+    {
+      "index": 7,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 8,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 9,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 10,
+      "en": "The base libuv handle type.",
+      "ja": "libuvの基底ハンドル型です。"
+    },
+    {
+      "index": 11,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 12,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 13,
+      "en": "The kind of the libuv handle.",
+      "ja": "libuvハンドルの種類です。"
+    },
+    {
+      "index": 14,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 15,
+      "en": "uv_any_handle",
+      "ja": "uv_any_handle"
+    },
+    {
+      "index": 16,
+      "en": "Union of all handle types.",
+      "ja": "すべてのハンドル型の共用体です。"
+    },
+    {
+      "index": 17,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 18,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 19,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 20,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 21,
+      "en": "uv_alloc_cb",
+      "ja": "uv_alloc_cb"
+    },
+    {
+      "index": 22,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 23,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 24,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 25,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 26,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 27,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 28,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 29,
+      "en": "suggested_size",
+      "ja": "suggested_size"
+    },
+    {
+      "index": 30,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 31,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 32,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 33,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 34,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 35,
+      "en": "Type definition for callback passed to ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 36,
+      "en": " and\n",
+      "ja": "と、"
+    },
+    {
+      "index": 37,
+      "en": ". The user must allocate memory and fill the supplied\n",
+      "ja": "へ渡すコールバックの型定義です。ユーザーはメモリーを確保し、渡された、"
+    },
+    {
+      "index": 38,
+      "en": " structure. If NULL is assigned as the buffer’s base or 0 as its length,\na ",
+      "ja": "構造体を埋める必要があります。バッファのbaseにNULLを代入したり、長さを0にしたりすると、"
+    },
+    {
+      "index": 39,
+      "en": " error will be triggered in the ",
+      "ja": "エラーが、"
+    },
+    {
+      "index": 40,
+      "en": " or the\n",
+      "ja": "または、"
+    },
+    {
+      "index": 41,
+      "en": " callback.",
+      "ja": "のコールバックで発生します。"
+    },
+    {
+      "index": 42,
+      "en": "Each buffer is used only once and the user is responsible for freeing it in the\n",
+      "ja": "各バッファは1回だけ使われ、ユーザーは、"
+    },
+    {
+      "index": 43,
+      "en": " or the ",
+      "ja": "または、"
+    },
+    {
+      "index": 44,
+      "en": " callback.",
+      "ja": "のコールバックで解放する責任があります。"
+    },
+    {
+      "index": 45,
+      "en": "A suggested size (65536 at the moment in most cases) is provided, but it’s just an indication,\nnot related in any way to the pending data to be read. The user is free to allocate the amount\nof memory they decide.",
+      "ja": "推奨サイズ（現在、多くの場合は65536）が渡されますが、目安にすぎず、読み取り待ちのデータの量とは一切関係ありません。ユーザーは、自分で決めた量のメモリーを確保できます。"
+    },
+    {
+      "index": 46,
+      "en": "As an example, applications with custom allocation schemes such as using freelists, allocation\npools or slab based allocators may decide to use a different size which matches the memory\nchunks they already have.",
+      "ja": "たとえば、フリーリスト、メモリープール、スラブ方式のアロケーターなど、独自の割り当て方式を使うアプリケーションでは、すでに持っているメモリーブロックに合う別のサイズを使えます。"
+    },
+    {
+      "index": 47,
+      "en": "Example:",
+      "ja": "例:"
+    },
+    {
+      "index": 48,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 49,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 50,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 51,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 52,
+      "en": "uv_close_cb",
+      "ja": "uv_close_cb"
+    },
+    {
+      "index": 53,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 54,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 55,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 56,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 57,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 58,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 59,
+      "en": "Type definition for callback passed to ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 60,
+      "en": ".",
+      "ja": "へ渡すコールバックの型定義です。"
+    },
+    {
+      "index": 61,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 62,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 63,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 64,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 65,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 66,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 67,
+      "en": "Pointer to the ",
+      "ja": "ハンドルが動作する、"
+    },
+    {
+      "index": 68,
+      "en": " the handle is running on. Readonly.",
+      "ja": "へのポインターです。読み取り専用です。"
+    },
+    {
+      "index": 69,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 70,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 71,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 72,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 73,
+      "en": "The ",
+      "ja": "基になるハンドルの型を示す、"
+    },
+    {
+      "index": 74,
+      "en": ", indicating the type of the underlying handle. Readonly.",
+      "ja": "です。読み取り専用です。"
+    },
+    {
+      "index": 75,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 76,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 77,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 78,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 79,
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "index": 80,
+      "en": "Space for user-defined arbitrary data. libuv does not use this field.",
+      "ja": "ユーザーが定義する任意のデータのための領域です。libuvはこのフィールドを使いません。"
+    },
+    {
+      "index": 81,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 82,
+      "en": "UV_HANDLE_TYPE_MAP",
+      "ja": "UV_HANDLE_TYPE_MAP"
+    },
+    {
+      "index": 83,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 84,
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "index": 85,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 86,
+      "en": "Macro that expands to a series of invocations of ",
+      "ja": "各ハンドル型について、"
+    },
+    {
+      "index": 87,
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "index": 88,
+      "en": " for\neach of the handle types. ",
+      "ja": "を呼び出す列に展開されるマクロです。"
+    },
+    {
+      "index": 89,
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "index": 90,
+      "en": " is invoked with two\narguments: the name of the ",
+      "ja": "は、2つの引数で呼び出されます。1つ目は、"
+    },
+    {
+      "index": 91,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 92,
+      "en": " element without the\n",
+      "ja": "の要素名から、"
+    },
+    {
+      "index": 93,
+      "en": "UV_",
+      "ja": "UV_"
+    },
+    {
+      "index": 94,
+      "en": " prefix, and the name of the corresponding structure type\nwithout the ",
+      "ja": "の接頭辞を除いた名前です。2つ目は、対応する構造体の型名から、"
+    },
+    {
+      "index": 95,
+      "en": "uv_",
+      "ja": "uv_"
+    },
+    {
+      "index": 96,
+      "en": " prefix and ",
+      "ja": "の接頭辞と、"
+    },
+    {
+      "index": 97,
+      "en": "_t",
+      "ja": "_t"
+    },
+    {
+      "index": 98,
+      "en": " suffix.",
+      "ja": "の接尾辞を除いた名前です。"
+    },
+    {
+      "index": 99,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 100,
+      "en": "uv_is_active",
+      "ja": "uv_is_active"
+    },
+    {
+      "index": 101,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 102,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 103,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 104,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 105,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 106,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 107,
+      "en": "Returns non-zero if the handle is active, zero if it’s inactive. What\n“active” means depends on the type of handle:",
+      "ja": "ハンドルがアクティブなら0以外、非アクティブなら0を返します。「アクティブ」の意味は、ハンドルの型によって異なります。"
+    },
+    {
+      "index": 108,
+      "en": "A uv_async_t handle is always active and cannot be deactivated, except\nby closing it with uv_close().",
+      "ja": "uv_async_tハンドルは常にアクティブです。uv_close()で閉じる場合を除き、非アクティブにできません。"
+    },
+    {
+      "index": 109,
+      "en": "A uv_pipe_t, uv_tcp_t, uv_udp_t, etc. handle - basically any handle that\ndeals with i/o - is active when it is doing something that involves i/o,\nlike reading, writing, connecting, accepting new connections, etc.",
+      "ja": "uv_pipe_t、uv_tcp_t、uv_udp_tなど、基本的にI/Oを扱うハンドルは、読み取り、書き込み、接続、新しい接続の受け付けなど、I/Oに関係する処理を行っているときにアクティブです。"
+    },
+    {
+      "index": 110,
+      "en": "A uv_check_t, uv_idle_t, uv_timer_t, etc. handle is active when it has\nbeen started with a call to uv_check_start(), uv_idle_start(), etc.",
+      "ja": "uv_check_t、uv_idle_t、uv_timer_tなどのハンドルは、uv_check_start()、uv_idle_start()などの呼び出しで開始したときにアクティブになります。"
+    },
+    {
+      "index": 111,
+      "en": "Rule of thumb: if a handle of type ",
+      "ja": "目安として、"
+    },
+    {
+      "index": 112,
+      "en": "uv_foo_t",
+      "ja": "uv_foo_t"
+    },
+    {
+      "index": 113,
+      "en": " has a ",
+      "ja": "型のハンドルに、"
+    },
+    {
+      "index": 114,
+      "en": "uv_foo_start()",
+      "ja": "uv_foo_start()"
+    },
+    {
+      "index": 115,
+      "en": "\nfunction, then it’s active from the moment that function is called.\nLikewise, ",
+      "ja": "関数がある場合は、その関数を呼び出した時点からアクティブです。同様に、"
+    },
+    {
+      "index": 116,
+      "en": "uv_foo_stop()",
+      "ja": "uv_foo_stop()"
+    },
+    {
+      "index": 117,
+      "en": " deactivates the handle again.",
+      "ja": "は、ハンドルを再び非アクティブにします。"
+    },
+    {
+      "index": 118,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 119,
+      "en": "uv_is_closing",
+      "ja": "uv_is_closing"
+    },
+    {
+      "index": 120,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 121,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 122,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 123,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 124,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 125,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 126,
+      "en": "Returns non-zero if the handle is closing or closed, zero otherwise.",
+      "ja": "ハンドルが閉じる処理中または閉じた状態なら0以外、それ以外なら0を返します。"
+    },
+    {
+      "index": 127,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 128,
+      "en": "This function should only be used between the initialization of the handle and the\narrival of the close callback.",
+      "ja": "この関数は、ハンドルの初期化からcloseコールバックが呼び出されるまでの間だけ使ってください。"
+    },
+    {
+      "index": 129,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 130,
+      "en": "uv_close",
+      "ja": "uv_close"
+    },
+    {
+      "index": 131,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 132,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 133,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 134,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 135,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 136,
+      "en": "uv_close_cb",
+      "ja": "uv_close_cb"
+    },
+    {
+      "index": 137,
+      "en": "close_cb",
+      "ja": "close_cb"
+    },
+    {
+      "index": 138,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 139,
+      "en": "Request handle to be closed. ",
+      "ja": "ハンドルを閉じるよう要求します。"
+    },
+    {
+      "index": 140,
+      "en": "close_cb",
+      "ja": "close_cb"
+    },
+    {
+      "index": 141,
+      "en": " will be called asynchronously after\nthis call. This MUST be called on each handle before memory is released.\nMoreover, the memory can only be released in ",
+      "ja": "は、この呼び出しの後で非同期に呼び出されます。メモリーを解放する前に、各ハンドルに対して必ずこの関数を呼び出してください。さらに、メモリーを解放できるのは、"
+    },
+    {
+      "index": 142,
+      "en": "close_cb",
+      "ja": "close_cb"
+    },
+    {
+      "index": 143,
+      "en": " or after it has\nreturned.",
+      "ja": "の中、またはその関数が戻った後だけです。"
+    },
+    {
+      "index": 144,
+      "en": "Handles that wrap file descriptors are closed immediately but\n",
+      "ja": "ファイルディスクリプターを包むハンドルは即座に閉じられますが、"
+    },
+    {
+      "index": 145,
+      "en": "close_cb",
+      "ja": "close_cb"
+    },
+    {
+      "index": 146,
+      "en": " will still be deferred to the next iteration of the event loop.\nIt gives you a chance to free up any resources associated with the handle.",
+      "ja": "は、次のイベントループの反復まで延期されます。そのコールバックで、ハンドルに関連するリソースを解放できます。"
+    },
+    {
+      "index": 147,
+      "en": "In-progress requests, like uv_connect_t or uv_write_t, are cancelled and\nhave their callbacks called asynchronously with status=UV_ECANCELED.",
+      "ja": "uv_connect_tやuv_write_tなどの進行中のリクエストはキャンセルされ、status=UV_ECANCELEDとして非同期にコールバックが呼び出されます。"
+    },
+    {
+      "index": 148,
+      "en": "close_cb",
+      "ja": "close_cb"
+    },
+    {
+      "index": 149,
+      "en": " can be ",
+      "ja": "は、後処理やメモリーの解放が不要な場合、"
+    },
+    {
+      "index": 150,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 151,
+      "en": " in cases where no cleanup or deallocation is\nnecessary.",
+      "ja": "にできます。"
+    },
+    {
+      "index": 152,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 153,
+      "en": "uv_ref",
+      "ja": "uv_ref"
+    },
+    {
+      "index": 154,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 155,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 156,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 157,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 158,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 159,
+      "en": "Reference the given handle. References are idempotent, that is, if a handle\nis already referenced calling this function again will have no effect.",
+      "ja": "指定したハンドルを参照します。参照操作は冪等です。すでに参照されているハンドルでこの関数を再び呼び出しても、何も変わりません。"
+    },
+    {
+      "index": 160,
+      "en": "See ",
+      "ja": "詳しくは、"
+    },
+    {
+      "index": 161,
+      "en": "Reference counting",
+      "ja": "参照カウント"
+    },
+    {
+      "index": 162,
+      "en": ".",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 163,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 164,
+      "en": "uv_unref",
+      "ja": "uv_unref"
+    },
+    {
+      "index": 165,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 166,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 167,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 168,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 169,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 170,
+      "en": "Un-reference the given handle. References are idempotent, that is, if a handle\nis not referenced calling this function again will have no effect.",
+      "ja": "指定したハンドルの参照を外します。参照操作は冪等です。参照されていないハンドルでこの関数を再び呼び出しても、何も変わりません。"
+    },
+    {
+      "index": 171,
+      "en": "See ",
+      "ja": "詳しくは、"
+    },
+    {
+      "index": 172,
+      "en": "Reference counting",
+      "ja": "参照カウント"
+    },
+    {
+      "index": 173,
+      "en": ".",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 174,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 175,
+      "en": "uv_has_ref",
+      "ja": "uv_has_ref"
+    },
+    {
+      "index": 176,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 177,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 178,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 179,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 180,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 181,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 182,
+      "en": "Returns non-zero if the handle referenced, zero otherwise.",
+      "ja": "ハンドルが参照されていれば0以外、それ以外なら0を返します。"
+    },
+    {
+      "index": 183,
+      "en": "See ",
+      "ja": "詳しくは、"
+    },
+    {
+      "index": 184,
+      "en": "Reference counting",
+      "ja": "参照カウント"
+    },
+    {
+      "index": 185,
+      "en": ".",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 186,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 187,
+      "en": "uv_handle_size",
+      "ja": "uv_handle_size"
+    },
+    {
+      "index": 188,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 189,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 190,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 191,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 192,
+      "en": "Returns the size of the given handle type. Useful for FFI binding writers\nwho don’t want to know the structure layout.",
+      "ja": "指定したハンドル型のサイズを返します。構造体の配置を知りたくないFFIバインディングの作成者に役立ちます。"
+    },
+    {
+      "index": 193,
+      "en": "Miscellaneous API functions",
+      "ja": "その他のAPI関数"
+    },
+    {
+      "index": 194,
+      "en": "The following API functions take a ",
+      "ja": "以下のAPI関数は、"
+    },
+    {
+      "index": 195,
+      "en": " argument but they work\njust for some handle types.",
+      "ja": "を引数に取りますが、一部のハンドル型でだけ動作します。"
+    },
+    {
+      "index": 196,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 197,
+      "en": "uv_send_buffer_size",
+      "ja": "uv_send_buffer_size"
+    },
+    {
+      "index": 198,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 199,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 200,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 201,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 202,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 203,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 204,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 205,
+      "en": "value",
+      "ja": "value"
+    },
+    {
+      "index": 206,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 207,
+      "en": "Gets or sets the size of the send buffer that the operating\nsystem uses for the socket.",
+      "ja": "OSがソケットに使う送信バッファのサイズを取得または設定します。"
+    },
+    {
+      "index": 208,
+      "en": "If ",
+      "ja": "値が、"
+    },
+    {
+      "index": 209,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 210,
+      "en": " == 0, then it will set ",
+      "ja": " == 0なら、"
+    },
+    {
+      "index": 211,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 212,
+      "en": " to the current send buffer size.\nIf ",
+      "ja": "へ現在の送信バッファのサイズを設定します。値が、"
+    },
+    {
+      "index": 213,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 214,
+      "en": " > 0 then it will use ",
+      "ja": " > 0なら、"
+    },
+    {
+      "index": 215,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 216,
+      "en": " to set the new send buffer size.",
+      "ja": "を使って新しい送信バッファのサイズを設定します。"
+    },
+    {
+      "index": 217,
+      "en": "On success, zero is returned. On error, a negative result is\nreturned.",
+      "ja": "成功時は0、エラー時は負の値を返します。"
+    },
+    {
+      "index": 218,
+      "en": "This function works for TCP, pipe and UDP handles on Unix and for TCP and\nUDP handles on Windows.",
+      "ja": "この関数は、UnixではTCP・pipe・UDPのハンドル、WindowsではTCP・UDPのハンドルで動作します。"
+    },
+    {
+      "index": 219,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 220,
+      "en": "Linux will set double the size and return double the size of the original set value.",
+      "ja": "Linuxでは、指定した値の2倍のサイズを設定し、元の指定値の2倍のサイズを返します。"
+    },
+    {
+      "index": 221,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 222,
+      "en": "uv_recv_buffer_size",
+      "ja": "uv_recv_buffer_size"
+    },
+    {
+      "index": 223,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 224,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 225,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 226,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 227,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 228,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 229,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 230,
+      "en": "value",
+      "ja": "value"
+    },
+    {
+      "index": 231,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 232,
+      "en": "Gets or sets the size of the receive buffer that the operating\nsystem uses for the socket.",
+      "ja": "OSがソケットに使う受信バッファのサイズを取得または設定します。"
+    },
+    {
+      "index": 233,
+      "en": "If ",
+      "ja": "値が、"
+    },
+    {
+      "index": 234,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 235,
+      "en": " == 0, then it will set ",
+      "ja": " == 0なら、"
+    },
+    {
+      "index": 236,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 237,
+      "en": " to the current receive buffer size.\nIf ",
+      "ja": "へ現在の受信バッファのサイズを設定します。値が、"
+    },
+    {
+      "index": 238,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 239,
+      "en": " > 0 then it will use ",
+      "ja": " > 0なら、"
+    },
+    {
+      "index": 240,
+      "en": "*value",
+      "ja": "*value"
+    },
+    {
+      "index": 241,
+      "en": " to set the new receive buffer size.",
+      "ja": "を使って新しい受信バッファのサイズを設定します。"
+    },
+    {
+      "index": 242,
+      "en": "On success, zero is returned. On error, a negative result is\nreturned.",
+      "ja": "成功時は0、エラー時は負の値を返します。"
+    },
+    {
+      "index": 243,
+      "en": "This function works for TCP, pipe and UDP handles on Unix and for TCP and\nUDP handles on Windows.",
+      "ja": "この関数は、UnixではTCP・pipe・UDPのハンドル、WindowsではTCP・UDPのハンドルで動作します。"
+    },
+    {
+      "index": 244,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 245,
+      "en": "Linux will set double the size and return double the size of the original set value.",
+      "ja": "Linuxでは、指定した値の2倍のサイズを設定し、元の指定値の2倍のサイズを返します。"
+    },
+    {
+      "index": 246,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 247,
+      "en": "uv_fileno",
+      "ja": "uv_fileno"
+    },
+    {
+      "index": 248,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 249,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 250,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 251,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 252,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 253,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 254,
+      "en": "uv_os_fd_t",
+      "ja": "uv_os_fd_t"
+    },
+    {
+      "index": 255,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 256,
+      "en": "fd",
+      "ja": "fd"
+    },
+    {
+      "index": 257,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 258,
+      "en": "Gets the platform dependent file descriptor equivalent.",
+      "ja": "プラットフォームに依存する、対応するファイルディスクリプターを取得します。"
+    },
+    {
+      "index": 259,
+      "en": "The following handles are supported: TCP, pipes, TTY, UDP and poll. Passing\nany other handle type will fail with ",
+      "ja": "TCP・pipe・TTY・UDP・pollのハンドルをサポートします。他のハンドル型を渡すと、"
+    },
+    {
+      "index": 260,
+      "en": "UV_EINVAL",
+      "ja": "UV_EINVAL"
+    },
+    {
+      "index": 261,
+      "en": ".",
+      "ja": "で失敗します。"
+    },
+    {
+      "index": 262,
+      "en": "If a handle doesn’t have an attached file descriptor yet or the handle\nitself has been closed, this function will return ",
+      "ja": "ハンドルにまだファイルディスクリプターが関連付けられていない場合や、ハンドル自体が閉じられている場合は、"
+    },
+    {
+      "index": 263,
+      "en": "UV_EBADF",
+      "ja": "UV_EBADF"
+    },
+    {
+      "index": 264,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 265,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 266,
+      "en": "Be very careful when using this function. libuv assumes it’s in control of the file\ndescriptor so any change to it may lead to malfunction.",
+      "ja": "この関数を使うときは十分注意してください。libuvはファイルディスクリプターを自身が制御していると仮定するため、変更を加えると正常に動作しなくなる可能性があります。"
+    },
+    {
+      "index": 267,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 268,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 269,
+      "en": "uv_handle_get_loop",
+      "ja": "uv_handle_get_loop"
+    },
+    {
+      "index": 270,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 271,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 272,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 273,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 274,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 275,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 276,
+      "en": "Returns ",
+      "ja": "戻り値は、"
+    },
+    {
+      "index": 277,
+      "en": "handle->loop",
+      "ja": "handle->loop"
+    },
+    {
+      "index": 278,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 279,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 280,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 281,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 282,
+      "en": "uv_handle_get_data",
+      "ja": "uv_handle_get_data"
+    },
+    {
+      "index": 283,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 284,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 285,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 286,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 287,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 288,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 289,
+      "en": "Returns ",
+      "ja": "戻り値は、"
+    },
+    {
+      "index": 290,
+      "en": "handle->data",
+      "ja": "handle->data"
+    },
+    {
+      "index": 291,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 292,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 293,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 294,
+      "en": "uv_handle_set_data",
+      "ja": "uv_handle_set_data"
+    },
+    {
+      "index": 295,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 296,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 297,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 298,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 299,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 300,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 301,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 302,
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "index": 303,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 304,
+      "en": "Sets ",
+      "ja": "次のフィールド、"
+    },
+    {
+      "index": 305,
+      "en": "handle->data",
+      "ja": "handle->data"
+    },
+    {
+      "index": 306,
+      "en": " to ",
+      "ja": "を、"
+    },
+    {
+      "index": 307,
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "index": 308,
+      "en": ".",
+      "ja": "に設定します。"
+    },
+    {
+      "index": 309,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 310,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 311,
+      "en": "uv_handle_get_type",
+      "ja": "uv_handle_get_type"
+    },
+    {
+      "index": 312,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 313,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 314,
+      "en": "uv_handle_t",
+      "ja": "uv_handle_t"
+    },
+    {
+      "index": 315,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 316,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 317,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 318,
+      "en": "Returns ",
+      "ja": "戻り値は、"
+    },
+    {
+      "index": 319,
+      "en": "handle->type",
+      "ja": "handle->type"
+    },
+    {
+      "index": 320,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 321,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 322,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 323,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 324,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 325,
+      "en": "uv_handle_type_name",
+      "ja": "uv_handle_type_name"
+    },
+    {
+      "index": 326,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 327,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 328,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 329,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 330,
+      "en": "Returns the name for the equivalent struct for a given handle type,\ne.g. ",
+      "ja": "指定したハンドル型に対応する構造体の名前を返します。たとえば、"
+    },
+    {
+      "index": 331,
+      "en": "“pipe”",
+      "ja": "「pipe」"
+    },
+    {
+      "index": 332,
+      "en": " (as in ",
+      "ja": "という、"
+    },
+    {
+      "index": 333,
+      "en": ") for ",
+      "ja": "に対応する名前が、"
+    },
+    {
+      "index": 334,
+      "en": "UV_NAMED_PIPE",
+      "ja": "UV_NAMED_PIPE"
+    },
+    {
+      "index": 335,
+      "en": ".",
+      "ja": "に対して返されます。"
+    },
+    {
+      "index": 336,
+      "en": "If no such handle type exists, this returns ",
+      "ja": "該当するハンドル型がなければ、"
+    },
+    {
+      "index": 337,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 338,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 339,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 340,
+      "en": "Reference counting",
+      "ja": "参照カウント"
+    },
+    {
+      "index": 341,
+      "en": "The libuv event loop (if run in the default mode) will run until there are no\nactive ",
+      "ja": "libuvのイベントループを既定のモードで実行すると、アクティブで、"
+    },
+    {
+      "index": 342,
+      "en": "and",
+      "ja": "かつ"
+    },
+    {
+      "index": 343,
+      "en": " referenced handles left. The user can force the loop to exit early\nby unreferencing handles which are active, for example by calling ",
+      "ja": "参照されているハンドルがなくなるまで実行します。ユーザーは、アクティブなハンドルの参照を外すことで、ループを早く終了させられます。たとえば、"
+    },
+    {
+      "index": 344,
+      "en": "\nafter calling ",
+      "ja": "を、"
+    },
+    {
+      "index": 345,
+      "en": ".",
+      "ja": "の呼び出し後に呼び出します。"
+    },
+    {
+      "index": 346,
+      "en": "A handle can be referenced or unreferenced, the refcounting scheme doesn’t use\na counter, so both operations are idempotent.",
+      "ja": "ハンドルは、参照されている状態か、参照されていない状態のどちらかです。この参照管理ではカウンターを使わないため、どちらの操作も冪等です。"
+    },
+    {
+      "index": 347,
+      "en": "All handles are referenced when active by default, see ",
+      "ja": "すべてのハンドルは、既定ではアクティブなときに参照されます。アクティブという状態の詳細は、"
+    },
+    {
+      "index": 348,
+      "en": "\nfor a more detailed explanation on what being ",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 349,
+      "en": "active",
+      "ja": "active"
+    },
+    {
+      "index": 350,
+      "en": " involves.",
+      "ja": "という状態の意味を詳しく説明しています。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 2,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

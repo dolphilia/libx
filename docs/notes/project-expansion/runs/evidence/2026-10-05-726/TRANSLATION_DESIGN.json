@@ -1,0 +1,524 @@
+{
+  "page": "reference/design",
+  "at": "2026-10-04T21:36:27.983553+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/design.rst",
+      "sha256": "3b823869f1152dae6d5f1b3201ade736f73bd4f232f700afd783c4cf9c4c65a4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/design.md",
+      "sha256": "da1ad36046348ff454b6a22223caf43a0f6182adcf12a36ff41cfcc9d9d71d26"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/design.md",
+      "sha256": "917da21a8aafbf1c00d99dd06bd0bd3a5880e3f3eb75ea5d2b570ebcf3291ff8"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 0 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Design overview",
+      "ja": "設計概要"
+    },
+    {
+      "index": 1,
+      "en": "libuv is cross-platform support library which was originally written for ",
+      "ja": "libuvは、もともと、"
+    },
+    {
+      "index": 2,
+      "en": "Node.js",
+      "ja": "Node.js"
+    },
+    {
+      "index": 3,
+      "en": ". It’s designed\naround the event-driven asynchronous I/O model.",
+      "ja": "のために書かれた、クロスプラットフォームの支援ライブラリです。イベント駆動の非同期I/Oモデルを中心に設計されています。"
+    },
+    {
+      "index": 4,
+      "en": "The library provides much more than a simple abstraction over different I/O polling mechanisms:\n‘handles’ and ‘streams’ provide a high level abstraction for sockets and other entities;\ncross-platform file I/O and threading functionality is also provided, amongst other things.",
+      "ja": "このライブラリは、異なるI/Oポーリング機構を単純に抽象化する以上の機能を提供します。「ハンドル」と「ストリーム」は、ソケットなどを扱う高水準の抽象化を提供します。また、クロスプラットフォームのファイルI/Oやスレッド機能なども提供します。"
+    },
+    {
+      "index": 5,
+      "en": "Here is a diagram illustrating the different parts that compose libuv and what subsystem they\nrelate to:",
+      "ja": "次の図は、libuvを構成する各部分と、それらが関係するサブシステムを示しています。"
+    },
+    {
+      "index": 6,
+      "en": "Handles and requests",
+      "ja": "ハンドルとリクエスト"
+    },
+    {
+      "index": 7,
+      "en": "libuv provides users with 2 abstractions to work with, in combination with the event loop:\nhandles and requests.",
+      "ja": "libuvは、イベントループと組み合わせて使う、ハンドルとリクエストという2つの抽象化を提供します。"
+    },
+    {
+      "index": 8,
+      "en": "Handles represent long-lived objects capable of performing certain operations while active. Some examples:",
+      "ja": "ハンドルは、アクティブな間に特定の操作を行える、長く存続するオブジェクトを表します。例を挙げます。"
+    },
+    {
+      "index": 9,
+      "en": "A prepare handle gets its callback called once every loop iteration when active.",
+      "ja": "prepareハンドルは、アクティブな間、ループの反復ごとに1回コールバックが呼び出されます。"
+    },
+    {
+      "index": 10,
+      "en": "A TCP server handle that gets its connection callback called every time there is a new connection.",
+      "ja": "TCPサーバーのハンドルは、新しい接続が発生するたびに接続コールバックが呼び出されます。"
+    },
+    {
+      "index": 11,
+      "en": "Requests represent (typically) short-lived operations. These operations can be performed over a\nhandle: write requests are used to write data on a handle; or standalone: getaddrinfo requests\ndon’t need a handle they run directly on the loop.",
+      "ja": "リクエストは、通常は短時間で終わる操作を表します。ハンドルに対する操作もあり、writeリクエストはハンドルへデータを書き込むために使います。独立した操作もあり、getaddrinfoリクエストはハンドルを必要とせず、ループ上で直接実行されます。"
+    },
+    {
+      "index": 12,
+      "en": "Guidelines for dealing with handles and requests:",
+      "ja": "ハンドルとリクエストを扱う際の指針は次のとおりです。"
+    },
+    {
+      "index": 13,
+      "en": "If ",
+      "ja": "ハンドルの初期化で、"
+    },
+    {
+      "index": 14,
+      "en": "uv_foo_init()",
+      "ja": "uv_foo_init()"
+    },
+    {
+      "index": 15,
+      "en": " succeeds in initializing the handle, you must call\n",
+      "ja": "が成功した場合は、必ず、"
+    },
+    {
+      "index": 16,
+      "en": ". If the handle’s init function errors, you don’t\nneed to do anything.",
+      "ja": "を呼び出してください。ハンドルの初期化関数がエラーになった場合は、何もする必要はありません。"
+    },
+    {
+      "index": 17,
+      "en": "Only handles are closed, not requests. For example, ",
+      "ja": "閉じるのはハンドルだけで、リクエストは閉じません。たとえば、"
+    },
+    {
+      "index": 18,
+      "en": "\nis a handle, ",
+      "ja": "はハンドルで、"
+    },
+    {
+      "index": 19,
+      "en": " is a request.",
+      "ja": "はリクエストです。"
+    },
+    {
+      "index": 20,
+      "en": "The handle’s memory can only be reclaimed or reused from inside the\n",
+      "ja": "ハンドルのメモリーを解放または再利用できるのは、"
+    },
+    {
+      "index": 21,
+      "en": " or afterwards, not before.",
+      "ja": "の中、またはその後だけです。それより前にはできません。"
+    },
+    {
+      "index": 22,
+      "en": "Most handles have init + start/stop functions; some handles don’t.\nExample: ",
+      "ja": "多くのハンドルには、初期化と開始・停止の関数がありますが、ないものもあります。たとえば、"
+    },
+    {
+      "index": 23,
+      "en": " vs. ",
+      "ja": "と、"
+    },
+    {
+      "index": 24,
+      "en": "; ",
+      "ja": "では異なります。"
+    },
+    {
+      "index": 25,
+      "en": "\ncombines handle initialization and process start into one.",
+      "ja": "は、ハンドルの初期化とプロセスの開始を1つにまとめています。"
+    },
+    {
+      "index": 26,
+      "en": "Requests are closed automatically when they complete, or when they are\ncancelled with ",
+      "ja": "リクエストは、完了時、または、"
+    },
+    {
+      "index": 27,
+      "en": ".",
+      "ja": "でキャンセルされたときに、自動的に閉じられます。"
+    },
+    {
+      "index": 28,
+      "en": "No additional cleanup is needed except for ",
+      "ja": "追加の後処理が必要なのは、"
+    },
+    {
+      "index": 29,
+      "en": " and\n",
+      "ja": "と、"
+    },
+    {
+      "index": 30,
+      "en": " requests. For ",
+      "ja": "のリクエストだけです。"
+    },
+    {
+      "index": 31,
+      "en": ", call\n",
+      "ja": "の場合は、使い終わったら、"
+    },
+    {
+      "index": 32,
+      "en": " once you are done with it; for\n",
+      "ja": "を呼び出してください。"
+    },
+    {
+      "index": 33,
+      "en": ", that’s ",
+      "ja": "の場合は、"
+    },
+    {
+      "index": 34,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 35,
+      "en": "The request’s memory can only be reclaimed or reused from that point onward.",
+      "ja": "リクエストのメモリーを解放または再利用できるのは、その時点以降だけです。"
+    },
+    {
+      "index": 36,
+      "en": "The I/O loop",
+      "ja": "I/Oループ"
+    },
+    {
+      "index": 37,
+      "en": "The I/O (or event) loop is the central part of libuv. It establishes the content for all I/O\noperations, and it’s meant to be tied to a single thread. One can run multiple event loops\nas long as each runs in a different thread. The libuv event loop (or any other API involving\nthe loop or handles, for that matter) ",
+      "ja": "I/Oループ、つまりイベントループは、libuvの中心となる部分です。すべてのI/O操作の場を提供し、1つのスレッドに結び付けて使うことを意図しています。各ループを別々のスレッドで実行すれば、複数のイベントループを実行できます。libuvのイベントループや、ループ・ハンドルを扱う他のAPIも、特記がない限り、"
+    },
+    {
+      "index": 38,
+      "en": "is not thread-safe",
+      "ja": "スレッドセーフではありません"
+    },
+    {
+      "index": 39,
+      "en": " except where stated otherwise.",
+      "ja": "。"
+    },
+    {
+      "index": 40,
+      "en": "The event loop follows the rather usual single threaded asynchronous I/O approach: all (network)\nI/O is performed on non-blocking sockets which are polled using the best mechanism available\non the given platform: epoll on Linux, kqueue on OSX and other BSDs, event ports on SunOS and IOCP\non Windows. As part of a loop iteration the loop will block waiting for I/O activity on sockets\nwhich have been added to the poller and callbacks will be fired indicating socket conditions\n(readable, writable hangup) so handles can read, write or perform the desired I/O operation.",
+      "ja": "イベントループは、一般的な、単一スレッドによる非同期I/Oの方式に従います。すべてのネットワークI/Oは非ブロッキングソケット上で行い、プラットフォームで利用できる最適な機構でポーリングします。Linuxではepoll、OSXや他のBSDではkqueue、SunOSではevent ports、WindowsではIOCPです。ループの反復の中で、ポーラーに追加したソケットのI/O活動を待つためにブロックし、ソケットの状態（読み取り可能、書き込み可能、切断）を示すコールバックを呼び出します。これにより、ハンドルは読み取り、書き込み、その他の必要なI/O操作を行えます。"
+    },
+    {
+      "index": 41,
+      "en": "In order to better understand how the event loop operates, the following diagram illustrates all\nstages of a loop iteration:",
+      "ja": "イベントループの動作を理解しやすくするため、次の図で、ループの1回の反復の全段階を示します。"
+    },
+    {
+      "index": 42,
+      "en": "The loop concept of ‘now’ is initially set.",
+      "ja": "ループが認識する「現在時刻」を最初に設定します。"
+    },
+    {
+      "index": 43,
+      "en": "Due timers are run if the loop was run with ",
+      "ja": "ループを、"
+    },
+    {
+      "index": 44,
+      "en": ". All active timers scheduled\nfor a time before the loop’s concept of ",
+      "ja": "で実行した場合は、期限に達したタイマーを実行します。ループが認識する、"
+    },
+    {
+      "index": 45,
+      "en": "now",
+      "ja": "現在時刻"
+    },
+    {
+      "index": 46,
+      "en": " get their callbacks called.",
+      "ja": "より前に実行を予定した、アクティブなすべてのタイマーのコールバックを呼び出します。"
+    },
+    {
+      "index": 47,
+      "en": "If the loop is ",
+      "ja": "ループが、"
+    },
+    {
+      "index": 48,
+      "en": "alive",
+      "ja": "存続中"
+    },
+    {
+      "index": 49,
+      "en": "  an iteration is started, otherwise the loop will exit immediately. So,\nwhen is a loop considered to be ",
+      "ja": "なら反復を開始し、そうでなければ、すぐに終了します。では、ループはいつ、"
+    },
+    {
+      "index": 50,
+      "en": "alive",
+      "ja": "存続中"
+    },
+    {
+      "index": 51,
+      "en": "? If a loop has active and ref’d handles, active\nrequests or closing handles it’s considered to be ",
+      "ja": "とみなされるのでしょうか。アクティブで参照されているハンドル、アクティブなリクエスト、または閉じる処理中のハンドルがある場合は、"
+    },
+    {
+      "index": 52,
+      "en": "alive",
+      "ja": "存続中"
+    },
+    {
+      "index": 53,
+      "en": ".",
+      "ja": "とみなされます。"
+    },
+    {
+      "index": 54,
+      "en": "Pending callbacks are called. All I/O callbacks are called right after polling for I/O, for the\nmost part. There are cases, however, in which calling such a callback is deferred for the next\nloop iteration. If the previous iteration deferred any I/O callback it will be run at this point.",
+      "ja": "保留中のコールバックを呼び出します。通常、I/OコールバックはI/Oのポーリング直後に呼び出されます。ただし、次のループの反復へ延期される場合もあります。前の反復で延期したI/Oコールバックがあれば、この時点で実行します。"
+    },
+    {
+      "index": 55,
+      "en": "Idle handle callbacks are called. Despite the unfortunate name, idle handles are run on every\nloop iteration, if they are active.",
+      "ja": "idleハンドルのコールバックを呼び出します。名前は紛らわしいですが、アクティブなidleハンドルは、ループの反復ごとに実行されます。"
+    },
+    {
+      "index": 56,
+      "en": "Prepare handle callbacks are called. Prepare handles get their callbacks called right before\nthe loop will block for I/O.",
+      "ja": "prepareハンドルのコールバックを呼び出します。prepareハンドルは、ループがI/Oでブロックする直前にコールバックが呼び出されます。"
+    },
+    {
+      "index": 57,
+      "en": "Poll timeout is calculated. Before blocking for I/O the loop calculates for how long it should\nblock. These are the rules when calculating the timeout:",
+      "ja": "ポーリングのタイムアウトを計算します。I/Oでブロックする前に、どれだけの時間ブロックするかを計算します。タイムアウトの計算規則は次のとおりです。"
+    },
+    {
+      "index": 58,
+      "en": "If the loop was run with the ",
+      "ja": "ループを、"
+    },
+    {
+      "index": 59,
+      "en": " flag, the timeout is 0.",
+      "ja": "フラグで実行した場合、タイムアウトは0です。"
+    },
+    {
+      "index": 60,
+      "en": "If the loop is going to be stopped (",
+      "ja": "ループが停止しようとしている場合、つまり、"
+    },
+    {
+      "index": 61,
+      "en": " was called), the timeout is 0.",
+      "ja": "が呼び出された場合、タイムアウトは0です。"
+    },
+    {
+      "index": 62,
+      "en": "If there are no active handles or requests, the timeout is 0.",
+      "ja": "アクティブなハンドルもリクエストもない場合、タイムアウトは0です。"
+    },
+    {
+      "index": 63,
+      "en": "If there are any idle handles active, the timeout is 0.",
+      "ja": "アクティブなidleハンドルがある場合、タイムアウトは0です。"
+    },
+    {
+      "index": 64,
+      "en": "If there are any handles pending to be closed, the timeout is 0.",
+      "ja": "閉じる処理を待つハンドルがある場合、タイムアウトは0です。"
+    },
+    {
+      "index": 65,
+      "en": "If none of the above cases matches, the timeout of the closest timer is taken, or\nif there are no active timers, infinity.",
+      "ja": "以上のどれにも該当しない場合は、最も近いタイマーまでの時間を使います。アクティブなタイマーがなければ、無限に待ちます。"
+    },
+    {
+      "index": 66,
+      "en": "The loop blocks for I/O. At this point the loop will block for I/O for the duration calculated\nin the previous step. All I/O related handles that were monitoring a given file descriptor\nfor a read or write operation get their callbacks called at this point.",
+      "ja": "ループがI/Oでブロックします。この時点では、前の段階で計算した時間だけI/Oでブロックします。特定のファイルディスクリプターの読み取りや書き込みを監視していた、I/O関連のすべてのハンドルのコールバックを、この時点で呼び出します。"
+    },
+    {
+      "index": 67,
+      "en": "Check handle callbacks are called. Check handles get their callbacks called right after the\nloop has blocked for I/O. Check handles are essentially the counterpart of prepare handles.",
+      "ja": "checkハンドルのコールバックを呼び出します。checkハンドルは、ループがI/Oでブロックした直後にコールバックが呼び出されます。checkハンドルは、基本的にprepareハンドルに対応するものです。"
+    },
+    {
+      "index": 68,
+      "en": "Close callbacks are called. If a handle was closed by calling ",
+      "ja": "closeコールバックを呼び出します。"
+    },
+    {
+      "index": 69,
+      "en": " it will\nget the close callback called.",
+      "ja": "を呼び出してハンドルを閉じた場合、closeコールバックが呼び出されます。"
+    },
+    {
+      "index": 70,
+      "en": "The loop concept of ‘now’ is updated.",
+      "ja": "ループが認識する「現在時刻」を更新します。"
+    },
+    {
+      "index": 71,
+      "en": "Due timers are run. Note that ‘now’ is not updated again until the next loop iteration.\nSo if a timer became due while other timers were being processed, it won’t be run until\nthe following event loop iteration.",
+      "ja": "期限に達したタイマーを実行します。「現在時刻」は、次のループの反復まで再び更新されないことに注意してください。そのため、他のタイマーを処理している間に期限に達したタイマーは、次のイベントループの反復まで実行されません。"
+    },
+    {
+      "index": 72,
+      "en": "Iteration ends. If the loop was run with ",
+      "ja": "反復を終了します。ループを、"
+    },
+    {
+      "index": 73,
+      "en": " or ",
+      "ja": "または、"
+    },
+    {
+      "index": 74,
+      "en": " modes the\niteration ends and ",
+      "ja": "のモードで実行した場合、反復が終了し、"
+    },
+    {
+      "index": 75,
+      "en": " will return. If the loop was run with ",
+      "ja": "が戻ります。"
+    },
+    {
+      "index": 76,
+      "en": "\nit will continue from the start if it’s still ",
+      "ja": "で実行した場合は、まだ、"
+    },
+    {
+      "index": 77,
+      "en": "alive",
+      "ja": "存続中"
+    },
+    {
+      "index": 78,
+      "en": ", otherwise it will also end.",
+      "ja": "なら先頭から続行し、そうでなければ終了します。"
+    },
+    {
+      "index": 79,
+      "en": "Important",
+      "ja": "重要"
+    },
+    {
+      "index": 80,
+      "en": "libuv uses a thread pool to make asynchronous file I/O operations possible, but\nnetwork I/O is ",
+      "ja": "libuvは、非同期のファイルI/O操作を実現するためにスレッドプールを使いますが、ネットワークI/Oは、"
+    },
+    {
+      "index": 81,
+      "en": "always",
+      "ja": "常に"
+    },
+    {
+      "index": 82,
+      "en": " performed in a single thread, each loop’s thread.",
+      "ja": "各ループのスレッドという1つのスレッドで実行します。"
+    },
+    {
+      "index": 83,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 84,
+      "en": "While the polling mechanism is different, libuv makes the execution model consistent\nacross Unix systems and Windows.",
+      "ja": "ポーリングの機構は異なりますが、libuvはUnix系システムとWindowsの間で、一貫した実行モデルを提供します。"
+    },
+    {
+      "index": 85,
+      "en": "File I/O",
+      "ja": "ファイルI/O"
+    },
+    {
+      "index": 86,
+      "en": "Unlike network I/O, there are no platform-specific file I/O primitives libuv could rely on,\nso the current approach is to run blocking file I/O operations in a thread pool.",
+      "ja": "ネットワークI/Oと違い、libuvが利用できる、プラットフォーム固有のファイルI/Oプリミティブはありません。そのため、現在はスレッドプールでブロッキングのファイルI/O操作を実行しています。"
+    },
+    {
+      "index": 87,
+      "en": "For a thorough explanation of the cross-platform file I/O landscape, check out\n",
+      "ja": "クロスプラットフォームのファイルI/Oの状況について詳しく知るには、"
+    },
+    {
+      "index": 88,
+      "en": "this post",
+      "ja": "この記事"
+    },
+    {
+      "index": 89,
+      "en": ".",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 90,
+      "en": "libuv currently uses a global thread pool on which all loops can queue work. 3 types of\noperations are currently run on this pool:",
+      "ja": "libuvは現在、すべてのループが作業をキューに入れられる、グローバルなスレッドプールを使っています。このプールでは、現在、次の3種類の操作を実行します。"
+    },
+    {
+      "index": 91,
+      "en": "File system operations",
+      "ja": "ファイルシステム操作"
+    },
+    {
+      "index": 92,
+      "en": "DNS functions (getaddrinfo and getnameinfo)",
+      "ja": "DNS関数（getaddrinfoとgetnameinfo）"
+    },
+    {
+      "index": 93,
+      "en": "User specified code via ",
+      "ja": "次を通じたユーザー指定のコード: "
+    },
+    {
+      "index": 94,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 95,
+      "en": "See the ",
+      "ja": "詳しくは、"
+    },
+    {
+      "index": 96,
+      "en": "Thread pool work scheduling",
+      "ja": "スレッドプールでの作業のスケジューリング"
+    },
+    {
+      "index": 97,
+      "en": " section for more details, but keep in mind the thread pool size\nis quite limited.",
+      "ja": "の節を参照してください。ただし、スレッドプールのサイズはかなり限られていることに注意してください。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}
