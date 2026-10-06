@@ -1,0 +1,177 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Invoking-gzip">
+
+<h2 class="chapter" id="Invoking-gzip-1"><span>3 Invoking <code class="command">gzip</code></span></h2>
+<a class="index-entry-id" id="index-invoking"></a>
+<a class="index-entry-id" id="index-options"></a>
+<p>The format for running the <code class="command">gzip</code> program is:
+</p>
+<div class="example">
+<pre class="example-preformatted">gzip <var class="var">option</var> ...&#10;</pre></div>
+<p><code class="command">gzip</code> supports the following options:
+</p>
+<dl class="table">
+<dt><samp class="option">--stdout</samp></dt>
+<dt><samp class="option">--to-stdout</samp></dt>
+<dt><samp class="option">-c</samp></dt>
+<dd><p>Write output on standard output; keep original files unchanged.
+If there are several input files, the output consists of a sequence of
+independently compressed members.  To obtain better compression,
+concatenate all input files before compressing them.
+</p>
+</dd>
+<dt><samp class="option">--decompress</samp></dt>
+<dt><samp class="option">--uncompress</samp></dt>
+<dt><samp class="option">-d</samp></dt>
+<dd><p>Decompress.
+</p>
+</dd>
+<dt><samp class="option">--force</samp></dt>
+<dt><samp class="option">-f</samp></dt>
+<dd><p>Force compression or decompression even if the file has multiple links
+or the corresponding file already exists, or if the compressed data
+is read from or written to a terminal.  If the input data is not in
+a format recognized by <code class="command">gzip</code>, and if the option <samp class="option">--stdout</samp> is also
+given, copy the input data without change to the standard output: let
+<code class="command">zcat</code> behave as <code class="command">cat</code>.  If <samp class="option">-f</samp> is not given, and
+when not running in the background, <code class="command">gzip</code> prompts to verify
+whether an existing file should be overwritten.
+</p>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dt><samp class="option">-h</samp></dt>
+<dd><p>Print an informative help message describing the options then quit.
+</p>
+</dd>
+<dt><samp class="option">--keep</samp></dt>
+<dt><samp class="option">-k</samp></dt>
+<dd><p>Keep (don’t delete) input files during compression or decompression.
+</p>
+</dd>
+<dt><samp class="option">--list</samp></dt>
+<dt><samp class="option">-l</samp></dt>
+<dd><p>For each compressed file, list the following fields:
+</p>
+<div class="example">
+<pre class="example-preformatted">compressed size: size of the compressed file&#10;uncompressed size: size of the uncompressed file&#10;ratio: compression ratio (0.0% if unknown)&#10;uncompressed_name: name of the uncompressed file&#10;</pre></div>
+<p>In combination with the <samp class="option">--verbose</samp> option, the following fields are also
+displayed:
+</p>
+<div class="example">
+<pre class="example-preformatted">method: compression method (deflate,compress,lzh,pack)&#10;crc: the 32-bit CRC of the uncompressed data&#10;date &amp; time: timestamp for the uncompressed file&#10;</pre></div>
+<p>The <abbr class="abbr">CRC</abbr> is given as ffffffff for a file not in gzip format.
+</p>
+<p>With <samp class="option">--verbose</samp>, the size totals and compression ratio for all files
+is also displayed, unless some sizes are unknown.  With <samp class="option">--quiet</samp>,
+the title and totals lines are not displayed.
+</p>
+</dd>
+<dt><samp class="option">--license</samp></dt>
+<dt><samp class="option">-L</samp></dt>
+<dd><p>Display the <code class="command">gzip</code> license then quit.
+</p>
+</dd>
+<dt><samp class="option">--no-name</samp></dt>
+<dt><samp class="option">-n</samp></dt>
+<dd><p>When compressing, do not save the original file name and timestamp by
+default.  (The original name is always saved if the name had to be
+truncated.)  When decompressing, do not restore the original file name
+if present (remove only the <code class="command">gzip</code>
+suffix from the compressed file name) and do not restore the original
+timestamp if present (copy it from the compressed file).  This option
+is the default when decompressing.
+</p>
+</dd>
+<dt><samp class="option">--name</samp></dt>
+<dt><samp class="option">-N</samp></dt>
+<dd><p>When compressing, always save the original file name, and save
+the seconds part of the original modification timestamp if the
+original is a regular file and its timestamp is at least 1 (1970-01-01
+00:00:01 UTC) and is less than 2<sup class="sup">32</sup> (2106-02-07 06:28:16 UTC,
+assuming leap seconds are not counted); this
+is the default.  When decompressing, restore from the saved file name and
+timestamp if present.  This option is useful on systems which have
+a limit on file name length or when the timestamp has been lost after
+a file transfer.
+</p>
+</dd>
+<dt><samp class="option">--quiet</samp></dt>
+<dt><samp class="option">-q</samp></dt>
+<dd><p>Suppress all warning messages.
+</p>
+</dd>
+<dt><samp class="option">--recursive</samp></dt>
+<dt><samp class="option">-r</samp></dt>
+<dd><p>Travel the directory structure recursively.  If any of the file names
+specified on the command line are directories, <code class="command">gzip</code> will descend
+into the directory and compress all the files it finds there (or
+decompress them in the case of <code class="command">gunzip</code>).
+</p>
+</dd>
+<dt><samp class="option">--rsyncable</samp></dt>
+<dd><p>Cater better to the <code class="command">rsync</code> program by periodically resetting
+the internal structure of the compressed data stream.  This lets the
+<code class="code">rsync</code> program take advantage of similarities in the uncompressed
+input when synchronizing two files compressed with this flag.  The cost:
+the compressed output is usually about one percent larger.
+</p>
+</dd>
+<dt><samp class="option">--suffix <var class="var">suf</var></samp></dt>
+<dt><samp class="option">-S <var class="var">suf</var></samp></dt>
+<dd>
+<p>Use suffix <var class="var">suf</var> instead of ‘<samp class="samp">.gz</samp>’.
+Although any suffix can be given so long as it does not contain ‘<samp class="samp">/</samp>’,
+suffixes other than ‘<samp class="samp">.z</samp>’ and ‘<samp class="samp">.gz</samp>’ should be
+avoided to avoid confusion when files are transferred to other systems.
+An empty suffix forces gunzip to try decompression on all given files
+regardless of suffix, as in:
+</p>
+<div class="example">
+<pre class="example-preformatted">gunzip -S "" *        (*.* for MSDOS)&#10;</pre></div>
+<p>Previous versions of gzip used the ‘<samp class="samp">.z</samp>’ suffix.  This was changed to
+avoid a conflict with <code class="command">pack</code>.
+</p>
+</dd>
+<dt><samp class="option">--synchronous</samp></dt>
+<dd><p>Use synchronous output, by transferring output data to the output
+file’s storage device when the file system supports this.  Because
+file system data can be cached, without this option if the system
+crashes around the time a command like ‘<samp class="samp">gzip FOO</samp>’ is run the user
+might lose both <samp class="file">FOO</samp> and <samp class="file">FOO.gz</samp>; this is the default with
+<code class="command">gzip</code>, just as it is the default with most applications that
+move data.  When this option is used, <code class="command">gzip</code> is safer but can
+be considerably slower.
+</p>
+</dd>
+<dt><samp class="option">--test</samp></dt>
+<dt><samp class="option">-t</samp></dt>
+<dd><p>Test.  Check the compressed file integrity.
+</p>
+</dd>
+<dt><samp class="option">--verbose</samp></dt>
+<dt><samp class="option">-v</samp></dt>
+<dd><p>Verbose.  Display the name and percentage reduction for each file compressed.
+</p>
+</dd>
+<dt><samp class="option">--version</samp></dt>
+<dt><samp class="option">-V</samp></dt>
+<dd><p>Version.  Display the version number and compilation options, then quit.
+</p>
+</dd>
+<dt><samp class="option">--fast</samp></dt>
+<dt><samp class="option">--best</samp></dt>
+<dt><samp class="option">-<var class="var">n</var></samp></dt>
+<dd><p>Regulate the speed of compression using the specified digit <var class="var">n</var>,
+where <samp class="option">-1</samp> or <samp class="option">--fast</samp> indicates the fastest compression
+method (less compression) and <samp class="option">--best</samp> or <samp class="option">-9</samp> indicates the
+slowest compression method (optimal compression).  The default
+compression level is <samp class="option">-6</samp> (that is, biased towards high compression at
+expense of speed).
+</p></dd>
+</dl>
+<p>An exit status of 0 indicates success, 1 indicates failure, and 2
+indicates a warning but not failure.
+</p>
+<hr/>
+</div>
+</div>

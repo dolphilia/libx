@@ -1,0 +1,114 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Overview">
+
+<h2 class="chapter" id="Overview-1"><span>1 Overview</span></h2>
+<a class="index-entry-id" id="index-overview"></a>
+<p><code class="command">gzip</code> reduces the size of the named files using Lempel–Ziv coding
+(LZ77).  Whenever possible, each file is replaced by one with the
+extension ‘<samp class="samp">.gz</samp>’, while keeping the same ownership modes, access and
+modification times.  (The default extension is
+‘<samp class="samp">z</samp>’ for <abbr class="abbr">MSDOS</abbr>, <abbr class="abbr">OS/2</abbr> <abbr class="abbr">FAT</abbr> and Atari.)
+If no files are specified or
+if a file name is <samp class="file">-</samp>, the standard input is compressed to the standard
+output.  <code class="command">gzip</code> will only attempt to compress regular files.  In
+particular, it will ignore symbolic links.
+</p>
+<p>If the new file name is too long for its file system, <code class="command">gzip</code>
+truncates it.  <code class="command">gzip</code> attempts to truncate only the parts of the
+file name longer than 3 characters.  (A part is delimited by dots.) If
+the name consists of small parts only, the longest parts are truncated.
+For example, if file names are limited to 14 characters, gzip.msdos.exe
+is compressed to gzi.msd.exe.gz.  Names are not truncated on systems
+which do not have a limit on file name length.
+</p>
+<p>By default, <code class="command">gzip</code> keeps the original file name in the
+compressed file.  This can be useful when decompressing the file with
+<samp class="option">-N</samp> if the compressed file name was truncated after a file
+transfer.
+</p>
+<p>If the original is a regular file, <code class="command">gzip</code> by default keeps its
+timestamp in the compressed file.  This can be useful when
+decompressing the file with <samp class="option">-N</samp> if the timestamp was not
+preserved after a file transfer.
+However, due to limitations in the current <code class="command">gzip</code> file
+format, fractional seconds are discarded.  Also, timestamps must fall
+within the range 1970-01-01 00:00:01 through 2106-02-07 06:28:15
+<abbr class="abbr">UTC</abbr>, and hosts whose operating systems use 32-bit timestamps
+are further restricted to timestamps no later than 2038-01-19
+03:14:07 <abbr class="abbr">UTC</abbr>.  The upper bounds assume the typical case
+where leap seconds are ignored.
+</p>
+<p>Compressed files can be restored to their original form using ‘<samp class="samp">gzip -d</samp>’
+or <code class="command">gunzip</code> or <code class="command">zcat</code>.  If the original name saved in the
+compressed file is not suitable for its file system, a new name is
+constructed from the original one to make it legal.
+</p>
+<p><code class="command">gunzip</code> takes a list of files on its command line and replaces
+each file whose name ends with ‘<samp class="samp">.gz</samp>’, ‘<samp class="samp">.z</samp>’
+‘<samp class="samp">-gz</samp>’, ‘<samp class="samp">-z</samp>’, or ‘<samp class="samp">_z</samp>’ (ignoring case)
+and which begins with the correct
+magic number with an uncompressed file without the original extension.
+<code class="command">gunzip</code> also recognizes the special extensions ‘<samp class="samp">.tgz</samp>’ and
+‘<samp class="samp">.taz</samp>’ as shorthands for ‘<samp class="samp">.tar.gz</samp>’ and ‘<samp class="samp">.tar.Z</samp>’
+respectively.  When compressing, <code class="command">gzip</code> uses the ‘<samp class="samp">.tgz</samp>’
+extension if necessary instead of truncating a file with a ‘<samp class="samp">.tar</samp>’
+extension.
+</p>
+<p><code class="command">gunzip</code> can currently decompress files created by <code class="command">gzip</code>,
+<code class="command">zip</code>, <code class="command">compress</code> or <code class="command">pack</code>.  The detection of the input
+format is automatic.  When using the first two formats, <code class="command">gunzip</code>
+checks a 32 bit <abbr class="abbr">CRC</abbr> (cyclic redundancy check).  For <code class="command">pack</code>,
+<code class="command">gunzip</code> checks the uncompressed length.  The <code class="command">compress</code> format
+was not designed to allow consistency checks.  However <code class="command">gunzip</code> is
+sometimes able to detect a bad ‘<samp class="samp">.Z</samp>’ file.  If you get an error when
+uncompressing a ‘<samp class="samp">.Z</samp>’ file, do not assume that the ‘<samp class="samp">.Z</samp>’ file is
+correct simply because the standard <code class="command">uncompress</code> does not complain.
+This generally means that the standard <code class="command">uncompress</code> does not check
+its input, and happily generates garbage output.  The <abbr class="abbr">SCO</abbr> ‘<samp class="samp">compress
+-H</samp>’ format (<abbr class="abbr">LZH</abbr> compression method) does not include a <abbr class="abbr">CRC</abbr> but
+also allows some consistency checks.
+</p>
+<p>Files created by <code class="command">zip</code> can be uncompressed by <code class="command">gzip</code> only if
+they have a single member compressed with the “deflation” method.  This
+feature is only intended to help conversion of <samp class="file">tar.zip</samp> files to
+the <samp class="file">tar.gz</samp> format.  To extract a <code class="command">zip</code> file with a single
+member, use a command like ‘<samp class="samp">gunzip &lt;foo.zip</samp>’ or ‘<samp class="samp">gunzip -S
+.zip foo.zip</samp>’.  To extract <code class="command">zip</code> files with several
+members, use <code class="command">unzip</code> instead of <code class="command">gunzip</code>.
+</p>
+<p><code class="command">zcat</code> is identical to ‘<samp class="samp">gunzip -c</samp>’.  <code class="command">zcat</code>
+uncompresses either a list of files on the command line or its standard
+input and writes the uncompressed data on standard output.  <code class="command">zcat</code>
+will uncompress files that have the correct magic number whether they
+have a ‘<samp class="samp">.gz</samp>’ suffix or not.
+</p>
+<p><code class="command">gzip</code> uses the Lempel–Ziv algorithm used in <code class="command">zip</code> and
+<abbr class="abbr">PKZIP</abbr>.
+The amount of compression obtained depends on the size of the input and
+the distribution of common substrings.  Typically, text such as source
+code or English is reduced by 60–70%.  Compression is generally much
+better than that achieved by <abbr class="abbr">LZW</abbr> (as used in <code class="command">compress</code>), Huffman
+coding (as used in <code class="command">pack</code>), or adaptive Huffman coding
+(<code class="command">compact</code>).
+</p>
+<p>Compression is always performed, even if the compressed file is slightly
+larger than the original.  The worst case expansion is a few bytes for
+the <code class="command">gzip</code> file header, plus 5 bytes per 32 KiB block, or
+an expansion ratio of 0.015% for large files.  The actual number of
+used disk blocks almost never increases.
+</p>
+<p><code class="command">gzip</code> normally preserves the mode and modification timestamp
+of a file when compressing or decompressing.  If you have appropriate
+privileges, it also preserves the file’s owner and group.
+</p>
+<p>The <code class="command">gzip</code> file format is specified in P. Deutsch, GZIP file
+format specification version 4.3,
+<a class="uref" href="https://www.ietf.org/rfc/rfc1952.txt">Internet <abbr class="abbr">RFC</abbr> 1952</a> (May
+1996).  The <code class="command">zip</code> deflation format is specified in P. Deutsch,
+DEFLATE Compressed Data Format Specification version 1.3,
+<a class="uref" href="https://www.ietf.org/rfc/rfc1951.txt">Internet <abbr class="abbr">RFC</abbr> 1951</a> (May
+1996).
+</p>
+<hr/>
+</div>
+</div>

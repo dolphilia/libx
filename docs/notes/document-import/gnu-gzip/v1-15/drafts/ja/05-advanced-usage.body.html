@@ -1,0 +1,31 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Advanced-usage">
+<h2 class="chapter" id="Advanced-usage-1"><span>4 高度な使い方</span></h2>
+<a class="index-entry-id" id="index-concatenated-files"></a>
+<p>複数の圧縮ファイルは連結できます。この場合、<code class="command">gunzip</code>はすべてのメンバーを一度に展開します。1つのメンバーが壊れていても、そのメンバーを取り除けば他のメンバーを復元できる場合があります。通常、すべてのメンバーを展開し、まとめて再圧縮すると、より高い圧縮率が得られます。</p>
+<p><code class="command">gzip</code>ファイルを連結する例を示します。</p>
+<div class="example">
+<pre class="example-preformatted">gzip -c file1  &gt; foo.gz&#10;gzip -c file2 &gt;&gt; foo.gz&#10;</pre></div>
+<p>この場合、次のコマンドは、</p>
+<div class="example">
+<pre class="example-preformatted">gunzip -c foo&#10;</pre></div>
+<p>次のコマンドと同じ結果になります。</p>
+<div class="example">
+<pre class="example-preformatted">cat file1 file2&#10;</pre></div>
+<p>「<samp class="samp">.gz</samp>」ファイルの1つのメンバーが壊れた場合も、壊れたメンバーを取り除けば他のメンバーを復元できます。ただし、すべてのメンバーをまとめて圧縮するほうが、高い圧縮率が得られます。次のコマンドは、</p>
+<div class="example">
+<pre class="example-preformatted">cat file1 file2 | gzip &gt; foo.gz&#10;</pre></div>
+<p>次のコマンドより高い圧縮率になります。</p>
+<div class="example">
+<pre class="example-preformatted">gzip -c file1 file2 &gt; foo.gz&#10;</pre></div>
+<p>連結済みのファイルを再圧縮して圧縮率を高めたい場合は、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">zcat old.gz | gzip &gt; new.gz&#10;</pre></div>
+<p>圧縮ファイルが複数のメンバーで構成されている場合、<samp class="option">--list</samp>オプションが報告する展開後のサイズと<abbr class="abbr">CRC</abbr>は、最後のメンバーだけの値です。全メンバーの展開後のサイズが必要なら、次のコマンドを使えます。</p>
+<div class="example">
+<pre class="example-preformatted">zcat file.gz | wc -c&#10;</pre></div>
+<p>複数のメンバーを、後から個別に取り出せる1つのアーカイブファイルにまとめたい場合は、<code class="command">tar</code>や<code class="command">zip</code>などのアーカイバーを使ってください。<abbr class="acronym">GNU</abbr> <code class="command">tar</code>は<samp class="option">-z</samp>オプションで<code class="command">gzip</code>を透過的に呼び出せます。<code class="command">gzip</code>は<code class="command">tar</code>を補うものとして設計されており、置き換えるものではありません。</p>
+<hr/>
+</div>
+</div>
+

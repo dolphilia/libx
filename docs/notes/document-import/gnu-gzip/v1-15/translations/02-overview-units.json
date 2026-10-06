@@ -1,0 +1,220 @@
+{
+  "slug": "02-overview",
+  "bodySHA256": "dc61ddaa35d6cfcbf053ba2281d0bd270b9360dc13e10370c2a57d34edff1266",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧1 Overview⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Overview-1\"><span>1 Overview</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧ reduces the size of the named files using Lempel–Ziv coding (LZ77). Whenever possible, each file is replaced by one with the extension ‘⟦1⟧’, while keeping the same ownership modes, access and modification times. (The default extension is ‘⟦2⟧’ for ⟦3⟧MSDOS⟦4⟧, ⟦5⟧OS/2⟦6⟧ ⟦7⟧FAT⟦8⟧ and Atari.) If no files are specified or if a file name is ⟦9⟧, the standard input is compressed to the standard output. ⟦10⟧ will only attempt to compress regular files. In particular, it will ignore symbolic links.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>",
+        "⟦1⟧": "<samp class=\"samp\">.gz</samp>",
+        "⟦2⟧": "<samp class=\"samp\">z</samp>",
+        "⟦3⟧": "<abbr class=\"abbr\">",
+        "⟦4⟧": "</abbr>",
+        "⟦5⟧": "<abbr class=\"abbr\">",
+        "⟦6⟧": "</abbr>",
+        "⟦7⟧": "<abbr class=\"abbr\">",
+        "⟦8⟧": "</abbr>",
+        "⟦9⟧": "<samp class=\"file\">-</samp>",
+        "⟦10⟧": "<code class=\"command\">gzip</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">gzip</code> reduces the size of the named files using Lempel–Ziv coding\n(LZ77).  Whenever possible, each file is replaced by one with the\nextension ‘<samp class=\"samp\">.gz</samp>’, while keeping the same ownership modes, access and\nmodification times.  (The default extension is\n‘<samp class=\"samp\">z</samp>’ for <abbr class=\"abbr\">MSDOS</abbr>, <abbr class=\"abbr\">OS/2</abbr> <abbr class=\"abbr\">FAT</abbr> and Atari.)\nIf no files are specified or\nif a file name is <samp class=\"file\">-</samp>, the standard input is compressed to the standard\noutput.  <code class=\"command\">gzip</code> will only attempt to compress regular files.  In\nparticular, it will ignore symbolic links.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "If the new file name is too long for its file system, ⟦0⟧ truncates it. ⟦1⟧ attempts to truncate only the parts of the file name longer than 3 characters. (A part is delimited by dots.) If the name consists of small parts only, the longest parts are truncated. For example, if file names are limited to 14 characters, gzip.msdos.exe is compressed to gzi.msd.exe.gz. Names are not truncated on systems which do not have a limit on file name length.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>",
+        "⟦1⟧": "<code class=\"command\">gzip</code>"
+      },
+      "sourceHTML": "<p>If the new file name is too long for its file system, <code class=\"command\">gzip</code>\ntruncates it.  <code class=\"command\">gzip</code> attempts to truncate only the parts of the\nfile name longer than 3 characters.  (A part is delimited by dots.) If\nthe name consists of small parts only, the longest parts are truncated.\nFor example, if file names are limited to 14 characters, gzip.msdos.exe\nis compressed to gzi.msd.exe.gz.  Names are not truncated on systems\nwhich do not have a limit on file name length.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "By default, ⟦0⟧ keeps the original file name in the compressed file. This can be useful when decompressing the file with ⟦1⟧ if the compressed file name was truncated after a file transfer.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>",
+        "⟦1⟧": "<samp class=\"option\">-N</samp>"
+      },
+      "sourceHTML": "<p>By default, <code class=\"command\">gzip</code> keeps the original file name in the\ncompressed file.  This can be useful when decompressing the file with\n<samp class=\"option\">-N</samp> if the compressed file name was truncated after a file\ntransfer.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "If the original is a regular file, ⟦0⟧ by default keeps its timestamp in the compressed file. This can be useful when decompressing the file with ⟦1⟧ if the timestamp was not preserved after a file transfer. However, due to limitations in the current ⟦2⟧ file format, fractional seconds are discarded. Also, timestamps must fall within the range 1970-01-01 00:00:01 through 2106-02-07 06:28:15 ⟦3⟧UTC⟦4⟧, and hosts whose operating systems use 32-bit timestamps are further restricted to timestamps no later than 2038-01-19 03:14:07 ⟦5⟧UTC⟦6⟧. The upper bounds assume the typical case where leap seconds are ignored.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>",
+        "⟦1⟧": "<samp class=\"option\">-N</samp>",
+        "⟦2⟧": "<code class=\"command\">gzip</code>",
+        "⟦3⟧": "<abbr class=\"abbr\">",
+        "⟦4⟧": "</abbr>",
+        "⟦5⟧": "<abbr class=\"abbr\">",
+        "⟦6⟧": "</abbr>"
+      },
+      "sourceHTML": "<p>If the original is a regular file, <code class=\"command\">gzip</code> by default keeps its\ntimestamp in the compressed file.  This can be useful when\ndecompressing the file with <samp class=\"option\">-N</samp> if the timestamp was not\npreserved after a file transfer.\nHowever, due to limitations in the current <code class=\"command\">gzip</code> file\nformat, fractional seconds are discarded.  Also, timestamps must fall\nwithin the range 1970-01-01 00:00:01 through 2106-02-07 06:28:15\n<abbr class=\"abbr\">UTC</abbr>, and hosts whose operating systems use 32-bit timestamps\nare further restricted to timestamps no later than 2038-01-19\n03:14:07 <abbr class=\"abbr\">UTC</abbr>.  The upper bounds assume the typical case\nwhere leap seconds are ignored.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Compressed files can be restored to their original form using ‘⟦0⟧’ or ⟦1⟧ or ⟦2⟧. If the original name saved in the compressed file is not suitable for its file system, a new name is constructed from the original one to make it legal.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">gzip -d</samp>",
+        "⟦1⟧": "<code class=\"command\">gunzip</code>",
+        "⟦2⟧": "<code class=\"command\">zcat</code>"
+      },
+      "sourceHTML": "<p>Compressed files can be restored to their original form using ‘<samp class=\"samp\">gzip -d</samp>’\nor <code class=\"command\">gunzip</code> or <code class=\"command\">zcat</code>.  If the original name saved in the\ncompressed file is not suitable for its file system, a new name is\nconstructed from the original one to make it legal.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "⟦0⟧ takes a list of files on its command line and replaces each file whose name ends with ‘⟦1⟧’, ‘⟦2⟧’ ‘⟦3⟧’, ‘⟦4⟧’, or ‘⟦5⟧’ (ignoring case) and which begins with the correct magic number with an uncompressed file without the original extension. ⟦6⟧ also recognizes the special extensions ‘⟦7⟧’ and ‘⟦8⟧’ as shorthands for ‘⟦9⟧’ and ‘⟦10⟧’ respectively. When compressing, ⟦11⟧ uses the ‘⟦12⟧’ extension if necessary instead of truncating a file with a ‘⟦13⟧’ extension.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gunzip</code>",
+        "⟦1⟧": "<samp class=\"samp\">.gz</samp>",
+        "⟦2⟧": "<samp class=\"samp\">.z</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-gz</samp>",
+        "⟦4⟧": "<samp class=\"samp\">-z</samp>",
+        "⟦5⟧": "<samp class=\"samp\">_z</samp>",
+        "⟦6⟧": "<code class=\"command\">gunzip</code>",
+        "⟦7⟧": "<samp class=\"samp\">.tgz</samp>",
+        "⟦8⟧": "<samp class=\"samp\">.taz</samp>",
+        "⟦9⟧": "<samp class=\"samp\">.tar.gz</samp>",
+        "⟦10⟧": "<samp class=\"samp\">.tar.Z</samp>",
+        "⟦11⟧": "<code class=\"command\">gzip</code>",
+        "⟦12⟧": "<samp class=\"samp\">.tgz</samp>",
+        "⟦13⟧": "<samp class=\"samp\">.tar</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">gunzip</code> takes a list of files on its command line and replaces\neach file whose name ends with ‘<samp class=\"samp\">.gz</samp>’, ‘<samp class=\"samp\">.z</samp>’\n‘<samp class=\"samp\">-gz</samp>’, ‘<samp class=\"samp\">-z</samp>’, or ‘<samp class=\"samp\">_z</samp>’ (ignoring case)\nand which begins with the correct\nmagic number with an uncompressed file without the original extension.\n<code class=\"command\">gunzip</code> also recognizes the special extensions ‘<samp class=\"samp\">.tgz</samp>’ and\n‘<samp class=\"samp\">.taz</samp>’ as shorthands for ‘<samp class=\"samp\">.tar.gz</samp>’ and ‘<samp class=\"samp\">.tar.Z</samp>’\nrespectively.  When compressing, <code class=\"command\">gzip</code> uses the ‘<samp class=\"samp\">.tgz</samp>’\nextension if necessary instead of truncating a file with a ‘<samp class=\"samp\">.tar</samp>’\nextension.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "⟦0⟧ can currently decompress files created by ⟦1⟧, ⟦2⟧, ⟦3⟧ or ⟦4⟧. The detection of the input format is automatic. When using the first two formats, ⟦5⟧ checks a 32 bit ⟦6⟧CRC⟦7⟧ (cyclic redundancy check). For ⟦8⟧, ⟦9⟧ checks the uncompressed length. The ⟦10⟧ format was not designed to allow consistency checks. However ⟦11⟧ is sometimes able to detect a bad ‘⟦12⟧’ file. If you get an error when uncompressing a ‘⟦13⟧’ file, do not assume that the ‘⟦14⟧’ file is correct simply because the standard ⟦15⟧ does not complain. This generally means that the standard ⟦16⟧ does not check its input, and happily generates garbage output. The ⟦17⟧SCO⟦18⟧ ‘⟦19⟧’ format (⟦20⟧LZH⟦21⟧ compression method) does not include a ⟦22⟧CRC⟦23⟧ but also allows some consistency checks.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gunzip</code>",
+        "⟦1⟧": "<code class=\"command\">gzip</code>",
+        "⟦2⟧": "<code class=\"command\">zip</code>",
+        "⟦3⟧": "<code class=\"command\">compress</code>",
+        "⟦4⟧": "<code class=\"command\">pack</code>",
+        "⟦5⟧": "<code class=\"command\">gunzip</code>",
+        "⟦6⟧": "<abbr class=\"abbr\">",
+        "⟦7⟧": "</abbr>",
+        "⟦8⟧": "<code class=\"command\">pack</code>",
+        "⟦9⟧": "<code class=\"command\">gunzip</code>",
+        "⟦10⟧": "<code class=\"command\">compress</code>",
+        "⟦11⟧": "<code class=\"command\">gunzip</code>",
+        "⟦12⟧": "<samp class=\"samp\">.Z</samp>",
+        "⟦13⟧": "<samp class=\"samp\">.Z</samp>",
+        "⟦14⟧": "<samp class=\"samp\">.Z</samp>",
+        "⟦15⟧": "<code class=\"command\">uncompress</code>",
+        "⟦16⟧": "<code class=\"command\">uncompress</code>",
+        "⟦17⟧": "<abbr class=\"abbr\">",
+        "⟦18⟧": "</abbr>",
+        "⟦19⟧": "<samp class=\"samp\">compress\n-H</samp>",
+        "⟦20⟧": "<abbr class=\"abbr\">",
+        "⟦21⟧": "</abbr>",
+        "⟦22⟧": "<abbr class=\"abbr\">",
+        "⟦23⟧": "</abbr>"
+      },
+      "sourceHTML": "<p><code class=\"command\">gunzip</code> can currently decompress files created by <code class=\"command\">gzip</code>,\n<code class=\"command\">zip</code>, <code class=\"command\">compress</code> or <code class=\"command\">pack</code>.  The detection of the input\nformat is automatic.  When using the first two formats, <code class=\"command\">gunzip</code>\nchecks a 32 bit <abbr class=\"abbr\">CRC</abbr> (cyclic redundancy check).  For <code class=\"command\">pack</code>,\n<code class=\"command\">gunzip</code> checks the uncompressed length.  The <code class=\"command\">compress</code> format\nwas not designed to allow consistency checks.  However <code class=\"command\">gunzip</code> is\nsometimes able to detect a bad ‘<samp class=\"samp\">.Z</samp>’ file.  If you get an error when\nuncompressing a ‘<samp class=\"samp\">.Z</samp>’ file, do not assume that the ‘<samp class=\"samp\">.Z</samp>’ file is\ncorrect simply because the standard <code class=\"command\">uncompress</code> does not complain.\nThis generally means that the standard <code class=\"command\">uncompress</code> does not check\nits input, and happily generates garbage output.  The <abbr class=\"abbr\">SCO</abbr> ‘<samp class=\"samp\">compress\n-H</samp>’ format (<abbr class=\"abbr\">LZH</abbr> compression method) does not include a <abbr class=\"abbr\">CRC</abbr> but\nalso allows some consistency checks.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Files created by ⟦0⟧ can be uncompressed by ⟦1⟧ only if they have a single member compressed with the “deflation” method. This feature is only intended to help conversion of ⟦2⟧ files to the ⟦3⟧ format. To extract a ⟦4⟧ file with a single member, use a command like ‘⟦5⟧’ or ‘⟦6⟧’. To extract ⟦7⟧ files with several members, use ⟦8⟧ instead of ⟦9⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">zip</code>",
+        "⟦1⟧": "<code class=\"command\">gzip</code>",
+        "⟦2⟧": "<samp class=\"file\">tar.zip</samp>",
+        "⟦3⟧": "<samp class=\"file\">tar.gz</samp>",
+        "⟦4⟧": "<code class=\"command\">zip</code>",
+        "⟦5⟧": "<samp class=\"samp\">gunzip &lt;foo.zip</samp>",
+        "⟦6⟧": "<samp class=\"samp\">gunzip -S\n.zip foo.zip</samp>",
+        "⟦7⟧": "<code class=\"command\">zip</code>",
+        "⟦8⟧": "<code class=\"command\">unzip</code>",
+        "⟦9⟧": "<code class=\"command\">gunzip</code>"
+      },
+      "sourceHTML": "<p>Files created by <code class=\"command\">zip</code> can be uncompressed by <code class=\"command\">gzip</code> only if\nthey have a single member compressed with the “deflation” method.  This\nfeature is only intended to help conversion of <samp class=\"file\">tar.zip</samp> files to\nthe <samp class=\"file\">tar.gz</samp> format.  To extract a <code class=\"command\">zip</code> file with a single\nmember, use a command like ‘<samp class=\"samp\">gunzip &lt;foo.zip</samp>’ or ‘<samp class=\"samp\">gunzip -S\n.zip foo.zip</samp>’.  To extract <code class=\"command\">zip</code> files with several\nmembers, use <code class=\"command\">unzip</code> instead of <code class=\"command\">gunzip</code>.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "⟦0⟧ is identical to ‘⟦1⟧’. ⟦2⟧ uncompresses either a list of files on the command line or its standard input and writes the uncompressed data on standard output. ⟦3⟧ will uncompress files that have the correct magic number whether they have a ‘⟦4⟧’ suffix or not.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">zcat</code>",
+        "⟦1⟧": "<samp class=\"samp\">gunzip -c</samp>",
+        "⟦2⟧": "<code class=\"command\">zcat</code>",
+        "⟦3⟧": "<code class=\"command\">zcat</code>",
+        "⟦4⟧": "<samp class=\"samp\">.gz</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">zcat</code> is identical to ‘<samp class=\"samp\">gunzip -c</samp>’.  <code class=\"command\">zcat</code>\nuncompresses either a list of files on the command line or its standard\ninput and writes the uncompressed data on standard output.  <code class=\"command\">zcat</code>\nwill uncompress files that have the correct magic number whether they\nhave a ‘<samp class=\"samp\">.gz</samp>’ suffix or not.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "⟦0⟧ uses the Lempel–Ziv algorithm used in ⟦1⟧ and ⟦2⟧PKZIP⟦3⟧. The amount of compression obtained depends on the size of the input and the distribution of common substrings. Typically, text such as source code or English is reduced by 60–70%. Compression is generally much better than that achieved by ⟦4⟧LZW⟦5⟧ (as used in ⟦6⟧), Huffman coding (as used in ⟦7⟧), or adaptive Huffman coding (⟦8⟧).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>",
+        "⟦1⟧": "<code class=\"command\">zip</code>",
+        "⟦2⟧": "<abbr class=\"abbr\">",
+        "⟦3⟧": "</abbr>",
+        "⟦4⟧": "<abbr class=\"abbr\">",
+        "⟦5⟧": "</abbr>",
+        "⟦6⟧": "<code class=\"command\">compress</code>",
+        "⟦7⟧": "<code class=\"command\">pack</code>",
+        "⟦8⟧": "<code class=\"command\">compact</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">gzip</code> uses the Lempel–Ziv algorithm used in <code class=\"command\">zip</code> and\n<abbr class=\"abbr\">PKZIP</abbr>.\nThe amount of compression obtained depends on the size of the input and\nthe distribution of common substrings.  Typically, text such as source\ncode or English is reduced by 60–70%.  Compression is generally much\nbetter than that achieved by <abbr class=\"abbr\">LZW</abbr> (as used in <code class=\"command\">compress</code>), Huffman\ncoding (as used in <code class=\"command\">pack</code>), or adaptive Huffman coding\n(<code class=\"command\">compact</code>).\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "Compression is always performed, even if the compressed file is slightly larger than the original. The worst case expansion is a few bytes for the ⟦0⟧ file header, plus 5 bytes per 32 KiB block, or an expansion ratio of 0.015% for large files. The actual number of used disk blocks almost never increases.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>"
+      },
+      "sourceHTML": "<p>Compression is always performed, even if the compressed file is slightly\nlarger than the original.  The worst case expansion is a few bytes for\nthe <code class=\"command\">gzip</code> file header, plus 5 bytes per 32 KiB block, or\nan expansion ratio of 0.015% for large files.  The actual number of\nused disk blocks almost never increases.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "⟦0⟧ normally preserves the mode and modification timestamp of a file when compressing or decompressing. If you have appropriate privileges, it also preserves the file’s owner and group.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">gzip</code> normally preserves the mode and modification timestamp\nof a file when compressing or decompressing.  If you have appropriate\nprivileges, it also preserves the file’s owner and group.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "The ⟦0⟧ file format is specified in P. Deutsch, GZIP file format specification version 4.3, ⟦1⟧Internet ⟦2⟧RFC⟦3⟧ 1952⟦4⟧ (May 1996). The ⟦5⟧ deflation format is specified in P. Deutsch, DEFLATE Compressed Data Format Specification version 1.3, ⟦6⟧Internet ⟦7⟧RFC⟦8⟧ 1951⟦9⟧ (May 1996).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">gzip</code>",
+        "⟦1⟧": "<a class=\"uref\" href=\"https://www.ietf.org/rfc/rfc1952.txt\">",
+        "⟦2⟧": "<abbr class=\"abbr\">",
+        "⟦3⟧": "</abbr>",
+        "⟦4⟧": "</a>",
+        "⟦5⟧": "<code class=\"command\">zip</code>",
+        "⟦6⟧": "<a class=\"uref\" href=\"https://www.ietf.org/rfc/rfc1951.txt\">",
+        "⟦7⟧": "<abbr class=\"abbr\">",
+        "⟦8⟧": "</abbr>",
+        "⟦9⟧": "</a>"
+      },
+      "sourceHTML": "<p>The <code class=\"command\">gzip</code> file format is specified in P. Deutsch, GZIP file\nformat specification version 4.3,\n<a class=\"uref\" href=\"https://www.ietf.org/rfc/rfc1952.txt\">Internet <abbr class=\"abbr\">RFC</abbr> 1952</a> (May\n1996).  The <code class=\"command\">zip</code> deflation format is specified in P. Deutsch,\nDEFLATE Compressed Data Format Specification version 1.3,\n<a class=\"uref\" href=\"https://www.ietf.org/rfc/rfc1951.txt\">Internet <abbr class=\"abbr\">RFC</abbr> 1951</a> (May\n1996).\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

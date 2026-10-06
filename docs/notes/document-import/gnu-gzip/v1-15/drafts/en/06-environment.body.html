@@ -1,0 +1,69 @@
+<div class="gnu-gzip-original-content">
+<div class="chapter-level-extent" id="Environment">
+
+<h2 class="chapter" id="Environment-1"><span>5 Environment</span></h2>
+<a class="index-entry-id" id="index-Environment"></a>
+<p>The environment variable <code class="env">GZIP</code> can hold a set of
+default options for <code class="command">gzip</code>.  These options are interpreted
+first and can be overridden by explicit command line parameters.  As
+this can cause problems when using scripts, this feature is supported
+only for <samp class="option">--rsyncable</samp>, <samp class="option">--synchronous</samp>, and
+options like <samp class="option">-9</samp> that set the compression level;
+any other options or operands in <code class="env">GZIP</code> are silently ignored.
+</p>
+<p>You can use an alias or script instead.  For example,
+instead of setting ‘<samp class="samp">GZIP="-9"</samp>’ in the environment, if
+<code class="command">gzip</code> is in the directory ‘<samp class="samp">/usr/bin</samp>’ you can prepend
+<samp class="file">$HOME/bin</samp> to your <code class="env">PATH</code> and create an executable script
+<samp class="file">$HOME/bin/gzip</samp> containing the following:
+</p>
+<div class="example">
+<pre class="example-preformatted">#! /bin/sh&#10;export PATH=/usr/bin&#10;exec gzip -9 "$@"&#10;</pre></div>
+<p>The following environment variables are applicable only when using
+<code class="command">gzip</code> on IBM Z mainframes supporting DEFLATE COMPRESSION CALL
+instruction:
+</p>
+<dl class="table">
+<dt><samp class="option">DFLTCC</samp></dt>
+<dd><p>Whether DEFLATE COMPRESSION CALL should be used.  Default value is ‘<samp class="samp">1</samp>’.
+Set this to ‘<samp class="samp">0</samp>’ to disable DEFLATE COMPRESSION CALL altogether.
+</p>
+</dd>
+<dt><samp class="option">DFLTCC_LEVEL_MASK</samp></dt>
+<dd><p>Compression levels on which DEFLATE COMPRESSION CALL should be used.
+Represented as a bit mask in decimal or hexadecimal form, where each bit
+corresponds to a compression level.  Default value is ‘<samp class="samp">2</samp>’, which means
+level 1 only.  In order to make use of DEFLATE COMPRESSION CALL by default, that
+is, on levels 1-6, set this to ‘<samp class="samp">0x7e</samp>’.
+</p>
+</dd>
+<dt><samp class="option">DFLTCC_BLOCK_SIZE</samp></dt>
+<dd><p>Size of deflate blocks produced by DEFLATE COMPRESSION CALL in bytes in decimal
+or hexadecimal form.  Default value is ‘<samp class="samp">1048576</samp>’ (1 megabyte).  When using
+DEFLATE COMPRESSION CALL to compress a file containing heterogeneous data (e.g.
+a ‘<samp class="samp">.tar</samp>’ archive containing text and binary files), setting this to a
+smaller value may improve compression ratio.
+</p>
+</dd>
+<dt><samp class="option">DFLTCC_FIRST_FHT_BLOCK_SIZE</samp></dt>
+<dd><p>Size of the first fixed deflate block produced by DEFLATE COMPRESSION CALL in
+bytes in decimal or hexadecimal form.  Default value is ‘<samp class="samp">4096</samp>’ (4
+kilobytes).  When using DEFLATE COMPRESSION CALL to compress a small file,
+setting this to a larger value may improve compression ratio.
+</p>
+</dd>
+<dt><samp class="option">DFLTCC_RIBM</samp></dt>
+<dd><p>Value of "Reserved for IBM" field of DEFLATE COMPRESSION CALL parameter block.
+Default value is ‘<samp class="samp">0</samp>’.
+</p>
+</dd>
+<dt><samp class="option">SOURCE_DATE_EPOCH</samp></dt>
+<dd><p>If set to any value, disables compression with DEFLATE COMPRESSION CALL.  This
+variable is normally set during reproducible builds, where DEFLATE COMPRESSION
+CALL must be disabled, because its output may not be reproducible.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>
+</div>
