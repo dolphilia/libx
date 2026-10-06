@@ -1,0 +1,238 @@
+1: ---
+2: title: "GLFW 2 から 3 への移行"
+3: description: "GLFW 2 ユーザー向け移行ガイド"
+4: ---
+8: # GLFW 2 から 3 への移行
+9: これは GLFW 2 から 3 へ移行するためのガイドです。変更または削除された内容を説明しますが、既存のコードベースを新しい API へ移行する際に必要なものを除き、新機能は扱いません。たとえば、GLFW 3 でフルスクリーンウィンドウを作成するには、新しいマルチモニター関数が必要です。
+14: ## 変更・削除された機能
+17: ### 名前が変更されたライブラリとヘッダーファイル
+18: GLFW 3 のヘッダーは glfw3.h という名前で `GLFW` ディレクトリへ移動され、ほかのメジャーバージョンのヘッダーとの衝突を避けています。同様に、GLFW 3 ライブラリの名前は `glfw3,` です。ただし、Unix 系システムで共有ライブラリとしてインストールされる場合は、[soname][] `libglfw.so.3` を使用します。
+22: > **Libx 参考注記（GLFW 3.5.1）:** 上の `glfw3,` に含まれるコンマは原文の表記です。固定版のライブラリ出力名設定では、Unix 系システムの共有ライブラリに `glfw`、それ以外に `glfw3` を使い、コンマは含みません。上の原文表記は保持しています。
+24: __旧構文__
+25: ```c
+26: #include <GL/glfw.h>
+27: ```
+29: __新構文__
+30: ```c
+31: #include <GLFW/glfw3.h>
+32: ```
+37: ### スレッド関数の削除
+38: スレッド単位のスリープ関数を含むスレッド関数は削除されました。これらはかなり原始的で、あまり使われず、統合も不十分であり、GLFW の中心領域（コンテキスト、入力、ウィンドウ）に充てる時間を奪っていました。より優れたスレッドライブラリが存在し、普及しつつある [C++11][] と [C11][] の両方でネイティブのスレッド機能を利用できます。
+43: C++11 または C11 の機能を使用したくてもコンパイラーがまだ対応していない場合は、GLFW の原作者が作成した [TinyThread++][] および [TinyCThread][] プロジェクトを参照してください。これらのライブラリは C++11 と C11 のスレッド API の実用的なサブセットを実装しており、実際に GLFW 3 の一部のテストプログラムでも TinyCThread を使用しています。
+48: 一方、GLFW 3 は GLFW 2 よりも_複数スレッドからの使用_を適切にサポートしています。一度に 1 スレッドだけという制約はありますが、どのスレッドでもコンテキストをカレントにできます。また、どの関数を任意のスレッドから使用でき、どの関数をメインスレッドからのみ使用すべきかがドキュメントに明記されています。
+50: __削除された関数__
+51: > `glfwSleep`, `glfwCreateThread`, `glfwDestroyThread`, `glfwWaitThread`,
+52: > `glfwGetThreadID`, `glfwCreateMutex`, `glfwDestroyMutex`, `glfwLockMutex`,
+53: > `glfwUnlockMutex`, `glfwCreateCond`, `glfwDestroyCond`, `glfwWaitCond`,
+54: > `glfwSignalCond`, `glfwBroadcastCond` および `glfwGetNumberOfProcessors`。
+56: __削除された型__
+57: > `GLFWthreadfun`
+62: ### 画像・テクスチャ読み込みの削除
+63: 画像およびテクスチャ読み込み関数は削除されました。Targa 画像形式しかサポートしておらず、主に初心者向けの例でしか役立たなかったためです。GLFW 3 に残すに値する品質にするには、ほかの形式だけでなく、OpenGL テクスチャリングの現代的な拡張もサポートする必要がありました。その場合、多数の外部依存関係（libjpeg、libpng など）を追加するか、それらのライブラリの組み込み版を GLFW に同梱することになります。
+65: すでに同じ処理を行うライブラリがあるため、作業を重複させ、その複製を GLFW に結び付ける必要はありません。OpenGL と stdio は GLFW が利用できる場所ならどこでも利用できるため、そのようなライブラリはプラットフォーム非依存にもできます。
+67: __削除された関数__
+68: > `glfwReadImage`, `glfwReadMemoryImage`, `glfwFreeImage`, `glfwLoadTexture2D`,
+69: > `glfwLoadMemoryTexture2D` および `glfwLoadTextureImage2D`。
+74: ### GLFWCALL マクロの削除
+75: Windows 上でコールバック関数に [\_\_stdcall][stdcall] を使用させる `GLFWCALL` マクロは削除されました。GLFW は Pascal ではなく C で記述されています。このマクロの削除により、すべてのコールバック関数へ `GLFWCALL` を付ける要件をアプリケーション開発者が覚える必要がなくなります。また、`@n` エントリーポイント接尾辞を明示的に無効化する必要がなくなり、DLL と DLL リンクライブラリの作成も簡単になります。
+79: __旧構文__
+80: ```c
+81: void GLFWCALL callback_function(...);
+82: ```
+84: __新構文__
+85: ```c
+86: void callback_function(...);
+87: ```
+92: ### ウィンドウハンドル引数
+93: GLFW 3 は複数のウィンドウをサポートするため、ウィンドウ関連のすべての GLFW 関数とコールバックにウィンドウハンドル引数が追加されました。新しく作成されたウィンドウのハンドルは、以前の `glfwOpenWindow` に相当する glfwCreateWindow が返します。ウィンドウハンドルは、[不透明型][opaque-type] GLFWwindow へのポインターです。
+97: __旧構文__
+98: ```c
+99: glfwSetWindowTitle("New Window Title");
+100: ```
+102: __新構文__
+103: ```c
+104: glfwSetWindowTitle(window, "New Window Title");
+105: ```
+110: ### 明示的なモニター選択
+111: GLFW 3 は複数のモニターをサポートします。フルスクリーンモードのウィンドウを要求するには、`GLFW_FULLSCREEN` を渡す代わりに、ウィンドウで使用するモニターを指定します。glfwGetPrimaryMonitor 関数は GLFW 2 が選択していたモニターを返しますが、ほかにも多数のモニター関数があります。モニターハンドルは、[不透明型][opaque-type] GLFWmonitor へのポインターです。
+113: __旧式の基本的なフルスクリーン__
+114: ```c
+115: glfwOpenWindow(640, 480, 8, 8, 8, 0, 24, 0, GLFW_FULLSCREEN);
+116: ```
+118: __新式の基本的なフルスクリーン__
+119: ```c
+120: window = glfwCreateWindow(640, 480, "My Window", glfwGetPrimaryMonitor(), NULL);
+121: ```
+123: > **注記:** `glfwOpenWindow` のフレームバッファビット深度引数はウィンドウヒントになりましたが、妥当なデフォルト値が指定されているため、これらのヒントを設定する必要はほとんどありません。
+128: ### 自動イベントポーリングの削除
+129: GLFW 3 の glfwSwapBuffers はイベントを自動的にポーリングしないため、glfwPollEvents または glfwWaitEvents を自分で呼び出す必要があります。単一のウィンドウへ作用するバッファ交換とは異なり、イベント処理関数はすべてのウィンドウへ同時に作用します。
+131: __旧式の基本的なメインループ__
+132: ```c
+133: while (...)
+134: {
+135:     // Process input
+136:     // Render output
+137:     glfwSwapBuffers();
+138: }
+139: ```
+141: __新式の基本的なメインループ__
+142: ```c
+143: while (...)
+144: {
+145:     // Process input
+146:     // Render output
+147:     glfwSwapBuffers(window);
+148:     glfwPollEvents();
+149: }
+150: ```
+155: ### 明示的なコンテキスト管理
+156: 各 GLFW 3 ウィンドウは独自の OpenGL コンテキストを持ち、どの時点でどのスレッド上のどのコンテキストをカレントにすべきかは、アプリケーション開発者だけが判断できます。そのため、GLFW 3 はこの判断を利用者に委ねます。
+158: つまり、ウィンドウ作成後、OpenGL 関数を呼び出す前に glfwMakeContextCurrent を呼び出す必要があります。
+163: ### ウィンドウサイズとフレームバッファサイズの分離
+164: ウィンドウの位置とサイズはスクリーン座標を使用するようになりました。高 DPI モニターを備えたマシンでは、スクリーン座標とピクセルが一致しない場合があります。OpenGL はスクリーン座標ではなくピクセルを使用するため、これは重要です。たとえば、`glViewport` で指定する矩形にはピクセルを使用する必要があります。そのため、フレームバッファサイズ関数が追加されました。glfwGetFramebufferSize 関数でウィンドウのフレームバッファサイズを取得できます。また、glfwSetFramebufferSizeCallback で設定できるフレームバッファサイズコールバックも追加されました。
+166: __旧式の基本的なビューポート設定__
+167: ```c
+168: glfwGetWindowSize(&width, &height);
+169: glViewport(0, 0, width, height);
+170: ```
+172: __新式の基本的なビューポート設定__
+173: ```c
+174: glfwGetFramebufferSize(window, &width, &height);
+175: glViewport(0, 0, width, height);
+176: ```
+181: ### ウィンドウを閉じる処理の変更
+182: `GLFW_OPENED` ウィンドウ引数は削除されました。glfwDestroyWindow または glfwTerminate によって破棄されていない限り、ウィンドウは「開いて」います。
+184: ユーザーがウィンドウを閉じようとする操作は、ほかと同様の単なるイベントになりました。GLFW 2 とは異なり、GLFW 3 で作成されたウィンドウとコンテキストは、利用者が選択しない限り破棄されません。各ウィンドウには閉じるフラグがあり、ユーザーがそのウィンドウを閉じようとすると `GLFW_TRUE` に設定されます。デフォルトではそれ以外の処理は行われず、ウィンドウは表示されたままです。ウィンドウを破棄するか、別の処理を行うか、要求を無視するかは利用者が決めます。
+186: 閉じるフラグは glfwWindowShouldClose でいつでも照会でき、glfwSetWindowShouldClose でいつでも設定できます。
+188: __旧式の基本的なメインループ__
+189: ```c
+190: while (glfwGetWindowParam(GLFW_OPENED))
+191: {
+192:     ...
+193: }
+194: ```
+196: __新式の基本的なメインループ__
+197: ```c
+198: while (!glfwWindowShouldClose(window))
+199: {
+200:     ...
+201: }
+202: ```
+204: 閉じるコールバックは値を返さなくなりました。代わりに、閉じるフラグが設定された後、イベント処理が完了する前に呼び出されるため、必要に応じてその値を上書きできます。ただし、閉じるコールバック（およびその他のウィンドウ関連コールバック）から glfwDestroyWindow を呼び出すことはできません。
+206: __旧構文__
+207: ```c
+208: int GLFWCALL window_close_callback(void);
+209: ```
+211: __新構文__
+212: ```c
+213: void window_close_callback(GLFWwindow* window);
+214: ```
+216: > **注記:** GLFW が閉じるフラグを `GLFW_FALSE` にクリアすることはありません。そのため、ゲーム内メニューでユーザーが終了を選んだ場合など、ほかの理由でウィンドウを閉じるためにも使用できます。
+221: ### 永続的なウィンドウヒント
+222: `glfwOpenWindowHint` 関数は glfwWindowHint に改名されました。
+224: ウィンドウヒントは、ウィンドウ作成時にデフォルト値へリセットされなくなりました。glfwWindowHint または glfwDefaultWindowHints で変更されるか、ライブラリが終了して再初期化されるまで値を保持します。
+229: ### ビデオモードの列挙
+230: ビデオモードの列挙はモニター単位になりました。glfwGetVideoModes 関数は、必要な配列サイズを推測させる代わりに、指定されたモニターで利用可能なすべてのモードを返すようになりました。動作の定義が不十分だった `glfwGetDesktopMode` 関数は、モニターの現在のモードを返す glfwGetVideoMode に置き換えられました。
+235: ### 文字アクションの削除
+236: 文字コールバックの action 引数は削除されました。これは、スウェーデン人が英語環境で開発したという GLFW の起源による名残でした。しかし、多くのキーボード配列では、発音区別符号付き文字を生成するために複数のキーが必要です。スウェーデン語キーボード配列でも、ü のような一般的でない文字には複数のキーが必要です。
+238: __旧構文__
+239: ```c
+240: void GLFWCALL character_callback(int character, int action);
+241: ```
+243: __新構文__
+244: ```c
+245: void character_callback(GLFWwindow* window, int character);
+246: ```
+251: ### カーソル位置の変更
+252: `glfwGetMousePos` 関数は glfwGetCursorPos に、`glfwSetMousePos` は glfwSetCursorPos に、`glfwSetMousePosCallback` は glfwSetCursorPosCallback に改名されました。
+254: 直接呼び出す関数とコールバックの両方で、カーソル位置は `int` ではなく `double` になりました。一部のプラットフォームはサブピクセル単位のカーソル移動を提供でき、そのデータが利用可能な場合はアプリケーションへ渡されます。提供されないプラットフォームでは、小数部は 0 になります。
+256: GLFW 3 では、以前の `glfwSetMousePos` に相当する glfwSetCursorPos を使ってウィンドウ内のカーソル位置を設定できるのは、そのウィンドウがアクティブな場合だけです。ウィンドウがアクティブでなければ、この関数は何も通知せず失敗します。
+261: ### ホイール位置からスクロールオフセットへの置き換え
+262: `glfwGetMouseWheel` 関数は削除されました。スクロールはオフセット入力であり、絶対位置を持ちません。マウスホイールコールバックは、2 次元の浮動小数点スクロールオフセットを受け取るスクロールコールバックに置き換えられました。これにより、現代的なタッチパッドなどから精密なスクロールデータを受け取れます。
+264: __旧構文__
+265: ```c
+266: void GLFWCALL mouse_wheel_callback(int position);
+267: ```
+269: __新構文__
+270: ```c
+271: void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+272: ```
+274: __削除された関数__
+275: > `glfwGetMouseWheel`
+280: ### キーリピートアクション
+281: `GLFW_KEY_REPEAT` による有効化は削除され、キーと文字の両方でキーリピートが常に有効になりました。新しいキーアクション `GLFW_REPEAT` が追加され、キーコールバックで最初のキー押下とリピートを区別できます。glfwGetKey は引き続き `GLFW_PRESS` または `GLFW_RELEASE` だけを返すことに注意してください。
+286: ### 物理キー入力
+287: GLFW 3 のキートークンは物理キーへ対応します。現在のキーボード配列が生成する値へ対応していた GLFW 2 とは異なります。トークンは標準的な米国配列での値に従って命名されていますが、これは大半の開発者がその配列を知っていると想定した便宜上のものにすぎません。つまり、たとえば `GLFW_KEY_LEFT_BRACKET` は常に 1 つのキーであり、プログラム利用者のキーボード配列にかかわらず、同じ位置にある同じキーです。
+289: キー入力機能は元来テキスト入力用ではありませんが、GLFW 2 ではその用途でも多少は機能しました。テキスト入力に使用していた場合、GLFW 2 と 3 のどちらでも、代わりに文字コールバックを使用すべきです。これにより、押されたキーではなく、入力された文字を取得できます。
+291: GLFW 3 は標準的な 105 キーキーボードのすべてのキーに対応するキートークンを持つため、`a` と `A` のどちらを検査するか覚える代わりに、GLFW_KEY_A を検査します。
+296: ### ジョイスティック関数の変更
+297: `glfwGetJoystickPos` 関数は glfwGetJoystickAxes に改名されました。
+299: `glfwGetJoystickParam` 関数と `GLFW_PRESENT`、`GLFW_AXES`、`GLFW_BUTTONS` トークンは、glfwJoystickPresent 関数、および glfwGetJoystickAxes と glfwGetJoystickButtons 関数が返す軸数とボタン数に置き換えられました。
+304: ### Win32 MBCS サポート
+305: GLFW 3 の Win32 ポートは [MBCS モード][MBCS]ではコンパイルできません。ただし、Unicode 版 Win32 API の使用が影響するのは、それを使って作成されたウィンドウだけで、プロセス全体には影響しないため、同じアプリケーションの別の部分から MBCS 関数を呼び出すことは完全に可能です。したがって、GLFW を使用するアプリケーションに MBCS モードのコードがあっても、GLFW 自体がそれをサポートする必要はありません。
+312: ### Windows XP より古いバージョンのサポート
+313: Windows XP より古いバージョンに対する明示的なサポートはすべて削除されました。GLFW 3 が古いバージョン上で動作することを積極的に阻止するコードはありませんが、それらのバージョンに存在しない Win32 関数を使用します。
+315: Windows XP は 2001 年にリリースされ、2015 年 1 月時点では、それ以前のほぼすべての Windows を置き換えただけでなく、XP 自体も Windows 7 と 8 に急速に置き換えられていました。MSDN ライブラリは Windows 2000 より古いバージョンのドキュメントさえ提供していないため、労力をかける価値があると判断しても、それらのバージョンとの互換性を維持することは困難です。
+317: Win32 API も進化を続けており、GLFW 3 は Windows XP 以降にしか存在しない多数の関数を使用します。Windows 95 をまだサポートする GLFW 2 の視点では新しい OS である XP でさえ、現代の Windows にしか存在しない多数の関数を実行時に検査する必要があります。
+322: ### システム全体のホットキーの捕捉
+323: Alt+Tab のようなシステム全体のホットキーを無効化・捕捉する機能は削除されました。現代のアプリケーションは、ゲーム、科学的可視化、その他の用途を問わず、デスクトップの良き一員として、フルスクリーンモードで動作中でもこれらのホットキーを機能させることが期待されています。
+328: ### 自動終了処理
+329: GLFW 3 は初期化時に glfwTerminate を `atexit` へ登録しません。`exit` は呼び出し元スレッドから登録済み関数を呼び出し、`exit` 自体は任意のスレッドから呼び出せる一方、glfwTerminate はメインスレッドからのみ呼び出さなければならないためです。
+331: GLFW が確保したすべてのリソースを解放するには、プログラム終了前にメインスレッドから glfwTerminate を自分で呼び出してください。これにより、glfwDestroyWindow でまだ破棄されていないすべてのウィンドウが破棄され、残っているウィンドウハンドルが無効になることに注意してください。
+336: ### GLU ヘッダーのインクルード
+337: GLFW 3 はデフォルトでは GLU ヘッダーをインクルードせず、GLU 自体も [Khronos][] によって非推奨とされています。__新しいプロジェクトでは GLU を使用すべきではありません__。ただし、GLFW 3 へ移行したレガシーコードで必要な場合は、GLFW ヘッダーをインクルードする前に GLFW_INCLUDE_GLU を定義し、GLFW ヘッダーに GLU をインクルードさせることができます。
+341: __旧構文__
+342: ```c
+343: #include <GL/glfw.h>
+344: ```
+346: __新構文__
+347: ```c
+348: #define GLFW_INCLUDE_GLU
+349: #include <GLFW/glfw3.h>
+350: ```
+352: GLU が提供する機能の代替となるライブラリは多数あります。行列ヘルパー関数については、[GLM][]（C++ 向け）、[linmath.h][]（C 向け）などの数学ライブラリを参照してください。テッセレーション関数については、たとえば [libtess2][] を参照してください。
+361: ## 名前変更表
+364: ### 改名された関数
+365: | GLFW 2                      | GLFW 3                        | 備考 |
+366: | --------------------------- | ----------------------------- | ----- |
+367: | `glfwOpenWindow`            | glfwCreateWindow         | すべてのチャンネルビット深度はヒントになりました
+368: | `glfwCloseWindow`           | glfwDestroyWindow        |       |
+369: | `glfwOpenWindowHint`        | glfwWindowHint           | すべての `GLFW_*_BITS` トークンを受け付けるようになりました |
+370: | `glfwEnable`                | glfwSetInputMode         |       |
+371: | `glfwDisable`               | glfwSetInputMode         |       |
+372: | `glfwGetMousePos`           | glfwGetCursorPos         |       |
+373: | `glfwSetMousePos`           | glfwSetCursorPos         |       |
+374: | `glfwSetMousePosCallback`   | glfwSetCursorPosCallback |       |
+375: | `glfwSetMouseWheelCallback` | glfwSetScrollCallback    | double 型の 2 次元スクロールオフセットを受け取ります |
+376: | `glfwGetJoystickPos`        | glfwGetJoystickAxes      |       |
+377: | `glfwGetWindowParam`        | glfwGetWindowAttrib      |       |
+378: | `glfwGetGLVersion`          | glfwGetWindowAttrib      | `GLFW_CONTEXT_VERSION_MAJOR`、`GLFW_CONTEXT_VERSION_MINOR`、`GLFW_CONTEXT_REVISION` を使用します |
+379: | `glfwGetDesktopMode`        | glfwGetVideoMode         | モニターの現在のモードを返します |
+380: | `glfwGetJoystickParam`      | glfwJoystickPresent      | 軸数とボタン数は glfwGetJoystickAxes と glfwGetJoystickButtons が提供します |
+385: ### 改名された型
+386: | GLFW 2              | GLFW 3                | 備考 |
+387: | ------------------- | --------------------- | ----- |
+388: | `GLFWmousewheelfun` | GLFWscrollfun    |       |
+389: | `GLFWmouseposfun`   | GLFWcursorposfun |       |
+394: ### 改名されたトークン
+395: | GLFW 2                      | GLFW 3                       | 備考 |
+396: | --------------------------- | ---------------------------- | ----- |
+397: | `GLFW_OPENGL_VERSION_MAJOR` | `GLFW_CONTEXT_VERSION_MAJOR` | OpenGL ES にも適用されるため改名されました |
+398: | `GLFW_OPENGL_VERSION_MINOR` | `GLFW_CONTEXT_VERSION_MINOR` | OpenGL ES にも適用されるため改名されました |
+399: | `GLFW_FSAA_SAMPLES`         | `GLFW_SAMPLES`               | OpenGL API に合わせて改名されました |
+400: | `GLFW_ACTIVE`               | `GLFW_FOCUSED`               | ウィンドウフォーカスコールバックに合わせて改名されました |
+401: | `GLFW_WINDOW_NO_RESIZE`     | `GLFW_RESIZABLE`             | デフォルト値が反転しました |
+402: | `GLFW_MOUSE_CURSOR`         | `GLFW_CURSOR`                | glfwSetInputMode とともに使用します |
+403: | `GLFW_KEY_ESC`              | `GLFW_KEY_ESCAPE`            |       |
+404: | `GLFW_KEY_DEL`              | `GLFW_KEY_DELETE`            |       |
+405: | `GLFW_KEY_PAGEUP`           | `GLFW_KEY_PAGE_UP`           |       |
+406: | `GLFW_KEY_PAGEDOWN`         | `GLFW_KEY_PAGE_DOWN`         |       |
+407: | `GLFW_KEY_KP_NUM_LOCK`      | `GLFW_KEY_NUM_LOCK`          |       |
+408: | `GLFW_KEY_LCTRL`            | `GLFW_KEY_LEFT_CONTROL`      |       |
+409: | `GLFW_KEY_LSHIFT`           | `GLFW_KEY_LEFT_SHIFT`        |       |
+410: | `GLFW_KEY_LALT`             | `GLFW_KEY_LEFT_ALT`          |       |
+411: | `GLFW_KEY_LSUPER`           | `GLFW_KEY_LEFT_SUPER`        |       |
+412: | `GLFW_KEY_RCTRL`            | `GLFW_KEY_RIGHT_CONTROL`     |       |
+413: | `GLFW_KEY_RSHIFT`           | `GLFW_KEY_RIGHT_SHIFT`       |       |
+414: | `GLFW_KEY_RALT`             | `GLFW_KEY_RIGHT_ALT`         |       |
+415: | `GLFW_KEY_RSUPER`           | `GLFW_KEY_RIGHT_SUPER`       |       |

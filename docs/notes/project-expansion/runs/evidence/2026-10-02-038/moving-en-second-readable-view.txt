@@ -1,0 +1,370 @@
+1: ---
+2: title: "Moving from GLFW 2 to 3"
+3: description: "Migration guide for GLFW 2 users"
+4: ---
+8: # Moving from GLFW 2 to 3
+9: This is a transition guide for moving from GLFW 2 to 3.  It describes what has
+10: changed or been removed, but does _not_ include
+11: new features unless they are required when moving an existing code
+12: base onto the new API.  For example, the new multi-monitor functions are
+13: required to create full screen windows with GLFW 3.
+18: ## Changed and removed features
+21: ### Renamed library and header file
+22: The GLFW 3 header is named glfw3.h and moved to the `GLFW` directory, to
+23: avoid collisions with the headers of other major versions.  Similarly, the GLFW
+24: 3 library is named `glfw3,` except when it's installed as a shared library on
+25: Unix-like systems, where it uses the [soname][] `libglfw.so.3`.
+29: > **Libx reference note (GLFW 3.5.1):** The comma inside `glfw3,` above is part of the upstream wording. The fixed library output-name configuration uses `glfw` for a shared library on Unix-like systems and `glfw3` otherwise, without a comma. The upstream wording is preserved above.
+31: __Old syntax__
+32: ```c
+33: #include <GL/glfw.h>
+34: ```
+36: __New syntax__
+37: ```c
+38: #include <GLFW/glfw3.h>
+39: ```
+44: ### Removal of threading functions
+45: The threading functions have been removed, including the per-thread sleep
+46: function.  They were fairly primitive, under-used, poorly integrated and took
+47: time away from the focus of GLFW (i.e.  context, input and window).  There are
+48: better threading libraries available and native threading support is available
+49: in both [C++11][] and [C11][], both of which are gaining traction.
+54: If you wish to use the C++11 or C11 facilities but your compiler doesn't yet
+55: support them, see the [TinyThread++][] and [TinyCThread][] projects created by
+56: the original author of GLFW.  These libraries implement a usable subset of the
+57: threading APIs in C++11 and C11, and in fact some GLFW 3 test programs use
+58: TinyCThread.
+63: However, GLFW 3 has better support for _use from multiple threads_ than GLFW
+64: 2 had.  Contexts can be made current on any thread, although only a single
+65: thread at a time, and the documentation explicitly states which functions may be
+66: used from any thread and which must only be used from the main thread.
+68: __Removed functions__
+69: > `glfwSleep`, `glfwCreateThread`, `glfwDestroyThread`, `glfwWaitThread`,
+70: > `glfwGetThreadID`, `glfwCreateMutex`, `glfwDestroyMutex`, `glfwLockMutex`,
+71: > `glfwUnlockMutex`, `glfwCreateCond`, `glfwDestroyCond`, `glfwWaitCond`,
+72: > `glfwSignalCond`, `glfwBroadcastCond` and `glfwGetNumberOfProcessors`.
+74: __Removed types__
+75: > `GLFWthreadfun`
+80: ### Removal of image and texture loading
+81: The image and texture loading functions have been removed.  They only supported
+82: the Targa image format, making them mostly useful for beginner level examples.
+83: To become of sufficiently high quality to warrant keeping them in GLFW 3, they
+84: would need not only to support other formats, but also modern extensions to
+85: OpenGL texturing.  This would either add a number of external
+86: dependencies (libjpeg, libpng, etc.), or force GLFW to ship with inline versions
+87: of these libraries.
+89: As there already are libraries doing this, it is unnecessary both to duplicate
+90: the work and to tie the duplicate to GLFW.  The resulting library would also be
+91: platform-independent, as both OpenGL and stdio are available wherever GLFW is.
+93: __Removed functions__
+94: > `glfwReadImage`, `glfwReadMemoryImage`, `glfwFreeImage`, `glfwLoadTexture2D`,
+95: > `glfwLoadMemoryTexture2D` and `glfwLoadTextureImage2D`.
+100: ### Removal of GLFWCALL macro
+101: The `GLFWCALL` macro, which made callback functions use [\_\_stdcall][stdcall]
+102: on Windows, has been removed.  GLFW is written in C, not Pascal.  Removing this
+103: macro means there's one less thing for application programmers to remember, i.e.
+104: the requirement to mark all callback functions with `GLFWCALL`.  It also
+105: simplifies the creation of DLLs and DLL link libraries, as there's no need to
+106: explicitly disable `@n` entry point suffixes.
+110: __Old syntax__
+111: ```c
+112: void GLFWCALL callback_function(...);
+113: ```
+115: __New syntax__
+116: ```c
+117: void callback_function(...);
+118: ```
+123: ### Window handle parameters
+124: Because GLFW 3 supports multiple windows, window handle parameters have been
+125: added to all window-related GLFW functions and callbacks.  The handle of
+126: a newly created window is returned by glfwCreateWindow (formerly
+127: `glfwOpenWindow`).  Window handles are pointers to the
+128: [opaque][opaque-type] type GLFWwindow.
+132: __Old syntax__
+133: ```c
+134: glfwSetWindowTitle("New Window Title");
+135: ```
+137: __New syntax__
+138: ```c
+139: glfwSetWindowTitle(window, "New Window Title");
+140: ```
+145: ### Explicit monitor selection
+146: GLFW 3 provides support for multiple monitors.  To request a full screen mode window,
+147: instead of passing `GLFW_FULLSCREEN` you specify which monitor you wish the
+148: window to use.  The glfwGetPrimaryMonitor function returns the monitor that
+149: GLFW 2 would have selected, but there are many other
+150: monitor functions.  Monitor handles are pointers to the
+151: [opaque][opaque-type] type GLFWmonitor.
+153: __Old basic full screen__
+154: ```c
+155: glfwOpenWindow(640, 480, 8, 8, 8, 0, 24, 0, GLFW_FULLSCREEN);
+156: ```
+158: __New basic full screen__
+159: ```c
+160: window = glfwCreateWindow(640, 480, "My Window", glfwGetPrimaryMonitor(), NULL);
+161: ```
+163: > **Note:** The framebuffer bit depth parameters of `glfwOpenWindow` have been turned
+164: into window hints, but as they have been given
+165: sane defaults you rarely need to set these hints.
+170: ### Removal of automatic event polling
+171: GLFW 3 does not automatically poll for events in glfwSwapBuffers, meaning
+172: you need to call glfwPollEvents or glfwWaitEvents yourself.  Unlike
+173: buffer swap, which acts on a single window, the event processing functions act
+174: on all windows at once.
+176: __Old basic main loop__
+177: ```c
+178: while (...)
+179: {
+180:     // Process input
+181:     // Render output
+182:     glfwSwapBuffers();
+183: }
+184: ```
+186: __New basic main loop__
+187: ```c
+188: while (...)
+189: {
+190:     // Process input
+191:     // Render output
+192:     glfwSwapBuffers(window);
+193:     glfwPollEvents();
+194: }
+195: ```
+200: ### Explicit context management
+201: Each GLFW 3 window has its own OpenGL context and only you, the application
+202: programmer, can know which context should be current on which thread at any
+203: given time.  Therefore, GLFW 3 leaves that decision to you.
+205: This means that you need to call glfwMakeContextCurrent after creating
+206: a window before you can call any OpenGL functions.
+211: ### Separation of window and framebuffer sizes
+212: Window positions and sizes now use screen coordinates, which may not be the same
+213: as pixels on machines with high-DPI monitors.  This is important as OpenGL uses
+214: pixels, not screen coordinates.  For example, the rectangle specified with
+215: `glViewport` needs to use pixels.  Therefore, framebuffer size functions have
+216: been added.  You can retrieve the size of the framebuffer of a window with glfwGetFramebufferSize function.  A framebuffer size callback has also been
+217: added, which can be set with glfwSetFramebufferSizeCallback.
+219: __Old basic viewport setup__
+220: ```c
+221: glfwGetWindowSize(&width, &height);
+222: glViewport(0, 0, width, height);
+223: ```
+225: __New basic viewport setup__
+226: ```c
+227: glfwGetFramebufferSize(window, &width, &height);
+228: glViewport(0, 0, width, height);
+229: ```
+234: ### Window closing changes
+235: The `GLFW_OPENED` window parameter has been removed.  As long as the window has
+236: not been destroyed, whether through glfwDestroyWindow or glfwTerminate, the window is "open".
+238: A user attempting to close a window is now just an event like any other.  Unlike
+239: GLFW 2, windows and contexts created with GLFW 3 will never be destroyed unless
+240: you choose them to be.  Each window now has a close flag that is set to
+241: `GLFW_TRUE` when the user attempts to close that window.  By default, nothing else
+242: happens and the window stays visible.  It is then up to you to either destroy
+243: the window, take some other action or ignore the request.
+245: You can query the close flag at any time with glfwWindowShouldClose and set
+246: it at any time with glfwSetWindowShouldClose.
+248: __Old basic main loop__
+249: ```c
+250: while (glfwGetWindowParam(GLFW_OPENED))
+251: {
+252:     ...
+253: }
+254: ```
+256: __New basic main loop__
+257: ```c
+258: while (!glfwWindowShouldClose(window))
+259: {
+260:     ...
+261: }
+262: ```
+264: The close callback no longer returns a value.  Instead, it is called after the
+265: close flag has been set, so it can optionally override its value, before
+266: event processing completes.  You may however not call glfwDestroyWindow
+267: from the close callback (or any other window related callback).
+269: __Old syntax__
+270: ```c
+271: int GLFWCALL window_close_callback(void);
+272: ```
+274: __New syntax__
+275: ```c
+276: void window_close_callback(GLFWwindow* window);
+277: ```
+279: > **Note:** GLFW never clears the close flag to `GLFW_FALSE`, meaning you can use it
+280: for other reasons to close the window as well, for example the user choosing
+281: Quit from an in-game menu.
+286: ### Persistent window hints
+287: The `glfwOpenWindowHint` function has been renamed to glfwWindowHint.
+289: Window hints are no longer reset to their default values on window creation, but
+290: instead retain their values until modified by glfwWindowHint or glfwDefaultWindowHints, or until the library is terminated and re-initialized.
+295: ### Video mode enumeration
+296: Video mode enumeration is now per-monitor.  The glfwGetVideoModes function
+297: now returns all available modes for a specific monitor instead of requiring you
+298: to guess how large an array you need.  The `glfwGetDesktopMode` function, which
+299: had poorly defined behavior, has been replaced by glfwGetVideoMode, which
+300: returns the current mode of a monitor.
+305: ### Removal of character actions
+306: The action parameter of the character callback has been
+307: removed.  This was an artefact of the origin of GLFW, i.e. being developed in
+308: English by a Swede.  However, many keyboard layouts require more than one key to
+309: produce characters with diacritical marks. Even the Swedish keyboard layout
+310: requires this for uncommon cases like ü.
+312: __Old syntax__
+313: ```c
+314: void GLFWCALL character_callback(int character, int action);
+315: ```
+317: __New syntax__
+318: ```c
+319: void character_callback(GLFWwindow* window, int character);
+320: ```
+325: ### Cursor position changes
+326: The `glfwGetMousePos` function has been renamed to glfwGetCursorPos,
+327: `glfwSetMousePos` to glfwSetCursorPos and `glfwSetMousePosCallback` to glfwSetCursorPosCallback.
+329: The cursor position is now `double` instead of `int`, both for the direct
+330: functions and for the callback.  Some platforms can provide sub-pixel cursor
+331: movement and this data is now passed on to the application where available.  On
+332: platforms where this is not provided, the decimal part is zero.
+334: GLFW 3 only allows you to position the cursor within a window using glfwSetCursorPos (formerly `glfwSetMousePos`) when that window is active.
+335: Unless the window is active, the function fails silently.
+340: ### Wheel position replaced by scroll offsets
+341: The `glfwGetMouseWheel` function has been removed.  Scrolling is the input of
+342: offsets and has no absolute position.  The mouse wheel callback has been
+343: replaced by a scroll callback that receives
+344: two-dimensional floating point scroll offsets.  This allows you to receive
+345: precise scroll data from for example modern touchpads.
+347: __Old syntax__
+348: ```c
+349: void GLFWCALL mouse_wheel_callback(int position);
+350: ```
+352: __New syntax__
+353: ```c
+354: void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+355: ```
+357: __Removed functions__
+358: > `glfwGetMouseWheel`
+363: ### Key repeat action
+364: The `GLFW_KEY_REPEAT` enable has been removed and key repeat is always enabled
+365: for both keys and characters.  A new key action, `GLFW_REPEAT`, has been added
+366: to allow the key callback to distinguish an initial key press
+367: from a repeat.  Note that glfwGetKey still returns only `GLFW_PRESS` or
+368: `GLFW_RELEASE`.
+373: ### Physical key input
+374: GLFW 3 key tokens map to physical keys, unlike in GLFW 2 where they mapped to
+375: the values generated by the current keyboard layout.  The tokens are named
+376: according to the values they would have in the standard US layout, but this
+377: is only a convenience, as most programmers are assumed to know that layout.
+378: This means that (for example) `GLFW_KEY_LEFT_BRACKET` is always a single key and
+379: is the same key in the same place regardless of what keyboard layouts the users
+380: of your program have.
+382: The key input facility was never meant for text input, although using it that
+383: way worked slightly better in GLFW 2.  If you were using it to input text, you
+384: should be using the character callback instead, on both GLFW 2 and 3.  This will
+385: give you the characters being input, as opposed to the keys being pressed.
+387: GLFW 3 has key tokens for all keys on a standard 105 key keyboard, so instead of
+388: having to remember whether to check for `a` or `A`, you now check for
+389: GLFW_KEY_A.
+394: ### Joystick function changes
+395: The `glfwGetJoystickPos` function has been renamed to glfwGetJoystickAxes.
+397: The `glfwGetJoystickParam` function and the `GLFW_PRESENT`, `GLFW_AXES` and
+398: `GLFW_BUTTONS` tokens have been replaced by the glfwJoystickPresent
+399: function as well as axis and button counts returned by the glfwGetJoystickAxes and glfwGetJoystickButtons functions.
+404: ### Win32 MBCS support
+405: The Win32 port of GLFW 3 will not compile in [MBCS mode][MBCS].  However,
+406: because the use of the Unicode version of the Win32 API doesn't affect the
+407: process as a whole, but only those windows created using it, it's perfectly
+408: possible to call MBCS functions from other parts of the same application.
+409: Therefore, even if an application using GLFW has MBCS mode code, there's no need
+410: for GLFW itself to support it.
+417: ### Support for versions of Windows older than XP
+418: All explicit support for version of Windows older than XP has been removed.
+419: There is no code that actively prevents GLFW 3 from running on these earlier
+420: versions, but it uses Win32 functions that those versions lack.
+422: Windows XP was released in 2001, and by now (January 2015) it has not only
+423: replaced almost all earlier versions of Windows, but is itself rapidly being
+424: replaced by Windows 7 and 8.  The MSDN library doesn't even provide
+425: documentation for version older than Windows 2000, making it difficult to
+426: maintain compatibility with these versions even if it was deemed worth the
+427: effort.
+429: The Win32 API has also not stood still, and GLFW 3 uses many functions only
+430: present on Windows XP or later.  Even supporting an OS as new as XP (new
+431: from the perspective of GLFW 2, which still supports Windows 95) requires
+432: runtime checking for a number of functions that are present only on modern
+433: version of Windows.
+438: ### Capture of system-wide hotkeys
+439: The ability to disable and capture system-wide hotkeys like Alt+Tab has been
+440: removed.  Modern applications, whether they're games, scientific visualisations
+441: or something else, are nowadays expected to be good desktop citizens and allow
+442: these hotkeys to function even when running in full screen mode.
+447: ### Automatic termination
+448: GLFW 3 does not register glfwTerminate with `atexit` at initialization,
+449: because `exit` calls registered functions from the calling thread and while it
+450: is permitted to call `exit` from any thread, glfwTerminate must only be
+451: called from the main thread.
+453: To release all resources allocated by GLFW, you should call glfwTerminate
+454: yourself, from the main thread, before the program terminates.  Note that this
+455: destroys all windows not already destroyed with glfwDestroyWindow,
+456: invalidating any window handles you may still have.
+461: ### GLU header inclusion
+462: GLFW 3 does not by default include the GLU header and GLU itself has been
+463: deprecated by [Khronos][].  __New projects should not use GLU__, but if you need
+464: it for legacy code that has been moved to GLFW 3, you can request that the GLFW
+465: header includes it by defining GLFW_INCLUDE_GLU before the inclusion of the
+466: GLFW header.
+470: __Old syntax__
+471: ```c
+472: #include <GL/glfw.h>
+473: ```
+475: __New syntax__
+476: ```c
+477: #define GLFW_INCLUDE_GLU
+478: #include <GLFW/glfw3.h>
+479: ```
+481: There are many libraries that offer replacements for the functionality offered
+482: by GLU.  For the matrix helper functions, see math libraries like [GLM][] (for
+483: C++), [linmath.h][] (for C) and others.  For the tessellation functions, see for
+484: example [libtess2][].
+493: ## Name change tables
+496: ### Renamed functions
+497: | GLFW 2                      | GLFW 3                        | Notes |
+498: | --------------------------- | ----------------------------- | ----- |
+499: | `glfwOpenWindow`            | glfwCreateWindow         | All channel bit depths are now hints
+500: | `glfwCloseWindow`           | glfwDestroyWindow        |       |
+501: | `glfwOpenWindowHint`        | glfwWindowHint           | Now accepts all `GLFW_*_BITS` tokens |
+502: | `glfwEnable`                | glfwSetInputMode         |       |
+503: | `glfwDisable`               | glfwSetInputMode         |       |
+504: | `glfwGetMousePos`           | glfwGetCursorPos         |       |
+505: | `glfwSetMousePos`           | glfwSetCursorPos         |       |
+506: | `glfwSetMousePosCallback`   | glfwSetCursorPosCallback |       |
+507: | `glfwSetMouseWheelCallback` | glfwSetScrollCallback    | Accepts two-dimensional scroll offsets as doubles |
+508: | `glfwGetJoystickPos`        | glfwGetJoystickAxes      |       |
+509: | `glfwGetWindowParam`        | glfwGetWindowAttrib      |       |
+510: | `glfwGetGLVersion`          | glfwGetWindowAttrib      | Use `GLFW_CONTEXT_VERSION_MAJOR`, `GLFW_CONTEXT_VERSION_MINOR` and `GLFW_CONTEXT_REVISION` |
+511: | `glfwGetDesktopMode`        | glfwGetVideoMode         | Returns the current mode of a monitor |
+512: | `glfwGetJoystickParam`      | glfwJoystickPresent      | The axis and button counts are provided by glfwGetJoystickAxes and glfwGetJoystickButtons |
+517: ### Renamed types
+518: | GLFW 2              | GLFW 3                | Notes |
+519: | ------------------- | --------------------- | ----- |
+520: | `GLFWmousewheelfun` | GLFWscrollfun    |       |
+521: | `GLFWmouseposfun`   | GLFWcursorposfun |       |
+526: ### Renamed tokens
+527: | GLFW 2                      | GLFW 3                       | Notes |
+528: | --------------------------- | ---------------------------- | ----- |
+529: | `GLFW_OPENGL_VERSION_MAJOR` | `GLFW_CONTEXT_VERSION_MAJOR` | Renamed as it applies to OpenGL ES as well |
+530: | `GLFW_OPENGL_VERSION_MINOR` | `GLFW_CONTEXT_VERSION_MINOR` | Renamed as it applies to OpenGL ES as well |
+531: | `GLFW_FSAA_SAMPLES`         | `GLFW_SAMPLES`               | Renamed to match the OpenGL API |
+532: | `GLFW_ACTIVE`               | `GLFW_FOCUSED`               | Renamed to match the window focus callback |
+533: | `GLFW_WINDOW_NO_RESIZE`     | `GLFW_RESIZABLE`             | The default has been inverted |
+534: | `GLFW_MOUSE_CURSOR`         | `GLFW_CURSOR`                | Used with glfwSetInputMode |
+535: | `GLFW_KEY_ESC`              | `GLFW_KEY_ESCAPE`            |       |
+536: | `GLFW_KEY_DEL`              | `GLFW_KEY_DELETE`            |       |
+537: | `GLFW_KEY_PAGEUP`           | `GLFW_KEY_PAGE_UP`           |       |
+538: | `GLFW_KEY_PAGEDOWN`         | `GLFW_KEY_PAGE_DOWN`         |       |
+539: | `GLFW_KEY_KP_NUM_LOCK`      | `GLFW_KEY_NUM_LOCK`          |       |
+540: | `GLFW_KEY_LCTRL`            | `GLFW_KEY_LEFT_CONTROL`      |       |
+541: | `GLFW_KEY_LSHIFT`           | `GLFW_KEY_LEFT_SHIFT`        |       |
+542: | `GLFW_KEY_LALT`             | `GLFW_KEY_LEFT_ALT`          |       |
+543: | `GLFW_KEY_LSUPER`           | `GLFW_KEY_LEFT_SUPER`        |       |
+544: | `GLFW_KEY_RCTRL`            | `GLFW_KEY_RIGHT_CONTROL`     |       |
+545: | `GLFW_KEY_RSHIFT`           | `GLFW_KEY_RIGHT_SHIFT`       |       |
+546: | `GLFW_KEY_RALT`             | `GLFW_KEY_RIGHT_ALT`         |       |
+547: | `GLFW_KEY_RSUPER`           | `GLFW_KEY_RIGHT_SUPER`       |       |
