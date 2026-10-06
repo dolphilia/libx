@@ -1,0 +1,368 @@
+{
+  "status": "partial-12-of-14",
+  "checkedAt": "2026-10-03T03:56:09.099Z",
+  "cycle": 362,
+  "method": "英語定本全文を再読して初稿を編集した後、生成された日本語全decodedbodyと原文を別読み取り工程で照合。日本語単独でも全段落・27inlinecomments・英語原通知併記を読解。初稿自己申告や機械一致を内容reviewへ代用しない。 346 constants全rawHTMLを初稿後に別読解し、英語全16blocks8–23と全日本語・2inlinecomments・provenanceを照合。 347 basic英語rawHTML全2連続範囲と日本語全decodedbody1–145/146–末尾を別工程で読解。全16blocks24–39・全署名・provenance・誤記注釈を照合。 353 advanced5fragmentをhash不変で組立て、全文英語decodedtext1–255/256–500/501–733と日本語1–215/216–425/426–604を別工程で全読解。範囲reviewを章全体reviewへ代用せず、注記/provenanceと全56blocks/7tables22rowsを再照合。 354 utility英語全rawHTMLを読み翻訳後、日本語全文decodedtextを別読解。14blocks96–109/provenance/全署名と全段落を照合。 358 gzip3fragmentをhash不変で組立て、英語全文decodedtext1–185/186–340/341–465と日本語1–160/161–285/286–386を別工程で全読解。範囲レビューを章全体へ代用せず、provenance/注記/全54blocks/inlinecomment/全署名を照合。 359 checksum英語rawHTML全文を読み翻訳後、日本語生成全文decodedtextを別読解。全20blocks164–183/全署名/使用例2/注記provenanceを照合。 360 hacks/undocumented全英語rawHTMLを読解し翻訳後、生成全日本語decodedtextを別読解。全10blocks184–193と全署名/マクロ/条件分岐/注記provenanceを照合。 361 README/ LICENSE英語canonical rawHTML全文を読み翻訳後、生成された日本語全文decodedtextを別読解。README全31blocksとLICENSE全6blocks/全文provenance/原通知併記を照合。 362 manual英語canonical全文を読み翻訳後、日本語decodedtext全文を別読解。全3blocks・全6節・22段落・原通知を照合。",
+  "pages": [
+    {
+      "page": "01-api/01-overview.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/01-overview.md",
+      "canonicalSHA256": "73661fcfd61930c33f692e1a31bdee4a7c1c3c066abd9b6fb62a1c0d79dbd4f3",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/01-overview.md",
+      "translationSHA256": "550ab5c23affa8a38d60b731ec41a52e02d3835c8680c5f7c9eac45aa538d966",
+      "sourceCoverage": "canonical-map original blocks0–7 / original bytes from overview page-plan",
+      "canonicalCoverage": "whole rawHTML/provenance/signatures/27inlinecomments/original blocks0–7",
+      "translationCoverage": "whole decoded body including prose0/2/4/6, code1/3/5/7, original-notice aside",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "ライセンス3制限のmust/notと推奨謝辞の非必須を保持。原通知全文も別asideへ不変併記。",
+        "zlib/gzip/raw deflate/RFC1950–1952とラッパー関係、single/repeated操作とand/or、将来algorithm原文、信号なしとshouldneverの強さを保持。",
+        "両構造体全27コメントを日本語化、型/フィールド/署名/preprocessor/数値/コード非comment bytes不変。",
+        "avail入力出力0で更新must、init所有、opaque第1引数、NULLとmalloc/free、threadsafe条件、65536/MAXSEG_64K/offset0/MAX_WBITS14/圧縮率代償/total統計保存の全条件を保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/02-constants.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/02-constants.md",
+      "canonicalSHA256": "90ee176b92af1475668ceaf3f453f3dd2948525e19adc9aa75b444b117f160a3",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/02-constants.md",
+      "translationSHA256": "e20bb3813061ee909041e8aa456c629d817fe1c2a8b431e2ce50492ae219345d",
+      "sourceCoverage": "original blocks8–23 / page-plan constants exact source bytes",
+      "canonicalCoverage": "whole rawHTML including 16blocks/provenance/all macros/comments",
+      "translationCoverage": "whole rawHTML including 16blocks8–23, 2inlinecomments, full provenance",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "flush7定数値0..6、戻り値9定数と負値エラー/正値特殊正常の区別、level4値とdefault-1、strategy5値、data_type4値とZ_ASCII alias、Z_DEFLATED8、Z_NULL0/zlib_version macroを保持。",
+        "Z_ASCII 1.2.2以前（以下）とzlib_version <1.0.2（未満）の違いを保持。",
+        "allowed/data_type/strategy唯一方式の限定・参照deflate/inflate/deflateInit2を保持し、原文にない0戻り値の説明を足さない。",
+        "原通知を概要の不変英語原文へリンク。追加editorial hrefを対応表へ明示、原文URL/API anchors保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/03-basic.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/03-basic.md",
+      "canonicalSHA256": "9b553ae56fb469131c0f085dbdfc5a8884b5f2ba8b1cfe995558ba5f750b16a7",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/03-basic.md",
+      "translationSHA256": "80f4b320c6fc8fb49f2dc10b8b45c5add61716bafd512353af9144890c341916",
+      "sourceCoverage": "original blocks24–39 / page-plan basic exact source bytes",
+      "canonicalCoverage": "whole rawHTML including blocks24–39/signatures/provenance/source-note",
+      "translationCoverage": "whole decoded Japanese body lines1–145/146–end, blocks24–39/provenance/source-note",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "version先頭文字の非互換/init自動検査、deflateInit level0..9/default6/NULL割当/全戻り値を保持。",
+        "deflate入出力更新/遅延・and/or・avail_out非zero・再呼出、SYNC空stored3bits+padding+4bytes、PARTIAL10bit fixed、BLOCK最大7bit保持、FULL再開状態・圧縮率代償を保持。",
+        "flush同値再試行/nonzero完了/marker開始avail_out>6、FINISH追加入力禁止・END後reset/endのみ・Bound一回完了保証、adler/CRC・data_type参考のみ・BUF非致命を保持。",
+        "deflateEnd/ inflateEnd全解放・入力破棄・未flush、static msg解放禁止とDATA prematureを保持。inflateInit前提・window遅延・入力未消費/unchanged/各戻り値/ヘッダー後回しを保持。",
+        "inflate全5flush指定・rawとwrapped first block前後・data_type未使用bits+64/128/256と7/8境界・block output完了前は終端非表示・全flush毎回設定を保持。",
+        "FINISH単回必須ではない/高速初回/window省略と未完了時割当再開、辞書NEED_DICT/checksum/END一致限定、gzip auto要求/ヘッダー非保持/CRCとlength modulo2^32を保持。",
+        "inflate全戻り値/具体msg/BUF非致命/Sync部分回復を保持。原文adler32誤記を保持し日本語注記を全文翻訳。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/04-advanced.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/04-advanced.md",
+      "canonicalSHA256": "9134662d87fc6e65ad01510d7595b4150716fb65adb134ea69fcb49e7cece43f",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/04-advanced.md",
+      "translationSHA256": "f6bc226282f6e693b230e43b12b7a787a2ee6e6bad5b710e53cb32b691eabd3e",
+      "sourceCoverage": "original blocks40–95 / page-plan advanced exact source bytes",
+      "canonicalCoverage": "whole decodedtext lines1–733, including provenance/source-notes/all prose/code/table cells",
+      "translationCoverage": "whole decodedtext lines1–604 including provenance/source-notes/all56blocks and7tables22rows",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "Init2 method/windowBits8→9/256拒否/raw符号/gzip+16/全ヘッダー既定・memlevel/全strategyと戻り値を保持。",
+        "辞書設定時点/rawblockboundary/same/window-262/末尾優先/wholeAdler、GetNULL/32768/258、copy/msg不変、reset属性保存を全確認。",
+        "Params3圧縮方法0/1..3/4..9・旧設定でZ_BLOCK・変更未反映/同params出力追加再試行・事前flush/入力非追加/BUF非致命を保持。",
+        "Tune適用対象限定とdeflate.c参照を保持。Bound/init/header順序・Z_FINISH単回保証と他flush超過例外/size_t/Windows long32・原誤記delfateBound_z注記を保持。",
+        "Pending bytesとbits0..7/NULL非設定/int16・mem9飽和とBUF、Used1..8/初flush前0、Prime raw限定/初呼出前/bits<=16/LSBsと全戻り値を確認。",
+        "SetHeader初回前の設定時点・全フィールド/NUL/extra_len/hcrc/原文gzip1.3.x記述/既定reset/戻り値を保持。xflag原表記とxflags構造体の差を注記。",
+        "Init2事前初期化・8..15/0/raw負数/+16/+32・CRC/連結memberのreset義務・全戻り値・possible header readとcurrent deferred双方を保持。",
+        "SetDictionary NEED_DICT直後/Adler判別/same/raw任意時点/既存window補完と全error。GetDictionary32768/NULL両引数。Sync可能なfullflush/00 00 FF FF非十分条件/全error/total_in/入力追加再試行を保持。",
+        "Copy全状態/msg不変と全error、Reset内部再確保なし/属性保持/4field初期化、Reset2 wrap/window変更と必要時再確保を保持。",
+        "Prime raw初回前/Z_BLOCK後/16bit/LSB/負bitsclear/8bit空き例外/32-minus/data_type不更新を保持。",
+        "Mark upper/lower16bit各条件/-1/0/stored残byte/codebackbits/出力済byte/処理中の2条件/ランダム境界/-65536を全確認。",
+        "GetHeader時点/done0→1/zlib-1/Z_BLOCKとTREES/CRC/extra_maxと実extra_len/name_maxとcomm_max/NUL欠落/ポインターNULLと保存解放/reset再設定/全errorを保持。much each原誤記を注記。",
+        "BackInit zalloc/zfree既定/8..15/window caller/一般15と32K/全error。Back raw1回/効率比較条件/バッファー不変/複数ストリーム/init-end順/独自header-trailer処理を保持。",
+        "in/out各signature・入力0でbuf無視/出力0success/非0error/window変更禁止/出力最大window/入力任意非0、next_in/avail_in初期化と初回/NULL、desc第一引数、unusedinput、全error/next_inNULLでin-out識別/呼出順/Z_OK不可能を保持。",
+        "BackEnd全memory/全error。CompileFlags7tables22rows: 2bits型size全4・ASM/WINAPI/debug・table非threadsafe・missinggz・variations・sprintf4bit全条件・reservedを全照合。",
+        "章全体を別読解。Init/Resetとdictionary設定の順序、raw/gzip/zlibのウィンドウ条件、全returns/NULL/flush再試行・FINISH保証と例外を全照合。",
+        "初期化・リセット・Params・辞書・Prime・Backの節間参照の意味と条件が矛盾しないことを原文に照らして確認。原文のInit2 possible/current併存とgzip1.3.x記述を勝手に現代化しない。",
+        "7tables22rowsの全bit位置/2bitサイズ/予約bit、threadsafe条件、欠落機能、sprintf security/引数20/推定長/未提供errorを全照合。",
+        "全source-note5点を翻訳。両SHA・固定source参照・全文license・概要英語通知へのeditorial追加リンクを保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/05-utility.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/05-utility.md",
+      "canonicalSHA256": "12a7af8e497f64c859aa28f2ee8698eb8955a39776bbddae21b0d6beecc43a45",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/05-utility.md",
+      "translationSHA256": "b14e238fa884090f3d1431e195a21ff3b17275894126cdb3783fa9b21056eafb",
+      "sourceCoverage": "original blocks96–109 / page-plan utility exact source bytes",
+      "canonicalCoverage": "whole canonical rawHTML, provenance/all14blocks/signatures",
+      "translationCoverage": "whole generated Japanese decodedtext including provenance/all14blocks/signatures",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "既定オプション/ソース改変/_z size_t/Windows long32を保持。",
+        "compress/2 sourceLen byte長/destLen呼出時総領域・Bound以上/戻り実圧縮長・DEFAULT equivalence、全memory/buffer/invalidlevel errorsを保持。",
+        "Bound compress/2の上限と呼出前割当。uncompress *destLen全展開領域/サイズ事前保存と外部伝達/戻り実長/破損・不完全/部分出力・全errorを保持。",
+        "uncompress2 sourceLenポインターと*sourceLen入力長/戻り消費byte数、全10API署名と原リンク・editorial概要リンクを保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/06-gzip.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/06-gzip.md",
+      "canonicalSHA256": "090f5f87f49c379eba1df4922743422543d442c1351dd426c9cafaa8aa21c414",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/06-gzip.md",
+      "translationSHA256": "a5ca2c09042c00b4f99ebecc50a32a8a85b24832a5ea25cba22809c9667a5e41",
+      "sourceCoverage": "original blocks110–163 / page-plan gzip exact source bytes",
+      "canonicalCoverage": "whole decodedtext1–465, provenance/all54blocks/prose/signatures/inlinecomment",
+      "translationCoverage": "whole decodedtext1–386, provenance/source-note/all54blocks/signatures/inlinecomment",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "gz wrapper RFC1952とzlib区別、gzFile semiopaque inlinecommentだけ訳し型不変。",
+        "gzopen全mode字/例示/strategy参照/T reading不可/G/N/a/+/x/e、連結追記非検査、透過2byte検出、全NULL/errno/open-blockとN再設定を保持。原文ENONBLOCKを注記付き保持。",
+        "gzdopen fd取得/e/N/gzclose所有/dupとリーク・二重close/invalidfd-1のみ検出・遅延を保持。",
+        "buffer8192/開直後かつreadwrite前/遅延3倍/64K128K/printf最大・returns、setparams事前flushと全4errors保持。",
+        "gzread len/int・連結/trailingignore・同時writer EOF再開/OKとBUF区別/未完了は-1非returnでcloseまでerror遅延・nonblock EAGAIN/EWOULDBLOCKと遅延errorを保持。",
+        "fread/fwrite fullitems/size_tとpointercapable unsigned/積overflow・partialitemとgztell・size!=1データ損失/size==1代案を保持。write部分非0<len/int不適合も保持。",
+        "printf format/実byte/負error/8191-or-buffer-1/超過0/安全sprintf代替不可時の限定overflow/非ANSI/未提供STREAM/compileflags/非blockBUF何も書かずを全保持。",
+        "puts終端除外/文字数とpartial/int超過、gets len-1/改行転送/EOF/null終端条件/untouched/遅延errorと再結合責任、putc unsignedchar/value/-1を保持。",
+        "getc byte/-1/遅延error/macro検査省略NULLと構造体/非block errnoと原文gzread再試行注記。",
+        "ungetc最低1/既存未読失敗可能/開直後outputbuffer容量/seek-rewind破棄/-1 pendingseek強制とEOF後gztell、flush書込限定/全pending/Z_FINISH完了後newmember/連結read/多用圧縮率代償を保持。",
+        "seek非圧縮byte/whence/SEEK_END不可/読slow/書forwardzero/遅延read-write-close/全returns、rewind読のみと同等式を保持。",
+        "tell開始0/gzdopen中途と追記も0/同等式、offset圧縮実byte/先行byte含む/未使用input除外/-1、EOF読み越しのみ/整数倍/再開2条件を保持。",
+        "direct空true/開直後割当/buffer順/4byte蓄積で変化/書wT/静的リンク全readcode注意。",
+        "close必要flush/状態解放/gzerror不可/二重禁止/全5returnsと未完了BUF、r読/w書追記限定/未使用codeリンク回避を保持。",
+        "error最後msg/NULL非設定/ERRNOとerrno/改変禁止/次call失効/close不可/EOF区別、clearerr両flagsと同時writer継続を保持。",
+        "章全体別読解。gzopen/G/T透過・gzread連結とtrailinggarbage無視、gzflush FINISH後新member、gzeof終端後clearerr＋成長の節間条件を照合。",
+        "stdio部分item/サイズoverflow/nonblocking部分byte/エラー前データ/未完了gzipのcloseまで遅延を全段落で保持。",
+        "seek/tell非圧縮位置とoffset圧縮実位置、descriptor所有・close解放とerror文字列の寿命を全節間で照合。",
+        "ENONBLOCK/gzgetc→gzreadの原表記を保ち両注記を全訳、SHA/原source参照/license/概要英語通知リンク保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/07-checksum.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/07-checksum.md",
+      "canonicalSHA256": "3a5cc8ac5e30397e5e881703862eced9afeef22bc72c4167c5c22593f335c502",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/07-checksum.md",
+      "translationSHA256": "4f003516e6e82ce1d6f95c908fedbfe85f1647871a40dae90c831dd482cb52f4",
+      "sourceCoverage": "original blocks164–183 / page-plan checksum exact source bytes",
+      "canonicalCoverage": "whole canonical rawHTML, provenance/all20blocks/signatures/two examples",
+      "translationCoverage": "whole generated Japanese decodedtext including provenance/source-note/all20blocks/signatures/two examples",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "圧縮無関係のexport理由・running update/32bitunsigned/NULL初期値・信頼性速度比較原文を保持。",
+        "crc前後処理ones complementは関数内・appでしない。全2code例字句不変。_z size_t/Windows long32を保持。",
+        "Adler combine seq連結/len2だけと符号付き/負値無意味、CRC combineとgen len2非負/負値0の違いを保持。",
+        "opのgen生成・len2置換・複数回再利用で高速、op is is重複注記を全訳。provenance/license/追加overview link保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/08-hacks.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/08-hacks.md",
+      "canonicalSHA256": "652d340095fb1254a0ba5f4d5824ff48bc4a2d8a9525567e9134f99882e9d7bd",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/08-hacks.md",
+      "translationSHA256": "07849833b6e18b24246fb6bbdc68b9ecaf7383a026229451672bb0c418d7b4ae",
+      "sourceCoverage": "original blocks184–191 / page-plan exact bytes",
+      "canonicalCoverage": "whole rawHTML/provenance/signatures/macros/conditionals",
+      "translationCoverage": "whole generated decodedtext/provenance/source-notes/signatures/inlinecomment",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "Initマクロversionとcompiler z_stream検査、全5init署名とprefix/nonprefix全macro不変。",
+        "gzgetc内部状態は公開構造体より大・必要だけ公開/名称動作変更の警告/macroだけ使用、後方互換性inlinecommentを保持。",
+        "LARGEFILE64_SOURCE定義とFILE_OFFSET_BITS64 and/or/両方とLFS64条件、全7largefile署名/prefixalias/guardを保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "01-api/09-undocumented.md",
+      "source": "upstream/v1.3.2/zlib.h",
+      "sourceSHA256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a",
+      "canonical": "src/content/docs/v1-3-2/en/01-api/09-undocumented.md",
+      "canonicalSHA256": "823914d0362488fda064c0589f0f914c1f085fe2f7cbf10c9e8ce893eb55ccaf",
+      "translation": "src/content/docs/v1-3-2/ja/01-api/09-undocumented.md",
+      "translationSHA256": "223ff630f670d0e45d1a4ef6a95e98d4ba976ea53b72264dfb68fe59927e91c9",
+      "sourceCoverage": "original blocks192–193 / page-plan exact bytes",
+      "canonicalCoverage": "whole rawHTML/provenance/signatures/macros/conditionals",
+      "translationCoverage": "whole generated decodedtext/provenance/source-notes/signatures/inlinecomment",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "上流未文書化を明示し、全10関数署名/Win32・STDC・Z_SOLO・cplusplus条件分岐を不変保持。",
+        "追加の機能説明を創作せず、provenance/固定SHA/license/原通知概要リンクだけを全訳。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "02-appendix/02-readme.md",
+      "source": "upstream/v1.3.2/README",
+      "sourceSHA256": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f",
+      "canonical": "src/content/docs/v1-3-2/en/02-appendix/02-readme.md",
+      "canonicalSHA256": "d1c1be69f70e75f2cb2b5d71b311f7cf662f05b6cf9391e43a6e573b162d09ec",
+      "translation": "src/content/docs/v1-3-2/ja/02-appendix/02-readme.md",
+      "translationSHA256": "70cbb85bd759ba6858d6cd3a338c15e7e63c23db84f3593b7444a57d9c97d979",
+      "sourceCoverage": "original blocks0–30 / page-plan exact bytes",
+      "canonicalCoverage": "whole canonical rawHTML/provenance/all original blocks/notice",
+      "translationCoverage": "whole generated decodedtext/provenance/all blocks/original-notice aside",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "全format/threadsafe注意/全sourceとbuild/test原指示・版条件/連絡先/FAQ・各言語interface/第三者unsupportedを保持。",
+        "全6対象環境のcompiler/version/flag条件、謝辞、無保証・個人立場/第三者権利非許諾・長法的文書送らず/ChangeLog推奨非必須を全照合。",
+        "原通知全訳と英語原通知の不変併記・全原リンク/固定SHA/ライセンス参照を保持。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "02-appendix/05-license.md",
+      "source": "upstream/v1.3.2/LICENSE",
+      "sourceSHA256": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2",
+      "canonical": "src/content/docs/v1-3-2/en/02-appendix/05-license.md",
+      "canonicalSHA256": "b444ea27f1bf1fb23070eed3cd1b99a04f710bf6f4d082bc2cbbf0537ce4c68a",
+      "translation": "src/content/docs/v1-3-2/ja/02-appendix/05-license.md",
+      "translationSHA256": "9ed439c87dc1e38b629906a67d4f2d98a99fe5ce209898a947f24450a21e93f2",
+      "sourceCoverage": "original blocks0–5 / page-plan exact bytes",
+      "canonicalCoverage": "whole canonical rawHTML/provenance/all original blocks/notice",
+      "translationCoverage": "whole generated decodedtext/provenance/all blocks/original-notice aside",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "現状提供/明示黙示無保証・全損害非責任、any purpose商用/自由alter redistributeの条件を保持。",
+        "origin不正表示禁止/作成者詐称禁止/謝辞非必須、alter plainly marked/原ソフト偽装禁止、通知削除改変禁止の全3制限を照合。",
+        "著作権1995–2026/両名とemail、LICENSE全原文22行を改変せず併記。"
+      ],
+      "fixes": [
+        "provenanceの句読点を日本語に揃え、変更箇所を再読解。"
+      ],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6-astra",
+        "actual": null,
+        "localLLM": false
+      }
+    },
+    {
+      "page": "02-appendix/04-manual.md",
+      "source": "upstream/v1.3.2/zlib.3",
+      "sourceSHA256": "5eebcb61a9c1ef91ff6c8e6d37b32554f5eefff825b190b1b5e5982f35d87534",
+      "canonical": "src/content/docs/v1-3-2/en/02-appendix/04-manual.md",
+      "canonicalSHA256": "bdec2606dbce5bae1dcda1994536deb810e99fbced9de4075f4422250bfa3c09",
+      "translation": "src/content/docs/v1-3-2/ja/02-appendix/04-manual.md",
+      "translationSHA256": "b3df878814a402a332f40164833f460fa970c75b4c9a3949d8ab5db43ea3084f",
+      "sourceCoverage": "original blocks0–2 / page-plan exact bytes",
+      "canonicalCoverage": "whole canonical rawHTML/provenance/all original blocks/notice",
+      "translationCoverage": "whole generated decodedtext/provenance/all blocks/original-notice aside",
+      "meaning": "passed",
+      "japaneseReadability": "passed",
+      "judgments": [
+        "全6節/22段落の説明・条件・参照・連絡先を原文と照合。threadsafe/should never/experimentalなど強さを保持。",
+        "現状提供・無保証・全損害免責と商用利用/改変再配布許諾、全3制限・謝辞非必須を全文照合。",
+        "ヘッダー/日付、全ID/URL/出典SHAを保持。著作者とライセンスの原roff通知を不変併記。"
+      ],
+      "fixes": [],
+      "model": {
+        "preferred": "gpt-6.1-sol",
+        "configuredLastObserved": "gpt-6.1-sol",
+        "actual": null,
+        "localLLM": false
+      }
+    }
+  ],
+  "remaining": [
+    "付録2頁（zconf/FAQ）の全文訳と各頁別全文review",
+    "全14JA構造/対応/リンク/出典checker拡張",
+    "全14英日native/keyboard/fragments",
+    "統合Pages公開"
+  ],
+  "projectVerified": false
+}
