@@ -6323,3 +6323,30 @@
 - 2回replay各1037組2074文書2passes/通常8gate/全2074hash/全fragment incoming0、systems fresh統合buildと全7開始現在manifest hash、正規HTMLgate、英日14head/88list/26TOC/JA13alias/旧有用ID/画像表0/固定README・CC0 2URL/権利声明全文/license.md参照/統合HTML一致を確認。英日PCmobile4表示、目次/出典/言語/版/隣接操作も実確認。global 5e9212 actual exit0/diff合格、231完了806残保留4。content-reviewed→verifiedの全入力同一を照合しglobal証拠を再利用。
 - EXCLUSIONS判断は全一致を確認しtimestamp差分だけHEADへ復元。外部リンク報告は定義リンク追加/装飾整理の実差分を維持。主作業mainの他作業差分保全。実モデルCodex current session/API識別子取得不能、ローカルLLM/委任なし。所有UI/preview終了・viewport復元。
 - 本バッチの検証済み本文/出典案内・設定/overlay/判断・レビュー/生成物/台帳/証拠をorigin/codex/awesome-editorial-isolated-20261007へcommit/pushしてremote HEAD照合。外部公開/PR/dispatch/定期設定なし。次174 github-vhpoet-awesome-ripple-readme-md固定raw/旧英日全文から継続。
+
+### バッチ173送信確認・174全文読了 (2026-10-06T23:23:59.116Z)
+
+- 173 Ethereum commit7a05b1f720764e960c598a21faef1d3da7c65ec5、push e74f04 exit0、remote HEAD一致ec3154+a761f1、clean。ステージ60対象のみ/body-review hash一致395710、workflow全文829681の配信対象外。main差分54ec3a…も同一35598b。231完了806残保留4。
+- 174固定raw129単位/旧英日各4単位をcfef9cで省略なし全文読了。既存本文に全分類・資料一覧の欠落を確認。一時草稿だけ作成しraw→EN512cab全文比較後3項目の原文帰属をe162ddで明確化（変更範囲再読と英日/JA単独の別passは未完了）。本文未変更。次固定raw129単位と旧英日4単位を照合。旧importの全資料欠落を復元し、H4/H6をH2/H3へ、相対ripple-vault-clientを固定commitへ解決。CC0画像のみのLicenseを整理する前に既存出典設定/英日HTML表示確認。一般分類/記事/案内を翻訳し、全項目/補助URL/RCL/言語/署名導出条件/QR通貨換算/SMS条件を保全。3別パス全文review→通常gate/保全/参照/build/HTML/4UI/global→verified232→commit/push。
+
+- 2026-10-06T23:25:46.697Z batch174全一覧復元・3別pass全文review完了（raw129/旧英日各4→最終英日各126、107資料/18head）。raw→EN512cab/変更3単位8be9ad、英日全単位d0198e+593dab、JA単独8d126a。License事前CC0出典照合7c8352。overlay/本文/レビュー/台帳反映、まだtranslated-ja。次2replay/通常8gate/全2074hash/fragment→systems fresh build/全7入力hash/HTML18head107list34TOC旧H1保持/英日PCmobile4UI→global→verified232→commit/push→175 ZeroNet。
+
+- 2026-10-06T23:29:33.893Z batch174-generation-gates-passed-build-pending。231完了806残保留4。進捗10f3d2049e127bb3d25b294f9d9c950087741e6d912d0acbb77be77fc3d221f2。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML18見出し107list/旧H1保持/英日PCmobile実UI→global→verified232/commit/push。
+
+- 2026-10-06T23:33:35.670Z batch174-build-ENOSPC-recovered-retry-pending。231完了806残保留4。進捗75edd0c88eb4bc28a42b2a4c5c2244f0f6e40f15d2577f2d4c436ac52b32819c。次本文/overlay/検査入力不変更で失敗前2replay/8gate/全2074hash/参照証拠を再利用。再生成可能な統合出力削除と過去temp44データlossless gzipで容量回復。build logをretry前に保管→開始入力capture→対象統合build再実行しactual exit0後全7開始現在manifest/HTML/4UI/global→verified232→commit/push。旧temp JSONを必要時に復元する手順は圧縮証拠へ。
+
+- 2026-10-06T23:38:24.490Z batch174-build-html-complete-four-ui-pending。231完了806残保留4。進捗08543f90f33f532adb234a3e5df1070fd4456fc064feb2a7009f370aca68262d。次英日PC1440/mobile390導入/ライブラリと補助URL/自動目次到達/出典2リンク/言語/版/隣接操作実UI→global→verified232→commit/push→175 ZeroNet。
+
+- 2026-10-06T23:40:40.392Z batch174-four-ui-content-reviewed-global-pending。231完了806残保留4。進捗d131ac92dd8671278c9fd48ac314abaec438e827e6c5c7864673650b1d29b080。次全1037台帳global/全2074hash/diff→verified232→commit/push/hash照合→175 ZeroNet fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T23:41:43.604Z batch174-verified232-save-push-pending。232完了805残保留4。進捗cd6785669d8deb1781f73b3f78f1f611f3b0b6de6a3c38a32dd485b7052dff25。次232完了805残保留4。Ripple全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次175 github-zolagonano-awesome-zeronet-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ174 Ripple検証完了・保存準備 (2026-10-06T23:41:51.648Z)
+
+- 固定raw148行129単位、旧英日13行各4単位をcfef9cで省略なし全文読了。raw→EN別パス512cab、3帰属変更raw/EN/JA8be9ad。他123単位は同一。英日全126単位d0198e(0–64)+593dab(65–125)、JA単独8d126a全全文、ENJA全diff6ba117。最終EN 4fe66f709d3069510d460bfa8efb95ff3cc1dfc6f1465d15834732433d1eb291/JA b3cae8ca46b3d70f6fad9cc31b08696f48336b969ab3c28185e05be9e1c1818d。
+- 旧importで本文全一覧が欠落していたため、固定rawから107資料/17分類を復元。H4/H6をH2/H3へ、正式title/H1を維持。一般見出し・動画記事・案内を翻訳し、商品/コード名/API/言語/Family Seed/Mnemonic/Secret Numbersを同定用に保持。全URL順・Docker Hubとチュートリアル補助リンク・RCL互換/C++単体/署名と導出/稼働状態/自動再接続/永続データ/SQL正本/PHP静的JSON/通貨換算QR/SMS非smartphone条件/マルチスレッドを保持。ShapeShiftのアカウント不要、XRP Text、Ripple Trade公式は固定原文へ帰属。Divident/Java Script等の誤字修正。
+- LicenseはCC0装飾だけで追加通知なし。既存出典のvhpoet/CC0-1.0/固定commit/原文とライセンス2URLの設定・未編集英日HTML表示を7c8352で事前確認してから整理。相対ripple-vault-clientは推測repoへ変えず固定commitの同名pathへ解決。全原文/旧英日/成果物対応1195ad、レビュー/overlay/本文/台帳反映74b4b2。
+- 2回replay各1037組2074文書2passes/通常8gate/全2074hash/全fragment incoming0、systems fresh統合buildと全7開始現在manifest hash、正規HTMLgate、英日18head/107list/34TOC/旧H1/画像表0/固定READMEとCC0 2URL/統合HTML一致、英日PCmobile4実UIと目次/出典/言語/版/隣接操作を確認。global 0ad2f4 chain exit0; global OK log checked/diff合格、232完了805残保留4。状態変更後の全検査入力同一を確認してglobal証拠再利用。
+- 初回buildは6073eb exit1、ENOSPCでsystems成果物目録保存に失敗。検査を無効化せず、今回の再生成可能なdist/.tmp/group-outputsだけ削除（316a62）、過去temp44 JSON等を原バイト解凍一致確認後lossless gzipへ保存（b0968c、約185599137bytes削減）。画像は保存blob一致0件のため保持。失敗logと圧縮manifest/復元手順を進捗証拠に記録し、入力不変更の2replay/8gate/全2074hash/参照を再利用して再build、最後に成功確認。
+- EXCLUSIONS判断全一致のtimestampだけ復元、外部リンク報告の通常107資料復元に伴う実差分は保持。元main他作業差分保全。実モデルCodex current session/API識別子取得不能、ローカルLLM/委任なし。所有UI/preview終了・viewport復元。
+- 本バッチの検証済み本文/overlay/判断・レビュー/生成物/台帳/証拠をorigin/codex/awesome-editorial-isolated-20261007へcommit/pushしremote HEAD照合。外部公開/PR/dispatch/定期設定なし。次175 github-zolagonano-awesome-zeronet-readme-md固定raw/旧英日全文から継続。
