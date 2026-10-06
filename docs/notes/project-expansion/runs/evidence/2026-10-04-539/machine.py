@@ -1,0 +1,7 @@
+from pathlib import Path
+import re,json,hashlib
+r=Path('/Users/dolphilia/github/libx');w=Path('/private/tmp/libx-xxhash-import-20261003');mp=json.loads((r/'docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json').read_text());pages=[];sha=lambda s:hashlib.sha256(s.encode()).hexdigest()
+for name in ['api-header','dispatch-c','dispatch-h','cli-header','make-header','collision-header','allcodecs-header','cmake-header','spec-notice']:
+ it=next(x for x in mp['items']if x['slug']=='03-notices/'+name);e=(w/it['canonical']).read_text();p=r/f'docs/notes/document-import/xxhash/v0-8-4/drafts/ja/{name}.reviewed-content.md';j=p.read_text();f=lambda s:re.findall(r'^```[^\n]*\n([\s\S]*?)^```',s,re.M);assert f(e)==f(j),name;assert re.findall(r'https?://[^\s)\]"<>]+',e)==re.findall(r'https?://[^\s)\]"<>]+',j),name;assert re.findall(r'licenseSource: .*',e)==re.findall(r'licenseSource: .*',j),name
+ pages.append({'slug':it['slug'],'canonicalSHA256':sha(e),'translationSHA256':sha(j),'checks':{'originalNoticeVerbatim':True,'externalURLsExact':True,'licenseSourceExact':True,'contentReview':'separate-full-reread'}});(w/it['translation']).parent.mkdir(parents=True,exist_ok=True);assert not(w/it['translation']).exists();(w/it['translation']).write_bytes(p.read_bytes())
+Path('/private/tmp/xxhash-api-539-machine.json').write_text(json.dumps({'status':'passed','pages':pages,'wholeProjectLinksPassed':False,'nativeDisplay':'pending'},ensure_ascii=False,indent=2));print('passed',len(pages),'pages')
