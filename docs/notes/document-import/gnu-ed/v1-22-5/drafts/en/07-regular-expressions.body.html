@@ -1,0 +1,178 @@
+<div class="chapter-level-extent" id="Regular-expressions">
+<h2 class="chapter" id="Regular-expressions-1"><span>6 Regular expressions<a class="copiable-link" href="#Regular-expressions-1"> ¶</a></span></h2>
+<p>Regular expressions are patterns used in selecting text. For example, the
+<code class="command">ed</code> command
+</p>
+<div class="example">
+<pre class="example-preformatted">g/<var class="var">string</var>/
+</pre></div>
+<p>prints all lines containing <var class="var">string</var>. Regular expressions are also used
+by the ‘<samp class="samp">s</samp>’ command for selecting old text to be replaced with new text.
+</p>
+<p>In addition to specifying string literals, regular expressions can represent
+classes of strings. Strings thus represented are said to be matched by the
+corresponding regular expression. If it is possible for a regular expression
+to match several strings in a line, then the left-most match is the one
+selected. If the regular expression permits a variable number of matching
+characters, the longest sequence starting at that point is matched.
+</p>
+<p>An empty regular expression is equivalent to the last regular expression
+processed. Therefore ‘<samp class="samp">/<var class="var">re</var>/s//<var class="var">replacement</var>/</samp>’ replaces
+<var class="var">re</var> with <var class="var">replacement</var>.
+</p>
+<p>As a GNU extension, a regular expression /<var class="var">re</var>/ may be followed by the
+suffix ‘<samp class="samp">I</samp>’ which makes <code class="command">ed</code> match <var class="var">re</var> in a
+case-insensitive manner. Note that the suffix is evaluated when the regular
+expression is compiled, thus it is invalid to specify it together with the
+empty regular expression.
+</p>
+<p>The following symbols are used in constructing regular expressions using
+POSIX basic regular expression syntax:
+</p>
+<dl class="table">
+<dt><code class="code"><var class="var">c</var></code></dt>
+<dd><p>Any character <var class="var">c</var> not listed below, including ‘<samp class="samp">{</samp>’, ‘<samp class="samp">}</samp>’,
+‘<samp class="samp">(</samp>’, ‘<samp class="samp">)</samp>’, ‘<samp class="samp">&lt;</samp>’, and ‘<samp class="samp">&gt;</samp>’, matches itself.
+</p>
+</dd>
+<dt><code class="code">\<var class="var">c</var></code></dt>
+<dd><p>Any backslash-escaped character <var class="var">c</var>, other than ‘<samp class="samp">{</samp>’,
+‘<samp class="samp">}</samp>’, ‘<samp class="samp">(</samp>’, ‘<samp class="samp">)</samp>’, ‘<samp class="samp">&lt;</samp>’, ‘<samp class="samp">&gt;</samp>’, ‘<samp class="samp">b</samp>’, ‘<samp class="samp">B</samp>’,
+‘<samp class="samp">w</samp>’, ‘<samp class="samp">W</samp>’, ‘<samp class="samp">+</samp>’, and ‘<samp class="samp">?</samp>’, matches itself.
+</p>
+</dd>
+<dt><code class="code">.</code></dt>
+<dd><p>Matches any single character.
+</p>
+</dd>
+<dt><code class="code">[<var class="var">char-class</var>]</code></dt>
+<dd><p>Matches any single character in <var class="var">char-class</var>. To include a ‘<samp class="samp">]</samp>’ in
+<var class="var">char-class</var>, it must be the first character. A range of characters may
+be specified by separating the end characters of the range with a ‘<samp class="samp">-</samp>’,
+e.g., ‘<samp class="samp">a-z</samp>’ specifies the lower case characters. The following literal
+expressions can also be used in <var class="var">char-class</var> to specify sets of
+characters:
+</p>
+<div class="example">
+<pre class="example-preformatted">[:alnum:] [:cntrl:] [:lower:] [:space:]
+[:alpha:] [:digit:] [:print:] [:upper:]
+[:blank:] [:graph:] [:punct:] [:xdigit:]
+</pre></div>
+<p>If ‘<samp class="samp">-</samp>’ appears as the first or last character of <var class="var">char-class</var>, then
+it matches itself. All other characters in <var class="var">char-class</var> match themselves.
+</p>
+<p>Patterns in <var class="var">char-class</var> of the form:
+</p><div class="example">
+<pre class="example-preformatted">[.<var class="var">col-elm</var>.]
+[=<var class="var">col-elm</var>=]
+</pre></div>
+<p>where <var class="var">col-elm</var> is a <em class="dfn">collating element</em> are interpreted according
+to ‘<samp class="samp">locale</samp>’(5). See ‘<samp class="samp">regex</samp>’(7) for an explanation of these
+constructs.
+</p>
+</dd>
+<dt><code class="code">[^<var class="var">char-class</var>]</code></dt>
+<dd><p>Matches any single character, other than newline, not in <var class="var">char-class</var>.
+<var class="var">char-class</var> is defined as above.
+</p>
+</dd>
+<dt><code class="code">^</code></dt>
+<dd><p>If ‘<samp class="samp">^</samp>’ is the first character of a regular expression, then it
+anchors the regular expression to the beginning of a line. Otherwise,
+it matches itself.
+</p>
+</dd>
+<dt><code class="code">$</code></dt>
+<dd><p>If ‘<samp class="samp">$</samp>’ is the last character of a regular expression, it anchors the
+regular expression to the end of a line. Otherwise, it matches itself.
+</p>
+</dd>
+<dt><code class="code">\(<var class="var">re</var>\)</code></dt>
+<dd><p>Defines a (possibly empty) subexpression <var class="var">re</var>. Subexpressions may be
+nested. A subsequent backreference of the form ‘<samp class="samp">\<var class="var">n</var></samp>’, where
+<var class="var">n</var> is a number in the range [1,9], expands to the text matched by
+the <var class="var">n</var>th subexpression. For example, the regular expression
+‘<samp class="samp">\(a.c\)\1</samp>’ matches the string ‘<samp class="samp">abcabc</samp>’, but not ‘<samp class="samp">abcadc</samp>’.
+Subexpressions are ordered relative to their left delimiter.
+</p>
+</dd>
+<dt><code class="code">*</code></dt>
+<dd><p>Matches zero or more repetitions of the regular expression immediately
+preceding it. The regular expression can be either a single character
+regular expression or a subexpression. If ‘<samp class="samp">*</samp>’ is the first
+character of a regular expression or subexpression, then it matches
+itself. The ‘<samp class="samp">*</samp>’ operator sometimes yields unexpected results. For
+example, the regular expression ‘<samp class="samp">b*</samp>’ matches the beginning of the
+string ‘<samp class="samp">abbb</samp>’, as opposed to the substring ‘<samp class="samp">bbb</samp>’, since an empty
+string is the only left-most match.
+</p>
+</dd>
+<dt><code class="code">\{<var class="var">n</var>,<var class="var">m</var>\}</code></dt>
+<dt><code class="code">\{<var class="var">n</var>,\}</code></dt>
+<dt><code class="code">\{<var class="var">n</var>\}</code></dt>
+<dd><p>Matches the single character regular expression or subexpression
+immediately preceding it at least <var class="var">n</var> and at most <var class="var">m</var> times. If
+<var class="var">m</var> is omitted, then it matches at least <var class="var">n</var> times. If the comma
+is also omitted, then it matches exactly <var class="var">n</var> times. If any of these
+forms occurs first in a regular expression or subexpression, then it is
+interpreted literally (i.e., the regular expression ‘<samp class="samp">\{2\}</samp>’
+matches the string ‘<samp class="samp">{2}</samp>’, and so on).
+</p>
+</dd>
+</dl>
+<p>The following extensions to basic regular expression operators are preceded
+by a backslash ‘<samp class="samp">\</samp>’ to distinguish them from traditional <code class="command">ed</code>
+syntax. They may be unavailable depending on the particular regex
+implementation in your system.
+</p>
+<dl class="table">
+<dt><code class="code">\&lt;</code></dt>
+<dt><code class="code">\&gt;</code></dt>
+<dd><p>Anchors the single character regular expression or subexpression
+immediately following it to the beginning (in the case of ‘<samp class="samp">\&lt;</samp>’) or
+ending (in the case of ‘<samp class="samp">\&gt;</samp>’) of a <em class="dfn">word</em>, i.e., in ASCII, a
+maximal string of alphanumeric characters, including the underscore (_).
+</p>
+</dd>
+<dt><code class="code">\`</code></dt>
+<dt><code class="code">\'</code></dt>
+<dd><p>Unconditionally matches the beginning ‘<samp class="samp">\`</samp>’ or ending ‘<samp class="samp">\'</samp>’ of a line.
+</p>
+</dd>
+<dt><code class="code">\?</code></dt>
+<dd><p>Optionally matches the single character regular expression or
+subexpression immediately preceding it. For example, the regular
+expression ‘<samp class="samp">a[bd]\?c</samp>’ matches the strings ‘<samp class="samp">abc</samp>’, ‘<samp class="samp">adc</samp>’
+and ‘<samp class="samp">ac</samp>’. If ‘<samp class="samp">\?</samp>’ occurs at the beginning of a regular
+expressions or subexpression, then it matches a literal ‘<samp class="samp">?</samp>’.
+</p>
+</dd>
+<dt><code class="code">\+</code></dt>
+<dd><p>Matches the single character regular expression or subexpression
+immediately preceding it one or more times. So the regular expression
+‘<samp class="samp">a\+</samp>’ is shorthand for ‘<samp class="samp">aa*</samp>’. If ‘<samp class="samp">\+</samp>’ occurs at the
+beginning of a regular expression or subexpression, then it matches a
+literal ‘<samp class="samp">+</samp>’.
+</p>
+</dd>
+<dt><code class="code">\b</code></dt>
+<dd><p>Matches the beginning or ending (empty string) of a word. Thus the regular
+expression ‘<samp class="samp">\bhello\b</samp>’ is equivalent to ‘<samp class="samp">\&lt;hello\&gt;</samp>’. However,
+‘<samp class="samp">\b\b</samp>’ is a valid regular expression whereas ‘<samp class="samp">\&lt;\&gt;</samp>’ is not.
+</p>
+</dd>
+<dt><code class="code">\B</code></dt>
+<dd><p>Matches (an empty string) inside a word.
+</p>
+</dd>
+<dt><code class="code">\w</code></dt>
+<dd><p>Matches any word-constituent character (letters, digits, and the underscore).
+</p>
+</dd>
+<dt><code class="code">\W</code></dt>
+<dd><p>Matches any character that is not a word-constituent.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>

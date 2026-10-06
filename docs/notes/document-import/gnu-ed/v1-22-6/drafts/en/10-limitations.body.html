@@ -1,0 +1,21 @@
+<div class="chapter-level-extent" id="Limitations">
+<h2 class="chapter" id="Limitations-1"><span>9 Limitations<a class="copiable-link" href="#Limitations-1"> ¶</a></span></h2>
+<p>If the terminal hangs up and the buffer is modified and not empty,
+<code class="command">ed</code> attempts to write the buffer to the file <samp class="file">ed.hup</samp> or, if
+this fails, to <samp class="file">$HOME/ed.hup</samp>.
+</p>
+<p>If a text (non-binary) file is not terminated by a newline character, then
+<code class="command">ed</code> appends one on reading/writing it. In the case of a binary
+file, <code class="command">ed</code> does not append a newline on reading/writing. A binary
+file is one containing at least one ASCII NUL character. If the last line
+has been modified, reading an empty file, for example <samp class="file">/dev/null</samp>,
+prior to writing prevents appending a newline to a binary file.
+</p>
+<p>In order to keep track of the text lines in the buffer, <code class="command">ed</code> uses a
+doubly linked list of structures containing the position and size of each
+line. This results in a per line overhead of 2 ‘<samp class="samp">pointer</samp>’s<!-- /@w -->,
+1 ‘<samp class="samp">long int</samp>’<!-- /@w -->, and 1 ‘<samp class="samp">int</samp>’<!-- /@w -->. The maximum line length is
+INT_MAX - 1<!-- /@w --> bytes. The maximum number of lines is INT_MAX - 2<!-- /@w --> lines.
+</p>
+<hr/>
+</div>

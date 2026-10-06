@@ -1,0 +1,63 @@
+<div class="chapter-level-extent" id="Overview">
+<h2 class="chapter" id="Overview-1"><span>1 Overview<a class="copiable-link" href="#Overview-1"> ¶</a></span></h2>
+<p><a class="uref" href="http://www.gnu.org/software/ed/ed.html">GNU ed</a>
+is a line-oriented text editor. It is used to create, display, modify
+and otherwise manipulate text files, both interactively and via shell
+scripts. A restricted version of ed, red, can only edit files in the current
+directory and cannot execute shell commands. Ed is the ’standard’ text
+editor in the sense that it is the original editor for Unix, and thus widely
+available. For most purposes, however, it is superseded by full-screen
+editors.
+</p>
+<p>GNU ed is based on the editor algorithm described in Brian W. Kernighan and
+P. J. Plauger’s book "Software Tools in Pascal", Addison-Wesley, 1981.
+</p>
+<p>If invoked with a <var class="var">file</var> argument, then a copy of <var class="var">file</var> is read
+into the editor’s buffer. Changes are made to this copy and not directly to
+<var class="var">file</var> itself. Upon quitting <code class="command">ed</code>, any changes not explicitly
+saved with a ‘<samp class="samp">w</samp>’ command are lost. In interactive mode, a non-existing
+<var class="var">file</var> is reported but does not alter the exit status.
+</p>
+<p>Editing is done in two distinct modes: <em class="dfn">command</em> and <em class="dfn">input</em>. When
+first invoked, <code class="command">ed</code> is in command mode. In this mode commands are
+read from the standard input and executed to manipulate the contents of the
+editor buffer. A typical command might look like:
+</p>
+<div class="example">
+<pre class="example-preformatted">,s/<var class="var">old</var>/<var class="var">new</var>/g
+</pre></div>
+<p>which replaces all occurences of the string <var class="var">old</var> with <var class="var">new</var>.
+</p>
+<p>When an input command, such as ‘<samp class="samp">a</samp>’ (append), ‘<samp class="samp">i</samp>’ (insert) or
+‘<samp class="samp">c</samp>’ (change), is given, <code class="command">ed</code> enters input mode. This is the
+primary means of adding text to a file. In this mode, no commands are
+available; instead, the standard input is written directly to the editor
+buffer. A <em class="dfn">line</em> consists of the text up to and including a
+<kbd class="key">newline</kbd> character. Input mode is terminated by entering a single
+period (‘<samp class="samp">.</samp>’) on a line.
+</p>
+<p>Any change made to the buffer sets the modified flag even if the change does
+not cause a change in the contents of the buffer; for example ‘<samp class="samp">s/a/a/</samp>’.
+Reading an empty file (‘<samp class="samp">r <var class="var">file</var></samp>’) or terminating a command before
+it makes any change to the buffer (‘<samp class="samp">a<kbd class="key">newline</kbd>.<kbd class="key">newline</kbd></samp>’) does
+not change the buffer, and therefore does not set the modified flag.
+</p>
+<p>All <code class="command">ed</code> commands operate on whole lines or ranges of lines; e.g.,
+the ‘<samp class="samp">d</samp>’ command deletes lines; the ‘<samp class="samp">m</samp>’ command moves lines, and so
+on. It is possible to modify only a portion of a line by means of
+replacement, as in the example above. However even here, the ‘<samp class="samp">s</samp>’
+command is applied to whole lines at a time.
+</p>
+<p>In general, <code class="command">ed</code> commands consist of zero or more line addresses,
+followed by a single character command and possibly additional parameters;
+i.e., commands have the structure:
+</p>
+<div class="example">
+<pre class="example-preformatted">[<var class="var">address</var>[,<var class="var">address</var>]]<var class="var">command</var>[<var class="var">parameters</var>]
+</pre></div>
+<p>The <var class="var">address</var>es indicate the line or range of lines to be affected by
+the command. If fewer addresses are given than the command accepts, then
+default addresses are supplied.
+</p>
+<hr/>
+</div>

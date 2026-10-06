@@ -1,0 +1,44 @@
+<div class="chapter-level-extent" id="Argument-syntax">
+<h2 class="chapter" id="Syntax-of-command_002dline-arguments"><span>4 Syntax of command-line arguments<a class="copiable-link" href="#Syntax-of-command_002dline-arguments"> ¶</a></span></h2>
+<a class="index-entry-id" id="index-argument-syntax"></a>
+<p>POSIX recommends these conventions for command-line arguments.
+</p>
+<ul class="itemize mark-bullet">
+<li>A command-line argument is an option if it begins with a hyphen
+(‘<samp class="samp">-</samp>’).
+
+</li><li>Option names are single alphanumeric characters.
+
+</li><li>Certain options require an argument.
+
+</li><li>An option and its argument may or may not appear as separate tokens.
+(In other words, the whitespace separating them is optional).
+Thus, <samp class="option">-o foo</samp><!-- /@w --> and <samp class="option">-ofoo</samp> are equivalent.
+
+</li><li>One or more options without arguments, followed by at most one option
+that takes an argument, may follow a hyphen in a single token.
+Thus, <samp class="option">-abc</samp> is equivalent to <samp class="option">-a -b -c</samp><!-- /@w -->.
+
+</li><li>Options typically precede other non-option arguments.
+
+</li><li>The argument ‘<samp class="samp">--</samp>’ terminates all options; any following arguments
+are treated as non-option arguments, even if they begin with a hyphen.
+
+</li><li>A token consisting of a single hyphen character is interpreted as an
+ordinary non-option argument. By convention, it is used to specify standard
+input, standard output, or a file named ‘<samp class="samp">-</samp>’.
+</li></ul>
+<p>GNU adds <em class="dfn">long options</em> to these conventions:
+</p>
+<ul class="itemize mark-bullet">
+<li>A long option consists of two hyphens (‘<samp class="samp">--</samp>’) followed by a name
+made of alphanumeric characters and hyphens. Option names are typically one
+to three words long, with hyphens to separate words. Abbreviations can be
+used for the long option names as long as the abbreviations are unique.
+
+</li><li>A long option and its argument may or may not appear as separate
+tokens. In the latter case they must be separated by an equal sign ‘<samp class="samp">=</samp>’.
+Thus, <samp class="option">--foo bar</samp><!-- /@w --> and <samp class="option">--foo=bar</samp> are equivalent.
+</li></ul>
+<hr/>
+</div>
