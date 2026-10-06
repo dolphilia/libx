@@ -1,6 +1,6 @@
 ---
 title: "Performance"
-description: "GNU diffutils3.12 fixed original manual, complete Chapters5–6."
+description: "GNU grep3.12 fixed original manual, complete Chapters5–6."
 documentId: "gnu-grep:3.12:25-performance"
 licenseSource: "gnu-grep-manual"
 toc: {"maxLevel": 4}

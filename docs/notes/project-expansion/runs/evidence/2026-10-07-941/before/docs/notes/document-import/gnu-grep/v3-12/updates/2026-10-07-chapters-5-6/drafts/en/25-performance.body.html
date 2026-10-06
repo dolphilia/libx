@@ -1,0 +1,112 @@
+<div class="gnu-grep-original-content" id="Performance">
+<h2 class="chapter" id="Performance-1"><span>5 Performance</span></h2>
+<a class="index-entry-id" id="index-performance"></a>
+<p>Typically <code class="command">grep</code> is an efficient way to search text.  However,
+it can be quite slow in some cases, and it can search large files
+where even minor performance tweaking can help significantly.
+Although the algorithm used by <code class="command">grep</code> is an implementation
+detail that can change from release to release, understanding its
+basic strengths and weaknesses can help you improve its performance.
+</p>
+<p>The <code class="command">grep</code> command operates partly via a set of automata that
+are designed for efficiency, and partly via a slower matcher that
+takes over when the fast matchers run into unusual features like
+back-references.  When feasible, the Boyer–Moore fast string
+searching algorithm is used to match a single fixed pattern, and the
+Aho–Corasick algorithm is used to match multiple fixed patterns.
+</p>
+<a class="index-entry-id" id="index-locales"></a>
+<p>Generally speaking <code class="command">grep</code> operates more efficiently in
+single-byte locales, since it can avoid the special processing needed
+for multi-byte characters.  If your patterns will work just as well
+that way, setting <code class="env">LC_ALL</code> to a single-byte locale can help
+performance considerably.  Setting ‘<samp class="samp">LC_ALL='C'</samp>’ can be
+particularly efficient, as <code class="command">grep</code> is tuned for that locale.
+</p>
+<a class="index-entry-id" id="index-case-insensitive-search-1"></a>
+<p>Outside the ‘<samp class="samp">C</samp>’ locale, case-insensitive search, and search for
+bracket expressions like ‘<samp class="samp">[a-z]</samp>’ and ‘<samp class="samp">[[=a=]b]</samp>’, can be
+surprisingly inefficient due to difficulties in fast portable access to
+concepts like multi-character collating elements.
+</p>
+<a class="index-entry-id" id="index-interval-expressions-1"></a>
+<p>Interval expressions may be implemented internally via repetition.
+For example, ‘<samp class="samp">^(a|bc){2,4}$</samp>’ might be implemented as
+‘<samp class="samp">^(a|bc)(a|bc)((a|bc)(a|bc)?)?$</samp>’.  A large repetition count may
+exhaust memory or greatly slow matching.  Even small counts can cause
+problems if cascaded; for example, ‘<samp class="samp">grep -E
+".*{10,}{10,}{10,}{10,}{10,}"</samp>’ is likely to overflow a
+stack.  Fortunately, regular expressions like these are typically
+artificial, and cascaded repetitions do not conform to POSIX so cannot
+be used in portable programs anyway.
+</p>
+<a class="index-entry-id" id="index-back_002dreferences"></a>
+<p>A back-reference such as ‘<samp class="samp">\1</samp>’ can hurt performance significantly
+in some cases, since back-references cannot in general be implemented
+via a finite state automaton, and instead trigger a backtracking
+algorithm that can be quite inefficient.  For example, although the
+pattern ‘<samp class="samp">^(.*)\1{14}(.*)\2{13}$</samp>’ matches only lines whose
+lengths can be written as a sum <em class="math">15x + 14y</em> for nonnegative
+integers <em class="math">x</em> and <em class="math">y</em>, the pattern matcher does not perform
+linear Diophantine analysis and instead backtracks through all
+possible matching strings, using an algorithm that is exponential in
+the worst case.
+</p>
+<a class="index-entry-id" id="index-holes-in-files"></a>
+<p>On some operating systems that support files with holes—large
+regions of zeros that are not physically present on secondary
+storage—<code class="command">grep</code> can skip over the holes efficiently without
+needing to read the zeros.  This optimization is not available if the
+<samp class="option">-a</samp> (<samp class="option">--binary-files=text</samp>) option is used (see <a class="pxref" href="#File-and-Directory-Selection">File and Directory Selection</a>), unless the <samp class="option">-z</samp> (<samp class="option">--null-data</samp>)
+option is also used (see <a class="pxref" href="#Other-Options">Other Options</a>).
+</p>
+<a class="index-entry-id" id="index-pipelines-and-reading"></a>
+<p>For efficiency <code class="command">grep</code> does not always read all its input.
+For example, the shell command ‘<samp class="samp">sed '/^...$/d' | grep -q X</samp>’ can
+cause <code class="command">grep</code> to exit immediately after reading a line
+containing ‘<samp class="samp">X</samp>’, without bothering to read the rest of its input data.
+This in turn can cause <code class="command">sed</code> to exit with a nonzero status because
+<code class="command">sed</code> cannot write to its output pipe after <code class="command">grep</code> exits.
+</p>
+<p>For more about the algorithms used by <code class="command">grep</code> and about
+related string matching algorithms, see:
+</p>
+<ul class="itemize mark-bullet">
+<li>Aho AV. Algorithms for finding patterns in strings.
+In: van Leeuwen J. <em class="emph">Handbook of Theoretical Computer Science</em>, vol. A.
+New York: Elsevier; 1990. p. 255–300.
+This surveys classic string matching algorithms, some of which are
+used by <code class="command">grep</code>.
+
+</li><li>Aho AV, Corasick MJ. Efficient string matching: an aid to bibliographic search.
+<em class="emph">CACM</em>. 1975;18(6):333–40.
+<a class="url" href="https://doi.org/10.1145/360825.360855">https://doi.org/10.1145/360825.360855</a>.
+This introduces the Aho–Corasick algorithm.
+
+</li><li>Boyer RS, Moore JS. A fast string searching algorithm.
+<em class="emph">CACM</em>. 1977;20(10):762–72.
+<a class="url" href="https://doi.org/10.1145/359842.359859">https://doi.org/10.1145/359842.359859</a>.
+This introduces the Boyer–Moore algorithm.
+
+</li><li>Faro S, Lecroq T. The exact online string matching problem: a review
+of the most recent results.
+<em class="emph">ACM Comput Surv</em>. 2013;45(2):13.
+<a class="url" href="https://doi.org/10.1145/2431211.2431212">https://doi.org/10.1145/2431211.2431212</a>.
+This surveys string matching algorithms that might help improve the
+performance of <code class="command">grep</code> in the future.
+
+</li><li>Hakak SI, Kamsin A, Shivakumara P, Gilkar GA, Khan WZ, Imran M.
+Exact string matching algorithms: survey issues, and future research directions.
+<em class="emph">IEEE Access</em>. 2019;7:69614–37.
+<a class="url" href="https://doi.org/10.1109/ACCESS.2019.2914071">https://doi.org/10.1109/ACCESS.2019.2914071</a>.
+This survey is more recent than Faro &amp; Lecroq,
+and focuses on taxonomy instead of performance.
+
+</li><li>Hume A, Sunday D. Fast string search.
+<em class="emph">Software Pract Exper</em>. 1991;21(11):1221–48.
+<a class="url" href="https://doi.org/10.1002/spe.4380211105">https://doi.org/10.1002/spe.4380211105</a>.
+This excellent albeit now-dated survey aided the initial development
+of <code class="command">grep</code>.
+</li></ul>
+<hr/>
+</div>

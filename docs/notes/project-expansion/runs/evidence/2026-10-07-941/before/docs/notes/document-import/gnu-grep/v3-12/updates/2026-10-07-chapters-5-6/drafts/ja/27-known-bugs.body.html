@@ -1,0 +1,8 @@
+<div class="gnu-grep-original-content" id="Known-Bugs">
+<h3 class="section" id="Known-Bugs-1"><span>6.1 既知の不具合</span></h3>
+<a class="index-entry-id" id="index-Bugs_002c-known"></a>
+<p>「<samp class="samp">{n,m}</samp>」構文で大きな繰り返し回数を指定すると、<code class="command">grep</code>が大量のメモリーを使うことがあります。また、一部のほかの特殊な正規表現は指数的な時間と記憶領域を必要とし、<code class="command">grep</code>がメモリーを使い切る可能性があります。</p>
+<p>後方参照は照合を大幅に遅くすることがあります。一致する可能性が指数的に増え、その探索が時間とメモリーの両方を消費するためです。また、後方参照についてのPOSIX仕様は、ところどころ不明確です。さらに、多くの正規表現実装には後方参照の不具合があり、プログラムが誤った結果を返したり、クラッシュしたりすることがあります。こうした不具合の修正は、しばしば優先度が低く扱われてきました。たとえば、2021年時点の<a class="url" href="https://sourceware.org/bugzilla/">GNU Cライブラリーの不具合データベース</a>には、後方参照の不具合<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=52">52</a>、<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=10844">10844</a>、<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=11053">11053</a>、<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=24269">24269</a>、<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=25322">25322</a>があり、近いうちに修正される兆候はほとんどありませんでした。幸い、後方参照が役立つ場面はまれで、実用的な用途では避けることにさほど苦労しないはずです。</p>
+<hr/>
+</div>
+

@@ -1,0 +1,200 @@
+{
+  "slug": "25-performance",
+  "bodySHA256": "8428a02cbd65a2022b884ed840b504cab6a6e309a7cb58979bea20da413b2150",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧5 Performance⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Performance-1\"><span>5 Performance</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Typically ⟦0⟧ is an efficient way to search text. However, it can be quite slow in some cases, and it can search large files where even minor performance tweaking can help significantly. Although the algorithm used by ⟦1⟧ is an implementation detail that can change from release to release, understanding its basic strengths and weaknesses can help you improve its performance.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>Typically <code class=\"command\">grep</code> is an efficient way to search text.  However,\nit can be quite slow in some cases, and it can search large files\nwhere even minor performance tweaking can help significantly.\nAlthough the algorithm used by <code class=\"command\">grep</code> is an implementation\ndetail that can change from release to release, understanding its\nbasic strengths and weaknesses can help you improve its performance.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "The ⟦0⟧ command operates partly via a set of automata that are designed for efficiency, and partly via a slower matcher that takes over when the fast matchers run into unusual features like back-references. When feasible, the Boyer–Moore fast string searching algorithm is used to match a single fixed pattern, and the Aho–Corasick algorithm is used to match multiple fixed patterns.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>The <code class=\"command\">grep</code> command operates partly via a set of automata that\nare designed for efficiency, and partly via a slower matcher that\ntakes over when the fast matchers run into unusual features like\nback-references.  When feasible, the Boyer–Moore fast string\nsearching algorithm is used to match a single fixed pattern, and the\nAho–Corasick algorithm is used to match multiple fixed patterns.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Generally speaking ⟦0⟧ operates more efficiently in single-byte locales, since it can avoid the special processing needed for multi-byte characters. If your patterns will work just as well that way, setting ⟦1⟧ to a single-byte locale can help performance considerably. Setting ‘⟦2⟧’ can be particularly efficient, as ⟦3⟧ is tuned for that locale.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"env\">LC_ALL</code>",
+        "⟦2⟧": "<samp class=\"samp\">LC_ALL='C'</samp>",
+        "⟦3⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>Generally speaking <code class=\"command\">grep</code> operates more efficiently in\nsingle-byte locales, since it can avoid the special processing needed\nfor multi-byte characters.  If your patterns will work just as well\nthat way, setting <code class=\"env\">LC_ALL</code> to a single-byte locale can help\nperformance considerably.  Setting ‘<samp class=\"samp\">LC_ALL='C'</samp>’ can be\nparticularly efficient, as <code class=\"command\">grep</code> is tuned for that locale.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Outside the ‘⟦0⟧’ locale, case-insensitive search, and search for bracket expressions like ‘⟦1⟧’ and ‘⟦2⟧’, can be surprisingly inefficient due to difficulties in fast portable access to concepts like multi-character collating elements.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">C</samp>",
+        "⟦1⟧": "<samp class=\"samp\">[a-z]</samp>",
+        "⟦2⟧": "<samp class=\"samp\">[[=a=]b]</samp>"
+      },
+      "sourceHTML": "<p>Outside the ‘<samp class=\"samp\">C</samp>’ locale, case-insensitive search, and search for\nbracket expressions like ‘<samp class=\"samp\">[a-z]</samp>’ and ‘<samp class=\"samp\">[[=a=]b]</samp>’, can be\nsurprisingly inefficient due to difficulties in fast portable access to\nconcepts like multi-character collating elements.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Interval expressions may be implemented internally via repetition. For example, ‘⟦0⟧’ might be implemented as ‘⟦1⟧’. A large repetition count may exhaust memory or greatly slow matching. Even small counts can cause problems if cascaded; for example, ‘⟦2⟧’ is likely to overflow a stack. Fortunately, regular expressions like these are typically artificial, and cascaded repetitions do not conform to POSIX so cannot be used in portable programs anyway.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">^(a|bc){2,4}$</samp>",
+        "⟦1⟧": "<samp class=\"samp\">^(a|bc)(a|bc)((a|bc)(a|bc)?)?$</samp>",
+        "⟦2⟧": "<samp class=\"samp\">grep -E\n\".*{10,}{10,}{10,}{10,}{10,}\"</samp>"
+      },
+      "sourceHTML": "<p>Interval expressions may be implemented internally via repetition.\nFor example, ‘<samp class=\"samp\">^(a|bc){2,4}$</samp>’ might be implemented as\n‘<samp class=\"samp\">^(a|bc)(a|bc)((a|bc)(a|bc)?)?$</samp>’.  A large repetition count may\nexhaust memory or greatly slow matching.  Even small counts can cause\nproblems if cascaded; for example, ‘<samp class=\"samp\">grep -E\n\".*{10,}{10,}{10,}{10,}{10,}\"</samp>’ is likely to overflow a\nstack.  Fortunately, regular expressions like these are typically\nartificial, and cascaded repetitions do not conform to POSIX so cannot\nbe used in portable programs anyway.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "A back-reference such as ‘⟦0⟧’ can hurt performance significantly in some cases, since back-references cannot in general be implemented via a finite state automaton, and instead trigger a backtracking algorithm that can be quite inefficient. For example, although the pattern ‘⟦1⟧’ matches only lines whose lengths can be written as a sum ⟦2⟧15x + 14y⟦3⟧ for nonnegative integers ⟦4⟧x⟦5⟧ and ⟦6⟧y⟦7⟧, the pattern matcher does not perform linear Diophantine analysis and instead backtracks through all possible matching strings, using an algorithm that is exponential in the worst case.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\1</samp>",
+        "⟦1⟧": "<samp class=\"samp\">^(.*)\\1{14}(.*)\\2{13}$</samp>",
+        "⟦2⟧": "<em class=\"math\">",
+        "⟦3⟧": "</em>",
+        "⟦4⟧": "<em class=\"math\">",
+        "⟦5⟧": "</em>",
+        "⟦6⟧": "<em class=\"math\">",
+        "⟦7⟧": "</em>"
+      },
+      "sourceHTML": "<p>A back-reference such as ‘<samp class=\"samp\">\\1</samp>’ can hurt performance significantly\nin some cases, since back-references cannot in general be implemented\nvia a finite state automaton, and instead trigger a backtracking\nalgorithm that can be quite inefficient.  For example, although the\npattern ‘<samp class=\"samp\">^(.*)\\1{14}(.*)\\2{13}$</samp>’ matches only lines whose\nlengths can be written as a sum <em class=\"math\">15x + 14y</em> for nonnegative\nintegers <em class=\"math\">x</em> and <em class=\"math\">y</em>, the pattern matcher does not perform\nlinear Diophantine analysis and instead backtracks through all\npossible matching strings, using an algorithm that is exponential in\nthe worst case.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "On some operating systems that support files with holes—large regions of zeros that are not physically present on secondary storage—⟦0⟧ can skip over the holes efficiently without needing to read the zeros. This optimization is not available if the ⟦1⟧ (⟦2⟧) option is used (see ⟦3⟧File and Directory Selection⟦4⟧), unless the ⟦5⟧ (⟦6⟧) option is also used (see ⟦7⟧Other Options⟦8⟧).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<samp class=\"option\">-a</samp>",
+        "⟦2⟧": "<samp class=\"option\">--binary-files=text</samp>",
+        "⟦3⟧": "<a class=\"pxref\" href=\"#File-and-Directory-Selection\">",
+        "⟦4⟧": "</a>",
+        "⟦5⟧": "<samp class=\"option\">-z</samp>",
+        "⟦6⟧": "<samp class=\"option\">--null-data</samp>",
+        "⟦7⟧": "<a class=\"pxref\" href=\"#Other-Options\">",
+        "⟦8⟧": "</a>"
+      },
+      "sourceHTML": "<p>On some operating systems that support files with holes—large\nregions of zeros that are not physically present on secondary\nstorage—<code class=\"command\">grep</code> can skip over the holes efficiently without\nneeding to read the zeros.  This optimization is not available if the\n<samp class=\"option\">-a</samp> (<samp class=\"option\">--binary-files=text</samp>) option is used (see <a class=\"pxref\" href=\"#File-and-Directory-Selection\">File and Directory Selection</a>), unless the <samp class=\"option\">-z</samp> (<samp class=\"option\">--null-data</samp>)\noption is also used (see <a class=\"pxref\" href=\"#Other-Options\">Other Options</a>).\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "For efficiency ⟦0⟧ does not always read all its input. For example, the shell command ‘⟦1⟧’ can cause ⟦2⟧ to exit immediately after reading a line containing ‘⟦3⟧’, without bothering to read the rest of its input data. This in turn can cause ⟦4⟧ to exit with a nonzero status because ⟦5⟧ cannot write to its output pipe after ⟦6⟧ exits.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<samp class=\"samp\">sed '/^...$/d' | grep -q X</samp>",
+        "⟦2⟧": "<code class=\"command\">grep</code>",
+        "⟦3⟧": "<samp class=\"samp\">X</samp>",
+        "⟦4⟧": "<code class=\"command\">sed</code>",
+        "⟦5⟧": "<code class=\"command\">sed</code>",
+        "⟦6⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>For efficiency <code class=\"command\">grep</code> does not always read all its input.\nFor example, the shell command ‘<samp class=\"samp\">sed '/^...$/d' | grep -q X</samp>’ can\ncause <code class=\"command\">grep</code> to exit immediately after reading a line\ncontaining ‘<samp class=\"samp\">X</samp>’, without bothering to read the rest of its input data.\nThis in turn can cause <code class=\"command\">sed</code> to exit with a nonzero status because\n<code class=\"command\">sed</code> cannot write to its output pipe after <code class=\"command\">grep</code> exits.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "For more about the algorithms used by ⟦0⟧ and about related string matching algorithms, see:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<p>For more about the algorithms used by <code class=\"command\">grep</code> and about\nrelated string matching algorithms, see:\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "li",
+      "text": "Aho AV. Algorithms for finding patterns in strings. In: van Leeuwen J. ⟦0⟧Handbook of Theoretical Computer Science⟦1⟧, vol. A. New York: Elsevier; 1990. p. 255–300. This surveys classic string matching algorithms, some of which are used by ⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<li>Aho AV. Algorithms for finding patterns in strings.\nIn: van Leeuwen J. <em class=\"emph\">Handbook of Theoretical Computer Science</em>, vol. A.\nNew York: Elsevier; 1990. p. 255–300.\nThis surveys classic string matching algorithms, some of which are\nused by <code class=\"command\">grep</code>.\n\n</li>"
+    },
+    {
+      "index": 11,
+      "tag": "li",
+      "text": "Aho AV, Corasick MJ. Efficient string matching: an aid to bibliographic search. ⟦0⟧CACM⟦1⟧. 1975;18(6):333–40. ⟦2⟧https://doi.org/10.1145/360825.360855⟦3⟧. This introduces the Aho–Corasick algorithm.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<a class=\"url\" href=\"https://doi.org/10.1145/360825.360855\">",
+        "⟦3⟧": "</a>"
+      },
+      "sourceHTML": "<li>Aho AV, Corasick MJ. Efficient string matching: an aid to bibliographic search.\n<em class=\"emph\">CACM</em>. 1975;18(6):333–40.\n<a class=\"url\" href=\"https://doi.org/10.1145/360825.360855\">https://doi.org/10.1145/360825.360855</a>.\nThis introduces the Aho–Corasick algorithm.\n\n</li>"
+    },
+    {
+      "index": 12,
+      "tag": "li",
+      "text": "Boyer RS, Moore JS. A fast string searching algorithm. ⟦0⟧CACM⟦1⟧. 1977;20(10):762–72. ⟦2⟧https://doi.org/10.1145/359842.359859⟦3⟧. This introduces the Boyer–Moore algorithm.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<a class=\"url\" href=\"https://doi.org/10.1145/359842.359859\">",
+        "⟦3⟧": "</a>"
+      },
+      "sourceHTML": "<li>Boyer RS, Moore JS. A fast string searching algorithm.\n<em class=\"emph\">CACM</em>. 1977;20(10):762–72.\n<a class=\"url\" href=\"https://doi.org/10.1145/359842.359859\">https://doi.org/10.1145/359842.359859</a>.\nThis introduces the Boyer–Moore algorithm.\n\n</li>"
+    },
+    {
+      "index": 13,
+      "tag": "li",
+      "text": "Faro S, Lecroq T. The exact online string matching problem: a review of the most recent results. ⟦0⟧ACM Comput Surv⟦1⟧. 2013;45(2):13. ⟦2⟧https://doi.org/10.1145/2431211.2431212⟦3⟧. This surveys string matching algorithms that might help improve the performance of ⟦4⟧ in the future.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<a class=\"url\" href=\"https://doi.org/10.1145/2431211.2431212\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<li>Faro S, Lecroq T. The exact online string matching problem: a review\nof the most recent results.\n<em class=\"emph\">ACM Comput Surv</em>. 2013;45(2):13.\n<a class=\"url\" href=\"https://doi.org/10.1145/2431211.2431212\">https://doi.org/10.1145/2431211.2431212</a>.\nThis surveys string matching algorithms that might help improve the\nperformance of <code class=\"command\">grep</code> in the future.\n\n</li>"
+    },
+    {
+      "index": 14,
+      "tag": "li",
+      "text": "Hakak SI, Kamsin A, Shivakumara P, Gilkar GA, Khan WZ, Imran M. Exact string matching algorithms: survey issues, and future research directions. ⟦0⟧IEEE Access⟦1⟧. 2019;7:69614–37. ⟦2⟧https://doi.org/10.1109/ACCESS.2019.2914071⟦3⟧. This survey is more recent than Faro & Lecroq, and focuses on taxonomy instead of performance.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<a class=\"url\" href=\"https://doi.org/10.1109/ACCESS.2019.2914071\">",
+        "⟦3⟧": "</a>"
+      },
+      "sourceHTML": "<li>Hakak SI, Kamsin A, Shivakumara P, Gilkar GA, Khan WZ, Imran M.\nExact string matching algorithms: survey issues, and future research directions.\n<em class=\"emph\">IEEE Access</em>. 2019;7:69614–37.\n<a class=\"url\" href=\"https://doi.org/10.1109/ACCESS.2019.2914071\">https://doi.org/10.1109/ACCESS.2019.2914071</a>.\nThis survey is more recent than Faro &amp; Lecroq,\nand focuses on taxonomy instead of performance.\n\n</li>"
+    },
+    {
+      "index": 15,
+      "tag": "li",
+      "text": "Hume A, Sunday D. Fast string search. ⟦0⟧Software Pract Exper⟦1⟧. 1991;21(11):1221–48. ⟦2⟧https://doi.org/10.1002/spe.4380211105⟦3⟧. This excellent albeit now-dated survey aided the initial development of ⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<a class=\"url\" href=\"https://doi.org/10.1002/spe.4380211105\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<code class=\"command\">grep</code>"
+      },
+      "sourceHTML": "<li>Hume A, Sunday D. Fast string search.\n<em class=\"emph\">Software Pract Exper</em>. 1991;21(11):1221–48.\n<a class=\"url\" href=\"https://doi.org/10.1002/spe.4380211105\">https://doi.org/10.1002/spe.4380211105</a>.\nThis excellent albeit now-dated survey aided the initial development\nof <code class=\"command\">grep</code>.\n</li>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

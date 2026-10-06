@@ -1,6 +1,6 @@
 ---
 title: "Reporting bugs"
-description: "GNU diffutils3.12 fixed original manual, complete Chapters5–6."
+description: "GNU grep3.12 fixed original manual, complete Chapters5–6."
 documentId: "gnu-grep:3.12:26-reporting-bugs"
 licenseSource: "gnu-grep-manual"
 toc: {"maxLevel": 4}

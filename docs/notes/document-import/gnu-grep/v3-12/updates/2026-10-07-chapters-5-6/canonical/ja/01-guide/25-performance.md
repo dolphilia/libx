@@ -1,6 +1,6 @@
 ---
 title: "性能"
-description: "GNU diffutils3.12第5〜6章全文の独立・非公式日本語訳。"
+description: "GNU grep3.12第5〜6章全文の独立・非公式日本語訳。"
 documentId: "gnu-grep:3.12:25-performance"
 licenseSource: "gnu-grep-manual"
 toc: {"maxLevel": 4}

@@ -24,7 +24,7 @@ for row,proof in zip(plan['pages'],review['pages']):
   raw=str(s)
   for key,value in tokens.items():raw=raw.replace(key,value)
   parsed=BeautifulSoup(raw,'html.parser');assert parsed.get_text()==before;assert [x.get_text()for x in parsed.select('pre')]==beforepre
-  md='---\n'+'title: '+json.dumps(title,ensure_ascii=False)+'\ndescription: '+json.dumps('GNU diffutils3.12 fixed original manual, complete Chapters5–6.'if lang=='en'else'GNU diffutils3.12第5〜6章全文の独立・非公式日本語訳。',ensure_ascii=False)+'\n---\n\n'+raw+'\n';route='01-guide/'+row['slug']+'.md'
+  md='---\n'+'title: '+json.dumps(title,ensure_ascii=False)+'\ndescription: '+json.dumps('GNU grep3.12 fixed original manual, complete Chapters5–6.'if lang=='en'else'GNU grep3.12第5〜6章全文の独立・非公式日本語訳。',ensure_ascii=False)+'\n---\n\n'+raw+'\n';route='01-guide/'+row['slug']+'.md'
   for base in [N/'canonical'/lang,A/'src/content/docs/v3-12'/lang,A/'public/source/v3-12/edited'/lang]:
    q=base/route;q.parent.mkdir(parents=True,exist_ok=True);q.write_text(md)
   rows.append({'id':route,'language':lang,'path':str((N/'canonical'/lang/route).relative_to(W)),'sha256':sha(N/'canonical'/lang/route),'savedReviewedDraft':proof['EnglishSHA256'if lang=='en'else'JapaneseSHA256'],'bodyTextAndPreExact':True})
