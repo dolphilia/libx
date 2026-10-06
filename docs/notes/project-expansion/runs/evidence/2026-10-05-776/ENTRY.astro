@@ -1,0 +1,9 @@
+---
+import { getProjectConfig } from '@docs/project-config';
+import { navigation } from '../lib/navigation';
+const config = await getProjectConfig();
+const version = config.versioning.versions.find((v) => v.isLatest) ?? config.versioning.versions[0];
+if (!version) throw new Error('libuv requires a fixed documentation version');
+const links = await navigation.homeLinks(config.language.default, version.id, config.paths.baseUrl);
+return Astro.redirect(links.document);
+---

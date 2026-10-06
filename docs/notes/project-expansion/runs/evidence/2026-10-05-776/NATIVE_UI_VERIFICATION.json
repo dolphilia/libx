@@ -1,0 +1,105 @@
+{
+  "at": "2026-10-05T00:48:14.945845+00:00",
+  "status": "passed-standalone-native-scope",
+  "method": "Actual CUA browser actions/DOM/AX and screenshots, separate from full43 semantic reviews. Screenshots viewed inline, no saved screenshot files claimed.",
+  "browserTab": "134",
+  "previewSession": 61344,
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/771/REVIEW_MANIFEST.json",
+      "sha256": "96b4db8d7e1b80948e04ee489255601b8801172e94cb9f38850d675daf10a89f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/NATIVE_UI_PARTIAL.json",
+      "sha256": "81a396f26c6927d986e4d08ffa8ebecb3133ff0908d67bbef978c5a76603c26d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/VIDEO_BOUNDARY_RECONCILIATION.json",
+      "sha256": "f30f326bca19a58544e2df8f00a54716d118af8a72660e4cf3a94e73d8c851f0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-776/CONTENT_VERIFICATION.json",
+      "sha256": "bfcc6e9d298bd31b2824163c1e2a31638061d90727e8fc2f9b04313f4659cc83"
+    }
+  ],
+  "runtimeCorrection": {
+    "before": "root template used alphabetical first document: en/guide/about",
+    "after": "current fixed latest version with navigation.homeLinks: en/reference/overview",
+    "languageIndex": "reference -> リファレンス for JA / Reference for EN",
+    "sourceFiles": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-776/ENTRY.astro",
+        "sha256": "4089dfa840694372435fa18c5dba099aa6644a4c03212d5c91b1ec2f4f72f4a6"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-776/LANGUAGE_INDEX.astro",
+        "sha256": "98d47739b75f6dae360dab2129a5a4fb35d8d3f0a04abe8efded6ba321d2aaca"
+      }
+    ],
+    "noDocumentTextChanges": true,
+    "regeneratedRuntimeFiles": 9
+  },
+  "passed": [
+    {
+      "case": "root/latest default entry and404 recovery",
+      "observed": "/docs/libuv/ and404 Go to Home both resolve to /v1-53-0/en/reference/overview, welcome heading. JA language listing shows リファレンス and all43links."
+    },
+    {
+      "case": "desktop largest page misc and footer disclosure",
+      "observed": "127782-byte largest canonical page. Source details/editorial notes opened via actual summary text (DOM generic role; native AX exposes button). Fixed commit/CC/full original notices/RST and uv_os_free_group discrepancy visibly present only footer. 18,652-byte document license HTTP200/fixed-original exact; IAB raw text display refusal recorded separately."
+    },
+    {
+      "case": "pagination",
+      "observed": "misc Next メトリクス操作 -> metrics; metrics Previous その他のユーティリティー -> misc."
+    },
+    {
+      "case": "version menu and keyboard Escape",
+      "observed": "Only fixed1.53.0 latest dated2026-09-24 is offered; Escape collapses menu/focus remains button; selecting same version preserves guide/basics doc. Other-version switch not applicable: only one version is registered."
+    },
+    {
+      "case": "404",
+      "observed": "/docs/libuv/404 and deliberately absent /__libx_missing_validation__ show Page not found / Go to Home; recovery verified."
+    },
+    {
+      "case": "guide/code desktop and mobile",
+      "observed": "Hello World anchor/document renders original numbered C code. Mobile390x844: pre width327 scrollWidth478, actual native horizontal scroll moves scrollLeft0->151. Document client/scroll width375/375. Desktop document widths1265/1265 and pre647px; code visibly rendered."
+    },
+    {
+      "case": "index table mobile",
+      "observed": "Generated index584items retained. Table/client/scroll widths327/327, document375/375, both columns visibly render names/kinds and wrap at mobile width; no document horizontal overflow."
+    },
+    {
+      "case": "mobile API maximum page",
+      "observed": "misc#c.uv_os_free_group target signature within327px, top0.1015625, height60.796875; document widths375/375; screenshot shows original void uv_os_free_group(uv_passwd_t *pwd) and explanations. Source typo not silently corrected."
+    },
+    {
+      "case": "external iframe playback",
+      "observed": "Original youtube-nocookie nGn60vDSxQ4 iframe within327x315px. Click 動画を再生; read-only DOM video paused:false,time18.615974,duration1131.581,readyState4. Click video surface to pause; paused:true,time36.368013, visible18:52 controls. Entire video content not reviewed/transcribed/relicensed."
+    },
+    {
+      "case": "mobile search keyboard/focus",
+      "observed": "Search uv_os_free_group top exact misc#c.uv_os_free_group result; dialog visually within viewport. Escape closes dialog and returns focus to BUTTON 検索. Previous775 Down+Enter search to async anchor remains retained evidence."
+    },
+    {
+      "case": "second design loop PNG",
+      "observed": "Read-only DOM natural458x856, rendered327x611.15625; native screenshot after viewport repaint shows all loop stages and return arrow. Original PNG viewed from public file and corresponds. Earlier775 architecture PNG loaded/visible327px."
+    },
+    {
+      "case": "source disclosure keyboard",
+      "observed": "Enter on ページの出典詳細 opens details; active element SUMMARY. Original/source notices remain available in content gate/HTTP."
+    }
+  ],
+  "limitations": [
+    "IAB raw local text files blocked by client; browser display of license not claimed. HTTP response and exact original bytes independently verified.",
+    "Single version only; no fabricated alternate version switching test.",
+    "Shared language/version selectors currently drop fragment; same document correspondence verified.",
+    "Standalone /en and /ja landing links require integrated site; landing integration still pending.",
+    "External video full semantic content unreviewed; external reference scope unchanged from selection."
+  ],
+  "viewportRestored": true,
+  "full43DocumentReview": "retained current771 manifest + href delta evidence; no new whole-page read claim",
+  "nativeStandaloneComplete": true,
+  "integrationVerified": false,
+  "published": false,
+  "next": "Recheck latest production baseline and isolate integration; repeat content/build/link/integrity/native integration/publication gates before verified/awaiting-release."
+}

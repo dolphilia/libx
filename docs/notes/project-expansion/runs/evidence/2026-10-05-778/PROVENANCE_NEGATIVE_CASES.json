@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "onlyTemporaryCopiesChanged": true,
+  "cases": [
+    {
+      "case": "generated cache reintroduced as public original",
+      "exitCode": 1,
+      "rejected": true,
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/check-content.py\", line 45, in <module>\n    assert ref==generated[0] and not (app/'public/source/v1-53-0'/original).exists();continue\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "case": "upstream original public bytes altered",
+      "exitCode": 1,
+      "rejected": true,
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/check-content.py\", line 49, in <module>\n    assert f.is_file() and sha(f)==ref['sha256'],original\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: docs/src/index.rst\n"
+    }
+  ]
+}

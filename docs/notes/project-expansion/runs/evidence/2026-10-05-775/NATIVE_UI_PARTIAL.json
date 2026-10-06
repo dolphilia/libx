@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-05T00:32:54.257926+00:00",
+  "method": "Actual CUA browser accessibility/actions/screenshots plus read-only browser DOM measurements; no terminal browser driver",
+  "browserTab": "134",
+  "preview": "http://127.0.0.1:4353/docs/libuv",
+  "serverSession": 61344,
+  "sourceManifest": {
+    "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/771/REVIEW_MANIFEST.json",
+    "sha256": "96b4db8d7e1b80948e04ee489255601b8801172e94cb9f38850d675daf10a89f"
+  },
+  "currentContentGate": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/CONTENT_VERIFICATION.json",
+    "sha256": "d6db5a45540c309691e11fd262b7061391c40988b3f9f77c6fbf5845dbb8211f"
+  },
+  "status": "partial",
+  "passed": [
+    {
+      "case": "JA overview desktop",
+      "evidence": "1265px screenshot visually checked: Japanese body, reference sidebar, TOC, header controls; source footer present in AX state."
+    },
+    {
+      "case": "JA search by API + keyboard",
+      "actions": [
+        "click 検索",
+        "type uv_async_send",
+        "Down",
+        "Return"
+      ],
+      "observedURL": "/docs/libuv/v1-53-0/ja/reference/async/#c.uv_async_send",
+      "evidence": "Top result API symbol exactly resolves; AX declares int uv_async_send(uv_async_t *async). Enter navigation succeeded."
+    },
+    {
+      "case": "JA to EN counterpart",
+      "actions": [
+        "click 日本語 menu",
+        "click English"
+      ],
+      "observedURL": "/docs/libuv/v1-53-0/en/reference/async/",
+      "evidence": "Same async document in English, EN sidebar/body/source footer. Current shared selector does not retain original fragment."
+    },
+    {
+      "case": "JA design mobile",
+      "viewportOverride": {
+        "width": 390,
+        "height": 844
+      },
+      "contentClientWidth": 375,
+      "documentScrollWidth": 375,
+      "evidence": "Screenshot: stacked sidebar/TOC then body; reference category collapse responds and exposes title/body. On scroll architecture PNG visible within327px width; both PNG naturalWidth>0. No document horizontal overflow.",
+      "images": [
+        {
+          "src": "/docs/libuv/assets/v1-53-0/architecture.png",
+          "width": 327,
+          "height": 158.046875,
+          "loaded": true
+        },
+        {
+          "src": "/docs/libuv/assets/v1-53-0/loop_iteration.png",
+          "width": 327,
+          "height": 611.15625,
+          "loaded": true
+        }
+      ]
+    }
+  ],
+  "screenshots": "Viewed inline via CUA; no standalone screenshot file saved or claimed",
+  "viewportRestored": true,
+  "pending": [
+    "entry redirects",
+    "guide category and code horizontal scroll",
+    "maximum misc page and table/index",
+    "second loop diagram visual inspection",
+    "iframe playback current availability",
+    "source detail disclosure and local notices navigation",
+    "version selection single fixed version",
+    "pagination and404",
+    "mobile search/keyboard escape and focus coverage",
+    "integrated build/runtime tests and publication"
+  ],
+  "fullUIComplete": false
+}

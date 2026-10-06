@@ -1,0 +1,4 @@
+"""Install check:content after prepare-runtime; do not change document text."""
+from pathlib import Path
+import argparse,json,shutil
+p=argparse.ArgumentParser();p.add_argument('--repository',required=True);p.add_argument('--workspace',required=True);a=p.parse_args();root=Path(a.repository);w=Path(a.workspace);rel=Path('docs/notes/document-import/libuv/1.53.0');f=w/'apps/libuv/package.json';pkg=json.loads(f.read_text());assert pkg['name']=='apps-libuv';pkg['scripts']['check:content']='python3 ../../docs/notes/document-import/libuv/1.53.0/check-content.py';f.write_text(json.dumps(pkg,ensure_ascii=False,indent=2)+'\n');dest=w/rel/'check-content.py';dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(root/rel/'check-content.py',dest);print('read-only check:content installed; no content touched')

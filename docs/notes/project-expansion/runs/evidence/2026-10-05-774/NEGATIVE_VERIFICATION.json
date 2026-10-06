@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "missing-ja-page",
+      "exitCode": 1,
+      "rejected": true,
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/check-content.py\", line 15, in <module>\n    f=app/'src/content/docs/v1-53-0'/lang/row['id'];assert sha(f)==row[role]['sha256'];head,body=f.read_text().split('---\\n',2)[1:];ctx=json.loads(next(l.split(': ',1)[1] for l in head.splitlines() if l.startswith('documentContext: ')));s=BeautifulSoup(body.replace('&#10;','\\n'),'html.parser');article=s.select_one('article.libuv-document');assert article and len(s.select('article.libuv-document'))==1\n                                                           ^^^^^^\n  File \"/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/check-content.py\", line 9, in <lambda>\n    packet=root/'docs/notes/document-import/libuv/1.53.0';app=w/'apps/libuv';manifestrel='docs/notes/document-import/libuv/1.53.0/reviews/revisions/771/REVIEW_MANIFEST.json';m=json.loads((root/manifestrel).read_text());source=json.loads((packet/'SOURCE_MANIFEST.json').read_text());sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest();assert m['completedPages']==43 and m['unreviewedPages']==0;scope=set(m['scope']);assert len(scope)==43 and len(m['pages'])==43\n                                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^\n  File \"/Users/dolphilia/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py\", line 1019, in read_bytes\n    with self.open(mode='rb') as f:\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/dolphilia/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/ff/3mkkd9nd3zq7lxyzbrsbr_800000gn/T/libuv-negative-d6u1dhgk/apps/libuv/src/content/docs/v1-53-0/ja/reference/async.md'\n"
+    },
+    {
+      "case": "changed-code",
+      "exitCode": 1,
+      "rejected": true,
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/check-content.py\", line 15, in <module>\n    f=app/'src/content/docs/v1-53-0'/lang/row['id'];assert sha(f)==row[role]['sha256'];head,body=f.read_text().split('---\\n',2)[1:];ctx=json.loads(next(l.split(': ',1)[1] for l in head.splitlines() if l.startswith('documentContext: ')));s=BeautifulSoup(body.replace('&#10;','\\n'),'html.parser');article=s.select_one('article.libuv-document');assert article and len(s.select('article.libuv-document'))==1\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "case": "missing-license",
+      "exitCode": 1,
+      "rejected": true,
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/dolphilia/github/libx/docs/notes/document-import/libuv/1.53.0/check-content.py\", line 38, in <module>\n    else:assert (app/'public'/rel).is_file(),(file,value)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('reference/api.md', '/docs/libuv/notices/LICENSE-docs.txt')\n"
+    }
+  ],
+  "originalAppModified": false
+}
