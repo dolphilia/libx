@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const E=new URL('.',import.meta.url),W='/private/tmp/libx-wren-formal-871',sha='0c2121e7cd2edbbed0b231e803d8122b7e40ad5a',base='375ed5dee2d0d7abdc0ba14adef465d567c31832',read=f=>JSON.parse(fs.readFileSync(new URL(f,E))),git=a=>execFileSync('git',a,{cwd:W,encoding:'utf8'}).trim();
+assert.equal(git(['rev-parse','HEAD']),sha);assert.equal(git(['status','--porcelain']),'');
+const prepared=read('COMMIT_PREPARATION.json');assert.equal(prepared.baseCommit,base);assert.equal(prepared.scopeFiles,658);
+assert.deepEqual(git(['diff','--name-only',base,sha]).split('\n').sort(),prepared.files.slice().sort());
+assert.equal(git(['diff','--name-only',base,sha,'--','.github/workflows']), '');
+const ci=read('CI_STATUS.json'),r=ci.runs.find(x=>x.id===37384294557);assert.equal(r.sha,sha);assert.equal(r.conclusion,'success');assert.equal(r.jobs.find(j=>j.name==='quality-check').conclusion,'success');assert.equal(r.jobs.find(j=>j.name==='deploy-preview').conclusion,'success');
+const proofs=['PREVIEW_DOWNLOAD.json','PREVIEW_ARTIFACT_VALIDATION.json','PREVIEW_DOCUMENTS.json','PREVIEW_OUTPUT_COMPARISON.json','PREVIEW_HTTP.json','PREVIEW_404.json'];
+for(const f of proofs.filter(f=>f!=='PREVIEW_HTTP.json'))assert.equal(read(f).status,'passed',f);
+const scope=read('PREVIEW_SCOPE.json'),http=read('PREVIEW_HTTP.json'),artifact=read('PREVIEW_ARTIFACT_VALIDATION.json');assert.equal(http.commit,sha);assert.equal(http.verifiedFiles,scope.count);assert.equal(http.failures.length,0);assert.equal(artifact.preferredSourcesExact,66);assert.equal(artifact.sourceOfferMembers,780);
+fs.writeFileSync(new URL('PREVIEW_CI.json',E),JSON.stringify(ci,null,2)+'\n',{flag:'wx'});
+const evidence=[...proofs,'PREVIEW_SCOPE.json','PREVIEW_CI.json'].map(f=>({path:f,sha256:createHash('sha256').update(fs.readFileSync(new URL(f,E))).digest('hex')}));
+fs.writeFileSync(new URL('PRODUCTION_PREREQUISITES.json',E),JSON.stringify({status:'passed-production-prerequisites',at:new Date().toISOString(),head:sha,previewURL:http.base,evidence,expectedProductionCommit:base,scopeFiles:658,cleanIsolatedClone:true,workflowUnchanged:true,representativeRenderingReuse:'871/BROWSER_FINAL.json,865/JA_BROWSER.json and869/JA_BROWSER.json (exact current66 rendered bodies/source/stylesheet implementation);no new per-page/mobile native claim.',scope:'Wren24 separately full-reviewed Japanese guides;original42 English pages incl17API+MIT.66 preferred/rendered/780sourcekit;scoped clean branch;root unrelated edits excluded;Pages only. Production workflow must perform actual Cloudflare CAS against currentSDS375 and save rollback state.'},null,2)+'\n',{flag:'wx'});
+console.log('872 all Preview/658scope/clean head/780source checks passed;Production CAS expected375 permitted');
