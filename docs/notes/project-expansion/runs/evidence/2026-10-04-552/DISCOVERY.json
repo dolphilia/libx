@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-03T21:06:04.897Z",
+  "status": "discovery-only-not-qualification",
+  "discovered": 3,
+  "adopted": 0,
+  "detailInvestigations": 0,
+  "discoveryRoutes": [
+    "official-manual-catalog",
+    "package-registry",
+    "web-search"
+  ],
+  "fields": [
+    "compiler-lexical-tools",
+    "documentation-authoring",
+    "command-line-data-processing"
+  ],
+  "sourceIdentity": [
+    {
+      "id": "gperf",
+      "officialUrl": "https://www.gnu.org/software/gperf/",
+      "repository": null,
+      "field": "compiler-lexical-tools",
+      "scope": "固定正式版のGNU gperfユーザーマニュアル一式。ライセンス章を含め全文境界を確認する。",
+      "route": "official-manual-catalog",
+      "reference": "https://www.gnu.org/manual/manual.html",
+      "evidence": [
+        "GNU_MANUAL_CATALOG.html",
+        "GPERF_OFFICIAL.html",
+        "GPERF_MANUAL_INDEX.html"
+      ]
+    },
+    {
+      "id": "mdbook",
+      "officialUrl": "https://rust-lang.github.io/mdBook/",
+      "repository": "https://github.com/rust-lang/mdBook",
+      "field": "documentation-authoring",
+      "scope": "固定正式版のmdBook利用ガイド・CLI・設定・拡張ガイドを公式目次と照合。開発者資料の扱いを別途判断する。",
+      "route": "package-registry",
+      "reference": "https://crates.io/api/v1/crates/mdbook",
+      "evidence": [
+        "MDBOOK_CRATE.json",
+        "MDBOOK_GUIDE.html"
+      ]
+    },
+    {
+      "id": "jq",
+      "officialUrl": "https://jqlang.org/",
+      "repository": "https://github.com/jqlang/jq",
+      "field": "command-line-data-processing",
+      "scope": "固定正式版のjq公式マニュアル全文と必要な通知。実行例・組込み関数を含め境界を確認する。",
+      "route": "web-search",
+      "reference": "https://jqlang.org/download/",
+      "evidence": [
+        "JQ_REPOSITORY.json",
+        "JQ_DOWNLOAD.html",
+        "JQ_MANUAL.html"
+      ]
+    }
+  ],
+  "observations": {
+    "mdBookRegistryStableHint": "0.5.4",
+    "limit": "Registry hint is not yet the selected/pinned version. Current guide may differ from release."
+  },
+  "unconfirmed": [
+    "fixed release inputs",
+    "doc boundary and rights/third-party materials",
+    "Japanese translation status",
+    "faithful conversion trials",
+    "workload and scoring"
+  ],
+  "bias": "Recent additions fmt/spdlog/xxHash are C/C++ libraries; this set shifts to lexical tool, documentation authoring, command-line data processing. No field adoption quotas."
+}

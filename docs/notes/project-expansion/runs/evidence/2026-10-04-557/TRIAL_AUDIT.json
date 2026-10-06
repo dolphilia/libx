@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-03T21:44:13.462Z",
+  "status": "structural-conversion-progress-rendering-pending",
+  "attempts": [
+    {
+      "attempt": "initial-before-files",
+      "result": "failed",
+      "reason": "全href書換えがGPL見出しbacklinkも変更し、原GPLfragment bytes検査で失敗。"
+    },
+    {
+      "attempt": "v1",
+      "result": "partial",
+      "reason": "rawGPL保持と原gperf.html併置で113参照/120anchor一致。ただしCLI段落のdd閉じ方を見直し、採用検査には用いない。"
+    },
+    {
+      "attempt": "v2",
+      "result": "structural-pass",
+      "reason": "CLI各definitionをddとしてflush。全35用語・全SH/SSと全source-line mapが揃い、未対応macro0。通常/最大/宣言例の本文・heading/preはparse前後一致。"
+    }
+  ],
+  "rightsDetail": "全量GPLfragmentはheading backlink gperf.html#TOC1を含め同bytes保持。全量guideと同directoryに固定原gperf.htmlを併置し、そのlinkは原文TOCへ到達させる。正式appでは英日guide各directoryで同原文を配信し、実HTTP/anchor検証する。単にlinkを残して未配信にしない。",
+  "sampleEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-557/trial-v2/TRIAL_RESULT.json",
+    "sha256": "fecbc71dbc98d779aa30162582ef0d21867f65150265e1b8dcb708c31f070e93"
+  },
+  "limitations": [
+    "rawHTML静的試験であり、正規Markdown/Astro/template処理は未実施",
+    "ネイティブ表示・mobile・copy・keyboardは未確認",
+    "CLI全変換本文の独立照合は未完了",
+    "翻訳/最終通知/ソース配信は未実施"
+  ],
+  "next": "隔離の正規Astroテンプレートで全量guideとCLI v2をレンダーし、protectedGPL/notice、rawNAME anchors、113local links、35definitions、code textとmobile表示を検証。"
+}
