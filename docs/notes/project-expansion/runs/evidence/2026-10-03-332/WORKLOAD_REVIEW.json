@@ -1,0 +1,32 @@
+{
+  "status": "passed-for-planning",
+  "checkedAt": "2026-10-03T01:36:06.063Z",
+  "evidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/v3/API_CLASSIFICATION.json",
+      "sha256": "83132feea4a7146c15ceb43dc48d48a32b57ed1ea285b1307bb20aaa529d076b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/v3/WORKLOAD_ESTIMATE.json",
+      "sha256": "2c07e9050795d225066d37cb6f8d5cf6c89056124c89865db0f41d6b3e4928e7"
+    }
+  ],
+  "sourceAudit": "zlib.h1898-2057の上流分類・全補助/互換/未文書化宣言とmacro実装を原文で別読み。5初期化macro、6補助export、7large-fileexport、10undocumentedexportの全名称を照合。9主header typedefの位置を照合。主要73exportは66通常位置+7commentprototype位置。96を96文書化APIと記録しない。",
+  "measurementAudit": "root6ファイル固定SHA/3265行/whole21680token、comment等の翻訳規模18273tokenを区別。表7/22行、FAQ44、319block、内部link448、保持外部link22。codeを含む上限でも通常30000枠内。3D/画像を要する資料は範囲に含まれない。",
+  "estimateAudit": "初回21-42時間は定本4-8/訳と照合8-16/別全文review6-12/機械表示統合3-6の和。実測の完了時間ではない。未知の大規模更新は再測定。正式構成/参照の残課題は見積もりに含め、変換gateの未検証を消さない。",
+  "fixes": [
+    "V1のdirective regexが改行継続macroを先頭行だけ保存した。V1記録は証拠用途で不採用、V3はlogical-line全体を保持。",
+    "V2はtypedef struct内のsemicolonを境界としたため型検出assertで停止し成果物を生成しなかった。V3はstruct終端の型名も確認、余分なz_streamp使用箇所を定義と誤計上しない。"
+  ],
+  "limitations": [
+    "配置に基づく分類は個々のAPI内容レビュー完了を意味しない。",
+    "zconfの条件付きtypedef・macroは全原文保持/字句在庫、public API数に統合しない。",
+    "selection/translation/contentReview/display正式完成は未実施。"
+  ],
+  "gates": {
+    "workload": "pass",
+    "conversion": "unknown"
+  },
+  "localLLMUsed": false,
+  "externalPublication": false
+}

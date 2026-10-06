@@ -1,0 +1,82 @@
+{
+  "status": "bounded-research-with-unread-sources",
+  "checkedAt": "2026-10-03T01:38:44.629Z",
+  "scope": "zlib1.3.2のroot6資料全量、公開API/型/定数/条件macro、FAQ44・README・man・LICENSE。",
+  "queries": [
+    "zlib 1.3.2 日本語 マニュアル 翻訳 zlib.h",
+    "zlib 日本語 翻訳 公式 マニュアル"
+  ],
+  "searchObservation": "2限定検索で公式develop英語header/公式home/矢田記事/Libof概要man/PHPbindingなどが提示された。検索結果だけで訳の品質や全範囲不存在を判断しない。検索結果集合の再取得はしない。",
+  "sources": [
+    {
+      "url": "https://zlib.net/",
+      "readLines": [
+        0,
+        170
+      ],
+      "kind": "official-index",
+      "finding": "2026-02-17正式1.3.2と固定tar SHAを再確認。日本語情報は旧奥村URLの案内、公式言語一覧としての日本語全API訳リンクはこのindexで未発見。非存在の証明ではない。",
+      "importantVersionChanges": [
+        "compressBound_z/deflateBound_z",
+        "compress_z/uncompress_z",
+        "deflateUsed",
+        "gzopenのGオプション",
+        "gz非blockingとerror時のavailable output"
+      ]
+    },
+    {
+      "url": "https://www.s-yata.jp/docs/zlib/",
+      "readLines": [
+        [
+          0,
+          124
+        ],
+        [
+          23,
+          291
+        ],
+        [
+          130,
+          311
+        ]
+      ],
+      "wholePage": true,
+      "kind": "author-primary",
+      "version": "1.2.6",
+      "lastModified": "2012-03-08",
+      "finding": "全312行の本文を読み、C利用入門としてstream/gzip/一括圧縮/stdio操作とsampleを説明。最後で高度な利用を公式へ参照。1.3.2の新しい_z/deflateUsed/G/非blocking仕様と全FAQ44を扱う同版一式訳ではない。既存入門の有用性/品質を低評価する理由に使わない。"
+    },
+    {
+      "url": "https://okumuralab.org/~okumura/compression/zlib.html",
+      "readLines": [
+        0,
+        122
+      ],
+      "wholePage": true,
+      "kind": "author-primary",
+      "version": "1.1.x/1.2.x共通、install1.2.2",
+      "lastModified": "2007-02-14",
+      "finding": "基本streamとcompress/compress2/uncompressを使う入門。新1.3.2全API/FAQ44とは版と範囲が異なる。公式が案内する旧URLの自動redirectは未確認、同著者現行URLとして別記。"
+    },
+    {
+      "url": "https://www.sra.co.jp/people/m-kasahr/zlib/index.html",
+      "status": "unread",
+      "finding": "矢田記事が1.1.4header和訳と紹介。329取得Cache miss。本文は未読で品質/現行内容を判断せず、不存在の根拠にしない。"
+    },
+    {
+      "url": "https://libof.com/ja/man/zlib",
+      "status": "unread-search-only",
+      "finding": "検索要約は1.3.dfsg man概要と1.3.1通知を示す。333directopenもCache miss。本文未読のため版の確定や誤訳評価をしない。概要manと全API一式の同等性も未証明。"
+    },
+    {
+      "url": "https://www.php.net/manual/ja/book.zlib.php",
+      "status": "search-only-different-interface",
+      "finding": "PHPbindingのmanualが検索結果にある。C library zlib.h1.3.2全APIとはインターフェースが異なるため正式scopeの代替とみなさず、PHP本文品質を評価しない。"
+    }
+  ],
+  "archiveLanguageObservation": "327で全254ファイルの境界を保存済み。root6公式原資料は英語。333で上流GitHub全branch/translation repoの網羅調査は未実施。",
+  "boundedConclusion": "確認できた日本語資料は旧版入門。今回検索範囲で1.3.2 root6の全量訳は未発見。ただし旧和訳/Libofは未取得なので日本語不存在とは断定しない。追加価値候補は新API・新gzip仕様・FAQ全体・最新固定版の規範/条件/戻り値を同じ範囲で読めること。",
+  "reuseExistingTranslations": false,
+  "scores": "conversion gate unresolved, not assigned this cycle",
+  "next": "333の比較証拠を採点根拠として保存。変換のfragment/参照/正式構成を解消後、公式repo翻訳ディレクトリの限定確認と各採点を別パスで行う。未取得本文から追加価値を過大加点しない。"
+}

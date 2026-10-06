@@ -1,0 +1,68 @@
+{
+  "status": "passed-for-candidate-conversion-trial",
+  "checkedAt": "2026-10-03T01:44:18.164Z",
+  "scope": "root6 fixed sources whole scope; isolated unpublished trial, no formal new app/translation",
+  "machine": {
+    "blocks": 319,
+    "evidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/ASTRO_BLOCK_CHECK_V2.json",
+      "sha256": "984cf51103f28f2a0ea6c6273f95a58e13463fdf663378face7c7f4b741022a3"
+    },
+    "links": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/LINK_CHECK.json",
+      "sha256": "a571b7fc3ee2d23793747232cc1ea19f8ab36a27ef5a130230bb931054ef5082"
+    },
+    "internalResolved": 450,
+    "externalPreservedNotFetched": 29
+  },
+  "native": {
+    "whole6DOM": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/NATIVE_DESKTOP.json",
+      "sha256": "81b2f6d34d8e32c5fb4e6bb5c64db9157a92368905fa0bac70d0e5894daf3b1e"
+    },
+    "desktopFragment": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/FRAGMENT_DESKTOP.json",
+      "sha256": "42126e7ea9973018e8eebf722f36fa7a142ba786d5f3ddbdec20ad303911e758"
+    },
+    "mobileFragment": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/FRAGMENT_MOBILE.json",
+      "sha256": "4a2af621ed8fc72547da2ab72df208db2121c3deba52fea52f239442823f27e3"
+    },
+    "manMobile": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/MAN_MOBILE.json",
+      "sha256": "f2c11f552b886ba01f87cfd58f545ce3760fcd057b62efb3d40e6d40e0274ea0"
+    },
+    "keyboard": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/KEYBOARD_LINK.json",
+      "sha256": "4721e4416f26d58b4d573ccd3c73f0397ccfe24d2af28973c15ebf22f1a87cf2"
+    },
+    "screens": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/FRAGMENT_DESKTOP.png",
+        "sha256": "cd839059e2d2eac71f5c4f6b8bfa49fda1aadb70a2ef72c2477898f122268eb1"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-334/FRAGMENT_MOBILE.png",
+        "sha256": "758baca6f2af69ff6856e85a00b0709347f231a64b75ab10b664a31ff152217f"
+      }
+    ]
+  },
+  "referenceDecision": "zlib.h/zconf.hは内部の全文へ、既知API/型は原文labelのまま108anchorへ。manの7plainURLはその文字列を保持してlink化し2zlib.hを内部化。deflate.c/zutil.c/test/example.c/test/minigzip.c/ChangeLog/contribなど元のplainfile参照はplainのまま保存し、存在しないサイト内リンクを作らない。固定配布tarの取得証拠と254file mapで参照元を追跡できる。正式出典欄は固定archiveURL/SHAと範囲外fileの取得方法を明記。範囲外の実装を新規説明へ変換しない。",
+  "fixes": [
+    "108空anchorをheading前へ配置し、fragmentで見出しが画面から切れる可能性を解消。nativeで見出しtop約64px、table327px/scroll327px。",
+    "manのURLとzlib.h本文参照をリンク化。ラベル/文字列/全block不変を実Astro/実DOMで確認。"
+  ],
+  "formalIntegration": "正規templateのdefineDocsConfigと既存cJSON試験のrawHTML remark/rehypeを読み、固定source→原文blocks→HTML→Astro試験の再利用方式を確認。正式appではcJSON名称を除いた専用plugin/importerへ移し、canonical regeneration/content checksと英日全体検証を改めて実施する。正式app構成を先に完了済みとは扱わない。候補conversion条件は試験成立が要件であり、正式アプリ作成完了を選定の前提にして循環させない。",
+  "sourceReviewBoundary": "328原文全文確認、330-334構造/全量/参照の試験。今回文字列一致を日本語訳の意味レビュー完了として扱わない。",
+  "limitations": [
+    "外部29linkの到達性は未検査、正式取得/定本化工程で対象URL状態を記録。原文URLを勝手に置換しない。",
+    "正式テンプレートでの独立app/canonical-ready、英日全量翻訳/別全文review、integration/publication検証は未着手。",
+    "試験は原source単位の6頁。採用後も全範囲保持しAPIの原8節単位分割/anchor mapを検証する。"
+  ],
+  "cleanup": "非昇格preview38015はEPERMでexit1を確認。昇格localhostpreview57182はreadyを確認後検査、CtrlCでexit0。owned60閉鎖/viewportreset。失敗59はconnection error handle未取得で再利用せず一時タブ自動cleanup対象。user tabs保持。",
+  "gates": {
+    "conversion": "pass"
+  },
+  "externalPublication": false,
+  "localLLMUsed": false
+}
