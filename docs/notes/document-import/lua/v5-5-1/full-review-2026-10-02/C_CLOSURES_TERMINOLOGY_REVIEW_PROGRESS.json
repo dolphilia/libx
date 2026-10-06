@@ -1,0 +1,211 @@
+{
+  "id": "03-c-api/03-c-closures.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T21:46:31.546Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/c-closures-source-initial.html",
+      "sha256": "f7d4da92f734f2dcb1b8213765cff76a67f6bacc9bc4f422228c1fc82d4d3adf"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/c-closures-en-initial.md",
+      "sha256": "090070900d8e317c195933242a79807ad085ee0e1dad21dfab31b34bb5d62871"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/c-closures-ja-initial.md",
+      "sha256": "5331871e897ef2286003c11e366d12f58b77aab7f01dea9649b7d176b01e6170"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          34
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          12
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          12
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "第72着手前に固定source34行/ENJA12行の初回全文を省略なし実読。JA description含む7箇所の上位値をガイドのアップバリューへ修正。別工程でsource全34行/EN全12行/最終JA全12行再読、意味・条件・日本語自然さを照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-closures.html",
+      "sha256": "f7d4da92f734f2dcb1b8213765cff76a67f6bacc9bc4f422228c1fc82d4d3adf"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/03-c-closures.md",
+      "sha256": "090070900d8e317c195933242a79807ad085ee0e1dad21dfab31b34bb5d62871"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/03-c-closures.md",
+      "sha256": "f1282f62c6ab85d0f18963628b3c79565c27708b13559b5767e2edc23de6660d"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          34
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          12
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          12
+        ]
+      ]
+    }
+  },
+  "supersededReview": {
+    "id": "03-c-api/03-c-closures.md",
+    "status": "passed",
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "sourceMapping": {
+      "archiveMember": "lua-5.5.1/doc/manual.html",
+      "start": {
+        "anchor": "4.2"
+      },
+      "end": {
+        "anchor": "4.3"
+      },
+      "kind": "html"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/03-c-closures.md",
+      "sha256": "090070900d8e317c195933242a79807ad085ee0e1dad21dfab31b34bb5d62871",
+      "coverage": [
+        [
+          1,
+          12
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/03-c-closures.md",
+      "sha256": "5331871e897ef2286003c11e366d12f58b77aab7f01dea9649b7d176b01e6170",
+      "coverage": [
+        [
+          1,
+          12
+        ]
+      ]
+    },
+    "findings": [
+      "Cfunction作成時値を関連付けCclosure、値はupvaluesでcall時常にaccess可能。各callでspecificpseudoindicesにありlua_upvalueindex macroで生成、最初はindex(1)/以下同様、associated upvalueの値変更可を全3段落照合。",
+      "現在functionのupvalue数よりnが大きく、かつn≤256（closure最大数+1）の場合はacceptableだがinvalid。上位値数の上限そのものを256と誤読せず括弧の比較関係・条件ANDを保持。原文にない共有条件や範囲保証を足さない。",
+      "機械source→EN3段落exact、4inlinecode/2links/nativeID4.2/JAparagraphcodeorder一致。説明em3保持、inlinecode内nのem1は既存平文化で表示字体のみ差、コード文字は一致。コード実例なし、本文修正なし。",
+      "英日desktop/mobile4viewで3p/4inline/3em/ID4.2、文書横overflow0/console0。両言語のn上限256条件と最終変更可能段落を画像確認。lua_upvalueindex Enter→native target、JA→EN同一pageを確認。",
+      "112本文+6コード/CSSのroot/専用WTは第63検査時SHA一致、第63content56再現/1164内部links0/integrity/相対122links/117pagebuild/diff、第51tests8/lintを不変入力で再利用。第64新規実行とは数えず、残り33未確認を全文/表示合格にしない。"
+    ],
+    "displayStatus": "passed",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T20:37:45.724Z",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-closures.html",
+      "sha256": "f7d4da92f734f2dcb1b8213765cff76a67f6bacc9bc4f422228c1fc82d4d3adf",
+      "coverage": [
+        [
+          1,
+          34
+        ]
+      ]
+    },
+    "initialReview": {
+      "progress": {
+        "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/C_CLOSURES_REVIEW_PROGRESS.json",
+        "sha256": "e2265a33b140fef98c09a96a0b9ba0ccd23125dddb9a9e70438f6ae2e6f2c1f9"
+      }
+    },
+    "displayEvidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-064/browser-review.json",
+      "sha256": "1c9b30f2d44505aa79b621e78321a6646e7e85601586502a46e49452266f8caf"
+    },
+    "terminologyStatus": "correction-pending"
+  },
+  "findings": [
+    "固定原文upvalue関連付け/Cclosure/呼出毎アクセス・pseudoindex/firstindex1・n>current upvalue数 AND n≤256の許容だが無効なindex・対応する値の変更可能を全原文/EN/JAで照合。",
+    "description含む7箇所の訳語をガイド通り修正。本文3prose/4inline/2links/ID4.2と説明3emを機械照合、全prose ENsource exact。原文code中n強調1箇所は既存inlinecode平文化、意味喪失なし。",
+    "別工程全文/英日4viewで条件と用語を画像実読、3p/4inline/3em/ID4.2/overflow0/console0、lua_upvalueindex Enter native target・JA→EN同じpage成功。コード例なし。",
+    "5検査fresh exit0（content56再現/56英日/1164links0、WTintegrity/links122/117pagebuild/diff）。7code同SHAで第69の11tests/lint再利用。",
+    "第64合格のJA SHAは修正で失効し第72別工程全文/表示/機械証拠へ置換。content/表示29/55を保持、addedThisCycle=0・revalidatedThisCycle=1。別7ページ訳語未修正（既内容合格3/未確認4）、全scope残り26未確認。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/repairs.json",
+    "sha256": "1e7f173c92c0250a088c537e8443955ae970acc905f6b6e7c532e6847ff89b65"
+  },
+  "terminologyAudit": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/terminology-audit.json",
+    "sha256": "07ef405c7a072baf1746a9b2121e883794554a5dc4ad08a41a78b4363b2bcd85"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/validation-reuse.json",
+      "sha256": "79390337475a013baf42382ba9c926f1bcd69c219447988d6c6451c6e945ce06"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/selective-build.txt",
+      "sha256": "9d9cf9d12285c383f1a00f3b1ae112df53febfb1caa282c8863ad11f9eafa932"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-072/browser-review.json",
+    "sha256": "270c8404706a0b91d41bafe7a34103cc0eeb058473710f38f8136c19ade6b5fc"
+  },
+  "nextAction": "第73は既合格03-c-api/06-handling-yields-in-c.mdの固定原文/EN/JA全範囲を初回全文照合、上位値1箇所をアップバリューに修正、別工程全文/機械/英日4viewで再検証。続いてstack5箇所/basic8箇所の既確認を優先。既合格再検証はaddedThisCycle=0で29/55件数を重複加算しない。残り26ページと別未確認4訳語ページは未完維持、新bug権利確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り26ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "upvalue訳語の未修正7ページ（既内容/表示合格3、未確認4）。意味/表示の既存証拠は保持し、用語適合は未完として各修正後に再検証。"
+  ]
+}

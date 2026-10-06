@@ -1,25 +1,25 @@
 ---
 title: "Awesome Marionette.js"
-description: "A curated collection of resources and projects focused on Marionette.js."
+description: "Marionette.js resources for use with Backbone.js: tutorials, articles, books, videos, sample applications, boilerplates, and libraries."
 licenseSource: "github-sadcitizen-awesome-marionette-readme-md"
 ---
 
 # Awesome Marionette.js
 
-A curated collection of resources and projects focused on Marionette.js.
+This list covers Marionette.js and its use with Backbone.js to structure web applications. It includes general resources, tutorials and articles, books, videos, sample applications and boilerplates, and libraries.
 
 ## General
 
 - [Official site](http://marionettejs.com/)
-- [Github repository](https://github.com/marionettejs/backbone.marionette)
-- [Annotated source](http://marionettejs.com/annotated-src/backbone.marionette)
+- [GitHub repository](https://github.com/marionettejs/backbone.marionette)
+- [Annotated source code](http://marionettejs.com/annotated-src/backbone.marionette)
 - [Marionette.js Blog](http://blog.marionettejs.com/)
-- [StackOverflow](http://stackoverflow.com/questions/tagged/marionette) - Tagged questions
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/marionette) - Questions tagged Marionette.
 - [Gitter chat](https://gitter.im/marionettejs/backbone.marionette)
 - [Marionette Inspector](https://github.com/marionettejs/marionette.inspector)
 - [Yeoman generator for Marionette.js](https://github.com/mrichard/generator-marionette)
 - [Marionette CLI](https://github.com/denar90/marionette-cli)
-- [MarionetteJS CLI package for atom](https://atom.io/packages/atom-marionettejs-cli)
+- [MarionetteJS CLI package for Atom](https://atom.io/packages/atom-marionettejs-cli)
 
 ## Tutorials and articles
 
@@ -46,7 +46,7 @@ A curated collection of resources and projects focused on Marionette.js.
 - [Nested Views in Backbone.Marionette](http://blog.mojotech.com/nested-views-in-backbone-marionette/) by Sam Saccone
 - [DRY up Your Views in Backbone Marionette](http://blog.mojotech.com/dry-up-your-views-in-backbone-marionette/) by Sam Saccone
 - [Strengthening Our Backbone with Marionette (Part I)](http://tech.kinja.com/strengthening-our-backbone-with-marionette-part-i-1583630931)
-- [Tutorial: Nested Views Using Backbone Marionette's CompositeView](http://davidsulc.com/blog/2013/02/03/tutorial-nested-views-using-backbone-marionettes-compositeview/) bu David Sulc
+- [Tutorial: Nested Views Using Backbone Marionette's CompositeView](http://davidsulc.com/blog/2013/02/03/tutorial-nested-views-using-backbone-marionettes-compositeview/) by David Sulc
 - [Components with Backbone.js and Marionette.js](http://blog.jeremyfairbank.com/javascript/components-with-backbone-js-and-marionette-js/) by Jeremy Fairbank
 - [Managing Layouts and Nested Views with Backbone.Marionette](http://lostechies.com/derickbailey/2012/03/22/managing-layouts-and-nested-views-with-backbone-marionette/) by Derick Bailey
 - [Revisiting the Backbone Event Aggregator: Lessons Learned](http://lostechies.com/derickbailey/2012/04/03/revisiting-the-backbone-event-aggregator-lessons-learned/) by Derick Bailey
@@ -70,7 +70,7 @@ A curated collection of resources and projects focused on Marionette.js.
 
 ## Videos
 
-- [Dancing with Marionette](https://www.youtube.com/channel/UC6dVRPnSACav2AYB5XG7BZw) - Youtube channel
+- [Dancing with Marionette](https://www.youtube.com/channel/UC6dVRPnSACav2AYB5XG7BZw) - YouTube channel.
 - [Backbone.js with Derick Bailey](https://www.youtube.com/watch?v=VERQEr-bVTs) by Derick Bailey
 - [The Tools and Patterns for Building Large-Scale Backbone Applications](https://www.youtube.com/watch?v=qWr7x9wk6_c) by Brian Mann
 - [Episode 03 of BackboneRails Screencast](https://www.youtube.com/watch?v=KT31H3Ayliw) by Brian Mann
@@ -92,9 +92,9 @@ A curated collection of resources and projects focused on Marionette.js.
 ## Examples and boilerplates
 
 - [Marionette Require Boilerplate](https://github.com/BoilerplateMVC/Marionette-Require-Boilerplate)
-- [Marionette Contact Manager](https://github.com/dmytroyarmak/marionette-contact-manager) - Continuation of development "Backbone Contact Manager" but using Marionette.js
-- [Marionette, Require, and Gulp.js Boilerplate](https://github.com/jroeckle/Marionette-Require-Gulpjs-Boilerplate) - A Lightweight boilerplate originally project based off "Marionette Require Boilerplate", with Gulp.js integration instead of Grunt.js
-- [MarionetteJS + RequireJS + Twitter Bootstrap](https://github.com/ajaxray/marionette-boilerplate) - Let's start the dance! This boilerplate is a ready setup for starting your next awesome javascript app in minutes
+- [Marionette Contact Manager](https://github.com/dmytroyarmak/marionette-contact-manager) - A continuation of "Backbone Contact Manager" developed with Marionette.js.
+- [Marionette, Require, and Gulp.js Boilerplate](https://github.com/jroeckle/Marionette-Require-Gulpjs-Boilerplate) - A lightweight boilerplate based on "Marionette Require Boilerplate", with Gulp.js integration instead of Grunt.js.
+- [MarionetteJS + RequireJS + Twitter Bootstrap](https://github.com/ajaxray/marionette-boilerplate) - A boilerplate setup for starting JavaScript applications with MarionetteJS, RequireJS, and Twitter Bootstrap.
 - [Marionette Gentle Introduction](https://github.com/davidsulc/marionette-gentle-introduction)
 - [Marionette Wires](https://github.com/thejameskyle/marionette-wires)
 - [Marionette Cookbook](https://github.com/MarionetteLabs/marionette-cookbook)
@@ -102,10 +102,10 @@ A curated collection of resources and projects focused on Marionette.js.
 - [A Place to Write About Technical Subjects on the Web](https://github.com/jmeas/gistbook)
 - [The Front End App for edit.sx](https://github.com/samccone/edit.sx-frontend)
 - [Streamus](https://github.com/MeoMix/StreamusChromeExtension)
-- [Marionette-Integrations](https://github.com/marionettejs/marionette-integrations) - example marionette apps using several different asset management tools
+- [Marionette-Integrations](https://github.com/marionettejs/marionette-integrations) - Example Marionette applications using several different asset management tools.
 - [ES6 Marionette Project](https://github.com/abiee/es6-marionette)
 - [Todo List](https://github.com/tastejs/todomvc/tree/master/examples/backbone_marionette) - TodoMVC example
-- [Webpack-Marionette](https://github.com/alexpsi/webpack-marionette) A small boilerplate introducing webpack and es6 features to a Marionette/Backbone application, contains a sample CRUD application of an editable Cookbook.
+- [Webpack-Marionette](https://github.com/alexpsi/webpack-marionette) - A small boilerplate introducing Webpack and ES6 features to a Marionette/Backbone application. Includes a sample CRUD application for an editable cookbook.
 
 
 ## Libraries
@@ -114,5 +114,5 @@ A curated collection of resources and projects focused on Marionette.js.
 - [Marionette Virtual Dom](https://github.com/tiagorg/marionette-vdom)
 - [Marionette Form View](https://github.com/viverae/marionette.formview)
 - [A Better Router for Backbone and Marionette Applications](https://github.com/Betterment/backbone.blazer)
-- [Marionette.Toolkit](https://github.com/RoundingWellOS/marionette.toolkit) - A collection of opinionated Backbone.Marionette extensions for large scale application architecture.
-- [Orchestra](https://github.com/BedeGaming/orchestra) - Client-side app orchestration framework
+- [Marionette.Toolkit](https://github.com/RoundingWellOS/marionette.toolkit) - A collection of opinionated Backbone.Marionette extensions for large-scale application architecture.
+- [Orchestra](https://github.com/BedeGaming/orchestra) - A client-side application orchestration framework.

@@ -1,22 +1,22 @@
 ---
 title: "Awesome Backbone.js"
-description: "A curated collection of resources and projects focused on Backbone.js."
+description: "Backbone.js tutorials, articles, books, videos, sample applications, boilerplates, courses, and libraries."
 licenseSource: "github-sadcitizen-awesome-backbone-readme-md"
 ---
 
 # Awesome Backbone.js
 
-A curated collection of resources and projects focused on Backbone.js.
+Backbone.js provides models, collections, and views for structuring JavaScript web applications. This list covers tutorials and articles, books and videos, sample applications and boilerplates, courses, and libraries.
 
 ## General
 
 - [Backbone.js](http://backbonejs.org/)
-- [Github repository](https://github.com/jashkenas/backbone)
-- [Annotated source](http://backbonejs.org/docs/backbone.html)
+- [GitHub repository](https://github.com/jashkenas/backbone)
+- [Annotated source code](http://backbonejs.org/docs/backbone.html)
 - [Backbone plugins](http://backplug.io/)
-- [Backbone Index](https://backboneindex.com/) - Discover new Backbone plugins and resources
-- [BackboneConf](http://backboneconf.com/) - Conference about building applications on the web, with a focus on the Backbone.js library
-- [StackOverflow](http://stackoverflow.com/questions/tagged/backbone.js) - Tagged questions
+- [Backbone Index](https://backboneindex.com/) - Find Backbone plugins and resources.
+- [BackboneConf](http://backboneconf.com/) - A conference about building web applications, with a focus on the Backbone.js library.
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/backbone.js) - Questions tagged Backbone.js.
 - [Yeoman generator for Backbone.js](https://github.com/yeoman/generator-backbone)
 
 ## Tutorials and articles
@@ -86,17 +86,17 @@ A curated collection of resources and projects focused on Backbone.js.
 - [Backbone.js Blueprints](http://www.amazon.com/dp/1783286997/) by Andrew Burgess
 - [Recipes with Backbone](http://recipeswithbackbone.com/) by Nick Gauthier and Chris Strom
 - [Full Stack Web Development with Backbone.js](http://shop.oreilly.com/product/0636920030799.do) by Patrick Mulder
-- [Developing Single Page Apps with Backbone.js](https://singlepagebook.supportbee.com/) by Prateek Dayal - work in progress
+- [Developing Single Page Apps with Backbone.js](https://singlepagebook.supportbee.com/) by Prateek Dayal - Marked as a work in progress in the fixed source.
 
 ## Videos
 
-- [BackboneConf 2013](https://www.youtube.com/playlist?list=PLlgxAbM67lYLJm9_Ub3gStXa2vjb51aUX) - Youtube playlist
-- [BackboneConf 2014](https://www.youtube.com/playlist?list=PLlgxAbM67lYIGw8DnANC7VgREbzJRQged) - Youtube playlist
-- [Introduction to Backbone.js](https://www.youtube.com/playlist?list=PLCE344BDBD8FAC282) - Youtube playlist by Joseph Zimmerman
-- [Backbone App Walkthrough](https://www.youtube.com/playlist?list=PL0C57F698BD4766B1) - Youtube playlist by Joseph Zimmerman
-- [Backbone.js Tutorial](http://www.youtube.com/playlist?list=PLTjRvDozrdlwn9IsHWEs9IQv3HQob4bH3) - Youtube playlist by Mosh Hamedani
+- [BackboneConf 2013](https://www.youtube.com/playlist?list=PLlgxAbM67lYLJm9_Ub3gStXa2vjb51aUX) - YouTube playlist.
+- [BackboneConf 2014](https://www.youtube.com/playlist?list=PLlgxAbM67lYIGw8DnANC7VgREbzJRQged) - YouTube playlist.
+- [Introduction to Backbone.js](https://www.youtube.com/playlist?list=PLCE344BDBD8FAC282) - YouTube playlist by Joseph Zimmerman.
+- [Backbone App Walkthrough](https://www.youtube.com/playlist?list=PL0C57F698BD4766B1) - YouTube playlist by Joseph Zimmerman.
+- [Backbone.js Tutorial](http://www.youtube.com/playlist?list=PLTjRvDozrdlwn9IsHWEs9IQv3HQob4bH3) - YouTube playlist by Mosh Hamedani.
 - [Backbone-Require-Boilerplate Explained](http://gregfranko.com/blog/backbone-require-boilerplate-explained/) by Greg Franko
-- [BackboneRails Screencasts](http://www.backbonerails.com/) - Learn to Build Web Apps Using Backbone + Rails
+- [BackboneRails Screencasts](http://www.backbonerails.com/) - Learn to build web apps with Backbone and Rails.
 - [Backbone.js with Derick Bailey](https://www.youtube.com/watch?v=VERQEr-bVTs) by Derick Bailey
 - [JavaScript Application Architecture with Backbone.js](http://www.youtube.com/watch?v=PGgZ7qRvoGE) by Mathias Schäfer
 - [An Introduction to Backbone.js](http://www.youtube.com/watch?v=PcTVQyrWSSs) by Sid Maestre
@@ -105,12 +105,12 @@ A curated collection of resources and projects focused on Backbone.js.
 
 ## Examples and boilerplates
 
-- [Backbone Require Boilerplate](https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate) - A Rad Backbone.js and Require.js Boilerplate Project
-- [Wine Cellar Sample Application](https://github.com/ccoenraets/backbone-cellar) - "Backbone Cellar" is a sample application built with Backbone.js
-- [Employee Directory](https://github.com/ccoenraets/directory-backbone-bootstrap) - Employee Directory sample application built with Backbone.js and Twitter Bootstrap
-- [Backbone Contact Manager](https://github.com/dmytroyarmak/backbone-contact-manager) - Simple Backbone.js example application
-- [Backbone Boilerplates](https://github.com/addyosmani/backbone-boilerplates) - Backbone.js stack boilerplates demonstrating integration with Express, Ruby, PHP, Grails and more
-- [Backbone TodoMVC example](http://todomvc.com/examples/backbone/) - Simple todo app built using Backbone and Backbone.localStorage.
+- [Backbone Require Boilerplate](https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate) - A Backbone.js and Require.js boilerplate project.
+- [Wine Cellar Sample Application](https://github.com/ccoenraets/backbone-cellar) - A sample application built with Backbone.js.
+- [Employee Directory](https://github.com/ccoenraets/directory-backbone-bootstrap) - An employee directory sample application built with Backbone.js and Twitter Bootstrap.
+- [Backbone Contact Manager](https://github.com/dmytroyarmak/backbone-contact-manager) - A simple Backbone.js example application.
+- [Backbone Boilerplates](https://github.com/addyosmani/backbone-boilerplates) - Backbone.js stack boilerplates demonstrating integration with Express, Ruby, PHP, Grails, and more.
+- [Backbone TodoMVC example](http://todomvc.com/examples/backbone/) - A simple to-do app built with Backbone and Backbone.localStorage.
 
 ## Courses
 

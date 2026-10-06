@@ -1,0 +1,138 @@
+{
+  "id": "02-language/11-complete-syntax.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T20:26:27.003Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-061/complete-syntax-source-initial.html",
+      "sha256": "d2d952a7c9848777bfefb4acda21965006bb81fccd51bec770e8aeb8d4775d53"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-061/complete-syntax-en-initial.md",
+      "sha256": "3867746aad3526a66fe0efeda8754cbd378ad56309a851f3c4d436f5b6035744"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-061/complete-syntax-ja-initial.md",
+      "sha256": "6e1c158903a05f2701faded21a78cb62991af460407dc60545689489de237f98"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          99
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          83
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          83
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回fixedmanual12444〜12552全109行で9章本文とfooter境界を実読、英日各1〜83全文実読。別工程では固定抜粋source1〜99（manual12444〜12542、footer手前）・英日各1〜83を別の3出力で無省略再読。説明1段落と26生成規則/72行BNFを原文→定本→日本語、訳文単独で意味/選択肢/keyword/terminalを確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/complete-syntax.html",
+      "sha256": "d2d952a7c9848777bfefb4acda21965006bb81fccd51bec770e8aeb8d4775d53"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/02-language/11-complete-syntax.md",
+      "sha256": "3867746aad3526a66fe0efeda8754cbd378ad56309a851f3c4d436f5b6035744"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/02-language/11-complete-syntax.md",
+      "sha256": "6e1c158903a05f2701faded21a78cb62991af460407dc60545689489de237f98"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          99
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          83
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          83
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "説明1段落の拡張BNF表記{A}=0個以上/[A]=optional、operator precedence参照3.4.8、terminal Name/Numeral/LiteralString参照3.1を照合。両言語の論理・用語・リンク保持、誤訳なし。",
+    "全26生成規則を独立再読。chunk→block、block={stat}[retstat]、stat全18選択肢（empty/multassign/call/label/break/goto/do/while/repeat/if/numericfor/genericfor/function/localfunction/globalfunction/local/global宣言/global[attrib]*）を順序と省略可能箇所まで照合。",
+    "attnamelist全体attrib/各Name後attrib、attrib山括弧、return optionalexplistとsemicolon、label二重colon、funcnameのdot反復/最後colonoptional、varlist/namelist/explistcomma反復、var3形、exp11形、prefixexp3形を照合。",
+    "functioncall2形/args3形/関数defとbody/optionalparlist/varargparam optionalNameを照合。tableconstructoroptionalfieldlist、fieldsep反復と末尾optional、field3形、separatorcomma/semicolonを保持。",
+    "binop算術7+bit5+concat1+比較6+and/or2の21演算子、unop4演算子を原文記号・並び・keywordまで照合。前章の演算子規則参照を原文どおり保持し、BNFが優先順位を別章に委ねる説明を改変しない。",
+    "機械検査1paragraph source→EN exact、72行単一BNFはsourceHTMLbold除去/entity復号後EN/JA全byte exact、native ID9と2参照リンク一致。原文terminal bold101箇所は既存textコード平文化、文字と空白保持。初回検査器の仮定27規則が誤りでassert停止、原文/英日実読26規則を列挙し期待リストへ訂正。本文修正なし、失敗を保存。",
+    "英日desktop/mobile4view、1p/1pre/0inline/ID9、doc横overflow0/console0、JA説明とBNF末尾binop/unopを実画像確認。72行DOM codebyte exact・正の高さ/pre保持、長行枠内横scroll。mobileのsidebarbutton操作は存在せず失敗、AX再読と通常scrollで確認し成功扱いしない。§3.4.8 Enter→native target/JA→EN同一pageを確認。",
+    "無編集、112本文+6コード/CSSのroot/専用WTと第60SHAが一致。第60content56再現/1164内部link0/integrity/相対122links/117pagebuild/diffを再利用、第51tests8/lintはコードSHA一致再利用。BNF実行は対象外、未確認36ページを機械検査から合格にしない。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-061/validation-reuse.json",
+      "sha256": "09f617cd2d9f4c983957ba8684c16357d3428c0fe5d29b87a2fbf4f0e36c4179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/selective-build.txt",
+      "sha256": "8149642a221eb959e0c9e027aeae0e74487174f605deb4937e5d6b99e77d2e5e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-061/browser-review.json",
+    "sha256": "8428469265ed6d2935931f52b78f5c6ba36f4d81cbcfc1d0d9cbe427522cfc03"
+  },
+  "nextAction": "第62は03-c-api/01-overview.mdとfixedmanual4.1全体を初回実読し、stack・index・top/overflow・virtual stack・zero/negativeの境界を照合。別工程全文/英日desktop/mobile/機械照合へ進む。全55scope維持、19/55確認済み36未確認、newbug権利適用deferred継続。",
+  "unresolved": [
+    "全55review scope残り36ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

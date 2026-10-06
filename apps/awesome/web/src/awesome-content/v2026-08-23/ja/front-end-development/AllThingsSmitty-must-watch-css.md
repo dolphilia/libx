@@ -1,54 +1,54 @@
 ---
 title: "Awesome Must-Watch CSS"
-description: "Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "CSS Grid、Flexbox、変数、アニメーション、性能、設計、フレームワーク、Sass、ツールに関する講演を年別に案内します。"
 licenseSource: "github-AllThingsSmitty-must-watch-css-readme-md"
 ---
 
 # Awesome Must-Watch CSS
 
-Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+2010年から2025年までのCSSに関する講演を年別に探せます。CSS Grid、Flexbox、カスタムプロパティ、アニメーション、性能、設計、フレームワーク、Sass、ツールなどを扱います。各項目には原題、登壇者、イベントまたは配信チャンネル、再生時間を記載しています。
 
-- [貢献ガイドライン](https://github.com/AllThingsSmitty/must-watch-css/blob/0b00d05eeaa29f4889d7a4741159483420c8017a/CONTRIBUTING.md)
+関連リスト: [Must-Watch JavaScript](https://github.com/AllThingsSmitty/must-watch-javascript)。
 
-### 2025
+## 2025
 
 1. [**25 New & Rad Feature of CSS**](https://www.youtube.com/watch?v=QW6GECIzvsw): Adam Argyle, CascadiaJS `30:03`
 
-### 2024
+## 2024
 
 1. [**The "Other" C in CSS**](https://www.youtube.com/watch?v=ob_M_qXeDVE): Sara Soueidan, CSS Day 2024 `55:55`
 
-### 2022
+## 2022
 
 1. [**CSS Variable Secrets**](https://www.youtube.com/watch?v=ZuZizqDF4q8): Lea Verou, CSS Day `59:06`
 1. [**Oh Snap!**](https://www.youtube.com/watch?v=34zcWFLCDIc): Adam Argyle, CSS Day `49:46`
 
-### 2020
+## 2020
 
-1. [**10 Modern Layouts in 1 Line of CSS**](https://www.youtube.com/watch?v=qm0IfG1GyZU): Una Kravets, (YouTube Channel) `21:38`
+1. [**10 Modern Layouts in 1 Line of CSS**](https://www.youtube.com/watch?v=qm0IfG1GyZU): Una Kravets, （YouTubeチャンネル） `21:38`
 
-### 2019
+## 2019
 
 1. [**CSS Algorithms**](https://www.youtube.com/watch?v=dxY5CdZNzsk): Lara Schenck, Strange Loop Conference `36:18`
-1. [**Build a Classic Layout FAST in CSS Grid**](https://www.youtube.com/watch?v=KOvGeFUHAC0): Miriam Suzanne, (Mozilla Developer YouTube Channel) `8:29`
+1. [**Build a Classic Layout FAST in CSS Grid**](https://www.youtube.com/watch?v=KOvGeFUHAC0): Miriam Suzanne, （Mozilla DeveloperのYouTubeチャンネル） `8:29`
 1. [**CSS Animation - Beyond Transitions**](https://www.youtube.com/watch?v=TYlA-eolzLs): Steven Roberts, CSSConf Budapest `28:01`
 1. [**Using Devtools to Understand Modern CSS Layouts**](https://www.youtube.com/watch?v=ZRtzk0371tk): Chen Hui Jing, CSSConf EU `32:39`
 1. [**Hello Subgrid!**](https://www.youtube.com/watch?v=vxOj7CaWiPU): Rachel Andrew, CSSConf EU `32:56`
 
-### 2018
+## 2018
 
-1. [**Resilient CSS: How to Write CSS That Works in Every Browser, Even the Old Ones**](https://hacks.mozilla.org/2018/03/how-to-write-css-that-works-in-every-browser-even-the-old-ones/): Jen Simmons (Layout Land playlist) `55:04`
+1. [**Resilient CSS: How to Write CSS That Works in Every Browser, Even the Old Ones**](https://hacks.mozilla.org/2018/03/how-to-write-css-that-works-in-every-browser-even-the-old-ones/): Jen Simmons （Layout Landの再生リスト） `55:04`
 1. [**Creative Text Effects with CSS**](https://www.youtube.com/watch?v=9EU7urOl1LE): Mandy Michael, Talk.CSS `40:46`
 1. [**Learn CSS Grid**](https://www.youtube.com/watch?v=DCZdCKjnBCs&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Wes Bos, Laracon `44:59`
 
-### 2017
+## 2017
 
 1. [**CSS Grid Layout**](https://www.youtube.com/watch?v=N5Lt1SLqBmQ&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Rachel Andrew, Frontend NE `59:14`
 1. [**The Power of CSS**](https://www.youtube.com/watch?v=IRI1H5tyEAo&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Una Kravets, Front-Trends `30:57`
 1. [**CSS and the First Meaningful Paint**](https://www.youtube.com/watch?v=4pQ2byAoIX0&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Patrick Hamann, CSSConf EU `37:56`
 1. [**CSS Grid in Production**](https://www.youtube.com/watch?v=_BCiiE31D5M&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Benjamin De Cock, dotCSS `16:05`
 
-### 2016
+## 2016
 
 1. [**CSS in 2016 and Beyond**](https://www.youtube.com/watch?v=9AG35HCBpo4&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Christian Vuerings, SFHTML5 `17:15`
 1. [**Laying out the Future with Grid and Flexbox**](https://www.youtube.com/watch?v=ibeF6rbzD70&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Rachel Andrew, View Source Conference `25:45`
@@ -58,7 +58,7 @@ Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesome�
 1. [**You Might Not Need a CSS Framework**](https://www.youtube.com/watch?v=5FdHqVDlXu0&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Belen Albeza, View Source Conference `22:46`
 1. [**The Dark Side of Polyfilling CSS**](https://www.youtube.com/watch?v=ZskP7cvj3WA&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Philip Walton, dotCSS `22:57`
 
-### 2015
+## 2015
 
 1. [**mdo-ular CSS**](http://jqueryuk.com/2015/videos.php?s=mdo-ular-css): Mark Otto, jQuery UK `30:06`
 1. [**PostCSS: The Future After Sass and LESS**](https://www.youtube.com/watch?v=1yUFTrAxTzg&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Andrey Sitnik, CSSConf US `29:09`
@@ -73,7 +73,7 @@ Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesome�
 1. [**Enhancing Responsiveness With Flexbox**](https://www.youtube.com/watch?v=_98SE8WUvLk&index=10&list=PL37ZVnwpeshHoV6GgvG9WWAP6rjnEdAs9): Zoe M. Gillenwater, CSSConf EU `37:13`
 1. [**Move Slow and Fix Things**](https://www.youtube.com/watch?v=zmjfh099zYg&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Daniel Eden, dotCSS `15:06`
 
-### 2014
+## 2014
 
 1. [**What Is a CSS Framework Anyway?**](https://vimeo.com/95734680): Harry Roberts, Industry Conf `48:48`
 1. [**CSS Is a Mess**](https://vimeo.com/99877232): Jonathan Snook, Beyond Tellerand `53:49`
@@ -92,7 +92,7 @@ Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesome�
 1. [**3.14 Things I Didn’t Know About CSS**](https://vimeo.com/100264064): Mathias Bynens, CSS Day `45:35`
 1. [**Effortless Style**](http://vimeo.com/101718785): Heydon Pickering, CSS Day `49:51`
 
-### 2013
+## 2013
 
 1. [**When Bootstrap Attacks**](https://www.youtube.com/watch?v=xbpnqbM6cRk&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Pamela Fox, CSSConf US `28:48`
 1. [**CSS in the 4th Dimension**](https://www.youtube.com/watch?v=NTJUFQmHbvc&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Lea Verou, JSConf Asia `44:49`
@@ -107,12 +107,12 @@ Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesome�
 1. [**Architecting Scalable CSS**](https://vimeo.com/70041549): Harry Roberts, Beyond Tellerand `41:57`
 1. [**More CSS Secrets: Another 10 Things You May Not Know about CSS**](https://www.youtube.com/watch?v=3ikye7Qc7Ak&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Lea Verou, W3Conf `60:39`
 
-### 2012
+## 2012
 
 1. [**Open Source Tools and Libraries for Designers**](https://www.youtube.com/watch?v=hFdbE6T9QGc&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA): Julie Ann Horvath, HTML5DevConf `29:39`
 1. [**GitHub's CSS Performance**](https://vimeo.com/54990931): Jon Rohan, CSS Dev Conf `40:50`
 
-### 2010
+## 2010
 
 1. [**Handcrafted CSS**](https://vimeo.com/17091905): Dan Cederholm, Build Conference `44:29`
 1. [**The Top 5 Mistakes of Massive CSS**](https://www.youtube.com/watch?v=j6sAm7CLoCQ): Nicole Sullivan, Build Conference `37:53`

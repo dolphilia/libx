@@ -1,43 +1,17 @@
 ---
 title: "Awesome Silverstripe CMS"
-description: "A curated collection of resources and projects focused on Silverstripe CMS."
+description: "Silverstripe CMS documentation, tutorials, community resources, modules, development tools, IDE plugins, and Docker and Vagrant environments."
 licenseSource: "github-wernerkrauss-awesome-silverstripe-cms-readme-md"
 ---
 
 # Awesome Silverstripe CMS
 
-A curated collection of resources and projects focused on Silverstripe CMS.
+[Silverstripe CMS](https://www.silverstripe.org) is an open-source PHP MVC framework for rapid web application development that can serve as a full CMS or a headless CMS queried through GraphQL or a custom API. Its Active Record pattern lets projects extend the built-in functionality with their own data models. This list covers documentation, tutorials, community resources, modules, development tools, IDE plugins, and Docker and Vagrant environments.
 
-## Contents
-
-
-
-
-
-- [Resources](#resources)
-  - [Official Websites](#official-websites)
-  - [Documentation & Tutorials](#documentation--tutorials)
-  - [Blogs](#blogs)
-  - [Video Channels](#video-channels)
-  - [Community](#community)
-  - [Conferences & Meetups](#conferences--meetups)
-- [Very Useful Modules](#very-useful-modules)
-  - [Module Listings](#module-listings)
-  - [General Modules](#general-modules)
-  - [I18N (Internationalisation)](#i18n-internationalisation)
-  - [Site Search](#site-search)
-  - [Development Helpers](#development-helpers)
-  - [Fancy Form Fields](#fancy-form-fields)
-- [Tools](#tools)
-  - [Management](#management)
-  - [IDE Plugins](#ide-plugins)
-  - [Virtualisation](#virtualisation)
-
-
+Older items are listed in the [archive](https://github.com/wernerkrauss/awesome-silverstripe-cms/blob/8f378e0d9585d40573bc1d7ef65dcabadba265f1/ARCHIVE.md).
 
 ## Resources
 ### Official Websites
-
 - [www.silverstripe.org](https://www.silverstripe.org) - Framework and CMS.
 - [www.silverstripe.com](https://www.silverstripe.com) - Silverstripe Ltd., the company behind the CMS.
 - [www.s2-hub.com](https://www.s2-hub.com) - S2Hub - European Silverstripe Association.
@@ -50,7 +24,6 @@ A curated collection of resources and projects focused on Silverstripe CMS.
 - [Font reference](https://silverstripe-fonts.dorset-digital.net/) - Built in icon font for backend usage.
 - [TinyMCE Configuration Examples For SS3](https://github.com/jonom/silverstripe-tinytidy) - Configuration examples for the HTMLEditorField.
 
-
 ### Blogs
 - [Official Silverstripe Blog](https://www.silverstripe.org/blog/) - News around Silverstripe CMS.
 - [SilverStrip.es](http://www.silverstrip.es) - Useful findings of Silverstripe developers.
@@ -60,70 +33,70 @@ A curated collection of resources and projects focused on Silverstripe CMS.
 - [Official Silverstripe Vimeo Channel](https://vimeo.com/silverstripe) - Various videos from meetups and conferences.
 
 ### Community
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/silverstripe) - Silverstripe related questions on Stack Overflow.
-- [Silverstripe User Slack](https://silverstripe-users.slack.com/) - Community slack channel for instant help or hanging around with other developers.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/silverstripe) - Silverstripe-related questions on Stack Overflow.
+- [Silverstripe User Slack](https://silverstripe-users.slack.com/) - Community Slack channel for help or discussion with other developers.
   - [Invitation to Silverstripe User Slack](https://www.silverstripe.org/community/slack-signup)
 - [Forum](https://forum.silverstripe.org/) - Official forum for asking questions or discussing.
 
 ### Conferences & Meetups
-- [European Silverstripe Conference](https://www.stripecon.eu) - Every year in another country.
+- [European Silverstripe Conference](https://www.stripecon.eu) - The source describes the conference as taking place in a different country each year.
 - [Meetups](https://www.meetup.com/topics/silverstripe/all/) - A list of Silverstripe related Meetups.
 
-## Very Useful Modules
+## <a id="very-useful-modules"></a>Modules
 ### Module Listings
 - [SSMods: Detailed Module Search](http://ssmods.com) - Alternative module search.
 - [Most Used Modules](https://addons.silverstripe.org/add-ons?sort=relative) - Shows which modules are downloaded most.
-- [Silverstripe Recipes on Packagist](https://packagist.org/packages/silverstripe/recipe-plugin/dependents) - Preconfigured sets of modules for different kind of projects.
+- [Silverstripe Recipes on Packagist](https://packagist.org/packages/silverstripe/recipe-plugin/dependents) - Preconfigured sets of modules for different kinds of projects.
 
 ### General Modules
-- [Multiuser editing alert](https://github.com/silverstripe/silverstripe-multiuser-editing-alert) -  Alerts users in the Silverstripe CMS when multiple people are editing the same page.
+- [Multiuser editing alert](https://github.com/silverstripe/silverstripe-multiuser-editing-alert) - Alerts users in the Silverstripe CMS when multiple people are editing the same page.
 
 ### I18N (Internationalisation)
-- [Fluent](https://github.com/tractorcow-farm/silverstripe-fluent) - Multi-language translate module for Silverstripe, without having to manage separate site trees.
-- [Autotranslate](https://github.com/bratiask/silverstripe-autotranslate) -  Creates automatic translations of fields using Google Translate API.
+- [Fluent](https://github.com/tractorcow-farm/silverstripe-fluent) - A multilingual translation module for Silverstripe, without having to manage separate site trees.
+- [Autotranslate](https://github.com/bratiask/silverstripe-autotranslate) - Creates automatic translations of fields using Google Translate API.
 
-### Site Search 
+### Site Search
 - [Silverstripe Searchable](https://github.com/i-lateral/silverstripe-searchable) - Adds more complex site searching using the Silverstripe ORM. With dedicated templates for search results across multiple search objects.
-- [Searchable DataObjects](https://github.com/g4b0/silverstripe-searchable-dataobjects) - Fast and simple MySQL based search. Useful for single language sites.
-- [Fulltext Search](https://github.com/silverstripe/silverstripe-fulltextsearch) - Full fledged search interface for Solr4 (EOL).
-- [Fulltext Search Local Solr](https://addons.silverstripe.org/add-ons/silverstripe/fulltextsearch-localsolr) - Easy to install Solr4 (EOL) instance for local development.
-- [Solr search](https://github.com/firesphere/silverstripe-solr-search) - Interface for Solr search, supporting up to the latest Solr (9) version. With submodules for e.g. transitioning from the "Fulltext Search" module, as well as subsite, fluent and others.
+- [Searchable DataObjects](https://github.com/g4b0/silverstripe-searchable-dataobjects) - A MySQL-based search module described by the source as fast and simple, useful for single-language sites.
+- [Fulltext Search](https://github.com/silverstripe/silverstripe-fulltextsearch) - Full fledged search interface for Solr 4 (EOL).
+- [Fulltext Search Local Solr](https://addons.silverstripe.org/add-ons/silverstripe/fulltextsearch-localsolr) - Easy to install Solr 4 (EOL) instance for local development.
+- [Solr search](https://github.com/firesphere/silverstripe-solr-search) - An interface for Solr search, described by the source as supporting versions up to Solr 9. Includes submodules for transitioning from the "Fulltext Search" module, as well as subsite, fluent, and others.
 
 ### Development Helpers
-- [Debugbar](https://github.com/lekoala/silverstripe-debugbar/) -  Shows debugging statistics in your browser.
-- [IdeAnnotator](https://github.com/silverleague/silverstripe-ideannotator) -  Auto-generates class annotations on dev/build.
-- [Populate](https://github.com/dnadesign/silverstripe-populate) -  Populate your database through YAML files.
-- [Mock DataObjects](https://github.com/unclecheese/silverstripe-mock-dataobjects) -  Allows DataObjects to self-populate intelligently with fake data.
+- [Debugbar](https://github.com/lekoala/silverstripe-debugbar/) - Shows debugging statistics in your browser.
+- [IdeAnnotator](https://github.com/silverleague/silverstripe-ideannotator) - Auto-generates class annotations on dev/build.
+- [Populate](https://github.com/dnadesign/silverstripe-populate) - Populates your database using YAML files.
+- [Mock DataObjects](https://github.com/unclecheese/silverstripe-mock-dataobjects) - Allows DataObjects to populate themselves with generated fake data.
 - [Version Truncator](https://github.com/axllent/silverstripe-version-truncator) - Automatically delete old SiteTree page versions.
-- [UserSwitcher](https://github.com/sheadawson/silverstripe-userswitcher) - Adds a small form both in the frontend and backend to quickly login as any user.
-- [Masquerade](https://github.com/dhensby/silverstripe-masquerade) -  Allows an Administrator to "login" as another "Member". This can be useful for debugging and remote support.
+- [UserSwitcher](https://github.com/sheadawson/silverstripe-userswitcher) - Adds a small form both in the frontend and backend to quickly log in as any user.
+- [Masquerade](https://github.com/dhensby/silverstripe-masquerade) - Allows an Administrator to "login" as another "Member". This can be useful for debugging and remote support.
 
 ### Fancy Form Fields
-- [Markdown Field](https://github.com/Silverstripers/markdownfield) -  Can replace your HTMLEditorFields (using TinyMCE) so you can utilise Markdown syntax.
-- [Code Editor Field](https://github.com/nathancox/silverstripe-codeeditorfield) -  Gives you a syntax-highlighted text area field - great for CMS-based YAML or HTML.
+- [Markdown Field](https://github.com/Silverstripers/markdownfield) - Can replace your HTMLEditorFields (using TinyMCE) so you can utilise Markdown syntax.
+- [Code Editor Field](https://github.com/nathancox/silverstripe-codeeditorfield) - Gives you a syntax-highlighted text area field - for CMS-based YAML or HTML.
 
 ## Tools
 ### Management
-- [SSPak](https://github.com/silverstripe/sspak) - Tool for managing bundles of db/assets from Silverstripe environments.
-- [SSPy](https://github.com/Firesphere/silverstripe-sspy) - Python version of SSPak, that can handle assets more than 2GB.
+- [SSPak](https://github.com/silverstripe/sspak) - Tool for managing bundles of databases and assets from Silverstripe environments.
+- [SSPy](https://github.com/Firesphere/silverstripe-sspy) - A Python version of SSPak that can handle assets larger than 2GB.
 
 ### IDE Plugins
 - [VSCode Silverstripe](https://marketplace.visualstudio.com/items?itemName=adrian.silverstripe) - Syntax highlighting for Silverstripe template files in VSCode.
 - [Jetbrains / PHPStorm Silverstripe Template Language Support](https://plugins.jetbrains.com/plugin/17014-silverstripe-template-language-support) - Syntax highlighting for Silverstripe template files.
 - [PHPStorm / Webstorm Live Templates](https://github.com/northcreation-agency/silverstripe-php-web-storm-live-templates) - Shortcuts for adding various Silverstripe specific code snippets.
 
-### Virtualisation
+## Virtualisation
 
-#### Docker
-- [ddev setup](https://firesphere.dev/articles/ddevelopment-environment/) - Howto setup ddev for use with Silverstripe CMS.
-- [brettt89/silverstripe-web](https://hub.docker.com/r/brettt89/silverstripe-web) -  Apache + PHP Docker image with pre-installed PHP modules for Silverstripe support.
-- [brettt89/sspak](https://hub.docker.com/r/brettt89/sspak) -  SSPak Docker image.
-- [brettt89/silverstripe-solr-cwp](https://hub.docker.com/r/brettt89/silverstripe-solr-cwp) -  CWP Solr Docker image.
+### Docker
+- [ddev setup](https://firesphere.dev/articles/ddevelopment-environment/) - How to set up ddev for use with Silverstripe CMS.
+- [brettt89/silverstripe-web](https://hub.docker.com/r/brettt89/silverstripe-web) - Apache + PHP Docker image with pre-installed PHP modules for Silverstripe support.
+- [brettt89/sspak](https://hub.docker.com/r/brettt89/sspak) - SSPak Docker image.
+- [brettt89/silverstripe-solr-cwp](https://hub.docker.com/r/brettt89/silverstripe-solr-cwp) - CWP Solr Docker image.
 
-#### Vagrant
-There is no official box like Laravel has its homestead box. However, there are a few good boxes out there for Vagrant you could use:
-- [Twisted Bytes](https://www.twistedbytes.nl/en/blog/php-vagrant-box/) - Useful vagrant box with multiple PHP versions, MariaDB or PostgreSQL, mail catcher and much more.
-- [Twisted Bytes Box Templates](https://derkbox.com) - Useful templates for different development scenarios using the Twisted Bytes vagrant box.
+### Vagrant
+The source reports that no official Silverstripe Vagrant box was available, unlike Laravel’s Homestead box. The following Vagrant boxes and templates are listed as alternatives:
+- [Twisted Bytes](https://www.twistedbytes.nl/en/blog/php-vagrant-box/) - A Vagrant box with multiple PHP versions, MariaDB or PostgreSQL, mail catcher and much more.
+- [Twisted Bytes Box Templates](https://derkbox.com) - Templates for different development scenarios using the Twisted Bytes Vagrant box.
 - [Laravel Homestead](https://github.com/laravel/homestead) - Prepackaged box for local development.
-- [Scotchbox](https://box.scotch.io) - Popular LAMP/LEMP stack for local development.
-- [Zauberfisch Vagrant Boxes](https://github.com/Zauberfisch/vagrant-boxes) -  Preconfigured Vagrant boxes for SS3 and SS4.
+- [Scotchbox](https://box.scotch.io) - A LAMP/LEMP stack for local development, described by the source as popular.
+- [Zauberfisch Vagrant Boxes](https://github.com/Zauberfisch/vagrant-boxes) - Preconfigured Vagrant boxes for SS3 and SS4.

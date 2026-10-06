@@ -1,42 +1,29 @@
 ---
 title: "Awesome Drupal"
-description: "A curated collection of resources and projects focused on Drupal."
+description: "Drupal development tools, modules, distributions, guides, learning resources, community channels, and environment setup tips."
 licenseSource: "github-nirgn975-awesome-drupal-readme-md"
 ---
 
 # Awesome Drupal
 
-A curated collection of resources and projects focused on Drupal.
+[Drupal](https://www.drupal.org) is a free, open-source CMS written in PHP and distributed under the GNU General Public License. It provides website back ends for uses ranging from personal blogs to corporate, political, and government sites. This list covers Drupal development tools, modules, distributions, guides, articles, books, videos, podcasts, community channels, and environment setup tips.
 
-## Contents
-
-- [Tools](#tools)
-- [Modules](#modules)
-- [Documentation](#documentation)
-- [Articles](#articles)
-- [Distributions](#distributions)
-- [Books](#books)
-- [Videos](#videos)
-- [Podcasts](#podcasts)
-- [Community](#community)
-- [Tips](#tips)
-
+Related PHP resources: [awesome-php](https://github.com/ziadoz/awesome-php).
 
 ## Tools
 
 - [Drupal Console](https://drupalconsole.com/) - The Drupal CLI. A tool to generate boilerplate code, interact with and debug Drupal.
-- [DrupalVM](https://www.drupalvm.com/) - Drupal VM makes building Drupal development environments quick and easy, and introduces developers to the wonderful world of Drupal development on virtual machines or Docker containers (instead of crufty old MAMP/WAMP-based development).
+- [DrupalVM](https://www.drupalvm.com/) - Creates Drupal development environments on virtual machines or Docker containers as an alternative to MAMP/WAMP-based development.
 - [Drush](http://www.drush.org/) - Drush is a command line shell and Unix scripting interface for Drupal. Drush core ships with lots of useful commands for interacting with code like modules/themes/profiles. Similarly, it runs update.php, executes sql queries and DB migrations, and misc utilities like run cron or clear cache.
 - [Yo Hedley!](https://github.com/Gizra/generator-hedley) - Scaffold a headless Drupal backend, Angular app client, and Behat tests.
 - [DDEV-Local](https://github.com/drud/ddev) - A Docker-based tool to create and manage local development environments. Use for other PHP apps too. Also see the [Get Started Guide](https://www.drud.com/get-started/)
 
-
 ## Modules
 
 - [Administration menu](https://www.drupal.org/project/admin_menu) - Provides a theme-independent administration interface (aka. navigation, back-end).
-- [Administration views](https://www.drupal.org/project/admin_views) - Replaces administrative overview/listing pages with actual views for superior usability.
+- [Administration views](https://www.drupal.org/project/admin_views) - Replaces administrative overview/listing pages with Views to improve usability.
 - [Backup and Migrate](https://www.drupal.org/project/backup_migrate) - Back up and restore your Drupal MySQL database, code, and files or migrate a site between environments. Backup and Migrate supports gzip, bzip and zip compression as well as automatic scheduled backups.
-- [Better Exposed Filters](https://www.drupal.org/project/better_exposed_filters) - Back up and restore your Drupal MySQL database, code, and files or migrate a site between environments. Backup and Migrate supports gzip, bzip and zip compression as well as automatic scheduled backups.
+- [Better Exposed Filters](https://www.drupal.org/project/better_exposed_filters) - Replaces the default single- and multi-select boxes for exposed Views filters with radio buttons and checkboxes, respectively.
 - [CKEditor - WYSIWYG HTML editor](https://www.drupal.org/project/ckeditor) - This module will allow Drupal to replace textarea fields with the CKEditor - a visual HTML editor, usually called a WYSIWYG editor.
 - [Colorbox](https://www.drupal.org/project/colorbox) - Colorbox is a light-weight customizable lightbox plugin for jQuery. This module allows for integration of Colorbox into Drupal.
 - [Context](https://www.drupal.org/project/context) - Context allows you to manage contextual conditions and reactions for different portions of your site. You can think of each context as representing a "section" of your site.
@@ -48,7 +35,7 @@ A curated collection of resources and projects focused on Drupal.
 - [Message Subscribe](https://www.drupal.org/project/message_subscribe) – Register to be notified when messages are generated for specific content.
 - [Module Filter](https://www.drupal.org/project/module_filter) – The modules list page can become quite big when dealing with a fairly large site or even just a dev site meant for testing new and various modules being considered.
 - [Entities Diagram Graph](https://www.drupal.org/sandbox/bricel/2654176) - Generates a graph of the entities, fields and their relationship of a particular installation of Drupal 7.
-- [Owl Carousel](https://www.drupal.org/project/OwlCarousel) - This module integrates the wonderful Owl Carousel slider built by OwlFonk.
+- [Owl Carousel](https://www.drupal.org/project/OwlCarousel) - Integrates the Owl Carousel slider built by OwlFonk.
 - [csv2sql](https://www.drupal.org/project/csv2sql) - Convert CSV to SQL and create a table in your Drupal installation.
 - [Logs HTTP](https://www.drupal.org/project/logs_http) - Provides JSON event pushing to Logs via the tag/http endpoint.
 - [Features](https://www.drupal.org/project/features) - Enables the capture and management of features in Drupal. A feature is a collection of Drupal entities which taken together satisfy a certain use-case.
@@ -59,25 +46,24 @@ A curated collection of resources and projects focused on Drupal.
 - [Pathauto](https://www.drupal.org/project/pathauto) - The Pathauto module automatically generates URL/path aliases for various kinds of content (nodes, taxonomy terms, users) without requiring the user to manually specify the path alias.
 - [Ctools](https://www.drupal.org/project/ctools) - This suite is primarily a set of APIs and tools to improve the developer experience.
 - [Search API](https://www.drupal.org/project/search_api) - Provides a framework for easily creating searches on any entity known to Drupal, using any kind of search engine.
-- [Slick](https://www.drupal.org/project/slick) - Slick is a powerful and performant slideshow/carousel solution leveraging Ken Wheeler's Slick carousel. See http://kenwheeler.github.io/slick
+- [Slick](https://www.drupal.org/project/slick) - A slideshow/carousel solution using Ken Wheeler's Slick carousel, described by the source as powerful and performant. See http://kenwheeler.github.io/slick
 - [Token](https://www.drupal.org/project/token) - Provides additional tokens not supported by core (most notably fields), as well as a UI for browsing tokens.
-- [Ubercart](https://www.drupal.org/project/ubercart) - Ubercart is the most popular Drupal E-Commerce platform for your website. It implements everything you need to start selling products online.
+- [Ubercart](https://www.drupal.org/project/ubercart) - An e-commerce platform for Drupal, described by the source as the most popular option. It provides the functionality needed to start selling products online.
 - [Rules](https://www.drupal.org/project/rules) - The Rules module allows site administrators to define conditionally executed actions based on occurring events (known as reactive or ECA rules).
 - [Entity API](https://www.drupal.org/project/entity) - Extends the entity API of Drupal core in order to provide a unified way to deal with entities and their properties.
 - [Entity cache](https://www.drupal.org/project/entitycache) - Puts core entities into Drupal's cache API.
-- [elFinder file manager](https://www.drupal.org/project/elfinder) - elFinder is a open source AJAX file manager
+- [elFinder file manager](https://www.drupal.org/project/elfinder) - An open-source AJAX file manager.
 - [IMCE](https://www.drupal.org/project/imce) - IMCE is an image/file uploader and browser that supports personal directories and quota.
 - [Date](https://www.drupal.org/project/date) - Contains both a flexible date/time field type Date field and a Date API that other modules can use.
-- [Devel](https://www.drupal.org/project/devel) - Suite of modules containing fun for module developers and themers.
+- [Devel](https://www.drupal.org/project/devel) - A suite of modules for module developers and theme developers.
 - [Migrate](https://www.drupal.org/project/migrate) - Provides a flexible framework for migrating content into Drupal from other sources.
-- [Entity validator](https://www.drupal.org/project/entity_validator) - Allows you to define a plugin and set methods to validate the object you'r dealing with.
+- [Entity validator](https://www.drupal.org/project/entity_validator) - Allows you to define a plugin and set methods to validate the object you are working with.
 - [Webform](https://www.drupal.org/project/webform) - Webform is the module for making forms and surveys in Drupal.
 - [WYSIWYG](https://www.drupal.org/project/wysiwyg) - Allows the use of client-side editors to edit content.
 
-
 ## Documentation
 
-- [Installation Guide ](https://www.drupal.org/docs/7/install)
+- [Installation Guide](https://www.drupal.org/docs/7/install)
 - [Site Building Guide](https://www.drupal.org/documentation/build)
 - [Administration & Security Guide](https://www.drupal.org/docs/7/administering-drupal-7-site)
 - [Structure Guide](https://www.drupal.org/docs/7/nodes-content-types-and-fields)
@@ -88,7 +74,6 @@ A curated collection of resources and projects focused on Drupal.
 - [Examples for Developers](https://www.drupal.org/project/examples)
 - [Troubleshooting](https://www.drupal.org/troubleshooting)
 - [The Drupal Cookbook (for beginners)](https://www.drupal.org/documentation/customization/tutorials/beginners-cookbook)
-
 
 ## Articles
 
@@ -110,19 +95,17 @@ A curated collection of resources and projects focused on Drupal.
 - [Using composer to set up Drupal 8](https://www.lullabot.com/articles/goodbye-drush-make-hello-composer)
 - [Drupal Headless Architecture with Inferno.js [Live Demo]](https://snipcart.com/blog/drupal-headless-architecture-tutorial)
 
-
 ## Distributions
 
-- [Commerce kickstart](https://www.drupal.org/project/commerce_kickstart) - Commerce Kickstart is the quickest way to get up and running with Drupal Commerce.
-- [OpenScholar](https://www.drupal.org/project/openscholar) - The easiest way to power all of your institution's websites.
-- [Open Atrium](https://www.drupal.org/project/openatrium) - Open Atrium, maintained by Phase2 Technology, is a Drupal distribution that allows you to confidently engage with your colleagues through convenient collaboration.
-- [OpenPublic](https://www.drupal.org/project/openpublic) - For government and public policy organizations, open source only works if it’s built for the security, accessibility, and flexibility requirements of the public sector.
+- [Commerce kickstart](https://www.drupal.org/project/commerce_kickstart) - A way to get started with Drupal Commerce, described by the source as the quickest.
+- [OpenScholar](https://www.drupal.org/project/openscholar) - A way to run all of an institution's websites, described by the source as the easiest.
+- [Open Atrium](https://www.drupal.org/project/openatrium) - A Drupal distribution that the source identifies as maintained by Phase2 Technology, providing collaboration tools for working with colleagues.
+- [OpenPublic](https://www.drupal.org/project/openpublic) - The source emphasizes that open source for government and public policy organizations needs to meet public-sector requirements for security, accessibility, and flexibility.
 - [OpenPublish](https://www.drupal.org/project/openpublish) - OpenPublish is a Drupal 7 packaged distribution designed for the online news industry. It is deployed in a variety of media outlets sites including magazines, newspapers, journals, trade publications, broadcast, wire service, multimedia sites and membership publications.
 
 ## Books
 
 - [Drupal 7 The Essentials - Johan Falk](https://archive.org/details/Drupal7TheEssentials)
-
 
 ## Videos
 
@@ -133,14 +116,12 @@ A curated collection of resources and projects focused on Drupal.
 - [DrupalCon Portland 2013 - Organic Groups \\ Message](https://www.youtube.com/watch?v=XglUUroifsg)
 - [Drupalize Me](https://drupalize.me)
 
-
 ## Podcasts
 
 - [Lullabot Podcast](https://www.lullabot.com/podcasts)
 - [DrupalEasy Podcast](https://www.drupaleasy.com/podcast)
 - [Talking Drupal](http://www.talkingdrupal.com)
 - [Acquia Engage](https://dev.acquia.com/learn?type_1=podcast)
-
 
 ## Community
 
@@ -153,21 +134,8 @@ A curated collection of resources and projects focused on Drupal.
 - [Drupal Israel Meetup Group](https://www.meetup.com/Drupal-Israel/) *(Hebrew)*
 - [Drupal NYC Meetup Group](https://www.meetup.com/drupalnyc/)
 
-
 ## Tips
 
 - [Solr Script](https://github.com/RoySegall/solr-script) - Handy script to install Apache Solr.
 - [Ubuntu development environment setup](https://github.com/Gizra/KnowledgeBase/wiki/Ubuntu-and-development-environment-setup) - Provides steps for configuring ubuntu so it will be ready for PHP and Drupal development.
 - [MacOS: New Machine configuration](https://github.com/Gizra/KnowledgeBase/wiki/MacOS:-New-Machine) - Provides files and scripts for configuring MacOS for development.
-
-
-## Contribute
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/nirgn975/awesome-drupal/blob/8327cca5c8a5016acdb5f934efa5b680d8e9f38f/contributing.md) first.
-
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Nir Galon](http://nirgn.com) has waived all copyright and related or neighboring rights to this work.

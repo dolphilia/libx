@@ -1,128 +1,110 @@
 ---
 title: "Awesome Directus"
-description: "Directusを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Directusの公式資料、SDK・連携、拡張機能、記事、オープンソースの活用例。"
 licenseSource: "github-directus-community-awesome-directus-readme-md"
 ---
 
 # Awesome Directus
 
-Directusを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+[Directus](https://directus.io)は、SQLデータベースの内容を管理するためのリアルタイムAPIとアプリのダッシュボードを提供します。このリストでは、公式・コミュニティの資料、SDKやフレームワークとの連携、拡張機能、記事、Directusを使うオープンソースプロジェクトを探せます。
 
-## 目次
+## 資料 <a id="resources"></a><a id="リソース"></a>
 
-- [リソース](#resources)
-  - [公式](#official)
-  - [コミュニティ](#community)
-- [統合](#integration)
-- [拡張機能](#extensions)
-  - [拡張スクリプト](#extension-scripts)
-  - [ツール](#tools)
-- [記事](#articles)
-  - [教育](#educational)
-  - [個人](#personal)
-- [例／ショーケース](#examples--showcases)
+### 公式 <a id="official"></a>
 
-## リソース
+- [ドキュメント](https://docs.directus.io/getting-started/introduction/)
+- [GitHubリポジトリ](https://github.com/directus/directus)
+- [Discordでのリアルタイムの議論](https://directus.chat)
+- [コミュニティの質問・相談掲示板](https://github.com/directus/directus/discussions/categories/q-a)
+- [YouTubeの動画チュートリアル](https://www.youtube.com/c/DirectusVideos/featured)
+- [コミュニティのリポジトリ](https://github.com/directus-community)
 
-### 公式
+### コミュニティ <a id="community"></a>
 
-- [Documentation](https://docs.directus.io/getting-started/introduction/)
-- [GitHub Repository](https://github.com/directus/directus)
-- [Live Discussions on Discord](https://directus.chat)
-- [Community Help Board](https://github.com/directus/directus/discussions/categories/q-a)
-- [Video Tutorials on YouTube](https://www.youtube.com/c/DirectusVideos/featured)
-- [Community Repositories](https://github.com/directus-community)
+- [Directus Extensions](https://directusextensions.com) - Directusの拡張機能、テーマ、OSなどを検索できる索引。
+- [ポルトガル語のYouTubeチャンネル](https://www.youtube.com/c/DirectusBR)
 
-### コミュニティ
+## 連携 <a id="integration"></a><a id="統合"></a>
 
-- [Directus Extensions](https://directusextensions.com) - Directus拡張機能、テーマ、OSなどを検索できるインデックス。
-- [Portuguese YouTube Channel](https://www.youtube.com/c/DirectusBR)
+- [公式JS SDK](https://www.npmjs.com/package/@directus/sdk) - JavaScriptで動くプロジェクト（ブラウザーとNode.js）からDirectus APIを直感的に扱えるインターフェースを提供するJS SDK。
+- [公式Gatsbyソースプラグイン](https://www.npmjs.com/package/@directus/gatsby-source-directus) - Directus APIからGatsbyへデータを取り込むソースプラグイン。
+- [react-directus](https://github.com/gremo/react-directus) - DirectusヘッドレスCMS向けのReactコンポーネントとユーティリティのセット。
+- [Flutter SDK](https://pub.dev/packages/directus) - Directus APIを扱うためのインターフェースを提供するFlutter SDK。
+- [PHP SDK](https://github.com/alantiller/directus-php-sdk) - Directus APIに容易にアクセスするためのPHP SDK。
+- [Lite SDK (TypeScript)](https://github.com/jacoborus/directus-lite-sdk) - Directus API用のクエリビルダー（ブラウザー、Deno、Node.js）。fetchは利用側で用意する。
+- [Nuxt Directus](https://github.com/directus-community/nuxt-directus) - Directusインスタンスとの連携を目的に設計されたNuxt 3モジュール。
+- [Nuxtus](https://nuxtus.com) - DirectusのコレクションからNuxtページを自動生成するための、Nuxtのひな型とツールセットを提供する。
+- [cool-stack](https://github.com/tdsoftpl/cool-stack) - DirectusとRemixをフルスタックのモノレポに統合するテンプレートリポジトリ。
 
-## 統合
+## 拡張機能 <a id="extensions"></a>
 
-- [Official JS SDK](https://www.npmjs.com/package/@directus/sdk) - JS SDKは、JavaScriptで動くプロジェクト（ブラウザーとNode.js）内からDirectus APIの直感的なインターフェースを提供します。
-- [Official Gatsby Source Plugin](https://www.npmjs.com/package/@directus/gatsby-source-directus) - Directus APIからGatsbyへデータを取り込むソースプラグイン。
-- [react-directus](https://github.com/gremo/react-directus) - Directus Headless CMS向けReactコンポーネントとユーティリティのセット。
-- [Flutter SDK](https://pub.dev/packages/directus) - Directus APIのインターフェースを提供するFlutter SDK。
-- [PHP SDK](https://github.com/alantiller/directus-php-sdk) - Directus APIへ容易にアクセスするためのPHP SDK。
-- [Lite SDK (TypeScript)](https://github.com/jacoborus/directus-lite-sdk) - Directus API用クエリビルダー（Browser、Deno、Node.js）。fetchは自分で用意します。
-- [Nuxt Directus](https://github.com/directus-community/nuxt-directus) - Directusインスタンスに接続するための第一級Nuxt 3モジュール。
-- [Nuxtus](https://nuxtus.com) - Directus CollectionsからNuxtページを自動作成するためのNuxtボイラープレートとツールセットを提供します。
-- [cool-stack](https://github.com/tdsoftpl/cool-stack) - DirectusとRemixをフルスタックモノレポへ統合するテンプレートリポジトリ。
-
-## 拡張機能
-
-- [Image Scout](https://github.com/resauce-dev/directus-image-scout?ref=awesome-directus) - さまざまなロイヤリティフリー画像サイト（Pexels、Pixabay、Unsplash、Giphy!）で見つかる画像を検索・選択します。
-- [Editor.js Interface](https://github.com/dimitrov-adrian/directus-extension-editorjs-interface) - Directus 9向けブロックエディター（Editor.js）インターフェース。
-- [Draw Interface](https://github.com/jesusgp22/directus-draw-interface) - Directusアプリ向けフリードローインターフェース。
-- [User-friendly file paths](https://gist.github.com/ToJans/fa18e2a7363edd24be6ad8dda2dd0232) - フォルダー・ファイルモジュール構造を使用してアセットを参照します。
-- [Date Picker Interface](https://github.com/u12206050/directus-9-date-picker-interface) - 元のDirectus DateTimeインターフェースに対する代替Date Picker Interface。
-- [Search Sync](https://github.com/dimitrov-adrian/directus-extension-searchsync) - データを検索エンジンインデックスへ同期。Algolia、ElasticSearch、MeiliSearchをサポートします。
-- [Dictionary](https://github.com/georgexchelebiev/directus-dictionary) - 完全性の進捗インジケーター付きでキー・値ペアをJSON blobとして保存します。
-- [WordPress-like Slug](https://github.com/dimitrov-adrian/directus-extension-wpslug-interface) - 接頭辞・接尾辞をサポートするSlug／Permalinkインターフェース。
-- [Link Meta](https://github.com/dimitrov-adrian/directus-extension-linkmeta) - ハイパーリンクメタデータをDirectusへ保存します。
-- [Group Modal](https://github.com/dimitrov-adrian/directus-extension-group-modal-interface) - ボタンで開けるモーダル内にグループインターフェースフィールドを配置します。
-- [Display Link](https://github.com/jacoborus/directus-extension-display-link) - 「新しいタブで開く」ボタン付きでURLを表示します。
-- [SQL Panel](https://github.com/harish2704/directus-sql-panel) - 保存されたSQLクエリの結果をテーブルとして表示するパネルコンポーネント。
-- [SVG Map Picker Interface](https://github.com/dimitrov-adrian/directus-extension-svgmap-picker-interface) - SVG Mapボックスから値を選択します。
-- [Directus Mailer](https://github.com/ryntab/Directus-Mailer) - Directus Nodemailerサービスでメールを送信するためのエンドポイント。
-- [Data Grid Interface](https://github.com/seymoe/directus-extension-vgrid-interface) - Directus 9向け`@revolist/vue3-datagrid`を使うデータグリッドインターフェース。
-- [SparkLine Display](https://github.com/seymoe/directus-extension-sparkline-display) - Directus 9向け`apexcharts`を使うスパークライン表示。
-- [Tags M2M](https://github.com/dimitrov-adrian/directus-extension-tags-m2m-interface) - M2M駆動のタグインターフェース。
-- [Sanitize HTML](https://github.com/licitdev/directus-extension-sanitize-html) - DirectusへのHTML入力をサニタイズします。
-- [Directus LogSnag](https://github.com/Intevel/directus-logsnag) - LogSnagを使い、Directusからスマートフォンへイベントを直接送信します。
-- [Field Actions](https://github.com/utomic-media/directus-extension-field-actions) - フィールドにクリップボードコピーとURLを開くアクションボタンを追加します（interface + display）。
-- [Generate Types](https://github.com/maltejur/directus-extension-generate-types) - そのDirectusデータベースに接続されたDirectus JS-SDK向けtypescript型を生成するモジュールを追加します。PythonまたはOpenAPI型も生成できます。
-- [Computed Interface](https://github.com/rezo-labs/directus-extension-computed-interface) - 他のフィールドに基づく計算値を実行します。
-- [Inline Form Interface](https://github.com/hanneskuettner/directus-extension-inline-form-interface) - 親レコードに含まれるインラインフォームでM2O関係を編集します。
-- [Tab Group Interface](https://github.com/hanneskuettner/directus-extension-group-tabs-interface) - グループをタブパネルとして表示し、アコーディオングループの美しく省スペースな代替を提供します。
-- [Woodpecker Build Status](https://github.com/sguter90/directus-extension-woodpecker-build-status) - [Woodpecker](https://woodpecker-ci.org/)パイプラインのビルド状態のステータスバーをDirectus UIへ追加します。
-- [Imagga Hook](https://github.com/gbicou/directus-extension-imagga) - [Imagga API](https://imagga.com/)で画像を自動タグ付けするファイルアップロード用フック。
-- [Tiptap Interface & Display](https://github.com/gbicou/directus-extension-tiptap) - Tiptapリッチテキストエディターのインターフェースと表示。
-- [API Viewer](https://github.com/u12206050/directus-extension-api-viewer-module) - モジュールからAPIクエリを直接閲覧・実行します。
-- [Flexible Editor](https://github.com/formfcw/directus-extension-flexible-editor) - JSON出力を持つリッチテキストエディター（WYSIWYG）。M2A関係を統合して極めて柔軟にできます。
-- [BlurHash](https://github.com/pixielabs/directus-extension-blurhash/) - アップロード画像のblurhashを生成するDirectus拡張機能。
-- [Media AI Bundle](https://github.com/Arood/directus-extension-media-ai-bundle) - 画像説明とOCRを実行する2つの操作。
-- [Directus Copilot](https://github.com/programmarchy/directus-extension-copilot/) - チャットインターフェースでデータを認識した質問を行うパネルを含むバンドル。
-- [OpenAI Automatic Translation](https://github.com/timio23/directus-operation-auto-translate/) - OpenAI経由で新しい項目を自動翻訳する操作。
-- [Machine Learning Operations](https://github.com/karamokoisrael/directus-hackathon-submission/) - 機械学習モデルを訓練、テスト、使用する拡張機能セット。
-- [Tab Group](https://github.com/formfcw/directus-extension-tab-group) - グループ内のフィールドの可視性を切り替えるタブメニューを持つグループインターフェース。
+- [Image Scout](https://github.com/resauce-dev/directus-image-scout?ref=awesome-directus) - ロイヤリティフリーの画像サイト（Pexels、Pixabay、Unsplash、Giphy）から画像を検索して選択する。
+- [Editor.js Interface](https://github.com/dimitrov-adrian/directus-extension-editorjs-interface) - Directus 9向けのブロックエディター（Editor.js）インターフェース。
+- [Draw Interface](https://github.com/jesusgp22/directus-draw-interface) - Directusアプリ内で自由に描画できるインターフェース。
+- [扱いやすいファイルパス](https://gist.github.com/ToJans/fa18e2a7363edd24be6ad8dda2dd0232) - フォルダーとファイルのモジュール構造を使ってアセットを参照する。
+- [Date Picker Interface](https://github.com/u12206050/directus-9-date-picker-interface) - Directus標準のDateTimeインターフェースを置き換える日付選択インターフェース。
+- [Search Sync](https://github.com/dimitrov-adrian/directus-extension-searchsync) - データを検索エンジンの索引へ同期する。Algolia、ElasticSearch、MeiliSearchに対応。
+- [Dictionary](https://github.com/georgexchelebiev/directus-dictionary) - キーと値の組をJSON形式のデータとして保存し、入力の充足状況を示す進捗表示を備える。
+- [WordPress-like Slug](https://github.com/dimitrov-adrian/directus-extension-wpslug-interface) - 接頭辞と接尾辞に対応するスラッグ／パーマリンクのインターフェース。
+- [Link Meta](https://github.com/dimitrov-adrian/directus-extension-linkmeta) - ハイパーリンクのメタデータをDirectusに保存する。
+- [Group Modal](https://github.com/dimitrov-adrian/directus-extension-group-modal-interface) - インターフェースのフィールドを、ボタンで開けるモーダルにまとめる。
+- [Display Link](https://github.com/jacoborus/directus-extension-display-link) - 「新しいタブで開く」ボタン付きでURLを表示する。
+- [SQL Panel](https://github.com/harish2704/directus-sql-panel) - 保存されたSQLクエリの結果を表として表示するパネルコンポーネント。
+- [SVG Map Picker Interface](https://github.com/dimitrov-adrian/directus-extension-svgmap-picker-interface) - SVGマップの選択欄から値を選ぶ。
+- [Directus Mailer](https://github.com/ryntab/Directus-Mailer) - DirectusのNodemailerサービスでメールを送信するためのエンドポイント。
+- [Data Grid Interface](https://github.com/seymoe/directus-extension-vgrid-interface) - Directus 9向けの、`@revolist/vue3-datagrid`を使うデータグリッドインターフェース。
+- [SparkLine Display](https://github.com/seymoe/directus-extension-sparkline-display) - Directus 9向けの、`apexcharts`を使うスパークライン表示。
+- [Tags M2M](https://github.com/dimitrov-adrian/directus-extension-tags-m2m-interface) - M2M関係に基づくタグのインターフェース。
+- [Sanitize HTML](https://github.com/licitdev/directus-extension-sanitize-html) - Directusに入力されるHTMLをサニタイズする。
+- [Directus LogSnag](https://github.com/Intevel/directus-logsnag) - LogSnagを使い、Directusのイベントをスマートフォンへ直接送信する。
+- [Field Actions](https://github.com/utomic-media/directus-extension-field-actions) - フィールドに、クリップボードへのコピーとURLを開く操作ボタンを追加する（インターフェースと表示の両方）。
+- [Generate Types](https://github.com/maltejur/directus-extension-generate-types) - そのDirectusデータベースに接続するDirectus JS-SDK用のTypeScript型を生成するモジュールを追加する。PythonまたはOpenAPIの型も生成できる。
+- [Computed Interface](https://github.com/rezo-labs/directus-extension-computed-interface) - 他のフィールドに基づいて値を計算する。
+- [Inline Form Interface](https://github.com/hanneskuettner/directus-extension-inline-form-interface) - 親レコード内のインラインフォームでM2O関係を編集する。
+- [Tab Group Interface](https://github.com/hanneskuettner/directus-extension-group-tabs-interface) - グループをタブパネルとして表示する。アコーディオングループの代わりに使える、省スペースの表示方法。
+- [Woodpecker Build Status](https://github.com/sguter90/directus-extension-woodpecker-build-status) - [Woodpecker](https://woodpecker-ci.org/)パイプラインのビルド状態を示すステータスバーをDirectus UIに追加する。
+- [Imagga Hook](https://github.com/gbicou/directus-extension-imagga) - ファイルのアップロード時に、[Imagga API](https://imagga.com/)で画像を自動的にタグ付けするフック。
+- [Tiptap Interface & Display](https://github.com/gbicou/directus-extension-tiptap) - Tiptapリッチテキストエディターの入力インターフェースと表示。
+- [API Viewer](https://github.com/u12206050/directus-extension-api-viewer-module) - モジュールからAPIクエリを直接閲覧・実行する。
+- [Flexible Editor](https://github.com/formfcw/directus-extension-flexible-editor) - JSONを出力するリッチテキストエディター（WYSIWYG）。M2A関係を組み込んで柔軟に編集できる。
+- [BlurHash](https://github.com/pixielabs/directus-extension-blurhash/) - アップロードした画像のblurhashを生成するDirectus拡張機能。
+- [Media AI Bundle](https://github.com/Arood/directus-extension-media-ai-bundle) - 画像の説明とOCRを実行する2つの操作。
+- [Directus Copilot](https://github.com/programmarchy/directus-extension-copilot/) - データを踏まえた質問をチャットインターフェースで行えるパネルを含むバンドル。
+- [OpenAI Automatic Translation](https://github.com/timio23/directus-operation-auto-translate/) - OpenAI経由で新規項目を自動翻訳する操作。
+- [Machine Learning Operations](https://github.com/karamokoisrael/directus-hackathon-submission/) - 機械学習モデルを訓練、テスト、利用するための拡張機能セット。
+- [Tab Group](https://github.com/formfcw/directus-extension-tab-group) - グループ内のフィールドの表示を切り替えるタブメニューを備えたグループインターフェース。
 - [Drawer Notice](https://github.com/formfcw/directus-extension-drawer-notice) - ドロワー内でのみ表示される通知フィールド。
-- [Classified Group](https://github.com/formfcw/directus-extension-classified-group) - カスタムスタイリングのためにクラスを割り当てられるグループ。
-- [Tokenized Preview](https://github.com/formfcw/directus-extension-tokenized-preview) - 有効な認証トークンをプレビューURLへ追加するエンドポイント。
-- [Umami Analytics](https://github.com/egidiusmengelberg/directus-extension-umami) - Umami分析をDirectusへ追加します。
-- [Auto generate file transformations](https://github.com/utomic-media/directus-extension-auto-generate-file-transformations) - 選択したファイル変換をアップロード時に自動生成します。
+- [Classified Group](https://github.com/formfcw/directus-extension-classified-group) - 独自のスタイルを適用するためにクラスを割り当てられるグループ。
+- [Tokenized Preview](https://github.com/formfcw/directus-extension-tokenized-preview) - 有効な認証トークンをプレビューURLに追加するエンドポイント。
+- [Umami Analytics](https://github.com/egidiusmengelberg/directus-extension-umami) - Umamiによるアクセス解析をDirectusに追加する。
+- [ファイル変換の自動生成](https://github.com/utomic-media/directus-extension-auto-generate-file-transformations) - アップロード時に、選択したファイル変換を自動生成する。
 
-### 拡張スクリプト
+### 拡張スクリプト <a id="extension-scripts"></a>
 
-- [Directus Hook Library](https://github.com/formfcw/directus-hook-library) - Directus向けカスタマイズ可能なフックのコレクション。
+- [Directus Hook Library](https://github.com/formfcw/directus-hook-library) - Directus向けのカスタマイズ可能なフック集。
 
-### ツール
+### ツール <a id="tools"></a>
 
 - [Directus Sync](https://github.com/tractr/directus-sync) - さまざまな環境間でDirectusのスキーマと設定を同期するCLIツール。
 
-## 記事
+## 記事 <a id="articles"></a>
 
-### 教育
+### 学習 <a id="educational"></a><a id="教育"></a>
 
-- [Directus Guides (Official)](https://directus.io/guides/)
+- [Directus公式ガイド](https://directus.io/guides/)
 - [Learn Directus](https://learndirectus.com/)
 - [How to Work With Many to Many Relationships (M2M) On Directus](https://medium.com/@bianperotti/how-i-made-a-many-to-many-relationship-on-directus-b158ff55de7e)
 - [Creating a Custom Panel in Directus With Chart.js](https://blog.eperedo.com/2023/02/14/custom-panel-directus-chart-js)
 
-### 個人
+### 個人の記事 <a id="personal"></a><a id="個人"></a>
 
 - [Get Started With Directus](https://medium.com/7span/no-code-backend-get-started-with-directus-7876bffdbd1d)
 
-## 例／ショーケース
+## 活用例 <a id="examples--showcases"></a><a id="例ショーケース"></a>
 
-オープンソースプロジェクトでDirectusを使用している場合は、このプロジェクトをここにリンクしてください。
+ここでは、Directusを使うオープンソースプロジェクトを紹介します。
 
-- [Official Examples](https://github.com/directus/examples) - Directusとの統合例。
-- [Nuxt 3 Demo](https://github.com/bryantgillespie/nuxt3-directus-starter) - Tailwind CSSを備える意見を持ったNuxt 3／Directusスターター。
-- [Agency OS](https://github.com/directus-community/agency-os) - NuxtとDirectusを特徴とする、完成度の高い意見を持ったエージェンシーウェブサイトテンプレート。[デモ](https://www.agencyos.dev/)を表示します。
-- [Nextus](https://github.com/luochuanyuewu/nextus) - NextjsとDirectus技術に基づく包括的、多用途でモダンなウェブサイトテンプレート。さまざまな種類のウェブサイトをより迅速に構築できます。[デモ](https://nextus.vercel.app/en)を表示します。
-
-## 貢献
-
-貢献を歓迎します！最初に[貢献ガイドライン](https://github.com/directus-community/awesome-directus/blob/2052f4750c6940708ad518d1d2e4f31c64c0b7a7/contributing.md)をお読みください。
+- [公式の活用例](https://github.com/directus/examples) - Directusとの連携例。
+- [Nuxt 3 Demo](https://github.com/bryantgillespie/nuxt3-directus-starter) - 設計方針を定めた、Tailwind CSS付きのNuxt 3／Directusスターター。
+- [Agency OS](https://github.com/directus-community/agency-os) - 設計方針を定めた、NuxtとDirectusを使うエージェンシー向けウェブサイトのテンプレート一式。[デモ](https://www.agencyos.dev/)。
+- [Nextus](https://github.com/luochuanyuewu/nextus) - NextjsとDirectusを使う多用途のウェブサイトテンプレート。さまざまな種類のサイトをより速く構築できるように設計されている。[デモ](https://nextus.vercel.app/en)。

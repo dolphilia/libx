@@ -1,0 +1,218 @@
+{
+  "id": "05-standard-library/03-basic-functions.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T22:01:43.895Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/basic-functions-source-initial.html",
+      "sha256": "a18c88939a5ba776c6cfa2be6b8c27237b0bd854bea604965d3002e9bd51df67"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/basic-functions-en-initial.md",
+      "sha256": "c9a008b37beaa65be5c6bd784ec734126834b43eb5ca3a249b6000f04c43bcff"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/basic-functions-ja-initial.md",
+      "sha256": "1c478b54f76d18c5e9eee1ff28c041a353ba21e8bb587df630c21bb0ccad7998"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          603
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          241
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          240
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual8339〜8941全603行（初回1〜210/211〜420/421〜603）とEN241/JA240を省略なし初回全文実読。load訳語8箇所修正後、別工程source1〜310/311〜603、EN241全、JA240全を再読。全25項目/GC9親6子/全51rootproseの意味・例外・規範・自然さを照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/basic-functions.html",
+      "sha256": "a18c88939a5ba776c6cfa2be6b8c27237b0bd854bea604965d3002e9bd51df67"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/03-basic-functions.md",
+      "sha256": "c9a008b37beaa65be5c6bd784ec734126834b43eb5ca3a249b6000f04c43bcff"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/03-basic-functions.md",
+      "sha256": "189cd6bf8e63d7fd6f2a95768e09ca9004e82aab74ca754236eb8ba2a73427ef"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          603
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          241
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          240
+        ]
+      ]
+    }
+  },
+  "supersededReview": {
+    "id": "05-standard-library/03-basic-functions.md",
+    "status": "passed",
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "sourceMapping": {
+      "archiveMember": "lua-5.5.1/doc/manual.html",
+      "start": {
+        "anchor": "6.2"
+      },
+      "end": {
+        "anchor": "6.3"
+      },
+      "kind": "html"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/03-basic-functions.md",
+      "sha256": "c9a008b37beaa65be5c6bd784ec734126834b43eb5ca3a249b6000f04c43bcff",
+      "coverage": [
+        [
+          1,
+          241
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/03-basic-functions.md",
+      "sha256": "1c478b54f76d18c5e9eee1ff28c041a353ba21e8bb587df630c21bb0ccad7998",
+      "coverage": [
+        [
+          1,
+          240
+        ]
+      ]
+    },
+    "findings": [
+      "基本ライブラリ除外時は代替実装を慎重確認SHOULD。assertはnil/false時error、それ以外allargs、default message/errorobject。dofileはfile/stdin・allreturns・error伝播・notprotected、errorはneverreturnsと位置level1/2/0。_Gは変数でLuaが未使用、値変更と環境変更は相互非連動。getmetatableはnil/__metatable関連値/実metatableを照合。",
+      "collectgarbage親9/param子6を全件照合。stepは世代別でfullminor OR scheduledincremental、incrementalはcurrentstepsize、n0基本step、戻り値はincrementalcycle/generationalmajor完了。paramはparameterの変更and/or取得、文字列parameter名と省略可能な整数newvalue[0,100000]、6名前限定、常に以前値を返す、省略時未変更、圧縮によりlastsetと非一致の場合あり。finalizer SHOULD NOTと§2.5を保持。JA世代別の誤った併記をorに修正、引数値/変更またはだけの訳をパラメーター/変更取得双方へ修正。",
+      "ipairsはiterator,t,0で最初のabsent終了。loadは文字列/繰返しcallbackのstring MUST、empty/nil/no valueで終了、syntax成功function/失敗message。main1_ENVに対しbinaryは任意upvalue数・first_ENV非保証・none可、first指定env/elseglobal・othersnil・fresh共有なし。chunkname defaults、modeb/t/bt defaultbt、binaryconsistency未確認でcrash可・mode抑止。loadfileはfile/stdin。nextはnilfirst/defaultnil・終了nil・順序numeric含め未規定、traversal中newfield SHOULD NOT/existing MAY変更削除。pairsは__pairsのfirst4かnext,t,nil,nilを保持。",
+      "pcallはprotectedstatusとallreturns/errorobject、messagehandlerなし。printはtostring規則でstdout/quickdebug用途、format/io.writeを参照。rawequal/rawget/rawlen/rawsetのmetamethod不使用、table/string/indexnil-or-NaN禁止などMUSTを照合。selectはindex以降/負末尾/-1lastまたは# MUSTで総数。setmetatableはnilremove/old__metatableerror/table返却/他type debug MUST。",
+      " tonumberはbase無しlexicalinteger/float・前後空白/sign・失敗fail。base有りeはintegernumeral文字列MUST・2〜36inclusive・A10/B11/Z35両case。tostringは__tostring優先/__name string MAY、数値format明示。type8文字列とnil文字列、_VERSIONはLua 5.5。warnはstring concat SHOULD・singlepiece@control・@off/@on/unknownignored、xpcallは追加messagehandlerを照合。",
+      "原文の見出し後unwrapped inlineがroot変換で断片段落になっていた。importerにmixedchildren結合とheading/hr境界を適用し56候補生成を検証。差分は未確認EN基本関数と文字列操作の2ページのみ、25既合格本文SHA不変。両ENの空白除外本文・全inline/fencedcode・links保持を機械照合して2ページだけ反映。JA基本8節も結合しGCstep3段落とparam親/子境界復元、range原文emはHTML emで保持。文字列操作は全文/表示pendingのまま。",
+      "原文→EN全51prose exact、25見出し/159inline/26nativeIDs/16links/36bold/4proseem/2Lua codeを機械照合。JAコード順は7節の自然語順だけで各節multiset・条件・意味を全文確認。新checkerのlistseparator誤りを修正し最終全assert合格、最初のrange em不足は文書修正後再検査合格。初回失敗/省略出力を全文レビューの証拠に使用しない。",
+      "英日mobile390/desktop1280の4viewは51p/25見出し/159inline/26ID/4em/2pre、GC親9子6。JA段落結合・range強調・以前値/圧縮・finalizer、EN rawAPI/loadmode/binaryriskを画像とactualDOMで確認。overflow0/console0、例2textとpositiveheight、§2.5 Enterのnative target、JA→English同一ページ成功。AXが遷移直後hrefを省略した箇所は実URL/target/hrefで照合。",
+      "旧importerに新2回帰testを適用して2fail/旧3passを保存した後、修正後はimporter5+formatter5の10test/0failと4対象eslint新規合格。最終rootcontent56再現/内部1164links0、専用WTintegrity/相対122links/117pagebuild/diff実exit0、112本文+7コード/CSSのrootWT SHA一致。全文/表示26/55、残り29は未確認。次は変換を修正した文字列操作の全808行と英日を優先。"
+    ],
+    "displayStatus": "passed",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T21:15:47.178Z",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/basic-functions.html",
+      "sha256": "a18c88939a5ba776c6cfa2be6b8c27237b0bd854bea604965d3002e9bd51df67",
+      "coverage": [
+        [
+          1,
+          603
+        ]
+      ]
+    },
+    "initialReview": {
+      "progress": {
+        "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/BASIC_FUNCTIONS_REVIEW_PROGRESS.json",
+        "sha256": "3102270d977d35695189c873599e03034cd1337377dd054907dfeb87b71c8c55"
+      }
+    },
+    "displayEvidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-068/browser-review.json",
+      "sha256": "f180169f2134e9f23ec7428ce8b628936ddd77e21cac7e426437167879d71f8d"
+    },
+    "terminologyStatus": "correction-pending"
+  },
+  "findings": [
+    "assert nil/false条件・otherwise全args、dofile stdin/全returns/unprotectederror伝播、error NEVERreturns/level1default・2caller・0nolocation、_Gはglobal変数でLuaunused/環境へ影響無しviceversa、getmetatable metatable無しnil/__metatable時関連値/elsemetatableを照合。",
+    "GC9親6子全optionsの意味を確認。count Kbytes×1024 exactbytes、step positive n bytes/0basic、incrementalstepsize/generation fullminor OR scheduledincremental、trueはincrementalcycle/generationmajor、param変更and-or取得/1or2引数/name必須とoptionalnew整数[0,100000]/previousalwaysreturned・new無 unchanged・compressionrounding、finalizer SHOULDNOTを照合。",
+    "ipairs3値/1からfirstabsentまで・pairs__pairsはfirst4/else next,t,nil,nilを確認。next最後/empty nil/omitted nil、数値含め順非規定、走査中不存在fieldへSHOULDNOT代入/既存はnil含め変更MAY。pcall protectedエラー不伝播/statusbool true+全結果/false+error・msgh非呼び出し、xpcall新msghを照合。",
+    "load string/functionpiecesMUSTstring・empty/nil/none終了、syntaxsuccesscompiledfunction/fail+error、MAIN常にexactly1_ENV/関数binary任意upvaluesfirst_ENV保証無し/nonmain無いことも、anyupvaluesfirstenv指定ORglobal/othernil/allfresh非共有を照合。8訳語だけガイド準拠修正、chunkname default chunkstringelse=(load)/bt defaultとb/t制限・binary整合性非検査とcrash可能を原文通り保持。loadfile filenameelse stdinも照合。",
+    "print tostring規則stdout/formatio推奨、raw系metamethod/metavalue不使用/tableやstring必須/nilNaN除外、select数値index以降/-1last/else#でcount、setmetatable nil除去/__metatable error/otherdebugmustを照合。tonumber base無数値or文字列/fail・intfloat・空白符号、base有stringmust/2〜36inclusive/Aa10 B11 Z35/fail、tostring__tostring値call/__nameはMAY、type8文字列でnil値と異なる、VERSIONLua5.5global、warn allargsSHOULDstrings/one-piece@control/offon/unknownignoredを照合。",
+    "原文EN全文prose exact、51rootp/25項目/GC9親6子paragraphbounds/159inline/26ID/16links/36bold/4em/2Lua例byteexact。JA7節の例先提示/メタ値先提示の語順は全意味同一。例bodyplaceholderは未実行。",
+    "英日4viewでload2段落のMAINvsbinary/firstenv/othernil/freshを全画像実読、51rootp/159inline/25項目/26ID/4em/2positivepre/GC9-6DOMを確認、overflow0/console0。§2.5Enter native target、JA→EN同page成功。",
+    "fresh5検査exit0、content56再現/英日56/1164links0、WTintegrity/links122/117pagebuild/diff成功。7code同SHAで第69の11tests/lint再利用。29/55維持・再検証added0。第71訳語audit既確認4の修正をすべて再検証済み、未確認4ページ訳語は未修正。全26ページ全文/表示未確認、新bug権利deferred/new0維持。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/repairs.json",
+    "sha256": "899838d914559f3e1ac3ced7717ee7e1d9cf4bc34e02330871977c52ca959911"
+  },
+  "terminologyAudit": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/terminology-audit.json",
+    "sha256": "b00fee423ed966278ce87d6e170f7f31f4219409b047321f5dd15cd5dcca2d20"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/validation-reuse.json",
+      "sha256": "c36439fc829fa187a4fc9067a0504986ed33cb49c80f8a8b48f8b556d2802af1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/selective-build.txt",
+      "sha256": "446b55822b53fe08be67f0d54f590843d37fbc8a60794a88ba5d6f2bdaa546c1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-075/browser-review.json",
+    "sha256": "0271c95c22f6fbfc0c906a3b0d0e7e105a48f808084a2699d623a46fa2810786"
+  },
+  "nextAction": "第76は既知の訳語課題を優先し03-c-api/12-functions-and-types-pop-push.mdを固定page-map/manualの全範囲に照合、原文/EN/JA初回全文レビュー、上位値6箇所など必要な修正、別工程全文/機械/英日4viewへ進む。未確認ページなので全検証合格時のみ29→30/55に加算。続いてN〜pcallkなど未確認26を継続、他3訳語ページも全レビューで修正。新bug権利根拠確定時のみ。",
+  "unresolved": [
+    "全55review scope残り26ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "upvalue訳語の未修正4ページ（既内容/表示合格0、未確認4）。用語適合は未完として各修正後に再検証。"
+  ]
+}

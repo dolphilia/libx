@@ -1,11 +1,11 @@
 ---
 title: "Awesome React Native"
-description: "An index entry for the Awesome React Native list. The upstream content is not reproduced in this snapshot."
+description: "Find React Native resources for iOS and Android mobile apps in the original list. This snapshot contains a reference entry only."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome React Native
 
-An index entry for the Awesome React Native list. The upstream content is not reproduced in this snapshot.
+Find resources for building natively rendered iOS and Android mobile apps with React Native, a JavaScript framework. The Awesome React Native list is linked here; its body is not reproduced in this snapshot.
 
-- [Open the original repository](https://github.com/jondot/awesome-react-native/blob/23100d54f6ef1cbdf56d4983dde8fe97cbe26c76/README.md)
+- [Read the original list](https://github.com/jondot/awesome-react-native/blob/23100d54f6ef1cbdf56d4983dde8fe97cbe26c76/README.md)

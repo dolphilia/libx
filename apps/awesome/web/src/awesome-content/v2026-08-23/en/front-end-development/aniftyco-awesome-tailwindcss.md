@@ -1,122 +1,99 @@
 ---
-title: "Awesome Tailwindcss"
-description: "A curated collection of resources and projects focused on Tailwindcss."
+title: "Awesome Tailwind CSS"
+description: "Tailwind CSS resources, editor extensions, tools, UI libraries, templates, and plugins."
 licenseSource: "github-aniftyco-awesome-tailwindcss-readme-md"
 ---
 
-# Awesome Tailwindcss
+# Awesome Tailwind CSS<a id="awesome-tailwindcss"></a>
 
-A curated collection of resources and projects focused on Tailwindcss.
-
-## Contents
-
-- [Useful links](#useful-links)
-- [IDE extensions](#ide-extensions)
-- [Tools](#tools)
-- [UI libraries, components & templates](#ui-libraries-components--templates)
-- [Plugins](#plugins)
+Resources for [Tailwind CSS](https://tailwindcss.com), a utility-first CSS framework, including editor extensions, tools, UI libraries, templates, and plugins.
 
 ## Useful links
 
-**Legend**: 💙 Official resource
-
-- 💙 [Website](https://tailwindcss.com) - Official Tailwind CSS website.
-- 💙 [Repository](https://github.com/tailwindcss/tailwindcss) - Official Tailwind CSS repository.
-- 💙 [Tailwind Plus](https://tailwindcss.com/plus) - UI blocks, templates, and a UI kit by the Tailwind CSS team.
-- 💙 [Headless UI](https://github.com/tailwindlabs/headlessui) - Completely unstyled, fully accessible UI components.
-- 💙 [Heroicons](https://heroicons.com/) - Beautiful, hand-crafted SVG icons.
-- 💙 [Play](https://play.tailwindcss.com/) - Advanced online playground for Tailwind CSS.
-- 💙 [Discord](https://tailwindcss.com/discord) - Official Discord server to connect with other community members about Tailwind CSS.
-- [Tailwind Weekly](https://tailwindweekly.com/) - Weekly newsletter about all things Tailwind CSS.
+- [Website](https://tailwindcss.com) - Official Tailwind CSS website.
+- [Repository](https://github.com/tailwindcss/tailwindcss) - Official Tailwind CSS repository.
+- [Tailwind Plus](https://tailwindcss.com/plus) - Official UI blocks, templates, and a UI kit from the Tailwind CSS team.
+- [Headless UI](https://github.com/tailwindlabs/headlessui) - Official unstyled UI components described in the source as fully accessible.
+- [Heroicons](https://heroicons.com/) - Official hand-crafted SVG icons.
+- [Play](https://play.tailwindcss.com/) - Official online playground for Tailwind CSS.
+- [Discord](https://tailwindcss.com/discord) - Official Discord server for the Tailwind CSS community.
+- [Tailwind Weekly](https://tailwindweekly.com/) - Weekly newsletter about Tailwind CSS.
 
 ## IDE extensions
 
-**Legend**: 💙 Official resource
-
-- 💙 [Intellisense for Code](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Provides IntelliSense in Visual Studio Code.
+- [Intellisense for Code](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Official extension providing IntelliSense in Visual Studio Code.
 - [LSP support for Emacs](https://github.com/merrickluo/lsp-tailwindcss) - Provides IntelliSense in Emacs.
-- [Editor support for VS2022](https://github.com/theron-wang/VS2022-Editor-Support-for-Tailwind-CSS) - IntelliSense, linting, sorting, and more in Visual Studio 2022.
+- [Editor support for VS2022](https://github.com/theron-wang/VS2022-Editor-Support-for-Tailwind-CSS) - Provides IntelliSense, linting, and sorting in Visual Studio 2022.
 
 ## Tools
 
-**Legend**: 🌍 Accessible online · 🌐 Browser extension · 🔼 Conversion or upgrade tool · 🔧 Generator · 🅰 Typing/enforcement · 💼 Plugins/Tools/Extensions for external services · 🎨 Color-related · 🚀 Framework
+Tool categories in the source are online tools, browser extensions, conversion or upgrade tools, generators, typing or enforcement, tools for external services, color-related tools, and frameworks. Categories attached to each entry are written out below.
 
-- 💙💼 [Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - Official Tailwind CSS plugin for Prettier.
-- 🎨🌍🔧 [UI colors](https://uicolors.app/create) - Color palette generator for Tailwind CSS.
-- 🎨🌍🔧 [Tailwind Color Shades](https://javisperez.github.io/tailwindcolorshades) - Color shades generator for Tailwind CSS.
-- 🎨🌍🔧 [TailwindInk](https://tailwind.ink/) - AI palette generator, trained with the Tailwind CSS palette.
-- 🎨🌍🔧 [Hypercolor](https://hypercolor.dev/) - Collection of Tailwind CSS gradients with directional options.
-- 🎨🌍🔧 [Tints](https://www.tints.dev/) - Color palette generator and API for Tailwind CSS.
-- 🎨🌍🔧 [Fullwind CSS](https://fullwindcss.com/) - Extend Tailwind CSS color palettes with additional shades.
-- 🎨🌍🔧 [Inclusive colors](https://www.inclusivecolors.com/) - Create fine-tuned WCAG accessible Tailwind CSS color palettes.
-- 🎨🌍🔧 [FreeColorPalettes.co](https://freecolorpalettes.co/tints-shades) - Generates a 50–950 Tailwind CSS color scale from any hex color.
-- 🌍🔧 [Base-2 Rounding](https://objectivelyround.dev) - Spacing and sizing value picker for Tailwind CSS v4's bracketless arbitrary values.
-- 🔼🌍 [Prefixer](https://github.vue.tailwind-prefix.cbass.dev) - Tailwind classes' prefixer tool.
-- 🔼 [RustyWind](https://github.com/avencera/rustywind) - CLI tool for sorting Tailwind CSS classes.
-- 🔼 [Tailwind to Inline styles converter](https://github.com/vardan-arm/tailwind-to-inline) - Converts Tailwind CSS classes to inline styles in email templates.
-- 🚀 [Maizzle](https://maizzle.com/) - Framework for rapid email prototyping with Tailwind CSS.
-- 💼 [`@nuxtjs/tailwindcss`](https://github.com/nuxt-community/tailwindcss-module) - Tailwind CSS module for Nuxt.js with PurgeCSS and modern CSS (preset env 1).
-- 💼 [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) - Gem for using Tailwind CSS with Rails' asset pipeline.
-- 💼 [Config viewer](https://github.com/rogden/tailwind-config-viewer) - Local UI tool for visualizing your Tailwind CSS configuration file.
-- 💼 [Raycast extension](https://www.raycast.com/vimtor/tailwindcss) - Search classes, documentation and colors in Raycast Launcher.
-- 💼 [NativeWind](https://www.nativewind.dev) - Uses Tailwind CSS as scripting language to create a universal style system for React Native.
-- 🌐 [Gimli Tailwind](https://chromewebstore.google.com/detail/gimli-tailwind/fojckembkmaoehhmkiomebhkcengcljl) - Smart tools for Tailwind CSS as a browser extension.
-- 🌐 [CSS Variables Editor](https://www.cssvariables.com) - AI-powered Chrome extension for managing colors in daisyUI and shadcn/ui.
-- 🌐 [DivMagic](https://divmagic.com) - Copy any web element and style as Tailwind CSS component.
+- [Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - Official Tailwind CSS plugin for Prettier. Category: tool for an external service.
+- [UI colors](https://uicolors.app/create) - Tailwind CSS color palette generator. Categories: color-related, online, generator.
+- [Tailwind Color Shades](https://javisperez.github.io/tailwindcolorshades) - Tailwind CSS color shade generator. Categories: color-related, online, generator.
+- [TailwindInk](https://tailwind.ink/) - AI palette generator trained on the Tailwind CSS palette. Categories: color-related, online, generator.
+- [Hypercolor](https://hypercolor.dev/) - Tailwind CSS gradients with directional options. Categories: color-related, online, generator.
+- [Tints](https://www.tints.dev/) - Tailwind CSS color palette generator and API. Categories: color-related, online, generator.
+- [Fullwind CSS](https://fullwindcss.com/) - Extends Tailwind CSS color palettes with additional shades. Categories: color-related, online, generator.
+- [Inclusive colors](https://www.inclusivecolors.com/) - Creates adjustable Tailwind CSS color palettes, described in the source as WCAG accessible. Categories: color-related, online, generator.
+- [FreeColorPalettes.co](https://freecolorpalettes.co/tints-shades) - Generates a 50–950 Tailwind CSS color scale from any hex color. Categories: color-related, online, generator.
+- [Base-2 Rounding](https://objectivelyround.dev) - Picks spacing and sizing values for Tailwind CSS v4's bracketless arbitrary values. Categories: online, generator.
+- [Prefixer](https://github.vue.tailwind-prefix.cbass.dev) - Adds prefixes to Tailwind CSS classes. Categories: conversion or upgrade, online.
+- [RustyWind](https://github.com/avencera/rustywind) - CLI tool for sorting Tailwind CSS classes. Source category: conversion or upgrade.
+- [Tailwind to Inline styles converter](https://github.com/vardan-arm/tailwind-to-inline) - Converts Tailwind CSS classes to inline styles in email templates. Category: conversion or upgrade.
+- [Maizzle](https://maizzle.com/) - Framework for prototyping email with Tailwind CSS. Category: framework.
+- [`@nuxtjs/tailwindcss`](https://github.com/nuxt-community/tailwindcss-module) - Tailwind CSS module for Nuxt.js with PurgeCSS and modern CSS through preset env 1. Category: tool for an external service.
+- [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) - Gem for using Tailwind CSS with the Rails asset pipeline. Category: tool for an external service.
+- [Config viewer](https://github.com/rogden/tailwind-config-viewer) - Local UI for visualizing a Tailwind CSS configuration file. Category: tool for an external service.
+- [Raycast extension](https://www.raycast.com/vimtor/tailwindcss) - Searches classes, documentation, and colors in Raycast Launcher. Category: tool for an external service.
+- [NativeWind](https://www.nativewind.dev) - Uses Tailwind CSS as a scripting language for a universal style system in React Native. Category: tool for an external service.
+- [Gimli Tailwind](https://chromewebstore.google.com/detail/gimli-tailwind/fojckembkmaoehhmkiomebhkcengcljl) - Browser extension with tools for Tailwind CSS. Category: browser extension.
+- [CSS Variables Editor](https://www.cssvariables.com) - AI-powered Chrome extension for managing colors in daisyUI and shadcn/ui. Category: browser extension.
+- [DivMagic](https://divmagic.com) - Copies web elements and their styles as Tailwind CSS components. Category: browser extension.
 
 ## UI libraries, components & templates
 
-**Legend**: 💙 Official resource · 📚 UI library · 🧩 Copy-pastable components · 📁 Full templates
-
-- 💙🧩 [Tailwind UI](https://tailwindcss.com/plus/ui-blocks/marketing) - Component library made with Tailwind CSS.
-- 💙📚 [Headless UI](https://headlessui.com/) - Completely unstyled, fully accessible UI components.
-- 💙📁 [Catalyst](https://tailwindcss.com/plus/ui-kit) - Beautiful, accessible application UI kit for React.
-- 🧩 [shadcn UI](https://ui.shadcn.com) - Re-usable components built using Radix UI and Tailwind CSS.
-- 🧩 [Layouts for Tailwind](https://layoutsfortailwind.lalokalabs.dev) - Layouts and UI patterns for Tailwind CSS.
-- 🧩 [Meraki UI Components](https://merakiui.com) - Beautiful Tailwind CSS components that support RTL languages.
-- 🧩 [HyperUI](https://hyperui.dev) - Open source marketing and ecommerce Tailwind CSS components.
-- 🧩 [Ripple UI](https://www.ripple-ui.com) - Clean, modern and beautiful Tailwind CSS components.
-- 🧩 [Pines UI](https://devdojo.com/pines) - Alpine and Tailwind CSS UI library.
-- 🧩 [Kokonut UI](https://kokonutui.com/) - Collection of modern, interactive customizable UI components.
-- 🧩 [8bitcn UI](https://8bitcn.com) - Re-usable retro components built using Shadcn UI and Tailwind CSS.
-- 🧩 [Xtend UI](https://github.com/xtendui/xtendui) - Tailwind CSS components with advanced interactions and animations.
-- 🧩 [Tremor](https://tremor.so) - React library to build charts and dashboards with Tailwind CSS.
-- 🧩 [Radian UI](https://radianui.com) - Accessible, customizable React components built with Tailwind CSS, with a CLI.
-- 📚 [Daisy UI](https://github.com/saadeghi/daisyui) - UI Components for Tailwind CSS.
-- 📚 [Flowbite](https://flowbite.com/docs/getting-started/introduction/) - Component library built with Tailwind CSS.
-- 📚 [STDF](https://stdf.design) - Mobile web component library based on Svelte and Tailwind CSS.
-- 📚 [Date picker](https://github.com/themesberg/tailwind-datepicker) - Adds a datepicker component built with Tailwind CSS and vanilla JavaScript.
-- 📚 [Appica UI](https://appica.dev/ui) - Open-source React component library built on Tailwind CSS, with a matching Figma library.
-- 📁 [Built at lightspeed](https://www.builtatlightspeed.com/) - Massive directory of 500+ Tailwind templates, starters and UI kits.
-- 📁 [Admin One Vue 3](https://github.com/justboil/admin-one-vue-tailwind) - Free Vue.js 3 Tailwind CSS admin template with Vite & Vue CLI support.
-- 📁 [Admin One React](https://github.com/justboil/admin-one-react-tailwind) - Free React.js Tailwind CSS admin template with Next.js & TypeScript.
-- 📁 [Flowbite Admin Dashboard](https://github.com/themesberg/flowbite-admin-dashboard) - Open-source admin dashboard template built with Tailwind CSS and Flowbite.
-- 📁 [Astro Template Cactus](https://github.com/chrismwilliams/astro-theme-cactus) - Tailwind CSS Astro starter template.
-- 📁 [Astro Template Ovidius](https://github.com/JustGoodUI/ovidius-astro-theme) - Tailwind CSS & Astro blog template.
-- 📁 [Astro Template Dante](https://github.com/JustGoodUI/dante-astro-theme) - Tailwind CSS & Astro blog/portfolio template.
+- [Tailwind UI](https://tailwindcss.com/plus/ui-blocks/marketing) - Official components made with Tailwind CSS. Category: copy-pastable components.
+- [Headless UI](https://headlessui.com/) - Official unstyled UI components described in the source as fully accessible. Category: UI library.
+- [Catalyst](https://tailwindcss.com/plus/ui-kit) - Official React application UI kit described in the source as accessible. Category: full templates.
+- [shadcn UI](https://ui.shadcn.com) - Reusable components built with Radix UI and Tailwind CSS. Category: copy-pastable components.
+- [Layouts for Tailwind](https://layoutsfortailwind.lalokalabs.dev) - Layouts and UI patterns for Tailwind CSS. Category: copy-pastable components.
+- [Meraki UI Components](https://merakiui.com) - Tailwind CSS components supporting RTL languages. Category: copy-pastable components.
+- [HyperUI](https://hyperui.dev) - Open-source Tailwind CSS components for marketing and e-commerce. Category: copy-pastable components.
+- [Ripple UI](https://www.ripple-ui.com) - Tailwind CSS components. Category: copy-pastable components.
+- [Pines UI](https://devdojo.com/pines) - UI library using Alpine and Tailwind CSS. Category: copy-pastable components.
+- [Kokonut UI](https://kokonutui.com/) - Interactive, customizable UI components. Category: copy-pastable components.
+- [8bitcn UI](https://8bitcn.com) - Reusable retro components built with Shadcn UI and Tailwind CSS. Category: copy-pastable components.
+- [Xtend UI](https://github.com/xtendui/xtendui) - Tailwind CSS components with interactions and animations. Category: copy-pastable components.
+- [Tremor](https://tremor.so) - React library for charts and dashboards with Tailwind CSS. Category: copy-pastable components.
+- [Radian UI](https://radianui.com) - Customizable React components built with Tailwind CSS, with a CLI; described in the source as accessible. Category: copy-pastable components.
+- [Daisy UI](https://github.com/saadeghi/daisyui) - UI components for Tailwind CSS. Category: UI library.
+- [Flowbite](https://flowbite.com/docs/getting-started/introduction/) - Component library built with Tailwind CSS. Category: UI library.
+- [STDF](https://stdf.design) - Mobile web component library built with Svelte and Tailwind CSS. Category: UI library.
+- [Date picker](https://github.com/themesberg/tailwind-datepicker) - Datepicker built with Tailwind CSS and vanilla JavaScript. Category: UI library.
+- [Appica UI](https://appica.dev/ui) - Open-source React component library built with Tailwind CSS, with a matching Figma library. Category: UI library.
+- [Built at lightspeed](https://www.builtatlightspeed.com/) - Directory of 500+ Tailwind templates, starters, and UI kits. Category: full templates.
+- [Admin One Vue 3](https://github.com/justboil/admin-one-vue-tailwind) - Free Vue.js 3 Tailwind CSS admin template supporting Vite and Vue CLI. Category: full templates.
+- [Admin One React](https://github.com/justboil/admin-one-react-tailwind) - Free React.js Tailwind CSS admin template with Next.js and TypeScript. Category: full templates.
+- [Flowbite Admin Dashboard](https://github.com/themesberg/flowbite-admin-dashboard) - Open-source admin dashboard template built with Tailwind CSS and Flowbite. Category: full templates.
+- [Astro Template Cactus](https://github.com/chrismwilliams/astro-theme-cactus) - Tailwind CSS and Astro starter template. Category: full templates.
+- [Astro Template Ovidius](https://github.com/JustGoodUI/ovidius-astro-theme) - Tailwind CSS and Astro blog template. Category: full templates.
+- [Astro Template Dante](https://github.com/JustGoodUI/dante-astro-theme) - Tailwind CSS and Astro blog/portfolio template. Category: full templates.
 
 ## Plugins
 
-**Legend**: 💙 Official plugin · 🎨 Theming · 💼 Utilities · 🧩 Components · 🛑 Deprecated
+Plugin categories in the source distinguish official plugins, theming, utilities, components, and deprecated plugins. Categories attached to each entry are written out below.
 
-- 💙🧩 [Typography](https://github.com/tailwindlabs/tailwindcss-typography) - Adds a `prose` class for beautiful typographic defaults.
-- 💙 [Forms](https://github.com/tailwindlabs/tailwindcss-forms) - Adds better default styles to form elements.
-- 🎨 [Themer](https://github.com/RyanClementsHax/tailwindcss-themer) - Adds theming support for Tailwind CSS with CSS variables and variants.
-- 💼 [Bootstrap grid](https://github.com/karolis-sh/tailwind-bootstrap-grid) - Generates Bootstrap's style flexbox grid system.
-- 💼 [Dot & grid backgrounds](https://github.com/TheNaubit/tailwind-dot-grid-backgrounds) - Adds `bg-grid` and `bg-dot` classes to add easy-to-customize grid and dot pattern backgrounds with just CSS.
-- 💼 [Leading Trim](https://github.com/stormwarning/tailwindcss-capsize) - Adds utilities to trim text whitespace, using [Capsize](https://github.com/seek-oss/capsize).
-- 💼 [Scrollbar Hide](https://github.com/reslear/tailwind-scrollbar-hide) - Adds `scrollbar-hide` class for visual hide scrollbar.
-- 💼 [px to viewport](https://github.com/the-lemonboy/tailwindcss-px-to-viewport) - Adds utilities to automatically convert px to vw / vh.
-- 💼 [tailwind-hitslop](https://github.com/Jubstaaa/tailwind-hitslop) - Adds `hit-slop` utilities to invisibly expand touch targets, like React Native's `hitSlop`.
-- 💼 [tw-fade](https://github.com/petekp/tw-fade) - Adds `fade-t`/`-b`/`-x`/`-y` utilities that enable scroll-aware edge fading.
-- 💼🧩 [Fluid](https://github.com/barvian/fluid-tailwind) - Adds fluid `clamp()` versions of every built-in utility.
-- 🧩 [Debug screens](https://github.com/jorenvanhee/tailwindcss-debug-screens) - Adds a component that shows the currently active screen (responsive breakpoint).
-
-<p align="center">
-  <br />
-  <br />
-  ·
-  <br />
-  <br />
-  <sub>Contributions welcome! Read the <a href="CONTRIBUTING.md">contribution guidelines</a> first.</sub>
-</p>
+- [Typography](https://github.com/tailwindlabs/tailwindcss-typography) - Official plugin adding a `prose` class with typographic defaults. Category: components.
+- [Forms](https://github.com/tailwindlabs/tailwindcss-forms) - Official plugin adding default styles to form elements.
+- [Themer](https://github.com/RyanClementsHax/tailwindcss-themer) - Adds theming with CSS variables and variants. Category: theming.
+- [Bootstrap grid](https://github.com/karolis-sh/tailwind-bootstrap-grid) - Generates a Bootstrap-style flexbox grid system. Category: utilities.
+- [Dot & grid backgrounds](https://github.com/TheNaubit/tailwind-dot-grid-backgrounds) - Adds `bg-grid` and `bg-dot` classes for customizable grid and dot backgrounds using CSS. Category: utilities.
+- [Leading Trim](https://github.com/stormwarning/tailwindcss-capsize) - Trims whitespace around text using [Capsize](https://github.com/seek-oss/capsize). Category: utilities.
+- [Scrollbar Hide](https://github.com/reslear/tailwind-scrollbar-hide) - Adds a `scrollbar-hide` class to hide scrollbars visually. Category: utilities.
+- [px to viewport](https://github.com/the-lemonboy/tailwindcss-px-to-viewport) - Automatically converts px to vw / vh. Category: utilities.
+- [tailwind-hitslop](https://github.com/Jubstaaa/tailwind-hitslop) - Adds `hit-slop` utilities to invisibly expand touch targets, like React Native's `hitSlop`. Category: utilities.
+- [tw-fade](https://github.com/petekp/tw-fade) - Adds `fade-t`/`-b`/`-x`/`-y` utilities for scroll-aware edge fading. Category: utilities.
+- [Fluid](https://github.com/barvian/fluid-tailwind) - Adds fluid `clamp()` versions of every built-in utility. Categories: utilities, components.
+- [Debug screens](https://github.com/jorenvanhee/tailwindcss-debug-screens) - Shows the currently active responsive breakpoint. Category: components.

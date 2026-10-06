@@ -1,26 +1,25 @@
 ---
 title: "Awesome Umbraco"
-description: "A curated collection of resources and projects focused on Umbraco. The upstream list is archived or no longer maintained."
+description: "Umbraco v10 packages and resources, older-version lists, backoffice extensions, development, deployment, and community resources."
 licenseSource: "github-umbraco-community-awesome-umbraco-readme-md"
 ---
 
 # Awesome Umbraco
 
-A curated collection of resources and projects focused on Umbraco. The upstream list is archived or no longer maintained.
+Find [Umbraco CMS](https://github.com/umbraco/Umbraco-CMS/) packages and resources for backoffice extensions, forms, property editors, SEO, developer tools, deployment, eCommerce, starter kits, and website utilities. The recorded source identifies this as a list for Umbraco v10 packages and links to lists for older versions.
 
-### Contents
-* [Official](#official)
-* [Community](#community)
-* [Backoffice extensions](#backoffice-extensions)
-  * [Form Builders](#form-builders)
-  * [Property Editors](#property-editors)
-* [Developer tools](#developer-tools)
-  * [Deployment](#deployment)
-* [eCommerce & CRM](#ecommerce--crm)
-* [Starter Kits](#starter-kits)
-* [Code Libraries](#code-libraries)
+For general C#/.NET resources, see [awesome-dotnet](https://github.com/quozd/awesome-dotnet/).
 
-Please note * indicates that the package is commercial or may require a license to unlock all features.
+## Versions
+
+The source also provides lists for older versions. Its introductory v9 badge links to the v9 release download page; the list itself is described as targeting v10.
+
+* [Umbraco v9](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V9.md)
+* [Umbraco v8](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V8.md)
+* [Umbraco v7](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V7.md)
+* [Umbraco v9 release download](https://our.umbraco.com/download/releases/900)
+
+An asterisk (*) indicates that the package is commercial or may require a license to unlock all features.
 
 ## Official
 
@@ -30,7 +29,7 @@ Please note * indicates that the package is commercial or may require a license 
 * [Download](https://our.umbraco.com/download/)
 * [Forum](https://our.umbraco.com/forum/)
 * [Meetups](https://www.meetup.com/pro/umbraco)
-* [Official YouTube Channel](https://www.youtube.com/umbracohq) - tutorials and other helpful videos about Umbraco products.
+* [Official YouTube Channel](https://www.youtube.com/umbracohq) - tutorials and other videos about Umbraco products.
 
 ## Community
 
@@ -42,22 +41,20 @@ Please note * indicates that the package is commercial or may require a license 
 * [umbraCoffee](https://www.youtube.com/umbracoffee) - a weekly YouTube series discussing recent Umbraco news.
 * [Official YouTube Channel](https://www.youtube.com/c/umbracocommunity/) - the Umbraco community YouTube channel.
 
----
-
 ## Backoffice extensions
 
-* [Plumber](https://our.umbraco.com/packages/backoffice-extensions/plumber-workflow-for-umbraco/) - adds a heap of useful bits and pieces to Umbraco, to allow multi-staged workflow approval.
-* [Translation Manager*](https://our.umbraco.com/packages/backoffice-extensions/translation-manager/) - lets you handle all of the steps of the translation process from within Umbraco.
-* [Page Not Found Manager](https://our.umbraco.com/packages/backoffice-extensions/hot-chilli-page-not-found-manager) - Manage your sites 404 page(s) from Umbraco.
-* [Contentment](https://our.umbraco.com/packages/backoffice-extensions/contentment/) - A handy collection of Umbraco components developed for use in your Umbraco projects.
+* [Plumber](https://our.umbraco.com/packages/backoffice-extensions/plumber-workflow-for-umbraco/) - Enables multi-stage workflow approval in Umbraco.
+* [Translation Manager*](https://our.umbraco.com/packages/backoffice-extensions/translation-manager/) - Handles all steps of the translation process within Umbraco.
+* [Page Not Found Manager](https://our.umbraco.com/packages/backoffice-extensions/hot-chilli-page-not-found-manager) - Manages your site's 404 pages from Umbraco.
+* [Contentment](https://our.umbraco.com/packages/backoffice-extensions/contentment/) - A collection of Umbraco components developed for use in your Umbraco projects.
 * [Skybrud.Umbraco.Redirects](https://our.umbraco.com/packages/website-utilities/skybrud-redirects/) - Redirects manager for Umbraco.
 * [SimpleRedirects](https://our.umbraco.com/packages/backoffice-extensions/simpleredirects/) - Redirects manager for Umbraco.
 * [Newsletter Studio*](https://our.umbraco.com/packages/backoffice-extensions/newsletter-studio-the-email-studio/) - Responsive email editor to create emails for all clients.
-* [Backoffice Themes](https://our.umbraco.com/packages/backoffice-extensions/backoffice-themes/) - Allows choosing your own themes for in the backoffice.
+* [Backoffice Themes](https://our.umbraco.com/packages/backoffice-extensions/backoffice-themes/) - Allows choosing your own themes for the backoffice.
 
 ### Form Builders
 
-* [Umbraco Forms*](https://umbraco.com/products/umbraco-forms/) - A package to easily add customisable forms to your website. **(Developed by Umbraco HQ)**
+* [Umbraco Forms*](https://umbraco.com/products/umbraco-forms/) - A package for adding customisable forms to your website (developed by Umbraco HQ).
 
 ### Property Editors
 
@@ -66,23 +63,23 @@ Please note * indicates that the package is commercial or may require a license 
 
 ### SEO Tools
 
-* [SEO Checker*](https://soetemansoftware.nl/seo-checker) - find common SEO issues in your Umbraco website.
+* [SEO Checker*](https://soetemansoftware.nl/seo-checker) - Finds common SEO issues in your Umbraco website.
 * [SeoToolkit](https://our.umbraco.com/packages/backoffice-extensions/seotoolkit/) - Package that provides SEO features like meta fields, redirects, etc.
 
 ## Developer tools
 
-* [CMSImport*](https://soetemansoftware.nl/cmsimport) - import content or members from any datasource into Umbraco.
+* [CMSImport*](https://soetemansoftware.nl/cmsimport) - Imports content or members from any data source into Umbraco.
 * [uSync](https://our.umbraco.org/projects/developer-tools/usync/) - Syncing tool for reading and writing the database elements to disk.
 * [Diplo God Mode](https://our.umbraco.com/packages/developer-tools/diplo-god-mode/) - Exposes a lot of information for developers.
-* [DateFolders](https://our.umbraco.com/packages/developer-tools/datefolders/) - Creates Datefolders (year/month(/day)) for the specified doctype for Umbraco
-* [AlphabetFolders](https://our.umbraco.com/packages/developer-tools/alphabetfolders/) - Creates AlphabetFolders for the specified doctype for Umbraco
+* [DateFolders](https://our.umbraco.com/packages/developer-tools/datefolders/) - Creates date folders (year/month(/day)) for the specified Umbraco doctype.
+* [AlphabetFolders](https://our.umbraco.com/packages/developer-tools/alphabetfolders/) - Creates alphabetical folders for the specified Umbraco doctype.
 * [Konstrukt*](https://our.umbraco.com/packages/backoffice-extensions/konstrukt/) - Backoffice UI builder through code.
 
 ### Deployment
 
-* [Deploy Contrib](https://github.com/umbraco/Umbraco.Deploy.Contrib) - Offers value-connectors for the most popular Umbraco community packages. To allow Umbraco Cloud deploy to transfer content/property-data to a target environment. **(Maintained by Umbraco HQ)** _Umbraco Cloud only_
+* [Deploy Contrib](https://github.com/umbraco/Umbraco.Deploy.Contrib) - Offers value-connectors for Umbraco community packages, allowing Umbraco Cloud deploy to transfer content/property-data to a target environment (maintained by Umbraco HQ; Umbraco Cloud only).
 
-## eCommerce &amp; CRM
+## eCommerce & CRM
 
 * [Vendr*](https://vendr.net/) - eCommerce built on top of Umbraco.
 
@@ -92,16 +89,8 @@ Please note * indicates that the package is commercial or may require a license 
 
 ## Website Utilities
 
-* [Full Text Search](https://our.umbraco.com/packages/website-utilities/full-text-search-for-umbraco/) - Fast and easy way to setup search for your website.
+* [Full Text Search](https://our.umbraco.com/packages/website-utilities/full-text-search-for-umbraco/) - Sets up search for your website.
 
 ## Code Libraries
 
-None yet :(. But if you have any, then please feel free to make a pull request for it!
-
----
-
-# License
-
-[![CC BY-SA 4.0](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
-
-This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+The recorded source lists no code libraries.

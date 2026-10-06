@@ -1,24 +1,23 @@
 ---
 title: "Awesome Umbraco"
-description: "Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
+description: "原文のUmbraco v10向けパッケージと資料、旧版用リスト、管理画面拡張、開発・デプロイ・コミュニティ資料を案内します。"
 licenseSource: "github-umbraco-community-awesome-umbraco-readme-md"
 ---
 
 # Awesome Umbraco
 
-Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
+[Umbraco CMS](https://github.com/umbraco/Umbraco-CMS/)のパッケージと資料を探せます。バックオフィス拡張、フォーム、プロパティエディター、SEO、開発者ツール、デプロイ、eコマース、スターターキット、ウェブサイト用ツールを掲載しています。原文はUmbraco v10向けのリストと説明し、旧版用リストも案内しています。
 
-### 目次
-* [公式](#official)
-* [コミュニティ](#community)
-* [バックオフィス拡張機能](#backoffice-extensions)
-  * [フォームビルダー](#form-builders)
-  * [プロパティエディター](#property-editors)
-* [開発者ツール](#developer-tools)
-  * [デプロイ](#deployment)
-* [eコマースとCRM](#ecommerce--crm)
-* [スターターキット](#starter-kits)
-* [コードライブラリ](#code-libraries)
+一般的なC#/.NETの資料は[awesome-dotnet](https://github.com/quozd/awesome-dotnet/)を参照してください。
+
+## 対象版
+
+原文は旧版用リストも案内しています。冒頭のv9バッジはv9のリリースダウンロードページにリンクしていますが、リスト本文はv10向けと説明されています。
+
+* [Umbraco v9](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V9.md)
+* [Umbraco v8](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V8.md)
+* [Umbraco v7](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V7.md)
+* [Umbraco v9のリリースダウンロード](https://our.umbraco.com/download/releases/900)
 
 *印は商用パッケージ、または全機能の利用にライセンスが必要な可能性があるパッケージを表します。
 
@@ -30,11 +29,11 @@ Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 * [ダウンロード](https://our.umbraco.com/download/)
 * [フォーラム](https://our.umbraco.com/forum/)
 * [ミートアップ](https://www.meetup.com/pro/umbraco)
-* [公式 YouTube チャンネル](https://www.youtube.com/umbracohq) - Umbraco 製品に関するチュートリアルなどの有用な動画。
+* [公式 YouTube チャンネル](https://www.youtube.com/umbracohq) - Umbraco 製品に関するチュートリアルなどの動画。
 
 ## コミュニティ
 
-* [#h5yr](https://h5yr.com/) - High Five, You Rock!
+* [#h5yr](https://h5yr.com/) - ハイタッチ、あなたはすばらしい！
 * [24 Days In Umbraco](https://24days.in/umbraco-cms/) - Umbraco コンテンツの年次アドベントカレンダー。
 * [ブログ記事](https://our.umbraco.com/community/blog-posts/) - Umbraco コミュニティと Umbraco HQ のメンバーによるブログ記事。
 * [Candid Contributions](https://candidcontributions.com/) - Umbraco とオープンソース全般を議論する隔週ポッドキャスト。
@@ -42,22 +41,20 @@ Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 * [umbraCoffee](https://www.youtube.com/umbracoffee) - Umbraco の最新ニュースを議論する毎週の YouTube シリーズ。
 * [公式 YouTube チャンネル](https://www.youtube.com/c/umbracocommunity/) - Umbraco コミュニティの YouTube チャンネル。
 
----
-
 ## バックオフィス拡張機能
 
-* [Plumber](https://our.umbraco.com/packages/backoffice-extensions/plumber-workflow-for-umbraco/) - 多段階のワークフロー承認を可能にする、Umbraco 向けの便利な機能群。
-* [Translation Manager*](https://our.umbraco.com/packages/backoffice-extensions/translation-manager/) - Umbraco 内から翻訳プロセスの全工程を処理できます。
+* [Plumber](https://our.umbraco.com/packages/backoffice-extensions/plumber-workflow-for-umbraco/) - Umbraco向けの多段階ワークフロー承認。
+* [Translation Manager*](https://our.umbraco.com/packages/backoffice-extensions/translation-manager/) - Umbraco内で翻訳プロセスの全工程を処理。
 * [Page Not Found Manager](https://our.umbraco.com/packages/backoffice-extensions/hot-chilli-page-not-found-manager) - Umbraco からサイトの404ページを管理。
-* [Contentment](https://our.umbraco.com/packages/backoffice-extensions/contentment/) - Umbraco プロジェクトで使う便利な Umbraco コンポーネント集。
+* [Contentment](https://our.umbraco.com/packages/backoffice-extensions/contentment/) - Umbracoプロジェクトで使うUmbracoコンポーネント集。
 * [Skybrud.Umbraco.Redirects](https://our.umbraco.com/packages/website-utilities/skybrud-redirects/) - Umbraco 向けリダイレクト管理ツール。
 * [SimpleRedirects](https://our.umbraco.com/packages/backoffice-extensions/simpleredirects/) - Umbraco 向けリダイレクト管理ツール。
 * [Newsletter Studio*](https://our.umbraco.com/packages/backoffice-extensions/newsletter-studio-the-email-studio/) - あらゆるクライアント向けのメールを作成するレスポンシブメールエディター。
-* [Backoffice Themes](https://our.umbraco.com/packages/backoffice-extensions/backoffice-themes/) - バックオフィスで独自テーマを選択可能にします。
+* [Backoffice Themes](https://our.umbraco.com/packages/backoffice-extensions/backoffice-themes/) - バックオフィスで独自テーマを選択可能。
 
 ### フォームビルダー
 
-* [Umbraco Forms*](https://umbraco.com/products/umbraco-forms/) - カスタマイズ可能なフォームをウェブサイトへ簡単に追加するパッケージ。**（Umbraco HQ が開発）**
+* [Umbraco Forms*](https://umbraco.com/products/umbraco-forms/) - カスタマイズ可能なフォームをウェブサイトへ追加するパッケージ（Umbraco HQが開発）。
 
 ### プロパティエディター
 
@@ -80,7 +77,7 @@ Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### デプロイ
 
-* [Deploy Contrib](https://github.com/umbraco/Umbraco.Deploy.Contrib) - 人気の Umbraco コミュニティパッケージ向け Value Connector を提供し、Umbraco Cloud のデプロイでコンテンツやプロパティデータを対象環境へ転送可能にします。**（Umbraco HQ が保守）** _Umbraco Cloud 専用_
+* [Deploy Contrib](https://github.com/umbraco/Umbraco.Deploy.Contrib) - Umbracoコミュニティパッケージ向けValue Connectorを提供し、Umbraco Cloudのデプロイでコンテンツやプロパティデータを対象環境へ転送可能（Umbraco HQが保守、Umbraco Cloud専用）。
 
 ## eコマースとCRM
 
@@ -92,16 +89,8 @@ Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ## ウェブサイトユーティリティ
 
-* [Full Text Search](https://our.umbraco.com/packages/website-utilities/full-text-search-for-umbraco/) - ウェブサイトの検索を高速かつ簡単にセットアップする方法。
+* [Full Text Search](https://our.umbraco.com/packages/website-utilities/full-text-search-for-umbraco/) - ウェブサイトの検索機能を設定。
 
 ## コードライブラリ
 
-まだありません :(。何かあれば、ぜひプルリクエストを作成してください！
-
----
-
-# ライセンス
-
-[![CC BY-SA 4.0](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
-
-この作品には [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/) が適用されます。
+原文にはコードライブラリーが掲載されていません。

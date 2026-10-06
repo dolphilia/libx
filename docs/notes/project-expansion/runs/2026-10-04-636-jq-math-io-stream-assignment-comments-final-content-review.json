@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-636-jq-math-io-stream-assignment-comments-final-content-review",
+  "cycle": 636,
+  "startedAt": "2026-10-04T06:35:17.550Z",
+  "endedAt": "2026-10-04T06:35:21.770Z",
+  "result": "complete",
+  "phase": "math-io-stream-assignment-comments-final-content-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex separate final whole ENJA content review",
+    "Japanese readability reread",
+    "review hash binding and canonical/rendered snapshot checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "2f27a62ce29f48385630b22a9e33cd5209621f304f8b1f4f95d5e2f2457956c3"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/PARSED_MANUAL.json",
+      "sha256": "b25e032a5f49bd444c34c00ff2622fac46421306345ad8f2053c294ab56195b4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/JA_RENDER_FIELDS-630.json",
+      "sha256": "10fe80c5c7fd5d46977c39ae017071106ff9dbf370b9baea2014b95913c1f92a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-630/JA_RENDERED_CHECK.json",
+      "sha256": "15af0b949eabf910ba465d844c98af8f2a9575d8c3dfe59bda9bed014d50c4f5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-636/CONTENT_REVIEW.json",
+      "sha256": "0afcbbfe69a86019a8e519afd9432c2f6b921a94a821bccb60faa3114a6d5194"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-636/MACHINE_BINDING_CHECK.json",
+      "sha256": "2779488537d16fa60a66173152823ec77baec5638818583272010b3122e6a935"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-636/register.mjs",
+      "sha256": "1ffc65968cd4589964ce4f78455dc97d617d7bdb6f1841df1b375cb8e73df1db"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6594d283d82742029bc6b294bc16a542f8db2586384e56740ea0d3f9375b3477"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "数学/入出力/ストリーミング/代入/コメント全5頁最終内容review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-636/CONTENT_REVIEW.json",
+          "sha256": "0afcbbfe69a86019a8e519afd9432c2f6b921a94a821bccb60faa3114a6d5194"
+        }
+      ]
+    },
+    {
+      "name": "レビュー対象hashと生成物結合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-636/MACHINE_BINDING_CHECK.json",
+          "sha256": "2779488537d16fa60a66173152823ec77baec5638818583272010b3122e6a935"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "5頁最終内容review完了。累計13/16本文頁。指摘/編集なし。残り3本文頁+通知2頁未完了。",
+    "内容レビューと機械hash検査を分離し、UI未確認・source-locked状態を維持。"
+  ],
+  "unresolved": [
+    "残り3本文頁+2通知頁の最終全文内容review",
+    "実画面/mobile/言語/検索等",
+    "正式統合検証・公開"
+  ],
+  "nextAction": "jq数学/入出力/ストリーミング/代入/コメント5頁の最終全文内容reviewが合格（10項目/9formalexamples、本文中の全codeも対照）。累計13/16本文頁。次はModules/Colors/manpage付録の残り3本文頁と通知2頁を全文reviewし、全review coverageを確定する。実画面・正式統合・公開は未完了。",
+  "resumeCondition": "jq数学/入出力/ストリーミング/代入/コメント5頁の最終全文内容reviewが合格（10項目/9formalexamples、本文中の全codeも対照）。累計13/16本文頁。次はModules/Colors/manpage付録の残り3本文頁と通知2頁を全文reviewし、全review coverageを確定する。実画面・正式統合・公開は未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

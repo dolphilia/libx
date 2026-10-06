@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "project": "uthash",
+  "version": "v2-4-0",
+  "checkedAt": "2026-10-02T11:00:43.216Z",
+  "phase": "translation",
+  "status": "passed-page-only",
+  "scope": [
+    "01-guides/01-userguide.md",
+    "01-guides/02-utlist.md",
+    "01-guides/03-utarray.md",
+    "01-guides/04-utringbuffer.md",
+    "01-guides/05-utstack.md",
+    "01-guides/06-utstring.md",
+    "01-guides/07-changelog.md",
+    "02-license/01-license.md"
+  ],
+  "completedPages": [
+    "01-guides/05-utstack.md"
+  ],
+  "unreviewedPages": [
+    "01-guides/01-userguide.md",
+    "01-guides/02-utlist.md",
+    "01-guides/03-utarray.md",
+    "01-guides/04-utringbuffer.md",
+    "01-guides/06-utstring.md",
+    "01-guides/07-changelog.md",
+    "02-license/01-license.md"
+  ],
+  "method": "ai-content-review",
+  "previousCycleClassification": "前回は方針の整合確認のみで authoritative state の進展なし。今回は翻訳成果物/全文review/検査を保存。",
+  "pages": [
+    {
+      "id": "01-guides/05-utstack.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:00:43.216Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utstack.txt",
+        "sha256": "8aebe8d41ba87342ab6213cd6c1db3aa1e755ba40633acce3a9cd0f6be39baf3",
+        "coverage": [
+          [
+            1,
+            158
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/05-utstack.md",
+        "sha256": "3e32e0c7938603b9a9a6d903f79469164ab77644515633ff9259e2e6b55caa44",
+        "coverage": [
+          [
+            1,
+            337
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/05-utstack.md",
+        "sha256": "ea4c806f9728549abba668c9bafc497583a00128bdeea24345a4ea47bc30787e",
+        "coverage": [
+          [
+            1,
+            337
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingCodeTablesMetadata": true,
+        "passes": "初稿作成後にJA337行全文を再読し、固定原文158行/定本337行へ照合。語順調整後JA337行をもう一度全文確認。"
+      },
+      "confirmedTopics": [
+        "導入・侵入型連結リスト・ヘッダー配置・取得方法",
+        "BSD原文記述と旧Windows/VS2008/2010の保持",
+        "NULL必須初期化・先頭ポインター兼用",
+        "O(1)push/pop・O(n)count・先頭以外へ直接アクセス不可",
+        "全5API表と全5パラメーター・初期化不要条件",
+        "名前の読み込み・逆順出力全例・コード原文保持",
+        "next別名の必須マクロ群・2接尾辞・末尾引数・全3API表"
+      ],
+      "findings": [
+        {
+          "kind": "presentation-refinement",
+          "status": "resolved",
+          "detail": "代替マクロの説明文を原文と同じ識別子順に調整。意味は変えず、インラインコードの厳密な順序照合も可能にした。"
+        },
+        {
+          "kind": "upstream-sample-error",
+          "status": "recorded-separate-note",
+          "detail": "原文のsizeof el->bname誤記は変更せず保持。既存原文外注記は最終JA app表示で確認が必要。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-189/PROVENANCE_NOTES.json",
+              "sha256": "dbe779eeda5b379768b32773d9bc684f53e3d726dced1e45f3a9b7a8b19e40dd"
+            }
+          ]
+        }
+      ],
+      "judgment": "全説明・見出し・表セル・引数・例・著者/版/出典を照合。否定、必須条件、例外、数値を保持し、重大な誤訳/欠落なし。日本語単独でも操作と制約を理解できる。"
+    }
+  ],
+  "limitations": [
+    "全8翻訳gateではなく1ページの内容review。",
+    "JAライセンスリンク先未作成。意味上の言語対応は確認済み、到達検査は全ページ完成時。",
+    "正式JA app未統合/ブラウザー未確認。"
+  ],
+  "mechanicalEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-191/UTSTACK_MECHANICAL.json",
+      "sha256": "df96597771c446daad10f0d1a2e87c95c07f21b2d9dbdc9731cab00a12ffac48"
+    }
+  ],
+  "modelObservation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-191/MODEL_OBSERVATION.json",
+    "sha256": "556d096092e2b1058e6602f26db0a0b0d7e4fb81c05bfd9db2c8bcaf1290e39e"
+  }
+}
