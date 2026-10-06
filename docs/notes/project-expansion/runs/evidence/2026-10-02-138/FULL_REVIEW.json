@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "reviewedAt": "2026-10-02T07:52:30.903Z",
+  "scope": "DOM章全774行。全106原textブロック（table td内重複を含む）、全11見出し、全17原pre、注記/注意、全88翻訳単位、DOM図を別工程で照合。",
+  "source": {
+    "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/03-document-object-model.html",
+    "sha256": "9e398f80f108e153dc64811b59761983fd03f6a6ece46a9b3b849b130ae00ffe"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/03-document-object-model.md",
+    "sha256": "0c83713811cee1d8d9e9c415d3a107ec78da7224c24712da0458ff5db736a080"
+  },
+  "initial": {
+    "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-136/ja/02-manual/03-document-object-model.md",
+    "sha256": "f57ef7e79c2b38ba8556d0bf9eb06d8305f317472e5ee2c9041f1d223c90b867"
+  },
+  "final": {
+    "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-138/ja/02-manual/03-document-object-model.md",
+    "sha256": "e5aa294af65316afc3e7a66b721807ee4b40b70a3734b610458d128caadf15d5"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        439
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        774
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        774
+      ]
+    ]
+  },
+  "aiContentReview": {
+    "separatePass": true,
+    "sourceToCanonical": "SOURCE_READABLEの全106ブロックを実読し、全ノード型・全関数宣言・XML例・注記・条件を照合。図は第136の個別視認記録と固定画像SHAを再確認。",
+    "canonicalToJapanese": "初稿保存後に訳文1–431行と432–774行の全88翻訳単位を別工程で再読。コードと原IDの機械保全検査は意味レビューとは分離。",
+    "findings": [
+      "全ノード型の名前/値/属性/子の有無、複数要素のfragment例外と宣言/DOCTYPEの個数・親条件、既定の非取り込みと変更フラグを保持。",
+      "xml_document非コピー・reset・デストラクターとハンドル寿命・未定義動作、空ノード伝播、比較/hashの限界を保持。",
+      "UTF-8/16/32、wcharサイズ、型とC++17条件、UTF変換方向、不正シーケンス破棄とnullの未定義動作を保持。",
+      "同じツリーのread-only並行性と単一ツリーread/write要同期、set_memory_management_functions例外を保持。",
+      "XPath/STL/stream/callbackの例外保証とbad_alloc/PUGIXML_NO_EXCEPTIONSの条件を保持。",
+      "allocatorのアラインメント/サイズ/失敗条件と置換時の生存オブジェクト禁止、ページ回収の全オブジェクト条件と再利用非保証を保持。",
+      "32/10/4 Kb、最小1 Kb/256 bytes、2.1/8.3 Mb、2.5x/5x、10–50%、O(1)と例外を保持。上流Kb/Mb表記やtwo code pointsの表現は保全し、無断の技術補筆をしない。"
+    ],
+    "changes": [
+      {
+        "line": 575,
+        "before": "pugixmlは、文書を保存するためのメモリーを大きなチャンクで要求し、そのチャンク内に文書データを割り当てます。この節では、チャンクの割り当てに使う関数の置き換えと、内部のメモリー管理実装について説明します。",
+        "after": "pugixmlは、文書を保持するためのメモリーを大きなチャンクで要求し、そのチャンク内に文書データを割り当てます。この節では、チャンクの割り当てに使う関数の置き換えと、内部のメモリー管理実装について説明します。",
+        "reason": "document storageは内部保持を指す。ファイル保存と混同しない表現へ修正。"
+      },
+      {
+        "line": 758,
+        "before": "コンパクトな格納方式は、ツリーの変更を含む既存のすべての操作を、同じ償却計算量でサポートします。つまり、基本的な文書操作はすべて、平均では引き続きO(1)です。操作は少し遅くなり、処理がメモリー帯域などに制約されていない限り、通常、処理時間では10〜50%の低速化が見込まれます。",
+        "after": "コンパクトな格納方式は、ツリーの変更を含む既存のすべての操作を、同じ償却計算量でサポートします。つまり、基本的な文書操作はすべて、平均では引き続きO(1)です。操作は少し遅くなり、処理がメモリー性能に制約されていない限り、通常、処理時間では10〜50%の低速化が見込まれます。",
+        "reason": "memory-boundの条件を、特定の帯域の例を加えず表現。"
+      }
+    ],
+    "japaneseReadability": "内部保持とファイル保存を区別する表現を修正。memory-boundの条件を特定の例なしで表現。他の全節は自然で既訳用語と整合。"
+  },
+  "figureReview": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-136/FIGURE_OBSERVATION.json",
+    "sha256": "f1115f34672b3f9dc511fc3919768d61c4a9e0d0179f5af974efe42a670343a8"
+  },
+  "mechanicalEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-138/MECHANICAL.json",
+    "sha256": "1e2d99319c68a4988be01b8fd3a61274c237dff6fe7b7ace7325fc12acc3eef3"
+  },
+  "projectVerified": false,
+  "reviewedPages": 6,
+  "totalPages": 12
+}
