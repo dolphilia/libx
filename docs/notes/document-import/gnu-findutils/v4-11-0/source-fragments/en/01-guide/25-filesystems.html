@@ -1,0 +1,72 @@
+<div class="gnu-findutils-original-content" id="Filesystems">
+<h3 class="section" id="Filesystems-1"><span>2.12 Filesystems</span></h3>
+<p>A <em class="dfn">filesystem</em> is a section of a disk, either on the local host or
+mounted from a remote host over a network.  Searching network
+filesystems can be slow, so it is common to make <code class="code">find</code> avoid
+them.
+</p>
+<p>There are two ways to avoid searching certain filesystems.  One way is
+to tell <code class="code">find</code> to only search within the same filesystem as the
+start-point currently being searched:
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dmount"><span class="category-def">Option: </span><span><strong class="def-name">-mount</strong></span></dt>
+<dd><p>Ignore files on other devices.  Do not visit or search inside mount
+points.  Do not search inside directories within other file systems
+even if they are the target of a symbolic link and <code class="code">find</code> is
+following symbolic links (e.g. due to the ‘<samp class="samp">-L</samp>’ or ‘<samp class="samp">-H</samp>’
+option).
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dxdev"><span class="category-def">Option: </span><span><strong class="def-name">-xdev</strong></span></dt>
+<dd><p>Visit mount points but not their children (that is,
+don’t descend into directories on other devices).
+Using <code class="code">-mount -xdev</code> has the same effect as ‘<samp class="samp">-mount</samp>’.
+</p></dd></dl>
+<p>Here we see that normally, <code class="code">find</code> will search inside a file
+system which is mounted at ‘<samp class="samp">tree/bound1</samp>’:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ find tree -printf 'device: %5D path: %p\n'
+device:    40 path: tree
+device: 64770 path: tree/bound1
+device: 64770 path: tree/bound1/on-another-fs
+</pre></div>
+<p>If we specify ‘<samp class="samp">-xdev</samp>’ then we will visit the mount point but not
+search inside it:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ find tree -xdev -printf 'device: %5D path: %p\n'
+device:    40 path: tree
+device: 64770 path: tree/bound1
+</pre></div>
+<p>If we specify ‘<samp class="samp">-mount</samp>’ we will not visit the mount point at all:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ find tree -mount -printf 'device: %5D path: %p\n'
+device:    40 path: tree
+</pre></div>
+<p>We used the ‘<samp class="samp">%D</samp>’ directive of ‘<samp class="samp">-printf</samp>’ in those examples to
+shows the device number for each item, to illustrate that the files
+are on different devices.  See <a class="xref" href="#Print-File-Information">Print File Information</a>.
+</p>
+<p>The other way to avoid particular filesystems is to check the type of
+filesystem each file is on, and not descend directories that are on
+undesirable filesystem types:
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dfstype"><span class="category-def">Test: </span><span><strong class="def-name">-fstype</strong> <var class="def-var-arguments">type</var></span></dt>
+<dd><p>True if the file is on a filesystem of type <var class="var">type</var>.  The valid
+filesystem types vary among different versions of Unix; an incomplete
+list of filesystem types that are accepted on some version of Unix or
+another is:
+</p><div class="example">
+<pre class="example-preformatted">autofs ext3 ext4 fuse.sshfs nfs proc sshfs sysfs ufs tmpfs xfs
+</pre></div>
+<p>You can use ‘<samp class="samp">-printf</samp>’ with the ‘<samp class="samp">%F</samp>’ directive to see the
+types of your filesystems.  ‘<samp class="samp">-fstype</samp>’ is usually
+used with ‘<samp class="samp">-prune</samp>’ to avoid searching remote filesystems
+(see <a class="pxref" href="#Directories">Directories</a>).
+</p></dd></dl>
+<hr/>
+</div>

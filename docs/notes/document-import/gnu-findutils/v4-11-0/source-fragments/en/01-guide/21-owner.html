@@ -1,0 +1,27 @@
+<div class="gnu-findutils-original-content" id="Owner">
+<h3 class="section" id="Owner-1"><span>2.8 Owner</span></h3>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002duser"><span class="category-def">Test: </span><span><strong class="def-name">-user</strong> <var class="def-var-arguments">uname</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dgroup"><span class="category-def">Test: </span><span><strong class="def-name">-group</strong> <var class="def-var-arguments">gname</var></span></dt>
+<dd><p>True if the file is owned by user <var class="var">uname</var> (belongs to group
+<var class="var">gname</var>).  A numeric ID is allowed.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002duid"><span class="category-def">Test: </span><span><strong class="def-name">-uid</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dgid"><span class="category-def">Test: </span><span><strong class="def-name">-gid</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>True if the file’s numeric user ID (group ID) is <var class="var">n</var>.  These tests
+support ranges (‘<samp class="samp">+<var class="var">n</var></samp>’ and ‘<samp class="samp">-<var class="var">n</var></samp>’), unlike
+‘<samp class="samp">-user</samp>’ and ‘<samp class="samp">-group</samp>’.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dnouser"><span class="category-def">Test: </span><span><strong class="def-name">-nouser</strong></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dnogroup"><span class="category-def">Test: </span><span><strong class="def-name">-nogroup</strong></span></dt>
+<dd><p>True if no user corresponds to the file’s numeric user ID (no group
+corresponds to the numeric group ID).  These cases usually mean that
+the files belonged to users who have since been removed from the
+system.  You probably should change the ownership of such files to an
+existing user or group, using the <code class="code">chown</code> or <code class="code">chgrp</code>
+program.
+</p></dd></dl>
+<hr/>
+</div>

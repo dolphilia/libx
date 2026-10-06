@@ -1,0 +1,35 @@
+<div class="gnu-findutils-original-content" id="Combining-Primaries-With-Operators">
+<h3 class="section" id="Combining-Primaries-With-Operators-1"><span>2.13 演算子で基本要素を組み合わせる</span></h3>
+<p>演算子は、テストとアクションから複雑な式を組み立てます。優先順位の高いものから順に、次の演算子があります。</p>
+<dl class="table">
+<dt><a id="index-_0028_0029"></a><span><code class="code">( <var class="var">expr</var> )</code></span></dt>
+<dd><p>優先順位を強制します。<var class="var">expr</var>が真であれば真になります。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002dnot"></a>
+<a id="index-_0021"></a><span><code class="code">! <var class="var">expr</var></code></span></dt>
+<dt><code class="code">-not <var class="var">expr</var></code></dt>
+<dd><p><var class="var">expr</var>が偽であれば真になります。一部のシェルでは、「<samp class="samp">!</samp>」をシェルに解釈させないため、引用符で囲む必要があります。「<samp class="samp">-not</samp>」はPOSIXに存在しないため、同等で移植性の高い「<samp class="samp">!</samp>」を選べます。</p></dd>
+<dt><a class="index-entry-id" id="index-_002da"></a>
+<a id="index-_002dand"></a><span><code class="code"><var class="var">expr1 expr2</var></code></span></dt>
+<dt><code class="code"><var class="var">expr1</var> -a <var class="var">expr2</var></code></dt>
+<dt><code class="code"><var class="var">expr1</var> -and <var class="var">expr2</var></code></dt>
+<dd><p>論理積です。<var class="var">expr1</var>が偽の場合、<var class="var">expr2</var>は評価しません。「<samp class="samp">-and</samp>」はPOSIXに存在しないため、同等で移植性の高い「<samp class="samp">-a</samp>」を選べます。</p></dd>
+<dt><a class="index-entry-id" id="index-_002do"></a>
+<a id="index-_002dor"></a><span><code class="code"><var class="var">expr1</var> -o <var class="var">expr2</var></code></span></dt>
+<dt><code class="code"><var class="var">expr1</var> -or <var class="var">expr2</var></code></dt>
+<dd><p>論理和です。<var class="var">expr1</var>が真の場合、<var class="var">expr2</var>は評価しません。「<samp class="samp">-or</samp>」はPOSIXに存在しないため、同等で移植性の高い「<samp class="samp">-o</samp>」を選べます。</p></dd>
+<dt><a id="index-_002c"></a><span><code class="code"><var class="var">expr1</var> , <var class="var">expr2</var></code></span></dt>
+<dd><p>一覧です。<var class="var">expr1</var>と<var class="var">expr2</var>を常に両方評価し、<var class="var">expr2</var>が真であれば真になります。<var class="var">expr1</var>の値は捨てます。この演算子を使うと、ほかの操作の成功に依存せず、1回の走査で複数の独立した操作を行えます。ただし、<var class="var">expr1</var>と<var class="var">expr2</var>という2つの操作が、常に完全に独立しているわけではありません。<var class="var">expr1</var>には、ファイルに触れる、削除するなどの副作用があり得ますし、「<samp class="samp">-prune</samp>」を使って<var class="var">expr2</var>にも影響する可能性があるためです。</p></dd>
+</dl>
+<p>「<samp class="samp">-a</samp>」は、明示的に指定した場合でも、2つのテストの間に演算子を書かないなど暗黙的に指定した場合でも、「<samp class="samp">-o</samp>」より優先順位が高いことに注意してください。そのため、「<samp class="samp">find afile bfile -name afile -o -name bfile -print</samp>」が「<samp class="samp">afile</samp>」を表示することはありません。</p>
+<p><code class="code">find</code>は、各ファイル名を根とするディレクトリツリーを検索します。優先順位に従って式を左から右へ評価し、結果が確定するまで続けます。「<samp class="samp">-and</samp>」では左辺が偽、「<samp class="samp">-or</samp>」では左辺が真になった時点で、<code class="code">find</code>は次のファイル名へ進みます。</p>
+<p>複雑な式では、さらに次の2つのテストが役立つ場合があります。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dtrue"><span class="category-def">テスト: </span><span><strong class="def-name">-true</strong></span></dt>
+<dd><p>常に真です。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dfalse"><span class="category-def">テスト: </span><span><strong class="def-name">-false</strong></span></dt>
+<dd><p>常に偽です。</p></dd></dl>
+<hr/>
+</div>
+

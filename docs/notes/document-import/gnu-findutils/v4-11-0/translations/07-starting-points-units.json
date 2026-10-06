@@ -1,0 +1,213 @@
+{
+  "slug": "07-starting-points",
+  "bodySHA256": "1c64272e13464e3292eb787f787249c81e90eed5d4dd0d2765c7ddd285ded360",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧2.2 Starting points⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Starting-points-1\"><span>2.2 Starting points</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "GNU ⟦0⟧ searches the directory tree rooted at each given starting-point by evaluating the given expression from left to right, according to the rules of operator precedence, until the outcome is known (the left hand side is false for ‘⟦1⟧’ operations, true for ‘⟦2⟧’), at which point ⟦3⟧ moves on to the next file name.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<samp class=\"samp\">and</samp>",
+        "⟦2⟧": "<samp class=\"samp\">or</samp>",
+        "⟦3⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p>GNU <code class=\"code\">find</code> searches the directory tree rooted at each given starting-point\nby evaluating the given expression from left to right, according to the\nrules of operator precedence, until the outcome is known (the left hand side\nis false for ‘<samp class=\"samp\">and</samp>’ operations, true for ‘<samp class=\"samp\">or</samp>’), at which point\n<code class=\"code\">find</code> moves on to the next file name.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "If no starting-point is specified, the current directory ‘⟦0⟧’ is assumed.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">.</samp>"
+      },
+      "sourceHTML": "<p>If no starting-point is specified, the current directory ‘<samp class=\"samp\">.</samp>’ is assumed.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "A double dash ‘⟦0⟧’ could theoretically be used to signal that any remaining arguments are not options, but this does not really work due to the way ⟦1⟧ determines the end of the list of starting point arguments: it does that by reading until an expression argument comes (which also starts with a ‘⟦2⟧’). Now, if a starting point argument would begin with a ‘⟦3⟧’, then ⟦4⟧ would treat it as expression argument instead. Thus, to ensure that all start points are taken as such, and especially to prevent that wildcard patterns expanded by the calling shell are not mistakenly treated as expression arguments, it is generally safer to prefix wildcards or dubious path names with either ‘⟦5⟧’, or to use absolute path names starting with ‘⟦6⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">--</samp>",
+        "⟦1⟧": "<code class=\"code\">find</code>",
+        "⟦2⟧": "<samp class=\"samp\">-</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-</samp>",
+        "⟦4⟧": "<code class=\"code\">find</code>",
+        "⟦5⟧": "<samp class=\"samp\">./</samp>",
+        "⟦6⟧": "<samp class=\"samp\">/</samp>"
+      },
+      "sourceHTML": "<p>A double dash ‘<samp class=\"samp\">--</samp>’ could theoretically be used to signal that any remaining\narguments are not options, but this does not really work due to the way\n<code class=\"code\">find</code> determines the end of the list of starting point arguments:\nit does that by reading until an expression argument comes (which also starts\nwith a ‘<samp class=\"samp\">-</samp>’).\nNow, if a starting point argument would begin with a ‘<samp class=\"samp\">-</samp>’, then <code class=\"code\">find</code>\nwould treat it as expression argument instead.\nThus, to ensure that all start points are taken as such, and especially to\nprevent that wildcard patterns expanded by the calling shell are not mistakenly\ntreated as expression arguments, it is generally safer to prefix wildcards\nor dubious path names with either ‘<samp class=\"samp\">./</samp>’, or to use absolute path names\nstarting with ‘<samp class=\"samp\">/</samp>’.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Alternatively, it is generally safe though non-portable to use the GNU option ‘⟦0⟧’ to pass arbitrary starting points to ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-files0-from</samp>",
+        "⟦1⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p>Alternatively, it is generally safe though non-portable to use the GNU option\n‘<samp class=\"samp\">-files0-from</samp>’ to pass arbitrary starting points to <code class=\"code\">find</code>.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "dt",
+      "text": "⟦0⟧Option: ⟦1⟧⟦2⟧⟦3⟧-files0-from⟦4⟧ ⟦5⟧⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"category-def\">",
+        "⟦1⟧": "</span>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<strong class=\"def-name\">",
+        "⟦4⟧": "</strong>",
+        "⟦5⟧": "<var class=\"def-var-arguments\">file</var>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt class=\"deffn\" id=\"index-_002dfiles0_002dfrom\"><span class=\"category-def\">Option: </span><span><strong class=\"def-name\">-files0-from</strong> <var class=\"def-var-arguments\">file</var></span></dt>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Read the starting points from ⟦0⟧ instead of getting them on the command line. In contrast to the known limitations of passing starting points via arguments on the command line, namely the limitation of the amount of file names, and the inherent ambiguity of file names clashing with option names, using this option allows to safely pass an arbitrary number of starting points to ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">file</samp>",
+        "⟦1⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p>Read the starting points from <samp class=\"file\">file</samp> instead of getting them on the\ncommand line.\nIn contrast to the known limitations of passing starting points via arguments\non the command line, namely the limitation of the amount of file names,\nand the inherent ambiguity of file names clashing with option names,\nusing this option allows to safely pass an arbitrary number of starting points\nto <code class=\"code\">find</code>.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Using this option and passing starting points on the command line is mutually exclusive, and is therefore not allowed at the same time.",
+      "tokens": {},
+      "sourceHTML": "<p>Using this option and passing starting points on the command line is mutually\nexclusive, and is therefore not allowed at the same time.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "The ⟦0⟧ argument is mandatory. One can use ‘⟦1⟧’ to read the list of starting points from the standard input stream, and e.g. from a pipe. In this case, the actions ‘⟦2⟧’ and ‘⟦3⟧’ are not allowed, because they would obviously interfere with reading from standard input in order to get a user confirmation.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">file</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-files0-from -</samp>",
+        "⟦2⟧": "<samp class=\"samp\">-ok</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-okdir</samp>"
+      },
+      "sourceHTML": "<p>The <samp class=\"file\">file</samp> argument is mandatory.\nOne can use ‘<samp class=\"samp\">-files0-from -</samp>’ to read the list of starting points from the\nstandard input stream, and e.g. from a pipe.\nIn this case, the actions ‘<samp class=\"samp\">-ok</samp>’ and ‘<samp class=\"samp\">-okdir</samp>’ are not allowed,\nbecause they would obviously interfere with reading from standard input\nin order to get a user confirmation.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "The starting points in ⟦0⟧ have to be separated by ASCII NUL characters. Two consecutive NUL characters, i.e., a starting point with a Zero-length file name is not allowed and will lead to an error diagnostic followed by a non-Zero exit code later.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">file</samp>"
+      },
+      "sourceHTML": "<p>The starting points in <samp class=\"file\">file</samp> have to be separated by ASCII NUL characters.\nTwo consecutive NUL characters, i.e., a starting point with a Zero-length\nfile name is not allowed and will lead to an error diagnostic followed by\na non-Zero exit code later.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "In the case the given ⟦0⟧ is empty, ⟦1⟧ does not process any starting point and therefore will exit immediately after parsing the program arguments. This is unlike the standard invocation where ⟦2⟧ assumes the current directory as starting point if no path argument is passed.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">file</samp>",
+        "⟦1⟧": "<code class=\"code\">find</code>",
+        "⟦2⟧": "<code class=\"code\">find</code>"
+      },
+      "sourceHTML": "<p>In the case the given <samp class=\"file\">file</samp> is empty, <code class=\"code\">find</code> does not process any\nstarting point and therefore will exit immediately after parsing the program\narguments.\nThis is unlike the standard invocation where <code class=\"code\">find</code> assumes the current\ndirectory as starting point if no path argument is passed.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "The processing of the starting points is otherwise as usual, e.g. ⟦0⟧ will recurse into subdirectories unless otherwise prevented. To process only the starting points, one can additionally pass ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<samp class=\"samp\">-maxdepth 0</samp>"
+      },
+      "sourceHTML": "<p>The processing of the starting points is otherwise as usual, e.g. <code class=\"code\">find</code>\nwill recurse into subdirectories unless otherwise prevented.\nTo process only the starting points, one can additionally pass ‘<samp class=\"samp\">-maxdepth 0</samp>’.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "th",
+      "text": "Warnings",
+      "tokens": {},
+      "sourceHTML": "<th>\nWarnings</th>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "In order to use this option safely, you need to take care about some specific things:",
+      "tokens": {},
+      "sourceHTML": "<p>In order to use this option safely, you need to take care about some\nspecific things:\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "li",
+      "text": "Ensure there are no duplicate entries ⟦0⟧ ⟦1⟧Otherwise, some files may (or may not) be visited more than once. ⟦2⟧⟦3⟧",
+      "tokens": {
+        "⟦0⟧": "<ul class=\"itemize mark-minus\">",
+        "⟦1⟧": "<li>",
+        "⟦2⟧": "</li>",
+        "⟦3⟧": "</ul>"
+      },
+      "sourceHTML": "<li>Ensure there are no duplicate entries\n    <ul class=\"itemize mark-minus\">\n<li>Otherwise, some files may (or may not) be visited more than once.\n    </li></ul>\n</li>"
+    },
+    {
+      "index": 15,
+      "tag": "li",
+      "text": "Do not modify the file while ⟦0⟧ is running ⟦1⟧ ⟦2⟧The effects of any concurrent modification are unspecified. ⟦3⟧⟦4⟧",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">find</code>",
+        "⟦1⟧": "<ul class=\"itemize mark-minus\">",
+        "⟦2⟧": "<li>",
+        "⟦3⟧": "</li>",
+        "⟦4⟧": "</ul>"
+      },
+      "sourceHTML": "<li>Do not modify the file while <code class=\"code\">find</code> is running\n    <ul class=\"itemize mark-minus\">\n<li>The effects of any concurrent modification are unspecified.\n    </li></ul>\n</li>"
+    },
+    {
+      "index": 16,
+      "tag": "li",
+      "text": "Do not rely on the final seek position in the file ⟦0⟧ ⟦1⟧There is no guarantee about the final seek position. It may vary between platforms, between findutils release, or even between runs of ⟦2⟧. ⟦3⟧⟦4⟧Therefore, sharing the same open file between ‘⟦5⟧’ and anything else (including use of ‘⟦6⟧’ in another instance of the ⟦7⟧ program) is unlikely to reliably do what you want. Instead if you need to read from the same file in more than one program, open it separately for each. ⟦8⟧⟦9⟧",
+      "tokens": {
+        "⟦0⟧": "<ul class=\"itemize mark-minus\">",
+        "⟦1⟧": "<li>",
+        "⟦2⟧": "<samp class=\"file\">find</samp>",
+        "⟦3⟧": "</li>",
+        "⟦4⟧": "<li>",
+        "⟦5⟧": "<samp class=\"samp\">-files0-from</samp>",
+        "⟦6⟧": "<samp class=\"samp\">-files0-from</samp>",
+        "⟦7⟧": "<code class=\"code\">find</code>",
+        "⟦8⟧": "</li>",
+        "⟦9⟧": "</ul>"
+      },
+      "sourceHTML": "<li>Do not rely on the final seek position in the file\n    <ul class=\"itemize mark-minus\">\n<li>There is no guarantee about the final seek position.  It may\n    vary between platforms, between findutils release, or even between\n    runs of <samp class=\"file\">find</samp>.\n    </li><li>Therefore, sharing the same open file between\n    ‘<samp class=\"samp\">-files0-from</samp>’ and anything else (including use of\n    ‘<samp class=\"samp\">-files0-from</samp>’ in another instance of the <code class=\"code\">find</code>\n    program) is unlikely to reliably do what you want.\n    Instead if you need to read from the same file in more\n    than one program, open it separately for each.\n    </li></ul>\n</li>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "Suppose that some program ⟦0⟧ pre-filters and creates a huge NUL-separated list of files, we can process those as starting points, and find all regular, empty files among them:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">proggy</code>"
+      },
+      "sourceHTML": "<p>Suppose that some program <code class=\"code\">proggy</code> pre-filters and creates a huge\nNUL-separated list of files, we can process those as starting points,\nand find all regular, empty files among them:\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "The use of ‘⟦0⟧’ means to read the names of the starting points from standard input, i.e., from the pipe. Using ‘⟦1⟧’ ensures that only explicitly those entries are examined without recursing into directories (in the case one of the starting points is one).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-files0-from -</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-maxdepth 0</samp>"
+      },
+      "sourceHTML": "<p>The use of ‘<samp class=\"samp\">-files0-from -</samp>’ means to read the names of the starting points\nfrom standard input, i.e., from the pipe.  Using ‘<samp class=\"samp\">-maxdepth 0</samp>’ ensures that\nonly explicitly those entries are examined without recursing into directories\n(in the case one of the starting points is one).\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}
