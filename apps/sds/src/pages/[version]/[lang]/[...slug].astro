@@ -17,7 +17,6 @@ import {
   buildTableOfContents,
   checkFileExists,
   countTableOfContentsItems,
-  generateFileBasedPagination,
 } from '@docs/content-utils';
 
 // 設定を初期化
@@ -105,20 +104,21 @@ if (groupCatalog) {
   autoPagination = resolveGroupPagination(groupCatalog, Astro.url.pathname);
 } else {
   try {
-    // entry.slug から情報を抽出 (例: "v1/en/01-guide/01-getting-started")
-    const slugParts = entry.slug.split('/');
-    const currentSection = slugParts[2]; // "01-guide"
-    const currentFile = slugParts[3]; // "01-getting-started"
-    const currentSlug = currentFile.replace(/^\d+-/, ''); // "getting-started"
-
-    // ファイル構造ベースのページネーションを生成
-    autoPagination = await generateFileBasedPagination(
-      lang,
-      version,
-      currentSection,
-      currentSlug,
-      projectConfig.paths.baseUrl
-    );
+    // SDS chapter names retain numbering: compare full slugs to distinguish every chapter.
+    const sectionPrefix = entry.slug.split('/').slice(0, 3).join('/') + '/';
+    const sectionDocs = (await getCollection('docs'))
+      .filter((doc) => doc.slug.startsWith(sectionPrefix))
+      .sort((a, b) => a.slug.localeCompare(b.slug));
+    const currentIndex = sectionDocs.findIndex((doc) => doc.slug === entry.slug);
+    if (currentIndex < 0) throw new Error(`Missing SDS chapter: ${entry.slug}`);
+    const pageLink = (doc: CollectionEntry<'docs'> | undefined): PageLink | undefined =>
+      doc
+        ? { title: doc.data.title, url: projectConfig.paths.baseUrl + '/' + doc.slug + '/' }
+        : undefined;
+    autoPagination = {
+      prev: pageLink(sectionDocs[currentIndex - 1]),
+      next: pageLink(sectionDocs[currentIndex + 1]),
+    };
   } catch (error) {
     console.error('[File-Based Pagination] Error generating pagination:', error);
   }
@@ -189,16 +189,16 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
   />
   <Content />
   <Fragment slot="document-context">
-  {
-    (documentExtras[version]?.downloads ?? []).map((download) => (
-      <aside aria-label={download.labels[lang] ?? download.labels.en}>
-        <p>
-          <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
-        </p>
-        <p>{download.notices[lang] ?? download.notices.en}</p>
-      </aside>
-    ))
-  }
+    {
+      (documentExtras[version]?.downloads ?? []).map((download) => (
+        <aside aria-label={download.labels[lang] ?? download.labels.en}>
+          <p>
+            <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
+          </p>
+          <p>{download.notices[lang] ?? download.notices.en}</p>
+        </aside>
+      ))
+    }
   </Fragment>
 
   {/* ページナビゲーション */}

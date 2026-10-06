@@ -189,16 +189,16 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
   />
   <Content />
   <Fragment slot="document-context">
-  {
-    (documentExtras[version]?.downloads ?? []).map((download) => (
-      <aside aria-label={download.labels[lang] ?? download.labels.en}>
-        <p>
-          <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
-        </p>
-        <p>{download.notices[lang] ?? download.notices.en}</p>
-      </aside>
-    ))
-  }
+    {
+      (documentExtras[version]?.downloads ?? []).map((download) => (
+        <aside aria-label={download.labels[lang] ?? download.labels.en}>
+          <p>
+            <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
+          </p>
+          <p>{download.notices[lang] ?? download.notices.en}</p>
+        </aside>
+      ))
+    }
   </Fragment>
 
   {/* ページナビゲーション */}

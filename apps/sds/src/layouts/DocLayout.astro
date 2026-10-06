@@ -31,13 +31,25 @@ interface Props {
   title: string;
   description?: string;
   licenseSource?: string;
-  documentContext?: Array<{ kind: 'source' | 'editorial'; html: string; context?: { anchor: string; label: string } }>;
+  documentContext?: Array<{
+    kind: 'source' | 'editorial';
+    html: string;
+    context?: { anchor: string; label: string };
+  }>;
   hasToc?: boolean;
   lang: LocaleKey;
   version: string;
 }
 
-const { title, description, licenseSource, documentContext, hasToc = false, lang: langProp, version } = Astro.props;
+const {
+  title,
+  description,
+  licenseSource,
+  documentContext,
+  hasToc = false,
+  lang: langProp,
+  version,
+} = Astro.props;
 const lang = langProp as LocaleKey;
 const dir = getLocaleDirection(lang);
 
