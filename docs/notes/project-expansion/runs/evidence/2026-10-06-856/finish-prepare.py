@@ -1,0 +1,8 @@
+from pathlib import Path
+import json,subprocess
+W=Path('/private/tmp/libx-rapidjson-formal-853');E=Path(__file__).parent
+(E/'PREPARATION_FAILURE.json').write_text(json.dumps({'status':'failed-then-corrected','action':'landing byte-preserving insertion','reason':'helper expected an array entry; actual config is projectDecorations object','completedBeforeFailure':'231 footer additions/review metadata bindings/replay/app scripts; not rerun','correction':'restore exact HEAD bytes then add only RapidJSON object'},ensure_ascii=False,indent=2)+'\n')
+p=W/'sites/landing/src/config/projects.config.jsonc';s=subprocess.check_output(['git','show','HEAD:sites/landing/src/config/projects.config.jsonc'],cwd=W).decode();assert '"rapidjson"' not in s;i=s.rfind('\n    }');assert i>=0;i+=6;p.write_text(s[:i]+',\n    "rapidjson": {\n      "icon": "braces",\n      "tags": ["json", "cpp"],\n      "isNew": true\n    }'+s[i:])
+for name,lines in [('.gitattributes','\n# RapidJSON fixed original inputs and reviewed documents preserve their bytes.\ndocs/notes/document-import/rapidjson/** -text -whitespace\napps/rapidjson/src/content/docs/** -text -whitespace\napps/rapidjson/public/source/** -text -whitespace\napps/rapidjson/public/notices/** -text -whitespace\n'),('.prettierignore','\n# RapidJSON fixed and reviewed raw HTML/source inputs.\ndocs/notes/document-import/rapidjson/**\napps/rapidjson/src/content/docs/**\napps/rapidjson/public/source/**\napps/rapidjson/public/notices/**\n')]:
+ p=W/name;assert 'RapidJSON fixed' not in p.read_text();p.write_text(p.read_text()+lines)
+print('Landing now only 5-line RapidJSON addition; source metadata complete')
