@@ -1,0 +1,37 @@
+from pathlib import Path
+from bs4 import BeautifulSoup
+import json,hashlib,re,datetime
+from collections import Counter
+from urllib.parse import urlsplit,unquote
+R=Path('/Users/dolphilia/github/libx');N=R/'docs/notes/document-import/mdbook/v0-5-4';E=R/'docs/notes/project-expansion/runs/evidence/2026-10-05-845';W=Path('/private/tmp/libx-mdbook-formal-843/apps/mdbook');T=Path('/private/tmp/libx-mdbook-static-842/apps/mdbook-static-trial');m=json.loads((N/'CONTENT_MAP.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();dom=lambda p:BeautifulSoup(p.read_text().split('---\n',2)[2],'html.parser');body=lambda d:d.select_one('.mdbook-guide');codes=lambda d:[x.get_text()for x in d.select('code')];attrs=lambda d:[(x.name,x.get('href')or x.get('src'))for x in d.select('a[href],img[src]')];shape=lambda d:[(x.name,x.get('id'))for x in d.select('h1,h2,h3,h4,h5,h6,td,th,p,li,blockquote,dt,dd')];textshape=lambda d:[(x.name,x.get('id'),re.sub(r'\s+',' ',x.get_text()).strip())for x in d.select('h1,h2,h3,h4,h5,h6,td,th,p,li,blockquote,dt,dd')];svg=lambda d:[str(x)for x in d.select('svg')];allDocs={};rows=[];pending=[];links=0
+prior=json.loads((R/'docs/notes/project-expansion/runs/evidence/2026-10-05-844/BATCH_CHECK.json').read_text());reuse={(r['id'],r['language']):r for r in prior['rows']};newRows=[]
+before26=E/'CANONICAL_26_BEFORE.md.txt';assert sha(before26)==reuse[('01-guide/26-format-theme-index-hbs.md','en')]['sha256'];reuse.pop(('01-guide/26-format-theme-index-hbs.md','en'))
+before20=E/'CANONICAL_20_BEFORE.md.txt';assert sha(before20)==reuse[('01-guide/20-format-markdown.md','en')]['sha256'];reuse.pop(('01-guide/20-format-markdown.md','en'))
+for p in m['pages']:
+ name=Path(p['id']).name;c=N/'canonical/en'/p['id'];assert sha(N/'source/original'/(p['sourcePath']+'.txt'))==p['source']['sha256'];b=body(dom(c));assert sha(c)==reuse[(p['id'],'en')]['sha256'] if(p['id'],'en')in reuse else str(body(dom(c)))==str(body(dom(before26 if name.startswith('26-')else before20)))
+ for lang,role in [('en','canonical'),('ja','translations')]:
+  q=N/role/lang/p['id']
+  if not q.exists():continue
+  d=dom(q);bb=body(d);r=BeautifulSoup((W/'dist/v0-5-4'/lang/'01-guide'/name[:-3]/'index.html').read_text(),'html.parser');rb=body(r)
+  if (p['id'],lang)in reuse:assert sha(q)==reuse[(p['id'],lang)]['sha256'];assert sha(q)==sha(W/'src/content/docs/v0-5-4'/lang/p['id'])==sha(W/'public/source/v0-5-4/edited'/lang/name)
+  else:
+   d=dom(q);bb=body(d);r=BeautifulSoup((W/'dist/v0-5-4'/lang/'01-guide'/name[:-3]/'index.html').read_text(),'html.parser');rb=body(r);assert rb;assert codes(rb)==codes(bb);assert textshape(rb)==textshape(bb);assert svg(rb)==svg(bb);assert [(x.get('type'),x.has_attr('checked'),x.has_attr('disabled'))for x in rb.select('input')]==[(x.get('type'),x.has_attr('checked'),x.has_attr('disabled'))for x in bb.select('input')];assert attrs(rb)==attrs(bb);assert not d.select('aside');assert not rb.select('script,textarea,iframe');assert 'MathJax.js'not in str(r);assert 'Static Libx presentation:'in r.get_text() if lang=='en' else 'Libxでは全文・コード・図・原目次を静的に提供します。'in r.get_text();assert sha(q)==sha(W/'src/content/docs/v0-5-4'/lang/p['id'])==sha(W/'public/source/v0-5-4/edited'/lang/name);newRows.append({'id':p['id'],'language':lang})
+  if lang=='ja'and(p['id'],lang)not in reuse:assert [x.get_text()for x in bb.select('pre code')]==[x.get_text()for x in b.select('pre code')];assert Counter(codes(bb))==Counter(codes(b));assert [Counter(x.get_text()for x in para.select('code'))for para in bb.select('p')]==[Counter(x.get_text()for x in para.select('code'))for para in b.select('p')];assert shape(bb)==shape(b);assert svg(bb)==svg(b);assert attrs(bb)==[(a,h.replace('/v0-5-4/en/','/v0-5-4/ja/'))for a,h in attrs(b)]
+  route='/docs/mdbook/v0-5-4/'+lang+'/01-guide/'+name[:-3];allDocs[route]=(d,r);rows.append({'id':p['id'],'language':lang,'codes':len(bb.select('pre code')),'SVG':len(svg(bb)),'codeTextExact':True,'renderedBodyRetained':True,'originalTextShapes':lang=='en','footerNotice':True,'file':str(q.relative_to(R)),'sha256':sha(q)})
+for route,(d,r) in allDocs.items():
+ for a in d.select('a[href]'):
+  h=a['href'];u=urlsplit(h)
+  if h.startswith('#'):assert r.find(id=unquote(u.fragment));continue
+  if not h.startswith('/docs/mdbook/v0-5-4/'):continue
+  links+=1;target=allDocs.get(u.path.rstrip('/'))
+  if not target:target=allDocs.get(u.path.rstrip('/').replace('/v0-5-4/ja/','/v0-5-4/en/'));assert target,(route,h);pending.append({'from':route,'target':h,'reason':'Japanese chapter pending; EN target and anchor checked'})
+  if u.fragment:assert target[1].find(id=unquote(u.fragment)),(route,h)
+footerRefs=[]
+for row in newRows:
+ q=N/('canonical'if row['language']=='en'else'translations')/row['language']/row['id'];text=q.read_text();front=text.split('---\n',2)[1];context=json.loads(re.search(r'^documentContext: (.*)$',front,re.M).group(1))
+ for item in context:
+  for a in BeautifulSoup(item['html'],'html.parser').select('a[href]'):
+   h=a['href']
+   if h.startswith('/docs/mdbook/source/'):
+    rel=h.removeprefix('/docs/mdbook/');assert(W/'public'/rel).is_file(),h;assert (W/'dist'/rel).is_file(),h;assert sha(W/'public'/rel)==sha(W/'dist'/rel),h;footerRefs.append(h)
+result={'status':'passed-batch-scope','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'EN':31,'JA':len(rows)-31,'originalSourceHashChecked':31,'newOrChangedChapterChecks':len(newRows),'reusedUnchangedChapters':len(reuse),'links':links,'untranslatedTargetLinks':pending,'pendingJapaneseChapters':31-(len(rows)-31),'footerSourceRefsChecked':len(footerRefs),'newOrChangedRows':newRows,'rows':rows,'limitations':['JA未翻訳章への参照はpending。全JAリンク閉包/全meaning review/正式release未合格。','geometry/icon SVGは既存hash照合と英日DOM一致で確認。本文の意味レビューは別パス記録。','原文の技術監査やサンプル実行は未実施、採用条件にしない。']};(E/'BATCH_CHECK.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print({k:v for k,v in result.items()if k not in ['rows','limitations','untranslatedTargetLinks']});print('Pending JA links:',len(pending))

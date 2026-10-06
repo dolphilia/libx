@@ -1,0 +1,8 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const workspace='/private/tmp/libx-zstd-formal-838',ev='docs/notes/project-expansion/runs/evidence/2026-10-05-840';
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const files=(d,p='')=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(path.join(d,e.name),path.join(p,e.name)):[path.join(p,e.name)]);
+const paths=files(workspace+'/dist/docs/zstd').map(p=>'docs/zstd/'+p).concat(['en/index.html','ja/index.html']);
+const results=[];let cursor=0;
+await Promise.all(Array.from({length:6},async()=>{while(cursor<paths.length){const p=paths[cursor++];const url='http://127.0.0.1:4331/'+p.replace(/index\.html$/,'');const response=await fetch(url,{headers:{'Accept-Encoding':'identity'},signal:AbortSignal.timeout(15000)});const body=Buffer.from(await response.arrayBuffer());const expected=fs.readFileSync(workspace+'/dist/'+p);const row={path:p,status:response.status,bytes:body.length,sha256:sha(body),expectedSHA256:sha(expected),exact:response.status===200&&sha(body)===sha(expected)};results.push(row);}}));
+results.sort((a,b)=>a.path.localeCompare(b.path));const report={status:results.every(r=>r.exact)?'passed':'failed',workspace,at:new Date().toISOString(),scope:'all Zstandard deployed files plus both landing indices',count:results.length,records:results};fs.writeFileSync(ev+'/LOCAL_HTTP.json',JSON.stringify(report,null,2)+'\n');assert.equal(report.status,'passed');console.log(JSON.stringify({status:report.status,files:results.length}));
