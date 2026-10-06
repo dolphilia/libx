@@ -1,0 +1,148 @@
+<h2>2.2 &ndash; <a name="2.2">Scopes, Variables, and Environments</a></h2>
+
+<p>
+A variable name refers to a global or a local variable according
+to the declaration that is in context at that point of the code.
+(For the purposes of this discussion,
+a function's formal parameter is equivalent to a local variable.)
+
+
+<p>
+All chunks start with an implicit declaration <code>global *</code>,
+which declares all free names as global variables;
+this preambular declaration becomes void inside the scope of any other
+<b>global</b> declaration,
+as the following example illustrates:
+
+<pre>
+     X = 1       -- Ok, global by default
+     do
+       global Y  -- voids the implicit initial declaration
+       Y = 1     -- Ok, Y declared as global
+       X = 1     -- ERROR, X not declared
+     end
+     X = 2       -- Ok, global by default again
+</pre><p>
+So, outside any global declaration,
+Lua works as global-by-default.
+Inside any global declaration,
+Lua works without a default:
+All variables must be declared.
+
+
+<p>
+Lua is a lexically scoped language.
+The scope of a variable declaration begins at the first statement after
+the declaration and lasts until the last non-void statement
+of the innermost block that includes the declaration.
+(<em>Void statements</em> are labels and empty statements.)
+
+
+<p>
+A declaration shadows any declaration for the same name that
+is in context at the point of the declaration. Inside this
+shadow, any outer declaration for that name is void.
+See the next example:
+
+<pre>
+     global print, x
+     x = 10                -- global variable
+     do                    -- new block
+       local x = x         -- new 'x', with value 10
+       print(x)            --&gt; 10
+       x = x+1
+       do                  -- another block
+         local x = x+1     -- another 'x'
+         print(x)          --&gt; 12
+       end
+       print(x)            --&gt; 11
+     end
+     print(x)              --&gt; 10  (the global one)
+</pre>
+
+<p>
+Notice that, in a declaration like <code>local x = x</code>,
+the new <code>x</code> being declared is not in scope yet,
+and so the <code>x</code> on the right-hand side refers to the outside variable.
+
+
+<p>
+Because of the lexical scoping rules,
+local variables can be freely accessed by functions
+defined inside their scope.
+A local variable used by an inner function is called an <em>upvalue</em>
+(or <em>external local variable</em>, or simply <em>external variable</em>)
+inside the inner function.
+
+
+<p>
+Notice that each execution of a <b>local</b> statement
+defines new local variables.
+Consider the following example:
+
+<pre>
+     a = {}
+     local x = 20
+     for i = 1, 10 do
+       local y = 0
+       a[i] = function () y = y + 1; return x + y end
+     end
+</pre><p>
+The loop creates ten closures
+(that is, ten instances of the anonymous function).
+Each of these closures uses a different <code>y</code> variable,
+while all of them share the same <code>x</code>.
+
+
+<p>
+As we will discuss further in <a href="#3.2">&sect;3.2</a> and <a href="#3.3.3">&sect;3.3.3</a>,
+any reference to a global variable <code>var</code>
+is syntactically translated to <code>_ENV.var</code>.
+Moreover, every chunk is compiled in the scope of
+an external local variable named <code>_ENV</code> (see <a href="#3.3.2">&sect;3.3.2</a>),
+so <code>_ENV</code> itself is never a free name in a chunk.
+
+
+<p>
+Despite the existence of this external <code>_ENV</code> variable and
+the translation of free names,
+<code>_ENV</code> is a regular name.
+In particular,
+you can define new variables and parameters with that name.
+(However, you should not define <code>_ENV</code> as a global variable,
+otherwise <code>_ENV.var</code> would translate to
+<code>_ENV._ENV.var</code> and so on, in an infinite loop.)
+Each reference to a global variable name uses the <code>_ENV</code> that is
+visible at that point in the program.
+
+
+<p>
+Any table used as the value of <code>_ENV</code> is called an <em>environment</em>.
+
+
+<p>
+Lua keeps a distinguished environment called the <em>global environment</em>.
+This value is kept at a special index in the C registry (see <a href="#4.3">&sect;4.3</a>).
+In Lua, the global variable <a href="#pdf-_G"><code>_G</code></a> is initialized with this same value.
+(<a href="#pdf-_G"><code>_G</code></a> is never used internally,
+so changing its value will affect only your own code.)
+
+
+<p>
+When Lua loads a chunk,
+the default value for its <code>_ENV</code> variable
+is the global environment (see <a href="#pdf-load"><code>load</code></a>).
+Therefore, by default,
+global variables in Lua code refer to entries in the global environment
+and, therefore, they act as conventional global variables.
+Moreover, all standard libraries are loaded in the global environment
+and some functions there operate on that environment.
+You can use <a href="#pdf-load"><code>load</code></a> (or <a href="#pdf-loadfile"><code>loadfile</code></a>)
+to load a chunk with a different environment.
+(In C, you have to load the chunk and then change the value
+of its first upvalue; see <a href="#lua_setupvalue"><code>lua_setupvalue</code></a>.)
+
+
+
+
+
