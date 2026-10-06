@@ -1,0 +1,158 @@
+Browser tab: 112, Title: "ストリーミング | jq ドキュメント", URL: "http://127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/".
+1 AXWebArea ストリーミング | jq ドキュメント, URL: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/
+	2 container
+		3 link Description: Libx, Value: 127.0.0.1:4638/ja
+		4 image
+		5 link Description: jq ドキュメント, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/00-introduction
+		6 pop up button 検索
+			7 text 検索
+			8 text /
+		9 pop up button (collapsed) jq 1.8.2 / Manual 1.8, ID: dropdown-button-29577d76b04fcdc1-0, Secondary Actions: Expand
+		10 pop up button (collapsed) 日本語, ID: dropdown-button-12201b488d3741ee-0, Secondary Actions: Expand
+		11 button テーマを切り替える
+			12 image
+			13 image
+	14 container main-content
+		15 container Description: ドキュメント, ID: sidebar
+			16 button (expanded) Description: サイドバーを折りたたむ、または展開する, Secondary Actions: Collapse
+			17 heading ドキュメント, Value: 3, ID: sidebar-title
+				18 text ドキュメント
+			19 container ドキュメント
+				20 content list
+					21 container
+						22 button (expanded) マニュアル, Secondary Actions: Collapse
+							23 text マニュアル
+						24 content list
+							25 link Description: jq 1.8 マニュアル, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/00-introduction
+							26 link Description: jqの起動, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/01-invoking-jq
+							27 link Description: 基本フィルター, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/02-basic-filters
+							28 link Description: 型と値, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/03-types-and-values
+							29 link Description: 組込み演算子と関数, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/04-builtin-operators-and-functions
+							30 link Description: 条件式と比較, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/05-conditionals-and-comparisons
+							31 link Description: 正規表現, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/06-regular-expressions
+							32 link Description: 高度な機能, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/07-advanced-features
+							33 link Description: 数学, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/08-math
+							34 link Description: 入出力, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/09-io
+							35 link Description: ストリーミング, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming
+							36 link Description: 代入, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/11-assignment
+							37 link Description: コメント, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/12-comments
+							38 link Description: モジュール, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/13-modules
+							39 link Description: 色, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/14-colors
+							40 link Description: manページの導入と後書き, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/15-manpage-appendix
+					41 button (collapsed) 原通知とライセンス, Secondary Actions: Expand
+						42 text 原通知とライセンス
+		43 container
+			44 heading ストリーミング, Value: 2, ID: streaming
+				45 text ストリーミング
+			46 text --stream
+			47 text  オプションを使うと、jqは入力テキストをストリーミング形式で解析できます。そのため、大きなJSONテキストを、解析が完了してからではなく、すぐに処理し始められます。1GBの単一のJSONテキストがある場合、ストリーミングによって、より早く処理できます。 ただし、ストリーミングを扱うのは簡単ではありません。jqプログラムの入力が、
+			48 text [<path>, <leaf-value>]
+			49 text  や、いくつかの別の形式になるためです。 ストリームを扱いやすくするため、いくつかの組込み関数があります。 以下の例では、
+			50 text ["a",["b"]]
+			51 text  のストリーミング形式を使います。これは 
+			52 text [[0],"a"],[[1,0],"b"],[[1,0]],[[1]]
+			53 text  です。 ストリーミング形式には、
+			54 text [<path>, <leaf-value>]
+			55 text （スカラー値、空の配列、空のオブジェクトを示すもの）と、
+			56 text [<path>]
+			57 text （配列またはオブジェクトの終わりを示すもの）が含まれます。将来のjqを 
+			58 text --stream
+			59 text  と 
+			60 text --seq
+			61 text  で実行した場合、入力テキストの解析に失敗したときに、
+			62 text ["error message"]
+			63 text  のような追加の形式を出力する可能性があります。
+			64 heading truncate_stream(stream_expression), Value: 3, ID: truncate_stream
+				65 text truncate_stream(stream_expression)
+			66 text 数値を入力として受け取り、指定したストリーミング式の出力から、その数に対応する個数のパス要素を左側から切り落とします。
+			67 heading 実行例 1, Value: 4, ID: 実行例-1
+				68 text 実行例 1
+			69 text コマンド
+			70 button コードをコピー
+			71 container
+				72 text jq  'truncate_stream([[0],"a"],[[1,0],"b"],[[1,0]],[[1]])'
+			73 text 入力
+			74 button コードをコピー
+			75 text 1
+			76 text 出力 1
+			77 button コードをコピー
+			78 text [[0],"b"]
+			79 text 出力 2
+			80 button コードをコピー
+			81 text [[0]]
+			82 heading fromstream(stream_expression), Value: 3, ID: fromstream
+				83 text fromstream(stream_expression)
+			84 text ストリーム式の出力に対応する値を出力します。
+			85 heading 実行例 1, Value: 4, ID: 実行例-1-1
+				86 text 実行例 1
+			87 text コマンド
+			88 button コードをコピー
+			89 container
+				90 text jq  'fromstream(1|truncate_stream([[0],"a"],[[1,0],"b"],[[1,0]],[[1]]))'
+			91 text 入力
+			92 button コードをコピー
+			93 text null
+			94 text 出力 1
+			95 button コードをコピー
+			96 text ["b"]
+			97 heading tostream, Value: 3
+				98 text tostream
+			99 text 組込み関数 
+			100 text tostream
+			101 text  は、入力のストリーミング形式を出力します。
+			102 heading 実行例 1, Value: 4, ID: 実行例-1-2
+				103 text 実行例 1
+			104 text コマンド
+			105 button コードをコピー
+			106 container
+				107 text jq  '. as $dot|fromstream($dot|tostream)|.==$dot'
+			108 text 入力
+			109 button コードをコピー
+			110 text [0,[1,{"a":1},{"b":2}]]
+			111 text 出力 1
+			112 button コードをコピー
+			113 text true
+			114 heading 出典と通知, Value: 2
+				115 text 出典と通知
+			116 text 出典: jq 1.8 Manual — Stephen Dolan / jq project contributors。原文の著作権表示: jq is copyright (C) 2012 Stephen Dolan。固定原典はjq 1.8.2のコミット34f7186b86743a083a589741b6cea95293524108です。文書はCC BY 3.0 Unportedで公開されています。本サイトの英語定本は原文を節ごとに分割・表示変換したもので、日本語版は英語原文からの非公式翻訳です。上流による承認を表しません。
+			117 link Description: 公式マニュアル, Value: jqlang.org/manual/v1.8/
+			118 text  · 
+			119 link Description: 固定原典, Value: github.com/jqlang/jq/blob/34f7186b86743a083a589741b6cea95293524108/docs/content/manual/v1.8/manual.yml
+			120 text  · 
+			121 link Description: ライセンス, Value: creativecommons.org/licenses/by/3.0/
+			122 text  · 
+			123 link Description: 原著作権・第三者通知, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/02-license/01-original-notices/
+			124 text  · 
+			125 link Description: ライセンス全文, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/02-license/02-cc-by-3-0/
+			126 link Description: 前へ 入出力, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/09-io
+			127 link Description: 次へ 代入, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/11-assignment
+			128 container 文書の出典
+				129 heading 文書の出典, Value: 2, ID: document-provenance-title
+					130 text 文書の出典
+				131 text 翻訳
+				132 text 「jq 1.8 Manual」を基に翻訳・作成しました。帰属表示: Stephen Dolan / jq project contributors。
+				133 definition list
+					134 container 出典
+						135 text 出典
+					136 text jq 1.8 Manual
+					137 container 上流バージョン
+						138 text 上流バージョン
+					139 text jq 1.8.2 / Manual 1.8
+					140 container ライセンス
+						141 text ライセンス
+					142 text CC BY 3.0 Unported
+				143 link Description: 原文を開く, Value: jqlang.org/manual/v1.8/
+				144 link Description: CC BY 3.0 Unportedライセンス, Value: creativecommons.org/licenses/by/3.0/
+		145 container このページの内容
+			146 heading このページの内容, Value: 3, ID: starlight-toc-heading
+				147 text このページの内容
+			148 content list
+				149 container
+					150 link Description: ストリーミング, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/#streaming
+					151 content list
+						152 link Description: truncate_stream(stream_expression), Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/#truncate_stream
+						153 link Description: fromstream(stream_expression), Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/#fromstream
+						154 link Description: tostream, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/#tostream
+				155 link Description: 出典と通知, Value: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/#%E5%87%BA%E5%85%B8%E3%81%A8%E9%80%9A%E7%9F%A5
+
+The focused UI element is 1 AXWebArea ストリーミング | jq ドキュメント, URL: 127.0.0.1:4638/docs/jq/v1-8-2/ja/01-guide/10-streaming/

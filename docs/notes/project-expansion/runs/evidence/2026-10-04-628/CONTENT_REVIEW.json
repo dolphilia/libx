@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-04T06:10:35.437Z",
+  "model": "configured gpt-6.1-sol; runtime not exposed",
+  "pages": [
+    {
+      "page": "12-comments",
+      "source": {
+        "path": "docs/notes/document-import/jq/1.8.2/translations/12-comments.source.json",
+        "sha256": "c86f5537be5519eb86f4676939c1aff7e54d29e666f13af5d0af3ccbdf75887c"
+      },
+      "translated": {
+        "path": "docs/notes/document-import/jq/1.8.2/translations/12-comments.ja.json",
+        "sha256": "e9ff046844c8916b1cc3ab25e4a4fe3c7897032c7f3f4b6643f46a1ef4c011a0"
+      },
+      "scope": "whole page including intro and all entries",
+      "method": "翻訳後別パスで全見出し・本文をENJA対表示し省略なしで読了。本文内の全コードも取得時・対照時全表示で読了。同じCodexの別パス。",
+      "coverage": [
+        {
+          "sourceKey": "sections/11/title",
+          "sourceSha256": "355f79f29d7d3c2df917ad07f7441e3ce4b0ac48892b778076dbdca401851712",
+          "translatedSha256": "6b9190f59aa3a51fcced55744fead599f764c81e4a51d12c2e97af8e7ab31284",
+          "read": true
+        },
+        {
+          "sourceKey": "sections/11/body",
+          "sourceSha256": "92e341490b876d411ead537cf8d8177d54edec59c0fdb2b453adb12bc4a926b4",
+          "translatedSha256": "7f423aac390f41cc55c2c10152f6caeed368e9201aa5589fc931eeabf0df0d53",
+          "read": true
+        }
+      ],
+      "verdict": "passed-whole-page-source-comparison-not-final-project-review"
+    }
+  ],
+  "conditionsChecked": [
+    "hash outside string begins comment, through end of line ignored",
+    "odd number of trailing backslashes continues comment into next line",
+    "fixed array code example retains1/2/3backslashes and output1,3,4,7",
+    "shebang sh exec line ignored by jq but executed by sh",
+    "shell comment not continued by backslash, interpreter replacement and alloptions/argv retained",
+    "entire original shell andjq code unchanged"
+  ],
+  "limitations": [
+    "new Comments page not rendered/built",
+    "remaining3manual pages untranslated",
+    "postjoin and wholeproject final contentreview/browser/integration pending"
+  ],
+  "releaseReady": false
+}

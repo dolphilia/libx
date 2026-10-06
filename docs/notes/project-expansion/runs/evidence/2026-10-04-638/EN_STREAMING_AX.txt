@@ -1,0 +1,159 @@
+Browser tab: 112, Title: "Streaming | jq Documentation", URL: "http://127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/".
+1 AXWebArea Streaming | jq Documentation, URL: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/
+	2 container
+		3 link Description: Libx, Value: 127.0.0.1:4638/en
+		4 image
+		5 link Description: jq Documentation, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/00-introduction
+		6 pop up button Search
+			7 text Search
+			8 text /
+		9 pop up button (collapsed) jq 1.8.2 / Manual 1.8, ID: dropdown-button-29577d76b04fcdc1-0, Secondary Actions: Expand
+		10 pop up button (collapsed) English, ID: dropdown-button-e1467c05715102d4-0, Secondary Actions: Expand
+		11 button Toggle theme
+			12 image
+			13 image
+	14 container main-content
+		15 container Description: Documentation, ID: sidebar
+			16 button (expanded) Description: Collapse or expand sidebar, Secondary Actions: Collapse
+			17 heading Documentation, Value: 3, ID: sidebar-title
+				18 text Documentation
+			19 container Documentation
+				20 content list
+					21 container
+						22 button (expanded) Manual, Secondary Actions: Collapse
+							23 text Manual
+						24 content list
+							25 link Description: jq 1.8 Manual, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/00-introduction
+							26 link Description: Invoking jq, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/01-invoking-jq
+							27 link Description: Basic filters, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/02-basic-filters
+							28 link Description: Types and Values, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/03-types-and-values
+							29 link Description: Builtin operators and functions, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/04-builtin-operators-and-functions
+							30 link Description: Conditionals and Comparisons, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/05-conditionals-and-comparisons
+							31 link Description: Regular expressions, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/06-regular-expressions
+							32 link Description: Advanced features, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/07-advanced-features
+							33 link Description: Math, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/08-math
+							34 link Description: I/O, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/09-io
+							35 link Description: Streaming, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming
+							36 link Description: Assignment, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/11-assignment
+							37 link Description: Comments, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/12-comments
+							38 link Description: Modules, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/13-modules
+							39 link Description: Colors, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/14-colors
+							40 link Description: Manpage introduction and epilogue, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/15-manpage-appendix
+					41 button (collapsed) Original notices and license, Secondary Actions: Expand
+						42 text Original notices and license
+		43 container
+			44 heading Streaming, Value: 2, ID: streaming
+				45 text Streaming
+			46 text With the 
+			47 text --stream
+			48 text  option jq can parse input texts in a streaming fashion, allowing jq programs to start processing large JSON texts immediately rather than after the parse completes. If you have a single JSON text that is 1GB in size, streaming it will allow you to process it much more quickly. However, streaming isn't easy to deal with as the jq program will have 
+			49 text [<path>, <leaf-value>]
+			50 text  (and a few other forms) as inputs. Several builtins are provided to make handling streams easier. The examples below use the streamed form of 
+			51 text ["a",["b"]]
+			52 text , which is 
+			53 text [[0],"a"],[[1,0],"b"],[[1,0]],[[1]]
+			54 text . Streaming forms include 
+			55 text [<path>, <leaf-value>]
+			56 text  (to indicate any scalar value, empty array, or empty object), and 
+			57 text [<path>]
+			58 text  (to indicate the end of an array or object). Future versions of jq run with 
+			59 text --stream
+			60 text  and 
+			61 text --seq
+			62 text  may output additional forms such as 
+			63 text ["error message"]
+			64 text  when an input text fails to parse.
+			65 heading truncate_stream(stream_expression), Value: 3, ID: truncate_stream
+				66 text truncate_stream(stream_expression)
+			67 text Consumes a number as input and truncates the corresponding number of path elements from the left of the outputs of the given streaming expression.
+			68 heading Example 1, Value: 4, ID: example-1
+				69 text Example 1
+			70 text Command
+			71 button Copy code
+			72 container
+				73 text jq  'truncate_stream([[0],"a"],[[1,0],"b"],[[1,0]],[[1]])'
+			74 text Input
+			75 button Copy code
+			76 text 1
+			77 text Output 1
+			78 button Copy code
+			79 text [[0],"b"]
+			80 text Output 2
+			81 button Copy code
+			82 text [[0]]
+			83 heading fromstream(stream_expression), Value: 3, ID: fromstream
+				84 text fromstream(stream_expression)
+			85 text Outputs values corresponding to the stream expression's outputs.
+			86 heading Example 1, Value: 4, ID: example-1-1
+				87 text Example 1
+			88 text Command
+			89 button Copy code
+			90 container
+				91 text jq  'fromstream(1|truncate_stream([[0],"a"],[[1,0],"b"],[[1,0]],[[1]]))'
+			92 text Input
+			93 button Copy code
+			94 text null
+			95 text Output 1
+			96 button Copy code
+			97 text ["b"]
+			98 heading tostream, Value: 3
+				99 text tostream
+			100 text The 
+			101 text tostream
+			102 text  builtin outputs the streamed form of its input.
+			103 heading Example 1, Value: 4, ID: example-1-2
+				104 text Example 1
+			105 text Command
+			106 button Copy code
+			107 container
+				108 text jq  '. as $dot|fromstream($dot|tostream)|.==$dot'
+			109 text Input
+			110 button Copy code
+			111 text [0,[1,{"a":1},{"b":2}]]
+			112 text Output 1
+			113 button Copy code
+			114 text true
+			115 heading Source and notices, Value: 2, ID: source-and-notices
+				116 text Source and notices
+			117 text Source: jq 1.8 Manual by Stephen Dolan / jq project contributors. Original copyright notice: jq is copyright (C) 2012 Stephen Dolan. Fixed source: jq 1.8.2, commit 34f7186b86743a083a589741b6cea95293524108. Documentation is licensed under CC BY 3.0 Unported. This English edition is split and reformatted from the original; the Japanese edition is an unofficial translation from English. No upstream endorsement is implied.
+			118 link Description: Original manual, Value: jqlang.org/manual/v1.8/
+			119 text  · 
+			120 link Description: Fixed source, Value: github.com/jqlang/jq/blob/34f7186b86743a083a589741b6cea95293524108/docs/content/manual/v1.8/manual.yml
+			121 text  · 
+			122 link Description: License, Value: creativecommons.org/licenses/by/3.0/
+			123 text  · 
+			124 link Description: Original notices, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/02-license/01-original-notices/
+			125 text  · 
+			126 link Description: Full legal code, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0/
+			127 link Description: Previous I/O, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/09-io
+			128 link Description: Next Assignment, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/11-assignment
+			129 container Document source
+				130 heading Document source, Value: 2, ID: document-provenance-title
+					131 text Document source
+				132 text Canonical language
+				133 text This document is "jq 1.8 Manual" by Stephen Dolan / jq project contributors, formatted for libx.
+				134 definition list
+					135 container Source
+						136 text Source
+					137 text jq 1.8 Manual
+					138 container Upstream version
+						139 text Upstream version
+					140 text jq 1.8.2 / Manual 1.8
+					141 container License
+						142 text License
+					143 text CC BY 3.0 Unported
+				144 link Description: Open original, Value: jqlang.org/manual/v1.8/
+				145 link Description: CC BY 3.0 UnportedLicense, Value: creativecommons.org/licenses/by/3.0/
+		146 container ON THIS PAGE
+			147 heading ON THIS PAGE, Value: 3, ID: starlight-toc-heading
+				148 text ON THIS PAGE
+			149 content list
+				150 container
+					151 link Description: Streaming, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/#streaming
+					152 content list
+						153 link Description: truncate_stream(stream_expression), Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/#truncate_stream
+						154 link Description: fromstream(stream_expression), Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/#fromstream
+						155 link Description: tostream, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/#tostream
+				156 link Description: Source and notices, Value: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/#source-and-notices
+
+The focused UI element is 1 AXWebArea Streaming | jq Documentation, URL: 127.0.0.1:4638/docs/jq/v1-8-2/en/01-guide/10-streaming/
