@@ -1,0 +1,1159 @@
+{
+  "page": "reference/process",
+  "at": "2026-10-04T23:05:19.734361+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/process.rst",
+      "sha256": "3de02a76a25a9570bbce99e8a41b2cc4a4d9e1f9574d61963275545d4ad8e0bd"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/process.md",
+      "sha256": "84c2326da72e92b44af717053e99968155e6d758234400f888a930b6f5b5113a"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/process.md",
+      "sha256": "f413a519c73aedc350279368c7b72d0eaf3f468d968766c5b8373027582af87f"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 4 original structure/enum code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — Process handle",
+      "ja": " — プロセスハンドル"
+    },
+    {
+      "index": 1,
+      "en": "Process handles will spawn a new process and allow the user to control it and\nestablish communication channels with it using streams.",
+      "ja": "プロセスハンドルは、新しいプロセスを起動します。ユーザーはそのプロセスを制御し、ストリームを使って通信経路を確立できます。"
+    },
+    {
+      "index": 2,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 3,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 4,
+      "en": "uv_process_t",
+      "ja": "uv_process_t"
+    },
+    {
+      "index": 5,
+      "en": "Process handle type.",
+      "ja": "プロセスハンドルの型です。"
+    },
+    {
+      "index": 6,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 7,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 8,
+      "en": "Options for spawning the process (passed to ",
+      "ja": "プロセスを起動するためのオプションです（次の関数へ渡します: "
+    },
+    {
+      "index": 9,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 10,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 11,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 12,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 13,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 14,
+      "en": "uv_exit_cb",
+      "ja": "uv_exit_cb"
+    },
+    {
+      "index": 15,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 16,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 17,
+      "en": "uv_process_t",
+      "ja": "uv_process_t"
+    },
+    {
+      "index": 18,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 19,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 20,
+      "en": "int64_t",
+      "ja": "int64_t"
+    },
+    {
+      "index": 21,
+      "en": "exit_status",
+      "ja": "exit_status"
+    },
+    {
+      "index": 22,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 23,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 24,
+      "en": "term_signal",
+      "ja": "term_signal"
+    },
+    {
+      "index": 25,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 26,
+      "en": "Type definition for callback passed in ",
+      "ja": "次の型のオプション内で渡すコールバックの型定義です: "
+    },
+    {
+      "index": 27,
+      "en": " which\nwill indicate the exit status and the signal that caused the process to\nterminate, if any.",
+      "ja": "。終了ステータスと、プロセスを終了させたシグナルがあればそのシグナルを通知します。"
+    },
+    {
+      "index": 28,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 29,
+      "en": "uv_process_flags",
+      "ja": "uv_process_flags"
+    },
+    {
+      "index": 30,
+      "en": "Flags to be set on the flags field of ",
+      "ja": "次の型のflagsフィールドに設定するフラグです: "
+    },
+    {
+      "index": 31,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 32,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 33,
+      "en": "uv_stdio_container_t",
+      "ja": "uv_stdio_container_t"
+    },
+    {
+      "index": 34,
+      "en": "Container for each stdio handle or fd passed to a child process.",
+      "ja": "子プロセスに渡す各stdioハンドルまたはファイルディスクリプターのコンテナーです。"
+    },
+    {
+      "index": 35,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 36,
+      "en": "uv_stdio_flags",
+      "ja": "uv_stdio_flags"
+    },
+    {
+      "index": 37,
+      "en": "Flags specifying how a stdio should be transmitted to the child process.",
+      "ja": "stdioを子プロセスへどのように渡すか指定するフラグです。"
+    },
+    {
+      "index": 38,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 39,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 40,
+      "en": "uv_process_t",
+      "ja": "uv_process_t"
+    },
+    {
+      "index": 41,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 42,
+      "en": "pid",
+      "ja": "pid"
+    },
+    {
+      "index": 43,
+      "en": "The PID of the spawned process. It is set after calling ",
+      "ja": "起動したプロセスのPIDです。次の関数を呼び出した後に設定されます: "
+    },
+    {
+      "index": 44,
+      "en": "\nand retains the value even after the process exits. The value is only\nunique while the process is alive; after exit, another process may be\nreassigned the same PID.",
+      "ja": "。プロセス終了後も値を保持します。この値が一意であるのはプロセスの生存中だけです。終了後は、別のプロセスに同じPIDを割り当てる場合があります。"
+    },
+    {
+      "index": 45,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 46,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 47,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 48,
+      "en": "uv_exit_cb",
+      "ja": "uv_exit_cb"
+    },
+    {
+      "index": 49,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 50,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 51,
+      "en": "exit_cb",
+      "ja": "exit_cb"
+    },
+    {
+      "index": 52,
+      "en": "Callback called after the process exits.",
+      "ja": "プロセス終了後に呼び出すコールバックです。"
+    },
+    {
+      "index": 53,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 54,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 55,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 56,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 57,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 58,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 59,
+      "en": "Path pointing to the program to be executed.",
+      "ja": "実行するプログラムを指すパスです。"
+    },
+    {
+      "index": 60,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 61,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 62,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 63,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 64,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 65,
+      "en": "args",
+      "ja": "args"
+    },
+    {
+      "index": 66,
+      "en": "Command line arguments. args[0] should be the path to the program. On\nWindows this uses ",
+      "ja": "コマンドライン引数です。args[0]はプログラムのパスにしてください。Windowsでは、次の関数を使います: "
+    },
+    {
+      "index": 67,
+      "en": "CreateProcess",
+      "ja": "CreateProcess"
+    },
+    {
+      "index": 68,
+      "en": " which concatenates the arguments into a\nstring this can cause some strange errors. See the\n",
+      "ja": "。この関数は引数を1つの文字列に連結するため、予期しないエラーが起きる場合があります。次のフラグを参照してください: "
+    },
+    {
+      "index": 69,
+      "en": " flag on ",
+      "ja": "。このフラグは、次の列挙型にあります: "
+    },
+    {
+      "index": 70,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 71,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 72,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 73,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 74,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 75,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 76,
+      "en": "env",
+      "ja": "env"
+    },
+    {
+      "index": 77,
+      "en": "Environment for the new process. If NULL the parents environment is used.",
+      "ja": "新しいプロセスの環境です。NULLの場合、親プロセスの環境を使います。"
+    },
+    {
+      "index": 78,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 79,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 80,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 81,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 82,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 83,
+      "en": "cwd",
+      "ja": "cwd"
+    },
+    {
+      "index": 84,
+      "en": "Current working directory for the subprocess.",
+      "ja": "子プロセスの現在の作業ディレクトリーです。"
+    },
+    {
+      "index": 85,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 86,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 87,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 88,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 89,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 90,
+      "en": "Various flags that control how ",
+      "ja": "次の関数の動作を制御する各種フラグです: "
+    },
+    {
+      "index": 91,
+      "en": " behaves. See\n",
+      "ja": "。次の列挙型を参照してください: "
+    },
+    {
+      "index": 92,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 93,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 94,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 95,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 96,
+      "en": "stdio_count",
+      "ja": "stdio_count"
+    },
+    {
+      "index": 97,
+      "en": "uv_stdio_container_t",
+      "ja": "uv_stdio_container_t"
+    },
+    {
+      "index": 98,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 99,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 100,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 101,
+      "en": "stdio",
+      "ja": "stdio"
+    },
+    {
+      "index": 102,
+      "en": "The ",
+      "ja": "次のフィールド、"
+    },
+    {
+      "index": 103,
+      "en": "stdio",
+      "ja": "stdio"
+    },
+    {
+      "index": 104,
+      "en": " field points to an array of ",
+      "ja": "は、次の型の構造体の配列を指します: "
+    },
+    {
+      "index": 105,
+      "en": "\nstructs that describe the file descriptors that will be made available to\nthe child process. The convention is that stdio[0] points to stdin,\nfd 1 is used for stdout, and fd 2 is stderr.",
+      "ja": "。これらは、子プロセスが使えるようにするファイルディスクリプターを記述します。慣例では、stdio[0]がstdinを指し、fd 1はstdout、fd 2はstderrに使います。"
+    },
+    {
+      "index": 106,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 107,
+      "en": "On Windows file descriptors greater than 2 are available to the child process only if\nthe child processes uses the MSVCRT runtime.",
+      "ja": "Windowsでは、2より大きいファイルディスクリプターを子プロセスで使えるのは、その子プロセスがMSVCRTランタイムを使っている場合だけです。"
+    },
+    {
+      "index": 108,
+      "en": "uv_uid_t",
+      "ja": "uv_uid_t"
+    },
+    {
+      "index": 109,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 110,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 111,
+      "en": "uid",
+      "ja": "uid"
+    },
+    {
+      "index": 112,
+      "en": "uv_gid_t",
+      "ja": "uv_gid_t"
+    },
+    {
+      "index": 113,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 114,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 115,
+      "en": "gid",
+      "ja": "gid"
+    },
+    {
+      "index": 116,
+      "en": "Libuv can change the child process’ user/group id. This happens only when\nthe appropriate bits are set in the flags fields.",
+      "ja": "libuvは子プロセスのユーザーIDとグループIDを変更できます。この変更を行うのは、flagsフィールドの対応するビットを設定した場合だけです。"
+    },
+    {
+      "index": 117,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 118,
+      "en": "This is not supported on Windows, ",
+      "ja": "Windowsではサポートしていません。次の関数は失敗します: "
+    },
+    {
+      "index": 119,
+      "en": " will fail and set the error\nto ",
+      "ja": "。その際、エラーを次の値に設定します: "
+    },
+    {
+      "index": 120,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 121,
+      "en": "uv_stdio_flags",
+      "ja": "uv_stdio_flags"
+    },
+    {
+      "index": 122,
+      "en": "uv_stdio_container_t",
+      "ja": "uv_stdio_container_t"
+    },
+    {
+      "index": 123,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 124,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 125,
+      "en": "Flags specifying how the stdio container should be passed to the child.",
+      "ja": "stdioコンテナーを子プロセスへどのように渡すか指定するフラグです。"
+    },
+    {
+      "index": 126,
+      "en": "union",
+      "ja": "union"
+    },
+    {
+      "index": 127,
+      "en": "[anonymous]",
+      "ja": "[anonymous]"
+    },
+    {
+      "index": 128,
+      "en": "uv_stdio_container_t",
+      "ja": "uv_stdio_container_t"
+    },
+    {
+      "index": 129,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 130,
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "index": 131,
+      "en": "Union containing either the ",
+      "ja": "子プロセスへ渡す、次のいずれかを格納する共用体です: "
+    },
+    {
+      "index": 132,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 133,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 134,
+      "en": "fd",
+      "ja": "fd"
+    },
+    {
+      "index": 135,
+      "en": " to be passed on to the child\nprocess.",
+      "ja": "。"
+    },
+    {
+      "index": 136,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 137,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 138,
+      "en": "uv_disable_stdio_inheritance",
+      "ja": "uv_disable_stdio_inheritance"
+    },
+    {
+      "index": 139,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 140,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 141,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 142,
+      "en": "Disables inheritance for file descriptors / handles that this process\ninherited from its parent. The effect is that child processes spawned by\nthis process don’t accidentally inherit these handles.",
+      "ja": "このプロセスが親から継承したファイルディスクリプターとハンドルの継承を無効にします。これにより、このプロセスが起動する子プロセスに、これらのハンドルを誤って継承させることを防ぎます。"
+    },
+    {
+      "index": 143,
+      "en": "It is recommended to call this function as early in your program as possible,\nbefore the inherited file descriptors can be closed or duplicated.",
+      "ja": "継承したファイルディスクリプターを閉じたり複製したりする前に、プログラムのできるだけ早い段階でこの関数を呼び出すことを推奨します。"
+    },
+    {
+      "index": 144,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 145,
+      "en": "This function works on a best-effort basis: there is no guarantee that libuv can discover\nall file descriptors that were inherited. In general it does a better job on Windows than\nit does on Unix.",
+      "ja": "この関数は可能な範囲で動作します。libuvが継承されたすべてのファイルディスクリプターを発見できる保証はありません。一般に、UnixよりWindowsでよりよく機能します。"
+    },
+    {
+      "index": 146,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 147,
+      "en": "uv_spawn",
+      "ja": "uv_spawn"
+    },
+    {
+      "index": 148,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 149,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 150,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 151,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 152,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 153,
+      "en": "uv_process_t",
+      "ja": "uv_process_t"
+    },
+    {
+      "index": 154,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 155,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 156,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 157,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 158,
+      "en": "uv_process_options_t",
+      "ja": "uv_process_options_t"
+    },
+    {
+      "index": 159,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 160,
+      "en": "options",
+      "ja": "options"
+    },
+    {
+      "index": 161,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 162,
+      "en": "Initializes the process handle and starts the process. If the process is\nsuccessfully spawned, this function will return 0. Otherwise, the\nnegative error code corresponding to the reason it couldn’t spawn is\nreturned. Note that either way-success or failure–you must eventually call\n",
+      "ja": "プロセスハンドルを初期化し、プロセスを開始します。起動に成功すると0を返します。失敗すると、起動できなかった理由に対応する負のエラーコードを返します。他のlibuvの初期化関数とは異なり、成功・失敗のいずれの場合も、最終的に次の関数を呼び出す必要があります: "
+    },
+    {
+      "index": 163,
+      "en": " to close the handle again before freeing the memory of\nthe handle, unlike other the other init functions in libuv.",
+      "ja": "。ハンドルのメモリーを解放する前に、この関数でハンドルを閉じてください。"
+    },
+    {
+      "index": 164,
+      "en": "Possible reasons for failing to spawn would include (but not be limited to)\nthe file to execute not existing, not having permissions to use the setuid or\nsetgid specified, or not having enough memory to allocate for the new\nprocess.",
+      "ja": "起動に失敗する理由には、実行するファイルが存在しない、指定したsetuidやsetgidを使う権限がない、新しいプロセスのためのメモリーを確保できない、などがあります。理由はこれらに限りません。"
+    },
+    {
+      "index": 165,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 166,
+      "en": "On unix, if the process has not yet exited when you call ",
+      "ja": "Unixでは、プロセスがまだ終了していない時点で次の関数を呼び出すと、"
+    },
+    {
+      "index": 167,
+      "en": "uv_close",
+      "ja": "uv_close"
+    },
+    {
+      "index": 168,
+      "en": ",\nyou will create a zombie that libuv cannot reap. You are responsible\nfor calling ",
+      "ja": "、libuvが回収できないゾンビプロセスを作ってしまいます。ユーザーが後で次の関数を呼び出す責任を負います: "
+    },
+    {
+      "index": 169,
+      "en": "waitpid",
+      "ja": "waitpid"
+    },
+    {
+      "index": 170,
+      "en": " later. This is not relevant on Windows.",
+      "ja": "。Windowsには関係ありません。"
+    },
+    {
+      "index": 171,
+      "en": "Changed in version 1.24.0: ",
+      "ja": "バージョン1.24.0での変更: "
+    },
+    {
+      "index": 172,
+      "en": "Added ",
+      "ja": "次のフラグを追加しました: "
+    },
+    {
+      "index": 173,
+      "en": "UV_PROCESS_WINDOWS_HIDE_CONSOLE",
+      "ja": "UV_PROCESS_WINDOWS_HIDE_CONSOLE"
+    },
+    {
+      "index": 174,
+      "en": " and\n",
+      "ja": "および"
+    },
+    {
+      "index": 175,
+      "en": "UV_PROCESS_WINDOWS_HIDE_GUI",
+      "ja": "UV_PROCESS_WINDOWS_HIDE_GUI"
+    },
+    {
+      "index": 176,
+      "en": " flags.",
+      "ja": "。"
+    },
+    {
+      "index": 177,
+      "en": "Changed in version 1.48.0: ",
+      "ja": "バージョン1.48.0での変更: "
+    },
+    {
+      "index": 178,
+      "en": "Added the\n",
+      "ja": "次のフラグを追加しました: "
+    },
+    {
+      "index": 179,
+      "en": "UV_PROCESS_WINDOWS_FILE_PATH_EXACT_NAME",
+      "ja": "UV_PROCESS_WINDOWS_FILE_PATH_EXACT_NAME"
+    },
+    {
+      "index": 180,
+      "en": " flag.",
+      "ja": "。"
+    },
+    {
+      "index": 181,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 182,
+      "en": "uv_process_kill",
+      "ja": "uv_process_kill"
+    },
+    {
+      "index": 183,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 184,
+      "en": "uv_process_t",
+      "ja": "uv_process_t"
+    },
+    {
+      "index": 185,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 186,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 187,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 188,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 189,
+      "en": "signum",
+      "ja": "signum"
+    },
+    {
+      "index": 190,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 191,
+      "en": "Sends the specified signal to the given process handle. Check the documentation\non ",
+      "ja": "指定したシグナルを、指定したプロセスハンドルへ送ります。シグナルのサポートについて、特にWindowsでは、次の文書を確認してください: "
+    },
+    {
+      "index": 192,
+      "en": "uv_signal_t — Signal handle",
+      "ja": "uv_signal_t — シグナルハンドル"
+    },
+    {
+      "index": 193,
+      "en": " for signal support, specially on Windows.",
+      "ja": "。"
+    },
+    {
+      "index": 194,
+      "en": "If the specified process is already dead, this will not kill a different\nprocess which happened to reuse the same pid. By contrast, ",
+      "ja": "指定したプロセスがすでに終了している場合、同じPIDを再利用した別のプロセスを終了させることはありません。一方、次の関数、"
+    },
+    {
+      "index": 195,
+      "en": "uv_kill",
+      "ja": "uv_kill"
+    },
+    {
+      "index": 196,
+      "en": " may\nkill an arbitrary other process if you use a cached value of\n",
+      "ja": "では、次の関数で取得した値をキャッシュして使うと、無関係な別のプロセスを終了させる場合があります: "
+    },
+    {
+      "index": 197,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 198,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 199,
+      "en": "uv_kill",
+      "ja": "uv_kill"
+    },
+    {
+      "index": 200,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 201,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 202,
+      "en": "pid",
+      "ja": "pid"
+    },
+    {
+      "index": 203,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 204,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 205,
+      "en": "signum",
+      "ja": "signum"
+    },
+    {
+      "index": 206,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 207,
+      "en": "Sends the specified signal to the given PID. Check the documentation\non ",
+      "ja": "指定したシグナルを、指定したPIDへ送ります。シグナルのサポートについて、特にWindowsでは、次の文書を確認してください: "
+    },
+    {
+      "index": 208,
+      "en": "uv_signal_t — Signal handle",
+      "ja": "uv_signal_t — シグナルハンドル"
+    },
+    {
+      "index": 209,
+      "en": " for signal support, specially on Windows.",
+      "ja": "。"
+    },
+    {
+      "index": 210,
+      "en": "uv_pid_t",
+      "ja": "uv_pid_t"
+    },
+    {
+      "index": 211,
+      "en": "uv_process_get_pid",
+      "ja": "uv_process_get_pid"
+    },
+    {
+      "index": 212,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 213,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 214,
+      "en": "uv_process_t",
+      "ja": "uv_process_t"
+    },
+    {
+      "index": 215,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 216,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 217,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 218,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 219,
+      "en": "handle->pid",
+      "ja": "handle->pid"
+    },
+    {
+      "index": 220,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 221,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 222,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 223,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 224,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 4,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

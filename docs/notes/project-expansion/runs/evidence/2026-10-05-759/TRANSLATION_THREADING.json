@@ -1,0 +1,2789 @@
+{
+  "page": "reference/threading",
+  "at": "2026-10-04T23:11:13.862325+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/threading.rst",
+      "sha256": "7f7e197066a10a4039cae5c4aa1adc35e41726c9b7b37a23e66509c1d6b205c2"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/threading.md",
+      "sha256": "dcb747d662544fcaf125457306218e6a221687c85b385c2d0d978703bde705b9"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/threading.md",
+      "sha256": "fb463cbff6540044279b606ee993e56997152311f551ace2ec8cb8d4e17d5c8b"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 2 original code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Threading and synchronization utilities",
+      "ja": "スレッドと同期のユーティリティー"
+    },
+    {
+      "index": 1,
+      "en": "libuv provides cross-platform implementations for multiple threading and\nsynchronization primitives. The API largely follows the pthreads API.",
+      "ja": "libuvは、複数のスレッド処理・同期プリミティブについて、プラットフォーム間で使える実装を提供します。APIはおおむねpthreads APIに従っています。"
+    },
+    {
+      "index": 2,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 3,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 4,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 5,
+      "en": "Thread data type.",
+      "ja": "スレッドのデータ型です。"
+    },
+    {
+      "index": 6,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 7,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 8,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 9,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 10,
+      "en": "uv_thread_cb",
+      "ja": "uv_thread_cb"
+    },
+    {
+      "index": 11,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 12,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 13,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 14,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 15,
+      "en": "arg",
+      "ja": "arg"
+    },
+    {
+      "index": 16,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 17,
+      "en": "Callback that is invoked to initialize thread execution. ",
+      "ja": "スレッドの実行を開始するときに呼び出すコールバックです。"
+    },
+    {
+      "index": 18,
+      "en": "arg",
+      "ja": "arg"
+    },
+    {
+      "index": 19,
+      "en": " is the same\nvalue that was passed to ",
+      "ja": "には、次の関数へ渡したものと同じ値が入ります: "
+    },
+    {
+      "index": 20,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 21,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 22,
+      "en": "uv_key_t",
+      "ja": "uv_key_t"
+    },
+    {
+      "index": 23,
+      "en": "Thread-local key data type.",
+      "ja": "スレッドローカルキーのデータ型です。"
+    },
+    {
+      "index": 24,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 25,
+      "en": "uv_once_t",
+      "ja": "uv_once_t"
+    },
+    {
+      "index": 26,
+      "en": "Once-only initializer data type.",
+      "ja": "1回だけ行う初期化のデータ型です。"
+    },
+    {
+      "index": 27,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 28,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 29,
+      "en": "Mutex data type.",
+      "ja": "ミューテックスのデータ型です。"
+    },
+    {
+      "index": 30,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 31,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 32,
+      "en": "Read-write lock data type.",
+      "ja": "読み書きロックのデータ型です。"
+    },
+    {
+      "index": 33,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 34,
+      "en": "uv_sem_t",
+      "ja": "uv_sem_t"
+    },
+    {
+      "index": 35,
+      "en": "Semaphore data type.",
+      "ja": "セマフォのデータ型です。"
+    },
+    {
+      "index": 36,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 37,
+      "en": "uv_cond_t",
+      "ja": "uv_cond_t"
+    },
+    {
+      "index": 38,
+      "en": "Condition data type.",
+      "ja": "条件変数のデータ型です。"
+    },
+    {
+      "index": 39,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 40,
+      "en": "uv_barrier_t",
+      "ja": "uv_barrier_t"
+    },
+    {
+      "index": 41,
+      "en": "Barrier data type.",
+      "ja": "バリアのデータ型です。"
+    },
+    {
+      "index": 42,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 43,
+      "en": "Threads",
+      "ja": "スレッド"
+    },
+    {
+      "index": 44,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 45,
+      "en": "uv_thread_options_t",
+      "ja": "uv_thread_options_t"
+    },
+    {
+      "index": 46,
+      "en": "Options for spawning a new thread (passed to ",
+      "ja": "新しいスレッドを起動するためのオプションです。次の関数へ渡します: "
+    },
+    {
+      "index": 47,
+      "en": ").",
+      "ja": "。"
+    },
+    {
+      "index": 48,
+      "en": "More fields may be added to this struct at any time, so its exact\nlayout and size should not be relied upon.",
+      "ja": "この構造体にはいつでもフィールドを追加する可能性があるため、正確なレイアウトやサイズに依存しないでください。"
+    },
+    {
+      "index": 49,
+      "en": "New in version 1.26.0.",
+      "ja": "バージョン1.26.0で追加。"
+    },
+    {
+      "index": 50,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 51,
+      "en": "uv_thread_create",
+      "ja": "uv_thread_create"
+    },
+    {
+      "index": 52,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 53,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 54,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 55,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 56,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 57,
+      "en": "uv_thread_cb",
+      "ja": "uv_thread_cb"
+    },
+    {
+      "index": 58,
+      "en": "entry",
+      "ja": "entry"
+    },
+    {
+      "index": 59,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 60,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 61,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 62,
+      "en": "arg",
+      "ja": "arg"
+    },
+    {
+      "index": 63,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 64,
+      "en": "Changed in version 1.4.1: ",
+      "ja": "バージョン1.4.1での変更: "
+    },
+    {
+      "index": 65,
+      "en": "returns a UV_E* error code on failure",
+      "ja": "失敗時にUV_E*エラーコードを返すようになりました。"
+    },
+    {
+      "index": 66,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 67,
+      "en": "uv_thread_detach",
+      "ja": "uv_thread_detach"
+    },
+    {
+      "index": 68,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 69,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 70,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 71,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 72,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 73,
+      "en": "Detaches a thread. Detached threads automatically release their\nresources upon termination, eliminating the need for the application to\ncall ",
+      "ja": "スレッドをデタッチします。デタッチしたスレッドは終了時にリソースを自動的に解放するため、アプリケーションが次の関数を呼び出す必要はありません: "
+    },
+    {
+      "index": 74,
+      "en": "uv_thread_join",
+      "ja": "uv_thread_join"
+    },
+    {
+      "index": 75,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 76,
+      "en": "New in version 1.50.0.",
+      "ja": "バージョン1.50.0で追加。"
+    },
+    {
+      "index": 77,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 78,
+      "en": "uv_thread_create_ex",
+      "ja": "uv_thread_create_ex"
+    },
+    {
+      "index": 79,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 80,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 81,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 82,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 83,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 84,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 85,
+      "en": "uv_thread_options_t",
+      "ja": "uv_thread_options_t"
+    },
+    {
+      "index": 86,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 87,
+      "en": "params",
+      "ja": "params"
+    },
+    {
+      "index": 88,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 89,
+      "en": "uv_thread_cb",
+      "ja": "uv_thread_cb"
+    },
+    {
+      "index": 90,
+      "en": "entry",
+      "ja": "entry"
+    },
+    {
+      "index": 91,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 92,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 93,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 94,
+      "en": "arg",
+      "ja": "arg"
+    },
+    {
+      "index": 95,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 96,
+      "en": "Like ",
+      "ja": "次の関数と同様ですが、"
+    },
+    {
+      "index": 97,
+      "en": ", but additionally specifies options for creating a new thread.",
+      "ja": "、新しいスレッドを作成するオプションも指定します。"
+    },
+    {
+      "index": 98,
+      "en": "If ",
+      "ja": "次のフラグ、"
+    },
+    {
+      "index": 99,
+      "en": "UV_THREAD_HAS_STACK_SIZE",
+      "ja": "UV_THREAD_HAS_STACK_SIZE"
+    },
+    {
+      "index": 100,
+      "en": " is set, ",
+      "ja": "を設定すると、"
+    },
+    {
+      "index": 101,
+      "en": "stack_size",
+      "ja": "stack_size"
+    },
+    {
+      "index": 102,
+      "en": " specifies a stack size for the new thread.\n",
+      "ja": "が新しいスレッドのスタックサイズを指定します。"
+    },
+    {
+      "index": 103,
+      "en": "0",
+      "ja": "0"
+    },
+    {
+      "index": 104,
+      "en": " indicates that the default value should be used, i.e. behaves as if the flag was not set.\nOther values will be rounded up to the nearest page boundary.",
+      "ja": "はデフォルト値を使うことを示し、フラグを設定しなかった場合と同じ動作になります。それ以外の値は、次のページ境界まで切り上げます。"
+    },
+    {
+      "index": 105,
+      "en": "New in version 1.26.0.",
+      "ja": "バージョン1.26.0で追加。"
+    },
+    {
+      "index": 106,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 107,
+      "en": "uv_thread_setaffinity",
+      "ja": "uv_thread_setaffinity"
+    },
+    {
+      "index": 108,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 109,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 110,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 111,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 112,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 113,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 114,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 115,
+      "en": "cpumask",
+      "ja": "cpumask"
+    },
+    {
+      "index": 116,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 117,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 118,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 119,
+      "en": "oldmask",
+      "ja": "oldmask"
+    },
+    {
+      "index": 120,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 121,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 122,
+      "en": "mask_size",
+      "ja": "mask_size"
+    },
+    {
+      "index": 123,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 124,
+      "en": "Sets the specified thread’s affinity to cpumask, which is specified in\nbytes. Optionally returning the previous affinity setting in oldmask.\nOn Unix, uses ",
+      "ja": "指定したスレッドのアフィニティーを、バイト単位で指定するcpumaskに設定します。必要に応じて以前の設定をoldmaskに返します。Unixでは、次の関数を使って設定を取得します: "
+    },
+    {
+      "index": 125,
+      "en": "pthread_getaffinity_np(3)",
+      "ja": "pthread_getaffinity_np(3)"
+    },
+    {
+      "index": 126,
+      "en": " to get the affinity setting\nand maps the cpu_set_t to bytes in oldmask. Then maps the bytes in cpumask\nto a cpu_set_t and uses ",
+      "ja": "。cpu_set_tをoldmaskのバイト列へ変換します。続いて、cpumaskのバイト列をcpu_set_tへ変換し、次の関数を使います: "
+    },
+    {
+      "index": 127,
+      "en": "pthread_setaffinity_np(3)",
+      "ja": "pthread_setaffinity_np(3)"
+    },
+    {
+      "index": 128,
+      "en": ". On Windows, maps\nthe bytes in cpumask to a bitmask and uses SetThreadAffinityMask() which\nreturns the previous affinity setting.",
+      "ja": "。Windowsでは、cpumaskのバイト列をビットマスクへ変換し、以前の設定を返すSetThreadAffinityMask()を使います。"
+    },
+    {
+      "index": 129,
+      "en": "The mask_size specifies the number of entries (bytes) in cpumask / oldmask,\nand must be greater-than-or-equal-to ",
+      "ja": "mask_sizeはcpumaskとoldmaskの要素数（バイト数）を指定します。次の関数の値以上である必要があります: "
+    },
+    {
+      "index": 130,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 131,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 132,
+      "en": "Thread affinity setting is not atomic on Windows. Unsupported on macOS.",
+      "ja": "Windowsでは、スレッドアフィニティーの設定はアトミックではありません。macOSではサポートしていません。"
+    },
+    {
+      "index": 133,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 134,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 135,
+      "en": "uv_thread_getaffinity",
+      "ja": "uv_thread_getaffinity"
+    },
+    {
+      "index": 136,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 137,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 138,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 139,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 140,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 141,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 142,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 143,
+      "en": "cpumask",
+      "ja": "cpumask"
+    },
+    {
+      "index": 144,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 145,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 146,
+      "en": "mask_size",
+      "ja": "mask_size"
+    },
+    {
+      "index": 147,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 148,
+      "en": "Gets the specified thread’s affinity setting. On Unix, this maps the\ncpu_set_t returned by ",
+      "ja": "指定したスレッドのアフィニティー設定を取得します。Unixでは、次の関数が返したcpu_set_tを、"
+    },
+    {
+      "index": 149,
+      "en": "pthread_getaffinity_np(3)",
+      "ja": "pthread_getaffinity_np(3)"
+    },
+    {
+      "index": 150,
+      "en": " to bytes in cpumask.",
+      "ja": "、cpumaskのバイト列へ変換します。"
+    },
+    {
+      "index": 151,
+      "en": "The mask_size specifies the number of entries (bytes) in cpumask,\nand must be greater-than-or-equal-to ",
+      "ja": "mask_sizeはcpumaskの要素数（バイト数）を指定します。次の関数の値以上である必要があります: "
+    },
+    {
+      "index": 152,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 153,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 154,
+      "en": "Thread affinity getting is not atomic on Windows. Unsupported on macOS.",
+      "ja": "Windowsでは、スレッドアフィニティーの取得はアトミックではありません。macOSではサポートしていません。"
+    },
+    {
+      "index": 155,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 156,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 157,
+      "en": "uv_thread_getcpu",
+      "ja": "uv_thread_getcpu"
+    },
+    {
+      "index": 158,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 159,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 160,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 161,
+      "en": "Gets the CPU number on which the calling thread is running.",
+      "ja": "呼び出し元スレッドが実行されているCPUの番号を取得します。"
+    },
+    {
+      "index": 162,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 163,
+      "en": "Currently only implemented on Windows, Linux and FreeBSD.",
+      "ja": "現在、Windows、Linux、FreeBSDだけに実装しています。"
+    },
+    {
+      "index": 164,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 165,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 166,
+      "en": "uv_thread_self",
+      "ja": "uv_thread_self"
+    },
+    {
+      "index": 167,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 168,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 169,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 170,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 171,
+      "en": "uv_thread_join",
+      "ja": "uv_thread_join"
+    },
+    {
+      "index": 172,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 173,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 174,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 175,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 176,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 177,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 178,
+      "en": "uv_thread_equal",
+      "ja": "uv_thread_equal"
+    },
+    {
+      "index": 179,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 180,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 181,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 182,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 183,
+      "en": "t1",
+      "ja": "t1"
+    },
+    {
+      "index": 184,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 185,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 186,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 187,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 188,
+      "en": "t2",
+      "ja": "t2"
+    },
+    {
+      "index": 189,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 190,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 191,
+      "en": "uv_thread_setname",
+      "ja": "uv_thread_setname"
+    },
+    {
+      "index": 192,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 193,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 194,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 195,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 196,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 197,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 198,
+      "en": "Sets the name of the current thread. Different platforms define different limits on the max number of characters\na thread name can be: Linux, IBM i (16), macOS (64), Windows (32767), and NetBSD (32), etc. ",
+      "ja": "現在のスレッドの名前を設定します。名前の最大文字数はプラットフォームによって異なり、LinuxとIBM iは16、macOSは64、Windowsは32767、NetBSDは32などです。次の関数は、"
+    },
+    {
+      "index": 199,
+      "en": "uv_thread_setname()",
+      "ja": "uv_thread_setname()"
+    },
+    {
+      "index": 200,
+      "en": "\nwill truncate it in case ",
+      "ja": "、"
+    },
+    {
+      "index": 201,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 202,
+      "en": " is larger than the limit of the platform.",
+      "ja": "がそのプラットフォームの上限より長い場合に切り詰めます。"
+    },
+    {
+      "index": 203,
+      "en": "Not supported on Windows Server 2016, returns ",
+      "ja": "Windows Server 2016ではサポートせず、次のエラーを返します: "
+    },
+    {
+      "index": 204,
+      "en": "UV_ENOSYS",
+      "ja": "UV_ENOSYS"
+    },
+    {
+      "index": 205,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 206,
+      "en": "New in version 1.50.0.",
+      "ja": "バージョン1.50.0で追加。"
+    },
+    {
+      "index": 207,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 208,
+      "en": "uv_thread_getname",
+      "ja": "uv_thread_getname"
+    },
+    {
+      "index": 209,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 210,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 211,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 212,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 213,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 214,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 215,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 216,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 217,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 218,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 219,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 220,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 221,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 222,
+      "en": "Gets the name of the thread specified by ",
+      "ja": "次の引数で指定したスレッドの名前を取得します: "
+    },
+    {
+      "index": 223,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 224,
+      "en": ". The thread name is copied, with the trailing NUL, into the buffer\npointed to by ",
+      "ja": "。スレッド名を、末尾のNULを含めて、次の引数が指すバッファへコピーします: "
+    },
+    {
+      "index": 225,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 226,
+      "en": ". The ",
+      "ja": "。次のパラメーター、"
+    },
+    {
+      "index": 227,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 228,
+      "en": " parameter specifies the size of the buffer pointed to by ",
+      "ja": "は、次の引数が指すバッファのサイズを指定します: "
+    },
+    {
+      "index": 229,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 230,
+      "en": ".\nThe buffer should be large enough to hold the name of the thread plus the trailing NUL, or it will be truncated to fit\nwith the trailing NUL.",
+      "ja": "。バッファには、スレッド名と末尾のNULを格納できる十分な大きさが必要です。足りない場合は、末尾のNULを含めて収まるよう名前を切り詰めます。"
+    },
+    {
+      "index": 231,
+      "en": "It’s undefined behavior to call this after the thread has terminated.",
+      "ja": "スレッド終了後の呼び出しは未定義動作です。"
+    },
+    {
+      "index": 232,
+      "en": "Not supported on Windows Server 2016, returns ",
+      "ja": "Windows Server 2016ではサポートせず、次のエラーを返します: "
+    },
+    {
+      "index": 233,
+      "en": "UV_ENOSYS",
+      "ja": "UV_ENOSYS"
+    },
+    {
+      "index": 234,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 235,
+      "en": "New in version 1.50.0.",
+      "ja": "バージョン1.50.0で追加。"
+    },
+    {
+      "index": 236,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 237,
+      "en": "uv_thread_setpriority",
+      "ja": "uv_thread_setpriority"
+    },
+    {
+      "index": 238,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 239,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 240,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 241,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 242,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 243,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 244,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 245,
+      "en": "If the function succeeds, the return value is 0.\nIf the function fails, the return value is less than zero.\nSets the scheduling priority of the thread specified by tid. It requires elevated\nprivilege to set specific priorities on some platforms.\nThe priority can be set to the following constants. UV_THREAD_PRIORITY_HIGHEST,\nUV_THREAD_PRIORITY_ABOVE_NORMAL, UV_THREAD_PRIORITY_NORMAL,\nUV_THREAD_PRIORITY_BELOW_NORMAL, UV_THREAD_PRIORITY_LOWEST.",
+      "ja": "成功時は0、失敗時は0未満の値を返します。tidで指定したスレッドのスケジューリング優先度を設定します。一部のプラットフォームでは、特定の優先度を設定するために高い権限が必要です。優先度は次の定数に設定できます: UV_THREAD_PRIORITY_HIGHEST、UV_THREAD_PRIORITY_ABOVE_NORMAL、UV_THREAD_PRIORITY_NORMAL、UV_THREAD_PRIORITY_BELOW_NORMAL、UV_THREAD_PRIORITY_LOWEST。"
+    },
+    {
+      "index": 246,
+      "en": "It’s undefined behavior to call this after the thread has terminated.",
+      "ja": "スレッド終了後の呼び出しは未定義動作です。"
+    },
+    {
+      "index": 247,
+      "en": "New in version 1.48.0.",
+      "ja": "バージョン1.48.0で追加。"
+    },
+    {
+      "index": 248,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 249,
+      "en": "uv_thread_getpriority",
+      "ja": "uv_thread_getpriority"
+    },
+    {
+      "index": 250,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 251,
+      "en": "uv_thread_t",
+      "ja": "uv_thread_t"
+    },
+    {
+      "index": 252,
+      "en": "tid",
+      "ja": "tid"
+    },
+    {
+      "index": 253,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 254,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 255,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 256,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 257,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 258,
+      "en": "If the function succeeds, the return value is 0.\nIf the function fails, the return value is less than zero.\nRetrieves the scheduling priority of the thread specified by tid. The value in the\noutput parameter priority is platform dependent.\nFor Linux, when schedule policy is SCHED_OTHER (default), priority is 0.",
+      "ja": "成功時は0、失敗時は0未満の値を返します。tidで指定したスレッドのスケジューリング優先度を取得します。出力パラメーターpriorityの値はプラットフォームに依存します。Linuxでは、スケジューリングポリシーがSCHED_OTHER（デフォルト）の場合、優先度は0です。"
+    },
+    {
+      "index": 259,
+      "en": "It’s undefined behavior to call this after the thread has terminated.",
+      "ja": "スレッド終了後の呼び出しは未定義動作です。"
+    },
+    {
+      "index": 260,
+      "en": "New in version 1.48.0.",
+      "ja": "バージョン1.48.0で追加。"
+    },
+    {
+      "index": 261,
+      "en": "Thread-local storage",
+      "ja": "スレッドローカルストレージ"
+    },
+    {
+      "index": 262,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 263,
+      "en": "The total thread-local storage size may be limited. That is, it may not be possible to\ncreate many TLS keys.",
+      "ja": "スレッドローカルストレージの合計サイズには制限がある場合があります。つまり、多数のTLSキーを作成できない場合があります。"
+    },
+    {
+      "index": 264,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 265,
+      "en": "uv_key_create",
+      "ja": "uv_key_create"
+    },
+    {
+      "index": 266,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 267,
+      "en": "uv_key_t",
+      "ja": "uv_key_t"
+    },
+    {
+      "index": 268,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 269,
+      "en": "key",
+      "ja": "key"
+    },
+    {
+      "index": 270,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 271,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 272,
+      "en": "uv_key_delete",
+      "ja": "uv_key_delete"
+    },
+    {
+      "index": 273,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 274,
+      "en": "uv_key_t",
+      "ja": "uv_key_t"
+    },
+    {
+      "index": 275,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 276,
+      "en": "key",
+      "ja": "key"
+    },
+    {
+      "index": 277,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 278,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 279,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 280,
+      "en": "uv_key_get",
+      "ja": "uv_key_get"
+    },
+    {
+      "index": 281,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 282,
+      "en": "uv_key_t",
+      "ja": "uv_key_t"
+    },
+    {
+      "index": 283,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 284,
+      "en": "key",
+      "ja": "key"
+    },
+    {
+      "index": 285,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 286,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 287,
+      "en": "uv_key_set",
+      "ja": "uv_key_set"
+    },
+    {
+      "index": 288,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 289,
+      "en": "uv_key_t",
+      "ja": "uv_key_t"
+    },
+    {
+      "index": 290,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 291,
+      "en": "key",
+      "ja": "key"
+    },
+    {
+      "index": 292,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 293,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 294,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 295,
+      "en": "value",
+      "ja": "value"
+    },
+    {
+      "index": 296,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 297,
+      "en": "Once-only initialization",
+      "ja": "1回だけ行う初期化"
+    },
+    {
+      "index": 298,
+      "en": "Runs a function once and only once. Concurrent calls to ",
+      "ja": "関数を1回だけ実行します。同じガードを使って次の関数を同時に呼び出すと、"
+    },
+    {
+      "index": 299,
+      "en": " with the\nsame guard will block all callers except one (it’s unspecified which one).\nThe guard should be initialized statically with the UV_ONCE_INIT macro.",
+      "ja": "、1つを除くすべての呼び出し元がブロックされます（どれがブロックされないかは規定していません）。ガードはUV_ONCE_INITマクロで静的に初期化してください。"
+    },
+    {
+      "index": 300,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 301,
+      "en": "uv_once",
+      "ja": "uv_once"
+    },
+    {
+      "index": 302,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 303,
+      "en": "uv_once_t",
+      "ja": "uv_once_t"
+    },
+    {
+      "index": 304,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 305,
+      "en": "guard",
+      "ja": "guard"
+    },
+    {
+      "index": 306,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 307,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 308,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 309,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 310,
+      "en": "callback",
+      "ja": "callback"
+    },
+    {
+      "index": 311,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 312,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 313,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 314,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 315,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 316,
+      "en": "Mutex locks",
+      "ja": "ミューテックスロック"
+    },
+    {
+      "index": 317,
+      "en": "Functions return 0 on success or an error code < 0 (unless the\nreturn type is void, of course).",
+      "ja": "関数は、成功時に0、失敗時に0未満のエラーコードを返します（もちろん、戻り値の型がvoidの場合を除きます）。"
+    },
+    {
+      "index": 318,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 319,
+      "en": "uv_mutex_init",
+      "ja": "uv_mutex_init"
+    },
+    {
+      "index": 320,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 321,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 322,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 323,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 324,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 325,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 326,
+      "en": "uv_mutex_init_recursive",
+      "ja": "uv_mutex_init_recursive"
+    },
+    {
+      "index": 327,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 328,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 329,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 330,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 331,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 332,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 333,
+      "en": "uv_mutex_destroy",
+      "ja": "uv_mutex_destroy"
+    },
+    {
+      "index": 334,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 335,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 336,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 337,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 338,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 339,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 340,
+      "en": "uv_mutex_lock",
+      "ja": "uv_mutex_lock"
+    },
+    {
+      "index": 341,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 342,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 343,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 344,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 345,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 346,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 347,
+      "en": "uv_mutex_trylock",
+      "ja": "uv_mutex_trylock"
+    },
+    {
+      "index": 348,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 349,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 350,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 351,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 352,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 353,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 354,
+      "en": "uv_mutex_unlock",
+      "ja": "uv_mutex_unlock"
+    },
+    {
+      "index": 355,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 356,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 357,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 358,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 359,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 360,
+      "en": "Read-write locks",
+      "ja": "読み書きロック"
+    },
+    {
+      "index": 361,
+      "en": "Functions return 0 on success or an error code < 0 (unless the\nreturn type is void, of course).",
+      "ja": "関数は、成功時に0、失敗時に0未満のエラーコードを返します（戻り値の型がvoidの場合を除きます）。"
+    },
+    {
+      "index": 362,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 363,
+      "en": "uv_rwlock_init",
+      "ja": "uv_rwlock_init"
+    },
+    {
+      "index": 364,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 365,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 366,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 367,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 368,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 369,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 370,
+      "en": "uv_rwlock_destroy",
+      "ja": "uv_rwlock_destroy"
+    },
+    {
+      "index": 371,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 372,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 373,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 374,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 375,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 376,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 377,
+      "en": "uv_rwlock_rdlock",
+      "ja": "uv_rwlock_rdlock"
+    },
+    {
+      "index": 378,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 379,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 380,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 381,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 382,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 383,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 384,
+      "en": "uv_rwlock_tryrdlock",
+      "ja": "uv_rwlock_tryrdlock"
+    },
+    {
+      "index": 385,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 386,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 387,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 388,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 389,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 390,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 391,
+      "en": "uv_rwlock_rdunlock",
+      "ja": "uv_rwlock_rdunlock"
+    },
+    {
+      "index": 392,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 393,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 394,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 395,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 396,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 397,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 398,
+      "en": "uv_rwlock_wrlock",
+      "ja": "uv_rwlock_wrlock"
+    },
+    {
+      "index": 399,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 400,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 401,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 402,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 403,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 404,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 405,
+      "en": "uv_rwlock_trywrlock",
+      "ja": "uv_rwlock_trywrlock"
+    },
+    {
+      "index": 406,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 407,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 408,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 409,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 410,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 411,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 412,
+      "en": "uv_rwlock_wrunlock",
+      "ja": "uv_rwlock_wrunlock"
+    },
+    {
+      "index": 413,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 414,
+      "en": "uv_rwlock_t",
+      "ja": "uv_rwlock_t"
+    },
+    {
+      "index": 415,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 416,
+      "en": "rwlock",
+      "ja": "rwlock"
+    },
+    {
+      "index": 417,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 418,
+      "en": "Semaphores",
+      "ja": "セマフォ"
+    },
+    {
+      "index": 419,
+      "en": "Functions return 0 on success or an error code < 0 (unless the\nreturn type is void, of course).",
+      "ja": "関数は、成功時に0、失敗時に0未満のエラーコードを返します（戻り値の型がvoidの場合を除きます）。"
+    },
+    {
+      "index": 420,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 421,
+      "en": "uv_sem_init",
+      "ja": "uv_sem_init"
+    },
+    {
+      "index": 422,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 423,
+      "en": "uv_sem_t",
+      "ja": "uv_sem_t"
+    },
+    {
+      "index": 424,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 425,
+      "en": "sem",
+      "ja": "sem"
+    },
+    {
+      "index": 426,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 427,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 428,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 429,
+      "en": "value",
+      "ja": "value"
+    },
+    {
+      "index": 430,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 431,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 432,
+      "en": "uv_sem_destroy",
+      "ja": "uv_sem_destroy"
+    },
+    {
+      "index": 433,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 434,
+      "en": "uv_sem_t",
+      "ja": "uv_sem_t"
+    },
+    {
+      "index": 435,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 436,
+      "en": "sem",
+      "ja": "sem"
+    },
+    {
+      "index": 437,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 438,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 439,
+      "en": "uv_sem_post",
+      "ja": "uv_sem_post"
+    },
+    {
+      "index": 440,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 441,
+      "en": "uv_sem_t",
+      "ja": "uv_sem_t"
+    },
+    {
+      "index": 442,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 443,
+      "en": "sem",
+      "ja": "sem"
+    },
+    {
+      "index": 444,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 445,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 446,
+      "en": "uv_sem_wait",
+      "ja": "uv_sem_wait"
+    },
+    {
+      "index": 447,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 448,
+      "en": "uv_sem_t",
+      "ja": "uv_sem_t"
+    },
+    {
+      "index": 449,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 450,
+      "en": "sem",
+      "ja": "sem"
+    },
+    {
+      "index": 451,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 452,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 453,
+      "en": "uv_sem_trywait",
+      "ja": "uv_sem_trywait"
+    },
+    {
+      "index": 454,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 455,
+      "en": "uv_sem_t",
+      "ja": "uv_sem_t"
+    },
+    {
+      "index": 456,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 457,
+      "en": "sem",
+      "ja": "sem"
+    },
+    {
+      "index": 458,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 459,
+      "en": "Conditions",
+      "ja": "条件変数"
+    },
+    {
+      "index": 460,
+      "en": "Functions return 0 on success or an error code < 0 (unless the\nreturn type is void, of course).",
+      "ja": "関数は、成功時に0、失敗時に0未満のエラーコードを返します（戻り値の型がvoidの場合を除きます）。"
+    },
+    {
+      "index": 461,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 462,
+      "en": "Callers should be prepared to deal with spurious wakeups on ",
+      "ja": "呼び出し元は、次の関数での疑似的なウェイクアップに対処できるようにしてください: "
+    },
+    {
+      "index": 463,
+      "en": "\nand ",
+      "ja": "および"
+    },
+    {
+      "index": 464,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 465,
+      "en": "The timeout parameter for ",
+      "ja": "次の関数のtimeoutパラメーターは、"
+    },
+    {
+      "index": 466,
+      "en": " is relative to the time\nat which function is called.",
+      "ja": "、関数を呼び出した時刻を基準とする相対値です。"
+    },
+    {
+      "index": 467,
+      "en": "On z/OS, the timeout parameter for ",
+      "ja": "z/OSでは、次の関数のtimeoutパラメーターを、"
+    },
+    {
+      "index": 468,
+      "en": " is converted to an\nabsolute system time at which the wait expires. If the current system clock time\npasses the absolute time calculated before the condition is signaled, an ETIMEDOUT\nerror results. After the wait begins, the wait time is not affected by changes\nto the system clock.",
+      "ja": "、待機が終了するシステム時刻の絶対値へ変換します。条件が通知される前に現在のシステム時刻が計算済みの絶対時刻を過ぎると、ETIMEDOUTエラーとなります。待機の開始後は、システムクロックの変更によって待機時間は変わりません。"
+    },
+    {
+      "index": 469,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 470,
+      "en": "uv_cond_init",
+      "ja": "uv_cond_init"
+    },
+    {
+      "index": 471,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 472,
+      "en": "uv_cond_t",
+      "ja": "uv_cond_t"
+    },
+    {
+      "index": 473,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 474,
+      "en": "cond",
+      "ja": "cond"
+    },
+    {
+      "index": 475,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 476,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 477,
+      "en": "uv_cond_destroy",
+      "ja": "uv_cond_destroy"
+    },
+    {
+      "index": 478,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 479,
+      "en": "uv_cond_t",
+      "ja": "uv_cond_t"
+    },
+    {
+      "index": 480,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 481,
+      "en": "cond",
+      "ja": "cond"
+    },
+    {
+      "index": 482,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 483,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 484,
+      "en": "uv_cond_signal",
+      "ja": "uv_cond_signal"
+    },
+    {
+      "index": 485,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 486,
+      "en": "uv_cond_t",
+      "ja": "uv_cond_t"
+    },
+    {
+      "index": 487,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 488,
+      "en": "cond",
+      "ja": "cond"
+    },
+    {
+      "index": 489,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 490,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 491,
+      "en": "uv_cond_broadcast",
+      "ja": "uv_cond_broadcast"
+    },
+    {
+      "index": 492,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 493,
+      "en": "uv_cond_t",
+      "ja": "uv_cond_t"
+    },
+    {
+      "index": 494,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 495,
+      "en": "cond",
+      "ja": "cond"
+    },
+    {
+      "index": 496,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 497,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 498,
+      "en": "uv_cond_wait",
+      "ja": "uv_cond_wait"
+    },
+    {
+      "index": 499,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 500,
+      "en": "uv_cond_t",
+      "ja": "uv_cond_t"
+    },
+    {
+      "index": 501,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 502,
+      "en": "cond",
+      "ja": "cond"
+    },
+    {
+      "index": 503,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 504,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 505,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 506,
+      "en": "mutex",
+      "ja": "mutex"
+    },
+    {
+      "index": 507,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 508,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 509,
+      "en": "uv_cond_timedwait",
+      "ja": "uv_cond_timedwait"
+    },
+    {
+      "index": 510,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 511,
+      "en": "uv_cond_t",
+      "ja": "uv_cond_t"
+    },
+    {
+      "index": 512,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 513,
+      "en": "cond",
+      "ja": "cond"
+    },
+    {
+      "index": 514,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 515,
+      "en": "uv_mutex_t",
+      "ja": "uv_mutex_t"
+    },
+    {
+      "index": 516,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 517,
+      "en": "mutex",
+      "ja": "mutex"
+    },
+    {
+      "index": 518,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 519,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 520,
+      "en": "timeout",
+      "ja": "timeout"
+    },
+    {
+      "index": 521,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 522,
+      "en": "Barriers",
+      "ja": "バリア"
+    },
+    {
+      "index": 523,
+      "en": "Functions return 0 on success or an error code < 0 (unless the\nreturn type is void, of course).",
+      "ja": "関数は、成功時に0、失敗時に0未満のエラーコードを返します（戻り値の型がvoidの場合を除きます）。"
+    },
+    {
+      "index": 524,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 525,
+      "en": " returns a value > 0 to an arbitrarily chosen “serializer” thread\nto facilitate cleanup, i.e.",
+      "ja": "は、後始末を容易にするため、任意に選ばれた「serializer」スレッドに0より大きい値を返します。次の例のように使います:"
+    },
+    {
+      "index": 526,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 527,
+      "en": "uv_barrier_init",
+      "ja": "uv_barrier_init"
+    },
+    {
+      "index": 528,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 529,
+      "en": "uv_barrier_t",
+      "ja": "uv_barrier_t"
+    },
+    {
+      "index": 530,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 531,
+      "en": "barrier",
+      "ja": "barrier"
+    },
+    {
+      "index": 532,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 533,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 534,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 535,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 536,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 537,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 538,
+      "en": "uv_barrier_destroy",
+      "ja": "uv_barrier_destroy"
+    },
+    {
+      "index": 539,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 540,
+      "en": "uv_barrier_t",
+      "ja": "uv_barrier_t"
+    },
+    {
+      "index": 541,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 542,
+      "en": "barrier",
+      "ja": "barrier"
+    },
+    {
+      "index": 543,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 544,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 545,
+      "en": "uv_barrier_wait",
+      "ja": "uv_barrier_wait"
+    },
+    {
+      "index": 546,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 547,
+      "en": "uv_barrier_t",
+      "ja": "uv_barrier_t"
+    },
+    {
+      "index": 548,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 549,
+      "en": "barrier",
+      "ja": "barrier"
+    },
+    {
+      "index": 550,
+      "en": ")",
+      "ja": ")"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 2,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

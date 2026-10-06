@@ -1,0 +1,439 @@
+{
+  "page": "reference/migration_010_100",
+  "at": "2026-10-04T23:00:57.305608+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/migration_010_100.rst",
+      "sha256": "53aaaa9380782dd8b3f38418f0f81a8ff16f2c556be4de8e0cdb66dcb6f1c5cf"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/migration_010_100.md",
+      "sha256": "ba6f8ae7f1879688dbe44f7c9bdf7f0389ddc97485b2282564f00e832446ded6"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/migration_010_100.md",
+      "sha256": "0504e550efd97255184cc71e4071eae69427c5723d544d99119c2d172042ac4e"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 13 original code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "libuv 0.10 -> 1.0.0 migration guide",
+      "ja": "libuv 0.10から1.0.0への移行ガイド"
+    },
+    {
+      "index": 1,
+      "en": "Some APIs changed quite a bit throughout the 1.0.0 development process. Here\nis a migration guide for the most significant changes that happened after 0.10\nwas released.",
+      "ja": "1.0.0の開発過程で、一部のAPIは大きく変わりました。このガイドでは、0.10のリリース後に行われた、特に重要な変更に対応する移行方法を説明します。"
+    },
+    {
+      "index": 2,
+      "en": "Loop initialization and closing",
+      "ja": "ループの初期化と終了"
+    },
+    {
+      "index": 3,
+      "en": "In libuv 0.10 (and previous versions), loops were created with ",
+      "ja": "libuv 0.10以前では、ループを次の関数で作成していました: "
+    },
+    {
+      "index": 4,
+      "en": "uv_loop_new",
+      "ja": "uv_loop_new"
+    },
+    {
+      "index": 5,
+      "en": ", which\nallocated memory for a new loop and initialized it; and destroyed with ",
+      "ja": "。この関数は新しいループのメモリーを確保して初期化します。ループの破棄には次の関数を使っていました: "
+    },
+    {
+      "index": 6,
+      "en": "uv_loop_delete",
+      "ja": "uv_loop_delete"
+    },
+    {
+      "index": 7,
+      "en": ",\nwhich destroyed the loop and freed the memory. Starting with 1.0, those are deprecated\nand the user is responsible for allocating the memory and then initializing the loop.",
+      "ja": "。この関数はループを破棄し、メモリーを解放します。1.0以降、これらの関数は非推奨となり、ユーザーがメモリーを確保してからループを初期化する必要があります。"
+    },
+    {
+      "index": 8,
+      "en": "libuv 0.10",
+      "ja": "libuv 0.10"
+    },
+    {
+      "index": 9,
+      "en": "libuv 1.0",
+      "ja": "libuv 1.0"
+    },
+    {
+      "index": 10,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 11,
+      "en": "Error handling was omitted for brevity. Check the documentation for ",
+      "ja": "簡潔にするため、エラー処理は省略しています。次の関数の文書を確認してください: "
+    },
+    {
+      "index": 12,
+      "en": "\nand ",
+      "ja": "および"
+    },
+    {
+      "index": 13,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 14,
+      "en": "Error handling",
+      "ja": "エラー処理"
+    },
+    {
+      "index": 15,
+      "en": "Error handling had a major overhaul in libuv 1.0. In general, functions and status parameters\nwould get 0 for success and -1 for failure on libuv 0.10, and the user had to use ",
+      "ja": "libuv 1.0では、エラー処理を大幅に見直しました。libuv 0.10では、一般に関数の戻り値とstatusパラメーターは成功時に0、失敗時に-1となり、ユーザーは次の関数を使っていました: "
+    },
+    {
+      "index": 16,
+      "en": "uv_last_error",
+      "ja": "uv_last_error"
+    },
+    {
+      "index": 17,
+      "en": "\nto fetch the error code, which was a positive number.",
+      "ja": "。この関数で、正の数であるエラーコードを取得する必要がありました。"
+    },
+    {
+      "index": 18,
+      "en": "In 1.0, functions and status parameters contain the actual error code, which is 0 for success, or\na negative number in case of error.",
+      "ja": "1.0では、関数の戻り値とstatusパラメーターに実際のエラーコードが入ります。成功時は0、エラー時は負の数です。"
+    },
+    {
+      "index": 19,
+      "en": "libuv 0.10",
+      "ja": "libuv 0.10"
+    },
+    {
+      "index": 20,
+      "en": "libuv 1.0",
+      "ja": "libuv 1.0"
+    },
+    {
+      "index": 21,
+      "en": "Threadpool changes",
+      "ja": "スレッドプールの変更"
+    },
+    {
+      "index": 22,
+      "en": "In libuv 0.10 Unix used a threadpool which defaulted to 4 threads, while Windows used the\n",
+      "ja": "libuv 0.10では、Unixはデフォルトで4スレッドのスレッドプールを使い、Windowsは次のAPIを使っていました: "
+    },
+    {
+      "index": 23,
+      "en": "QueueUserWorkItem",
+      "ja": "QueueUserWorkItem"
+    },
+    {
+      "index": 24,
+      "en": " API, which uses a Windows internal threadpool, which defaults to 512\nthreads per process.",
+      "ja": "。このAPIはWindows内部のスレッドプールを使い、そのデフォルトはプロセスごとに512スレッドです。"
+    },
+    {
+      "index": 25,
+      "en": "In 1.0, we unified both implementations, so Windows now uses the same implementation Unix\ndoes. The threadpool size can be set by exporting the ",
+      "ja": "1.0では両者の実装を統一したため、WindowsもUnixと同じ実装を使うようになりました。スレッドプールのサイズは、次の環境変数をエクスポートして設定できます: "
+    },
+    {
+      "index": 26,
+      "en": " environment\nvariable. See ",
+      "ja": "。次の文書を参照してください: "
+    },
+    {
+      "index": 27,
+      "en": "Thread pool work scheduling",
+      "ja": "スレッドプールの作業スケジューリング"
+    },
+    {
+      "index": 28,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 29,
+      "en": "Allocation callback API change",
+      "ja": "メモリー確保コールバックのAPI変更"
+    },
+    {
+      "index": 30,
+      "en": "In libuv 0.10 the callback had to return a filled ",
+      "ja": "libuv 0.10では、コールバックは、値を設定した次の型の構造体を返す必要がありました: "
+    },
+    {
+      "index": 31,
+      "en": " by value:",
+      "ja": "。値渡しで返します:"
+    },
+    {
+      "index": 32,
+      "en": "In libuv 1.0 a pointer to a buffer is passed to the callback, which the user\nneeds to fill:",
+      "ja": "libuv 1.0では、バッファへのポインターがコールバックに渡され、ユーザーがその内容を設定する必要があります:"
+    },
+    {
+      "index": 33,
+      "en": "Unification of IPv4 / IPv6 APIs",
+      "ja": "IPv4とIPv6のAPIの統一"
+    },
+    {
+      "index": 34,
+      "en": "libuv 1.0 unified the IPv4 and IPv6 APIS. There is no longer a ",
+      "ja": "libuv 1.0では、IPv4とIPv6のAPIを統一しました。従来は次の2つの関数がありました: "
+    },
+    {
+      "index": 35,
+      "en": "uv_tcp_bind",
+      "ja": "uv_tcp_bind"
+    },
+    {
+      "index": 36,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 37,
+      "en": "uv_tcp_bind6",
+      "ja": "uv_tcp_bind6"
+    },
+    {
+      "index": 38,
+      "en": "\nduality, there is only ",
+      "ja": "。現在は次の関数だけです: "
+    },
+    {
+      "index": 39,
+      "en": " now.",
+      "ja": "。"
+    },
+    {
+      "index": 40,
+      "en": "IPv4 functions took ",
+      "ja": "IPv4の関数は、次の構造体を値渡しで受け取っていました: "
+    },
+    {
+      "index": 41,
+      "en": " structures by value, and IPv6 functions took\n",
+      "ja": "。IPv6の関数が受け取っていた型は、次のとおりです: "
+    },
+    {
+      "index": 42,
+      "en": ". Now functions take a ",
+      "ja": "。現在は、次の型を受け取ります: "
+    },
+    {
+      "index": 43,
+      "en": " (note it’s a pointer).\nIt can be stack allocated.",
+      "ja": "（ポインターである点に注意してください）。構造体はスタック上に確保できます。"
+    },
+    {
+      "index": 44,
+      "en": "libuv 0.10",
+      "ja": "libuv 0.10"
+    },
+    {
+      "index": 45,
+      "en": "libuv 1.0",
+      "ja": "libuv 1.0"
+    },
+    {
+      "index": 46,
+      "en": "The IPv4 and IPv6 struct creating functions (",
+      "ja": "IPv4とIPv6の構造体を作成する関数（"
+    },
+    {
+      "index": 47,
+      "en": " and ",
+      "ja": "および"
+    },
+    {
+      "index": 48,
+      "en": ")\nhave also changed, make sure you check the documentation.",
+      "ja": "）も変わりました。必ず文書を確認してください。"
+    },
+    {
+      "index": 49,
+      "en": "..note::",
+      "ja": "..note::"
+    },
+    {
+      "index": 50,
+      "en": "This change applies to all functions that made a distinction between IPv4 and IPv6\naddresses.",
+      "ja": "この変更は、IPv4アドレスとIPv6アドレスを区別していたすべての関数に適用されます。"
+    },
+    {
+      "index": 51,
+      "en": "Streams / UDP  data receive callback API change",
+      "ja": "ストリームとUDPのデータ受信コールバックのAPI変更"
+    },
+    {
+      "index": 52,
+      "en": "The streams and UDP data receive callbacks now get a pointer to a ",
+      "ja": "ストリームとUDPのデータ受信コールバックは、現在、次の型のバッファへのポインターを受け取ります: "
+    },
+    {
+      "index": 53,
+      "en": " buffer,\nnot a structure by value.",
+      "ja": "。構造体を値渡しで受け取る方式ではありません。"
+    },
+    {
+      "index": 54,
+      "en": "libuv 0.10",
+      "ja": "libuv 0.10"
+    },
+    {
+      "index": 55,
+      "en": "libuv 1.0",
+      "ja": "libuv 1.0"
+    },
+    {
+      "index": 56,
+      "en": "Receiving handles over pipes API change",
+      "ja": "パイプ経由のハンドル受信のAPI変更"
+    },
+    {
+      "index": 57,
+      "en": "In libuv 0.10 (and earlier versions) the ",
+      "ja": "libuv 0.10以前では、次の関数を使っていました: "
+    },
+    {
+      "index": 58,
+      "en": "uv_read2_start",
+      "ja": "uv_read2_start"
+    },
+    {
+      "index": 59,
+      "en": " function was used to start reading\ndata on a pipe, which could also result in the reception of handles over it. The callback\nfor such function looked like this:",
+      "ja": "。これはパイプ上のデータ読み取りを開始する関数であり、そのパイプ経由でハンドルを受信する場合もありました。この関数のコールバックは次の形でした:"
+    },
+    {
+      "index": 60,
+      "en": "In libuv 1.0, ",
+      "ja": "libuv 1.0では、"
+    },
+    {
+      "index": 61,
+      "en": "uv_read2_start",
+      "ja": "uv_read2_start"
+    },
+    {
+      "index": 62,
+      "en": " was removed, and the user needs to check if there are pending\nhandles using ",
+      "ja": "を削除しました。ユーザーは読み取りコールバック内で、次の関数を使い、保留中のハンドルがあるか確認する必要があります: "
+    },
+    {
+      "index": 63,
+      "en": " and ",
+      "ja": "および"
+    },
+    {
+      "index": 64,
+      "en": " while in\nthe read callback:",
+      "ja": ":"
+    },
+    {
+      "index": 65,
+      "en": "Extracting the file descriptor out of a handle",
+      "ja": "ハンドルからのファイルディスクリプターの取り出し"
+    },
+    {
+      "index": 66,
+      "en": "While it wasn’t supported by the API, users often accessed the libuv internals in\norder to get access to the file descriptor of a TCP handle, for example.",
+      "ja": "APIではサポートされていませんでしたが、たとえばTCPハンドルのファイルディスクリプターを取得するため、ユーザーがlibuvの内部にアクセスすることがよくありました。"
+    },
+    {
+      "index": 67,
+      "en": "This is now properly exposed through the ",
+      "ja": "現在は、次の関数で正式に公開しています: "
+    },
+    {
+      "index": 68,
+      "en": " function.",
+      "ja": "。"
+    },
+    {
+      "index": 69,
+      "en": "uv_fs_readdir rename and API change",
+      "ja": "uv_fs_readdirの改名とAPI変更"
+    },
+    {
+      "index": 70,
+      "en": "uv_fs_readdir",
+      "ja": "uv_fs_readdir"
+    },
+    {
+      "index": 71,
+      "en": " returned a list of strings in the ",
+      "ja": "は、libuv 0.10では、完了時に次のフィールドへ文字列のリストを返していました: "
+    },
+    {
+      "index": 72,
+      "en": "req->ptr",
+      "ja": "req->ptr"
+    },
+    {
+      "index": 73,
+      "en": " field upon completion in\nlibuv 0.10. In 1.0, this function got renamed to ",
+      "ja": "。1.0では、この関数を次の名前へ変更しました: "
+    },
+    {
+      "index": 74,
+      "en": ", since it’s\nactually implemented using ",
+      "ja": "。これは実際の実装が次の関数を使っているためです: "
+    },
+    {
+      "index": 75,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 76,
+      "en": "In addition, instead of allocating a full list strings, the user is able to get one\nresult at a time by using the ",
+      "ja": "また、文字列のリスト全体を確保する代わりに、ユーザーは次の関数で結果を1件ずつ取得できます: "
+    },
+    {
+      "index": 77,
+      "en": " function. This function\ndoes not need to make a roundtrip to the threadpool, because libuv will keep the\nlist of ",
+      "ja": "。この関数ではスレッドプールへ処理を往復させる必要がありません。libuvが次の項目のリストを保持しているためです: "
+    },
+    {
+      "index": 78,
+      "en": "dents",
+      "ja": "dents"
+    },
+    {
+      "index": 79,
+      "en": " returned by ",
+      "ja": "。このリストは、次の関数が返したものです: "
+    },
+    {
+      "index": 80,
+      "en": " around.",
+      "ja": "。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 13,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "page": "reference/metrics",
+  "at": "2026-10-04T22:56:43.096998+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/metrics.rst",
+      "sha256": "7806eca5509685431e03878d8f012fd2ceca8e2dd05c5766f2cb6b676b9731b4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/metrics.md",
+      "sha256": "24877099aa6ae99bc05f1c3b6e085e82ac318846cdc5a168fe0a287add3a515b"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/metrics.md",
+      "sha256": "6fc6bf2dbf957f619ef33903eef8c68c3a802dca7eb305f6039e7429333d56f8"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 1struct code block, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Metrics operations",
+      "ja": "メトリクス操作"
+    },
+    {
+      "index": 1,
+      "en": "libuv provides a metrics API to track various internal operations of the event\nloop.",
+      "ja": "libuvは、イベントループの各種内部操作を追跡するためのメトリクスAPIを提供します。"
+    },
+    {
+      "index": 2,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 3,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 4,
+      "en": "uv_metrics_t",
+      "ja": "uv_metrics_t"
+    },
+    {
+      "index": 5,
+      "en": "The struct that contains event loop metrics. It is recommended to retrieve\nthese metrics in a ",
+      "ja": "イベントループのメトリクスを格納する構造体です。メトリクスカウンターの不整合を避けるため、次のコールバック内でこれらのメトリクスを取得することを推奨します: "
+    },
+    {
+      "index": 6,
+      "en": " in order to make sure there are\nno inconsistencies with the metrics counters.",
+      "ja": "。"
+    },
+    {
+      "index": 7,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 8,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 9,
+      "en": "uv_metrics_t",
+      "ja": "uv_metrics_t"
+    },
+    {
+      "index": 10,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 11,
+      "en": "loop_count",
+      "ja": "loop_count"
+    },
+    {
+      "index": 12,
+      "en": "Number of event loop iterations.",
+      "ja": "イベントループの反復回数です。"
+    },
+    {
+      "index": 13,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 14,
+      "en": "uv_metrics_t",
+      "ja": "uv_metrics_t"
+    },
+    {
+      "index": 15,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 16,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 17,
+      "en": "Number of events that have been processed by the event handler.",
+      "ja": "イベントハンドラーが処理したイベントの数です。"
+    },
+    {
+      "index": 18,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 19,
+      "en": "uv_metrics_t",
+      "ja": "uv_metrics_t"
+    },
+    {
+      "index": 20,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 21,
+      "en": "events_waiting",
+      "ja": "events_waiting"
+    },
+    {
+      "index": 22,
+      "en": "Number of events that were waiting to be processed when the event provider\nwas called.",
+      "ja": "イベントプロバイダーを呼び出した時点で、処理を待っていたイベントの数です。"
+    },
+    {
+      "index": 23,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 24,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 25,
+      "en": "uv_metrics_idle_time",
+      "ja": "uv_metrics_idle_time"
+    },
+    {
+      "index": 26,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 27,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 28,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 29,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 30,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 31,
+      "en": "Retrieve the amount of time the event loop has been idle in the kernel’s\nevent provider (e.g. ",
+      "ja": "イベントループがカーネルのイベントプロバイダー（例: "
+    },
+    {
+      "index": 32,
+      "en": "). The call is thread safe.",
+      "ja": "）内でアイドル状態だった時間を取得します。この呼び出しはスレッドセーフです。"
+    },
+    {
+      "index": 33,
+      "en": "The return value is the accumulated time spent idle in the kernel’s event\nprovider starting from when the ",
+      "ja": "返す値は、次の型のイベントループ、"
+    },
+    {
+      "index": 34,
+      "en": " was configured to\ncollect the idle time.",
+      "ja": "でアイドル時間の収集を設定してから、カーネルのイベントプロバイダー内でアイドル状態だった時間の累積値です。"
+    },
+    {
+      "index": 35,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 36,
+      "en": "The event loop will not begin accumulating the event provider’s idle\ntime until calling ",
+      "ja": "イベントプロバイダーのアイドル時間の累積は、次の関数、"
+    },
+    {
+      "index": 37,
+      "en": " with\n",
+      "ja": "を、次のオプションを指定して呼び出すまで開始しません: "
+    },
+    {
+      "index": 38,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 39,
+      "en": "New in version 1.39.0.",
+      "ja": "バージョン1.39.0で追加。"
+    },
+    {
+      "index": 40,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 41,
+      "en": "uv_metrics_info",
+      "ja": "uv_metrics_info"
+    },
+    {
+      "index": 42,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 43,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 44,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 45,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 46,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 47,
+      "en": "uv_metrics_t",
+      "ja": "uv_metrics_t"
+    },
+    {
+      "index": 48,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 49,
+      "en": "metrics",
+      "ja": "metrics"
+    },
+    {
+      "index": 50,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 51,
+      "en": "Copy the current set of event loop metrics to the ",
+      "ja": "イベントループの現在のメトリクス一式を、次のポインターへコピーします: "
+    },
+    {
+      "index": 52,
+      "en": " pointer.",
+      "ja": "。"
+    },
+    {
+      "index": 53,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 1,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}
