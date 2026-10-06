@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-01T12:08:14.982Z",
+  "method": "browser-display-review",
+  "status": "passed",
+  "scope": [
+    "03-guides/06-vulkan-guide.md"
+  ],
+  "results": [
+    "日本語desktop1280×720/document1265で改善された参照表示名をAX/DOMと実画面で確認。7参照キーの残存なし。英語desktopも改善ラベルを実画面確認。",
+    "日本語mobile390×844/document375でページ幅375、12pre client327/maxscroll740。画像・表は本文に各0件で該当なし。macOS強調3件をDOMで確認。",
+    "presentation code9へボタン中央実クリック後、初回clipboardは旧288文字で未合格。参照移動後に戻りfresh screenshot/rectを再取得し中央実クリックでclipboard144文字がpreと完全一致。Tab→PRE focus(index9)、ArrowRight→left40を安定DOMで確認。",
+    "修正ラベルのコンテキストのないウィンドウを実クリックしcontext-guide/#context_lessへ遷移、同名の見出しを取得して対応確認。backでVulkanへ戻った。",
+    "MoltenVKの2022年7月、SDK1.3.216.0、2つの拡張要件の日本語をモバイル実画面保存。現状適合性を確認済みとしない。",
+    "言語メニューEnglishを選択し同一Vulkan slugへ遷移。English mobile page375、12preとJuly2022/SDK1.3.216.0の段落をDOM確認。",
+    "sidebar/前後ページ/原文・ライセンスはAX/snapshotで確認。console error/warn0。viewport reset後1280×720/document1265を確認し検証タブを閉じた。"
+  ],
+  "limits": [
+    "全ピクセル・全リンク操作、実機のウィンドウ操作、C/C++コンパイルは未実施。全35ページの表示ゲートはpending。",
+    "当該ページの代表表示・DOM・機械検査に限る。公開環境の404、OSごとのGLFW実行結果は未検証。"
+  ],
+  "artifacts": [
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/06-vulkan-guide.md",
+      "sha256": "55516b2526ff9eb4800a8e1645f710bb6df613f13bcfcab6f84d01c604d94e9a"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/06-vulkan-guide.md",
+      "sha256": "ffb0c57ef7c26c6eb81643e90f300f56744f4e11b69ce7fb4086204381c58df2"
+    },
+    {
+      "path": "packages/theme/src/css/starlight-overrides.css",
+      "sha256": "d48504bc93df8e963f7cd91f6a2dc4bad89b43cb6656c04a5d383d3297b09e85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-012/vulkan-desktop.jpg",
+      "sha256": "c05a875f84dcaffc525128413d711394dd042c7e5c6d7c9e2cfa421ae91617e1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-012/vulkan-code-mobile.jpg",
+      "sha256": "100bc39e0e56c616f59dabf67f785257692d56446e0f3a06da1a4f72696f686d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-012/vulkan-date-mobile.jpg",
+      "sha256": "67d7bf6c735f67e06c617985587cf8244fe8255916cc9e9d8a239ef74162cd16"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-012/vulkan-en-desktop.jpg",
+      "sha256": "4d36ed73f4f31c30d5312dc2bc41687ea75ac14f2b6c0fb83ebbebf5d80f243b"
+    }
+  ]
+}
