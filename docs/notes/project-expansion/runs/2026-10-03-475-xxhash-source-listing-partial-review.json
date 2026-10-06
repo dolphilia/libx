@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-475-xxhash-source-listing-partial-review",
+  "cycle": 475,
+  "startedAt": "2026-10-03T14:11:24.818Z",
+  "endedAt": "2026-10-03T14:11:25.948Z",
+  "result": "partial",
+  "phase": "canonical-content-review-partial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Original/canonical source listing partial read",
+    "SHA-bound unchanged verification reuse",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e6454fda6cfd1528fc2bcae4bdae8c5dd1567bcd6971cb079cdcc4dbb7189a74"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-475/SOURCE_LISTING_PARTIAL_REVIEW.json",
+      "sha256": "c57f8897fc5aa6bf96fd6a4454d1da0654bba9172a52081384e14c8a6c820c6b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-475/SOURCE_LISTING_READOUT.txt",
+      "sha256": "7655ef675fef66af118fe2cc2e6fff52a08d4f06ccfa16c79f33ba6cafa4e799"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-475/UNCHANGED_BUILD_INPUTS.json",
+      "sha256": "a6ba956b8cf0ed2f4354da4e615749e7a71525daed00cb267d4ec1adaf357423"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-475/save-review.mjs",
+      "sha256": "177653a773a3a245245929cecc0f8bcf041ce2682b5341b693915ed60dec8992"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "be130356c5707453c7c1a2580e50e40adfd3ba9feb7f34cae36b9c80c6fb795d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "原ソース一覧source行6884まで累計部分内容照合",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-475/SOURCE_LISTING_PARTIAL_REVIEW.json",
+          "sha256": "c57f8897fc5aa6bf96fd6a4454d1da0654bba9172a52081384e14c8a6c820c6b"
+        }
+      ]
+    },
+    {
+      "name": "機械/build/link既存入力SHA不変",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-475/UNCHANGED_BUILD_INPUTS.json",
+          "sha256": "a6ba956b8cf0ed2f4354da4e615749e7a71525daed00cb267d4ec1adaf357423"
+        }
+      ]
+    },
+    {
+      "name": "残1全文/JA/native/integration",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+          "sha256": "14bce4e71841524428beece8a8b58b1766f3d2c4ff415ef24f84966ae015b339"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "部分照合は全頁合格に算入しない。累計55/56、source-locked保持。",
+    "原コードを保全し実装の動作検証とは区別する。"
+  ],
+  "unresolved": [
+    "原ソース一覧残り全文レビュー",
+    "全文JA翻訳/別レビュー",
+    "正式機械/native/統合/公開"
+  ],
+  "nextAction": "xxHash英語定本全文55/56、原ソース一覧は原source行6884まで部分照合。475 SOURCE_LISTING_READOUT.txtの原文4861行・定本10761行から節分割して再開し、残り全文/ID/追加通知を確認する。コードは原文保持、実行検証は未実施。JA0/native/integration未完、source-locked保持。",
+  "resumeCondition": "xxHash英語定本全文55/56、原ソース一覧は原source行6884まで部分照合。475 SOURCE_LISTING_READOUT.txtの原文4861行・定本10761行から節分割して再開し、残り全文/ID/追加通知を確認する。コードは原文保持、実行検証は未実施。JA0/native/integration未完、source-locked保持。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

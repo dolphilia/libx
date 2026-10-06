@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-495-xxhash-spec-complete-draft",
+  "cycle": 495,
+  "startedAt": "2026-10-03T15:26:56.305Z",
+  "endedAt": "2026-10-03T15:26:58.623Z",
+  "result": "partial",
+  "phase": "translating",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex section translation",
+    "original code preservation",
+    "prefix machine comparison",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "df302e58c85e7f2679e9d49062e8997f3839f3dbea460f822dacacbed1f9e661"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "6a17bd3d6a9af97194dbccccdc29e785f4b24b026d72ee6e793fce4fef982268"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-495/DRAFT_CHECK.json",
+      "sha256": "a335c74408db212cc429b424b3814bb1709fea807109c716b84cad5cc95fddbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-495/SPEC_PREFIX.en.md",
+      "sha256": "a020d85257d458126944fa917dea796b27d004620bcf41c9dda5c4a0cbfc6360"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-495/SPEC_PREFIX.ja.md",
+      "sha256": "706b2a77726c85df9e5451a15f60f79b90029475ef4b0c706af6c32931df2dcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-495/save-spec-draft.mjs",
+      "sha256": "858378487b91e15d49f716c4ddb4b70f1aa1b2119dc23264fde407f3fb7bb31f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-495/translate-tail.py",
+      "sha256": "b68fb7c7597b2f054be7718cda9fd5d19b55e368b8957814d217e505005d1c87"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/drafts/ja/08-doc-xxhash_spec.complete-unreviewed.md",
+      "sha256": "706b2a77726c85df9e5451a15f60f79b90029475ef4b0c706af6c32931df2dcc"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "a221367e8f4b9c41bca314b69307e4e8c18446582b0ed35eac4eed582eee2cd0"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "6cab33a1ca17e81e4cffd376083f37f156936b190a7473dcc09a7adee62bbc93"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b1e0c9916fb31e17cd567b897d4ee3a0d89dbaaf5f9470cf907764bc4215923d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "仕様prefix43code/9TOC保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-495/DRAFT_CHECK.json",
+          "sha256": "a335c74408db212cc429b424b3814bb1709fea807109c716b84cad5cc95fddbc"
+        }
+      ]
+    },
+    {
+      "name": "仕様全文JA/別review/build",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-495/DRAFT_CHECK.json",
+          "sha256": "a335c74408db212cc429b424b3814bb1709fea807109c716b84cad5cc95fddbc"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "837行の部分draftを全ページ翻訳/全文レビュー済みに数えない。未完成draftはnotesに保存しappへ配信しない。"
+  ],
+  "unresolved": [
+    "仕様のコードコメント日本語補足/別全文レビュー",
+    "JA残49全文翻訳/別review",
+    "JA全リンク/native/検索/統合"
+  ],
+  "nextAction": "仕様08の通知/記法/XXH32/XXH64/XXH3概要/小入力/中入力/大入力をdraft837/837行で保存。全章の訳文を結合したが未レビューで日本語review済み7/56維持。次はコード内英文コメントの日本語補足を追加し、仕様全頁を原文と別全文レビュー。その後にappへ反映しbuild/native。",
+  "resumeCondition": "仕様08の通知/記法/XXH32/XXH64/XXH3概要/小入力/中入力/大入力をdraft837/837行で保存。全章の訳文を結合したが未レビューで日本語review済み7/56維持。次はコード内英文コメントの日本語補足を追加し、仕様全頁を原文と別全文レビュー。その後にappへ反映しbuild/native。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

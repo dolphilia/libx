@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-551-xxhash-production-ci-live",
+  "cycle": 551,
+  "startedAt": "2026-10-03T21:01:42.795Z",
+  "endedAt": "2026-10-03T21:01:55.564Z",
+  "result": "partial",
+  "phase": "publication-ci-live",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "isolated authorized branch push",
+    "GitHub ref equality",
+    "existing production workflow dispatch with expected production commit",
+    "live same-SHA run/job status",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4c085d0f74973b360b6b9113bcb3015263615ab500ce3856b2fa7254d95e4a72"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-550/GATE.json",
+      "sha256": "bb3859a05bdc7dd183dc55818855a632303a7bea2cab8b98585596db39a23db2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/CI_1791061217336.json",
+      "sha256": "1507aafb434beaa5345309cef2c54bde36d851ceef874ddcb55dbd45ea4ea200"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/CI_1791061244021.json",
+      "sha256": "2cd00d0bbeb5c80adcec0ce6a433e36ba2084646ed752017a3e6ac5f25b49623"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/PRODUCTION_DISPATCH_INTENT.json",
+      "sha256": "3a2cff4b9c68aa4a076afc4b107bf538f44b1b379bb0b468da48822405767506"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/PRODUCTION_DISPATCH_RESPONSE.json",
+      "sha256": "c70222a9edd1de6a8ddfe8aa4865792f0bea9e1089cda8ed3f714fcaa6e43204"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/ci.mjs",
+      "sha256": "57339356adca0599e01ce0f761b8e7161afdd06fc1ed5544e71c51f7b285b579"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/register.mjs",
+      "sha256": "bd992e11d03734ca6face8cdb0759487087a1bfd3ca2cd7f9b61b1d3da2b8831"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d56ab38369b913fd2cd14e7236066508a7ae10753d131036bb66a8e65146c5de"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "production workflow accepted",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/PRODUCTION_DISPATCH_RESPONSE.json",
+          "sha256": "c70222a9edd1de6a8ddfe8aa4865792f0bea9e1089cda8ed3f714fcaa6e43204"
+        }
+      ]
+    },
+    {
+      "name": "live same-source CI run",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/CI_1791061244021.json",
+          "sha256": "2cd00d0bbeb5c80adcec0ce6a433e36ba2084646ed752017a3e6ac5f25b49623"
+        }
+      ]
+    },
+    {
+      "name": "production publication and HTTP",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-551/CI_1791061244021.json",
+          "sha256": "2cd00d0bbeb5c80adcec0ce6a433e36ba2084646ed752017a3e6ac5f25b49623"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "clean専用候補077b6923を専用branchへpushし、main/共有rootを変更せず既存production workflowへ投入。",
+    "正規公開待ち方針で追加承認を要求せず進行。直前本番4f0ee6d0をworkflow内APIで必須照合。",
+    "run37153552399/quality-check job111292178979実在・in_progress。CI合格と外部公開の確認は未完了として保持。"
+  ],
+  "unresolved": [
+    "進行中CIの合否・Pages反映・実HTTP検証"
+  ],
+  "nextAction": "既存GitHub Actions run37153552399 (commit077b6923e2fbede0b6c1e43656ae7d7316ffcbb4 / codex/integrate-xxhash-production-20261004)を同じhandleで追跡。/private/tmp/xxhash-ci-551.mjsを--dispatch無しで実行してstatus/jobsを観測。生存中は再起動せず、CI終端時に失敗なら同run/jobログで修正、成功なら同runのverified-deploymentとpages-production-before/stateを取得。全manifest/直接CAS/rollback/canonicalcommitを照合し、固定URL/domain/新source.gz SHAfdab31968653739d2926860a406139df8ec97b9e45dd24f55945d6ad3a614254のrawHTTP・encodingを検証後published登録。",
+  "resumeCondition": "既存GitHub Actions run37153552399 (commit077b6923e2fbede0b6c1e43656ae7d7316ffcbb4 / codex/integrate-xxhash-production-20261004)を同じhandleで追跡。/private/tmp/xxhash-ci-551.mjsを--dispatch無しで実行してstatus/jobsを観測。生存中は再起動せず、CI終端時に失敗なら同run/jobログで修正、成功なら同runのverified-deploymentとpages-production-before/stateを取得。全manifest/直接CAS/rollback/canonicalcommitを照合し、固定URL/domain/新source.gz SHAfdab31968653739d2926860a406139df8ec97b9e45dd24f55945d6ad3a614254のrawHTTP・encodingを検証後published登録。",
+  "counts": {
+    "verified": 14,
+    "published": 13,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

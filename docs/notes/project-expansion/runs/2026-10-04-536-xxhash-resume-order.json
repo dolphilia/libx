@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-536-xxhash-resume-order",
+  "cycle": 536,
+  "startedAt": "2026-10-03T17:41:40.196Z",
+  "endedAt": "2026-10-03T17:41:41.301Z",
+  "result": "partial",
+  "phase": "translating",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "manifest/role inspection",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "65e08d60aabde5d56a6565d6ac3f49f5cf5875ce4923b9db11737c8f4919d1fa"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/API_TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "ca78f52ca23ea973da7132d821399a33502260fe246d67962c4a142fa10f20e9"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "025273be71a70f0197548ea4ac470bd02d355cfe454d464075de5fb194340830"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/TRANSLATION_REVIEW_MANIFEST.json",
+      "sha256": "a5ec6d052afec27436d47cd2da6ed6eeffd7f538f5a190663aaf14e5d6c0580a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-536/RESUME_ORDER.json",
+      "sha256": "afe7167e644e274f84aab49e9f1d20fde5efbed5d784db3aa8cf93627201c42b"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/API_TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "a167b0d7b75aa87a7aaf437d177e5d0025b466fa14e1d9309f4a6ed9df232feb"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7e8629c5eee46813ba4991ce88bd9aac9f170104e60d66c1854d22a0a1776eae"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "未レビュー原コード参照頁の検出",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-536/RESUME_ORDER.json",
+          "sha256": "afe7167e644e274f84aab49e9f1d20fde5efbed5d784db3aa8cf93627201c42b"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "535に続く再開順を修正。未レビュー頁を完了にしない。"
+  ],
+  "unresolved": [
+    "原コード参照頁のローカライズ/別レビュー",
+    "通知11頁",
+    "全体表示/リンク/検索/統合検証"
+  ],
+  "nextAction": "02-api/33-xxhash_8h_sourceを先に処理。original-code-not-translatedの原コード保全と、周辺UI/リンク/参照説明の日本語化・別内容レビューを区別して実施。次に通知11頁。全体検証は未完。",
+  "resumeCondition": "02-api/33-xxhash_8h_sourceを先に処理。original-code-not-translatedの原コード保全と、周辺UI/リンク/参照説明の日本語化・別内容レビューを区別して実施。次に通知11頁。全体検証は未完。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

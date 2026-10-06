@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-469-xxhash-notices10-full-review",
+  "cycle": 469,
+  "startedAt": "2026-10-03T13:48:32.833Z",
+  "endedAt": "2026-10-03T13:48:41.027Z",
+  "result": "partial",
+  "phase": "canonical-content-review-partial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full 10 original notices and canonical reads",
+    "SHA-bound unchanged verification reuse",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "349fe34f8fdcd05e193c38201ab73293ea3e5c885f86561aeb8448a2e787342f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-469/CYCLE_FINDINGS.json",
+      "sha256": "120586391ef858c2dec230d4f6579ae58e8472955e090a03d32031cfe4a0af5b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-469/NOTICES10_READOUT.txt",
+      "sha256": "f8a0b359994cf10b10eabf34c68553c5068699bc1fb99cb71eb13b798bd4611e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-469/NOTICE_SOURCE_BINDINGS.json",
+      "sha256": "cf51112021d450177a3f9761aa82a846f0596ce1157e8f299aec865d0a21c2c3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-469/UNCHANGED_BUILD_INPUTS.json",
+      "sha256": "d8500a502311c36ba8a7b60c23d8dbaa7f94ad46ccd6bf803e1f56a2858c48a8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-469/save-review.mjs",
+      "sha256": "6b32b1335d3758cf2d7adf45f4e6e6938492bdc6016187f10bd1d47996a1928c"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/469.json",
+      "sha256": "6ca4042087e604f7897b50fec95b1ac114c7591807f87ca72b2675435319a190"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "7cabc9ec008db795f26212b92d06c86ecfbe8c9c0a39803e64e4c90f542d887a"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+      "sha256": "23bc006f1b6c30d20ee63da67f156b561cd34f6466bdf23cbd90f424deb1484e"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f5d6fa2930ff9d2c32e16e44f38792f87c0429385740cea8df9f104ac3c79e08"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "原通知10頁全文原文→英語照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/469.json",
+          "sha256": "6ca4042087e604f7897b50fec95b1ac114c7591807f87ca72b2675435319a190"
+        }
+      ]
+    },
+    {
+      "name": "機械/build/link既存入力SHA不変",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-469/UNCHANGED_BUILD_INPUTS.json",
+          "sha256": "d8500a502311c36ba8a7b60c23d8dbaa7f94ad46ccd6bf803e1f56a2858c48a8"
+        }
+      ]
+    },
+    {
+      "name": "残3内容/JA/native/integration",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+          "sha256": "23bc006f1b6c30d20ee63da67f156b561cd34f6466bdf23cbd90f424deb1484e"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "累計53/56のみ、source-locked保持。",
+    "原API/前提条件等の定本保全であり実装テストは実施していない。"
+  ],
+  "unresolved": [
+    "残3英語全文レビュー",
+    "全文JA翻訳/別review",
+    "正式全機械/native/統合/公開"
+  ],
+  "nextAction": "xxHash原文→正式英語全文53/56review、残3(API1/原code1/通知1)未確認。次はheader全文を節分割照合し、原code/全通知へ。原通知10頁確認済み。AVX512節のVS2017/AVX2原文表記は疑義として保持、compiler実証なしで訂正しない。全app/importer/source SHA不変で467の全56機械・33title・61build・内部7329link破損0を再利用。JA0/native/integration未完、source-locked保持。",
+  "resumeCondition": "xxHash原文→正式英語全文53/56review、残3(API1/原code1/通知1)未確認。次はheader全文を節分割照合し、原code/全通知へ。原通知10頁確認済み。AVX512節のVS2017/AVX2原文表記は疑義として保持、compiler実証なしで訂正しない。全app/importer/source SHA不変で467の全56機械・33title・61build・内部7329link破損0を再利用。JA0/native/integration未完、source-locked保持。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-513-xxhash-source-issues",
+  "cycle": 513,
+  "startedAt": "2026-10-03T16:27:07.807Z",
+  "endedAt": "2026-10-03T16:27:08.917Z",
+  "result": "partial",
+  "phase": "translating",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定版xxhash.h内容照合",
+    "ローカルC99 compile/run",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "38906631df9ab895803b9f4562bbd8ec956c38f0ea79f26889c302455a7f23ac"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/API_TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "bc94ca416a9f5caff673591341fe4f6f8b31bba2c9e82c835c7ba4ebcbd3efbb"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/sources/xxhash.h",
+      "sha256": "3dc8d161e867a62d3417f7885b55fdaded8b7b497e2f165d05c94f4fe24f2ca4"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/drafts/ja/14-api-xxh3-family.oneshot128-unreviewed.md",
+      "sha256": "315c0d5f4ba52ff78870b8331d4b7472c1076f6342f9f0ce3c2225a73fab69d9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/SOURCE_ISSUES.json",
+      "sha256": "b6e2393163d42203c4629e7a29182e0f6d83a45b8bf7bf079747d1fd5d5b138e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/TEST_OUTPUT.txt",
+      "sha256": "2ba36fc286a7e746b42fe0afa590650b2a3623b8ea2c7c0c22d41779d5d0f0fd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/save-source-issues.mjs",
+      "sha256": "df945e2a4472c74420264dbccd8fc8b820e18196efb522bb48e8ec1cdc216d57"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/xxhash.h.L1190-1201.txt",
+      "sha256": "cef0975ff75d7b021474f2d8534818f8027ad04ab7aeb69622e40ba39c7fdc80"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/xxhash.h.L1380-1420.txt",
+      "sha256": "d60ce4926204ced4bedcef4e394f4c35984210666d6156ea4a67aebaa827a2db"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/xxhash.h.L6470-6481.txt",
+      "sha256": "8d65c025ceb0f4e66dde3dddae832c8cf9c53600747ee30c18c9b3c8112568a0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/xxhash.h.L7200-7262.txt",
+      "sha256": "44667f9fb6da50d3e9979e5800f370b946de0d6e8415dafc948be070eb9fa376"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/xxhash.h.L7268-7316.txt",
+      "sha256": "dc4cb00221a0bddac3a7b3c8ba8e942c65d98ea6a0c75e5584de43d81ce3e938"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/zero-seed-test.c",
+      "sha256": "47b800b4aa392bdf842d6073412de4fca0f0c21d16b40a5ec0287254daa5293a"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/API_TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "7fe0a7f20dd159219dc181e6c6cee45ba9a2fb3109ced99c4b6074c2d009c185"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "edff1f4ffb8813069058347e08e127ab1c59a3b8c69aeea187cb168be0f4c227"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "上流引数名・seed0説明の固定実装照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/SOURCE_ISSUES.json",
+          "sha256": "b6e2393163d42203c4629e7a29182e0f6d83a45b8bf7bf079747d1fd5d5b138e"
+        }
+      ]
+    },
+    {
+      "name": "128bit seed0同等性66ケース",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/SOURCE_ISSUES.json",
+          "sha256": "b6e2393163d42203c4629e7a29182e0f6d83a45b8bf7bf079747d1fd5d5b138e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/TEST_OUTPUT.txt",
+          "sha256": "2ba36fc286a7e746b42fe0afa590650b2a3623b8ea2c7c0c22d41779d5d0f0fd"
+        }
+      ]
+    },
+    {
+      "name": "XXH3全訳/注記実装/全文review",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-513/SOURCE_ISSUES.json",
+          "sha256": "b6e2393163d42203c4629e7a29182e0f6d83a45b8bf7bf079747d1fd5d5b138e"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "原文の説明とリンクは保持。固定実装に基づく補足を別記する。"
+  ],
+  "unresolved": [
+    "Libx補足の実装",
+    "XXH3_128bits_reset以降/brief/tooltip翻訳",
+    "JA残31全文翻訳/別review",
+    "JA全リンク/native/検索/統合"
+  ],
+  "nextAction": "XXH3_128bits_reset以降を翻訳。固定ソース照合済みSOURCE_ISSUESのlen/length・seed0補足をLibx注記として別記し、brief一覧/tooltipを訳した後に別全文レビュー・build。",
+  "resumeCondition": "XXH3_128bits_reset以降を翻訳。固定ソース照合済みSOURCE_ISSUESのlen/length・seed0補足をLibx注記として別記し、brief一覧/tooltipを訳した後に別全文レビュー・build。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

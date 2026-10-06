@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-515-xxhash-xxh3-api-draft",
+  "cycle": 515,
+  "startedAt": "2026-10-03T16:30:21.020Z",
+  "endedAt": "2026-10-03T16:30:22.172Z",
+  "result": "partial",
+  "phase": "translating",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex API paragraph translation",
+    "HTML tags/attributes/IDs/anchors comparison",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b03895e52eebae67278a813f9a10eb4b9f13e28b71a370483b938d3ab7289887"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "f95b635fe3a9690623eb7ec49acfa15848442a9fa24798e8a8955328fced0160"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-515/DRAFT_CHECK.json",
+      "sha256": "f504c4c4df1059fdf11440d91b838031d694b6aa2993a04808da5ee44ccb1cb0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-515/XXH3.draft.ja.md",
+      "sha256": "023cdbf1d4b1cf4612e43b137c3eeb1c4d35dd218d3e083278648612c2a148a0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-515/XXH3.en.md",
+      "sha256": "ca32cf569d86e1d148b7571214ffbe733d89e584d199fd7cc7c6b8c7092c8459"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-515/save-api-draft.mjs",
+      "sha256": "9ffdc9c09efb45b6deb34b8665c8de4043b4b2261eeb2f9313fe300decd5b888"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-515/translate-draft.py",
+      "sha256": "22ffe939b7c60f3804514b0966a32fe8406335e576c12a685daf4e3ffad6a902"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/drafts/ja/14-api-xxh3-family.compare-unreviewed.md",
+      "sha256": "023cdbf1d4b1cf4612e43b137c3eeb1c4d35dd218d3e083278648612c2a148a0"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/API_TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "088ac03f6cc0c5bfafcb27d4a0b98d4a8d4ca6cb4196cc68aa8cef3b90b75237"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "1988dfa195869427100d28e079f285a8d752873e582120c64f14df5ea72a88a7"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "3efc9226907bbdd890c95f4a67cfe43e749b0914cc3fd3e6531314e4fed96128"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "XXH3 draftのHTML/API保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-515/DRAFT_CHECK.json",
+          "sha256": "f504c4c4df1059fdf11440d91b838031d694b6aa2993a04808da5ee44ccb1cb0"
+        }
+      ]
+    },
+    {
+      "name": "XXH3全訳/別全文review/build",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-515/DRAFT_CHECK.json",
+          "sha256": "f504c4c4df1059fdf11440d91b838031d694b6aa2993a04808da5ee44ccb1cb0"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "部分訳は全ページ完了へ数えずnotesに保存。レビュー済み25/56維持。"
+  ],
+  "unresolved": [
+    "XXH3 family残り詳細/別全文レビュー",
+    "JA残31全文翻訳/別review",
+    "JA全リンク/native/検索/統合"
+  ],
+  "nextAction": "XXH3 familyの概要/マクロ定義/型定義/一括3関数/状態管理・reset5関数/64bitストリーミング残3関数/128bit一括3関数/128bitストリーミング5関数/比較・正規形式4関数/出典を部分draftで保存。日本語review済み25/56維持、残31。次はXXH3_64bits_reset_withSecretandSeed以降の関数詳細とbrief一覧/引数/前提条件/戻り値/Note/tooltipを翻訳して別全文レビュー。その後にapp反映/build/native。",
+  "resumeCondition": "XXH3 familyの概要/マクロ定義/型定義/一括3関数/状態管理・reset5関数/64bitストリーミング残3関数/128bit一括3関数/128bitストリーミング5関数/比較・正規形式4関数/出典を部分draftで保存。日本語review済み25/56維持、残31。次はXXH3_64bits_reset_withSecretandSeed以降の関数詳細とbrief一覧/引数/前提条件/戻り値/Note/tooltipを翻訳して別全文レビュー。その後にapp反映/build/native。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

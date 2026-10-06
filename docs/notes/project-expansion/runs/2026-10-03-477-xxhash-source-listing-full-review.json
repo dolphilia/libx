@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-477-xxhash-source-listing-full-review",
+  "cycle": 477,
+  "startedAt": "2026-10-03T14:16:24.735Z",
+  "endedAt": "2026-10-03T14:16:26.652Z",
+  "result": "partial",
+  "phase": "canonical-content-review-partial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full original/canonical content review completion",
+    "Independent full ordered ID comparison",
+    "SHA-bound verification reuse",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7a61da423f30797660fdefe3c3c1656b4a47ccc10e42736452af78e70fb6b0a2"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-477/CYCLE_FINDINGS.json",
+      "sha256": "db96c26132abab21ca4b1c621bcd6499d3dd88c8c284c4029daa2b423f807b26"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-477/ID_PRESERVATION.json",
+      "sha256": "95af6d8b51e6c5a1bc4ced85695d24355d1c216bc3a937e05e2de666869ea56d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-477/SOURCE_LISTING_READOUT.txt",
+      "sha256": "7655ef675fef66af118fe2cc2e6fff52a08d4f06ccfa16c79f33ba6cafa4e799"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-477/UNCHANGED_BUILD_INPUTS.json",
+      "sha256": "cd8af246ddcf499f1d686f4f3a701c9576bc5e3194bae31ed480fb0d1ef5c4e3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-477/save-review.mjs",
+      "sha256": "a86fd9b4d40a0c1b5244b16ebe502fb2d8719d9c936d70a087e8c69acfa4569e"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/477.json",
+      "sha256": "50480bccf9408e351df97437475d40215d13704531f8959bde2958f5695d0f1e"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "f1ab8917a935bb3e2c6f63e7a2acec4f7865fcebbb156b13042a57df3165137a"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+      "sha256": "b4a3b9caf0cd2e30198f6b724b1c19423c01fbfa02b7fa9f86e055940f102576"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "134a70ff515ec9a252beed8ad854b6c60e082a67e0b0fa66c61ff862471b83e1"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全56英語全文内容レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/477.json",
+          "sha256": "50480bccf9408e351df97437475d40215d13704531f8959bde2958f5695d0f1e"
+        },
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+          "sha256": "b4a3b9caf0cd2e30198f6b724b1c19423c01fbfa02b7fa9f86e055940f102576"
+        }
+      ]
+    },
+    {
+      "name": "機械/build/link入力不変",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-477/UNCHANGED_BUILD_INPUTS.json",
+          "sha256": "cd8af246ddcf499f1d686f4f3a701c9576bc5e3194bae31ed480fb0d1ef5c4e3"
+        }
+      ]
+    },
+    {
+      "name": "正式native/日本語/統合",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+          "sha256": "f1ab8917a935bb3e2c6f63e7a2acec4f7865fcebbb156b13042a57df3165137a"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全文内容レビューと機械検査を分離。英語56/56、JA0。",
+    "未実施gateを完了扱いにせずsource-locked保持。"
+  ],
+  "unresolved": [
+    "正式native/残表示gate",
+    "全範囲日本語翻訳/別全文レビュー",
+    "統合/Pages公開"
+  ],
+  "nextAction": "xxHash英語全文56/56レビュー完了。全56generation/56review SHAを照合して正式native/表示残gateを確認し、全範囲の日本語翻訳と別工程全文レビューへ進む。原コード/通知を保持、原comment7007–7024不整合は明示注と原文を区別する。JA0/integration未完、source-locked保持。",
+  "resumeCondition": "xxHash英語全文56/56レビュー完了。全56generation/56review SHAを照合して正式native/表示残gateを確認し、全範囲の日本語翻訳と別工程全文レビューへ進む。原コード/通知を保持、原comment7007–7024不整合は明示注と原文を区別する。JA0/integration未完、source-locked保持。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

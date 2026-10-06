@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-501-xxhash-changelog-japanese",
+  "cycle": 501,
+  "startedAt": "2026-10-03T15:46:05.465Z",
+  "endedAt": "2026-10-03T15:46:09.597Z",
+  "result": "partial",
+  "phase": "translating",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex page translation",
+    "separate full content review",
+    "code/inline/numeric/URL comparison",
+    "isolated Astro build",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4998f5f8c411fa5003da4be8811540ddd796a7f99356a660772f806ce051533d"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "e76a65a03932819bdf7bba65a892a540fd3b44f87d2b8df1eb6d8c889401972d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/BUILD.log",
+      "sha256": "bbfac0610557104bc2d27f8b1d9d73ba36ca453e8f19cbad475a9ead82876230"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/CHANGELOG.en.md",
+      "sha256": "94b64dc53edd506cf6ef87b0569f890716c6da715766a18874c8ed8e0d11211e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/CHANGELOG.ja.md",
+      "sha256": "c84adbd2eebff04e7015824a72d795740c1cf96f842051ba742e66dea61859d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/CONTENT_REVIEW.json",
+      "sha256": "7a6b2d511ea17364b9884f4c5b9c07d68cbd714fb208c8cd2bddff08682bc600"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/MACHINE.json",
+      "sha256": "b43f5c23112bd035cedaf819927657189a1fe6bc2876c8c7b80bb388a780eb6c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/save-translation.mjs",
+      "sha256": "41b54e8c1e9f24e107dbf5892a0032b414d03da3aa179644cec93a4efa57c39a"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "395a20ffdef4fe4d4b2b6f4e28c4492ed5feb54a15448ef342fe49ccc39d6d1c"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/TRANSLATION_REVIEW_MANIFEST.json",
+      "sha256": "922459b618d2a5b907e53f70f7ca698b0bf010cfedf8454ef9053cacdaf3128e"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/translations/ja/01-guide/12-changelog.md",
+      "sha256": "c84adbd2eebff04e7015824a72d795740c1cf96f842051ba742e66dea61859d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4d507ac92ec472b082d9280ac3621ffa2c9adb42a8ccfa3fadd84f474e848f6e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "CHANGELOG全文JA別content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/CONTENT_REVIEW.json",
+          "sha256": "7a6b2d511ea17364b9884f4c5b9c07d68cbd714fb208c8cd2bddff08682bc600"
+        }
+      ]
+    },
+    {
+      "name": "コード/表数値/URL保持とbuild",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/MACHINE.json",
+          "sha256": "b43f5c23112bd035cedaf819927657189a1fe6bc2876c8c7b80bb388a780eb6c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/BUILD.log",
+          "sha256": "bbfac0610557104bc2d27f8b1d9d73ba36ca453e8f19cbad475a9ead82876230"
+        }
+      ]
+    },
+    {
+      "name": "JA残44/全リンク/native/統合",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-501/MACHINE.json",
+          "sha256": "b43f5c23112bd035cedaf819927657189a1fe6bc2876c8c7b80bb388a780eb6c"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "1ページ完了と全56完了を区別。内容レビューと機械検査を分離。"
+  ],
+  "unresolved": [
+    "JA残44全文翻訳/別review",
+    "JA全リンク/native/検索/統合",
+    "公開前通知履行"
+  ],
+  "nextAction": "日本語全文12/56翻訳・別review済み、隔離build73成功。次は02-api/01-annotatedからAPIページを全文翻訳・別review。残44とJAリンク/native/検索/統合未検証。",
+  "resumeCondition": "日本語全文12/56翻訳・別review済み、隔離build73成功。次は02-api/01-annotatedからAPIページを全文翻訳・別review。残44とJAリンク/native/検索/統合未検証。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

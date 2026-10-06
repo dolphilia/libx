@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-491-xxhash-spec-xxh3-overview-draft",
+  "cycle": 491,
+  "startedAt": "2026-10-03T15:14:12.345Z",
+  "endedAt": "2026-10-03T15:14:15.727Z",
+  "result": "partial",
+  "phase": "translating",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex section translation",
+    "original code preservation",
+    "prefix machine comparison",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8c1a834a391dc24c5a267ffd16f0a69b68899973f30e74b6fbbba903f92b036f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "87944bcd553de563ae828af41d06f3b842a00433967a80173885fd8631bda8a3"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-491/DRAFT_CHECK.json",
+      "sha256": "1857ac292603cddc4f4381a3151ae2ea6543bedec93982a5a5cd72ad40b6c9e6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-491/SPEC_PREFIX.en.md",
+      "sha256": "001ae8425bf575919b83e77ad204cb9c2f6b3d268931f222466e1d27b83ac084"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-491/SPEC_PREFIX.ja.md",
+      "sha256": "cb88fd3ded04fb14b204e8da5d13689f718f0262f390acfba336d91f94b92e4d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-491/save-spec-draft.mjs",
+      "sha256": "fdf9c31dab43db69302d569940db632772058833fce94a2b7eaa32cf28100455"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-491/translate-xxh3-overview.py",
+      "sha256": "0967d67a6980947571c40419ee54cc5a599bfd8f1f6e9485173588aa801258a5"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/drafts/ja/08-doc-xxhash_spec.through-xxh3-overview.md",
+      "sha256": "cb88fd3ded04fb14b204e8da5d13689f718f0262f390acfba336d91f94b92e4d"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "4d1fd9388da933e32eb109d233a70f32fea6b62d7b903b162a1fdc6257b9e662"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "c60df084bbc0fec67763375155d442883f1f04d0b08461faeb183e1b2a497079"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e416bca107a3c53b350ad520fb8c3d34162cf5241b3f7765fff32c7718201379"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "仕様prefix21code/9TOC保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-491/DRAFT_CHECK.json",
+          "sha256": "1857ac292603cddc4f4381a3151ae2ea6543bedec93982a5a5cd72ad40b6c9e6"
+        }
+      ]
+    },
+    {
+      "name": "仕様全文JA/別review/build",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-491/DRAFT_CHECK.json",
+          "sha256": "1857ac292603cddc4f4381a3151ae2ea6543bedec93982a5a5cd72ad40b6c9e6"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "837行の部分draftを全ページ翻訳/全文レビュー済みに数えない。未完成draftはnotesに保存しappへ配信しない。"
+  ],
+  "unresolved": [
+    "仕様残XXH3/性能/参照実装",
+    "JA残49全文翻訳/別review",
+    "JA全リンク/native/検索/統合"
+  ],
+  "nextAction": "仕様08の通知/記法/XXH32/XXH64/XXH3概要をdraft426/837行で保存。全頁未完で日本語review済み7/56維持。次はXXH3 Algorithm Description (for small inputs)から翻訳し、draftを既存prefixと結合。XXH3/性能/参照実装/出典まで完成後に別全文レビューとbuild/native。",
+  "resumeCondition": "仕様08の通知/記法/XXH32/XXH64/XXH3概要をdraft426/837行で保存。全頁未完で日本語review済み7/56維持。次はXXH3 Algorithm Description (for small inputs)から翻訳し、draftを既存prefixと結合。XXH3/性能/参照実装/出典まで完成後に別全文レビューとbuild/native。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

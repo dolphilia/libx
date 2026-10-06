@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-544-xxhash-integrated-native",
+  "cycle": 544,
+  "startedAt": "2026-10-03T20:21:43.347Z",
+  "endedAt": "2026-10-03T20:21:46.324Z",
+  "result": "partial",
+  "phase": "content-reviewed",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Astro integrated localhost preview",
+    "native IAB AX/DOM keyboard/mouse/mobile verification",
+    "clipboard full rendered source comparison",
+    "source download gzip decoded-byte comparison",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "dd7754b6bf5679ebfb16047a72379bcabdf1f913e4c552ccb649963606846601"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-541/CONTENT_REVIEW_GATE.json",
+      "sha256": "1448eed321d3e2d633274d0fef69ffd9d708ff7c384a5ab8ecd49a5972458911"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-543/INTEGRATION_GATE.json",
+      "sha256": "bda8f7b215a069ae53171fd42790253ab563d5525352d1bbdd71f75fb8690127"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-544/NATIVE_REVIEW.json",
+      "sha256": "8f94f421d0fe8bca5eda87715b4c8af54b90e781f03f004b30b1fa5159aa0393"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-544/SOURCE_HTTP.headers",
+      "sha256": "1a3783b24ef07af35d03309650ccbe2f67314cd73361a625eaf82658d53ca44a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-544/astro-preview.config.mjs",
+      "sha256": "6c5a9b986527d9f4a29a3aaf90f09b71dbdf3edd7f2e3857a4fea959a11f5c9c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-544/save.mjs",
+      "sha256": "8769eaf7417011cb0d5dd0cb543bd795c35b53077a5e1b1c115ebd801edb9f00"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "08e7d01d387b2b7ea31a497b2aea72d25645f227255d39b62af5eefb809b2594"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "統合native",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-544/NATIVE_REVIEW.json",
+          "sha256": "8f94f421d0fe8bca5eda87715b4c8af54b90e781f03f004b30b1fa5159aa0393"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "required check:content未実装を見つけ、verifiedへ昇格せず整備を次段階にする。",
+    "gzip HTTP decodingとアーカイブ破損を区別し全展開バイト一致を確認。"
+  ],
+  "unresolved": [
+    "check:content/structure/integrity/template/native残検証",
+    "Production配布gzipヘッダー未確認"
+  ],
+  "nextAction": "統合native一部完了。次はxxHash check:contentを読み取り専用で整備し（定本再生成差分、訳集合/構造/リンク/原通知参照）、pnpm check:links/check:integrity/git diff --checkとテンプレートbuild/GLFW・Lua回帰を実行。全カテゴリ/最大頁/モバイル原コード・API目次残確認後に全gateをまとめverifiedへ。Production Pages source.tar.gzのContent-Type/Encodingとdownload SHAは公開検証で確認。",
+  "resumeCondition": "統合native一部完了。次はxxHash check:contentを読み取り専用で整備し（定本再生成差分、訳集合/構造/リンク/原通知参照）、pnpm check:links/check:integrity/git diff --checkとテンプレートbuild/GLFW・Lua回帰を実行。全カテゴリ/最大頁/モバイル原コード・API目次残確認後に全gateをまとめverifiedへ。Production Pages source.tar.gzのContent-Type/Encodingとdownload SHAは公開検証で確認。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

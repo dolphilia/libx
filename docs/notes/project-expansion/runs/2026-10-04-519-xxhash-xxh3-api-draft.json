@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-519-xxhash-xxh3-api-draft",
+  "cycle": 519,
+  "startedAt": "2026-10-03T16:39:30.263Z",
+  "endedAt": "2026-10-03T16:39:31.413Z",
+  "result": "partial",
+  "phase": "translating",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex API paragraph translation",
+    "HTML tags/attributes/IDs/anchors comparison",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "51593aec7f6809e953676f67cb9f07889f5849f5c4778e88515a0a6ae5efe3aa"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "ba59f5df27420afcc31d76f7bd21f080a8c26263937dfa1f1813bdb0ddde3eaf"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/DRAFT_CHECK.json",
+      "sha256": "a7d394cb7308891c56cf4d6f86bab536463f87822ee386c79cd858c6f7e7c6e2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/LABELS.json",
+      "sha256": "b8bac31bf5fa74667873759f445e3d2a2e610c501cb65a457c1df5a817a5c4cd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/XXH3.draft.ja.md",
+      "sha256": "5f071edb99990e2a6449b4b6ea5518015c55176a80072c1d0faddf09d73a1901"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/XXH3.en.md",
+      "sha256": "ca32cf569d86e1d148b7571214ffbe733d89e584d199fd7cc7c6b8c7092c8459"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/save-api-draft.mjs",
+      "sha256": "5b17a2fbe5bda0551b98677e2745311da386ac865810084531ba51587c0bc904"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/translate-draft.py",
+      "sha256": "8a22a5ceed02d19f2e091cf11b9bf9911719478866b1d844ad6b920f65a75792"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/drafts/ja/14-api-xxh3-family.complete-unreviewed.md",
+      "sha256": "5f071edb99990e2a6449b4b6ea5518015c55176a80072c1d0faddf09d73a1901"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/API_TRANSLATION_DRAFT_PROGRESS.json",
+      "sha256": "9266be3b0a6a7175adc6d045e22a56afd6189d8c8ff9af17149df3d960375a00"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "ba59f5df27420afcc31d76f7bd21f080a8c26263937dfa1f1813bdb0ddde3eaf"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8708fddac22818b891773811212ccbb2d5f638b96c078edb17689cd4156bbc9f"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "XXH3 draftのHTML/API保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/DRAFT_CHECK.json",
+          "sha256": "a7d394cb7308891c56cf4d6f86bab536463f87822ee386c79cd858c6f7e7c6e2"
+        }
+      ]
+    },
+    {
+      "name": "XXH3全訳/別全文review/build",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-519/DRAFT_CHECK.json",
+          "sha256": "a7d394cb7308891c56cf4d6f86bab536463f87822ee386c79cd858c6f7e7c6e2"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "部分訳は全ページ完了へ数えずnotesに保存。レビュー済み25/56維持。"
+  ],
+  "unresolved": [
+    "XXH3 family残り詳細/別全文レビュー",
+    "JA残31全文翻訳/別review",
+    "JA全リンク/native/検索/統合"
+  ],
+  "nextAction": "XXH3公開API全訳草稿を保存。HTML/宣言/コード保持の機械検査済み、別全文レビューは未実施。次は原文と全訳文を全文照合して改善し、合格後app反映/build。日本語review済み25/56維持。",
+  "resumeCondition": "XXH3公開API全訳草稿を保存。HTML/宣言/コード保持の機械検査済み、別全文レビューは未実施。次は原文と全訳文を全文照合して改善し、合格後app反映/build。日本語review済み25/56維持。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

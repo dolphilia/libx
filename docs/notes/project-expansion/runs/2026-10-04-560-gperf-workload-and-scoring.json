@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-560-gperf-workload-and-scoring",
+  "cycle": 560,
+  "startedAt": "2026-10-03T22:01:42.063Z",
+  "endedAt": "2026-10-03T22:01:46.176Z",
+  "result": "partial",
+  "phase": "candidate-workload-and-scoring",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed full source word/structure metrics",
+    "trial-based explicit workload estimate",
+    "evidence-scoped weighted scoring",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "a3dfeb093a588c4e3a40bf9e1f09aac8abfd5e7286d4474609a6ef52bde19e1e"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "919fb3ce20d91b8092ecfa75f617f59cc271057758c3854444b526bbd14280ea"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-560/SCORING.json",
+      "sha256": "1d66b48227374fe35fd1f5134d633152559ca4fd71f9ee0a6d74c96132eeb4aa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-560/WORKLOAD.json",
+      "sha256": "862ec997d3c3ffc205141f9205d9206f26e3e4aa2b4338735d9d466123d77d06"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-560/register.mjs",
+      "sha256": "b620ca79a2926c1fe02534e3348433f54d3d6151d6a89e9236ce17d6d122c736"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "d27a7dcb80bc40244fb3797522687c84f1b6a83319d5192717bfefad11303668"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "gperf"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "workload qualification and score71",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-560/WORKLOAD.json",
+          "sha256": "862ec997d3c3ffc205141f9205d9206f26e3e4aa2b4338735d9d466123d77d06"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-560/SCORING.json",
+          "sha256": "1d66b48227374fe35fd1f5134d633152559ca4fd71f9ee0a6d74c96132eeb4aa"
+        }
+      ]
+    },
+    {
+      "name": "independent selection evidence comparison",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-560/SCORING.json",
+          "sha256": "1d66b48227374fe35fd1f5134d633152559ca4fd71f9ee0a6d74c96132eeb4aa"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "6条件pass/71点だが別選定照合前のqualifying、採用0。",
+    "既存日本語handbookを尊重し、具体的範囲差だけで追加価値を評価。",
+    "見積もりと実測を区別、版/原文差異・特有保守を減点理由として残す。"
+  ],
+  "unresolved": [
+    "別選定照合",
+    "正式project全量翻訳・全文review・通知/ソース/UI・統合/公開検証"
+  ],
+  "nextAction": "第560gperf6条件pass・根拠付き71点を別確認パスで各原典/試験/Japanese範囲/工数へ戻って照合。推薦文だけで承認せず、条件/点数食違いなら修正。selectionReview inputHash一致後のみeligible→最大1件selected、隔離production077b6923基準で正式app取得/定本化・全量翻訳へ進む。",
+  "resumeCondition": "第560gperf6条件pass・根拠付き71点を別確認パスで各原典/試験/Japanese範囲/工数へ戻って照合。推薦文だけで承認せず、条件/点数食違いなら修正。selectionReview inputHash一致後のみeligible→最大1件selected、隔離production077b6923基準で正式app取得/定本化・全量翻訳へ進む。",
+  "counts": {
+    "verified": 14,
+    "published": 14,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

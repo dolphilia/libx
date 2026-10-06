@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-481-xxhash-canonical-ready",
+  "cycle": 481,
+  "startedAt": "2026-10-03T14:40:44.813Z",
+  "endedAt": "2026-10-03T14:40:49.414Z",
+  "result": "partial",
+  "phase": "canonical-ready",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "canonical machine recheck",
+    "full content/native/build evidence SHA audit",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6dd2610f8ae1650b175559687e32b01f51907b85f50e1c86bd8e3a9fd59ae402"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-481/CANONICAL_GATE.json",
+      "sha256": "068126aaf7f502e562d2de27dbb4bb4f9254ebf28d3748a896b41cdd2f22cc00"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-481/CANONICAL_MACHINE_RECHECK.log",
+      "sha256": "a199e78d9ba5ca5d010ac42b1b9ea1bd4b07528d935b0d54fd3ddc5cf9e70313"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-481/UNCHANGED_BUILD_INPUTS.json",
+      "sha256": "76e208fd1270c8133e8fc40080124bdf8a50e243cf2169e658cea080ed667ee9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-481/save-canonical-gate.mjs",
+      "sha256": "a94fdff86823aa531b00d5bef714ee2aaf6d11f5a2e7bcb8d11a6e556e4d30ad"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "3e5662141f59387a62a05e3df1ae7afbd61f7de7ca4a4fb4d8b570a215055efd"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "定本化全56gate",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-481/CANONICAL_GATE.json",
+          "sha256": "068126aaf7f502e562d2de27dbb4bb4f9254ebf28d3748a896b41cdd2f22cc00"
+        }
+      ]
+    },
+    {
+      "name": "JA/統合/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-481/CANONICAL_GATE.json",
+          "sha256": "068126aaf7f502e562d2de27dbb4bb4f9254ebf28d3748a896b41cdd2f22cc00"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "英語定本化完了とプロジェクト全体verifiedを区別。",
+    "作成直後のschema検査でresult=passedが列挙外と判明。工程passをchecksに残し、案件未完のためrun.result=partialへ修復。"
+  ],
+  "unresolved": [
+    "全文JA翻訳/別review",
+    "JA/統合回帰",
+    "公開前通知履行確認"
+  ],
+  "nextAction": "定本化56/56完了。01-guide/01-readmeから1ページずつ日本語全文翻訳し、原文照合・別工程レビューを保存。コード/数値/API/原通知を保持しJAリンクと出典/非公式訳/ライセンス注釈を整備。全56完了後に統合検証。",
+  "resumeCondition": "定本化56/56完了。01-guide/01-readmeから1ページずつ日本語全文翻訳し、原文照合・別工程レビューを保存。コード/数値/API/原通知を保持しJAリンクと出典/非公式訳/ライセンス注釈を整備。全56完了後に統合検証。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}
