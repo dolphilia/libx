@@ -1,0 +1,5 @@
+[
+  "    objects = main.o kbd.o command.o display.o \\\n              insert.o search.o files.o utils.o\n\n    edit : $(objects)\n            cc -o edit $(objects)\n\n    $(objects) : defs.h\n    kbd.o command.o files.o : command.h\n    display.o insert.o search.o files.o : buffer.h\n\n",
+  "    clean:\n            rm edit $(objects)\n\n",
+  "    .PHONY : clean\n    clean :\n            -rm edit $(objects)\n\n"
+]

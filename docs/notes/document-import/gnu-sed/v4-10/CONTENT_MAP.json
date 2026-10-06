@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "version": "4.10",
+  "manualGeneratedSHA256": "d28c964015a9e11c76ace31197304a0490a524de622495bff13bace3e1c4b5da",
+  "sourceChapterOrderCoverageExact": true,
+  "guidePages": 12,
+  "referenceEnglishOnly": [
+    "02-reference/01-gfdl.md"
+  ],
+  "originalPre": 51,
+  "footnotes": 4,
+  "items": [
+    {
+      "slug": "01-introduction",
+      "sourceNode": "Introduction",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Introduction-1",
+          "text": "1 Introduction"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "1 Introduction sed is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline). While in some ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient. But it is sed’s ability to filter text in a pipeline which particularly distinguishes it from other types of editors.",
+      "id": "01-guide/01-introduction.md",
+      "titleEN": "Introduction",
+      "canonical": "canonical/en/01-guide/01-introduction.md",
+      "canonicalSHA256": "033962015f40fffc5a84d14c3d23ff07596d6ace7868bc507086848e9c5e2e68",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/01-introduction.md",
+      "translationSHA256": "193ffc7cc426f3c1ffd08b432bf5c6ca11deeb4266afb828a2700f7d9e9dd717"
+    },
+    {
+      "slug": "02-overview",
+      "sourceNode": "Overview",
+      "sourcePre": [
+        "sed SCRIPT INPUTFILE...\n",
+        "sed 's/hello/world/g' input.txt > output.txt\n",
+        "sed 's/hello/world/g' input.txt > output.txt\nsed 's/hello/world/g' < input.txt > output.txt\ncat input.txt | sed 's/hello/world/g' - > output.txt\n",
+        "sed -i 's/hello/world/' file.txt\n",
+        "sed -n '45p' file.txt\n",
+        "sed -n  '1p ; $p' one.txt two.txt three.txt\n",
+        "sed 's/hello/world/' input.txt > output.txt\n\nsed -e 's/hello/world/' input.txt > output.txt\nsed --expression='s/hello/world/' input.txt > output.txt\n\necho 's/hello/world/' > myscript.sed\nsed -f myscript.sed input.txt > output.txt\nsed --file=myscript.sed input.txt > output.txt\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Running-sed",
+          "text": "2 Running sed"
+        },
+        {
+          "depth": 3,
+          "slug": "Overview-1",
+          "text": "2.1 Overview"
+        }
+      ],
+      "footnotes": [],
+      "pre": 7,
+      "sourceText": "2 Running sed This chapter covers how to run sed. Details of sed scripts and individual sed commands are discussed in the next chapter. 2.1 Overview Normally sed is invoked like this: sed SCRIPT INPUTFILE... For example, to change every ‘hello’ to ‘world’ in the file input.txt: sed 's/hello/world/g' input.txt > output.txt Without the ‘g’ (global) modifier, sed affects only the first instance per line. If you do not specify INPUTFILE, or if INPUTFILE is -, sed filters the contents of the standard input. The following commands are equivalent: sed 's/hello/world/g' input.txt > output.txt sed 's/hello/world/g' < input.txt > output.txt cat input.txt | sed 's/hello/world/g' - > output.txt sed writes output to standard output. Use -i to edit files in-place instead of printing to standard output. See also the W and s///w commands for writing output to other files. The following command modifies file.txt and does not produce any output: sed -i 's/hello/world/' file.txt By default sed prints all processed input (except input that has been modified/deleted by commands such as d). Use -n to suppress output, and the p command to print specific lines. The following command prints only line 45 of the input file: sed -n '45p' file.txt sed treats multiple input files as one long stream. The following example prints the first line of the first file (one.txt) and the last line of the last file (three.txt). Use -s to reverse this behavior. sed -n '1p ; $p' one.txt two.txt three.txt Without -e or -f options, sed uses the first non-option parameter as the script, and the following non-option parameters as input files. If -e or -f options are used to specify a script, all non-option parameters are taken as input files. Options -e and -f can be combined, and can appear multiple times (in which case the final effective script will be concatenation of all the individual scripts). The following examples are equivalent: sed 's/hello/world/' input.txt > output.txt sed -e 's/hello/world/' input.txt > output.txt sed --expression='s/hello/world/' input.txt > output.txt echo 's/hello/world/' > myscript.sed sed -f myscript.sed input.txt > output.txt sed --file=myscript.sed input.txt > output.txt",
+      "id": "01-guide/02-overview.md",
+      "titleEN": "Running sed: Overview",
+      "canonical": "canonical/en/01-guide/02-overview.md",
+      "canonicalSHA256": "ee11fbf65a5bca4b59377dfcd7cae035debe4075b2263a76ced0af4214c8a730",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/02-overview.md",
+      "translationSHA256": "b6569f96e6a3fc02baf9a90be59ea58a65e964d8951049a275ac85d565ddb496"
+    },
+    {
+      "slug": "03-command-line-options",
+      "sourceNode": "Command_002dLine-Options",
+      "sourcePre": [
+        "sed OPTIONS... [SCRIPT] [INPUTFILE...]\n",
+        "$ echo 1 | sed '\\%1%s21232'\n3\n\n$ echo 1 | sed --debug '\\%1%s21232'\nSED PROGRAM:\n  /1/ s/1/3/\nINPUT:   'STDIN' line 1\nPATTERN: 1\nCOMMAND: /1/ s/1/3/\nPATTERN: 3\nEND-OF-CYCLE:\n3\n",
+        "# WRONG USAGE: 'FILE' will be truncated.\nsed -ni 's/foo/bar/' FILE\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Command_002dLine-Options-1",
+          "text": "2.2 Command-Line Options"
+        }
+      ],
+      "footnotes": [
+        "FOOT1",
+        "FOOT2"
+      ],
+      "pre": 3,
+      "sourceText": "2.2 Command-Line Options The full format for invoking sed is: sed OPTIONS... [SCRIPT] [INPUTFILE...] sed may be invoked with the following command-line options: --version Print out the version of sed that is being run and a copyright notice, then exit. --help Print a usage message briefly summarizing these command-line options and the bug-reporting address, then exit. -n --quiet --silent By default, sed prints out the pattern space at the end of each cycle through the script (see How sed works). These options disable this automatic printing, and sed only produces output when explicitly told to via the p command. --debug Print the input sed program in canonical form, and annotate program execution. $ echo 1 | sed '\\%1%s21232' 3 $ echo 1 | sed --debug '\\%1%s21232' SED PROGRAM: /1/ s/1/3/ INPUT: 'STDIN' line 1 PATTERN: 1 COMMAND: /1/ s/1/3/ PATTERN: 3 END-OF-CYCLE: 3 -e script --expression=script Add the commands in script to the set of commands to be run while processing the input. -f script-file --file=script-file Add the commands contained in the file script-file to the set of commands to be run while processing the input. -i[SUFFIX] --in-place[=SUFFIX] This option specifies that files are to be edited in-place. GNU sed does this by creating a temporary file and sending output to this file rather than to the standard output.1. This option implies -s. When the end of the file is reached, the temporary file is renamed to the output file’s original name. The extension, if supplied, is used to modify the name of the old file before renaming the temporary file, thereby making a backup copy2). This rule is followed: if the extension doesn’t contain a *, then it is appended to the end of the current filename as a suffix; if the extension does contain one or more * characters, then each asterisk is replaced with the current filename. This allows you to add a prefix to the backup file, instead of (or in addition to) a suffix, or even to place backup copies of the original files into another directory (provided the directory already exists). If no extension is supplied, the original file is overwritten without making a backup. Because -i takes an optional argument, it should not be followed by other short options: sed -Ei '...' FILE Same as -E -i with no backup suffix - FILE will be edited in-place without creating a backup. sed -iE '...' FILE This is equivalent to --in-place=E, creating FILEE as backup of FILE Be cautious of using -n with -i: the former disables automatic printing of lines and the latter changes the file in-place without a backup. Used carelessly (and without an explicit p command), the output file will be empty: # WRONG USAGE: 'FILE' will be truncated. sed -ni 's/foo/bar/' FILE -l N --line-length=N Specify the default line-wrap length for the l command. A length of 0 (zero) means to never wrap long lines. If not specified, it is taken to be 70. --posix GNU sed includes several extensions to POSIX sed. In order to simplify writing portable scripts, this option disables all the extensions that this manual documents, including additional commands. Most of the extensions accept sed programs that are outside the syntax mandated by POSIX, but some of them (such as the behavior of the N command described in Reporting Bugs) actually violate the standard. If you want to disable only the latter kind of extension, you can set the POSIXLY_CORRECT variable to a non-empty value. -b --binary This option is available on every platform, but is only effective where the operating system makes a distinction between text files and binary files. When such a distinction is made—as is the case for MS-DOS, Windows, Cygwin—text files are composed of lines separated by a carriage return and a line feed character, and sed does not see the ending CR. When this option is specified, sed will open input files in binary mode, thus not requesting this special processing and considering lines to end at a line feed. --follow-symlinks This option is available only on platforms that support symbolic links and has an effect only if option -i is specified. In this case, if the file that is specified on the command line is a symbolic link, sed will follow the link and edit the ultimate destination of the link. The default behavior is to break the symbolic link, so that the link destination will not be modified. -E -r --regexp-extended Use extended regular expressions rather than basic regular expressions. Extended regexps are those that egrep accepts; they can be clearer because they usually have fewer backslashes. Historically this was a GNU extension, but the -E extension has since been added to the POSIX standard (http://austingroupbugs.net/view.php?id=528), so use -E for portability. GNU sed has accepted -E as an undocumented option for years, and *BSD seds have accepted -E for years as well, but scripts that use -E might not port to other older systems. See Extended regular expressions. -s --separate By default, sed will consider the files specified on the command line as a single continuous long stream. This GNU sed extension allows the user to consider them as separate files: range addresses (such as ‘/abc/,/def/’) are not allowed to span several files, line numbers are relative to the start of each file, $ refers to the last line of each file, and files invoked from the R commands are rewound at the start of each file. --sandbox In sandbox mode, e/w/r commands are rejected - programs containing them will be aborted without being run. Sandbox mode ensures sed operates only on the input files designated on the command line, and cannot run external programs. -u --unbuffered Buffer both input and output as minimally as practical. (This is particularly useful if the input is coming from the likes of ‘tail -f’, and you wish to see the transformed output as soon as possible.) -z --null-data --zero-terminated Treat the input as a set of lines, each terminated by a zero byte (the ASCII ‘NUL’ character) instead of a newline. This option can be used with commands like ‘sort -z’ and ‘find -print0’ to process arbitrary file names. If no -e, -f, --expression, or --file options are given on the command-line, then the first non-option argument on the command line is taken to be the script to be executed. If any command-line parameters remain after processing the above, these parameters are interpreted as the names of input files to be processed. A file name of ‘-’ refers to the standard input stream. The standard input will be processed if no file names are specified. (1)This applies to commands such as =, a, c, i, l, p. You can still write to the standard output by using the w or W commands together with the /dev/stdout special file(2)Note that GNU sed creates the backup file whether or not any output is actually changed.",
+      "id": "01-guide/03-command-line-options.md",
+      "titleEN": "Command-Line Options",
+      "canonical": "canonical/en/01-guide/03-command-line-options.md",
+      "canonicalSHA256": "0f6843ee8c6761cedf4c8298f88fa082804743673eb7fcce12b5600cfd8c67e7",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/03-command-line-options.md",
+      "translationSHA256": "dd7f3441b5261188f7219429b6e8892fc3a07516cd5bafb4f5b7d7186a419bf7"
+    },
+    {
+      "slug": "04-exit-status",
+      "sourceNode": "Exit-status",
+      "sourcePre": [
+        "$ echo | sed 'Q42' ; echo $?\n42\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Exit-status-1",
+          "text": "2.3 Exit status"
+        }
+      ],
+      "footnotes": [],
+      "pre": 1,
+      "sourceText": "2.3 Exit status An exit status of zero indicates success, and a nonzero value indicates failure. GNU sed returns the following exit status error values: 0 Successful completion. 1 Invalid command, invalid syntax, invalid regular expression or a GNU sed extension command used with --posix. 2 One or more of the input file specified on the command line could not be opened (e.g. if a file is not found, or read permission is denied). Processing continued with other files. 4 An I/O error, or a serious processing error during runtime, GNU sed aborted immediately. Additionally, the commands q and Q can be used to terminate sed with a custom exit code value (this is a GNU sed extension): $ echo | sed 'Q42' ; echo $? 42",
+      "id": "01-guide/04-exit-status.md",
+      "titleEN": "Exit Status",
+      "canonical": "canonical/en/01-guide/04-exit-status.md",
+      "canonicalSHA256": "f1e189f87cc3af7bc70008e1489b34d4ecdb6fd967dc56e0e67c41edf3f4551e",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/04-exit-status.md",
+      "translationSHA256": "67875183842685dca1bce11f18d93048763490999600fb02a2fa77a8fd2c1387"
+    },
+    {
+      "slug": "05-script-overview",
+      "sourceNode": "sed-script-overview",
+      "sourcePre": [
+        "[addr]X[options]\n",
+        "sed '30,35d' input.txt > output.txt\n",
+        "sed '/^foo/q42' input.txt > output.txt\n",
+        "sed '/^foo/d ; s/hello/world/g' input.txt > output.txt\n\nsed -e '/^foo/d' -e 's/hello/world/g' input.txt > output.txt\n\necho '/^foo/d' > script.sed\necho 's/hello/world/g' >> script.sed\nsed -f script.sed input.txt > output.txt\n\necho 's/hello/world/g' > script2.sed\nsed -e '/^foo/d' -f script2.sed input.txt > output.txt\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "sed-scripts-1",
+          "text": "3 sed scripts"
+        },
+        {
+          "depth": 3,
+          "slug": "sed-script-overview-1",
+          "text": "3.1 sed script overview"
+        }
+      ],
+      "footnotes": [],
+      "pre": 4,
+      "sourceText": "3 sed scripts 3.1 sed script overview A sed program consists of one or more sed commands, passed in by one or more of the -e, -f, --expression, and --file options, or the first non-option argument if zero of these options are used. This document will refer to “the” sed script; this is understood to mean the in-order concatenation of all of the scripts and script-files passed in. See Overview. sed commands follow this syntax: [addr]X[options] X is a single-letter sed command. [addr] is an optional line address. If [addr] is specified, the command X will be executed only on the matched lines. [addr] can be a single line number, a regular expression, or a range of lines (see Addresses: selecting lines). Additional [options] are used for some sed commands. The following example deletes lines 30 to 35 in the input. 30,35 is an address range. d is the delete command: sed '30,35d' input.txt > output.txt The following example prints all input until a line starting with the string ‘foo’ is found. If such line is found, sed will terminate with exit status 42. If such line was not found (and no other error occurred), sed will exit with status 0. /^foo/ is a regular-expression address. q is the quit command. 42 is the command option. sed '/^foo/q42' input.txt > output.txt Commands within a script or script-file can be separated by semicolons (;) or newlines (ASCII 10). Multiple scripts can be specified with -e or -f options. The following examples are all equivalent. They perform two sed operations: deleting any lines matching the regular expression /^foo/, and replacing all occurrences of the string ‘hello’ with ‘world’: sed '/^foo/d ; s/hello/world/g' input.txt > output.txt sed -e '/^foo/d' -e 's/hello/world/g' input.txt > output.txt echo '/^foo/d' > script.sed echo 's/hello/world/g' >> script.sed sed -f script.sed input.txt > output.txt echo 's/hello/world/g' > script2.sed sed -e '/^foo/d' -f script2.sed input.txt > output.txt Commands a, c, e, i, r, R, w, W, due to their syntax, cannot be followed by semicolons working as command separators and thus should be terminated with newlines or be placed at the end of a script or script-file. Commands can also be preceded with optional non-significant whitespace characters. See Multiple commands syntax.",
+      "id": "01-guide/05-script-overview.md",
+      "titleEN": "sed Script Overview",
+      "canonical": "canonical/en/01-guide/05-script-overview.md",
+      "canonicalSHA256": "0feeeeb5aec50be938aaeee73c3931e0dbb6afbccc80c22368da4b02dbfda573",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/05-script-overview.md",
+      "translationSHA256": "a2f740604bf1379ed04a92d4cdb52d38ee7dd1e31de49d606b3caf72f2a5c20b"
+    },
+    {
+      "slug": "06-command-summary",
+      "sourceNode": "sed-commands-list",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "sed-commands-summary",
+          "text": "3.2 sed commands summary"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "3.2 sed commands summary The following commands are supported in GNU sed. Some are standard POSIX commands, while other are GNU extensions. Details and examples for each command are in the following sections. (Mnemonics) are shown in parentheses. a\\ text Append text after a line. a text Append text after a line (alternative syntax). b label Branch unconditionally to label. The label may be omitted, in which case the next cycle is started. c\\ text Replace (change) lines with text. c text Replace (change) lines with text (alternative syntax). d Delete the pattern space; immediately start next cycle. D If pattern space contains newlines, delete text in the pattern space up to the first newline, and restart cycle with the resultant pattern space, without reading a new line of input. If pattern space contains no newline, start a normal new cycle as if the d command was issued. e Executes the command that is found in pattern space and replaces the pattern space with the output; a trailing newline is suppressed. e command Executes command and sends its output to the output stream. The command can run across multiple lines, all but the last ending with a back-slash. F (filename) Print the file name of the current input file (with a trailing newline). g Replace the contents of the pattern space with the contents of the hold space. G Append a newline to the contents of the pattern space, and then append the contents of the hold space to that of the pattern space. h (hold) Replace the contents of the hold space with the contents of the pattern space. H Append a newline to the contents of the hold space, and then append the contents of the pattern space to that of the hold space. i\\ text insert text before a line. i text insert text before a line (alternative syntax). l Print the pattern space in an unambiguous form. n (next) If auto-print is not disabled, print the pattern space, then, regardless, replace the pattern space with the next line of input. If there is no more input then sed exits without processing any more commands. N Add a newline to the pattern space, then append the next line of input to the pattern space. If there is no more input then sed exits without processing any more commands. p Print the pattern space. P Print the pattern space, up to the first <newline>. q[exit-code] (quit) Exit sed without processing any more commands or input. Q[exit-code] (quit) This command is the same as q, but will not print the contents of pattern space. Like q, it provides the ability to return an exit code to the caller. r filename Reads file filename. R filename Queue a line of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. s/regexp/replacement/[flags] (substitute) Match the regular-expression against the content of the pattern space. If found, replace matched string with replacement. t label (test) Branch to label only if there has been a successful substitution since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started. T label (test) Branch to label only if there have been no successful substitutions since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started. v [version] (version) This command does nothing, but makes sed fail if GNU sed extensions are not supported, or if the requested version is not available. w filename Write the pattern space to filename. W filename Write to the given filename the portion of the pattern space up to the first newline x Exchange the contents of the hold and pattern spaces. y/src/dst/ Transliterate any characters in the pattern space which match any of the source-chars with the corresponding character in dest-chars. z (zap) This command empties the content of pattern space. # A comment, until the next newline. { cmd ; cmd ... } Group several commands together. = Print the current input line number (with a trailing newline). : label Specify the location of label for branch commands (b, t, T).",
+      "id": "01-guide/06-command-summary.md",
+      "titleEN": "sed Commands Summary",
+      "canonical": "canonical/en/01-guide/06-command-summary.md",
+      "canonicalSHA256": "a7b16a52a8a111c362c451f29ae4c308d776477b38418567f71120775f221ccf",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/06-command-summary.md",
+      "translationSHA256": "3dd1736e182095100471a36c18caf4aa0c16cea4d7ab2e1c4d52140a29942bef"
+    },
+    {
+      "slug": "07-substitution",
+      "sourceNode": "The-_0022s_0022-Command",
+      "sourcePre": [
+        "s/\\(b\\?\\)-/x\\u\\1/g\n",
+        "s/\\(b\\?\\)-/\\u\\1x/g\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "The-s-Command",
+          "text": "3.3 The s Command"
+        }
+      ],
+      "footnotes": [
+        "FOOT3"
+      ],
+      "pre": 2,
+      "sourceText": "3.3 The s Command The s command (as in substitute) is probably the most important in sed and has a lot of different options. The syntax of the s command is ‘s/regexp/replacement/flags’. Its basic concept is simple: the s command attempts to match the pattern space against the supplied regular expression regexp; if the match is successful, then that portion of the pattern space which was matched is replaced with replacement. For details about regexp syntax see Regular Expression Addresses. The replacement can contain \\n (n being a number from 1 to 9, inclusive) references, which refer to the portion of the match which is contained between the nth \\( and its matching \\). Also, the replacement can contain unescaped & characters which reference the whole matched portion of the pattern space. The / characters may be uniformly replaced by any other single character within any given s command. The / character (or whatever other character is used in its stead) can appear in the regexp or replacement only if it is preceded by a \\ character. Finally, as a GNU sed extension, you can include a special sequence made of a backslash and one of the letters L, l, U, u, or E. The meaning is as follows: \\L Turn the replacement to lowercase until a \\U or \\E is found, \\l Turn the next character to lowercase, \\U Turn the replacement to uppercase until a \\L or \\E is found, \\u Turn the next character to uppercase, \\E Stop case conversion started by \\L or \\U. When the g flag is being used, case conversion does not propagate from one occurrence of the regular expression to another. For example, when the following command is executed with ‘a-b-’ in pattern space: s/\\(b\\?\\)-/x\\u\\1/g the output is ‘axxB’. When replacing the first ‘-’, the ‘\\u’ sequence only affects the empty replacement of ‘\\1’. It does not affect the x character that is added to pattern space when replacing b- with xB. On the other hand, \\l and \\u do affect the remainder of the replacement text if they are followed by an empty substitution. With ‘a-b-’ in pattern space, the following command: s/\\(b\\?\\)-/\\u\\1x/g will replace ‘-’ with ‘X’ (uppercase) and ‘b-’ with ‘Bx’. If this behavior is undesirable, you can prevent it by adding a ‘\\E’ sequence—after ‘\\1’ in this case. To include a literal \\, &, or newline in the final replacement, be sure to precede the desired \\, &, or newline in the replacement with a \\. The s command can be followed by zero or more of the following flags: g Apply the replacement to all matches to the regexp, not just the first. number Only replace the numberth match of the regexp. interaction in s command Note: the POSIX standard does not specify what should happen when you mix the g and number modifiers, and currently there is no widely agreed upon meaning across sed implementations. For GNU sed, the interaction is defined to be: ignore matches before the numberth, and then match and replace all matches from the numberth on. p If the substitution was made, then print the new pattern space. Note: when both the p and e options are specified, the relative ordering of the two produces very different results. In general, ep (evaluate then print) is what you want, but operating the other way round can be useful for debugging. For this reason, the current version of GNU sed interprets specially the presence of p options both before and after e, printing the pattern space before and after evaluation, while in general flags for the s command show their effect just once. This behavior, although documented, might change in future versions. w filename If the substitution was made, then write out the result to the named file. As a GNU sed extension, two special values of filename are supported: /dev/stderr, which writes the result to the standard error, and /dev/stdout, which writes to the standard output.3 e This command allows one to pipe input from a shell command into pattern space. If a substitution was made, the command that is found in pattern space is executed and pattern space is replaced with its output. A trailing newline is suppressed; results are undefined if the command to be executed contains a NUL character. This is a GNU sed extension. I i The I modifier to regular-expression matching is a GNU extension which makes sed match regexp in a case-insensitive manner. M m The M modifier to regular-expression matching is a GNU sed extension which directs GNU sed to match the regular expression in multi-line mode. The modifier causes ^ and $ to match respectively (in addition to the normal behavior) the empty string after a newline, and the empty string before a newline. There are special character sequences (\\` and \\') which always match the beginning or the end of the buffer. In addition, the period character does not match a new-line character in multi-line mode. (3)This is equivalent to p unless the -i option is being used.",
+      "id": "01-guide/07-substitution.md",
+      "titleEN": "The s Command",
+      "canonical": "canonical/en/01-guide/07-substitution.md",
+      "canonicalSHA256": "546f4e0c4b5360da7238318127e2176761ed1129cfaf1fb3947d06850ca78a0b",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/07-substitution.md",
+      "translationSHA256": "3a353761cbd1f80f95cbce3fb1da35b2eb9d8eec6c2efa17524051a68e616e01"
+    },
+    {
+      "slug": "08-often-used-commands",
+      "sourceNode": "Common-Commands",
+      "sourcePre": [
+        "$ seq 3 | sed 2q\n1\n2\n",
+        "$ seq 3 | sed 2d\n1\n3\n",
+        "$ seq 3 | sed -n 2p\n2\n",
+        "$ seq 6 | sed 'n;n;s/./x/'\n1\n2\nx\n4\n5\nx\n",
+        "$ seq 6 | sed '0~3s/./x/'\n1\n2\nx\n4\n5\nx\n",
+        "$ seq 3 | sed -n '2{s/2/X/ ; p}'\nX\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Often_002dUsed-Commands",
+          "text": "3.4 Often-Used Commands"
+        }
+      ],
+      "footnotes": [],
+      "pre": 6,
+      "sourceText": "3.4 Often-Used Commands If you use sed at all, you will quite likely want to know these commands. # [No addresses allowed.] The # character begins a comment; the comment continues until the next newline. If you are concerned about portability, be aware that some implementations of sed (which are not POSIX conforming) may only support a single one-line comment, and then only when the very first character of the script is a #. Warning: if the first two characters of the sed script are #n, then the -n (no-autoprint) option is forced. If you want to put a comment in the first line of your script and that comment begins with the letter ‘n’ and you do not want this behavior, then be sure to either use a capital ‘N’, or place at least one space before the ‘n’. q [exit-code] Exit sed without processing any more commands or input. Example: stop after printing the second line: $ seq 3 | sed 2q 1 2 This command accepts only one address. Note that the current pattern space is printed if auto-print is not disabled with the -n options. The ability to return an exit code from the sed script is a GNU sed extension. See also the GNU sed extension Q command which quits silently without printing the current pattern space. d Delete the pattern space; immediately start next cycle. Example: delete the second input line: $ seq 3 | sed 2d 1 3 p Print out the pattern space (to the standard output). This command is usually only used in conjunction with the -n command-line option. Example: print only the second input line: $ seq 3 | sed -n 2p 2 n If auto-print is not disabled, print the pattern space, then, regardless, replace the pattern space with the next line of input. If there is no more input then sed exits without processing any more commands. This command is useful to skip lines (e.g. process every Nth line). Example: perform substitution on every 3rd line (i.e. two n commands skip two lines): $ seq 6 | sed 'n;n;s/./x/' 1 2 x 4 5 x GNU sed provides an extension address syntax of first~step to achieve the same result: $ seq 6 | sed '0~3s/./x/' 1 2 x 4 5 x { commands } A group of commands may be enclosed between { and } characters. This is particularly useful when you want a group of commands to be triggered by a single address (or address-range) match. Example: perform substitution then print the second input line: $ seq 3 | sed -n '2{s/2/X/ ; p}' X",
+      "id": "01-guide/08-often-used-commands.md",
+      "titleEN": "Often-Used Commands",
+      "canonical": "canonical/en/01-guide/08-often-used-commands.md",
+      "canonicalSHA256": "33355a10daeea463d10486872d5ea69fba52e97786110026e8c12e3f1e4f5a53",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/08-often-used-commands.md",
+      "translationSHA256": "b28e00bcb719b9d18d1908ce6dd8b22ca48c75ba8dcb0e23782d436483938502"
+    },
+    {
+      "slug": "09-less-frequent-commands",
+      "sourceNode": "Other-Commands",
+      "sourcePre": [
+        "$ echo hello world | sed 'y/abcdefghij/0123456789/'\n74llo worl3\n",
+        "$ seq 3 | sed '2a hello'\n1\n2\nhello\n3\n",
+        "$ seq 3 | sed '2a\\\nhello'\n-|1\n-|2\n-|hello\n-|3\n",
+        "$ seq 3 | sed '2a\\\nhello\\\nworld\n3s/./X/'\n-|1\n-|2\n-|hello\n-|world\n-|X\n",
+        "$ seq 3 | sed -e '2a\\' -e hello\n1\n2\nhello\n3\n\n$ sed -e '2a\\' -e \"$VAR\"\n",
+        "$ seq 3 | sed '2i hello'\n1\nhello\n2\n3\n",
+        "$ seq 3 | sed '2i\\\nhello'\n-|1\n-|hello\n-|2\n-|3\n",
+        "$ seq 3 | sed '2i\\\nhello\\\nworld\ns/./X/'\n-|X\n-|hello\n-|world\n-|X\n-|X\n",
+        "$ seq 3 | sed -e '2i\\' -e hello\n1\nhello\n2\n3\n\n$ sed -e '2i\\' -e \"$VAR\"\n",
+        "$ seq 10 | sed '2,9c hello'\n1\nhello\n10\n",
+        "$ seq 5 | sed '2,4c\\\nhello\\\nworld'\n-|1\n-|hello\n-|world\n-|5\n",
+        "$ seq 3 | sed '2c\\\nhello\ns/./X/'\n-|X\n-|hello\n-|X\n",
+        "$ seq 3 | sed -e '2c\\' -e hello\n1\nhello\n3\n\n$ sed -e '2c\\' -e \"$VAR\"\n",
+        "$ printf '%s\\n' aaa bbb ccc | sed =\n1\naaa\n2\nbbb\n3\nccc\n",
+        "$ seq 3 | sed '2r/etc/hostname'\n1\n2\nfencepost.gnu.org\n3\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Less-Frequently_002dUsed-Commands",
+          "text": "3.5 Less Frequently-Used Commands"
+        }
+      ],
+      "footnotes": [
+        "FOOT4"
+      ],
+      "pre": 15,
+      "sourceText": "3.5 Less Frequently-Used Commands Though perhaps less frequently used than those in the previous section, some very small yet useful sed scripts can be built with these commands. y/source-chars/dest-chars/ Transliterate any characters in the pattern space which match any of the source-chars with the corresponding character in dest-chars. Example: transliterate ‘a-j’ into ‘0-9’: $ echo hello world | sed 'y/abcdefghij/0123456789/' 74llo worl3 (The / characters may be uniformly replaced by any other single character within any given y command.) Instances of the / (or whatever other character is used in its stead), \\, or newlines can appear in the source-chars or dest-chars lists, provide that each instance is escaped by a \\. The source-chars and dest-chars lists must contain the same number of characters (after de-escaping). See the tr command from GNU coreutils for similar functionality. a text Appending text after a line. This is a GNU extension to the standard a command - see below for details. Example: Add ‘hello’ after the second line: $ seq 3 | sed '2a hello' 1 2 hello 3 Leading whitespace after the a command is ignored. The text to add is read until the end of the line. a\\ text Appending text after a line. Example: Add ‘hello’ after the second line (-| indicates printed output lines): $ seq 3 | sed '2a\\ hello' -|1 -|2 -|hello -|3 The a command queues the lines of text which follow this command (each but the last ending with a \\, which are removed from the output) to be output at the end of the current cycle, or when the next input line is read. As a GNU extension, this command accepts two addresses. Escape sequences in text are processed, so you should use \\\\ in text to print a single backslash. The commands resume after the last line without a backslash (\\) - ‘world’ in the following example: $ seq 3 | sed '2a\\ hello\\ world 3s/./X/' -|1 -|2 -|hello -|world -|X As a GNU extension, the a command and text can be separated into two -e parameters, enabling easier scripting: $ seq 3 | sed -e '2a\\' -e hello 1 2 hello 3 $ sed -e '2a\\' -e \"$VAR\" i text insert text before a line. This is a GNU extension to the standard i command - see below for details. Example: Insert ‘hello’ before the second line: $ seq 3 | sed '2i hello' 1 hello 2 3 Leading whitespace after the i command is ignored. The text to add is read until the end of the line. i\\ text Immediately output the lines of text which follow this command. Example: Insert ‘hello’ before the second line (-| indicates printed output lines): $ seq 3 | sed '2i\\ hello' -|1 -|hello -|2 -|3 As a GNU extension, this command accepts two addresses. Escape sequences in text are processed, so you should use \\\\ in text to print a single backslash. The commands resume after the last line without a backslash (\\) - ‘world’ in the following example: $ seq 3 | sed '2i\\ hello\\ world s/./X/' -|X -|hello -|world -|X -|X As a GNU extension, the i command and text can be separated into two -e parameters, enabling easier scripting: $ seq 3 | sed -e '2i\\' -e hello 1 hello 2 3 $ sed -e '2i\\' -e \"$VAR\" c text Replaces the line(s) with text. This is a GNU extension to the standard c command - see below for details. Example: Replace the 2nd to 9th lines with the word ‘hello’: $ seq 10 | sed '2,9c hello' 1 hello 10 Leading whitespace after the c command is ignored. The text to add is read until the end of the line. c\\ text Delete the lines matching the address or address-range, and output the lines of text which follow this command. Example: Replace 2nd to 4th lines with the words ‘hello’ and ‘world’ (-| indicates printed output lines): $ seq 5 | sed '2,4c\\ hello\\ world' -|1 -|hello -|world -|5 If no addresses are given, each line is replaced. A new cycle is started after this command is done, since the pattern space will have been deleted. In the following example, the c starts a new cycle and the substitution command is not performed on the replaced text: $ seq 3 | sed '2c\\ hello s/./X/' -|X -|hello -|X As a GNU extension, the c command and text can be separated into two -e parameters, enabling easier scripting: $ seq 3 | sed -e '2c\\' -e hello 1 hello 3 $ sed -e '2c\\' -e \"$VAR\" = Print out the current input line number (with a trailing newline). $ printf '%s\\n' aaa bbb ccc | sed = 1 aaa 2 bbb 3 ccc As a GNU extension, this command accepts two addresses. l n Print the pattern space in an unambiguous form: non-printable characters (and the \\ character) are printed in C-style escaped form; long lines are split, with a trailing \\ character to indicate the split; the end of each line is marked with a $. n specifies the desired line-wrap length; a length of 0 (zero) means to never wrap long lines. If omitted, the default as specified on the command line is used. The n parameter is a GNU sed extension. r filename Reads file filename. Example: $ seq 3 | sed '2r/etc/hostname' 1 2 fencepost.gnu.org 3 Queue the contents of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. Note that if filename cannot be read, it is treated as if it were an empty file, without any error indication. As a GNU sed extension, the special value /dev/stdin is supported for the file name, which reads the contents of the standard input. As a GNU extension, this command accepts two addresses. The file will then be reread and inserted on each of the addressed lines. As a GNU sed extension, the r command accepts a zero address, inserting a file before the first line of the input see Adding a header to multiple files. w filename Write the pattern space to filename. As a GNU sed extension, two special values of filename are supported: /dev/stderr, which writes the result to the standard error, and /dev/stdout, which writes to the standard output.4 The file will be created (or truncated) before the first input line is read; all w commands (including instances of the w flag on successful s commands) which refer to the same filename are output without closing and reopening the file. D If pattern space contains no newline, start a normal new cycle as if the d command was issued. Otherwise, delete text in the pattern space up to the first newline, and restart cycle with the resultant pattern space, without reading a new line of input. N Add a newline to the pattern space, then append the next line of input to the pattern space. If there is no more input then sed exits without processing any more commands. When -z is used, a zero byte (the ascii ‘NUL’ character) is added between the lines (instead of a new line). By default sed does not terminate if there is no ’next’ input line. This is a GNU extension which can be disabled with --posix. See N command on the last line. P Print out the portion of the pattern space up to the first newline. h Replace the contents of the hold space with the contents of the pattern space. H Append a newline to the contents of the hold space, and then append the contents of the pattern space to that of the hold space. g Replace the contents of the pattern space with the contents of the hold space. G Append a newline to the contents of the pattern space, and then append the contents of the hold space to that of the pattern space. x Exchange the contents of the hold and pattern spaces. (4)This is equivalent to p unless the -i option is being used.",
+      "id": "01-guide/09-less-frequent-commands.md",
+      "titleEN": "Less Frequently-Used Commands",
+      "canonical": "canonical/en/01-guide/09-less-frequent-commands.md",
+      "canonicalSHA256": "1a982a04db8728f41c2df1be5ac6de1c7dd4f89d17610855503129cec78071fa",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/09-less-frequent-commands.md",
+      "translationSHA256": "18ae30cd39c70c477ba61bc9b9fa2957faebc58b26fad233afd3d00540617998"
+    },
+    {
+      "slug": "10-guru-commands",
+      "sourceNode": "Programming-Commands",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Commands-for-sed-gurus",
+          "text": "3.6 Commands for sed gurus"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "3.6 Commands for sed gurus In most cases, use of these commands indicates that you are probably better off programming in something like awk or Perl. But occasionally one is committed to sticking with sed, and these commands can enable one to write quite convoluted scripts. : label [No addresses allowed.] Specify the location of label for branch commands. In all other respects, a no-op. b label Unconditionally branch to label. The label may be omitted, in which case the next cycle is started. t label Branch to label only if there has been a successful substitution since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started.",
+      "id": "01-guide/10-guru-commands.md",
+      "titleEN": "Commands for sed Gurus",
+      "canonical": "canonical/en/01-guide/10-guru-commands.md",
+      "canonicalSHA256": "140d2d1f6a8b84220cecb8d5bef8ac7e55c62007be5548857e398f11fe18856c",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/10-guru-commands.md",
+      "translationSHA256": "b2a0b127d3f93ae50cac09ce543833df7b2c08f6127bf3f4dbfc0c034d311ff4"
+    },
+    {
+      "slug": "11-gnu-commands",
+      "sourceNode": "Extended-Commands",
+      "sourcePre": [
+        ":eat\n$d       Quit silently on the last line\nN        Read another line, silently\ng        Overwrite pattern space each time to save memory\nb eat\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Commands-Specific-to-GNU-sed",
+          "text": "3.7 Commands Specific to GNU sed"
+        }
+      ],
+      "footnotes": [],
+      "pre": 1,
+      "sourceText": "3.7 Commands Specific to GNU sed These commands are specific to GNU sed, so you must use them with care and only when you are sure that hindering portability is not evil. They allow you to check for GNU sed extensions or to do tasks that are required quite often, yet are unsupported by standard seds. e [command] This command allows one to pipe input from a shell command into pattern space. Without parameters, the e command executes the command that is found in pattern space and replaces the pattern space with the output; a trailing newline is suppressed. If a parameter is specified, instead, the e command interprets it as a command and sends its output to the output stream. The command can run across multiple lines, all but the last ending with a back-slash. In both cases, the results are undefined if the command to be executed contains a NUL character. Note that, unlike the r command, the output of the command will be printed immediately; the r command instead delays the output to the end of the current cycle. F Print out the file name of the current input file (with a trailing newline). Q [exit-code] This command accepts only one address. This command is the same as q, but will not print the contents of pattern space. Like q, it provides the ability to return an exit code to the caller. This command can be useful because the only alternative ways to accomplish this apparently trivial function are to use the -n option (which can unnecessarily complicate your script) or resorting to the following snippet, which wastes time by reading the whole file without any visible effect: :eat $d Quit silently on the last line N Read another line, silently g Overwrite pattern space each time to save memory b eat R filename Queue a line of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. Note that if filename cannot be read, or if its end is reached, no line is appended, without any error indication. As with the r command, the special value /dev/stdin is supported for the file name, which reads a line from the standard input. T label Branch to label only if there have been no successful substitutions since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started. v version This command does nothing, but makes sed fail if GNU sed extensions are not supported, simply because other versions of sed do not implement it. In addition, you can specify the version of sed that your script requires, such as 4.0.5. The default is 4.0 because that is the first version that implemented this command. This command enables all GNU extensions even if POSIXLY_CORRECT is set in the environment. W filename Write to the given filename the portion of the pattern space up to the first newline. Everything said under the w command about file handling holds here too. z This command empties the content of pattern space. It is usually the same as ‘s/.*//’, but is more efficient and works in the presence of invalid multibyte sequences in the input stream. POSIX mandates that such sequences are not matched by ‘.’, so that there is no portable way to clear sed’s buffers in the middle of the script in most multibyte locales (including UTF-8 locales).",
+      "id": "01-guide/11-gnu-commands.md",
+      "titleEN": "Commands Specific to GNU sed",
+      "canonical": "canonical/en/01-guide/11-gnu-commands.md",
+      "canonicalSHA256": "28456ebb911c1d750af7cb0239a688c9c9c295412b193c8d8071220d6d9e0db4",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/11-gnu-commands.md",
+      "translationSHA256": "de20c1c85c26b9fc6df2ada6df673454f8eeebe3db9b12623dc9ace2e258d69e"
+    },
+    {
+      "slug": "12-multiple-commands",
+      "sourceNode": "Multiple-commands-syntax",
+      "sourcePre": [
+        "$ seq 6 | sed '1d\n3d\n5d'\n2\n4\n6\n\n$ seq 6 | sed -e 1d -e 3d -e 5d\n2\n4\n6\n",
+        "$ seq 6 | sed '1d;3d;5d'\n2\n4\n6\n",
+        "$ seq 4 | sed '{1d;3d}'\n2\n4\n\n$ seq 6 | sed '{1d;3d};5d'\n2\n4\n6\n",
+        "$ seq 3 | sed '/1/b x ; s/^/=/ ; :x ; 3d'\n1\n=2\n\n$ seq 3 | sed -e '/1/bx' -e 's/^/=/' -e ':x' -e '3d'\n1\n=2\n",
+        "$ seq 2 | sed '1aHello ; 2d'\n1\nHello ; 2d\n2\n",
+        "$ seq 2 | sed -e 1aHello -e 2d\n1\nHello\n\n$ seq 2 | sed '1aHello\n2d'\n1\nHello\n",
+        "$ seq 2 | sed '1a\\\nHello\n2d'\n1\nHello\n",
+        "$ seq 3 | sed '# this is a comment ; 2d'\n1\n2\n3\n\n\n$ seq 3 | sed '# this is a comment\n2d'\n1\n3\n",
+        "$ seq 2 | sed '1w hello.txt ; 2d'\n1\n2\n\n$ ls -log\ntotal 4\n-rw-rw-r-- 1 2 Jan 23 23:03 hello.txt ; 2d\n\n$ cat 'hello.txt ; 2d'\n1\n",
+        "$ echo x | sed '1rhello.txt ; N'\nx\n",
+        "$ echo a | sed '1e touch foo#bar'\na\n\n$ ls -1\nfoo#bar\n\n$ echo a | sed '1e touch foo ; s/a/b/'\nsh: 1: s/a/b/: not found\na\n",
+        "$ echo a | sed 's/a/b/w1.txt#foo'\nb\n\n$ ls -1\n1.txt#foo\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Multiple-commands-syntax-1",
+          "text": "3.8 Multiple commands syntax"
+        }
+      ],
+      "footnotes": [],
+      "pre": 12,
+      "sourceText": "3.8 Multiple commands syntax There are several methods to specify multiple commands in a sed program. Using newlines is most natural when running a sed script from a file (using the -f option). On the command line, all sed commands may be separated by newlines. Alternatively, you may specify each command as an argument to an -e option: $ seq 6 | sed '1d 3d 5d' 2 4 6 $ seq 6 | sed -e 1d -e 3d -e 5d 2 4 6 A semicolon (‘;’) may be used to separate most simple commands: $ seq 6 | sed '1d;3d;5d' 2 4 6 The {,},b,t,T,: commands can be separated with a semicolon (this is a non-portable GNU sed extension). $ seq 4 | sed '{1d;3d}' 2 4 $ seq 6 | sed '{1d;3d};5d' 2 4 6 Labels used in b,t,T,: commands are read until a semicolon. Leading and trailing whitespace is ignored. In the examples below the label is ‘x’. The first example works with GNU sed. The second is a portable equivalent. For more information about branching and labels see Branching and Flow Control. $ seq 3 | sed '/1/b x ; s/^/=/ ; :x ; 3d' 1 =2 $ seq 3 | sed -e '/1/bx' -e 's/^/=/' -e ':x' -e '3d' 1 =2 3.8.1 Commands Requiring a newline The following commands cannot be separated by a semicolon and require a newline: a,c,i (append/change/insert) All characters following a,c,i commands are taken as the text to append/change/insert. Using a semicolon leads to undesirable results: $ seq 2 | sed '1aHello ; 2d' 1 Hello ; 2d 2 Separate the commands using -e or a newline: $ seq 2 | sed -e 1aHello -e 2d 1 Hello $ seq 2 | sed '1aHello 2d' 1 Hello Note that specifying the text to add (‘Hello’) immediately after a,c,i is itself a GNU sed extension. A portable, POSIX-compliant alternative is: $ seq 2 | sed '1a\\ Hello 2d' 1 Hello # (comment) All characters following ‘#’ until the next newline are ignored. $ seq 3 | sed '# this is a comment ; 2d' 1 2 3 $ seq 3 | sed '# this is a comment 2d' 1 3 r,R,w,W (reading and writing files) The r,R,w,W commands parse the filename until end of the line. If whitespace, comments or semicolons are found, they will be included in the filename, leading to unexpected results: $ seq 2 | sed '1w hello.txt ; 2d' 1 2 $ ls -log total 4 -rw-rw-r-- 1 2 Jan 23 23:03 hello.txt ; 2d $ cat 'hello.txt ; 2d' 1 Note that sed silently ignores read/write errors in r,R,w,W commands (such as missing files). In the following example, sed tries to read a file named ‘hello.txt ; N’. The file is missing, and the error is silently ignored: $ echo x | sed '1rhello.txt ; N' x e (command execution) Any characters following the e command until the end of the line will be sent to the shell. If whitespace, comments or semicolons are found, they will be included in the shell command, leading to unexpected results: $ echo a | sed '1e touch foo#bar' a $ ls -1 foo#bar $ echo a | sed '1e touch foo ; s/a/b/' sh: 1: s/a/b/: not found a s///[we] (substitute with e or w flags) In a substitution command, the w flag writes the substitution result to a file, and the e flag executes the substitution result as a shell command. As with the r/R/w/W/e commands, these must be terminated with a newline. If whitespace, comments or semicolons are found, they will be included in the shell command or filename, leading to unexpected results: $ echo a | sed 's/a/b/w1.txt#foo' b $ ls -1 1.txt#foo",
+      "id": "01-guide/12-multiple-commands.md",
+      "titleEN": "Multiple Commands Syntax",
+      "canonical": "canonical/en/01-guide/12-multiple-commands.md",
+      "canonicalSHA256": "c65559e66ebf2b61d59414defe23c44caee78a607160517587965690c0ac7198",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/12-multiple-commands.md",
+      "translationSHA256": "7411369442e72ff4a2835064a588544a46a58c4c23cbbb09cfcca40e44321036"
+    }
+  ],
+  "meaningReview": "12/12passed separate passes898/899;eightchangedunitsdelta899only",
+  "Japanese": "12/12saved",
+  "JapanesePre": {
+    "pureCodeOutputExact": 50,
+    "codeWithTranslatedExplanation": 1,
+    "translatedExplanationUnits": 3
+  }
+}
