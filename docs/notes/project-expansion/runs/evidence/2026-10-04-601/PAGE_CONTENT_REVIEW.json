@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-04T04:37:59.795Z",
+  "model": "configured gpt-6.1-sol; actual runtime not exposed",
+  "method": "同じCodexの翻訳後の別対照パス。導入の原文5段落と日本語5段落を全量読了し、意味・例・限定語を対照。別agentではない。",
+  "page": "00-introduction",
+  "source": {
+    "path": "docs/notes/document-import/jq/1.8.2/translations/00-introduction.source.json",
+    "sha256": "6523ed3a301dbf165c23030b1e30e6fc05b536566865617bfc9cd00a2c7303f0"
+  },
+  "translated": {
+    "path": "docs/notes/document-import/jq/1.8.2/translations/00-introduction.ja.json",
+    "sha256": "beeca0dcc2396c1e7128b94ed84368b0c70c735ccc0cf270f3776f56ad56ed65"
+  },
+  "coverage": [
+    "headline",
+    "body paragraph1:filter input/output, builtin extraction/conversion/general tasks",
+    "paragraph2:pipe composition and output collection array",
+    "paragraph3:multiple results, second filter each element, other-language loops/iteration",
+    "paragraph4:all filters input/output, literal hello and42, generally same input to two filters, average add/length",
+    "paragraph5:informal transition and emoticon"
+  ],
+  "findings": [
+    {
+      "severity": "minor",
+      "issue": "初稿のhello引用符は和文括弧。リテラル表記を原文と同じASCII引用符へ修正して保存。",
+      "resolved": true
+    }
+  ],
+  "verdict": "passed-page-source-comparison",
+  "limitations": "1導入ページのみ。全16ページの独立全文レビュー、通知表示、機械ビルド・UI検証は未実施。"
+}

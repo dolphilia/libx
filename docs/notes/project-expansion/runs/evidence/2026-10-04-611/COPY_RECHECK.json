@@ -1,0 +1,60 @@
+{
+  "page": "JA Basic filters",
+  "url": "http://127.0.0.1:4328/docs/jq/v1-8-2/ja/01-guide/02-basic-filters/",
+  "observedDOM": {
+    "firstButtonClass": "docs-code-copy",
+    "nearestFrameClass": "docs-code-frame",
+    "targetCode": "jq '.'",
+    "moduleHandler": "present and code.textContent written then copied label shown"
+  },
+  "initialSemanticAttempt": {
+    "buttonLabel": "コピーしました",
+    "clipboard": "8",
+    "expected": "jq '.'",
+    "consoleErrorsWarnings": [],
+    "status": "failed"
+  },
+  "nativeRepresentativeCopies": [
+    {
+      "part": "Command",
+      "expected": "jq '.'",
+      "actual": "jq '.'"
+    },
+    {
+      "part": "Input",
+      "expected": "\"Hello, world!\"",
+      "actual": "\"Hello, world!\""
+    },
+    {
+      "part": "Output",
+      "expected": "\"Hello, world!\"",
+      "actual": "\"Hello, world!\""
+    }
+  ],
+  "semanticAfterNativeInput": {
+    "expected": "jq '.'",
+    "actual": "jq '.'",
+    "copiedLabel": "コピーしました",
+    "status": "passed"
+  },
+  "nativePasteInSearch": {
+    "expected": "\"Hello, world!\"",
+    "actual": "\"Hello, world!\"",
+    "status": "passed"
+  },
+  "interpretation": "初期のsemantic操作では成功表示と実clipboardが不一致、native入力後はCommand/Input/Outputと実pasteが一致。操作/clipboard経路の初期状態による差が観測されたが根本原因は未確定。文書コードの恒常的欠陥とは断定しない。610失敗を消さず611代表成功を追加。",
+  "sharedPluginUnchanged": {
+    "path": "scripts/plugins/rehype-document-enhancements.js",
+    "rootSHA256": "48d882552499ef792d42e91ddd90386440e7816a7ee525c774b6ffbc411bd6b8",
+    "isolatedSHA256": "48d882552499ef792d42e91ddd90386440e7816a7ee525c774b6ffbc411bd6b8",
+    "patched": false
+  },
+  "limitations": [
+    "日本語1ページの代表3copyのみ。全コードcopy/全ページUIではない。",
+    "初期不一致の根本原因は未特定。",
+    "mobile/言語切替・残り12ページ訳/全量別review・統合回帰は未確認。"
+  ],
+  "tabClosed": true,
+  "previewStop": "CtrlC sent to84684, completion checked separately",
+  "releaseReady": false
+}
