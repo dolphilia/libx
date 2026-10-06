@@ -1,0 +1,18 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {hashFile} from '/Users/dolphilia/github/libx/scripts/project-expansion/ledger.mjs';
+const root='/Users/dolphilia/github/libx',app='/private/tmp/libx-spdlog-integration-20261003/apps/spdlog',ev=root+'/docs/notes/project-expansion/runs/evidence/2026-10-03-413',req=createRequire('/private/tmp/libx-spdlog-integration-20261003/package.json'),{parse}=req('parse5');
+const walk=n=>[n,...(n.childNodes??[]).flatMap(walk)],attr=(n,k)=>n.attrs?.find(x=>x.name===k)?.value,text=n=>n.nodeName==='#text'?n.value:(n.childNodes??[]).map(text).join('');
+const map=JSON.parse(fs.readFileSync(root+'/docs/notes/document-import/spdlog/v1-17-0/CANONICAL_MAP_394.json')),progress=JSON.parse(fs.readFileSync(root+'/docs/notes/project-expansion/runs/evidence/2026-10-03-412/JAPANESE_TRANSLATION_PROGRESS.json'));
+assert.equal(progress.pages.length,27);const snapshots=[];
+for(const p of progress.pages){const file=app+'/src/content/docs/v1-17-0/ja/'+(p.translation.path.endsWith('01-license.md')?'02-reference/':'01-guide/')+path.basename(p.translation.path);assert.equal(hashFile(file),p.translation.sha256);snapshots.push({file:file.replace(app+'/',''),sha256:hashFile(file)});}
+for(const row of map.guide)assert.equal(hashFile('/private/tmp/libx-spdlog-integration-20261003/'+row.canonical),row.canonicalSHA256);
+const results=[];
+for(const lang of ['en','ja']){
+const html=fs.readFileSync(app+'/dist/v1-17-0/'+lang+'/02-reference/01-license/index.html','utf8'),nodes=walk(parse(html));const originals=nodes.filter(n=>n.tagName==='pre'&&attr(n,'data-original-notice')).map(n=>({name:attr(n,'data-original-notice'),text:text(n)}));assert.equal(originals.length,3);
+for(const notice of originals){let raw;if(notice.name==='wiki/_Footer.md')raw='©gabime 2023-2024 spdlog. All Rights Reserved.';else raw=fs.readFileSync(root+'/docs/notes/document-import/spdlog/v1-17-0/sources/'+notice.name,'utf8').replace(/\r\n/g,'\n');assert.equal(notice.text,raw);}
+for(const row of map.guide){const slug=path.basename(row.canonical,'.md'),doc=walk(parse(fs.readFileSync(app+'/dist/v1-17-0/'+lang+'/01-guide/'+slug+'/index.html','utf8')));assert(doc.some(n=>n.tagName==='a'&&attr(n,'href')==='/docs/spdlog/v1-17-0/'+lang+'/02-reference/01-license/'));assert(doc.some(n=>n.tagName==='code'&&text(n)===row.sourceSHA256));}
+const sidebar=JSON.parse(fs.readFileSync(app+'/public/sidebar/sidebar-'+lang+'-v1-17-0.json'));const links=[];const visit=x=>{if(!x||typeof x!=='object')return;for(const [k,v] of Object.entries(x)){if(k==='href'&&typeof v==='string')links.push(v);else if(typeof v==='object')visit(v);}};visit(sidebar);
+// Sidebar schema is retained in the snapshot; actual entry coverage checked by all document paths in serialized payload.
+const serialized=JSON.stringify(sidebar);for(const row of map.guide)assert(serialized.includes(path.basename(row.canonical,'.md')),lang+' sidebar missing '+row.name);assert(serialized.includes('01-license'));
+results.push({language:lang,fullOriginalNoticesExact:3,guideProvenanceSourceSHAsAndLocalLicenseLinks:26,sidebarDocumentEntries:27,sidebarSHA256:hashFile(app+'/public/sidebar/sidebar-'+lang+'-v1-17-0.json')});
+}
+fs.writeFileSync(ev+'/PROVENANCE_LICENSE_SIDEBAR.json',JSON.stringify({at:new Date().toISOString(),status:'passed',scope:'All54 document pages: fixed EN hashes/27 JA saved draft hashes, actualHTML original notice texts, all52guide sourceSHA and own-language license links, sidebar path coverage. No native or content review.',snapshots,results},null,2)+'\n',{flag:'wx'});console.log(results);

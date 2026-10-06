@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="ja" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar data-dir="ltr"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/docs/spdlog/favicon.svg"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- ダークモードフラッシュ防止スクリプト --><script>
+      (function () {
+        const STORAGE_KEY = 'theme-preference';
+
+        function getThemePreference() {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY)) {
+            return localStorage.getItem(STORAGE_KEY);
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        const theme = getThemePreference();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script><meta name="generator" content="Astro v5.7.12"><meta name="description" content="spdlog 1.17.0 READMEと公式Wiki 2025-10-15固定版の非公式日本語訳"><link rel="canonical" href="https://libx.dev/docs/spdlog/v1-17-0/ja/01-guide/16-makefile-only/"><link rel="alternate" hreflang="en" href="https://libx.dev/docs/spdlog/v1-17-0/en/01-guide/16-makefile-only/"><link rel="alternate" hreflang="ja" href="https://libx.dev/docs/spdlog/v1-17-0/ja/01-guide/16-makefile-only/"><link rel="alternate" hreflang="x-default" href="https://libx.dev/docs/spdlog/v1-17-0/en/01-guide/16-makefile-only/"><meta property="og:type" content="article"><meta property="og:title" content="Makefileのみを使う | spdlog"><meta property="og:description" content="spdlog 1.17.0 READMEと公式Wiki 2025-10-15固定版の非公式日本語訳"><meta property="og:url" content="https://libx.dev/docs/spdlog/v1-17-0/ja/01-guide/16-makefile-only/"><title>Makefileのみを使う | spdlog</title><script type="module" src="/docs/spdlog/assets/MainLayout.astro_astro_type_script_index_0_lang.BtGKYxtq.js"></script><link rel="stylesheet" href="/docs/spdlog/assets/style.1-srtqqd.css"></head> <body> <div class="page"> <header class="header" dir="ltr"> <div class="header-container"> <div class="header-content"> <div class="title-wrapper"><div class="breadcrumb-title"> <a href="/ja" class="site-title">
+Libx
+</a> <svg class="breadcrumb-separator" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg> <a href="/docs/spdlog/v1-17-0/ja/01-guide/01-readme" class="doc-title"> spdlog </a> </div></div> <div class="print:hidden right-group"> <div class="docs-search" data-search-root data-index-url="/docs/spdlog/search/v1-17-0/ja.json" data-no-results="'{query}'に一致する結果が見つかりませんでした" data-error="検索エラー" data-astro-cid-jscxfdqf> <button type="button" class="search-trigger" data-search-trigger aria-haspopup="dialog" aria-label="検索" data-astro-cid-jscxfdqf> <span data-astro-cid-jscxfdqf>検索</span><kbd data-astro-cid-jscxfdqf>/</kbd> </button> <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" data-astro-cid-jscxfdqf> <form method="dialog" class="search-header" data-astro-cid-jscxfdqf> <label id="search-dialog-title" for="docs-search-input" data-astro-cid-jscxfdqf> 検索結果 </label> <button type="submit" aria-label="閉じる" data-astro-cid-jscxfdqf>×</button> </form> <input id="docs-search-input" type="search" autocomplete="off" placeholder="ドキュメントを検索..." data-search-input data-astro-cid-jscxfdqf> <p class="search-status" data-search-status aria-live="polite" data-astro-cid-jscxfdqf></p> <ol class="search-results" data-search-results data-astro-cid-jscxfdqf></ol> </dialog> </div> <script type="module" src="/docs/spdlog/assets/Search.astro_astro_type_script_index_0_lang.kf7fuhx0.js"></script>  <div class="version-selector-container"> <div class="version-selector" dir="ltr" data-astro-cid-7eictml2> <script>
+  class DocsDropdown extends HTMLElement {
+    constructor() {
+      super();
+    }
+  }
+  
+  // カスタム要素として登録
+  customElements.define('docs-dropdown', DocsDropdown);
+  </script><script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // すべてのドロップダウンコンポーネントを初期化
+    document.querySelectorAll('docs-dropdown').forEach(dropdown => {
+      if (dropdown._initialized) return;
+      dropdown._initialized = true;
+      
+      const button = dropdown.querySelector('[data-dropdown-button]');
+      const menu = dropdown.querySelector('[data-dropdown-menu]');
+      
+      if (button && menu) {
+        // ボタンクリックでメニューの表示/非表示を切り替え
+        button.addEventListener('click', function() {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', (!expanded).toString());
+          menu.classList.toggle('hidden');
+        });
+        
+        // 外部クリックでメニューを閉じる
+        document.addEventListener('click', function(event) {
+          if (!dropdown.contains(event.target)) {
+            button.setAttribute('aria-expanded', 'false');
+            menu.classList.add('hidden');
+          }
+        });
+        
+        // ESCキーでメニューを閉じる
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            button.setAttribute('aria-expanded', 'false');
+            menu.classList.add('hidden');
+          }
+        });
+      }
+    });
+  });
+  </script><docs-dropdown dir="ltr" data-astro-cid-7eictml2="true" data-astro-cid-75uvinvx="true" class="dropdown version-dropdown">  <div data-astro-cid-75uvinvx> <button type="button" class="dropdown-button" id="dropdown-button-ec65f06c8c61ce36-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-ec65f06c8c61ce36-0" data-dropdown-button data-astro-cid-75uvinvx> <span class="dropdown-label" data-astro-cid-75uvinvx>1.17.0 / Wiki 2025-10-15</span> <span class="dropdown-icon" data-astro-cid-75uvinvx><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-ec65f06c8c61ce36-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-ec65f06c8c61ce36-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-75uvinvx> <div class="dropdown-content" role="none" data-astro-cid-75uvinvx>   <a href="/docs/spdlog/v1-17-0/ja/01-guide/16-makefile-only" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-version-link="true" data-astro-cid-7eictml2="true" data-astro-cid-t3ohvj2t><span class="dropdown-item-label" data-astro-cid-t3ohvj2t>1.17.0 / Wiki 2025-10-15</span><span class="version-badge version-badge-latest" data-astro-cid-7eictml2> 最新 </span><div class="version-meta" data-astro-cid-7eictml2> <div class="version-date" data-astro-cid-7eictml2> 2026年1月4日 </div>  </div> </a>  </div> </div> </docs-dropdown>  <div class="version-info" data-astro-cid-7eictml2>   </div> </div>  <script>(function(){const versionsLabel = "バージョン一覧";
+const collapseLabel = "閉じる";
+
+  // バージョン履歴の「すべてのバージョンを表示」リンクの処理
+  document.addEventListener('DOMContentLoaded', () => {
+    const moreLinks = document.querySelectorAll('.version-history-more');
+    moreLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const historyList = link
+          .closest('.version-history')
+          ?.querySelector('.version-history-list');
+        const historyItems = historyList?.querySelectorAll('.version-history-item');
+
+        if (historyItems) {
+          historyItems.forEach((item) => {
+            if (item.classList.contains('hidden')) {
+              item.classList.remove('hidden');
+            }
+          });
+
+          // 「すべて表示」リンクを「折りたたむ」に変更
+          link.textContent = collapseLabel;
+          link.classList.add('is-expanded');
+
+          // クリック時の動作を切り替え
+          link.addEventListener(
+            'click',
+            (e) => {
+              e.preventDefault();
+              if (link.classList.contains('is-expanded')) {
+                // 3つ目以降を非表示
+                Array.from(historyItems)
+                  .slice(3)
+                  .forEach((item) => {
+                    item.classList.add('hidden');
+                  });
+                link.textContent = versionsLabel;
+                link.classList.remove('is-expanded');
+              } else {
+                // すべて表示
+                historyItems.forEach((item) => {
+                  item.classList.remove('hidden');
+                });
+                link.textContent = collapseLabel;
+                link.classList.add('is-expanded');
+              }
+            },
+            { once: true }
+          );
+        }
+      });
+    });
+
+    // バージョンセレクターリンクの動的フォールバック処理
+    setupVersionSelectorFallback();
+  });
+
+  // バージョンセレクターリンクの動的フォールバック処理
+  function setupVersionSelectorFallback() {
+    const versionLinks = document.querySelectorAll('.version-dropdown [data-version-link]');
+
+    versionLinks.forEach((link) => {
+      const originalHref = link.getAttribute('href');
+      if (!originalHref) return;
+
+      link.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        // リンク先が存在するかチェック
+        const isValid = await checkLinkValidity(originalHref);
+
+        if (isValid) {
+          // 有効なリンクならそのまま遷移
+          window.location.href = originalHref;
+        } else {
+          // 無効なリンクならフォールバック先を計算
+          const fallbackUrl = await calculateFallbackUrl(originalHref);
+          window.location.href = fallbackUrl;
+        }
+      });
+    });
+  }
+
+  // リンク先の有効性をチェック
+  async function checkLinkValidity(url) {
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // フォールバック先URLを計算
+  async function calculateFallbackUrl(originalUrl) {
+    // URLを解析
+    const urlParts = originalUrl.split('/');
+    const baseIndex = urlParts.findIndex((part) => part === 'docs');
+
+    if (baseIndex === -1) return originalUrl;
+
+    // パス構造: /docs/sample-docs/lang/version/section/file
+    const basePath = urlParts.slice(0, baseIndex + 3).join('/'); // /docs/sample-docs/lang
+    const version = urlParts[baseIndex + 3]; // version
+    const section = urlParts[baseIndex + 4]; // section (guide など)
+
+    // フォールバック戦略
+    const fallbackCandidates = [
+      // 1. 同じセクションの最初のファイル（getting-started系）
+      basePath + '/' + version + '/' + section + '/01-getting-started',
+      basePath + '/' + version + '/' + section + '/getting-started',
+      // 2. デフォルトセクション（guide）の最初のファイル
+      basePath + '/' + version + '/guide/01-getting-started',
+      basePath + '/' + version + '/guide/getting-started',
+      // 3. バージョンのルートページ
+      basePath + '/' + version + '/',
+      basePath + '/' + version,
+    ];
+
+    // 各候補を順次チェック
+    for (const candidate of fallbackCandidates) {
+      const isValid = await checkLinkValidity(candidate);
+      if (isValid) {
+        return candidate;
+      }
+    }
+
+    // すべて失敗した場合は元のURLを返す
+    return originalUrl;
+  }
+})();</script> </div><div class="language-selector-container"> <div class="language-selector-container" dir="ltr" data-astro-cid-zgjekvlj> <docs-dropdown dir="ltr" data-astro-cid-zgjekvlj="true" data-astro-cid-75uvinvx="true" class="dropdown language-dropdown ">  <div data-astro-cid-75uvinvx> <button type="button" class="dropdown-button" id="dropdown-button-12201b488d3741ee-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-12201b488d3741ee-0" data-dropdown-button data-astro-cid-75uvinvx> <span class="dropdown-label" data-astro-cid-75uvinvx>日本語</span> <span class="dropdown-icon" data-astro-cid-75uvinvx><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-12201b488d3741ee-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-12201b488d3741ee-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-75uvinvx> <div class="dropdown-content" role="none" data-astro-cid-75uvinvx>   <a href="/docs/spdlog/v1-17-0/en/01-guide/16-makefile-only/" class="dropdown-item" role="menuitem" tabindex="-1" data-astro-cid-zgjekvlj="true" data-astro-cid-t3ohvj2t><span class="dropdown-item-label" data-astro-cid-t3ohvj2t>English</span></a><a href="/docs/spdlog/v1-17-0/ja/01-guide/16-makefile-only/" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-astro-cid-zgjekvlj="true" data-astro-cid-t3ohvj2t><span class="dropdown-item-label" data-astro-cid-t3ohvj2t>日本語</span><span class="language-current-badge" data-astro-cid-zgjekvlj> 現在 </span></a> </div> </div> </docs-dropdown>  </div>  </div> <theme-toggle data-astro-cid-4mrwja4q="true"> <button class="theme-toggle" type="button" aria-label="テーマを切り替える" data-astro-cid-4mrwja4q> <span class="theme-toggle-icon" data-astro-cid-4mrwja4q> <!-- 太陽アイコン（ライトモード用） --> <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-4mrwja4q> <circle cx="12" cy="12" r="5" data-astro-cid-4mrwja4q></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-4mrwja4q></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-4mrwja4q></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-4mrwja4q></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-4mrwja4q></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-4mrwja4q></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-4mrwja4q></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-4mrwja4q></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-4mrwja4q></line> </svg> <!-- 月アイコン（ダークモード用） --> <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-4mrwja4q> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-4mrwja4q></path> </svg> </span> </button> </theme-toggle>  <script type="module" src="/docs/spdlog/assets/ThemeToggle.astro_astro_type_script_index_0_lang.BDHHZQnD.js"></script> </div> </div> </div> </header> <div class="main-frame"> <main id="main-content">  <div class="doc-layout-container" dir="ltr"> <aside class="sidebar-column print:hidden" dir="ltr"> <div class="sidebar-content"> <aside class="sidebar" role="complementary" aria-label="ドキュメント" id="sidebar" style="position: relative;" dir="ltr" data-astro-cid-zcfotggv> <div class="sidebar-resizer" data-astro-cid-5cpxgjqa> <div class="resizer-handle" title="サイドバーの幅を調整する" aria-hidden="true" data-astro-cid-5cpxgjqa> <div class="handle-line" data-astro-cid-5cpxgjqa></div> </div> <button type="button" class="collapse-button" title="サイドバーを折りたたむ、または展開する" aria-label="サイドバーを折りたたむ、または展開する" aria-expanded="true" aria-controls="sidebar" data-astro-cid-5cpxgjqa> <span class="collapse-icon" data-astro-cid-5cpxgjqa></span> </button> </div>  <script>(function(){const minWidth = 200;
+const maxWidth = 280;
+const initialWidth = 260;
+const collapsedWidth = 50;
+const storageKey = "sidebar-width";
+const dir = "ltr";
+
+  // CSSからの初期化を避けるため、DOMContentLoadedより早く実行
+  const initializeSidebar = () => {
+    const sidebar = document.getElementById('sidebar');
+
+    if (!sidebar) return;
+
+    // ローカルストレージから幅と折りたたみ状態を取得
+    const savedWidth = localStorage.getItem(storageKey);
+    const savedCollapsed = localStorage.getItem(`${storageKey}-collapsed`) === 'true';
+
+    // 初期幅を設定（保存された値がある場合のみ上書き）
+    if (savedWidth && !savedCollapsed) {
+      const sidebarWidth = parseInt(savedWidth);
+      sidebar.style.width = `${sidebarWidth}px`;
+    }
+
+    // 初期状態を設定
+    if (savedCollapsed) {
+      sidebar.classList.add('sidebar-collapsed');
+      sidebar.style.width = `${collapsedWidth}px`;
+    }
+
+    const collapseButton = document.querySelector('.collapse-button');
+    collapseButton?.setAttribute('aria-expanded', String(!savedCollapsed));
+  };
+
+  // できるだけ早く実行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSidebar);
+  } else {
+    initializeSidebar();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const resizer = document.querySelector('.sidebar-resizer');
+    const collapseButton = document.querySelector('.collapse-button');
+
+    if (!sidebar || !resizer || !collapseButton) return;
+
+    // リサイズ処理
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    // リサイズ開始
+    const startResize = (e) => {
+      isResizing = true;
+      startX = e.clientX || e.touches[0].clientX;
+      startWidth = parseInt(sidebar.offsetWidth);
+      resizer.classList.add('resizing');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+
+      // イベントリスナーを追加
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('touchmove', resize, { passive: false });
+      document.addEventListener('mouseup', stopResize);
+      document.addEventListener('touchend', stopResize);
+    };
+
+    // リサイズ中
+    const resize = (e) => {
+      if (!isResizing) return;
+
+      e.preventDefault();
+
+      const clientX = e.clientX || e.touches[0].clientX;
+      const pointerDelta = dir === 'rtl' ? startX - clientX : clientX - startX;
+      let newWidth = startWidth + pointerDelta;
+
+      // 最小幅と最大幅の制限
+      newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+      // サイドバーの幅を更新
+      sidebar.style.width = `${newWidth}px`;
+
+      // 折りたたみ状態を解除
+      if (sidebar.classList.contains('sidebar-collapsed') && newWidth > collapsedWidth) {
+        sidebar.classList.remove('sidebar-collapsed');
+        localStorage.setItem(`${storageKey}-collapsed`, 'false');
+      }
+    };
+
+    // リサイズ終了
+    const stopResize = () => {
+      if (!isResizing) return;
+
+      isResizing = false;
+      resizer.classList.remove('resizing');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+
+      // 現在の幅をローカルストレージに保存
+      if (!sidebar.classList.contains('sidebar-collapsed')) {
+        localStorage.setItem(storageKey, sidebar.offsetWidth);
+      }
+
+      // イベントリスナーを削除
+      document.removeEventListener('mousemove', resize);
+      document.removeEventListener('touchmove', resize);
+      document.removeEventListener('mouseup', stopResize);
+      document.removeEventListener('touchend', stopResize);
+    };
+
+    // 折りたたみ/展開ボタンのクリックイベント
+    const toggleCollapse = () => {
+      const widthBeforeToggle = sidebar.offsetWidth;
+      const isCollapsed = sidebar.classList.toggle('sidebar-collapsed');
+
+      if (isCollapsed) {
+        // 現在の幅を一時保存
+        if (!localStorage.getItem(`${storageKey}-width-before-collapse`)) {
+          localStorage.setItem(`${storageKey}-width-before-collapse`, widthBeforeToggle);
+        }
+
+        // 折りたたみ幅に設定
+        sidebar.style.width = `${collapsedWidth}px`;
+      } else {
+        // 以前の幅に戻す
+        const widthBeforeCollapse =
+          localStorage.getItem(`${storageKey}-width-before-collapse`) || initialWidth;
+        const restoredWidth = Number(widthBeforeCollapse);
+        sidebar.style.width = `${Math.min(maxWidth, Math.max(minWidth, Number.isFinite(restoredWidth) ? restoredWidth : initialWidth))}px`;
+        localStorage.removeItem(`${storageKey}-width-before-collapse`);
+        sidebar.scrollLeft = 0;
+      }
+
+      // 折りたたみ状態をローカルストレージに保存
+      localStorage.setItem(`${storageKey}-collapsed`, isCollapsed);
+      collapseButton.setAttribute('aria-expanded', String(!isCollapsed));
+    };
+
+    // イベントリスナーを設定
+    resizer.addEventListener('mousedown', startResize);
+    resizer.addEventListener('touchstart', startResize, { passive: false });
+    collapseButton.addEventListener('click', toggleCollapse);
+  });
+})();</script> <h3 class="sidebar-title" id="sidebar-title" data-astro-cid-zcfotggv> ドキュメント </h3> <nav aria-labelledby="sidebar-title" data-astro-cid-zcfotggv> <sl-sidebar-state-persist data-hash="sidebar-hash" data-astro-cid-f7jcgsfo="true"> <script aria-hidden="true">
+    (() => {
+      try {
+        if (!matchMedia('(min-width: 50em)').matches) return;
+        /** @type {HTMLElement | null} */
+        const target = document.querySelector('sl-sidebar-state-persist');
+        const state = JSON.parse(sessionStorage.getItem('sidebar-state') || '0');
+        if (!target || !state || target.dataset.hash !== state.hash) return;
+        window._sidebarScrollRestore = state.scroll;
+        customElements.define(
+          'sl-sidebar-restore',
+          class SidebarRestore extends HTMLElement {
+            connectedCallback() {
+              try {
+                const idx = parseInt(this.dataset.index || '');
+                const details = this.closest('details');
+                if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+              } catch {
+                // 段階的な拡張機能のため、エラーは静かに無視
+              }
+            }
+          }
+        );
+      } catch {
+        // 段階的な拡張機能のため、エラーは静かに無視
+      }
+    })();
+  </script>  <ul class="top-level" data-astro-cid-zcfotggv> <li data-astro-cid-zcfotggv> <details open data-astro-cid-zcfotggv> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary data-astro-cid-zcfotggv> <div class="group-label" data-astro-cid-zcfotggv> <span class="large" data-astro-cid-zcfotggv>ガイド</span>  </div> <span class="caret-container" data-astro-cid-zcfotggv> <span class="caret-wrapper" data-astro-cid-zcfotggv> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6nj6yz7z style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-zcfotggv> <li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/01-readme" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>spdlog README</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/02-3-custom-formatting" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>追加のログパターン（原資料のWikiファイル）</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/03-asynchronous-logging" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>非同期ログ</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/04-cmake" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>CMake</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/05-creating-loggers" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>ロガーの作成</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/06-custom-formatting" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>カスタム書式</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/07-default-logger" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>デフォルトロガー</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/08-error-handling" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>エラー処理</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/09-faq" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>よくある質問</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/10-flush-policy" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>フラッシュ方針</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/11-home" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>ホーム</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/12-how-to-use-spdlog-in-dlls" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>DLLでspdlogを使う方法</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/13-integrating-into-eclipse-ide" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>EclipseIDEへの統合</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/14-language-bindings" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>言語バインディング</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/15-logger-registry" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>ロガーレジストリ</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/16-makefile-only" aria-current="page" class="active" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>Makefileのみを使う</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/17-note-for-adding-sinks-on-the-fly" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>実行中にsinkを追加する際の注意</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/18-preventing-child-processes-from-inheriting-open-log-files" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>子プロセスによる開いているログファイルの継承を防ぐ</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/19-preventing-undefined-thread-ids-in-child-processes" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>子プロセスで未定義のスレッドIDを防ぐ</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/20-quickstart" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>クイックスタート</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/21-reference-documentation-using-doxygen" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>Doxygenによるリファレンス文書</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/22-setting-up-json-logging-with-spdlog" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>spdlogでJSONログを設定する</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/23-sinks" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>Sinks</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/24-thread-safety" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>スレッドセーフ性</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/25-tweaking" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>調整</span>  </a> </li><li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/01-guide/26-windows-unicode-filenames" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>WindowsのUnicodeファイル名</span>  </a> </li> </ul> </details> </li><li data-astro-cid-zcfotggv> <details data-astro-cid-zcfotggv> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary data-astro-cid-zcfotggv> <div class="group-label" data-astro-cid-zcfotggv> <span class="large" data-astro-cid-zcfotggv>出典・ライセンス</span>  </div> <span class="caret-container" data-astro-cid-zcfotggv> <span class="caret-wrapper" data-astro-cid-zcfotggv> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6nj6yz7z style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-zcfotggv> <li data-astro-cid-zcfotggv> <a href="/docs/spdlog/v1-17-0/ja/02-reference/01-license" data-astro-cid-zcfotggv> <span data-astro-cid-zcfotggv>出典と原ライセンス通知</span>  </a> </li> </ul> </details> </li> </ul>  <script aria-hidden="true">
+    (() => {
+      const scroller = document.getElementById('sidebar');
+      if (!window._sidebarScrollRestore || !scroller) return;
+      scroller.scrollTop = window._sidebarScrollRestore;
+      delete window._sidebarScrollRestore;
+    })();
+  </script> </sl-sidebar-state-persist> <script type="module" src="/docs/spdlog/assets/SidebarPersister.astro_astro_type_script_index_0_lang.1HBmR04Y.js"></script>  </nav> </aside>  <script type="module" src="/docs/spdlog/assets/Sidebar.astro_astro_type_script_index_0_lang.Dr4m1BH4.js"></script> </div> </aside> <div class="main-column" dir="ltr"> <details class="mobile-toc" dir="ltr" data-astro-cid-bnjtyddo> <summary data-astro-cid-bnjtyddo>このページの内容</summary> <starlight-toc data-min-h="2" data-max-h="6" dir="ltr" data-astro-cid-urem7zqj="true" class="starlight-toc--mobile"><div class="starlight-toc-wrapper" data-astro-cid-urem7zqj><nav aria-labelledby="starlight-toc-heading-mobile" data-astro-cid-urem7zqj><h3 id="starlight-toc-heading-mobile" class="starlight-toc-heading" data-astro-cid-urem7zqj>このページの内容</h3><div class="starlight-toc-list" data-astro-cid-urem7zqj><ul class="starlight-toc__list starlight-toc__list--mobile" data-astro-cid-zd6kupi6> <li class="starlight-toc__item" data-astro-cid-zd6kupi6> <a class="starlight-toc__link" href="#makefile" data-depth="0" data-heading-level="3" data-astro-cid-zd6kupi6> <span data-astro-cid-zd6kupi6>Makefile</span> </a>  </li> </ul> </div></nav></div></starlight-toc><script type="module" src="/docs/spdlog/assets/TableOfContents.astro_astro_type_script_index_0_lang.ClgIWJ3a.js"></script> </details>  <div class="content-panel"> <article class="sl-markdown-content" dir="ltr">   <aside data-editorial="provenance"><p>公式spdlog Wikiの2025-10-15固定版に基づく非公式の日本語訳です。<a href="https://github.com/gabime/spdlog/wiki/Makefile-Only">原資料</a>。原資料のSHA-256：<code>4f003451c8a1771b8a6a765658db07c54abfe4ebcaa55ea58c25ce5b1fc210cd</code>。ソフトウェアのコミット：<code>79524ddd08a4ec981b7fea76afd08ee05f83755d</code>。Wikiのコミット：<code>d384272cd5320e27b041ae92625040aa6db71a1e</code>。このWikiは独立した固定版であり、spdlog 1.17.0のタグに対応するマニュアルではありません。<a href="/docs/spdlog/v1-17-0/ja/02-reference/01-license/">原ライセンス・通知の全文</a>。本文の表示形式、日本語訳、版に関する注記は、Libxによる非公式の変更です。</p><p>文書専用ライセンスの表記が確認できないため、ソフトウェア本体のMIT Licenseを文書にも適用する運用判断で掲載しています。これは運用上の判断であり、権利者から新たに得た許諾ではありません。</p></aside>
+<div data-spdlog-source-body="16-makefile-only">
+<h3 id="makefile">Makefile</h3>
+<p>このライブラリは、次のようにMakefileからも利用できます。</p>
+<p>Makefile</p>
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="コードをコピー" data-copied-label="コピーしました" aria-label="コードをコピー">コードをコピー</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>LDFLAGS += -L/path/to/lib -lspdlog</span></span></code></pre></div>
+<p>main.cpp</p>
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="コードをコピー" data-copied-label="コピーしました" aria-label="コードをコピー">コードをコピー</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#define SPDLOG_COMPILED_LIB 1</span></span>
+<span class="line"><span>#include "spdlog/spdlog.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// ... lots of amazing code.</span></span></code></pre></div>
+</div>
+<aside data-editorial="original-copyright"><p>©gabime 2023-2024 spdlog. All Rights Reserved.</p></aside><script type="module">document.addEventListener('click',async e=>{const b=e.target.closest?.('.docs-code-copy');if(!b)return;const c=b.closest('.docs-code-frame')?.querySelector('code');if(!c)return;await navigator.clipboard.writeText(c.textContent??'');b.textContent=b.dataset.copiedLabel;setTimeout(()=>b.textContent=b.dataset.copyLabel,1500)});</script> <div class="navigation-container" data-astro-cid-w75peyc3> <div class="pagination-links" dir="ltr" data-astro-cid-krfaxgjw> <a href="/docs/spdlog/v1-17-0/ja/01-guide/15-logger-registry" rel="prev" data-astro-cid-krfaxgjw> <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" data-astro-cid-krfaxgjw> <path fill="currentColor" d="M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z" data-astro-cid-krfaxgjw></path> </svg> <span class="link-copy" data-astro-cid-krfaxgjw> 前へ <br data-astro-cid-krfaxgjw> <span class="link-title" data-astro-cid-krfaxgjw>ロガーレジストリ</span> </span> </a> <a href="/docs/spdlog/v1-17-0/ja/01-guide/17-note-for-adding-sinks-on-the-fly" rel="next" data-astro-cid-krfaxgjw> <span class="link-copy" data-astro-cid-krfaxgjw> 次へ <br data-astro-cid-krfaxgjw> <span class="link-title" data-astro-cid-krfaxgjw>実行中にsinkを追加する際の注意</span> </span> <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" data-astro-cid-krfaxgjw> <path fill="currentColor" d="M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z" data-astro-cid-krfaxgjw></path> </svg> </a> </div>  </div>   <aside class="document-provenance" aria-labelledby="document-provenance-title" data-astro-cid-u3mknbdb><div class="provenance-header" data-astro-cid-u3mknbdb><h2 id="document-provenance-title" data-astro-cid-u3mknbdb>文書の出典</h2><span class="provenance-status" data-astro-cid-u3mknbdb>翻訳</span></div><p class="attribution-text" data-astro-cid-u3mknbdb>この文書は gabime and spdlog Wiki contributors による「Official spdlog Wiki snapshot 2025-10-15」を翻訳したものです。</p><dl class="provenance-metadata" data-astro-cid-u3mknbdb><div data-astro-cid-u3mknbdb><dt data-astro-cid-u3mknbdb>出典</dt><dd data-astro-cid-u3mknbdb>Official spdlog Wiki snapshot 2025-10-15</dd></div><div data-astro-cid-u3mknbdb><dt data-astro-cid-u3mknbdb>上流バージョン</dt><dd data-astro-cid-u3mknbdb>1.17.0 / Wiki 2025-10-15</dd></div><div data-astro-cid-u3mknbdb><dt data-astro-cid-u3mknbdb>ライセンス</dt><dd data-astro-cid-u3mknbdb>MIT (software license applied with annotation)</dd></div></dl><div class="provenance-links" data-astro-cid-u3mknbdb><a href="https://github.com/gabime/spdlog/wiki" target="_blank" rel="noopener" data-astro-cid-u3mknbdb>原文を開く</a><a href="https://github.com/gabime/spdlog/blob/79524ddd08a4ec981b7fea76afd08ee05f83755d/LICENSE" target="_blank" rel="noopener" data-astro-cid-u3mknbdb>MIT (software license applied with annotation)ライセンス</a></div></aside> </article> </div> </div> <aside class="toc-column print:hidden" dir="ltr"> <div class="toc-content"> <starlight-toc data-min-h="2" data-max-h="6" dir="ltr" data-astro-cid-urem7zqj="true"><div class="starlight-toc-wrapper" data-astro-cid-urem7zqj><nav aria-labelledby="starlight-toc-heading" data-astro-cid-urem7zqj><h3 id="starlight-toc-heading" class="starlight-toc-heading" data-astro-cid-urem7zqj>このページの内容</h3><div class="starlight-toc-list" data-astro-cid-urem7zqj><ul class="starlight-toc__list" data-astro-cid-zd6kupi6> <li class="starlight-toc__item" data-astro-cid-zd6kupi6> <a class="starlight-toc__link" href="#makefile" data-depth="0" data-heading-level="3" data-astro-cid-zd6kupi6> <span data-astro-cid-zd6kupi6>Makefile</span> </a>  </li> </ul> </div></nav></div></starlight-toc> </div> </aside> </div>  </main> </div> </div> </body></html> <script>(function(){const baseUrl = "/docs/spdlog";
+const isGroup = false;
+
+  // サイドバーのプリフェッチ
+  function prefetchSidebar(lang, version) {
+    // バージョンが有効な形式（v1, v2など）かチェック
+    if (!version || !version.match(/^v\d+(?:-\d+)*$/)) {
+      version = 'v1'; // デフォルトバージョンを設定
+    }
+
+    const sidebarPath = `${baseUrl}/sidebar/sidebar-${lang}-${version}.json`;
+
+    // プリフェッチ用のlink要素を作成
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = sidebarPath;
+    document.head.appendChild(link);
+  }
+
+  // 現在のページの言語とバージョンを取得
+  const currentLang = document.documentElement.lang;
+
+  // URLパスからバージョン情報を正確に抽出
+  function extractVersionFromPath() {
+    const path = window.location.pathname;
+
+    // ベースパスを除去
+    const baseUrlPath = baseUrl.replace(/^\/|\/$/g, ''); // 先頭と末尾のスラッシュを削除
+    const pathWithoutBase = path.replace(new RegExp(`^/?${baseUrlPath}/?`), '');
+
+    // パスを分割
+    const segments = pathWithoutBase.split('/').filter((segment) => segment);
+
+    // version-first ルートの先頭セグメントがバージョン
+    if (segments.length >= 1) {
+      const potentialVersion = segments[0];
+      // バージョン形式をチェック (v1, v2, etc.)
+      if (potentialVersion.match(/^v\d+(?:-\d+)*$/)) {
+        return potentialVersion;
+      }
+    }
+
+    // バージョンが見つからない場合はデフォルトを返す
+    return 'v1';
+  }
+
+  const currentVersion = extractVersionFromPath();
+
+  // 現在のサイドバーをプリフェッチ
+  if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+})();</script> 

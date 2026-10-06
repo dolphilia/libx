@@ -1,0 +1,64 @@
+{
+  "status": "passed-with-explicit-limitations",
+  "runtime": "Codex in-app browser; local Astro preview only",
+  "viewportChecks": [
+    {
+      "width": 1280,
+      "height": 720,
+      "languages": [
+        "en",
+        "ja"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "languages": [
+        "ja"
+      ]
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "languages": [
+        "en"
+      ]
+    }
+  ],
+  "coverage": [
+    "Project entry redirects to README",
+    "Largest README in EN/JA; body/code/provenance inspected",
+    "Guide and Sources/license categories",
+    "Full licenses explanatory page and original notices",
+    "Keyboard Enter language dropdown and menuitem switches EN↔JA same page",
+    "Version menu shows single available1.17.0/Wiki snapshot and release date; Escape closes",
+    "Keyboard TOC links scroll to translated/English anchors",
+    "Desktop sidebar collapse/reexpand",
+    "Mobile search thread pool returns correct local pages and section anchors; keyboard result activation",
+    "Previous/Next navigation Async→CMake→Async",
+    "Mobile TOC disclosure;43row pattern table in327px scroll container; horizontal scrollLeft146.5 reveals examples",
+    "Qt image complete with1087x613 original pixels and visible scaled image",
+    "Built404 page and GoToHome return to project entry",
+    "Latest viewed404 console errors0; not whole-session console assertion"
+  ],
+  "fixes": [
+    "Mobile390px Japanese language label wrapped vertically: app-only CSS clips long version label, preserves full accessible/menu/provenance text, prevents language wrapping",
+    "Mobile320px English header overflow332px: version max-width6rem below360px removes overflow; resulting documentWidth305px in320px viewport"
+  ],
+  "contentEdited": false,
+  "sharedPackagesEdited": false,
+  "build": "Rebuilt59routes; persistentcheck:rendered passed54docs/52guide bodies after CSS correction",
+  "limitations": [
+    "Code-copy UI showed success acknowledgement, clipboard exact-content verification unavailable; no claim clipboard text was validated",
+    "No native all54page visual sweep; whole54page content hashes and52guide AST→HTML checks are separate evidence",
+    "Single available version; no alternate version exists to switch to",
+    "External API fullbody not in import scope",
+    "Integrated build/link/integrity/regression and Pages release pending"
+  ],
+  "cleanup": {
+    "viewportOverrideReset": true,
+    "taskTab70Closed": true,
+    "localPreviewStopRequested": true
+  },
+  "next": "Current production baseline reconciliation; isolated integrated build/checklinks/integrity and regression; then verified release and Pages preview/production checks"
+}

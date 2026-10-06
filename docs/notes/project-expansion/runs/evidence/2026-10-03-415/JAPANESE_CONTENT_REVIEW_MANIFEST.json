@@ -1,0 +1,862 @@
+{
+  "at": "2026-10-03T08:26:31.608Z",
+  "status": "passed",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null
+  },
+  "localLLMUsed": false,
+  "reviewStage": "Independent later content review, separate from draft comparison and mechanical checks; same Codex, no second agent claim",
+  "totalPages": 27,
+  "wholeContentReviewedPages": 27,
+  "pendingPages": 0,
+  "pages": [
+    {
+      "page": "Asynchronous-logging.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Asynchronous-logging.md",
+        "sha256": "caf4f7529aaa6ac0540fdd5e2750ab5fec1256435abb68afa1968c39873f7e17"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/03-asynchronous-logging.md",
+        "sha256": "d0345dc26c298711c309d8865ff447970f085280c23fc2dbbed168979896d7f7"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-396/translation-drafts/03-asynchronous-logging.md",
+        "sha256": "6b343912a2526224ea32bacf04bc46deb388ab0a686621daee7c1907001f3fb4"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/03-asynchronous-logging.md",
+        "sha256": "6b343912a2526224ea32bacf04bc46deb388ab0a686621daee7c1907001f3fb4"
+      },
+      "findings": [
+        "構築5経路・async.h必須・nb満杯nonblock、tp弱参照の寿命条件を全文再読して保持を確認。",
+        "block default/oldest置換を反転していない。global8192/1/64bit約256bytes事前割当とreset旧logger停止/事前initを保持。",
+        "pool別queue・callback作成後破棄前・複数workerはdequeue後reorder・1workerで順序保持を確認。",
+        "VS終了時main前shutdown記述と外部旧VS2012referenceを日付固定原Wikiとして保持。Flushの通常破棄記述と原文間差異あり。現在runtimeへの新規保証にしていない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Flush-policy.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Flush-policy.md",
+        "sha256": "2a3b8cc2b86a1a6a5688903544ea0bb30c289ef61013cbb1a1d280ef5b648c69"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/10-flush-policy.md",
+        "sha256": "f73ea05926dfebb007d15870ba09c1a6275b44beccd863626bb29e0924ddbb4e"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-397/translation-drafts/10-flush-policy.md",
+        "sha256": "7e3a7c34b7ee6608165ddaebcc5033f578c2c53b7c6879b95080547f9d6fbf94"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/10-flush-policy.md",
+        "sha256": "7e3a7c34b7ee6608165ddaebcc5033f578c2c53b7c6879b95080547f9d6fbf94"
+      },
+      "findings": [
+        "libc任せの性能目的、manual各sink、async要求enqueue即returnと旧同期waitの差を確認。",
+        "通常destruction自動処理とabort/_exit前shutdownの条件付き説明、err以上と5秒全登録済み、別threadなのでthreadsafe限定を保持。",
+        "Asynchronous pageのWindowsshutdown記述と原文間差異を新しい統一挙動として合成せず保持。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Creating-loggers.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Creating-loggers.md",
+        "sha256": "ffe58404fee5d1f5cb90a5738016aae1d828b73bec81e41c4c5a5861fd38bb62"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/05-creating-loggers.md",
+        "sha256": "deb8b55613c00aa910d98b7f0b3d7c3c7ad7cd51802fd7b03a7a2347f10e0f8a"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-397/translation-drafts/05-creating-loggers.md",
+        "sha256": "a0aab9bc7d8db280c57596cc59ed5f9c5e0b2c4b848d14867d5802442e580d1f"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/05-creating-loggers.md",
+        "sha256": "a0aab9bc7d8db280c57596cc59ed5f9c5e0b2c4b848d14867d5802442e580d1f"
+      },
+      "findings": [
+        "vector/level条件、mt/st同時使用不可と高速可能性を確認。",
+        "factoryID登録/sharedptr、getmutexコスト/hotpath保存、manual非自動登録/registerを全訳。",
+        "非同期pool事前割当/64bit約256bytes/block-overrun、手動globalstate未設定とinitialize要求を確認。",
+        "複数sink例と同一出力fileでは全logger同sink共有の必須条件、JA自己見出し参照を確認。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Default-logger.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Default-logger.md",
+        "sha256": "eb56a2bfbb54a847b359b6431279a23d3b861972e8ef3925d4adcba977d50dee"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/07-default-logger.md",
+        "sha256": "b8c1875dc458cbed8b8d1b18949a21a0493f233118f7f9069e5d9e466a57495b"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-395/translation-drafts/07-default-logger.md",
+        "sha256": "4c8f35dcbb6131473eee297eef660224e94a68ed66d1275cec69ae24e6e627c9"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/07-default-logger.md",
+        "sha256": "4c8f35dcbb6131473eee297eef660224e94a68ed66d1275cec69ae24e6e627c9"
+      },
+      "findings": [
+        "全文のstdout/color/multithreaded利便性と直接info/debug等、任意sharedptrloggerへの置換を確認。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Thread-Safety.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Thread-Safety.md",
+        "sha256": "3d201c5694b50e0e73400531cc7145e9ce3290bbfa406b36a2e2d7f34e03acad"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/24-thread-safety.md",
+        "sha256": "3fd6d5053a7cb34e1428572027b6411286a66fb2a42db7fad36c1286acd26c0a"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-398/translation-drafts/24-thread-safety.md",
+        "sha256": "b0053b365f8e3e1005190886599983ec624e3fa00192990c0cbe71729973efa6"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/24-thread-safety.md",
+        "sha256": "b0053b365f8e3e1005190886599983ec624e3fa00192990c0cbe71729973efa6"
+      },
+      "findings": [
+        "同一loggerへのset_error_handlerとsinksの並行操作禁止、vector非threadsafeとmt/st全種類適用を確認。",
+        "mt/stfactoryおよびsink区分と全API/codeを確認。非threadsafe制限を一般logging操作全体の禁止へ拡張していない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Custom-formatting.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Custom-formatting.md",
+        "sha256": "7355e130376d1ee5df09eb36bdda36655248e1fd749ca30c07c5219b536fd142"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/06-custom-formatting.md",
+        "sha256": "5f7a5b0588f1d320a069ec50415b56148044e3434d2e58383deb2b4aee03a279"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-399/translation-drafts/06-custom-formatting.md",
+        "sha256": "65dba62bbeb1e4bed5ee3f4b9dd3c5deec7b7b69c1c5670a374b15d50948045d"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-411/reviewed-ja/06-custom-formatting.md",
+        "sha256": "65dba62bbeb1e4bed5ee3f4b9dd3c5deec7b7b69c1c5670a374b15d50948045d"
+      },
+      "findings": [
+        "書式表48行を全文再読。時刻の単位・範囲、経過時間単位、source情報のマクロ条件、色区間1回の条件を確認。",
+        "global/logger/sinkの適用範囲、内部compileと毎回parseしない説明、最大幅64・左右中央揃え・切詰めと!!の特例を保持。",
+        "custom_flag_formatterのformat/clone、sinkごとの深いコピーと競合回避、組込flag上書き、TRACE有効化の条件を確認。",
+        "固定Wikiの表を1.17の全書式一覧とはしていない。コード9ブロックを保持。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Error-handling.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Error-handling.md",
+        "sha256": "1357f3d73272b2d9665d106d5aa1dc5991308a19f3156f05492b3245898a3f5b"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/08-error-handling.md",
+        "sha256": "930510a5c10b6ea3a6bedce3530e7dfea8fa093ffd2fb0dd1c386a4f8766e0d5"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-400/translation-drafts/08-error-handling.md",
+        "sha256": "627f74260b27d85715a830760d61982dac4e2a221121293b65ba5b80a49681d0"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-411/reviewed-ja/08-error-handling.md",
+        "sha256": "627f74260b27d85715a830760d61982dac4e2a221121293b65ba5b80a49681d0"
+      },
+      "findings": [
+        "logging時の既定例外抑止とlogger構築時の致命的失敗例外を区別し、既定stderrはloggerごと1分1回と確認。",
+        "全体と個別のhandler設定、個別handlerがruntime_errorをthrowする原コードを保持。custom handlerも無例外とする保証へ拡張しない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Logger-registry.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Logger-registry.md",
+        "sha256": "ee3bce045fcd74fd092d50d21d1ba79fcb53dec6a5c213e456d0f3b0f491204c"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/15-logger-registry.md",
+        "sha256": "a18a208e6be37825d5435c3e748b74968ed5f0ab65a2fcd0e6a88ede3e3e0627"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-398/translation-drafts/15-logger-registry.md",
+        "sha256": "991d4cf23d0b0cbe857ba9a64d2a7c18cddf1141cddf0b9568362c44cc3448eb"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-411/reviewed-ja/15-logger-registry.md",
+        "sha256": "991d4cf23d0b0cbe857ba9a64d2a7c18cddf1141cddf0b9568362c44cc3448eb"
+      },
+      "findings": [
+        "processごとのglobal registry、getのshared_ptrと未登録時empty・if条件、factory自動登録と手動登録を確認。",
+        "名前重複時の例外、dropが登録を外すことと他のshared_ptrがなくなってから資源解放する寿命条件を保持。",
+        "説明用コード断片の省略と不足semicolonは原文を保持し、コンパイル済みとは扱わない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Setting-up-JSON-logging-with-spdlog.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Setting-up-JSON-logging-with-spdlog.md",
+        "sha256": "e255a28eb890a544519f4aa9c75ffd93ac1ebf5f952d7c0433d8a2342c8f978d"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/22-setting-up-json-logging-with-spdlog.md",
+        "sha256": "74be9ff4e5484bdd6ab2b68abdf06d3542ec24a728d287da0998a391873f4574"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-405/translation-drafts/22-setting-up-json-logging-with-spdlog.md",
+        "sha256": "d41f5cb65f99339bcf28fbef97954a39e44c87860df9a36797ce19e9dcdec8e2"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-411/reviewed-ja/22-setting-up-json-logging-with-spdlog.md",
+        "sha256": "d41f5cb65f99339bcf28fbef97954a39e44c87860df9a36797ce19e9dcdec8e2"
+      },
+      "findings": [
+        "人間/機械向け出力、array開始・各message・最終閉じとdrop、thread IDの違いを全文確認。",
+        "有効なJSON・object/std::stringは利用者責任、INFO compile無効化時は開始/終了でより高いseverityを使う条件を保持。",
+        "5コードブロックのnested set_pattern・曲線引用符・escapeは原文由来の問題として既存注記に保持。安全なJSON serializerやコンパイル済み例とは扱わない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Note-for-adding-sinks-on-the-fly.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Note-for-adding-sinks-on-the-fly.md",
+        "sha256": "d2b87f7fdb6e34ae9542dbb57a1da40a7f6f07f22749f4419e3e70a2b1c59dad"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/17-note-for-adding-sinks-on-the-fly.md",
+        "sha256": "15615e1cef242684a6215a8f621d08e23f5f9e5b3297c980f80f9ac7e870d987"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-405/translation-drafts/17-note-for-adding-sinks-on-the-fly.md",
+        "sha256": "8b8c0859b91420dbed486568c8882cbb7c96182fd4acada6c2984e6736a8083e"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-411/reviewed-ja/17-note-for-adding-sinks-on-the-fly.md",
+        "sha256": "8b8c0859b91420dbed486568c8882cbb7c96182fd4acada6c2984e6736a8083e"
+      },
+      "findings": [
+        "既存JSON/MQTT callbackへの追加目的、autoによるvectorコピーとauto&による元vector参照の差を確認。",
+        "原文の「auto& or original sink_ptr type」は型の説明が曖昧なまま忠実に保持。sink_ptrでvector参照が得られると実証した扱いにしない。",
+        "省略push_back断片とprovenance/footerを全読。訳文誤りと原文の型説明の問題を区別し、原文問題をmanifestに記録。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "CMake.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/CMake.md",
+        "sha256": "74e4d8c650094155e121451378fa39dbc9527958f2ac0d4dccfa5e9913675668"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/04-cmake.md",
+        "sha256": "65cb5bbd52b5b1f398e2aa41abc03577f3f703b07c3b1abe4bb1ec1d8e9673d8"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-403/translation-drafts/04-cmake.md",
+        "sha256": "66a9ba40d8893d37ea9385e261c51ebb3334b16b47b31345e0f044b797ac7b08"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/04-cmake.md",
+        "sha256": "66a9ba40d8893d37ea9385e261c51ebb3334b16b47b31345e0f044b797ac7b08"
+      },
+      "findings": [
+        "全文の生成・toolchain・example・build/test・install・standalone・Android・ExternalProject・shared例を確認。旧Wiki3.0と1.17最小3.10/policy3.21の区別を正確に保持。",
+        "community寄稿/動作した報告を保証に強めず、共有libraryでPIC設定はadd_subdirectory前の条件を保持。古いv1.9.2やgeneratorは原文例であり実行検証ではない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "FAQ.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/FAQ.md",
+        "sha256": "01d50982fbc9dd49f285ec67a2147bc5155979979c69f8da96093b7f74e7fc87"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/09-faq.md",
+        "sha256": "d47f63b47a59b55863fb2da91662051677f4d112d59355d0ee9dce607f8651a6"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-400/translation-drafts/09-faq.md",
+        "sha256": "931ba48e0efeb9c9332b058e2ca081af7435eafbcbcc0f7dc1eb24a6eb9e4c7e"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/09-faq.md",
+        "sha256": "d8e2733e9d640a31390578f3ef35ae1dc500ba468ff24b24834918cccb3f7094"
+      },
+      "findings": [
+        "14質問を全文確認。flushのBUFSIZ・mt限定、compile macroとruntime levelの区別、外部fmtの2CMake変数、引数なしformatチェック不可を保持。",
+        "Windowsのhangsを停止するではなくハングするとする見出し2か所を修正。DllMainでasync/pool作成禁止、unload前shutdown条件を保持。",
+        "色区間/ソース情報macro、WinAPI3回避法、空名前衝突の2段階置換、offによる強制出力ではlevel flush非起動、GCC/ABI可能性を確認。",
+        "原文の曲線引用符・libstdc++11表記・BUFSIZ説明を保存。現在runtimeの独立実証や全実装の保証とはしない。"
+      ],
+      "translationCorrections": [
+        "Two headings: hangs translated as ハングする instead of 停止する; body/code/provenance unchanged"
+      ],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "How-to-use-spdlog-in-DLLs.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/How-to-use-spdlog-in-DLLs.md",
+        "sha256": "43913283a0225b0b2c2e7092cd5eb56b64cde472cfe68c36adb48b00f7080640"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/12-how-to-use-spdlog-in-dlls.md",
+        "sha256": "7bd9dfd1c00270df829a38e9de8425ab0ee6ce2f768bebae2b9fb49613d06dbc"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-402/translation-drafts/12-how-to-use-spdlog-in-dlls.md",
+        "sha256": "89d1d2f82be340001267f3272de74c2f00c173c90cf67c69f0fba3c57a50c457"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/12-how-to-use-spdlog-in-dlls.md",
+        "sha256": "89d1d2f82be340001267f3272de74c2f00c173c90cf67c69f0fba3c57a50c457"
+      },
+      "findings": [
+        "header-only利用のDLL/main別registry問題と両者登録回避を全文確認。",
+        "2コードブロックの説明・条件・同loggerのmain登録前後を保持。原資料自体のnot compiled disclaimerとsymbol export省略を保持。共有ビルド全方式に一般化した検証ではない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "3.-Custom-formatting).md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/3.-Custom-formatting).md",
+        "sha256": "28a2626f35720858ceeb86503d215795c6b598550a6c0a1269fa6c056bd6f40c"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/02-3-custom-formatting.md",
+        "sha256": "d52a529404a4b47999b9b194bcf705e4153904b252069ef393846d517d01a4ec"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/02-3-custom-formatting.md",
+        "sha256": "94a799c1232198d2536397394e48ca8bb8fd4d08d484b5b4f5964ef818409734"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/02-3-custom-formatting.md",
+        "sha256": "94a799c1232198d2536397394e48ca8bb8fd4d08d484b5b4f5964ef818409734"
+      },
+      "findings": [
+        "リンクされていない1行断片の全内容・出典・注記を確認。ENVOY風placeholderをspdlogの有効な書式として案内せず文字列そのまま保持。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Home.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Home.md",
+        "sha256": "5b13ef04a1d6e97b1c08e02b86410a56e1230147d731dd9efaa35720c52dcba9"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/11-home.md",
+        "sha256": "1c7d6166d3a1816cbed953788e49166fb9a0f39767633f3318cd1dc2ac3ba2fa"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-400/translation-drafts/11-home.md",
+        "sha256": "608b16246602057cdb6885bce9bc6c14531c84b2b2fe3b668aed265123082a28"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/11-home.md",
+        "sha256": "608b16246602057cdb6885bce9bc6c14531c84b2b2fe3b668aed265123082a28"
+      },
+      "findings": [
+        "導入文・22リンクと末尾案内を全読し日本語labelと原リンクの話題対応を確認。Windows/orphanなどの未掲載は原Homeの収録であり本文欠落ではない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Integrating-into-Eclipse-IDE.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Integrating-into-Eclipse-IDE.md",
+        "sha256": "643339b22d8e1a5b7464db1126348fdd869f870d4d30d76face16fd1768f2bc8"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/13-integrating-into-eclipse-ide.md",
+        "sha256": "ad255ce88d1e5539cdf441c7563660b855b0fd27a49a216fc6ad9483febb9b6a"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/13-integrating-into-eclipse-ide.md",
+        "sha256": "fbd6f96aad602af8a9b7e9e666fe3148f988c80bdabd54ef708981923e7ecf21"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/13-integrating-into-eclipse-ide.md",
+        "sha256": "fbd6f96aad602af8a9b7e9e666fe3148f988c80bdabd54ef708981923e7ecf21"
+      },
+      "findings": [
+        "5手順、thirdparty親folder推奨、git clone選択、SPDLOG_COMPILED_LIBのcase、include pathとIndexer rebuildを全読。",
+        "原文のC/C+表記とcompiled libraryリンク手順省略は保持。最新IDE/compiled libraryへの完全な動作保証としない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Language-bindings.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Language-bindings.md",
+        "sha256": "f68151eac59f6d90167965a46c0ca676bf916f66a03e0c60e3ba962146c2ed0c"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/14-language-bindings.md",
+        "sha256": "5a76a7b6c338e52ccfad1e197c9a8512676fe6e1fce2a378d965ece32115f9a6"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/14-language-bindings.md",
+        "sha256": "2ad44c246d7e2c84ac8066d5046b7086593bac3e439ca2960895f560d5f5fc3f"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/14-language-bindings.md",
+        "sha256": "2ad44c246d7e2c84ac8066d5046b7086593bac3e439ca2960895f560d5f5fc3f"
+      },
+      "findings": [
+        "1000bytes未満の1回所要時間が標準loggerの約4%async/7%syncという比率を確認。4%速いなどへ反転しない。",
+        "pip/source/8機能/文字列format未対応を全読。固定Wikiの性能主張でありLibx測定・現在packageの検証ではない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Makefile-Only.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Makefile-Only.md",
+        "sha256": "4f003451c8a1771b8a6a765658db07c54abfe4ebcaa55ea58c25ce5b1fc210cd"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/16-makefile-only.md",
+        "sha256": "5e26283090e8734d238b93f61627dbe43a61190a050305f871cab201823ee766"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/16-makefile-only.md",
+        "sha256": "914947b7061ad6c7e8d29457b5627d136739f1639d6b3318099e5840816f120a"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/16-makefile-only.md",
+        "sha256": "914947b7061ad6c7e8d29457b5627d136739f1639d6b3318099e5840816f120a"
+      },
+      "findings": [
+        "LDFLAGSとSPDLOG_COMPILED_LIB=1の2コード断片・includeを全読。リンク済み/コンパイル済みと称さず原文例保持。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Reference-documentation-using-Doxygen.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Reference-documentation-using-Doxygen.md",
+        "sha256": "c9ac02a42bbf646f0718f720097416248be2acc1693c82b68d45f7735d0c0011"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/21-reference-documentation-using-doxygen.md",
+        "sha256": "760fd14147a2f6df9b0f1217a7dacfe548c614fb05a867dd1146747a3e61b9da"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/21-reference-documentation-using-doxygen.md",
+        "sha256": "a650b91b7df09849d638ace141e8072d1ce26fe75a953c27cb292853b418fd22"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/21-reference-documentation-using-doxygen.md",
+        "sha256": "a650b91b7df09849d638ace141e8072d1ce26fe75a953c27cb292853b418fd22"
+      },
+      "findings": [
+        "関数signature参照目的と外部Doxygen URLの短い全文を確認。外部API本文は取り込み範囲外でレビュー済みとはしない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Windows-unicode-filenames.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Windows-unicode-filenames.md",
+        "sha256": "4515b41ba4dbbc627ab5f188755fd3b53e514f551683ff2ecd2f419975faea67"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/26-windows-unicode-filenames.md",
+        "sha256": "43b20029894e8a0e12958fe019bc146480a50085040527578eeb740dafa7445d"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/26-windows-unicode-filenames.md",
+        "sha256": "7ad5cb7d4822b65992310590724589e260dbd421c7ad6246ae3e51c71bed6e91"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/reviewed-ja/26-windows-unicode-filenames.md",
+        "sha256": "7ad5cb7d4822b65992310590724589e260dbd421c7ad6246ae3e51c71bed6e91"
+      },
+      "findings": [
+        "WCHAR_FILENAMES uncommentとtweakme.h・SPDLOG_FILENAME_T/L..の条件、2例を全読。",
+        "原文のspd alias未定義注記を全訳。Windowsコードの実行確認と区別する。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Preventing-child-processes-from-inheriting-open-log-files.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Preventing-child-processes-from-inheriting-open-log-files.md",
+        "sha256": "d72af8fcad7860d625a77f8df16282afa87d7fa7adc25fc7e6f1f5bf5e60d6c6"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/18-preventing-child-processes-from-inheriting-open-log-files.md",
+        "sha256": "5010f890508bce3b1d9e07e70844af8030f34c635854d2f8e15b574d5ed47605"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-404/translation-drafts/18-preventing-child-processes-from-inheriting-open-log-files.md",
+        "sha256": "aeeaa25dbc168241dae82479e7e8c61e5f61d522b0370306cedfa6afd93f4fc4"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/reviewed-ja/18-preventing-child-processes-from-inheriting-open-log-files.md",
+        "sha256": "aeeaa25dbc168241dae82479e7e8c61e5f61d522b0370306cedfa6afd93f4fc4"
+      },
+      "findings": [
+        "tweakme.hのSPDLOG_PREVENT_CHILD_FDコメント解除により子processのlog file descriptor継承を防ぐという全文の目的・操作を確認。実process実行検証ではない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Preventing-undefined-thread-ids-in-child-processes.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Preventing-undefined-thread-ids-in-child-processes.md",
+        "sha256": "ecaf833b4deb534067c70721119491c65e0eba2674d2fad794d9edfc70f3b16e"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/19-preventing-undefined-thread-ids-in-child-processes.md",
+        "sha256": "b281ee1527e5828f8446519e8ecce410c1d45ae79f511db3aabd2ba11f2e5874"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-404/translation-drafts/19-preventing-undefined-thread-ids-in-child-processes.md",
+        "sha256": "974c88d2cad50664d70bd8ea2793e398fb9bfcf3625d23503b99957ae9ebf54f"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/reviewed-ja/19-preventing-undefined-thread-ids-in-child-processes.md",
+        "sha256": "974c88d2cad50664d70bd8ea2793e398fb9bfcf3625d23503b99957ae9ebf54f"
+      },
+      "findings": [
+        "threadlocalID cacheで各呼出数micro節約、fork時はDISABLE_TID_CACHINGを必ず有効にする条件を全読。",
+        "Tweakingの古いNO_TLS説明とは別の固定Wiki記述として保存。2macroを同一設定と合成せず、現行全runtimeへの新規保証ではない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Tweaking.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file; separate later AI content review after draft original comparison, not a separate agent or native review",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Tweaking.md",
+        "sha256": "4d8865c5fe27e03b41f17c0ce0ecae3d16b3383aad486b511513e853b4d052bb"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/25-tweaking.md",
+        "sha256": "319225296c1a7acff552099ca8c3e0db5193f0483b4da71cb5fadf8af36b106c"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-404/translation-drafts/25-tweaking.md",
+        "sha256": "5878befecb14df01715ee30f6529ce07b6c2e42c6a3cc682c4a5809eb909ca02"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/reviewed-ja/25-tweaking.md",
+        "sha256": "5878befecb14df01715ee30f6529ce07b6c2e42c6a3cc682c4a5809eb909ca02"
+      },
+      "findings": [
+        "本文・全コード・コード外のコメント訳15項目（導入1＋macro14）を全読。COARSE精度とHZ依存、NO_THREAD_ID未定義条件と1.17zero注記を確認。",
+        "NO_TLS/fork、NO_ATOMIC_LEVELSは異thread同時変更が決してない場合限定、Windowswchar・EOL・外部fmtinclude/-I・UTF8・FD条件を保持。",
+        "名前と略名1文字以上可能、defaultlogger初期化時間可能性、ACTIVE_LEVELのdefaultINFO/無効空文、compilerdependentfunction/default/可能性表現を保持。",
+        "原文codeとWiki/masterへの参照を保ち、現在1.17の全macro有効性・性能を実証した扱いとしない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "README.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file reread in later content review; tool truncation gap explicitly reread for Sinks/QuickStart.",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/README.md",
+        "sha256": "d6ea8fd52d4e3194edf0b1cead3f55e9cd75130a192d52e9cd9aae87c1aa5254"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/01-readme.md",
+        "sha256": "35ec17e72c0c1592f854c144a27bd0f3fa20a0460d58f6e287e51e337e1ce97a"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-407/translation-drafts/01-readme.md",
+        "sha256": "cbf842077b8b143703d27b4b06524ef33b5181c2deb164df80e7cf015255cae9"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-415/reviewed-ja/01-readme.md",
+        "sha256": "cbf842077b8b143703d27b4b06524ef33b5181c2deb164df80e7cf015255cae9"
+      },
+      "findings": [
+        "ガイド全文、13package manager、全feature・全usage例・同期非同期benchmark・Wiki参照とprovenanceを再読。",
+        "compiled/header-onlyの違い、compile levelはruntimelevelを変更しない、registered mt限定3秒flush、MDC threadlocalでasync非対応と%&を保持。",
+        "binary5flags/否定条件、backtrace32、threadpool作成前設定、fileevents前後、Qt500行など単位・数値・条件を保持。",
+        "UI限定raw行4〜7と548〜553のbadges/sponsorのみ除外を再確認。全prose/codeとbenchmarkは保持。sicのmissingsemicolon/shared_ptr dot、未実行の性能主張を新しい実証としない。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "QuickStart.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file reread in later content review; tool truncation gap explicitly reread for Sinks/QuickStart.",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/QuickStart.md",
+        "sha256": "c431355d7af40d984c3b9906ddbf7558cb4855662c3eaed3274c2c1fdd27d051"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/20-quickstart.md",
+        "sha256": "a1a30744f8cddb1584166d046e76cd975c950abf6439f030b56b083d975ab60b"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-402/translation-drafts/20-quickstart.md",
+        "sha256": "7b25dd8b3ab18fa0fe89b7638895f69e5e6afee5a39580c357098cd8d405c720"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-415/reviewed-ja/20-quickstart.md",
+        "sha256": "7b25dd8b3ab18fa0fe89b7638895f69e5e6afee5a39580c357098cd8d405c720"
+      },
+      "findings": [
+        "全文7節と導入/API/include条件を再読。basic/asyncfactory/pool作成前変更・same file shared sink・各sink format/levelを保持。",
+        "compile macroはinclude前かつruntime set_levelも必要、fmt10formatter継承例を保持。原コードのdrop_allは別Wiki shutdown記述と合成せず原例とする。",
+        "最終friend/private例の問題がEN/JAとも注記され、コンパイル保証なし。全code/provenance/footer再読。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Sinks.md",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole English locked canonical body/code/provenance/footer and whole Japanese file reread in later content review; tool truncation gap explicitly reread for Sinks/QuickStart.",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Sinks.md",
+        "sha256": "945236df89324369620ff488bcc19bef85b356ea55a4bafa2614ea7dba4caef8"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/23-sinks.md",
+        "sha256": "12049ad858fbaa07dcd83a6eebaee64232056d7e8eb09f2e4e77f8350466b604"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-401/translation-drafts/23-sinks.md",
+        "sha256": "57193a2b07627881a7a22606e1b8d129548c9d885605bd0fd278cfc58dc0e948"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-415/reviewed-ja/23-sinks.md",
+        "sha256": "57193a2b07627881a7a22606e1b8d129548c9d885605bd0fd278cfc58dc0e948"
+      },
+      "findings": [
+        "全文のsingle target/privateformatter/shared_ptrvector/level条件・mt/st非同時制約を再読。部分一覧と1.5以降folder自動作成を保持。",
+        "rotationサイズ/個数、daily時刻・起動時旧file非削除/実行時だけ、全sink例/用途を保持。",
+        "dupは前同一かつmax_skip_duration未満、ringbuffer128/64、own sinkのprotected2関数/base lockingとmsg.payload旧raw、作成後vector非const参照とmutexなし非threadsafeを保持。",
+        "distの旧simple_file_sink_stは注記。ostream include空白、dup出力数、ringbuffer同名再宣言、Qt from表現は原資料のまま保持し動作実証としない。画像URL/altの訳とnotice確認。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    },
+    {
+      "page": "Sources and original license notices",
+      "status": "passed",
+      "wholeFileRead": true,
+      "coverage": "Whole EN/JA explanatory prose and all three original notice texts read; immutable original texts retained without Japanese legal rewrite",
+      "source": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-415/ORIGINAL_NOTICES.txt",
+        "sha256": "68fa80a637da5aa7150fe0e7acf5facf054ca2734682d40dbd001b1ca662251b"
+      },
+      "originalSourceRecords": [
+        {
+          "path": "docs/notes/document-import/spdlog/v1-17-0/sources/LICENSE",
+          "sha256": "d678c20826e1392578508e1c78649a1e3c31bda05ef4388d967dbd654461b140"
+        },
+        {
+          "path": "docs/notes/document-import/spdlog/v1-17-0/sources/fmt.license.rst",
+          "sha256": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8"
+        },
+        {
+          "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/_Footer.md",
+          "sha256": "23e9710b85f888a940ef88892a4ee4521a7ff65520f4a6d98a94afed179ef10e"
+        }
+      ],
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/02-reference/01-license.md",
+        "sha256": "ad19f9ae88938489379bc790bd27bc66097bf85e09f035f5b01d62122968b55a"
+      },
+      "draftOriginalComparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-408/translation-drafts/01-license.md",
+        "sha256": "8c6473dbc9efada78a96890e2f8ef534ad56f093a8bb9c6fd78abf5d449885bf"
+      },
+      "reviewedTranslation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-415/reviewed-ja/01-license.md",
+        "sha256": "8c6473dbc9efada78a96890e2f8ef534ad56f093a8bb9c6fd78abf5d449885bf"
+      },
+      "findings": [
+        "README softwarecommitと独立Wiki commit/date・非tagmanual・非公式表示/訳を確認。",
+        "Wiki softwareMIT fallbackは注釈付き運用判断で新許諾でないことと第三者JA非reuseを保持。",
+        "MITの許諾/notice条件/無保証/責任制限、fmt全文とobject形式限定のoptionalexception、Wiki copyright全文を再読。documenttextへの例外適用とせず原文3通知を保持。"
+      ],
+      "translationCorrections": [],
+      "unresolvedTranslationIssues": [],
+      "runtimeCodeExecution": "not performed",
+      "contentMeaningReview": true
+    }
+  ],
+  "originalSourceIssues": [
+    "Asynchronous/Flush/QuickStart fixed Wiki shutdown descriptions differ; preserved as independently dated original statements rather than newly validated runtime contract.",
+    "Adding sinks Wiki says auto& or original sink_ptr type; original type explanation is ambiguous and not validated as current compilable vector-reference code. JSON examples have nested pattern/curly quotes/escaping issues already annotated; not a serializer safety guarantee.",
+    "Adding sinks Wiki says auto& or original sink_ptr type; original type explanation is ambiguous and not validated as current compilable vector-reference code. JSON examples have nested pattern/curly quotes/escaping issues already annotated; not a serializer safety guarantee.",
+    "Adding sinks Wiki says auto& or original sink_ptr type; original type explanation is ambiguous and not validated as current compilable vector-reference code. JSON examples have nested pattern/curly quotes/escaping issues already annotated; not a serializer safety guarantee."
+  ],
+  "next": "Build persistent check:content; native preview and integrated regression verification; then authorized Pages release. Full content review is complete, final verification/publication pending."
+}
