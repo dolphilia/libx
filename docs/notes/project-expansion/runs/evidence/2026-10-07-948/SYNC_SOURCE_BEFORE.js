@@ -20,7 +20,7 @@ const sharedLayouts = ['layouts/MainLayout.astro', 'layouts/DocLayout.astro'];
 function canonicalLayout(app, file) {
   // App navigation adapters preserve upstream chapter identities and order.
   // Their reviewed runtime files are hash-frozen; shared UI stays canonical.
-  const adapterVersion = { libuv: '1.53.0', sds: 'v2-0-0', 'gnu-diffutils': 'v3-12' }[app.id];
+  const adapterVersion = { libuv: '1.53.0', sds: 'v2-0-0' }[app.id];
   const override = adapterVersion
     ? path.join(rootDir, 'docs/notes/document-import', app.id, adapterVersion, 'runtime-layouts')
     : null;

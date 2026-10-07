@@ -1,7 +1,7 @@
 import pathlib,json,subprocess,urllib.request,urllib.error,urllib.parse,hashlib,zipfile,stat,datetime
 root=pathlib.Path('/Users/dolphilia/github/libx/docs/notes/project-expansion/runs/evidence/2026-10-07-948')
 import sys
-run_id=int(sys.argv[1]);role=sys.argv[2];sha=json.loads((root/'COMMIT_RESULT.json').read_text())['commit']
+run_id=int(sys.argv[1]);role=sys.argv[2];sha=json.loads((root/'COMMIT_REPAIRED_RESULT.json').read_text())['commit']
 c=subprocess.run(['git','credential','fill'],input='protocol=https\nhost=github.com\n\n',text=True,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,check=True)
 t=dict(x.split('=',1) for x in c.stdout.splitlines() if '=' in x)['password']
 def api(p):
