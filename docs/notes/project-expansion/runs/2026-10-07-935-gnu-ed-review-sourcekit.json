@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-07-935-gnu-ed-review-sourcekit",
+  "cycle": 935,
+  "startedAt": "2026-10-06T20:00:58.352266+00:00",
+  "endedAt": "2026-10-06T20:19:31.711Z",
+  "result": "partial",
+  "phase": "GNU ed whole meaning review and independent sourcekit reconstruction",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "separate AI rendered-text whole meaning review",
+    "fixedsource replay",
+    "sourceZIP/SHA",
+    "CASledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-934/HISTORICAL_FREEZE.json",
+      "sha256": "d1574083bc55fe85f0d3508afa5665680d208f950fbf41d0e51f4dd2deafa437"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/gnu-ed/v1-22-6/DRAFT_REVIEW_MANIFEST.json",
+      "sha256": "8dd3ccbfb2d2073e1aac263cdf94cf75502a4e6cf4c62fde686488c50ec40f96"
+    },
+    {
+      "path": "docs/notes/document-import/gnu-ed/v1-22-6/REVIEW_MANIFEST.json",
+      "sha256": "3881a126e8db9ebdbc45bb14bc23c23393d1b0b069fe8c66c65c0ce5325848ba"
+    },
+    {
+      "path": "docs/notes/document-import/gnu-ed/v1-22-6/TRANSLATION_DRAFT_BINDING.json",
+      "sha256": "3d03f156e18d93dafa8fcdc4718db137afaa1847c41a97742f6b2a3ad2f57343"
+    },
+    {
+      "path": "docs/notes/document-import/gnu-ed/v1-22-6/CONTENT_MAP.json",
+      "sha256": "1e356ec7a5bc5372b1d985336de94dc89929d2c04c3073344cd1158104290356"
+    },
+    {
+      "path": "docs/notes/document-import/gnu-ed/v1-22-6/PROGRESS.json",
+      "sha256": "e501687e9d9f5ad43b628635dbefb94778ac7731d9af0fc00e6db5c81500c798"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/BODY_REVIEW.json",
+      "sha256": "8dd3ccbfb2d2073e1aac263cdf94cf75502a4e6cf4c62fde686488c50ec40f96"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/FORMAL_CONTEXT_REVIEW.json",
+      "sha256": "e7158e94bd20aace166d9d4b132d9a45c2bbb193017f04c7eaff75582486a49e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/SOURCE_OFFER.json",
+      "sha256": "0e17cabacc51708b24fd33aa51e3f0867db332cfaf810c5ec5a5ade131dbe259"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "gnu-ed"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "12whole meaning reviews/196units/15comments/formal notices",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/gnu-ed/v1-22-6/REVIEW_MANIFEST.json",
+          "sha256": "3881a126e8db9ebdbc45bb14bc23c23393d1b0b069fe8c66c65c0ce5325848ba"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/FORMAL_CONTEXT_REVIEW.json",
+          "sha256": "e7158e94bd20aace166d9d4b132d9a45c2bbb193017f04c7eaff75582486a49e"
+        }
+      ]
+    },
+    {
+      "name": "589sourcekit hashes/safe extraction",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/SOURCE_OFFER.json",
+          "sha256": "0e17cabacc51708b24fd33aa51e3f0867db332cfaf810c5ec5a5ade131dbe259"
+        }
+      ]
+    },
+    {
+      "name": "Independent reconstruction/25rendered pages/1015references/representative display",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/RECONSTRUCTION_PREFERRED.json",
+          "sha256": "c1a9139be9be88df17777c99835be7e0a08d9f16760b114270b17613e5515193"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/FINAL_RENDERED_LINKS.json",
+          "sha256": "e884b348ffa60bfa14fc2c0055bf62f40c9c1711bfeb4f3cc5975a55c162e776"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-935/NATIVE_FINAL.json",
+          "sha256": "7718ab5866fd25edf0f19ceaf44880d06938b1fe0511f2f927bf3d1ab8e54bd9"
+        }
+      ]
+    },
+    {
+      "name": "Formal gates/integration/publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "Fixed original examples retained;no upstreamtechnicalaudit",
+    "Published GNU Time70a733878 is new releasebaseline;unverified ed remains excluded"
+  ],
+  "unresolved": [
+    "formal gates/integration",
+    "publication"
+  ],
+  "nextAction": "936: 実公開GNU Time70a733878基準の /private/tmp/libx-gnu-ed-release-936 へGNU ed限定差分移植済。整形・対象build・統合検査から再開、検証後に限定push→Preview→Production。保存branch codex/save-document-expansion-20261007 は7fa98e2c8までpush成功。",
+  "resumeCondition": "936: 実公開GNU Time70a733878基準の /private/tmp/libx-gnu-ed-release-936 へGNU ed限定差分移植済。整形・対象build・統合検査から再開、検証後に限定push→Preview→Production。保存branch codex/save-document-expansion-20261007 は7fa98e2c8までpush成功。"
+}
