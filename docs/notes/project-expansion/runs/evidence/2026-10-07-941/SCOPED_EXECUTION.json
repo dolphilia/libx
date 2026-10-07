@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "at": "2026-10-06T21:39:04.941434+00:00",
+  "dependencyReuse": "Same frozen independently installed754 dependency input from940Q; no formalworkspace dependencies used. Changed helper replay and actual941 sourcekit inputs used; oldunchanged stages retain940 evidence.",
+  "steps": [
+    {
+      "name": "UPDATE_CANONICAL",
+      "args": [
+        "/private/tmp/libx-release-content-python-837/bin/python",
+        "/private/tmp/libx-gnu-grep-source-rebuild-941/workspace/docs/notes/document-import/gnu-grep/v3-12/updates/2026-10-07-chapters-5-6/apply-update.py"
+      ],
+      "workspace": "/private/tmp/libx-gnu-grep-source-rebuild-941/workspace",
+      "exitCode": 0
+    },
+    {
+      "name": "UPDATE_CONTEXT",
+      "args": [
+        "/private/tmp/libx-release-content-python-837/bin/python",
+        "/private/tmp/libx-gnu-grep-source-rebuild-941/workspace/docs/notes/document-import/gnu-grep/v3-12/updates/2026-10-07-chapters-5-6/prepare-context.py"
+      ],
+      "workspace": "/private/tmp/libx-gnu-grep-source-rebuild-941/workspace",
+      "exitCode": 0
+    },
+    {
+      "name": "INDEPENDENT_BUILD",
+      "args": [
+        "pnpm",
+        "--filter=./apps/gnu-grep",
+        "build"
+      ],
+      "workspace": "/private/tmp/libx-gnu-grep-source-rebuild-941/workspace",
+      "exitCode": 0
+    },
+    {
+      "name": "TARGET_BUILD",
+      "args": [
+        "pnpm",
+        "--filter=./apps/gnu-grep",
+        "build"
+      ],
+      "workspace": "/private/tmp/libx-gnu-grep-update-formal-940",
+      "exitCode": 0
+    },
+    {
+      "name": "FORMAT",
+      "args": [
+        "pnpm",
+        "exec",
+        "prettier",
+        "--check",
+        "apps/gnu-grep/src/config/project.config.jsonc",
+        "apps/gnu-grep/src/data/document-headings.json",
+        "apps/gnu-grep/public/sidebar",
+        "apps/gnu-grep/public/search"
+      ],
+      "workspace": "/private/tmp/libx-gnu-grep-update-formal-940",
+      "exitCode": 0
+    },
+    {
+      "name": "DEPLOYMENT_ASSETS",
+      "args": [
+        "node",
+        "scripts/check-deployment-assets.js",
+        "apps/gnu-grep/dist"
+      ],
+      "workspace": "/private/tmp/libx-gnu-grep-update-formal-940",
+      "exitCode": 0
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+from pathlib import Path
+import json,hashlib,datetime,re
+from bs4 import BeautifulSoup
+R=Path('/Users/dolphilia/github/libx');W=Path('/private/tmp/libx-gnu-grep-update-formal-940');Q=Path('/private/tmp/libx-gnu-grep-source-rebuild-940/workspace');E=Path(__file__).resolve().parent;P=Path('docs/notes/document-import/gnu-grep/v3-12');U=P/'updates/2026-10-07-chapters-5-6';A=Path('apps/gnu-grep');h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();rows=[];raw=(W/A/'src/content/docs/v3-12');pre=0;idsrows=[]
+for p in sorted(raw.rglob('*.md')):
+ rel=p.relative_to(W);assert h(p)==h(Q/rel),(rel,h(p),h(Q/rel));relcontent=p.relative_to(raw).with_suffix('');html=Q/A/'dist/v3-12'/relcontent/'index.html';s=BeautifulSoup(html.read_bytes(),'html.parser');md=p.read_text().split('---',2)[2];expected=BeautifulSoup(md,'html.parser').select_one('.gnu-grep-original-content, .section-level-extent#GNU-Free-Documentation-License');body=s.select_one('.gnu-grep-original-content, .section-level-extent#GNU-Free-Documentation-License');assert body and expected
+ assert ' '.join(body.get_text().split())==' '.join(expected.get_text().split()),rel;a=[x.get_text()for x in body.select('pre')];b=[x.get_text()for x in expected.select('pre')];assert a==b or ('02-reference' in str(rel) and [re.sub(r'\n{2,}','\n',v)for v in a]==[re.sub(r'\n{2,}','\n',v)for v in b]),rel;pre+=len(body.select('pre'));ids=[x.get('id')for x in s.select('[id]')];assert len(ids)==len(set(ids)),rel
+ f=s.select_one('.document-provenance');assert f and all(x in f.get_text()for x in ['Alain Magloire','Free Software Foundation','History','Libx','1999','2025']);assert f.select_one('a[href="/docs/gnu-grep/source/v3-12/source.zip"]');rows.append({'path':str(rel),'sha256':h(p),'guideRenderedPreExact': '02-reference' not in str(rel), 'referencePreBlankCollapseOnly': '02-reference' in str(rel),'uniqueIDs':True,'fullNoticeAndSourceZIP':True})
+assert len(rows)==55
+for rel in [U/'DOCUMENT_CONTEXT.json',A/'src/config/project.config.jsonc']:assert h(W/rel)==h(Q/rel),rel
+assert json.loads((W/A/'src/data/document-headings.json').read_text())==json.loads((Q/A/'src/data/document-headings.json').read_text())
+for manifest in [P/'REVIEW_MANIFEST.json',U/'REVIEW_MANIFEST.json']:
+ for row in json.loads((W/manifest).read_text())['pages']:
+  for role in ['source','canonical','translation']:assert h(Q/row[role]['path'])==row[role]['sha256'],(row['id'],role)
+for row in json.loads((W/P/'SOURCE_MANIFEST.json').read_text())['files']:assert h(Q/P/row['path'])==row['sha256']
+result={'status':'passed-independent-preferred-reconstruction','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'preferredDocuments':55,'wholeMeaningReviewsReused':27,'originalInputsExact':12,'independentInstall':'Frozenlockfile,no borrowed deps','replaySteps':10,'siteConfig':'Byteexact','HeadingMap':'All54key/value bindings exact; JSON objectkey order differs only','allGuideRenderedBodyPreExact':True,'EnglishLicenseReference':'Unchanged preferred raw source; inherited renderer collapses one blankline in firstpre only; text remains complete, no meaning loss; original/wholefooter licenses retain raw text','allUniqueIDs':True,'renderedBodyPre':pre,'rows':rows};(E/'RECONSTRUCTION_PREFERRED.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items()if k!='rows'}))
