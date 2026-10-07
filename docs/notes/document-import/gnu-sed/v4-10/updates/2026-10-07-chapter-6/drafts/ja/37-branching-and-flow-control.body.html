@@ -1,0 +1,41 @@
+<div class="gnu-sed-original-content" id="Branching-and-flow-control">
+<h3 class="section" id="Branching-and-Flow-Control"><span>6.4 分岐とフロー制御</span></h3>
+<p>分岐コマンド<code class="code">b</code>、<code class="code">t</code>、<code class="code">T</code>を使うと、<code class="command">sed</code>プログラムの処理の流れを変更できます。</p>
+<p>既定では、<code class="command">sed</code>は入力行をパターンバッファーへ読み込み、その後、すべてのコマンドを順番に処理します。アドレスのないコマンドはすべての行に作用します。アドレスのあるコマンドは、一致する行だけに作用します。<a class="xref" href="#Execution-Cycle"><code class="command">sed</code>の動作</a>と<a class="ref" href="#Addresses-overview">アドレスの概要</a>を参照してください。</p>
+<p><code class="command">sed</code>には、典型的な<code class="code">if/then</code>構文はありません。代わりに、一部のコマンドを条件として使ったり、既定の処理の流れを変更したりできます。</p>
+<dl class="table">
+<dt><code class="code">d</code></dt>
+<dd><p>現在のパターンスペースを削除（消去）し、残りのコマンドを処理せず、パターンスペースも表示せずに、プログラムのサイクルを再開します。</p>
+</dd>
+<dt><code class="code">D</code></dt>
+<dd><p>パターンスペースの内容を<em class="emph">最初の改行まで</em>削除し、残りのコマンドを処理せず、パターンスペースも表示せずに、プログラムのサイクルを再開します。</p>
+</dd>
+<dt><code class="code">[addr]X</code></dt>
+<dt><code class="code">[addr]{ X ; X ; X }</code></dt>
+<dt><code class="code">/regexp/X</code></dt>
+<dt><code class="code">/regexp/{ X ; X ; X }</code></dt>
+<dd><p>アドレスと正規表現は、<code class="code">if/then</code>の条件として使えます。<var class="var">[addr]</var>が現在のパターンスペースに一致すれば、コマンドを実行します。たとえば、コマンド<code class="code">/^#/d</code>は、<em class="emph">もし</em>現在のパターンが正規表現<code class="code">^#</code>（ハッシュ記号で始まる行）に一致すれば、<em class="emph">そのとき</em><code class="code">d</code>コマンドを実行する、という意味です。つまり、行を表示せずに削除し、プログラムのサイクルを直ちに再開します。</p>
+</dd>
+<dt><code class="code">b</code></dt>
+<dd><p>無条件で分岐します。つまり、新しいサイクルを再開せず、常にラベルへ移動して、ほかのコマンドを飛ばしたり繰り返したりします。アドレスと組み合わせると、一致する行に対して条件付きで分岐できます。</p>
+</dd>
+<dt><code class="code">t</code></dt>
+<dd><p>最後に入力行を読んだ後、または別の条件分岐を実行した後に、<code class="code">s///</code>コマンドが成功した<em class="emph">場合だけ</em>、条件付きで分岐します（つまりラベルへ移動します）。</p>
+</dd>
+<dt><code class="code">T</code></dt>
+<dd><p><code class="code">t</code>コマンドと似ていますが、条件は逆です。最後に入力行を読んだ後に、成功した置換が<em class="emph">ない</em>場合だけ分岐します。</p></dd>
+</dl>
+<p>次の2つの<code class="command">sed</code>プログラムは同じ動作をします。最初の（説明のために作った）例では、<code class="code">b</code>コマンドを使い、「<samp class="samp">1</samp>」を含む行で<code class="code">s///</code>コマンドを飛ばします。2つ目の例では、否定（「<samp class="samp">!</samp>」）付きのアドレスを使い、対象の行だけで置換を行います。<code class="code">y///</code>コマンドは、どちらの場合もすべての行で実行されます。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf '%s\n' a1 a2 a3 | sed -E '/1/bx ; s/a/z/ ; :x ; y/123/456/'
+a4
+z5
+z6
+
+$ printf '%s\n' a1 a2 a3 | sed -E '/1/!s/a/z/ ; y/123/456/'
+a4
+z5
+z6
+</pre></div></div>
+</div>
+

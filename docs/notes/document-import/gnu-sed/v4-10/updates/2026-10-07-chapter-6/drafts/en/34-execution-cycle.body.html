@@ -1,0 +1,36 @@
+<div class="gnu-sed-original-content" id="Execution-Cycle">
+<h3 class="section" id="How-sed-Works"><span>6.1 How <code class="command">sed</code> Works</span></h3>
+<a class="index-entry-id" id="index-Buffer-spaces_002c-pattern-and-hold"></a>
+<a class="index-entry-id" id="index-Spaces_002c-pattern-and-hold"></a>
+<a class="index-entry-id" id="index-Pattern-space_002c-definition"></a>
+<a class="index-entry-id" id="index-Hold-space_002c-definition"></a>
+<p><code class="command">sed</code> maintains two data buffers: the active <em class="emph">pattern</em> space,
+and the auxiliary <em class="emph">hold</em> space. Both are initially empty.
+</p>
+<p><code class="command">sed</code> operates by performing the following cycle on each
+line of input: first, <code class="command">sed</code> reads one line from the input
+stream, removes any trailing newline, and places it in the pattern space.
+Then commands are executed; each command can have an address associated
+to it: addresses are a kind of condition code, and a command is only
+executed if the condition is verified before the command is to be
+executed.
+</p>
+<p>When the end of the script is reached, unless the <samp class="option">-n</samp> option
+is in use, the contents of pattern space are printed out to the output
+stream, adding back the trailing newline if it was removed.<a class="footnote" href="#FOOT8" id="DOCF8"><sup>8</sup></a> Then the next cycle starts for the next
+input line.
+</p>
+<p>Unless special commands (like ‘<samp class="samp">D</samp>’) are used, the pattern space is
+deleted between two cycles. The hold space, on the other hand, keeps
+its data between cycles (see commands ‘<samp class="samp">h</samp>’, ‘<samp class="samp">H</samp>’, ‘<samp class="samp">x</samp>’,
+‘<samp class="samp">g</samp>’, ‘<samp class="samp">G</samp>’ to move data between both buffers).
+</p>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF8" id="FOOT8">(8)</a></h5>
+<p>Actually,
+if <code class="command">sed</code> prints a line without the terminating newline, it will
+nevertheless print the missing newline as soon as more text is sent to
+the same output stream, which gives the “least expected surprise”
+even though it does not make commands like ‘<samp class="samp">sed -n p</samp>’ exactly
+identical to <code class="command">cat</code>.</p>
+</div></div>

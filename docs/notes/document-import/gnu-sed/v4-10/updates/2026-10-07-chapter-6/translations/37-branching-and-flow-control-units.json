@@ -1,0 +1,130 @@
+{
+  "slug": "37-branching-and-flow-control",
+  "bodySHA256": "62024313d5940acf11dfad5e0bbcb6a1572a8c8baca387f2e2b9fc016acb68c4",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧6.4 Branching and Flow Control⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Branching-and-Flow-Control\"><span>6.4 Branching and Flow Control</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The branching commands ⟦0⟧, ⟦1⟧, and ⟦2⟧ enable changing the flow of ⟦3⟧ programs.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">b</code>",
+        "⟦1⟧": "<code class=\"code\">t</code>",
+        "⟦2⟧": "<code class=\"code\">T</code>",
+        "⟦3⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>The branching commands <code class=\"code\">b</code>, <code class=\"code\">t</code>, and <code class=\"code\">T</code> enable\nchanging the flow of <code class=\"command\">sed</code> programs.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "By default, ⟦0⟧ reads an input line into the pattern buffer, then continues to processes all commands in order. Commands without addresses affect all lines. Commands with addresses affect only matching lines. See ⟦1⟧How ⟦2⟧ Works⟦3⟧ and ⟦4⟧Addresses overview⟦5⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<a class=\"xref\" href=\"#Execution-Cycle\">",
+        "⟦2⟧": "<code class=\"command\">sed</code>",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<a class=\"ref\" href=\"#Addresses-overview\">",
+        "⟦5⟧": "</a>"
+      },
+      "sourceHTML": "<p>By default, <code class=\"command\">sed</code> reads an input line into the pattern buffer,\nthen continues to processes all commands in order.\nCommands without addresses affect all lines.\nCommands with addresses affect only matching lines.\nSee <a class=\"xref\" href=\"#Execution-Cycle\">How <code class=\"command\">sed</code> Works</a> and <a class=\"ref\" href=\"#Addresses-overview\">Addresses overview</a>.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "⟦0⟧ does not support a typical ⟦1⟧ construct. Instead, some commands can be used as conditionals or to change the default flow control:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">if/then</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code> does not support a typical <code class=\"code\">if/then</code> construct.\nInstead, some commands can be used as conditionals or to change the\ndefault flow control:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "delete (clears) the current pattern space, and restart the program cycle without processing the rest of the commands and without printing the pattern space.",
+      "tokens": {},
+      "sourceHTML": "<p>delete (clears) the current pattern space,\nand restart the program cycle without processing the rest of the commands\nand without printing the pattern space.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "delete the contents of the pattern space ⟦0⟧up to the first newline⟦1⟧, and restart the program cycle without processing the rest of the commands and without printing the pattern space.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>"
+      },
+      "sourceHTML": "<p>delete the contents of the pattern space <em class=\"emph\">up to the first newline</em>,\nand restart the program cycle without processing the rest of\nthe commands and without printing the pattern space.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Addresses and regular expressions can be used as an ⟦0⟧ conditional: If ⟦1⟧ matches the current pattern space, execute the command(s). For example: The command ⟦2⟧ means: ⟦3⟧if⟦4⟧ the current pattern matches the regular expression ⟦5⟧ (a line starting with a hash), ⟦6⟧then⟦7⟧ execute the ⟦8⟧ command: delete the line without printing it, and restart the program cycle immediately.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">if/then</code>",
+        "⟦1⟧": "<var class=\"var\">[addr]</var>",
+        "⟦2⟧": "<code class=\"code\">/^#/d</code>",
+        "⟦3⟧": "<em class=\"emph\">",
+        "⟦4⟧": "</em>",
+        "⟦5⟧": "<code class=\"code\">^#</code>",
+        "⟦6⟧": "<em class=\"emph\">",
+        "⟦7⟧": "</em>",
+        "⟦8⟧": "<code class=\"code\">d</code>"
+      },
+      "sourceHTML": "<p>Addresses and regular expressions can be used as an <code class=\"code\">if/then</code>\nconditional: If <var class=\"var\">[addr]</var> matches the current pattern space,\nexecute the command(s).\nFor example: The command <code class=\"code\">/^#/d</code> means:\n<em class=\"emph\">if</em> the current pattern matches the regular expression <code class=\"code\">^#</code> (a line\nstarting with a hash), <em class=\"emph\">then</em> execute the <code class=\"code\">d</code> command:\ndelete the line without printing it, and restart the program cycle\nimmediately.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "branch unconditionally (that is: always jump to a label, skipping or repeating other commands, without restarting a new cycle). Combined with an address, the branch can be conditionally executed on matched lines.",
+      "tokens": {},
+      "sourceHTML": "<p>branch unconditionally (that is: always jump to a label, skipping\nor repeating other commands, without restarting a new cycle). Combined\nwith an address, the branch can be conditionally executed on matched\nlines.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "branch conditionally (that is: jump to a label) ⟦0⟧only if⟦1⟧ a ⟦2⟧ command has succeeded since the last input line was read or another conditional branch was taken.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<code class=\"code\">s///</code>"
+      },
+      "sourceHTML": "<p>branch conditionally (that is: jump to a label) <em class=\"emph\">only if</em> a\n<code class=\"code\">s///</code> command has succeeded since the last input line was read\nor another conditional branch was taken.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "similar but opposite to the ⟦0⟧ command: branch only if there has been ⟦1⟧no⟦2⟧ successful substitutions since the last input line was read.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">t</code>",
+        "⟦1⟧": "<em class=\"emph\">",
+        "⟦2⟧": "</em>"
+      },
+      "sourceHTML": "<p>similar but opposite to the <code class=\"code\">t</code> command: branch only if\nthere has been <em class=\"emph\">no</em> successful substitutions since the last\ninput line was read.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "The following two ⟦0⟧ programs are equivalent. The first (contrived) example uses the ⟦1⟧ command to skip the ⟦2⟧ command on lines containing ‘⟦3⟧’. The second example uses an address with negation (‘⟦4⟧’) to perform substitution only on desired lines. The ⟦5⟧ command is still executed on all lines:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">b</code>",
+        "⟦2⟧": "<code class=\"code\">s///</code>",
+        "⟦3⟧": "<samp class=\"samp\">1</samp>",
+        "⟦4⟧": "<samp class=\"samp\">!</samp>",
+        "⟦5⟧": "<code class=\"code\">y///</code>"
+      },
+      "sourceHTML": "<p>The following two <code class=\"command\">sed</code> programs are equivalent.  The first\n(contrived) example uses the <code class=\"code\">b</code> command to skip the <code class=\"code\">s///</code>\ncommand on lines containing ‘<samp class=\"samp\">1</samp>’.  The second example uses an\naddress with negation (‘<samp class=\"samp\">!</samp>’)  to perform substitution only on\ndesired lines.  The <code class=\"code\">y///</code> command is still executed on all\nlines:\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

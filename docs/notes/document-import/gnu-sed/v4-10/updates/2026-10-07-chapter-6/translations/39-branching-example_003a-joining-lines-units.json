@@ -1,0 +1,77 @@
+{
+  "slug": "39-branching-example_003a-joining-lines",
+  "bodySHA256": "4c9f82eed61c30c96683817a2f2626f8bf8129826361b32a2083648cdcbc4e5e",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧6.4.2 Branching example: joining lines⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\"><span>6.4.2 Branching example: joining lines</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "As a real-world example of using branching, consider the case of ⟦0⟧quoted-printable⟦1⟧ files, typically used to encode email messages. In these files long lines are split and marked with a ⟦2⟧soft line break⟦3⟧ consisting of a single ‘⟦4⟧’ character at the end of the line:",
+      "tokens": {
+        "⟦0⟧": "<a class=\"uref\" href=\"https://en.wikipedia.org/wiki/Quoted-printable\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<em class=\"dfn\">",
+        "⟦3⟧": "</em>",
+        "⟦4⟧": "<samp class=\"samp\">=</samp>"
+      },
+      "sourceHTML": "<p>As a real-world example of using branching, consider the case of\n<a class=\"uref\" href=\"https://en.wikipedia.org/wiki/Quoted-printable\">quoted-printable</a> files,\ntypically used to encode email messages.\nIn these files long lines are split and marked with a <em class=\"dfn\">soft line break</em>\nconsisting of a single ‘<samp class=\"samp\">=</samp>’ character at the end of the line:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "The following program uses an address match ‘⟦0⟧’ as a conditional: If the current pattern space ends with a ‘⟦1⟧’, it reads the next input line using ⟦2⟧, replaces all ‘⟦3⟧’ characters which are followed by a newline, and unconditionally branches (⟦4⟧) to the beginning of the program without restarting a new cycle. If the pattern space does not ends with ‘⟦5⟧’, the default action is performed: the pattern space is printed and a new cycle is started:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">/=$/</samp>",
+        "⟦1⟧": "<samp class=\"samp\">=</samp>",
+        "⟦2⟧": "<code class=\"code\">N</code>",
+        "⟦3⟧": "<samp class=\"samp\">=</samp>",
+        "⟦4⟧": "<code class=\"code\">b</code>",
+        "⟦5⟧": "<samp class=\"samp\">=</samp>"
+      },
+      "sourceHTML": "<p>The following program uses an address match ‘<samp class=\"samp\">/=$/</samp>’ as a\nconditional: If the current pattern space ends with a ‘<samp class=\"samp\">=</samp>’, it\nreads the next input line using <code class=\"code\">N</code>, replaces all ‘<samp class=\"samp\">=</samp>’\ncharacters which are followed by a newline, and unconditionally\nbranches (<code class=\"code\">b</code>) to the beginning of the program without restarting\na new cycle. If the pattern space does not ends with ‘<samp class=\"samp\">=</samp>’, the\ndefault action is performed: the pattern space is printed and a new\ncycle is started:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Here’s an alternative program with a slightly different approach: On all lines except the last, ⟦0⟧ appends the line to the pattern space. A substitution command then removes soft line breaks (‘⟦1⟧’ at the end of a line, i.e. followed by a newline) by replacing them with an empty string. ⟦2⟧If⟦3⟧ the substitution was successful (meaning the pattern space contained a line which should be joined), the conditional branch command ⟦4⟧ jumps to the beginning of the program without completing or restarting the cycle. If the substitution failed (meaning there were no soft line breaks), The ⟦5⟧ command will ⟦6⟧not⟦7⟧ branch. Then, ⟦8⟧ will print the pattern space content until the first newline, and ⟦9⟧ will delete the pattern space content until the first new line. (To learn more about ⟦10⟧, ⟦11⟧ and ⟦12⟧ commands see ⟦13⟧Multiline techniques - using D,G,H,N,P to process multiple lines⟦14⟧).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<samp class=\"samp\">=</samp>",
+        "⟦2⟧": "<em class=\"emph\">",
+        "⟦3⟧": "</em>",
+        "⟦4⟧": "<code class=\"code\">t</code>",
+        "⟦5⟧": "<code class=\"code\">t</code>",
+        "⟦6⟧": "<em class=\"emph\">",
+        "⟦7⟧": "</em>",
+        "⟦8⟧": "<code class=\"code\">P</code>",
+        "⟦9⟧": "<code class=\"code\">D</code>",
+        "⟦10⟧": "<code class=\"code\">N</code>",
+        "⟦11⟧": "<code class=\"code\">P</code>",
+        "⟦12⟧": "<code class=\"code\">D</code>",
+        "⟦13⟧": "<a class=\"pxref\" href=\"#Multiline-techniques\">",
+        "⟦14⟧": "</a>"
+      },
+      "sourceHTML": "<p>Here’s an alternative program with a slightly different approach: On\nall lines except the last, <code class=\"code\">N</code> appends the line to the pattern\nspace.  A substitution command then removes soft line breaks\n(‘<samp class=\"samp\">=</samp>’ at the end of a line, i.e. followed by a newline) by replacing\nthem with an empty string.\n<em class=\"emph\">If</em> the substitution was successful (meaning the pattern space contained\na line which should be joined), the conditional branch command <code class=\"code\">t</code> jumps\nto the beginning of the program without completing or restarting the cycle.\nIf the substitution failed (meaning there were no soft line breaks),\nThe <code class=\"code\">t</code> command will <em class=\"emph\">not</em> branch. Then, <code class=\"code\">P</code> will\nprint the pattern space content until the first newline, and <code class=\"code\">D</code>\nwill delete the pattern space content until the first new line.\n(To learn more about <code class=\"code\">N</code>, <code class=\"code\">P</code> and <code class=\"code\">D</code> commands\nsee <a class=\"pxref\" href=\"#Multiline-techniques\">Multiline techniques - using D,G,H,N,P to process multiple lines</a>).\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "For more line-joining examples see ⟦0⟧Joining lines⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"pxref\" href=\"#Joining-lines\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<p>For more line-joining examples see <a class=\"pxref\" href=\"#Joining-lines\">Joining lines</a>.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

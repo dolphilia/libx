@@ -1,0 +1,90 @@
+<div class="gnu-sed-original-content" id="Branching-and-Cycles">
+<h4 class="subsection"><span>6.4.1 Branching and Cycles</span></h4>
+<a class="index-entry-id" id="index-labels"></a>
+<a class="index-entry-id" id="index-omitting-labels"></a>
+<a class="index-entry-id" id="index-cycle_002c-restarting"></a>
+<a class="index-entry-id" id="index-restarting-a-cycle"></a>
+<p>The <code class="code">b</code>,<code class="code">t</code> and <code class="code">T</code> commands can be followed by a label
+(typically a single letter). Labels are defined with a colon followed by
+one or more letters (e.g. ‘<samp class="samp">:x</samp>’). If the label is omitted the
+branch commands restart the cycle.  Note the difference between
+branching to a label and restarting the cycle: when a cycle is
+restarted, <code class="command">sed</code> first prints the current content of the
+pattern space, then reads the next input line into the pattern space;
+Jumping to a label (even if it is at the beginning of the program)
+does not print the pattern space and does not read the next input line.
+</p>
+<p>The following program is a no-op. The <code class="code">b</code> command (the only command
+in the program) does not have a label, and thus simply restarts the cycle.
+On each cycle, the pattern space is printed and the next input line is read:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed b
+1
+2
+3
+</pre></div></div>
+<a class="index-entry-id" id="index-infinite-loop_002c-branching"></a>
+<a class="index-entry-id" id="index-branching_002c-infinite-loop"></a>
+<p>The following example is an infinite-loop - it doesn’t terminate and
+doesn’t print anything. The <code class="code">b</code> command jumps to the ‘<samp class="samp">x</samp>’
+label, and a new cycle is never started:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed ':x ; bx'
+
+# The above command requires gnu sed (which supports additional
+# commands following a label, without a newline). A portable equivalent:
+#     sed -e ':x' -e bx
+</pre></div></div>
+<a class="index-entry-id" id="index-branching-and-n_002c-N"></a>
+<a class="index-entry-id" id="index-n_002c-and-branching"></a>
+<a class="index-entry-id" id="index-N_002c-and-branching"></a>
+<p>Branching is often complemented with the <code class="code">n</code> or <code class="code">N</code> commands:
+both commands read the next input line into the pattern space without waiting
+for the cycle to restart. Before reading the next input line, <code class="code">n</code>
+prints the current pattern space then empties it, while <code class="code">N</code>
+appends a newline and the next input line to the pattern space.
+</p>
+<p>Consider the following two examples:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed ':x ; n ; bx'
+1
+2
+3
+
+$ seq 3 | sed ':x ; N ; bx'
+1
+2
+3
+</pre></div></div>
+<ul class="itemize mark-bullet">
+<li>Both examples do not inf-loop, despite never starting a new cycle.
+
+</li><li>In the first example, the <code class="code">n</code> commands first prints the content
+of the pattern space, empties the pattern space then reads the next
+input line.
+
+</li><li>In the second example, the <code class="code">N</code> commands appends the next input
+line to the pattern space (with a newline).  Lines are accumulated in
+the pattern space until there are no more input lines to read, then
+the <code class="code">N</code> command terminates the <code class="command">sed</code> program. When the
+program terminates, the end-of-cycle actions are performed, and the
+entire pattern space is printed.
+
+</li><li>The second example requires GNU <code class="command">sed</code>,
+because it uses the non-POSIX-standard behavior of <code class="code">N</code>.
+See the “<code class="code">N</code> command on the last line” paragraph
+in <a class="ref" href="#Reporting-Bugs">Reporting Bugs</a>.
+
+</li><li>To further examine the difference between the two examples,
+try the following commands:
+<div class="example">
+<div class="group"><pre class="example-preformatted">printf '%s\n' aa bb cc dd | sed ':x ; n ; = ; bx'
+printf '%s\n' aa bb cc dd | sed ':x ; N ; = ; bx'
+printf '%s\n' aa bb cc dd | sed ':x ; n ; s/\n/***/ ; bx'
+printf '%s\n' aa bb cc dd | sed ':x ; N ; s/\n/***/ ; bx'
+</pre></div></div>
+</li></ul>
+</div>

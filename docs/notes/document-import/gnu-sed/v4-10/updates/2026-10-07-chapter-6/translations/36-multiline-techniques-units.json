@@ -1,0 +1,202 @@
+{
+  "slug": "36-multiline-techniques",
+  "bodySHA256": "6f0ed924474ea1654b30e711e6351e5e83631af1095246554d5d31049bf7dae7",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧6.3 Multiline techniques - using D,G,H,N,P to process multiple lines⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Multiline-techniques-_002d-using-D_002cG_002cH_002cN_002cP-to-process-multiple-lines\"><span>6.3 Multiline techniques - using D,G,H,N,P to process multiple lines</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Multiple lines can be processed as one buffer using the ⟦0⟧,⟦1⟧,⟦2⟧,⟦3⟧,⟦4⟧. They are similar to their lowercase counterparts (⟦5⟧,⟦6⟧, ⟦7⟧,⟦8⟧,⟦9⟧), except that these commands append or subtract data while respecting embedded newlines - allowing adding and removing lines from the pattern and hold spaces.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">D</code>",
+        "⟦1⟧": "<code class=\"code\">G</code>",
+        "⟦2⟧": "<code class=\"code\">H</code>",
+        "⟦3⟧": "<code class=\"code\">N</code>",
+        "⟦4⟧": "<code class=\"code\">P</code>",
+        "⟦5⟧": "<code class=\"code\">d</code>",
+        "⟦6⟧": "<code class=\"code\">g</code>",
+        "⟦7⟧": "<code class=\"code\">h</code>",
+        "⟦8⟧": "<code class=\"code\">n</code>",
+        "⟦9⟧": "<code class=\"code\">p</code>"
+      },
+      "sourceHTML": "<p>Multiple lines can be processed as one buffer using the\n<code class=\"code\">D</code>,<code class=\"code\">G</code>,<code class=\"code\">H</code>,<code class=\"code\">N</code>,<code class=\"code\">P</code>. They are similar to\ntheir lowercase counterparts (<code class=\"code\">d</code>,<code class=\"code\">g</code>,\n<code class=\"code\">h</code>,<code class=\"code\">n</code>,<code class=\"code\">p</code>), except that these commands append or\nsubtract data while respecting embedded newlines - allowing adding and\nremoving lines from the pattern and hold spaces.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "They operate as follows:",
+      "tokens": {},
+      "sourceHTML": "<p>They operate as follows:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "⟦0⟧deletes⟦1⟧ line from the pattern space until the first newline, and restarts the cycle.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>"
+      },
+      "sourceHTML": "<p><em class=\"emph\">deletes</em> line from the pattern space until the first newline,\nand restarts the cycle.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "⟦0⟧appends⟦1⟧ line from the hold space to the pattern space, with a newline before it.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>"
+      },
+      "sourceHTML": "<p><em class=\"emph\">appends</em> line from the hold space to the pattern space, with a\nnewline before it.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "⟦0⟧appends⟦1⟧ line from the pattern space to the hold space, with a newline before it.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>"
+      },
+      "sourceHTML": "<p><em class=\"emph\">appends</em> line from the pattern space to the hold space, with a\nnewline before it.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "⟦0⟧appends⟦1⟧ line from the input file to the pattern space.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>"
+      },
+      "sourceHTML": "<p><em class=\"emph\">appends</em> line from the input file to the pattern space.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "⟦0⟧prints⟦1⟧ line from the pattern space until the first newline.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>"
+      },
+      "sourceHTML": "<p><em class=\"emph\">prints</em> line from the pattern space until the first newline.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "The following example illustrates the operation of ⟦0⟧ and ⟦1⟧ commands:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<code class=\"code\">D</code>"
+      },
+      "sourceHTML": "<p>The following example illustrates the operation of <code class=\"code\">N</code> and\n<code class=\"code\">D</code> commands:\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "A common technique to process blocks of text such as paragraphs (instead of line-by-line) is using the following construct:",
+      "tokens": {},
+      "sourceHTML": "<p>A common technique to process blocks of text such as paragraphs\n(instead of line-by-line) is using the following construct:\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "The following example demonstrates this technique:",
+      "tokens": {},
+      "sourceHTML": "<p>The following example demonstrates this technique:\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "For more annotated examples, see ⟦0⟧Text search across multiple lines⟦1⟧ and ⟦2⟧Line length adjustment⟦3⟧.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"pxref\" href=\"#Text-search-across-multiple-lines\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<a class=\"ref\" href=\"#Line-length-adjustment\">",
+        "⟦3⟧": "</a>"
+      },
+      "sourceHTML": "<p>For more annotated examples, see <a class=\"pxref\" href=\"#Text-search-across-multiple-lines\">Text search across multiple lines</a>\nand <a class=\"ref\" href=\"#Line-length-adjustment\">Line length adjustment</a>.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "li",
+      "text": "⟦0⟧ starts by reading the first line into the pattern space (i.e. ‘⟦1⟧’).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<samp class=\"samp\">1</samp>"
+      },
+      "sourceHTML": "<li> <code class=\"command\">sed</code> starts by reading the first line into the pattern space\n(i.e. ‘<samp class=\"samp\">1</samp>’).\n</li>"
+    },
+    {
+      "index": 13,
+      "tag": "li",
+      "text": "At the beginning of every cycle, the ⟦0⟧ command appends a newline and the next line to the pattern space (i.e. ‘⟦1⟧’, ‘⟦2⟧’, ‘⟦3⟧’ in the first cycle).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<samp class=\"samp\">1</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\n</samp>",
+        "⟦3⟧": "<samp class=\"samp\">2</samp>"
+      },
+      "sourceHTML": "<li> At the beginning of every cycle, the <code class=\"code\">N</code>\ncommand appends a newline and the next line to the pattern space\n(i.e. ‘<samp class=\"samp\">1</samp>’, ‘<samp class=\"samp\">\\n</samp>’, ‘<samp class=\"samp\">2</samp>’ in the first cycle).\n</li>"
+    },
+    {
+      "index": 14,
+      "tag": "li",
+      "text": "The ⟦0⟧ command prints the content of the pattern space unambiguously.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">l</code>"
+      },
+      "sourceHTML": "<li> The <code class=\"code\">l</code> command prints the content of the pattern space\nunambiguously.\n</li>"
+    },
+    {
+      "index": 15,
+      "tag": "li",
+      "text": "The ⟦0⟧ command then removes the content of pattern space up to the first newline (leaving ‘⟦1⟧’ at the end of the first cycle).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">D</code>",
+        "⟦1⟧": "<samp class=\"samp\">2</samp>"
+      },
+      "sourceHTML": "<li> The <code class=\"code\">D</code> command then removes the content of pattern\nspace up to the first newline (leaving ‘<samp class=\"samp\">2</samp>’ at the end of\nthe first cycle).\n</li>"
+    },
+    {
+      "index": 16,
+      "tag": "li",
+      "text": "At the next cycle the ⟦0⟧ command appends a newline and the next input line to the pattern space (e.g. ‘⟦1⟧’, ‘⟦2⟧’, ‘⟦3⟧’).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<samp class=\"samp\">2</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\n</samp>",
+        "⟦3⟧": "<samp class=\"samp\">3</samp>"
+      },
+      "sourceHTML": "<li> At the next cycle the <code class=\"code\">N</code> command appends a\nnewline and the next input line to the pattern space\n(e.g. ‘<samp class=\"samp\">2</samp>’, ‘<samp class=\"samp\">\\n</samp>’, ‘<samp class=\"samp\">3</samp>’).\n</li>"
+    },
+    {
+      "index": 17,
+      "tag": "li",
+      "text": "The first expression, ⟦0⟧ operates on all non-empty lines, and adds the current line (in the pattern space) to the hold space. On all lines except the last, the pattern space is deleted and the cycle is restarted.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">/./{H;$!d}</code>"
+      },
+      "sourceHTML": "<li> The first expression, <code class=\"code\">/./{H;$!d}</code> operates on all non-empty lines,\nand adds the current line (in the pattern space) to the hold space.\nOn all lines except the last, the pattern space is deleted and the cycle is\nrestarted.\n\n</li>"
+    },
+    {
+      "index": 18,
+      "tag": "li",
+      "text": "The other expressions ⟦0⟧ and ⟦1⟧ are executed only on empty lines (i.e. paragraph separators). The ⟦2⟧ command fetches the accumulated lines from the hold space back to the pattern space. The ⟦3⟧ command then operates on all the text in the paragraph (including the embedded newlines).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">x</code>",
+        "⟦1⟧": "<code class=\"code\">s</code>",
+        "⟦2⟧": "<code class=\"code\">x</code>",
+        "⟦3⟧": "<code class=\"code\">s///</code>"
+      },
+      "sourceHTML": "<li> The other expressions <code class=\"code\">x</code> and <code class=\"code\">s</code> are executed only on empty\nlines (i.e. paragraph separators). The <code class=\"code\">x</code> command fetches the\naccumulated lines from the hold space back to the pattern space. The\n<code class=\"code\">s///</code> command then operates on all the text in the paragraph\n(including the embedded newlines).\n</li>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

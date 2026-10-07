@@ -1,0 +1,48 @@
+<div class="gnu-sed-original-content" id="Branching-and-Cycles">
+<h4 class="subsection"><span>6.4.1 分岐とサイクル</span></h4>
+<a class="index-entry-id" id="index-labels"></a>
+<a class="index-entry-id" id="index-omitting-labels"></a>
+<a class="index-entry-id" id="index-cycle_002c-restarting"></a>
+<a class="index-entry-id" id="index-restarting-a-cycle"></a>
+<p><code class="code">b</code>、<code class="code">t</code>、<code class="code">T</code>コマンドの後にはラベルを指定できます（通常は1つの字母です）。ラベルは、コロンの後に1つ以上の字母を続けて定義します（たとえば「<samp class="samp">:x</samp>」）。ラベルを省略した場合、分岐コマンドはサイクルを再開します。ラベルへの分岐とサイクルの再開の違いに注意してください。サイクルを再開すると、<code class="command">sed</code>はまずパターンスペースの現在の内容を表示し、その後、次の入力行をパターンスペースへ読み込みます。ラベルへ移動する場合は、たとえそのラベルがプログラムの先頭にあっても、パターンスペースを表示せず、次の入力行も読み込みません。</p>
+<p>次のプログラムは何も変更しません。プログラム中の唯一のコマンドである<code class="code">b</code>コマンドにはラベルがないため、単にサイクルを再開します。各サイクルで、パターンスペースを表示し、次の入力行を読み込みます。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed b
+1
+2
+3
+</pre></div></div>
+<a class="index-entry-id" id="index-infinite-loop_002c-branching"></a>
+<a class="index-entry-id" id="index-branching_002c-infinite-loop"></a>
+<p>次の例は無限ループです。終了せず、何も表示しません。<code class="code">b</code>コマンドは「<samp class="samp">x</samp>」ラベルへ移動し、新しいサイクルは開始されません。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed ':x ; bx'
+
+# The above command requires gnu sed (which supports additional
+# commands following a label, without a newline). A portable equivalent:
+#     sed -e ':x' -e bx
+</pre></div></div>
+<a class="index-entry-id" id="index-branching-and-n_002c-N"></a>
+<a class="index-entry-id" id="index-n_002c-and-branching"></a>
+<a class="index-entry-id" id="index-N_002c-and-branching"></a>
+<p>分岐は、<code class="code">n</code>や<code class="code">N</code>コマンドと組み合わせることがよくあります。どちらも、サイクルの再開を待たずに次の入力行をパターンスペースへ読み込みます。次の入力行を読む前に、<code class="code">n</code>は現在のパターンスペースを表示してから空にします。一方、<code class="code">N</code>は改行と次の入力行をパターンスペースへ追加します。</p>
+<p>次の2つの例を考えてみます。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed ':x ; n ; bx'
+1
+2
+3
+
+$ seq 3 | sed ':x ; N ; bx'
+1
+2
+3
+</pre></div></div>
+<ul class="itemize mark-bullet">
+<li>どちらの例も、新しいサイクルを開始しないにもかかわらず、無限ループにはなりません。</li><li>最初の例では、<code class="code">n</code>コマンドがまずパターンスペースの内容を表示し、パターンスペースを空にしてから、次の入力行を読み込みます。</li><li>2つ目の例では、<code class="code">N</code>コマンドが次の入力行を改行付きでパターンスペースへ追加します。読み込む入力行がなくなるまでパターンスペースに行を蓄積し、その後、<code class="code">N</code>コマンドが<code class="command">sed</code>プログラムを終了します。プログラムの終了時にはサイクル末尾の処理を行い、パターンスペース全体を表示します。</li><li>2つ目の例では、<code class="code">N</code>のPOSIX標準にない動作を使うため、GNU <code class="command">sed</code>が必要です。<a class="ref" href="#Reporting-Bugs">バグの報告</a>にある「最後の行での<code class="code">N</code>コマンド」の段落を参照してください。</li><li>2つの例の違いをさらに調べるには、次のコマンドを試してください。<div class="example"><div class="group"><pre class="example-preformatted">printf '%s\n' aa bb cc dd | sed ':x ; n ; = ; bx'
+printf '%s\n' aa bb cc dd | sed ':x ; N ; = ; bx'
+printf '%s\n' aa bb cc dd | sed ':x ; n ; s/\n/***/ ; bx'
+printf '%s\n' aa bb cc dd | sed ':x ; N ; s/\n/***/ ; bx'
+</pre></div></div></li></ul>
+</div>
+

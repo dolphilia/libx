@@ -1,0 +1,77 @@
+<div class="gnu-sed-original-content" id="Multiline-techniques">
+<h3 class="section" id="Multiline-techniques-_002d-using-D_002cG_002cH_002cN_002cP-to-process-multiple-lines"><span>6.3 複数行を扱う手法：D,G,H,N,Pによる複数行の処理</span></h3>
+<p><code class="code">D</code>、<code class="code">G</code>、<code class="code">H</code>、<code class="code">N</code>、<code class="code">P</code>を使うと、複数行を1つのバッファーとして処理できます。これらは対応する小文字のコマンド（<code class="code">d</code>、<code class="code">g</code>、<code class="code">h</code>、<code class="code">n</code>、<code class="code">p</code>）と似ていますが、バッファー内の改行を考慮しながらデータを追加・削除する点が異なります。そのため、パターンスペースやホールドスペースの行を追加・削除できます。</p>
+<p>動作は次のとおりです。</p><dl class="table">
+<dt><code class="code">D</code></dt>
+<dd><p>パターンスペースの最初の改行までの行を<em class="emph">削除</em>し、サイクルを再開します。</p>
+</dd>
+<dt><code class="code">G</code></dt>
+<dd><p>ホールドスペースの行を、先頭に改行を付けてパターンスペースへ<em class="emph">追加</em>します。</p>
+</dd>
+<dt><code class="code">H</code></dt>
+<dd><p>パターンスペースの行を、先頭に改行を付けてホールドスペースへ<em class="emph">追加</em>します。</p>
+</dd>
+<dt><code class="code">N</code></dt>
+<dd><p>入力ファイルの行をパターンスペースへ<em class="emph">追加</em>します。</p>
+</dd>
+<dt><code class="code">P</code></dt>
+<dd><p>パターンスペースの最初の改行までの行を<em class="emph">表示</em>します。</p>
+</dd>
+</dl>
+<p>次の例は、<code class="code">N</code>と<code class="code">D</code>コマンドの動作を示します。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 6 | sed -n 'N;l;D'
+1\n2$
+2\n3$
+3\n4$
+4\n5$
+5\n6$
+</pre></div></div>
+<ol class="enumerate">
+<li><code class="command">sed</code>は、まず最初の行をパターンスペースへ読み込みます（つまり「<samp class="samp">1</samp>」です）。</li><li>各サイクルの開始時に、<code class="code">N</code>コマンドが改行と次の行をパターンスペースへ追加します（最初のサイクルでは「<samp class="samp">1</samp>」「<samp class="samp">\n</samp>」「<samp class="samp">2</samp>」です）。</li><li><code class="code">l</code>コマンドは、パターンスペースの内容を曖昧さのない形式で表示します。</li><li>その後、<code class="code">D</code>コマンドがパターンスペースの最初の改行までの内容を取り除きます（最初のサイクルの末尾では「<samp class="samp">2</samp>」が残ります）。</li><li>次のサイクルでは、<code class="code">N</code>コマンドが改行と次の入力行をパターンスペースへ追加します（たとえば「<samp class="samp">2</samp>」「<samp class="samp">\n</samp>」「<samp class="samp">3</samp>」です）。</li></ol>
+<a class="index-entry-id" id="index-processing-paragraphs"></a>
+<a class="index-entry-id" id="index-paragraphs_002c-processing"></a>
+<p>行ごとに処理する代わりに、段落のようなテキストのまとまりを処理する一般的な手法では、次の構文を使います。</p>
+<div class="example">
+<pre class="example-preformatted">sed '/./{H;$!d} ; x ; s/REGEXP/REPLACEMENT/'
+</pre></div>
+<ol class="enumerate">
+<li>最初の式<code class="code">/./{H;$!d}</code>は、空でないすべての行に対して動作し、現在の行（パターンスペース内の行）をホールドスペースへ追加します。最後の行を除くすべての行では、パターンスペースを消去してサイクルを再開します。</li><li>残りの式<code class="code">x</code>と<code class="code">s</code>は、空行（つまり段落の区切り）に対してだけ実行されます。<code class="code">x</code>コマンドは、ホールドスペースに蓄積した行をパターンスペースへ戻します。その後、<code class="code">s///</code>コマンドが段落内のすべてのテキスト（内部の改行を含む）に対して動作します。</li></ol>
+<p>次の例は、この手法を示します。</p><div class="example">
+<div class="group"><pre class="example-preformatted">$ cat input.txt
+a a a aa aaa
+aaaa aaaa aa
+aaaa aaa aaa
+
+bbbb bbb bbb
+bb bb bbb bb
+bbbbbbbb bbb
+
+ccc ccc cccc
+cccc ccccc c
+cc cc cc cc
+
+$ sed '/./{H;$!d} ; x ; s/^/\nSTART--&gt;/ ; s/$/\n&lt;--END/' input.txt
+
+START--&gt;
+a a a aa aaa
+aaaa aaaa aa
+aaaa aaa aaa
+&lt;--END
+
+START--&gt;
+bbbb bbb bbb
+bb bb bbb bb
+bbbbbbbb bbb
+&lt;--END
+
+START--&gt;
+ccc ccc cccc
+cccc ccccc c
+cc cc cc cc
+&lt;--END
+</pre></div></div>
+<p>注釈付きの例については、<a class="pxref" href="#Text-search-across-multiple-lines">複数行にまたがるテキスト検索</a>と<a class="ref" href="#Line-length-adjustment">行長の調整</a>も参照してください。</p>
+<hr/>
+</div>
+

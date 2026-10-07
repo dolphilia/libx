@@ -1,0 +1,89 @@
+{
+  "slug": "34-execution-cycle",
+  "bodySHA256": "e935cf0e6edb0e26453d7cded6c9851f4dcb5adbbc8fd23aa4e8ba40d6f6a921",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧6.1 How ⟦1⟧ Works⟦2⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<code class=\"command\">sed</code>",
+        "⟦2⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"How-sed-Works\"><span>6.1 How <code class=\"command\">sed</code> Works</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧ maintains two data buffers: the active ⟦1⟧pattern⟦2⟧ space, and the auxiliary ⟦3⟧hold⟦4⟧ space. Both are initially empty.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<em class=\"emph\">",
+        "⟦2⟧": "</em>",
+        "⟦3⟧": "<em class=\"emph\">",
+        "⟦4⟧": "</em>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code> maintains two data buffers: the active <em class=\"emph\">pattern</em> space,\nand the auxiliary <em class=\"emph\">hold</em> space. Both are initially empty.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "⟦0⟧ operates by performing the following cycle on each line of input: first, ⟦1⟧ reads one line from the input stream, removes any trailing newline, and places it in the pattern space. Then commands are executed; each command can have an address associated to it: addresses are a kind of condition code, and a command is only executed if the condition is verified before the command is to be executed.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code> operates by performing the following cycle on each\nline of input: first, <code class=\"command\">sed</code> reads one line from the input\nstream, removes any trailing newline, and places it in the pattern space.\nThen commands are executed; each command can have an address associated\nto it: addresses are a kind of condition code, and a command is only\nexecuted if the condition is verified before the command is to be\nexecuted.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "When the end of the script is reached, unless the ⟦0⟧ option is in use, the contents of pattern space are printed out to the output stream, adding back the trailing newline if it was removed.⟦1⟧⟦2⟧8⟦3⟧⟦4⟧ Then the next cycle starts for the next input line.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-n</samp>",
+        "⟦1⟧": "<a class=\"footnote\" href=\"#FOOT8\" id=\"DOCF8\">",
+        "⟦2⟧": "<sup>",
+        "⟦3⟧": "</sup>",
+        "⟦4⟧": "</a>"
+      },
+      "sourceHTML": "<p>When the end of the script is reached, unless the <samp class=\"option\">-n</samp> option\nis in use, the contents of pattern space are printed out to the output\nstream, adding back the trailing newline if it was removed.<a class=\"footnote\" href=\"#FOOT8\" id=\"DOCF8\"><sup>8</sup></a> Then the next cycle starts for the next\ninput line.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Unless special commands (like ‘⟦0⟧’) are used, the pattern space is deleted between two cycles. The hold space, on the other hand, keeps its data between cycles (see commands ‘⟦1⟧’, ‘⟦2⟧’, ‘⟦3⟧’, ‘⟦4⟧’, ‘⟦5⟧’ to move data between both buffers).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">D</samp>",
+        "⟦1⟧": "<samp class=\"samp\">h</samp>",
+        "⟦2⟧": "<samp class=\"samp\">H</samp>",
+        "⟦3⟧": "<samp class=\"samp\">x</samp>",
+        "⟦4⟧": "<samp class=\"samp\">g</samp>",
+        "⟦5⟧": "<samp class=\"samp\">G</samp>"
+      },
+      "sourceHTML": "<p>Unless special commands (like ‘<samp class=\"samp\">D</samp>’) are used, the pattern space is\ndeleted between two cycles. The hold space, on the other hand, keeps\nits data between cycles (see commands ‘<samp class=\"samp\">h</samp>’, ‘<samp class=\"samp\">H</samp>’, ‘<samp class=\"samp\">x</samp>’,\n‘<samp class=\"samp\">g</samp>’, ‘<samp class=\"samp\">G</samp>’ to move data between both buffers).\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "h5",
+      "text": "⟦0⟧(8)⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<a href=\"#DOCF8\" id=\"FOOT8\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<h5 class=\"footnote-body-heading\"><a href=\"#DOCF8\" id=\"FOOT8\">(8)</a></h5>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Actually, if ⟦0⟧ prints a line without the terminating newline, it will nevertheless print the missing newline as soon as more text is sent to the same output stream, which gives the “least expected surprise” even though it does not make commands like ‘⟦1⟧’ exactly identical to ⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<samp class=\"samp\">sed -n p</samp>",
+        "⟦2⟧": "<code class=\"command\">cat</code>"
+      },
+      "sourceHTML": "<p>Actually,\nif <code class=\"command\">sed</code> prints a line without the terminating newline, it will\nnevertheless print the missing newline as soon as more text is sent to\nthe same output stream, which gives the “least expected surprise”\neven though it does not make commands like ‘<samp class=\"samp\">sed -n p</samp>’ exactly\nidentical to <code class=\"command\">cat</code>.</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}
