@@ -1,0 +1,23 @@
+<div class="gnu-diffutils-original-content" id="Changing-Structure">
+<h4 class="subsection" id="Handling-Changes-to-the-Directory-Structure"><span>18.1.2 Handling Changes to the Directory Structure</span></h4>
+<a class="index-entry-id" id="index-directory-structure-changes"></a>
+<p><code class="command">diff</code> and <code class="command">patch</code> do not handle some changes to directory
+structure.  For example, suppose one directory tree contains a directory
+named ‘<samp class="samp">D</samp>’ with some subsidiary files, and another contains a file
+with the same name ‘<samp class="samp">D</samp>’.  ‘<samp class="samp">diff -r</samp>’ does not output enough
+information for <code class="command">patch</code> to transform the directory subtree into
+the file.
+</p>
+<p>There should be a way to specify that a file has been removed without
+having to include its entire contents in the patch file.  There should
+also be a way to tell <code class="command">patch</code> that a file was renamed, even if
+there is no way for <code class="command">diff</code> to generate such information.
+There should be a way to tell <code class="command">patch</code> that a file’s timestamp
+has changed, even if its contents have not changed.
+</p>
+<p>These problems can be fixed by extending the <code class="command">diff</code> output format
+to represent changes in directory structure, and extending <code class="command">patch</code>
+to understand these extensions.
+</p>
+<hr/>
+</div>

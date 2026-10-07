@@ -1,0 +1,13 @@
+<div class="gnu-diffutils-original-content" id="Standards-conformance">
+<h2 class="chapter" id="Standards-conformance-1"><span>17 標準への適合</span></h2>
+<a class="index-entry-id" id="index-POSIX-1"></a>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT-1"></a>
+<p>GNU ユーティリティのデフォルト動作は、いくつかの場合に POSIX 標準と互換性がありません。この非互換性を抑えるには、<code class="env">POSIXLY_CORRECT</code> 環境変数を定義してください。POSIX 適合性を確認しているのでなければ、通常 <code class="env">POSIXLY_CORRECT</code> を定義する必要はありません。</p>
+<p>通常、オプションとオペランドは任意の順序で指定でき、プログラムはすべてのオプションがすべてのオペランドより前にあるものとして動作します。たとえば「<samp class="samp">diff lao tzu -C 2</samp>」は「<samp class="samp">diff -C 2 lao tzu</samp>」と同様に動作します。「<samp class="samp">2</samp>」は <samp class="option">-C</samp> のオプション引数だからです。ただし、<code class="env">POSIXLY_CORRECT</code> 環境変数が設定されている場合は、特定のコマンドについて別途規定されていない限り、オプションをオペランドより前に指定しなければなりません。</p>
+<p>新しい版の POSIX は、ときに古い版と互換性がありません。たとえば古い版では「<samp class="samp">diff -c -10</samp>」というコマンドに「<samp class="samp">diff -C
+10</samp>」と同じ意味を認めていましたが、POSIX 1003.1-2001「<samp class="samp">diff</samp>」では、<samp class="option">-10</samp> のような数字列のオプションは認められなくなりました。</p>
+<a class="index-entry-id" id="index-_005fPOSIX2_005fVERSION"></a>
+<p>GNU ユーティリティは通常、システムの標準となっている POSIX の版に適合します。別の版の POSIX に適合させるには、<code class="env">_POSIX2_VERSION</code> 環境変数を、標準が採用された年と月を指定する <var class="var">yyyymm</var> 形式の値に定義してください。現在、<code class="env">_POSIX2_VERSION</code> には2つの値がサポートされています。「<samp class="samp">199209</samp>」は POSIX 1003.2-1992、「<samp class="samp">200112</samp>」は POSIX 1003.1-2001 を表します。たとえば古い版の POSIX を想定して「<samp class="samp">diff -c -10</samp>」を使う古いソフトウェアを実行している場合、環境で「<samp class="samp">_POSIX2_VERSION=199209</samp>」を設定することによって互換性の問題を回避できます。</p>
+<hr/>
+</div>
+

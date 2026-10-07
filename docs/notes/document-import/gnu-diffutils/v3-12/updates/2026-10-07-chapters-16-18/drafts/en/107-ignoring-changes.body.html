@@ -1,0 +1,21 @@
+<div class="gnu-diffutils-original-content" id="Ignoring-Changes">
+<h4 class="subsection" id="Ignoring-Certain-Changes"><span>18.1.6 Ignoring Certain Changes</span></h4>
+<p>It would be nice to have a feature for specifying two strings, one in
+<var class="var">from-file</var> and one in <var class="var">to-file</var>, which should be considered to
+match.  Thus, if the two strings are ‘<samp class="samp">foo</samp>’ and ‘<samp class="samp">bar</samp>’, then if
+two lines differ only in that ‘<samp class="samp">foo</samp>’ in file 1 corresponds to
+‘<samp class="samp">bar</samp>’ in file 2, the lines are treated as identical.
+</p>
+<p>It is not clear how general this feature can or should be, or
+what syntax should be used for it.
+</p>
+<p>A partial substitute is to filter one or both files before comparing,
+e.g.:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed 's/foo/bar/g' file1 | diff - file2
+</pre></div>
+<p>However, this outputs the filtered text, not the original.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,15 @@
+<div class="gnu-diffutils-original-content" id="Invoking-sdiff">
+<h2 class="chapter" id="Invoking-sdiff-1"><span>16 <code class="command">sdiff</code> の起動</span></h2>
+<a class="index-entry-id" id="index-invoking-sdiff"></a>
+<a class="index-entry-id" id="index-sdiff-invocation"></a>
+<p><code class="command">sdiff</code> コマンドは2つのファイルをマージし、結果を対話的に出力します。引数は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">sdiff -o <var class="var">outfile</var> <var class="var">options</var>... <var class="var">from-file</var> <var class="var">to-file</var>
+</pre></div>
+<p>これは <var class="var">from-file</var> と <var class="var">to-file</var> をマージし、<var class="var">outfile</var> へ出力します。<var class="var">from-file</var> がディレクトリで <var class="var">to-file</var> がそうでない場合、<code class="command">sdiff</code> は <var class="var">from-file</var> 内にある、<var class="var">to-file</var> と同じファイル名のファイルを比較します。逆の場合も同様です。<var class="var">from-file</var> と <var class="var">to-file</var> の両方をディレクトリにすることはできません。</p>
+<p><code class="command">sdiff</code> のオプションは「<samp class="samp">-</samp>」で始まるため、通常 <var class="var">from-file</var> と <var class="var">to-file</var> は「<samp class="samp">-</samp>」で始められません。ただし、単独の引数 <samp class="option">--</samp> を指定すると、それ以降の引数は「<samp class="samp">-</samp>」で始まっていてもファイル名として扱われます。入力ファイルとして <samp class="file">-</samp> は使えません。</p>
+<p><code class="command">sdiff</code> を <samp class="option">--output</samp>（<samp class="option">-o</samp>）なしで使うと、差分を左右に並べて出力します。この使い方は旧式です。代わりに <samp class="option">--side-by-side</samp>（<samp class="option">-y</samp>）オプションを <code class="command">diff</code> に指定してください。</p>
+<p>終了ステータス0は相違がなかったこと、1は相違があったこと、2は問題が起きたことを表します。</p>
+<hr/>
+</div>
+

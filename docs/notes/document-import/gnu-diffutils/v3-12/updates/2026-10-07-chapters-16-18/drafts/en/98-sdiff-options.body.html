@@ -1,0 +1,125 @@
+<div class="gnu-diffutils-original-content" id="sdiff-Options">
+<h3 class="section" id="Options-to-sdiff"><span>16.1 Options to <code class="command">sdiff</code></span></h3>
+<a class="index-entry-id" id="index-sdiff-options"></a>
+<a class="index-entry-id" id="index-options-for-sdiff"></a>
+<p>Below is a summary of all of the options that GNU
+<code class="command">sdiff</code> accepts.  Each option has two equivalent names, one of
+which is a single letter preceded by ‘<samp class="samp">-</samp>’, and the other of which
+is a long name preceded by ‘<samp class="samp">--</samp>’.  Multiple single letter options
+(unless they take an argument) can be combined into a single command
+line argument.  Long named options can be abbreviated to any unique
+prefix of their name.
+</p>
+<dl class="table">
+<dt><samp class="option">-a</samp></dt>
+<dt><samp class="option">--text</samp></dt>
+<dd><p>Treat all files as text and compare them line-by-line, even if they
+do not appear to be text.  See <a class="xref" href="#Binary">Binary Files and Forcing Text Comparisons</a>.
+</p>
+</dd>
+<dt><samp class="option">-b</samp></dt>
+<dt><samp class="option">--ignore-space-change</samp></dt>
+<dd><p>Ignore changes in amount of white space.  See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+</p>
+</dd>
+<dt><samp class="option">-B</samp></dt>
+<dt><samp class="option">--ignore-blank-lines</samp></dt>
+<dd><p>Ignore changes that just insert or delete blank lines.  See <a class="xref" href="#Blank-Lines">Suppressing Differences Whose Lines Are All Blank</a>.
+</p>
+</dd>
+<dt><samp class="option">-d</samp></dt>
+<dt><samp class="option">--minimal</samp></dt>
+<dd><p>Change the algorithm to perhaps find a smaller set of changes.  This
+makes <code class="command">sdiff</code> slower (sometimes much slower).  See <a class="xref" href="#diff-Performance"><code class="command">diff</code> Performance Tradeoffs</a>.
+</p>
+</dd>
+<dt><samp class="option">--diff-program=<var class="var">program</var></samp></dt>
+<dd><p>Use the compatible comparison program <var class="var">program</var> to compare files
+instead of <code class="command">diff</code>.
+</p>
+</dd>
+<dt><samp class="option">-E</samp></dt>
+<dt><samp class="option">--ignore-tab-expansion</samp></dt>
+<dd><p>Ignore changes due to tab expansion.
+See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+</p>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dd><p>Output a summary of usage and then exit.
+</p>
+</dd>
+<dt><samp class="option">-i</samp></dt>
+<dt><samp class="option">--ignore-case</samp></dt>
+<dd><p>Ignore changes in case; consider upper- and lower-case to be the same.
+See <a class="xref" href="#Case-Folding">Suppressing Case Differences</a>.
+</p>
+</dd>
+<dt><samp class="option">-I <var class="var">regexp</var></samp></dt>
+<dt><samp class="option">--ignore-matching-lines=<var class="var">regexp</var></samp></dt>
+<dd><p>Ignore changes that just insert or delete lines that match <var class="var">regexp</var>.
+See <a class="xref" href="#Specified-Lines">Suppressing Differences Whose Lines All Match a Regular Expression</a>.
+</p>
+</dd>
+<dt><samp class="option">-l</samp></dt>
+<dt><samp class="option">--left-column</samp></dt>
+<dd><p>Print only the left column of two common lines.
+See <a class="xref" href="#Side-by-Side-Format">Controlling Side by Side Format</a>.
+</p>
+</dd>
+<dt><samp class="option">-o <var class="var">file</var></samp></dt>
+<dt><samp class="option">--output=<var class="var">file</var></samp></dt>
+<dd><p>Put merged output into <var class="var">file</var>.  This option is required for merging.
+</p>
+</dd>
+<dt><samp class="option">-s</samp></dt>
+<dt><samp class="option">--suppress-common-lines</samp></dt>
+<dd><p>Do not print common lines.  See <a class="xref" href="#Side-by-Side-Format">Controlling Side by Side Format</a>.
+</p>
+</dd>
+<dt><samp class="option">--speed-large-files</samp></dt>
+<dd><p>Use heuristics to speed handling of large files that have numerous
+scattered small changes.  See <a class="xref" href="#diff-Performance"><code class="command">diff</code> Performance Tradeoffs</a>.
+</p>
+</dd>
+<dt><samp class="option">--strip-trailing-cr</samp></dt>
+<dd><p>Strip any trailing carriage return at the end of an input line.
+See <a class="xref" href="#Binary">Binary Files and Forcing Text Comparisons</a>.
+</p>
+</dd>
+<dt><samp class="option">-t</samp></dt>
+<dt><samp class="option">--expand-tabs</samp></dt>
+<dd><p>Expand tabs to spaces in the output, to preserve the alignment of tabs
+in the input files.  See <a class="xref" href="#Tabs">Preserving Tab Stop Alignment</a>.
+</p>
+</dd>
+<dt><samp class="option">--tabsize=<var class="var">columns</var></samp></dt>
+<dd><p>Assume that tab stops are set every <var class="var">columns</var> (default 8) print
+columns.  See <a class="xref" href="#Tabs">Preserving Tab Stop Alignment</a>.
+</p>
+</dd>
+<dt><samp class="option">-v</samp></dt>
+<dt><samp class="option">--version</samp></dt>
+<dd><p>Output version information and then exit.
+</p>
+</dd>
+<dt><samp class="option">-w <var class="var">columns</var></samp></dt>
+<dt><samp class="option">--width=<var class="var">columns</var></samp></dt>
+<dd><p>Output at most <var class="var">columns</var> (default 130) print columns per line.
+See <a class="xref" href="#Side-by-Side-Format">Controlling Side by Side Format</a>.  Note that for historical reasons, this
+option is <samp class="option">-W</samp> in <code class="command">diff</code>, <samp class="option">-w</samp> in <code class="command">sdiff</code>.
+</p>
+</dd>
+<dt><samp class="option">-W</samp></dt>
+<dt><samp class="option">--ignore-all-space</samp></dt>
+<dd><p>Ignore white space when comparing lines.  See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+Note that for historical reasons, this option is <samp class="option">-w</samp> in <code class="command">diff</code>,
+<samp class="option">-W</samp> in <code class="command">sdiff</code>.
+</p>
+</dd>
+<dt><samp class="option">-Z</samp></dt>
+<dt><samp class="option">--ignore-trailing-space</samp></dt>
+<dd><p>Ignore white space at line end.  See <a class="xref" href="#White-Space">Suppressing Differences in Blank and Tab Spacing</a>.
+</p></dd>
+</dl>
+<hr/>
+</div>

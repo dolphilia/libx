@@ -1,0 +1,8 @@
+<div class="gnu-diffutils-original-content" id="Special-Files">
+<h4 class="subsection" id="Files-that-are-Neither-Directories-Nor-Regular-Files"><span>18.1.3 ディレクトリでも通常ファイルでもないファイル</span></h4>
+<a class="index-entry-id" id="index-special-files"></a>
+<p>一部のファイルはディレクトリでも通常ファイルでもなく、シンボリックリンク、デバイス特殊ファイル、名前付きパイプ、ソケットのような特殊なファイルです。現在、<code class="command">diff</code> はシンボリックリンクをその参照先のファイルと同じように扱います。ただし、再帰的な <code class="command">diff</code> がシンボリックリンクの無限ループ（たとえば <samp class="file">..</samp> へのシンボリックリンク）を検出した場合はエラーを報告します。<code class="command">diff</code> は、トップレベルで指定されたその他の特殊ファイルを通常ファイルと同様に扱いますが、ディレクトリ比較ではその存在を報告するだけです。このため、<code class="command">patch</code> はそうしたファイルの変化を表せません。たとえば、シンボリックリンクの参照先を変更すると、<code class="command">diff</code> はシンボリックリンク自体の変化ではなく、2つの参照先ファイルの差分を出力します。</p>
+<p><code class="command">diff</code> は特殊ファイルの変化を特別な方法で報告するかどうかを選択できるようにし、<code class="command">patch</code> もその拡張を理解するように拡張すべきです。</p>
+<hr/>
+</div>
+

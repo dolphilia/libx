@@ -1,0 +1,24 @@
+<div class="gnu-diffutils-original-content" id="Internationalization">
+<h4 class="subsection" id="Handling-Multi_002dbyte-and-Varying_002dWidth-Characters"><span>18.1.1 Handling Multi-byte and Varying-Width Characters</span></h4>
+<a class="index-entry-id" id="index-multi_002dbyte-characters"></a>
+<a class="index-entry-id" id="index-varying_002dwidth-characters"></a>
+<p><code class="command">diff</code>, <code class="command">diff3</code> and <code class="command">sdiff</code> treat each line of
+input as a string of characters and encoding errors, where an
+<em class="dfn">encoding error</em> is an input byte that is not part of any
+character.  Single-byte and multi-byte characters are supported, along
+with common character encoding systems like UTF-8.  The operating
+system’s locale specifies the character encoding, and can be specified
+with the <code class="env">LC_ALL</code> environment variable.  You can find which
+locales are supported on your system by running the shell command
+‘<samp class="samp">locale -a</samp>’.
+</p>
+<p>When counting columns for options like <samp class="option">--expand-tabs</samp> (<samp class="option">-t</samp>),
+<code class="command">diff</code> consults the locale for the column width of each character,
+and assumes that each encoding error occupies a single column.
+</p>
+<p>When ignoring case for <samp class="option">--ignore-case</samp> (<samp class="option">-i</samp>),
+<code class="command">diff</code> downcases each character before comparing it,
+regardless of whether it is multi-byte.  See <a class="xref" href="#Case-Folding">Suppressing Case Differences</a>.
+</p>
+<hr/>
+</div>

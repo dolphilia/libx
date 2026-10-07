@@ -1,0 +1,21 @@
+<div class="gnu-diffutils-original-content" id="Special-Files">
+<h4 class="subsection" id="Files-that-are-Neither-Directories-Nor-Regular-Files"><span>18.1.3 Files that are Neither Directories Nor Regular Files</span></h4>
+<a class="index-entry-id" id="index-special-files"></a>
+<p>Some files are neither directories nor regular files: they are unusual
+files like symbolic links, device special files, named pipes, and
+sockets.  Currently, <code class="command">diff</code> treats symbolic links as if they
+were the pointed-to files, except that a recursive <code class="command">diff</code>
+reports an error if it detects infinite loops of symbolic links (e.g.,
+symbolic links to <samp class="file">..</samp>).  <code class="command">diff</code> treats other special
+files like regular files if they are specified at the top level, but
+simply reports their presence when comparing directories.  This means
+that <code class="command">patch</code> cannot represent changes to such files.  For
+example, if you change which file a symbolic link points to,
+<code class="command">diff</code> outputs the difference between the two files, instead
+of the change to the symbolic link.
+</p>
+<p><code class="command">diff</code> should optionally report changes to special files specially,
+and <code class="command">patch</code> should be extended to understand these extensions.
+</p>
+<hr/>
+</div>
