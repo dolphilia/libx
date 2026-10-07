@@ -1,0 +1,49 @@
+<div class="gnu-sed-original-content" id="Branching-example_003a-joining-lines">
+<h4 class="subsection"><span>6.4.2 分岐の例：行の結合</span></h4>
+<a class="index-entry-id" id="index-joining-lines-with-branching"></a>
+<a class="index-entry-id" id="index-branching_002c-joining-lines"></a>
+<a class="index-entry-id" id="index-quoted_002dprintable-lines_002c-joining"></a>
+<a class="index-entry-id" id="index-joining-quoted_002dprintable-lines"></a>
+<a class="index-entry-id" id="index-t_002c-joining-lines-with"></a>
+<a class="index-entry-id" id="index-b_002c-joining-lines-with"></a>
+<a class="index-entry-id" id="index-b_002c-versus-t"></a>
+<a class="index-entry-id" id="index-t_002c-versus-b"></a>
+<p>分岐を使う実際的な例として、電子メールの符号化によく使われる<a class="uref" href="https://en.wikipedia.org/wiki/Quoted-printable">quoted-printable</a>ファイルを考えます。この形式では、長い行を分割し、行末の1つの「<samp class="samp">=</samp>」文字からなる<em class="dfn">ソフト改行</em>で示します。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ cat jaques.txt
+All the wor=
+ld's a stag=
+e,
+And all the=
+ men and wo=
+men merely =
+players:
+They have t=
+heir exits =
+and their e=
+ntrances;
+And one man=
+ in his tim=
+e plays man=
+y parts.
+</pre></div></div>
+<p>次のプログラムは、アドレスの一致「<samp class="samp">/=$/</samp>」を条件として使います。現在のパターンスペースの末尾が「<samp class="samp">=</samp>」なら、<code class="code">N</code>で次の入力行を読み、後に改行が続くすべての「<samp class="samp">=</samp>」文字を置換し、新しいサイクルを再開せずに、無条件でプログラムの先頭へ分岐します（<code class="code">b</code>）。パターンスペースの末尾が「<samp class="samp">=</samp>」でなければ、既定の処理を行います。パターンスペースを表示し、新しいサイクルを開始します。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ sed ':x ; /=$/ { N ; s/=\n//g ; bx }' jaques.txt
+All the world's a stage,
+And all the men and women merely players:
+They have their exits and their entrances;
+And one man in his time plays many parts.
+</pre></div></div>
+<p>少し異なる方法の別のプログラムを示します。最後の行を除くすべての行で、<code class="code">N</code>がその行をパターンスペースへ追加します。その後、置換コマンドが、行末の「<samp class="samp">=</samp>」（つまり後に改行が続くもの）であるソフト改行を空文字列へ置換し、取り除きます。置換が成功した<em class="emph">場合</em>（つまりパターンスペースに結合すべき行があった場合）、条件分岐コマンド<code class="code">t</code>が、サイクルを完了・再開せずにプログラムの先頭へ移動します。置換が失敗した場合（つまりソフト改行がなかった場合）、<code class="code">t</code>コマンドは分岐<em class="emph">しません</em>。その後、<code class="code">P</code>がパターンスペースの最初の改行までの内容を表示し、<code class="code">D</code>がパターンスペースの最初の改行までの内容を削除します（<code class="code">N</code>、<code class="code">P</code>、<code class="code">D</code>コマンドの詳細は、<a class="pxref" href="#Multiline-techniques">複数行を扱う手法：D,G,H,N,Pによる複数行の処理</a>を参照してください）。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ sed ':x ; $!N ; s/=\n// ; tx ; P ; D' jaques.txt
+All the world's a stage,
+And all the men and women merely players:
+They have their exits and their entrances;
+And one man in his time plays many parts.
+</pre></div></div>
+<p>行を結合するほかの例については、<a class="pxref" href="#Joining-lines">行の結合</a>を参照してください。</p>
+<hr/>
+</div>
+

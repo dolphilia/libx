@@ -1,0 +1,103 @@
+{
+  "slug": "26-back_002dreferences-and-subexpressions",
+  "bodySHA256": "42ffeeeb4fa3415ef8e30554ba7f5cac54075206efb308a34e1954ce172d7fb4",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧5.7 Back-references and Subexpressions⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Back_002dreferences-and-Subexpressions-1\"><span>5.7 Back-references and Subexpressions</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧back-references⟦1⟧ are regular expression commands which refer to a previous part of the matched regular expression. Back-references are specified with backslash and a single digit (e.g. ‘⟦2⟧’). The part of the regular expression they refer to is called a ⟦3⟧subexpression⟦4⟧, and is designated with parentheses.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"dfn\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<samp class=\"samp\">\\1</samp>",
+        "⟦3⟧": "<em class=\"dfn\">",
+        "⟦4⟧": "</em>"
+      },
+      "sourceHTML": "<p><em class=\"dfn\">back-references</em> are regular expression commands which refer to a\nprevious part of the matched regular expression.  Back-references are\nspecified with backslash and a single digit (e.g. ‘<samp class=\"samp\">\\1</samp>’).  The\npart of the regular expression they refer to is called a\n<em class=\"dfn\">subexpression</em>, and is designated with parentheses.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Back-references and subexpressions are used in two cases: in the regular expression search pattern, and in the ⟦0⟧ part of the ⟦1⟧ command (see ⟦2⟧Regular Expression Addresses⟦3⟧ and ⟦4⟧The ⟦5⟧ Command⟦6⟧).",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">replacement</var>",
+        "⟦1⟧": "<code class=\"command\">s</code>",
+        "⟦2⟧": "<a class=\"pxref\" href=\"#Regexp-Addresses\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<a class=\"ref\" href=\"#The-_0022s_0022-Command\">",
+        "⟦5⟧": "<code class=\"code\">s</code>",
+        "⟦6⟧": "</a>"
+      },
+      "sourceHTML": "<p>Back-references and subexpressions are used in two cases: in the\nregular expression search pattern, and in the <var class=\"var\">replacement</var> part\nof the <code class=\"command\">s</code> command (see <a class=\"pxref\" href=\"#Regexp-Addresses\">Regular\nExpression Addresses</a> and <a class=\"ref\" href=\"#The-_0022s_0022-Command\">The <code class=\"code\">s</code> Command</a>).\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "In a regular expression pattern, back-references are used to match the same content as a previously matched subexpression. In the following example, the subexpression is ‘⟦0⟧’ - any single character (being surrounded by parentheses makes it a subexpression). The back-reference ‘⟦1⟧’ asks to match the same content (same character) as the sub-expression.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">.</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\1</samp>"
+      },
+      "sourceHTML": "<p>In a regular expression pattern, back-references are used to match\nthe same content as a previously matched subexpression.  In the\nfollowing example, the subexpression is ‘<samp class=\"samp\">.</samp>’ - any single\ncharacter (being surrounded by parentheses makes it a\nsubexpression). The back-reference ‘<samp class=\"samp\">\\1</samp>’ asks to match the same\ncontent (same character) as the sub-expression.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "The command below matches words starting with any character, followed by the letter ‘⟦0⟧’, followed by the same character as the first.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">o</samp>"
+      },
+      "sourceHTML": "<p>The command below matches words starting with any character,\nfollowed by the letter ‘<samp class=\"samp\">o</samp>’, followed by the same character as the\nfirst.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Multiple subexpressions are automatically numbered from left-to-right. This command searches for 6-letter palindromes (the first three letters are 3 subexpressions, followed by 3 back-references in reverse order):",
+      "tokens": {},
+      "sourceHTML": "<p>Multiple subexpressions are automatically numbered from\nleft-to-right. This command searches for 6-letter\npalindromes (the first three letters are 3 subexpressions,\nfollowed by 3 back-references in reverse order):\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "In the ⟦0⟧ command, back-references can be used in the ⟦1⟧ part to refer back to subexpressions in the ⟦2⟧ part.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">s</code>",
+        "⟦1⟧": "<var class=\"var\">replacement</var>",
+        "⟦2⟧": "<var class=\"var\">regexp</var>"
+      },
+      "sourceHTML": "<p>In the <code class=\"command\">s</code> command, back-references can be\nused in the <var class=\"var\">replacement</var> part to refer back to subexpressions in\nthe <var class=\"var\">regexp</var> part.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "The following example uses two subexpressions in the regular expression to match two space-separated words. The back-references in the ⟦0⟧ part prints the words in a different order:",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">replacement</var>"
+      },
+      "sourceHTML": "<p>The following example uses two subexpressions in the regular\nexpression to match two space-separated words. The back-references in\nthe <var class=\"var\">replacement</var> part prints the words in a different order:\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "When used with alternation, if the group does not participate in the match then the back-reference makes the whole match fail. For example, ‘⟦0⟧’ will not match ‘⟦1⟧’. When multiple regular expressions are given with ⟦2⟧ or from a file (‘⟦3⟧’), back-references are local to each expression.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">a(.)|b\\1</samp>",
+        "⟦1⟧": "<samp class=\"samp\">ba</samp>",
+        "⟦2⟧": "<samp class=\"option\">-e</samp>",
+        "⟦3⟧": "<samp class=\"samp\">-f <var class=\"var\">file</var></samp>"
+      },
+      "sourceHTML": "<p>When used with alternation, if the group does not participate in the\nmatch then the back-reference makes the whole match fail.  For\nexample, ‘<samp class=\"samp\">a(.)|b\\1</samp>’ will not match ‘<samp class=\"samp\">ba</samp>’.  When multiple\nregular expressions are given with <samp class=\"option\">-e</samp> or from a file\n(‘<samp class=\"samp\">-f <var class=\"var\">file</var></samp>’), back-references are local to each expression.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

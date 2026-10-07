@@ -1,0 +1,26 @@
+<div class="gnu-sed-original-content" id="Locale-Considerations">
+<h3 class="section" id="Multibyte-characters-and-Locale-Considerations"><span>5.9 マルチバイト文字とロケールの考慮事項</span></h3>
+<p>GNU <code class="command">sed</code>は、マルチバイトロケール（例：<code class="code">UTF-8</code>）では有効なマルチバイト文字を処理します。<a class="footnote" href="#FOOT7" id="DOCF7"><sup>7</sup></a></p>
+<p>次の例は、ギリシャ文字の大文字シグマ（Σ、Unicodeコードポイント<code class="code">0x03A3</code>）を使います。<code class="code">UTF-8</code>ロケールでは、シグマは2オクテット（バイト）からなりますが、<code class="command">sed</code>は正しく1文字として処理します。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ locale | grep LANG
+LANG=en_US.UTF-8
+
+$ printf 'a\u03A3b'
+aΣb
+
+$ printf 'a\u03A3b' | sed 's/./X/g'
+XXX
+
+$ printf 'a\u03A3b' | od -tx1 -An
+ 61 ce a3 62
+</pre></div></div>
+<p><code class="command">sed</code>にオクテットを個別に処理させるには、<code class="code">C</code>ロケール（<code class="code">POSIX</code>ロケールとも呼ばれます）を使います。</p>
+<div class="example">
+<pre class="example-preformatted">$ printf 'a\u03A3b' | LC_ALL=C sed 's/./X/g'
+XXXX
+</pre></div>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF7" id="FOOT7">(7)</a></h5>
+<p>正規表現の一部の境界事例は、オペレーティングシステムとlibcの実装に依存します。掲載した例は、glibcを使うGNU/Linuxシステムで想定どおりに動作することが確認されています。</p>
+</div></div>
+

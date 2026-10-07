@@ -1,0 +1,82 @@
+<div class="gnu-sed-original-content" id="Branching-and-flow-control">
+<h3 class="section" id="Branching-and-Flow-Control"><span>6.4 Branching and Flow Control</span></h3>
+<p>The branching commands <code class="code">b</code>, <code class="code">t</code>, and <code class="code">T</code> enable
+changing the flow of <code class="command">sed</code> programs.
+</p>
+<p>By default, <code class="command">sed</code> reads an input line into the pattern buffer,
+then continues to processes all commands in order.
+Commands without addresses affect all lines.
+Commands with addresses affect only matching lines.
+See <a class="xref" href="#Execution-Cycle">How <code class="command">sed</code> Works</a> and <a class="ref" href="#Addresses-overview">Addresses overview</a>.
+</p>
+<p><code class="command">sed</code> does not support a typical <code class="code">if/then</code> construct.
+Instead, some commands can be used as conditionals or to change the
+default flow control:
+</p>
+<dl class="table">
+<dt><code class="code">d</code></dt>
+<dd><p>delete (clears) the current pattern space,
+and restart the program cycle without processing the rest of the commands
+and without printing the pattern space.
+</p>
+</dd>
+<dt><code class="code">D</code></dt>
+<dd><p>delete the contents of the pattern space <em class="emph">up to the first newline</em>,
+and restart the program cycle without processing the rest of
+the commands and without printing the pattern space.
+</p>
+</dd>
+<dt><code class="code">[addr]X</code></dt>
+<dt><code class="code">[addr]{ X ; X ; X }</code></dt>
+<dt><code class="code">/regexp/X</code></dt>
+<dt><code class="code">/regexp/{ X ; X ; X }</code></dt>
+<dd><p>Addresses and regular expressions can be used as an <code class="code">if/then</code>
+conditional: If <var class="var">[addr]</var> matches the current pattern space,
+execute the command(s).
+For example: The command <code class="code">/^#/d</code> means:
+<em class="emph">if</em> the current pattern matches the regular expression <code class="code">^#</code> (a line
+starting with a hash), <em class="emph">then</em> execute the <code class="code">d</code> command:
+delete the line without printing it, and restart the program cycle
+immediately.
+</p>
+</dd>
+<dt><code class="code">b</code></dt>
+<dd><p>branch unconditionally (that is: always jump to a label, skipping
+or repeating other commands, without restarting a new cycle). Combined
+with an address, the branch can be conditionally executed on matched
+lines.
+</p>
+</dd>
+<dt><code class="code">t</code></dt>
+<dd><p>branch conditionally (that is: jump to a label) <em class="emph">only if</em> a
+<code class="code">s///</code> command has succeeded since the last input line was read
+or another conditional branch was taken.
+</p>
+</dd>
+<dt><code class="code">T</code></dt>
+<dd><p>similar but opposite to the <code class="code">t</code> command: branch only if
+there has been <em class="emph">no</em> successful substitutions since the last
+input line was read.
+</p></dd>
+</dl>
+<p>The following two <code class="command">sed</code> programs are equivalent.  The first
+(contrived) example uses the <code class="code">b</code> command to skip the <code class="code">s///</code>
+command on lines containing ‘<samp class="samp">1</samp>’.  The second example uses an
+address with negation (‘<samp class="samp">!</samp>’)  to perform substitution only on
+desired lines.  The <code class="code">y///</code> command is still executed on all
+lines:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf '%s\n' a1 a2 a3 | sed -E '/1/bx ; s/a/z/ ; :x ; y/123/456/'
+a4
+z5
+z6
+
+$ printf '%s\n' a1 a2 a3 | sed -E '/1/!s/a/z/ ; y/123/456/'
+a4
+z5
+z6
+</pre></div></div>
+
+
+</div>

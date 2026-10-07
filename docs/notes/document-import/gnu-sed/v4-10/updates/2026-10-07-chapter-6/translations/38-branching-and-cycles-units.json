@@ -1,0 +1,121 @@
+{
+  "slug": "38-branching-and-cycles",
+  "bodySHA256": "32b96d5bdfbdee1215b904ea797273da72d9a4346e80f9c2b8632c8931fb8f15",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧6.4.1 Branching and Cycles⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\"><span>6.4.1 Branching and Cycles</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The ⟦0⟧,⟦1⟧ and ⟦2⟧ commands can be followed by a label (typically a single letter). Labels are defined with a colon followed by one or more letters (e.g. ‘⟦3⟧’). If the label is omitted the branch commands restart the cycle. Note the difference between branching to a label and restarting the cycle: when a cycle is restarted, ⟦4⟧ first prints the current content of the pattern space, then reads the next input line into the pattern space; Jumping to a label (even if it is at the beginning of the program) does not print the pattern space and does not read the next input line.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">b</code>",
+        "⟦1⟧": "<code class=\"code\">t</code>",
+        "⟦2⟧": "<code class=\"code\">T</code>",
+        "⟦3⟧": "<samp class=\"samp\">:x</samp>",
+        "⟦4⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>The <code class=\"code\">b</code>,<code class=\"code\">t</code> and <code class=\"code\">T</code> commands can be followed by a label\n(typically a single letter). Labels are defined with a colon followed by\none or more letters (e.g. ‘<samp class=\"samp\">:x</samp>’). If the label is omitted the\nbranch commands restart the cycle.  Note the difference between\nbranching to a label and restarting the cycle: when a cycle is\nrestarted, <code class=\"command\">sed</code> first prints the current content of the\npattern space, then reads the next input line into the pattern space;\nJumping to a label (even if it is at the beginning of the program)\ndoes not print the pattern space and does not read the next input line.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "The following program is a no-op. The ⟦0⟧ command (the only command in the program) does not have a label, and thus simply restarts the cycle. On each cycle, the pattern space is printed and the next input line is read:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">b</code>"
+      },
+      "sourceHTML": "<p>The following program is a no-op. The <code class=\"code\">b</code> command (the only command\nin the program) does not have a label, and thus simply restarts the cycle.\nOn each cycle, the pattern space is printed and the next input line is read:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The following example is an infinite-loop - it doesn’t terminate and doesn’t print anything. The ⟦0⟧ command jumps to the ‘⟦1⟧’ label, and a new cycle is never started:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">b</code>",
+        "⟦1⟧": "<samp class=\"samp\">x</samp>"
+      },
+      "sourceHTML": "<p>The following example is an infinite-loop - it doesn’t terminate and\ndoesn’t print anything. The <code class=\"code\">b</code> command jumps to the ‘<samp class=\"samp\">x</samp>’\nlabel, and a new cycle is never started:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Branching is often complemented with the ⟦0⟧ or ⟦1⟧ commands: both commands read the next input line into the pattern space without waiting for the cycle to restart. Before reading the next input line, ⟦2⟧ prints the current pattern space then empties it, while ⟦3⟧ appends a newline and the next input line to the pattern space.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">n</code>",
+        "⟦1⟧": "<code class=\"code\">N</code>",
+        "⟦2⟧": "<code class=\"code\">n</code>",
+        "⟦3⟧": "<code class=\"code\">N</code>"
+      },
+      "sourceHTML": "<p>Branching is often complemented with the <code class=\"code\">n</code> or <code class=\"code\">N</code> commands:\nboth commands read the next input line into the pattern space without waiting\nfor the cycle to restart. Before reading the next input line, <code class=\"code\">n</code>\nprints the current pattern space then empties it, while <code class=\"code\">N</code>\nappends a newline and the next input line to the pattern space.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Consider the following two examples:",
+      "tokens": {},
+      "sourceHTML": "<p>Consider the following two examples:\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "li",
+      "text": "Both examples do not inf-loop, despite never starting a new cycle.",
+      "tokens": {},
+      "sourceHTML": "<li>Both examples do not inf-loop, despite never starting a new cycle.\n\n</li>"
+    },
+    {
+      "index": 7,
+      "tag": "li",
+      "text": "In the first example, the ⟦0⟧ commands first prints the content of the pattern space, empties the pattern space then reads the next input line.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">n</code>"
+      },
+      "sourceHTML": "<li>In the first example, the <code class=\"code\">n</code> commands first prints the content\nof the pattern space, empties the pattern space then reads the next\ninput line.\n\n</li>"
+    },
+    {
+      "index": 8,
+      "tag": "li",
+      "text": "In the second example, the ⟦0⟧ commands appends the next input line to the pattern space (with a newline). Lines are accumulated in the pattern space until there are no more input lines to read, then the ⟦1⟧ command terminates the ⟦2⟧ program. When the program terminates, the end-of-cycle actions are performed, and the entire pattern space is printed.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<code class=\"code\">N</code>",
+        "⟦2⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<li>In the second example, the <code class=\"code\">N</code> commands appends the next input\nline to the pattern space (with a newline).  Lines are accumulated in\nthe pattern space until there are no more input lines to read, then\nthe <code class=\"code\">N</code> command terminates the <code class=\"command\">sed</code> program. When the\nprogram terminates, the end-of-cycle actions are performed, and the\nentire pattern space is printed.\n\n</li>"
+    },
+    {
+      "index": 9,
+      "tag": "li",
+      "text": "The second example requires GNU ⟦0⟧, because it uses the non-POSIX-standard behavior of ⟦1⟧. See the “⟦2⟧ command on the last line” paragraph in ⟦3⟧Reporting Bugs⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">N</code>",
+        "⟦2⟧": "<code class=\"code\">N</code>",
+        "⟦3⟧": "<a class=\"ref\" href=\"#Reporting-Bugs\">",
+        "⟦4⟧": "</a>"
+      },
+      "sourceHTML": "<li>The second example requires GNU <code class=\"command\">sed</code>,\nbecause it uses the non-POSIX-standard behavior of <code class=\"code\">N</code>.\nSee the “<code class=\"code\">N</code> command on the last line” paragraph\nin <a class=\"ref\" href=\"#Reporting-Bugs\">Reporting Bugs</a>.\n\n</li>"
+    },
+    {
+      "index": 10,
+      "tag": "li",
+      "text": "To further examine the difference between the two examples, try the following commands: ⟦0⟧ ⟦1⟧⟦2⟧⟦3⟧⟦4⟧",
+      "tokens": {
+        "⟦0⟧": "<div class=\"example\">",
+        "⟦1⟧": "<div class=\"group\">",
+        "⟦2⟧": "<pre class=\"example-preformatted\">printf '%s\\n' aa bb cc dd | sed ':x ; n ; = ; bx'\nprintf '%s\\n' aa bb cc dd | sed ':x ; N ; = ; bx'\nprintf '%s\\n' aa bb cc dd | sed ':x ; n ; s/\\n/***/ ; bx'\nprintf '%s\\n' aa bb cc dd | sed ':x ; N ; s/\\n/***/ ; bx'\n</pre>",
+        "⟦3⟧": "</div>",
+        "⟦4⟧": "</div>"
+      },
+      "sourceHTML": "<li>To further examine the difference between the two examples,\ntry the following commands:\n<div class=\"example\">\n<div class=\"group\"><pre class=\"example-preformatted\">printf '%s\\n' aa bb cc dd | sed ':x ; n ; = ; bx'\nprintf '%s\\n' aa bb cc dd | sed ':x ; N ; = ; bx'\nprintf '%s\\n' aa bb cc dd | sed ':x ; n ; s/\\n/***/ ; bx'\nprintf '%s\\n' aa bb cc dd | sed ':x ; N ; s/\\n/***/ ; bx'\n</pre></div></div>\n</li>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

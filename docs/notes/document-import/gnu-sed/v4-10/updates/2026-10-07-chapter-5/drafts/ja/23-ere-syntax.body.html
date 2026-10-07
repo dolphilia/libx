@@ -1,0 +1,26 @@
+<div class="gnu-sed-original-content" id="ERE-syntax">
+<h3 class="section" id="Overview-of-extended-regular-expression-syntax"><span>5.4 拡張正規表現の構文の概要</span></h3>
+<a class="index-entry-id" id="index-Extended-regular-expressions_002c-syntax"></a>
+<p>基本正規表現と拡張正規表現の違いは、「<samp class="samp">?</samp>」「<samp class="samp">+</samp>」、丸括弧、波括弧（「<samp class="samp">{}</samp>」）、および「<samp class="samp">|</samp>」という少数の文字の動作だけです。基本正規表現では特殊文字として働かせるためにこれらをエスケープする必要がありますが、拡張正規表現では<em class="emph">文字そのものに一致させる</em>場合にエスケープしなければなりません。「<samp class="samp">|</samp>」は例外です。「<samp class="samp">\|</samp>」はGNU拡張で、標準の基本正規表現にはこの機能がありません。</p>
+<p>例：</p><dl class="table">
+<dt><code class="code">abc?</code></dt>
+<dd><p>拡張正規表現では「<samp class="samp">abc\?</samp>」になります。文字列「<samp class="samp">abc?</samp>」そのものに一致します。</p>
+</dd>
+<dt><code class="code">c\+</code></dt>
+<dd><p>拡張正規表現では「<samp class="samp">c+</samp>」になります。1個以上の「<samp class="samp">c</samp>」に一致します。</p>
+</dd>
+<dt><code class="code">a\{3,\}</code></dt>
+<dd><p>拡張正規表現では「<samp class="samp">a{3,}</samp>」になります。3個以上の「<samp class="samp">a</samp>」に一致します。</p>
+</dd>
+<dt><code class="code">\(abc\)\{2,3\}</code></dt>
+<dd><p>拡張正規表現では「<samp class="samp">(abc){2,3}</samp>」になります。「<samp class="samp">abcabc</samp>」または「<samp class="samp">abcabcabc</samp>」に一致します。</p>
+</dd>
+<dt><code class="code">\(abc*\)\1</code></dt>
+<dd><p>拡張正規表現では「<samp class="samp">(abc*)\1</samp>」になります。拡張正規表現でも後方参照はエスケープする必要があります。</p>
+</dd>
+<dt><code class="code">a\|b</code></dt>
+<dd><p>拡張正規表現では「<samp class="samp">a|b</samp>」になります。「<samp class="samp">a</samp>」または「<samp class="samp">b</samp>」に一致します。</p></dd>
+</dl>
+<hr/>
+</div>
+

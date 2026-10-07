@@ -1,0 +1,29 @@
+<div class="gnu-sed-original-content" id="Multibyte-regexp-character-classes">
+<h4 class="subsection"><span>5.9.3 Multibyte regexp character classes</span></h4>
+<p>In other locales, the sorting sequence is not specified, and
+‘<samp class="samp">[a-d]</samp>’ might be equivalent to ‘<samp class="samp">[abcd]</samp>’ or to
+‘<samp class="samp">[aBbCcDd]</samp>’, or it might fail to match any character, or the set of
+characters that it matches might even be erratic.
+To obtain the traditional interpretation
+of bracket expressions, you can use the ‘<samp class="samp">C</samp>’ locale by setting the
+<code class="env">LC_ALL</code> environment variable to the value ‘<samp class="samp">C</samp>’.
+</p>
+<div class="example">
+<pre class="example-preformatted"># TODO: is there any real-world system/locale where 'A'
+#       is replaced by '-' ?
+$ echo A | sed 's/[a-z]/-/'
+A
+</pre></div>
+<p>Their interpretation depends on the <code class="env">LC_CTYPE</code> locale;
+for example, ‘<samp class="samp">[[:alnum:]]</samp>’ means the character class of numbers and letters
+in the current locale.
+</p>
+<p>TODO: show example of collation
+</p>
+<div class="example">
+<pre class="example-preformatted"># TODO: this works on glibc systems, not on musl-libc/freebsd/macosx.
+$ printf 'cliché\n' | LC_ALL=fr_FR.utf8 sed 's/[[=e=]]/X/g'
+clichX
+</pre></div>
+<hr/>
+</div>

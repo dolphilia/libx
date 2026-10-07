@@ -1,0 +1,445 @@
+{
+  "slug": "22-bre-syntax",
+  "bodySHA256": "64a6b3032f493e80306e11d0480ffe1d4ab90c2ff779dcb5db3d1c12f2f2d98a",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧5.3 Overview of basic regular expression syntax⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Overview-of-basic-regular-expression-syntax\"><span>5.3 Overview of basic regular expression syntax</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Here is a brief description of regular expression syntax as used in ⟦0⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>Here is a brief description\nof regular expression syntax as used in <code class=\"command\">sed</code>.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "A single ordinary character matches itself.",
+      "tokens": {},
+      "sourceHTML": "<p>A single ordinary character matches itself.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Matches a sequence of zero or more instances of matches for the preceding regular expression, which must be an ordinary character, a special character preceded by ⟦0⟧, a ⟦1⟧, a grouped regexp (see below), or a bracket expression. As a GNU extension (disabled by ⟦2⟧), a postfixed regular expression can also be followed by ⟦3⟧; for example, ⟦4⟧ is equivalent to ⟦5⟧. In extended regular expression mode (⟦6⟧), ⟦7⟧ is also accepted, but that is not considered a GNU extension (POSIX leaves it undefined), so ⟦8⟧ does not affect it. POSIX 1003.1-2001 says that ⟦9⟧ stands for itself when it appears at the start of a regular expression or subexpression, but many non-GNU implementations do not support this and portable scripts should instead use ⟦10⟧ in these contexts.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">\\</code>",
+        "⟦1⟧": "<code class=\"code\">.</code>",
+        "⟦2⟧": "<samp class=\"option\">--posix</samp>",
+        "⟦3⟧": "<code class=\"code\">*</code>",
+        "⟦4⟧": "<code class=\"code\">a**</code>",
+        "⟦5⟧": "<code class=\"code\">a*</code>",
+        "⟦6⟧": "<samp class=\"option\">-E</samp>",
+        "⟦7⟧": "<code class=\"code\">**</code>",
+        "⟦8⟧": "<samp class=\"option\">--posix</samp>",
+        "⟦9⟧": "<code class=\"code\">*</code>",
+        "⟦10⟧": "<code class=\"code\">\\*</code>"
+      },
+      "sourceHTML": "<p>Matches a sequence of zero or more instances of matches for the\npreceding regular expression, which must be an ordinary character, a\nspecial character preceded by <code class=\"code\">\\</code>, a <code class=\"code\">.</code>, a grouped regexp\n(see below), or a bracket expression.  As a GNU extension (disabled by\n<samp class=\"option\">--posix</samp>), a postfixed regular expression can also be followed\nby <code class=\"code\">*</code>; for example, <code class=\"code\">a**</code> is equivalent to <code class=\"code\">a*</code>.\nIn extended regular expression mode (<samp class=\"option\">-E</samp>), <code class=\"code\">**</code> is also\naccepted, but that is not considered a GNU extension (POSIX leaves it\nundefined), so <samp class=\"option\">--posix</samp> does not affect it.  POSIX\n1003.1-2001 says that <code class=\"code\">*</code> stands for itself when it appears at\nthe start of a regular expression or subexpression, but many\nnon-GNU implementations do not support this and portable\nscripts should instead use <code class=\"code\">\\*</code> in these contexts.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Matches any character, including newline.",
+      "tokens": {},
+      "sourceHTML": "<p>Matches any character, including newline.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Matches the null string at beginning of the pattern space, i.e. what appears after the circumflex must appear at the beginning of the pattern space.",
+      "tokens": {},
+      "sourceHTML": "<p>Matches the null string at beginning of the pattern space, i.e. what\nappears after the circumflex must appear at the beginning of the\npattern space.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "In most scripts, pattern space is initialized to the content of each line (see ⟦0⟧How ⟦1⟧ works⟦2⟧). So, it is a useful simplification to think of ⟦3⟧ as matching only lines where ‘⟦4⟧’ is the first thing on the line—if there is any preceding space, for example, the match fails. This simplification is valid as long as the original content of pattern space is not modified, for example with an ⟦5⟧ command.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"pxref\" href=\"#Execution-Cycle\">",
+        "⟦1⟧": "<code class=\"code\">sed</code>",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "<code class=\"code\">^#include</code>",
+        "⟦4⟧": "<samp class=\"samp\">#include</samp>",
+        "⟦5⟧": "<code class=\"code\">s</code>"
+      },
+      "sourceHTML": "<p>In most scripts, pattern space is initialized to the content of each\nline (see <a class=\"pxref\" href=\"#Execution-Cycle\">How <code class=\"code\">sed</code> works</a>).  So, it is a\nuseful simplification to think of <code class=\"code\">^#include</code> as matching only\nlines where ‘<samp class=\"samp\">#include</samp>’ is the first thing on the line—if there is\nany preceding space, for example, the match fails.  This simplification is\nvalid as long as the original content of pattern space is not modified,\nfor example with an <code class=\"code\">s</code> command.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "⟦0⟧ acts as a special character only at the beginning of the regular expression or subexpression (that is, after ⟦1⟧ or ⟦2⟧). Portable scripts should avoid ⟦3⟧ at the beginning of a subexpression, though, as POSIX allows implementations that treat ⟦4⟧ as an ordinary character in that context.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">^</code>",
+        "⟦1⟧": "<code class=\"code\">\\(</code>",
+        "⟦2⟧": "<code class=\"code\">\\|</code>",
+        "⟦3⟧": "<code class=\"code\">^</code>",
+        "⟦4⟧": "<code class=\"code\">^</code>"
+      },
+      "sourceHTML": "<p><code class=\"code\">^</code> acts as a special character only at the beginning of the\nregular expression or subexpression (that is, after <code class=\"code\">\\(</code> or\n<code class=\"code\">\\|</code>).  Portable scripts should avoid <code class=\"code\">^</code> at the beginning of\na subexpression, though, as POSIX allows implementations that\ntreat <code class=\"code\">^</code> as an ordinary character in that context.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "It is the same as ⟦0⟧, but refers to end of pattern space. ⟦1⟧ also acts as a special character only at the end of the regular expression or subexpression (that is, before ⟦2⟧ or ⟦3⟧), and its use at the end of a subexpression is not portable.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">^</code>",
+        "⟦1⟧": "<code class=\"code\">$</code>",
+        "⟦2⟧": "<code class=\"code\">\\)</code>",
+        "⟦3⟧": "<code class=\"code\">\\|</code>"
+      },
+      "sourceHTML": "<p>It is the same as <code class=\"code\">^</code>, but refers to end of pattern space.\n<code class=\"code\">$</code> also acts as a special character only at the end\nof the regular expression or subexpression (that is, before <code class=\"code\">\\)</code>\nor <code class=\"code\">\\|</code>), and its use at the end of a subexpression is not\nportable.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "Matches any single character in ⟦0⟧: for example, ⟦1⟧ matches all vowels. A list may include sequences like ⟦2⟧, which matches any character between (inclusive) ⟦3⟧ and ⟦4⟧. See ⟦5⟧Character Classes and Bracket Expressions⟦6⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">list</var>",
+        "⟦1⟧": "<code class=\"code\">[aeiou]</code>",
+        "⟦2⟧": "<code class=\"code\"><var class=\"var\">char1</var>-<var class=\"var\">char2</var></code>",
+        "⟦3⟧": "<var class=\"var\">char1</var>",
+        "⟦4⟧": "<var class=\"var\">char2</var>",
+        "⟦5⟧": "<a class=\"xref\" href=\"#Character-Classes-and-Bracket-Expressions\">",
+        "⟦6⟧": "</a>"
+      },
+      "sourceHTML": "<p>Matches any single character in <var class=\"var\">list</var>: for example,\n<code class=\"code\">[aeiou]</code> matches all vowels.  A list may include\nsequences like <code class=\"code\"><var class=\"var\">char1</var>-<var class=\"var\">char2</var></code>, which\nmatches any character between (inclusive) <var class=\"var\">char1</var>\nand <var class=\"var\">char2</var>.\nSee <a class=\"xref\" href=\"#Character-Classes-and-Bracket-Expressions\">Character Classes and Bracket Expressions</a>.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "As ⟦0⟧, but matches one or more. It is a GNU extension.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">*</code>"
+      },
+      "sourceHTML": "<p>As <code class=\"code\">*</code>, but matches one or more.  It is a GNU extension.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "As ⟦0⟧, but only matches zero or one. It is a GNU extension.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">*</code>"
+      },
+      "sourceHTML": "<p>As <code class=\"code\">*</code>, but only matches zero or one.  It is a GNU extension.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "As ⟦0⟧, but matches exactly ⟦1⟧ sequences (⟦2⟧ is a decimal integer; for portability, keep it between 0 and 255 inclusive).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">*</code>",
+        "⟦1⟧": "<var class=\"var\">i</var>",
+        "⟦2⟧": "<var class=\"var\">i</var>"
+      },
+      "sourceHTML": "<p>As <code class=\"code\">*</code>, but matches exactly <var class=\"var\">i</var> sequences (<var class=\"var\">i</var> is a\ndecimal integer; for portability, keep it between 0 and 255\ninclusive).\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "Matches between ⟦0⟧ and ⟦1⟧, inclusive, sequences.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">i</var>",
+        "⟦1⟧": "<var class=\"var\">j</var>"
+      },
+      "sourceHTML": "<p>Matches between <var class=\"var\">i</var> and <var class=\"var\">j</var>, inclusive, sequences.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "Matches more than or equal to ⟦0⟧ sequences.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">i</var>"
+      },
+      "sourceHTML": "<p>Matches more than or equal to <var class=\"var\">i</var> sequences.\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "Groups the inner ⟦0⟧ as a whole, this is used to:",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">regexp</var>"
+      },
+      "sourceHTML": "<p>Groups the inner <var class=\"var\">regexp</var> as a whole, this is used to:\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "Matches either ⟦0⟧ or ⟦1⟧. Use parentheses to use complex alternative regular expressions. The matching process tries each alternative in turn, from left to right, and the first one that succeeds is used. It is a GNU extension.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">regexp1</var>",
+        "⟦1⟧": "<var class=\"var\">regexp2</var>"
+      },
+      "sourceHTML": "<p>Matches either <var class=\"var\">regexp1</var> or <var class=\"var\">regexp2</var>.  Use\nparentheses to use complex alternative regular expressions.\nThe matching process tries each alternative in turn, from\nleft to right, and the first one that succeeds is used.\nIt is a GNU extension.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "Matches the concatenation of ⟦0⟧ and ⟦1⟧. Concatenation binds more tightly than ⟦2⟧, ⟦3⟧, and ⟦4⟧, but less tightly than the other regular expression operators.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">regexp1</var>",
+        "⟦1⟧": "<var class=\"var\">regexp2</var>",
+        "⟦2⟧": "<code class=\"code\">\\|</code>",
+        "⟦3⟧": "<code class=\"code\">^</code>",
+        "⟦4⟧": "<code class=\"code\">$</code>"
+      },
+      "sourceHTML": "<p>Matches the concatenation of <var class=\"var\">regexp1</var> and <var class=\"var\">regexp2</var>.\nConcatenation binds more tightly than <code class=\"code\">\\|</code>, <code class=\"code\">^</code>, and\n<code class=\"code\">$</code>, but less tightly than the other regular expression\noperators.\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "Matches the ⟦0⟧-th ⟦1⟧ parenthesized subexpression in the regular expression. This is called a ⟦2⟧back reference⟦3⟧. Subexpressions are implicitly numbered by counting occurrences of ⟦4⟧ left-to-right.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">digit</var>",
+        "⟦1⟧": "<code class=\"code\">\\(…\\)</code>",
+        "⟦2⟧": "<em class=\"dfn\">",
+        "⟦3⟧": "</em>",
+        "⟦4⟧": "<code class=\"code\">\\(</code>"
+      },
+      "sourceHTML": "<p>Matches the <var class=\"var\">digit</var>-th <code class=\"code\">\\(…\\)</code> parenthesized\nsubexpression in the regular expression.  This is called a <em class=\"dfn\">back\nreference</em>.  Subexpressions are implicitly numbered by counting\noccurrences of <code class=\"code\">\\(</code> left-to-right.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "p",
+      "text": "Matches the newline character.",
+      "tokens": {},
+      "sourceHTML": "<p>Matches the newline character.\n</p>"
+    },
+    {
+      "index": 20,
+      "tag": "p",
+      "text": "Matches ⟦0⟧, where ⟦1⟧ is one of ⟦2⟧, ⟦3⟧, ⟦4⟧, ⟦5⟧, ⟦6⟧, or ⟦7⟧. Note that the only C-like backslash sequences that you can portably assume to be interpreted are ⟦8⟧ and ⟦9⟧; in particular ⟦10⟧ is not portable, and matches a ‘⟦11⟧’ under most implementations of ⟦12⟧, rather than a tab character.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">char</var>",
+        "⟦1⟧": "<var class=\"var\">char</var>",
+        "⟦2⟧": "<code class=\"code\">$</code>",
+        "⟦3⟧": "<code class=\"code\">*</code>",
+        "⟦4⟧": "<code class=\"code\">.</code>",
+        "⟦5⟧": "<code class=\"code\">[</code>",
+        "⟦6⟧": "<code class=\"code\">\\</code>",
+        "⟦7⟧": "<code class=\"code\">^</code>",
+        "⟦8⟧": "<code class=\"code\">\\n</code>",
+        "⟦9⟧": "<code class=\"code\">\\\\</code>",
+        "⟦10⟧": "<code class=\"code\">\\t</code>",
+        "⟦11⟧": "<samp class=\"samp\">t</samp>",
+        "⟦12⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>Matches <var class=\"var\">char</var>, where <var class=\"var\">char</var> is one of <code class=\"code\">$</code>,\n<code class=\"code\">*</code>, <code class=\"code\">.</code>, <code class=\"code\">[</code>, <code class=\"code\">\\</code>, or <code class=\"code\">^</code>.\nNote that the only C-like\nbackslash sequences that you can portably assume to be\ninterpreted are <code class=\"code\">\\n</code> and <code class=\"code\">\\\\</code>; in particular\n<code class=\"code\">\\t</code> is not portable, and matches a ‘<samp class=\"samp\">t</samp>’ under most\nimplementations of <code class=\"command\">sed</code>, rather than a tab character.\n</p>"
+    },
+    {
+      "index": 21,
+      "tag": "p",
+      "text": "Note that the regular expression matcher is greedy, i.e., matches are attempted from left to right and, if two or more matches are possible starting at the same character, it selects the longest.",
+      "tokens": {},
+      "sourceHTML": "<p>Note that the regular expression matcher is greedy, i.e., matches\nare attempted from left to right and, if two or more matches are\npossible starting at the same character, it selects the longest.\n</p>"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "text": "Examples:",
+      "tokens": {},
+      "sourceHTML": "<p>Examples:\n</p>"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "text": "Matches ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">abcdef</samp>"
+      },
+      "sourceHTML": "<p>Matches ‘<samp class=\"samp\">abcdef</samp>’.\n</p>"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "text": "Matches zero or more ‘⟦0⟧’s followed by a single ‘⟦1⟧’. For example, ‘⟦2⟧’ or ‘⟦3⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">a</samp>",
+        "⟦1⟧": "<samp class=\"samp\">b</samp>",
+        "⟦2⟧": "<samp class=\"samp\">b</samp>",
+        "⟦3⟧": "<samp class=\"samp\">aaaaab</samp>"
+      },
+      "sourceHTML": "<p>Matches zero or more ‘<samp class=\"samp\">a</samp>’s followed by a single\n‘<samp class=\"samp\">b</samp>’.  For example, ‘<samp class=\"samp\">b</samp>’ or ‘<samp class=\"samp\">aaaaab</samp>’.\n</p>"
+    },
+    {
+      "index": 25,
+      "tag": "p",
+      "text": "Matches ‘⟦0⟧’ or ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">b</samp>",
+        "⟦1⟧": "<samp class=\"samp\">ab</samp>"
+      },
+      "sourceHTML": "<p>Matches ‘<samp class=\"samp\">b</samp>’ or ‘<samp class=\"samp\">ab</samp>’.\n</p>"
+    },
+    {
+      "index": 26,
+      "tag": "p",
+      "text": "Matches one or more ‘⟦0⟧’s followed by one or more ‘⟦1⟧’s: ‘⟦2⟧’ is the shortest possible match, but other examples are ‘⟦3⟧’ or ‘⟦4⟧’ or ‘⟦5⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">a</samp>",
+        "⟦1⟧": "<samp class=\"samp\">b</samp>",
+        "⟦2⟧": "<samp class=\"samp\">ab</samp>",
+        "⟦3⟧": "<samp class=\"samp\">aaaab</samp>",
+        "⟦4⟧": "<samp class=\"samp\">abbbbb</samp>",
+        "⟦5⟧": "<samp class=\"samp\">aaaaaabbbbbbb</samp>"
+      },
+      "sourceHTML": "<p>Matches one or more ‘<samp class=\"samp\">a</samp>’s followed by one or more\n‘<samp class=\"samp\">b</samp>’s: ‘<samp class=\"samp\">ab</samp>’ is the shortest possible match, but\nother examples are ‘<samp class=\"samp\">aaaab</samp>’ or ‘<samp class=\"samp\">abbbbb</samp>’ or\n‘<samp class=\"samp\">aaaaaabbbbbbb</samp>’.\n</p>"
+    },
+    {
+      "index": 27,
+      "tag": "p",
+      "text": "These two both match all the characters in a string; however, the first matches every string (including the empty string), while the second matches only strings containing at least one character.",
+      "tokens": {},
+      "sourceHTML": "<p>These two both match all the characters in a string;\nhowever, the first matches every string (including the empty\nstring), while the second matches only strings containing\nat least one character.\n</p>"
+    },
+    {
+      "index": 28,
+      "tag": "p",
+      "text": "This matches a string starting with ‘⟦0⟧’, followed by an opening and closing parenthesis. The ‘⟦1⟧’, ‘⟦2⟧’ and ‘⟦3⟧’ need not be adjacent.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">main</samp>",
+        "⟦1⟧": "<samp class=\"samp\">n</samp>",
+        "⟦2⟧": "<samp class=\"samp\">(</samp>",
+        "⟦3⟧": "<samp class=\"samp\">)</samp>"
+      },
+      "sourceHTML": "<p>This matches a string starting with ‘<samp class=\"samp\">main</samp>’,\nfollowed by an opening and closing\nparenthesis.  The ‘<samp class=\"samp\">n</samp>’, ‘<samp class=\"samp\">(</samp>’ and ‘<samp class=\"samp\">)</samp>’ need not\nbe adjacent.\n</p>"
+    },
+    {
+      "index": 29,
+      "tag": "p",
+      "text": "This matches a string beginning with ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">#</samp>"
+      },
+      "sourceHTML": "<p>This matches a string beginning with ‘<samp class=\"samp\">#</samp>’.\n</p>"
+    },
+    {
+      "index": 30,
+      "tag": "p",
+      "text": "This matches a string ending with a single backslash. The regexp contains two backslashes for escaping.",
+      "tokens": {},
+      "sourceHTML": "<p>This matches a string ending with a single backslash.  The\nregexp contains two backslashes for escaping.\n</p>"
+    },
+    {
+      "index": 31,
+      "tag": "p",
+      "text": "Instead, this matches a string consisting of a single dollar sign, because it is escaped.",
+      "tokens": {},
+      "sourceHTML": "<p>Instead, this matches a string consisting of a single dollar sign,\nbecause it is escaped.\n</p>"
+    },
+    {
+      "index": 32,
+      "tag": "p",
+      "text": "In the C locale, this matches any ASCII letters or digits.",
+      "tokens": {},
+      "sourceHTML": "<p>In the C locale, this matches any ASCII letters or digits.\n</p>"
+    },
+    {
+      "index": 33,
+      "tag": "p",
+      "text": "(Here ⟦0⟧⟦1⟧TAB⟦2⟧⟦3⟧ stands for a single tab character.) This matches a string of one or more characters, none of which is a space or a tab. Usually this means a word.",
+      "tokens": {
+        "⟦0⟧": "<kbd class=\"kbd\">",
+        "⟦1⟧": "<kbd class=\"key\">",
+        "⟦2⟧": "</kbd>",
+        "⟦3⟧": "</kbd>"
+      },
+      "sourceHTML": "<p>(Here <kbd class=\"kbd\"><kbd class=\"key\">TAB</kbd></kbd> stands for a single tab character.)\nThis matches a string of one or more\ncharacters, none of which is a space or a tab.\nUsually this means a word.\n</p>"
+    },
+    {
+      "index": 34,
+      "tag": "p",
+      "text": "This matches a string consisting of two equal substrings separated by a newline.",
+      "tokens": {},
+      "sourceHTML": "<p>This matches a string consisting of two equal substrings separated by\na newline.\n</p>"
+    },
+    {
+      "index": 35,
+      "tag": "p",
+      "text": "This matches nine characters followed by an ‘⟦0⟧’ at the end of a line.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">A</samp>"
+      },
+      "sourceHTML": "<p>This matches nine characters followed by an ‘<samp class=\"samp\">A</samp>’ at the end of a line.\n</p>"
+    },
+    {
+      "index": 36,
+      "tag": "p",
+      "text": "This matches the start of a string that contains 16 characters, the last of which is an ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">A</samp>"
+      },
+      "sourceHTML": "<p>This matches the start of a string that contains 16 characters,\nthe last of which is an ‘<samp class=\"samp\">A</samp>’.\n</p>"
+    },
+    {
+      "index": 37,
+      "tag": "dt",
+      "text": "‘⟦0⟧’",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">abcdef</samp>"
+      },
+      "sourceHTML": "<dt>‘<samp class=\"samp\">abcdef</samp>’</dt>"
+    },
+    {
+      "index": 38,
+      "tag": "dt",
+      "text": "‘⟦0⟧’",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">^main.*(.*)</samp>"
+      },
+      "sourceHTML": "<dt>‘<samp class=\"samp\">^main.*(.*)</samp>’</dt>"
+    },
+    {
+      "index": 39,
+      "tag": "dt",
+      "text": "‘⟦0⟧’",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[a-zA-Z0-9]</samp>"
+      },
+      "sourceHTML": "<dt>‘<samp class=\"samp\">[a-zA-Z0-9]</samp>’</dt>"
+    },
+    {
+      "index": 40,
+      "tag": "dt",
+      "text": "‘⟦0⟧’",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">[^ <kbd class=\"kbd\"><kbd class=\"key\">TAB</kbd></kbd>]\\+</samp>"
+      },
+      "sourceHTML": "<dt>‘<samp class=\"samp\">[^ <kbd class=\"kbd\"><kbd class=\"key\">TAB</kbd></kbd>]\\+</samp>’</dt>"
+    },
+    {
+      "index": 41,
+      "tag": "li",
+      "text": "⟦0⟧⟦1⟧ Apply postfix operators, like ⟦2⟧: this will search for zero or more whole sequences of ‘⟦3⟧’, while ⟦4⟧ would search for ‘⟦5⟧’ followed by zero or more occurrences of ‘⟦6⟧’. Note that support for ⟦7⟧ is required by POSIX 1003.1-2001, but many non-GNU implementations do not support it and hence it is not universally portable.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-to-basic-regular-expressions-3\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<code class=\"code\">\\(abcd\\)*</code>",
+        "⟦3⟧": "<samp class=\"samp\">abcd</samp>",
+        "⟦4⟧": "<code class=\"code\">abcd*</code>",
+        "⟦5⟧": "<samp class=\"samp\">abc</samp>",
+        "⟦6⟧": "<samp class=\"samp\">d</samp>",
+        "⟦7⟧": "<code class=\"code\">\\(abcd\\)*</code>"
+      },
+      "sourceHTML": "<li><a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-to-basic-regular-expressions-3\"></a>\nApply postfix operators, like <code class=\"code\">\\(abcd\\)*</code>:\nthis will search for zero or more whole sequences\nof ‘<samp class=\"samp\">abcd</samp>’, while <code class=\"code\">abcd*</code> would search\nfor ‘<samp class=\"samp\">abc</samp>’ followed by zero or more occurrences\nof ‘<samp class=\"samp\">d</samp>’.  Note that support for <code class=\"code\">\\(abcd\\)*</code> is\nrequired by POSIX 1003.1-2001, but many non-GNU\nimplementations do not support it and hence it is not universally\nportable.\n\n</li>"
+    },
+    {
+      "index": 42,
+      "tag": "li",
+      "text": "Use back references (see below).",
+      "tokens": {},
+      "sourceHTML": "<li>Use back references (see below).\n</li>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

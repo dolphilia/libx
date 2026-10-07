@@ -1,0 +1,121 @@
+<div class="gnu-sed-original-content" id="Multiline-techniques">
+<h3 class="section" id="Multiline-techniques-_002d-using-D_002cG_002cH_002cN_002cP-to-process-multiple-lines"><span>6.3 Multiline techniques - using D,G,H,N,P to process multiple lines</span></h3>
+<p>Multiple lines can be processed as one buffer using the
+<code class="code">D</code>,<code class="code">G</code>,<code class="code">H</code>,<code class="code">N</code>,<code class="code">P</code>. They are similar to
+their lowercase counterparts (<code class="code">d</code>,<code class="code">g</code>,
+<code class="code">h</code>,<code class="code">n</code>,<code class="code">p</code>), except that these commands append or
+subtract data while respecting embedded newlines - allowing adding and
+removing lines from the pattern and hold spaces.
+</p>
+<p>They operate as follows:
+</p><dl class="table">
+<dt><code class="code">D</code></dt>
+<dd><p><em class="emph">deletes</em> line from the pattern space until the first newline,
+and restarts the cycle.
+</p>
+</dd>
+<dt><code class="code">G</code></dt>
+<dd><p><em class="emph">appends</em> line from the hold space to the pattern space, with a
+newline before it.
+</p>
+</dd>
+<dt><code class="code">H</code></dt>
+<dd><p><em class="emph">appends</em> line from the pattern space to the hold space, with a
+newline before it.
+</p>
+</dd>
+<dt><code class="code">N</code></dt>
+<dd><p><em class="emph">appends</em> line from the input file to the pattern space.
+</p>
+</dd>
+<dt><code class="code">P</code></dt>
+<dd><p><em class="emph">prints</em> line from the pattern space until the first newline.
+</p>
+</dd>
+</dl>
+<p>The following example illustrates the operation of <code class="code">N</code> and
+<code class="code">D</code> commands:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 6 | sed -n 'N;l;D'
+1\n2$
+2\n3$
+3\n4$
+4\n5$
+5\n6$
+</pre></div></div>
+<ol class="enumerate">
+<li> <code class="command">sed</code> starts by reading the first line into the pattern space
+(i.e. ‘<samp class="samp">1</samp>’).
+</li><li> At the beginning of every cycle, the <code class="code">N</code>
+command appends a newline and the next line to the pattern space
+(i.e. ‘<samp class="samp">1</samp>’, ‘<samp class="samp">\n</samp>’, ‘<samp class="samp">2</samp>’ in the first cycle).
+</li><li> The <code class="code">l</code> command prints the content of the pattern space
+unambiguously.
+</li><li> The <code class="code">D</code> command then removes the content of pattern
+space up to the first newline (leaving ‘<samp class="samp">2</samp>’ at the end of
+the first cycle).
+</li><li> At the next cycle the <code class="code">N</code> command appends a
+newline and the next input line to the pattern space
+(e.g. ‘<samp class="samp">2</samp>’, ‘<samp class="samp">\n</samp>’, ‘<samp class="samp">3</samp>’).
+</li></ol>
+<a class="index-entry-id" id="index-processing-paragraphs"></a>
+<a class="index-entry-id" id="index-paragraphs_002c-processing"></a>
+<p>A common technique to process blocks of text such as paragraphs
+(instead of line-by-line) is using the following construct:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed '/./{H;$!d} ; x ; s/REGEXP/REPLACEMENT/'
+</pre></div>
+<ol class="enumerate">
+<li> The first expression, <code class="code">/./{H;$!d}</code> operates on all non-empty lines,
+and adds the current line (in the pattern space) to the hold space.
+On all lines except the last, the pattern space is deleted and the cycle is
+restarted.
+
+</li><li> The other expressions <code class="code">x</code> and <code class="code">s</code> are executed only on empty
+lines (i.e. paragraph separators). The <code class="code">x</code> command fetches the
+accumulated lines from the hold space back to the pattern space. The
+<code class="code">s///</code> command then operates on all the text in the paragraph
+(including the embedded newlines).
+</li></ol>
+<p>The following example demonstrates this technique:
+</p><div class="example">
+<div class="group"><pre class="example-preformatted">$ cat input.txt
+a a a aa aaa
+aaaa aaaa aa
+aaaa aaa aaa
+
+bbbb bbb bbb
+bb bb bbb bb
+bbbbbbbb bbb
+
+ccc ccc cccc
+cccc ccccc c
+cc cc cc cc
+
+$ sed '/./{H;$!d} ; x ; s/^/\nSTART--&gt;/ ; s/$/\n&lt;--END/' input.txt
+
+START--&gt;
+a a a aa aaa
+aaaa aaaa aa
+aaaa aaa aaa
+&lt;--END
+
+START--&gt;
+bbbb bbb bbb
+bb bb bbb bb
+bbbbbbbb bbb
+&lt;--END
+
+START--&gt;
+ccc ccc cccc
+cccc ccccc c
+cc cc cc cc
+&lt;--END
+</pre></div></div>
+<p>For more annotated examples, see <a class="pxref" href="#Text-search-across-multiple-lines">Text search across multiple lines</a>
+and <a class="ref" href="#Line-length-adjustment">Line length adjustment</a>.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,43 @@
+<div class="gnu-sed-original-content" id="Escapes">
+<h3 class="section" id="Escape-Sequences-_002d-specifying-special-characters"><span>5.8 エスケープシーケンス：特殊文字の指定</span></h3>
+<a class="index-entry-id" id="index-GNU-extensions_002c-special-escapes"></a>
+<p>ここまでに扱ったエスケープは、「<samp class="samp">\^</samp>」の形式だけでした。これは、キャレットを特殊文字として解釈せず、その文字自身として扱うよう<code class="command">sed</code>に指示します。たとえば、「<samp class="samp">\*</samp>」は、0個以上のバックスラッシュではなく1個のアスタリスクに一致します。</p>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT-behavior_002c-escapes"></a>
+<p>この章では、別の種類のエスケープ<a class="footnote" href="#FOOT6" id="DOCF6"><sup>6</sup></a>を紹介します。通常はその文字自身として扱う文字または文字列に適用し、<code class="command">sed</code>が特殊な文字に置き換えるエスケープです。これにより、パターン内の表示できない文字を、目に見える形で符号化できます。<code class="command">sed</code>スクリプトには非表示文字を含める制限はありませんが、シェルやテキスト編集でスクリプトを作るときは、そのバイナリ文字よりも以下のエスケープシーケンスを使う方が通常は簡単です。</p>
+<p>これらのエスケープは次のとおりです。</p>
+<dl class="table">
+<dt><code class="code">\a</code></dt>
+<dd><p><small class="sc">BEL</small>文字、つまり「アラート」（<small class="sc">ASCII</small>の7）を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\f</code></dt>
+<dd><p>フォームフィード（<small class="sc">ASCII</small>の12）を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\n</code></dt>
+<dd><p>改行（<small class="sc">ASCII</small>の10）を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\r</code></dt>
+<dd><p>キャリッジリターン（<small class="sc">ASCII</small>の13）を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\t</code></dt>
+<dd><p>水平タブ（<small class="sc">ASCII</small>の9）を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\v</code></dt>
+<dd><p>いわゆる「垂直タブ」（<small class="sc">ASCII</small>の11）を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\c<var class="var">x</var></code></dt>
+<dd><p><kbd class="kbd"><small class="sc">CONTROL</small>-<var class="var">x</var></kbd>を生成するか、それに一致します。ここで<var class="var">x</var>は任意の文字です。「<samp class="samp">\c<var class="var">x</var></samp>」の正確な動作は次のとおりです。<var class="var">x</var>が小文字なら大文字に変換し、その文字のビット6（16進数40）を反転します。そのため、「<samp class="samp">\cz</samp>」は16進数1Aになり、「<samp class="samp">\c{</samp>」は16進数3B、「<samp class="samp">\c;</samp>」は16進数7Bになります。</p>
+</dd>
+<dt><code class="code">\d<var class="var">xxx</var></code></dt>
+<dd><p>10進数の<small class="sc">ASCII</small>値が<var class="var">xxx</var>である文字を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\o<var class="var">xxx</var></code></dt>
+<dd><p>8進数の<small class="sc">ASCII</small>値が<var class="var">xxx</var>である文字を生成するか、それに一致します。</p>
+</dd>
+<dt><code class="code">\x<var class="var">xx</var></code></dt>
+<dd><p>16進数の<small class="sc">ASCII</small>値が<var class="var">xx</var>である文字を生成するか、それに一致します。</p></dd>
+</dl>
+<p>「<samp class="samp">\b</samp>」（バックスペース）は、既存の「単語境界」の意味と衝突するため省かれました。</p>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF6" id="FOOT6">(6)</a></h5>
+<p>ここで紹介したエスケープは、<code class="code">\n</code>を除いてすべてGNU拡張です。基本正規表現モードでは、<code class="code">POSIXLY_CORRECT</code>を設定すると括弧式の中で無効になります。</p>
+</div></div>
+

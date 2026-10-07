@@ -1,0 +1,108 @@
+<div class="gnu-sed-original-content" id="regexp-extensions">
+<h3 class="section" id="regular-expression-extensions"><span>5.6 regular expression extensions</span></h3>
+<p>The following sequences have special meaning inside regular expressions
+(used in <a class="ref" href="#Regexp-Addresses">addresses</a> and the <code class="code">s</code> command).
+</p>
+<p>These can be used in both
+<a class="ref" href="#BRE-syntax">basic</a> and <a class="ref" href="#ERE-syntax">extended</a>
+regular expressions (that is, with or without the <samp class="option">-E</samp>/<samp class="option">-r</samp>
+options).
+</p>
+<dl class="table">
+<dt><code class="code">\w</code></dt>
+<dd><p>Matches any “word” character.  A “word” character is any
+letter or digit or the underscore character.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\w/X/g'
+XXX %-= XXX.
+</pre></div>
+</dd>
+<dt><code class="code">\W</code></dt>
+<dd><p>Matches any “non-word” character.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\W/X/g'
+abcXXXXXdefX
+</pre></div>
+</dd>
+<dt><code class="code">\b</code></dt>
+<dd><p>Matches a word boundary; that is it matches if the character
+to the left is a “word” character and the character to the
+right is a “non-word” character, or vice-versa.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\b/X/g'
+XabcX %-= XdefX.
+</pre></div>
+</dd>
+<dt><code class="code">\B</code></dt>
+<dd><p>Matches everywhere but on a word boundary; that is it matches
+if the character to the left and the character to the right
+are either both “word” characters or both “non-word”
+characters.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\B/X/g'
+aXbXc X%X-X=X dXeXf.X
+</pre></div>
+</dd>
+<dt><code class="code">\s</code></dt>
+<dd><p>Matches whitespace characters (spaces and tabs).
+Newlines embedded in the pattern/hold spaces will also match:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\s/X/g'
+abcX%-=Xdef.
+</pre></div>
+</dd>
+<dt><code class="code">\S</code></dt>
+<dd><p>Matches non-whitespace characters.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\S/X/g'
+XXX XXX XXXX
+</pre></div>
+</dd>
+<dt><code class="code">\&lt;</code></dt>
+<dd><p>Matches the beginning of a word.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\&lt;/X/g'
+Xabc %-= Xdef.
+</pre></div>
+</dd>
+<dt><code class="code">\&gt;</code></dt>
+<dd><p>Matches the end of a word.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\&gt;/X/g'
+abcX %-= defX.
+</pre></div>
+</dd>
+<dt><code class="code">\`</code></dt>
+<dd><p>Matches only at the start of pattern space.  This is different
+from <code class="code">^</code> in multi-line mode.
+</p>
+<p>Compare the following two examples:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "a\nb\nc\n" | sed 'N;N;s/^/X/gm'
+Xa
+Xb
+Xc
+
+$ printf "a\nb\nc\n" | sed 'N;N;s/\`/X/gm'
+Xa
+b
+c
+</pre></div>
+</dd>
+<dt><code class="code">\'</code></dt>
+<dd><p>Matches only at the end of pattern space.  This is different
+from <code class="code">$</code> in multi-line mode.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>

@@ -1,0 +1,79 @@
+<div class="gnu-sed-original-content" id="Escapes">
+<h3 class="section" id="Escape-Sequences-_002d-specifying-special-characters"><span>5.8 Escape Sequences - specifying special characters</span></h3>
+<a class="index-entry-id" id="index-GNU-extensions_002c-special-escapes"></a>
+<p>Until this chapter, we have only encountered escapes of the form
+‘<samp class="samp">\^</samp>’, which tell <code class="command">sed</code> not to interpret the circumflex
+as a special character, but rather to take it literally.  For
+example, ‘<samp class="samp">\*</samp>’ matches a single asterisk rather than zero
+or more backslashes.
+</p>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT-behavior_002c-escapes"></a>
+<p>This chapter introduces another kind of escape<a class="footnote" href="#FOOT6" id="DOCF6"><sup>6</sup></a>—that
+is, escapes that are applied to a character or sequence of characters
+that ordinarily are taken literally, and that <code class="command">sed</code> replaces
+with a special character.  This provides a way
+of encoding non-printable characters in patterns in a visible manner.
+There is no restriction on the appearance of non-printing characters
+in a <code class="command">sed</code> script but when a script is being prepared in the
+shell or by text editing, it is usually easier to use one of
+the following escape sequences than the binary character it
+represents:
+</p>
+<p>The list of these escapes is:
+</p>
+<dl class="table">
+<dt><code class="code">\a</code></dt>
+<dd><p>Produces or matches a <small class="sc">BEL</small> character, that is an “alert” (<small class="sc">ASCII</small> 7).
+</p>
+</dd>
+<dt><code class="code">\f</code></dt>
+<dd><p>Produces or matches a form feed (<small class="sc">ASCII</small> 12).
+</p>
+</dd>
+<dt><code class="code">\n</code></dt>
+<dd><p>Produces or matches a newline (<small class="sc">ASCII</small> 10).
+</p>
+</dd>
+<dt><code class="code">\r</code></dt>
+<dd><p>Produces or matches a carriage return (<small class="sc">ASCII</small> 13).
+</p>
+</dd>
+<dt><code class="code">\t</code></dt>
+<dd><p>Produces or matches a horizontal tab (<small class="sc">ASCII</small> 9).
+</p>
+</dd>
+<dt><code class="code">\v</code></dt>
+<dd><p>Produces or matches a so called “vertical tab” (<small class="sc">ASCII</small> 11).
+</p>
+</dd>
+<dt><code class="code">\c<var class="var">x</var></code></dt>
+<dd><p>Produces or matches <kbd class="kbd"><small class="sc">CONTROL</small>-<var class="var">x</var></kbd>, where <var class="var">x</var> is
+any character.  The precise effect of ‘<samp class="samp">\c<var class="var">x</var></samp>’ is as follows:
+if <var class="var">x</var> is a lower case letter, it is converted to upper case.
+Then bit 6 of the character (hex 40) is inverted.  Thus ‘<samp class="samp">\cz</samp>’ becomes
+hex 1A, but ‘<samp class="samp">\c{</samp>’ becomes hex 3B, while ‘<samp class="samp">\c;</samp>’ becomes hex 7B.
+</p>
+</dd>
+<dt><code class="code">\d<var class="var">xxx</var></code></dt>
+<dd><p>Produces or matches a character whose decimal <small class="sc">ASCII</small> value is <var class="var">xxx</var>.
+</p>
+</dd>
+<dt><code class="code">\o<var class="var">xxx</var></code></dt>
+<dd><p>Produces or matches a character whose octal <small class="sc">ASCII</small> value is <var class="var">xxx</var>.
+</p>
+</dd>
+<dt><code class="code">\x<var class="var">xx</var></code></dt>
+<dd><p>Produces or matches a character whose hexadecimal <small class="sc">ASCII</small> value is <var class="var">xx</var>.
+</p></dd>
+</dl>
+<p>‘<samp class="samp">\b</samp>’ (backspace) was omitted because of the conflict with
+the existing “word boundary” meaning.
+</p>
+
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF6" id="FOOT6">(6)</a></h5>
+<p>All
+the escapes introduced here are GNU
+extensions, with the exception of <code class="code">\n</code>.  In basic regular
+expression mode, setting <code class="code">POSIXLY_CORRECT</code> disables them inside
+bracket expressions.</p>
+</div></div>

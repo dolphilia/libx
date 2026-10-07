@@ -1,0 +1,103 @@
+<div class="gnu-sed-original-content" id="Character-Classes-and-Bracket-Expressions">
+<h3 class="section" id="Character-Classes-and-Bracket-Expressions-1"><span>5.5 文字クラスと括弧式</span></h3>
+<a class="index-entry-id" id="index-bracket-expression"></a>
+<a class="index-entry-id" id="index-character-class"></a>
+<p><em class="dfn">括弧式</em>は、「<samp class="samp">[</samp>」と「<samp class="samp">]</samp>」で囲んだ文字のリストです。リスト内の任意の1文字に一致します。リストの最初の文字がキャレット「<samp class="samp">^</samp>」なら、リストに<strong class="strong">含まれない</strong>任意の文字に一致します。たとえば、次のコマンドは文字列「<samp class="samp">gray</samp>」または「<samp class="samp">grey</samp>」を「<samp class="samp">blue</samp>」に置き換えます。</p>
+<div class="example">
+<pre class="example-preformatted">sed  's/gr[ae]y/blue/'
+</pre></div>
+<p>括弧式は<a class="ref" href="#BRE-syntax">基本</a>正規表現でも<a class="ref" href="#ERE-syntax">拡張</a>正規表現でも使えます（つまり、<samp class="option">-E</samp>/<samp class="option">-r</samp>オプションの有無にかかわらず使えます）。</p>
+<a class="index-entry-id" id="index-range-expression"></a>
+<p>括弧式の中で、<em class="dfn">範囲式</em>はハイフンで区切った2文字からなります。並べ替え順でその2文字の間にある任意の1文字に、両端を含めて一致します。既定のCロケールでは、並べ替え順は本来の文字順です。たとえば、「<samp class="samp">[a-d]</samp>」は「<samp class="samp">[abcd]</samp>」と同じです。</p>
+<p>また、括弧式の中では、次に示す名前付き文字クラスがあらかじめ定義されています。</p>
+<p>これらの名前付きクラスは、それ自体を括弧の<em class="emph">内側</em>で使わなければなりません。正しい使用例：</p><div class="example">
+<pre class="example-preformatted">$ echo 1 | sed 's/[[:digit:]]/X/'
+X
+</pre></div>
+<p>誤った使用法は新しい<code class="command">sed</code>では拒否されます。古い版では受け付けていましたが、単一の括弧式として扱いました（これは「<samp class="samp">[dgit:]</samp>」、つまり文字<var class="var">d/g/i/t/:</var>だけに一致する式と同じです）。</p><div class="example">
+<pre class="example-preformatted"># current GNU sed versions - incorrect usage rejected
+$ echo 1 | sed 's/[:digit:]/X/'
+sed: character class syntax is [[:space:]], not [:space:]
+
+# older GNU sed versions
+$ echo 1 | sed 's/[:digit:]/X/'
+1
+</pre></div>
+<a class="index-entry-id" id="index-classes-of-characters"></a>
+<a class="index-entry-id" id="index-character-classes"></a>
+<a class="index-entry-id" id="index-named-character-classes"></a>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-alphanumeric-characters"></a> <a id="index-alnum-character-class"></a><span>‘<samp class="samp">[:alnum:]</samp>’</span></dt>
+<dd><p>字母と数字：「<samp class="samp">[:alpha:]</samp>」と「<samp class="samp">[:digit:]</samp>」。「<samp class="samp">C</samp>」ロケールとASCII文字エンコーディングでは、「<samp class="samp">[0-9A-Za-z]</samp>」と同じです。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-alphabetic-characters"></a> <a id="index-alpha-character-class"></a><span>‘<samp class="samp">[:alpha:]</samp>’</span></dt>
+<dd><p>字母：「<samp class="samp">[:lower:]</samp>」と「<samp class="samp">[:upper:]</samp>」。「<samp class="samp">C</samp>」ロケールとASCII文字エンコーディングでは、「<samp class="samp">[A-Za-z]</samp>」と同じです。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-blank-characters"></a> <a id="index-blank-character-class"></a><span>‘<samp class="samp">[:blank:]</samp>’</span></dt>
+<dd><p>空白文字：スペースとタブ。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-control-characters"></a> <a id="index-cntrl-character-class"></a><span>‘<samp class="samp">[:cntrl:]</samp>’</span></dt>
+<dd><p>制御文字。ASCIIでは、8進数の文字コード000〜037、および177（DEL）に当たります。ほかの文字集合では、対応する文字があればそれに当たります。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-digit-characters"></a> <a class="index-entry-id" id="index-numeric-characters"></a> <a id="index-digit-character-class"></a><span>‘<samp class="samp">[:digit:]</samp>’</span></dt>
+<dd><p>数字：<code class="code">0 1 2 3 4 5 6 7 8 9</code>。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-graphic-characters"></a> <a id="index-graph-character-class"></a><span>‘<samp class="samp">[:graph:]</samp>’</span></dt>
+<dd><p>可視文字：「<samp class="samp">[:alnum:]</samp>」と「<samp class="samp">[:punct:]</samp>」。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-lower_002dcase-letters"></a> <a id="index-lower-character-class"></a><span>‘<samp class="samp">[:lower:]</samp>’</span></dt>
+<dd><p>小文字。「<samp class="samp">C</samp>」ロケールとASCII文字エンコーディングでは、<code class="code">a b c d e f g h i j k l m n o p q r s t u v w x y z</code>です。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-printable-characters"></a> <a id="index-print-character-class"></a><span>‘<samp class="samp">[:print:]</samp>’</span></dt>
+<dd><p>表示可能な文字：「<samp class="samp">[:alnum:]</samp>」「<samp class="samp">[:punct:]</samp>」、およびスペース。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-punctuation-characters"></a> <a id="index-punct-character-class"></a><span>‘<samp class="samp">[:punct:]</samp>’</span></dt>
+<dd><p>句読点文字。「<samp class="samp">C</samp>」ロケールとASCII文字エンコーディングでは、<code class="code">! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</code>です。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-space-characters"></a> <a class="index-entry-id" id="index-whitespace-characters"></a> <a id="index-space-character-class"></a><span>‘<samp class="samp">[:space:]</samp>’</span></dt>
+<dd><p>空白類文字。「<samp class="samp">C</samp>」ロケールでは、タブ、改行、垂直タブ、フォームフィード、キャリッジリターン、およびスペースです。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-upper_002dcase-letters"></a> <a id="index-upper-character-class"></a><span>‘<samp class="samp">[:upper:]</samp>’</span></dt>
+<dd><p>大文字。「<samp class="samp">C</samp>」ロケールとASCII文字エンコーディングでは、<code class="code">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code>です。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-xdigit-class"></a> <a class="index-entry-id" id="index-hexadecimal-digits"></a> <a id="index-xdigit-character-class"></a><span>‘<samp class="samp">[:xdigit:]</samp>’</span></dt>
+<dd><p>16進数字：<code class="code">0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f</code>。</p>
+</dd>
+</dl>
+<p>これらのクラス名に含まれる括弧は記号名の一部です。括弧式を区切る括弧とは別に、必ず含めてください。</p>
+<p>ほとんどのメタ文字は、括弧式の中では特別な意味を失います。</p>
+<dl class="table">
+<dt>‘<samp class="samp">]</samp>’</dt>
+<dd><p>リストの最初の要素でなければ、括弧式を終わらせます。そのため、「<samp class="samp">]</samp>」をリストの要素にするには、最初に置かなければなりません。</p>
+</dd>
+<dt>‘<samp class="samp">-</samp>’</dt>
+<dd><p>リストの先頭や末尾、または範囲の終点でなければ、範囲を表します。</p>
+</dd>
+<dt>‘<samp class="samp">^</samp>’</dt>
+<dd><p>リストに含まれない文字を表します。「<samp class="samp">^</samp>」をリストの要素にするには、先頭以外の位置に置いてください。</p></dd>
+</dl>
+<p>TODO：この段落を組み込む（BREの節からそのままコピーしたもの）。</p>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT-behavior_002c-bracket-expressions"></a>
+<p><code class="code">$</code>、<code class="code">*</code>、<code class="code">.</code>、<code class="code">[</code>、<code class="code">\</code>は、通常<var class="var">list</var>の中では特殊文字になりません。たとえば、ここでは<code class="code">\</code>が特殊文字ではないため、<code class="code">[\*]</code>は「<samp class="samp">\</samp>」または「<samp class="samp">*</samp>」に一致します。ただし、<code class="code">[.ch.]</code>、<code class="code">[=a=]</code>、<code class="code">[:space:]</code>のような文字列は<var class="var">list</var>の中でも特別な意味を持ち、それぞれ照合記号、等価クラス、文字クラスを表します。そのため、<var class="var">list</var>の中で<code class="code">[</code>の後に<code class="code">.</code>、<code class="code">=</code>、<code class="code">:</code>のいずれかが続く場合は特殊文字になります。また、<code class="env">POSIXLY_CORRECT</code>モード以外では、<code class="code">\n</code>や<code class="code">\t</code>などの特殊なエスケープが<var class="var">list</var>の中で認識されます。<a class="xref" href="#Escapes">エスケープシーケンス：特殊文字の指定</a>を参照してください。</p>
+<dl class="table">
+<dt>‘<samp class="samp">[.</samp>’</dt>
+<dd><p>照合記号の開始を表します。</p>
+</dd>
+<dt>‘<samp class="samp">.]</samp>’</dt>
+<dd><p>照合記号の終了を表します。</p>
+</dd>
+<dt>‘<samp class="samp">[=</samp>’</dt>
+<dd><p>等価クラスの開始を表します。</p>
+</dd>
+<dt>‘<samp class="samp">=]</samp>’</dt>
+<dd><p>等価クラスの終了を表します。</p>
+</dd>
+<dt>‘<samp class="samp">[:</samp>’</dt>
+<dd><p>文字クラス記号の開始を表し、その後には有効な文字クラス名が必要です。</p>
+</dd>
+<dt>‘<samp class="samp">:]</samp>’</dt>
+<dd><p>文字クラス記号の終了を表します。</p></dd>
+</dl>
+<hr/>
+</div>
+

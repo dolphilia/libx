@@ -1,0 +1,101 @@
+{
+  "slug": "23-ere-syntax",
+  "bodySHA256": "fa15400bfc6d169410abefe680476e6435091d073308f95fe864c262c0b63ac1",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧5.4 Overview of extended regular expression syntax⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Overview-of-extended-regular-expression-syntax\"><span>5.4 Overview of extended regular expression syntax</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The only difference between basic and extended regular expressions is in the behavior of a few characters: ‘⟦0⟧’, ‘⟦1⟧’, parentheses, braces (‘⟦2⟧’), and ‘⟦3⟧’. While basic regular expressions require these to be escaped if you want them to behave as special characters, when using extended regular expressions you must escape them if you want them ⟦4⟧to match a literal character⟦5⟧. ‘⟦6⟧’ is special here because ‘⟦7⟧’ is a GNU extension – standard basic regular expressions do not provide its functionality.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">?</samp>",
+        "⟦1⟧": "<samp class=\"samp\">+</samp>",
+        "⟦2⟧": "<samp class=\"samp\">{}</samp>",
+        "⟦3⟧": "<samp class=\"samp\">|</samp>",
+        "⟦4⟧": "<em class=\"emph\">",
+        "⟦5⟧": "</em>",
+        "⟦6⟧": "<samp class=\"samp\">|</samp>",
+        "⟦7⟧": "<samp class=\"samp\">\\|</samp>"
+      },
+      "sourceHTML": "<p>The only difference between basic and extended regular expressions is in\nthe behavior of a few characters: ‘<samp class=\"samp\">?</samp>’, ‘<samp class=\"samp\">+</samp>’, parentheses,\nbraces (‘<samp class=\"samp\">{}</samp>’), and ‘<samp class=\"samp\">|</samp>’.  While basic regular expressions\nrequire these to be escaped if you want them to behave as special\ncharacters, when using extended regular expressions you must escape\nthem if you want them <em class=\"emph\">to match a literal character</em>.  ‘<samp class=\"samp\">|</samp>’\nis special here because ‘<samp class=\"samp\">\\|</samp>’ is a GNU extension – standard\nbasic regular expressions do not provide its functionality.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Examples:",
+      "tokens": {},
+      "sourceHTML": "<p>Examples:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "becomes ‘⟦0⟧’ when using extended regular expressions. It matches the literal string ‘⟦1⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">abc\\?</samp>",
+        "⟦1⟧": "<samp class=\"samp\">abc?</samp>"
+      },
+      "sourceHTML": "<p>becomes ‘<samp class=\"samp\">abc\\?</samp>’ when using extended regular expressions.  It matches\nthe literal string ‘<samp class=\"samp\">abc?</samp>’.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "becomes ‘⟦0⟧’ when using extended regular expressions. It matches one or more ‘⟦1⟧’s.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">c+</samp>",
+        "⟦1⟧": "<samp class=\"samp\">c</samp>"
+      },
+      "sourceHTML": "<p>becomes ‘<samp class=\"samp\">c+</samp>’ when using extended regular expressions.  It matches\none or more ‘<samp class=\"samp\">c</samp>’s.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "becomes ‘⟦0⟧’ when using extended regular expressions. It matches three or more ‘⟦1⟧’s.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">a{3,}</samp>",
+        "⟦1⟧": "<samp class=\"samp\">a</samp>"
+      },
+      "sourceHTML": "<p>becomes ‘<samp class=\"samp\">a{3,}</samp>’ when using extended regular expressions.  It matches\nthree or more ‘<samp class=\"samp\">a</samp>’s.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "becomes ‘⟦0⟧’ when using extended regular expressions. It matches either ‘⟦1⟧’ or ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">(abc){2,3}</samp>",
+        "⟦1⟧": "<samp class=\"samp\">abcabc</samp>",
+        "⟦2⟧": "<samp class=\"samp\">abcabcabc</samp>"
+      },
+      "sourceHTML": "<p>becomes ‘<samp class=\"samp\">(abc){2,3}</samp>’ when using extended regular expressions.  It\nmatches either ‘<samp class=\"samp\">abcabc</samp>’ or ‘<samp class=\"samp\">abcabcabc</samp>’.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "becomes ‘⟦0⟧’ when using extended regular expressions. Backreferences must still be escaped when using extended regular expressions.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">(abc*)\\1</samp>"
+      },
+      "sourceHTML": "<p>becomes ‘<samp class=\"samp\">(abc*)\\1</samp>’ when using extended regular expressions.\nBackreferences must still be escaped when using extended regular\nexpressions.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "becomes ‘⟦0⟧’ when using extended regular expressions. It matches ‘⟦1⟧’ or ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">a|b</samp>",
+        "⟦1⟧": "<samp class=\"samp\">a</samp>",
+        "⟦2⟧": "<samp class=\"samp\">b</samp>"
+      },
+      "sourceHTML": "<p>becomes ‘<samp class=\"samp\">a|b</samp>’ when using extended regular expressions.  It matches\n‘<samp class=\"samp\">a</samp>’ or ‘<samp class=\"samp\">b</samp>’.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

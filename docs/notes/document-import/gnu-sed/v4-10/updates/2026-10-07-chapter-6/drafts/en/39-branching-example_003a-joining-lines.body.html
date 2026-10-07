@@ -1,0 +1,76 @@
+<div class="gnu-sed-original-content" id="Branching-example_003a-joining-lines">
+<h4 class="subsection"><span>6.4.2 Branching example: joining lines</span></h4>
+<a class="index-entry-id" id="index-joining-lines-with-branching"></a>
+<a class="index-entry-id" id="index-branching_002c-joining-lines"></a>
+<a class="index-entry-id" id="index-quoted_002dprintable-lines_002c-joining"></a>
+<a class="index-entry-id" id="index-joining-quoted_002dprintable-lines"></a>
+<a class="index-entry-id" id="index-t_002c-joining-lines-with"></a>
+<a class="index-entry-id" id="index-b_002c-joining-lines-with"></a>
+<a class="index-entry-id" id="index-b_002c-versus-t"></a>
+<a class="index-entry-id" id="index-t_002c-versus-b"></a>
+<p>As a real-world example of using branching, consider the case of
+<a class="uref" href="https://en.wikipedia.org/wiki/Quoted-printable">quoted-printable</a> files,
+typically used to encode email messages.
+In these files long lines are split and marked with a <em class="dfn">soft line break</em>
+consisting of a single ‘<samp class="samp">=</samp>’ character at the end of the line:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ cat jaques.txt
+All the wor=
+ld's a stag=
+e,
+And all the=
+ men and wo=
+men merely =
+players:
+They have t=
+heir exits =
+and their e=
+ntrances;
+And one man=
+ in his tim=
+e plays man=
+y parts.
+</pre></div></div>
+<p>The following program uses an address match ‘<samp class="samp">/=$/</samp>’ as a
+conditional: If the current pattern space ends with a ‘<samp class="samp">=</samp>’, it
+reads the next input line using <code class="code">N</code>, replaces all ‘<samp class="samp">=</samp>’
+characters which are followed by a newline, and unconditionally
+branches (<code class="code">b</code>) to the beginning of the program without restarting
+a new cycle. If the pattern space does not ends with ‘<samp class="samp">=</samp>’, the
+default action is performed: the pattern space is printed and a new
+cycle is started:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ sed ':x ; /=$/ { N ; s/=\n//g ; bx }' jaques.txt
+All the world's a stage,
+And all the men and women merely players:
+They have their exits and their entrances;
+And one man in his time plays many parts.
+</pre></div></div>
+<p>Here’s an alternative program with a slightly different approach: On
+all lines except the last, <code class="code">N</code> appends the line to the pattern
+space.  A substitution command then removes soft line breaks
+(‘<samp class="samp">=</samp>’ at the end of a line, i.e. followed by a newline) by replacing
+them with an empty string.
+<em class="emph">If</em> the substitution was successful (meaning the pattern space contained
+a line which should be joined), the conditional branch command <code class="code">t</code> jumps
+to the beginning of the program without completing or restarting the cycle.
+If the substitution failed (meaning there were no soft line breaks),
+The <code class="code">t</code> command will <em class="emph">not</em> branch. Then, <code class="code">P</code> will
+print the pattern space content until the first newline, and <code class="code">D</code>
+will delete the pattern space content until the first new line.
+(To learn more about <code class="code">N</code>, <code class="code">P</code> and <code class="code">D</code> commands
+see <a class="pxref" href="#Multiline-techniques">Multiline techniques - using D,G,H,N,P to process multiple lines</a>).
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ sed ':x ; $!N ; s/=\n// ; tx ; P ; D' jaques.txt
+All the world's a stage,
+And all the men and women merely players:
+They have their exits and their entrances;
+And one man in his time plays many parts.
+</pre></div></div>
+<p>For more line-joining examples see <a class="pxref" href="#Joining-lines">Joining lines</a>.
+</p>
+<hr/>
+</div>

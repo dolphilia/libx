@@ -1,0 +1,16 @@
+<div class="gnu-sed-original-content" id="Upper_002fLower-case-conversion">
+<h4 class="subsection"><span>5.9.2 Upper/Lower case conversion</span></h4>
+<p>GNU <code class="command">sed</code>’s substitute command (<code class="code">s</code>) supports upper/lower
+case conversions using <code class="code">\U</code>,<code class="code">\L</code> codes.
+These conversions support multibyte characters:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ printf 'ABC\u03a3\n'
+ABCΣ
+
+$ printf 'ABC\u03a3\n' | sed 's/.*/\L&amp;/'
+abcσ
+</pre></div>
+<p>See <a class="xref" href="#The-_0022s_0022-Command">The <code class="code">s</code> Command</a>.
+</p>
+</div>

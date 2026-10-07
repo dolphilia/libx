@@ -1,0 +1,24 @@
+<div class="gnu-sed-original-content" id="Regular-Expressions-Overview">
+<h3 class="section" id="Overview-of-regular-expression-in-sed"><span>5.1 <code class="command">sed</code>での正規表現の概要</span></h3>
+<p><code class="command">sed</code>の使い方を知るには、正規表現（略して<em class="dfn">regexp</em>）を理解する必要があります。正規表現は、対象の文字列に対して左から右へ照合するパターンです。ほとんどの文字は<em class="dfn">通常の文字</em>で、パターン中でその文字自身を表し、対応する文字に一致します。<code class="command">sed</code>の正規表現は2つのスラッシュの間に指定します。</p>
+<p>次のコマンドは、文字列「<samp class="samp">hello</samp>」を含む行を表示します。</p>
+<div class="example">
+<pre class="example-preformatted">sed -n '/hello/p'
+</pre></div>
+<p>上の例は、次の<code class="command">grep</code>コマンドと同じです。</p>
+<div class="example">
+<pre class="example-preformatted">grep 'hello'
+</pre></div>
+<p>正規表現の強力さは、パターンに選択や繰り返しを含められることにあります。これらは<em class="dfn">特殊文字</em>を使ってパターンに記述します。特殊文字はその文字自身を表すのではなく、特別な方法で解釈されます。</p>
+<p>正規表現中の<code class="code">^</code>（キャレット）は行の先頭に一致します。<code class="code">.</code>（ピリオド）は任意の1文字に一致します。次の<code class="command">sed</code>コマンドは、文字「<samp class="samp">b</samp>」で始まり、その後に任意の1文字、続いて文字「<samp class="samp">d</samp>」がある行に一致して表示します。</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "%s\n" abode bad bed bit bid byte body | sed -n '/^b.d/p'
+bad
+bed
+bid
+body
+</pre></div>
+<p>以下の節では、正規表現の特殊文字の意味と使い方を説明します。</p>
+<hr/>
+</div>
+

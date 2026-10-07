@@ -1,0 +1,19 @@
+<div class="gnu-sed-original-content" id="Multibyte-regexp-character-classes">
+<h4 class="subsection"><span>5.9.3 マルチバイト正規表現の文字クラス</span></h4>
+<p>ほかのロケールでは並べ替え順が規定されておらず、「<samp class="samp">[a-d]</samp>」は「<samp class="samp">[abcd]</samp>」や「<samp class="samp">[aBbCcDd]</samp>」と同じになる場合もあれば、どの文字にも一致しない場合や、一致する文字の集合が不規則になる場合もあります。括弧式を従来どおりに解釈するには、<code class="env">LC_ALL</code>環境変数を「<samp class="samp">C</samp>」に設定して「<samp class="samp">C</samp>」ロケールを使えます。</p>
+<div class="example">
+<pre class="example-preformatted"># TODO: is there any real-world system/locale where 'A'
+#       is replaced by '-' ?
+$ echo A | sed 's/[a-z]/-/'
+A
+</pre></div>
+<p>解釈は<code class="env">LC_CTYPE</code>ロケールに依存します。たとえば、「<samp class="samp">[[:alnum:]]</samp>」は現在のロケールの数字と字母のクラスを意味します。</p>
+<p>TODO：照合順序の例を示す。</p>
+<div class="example">
+<pre class="example-preformatted"># TODO: this works on glibc systems, not on musl-libc/freebsd/macosx.
+$ printf 'cliché\n' | LC_ALL=fr_FR.utf8 sed 's/[[=e=]]/X/g'
+clichX
+</pre></div>
+<hr/>
+</div>
+

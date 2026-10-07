@@ -1,0 +1,15 @@
+<div class="gnu-sed-original-content" id="Execution-Cycle">
+<h3 class="section" id="How-sed-Works"><span>6.1 <code class="command">sed</code>の動作</span></h3>
+<a class="index-entry-id" id="index-Buffer-spaces_002c-pattern-and-hold"></a>
+<a class="index-entry-id" id="index-Spaces_002c-pattern-and-hold"></a>
+<a class="index-entry-id" id="index-Pattern-space_002c-definition"></a>
+<a class="index-entry-id" id="index-Hold-space_002c-definition"></a>
+<p><code class="command">sed</code>は2つのデータバッファーを管理します。処理に使う<em class="emph">パターン</em>スペースと、補助的な<em class="emph">ホールド</em>スペースです。最初はどちらも空です。</p>
+<p><code class="command">sed</code>は、入力の各行に対して次のサイクルを実行します。まず、<code class="command">sed</code>は入力ストリームから1行を読み、末尾に改行があれば取り除き、パターンスペースに格納します。続いてコマンドを実行します。各コマンドにはアドレスを関連付けることができます。アドレスは一種の条件で、コマンドを実行する直前にその条件が成立する場合だけ、コマンドを実行します。</p>
+<p>スクリプトの末尾に達すると、<samp class="option">-n</samp>オプションを使っていない限り、パターンスペースの内容を出力ストリームへ表示し、末尾の改行を取り除いていた場合は付け直します。<a class="footnote" href="#FOOT8" id="DOCF8"><sup>8</sup></a>その後、次の入力行に対する次のサイクルを開始します。</p>
+<p>特別なコマンド（「<samp class="samp">D</samp>」など）を使わない限り、サイクルとサイクルの間でパターンスペースは消去されます。一方、ホールドスペースはサイクルをまたいでデータを保持します（両バッファー間でデータを移動するコマンド「<samp class="samp">h</samp>」「<samp class="samp">H</samp>」「<samp class="samp">x</samp>」「<samp class="samp">g</samp>」「<samp class="samp">G</samp>」を参照してください）。</p>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF8" id="FOOT8">(8)</a></h5>
+<p>実際には、<code class="command">sed</code>が終端の改行なしで行を表示した場合でも、その同じ出力ストリームへさらにテキストを送ると、欠けている改行をその時点で表示します。この動作は「予期しない驚きをできるだけ小さくする」ものですが、「<samp class="samp">sed -n p</samp>」のようなコマンドの動作を<code class="command">cat</code>と完全に同一にするわけではありません。</p>
+</div></div>
+
