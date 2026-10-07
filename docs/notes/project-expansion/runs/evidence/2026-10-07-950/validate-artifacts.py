@@ -16,7 +16,7 @@ with zipfile.ZipFile(source) as z:
  c=json.loads(z.read('SOURCE_COMPONENTS.json'));assert set(z.namelist())=={x['path'] for x in c['files']}|{'SOURCE_COMPONENTS.json'};assert len(z.namelist())==662
  for x in c['files']:assert hashlib.sha256(z.read(x['path'])).hexdigest()==x['sha256']
  assert not any(n.endswith('/source.zip') for n in z.namelist())
-out={'status':'passed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':sha,'files':len(m['files']),'allManifestFilesExact':True,'documents':37,'EnglishPages':19,'JapaneseGuides':18,'EnglishOnlyReferences':1,'gnuDiffutilsDeployedFiles':len([x for x in m['files'] if x['path'].startswith('docs/gnu-sed/')]),'preferredSourcesExact':preferred,'sourceOfferMembers':662,'sourceOfferSHA256':h(source)}
+out={'status':'passed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':sha,'files':len(m['files']),'allManifestFilesExact':True,'documents':37,'EnglishPages':19,'JapaneseGuides':18,'EnglishOnlyReferences':1,'gnuSedDeployedFiles':len([x for x in m['files'] if x['path'].startswith('docs/gnu-sed/')]),'preferredSourcesExact':preferred,'sourceOfferMembers':662,'sourceOfferSHA256':h(source)}
 if role=='production':
  S=Path('/private/tmp/libx-gnu-sed-production-state-950');B=Path('/private/tmp/libx-gnu-sed-production-before-950');b=json.loads((S/'before.json').read_text());p=json.loads((S/'prepublish.json').read_text());a=json.loads((S/'after.json').read_text())
  assert b==json.loads((B/'before.json').read_text());assert b['deployment']['commit']=='5e770b2f6d82b88525632f5113b1c7e9a85299f9';assert b['deployment']==p['deployment'];assert a['deployment']['commit']==sha;assert a['deployment']['id']!=b['deployment']['id'];assert 'libx.dev' in a['domains']
