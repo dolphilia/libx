@@ -1,31 +1,12 @@
 ---
-title: "Awesome Transgender Transgender Flag"
-description: "A curated collection of resources and projects focused on Transgender Transgender Flag."
+title: "Awesome Transgender"
+description: "Websites, communities, voice training, hormone therapy information, organizations, research, and clothing resources for transgender people."
 licenseSource: "github-cvyl-awesome-transgender-readme-md"
 ---
 
-# Awesome Transgender Transgender Flag
+# Awesome Transgender<a id="awesome-transgender-transgender-flag"></a>
 
-A curated collection of resources and projects focused on Transgender Transgender Flag.
-
-## Contents
-
-- [General Websites](#general-websites)
-- [Communities](#communities)
-  - [Reddit](#reddit)
-  - [Lemmy](#lemmy)
-  - [MtF (Male to Female)](#mtf-male-to-female)
-  - [FtM (Female to Male)](#ftm-female-to-male)
-- [Voice Training](#voice-training)
-- [DIY HRT](#diy-hrt)
-- [Organizations](#organizations)
-  - [Netherlands](#netherlands)
-  - [U.S.A (United States of America)](#usa-united-states-of-america)
-  - [France](#france)
-  - [China](#china)
-  - [Ukraine](#ukraine)
-- [Scientific Research](#scientific-research)
-- [Clothing](#clothing)
+Transgender people have a gender identity that differs from their assigned birth sex. This list covers general websites, communities, voice training, DIY hormone replacement therapy (HRT) information, support organizations in several countries, research, and clothing. Descriptions, evaluations, language notes, and dates reflect the fixed source snapshot.
 
 ## General Websites
 
@@ -84,7 +65,7 @@ This section is dedicated to communities for transgender individuals.
 
 ## DIY HRT
 
-This section shows awesome resources for helping individuals with DIY HRT.
+This section lists resources for individuals seeking information about DIY HRT.
 
 - [DIY HRT Directory](https://diyhrt.wiki/) - Directory of resources on DIY hormone replacement therapy.
   - [Transfem Guide](https://diyhrt.wiki/transfem) - Guide for transfeminine individuals.
@@ -97,7 +78,7 @@ This section shows awesome resources for helping individuals with DIY HRT.
 
 ## Organizations
 
-Here is a list of LGBTQ+ Organizations aimed at helping transgender individuals.
+Here is a list of LGBTQ+ organizations aimed at helping transgender individuals.
 
 - [The World Professional Association for Transgender Health (WPATH)](https://www.wpath.org) - Sets global standards for transgender health.
 - [Massachusetts Transgender Political Coalition (MTPC)](https://www.masstpc.org) - Advocacy group for transgender rights in Massachusetts.
@@ -134,7 +115,7 @@ Here is a list of LGBTQ+ Organizations aimed at helping transgender individuals.
 
 ### Ukraine
 
-- [Insight](https://www.insight-ukraine.org/) - LGBTQ+ organization in the Ukraine.
+- [Insight](https://www.insight-ukraine.org/) - LGBTQ+ organization in Ukraine.
 
 ## Scientific Research
 
@@ -146,14 +127,10 @@ Here is a list of LGBTQ+ Organizations aimed at helping transgender individuals.
 
 ## Clothing
 
-This section shows awesome resources for finding trans-specific clothing.
+This section lists resources for finding trans-specific clothing.
 
 - [Rubyshines](https://rubyshines.com) - Clothing designed for transgender individuals.
 
 ### Binders
 
 - [Underworks](https://www.underworks.com/) - Binders for safe chest compression.
-
-## Contributing
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/cvyl/awesome-transgender/blob/c4520422a00ea5fad98f24e24153e124fff920e1/contributing.md) first.

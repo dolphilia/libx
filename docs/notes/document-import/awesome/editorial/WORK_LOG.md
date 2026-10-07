@@ -6459,3 +6459,33 @@
 - 初回全工程はglobal自身OK後のgit diffcheckで英103行末の原文由来空白1文字不合格e62c88。d9278bで1文字のみ除去し行全文再読、現在hashで全対応/overlay更新。2replay/通常8gate fb1101 actual exit0→全2074本文hash一致/全参照incoming0→新science build153d85 actual exit0→全7入力/成果物一致・HTML32fc4b actual exit0。30head/29分類/118list/58自動目次/40alias/画像表0/出典4URLと全旧有用ID/統合HTML一致。初回HTML一時検査の言語scope作成ミス34c78dは各言語のaliasへ絞って修復し、通常検査や製品実装を無効化しない。
 - 最終4実表示をtab22で再確認し、導入末尾/数量と登録条件の折返し/目次到達/横溢れなし/出典4リンク全文、英日言語切替・次Transgenderと戻り・実旧版BioIE Logoと戻りを確認。viewport復元/preview56086 03b28b exit0。UI証拠 ff231ab81b5f408f32ee9103cf368c247cac5fd0256ec8425116e694a592c216。最終global/diff a6c6d6 actual exit0、verified235更新6dc2ca、状態変更後の全入力同一を照合して合格証拠を再利用。235完了802残保留4。
 - EXCLUSIONS判断同一のtimestampだけ復元。元mainは353既存差分が全保持、現在356・main d1308f。配信workflow d97b50/ハッシュ既存同一を送信前再確認し、非配信branchのみ使用。外部公開/PR/dispatch/定期設定/Workersなし。今回保存対象は検証済み本文2件・出典設定・生成物・overlay・全証拠・台帳。未送信・commit/pushは次操作として残す。次178 github-cvyl-awesome-transgender-readme-md。保存後、固定raw/既存英日全文から開始。
+
+### バッチ177送信確認・178開始 (2026-10-07T00:57:14.343Z)
+
+- BioIE commit ba9a11423178d191bae4fe9cfe46054ce4245873。scope97files 8ad4f5、staged97完全一致/diff/未送信0 26b0d3、commit d8c9a9 exit0、送信前commit97範囲/未送信1/clean f4f57a。push fa35e9 actual exit0、remote a3cb8f完全一致。非配信origin/codex/awesome-editorial-isolated-20261007、外部公開なし。235完了802残保留4。
+- 178 Transgender固定raw/既存EN/既存JAを9f986cで現hash照合し96f194/7afc5b/832dd3で全文読了、省略なし。177の検証済みscience成果物から未編集178の旧英日HTMLと全20見出し/有用18のID・出典2URLを54aabeで照合し保存。今回原文に権利節・権利全文はなく既存出典設定も変更不要。原文定義が旧定型文へ欠落、旗画像altがtitle/H1へ混入。一般ラベルの未訳/不自然さを本文全体で整理し、資料条件/言語指定/研究年/第8版2022/PDFを保持。次Transgender正式名と原文定義を復元→手動目次/旗画像/投稿案内整理→EN編集/JA一般ラベルと自然さ/旧有用IDalias→3別パス全文review/全unit対応/overlay/2replay/8gates/2074hash/anchor/science build/HTML/4UI/global/diff→verified236/commit/push→次計画順対象。
+
+- 2026-10-07T01:01:41.590Z batch178-three-full-review-passes-complete。235完了802残保留4。進捗810874c30182b667c9348a974f3cae448062b9bce6d05a3c26afab0352a1b77a。次Transgender正式名と原文定義を復元→手動目次/旗画像/投稿案内整理→EN編集/JA一般ラベルと自然さ/旧有用IDalias→3別パス全文review/全unit対応/overlay/2replay/8gates/2074hash/anchor/science build/HTML/4UI/global/diff→verified236/commit/push→次計画順対象。
+
+- 2026-10-07T01:01:57.736Z batch178 Transgender: 原文f8dbc9→EN2432aa、ENJA2432aa/722305、日本語単独e3bf40を全文別パス読了。原文の定義と正式名を復元、全67資料・17分類・対象/言語指定/年/条件/URL保持。raw/旧英日110→EN93/JA121全unit対応、EN1+JA15aliasで旧18有用ID保持。原文に権利節なし、出典不変。overlay一致・内容検査pass後translated-ja、次2replay/8gate/2074hash/anchor→science build/全7input/HTML18head67list16alias/4UI/global/diff→verified236→commit/push→次計画順
+
+- 2026-10-07T01:05:03.077Z batch178-full-reviews-overlay-complete-gates-pending。235完了802残保留4。進捗e54a9e48301ce2d2aea5a2764ef2573e261efa00f4d3bc22dbb5c02ea534b637。次2replay/8gate/2074hash/anchor→science build/全7input/HTML18head67list16alias/4UI/global/diff→verified236→commit/push→次計画順
+
+- 2026-10-07T01:05:38.447Z batch178-generation-gates-passed-build-pending。235完了802残保留4。進捗cadb943e496c770d364082fd0a06d8c46a6a7915eeb60968ca59825c5f6d79d4。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML18見出し/67list/16alias/旧有用ID保持/英日PCmobile実UI→global→verified236/commit/push。
+
+- 2026-10-07T01:09:29.564Z batch178-build-html-complete-four-ui-pending。235完了802残保留4。進捗0e8ea49bcb91517fbc25b0646bcb64d0af61e582c6d8f643880d853d2b8cc311。次英日PC1440/mobile390導入/長い資料名/一般開業医・待機リスト条件/67listのlist折返し/自動目次/出典CC0案内と2リンク/言語/版/隣接操作実UI→global→verified236→commit/push→次計画順対象。
+
+- 2026-10-07T01:12:38.843Z batch178-four-actual-ui-complete-global-pending。235完了802残保留4。進捗b05d86f1a7fcaa1e84d3236418f7b1e9dc07cc4262e856cd8b849ef94aba3cc1。次英日PC1440/mobile390導入/長い資料名/一般開業医・待機リスト条件/67listのlist折返し/自動目次/出典CC0案内と2リンク/言語/版/隣接操作実UI→global→verified236→commit/push→次計画順対象。
+
+- 2026-10-07T01:12:39.696Z batch178-four-ui-content-reviewed-global-pending。235完了802残保留4。進捗f20826d84861355940ecd8b0304a81197618df7c08963221109569f034aa87e5。次全1037台帳global/全2074hash/diff→verified236→commit/push/hash照合→179 Digital Humanities fixedraw/旧EN/旧JA全文。
+
+- 2026-10-07T01:13:22.488Z batch178-verified236-save-push-pending。236完了801残保留4。進捗c50cb4379bd1c65eefc4508777320ed1344723daebdf6677e623b61efca6c7d8。次236完了801残保留4。Transgender全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次179 github-dh-tech-awesome-digital-humanities-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ178 Transgender検証完了・保存 (2026-10-07T01:13:26.818Z)
+
+- 固定commit c4520422a00ea5fad98f24e24153e124fff920e1/readme.md、raw 7968dc30ce7c4db14bb9ca69c32062950fa2ca12641cbc32524e51dea7a4b546、旧EN cdb5ceaf2f0b27e55552a089f5508feca4386e7ebdbfde2bf1b48f55a0b1d4ff/旧JA ad20e0d60ee088fea3658d280bc12950d7900d39a76b5b3ce55a06174211ae81。初回96f194/7afc5b/832dd3全読了、別パス原文f8dbc9→EN2432aa、ENJA2432aa/722305、日本語単独e3bf40全読了。全文coverage・全unit・hash・判断を保存、実モデルCodex current session/APIモデル識別子取得不能。委任/ローカルLLMなし。最終EN f1e05dd65516fcd140f511b968ada624bb212903f28b0f076408ce997ea851a6/JA 2feca609f48e7d86e5dcafa79cd32fc82370d0b93a61a832ad58607dc85058bf。
+- 旗画像alt由来のTransgender Flag誤titleをAwesome Transgenderへ。原文の性自認と出生時性別の定義を導入へ復元。全67資料と17分類、対象/用途/評価/主副URL、4オランダ語指定/フランス語指定、低所得者対象、移行全過程支援、一般開業医へのHRTアクセス支援と待機リスト情報、研究年と論文正式名、WPATH第8版2022年/PDFを保持。一般資料名/説明を自然な日本語へ。固定原文の評価・日付の記述と明示。
+- 手動目次と投稿運営案内/装飾を整理。原文にCredits/License/権利通知節なし、共通出典変更なし。旧178本文/出典/共有実装hash不変の177完了science build/未編集HTML証拠を照合再利用。raw/旧英日110→EN93/JA121全unit対応、91主unit/18head/67list、EN1+JA15空alias16件で旧18有用ID保持。overlay完全再生と内容検査後translated-ja。
+- 2replay/通常8gate 53d507 actual exit0。全2074本文current/baseline一致、全参照incoming0。EXCLUSIONS日時のみ変更、初回一時比較5cd3c4が字段誤指定でassert不合格、00c6e8でdecidedAtだけ除外比較し判断/根拠/入力hash全一致、元ファイル復元。検査無効化なし。fresh science build 詳細進捗証拠参照、全7アプリ開始/現在/成果物input一致、18head/17分類/67list/34自動目次/16alias/旧18有用ID/画像表0/固定README・CC0出典2URL/統合HTML一致。
+- 実UI英日PC1440/mobile390の4表示で導入・資料名/長い条件の折返し・目次到達・横溢れなし・出典CC0全文/2リンク、言語/旧版/隣接遷移を確認。UI証拠 161445a5616ca77fe920b493e44e69f5e36f22fee6e9e34759920df8ddb6856d、tab終了/viewport復元/preview exit0。全1037組global/全2074hash/diff 82d4d0 session38955 actual exit0合格後verified236、状態変更後の監査入力同一を照合して合格証拠再利用。236完了801残保留4。
+- 保存対象は検証済み本文2件/生成物/overlay/判断レビュー全証拠/台帳。配信workflow同一hash/非配信branchのみ、外部公開/PR/dispatch/定期設定/Workersなし。commit/push/remote照合は次操作、次179 github-dh-tech-awesome-digital-humanities-readme-md。
