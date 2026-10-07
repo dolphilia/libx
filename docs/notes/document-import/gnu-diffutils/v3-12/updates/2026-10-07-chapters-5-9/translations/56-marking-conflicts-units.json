@@ -1,0 +1,101 @@
+{
+  "slug": "56-marking-conflicts",
+  "bodySHA256": "c6d500e65ac5ca87f317aea88da6ddbd262376790709c1d7776dede3ff92c392",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧8.2 Marking Conflicts⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Marking-Conflicts-1\"><span>8.2 Marking Conflicts</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧ can mark conflicts in the merged output by bracketing them with special marker lines. A conflict that comes from two files ⟦1⟧ and ⟦2⟧ is marked as follows:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff3</code>",
+        "⟦1⟧": "<var class=\"var\">A</var>",
+        "⟦2⟧": "<var class=\"var\">B</var>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff3</code> can mark conflicts in the merged output by\nbracketing them with special marker lines.  A conflict\nthat comes from two files <var class=\"var\">A</var> and <var class=\"var\">B</var> is marked as follows:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "A conflict that comes from three files ⟦0⟧, ⟦1⟧ and ⟦2⟧ is marked as follows:",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">A</var>",
+        "⟦1⟧": "<var class=\"var\">B</var>",
+        "⟦2⟧": "<var class=\"var\">C</var>"
+      },
+      "sourceHTML": "<p>A conflict that comes from three files <var class=\"var\">A</var>, <var class=\"var\">B</var> and <var class=\"var\">C</var> is\nmarked as follows:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The ⟦0⟧ (⟦1⟧) option acts like the ⟦2⟧ option, except that it brackets conflicts, and it outputs all changes from ⟦3⟧ to ⟦4⟧, not just the unmerged changes. Thus, given the sample input files (see ⟦5⟧A Third Sample Input File⟦6⟧), ‘⟦7⟧’ puts brackets around the conflict where only ⟦8⟧ differs:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--show-all</samp>",
+        "⟦1⟧": "<samp class=\"option\">-A</samp>",
+        "⟦2⟧": "<samp class=\"option\">-e</samp>",
+        "⟦3⟧": "<var class=\"var\">older</var>",
+        "⟦4⟧": "<var class=\"var\">yours</var>",
+        "⟦5⟧": "<a class=\"pxref\" href=\"#Sample-diff3-Input\">",
+        "⟦6⟧": "</a>",
+        "⟦7⟧": "<samp class=\"samp\">diff3\n-A lao tzu tao</samp>",
+        "⟦8⟧": "<samp class=\"file\">tzu</samp>"
+      },
+      "sourceHTML": "<p>The <samp class=\"option\">--show-all</samp> (<samp class=\"option\">-A</samp>) option acts like the <samp class=\"option\">-e</samp>\noption, except that it brackets conflicts, and it outputs all changes\nfrom <var class=\"var\">older</var> to <var class=\"var\">yours</var>, not just the unmerged changes.  Thus,\ngiven the sample input files (see <a class=\"pxref\" href=\"#Sample-diff3-Input\">A Third Sample Input File</a>), ‘<samp class=\"samp\">diff3\n-A lao tzu tao</samp>’ puts brackets around the conflict where only <samp class=\"file\">tzu</samp>\ndiffers:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "And it outputs the three-way conflict as follows:",
+      "tokens": {},
+      "sourceHTML": "<p>And it outputs the three-way conflict as follows:\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "The ⟦0⟧ (⟦1⟧) option outputs less information than the ⟦2⟧ (⟦3⟧) option, because it outputs only unmerged changes, and it never outputs the contents of the second file. Thus the ⟦4⟧ option acts like the ⟦5⟧ option, except that it brackets the first and third files from three-way overlapping changes. Similarly, ⟦6⟧ acts like ⟦7⟧, except it brackets all its (necessarily overlapping) changes. For example, for the three-way overlapping change above, the ⟦8⟧ and ⟦9⟧ options output the following:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--show-overlap</samp>",
+        "⟦1⟧": "<samp class=\"option\">-E</samp>",
+        "⟦2⟧": "<samp class=\"option\">--show-all</samp>",
+        "⟦3⟧": "<samp class=\"option\">-A</samp>",
+        "⟦4⟧": "<samp class=\"option\">-E</samp>",
+        "⟦5⟧": "<samp class=\"option\">-e</samp>",
+        "⟦6⟧": "<samp class=\"option\">-X</samp>",
+        "⟦7⟧": "<samp class=\"option\">-x</samp>",
+        "⟦8⟧": "<samp class=\"option\">-E</samp>",
+        "⟦9⟧": "<samp class=\"option\">-X</samp>"
+      },
+      "sourceHTML": "<p>The <samp class=\"option\">--show-overlap</samp> (<samp class=\"option\">-E</samp>) option outputs less information\nthan the <samp class=\"option\">--show-all</samp> (<samp class=\"option\">-A</samp>) option, because it outputs only\nunmerged changes, and it never outputs the contents of the second\nfile.  Thus the <samp class=\"option\">-E</samp> option acts like the <samp class=\"option\">-e</samp> option,\nexcept that it brackets the first and third files from three-way\noverlapping changes.  Similarly, <samp class=\"option\">-X</samp> acts like <samp class=\"option\">-x</samp>, except\nit brackets all its (necessarily overlapping) changes.  For example,\nfor the three-way overlapping change above, the <samp class=\"option\">-E</samp> and <samp class=\"option\">-X</samp>\noptions output the following:\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "If you are comparing files that have meaningless or uninformative names, you can use the ⟦0⟧ option to show alternate names in the ‘⟦1⟧’, ‘⟦2⟧’ and ‘⟦3⟧’ brackets. This option can be given up to three times, once for each input file. Thus ‘⟦4⟧’ acts like ‘⟦5⟧’, except that the output looks like it came from files named ‘⟦6⟧’, ‘⟦7⟧’ and ‘⟦8⟧’ rather than from files named ‘⟦9⟧’, ‘⟦10⟧’ and ‘⟦11⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--label=<var class=\"var\">label</var></samp>",
+        "⟦1⟧": "<samp class=\"samp\">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>",
+        "⟦2⟧": "<samp class=\"samp\">|||||||</samp>",
+        "⟦3⟧": "<samp class=\"samp\">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>",
+        "⟦4⟧": "<samp class=\"samp\">diff3 -A --label X\n--label Y --label Z A\nB C</samp>",
+        "⟦5⟧": "<samp class=\"samp\">diff3 -A A B C</samp>",
+        "⟦6⟧": "<samp class=\"samp\">X</samp>",
+        "⟦7⟧": "<samp class=\"samp\">Y</samp>",
+        "⟦8⟧": "<samp class=\"samp\">Z</samp>",
+        "⟦9⟧": "<samp class=\"samp\">A</samp>",
+        "⟦10⟧": "<samp class=\"samp\">B</samp>",
+        "⟦11⟧": "<samp class=\"samp\">C</samp>"
+      },
+      "sourceHTML": "<p>If you are comparing files that have meaningless or uninformative names,\nyou can use the <samp class=\"option\">--label=<var class=\"var\">label</var></samp>\noption to show alternate names in the ‘<samp class=\"samp\">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>’, ‘<samp class=\"samp\">|||||||</samp>’\nand ‘<samp class=\"samp\">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>’ brackets.  This option can be given up to three\ntimes, once for each input file.  Thus ‘<samp class=\"samp\">diff3 -A --label X\n--label Y --label Z A\nB C</samp>’ acts like ‘<samp class=\"samp\">diff3 -A A B C</samp>’, except that the output looks like\nit came from files named ‘<samp class=\"samp\">X</samp>’, ‘<samp class=\"samp\">Y</samp>’ and ‘<samp class=\"samp\">Z</samp>’ rather than\nfrom files named ‘<samp class=\"samp\">A</samp>’, ‘<samp class=\"samp\">B</samp>’ and ‘<samp class=\"samp\">C</samp>’.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

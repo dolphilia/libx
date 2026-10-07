@@ -1,0 +1,97 @@
+{
+  "slug": "54-diff3-merging",
+  "bodySHA256": "5f4491d457a4c3362e4ffb8f6d671c2bf13047204401e305b899e05786591595",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧8 Merging From a Common Ancestor⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Merging-From-a-Common-Ancestor\"><span>8 Merging From a Common Ancestor</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "When two people have made changes to copies of the same file, ⟦0⟧ can produce a merged output that contains both sets of changes together with warnings about conflicts.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff3</code>"
+      },
+      "sourceHTML": "<p>When two people have made changes to copies of the same file,\n<code class=\"command\">diff3</code> can produce a merged output that contains both sets of\nchanges together with warnings about conflicts.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "One might imagine programs with names like ⟦0⟧ and ⟦1⟧ to compare more than three files simultaneously, but in practice the need rarely arises. You can use ⟦2⟧ to merge three or more sets of changes to a file by merging two change sets at a time.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff4</code>",
+        "⟦1⟧": "<code class=\"command\">diff5</code>",
+        "⟦2⟧": "<code class=\"command\">diff3</code>"
+      },
+      "sourceHTML": "<p>One might imagine programs with names like <code class=\"command\">diff4</code> and <code class=\"command\">diff5</code>\nto compare more than three files simultaneously, but in practice the\nneed rarely arises.  You can use <code class=\"command\">diff3</code> to merge three or more\nsets of changes to a file by merging two change sets at a time.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "⟦0⟧ can incorporate changes from two modified versions into a common preceding version. This lets you merge the sets of changes represented by the two newer files. Specify the common ancestor version as the second argument and the two newer versions as the first and third arguments, like this:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff3</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff3</code> can incorporate changes from two modified versions into a\ncommon preceding version.  This lets you merge the sets of changes\nrepresented by the two newer files.  Specify the common ancestor version\nas the second argument and the two newer versions as the first and third\narguments, like this:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "You can remember the order of the arguments by noting that they are in alphabetical order.",
+      "tokens": {},
+      "sourceHTML": "<p>You can remember the order of the arguments by noting that they are in\nalphabetical order.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "You can think of this as subtracting ⟦0⟧ from ⟦1⟧ and adding the result to ⟦2⟧, or as merging into ⟦3⟧ the changes that would turn ⟦4⟧ into ⟦5⟧. This merging is well-defined as long as ⟦6⟧ and ⟦7⟧ match in the neighborhood of each such change. This fails to be true when all three input files differ or when only ⟦8⟧ differs; we call this a ⟦9⟧conflict⟦10⟧. When all three input files differ, we call the conflict an ⟦11⟧overlap⟦12⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">older</var>",
+        "⟦1⟧": "<var class=\"var\">yours</var>",
+        "⟦2⟧": "<var class=\"var\">mine</var>",
+        "⟦3⟧": "<var class=\"var\">mine</var>",
+        "⟦4⟧": "<var class=\"var\">older</var>",
+        "⟦5⟧": "<var class=\"var\">yours</var>",
+        "⟦6⟧": "<var class=\"var\">mine</var>",
+        "⟦7⟧": "<var class=\"var\">older</var>",
+        "⟦8⟧": "<var class=\"var\">older</var>",
+        "⟦9⟧": "<em class=\"dfn\">",
+        "⟦10⟧": "</em>",
+        "⟦11⟧": "<em class=\"dfn\">",
+        "⟦12⟧": "</em>"
+      },
+      "sourceHTML": "<p>You can think of this as subtracting <var class=\"var\">older</var> from <var class=\"var\">yours</var> and\nadding the result to <var class=\"var\">mine</var>, or as merging into <var class=\"var\">mine</var> the\nchanges that would turn <var class=\"var\">older</var> into <var class=\"var\">yours</var>.  This merging is\nwell-defined as long as <var class=\"var\">mine</var> and <var class=\"var\">older</var> match in the\nneighborhood of each such change.  This fails to be true when all three\ninput files differ or when only <var class=\"var\">older</var> differs; we call this\na <em class=\"dfn\">conflict</em>.  When all three input files differ, we call the\nconflict an <em class=\"dfn\">overlap</em>.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "⟦0⟧ gives you several ways to handle overlaps and conflicts. You can omit overlaps or conflicts, or select only overlaps, or mark conflicts with special ‘⟦1⟧’ and ‘⟦2⟧’ lines.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff3</code>",
+        "⟦1⟧": "<samp class=\"samp\">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>",
+        "⟦2⟧": "<samp class=\"samp\">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff3</code> gives you several ways to handle overlaps and conflicts.\nYou can omit overlaps or conflicts, or select only overlaps,\nor mark conflicts with special ‘<samp class=\"samp\">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>’ and ‘<samp class=\"samp\">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>’ lines.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "⟦0⟧ can output the merge results as an ⟦1⟧ script that that can be applied to the first file to yield the merged output. However, it is usually better to have ⟦2⟧ generate the merged output directly; this bypasses some problems with ⟦3⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff3</code>",
+        "⟦1⟧": "<code class=\"command\">ed</code>",
+        "⟦2⟧": "<code class=\"command\">diff3</code>",
+        "⟦3⟧": "<code class=\"command\">ed</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff3</code> can output the merge results as an <code class=\"command\">ed</code> script that\nthat can be applied to the first file to yield the merged output.\nHowever, it is usually better to have <code class=\"command\">diff3</code> generate the merged\noutput directly; this bypasses some problems with <code class=\"command\">ed</code>.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

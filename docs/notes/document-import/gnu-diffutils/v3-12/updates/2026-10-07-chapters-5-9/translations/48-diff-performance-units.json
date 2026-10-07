@@ -1,0 +1,99 @@
+{
+  "slug": "48-diff-performance",
+  "bodySHA256": "71699dee24010d13d3de610868f50897ed194e0dd7bd91d0da726727d56bf1c7",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧6 ⟦1⟧ Performance Tradeoffs⟦2⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"diff-Performance-Tradeoffs\"><span>6 <code class=\"command\">diff</code> Performance Tradeoffs</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "GNU ⟦0⟧ runs quite efficiently; however, in some circumstances you can cause it to run faster or produce a more compact set of changes.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>GNU <code class=\"command\">diff</code> runs quite efficiently; however, in some\ncircumstances you can cause it to run faster or produce a more compact\nset of changes.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "One way to improve ⟦0⟧ performance is to use hard or symbolic links to files instead of copies. This improves performance because ⟦1⟧ normally does not need to read two hard or symbolic links to the same file, since their contents must be identical. For example, suppose you copy a large directory hierarchy, make a few changes to the copy, and then often use ‘⟦2⟧’ to compare the original to the copy. If the original files are read-only, you can greatly improve performance by creating the copy using hard or symbolic links (e.g., with GNU ‘⟦3⟧’ or ‘⟦4⟧’). Before editing a file in the copy for the first time, you should break the link and replace it with a regular copy.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<samp class=\"samp\">diff -r</samp>",
+        "⟦3⟧": "<samp class=\"samp\">cp -lR</samp>",
+        "⟦4⟧": "<samp class=\"samp\">cp -sR</samp>"
+      },
+      "sourceHTML": "<p>One way to improve <code class=\"command\">diff</code> performance is to use hard or\nsymbolic links to files instead of copies.  This improves performance\nbecause <code class=\"command\">diff</code> normally does not need to read two hard or\nsymbolic links to the same file, since their contents must be\nidentical.  For example, suppose you copy a large directory hierarchy,\nmake a few changes to the copy, and then often use ‘<samp class=\"samp\">diff -r</samp>’ to\ncompare the original to the copy.  If the original files are\nread-only, you can greatly improve performance by creating the copy\nusing hard or symbolic links (e.g., with GNU ‘<samp class=\"samp\">cp -lR</samp>’ or\n‘<samp class=\"samp\">cp -sR</samp>’).  Before editing a file in the copy for the first time,\nyou should break the link and replace it with a regular copy.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "You can also affect the performance of GNU ⟦0⟧ by giving it options that change the way it compares files. Performance has more than one dimension. These options improve one aspect of performance at the cost of another, or they improve performance in some cases while hurting it in others.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>You can also affect the performance of GNU <code class=\"command\">diff</code> by\ngiving it options that change the way it compares files.\nPerformance has more than one dimension.  These options improve one\naspect of performance at the cost of another, or they improve\nperformance in some cases while hurting it in others.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "The way that GNU ⟦0⟧ determines which lines have changed always comes up with a near-minimal set of differences. Usually it is good enough for practical purposes. If the ⟦1⟧ output is large, you might want ⟦2⟧ to use a modified algorithm that sometimes produces a smaller set of differences. The ⟦3⟧ (⟦4⟧) option does this; however, it can also cause ⟦5⟧ to run more slowly than usual, so it is not the default behavior.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"command\">diff</code>",
+        "⟦3⟧": "<samp class=\"option\">--minimal</samp>",
+        "⟦4⟧": "<samp class=\"option\">-d</samp>",
+        "⟦5⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>The way that GNU <code class=\"command\">diff</code> determines which lines have\nchanged always comes up with a near-minimal set of differences.\nUsually it is good enough for practical purposes.  If the\n<code class=\"command\">diff</code> output is large, you might want <code class=\"command\">diff</code> to use a\nmodified algorithm that sometimes produces a smaller set of\ndifferences.  The <samp class=\"option\">--minimal</samp> (<samp class=\"option\">-d</samp>) option does this;\nhowever, it can also cause <code class=\"command\">diff</code> to run more slowly than\nusual, so it is not the default behavior.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "When the files you are comparing are large and have small groups of changes scattered throughout them, you can use the ⟦0⟧ option to make a different modification to the algorithm that ⟦1⟧ uses. If the input files have a constant small density of changes, this option speeds up the comparisons without changing the output. If not, ⟦2⟧ might produce a larger set of differences; however, the output will still be correct.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--speed-large-files</samp>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>When the files you are comparing are large and have small groups of\nchanges scattered throughout them, you can use the\n<samp class=\"option\">--speed-large-files</samp> option to make a different modification to\nthe algorithm that <code class=\"command\">diff</code> uses.  If the input files have a constant\nsmall density of changes, this option speeds up the comparisons without\nchanging the output.  If not, <code class=\"command\">diff</code> might produce a larger set of\ndifferences; however, the output will still be correct.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Normally ⟦0⟧ discards the prefix and suffix that is common to both files before it attempts to find a minimal set of differences. This makes ⟦1⟧ run faster, but occasionally it may produce non-minimal output. The ⟦2⟧ option prevents ⟦3⟧ from discarding the last ⟦4⟧ lines of the prefix and the first ⟦5⟧ lines of the suffix. This gives ⟦6⟧ further opportunities to find a minimal output.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<samp class=\"option\">--horizon-lines=<var class=\"var\">lines</var></samp>",
+        "⟦3⟧": "<code class=\"command\">diff</code>",
+        "⟦4⟧": "<var class=\"var\">lines</var>",
+        "⟦5⟧": "<var class=\"var\">lines</var>",
+        "⟦6⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>Normally <code class=\"command\">diff</code> discards the prefix and suffix that is common to\nboth files before it attempts to find a minimal set of differences.\nThis makes <code class=\"command\">diff</code> run faster, but occasionally it may produce\nnon-minimal output.  The <samp class=\"option\">--horizon-lines=<var class=\"var\">lines</var></samp> option\nprevents <code class=\"command\">diff</code> from discarding the last <var class=\"var\">lines</var> lines of the\nprefix and the first <var class=\"var\">lines</var> lines of the suffix.  This gives\n<code class=\"command\">diff</code> further opportunities to find a minimal output.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Suppose a run of changed lines includes a sequence of lines at one end and there is an identical sequence of lines just outside the other end. The ⟦0⟧ command is free to choose which identical sequence is included in the hunk. In this case, ⟦1⟧ normally shifts the hunk’s boundaries when this merges adjacent hunks, or shifts a hunk’s lines towards the end of the file. Merging hunks can make the output look nicer in some cases.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>Suppose a run of changed lines includes a sequence of lines at one end\nand there is an identical sequence of lines just outside the other end.\nThe <code class=\"command\">diff</code> command is free to choose which identical sequence is\nincluded in the hunk.  In this case, <code class=\"command\">diff</code> normally shifts the\nhunk’s boundaries when this merges adjacent hunks, or shifts a hunk’s\nlines towards the end of the file.  Merging hunks can make the output\nlook nicer in some cases.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

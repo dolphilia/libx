@@ -1,0 +1,335 @@
+<div class="chapter-level-extent" id="Commands">
+<h2 class="chapter" id="Commands-1"><span>7 Commands<a class="copiable-link" href="#Commands-1"> ¶</a></span></h2>
+<p>All <code class="command">ed</code> commands are single characters, though some require
+additional parameters. If a command’s parameters extend over several lines,
+then each line except for the last must be terminated with a backslash
+(‘<samp class="samp">\</samp>’).
+</p>
+<a class="anchor" id="print-suffixes"></a><p>In general, at most one command is allowed per line. However, most
+commands accept a print suffix, which is any of ‘<samp class="samp">p</samp>’ (print),
+‘<samp class="samp">l</samp>’ (list), or ‘<samp class="samp">n</samp>’ (enumerate), to print the last line
+affected by the command. It is not portable to give more than one print
+suffix, but <code class="command">ed</code> allows any combination of non-repeated print
+suffixes and combines their effects. If any suffix letter is given, it
+must immediately follow the command.
+</p>
+<p>The ‘<samp class="samp">e</samp>’, ‘<samp class="samp">E</samp>’, ‘<samp class="samp">f</samp>’, ‘<samp class="samp">r</samp>’, and ‘<samp class="samp">w</samp>’ commands take an
+optional <var class="var">file</var> parameter, separated from the command letter by one or
+more whitespace characters.
+</p>
+<p>An interrupt (typically <kbd class="key">Control-C</kbd>) has the effect of aborting the
+current command and returning the editor to command mode.
+</p>
+<p><code class="command">ed</code> recognizes the following commands. The commands are shown
+together with the default address or address range supplied if none is
+specified (in parenthesis).
+</p>
+<dl class="table">
+<dt><code class="code">(.)a</code></dt>
+<dd><p>Appends text to the buffer after the addressed line. The address
+‘<samp class="samp">0</samp>’ (zero) is valid for this command; it places the entered text at
+the beginning of the buffer. Text is entered in input mode. The current
+address is set to the address of the last line entered or, if there were
+none, to the addressed line.
+</p>
+</dd>
+<dt><code class="code">(.,.)c</code></dt>
+<dd><p>Changes lines in the buffer. The addressed lines are deleted from the
+buffer, and text is inserted in their place. Text is entered in input mode.
+The current address is set to the address of the last line entered or, if
+there were none, to the new address of the line after the last line deleted;
+if the lines deleted were originally at the end of the buffer, the current
+address is set to the address of the new last line; if no lines remain in
+the buffer, the current address is set to zero. The lines deleted are copied
+to the cut buffer.
+</p>
+</dd>
+<dt><code class="code">(.,.)d</code></dt>
+<dd><p>Deletes the addressed lines from the buffer. The current address is set to
+the new address of the line after the last line deleted; if the lines
+deleted were originally at the end of the buffer, the current address is set
+to the address of the new last line; if no lines remain in the buffer, the
+current address is set to zero. The lines deleted are copied to the cut
+buffer.
+</p>
+</dd>
+<dt><code class="code">e <var class="var">file</var></code></dt>
+<dd><p>Edits <var class="var">file</var>, and sets the default filename. If <var class="var">file</var> is not
+specified, then the default filename is used. Any lines in the buffer are
+deleted before the new file is read. If <var class="var">file</var> does not exist, a warning
+is printed in place of a byte count and the resulting buffer is left empty.
+The current address is set to the address of the last line in the buffer.
+</p>
+<p>If <var class="var">file</var> is prefixed with a bang (!), then it is interpreted as a shell
+command whose output is to be read, (see <a class="pxref" href="#shell-escape-command">shell escape command</a> ‘<samp class="samp">!</samp>’
+below). In this case the default filename is unchanged. To edit a file whose
+name begins with a bang, prefix the name with <samp class="file">./</samp>.
+</p>
+<p>A warning is printed if the buffer modified flag is set. If another ‘<samp class="samp">e</samp>’
+or ‘<samp class="samp">q</samp>’ command is given with no intervening error or buffer-modifying
+command, it is executed without warning, and any changes to the buffer are
+lost.
+</p>
+</dd>
+<dt><code class="code">E <var class="var">file</var></code></dt>
+<dd><p>Edits <var class="var">file</var> unconditionally. This is similar to the ‘<samp class="samp">e</samp>’ command,
+except that unwritten changes are discarded without warning.
+</p>
+</dd>
+<dt><code class="code">f <var class="var">file</var></code></dt>
+<dd><p>Sets the default filename to <var class="var">file</var>, whether or not <var class="var">file</var> names an
+existing file. If <var class="var">file</var> is not specified, then the default filename is
+printed. Tilde expansion is performed on <var class="var">file</var>; if <var class="var">file</var> starts
+with <samp class="file">~/</samp>, the <samp class="file">~</samp> is expanded to specify your home directory
+<samp class="file">$HOME</samp>.
+</p>
+</dd>
+<dt><code class="code">(1,$)g/<var class="var">re</var>/[I]<var class="var">command-list</var></code></dt>
+<dd><p>Global command. The global command makes two passes over the file. On the
+first pass, all the addressed lines matching a regular expression <var class="var">re</var>
+are marked. The suffix ‘<samp class="samp">I</samp>’ is a GNU extension which makes <code class="command">ed</code>
+match <var class="var">re</var> in a case-insensitive manner. Then, going sequentially from
+the beginning of the file to the end of the file, the given
+<var class="var">command-list</var> is executed for each marked line, with the current
+address set to the address of that line. Any line modified by the
+<var class="var">command-list</var> is unmarked. The final value of the current address is
+the value assigned by the last command in the last <var class="var">command-list</var>
+executed. If there were no matching lines, the current address is unchanged.
+The execution of <var class="var">command-list</var> stops on the first error.
+</p>
+<p>The first command of <var class="var">command-list</var> must appear on the same line as the
+‘<samp class="samp">g</samp>’ command. The other commands of <var class="var">command-list</var> must appear on
+separate lines. All lines of a multi-line <var class="var">command-list</var> except the last
+line must be terminated with a backslash (‘<samp class="samp">\</samp>’). Any commands are
+allowed, except for ‘<samp class="samp">g</samp>’, ‘<samp class="samp">G</samp>’, ‘<samp class="samp">v</samp>’, and ‘<samp class="samp">V</samp>’. The ‘<samp class="samp">.</samp>’
+terminating the input mode of commands ‘<samp class="samp">a</samp>’, ‘<samp class="samp">c</samp>’, and ‘<samp class="samp">i</samp>’ can
+be omitted if it would be the last line of <var class="var">command-list</var>. By default, a
+newline alone in <var class="var">command-list</var> is equivalent to a ‘<samp class="samp">p</samp>’ command. If
+<code class="command">ed</code> is invoked with the command-line option <samp class="option">-G</samp>, then a
+newline in <var class="var">command-list</var> is equivalent to a ‘<samp class="samp">.+1p</samp>’ command.
+</p>
+</dd>
+<dt><code class="code">(1,$)G/<var class="var">re</var>/[I]</code></dt>
+<dd><p>Interactive global command. Interactively edits the addressed lines
+matching a regular expression <var class="var">re</var>. The suffix ‘<samp class="samp">I</samp>’ is a GNU
+extension which makes <code class="command">ed</code> match <var class="var">re</var> in a case-insensitive
+manner. For each matching line, the line is printed, the current address is
+set, and the user is prompted to enter a <var class="var">command-list</var>. The final value
+of the current address is the value assigned by the last command executed.
+If there were no matching lines, the current address is unchanged.
+</p>
+<p>The format of <var class="var">command-list</var> is the same as that of the ‘<samp class="samp">g</samp>’
+command. A newline alone acts as an empty command list. A single ‘<samp class="samp">&amp;</samp>’
+repeats the last non-empty command list.
+</p>
+</dd>
+<dt><code class="code">h</code></dt>
+<dd><p>Prints a help message explaining the reason for the most recent ‘<samp class="samp">?</samp>’
+notification.
+</p>
+</dd>
+<dt><code class="code">H</code></dt>
+<dd><p>Toggles the printing of help messages (see the ‘<samp class="samp">h</samp>’ command above). If
+the help mode is being turned on, also prints the help message corresponding
+to the most recent ‘<samp class="samp">?</samp>’ notification. By default, help messages are not
+printed.
+</p>
+</dd>
+<dt><code class="code">(.)i</code></dt>
+<dd><p>Inserts text in the buffer before the addressed line. The address
+‘<samp class="samp">0</samp>’ (zero) is valid for this command; it places the entered text at
+the beginning of the buffer. Text is entered in input mode. The current
+address is set to the address of the last line entered or, if there were
+none, to the addressed line.
+</p>
+</dd>
+<dt><code class="code">(.,.+1)j</code></dt>
+<dd><p>Joins the addressed lines, replacing them by a single line containing their
+joined text. If only one address is given, this command does nothing. If
+lines are joined, the lines replaced are copied to the cut buffer and the
+current address is set to the address of the joined line. Else, the current
+address is unchanged.
+</p>
+</dd>
+<dt><code class="code">(.)kx</code></dt>
+<dd><p>Marks a line with a lower case letter ‘<samp class="samp">x</samp>’. The line can then be
+addressed as ‘<samp class="samp">'x</samp>’ (i.e., a single quote followed by ‘<samp class="samp">x</samp>’) in
+subsequent commands. The mark is not cleared until the line is deleted
+or otherwise modified. The current address is unchanged.
+</p>
+</dd>
+<dt><code class="code">(.,.)l</code></dt>
+<dd><p>List command. Prints the addressed lines unambiguously. The end of each
+line is marked with a ‘<samp class="samp">$</samp>’, and every ‘<samp class="samp">$</samp>’ character within the
+text is printed with a preceding backslash. Special characters are
+printed as escape sequences. The current address is set to the address
+of the last line printed.
+</p>
+</dd>
+<dt><code class="code">(.,.)m(.)</code></dt>
+<dd><p>Moves lines in the buffer. The addressed lines are moved to after the
+right-hand destination address. The destination address ‘<samp class="samp">0</samp>’ (zero)
+is valid for this command; it moves the addressed lines to the beginning
+of the buffer. It is an error if the destination address falls within
+the range of lines to be moved. The current address is set to the new
+address of the last line moved.
+</p>
+</dd>
+<dt><code class="code">(.,.)n</code></dt>
+<dd><p>Number command. Prints the addressed lines, preceding each line by its
+line number and a <kbd class="key">tab</kbd>. The current address is set to the address
+of the last line printed.
+</p>
+</dd>
+<dt><code class="code">(.,.)p</code></dt>
+<dd><p>Prints the addressed lines. The current address is set to the address of
+the last line printed.
+</p>
+</dd>
+<dt><code class="code">P</code></dt>
+<dd><p>Toggles the command prompt on and off. Unless a prompt string is specified
+with the command-line option <samp class="option">-p</samp>, the command prompt is by default
+turned off. The default prompt string is an asterisk (‘<samp class="samp">*</samp>’).
+</p>
+</dd>
+<dt><code class="code">q</code></dt>
+<dd><p>Quits <code class="command">ed</code>. A warning is printed if the buffer modified flag is set.
+If another ‘<samp class="samp">e</samp>’ or ‘<samp class="samp">q</samp>’ command is given with no intervening error
+or buffer-modifying command, it is executed without warning, and any changes
+to the buffer are lost.
+</p>
+</dd>
+<dt><code class="code">Q</code></dt>
+<dd><p>Quits <code class="command">ed</code> unconditionally. This is similar to the ‘<samp class="samp">q</samp>’ command,
+except that unwritten changes are discarded without warning.
+</p>
+</dd>
+<dt><code class="code">($)r <var class="var">file</var></code></dt>
+<dd><p>Reads <var class="var">file</var> and appends it after the addressed line. If <var class="var">file</var>
+is not specified, then the default filename is used. If there is no
+default filename prior to the command, then the default filename is set
+to <var class="var">file</var>. Otherwise, the default filename is unchanged. The address
+‘<samp class="samp">0</samp>’ (zero) is valid for this command; it reads the file at the
+beginning of the buffer. The current address is set to the address of
+the last line read or, if there were none, to the addressed line.
+</p>
+<p>If <var class="var">file</var> is prefixed with a bang (!), then it is interpreted as a shell
+command whose output is to be read, (see <a class="pxref" href="#shell-escape-command">shell escape command</a> ‘<samp class="samp">!</samp>’
+below). In this case the default filename is unchanged. To read a file whose
+name begins with a bang, prefix the name with <samp class="file">./</samp>.
+</p>
+</dd>
+<dt><code class="code">(.,.)t(.)</code></dt>
+<dd><p>Copies (i.e., transfers) the addressed lines to after the right-hand
+destination address. If the destination address is ‘<samp class="samp">0</samp>’ (zero), the
+lines are copied at the beginning of the buffer. The current address is
+set to the address of the last line copied.
+</p>
+</dd>
+<dt><code class="code">u</code></dt>
+<dd><p>Undoes the effect of the last command that modified anything in the buffer
+and restores the current address to what it was before the command. The
+global commands ‘<samp class="samp">g</samp>’, ‘<samp class="samp">G</samp>’, ‘<samp class="samp">v</samp>’, and ‘<samp class="samp">V</samp>’ are treated as a
+single command by undo. ‘<samp class="samp">u</samp>’ is its own inverse; it can undo only the
+last command.
+</p>
+</dd>
+<dt><code class="code">(1,$)v/<var class="var">re</var>/[I]<var class="var">command-list</var></code></dt>
+<dd><p>This is similar to the ‘<samp class="samp">g</samp>’ command except that it applies
+<var class="var">command-list</var> to each of the addressed lines not matching the
+regular expression <var class="var">re</var>.
+</p>
+</dd>
+<dt><code class="code">(1,$)V/<var class="var">re</var>/[I]</code></dt>
+<dd><p>This is similar to the ‘<samp class="samp">G</samp>’ command except that it interactively
+edits the addressed lines not matching the regular expression <var class="var">re</var>.
+</p>
+</dd>
+<dt><code class="code">(1,$)w <var class="var">file</var></code></dt>
+<dd><p>Writes the addressed lines to <var class="var">file</var>. Any previous contents of
+<var class="var">file</var> are lost without warning. If there is no default filename, then
+the default filename is set to <var class="var">file</var>, otherwise it is unchanged. If no
+filename is specified, then the default filename is used. If the whole
+buffer is written, then the buffer modified flag is cleared. The current
+address is unchanged.
+</p>
+<p>If <var class="var">file</var> is prefixed with a bang (!), then it is interpreted as a shell
+command and the addressed lines are written to its standard input,
+(see <a class="pxref" href="#shell-escape-command">shell escape command</a> ‘<samp class="samp">!</samp>’ below). In this case the default
+filename is unchanged. Writing the buffer to a shell command does not clear
+the buffer modified flag. To write to a file whose name begins with a bang,
+prefix the name with <samp class="file">./</samp>.
+</p>
+</dd>
+<dt><code class="code">(1,$)wq <var class="var">file</var></code></dt>
+<dd><p>Writes the addressed lines to <var class="var">file</var>, and then executes a ‘<samp class="samp">q</samp>’
+command.
+</p>
+</dd>
+<dt><code class="code">(1,$)W <var class="var">file</var></code></dt>
+<dd><p>Appends the addressed lines to the end of <var class="var">file</var>. This is similar to the
+‘<samp class="samp">w</samp>’ command, except that the previous contents of <var class="var">file</var> are not
+clobbered. The current address is unchanged.
+</p>
+</dd>
+<dt><code class="code">(.)x</code></dt>
+<dd><p>Copies (puts) the contents of the cut buffer to after the addressed
+line. The current address is set to the address of the last line copied.
+</p>
+</dd>
+<dt><code class="code">(.,.)y</code></dt>
+<dd><p>Copies (yanks) the addressed lines to the cut buffer. The cut buffer is
+overwritten by subsequent ‘<samp class="samp">c</samp>’, ‘<samp class="samp">d</samp>’, ‘<samp class="samp">j</samp>’, ‘<samp class="samp">s</samp>’, or
+‘<samp class="samp">y</samp>’ commands. The current address is unchanged.
+</p>
+</dd>
+<dt><code class="code">(.+1)z<var class="var">n</var></code></dt>
+<dd><p>Scroll. Prints <var class="var">n</var> lines at a time starting at addressed line, and sets
+window size to <var class="var">n</var>. If <var class="var">n</var> is not specified, then the current window
+size is used. Window size defaults to screen size minus two lines, or to 22
+if screen size can’t be determined. The environment variable <var class="var">LINES</var> can
+be used to set the initial window size. <var class="var">LINES</var> and <var class="var">n</var> are not
+limited by screen size. The current address is set to the address of the
+last line printed.
+</p>
+<a class="anchor" id="shell-escape-command"></a></dd>
+<dt><code class="code">!<var class="var">command</var></code></dt>
+<dt><code class="code">[2addr]!<var class="var">command</var></code></dt>
+<dd><p>Shell escape command. Executes <var class="var">command</var> via <code class="command">sh</code>. If the first
+character of <var class="var">command</var> is ‘<samp class="samp">!</samp>’, then it is replaced by the text of
+the previous ‘<samp class="samp">!<var class="var">command</var></samp>’. Thus, ‘<samp class="samp">!!</samp>’ repeats the previous
+‘<samp class="samp">!<var class="var">command</var></samp>’. <code class="command">ed</code> does not process <var class="var">command</var> for
+backslash (‘<samp class="samp">\</samp>’) escapes. However, each unescaped ‘<samp class="samp">%</samp>’ is replaced
+with the default filename, and the backslash is removed from each escaped
+‘<samp class="samp">%</samp>’. When the shell returns from execution, a ‘<samp class="samp">!</samp>’ is printed to
+the standard output. The current address is unchanged.
+</p>
+<p>If one or more addresses are specified, the addressed lines are written to
+the standard input of <var class="var">command</var> and then replaced with the lines read
+from the standard output and standard error of <var class="var">command</var>. Two byte
+counts are printed; one for the bytes written to <var class="var">command</var> and the other
+for the bytes read from <var class="var">command</var>. The current address is set to the
+address of the last line read or, if there were none, to the line before the
+first addressed line.
+</p>
+</dd>
+<dt><code class="code">(.,.)#</code></dt>
+<dd><p>Begins a comment; the rest of the line, up to a newline, is ignored. If a
+line address followed by a semicolon is given, then the current address is
+set to that address. Otherwise, the current address is unchanged.
+</p>
+</dd>
+<dt><code class="code">($)=</code></dt>
+<dd><p>Prints the line number of the addressed line. The current address is
+unchanged.
+</p>
+</dd>
+<dt><code class="code">(.+1)<kbd class="key">newline</kbd></code></dt>
+<dd><p>Null command. An address alone prints the addressed line. A <kbd class="key">newline</kbd>
+alone is equivalent to ‘<samp class="samp">+1p</samp>’. The current address is set to the address
+of the printed line.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>
