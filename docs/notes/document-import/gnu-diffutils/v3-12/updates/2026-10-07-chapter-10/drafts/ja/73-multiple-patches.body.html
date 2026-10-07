@@ -1,0 +1,16 @@
+<div class="gnu-diffutils-original-content" id="Multiple-Patches">
+<h3 class="section" id="Multiple-Patches-in-a-File"><span>10.6 1つのファイル内の複数パッチ</span></h3>
+<a class="index-entry-id" id="index-multiple-patches"></a>
+<a class="index-entry-id" id="index-intuiting-file-names-from-patches"></a>
+<p>パッチファイルが複数のパッチを含み、コマンドラインで入力ファイルを指定しない場合、<code class="command">patch</code>はそれぞれを別々のパッチファイルから来たものとして適用を試みます。つまり、パッチごとに対象ファイル名を決め、その前のテキストを調べて、ファイル名と前提となるリビジョン番号を探します（詳しくは<a class="pxref" href="#Making-Patches">パッチの作成と利用のヒント</a>参照）。</p>
+<p><code class="command">patch</code>はパッチの前のテキストからファイル名を推定するため、次の規則を使います。まず<code class="command">patch</code>は、以下のように順序付きの候補ファイル名一覧を作ります。</p>
+<ul class="itemize mark-bullet">
+<li>コンテキスト diff のヘッダーなら、<code class="command">patch</code>はヘッダーの旧・新ファイル名を使います。<samp class="option">-p<var class="var">num</var></samp>または<samp class="option">--strip=<var class="var">num</var></samp>オプションに必要な数のスラッシュがない名前は無視します。<samp class="file">/dev/null</samp>も無視します。</li><li>先頭の不要なテキストに ‘<samp class="samp">Index:</samp>’ 行があり、旧・新の名前が両方ともない場合、または<code class="command">patch</code>が POSIX に準拠している場合、<code class="command">patch</code>は ‘<samp class="samp">Index:</samp>’ 行の名前を使います。</li><li>以降の規則では、ヘッダーでの出現順によらず、候補名の順序を（旧、新、index）とします。</li></ul>
+<p>次に<code class="command">patch</code>は、以下のように候補一覧から名前を選びます。</p>
+<ul class="itemize mark-bullet">
+<li>名前の付いたファイルのうち存在するものがあれば、<code class="command">patch</code>は POSIX 準拠時には最初の名前、それ以外では最良の名前を選びます。</li><li><code class="command">patch</code>が RCS、ClearCase、SCCS を無視しておらず（<a class="pxref" href="#Revision-Control">リビジョン管理</a>参照）、候補のファイルは存在しなくても、RCS、ClearCase、SCCS のマスターファイルが見つかれば、<code class="command">patch</code>はマスターのある最初の候補名を選びます。</li><li>候補ファイルが存在せず、RCS、ClearCase、SCCS のマスターも見つからず、候補名はあり、<code class="command">patch</code>が POSIX 非準拠で、パッチがファイルを作成するように見える場合、<code class="command">patch</code>は新規ディレクトリの作成数が最小になる最良の名前を選びます。</li><li>これらの推定で名前が決まらなければ、適用対象のファイル名を尋ねられ、<code class="command">patch</code>はその名前を選びます。</li></ul>
+<p>空でない一覧から<em class="dfn">最良</em>のファイル名を決めるには、<code class="command">patch</code>はまずパスの構成要素数が最小の名前を選び、その中でベース名が最短のもの、さらにその中で名前全体が最短のものを選び、最後に残った最初の名前を使います。</p>
+<p><code class="command">patch</code>が POSIX 準拠かどうかについては、<a class="xref" href="#patch-and-POSIX"><code class="command">patch</code>と POSIX 標準</a>を参照してください。</p>
+<hr/>
+</div>
+

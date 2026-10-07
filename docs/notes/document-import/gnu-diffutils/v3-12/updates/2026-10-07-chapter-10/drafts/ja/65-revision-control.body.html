@@ -1,0 +1,15 @@
+<div class="gnu-diffutils-original-content" id="Revision-Control">
+<h3 class="section" id="Revision-Control-1"><span>10.2 リビジョン管理</span></h3>
+<a class="index-entry-id" id="index-revision-control"></a>
+<a class="index-entry-id" id="index-version-control"></a>
+<a class="index-entry-id" id="index-RCS"></a>
+<a class="index-entry-id" id="index-ClearCase"></a>
+<a class="index-entry-id" id="index-SCCS"></a>
+<p>存在しない入力ファイルが<code class="command">patch</code>の対応するリビジョン管理システムで管理されている場合、<code class="command">patch</code>は通常、そのシステムからファイルを取得（チェックアウト）するかユーザーに尋ねます。Patch は現在 RCS、ClearCase、SCCS に対応しています。RCS と SCCS では、入力ファイルが読み取り専用で、管理システムの既定の版と一致する場合にも<code class="command">patch</code>が確認します。</p>
+<a class="index-entry-id" id="index-PATCH_005fGET"></a>
+<p><samp class="option">--get=<var class="var">num</var></samp>（<samp class="option">-g <var class="var">num</var></samp>）オプションは、対応するリビジョン管理システムのファイルへのアクセスを制御します。<var class="var">num</var>が正なら<code class="command">patch</code>は確認せず取得し、ゼロなら<code class="command">patch</code>は確認も取得もせず、負なら<code class="command">patch</code>は取得前に確認します。<var class="var">num</var>の既定値は、<code class="env">PATCH_GET</code>環境変数が設定されていればその値です。未設定の場合、<code class="command">patch</code>が POSIX に準拠していればゼロ、そうでなければ負の値になります。<a class="xref" href="#patch-and-POSIX"><code class="command">patch</code>と POSIX 標準</a>を参照してください。</p>
+<a class="index-entry-id" id="index-VERSION_005fCONTROL"></a>
+<p>リビジョン管理システムの選択は<code class="env">VERSION_CONTROL</code>環境変数の影響を受けません（<a class="pxref" href="#Backup-Names">バックアップファイル名</a>参照）。</p>
+<hr/>
+</div>
+

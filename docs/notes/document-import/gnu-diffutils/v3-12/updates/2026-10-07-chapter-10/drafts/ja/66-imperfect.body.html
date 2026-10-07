@@ -1,0 +1,8 @@
+<div class="gnu-diffutils-original-content" id="Imperfect">
+<h3 class="section" id="Applying-Imperfect-Patches"><span>10.3 不完全なパッチの適用</span></h3>
+<a class="index-entry-id" id="index-imperfect-patch-application"></a>
+<p><code class="command">patch</code>はパッチファイルの先頭のテキストを読み飛ばし、差分を適用して、末尾のテキストも読み飛ばそうとします。このためメールをそのまま<code class="command">patch</code>に渡しても動作するはずです。差分全体が一定量の空白で字下げされていれば、<code class="command">patch</code>はその字下げを自動的に無視します。コンテキスト diff の各行末にキャリッジリターンがあれば、<code class="command">patch</code>はこれも自動的に無視します。<a class="uref" href="ftp://ftp.isi.edu/in-notes/rfc934.txt">Internet RFC 934</a>に従い、‘<samp class="samp">-</samp>’ で始まる行の先頭に ‘<samp class="samp">- </samp>’<!-- /@w -->を付けてコンテキスト diff をカプセル化してある場合、<code class="command">patch</code>は入力のカプセル化を自動的に解除します。</p>
+<p>ただし、それ以外の種類の不完全な入力には、ユーザーによる操作や試行が必要です。</p>
+<hr/>
+</div>
+

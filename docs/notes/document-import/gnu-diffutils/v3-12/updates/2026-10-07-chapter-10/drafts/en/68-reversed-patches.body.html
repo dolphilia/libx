@@ -1,0 +1,29 @@
+<div class="gnu-diffutils-original-content" id="Reversed-Patches">
+<h4 class="subsection" id="Applying-Reversed-Patches"><span>10.3.2 Applying Reversed Patches</span></h4>
+<a class="index-entry-id" id="index-reversed-patches"></a>
+<p>Sometimes people run <code class="command">diff</code> with the new file first instead of
+second.  This creates a diff that is “reversed”.  To apply such
+patches, give <code class="command">patch</code> the <samp class="option">--reverse</samp> (<samp class="option">-R</samp>) option.
+<code class="command">patch</code> then attempts to swap each hunk around before applying it.
+Rejects come out in the swapped format.
+</p>
+<p>Often <code class="command">patch</code> can guess that the patch is reversed.  If the first
+hunk of a patch fails, <code class="command">patch</code> reverses the hunk to see if it can
+apply it that way.  If it can, <code class="command">patch</code> asks you if you want to have
+the <samp class="option">-R</samp> option set; if it can’t, <code class="command">patch</code> continues to apply
+the patch normally.  This method cannot detect a reversed patch if it is
+a normal diff and the first command is an append (which should have been
+a delete) since appends always succeed, because a null context matches
+anywhere.  But most patches add or change lines rather than delete them,
+so most reversed normal diffs begin with a delete, which fails, and
+<code class="command">patch</code> notices.
+</p>
+<p>If you apply a patch that you have already applied, <code class="command">patch</code> thinks
+it is a reversed patch and offers to un-apply the patch.  This could be
+construed as a feature.  If you did this inadvertently and you don’t
+want to un-apply the patch, just answer ‘<samp class="samp">n</samp>’ to this offer and to
+the subsequent “apply anyway” question—or type <kbd class="kbd">C-c</kbd> to kill the
+<code class="command">patch</code> process.
+</p>
+<hr/>
+</div>

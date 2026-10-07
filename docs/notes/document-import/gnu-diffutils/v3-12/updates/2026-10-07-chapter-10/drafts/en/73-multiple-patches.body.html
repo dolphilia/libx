@@ -1,0 +1,64 @@
+<div class="gnu-diffutils-original-content" id="Multiple-Patches">
+<h3 class="section" id="Multiple-Patches-in-a-File"><span>10.6 Multiple Patches in a File</span></h3>
+<a class="index-entry-id" id="index-multiple-patches"></a>
+<a class="index-entry-id" id="index-intuiting-file-names-from-patches"></a>
+<p>If the patch file contains more than one patch, and if you do not
+specify an input file on the command line, <code class="command">patch</code> tries to
+apply each patch as if they came from separate patch files.  This
+means that it determines the name of the file to patch for each patch,
+and that it examines the leading text before each patch for file names
+and prerequisite revision level (see <a class="pxref" href="#Making-Patches">Tips for Making and Using Patches</a>, for more on
+that topic).
+</p>
+<p><code class="command">patch</code> uses the following rules to intuit a file name from
+the leading text before a patch.  First, <code class="command">patch</code> takes an
+ordered list of candidate file names as follows:
+</p>
+<ul class="itemize mark-bullet">
+<li>If the header is that of a context diff, <code class="command">patch</code> takes the old
+and new file names in the header.  A name is ignored if it does not
+have enough slashes to satisfy the <samp class="option">-p<var class="var">num</var></samp> or
+<samp class="option">--strip=<var class="var">num</var></samp> option.  The name <samp class="file">/dev/null</samp> is also
+ignored.
+
+</li><li>If there is an ‘<samp class="samp">Index:</samp>’ line in the leading garbage and if either
+the old and new names are both absent or if <code class="command">patch</code> is
+conforming to POSIX, <code class="command">patch</code> takes the name in the
+‘<samp class="samp">Index:</samp>’ line.
+
+</li><li>For the purpose of the following rules, the candidate file names are
+considered to be in the order (old, new, index), regardless of the
+order that they appear in the header.
+</li></ul>
+<p>Then <code class="command">patch</code> selects a file name from the candidate list as
+follows:
+</p>
+<ul class="itemize mark-bullet">
+<li>If some of the named files exist, <code class="command">patch</code> selects the first
+name if conforming to POSIX, and the best name otherwise.
+
+</li><li>If <code class="command">patch</code> is not ignoring RCS, ClearCase, and SCCS
+(see <a class="pxref" href="#Revision-Control">Revision Control</a>), and no named files exist but an RCS,
+ClearCase, or SCCS master is found, <code class="command">patch</code> selects the
+first named file with an RCS, ClearCase, or SCCS master.
+
+</li><li>If no named files exist, no RCS, ClearCase, or SCCS master
+was found, some names are given, <code class="command">patch</code> is not conforming to
+POSIX, and the patch appears to create a file, <code class="command">patch</code>
+selects the best name requiring the creation of the fewest
+directories.
+
+</li><li>If no file name results from the above heuristics, you are asked for
+the name of the file to patch, and <code class="command">patch</code> selects that name.
+</li></ul>
+<p>To determine the <em class="dfn">best</em> of a nonempty list of file names,
+<code class="command">patch</code> first takes all the names with the fewest path name
+components; of those, it then takes all the names with the shortest
+basename; of those, it then takes all the shortest names; finally, it
+takes the first remaining name.
+</p>
+<p>See <a class="xref" href="#patch-and-POSIX"><code class="command">patch</code> and the POSIX Standard</a>, to see whether <code class="command">patch</code> is conforming
+to POSIX.
+</p>
+<hr/>
+</div>

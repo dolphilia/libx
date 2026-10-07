@@ -1,0 +1,24 @@
+<div class="gnu-diffutils-original-content" id="Creating-and-Removing">
+<h3 class="section" id="Creating-and-Removing-Files"><span>10.4 Creating and Removing Files</span></h3>
+<a class="index-entry-id" id="index-creating-files"></a>
+<a class="index-entry-id" id="index-empty-files_002c-removing"></a>
+<a class="index-entry-id" id="index-removing-empty-files"></a>
+<p>Sometimes when comparing two directories, a file may exist in one
+directory but not the other.  If you give <code class="command">diff</code> the
+<samp class="option">--new-file</samp> (<samp class="option">-N</samp>) option, or if you supply an old or
+new file that is named <samp class="file">/dev/null</samp> or is empty and is dated the
+Epoch (1970-01-01 00:00:00 UTC), <code class="command">diff</code> outputs a patch that
+adds or deletes the contents of this file.  When given such a patch,
+<code class="command">patch</code> normally creates a new file or removes the old file.
+However, when conforming to POSIX (see <a class="pxref" href="#patch-and-POSIX"><code class="command">patch</code> and the POSIX Standard</a>),
+<code class="command">patch</code> does not remove the old file, but leaves it empty.
+The <samp class="option">--remove-empty-files</samp> (<samp class="option">-E</samp>) option causes
+<code class="command">patch</code> to remove output files that are empty after applying a
+patch, even if the patch does not appear to be one that removed the
+file.
+</p>
+<p>If the patch appears to create a file that already exists,
+<code class="command">patch</code> asks for confirmation before applying the patch.
+</p>
+<hr/>
+</div>

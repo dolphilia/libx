@@ -1,0 +1,67 @@
+<div class="gnu-diffutils-original-content" id="Inexact">
+<h4 class="subsection" id="Helping-patch-Find-Inexact-Matches"><span>10.3.3 Helping <code class="command">patch</code> Find Inexact Matches</span></h4>
+<a class="index-entry-id" id="index-inexact-patches"></a>
+<a class="index-entry-id" id="index-fuzz-factor-when-patching"></a>
+<p>For context diffs, and to a lesser extent normal diffs, <code class="command">patch</code> can
+detect when the line numbers mentioned in the patch are incorrect, and
+it attempts to find the correct place to apply each hunk of the patch.
+As a first guess, it takes the line number mentioned in the hunk, plus
+or minus any offset used in applying the previous hunk.  If that is not
+the correct place, <code class="command">patch</code> scans both forward and backward for a
+set of lines matching the context given in the hunk.
+</p>
+<p>First <code class="command">patch</code> looks for a place where all lines of the context
+match.  If it cannot find such a place, and it is reading a context or
+unified diff, and the maximum fuzz factor is set to 1 or more, then
+<code class="command">patch</code> makes another scan, ignoring the first and last line of
+context.  If that fails, and the maximum fuzz factor is set to 2 or
+more, it makes another scan, ignoring the first two and last two lines
+of context are ignored.  It continues similarly if the maximum fuzz
+factor is larger.
+</p>
+<p>The <samp class="option">--fuzz=<var class="var">lines</var></samp> (<samp class="option">-F <var class="var">lines</var></samp>) option sets the
+maximum fuzz factor to <var class="var">lines</var>.  This option only applies to context
+and unified diffs; it ignores up to <var class="var">lines</var> lines while looking for
+the place to install a hunk.  Note that a larger fuzz factor increases
+the odds of making a faulty patch.  The default fuzz factor is 2; there
+is no point to setting it to more than the number of lines of context
+in the diff, ordinarily 3.
+</p>
+<p>If <code class="command">patch</code> cannot find a place to install a hunk of the patch, it
+writes the hunk out to a reject file (see <a class="pxref" href="#Reject-Names">Reject File Names</a>, for information
+on how reject files are named).  It writes out rejected hunks in context
+format no matter what form the input patch is in.  If the input is a
+normal or <code class="command">ed</code> diff, many of the contexts are simply null.  The
+line numbers on the hunks in the reject file may be different from those
+in the patch file: they show the approximate location where <code class="command">patch</code>
+thinks the failed hunks belong in the new file rather than in the old
+one.
+</p>
+<p>If the <samp class="option">--verbose</samp> option is given, then
+as it completes each hunk <code class="command">patch</code> tells you whether the hunk
+succeeded or failed, and if it failed, on which line (in the new file)
+<code class="command">patch</code> thinks the hunk should go.  If this is different from the
+line number specified in the diff, it tells you the offset.  A single
+large offset <em class="emph">may</em> indicate that <code class="command">patch</code> installed a hunk in
+the wrong place.  <code class="command">patch</code> also tells you if it used a fuzz factor
+to make the match, in which case you should also be slightly suspicious.
+</p>
+<p><code class="command">patch</code> cannot tell if the line numbers are off in an <code class="command">ed</code>
+script, and can only detect wrong line numbers in a normal diff when it
+finds a change or delete command.  It may have the same problem with a
+context diff using a fuzz factor equal to or greater than the number of
+lines of context shown in the diff (typically 3).  In these cases, you
+should probably look at a context diff between your original and patched
+input files to see if the changes make sense.  Compiling without errors
+is a pretty good indication that the patch worked, but not a guarantee.
+</p>
+<p>A patch against an empty file applies to a nonexistent file, and vice
+versa.  See <a class="xref" href="#Creating-and-Removing">Creating and Removing Files</a>.
+</p>
+<p><code class="command">patch</code> usually produces the correct results, even when it must
+make many guesses.  However, the results are guaranteed only when
+the patch is applied to an exact copy of the file that the patch was
+generated from.
+</p>
+<hr/>
+</div>

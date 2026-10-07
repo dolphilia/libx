@@ -1,0 +1,10 @@
+<div class="gnu-diffutils-original-content" id="Creating-and-Removing">
+<h3 class="section" id="Creating-and-Removing-Files"><span>10.4 ファイルの作成と削除</span></h3>
+<a class="index-entry-id" id="index-creating-files"></a>
+<a class="index-entry-id" id="index-empty-files_002c-removing"></a>
+<a class="index-entry-id" id="index-removing-empty-files"></a>
+<p>2つのディレクトリを比較すると、一方だけに存在するファイルがあることがあります。<code class="command">diff</code>に<samp class="option">--new-file</samp>（<samp class="option">-N</samp>）オプションを指定するか、旧ファイルまたは新ファイルが<samp class="file">/dev/null</samp>という名前、あるいは空で Epoch（1970-01-01 00:00:00 UTC）の日時なら、<code class="command">diff</code>はそのファイルの内容を追加または削除するパッチを出力します。<code class="command">patch</code>はこのパッチを受け取ると、通常は新ファイルを作成するか旧ファイルを削除します。ただし POSIX 準拠時（<a class="pxref" href="#patch-and-POSIX"><code class="command">patch</code>と POSIX 標準</a>参照）には、<code class="command">patch</code>は旧ファイルを削除せず空のまま残します。<samp class="option">--remove-empty-files</samp>（<samp class="option">-E</samp>）オプションを指定すると、ファイル削除用のパッチには見えない場合でも、<code class="command">patch</code>は適用後に空になった出力ファイルを削除します。</p>
+<p>パッチが既存ファイルを作成するように見える場合、<code class="command">patch</code>は適用前に確認を求めます。</p>
+<hr/>
+</div>
+
