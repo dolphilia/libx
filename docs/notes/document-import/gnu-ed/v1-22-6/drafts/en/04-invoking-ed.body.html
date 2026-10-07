@@ -1,0 +1,121 @@
+<div class="chapter-level-extent" id="Invoking-ed">
+<h2 class="chapter" id="Invoking-ed-1"><span>3 Invoking ed<a class="copiable-link" href="#Invoking-ed-1"> ¶</a></span></h2>
+<p>The format for running <code class="command">ed</code> is:
+</p>
+<div class="example">
+<pre class="example-preformatted">ed [<var class="var">options</var>] [[+<var class="var">line</var>] <var class="var">file</var>]
+red [<var class="var">options</var>] [[+<var class="var">line</var>] <var class="var">file</var>]
+ed [<var class="var">options</var>] [[+<var class="var">line</var>] '!<var class="var">command</var> [<var class="var">arguments</var>]']
+</pre></div>
+<p><var class="var">file</var> specifies the name of a file to read. If <var class="var">file</var> is prefixed
+with a bang (!), then it is interpreted as a shell command. In this case,
+what is read is the standard output of <var class="var">file</var> executed via <code class="command">sh</code>.
+To read a file whose name begins with a bang (or a hyphen), prefix the name
+with <samp class="file">./</samp>. The default filename is set to <var class="var">file</var> only if it is not
+prefixed with a bang.
+</p>
+<p>The file name may be preceded by ‘<samp class="samp">+<var class="var">line</var></samp>’ to set the current line
+to the line number specified. If <var class="var">line</var> exceeds the number of lines in
+the file, the current line is set to the last line.
+</p>
+<p>The file name may be preceded by ‘<samp class="samp">+/<var class="var">re</var></samp>’ to set the current line
+to the first line matching the regular expression <var class="var">re</var>, or by
+‘<samp class="samp">+?<var class="var">re</var></samp>’ to set the current line to the last line matching
+<var class="var">re</var>. If <var class="var">re</var> does not match any line, ed fails immediately with
+exit status 1 unless the option <samp class="option">-l</samp> is specified and standard input
+is not a regular file.
+</p>
+<p><code class="command">ed</code> supports the following options: See <a class="xref" href="#Argument-syntax">Syntax of command-line arguments</a>.
+</p>
+<dl class="table">
+<dt><code class="code">-h</code></dt>
+<dt><code class="code">--help</code></dt>
+<dd><p>Print an informative help message describing the options and exit.
+</p>
+</dd>
+<dt><code class="code">-V</code></dt>
+<dt><code class="code">--version</code></dt>
+<dd><p>Print the version number of <code class="command">ed</code> on the standard output and exit.
+This version number should be included in all bug reports.
+</p>
+</dd>
+<dt><code class="code">-E</code></dt>
+<dt><code class="code">--extended-regexp</code></dt>
+<dd><p>Use extended regular expressions instead of the basic regular expressions
+mandated by POSIX.
+</p>
+</dd>
+<dt><code class="code">-G</code></dt>
+<dt><code class="code">--traditional</code></dt>
+<dd><p>Forces backwards compatibility. This affects the behavior of the
+<code class="command">ed</code> commands ‘<samp class="samp">G</samp>’, ‘<samp class="samp">V</samp>’, ‘<samp class="samp">f</samp>’, ‘<samp class="samp">l</samp>’, ‘<samp class="samp">m</samp>’,
+‘<samp class="samp">t</samp>’, and ‘<samp class="samp">!!</samp>’. If the default behavior of these commands does
+not seem familiar, then try invoking <code class="command">ed</code> with this switch.
+</p>
+</dd>
+<dt><code class="code">-l</code></dt>
+<dt><code class="code">--loose-exit-status</code></dt>
+<dd><p>Don’t exit with bad status if a command happens to "fail" (for example
+if a substitution command finds nothing to replace). This can be useful
+when <code class="command">ed</code> is invoked as the editor for crontab.
+</p>
+</dd>
+<dt><code class="code">-p <var class="var">string</var></code></dt>
+<dt><code class="code">--prompt=<var class="var">string</var></code></dt>
+<dd><p>Specifies a command prompt string and turns prompting on. Showing the prompt
+string may be toggled on and off with the ‘<samp class="samp">P</samp>’ command.
+</p>
+</dd>
+<dt><code class="code">-q</code></dt>
+<dt><code class="code">--quiet</code></dt>
+<dt><code class="code">--silent</code></dt>
+<dd><p>Suppress diagnostic messages written to standard error.
+</p>
+</dd>
+<dt><code class="code">-r</code></dt>
+<dt><code class="code">--restricted</code></dt>
+<dd><p>Run in restricted mode. This mode disables editing of files out of the
+current directory and execution of shell commands.
+</p>
+</dd>
+<dt><code class="code">-s</code></dt>
+<dt><code class="code">--script</code></dt>
+<dd><p>Suppress the printing of byte counts by ‘<samp class="samp">e</samp>’, ‘<samp class="samp">E</samp>’, ‘<samp class="samp">r</samp>’,
+‘<samp class="samp">w</samp>’, and ‘<samp class="samp">!</samp>’ commands, and the ‘<samp class="samp">!</samp>’ prompt after a ‘<samp class="samp">!</samp>’
+command. Suppress also the messages "Newline inserted" and "Newline
+appended". This option does not suppress diagnostic messages written to
+standard error (see <samp class="option">-q</samp> above). <samp class="option">-s</samp> may be useful if
+<code class="command">ed</code>’s standard input is from a script.
+</p>
+</dd>
+<dt><code class="code">-v</code></dt>
+<dt><code class="code">--verbose</code></dt>
+<dd><p>Turn help mode on; print a help message explaining the reason for each
+‘<samp class="samp">?</samp>’ notification. This may be toggled on and off with the ‘<samp class="samp">H</samp>’
+command. Use this option to aid in debugging ed scripts.
+</p>
+</dd>
+<dt><code class="code">--strip-trailing-cr</code></dt>
+<dd><p>Strip the carriage returns at the end of text lines in DOS files. CRs are
+removed only from the CR/LF (carriage return/line feed) pair ending the
+line. CRs at other positions in the line, including a CR finishing an
+unterminated line, are not removed. The CRs are not restored when saving the
+buffer to a file.
+</p>
+</dd>
+<dt><code class="code">--unsafe-names</code></dt>
+<dd><p><code class="command">ed</code> rejects file names containing the control characters ‘<samp class="samp">\a</samp>’,
+‘<samp class="samp">\b</samp>’, ‘<samp class="samp">\t</samp>’, ‘<samp class="samp">\v</samp>’, ‘<samp class="samp">\f</samp>’, ‘<samp class="samp">\r</samp>’, ‘<samp class="samp">\033</samp>’, and
+‘<samp class="samp">\177</samp>’ unless they are allowed with this option. Newline characters in
+file names are rejected even if this option is specified.
+</p>
+</dd>
+</dl>
+<p>Exit status: 0 for a normal exit, 1 for environmental problems
+(invalid command-line options, memory exhausted, command failed, etc),
+2 for problems with the input file (file not found, buffer modified,
+I/O errors), 3 for an internal consistency error (e.g., bug) which caused
+ed to panic.
+</p>
+<hr/>
+</div>

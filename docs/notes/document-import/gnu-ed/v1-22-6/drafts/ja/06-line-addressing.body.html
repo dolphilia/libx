@@ -1,0 +1,52 @@
+<div class="chapter-level-extent" id="Line-addressing">
+<h2 class="chapter" id="Line-addressing-1"><span>5 行アドレス指定<a class="copiable-link" href="#Line-addressing-1"> ¶</a></span></h2>
+<p>アドレスは、バッファー内の行番号を表します。<code class="command">ed</code> は<em class="dfn">現在アドレス</em>を保持し、アドレスを指定しない場合、通常はこれをコマンドの既定のアドレスとして使います。ファイルを最初に読み込むと、現在アドレスはそのファイルの最終行のアドレスに設定されます。一般に、現在アドレスはコマンドが作用した最後の行のアドレスに設定されます。</p>
+<p>アドレスが行番号を表すという規則の例外の1つは、アドレス「<samp class="samp">0</samp>」（ゼロ）です。これは「バッファーの先頭」を意味し、意味のある場所であれば有効です。</p>
+<p>アドレス範囲は、コンマ（「<samp class="samp">,</samp>」）またはセミコロン（「<samp class="samp">;</samp>」）で区切った2つのアドレスです。範囲の最初のアドレスの値は、2番目の値を超えることはできません。</p>
+<p>セミコロンで区切った範囲では、2番目のアドレスを計算する前に、現在アドレス（「<samp class="samp">.</samp>」）を最初のアドレスに設定します。2番目のアドレスが正規表現を含む場合、この機能で検索の開始行を設定できます。アドレス「<samp class="samp">0</samp>」（ゼロ）も開始点として有効なので、「<samp class="samp">0;/<var class="var">re</var>/</samp>」でバッファーの最初の行の <var class="var">re</var> に一致させられます。</p>
+<p>コンマやセミコロンの区切りのどちら側でも、アドレスを省略できます。範囲で最初のアドレスだけを指定すると、2番目のアドレスもその値に設定されます。2番目のアドレスだけを指定すると、アドレスの組はそれぞれ「<samp class="samp">1,addr</samp>」と「<samp class="samp">.;addr</samp>」になります。<var class="var">n</var> &gt; 2<!-- /@w --> の <var class="var">n</var> 個のアドレスを指定すると、対応する範囲は、その <var class="var">n</var> 個の最後の2つのアドレスで決まります。アドレスが1つだけ必要な場合は、最後のアドレスを使います。アドレスを取らないコマンドに1つでもアドレスを与えるとエラーになります。</p>
+<p>行アドレスは次のように構成します。</p>
+<dl class="table">
+<dt><code class="code">.</code></dt>
+<dd><p>バッファー内の現在行（のアドレス）。</p>
+</dd>
+<dt><code class="code">$</code></dt>
+<dd><p>バッファー内の最終行。</p>
+</dd>
+<dt><code class="code"><var class="var">n</var></code></dt>
+<dd><p>バッファー内の <var class="var">n</var> 番目の行。<var class="var">n</var> は「<samp class="samp">0,$</samp>」の範囲の数値です。</p>
+</dd>
+<dt><code class="code">+<var class="var">n</var></code></dt>
+<dd><p><var class="var">n</var> 行後の行。<var class="var">n</var> は非負の数値です。</p>
+</dd>
+<dt><code class="code">-<var class="var">n</var></code></dt>
+<dd><p><var class="var">n</var> 行前の行。<var class="var">n</var> は非負の数値です。</p>
+</dd>
+<dt><code class="code">+</code></dt>
+<dd><p>次の行。「<samp class="samp">+1</samp>」と等価で、繰り返すと効果が累積します。</p>
+</dd>
+<dt><code class="code">-</code></dt>
+<dd><p>前の行。「<samp class="samp">-1</samp>」と等価で、繰り返すと効果が累積します。</p>
+</dd>
+<dt><code class="code">,</code></dt>
+<dd><p>バッファーの最初の行から最後の行まで。アドレス範囲「<samp class="samp">1,$</samp>」と等価です。</p>
+</dd>
+<dt><code class="code">;</code></dt>
+<dd><p>バッファーの現在行から最後の行まで。アドレス範囲「<samp class="samp">.;$</samp>」と等価です。</p>
+</dd>
+<dt><code class="code">/<var class="var">re</var>/[I]</code></dt>
+<dd><p>正規表現 <var class="var">re</var> を含む次の行。必要なら検索はバッファーの先頭に戻り、現在行まで下方向に続けます。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> が <var class="var">re</var> による照合で大文字と小文字を区別しないようにします。</p>
+</dd>
+<dt><code class="code">?<var class="var">re</var>?[I]</code></dt>
+<dd><p>正規表現 <var class="var">re</var> を含む前の行。必要なら検索はバッファーの末尾に戻り、現在行まで上方向に続けます。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> が <var class="var">re</var> による照合で大文字と小文字を区別しないようにします。</p>
+</dd>
+<dt><code class="code">'x</code></dt>
+<dd><p>アポストロフィーと x の2文字で、「<samp class="samp">k</samp>」（マーク）コマンドであらかじめ印を付けた行を指定します。「<samp class="samp">x</samp>」は移植可能な文字集合「<samp class="samp">[a-z]</samp>」の小文字です。</p>
+</dd>
+</dl>
+<p>アドレスの後には、1つ以上のアドレスオフセットを、必要に応じて空白で区切って続けられます。オフセットは次のように構成します。</p>
+<ul class="itemize mark-bullet">
+<li>「<samp class="samp">+</samp>」または「<samp class="samp">-</samp>」の後に数値を置くと、アドレスにその行数を加算、またはアドレスから減算します。</li><li>数値の続かない「<samp class="samp">+</samp>」または「<samp class="samp">-</samp>」は、アドレスに 1 を加算、またはアドレスから 1 を減算します。</li><li>数値は、指定した行数をアドレスに加算します。</li></ul>
+<p>計算途中のアドレスの値が負である、またはバッファーの最終行のアドレスより大きい場合は、エラーにはなりません。最終的なアドレスの値が負である、またはバッファーの最終行のアドレスより大きい場合はエラーになります。正規表現による検索で一致する行が見つからない場合もエラーになります。</p>
+<hr/>
+</div>

@@ -1,0 +1,239 @@
+{
+  "slug": "06-line-addressing",
+  "bodySHA256": "cb364a581afe6a5db11888afea8d69917193983acf56de0dd5814ec87c53596a",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧5 Line addressing⟦1⟧ ¶⟦2⟧⟦3⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<a class=\"copiable-link\" href=\"#Line-addressing-1\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Line-addressing-1\"><span>5 Line addressing<a class=\"copiable-link\" href=\"#Line-addressing-1\"> ¶</a></span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "An address represents the number of a line in the buffer. ⟦0⟧ maintains a ⟦1⟧current address⟦2⟧ which is typically supplied to commands as the default address when none is specified. When a file is first read, the current address is set to the address of the last line of the file. In general, the current address is set to the address of the last line affected by a command.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<em class=\"dfn\">",
+        "⟦2⟧": "</em>"
+      },
+      "sourceHTML": "<p>An address represents the number of a line in the buffer. <code class=\"command\">ed</code>\nmaintains a <em class=\"dfn\">current address</em> which is typically supplied to commands as\nthe default address when none is specified. When a file is first read, the\ncurrent address is set to the address of the last line of the file. In\ngeneral, the current address is set to the address of the last line affected\nby a command.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "One exception to the rule that addresses represent line numbers is the address ‘⟦0⟧’ (zero). This means \"at the beginning of the buffer\", and is valid wherever it makes sense.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">0</samp>"
+      },
+      "sourceHTML": "<p>One exception to the rule that addresses represent line numbers is the\naddress ‘<samp class=\"samp\">0</samp>’ (zero). This means \"at the beginning of the buffer\", and is\nvalid wherever it makes sense.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "An address range is two addresses separated either by a comma (‘⟦0⟧’) or a semicolon (‘⟦1⟧’). The value of the first address in a range cannot exceed the value of the second.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">,</samp>",
+        "⟦1⟧": "<samp class=\"samp\">;</samp>"
+      },
+      "sourceHTML": "<p>An address range is two addresses separated either by a comma (‘<samp class=\"samp\">,</samp>’) or\na semicolon (‘<samp class=\"samp\">;</samp>’). The value of the first address in a range cannot\nexceed the value of the second.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "In a semicolon-delimited range, the current address (‘⟦0⟧’) is set to the first address before the second address is calculated. This feature can be used to set the starting line for searches if the second address contains a regular expression. The address ‘⟦1⟧’ (zero) is valid as a starting point so that ‘⟦2⟧’ can match ⟦3⟧ in the first line of the buffer.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">.</samp>",
+        "⟦1⟧": "<samp class=\"samp\">0</samp>",
+        "⟦2⟧": "<samp class=\"samp\">0;/<var class=\"var\">re</var>/</samp>",
+        "⟦3⟧": "<var class=\"var\">re</var>"
+      },
+      "sourceHTML": "<p>In a semicolon-delimited range, the current address (‘<samp class=\"samp\">.</samp>’) is set to the\nfirst address before the second address is calculated. This feature can be\nused to set the starting line for searches if the second address contains a\nregular expression. The address ‘<samp class=\"samp\">0</samp>’ (zero) is valid as a starting point\nso that ‘<samp class=\"samp\">0;/<var class=\"var\">re</var>/</samp>’ can match <var class=\"var\">re</var> in the first line of the buffer.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Addresses can be omitted on either side of the comma or semicolon separator. If only the first address is given in a range, then the second address is set to the given address. If only the second address is given, the resulting address pairs are ‘⟦0⟧’ and ‘⟦1⟧’ respectively. If a ⟦2⟧-tuple of addresses is given where ⟦3⟧ > 2⟦4⟧, then the corresponding range is determined by the last two addresses in the ⟦5⟧-tuple. If only one address is expected, then the last address is used. It is an error to give any number of addresses to a command that requires zero addresses.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">1,addr</samp>",
+        "⟦1⟧": "<samp class=\"samp\">.;addr</samp>",
+        "⟦2⟧": "<var class=\"var\">n</var>",
+        "⟦3⟧": "<var class=\"var\">n</var>",
+        "⟦4⟧": "<!-- /@w -->",
+        "⟦5⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>Addresses can be omitted on either side of the comma or semicolon separator.\nIf only the first address is given in a range, then the second address is\nset to the given address. If only the second address is given, the resulting\naddress pairs are ‘<samp class=\"samp\">1,addr</samp>’ and ‘<samp class=\"samp\">.;addr</samp>’ respectively. If a\n<var class=\"var\">n</var>-tuple of addresses is given where <var class=\"var\">n</var> &gt; 2<!-- /@w -->, then the\ncorresponding range is determined by the last two addresses in the\n<var class=\"var\">n</var>-tuple. If only one address is expected, then the last address is\nused. It is an error to give any number of addresses to a command that\nrequires zero addresses.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "A line address is constructed as follows:",
+      "tokens": {},
+      "sourceHTML": "<p>A line address is constructed as follows:\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "The current line (address) in the buffer.",
+      "tokens": {},
+      "sourceHTML": "<p>The current line (address) in the buffer.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "The last line in the buffer.",
+      "tokens": {},
+      "sourceHTML": "<p>The last line in the buffer.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "The ⟦0⟧th line in the buffer, where ⟦1⟧ is a number in the range ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>",
+        "⟦1⟧": "<var class=\"var\">n</var>",
+        "⟦2⟧": "<samp class=\"samp\">0,$</samp>"
+      },
+      "sourceHTML": "<p>The <var class=\"var\">n</var>th line in the buffer, where <var class=\"var\">n</var> is a number in the range\n‘<samp class=\"samp\">0,$</samp>’.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "The ⟦0⟧th next line, where ⟦1⟧ is a non-negative number.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>",
+        "⟦1⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>The <var class=\"var\">n</var>th next line, where <var class=\"var\">n</var> is a non-negative number.\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "The ⟦0⟧th previous line, where ⟦1⟧ is a non-negative number.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>",
+        "⟦1⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>The <var class=\"var\">n</var>th previous line, where <var class=\"var\">n</var> is a non-negative number.\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "The next line. This is equivalent to ‘⟦0⟧’ and may be repeated with cumulative effect.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">+1</samp>"
+      },
+      "sourceHTML": "<p>The next line. This is equivalent to ‘<samp class=\"samp\">+1</samp>’ and may be repeated with\ncumulative effect.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "The previous line. This is equivalent to ‘⟦0⟧’ and may be repeated with cumulative effect.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">-1</samp>"
+      },
+      "sourceHTML": "<p>The previous line. This is equivalent to ‘<samp class=\"samp\">-1</samp>’ and may be repeated with\ncumulative effect.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "The first through last lines in the buffer. This is equivalent to the address range ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">1,$</samp>"
+      },
+      "sourceHTML": "<p>The first through last lines in the buffer. This is equivalent to the\naddress range ‘<samp class=\"samp\">1,$</samp>’.\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "The current through last lines in the buffer. This is equivalent to the address range ‘⟦0⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">.;$</samp>"
+      },
+      "sourceHTML": "<p>The current through last lines in the buffer. This is equivalent to the\naddress range ‘<samp class=\"samp\">.;$</samp>’.\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "The next line containing the regular expression ⟦0⟧. The search wraps to the beginning of the buffer and continues down to the current line, if necessary. The suffix ‘⟦1⟧’ is a GNU extension which makes ⟦2⟧ match ⟦3⟧ in a case-insensitive manner.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">re</var>",
+        "⟦1⟧": "<samp class=\"samp\">I</samp>",
+        "⟦2⟧": "<code class=\"command\">ed</code>",
+        "⟦3⟧": "<var class=\"var\">re</var>"
+      },
+      "sourceHTML": "<p>The next line containing the regular expression <var class=\"var\">re</var>. The search wraps\nto the beginning of the buffer and continues down to the current line, if\nnecessary. The suffix ‘<samp class=\"samp\">I</samp>’ is a GNU extension which makes <code class=\"command\">ed</code>\nmatch <var class=\"var\">re</var> in a case-insensitive manner.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "The previous line containing the regular expression ⟦0⟧. The search wraps to the end of the buffer and continues up to the current line, if necessary. The suffix ‘⟦1⟧’ is a GNU extension which makes ⟦2⟧ match ⟦3⟧ in a case-insensitive manner.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">re</var>",
+        "⟦1⟧": "<samp class=\"samp\">I</samp>",
+        "⟦2⟧": "<code class=\"command\">ed</code>",
+        "⟦3⟧": "<var class=\"var\">re</var>"
+      },
+      "sourceHTML": "<p>The previous line containing the regular expression <var class=\"var\">re</var>. The search\nwraps to the end of the buffer and continues up to the current line, if\nnecessary. The suffix ‘<samp class=\"samp\">I</samp>’ is a GNU extension which makes <code class=\"command\">ed</code>\nmatch <var class=\"var\">re</var> in a case-insensitive manner.\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "The apostrophe-x character pair addresses the line previously marked by a ‘⟦0⟧’ (mark) command, where ‘⟦1⟧’ is a lower case letter from the portable character set ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">k</samp>",
+        "⟦1⟧": "<samp class=\"samp\">x</samp>",
+        "⟦2⟧": "<samp class=\"samp\">[a-z]</samp>"
+      },
+      "sourceHTML": "<p>The apostrophe-x character pair addresses the line previously marked by a\n‘<samp class=\"samp\">k</samp>’ (mark) command, where ‘<samp class=\"samp\">x</samp>’ is a lower case letter from the\nportable character set ‘<samp class=\"samp\">[a-z]</samp>’.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "p",
+      "text": "Addresses can be followed by one or more address offsets, optionally separated by whitespace. Offsets are constructed as follows:",
+      "tokens": {},
+      "sourceHTML": "<p>Addresses can be followed by one or more address offsets, optionally\nseparated by whitespace. Offsets are constructed as follows:\n</p>"
+    },
+    {
+      "index": 20,
+      "tag": "li",
+      "text": "‘⟦0⟧’ or ‘⟦1⟧’ followed by a number adds or subtracts the indicated number of lines to or from the address.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">+</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-</samp>"
+      },
+      "sourceHTML": "<li>‘<samp class=\"samp\">+</samp>’ or ‘<samp class=\"samp\">-</samp>’ followed by a number adds or subtracts the indicated\nnumber of lines to or from the address.\n\n</li>"
+    },
+    {
+      "index": 21,
+      "tag": "li",
+      "text": "‘⟦0⟧’ or ‘⟦1⟧’ not followed by a number adds or subtracts 1 to or from the address.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">+</samp>",
+        "⟦1⟧": "<samp class=\"samp\">-</samp>"
+      },
+      "sourceHTML": "<li>‘<samp class=\"samp\">+</samp>’ or ‘<samp class=\"samp\">-</samp>’ not followed by a number adds or subtracts 1 to or from\nthe address.\n\n</li>"
+    },
+    {
+      "index": 22,
+      "tag": "li",
+      "text": "A number adds the indicated number of lines to the address.",
+      "tokens": {},
+      "sourceHTML": "<li>A number adds the indicated number of lines to the address.\n\n</li>"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "text": "It is not an error if an intermediate address value is negative or greater than the address of the last line in the buffer. It is an error if the final address value is negative or greater than the address of the last line in the buffer. It is an error if a search for a regular expression fails to find a matching line.",
+      "tokens": {},
+      "sourceHTML": "<p>It is not an error if an intermediate address value is negative or greater\nthan the address of the last line in the buffer. It is an error if the final\naddress value is negative or greater than the address of the last line in\nthe buffer. It is an error if a search for a regular expression fails to\nfind a matching line.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

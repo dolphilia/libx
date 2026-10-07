@@ -1,0 +1,58 @@
+{
+  "slug": "10-limitations",
+  "bodySHA256": "6133e4e2d6d01c4df271d976477f9ee487dfcc92b9cf2b77c09f28a9972abe17",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧9 Limitations⟦1⟧ ¶⟦2⟧⟦3⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<a class=\"copiable-link\" href=\"#Limitations-1\">",
+        "⟦2⟧": "</a>",
+        "⟦3⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Limitations-1\"><span>9 Limitations<a class=\"copiable-link\" href=\"#Limitations-1\"> ¶</a></span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "If the terminal hangs up and the buffer is modified and not empty, ⟦0⟧ attempts to write the buffer to the file ⟦1⟧ or, if this fails, to ⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<samp class=\"file\">ed.hup</samp>",
+        "⟦2⟧": "<samp class=\"file\">$HOME/ed.hup</samp>"
+      },
+      "sourceHTML": "<p>If the terminal hangs up and the buffer is modified and not empty,\n<code class=\"command\">ed</code> attempts to write the buffer to the file <samp class=\"file\">ed.hup</samp> or, if\nthis fails, to <samp class=\"file\">$HOME/ed.hup</samp>.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "If a text (non-binary) file is not terminated by a newline character, then ⟦0⟧ appends one on reading/writing it. In the case of a binary file, ⟦1⟧ does not append a newline on reading/writing. A binary file is one containing at least one ASCII NUL character. If the last line has been modified, reading an empty file, for example ⟦2⟧, prior to writing prevents appending a newline to a binary file.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<code class=\"command\">ed</code>",
+        "⟦2⟧": "<samp class=\"file\">/dev/null</samp>"
+      },
+      "sourceHTML": "<p>If a text (non-binary) file is not terminated by a newline character, then\n<code class=\"command\">ed</code> appends one on reading/writing it. In the case of a binary\nfile, <code class=\"command\">ed</code> does not append a newline on reading/writing. A binary\nfile is one containing at least one ASCII NUL character. If the last line\nhas been modified, reading an empty file, for example <samp class=\"file\">/dev/null</samp>,\nprior to writing prevents appending a newline to a binary file.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "In order to keep track of the text lines in the buffer, ⟦0⟧ uses a doubly linked list of structures containing the position and size of each line. This results in a per line overhead of 2 ‘⟦1⟧’s⟦2⟧, 1 ‘⟦3⟧’⟦4⟧, and 1 ‘⟦5⟧’⟦6⟧. The maximum line length is INT_MAX - 1⟦7⟧ bytes. The maximum number of lines is INT_MAX - 2⟦8⟧ lines.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<samp class=\"samp\">pointer</samp>",
+        "⟦2⟧": "<!-- /@w -->",
+        "⟦3⟧": "<samp class=\"samp\">long int</samp>",
+        "⟦4⟧": "<!-- /@w -->",
+        "⟦5⟧": "<samp class=\"samp\">int</samp>",
+        "⟦6⟧": "<!-- /@w -->",
+        "⟦7⟧": "<!-- /@w -->",
+        "⟦8⟧": "<!-- /@w -->"
+      },
+      "sourceHTML": "<p>In order to keep track of the text lines in the buffer, <code class=\"command\">ed</code> uses a\ndoubly linked list of structures containing the position and size of each\nline. This results in a per line overhead of 2 ‘<samp class=\"samp\">pointer</samp>’s<!-- /@w -->,\n1 ‘<samp class=\"samp\">long int</samp>’<!-- /@w -->, and 1 ‘<samp class=\"samp\">int</samp>’<!-- /@w -->. The maximum line length is\nINT_MAX - 1<!-- /@w --> bytes. The maximum number of lines is INT_MAX - 2<!-- /@w --> lines.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and code/output examples retained; headings, prose, explanatory dt/dd and table headings/cells extracted; complete adopted footnote included. Unreviewed candidate drafts only; no unhandled prose text."
+}

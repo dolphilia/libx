@@ -1,0 +1,35 @@
+<div class="chapter-level-extent" id="The-_0027s_0027-Command">
+<h2 class="chapter" id="Substitute-command"><span>8 置換コマンド<a class="copiable-link" href="#Substitute-command"> ¶</a></span></h2>
+<p>置換コマンド「<samp class="samp">s</samp>」は、指定行の中で正規表現 <var class="var">re</var> に一致するテキストを <var class="var">replacement</var> で置き換えます。既定では各行の最初の一致だけを置き換えます。「<samp class="samp">s</samp>」コマンドの構文は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">(.,.)s/<var class="var">re</var>/<var class="var">replacement</var>/[<var class="var">suffixes</var>]
+</pre></div>
+<p>「<samp class="samp">s</samp>」コマンドは、次の任意の接尾辞の組み合わせを受け付けます。</p>
+<dl class="table">
+<dt><code class="code">g</code></dt>
+<dd><p>「<samp class="samp">global</samp>」：最初の一致だけでなく、その行のすべての一致を置き換えます。</p>
+</dd>
+<dt><code class="code"><var class="var">count</var></code></dt>
+<dd><p>正の数値を指定すると、<var class="var">count</var> 番目の一致だけを置き換えます。同じコマンド内で「<samp class="samp">g</samp>」と「<samp class="samp"><var class="var">count</var></samp>」を指定することはできません。</p>
+</dd>
+<dt><code class="code">l</code></dt>
+<dt><code class="code">n</code></dt>
+<dt><code class="code">p</code></dt>
+<dd><p>通常の表示接尾辞です。<a class="xref" href="#print-suffixes">表示接尾辞</a>を参照してください。</p>
+</dd>
+<dt><code class="code">I</code></dt>
+<dt><code class="code">i</code></dt>
+<dd><p>接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> が <var class="var">re</var> による照合で大文字と小文字を区別しないようにします。</p>
+</dd>
+</dl>
+<p>指定行のどの行でも置換が行われなければエラーになります。現在アドレスは、置換が行われた最後の行のアドレスに設定されます。行が分割された場合は、新しくできた各行で置換が行われたものとみなします。置換が行われなければ、現在アドレスは変わりません。変更した最後の行はカットバッファーにコピーされます。</p>
+<p><var class="var">re</var> と <var class="var">replacement</var> は、<kbd class="key">空白</kbd>、<kbd class="key">改行</kbd>、および以下に示す「<samp class="samp">s</samp>」コマンドの形式で使う文字を除く、任意の文字で区切れます。最後の区切りを省略すると、表示接尾辞「<samp class="samp">p</samp>」を指定したかのように、作用した最後の行を表示します。「<samp class="samp">s</samp>」コマンドが「<samp class="samp">g</samp>」または「<samp class="samp">v</samp>」の <var class="var">command-list</var> の一部で、そのリストの最後のコマンドでない場合、最後の区切りは省略できません。後に続くエスケープされた改行の意味が曖昧になるためです。</p>
+<p><var class="var">replacement</var> 内のエスケープされていない「<samp class="samp">&amp;</samp>」は、現在一致しているテキストで置き換えます。「<samp class="samp">\<var class="var">m</var></samp>」という文字列は、<var class="var">m</var> が [1,9] の範囲の数値であるとき、一致したテキストの <var class="var">m</var> 番目の後方参照式で置き換えます。対応する後方参照式が一致しない場合、文字列「<samp class="samp">\<var class="var">m</var></samp>」は空文字列で置き換えます。<var class="var">replacement</var> が「<samp class="samp">%</samp>」1文字だけの場合は、直前の置換の <var class="var">replacement</var> を使います。</p>
+<p><var class="var">replacement</var> に、バックスラッシュ（「<samp class="samp">\</samp>」）でエスケープした改行を含めると、行を分割できます。<var class="var">replacement</var> 内の各バックスラッシュは、直後の文字に特別な意味があれば、それを取り除きます。</p>
+<p><code class="command">ed</code> は、「<samp class="samp">s</samp>」コマンドの次の別構文で、直前の置換を繰り返せます。</p>
+<div class="example">
+<pre class="example-preformatted">(.,.)s[<var class="var">suffixes</var>]
+</pre></div>
+<p>この形式の「<samp class="samp">s</samp>」コマンドは、上で説明した接尾辞「<samp class="samp">g</samp>」「<samp class="samp"><var class="var">count</var></samp>」と、接尾辞「<samp class="samp">p</samp>」「<samp class="samp">r</samp>」の任意の組み合わせを受け付けます。接尾辞「<samp class="samp">g</samp>」は直前の置換のグローバル接尾辞を切り替え、<var class="var">count</var> を 1 に戻します。接尾辞「<samp class="samp">p</samp>」は直前の置換の表示接尾辞を切り替えます。接尾辞「<samp class="samp">r</samp>」は、（置換の後に検索した場合）直前の置換の <var class="var">re</var> の代わりに、直前の検索の <var class="var">re</var> を使わせます。</p>
+<hr/>
+</div>

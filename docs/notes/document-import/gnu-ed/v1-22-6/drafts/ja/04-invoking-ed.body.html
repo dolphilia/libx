@@ -1,0 +1,64 @@
+<div class="chapter-level-extent" id="Invoking-ed">
+<h2 class="chapter" id="Invoking-ed-1"><span>3 ed の起動<a class="copiable-link" href="#Invoking-ed-1"> ¶</a></span></h2>
+<p><code class="command">ed</code> を実行する形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">ed [<var class="var">options</var>] [[+<var class="var">line</var>] <var class="var">file</var>]
+red [<var class="var">options</var>] [[+<var class="var">line</var>] <var class="var">file</var>]
+ed [<var class="var">options</var>] [[+<var class="var">line</var>] '!<var class="var">command</var> [<var class="var">arguments</var>]']
+</pre></div>
+<p><var class="var">file</var> は読み込むファイル名を指定します。<var class="var">file</var> の前に感嘆符（!）がある場合は、シェルコマンドとして解釈されます。この場合に読み込まれるのは、<code class="command">sh</code> 経由で実行した <var class="var">file</var> の標準出力です。感嘆符（またはハイフン）で始まる名前のファイルを読み込むには、名前の前に <samp class="file">./</samp> を付けます。既定のファイル名が <var class="var">file</var> に設定されるのは、前に感嘆符が付いていない場合だけです。</p>
+<p>ファイル名の前に「<samp class="samp">+<var class="var">line</var></samp>」を付けて、現在行を指定した行番号の行に設定できます。<var class="var">line</var> がファイルの行数を超えている場合は、現在行が最終行に設定されます。</p>
+<p>ファイル名の前に「<samp class="samp">+/<var class="var">re</var></samp>」を付けると、正規表現 <var class="var">re</var> に一致する最初の行を現在行に設定できます。「<samp class="samp">+?<var class="var">re</var></samp>」を付けると、<var class="var">re</var> に一致する最後の行を現在行に設定できます。<var class="var">re</var> がどの行にも一致しない場合、ed は直ちに終了ステータス 1 で失敗します。ただし、オプション <samp class="option">-l</samp> が指定され、標準入力が通常ファイルでない場合を除きます。</p>
+<p><code class="command">ed</code> は次のオプションに対応しています。<a class="xref" href="#Argument-syntax">コマンドライン引数の構文</a>を参照してください。</p>
+<dl class="table">
+<dt><code class="code">-h</code></dt>
+<dt><code class="code">--help</code></dt>
+<dd><p>オプションを説明するヘルプメッセージを表示して終了します。</p>
+</dd>
+<dt><code class="code">-V</code></dt>
+<dt><code class="code">--version</code></dt>
+<dd><p><code class="command">ed</code> のバージョン番号を標準出力に表示して終了します。すべてのバグ報告にこのバージョン番号を含めてください。</p>
+</dd>
+<dt><code class="code">-E</code></dt>
+<dt><code class="code">--extended-regexp</code></dt>
+<dd><p>POSIX が規定する基本正規表現の代わりに拡張正規表現を使います。</p>
+</dd>
+<dt><code class="code">-G</code></dt>
+<dt><code class="code">--traditional</code></dt>
+<dd><p>後方互換性を強制します。これは <code class="command">ed</code> のコマンド「<samp class="samp">G</samp>」「<samp class="samp">V</samp>」「<samp class="samp">f</samp>」「<samp class="samp">l</samp>」「<samp class="samp">m</samp>」「<samp class="samp">t</samp>」「<samp class="samp">!!</samp>」の動作に影響します。これらのコマンドの既定の動作が使い慣れたものと異なる場合は、このスイッチを付けて <code class="command">ed</code> を起動してみてください。</p>
+</dd>
+<dt><code class="code">-l</code></dt>
+<dt><code class="code">--loose-exit-status</code></dt>
+<dd><p>コマンドが「失敗」しても（たとえば置換コマンドが置換対象を見つけられなかった場合）、異常なステータスで終了しません。<code class="command">ed</code> が crontab のエディターとして起動されるときなどに役立ちます。</p>
+</dd>
+<dt><code class="code">-p <var class="var">string</var></code></dt>
+<dt><code class="code">--prompt=<var class="var">string</var></code></dt>
+<dd><p>コマンドプロンプトの文字列を指定し、プロンプト表示を有効にします。「<samp class="samp">P</samp>」コマンドでプロンプト文字列の表示をオンまたはオフに切り替えられます。</p>
+</dd>
+<dt><code class="code">-q</code></dt>
+<dt><code class="code">--quiet</code></dt>
+<dt><code class="code">--silent</code></dt>
+<dd><p>標準エラーに書き込む診断メッセージを抑制します。</p>
+</dd>
+<dt><code class="code">-r</code></dt>
+<dt><code class="code">--restricted</code></dt>
+<dd><p>制限モードで実行します。このモードでは、現在のディレクトリ以外のファイルの編集とシェルコマンドの実行が無効になります。</p>
+</dd>
+<dt><code class="code">-s</code></dt>
+<dt><code class="code">--script</code></dt>
+<dd><p>「<samp class="samp">e</samp>」「<samp class="samp">E</samp>」「<samp class="samp">r</samp>」「<samp class="samp">w</samp>」「<samp class="samp">!</samp>」コマンドによるバイト数の表示と、「<samp class="samp">!</samp>」コマンド後の「<samp class="samp">!</samp>」プロンプトを抑制します。「Newline inserted」と「Newline appended」のメッセージも抑制します。このオプションは標準エラーに書き込む診断メッセージを抑制しません（上の <samp class="option">-q</samp> を参照）。<code class="command">ed</code> の標準入力がスクリプトから来る場合、<samp class="option">-s</samp> が役立つことがあります。</p>
+</dd>
+<dt><code class="code">-v</code></dt>
+<dt><code class="code">--verbose</code></dt>
+<dd><p>ヘルプモードを有効にし、「<samp class="samp">?</samp>」通知が出るたびに、その理由を説明するヘルプメッセージを表示します。「<samp class="samp">H</samp>」コマンドでオンまたはオフに切り替えられます。ed スクリプトのデバッグに使ってください。</p>
+</dd>
+<dt><code class="code">--strip-trailing-cr</code></dt>
+<dd><p>DOS ファイルのテキスト行の末尾から復帰文字を取り除きます。CR が取り除かれるのは、行を終える CR/LF（復帰／改行）の組だけです。改行で終わっていない行の末尾にある CR を含め、行内のほかの位置の CR は取り除かれません。バッファーをファイルに保存しても CR は復元されません。</p>
+</dd>
+<dt><code class="code">--unsafe-names</code></dt>
+<dd><p><code class="command">ed</code> は、制御文字「<samp class="samp">\a</samp>」「<samp class="samp">\b</samp>」「<samp class="samp">\t</samp>」「<samp class="samp">\v</samp>」「<samp class="samp">\f</samp>」「<samp class="samp">\r</samp>」「<samp class="samp">\033</samp>」「<samp class="samp">\177</samp>」を含むファイル名を、このオプションで許可しない限り拒否します。ファイル名内の改行文字は、このオプションを指定しても拒否されます。</p>
+</dd>
+</dl>
+<p>終了ステータスは、正常終了が 0、環境上の問題（無効なコマンドラインオプション、メモリー不足、コマンドの失敗など）が 1、入力ファイルの問題（ファイルが見つからない、バッファーが変更済み、I/O エラー）が 2、ed がパニックを起こす内部整合性エラー（バグなど）が 3 です。</p>
+<hr/>
+</div>
