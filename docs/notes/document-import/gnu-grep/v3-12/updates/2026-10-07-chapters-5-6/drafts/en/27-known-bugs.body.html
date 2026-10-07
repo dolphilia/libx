@@ -1,0 +1,29 @@
+<div class="gnu-grep-original-content" id="Known-Bugs">
+<h3 class="section" id="Known-Bugs-1"><span>6.1 Known Bugs</span></h3>
+<a class="index-entry-id" id="index-Bugs_002c-known"></a>
+<p>Large repetition counts in the ‘<samp class="samp">{n,m}</samp>’ construct may cause
+<code class="command">grep</code> to use lots of memory.
+In addition, certain other
+obscure regular expressions require exponential time and
+space, and may cause <code class="command">grep</code> to run out of memory.
+</p>
+<p>Back-references can greatly slow down matching, as they can generate
+exponentially many matching possibilities that can consume both time
+and memory to explore.  Also, the POSIX specification for
+back-references is at times unclear.  Furthermore, many regular
+expression implementations have back-reference bugs that can cause
+programs to return incorrect answers or even crash, and fixing these
+bugs has often been low-priority: for example, as of 2021 the
+<a class="url" href="https://sourceware.org/bugzilla/">GNU C library bug database</a>
+contained back-reference bugs
+<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=52">52</a>,
+<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=10844">10844</a>,
+<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=11053">11053</a>,
+<a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=24269">24269</a>
+and <a class="url" href="https://sourceware.org/bugzilla/show_bug.cgi?id=25322">25322</a>,
+with little sign of forthcoming fixes.  Luckily,
+back-references are rarely useful and it should be little trouble to
+avoid them in practical applications.
+</p>
+<hr/>
+</div>
