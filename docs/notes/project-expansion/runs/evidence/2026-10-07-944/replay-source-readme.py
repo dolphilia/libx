@@ -1,0 +1,9 @@
+from pathlib import Path
+import subprocess,json,datetime,os,hashlib
+R=Path('/Users/dolphilia/github/libx');E=Path(__file__).parent;Q=Path('/private/tmp/libx-gnu-diffutils-source-rebuild-944/workspace');old=json.loads((E/'before-source-readme/RECONSTRUCTION_EXECUTION.json').read_text());assert old['status']=='passed' and len(old['rows'])==15
+h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();installed=Path('/private/tmp/libx-gnu-diffutils-source-rebuild-944-before-notice-title/workspace');assert h(Q/'pnpm-lock.yaml')==h(installed/'pnpm-lock.yaml');commands=[['CHAPTER10_CANONICAL',['/private/tmp/libx-release-content-python-837/bin/python','docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10/apply-update.py']],['CHAPTER10_CONTEXT',['/private/tmp/libx-release-content-python-837/bin/python','docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10/prepare-context.py']],['BUILD',['pnpm','--filter=apps-gnu-diffutils','build']]];rows=[]
+for name,cmd in commands:
+ log=E/('CORRECTED_'+name+'.log')
+ with log.open('w')as out:r=subprocess.run(cmd,cwd=Q,env=dict(os.environ,LIBX_UPDATE_WORKSPACE=str(Q)),stdout=out,stderr=subprocess.STDOUT)
+ rows.append({'name':name,'command':cmd,'exitCode':r.returncode,'log':str(log.relative_to(R))});print(name,r.returncode,flush=True);assert r.returncode==0
+(E/'RECONSTRUCTION_EXECUTION.json').write_text(json.dumps({'status':'passed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'freshReplaySteps':3,'reusedUnchangedSteps':12,'reusedFrom':{'path':str((E/'before-source-readme/RECONSTRUCTION_EXECUTION.json').relative_to(R)),'sha256':h(E/'before-source-readme/RECONSTRUCTION_EXECUTION.json')},'independentDependencies':'Same corrected Q workspace frozenlock offline install retained; installed dependency inputs unchanged; no formalworkspace borrowed deps','rows':rows},indent=2)+'\n')

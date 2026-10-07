@@ -1,0 +1,83 @@
+{
+  "slug": "72-patching-timestamps",
+  "bodySHA256": "722c6f9e0fe9a17d3650035dc6a2b440b2cf91e57d6dba3a2d8949b297dc3095",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧10.5 Updating Timestamps on Patched Files⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Updating-Timestamps-on-Patched-Files\"><span>10.5 Updating Timestamps on Patched Files</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "When ⟦0⟧ updates a file, it normally sets the file’s last-modified timestamp to the current time of day. If you are using ⟦1⟧ to track a software distribution, this can cause ⟦2⟧ to incorrectly conclude that a patched file is out of date. For example, if ⟦3⟧ depends on ⟦4⟧, and ⟦5⟧ updates ⟦6⟧ and then ⟦7⟧, then ⟦8⟧ will normally appear to be out of date with respect to ⟦9⟧ even though its contents are actually up to date.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "<code class=\"command\">make</code>",
+        "⟦3⟧": "<samp class=\"file\">syntax.c</samp>",
+        "⟦4⟧": "<samp class=\"file\">syntax.y</samp>",
+        "⟦5⟧": "<code class=\"command\">patch</code>",
+        "⟦6⟧": "<samp class=\"file\">syntax.c</samp>",
+        "⟦7⟧": "<samp class=\"file\">syntax.y</samp>",
+        "⟦8⟧": "<samp class=\"file\">syntax.c</samp>",
+        "⟦9⟧": "<samp class=\"file\">syntax.y</samp>"
+      },
+      "sourceHTML": "<p>When <code class=\"command\">patch</code> updates a file, it normally sets the file’s\nlast-modified timestamp to the current time of day.  If you are using\n<code class=\"command\">patch</code> to track a software distribution, this can cause\n<code class=\"command\">make</code> to incorrectly conclude that a patched file is out of\ndate.  For example, if <samp class=\"file\">syntax.c</samp> depends on <samp class=\"file\">syntax.y</samp>, and\n<code class=\"command\">patch</code> updates <samp class=\"file\">syntax.c</samp> and then <samp class=\"file\">syntax.y</samp>, then\n<samp class=\"file\">syntax.c</samp> will normally appear to be out of date with respect to\n<samp class=\"file\">syntax.y</samp> even though its contents are actually up to date.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "The ⟦0⟧ (⟦1⟧) option causes ⟦2⟧ to set a patched file’s modification and access times to the timestamps given in context diff headers. If the context diff headers do not specify a time zone, they are assumed to use Coordinated Universal Time (UTC, often known as GMT).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--set-utc</samp>",
+        "⟦1⟧": "<samp class=\"option\">-Z</samp>",
+        "⟦2⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>The <samp class=\"option\">--set-utc</samp> (<samp class=\"option\">-Z</samp>) option causes <code class=\"command\">patch</code> to\nset a patched file’s modification and access times to the timestamps\ngiven in context diff headers.  If the context diff headers do not\nspecify a time zone, they are assumed to use Coordinated Universal\nTime (UTC, often known as GMT).\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The ⟦0⟧ (⟦1⟧) option acts like ⟦2⟧ or ⟦3⟧, except that it assumes that the context diff headers’ timestamps use local time instead of UTC. This option is not recommended, because patches using local time cannot easily be used by people in other time zones, and because local timestamps are ambiguous when local clocks move backwards during daylight-saving time adjustments. If the context diff headers specify a time zone, this option is equivalent to ⟦4⟧ (⟦5⟧).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--set-time</samp>",
+        "⟦1⟧": "<samp class=\"option\">-T</samp>",
+        "⟦2⟧": "<samp class=\"option\">-Z</samp>",
+        "⟦3⟧": "<samp class=\"option\">--set-utc</samp>",
+        "⟦4⟧": "<samp class=\"option\">--set-utc</samp>",
+        "⟦5⟧": "<samp class=\"option\">-Z</samp>"
+      },
+      "sourceHTML": "<p>The <samp class=\"option\">--set-time</samp> (<samp class=\"option\">-T</samp>) option acts like <samp class=\"option\">-Z</samp> or\n<samp class=\"option\">--set-utc</samp>, except that it assumes that the context diff\nheaders’ timestamps use local time instead of UTC.  This option\nis not recommended, because patches using local time cannot easily be\nused by people in other time zones, and because local timestamps are\nambiguous when local clocks move backwards during daylight-saving time\nadjustments.  If the context diff headers specify a time zone, this\noption is equivalent to <samp class=\"option\">--set-utc</samp> (<samp class=\"option\">-Z</samp>).\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "⟦0⟧ normally refrains from setting a file’s timestamps if the file’s original last-modified timestamp does not match the time given in the diff header, of if the file’s contents do not exactly match the patch. However, if the ⟦1⟧ (⟦2⟧) option is given, the file’s timestamps are set regardless.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<samp class=\"option\">--force</samp>",
+        "⟦2⟧": "<samp class=\"option\">-f</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">patch</code> normally refrains from setting a file’s timestamps if\nthe file’s original last-modified timestamp does not match the time\ngiven in the diff header, of if the file’s contents do not exactly\nmatch the patch.  However, if the <samp class=\"option\">--force</samp> (<samp class=\"option\">-f</samp>)\noption is given, the file’s timestamps are set regardless.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Due to the limitations of the current ⟦0⟧ format, ⟦1⟧ cannot update the times of files whose contents have not changed. Also, if you set file timestamps to values other than the current time of day, you should also remove (e.g., with ‘⟦2⟧’) all files that depend on the patched files, so that later invocations of ⟦3⟧ do not get confused by the patched files’ times.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "<samp class=\"samp\">make\nclean</samp>",
+        "⟦3⟧": "<code class=\"command\">make</code>"
+      },
+      "sourceHTML": "<p>Due to the limitations of the current <code class=\"command\">diff</code> format,\n<code class=\"command\">patch</code> cannot update the times of files whose contents have\nnot changed.  Also, if you set file timestamps to values other than\nthe current time of day, you should also remove (e.g., with ‘<samp class=\"samp\">make\nclean</samp>’) all files that depend on the patched files, so that later\ninvocations of <code class=\"command\">make</code> do not get confused by the patched\nfiles’ times.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}
