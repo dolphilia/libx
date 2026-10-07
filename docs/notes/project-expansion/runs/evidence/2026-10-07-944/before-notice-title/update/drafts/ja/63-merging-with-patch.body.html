@@ -1,0 +1,9 @@
+<div class="gnu-diffutils-original-content" id="Merging-with-patch">
+<h2 class="chapter" id="Merging-with-patch-1"><span>10 <code class="command">patch</code>によるマージ</span></h2>
+<p><code class="command">patch</code>は<code class="command">diff</code>が生成した比較出力を受け取り、その差分を元ファイルのコピーに適用して、パッチ適用済みの版を作ります。<code class="command">patch</code>を使えば、ファイル一式を丸ごと配布する代わりに変更だけを配布できます。受け取った人は<code class="command">patch</code>で変更を適用し、自分のファイルのコピーを更新できます。<code class="command">patch</code>は diff の形式を自動判定し、前後のヘッダーを読み飛ばし、ヘッダーからパッチの適用対象を判断します。このため、差分を含むメールをそのまま<code class="command">patch</code>に渡せます。</p>
+<p><code class="command">patch</code>は、順方向のパッチなどのよくある問題を検出して警告し、適用できなかったパッチを保存します。また、<code class="code">patchlevel.h</code>ファイルを管理して、受け取った人が差分を正しい順序で適用するようにできます。</p>
+<p><code class="command">patch</code>は標準入力から一連の差分を受け取ります。通常、各差分は適用対象を指定するヘッダーで区切られています。<code class="command">diff</code>のハンク（<a class="pxref" href="#Hunks">ハンク</a>参照）を一つずつ適用します。ハンクが元ファイルと完全には一致しない場合、<code class="command">patch</code>はヒューリスティックを使って可能な限り適用を試みます。近似一致も見つからなければ、<code class="command">patch</code>はそのハンクを拒否して次へ進みます。通常、<code class="command">patch</code>は各ファイル<var class="var">f</var>を新版で置き換え、拒否したハンクがあれば ‘<samp class="samp"><var class="var">f</var>.rej</samp>’ に保存します。</p>
+<p><code class="command">patch</code>のオプションの詳細は、<a class="xref" href="#Invoking-patch"><code class="command">patch</code>の起動</a>を参照してください。</p>
+<hr/>
+</div>
+

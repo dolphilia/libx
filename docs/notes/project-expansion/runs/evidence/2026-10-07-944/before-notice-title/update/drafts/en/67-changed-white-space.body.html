@@ -1,0 +1,16 @@
+<div class="gnu-diffutils-original-content" id="Changed-White-Space">
+<h4 class="subsection" id="Applying-Patches-with-Changed-White-Space"><span>10.3.1 Applying Patches with Changed White Space</span></h4>
+<a class="index-entry-id" id="index-white-space-in-patches"></a>
+<p>Sometimes mailers, editors, or other programs change spaces into tabs,
+or vice versa.  If this happens to a patch file or an input file, the
+files might look the same, but <code class="command">patch</code> will not be able to match
+them properly.  If this problem occurs, use the <samp class="option">-l</samp> or
+<samp class="option">--ignore-white-space</samp> option, which makes <code class="command">patch</code> compare
+blank characters (i.e. spaces and tabs) loosely so that any nonempty
+sequence of blanks in the patch file matches any nonempty sequence of
+blanks in the input files.  Non-blank
+characters must still match exactly.  Each line of the context must
+still match a line in the input file.
+</p>
+<hr/>
+</div>

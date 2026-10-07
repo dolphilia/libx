@@ -1,0 +1,9 @@
+<div class="gnu-diffutils-original-content" id="Reversed-Patches">
+<h4 class="subsection" id="Applying-Reversed-Patches"><span>10.3.2 逆向きパッチの適用</span></h4>
+<a class="index-entry-id" id="index-reversed-patches"></a>
+<p><code class="command">diff</code>を実行する際、新ファイルを2番目ではなく先に指定してしまうことがあります。こうして作られる差分は「逆向き」です。このパッチを適用するには、<code class="command">patch</code>に<samp class="option">--reverse</samp>（<samp class="option">-R</samp>）オプションを指定してください。<code class="command">patch</code>は各ハンクの向きを反転してから適用を試みます。拒否されたハンクも反転した形式で出力されます。</p>
+<p><code class="command">patch</code>は多くの場合、パッチが逆向きだと推測できます。最初のハンクの適用に失敗すると、<code class="command">patch</code>はハンクを反転して適用できるか調べます。適用できれば<code class="command">patch</code>は<samp class="option">-R</samp>オプションを有効にするか尋ね、できなければ<code class="command">patch</code>は通常の向きで適用を続けます。ただし、通常形式の diff で最初のコマンドが追加（本来は削除）だと、この方法で逆向きだと検出できません。空のコンテキストはどこにでも一致するため、追加は常に成功するからです。しかし多くのパッチは削除より追加や変更が多く、その逆向きの通常形式 diff は多くの場合削除から始まります。この削除が失敗すると<code class="command">patch</code>が気づきます。</p>
+<p>適用済みのパッチを再度適用すると、<code class="command">patch</code>は逆向きパッチだと考えて、適用を取り消すか尋ねます。これは機能と考えることもできます。誤ってそうした場合に取り消したくなければ、この問いと続く「それでも適用するか」の問いに ‘<samp class="samp">n</samp>’ と答えるか、<kbd class="kbd">C-c</kbd>を入力して<code class="command">patch</code>のプロセスを終了してください。</p>
+<hr/>
+</div>
+

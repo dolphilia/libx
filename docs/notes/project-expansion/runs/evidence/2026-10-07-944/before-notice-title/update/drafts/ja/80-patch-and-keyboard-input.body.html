@@ -1,0 +1,12 @@
+<div class="gnu-diffutils-original-content" id="patch-and-Keyboard-Input">
+<h4 class="subsection" id="Inhibiting-Keyboard-Input"><span>10.11.2 キーボード入力の抑制</span></h4>
+<a class="index-entry-id" id="index-keyboard-input-to-patch"></a>
+<p><code class="command">patch</code>が質問しないようにする方法は2つあります。<samp class="option">--force</samp>（<samp class="option">-f</samp>）オプションは、ユーザーが動作を理解していると見なし、<code class="command">patch</code>に次のように動作させます。</p>
+<ul class="itemize mark-bullet">
+<li>ヘッダーにファイル名のないパッチを読み飛ばします。</li><li>ファイルの版がパッチの ‘<samp class="samp">Prereq:</samp>’ 行で指定したものと違っても、適用します。</li><li>逆向きに見えるパッチでも、逆向きでないものと見なします。</li></ul>
+<p><samp class="option">--batch</samp>（<samp class="option">-t</samp>）オプションも<samp class="option">-f</samp>と同様に質問を抑制しますが、前提が少し異なります。</p>
+<ul class="itemize mark-bullet">
+<li>ヘッダーにファイル名のないパッチを読み飛ばします（<samp class="option">-f</samp>と同じ）。</li><li>ファイルの版がパッチの ‘<samp class="samp">Prereq:</samp>’ 行の指定と違う場合、そのパッチを読み飛ばします。</li><li>逆向きに見えるパッチは、逆向きだと見なします。</li></ul>
+<hr/>
+</div>
+

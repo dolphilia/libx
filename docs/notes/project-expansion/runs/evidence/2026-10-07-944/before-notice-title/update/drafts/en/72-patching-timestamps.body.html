@@ -1,0 +1,43 @@
+<div class="gnu-diffutils-original-content" id="Patching-Timestamps">
+<h3 class="section" id="Updating-Timestamps-on-Patched-Files"><span>10.5 Updating Timestamps on Patched Files</span></h3>
+<a class="index-entry-id" id="index-timestamps-on-patched-files"></a>
+<p>When <code class="command">patch</code> updates a file, it normally sets the file’s
+last-modified timestamp to the current time of day.  If you are using
+<code class="command">patch</code> to track a software distribution, this can cause
+<code class="command">make</code> to incorrectly conclude that a patched file is out of
+date.  For example, if <samp class="file">syntax.c</samp> depends on <samp class="file">syntax.y</samp>, and
+<code class="command">patch</code> updates <samp class="file">syntax.c</samp> and then <samp class="file">syntax.y</samp>, then
+<samp class="file">syntax.c</samp> will normally appear to be out of date with respect to
+<samp class="file">syntax.y</samp> even though its contents are actually up to date.
+</p>
+<p>The <samp class="option">--set-utc</samp> (<samp class="option">-Z</samp>) option causes <code class="command">patch</code> to
+set a patched file’s modification and access times to the timestamps
+given in context diff headers.  If the context diff headers do not
+specify a time zone, they are assumed to use Coordinated Universal
+Time (UTC, often known as GMT).
+</p>
+<p>The <samp class="option">--set-time</samp> (<samp class="option">-T</samp>) option acts like <samp class="option">-Z</samp> or
+<samp class="option">--set-utc</samp>, except that it assumes that the context diff
+headers’ timestamps use local time instead of UTC.  This option
+is not recommended, because patches using local time cannot easily be
+used by people in other time zones, and because local timestamps are
+ambiguous when local clocks move backwards during daylight-saving time
+adjustments.  If the context diff headers specify a time zone, this
+option is equivalent to <samp class="option">--set-utc</samp> (<samp class="option">-Z</samp>).
+</p>
+<p><code class="command">patch</code> normally refrains from setting a file’s timestamps if
+the file’s original last-modified timestamp does not match the time
+given in the diff header, of if the file’s contents do not exactly
+match the patch.  However, if the <samp class="option">--force</samp> (<samp class="option">-f</samp>)
+option is given, the file’s timestamps are set regardless.
+</p>
+<p>Due to the limitations of the current <code class="command">diff</code> format,
+<code class="command">patch</code> cannot update the times of files whose contents have
+not changed.  Also, if you set file timestamps to values other than
+the current time of day, you should also remove (e.g., with ‘<samp class="samp">make
+clean</samp>’) all files that depend on the patched files, so that later
+invocations of <code class="command">make</code> do not get confused by the patched
+files’ times.
+</p>
+<hr/>
+</div>
