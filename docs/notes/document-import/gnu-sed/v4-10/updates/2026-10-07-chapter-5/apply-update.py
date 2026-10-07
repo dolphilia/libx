@@ -1,8 +1,9 @@
 from pathlib import Path
 from bs4 import BeautifulSoup,NavigableString
-import json,hashlib,re,copy,os
+import json,hashlib,re,copy,os,html
 N=Path(__file__).resolve().parent;P=N.parents[1];W=P.parents[4];A=W/'apps/gnu-sed';assert os.environ.get('LIBX_UPDATE_WORKSPACE')==str(W),'Explicit isolatedworkspace required; no root draft publication';assert A.is_dir();sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();plan=json.loads((N/'PAGE_PLAN.json').read_text());review=json.loads((N/'DRAFT_REVIEW_MANIFEST.json').read_text());assert review['completedPages']==14 and review['allUnitsReviewed']==179;owners={};literal=[];old={str(p.relative_to(A)):sha(p)for p in (A/'src/content/docs/v4-10').rglob('*.md')if p.parent.name=='02-reference' or int(p.name.split('-')[0])<=18};manual=BeautifulSoup((P/'source/derived/manual.html').read_bytes(),'html.parser');assert sha(P/'source/derived/manual.html')==plan['source']['sha256']
 for f in sorted((A/'src/content/docs/v4-10/en/01-guide').glob('*.md')):
+ if int(f.name.split('-')[0])>18:continue
  s=BeautifulSoup(f.read_text().split('---',2)[2],'html.parser')
  for node in s.select('[id]'):assert node['id']not in owners;owners[node['id']]=f.stem
 for row in plan['pages']:
@@ -18,7 +19,7 @@ for row,proof in zip(plan['pages'],review['pages']):
   assert s.get_text()==before;title=s.find(['h2','h3','h4']).get_text(' ',strip=True);title=re.sub(r'^\d+(?:\.\d+)*\s+','',title);heads['v4-10/'+lang+'/01-guide/'+row['slug']]=[{'depth':int(x.name[1]),'slug':x['id'],'text':x.get_text(' ',strip=True)}for x in s.find_all(re.compile('^h[1-6]$'))if x.has_attr('id')]
   tokens={}
   for i,pre in enumerate(s.select('pre')):
-   key='LIBX_GREP_UPDATE_PRE_'+str(i)+'_END';value='<pre class="gnu-sed-literal">'+''.join(str(c)for c in pre.contents)+'</pre>'
+   key='LIBX_GREP_UPDATE_PRE_'+str(i)+'_END';value='<pre class="gnu-sed-literal">'+''.join(html.escape(str(c),quote=False)if isinstance(c,NavigableString)else str(c)for c in pre.contents)+'</pre>'
    for char,entity in [('\n','&#10;'),('\t','&#9;'),('`','&#96;'),('*','&#42;'),('_','&#95;')]:value=value.replace(char,entity)
    tokens[key]=value;pre.replace_with(NavigableString(key))
   raw=str(s)
