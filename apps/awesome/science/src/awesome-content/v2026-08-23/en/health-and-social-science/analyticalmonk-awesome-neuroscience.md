@@ -1,29 +1,12 @@
 ---
 title: "Awesome Neuroscience"
-description: "A curated collection of resources and projects focused on Neuroscience."
+description: "Neuroscience software and libraries by programming language, plus books, courses, communities, and other resources."
 licenseSource: "github-analyticalmonk-awesome-neuroscience-readme-md"
 ---
 
 # Awesome Neuroscience
 
-A curated collection of resources and projects focused on Neuroscience.
-
-## Contents
-
-- [Programming](#programming)
-  - [Python](#python)
-  - [Matlab](#matlab)
-  - [C++](#c)
-  - [JavaScript](#javascript)
-  - [R](#r)
-- [Resources](#resources)
-  - [Ebooks](#ebooks)
-  - [Blogs](#blogs)
-  - [MOOCs](#moocs)
-  - [Communities](#communities)
-  - [Newsletters](#newsletters)
-  - [Miscellaneous](#miscellaneous)
-
+[Neuroscience](https://en.wikipedia.org/wiki/Neuroscience) studies how the nervous system develops, its structure, and its functions. Neuroscientists focus on the brain and its effects on behavior and cognitive functions. Traditionally viewed as a branch of biology, neuroscience has expanded into interdisciplinary fields that work together to explain brain function at multiple levels of investigation. This curated list covers neuroscience software, libraries, and related learning resources, including ebooks, blogs, online courses, communities, newsletters, and other materials. Descriptions and status or availability claims follow the fixed source snapshot.
 
 ## Programming
 Software, libraries and frameworks for development purposes.
@@ -31,17 +14,17 @@ Software, libraries and frameworks for development purposes.
 ### Python
 
 - [Nengo](https://github.com/nengo/nengo) - Library for creating and simulating large-scale brain models.
-- [Nitime](https://github.com/nipy/nitime) - Timeseries analysis for neuroscience data.
-- [Nilearn](https://github.com/nilearn/nilearn) - Module for performing statistical learning/machine learning on NeuroImaging data.
+- [Nitime](https://github.com/nipy/nitime) - Time-series analysis for neuroscience data.
+- [Nilearn](https://github.com/nilearn/nilearn) - Module for performing statistical learning/machine learning on neuroimaging data.
 - [DIPY](https://github.com/nipy/dipy) - Toolbox for analysis of MR diffusion imaging.
 - [MNE-Python](https://github.com/mne-tools/mne-python) - Community-driven software for processing time-resolved neural signals including electroencephalography (EEG) and magnetoencephalography (MEG).
 - [NiBabel](https://github.com/nipy/nibabel) - Provides read and write access to some common medical and neuroimaging file formats.
 - [PsychoPy](https://github.com/psychopy/psychopy) - Package for running psychology and neuroscience experiments. It allows for creating psychology stimuli in Python.
 - [Brian2](https://github.com/brian-team/brian2) - Free, open source simulator for spiking neural networks.
 - [expyriment](https://github.com/expyriment/expyriment) - Platform-independent lightweight Python library for designing and conducting timing-critical behavioural and neuroimaging experiments.
- - [BindsNET](https://github.com/Hananel-Hazan/bindsnet) - Package for simulating spiking neural networks for reinforcement & machine learning.
- - [SpikeInterface](https://github.com/SpikeInterface/spikeinterface) - Framework designed to unify spike-sorting technologies
- - [NiMARE](https://nimare.readthedocs.io/en/latest/) - NiMARE is a Python package for neuroimaging meta-analyses
+- [BindsNET](https://github.com/Hananel-Hazan/bindsnet) - Package for simulating spiking neural networks for reinforcement & machine learning.
+- [SpikeInterface](https://github.com/SpikeInterface/spikeinterface) - Framework designed to unify spike-sorting technologies
+- [NiMARE](https://nimare.readthedocs.io/en/latest/) - NiMARE is a Python package for neuroimaging meta-analyses
 - [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut) - Markerless pose estimation toolkit for animal behavior analysis using transfer learning with deep neural networks.
 - [CaImAn](https://github.com/flatironinstitute/CaImAn) - Computational toolbox for large-scale calcium imaging data analysis, including motion correction, source extraction, and deconvolution.
 - [Elephant](https://github.com/NeuralEnsemble/elephant) - Library for the analysis of electrophysiology data, providing tools for spike train statistics, signal processing, and connectivity analysis.
@@ -69,7 +52,7 @@ Software, libraries and frameworks for development purposes.
 - [Brayns](https://github.com/BlueBrain/Brayns) - Minimalistic visualiser that can perform ray-traced rendering of neurons. Ray-tracing can help to highlight areas of neural circuits where cells touch each other and where synapses are being created leading to a better understanding of how individual cells and subsequently the brain functions.
 
 ### JavaScript
-- [Brainbrowser](https://github.com/aces/brainbrowser) - Library exposing set of web-based 3D visualization tools primarily targetting neuroimaging.
+- [Brainbrowser](https://github.com/aces/brainbrowser) - Library exposing set of web-based 3D visualization tools primarily targeting neuroimaging.
 - [jsPsych](https://www.jspsych.org/) - Library for creating and running behavioural experiments in a web browser.
 
 ### R
@@ -80,7 +63,7 @@ Software, libraries and frameworks for development purposes.
 Interesting resources related to neuroscience.
 
 ### Ebooks
-- [Neuroscience Online](http://nba.uth.tmc.edu/neuroscience/m/index.htm) - Open-access electronic textbook and interactive courseware covering neuroscience in depth. Provided by the Department of Neurobiology and Anantomy at the University of Texas Medical School at Houston.
+- [Neuroscience Online](http://nba.uth.tmc.edu/neuroscience/m/index.htm) - Open-access electronic textbook and interactive courseware covering neuroscience in depth. Provided by the Department of Neurobiology and Anatomy at the University of Texas Medical School at Houston.
 - [Computational Cognitive Neuroscience](https://compcogneuro.org/book) - Text which provides an in-depth introduction to the main ideas in the computational cognitive neuroscience, a field which aims to understand the brain by using biologically based computational models.
 - [Neuronal Dynamics](https://neuronaldynamics.epfl.ch) - Open-access electronic textbook that covers computational and theoretical neuroscience. Provided by École Polytechnique Fédérale de Lausanne (EPFL).
 - [Andy's Brain Book](https://andysbrainbook.readthedocs.io/en/latest/) - Book companion to [Andy's Brain Blog](https://www.andysbrainblog.com/). Provides an introduction to working in a Unix environment, fMRI analysis, and commonplace neuroimaging tools and topics.
@@ -117,21 +100,9 @@ MOOCs may be patterned on a college or university course or may be less structur
 - [ModelDB](https://modeldb.science/) - Searchable database for computational neuroscience models.
 - [NeuroElectro](https://neuroelectro.org/) - Searchable database of neurons and their electrophysiological properties (extracted from literature)
 - [Neuroscience Mindmap](https://learn-anything.xyz/neuroscience) - Interactive mindmap containing curated resources for anyone interested in learning neuroscience.
-- [neuroSummerSchools](https://github.com/PhABC/neuroSummerSchools) - List of summer (and seasonal) summer schools in neuroscience and related fields.
+- [neuroSummerSchools](https://github.com/PhABC/neuroSummerSchools) - List of summer and other seasonal schools in neuroscience and related fields.
 - [Brain Matters](https://brainpodcast.com/) - Neuroscience podcast where real neuroscientists sit down and talk about the brain.
 - [NeuroHackademy](https://neurohackademy.org/) - Summer school in neuroimaging and data science, held at the University of Washington eScience Institute. Lectures are available through the institute's [YouTube channel](https://www.youtube.com/@UWeScienceInstitute).
 - [SORTED](https://github.com/PTDZ/SORTED) - SORTED: a list of interesting science ideas and links (cognitive/neuro & data science)
 - [BIDS](https://bids.neuroimaging.io/) - Brain Imaging Data Structure: community standard for organizing neuroimaging and behavioral data, supported by most modern neuroimaging tools.
 - [OpenNeuro](https://openneuro.org/) - Free and open platform for sharing and analyzing neuroimaging data (MRI, MEG, EEG, iEEG, ECoG, ASL, PET).
-
-## Contribute
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/analyticalmonk/awesome-neuroscience/blob/33ca06398bff26a53a913f0ea7a600e5e18164eb/contributing.md) first.
-
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](http://creativecommons.org/publicdomain/zero/1.0)
-
-To the extent possible under law, [Akash Tandon](https://github.com/analyticalmonk) has waived all copyright and
-related or neighboring rights to this work.

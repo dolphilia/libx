@@ -6379,3 +6379,38 @@
 - 検証済み変更をorigin/codex/awesome-editorial-isolated-20261007へcommit/push/remote照合。次176 github-analyticalmonk-awesome-neuroscience-readme-md。固定rawと旧英日全文の先行読了証拠をhash照合して再利用し、権利放棄注記の出典表示を未編集本文のscience build/英日PC実表示で事前確認してから本文編集。
 
 - 175保存時の追加記録: heredoc作成がENOSPC(ec4e53)で開始前失敗。globalは78fc78 actual exit0/OK。本worktree統合dist173MB・group-outputs174MBのみcaed86で整理、個別appと保存済みHTML/ビルド証拠・元mainを保持。容量8790a3約150MiBから回復。workflow hash同一で829681全文証拠再利用、c9eaedでbranch非配信対象/未送信0/main既存295件全保持と現在297件確認。233verified反映と同一入力監査2ebe7c actual exit0。
+
+### バッチ175送信確認・176開始 (2026-10-07T00:00:22.822Z)
+
+- ZeroNet commit972dec810d9258829325848896f3d3a477559452。53対象set一致0f2ff2、commit8d0e2e exit0、push3e8864 exit0、remote1eb1eb完全一致、cfc583 clean。233完了804残保留4。workflow同一とmain295既存全保持/297現在c9eaed。
+- Neuroscience固定rawと旧英日全文f61b81/920d40の先行読了を現在hash照合で再利用。raw→EN別パス5acbf3全全文、草稿ENJAはtempのみで本文未変更。LicenseのAkash Tandon権利放棄全条件を共通出典通知へ保存し未編集本文で事前表示確認してから整理。次Neuroscience権利放棄通知を出典へ保存→registry→未編集英日science build/HTML/2PC出典表示事前確認→EN/JA全レビュー/対応/overlay/replay/gates/全2074hash/anchor/build/4UI/global→verified234→commit/push→177 BioIE。
+
+- 2026-10-07T00:00:23.005Z batch176-source-notice-saved-preflight-build-pending。233完了804残保留4。進捗8a9ac955b38b4dfdae55df950b09a9203eff2984cb40d6b364ed5bc1a7c2c967。次source registry生成/check→元英日本文を維持したままscience build→出典通知の英日実表示を確認してproof保存→初稿EN/JA・3別全文review→overlay/gate/build/HTML/4UI/global→verified234/commit/push。
+
+- 2026-10-07T00:02:43.599Z batch176-preflight-notice-three-full-reviews-complete-correspondence-pending。233完了804残保留4。進捗fbdf11efd1612690cbc40e793fc9c44282711dfbcc7c0eaaf8d31c22d494763b。次全raw103/旧EN100/旧JA120の単位分類と全英日対応/旧14有用見出し保持を証拠化→overlay反映→2replay/8gate/2074hash/anchor/sciencebuild/4UI/global→verified234→push→177。
+
+- 2026-10-07T00:04:20.149Z batch176 Neuroscience全3別パスreview: raw→EN5acbf3、英日09cf32、JA単独8e1425全文（専門名1修正とMOOC空aliasも再読）。source notice未編集build04b2ad/HTML92a4f3/英日PC実表示確認・tab17終了preview e10a7a exit0。raw103/旧EN100/旧JA120→EN81/JA99、14head/63資料/9alias全対応4edee8。原文の全条件保持・権利放棄移動。資料数初期62assertは実63に修正して一致確認。overlay再生一致と本文/証拠/台帳反映、translated-ja。次2replay/通常8gate/全2074hash/fragment→science build全7input hash/HTML14head/63list/9alias/英日PCmobile4UI/出典全権利放棄通知→global→verified234→commit/push→177 BioIE
+
+- 2026-10-07T00:07:47.860Z batch176-generation-gates-passed-build-pending。233完了804残保留4。進捗78f1e9c6b3e23c0b5b5ee96d0edb489e28e4f7674aaefc87f3220b4e32e4d01b。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML14見出し/63資料/9alias/旧有用ID保持/英日PCmobile実UI→global→verified234/commit/push。
+
+- 2026-10-07T00:11:00.977Z batch176-author-link-repair-baseline-preflight-build-pending。233完了804残保留4。進捗5a47a75bf86d89afcc6ff99819f3dd7c16e705e745d9977a739e9c5f2c9b9351。次registry→元英日本文でscience build/3出典リンク英日PC確認→編集本文ハッシュ同一へ復元/対応とレビューのprovenanceEvidence更新→全通常検査/最終build/4UI/global→verified234。
+
+- 2026-10-07T00:15:17.713Z batch176-author-link-preflight-complete-final-body-restored。233完了804残保留4。進捗5716a449120f0eded461f38cb80e419c2bb70b5d6e2bdf8dc10c494b4deaf4f2。次対応/レビュー証拠に作者URLの事前確認を反映→2replay/通常8gate/全2074hash/anchor→修正後science build/4UI/global→verified234→commit/push→177 BioIE。
+
+- 2026-10-07T00:15:17.866Z batch176-author-link-review-evidence-updated-gates-pending。233完了804残保留4。進捗d625c87d0a5cc4200050d513340c84aa8473fc1f14a87a9034d4969a88e30317。次対応/レビュー証拠に作者URLの事前確認を反映→2replay/通常8gate/全2074hash/anchor→修正後science build/4UI/global→verified234→commit/push→177 BioIE。
+
+- 2026-10-07T00:18:46.047Z batch176-generation-gates-passed-build-pending。233完了804残保留4。進捗2f5de07b88275e69025f1f3a5dcaf4946372c0b9474b28f4c334ba06a44998e7。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML14見出し/63資料/9alias/旧有用ID保持/英日PCmobile実UI→global→verified234/commit/push。
+
+- 2026-10-07T00:20:21.076Z batch176-build-html-complete-four-ui-pending。233完了804残保留4。進捗eb52bec569ecfda7ef3188abac786049fafa8665135af797e28a043e5c9c09c4。次英日PC1440/mobile390導入/長いBrayns条件とMOOC/63資料のlist折返し/自動目次/出典全権利放棄通知と3リンク/言語/版/隣接操作実UI→global→verified234→commit/push→177 BioIE。
+
+- 2026-10-07T00:22:10.821Z batch176-four-ui-content-reviewed-global-pending。233完了804残保留4。進捗0d869c5ec87e65e0e10934b06d77c605ee74be7d32be0ac218630f94488ff0c1。次全1037台帳global/全2074hash/diff→verified234→commit/push/hash照合→177 BioIE fixedraw/旧EN/旧JA全文。
+
+- 2026-10-07T00:23:10.874Z batch176-verified234-save-push-pending。234完了803残保留4。進捗7e963f1ae944fe1f118947b1f34d964e7a0a3ea31996cbd8fc0d4df7cd3b478d。次234完了803残保留4。Neuroscience全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次177 github-caufieldjh-awesome-bioie-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ176 Neuroscience検証完了・保存準備 (2026-10-07T00:23:15.992Z)
+
+- 固定raw137行103単位、旧EN137行100単位/旧JA137行120単位をf61b81/920d40で全文読了。raw→EN別パス5acbf3全全文、英日09cf32と修正再読8e1425、JA単独8e1425全3435tokens省略なし。英日全diff eb689e。実モデルCodex current session/APIモデル識別子取得不能、委任・ローカルLLMなし。最終EN 2e801aac02e665c74318e99c4642866ffaec1c6252b2b2ccfeab49b7055cbeba/JA cf8d203041eba07db5271638a46dd7f4dd93283542ed8bfce4dd98b4ba13e680。
+- Wikipediaの神経系発達/構造/機能・脳と行動/認知・学際性/研究レベルの原文定義を復元。14見出し/13分類/63資料の全説明条件・主URL/副URL保持。Anantomy→Anatomy/解剖学、計算論的認知神経科学、time-series/neuroimaging/targeting表記を修正。Braynsの接触/シナプス/細胞から脳理解、fMRIPrepのほぼ全dataset/最小介入、実験タイミング、標準/形式、fMRI失敗修正と新手法、3週間スクール/講義YouTube、無料遠隔MOOCの構造化/自由構成条件も保持。一般見出しと講座名を翻訳し書籍・識別子は同定用保持。
+- Licenseの法律上可能な範囲/Akash Tandon/全著作権/関連または隣接権放棄全文をPROVENANCE_NOTESへ。初回は作者URLが出典に未追加だったため、ガイドの本文内URL代替禁止に従いPROVENANCE_ATTRIBUTIONSを追加し元英日本文へ一時復元。新registry/check・元本文build7a42cb exit0/HTML e13a4d/英日PC1440実スクリーンショットで全文と原文/CC0/作者プロフィール3リンク・実href確認。tab18終了/viewport復元/preview86242 e70c48 exit0後、同一ハッシュの編集本文へ復元7c43bb。旧2リンクの事前確認・旧最終config検査は新設定の最終証拠に流用しない。
+- 全raw103/旧EN100/旧JA120→EN81/JA99対応、9JAalias/旧14有用ID保全。本文/overlay/レビューrelocate証拠へ追加作者URL事前確認反映。2replay/通常8gate3ad26e actual exit0、全2074hash/全fragment incoming0、science fresh統合build 入力証拠参照、全7子開始時/現在/成果物入力一致、14head/63list/26TOC/9alias/画像表0/3出典URL/統合HTML一致。4実表示と操作は保存UI証拠69789c3b5782f98c37dda5e3bfddf3dc499adcfc264d4d340397e168dd036168参照。global 2e4fbd session34103 actual exit0/diff合格、234完了803残保留4、状態変更後の全入力同一を照合してglobal再利用。
+- EXCLUSIONS判断同一のtimestampのみ復元。外部リンク報告・本文・overlay・レビュー・出典設定・生成物・台帳を対応させ保存。元main他作業変更の上書き、編集を失うimport/publish、検査無効化、外部公開/PR/dispatch/定期設定/Workersなし。送信は非配信branch origin/codex/awesome-editorial-isolated-20261007。次177 github-caufieldjh-awesome-bioie-readme-md。先行全文読了証拠を現在ハッシュで照合し、固定CREDITS/LICENSE保存、元英日で出典追加事前表示確認→全3別パスレビュー/対応/overlay/検査/表示へ。177草稿はtmpのみ・未検証として分離。

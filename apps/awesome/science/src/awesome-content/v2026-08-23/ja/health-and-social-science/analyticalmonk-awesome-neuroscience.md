@@ -1,29 +1,12 @@
 ---
 title: "Awesome Neuroscience"
-description: "Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "神経科学のソフトウェアとライブラリを言語別に紹介し、書籍、講座、コミュニティなどの資料を収録。"
 licenseSource: "github-analyticalmonk-awesome-neuroscience-readme-md"
 ---
 
 # Awesome Neuroscience
 
-Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
-
-## 目次
-
-- [プログラミング](#programming)
-  - [Python](#python)
-  - [Matlab](#matlab)
-  - [C++](#c)
-  - [JavaScript](#javascript)
-  - [R](#r)
-- [リソース](#resources)
-  - [電子書籍](#ebooks)
-  - [ブログ](#blogs)
-  - [MOOC](#moocs)
-  - [コミュニティ](#communities)
-  - [ニュースレター](#newsletters)
-  - [その他](#miscellaneous)
-
+[神経科学](https://en.wikipedia.org/wiki/Neuroscience)は、神経系の発達、構造、機能を研究する学問です。神経科学者は脳と、脳が行動や認知機能に及ぼす影響に注目します。従来は生物学の一分野とされていましたが、現在はさまざまな学際的分野を含み、複数の研究レベルから脳の機能を明らかにします。この一覧は神経科学のソフトウェア、ライブラリ、関連する学習資料を収録しています。電子書籍、ブログ、オンライン講座、コミュニティ、ニュースレターなどを扱います。説明や状態・利用可能性に関する記述は固定原文に基づきます。
 
 ## プログラミング <a id="programming"></a>
 開発用途のソフトウェア、ライブラリ、フレームワーク。
@@ -39,9 +22,9 @@ Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 - [PsychoPy](https://github.com/psychopy/psychopy) - 心理学・神経科学実験を実行するパッケージ。Pythonで心理学実験用刺激を作成できる。
 - [Brian2](https://github.com/brian-team/brian2) - スパイキングニューラルネットワーク向けの無料オープンソースシミュレーター。
 - [expyriment](https://github.com/expyriment/expyriment) - タイミングが重要な行動・神経画像実験の設計と実施に使う、プラットフォーム非依存の軽量Pythonライブラリ。
- - [BindsNET](https://github.com/Hananel-Hazan/bindsnet) - 強化学習・機械学習向けスパイキングニューラルネットワークをシミュレーションするパッケージ。
- - [SpikeInterface](https://github.com/SpikeInterface/spikeinterface) - スパイクソーティング技術を統合するために設計されたフレームワーク。
- - [NiMARE](https://nimare.readthedocs.io/en/latest/) - 神経画像メタ分析用Pythonパッケージ。
+- [BindsNET](https://github.com/Hananel-Hazan/bindsnet) - 強化学習・機械学習向けスパイキングニューラルネットワークをシミュレーションするパッケージ。
+- [SpikeInterface](https://github.com/SpikeInterface/spikeinterface) - スパイクソーティング技術を統合するために設計されたフレームワーク。
+- [NiMARE](https://nimare.readthedocs.io/en/latest/) - 神経画像メタ分析用Pythonパッケージ。
 - [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut) - 深層ニューラルネットワークの転移学習を使った、動物行動分析向けマーカーレス姿勢推定ツールキット。
 - [CaImAn](https://github.com/flatironinstitute/CaImAn) - 動き補正、信号源抽出、デコンボリューションなどを含む、大規模カルシウムイメージングデータ解析用計算ツールボックス。
 - [Elephant](https://github.com/NeuralEnsemble/elephant) - スパイク列統計、信号処理、結合性解析のツールを提供する電気生理学データ解析ライブラリ。
@@ -52,7 +35,7 @@ Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 - [AllenSDK](https://github.com/AllenInstitute/AllenSDK) - Allen Brain AtlasやAllen Brain Observatoryなど、Allen Institute for Brain Scienceのデータへアクセス・処理するツールキット。
 - [Suite2p](https://github.com/MouseLand/suite2p) - 大規模二光子カルシウムイメージング記録から細胞を検出し、信号を抽出するパイプライン。
 - [Neo](https://github.com/NeuralEnsemble/python-neo) - Pythonで電気生理学データを表現するパッケージ。幅広い神経生理学ファイル形式のリーダーを備える。
-- [Monty](https://github.com/thousandbrainsproject/tbp.monty) - 新皮質のthousand brains theoryに基づく感覚運動学習フレームワーク。
+- [Monty](https://github.com/thousandbrainsproject/tbp.monty) - 新皮質のthousand brains theory（千の脳理論）に基づく感覚運動学習フレームワーク。
 - [PyNoetic](https://github.com/NeuroDiag/PyNoetic-official) - EEGブレイン・コンピューター・インターフェースをノーコードで開発するモジュール式Pythonフレームワーク。エンドツーエンドのBCI設計に対応。
 
 ### Matlab
@@ -80,8 +63,8 @@ Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 神経科学に関連する興味深いリソース。
 
 ### 電子書籍 <a id="ebooks"></a>
-- [Neuroscience Online](http://nba.uth.tmc.edu/neuroscience/m/index.htm) - 神経科学を詳しく扱うオープンアクセス電子教科書と対話型教材。University of Texas Medical School at HoustonのDepartment of Neurobiology and Anantomyが提供。
-- [Computational Cognitive Neuroscience](https://compcogneuro.org/book) - 生物学に基づく計算モデルで脳を理解することを目指す計算認知神経科学の主要概念を詳しく紹介する文書。
+- [Neuroscience Online](http://nba.uth.tmc.edu/neuroscience/m/index.htm) - 神経科学を詳しく扱うオープンアクセス電子教科書と対話型教材。ヒューストンのテキサス大学医学部の神経生物学・解剖学部門が提供。
+- [Computational Cognitive Neuroscience](https://compcogneuro.org/book) - 生物学に基づく計算モデルで脳を理解することを目指す計算論的認知神経科学の主要概念を詳しく紹介する文書。
 - [Neuronal Dynamics](https://neuronaldynamics.epfl.ch) - 計算論的・理論神経科学を扱うオープンアクセス電子教科書。École Polytechnique Fédérale de Lausanne（EPFL）が提供。
 - [Andy's Brain Book](https://andysbrainbook.readthedocs.io/en/latest/) - [Andy's Brain Blog](https://www.andysbrainblog.com/)の関連書籍。Unix環境での作業、fMRI解析、一般的な神経画像ツールと話題を紹介。
 - [NiPraxis](https://textbook.nipraxis.org/intro.html) - [NiPraxisコース](https://nipraxis.org/)の教科書。神経画像解析の基本概念と、統計学、工学、計算機科学との関係を扱う。データとコードを使い、fMRI手法の仕組み、失敗の原因と修正方法、新手法の開発方法をより深く理解できる。
@@ -91,14 +74,14 @@ Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリ�
 - [Neuroskeptic](https://www.discovermagazine.com/author/neuroskeptic) - [Discover magazine](http://discovermagazine.com/)の神経科学ブログ。神経科学、精神医学、心理学の最新動向を批判的な視点から紹介。
 - [Andy's Brain Blog](https://www.andysbrainblog.com/) - 一般的な神経画像ツールと手法を幅広く扱う記事、チュートリアル、動画の大規模コレクション。
 
-### MOOC <a id="moocs"></a>
+### 大規模公開オンライン講座（MOOC） <a id="moocs"></a><a id="mooc"></a>
 
 [大規模公開オンライン講座（MOOC）](https://en.wikipedia.org/wiki/Massive_open_online_course)は、地理的に分散した多数の学習者が参加できるよう設計された、無料のWebベース遠隔学習プログラムです。
 MOOCは大学の講義形式に沿う場合もあれば、より自由な構成の場合もあります。
 
-- [Introduction to Neuroscience | MIT OCW](https://ocw.mit.edu/courses/brain-and-cognitive-sciences/9-01-introduction-to-neuroscience-fall-2007/) - 人間の脳の構造と機能に重点を置いた、哺乳類の神経系の入門。
-- [Computational Neuroscience | Coursera](https://www.coursera.org/learn/computational-neuroscience) - 神経系が行うこととその機能を理解するための基本的な計算手法を紹介。
-- [Medical Neuroscience](https://www.coursera.org/learn/medical-neuroscience) - 人間の行動を理解するための神経生物学的枠組みを提供しながら、人間の中枢神経系の機能構成と神経生理学を探究。
+- [神経科学入門 | MIT OCW](https://ocw.mit.edu/courses/brain-and-cognitive-sciences/9-01-introduction-to-neuroscience-fall-2007/) - 人間の脳の構造と機能に重点を置いた、哺乳類の神経系の入門。
+- [計算論的神経科学 | Coursera](https://www.coursera.org/learn/computational-neuroscience) - 神経系が行うこととその機能を理解するための基本的な計算手法を紹介。
+- [医学的神経科学](https://www.coursera.org/learn/medical-neuroscience) - 人間の行動を理解するための神経生物学的枠組みを提供しながら、人間の中枢神経系の機能構成と神経生理学を探究。
 - [Neuromatch Academy](https://github.com/NeuromatchAcademy/course-content) - 3週間の計算論的神経科学集中サマースクール用Jupyter Notebook。
 
 ### コミュニティ <a id="communities"></a>
@@ -112,26 +95,14 @@ MOOCは大学の講義形式に沿う場合もあれば、より自由な構成�
 - [BrainPost](https://www.brainpost.co/) - 最新の神経科学論文を読みやすくまとめた週刊要約を配信するメーリングリスト。
 
 ### その他 <a id="miscellaneous"></a>
-- [Awesome Public Datasets - Neuroscience](https://github.com/awesomedata/awesome-public-datasets#neuroscience) - 高品質なオープン神経科学データセット。
-- [McCulloch & Pitts Neural Net Simulator](https://justinmeiners.github.io/neural-nets-sim/) - ニューロンに基づく歴史的な計算モデルのシミュレーター。
+- [Awesome Public Datasetsの神経科学データセット](https://github.com/awesomedata/awesome-public-datasets#neuroscience) - 高品質なオープン神経科学データセット。
+- [McCulloch・Pittsの神経網シミュレーター](https://justinmeiners.github.io/neural-nets-sim/) - ニューロンに基づく歴史的な計算モデルのシミュレーター。
 - [ModelDB](https://modeldb.science/) - 計算論的神経科学モデルの検索可能なデータベース。
 - [NeuroElectro](https://neuroelectro.org/) - 文献から抽出したニューロンとその電気生理学的特性を検索できるデータベース。
-- [Neuroscience Mindmap](https://learn-anything.xyz/neuroscience) - 神経科学を学びたい人向けの厳選リソースを収録する対話型マインドマップ。
+- [神経科学のマインドマップ](https://learn-anything.xyz/neuroscience) - 神経科学を学びたい人向けの厳選リソースを収録する対話型マインドマップ。
 - [neuroSummerSchools](https://github.com/PhABC/neuroSummerSchools) - 神経科学と関連分野の夏季・季節スクール一覧。
 - [Brain Matters](https://brainpodcast.com/) - 現役の神経科学者が脳について語る神経科学ポッドキャスト。
 - [NeuroHackademy](https://neurohackademy.org/) - University of Washington eScience Instituteで開催される神経画像・データ科学のサマースクール。講義は同研究所の[YouTubeチャンネル](https://www.youtube.com/@UWeScienceInstitute)で視聴可能。
 - [SORTED](https://github.com/PTDZ/SORTED) - 興味深い科学のアイデアとリンク（認知／神経科学とデータ科学）のリスト。
 - [BIDS](https://bids.neuroimaging.io/) - Brain Imaging Data Structure。神経画像・行動データを整理するコミュニティ標準で、現代の神経画像ツールの大部分が対応。
 - [OpenNeuro](https://openneuro.org/) - 神経画像データ（MRI、MEG、EEG、iEEG、ECoG、ASL、PET）を共有・解析する無料オープンプラットフォーム。
-
-## コントリビュート <a id="contribute"></a>
-
-コントリビューションを歓迎します。まず[コントリビューションガイドライン](https://github.com/analyticalmonk/awesome-neuroscience/blob/33ca06398bff26a53a913f0ea7a600e5e18164eb/contributing.md)をお読みください。
-
-
-## ライセンス <a id="license"></a>
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](http://creativecommons.org/publicdomain/zero/1.0)
-
-法律で認められる限り、[Akash Tandon](https://github.com/analyticalmonk)は本作品に関するすべての著作権および
-関連する権利または隣接権を放棄しています。
