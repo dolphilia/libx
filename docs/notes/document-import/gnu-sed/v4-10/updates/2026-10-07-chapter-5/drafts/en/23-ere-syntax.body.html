@@ -1,0 +1,47 @@
+<div class="gnu-sed-original-content" id="ERE-syntax">
+<h3 class="section" id="Overview-of-extended-regular-expression-syntax"><span>5.4 Overview of extended regular expression syntax</span></h3>
+<a class="index-entry-id" id="index-Extended-regular-expressions_002c-syntax"></a>
+<p>The only difference between basic and extended regular expressions is in
+the behavior of a few characters: ‘<samp class="samp">?</samp>’, ‘<samp class="samp">+</samp>’, parentheses,
+braces (‘<samp class="samp">{}</samp>’), and ‘<samp class="samp">|</samp>’.  While basic regular expressions
+require these to be escaped if you want them to behave as special
+characters, when using extended regular expressions you must escape
+them if you want them <em class="emph">to match a literal character</em>.  ‘<samp class="samp">|</samp>’
+is special here because ‘<samp class="samp">\|</samp>’ is a GNU extension – standard
+basic regular expressions do not provide its functionality.
+</p>
+<p>Examples:
+</p><dl class="table">
+<dt><code class="code">abc?</code></dt>
+<dd><p>becomes ‘<samp class="samp">abc\?</samp>’ when using extended regular expressions.  It matches
+the literal string ‘<samp class="samp">abc?</samp>’.
+</p>
+</dd>
+<dt><code class="code">c\+</code></dt>
+<dd><p>becomes ‘<samp class="samp">c+</samp>’ when using extended regular expressions.  It matches
+one or more ‘<samp class="samp">c</samp>’s.
+</p>
+</dd>
+<dt><code class="code">a\{3,\}</code></dt>
+<dd><p>becomes ‘<samp class="samp">a{3,}</samp>’ when using extended regular expressions.  It matches
+three or more ‘<samp class="samp">a</samp>’s.
+</p>
+</dd>
+<dt><code class="code">\(abc\)\{2,3\}</code></dt>
+<dd><p>becomes ‘<samp class="samp">(abc){2,3}</samp>’ when using extended regular expressions.  It
+matches either ‘<samp class="samp">abcabc</samp>’ or ‘<samp class="samp">abcabcabc</samp>’.
+</p>
+</dd>
+<dt><code class="code">\(abc*\)\1</code></dt>
+<dd><p>becomes ‘<samp class="samp">(abc*)\1</samp>’ when using extended regular expressions.
+Backreferences must still be escaped when using extended regular
+expressions.
+</p>
+</dd>
+<dt><code class="code">a\|b</code></dt>
+<dd><p>becomes ‘<samp class="samp">a|b</samp>’ when using extended regular expressions.  It matches
+‘<samp class="samp">a</samp>’ or ‘<samp class="samp">b</samp>’.
+</p></dd>
+</dl>
+<hr/>
+</div>

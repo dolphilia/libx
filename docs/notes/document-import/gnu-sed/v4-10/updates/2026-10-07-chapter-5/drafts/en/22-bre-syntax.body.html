@@ -1,0 +1,227 @@
+<div class="gnu-sed-original-content" id="BRE-syntax">
+<h3 class="section" id="Overview-of-basic-regular-expression-syntax"><span>5.3 Overview of basic regular expression syntax</span></h3>
+<p>Here is a brief description
+of regular expression syntax as used in <code class="command">sed</code>.
+</p>
+<dl class="table">
+<dt><code class="code"><var class="var">char</var></code></dt>
+<dd><p>A single ordinary character matches itself.
+</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions"></a><span><code class="code">*</code></span></dt>
+<dd><p>Matches a sequence of zero or more instances of matches for the
+preceding regular expression, which must be an ordinary character, a
+special character preceded by <code class="code">\</code>, a <code class="code">.</code>, a grouped regexp
+(see below), or a bracket expression.  As a GNU extension (disabled by
+<samp class="option">--posix</samp>), a postfixed regular expression can also be followed
+by <code class="code">*</code>; for example, <code class="code">a**</code> is equivalent to <code class="code">a*</code>.
+In extended regular expression mode (<samp class="option">-E</samp>), <code class="code">**</code> is also
+accepted, but that is not considered a GNU extension (POSIX leaves it
+undefined), so <samp class="option">--posix</samp> does not affect it.  POSIX
+1003.1-2001 says that <code class="code">*</code> stands for itself when it appears at
+the start of a regular expression or subexpression, but many
+non-GNU implementations do not support this and portable
+scripts should instead use <code class="code">\*</code> in these contexts.
+</p></dd>
+<dt><code class="code">.</code></dt>
+<dd><p>Matches any character, including newline.
+</p>
+</dd>
+<dt><code class="code">^</code></dt>
+<dd><p>Matches the null string at beginning of the pattern space, i.e. what
+appears after the circumflex must appear at the beginning of the
+pattern space.
+</p>
+<p>In most scripts, pattern space is initialized to the content of each
+line (see <a class="pxref" href="#Execution-Cycle">How <code class="code">sed</code> works</a>).  So, it is a
+useful simplification to think of <code class="code">^#include</code> as matching only
+lines where ‘<samp class="samp">#include</samp>’ is the first thing on the line—if there is
+any preceding space, for example, the match fails.  This simplification is
+valid as long as the original content of pattern space is not modified,
+for example with an <code class="code">s</code> command.
+</p>
+<p><code class="code">^</code> acts as a special character only at the beginning of the
+regular expression or subexpression (that is, after <code class="code">\(</code> or
+<code class="code">\|</code>).  Portable scripts should avoid <code class="code">^</code> at the beginning of
+a subexpression, though, as POSIX allows implementations that
+treat <code class="code">^</code> as an ordinary character in that context.
+</p>
+</dd>
+<dt><code class="code">$</code></dt>
+<dd><p>It is the same as <code class="code">^</code>, but refers to end of pattern space.
+<code class="code">$</code> also acts as a special character only at the end
+of the regular expression or subexpression (that is, before <code class="code">\)</code>
+or <code class="code">\|</code>), and its use at the end of a subexpression is not
+portable.
+</p>
+</dd>
+<dt><code class="code">[<var class="var">list</var>]</code></dt>
+<dt><code class="code">[^<var class="var">list</var>]</code></dt>
+<dd><p>Matches any single character in <var class="var">list</var>: for example,
+<code class="code">[aeiou]</code> matches all vowels.  A list may include
+sequences like <code class="code"><var class="var">char1</var>-<var class="var">char2</var></code>, which
+matches any character between (inclusive) <var class="var">char1</var>
+and <var class="var">char2</var>.
+See <a class="xref" href="#Character-Classes-and-Bracket-Expressions">Character Classes and Bracket Expressions</a>.
+</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions-1"></a><span><code class="code">\+</code></span></dt>
+<dd><p>As <code class="code">*</code>, but matches one or more.  It is a GNU extension.
+</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions-2"></a><span><code class="code">\?</code></span></dt>
+<dd><p>As <code class="code">*</code>, but only matches zero or one.  It is a GNU extension.
+</p>
+</dd>
+<dt><code class="code">\{<var class="var">i</var>\}</code></dt>
+<dd><p>As <code class="code">*</code>, but matches exactly <var class="var">i</var> sequences (<var class="var">i</var> is a
+decimal integer; for portability, keep it between 0 and 255
+inclusive).
+</p>
+</dd>
+<dt><code class="code">\{<var class="var">i</var>,<var class="var">j</var>\}</code></dt>
+<dd><p>Matches between <var class="var">i</var> and <var class="var">j</var>, inclusive, sequences.
+</p>
+</dd>
+<dt><code class="code">\{<var class="var">i</var>,\}</code></dt>
+<dd><p>Matches more than or equal to <var class="var">i</var> sequences.
+</p>
+</dd>
+<dt><code class="code">\(<var class="var">regexp</var>\)</code></dt>
+<dd><p>Groups the inner <var class="var">regexp</var> as a whole, this is used to:
+</p>
+<ul class="itemize mark-bullet">
+<li><a class="index-entry-id" id="index-GNU-extensions_002c-to-basic-regular-expressions-3"></a>
+Apply postfix operators, like <code class="code">\(abcd\)*</code>:
+this will search for zero or more whole sequences
+of ‘<samp class="samp">abcd</samp>’, while <code class="code">abcd*</code> would search
+for ‘<samp class="samp">abc</samp>’ followed by zero or more occurrences
+of ‘<samp class="samp">d</samp>’.  Note that support for <code class="code">\(abcd\)*</code> is
+required by POSIX 1003.1-2001, but many non-GNU
+implementations do not support it and hence it is not universally
+portable.
+
+</li><li>Use back references (see below).
+</li></ul>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions-4"></a><span><code class="code"><var class="var">regexp1</var>\|<var class="var">regexp2</var></code></span></dt>
+<dd><p>Matches either <var class="var">regexp1</var> or <var class="var">regexp2</var>.  Use
+parentheses to use complex alternative regular expressions.
+The matching process tries each alternative in turn, from
+left to right, and the first one that succeeds is used.
+It is a GNU extension.
+</p>
+</dd>
+<dt><code class="code"><var class="var">regexp1</var><var class="var">regexp2</var></code></dt>
+<dd><p>Matches the concatenation of <var class="var">regexp1</var> and <var class="var">regexp2</var>.
+Concatenation binds more tightly than <code class="code">\|</code>, <code class="code">^</code>, and
+<code class="code">$</code>, but less tightly than the other regular expression
+operators.
+</p>
+</dd>
+<dt><code class="code">\<var class="var">digit</var></code></dt>
+<dd><p>Matches the <var class="var">digit</var>-th <code class="code">\(…\)</code> parenthesized
+subexpression in the regular expression.  This is called a <em class="dfn">back
+reference</em>.  Subexpressions are implicitly numbered by counting
+occurrences of <code class="code">\(</code> left-to-right.
+</p>
+</dd>
+<dt><code class="code">\n</code></dt>
+<dd><p>Matches the newline character.
+</p>
+</dd>
+<dt><code class="code">\<var class="var">char</var></code></dt>
+<dd><p>Matches <var class="var">char</var>, where <var class="var">char</var> is one of <code class="code">$</code>,
+<code class="code">*</code>, <code class="code">.</code>, <code class="code">[</code>, <code class="code">\</code>, or <code class="code">^</code>.
+Note that the only C-like
+backslash sequences that you can portably assume to be
+interpreted are <code class="code">\n</code> and <code class="code">\\</code>; in particular
+<code class="code">\t</code> is not portable, and matches a ‘<samp class="samp">t</samp>’ under most
+implementations of <code class="command">sed</code>, rather than a tab character.
+</p>
+</dd>
+</dl>
+<a class="index-entry-id" id="index-Greedy-regular-expression-matching"></a>
+<p>Note that the regular expression matcher is greedy, i.e., matches
+are attempted from left to right and, if two or more matches are
+possible starting at the same character, it selects the longest.
+</p>
+<p>Examples:
+</p><dl class="table">
+<dt>‘<samp class="samp">abcdef</samp>’</dt>
+<dd><p>Matches ‘<samp class="samp">abcdef</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">a*b</samp>’</dt>
+<dd><p>Matches zero or more ‘<samp class="samp">a</samp>’s followed by a single
+‘<samp class="samp">b</samp>’.  For example, ‘<samp class="samp">b</samp>’ or ‘<samp class="samp">aaaaab</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">a\?b</samp>’</dt>
+<dd><p>Matches ‘<samp class="samp">b</samp>’ or ‘<samp class="samp">ab</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">a\+b\+</samp>’</dt>
+<dd><p>Matches one or more ‘<samp class="samp">a</samp>’s followed by one or more
+‘<samp class="samp">b</samp>’s: ‘<samp class="samp">ab</samp>’ is the shortest possible match, but
+other examples are ‘<samp class="samp">aaaab</samp>’ or ‘<samp class="samp">abbbbb</samp>’ or
+‘<samp class="samp">aaaaaabbbbbbb</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">.*</samp>’</dt>
+<dt>‘<samp class="samp">.\+</samp>’</dt>
+<dd><p>These two both match all the characters in a string;
+however, the first matches every string (including the empty
+string), while the second matches only strings containing
+at least one character.
+</p>
+</dd>
+<dt>‘<samp class="samp">^main.*(.*)</samp>’</dt>
+<dd><p>This matches a string starting with ‘<samp class="samp">main</samp>’,
+followed by an opening and closing
+parenthesis.  The ‘<samp class="samp">n</samp>’, ‘<samp class="samp">(</samp>’ and ‘<samp class="samp">)</samp>’ need not
+be adjacent.
+</p>
+</dd>
+<dt>‘<samp class="samp">^#</samp>’</dt>
+<dd><p>This matches a string beginning with ‘<samp class="samp">#</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">\\$</samp>’</dt>
+<dd><p>This matches a string ending with a single backslash.  The
+regexp contains two backslashes for escaping.
+</p>
+</dd>
+<dt>‘<samp class="samp">\$</samp>’</dt>
+<dd><p>Instead, this matches a string consisting of a single dollar sign,
+because it is escaped.
+</p>
+</dd>
+<dt>‘<samp class="samp">[a-zA-Z0-9]</samp>’</dt>
+<dd><p>In the C locale, this matches any ASCII letters or digits.
+</p>
+</dd>
+<dt>‘<samp class="samp">[^ <kbd class="kbd"><kbd class="key">TAB</kbd></kbd>]\+</samp>’</dt>
+<dd><p>(Here <kbd class="kbd"><kbd class="key">TAB</kbd></kbd> stands for a single tab character.)
+This matches a string of one or more
+characters, none of which is a space or a tab.
+Usually this means a word.
+</p>
+</dd>
+<dt>‘<samp class="samp">^\(.*\)\n\1$</samp>’</dt>
+<dd><p>This matches a string consisting of two equal substrings separated by
+a newline.
+</p>
+</dd>
+<dt>‘<samp class="samp">.\{9\}A$</samp>’</dt>
+<dd><p>This matches nine characters followed by an ‘<samp class="samp">A</samp>’ at the end of a line.
+</p>
+</dd>
+<dt>‘<samp class="samp">^.\{15\}A</samp>’</dt>
+<dd><p>This matches the start of a string that contains 16 characters,
+the last of which is an ‘<samp class="samp">A</samp>’.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>

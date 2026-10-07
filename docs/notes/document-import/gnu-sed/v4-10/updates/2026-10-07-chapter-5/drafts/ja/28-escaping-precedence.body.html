@@ -1,0 +1,28 @@
+<div class="gnu-sed-original-content" id="Escaping-Precedence">
+<h4 class="subsection"><span>5.8.1 エスケープの優先順位</span></h4>
+<p>GNU <code class="command">sed</code>は、<code class="command">s///</code>コマンドの正規表現照合やアドレス照合へテキストを渡す<em class="emph">前に</em>、エスケープシーケンスを処理します。そのため、次の2つのコマンドは同じです（「<samp class="samp">0x5e</samp>」は文字「<samp class="samp">^</samp>」の16進<small class="sc">ASCII</small>値です）。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ echo 'a^c' | sed 's/^/b/'
+ba^c
+
+$ echo 'a^c' | sed 's/\x5e/b/'
+ba^c
+</pre></div></div>
+<p>次のコマンドも同じです（「<samp class="samp">0x5b</samp>」「<samp class="samp">0x5d</samp>」は、それぞれ「<samp class="samp">[</samp>」「<samp class="samp">]</samp>」の16進<small class="sc">ASCII</small>値です）。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ echo abc | sed 's/[a]/x/'
+xbc
+$ echo abc | sed 's/\x5ba\x5d/x/'
+xbc
+</pre></div></div>
+<p>ただし、思わぬ境界事例があるため、このような特殊文字の使用は避けることを推奨します。たとえば、次のコマンドは同じではありません。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ echo 'a^c' | sed 's/\^/b/'
+abc
+
+$ echo 'a^c' | sed 's/\\\x5e/b/'
+a^c
+</pre></div></div>
+<hr/>
+</div>
+

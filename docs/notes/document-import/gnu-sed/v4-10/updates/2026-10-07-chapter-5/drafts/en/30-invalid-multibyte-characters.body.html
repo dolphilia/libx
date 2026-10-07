@@ -1,0 +1,85 @@
+<div class="gnu-sed-original-content" id="Invalid-multibyte-characters">
+<h4 class="subsection"><span>5.9.1 Invalid multibyte characters</span></h4>
+<p><code class="command">sed</code>’s regular expressions <em class="emph">do not</em> match
+invalid multibyte sequences in a multibyte locale.
+</p>
+<p>In the following examples, the ascii value <code class="code">0xCE</code> is
+an incomplete multibyte character (shown here as �).
+The regular expression ‘<samp class="samp">.</samp>’ does not match it:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEb\n'
+a�e
+
+$ printf 'a\xCEb\n' | sed 's/./X/g'
+X�X
+
+$ printf 'a\xCEc\n' | sed 's/./X/g' | od -tx1c -An
+  58  ce  58  0a
+   X      X   \n
+</pre></div></div>
+<p>Similarly, the ’catch-all’ regular expression ‘<samp class="samp">.*</samp>’ does not
+match the entire line:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEc\n' | sed 's/.*//' | od -tx1c -An
+  ce  63  0a
+       c  \n
+</pre></div></div>
+<p>GNU <code class="command">sed</code> offers the special <code class="command">z</code> command to clear the
+current pattern space regardless of invalid multibyte characters
+(i.e. it works like <code class="code">s/.*//</code> but also removes invalid multibyte
+characters):
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEc\n' | sed 'z' | od -tx1c -An
+   0a
+   \n
+</pre></div></div>
+<p>Alternatively, force the <code class="code">C</code> locale to process
+each octet separately (every octet is a valid character in the <code class="code">C</code>
+locale):
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEc\n' | LC_ALL=C sed 's/.*//' | od -tx1c -An
+  0a
+  \n
+</pre></div></div>
+<p><code class="command">sed</code>’s inability to process invalid multibyte characters
+can be used to detect such invalid sequences in a file.
+In the following examples, the <code class="code">\xCE\xCE</code> is an invalid
+multibyte sequence, while <code class="code">\xCE\A3</code> is a valid multibyte sequence
+(of the Greek Sigma character).
+</p>
+<p>The following <code class="command">sed</code> program removes all valid
+characters using <code class="code">s/.//g</code>.  Any content left in the pattern space
+(the invalid characters) are added to the hold space using the
+<code class="code">H</code> command. On the last line (<code class="code">$</code>), the hold space is retrieved
+(<code class="code">x</code>), newlines are removed (<code class="code">s/\n//g</code>), and any remaining
+octets are printed unambiguously (<code class="code">l</code>).  Thus, any invalid
+multibyte sequences are printed as octal values:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'ab\nc\n\xCE\xCEde\n\xCE\xA3f\n' &gt; invalid.txt
+
+$ cat invalid.txt
+ab
+c
+��de
+Σf
+
+$ sed -n 's/.//g ; H ; ${x;s/\n//g;l}' invalid.txt
+\316\316$
+</pre></div></div>
+<p>With a few more commands, <code class="command">sed</code> can print
+the exact line number corresponding to each invalid characters (line 3).
+These characters can then be removed by forcing the <code class="code">C</code> locale
+and using octal escape sequences:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ sed -n 's/.//g;=;l' invalid.txt | paste - -  | awk '$2!="$"'
+3       \316\316$
+
+$ LC_ALL=C sed '3s/\o316\o316//' invalid.txt &gt; fixed.txt
+</pre></div>
+</div>

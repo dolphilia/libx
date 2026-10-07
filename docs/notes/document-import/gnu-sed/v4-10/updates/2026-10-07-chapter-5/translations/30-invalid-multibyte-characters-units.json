@@ -1,0 +1,104 @@
+{
+  "slug": "30-invalid-multibyte-characters",
+  "bodySHA256": "d588d07cbaae67e2ad59baab71db12f47607f8f8f67d323aa416eb199e88ad8b",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧5.9.1 Invalid multibyte characters⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\"><span>5.9.1 Invalid multibyte characters</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧’s regular expressions ⟦1⟧do not⟦2⟧ match invalid multibyte sequences in a multibyte locale.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<em class=\"emph\">",
+        "⟦2⟧": "</em>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code>’s regular expressions <em class=\"emph\">do not</em> match\ninvalid multibyte sequences in a multibyte locale.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "In the following examples, the ascii value ⟦0⟧ is an incomplete multibyte character (shown here as �). The regular expression ‘⟦1⟧’ does not match it:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">0xCE</code>",
+        "⟦1⟧": "<samp class=\"samp\">.</samp>"
+      },
+      "sourceHTML": "<p>In the following examples, the ascii value <code class=\"code\">0xCE</code> is\nan incomplete multibyte character (shown here as �).\nThe regular expression ‘<samp class=\"samp\">.</samp>’ does not match it:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Similarly, the ’catch-all’ regular expression ‘⟦0⟧’ does not match the entire line:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">.*</samp>"
+      },
+      "sourceHTML": "<p>Similarly, the ’catch-all’ regular expression ‘<samp class=\"samp\">.*</samp>’ does not\nmatch the entire line:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "GNU ⟦0⟧ offers the special ⟦1⟧ command to clear the current pattern space regardless of invalid multibyte characters (i.e. it works like ⟦2⟧ but also removes invalid multibyte characters):",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">z</code>",
+        "⟦2⟧": "<code class=\"code\">s/.*//</code>"
+      },
+      "sourceHTML": "<p>GNU <code class=\"command\">sed</code> offers the special <code class=\"command\">z</code> command to clear the\ncurrent pattern space regardless of invalid multibyte characters\n(i.e. it works like <code class=\"code\">s/.*//</code> but also removes invalid multibyte\ncharacters):\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Alternatively, force the ⟦0⟧ locale to process each octet separately (every octet is a valid character in the ⟦1⟧ locale):",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">C</code>",
+        "⟦1⟧": "<code class=\"code\">C</code>"
+      },
+      "sourceHTML": "<p>Alternatively, force the <code class=\"code\">C</code> locale to process\neach octet separately (every octet is a valid character in the <code class=\"code\">C</code>\nlocale):\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "⟦0⟧’s inability to process invalid multibyte characters can be used to detect such invalid sequences in a file. In the following examples, the ⟦1⟧ is an invalid multibyte sequence, while ⟦2⟧ is a valid multibyte sequence (of the Greek Sigma character).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">\\xCE\\xCE</code>",
+        "⟦2⟧": "<code class=\"code\">\\xCE\\A3</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code>’s inability to process invalid multibyte characters\ncan be used to detect such invalid sequences in a file.\nIn the following examples, the <code class=\"code\">\\xCE\\xCE</code> is an invalid\nmultibyte sequence, while <code class=\"code\">\\xCE\\A3</code> is a valid multibyte sequence\n(of the Greek Sigma character).\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "The following ⟦0⟧ program removes all valid characters using ⟦1⟧. Any content left in the pattern space (the invalid characters) are added to the hold space using the ⟦2⟧ command. On the last line (⟦3⟧), the hold space is retrieved (⟦4⟧), newlines are removed (⟦5⟧), and any remaining octets are printed unambiguously (⟦6⟧). Thus, any invalid multibyte sequences are printed as octal values:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">s/.//g</code>",
+        "⟦2⟧": "<code class=\"code\">H</code>",
+        "⟦3⟧": "<code class=\"code\">$</code>",
+        "⟦4⟧": "<code class=\"code\">x</code>",
+        "⟦5⟧": "<code class=\"code\">s/\\n//g</code>",
+        "⟦6⟧": "<code class=\"code\">l</code>"
+      },
+      "sourceHTML": "<p>The following <code class=\"command\">sed</code> program removes all valid\ncharacters using <code class=\"code\">s/.//g</code>.  Any content left in the pattern space\n(the invalid characters) are added to the hold space using the\n<code class=\"code\">H</code> command. On the last line (<code class=\"code\">$</code>), the hold space is retrieved\n(<code class=\"code\">x</code>), newlines are removed (<code class=\"code\">s/\\n//g</code>), and any remaining\noctets are printed unambiguously (<code class=\"code\">l</code>).  Thus, any invalid\nmultibyte sequences are printed as octal values:\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "With a few more commands, ⟦0⟧ can print the exact line number corresponding to each invalid characters (line 3). These characters can then be removed by forcing the ⟦1⟧ locale and using octal escape sequences:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">C</code>"
+      },
+      "sourceHTML": "<p>With a few more commands, <code class=\"command\">sed</code> can print\nthe exact line number corresponding to each invalid characters (line 3).\nThese characters can then be removed by forcing the <code class=\"code\">C</code> locale\nand using octal escape sequences:\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

@@ -1,0 +1,33 @@
+<div class="gnu-sed-original-content" id="Back_002dreferences-and-Subexpressions">
+<h3 class="section" id="Back_002dreferences-and-Subexpressions-1"><span>5.7 後方参照と部分式</span></h3>
+<a class="index-entry-id" id="index-subexpression"></a>
+<a class="index-entry-id" id="index-back_002dreference"></a>
+<p><em class="dfn">後方参照</em>は、一致した正規表現の前の部分を参照する正規表現の命令です。バックスラッシュと1桁の数字で指定します（例：「<samp class="samp">\1</samp>」）。参照される正規表現の部分を<em class="dfn">部分式</em>と呼び、丸括弧で指定します。</p>
+<p>後方参照と部分式には2つの用途があります。正規表現の検索パターンと、<code class="command">s</code>コマンドの<var class="var">replacement</var>部分です（<a class="pxref" href="#Regexp-Addresses">正規表現アドレス</a>と<a class="ref" href="#The-_0022s_0022-Command"><code class="code">s</code>コマンド</a>を参照）。</p>
+<p>正規表現パターンの後方参照は、先に一致した部分式と同じ内容に一致させるために使います。次の例の部分式は「<samp class="samp">.</samp>」、つまり任意の1文字です（丸括弧で囲むことで部分式になります）。後方参照「<samp class="samp">\1</samp>」は、部分式と同じ内容（同じ文字）への一致を指定します。</p>
+<p>次のコマンドは、任意の文字で始まり、その後に文字「<samp class="samp">o</samp>」、さらに最初と同じ文字が続く単語に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ sed -E -n '/^(.)o\1$/p' /usr/share/dict/words
+bob
+mom
+non
+pop
+sos
+tot
+wow
+</pre></div>
+<p>複数の部分式には左から右へ自動的に番号が付きます。このコマンドは6文字の回文を探します（最初の3文字が3つの部分式で、その後に逆順の3つの後方参照が続きます）。</p>
+<div class="example">
+<pre class="example-preformatted">$ sed -E -n '/^(.)(.)(.)\3\2\1$/p' /usr/share/dict/words
+redder
+</pre></div>
+<p><code class="command">s</code>コマンドでは、<var class="var">replacement</var>部分の後方参照を使って<var class="var">regexp</var>部分の部分式を参照できます。</p>
+<p>次の例は、正規表現内の2つの部分式で、空白で区切られた2つの単語に一致します。<var class="var">replacement</var>部分の後方参照により、単語を別の順序で表示します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "James Bond" | sed -E 's/(.*) (.*)/The name is \2, \1 \2./'
+The name is Bond, James Bond.
+</pre></div>
+<p>選択と組み合わせて使う場合、そのグループが一致に参加しなければ、後方参照によって一致全体が失敗します。たとえば、「<samp class="samp">a(.)|b\1</samp>」は「<samp class="samp">ba</samp>」に一致しません。<samp class="option">-e</samp>やファイル（「<samp class="samp">-f <var class="var">file</var></samp>」）で複数の正規表現を指定した場合、後方参照は各式の内部に限定されます。</p>
+<hr/>
+</div>
+

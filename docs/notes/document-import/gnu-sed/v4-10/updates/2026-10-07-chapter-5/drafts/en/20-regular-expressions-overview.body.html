@@ -1,0 +1,44 @@
+<div class="gnu-sed-original-content" id="Regular-Expressions-Overview">
+<h3 class="section" id="Overview-of-regular-expression-in-sed"><span>5.1 Overview of regular expression in <code class="command">sed</code></span></h3>
+<p>To know how to use <code class="command">sed</code>, people should understand regular
+expressions (<em class="dfn">regexp</em> for short).  A regular expression
+is a pattern that is matched against a
+subject string from left to right.  Most characters are
+<em class="dfn">ordinary</em>: they stand for
+themselves in a pattern, and match the corresponding characters.
+Regular expressions in <code class="command">sed</code> are specified between two
+slashes.
+</p>
+<p>The following command prints lines containing the string ‘<samp class="samp">hello</samp>’:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -n '/hello/p'
+</pre></div>
+<p>The above example is equivalent to this <code class="command">grep</code> command:
+</p>
+<div class="example">
+<pre class="example-preformatted">grep 'hello'
+</pre></div>
+<p>The power of regular expressions comes from the ability to include
+alternatives and repetitions in the pattern.  These are encoded in the
+pattern by the use of <em class="dfn">special characters</em>, which do not stand for
+themselves but instead are interpreted in some special way.
+</p>
+<p>The character <code class="code">^</code> (caret) in a regular expression matches the
+beginning of the line. The character <code class="code">.</code> (dot) matches any single
+character. The following <code class="command">sed</code> command matches and prints
+lines which start with the letter ‘<samp class="samp">b</samp>’, followed by any single character,
+followed by the letter ‘<samp class="samp">d</samp>’:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "%s\n" abode bad bed bit bid byte body | sed -n '/^b.d/p'
+bad
+bed
+bid
+body
+</pre></div>
+<p>The following sections explain the meaning and usage of special
+characters in regular expressions.
+</p>
+<hr/>
+</div>

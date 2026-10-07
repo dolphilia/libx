@@ -1,0 +1,56 @@
+<div class="gnu-sed-original-content" id="Invalid-multibyte-characters">
+<h4 class="subsection"><span>5.9.1 不正なマルチバイト文字</span></h4>
+<p><code class="command">sed</code>の正規表現は、マルチバイトロケールでは不正なマルチバイトシーケンスに<em class="emph">一致しません</em>。</p>
+<p>次の例では、ASCII値<code class="code">0xCE</code>は不完全なマルチバイト文字です（ここでは�と表示します）。正規表現「<samp class="samp">.</samp>」はこれに一致しません。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEb\n'
+a�e
+
+$ printf 'a\xCEb\n' | sed 's/./X/g'
+X�X
+
+$ printf 'a\xCEc\n' | sed 's/./X/g' | od -tx1c -An
+  58  ce  58  0a
+   X      X   \n
+</pre></div></div>
+<p>同様に、すべてを捕捉する正規表現「<samp class="samp">.*</samp>」も行全体には一致しません。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEc\n' | sed 's/.*//' | od -tx1c -An
+  ce  63  0a
+       c  \n
+</pre></div></div>
+<p>GNU <code class="command">sed</code>には、不正なマルチバイト文字の有無にかかわらず現在のパターンスペースを空にする特殊な<code class="command">z</code>コマンドがあります（つまり、<code class="code">s/.*//</code>のように働き、不正なマルチバイト文字も取り除きます）。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEc\n' | sed 'z' | od -tx1c -An
+   0a
+   \n
+</pre></div></div>
+<p>あるいは、<code class="code">C</code>ロケールを強制して各オクテットを個別に処理できます（<code class="code">C</code>ロケールでは、どのオクテットも有効な文字です）。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'a\xCEc\n' | LC_ALL=C sed 's/.*//' | od -tx1c -An
+  0a
+  \n
+</pre></div></div>
+<p><code class="command">sed</code>が不正なマルチバイト文字を処理できないことを利用して、ファイル中の不正なシーケンスを検出できます。次の例では、<code class="code">\xCE\xCE</code>は不正なマルチバイトシーケンスで、<code class="code">\xCE\A3</code>は有効なマルチバイトシーケンス（ギリシャ文字シグマ）です。</p>
+<p>次の<code class="command">sed</code>プログラムは、<code class="code">s/.//g</code>ですべての有効な文字を取り除きます。パターンスペースに残った内容（不正な文字）は、<code class="code">H</code>コマンドでホールドスペースへ追加します。最終行（<code class="code">$</code>）でホールドスペースを取り出し（<code class="code">x</code>）、改行を除去し（<code class="code">s/\n//g</code>）、残っているオクテットを曖昧さなく表示します（<code class="code">l</code>）。こうして、不正なマルチバイトシーケンスを8進数値として表示します。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ printf 'ab\nc\n\xCE\xCEde\n\xCE\xA3f\n' &gt; invalid.txt
+
+$ cat invalid.txt
+ab
+c
+��de
+Σf
+
+$ sed -n 's/.//g ; H ; ${x;s/\n//g;l}' invalid.txt
+\316\316$
+</pre></div></div>
+<p>コマンドをいくつか追加すると、<code class="command">sed</code>は各不正文字に対応する正確な行番号（3行目）を表示できます。その後、<code class="code">C</code>ロケールを強制し、8進エスケープシーケンスを使ってこれらの文字を削除できます。</p>
+<div class="example">
+<pre class="example-preformatted">$ sed -n 's/.//g;=;l' invalid.txt | paste - -  | awk '$2!="$"'
+3       \316\316$
+
+$ LC_ALL=C sed '3s/\o316\o316//' invalid.txt &gt; fixed.txt
+</pre></div>
+</div>
+

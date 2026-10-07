@@ -1,0 +1,30 @@
+<div class="gnu-sed-original-content" id="BRE-vs-ERE">
+<h3 class="section" id="Basic-_0028BRE_0029-and-extended-_0028ERE_0029-regular-expression"><span>5.2 基本正規表現（BRE）と拡張正規表現（ERE）</span></h3>
+<p>基本正規表現と拡張正規表現は、指定するパターンの構文が異なる2つの形式です。<code class="command">sed</code>では基本正規表現（BRE）の構文が既定です（<code class="command">grep</code>も同様です）。拡張正規表現（ERE）の構文を有効にするには、POSIXで規定された<samp class="option">-E</samp>オプション（<samp class="option">-r</samp>、<samp class="option">--regexp-extended</samp>）を使います。</p>
+<p>GNU <code class="command">sed</code>では、基本正規表現と拡張正規表現の違いは、「<samp class="samp">?</samp>」「<samp class="samp">+</samp>」、丸括弧、波括弧（「<samp class="samp">{}</samp>」）、および「<samp class="samp">|</samp>」という少数の特殊文字の動作だけです。</p>
+<p>基本（BRE）構文では、これらの文字は前にバックスラッシュ（「<samp class="samp">\</samp>」）を付けなければ特別な意味を持ちません。拡張（ERE）構文では逆で、前にバックスラッシュ（「<samp class="samp">\</samp>」）を付けなければ特殊文字になります。</p>
+<table class="multitable">
+<thead><tr><th width="28%">表したいパターン</th><th width="36%">基本（BRE）構文</th><th width="35%">拡張（ERE）構文</th></tr></thead>
+<tbody><tr><td width="28%">文字そのものの「<samp class="samp">+</samp>」（プラス記号）</td><td width="36%"><div class="example">
+<pre class="example-preformatted">$ echo 'a+b=c' &gt; foo
+$ sed -n '/a+b/p' foo
+a+b=c
+</pre></div></td><td width="35%"><div class="example">
+<pre class="example-preformatted">$ echo 'a+b=c' &gt; foo
+$ sed -E -n '/a\+b/p' foo
+a+b=c
+</pre></div></td></tr>
+<tr><td width="28%">1つ以上の「<samp class="samp">a</samp>」の後に「<samp class="samp">b</samp>」が続く（プラス記号を特殊なメタ文字として使用）</td><td width="36%"><div class="example">
+<pre class="example-preformatted">$ echo aab &gt; foo
+$ sed -n '/a\+b/p' foo
+aab
+</pre></div></td><td width="35%"><div class="example">
+<pre class="example-preformatted">$ echo aab &gt; foo
+$ sed -E -n '/a+b/p' foo
+aab
+</pre></div></td></tr>
+</tbody>
+</table>
+<hr/>
+</div>
+

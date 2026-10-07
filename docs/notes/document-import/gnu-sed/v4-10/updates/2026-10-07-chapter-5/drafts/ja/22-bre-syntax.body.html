@@ -1,0 +1,110 @@
+<div class="gnu-sed-original-content" id="BRE-syntax">
+<h3 class="section" id="Overview-of-basic-regular-expression-syntax"><span>5.3 基本正規表現の構文の概要</span></h3>
+<p><code class="command">sed</code>で使う正規表現の構文を簡単に説明します。</p>
+<dl class="table">
+<dt><code class="code"><var class="var">char</var></code></dt>
+<dd><p>通常の1文字は、その文字自身に一致します。</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions"></a><span><code class="code">*</code></span></dt>
+<dd><p>直前の正規表現への一致を0回以上繰り返した列に一致します。直前の正規表現には、通常の文字、前に<code class="code">\</code>を付けた特殊文字、<code class="code">.</code>、グループ化した正規表現（後述）、または括弧式を指定できます。GNU拡張として（<samp class="option">--posix</samp>で無効になります）、後置演算子を付けた正規表現にさらに<code class="code">*</code>を続けることもできます。たとえば、<code class="code">a**</code>は<code class="code">a*</code>と同じです。拡張正規表現モード（<samp class="option">-E</samp>）でも<code class="code">**</code>を受け付けますが、これはGNU拡張とは見なされません（POSIXでは未定義です）。したがって、<samp class="option">--posix</samp>の影響を受けません。POSIX 1003.1-2001では、正規表現や部分式の先頭に現れる<code class="code">*</code>はその文字自身を表すとされています。しかし、GNU以外の多くの実装はこれに対応していないため、移植性を重視するスクリプトではこの場合に<code class="code">\*</code>を使ってください。</p></dd>
+<dt><code class="code">.</code></dt>
+<dd><p>改行を含む任意の文字に一致します。</p>
+</dd>
+<dt><code class="code">^</code></dt>
+<dd><p>パターンスペースの先頭の空文字列に一致します。つまり、キャレットの後に記述したものがパターンスペースの先頭になければなりません。</p>
+<p>ほとんどのスクリプトでは、パターンスペースを各行の内容で初期化します（<a class="pxref" href="#Execution-Cycle"><code class="code">sed</code>の動作</a>を参照）。そのため、<code class="code">^#include</code>は「<samp class="samp">#include</samp>」が行頭にある行だけに一致すると考えると簡単です。たとえば前に空白があれば一致しません。この簡略化は、<code class="code">s</code>コマンドなどでパターンスペースの元の内容を変更しない限り有効です。</p>
+<p><code class="code">^</code>は、正規表現または部分式の先頭（つまり<code class="code">\(</code>または<code class="code">\|</code>の直後）にある場合にだけ特殊文字として働きます。ただし、POSIXはこの位置の<code class="code">^</code>を通常の文字として扱う実装を認めているため、移植性を重視するスクリプトでは部分式の先頭で<code class="code">^</code>を使わないでください。</p>
+</dd>
+<dt><code class="code">$</code></dt>
+<dd><p><code class="code">^</code>と同様ですが、パターンスペースの末尾を指します。<code class="code">$</code>も正規表現または部分式の末尾（つまり<code class="code">\)</code>または<code class="code">\|</code>の直前）にある場合にだけ特殊文字として働き、部分式の末尾での使用には移植性がありません。</p>
+</dd>
+<dt><code class="code">[<var class="var">list</var>]</code></dt>
+<dt><code class="code">[^<var class="var">list</var>]</code></dt>
+<dd><p><var class="var">list</var>に含まれる任意の1文字に一致します。たとえば、<code class="code">[aeiou]</code>はすべての母音に一致します。リストには<code class="code"><var class="var">char1</var>-<var class="var">char2</var></code>のような範囲を含められます。この範囲は<var class="var">char1</var>から<var class="var">char2</var>までの両端を含む任意の文字に一致します。<a class="xref" href="#Character-Classes-and-Bracket-Expressions">文字クラスと括弧式</a>を参照してください。</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions-1"></a><span><code class="code">\+</code></span></dt>
+<dd><p><code class="code">*</code>と同様ですが、1回以上に一致します。GNU拡張です。</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions-2"></a><span><code class="code">\?</code></span></dt>
+<dd><p><code class="code">*</code>と同様ですが、0回または1回だけに一致します。GNU拡張です。</p>
+</dd>
+<dt><code class="code">\{<var class="var">i</var>\}</code></dt>
+<dd><p><code class="code">*</code>と同様ですが、正確に<var class="var">i</var>回の列に一致します（<var class="var">i</var>は10進整数です。移植性のため、0以上255以下にしてください）。</p>
+</dd>
+<dt><code class="code">\{<var class="var">i</var>,<var class="var">j</var>\}</code></dt>
+<dd><p><var class="var">i</var>回以上<var class="var">j</var>回以下の列に一致します。</p>
+</dd>
+<dt><code class="code">\{<var class="var">i</var>,\}</code></dt>
+<dd><p><var class="var">i</var>回以上の列に一致します。</p>
+</dd>
+<dt><code class="code">\(<var class="var">regexp</var>\)</code></dt>
+<dd><p>内部の<var class="var">regexp</var>をひとまとまりのグループにします。用途は次のとおりです。</p>
+<ul class="itemize mark-bullet">
+<li><a class="index-entry-id" id="index-GNU-extensions_002c-to-basic-regular-expressions-3"></a> <code class="code">\(abcd\)*</code>のような後置演算子を適用します。これは「<samp class="samp">abcd</samp>」という列全体の0回以上の繰り返しを探します。一方、<code class="code">abcd*</code>は「<samp class="samp">abc</samp>」の後に「<samp class="samp">d</samp>」が0回以上続くものを探します。<code class="code">\(abcd\)*</code>への対応はPOSIX 1003.1-2001で要求されていますが、GNU以外の多くの実装は対応していないため、あらゆる環境へ移植できるわけではないことに注意してください。</li><li>後方参照を使います（後述）。</li></ul>
+</dd>
+<dt><a id="index-GNU-extensions_002c-to-basic-regular-expressions-4"></a><span><code class="code"><var class="var">regexp1</var>\|<var class="var">regexp2</var></code></span></dt>
+<dd><p><var class="var">regexp1</var>または<var class="var">regexp2</var>に一致します。複雑な選択正規表現には丸括弧を使ってください。一致処理は各選択肢を左から右へ順に試し、最初に成功したものを使います。GNU拡張です。</p>
+</dd>
+<dt><code class="code"><var class="var">regexp1</var><var class="var">regexp2</var></code></dt>
+<dd><p><var class="var">regexp1</var>と<var class="var">regexp2</var>を連結したものに一致します。連結は<code class="code">\|</code>、<code class="code">^</code>、<code class="code">$</code>より強く結合しますが、ほかの正規表現演算子よりは弱く結合します。</p>
+</dd>
+<dt><code class="code">\<var class="var">digit</var></code></dt>
+<dd><p>正規表現中で<code class="code">\(…\)</code>の丸括弧で囲んだ<var class="var">digit</var>番目の部分式に一致します。これを<em class="dfn">後方参照</em>と呼びます。部分式の番号は、<code class="code">\(</code>の出現を左から右へ数えて暗黙に付けられます。</p>
+</dd>
+<dt><code class="code">\n</code></dt>
+<dd><p>改行文字に一致します。</p>
+</dd>
+<dt><code class="code">\<var class="var">char</var></code></dt>
+<dd><p><var class="var">char</var>に一致します。ここで<var class="var">char</var>は<code class="code">$</code>、<code class="code">*</code>、<code class="code">.</code>、<code class="code">[</code>、<code class="code">\</code>、<code class="code">^</code>のいずれかです。移植性を保って解釈されると仮定できるC言語風のバックスラッシュシーケンスは、<code class="code">\n</code>と<code class="code">\\</code>だけであることに注意してください。特に、<code class="code">\t</code>には移植性がなく、<code class="command">sed</code>の多くの実装ではタブ文字ではなく「<samp class="samp">t</samp>」に一致します。</p>
+</dd>
+</dl>
+<a class="index-entry-id" id="index-Greedy-regular-expression-matching"></a>
+<p>正規表現の照合は貪欲に行われます。つまり、左から右へ一致を試み、同じ文字位置から2通り以上の一致が可能なら最も長いものを選びます。</p>
+<p>例：</p><dl class="table">
+<dt>「<samp class="samp">abcdef</samp>」</dt>
+<dd><p>「<samp class="samp">abcdef</samp>」に一致します。</p>
+</dd>
+<dt>‘<samp class="samp">a*b</samp>’</dt>
+<dd><p>0個以上の「<samp class="samp">a</samp>」の後に1個の「<samp class="samp">b</samp>」が続くものに一致します。たとえば「<samp class="samp">b</samp>」や「<samp class="samp">aaaaab</samp>」です。</p>
+</dd>
+<dt>‘<samp class="samp">a\?b</samp>’</dt>
+<dd><p>「<samp class="samp">b</samp>」または「<samp class="samp">ab</samp>」に一致します。</p>
+</dd>
+<dt>‘<samp class="samp">a\+b\+</samp>’</dt>
+<dd><p>1個以上の「<samp class="samp">a</samp>」の後に1個以上の「<samp class="samp">b</samp>」が続くものに一致します。最短の一致は「<samp class="samp">ab</samp>」で、ほかに「<samp class="samp">aaaab</samp>」「<samp class="samp">abbbbb</samp>」「<samp class="samp">aaaaaabbbbbbb</samp>」などもあります。</p>
+</dd>
+<dt>‘<samp class="samp">.*</samp>’</dt>
+<dt>‘<samp class="samp">.\+</samp>’</dt>
+<dd><p>どちらも文字列内のすべての文字に一致します。ただし、前者は空文字列を含むすべての文字列に一致し、後者は1文字以上を含む文字列だけに一致します。</p>
+</dd>
+<dt>「<samp class="samp">^main.*(.*)</samp>」</dt>
+<dd><p>「<samp class="samp">main</samp>」で始まり、その後に開き丸括弧と閉じ丸括弧が続く文字列に一致します。「<samp class="samp">n</samp>」「<samp class="samp">(</samp>」「<samp class="samp">)</samp>」は隣り合っている必要はありません。</p>
+</dd>
+<dt>‘<samp class="samp">^#</samp>’</dt>
+<dd><p>「<samp class="samp">#</samp>」で始まる文字列に一致します。</p>
+</dd>
+<dt>‘<samp class="samp">\\$</samp>’</dt>
+<dd><p>1個のバックスラッシュで終わる文字列に一致します。エスケープのため、正規表現には2個のバックスラッシュを含めます。</p>
+</dd>
+<dt>‘<samp class="samp">\$</samp>’</dt>
+<dd><p>こちらは、エスケープされた1個のドル記号だけからなる文字列に一致します。</p>
+</dd>
+<dt>「<samp class="samp">[a-zA-Z0-9]</samp>」</dt>
+<dd><p>Cロケールでは、任意のASCII英字または数字に一致します。</p>
+</dd>
+<dt>「<samp class="samp">[^ <kbd class="kbd"><kbd class="key">TAB</kbd></kbd>]\+</samp>」</dt>
+<dd><p>（ここで<kbd class="kbd"><kbd class="key">TAB</kbd></kbd>は1個のタブ文字を表します。）空白でもタブでもない1文字以上からなる文字列に一致します。通常、これは単語を意味します。</p>
+</dd>
+<dt>‘<samp class="samp">^\(.*\)\n\1$</samp>’</dt>
+<dd><p>改行で区切った2つの同じ部分文字列からなる文字列に一致します。</p>
+</dd>
+<dt>‘<samp class="samp">.\{9\}A$</samp>’</dt>
+<dd><p>9文字の後に「<samp class="samp">A</samp>」が行末にあるものに一致します。</p>
+</dd>
+<dt>‘<samp class="samp">^.\{15\}A</samp>’</dt>
+<dd><p>16文字を含む文字列の先頭に一致します。最後の文字は「<samp class="samp">A</samp>」です。</p>
+</dd>
+</dl>
+<hr/>
+</div>
+

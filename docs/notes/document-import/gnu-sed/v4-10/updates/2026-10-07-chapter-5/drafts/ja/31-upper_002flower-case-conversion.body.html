@@ -1,0 +1,13 @@
+<div class="gnu-sed-original-content" id="Upper_002fLower-case-conversion">
+<h4 class="subsection"><span>5.9.2 大文字・小文字の変換</span></h4>
+<p>GNU <code class="command">sed</code>の置換コマンド（<code class="code">s</code>）は、<code class="code">\U</code>、<code class="code">\L</code>の指定による大文字・小文字の変換をサポートします。これらの変換はマルチバイト文字にも対応しています。</p>
+<div class="example">
+<pre class="example-preformatted">$ printf 'ABC\u03a3\n'
+ABCΣ
+
+$ printf 'ABC\u03a3\n' | sed 's/.*/\L&amp;/'
+abcσ
+</pre></div>
+<p><a class="xref" href="#The-_0022s_0022-Command"><code class="code">s</code>コマンド</a>を参照してください。</p>
+</div>
+

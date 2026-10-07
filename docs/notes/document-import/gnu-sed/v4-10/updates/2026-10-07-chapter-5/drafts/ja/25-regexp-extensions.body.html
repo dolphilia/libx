@@ -1,0 +1,83 @@
+<div class="gnu-sed-original-content" id="regexp-extensions">
+<h3 class="section" id="regular-expression-extensions"><span>5.6 正規表現の拡張</span></h3>
+<p>次のシーケンスは、正規表現（<a class="ref" href="#Regexp-Addresses">アドレス</a>と<code class="code">s</code>コマンドで使用）の中で特別な意味を持ちます。</p>
+<p>これらは<a class="ref" href="#BRE-syntax">基本</a>正規表現でも<a class="ref" href="#ERE-syntax">拡張</a>正規表現でも使えます（つまり、<samp class="option">-E</samp>/<samp class="option">-r</samp>オプションの有無にかかわらず使えます）。</p>
+<dl class="table">
+<dt><code class="code">\w</code></dt>
+<dd><p>任意の「単語文字」に一致します。「単語文字」とは、任意の字母、数字、またはアンダースコア文字です。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\w/X/g'
+XXX %-= XXX.
+</pre></div>
+</dd>
+<dt><code class="code">\W</code></dt>
+<dd><p>任意の「単語文字以外の文字」に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\W/X/g'
+abcXXXXXdefX
+</pre></div>
+</dd>
+<dt><code class="code">\b</code></dt>
+<dd><p>単語境界に一致します。つまり、左側が「単語文字」で右側が「単語文字以外の文字」である場合、またはその逆の場合に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\b/X/g'
+XabcX %-= XdefX.
+</pre></div>
+</dd>
+<dt><code class="code">\B</code></dt>
+<dd><p>単語境界以外のすべての位置に一致します。つまり、左側と右側の文字がともに「単語文字」であるか、ともに「単語文字以外の文字」である場合に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\B/X/g'
+aXbXc X%X-X=X dXeXf.X
+</pre></div>
+</dd>
+<dt><code class="code">\s</code></dt>
+<dd><p>空白文字（スペースとタブ）に一致します。パターンスペースやホールドスペースに含まれる改行にも一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\s/X/g'
+abcX%-=Xdef.
+</pre></div>
+</dd>
+<dt><code class="code">\S</code></dt>
+<dd><p>空白文字以外の文字に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\S/X/g'
+XXX XXX XXXX
+</pre></div>
+</dd>
+<dt><code class="code">\&lt;</code></dt>
+<dd><p>単語の先頭に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\&lt;/X/g'
+Xabc %-= Xdef.
+</pre></div>
+</dd>
+<dt><code class="code">\&gt;</code></dt>
+<dd><p>単語の末尾に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "abc %-= def." | sed 's/\&gt;/X/g'
+abcX %-= defX.
+</pre></div>
+</dd>
+<dt><code class="code">\`</code></dt>
+<dd><p>パターンスペースの先頭だけに一致します。複数行モードの<code class="code">^</code>とは異なります。</p>
+<p>次の2つの例を比較してください。</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "a\nb\nc\n" | sed 'N;N;s/^/X/gm'
+Xa
+Xb
+Xc
+
+$ printf "a\nb\nc\n" | sed 'N;N;s/\`/X/gm'
+Xa
+b
+c
+</pre></div>
+</dd>
+<dt><code class="code">\'</code></dt>
+<dd><p>パターンスペースの末尾だけに一致します。複数行モードの<code class="code">$</code>とは異なります。</p>
+</dd>
+</dl>
+<hr/>
+</div>
+

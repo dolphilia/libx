@@ -1,0 +1,39 @@
+<div class="gnu-sed-original-content" id="Locale-Considerations">
+<h3 class="section" id="Multibyte-characters-and-Locale-Considerations"><span>5.9 Multibyte characters and Locale Considerations</span></h3>
+<p>GNU <code class="command">sed</code> processes valid multibyte characters in multibyte locales
+(e.g. <code class="code">UTF-8</code>).  <a class="footnote" href="#FOOT7" id="DOCF7"><sup>7</sup></a>
+</p>
+<p>The following example uses the Greek letter Capital Sigma
+(Σ,
+Unicode code point <code class="code">0x03A3</code>). In a <code class="code">UTF-8</code> locale,
+<code class="command">sed</code> correctly processes the Sigma as one character despite
+it being 2 octets (bytes):
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ locale | grep LANG
+LANG=en_US.UTF-8
+
+$ printf 'a\u03A3b'
+aΣb
+
+$ printf 'a\u03A3b' | sed 's/./X/g'
+XXX
+
+$ printf 'a\u03A3b' | od -tx1 -An
+ 61 ce a3 62
+</pre></div></div>
+<p>To force <code class="command">sed</code> to process octets separately, use the <code class="code">C</code> locale
+(also known as the <code class="code">POSIX</code> locale):
+</p>
+<div class="example">
+<pre class="example-preformatted">$ printf 'a\u03A3b' | LC_ALL=C sed 's/./X/g'
+XXXX
+</pre></div>
+
+
+
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF7" id="FOOT7">(7)</a></h5>
+<p>Some regexp edge-cases depends on the
+operating system and libc implementation. The examples shown are known
+to work as-expected on GNU/Linux systems using glibc.</p>
+</div></div>

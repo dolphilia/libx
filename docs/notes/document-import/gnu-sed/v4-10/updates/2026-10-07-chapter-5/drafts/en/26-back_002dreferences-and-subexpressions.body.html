@@ -1,0 +1,65 @@
+<div class="gnu-sed-original-content" id="Back_002dreferences-and-Subexpressions">
+<h3 class="section" id="Back_002dreferences-and-Subexpressions-1"><span>5.7 Back-references and Subexpressions</span></h3>
+<a class="index-entry-id" id="index-subexpression"></a>
+<a class="index-entry-id" id="index-back_002dreference"></a>
+<p><em class="dfn">back-references</em> are regular expression commands which refer to a
+previous part of the matched regular expression.  Back-references are
+specified with backslash and a single digit (e.g. ‘<samp class="samp">\1</samp>’).  The
+part of the regular expression they refer to is called a
+<em class="dfn">subexpression</em>, and is designated with parentheses.
+</p>
+<p>Back-references and subexpressions are used in two cases: in the
+regular expression search pattern, and in the <var class="var">replacement</var> part
+of the <code class="command">s</code> command (see <a class="pxref" href="#Regexp-Addresses">Regular
+Expression Addresses</a> and <a class="ref" href="#The-_0022s_0022-Command">The <code class="code">s</code> Command</a>).
+</p>
+<p>In a regular expression pattern, back-references are used to match
+the same content as a previously matched subexpression.  In the
+following example, the subexpression is ‘<samp class="samp">.</samp>’ - any single
+character (being surrounded by parentheses makes it a
+subexpression). The back-reference ‘<samp class="samp">\1</samp>’ asks to match the same
+content (same character) as the sub-expression.
+</p>
+<p>The command below matches words starting with any character,
+followed by the letter ‘<samp class="samp">o</samp>’, followed by the same character as the
+first.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ sed -E -n '/^(.)o\1$/p' /usr/share/dict/words
+bob
+mom
+non
+pop
+sos
+tot
+wow
+</pre></div>
+<p>Multiple subexpressions are automatically numbered from
+left-to-right. This command searches for 6-letter
+palindromes (the first three letters are 3 subexpressions,
+followed by 3 back-references in reverse order):
+</p>
+<div class="example">
+<pre class="example-preformatted">$ sed -E -n '/^(.)(.)(.)\3\2\1$/p' /usr/share/dict/words
+redder
+</pre></div>
+<p>In the <code class="command">s</code> command, back-references can be
+used in the <var class="var">replacement</var> part to refer back to subexpressions in
+the <var class="var">regexp</var> part.
+</p>
+<p>The following example uses two subexpressions in the regular
+expression to match two space-separated words. The back-references in
+the <var class="var">replacement</var> part prints the words in a different order:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ echo "James Bond" | sed -E 's/(.*) (.*)/The name is \2, \1 \2./'
+The name is Bond, James Bond.
+</pre></div>
+<p>When used with alternation, if the group does not participate in the
+match then the back-reference makes the whole match fail.  For
+example, ‘<samp class="samp">a(.)|b\1</samp>’ will not match ‘<samp class="samp">ba</samp>’.  When multiple
+regular expressions are given with <samp class="option">-e</samp> or from a file
+(‘<samp class="samp">-f <var class="var">file</var></samp>’), back-references are local to each expression.
+</p>
+<hr/>
+</div>
