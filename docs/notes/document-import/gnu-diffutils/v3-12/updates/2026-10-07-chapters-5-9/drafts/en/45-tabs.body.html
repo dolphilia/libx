@@ -1,0 +1,44 @@
+<div class="gnu-diffutils-original-content" id="Tabs">
+<h3 class="section" id="Preserving-Tab-Stop-Alignment"><span>5.1 Preserving Tab Stop Alignment</span></h3>
+<a class="index-entry-id" id="index-tab-stop-alignment"></a>
+<a class="index-entry-id" id="index-aligning-tab-stops"></a>
+<p>The tab character moves the cursor to the next tab stop.
+Tab stops are normally every 8 display columns;
+this can be altered by the <samp class="option">--tabsize=<var class="var">columns</var></samp> option.
+</p>
+<p>The lines of text in some of the <code class="command">diff</code> output formats are
+preceded by one or two characters that indicate whether the text is
+inserted, deleted, or changed.  The addition of those characters can
+cause tabs to move to the next tab stop, throwing off the alignment of
+columns in the line.  GNU <code class="command">diff</code> provides two ways
+to make tab-aligned columns line up correctly.
+</p>
+<p>The first way is to have <code class="command">diff</code> convert all tabs into the correct
+number of spaces before outputting them; select this method with the
+<samp class="option">--expand-tabs</samp> (<samp class="option">-t</samp>) option.  To use this form of output with
+<code class="command">patch</code>, you must give <code class="command">patch</code> the <samp class="option">-l</samp> or
+<samp class="option">--ignore-white-space</samp> option (see <a class="pxref" href="#Changed-White-Space">Applying Patches with Changed White Space</a>, for more
+information).
+</p>
+<p>The other method for making tabs line up correctly is to add a tab
+character instead of a space after the indicator character at the
+beginning of the line.  This ensures that all following tab characters
+are in the same position relative to tab stops that they were in the
+original files, so that the output is aligned correctly.  Its
+disadvantage is that it can make long lines too long to fit on one line
+of the screen or the paper.  It also does not work with the unified
+output format, which does not have a space character after the change
+type indicator character.  Select this method with the <samp class="option">-T</samp> or
+<samp class="option">--initial-tab</samp> option.
+</p>
+<p>GNU <code class="command">diff</code> currently assumes that the output device respects tab stops,
+displays each character with column width as given by the operating system,
+and displays each encoding error byte in a single column.
+Unfortunately these assumptions are often incorrect
+for encoding errors and non-ASCII characters,
+so complex input data may not line up properly on output,
+and analysis based on the <samp class="option">--ignore-tab-expansion</samp> (<samp class="option">-E</samp>) option
+may differ from the display device’s behavior.
+</p>
+<hr/>
+</div>

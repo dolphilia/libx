@@ -1,0 +1,40 @@
+<div class="gnu-diffutils-original-content" id="Bypassing-ed">
+<h3 class="section" id="Generating-the-Merged-Output-Directly"><span>8.3 Generating the Merged Output Directly</span></h3>
+<a class="index-entry-id" id="index-merged-diff3-format"></a>
+<p>With the <samp class="option">--merge</samp> (<samp class="option">-m</samp>) option, <code class="command">diff3</code> outputs the
+merged file directly.  This is more efficient than using <code class="command">ed</code> to
+generate it, and works even with non-text files that <code class="command">ed</code> would
+reject.  If you specify <samp class="option">-m</samp> without an <code class="command">ed</code> script option,
+<samp class="option">-A</samp> is assumed.
+</p>
+<p>For example, the command ‘<samp class="samp">diff3 -m lao tzu tao</samp>’
+(see <a class="pxref" href="#Sample-diff3-Input">A Third Sample Input File</a> for a copy of the input files) would output
+the following:
+</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; tzu
+=======
+The Way that can be told of is not the eternal Way;
+The name that can be named is not the eternal name.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+The Nameless is the origin of Heaven and Earth;
+The Named is the mother of all things.
+Therefore let there always be non-being,
+  so we may see their subtlety,
+And let there always be being,
+  so we may see their result.
+The two are the same,
+But after they are produced,
+  they have different names.
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; lao
+||||||| tzu
+They both may be called deep and profound.
+Deeper and more profound,
+The door of all subtleties!
+=======
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+</pre></div>
+<hr/>
+</div>

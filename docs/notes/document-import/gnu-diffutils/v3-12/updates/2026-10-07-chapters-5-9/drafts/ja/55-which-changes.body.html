@@ -1,0 +1,30 @@
+<div class="gnu-diffutils-original-content" id="Which-Changes">
+<h3 class="section" id="Selecting-Which-Changes-to-Incorporate"><span>8.1 取り込む変更を選ぶ</span></h3>
+<a class="index-entry-id" id="index-overlapping-change_002c-selection-of"></a>
+<a class="index-entry-id" id="index-unmerged-change"></a>
+<p><samp class="option">--ed</samp>（<samp class="option">-e</samp>）オプションで、<var class="var">older</var> から <var class="var">yours</var> への未マージの変更をすべて選び、<var class="var">mine</var> へマージできます。<samp class="option">--easy-only</samp>（<samp class="option">-3</samp>）では重複しない未マージの変更だけを選び、<samp class="option">--overlap-only</samp>（<samp class="option">-x</samp>）では重複する変更だけを選べます。</p>
+<p><samp class="option">-e</samp>、<samp class="option">-3</samp>、<samp class="option">-x</samp> オプションは <em class="dfn">未マージの変更</em>、つまり <var class="var">mine</var> と <var class="var">yours</var> が異なる変更だけを選びます。<var class="var">mine</var> と <var class="var">yours</var> が同じ場合の <var class="var">older</var> から <var class="var">yours</var> への変更は、すでにマージされていると仮定して無視します。その仮定が安全でない場合は、<samp class="option">--show-all</samp>（<samp class="option">-A</samp>）オプションを使えます（<a class="pxref" href="#Marking-Conflicts">競合を示す</a> を参照）。</p>
+<p>次は、これら3つのオプションをそれぞれ指定した <code class="command">diff3</code> コマンドの出力です（ファイルの全内容は <a class="pxref" href="#Sample-diff3-Input">3つ目の入力例ファイル</a> を参照）。<samp class="option">-e</samp> が出力する変更の集合は、<samp class="option">-3</samp> と <samp class="option">-x</samp> が出力する互いに重ならない変更の集合の和集合であることに注意してください。</p>
+<p>「<samp class="samp">diff3 -e lao tzu tao</samp>」の出力：</p><div class="example">
+<pre class="example-preformatted">11a
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+.
+8c
+  so we may see their result.
+.
+</pre></div>
+<p>「<samp class="samp">diff3 -3 lao tzu tao</samp>」の出力：</p><div class="example">
+<pre class="example-preformatted">8c
+  so we may see their result.
+.
+</pre></div>
+<p>「<samp class="samp">diff3 -x lao tzu tao</samp>」の出力：</p><div class="example">
+<pre class="example-preformatted">11a
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+.
+</pre></div>
+<hr/>
+</div>
+

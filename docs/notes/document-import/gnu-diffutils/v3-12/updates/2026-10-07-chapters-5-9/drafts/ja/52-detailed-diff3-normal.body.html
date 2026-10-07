@@ -1,0 +1,16 @@
+<div class="gnu-diffutils-original-content" id="Detailed-diff3-Normal">
+<h3 class="section" id="Detailed-Description-of-diff3-Normal-Format"><span>7.3 <code class="command">diff3</code> の normal 形式の詳細</span></h3>
+<p>各 hunk は「<samp class="samp">====</samp>」と記された行から始まります。3方向の hunk では単なる「<samp class="samp">====</samp>」行になり、2方向の hunk では「<samp class="samp">1</samp>」「<samp class="samp">2</samp>」「<samp class="samp">3</samp>」のいずれかが追加され、その hunk で3つの入力ファイルのどれが異なるかを示します。各 hunk には入力行の集合が2つまたは3つコピーされ、それぞれの前に1つまたは2つのコマンドが付き、行の出所を示します。</p>
+<p>通常、入力行の各コピーの前には、コマンドと区別するため2つの空白が付きます。ただし <samp class="option">--initial-tab</samp>（<samp class="option">-T</samp>）オプションを指定すると、<code class="command">diff3</code> は2つの空白の代わりにタブを使います。これによってタブが正しく整列します。詳しくは <a class="xref" href="#Tabs">タブ位置の整列を保持する</a> を参照してください。</p>
+<p>コマンドの形式は次のとおりです。</p>
+<dl class="table">
+<dt>‘<samp class="samp"><var class="var">file</var>:<var class="var">l</var>a</samp>’</dt>
+<dd><p>この hunk はファイル <var class="var">file</var> の行 <var class="var">l</var> の後に現れ、そのファイルの行を含みません。このファイルを編集して他のファイルと同じ内容にするには、他のファイルから取った hunk の行を追加する必要があります。たとえば「<samp class="samp">1:11a</samp>」は、hunk が1番目のファイルの11行目の後にあり、そのファイルの行を含まないことを示します。</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">file</var>:<var class="var">r</var>c</samp>’</dt>
+<dd><p>この hunk はファイル <var class="var">file</var> の範囲 <var class="var">r</var> の行を含みます。範囲 <var class="var">r</var> はカンマで区切った2つの行番号、または1行だけの場合は1つの番号です。このファイルを編集して他のファイルと同じ内容にするには、指定された行を他のファイルから取った行に変更する必要があります。たとえば「<samp class="samp">2:11,13c</samp>」は、hunk が2番目のファイルの11〜13行目を含むことを示します。</p></dd>
+</dl>
+<p>入力行集合の最後の行が不完全な場合（<a class="pxref" href="#Incomplete-Lines">不完全な行</a> を参照）、出力ではその後に「<samp class="samp">\</samp>」で始まる行が付き、完全な行と区別されます。</p>
+<hr/>
+</div>
+

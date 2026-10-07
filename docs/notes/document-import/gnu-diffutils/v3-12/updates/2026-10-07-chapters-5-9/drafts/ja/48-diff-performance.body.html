@@ -1,0 +1,13 @@
+<div class="gnu-diffutils-original-content" id="diff-Performance">
+<h2 class="chapter" id="diff-Performance-Tradeoffs"><span>6 <code class="command">diff</code> の性能上のトレードオフ</span></h2>
+<a class="index-entry-id" id="index-performance-of-diff"></a>
+<p>GNU <code class="command">diff</code> は十分効率よく動作しますが、状況によっては、さらに速く動作させたり、より少ない変更の集合を出力させたりできます。</p>
+<p><code class="command">diff</code> の性能を改善する方法の1つは、ファイルのコピーの代わりにハードリンクやシンボリックリンクを使うことです。<code class="command">diff</code> は通常、同じファイルへの2つのハードリンクやシンボリックリンクを読み込む必要がありません。内容が同一であるはずだからです。たとえば、大きなディレクトリ階層をコピーし、そのコピーを少し変更して、「<samp class="samp">diff -r</samp>」で元の階層とコピーを頻繁に比較するとします。元のファイルが読み取り専用なら、ハードリンクやシンボリックリンクでコピーを作ると（たとえば GNU の「<samp class="samp">cp -lR</samp>」や「<samp class="samp">cp -sR</samp>」）、性能を大きく改善できます。コピー内のファイルを初めて編集する前に、そのリンクを切り、通常のコピーに置き換える必要があります。</p>
+<p>ファイルの比較方法を変えるオプションでも、GNU <code class="command">diff</code> の性能に影響を与えられます。性能には複数の側面があります。これらのオプションは、ある側面を改善する代わりに別の側面を損なったり、ある場合に改善する一方で別の場合には悪化させたりします。</p>
+<p>GNU <code class="command">diff</code> が変更された行を判定する方法は、常に最小に近い差分の集合を求めます。通常は実用上十分です。<code class="command">diff</code> の出力が大きい場合は、ときどき差分の集合を小さくできる変更版のアルゴリズムを <code class="command">diff</code> に使わせるとよいかもしれません。<samp class="option">--minimal</samp>（<samp class="option">-d</samp>）オプションがこれを行いますが、<code class="command">diff</code> の動作が通常より遅くなることもあるため、既定の動作ではありません。</p>
+<p>比較するファイルが大きく、小さな変更の集まりが各所に散らばっている場合、<samp class="option">--speed-large-files</samp> オプションで <code class="command">diff</code> のアルゴリズムに別の変更を加えられます。入力ファイルの変更密度が一定で低い場合、出力を変えずに比較を高速化します。そうでない場合、<code class="command">diff</code> はより大きな差分の集合を出力するかもしれませんが、出力は依然として正しいものです。</p>
+<p>通常、<code class="command">diff</code> は最小の差分集合を求める前に、両ファイルで共通する先頭部分と末尾部分を取り除きます。これによって <code class="command">diff</code> は速くなりますが、ときどき最小ではない出力になることがあります。<samp class="option">--horizon-lines=<var class="var">lines</var></samp> オプションは、共通する先頭部分の最後の <var class="var">lines</var> 行と末尾部分の最初の <var class="var">lines</var> 行を <code class="command">diff</code> が取り除くのを防ぎます。これによって <code class="command">diff</code> が最小の出力を求める機会が増えます。</p>
+<p>変更された連続行の一方の端にある行の並びと、もう一方の端のすぐ外側にある行の並びが同じだとします。<code class="command">diff</code> コマンドは、どちらの同じ並びを hunk に含めるかを自由に選べます。この場合、<code class="command">diff</code> は通常、隣接する hunk をまとめられるなら境界を移動し、または hunk の行をファイルの末尾側へ移動します。hunk をまとめると、出力の見た目がよくなる場合があります。</p>
+<hr/>
+</div>
+

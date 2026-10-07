@@ -1,0 +1,51 @@
+<div class="gnu-diffutils-original-content" id="diff3-Merging">
+<h2 class="chapter" id="Merging-From-a-Common-Ancestor"><span>8 Merging From a Common Ancestor</span></h2>
+<a class="index-entry-id" id="index-merging-from-a-common-ancestor"></a>
+<p>When two people have made changes to copies of the same file,
+<code class="command">diff3</code> can produce a merged output that contains both sets of
+changes together with warnings about conflicts.
+</p>
+<p>One might imagine programs with names like <code class="command">diff4</code> and <code class="command">diff5</code>
+to compare more than three files simultaneously, but in practice the
+need rarely arises.  You can use <code class="command">diff3</code> to merge three or more
+sets of changes to a file by merging two change sets at a time.
+</p>
+<p><code class="command">diff3</code> can incorporate changes from two modified versions into a
+common preceding version.  This lets you merge the sets of changes
+represented by the two newer files.  Specify the common ancestor version
+as the second argument and the two newer versions as the first and third
+arguments, like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">diff3 <var class="var">mine</var> <var class="var">older</var> <var class="var">yours</var>
+</pre></div>
+<p>You can remember the order of the arguments by noting that they are in
+alphabetical order.
+</p>
+<a class="index-entry-id" id="index-conflict"></a>
+<a class="index-entry-id" id="index-overlap"></a>
+<p>You can think of this as subtracting <var class="var">older</var> from <var class="var">yours</var> and
+adding the result to <var class="var">mine</var>, or as merging into <var class="var">mine</var> the
+changes that would turn <var class="var">older</var> into <var class="var">yours</var>.  This merging is
+well-defined as long as <var class="var">mine</var> and <var class="var">older</var> match in the
+neighborhood of each such change.  This fails to be true when all three
+input files differ or when only <var class="var">older</var> differs; we call this
+a <em class="dfn">conflict</em>.  When all three input files differ, we call the
+conflict an <em class="dfn">overlap</em>.
+</p>
+<p><code class="command">diff3</code> gives you several ways to handle overlaps and conflicts.
+You can omit overlaps or conflicts, or select only overlaps,
+or mark conflicts with special ‘<samp class="samp">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>’ and ‘<samp class="samp">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>’ lines.
+</p>
+<p><code class="command">diff3</code> can output the merge results as an <code class="command">ed</code> script that
+that can be applied to the first file to yield the merged output.
+However, it is usually better to have <code class="command">diff3</code> generate the merged
+output directly; this bypasses some problems with <code class="command">ed</code>.
+</p>
+<hr/>
+
+
+
+
+
+</div>

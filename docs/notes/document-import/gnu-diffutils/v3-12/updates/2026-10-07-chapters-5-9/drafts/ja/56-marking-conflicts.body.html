@@ -1,0 +1,57 @@
+<div class="gnu-diffutils-original-content" id="Marking-Conflicts">
+<h3 class="section" id="Marking-Conflicts-1"><span>8.2 競合を示す</span></h3>
+<a class="index-entry-id" id="index-conflict-marking"></a>
+<a class="index-entry-id" id="index-_003c_003c_003c_003c_003c_003c_003c-for-marking-conflicts"></a>
+<p><code class="command">diff3</code> は、特別なマーカー行で囲むことで、マージ済み出力の競合を示せます。2つのファイル <var class="var">A</var> と <var class="var">B</var> から生じる競合は、次のように示されます。</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <var class="var">A</var>
+<span class="r">lines from <var class="var">A</var></span>
+=======
+<span class="r">lines from <var class="var">B</var></span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; <var class="var">B</var>
+</pre></div>
+<p>3つのファイル <var class="var">A</var>、<var class="var">B</var>、<var class="var">C</var> から生じる競合は、次のように示されます。</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <var class="var">A</var>
+<span class="r">lines from <var class="var">A</var></span>
+||||||| <var class="var">B</var>
+<span class="r">lines from <var class="var">B</var></span>
+=======
+<span class="r">lines from <var class="var">C</var></span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; <var class="var">C</var>
+</pre></div>
+<p><samp class="option">--show-all</samp>（<samp class="option">-A</samp>）オプションは <samp class="option">-e</samp> オプションと同様に動作しますが、競合を囲み、未マージの変更だけでなく <var class="var">older</var> から <var class="var">yours</var> への変更をすべて出力する点が異なります。そのため、入力例ファイル（<a class="pxref" href="#Sample-diff3-Input">3つ目の入力例ファイル</a> を参照）に対して「<samp class="samp">diff3
+-A lao tzu tao</samp>」を実行すると、<samp class="file">tzu</samp> だけが異なる競合を囲みます。</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; tzu
+=======
+The Way that can be told of is not the eternal Way;
+The name that can be named is not the eternal name.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+</pre></div>
+<p>また、3方向の競合は次のように出力します。</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; lao
+||||||| tzu
+They both may be called deep and profound.
+Deeper and more profound,
+The door of all subtleties!
+=======
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+</pre></div>
+<p><samp class="option">--show-overlap</samp>（<samp class="option">-E</samp>）オプションは、未マージの変更だけを出力し、2番目のファイルの内容を出力しないため、<samp class="option">--show-all</samp>（<samp class="option">-A</samp>）オプションより情報が少なくなります。つまり <samp class="option">-E</samp> オプションは <samp class="option">-e</samp> オプションと同様に動作しますが、3方向の重複する変更について1番目と3番目のファイルを囲む点が異なります。同様に、<samp class="option">-X</samp> は <samp class="option">-x</samp> と同様に動作しますが、その変更（必ず重複する変更）のすべてを囲みます。たとえば上記の3方向の重複する変更では、<samp class="option">-E</samp> と <samp class="option">-X</samp> オプションは次のように出力します。</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; lao
+=======
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+</pre></div>
+<p>意味のない名前や情報の乏しい名前のファイルを比較する場合、<samp class="option">--label=<var class="var">label</var></samp> オプションで「<samp class="samp">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>」「<samp class="samp">|||||||</samp>」「<samp class="samp">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>」の囲み内に別の名前を表示できます。このオプションは、入力ファイルごとに1回、最大3回指定できます。したがって「<samp class="samp">diff3 -A --label X
+--label Y --label Z A
+B C</samp>」は「<samp class="samp">diff3 -A A B C</samp>」と同様に動作しますが、出力は「<samp class="samp">A</samp>」「<samp class="samp">B</samp>」「<samp class="samp">C</samp>」ではなく「<samp class="samp">X</samp>」「<samp class="samp">Y</samp>」「<samp class="samp">Z</samp>」という名前のファイルから得たように見えます。</p>
+<hr/>
+</div>
+

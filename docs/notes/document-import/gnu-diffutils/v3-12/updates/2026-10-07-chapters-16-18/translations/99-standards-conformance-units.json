@@ -1,0 +1,67 @@
+{
+  "slug": "99-standards-conformance",
+  "bodySHA256": "3391d32c7547795003b8eb7eb692a1ae823314a7cb54ad7853dd5764753e8f45",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧17 Standards conformance⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Standards-conformance-1\"><span>17 Standards conformance</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "In a few cases, the GNU utilities’ default behavior is incompatible with the POSIX standard. To suppress these incompatibilities, define the ⟦0⟧ environment variable. Unless you are checking for POSIX conformance, you probably do not need to define ⟦1⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">POSIXLY_CORRECT</code>",
+        "⟦1⟧": "<code class=\"env\">POSIXLY_CORRECT</code>"
+      },
+      "sourceHTML": "<p>In a few cases, the GNU utilities’ default behavior is\nincompatible with the POSIX standard.  To suppress these\nincompatibilities, define the <code class=\"env\">POSIXLY_CORRECT</code> environment\nvariable.  Unless you are checking for POSIX conformance, you\nprobably do not need to define <code class=\"env\">POSIXLY_CORRECT</code>.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Normally options and operands can appear in any order, and programs act as if all the options appear before any operands. For example, ‘⟦0⟧’ acts like ‘⟦1⟧’, since ‘⟦2⟧’ is an option-argument of ⟦3⟧. However, if the ⟦4⟧ environment variable is set, options must appear before operands, unless otherwise specified for a particular command.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">diff lao tzu -C 2</samp>",
+        "⟦1⟧": "<samp class=\"samp\">diff -C 2 lao tzu</samp>",
+        "⟦2⟧": "<samp class=\"samp\">2</samp>",
+        "⟦3⟧": "<samp class=\"option\">-C</samp>",
+        "⟦4⟧": "<code class=\"env\">POSIXLY_CORRECT</code>"
+      },
+      "sourceHTML": "<p>Normally options and operands can appear in any order, and programs act\nas if all the options appear before any operands.  For example,\n‘<samp class=\"samp\">diff lao tzu -C 2</samp>’ acts like ‘<samp class=\"samp\">diff -C 2 lao tzu</samp>’, since\n‘<samp class=\"samp\">2</samp>’ is an option-argument of <samp class=\"option\">-C</samp>.  However, if the\n<code class=\"env\">POSIXLY_CORRECT</code> environment variable is set, options must appear\nbefore operands, unless otherwise specified for a particular command.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Newer versions of POSIX are occasionally incompatible with older versions. For example, older versions of POSIX allowed the command ‘⟦0⟧’ to have the same meaning as ‘⟦1⟧’, but POSIX 1003.1-2001 ‘⟦2⟧’ no longer allows digit-string options like ⟦3⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">diff -c -10</samp>",
+        "⟦1⟧": "<samp class=\"samp\">diff -C\n10</samp>",
+        "⟦2⟧": "<samp class=\"samp\">diff</samp>",
+        "⟦3⟧": "<samp class=\"option\">-10</samp>"
+      },
+      "sourceHTML": "<p>Newer versions of POSIX are occasionally incompatible with older\nversions.  For example, older versions of POSIX allowed the\ncommand ‘<samp class=\"samp\">diff -c -10</samp>’ to have the same meaning as ‘<samp class=\"samp\">diff -C\n10</samp>’, but POSIX 1003.1-2001 ‘<samp class=\"samp\">diff</samp>’ no longer allows\ndigit-string options like <samp class=\"option\">-10</samp>.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "The GNU utilities normally conform to the version of POSIX that is standard for your system. To cause them to conform to a different version of POSIX, define the ⟦0⟧ environment variable to a value of the form ⟦1⟧ specifying the year and month the standard was adopted. Two values are currently supported for ⟦2⟧: ‘⟦3⟧’ stands for POSIX 1003.2-1992, and ‘⟦4⟧’ stands for POSIX 1003.1-2001. For example, if you are running older software that assumes an older version of POSIX and uses ‘⟦5⟧’, you can work around the compatibility problems by setting ‘⟦6⟧’ in your environment.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">_POSIX2_VERSION</code>",
+        "⟦1⟧": "<var class=\"var\">yyyymm</var>",
+        "⟦2⟧": "<code class=\"env\">_POSIX2_VERSION</code>",
+        "⟦3⟧": "<samp class=\"samp\">199209</samp>",
+        "⟦4⟧": "<samp class=\"samp\">200112</samp>",
+        "⟦5⟧": "<samp class=\"samp\">diff -c -10</samp>",
+        "⟦6⟧": "<samp class=\"samp\">_POSIX2_VERSION=199209</samp>"
+      },
+      "sourceHTML": "<p>The GNU utilities normally conform to the version of POSIX\nthat is standard for your system.  To cause them to conform to a\ndifferent version of POSIX, define the <code class=\"env\">_POSIX2_VERSION</code>\nenvironment variable to a value of the form <var class=\"var\">yyyymm</var> specifying\nthe year and month the standard was adopted.  Two values are currently\nsupported for <code class=\"env\">_POSIX2_VERSION</code>: ‘<samp class=\"samp\">199209</samp>’ stands for\nPOSIX 1003.2-1992, and ‘<samp class=\"samp\">200112</samp>’ stands for POSIX\n1003.1-2001.  For example, if you are running older software that\nassumes an older version of POSIX and uses ‘<samp class=\"samp\">diff -c -10</samp>’,\nyou can work around the compatibility problems by setting\n‘<samp class=\"samp\">_POSIX2_VERSION=199209</samp>’ in your environment.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

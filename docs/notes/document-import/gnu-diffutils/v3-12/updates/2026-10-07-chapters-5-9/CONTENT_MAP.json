@@ -1,0 +1,1721 @@
+{
+  "schemaVersion": 1,
+  "version": "3.12",
+  "manualGeneratedSHA256": "28418bb2604a3ee716cfeac58008ee97d83c32a5803ee74b7f785d2232208a6a",
+  "sourceChapterOrderCoverageExact": true,
+  "guidePages": 62,
+  "referenceEnglishOnly": [
+    "02-reference/01-gfdl.md"
+  ],
+  "originalPre": 33,
+  "JapanesePre": {
+    "pureCodeOutputExact": 33,
+    "codeWithTranslatedExplanation": 0,
+    "translatedExplanationUnits": 0
+  },
+  "footnotes": 0,
+  "items": [
+    {
+      "sourceNode": "Overview",
+      "titleEN": "Overview",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 577,
+      "HTMLSHA256": "efa335216dea80116d057e8b5e0d6cd5c0150264129d552bd5545d4276a7b29a",
+      "batch": 1,
+      "slug": "01-overview",
+      "sourceFragmentSHA256": "24cd04de78311a7536d5d870dd5c3e708888d1ebe2f8659ba5d0315042c85414",
+      "sourcePre": [],
+      "sourceText": "Overview Computer users often find occasion to ask how two files differ. Perhaps one file is a newer version of the other file. Or maybe the two files started out as identical copies but were changed by different people. You can use the diff command to show differences between two files, or each corresponding file in two directories. diff outputs differences between files line by line in any of several formats, selectable by command line options. This set of differences is often called a diff or patch. For files that are identical, diff normally produces no output; for binary (non-text) files, diff normally reports only that they are different. You can use the cmp command to show the byte and line numbers where two files differ. cmp can also show all the bytes that differ between the two files, side by side. A way to compare two files character by character is the Emacs command M-x compare-windows. See Other Window in The GNU Emacs Manual, for more information on that command. You can use the diff3 command to show differences among three files. When two people have made independent changes to a common original, diff3 can report the differences between the original and the two changed versions, and can produce a merged file that contains both persons’ changes together with warnings about conflicts. You can use the sdiff command to merge two files interactively. You can use the set of differences produced by diff to distribute updates to text files (such as program source code) to other people. This method is especially useful when the differences are small compared to the complete files. Given diff output, you can use the patch program to update, or patch, a copy of the file. If you think of diff as subtracting one file from another to produce their difference, you can think of patch as adding the difference to one file to reproduce the other. This manual first concentrates on making diffs, and later shows how to use diffs to update files. GNU diff was written by Paul Eggert, Mike Haertel, David Hayes, Richard Stallman, and Len Tower. Wayne Davison designed and implemented the unified output format. The basic algorithm is described by Eugene W. Myers in “An O(ND) Difference Algorithm and its Variations”, Algorithmica Vol. 1, 1986, pp. 251–266, http://dx.doi.org/10.1007/BF01840446; and in “A File Comparison Program”, Webb Miller and Eugene W. Myers, Software—Practice and Experience Vol. 15, 1985, pp. 1025–1040, http://dx.doi.org/10.1002/spe.4380151102. The algorithm was independently discovered as described by Esko Ukkonen in “Algorithms for Approximate String Matching”, Information and Control Vol. 64, 1985, pp. 100–118, http://dx.doi.org/10.1016/S0019-9958(85)80046-2. Unless the --minimal option is used, diff uses a heuristic by Paul Eggert that limits the cost to O(N^1.5 log N) at the price of producing suboptimal output for large inputs with many differences. Related algorithms are surveyed by Alfred V. Aho in section 6.3 of “Algorithms for Finding Patterns in Strings”, Handbook of Theoretical Computer Science (Jan Van Leeuwen, ed.), Vol. A, Algorithms and Complexity, Elsevier/MIT Press, 1990, pp. 255–300. GNU diff3 was written by Randy Smith. GNU sdiff was written by Thomas Lord. GNU cmp was written by Torbjörn Granlund and David MacKenzie. GNU patch was written mainly by Larry Wall and Paul Eggert; several GNU enhancements were contributed by Wayne Davison and David MacKenzie. Parts of this manual are adapted from a manual page written by Larry Wall, with his permission.",
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Overview-1",
+          "text": "Overview"
+        }
+      ],
+      "id": "01-guide/01-overview.md",
+      "canonical": "canonical/en/01-guide/01-overview.md",
+      "canonicalSHA256": "6188b05ab04a31b956dae79fb3628679b39315f592efcd83d311ce93cd114afc",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/01-overview.md",
+      "translationSHA256": "deea61334c177b65b35d7db62f117d6d525b6735a9db63dc76a5e5302413eb02"
+    },
+    {
+      "sourceNode": "Comparison",
+      "titleEN": "1 What Comparison Means",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 404,
+      "HTMLSHA256": "a60291c09e937bed0c7b82dcb23de52570eab4248d4e51b37e537a388ca5a669",
+      "batch": 1,
+      "slug": "02-comparison",
+      "sourceFragmentSHA256": "ca8705154561eda3552287ea1d7feeffffce22231d161b117870e29c155feca6",
+      "sourcePre": [],
+      "sourceText": "1 What Comparison Means There are several ways to think about the differences between two files. One way to think of the differences is as a series of lines that were deleted from, inserted in, or changed in one file to produce the other file. diff compares two files line by line, finds groups of lines that differ, and reports each group of differing lines. It can report the differing lines in several formats, which have different purposes. GNU diff can show whether files are different without detailing the differences. It also provides ways to suppress certain kinds of differences that are not important to you. Most commonly, such differences are changes in the amount of white space between words or lines. diff also provides ways to suppress differences in alphabetic case or in lines that match a regular expression that you provide. These options can accumulate; for example, you can ignore changes in both white space and alphabetic case. Another way to think of the differences between two files is as a sequence of pairs of bytes that can be either identical or different. cmp reports the differences between two files byte by byte, instead of line by line. As a result, it is often more useful than diff for comparing binary files. For text files, cmp is useful mainly when you want to know only whether two files are identical, or whether one file is a prefix of the other. To illustrate the effect that considering changes byte by byte can have compared with considering them line by line, think of what happens if a single newline character is added to the beginning of a file. If that file is then compared with an otherwise identical file that lacks the newline at the beginning, diff will report that a blank line has been added to the file, while cmp will report that almost every byte of the two files differs. diff3 normally compares three input files line by line, finds groups of lines that differ, and reports each group of differing lines. Its output is designed to make it easy to inspect two different sets of changes to the same file. These commands compare input files without necessarily reading them. For example, if diff is asked simply to report whether two files differ, and it discovers that the files have different sizes, it need not read them to do its job.",
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "What-Comparison-Means",
+          "text": "1 What Comparison Means"
+        }
+      ],
+      "id": "01-guide/02-comparison.md",
+      "canonical": "canonical/en/01-guide/02-comparison.md",
+      "canonicalSHA256": "d0b1ee5714fc8ebe4e1c1de8ddad952c718f39fee6bd86db38e5270b5dbcf179",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/02-comparison.md",
+      "translationSHA256": "6e897e79c7f2ca6e8caa3dfae62633bffc88d4f191777030f8dd677874095d9f"
+    },
+    {
+      "sourceNode": "Hunks",
+      "titleEN": "1.1 Hunks",
+      "pre": 2,
+      "var": 0,
+      "ownNonPreWords": 231,
+      "HTMLSHA256": "30fe30f84c8fc8954a7bf56e530f0e432633dcf4e65fa0f51c2f9e08b18580aa",
+      "batch": 1,
+      "slug": "03-hunks",
+      "sourceFragmentSHA256": "4990b7d2ebd6aedd72ac976c2f7af80becb7a9f0faec73e6bfa45befb730abb9",
+      "sourcePre": [
+        "1,2d0\n< a\n< b\n3a2,3\n> b\n> a\n",
+        "1c1\n< a\n---\n> c\n3c3\n< c\n---\n> a\n"
+      ],
+      "sourceText": "1.1 Hunks When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks. Comparing two identical files yields one sequence of common lines and no hunks, because no lines differ. Comparing two entirely different files yields no common lines and one large hunk that contains all lines of both files. In general, there are many ways to match up lines between two given files. diff tries to minimize the total hunk size by finding large sequences of common lines interspersed with small hunks of differing lines. For example, suppose the file F contains the three lines ‘a’, ‘b’, ‘c’, and the file G contains the same three lines in reverse order ‘c’, ‘b’, ‘a’. If diff finds the line ‘c’ as common, then the command ‘diff F G’ produces this output: 1,2d0 < a < b 3a2,3 > b > a But if diff notices the common line ‘b’ instead, it produces this output: 1c1 < a --- > c 3c3 < c --- > a It is also possible to find ‘a’ as the common line. diff does not always find an optimal matching between the files; it takes shortcuts to run faster. But its output is usually close to the shortest possible. You can adjust this tradeoff with the --minimal (-d) option (see diff Performance Tradeoffs).",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Hunks-1",
+          "text": "1.1 Hunks"
+        }
+      ],
+      "id": "01-guide/03-hunks.md",
+      "canonical": "canonical/en/01-guide/03-hunks.md",
+      "canonicalSHA256": "f844b6fedab6a95de8d8d68c0f7b937b58cffa1a6ce0cfada897f8a8480c1732",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/03-hunks.md",
+      "translationSHA256": "87e2f9032aa69d8fc4ce09f2c569d59c4dee458f9185961aa10c9f704599820f"
+    },
+    {
+      "sourceNode": "White-Space",
+      "titleEN": "1.2 Suppressing Differences in Blank and Tab Spacing",
+      "pre": 2,
+      "var": 0,
+      "ownNonPreWords": 236,
+      "HTMLSHA256": "a752497f8f1ff48e92fc5901f8ebc66f790dc00dd8c504dd8e1201c0522f8159",
+      "batch": 1,
+      "slug": "04-white-space",
+      "sourceFragmentSHA256": "37dd3f94e5af35b3b05341174685282a53149bcf4d1ef87bc46a614d49d0ad0a",
+      "sourcePre": [
+        "Here lyeth  muche rychnesse  in lytell space.   -- John Heywood$\nHere lyeth muche rychnesse in lytell space. -- John Heywood   $\n",
+        "Here lyeth  muche  rychnesse in lytell space.--  John Heywood$\n  He relyeth much erychnes  seinly tells pace.  --John Heywood   ^M$\n"
+      ],
+      "sourceText": "1.2 Suppressing Differences in Blank and Tab Spacing The --ignore-tab-expansion (-E) option ignores the distinction between tabs and spaces on input. A tab is considered to be equivalent to the number of spaces to the next tab stop (see Preserving Tab Stop Alignment). The --ignore-trailing-space (-Z) option ignores white space at line end. The --ignore-space-change (-b) option is stronger than -E and -Z combined. It ignores white space at line end, and considers all other sequences of one or more white space characters within a line to be equivalent. With this option, diff considers the following two lines to be equivalent, where ‘$’ denotes the line end: Here lyeth muche rychnesse in lytell space. -- John Heywood$ Here lyeth muche rychnesse in lytell space. -- John Heywood $ The --ignore-all-space (-w) option is stronger still. It ignores differences even if one line has white space where the other line has none. White space characters include tab, vertical tab, form feed, carriage return, and space; some locales may define additional characters to be white space. With this option, diff considers the following two lines to be equivalent, where ‘$’ denotes the line end and ‘^M’ denotes a carriage return: Here lyeth muche rychnesse in lytell space.-- John Heywood$ He relyeth much erychnes seinly tells pace. --John Heywood ^M$ For many other programs newline is also a white space character, but diff is a line-oriented program and a newline character always ends a line. Hence the -w or --ignore-all-space option does not ignore newline-related changes; it ignores only other white space changes.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Suppressing-Differences-in-Blank-and-Tab-Spacing",
+          "text": "1.2 Suppressing Differences in Blank and Tab Spacing"
+        }
+      ],
+      "id": "01-guide/04-white-space.md",
+      "canonical": "canonical/en/01-guide/04-white-space.md",
+      "canonicalSHA256": "bd625bc0477a27d77ccfb902be2b5fa804276e0e44e28746a2284e6ee3f3dace",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/04-white-space.md",
+      "translationSHA256": "64c07e3f7d08199c738fecbe31b4c961469208b7388da66f960506311ee19cd6"
+    },
+    {
+      "sourceNode": "Blank-Lines",
+      "titleEN": "1.3 Suppressing Differences Whose Lines Are All Blank",
+      "pre": 2,
+      "var": 0,
+      "ownNonPreWords": 100,
+      "HTMLSHA256": "e54b1bbaa9a331644df1c36a4f0980d00a06df91fa8166f50506858000708dc6",
+      "batch": 1,
+      "slug": "05-blank-lines",
+      "sourceFragmentSHA256": "cf1c0a099e9006f40785ecd61d6e669140175dad8f549b2f49e5ddd2a1ab81fb",
+      "sourcePre": [
+        "1.  A point is that which has no part.\n\n2.  A line is breadthless length.\n-- Euclid, The Elements, I\n",
+        "1.  A point is that which has no part.\n2.  A line is breadthless length.\n\n\n-- Euclid, The Elements, I\n"
+      ],
+      "sourceText": "1.3 Suppressing Differences Whose Lines Are All Blank The --ignore-blank-lines (-B) option ignores changes that consist entirely of blank lines. With this option, for example, a file containing 1. A point is that which has no part. 2. A line is breadthless length. -- Euclid, The Elements, I is considered identical to a file containing 1. A point is that which has no part. 2. A line is breadthless length. -- Euclid, The Elements, I Normally this option affects only lines that are completely empty, but if you also specify an option that ignores trailing spaces, lines are also affected if they look empty but contain white space. In other words, -B is equivalent to ‘-I '^$'’ by default, but it is equivalent to -I '^[[:space:]]*$' if -b, -w or -Z is also specified.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Suppressing-Differences-Whose-Lines-Are-All-Blank",
+          "text": "1.3 Suppressing Differences Whose Lines Are All Blank"
+        }
+      ],
+      "id": "01-guide/05-blank-lines.md",
+      "canonical": "canonical/en/01-guide/05-blank-lines.md",
+      "canonicalSHA256": "3b443b969d01d1188862719c62d187b406965d9b02aadc694163eddbc852f437",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/05-blank-lines.md",
+      "translationSHA256": "46f31aa9d497b7f13bad2a35c49f6f48ec3eb844a9acb35256e47e1841a24673"
+    },
+    {
+      "sourceNode": "Specified-Lines",
+      "titleEN": "1.4 Suppressing Differences Whose Lines All Match a Regular Expression",
+      "pre": 0,
+      "var": 2,
+      "ownNonPreWords": 145,
+      "HTMLSHA256": "3f7b1ed5f635aec78e67c726063a086d60ab10451de448a549e371d92ca5f8b6",
+      "batch": 1,
+      "slug": "06-specified-lines",
+      "sourceFragmentSHA256": "3152725237cf86b5a7d0828fc1dd0a853b4c863a7c9a6c04f95294d7696c6c0c",
+      "sourcePre": [],
+      "sourceText": "1.4 Suppressing Differences Whose Lines All Match a Regular Expression To ignore insertions and deletions of lines that match a grep-style regular expression, use the --ignore-matching-lines=regexp (-I regexp) option. You should escape regular expressions that contain shell metacharacters to prevent the shell from expanding them. For example, ‘diff -I '^[[:digit:]]'’ ignores all changes to lines beginning with a digit. However, -I only ignores the insertion or deletion of lines that contain the regular expression if every changed line in the hunk—every insertion and every deletion—matches the regular expression. In other words, for each nonignorable change, diff prints the complete set of changes in its vicinity, including the ignorable ones. You can specify more than one regular expression for lines to ignore by using more than one -I option. diff tries to match each line against each regular expression.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Suppressing-Differences-Whose-Lines-All-Match-a-Regular-Expression",
+          "text": "1.4 Suppressing Differences Whose Lines All Match a Regular Expression"
+        }
+      ],
+      "id": "01-guide/06-specified-lines.md",
+      "canonical": "canonical/en/01-guide/06-specified-lines.md",
+      "canonicalSHA256": "73716a8d92c71233ac7f9475db35ec3e24eda2c8c854771ffe2ef1ad51e79782",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/06-specified-lines.md",
+      "translationSHA256": "7c4f8d5ffa97a479e262ad4709bbef04f03f88501e28a538942e123b8e668745"
+    },
+    {
+      "sourceNode": "Case-Folding",
+      "titleEN": "1.5 Suppressing Case Differences",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 203,
+      "HTMLSHA256": "f6b794987c0dc560ceb09b351a7830dc014cad628920caa862c21408fe742346",
+      "batch": 1,
+      "slug": "07-case-folding",
+      "sourceFragmentSHA256": "ef29e59918405aabc8d0ce7056f652131ee1666b577d5354152a0b1403bbbc73",
+      "sourcePre": [],
+      "sourceText": "1.5 Suppressing Case Differences GNU diff can treat capital letters as equivalent to their small counterparts, so that, for example, it considers ‘Funky Stuff’, ‘funky STUFF’, and ‘fUNKy stuFf’ to all be the same. To request this, use the -i or --ignore-case option. When ignoring case diff downcases each character before comparing it. For example, ‘diff -i’ downcases Greek capital “Δ” to small “δ” before comparison. Although this works for many cases, it may have problems in some. For example: The German word “Straße” is not treated like “STRASSE” as many Germans might expect, because the two words downcase to “straße” and “strasse” respectively. The Greek name “Κως” is not treated like “ΚΩΣ” even though they both end in sigma, because the latter’s trailing “Σ” (U+03A3 GREEK CAPITAL LETTER SIGMA) downcases to “σ” (U+03C3 GREEK SMALL LETTER SIGMA) instead of to “ς” (U+03C2 GREEK SMALL LETTER FINAL SIGMA). The ancient Greek phrase “Πάντα ῥεῖ” is not treated like “ΠΆΝΤΑ ῬΕΙ͂”, as the former’s trailing “ῖ” is the single character U+1FD6 (GREEK SMALL LETTER IOTA WITH PERISPOMENI) whereas the latter’s trailing “Ι͂” has two characters, U+0399 (GREEK CAPITAL LETTER IOTA) and U+0342 (COMBINING GREEK PERISPOMENI).",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Suppressing-Case-Differences",
+          "text": "1.5 Suppressing Case Differences"
+        }
+      ],
+      "id": "01-guide/07-case-folding.md",
+      "canonical": "canonical/en/01-guide/07-case-folding.md",
+      "canonicalSHA256": "080476b19d682ba114a9879b5ffdf19cd14d4b1cbebaa72151bcf8b5b4bac9e0",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/07-case-folding.md",
+      "translationSHA256": "f43d9b6c72c5280be9622dfa3667788cb03d5fb90cb17b459cf359da59059cfc"
+    },
+    {
+      "sourceNode": "Brief",
+      "titleEN": "1.6 Summarizing Which Files Differ",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 204,
+      "HTMLSHA256": "12169a7f1edca453807eacf2af5e51c9e9fdcc738febbcef5f5f377842c36c12",
+      "batch": 1,
+      "slug": "08-brief",
+      "sourceFragmentSHA256": "22c8dba48f82e5119a70494cd490ab0369a92a1d72d4924ef307fb5d290dfe3c",
+      "sourcePre": [],
+      "sourceText": "1.6 Summarizing Which Files Differ When you only want to find out whether files are different, and you don’t care what the differences are, you can use the summary output format. In this format, instead of showing the differences between the files, diff simply reports whether files differ. The --brief (-q) option selects this output format. This format is especially useful when comparing the contents of two directories. It is also much faster than doing the normal line by line comparisons, because diff can stop analyzing the files as soon as it knows that there are any differences. You can also get a brief indication of whether two files differ by using cmp. For files that are identical, cmp produces no output. When the files differ, by default, cmp outputs the byte and line number where the first difference occurs, or reports that one file is a prefix of the other. You can use the -s, --quiet, or --silent option to suppress that information, so that cmp produces no output and reports whether the files differ using only its exit status (see Invoking cmp). Unlike diff, cmp cannot compare directories; it can only compare two files.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Summarizing-Which-Files-Differ",
+          "text": "1.6 Summarizing Which Files Differ"
+        }
+      ],
+      "id": "01-guide/08-brief.md",
+      "canonical": "canonical/en/01-guide/08-brief.md",
+      "canonicalSHA256": "f5a00762e432cc6821e3ad43f8584be6a048125215b687db4f59a80b5e898513",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/08-brief.md",
+      "translationSHA256": "c7aeab9b5701b5130e23c7aaf41b040453c372c6e527588cb4f2b0d7c4a76ed4"
+    },
+    {
+      "sourceNode": "Binary",
+      "titleEN": "1.7 Binary Files and Forcing Text Comparisons",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 635,
+      "HTMLSHA256": "9a0699d7c6e119fef0fc6ae5e505bbfa21d28fc40fe9c70ac955b971cf36d4cb",
+      "batch": 1,
+      "slug": "09-binary",
+      "sourceFragmentSHA256": "4a1bb64ca5115787a33a0c041fa1a3477b30f64f8164eddaeac23ae5b1357e39",
+      "sourcePre": [],
+      "sourceText": "1.7 Binary Files and Forcing Text Comparisons If diff thinks that either of the two files it is comparing is binary (a non-text file), it normally treats that pair of files much as if the summary output format had been selected (see Summarizing Which Files Differ), and reports only that the binary files are different. This is because line by line comparisons are usually not meaningful for binary files. This does not count as trouble, even though the resulting output does not capture all the differences. diff determines whether a file is text or binary by checking the first few bytes in the file; the exact number of bytes is system dependent, but it is typically several thousand. If every byte in that part of the file is non-null, diff considers the file to be text; otherwise it considers the file to be binary. Sometimes you might want to force diff to consider files to be text. For example, you might be comparing text files that contain null characters; diff would erroneously decide that those are non-text files. Or you might be comparing documents that are in a format used by a word processing system that uses null characters to indicate special formatting. You can force diff to consider all files to be text files, and compare them line by line, by using the --text (-a) option. If the files you compare using this option do not in fact contain text, they will probably contain few newline characters, and the diff output will consist of hunks showing differences between long lines of whatever characters the files contain. You can also force diff to report only whether files differ (but not how). Use the --brief (-q) option for this. In operating systems that distinguish between text and binary files, diff normally reads and writes all data as text. Use the --binary option to force diff to read and write binary data instead. This option has no effect on a POSIX-compliant system like GNU or traditional Unix. However, many personal computer operating systems represent the end of a line with a carriage return followed by a newline. On such systems, diff normally ignores these carriage returns on input and generates them at the end of each output line, but with the --binary option diff treats each carriage return as just another input character, and does not generate a carriage return at the end of each output line. This can be useful when dealing with non-text files that are meant to be interchanged with POSIX-compliant systems. The --strip-trailing-cr causes diff to treat input lines that end in carriage return followed by newline as if they end in plain newline. This can be useful when comparing text that is imperfectly imported from many personal computer operating systems. This option affects how lines are read, which in turn affects how they are compared and output. If you want to compare two files byte by byte, you can use the cmp program with the --verbose (-l) option to show the values of each differing byte in the two files. With GNU cmp, you can also use the -b or --print-bytes option to show the ASCII representation of those bytes. See Invoking cmp, for more information. If diff3 thinks that any of the files it is comparing is binary (a non-text file), it normally reports an error, because such comparisons are usually not useful. diff3 uses the same test as diff to decide whether a file is binary. As with diff, if the input files contain a few non-text bytes but otherwise are like text files, you can force diff3 to consider all files to be text files and compare them line by line by using the -a or --text option.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Binary-Files-and-Forcing-Text-Comparisons",
+          "text": "1.7 Binary Files and Forcing Text Comparisons"
+        }
+      ],
+      "id": "01-guide/09-binary.md",
+      "canonical": "canonical/en/01-guide/09-binary.md",
+      "canonicalSHA256": "7aa3a63830149febab98a1056e0e9b71ddea4b2d62a7b37bfcc65b03bc9d189c",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/09-binary.md",
+      "translationSHA256": "8cd43ccf284ecdbc54fb510cc13b7bcbcf9ca7218468cec792bf4bd832af87ca"
+    },
+    {
+      "sourceNode": "Mutating-Files",
+      "titleEN": "1.8 Comparing Files While They Are Changing",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 157,
+      "HTMLSHA256": "829331f03f5fc86ddb134389da9301855577bfc948cef40fa186d2dda71e873f",
+      "batch": 1,
+      "slug": "10-mutating-files",
+      "sourceFragmentSHA256": "7412f60461f58e37a712876fd237cdc5a24ff65272b5daa328a272c0c2475878",
+      "sourcePre": [],
+      "sourceText": "1.8 Comparing Files While They Are Changing Commands like diff read files and directories by using a series of system calls, as operating systems typically do not give a program a way to snapshot all its input before processing it. If input files change while being read, diff and related commands can generate output that does not correspond to any state of the input file system. For example, if some other process truncates a file to zero size when diff has read just half the file, diff will use the half that it read as its input data. As another example, if a recursive diff determines that a file is a directory, and then some other process replaces the directory with a regular file, and then diff attempts to descend into the directory, diff will issue a diagnostic and fail. In these situations the output of diff and related programs should be interpreted with some care.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Comparing-Files-While-They-Are-Changing",
+          "text": "1.8 Comparing Files While They Are Changing"
+        }
+      ],
+      "id": "01-guide/10-mutating-files.md",
+      "canonical": "canonical/en/01-guide/10-mutating-files.md",
+      "canonicalSHA256": "d95fdabd55af5483c2dc0aa83aff085214d5dbba0017a19238f89f529e92975c",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/10-mutating-files.md",
+      "translationSHA256": "524579940b243dd660c2c144dadca9c8d1f60ba4ce2fc74df318c49b63235b91"
+    },
+    {
+      "sourceNode": "Output-Formats",
+      "titleEN": "2 diff Output Formats",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 31,
+      "HTMLSHA256": "3b26c73a6409ee79404ec9fa13f55520e5bfeab74804e24bbbe6dc0da6576b66",
+      "batch": 2,
+      "slug": "11-output-formats",
+      "sourceFragmentSHA256": "aea4b477a315eb1eabf81c44b107a5efb37baec52814b75d3ff73a8aa47c6cbb",
+      "sourcePre": [],
+      "sourceText": "2 diff Output Formats diff has several mutually exclusive options for output format. The following sections describe each format, illustrating how diff reports the differences between two sample input files.",
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "diff-Output-Formats",
+          "text": "2 diff Output Formats"
+        }
+      ],
+      "id": "01-guide/11-output-formats.md",
+      "canonical": "canonical/en/01-guide/11-output-formats.md",
+      "canonicalSHA256": "dcf1234d335d4d9d8a5467cb8044417fa52703de411eb499ba972ff0b4d354f8",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/11-output-formats.md",
+      "translationSHA256": "3c07b57c0ce2bb51eaf8a10c7604e71861927eaa0b5d9e4430fc9f96a1fb1950"
+    },
+    {
+      "sourceNode": "Sample-diff-Input",
+      "titleEN": "2.1 Two Sample Input Files",
+      "pre": 2,
+      "var": 0,
+      "ownNonPreWords": 89,
+      "HTMLSHA256": "9861f827d4b6558e06fe56ae55edba0a5a245a94d96276c86e0f8b900b9641b1",
+      "batch": 2,
+      "slug": "12-sample-diff-input",
+      "sourceFragmentSHA256": "acf64693b632fb83b1d26eb6edb828d7785803e8420fd0d9d4bc5444bfc3da28",
+      "sourcePre": [
+        "The Way that can be told of is not the eternal Way;\nThe name that can be named is not the eternal name.\nThe Nameless is the origin of Heaven and Earth;\nThe Named is the mother of all things.\nTherefore let there always be non-being,\n  so we may see their subtlety,\nAnd let there always be being,\n  so we may see their outcome.\nThe two are the same,\nBut after they are produced,\n  they have different names.\n",
+        "The Nameless is the origin of Heaven and Earth;\nThe named is the mother of all things.\n\nTherefore let there always be non-being,\n  so we may see their subtlety,\nAnd let there always be being,\n  so we may see their outcome.\nThe two are the same,\nBut after they are produced,\n  they have different names.\nThey both may be called deep and profound.\nDeeper and more profound,\nThe door of all subtleties!\n"
+      ],
+      "sourceText": "2.1 Two Sample Input Files Here are two sample files that we will use in numerous examples to illustrate the output of diff and how various options can change it. This is the file lao: The Way that can be told of is not the eternal Way; The name that can be named is not the eternal name. The Nameless is the origin of Heaven and Earth; The Named is the mother of all things. Therefore let there always be non-being, so we may see their subtlety, And let there always be being, so we may see their outcome. The two are the same, But after they are produced, they have different names. This is the file tzu: The Nameless is the origin of Heaven and Earth; The named is the mother of all things. Therefore let there always be non-being, so we may see their subtlety, And let there always be being, so we may see their outcome. The two are the same, But after they are produced, they have different names. They both may be called deep and profound. Deeper and more profound, The door of all subtleties! In this example, the first hunk contains just the first two lines of lao, the second hunk contains the fourth line of lao opposing the second and third lines of tzu, and the last hunk contains just the last three lines of tzu.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Two-Sample-Input-Files",
+          "text": "2.1 Two Sample Input Files"
+        }
+      ],
+      "id": "01-guide/12-sample-diff-input.md",
+      "canonical": "canonical/en/01-guide/12-sample-diff-input.md",
+      "canonicalSHA256": "eb03576d26fd5287a6ffb5cd005e658959c9d6fef5c541c2b27a81cf35ec80bc",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/12-sample-diff-input.md",
+      "translationSHA256": "dd261510075f3dfb0b1a2c6f6d000d9b3ad878e914e47b9403f67642c6ea4647"
+    },
+    {
+      "sourceNode": "Context",
+      "titleEN": "2.2 Showing Differences in Their Context",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 202,
+      "HTMLSHA256": "e4ffd11cce8931c25de6e3908b883629461ccc9df46b2cd327e40687e9a7d86d",
+      "batch": 2,
+      "slug": "13-context",
+      "sourceFragmentSHA256": "0b4326058ca56a122ac4200835452ed013498688b1569d72d649c6ec94a1c066",
+      "sourcePre": [],
+      "sourceText": "2.2 Showing Differences in Their Context Usually, when you are looking at the differences between files, you will also want to see the parts of the files near the lines that differ, to help you understand exactly what has changed. These nearby parts of the files are called the context. GNU diff provides two output formats that show context around the differing lines: context format and unified format. It can optionally show in which function or section of the file the differing lines are found. If you are distributing new versions of files to other people in the form of diff output, you should use one of the output formats that show context so that they can apply the diffs even if they have made small changes of their own to the files. patch can apply the diffs in this case by searching in the files for the lines of context around the differing lines; if those lines are actually a few lines away from where the diff says they are, patch can adjust the line numbers accordingly and still apply the diff correctly. See Applying Imperfect Patches, for more information on using patch to apply imperfect diffs.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Showing-Differences-in-Their-Context",
+          "text": "2.2 Showing Differences in Their Context"
+        }
+      ],
+      "id": "01-guide/13-context.md",
+      "canonical": "canonical/en/01-guide/13-context.md",
+      "canonicalSHA256": "c5cc8a8b7ad6e30bd5ec8ece03846b2409af2ebd8c7cf5296e2d7857949d72c8",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/13-context.md",
+      "translationSHA256": "207d862e08efc32e96aec564bfb6878fe40af56ebb90b5d70b5964b70bcb3095"
+    },
+    {
+      "sourceNode": "Context-Format",
+      "titleEN": "2.2.1 Context Format",
+      "pre": 0,
+      "var": 4,
+      "ownNonPreWords": 89,
+      "HTMLSHA256": "4bbe78a2403f1875bb717be89b63f9e04fc29d440e79324fe871d9977ade0363",
+      "batch": 2,
+      "slug": "14-context-format",
+      "sourceFragmentSHA256": "7a46b1e8181163fe3096cd5b27201dcc6c721eb7fe0ab578142172e26dbe723f",
+      "sourcePre": [],
+      "sourceText": "2.2.1 Context Format The context output format shows several lines of context around the lines that differ. It is the standard format for distributing updates to source code. To select this output format, use the --context[=lines] (-C lines) or -c option. The argument lines that some of these options take is the number of lines of context to show. If you do not specify lines, it defaults to three. For proper operation, patch typically needs at least two lines of context.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Context-Format-1",
+          "text": "2.2.1 Context Format"
+        }
+      ],
+      "id": "01-guide/14-context-format.md",
+      "canonical": "canonical/en/01-guide/14-context-format.md",
+      "canonicalSHA256": "76bbeb8d55e8a70c00b631e1898fa7b7fc704f412fa9f088e89f1b4fd19a1b7d",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/14-context-format.md",
+      "translationSHA256": "6f72b9cd28727fa32e89bfb30cae7dd9d473921f2c0e2375db1d83f6eab22a21"
+    },
+    {
+      "sourceNode": "Example-Context",
+      "titleEN": "2.2.1.1 An Example of Context Format",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 69,
+      "HTMLSHA256": "dd50009cda823b601409489e4da8e76911348de58c520e2f66c1c2d1f56ea27d",
+      "batch": 2,
+      "slug": "15-example-context",
+      "sourceFragmentSHA256": "8a1db28c5c73c89b02ac7019587e962f68b2a9fc2e1f39db3684ee775f781042",
+      "sourcePre": [
+        "*** lao\t2002-02-21 23:30:39.942229878 -0800\n--- tzu\t2002-02-21 23:30:50.442260588 -0800\n***************\n*** 1,7 ****\n- The Way that can be told of is not the eternal Way;\n- The name that can be named is not the eternal name.\n  The Nameless is the origin of Heaven and Earth;\n! The Named is the mother of all things.\n  Therefore let there always be non-being,\n    so we may see their subtlety,\n  And let there always be being,\n--- 1,6 ----\n  The Nameless is the origin of Heaven and Earth;\n! The named is the mother of all things.\n! \n  Therefore let there always be non-being,\n    so we may see their subtlety,\n  And let there always be being,\n***************\n*** 9,11 ****\n--- 8,13 ----\n  The two are the same,\n  But after they are produced,\n    they have different names.\n+ They both may be called deep and profound.\n+ Deeper and more profound,\n+ The door of all subtleties!\n"
+      ],
+      "sourceText": "2.2.1.1 An Example of Context Format Here is the output of ‘diff -c lao tzu’ (see Two Sample Input Files, for the complete contents of the two files). Notice that up to three lines that are not different are shown around each line that is different; they are the context lines. Also notice that the first two hunks have run together, because their contents overlap. *** lao 2002-02-21 23:30:39.942229878 -0800 --- tzu 2002-02-21 23:30:50.442260588 -0800 *************** *** 1,7 **** - The Way that can be told of is not the eternal Way; - The name that can be named is not the eternal name. The Nameless is the origin of Heaven and Earth; ! The Named is the mother of all things. Therefore let there always be non-being, so we may see their subtlety, And let there always be being, --- 1,6 ---- The Nameless is the origin of Heaven and Earth; ! The named is the mother of all things. ! Therefore let there always be non-being, so we may see their subtlety, And let there always be being, *************** *** 9,11 **** --- 8,13 ---- The two are the same, But after they are produced, they have different names. + They both may be called deep and profound. + Deeper and more profound, + The door of all subtleties!",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "An-Example-of-Context-Format",
+          "text": "2.2.1.1 An Example of Context Format"
+        }
+      ],
+      "id": "01-guide/15-example-context.md",
+      "canonical": "canonical/en/01-guide/15-example-context.md",
+      "canonicalSHA256": "43d9ec7822758b0a9c089b430a31147bca054adc3103c44e21ee9c5e911c68d4",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/15-example-context.md",
+      "translationSHA256": "3a171c92b73ef02f92a152b99099221f89f5521e1d7848fa8f7d688ea88604d1"
+    },
+    {
+      "sourceNode": "Less-Context",
+      "titleEN": "2.2.1.2 An Example of Context Format with Less Context",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 46,
+      "HTMLSHA256": "e3d12e414b187bb31a61c037c2ef8eae88f1936372bf62e0bb27900dfa942487",
+      "batch": 2,
+      "slug": "16-less-context",
+      "sourceFragmentSHA256": "a9f082febca2be2df6b6669720cfe086fb64397e28b3508b6cf1cf32a58b58aa",
+      "sourcePre": [
+        "*** lao\t2002-02-21 23:30:39.942229878 -0800\n--- tzu\t2002-02-21 23:30:50.442260588 -0800\n***************\n*** 1,5 ****\n- The Way that can be told of is not the eternal Way;\n- The name that can be named is not the eternal name.\n  The Nameless is the origin of Heaven and Earth;\n! The Named is the mother of all things.\n  Therefore let there always be non-being,\n--- 1,4 ----\n  The Nameless is the origin of Heaven and Earth;\n! The named is the mother of all things.\n! \n  Therefore let there always be non-being,\n***************\n*** 11 ****\n--- 10,13 ----\n    they have different names.\n+ They both may be called deep and profound.\n+ Deeper and more profound,\n+ The door of all subtleties!\n"
+      ],
+      "sourceText": "2.2.1.2 An Example of Context Format with Less Context Here is the output of ‘diff -C 1 lao tzu’ (see Two Sample Input Files, for the complete contents of the two files). Notice that at most one context line is reported here. *** lao 2002-02-21 23:30:39.942229878 -0800 --- tzu 2002-02-21 23:30:50.442260588 -0800 *************** *** 1,5 **** - The Way that can be told of is not the eternal Way; - The name that can be named is not the eternal name. The Nameless is the origin of Heaven and Earth; ! The Named is the mother of all things. Therefore let there always be non-being, --- 1,4 ---- The Nameless is the origin of Heaven and Earth; ! The named is the mother of all things. ! Therefore let there always be non-being, *************** *** 11 **** --- 10,13 ---- they have different names. + They both may be called deep and profound. + Deeper and more profound, + The door of all subtleties!",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "An-Example-of-Context-Format-with-Less-Context",
+          "text": "2.2.1.2 An Example of Context Format with Less Context"
+        }
+      ],
+      "id": "01-guide/16-less-context.md",
+      "canonical": "canonical/en/01-guide/16-less-context.md",
+      "canonicalSHA256": "c8defa9c3b49cb581570873edc178c5eb139a5d58b96c9aeb39d70006547b139",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/16-less-context.md",
+      "translationSHA256": "7b24027fb3d1313200f83c9cbcf954633c978e8fe08aec4d37bfffc997385656"
+    },
+    {
+      "sourceNode": "Detailed-Context",
+      "titleEN": "2.2.1.3 Detailed Description of Context Format",
+      "pre": 2,
+      "var": 15,
+      "ownNonPreWords": 311,
+      "HTMLSHA256": "6205c4012addb8df6b9c41d864e0854dc7cab2a95cc708e10c9e1c93ad673dc6",
+      "batch": 2,
+      "slug": "17-detailed-context",
+      "sourceFragmentSHA256": "7b5cc3489bebbfbe50164a3743c6b81eded8a7248cc4575846b8ab6c69a0f881",
+      "sourcePre": [
+        "*** from-file from-file-modification-time\n--- to-file to-file-modification time\n",
+        "***************\n*** from-file-line-numbers ****\n  from-file-line\n  from-file-line...\n--- to-file-line-numbers ----\n  to-file-line\n  to-file-line...\n"
+      ],
+      "sourceText": "2.2.1.3 Detailed Description of Context Format The context output format starts with a two-line header, which looks like this: *** from-file from-file-modification-time --- to-file to-file-modification time The timestamp normally looks like ‘2002-02-21 23:30:39.942229878 -0800’ to indicate the date, time with fractional seconds, and time zone in Internet RFC 2822 format. (The fractional seconds are omitted on hosts that do not support fractional timestamps.) However, a traditional timestamp like ‘Thu Feb 21 23:30:39 2002’ is used if the LC_TIME locale category is either ‘C’ or ‘POSIX’. You can change the header’s content with the --label=label option; see Showing Alternate File Names. Next come one or more hunks of differences; each hunk shows one area where the files differ. Context format hunks look like this: *************** *** from-file-line-numbers **** from-file-line from-file-line... --- to-file-line-numbers ---- to-file-line to-file-line... If a hunk contains two or more lines, its line numbers look like ‘start,end’. Otherwise only its end line number appears. An empty hunk is considered to end at the line that precedes the hunk. The lines of context around the lines that differ start with two space characters. The lines that differ between the two files start with one of the following indicator characters, followed by a space character: ‘!’ A line that is part of a group of one or more lines that changed between the two files. There is a corresponding group of lines marked with ‘!’ in the part of this hunk for the other file. ‘+’ An “inserted” line in the second file that corresponds to nothing in the first file. ‘-’ A “deleted” line in the first file that corresponds to nothing in the second file. If all of the changes in a hunk are insertions, the lines of from-file are omitted. If all of the changes are deletions, the lines of to-file are omitted.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Detailed-Description-of-Context-Format",
+          "text": "2.2.1.3 Detailed Description of Context Format"
+        }
+      ],
+      "id": "01-guide/17-detailed-context.md",
+      "canonical": "canonical/en/01-guide/17-detailed-context.md",
+      "canonicalSHA256": "b83d5ecc46e500b0afb28f969c251037cd7a39aeca962085a1a5afaf1bbd7fbc",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/17-detailed-context.md",
+      "translationSHA256": "051bb62674b4f168ab64da4fc574f528f61f68211f28ba93ee4e47e89b1b8151"
+    },
+    {
+      "sourceNode": "Unified-Format",
+      "titleEN": "2.2.2 Unified Format",
+      "pre": 0,
+      "var": 3,
+      "ownNonPreWords": 99,
+      "HTMLSHA256": "1fe2621ae74be206670e40bf0b63d317c1075435b2cee33ae7f44b69a87a538d",
+      "batch": 2,
+      "slug": "18-unified-format",
+      "sourceFragmentSHA256": "75409cc4e86174d7494f40af421826db257d572ae1c84a72a68561322cb11b29",
+      "sourcePre": [],
+      "sourceText": "2.2.2 Unified Format The unified output format is a variation on the context format that is more compact because it omits redundant context lines. To select this output format, use the --unified[=lines] (-U lines), or -u option. The argument lines is the number of lines of context to show. When it is not given, it defaults to three. In the early 1990s, only GNU diff could produce this format and only GNU patch could automatically apply diffs in this format. For proper operation, patch typically needs at least three lines of context.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Unified-Format-1",
+          "text": "2.2.2 Unified Format"
+        }
+      ],
+      "id": "01-guide/18-unified-format.md",
+      "canonical": "canonical/en/01-guide/18-unified-format.md",
+      "canonicalSHA256": "66395012d3332a8d8a4a5874b9543100db2ec33830d71615f6b4180ccb54c4aa",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/18-unified-format.md",
+      "translationSHA256": "b989cff85f8dc46ca7c65d5b05dc11b729ce60b5bf71eb7239d2ef958783b905"
+    },
+    {
+      "sourceNode": "Example-Unified",
+      "titleEN": "2.2.2.1 An Example of Unified Format",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 34,
+      "HTMLSHA256": "b2fd6dd76fc7bc2ccbc6f3ce729205b83c58fb1639ac935adb0cdd5223ba93d4",
+      "batch": 2,
+      "slug": "19-example-unified",
+      "sourceFragmentSHA256": "c81a8b5a5fe4bf5c45291c363963690c23f6aada86f40bf66e46e7e844fab5ef",
+      "sourcePre": [
+        "--- lao\t2002-02-21 23:30:39.942229878 -0800\n+++ tzu\t2002-02-21 23:30:50.442260588 -0800\n@@ -1,7 +1,6 @@\n-The Way that can be told of is not the eternal Way;\n-The name that can be named is not the eternal name.\n The Nameless is the origin of Heaven and Earth;\n-The Named is the mother of all things.\n+The named is the mother of all things.\n+\n Therefore let there always be non-being,\n   so we may see their subtlety,\n And let there always be being,\n@@ -9,3 +8,6 @@\n The two are the same,\n But after they are produced,\n   they have different names.\n+They both may be called deep and profound.\n+Deeper and more profound,\n+The door of all subtleties!\n"
+      ],
+      "sourceText": "2.2.2.1 An Example of Unified Format Here is the output of the command ‘diff -u lao tzu’ (see Two Sample Input Files, for the complete contents of the two files): --- lao 2002-02-21 23:30:39.942229878 -0800 +++ tzu 2002-02-21 23:30:50.442260588 -0800 @@ -1,7 +1,6 @@ -The Way that can be told of is not the eternal Way; -The name that can be named is not the eternal name. The Nameless is the origin of Heaven and Earth; -The Named is the mother of all things. +The named is the mother of all things. + Therefore let there always be non-being, so we may see their subtlety, And let there always be being, @@ -9,3 +8,6 @@ The two are the same, But after they are produced, they have different names. +They both may be called deep and profound. +Deeper and more profound, +The door of all subtleties!",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "An-Example-of-Unified-Format",
+          "text": "2.2.2.1 An Example of Unified Format"
+        }
+      ],
+      "id": "01-guide/19-example-unified.md",
+      "canonical": "canonical/en/01-guide/19-example-unified.md",
+      "canonicalSHA256": "15bce8c9f4014ce0ed4fb935b4969592d8ae32ec3262efbfa6f405bbe4c99a78",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/19-example-unified.md",
+      "translationSHA256": "898baf9a13b68604dcea44a3a0de80115d78aa1c0263b68f2a3ebf91a6b6de15"
+    },
+    {
+      "sourceNode": "Detailed-Unified",
+      "titleEN": "2.2.2.2 Detailed Description of Unified Format",
+      "pre": 2,
+      "var": 13,
+      "ownNonPreWords": 229,
+      "HTMLSHA256": "0e9e4aaff850d0436479de9badb6efe90190641a640064b232f9806bf9da62d7",
+      "batch": 2,
+      "slug": "20-detailed-unified",
+      "sourceFragmentSHA256": "ede9891821976f10254084af5dd6f37dc623363da467f87da6daeb3014d730a4",
+      "sourcePre": [
+        "--- from-file from-file-modification-time\n+++ to-file to-file-modification-time\n",
+        "@@ from-file-line-numbers to-file-line-numbers @@\n line-from-either-file\n line-from-either-file...\n"
+      ],
+      "sourceText": "2.2.2.2 Detailed Description of Unified Format The unified output format starts with a two-line header, which looks like this: --- from-file from-file-modification-time +++ to-file to-file-modification-time The timestamp looks like ‘2002-02-21 23:30:39.942229878 -0800’ to indicate the date, time with fractional seconds, and time zone. The fractional seconds are omitted on hosts that do not support fractional timestamps. You can change the header’s content with the --label=label option. See Showing Alternate File Names. Next come one or more hunks of differences; each hunk shows one area where the files differ. Unified format hunks look like this: @@ from-file-line-numbers to-file-line-numbers @@ line-from-either-file line-from-either-file... If a hunk contains just one line, only its start line number appears. Otherwise its line numbers look like ‘start,count’. An empty hunk is considered to start at the line that follows the hunk. If a hunk and its context contain two or more lines, its line numbers look like ‘start,count’. Otherwise only its end line number appears. An empty hunk is considered to end at the line that precedes the hunk. The lines common to both files begin with a space character. The lines that actually differ between the two files have one of the following indicator characters in the left print column: ‘+’ A line was added here to the first file. ‘-’ A line was removed here from the first file.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Detailed-Description-of-Unified-Format",
+          "text": "2.2.2.2 Detailed Description of Unified Format"
+        }
+      ],
+      "id": "01-guide/20-detailed-unified.md",
+      "canonical": "canonical/en/01-guide/20-detailed-unified.md",
+      "canonicalSHA256": "6183a36fedb44a84792b6ced9fcd6d3ecfd6c282e443efa0b8e6f2f7df305df8",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/20-detailed-unified.md",
+      "translationSHA256": "5177edf4a76dfd79c06620b77955f7da2c134b3341364f2a590858f75bded1b5"
+    },
+    {
+      "sourceNode": "Sections",
+      "titleEN": "2.2.3 Showing Which Sections Differences Are in",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 78,
+      "HTMLSHA256": "63b0d37e678f2a4ce042b405f30e147f182cfc3840b1a5a0ab44bad1b8e94254",
+      "batch": 3,
+      "slug": "21-sections",
+      "sourceFragmentSHA256": "7d0cccd67387ea7369bf06ea1bfd94fb63509e1650614ef5b0b129b40d666778",
+      "sourcePre": [],
+      "sourceText": "2.2.3 Showing Which Sections Differences Are in Sometimes you might want to know which part of the files each change falls in. If the files are source code, this could mean which function was changed. If the files are documents, it could mean which chapter or appendix was changed. GNU diff can show this by displaying the nearest section heading line that precedes the differing lines. Which lines are “section headings” is determined by a regular expression.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Showing-Which-Sections-Differences-Are-in",
+          "text": "2.2.3 Showing Which Sections Differences Are in"
+        }
+      ],
+      "id": "01-guide/21-sections.md",
+      "canonical": "canonical/en/01-guide/21-sections.md",
+      "canonicalSHA256": "e6a4a653d0bef4881c5f07276abe52469c89f185dbd63ade89a41e3fdc05365f",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/21-sections.md",
+      "translationSHA256": "d7cffd245d75e06f62dfd95e66b416beb48d56c55d20aa9125f07987058dae87"
+    },
+    {
+      "sourceNode": "Specified-Headings",
+      "titleEN": "2.2.3.1 Showing Lines That Match Regular Expressions",
+      "pre": 0,
+      "var": 3,
+      "ownNonPreWords": 239,
+      "HTMLSHA256": "1bc6123c4f1b8b118b1bf293f216566afbf293ccee7b9e4bcb4a965e011bfdce",
+      "batch": 3,
+      "slug": "22-specified-headings",
+      "sourceFragmentSHA256": "ec9f33583b76fe020fc5c0c452b14fd7843523d4fea77b31d774fac17a153ca3",
+      "sourcePre": [],
+      "sourceText": "2.2.3.1 Showing Lines That Match Regular Expressions To show in which sections differences occur for files that are not source code for C or similar languages, use the --show-function-line=regexp (-F regexp) option. diff considers lines that match the grep-style regular expression regexp to be the beginning of a section of the file. Here are suggested regular expressions for some common languages: ‘^[[:alpha:]$_]’ C, C++, Prolog ‘^(’ Lisp ‘^@node’ Texinfo This option does not automatically select an output format; in order to use it, you must select the context format (see Context Format) or unified format (see Unified Format). In other output formats it has no effect. The --show-function-line (-F) option finds the nearest unchanged line that precedes each hunk of differences and matches the given regular expression. Then it adds that line to the end of the line of asterisks in the context format, or to the ‘@@’ line in unified format. If no matching line exists, this option leaves the output for that hunk unchanged. If that line is more than 40 characters long, it outputs only the first 40 characters. You can specify more than one regular expression for such lines; diff tries to match each line against each regular expression, starting with the last one given. This means that you can use -p and -F together, if you wish.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Showing-Lines-That-Match-Regular-Expressions",
+          "text": "2.2.3.1 Showing Lines That Match Regular Expressions"
+        }
+      ],
+      "id": "01-guide/22-specified-headings.md",
+      "canonical": "canonical/en/01-guide/22-specified-headings.md",
+      "canonicalSHA256": "427086840e9bbe7e5c7e2515fc08917c007f7eab9140077da1da91f88b77a355",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/22-specified-headings.md",
+      "translationSHA256": "db69abfc9b412dfc6f12672f77b5e5475133c56ccbb4f8b718de88d1d6cc3908"
+    },
+    {
+      "sourceNode": "C-Function-Headings",
+      "titleEN": "2.2.3.2 Showing C Function Headings",
+      "pre": 0,
+      "var": 2,
+      "ownNonPreWords": 117,
+      "HTMLSHA256": "72e18b25bbd69ee6ae275ba5bf213cc0e663492790f285c4815f22d7c486c154",
+      "batch": 3,
+      "slug": "23-c-function-headings",
+      "sourceFragmentSHA256": "40625b5cec6273a5ced6fd547d4ff2fef4c5de2f0952bdb839abe28f2eecba48",
+      "sourcePre": [],
+      "sourceText": "2.2.3.2 Showing C Function Headings To show in which functions differences occur for C and similar languages, you can use the --show-c-function (-p) option. This option automatically defaults to the context output format (see Context Format), with the default number of lines of context. You can override that number with -C lines elsewhere in the command line. You can override both the format and the number with -U lines elsewhere in the command line. The --show-c-function (-p) option is equivalent to -F '^[[:alpha:]$_]' if the unified format is specified, otherwise -c -F '^[[:alpha:]$_]' (see Showing Lines That Match Regular Expressions). GNU diff provides this option for the sake of convenience.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Showing-C-Function-Headings",
+          "text": "2.2.3.2 Showing C Function Headings"
+        }
+      ],
+      "id": "01-guide/23-c-function-headings.md",
+      "canonical": "canonical/en/01-guide/23-c-function-headings.md",
+      "canonicalSHA256": "96ce6a1e492a24db208588e370f5c0b57bd7221a4b4d7a3ab16002f6459fdeab",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/23-c-function-headings.md",
+      "translationSHA256": "3e3d6a9de300d38c604b752fd72024fb68da46eaec7aa4c0eaf682840b9b1ffd"
+    },
+    {
+      "sourceNode": "Alternate-Names",
+      "titleEN": "2.2.4 Showing Alternate File Names",
+      "pre": 1,
+      "var": 1,
+      "ownNonPreWords": 136,
+      "HTMLSHA256": "ab8058c654ac688dc7288f189b22823fe59402ef48878b18196290626f0b8d99",
+      "batch": 3,
+      "slug": "24-alternate-names",
+      "sourceFragmentSHA256": "149969188847f94d457e87112bc987f3e1d7fa54328eb5ebff9a86b0183d871f",
+      "sourcePre": [
+        "*** original\n--- modified\n"
+      ],
+      "sourceText": "2.2.4 Showing Alternate File Names If you are comparing two files that have meaningless or uninformative names, you might want diff to show alternate names in the header of the context and unified output formats. To do this, use the --label=label option. The first time you give this option, its argument replaces the name and date of the first file in the header; the second time, its argument replaces the name and date of the second file. If you give this option more than twice, diff reports an error. The --label option does not affect the file names in the pr header when the -l or --paginate option is used (see Paginating diff Output). Here are the first two lines of the output from ‘diff -C 2 --label=original --label=modified lao tzu’: *** original --- modified",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Showing-Alternate-File-Names",
+          "text": "2.2.4 Showing Alternate File Names"
+        }
+      ],
+      "id": "01-guide/24-alternate-names.md",
+      "canonical": "canonical/en/01-guide/24-alternate-names.md",
+      "canonicalSHA256": "b24415146f3856999da8761ed2118487ad484e197311f744eb687f318012337d",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/24-alternate-names.md",
+      "translationSHA256": "46e92fc3903e330f34219c21d0523e52d0aa71608bfe39a9ecc315799a0acacc"
+    },
+    {
+      "sourceNode": "Side-by-Side",
+      "titleEN": "2.3 Showing Differences Side by Side",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 330,
+      "HTMLSHA256": "6a926ab4d33f7e4adf1ecd28381b12830f4e98cc4b87d3c32b443c25f47c4dc0",
+      "batch": 3,
+      "slug": "25-side-by-side",
+      "sourceFragmentSHA256": "bdfa9f7de2876e2425d2176728f8150e27a9d355a35cec19ec55a7055f89f987",
+      "sourcePre": [],
+      "sourceText": "2.3 Showing Differences Side by Side diff can produce a side by side difference listing of two files. The files are listed in two columns with a gutter between them. The gutter contains one of the following markers: white space The corresponding lines are in common. That is, either the lines are identical, or the difference is ignored because of one of the --ignore options (see Suppressing Differences in Blank and Tab Spacing). ‘|’ The corresponding lines differ, and they are either both complete or both incomplete. ‘<’ The files differ and only the first file contains the line. ‘>’ The files differ and only the second file contains the line. ‘(’ Only the first file contains the line, but the difference is ignored. ‘)’ Only the second file contains the line, but the difference is ignored. ‘\\’ The corresponding lines differ, and only the first line is incomplete. ‘/’ The corresponding lines differ, and only the second line is incomplete. Normally, an output line is incomplete if and only if the lines that it contains are incomplete. See Incomplete Lines. However, when an output line represents two differing lines, one might be incomplete while the other is not. In this case, the output line is complete, but its the gutter is marked ‘\\’ if the first line is incomplete, ‘/’ if the second line is. Side by side format is sometimes easiest to read, but it has limitations. It generates much wider output than usual, and truncates lines that are too long to fit. Also, it relies on lining up output more heavily than usual, so its output looks particularly bad if you use varying width fonts, nonstandard tab stops, or nonprinting characters. You can use the sdiff command to interactively merge side by side differences. See Interactive Merging with sdiff, for more information on merging files.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Showing-Differences-Side-by-Side",
+          "text": "2.3 Showing Differences Side by Side"
+        }
+      ],
+      "id": "01-guide/25-side-by-side.md",
+      "canonical": "canonical/en/01-guide/25-side-by-side.md",
+      "canonicalSHA256": "edcb7126a5d1c2e36c3c0db9fd3b0ca85378478828413fcb1eee5c044350fe81",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/25-side-by-side.md",
+      "translationSHA256": "4249a73568cac41d7546de521d64cf6d74cfe44c391c8ce7600ce1f7def23c6a"
+    },
+    {
+      "sourceNode": "Side-by-Side-Format",
+      "titleEN": "2.3.1 Controlling Side by Side Format",
+      "pre": 0,
+      "var": 2,
+      "ownNonPreWords": 132,
+      "HTMLSHA256": "2bb24a6b46f88a7464cb7f55624d3c10483785aaf2e0e3b85607092d7b997363",
+      "batch": 3,
+      "slug": "26-side-by-side-format",
+      "sourceFragmentSHA256": "6c2c6af3f2b40497d70a05bab2374441f2e8c8f3a3b52098c7202e93d2ff9e31",
+      "sourcePre": [],
+      "sourceText": "2.3.1 Controlling Side by Side Format The --side-by-side (-y) option selects side by side format. Because side by side output lines contain two input lines, the output is wider than usual: normally 130 print columns, which can fit onto a traditional printer line. You can set the width of the output with the --width=columns (-W columns) option. The output is split into two halves of equal width, separated by a small gutter to mark differences; the right half is aligned to a tab stop so that tabs line up. Input lines that are too long to fit in half of an output line are truncated for output. The --left-column option prints only the left column of two common lines. The --suppress-common-lines option suppresses common lines entirely.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Controlling-Side-by-Side-Format",
+          "text": "2.3.1 Controlling Side by Side Format"
+        }
+      ],
+      "id": "01-guide/26-side-by-side-format.md",
+      "canonical": "canonical/en/01-guide/26-side-by-side-format.md",
+      "canonicalSHA256": "8375935971325419241ff54798d19021a3387bf64c21410a884e569fa69070be",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/26-side-by-side-format.md",
+      "translationSHA256": "fffc36b209065050c78fad14f77b604933fb188d457b086f41a5dbf13c169398"
+    },
+    {
+      "sourceNode": "Example-Side-by-Side",
+      "titleEN": "2.3.2 An Example of Side by Side Format",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 38,
+      "HTMLSHA256": "1ad04cd246b3d00c9aff7f91db7300fa268d4ac1bb2310798b5248f5cd15a5d7",
+      "batch": 3,
+      "slug": "27-example-side-by-side",
+      "sourceFragmentSHA256": "36aaa01d7bad5e37b94d54533bf7a7fba5da549ba1370b5cc8b18beca4f4fa47",
+      "sourcePre": [
+        "The Way that can be told of is n   <\nThe name that can be named is no   <\nThe Nameless is the origin of He        The Nameless is the origin of He\nThe Named is the mother of all t   |    The named is the mother of all t\n                                   >\nTherefore let there always be no        Therefore let there always be no\n  so we may see their subtlety,           so we may see their subtlety,\nAnd let there always be being,          And let there always be being,\n  so we may see their outcome.            so we may see their outcome.\nThe two are the same,                   The two are the same,\nBut after they are produced,            But after they are produced,\n  they have different names.              they have different names.\n                                   >    They both may be called deep and\n                                   >    Deeper and more profound,\n                                   >    The door of all subtleties!\n"
+      ],
+      "sourceText": "2.3.2 An Example of Side by Side Format Here is the output of the command ‘diff -y -W 72 lao tzu’ (see Two Sample Input Files, for the complete contents of the two files). The Way that can be told of is n < The name that can be named is no < The Nameless is the origin of He The Nameless is the origin of He The Named is the mother of all t | The named is the mother of all t > Therefore let there always be no Therefore let there always be no so we may see their subtlety, so we may see their subtlety, And let there always be being, And let there always be being, so we may see their outcome. so we may see their outcome. The two are the same, The two are the same, But after they are produced, But after they are produced, they have different names. they have different names. > They both may be called deep and > Deeper and more profound, > The door of all subtleties!",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "An-Example-of-Side-by-Side-Format",
+          "text": "2.3.2 An Example of Side by Side Format"
+        }
+      ],
+      "id": "01-guide/27-example-side-by-side.md",
+      "canonical": "canonical/en/01-guide/27-example-side-by-side.md",
+      "canonicalSHA256": "3cda65c6f0602b8a6d983da012913a57dc301f65ce598e3cfc87ce9db26ea821",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/27-example-side-by-side.md",
+      "translationSHA256": "335d3f37650cd5dd4709aef634fd80255941b50425c99e7e7316809d5ec79204"
+    },
+    {
+      "sourceNode": "Normal",
+      "titleEN": "2.4 Showing Differences Without Context",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 116,
+      "HTMLSHA256": "cc3d68c6672276506aeceacbeb0a36ce2110ab85042e01e745c1e25906f8d664",
+      "batch": 3,
+      "slug": "28-normal",
+      "sourceFragmentSHA256": "ebdeea750f8fb393850b568475ede379e0310862bfe3f0d75a88d0e0215054a4",
+      "sourcePre": [],
+      "sourceText": "2.4 Showing Differences Without Context The “normal” diff output format shows each hunk of differences without any surrounding context. Sometimes such output is the clearest way to see how lines have changed, without the clutter of nearby unchanged lines (although you can get similar results with the context or unified formats by using 0 lines of context). However, this format is no longer widely used for sending out patches; for that purpose, the context format (see Context Format) and the unified format (see Unified Format) are superior. Normal format is the default for compatibility with older versions of diff and the POSIX standard. Use the --normal option to select this output format explicitly.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Showing-Differences-Without-Context",
+          "text": "2.4 Showing Differences Without Context"
+        }
+      ],
+      "id": "01-guide/28-normal.md",
+      "canonical": "canonical/en/01-guide/28-normal.md",
+      "canonicalSHA256": "c73d1ae6597cf448efe19c9fca1689a087eafe8bf4e3939a9b808a0dad6236f3",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/28-normal.md",
+      "translationSHA256": "26d95caa4e3246d1ab5baae7fec60d49a98f3fc32b356b2dcefc7c32aab1d991"
+    },
+    {
+      "sourceNode": "Example-Normal",
+      "titleEN": "2.4.1 An Example of Normal Format",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 47,
+      "HTMLSHA256": "6c2cb67f2b81d7f80816419bc1f34c84f41e0ee4d9b20f69a4164bfb622a3f6f",
+      "batch": 4,
+      "slug": "29-example-normal",
+      "sourceFragmentSHA256": "d2c409fc00e8b79c76f29cc4a8c7968157180b8d685e36d8dd628f4fbb4825a3",
+      "sourcePre": [
+        "1,2d0\n< The Way that can be told of is not the eternal Way;\n< The name that can be named is not the eternal name.\n4c2,3\n< The Named is the mother of all things.\n---\n> The named is the mother of all things.\n> \n11a11,13\n> They both may be called deep and profound.\n> Deeper and more profound,\n> The door of all subtleties!\n"
+      ],
+      "sourceText": "2.4.1 An Example of Normal Format Here is the output of the command ‘diff lao tzu’ (see Two Sample Input Files, for the complete contents of the two files). Notice that it shows only the lines that are different between the two files. 1,2d0 < The Way that can be told of is not the eternal Way; < The name that can be named is not the eternal name. 4c2,3 < The Named is the mother of all things. --- > The named is the mother of all things. > 11a11,13 > They both may be called deep and profound. > Deeper and more profound, > The door of all subtleties!",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "An-Example-of-Normal-Format",
+          "text": "2.4.1 An Example of Normal Format"
+        }
+      ],
+      "id": "01-guide/29-example-normal.md",
+      "canonical": "canonical/en/01-guide/29-example-normal.md",
+      "canonicalSHA256": "91c6bbc0db11b07dcf9b30f606a6aa50ae07a3094e0a2b29be8d58a29b9d2f04",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/29-example-normal.md",
+      "translationSHA256": "f6cfc694982a233c2451d2a11d4742782e17fa6aa7b4c8f651f8568d629abf68"
+    },
+    {
+      "sourceNode": "Detailed-Normal",
+      "titleEN": "2.4.2 Detailed Description of Normal Format",
+      "pre": 1,
+      "var": 17,
+      "ownNonPreWords": 291,
+      "HTMLSHA256": "d436e8eebd627920695327f15577e5a1c940119a913d924f8b06d7c501a75b9e",
+      "batch": 4,
+      "slug": "30-detailed-normal",
+      "sourceFragmentSHA256": "7c9aeb506ba56da08b82ca4350e00d321d908abfa0900285b3f694ad29908bdc",
+      "sourcePre": [
+        "change-command\n< from-file-line\n< from-file-line...\n---\n> to-file-line\n> to-file-line...\n"
+      ],
+      "sourceText": "2.4.2 Detailed Description of Normal Format The normal output format consists of one or more hunks of differences; each hunk shows one area where the files differ. Normal format hunks look like this: change-command < from-file-line < from-file-line... --- > to-file-line > to-file-line... There are three types of change commands. Each consists of a line number or comma-separated range of lines in the first file, a single character indicating the kind of change to make, and a line number or comma-separated range of lines in the second file. All line numbers are the original line numbers in each file. The types of change commands are: ‘lar’ Add the lines in range r of the second file after line l of the first file. For example, ‘8a12,15’ means append lines 12–15 of file 2 after line 8 of file 1; or, if changing file 2 into file 1, delete lines 12–15 of file 2. ‘fct’ Replace the lines in range f of the first file with lines in range t of the second file. This is like a combined add and delete, but more compact. For example, ‘5,7c8,10’ means change lines 5–7 of file 1 to read as lines 8–10 of file 2; or, if changing file 2 into file 1, change lines 8–10 of file 2 to read as lines 5–7 of file 1. ‘rdl’ Delete the lines in range r from the first file; line l is where they would have appeared in the second file had they not been deleted. For example, ‘5,7d3’ means delete lines 5–7 of file 1; or, if changing file 2 into file 1, append lines 5–7 of file 1 after line 3 of file 2.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Detailed-Description-of-Normal-Format",
+          "text": "2.4.2 Detailed Description of Normal Format"
+        }
+      ],
+      "id": "01-guide/30-detailed-normal.md",
+      "canonical": "canonical/en/01-guide/30-detailed-normal.md",
+      "canonicalSHA256": "1915e4e469aae083c158a398b30822ef49375139fc09eb99efe363c1ebfa0689",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/30-detailed-normal.md",
+      "translationSHA256": "06dfca85c5be4d33bddc55f3617ba7d374851725083670a855244b48e412be8b"
+    },
+    {
+      "sourceNode": "Scripts",
+      "titleEN": "2.5 Making Edit Scripts",
+      "pre": 0,
+      "var": 2,
+      "ownNonPreWords": 18,
+      "HTMLSHA256": "b2ad73fba4eb1f94953546a769b91e0899ab51bcbf70c9f975e0f7bb42c22843",
+      "batch": 4,
+      "slug": "31-scripts",
+      "sourceFragmentSHA256": "ff0b8f8586f01bff86493b92ad03987ef1685cdb3a38b3bede8623e2c7d0f3c8",
+      "sourcePre": [],
+      "sourceText": "2.5 Making Edit Scripts Several output modes produce command scripts for editing from-file to produce to-file.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Making-Edit-Scripts",
+          "text": "2.5 Making Edit Scripts"
+        }
+      ],
+      "id": "01-guide/31-scripts.md",
+      "canonical": "canonical/en/01-guide/31-scripts.md",
+      "canonicalSHA256": "f90d3c3ef4a247e9a0e5b8d0c4c0b372e9b09deb5ac34ed82163b4860e311d30",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/31-scripts.md",
+      "translationSHA256": "e02b89f768286eb9c0e226a267139a6a2cb1711f56d5f2373416af83ae46cfe3"
+    },
+    {
+      "sourceNode": "ed-Scripts",
+      "titleEN": "2.5.1 ed Scripts",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 210,
+      "HTMLSHA256": "3ae2a0e61b8bda3da457601026b1c5e29a315f0d2f2d6821b31470a379232c6e",
+      "batch": 4,
+      "slug": "32-ed-scripts",
+      "sourceFragmentSHA256": "17b2ab5fcab1b1603c9d89ea66ba27cf4a30f2252989a13577987078142da90b",
+      "sourcePre": [],
+      "sourceText": "2.5.1 ed Scripts diff can produce commands that direct the ed text editor to change the first file into the second file. Long ago, this was the only output mode that was suitable for editing one file into another automatically; today, with patch, it is almost obsolete. Use the --ed (-e) option to select this output format. Like the normal format (see Showing Differences Without Context), this output format does not show any context; unlike the normal format, it does not include the information necessary to apply the diff in reverse (to produce the first file if all you have is the second file and the diff). If the file d contains the output of ‘diff -e old new’, then the command ‘(cat d && echo w) | ed - old’ edits old to make it a copy of new. More generally, if d1, d2, …, dN contain the outputs of ‘diff -e old new1’, ‘diff -e new1 new2’, …, ‘diff -e newN-1 newN’, respectively, then the command ‘(cat d1 d2 … dN && echo w) | ed - old’ edits old to make it a copy of newN.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "ed-Scripts-1",
+          "text": "2.5.1 ed Scripts"
+        }
+      ],
+      "id": "01-guide/32-ed-scripts.md",
+      "canonical": "canonical/en/01-guide/32-ed-scripts.md",
+      "canonicalSHA256": "638192dc1a9da9704cffad6deb90850895e5a3c1d47d24e635aa4361ad2b6623",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/32-ed-scripts.md",
+      "translationSHA256": "912780197a68e698237cdf2c76b4c317713b858901ef57a08d82fce0eb417cc4"
+    },
+    {
+      "sourceNode": "Example-ed",
+      "titleEN": "2.5.1.1 Example ed Script",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 30,
+      "HTMLSHA256": "f873f16f9e84933865e66eadab1ab166f895fffb2f8f5bb8fe0366d59616b696",
+      "batch": 4,
+      "slug": "33-example-ed",
+      "sourceFragmentSHA256": "d6c90e4f27cc1000ec2d5b38427cc214ffe79bcc3b8494a78247b5cedb6f89a7",
+      "sourcePre": [
+        "11a\nThey both may be called deep and profound.\nDeeper and more profound,\nThe door of all subtleties!\n.\n4c\nThe named is the mother of all things.\n\n.\n1,2d\n"
+      ],
+      "sourceText": "2.5.1.1 Example ed Script Here is the output of ‘diff -e lao tzu’ (see Two Sample Input Files, for the complete contents of the two files): 11a They both may be called deep and profound. Deeper and more profound, The door of all subtleties! . 4c The named is the mother of all things. . 1,2d",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Example-ed-Script",
+          "text": "2.5.1.1 Example ed Script"
+        }
+      ],
+      "id": "01-guide/33-example-ed.md",
+      "canonical": "canonical/en/01-guide/33-example-ed.md",
+      "canonicalSHA256": "3f3954e3e54e390c1e47b0c8460eca8bd4227edc35b68cc64df2a8ed41597592",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/33-example-ed.md",
+      "translationSHA256": "953cd514e3cff85cd38bdc8db9b1f44bb00a152b38b407ac367a5c9a2c45a87e"
+    },
+    {
+      "sourceNode": "Detailed-ed",
+      "titleEN": "2.5.1.2 Detailed Description of ed Format",
+      "pre": 1,
+      "var": 9,
+      "ownNonPreWords": 290,
+      "HTMLSHA256": "4b44ead120281351b666b8646f5b0122c9fcbe5c0f71a63caca39b2379d328cc",
+      "batch": 4,
+      "slug": "34-detailed-ed",
+      "sourceFragmentSHA256": "becd885a95dac2129c8dbee90e642d43963d1ce0f041abf5658723e42c4ba5e8",
+      "sourcePre": [
+        "change-command\nto-file-line\nto-file-line...\n.\n"
+      ],
+      "sourceText": "2.5.1.2 Detailed Description of ed Format The ed output format consists of one or more hunks of differences. The changes closest to the ends of the files come first so that commands that change the number of lines do not affect how ed interprets line numbers in succeeding commands. ed format hunks look like this: change-command to-file-line to-file-line... . Because ed uses a single period on a line to indicate the end of input, GNU diff protects lines of changes that contain a single period on a line by writing two periods instead, then writing a subsequent ed command to change the two periods into one. The ed format cannot represent an incomplete line, so if the second file ends in a changed incomplete line, diff reports an error and then pretends that a newline was appended. There are three types of change commands. Each consists of a line number or comma-separated range of lines in the first file and a single character indicating the kind of change to make. All line numbers are the original line numbers in the file. The types of change commands are: ‘la’ Add text from the second file after line l in the first file. For example, ‘8a’ means to add the following lines after line 8 of file 1. ‘rc’ Replace the lines in range r in the first file with the following lines. Like a combined add and delete, but more compact. For example, ‘5,7c’ means change lines 5–7 of file 1 to read as the text file 2. ‘rd’ Delete the lines in range r from the first file. For example, ‘5,7d’ means delete lines 5–7 of file 1.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Detailed-Description-of-ed-Format",
+          "text": "2.5.1.2 Detailed Description of ed Format"
+        }
+      ],
+      "id": "01-guide/34-detailed-ed.md",
+      "canonical": "canonical/en/01-guide/34-detailed-ed.md",
+      "canonicalSHA256": "d55902fe959c6500e11995793a5769515fc48a135d7a7ca113d9a973e2248d63",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/34-detailed-ed.md",
+      "translationSHA256": "d2cb27f41b12f1157a1f8c342e2529dd5fc995e614c8a2e402540db81ea4aa49"
+    },
+    {
+      "sourceNode": "Forward-ed",
+      "titleEN": "2.5.2 Forward ed Scripts",
+      "pre": 0,
+      "var": 0,
+      "ownNonPreWords": 108,
+      "HTMLSHA256": "b07554493be5714adbba102611756a37cebd11133bfab5fbf388539ba8963ada",
+      "batch": 4,
+      "slug": "35-forward-ed",
+      "sourceFragmentSHA256": "7e34223e4b0ec389874e7e07f969792616a6265e9ea1d55b930333b1b9c1cd28",
+      "sourcePre": [],
+      "sourceText": "2.5.2 Forward ed Scripts diff can produce output that is like an ed script, but with hunks in forward (front to back) order. The format of the commands is also changed slightly: command characters precede the lines they modify, spaces separate line numbers in ranges, and no attempt is made to disambiguate hunk lines consisting of a single period. Like ed format, forward ed format cannot represent incomplete lines. Forward ed format is not very useful, because neither ed nor patch can apply diffs in this format. It exists mainly for compatibility with older versions of diff. Use the -f or --forward-ed option to select it.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Forward-ed-Scripts",
+          "text": "2.5.2 Forward ed Scripts"
+        }
+      ],
+      "id": "01-guide/35-forward-ed.md",
+      "canonical": "canonical/en/01-guide/35-forward-ed.md",
+      "canonicalSHA256": "dfc0569b88f899750e4881b7301eb58c35954b1296e3f0b98671f5ee937c80e7",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/35-forward-ed.md",
+      "translationSHA256": "26af6e5072e4b4b1cbb0df0eb4e9d53dab85358d6a8ab0caecf890fdb48ea2ef"
+    },
+    {
+      "sourceNode": "RCS",
+      "titleEN": "2.5.3 RCS Scripts",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 175,
+      "HTMLSHA256": "66b01f8a3e3e71b5a41048d0c533870f14df3837673f3f2ea960ed053957d92e",
+      "batch": 4,
+      "slug": "36-rcs",
+      "sourceFragmentSHA256": "6dd577472a4bf138afbc500d59ff3b6309a15a3f954880585c5dd31f5e499100",
+      "sourcePre": [
+        "d1 2\nd4 1\na4 2\nThe named is the mother of all things.\n\na11 3\nThey both may be called deep and profound.\nDeeper and more profound,\nThe door of all subtleties!\n"
+      ],
+      "sourceText": "2.5.3 RCS Scripts The RCS output format is designed specifically for use by the Revision Control System, which is a set of free programs used for organizing different versions and systems of files. Use the --rcs (-n) option to select this output format. It is like the forward ed format (see Forward ed Scripts), but it can represent arbitrary changes to the contents of a file because it avoids the forward ed format’s problems with lines consisting of a single period and with incomplete lines. Instead of ending text sections with a line consisting of a single period, each command specifies the number of lines it affects; a combination of the ‘a’ and ‘d’ commands are used instead of ‘c’. Also, if the second file ends in a changed incomplete line, then the output also ends in an incomplete line. Here is the output of ‘diff -n lao tzu’ (see Two Sample Input Files, for the complete contents of the two files): d1 2 d4 1 a4 2 The named is the mother of all things. a11 3 They both may be called deep and profound. Deeper and more profound, The door of all subtleties!",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "RCS-Scripts",
+          "text": "2.5.3 RCS Scripts"
+        }
+      ],
+      "id": "01-guide/36-rcs.md",
+      "canonical": "canonical/en/01-guide/36-rcs.md",
+      "canonicalSHA256": "fe5ea799f04d6315a10f924f9c71f9e059c9ec540cebbfa03a9d3110e2683f8e",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/36-rcs.md",
+      "translationSHA256": "5e393e26a885155d6402d6a1839695a55763660ee94f9119c4729476472ed753"
+    },
+    {
+      "sourceNode": "If_002dthen_002delse",
+      "titleEN": "2.6 Merging Files with If-then-else",
+      "pre": 1,
+      "var": 6,
+      "ownNonPreWords": 173,
+      "HTMLSHA256": "6306ff8e14fb9fbab8f341eeadeff4324dcd933bd302efd89349856220edd106",
+      "batch": 5,
+      "slug": "37-if-then-else",
+      "sourceFragmentSHA256": "30ab01e6a0c4733eab1b8ea0c516ee87e3b720094b49957ad9403017838b3652",
+      "sourcePre": [
+        "    do {\n#ifndef HAVE_WAITPID\n        if ((w = wait (&s)) < 0  &&  errno != EINTR)\n#else /* HAVE_WAITPID */\n        if ((w = waitpid (-1, &s, 0)) < 0  &&  errno != EINTR)\n#endif /* HAVE_WAITPID */\n            return w;\n    } while (w != child);\n"
+      ],
+      "sourceText": "2.6 Merging Files with If-then-else You can use diff to merge two files of C source code. The output of diff in this format contains all the lines of both files. Lines common to both files are output just once; the differing parts are separated by the C preprocessor directives #ifdef name or #ifndef name, #else, and #endif. When compiling the output, you select which version to use by either defining or leaving undefined the macro name. To merge two files, use diff with the -D name or --ifdef=name option. The argument name is the C preprocessor identifier to use in the #ifdef and #ifndef directives. For example, if you change an instance of wait (&s) to waitpid (-1, &s, 0) and then merge the old and new files with the --ifdef=HAVE_WAITPID option, then the affected part of your code might look like this: do { #ifndef HAVE_WAITPID if ((w = wait (&s)) < 0 && errno != EINTR) #else /* HAVE_WAITPID */ if ((w = waitpid (-1, &s, 0)) < 0 && errno != EINTR) #endif /* HAVE_WAITPID */ return w; } while (w != child); You can specify formats for languages other than C by using line group formats and line formats, as described in the next sections.",
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Merging-Files-with-If_002dthen_002delse",
+          "text": "2.6 Merging Files with If-then-else"
+        }
+      ],
+      "id": "01-guide/37-if-then-else.md",
+      "canonical": "canonical/en/01-guide/37-if-then-else.md",
+      "canonicalSHA256": "23a7d97c25af6864c96490ac5ea0d5a73fe88514e59da77f8ad19e0dad90d13d",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/37-if-then-else.md",
+      "translationSHA256": "6b9b249a55da38e9a00c323661af1574224a42b2834d4c0d6dcd01ceef2fe440"
+    },
+    {
+      "sourceNode": "Line-Group-Formats",
+      "titleEN": "2.6.1 Line Group Formats",
+      "pre": 3,
+      "var": 38,
+      "ownNonPreWords": 873,
+      "HTMLSHA256": "fda3bf798f8c1d05d39784c339b5060758654b0df48c871b8d6cef72444ebe48",
+      "batch": 5,
+      "slug": "38-line-group-formats",
+      "sourceFragmentSHA256": "d64fcdcd71a9cfc38472da1ea6529e8425a7290bdf071356277f6654e6996c27",
+      "sourcePre": [
+        "diff \\\n   --old-group-format='\\begin{em}\n%<\\end{em}\n' \\\n   --new-group-format='\\begin{bf}\n%>\\end{bf}\n' \\\n   old new\n",
+        "diff \\\n   --old-group-format='\\begin{em}\n%<\\end{em}\n' \\\n   --new-group-format='\\begin{bf}\n%>\\end{bf}\n' \\\n   --unchanged-group-format='%=' \\\n   --changed-group-format='\\begin{em}\n%<\\end{em}\n\\begin{bf}\n%>\\end{bf}\n' \\\n   old new\n",
+        "diff \\\n   --unchanged-group-format='' \\\n   --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:\n%<' \\\n   --new-group-format='-------- %dN line%(N=1?:s) added after %de:\n%>' \\\n   --changed-group-format='-------- %dn line%(n=1?:s) changed at %df:\n%<-------- to:\n%>' \\\n   old new\n"
+      ],
+      "sourceText": "2.6.1 Line Group Formats Line group formats let you specify formats suitable for many applications that allow if-then-else input, including programming languages and text formatting languages. A line group format specifies the output format for a contiguous group of similar lines. For example, the following command compares the TeX files old and new, and outputs a merged file in which old regions are surrounded by ‘\\begin{em}’-‘\\end{em}’ lines, and new regions are surrounded by ‘\\begin{bf}’-‘\\end{bf}’ lines. diff \\ --old-group-format='\\begin{em} %<\\end{em} ' \\ --new-group-format='\\begin{bf} %>\\end{bf} ' \\ old new The following command is equivalent to the above example, but it is a little more verbose, because it spells out the default line group formats. diff \\ --old-group-format='\\begin{em} %<\\end{em} ' \\ --new-group-format='\\begin{bf} %>\\end{bf} ' \\ --unchanged-group-format='%=' \\ --changed-group-format='\\begin{em} %<\\end{em} \\begin{bf} %>\\end{bf} ' \\ old new Here is a more advanced example, which outputs a diff listing with headers containing line numbers in a “plain English” style. diff \\ --unchanged-group-format='' \\ --old-group-format='-------- %dn line%(n=1?:s) deleted at %df: %<' \\ --new-group-format='-------- %dN line%(N=1?:s) added after %de: %>' \\ --changed-group-format='-------- %dn line%(n=1?:s) changed at %df: %<-------- to: %>' \\ old new To specify a line group format, use diff with one of the options listed below. You can specify up to four line group formats, one for each kind of line group. You should quote format, because it typically contains shell metacharacters. --old-group-format=format These line groups are hunks containing only lines from the first file. The default old group format is the same as the changed group format if it is specified; otherwise it is a format that outputs the line group as-is. --new-group-format=format These line groups are hunks containing only lines from the second file. The default new group format is same as the changed group format if it is specified; otherwise it is a format that outputs the line group as-is. --changed-group-format=format These line groups are hunks containing lines from both files. The default changed group format is the concatenation of the old and new group formats. --unchanged-group-format=format These line groups contain lines common to both files. The default unchanged group format is a format that outputs the line group as-is. In a line group format, ordinary characters represent themselves; conversion specifications start with ‘%’ and have one of the following forms. ‘%<’ stands for the lines from the first file, including the trailing newline. Each line is formatted according to the old line format (see Line Formats). ‘%>’ stands for the lines from the second file, including the trailing newline. Each line is formatted according to the new line format. ‘%=’ stands for the lines common to both files, including the trailing newline. Each line is formatted according to the unchanged line format. ‘%%’ stands for ‘%’. ‘%c'C'’ where C is a single character, stands for C. C may not be a backslash or an apostrophe. For example, ‘%c':'’ stands for a colon, even inside the then-part of an if-then-else format, which a colon would normally terminate. ‘%c'\\O'’ where O is a string of 1, 2, or 3 octal digits, stands for the character with octal code O. For example, ‘%c'\\0'’ stands for a null character. ‘Fn’ where F is a printf conversion specification and n is one of the following letters, stands for n’s value formatted with F. ‘e’ The line number of the line just before the group in the old file. ‘f’ The line number of the first line in the group in the old file; equals e + 1. ‘l’ The line number of the last line in the group in the old file. ‘m’ The line number of the line just after the group in the old file; equals l + 1. ‘n’ The number of lines in the group in the old file; equals l - f + 1. ‘E, F, L, M, N’ Likewise, for lines in the new file. The printf conversion specification can be ‘%d’, ‘%o’, ‘%x’, or ‘%X’, specifying decimal, octal, lower case hexadecimal, or upper case hexadecimal output respectively. After the ‘%’ the following options can appear in sequence: a series of zero or more flags; an integer specifying the minimum field width; and a period followed by an optional integer specifying the minimum number of digits. The flags are ‘-’ for left-justification, ‘'’ for separating the digit into groups as specified by the LC_NUMERIC locale category, and ‘0’ for padding with zeros instead of spaces. For example, ‘%5dN’ prints the number of new lines in the group in a field of width 5 characters, using the printf format \"%5d\". ‘(A=B?T:E)’ If A equals B then T else E. A and B are each either a decimal constant or a single letter interpreted as above. This format spec is equivalent to T if A’s value equals B’s; otherwise it is equivalent to E. For example, ‘%(N=0?no:%dN) line%(N=1?:s)’ is equivalent to ‘no lines’ if N (the number of lines in the group in the new file) is 0, to ‘1 line’ if N is 1, and to ‘%dN lines’ otherwise.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Line-Group-Formats-1",
+          "text": "2.6.1 Line Group Formats"
+        }
+      ],
+      "id": "01-guide/38-line-group-formats.md",
+      "canonical": "canonical/en/01-guide/38-line-group-formats.md",
+      "canonicalSHA256": "96957f3394fe0f7e330ff7ab1f7d8a0668d8bf9804fd985d2a62b815bc948d49",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/38-line-group-formats.md",
+      "translationSHA256": "9f5c84d21085aea1b8ce5a634ea4425a4e2711a4ab040f93aade6912af0a6875"
+    },
+    {
+      "sourceNode": "Line-Formats",
+      "titleEN": "2.6.2 Line Formats",
+      "pre": 2,
+      "var": 15,
+      "ownNonPreWords": 453,
+      "HTMLSHA256": "217f6c21c5c69d2284d0ec37d08f9537c5413a86f78b0376627c96cd9af3ca5a",
+      "batch": 5,
+      "slug": "39-line-formats",
+      "sourceFragmentSHA256": "454364d03a6b067b665c5c071f98ce9dbf57f59a18c58d2a2b29a98b9792ec25",
+      "sourcePre": [
+        "diff \\\n   --old-line-format='-%l\n' \\\n   --new-line-format='|%l\n' \\\n   --unchanged-line-format=' %l\n' \\\n   old new\n",
+        "diff \\\n   --old-line-format='< %l\n' \\\n   --new-line-format='> %l\n' \\\n   --old-group-format='%df%(f=l?:,%dl)d%dE\n%<' \\\n   --new-group-format='%dea%dF%(F=L?:,%dL)\n%>' \\\n   --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)\n%<---\n%>' \\\n   --unchanged-group-format='' \\\n   old new\n"
+      ],
+      "sourceText": "2.6.2 Line Formats Line formats control how each line taken from an input file is output as part of a line group in if-then-else format. For example, the following command outputs text with a one-character change indicator to the left of the text. The first character of output is ‘-’ for deleted lines, ‘|’ for added lines, and a space for unchanged lines. The formats contain newline characters where newlines are desired on output. diff \\ --old-line-format='-%l ' \\ --new-line-format='|%l ' \\ --unchanged-line-format=' %l ' \\ old new To specify a line format, use one of the following options. You should quote format, since it often contains shell metacharacters. --old-line-format=format formats lines just from the first file. --new-line-format=format formats lines just from the second file. --unchanged-line-format=format formats lines common to both files. --line-format=format formats all lines; in effect, it sets all three above options simultaneously. In a line format, ordinary characters represent themselves; conversion specifications start with ‘%’ and have one of the following forms. ‘%l’ stands for the contents of the line, not counting its trailing newline (if any). This format ignores whether the line is incomplete; See Incomplete Lines. ‘%L’ stands for the contents of the line, including its trailing newline (if any). If a line is incomplete, this format preserves its incompleteness. ‘%%’ stands for ‘%’. ‘%c'C'’ where C is a single character, stands for C. C may not be a backslash or an apostrophe. For example, ‘%c':'’ stands for a colon. ‘%c'\\O'’ where O is a string of 1, 2, or 3 octal digits, stands for the character with octal code O. For example, ‘%c'\\0'’ stands for a null character. ‘Fn’ where F is a printf conversion specification, stands for the line number formatted with F. For example, ‘%.5dn’ prints the line number using the printf format \"%.5d\". See Line Group Formats, for more about printf conversion specifications. The default line format is ‘%l’ followed by a newline character. If the input contains tab characters and it is important that they line up on output, you should ensure that ‘%l’ or ‘%L’ in a line format is just after a tab stop (e.g. by preceding ‘%l’ or ‘%L’ with a tab character), or you should use the -t or --expand-tabs option. Taken together, the line and line group formats let you specify many different formats. For example, the following command uses a format similar to normal diff format. You can tailor this command to get fine control over diff output. diff \\ --old-line-format='< %l ' \\ --new-line-format='> %l ' \\ --old-group-format='%df%(f=l?:,%dl)d%dE %<' \\ --new-group-format='%dea%dF%(F=L?:,%dL) %>' \\ --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL) %<--- %>' \\ --unchanged-group-format='' \\ old new",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Line-Formats-1",
+          "text": "2.6.2 Line Formats"
+        }
+      ],
+      "id": "01-guide/39-line-formats.md",
+      "canonical": "canonical/en/01-guide/39-line-formats.md",
+      "canonicalSHA256": "df752de761eff9b53a95aa644ada6f19350349ed04366047dac51f68502bbab0",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/39-line-formats.md",
+      "translationSHA256": "54ac847c4c585edb82af3793203d19f95cc7834ae94fa3b83a8fb1e74be31659"
+    },
+    {
+      "sourceNode": "Example-If_002dthen_002delse",
+      "titleEN": "2.6.3 An Example of If-then-else Format",
+      "pre": 1,
+      "var": 0,
+      "ownNonPreWords": 32,
+      "HTMLSHA256": "c83cad1281c73911045053469fb1d4681625baf42debe5d7f0803b0d4cda37f6",
+      "batch": 5,
+      "slug": "40-example-if-then-else",
+      "sourceFragmentSHA256": "42ffa0e9bca6089119d5fdd9d310799e4a06a9fc6d17dea8997c33db4b49830b",
+      "sourcePre": [
+        "#ifndef TWO\nThe Way that can be told of is not the eternal Way;\nThe name that can be named is not the eternal name.\n#endif /* ! TWO */\nThe Nameless is the origin of Heaven and Earth;\n#ifndef TWO\nThe Named is the mother of all things.\n#else /* TWO */\nThe named is the mother of all things.\n\n#endif /* TWO */\nTherefore let there always be non-being,\n  so we may see their subtlety,\nAnd let there always be being,\n  so we may see their outcome.\nThe two are the same,\nBut after they are produced,\n  they have different names.\n#ifdef TWO\nThey both may be called deep and profound.\nDeeper and more profound,\nThe door of all subtleties!\n#endif /* TWO */\n"
+      ],
+      "sourceText": "2.6.3 An Example of If-then-else Format Here is the output of ‘diff -DTWO lao tzu’ (see Two Sample Input Files, for the complete contents of the two files): #ifndef TWO The Way that can be told of is not the eternal Way; The name that can be named is not the eternal name. #endif /* ! TWO */ The Nameless is the origin of Heaven and Earth; #ifndef TWO The Named is the mother of all things. #else /* TWO */ The named is the mother of all things. #endif /* TWO */ Therefore let there always be non-being, so we may see their subtlety, And let there always be being, so we may see their outcome. The two are the same, But after they are produced, they have different names. #ifdef TWO They both may be called deep and profound. Deeper and more profound, The door of all subtleties! #endif /* TWO */",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "An-Example-of-If_002dthen_002delse-Format",
+          "text": "2.6.3 An Example of If-then-else Format"
+        }
+      ],
+      "id": "01-guide/40-example-if-then-else.md",
+      "canonical": "canonical/en/01-guide/40-example-if-then-else.md",
+      "canonicalSHA256": "1979eca733eb6f30e5864d3585a11e0e702f30a5fa555e60db830a9bf9ecb245",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/40-example-if-then-else.md",
+      "translationSHA256": "45572f9d494305d45d96eeb5b57355d763b03d3f000f00e168715b262daeefdc"
+    },
+    {
+      "sourceNode": "Detailed-If_002dthen_002delse",
+      "titleEN": "2.6.4 Detailed Description of If-then-else Format",
+      "pre": 1,
+      "var": 12,
+      "ownNonPreWords": 252,
+      "HTMLSHA256": "d3edb4f1921dae71b8eb0588c6931dc7eae7ff85b689bc4d6a03f95aba29038e",
+      "batch": 5,
+      "slug": "41-detailed-if-then-else",
+      "sourceFragmentSHA256": "7795daa4d1f1672e435b1c7a0aa9573ba998f7653fedc7af71a8dba7ed771875",
+      "sourcePre": [
+        "--old-group-format='#ifndef name\n%<#endif /* ! name */\n' \\\n--new-group-format='#ifdef name\n%>#endif /* name */\n' \\\n--unchanged-group-format='%=' \\\n--changed-group-format='#ifndef name\n%<#else /* name */\n%>#endif /* name */\n'\n"
+      ],
+      "sourceText": "2.6.4 Detailed Description of If-then-else Format For lines common to both files, diff uses the unchanged line group format. For each hunk of differences in the merged output format, if the hunk contains only lines from the first file, diff uses the old line group format; if the hunk contains only lines from the second file, diff uses the new group format; otherwise, diff uses the changed group format. The old, new, and unchanged line formats specify the output format of lines from the first file, lines from the second file, and lines common to both files, respectively. The option --ifdef=name is equivalent to the following sequence of options using shell syntax: --old-group-format='#ifndef name %<#endif /* ! name */ ' \\ --new-group-format='#ifdef name %>#endif /* name */ ' \\ --unchanged-group-format='%=' \\ --changed-group-format='#ifndef name %<#else /* name */ %>#endif /* name */ ' You should carefully check the diff output for proper nesting. For example, when using the -D name or --ifdef=name option, you should check that if the differing lines contain any of the C preprocessor directives ‘#ifdef’, ‘#ifndef’, ‘#else’, ‘#elif’, or ‘#endif’, they are nested properly and match. If they don’t, you must make corrections manually. It is a good idea to carefully check the resulting code anyway to make sure that it really does what you want it to; depending on how the input files were produced, the output might contain duplicate or otherwise incorrect code. The patch -D name option behaves like the diff -D name option, except it operates on a file and a diff to produce a merged file. See Options to patch.",
+      "sourceHeadings": [
+        {
+          "depth": 4,
+          "slug": "Detailed-Description-of-If_002dthen_002delse-Format",
+          "text": "2.6.4 Detailed Description of If-then-else Format"
+        }
+      ],
+      "id": "01-guide/41-detailed-if-then-else.md",
+      "canonical": "canonical/en/01-guide/41-detailed-if-then-else.md",
+      "canonicalSHA256": "efa9a9724fe0bff83dde5a966a6c0f01278d73edc7f1315b19352c8f690cb1ce",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/41-detailed-if-then-else.md",
+      "translationSHA256": "fd62db2a0ad895de44f0e7292252966e7ef43794b43b1f8f1e459ff1d8beef3d"
+    },
+    {
+      "sourceNode": "Incomplete-Lines",
+      "titleEN": "3 Incomplete Lines",
+      "pre": 3,
+      "var": 0,
+      "ownNonPreWords": 255,
+      "HTMLSHA256": "13915663c877b2038e62222e53f7f5163e69f30fbd91dbe61eb821e53932b798",
+      "batch": 5,
+      "slug": "42-incomplete-lines",
+      "sourceFragmentSHA256": "5342e12031517ac2fa22cde932f3f3b650c03b7ee57bbc2fdd2862435168ed65",
+      "sourcePre": [
+        "1c1\n< f\n\\ No newline at end of file\n---\n> g\n\\ No newline at end of file\n",
+        "d1 1\na1 1\ng\n",
+        "1c\ng\n.\n"
+      ],
+      "sourceText": "3 Incomplete Lines When an input file ends in a non-newline character, its last line is called an incomplete line because its last character is not a newline. All other lines are called full lines and end in a newline character. Incomplete lines do not match full lines unless differences in white space are ignored (see Suppressing Differences in Blank and Tab Spacing). An incomplete line is normally distinguished on output from a full line by a following line that starts with ‘\\’. However, the RCS format (see RCS Scripts) outputs the incomplete line as-is, without any trailing newline or following line. The side by side format normally represents incomplete lines as-is, but in some cases uses a ‘\\’ or ‘/’ gutter marker. See Showing Differences Side by Side. The if-then-else line format preserves a line’s incompleteness with ‘%L’, and discards the newline with ‘%l’. See Line Formats. Finally, with the ed and forward ed output formats (see diff Output Formats) diff cannot represent an incomplete line, so it pretends there was a newline and reports an error. For example, suppose F and G are one-character files that contain just ‘f’ and ‘g’, respectively. Then ‘diff F G’ outputs 1c1 < f \\ No newline at end of file --- > g \\ No newline at end of file (The exact message may differ in non-English locales.) ‘diff -n F G’ outputs the following without a trailing newline: d1 1 a1 1 g ‘diff -e F G’ reports two errors and outputs the following: 1c g .",
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Incomplete-Lines-1",
+          "text": "3 Incomplete Lines"
+        }
+      ],
+      "id": "01-guide/42-incomplete-lines.md",
+      "canonical": "canonical/en/01-guide/42-incomplete-lines.md",
+      "canonicalSHA256": "b4c31e10675cf739caa21e3964e0c857de556c2867fa0190e8f5d6b259e68236",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/42-incomplete-lines.md",
+      "translationSHA256": "11375c3bfccf982852c2eb38d36995dd343304651baceef71d01c281743df21a"
+    },
+    {
+      "sourceNode": "Comparing-Directories",
+      "titleEN": "4 Comparing Directories",
+      "pre": 0,
+      "var": 13,
+      "ownNonPreWords": 696,
+      "HTMLSHA256": "d740100593c78f3043cffe2086f04292b41b8319da59c5821d846fe85c3e42d1",
+      "batch": 5,
+      "slug": "43-comparing-directories",
+      "sourceFragmentSHA256": "9c4a74681927c953d0d6e5a9c8fd3eb95e323d508ed68549f845068f3141b057",
+      "sourcePre": [],
+      "sourceText": "4 Comparing Directories You can use diff to compare some or all of the files in two directory trees. When both file name arguments to diff are directories, it compares each file that is contained in both directories, examining file names in alphabetical order as specified by the LC_COLLATE locale category. Normally diff is silent about pairs of files that contain no differences, but if you use the --report-identical-files (-s) option, it reports pairs of identical files. Normally diff reports subdirectories common to both directories without comparing subdirectories’ files, but if you use the -r or --recursive option, it compares every corresponding pair of files in the directory trees, as many levels deep as they go. If only one file exists, diff normally does not show its contents; it merely reports that one file exists but the other does not. You can make diff act as though the missing file is empty, so that it outputs the entire contents of the file that actually exists. (It is output as either an insertion or a deletion, depending on whether the missing file is in the first or the second position.) To do this, use the --new-file (-N) option. This option affects command-line arguments as well as files found via directory traversal; for example, ‘diff -N a b’ treats a as empty if a does not exist but b does. If the older directory contains large files that are not in the newer directory, you can make the patch smaller by using the --unidirectional-new-file option instead of -N. This option is like -N except that it inserts the contents only of files that appear in the second directory but not the first (that is, files that were added). At the top of the patch, write instructions for the user applying the patch to remove the files that were deleted before applying the patch. See Tips for Making and Using Patches, for more discussion of making patches for distribution. To ignore some files while comparing directories, use the --exclude=pattern (-x pattern) option. This option ignores any files or subdirectories whose base names match the shell pattern pattern. Unlike in the shell, a period at the start of the base of a file name matches a wildcard at the start of a pattern. You should enclose pattern in quotes so that the shell does not expand it. For example, the option -x '*.[ao]' ignores any file whose name ends with ‘.a’ or ‘.o’. This option accumulates if you specify it more than once. For example, using the options -x 'RCS' -x '*,v' ignores any file or subdirectory whose base name is ‘RCS’ or ends with ‘,v’. If you need to give this option many times, you can instead put the patterns in a file, one pattern per line, and use the --exclude-from=file (-X file) option. Trailing white space and empty lines are ignored in the pattern file. If you have been comparing two directories and stopped partway through, later you might want to continue where you left off. You can do this by using the --starting-file=file (-S file) option. This compares only the file file and all alphabetically later files in the topmost directory level. If two directories differ only in that file names are lower case in one directory and upper case in the upper, diff normally reports many differences because it compares file names in a case sensitive way. With the --ignore-file-name-case option, diff ignores case differences in file names, so that for example the contents of the file Tao in one directory are compared to the contents of the file TAO in the other. The --no-ignore-file-name-case option cancels the effect of the --ignore-file-name-case option, reverting to the default behavior. If an --exclude=pattern (-x pattern) option, or an --exclude-from=file (-X file) option, is specified while the --ignore-file-name-case option is in effect, case is ignored when excluding file names matching the specified patterns. To tell diff not to follow a symbolic link, use the --no-dereference option.",
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Comparing-Directories-1",
+          "text": "4 Comparing Directories"
+        }
+      ],
+      "id": "01-guide/43-comparing-directories.md",
+      "canonical": "canonical/en/01-guide/43-comparing-directories.md",
+      "canonicalSHA256": "28fc88ce0f550ed1281ea83220d6579fb04c684e09bcbb41094e657cdeb91fba",
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/43-comparing-directories.md",
+      "translationSHA256": "919fbaff2011c1e689994c0bbb031ce8587701d949bb2c712763f25af8959d1e"
+    },
+    {
+      "slug": "44-adjusting-output",
+      "sourceNode": "Adjusting-Output",
+      "heading": "5 Making diff Output Prettier",
+      "pre": 0,
+      "bodySHA256": "72e579b18bc4c9c41719d1d191af983dc29a444e0cf8a6d8c68e3ae29f9c8ce9",
+      "id": "01-guide/44-adjusting-output.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/44-adjusting-output.body.html",
+        "sha256": "72e579b18bc4c9c41719d1d191af983dc29a444e0cf8a6d8c68e3ae29f9c8ce9"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/44-adjusting-output.md",
+          "sha256": "13b9c72c7ca7cef5588fa2ec790dcbb81340b2327e9f9e8c3511120cafc7e76f"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/44-adjusting-output.md",
+          "sha256": "4eaaa30f3924617da6e5bf541dcb6e0a01ea303f83d9344dc4578df5a26ed795"
+        }
+      ]
+    },
+    {
+      "slug": "45-tabs",
+      "sourceNode": "Tabs",
+      "heading": "5.1 Preserving Tab Stop Alignment",
+      "pre": 0,
+      "bodySHA256": "78812298cdb863a630fe7635a582157425574d8acd1ffaf6985d223cbea99a4a",
+      "id": "01-guide/45-tabs.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/45-tabs.body.html",
+        "sha256": "78812298cdb863a630fe7635a582157425574d8acd1ffaf6985d223cbea99a4a"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/45-tabs.md",
+          "sha256": "b1720af496d8437dc5ded5e471ab507df493961209c084bacebb42b57b699621"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/45-tabs.md",
+          "sha256": "4543292104d28822df6e765f06753412fa19ef34beeb1eaa2fe67dfbdc6c8834"
+        }
+      ]
+    },
+    {
+      "slug": "46-trailing-blanks",
+      "sourceNode": "Trailing-Blanks",
+      "heading": "5.2 Omitting trailing blanks",
+      "pre": 0,
+      "bodySHA256": "6ded5e59c76f08d568f3b40abb447b0b0e96c64f238cb45d513f84875920bfa4",
+      "id": "01-guide/46-trailing-blanks.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/46-trailing-blanks.body.html",
+        "sha256": "6ded5e59c76f08d568f3b40abb447b0b0e96c64f238cb45d513f84875920bfa4"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/46-trailing-blanks.md",
+          "sha256": "55cdce0611aa1a68541355275d97e36c50d726556c3bfe76e4d6251900fcc226"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/46-trailing-blanks.md",
+          "sha256": "92a7c2dacd51fb98715c24e18b53ddcf92042d90d7109bb74c615dab00371ff3"
+        }
+      ]
+    },
+    {
+      "slug": "47-pagination",
+      "sourceNode": "Pagination",
+      "heading": "5.3 Paginating diff Output",
+      "pre": 1,
+      "bodySHA256": "b57124e636432f3d0ad82fcae1bd8dea73251959abce122d93f54317afb165a3",
+      "id": "01-guide/47-pagination.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/47-pagination.body.html",
+        "sha256": "b57124e636432f3d0ad82fcae1bd8dea73251959abce122d93f54317afb165a3"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/47-pagination.md",
+          "sha256": "2bfb852fb62c76826b38154d96d0ec9a48cef65fbd30abb06e10a93b1831e488"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/47-pagination.md",
+          "sha256": "4cfa336238241f44150c09ddee51d6a3fdff2dd544a5921fae9f30a3d1932f3a"
+        }
+      ]
+    },
+    {
+      "slug": "48-diff-performance",
+      "sourceNode": "diff-Performance",
+      "heading": "6 diff Performance Tradeoffs",
+      "pre": 0,
+      "bodySHA256": "71699dee24010d13d3de610868f50897ed194e0dd7bd91d0da726727d56bf1c7",
+      "id": "01-guide/48-diff-performance.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/48-diff-performance.body.html",
+        "sha256": "71699dee24010d13d3de610868f50897ed194e0dd7bd91d0da726727d56bf1c7"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/48-diff-performance.md",
+          "sha256": "8ab9c1d291c04bd08a962b55be0ee167da3bf083c9f8a2c878881768d16a31ee"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/48-diff-performance.md",
+          "sha256": "18fcdd14c74003060fb145d935792f351a56f1d36000598299da9264155c8abc"
+        }
+      ]
+    },
+    {
+      "slug": "49-comparing-three-files",
+      "sourceNode": "Comparing-Three-Files",
+      "heading": "7 Comparing Three Files",
+      "pre": 0,
+      "bodySHA256": "ef0705b09d7bea17f02db0c9f819627662847813bf33d4e7b5e2402c532db70b",
+      "id": "01-guide/49-comparing-three-files.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/49-comparing-three-files.body.html",
+        "sha256": "ef0705b09d7bea17f02db0c9f819627662847813bf33d4e7b5e2402c532db70b"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/49-comparing-three-files.md",
+          "sha256": "1575f711b0e8792038cd438bfad971c0bacd1778c46fed0fc5fc650900104d34"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/49-comparing-three-files.md",
+          "sha256": "da77816fbfcb8c02e603d73a0dc8ae11b09ab912cbe8f0a8340331c67b83f62b"
+        }
+      ]
+    },
+    {
+      "slug": "50-sample-diff3-input",
+      "sourceNode": "Sample-diff3-Input",
+      "heading": "7.1 A Third Sample Input File",
+      "pre": 1,
+      "bodySHA256": "6d06a3a8432fa3cf9502ab4224a6170641018b7b350cf091037af74b2114347c",
+      "id": "01-guide/50-sample-diff3-input.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/50-sample-diff3-input.body.html",
+        "sha256": "6d06a3a8432fa3cf9502ab4224a6170641018b7b350cf091037af74b2114347c"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/50-sample-diff3-input.md",
+          "sha256": "3a98089fda4112348697cbf2a572847d9511dda3201279790cc7f686b7ba9a5a"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/50-sample-diff3-input.md",
+          "sha256": "fa155e460c3c4d424843895a5741b9085bbbcbfa24312e8ff3b9a7623e25fdb9"
+        }
+      ]
+    },
+    {
+      "slug": "51-example-diff3-normal",
+      "sourceNode": "Example-diff3-Normal",
+      "heading": "7.2 An Example of diff3 Normal Format",
+      "pre": 1,
+      "bodySHA256": "9ad79be2a65bca93de224e82e202921810240f1135ced5ad76a2dcdf38a0e06d",
+      "id": "01-guide/51-example-diff3-normal.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/51-example-diff3-normal.body.html",
+        "sha256": "9ad79be2a65bca93de224e82e202921810240f1135ced5ad76a2dcdf38a0e06d"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/51-example-diff3-normal.md",
+          "sha256": "4285535ca431ea8ebfa55efc59565789dde327d207f150220be4389b59772b95"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/51-example-diff3-normal.md",
+          "sha256": "9e91535108e3bed791d1b25b4cf8658e214c042217625d4da5362609bf44dcef"
+        }
+      ]
+    },
+    {
+      "slug": "52-detailed-diff3-normal",
+      "sourceNode": "Detailed-diff3-Normal",
+      "heading": "7.3 Detailed Description of diff3 Normal Format",
+      "pre": 0,
+      "bodySHA256": "55018308e5d7cd19a9bf1fd4fa3ef8f92f084acd8a4d37c8828cf49baf4ab3d3",
+      "id": "01-guide/52-detailed-diff3-normal.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/52-detailed-diff3-normal.body.html",
+        "sha256": "55018308e5d7cd19a9bf1fd4fa3ef8f92f084acd8a4d37c8828cf49baf4ab3d3"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/52-detailed-diff3-normal.md",
+          "sha256": "f44e2a1bbfea9535f7c9d0262c70555f0172bd095ad6581b92ff14f7ac1e1bc4"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/52-detailed-diff3-normal.md",
+          "sha256": "94bc5851d1a0fe515f49202ec6db9ee07c807524bd385d4cae9cf32b8081c710"
+        }
+      ]
+    },
+    {
+      "slug": "53-diff3-hunks",
+      "sourceNode": "diff3-Hunks",
+      "heading": "7.4 diff3 Hunks",
+      "pre": 1,
+      "bodySHA256": "db8da930645512fff803860f6a77888d71e837a4c88c061c555b5a106ec74266",
+      "id": "01-guide/53-diff3-hunks.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/53-diff3-hunks.body.html",
+        "sha256": "db8da930645512fff803860f6a77888d71e837a4c88c061c555b5a106ec74266"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/53-diff3-hunks.md",
+          "sha256": "248cd9fbc3355d93e0c8833bf85e67b8fa7c7085fadf1a1802c2490432b81820"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/53-diff3-hunks.md",
+          "sha256": "2b58eeb5304f74d121313605ac1c008757ee3f2cd5cd753e98269749172b969b"
+        }
+      ]
+    },
+    {
+      "slug": "54-diff3-merging",
+      "sourceNode": "diff3-Merging",
+      "heading": "8 Merging From a Common Ancestor",
+      "pre": 1,
+      "bodySHA256": "5f4491d457a4c3362e4ffb8f6d671c2bf13047204401e305b899e05786591595",
+      "id": "01-guide/54-diff3-merging.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/54-diff3-merging.body.html",
+        "sha256": "5f4491d457a4c3362e4ffb8f6d671c2bf13047204401e305b899e05786591595"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/54-diff3-merging.md",
+          "sha256": "15a84fc26501be7050e222e5e95067e5bee741906a8141293e4d53894780cb2b"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/54-diff3-merging.md",
+          "sha256": "33b923e3298426d472df523cc1478d9ccc6e5d4b703f9aca97abf14005c08c63"
+        }
+      ]
+    },
+    {
+      "slug": "55-which-changes",
+      "sourceNode": "Which-Changes",
+      "heading": "8.1 Selecting Which Changes to Incorporate",
+      "pre": 3,
+      "bodySHA256": "ed0dad45071ec2c545bf0b79812f43a4f5cc10b3f8c5d69b69848dc4e82105ce",
+      "id": "01-guide/55-which-changes.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/55-which-changes.body.html",
+        "sha256": "ed0dad45071ec2c545bf0b79812f43a4f5cc10b3f8c5d69b69848dc4e82105ce"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/55-which-changes.md",
+          "sha256": "f884e86d71257229f75594bf16af4fefba3f4fc3f428c3dc6c1e9cac6ad714fa"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/55-which-changes.md",
+          "sha256": "a77919c382534ea839cfa768c4fb8fb66ba5605e67703e891c085dcb5806e15e"
+        }
+      ]
+    },
+    {
+      "slug": "56-marking-conflicts",
+      "sourceNode": "Marking-Conflicts",
+      "heading": "8.2 Marking Conflicts",
+      "pre": 5,
+      "bodySHA256": "c6d500e65ac5ca87f317aea88da6ddbd262376790709c1d7776dede3ff92c392",
+      "id": "01-guide/56-marking-conflicts.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/56-marking-conflicts.body.html",
+        "sha256": "c6d500e65ac5ca87f317aea88da6ddbd262376790709c1d7776dede3ff92c392"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/56-marking-conflicts.md",
+          "sha256": "592aa250b0def003aabd28b6e83afe285b95d81577df8d6ffa6c9ce3c7420cbb"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/56-marking-conflicts.md",
+          "sha256": "63f3446acf0623716a3f3e49f9c9d89144e457856f52474b5053ed93a064ac48"
+        }
+      ]
+    },
+    {
+      "slug": "57-bypassing-ed",
+      "sourceNode": "Bypassing-ed",
+      "heading": "8.3 Generating the Merged Output Directly",
+      "pre": 1,
+      "bodySHA256": "a082f12badab786e83a8fbac610829a6f83b293c0072848cab9d86b0bd6a2ff8",
+      "id": "01-guide/57-bypassing-ed.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/57-bypassing-ed.body.html",
+        "sha256": "a082f12badab786e83a8fbac610829a6f83b293c0072848cab9d86b0bd6a2ff8"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/57-bypassing-ed.md",
+          "sha256": "ce3f21fc97a2c047296d3ff8500a9131999bf61d5a13128c8fd7c0265e144447"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/57-bypassing-ed.md",
+          "sha256": "0a61402b0d1d04f08c74cdd7fef36e4d69ca1673008c8ac657fb8fa70763f52e"
+        }
+      ]
+    },
+    {
+      "slug": "58-merging-incomplete-lines",
+      "sourceNode": "Merging-Incomplete-Lines",
+      "heading": "8.4 How diff3 Merges Incomplete Lines",
+      "pre": 0,
+      "bodySHA256": "c68ce335f63a00f86701f77b480d08cc407b30fdb134619cdd966421eb8653c0",
+      "id": "01-guide/58-merging-incomplete-lines.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/58-merging-incomplete-lines.body.html",
+        "sha256": "c68ce335f63a00f86701f77b480d08cc407b30fdb134619cdd966421eb8653c0"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/58-merging-incomplete-lines.md",
+          "sha256": "252500bebc384cf60f96c87ad41a3399541257a420a8401026884983de7a5bca"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/58-merging-incomplete-lines.md",
+          "sha256": "b608f028f40c1e79a80476135ec64fc6c8642a4660f5e93880a0065c0fe39feb"
+        }
+      ]
+    },
+    {
+      "slug": "59-saving-the-changed-file",
+      "sourceNode": "Saving-the-Changed-File",
+      "heading": "8.5 Saving the Changed File",
+      "pre": 0,
+      "bodySHA256": "436a3a440f4b934434f4e0919f7a08c15c3acd860ac1d5c6f7b6dec82701e35c",
+      "id": "01-guide/59-saving-the-changed-file.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/59-saving-the-changed-file.body.html",
+        "sha256": "436a3a440f4b934434f4e0919f7a08c15c3acd860ac1d5c6f7b6dec82701e35c"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/59-saving-the-changed-file.md",
+          "sha256": "df6cf8fe471f98a0f2a5da86696e31881f8744c3f8a73a78c9538ff538fd65ca"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/59-saving-the-changed-file.md",
+          "sha256": "8e1282716f8c7f9769039a9417bb648cd53997aa5636fb37215df6dba9f19f75"
+        }
+      ]
+    },
+    {
+      "slug": "60-interactive-merging",
+      "sourceNode": "Interactive-Merging",
+      "heading": "9 Interactive Merging with sdiff",
+      "pre": 0,
+      "bodySHA256": "9f4f589d6505f49c1b6b295ed3c088e6fc00ddfdf78669ba925cd12819532b2d",
+      "id": "01-guide/60-interactive-merging.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/60-interactive-merging.body.html",
+        "sha256": "9f4f589d6505f49c1b6b295ed3c088e6fc00ddfdf78669ba925cd12819532b2d"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/60-interactive-merging.md",
+          "sha256": "574a9006f11a89b8841bb622cf985985d2cea04f9a523c374bd24cc723a544df"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/60-interactive-merging.md",
+          "sha256": "4111ac96c48bf8aaa5f92ab2221dafd5e39585c5e8e5fd138277eb17ba4492ea"
+        }
+      ]
+    },
+    {
+      "slug": "61-sdiff-option-summary",
+      "sourceNode": "sdiff-Option-Summary",
+      "heading": "9.1 Specifying diff Options to sdiff",
+      "pre": 1,
+      "bodySHA256": "0e6e2d2e360e9e55865476c9bb909c15a80ae497698b57b7c06d58781db8ec78",
+      "id": "01-guide/61-sdiff-option-summary.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/61-sdiff-option-summary.body.html",
+        "sha256": "0e6e2d2e360e9e55865476c9bb909c15a80ae497698b57b7c06d58781db8ec78"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/61-sdiff-option-summary.md",
+          "sha256": "e972d402410185dcf20c155b9c16d9c038c3cbbdfece2dacd69ffaab5b8f477a"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/61-sdiff-option-summary.md",
+          "sha256": "7fa6c884b882ade94b5d4a446d2152e6253816fceadb26b582150ed60f364191"
+        }
+      ]
+    },
+    {
+      "slug": "62-merge-commands",
+      "sourceNode": "Merge-Commands",
+      "heading": "9.2 Merge Commands",
+      "pre": 0,
+      "bodySHA256": "efd6e6239909f60c0917fa6df239cffd5b45c63bedb7247046e7fd8b8c278d2b",
+      "id": "01-guide/62-merge-commands.md",
+      "originalChapterScope": "5–9",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/drafts/en/62-merge-commands.body.html",
+        "sha256": "efd6e6239909f60c0917fa6df239cffd5b45c63bedb7247046e7fd8b8c278d2b"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/en/01-guide/62-merge-commands.md",
+          "sha256": "94fe1f50a3dfd2460d8c92152d00df6a69745226242eeebec24dfd4c755fc73a"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-diffutils/src/content/docs/v3-12/ja/01-guide/62-merge-commands.md",
+          "sha256": "0e2c62565977dddce6ec663858cbe26a73ee34de1bfdfed180602b56027aaaa6"
+        }
+      ]
+    }
+  ],
+  "meaningReview": "43passed/0pending",
+  "Japanese": "43saved/0pending",
+  "inheritedContentMap": {
+    "path": "docs/notes/document-import/gnu-diffutils/v3-12/CONTENT_MAP.json",
+    "sha256": "dc9095339245077173ca5a58820788da720b0824d6dcca379001cda8e714de67"
+  },
+  "updateReview": {
+    "path": "docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/REVIEW_MANIFEST.json",
+    "sha256": "53c2eeeee162e4ed3ae47982a6fd0a16e404ef4107ed3291237b14f75221a157"
+  },
+  "fixedScope": "Overview and complete chapters1–9; remaining through full original links"
+}

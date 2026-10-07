@@ -1,0 +1,74 @@
+{
+  "slug": "45-tabs",
+  "bodySHA256": "78812298cdb863a630fe7635a582157425574d8acd1ffaf6985d223cbea99a4a",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧5.1 Preserving Tab Stop Alignment⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Preserving-Tab-Stop-Alignment\"><span>5.1 Preserving Tab Stop Alignment</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The tab character moves the cursor to the next tab stop. Tab stops are normally every 8 display columns; this can be altered by the ⟦0⟧ option.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--tabsize=<var class=\"var\">columns</var></samp>"
+      },
+      "sourceHTML": "<p>The tab character moves the cursor to the next tab stop.\nTab stops are normally every 8 display columns;\nthis can be altered by the <samp class=\"option\">--tabsize=<var class=\"var\">columns</var></samp> option.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "The lines of text in some of the ⟦0⟧ output formats are preceded by one or two characters that indicate whether the text is inserted, deleted, or changed. The addition of those characters can cause tabs to move to the next tab stop, throwing off the alignment of columns in the line. GNU ⟦1⟧ provides two ways to make tab-aligned columns line up correctly.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>The lines of text in some of the <code class=\"command\">diff</code> output formats are\npreceded by one or two characters that indicate whether the text is\ninserted, deleted, or changed.  The addition of those characters can\ncause tabs to move to the next tab stop, throwing off the alignment of\ncolumns in the line.  GNU <code class=\"command\">diff</code> provides two ways\nto make tab-aligned columns line up correctly.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "The first way is to have ⟦0⟧ convert all tabs into the correct number of spaces before outputting them; select this method with the ⟦1⟧ (⟦2⟧) option. To use this form of output with ⟦3⟧, you must give ⟦4⟧ the ⟦5⟧ or ⟦6⟧ option (see ⟦7⟧Applying Patches with Changed White Space⟦8⟧, for more information).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">--expand-tabs</samp>",
+        "⟦2⟧": "<samp class=\"option\">-t</samp>",
+        "⟦3⟧": "<code class=\"command\">patch</code>",
+        "⟦4⟧": "<code class=\"command\">patch</code>",
+        "⟦5⟧": "<samp class=\"option\">-l</samp>",
+        "⟦6⟧": "<samp class=\"option\">--ignore-white-space</samp>",
+        "⟦7⟧": "<a class=\"pxref\" href=\"#Changed-White-Space\">",
+        "⟦8⟧": "</a>"
+      },
+      "sourceHTML": "<p>The first way is to have <code class=\"command\">diff</code> convert all tabs into the correct\nnumber of spaces before outputting them; select this method with the\n<samp class=\"option\">--expand-tabs</samp> (<samp class=\"option\">-t</samp>) option.  To use this form of output with\n<code class=\"command\">patch</code>, you must give <code class=\"command\">patch</code> the <samp class=\"option\">-l</samp> or\n<samp class=\"option\">--ignore-white-space</samp> option (see <a class=\"pxref\" href=\"#Changed-White-Space\">Applying Patches with Changed White Space</a>, for more\ninformation).\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "The other method for making tabs line up correctly is to add a tab character instead of a space after the indicator character at the beginning of the line. This ensures that all following tab characters are in the same position relative to tab stops that they were in the original files, so that the output is aligned correctly. Its disadvantage is that it can make long lines too long to fit on one line of the screen or the paper. It also does not work with the unified output format, which does not have a space character after the change type indicator character. Select this method with the ⟦0⟧ or ⟦1⟧ option.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-T</samp>",
+        "⟦1⟧": "<samp class=\"option\">--initial-tab</samp>"
+      },
+      "sourceHTML": "<p>The other method for making tabs line up correctly is to add a tab\ncharacter instead of a space after the indicator character at the\nbeginning of the line.  This ensures that all following tab characters\nare in the same position relative to tab stops that they were in the\noriginal files, so that the output is aligned correctly.  Its\ndisadvantage is that it can make long lines too long to fit on one line\nof the screen or the paper.  It also does not work with the unified\noutput format, which does not have a space character after the change\ntype indicator character.  Select this method with the <samp class=\"option\">-T</samp> or\n<samp class=\"option\">--initial-tab</samp> option.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "GNU ⟦0⟧ currently assumes that the output device respects tab stops, displays each character with column width as given by the operating system, and displays each encoding error byte in a single column. Unfortunately these assumptions are often incorrect for encoding errors and non-ASCII characters, so complex input data may not line up properly on output, and analysis based on the ⟦1⟧ (⟦2⟧) option may differ from the display device’s behavior.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">--ignore-tab-expansion</samp>",
+        "⟦2⟧": "<samp class=\"option\">-E</samp>"
+      },
+      "sourceHTML": "<p>GNU <code class=\"command\">diff</code> currently assumes that the output device respects tab stops,\ndisplays each character with column width as given by the operating system,\nand displays each encoding error byte in a single column.\nUnfortunately these assumptions are often incorrect\nfor encoding errors and non-ASCII characters,\nso complex input data may not line up properly on output,\nand analysis based on the <samp class=\"option\">--ignore-tab-expansion</samp> (<samp class=\"option\">-E</samp>) option\nmay differ from the display device’s behavior.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

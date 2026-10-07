@@ -1,0 +1,83 @@
+<div class="gnu-diffutils-original-content" id="Marking-Conflicts">
+<h3 class="section" id="Marking-Conflicts-1"><span>8.2 Marking Conflicts</span></h3>
+<a class="index-entry-id" id="index-conflict-marking"></a>
+<a class="index-entry-id" id="index-_003c_003c_003c_003c_003c_003c_003c-for-marking-conflicts"></a>
+<p><code class="command">diff3</code> can mark conflicts in the merged output by
+bracketing them with special marker lines.  A conflict
+that comes from two files <var class="var">A</var> and <var class="var">B</var> is marked as follows:
+</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <var class="var">A</var>
+<span class="r">lines from <var class="var">A</var></span>
+=======
+<span class="r">lines from <var class="var">B</var></span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; <var class="var">B</var>
+</pre></div>
+<p>A conflict that comes from three files <var class="var">A</var>, <var class="var">B</var> and <var class="var">C</var> is
+marked as follows:
+</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <var class="var">A</var>
+<span class="r">lines from <var class="var">A</var></span>
+||||||| <var class="var">B</var>
+<span class="r">lines from <var class="var">B</var></span>
+=======
+<span class="r">lines from <var class="var">C</var></span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; <var class="var">C</var>
+</pre></div>
+<p>The <samp class="option">--show-all</samp> (<samp class="option">-A</samp>) option acts like the <samp class="option">-e</samp>
+option, except that it brackets conflicts, and it outputs all changes
+from <var class="var">older</var> to <var class="var">yours</var>, not just the unmerged changes.  Thus,
+given the sample input files (see <a class="pxref" href="#Sample-diff3-Input">A Third Sample Input File</a>), ‘<samp class="samp">diff3
+-A lao tzu tao</samp>’ puts brackets around the conflict where only <samp class="file">tzu</samp>
+differs:
+</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; tzu
+=======
+The Way that can be told of is not the eternal Way;
+The name that can be named is not the eternal name.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+</pre></div>
+<p>And it outputs the three-way conflict as follows:
+</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; lao
+||||||| tzu
+They both may be called deep and profound.
+Deeper and more profound,
+The door of all subtleties!
+=======
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+</pre></div>
+<p>The <samp class="option">--show-overlap</samp> (<samp class="option">-E</samp>) option outputs less information
+than the <samp class="option">--show-all</samp> (<samp class="option">-A</samp>) option, because it outputs only
+unmerged changes, and it never outputs the contents of the second
+file.  Thus the <samp class="option">-E</samp> option acts like the <samp class="option">-e</samp> option,
+except that it brackets the first and third files from three-way
+overlapping changes.  Similarly, <samp class="option">-X</samp> acts like <samp class="option">-x</samp>, except
+it brackets all its (necessarily overlapping) changes.  For example,
+for the three-way overlapping change above, the <samp class="option">-E</samp> and <samp class="option">-X</samp>
+options output the following:
+</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; lao
+=======
+
+  -- The Way of Lao-Tzu, tr. Wing-tsit Chan
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; tao
+</pre></div>
+<p>If you are comparing files that have meaningless or uninformative names,
+you can use the <samp class="option">--label=<var class="var">label</var></samp>
+option to show alternate names in the ‘<samp class="samp">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>’, ‘<samp class="samp">|||||||</samp>’
+and ‘<samp class="samp">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>’ brackets.  This option can be given up to three
+times, once for each input file.  Thus ‘<samp class="samp">diff3 -A --label X
+--label Y --label Z A
+B C</samp>’ acts like ‘<samp class="samp">diff3 -A A B C</samp>’, except that the output looks like
+it came from files named ‘<samp class="samp">X</samp>’, ‘<samp class="samp">Y</samp>’ and ‘<samp class="samp">Z</samp>’ rather than
+from files named ‘<samp class="samp">A</samp>’, ‘<samp class="samp">B</samp>’ and ‘<samp class="samp">C</samp>’.
+</p>
+<hr/>
+</div>

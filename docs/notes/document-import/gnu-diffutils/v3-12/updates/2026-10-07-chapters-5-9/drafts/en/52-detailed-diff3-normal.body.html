@@ -1,0 +1,40 @@
+<div class="gnu-diffutils-original-content" id="Detailed-diff3-Normal">
+<h3 class="section" id="Detailed-Description-of-diff3-Normal-Format"><span>7.3 Detailed Description of <code class="command">diff3</code> Normal Format</span></h3>
+<p>Each hunk begins with a line marked ‘<samp class="samp">====</samp>’.  Three-way hunks have
+plain ‘<samp class="samp">====</samp>’ lines, and two-way hunks have ‘<samp class="samp">1</samp>’, ‘<samp class="samp">2</samp>’, or
+‘<samp class="samp">3</samp>’ appended to specify which of the three input files differ in
+that hunk.  The hunks contain copies of two or three sets of input
+lines each preceded by one or two commands identifying where the lines
+came from.
+</p>
+<p>Normally, two spaces precede each copy of an input line to distinguish
+it from the commands.  But with the <samp class="option">--initial-tab</samp> (<samp class="option">-T</samp>)
+option, <code class="command">diff3</code> uses a tab instead of two spaces; this lines up
+tabs correctly.  See <a class="xref" href="#Tabs">Preserving Tab Stop Alignment</a>, for more information.
+</p>
+<p>Commands take the following forms:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp"><var class="var">file</var>:<var class="var">l</var>a</samp>’</dt>
+<dd><p>This hunk appears after line <var class="var">l</var> of file <var class="var">file</var>, and
+contains no lines in that file.  To edit this file to yield the other
+files, one must append hunk lines taken from the other files.  For
+example, ‘<samp class="samp">1:11a</samp>’ means that the hunk follows line 11 in the first
+file and contains no lines from that file.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">file</var>:<var class="var">r</var>c</samp>’</dt>
+<dd><p>This hunk contains the lines in the range <var class="var">r</var> of file <var class="var">file</var>.
+The range <var class="var">r</var> is a comma-separated pair of line numbers, or just one
+number if there is only one line.  To edit this file to yield the
+other files, one must change the specified lines to be the lines taken
+from the other files.  For example, ‘<samp class="samp">2:11,13c</samp>’ means that the hunk
+contains lines 11 through 13 from the second file.
+</p></dd>
+</dl>
+<p>If the last line in a set of input lines is incomplete
+(see <a class="pxref" href="#Incomplete-Lines">Incomplete Lines</a>), it is distinguished on output from a full
+line by a following line that starts with ‘<samp class="samp">\</samp>’.
+</p>
+<hr/>
+</div>

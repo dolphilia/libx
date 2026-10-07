@@ -1,0 +1,18 @@
+<div class="gnu-diffutils-original-content" id="diff3-Merging">
+<h2 class="chapter" id="Merging-From-a-Common-Ancestor"><span>8 共通の祖先からのマージ</span></h2>
+<a class="index-entry-id" id="index-merging-from-a-common-ancestor"></a>
+<p>2人が同じファイルのコピーをそれぞれ変更した場合、<code class="command">diff3</code> は両方の変更を含むマージ結果を、競合についての警告とともに生成できます。</p>
+<p>3つを超えるファイルを同時に比較する <code class="command">diff4</code> や <code class="command">diff5</code> といった名前のプログラムを想像するかもしれませんが、実際にはその必要はめったにありません。ファイルへの3組以上の変更は、<code class="command">diff3</code> を使って2組ずつマージできます。</p>
+<p><code class="command">diff3</code> は、2つの変更版の変更を、共通する以前の版に取り込めます。これによって2つの新しいファイルが表す変更の集合をマージできます。共通の祖先の版を第2引数に、2つの新しい版を第1引数と第3引数に、次のように指定します。</p>
+<div class="example">
+<pre class="example-preformatted">diff3 <var class="var">mine</var> <var class="var">older</var> <var class="var">yours</var>
+</pre></div>
+<p>引数がアルファベット順になっていると覚えると、順序を思い出せます。</p>
+<a class="index-entry-id" id="index-conflict"></a>
+<a class="index-entry-id" id="index-overlap"></a>
+<p>これは、<var class="var">yours</var> から <var class="var">older</var> を引いた結果を <var class="var">mine</var> に加えること、または <var class="var">older</var> を <var class="var">yours</var> に変える変更を <var class="var">mine</var> へマージすることと考えられます。このマージは、それぞれの変更の近くで <var class="var">mine</var> と <var class="var">older</var> が一致している限り、明確に定まります。3つの入力ファイルがすべて異なる場合や、<var class="var">older</var> だけが異なる場合には一致せず、これを <em class="dfn">競合</em> と呼びます。3つの入力ファイルがすべて異なる場合、その競合を <em class="dfn">重複</em> と呼びます。</p>
+<p><code class="command">diff3</code> は重複や競合を扱う方法をいくつか提供します。重複または競合を省いたり、重複だけを選んだり、特別な「<samp class="samp">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>」「<samp class="samp">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>」行で競合を示したりできます。</p>
+<p><code class="command">diff3</code> はマージ結果を <code class="command">ed</code> スクリプトとして出力できます。これを最初のファイルに適用すると、マージ済みの出力が得られます。ただし、通常は <code class="command">diff3</code> にマージ済みの出力を直接生成させる方がよく、<code class="command">ed</code> に伴ういくつかの問題を避けられます。</p>
+<hr/>
+</div>
+
