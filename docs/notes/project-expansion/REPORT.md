@@ -54,7 +54,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-diffutils / v3-12 / update | verified | verified | 946:GNU Diffutils第11〜15章13英日/207単位を限定b13435425で統合Pages本番37548740688/af3b5726公開・公開後確認完了。193定本/1503原稿キット/全24184参照/固定HTTP399/独自domain399/404/CAS/対訳合格、未説明差分0。948第16〜18章13英日/62単位・219定本・1647kit・独立再生成/224target/全218数値順・代表表示検証済み、保存4eb5e771e/cbffd10d1済み。実b134本番artifactを統合基準にroot61限定登録・verified・限定commit/push/Pages公開を継続する。 946:GNU Diffutils第11〜15章13英日/207単位を限定b13435425で統合Pages本番37548740688/af3b5726公開・公開後確認完了。193定本/1503原稿キット/全24184参照/固定HTTP399/独自domain399/404/CAS/対訳合格、未説明差分0。948第16〜18章13英日/62単位・219定本・1647kit・独立再生成/224target/全218数値順・代表表示検証済み、保存4eb5e771e/cbffd10d1済み。実b134本番artifactを統合基準にroot61限定登録・verified・限定commit/push/Pages公開を継続する。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 948:GNU Diffutils第16〜18章13英日/62単位・219定本・1649原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。概要と第1〜18章109英日を提供。次は着手済み950 GNU sed第4章の実本番基準統合検証・正式登録・限定公開へ。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 948:GNU Diffutils第16〜18章13英日/62単位・219定本・1649原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。概要と第1〜18章109英日を提供。次は着手済み950 GNU sed第4章の実本番基準統合検証・正式登録・限定公開へ。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
 | gnu-sed / v4-10 / update | verified | verified | 950:GNU sed第4章6英日/49単位・37定本・662原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜4章18英日を提供。次は着手済み951 GNU sed第5章14英日/179単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 950:GNU sed第4章6英日/49単位・37定本・662原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜4章18英日を提供。次は着手済み951 GNU sed第5章14英日/179単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
-| gnu-sed / v4-10 / update | verified | verified | 952:GNU sed第5章14英日/179単位・65定本・816再生成キットを検証済み。64appfilesの限定commit/push成功。Preview37559889476の実artifact/HTTP/404/代表表示から、950実本番a472db2f6のCAS条件でProduction・公開後確認・保存へ。次は953第6章のレビュー済み7英日草稿を正式化する。 952:GNU sed第5章14英日/179単位・65定本・816再生成キットを検証済み。64appfilesの限定commit/push成功。Preview37559889476の実artifact/HTTP/404/代表表示から、950実本番a472db2f6のCAS条件でProduction・公開後確認・保存へ。次は953第6章のレビュー済み7英日草稿を正式化する。 |
+| gnu-sed / v4-10 / update | verified | verified | 目標状態pausedを確認して作業・Production公開を停止。再開指示後、951 ci.mjs statusでPreview37559889476を確認し、実artifact/65原稿816kit/HTTP/404/native検査→record-preview→CASexpected a472de9bb4ab0de176439f4a4d96fcafc2542b0cでProduction→公開後確認と保存。第6章953は7英日56単位の草稿レビュー済み、隔離65定本workspaceと未実行生成器を準備。第5章公開後確認までは第6章生成器を実行しない。 目標状態pausedを確認して作業・Production公開を停止。再開指示後、951 ci.mjs statusでPreview37559889476を確認し、実artifact/65原稿816kit/HTTP/404/native検査→record-preview→CASexpected a472de9bb4ab0de176439f4a4d96fcafc2542b0cでProduction→公開後確認と保存。第6章953は7英日56単位の草稿レビュー済み、隔離65定本workspaceと未実行生成器を準備。第5章公開後確認までは第6章生成器を実行しない。 |
 | gnu-sed / v4-10 / update | source-locked | source-locked | 953:GNU sed4.10第6章全文7英日/1947語/56単位・11pre・脚注8を配信除外で保存し、別パス全文レビュー済み。原文TODO・静的例・原コメントを保持。箇条書き内preを完全literal tokenで保持し全11pre一致。950本番公開後確認と951第5章正式化を優先。第6章正式化は第5章公開後の65定本基準から、14追加原稿・注記・原稿キット・独立再生成・対象統合確認へ。 953:GNU sed4.10第6章全文7英日/1947語/56単位・11pre・脚注8を配信除外で保存し、別パス全文レビュー済み。原文TODO・静的例・原コメントを保持。箇条書き内preを完全literal tokenで保持し全11pre一致。950本番公開後確認と951第5章正式化を優先。第6章正式化は第5章公開後の65定本基準から、14追加原稿・注記・原稿キット・独立再生成・対象統合確認へ。 |
 
 ## 登録済みの既存文書
@@ -129,3 +129,8 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 ## 実行記録
 
 詳細なサイクル結果、モデル設定と実モデルの確認可否、証拠、未実施項目、外部公開・定期実行の許可範囲は `runs/` を参照。
+
+
+## 2026-10-07 中断・引継ぎ
+
+目標状態`paused`を確認して作業と本番公開を停止。第5章の限定公開ブランチpushとローカル正式検証は完了し、Preview37559889476の最終確認待ち。本番は未dispatch。公開基準は第4章a472de9bb。第6章はレビュー済み草稿・未実行生成器・隔離workspace準備まで。再開操作は951/PAUSED_HANDOFF.jsonへ記録し、今回の変更を配信対象外保存ブランチへcommit/pushする。
