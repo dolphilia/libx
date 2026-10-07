@@ -1,0 +1,81 @@
+{
+  "slug": "87-avoiding-common-mistakes",
+  "bodySHA256": "92dda30045c6db1f658a6a901e3173f09da275e59f1ccfae4950feddf66f9a2e",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧11.3 Avoiding Common Mistakes⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Avoiding-Common-Mistakes-1\"><span>11.3 Avoiding Common Mistakes</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "When producing a patch for multiple files, apply ⟦0⟧ to directories whose names do not have slashes. This reduces confusion when the patch consumer specifies the ⟦1⟧ option, since this option can have surprising results when the old and new file names have different numbers of slashes. For example, do not send a patch with a header that looks like this:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">-p<var class=\"var\">number</var></samp>"
+      },
+      "sourceHTML": "<p>When producing a patch for multiple files, apply <code class=\"command\">diff</code> to\ndirectories whose names do not have slashes.  This reduces confusion\nwhen the patch consumer specifies the <samp class=\"option\">-p<var class=\"var\">number</var></samp> option,\nsince this option can have surprising results when the old and new\nfile names have different numbers of slashes.  For example, do not\nsend a patch with a header that looks like this:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "because the two file names have different numbers of slashes, and different versions of ⟦0⟧ interpret the file names differently. To avoid confusion, send output that looks like this instead:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>because the two file names have different numbers of slashes, and\ndifferent versions of <code class=\"command\">patch</code> interpret the file names\ndifferently.  To avoid confusion, send output that looks like this\ninstead:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Make sure you have specified the file names correctly, either in a context diff header or with an ‘⟦0⟧’ line. Take care to not send out reversed patches, since these make people wonder whether they have already applied the patch.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">Index:</samp>"
+      },
+      "sourceHTML": "<p>Make sure you have specified the file names correctly, either in a\ncontext diff header or with an ‘<samp class=\"samp\">Index:</samp>’ line.  Take care to not send out\nreversed patches, since these make people wonder whether they have\nalready applied the patch.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Avoid sending patches that compare backup file names like ⟦0⟧ or ⟦1⟧, since this might confuse ⟦2⟧ into patching a backup file instead of the real file. Instead, send patches that compare the same base file names in different directories, e.g. ⟦3⟧ and ⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">README.orig</samp>",
+        "⟦1⟧": "<samp class=\"file\">README~</samp>",
+        "⟦2⟧": "<code class=\"command\">patch</code>",
+        "⟦3⟧": "<samp class=\"file\">old/README</samp>",
+        "⟦4⟧": "<samp class=\"file\">new/README</samp>"
+      },
+      "sourceHTML": "<p>Avoid sending patches that compare backup file names like\n<samp class=\"file\">README.orig</samp> or <samp class=\"file\">README~</samp>, since this might confuse\n<code class=\"command\">patch</code> into patching a backup file instead of the real file.\nInstead, send patches that compare the same base file names in\ndifferent directories, e.g. <samp class=\"file\">old/README</samp> and <samp class=\"file\">new/README</samp>.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "To save people from partially applying a patch before other patches that should have gone before it, you can make the first patch in the patch file update a file with a name like ⟦0⟧ or ⟦1⟧, which contains a patch level or version number. If the input file contains the wrong version number, ⟦2⟧ will complain immediately.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">patchlevel.h</samp>",
+        "⟦1⟧": "<samp class=\"file\">version.c</samp>",
+        "⟦2⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>To save people from partially applying a patch before other patches that\nshould have gone before it, you can make the first patch in the patch\nfile update a file with a name like <samp class=\"file\">patchlevel.h</samp> or\n<samp class=\"file\">version.c</samp>, which contains a patch level or version number.  If\nthe input file contains the wrong version number, <code class=\"command\">patch</code> will\ncomplain immediately.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "An even clearer way to prevent this problem is to put a ‘⟦0⟧’ line before the patch. If the leading text in the patch file contains a line that starts with ‘⟦1⟧’, ⟦2⟧ takes the next word from that line (normally a version number) and checks whether the next input file contains that word, preceded and followed by either white space or a newline. If not, ⟦3⟧ prompts you for confirmation before proceeding. This makes it difficult to accidentally apply patches in the wrong order.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">Prereq:</samp>",
+        "⟦1⟧": "<samp class=\"samp\">Prereq:</samp>",
+        "⟦2⟧": "<code class=\"command\">patch</code>",
+        "⟦3⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>An even clearer way to prevent this problem is to put a ‘<samp class=\"samp\">Prereq:</samp>’\nline before the patch.  If the leading text in the patch file contains a\nline that starts with ‘<samp class=\"samp\">Prereq:</samp>’, <code class=\"command\">patch</code> takes the next word\nfrom that line (normally a version number) and checks whether the next\ninput file contains that word, preceded and followed by either\nwhite space or a newline.  If not, <code class=\"command\">patch</code> prompts you for\nconfirmation before proceeding.  This makes it difficult to accidentally\napply patches in the wrong order.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

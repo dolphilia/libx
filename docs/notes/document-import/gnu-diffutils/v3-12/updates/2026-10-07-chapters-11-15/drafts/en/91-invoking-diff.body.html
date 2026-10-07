@@ -1,0 +1,43 @@
+<div class="gnu-diffutils-original-content" id="Invoking-diff">
+<h2 class="chapter" id="Invoking-diff-1"><span>13 Invoking <code class="command">diff</code></span></h2>
+<a class="index-entry-id" id="index-invoking-diff"></a>
+<a class="index-entry-id" id="index-diff-invocation"></a>
+<p>The format for running the <code class="command">diff</code> command is:
+</p>
+<div class="example">
+<pre class="example-preformatted">diff <var class="var">options</var>... <var class="var">files</var>...
+</pre></div>
+<p>In the simplest case, two file names <var class="var">from-file</var> and
+<var class="var">to-file</var> are given, and <code class="command">diff</code> compares the contents of
+<var class="var">from-file</var> and <var class="var">to-file</var>.  A file name of <samp class="file">-</samp> stands for
+the standard input.
+</p>
+<p>If one file is a directory and the other is not, <code class="command">diff</code> compares
+the file in the directory whose name is that of the non-directory.
+The non-directory file must not be <samp class="file">-</samp>.
+</p>
+<p>If two file names are given and both are directories,
+<code class="command">diff</code> compares corresponding files in both directories, in
+alphabetical order; this comparison is not recursive unless the
+<samp class="option">--recursive</samp> (<samp class="option">-r</samp>) option is given.  <code class="command">diff</code> never
+compares the actual contents of a directory as if it were a file.  The
+file that is fully specified may not be standard input, because standard
+input is nameless and the notion of “file with the same name” does not
+apply.
+</p>
+<p>If the <samp class="option">--from-file=<var class="var">file</var></samp> option is given, the number of
+file names is arbitrary, and <var class="var">file</var> is compared to each named file.
+Similarly, if the <samp class="option">--to-file=<var class="var">file</var></samp> option is given, each
+named file is compared to <var class="var">file</var>.
+</p>
+<p><code class="command">diff</code> options begin with ‘<samp class="samp">-</samp>’, so normally file names
+may not begin with ‘<samp class="samp">-</samp>’.  However, <samp class="option">--</samp> as an
+argument by itself treats the remaining arguments as file names even if
+they begin with ‘<samp class="samp">-</samp>’.
+</p>
+<p>An exit status of 0 means no differences were found, 1 means some
+differences were found, and 2 means trouble.
+</p>
+<hr/>
+
+</div>

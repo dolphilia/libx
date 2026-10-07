@@ -1,0 +1,14 @@
+<div class="gnu-diffutils-original-content" id="Tips-for-Patch-Producers">
+<h3 class="section" id="Tips-for-Patch-Producers-1"><span>11.1 パッチ作成者へのヒント</span></h3>
+<a class="index-entry-id" id="index-patch-producer-tips"></a>
+<p>パッケージの旧版を新版に変更するパッチを作るには、まず旧版と新版を隣り合うサブディレクトリへコピーします。一般には、両バージョンの <code class="command">tar</code> アーカイブを展開してこれを行います。</p>
+<p>パッチを生成するには「<samp class="samp">diff -Naur <var class="var">old</var>
+<var class="var">new</var></samp>」を使います。<var class="var">old</var> と <var class="var">new</var> は、それぞれ旧版と新版のディレクトリを示します。名前 <var class="var">old</var> と <var class="var">new</var> にスラッシュを含めてはいけません。<samp class="option">-N</samp> オプションはパッチによるファイルの作成・削除を可能にし、<samp class="option">-a</samp> は非テキストファイルの更新を可能にします。<samp class="option">-u</samp> は有用なタイムスタンプと十分なコンテキストを生成し、<samp class="option">-r</samp> はサブディレクトリの更新を可能にします。Bourne シェル構文によるコマンド例を示します。</p>
+<div class="example">
+<pre class="example-preformatted">diff -Naur gcc-3.0.3 gcc-3.0.4
+</pre></div>
+<p>受取人にパッチの適用方法を伝えてください。使用する作業ディレクトリと <code class="command">patch</code> のオプションも含めます。「<samp class="samp">-p1</samp>」オプションを推奨します。受取人の立場になって元のファイルのコピーへパッチを適用し、手順を試してください。</p>
+<p>パッチ生成時によくある間違いを避ける方法は、<a class="xref" href="#Avoiding-Common-Mistakes">よくある間違いを避ける</a>を参照してください。</p>
+<hr/>
+</div>
+

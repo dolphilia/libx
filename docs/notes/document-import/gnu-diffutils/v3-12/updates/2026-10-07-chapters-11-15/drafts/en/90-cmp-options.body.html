@@ -1,0 +1,155 @@
+<div class="gnu-diffutils-original-content" id="cmp-Options">
+<h3 class="section" id="Options-to-cmp"><span>12.1 Options to <code class="command">cmp</code></span></h3>
+<a class="index-entry-id" id="index-cmp-options"></a>
+<a class="index-entry-id" id="index-options-for-cmp"></a>
+<p>Below is a summary of all of the options that GNU
+<code class="command">cmp</code> accepts.  Most options have two equivalent names, one of
+which is a single letter preceded by ‘<samp class="samp">-</samp>’, and the other of which
+is a long name preceded by ‘<samp class="samp">--</samp>’.  Multiple single letter options
+(unless they take an argument) can be combined into a single command
+line word: <samp class="option">-bl</samp> is equivalent to <samp class="option">-b -l</samp>.
+</p>
+<dl class="table">
+<dt><samp class="option">-b</samp></dt>
+<dt><samp class="option">--print-bytes</samp></dt>
+<dd><p>Print the differing bytes.  Display each control byte as a ‘<samp class="samp">^</samp>’
+followed by an ASCII letter, ‘<samp class="samp">@</samp>’, ‘<samp class="samp">[</samp>’, ‘<samp class="samp">\</samp>’, ‘<samp class="samp">]</samp>’,
+‘<samp class="samp">^</samp>’ or ‘<samp class="samp">_</samp>’.  Precede each byte with the high bit set with
+‘<samp class="samp">M-</samp>’, which stands for “meta”.  A control byte is any byte
+with the high bit clear that does not represent a printable ASCII
+character including space.
+</p>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dd><p>Output a summary of usage and then exit.
+</p>
+</dd>
+<dt><samp class="option">-i <var class="var">skip</var></samp></dt>
+<dt><samp class="option">--ignore-initial=<var class="var">skip</var></samp></dt>
+<dd><p>Ignore any differences in the first <var class="var">skip</var> bytes of the input
+files.  Treat files with fewer than <var class="var">skip</var> bytes as if they are
+empty.  If <var class="var">skip</var> is of the form
+<samp class="option"><var class="var">from-skip</var>:<var class="var">to-skip</var></samp>, skip the first <var class="var">from-skip</var>
+bytes of the first input file and the first <var class="var">to-skip</var> bytes of the
+second.
+</p>
+</dd>
+<dt><samp class="option">-l</samp></dt>
+<dt><samp class="option">--verbose</samp></dt>
+<dd><p>Output the (decimal) byte numbers and (octal) values of all differing bytes,
+instead of the default standard output.
+Each output line contains a differing byte’s number relative to the
+start of the input, followed by the differing byte values.
+Byte numbers start at 1.
+Also, output the EOF message if one file is shorter than the other.
+</p>
+</dd>
+<dt><samp class="option">-n <var class="var">count</var></samp></dt>
+<dt><samp class="option">--bytes=<var class="var">count</var></samp></dt>
+<dd><p>Compare at most <var class="var">count</var> input bytes.
+</p>
+</dd>
+<dt><samp class="option">-s</samp></dt>
+<dt><samp class="option">--quiet</samp></dt>
+<dt><samp class="option">--silent</samp></dt>
+<dd><p>Do not print anything; only return an exit status indicating whether
+the files differ.
+</p>
+</dd>
+<dt><samp class="option">-v</samp></dt>
+<dt><samp class="option">--version</samp></dt>
+<dd><p>Output version information and then exit.
+</p></dd>
+</dl>
+<p>In the above table, operands that are byte counts are normally
+decimal, but may be preceded by ‘<samp class="samp">0</samp>’ for octal and ‘<samp class="samp">0x</samp>’ for
+hexadecimal.
+</p>
+<p>A byte count can be followed by a suffix to specify a
+multiple of the count.  A bare letter,
+or one followed by ‘<samp class="samp">iB</samp>’, specifies
+a multiple using powers of 1024.  A letter followed by ‘<samp class="samp">B</samp>’
+specifies powers of 1000 instead.  For example, ‘<samp class="samp">-n 1M</samp>’ and
+‘<samp class="samp">-n 1MiB</samp>’ are equivalent to ‘<samp class="samp">-n 1048576</samp>’, whereas ‘<samp class="samp">-n 1MB</samp>’ is
+equivalent to ‘<samp class="samp">-n 1000000</samp>’.
+</p>
+<p>The following suffixes are defined.  Large sizes like <code class="code">1Q</code>
+may be rejected by your computer due to limitations of its arithmetic.
+</p>
+<dl class="table">
+<dt><a id="index-kilobyte_002c-definition-of"></a><span>‘<samp class="samp">kB</samp>’</span></dt>
+<dd><p>kilobyte: <em class="math">10^3 = 1000</em>.
+</p></dd>
+<dt><a id="index-kibibyte_002c-definition-of"></a><span>‘<samp class="samp">k</samp>’</span></dt>
+<dt>‘<samp class="samp">K</samp>’</dt>
+<dt>‘<samp class="samp">KiB</samp>’</dt>
+<dd><p>kibibyte: <em class="math">2^{10} = 1024</em>.  ‘<samp class="samp">K</samp>’ is special: the SI prefix is
+‘<samp class="samp">k</samp>’ and the ISO/IEC 80000-13 prefix is ‘<samp class="samp">Ki</samp>’, but tradition and
+POSIX use ‘<samp class="samp">k</samp>’ to mean ‘<samp class="samp">KiB</samp>’.
+</p></dd>
+<dt><a id="index-megabyte_002c-definition-of"></a><span>‘<samp class="samp">MB</samp>’</span></dt>
+<dd><p>megabyte: <em class="math">10^6 = 1,000,000</em>.
+</p></dd>
+<dt><a id="index-mebibyte_002c-definition-of"></a><span>‘<samp class="samp">M</samp>’</span></dt>
+<dt>‘<samp class="samp">MiB</samp>’</dt>
+<dd><p>mebibyte: <em class="math">2^{20} = 1,048,576</em>.
+</p></dd>
+<dt><a id="index-gigabyte_002c-definition-of"></a><span>‘<samp class="samp">GB</samp>’</span></dt>
+<dd><p>gigabyte: <em class="math">10^9 = 1,000,000,000</em>.
+</p></dd>
+<dt><a id="index-gibibyte_002c-definition-of"></a><span>‘<samp class="samp">G</samp>’</span></dt>
+<dt>‘<samp class="samp">GiB</samp>’</dt>
+<dd><p>gibibyte: <em class="math">2^{30} = 1,073,741,824</em>.
+</p></dd>
+<dt><a id="index-terabyte_002c-definition-of"></a><span>‘<samp class="samp">TB</samp>’</span></dt>
+<dd><p>terabyte:  <em class="math">10^{12} = 1,000,000,000,000</em>.
+</p></dd>
+<dt><a id="index-tebibyte_002c-definition-of"></a><span>‘<samp class="samp">T</samp>’</span></dt>
+<dt>‘<samp class="samp">TiB</samp>’</dt>
+<dd><p>tebibyte: <em class="math">2^{40} = 1,099,511,627,776</em>.
+</p></dd>
+<dt><a id="index-petabyte_002c-definition-of"></a><span>‘<samp class="samp">PB</samp>’</span></dt>
+<dd><p>petabyte: <em class="math">10^{15} = 1,000,000,000,000,000</em>.
+</p></dd>
+<dt><a id="index-pebibyte_002c-definition-of"></a><span>‘<samp class="samp">P</samp>’</span></dt>
+<dt>‘<samp class="samp">PiB</samp>’</dt>
+<dd><p>pebibyte: <em class="math">2^{50} = 1,125,899,906,842,624</em>.
+</p></dd>
+<dt><a id="index-exabyte_002c-definition-of"></a><span>‘<samp class="samp">EB</samp>’</span></dt>
+<dd><p>exabyte: <em class="math">10^{18} = 1,000,000,000,000,000,000</em>.
+</p></dd>
+<dt><a id="index-exbibyte_002c-definition-of"></a><span>‘<samp class="samp">E</samp>’</span></dt>
+<dt>‘<samp class="samp">EiB</samp>’</dt>
+<dd><p>exbibyte: <em class="math">2^{60} = 1,152,921,504,606,846,976</em>.
+</p></dd>
+<dt><a id="index-zettabyte_002c-definition-of"></a><span>‘<samp class="samp">ZB</samp>’</span></dt>
+<dd><p>zettabyte: <em class="math">10^{21} = 1,000,000,000,000,000,000,000</em>
+</p></dd>
+<dt>‘<samp class="samp">Z</samp>’</dt>
+<dt>‘<samp class="samp">ZiB</samp>’</dt>
+<dd><p>zebibyte: <em class="math">2^{70} = 1,180,591,620,717,411,303,424</em>.
+</p></dd>
+<dt><a id="index-yottabyte_002c-definition-of"></a><span>‘<samp class="samp">YB</samp>’</span></dt>
+<dd><p>yottabyte: <em class="math">10^{24} = 1,000,000,000,000,000,000,000,000</em>.
+</p></dd>
+<dt>‘<samp class="samp">Y</samp>’</dt>
+<dt>‘<samp class="samp">YiB</samp>’</dt>
+<dd><p>yobibyte: <em class="math">2^{80} = 1,208,925,819,614,629,174,706,176</em>.
+</p></dd>
+<dt><a id="index-ronnabyte_002c-definition-of"></a><span>‘<samp class="samp">RB</samp>’</span></dt>
+<dd><p>ronnabyte: <em class="math">10^{27} = 1,000,000,000,000,000,000,000,000,000</em>.
+</p></dd>
+<dt>‘<samp class="samp">R</samp>’</dt>
+<dt>‘<samp class="samp">RiB</samp>’</dt>
+<dd><p>robibyte: <em class="math">2^{90} = 1,237,940,039,285,380,274,899,124,224</em>.
+</p></dd>
+<dt><a id="index-quettabyte_002c-definition-of"></a><span>‘<samp class="samp">QB</samp>’</span></dt>
+<dd><p>quettabyte: <em class="math">10^{30} = 1,000,000,000,000,000,000,000,000,000,000</em>.
+</p></dd>
+<dt>‘<samp class="samp">Q</samp>’</dt>
+<dt>‘<samp class="samp">QiB</samp>’</dt>
+<dd><p>quebibyte: <em class="math">2^{100} = 1,267,650,600,228,229,401,496,703,205,376</em>.
+</p></dd>
+</dl>
+<hr/>
+</div>

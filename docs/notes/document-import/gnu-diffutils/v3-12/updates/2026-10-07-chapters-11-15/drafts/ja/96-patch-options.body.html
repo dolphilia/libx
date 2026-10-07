@@ -1,0 +1,148 @@
+<div class="gnu-diffutils-original-content" id="patch-Options">
+<h3 class="section" id="Options-to-patch"><span>15.1 <code class="command">patch</code> のオプション</span></h3>
+<a class="index-entry-id" id="index-patch-options"></a>
+<a class="index-entry-id" id="index-options-for-patch"></a>
+<p>GNU <code class="command">patch</code> が受け付けるすべてのオプションを以下にまとめます。古いバージョンの <code class="command">patch</code> でも安全に使えるオプションについては、<a class="xref" href="#patch-and-Tradition">GNU <code class="command">patch</code> と従来の <code class="command">patch</code></a>を参照してください。</p>
+<p>引数を取らない1文字のオプションは、複数をダッシュ1つのコマンドライン引数にまとめられます。</p>
+<dl class="table">
+<dt><samp class="option">-b</samp></dt>
+<dt><samp class="option">--backup</samp></dt>
+<dd><p>通常はバックアップを作らない場合も、各ファイルの元の内容をバックアップします。<a class="xref" href="#Backups">バックアップファイル</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-B <var class="var">prefix</var></samp></dt>
+<dt><samp class="option">--prefix=<var class="var">prefix</var></samp></dt>
+<dd><p>バックアップファイル名の先頭に <var class="var">prefix</var> を付けます。<a class="xref" href="#Backup-Names">バックアップファイル名</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--backup-if-mismatch</samp></dt>
+<dd><p>パッチがファイルと厳密に一致しない場合に、各ファイルの元の内容をバックアップします。POSIX に適合しない場合のデフォルト動作です。<a class="xref" href="#Backups">バックアップファイル</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--binary</samp></dt>
+<dd><p>標準出力と <samp class="file">/dev/tty</samp> を除き、すべてのファイルをバイナリモードで読み書きします。GNU/Linux のような POSIX 適合システムでは効果がありません。効果があるシステムでは、パッチを「<samp class="samp">diff -a --binary</samp>」で生成する必要があります。<a class="xref" href="#Binary">バイナリファイルとテキスト比較の強制</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-c</samp></dt>
+<dt><samp class="option">--context</samp></dt>
+<dd><p>パッチファイルをコンテキスト diff として解釈します。<a class="xref" href="#patch-Input"><code class="command">patch</code> の入力形式を選択する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-d <var class="var">directory</var></samp></dt>
+<dt><samp class="option">--directory=<var class="var">directory</var></samp></dt>
+<dd><p>パッチファイル内のファイル名と、他のオプションの引数として指定したファイル名の両方を解釈するとき、ディレクトリ <var class="var">directory</var> をカレントディレクトリにします。<a class="xref" href="#patch-Directories">別のディレクトリへパッチを適用する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-D <var class="var">name</var></samp></dt>
+<dt><samp class="option">--ifdef=<var class="var">name</var></samp></dt>
+<dd><p><var class="var">name</var> を使い、マージされた if-then-else 出力を作ります。<a class="xref" href="#If_002dthen_002delse">if-then-else によるファイルのマージ</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--dry-run</samp></dt>
+<dd><p>ファイルを実際には変更せず、パッチを適用した結果を表示します。<a class="xref" href="#Dry-Runs"><code class="command">patch</code> の動作を予測する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-e</samp></dt>
+<dt><samp class="option">--ed</samp></dt>
+<dd><p>パッチファイルを <code class="command">ed</code> スクリプトとして解釈します。<a class="xref" href="#patch-Input"><code class="command">patch</code> の入力形式を選択する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-E</samp></dt>
+<dt><samp class="option">--remove-empty-files</samp></dt>
+<dd><p>パッチ適用後に空になった出力ファイルを削除します。<a class="xref" href="#Creating-and-Removing">ファイルの作成と削除</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-f</samp></dt>
+<dt><samp class="option">--force</samp></dt>
+<dd><p>利用者が自分の操作を十分に理解していると仮定し、質問を一切しません。<a class="xref" href="#patch-Messages"><code class="command">patch</code> のメッセージと質問</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-F <var class="var">lines</var></samp></dt>
+<dt><samp class="option">--fuzz=<var class="var">lines</var></samp></dt>
+<dd><p>最大 fuzz 係数を <var class="var">lines</var> に設定します。<a class="xref" href="#Inexact"><code class="command">patch</code> が厳密には一致しない箇所を探すのを助ける</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-g <var class="var">num</var></samp></dt>
+<dt><samp class="option">--get=<var class="var">num</var></samp></dt>
+<dd><p><var class="var">num</var> が正なら必要に応じて版管理システムから入力ファイルを取得し、0なら取得せず、負なら取得するか利用者に尋ねます。<a class="xref" href="#Revision-Control">版管理</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dd><p>使用方法の概要を出力して終了します。</p>
+</dd>
+<dt><samp class="option">-i <var class="var">patchfile</var></samp></dt>
+<dt><samp class="option">--input=<var class="var">patchfile</var></samp></dt>
+<dd><p>標準入力ではなく <var class="var">patchfile</var> からパッチを読みます。<a class="xref" href="#patch-Options"><code class="command">patch</code> のオプション</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-l</samp></dt>
+<dt><samp class="option">--ignore-white-space</samp></dt>
+<dd><p>パッチファイル中の空白（スペースまたはタブ）の任意の連続を、入力ファイル中の任意の空白の連続に一致させます。<a class="xref" href="#Changed-White-Space">空白が変更されたパッチを適用する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-n</samp></dt>
+<dt><samp class="option">--normal</samp></dt>
+<dd><p>パッチファイルを通常の diff として解釈します。<a class="xref" href="#patch-Input"><code class="command">patch</code> の入力形式を選択する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-N</samp></dt>
+<dt><samp class="option">--forward</samp></dt>
+<dd><p><code class="command">patch</code> が逆向き、または適用済みと判断するパッチを無視します。<samp class="option">-R</samp> も参照してください。<a class="xref" href="#Reversed-Patches">逆向きのパッチを適用する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--no-backup-if-mismatch</samp></dt>
+<dd><p>ファイルの元の内容をバックアップしません。POSIX に適合する場合のデフォルト動作です。<a class="xref" href="#Backups">バックアップファイル</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-o <var class="var">file</var></samp></dt>
+<dt><samp class="option">--output=<var class="var">file</var></samp></dt>
+<dd><p><var class="var">file</var> を出力ファイル名として使います。<a class="xref" href="#patch-Options"><code class="command">patch</code> のオプション</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-p<var class="var">number</var></samp></dt>
+<dt><samp class="option">--strip=<var class="var">number</var></samp></dt>
+<dd><p>ファイル名から取り除く要素数を <var class="var">number</var> に設定します。<a class="xref" href="#patch-Directories">別のディレクトリへパッチを適用する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--posix</samp></dt>
+<dd><p>環境変数 <code class="env">POSIXLY_CORRECT</code> が設定されている場合と同様に、POSIX に適合します。<a class="xref" href="#patch-and-POSIX"><code class="command">patch</code> と POSIX 規格</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--quoting-style=<var class="var">word</var></samp></dt>
+<dd><p>環境変数 <code class="env">QUOTING_STYLE</code> に <var class="var">word</var> が設定されている場合と同様に、診断メッセージ内の名前を形式 <var class="var">word</var> で引用します。<a class="xref" href="#patch-Quoting-Style"><code class="command">patch</code> の引用形式</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-r <var class="var">reject-file</var></samp></dt>
+<dt><samp class="option">--reject-file=<var class="var">reject-file</var></samp></dt>
+<dd><p><var class="var">reject-file</var> を拒否ファイル名として使います。<a class="xref" href="#Reject-Names">拒否ファイル名</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-R</samp></dt>
+<dt><samp class="option">--reverse</samp></dt>
+<dd><p>このパッチは旧ファイルと新ファイルを入れ替えて作成されたものと仮定します。<a class="xref" href="#Reversed-Patches">逆向きのパッチを適用する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-s</samp></dt>
+<dt><samp class="option">--quiet</samp></dt>
+<dt><samp class="option">--silent</samp></dt>
+<dd><p>エラーが発生しない限り静かに動作します。<a class="xref" href="#patch-Messages"><code class="command">patch</code> のメッセージと質問</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-t</samp></dt>
+<dt><samp class="option">--batch</samp></dt>
+<dd><p>質問を一切しません。<a class="xref" href="#patch-Messages"><code class="command">patch</code> のメッセージと質問</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-T</samp></dt>
+<dt><samp class="option">--set-time</samp></dt>
+<dd><p>コンテキスト diff のヘッダーにあるタイムスタンプをローカル時刻とみなし、それに従ってパッチ適用後のファイルの変更時刻とアクセス時刻を設定します。<a class="xref" href="#Patching-Timestamps">パッチ適用後のファイルのタイムスタンプを更新する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-u</samp></dt>
+<dt><samp class="option">--unified</samp></dt>
+<dd><p>パッチファイルを unified diff として解釈します。<a class="xref" href="#patch-Input"><code class="command">patch</code> の入力形式を選択する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-v</samp></dt>
+<dt><samp class="option">--version</samp></dt>
+<dd><p>バージョン情報を出力して終了します。</p>
+</dd>
+<dt><samp class="option">-V <var class="var">backup-style</var></samp></dt>
+<dt><samp class="option">--version=control=<var class="var">backup-style</var></samp></dt>
+<dd><p>バックアップファイル名の命名規則を選択します。<a class="xref" href="#Backup-Names">バックアップファイル名</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--verbose</samp></dt>
+<dd><p>通常より多くの診断メッセージを表示します。<a class="xref" href="#patch-Messages"><code class="command">patch</code> のメッセージと質問</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-x <var class="var">number</var></samp></dt>
+<dt><samp class="option">--debug=<var class="var">number</var></samp></dt>
+<dd><p>内部デバッグフラグを設定します。<code class="command">patch</code> 自体を修正する人だけに関係する機能です。</p>
+</dd>
+<dt><samp class="option">-Y <var class="var">prefix</var></samp></dt>
+<dt><samp class="option">--basename-prefix=<var class="var">prefix</var></samp></dt>
+<dd><p>バックアップファイルの基本名の先頭に <var class="var">prefix</var> を付けます。<a class="xref" href="#Backup-Names">バックアップファイル名</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-z <var class="var">suffix</var></samp></dt>
+<dt><samp class="option">--suffix=<var class="var">suffix</var></samp></dt>
+<dd><p>バックアップ拡張子として「<samp class="samp">.orig</samp>」や「<samp class="samp">~</samp>」の代わりに <var class="var">suffix</var> を使います。<a class="xref" href="#Backup-Names">バックアップファイル名</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-Z</samp></dt>
+<dt><samp class="option">--set-utc</samp></dt>
+<dd><p>コンテキスト diff のヘッダーにあるタイムスタンプを UTC とみなし、それに従ってパッチ適用後のファイルの変更時刻とアクセス時刻を設定します。<a class="xref" href="#Patching-Timestamps">パッチ適用後のファイルのタイムスタンプを更新する</a>を参照してください。</p>
+</dd>
+</dl>
+<hr/>
+</div>
+

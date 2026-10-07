@@ -1,0 +1,22 @@
+<div class="gnu-diffutils-original-content" id="Invoking-cmp">
+<h2 class="chapter" id="Invoking-cmp-1"><span>12 <code class="command">cmp</code> の起動</span></h2>
+<a class="index-entry-id" id="index-invoking-cmp"></a>
+<a class="index-entry-id" id="index-cmp-invocation"></a>
+<p><code class="command">cmp</code> コマンドは2つのファイルを比較します。異なっていれば最初に違うバイト位置と行番号を示すか、一方のファイルが他方の先頭部分であることを報告します。バイトと行の番号は1から始まります。<code class="command">cmp</code> の引数は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">cmp <var class="var">options</var>... <var class="var">from-file</var> <span class="r">[</span><var class="var">to-file</var> <span class="r">[</span><var class="var">from-skip</var> <span class="r">[</span><var class="var">to-skip</var><span class="r">]</span><span class="r">]</span><span class="r">]</span>
+</pre></div>
+<p>ファイル名 <samp class="file">-</samp> は常に標準入力を表します。ファイル名を1つ省略した場合も、<code class="command">cmp</code> は標準入力を使います。オペランド <var class="var">from-skip</var> と <var class="var">to-skip</var> は各ファイルの先頭から無視するバイト数を指定し、<samp class="option">--ignore-initial=<var class="var">from-skip</var>:<var class="var">to-skip</var></samp> オプションに相当します。</p>
+<p>デフォルトでは、2つのファイルの内容が同じなら <code class="command">cmp</code> は何も出力しません。異なるバイトがあれば、<code class="command">cmp</code> は最初の相違位置を標準出力に報告します。</p>
+<div class="example">
+<pre class="example-preformatted"><var class="var">from-file</var> <var class="var">to-file</var> differ: char <var class="var">byte-number</var>, line <var class="var">line-number</var>
+</pre></div>
+<p>一方のファイルが他方の先頭部分である場合、<code class="command">cmp</code> は短い方のファイル名を標準エラーへ出力し、その後に空白と短い方のファイルに関する追加情報を続けます。</p>
+<div class="example">
+<pre class="example-preformatted">cmp: EOF on <var class="var">shorter-file</var> <var class="var">extra-info</var>
+</pre></div>
+<p>POSIX ロケール以外ではメッセージの形式が異なることがあります。POSIX は EOF 診断のファイル名の後に空白と追加情報を置くことを許していますが、必須とはしていません。</p>
+<p>終了ステータス0は相違がなかったこと、1は相違があったこと、2は問題が起きたことを表します。</p>
+<hr/>
+</div>
+

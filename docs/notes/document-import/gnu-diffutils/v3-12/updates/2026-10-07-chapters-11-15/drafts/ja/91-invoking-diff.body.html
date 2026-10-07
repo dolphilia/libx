@@ -1,0 +1,17 @@
+<div class="gnu-diffutils-original-content" id="Invoking-diff">
+<h2 class="chapter" id="Invoking-diff-1"><span>13 <code class="command">diff</code> の起動</span></h2>
+<a class="index-entry-id" id="index-invoking-diff"></a>
+<a class="index-entry-id" id="index-diff-invocation"></a>
+<p><code class="command">diff</code> コマンドの実行形式は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">diff <var class="var">options</var>... <var class="var">files</var>...
+</pre></div>
+<p>最も単純な場合は2つのファイル名 <var class="var">from-file</var> と <var class="var">to-file</var> を指定し、<code class="command">diff</code> が <var class="var">from-file</var> と <var class="var">to-file</var> の内容を比較します。ファイル名 <samp class="file">-</samp> は標準入力を表します。</p>
+<p>一方がディレクトリで他方がそうでなければ、<code class="command">diff</code> はそのディレクトリ内にある、ディレクトリではない方と同じ名前のファイルを比較します。ディレクトリではない方のファイルに <samp class="file">-</samp> は指定できません。</p>
+<p>2つのファイル名が両方ともディレクトリなら、<code class="command">diff</code> は両ディレクトリ内の対応するファイルをアルファベット順で比較します。<samp class="option">--recursive</samp>（<samp class="option">-r</samp>）オプションを指定しない限り、比較は再帰的ではありません。<code class="command">diff</code> はディレクトリ自体の内容をファイルのように比較することはありません。名前を完全に指定する側のファイルは標準入力にできません。標準入力には名前がなく、「同じ名前のファイル」という考え方が適用できないためです。</p>
+<p><samp class="option">--from-file=<var class="var">file</var></samp> オプションを指定すると、ファイル名の数は任意になり、<var class="var">file</var> を指定された各ファイルと比較します。同様に <samp class="option">--to-file=<var class="var">file</var></samp> オプションを指定すると、指定された各ファイルを <var class="var">file</var> と比較します。</p>
+<p><code class="command">diff</code> のオプションは「<samp class="samp">-</samp>」で始まるため、通常ファイル名を「<samp class="samp">-</samp>」で始めることはできません。ただし、単独の引数 <samp class="option">--</samp> を置くと、それ以降の引数は「<samp class="samp">-</samp>」で始まっていてもファイル名として扱われます。</p>
+<p>終了ステータス0は相違がなかったこと、1は相違があったこと、2は問題が起きたことを表します。</p>
+<hr/>
+</div>
+

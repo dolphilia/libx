@@ -1,0 +1,71 @@
+<div class="gnu-diffutils-original-content" id="diff3-Options">
+<h3 class="section" id="Options-to-diff3"><span>14.1 <code class="command">diff3</code> のオプション</span></h3>
+<a class="index-entry-id" id="index-diff3-options"></a>
+<a class="index-entry-id" id="index-options-for-diff3"></a>
+<p>GNU <code class="command">diff3</code> が受け付けるすべてのオプションを以下にまとめます。引数を取らない1文字のオプションは、複数をコマンドラインの1つの引数にまとめられます。</p>
+<dl class="table">
+<dt><samp class="option">-a</samp></dt>
+<dt><samp class="option">--text</samp></dt>
+<dd><p>テキストに見えないファイルも含め、すべてのファイルをテキストとして扱い、行単位で比較します。<a class="xref" href="#Binary">バイナリファイルとテキスト比較の強制</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-A</samp></dt>
+<dt><samp class="option">--show-all</samp></dt>
+<dd><p><var class="var">older</var> から <var class="var">yours</var> への、まだマージされていないすべての変更を <var class="var">mine</var> に取り込み、競合を境界行で囲みます。<a class="xref" href="#Marking-Conflicts">競合を表示する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--diff-program=<var class="var">program</var></samp></dt>
+<dd><p>ファイル比較に <code class="command">diff</code> の代わりに互換性のある比較プログラム <var class="var">program</var> を使います。</p>
+</dd>
+<dt><samp class="option">-e</samp></dt>
+<dt><samp class="option">--ed</samp></dt>
+<dd><p><var class="var">older</var> から <var class="var">yours</var> へのすべての変更を <var class="var">mine</var> に取り込む <code class="command">ed</code> スクリプトを生成します。<a class="xref" href="#Which-Changes">取り込む変更を選択する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-E</samp></dt>
+<dt><samp class="option">--show-overlap</samp></dt>
+<dd><p><samp class="option">-e</samp> と同様ですが、重なり合う変更の第1ファイルと第3ファイルの内容を境界行で囲みます。<a class="xref" href="#Marking-Conflicts">競合を表示する</a>を参照してください。<samp class="option">-E</samp> を指定した場合、重なり合う変更は次のようになります。</p>
+<div class="example">
+<pre class="example-preformatted">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <var class="var">mine</var>
+<span class="r">lines from <var class="var">mine</var></span>
+=======
+<span class="r">lines from <var class="var">yours</var></span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; <var class="var">yours</var>
+</pre></div>
+</dd>
+<dt><samp class="option">--help</samp></dt>
+<dd><p>使用方法の概要を出力して終了します。</p>
+</dd>
+<dt><samp class="option">-i</samp></dt>
+<dd><p>System V との互換性のため、<code class="command">ed</code> スクリプトの末尾に「<samp class="samp">w</samp>」と「<samp class="samp">q</samp>」コマンドを生成します。このオプションは <samp class="option">-AeExX3</samp> のいずれかと組み合わせる必要があり、<samp class="option">-m</samp> とは組み合わせられません。<a class="xref" href="#Saving-the-Changed-File">変更したファイルを保存する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--label=<var class="var">label</var></samp></dt>
+<dd><p><samp class="option">-A</samp>、<samp class="option">-E</samp>、<samp class="option">-X</samp> オプションが出力する境界行のラベルに <var class="var">label</var> を使います。各入力ファイルに1回ずつ、最大3回指定できます。デフォルトのラベルは入力ファイル名です。このため「<samp class="samp">diff3 --label X --label Y --label Z -m A
+B C</samp>」は「<samp class="samp">diff3 -m A B C</samp>」と同様に動作しますが、出力上は「<samp class="samp">A</samp>」、「<samp class="samp">B</samp>」、「<samp class="samp">C</samp>」ではなく「<samp class="samp">X</samp>」、「<samp class="samp">Y</samp>」、「<samp class="samp">Z</samp>」という名前のファイルから来たように見えます。<a class="xref" href="#Marking-Conflicts">競合を表示する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-m</samp></dt>
+<dt><samp class="option">--merge</samp></dt>
+<dd><p>編集スクリプトを第1ファイルへ適用し、結果を標準出力へ送ります。<code class="command">diff3</code> の出力を <code class="command">ed</code> にパイプする場合と違い、バイナリファイルや不完全な行でも動作します。編集スクリプトのオプションを指定しなければ <samp class="option">-A</samp> が仮定されます。<a class="xref" href="#Bypassing-ed">マージ結果を直接生成する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">--strip-trailing-cr</samp></dt>
+<dd><p>入力行末尾のキャリッジリターンを除去します。<a class="xref" href="#Binary">バイナリファイルとテキスト比較の強制</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-T</samp></dt>
+<dt><samp class="option">--initial-tab</samp></dt>
+<dd><p>通常形式で、行のテキストの前に2つの空白の代わりにタブを出力します。これによって行内のタブによる整列が通常どおりに見えます。<a class="xref" href="#Tabs">タブ位置の整列を維持する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-v</samp></dt>
+<dt><samp class="option">--version</samp></dt>
+<dd><p>バージョン情報を出力して終了します。</p>
+</dd>
+<dt><samp class="option">-x</samp></dt>
+<dt><samp class="option">--overlap-only</samp></dt>
+<dd><p><samp class="option">-e</samp> と同様ですが、重なり合う変更だけを出力します。<a class="xref" href="#Which-Changes">取り込む変更を選択する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-X</samp></dt>
+<dd><p><samp class="option">-E</samp> と同様ですが、重なり合う変更だけを出力します。つまり <samp class="option">-x</samp> と同様ですが、<samp class="option">-E</samp> のように変更を境界行で囲みます。<a class="xref" href="#Marking-Conflicts">競合を表示する</a>を参照してください。</p>
+</dd>
+<dt><samp class="option">-3</samp></dt>
+<dt><samp class="option">--easy-only</samp></dt>
+<dd><p><samp class="option">-e</samp> と同様ですが、重ならない変更だけを出力します。<a class="xref" href="#Which-Changes">取り込む変更を選択する</a>を参照してください。</p></dd>
+</dl>
+<hr/>
+</div>
+

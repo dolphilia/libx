@@ -1,0 +1,31 @@
+<div class="gnu-diffutils-original-content" id="Tips-for-Patch-Producers">
+<h3 class="section" id="Tips-for-Patch-Producers-1"><span>11.1 Tips for Patch Producers</span></h3>
+<a class="index-entry-id" id="index-patch-producer-tips"></a>
+<p>To create a patch that changes an older version of a package into a
+newer version, first make a copy of the older and newer versions in
+adjacent subdirectories.  It is common to do that by unpacking
+<code class="command">tar</code> archives of the two versions.
+</p>
+<p>To generate the patch, use the command ‘<samp class="samp">diff -Naur <var class="var">old</var>
+<var class="var">new</var></samp>’ where <var class="var">old</var> and <var class="var">new</var> identify the old and new
+directories.  The names <var class="var">old</var> and <var class="var">new</var> should not contain any
+slashes.  The <samp class="option">-N</samp> option lets the patch create and remove
+files; <samp class="option">-a</samp> lets the patch update non-text files; <samp class="option">-u</samp>
+generates useful timestamps and enough context; and <samp class="option">-r</samp> lets
+the patch update subdirectories.  Here is an example command, using
+Bourne shell syntax:
+</p>
+<div class="example">
+<pre class="example-preformatted">diff -Naur gcc-3.0.3 gcc-3.0.4
+</pre></div>
+<p>Tell your recipients how to apply the patches.  This should include
+which working directory to use, and which <code class="command">patch</code> options to
+use; the option ‘<samp class="samp">-p1</samp>’ is recommended.  Test your procedure by
+pretending to be a recipient and applying your patches to a copy of
+the original files.
+</p>
+<p>See <a class="xref" href="#Avoiding-Common-Mistakes">Avoiding Common Mistakes</a>, for how to avoid common mistakes when
+generating a patch.
+</p>
+<hr/>
+</div>
