@@ -1,37 +1,18 @@
 ---
-title: "Awesome BioIE Logo"
-description: "A curated collection of resources and projects focused on BioIE Logo."
+title: "Awesome BioIE"
+description: "Resources for extracting structured information from biomedical text and data, including models, tools, datasets, and vocabularies."
 licenseSource: "github-caufieldjh-awesome-bioie-readme-md"
 ---
 
-# Awesome BioIE Logo
+# Awesome BioIE<a id="awesome-bioie-logo"></a>
 
-A curated collection of resources and projects focused on BioIE Logo.
+BioIE extracts structured information from unstructured—or inconsistently structured—biological, clinical, and other biomedical data, often technical text documents. This list covers research overviews, groups, organizations, journals, events, tutorials, code, tools, models, datasets, vocabularies, and data models. Descriptions, dates, quantities, evaluations, access conditions, and maintenance claims reflect the fixed source snapshot.
 
-## Contents
-* [Research Overviews](#research-overviews)
-* [Groups Active in the Field](#groups-active-in-the-field)
-* [Organizations](#organizations)
-* [Journals and Events](#journals-and-events)
-  * [Journals](#journals)
-  * [Conferences and Other Events](#conferences-and-other-events)
-  * [Challenges](#challenges)
-* [Tutorials](#tutorials)
-  * [Guides](#guides)
-  * [Video Lectures and Online Courses](#video-lectures-and-online-courses)
-* [Code Libraries](#code-libraries)
-  * [Repos for Specific Datasets](#repos-for-specific-datasets)
-* [Tools, Platforms, and Services](#tools-platforms-and-services)
-  * [Annotation Tools](#annotation-tools)
-* [Techniques and Models](#techniques-and-models)
-* [Datasets](#datasets)
-  * [Biomedical Text Sources](#biomedical-text-sources)
-  * [Annotated Text Data](#annotated-text-data)
-  * [Protein-protein Interaction Annotated Corpora](#protein-protein-interaction-annotated-corpora)
-  * [Other Datasets](#other-datasets)
-* [Ontologies and Controlled Vocabularies](#ontologies-and-controlled-vocabularies)
-* [Data Models](#data-models)
-* [Credits](#credits)
+When extracted information is verifiable and consistent across sources, it may be considered knowledge. Methods for other unstructured data must be adapted to biomedical data. The fixed source describes major changes following BERT and large language models (LLMs) such as GPT-3/4, LLAMA2/3, and Gemini.
+
+The list preferentially includes resources with no monetary cost and limited license requirements; methods and datasets should be publicly accessible and actively maintained.
+
+See also [awesome-nlp](https://github.com/keon/awesome-nlp), [awesome-biology](https://github.com/raivivek/awesome-biology), and [Awesome-Bioinformatics](https://github.com/danielecook/Awesome-Bioinformatics).
 
 ## Research Overviews
 
@@ -39,7 +20,7 @@ A curated collection of resources and projects focused on BioIE Logo.
 * [Large language models in healthcare: A comprehensive benchmark](http://dx.doi.org/10.1101/2024.04.24.24306315) - a statistical and human evaluation of sixteen different LLMs applied to medical language tasks.
 * [Assessing the research landscape and clinical utility of large language models: a scoping review](https://doi.org/10.1186/s12911-024-02459-6) - a high-level review of LLM applications in medicine as of March 2024.
 * [Ethical and regulatory challenges of large language models in medicine](https://doi.org/10.1016/s2589-7500(24)00061-x) - a review of ethical issues arising from applications of LLMs in biomedicine.
-* [On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜](http://dx.doi.org/10.1145/3442188.3445922) - a frequently referenced but still relevant work concerning the roles, applications, and risks of language models.
+* [On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?](http://dx.doi.org/10.1145/3442188.3445922) - a frequently referenced but still relevant work concerning the roles, applications, and risks of language models.
 
 ### Pre-LLM Overviews
 * [Biomedical Informatics on the Cloud: A Treasure Hunt for Advancing Cardiovascular Medicine](https://www.ahajournals.org/doi/full/10.1161/CIRCRESAHA.117.310967) - An overview of how BioIE and bioinformatics workflows can be applied to questions in cardiovascular health and medicine research.
@@ -50,7 +31,6 @@ A curated collection of resources and projects focused on BioIE Logo.
 * [Capturing the Patient's Perspective: a Review of Advances in Natural Language Processing of Health-Related Text](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6250990/) - A 2017 review of natural language processing methods applied to information extraction in health records and social media text. An important note from this review: "One of the main challenges in the field is the availability of data that can be shared and which can be used by the community to push the development of methods based on comparable and reproducible studies".
 * [Awesome AI-based Protein Design](https://github.com/opendilab/awesome-AI-based-protein-design) - This is a collection of research papers for AI-based protein design.
 
-[Back to Top](#contents)
 
 ## Groups Active in the Field
 
@@ -70,14 +50,12 @@ A curated collection of resources and projects focused on BioIE Logo.
 * [Zaklab](http://zaklab.org) - Group led by Dr. Isaac Kohane at Harvard Medical School's Department of Biomedical Informatics (Dr. Kohane is also a steward of the n2c2 (formerly i2b2) datasets - see [Datasets](#datasets) below).
 * [Columbia University Department of Biomedical Informatics](https://www.dbmi.columbia.edu/) - Led by Drs. George Hripcsak and Noémie Elhadad.
 
-[Back to Top](#contents)
 
 ## Organizations
 
 * [AMIA](https://www.amia.org/) - Many—but certainly not all—individuals studying biomedical informatics are members of the American Medical Informatics Association. AMIA publishes a journal, JAMIA (see below).
 * [IMIA](https://imia-medinfo.org/) - The International Medical Informatics Association. Publishes the IMIA Yearbook of Medical Informatics.
 
-[Back to Top](#contents)
 
 ## Journals and Events
 
@@ -110,25 +88,23 @@ Some events in BioIE are organized around formal tasks and challenges in which g
 * [eHealth-KD](https://knowledge-learning.github.io/ehealthkd-2019/) - Challenges for encouraging "development of software technologies to automatically extract a large variety of knowledge from eHealth documents written in the Spanish Language". Previously held as part of [TASS](http://www.sepln.org/workshops/tass/), an annual workshop for semantic analysis in Spanish.
 * [EHR DREAM Challenge](https://www.synapse.org/#!Synapse:syn18405991/wiki/589657) - Held along with several other [more bioinformatics-focused challenges](http://dreamchallenges.org/), this challenge opened in October 2019 and focuses on using electronic health record data to predict patient mortality. Uses a synthetic data set rather than real EHR contents.
 
-[Back to Top](#contents)
 
 ## Tutorials
 
-The field changes rapidly enough that tutorials any older than a few years are missing crucial details. A few more recent educational resources are listed below. A good foundational understanding of text mining techniques is very helpful, as is some basic experience with the Python and or R languages. The best option may be to learn by doing.
+The field changes rapidly enough that tutorials any older than a few years are missing crucial details. A few more recent educational resources are listed below. A good foundational understanding of text mining techniques is very helpful, as is some basic experience with the Python and/or R languages. The best option may be to learn by doing.
 
 ### LLM Guides
 
-_TBD - watch this space!_
+The fixed source does not yet list resources for this section.
 
 ### Pre-LLM Guides, Lectures, and Courses
 
 * [Getting Started in Text Mining](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0040020) - A brief introduction to bio-text mining from Cohen and Hunter. More than ten years old but still quite relevant. See also an [earlier paper by the same authors](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1702322/).
-* [Biomedical Literature Mining](https://link.springer.com/book/10.1007/978-1-4939-0709-0) - A (non-free) volume of Methods in Molecular Biology from 2014. Chapters covers introductory principles in text mining, applications in the biological sciences, and potential for use in clinical or medical safety scenarios. 
+* [Biomedical Literature Mining](https://link.springer.com/book/10.1007/978-1-4939-0709-0) - A (non-free) volume of Methods in Molecular Biology from 2014. Chapters cover introductory principles in text mining, applications in the biological sciences, and potential for use in clinical or medical safety scenarios.
 * [Coursera - Foundations of mining non-structured medical data](https://www.coursera.org/learn/mining-medical-data) - About three hours worth of video lectures on working with medical data of various types and structures, including text and image data. Appears fairly high-level and intended for beginners.
 * [JensenLab text mining exercises](https://jensenlab.org/training/textmining/)
-* [VIB text mining and curation training](https://www.bits.vib.be/training-list/111-bits/training/previous-trainings/183-text-mining) - This training workshop happenened in 2013 but the slides are still online.
+* [VIB text mining and curation training](https://www.bits.vib.be/training-list/111-bits/training/previous-trainings/183-text-mining) - This training workshop happened in 2013 but the slides are still online.
 
-[Back to Top](#contents)
 
 ## Code Libraries
 
@@ -143,7 +119,6 @@ _TBD - watch this space!_
 
 * [mimic-code](https://github.com/MIT-LCP/mimic-code) - Code associated with the MIMIC-III dataset (see below). Includes some helpful [tutorials](https://github.com/MIT-LCP/mimic-code/tree/master/tutorials).
 
-[Back to Top](#contents)
 
 ## Tools, Platforms, and Services
 
@@ -164,13 +139,12 @@ _TBD - watch this space!_
 * [brat](https://brat.nlplab.org/) - [paper](https://www.aclweb.org/anthology/E12-2021/) - [code](https://github.com/nlplab/brat) - The brat rapid annotation tool. Supports producing text annotations visually, through the browser. Not subject specific; appropriate for many annotation projects. Visualization is based on that of the [_stav_ tool](https://github.com/nlplab/stav/).
 * [MedTator](https://ohnlp.github.io/MedTator/) - [paper](https://academic.oup.com/bioinformatics/article-abstract/38/6/1776/6496915) - [code](https://github.com/OHNLP/MedTator) - An annotation tool designed to have minimal dependencies.
 
-[Back to Top](#contents)
 
 ## Techniques and Models
 
 ### Large Language Models
 
-_TBD - watch this space!_
+The fixed source does not yet list resources for this section.
 
 ### BERT models
 * [BioBERT](https://github.com/naver/biobert-pretrained) - [paper](https://arxiv.org/abs/1901.08746) - [code](https://github.com/dmis-lab/biobert) - A PubMed and PubMed Central-trained version of the [BERT language model](https://arxiv.org/abs/1810.04805).
@@ -189,10 +163,9 @@ _TBD - watch this space!_
 
 ### Text Embeddings
 * [This paper from Hongfang Liu's group at Mayo Clinic](https://www.sciencedirect.com/science/article/pii/S1532046418301825) demonstrates how text embeddings trained on biomedical or clinical text can, but don't always, perform better on biomedical natural language processing tasks. That being said, pre-trained embeddings may be appropriate for your needs, especially as training domain-specific embeddings can be computationally intensive.
-* [BioASQword2vec](http://bioasq.org/news/bioasq-releases-continuous-space-word-vectors-obtained-applying-word2vec-pubmed-abstracts) - [paper](http://bioasq.lip6.fr/info/BioASQword2vec/) - Qord embeddings derived from biomedical text (>10 million PubMed abstracts) using the popular [word2vec](https://code.google.com/archive/p/word2vec/) tool.
+* [BioASQword2vec](http://bioasq.org/news/bioasq-releases-continuous-space-word-vectors-obtained-applying-word2vec-pubmed-abstracts) - [paper](http://bioasq.lip6.fr/info/BioASQword2vec/) - Word embeddings derived from biomedical text (>10 million PubMed abstracts) using the popular [word2vec](https://code.google.com/archive/p/word2vec/) tool.
 * [BioWordVec](https://figshare.com/articles/Improving_Biomedical_Word_Embeddings_with_Subword_Information_and_MeSH_Ontology/6882647) - [paper](https://www.nature.com/articles/s41597-019-0055-0) - [code](https://github.com/ncbi-nlp/BioWordVec) - Word embeddings derived from biomedical text (>27 million PubMed titles and abstracts), including subword embedding model based on MeSH.
 
-[Back to Top](#contents)
 
 ## Datasets
 
@@ -207,7 +180,7 @@ The following resources contain indexed text documents in the biomedical science
 
 ### Annotated Text Data
 
-* [SPL-ADR-200db](https://bionlp.nlm.nih.gov/tac2017adversereactions/) - [paper](https://www.nature.com/articles/sdata20181) - A pilot dataset containing standardised information, and annotations of occurence in text, about ~5,000 known adverse reactions for 200 FDA-approved drugs.
+* [SPL-ADR-200db](https://bionlp.nlm.nih.gov/tac2017adversereactions/) - [paper](https://www.nature.com/articles/sdata20181) - A pilot dataset containing standardised information, and annotations of occurrence in text, about ~5,000 known adverse reactions for 200 FDA-approved drugs.
 * [BioCreAtIvE 1](https://sourceforge.net/projects/biocreative/files/) - [paper](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-6-S1-S1) - 15,000 sentences (10,000 training and 5,000 test) annotated for protein and gene names. 1,000 full text biomedical research articles annotated with protein names and Gene Ontology terms.
 * [BioCreAtIvE 2](https://sourceforge.net/projects/biocreative/files/) - [paper](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2008-9-s2-s1) - 15,000 sentences (10,000 training and 5,000 test, different from the first corpus) annotated for protein and gene names. 542 abstracts linked to EntrezGene identifiers. A variety of research articles annotated for features of protein–protein interactions.
 * [BioCreAtIvE V CDR Task Corpus (BC5CDR)](https://biocreative.bioinformatics.udel.edu/accounts/login/?next=/resources/corpora/biocreative-v-cdr-corpus/) - [paper](https://academic.oup.com/database/article/doi/10.1093/database/baw068/2630414) - 1,500 articles (title and abstract) published in 2014 or later, annotated for 4,409 chemicals, 5,818 diseases and 3116 chemical–disease interactions. Requires registration.
@@ -242,7 +215,6 @@ Protein-protein interactions are abbreviated as PPI. The following sets are avai
 * [MIMIC-IV](https://mimic-iv.mit.edu/) - An update to MIMIC-III's multimodal patient data, now covering more recent years of admissions, plus a new data structure, emergency department records, and links to MIMIC-CXR images.
 * [eICU Collaborative Research Database](https://eicu-crd.mit.edu/) - [paper](https://www.nature.com/articles/sdata2018178) - a database of observations from more than 200 thousand intensive care unit admissions, with consistent structure. Requires registration, training course completion, and data use agreement.
 
-[Back to Top](#contents)
 
 ## Ontologies and Controlled Vocabularies
 
@@ -252,7 +224,6 @@ Protein-protein interactions are abbreviated as PPI. The following sets are avai
 * [UMLS Metathesaurus](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/index.html) - [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC308795/) - Mappings between >3.8 million concepts, 14 million concept names, and >200 sources of biomedical vocabulary and identifiers. It's big. It may help to prepare a subset of the Metathesaurus with the [MetamorphoSys installation tool](https://www.nlm.nih.gov/research/umls/implementation_resources/metamorphosys/help.html) but we're still talking about ~30 Gb of disk space required for the 2019 release. [See the manual here](https://www.ncbi.nlm.nih.gov/books/NBK9684/). Requires UTS account.
 * [UMLS Semantic Network](https://semanticnetwork.nlm.nih.gov/) - [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2447396/) - Lists of 133 semantic types and 54 semantic relationships covering biomedical concepts and vocabulary. Is the Metathesaurus too complex for your needs? Try this. Does not require UTS account to download.
 
-[Back to Top](#contents)
 
 ## Data Models
 
@@ -262,14 +233,3 @@ Do you need a [data model](https://en.wikipedia.org/wiki/Data_model)? If you are
 * [BioUML](http://wiki.biouml.org/index.php/BioUML) - [paper](https://academic.oup.com/nar/article/47/W1/W225/5498754) - An architecture for biomedical data analysis, integration, and visualization. Conceptually based on the visual modeling language [UML](https://www.uml.org/what-is-uml.htm).
 * [OMOP Common Data Model](https://github.com/OHDSI/CommonDataModel) - a standard for observational healthcare data.
 * [unmiri-ngs-fhir-schema](https://github.com/unmirihealth/unmiri-ngs-fhir-schema) - Apache-2.0 JSON Schema (Draft 2020-12) API contract for cross-vendor somatic NGS interpretation output (Foundation Medicine, Tempus, Caris, Guardant), aligned with the HL7 FHIR Genomics IG. A standards-aligned target representation for biomedical information-extraction pipelines that parse oncology lab reports.
-
-[Back to Top](#contents)
-
-## Credits
-
-[Credits](https://github.com/caufieldjh/awesome-bioie/blob/2689dd4118e0cb9be19a164bbf5165188f010d70/CREDITS.md) for curators and sources.
-
-## License
-[![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0)
-
-[License](https://github.com/caufieldjh/awesome-bioie/blob/2689dd4118e0cb9be19a164bbf5165188f010d70/LICENSE)

@@ -6414,3 +6414,48 @@
 - Licenseの法律上可能な範囲/Akash Tandon/全著作権/関連または隣接権放棄全文をPROVENANCE_NOTESへ。初回は作者URLが出典に未追加だったため、ガイドの本文内URL代替禁止に従いPROVENANCE_ATTRIBUTIONSを追加し元英日本文へ一時復元。新registry/check・元本文build7a42cb exit0/HTML e13a4d/英日PC1440実スクリーンショットで全文と原文/CC0/作者プロフィール3リンク・実href確認。tab18終了/viewport復元/preview86242 e70c48 exit0後、同一ハッシュの編集本文へ復元7c43bb。旧2リンクの事前確認・旧最終config検査は新設定の最終証拠に流用しない。
 - 全raw103/旧EN100/旧JA120→EN81/JA99対応、9JAalias/旧14有用ID保全。本文/overlay/レビューrelocate証拠へ追加作者URL事前確認反映。2replay/通常8gate3ad26e actual exit0、全2074hash/全fragment incoming0、science fresh統合build 入力証拠参照、全7子開始時/現在/成果物入力一致、14head/63list/26TOC/9alias/画像表0/3出典URL/統合HTML一致。4実表示と操作は保存UI証拠69789c3b5782f98c37dda5e3bfddf3dc499adcfc264d4d340397e168dd036168参照。global 2e4fbd session34103 actual exit0/diff合格、234完了803残保留4、状態変更後の全入力同一を照合してglobal再利用。
 - EXCLUSIONS判断同一のtimestampのみ復元。外部リンク報告・本文・overlay・レビュー・出典設定・生成物・台帳を対応させ保存。元main他作業変更の上書き、編集を失うimport/publish、検査無効化、外部公開/PR/dispatch/定期設定/Workersなし。送信は非配信branch origin/codex/awesome-editorial-isolated-20261007。次177 github-caufieldjh-awesome-bioie-readme-md。先行全文読了証拠を現在ハッシュで照合し、固定CREDITS/LICENSE保存、元英日で出典追加事前表示確認→全3別パスレビュー/対応/overlay/検査/表示へ。177草稿はtmpのみ・未検証として分離。
+
+### バッチ176送信確認・177 BioIE開始 (2026-10-07T00:24:38.486Z)
+
+- Neuroscience commit179e4e463fe887dbc5f8c537219049439959b251。76対象f24bf5 set一致/check0、commit b8df58 exit0、df2d62未送信1件/範囲一致/clean、push5f587f exit0、remote28cc13完全一致。234完了803残保留4。workflow059c8e先頭再読/全hash同一、元main904d67既存297件全保持・現在353件（他作業の追加56件を触らず保全）。
+- BioIE固定raw全287行/旧英日全275行の先行全文読了を現在hash照合で再利用。raw d20da89a5714116d40bec2ef24b51785e8eac60cb4f21ab84ef26ffa034bc299/EN f9248f9b0391e7a0a12b37b8d623e9549fc7a04efe7796bc4391e36ffc67e2ec/JA c1fcc6210bca8097949167b6834fe61ec886e71557e649a50c00bb683a4b4e1f。固定CREDITS/LICENSE fetch7c282e・web raw cachemissを成功扱いにせず全取得/全読了hash保存。tmp草稿のURL誤変換と同URL重複item名称誤復元は修正中に検出・修復、a55ca8英日URL順序/コード一致だが全内容reviewは未完了、repo本文へ未反映。Credits/License本文保持のまま共通出典へ固定CREDITS/LICENSE2リンク追加。次registry生成/check→未編集BioIE英日でscience build/HTML/出典4リンクPC事前確認→tmp草稿の確定と3別パス全文レビュー→対応/overlay/通常検査/build/4UI/global→verified235/commit/push→次計画順対象。
+
+- 2026-10-07T00:25:12.992Z batch177-relative-provenance-evidence-repaired-registry-retry。234完了803残保留4。進捗ab5edd7061bb0d59bb6d9d9aa9a37cc61e907224a016cf78d3e1a91fa99bb607。次registry生成/check→未編集BioIE英日でscience build/HTML/出典4リンクPC事前確認→tmp草稿の確定と3別パス全文レビュー→対応/overlay/通常検査/build/4UI/global→verified235/commit/push→次計画順対象。
+
+- 2026-10-07T00:29:32.556Z batch177-preflight-complete-footer-removed-old-ja-aliases-restored-final-review-pending。234完了803残保留4。進捗d8a43df18244a4a4f06a1a7737efbd75daadfb480b3de3daa9733cc029effd10。次最終英日全文を3別パスレビュー→全unit対応/overlay→2replay/8gates/2074guard/anchor/science build/4UI/global→verified235/commit/push。
+
+- 2026-10-07T00:30:40.536Z batch177-three-separate-full-content-reviews-complete。234完了803残保留4。進捗5b65059f6607de708294137261f888f8cefe3d603eb7671662210751ad6eed5e。次全unit対応/overlayを本文へ反映→通常検証/build/4UI/global→verified235/commit/push。
+
+- 2026-10-07T00:31:59.625Z batch177-h1-empty-alias-spacing-repaired-reflect-retry。234完了803残保留4。進捗be0b5323f06b1ef4c6e0a27a2afae78985556d6bdcb1202befa21ac1775ed62e。次全unit対応/overlayを本文へ反映→通常検証/build/4UI/global→verified235/commit/push。
+
+- 2026-10-07T00:32:00.103Z batch177 BioIE全3別パスreview保存4ba28e: raw43b0ac/8515b7→EN最終e713db/5b9e7c、英日03e8fb/d6032e＋draft全文証拠、日本語単独65b8c0/e92243省略なし。事前build656e6a/HTMLd78f5fと英日PC4リンク、preview f41048 exit0後にCredits/Licenseを移設。raw204/旧EN199/旧JA199→EN164/JA240、30head/118list/40alias全対応4134d8。overlay再生完全一致を本文/証拠/台帳へ反映しtranslated-ja。次2replay/通常8gate/全2074hash/fragment→science build全7input hash/HTML30head/118list/40alias/英日PCmobile4UI/出典4リンク→global→verified235→commit/push→次計画順対象
+
+- 2026-10-07T00:35:19.079Z batch177-generation-gates-passed-build-pending。234完了803残保留4。進捗a2c765dc089dfff3cd13a33f710bb479e84b4cf832d1a578e11b6110194ac2bd。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML30見出し/118list/40alias/旧有用ID保持/英日PCmobile実UI→global→verified235/commit/push。
+
+- 2026-10-07T00:39:00.429Z batch177-build-html-complete-four-ui-pending。234完了803残保留4。進捗90e636b54a9de3d534b5785ef67e2a1ce5c4d5663c48c53ac9a91fdb0b8406ec。次英日PC1440/mobile390導入/長い資料名/UTS条件/118listのlist折返し/自動目次/出典CC0案内と4リンク/言語/版/隣接操作実UI→global→verified235→commit/push→次計画順対象。
+
+- 2026-10-07T00:39:09.287Z batch177-build-html-complete-four-ui-pending。234完了803残保留4。進捗dc4d20391eec09be541d8d685e985c7ffae7f567ff95f09f7dd19f701c8523d1。次英日PC1440/mobile390導入/長い資料名/UTS条件/118listのlist折返し/自動目次/出典CC0案内と4リンク/言語/版/隣接操作実UI→global→verified235→commit/push→次計画順対象。
+
+- 2026-10-07T00:42:43.640Z batch177-four-ui-content-reviewed-global-pending。234完了803残保留4。進捗e6b0f403e12fa43e422bb8467979df6cb16663d72154e3a61906a20f4fcf2606。次全1037台帳global/全2074hash/diff→verified235→commit/push/hash照合→178 Transgender fixedraw/旧EN/旧JA全文。
+
+- 2026-10-07T00:44:19.443Z batch177-one-trailing-space-fixed-all-final-input-evidence-renewal。234完了803残保留4。進捗552bc3d167a5e498d7ff0137ebece3362b0c12f0760b2272ee79ca39e4ccdf85。次対応/レビュー/overlay更新→2replay/8gates/2074hash/anchor→science build/HTML/4実UI/global/diff→verified235/commit/push。
+
+- 2026-10-07T00:44:19.867Z batch177-one-trailing-space-fixed-all-final-input-evidence-renewal。234完了803残保留4。進捗9f5d8ceb8fa6b51a93b81961e44e21a24f5d516f5002f11f381be777db98ad5b。次対応/レビュー/overlay更新→2replay/8gates/2074hash/anchor→science build/HTML/4実UI/global/diff→verified235/commit/push。
+
+- 2026-10-07T00:48:34.487Z batch177-generation-gates-passed-build-pending。234完了803残保留4。進捗73d24fef8355abb4eebbefdde4965a1382e268749bb6b6546717fd81077f19ca。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML30見出し/118list/40alias/旧有用ID保持/英日PCmobile実UI→global→verified235/commit/push。
+
+- 2026-10-07T00:49:57.617Z batch177-build-html-complete-four-ui-pending。234完了803残保留4。進捗199e441855cfa23b51463b6c273acf6c572676ee3faf1156d5a08c2bc1bbd6b9。次英日PC1440/mobile390導入/長い資料名/UTS条件/118listのlist折返し/自動目次/出典CC0案内と4リンク/言語/版/隣接操作実UI→global→verified235→commit/push→次計画順対象。
+
+- 2026-10-07T00:52:29.485Z batch177-four-ui-content-reviewed-global-pending。234完了803残保留4。進捗d1ea908f8425a0af5e9eb35e93da7edb88862fa3c6f54b0f7efc8ea112fe9474。次全1037台帳global/全2074hash/diff→verified235→commit/push/hash照合→178 Transgender fixedraw/旧EN/旧JA全文。
+
+- 2026-10-07T00:53:38.795Z batch177-verified235-save-push-pending。235完了802残保留4。進捗02862783f8beb3ec663f9593541b2334c219ca984947ff002647e2cb07d006a3。次235完了802残保留4。BioIE全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次178 github-cvyl-awesome-transgender-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ177 BioIE検証完了・保存 (2026-10-07T00:54:31.027Z)
+
+- 固定commit2689dd4118e0cb9be19a164bbf5165188f010d70/README.md、raw d20da89a5714116d40bec2ef24b51785e8eac60cb4f21ab84ef26ffa034bc299、旧EN f9248f9b0391e7a0a12b37b8d623e9549fc7a04efe7796bc4391e36ffc67e2ec/旧JA c1fcc6210bca8097949167b6834fe61ec886e71557e649a50c00bb683a4b4e1f。初回原文/既存英日全文の省略なし読了、別パスraw→EN/EN→JA/日本語単独の全文読了範囲・receipt・実モデルを進捗証拠へ保存。実モデルCodex current session/APIモデル識別子取得不能、委任・ローカルLLMなし。最終EN 88f0c5b94ba0b83c9b928015dac99fec4fc974272252bad94dca6ae94ff9108a/JA 2ef1d7b298c0fab358dbf172637f4eba3e453ad7876338d85b4cab5337035e64。
+- 画像alt由来のLogo誤titleをAwesome BioIEへ。固定原文の全定義、検証可能でsource一致なら知識、他分野手法適応、BERT/LLM変化、無償優先/限定ライセンス/公開保守方針、関連3資料を導入へ復元。30見出し/29分類/118list（主リンク115、歴史引用補足1、分類親2）の順序・全条件・主副URL保持。BioCreative1/2同URLの別名と学習10000/テスト5000、BioGPT1500万と微調整版、2ClinicalBERT、PubTator platform/dataset、Denmark/n2c2主題/ACM正式名、一般説明の日本語化とURL破損修復を全文対照。
+- 固定CREDITS全6行/CC0 LICENSE法文を取得読了しハッシュ保存。READMEの相対元./CREDITS.md/./LICENSEを既存仕様へ追加し最初の帰属証拠不合格b8d0d4を修復。元本文を保持してregistry生成/check→science事前build656e6a exit0→HTMLd78f5f→英日PC出典4リンク/作者/版/CC0全文と固定hrefを確認。tab20終了/preview f41048 exit0後にCredits/Licenseを共通出典へ移設。
+- raw204/旧EN199/旧JA199→EN164/JA240、全unit対応4134d8。EN1+JA39空aliasで旧英日30有用見出しを保全（JA旧自然ID追加9件）。H1と空alias間の空白を除いてtitle/H1不一致cac9f9を5fc1b4で修復。本文/overlay/判断・レビュー記録/生成物/台帳を対応。
+- 初回全工程はglobal自身OK後のgit diffcheckで英103行末の原文由来空白1文字不合格e62c88。d9278bで1文字のみ除去し行全文再読、現在hashで全対応/overlay更新。2replay/通常8gate fb1101 actual exit0→全2074本文hash一致/全参照incoming0→新science build153d85 actual exit0→全7入力/成果物一致・HTML32fc4b actual exit0。30head/29分類/118list/58自動目次/40alias/画像表0/出典4URLと全旧有用ID/統合HTML一致。初回HTML一時検査の言語scope作成ミス34c78dは各言語のaliasへ絞って修復し、通常検査や製品実装を無効化しない。
+- 最終4実表示をtab22で再確認し、導入末尾/数量と登録条件の折返し/目次到達/横溢れなし/出典4リンク全文、英日言語切替・次Transgenderと戻り・実旧版BioIE Logoと戻りを確認。viewport復元/preview56086 03b28b exit0。UI証拠 ff231ab81b5f408f32ee9103cf368c247cac5fd0256ec8425116e694a592c216。最終global/diff a6c6d6 actual exit0、verified235更新6dc2ca、状態変更後の全入力同一を照合して合格証拠を再利用。235完了802残保留4。
+- EXCLUSIONS判断同一のtimestampだけ復元。元mainは353既存差分が全保持、現在356・main d1308f。配信workflow d97b50/ハッシュ既存同一を送信前再確認し、非配信branchのみ使用。外部公開/PR/dispatch/定期設定/Workersなし。今回保存対象は検証済み本文2件・出典設定・生成物・overlay・全証拠・台帳。未送信・commit/pushは次操作として残す。次178 github-cvyl-awesome-transgender-readme-md。保存後、固定raw/既存英日全文から開始。
