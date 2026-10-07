@@ -1,0 +1,19 @@
+from pathlib import Path
+import json,hashlib,datetime,shutil,collections
+from bs4 import BeautifulSoup
+N=Path('docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10');Q=Path('/private/tmp/libx-diffutils-chapter10-review-943');E=Path('docs/notes/project-expansion/runs/evidence/2026-10-07-943');E.mkdir(exist_ok=True)
+shutil.copytree(N,Q,ignore=shutil.ignore_patterns('__pycache__','*.pyc'),dirs_exist_ok=True)
+h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();at=datetime.datetime.now(datetime.timezone.utc).isoformat();binding=json.loads((Q/'DRAFT_BINDING.json').read_text());pages=[]
+for row in binding['pages']:
+ slug=row['slug'];a=Q/'drafts/en'/(slug+'.body.html');b=Q/'drafts/ja'/(slug+'.body.html');assert h(a)==row['EnglishSHA256'] and h(b)==row['JapaneseSHA256'];sa=BeautifulSoup(a.read_text(),'html.parser');sb=BeautifulSoup(b.read_text(),'html.parser')
+ assert [x.get_text() for x in sa.select('pre')]==[x.get_text() for x in sb.select('pre')]
+ assert [(x.get('id'),x.get('href')) for x in sa.select('[id],[href]')]==[(x.get('id'),x.get('href')) for x in sb.select('[id],[href]')]
+ assert collections.Counter(str(x) for x in sa.select('code,samp,var'))==collections.Counter(str(x) for x in sb.select('code,samp,var'))
+ pages.append(dict(row,review='passed-body-only',method='ai-content-review',model='gpt-6.1-sol (POLICY configured;runtime not independently exposed)',reviewedAt=at,separateReviewPass=True,allUnitsReviewed=row['units'],literalPreReviewed=row['preExact'],findings=['Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.','Original prose typos and historical patch behavior retained as fixed documentation; no upstream technical audit.'],literalCodeSampMathAndURLs='exact tokens; entire reviewed saved body bound to separate path reparse'))
+manifest={'schemaVersion':1,'status':'passed-body-only','scope':[x['slug']for x in pages],'completedPages':len(pages),'allUnitsReviewed':sum(x['units']for x in pages),'literalPreReviewed':sum(x['preExact']for x in pages),'separateWorkspace':str(Q),'pages':pages,'limits':'Body review only; canonical anchors/GFDL/context/source offer/build/render/integration/publication pending.'}
+(N/'DRAFT_REVIEW_MANIFEST.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+p={'schemaVersion':1,'state':'source-locked','lastValidStage':'source-locked','publication':'not-requested','excludedFromDeployment':True,'existing62Published':'unchanged','draftPages':21,'translatedPages':21,'reviewedDraftPages':21,'reviewedMeaningUnits':120,'sourceScope':'Complete chapter10 (4571 prose words/21 sections/2 literal pre blocks)','nextAction':'943:GNU Diffutils3.12第10章21英日/120単位の保存草稿・別工程全文レビュー済み。既存62ガイド/125MDを保持し、正式42原稿・参照/脚注・GFDL/フッター・ソースキット・独立再生成・対象/統合buildと代表表示へ。GNU grep Preview37537417228の完了後artifact検査→CAS052本番公開を優先。草稿は配信除外保存ブランチのみ。','workspace':str(N.resolve())}
+(N/'PROGRESS.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n')
+(E/'WORKSPACE.json').write_text(json.dumps({'workspace':str(N.resolve()),'separateReviewPath':str(Q),'priorActualPublicCommit':'0521e6399ab13182ce782d8d40902e4f9f554934','publicAppChanged':False,'fixedOriginalReused':True,'workersUsed':False,'draftDeploymentExcluded':True},indent=2)+'\n')
+(E/'REVIEW_BINDING_ADAPTATION.json').write_text(json.dumps({'initialAttempt':'failed ordered code/samp/var equality assertion','reason':'Japanese sentence order changes token ordering while all exact token elements remain. Example source option phrase moved before subject.','correctedGate':'Exact full-element multiset plus renderer per-unit token bijection; pre and ID/href order unchanged','bodyChanges':0,'status':'passed'},indent=2)+'\n')
+print({'pages':len(pages),'units':manifest['allUnitsReviewed'],'pre':manifest['literalPreReviewed']})
