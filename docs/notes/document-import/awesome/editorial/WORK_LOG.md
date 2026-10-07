@@ -6489,3 +6489,33 @@
 - 2replay/通常8gate 53d507 actual exit0。全2074本文current/baseline一致、全参照incoming0。EXCLUSIONS日時のみ変更、初回一時比較5cd3c4が字段誤指定でassert不合格、00c6e8でdecidedAtだけ除外比較し判断/根拠/入力hash全一致、元ファイル復元。検査無効化なし。fresh science build 詳細進捗証拠参照、全7アプリ開始/現在/成果物input一致、18head/17分類/67list/34自動目次/16alias/旧18有用ID/画像表0/固定README・CC0出典2URL/統合HTML一致。
 - 実UI英日PC1440/mobile390の4表示で導入・資料名/長い条件の折返し・目次到達・横溢れなし・出典CC0全文/2リンク、言語/旧版/隣接遷移を確認。UI証拠 161445a5616ca77fe920b493e44e69f5e36f22fee6e9e34759920df8ddb6856d、tab終了/viewport復元/preview exit0。全1037組global/全2074hash/diff 82d4d0 session38955 actual exit0合格後verified236、状態変更後の監査入力同一を照合して合格証拠再利用。236完了801残保留4。
 - 保存対象は検証済み本文2件/生成物/overlay/判断レビュー全証拠/台帳。配信workflow同一hash/非配信branchのみ、外部公開/PR/dispatch/定期設定/Workersなし。commit/push/remote照合は次操作、次179 github-dh-tech-awesome-digital-humanities-readme-md。
+
+### バッチ178送信確認・179開始 (2026-10-07T01:15:04.265Z)
+
+- Transgender commit82c8d0c123dc526dd50231d87e6f1dc860b5ac57、scope61/diff/未送信0 d707f7、stage92379c完全一致、commit7d86b3 exit0、e0b9ee61範囲/未送信1/clean、push1e9581 actual exit0、remote babfa7完全一致。非配信origin作業branch。236完了801残保留4。
+- 179 Digital Humanities固定raw/既存英日e6ecdfで現hash照合、ed93eb/ff73c5、6ce31e/0404bb、f776c2/7052dcで全読了省略なし。日本語説明ほぼ英語未訳、原文冒頭の定量・計算的手法を使う人文学研究者向け定義が定型へ欠落。権利節なし出典不変、178検証済みscience build/未編集179HTML照合で旧有用19IDを保存。全122資料・18分類/数量/対象/年/補足リンクを保持して翻訳。次定量/計算的手法の人文学研究者向け導入復元→英語説明誤植修正/手動目次整理→JA全122資料説明翻訳/19有用ID保全→3別パス全文review/全unit/overlay/2replay8gates/2074hash/anchor/science build/4UI/global/diff→verified237/commit/push→次計画順対象。
+
+- 2026-10-07T01:17:53.704Z batch179-three-full-review-passes-complete。236完了801残保留4。進捗75ee029fb74fcc8103814c842ca9ec417b737536d650e22bd68e63909eb54ff0。次定量/計算的手法の人文学研究者向け導入復元→英語説明誤植修正/手動目次整理→JA全122資料説明翻訳/19有用ID保全→3別パス全文review/全unit/overlay/2replay8gates/2074hash/anchor/science build/4UI/global/diff→verified237/commit/push→次計画順対象。
+
+- 2026-10-07T01:18:21.769Z batch179 Digital Humanities3別パス全文review634a4c。raw5b7557→ENccf673/edb460、英日88cae0/e94815、日本語単独6b3a0f省略なし。定量・計算的手法の導入復元、122説明全訳/条件数量年代刊行元全補足URL保持。Baselラベル内区切り誤認を修復し再読。raw164/旧英日161→EN142/JA176、19head/122list/JA17alias全対応。出典不変・権利節なし。overlay一致・内容検査後translated-ja、次2replay/8gate/2074hash/anchor→science build/全7input/HTML19head122list17alias/4UI/global/diff→verified237→commit/push→次計画順
+
+- 2026-10-07T01:21:58.471Z batch179-generation-gates-passed-build-pending。236完了801残保留4。進捗4492abd93ddada8154c4ea8378faa828a7cb809fa23da9c4853e315d6272a1b2。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML19見出し/122list/17alias/旧有用ID保持/英日PCmobile実UI→global→verified237/commit/push。
+
+- 2026-10-07T01:25:15.178Z batch179-build-html-complete-four-ui-pending。236完了801残保留4。進捗33649d1bdd590b1ba574a3a5efe587867e44f65b2e466f769ab66e7dd94fefb3。次英日PC1440/mobile390導入/長い資料名/コーパス機能と研究インフラの範囲・刊行年条件/122listのlist折返し/自動目次/出典CC0案内と2リンク/言語/版/隣接操作実UI→global→verified237→commit/push→次計画順対象。
+
+- 2026-10-07T01:28:13.314Z batch179-four-actual-ui-complete-global-pending。236完了801残保留4。進捗696e9beba6f76c93d908b1cef552b071b4ebeb42bd05a30fde4b732f9dbb8d17。次英日PC1440/mobile390導入/長い資料名/コーパス機能と研究インフラの範囲・刊行年条件/122listのlist折返し/自動目次/出典CC0案内と2リンク/言語/版/隣接操作実UI→global→verified237→commit/push→次計画順対象。
+
+- 2026-10-07T01:28:14.727Z batch179-four-ui-content-reviewed-global-pending。236完了801残保留4。進捗cbe84a265cbe9c6dab56d1078ef5708ffbbb72b2be3b2f05a2c805e2fb6a0929。次全1037台帳global/全2074hash/diff→verified237→commit/push/hash照合→180 Mental Health fixedraw/旧EN/旧JA全文。
+
+- 2026-10-07T01:29:00.331Z batch179-verified237-save-push-pending。237完了800残保留4。進捗091f237c7ceb4113249e2b7ea1437a78c10e9cb56725c73c6fdbeac08ecf25d4。次237完了800残保留4。Digital Humanities全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次180 github-dreamingechoes-awesome-mental-health-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ179 Digital Humanities検証完了・保存 (2026-10-07T01:29:04.860Z)
+
+- 固定commit4f5ed493f19503ea8f2bd31d746a25928f51d806/README.md、raw 38f3a8dd95ad9efa87af20a2aae074778dff7eff6d268ad6bd4f342b0f311f82、旧EN 7c44b020e7d4347cea6cbcf83a84a1f8dd30ddead18569f1b6947006e749698e/旧JA ed297719931332aff025bd8fb353cc00cca5d0ab6fc42ce07cc9804fdbf593c1。初回ed93eb/ff73c5、6ce31e/0404bb、f776c2/7052dc全読了。編集後別パスraw5b7557→ENccf673/edb460、英日88cae0/e94815、日本語単独6b3a0f全読了、省略なし。全coverage・全unit・hash・理由を保存。実モデルCodex current session/APIモデル識別子取得不能、委任/ローカルLLMなし。最終EN 01e753636a58de81641f3194680675b89aa50ab5643e76a5b2d6c0fda8263b87/JA 282a2c6ae5a4f95f27d16f8ae31333ae31ec5025938712420075aeef513e02f2。
+- 定量・計算的手法を使う人文学研究者向けという原文定義を復元。英語の文法誤植を意味不変で修正し、122資料説明の英語未訳を全翻訳。45超可視化/全定型自動化/SDK全機能/300万記事例/30以上国際情報源/17ノートブック/250超加盟と全地域・会員種別/2018設立/2024創刊/2016–2025McGill→2026Princeton/オープンアクセス査読/GLAM豪NZ主対象/ドイツ語注記/SSOとNextcloud/CSV3段階/全教材範囲・主副URLを保持。一般資料ラベルを訳し固有名・団体正式名・人名・技術略号は同定用に保持。
+- 原文のAwesomeバッジ/ロゴと投稿案内/手動目次のみ整理。権利節なし、出典不変。178検証済みscience build c6d735から未編集179HTML/本文hash/出典設定/共有実装を照合再利用、旧19有用ID保存。raw164/旧英日161→EN142/JA176、19head/18分類/122list/JA17alias全対応、overlay再生と内容検査846ae1合格後translated-ja。草稿のBasel名中 - を誤分割し主リンク欠落a92aa5、生成器を ) - 区切りに修正e94815、88cae0/6b3a0f全文再読、全リンク列一致。
+- 2replay/通常8gate、全2074本文保全/全参照incoming監査、EXCLUSIONS日時のみ差分を判断同一確認後復元。fresh science build undefined、全7開始/現在/成果物input一致、19head/18分類/122list/36目次/17alias/旧全有用ID/画像表0/出典固定README・CC0の2URL/統合HTML一致。通常検査無効化なし。
+- 英日PC1440/mobile390の4実表示、導入全文/コーパス45超・SDK/PCで研究インフラ250超と対象/刊行年・発行元/長い資料名と説明/自動目次/横溢れなし/出典全文2リンク、言語/旧版/隣接遷移を確認。UI a79312997cfdc4577c5add88029424ca5f901719a42d4a7d83d71d38dc18d2b4、一時tab終了/viewport復元/preview exit0。global/diff a8e991 session6153 actual exit0合格後verified237、状態変更後監査入力同一の合格証拠再利用。237完了800残保留4。
+- 検証済み本文2件/生成物/overlay/判断レビュー証拠/台帳だけ保存。配信workflow同一hash・非配信origin作業branchのみ、外部公開/PR/dispatch/定期設定/Workersなし。commit/push/remote確認は次操作、次180 github-dreamingechoes-awesome-mental-health-readme-md。
+
+- バッチ179保存前scope確認: session46912はverified・台帳保存後、補助スクリプトの旧HEAD期待値ba9a114…でexit1。現行HEAD82c8d0c123dc526dd50231d87e6f1dc860b5ac57へ補正し、ff4cdd actual exit0で59ファイル・本文2件・全証拠blobハッシュ・未送信0・公開非起動ブランチを確認。製品側検査は変更なし。
