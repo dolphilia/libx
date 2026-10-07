@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "at": "2026-10-07T00:36:43.655024+00:00",
+  "workspace": "/private/tmp/libx-gnu-sed-source-rebuild-950-final/workspace",
+  "frozenIndependentInstall": "INDEPENDENT_INSTALL.log",
+  "steps": [
+    {
+      "name": "UPDATE_CANONICAL",
+      "command": [
+        "/private/tmp/libx-release-content-python-837/bin/python",
+        "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/apply-update.py"
+      ],
+      "exitCode": 0,
+      "log": "docs/notes/project-expansion/runs/evidence/2026-10-07-950/FINAL_RECONSTRUCTION_UPDATE_CANONICAL.log"
+    },
+    {
+      "name": "UPDATE_CONTEXT",
+      "command": [
+        "/private/tmp/libx-release-content-python-837/bin/python",
+        "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/prepare-context.py"
+      ],
+      "exitCode": 0,
+      "log": "docs/notes/project-expansion/runs/evidence/2026-10-07-950/FINAL_RECONSTRUCTION_UPDATE_CONTEXT.log"
+    },
+    {
+      "name": "BUILD",
+      "command": [
+        "pnpm",
+        "--filter=apps-gnu-sed",
+        "build"
+      ],
+      "exitCode": 0,
+      "log": "docs/notes/project-expansion/runs/evidence/2026-10-07-950/FINAL_RECONSTRUCTION_BUILD.log"
+    }
+  ]
+}
