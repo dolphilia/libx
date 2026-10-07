@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "at": "2026-10-07T00:39:43.586202+00:00",
+  "steps": [
+    {
+      "name": "FORMAT",
+      "command": [
+        "pnpm",
+        "exec",
+        "prettier",
+        "--check",
+        "apps/gnu-sed"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "LINT",
+      "command": [
+        "pnpm",
+        "exec",
+        "eslint",
+        "apps/gnu-sed"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "INTEGRITY",
+      "command": [
+        "pnpm",
+        "check:integrity"
+      ],
+      "exitCode": 0
+    }
+  ]
+}
