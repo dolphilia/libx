@@ -6519,3 +6519,39 @@
 - 検証済み本文2件/生成物/overlay/判断レビュー証拠/台帳だけ保存。配信workflow同一hash・非配信origin作業branchのみ、外部公開/PR/dispatch/定期設定/Workersなし。commit/push/remote確認は次操作、次180 github-dreamingechoes-awesome-mental-health-readme-md。
 
 - バッチ179保存前scope確認: session46912はverified・台帳保存後、補助スクリプトの旧HEAD期待値ba9a114…でexit1。現行HEAD82c8d0c123dc526dd50231d87e6f1dc860b5ac57へ補正し、ff4cdd actual exit0で59ファイル・本文2件・全証拠blobハッシュ・未送信0・公開非起動ブランチを確認。製品側検査は変更なし。
+
+### バッチ179送信確認・180開始 (2026-10-07T01:32:51.613Z)
+
+- Digital Humanities commit0ec8a28c321ab8dfd8fbb29e7cfc473ddf3a31ee。scope343cba59件、stage588200完全一致/diff0/未送信0、commit2dfe00 actual exit0、2898eb59件/clean/未送信1、push990fa6 actual exit0、remote57ae21完全一致/clean/未送信0。配信対象外origin作業branch。237完了800残保留4。
+- 180 Mental Health固定raw70adcb…245行189単位、旧EN421fd3…221行173単位、旧JAf811b1…221行173単位を4a2201現hash照合後、add788/3c13cf、4b6433/f656ae、5b3154/8a117fで全文読了、省略なし。冒頭内容・注意・危機時案内欠落を復元し、一般語未訳と意味/自然さを改善。帰属2リンクは出典へ保存し削除前実表示を行う。実モデルCodex current session; APIモデル識別子取得不能。次帰属2リンクを正規設定へ追加→未編集本文のENJA出典実表示→導入/注意/危機リンク復元と英日編集→3別パス全文review/全unit/overlay/2replay8gates/2074hash/anchor/science build/4UI/global/diff→verified238/commit/push→次計画順対象。
+
+- 2026-10-07T01:34:59.012Z batch180-provenance-preflight-complete-draft-review-pending。237完了800残保留4。進捗7d5a09177a9e68235a0c26016f8b0fb235bf11eed3eb5819ac4088b8241d11e3。次一時ENJA草稿の別パス全文review→対応表/overlay→検証。正本本文未編集/verifiedではない。
+
+- 2026-10-07T01:36:45.714Z batch180-three-full-content-review-passes-complete。237完了800残保留4。進捗d71b8b3d8f41853b1a5fcdb554b5eab3af7a3995fbca5cb1339c47c03b070e1a。次gray-matter.content上でraw189/旧英日173→EN171/JA191全unit判断・対応表→overlay/replay内容検査/正本反映。
+
+- 2026-10-07T01:37:50.018Z batch180 Mental Health3別パス全文review485f42。raw9d636f245EOF→ENd97209/f83d09全218EOF、英日最終JA0cc9a9全218EOF、日本語単独a8b0e5全218EOF、省略なし。原文About/専門ケア注意/危機案内2URL復元、一般語と文法改善。草稿Amazon2URL置換とBAATN語尾を修復後全文再読。raw189/旧英日173→EN171/JA191、10head/139list(132資料+5テーマ+2案内)/10alias全対応。帰属2リンクは削除前未編集英日実表示済み。overlay一致・3入力別内容検査後translated-ja、次2replay/8gate/2074hash/anchor→science build/全7input/HTML10head139list10alias/4UI/global/diff→verified238→commit/push→次計画順
+
+- 2026-10-07T01:40:43.560Z batch180-full-reviews-overlay-complete-gates-pending。237完了800残保留4。進捗8d118cf34a0865948ce8a6bc69de3e2fcbfef6e6d85fba06287a8f45e4e6a582。次2replay/8gate/2074hash/anchor→science build/全7input/HTML10head139list10alias/4UI/global/diff→verified238→commit/push→次計画順
+
+- 2026-10-07T01:41:29.414Z batch180-generation-gates-passed-build-pending。237完了800残保留4。進捗c8cbb4a17429f85a0c16c20486dd0852f9c190b4332be84051563f560bd5c39f。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML10見出し/139list/10alias/旧有用ID保持/英日PCmobile実UI→global→verified238/commit/push。
+
+- 2026-10-07T01:42:28.773Z batch180-generation-gates-passed-build-pending。237完了800残保留4。進捗cad08e794c36909a12b77fe196e96c3081ab1cd4e6339ce688e540e65ae4b8b7。次全2074hash/全参照と通常生成8gate/2replay合格。対象science fresh統合build→全7入力hash/HTML10見出し/139list/10alias/旧有用ID保持/英日PCmobile実UI→global→verified238/commit/push。
+
+- 2026-10-07T01:46:24.715Z batch180-build-html-complete-four-ui-pending。237完了800残保留4。進捗41f5d3db37ab338c248b9fd68066eb46f66b8a1df9ffe63ada1dc40f3200b458。次英日PC1440/mobile390導入と専門ケア注意/危機案内2リンク/長い資料名/数量・対象/139list折返し/自動目次/出典CC0案内と4リンク/言語/版/隣接操作実UI→global→verified238→commit/push→次計画順対象。
+
+- 2026-10-07T01:52:16.024Z batch180-four-actual-ui-complete-global-pending。237完了800残保留4。進捗a12e1ca0f318fa2491052684f1a20753124294073e15bea32da8ed9624ba6874。次英日PC1440/mobile390導入と専門ケア注意/危機案内2リンク/長い資料名/数量・対象/139list折返し/自動目次/出典CC0案内と4リンク/言語/版/隣接操作実UI→global→verified238→commit/push→次計画順対象。
+
+- 2026-10-07T01:52:17.578Z batch180-four-ui-content-reviewed-global-pending。237完了800残保留4。進捗b8f070ee445f1fb73254d5ceb201a7b49f20f7be8311f80cfd38c285440201c4。次全1037台帳global/全2074hash/diff→verified238→commit/push/hash照合→181 Computational Neuroscience fixedraw/旧EN/旧JA全文。
+
+- 2026-10-07T01:53:21.926Z batch180-four-ui-content-reviewed-global-pending。237完了800残保留4。進捗6f962dcc2720359bad1be7b4367be5db8cc4e1acea207961c9ede3278dfc598e。次全1037台帳global/全2074hash/diff→verified238→commit/push/hash照合→181 Computational Neuroscience fixedraw/旧EN/旧JA全文。
+
+- 2026-10-07T01:53:22.250Z batch180-verified238-save-push-pending。238完了799残保留4。進捗3ae65e9d34725f6fb49e5aa02ea8d01c93926b0a0adb939ec8551f3ba31a381e。次238完了799残保留4。Mental Health全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次181 github-eselkin-awesome-computational-neuroscience-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ180 Mental Health検証完了・保存 (2026-10-07T01:53:30.282Z)
+
+- 固定commitea3f653ade8ab55f1a597e2a08387db57ae43c21/README.md、raw 70adcb953ecf7ad3a4e3c04764727fd98ec24ab7e053e618650df27eb2b13f4a、旧EN 421fd3df28329406ed9bad3329cf15876dca3cd408096baa90315ae63b777acb/旧JA f811b165ac672980c5103f4b5d12367267ed343822c86a1c4f84a6b48c87e9f8。初回add788/3c13cf、4b6433/f656ae、5b3154/8a117f全読了。別パスraw9d636f全245EOF→ENd97209/f83d09全218EOF、最終英日JA0cc9a9全218EOF、日本語単独a8b0e5全218EOF省略なし。全coverage・全unit・hash・判断保存。実モデルCodex current session/APIモデル識別子取得不能、委任/ローカルLLMなし。最終EN 574d473e3b7cfb0256bb2d1ca229fa4994d827a9faf244ce6d58fdd456e4a976/JA 8f7d3243184d4459d116b3256ec397275537992d3618da048ed7481657c63efd。
+- 旧定型導入に失われた原文About定義/個人と集団の責任/全対象/5テーマ/専門ケア非代替・心理療法薬物療法臨床支援/危機時即時案内2URLを復元。一般未訳と日本語文法/比喩直訳を改善。8分類132資料、24h週7日/90分/3出来事/100教訓/30人超/13–25歳/728話/月次/全著者・会議名・開催年/CBT/心理士/米国VA/MIT/全民族属性/職場法的配慮/主副URL/無料自由ライセンス条件を保持。英語誤植・冠詞・句読点のみ意味不変修正。評価は固定版の記述と明示。
+- 原文ロゴ/バッジ/手動目次/投稿運営案内のみ整理。貢献者と創始者リンクをPROVENANCE_ATTRIBUTIONSと正規生成registryへ保持。帰属移設前に未編集本文hash一致/英日末尾と出典全文4URLの実表示を確認、preflight a4ff9317eedcaefeb137855bad06d8b823ad799d2bccbff7bdd45a91a5ea5939。初回snapshot未指定cfd81e exit1→明示snapshot/project7ad35d/f6bddf actual exit0。草稿Amazon2URL内Startup誤置換/BAATN文法7e7474→54c6d9 URL保護/修復、最終0cc9a9/a8b0e5全文再読。構造参考出力のundefined/offset問題は9de6e1確認後、対応表ではgray-matter.content使用。製品検査変更なし。
+- raw189/旧英日173→EN171/JA191、10head/139list(132資料+5テーマ+2案内)/10alias全対応。旧英日9有用IDとAbout/英語8分類ID保持。overlay一致と3入力別内容検査2836e4後translated-ja。2replay/通常8gate/2074本文保全/全参照incoming監査、EXCLUSIONS日時だけ差分を判断同一確認後復元。fresh science build cd4d39 session48539 actual exit0、全7開始/現在/成果物input一致、10head/139list/18目次/10alias/旧有用ID/画像表0/出典4URL/統合HTML一致。
+- 英日PC/mobile4実表示の範囲・読んだ条件・目次/言語/旧版/隣接操作・出典全文4linksはUI 5f33dbee2219921f6d4b01a2902929fb64eed774ce860b94d4313affeb5aa776に保存。一時tab終了/viewport復元/preview exit0。global/diff 02fae1 session16344 actual exit0 global/2074guard/diff合格後verified238、状態変更後監査入力同一の合格証拠再利用。238完了799残保留4。
+- 検証済み本文2件/生成物/overlay/判断レビュー/出典設定と帰属台帳/証拠/台帳を保存。workflow入力同一・非配信origin作業branchのみ、外部公開/PR/dispatch/定期設定/Workersなし。commit/push/remote確認は次操作、次181 github-eselkin-awesome-computational-neuroscience-readme-md。

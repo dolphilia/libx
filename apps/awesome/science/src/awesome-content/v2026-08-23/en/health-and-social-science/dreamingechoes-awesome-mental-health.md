@@ -1,25 +1,34 @@
 ---
 title: "Awesome Mental Health"
-description: "A curated collection of resources and projects focused on Mental Health."
+description: "Articles, apps, books, communities, podcasts, and talks about mental health in the software industry."
 licenseSource: "github-dreamingechoes-awesome-mental-health-readme-md"
 ---
 
 # Awesome Mental Health
 
-A curated collection of resources and projects focused on Mental Health.
+## About
 
-## Contents
+A curated collection of outstanding articles, tools, and resources focused on mental health in the software industry.
 
-- [Applications](#applications)
-- [Articles](#articles)
-- [Books](#books)
-- [Conferences](#conferences)
-- [Meetups](#meetups)
-- [Organizations](#organizations)
-- [Podcasts](#podcasts)
-- [Talks](#talks)
+**Mental health** is a foundational aspect of our overall well-being. It encompasses emotional, psychological, and social stability, and affects how we think, feel, act, relate to others, and make choices. In the context of the tech industry—where long hours, high pressure, and remote or isolated work environments are common—supporting mental health is a personal priority and a collective responsibility.
 
----
+This list gathers resources designed to raise awareness, promote self-care, reduce stigma, and help individuals and organizations navigate mental health challenges. From managing stress and anxiety to cultivating resilience and compassion at work, these tools aim to support developers, designers, managers, and anyone working in tech.
+
+It covers topics including, but not limited to:
+
+* Burnout and recovery
+* Depression and anxiety in remote work
+* Mindfulness and stress reduction
+* Imposter syndrome and self-doubt
+* Building psychologically safe engineering cultures
+
+> **Disclaimer:** This list is a collection of self-help and educational resources. While we’ve found many of them helpful, they are not a substitute for professional mental health care. Therapy, medication, and clinical support are often essential for recovery and well-being.
+>
+> If you or someone you know is in crisis, please seek help immediately from local emergency services or a mental health professional. You can find international crisis support here:
+> * [To Write Love on Her Arms – Find Help](https://twloha.com/find-help/international-resources/)
+> * [International Association for Suicide Prevention – Crisis Centres](https://www.iasp.info/resources/Crisis_Centres/)
+
+The descriptions and evaluations below are from the fixed source edition; they are not current clinical recommendations.
 
 ## Applications
 
@@ -59,7 +68,7 @@ Articles, personal essays, and research papers that explore mental health challe
 * [Developer Depression: Isolation Is The Biggest Problem](https://thenextweb.com/insider/2012/10/20/are-developers-depressed/#gref) - By Lauren Maffeo.
 * [Developers: How to Overcome Imposter Syndrome](https://medium.com/learn-love-code/developers-how-to-overcome-imposter-syndrome-48edee803cf4) - By Abhishek Pillai.
 * [Do Not Disturb](https://joebell.co.uk/blog/do-not-disturb/) - By Joe Bell.
-* [Encouraging Wellness in a Remote Workpalce](https://dev.to/desi/encouraging-wellness-in-a-remote-workplace-17m5) - By Desi Rottman.
+* [Encouraging Wellness in a Remote Workplace](https://dev.to/desi/encouraging-wellness-in-a-remote-workplace-17m5) - By Desi Rottman.
 * [For The Developers With Anxiety, And Everyone Else](https://medium.com/envato/for-the-developers-with-anxiety-and-everyone-else-834cc2517eba) - By Daine Mawer.
 * [How I Beat Impostor Syndrome And Stopped Feeling Like A Fake](http://codingmindfully.com/how-i-beat-impostor-syndrome/) - By Daragh Byrne.
 * [How I Conquered Anxiety And Learned To LOVE Coding](https://skillcrush.com/2015/06/18/eliminate-your-coding-anxiety/) - By Joyce Akiko.
@@ -140,7 +149,7 @@ Community-led meetup groups around the world that create safe, supportive spaces
 
 Organizations bringing mental health awareness to the software industry.
 
-* [Black Minds Matter](http://blackmindsmatter.co.uk/) - A non-profit organisation that aims to empower communities of Black people aged 13- 25, and wants to make more equal and just society for all.
+* [Black Minds Matter](http://blackmindsmatter.co.uk/) - A non-profit organisation that aims to empower communities of Black people aged 13–25, and wants to make a more equal and just society for all.
 * [Black Therapists Rock](https://www.blacktherapistsrock.com/) - Black Therapists Rock (BTR) is an organization committed to increasing awareness of social and psychological challenges impacting vulnerable communities.
 * [The Black, African, and Asian Therapy Network](https://www.baatn.org.uk/) - The UK’s largest independent organisation to specialise in working psychologically, informed by an understanding of intersectionality, with people who identify as Black, African, South Asian and Caribbean.
 * [Brown Sisters Speak](https://twitter.com/BrownSistersSpk) - Mental Health Peer Support & Advocacy for Women Of Color.
@@ -151,7 +160,7 @@ Organizations bringing mental health awareness to the software industry.
 * [Mental Health Hackers](https://mentalhealthhackers.org/) - An Organization that aims at providing support services to those who may be susceptible to related mental health issues such as anxiety, depression, social isolation, eating disorders, etc.
 * [Mental Health Knowledge Base](https://mentalhealth-kb.net/) - GitHub-based project and website that encourages a diversity of views regarding mental health.
 * [MHPrompt](http://mhprompt.org) - Let's start a conversation about mental health in tech.
-* [OSMI](https://osmihelp.org) - Open Sourcing Mental Illness is a non-profit, corporation dedicated to raising awareness, educating, and providing resources to support mental wellness in the tech and open source communities.
+* [OSMI](https://osmihelp.org) - Open Sourcing Mental Illness is a non-profit corporation dedicated to raising awareness, educating, and providing resources to support mental wellness in the tech and open source communities.
 * [SelfCare.Tech](http://selfcare.tech/) - A repository of self-care resources for developers & others.
 
 ---
@@ -206,15 +215,3 @@ Talks and presentations about mental health awareness and other testimonies and 
 * [UX Of Wearables In Clinical Treatment For PTSD - AnxietyTech 2018](https://www.youtube.com/watch?v=Ru58976R0Gw) - By Ada Ng.
 * [VR Mental Health Startup: Idea To Reality - AnxietyTech 2018](https://www.youtube.com/watch?v=6fmT_MBcoTY) - By Jonathan Sockell.
 * [Why We Need Innovation In Mental Health Tech - AnxietyTech 2018](https://www.youtube.com/watch?v=whYGza42F5U) - By Solome Tibebu.
-
-## Contributing
-
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/dreamingechoes/awesome-mental-health/blob/master/CODE_OF_CONDUCT.md)
-
-Please see [CONTRIBUTING](https://github.com/dreamingechoes/awesome-mental-health/blob/master/.github/CONTRIBUTING.md) for more details on how to suggest awesome resources or other modifications to the list. You can also find an alphabetically-ordered list of contributors of this repository [here](https://github.com/dreamingechoes/awesome-mental-health/blob/master/CONTRIBUTORS.md).
-
-All contributors are expected to adhere to the [Code of Conduct](https://github.com/dreamingechoes/awesome-mental-health/blob/master/CODE_OF_CONDUCT.md) of the project. (Contributor Covenant)
-
----
-
-This project was started by [dreamingechoes](https://github.com/dreamingechoes).
