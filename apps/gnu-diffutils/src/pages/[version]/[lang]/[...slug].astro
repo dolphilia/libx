@@ -17,7 +17,6 @@ import {
   buildTableOfContents,
   checkFileExists,
   countTableOfContentsItems,
-  generateFileBasedPagination,
 } from '@docs/content-utils';
 
 // 設定を初期化
@@ -108,17 +107,25 @@ if (groupCatalog) {
     // entry.slug から情報を抽出 (例: "v1/en/01-guide/01-getting-started")
     const slugParts = entry.slug.split('/');
     const currentSection = slugParts[2]; // "01-guide"
-    const currentFile = slugParts[3]; // "01-getting-started"
-    const currentSlug = currentFile.replace(/^\d+-/, ''); // "getting-started"
-
-    // ファイル構造ベースのページネーションを生成
-    autoPagination = await generateFileBasedPagination(
-      lang,
-      version,
-      currentSection,
-      currentSlug,
-      projectConfig.paths.baseUrl
-    );
+    // Keep two- and three-digit document prefixes in the same numeric sequence.
+    const sectionDocs = (await getCollection('docs'))
+      .filter((doc) => doc.slug.startsWith(`${version}/${lang}/${currentSection}/`))
+      .sort((a, b) => {
+        const number = (slug: string) => Number(slug.split('/').at(-1)?.match(/^\d+/)?.[0] ?? 999);
+        return number(a.slug) - number(b.slug) || a.slug.localeCompare(b.slug);
+      });
+    const index = sectionDocs.findIndex((doc) => doc.slug === entry.slug);
+    const pageLink = (doc: CollectionEntry<'docs'> | undefined) =>
+      doc
+        ? { title: doc.data.title, url: `${projectConfig.paths.baseUrl}/${doc.slug}` }
+        : undefined;
+    autoPagination =
+      index < 0
+        ? {}
+        : {
+            prev: pageLink(sectionDocs[index - 1]),
+            next: pageLink(sectionDocs[index + 1]),
+          };
   } catch (error) {
     console.error('[File-Based Pagination] Error generating pagination:', error);
   }
