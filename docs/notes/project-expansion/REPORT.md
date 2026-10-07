@@ -134,3 +134,5 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 ## 2026-10-07 中断・引継ぎ
 
 目標状態`paused`を確認して作業と本番公開を停止。第5章の限定公開ブランチpushとローカル正式検証は完了し、Preview37559889476の最終確認待ち。本番は未dispatch。公開基準は第4章a472de9bb。第6章はレビュー済み草稿・未実行生成器・隔離workspace準備まで。再開操作は951/PAUSED_HANDOFF.jsonへ記録し、今回の変更を配信対象外保存ブランチへcommit/pushする。
+
+保存結果: `cb4e2a8d6efd638d0c28f80ab145573f145282a2`（13ファイル）を `origin/codex/save-document-expansion-20261007` へpush成功。公開候補 `6bba352afd5582a6d69816ebd2fbe106c0eef0e9` の専用originブランチpushも成功。未保存の原稿・途中成果なし。本番公開は未実施。この保存結果とREPORTを最終の記録コミットへ含める。
