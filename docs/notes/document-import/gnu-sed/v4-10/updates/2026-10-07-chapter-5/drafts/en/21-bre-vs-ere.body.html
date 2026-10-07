@@ -1,0 +1,42 @@
+<div class="gnu-sed-original-content" id="BRE-vs-ERE">
+<h3 class="section" id="Basic-_0028BRE_0029-and-extended-_0028ERE_0029-regular-expression"><span>5.2 Basic (BRE) and extended (ERE) regular expression</span></h3>
+<p>Basic and extended regular expressions are two variations on the
+syntax of the specified pattern. Basic Regular Expression (BRE) syntax is the
+default in <code class="command">sed</code> (and similarly in <code class="command">grep</code>).
+Use the POSIX-specified <samp class="option">-E</samp> option (<samp class="option">-r</samp>,
+<samp class="option">--regexp-extended</samp>) to enable Extended Regular Expression (ERE) syntax.
+</p>
+<p>In GNU <code class="command">sed</code>, the only difference between basic and extended regular
+expressions is in the behavior of a few special characters: ‘<samp class="samp">?</samp>’,
+‘<samp class="samp">+</samp>’, parentheses, braces (‘<samp class="samp">{}</samp>’), and ‘<samp class="samp">|</samp>’.
+</p>
+<p>With basic (BRE) syntax, these characters do not have special meaning
+unless prefixed with a backslash (‘<samp class="samp">\</samp>’); While with extended (ERE) syntax
+it is reversed: these characters are special unless they are prefixed
+with backslash (‘<samp class="samp">\</samp>’).
+</p>
+<table class="multitable">
+<thead><tr><th width="28%">Desired pattern</th><th width="36%">Basic (BRE) Syntax</th><th width="35%">Extended (ERE) Syntax</th></tr></thead>
+<tbody><tr><td width="28%">literal ‘<samp class="samp">+</samp>’ (plus sign)</td><td width="36%"><div class="example">
+<pre class="example-preformatted">$ echo 'a+b=c' &gt; foo
+$ sed -n '/a+b/p' foo
+a+b=c
+</pre></div></td><td width="35%"><div class="example">
+<pre class="example-preformatted">$ echo 'a+b=c' &gt; foo
+$ sed -E -n '/a\+b/p' foo
+a+b=c
+</pre></div></td></tr>
+<tr><td width="28%">One or more ‘<samp class="samp">a</samp>’ characters followed by ‘<samp class="samp">b</samp>’
+(plus sign as special meta-character)</td><td width="36%"><div class="example">
+<pre class="example-preformatted">$ echo aab &gt; foo
+$ sed -n '/a\+b/p' foo
+aab
+</pre></div></td><td width="35%"><div class="example">
+<pre class="example-preformatted">$ echo aab &gt; foo
+$ sed -E -n '/a+b/p' foo
+aab
+</pre></div></td></tr>
+</tbody>
+</table>
+<hr/>
+</div>

@@ -1,0 +1,51 @@
+<div class="gnu-sed-original-content" id="Numeric-Addresses">
+<h3 class="section" id="Selecting-lines-by-numbers"><span>4.2 Selecting lines by numbers</span></h3>
+<a class="index-entry-id" id="index-Addresses_002c-in-sed-scripts"></a>
+<a class="index-entry-id" id="index-Line-selection"></a>
+<a class="index-entry-id" id="index-Selecting-lines-to-process"></a>
+<p>Addresses in a <code class="command">sed</code> script can be in any of the following forms:
+</p><dl class="table">
+<dt><a class="index-entry-id" id="index-Line_002c-selecting-by-number"></a>
+<a id="index-Address_002c-numeric"></a><span><code class="code"><var class="var">number</var></code></span></dt>
+<dd><p>Specifying a line number will match only that line in the input.
+(Note that <code class="command">sed</code> counts lines continuously across all input files
+unless <samp class="option">-i</samp> or <samp class="option">-s</samp> options are specified.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Last-line_002c-selecting"></a>
+<a class="index-entry-id" id="index-Line_002c-selecting-last"></a>
+<a id="index-Address_002c-last-line"></a><span><code class="code">$</code></span></dt>
+<dd><p>This address matches the last line of the last file of input, or
+the last line of each file when the <samp class="option">-i</samp> or <samp class="option">-s</samp> options
+are specified.
+</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-n_007em-addresses"></a><span><code class="code"><var class="var">first</var>~<var class="var">step</var></code></span></dt>
+<dd><p>This GNU extension matches every <var class="var">step</var>th line
+starting with line <var class="var">first</var>.
+In particular, lines will be selected when there exists
+a non-negative <var class="var">n</var> such that the current line-number equals
+<var class="var">first</var> + (<var class="var">n</var> * <var class="var">step</var>).
+Thus, one would use <code class="code">1~2</code> to select the odd-numbered lines and
+<code class="code">0~2</code> for even-numbered lines;
+to pick every third line starting with the second, ‘<samp class="samp">2~3</samp>’ would be used;
+to pick every fifth line starting with the tenth, use ‘<samp class="samp">10~5</samp>’;
+and ‘<samp class="samp">50~0</samp>’ is just an obscure way of saying <code class="code">50</code>.
+</p>
+<p>The following commands demonstrate the step address usage:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '0~4p'
+4
+8
+
+$ seq 10 | sed -n '1~3p'
+1
+4
+7
+10
+</pre></div>
+</dd>
+</dl>
+<hr/>
+</div>

@@ -1,0 +1,653 @@
+{
+  "schemaVersion": 1,
+  "scope": [
+    "01-guide/19-sed-regular-expressions.md",
+    "01-guide/20-regular-expressions-overview.md",
+    "01-guide/21-bre-vs-ere.md",
+    "01-guide/22-bre-syntax.md",
+    "01-guide/23-ere-syntax.md",
+    "01-guide/24-character-classes-and-bracket-expressions.md",
+    "01-guide/25-regexp-extensions.md",
+    "01-guide/26-back_002dreferences-and-subexpressions.md",
+    "01-guide/27-escapes.md",
+    "01-guide/28-escaping-precedence.md",
+    "01-guide/29-locale-considerations.md",
+    "01-guide/30-invalid-multibyte-characters.md",
+    "01-guide/31-upper_002flower-case-conversion.md",
+    "01-guide/32-multibyte-regexp-character-classes.md"
+  ],
+  "completedPages": 14,
+  "unreviewedPages": 0,
+  "pages": [
+    {
+      "id": "01-guide/19-sed-regular-expressions.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 1,
+      "literalPreReviewed": 0,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/19-sed-regular-expressions.body.html",
+        "sha256": "f212f7f0d5774ea1fde42ab42333eb2474260ecc46e877dcd853aa97a283990b",
+        "coverage": [
+          [
+            1,
+            13
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/19-sed-regular-expressions.md",
+        "sha256": "06465f6685aa6bfa0c26db526ba20ea9577a52961bf1894d0bd14a482c464479",
+        "coverage": [
+          [
+            1,
+            14
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/19-sed-regular-expressions.md",
+        "sha256": "6ed1acb1faab9a4f8a895d75041f29d5f4aff301449c9406ff17629083a82f17",
+        "coverage": [
+          [
+            1,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/20-regular-expressions-overview.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 7,
+      "literalPreReviewed": 3,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/20-regular-expressions-overview.body.html",
+        "sha256": "5a407d97761a0d0c2a38c8c86f9083e860e7d80f7ef36876dd0cb24993a8a9e8",
+        "coverage": [
+          [
+            1,
+            44
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/20-regular-expressions-overview.md",
+        "sha256": "4a8cbedb274e3a8fff0b2ee40d90839e5633a768b0d76a8a2600e901d83a3e80",
+        "coverage": [
+          [
+            1,
+            47
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/20-regular-expressions-overview.md",
+        "sha256": "79fee47e38c2c65b821b8d2f97f13a6bc6ec9e7c842f2779b9a10d95a6f24cbe",
+        "coverage": [
+          [
+            1,
+            26
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/21-bre-vs-ere.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 9,
+      "literalPreReviewed": 4,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/21-bre-vs-ere.body.html",
+        "sha256": "e8cf73ca1353d751811faba6804e08836329e03dda779a33a5a8d9959563e6b9",
+        "coverage": [
+          [
+            1,
+            42
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/21-bre-vs-ere.md",
+        "sha256": "b2efe37f9347dc450bb9414a2750c71f4dbd7655b1a433d01db4bc41551aae43",
+        "coverage": [
+          [
+            1,
+            40
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/21-bre-vs-ere.md",
+        "sha256": "c13745f96944af69759d34550a01c6a6d7e211fa9c084357669f2925bb6d9a27",
+        "coverage": [
+          [
+            1,
+            27
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/22-bre-syntax.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 43,
+      "literalPreReviewed": 0,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/22-bre-syntax.body.html",
+        "sha256": "64a6b3032f493e80306e11d0480ffe1d4ab90c2ff779dcb5db3d1c12f2f2d98a",
+        "coverage": [
+          [
+            1,
+            227
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/22-bre-syntax.md",
+        "sha256": "4ae7068a296447e43772cf47a4468f043e2599eaaaa1e42d5757dbade0e6f239",
+        "coverage": [
+          [
+            1,
+            237
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/22-bre-syntax.md",
+        "sha256": "1c1fd538956887de08d3892ee2c0c54e799bef83727e5b413fa59f42f247bcfd",
+        "coverage": [
+          [
+            1,
+            119
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/23-ere-syntax.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 9,
+      "literalPreReviewed": 0,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/23-ere-syntax.body.html",
+        "sha256": "fa15400bfc6d169410abefe680476e6435091d073308f95fe864c262c0b63ac1",
+        "coverage": [
+          [
+            1,
+            47
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/23-ere-syntax.md",
+        "sha256": "ee6a9175e8d607c978d69826f7c80789a6bc8c62c387a76dd7636625233b405f",
+        "coverage": [
+          [
+            1,
+            57
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/23-ere-syntax.md",
+        "sha256": "5db92a0e0432e1090ee2e51c0367539bd5be4b117f5da14dd54dadbe4d9451ee",
+        "coverage": [
+          [
+            1,
+            35
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/24-character-classes-and-bracket-expressions.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 44,
+      "literalPreReviewed": 3,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/24-character-classes-and-bracket-expressions.body.html",
+        "sha256": "f79ce86f8a3880c3277926555e607e87e02b8f8007dac9f68c9c1707b2f67a68",
+        "coverage": [
+          [
+            1,
+            203
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/24-character-classes-and-bracket-expressions.md",
+        "sha256": "c327b096100281a96b2dbe6a7562398e26d09e787d3cf875fde3e0be15d694a8",
+        "coverage": [
+          [
+            1,
+            203
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/24-character-classes-and-bracket-expressions.md",
+        "sha256": "7d512b5cc7fd57822da9ce2f5001fe81d21bad9f99a2f96b180fbf6805678ce6",
+        "coverage": [
+          [
+            1,
+            102
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/25-regexp-extensions.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 14,
+      "literalPreReviewed": 9,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/25-regexp-extensions.body.html",
+        "sha256": "89eb6cd1621d9a188ffa6898c478ee3383fe5a56330f84baef179abccee58108",
+        "coverage": [
+          [
+            1,
+            108
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/25-regexp-extensions.md",
+        "sha256": "64ba7c61098a4ccc57ba99d3c18c5d5e3e1d11eb140a7fdab9aaef4341779108",
+        "coverage": [
+          [
+            1,
+            93
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/25-regexp-extensions.md",
+        "sha256": "d1a5f361e3a710ec79ac08e631e5854837a731691b8bc120ce1f3e4821fffd8d",
+        "coverage": [
+          [
+            1,
+            67
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/26-back_002dreferences-and-subexpressions.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 9,
+      "literalPreReviewed": 3,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/26-back_002dreferences-and-subexpressions.body.html",
+        "sha256": "42ffeeeb4fa3415ef8e30554ba7f5cac54075206efb308a34e1954ce172d7fb4",
+        "coverage": [
+          [
+            1,
+            65
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/26-back_002dreferences-and-subexpressions.md",
+        "sha256": "6a3c17061cb7837043859155a1f3bba91abb1dd3ca01a5a3aa513cbfb9b9efa0",
+        "coverage": [
+          [
+            1,
+            63
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/26-back_002dreferences-and-subexpressions.md",
+        "sha256": "74dd2812a39de89cb6a87ca18ae0f1b22ee589e29588a3360fe4bbaa5758757a",
+        "coverage": [
+          [
+            1,
+            30
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/27-escapes.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 17,
+      "literalPreReviewed": 0,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/27-escapes.body.html",
+        "sha256": "a26146db52adccbff2688544a8a2f636b11f7b7d3428b00208444c8043404015",
+        "coverage": [
+          [
+            1,
+            79
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/27-escapes.md",
+        "sha256": "3ebc9871dfcda3574ef54af95364913a5afe981d4780e1cfc3847682de1428da",
+        "coverage": [
+          [
+            1,
+            88
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/27-escapes.md",
+        "sha256": "9ea1e2f929d1b6f3aac4b5cf573f561b652ce7b84a3ab8e93d2759ab599bcde5",
+        "coverage": [
+          [
+            1,
+            52
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/28-escaping-precedence.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 4,
+      "literalPreReviewed": 3,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/28-escaping-precedence.body.html",
+        "sha256": "08397da914d77c454cf884eae51326224c681c6a82d04fbfe7893bb0857e1c5a",
+        "coverage": [
+          [
+            1,
+            36
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/28-escaping-precedence.md",
+        "sha256": "16e80d32b5bd3e008c3ba0c38b37f461df919be16eafe6b187dc7b1ebf812371",
+        "coverage": [
+          [
+            1,
+            32
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/28-escaping-precedence.md",
+        "sha256": "09fc54a5ba006873c091d8dbcad589e3b5ea93320a2dc069d3babb743e48f391",
+        "coverage": [
+          [
+            1,
+            23
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/29-locale-considerations.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 6,
+      "literalPreReviewed": 2,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/29-locale-considerations.body.html",
+        "sha256": "b1e433d4bb142386907f023c0f34146ae67db33a0b4d2d9eed8cf928501b873d",
+        "coverage": [
+          [
+            1,
+            39
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/29-locale-considerations.md",
+        "sha256": "bdbade3048fa0928a1f353daa44b974a1b9875a681de68d3c0730c78955137ff",
+        "coverage": [
+          [
+            1,
+            33
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/29-locale-considerations.md",
+        "sha256": "00a30aa6f15d494476adff72fadc25410066df40ebdd884d2e75293e8bc459e2",
+        "coverage": [
+          [
+            1,
+            22
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/30-invalid-multibyte-characters.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 9,
+      "literalPreReviewed": 6,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/30-invalid-multibyte-characters.body.html",
+        "sha256": "d588d07cbaae67e2ad59baab71db12f47607f8f8f67d323aa416eb199e88ad8b",
+        "coverage": [
+          [
+            1,
+            85
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/30-invalid-multibyte-characters.md",
+        "sha256": "ed433d60d4c31d8443c40a74e0f2c6f0f16ce1f528f05b06b44f48581792c935",
+        "coverage": [
+          [
+            1,
+            63
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/30-invalid-multibyte-characters.md",
+        "sha256": "d03007ea20addd6f9ff20d92356330e26d21bb4d8753e031e2cebe089875428a",
+        "coverage": [
+          [
+            1,
+            33
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/31-upper_002flower-case-conversion.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 3,
+      "literalPreReviewed": 1,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/31-upper_002flower-case-conversion.body.html",
+        "sha256": "71b1a6621e22494368fa1ccf25481fdc1e5a91fdb91d07bdb3eb65a3de9a6bf2",
+        "coverage": [
+          [
+            1,
+            16
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/31-upper_002flower-case-conversion.md",
+        "sha256": "424ffc660298abec1ff96736c87a6e581b72a312a81dc6682db12ab5fedfd87e",
+        "coverage": [
+          [
+            1,
+            21
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/31-upper_002flower-case-conversion.md",
+        "sha256": "7768c2356ca058aae1c30513fefd36fca31353951587ee22c6e5fb530326df20",
+        "coverage": [
+          [
+            1,
+            17
+          ]
+        ]
+      }
+    },
+    {
+      "id": "01-guide/32-multibyte-regexp-character-classes.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "gpt-6.1-sol (POLICY configured;runtime not independently exposed)",
+      "reviewedAt": "2026-10-07T00:55:21.912797+00:00",
+      "separateReviewPass": true,
+      "allUnitsReviewed": 4,
+      "literalPreReviewed": 2,
+      "findings": [
+        "Complete source and Japanese body separately read; conditions/negations/order/options/numbers/terminal examples retained.",
+        "Original static examples/TODO/footnotes6and7 retained; letter→字母 clarified in4units after wholepass, onlychangedmeaningdependencies reread; no upstream technical audit. No Libx meaning omission or mistranslation found in all179 units; only frozen source claims reviewed.",
+        "Formal decoded body and examples equal reviewed draft; all anchors remapped to available adopted32 sections or fixed complete original including linked footnote."
+      ],
+      "source": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/32-multibyte-regexp-character-classes.body.html",
+        "sha256": "8e958aa1b6ef3682faef9a234cd6e9daccd7ee546f96e8260876221d02670e1d",
+        "coverage": [
+          [
+            1,
+            29
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/en/01-guide/32-multibyte-regexp-character-classes.md",
+        "sha256": "cf958f2afd3a3070d3136533c79e610c04ab19bf40c8ddffcb80686e09b5befc",
+        "coverage": [
+          [
+            1,
+            32
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/canonical/ja/01-guide/32-multibyte-regexp-character-classes.md",
+        "sha256": "a43ad03300e977e9c9fdad8959752a94f27cfb563bed91cb19447646c64b74ac",
+        "coverage": [
+          [
+            1,
+            21
+          ]
+        ]
+      }
+    }
+  ]
+}

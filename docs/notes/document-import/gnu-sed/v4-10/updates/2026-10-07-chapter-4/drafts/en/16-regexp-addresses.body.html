@@ -1,0 +1,127 @@
+<div class="gnu-sed-original-content" id="Regexp-Addresses">
+<h3 class="section" id="selecting-lines-by-text-matching"><span>4.3 selecting lines by text matching</span></h3>
+<p>GNU <code class="command">sed</code> supports the following regular expression addresses.
+The default regular expression is
+<a class="ref" href="#BRE-syntax">Basic Regular Expression (BRE)</a>.
+If <samp class="option">-E</samp> or <samp class="option">-r</samp> options are used, The regular expression should be
+in <a class="ref" href="#ERE-syntax">Extended Regular Expression (ERE)</a> syntax.
+See <a class="xref" href="#BRE-vs-ERE">Basic (BRE) and extended (ERE) regular expression</a>.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-Line_002c-selecting-by-regular-expression-match"></a>
+<a id="index-Address_002c-as-a-regular-expression"></a><span><code class="code">/<var class="var">regexp</var>/</code></span></dt>
+<dd><p>This will select any line which matches the regular expression <var class="var">regexp</var>.
+If <var class="var">regexp</var> itself includes any <code class="code">/</code> characters,
+each must be escaped by a backslash (<code class="code">\</code>).
+</p>
+<p>The following command prints lines in <samp class="file">/etc/passwd</samp>
+which end with ‘<samp class="samp">bash</samp>’<a class="footnote" href="#FOOT5" id="DOCF5"><sup>5</sup></a>:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -n '/bash$/p' /etc/passwd
+</pre></div>
+<a class="index-entry-id" id="index-empty-regular-expression"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-modifiers-and-the-empty-regular-expression"></a>
+<p>The empty regular expression ‘<samp class="samp">//</samp>’ repeats the last regular
+expression match (the same holds if the empty regular expression is
+passed to the <code class="code">s</code> command).  Note that modifiers to regular expressions
+are evaluated when the regular expression is compiled, thus it is invalid to
+specify them together with the empty regular expression.
+</p>
+</dd>
+<dt><code class="code">\%<var class="var">regexp</var>%</code></dt>
+<dd><p>(The <code class="code">%</code> may be replaced by any other single character.)
+</p>
+<a class="index-entry-id" id="index-Slash-character_002c-in-regular-expressions"></a>
+<p>This also matches the regular expression <var class="var">regexp</var>,
+but allows one to use a different delimiter than <code class="code">/</code>.
+This is particularly useful if the <var class="var">regexp</var> itself contains
+a lot of slashes, since it avoids the tedious escaping of every <code class="code">/</code>.
+If <var class="var">regexp</var> itself includes any delimiter characters,
+each must be escaped by a backslash (<code class="code">\</code>).
+</p>
+<p>The following commands are equivalent. They print lines
+which start with ‘<samp class="samp">/home/alice/documents/</samp>’:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -n '/^\/home\/alice\/documents\//p'
+sed -n '\%^/home/alice/documents/%p'
+sed -n '\;^/home/alice/documents/;p'
+</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-case-insensitive_002c-regular-expression"></a>
+<a id="index-GNU-extensions_002c-I-modifier-1"></a><span><code class="code">/<var class="var">regexp</var>/I</code></span></dt>
+<dt><code class="code">\%<var class="var">regexp</var>%I</code></dt>
+<dd><p>The <code class="code">I</code> modifier to regular-expression matching is a GNU
+extension which causes the <var class="var">regexp</var> to be matched in
+a case-insensitive manner.
+</p>
+<p>In many other programming languages, a lower case <code class="code">i</code> is used
+for case-insensitive regular expression matching. However, in <code class="command">sed</code>
+the <code class="code">i</code> is used for the insert command (see <a class="pxref" href="#insert-command">insert command</a>).
+</p>
+<p>Observe the difference between the following examples.
+</p>
+<p>In this example, <code class="code">/b/I</code> is the address: regular expression with <code class="code">I</code>
+modifier. <code class="code">d</code> is the delete command:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "%s\n" a b c | sed '/b/Id'
+a
+c
+</pre></div>
+<p>Here, <code class="code">/b/</code> is the address: a regular expression.
+<code class="code">i</code> is the insert command.
+<code class="code">d</code> is the value to insert.
+A line with ‘<samp class="samp">d</samp>’ is then inserted above the matched line:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "%s\n" a b c | sed '/b/id'
+a
+d
+b
+c
+</pre></div>
+</dd>
+<dt><a id="index-GNU-extensions_002c-M-modifier-1"></a><span><code class="code">/<var class="var">regexp</var>/M</code></span></dt>
+<dt><code class="code">\%<var class="var">regexp</var>%M</code></dt>
+<dd><p>The <code class="code">M</code> modifier to regular-expression matching is a GNU <code class="command">sed</code>
+extension which directs GNU <code class="command">sed</code> to match the regular expression
+in <cite class="cite">multi-line</cite> mode.  The modifier causes <code class="code">^</code> and <code class="code">$</code> to
+match respectively (in addition to the normal behavior) the empty string
+after a newline, and the empty string before a newline.  There are
+special character sequences
+(<code class="code">\`</code> and <code class="code">\'</code>)
+which always match the beginning or the end of the buffer.
+In addition,
+the period character does not match a new-line character in
+multi-line mode.
+</p></dd>
+</dl>
+<a class="index-entry-id" id="index-regex-addresses-and-pattern-space"></a>
+<a class="index-entry-id" id="index-regex-addresses-and-input-lines"></a>
+<p>Regex addresses operate on the content of the current
+pattern space. If the pattern space is changed (for example with <code class="code">s///</code>
+command) the regular expression matching will operate on the changed text.
+</p>
+<p>In the following example, automatic printing is disabled with
+<samp class="option">-n</samp>.  The <code class="code">s/2/X/</code> command changes lines containing
+‘<samp class="samp">2</samp>’ to ‘<samp class="samp">X</samp>’. The command <code class="code">/[0-9]/p</code> matches
+lines with digits and prints them.
+Because the second line is changed before the <code class="code">/[0-9]/</code> regex,
+it will not match and will not be printed:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed -n 's/2/X/ ; /[0-9]/p'
+1
+3
+</pre></div></div>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF5" id="FOOT5">(5)</a></h5>
+<p>There are of course many other ways to do the same,
+e.g.
+</p><div class="example">
+<pre class="example-preformatted">grep 'bash$' /etc/passwd
+awk -F: '$7 == "/bin/bash"' /etc/passwd
+</pre></div>
+</div></div>

@@ -1,0 +1,121 @@
+{
+  "slug": "17-range-addresses",
+  "bodySHA256": "c00aa2fb40dee52f1e825bfcee4fb76a573cfb05e3c0e455de7b49ad55a80bdc",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧4.4 Range Addresses⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Range-Addresses-1\"><span>4.4 Range Addresses</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "An address range can be specified by specifying two addresses separated by a comma (⟦0⟧). An address range matches lines starting from where the first address matches, and continues until the second address matches (inclusively):",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">,</code>"
+      },
+      "sourceHTML": "<p>An address range can be specified by specifying two addresses\nseparated by a comma (<code class=\"code\">,</code>).  An address range matches lines\nstarting from where the first address matches, and continues\nuntil the second address matches (inclusively):\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "If the second address is a ⟦0⟧, then checking for the ending match will start with the line ⟦1⟧following⟦2⟧ the line which matched the first address: a range will always span at least two lines (except of course if the input stream ends).",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">regexp</var>",
+        "⟦1⟧": "<em class=\"emph\">",
+        "⟦2⟧": "</em>"
+      },
+      "sourceHTML": "<p>If the second address is a <var class=\"var\">regexp</var>, then checking for the\nending match will start with the line <em class=\"emph\">following</em> the\nline which matched the first address: a range will always\nspan at least two lines (except of course if the input stream\nends).\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "If the second address is a ⟦0⟧ less than (or equal to) the line matching the first address, then only the one line is matched:",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">number</var>"
+      },
+      "sourceHTML": "<p>If the second address is a <var class=\"var\">number</var> less than (or equal to)\nthe line matching the first address, then only the one line is\nmatched:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "GNU ⟦0⟧ also supports some special two-address forms; all these are GNU extensions:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>GNU <code class=\"command\">sed</code> also supports some special two-address forms; all these\nare GNU extensions:\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "A line number of ⟦0⟧ can be used in an address specification like ⟦1⟧ so that ⟦2⟧ will try to match ⟦3⟧ in the first input line too. In other words, ⟦4⟧ is similar to ⟦5⟧, except that if ⟦6⟧ matches the very first line of input the ⟦7⟧ form will consider it to end the range, whereas the ⟦8⟧ form will match the beginning of its range and hence make the range span up to the ⟦9⟧second⟦10⟧ occurrence of the regular expression.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">0</code>",
+        "⟦1⟧": "<code class=\"code\">0,/<var class=\"var\">regexp</var>/</code>",
+        "⟦2⟧": "<code class=\"command\">sed</code>",
+        "⟦3⟧": "<var class=\"var\">regexp</var>",
+        "⟦4⟧": "<code class=\"code\">0,/<var class=\"var\">regexp</var>/</code>",
+        "⟦5⟧": "<code class=\"code\">1,/<var class=\"var\">regexp</var>/</code>",
+        "⟦6⟧": "<var class=\"var\">addr2</var>",
+        "⟦7⟧": "<code class=\"code\">0,/<var class=\"var\">regexp</var>/</code>",
+        "⟦8⟧": "<code class=\"code\">1,/<var class=\"var\">regexp</var>/</code>",
+        "⟦9⟧": "<em class=\"emph\">",
+        "⟦10⟧": "</em>"
+      },
+      "sourceHTML": "<p>A line number of <code class=\"code\">0</code> can be used in an address specification like\n<code class=\"code\">0,/<var class=\"var\">regexp</var>/</code> so that <code class=\"command\">sed</code> will try to match\n<var class=\"var\">regexp</var> in the first input line too.  In other words,\n<code class=\"code\">0,/<var class=\"var\">regexp</var>/</code> is similar to <code class=\"code\">1,/<var class=\"var\">regexp</var>/</code>,\nexcept that if <var class=\"var\">addr2</var> matches the very first line of input the\n<code class=\"code\">0,/<var class=\"var\">regexp</var>/</code> form will consider it to end the range, whereas\nthe <code class=\"code\">1,/<var class=\"var\">regexp</var>/</code> form will match the beginning of its range and\nhence make the range span up to the <em class=\"emph\">second</em> occurrence of the\nregular expression.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "The following examples demonstrate the difference between starting with address 1 and 0:",
+      "tokens": {},
+      "sourceHTML": "<p>The following examples demonstrate the difference between starting\nwith address 1 and 0:\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Matches ⟦0⟧ and the ⟦1⟧ lines following ⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">addr1</var>",
+        "⟦1⟧": "<var class=\"var\">N</var>",
+        "⟦2⟧": "<var class=\"var\">addr1</var>"
+      },
+      "sourceHTML": "<p>Matches <var class=\"var\">addr1</var> and the <var class=\"var\">N</var> lines following <var class=\"var\">addr1</var>.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "⟦0⟧ can be a line number or a regular expression.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">addr1</var>"
+      },
+      "sourceHTML": "<p><var class=\"var\">addr1</var> can be a line number or a regular expression.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "Matches ⟦0⟧ and the lines following ⟦1⟧ until the next line whose input line number is a multiple of ⟦2⟧. The following command prints starting at line 6, until the next line which is a multiple of 4 (i.e. line 8):",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">addr1</var>",
+        "⟦1⟧": "<var class=\"var\">addr1</var>",
+        "⟦2⟧": "<var class=\"var\">N</var>"
+      },
+      "sourceHTML": "<p>Matches <var class=\"var\">addr1</var> and the lines following <var class=\"var\">addr1</var>\nuntil the next line whose input line number is a multiple of <var class=\"var\">N</var>.\nThe following command prints starting at line 6, until the next line which\nis a multiple of 4 (i.e. line 8):\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "⟦0⟧ can be a line number or a regular expression.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">addr1</var>"
+      },
+      "sourceHTML": "<p><var class=\"var\">addr1</var> can be a line number or a regular expression.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}
