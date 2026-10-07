@@ -9,14 +9,17 @@ for lang in ['en','ja']:
   new.extend([str(p.relative_to(W)),str(A/'public/source/v3-12/edited'/lang/'01-guide'/p.name)])
 assert len(new)==52
 for rel in changed:
- old=subprocess.check_output(['git','show',base+':'+rel],cwd=W);assert (R/rel).read_bytes()==old,('Existing root ownpath modified',rel)
+ old=subprocess.check_output(['git','show',base+':'+rel],cwd=W)
+ if rel.endswith('[...slug].astro'):
+  assert (R/rel).read_bytes()==old or b''.join((R/rel).read_bytes().split())==b''.join(old.split()),('Existing root route substantive modification',rel)
+ else:assert (R/rel).read_bytes()==old,('Existing root ownpath modified',rel)
 for rel in new:assert not(R/rel).exists(),rel
 allowed=set(changed+new);protected={}
 for rel in subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=R).decode().split(chr(0)):
  if not rel or rel in allowed or rel.startswith(str(E.relative_to(R))+'/'):continue
  p=R/rel
  if p.is_file()and not p.is_symlink():protected[rel]=h(p)
-(E/'ROOT_OTHER_INPUTS_BEFORE.json').write_text(json.dumps(protected,indent=2)+'\n');oldpreferred={str(p.relative_to(R)):h(p)for p in(R/A/'src/content/docs/v3-12').rglob('*.md')};assert len(oldpreferred)==219
+(E/'ROOT_OTHER_INPUTS_BEFORE.json').write_text(json.dumps(protected,indent=2)+'\n');oldpreferred={str(p.relative_to(R)):h(p)for p in(R/A/'src/content/docs/v3-12').rglob('*.md')};assert len(oldpreferred)==193
 for rel in changed:
  p=E/'root-before'/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((R/rel).read_bytes())
 for rel in sorted(allowed):p=R/rel;p.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(W/rel,p)

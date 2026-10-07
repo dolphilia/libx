@@ -30,10 +30,10 @@ if role=='preview':expected=expected[:1]
 records=[]
 for name in expected:
  a=next(a for a in artifacts if a['name']==name);assert not a['expired'] and a['workflow_run']['id']==run_id and a['workflow_run']['head_sha']==sha
- cache=pathlib.Path('/private/tmp/libx-gnu-diffutils-'+role+'-'+('artifact' if name.startswith('verified-') else ('before' if name.startswith('pages-production-before-') else 'state'))+'-946.zip')
+ cache=pathlib.Path('/private/tmp/libx-gnu-diffutils-'+role+'-'+('artifact' if name.startswith('verified-') else ('before' if name.startswith('pages-production-before-') else 'state'))+'-948.zip')
  data=cache.read_bytes() if cache.exists() else download(a['archive_download_url']);h=hashlib.sha256(data).hexdigest();assert 'sha256:'+h==a['digest'] and len(data)==a['size_in_bytes']
  kind='artifact' if name.startswith('verified-') else ('before' if name.startswith('pages-production-before-') else 'state')
- archive=pathlib.Path('/private/tmp/libx-gnu-diffutils-'+role+'-'+kind+'-946.zip');dest=pathlib.Path('/private/tmp/libx-gnu-diffutils-'+role+'-'+kind+'-946')
+ archive=pathlib.Path('/private/tmp/libx-gnu-diffutils-'+role+'-'+kind+'-948.zip');dest=pathlib.Path('/private/tmp/libx-gnu-diffutils-'+role+'-'+kind+'-948')
  if not archive.exists():
   with archive.open('xb') as f:f.write(data)
  dest.mkdir(exist_ok=True)

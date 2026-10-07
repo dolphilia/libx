@@ -2,8 +2,8 @@
 
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
-- 検証済み: 39件 / 今回の公開済み: 39件 / 公開待ち: 0件
-- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 検証済み: 40件 / 今回の公開済み: 39件 / 公開待ち: 1件
+- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -52,7 +52,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-grep / v3-12 / update | verified | verified | 942:GNU grep3.12第5〜6章3英日/21単位を限定24382f21dで統合Pages本番公開・公開後確認完了。55定本/762kit/3034参照/公開HTTP・404・CAS・対訳表示合格、未説明差分0。944:GNU Diffutils第10章21英日/120単位、旧125保持/167独立/1359kit/18594参照/172target/代表表示合格。Grep実公開artifactを統合基準として限定root登録→verified限定commit/push/Pages公開へ。 942:GNU grep3.12第5〜6章3英日/21単位を限定24382f21dで統合Pages本番公開・公開後確認完了。55定本/762kit/3034参照/公開HTTP・404・CAS・対訳表示合格、未説明差分0。944:GNU Diffutils第10章21英日/120単位、旧125保持/167独立/1359kit/18594参照/172target/代表表示合格。Grep実公開artifactを統合基準として限定root登録→verified限定commit/push/Pages公開へ。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 944:GNU Diffutils3.12第10章21英日/120単位を限定3d55ca37で統合Pages本番公開・公開後確認完了。167定本/1359kit/本文参照・公開HTTP・404・CAS・対訳合格、未説明差分0。946第11〜15章13英日/207単位・193定本・1503kit・独立再生成/対象198ルート/代表表示合格。本番第10章artifactを統合基準に限定root登録・verified限定commit/push/Pages公開へ。 944:GNU Diffutils3.12第10章21英日/120単位を限定3d55ca37で統合Pages本番公開・公開後確認完了。167定本/1359kit/本文参照・公開HTTP・404・CAS・対訳合格、未説明差分0。946第11〜15章13英日/207単位・193定本・1503kit・独立再生成/対象198ルート/代表表示合格。本番第10章artifactを統合基準に限定root登録・verified限定commit/push/Pages公開へ。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 946:GNU Diffutils第11〜15章13英日/207単位を限定b13435425で統合Pages本番37548740688/af3b5726公開・公開後確認完了。193定本/1503原稿キット/全24184参照/固定HTTP399/独自domain399/404/CAS/対訳合格、未説明差分0。948第16〜18章13英日/62単位・219定本・1647kit・独立再生成/224target/全218数値順・代表表示検証済み、保存4eb5e771e/cbffd10d1済み。実b134本番artifactを統合基準にroot61限定登録・verified・限定commit/push/Pages公開を継続する。 946:GNU Diffutils第11〜15章13英日/207単位を限定b13435425で統合Pages本番37548740688/af3b5726公開・公開後確認完了。193定本/1503原稿キット/全24184参照/固定HTTP399/独自domain399/404/CAS/対訳合格、未説明差分0。948第16〜18章13英日/62単位・219定本・1647kit・独立再生成/224target/全218数値順・代表表示検証済み、保存4eb5e771e/cbffd10d1済み。実b134本番artifactを統合基準にroot61限定登録・verified・限定commit/push/Pages公開を継続する。 |
-| gnu-diffutils / v3-12 / update | content-reviewed | content-reviewed | 948:GNU Diffutils第16〜18章13英日/62単位・2例の別パス全文レビューを保持し、26正式原稿/219定本/1647原稿キットを作成。旧193原稿保持、独立25工程と修正後6工程/224ルート/30280参照/GFDL218/全218前後・サイドバー順序/代表表示合格。Diffutils内3桁順序修正を含む。第11〜15章Preview37546495341合格、本番公開後artifactを統合基準にroot限定登録・限定commit/push/Pages公開へ。現時点は配信除外。 948:GNU Diffutils第16〜18章13英日/62単位・2例の別パス全文レビューを保持し、26正式原稿/219定本/1647原稿キットを作成。旧193原稿保持、独立25工程と修正後6工程/224ルート/30280参照/GFDL218/全218前後・サイドバー順序/代表表示合格。Diffutils内3桁順序修正を含む。第11〜15章Preview37546495341合格、本番公開後artifactを統合基準にroot限定登録・限定commit/push/Pages公開へ。現時点は配信除外。 |
+| gnu-diffutils / v3-12 / update | verified | verified | 948:GNU Diffutils全18章109英日まで検証済み。限定61appfilesをed4597843/codex/expand-gnu-diffutils-chapters16-18-20261007へcommit/push成功。Preview37550436637のartifact/HTTP/404/代表表示を確認し、実本番b134をCASしてProduction・公開後記録・保存へ。以降は現行台帳の既存修正・更新を優先する。 948:GNU Diffutils全18章109英日まで検証済み。限定61appfilesをed4597843/codex/expand-gnu-diffutils-chapters16-18-20261007へcommit/push成功。Preview37550436637のartifact/HTTP/404/代表表示を確認し、実本番b134をCASしてProduction・公開後記録・保存へ。以降は現行台帳の既存修正・更新を優先する。 |
 
 ## 登録済みの既存文書
 
@@ -82,7 +82,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | pcre2 | v10-49 | 未実施 | 896:固定PCRE2 10.49の5完全manpage英日／別パス全文review5／51pre各言語、固定110原資料・101HTMLと2text参照。限定faae5fa043で統合Pages本番、全artifact・新規/変更HTTP・代表検索/目次/語切替/フッター/source/404合格。821編集用ZIP/10原稿/独立再構築895根拠を保持。公開証拠896 PUBLICATION_RESULT。 |
 | gnu-sed | v4-10 | 未実施 | 901:固定GNU sed4.10完全第1〜3章12英日/別パス全文review12、51pre各言語/4注釈、25編集原稿/14固定原資料/988参照。限定2151cecacで統合Pages本番、597ZIP・全artifact・新規/変更HTTP・代表検索/語切替/フッター/404合格。899代表・12reviewと901修正ZIP独立再構築を再利用。公開証拠901 PUBLICATION_RESULT。 |
 | gnu-grep | v3-12 | 未実施 | 942:第5〜6章3英日/21単位追加、全27英日/55定本/762kitを限定24382f21dで統合Pages本番公開・公開後確認。公開HTTP/404/CAS/対訳・全原GFDL合格、未説明差分0。 |
-| gnu-diffutils | v3-12 | 未実施 | 946:GNU Diffutils第11〜15章13英日/207単位・193定本・1503原稿キット。公開用b13435425をCAS基準3d55ca37で統合Pages公開し、公開後artifact・HTTP・404・代表表示を確認する。947第16〜18章13英日/62単位は別パス全文レビュー済み・配信除外で保存push済み。正式化・独立再生成・対象検証へ。 |
+| gnu-diffutils | v3-12 | 未実施 | 948:GNU Diffutils第16〜18章13英日/62単位を追加。旧193保持/219独立/1647原稿キット/30280参照/224対象ルート/全218数値順前後リンク・sidebar/代表表示合格。第11〜15章の実本番b134を基準に統合し、限定61appfilesをcommit/push→Pages Preview→CASb134 Production→公開後確認・記録・保存へ。以降は台帳の既存修正・更新を優先する。 |
 | gnu-findutils | v4-11-0 | 未実施 | 921:GNU findutils4.11.0Top+完全第1〜2章26英日/全文review26・372単位、31pre/146VAR/2tables/完全脚注1、53編集原稿/19原入力/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認。全artifact・対象HTTP・代表検索/日英/版/原典/404合格。917–920有効証拠再利用。 |
 | gnu-gzip | v1-15 | 未実施 | 925:GNU gzip1.15Top+完全第1〜7章8英日/全文review8・84単位、15pre/6VAR、17編集原稿/11原入力/593再生成ZIPを限定d192c99で統合Pages公開・公開後確認。全5614artifact・HTTP176・検索/日英/版/原典/404合格。有効な922–924証拠再利用。 |
 | gnu-time | v1-10 | 未実施 | 932:GNU Time1.10原文3・訳3/111単位全文review/7編集原稿/522再生成ZIPを限定70a733878で統合Pages本番46d5e609公開・公開後確認。5663artifact、267配信、CAS保護、未説明差分0。 |
