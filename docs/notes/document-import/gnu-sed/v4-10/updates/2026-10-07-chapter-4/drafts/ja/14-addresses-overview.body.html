@@ -1,0 +1,39 @@
+<div class="gnu-sed-original-content" id="Addresses-overview">
+<h3 class="section" id="Addresses-overview-1"><span>4.1 アドレスの概要</span></h3>
+<a class="index-entry-id" id="index-addresses_002c-numeric"></a>
+<a class="index-entry-id" id="index-numeric-addresses"></a>
+<p>アドレスは、<code class="command">sed</code> コマンドを実行する行を指定します。次のコマンドは、144行目だけで、最初に現れる「<samp class="samp">hello</samp>」を「<samp class="samp">world</samp>」に置き換えます。</p>
+<div class="example">
+<pre class="example-preformatted">sed '144s/hello/world/' input.txt &gt; output.txt
+</pre></div>
+<p>アドレスを指定しなければ、コマンドはすべての行に対して実行されます。次のコマンドは、入力ファイルの全行を対象として「<samp class="samp">hello</samp>」を「<samp class="samp">world</samp>」に置き換えます。ただし、各行で最初に現れる「<samp class="samp">hello</samp>」だけを変更することに注意してください。対象行に現れるすべての箇所を変更するには、「<samp class="samp">g</samp>」修飾子を使います。</p>
+<div class="example">
+<pre class="example-preformatted">sed 's/hello/world/' input.txt &gt; output.txt
+</pre></div>
+<a class="index-entry-id" id="index-addresses_002c-regular-expression"></a>
+<a class="index-entry-id" id="index-regular-expression-addresses"></a>
+<p>アドレスには正規表現を含めることができ、行番号ではなく内容に基づいて行を選べます。次のコマンドは、文字列「<samp class="samp">apple</samp>」を含む行だけで「<samp class="samp">hello</samp>」を「<samp class="samp">world</samp>」に置き換えます。</p>
+<div class="example">
+<pre class="example-preformatted">sed '/apple/s/hello/world/' input.txt &gt; output.txt
+</pre></div>
+<a class="index-entry-id" id="index-addresses_002c-range"></a>
+<a class="index-entry-id" id="index-range-addresses"></a>
+<p>アドレス範囲は、コンマ（<code class="code">,</code>）で区切った2つのアドレスで指定します。アドレスには数値、正規表現、またはその両方を使えます。次のコマンドは、4行目から17行目まで（両端を含む）だけで「<samp class="samp">hello</samp>」を「<samp class="samp">world</samp>」に置き換えます。</p>
+<div class="example">
+<pre class="example-preformatted">sed '4,17s/hello/world/' input.txt &gt; output.txt
+</pre></div>
+<a class="index-entry-id" id="index-Excluding-lines"></a>
+<a class="index-entry-id" id="index-Selecting-non_002dmatching-lines"></a>
+<a class="index-entry-id" id="index-addresses_002c-negating"></a>
+<a class="index-entry-id" id="index-addresses_002c-excluding"></a>
+<p>アドレス指定の末尾（コマンド文字の前）に <code class="code">!</code> 文字を付けると、一致の意味が反転します。つまり、アドレスまたはアドレス範囲の後に <code class="code">!</code> 文字を付けると、そのアドレスに一致<em class="emph">しない</em>行だけが選ばれます。次のコマンドは、文字列「<samp class="samp">apple</samp>」を含ま<em class="emph">ない</em>行だけで「<samp class="samp">hello</samp>」を「<samp class="samp">world</samp>」に置き換えます。</p>
+<div class="example">
+<pre class="example-preformatted">sed '/apple/!s/hello/world/' input.txt &gt; output.txt
+</pre></div>
+<p>次のコマンドは、入力ファイルの1〜3行目と18行目から最終行までだけで（つまり4〜17行目を除いて）「<samp class="samp">hello</samp>」を「<samp class="samp">world</samp>」に置き換えます。</p>
+<div class="example">
+<pre class="example-preformatted">sed '4,17!s/hello/world/' input.txt &gt; output.txt
+</pre></div>
+<hr/>
+</div>
+

@@ -1,0 +1,34 @@
+<div class="gnu-sed-original-content" id="Numeric-Addresses">
+<h3 class="section" id="Selecting-lines-by-numbers"><span>4.2 行番号による行の選択</span></h3>
+<a class="index-entry-id" id="index-Addresses_002c-in-sed-scripts"></a>
+<a class="index-entry-id" id="index-Line-selection"></a>
+<a class="index-entry-id" id="index-Selecting-lines-to-process"></a>
+<p><code class="command">sed</code> スクリプトのアドレスには、次のいずれかの形式を使えます。</p><dl class="table">
+<dt><a class="index-entry-id" id="index-Line_002c-selecting-by-number"></a>
+<a id="index-Address_002c-numeric"></a><span><code class="code"><var class="var">number</var></code></span></dt>
+<dd><p>行番号を指定すると、入力のその行だけに一致します。（<samp class="option">-i</samp> または <samp class="option">-s</samp> オプションを指定しない限り、<code class="command">sed</code> はすべての入力ファイルを通して行を数え続けます。）</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Last-line_002c-selecting"></a>
+<a class="index-entry-id" id="index-Line_002c-selecting-last"></a>
+<a id="index-Address_002c-last-line"></a><span><code class="code">$</code></span></dt>
+<dd><p>このアドレスは、最後の入力ファイルの最終行に一致します。<samp class="option">-i</samp> または <samp class="option">-s</samp> オプションを指定すると、各ファイルの最終行に一致します。</p>
+</dd>
+<dt><a id="index-GNU-extensions_002c-n_007em-addresses"></a><span><code class="code"><var class="var">first</var>~<var class="var">step</var></code></span></dt>
+<dd><p>この GNU 拡張は、<var class="var">first</var> 行目から始めて <var class="var">step</var> 行ごとに一致します。具体的には、現在の行番号が <var class="var">first</var> + (<var class="var">n</var> * <var class="var">step</var>) と等しくなる非負の <var class="var">n</var> が存在する行を選びます。したがって、奇数行には <code class="code">1~2</code>、偶数行には <code class="code">0~2</code> を使います。2行目から3行ごとに選ぶには「<samp class="samp">2~3</samp>」、10行目から5行ごとなら「<samp class="samp">10~5</samp>」を使います。「<samp class="samp">50~0</samp>」は、単に <code class="code">50</code> を遠回しに表したものです。</p>
+<p>次のコマンドは、間隔を指定するアドレスの使い方を示します。</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '0~4p'
+4
+8
+
+$ seq 10 | sed -n '1~3p'
+1
+4
+7
+10
+</pre></div>
+</dd>
+</dl>
+<hr/>
+</div>
+

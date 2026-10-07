@@ -1,0 +1,69 @@
+<div class="gnu-sed-original-content" id="Range-Addresses">
+<h3 class="section" id="Range-Addresses-1"><span>4.4 範囲アドレス</span></h3>
+<a class="index-entry-id" id="index-Range-of-lines"></a>
+<a class="index-entry-id" id="index-Several-lines_002c-selecting"></a>
+<p>コンマ（<code class="code">,</code>）で区切った2つのアドレスを指定すると、アドレス範囲を指定できます。アドレス範囲は、最初のアドレスに一致した行から始まり、2つ目のアドレスに一致した行まで（その行を含めて）一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '4,6p'
+4
+5
+6
+</pre></div>
+<p>2つ目のアドレスが <var class="var">regexp</var> の場合、範囲の終端の照合は、最初のアドレスに一致した行の<em class="emph">次の</em>行から始まります。そのため、範囲は必ず少なくとも2行にまたがります（もちろん、入力ストリームがそこで終わる場合は除きます）。</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '4,/[0-9]/p'
+4
+5
+</pre></div>
+<p>2つ目のアドレスが、最初のアドレスに一致した行の番号以下の <var class="var">number</var> の場合、その1行だけに一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '4,1p'
+4
+</pre></div>
+<a class="anchor" id="Zero-Address-Regex-Range"></a><a class="index-entry-id" id="index-Special-addressing-forms"></a>
+<a class="index-entry-id" id="index-Range-with-start-address-of-zero"></a>
+<a class="index-entry-id" id="index-Zero_002c-as-range-start-address"></a>
+<a class="index-entry-id" id="index-addr1_002c_002bN"></a>
+<a class="index-entry-id" id="index-addr1_002c_007eN"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-special-two_002daddress-forms"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-0-address"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-0_002caddr2-addressing"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-addr1_002c_002bN-addressing"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-addr1_002c_007eN-addressing"></a>
+<p>GNU <code class="command">sed</code> は、特殊な2アドレス形式もサポートします。これらはいずれも GNU 拡張です。</p><dl class="table">
+<dt><code class="code">0,/<var class="var">regexp</var>/</code></dt>
+<dd><p><code class="code">0,/<var class="var">regexp</var>/</code> のようなアドレス指定では、行番号 <code class="code">0</code> を使えます。これにより、<code class="command">sed</code> は最初の入力行でも <var class="var">regexp</var> との一致を試みます。言い換えると、<code class="code">0,/<var class="var">regexp</var>/</code> は <code class="code">1,/<var class="var">regexp</var>/</code> に似ていますが、<var class="var">addr2</var> が入力の最初の行に一致した場合、<code class="code">0,/<var class="var">regexp</var>/</code> 形式はそこで範囲が終わるとみなします。一方、<code class="code">1,/<var class="var">regexp</var>/</code> 形式はそこで範囲が始まるとみなすため、正規表現が<em class="emph">2回目</em>に現れるところまで範囲が続きます。</p>
+<p>次の例は、開始アドレスを1にした場合と0にした場合の違いを示します。</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '1,/[0-9]/p'
+1
+2
+
+$ seq 10 | sed -n '0,/[0-9]/p'
+1
+</pre></div>
+</dd>
+<dt><code class="code"><var class="var">addr1</var>,+<var class="var">N</var></code></dt>
+<dd><p><var class="var">addr1</var> と、<var class="var">addr1</var> に続く <var class="var">N</var> 行に一致します。</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '6,+2p'
+6
+7
+8
+</pre></div>
+<p><var class="var">addr1</var> は行番号または正規表現にできます。</p>
+</dd>
+<dt><code class="code"><var class="var">addr1</var>,~<var class="var">N</var></code></dt>
+<dd><p><var class="var">addr1</var> と、<var class="var">addr1</var> の後の行から、入力行番号が次に <var class="var">N</var> の倍数になる行までに一致します。次のコマンドは、6行目から、次に4の倍数になる行（つまり8行目）までを表示します。</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '6,~4p'
+6
+7
+8
+</pre></div>
+<p><var class="var">addr1</var> は行番号または正規表現にできます。</p>
+</dd>
+</dl>
+<hr/>
+</div>
+

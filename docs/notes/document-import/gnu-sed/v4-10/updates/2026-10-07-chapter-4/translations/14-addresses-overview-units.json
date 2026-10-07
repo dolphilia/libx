@@ -1,0 +1,89 @@
+{
+  "slug": "14-addresses-overview",
+  "bodySHA256": "6f97341cc7f992de723ec4bfacc30debb24db8bc34fdfc09184ca4491fdee307",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧4.1 Addresses overview⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Addresses-overview-1\"><span>4.1 Addresses overview</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Addresses determine on which line(s) the ⟦0⟧ command will be executed. The following command replaces any first occurrence of ‘⟦1⟧’ with ‘⟦2⟧’ only on line 144:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦2⟧": "<samp class=\"samp\">world</samp>"
+      },
+      "sourceHTML": "<p>Addresses determine on which line(s) the <code class=\"command\">sed</code> command will be\nexecuted. The following command replaces any first occurrence of ‘<samp class=\"samp\">hello</samp>’\nwith ‘<samp class=\"samp\">world</samp>’ only on line 144:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "If no address is specified, the command is performed on all lines. The following command replaces ‘⟦0⟧’ with ‘⟦1⟧’, targeting every line of the input file. However, note that it modifies only the first instance of ‘⟦2⟧’ on each line. Use the ‘⟦3⟧’ modifier to affect every instance on each affected line.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦1⟧": "<samp class=\"samp\">world</samp>",
+        "⟦2⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦3⟧": "<samp class=\"samp\">g</samp>"
+      },
+      "sourceHTML": "<p>If no address is specified, the command is performed on all lines.\nThe following command replaces ‘<samp class=\"samp\">hello</samp>’ with ‘<samp class=\"samp\">world</samp>’,\ntargeting every line of the input file.\nHowever, note that it modifies only the first instance of ‘<samp class=\"samp\">hello</samp>’\non each line.\nUse the ‘<samp class=\"samp\">g</samp>’ modifier to affect every instance on each affected line.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Addresses can contain regular expressions to match lines based on content instead of line numbers. The following command replaces ‘⟦0⟧’ with ‘⟦1⟧’ only on lines containing the string ‘⟦2⟧’:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦1⟧": "<samp class=\"samp\">world</samp>",
+        "⟦2⟧": "<samp class=\"samp\">apple</samp>"
+      },
+      "sourceHTML": "<p>Addresses can contain regular expressions to match lines based\non content instead of line numbers. The following command replaces\n‘<samp class=\"samp\">hello</samp>’ with ‘<samp class=\"samp\">world</samp>’ only on lines\ncontaining the string ‘<samp class=\"samp\">apple</samp>’:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "An address range is specified with two addresses separated by a comma (⟦0⟧). Addresses can be numeric, regular expressions, or a mix of both. The following command replaces ‘⟦1⟧’ with ‘⟦2⟧’ only on lines 4 to 17 (inclusive):",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">,</code>",
+        "⟦1⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦2⟧": "<samp class=\"samp\">world</samp>"
+      },
+      "sourceHTML": "<p>An address range is specified with two addresses separated by a comma\n(<code class=\"code\">,</code>). Addresses can be numeric, regular expressions, or a mix of\nboth.\nThe following command replaces ‘<samp class=\"samp\">hello</samp>’ with ‘<samp class=\"samp\">world</samp>’\nonly on lines 4 to 17 (inclusive):\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Appending the ⟦0⟧ character to the end of an address specification (before the command letter) negates the sense of the match. That is, if the ⟦1⟧ character follows an address or an address range, then only lines which do ⟦2⟧not⟦3⟧ match the addresses will be selected. The following command replaces ‘⟦4⟧’ with ‘⟦5⟧’ only on lines ⟦6⟧not⟦7⟧ containing the string ‘⟦8⟧’:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">!</code>",
+        "⟦1⟧": "<code class=\"code\">!</code>",
+        "⟦2⟧": "<em class=\"emph\">",
+        "⟦3⟧": "</em>",
+        "⟦4⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦5⟧": "<samp class=\"samp\">world</samp>",
+        "⟦6⟧": "<em class=\"emph\">",
+        "⟦7⟧": "</em>",
+        "⟦8⟧": "<samp class=\"samp\">apple</samp>"
+      },
+      "sourceHTML": "<p>Appending the <code class=\"code\">!</code> character to the end of an address\nspecification (before the command letter) negates the sense of the\nmatch.  That is, if the <code class=\"code\">!</code> character follows an address or an\naddress range, then only lines which do <em class=\"emph\">not</em> match the addresses\nwill be selected. The following command replaces ‘<samp class=\"samp\">hello</samp>’\nwith ‘<samp class=\"samp\">world</samp>’ only on lines <em class=\"emph\">not</em> containing the string\n‘<samp class=\"samp\">apple</samp>’:\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "The following command replaces ‘⟦0⟧’ with ‘⟦1⟧’ only on lines 1 to 3 and from line 18 to the last line of the input file (i.e. excluding lines 4 to 17):",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">hello</samp>",
+        "⟦1⟧": "<samp class=\"samp\">world</samp>"
+      },
+      "sourceHTML": "<p>The following command replaces ‘<samp class=\"samp\">hello</samp>’ with\n‘<samp class=\"samp\">world</samp>’ only on lines 1 to 3 and from line 18 to the last line of the\ninput file (i.e. excluding lines 4 to 17):\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

@@ -1,0 +1,68 @@
+<div class="gnu-sed-original-content" id="Regexp-Addresses">
+<h3 class="section" id="selecting-lines-by-text-matching"><span>4.3 テキストの一致による行の選択</span></h3>
+<p>GNU <code class="command">sed</code> は、次の正規表現アドレスをサポートします。既定の正規表現は<a class="ref" href="#BRE-syntax">基本正規表現（BRE）</a>です。<samp class="option">-E</samp> または <samp class="option">-r</samp> オプションを使う場合、正規表現は<a class="ref" href="#ERE-syntax">拡張正規表現（ERE）</a>の構文で記述してください。<a class="xref" href="#BRE-vs-ERE">基本正規表現（BRE）と拡張正規表現（ERE）</a>を参照してください。</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-Line_002c-selecting-by-regular-expression-match"></a>
+<a id="index-Address_002c-as-a-regular-expression"></a><span><code class="code">/<var class="var">regexp</var>/</code></span></dt>
+<dd><p>正規表現 <var class="var">regexp</var> に一致する行を選びます。<var class="var">regexp</var> 自体に <code class="code">/</code> 文字を含める場合、それぞれをバックスラッシュ（<code class="code">\</code>）でエスケープしてください。</p>
+<p>次のコマンドは、「<samp class="samp">bash</samp>」で終わる <samp class="file">/etc/passwd</samp> 内の行を表示します<a class="footnote" href="#FOOT5" id="DOCF5"><sup>5</sup></a>。</p>
+<div class="example">
+<pre class="example-preformatted">sed -n '/bash$/p' /etc/passwd
+</pre></div>
+<a class="index-entry-id" id="index-empty-regular-expression"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-modifiers-and-the-empty-regular-expression"></a>
+<p>空の正規表現「<samp class="samp">//</samp>」は、最後の正規表現による一致処理を繰り返します（<code class="code">s</code> コマンドに空の正規表現を渡した場合も同じです）。正規表現の修飾子は正規表現のコンパイル時に評価されるため、空の正規表現と一緒に指定することはできません。</p>
+</dd>
+<dt><code class="code">\%<var class="var">regexp</var>%</code></dt>
+<dd><p>（<code class="code">%</code> は、ほかの任意の1文字に置き換えられます。）</p>
+<a class="index-entry-id" id="index-Slash-character_002c-in-regular-expressions"></a>
+<p>これも正規表現 <var class="var">regexp</var> に一致しますが、<code class="code">/</code> とは異なる区切り文字を使えます。<var class="var">regexp</var> 自体に多くのスラッシュが含まれる場合は、すべての <code class="code">/</code> をエスケープする手間を省けるため、特に便利です。<var class="var">regexp</var> 自体に区切り文字を含める場合、それぞれをバックスラッシュ（<code class="code">\</code>）でエスケープしてください。</p>
+<p>次のコマンドは同じ意味で、「<samp class="samp">/home/alice/documents/</samp>」で始まる行を表示します。</p>
+<div class="example">
+<pre class="example-preformatted">sed -n '/^\/home\/alice\/documents\//p'
+sed -n '\%^/home/alice/documents/%p'
+sed -n '\;^/home/alice/documents/;p'
+</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-case-insensitive_002c-regular-expression"></a>
+<a id="index-GNU-extensions_002c-I-modifier-1"></a><span><code class="code">/<var class="var">regexp</var>/I</code></span></dt>
+<dt><code class="code">\%<var class="var">regexp</var>%I</code></dt>
+<dd><p>正規表現の一致処理に付ける <code class="code">I</code> 修飾子は GNU 拡張で、<var class="var">regexp</var> を大文字・小文字を区別せずに照合します。</p>
+<p>ほかの多くのプログラミング言語では、大文字・小文字を区別しない正規表現の照合に小文字の <code class="code">i</code> を使います。しかし、<code class="command">sed</code> では <code class="code">i</code> は挿入コマンドとして使います（<a class="pxref" href="#insert-command">挿入コマンド</a>を参照）。</p>
+<p>次の例の違いに注目してください。</p>
+<p>この例では、<code class="code">/b/I</code> がアドレスで、<code class="code">I</code> 修飾子を付けた正規表現です。<code class="code">d</code> は削除コマンドです。</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "%s\n" a b c | sed '/b/Id'
+a
+c
+</pre></div>
+<p>こちらでは、<code class="code">/b/</code> がアドレスで、正規表現です。<code class="code">i</code> は挿入コマンド、<code class="code">d</code> は挿入する値です。そのため、一致した行の上に「<samp class="samp">d</samp>」という行を挿入します。</p>
+<div class="example">
+<pre class="example-preformatted">$ printf "%s\n" a b c | sed '/b/id'
+a
+d
+b
+c
+</pre></div>
+</dd>
+<dt><a id="index-GNU-extensions_002c-M-modifier-1"></a><span><code class="code">/<var class="var">regexp</var>/M</code></span></dt>
+<dt><code class="code">\%<var class="var">regexp</var>%M</code></dt>
+<dd><p>正規表現の一致処理に付ける <code class="code">M</code> 修飾子は GNU <code class="command">sed</code> の拡張で、GNU <code class="command">sed</code> に正規表現を<cite class="cite">複数行</cite>モードで照合させます。この修飾子を付けると、通常の動作に加えて、<code class="code">^</code> は改行の直後の空文字列に、<code class="code">$</code> は改行の直前の空文字列にそれぞれ一致します。特殊な文字列（<code class="code">\`</code> と <code class="code">\'</code>）は、常にバッファーの先頭または末尾に一致します。また、複数行モードではピリオド文字は改行文字に一致しません。</p></dd>
+</dl>
+<a class="index-entry-id" id="index-regex-addresses-and-pattern-space"></a>
+<a class="index-entry-id" id="index-regex-addresses-and-input-lines"></a>
+<p>正規表現アドレスは、現在のパターンスペースの内容に対して動作します。パターンスペースが変更された場合（たとえば <code class="code">s///</code> コマンドによって）、正規表現の照合は変更後のテキストに対して動作します。</p>
+<p>次の例では、<samp class="option">-n</samp> で自動表示を無効にしています。<code class="code">s/2/X/</code> コマンドは、「<samp class="samp">2</samp>」を含む行を「<samp class="samp">X</samp>」に変更します。<code class="code">/[0-9]/p</code> コマンドは、数字を含む行に一致して表示します。2行目は <code class="code">/[0-9]/</code> の正規表現より前に変更されるため、一致せず、表示されません。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ seq 3 | sed -n 's/2/X/ ; /[0-9]/p'
+1
+3
+</pre></div></div>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF5" id="FOOT5">(5)</a></h5>
+<p>もちろん、同じことを行う方法はほかにも多数あります。たとえば、次のような方法です。</p><div class="example">
+<pre class="example-preformatted">grep 'bash$' /etc/passwd
+awk -F: '$7 == "/bin/bash"' /etc/passwd
+</pre></div>
+</div></div>
+

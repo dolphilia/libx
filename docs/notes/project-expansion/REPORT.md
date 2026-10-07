@@ -3,7 +3,7 @@
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
 - 検証済み: 40件 / 今回の公開済み: 39件 / 公開待ち: 1件
-- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -53,6 +53,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-diffutils / v3-12 / update | verified | verified | 944:GNU Diffutils3.12第10章21英日/120単位を限定3d55ca37で統合Pages本番公開・公開後確認完了。167定本/1359kit/本文参照・公開HTTP・404・CAS・対訳合格、未説明差分0。946第11〜15章13英日/207単位・193定本・1503kit・独立再生成/対象198ルート/代表表示合格。本番第10章artifactを統合基準に限定root登録・verified限定commit/push/Pages公開へ。 944:GNU Diffutils3.12第10章21英日/120単位を限定3d55ca37で統合Pages本番公開・公開後確認完了。167定本/1359kit/本文参照・公開HTTP・404・CAS・対訳合格、未説明差分0。946第11〜15章13英日/207単位・193定本・1503kit・独立再生成/対象198ルート/代表表示合格。本番第10章artifactを統合基準に限定root登録・verified限定commit/push/Pages公開へ。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 946:GNU Diffutils第11〜15章13英日/207単位を限定b13435425で統合Pages本番37548740688/af3b5726公開・公開後確認完了。193定本/1503原稿キット/全24184参照/固定HTTP399/独自domain399/404/CAS/対訳合格、未説明差分0。948第16〜18章13英日/62単位・219定本・1647kit・独立再生成/224target/全218数値順・代表表示検証済み、保存4eb5e771e/cbffd10d1済み。実b134本番artifactを統合基準にroot61限定登録・verified・限定commit/push/Pages公開を継続する。 946:GNU Diffutils第11〜15章13英日/207単位を限定b13435425で統合Pages本番37548740688/af3b5726公開・公開後確認完了。193定本/1503原稿キット/全24184参照/固定HTTP399/独自domain399/404/CAS/対訳合格、未説明差分0。948第16〜18章13英日/62単位・219定本・1647kit・独立再生成/224target/全218数値順・代表表示検証済み、保存4eb5e771e/cbffd10d1済み。実b134本番artifactを統合基準にroot61限定登録・verified・限定commit/push/Pages公開を継続する。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 948:GNU Diffutils全18章109英日まで検証済み。限定61appfilesをed4597843/codex/expand-gnu-diffutils-chapters16-18-20261007へcommit/push成功。Preview37550436637のartifact/HTTP/404/代表表示を確認し、実本番b134をCASしてProduction・公開後記録・保存へ。以降は現行台帳の既存修正・更新を優先する。 948:GNU Diffutils全18章109英日まで検証済み。限定61appfilesをed4597843/codex/expand-gnu-diffutils-chapters16-18-20261007へcommit/push成功。Preview37550436637のartifact/HTTP/404/代表表示を確認し、実本番b134をCASしてProduction・公開後記録・保存へ。以降は現行台帳の既存修正・更新を優先する。 |
+| gnu-sed / v4-10 / update | source-locked | source-locked | 949:GNU sed第4章6英日/49単位・19pre・脚注5全文を別パス全文レビュー済み。草稿は配信除外保存のみ。948 Diffutils Previewテスト失敗を診断・回復し公開後確認を優先。続いてsed4章正式12追加原稿/既存25保持・通知・原稿キット・独立再生成・対象統合検証へ。 949:GNU sed第4章6英日/49単位・19pre・脚注5全文を別パス全文レビュー済み。草稿は配信除外保存のみ。948 Diffutils Previewテスト失敗を診断・回復し公開後確認を優先。続いてsed4章正式12追加原稿/既存25保持・通知・原稿キット・独立再生成・対象統合検証へ。 |
 
 ## 登録済みの既存文書
 

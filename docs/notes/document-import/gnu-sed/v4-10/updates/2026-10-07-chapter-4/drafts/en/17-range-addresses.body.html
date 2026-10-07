@@ -1,0 +1,100 @@
+<div class="gnu-sed-original-content" id="Range-Addresses">
+<h3 class="section" id="Range-Addresses-1"><span>4.4 Range Addresses</span></h3>
+<a class="index-entry-id" id="index-Range-of-lines"></a>
+<a class="index-entry-id" id="index-Several-lines_002c-selecting"></a>
+<p>An address range can be specified by specifying two addresses
+separated by a comma (<code class="code">,</code>).  An address range matches lines
+starting from where the first address matches, and continues
+until the second address matches (inclusively):
+</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '4,6p'
+4
+5
+6
+</pre></div>
+<p>If the second address is a <var class="var">regexp</var>, then checking for the
+ending match will start with the line <em class="emph">following</em> the
+line which matched the first address: a range will always
+span at least two lines (except of course if the input stream
+ends).
+</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '4,/[0-9]/p'
+4
+5
+</pre></div>
+<p>If the second address is a <var class="var">number</var> less than (or equal to)
+the line matching the first address, then only the one line is
+matched:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '4,1p'
+4
+</pre></div>
+<a class="anchor" id="Zero-Address-Regex-Range"></a><a class="index-entry-id" id="index-Special-addressing-forms"></a>
+<a class="index-entry-id" id="index-Range-with-start-address-of-zero"></a>
+<a class="index-entry-id" id="index-Zero_002c-as-range-start-address"></a>
+<a class="index-entry-id" id="index-addr1_002c_002bN"></a>
+<a class="index-entry-id" id="index-addr1_002c_007eN"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-special-two_002daddress-forms"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-0-address"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-0_002caddr2-addressing"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-addr1_002c_002bN-addressing"></a>
+<a class="index-entry-id" id="index-GNU-extensions_002c-addr1_002c_007eN-addressing"></a>
+<p>GNU <code class="command">sed</code> also supports some special two-address forms; all these
+are GNU extensions:
+</p><dl class="table">
+<dt><code class="code">0,/<var class="var">regexp</var>/</code></dt>
+<dd><p>A line number of <code class="code">0</code> can be used in an address specification like
+<code class="code">0,/<var class="var">regexp</var>/</code> so that <code class="command">sed</code> will try to match
+<var class="var">regexp</var> in the first input line too.  In other words,
+<code class="code">0,/<var class="var">regexp</var>/</code> is similar to <code class="code">1,/<var class="var">regexp</var>/</code>,
+except that if <var class="var">addr2</var> matches the very first line of input the
+<code class="code">0,/<var class="var">regexp</var>/</code> form will consider it to end the range, whereas
+the <code class="code">1,/<var class="var">regexp</var>/</code> form will match the beginning of its range and
+hence make the range span up to the <em class="emph">second</em> occurrence of the
+regular expression.
+</p>
+<p>The following examples demonstrate the difference between starting
+with address 1 and 0:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '1,/[0-9]/p'
+1
+2
+
+$ seq 10 | sed -n '0,/[0-9]/p'
+1
+</pre></div>
+</dd>
+<dt><code class="code"><var class="var">addr1</var>,+<var class="var">N</var></code></dt>
+<dd><p>Matches <var class="var">addr1</var> and the <var class="var">N</var> lines following <var class="var">addr1</var>.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '6,+2p'
+6
+7
+8
+</pre></div>
+<p><var class="var">addr1</var> can be a line number or a regular expression.
+</p>
+</dd>
+<dt><code class="code"><var class="var">addr1</var>,~<var class="var">N</var></code></dt>
+<dd><p>Matches <var class="var">addr1</var> and the lines following <var class="var">addr1</var>
+until the next line whose input line number is a multiple of <var class="var">N</var>.
+The following command prints starting at line 6, until the next line which
+is a multiple of 4 (i.e. line 8):
+</p>
+<div class="example">
+<pre class="example-preformatted">$ seq 10 | sed -n '6,~4p'
+6
+7
+8
+</pre></div>
+<p><var class="var">addr1</var> can be a line number or a regular expression.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>
