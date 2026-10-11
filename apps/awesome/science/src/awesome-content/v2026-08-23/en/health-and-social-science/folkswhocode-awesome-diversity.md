@@ -1,25 +1,12 @@
 ---
 title: "Awesome Diversity"
-description: "A curated collection of resources and projects focused on Diversity."
+description: "Organizations, events, allyship resources, projects, articles, talks, and books about diversity, equity, and inclusion in technology."
 licenseSource: "github-folkswhocode-awesome-diversity-readme-md"
 ---
 
 # Awesome Diversity
 
-A curated collection of resources and projects focused on Diversity.
-
-## Contents
-
-- [Organizations](#organizations)
-- [Events](#events)
-- [Ally Resources](#ally-resources)
-- [Actionable Resources](#actionable-resources)
-- [Projects](#projects)
-- [Posts](#posts)
-- [Talks](#talks)
-- [Advocates](#advocates)
-- [Books](#books)
-- [Diverse Figures In Tech History](https://github.com/folkswhocode/awesome-diversity/blob/505e459b656210f8e2eedf24ff21d3ea65e8bedc/FIGURES.md)
+Resources on diversity, equity, and inclusion in technology, including organizations, events, allyship guidance, projects, articles, talks, and books. They help companies and communities improve everyday practices and give individuals further reading. Descriptions of programs, dates, fees, availability, size, and safety reflect the fixed source snapshot linked in the source information.
 
 ## Organizations
 
@@ -33,7 +20,7 @@ Organizations bringing diversity to tech.
 - [Black Girl Gamers](http://blackgirlgamers.com) - A safe space that supports black girl gamers. Also found on:
   - [Twitch](https://www.twitch.tv/blackgirlgamers)
   - [Steam](https://steamcommunity.com/groups/BlackGirlsWhoPlayGames)
-- [Blacks In Technology](https://www.blacksintechnology.net/) - Oragnization focused on "Stomping the Divide" by establishing a blueprint of world-class technical excellence and innovation.
+- [Blacks In Technology](https://www.blacksintechnology.net/) - Organization focused on "Stomping the Divide" by establishing a blueprint of world-class technical excellence and innovation.
 - [Black Women in Computational Biology](https://www.blackwomencompbio.org/) - An intersectional community of Black women who are working toward (or interested in) a career that combines computational and quantitative sciences with biology.
 - [Bridge Troll](https://www.bridgetroll.org/) - Events organized by volunteers to empower people with technology.
 - [Brown Girl, Tech World](https://www.browngirltech.world/) - Digital safe space and non profit organization for brown women & girls navigating the tech industry.
@@ -77,11 +64,11 @@ Organizations bringing diversity to tech.
 - [Q-Space](http://qhumanity.org/index.php/our-projects/q-space/) - Queer and feminist maker space located in Beijing, China, providing a learning space and community actions for change.
 - [Rails Girls](http://railsgirls.com/) - Organization which aims to give tools and a community for women to understand technology and to build their ideas.
 - [Rails Girls Summer Of Code](https://railsgirlssummerofcode.org/) - Rails Girls Summer of Code is a global fellowship program aimed at bringing more diversity into Open Source.
-- [R-Ladies](https://rladies.org/) - A worl-wide organization to promote gender diversity in the R community.
-- [RightsTech Women](https://rightstech.org) - Switzerland-based nonprofit that combines robotics, technology and human rights training for girls and women. 
+- [R-Ladies](https://rladies.org/) - A worldwide organization to promote gender diversity in the R community.
+- [RightsTech Women](https://rightstech.org) - Switzerland-based nonprofit that combines robotics, technology and human rights training for girls and women.
 - [Scala Bridge](http://www.scalabridge.org/) - Building an inclusive Scala community with introductory programming workshops for women.
 - [She++](https://sheplusplus.org) - Non-profit organization that works to empower underrepresented groups in technology by dismantling negative stereotypes surrounding technical careers.
-- [She Can Code](https://shecancode.io/) - An organization with the mission of empower women to enter and remain in the tech industry.
+- [She Can Code](https://shecancode.io/) - An organization with the mission to empower women to enter and remain in the tech industry.
 - [Techqueria](https://techqueria.org/) - A non-profit organization that serves the largest community of Latinx in Tech.
 - [Techtonica](https://techtonica.org/) - Techtonica partners with tech companies to offer tech apprenticeships with stipends and job placement to Bay Area women and non-binary, feminine-adjacent adults with low incomes.
 - [Tech Ladies](https://www.hiretechladies.com/) - Tech Ladies connects women with the best jobs and opportunities in tech.
@@ -99,8 +86,8 @@ Organizations bringing diversity to tech.
 - [Wonder Women Tech](https://wonderwomentech.com/) - Organization that produces year-round programming and national and international conferences that highlight, educate, and celebrate women and diversity in STEAM (Science, Technology, Engineering, Arts, Math), innovation and entrepreneurialism.
 - [Write/Speak/Code](https://www.writespeakcode.com/) - A 501c3, tax-exempt non-profit that hosts an annual conference and meetup events designed to help you fully own your expertise through writing, speaking, and open source.
 - [YesWeTech](http://yeswetech.org/) - Feminist community working for an egalitarian and proud culture of women interested in technology.
-- [Natives in Tech](https://nativesintech.org) - Natives in Tech is a coalition of Native and non-Native software developers whose goal is to support software application development that reinforces Native beliefs, knowledge, and identity. 
-- [Brazilians in Tech](https://braziliansintech.com/)- Brazilians in Tech is the first Brazilian platform to bring together the most relevant opportunities in the world of Science and Technology for women working or interested in digital technologies.
+- [Natives in Tech](https://nativesintech.org) - Natives in Tech is a coalition of Native and non-Native software developers whose goal is to support software application development that reinforces Native beliefs, knowledge, and identity.
+- [Brazilians in Tech](https://braziliansintech.com/) - Brazilians in Tech is the first Brazilian platform to bring together the most relevant opportunities in the world of Science and Technology for women working or interested in digital technologies.
 - [Latinas in computing](https://latinasincomputing.org/) - A community created by and for the Latinas in Computing with a mission of promoting their representation and success in computing-related fields.
 - [Latinas in tech](https://www.latinasintech.org/) - a non-profit organization with the aim to connect, support, and empower Latina women working in tech. We work hand in hand with top technology companies to create safe spaces for learning, mentorship and recruitment.
 
@@ -110,7 +97,7 @@ The following is a list of events that make a special effort to be inclusive and
 
 - [ACT-W National Conference](http://www.act-w.org/) - Presented by ChickTech, ACT-W National focuses on providing you with inspiring and actionable education in career development, leadership, technology, and diversity.
 - [AlterConf](https://alterconf.com/) - AlterConf is a traveling conference series that provides safe opportunities for marginalized people and those who support them in the tech and gaming industries.
-- [DDD Europe](https://dddeurope.com) - Domain-Driven Design Europe is a focused on software design and modeling. They have an amazing commitment to diversity and improving their event.
+- [DDD Europe](https://dddeurope.com) - Domain-Driven Design Europe focuses on software design and modeling. They have an amazing commitment to diversity and improving their event.
 - [Lambda World](http://www.lambda.world/) - Lambda World is a functional programming conference with an ideology of empowering underrepresented minorities in tech. In this mindset, we have a few actions we follow such as creating grants to cover tickets and accommodation, hosting inclusive workshops, and making conferences more accessible to individuals finding it hard to be away from their families, by providing tourist activities, and necessities like cribs and strollers.
 - [PyMCon](https://pymc-devs.github.io/pymcon//) - PyMCon is an asynchronous-first virtual conference for the Bayesian community organized by the PyMC community with a strong emphasis on diversity and inclusion from the organizing committee to attendees.
 - [REFACTR.TECH](https://www.refactr.tech) - REFACTR.TECH focuses on technology while creating a safe space for thoughtful and nuanced conversations around diversity, inclusion, and intersectionality in tech.
@@ -171,7 +158,7 @@ Both articles and posts on diversity and inclusiveness in technology.
 - [A Brief History Of Women In Computing](https://hackernoon.com/a-brief-history-of-women-in-computing-e7253ac24306) - By Faruk Ateş.
 - [A Counterintuitive Way To Increase Diversity In Tech](https://medium.com/@rachelnabors/a-counterintuitive-way-to-increase-diversity-in-tech-31aea2ce6a50) - By Rachel Nabors.
 - [A Study Used Sensors To Show That Men And Women Are Treated Differently At Work](https://hbr.org/2017/10/a-study-used-sensors-to-show-that-men-and-women-are-treated-differently-at-work) - By Stephen Turban, Laura Freeman and Ben Waber.
-- [Accessibility 101: Introduction To Disability And Accessibility](https://www.youtube.com/watch?v=qM7wFZo5yfI) - By Jenny Lay-Flurrie. 
+- [Accessibility 101: Introduction To Disability And Accessibility](https://www.youtube.com/watch?v=qM7wFZo5yfI) - By Jenny Lay-Flurrie.
 - [Advice For Women In Tech Who Are Tired Of Talking About Women In Tech](https://blog.valerieaurora.org/2018/03/11/advice-for-women-in-tech-who-are-tired-of-talking-about-women-in-tech/) - By Valerie Aurora.
 - [Becoming A 10x Developer](https://kateheddleston.com/blog/becoming-a-10x-developer) - By Kate Heddleston.
 - [Bias, Diversity, Backlash, Manifestos, And Rebuttals](https://code.likeagirl.io/bias-diversity-backlash-manifestos-and-rebuttals-834f7425180e) - By Lorena A Barba.
@@ -270,14 +257,4 @@ Books that offer deep insights on diversity and inclusiveness in technology.
 
 - [Technically Wrong: Sexist Apps, Biased Algorithms, And Other Threats Of Toxic Tech](http://www.sarawb.com/technically-wrong/) - An unflinching look at the values, processes, and assumptions that lead to oversights, biases, and ethical nightmares.
 
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/folkswhocode/awesome-diversity/blob/505e459b656210f8e2eedf24ff21d3ea65e8bedc/.github/CONTRIBUTING.md) for more details. Here you have the alphabetical [list of contributors](https://github.com/folkswhocode/awesome-diversity/blob/505e459b656210f8e2eedf24ff21d3ea65e8bedc/CONTRIBUTORS.md) of this repository.
-
-----------------------------
-
-This project is part of the [folkswhocode](https://github.com/folkswhocode) organization.
-This means that it adheres to its [core values](https://github.com/folkswhocode/base/blob/master/en/VALUES.md), [code of conduct](https://github.com/folkswhocode/base/blob/master/en/CODE_OF_CONDUCT.md) and
-[contributing guidelines](https://github.com/folkswhocode/awesome-diversity/blob/505e459b656210f8e2eedf24ff21d3ea65e8bedc/.github/CONTRIBUTING.md), and uses an equivalent [license](https://github.com/folkswhocode/awesome-diversity/blob/505e459b656210f8e2eedf24ff21d3ea65e8bedc/LICENSE).
-
-Our Code of Conduct is adapted from the [Contributor Covenant](http://contributor-covenant.org/).
+Related resource: [Diverse Figures In Tech History](https://github.com/folkswhocode/awesome-diversity/blob/505e459b656210f8e2eedf24ff21d3ea65e8bedc/FIGURES.md)
