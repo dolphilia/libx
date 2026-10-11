@@ -1,7 +1,7 @@
 import pathlib,json,subprocess,urllib.request,urllib.error,urllib.parse,hashlib,zipfile,stat,datetime
 root=pathlib.Path('/Users/dolphilia/github/libx/docs/notes/project-expansion/runs/evidence/2026-10-11-962')
 import sys
-run_id=int(sys.argv[1]);role=sys.argv[2];sha=json.loads((root/'COMMIT_RESULT.json').read_text())['commit']
+run_id=int(sys.argv[1]);role=sys.argv[2];assert role in ['preview','production'];sha=json.loads((root/'COMMIT_RESULT.json').read_text())['commit']
 c=subprocess.run(['git','credential','fill'],input='protocol=https\nhost=github.com\n\n',text=True,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,check=True)
 t=dict(x.split('=',1) for x in c.stdout.splitlines() if '=' in x)['password']
 def api(p):
@@ -21,6 +21,8 @@ def download(url):
 run=api('actions/runs/'+str(run_id));assert run['head_sha']==sha
 jobs=api('actions/runs/'+str(run_id)+'/jobs')['jobs'];assert next(j for j in jobs if j['name']=='quality-check')['conclusion']=='success'
 artifacts=api('actions/runs/'+str(run_id)+'/artifacts')['artifacts'];name='verified-deployment-'+sha+'-'+str(run['run_attempt']);a=next(a for a in artifacts if a['name']==name);assert not a['expired']and a['workflow_run']['head_sha']==sha
-archive=pathlib.Path('/private/tmp/libx-gnu-sed-preview-artifact-962.zip');assert not archive.exists();print('Downloading successful quality artifact '+str(a['id'])+' '+str(a['size_in_bytes'])+' bytes',flush=True)
-data=download(a['archive_download_url']);digest=hashlib.sha256(data).hexdigest();assert 'sha256:'+digest==a['digest']and len(data)==a['size_in_bytes']
-archive.write_bytes(data);out={'status':'passed-quality-artifact-prefetched-not-deployment-verification','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'run':run_id,'sha':sha,'artifactId':a['id'],'name':name,'bytes':len(data),'zipSha256':digest,'archive':str(archive),'limits':'Quality-check success independently confirmed. Deploy may still be queued/running. Main download.py must verify overall/deploy success and safe extraction before artifact/publication gates.'};(root/'PREVIEW_ARTIFACT_PREFETCH.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out),flush=True)
+archive=pathlib.Path('/private/tmp/libx-gnu-sed-'+role+'-artifact-962.zip');assert not archive.exists();print('Downloading successful quality artifact '+str(a['id'])+' '+str(a['size_in_bytes'])+' bytes',flush=True)
+previous=pathlib.Path('/private/tmp/libx-gnu-sed-preview-artifact-962.zip');cached=previous.read_bytes() if role=='production' and previous.exists() else None
+reused=bool(cached is not None and len(cached)==a['size_in_bytes'] and 'sha256:'+hashlib.sha256(cached).hexdigest()==a['digest'])
+data=cached if reused else download(a['archive_download_url']);digest=hashlib.sha256(data).hexdigest();assert 'sha256:'+digest==a['digest']and len(data)==a['size_in_bytes']
+archive.write_bytes(data);out={'status':'passed-quality-artifact-prefetched-not-deployment-verification','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'run':run_id,'sha':sha,'artifactId':a['id'],'identicalPreviewArchiveDigestReused':reused,'name':name,'bytes':len(data),'zipSha256':digest,'archive':str(archive),'limits':'Quality-check success independently confirmed. Deploy may still be queued/running. Main download.py must verify overall/deploy success and safe extraction before artifact/publication gates.'};(root/(role.upper()+'_ARTIFACT_PREFETCH.json')).write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out),flush=True)
