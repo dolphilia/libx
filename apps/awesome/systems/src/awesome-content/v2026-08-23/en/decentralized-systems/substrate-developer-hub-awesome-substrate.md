@@ -1,37 +1,21 @@
 ---
 title: "Awesome Substrate"
-description: "A curated collection of resources and projects focused on Substrate."
+description: "Resources for building Substrate blockchains: templates, FRAME pallets, clients, tools, and SCALE codecs."
 licenseSource: "github-substrate-developer-hub-awesome-substrate-readme-md"
 ---
 
 # Awesome Substrate
 
-A curated collection of resources and projects focused on Substrate.
+Substrate is an open-source [Rust](https://www.rust-lang.org/) framework for building upgradable, modular, and efficient blockchains, maintained by [Parity Technologies](https://www.parity.io/) with source code on [GitHub](https://github.com/paritytech/substrate). This list covers development resources, templates, FRAME pallets, client libraries, tools, and SCALE codec implementations.
 
-## Contents
-
-- [Resources](#resources)
-- [Support](#support)
-- [Social](#social)
-- [Events](#events)
-- [Blogs](#blogs)
-- [Videos](#videos)
-- [Templates](#templates)
-- [FRAME Pallets](#frame-pallets)
-- [Framework Extensions](#framework-extensions)
-- [Client Libraries](#client-libraries)
-- [Mobile](#mobile)
-- [Tools](#tools)
-- [Products and Services](#products-and-services)
-- [Alternative Implementations](#alternative-implementations)
-- [SCALE Codec](#scale-codec)
+For a broader list covering the entire Polkadot ecosystem, see [awesome-dot](https://github.com/haquefardeen/awesome-dot).
 
 ## Resources
 
 - [DotJobs](https://dotjobs.net/) - A job board for the Substrate and Polkadot ecosystem projects, maintained by [Stateless.Money](https://stateless.money/).
 - [Developer Hub GitHub](https://github.com/substrate-developer-hub/) - Substrate Developer Hub repositories.
 - [Ecosystem Projects](https://substrate.io/ecosystem/projects/) - Projects and teams building with Substrate.
-- [Polkadot Stack](https://github.com/w3f/Grants-Program/blob/master/docs/polkadot_stack.md) - An `awesome list` maintained by our friends at [Web3 Foundation](https://web3.foundation/).
+- [Polkadot Stack](https://github.com/w3f/Grants-Program/blob/master/docs/polkadot_stack.md) - An Awesome list maintained by [Web3 Foundation](https://web3.foundation/).
 - [Official Homepage](https://substrate.io/) - Vision, ecosystem, opportunities, and much more.
   - [Docs](https://docs.substrate.io/) - Developer documentation.
   - [Tutorials](https://docs.substrate.io/tutorials) - Guided exercises to get you started.
@@ -45,23 +29,21 @@ A curated collection of resources and projects focused on Substrate.
 
 ## Support
 
-- [Builders Program](https://substrate.io/ecosystem/substrate-builders-program/) - White-glove solutions and dedicated support team for visionary teams using Substrate.
-- [Stack Exchange](https://substrate.stackexchange.com/) - The best place for all technical questions.
+- [Builders Program](https://substrate.io/ecosystem/substrate-builders-program/) - Tailored solutions and a dedicated support team for teams using Substrate.
+- [Stack Exchange](https://substrate.stackexchange.com/) - Technical questions and answers.
 - [Web3 Foundation Grants](https://web3.foundation/grants) - Funding for ecosystem development.
 - [Polkadot Treasury](https://wiki.polkadot.network/docs/learn-treasury#creating-a-treasury-proposal) - The Treasury funds are allocated through the voting on spending proposal.
 
 ## Social
 
 - [Substrate Developers Chat (Telegram)](https://t.me/substratedevs) - Chat with other Substrate developers, also bridged to [matrix](https://matrix.to/#/#substratedevs:matrix.org).
-- [Twitter](https://twitter.com/substrate_io) - Follow us to stay up-to-date.
+- [Twitter](https://twitter.com/substrate_io) - Substrate project updates.
 - [Polkaverse](https://polkaverse.com) - A decentralized news-feed style social platform for the Polkadot community to discuss, share knowledge, post ecosystem updates and interact with posts. Built on top of [Subsocial](https://subsocial.network).
 
 ## Events
 
-- [Sub0 Developer Conference](https://sub0.parity.io/) - Semiannual, online and in-person for all
-  things Substrate.
-- [Substrate Seminar](https://substrate.io/ecosystem/resources/seminar/) - Bi-weekly
-  collaborative learning sessions.
+- [Sub0 Developer Conference](https://sub0.parity.io/) - An online and in-person conference covering Substrate, described as semiannual in the fixed README.
+- [Substrate Seminar](https://substrate.io/ecosystem/resources/seminar/) - Collaborative learning sessions, described as biweekly in the fixed README.
 
 ## Blogs
 
@@ -77,16 +59,15 @@ A curated collection of resources and projects focused on Substrate.
   - [Sub0 Conference Dec. 2019](https://www.youtube.com/playlist?list=PLp0_ueXY_enWZ4UZE7rM0hdT8Z_ZTjU5V)
   - [Sub0 Conference Apr. 2019](https://www.youtube.com/playlist?list=PLp0_ueXY_enWqrfP_vR4PLhzQj76fLT8y)
 - [Polkadot Network Technical Explainers](https://www.youtube.com/playlist?list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8)
-- [Substrate Seminar Twitch](https://www.twitch.tv/polkadotdev) - Biweekly stream hosted by Polkadot Developers Twitch.
+- [Substrate Seminar Twitch](https://www.twitch.tv/polkadotdev) - A stream hosted by Polkadot Developers Twitch, described as biweekly in the fixed README.
   - [Old Seminar Crowdcast](https://www.crowdcast.io/e/substrate-seminar-2/) - Seminar archive.
   - [Older Seminar Crowdcast](https://www.crowdcast.io/e/substrate-seminar/) - Older still Seminar archive.
 - [Substrate: A Rustic Vision for Polkadot by Gavin Wood at Web3 Summit 2018](https://www.youtube.com/watch?v=0IoUZdDi5Is)
 
 ## Templates
 
-- [Base](https://github.com/substrate-developer-hub/substrate-node-template) - Minimal FRAME-based
-  node, derived from [upstream](https://github.com/paritytech/substrate/tree/master/bin/node-template).
-- [Frontier](https://github.com/paritytech/frontier/tree/master/template) - Fronter enabled EVM and Ethereum RPC compatible Substrate node, ready for hacking.
+- [Base](https://github.com/substrate-developer-hub/substrate-node-template) - Minimal FRAME-based node, derived from [upstream](https://github.com/paritytech/substrate/tree/master/bin/node-template).
+- [Frontier](https://github.com/paritytech/frontier/tree/master/template) - Frontier-enabled EVM and Ethereum RPC compatible Substrate node, ready for hacking.
 - [Front-End](https://github.com/substrate-developer-hub/substrate-front-end-template) - Polkadot-JS API and [React](https://reactjs.org/) app to build front-ends for Substrate-based chains.
 - [Parachain](https://github.com/substrate-developer-hub/substrate-parachain-template) - Cumulus enabled Substrate node, derived from [upstream](https://github.com/paritytech/cumulus/tree/master/parachain-template).
 - [`substrate-stencil`](https://github.com/kaichaosun/substrate-stencil) - A template for a Substrate node that includes staking and governance capabilities.
@@ -180,7 +161,7 @@ A curated collection of resources and projects focused on Substrate.
 - [Megaclite](https://github.com/patractlabs/megaclite) - Zero-knowledge tools for the Polkadot ecosystem.
 - [Metadata Portal](https://nova-wallet.github.io/metadata-portal/) - A self-hosted webpage that shows the latest metadata and chain specs for any given network.
 - [Minimark](https://github.com/kodadot/packages) - Implementation of RMRK NFT v1/v2 protocol maintained by KodaDot.
-- [Nova Polkadot Utils](https://github.com/nova-wallet/nova-utils) - Contains static info & metadata to support client apps in Polkadot ecosystem to map it to various netowrks.
+- [Nova Polkadot Utils](https://github.com/nova-wallet/nova-utils) - Contains static info & metadata to support client apps in Polkadot ecosystem to map it to various networks.
 - [Polkadot Vault](https://signer.parity.io/) (formerly Parity Signer) - Upcycle an unused mobile phone into an air-gapped hardware wallet.
 - [Polkadot PANIC](https://github.com/SimplyVC/panic_polkadot) - Monitoring and alerting solution for Polkadot nodes by Simply VC, compatible with many Substrate chains.
 - [Polkadot Tool Index](https://wiki.polkadot.network/docs/build-tools-index) - List of tools available for your development with Polkadot and any Substrate chain including Block Explorers, Wallets, Network Monitoring & Reporting, Clients, Benchmarking, Fuzzing, Forking, SCALE Codec, CLI Tools and much more.
@@ -190,7 +171,7 @@ A curated collection of resources and projects focused on Substrate.
 - [Proxy Hot Wallet Demo](https://github.com/emostov/proxy-hot-wallet) - A demonstration of a secure, convenient, and flexible hot wallet architecture built on Substrate primitives.
 - [Redspot](https://github.com/patractlabs/redspot) - A [Truffle](https://www.trufflesuite.com/truffle)-like toolkit for smart contracts for the FRAME Contracts pallet and ink!.
 - [Sidecar](https://github.com/paritytech/substrate-api-sidecar) - REST service that runs alongside Substrate nodes.
-- [SS58 Transform](https://polkadot.subscan.io/tools/ss58_transform) - Display key's addressees with all SS58 prefixes.
+- [SS58 Transform](https://polkadot.subscan.io/tools/ss58_transform) - Display key's addresses with all SS58 prefixes.
 - [Staking Rewards Collector](https://github.com/w3f/staking-rewards-collector) - A script to parse and output staking rewards for a given Kusama or Polkadot address and cross-reference them with daily price data.
 - [Subkey](https://docs.substrate.io/reference/command-line-tools/subkey/) - Command line utility for working with cryptographic keys.
 - [SubQuery](https://subquery.network) - A GraphQL indexer and query service that allows users to easily create indexed data sources and host them online for free.
@@ -202,7 +183,7 @@ A curated collection of resources and projects focused on Substrate.
 - [Substrate Docker Builders](https://github.com/ETeissonniere/substrate-nodeops) - A set of Dockerfiles and GitHub Actions to auto-build and push a Docker image for Substrate-based chains.
 - [Substrate Faucet Bot](https://github.com/starkleytech/substrate-faucet) - Python-based faucet for development purposes.
 - [Substrate Graph](https://github.com/playzero/substrate-graph) - GraphQL indexer for Substrate-based chains.
-- [Typechain-Polkadot](https://github.com/Supercolony-net/typechain-polkadot) - Hepls users to generate typescript types from contract ABIs (ink!) and generate runtime code to interact with contracts and deploy them.
+- [Typechain-Polkadot](https://github.com/Supercolony-net/typechain-polkadot) - Helps users to generate typescript types from contract ABIs (ink!) and generate runtime code to interact with contracts and deploy them.
 - [TxWrapper](https://github.com/paritytech/txwrapper) - Helpful library for offline transaction creation.
 - [VSCode Substrate](https://marketplace.visualstudio.com/items?itemName=paritytech.vscode-substrate) - Plugin for Visual Studio Code.
 - [Polkaholic.io](https://polkaholic.io) - Multi-chain block explorer with API and DeFi support across 40+ parachains.
