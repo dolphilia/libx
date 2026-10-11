@@ -16,7 +16,7 @@ with zipfile.ZipFile(source) as z:
  c=json.loads(z.read('SOURCE_COMPONENTS.json'));assert set(z.namelist())=={x['path'] for x in c['files']}|{'SOURCE_COMPONENTS.json'};assert len(z.namelist())==509
  for x in c['files']:assert hashlib.sha256(z.read(x['path'])).hexdigest()==x['sha256']
  assert not any(n.endswith('/source.zip') for n in z.namelist())
-out={'status':'passed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':sha,'files':len(m['files']),'allManifestFilesExact':True,'documents':18,'EnglishGuides':9,'JapaneseGuides':9,'gnuM4DeployedFiles':len([x for x in m['files'] if x['path'].startswith('docs/gnu-patch/')]),'preferredSourcesExact':preferred,'sourceOfferMembers':509,'sourceOfferSHA256':h(source)}
+out={'status':'passed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':sha,'files':len(m['files']),'allManifestFilesExact':True,'documents':18,'EnglishGuides':9,'JapaneseGuides':9,'gnuPatchDeployedFiles':len([x for x in m['files'] if x['path'].startswith('docs/gnu-patch/')]),'preferredSourcesExact':preferred,'sourceOfferMembers':509,'sourceOfferSHA256':h(source)}
 if role=='production':
  S=Path('/private/tmp/libx-gnu-patch-production-state-982');B=Path('/private/tmp/libx-gnu-patch-production-before-982');b=json.loads((S/'before.json').read_text());p=json.loads((S/'prepublish.json').read_text());a=json.loads((S/'after.json').read_text())
  assert b==json.loads((B/'before.json').read_text());assert b['deployment']['commit']=='01ada58f864af6a00bb6f73fccc0bd63dbea26d9';assert b['deployment']==p['deployment'];assert a['deployment']['commit']==sha;assert a['deployment']['id']!=b['deployment']['id'];assert 'libx.dev' in a['domains']
