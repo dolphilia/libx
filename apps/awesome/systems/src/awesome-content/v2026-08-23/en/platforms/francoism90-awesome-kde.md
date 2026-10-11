@@ -1,105 +1,97 @@
 ---
 title: "Awesome KDE"
-description: "A curated collection of resources and projects focused on KDE."
+description: "KDE applications, Plasma desktop customization, documentation, articles and communities."
 licenseSource: "github-francoism90-awesome-kde-readme-md"
 ---
 
 # Awesome KDE
 
-A curated collection of resources and projects focused on KDE.
+[KDE](https://kde.org/) is a free software community building a user-friendly computing environment, a desktop, applications for communication, work, education and entertainment, and a platform for building applications. This list covers applications, Plasma desktop customizations, documentation, articles and communities.
 
-## Contents
-
-- [Applications](#applications)
-- [Customization](#customization)
-- [Documentation](#documentation-and-resources)
-- [Articles](#articles)
-- [Communities](#communities)
-
----
+“KDE community project” marks entries that the fixed source identifies as developed by the KDE community and hosted on KDE infrastructure. Version requirements and maintenance notes below reflect that source.
 
 ## Applications
 
-Tip: An overview of the most used KDE community apps are listed on the [official website](https://apps.kde.org/).
+Browse KDE community applications on the [official website](https://apps.kde.org/).
 
 ### Internet & Networking
 
-- [Akregator](https://apps.kde.org/akregator/) - Enables you to follow news sites, blogs and other RSS/Atom-enabled websites 📌.
-- [Falkon](https://www.falkon.org/) - QtWebEngine based cross-platform web browser 📌.
-- [Firefox KDE](https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox) - Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE.
-- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect/) - A complete implementation of KDE Connect especially for GNOME Shell with Nautilus, Chrome and Firefox integration.
-- [KDE Connect](https://kdeconnect.kde.org/) - A project to communicate across all your devices: receive your phone notifications on your desktop computer, control your desktop from your phone, etc 📌.
-- [KGet](https://apps.kde.org/kget/) - A versatile and user-friendly download manager 📌.
-- [KMail](https://apps.kde.org/kmail2/) - KMail is the email component of Kontact, the integrated personal information manager from KDE 📌.
-- [KNetworkManager](https://userbase.kde.org/KNetworkManager) - A KDE client for the back end NetworkManager software 📌.
-- [Konqueror](https://konqueror.org/) - Uses the KHTML rendering engine (and optionally Webkit) so it supports the latest web standards such as HTML5, JavaScript, CSS3, and others 📌.
-- [Konversation](https://konversation.kde.org/) - A user-friendly Internet Relay Chat (IRC) client built on the KDE Platform 📌.
-- [KRDC](https://apps.kde.org/krdc/) - A client application that allows you to view or control a desktop session on another machine that is running a compatible server (VNC & RDP) 📌.
-- [KTorrent](https://apps.kde.org/ktorrent/) - A BitTorrent application which allows you to download files using the BitTorrent protocol 📌.
-- [NeoChat](https://apps.kde.org/neochat/) - Matrix network client for KDE 📌.
-- [Otter Browser](https://otter-browser.org/) - Otter Browser aims to recreate the best aspects of the classic Opera (12.x) UI using Qt5.
-- [Plasma-browser-integration](https://userbase.kde.org/Plasma-browser-integration) - A suite of new features which make [Firefox](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/), [Chrome](https://chrome.google.com/webstore/detail/plasma-integration/cimiefiiaegbelhefglklhhakcgmhkai) and Chromium-based browsers work with your desktop 📌.
-- [qBittorrent](https://www.qbittorrent.org/) - An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar.
+- [Akregator](https://apps.kde.org/akregator/) - Enables you to follow news sites, blogs and other RSS/Atom-enabled websites (KDE community project).
+- [Falkon](https://www.falkon.org/) - QtWebEngine based cross-platform web browser (KDE community project).
+- [Firefox KDE](https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox) - Standalone web browser from mozilla.org with an OpenSUSE patch for KDE integration.
+- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect/) - A complete KDE Connect implementation for GNOME Shell, with Nautilus, Chrome and Firefox integration.
+- [KDE Connect](https://kdeconnect.kde.org/) - A project to communicate across all your devices: receive your phone notifications on your desktop computer, control your desktop from your phone, etc (KDE community project).
+- [KGet](https://apps.kde.org/kget/) - Download manager (KDE community project).
+- [KMail](https://apps.kde.org/kmail2/) - KMail is the email component of Kontact, the integrated personal information manager from KDE (KDE community project).
+- [KNetworkManager](https://userbase.kde.org/KNetworkManager) - A KDE client for the back end NetworkManager software (KDE community project).
+- [Konqueror](https://konqueror.org/) - The fixed source describes a browser using KHTML, optionally Webkit, and supporting HTML5, JavaScript, CSS3 and other web standards (KDE community project).
+- [Konversation](https://konversation.kde.org/) - Internet Relay Chat (IRC) client built on the KDE Platform (KDE community project).
+- [KRDC](https://apps.kde.org/krdc/) - A client application that allows you to view or control a desktop session on another machine that is running a compatible server (VNC & RDP) (KDE community project).
+- [KTorrent](https://apps.kde.org/ktorrent/) - Client for downloading files with the BitTorrent protocol (KDE community project).
+- [NeoChat](https://apps.kde.org/neochat/) - Matrix network client for KDE (KDE community project).
+- [Otter Browser](https://otter-browser.org/) - Browser aiming to recreate aspects of the classic Opera (12.x) UI using Qt5.
+- [Plasma-browser-integration](https://userbase.kde.org/Plasma-browser-integration) - Features that integrate [Firefox](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/), [Chrome](https://chrome.google.com/webstore/detail/plasma-integration/cimiefiiaegbelhefglklhhakcgmhkai) and Chromium-based browsers with the desktop (KDE community project).
+- [qBittorrent](https://www.qbittorrent.org/) - BitTorrent client written in C++, based on Qt and libtorrent-rasterbar.
 - [Qt WebBrowser](http://doc.qt.io/QtWebBrowser/) - Qt WebBrowser is a browser for embedded devices developed using the capabilities of Qt and Qt WebEngine.
-- [Smb4K](https://apps.kde.org/en/smb4k) - Advanced Network Neighborhood Browser and Samba Share Mounting Utility 📌.
-- [Tokodon](https://apps.kde.org/pt-br/tokodon/) - Tokodon is a Mastodon client. It allows you to interact with the Fediverse community 📌. 
+- [Smb4K](https://apps.kde.org/en/smb4k) - Network neighborhood browser and Samba share mounting utility (KDE community project).
+- [Tokodon](https://apps.kde.org/pt-br/tokodon/) - Mastodon client for interacting with the Fediverse community (KDE community project).
 
 ### Graphics & Imaging
 
-- [digiKam](https://www.digikam.org/) - Professional Photo Management with the Power of Open Source 📌.
-- [Gwenview](https://apps.kde.org/gwenview/) - A fast and easy to use image viewer by KDE 📌.
-- [KColorChooser](https://apps.kde.org/kcolorchooser/) - A simple application to select the color from the screen or from a pallete 📌.
-- [KolourPaint](https://apps.kde.org/kolourpaint/) - A simple painting program to quickly create raster images. It is useful as a touch-up tool and simple image editing tasks 📌.
-- [Krita](https://apps.kde.org/krita/) - Painting tool designed for concept artists, illustrators, matte and texture artists, and the VFX industry 📌.
-- [Okular](https://apps.kde.org/okular/) - A universal document viewer 📌.
-- [Spectacle](https://apps.kde.org/spectacle/) - An application for capturing desktop screenshots 📌.
+- [digiKam](https://www.digikam.org/) - Open-source photo management application (KDE community project).
+- [Gwenview](https://apps.kde.org/gwenview/) - Image viewer by KDE (KDE community project).
+- [KColorChooser](https://apps.kde.org/kcolorchooser/) - Application for selecting colors from the screen or a palette (KDE community project).
+- [KolourPaint](https://apps.kde.org/kolourpaint/) - Painting program for creating raster images, retouching and simple image editing (KDE community project).
+- [Krita](https://apps.kde.org/krita/) - Painting tool designed for concept artists, illustrators, matte and texture artists, and the VFX industry (KDE community project).
+- [Okular](https://apps.kde.org/okular/) - A universal document viewer (KDE community project).
+- [Spectacle](https://apps.kde.org/spectacle/) - An application for capturing desktop screenshots (KDE community project).
 
 ### Multimedia
 
-- [Amarok](https://amarok.kde.org/) - Amarok is a powerful music player for Linux, Unix and Windows with an intuitive interface 📌.
-- [Elisa](https://elisa.kde.org/) - A music player developed by the KDE community that strives to be simple and nice to use 📌.
-- [Haruna](https://invent.kde.org/multimedia/haruna) - Open source video player built with Qt/QML and libmpv 📌.
+- [Amarok](https://amarok.kde.org/) - Music player for Linux, Unix and Windows (KDE community project).
+- [Elisa](https://elisa.kde.org/) - A music player developed by the KDE community that strives to be simple and nice to use (KDE community project).
+- [Haruna](https://invent.kde.org/multimedia/haruna) - Open source video player built with Qt/QML and libmpv (KDE community project).
 - [KCast](https://github.com/Agundur-KDE/KCast) - A Plasma 6 widget to cast video files or YouTube URLs to a Chromecast device.
 - [Kdenlive](https://www.kdenlive.org/) - A non-linear video editor for Linux using the MLT video framework.
-- [KMix](https://apps.kde.org/kmix/) - A sound channel mixer and volume control 📌.
-- [KWave](https://apps.kde.org/kwave/) - A sound editor built on the KDE Frameworks 5 📌.
+- [KMix](https://apps.kde.org/kmix/) - A sound channel mixer and volume control (KDE community project).
+- [KWave](https://apps.kde.org/kwave/) - A sound editor built on the KDE Frameworks 5 (KDE community project).
 - [SMPlayer](https://www.smplayer.info/) - Media player with built-in codecs that can play virtually all video and audio formats.
 - [VLC](https://www.videolan.org/vlc/) - A free and open source cross-platform multimedia player and framework that plays most multimedia files, and various streaming protocols.
 
 ### Office & Productivity
 
-- [Calligra](https://www.calligra.org/) - Includes efficient and capable office components 📌.
-- [GhostWriter](https://ghostwriter.kde.org/) - No distraction markdown editor 📌.
-- [Kate](https://apps.kde.org/kate/) - A multi-document, multi-view text editor by KDE 📌.
-- [Kronometer](https://apps.kde.org/kronometer/) A stopwatch application for KDE 📌.
-- [KWrite](https://apps.kde.org/kwrite/) - A text editor by KDE, based on the KDE Frameworks editor component 📌.
-- [RSI Break](https://apps.kde.org/rsibreak/) - RSIBreak can be used to remind you to take a break now and then 📌.
-- [Kraft](https://volle-kraft-voraus.de/) - Kraft simplifies to handle documents like invoices in your small business.
+- [Calligra](https://www.calligra.org/) - Suite of office components (KDE community project).
+- [GhostWriter](https://ghostwriter.kde.org/) - Distraction-free Markdown editor (KDE community project).
+- [Kate](https://apps.kde.org/kate/) - A multi-document, multi-view text editor by KDE (KDE community project).
+- [Kronometer](https://apps.kde.org/kronometer/) - Stopwatch application for KDE (KDE community project).
+- [KWrite](https://apps.kde.org/kwrite/) - A text editor by KDE, based on the KDE Frameworks editor component (KDE community project).
+- [RSI Break](https://apps.kde.org/rsibreak/) - Application that reminds you to take occasional breaks (KDE community project).
+- [Kraft](https://volle-kraft-voraus.de/) - Document handling, including invoices, for small businesses.
 
 ### System Administration
 
-- [Discover](https://apps.kde.org/discover/) - Intended for users and distros where the terminal isn't the optimal solution for installation of apps and add-ons or updates 📌.
-- [Dolphin](https://apps.kde.org/dolphin/) - File manager included in the KDE desktop 📌.
-- [KDiskFree](https://apps.kde.org/kdf/) - Displays the available file devices (hard drive partitions, drives, etc.) along with information on their capacity, free space, type and mount point 📌.
-- [KInfoCenter](https://userbase.kde.org/KInfoCenter) - A utility that provides detailed information about a computer system 📌.
-- [Konsole](https://apps.kde.org/konsole/) - Terminal emulator included in the KDE desktop 📌.
-- [Krusader](https://krusader.org/) - An advanced twin panel (commander style) file manager for KDE 📌.
-- [KSystemLog](https://apps.kde.org/ksystemlog/) - A system log viewer tool 📌.
-- [Kup](https://apps.kde.org/kup/) - A backup scheduler for KDE's Plasma desktop 📌.
-- [Sweeper](https://apps.kde.org/sweeper/) - Sweeper helps to clean unwanted traces the user leaves on the system and to regain disk space removing unused temporary files 📌.
-- [Yakuake](https://apps.kde.org/yakuake/) - A drop-down terminal emulator based on KDE's Konsole technology 📌.
+- [Discover](https://apps.kde.org/discover/) - App and add-on installation and updates for users and distributions where a terminal is not the preferred solution (KDE community project).
+- [Dolphin](https://apps.kde.org/dolphin/) - File manager included in the KDE desktop (KDE community project).
+- [KDiskFree](https://apps.kde.org/kdf/) - Displays available devices (hard drive partitions, drives, etc.) along with information on their capacity, free space, type and mount point (KDE community project).
+- [KInfoCenter](https://userbase.kde.org/KInfoCenter) - A utility that provides detailed information about a computer system (KDE community project).
+- [Konsole](https://apps.kde.org/konsole/) - Terminal emulator included in the KDE desktop (KDE community project).
+- [Krusader](https://krusader.org/) - Twin-panel (commander-style) file manager for KDE (KDE community project).
+- [KSystemLog](https://apps.kde.org/ksystemlog/) - A system log viewer tool (KDE community project).
+- [Kup](https://apps.kde.org/kup/) - A backup scheduler for KDE's Plasma desktop (KDE community project).
+- [Sweeper](https://apps.kde.org/sweeper/) - Sweeper helps to clean unwanted traces the user leaves on the system and to regain disk space removing unused temporary files (KDE community project).
+- [Yakuake](https://apps.kde.org/yakuake/) - A drop-down terminal emulator based on KDE's Konsole technology (KDE community project).
 
 ### Utilities & Tools
 
-- [Android File Transfer](https://whoozle.github.io/android-file-transfer-linux/) - Reliable MTP client with minimalistic UI.
-- [Ark](https://apps.kde.org/ark/) - Archiving Tool 📌.
+- [Android File Transfer](https://whoozle.github.io/android-file-transfer-linux/) - MTP client with a minimal UI.
+- [Ark](https://apps.kde.org/ark/) - Archiving Tool (KDE community project).
 - [dictee](https://github.com/rcspam/dictee) - Push-to-talk voice dictation with KDE Plasma 6 plasmoid, PyQt6 setup wizard, and tray icon. 4 ASR backends (Parakeet, Vosk, Whisper, Canary), post-processing pipeline, translation. 100% local, 25+ languages.
 - [fancontrol-gui](https://github.com/Maldela/fancontrol-gui) - GUI for fancontrol which is part of lm_sensors.
-- [KDE Wallet Manager](https://invent.kde.org/utilities/kwalletmanager/) - Manage the passwords on KDE systems. The KDE wallet subsystem allows access and password management of every application that integrates with the KDE wallet 📌.
+- [KDE Wallet Manager](https://invent.kde.org/utilities/kwalletmanager/) - Manage the passwords on KDE systems. The KDE wallet subsystem allows access and password management of every application that integrates with the KDE wallet (KDE community project).
 - [KeePassXC](https://keepassxc.org/) - Cross-platform community-driven port of Keepass password manager.
-- [KFind](https://apps.kde.org/kfind/) - A standalone search tool, launched by KRunner or from your menu. It is also integrated into Konqueror as "Find File" in the "Tools" menu 📌.
-- [KRename](https://apps.kde.org/krename/) - A utility to rename multiple files 📌.
-- [KWin-lowlatency](https://github.com/tildearrow/kwin-lowlatency) - An attempt to reduce latency and stuttering in the popular KWin compositor used in KDE.
+- [KFind](https://apps.kde.org/kfind/) - A standalone search tool, launched by KRunner or from your menu. It is also integrated into Konqueror as "Find File" in the "Tools" menu (KDE community project).
+- [KRename](https://apps.kde.org/krename/) - A utility to rename multiple files (KDE community project).
+- [KWin-lowlatency](https://github.com/tildearrow/kwin-lowlatency) - An attempt to reduce latency and stuttering in the KWin compositor used in KDE.
 - [KWinFT](https://gitlab.com/kwinft/kwinft) - Wayland compositor and X11 window manager.
 - [LocalTranslate](https://github.com/terslang/LocalTranslate) - Offline translation app built with Qt Quick that makes use of Firefox's [neural translation models](https://github.com/mozilla/firefox-translations-models).
 - [QOwnNotes](https://www.qownnotes.org/) - Note taking app with cloud integration, web and mobile support.
@@ -109,65 +101,65 @@ Tip: An overview of the most used KDE community apps are listed on the [official
 
 ### Development & Programming
 
-- [Kate](https://kate-editor.org/) - Kate is a Feature-Packed Code Editor with advanced support for LSP, Syntax Highlighting, multi-cursoe and more 📌.
-- [KDevelop](https://www.kdevelop.org/) - A cross-platform IDE for C, C++, Python, QML/JavaScript and PHP 📌.
-- [Kompare](https://apps.kde.org/kompare/) - A diff/patch frontend 📌.
-- [Okteta](https://apps.kde.org/okteta/) - Hex Editor 📌.
+- [Kate](https://kate-editor.org/) - Code editor with LSP support, syntax highlighting, multiple cursors and other features (KDE community project).
+- [KDevelop](https://www.kdevelop.org/) - A cross-platform IDE for C, C++, Python, QML/JavaScript and PHP (KDE community project).
+- [Kompare](https://apps.kde.org/kompare/) - A diff/patch frontend (KDE community project).
+- [Okteta](https://apps.kde.org/okteta/) - Hex Editor (KDE community project).
 - [Qt Designer](http://doc.qt.io/qt-5/qtdesigner-manual.html) - Qt tool for designing and building graphical user interfaces (GUIs) with Qt Widgets.
-- [Umbrello](https://apps.kde.org/umbrello/) - UML Modeller is a Unified Modelling Language (UML) diagram program based on KDE Technology 📌.
+- [Umbrello](https://apps.kde.org/umbrello/) - Unified Modelling Language (UML) diagram program based on KDE technology (KDE community project).
 
 ### Education
 
-- [KTurtle](https://apps.kde.org/kturtle/) - An educational programming environment that aims to make learning how to program as easy as possible 📌.
-- [LabPlot](https://labplot.kde.org/) - Interactive graphing and analysis of scientific data 📌.
+- [KTurtle](https://apps.kde.org/kturtle/) - An educational programming environment that aims to make learning how to program as easy as possible (KDE community project).
+- [LabPlot](https://labplot.kde.org/) - Interactive graphing and analysis of scientific data (KDE community project).
 
-## Customization
+## Customization <a id="plasma-desktop"></a>
 
-Note: Customizations quickly become outdated, it is recommended to look in the [KDE Store](https://store.kde.org/browse/) or use [Discover](https://userbase.kde.org/Discover) instead.
+The source warns that customizations quickly become outdated and recommends browsing the [KDE Store](https://store.kde.org/browse/) or using [Discover](https://userbase.kde.org/Discover).
 
-### Plasma desktop
+Plasma desktop customizations.
 
-#### Extensions
+### Extensions
 
 - [Dynamic Wallpaper Engine](https://github.com/zzag/plasma5-wallpapers-dynamic) - A wallpaper plugin that continuously updates the desktop background based on the current time in your location.
 - [Hoppla](https://github.com/Fuchs/hoppla-sa) - KDE Plasma desktop widget to control Philips Hue lights.
 - [Kvantum](https://github.com/tsujan/Kvantum) - An SVG-based theme engine for Qt4/Qt5, KDE and LXQt, with an emphasis on elegance, usability and practicality.
-- [Places Widget](https://github.com/dfaust/plasma-applet-places-widget) - **Plasma 5** widget that gives access to user places.
-- [Window AppMenu Applet](https://github.com/psifidotos/applet-window-appmenu) - **Plasma 5** applet in order to show the window appmenu.
-- [Window Title Applet](https://github.com/psifidotos/applet-window-title/) - **Plasma 5** applet that shows the current window title and icon in your panels.
-- [Karousel](https://github.com/peterfajdiga/karousel) - KWin tiling script with scrolling. Works especially well with ultrawide screens.
-- [KDoit](https://github.com/lubdhak7414/KDoit) - Lightweight to-do list plasmoid for KDE Plasma 6 with nested sublists, priorities, due dates, and UUID-based file sync.
-- [Latte-Dock](https://invent.kde.org/plasma/latte-dock) - Latte is a dock based on Plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids for **Plasma 5** 📌. ⚠️ Unmaintained.
-- [Latte Dock NG](https://github.com/ruizhi-lab/latte-dock-ng) is a Wayland-first dock for KDE Plasma 6.5+ that provides an elegant and intuitive experience for your tasks and widgets.
+- [Places Widget](https://github.com/dfaust/plasma-applet-places-widget) - Plasma 5 widget that gives access to user places.
+- [Window AppMenu Applet](https://github.com/psifidotos/applet-window-appmenu) - Plasma 5 applet in order to show the window appmenu.
+- [Window Title Applet](https://github.com/psifidotos/applet-window-title/) - Plasma 5 applet that shows the current window title and icon in your panels.
+- [Karousel](https://github.com/peterfajdiga/karousel) - KWin tiling script with scrolling, described in the source as working especially well with ultrawide screens.
+- [KDoit](https://github.com/lubdhak7414/KDoit) - To-do list plasmoid for KDE Plasma 6 with nested sublists, priorities, due dates and UUID-based file sync.
+- [Latte-Dock](https://invent.kde.org/plasma/latte-dock) - Dock based on Plasma frameworks for tasks and plasmoids on Plasma 5. Unmaintained according to the fixed source (KDE community project).
+- [Latte Dock NG](https://github.com/ruizhi-lab/latte-dock-ng) - Wayland-first dock for tasks and widgets on KDE Plasma 6.5+.
   
-#### KCM Modules and Systems
+### KCM Modules and Systems
 
-- [kcm-wacomtablet](https://invent.kde.org/plasma/wacomtablet/) - KDE GUI for the Wacom Linux Drivers 📌.
-- [kde-gtk-config](https://invent.kde.org/plasma/kde-gtk-config) - GTK2 and GTK3 Configurator for KDE 📌.
-- [kded_rotation](https://github.com/dos1/kded_rotation) - A small, hacky KDED module for handling automatic screen rotation on tablets and hybrid laptops.
+- [kcm-wacomtablet](https://invent.kde.org/plasma/wacomtablet/) - KDE GUI for the Wacom Linux Drivers (KDE community project).
+- [kde-gtk-config](https://invent.kde.org/plasma/kde-gtk-config) - GTK2 and GTK3 Configurator for KDE (KDE community project).
+- [kded_rotation](https://github.com/dos1/kded_rotation) - Small, improvised KDED module for automatic screen rotation on tablets and hybrid laptops.
 
-#### Themes
+### Themes
 
-- [Adapta KDE](https://github.com/PapirusDevelopmentTeam/adapta-kde) - A port of the popular GTK theme Adapta for **Plasma 5** desktop with a few additions and extras.
-- [Arc KDE](https://github.com/PapirusDevelopmentTeam/arc-kde) - A port of the popular GTK theme Arc for **Plasma 5** desktop with a few additions and extras.
-- [Breath](https://gitlab.manjaro.org/artwork/themes/breath) - Breath Theme for Manjaro Linux (**Plasma 5**).
+- [Adapta KDE](https://github.com/PapirusDevelopmentTeam/adapta-kde) - Port of the Adapta GTK theme to the Plasma 5 desktop, with additions and extras.
+- [Arc KDE](https://github.com/PapirusDevelopmentTeam/arc-kde) - Port of the Arc GTK theme to the Plasma 5 desktop, with additions and extras.
+- [Breath](https://gitlab.manjaro.org/artwork/themes/breath) - Breath Theme for Manjaro Linux (Plasma 5).
 - [Canta](https://github.com/vinceliuice/Canta-kde) - A flat design theme for KDE Plasma desktop.
 - [ChromeOS](https://github.com/vinceliuice/ChromeOS-kde) - A materia Design theme for KDE Plasma desktop.
-- [Darkine KDE](https://github.com/Rokin05/darkine-kde) - Theme for KDE **Plasma 5** desktop, SDDM and more.
+- [Darkine KDE](https://github.com/Rokin05/darkine-kde) - Theme for KDE Plasma 5 desktop, SDDM and more.
 - [Fluent](https://github.com/vinceliuice/Fluent-kde) - A Microsoft inspired fluent Design theme for the KDE Plasma desktop.
-- [Helium](https://store.kde.org/p/998869/) - A translucent theme for **Plasma 5**.
+- [Helium](https://store.kde.org/p/998869/) - A translucent theme for Plasma 5.
 - [Hello](https://github.com/n4n0GH/hello) - A compilation of various color-schemes, themes, icons and more for the KDE Plasma desktop. It is unopinionated, putting you in charge.
 - [Layan](https://github.com/vinceliuice/Layan-kde) - A flat design theme for KDE Plasma desktop.
-- [Materia KDE](https://github.com/PapirusDevelopmentTeam/materia-kde) - A port of the popular GTK theme Materia for **Plasma 5** desktop with a few additions and extras.
+- [Materia KDE](https://github.com/PapirusDevelopmentTeam/materia-kde) - Port of the Materia GTK theme to the Plasma 5 desktop, with additions and extras.
 - [McMojave](https://github.com/vinceliuice/McMojave-kde) - A MacOSX Mojave like theme for KDE Plasma desktop.
 - [Orchis](https://github.com/vinceliuice/Orchis-kde) - A materia Design theme for KDE Plasma desktop.
 - [Qogir](https://github.com/vinceliuice/Qogir-kde) - A flat design theme for KDE Plasma desktop.
 - [WhiteSur](https://github.com/vinceliuice/WhiteSur-kde) - A MacOS Big Sur theme for KDE Plasma.
 
-#### Qt and GTK+ Applications Appearance
+### Qt and GTK+ Applications Appearance
 
 - [Akava-Kv](https://github.com/Akava-Design/Akava-Kv) - User oriented Kvantum theme for KDE.
-- [breeze-gtk](https://github.com/KDE/breeze-gtk) - A GTK Theme Built to Match KDE's Breeze 📌.
+- [breeze-gtk](https://github.com/KDE/breeze-gtk) - A GTK Theme Built to Match KDE's Breeze (KDE community project).
 - [Breeze10](https://github.com/fauzie811/Breeze10) - A Windows 10 style windows decoration for KDE Plasma.
 - [BreezeBlurred](https://github.com/alex47/BreezeBlurred) - A fork of KDE Breeze window decoration written in Qt C++.
 - [BreezeEnhanced](https://github.com/tsujan/BreezeEnhanced) - A fork of KDE Breeze decoration with additional options.
@@ -177,47 +169,47 @@ Note: Customizations quickly become outdated, it is recommended to look in the [
 - [Sweet KDE](https://github.com/EliverLara/Sweet-kde) - A dark and modern theme for KDE plasma.
 - [XBoomer](https://github.com/efskap/XBoomer) - XP Window Decorations for KDE Plasma.
 
-#### Icons
+### Icons
 
-- [Antu](https://gitlab.com/froodo_alexis/Antu-icons) - A smooth icon theme designed for Plasma Desktop.
-- [Candy](https://github.com/EliverLara/candy-icons) - Sweet gradient icons.
+- [Antu](https://gitlab.com/froodo_alexis/Antu-icons) - Icon theme designed for the Plasma desktop.
+- [Candy](https://github.com/EliverLara/candy-icons) - Gradient icons.
 - [Flatery](https://github.com/cbrnix/Flatery) - Icon theme for Linux in flat style.
-- [La Capitaine](https://github.com/keeferrourke/la-capitaine-icon-theme) - Icon pack with inspiration taken from the latest iterations of macOS and Google's Material Design.
+- [La Capitaine](https://github.com/keeferrourke/la-capitaine-icon-theme) - Icon pack inspired by macOS and Google’s Material Design; the source refers to macOS iterations current at the time.
 - [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) - Material icon theme, initially based on Paper.
 - [Tela](https://github.com/vinceliuice/Tela-icon-theme) - A flat colorful Design icon theme.
-- [Zafiro](https://github.com/zayronxio/Zafiro-icons) - Minimalist icons created with the flat-desing technique, utilizing washed out colors and always accompanied by white. The priority is simplicity.
+- [Zafiro](https://github.com/zayronxio/Zafiro-icons) - Minimalist flat-design icons using washed-out colors always accompanied by white, with an emphasis on simplicity.
 
-#### Cursors
+### Cursors
 
 - [Bibata](https://store.kde.org/p/1197198/) - Material Based Cursor Theme.
 - [Capitaine](https://github.com/keeferrourke/capitaine-cursors) - An x-cursor theme inspired by macOS and based on KDE Breeze.
 
-#### Scripts
+### Scripts
 
 - [Fluid tile](https://codeberg.org/Serroda/fluid-tile) - Simple auto tiling with UI for KWin that works natively.
 - [Grid-Tiling-Kwin](https://github.com/lingtjien/Grid-Tiling-Kwin) - A kwin script that automatically tiles windows.
 - [Kröhnkite](https://github.com/anametologin/krohnkite) - A dynamic tiling extension for KWin.
 - [kwin-tiling](https://github.com/faho/kwin-tiling) - Tiling script for kwin.
 
-#### Display Manager
+### Display Manager
 
-- [Chili](https://github.com/MarianArlt/kde-plasma-chili) - The hottest login theme around for KDE **Plasma 5**.
-- [Delicious](https://github.com/stuomas/delicious-sddm-theme) - A delicious SDDM theme for DE collectors/addicts.
-- [Sugar Candy](https://framagit.org/MarianArlt/sddm-sugar-candy) - The sweetest login theme available for the SDDM display manager.
+- [Chili](https://github.com/MarianArlt/kde-plasma-chili) - Login theme for KDE Plasma 5.
+- [Delicious](https://github.com/stuomas/delicious-sddm-theme) - SDDM theme for desktop environment collectors and enthusiasts.
+- [Sugar Candy](https://framagit.org/MarianArlt/sddm-sugar-candy) - Login theme for the SDDM display manager.
 
 ## Documentation and Resources
 
-- [KDE Wikis](https://wiki.kde.org/) - The KDE wikis are a source of information and documentation for the KDE desktop, applications, teams, events and more 📌.
-- [KDE Invent](https://invent.kde.org/) - Discover KDE projects, groups and snippets 📌.
-- [KDE Bugtracker](https://bugs.kde.org/) - KDE's official Bugtracker 📌.
+- [KDE Wikis](https://wiki.kde.org/) - The KDE wikis are a source of information and documentation for the KDE desktop, applications, teams, events and more (KDE community project).
+- [KDE Invent](https://invent.kde.org/) - Discover KDE projects, groups and snippets (KDE community project).
+- [KDE Bugtracker](https://bugs.kde.org/) - KDE's official Bugtracker (KDE community project).
 - [ArchWiki](https://wiki.archlinux.org/index.php/KDE) - Arch Linux KDE Wiki.
 - [Gentoo Wiki](https://wiki.gentoo.org/wiki/KDE) - Gentoo KDE Wiki.
 - [KDE Configs](https://github.com/shalva97/kde-configuration-files) - List of KDE configuration files and more.
 
 ## Articles
 
-- [KDE.news](https://dot.kde.org/) - The official KDE news website 📌.
-- [Planet KDE](https://planet.kde.org/) - Blogs of KDE contributors 📌.
+- [KDE.news](https://dot.kde.org/) - The official KDE news website (KDE community project).
+- [Planet KDE](https://planet.kde.org/) - Blogs of KDE contributors (KDE community project).
 - [Phoronix](https://www.phoronix.com/scan.php?page=news_topic&q=KDE) - Phoronix KDE News Archives.
 - [Nate Graham's Blog](https://pointieststick.wordpress.com/) - Adventures in Linux and KDE.
 - [Nico's Blog](https://nicolasfella.wordpress.com/) - Programmer from Germany that is working on KDE.
@@ -226,9 +218,5 @@ Note: Customizations quickly become outdated, it is recommended to look in the [
 ## Communities
 
 - [Kreddit](https://www.reddit.com/r/kde/) - KDE Community on Reddit.
-- [KDE Store](https://store.kde.org/) - Official KDE Store for developers to share Plasma customizations 📌.
+- [KDE Store](https://store.kde.org/) - Official KDE Store for developers to share Plasma customizations (KDE community project).
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/kde) - Questions tagged with `kde`.
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
