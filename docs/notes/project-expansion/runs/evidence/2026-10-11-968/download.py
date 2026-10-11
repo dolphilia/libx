@@ -24,8 +24,14 @@ def download(url):
    chunks.append(chunk);total+=len(chunk)
    if total-reported>=25*1024*1024:print(json.dumps({'downloadedBytes':total}),flush=True);reported=total
   return b''.join(chunks)
-run=api('actions/runs/'+str(run_id));assert run['head_sha']==sha and run['conclusion']=='success'
-jobs=api('actions/runs/'+str(run_id)+'/jobs')['jobs'];assert next(j for j in jobs if j['name']=='deploy-'+role)['conclusion']=='success'
+quality_only=len(sys.argv)>3 and sys.argv[3]=='quality-only'
+state_only=len(sys.argv)>3 and sys.argv[3]=='state-only'
+run=api('actions/runs/'+str(run_id));assert run['head_sha']==sha
+jobs=api('actions/runs/'+str(run_id)+'/jobs')['jobs']
+if quality_only:assert next(j for j in jobs if j['name']=='quality-check')['conclusion']=='success'
+else:
+ assert run['conclusion']=='success'
+ assert next(j for j in jobs if j['name']=='deploy-'+role)['conclusion']=='success'
 artifacts=api('actions/runs/'+str(run_id)+'/artifacts')['artifacts']
 quality_candidates=[a for a in artifacts if a['name'].startswith('verified-deployment-'+sha+'-') and not a['expired']]
 assert quality_candidates
@@ -33,7 +39,8 @@ quality_attempt=max(int(a['name'].rsplit('-',1)[1]) for a in quality_candidates)
 if quality_attempt!=run['run_attempt']:
  assert next(j for j in api('actions/runs/'+str(run_id)+'/attempts/'+str(quality_attempt)+'/jobs')['jobs'] if j['name']=='quality-check')['conclusion']=='success'
 expected=['verified-deployment-'+sha+'-'+str(quality_attempt),'pages-production-before-'+str(run_id)+'-'+str(run['run_attempt']),'pages-production-state-'+str(run_id)+'-'+str(run['run_attempt'])]
-if role=='preview':expected=expected[:1]
+if role=='preview' or quality_only:expected=expected[:1]
+elif state_only:expected=expected[1:]
 records=[]
 for name in expected:
  a=next(a for a in artifacts if a['name']==name);assert not a['expired'] and a['workflow_run']['id']==run_id and a['workflow_run']['head_sha']==sha
@@ -51,9 +58,10 @@ for name in expected:
    assert ((q.parts[0]=='dist' or item.filename=='manifest.json') if kind=='artifact' else item.filename in ['before.json','prepublish.json','after.json'])
   z.extractall(dest)
  records.append({'kind':kind,'id':a['id'],'name':name,'zipSha256':h,'bytes':len(data),'archive':str(archive),'directory':str(dest),'safeExtraction':True})
-out={'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'passed','run':run_id,'headSha':sha,'qualityArtifactAttempt':quality_attempt,'publicationAttempt':run['run_attempt'],'artifacts':records}
-with (root/(role.upper()+'_DOWNLOAD.json')).open('x') as f:json.dump(out,f,indent=2);f.write('\n')
-print(json.dumps(out))
+out={'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'quality-artifact-downloaded' if quality_only else 'passed','run':run_id,'headSha':sha,'qualityArtifactAttempt':quality_attempt,'publicationAttempt':run['run_attempt'],'artifacts':records}
+with (root/(role.upper()+('_QUALITY_DOWNLOAD.json' if quality_only else ('_STATE_DOWNLOAD.json' if state_only else '_DOWNLOAD.json')))).open('x') as f:json.dump(out,f,indent=2);f.write('\n')
+print(json.dumps(out),flush=True)
+if quality_only or state_only:sys.exit(0)
 
 logdata=download('https://api.github.com/repos/dolphilia/libx/actions/runs/'+str(run_id)+'/logs')
 logzip=pathlib.Path('/private/tmp/libx-gnu-tar-'+role+'-logs-968.zip');logzip.write_bytes(logdata)
