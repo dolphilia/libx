@@ -1,12 +1,11 @@
 from pathlib import Path
 from bs4 import BeautifulSoup
-import copy, json, re, hashlib
+import copy, json, re, hashlib, sys
 
 U=Path(__file__).resolve().parent
 N=U.parents[1]
-W=Path('/private/tmp/libx-gnu-tar-update-986')
+W=Path(sys.argv[1]) if len(sys.argv)>1 else U.parents[6]
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-ref=lambda p:{'path':str(p.relative_to(N.parents[3])),'sha256':sha(p)}
 S=BeautifulSoup((N/'source/derived/manual.html').read_text(),'html.parser')
 manifest=json.loads((N/'SOURCE_MANIFEST.json').read_text())
 for f in manifest['files']: assert sha(N/f['path'])==f['sha256']
@@ -49,6 +48,6 @@ for key,c in parts.items():
  p=U/'preferred/en'/routes[key];p.parent.mkdir(parents=True,exist_ok=True)
  p.write_text('---\ntitle: '+json.dumps(title,ensure_ascii=False)+'\nlicenseSource: gnu-tar-manual\ndocumentContext: '+json.dumps(ctx,ensure_ascii=False)+'\n---\n\n<div class="gnu-tar-original-content">'+str(c)+'</div>\n')
  rows.append({'sourceId':key,'page':routes[key],'title':title,'words':len(c.get_text().split()),'pre':len(c.select('pre')),'sourceFragmentSHA256':sha(f),'enSHA256':sha(p)})
-out={'status':'canonical-draft-not-content-reviewed','scope':'GNU tar1.35 sections3–3.3.4 inclusive; remaining3.4–3.11 and subsequent chapters point to fixed full original. Existing31guides+2references unchanged.','sourceHTMLSHA256':sha(N/'source/derived/manual.html'),'sourceManifestSHA256':sha(N/'SOURCE_MANIFEST.json'),'rows':rows,'words':sum(r['words'] for r in rows),'pre':sum(r['pre'] for r in rows),'workspace':str(W),'publicationBase':'bbef8318a4cfc811bec31b5452f5b24b4dad2e2b','bodyTransform':'Remove upstream nav/selflinks; split nested hierarchy without deleting child text; preserve prose/code/IDs and direct remaining sections to fixed complete original.'}
+out={'status':'canonical-draft-not-content-reviewed','scope':'GNU tar1.35 sections3–3.3.4 inclusive; remaining3.4–3.11 and subsequent chapters point to fixed full original. Existing31guides+2references unchanged.','sourceHTMLSHA256':sha(N/'source/derived/manual.html'),'sourceManifestSHA256':sha(N/'SOURCE_MANIFEST.json'),'rows':rows,'words':sum(r['words'] for r in rows),'pre':sum(r['pre'] for r in rows),'publicationBase':'bbef8318a4cfc811bec31b5452f5b24b4dad2e2b','bodyTransform':'Remove upstream nav/selflinks; split nested hierarchy without deleting child text; preserve prose/code/IDs and direct remaining sections to fixed complete original.'}
 (U/'PAGE_PLAN.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 print('Canonical draft',len(rows),'pages',out['words'],'words',out['pre'],'pre; all fixed source hashes verified')
