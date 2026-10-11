@@ -23,3 +23,8 @@ for old,new in [('PREVIEW_RENDERED_LINKS.json','PRODUCTION_RENDERED_LINKS.json')
  d=read(old);assert d['status']=='passed';d.update(at=at,reusedFrom=ref(old),productionOutputBinding=ref('PREVIEW_PRODUCTION_REUSE.json'),limits='Same exact article/source outputs and fixed source inputs; reuse Preview document check. Production HTTP/native/CAS verification recorded separately.')
  (E/new).write_text(json.dumps(d,indent=2)+'\n')
 print(json.dumps({'same':len(same),'different':len(different),'articles':80,'sourceOutputs':len(sourcePaths),'reusedDocumentChecks':True}))
+
+if not different:
+ for old,new in [('PREVIEW_OTHER_OUTPUT_COMPARISON.json','PRODUCTION_OTHER_OUTPUT_COMPARISON.json'),('PREVIEW_EXISTING_OUTPUT_COMPARISON.json','PRODUCTION_EXISTING_OUTPUT_COMPARISON.json')]:
+  d=read(old);assert d['status']=='passed';d.update(at=at,reusedFrom=ref(old),productionOutputBinding=ref('PREVIEW_PRODUCTION_REUSE.json'),limits='All6607outputs and unchanged baseline match byte/hash/size exactly; reuse complete Preview baseline comparisons. Production HTTP/native/CAS separately checked.')
+  (E/new).write_text(json.dumps(d,indent=2)+'\n')
