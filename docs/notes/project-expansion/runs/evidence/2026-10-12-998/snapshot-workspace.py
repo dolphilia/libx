@@ -1,0 +1,9 @@
+from pathlib import Path
+import shutil,json,hashlib,datetime
+N=Path('/Users/dolphilia/github/libx/docs/notes/document-import/gnu-libtool/v2-6-2');W=Path('/private/tmp/libx-gnu-libtool-998');A=W/'apps/gnu-libtool';T=N/'workspace-snapshot';sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();files=[];sources=[]
+for p in sorted(A.rglob('*')):
+ r=p.relative_to(A)
+ if any(x in ['node_modules','dist','.astro']for x in r.parts)or p.is_symlink()or not p.is_file():continue
+ if r.parts[:2]==('public','source'):sources.append({'path':str(r),'sha256':sha(p),'bytes':p.stat().st_size});continue
+ t=T/'apps/gnu-libtool'/r;t.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,t);files.append({'path':str(t.relative_to(T)),'sha256':sha(t),'bytes':t.stat().st_size})
+t=T/'pnpm-lock.yaml';shutil.copyfile(W/'pnpm-lock.yaml',t);files.append({'path':'pnpm-lock.yaml','sha256':sha(t),'bytes':t.stat().st_size});out={'status':'saved-current-content-reviewed-formal-workspace','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'baseCommit':'d9339d5a67c732681efc007d50fa05847c448795','workspace':str(W),'excludedFromDeployment':True,'files':files,'reconstructedSourceFiles':sources,'sourceReconstruction':'generate.py copies exact fixed source tree, archive and derived manual from source/. They are already preserved in fixed SOURCE_MANIFEST and are omitted only from the duplicate snapshot. Preferred English11/Japanese10 pages retained in both preferred/ and app snapshot.','excludes':['node_modules','dist','.astro','symlinks'],'limits':'Not standalone sourcekit or clean reconstruction proof. Final GFDL source offer and independent replay remain pending.'};(T/'MANIFEST.json').write_text(json.dumps(out,indent=2)+'\n');print('Saved',len(files),'workspace files;',len(sources),'fixed source outputs reconstructable')

@@ -1,0 +1,71 @@
+<div class="section-level-extent" id="Debugging-executables">
+
+<h3 class="section" id="Debugging-executables-1"><span>3.4 Debugging executables</span></h3>
+<p>If <samp class="file">hell</samp> was a complicated program, you would certainly want to
+test and debug it before installing it on your system.  In the above
+section, you saw how the libtool wrapper script makes it possible to run
+the program directly, but unfortunately, this mechanism interferes with
+the debugger:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">gdb hell</kbd>
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type "show copying" to see the conditions.
+There is no warranty for GDB; type "show warranty" for details.
+GDB 4.16 (i386-unknown-netbsd), (C) 1996 Free Software Foundation, Inc.
+
+"hell": not in executable format: File format not recognized
+
+(gdb) <kbd class="kbd">quit</kbd>
+burger$
+</pre></div>
+<p>Sad.  It doesn’t work because GDB doesn’t know where the executable
+lives.  So, let’s try again, by invoking GDB directly on the executable:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">gdb .libs/hell</kbd>
+GNU gdb 5.3 (i386-unknown-netbsd)
+Copyright © 1996--2019, 2021--2026 Free Software Foundation,
+Inc.
+GDB is free software, covered by the GNU General Public License,
+and you are welcome to change it and/or distribute copies of it
+under certain conditions.  Type "show copying" to see the conditions.
+There is no warranty for GDB.  Type "show warranty" for details.
+(gdb) <kbd class="kbd">break main</kbd>
+Breakpoint 1 at 0x8048547: file main.c, line 29.
+(gdb) <kbd class="kbd">run</kbd>
+Starting program: /home/src/libtool/demo/.libs/hell
+/home/src/libtool/demo/.libs/hell: can't load library 'libhello.so.0'
+
+Program exited with code 020.
+(gdb) <kbd class="kbd">quit</kbd>
+burger$
+</pre></div>
+<p>Argh.  Now GDB complains because it cannot find the shared library that
+<samp class="file">hell</samp> is linked against.  So, we must use libtool to
+properly set the library path and run the debugger.  Fortunately, we can
+forget all about the <samp class="file">.libs</samp> directory, and just run it on
+the executable wrapper (see <a class="pxref" href="#Execute-mode">Execute mode</a>):
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">libtool --mode=execute gdb hell</kbd>
+GNU gdb 5.3 (i386-unknown-netbsd)
+Copyright © 1996--2019, 2021--2026 Free Software Foundation,
+Inc.
+GDB is free software, covered by the GNU General Public License,
+and you are welcome to change it and/or distribute copies of it
+under certain conditions.  Type "show copying" to see the conditions.
+There is no warranty for GDB.  Type "show warranty" for details.
+(gdb) <kbd class="kbd">break main</kbd>
+Breakpoint 1 at 0x8048547: file main.c, line 29.
+(gdb) <kbd class="kbd">run</kbd>
+Starting program: /home/src/libtool/demo/.libs/hell
+
+Breakpoint 1, main (argc=1, argv=0xbffffc40) at main.c:29
+29        printf ("Welcome to GNU Hell!\n");
+(gdb) <kbd class="kbd">quit</kbd>
+The program is running.  Quit anyway (and kill it)? (y or n) <kbd class="kbd">y</kbd>
+burger$
+</pre></div>
+<hr/>
+</div>

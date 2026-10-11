@@ -3,8 +3,8 @@
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
 - 検証済み: 50件 / 今回の公開済み: 50件 / 公開待ち: 0件
-- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 2件
-- eligible待機: 1件 / 新規着手: 可能
+- 作業中: 1件（新規1件） / 長期保留作業: 0件 / 候補保留: 2件
+- eligible待機: 0件 / 新規着手: 停止
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
 - 台帳・実ファイル照合: 合格
@@ -63,6 +63,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-patch / v2-8 / new | verified | verified | GNU patch2.8固定patch.man全14節の9英日ガイド・18原稿・509member編集キットについて、統合Pages公開後確認を完了。次は現行OPERATIONSと案件別台帳を再照合し、重大不具合・着手済み案件と既存修正/更新を優先する。着手可能な上位工程がなければ既存候補から未評価候補を補充し、追加価値・実用性と原文条件を確認する。GNU bc1.08.2追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 GNU patch2.8固定patch.man全14節の9英日ガイド・18原稿・509member編集キットについて、統合Pages公開後確認を完了。次は現行OPERATIONSと案件別台帳を再照合し、重大不具合・着手済み案件と既存修正/更新を優先する。着手可能な上位工程がなければ既存候補から未評価候補を補充し、追加価値・実用性と原文条件を確認する。GNU bc1.08.2追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
 | gnu-tar / v1-35 / update | verified | verified | GNU tar1.35の3–3.3.4を8英日ガイド追加し、全39英日ガイド・80原稿・788member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 GNU tar1.35の3–3.3.4を8英日ガイド追加し、全39英日ガイド・80原稿・788member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
 | gnu-tar / v1-35 / update | verified | verified | GNU tar1.35の3.4–3.4.4を5英日ガイド追加し、全44英日ガイド・90原稿・843member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 GNU tar1.35の3.4–3.4.4を5英日ガイド追加し、全44英日ガイド・90原稿・843member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
+| gnu-libtool / v2-6-2 / new | content-reviewed | content-reviewed | GNU Libtool2.6.2第2〜3章10英日ガイド/3988語・全91訳文項目の別パス内容レビュー完了。英語GFDL参照1を含む21原稿の定本・コード31例・脚注1〜4・リンク・再生成一致・26ルート対象ビルドは合格。次は編集可能GFDL sourcekitと配布条件、独立再構築、代表native表示、最新Production基準の選択統合を実施し、verified登録→限定push→統合Pages Preview/Production→公開後確認。草稿保存ブランチにのみ保存し、root配信app未登録・公開未実施。 GNU Libtool2.6.2第2〜3章10英日ガイド/3988語・全91訳文項目の別パス内容レビュー完了。英語GFDL参照1を含む21原稿の定本・コード31例・脚注1〜4・リンク・再生成一致・26ルート対象ビルドは合格。次は編集可能GFDL sourcekitと配布条件、独立再構築、代表native表示、最新Production基準の選択統合を実施し、verified登録→限定push→統合Pages Preview/Production→公開後確認。草稿保存ブランチにのみ保存し、root配信app未登録・公開未実施。 |
 
 ## 登録済みの既存文書
 
@@ -139,7 +140,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-m4 | 1.4.21 | selected | 現行枠・GNU tar公開後確認完了を照合し、正規作成器でGNU M41.4.21正式作業を隔離開始。18英日ガイド/1英語参照。 GNU M41.4.21候補eligible74点。固定入力・具体的許諾履行設計・通常テンプレート試作・別パス選定照合を再利用し、現行公開commit32cbf393から作業場所を分離、正規作成器で正式gnu-m4 app/operationを作成。全18節を5・7・6ページの3バッチで定本化・独立翻訳・別パス全文レビューし、編集可能ソースキット/対象検証/統合Pages公開へ進める。まず第1章5節から。 |
 | gnu-bc | 1.08.2 | deferred | 既存の現行日本語資料が主要機能を広く網羅しており、提案範囲は実質的に重複する。Libxの英日切替・検索・固定原文配布だけでは現段階で追加価値3/5を説明できないため採用しない。実用性・読みやすさを否定せず、原文の不備や再現工数を理由にしない。 JMと実質的に重ならない公式範囲・版差分、またはLibxでの具体的な追加価値3/5以上を示す根拠が得られた時のみ再評価する。 |
 | gnu-patch | 2.8 | selected | 70点・既存枠と選定証拠を照合し、正規作成器で隔離した正式GNU patch2.8/全14見出し9英日ガイドの作業を開始。 GNU patch2.8は6条件・加重70点のeligible。現行公開commit01ada58f864af6a00bb6f73fccc0bd63dbea26d9から正式作業場所を分離し、正規作成器でgnu-patch app/operationを登録。固定patch.man全14見出しを9意味単位へ定本化し、5+4単位の2バッチで独立翻訳・別パス全文レビューする。空pre/空字体タグだけを文字列保全付きで整理し、許諾3段落/全著作権/原著者/編集注記/原文とNEWS導線を維持。原稿配布キット・再生成・対象/統合検証後にPages Preview/Productionと公開後確認へ進める。 |
-| gnu-libtool | 2.6.2 | eligible | 固定GNU Libtool2.6.2第2〜3章10節/脚注1–4、6条件・74点・別パス選定照合合格。旧1.5日本語チュートリアルとの差を根拠に追加価値3。eligible登録、正式app/翻訳全範囲/公開は未着手。 Start GNU Libtool2.6.2 new operation within caps from verified publiccommit d9339d5a67c732681efc007d50fa05847c448795. Use regular creator/template for official gnu-libtool app, split complete chapters2–3 into10canonical pages with wholefootnotes1–4, prepare full independent Japanese batch and separate-pass meaning review, then sourcekit/rights/structure/links/build/integration/display and Pages publication. |
+| gnu-libtool | 2.6.2 | selected | 現行枠・GNU tar公開後確認完了を照合し、正規作成器でGNU Libtool2.6.2正式作業を隔離開始。10英日ガイド/1英語参照。 Start GNU Libtool2.6.2 new operation within caps from verified publiccommit d9339d5a67c732681efc007d50fa05847c448795. Use regular creator/template for official gnu-libtool app, split complete chapters2–3 into10canonical pages with wholefootnotes1–4, prepare full independent Japanese batch and separate-pass meaning review, then sourcekit/rights/structure/links/build/integration/display and Pages publication. |
 
 ## 実行記録
 
