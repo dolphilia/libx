@@ -94,5 +94,7 @@ tar: Exiting with failure status due to previous errors
 <dd><p><a class="xref" href="/docs/gnu-tar/source/v1-35/manual.html#exclude">Excluding Some Files</a>を参照してください。</p></dd>
 </dl>
 <hr/>
-<h5 class="footnote-body-heading"><a href="/docs/gnu-tar/v1-35/ja/01-guide/44-position-sensitive-options/#DOCF6" id="FOOT6">(6)</a></h5><p><code class="code">--recursion</code>オプションは既定値であり、ここでは分かりやすくするために記述しています。同じ例は、次のようにも書けます。</p></div></div>
+<h5 class="footnote-body-heading"><a href="/docs/gnu-tar/v1-35/ja/01-guide/44-position-sensitive-options/#DOCF6" id="FOOT6">(6)</a></h5><p><code class="code">--recursion</code>オプションは既定値であり、ここでは分かりやすくするために記述しています。同じ例は、次のようにも書けます。</p><div class="example">
+<pre class="example-preformatted">tar -cf a.tar /usr --no-recursion /var/*
+</pre></div></div></div>
 

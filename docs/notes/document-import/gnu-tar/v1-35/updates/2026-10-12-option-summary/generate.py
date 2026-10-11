@@ -28,7 +28,10 @@ for foot in ['FOOT5', 'FOOT6']:
     key = next(k for k, c in parts.items() if c.select_one(f'a[href="#{foot}"]'))
     h = source.find(id=foot).parent
     parts[key].append(copy.deepcopy(h))
-    parts[key].append(copy.deepcopy(h.find_next_sibling('p')))
+    for sibling in h.find_next_siblings():
+        if sibling.name == 'h5':
+            break
+        parts[key].append(copy.deepcopy(sibling))
     ids[foot] = routes[key]
 rows = []
 for key, node in parts.items():

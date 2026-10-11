@@ -19,7 +19,11 @@ for r in plan['rows']:
     for a in list(original.select('a.footnote[href]')):
         h = source.find(id=a['href'][1:]).parent
         original.append(copy.deepcopy(h))
-        original.append(copy.deepcopy(h.find_next_sibling('p')))
+        boundary = h.find_next_sibling('h5')
+        for sibling in h.find_next_siblings():
+            if sibling is boundary:
+                break
+            original.append(copy.deepcopy(sibling))
     shape = lambda s: [(x.name, re.sub(r'\s+', ' ', x.get_text()).strip()) for x in s.find_all(re.compile('^(p|pre|dt|dd|li|th|td|h[1-6])$'))]
     assert shape(original) == shape(en), r['page']
     assert [x.get_text() for x in original.select('pre')] == [x.get_text() for x in en.select('pre')]

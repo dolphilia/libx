@@ -142,4 +142,6 @@ tar: Exiting with failure status due to previous errors
 <h5 class="footnote-body-heading"><a href="/docs/gnu-tar/v1-35/en/01-guide/44-position-sensitive-options/#DOCF6" id="FOOT6">(6)</a></h5><p>The <samp class="option">--recursion</samp>
 option is the default and is used here for clarity.  The same example
 can be written as:
-</p></div></div>
+</p><div class="example">
+<pre class="example-preformatted">tar -cf a.tar /usr --no-recursion /var/*
+</pre></div></div></div>
