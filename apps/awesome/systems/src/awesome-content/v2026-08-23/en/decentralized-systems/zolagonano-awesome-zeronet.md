@@ -1,57 +1,29 @@
 ---
 title: "Awesome ZeroNet"
-description: "A curated collection of resources and projects focused on ZeroNet."
+description: "ZeroNet sites, implementations, plugins, guides, proxies, and communities."
 licenseSource: "github-zolagonano-awesome-zeronet-readme-md"
 ---
 
 # Awesome ZeroNet
 
-A curated collection of resources and projects focused on ZeroNet.
+ZeroNet is a decentralized network of peer-to-peer users, similar to the web. This list collects [ZeroNet](https://en.wikipedia.org/wiki/ZeroNet) sites (zites), implementations, plugins, guides, proxies, and communities.
 
-## Contents
-
-- [Zites](#zites)
-  - [Search Engines](#search-engines)
-  - [Zite Indexes](#zite-indexes)
-  - [Chat Rooms](#chat-rooms)
-  - [Forums](#forums)
-  - [Mail Providers](#mail-providers)
-  - [Social Media Zites](#social-media-zites)
-  - [Movies](#movies)
-  - [Books](#books)
-  - [ID Providers](#id-providers)
-  - [Productivity Tools](#productivity-tools)
-  - [Block lists](#block-lists)
-  - [Entertaining Zites](#entertaining-zites)
-  - [Games](#games)
-  - [Developer Tools](#developer-tools)
-  - [Tracker Lists](#tracker-lists)
-  - [File Sharing Zites](#file-sharing-zites)
-- [Implementations](#implementations)
-  - [Python](#python)
-  - [Rust](#rust)
-  - [Android Clients](#android-clients)
-- [Plugins](#plugins)
-- [Guides And Documentations](#guides-and-documentations)
-  - [Installation](#installation)
-  - [Site Development](#site-development)
-- [Proxies(Instances)](#proxiesinstances)
-- [Communities](#communities)
+Descriptions, maintenance status, security properties, and proxy capabilities reflect the fixed README. Addresses and domain names are preserved as listed; “Not listed” corresponds to “N/A” in that source. Links beginning with `http://127.0.0.1:43110/` point to a local ZeroNet client.
 
 ## Zites
 
-> Zite is shortened version of ZeroNet Site.
+A zite is a ZeroNet site.
 
 ### Search Engines
 
 | Name | Description | Address | Domain Name |
 |:---- | :--- | :---: | :--- |
 | Kaffiene Search | Caffeinated Search & Index | `1Mr5rX9TauvaGReB4RjCaE6D37FJQaY5Ba` | `zerosearch.bit` |
-| Zoogle Zearch | Google Search for ZeroNet | `13EYKqmPpwzBU4iaQq9Y4vfVMgj8dHeLkc` | N/A |
-| Dream Search | Dream Search - The most data scanning search engine in ZeroNet | `1JBFNPrAGp1nQX6RsAN6oRqCfvtoeWoion` | N/A |
-| Search And Index Zites |  A Simple search engine and index | `1xiwbXaTbo9XU32hEpW4NyjZHrugSFdo6` | N/A |
-| 0find0go | Every public website on ZeroNet in one search engine | `1Jj3kjHmjPYWGfCdyd8Pr6pm5sJawrLmrp` | N/A |
-| Important Zites | Index of user-added zites | `15Pf9VVuDT8NSWj1qUBh4V89yPmrmzRw6a` | N/A |
+| Zoogle Zearch | Google Search for ZeroNet | `13EYKqmPpwzBU4iaQq9Y4vfVMgj8dHeLkc` | Not listed |
+| Dream Search | Described in the README as the ZeroNet search engine that scans the most data | `1JBFNPrAGp1nQX6RsAN6oRqCfvtoeWoion` | Not listed |
+| Search And Index Zites |  A Simple search engine and index | `1xiwbXaTbo9XU32hEpW4NyjZHrugSFdo6` | Not listed |
+| 0find0go | Described in the README as searching every public website on ZeroNet | `1Jj3kjHmjPYWGfCdyd8Pr6pm5sJawrLmrp` | Not listed |
+| Important Zites | Index of user-added zites | `15Pf9VVuDT8NSWj1qUBh4V89yPmrmzRw6a` | Not listed |
 
 ### Zite Indexes
 
@@ -59,44 +31,44 @@ A curated collection of resources and projects focused on ZeroNet.
 |:---- | :--- | :---: | :--- |
 | ZeroSitesX | Sites of ZeroNetX | `1SitesVCdgNfHojzf2aGKQrD4dteAZR1k` | `Sites.ZeroNetX.bit` |
 | ZeroSites | Sites of ZeroNet | `1SiTEs2D3rCBxeMoLHXei2UYqFcxctdwB` | `Sites.ZeroNetwork.bit` |
-| ZeroWiki | ZeroWiki site list | `138R53t3ZW7KDfSfxVpWUsMXgwUnsDNXLP/?Page:list-of-zites` | N/A |
-| Search And Index Zites | Site directory by Krixano | `1xiwbXaTbo9XU32hEpW4NyjZHrugSFdo6` | N/A |
+| ZeroWiki | ZeroWiki site list | `138R53t3ZW7KDfSfxVpWUsMXgwUnsDNXLP/?Page:list-of-zites` | Not listed |
+| Search And Index Zites | Site directory by Krixano | `1xiwbXaTbo9XU32hEpW4NyjZHrugSFdo6` | Not listed |
 | ZeroShortener | Make your zerolinks way shorter and easier to remember | `1GNTAKCimBv5xEnt7QvkDn8sTkEPj7ZYTL` | `0sh.bit` |
-| ZeroCentral | A Zite index with ability to sort by votes | `1Dt7FR5aNLkqAjmosWh8cMWzJu633GYN6u` | N/A |
+| ZeroCentral | A Zite index with ability to sort by votes | `1Dt7FR5aNLkqAjmosWh8cMWzJu633GYN6u` | Not listed |
 
 
 ### Chat Rooms
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| ThunderWave | A beautiful chat for ZeroNet | `1CWkZv7fQAKxTVjZVrLZ8VHcrN6YGGcdky` | N/A |
+| ThunderWave | A beautiful chat for ZeroNet | `1CWkZv7fQAKxTVjZVrLZ8VHcrN6YGGcdky` | Not listed |
 
 ### Forums
  
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| The All-Night Bookstore and Cafe | A Friendly Local Forum | `13gLfTixjjktySEGHBMnmrQu4qMJpoRuXw` | N/A |
-| UnlimitTalk | For those who are cramped in ZeroTalk limits | `1HMLvnRWViMnuvZc5LK4Dm86sZNcSH1jdh` | N/A |
+| The All-Night Bookstore and Cafe | A Friendly Local Forum | `13gLfTixjjktySEGHBMnmrQu4qMJpoRuXw` | Not listed |
+| UnlimitTalk | For those who are cramped in ZeroTalk limits | `1HMLvnRWViMnuvZc5LK4Dm86sZNcSH1jdh` | Not listed |
 | ThreadIt | Decentralized Forum from ZeroNetX Team | `15UYrA7aXr2Nto1Gg4yWXpY3EAJwafMTNk` | `ThreadIt.bit` |
-| NetTalk | Discussion about interne…s and other electronics | `1LfvE91ZF18jdG3wW62Dw7NtfTZh737KPL` | N/A |
-| ZeroTalk++ | Decentralized forum engine | `1EgyL4nj9DmeSSQg3fytxGJjihxtmMon5y` | N/A |
-| Linux.net | Discussion about Linux | `16Go5kc2U9Ff4jeaY8kYiDEgpMYdgyboPY` | N/A |
-| ZeroTalk Tech | Talk about Anything having to do with Technology | `1EfLnw7GDXbZfJmGNoXGQ4XkuHGWkRZTMq` | N/A |
-| 1stZC: ZeroNet Development | 1stZC's ZeroNet Development forum | `1fznczNZUMEMvCiqSmCZGUiv5sVnRcsTD` | N/A |
-| 1stZC: Talks: General | 1stZC's general forum | `1fznctFebYHnmjmFZCmAWPd7nnamAy3Tg` | N/A |
-| 1stZC: ZeroNet Support | 1stZC's support forum | `1fznc4VQbbrQAf4UzHrWS6W2mpGFqXSeD` | N/A |
-| 1stZC: Talks: Politics | 1stZC's politics forum | `1fzncJdLpbsT5eeeYP14EKSaStHhtn5LY` | N/A |
-| Programming.net | A forum about programming | `17YUF4geTD7gBDPeMtQtnV7uhhNcjrYi9u` | N/A |
-| ZeroNet DevZone | ZeroNet core & plugins: issues, pull requests, ideas, RFCs and documentation | `18ryVioVmwFYzhRZKTjKqGYCjkUjoxH3k6` | N/A |
-| ZeroDev Talk | Place for developers to collaborate | `142jqssVAj2iRxMACJg2dzipB5oicZYz5w` | N/A |
+| NetTalk | Discussion about “interne…s” (truncated in the README) and other electronics | `1LfvE91ZF18jdG3wW62Dw7NtfTZh737KPL` | Not listed |
+| ZeroTalk++ | Decentralized forum engine | `1EgyL4nj9DmeSSQg3fytxGJjihxtmMon5y` | Not listed |
+| Linux.net | Discussion about Linux | `16Go5kc2U9Ff4jeaY8kYiDEgpMYdgyboPY` | Not listed |
+| ZeroTalk Tech | Talk about Anything having to do with Technology | `1EfLnw7GDXbZfJmGNoXGQ4XkuHGWkRZTMq` | Not listed |
+| 1stZC: ZeroNet Development | 1stZC's ZeroNet Development forum | `1fznczNZUMEMvCiqSmCZGUiv5sVnRcsTD` | Not listed |
+| 1stZC: Talks: General | 1stZC's general forum | `1fznctFebYHnmjmFZCmAWPd7nnamAy3Tg` | Not listed |
+| 1stZC: ZeroNet Support | 1stZC's support forum | `1fznc4VQbbrQAf4UzHrWS6W2mpGFqXSeD` | Not listed |
+| 1stZC: Talks: Politics | 1stZC's politics forum | `1fzncJdLpbsT5eeeYP14EKSaStHhtn5LY` | Not listed |
+| Programming.net | A forum about programming | `17YUF4geTD7gBDPeMtQtnV7uhhNcjrYi9u` | Not listed |
+| ZeroNet DevZone | ZeroNet core & plugins: issues, pull requests, ideas, RFCs and documentation | `18ryVioVmwFYzhRZKTjKqGYCjkUjoxH3k6` | Not listed |
+| ZeroDev Talk | Place for developers to collaborate | `142jqssVAj2iRxMACJg2dzipB5oicZYz5w` | Not listed |
 | ZeroTorrent | Torrent sharing forum | `192dZ1EG5tU7PnCfuwGMDEBrr2eLqvs4t3` | `ZeroTorrent.bit` |
 | New GFW Talk | Forum dedicated to Great Firewall of China | `19BPUZYAdCMxExKHoVSG3cG95wfUfFTEC9` | `NewGFWTalk.bit` |
-| IranTalk | Forum dedicated to Persian speaking users of ZeroNet | `1AS355T7MGApApoBeE9JgxvvvDxf33Eyh1` | N/A |
-| Pirate Party Forum | Forum dedicated to Pirate Party | `1CLQ81TNixktJ67YFkZtbtsESy3MwZqLEG` | N/A |
+| IranTalk | Forum dedicated to Persian speaking users of ZeroNet | `1AS355T7MGApApoBeE9JgxvvvDxf33Eyh1` | Not listed |
+| Pirate Party Forum | Forum dedicated to Pirate Party | `1CLQ81TNixktJ67YFkZtbtsESy3MwZqLEG` | Not listed |
 
 ### Mail Providers
 
-**Note:** Email services that are built based on ZeroMail are End-to-End encrypted and nobody should be able to see the actual message you're sending, but the username of senders and receptors are publicly available.
+The README describes ZeroMail-based services as end-to-end encrypted, with message contents intended to be unreadable to others. It also notes that sender and recipient usernames are public.
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
@@ -106,12 +78,12 @@ A curated collection of resources and projects focused on ZeroNet.
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| XeroMe | ZeroMe with an easy-on-eyes theme | `1JgcgZQ5a2Gxc4Cfy32szBJC68mMGusBjC` | N/A |
+| XeroMe | ZeroMe with an easy-on-eyes theme | `1JgcgZQ5a2Gxc4Cfy32szBJC68mMGusBjC` | Not listed |
 | 0Hub | List Of ZeroMe Hubs | `1GLndW2MJn7japuF3X2tbfBqgPMR52zaLQ` | `0hub.bit` |
-| AsocioHub | A ZeroMe Hub | `1MxqEM11KaAuKE2X9anKV2hz5NYmM1jaSP` | N/A |
-| PersianHub | A ZeroMe Hub dedicated to persian speaking users | `13YccBekYK3S5LE1sva2wE2cUo6tk3BaWV` | N/A |
-| Modkraft ZeroMe | A ZeroMe Hub for danish speaking perople | `1FS2XUptdQFnFaZiJtGKE1RB1PQuqLEK1r` | N/A |
-| GigaByteHub | A ZeroMe Hub with 100GB limit | `185bkA3iwv1uuprQMbBCN37ArRDFPbnpBg` | N/A |
+| AsocioHub | A ZeroMe Hub | `1MxqEM11KaAuKE2X9anKV2hz5NYmM1jaSP` | Not listed |
+| PersianHub | A ZeroMe Hub for Persian-speaking users | `13YccBekYK3S5LE1sva2wE2cUo6tk3BaWV` | Not listed |
+| Modkraft ZeroMe | A ZeroMe hub for Danish-speaking users | `1FS2XUptdQFnFaZiJtGKE1RB1PQuqLEK1r` | Not listed |
+| GigaByteHub | A ZeroMe Hub with 100GB limit | `185bkA3iwv1uuprQMbBCN37ArRDFPbnpBg` | Not listed |
 
 ### Movies
 
@@ -120,10 +92,10 @@ A curated collection of resources and projects focused on ZeroNet.
 | NGnoidTV | Video site, also named KopyKate | `18Pfr2oswXvD352BbJvo59gZ3GbdbipSzh` | `big.kopykate.bit` |
 | Play | Movie torrents | `1PLAYgDQboKojowD3kwdb3CtWmWaokXvfp` | `0play.bit` |
 | TV Episodes | Magnet links for TV episodes | `1MagneTSMMkNmJTMsTGJtfuNsqGjzzXgQv` | `tvmagnets.bit` |
-| eh anime? | Anime torrents | `1E8Z8sk3cGeWdQumBaYEh6LraqC2BRnutV` | N/A |
-| StreamZ | Real-time streaming platform for Zeronet | `1BTZh5pymEKzMYr3qgDtgr4dMmap77QvEs` | N/A |
-| Box HD | TV series boxsets in HD | `1BoxHDypbjd2yakQtjPwwbJMWR1KbHt1j9` | N/A |
-| Play Anime | Anime torrents | `1AnimePihDhcbVdK1nvnbSEtH4oKU8RAYG` | N/A |
+| eh anime? | Anime torrents | `1E8Z8sk3cGeWdQumBaYEh6LraqC2BRnutV` | Not listed |
+| StreamZ | Real-time streaming platform for ZeroNet | `1BTZh5pymEKzMYr3qgDtgr4dMmap77QvEs` | Not listed |
+| Box HD | TV series boxsets in HD | `1BoxHDypbjd2yakQtjPwwbJMWR1KbHt1j9` | Not listed |
+| Play Anime | Anime torrents | `1AnimePihDhcbVdK1nvnbSEtH4oKU8RAYG` | Not listed |
 
 ### Books
 | Name | Description | Address | Domain Name |
@@ -132,61 +104,61 @@ A curated collection of resources and projects focused on ZeroNet.
 
 ### ID Providers
 
-| Name | Description | Address | Domain Name | UniqueIDs | Centralized |
+| Name | Description | Address | Domain Name | Unique IDs | Centralized |
 | :--- | :--- | :---: | :---: | :---: | :--- |
-| ZeroId | Sample trusted authorization provider | `1iD5ZQJMNXu43w1qLB8sfdHVKppVMduGz` | `zeroid.bit` | :heavy_check_mark: | :heavy_check_mark: |
-| KaffieId | Decentralized ID provider | `1K3tM7irQqSX4Hx3JvNgkimkQzY6jPtBfz` | `kaffie.bit` | :heavy_multiplication_x: | :heavy_multiplication_x: |
-| GateWay | Manually approved ID by Caryoscelus | `144vF644nw3X9dUb4uqsethDjjskhkpavH` | N/A | :heavy_check_mark: | :heavy_check_mark: |
+| ZeroId | Sample trusted authorization provider | `1iD5ZQJMNXu43w1qLB8sfdHVKppVMduGz` | `zeroid.bit` | Yes | Yes |
+| KaffieId | Decentralized ID provider | `1K3tM7irQqSX4Hx3JvNgkimkQzY6jPtBfz` | `kaffie.bit` | No | No |
+| GateWay | Manually approved ID by Caryoscelus | `144vF644nw3X9dUb4uqsethDjjskhkpavH` | Not listed | Yes | Yes |
 
 ### Productivity Tools
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| NullPaste | Decentralized paste-bin | `1MgHVPCE1ve6QfKrgsqCURzRj72HrRWioz` | N/A |
+| NullPaste | Decentralized paste-bin | `1MgHVPCE1ve6QfKrgsqCURzRj72HrRWioz` | Not listed |
 
 ### Block lists
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| Privact blocklist | Blocks websites with external files | `18zoKfKYPnVBuHtKpK1mhAuVsWXV72obA1` | N/A |
-| Kaffie's Spamlist | Mute/ban list for spammers |`1CufK1ZtvekbFXEpSyKT2gDjf9jnqW8KwG` | N/A |
-| Pornography blocklist | ZeroNet pornography blocklist | `13CgSQeywg2ius5pjXVCk7dKUCRkz5xvW3` | N/A |
-| NoMiner blocklist | This is a blocklist that blocks all known sites that cointains a miner. | `1NominErMMEodukCTKD5NN6HqgmtsG4Z8U` | N/A |
-| 0net-preview blocklist | | 0net-preview's blocklist | `16soWyYc1kTobaevbN25FJjWL2qf9PWvFG` | N/A |
+| Privact blocklist | Blocks websites with external files | `18zoKfKYPnVBuHtKpK1mhAuVsWXV72obA1` | Not listed |
+| Kaffie's Spamlist | Mute/ban list for spammers |`1CufK1ZtvekbFXEpSyKT2gDjf9jnqW8KwG` | Not listed |
+| Pornography blocklist | ZeroNet pornography blocklist | `13CgSQeywg2ius5pjXVCk7dKUCRkz5xvW3` | Not listed |
+| NoMiner blocklist | Blocks all sites known to contain a cryptocurrency miner | `1NominErMMEodukCTKD5NN6HqgmtsG4Z8U` | Not listed |
+| 0net-preview blocklist | 0net-preview's blocklist | `16soWyYc1kTobaevbN25FJjWL2qf9PWvFG` | Not listed |
 
 ### Entertaining Zites
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| xkcd mirror | A mirror of randall munroe's xkcd.com | `1XKCDh5XeLm5eN4jM8b1Mk4wKrnUJxV12` | N/A |
+| xkcd mirror | A mirror of Randall Munroe's xkcd.com | `1XKCDh5XeLm5eN4jM8b1Mk4wKrnUJxV12` | Not listed |
 
 ### Games
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| Zero Bird | Flappy Bird inside ZeroNet | `1LMG9b3mhvnfAiMpRccSNzvTbq6bYCQWLf` | N/A |
-| Snake Game | Simple snake game inside ZeroNet | `1JsJ1JitaLboc8pvo4fxh9dvP8mt6toPrE` | N/A |
-| Pac Man | PacMan inside ZeroNet | `14Q1So3DH9qvHts5VuLDgqGp7yCXceujop` | N/A |
-| ZeroSudoku |  Simple Sudoku game inside ZeroNet | `16Gn4QBd8iXFnDcVEcsmYw8soBKCeBezzS` | N/A |
-| Taxi Drift | 2D taxi driving game | `1EzPDDHciaG9AH4ErxsmAKsF4hsrJPktiM` | N/A |
-| Game of Life | Conway's Game of Life inside ZeroNet | `19TrFbEUS1mdznSX24FqnxZgftzNpxCXv8` | N/A |
-| TypinMaster | Simple game to test your typing speed | `1KNvxg3ww7ZLxZRPT8MX4tRcFxwGhWRRK3` | N/A |
-| Games Nintendo | JSNES Nintendo Entertainment System Emulator | `19za8TViGJF4xdvkQHLXK2UCb2gLC1nSVT` | N/A |
+| Zero Bird | Flappy Bird inside ZeroNet | `1LMG9b3mhvnfAiMpRccSNzvTbq6bYCQWLf` | Not listed |
+| Snake Game | Simple snake game inside ZeroNet | `1JsJ1JitaLboc8pvo4fxh9dvP8mt6toPrE` | Not listed |
+| Pac Man | PacMan inside ZeroNet | `14Q1So3DH9qvHts5VuLDgqGp7yCXceujop` | Not listed |
+| ZeroSudoku |  Simple Sudoku game inside ZeroNet | `16Gn4QBd8iXFnDcVEcsmYw8soBKCeBezzS` | Not listed |
+| Taxi Drift | 2D taxi driving game | `1EzPDDHciaG9AH4ErxsmAKsF4hsrJPktiM` | Not listed |
+| Game of Life | Conway's Game of Life inside ZeroNet | `19TrFbEUS1mdznSX24FqnxZgftzNpxCXv8` | Not listed |
+| TypinMaster | Simple game to test your typing speed | `1KNvxg3ww7ZLxZRPT8MX4tRcFxwGhWRRK3` | Not listed |
+| Games Nintendo | JSNES Nintendo Entertainment System Emulator | `19za8TViGJF4xdvkQHLXK2UCb2gLC1nSVT` | Not listed |
 
 ### Developer Tools
 
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
-| Git Center | Git Center is a decentralized hosting platform for Git repositories | `1GitLiXB6t5r8vuU2zC6a8GYj9ME6HMQ4t` | N/A |
+| Git Center | Git Center is a decentralized hosting platform for Git repositories | `1GitLiXB6t5r8vuU2zC6a8GYj9ME6HMQ4t` | Not listed |
 
 ### Tracker Lists
 
 | Name | Address | Domain Name |
 | :--- | :---: | :---: |
-| Syncronite | `15CEFKBRHFfAP9rmL6hhLmHoXrrgmw4B5o` | N/A |
-| Onion V3 trackers | `13hNAdge5ntxJmcnKzAxeLCuyowJkdvFxF` | N/A |
-| Trackers Site | `1EsjAWNxu7iWVNdtAp7zZyTZmuM52jgiLQ` | N/A |
-| Yggdrasil trackers | `1Bd2mgwbxQAHdHnWyDD7URBLDuwxxybw8t` | N/A |
+| Syncronite | `15CEFKBRHFfAP9rmL6hhLmHoXrrgmw4B5o` | Not listed |
+| Onion V3 trackers | `13hNAdge5ntxJmcnKzAxeLCuyowJkdvFxF` | Not listed |
+| Trackers Site | `1EsjAWNxu7iWVNdtAp7zZyTZmuM52jgiLQ` | Not listed |
+| Yggdrasil trackers | `1Bd2mgwbxQAHdHnWyDD7URBLDuwxxybw8t` | Not listed |
 
 ### File Sharing Zites
 
@@ -198,32 +170,32 @@ A curated collection of resources and projects focused on ZeroNet.
 
 ### Python
 
-**Note:** The original version of ZeroNet is not maintained anymore, and using it is not recommended, so please consider using other forks of the project.
+The README states that the original ZeroNet is no longer maintained, does not recommend its use, and recommends using another fork instead.
 
 | Repo URL | Description | Fork |
 | :--- | :--- | :--- |
-| https://github.com/ZeroNetX/ZeroNet | A fork of ZeroNet with HiddenService v3 support | :heavy_check_mark: |
-| https://github.com/zeronet-conservancy/zeronet-conservancy | A fork of ZeroNet that is dedicated to sustaining existing p2p network and developing its values of decentralization and freedom, while gradually switching to a better designed network |:heavy_check_mark: |
+| https://github.com/ZeroNetX/ZeroNet | A fork of ZeroNet with HiddenService v3 support | Yes |
+| https://github.com/zeronet-conservancy/zeronet-conservancy | A fork of ZeroNet that is dedicated to sustaining existing p2p network and developing its values of decentralization and freedom, while gradually switching to a better designed network |Yes |
 
 ### Rust
 
 | Repo URL | Description |
 | :--- | :--- |
-| https://github.com/canewsin/zerunet | Rust Implementation of ZeroNet. Note: **This project is not completed yet** |
-| https://github.com/canewsin/zeronet-rs | Rust Implementation of ZeroNet Core. Note: **This project is not completed yet** |
+| https://github.com/canewsin/zerunet | Rust Implementation of ZeroNet. Not yet complete according to the README |
+| https://github.com/canewsin/zeronet-rs | Rust Implementation of ZeroNet Core. Not yet complete according to the README |
 
 ### Android Clients
 
 | Repo URL | Description |
 | :--- | :--- |
-| https://github.com/ZeroNetX/zeronet_mobile | ZeroNet Mobile is an Native Client for Mobile Devices running Android |
+| https://github.com/ZeroNetX/zeronet_mobile | Native ZeroNet client for Android mobile devices |
 
 ## Plugins
 
 | Name | Description | URL |
 | :--- | :--- | :--- |
 | Name.Yo Plugin | Centralized Domain Names for ZeroNet | https://github.com/ZeroNetX/Plugin-NameYo |
-| Name.Trust Plugin | Centralized Domain Names for ZeroNet | http://127.0.0.1:43110/1PtFxzJ8NECkYQzziGWoEfzScD6NiEgqDY ([mirror](https://proxy.zeronet.dev/1PtFxzJ8NECkYQzziGWoEfzScD6NiEgqDY), [Official GitHub Mirror](https://github.com/rdp-studio/0net-NameTRUST-Resolver)) |
+| Name.Trust Plugin | Centralized Domain Names for ZeroNet | http://127.0.0.1:43110/1PtFxzJ8NECkYQzziGWoEfzScD6NiEgqDY ([mirror](https://proxy.zeronet.dev/1PtFxzJ8NECkYQzziGWoEfzScD6NiEgqDY), [GitHub mirror described as official in the README](https://github.com/rdp-studio/0net-NameTRUST-Resolver)) |
 
 ## Guides And Documentations
 
@@ -237,9 +209,9 @@ A curated collection of resources and projects focused on ZeroNet.
 
 | Description | URL |
 | :--- | :--- |
-| Original ZeroNet installation guide **Note: Original ZeroNet is not maintained anymore** | https://github.com/HelloZeroNet/ZeroNet#how-to-join |
+| Original ZeroNet installation guide (the README states that the original project is no longer maintained) | https://github.com/HelloZeroNet/ZeroNet#how-to-join |
 | ZeroNetX installation guide | https://github.com/ZeroNetX/ZeroNet#how-to-join |
-| Zeronet-Conservancy installation guide | https://github.com/zeronet-conservancy/zeronet-conservancy#how-to-join |
+| ZeroNet-Conservancy installation guide | https://github.com/zeronet-conservancy/zeronet-conservancy#how-to-join |
 
 ### Site Development
 
@@ -248,30 +220,22 @@ A curated collection of resources and projects focused on ZeroNet.
 | Original ZeroNet's guide on site development | https://zeronet.io/docs/site_development/getting_started/ |
 | The Truth about ZeroNet by [imachug](https://github.com/imachug) | https://github.com/imachug/The-Truth-about-ZeroNet |
 | How to build a decentralized chatroom in ZeroNet | http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:99:ZeroChat+tutorial ([mirror](https://proxy.zeronet.dev/Blog.ZeroNetwork.bit/?Post:99:ZeroChat+tutorial)) |
-| Tutorials on site and plugin development | http://127.0.0.1:43110/DevCenter.bit/?/ ([mirror](https://https://0net-preview.com/DevCenter.bit/?/)) |
+| Tutorials on site and plugin development | http://127.0.0.1:43110/DevCenter.bit/?/ ([mirror](https://0net-preview.com/DevCenter.bit/?/)) |
 | Wiki on ZeroNet site development | http://127.0.0.1:43110/138R53t3ZW7KDfSfxVpWUsMXgwUnsDNXLP ([mirror](https://0net-preview.com/138R53t3ZW7KDfSfxVpWUsMXgwUnsDNXLP)) |
 
 ## Proxies(Instances)
 
 | URL |  Allows to add new sites |
 | :--- | :--- |
-| https://0net-preview.com | :heavy_multiplication_x: |
-| https://proxy.zeronet.dev | :heavy_multiplication_x: |
-| https://portal.ngnoid.tv | :heavy_multiplication_x: |
-| https://zeronet.ipfsscan.io | :heavy_check_mark: |
+| https://0net-preview.com | No |
+| https://proxy.zeronet.dev | No |
+| https://portal.ngnoid.tv | No |
+| https://zeronet.ipfsscan.io | Yes |
 
-**WARNING: _Do not sign in into ZeroNet through public proxies as proxies have access to the private keys and there is chance for your identity to get stolen by the proxy._**
+Warning: Do not sign in to ZeroNet through public proxies. The README warns that proxies can access private keys and could steal your identity.
 
 ## Communities
 
 - ZeroNet community on Reddit https://reddit.com/r/zeronet
 - ZeroNet community on Matrix https://matrix.to/#/#zeronetx:matrix.org
 - ZeroNet community on Session https://sessioncommunities.online/#zeronet+c975
-
-## Footnotes
-
-### Support/Donation
-
-If you find this project helpful and would like to show your appreciation, consider making a donation. Your contributions helps me dedicate more time working on Free and open-source projects :heart:
-
-[https://zolagonano.github.io/support](https://zolagonano.github.io/support)
