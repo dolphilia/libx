@@ -1,35 +1,16 @@
 ---
-title: "Awesome Transgender Transgender Flag"
-description: "A curated collection of resources and projects focused on Transgender Transgender Flag."
+title: "Awesome Transgender"
+description: "Information and communities for transgender people, with voice training, DIY HRT resources, support organizations by country, research, and clothing."
 licenseSource: "github-cvyl-awesome-transgender-readme-md"
 ---
 
-# Awesome Transgender Transgender Flag
+# Awesome Transgender<a id="awesome-transgender-transgender-flag"></a>
 
-A curated collection of resources and projects focused on Transgender Transgender Flag.
-
-## Contents
-
-- [General Websites](#general-websites)
-- [Communities](#communities)
-  - [Reddit](#reddit)
-  - [Lemmy](#lemmy)
-  - [MtF (Male to Female)](#mtf-male-to-female)
-  - [FtM (Female to Male)](#ftm-female-to-male)
-- [Voice Training](#voice-training)
-- [DIY HRT](#diy-hrt)
-- [Organizations](#organizations)
-  - [Netherlands](#netherlands)
-  - [U.S.A (United States of America)](#usa-united-states-of-america)
-  - [France](#france)
-  - [China](#china)
-  - [Ukraine](#ukraine)
-- [Scientific Research](#scientific-research)
-- [Clothing](#clothing)
+Transgender people have a gender identity that differs from the sex assigned to them at birth. This list covers general information, communities, voice training, DIY hormone replacement therapy (HRT), support organizations by country, research, and clothing. Resource descriptions, medical and safety claims, and service information reflect the fixed source snapshot.
 
 ## General Websites
 
-This section includes general websites for transgender individuals. If the language of the website is not in English, it'll be displayed.
+General information for transgender people. Languages other than English are marked where the fixed source specifies them.
 
 - [That's Gender Dysphoria, FYI](https://genderdysphoria.fyi/en/) - An informative guide on recognizing and understanding gender dysphoria.
 - [LGBTQ Nation](https://www.lgbtqnation.com) - News and resources centered on LGBTQ+ issues.
@@ -45,7 +26,7 @@ This section includes general websites for transgender individuals. If the langu
 
 ## Communities
 
-This section is dedicated to communities for transgender individuals.
+Communities and discussion spaces for transgender people.
 
 ### Reddit
 
@@ -84,7 +65,7 @@ This section is dedicated to communities for transgender individuals.
 
 ## DIY HRT
 
-This section shows awesome resources for helping individuals with DIY HRT.
+Resources on DIY hormone replacement therapy (HRT).
 
 - [DIY HRT Directory](https://diyhrt.wiki/) - Directory of resources on DIY hormone replacement therapy.
   - [Transfem Guide](https://diyhrt.wiki/transfem) - Guide for transfeminine individuals.
@@ -97,7 +78,7 @@ This section shows awesome resources for helping individuals with DIY HRT.
 
 ## Organizations
 
-Here is a list of LGBTQ+ Organizations aimed at helping transgender individuals.
+LGBTQ+ organizations and resources supporting transgender people.
 
 - [The World Professional Association for Transgender Health (WPATH)](https://www.wpath.org) - Sets global standards for transgender health.
 - [Massachusetts Transgender Political Coalition (MTPC)](https://www.masstpc.org) - Advocacy group for transgender rights in Massachusetts.
@@ -113,7 +94,7 @@ Here is a list of LGBTQ+ Organizations aimed at helping transgender individuals.
 - [Gender Dysforie VUMC](https://www.vumc.nl/zorg/expertisecentra-en-specialismen/kennis-en-zorgcentrum-genderdysforie.htm) (Dutch) - Dutch medical center for gender dysphoria.
 - [Gender Dysforie UMCG](https://www.umcg.nl/-/genderdysforie) (Dutch) - Another gender dysphoria treatment center in the Netherlands.
 - [Radboudumc - Transgender Healthcare](https://www.radboudumc.nl/expertisecentra/geslacht-en-gender/transgenderzorg) - Dutch medical center offering specialized transgender healthcare, including medical guidance and support throughout the transition process.
-- [Trans in Eigen Hand](https://transineigenhand.nl/) - Dutch organization providing resources and guidance for general practitioners to support transgender patients in accessing hormone therapy, along with up-to-date information on waitlists for gender-affirming care in the Netherlands.
+- [Trans in Eigen Hand](https://transineigenhand.nl/) - Dutch organization providing resources and guidance for general practitioners to support transgender patients in accessing hormone therapy, along with information on waitlists for gender-affirming care in the Netherlands described as up to date in the fixed source.
 
 ### U.S.A (United States of America)
 
@@ -146,14 +127,10 @@ Here is a list of LGBTQ+ Organizations aimed at helping transgender individuals.
 
 ## Clothing
 
-This section shows awesome resources for finding trans-specific clothing.
+Resources for clothing designed for transgender people.
 
 - [Rubyshines](https://rubyshines.com) - Clothing designed for transgender individuals.
 
 ### Binders
 
-- [Underworks](https://www.underworks.com/) - Binders for safe chest compression.
-
-## Contributing
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/cvyl/awesome-transgender/blob/c4520422a00ea5fad98f24e24153e124fff920e1/contributing.md) first.
+- [Underworks](https://www.underworks.com/) - Binders described by the fixed source as intended for safe chest compression.
