@@ -27,7 +27,8 @@ export function inspectHtml(html) {
       if (ids.has(id)) duplicates.push(id);
       ids.add(id);
     }
-    if (hasClass(node, 'sl-markdown-content')) article = node;
+    // 出典詳細にも同じスタイル用クラスがあるため、最外の本文を維持する。
+    if (!article && hasClass(node, 'sl-markdown-content')) article = node;
     if (hasClass(node, 'document-provenance')) {
       provenance = true;
       walk(node, (child) => {

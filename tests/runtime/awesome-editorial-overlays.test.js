@@ -18,7 +18,7 @@ import {
 } from '../../scripts/importers/awesome/editorial-overlays.mjs';
 import path from 'node:path';
 import fs from 'node:fs';
-import { validateHtml } from '../../scripts/importers/awesome/editorial-html-validation.mjs';
+import { validateHtml, inspectHtml } from '../../scripts/importers/awesome/editorial-html-validation.mjs';
 import {
   covers,
   validateReview,
@@ -258,6 +258,15 @@ test('生成HTMLで目次・アンカー・出典の欠落と本文画像を検�
       e.includes('出典')
     )
   );
+});
+
+test('出典詳細の本文スタイルが主本文の検査範囲を置き換えない', () => {
+  const html = '<article class="sl-markdown-content"><h1 id="title">Title</h1><h2 id="tools">Tools</h2><img src="missing.png"><aside class="document-provenance"><a href="https://source.example">Source</a><a href="https://license.example">License</a><details><summary>Source details</summary><div class="sl-markdown-content"><p><a href="https://source.example/LICENSE.md">LICENSE.md</a></p></div></details></aside></article><starlight-toc><a href="#tools">Tools</a></starlight-toc>';
+  const report = inspectHtml(html);
+  assert.deepEqual(report.headings.map((h) => h.id), ['title', 'tools']);
+  assert.deepEqual(report.images, ['missing.png']);
+  assert.ok(report.provenanceLinks.includes('https://source.example/LICENSE.md'));
+  assert.ok(validateHtml(html).errors.some((e) => e.includes('画像')));
 });
 
 test('出典の著作権通知は本文の同名文字列で代用できない', () => {
