@@ -47,7 +47,7 @@ for t in ['A GNU Manual','You have the freedom to copy and modify this GNU manua
 reviewed=0
 for manifest in [N/'REVIEW_MANIFEST.json',U/'REVIEW_MANIFEST.json']:
  for r in json.loads(manifest.read_text())['pages']:
-  for role in ['source','canonical','translation']:assert sha(R/r[role]['path'])==r[role]['sha256']
+  for reviewRole in ['source','canonical','translation']:assert sha(R/r[reviewRole]['path'])==r[reviewRole]['sha256']
   reviewed+=1
 assert reviewed==39
 kit=U/'source-offer.zip';assert sha(kit)==sha(W/'apps/gnu-tar/public/source/v1-35/source.zip')==sha(Q/'apps/gnu-tar/public/source/v1-35/source.zip')
