@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on June, 15 2005 by texi2html 1.70 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Libtool: Shared library support for GNU</title>
+
+<meta name="description" content="GNU Libtool: Shared library support for GNU">
+<meta name="keywords" content="GNU Libtool: Shared library support for GNU">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.70">
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD1"></a>
+<a name="SEC_Top"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_15.html#SEC86" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="settitle">Shared library support for GNU</h1>
+
+<p>このファイルはGNU Libtoolの説明で，それは，パッケージ開発者が一般的な
+共有ライブラリを提供することを可能にするスクリプトです．このエディショ
+ンはバージョン1.5を説明します．
+
+</p><p>libtoolを用いたときの問題の報告方法の情報は，See section <a href="libtool-ja_12.html#SEC59">バグの報告</a>.
+
+</p><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="libtool-ja_1.html#SEC1">1. はじめに</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                What the heck is libtool?
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_2.html#SEC6">2. libtoolのパラダイム</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How libtool's view of libraries is different.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC7">3. libtoolを使用する</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Example of using libtool to build libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC15">4. <code>libtool</code>の呼び出し</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Running the <code>libtool</code> script.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC23">5. パッケージとlibtoolの統合</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Using libtool in your own packages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_6.html#SEC32">6. ライブラリインターフェースのバージョン</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Using library interface versions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_7.html#SEC37">7. インターフェース設計に対する助言</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Tips for library interface design.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_8.html#SEC39">8. ライブラリ内部の依存性</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Libraries that depend on other libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_9.html#SEC40">9. dlopenモジュール</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            <code>dlopen</code>ing libtool-created libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_10.html#SEC45">10. libltdlの使用</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Libtool's portable <code>dlopen</code> wrapper library.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_11.html#SEC53">11. 他の言語でlibtoolを使用する</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Using libtool without a C compiler.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_12.html#SEC55">12. トラブルシューティング</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             When libtool doesn't work as advertised.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC60">13. libtoolの管理用メモ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Information used by the libtool maintainer.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_14.html#SEC73">GNU Free Documentation License</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> License for this manual.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_15.html#SEC86">索引</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Full index.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+ --- 詳細なノードリスト ---
+
+はじめに
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_1.html#SEC2">1.1 libtoolを書いた動機</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Why does GNU need a libtool?
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_1.html#SEC3">1.2 問題の実装</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      The problems that need to be addressed.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_1.html#SEC4">1.3 その他の実装</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How other people have solved these issues.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_1.html#SEC5">1.4 その他の実装の近代的な解析</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Learning from past difficulties.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+libtoolを使用する
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC8">3.1 オブジェクトファイルの作成</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Compiling object files for libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC9">3.2 ライブラリのリンク</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Creating libraries from object files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC10">3.3 実行形式のリンク</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Linking object files against libtool libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC11">3.4 実行形式のデバッグ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Running GDB on libtool-generated programs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC12">3.5 ライブラリのインストール</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Making libraries available to users.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC13">3.6 実行形式のインストール</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Making programs available to users.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_3.html#SEC14">3.7 スタティックライブラリとのリンク</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            When shared libraries are not wanted.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+<code>libtool</code>の呼び出し
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC16">4.1 コンパイルモード</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Creating library object files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC17">4.2 リンクモード</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Generating executables and libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC18">4.3 実行モード</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Debugging libtool-generated programs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC19">4.4 インストールモード</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Making libraries and executables public.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC20">4.5 フィニッシュモード</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Completing a library installation.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC21">4.6 アンインストールモード</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Removing installed executables and libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_4.html#SEC22">4.7 クリーンモード</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Removing uninstalled executables and libraries.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+パッケージとlibtoolの統合
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC24">5.1 libtoolに対する`<tt>Makefile</tt>'規則を書く</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Writing `<tt>Makefile</tt>' rules for libtool.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC25">5.2 libtoolと共にAutomakeを使用する</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Automatically supporting libtool.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC26">5.3 libtoolのコンフィグレーション</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Configuring libtool for a host system.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC28">5.4 パッケージにlibtoolを含める</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                What files to distribute with your package.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC31">5.5 スタティックのみのライブラリ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Sometimes shared libraries are just a pain.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+libtoolのコンフィグレーション
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC27">5.3.1 <code>AC_PROG_LIBTOOL</code>マクロ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Configuring <code>libtool</code> in `<tt>configure.in</tt>'.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+パッケージにlibtoolを含める
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC29">5.4.1 <code>libtoolize</code>の呼び出し</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         <code>libtoolize</code> command line options.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_5.html#SEC30">5.4.2 Autoconfの`<samp>.o</samp>'マクロ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Autoconf macros that set object file names.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+ライブラリインターフェースのバージョン
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_6.html#SEC33">6.1 ライブラリインターフェースとは？</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  What are library interfaces?
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_6.html#SEC34">6.2 libtoolのバージョン管理システム</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Libtool's versioning system.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_6.html#SEC35">6.3 ライブラリバージョン情報の更新</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Changing version information before releases.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_6.html#SEC36">6.4 リリース情報の管理</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Breaking binary compatibility for aesthetics.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+インターフェースデザインへの助言
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_7.html#SEC38">7.1 Cヘッダファイルを書く</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              How to write portable include files.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+dlopenモジュール
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_9.html#SEC41">9.1 dlopenのためのモジュールのビルド</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Creating dlopenable objects and libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_9.html#SEC42">9.2 dlopen</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Dlopening that works on static platforms.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_9.html#SEC43">9.3 dlopenで正しい名前の検索</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Choosing the right file to <code>dlopen</code>.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_9.html#SEC44">9.4 未解決のdlopenの問題</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Unresolved problems that need your attention.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+libltdlを使用する
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_10.html#SEC46">10.1 プログラムでのlibltdlの使用法</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to use libltdl in your programs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_10.html#SEC47">10.2 <code>dlopen</code>可能なモジュールの作成</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Creating modules that can be <code>dlopen</code>ed.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_10.html#SEC48">10.3 マルチスレッド環境でのlibtldlの使用</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Registering callbacks for multi-thread safety.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_10.html#SEC49">10.4 ロードされたモジュールに関連するデータ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Associating data with loaded modules.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_10.html#SEC50">10.5 新しいモジュールローダの作成方法と登録方法</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Creating user defined module loaders.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_10.html#SEC52">10.6 パッケージとともにlibltdlを配布する方法</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        How to distribute libltdl with your package.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+他の言語でlibtoolを使用する
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_11.html#SEC54">11.1 C++に対するライブラリを書く</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+トラブルシューティング
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_12.html#SEC56">12.1 libtoolのテストスイート</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Libtool's self-tests.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_12.html#SEC59">12.2 バグの報告</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              How to report problems with libtool.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+libtoolのテストスイート
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_12.html#SEC57">12.1.1 テストスイートの記述</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           The contents of the test suite.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_12.html#SEC58">12.1.2 テストが失敗するとき</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             What to do when a test fails.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+libtoolのための管理メモ
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC61">13.1 新しいシステムへのlibtoolの移植</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to port libtool to new systems.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC64">13.2 テストされたプラットフォーム</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            When libtool was last tested.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC65">13.3 プラットフォームの癖</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Information about different library systems.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC71">13.4 <code>libtool</code>スクリプトの内容</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Configuration information that libtool uses.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC72">13.5 安っぽい手段</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Making libtool maintainership easier.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+新しいシステムへlibtoolを移植する
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC62">13.1.1 情報源</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Where to find relevant documentation
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC63">13.1.2 ライブラリ内部の依存性のサポートの移植</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Implementation details explained
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+プラットフォームの癖
+
+</pre></th></tr><tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC66">13.3.1 リファレンス</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Finding more information.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC67">13.3.2 コンパイラ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Creating object files from source files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC68">13.3.3 リロード可能なオブジェクト</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Binding object files together.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC69">13.3.4 複数の依存性</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Removing duplicate dependent libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="libtool-ja_13.html#SEC70">13.3.5 アーカイバ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Programs that create static archives.
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr></table>
+
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_15.html#SEC86" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>Akihiro Sagawa</em> on <em>June, 15 2005</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html 1.70</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
