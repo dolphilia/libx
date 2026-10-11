@@ -1,7 +1,8 @@
+import sys
 from pathlib import Path
 from bs4 import BeautifulSoup
 import json,hashlib,datetime,shutil,copy
-N=Path(__file__).resolve().parent;W=Path('/private/tmp/libx-gnu-m4-formal-971');A=W/'apps/gnu-m4';C=lambda t:f'<code class="code">{t}</code>';V=lambda t:f'<var class="var">{t}</var>';K=lambda t:f'<kbd class="kbd">{t}</kbd>';Q=lambda t:f'<samp class="samp">{t}</samp>';EM=lambda t:f'<em class="emph">{t}</em>';U=lambda u:f'<a class="url" href="{u}">{u}</a>'
+N=Path(__file__).resolve().parent;W=Path(sys.argv[1]if len(sys.argv)>1 else '/private/tmp/libx-gnu-m4-formal-971');A=W/'apps/gnu-m4';C=lambda t:f'<code class="code">{t}</code>';V=lambda t:f'<var class="var">{t}</var>';K=lambda t:f'<kbd class="kbd">{t}</kbd>';Q=lambda t:f'<samp class="samp">{t}</samp>';EM=lambda t:f'<em class="emph">{t}</em>';U=lambda u:f'<a class="url" href="{u}">{u}</a>'
 translations={
 '01-preliminaries':[
 '1 入門と予備知識',
@@ -56,4 +57,4 @@ for stem,blocks in translations.items():
   a['href']=a['href'].replace('/v1-4-21/en/','/v1-4-21/ja/')
  title=BeautifulSoup(blocks[0],'html.parser').get_text(' ',strip=True);lines=front.splitlines();front='\n'.join('title: '+json.dumps(title,ensure_ascii=False)if x.startswith('title: ')else x for x in lines)
  out='---'+front+'\n---\n\n'+str(s).strip()+'\n';p=N/'preferred/ja/01-guide'/(stem+'.md');p.parent.mkdir(parents=True,exist_ok=True);p.write_text(out);target=A/'src/content/docs/v1-4-21/ja/01-guide'/p.name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,target);rows.append({'page':'01-guide/'+p.name,'sourceSHA256':hashlib.sha256(src.read_bytes()).hexdigest(),'draftSHA256':hashlib.sha256(p.read_bytes()).hexdigest(),'translatedBlocks':len(blocks)})
-(N/'BATCH1_TRANSLATION.json').write_text(json.dumps({'status':'drafted-not-whole-meaning-reviewed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'rows':rows,'limits':'Independent translation; no third-party Japanese text reused; full separate review/structure/build pending.'},ensure_ascii=False,indent=2)+'\n');print('Drafted5JApages; separate full review pending')
+(N/'REGENERATED_BATCH1_TRANSLATION.json').write_text(json.dumps({'status':'drafted-not-whole-meaning-reviewed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'rows':rows,'limits':'Independent translation; no third-party Japanese text reused; full separate review/structure/build pending.'},ensure_ascii=False,indent=2)+'\n');print('Drafted5JApages; separate full review pending')

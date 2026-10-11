@@ -1,7 +1,8 @@
+import sys
 from pathlib import Path
 from bs4 import BeautifulSoup,Tag
 import json,hashlib,datetime,shutil
-N=Path(__file__).resolve().parent;A=Path('/private/tmp/libx-gnu-m4-formal-971/apps/gnu-m4')
+N=Path(__file__).resolve().parent;A=Path(sys.argv[1]if len(sys.argv)>1 else '/private/tmp/libx-gnu-m4-formal-971')/'apps/gnu-m4'
 translations={
 '06-invoking-m4':[
 '2 <code class="code">m4</code>の起動',
@@ -81,4 +82,4 @@ for stem,blocks in translations.items():
  if stem=='09-limits-control':
   for node,t in zip(s.select('em.emph'),['ありません','難しい']):node.string=t
  title=BeautifulSoup(blocks[0],'html.parser').get_text(' ',strip=True);front='\n'.join('title: '+json.dumps(title,ensure_ascii=False)if x.startswith('title: ')else x for x in front.splitlines());out='---'+front+'\n---\n\n'+str(s).strip()+'\n';p=N/'preferred/ja/01-guide'/(stem+'.md');p.write_text(out);target=A/'src/content/docs/v1-4-21/ja/01-guide'/p.name;shutil.copyfile(p,target);rows.append({'page':'01-guide/'+p.name,'sourceSHA256':hashlib.sha256(src.read_bytes()).hexdigest(),'draftSHA256':hashlib.sha256(p.read_bytes()).hexdigest(),'translatedBlocks':len(blocks)})
-(N/'BATCH2_TRANSLATION.json').write_text(json.dumps({'status':'drafted-not-whole-meaning-reviewed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'rows':rows,'limits':'Independent translation; no third-party Japanese text reused; separate full review/structure/build pending.'},ensure_ascii=False,indent=2)+'\n');print('Drafted7 Japanese pages')
+(N/'REGENERATED_BATCH2_TRANSLATION.json').write_text(json.dumps({'status':'drafted-not-whole-meaning-reviewed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'rows':rows,'limits':'Independent translation; no third-party Japanese text reused; separate full review/structure/build pending.'},ensure_ascii=False,indent=2)+'\n');print('Drafted7 Japanese pages')
