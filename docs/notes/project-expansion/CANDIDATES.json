@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 216,
+  "revision": 217,
   "candidates": [
     {
       "id": "ninja",
@@ -9289,8 +9289,8 @@
       "id": "gnu-bc",
       "officialUrl": "https://www.gnu.org/software/bc/",
       "repository": null,
-      "version": null,
-      "scope": "未確定",
+      "version": "1.08.2",
+      "scope": "bc.texi全10章・13下位節。dc/manual、bc.1、プログラム本体を収録範囲へ混ぜない。",
       "field": "arbitrary-precision-calculation",
       "discovery": [
         {
@@ -9299,35 +9299,43 @@
           "date": "2026-10-11T12:30:42.534Z"
         }
       ],
-      "state": "discovered",
+      "state": "deferred",
       "conditions": {
         "rights": {
-          "status": "unknown",
-          "reason": "採用前の原資料・範囲・許諾履行・変換・工数確認が未完。",
+          "status": "pass",
+          "reason": "原著作権と全文permission noticeを原文のまま保持し、派生文書全体に同じ通知を適用すれば翻訳・改変配布可能。承認済み日本語通知は未確認なので英語通知を保持する。bc.1のGPL2+や本体COPYINGをTexinfo本文の条件に代用しない。現時点で配信成果物は作成していない。",
           "evidence": [
             {
-              "path": "docs/notes/project-expansion/runs/evidence/2026-10-11-969/DISCOVERY.json",
-              "sha256": "70c9c005408e8f8280569332e1ac99de73de2e0fcd20d379e76baf413dd9ce93"
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/ASSESSMENT.json",
+              "sha256": "2b78f89221887a96360290c5f570d530e3b19d7b48bdfe4e130b51cb1f31d193"
+            },
+            {
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/source/bc-1.08.2/doc/bc.texi",
+              "sha256": "70425e421bff2981c55b11cf75d773f3e6424b6db3a3e6d26b07a6a73e0e5a0b"
             }
           ]
         },
         "boundary": {
-          "status": "unknown",
-          "reason": "採用前の原資料・範囲・許諾履行・変換・工数確認が未完。",
+          "status": "pass",
+          "reason": "bc.texi全10章・13下位節。dc/manual、bc.1、プログラム本体を収録範囲へ混ぜない。",
           "evidence": [
             {
-              "path": "docs/notes/project-expansion/runs/evidence/2026-10-11-969/DISCOVERY.json",
-              "sha256": "70c9c005408e8f8280569332e1ac99de73de2e0fcd20d379e76baf413dd9ce93"
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/ASSESSMENT.json",
+              "sha256": "2b78f89221887a96360290c5f570d530e3b19d7b48bdfe4e130b51cb1f31d193"
             }
           ]
         },
         "fixedInput": {
-          "status": "unknown",
-          "reason": "採用前の原資料・範囲・許諾履行・変換・工数確認が未完。",
+          "status": "pass",
+          "reason": "公式ftp配布物457557bytes/SHAae470fec…と同梱bc.texiを固定。署名検証未実施。",
           "evidence": [
             {
-              "path": "docs/notes/project-expansion/runs/evidence/2026-10-11-969/DISCOVERY.json",
-              "sha256": "70c9c005408e8f8280569332e1ac99de73de2e0fcd20d379e76baf413dd9ce93"
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/RELEASE_ACQUISITION.json",
+              "sha256": "555fcd21b45529d52f3d6bccf1140a300805226dccbe704a7a716ee3f6c63db8"
+            },
+            {
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/source/bc-1.08.2.tar.gz",
+              "sha256": "ae470fec429775653e042015edc928d07c8c3b2fc59765172a330d3d87785f86"
             }
           ]
         },
@@ -9363,16 +9371,37 @@
         }
       },
       "japaneseResearch": {
-        "status": "unresearched",
-        "queries": [],
-        "checkedAt": null,
-        "evidence": []
+        "status": "complete",
+        "queries": [
+          "GNU bc 1.08.2 日本語 マニュアル",
+          "GNU bc 日本語 マニュアル JM"
+        ],
+        "checkedAt": "2026-10-11T17:16:47.335Z",
+        "evidence": [
+          {
+            "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/ASSESSMENT.json",
+            "sha256": "2b78f89221887a96360290c5f570d530e3b19d7b48bdfe4e130b51cb1f31d193"
+          },
+          {
+            "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/JAPANESE_ACQUISITION.json",
+            "sha256": "780742c966241073428f7e21f5b1ddd33460d3cf794f2d05119a690401b822ce"
+          },
+          {
+            "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/source/jm-bc.1.html",
+            "sha256": "09226daf91d1aa75aea2841e4fafb0e22c52371696ed45cc1929d6e3005a17be"
+          }
+        ]
       },
       "scores": {
         "additionalValue": {
-          "value": null,
-          "reason": "採用前調査中。試作・根拠に基づく採点は未完。",
-          "evidence": []
+          "value": 2,
+          "reason": "既存の現行日本語資料が主要機能を広く網羅しており、提案範囲は実質的に重複する。Libxの英日切替・検索・固定原文配布だけでは現段階で追加価値3/5を説明できないため採用しない。実用性・読みやすさを否定せず、原文の不備や再現工数を理由にしない。",
+          "evidence": [
+            {
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-977/ASSESSMENT.json",
+              "sha256": "2b78f89221887a96360290c5f570d530e3b19d7b48bdfe4e130b51cb1f31d193"
+            }
+          ]
         },
         "practicality": {
           "value": null,
@@ -9395,8 +9424,8 @@
           "evidence": []
         }
       },
-      "decision": "探索記録のみ。詳細調査・採用判断は未実施。",
-      "resumeCondition": "GNU M4調査を優先し、必要時に固定版・範囲・利用条件・既存資料を調べる。",
+      "decision": "既存の現行日本語資料が主要機能を広く網羅しており、提案範囲は実質的に重複する。Libxの英日切替・検索・固定原文配布だけでは現段階で追加価値3/5を説明できないため採用しない。実用性・読みやすさを否定せず、原文の不備や再現工数を理由にしない。",
+      "resumeCondition": "JMと実質的に重ならない公式範囲・版差分、またはLibxでの具体的な追加価値3/5以上を示す根拠が得られた時のみ再評価する。",
       "nextCheckAt": null,
       "selectionReview": null
     },
