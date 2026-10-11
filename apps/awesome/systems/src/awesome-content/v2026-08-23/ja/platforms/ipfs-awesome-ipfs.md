@@ -1,115 +1,99 @@
 ---
-title: "Awesome IPFS"
-description: "IPFSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
-licenseSource: "github-ipfs-awesome-ipfs-readme-md"
+title: Awesome IPFS
+description: IPFSの実装、アプリ、ブラウザー、開発・デバッグ用ツール、ホスティング基盤、ピン留めサービスと保守終了資料への案内。
+licenseSource: github-ipfs-awesome-ipfs-readme-md
 ---
+# Awesome IPFS<a id="目次"></a><a id="貢献"></a><a id="ライセンス"></a>
 
-# Awesome IPFS
+IPFSの実装、アプリ、ブラウザー、開発・デバッグ用ツール、ホスティング基盤、ピン留めサービスを探せます。保守状況、対応環境、料金、製品の主張は固定原文当時の記載です。
 
-IPFSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+## 実装 <a id="implementations"></a>
 
-## 目次
+IPFSは、用途に応じて最適化した複数のプロトコル実装の開発を促すオープンソースプロジェクトです。公式文書の[IPFS実装一覧](https://docs.ipfs.tech/concepts/ipfs-implementations/#popular-or-actively-maintained)を参照してください。
 
-- [実装](#implementations)
-- [アプリ](#apps)
-- [ブラウザー](#browsers)
-- [ツール](#tools)
-- [デバッグツール・学習](#debugging-tools--learning)
-- [サービス・プラットフォーム](#services--platforms)
-- [ピニングサービス](#pinning-services)
-- [古いプロジェクト](#stale-projects)
-- [コントリビュート](#contribute)
-- [ライセンス](#license)
+## アプリ <a id="apps"></a>
 
-## 実装
-IPFS は、各種ユースケースに最適化しようとする複数のプロトコル実装の開発を促進するオープンソースプロジェクトです。
+- [Agregore](https://github.com/AgregoreWeb/agregore-browser) - 分散ウェブ向けの最小限のブラウザー。ブラウザーの`fetch()` APIでIPFSからデータをダウンロード・アップロード。
+- [Anytype](https://github.com/anyproto) - 制作者が所有権を取り戻せるように設計された、ノーコードのモジュール式ウェブビルダー。プライベートで、ローカル優先・P2P同期に対応したオープンなAnysyncプロトコルを基盤とする。
+- [archiveweb.page](https://github.com/webrecorder/archiveweb.page) - IPFSに対応し、元のページを忠実に保存するChrome・Chromium系ブラウザー向けウェブアーカイブ拡張。
+- [Autonomica "IPFS Social Proof"](https://github.com/IBM/ipfs-social-proof) - IDを作成し、公開したソーシャルメディアやウェブ上の証拠でそのIDを証明する、Keybaseに似たDapp。
+- [brig](https://github.com/sahib/brig) - Git風のインターフェイスとFUSEファイルシステムによるファイル同期。
+- [Diffuse](https://github.com/icidasset/diffuse) - IPFSノードや、ほかのクラウド・分散ストレージサービスに保存した音楽を再生。
+- [Durin](https://durin.site/) - IPFSネットワーク上のコンテンツを閲覧・アップロードするモバイルアプリ。
+- [Hardbin](https://github.com/jes/hardbin) - URLのフラグメントで復号鍵を渡す、暗号化されたテキスト共有サービス。
+- [hyprspace](https://github.com/hyprspace/hyprspace) - IPFSとLibp2pを基盤とする、分散ネットワーク向けの軽量VPN。
+- [InterPlanetary Wayback](https://github.com/oduwsdl/ipwb) - IPFSを使ったウェブアーカイブ（WARC）の索引作成と再生。
+- [Interplanetary Wiki](https://github.com/jamescarlyle/ipfs-wiki) - IPFS上に構築されたWiki。
+- [IPFessay](https://gitlab.com/stavros/IPFessay) - IPFSで検閲不能なエッセイを公開する方法として、原文が紹介するツール。
+- [IPFS Desktop](https://github.com/ipfs-shipyard/ipfs-desktop) - 完全なIPFSノード、OSのメニューバー・タスクバーから使えるショートカット、ファイルマネージャー、ピアのマップ、コンテンツ閲覧機能を備えたデスクトップアプリ。
+- [IPFS Share](https://github.com/ipfs-shipyard/ipfs-share-files) - IPFSを使い、ブラウザーから直接ファイルを共有。
+- [ipfs-chat](https://github.com/SomajitDey/ipfs-chat) - 端末で使う暗号化チャットルーム。個別メッセージとチャット内の安全なファイル・ディレクトリ共有に対応。サーバーやブローカー、シグナリング・ランデブーサーバーが不要で、LANやインターネット上でNAT越えにより動作。
+- [IPFS-FPS](https://github.com/underscoredLabs/webgl-ipfs-fps) - Unity、Fleek、Unstoppable Domans、Pinataで構築された、完全分散型の一人称視点シューティングゲーム。
+- [killcord](https://github.com/nomasters/killcord) - 検閲に強いデッドマンスイッチ。
+- [Mintter](https://github.com/MintterHypermedia/mintter) - 構造化され、深く相互リンクされたコンテンツをコミュニティで共同編集する、IPFS基盤のオープンなシステム。すべてのコンテンツに暗号署名と版管理を施し、IPFSで永続化すると原文は説明。
+- [orbitchat.dev](https://github.com/cppshane/orbit-chat) - ウェブ上の簡素なチャットルーム。
+- [Peer Web Site](https://github.com/Weedshaker/PeerWebSite) - ブラウザーからCSS・JSを含むHTMLサイトを送信し、動画や画像などを添付できるP2Pウェブホスティング。
+- [Peergos](https://github.com/Peergos/Peergos) - エンドツーエンド暗号化による、P2Pのファイル保存・共有。
+- [Planet](https://github.com/Planetable/Planet) - MacでIPFSを使い、分散型のブログやウェブサイトを構築・ホスト。
+- [Plebbit](https://github.com/plebbit) - サーバーや管理者が不要な、P2P・オープンソースの分散型ソーシャルメディア。IPFS、Gossipsub、ブロックチェーンの名前システム（ENS、SNS）を基盤とし、無制限にスケールできると原文は説明。
+- [PushToTalk](http://timothy.hobbs.cz/push-to-talk/index.html) - 音声エッセイを編集し、IPFSで公開。
+- [Quiet](https://tryquiet.org/) - Tor接続上にプライベートなIPFSネットワークを構築する、プライバシー重視のエンドツーエンド暗号化チャットアプリ。デスクトップ版とiOS・Android版を提供。
+- [TeaTime](https://github.com/bjesus/teatime) - IPFS、SQLite、GitHubを基盤とする、完全に静的な分散型ライブラリシステム。
 
-IPFS ドキュメントの[IPFS implementations](https://docs.ipfs.tech/concepts/ipfs-implementations/#popular-or-actively-maintained)一覧を確認してください。
+## ブラウザー <a id="browsers"></a>
 
-## アプリ
+- [Agregore](https://github.com/AgregoreWeb/agregore-browser) - 分散ウェブ向けの最小限のブラウザー。ブラウザーの`fetch()` APIでIPFSからデータをダウンロード・アップロード。
+- [Brave](https://brave.com/ipfs-support/) - 先進的な機能を備えた、プライバシー重視のブラウザー。
+- [galacteek](https://github.com/pinnaculum/galacteek) - 分散ウェブ向けの、Qt5基盤のマルチプラットフォーム対応ブラウザー。
+- [Opera](https://blogs.opera.com/tips-and-tricks/2021/02/opera-crypto-files-for-keeps-ipfs-unstoppable-domains/) - 2021年に`ipfs://`への対応を追加したブラウザー。
 
-- [Agregore](https://github.com/AgregoreWeb/agregore-browser) - 分散 Web 向け最小 Web ブラウザー。ブラウザーの `fetch()` API を使い IPFS からデータをダウンロード・アップロードできます。
-- [Anytype](https://github.com/anyproto) - クリエイターに所有権を戻すよう設計されたノーコード・モジュール式 Web ビルダー。プライベートで local-first、p2p 同期、オープンな Anysync プロトコル上に構築。
-- [archiveweb.page](https://github.com/webrecorder/archiveweb.page) - IPFS をサポートする Chrome・Chromium ベースブラウザー向け高忠実度 Web アーカイブ拡張。
-- [Autonomica "IPFS Social Proof"](https://github.com/IBM/ipfs-social-proof) - ID 作成と公開ソーシャルメディア・Web proofs による ID 証明のための Keybase 風 Dapp。
-- [brig](https://github.com/sahib/brig) - git 風インターフェイス・FUSE filesystem によるファイル同期。
-- [Diffuse](https://github.com/icidasset/diffuse) - IPFS node または他のクラウド／分散ストレージサービスから音楽を再生。
-- [Durin](https://durin.site/) - IPFS ネットワーク上のコンテンツへアクセス・アップロードするモバイルアプリ。
-- [Hardbin](https://github.com/jes/hardbin) - URL fragment で復号鍵を渡す暗号化 pastebin。
-- [hyprspace](https://github.com/hyprspace/hyprspace) - 真に分散したネットワークのため IPFS + Libp2p 上に構築された軽量 VPN。
-- [InterPlanetary Wayback](https://github.com/oduwsdl/ipwb) - IPFS を使う Web Archive（WARC）の索引化・再生。
-- [Interplanetary Wiki](https://github.com/jamescarlyle/ipfs-wiki) - IPFS 上に構築された Wiki。
-- [IPFEssay](https://gitlab.com/stavros/IPFessay) - IPFS で検閲不能なエッセイを公開する簡単な方法。
-- [IPFS Desktop](https://github.com/ipfs-shipyard/ipfs-desktop) - 便利なデスクトップアプリで IPFS の全機能を提供。完全な IPFS node、便利な OS メニューバー／タスクバーショートカット、オールインワンファイルマネージャー、peer map、content explorer を備えます。
-- [IPFS Share](https://github.com/ipfs-shipyard/ipfs-share-files) - ブラウザーから IPFS を使い直接ファイルを共有。
-- [ipfs-chat](https://github.com/SomajitDey/ipfs-chat) - 端末ベースの暗号化チャットルーム。プライベートメッセージと安全なチャット内ファイル／ディレクトリ共有を可能にします。サーバー／broker 不要（signaling/rendezvous server 不要）。LAN／インターネット（NAT-traversal）で動作。
-- [IPFS-FPS](https://github.com/underscoredLabs/webgl-ipfs-fps) - 完全分散型一人称シューティング。Unity、Fleek、Unstoppable Domans、Pinata で構築。
-- [killcord](https://github.com/nomasters/killcord) - 検閲に強い deadman's switch。
-- [Mintter](https://github.com/MintterHypermedia/mintter) - コミュニティが構造化され深くリンクされたコンテンツで協働できる、IPFS 上に構築されたオープンシステム。すべてのコンテンツは暗号署名、バージョン管理され、IPFS で永続化されます。
-- [orbitchat.dev](https://github.com/cppshane/orbit-chat) - Web 上の超シンプルなチャットルーム。
-- [Peer Web Site](https://github.com/Weedshaker/PeerWebSite) - 指先ひとつで Peer to Peer Web Site ホスティング！ブラウザーから完全機能 HTML（CSS、JS を含む）サイトを送信し、動画、画像などのファイルを添付。
-- [Peergos](https://github.com/Peergos/Peergos) - エンドツーエンド暗号化されたピアツーピアファイルストレージ・共有。
-- [Planet](https://github.com/Planetable/Planet) - Mac 上で IPFS により分散ブログ・Web サイトを構築・ホスト。
-- [Plebbit](https://github.com/plebbit) - ピアツーピア・オープンソースで、サーバーレス、管理者不要、無限にスケール可能なソーシャルメディアプラットフォーム。IPFS、Gossipsub、Blockchain namesystems（ENS、SNS）上に構築。
-- [PushToTalk](http://timothy.hobbs.cz/push-to-talk/index.html) - 音声エッセイを編集し、IPFS で公開。
-- [Quiet](https://tryquiet.org/) - Tor 接続上でプライベート IPFS ネットワークを実行する、プライバシー重視のエンドツーエンド暗号化チャットアプリ。デスクトップ・モバイル iOS・Android アプリを利用可能。
-- [TeaTime](https://github.com/bjesus/teatime) - IPFS、SQLite、GitHub により強化された完全静的分散ライブラリシステム。
+## ツール <a id="tools"></a>
 
-## ブラウザー
-IPFS 統合を持つ Web ブラウザーの一覧
-- [Agregore](https://github.com/AgregoreWeb/agregore-browser) - 分散 Web 向け最小 Web ブラウザー。ブラウザーの `fetch()` API を使い IPFS からデータをダウンロード・アップロードできます。
-- [Brave](https://brave.com/ipfs-support/) - 多くの将来志向機能を持つプライバシー重視ブラウザー。
-- [galacteek](https://github.com/pinnaculum/galacteek) - 分散 Web 向けマルチプラットフォーム Qt5 ベースブラウザー。
-- [Opera](https://blogs.opera.com/tips-and-tricks/2021/02/opera-crypto-files-for-keeps-ipfs-unstoppable-domains/) - Opera ブラウザーは2021年に `ipfs://` をサポート。
-
-
-## ツール
-
-- [create-ipfs-app](https://github.com/alexbakers/create-ipfs-app) - 1コマンド実行で分散 web3 アプリをセットアップ。
-- [dScan](https://github.com/p2plabsxyz/dscan) - Web3.Storage へコンテンツをアップロードし、CIDs の QR コードを生成するブラウザー拡張。
-- [dump-ipfs](https://github.com/quasarch/dump-ipfs) - IPFS・Filecoin がサポートする人気データベース向け分散暗号化バックアップエージェント。
-- [gatsby-plugin-ipfs](https://github.com/moxystudio/gatsby-plugin-ipfs) - アセットを相対化して Gatsby Web サイトの IPFS へのデプロイをサポート。
-- [git-ipfs-rehost](https://github.com/whyrusleeping/git-ipfs-rehost) - git リポジトリを ipfs で再ホストするスクリプト。
-- [git-remote-ipfs](https://github.com/cryptix/git-remote-ipfs) - リポジトリを IPFS から／へ push/pull。
-- [Git IPFS Remote Bridge](https://github.com/ElettraSciComp/Git-IPFS-Remote-Bridge) - IPFS 分散データストレージ上で Git ユーザーがリポジトリを clone、push、fetch、セルフホスト、リリースできる Python 3 製プログラム集。
-- [go-orbit-db](https://github.com/berty/go-orbit-db) - 元の JavaScript 版と完全互換を目指す OrbitDB の Golang ポート。OrbitDB はサーバーレス分散ピアツーピアデータベースです。
-- [gomobile-ipfs](https://github.com/ipfs-shipyard/gomobile-ipfs) - Gomobile によるモバイル向け IPFS・libp2p。
-- [http2ipfs](https://github.com/jbenet/http2ipfs-web) - URL を IPFS node へ追加するシンプルな Web ツール。
-- [IPDR](https://github.com/miguelmota/ipdr) - IPFS バックアップ Docker Registry。
-- [IPFS Setup Action](https://github.com/ibnesayeed/setup-ipfs) - GitHub CI platform でクロスプラットフォームテスト環境を準備する go-ipfs のインストール・初期化用 GitHub Action。
-- [ipfs-action](https://github.com/aquiladev/ipfs-action) - 静的 Web サイト配信向け GitHub Action。
-- [ipfs-add-from-encrypted](https://github.com/TroyWilson1/ipfs-add-from-encrypted) - AES256 でファイル・ディレクトリを暗号化してから IPFS へ追加。
-- [IPFS-boot](https://github.com/rhodey/IPFS-boot) - ユーザー同意を必要とする IPFS webapps を公開。
-- [ipfs-companion](https://github.com/ipfs/ipfs-companion) - IPFS リソースへのアクセスを簡素化するブラウザー拡張。
-- [ipfs-deploy](https://github.com/agentofuser/ipfs-deploy) - 静的 Web サイトをデプロイするゼロ設定 CLI: cd my-static-website && npx @agentofuser/ipfs-deploy
-- [ipfs-mount](https://github.com/richardschneider/net-ipfs-mount) - Windows 上で IPFS をマップドドライブとしてマウント。
-- [ipfs-paste](https://github.com/jbenet/ipfs-paste) - stdin・クリップボードを IPFS へ貼り付け。
-- [ipfs-pinner](https://github.com/wabarc/ipfs-pinner) - ファイルを IPFS ピニングサービスへアップロードする支援ツールキット。
-- [ipfs-publish](https://github.com/auhau/ipfs-publish/) - Git providers から IPFS への静的 Web サイト配信用 Continuous Delivery ツール。
-- [ipfs-screencap](https://github.com/jbenet/ipfs-screencap) - スクリーンショットを取得、IPFS へ公開、リンクをクリップボードへコピー。
-- [ipfs-video-gateway](https://github.com/bneijt/ipfs-video-gateway) - クラウドプロバイダー上で自分の IPFS gateway を Cloud-init し、シンプルな Web インターフェイスでコンテンツを容易にピン留め。
-- [ipfsecret](https://github.com/shlemph/ipfsecret) - 秘密のパスフレーズで IPFS ファイルを暗号化・復号。
-- [ipget](https://github.com/ipfs/ipget) - :satellite: IPFS 用 wget: IPFS 経由でファイルを取得しローカル保存。
-- [IPLD Explorer](https://github.com/ipfs-shipyard/ipld-explorer) - ブラウザーから Merkle Forest を探索。
-- [ipns-pin](https://github.com/justicenode/node-ipns-pin) - ipns 経由で物をピン留めするコマンドラインツール。
-- [IPRedirect](https://github.com/JayBrown/IPRedirect) - IPFS/IPNS アドレスをローカル gateway へリダイレクトするブラウザーユーザースクリプト。拡張がまだ書かれておらず userscripts をサポートする任意ブラウザーで動作。
-- [iprfc](https://github.com/RTradeLtd/iprfc) - RFC を IPFS に保存し RTradeLtd/Lens で索引化する IETF RFC ダウンローダー。
-- [mahuta](https://github.com/ConsenSys/Mahuta) - IPFS 上のデータを収集、保存、索引化し、検索機能（全文、クエリ）を提供する、マイクロサービスアーキテクチャ向けプラグアンドプレイサービス。
-- [Multiverse](https://github.com/multiverse-vcs/go-multiverse) - ピアツーピアソフトウェア開発を可能にする分散バージョン管理システム。
-- [Omnipin](https://github.com/omnipin/omnipin) - 究極の分散 Web サイトデプロイツールキット。
-- [orbit-db](https://github.com/orbitdb/orbit-db) - IPFS をデータストレージ、IPFS Pubsub を peers との自動データベース同期に使う、サーバーレス分散ピアツーピアデータベース。
-- [Pin Tweet to IPFS](https://github.com/meandavejustice/pin-tweet-to-ipfs) - ツイートの WebArchiveZip を作成して IPFS ネットワークへ追加する Web 拡張。
-- [Public Gateway Checker](https://github.com/ipfs/public-gateway-checker) - 公開ゲートウェイのオンライン状態を確認。
-- [rivet](https://github.com/wabarc/rivet) - Web ページを IPFS にアーカイブしやすくするツールキット。
-- [sourcify](https://github.com/ethereum/sourcify) - 分散型 Solidity コントラクトのソースコード検証サービス。
-- [SimpleAsWater Bot](https://github.com/simpleaswater/twitter-pinbot) - IPFS Cluster を使ってツイートを公開 IPFS ネットワークに追加・ピン留め・解除する Twitter ボット。
-- [solid-ipfs](https://github.com/Eximua/solid-ipfs) - Solid を使い、IPFS Hash を非公開または公開で保存。
+- [create-ipfs-app](https://github.com/alexbakers/create-ipfs-app) - 1コマンドで分散型Web3アプリをセットアップ。
+- [dScan](https://github.com/p2plabsxyz/dscan) - コンテンツをWeb3.Storageへアップロードし、CIDのQRコードを生成するブラウザー拡張。
+- [dump-ipfs](https://github.com/quasarch/dump-ipfs) - 一般的なデータベース向けの、IPFSとFilecoinを利用した分散型の暗号化バックアップエージェント。
+- [gatsby-plugin-ipfs](https://github.com/moxystudio/gatsby-plugin-ipfs) - アセットのパスを相対化し、GatsbyサイトのIPFSへのデプロイに対応。
+- [git-ipfs-rehost](https://github.com/whyrusleeping/git-ipfs-rehost) - GitリポジトリをIPFS上でホストし直すスクリプト。
+- [git-remote-ipfs](https://github.com/cryptix/git-remote-ipfs) - IPFSとの間でリポジトリをpush・pull。
+- [Git IPFS Remote Bridge](https://github.com/ElettraSciComp/Git-IPFS-Remote-Bridge) - IPFSの分散データストレージ上でGitリポジトリをclone・push・fetch・自己ホスト・リリースできる、Python 3製のプログラム集。
+- [go-orbit-db](https://github.com/berty/go-orbit-db) - サーバーレス・分散型P2PデータベースOrbitDBのGo移植版。元のJavaScript版との完全互換を目指す。
+- [gomobile-ipfs](https://github.com/ipfs-shipyard/gomobile-ipfs) - Gomobileを使い、モバイルでIPFSとlibp2pを利用。
+- [http2ipfs](https://github.com/jbenet/http2ipfs-web) - URLをIPFSノードへ追加するウェブツール。
+- [IPDR](https://github.com/miguelmota/ipdr) - IPFSを基盤とするDockerレジストリ。
+- [IPFS Setup Action](https://github.com/ibnesayeed/setup-ipfs) - go-ipfsをインストール・初期化し、GitHubのCI上にクロスプラットフォームのテスト環境を準備するGitHub Action。
+- [ipfs-action](https://github.com/aquiladev/ipfs-action) - 静的ウェブサイトを配信するGitHub Action。
+- [ipfs-add-from-encrypted](https://github.com/TroyWilson1/ipfs-add-from-encrypted) - ファイルまたはディレクトリをAES256で暗号化してからIPFSへ追加。
+- [IPFS-boot](https://github.com/rhodey/IPFS-boot) - 更新時に利用者の同意が必要なIPFSウェブアプリを公開。
+- [ipfs-companion](https://github.com/ipfs/ipfs-companion) - IPFSの資料やコンテンツへのアクセスを簡単にするブラウザー拡張。
+- [ipfs-deploy](https://github.com/agentofuser/ipfs-deploy) - 設定不要で静的ウェブサイトをデプロイするCLI: cd my-static-website && npx @agentofuser/ipfs-deploy
+- [ipfs-mount](https://github.com/richardschneider/net-ipfs-mount) - WindowsでIPFSをネットワークドライブとしてマウント。
+- [ipfs-paste](https://github.com/jbenet/ipfs-paste) - 標準入力とクリップボードの内容をIPFSへ保存。
+- [ipfs-pinner](https://github.com/wabarc/ipfs-pinner) - ファイルをIPFSのピン留めサービスへアップロードするツールキット。
+- [ipfs-publish](https://github.com/auhau/ipfs-publish/) - GitのホスティングサービスからIPFSへ静的ウェブサイトを配信する、継続的デリバリー用ツール。
+- [ipfs-screencap](https://github.com/jbenet/ipfs-screencap) - スクリーンショットを撮影してIPFSへ公開し、リンクをクリップボードへコピー。
+- [ipfs-video-gateway](https://github.com/bneijt/ipfs-video-gateway) - クラウド上に自分のIPFSゲートウェイをcloud-initで構築し、ウェブ画面でコンテンツをピン留め。
+- [ipfsecret](https://github.com/shlemph/ipfsecret) - 秘密のパスフレーズでIPFSファイルを暗号化・復号。
+- [ipget](https://github.com/ipfs/ipget) - IPFS向けのwget。IPFS経由でファイルを取得し、ローカルへ保存。
+- [IPLD Explorer](https://github.com/ipfs-shipyard/ipld-explorer) - ブラウザーからMerkle Forestを探索。
+- [ipns-pin](https://github.com/justicenode/node-ipns-pin) - IPNS経由でコンテンツをピン留めするコマンドラインツール。
+- [IPRedirect](https://github.com/JayBrown/IPRedirect) - IPFS/IPNSアドレスをローカルゲートウェイへ転送するユーザースクリプト。専用拡張のないブラウザーでも、ユーザースクリプトに対応していれば動作すると原文は説明。
+- [iprfc](https://github.com/RTradeLtd/iprfc) - RFCをIPFSに保存し、RTradeLtd/Lensで索引を作成するIETF RFCダウンローダー。
+- [mahuta](https://github.com/ConsenSys/Mahuta) - IPFS上のデータ収集・保存・索引作成と、全文検索・クエリ検索を提供する、マイクロサービス向けのプラグアンドプレイサービス。
+- [Multiverse](https://github.com/multiverse-vcs/go-multiverse) - P2Pでのソフトウェア開発を可能にする分散型バージョン管理システム。
+- [Omnipin](https://github.com/omnipin/omnipin) - 分散型ウェブサイトをデプロイするツールキット。
+- [orbit-db](https://github.com/orbitdb/orbit-db) - IPFSをデータストレージに使い、IPFS Pubsubでピア間のデータベースを自動同期する、サーバーレス・分散型P2Pデータベース。
+- [Pin Tweet to IPFS](https://github.com/meandavejustice/pin-tweet-to-ipfs) - ツイートのWebArchiveZipを作成し、IPFSネットワークへ追加するウェブ拡張。
+- [Public Gateway Checker](https://github.com/ipfs/public-gateway-checker) - 公開ゲートウェイがオンラインかどうかを確認。
+- [rivet](https://github.com/wabarc/rivet) - ウェブページをIPFSへアーカイブするツールキット。
+- [sourcify](https://github.com/ethereum/sourcify) - Solidityコントラクトのソースコードを検証する分散型サービス。
+- [SimpleAsWater Bot](https://github.com/simpleaswater/twitter-pinbot) - IPFS Clusterを使い、公開IPFSネットワークへツイートを追加・ピン留め・解除するTwitterボット。
+- [solid-ipfs](https://github.com/Eximua/solid-ipfs) - Solidを使い、IPFSのハッシュを非公開または公開で保存。
 - [Tellit](https://gitlab.com/terceranexus6/tellit) - キーペアまたはパスフレーズでファイルを暗号化してからアップロード。
-- [VIPFS](https://github.com/Ideea-inc/vipfs) - Vue アプリを IPFS へ簡単に公開。
-- [wbipfs](https://github.com/wabarc/wbipfs) - Wayback の Web ページを IPFS に保存するコマンドラインツール兼 Go パッケージインターフェイス。
-- [youtube2ipfs](https://github.com/dokterbob/youtube2ipfs) - YouTube（および類似動画プラットフォーム）から動画をダウンロードし、IPFS へ追加。
+- [VIPFS](https://github.com/Ideea-inc/vipfs) - VueアプリをIPFSへ公開。
+- [wbipfs](https://github.com/wabarc/wbipfs) - ウェブページをIPFSへアーカイブするコマンドラインツールとGoパッケージのインターフェイス。
+- [youtube2ipfs](https://github.com/dokterbob/youtube2ipfs) - YouTubeなどの動画プラットフォームから動画をダウンロードし、IPFSへ追加。
 
-## デバッグツールと学習
+## デバッグツールと学習 <a id="debugging-tools--learning"></a>
 
 - [IPFS Check](https://check.ipfs.network/)
 - [Helia Identify](https://ipfs.fyi/identify)
@@ -119,39 +103,27 @@ IPFS 統合を持つ Web ブラウザーの一覧
 - [Public Gateway Checker](https://github.com/ipfs/public-gateway-checker)
 - [IPNS Inspector](https://github.com/ipfs/ipns-inspector)
 
-## サービスとプラットフォーム
+## サービスとプラットフォーム <a id="services--platforms"></a>
 
-- [Apillon](http://apillon.io/) - Crust ネットワーク経由の IPFS ゲートウェイ・IPFS ファイルピン留め、Web サイト・アプリ向けの IPFS ホスティングを提供する Web3 開発プラットフォーム。
-- [Ceramic](https://ceramic.network/) - IPFS のコンテンツアドレス指定、先進的な暗号技術、ブロックチェーンのタイムスタンプを組み合わせ、データの安全性と検証可能性を保証。
-- [dAppling](https://www.dappling.network/) - GitHub から IPFS への自動デプロイを備えたホスティングプラットフォーム。
-- [Fileverse](https://fileverse.io/) - IPFS を基盤とする暗号化ファイル共有。ウォレットの有無にかかわらず任意のファイルを共有可能。
-- [Fleek](http://fleek.co/) - IPFS、Filecoin、Internet Computer 上でサイト・アプリを構築、ホスト、保存するための Open Web 開発プラットフォーム。
-- [Fission](https://fission.codes) - 開発者がスケーラブルで安全なソフトウェアアプリケーションを構築できるようにする、オープンソースプロトコルとマネージドソリューションを開発。
-- [Matters.town](https://matters.town/) - 分散型コンテンツ公開エコシステム。
-- [Peergos](https://peergos.org) - 非公開ながらソーシャルなオンライン空間。文書・メディアを保存・編集し、友人とファイルやフォルダーを共有。
+- [Apillon](http://apillon.io/) - IPFSゲートウェイ、Crustネットワーク経由のIPFSファイルのピン留め、サイト・アプリ向けのIPFSホスティングを提供するWeb3開発プラットフォーム。
+- [Ceramic](https://ceramic.network/) - IPFSのコンテンツアドレス方式、暗号技術、ブロックチェーンのタイムスタンプを組み合わせ、データの安全性と検証可能性を保証すると原文は説明。
+- [dAppling](https://www.dappling.network/) - GitHubからIPFSへの自動デプロイに対応したホスティングプラットフォーム。
+- [Fileverse](https://fileverse.io/) - IPFSを基盤とする暗号化ファイル共有。ウォレットの有無にかかわらずファイルを共有可能。
+- [Fleek](http://fleek.co/) - IPFS、Filecoin、Internet Computer上でサイトやアプリを構築・ホスト・保存するOpen Web開発プラットフォーム。
+- [Fission](https://fission.codes) - スケーラブルで安全なアプリを構築するためのオープンソースプロトコルとマネージドソリューションを開発。
+- [Matters.town](https://matters.town/) - 分散型のコンテンツ公開エコシステム。
+- [Peergos](https://peergos.org) - 文書やメディアを保存・編集し、友人とファイルやフォルダーを共有できる、プライバシーを重視した交流のためのオンライン空間。
 
-## ピン留めサービス
+## ピン留めサービス <a id="pinning-services"></a>
 
-- [4EVERLAND](https://www.4everland.org/) - フロントエンドのホスト、データ・NFT・ファイルの保存、IPFS によるデータ取得をより簡単・迅速にする IPFS インフラとツールを提供するピン留めサービス。
-- [Filebase](https://filebase.com/) - 難しい IPFS へのデータピン留めを簡素化。
-- [lighthouse.storage](https://lighthouse.storage/) - プライバシー・暗号化機能を備えた分散型 IPFS ピン留めサービス。
-- [NFT.Storage](https://nft.storage/) - IPFS・Filecoin 上の NFT 向け無料分散ストレージと帯域幅。
-- [Pinata](https://pinata.cloud) - Pinata の REST API と IPFS ツールキットで dapp を構築・管理。
-- [QuickNode](https://www.quicknode.com/ipfs) - IPFS ゲートウェイとピン留め。
-- [Storacha](https://storacha.network) - 大規模に利用できる高速な分散データ。
+- [4EVERLAND](https://www.4everland.org/) - フロントエンドのホスト、データ・NFT・ファイルの保存、IPFS経由の取得を簡単・迅速にする、IPFSインフラとツールを提供するピン留めサービス。
+- [Filebase](https://filebase.com/) - IPFSへのデータのピン留めを簡単にするサービス。
+- [lighthouse.storage](https://lighthouse.storage/) - プライバシー保護と暗号化機能を備えた、分散型のIPFSピン留めサービス。
+- [NFT.Storage](https://nft.storage/) - IPFSとFilecoinを使った、NFT向けの無料の分散ストレージと帯域幅。固定原文当時の記載。
+- [Pinata](https://pinata.cloud) - PinataのREST APIとIPFSツールキットでDappを構築・管理。
+- [QuickNode](https://www.quicknode.com/ipfs) - IPFSゲートウェイとピン留め。
+- [Storacha](https://storacha.network) - 大規模な分散データを扱うサービス。原文は「Super hot」と紹介。
 
-## 保守終了プロジェクト
+## 保守終了プロジェクト <a id="stale-projects"></a>
 
-参照用に、すでに保守されていないプロジェクトの一覧を維持しています。この一覧に保守終了のものがあれば、エントリーを [stale.md](https://github.com/ipfs/awesome-ipfs/blob/04fcfef57e6f233fa164cf7020e8e5f588a78675/stale.md) へ移動する PR を送信し、必要に応じてインデントしたコメントで保守終了と判定した理由を追加してください。
-
-[保守終了プロジェクトの一覧はこちら](https://github.com/ipfs/awesome-ipfs/blob/04fcfef57e6f233fa164cf7020e8e5f588a78675/stale.md)
-
-## 貢献
-
-貢献を歓迎します！
-
-[**貢献ガイドライン**](https://github.com/ipfs/awesome-ipfs/blob/04fcfef57e6f233fa164cf7020e8e5f588a78675/CONTRIBUTING.md) を参照してください。
-
-## ライセンス
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+原文は、参照用に[保守終了プロジェクトの一覧](https://github.com/ipfs/awesome-ipfs/blob/04fcfef57e6f233fa164cf7020e8e5f588a78675/stale.md)を別に用意しています。
