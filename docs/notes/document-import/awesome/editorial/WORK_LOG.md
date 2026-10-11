@@ -6064,3 +6064,5 @@
 - 2026-10-11T07:33:38.072Z バッチ168 Non-Financial Blockchain新版。固定raw61/旧英日58全読、成果EN52/JA58単位/39資料/10見出しを別パス照合。4手動目次/バッジ除去、定義/分類基準/3URL復元。collateral/claims/Intranet/主語を改善、3年/1MW/2016/全条件保持。CC0/Sergey/Machinomy権利放棄を出典欄へ移動、JA旧ID3個を保存。translated-jaまで保存、再生成/検査/実表示は未完了。
 
 - 2026-10-11T07:42:40.627Z バッチ168最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**226/1037完了、811残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch168/COMPLETION.json。次バッチ169 Waves。commit/push待ち、外部公開なし。
+
+- 2026-10-11T07:43:28.745Z バッチ168対象39ファイルを e014a206697912bd5bcb887469a18a2af995b101 にコミットし origin/codex/awesome-editorial-20261011 へpush成功。全1037組2回再生成、publish/check672、翻訳672、7子アプリ有効ビルド証拠、対象HTML2文書と全参照/出典/目次、英日PC/mobile4状態と8画像・目次移動・旧ID3別名・言語切替・版メニューから旧版統合ナビ365件への遷移、全1037組台帳検査、対象verified後1組検査に合格。39資料/5分野/4下位分類/全主付随URL保持、定型化で失われた定義/分類基準とDon Tapscott/21/Earn.comの3URL復元。collateral/claims/Intranet/電力メーターの主語を改善、3年/1MW/2016/全条件保持。CC0とSergey/Machinomy権利放棄を出典へ移動、JA旧ID3個を維持。容量警告0/超過0、空白検査合格。226/1037完了、811残（inventoried807・blocked3・needs-decision1）。次バッチ169 Waves新版 github-msmolyakov-awesome-waves-readme-md。Non-Financial Blockchainは新版のみ収録。台帳push記録を後続コミットとして送信。配信workflow対象外の編集ブランチで外部公開なし、所有プレビュー/ブラウザー終了、他案件変更保持。
