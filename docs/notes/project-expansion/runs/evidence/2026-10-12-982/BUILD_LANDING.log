@@ -1,0 +1,37 @@
+
+> libx@ build:selective /private/tmp/libx-gnu-patch-formal-979
+> node scripts/build-selective.js --projects\=landing
+
+【情報】landing をビルドしています...
+
+> sites-landing@0.0.1 build /private/tmp/libx-gnu-patch-formal-979/sites/landing
+> astro build
+
+3:26:32 AM [vite] (ssr) Error when evaluating SSR module /private/tmp/libx-gnu-patch-formal-979/sites/landing/astro.config.mjs: Cannot find module '@docs/config' imported from '/private/tmp/libx-gnu-patch-formal-979/sites/landing/astro.config.mjs'
+      at fetchModule (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:46813:19)
+      at RunnableDevEnvironment.fetchModule (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:47904:12)
+      at fetchModule (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:47858:21)
+      at handleInvoke (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:38973:28)
+      at EventEmitter.listenerForInvokeHandler (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:39046:25)
+      at EventEmitter.emit (node:events:509:28)
+      at Object.send (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:25190:40)
+      at Object.invoke (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/module-runner.js:621:34)
+      at Object.invoke (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/module-runner.js:682:34)
+      at SSRCompatModuleRunner.getModuleInformation (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/module-runner.js:1205:94)
+[astro] Unable to load your Astro config
+
+Cannot find module '@docs/config' imported from '/private/tmp/libx-gnu-patch-formal-979/sites/landing/astro.config.mjs'
+  Location:
+    /private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:46813:19
+  Stack trace:
+    at fetchModule (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:46813:19)
+    at fetchModule (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:47858:21)
+    at EventEmitter.listenerForInvokeHandler (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:39046:25)
+    at Object.send (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:25190:40)
+    at Object.invoke (file:///private/tmp/libx-gnu-patch-formal-979/node_modules/.pnpm/vite@6.3.5_@types+node@20.19.25_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/module-runner.js:682:34)
+/private/tmp/libx-gnu-patch-formal-979/sites/landing:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  sites-landing@0.0.1 build: `astro build`
+Exit status 1
+ WARN   Local package.json exists, but node_modules missing, did you mean to install?
+【エラー】Command failed: pnpm --filter=sites-landing build
+ ELIFECYCLE  Command failed with exit code 1.
