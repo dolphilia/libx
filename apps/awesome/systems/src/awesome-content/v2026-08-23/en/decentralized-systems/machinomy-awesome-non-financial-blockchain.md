@@ -1,19 +1,16 @@
 ---
 title: "Awesome Non-Financial Blockchain"
-description: "A curated collection of resources and projects focused on Non-Financial Blockchain."
+description: "Blockchain applications beyond finance: identity, the Internet of Things, energy, media, and related talks and books."
 licenseSource: "github-machinomy-awesome-non-financial-blockchain-readme-md"
 ---
 
 # Awesome Non-Financial Blockchain
 
-A curated collection of resources and projects focused on Non-Financial Blockchain.
+Projects applying blockchain beyond finance, covering identity, the Internet of Things, energy, media and journalism. Related talks and books introduce application areas.
 
-## Contents
+[Don Tapscott](https://www.linkedin.com/pulse/whats-next-generation-internet-surprise-its-all-don-tapscott) describes blockchain as an incorruptible digital ledger of economic transactions that can be programmed to record virtually anything of value, beyond financial transactions.
 
-- [Identity Applications](#identity-applications)
-- [Internet of Things Applications](#internet-of-things-applications)
-- [Energy Applications](#energy-applications)
-- [Talks and books](#talks-and-books)
+The fixed README notes that most blockchain applications are financial and classifies applications by the industry changed the most. Its example is the discontinued IoT Bitcoin micropayments startup [21](https://21.co), referred to there as [Earn.com](https://earn.com): it could significantly change both IoT and finance. Finance would extend its existing practices into a new domain, while the IoT business model would change significantly. This distinction guides the classifications below.
 
 ## Identity Applications
 
@@ -27,7 +24,7 @@ A curated collection of resources and projects focused on Non-Financial Blockcha
 
 ### Blockchain as a collateral
 
-- [ShoCard](https://shocard.com) - Proprietary digital identity service, uses blockchain for time-stamping and secure documents exchange.
+- [ShoCard](https://shocard.com) - Proprietary digital identity service; uses blockchain for time-stamping and secure documents exchange.
 - [Tradle](https://tradle.io/) - Makes a bank on blockchain, identity as a collateral.
 
 ### Unclear
@@ -59,10 +56,10 @@ A curated collection of resources and projects focused on Non-Financial Blockcha
 - [bankymoon](http://bankymoon.co.za/) - Blockchain consultancy. [Presented](http://goo.gl/L6vJBx) bitcoin-topped smart electricity meter. Once topped up, it chooses a plan, and starts moving energy.
 - [Co-Tricity](https://co-tricity.com/) - Decentralised energy marketplace by [Innogy](https://innovationhub.innogy.com/) and [ConsenSys](https://consensys.net).
 - [Electron](http://www.electron.org.uk/) - Reinventing energy on blockchain.
-- [GridSingularity](http://gridsingularity.com) - Blockchain for Smart Grid. Declare three years of work on the technology.
+- [GridSingularity](http://gridsingularity.com) - Blockchain for Smart Grid. The fixed README reports three years of work on the technology.
 - [lo3 energy](http://lo3energy.com) - Energy Services, Product Research & Development. Makers of [Brooklyn Microgrid](http://brooklynmicrogrid.com) along with [ConsenSys](https://consensys.net).
 - [lumo](https://lumoenergy.com.au) - Energy provider. Experiment with blockchain.
-- [PowerLedger](https://powerledger.io) - Decentralised energy marketpace.
+- [PowerLedger](https://powerledger.io) - Decentralised energy marketplace.
 - [PowerPeers](https://www.powerpeers.nl/) - Peer-to-peer energy marketplace in the Netherlands.
 - [Solar Change](http://www.solarchange.co/) - Makers of [Solar Coin](http://solarcoin.org/). AltCoin for a MW of solar power.
 - [Terraledger](https://terraledger.com) - Provider of Renewable Energy Certificates.
@@ -78,14 +75,7 @@ A curated collection of resources and projects focused on Non-Financial Blockcha
 ## Talks and Books
 
 - [19 Industries The Blockchain Will Disrupt](https://www.youtube.com/watch?v=G3psxs3gyf8) - List of industries to be changed by blockchain.
-- [Blockchain Revolution](http://blockchain-revolution.com) - Probably the best book on blockchain applications.
-- [EventHorizon](http://eventhorizon2017.com) - First global summit on blockchain technology in Energy Sector.
+- [Blockchain Revolution](http://blockchain-revolution.com) - A book on blockchain applications.
+- [EventHorizon](http://eventhorizon2017.com) - Described in the fixed README as the first global summit on blockchain technology in the energy sector.
 - [How the blockchain is changing money and business](https://www.youtube.com/watch?v=Pl8OlkkwRpc) - TED Talk from the author of "Blockchain Revolution" book on what is blockchain and its applications.
 - [Non Financial Uses of Blockchain Technology](https://www.youtube.com/watch?v=GGCHaphRjoM) - Presentation of non-financial uses of blockchain at Fintech Week 2016.
-
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Sergey Ukustov](https://github.com/ukstv) and [Machinomy](https://github.com/machinomy) have waived all copyright and related or neighboring rights to this work.

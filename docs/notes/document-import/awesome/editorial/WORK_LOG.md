@@ -6060,3 +6060,7 @@
 - 2026-10-11T07:28:43.071Z バッチ167最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**225/1037完了、812残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch167/COMPLETION.json。次バッチ168 Non-Financial Blockchain。commit/push待ち、外部公開なし。
 
 - 2026-10-11T07:29:45.802Z バッチ167対象40ファイルを 36e717377cbb68f49b9e2ad1a29b9ceffb8e788b にコミットし origin/codex/awesome-editorial-20261011 へpush成功。全1037組2回再生成、publish/check672、翻訳672、7子アプリ有効ビルド証拠（初回全7、空アンカー修正後systems再ビルド・他6入力不変証拠再利用）、対象HTML2文書と全参照/出典/目次、英日PC/mobile4状態と8画像・目次移動・言語切替・版メニューから旧版統合ナビ365件への遷移、空アンカー修正後JA4画像とC++/Java/Scala再確認、全1037組台帳検査、対象verified後1組検査に合格。155資料/25分類/全主付随URL保持。AES256/日2回/否定/暗号識別子/Java・Scala/RPC等訂正、CC0・Igor権利放棄・BlockchainU・Awesome着想元を出典へ集約。25JA別名と旧自然ID維持。容量警告0/超過0、空白検査合格。225/1037完了、812残（inventoried808・blocked3・needs-decision1）。次バッチ168 Non-Financial Blockchain新版 github-machinomy-awesome-non-financial-blockchain-readme-md。Bitcoinは新版のみ収録。台帳push記録を後続コミットとして送信。配信workflow対象外の編集ブランチで外部公開なし、所有プレビュー/ブラウザー終了、他案件変更保持。
+
+- 2026-10-11T07:33:38.072Z バッチ168 Non-Financial Blockchain新版。固定raw61/旧英日58全読、成果EN52/JA58単位/39資料/10見出しを別パス照合。4手動目次/バッジ除去、定義/分類基準/3URL復元。collateral/claims/Intranet/主語を改善、3年/1MW/2016/全条件保持。CC0/Sergey/Machinomy権利放棄を出典欄へ移動、JA旧ID3個を保存。translated-jaまで保存、再生成/検査/実表示は未完了。
+
+- 2026-10-11T07:42:40.627Z バッチ168最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**226/1037完了、811残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch168/COMPLETION.json。次バッチ169 Waves。commit/push待ち、外部公開なし。
