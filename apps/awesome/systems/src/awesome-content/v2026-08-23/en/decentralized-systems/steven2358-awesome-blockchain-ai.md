@@ -1,24 +1,12 @@
 ---
 title: "Awesome Blockchain AI"
-description: "A curated collection of resources and projects focused on Blockchain AI."
+description: "Blockchain projects and research for artificial intelligence and machine learning."
 licenseSource: "github-steven2358-awesome-blockchain-ai-readme-md"
 ---
 
 # Awesome Blockchain AI
 
-A curated collection of resources and projects focused on Blockchain AI.
-
-## Contents
-
-- [Recommended reading](#recommended-reading)
-- [Blockchains for AI algorithms](#blockchains-for-ai-algorithms)
-- [Blockchains for data](#blockchains-for-data)
-- [Blockchains for computation](#blockchains-for-computation)
-- [Blockchains for AI in finance](#blockchains-for-ai-in-finance)
-- [Blockchains for AI in medicine](#blockchains-for-ai-in-medicine)
-- [Blockchains for AI in supply chains](#blockchains-for-ai-in-supply-chains)
-- [Blockchains for autonomous agents](#blockchains-for-autonomous-agents)
-- [Academic Research](#academic-research)
+Blockchain projects and research for artificial intelligence and machine learning, using decentralization, immutability, smart contracts, and other blockchain properties to build AI systems.
 
 ## Recommended reading
 
@@ -38,26 +26,26 @@ A curated collection of resources and projects focused on Blockchain AI.
 
 ## Blockchains for AI algorithms
 
-- [SingularityNET](https://singularitynet.io/) - SingularityNET is a distributed AI platform on the Ethereum blockchain, with each blockchain node backing up an AI algorithm.
-- [Intuition Fabric](https://intuitionfabric.com) - The goal of Intuition Fabric is to democratize access to AI through a network of deep learning models that are stored on the interplanetary file system and accessed through the Ethereum blockchain.
+- [SingularityNET](https://singularitynet.io/) - SingularityNET is a distributed AI platform on the Ethereum blockchain, with each blockchain node supporting an AI algorithm, as described in the fixed README.
+- [Intuition Fabric](https://intuitionfabric.com) - The goal of Intuition Fabric is to democratize access to AI through a network of deep learning models that are stored on the InterPlanetary File System (IPFS) and accessed through the Ethereum blockchain.
 - [OpenMined](https://openmined.org/) - OpenMined is a community focused on building open-source technology for the decentralized ownership of data and intelligence. With OpenMined, AI can be trained on data that it never has access to.
 - [Raven Protocol](https://www.ravenprotocol.com/) - Raven Protocol is a decentralized and distributed deep-learning training protocol.
-- [Thought Network](https://thought.live/) - Thought's blockchain-enabled Fabric fundamentally changes applications by embedding artificial intelligence into every bit of data making it agile, actionable and inherently secure.
-- [MATRIX AI](https://www.matrix.io/) - The Matrix AI Network is a public chain that combines AI technology with blockchain technology to solve the major challenges currently stifling the development and adoption of blockchain technology. Matrix is poised to revolutionize and democratize the field of Artificial Intelligence using a blockchain-powered decentralized computing platform.
+- [Thought Network](https://thought.live/) - Thought's blockchain-enabled Fabric embeds artificial intelligence into every bit of data. The fixed README describes this as making data agile, actionable, and inherently secure.
+- [MATRIX AI](https://www.matrix.io/) - The Matrix AI Network is a public chain that combines AI technology with blockchain technology to solve the major challenges currently stifling the development and adoption of blockchain technology. Its blockchain-powered decentralized computing platform aims to broaden access to artificial intelligence.
 - [Cortex Labs](https://www.cortexlabs.ai/) - Cortex Labs is a decentralized AI platform with a virtual machine that allows you to execute AI programs on-chain.
 - [Fetch.ai](https://fetch.ai/) - Fetch.ai is a decentralized machine learning platform based on a distributed ledger, that enables secure sharing, connection and transactions based on any data globally.
-- [Oraichain](https://orai.io/) - Oraichain is the world's first intelligent and secure solution for emerging Web3, scalable Dapps, and decentralized AI.
-- [Bittensor](https://bittensor.com/) - Bittensor is an open-source protocol that powers a decentralized, blockchain-based machine learning network. [Related resources.](https://taostats.io/links/)
+- [Oraichain](https://orai.io/) - Oraichain is a solution for emerging Web3, scalable Dapps, and decentralized AI, described as intelligent and secure in the fixed README.
+- [Bittensor](https://bittensor.com/) - Bittensor is an open-source protocol that powers a decentralized, blockchain-based machine learning network. [Related resources](https://taostats.io/links/)
 - [Alethea AI](https://alethea.ai/) - A research and development studio building at the intersection of Generative AI and Blockchain.
 - [Vanna Labs](https://www.vannalabs.ai/) - An Ethereum L2 rollup that supports native, seamless, and trustless AI/ML inferences on-chain to empower decentralized applications.
 
 ### Blockchain projects for AI algorithms
-- [Danku](https://github.com/algorithmiaio/danku) - A blockchain-based protocol for evaluating and purchasing ML models on a public blockchain such as Ethereum. [Blog post.](https://algorithmia.com/research/ml-models-on-blockchain)
-- [Decentralized & Collaborative AI on Blockchain](https://github.com/microsoft/0xDeCA10B) - 0xDeCA10B is a framework to host and train publicly available machine learning models in smart contracts with incentive mechanisms to encourage good quality training data while keeping the models free to use for prediction. [Blog post.](https://www.microsoft.com/en-us/research/blog/leveraging-blockchain-to-make-machine-learning-models-more-accessible/)
+- [Danku](https://github.com/algorithmiaio/danku) - A blockchain-based protocol for evaluating and purchasing ML models on a public blockchain such as Ethereum. [Blog post](https://algorithmia.com/research/ml-models-on-blockchain)
+- [Decentralized & Collaborative AI on Blockchain](https://github.com/microsoft/0xDeCA10B) - 0xDeCA10B is a framework to host and train publicly available machine learning models in smart contracts with incentive mechanisms to encourage good quality training data while keeping the models free to use for prediction. [Blog post](https://www.microsoft.com/en-us/research/blog/leveraging-blockchain-to-make-machine-learning-models-more-accessible/)
 
 ## Blockchains for data
 
-- [Ocean Protocol](https://oceanprotocol.com/) - Ocean Protocol is a decentralized data exchange protocol that lets people share and monetize data while guaranteeing control, auditability, transparency and compliance to all actors involved. Its network handles storing of the metadata (i.e. who owns what), links to the data itself, and more.
+- [Ocean Protocol](https://oceanprotocol.com/) - Ocean Protocol is a decentralized data exchange protocol that lets people share and monetize data. The fixed README describes it as guaranteeing control, auditability, transparency, and compliance for all participants. Its network handles storing of the metadata (i.e. who owns what), links to the data itself, and more.
 
 ## Blockchains for computation
 
@@ -75,13 +63,15 @@ A curated collection of resources and projects focused on Blockchain AI.
 ## Blockchains for AI in medicine
 
 - [doc.ai](https://doc.ai/about) - doc.ai aims to decentralize precision medicine on the blockchain by using AI.
-- [BurstIQ](https://www.burstiq.com/) - Healthcare data marketplace with granular ownership and granular consent of data. By using on-chain storage on a custom blockchain, BurstIQ can comply with HIPAA, GDPR, and other regulations.
+- [BurstIQ](https://www.burstiq.com/) - Healthcare data marketplace with granular ownership and granular consent of data. The fixed README states that using on-chain storage on a custom blockchain enables compliance with HIPAA, GDPR, and other regulations.
 
 ## Blockchains for AI in supply chains
 
+The fixed README has no entries in this category.
+
 ## Blockchains for autonomous agents
 
-- [Hashgraph Online (HOL)](https://hol.org/) - Universal agentic registry built on Hedera Hashgraph. Provides blockchain-based identity for AI agents using ERC-8004 standard and HCS-14 Universal Agent IDs (UAIDs). Enables agent discovery, verification, and autonomous commerce via x402 protocol.
+- [Hashgraph Online (HOL)](https://hol.org/) - Universal agentic registry built on Hedera Hashgraph. Provides blockchain-based identity for AI agents using ERC-8004 standard and HCS-14 Universal Agent IDs (UAIDs). Enables agent discovery and verification, and autonomous commerce via the x402 protocol.
 - [AgentFund](https://github.com/RioBot-Grind/agentfund) - A decentralized crowdfunding infrastructure for autonomous AI agents on Base blockchain, enabling milestone-based escrow funding for AI projects and collaborations.
 
 ## Academic Research
@@ -97,9 +87,3 @@ A curated collection of resources and projects focused on Blockchain AI.
 - [Hyperparameter Optimization](https://doi.org/10.3389/fbloc.2020.00023) - Mittal, A., & Aggarwal, S. (2020). Hyperparameter optimization using sustainable proof of work in blockchain. *Frontiers in Blockchain*, 3, 23.
 - [Proof of Federated Learning](https://doi.org/10.1109/TPDS.2021.3056773) - Qu, X., Wang, S., Hu, Q., & Cheng, X. (2021). Proof of federated learning: A novel energy-recycling consensus algorithm. *IEEE Transactions on Parallel and Distributed Systems*, 32(8), 2074-2085.
 - [Proof of neural architecture](https://doi.org/10.1109/ICBC51069.2021.9461067) - Li, B., Lu, Q., Jiang, W., Jung, T., & Shi, Y. (2021, May). A mining pool solution for novel proof-of-neural-architecture consensus. In *2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC)* (pp. 1-3). IEEE.
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Steven Van Vaerenbergh](https://github.com/steven2358) has waived all copyright and related or neighboring rights to this work.
