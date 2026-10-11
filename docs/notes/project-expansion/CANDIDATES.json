@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 214,
+  "revision": 215,
   "candidates": [
     {
       "id": "ninja",
@@ -9099,7 +9099,7 @@
       "officialUrl": "https://www.gnu.org/software/m4/",
       "repository": null,
       "version": "1.4.21",
-      "scope": "GNU M41.4.21完全第1〜3章・参照脚注1・原通知・全文英語GFDL案",
+      "scope": "GNU M41.4.21完全第1〜3章18節、参照脚注1、原通知と全文英語GFDL参照。その他は固定原文全文へ案内。",
       "field": "macro-processing",
       "discovery": [
         {
@@ -9108,15 +9108,19 @@
           "date": "2026-10-11T12:30:42.534Z"
         }
       ],
-      "state": "screening",
+      "state": "eligible",
       "conditions": {
         "rights": {
-          "status": "unknown",
-          "reason": "GFDL1.3+、不変節/表紙文言なしを原Texinfoで確認。原通知/著者/History/全文GFDL/編集可能原稿の履行設計は保存したが、別パス照合未完。",
+          "status": "pass",
+          "reason": "原GFDL1.3+の通知・全4著者・History・全英語GFDL・編集可能原稿提供の具体案を別パス確認。試作で通知を保存。正式版の最終履行検証は別途必要。",
           "evidence": [
             {
-              "path": "docs/notes/document-import/gnu-m4/v1-4-21/RIGHTS_DESIGN.json",
-              "sha256": "3d2925648cd5c4d1162f449279ca3ce6a178b36dfc287acf034d6cc239cd2b23"
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/RIGHTS_ASSESSMENT.json",
+              "sha256": "11422abd26e4ec43c4e55b7783981f6bf3d144443955422812b2c9ca8cedeb32"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/trial/TRIAL_SOURCE.json",
+              "sha256": "8d6dc7a196580f039121e187f10e0f92ab77f4db83ac8f0afd6232cd20acc11e"
             }
           ]
         },
@@ -9145,32 +9149,52 @@
           ]
         },
         "selfContained": {
-          "status": "unknown",
-          "reason": "採用前の原資料・範囲・許諾履行・変換・工数確認が未完。",
+          "status": "pass",
+          "reason": "概要→起動→字句構文の完全3章。コマンド/マクロ詳細・未収録章への参照は固定全文へ案内。原文の技術監査や全サンプル実行を要求しない。",
           "evidence": [
             {
-              "path": "docs/notes/project-expansion/runs/evidence/2026-10-11-969/DISCOVERY.json",
-              "sha256": "70c9c005408e8f8280569332e1ac99de73de2e0fcd20d379e76baf413dd9ce93"
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/SCOPE_INVENTORY.json",
+              "sha256": "be7aacf1f93e5cfbdd2169d6071d7095266319b89bd6fe47e94e13f1d8e51c60"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/trial/TRIAL_SOURCE.json",
+              "sha256": "8d6dc7a196580f039121e187f10e0f92ab77f4db83ac8f0afd6232cd20acc11e"
             }
           ]
         },
         "conversion": {
-          "status": "unknown",
-          "reason": "固定HTML生成成功。正規テンプレートの本文/入力出力接頭辞/引用符/脚注/リンク/可読性試作は未実施。",
+          "status": "pass",
+          "reason": "正規作成器/通常テンプレートの試作4ページがビルド成功。英語3章本文DOMと全15pre、参照脚注1、原通知、120ローカル参照を保存。JA引用2preと代表日英の実表示・原文導線を確認。",
           "evidence": [
             {
-              "path": "docs/notes/project-expansion/runs/evidence/2026-10-11-969/DISCOVERY.json",
-              "sha256": "70c9c005408e8f8280569332e1ac99de73de2e0fcd20d379e76baf413dd9ce93"
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/trial/TRIAL_SOURCE.json",
+              "sha256": "8d6dc7a196580f039121e187f10e0f92ab77f4db83ac8f0afd6232cd20acc11e"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/trial/TRIAL_RENDERED.json",
+              "sha256": "3b85d7a94f0bbeb1bbd1e07a8567870abc6601c1c035534b5ff2fffc17a73072"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/trial/TRIAL_NATIVE.json",
+              "sha256": "410a7e58418d343fc8d4371adc169276b03ab4e34a9ad3d882a4624dc2830798"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/trial/BUILD.log",
+              "sha256": "2219e4ac5b99cbf200a1c265cbd015b311f90110d1f8f17b242eda6c342d6182"
             }
           ]
         },
         "workload": {
-          "status": "unknown",
-          "reason": "6070語18節の完全3章案。章単位2バッチ程度に分けられるが代表試作と採点前。",
+          "status": "pass",
+          "reason": "18意味節6070語。第1章5節1691語と第2章7節2422語を2バッチとして、第3章6節1957語を最終バッチにする案は計画の目安内。1バッチ5〜10ページに沿い、意味境界を維持する。",
           "evidence": [
             {
-              "path": "docs/notes/project-expansion/runs/evidence/2026-10-11-969/DISCOVERY.json",
-              "sha256": "70c9c005408e8f8280569332e1ac99de73de2e0fcd20d379e76baf413dd9ce93"
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/SCOPE_INVENTORY.json",
+              "sha256": "be7aacf1f93e5cfbdd2169d6071d7095266319b89bd6fe47e94e13f1d8e51c60"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/trial/TRIAL_GENERATION.json",
+              "sha256": "e3d56a02b6a5010a2e96a9266c1c1466b3ca906690be2239fd3f88e384645732"
             }
           ]
         }
@@ -9179,47 +9203,87 @@
         "status": "partial",
         "queries": [
           "GNU M4 1.4.20 マニュアル 日本語 翻訳",
-          "GNU m4 マニュアル 日本語 1.4"
+          "GNU m4 マニュアル 日本語 1.4",
+          "\"GNU M4\" \"1.4.21\" \"日本語\"",
+          "\"m4\" \"1.4.21\" \"翻訳\" \"マニュアル\""
         ],
-        "checkedAt": "2026-10-11T12:30:42.534Z",
+        "checkedAt": "2026-10-11T12:39:29.769Z",
         "evidence": [
           {
             "path": "docs/notes/document-import/gnu-m4/v1-4-21/JAPANESE_RESEARCH.json",
             "sha256": "9b5d45220d6455a18281311d7727499a2cfa1ad1c556dc99ceac5e34869be9a7"
+          },
+          {
+            "path": "docs/notes/document-import/gnu-m4/v1-4-21/JAPANESE_RESEARCH_SUPPLEMENT.json",
+            "sha256": "73300fc1c9705b3313639ba236aab5e01f358796cb5c9f354c4b18b1e88249f0"
           }
         ]
       },
       "scores": {
         "additionalValue": {
-          "value": null,
-          "reason": "採用前調査中。試作・根拠に基づく採点は未完。",
-          "evidence": []
+          "value": 3,
+          "reason": "旧1.4日本語訳を尊重。限定検索で新版全訳を特定できず、不存在は主張しない。固定1.4.21の起動・構文を日英対訳・原文導線付きで読める追加価値。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/SCORE_ASSESSMENT.json",
+              "sha256": "2c9e1b61b667bcff9c58f3932d09a190cad590c0504cec7383f8ebe7b3efcb51"
+            }
+          ]
         },
         "practicality": {
-          "value": null,
-          "reason": "採用前調査中。試作・根拠に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "Autoconfのconfigure生成に必要なマクロ処理の概要、起動オプション、引用・コメント・入力再走査を完全な意味範囲として提供。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/SCORE_ASSESSMENT.json",
+              "sha256": "2c9e1b61b667bcff9c58f3932d09a190cad590c0504cec7383f8ebe7b3efcb51"
+            }
+          ]
         },
         "quality": {
-          "value": null,
-          "reason": "採用前調査中。試作・根拠に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "15pre/定義リスト/脚注1を静的HTMLで保存。英語3章と日本語引用試作で本文/コード/参照/実表示を確認。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/SCORE_ASSESSMENT.json",
+              "sha256": "2c9e1b61b667bcff9c58f3932d09a190cad590c0504cec7383f8ebe7b3efcb51"
+            }
+          ]
         },
         "maintenance": {
-          "value": null,
-          "reason": "採用前調査中。試作・根拠に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "固定Texinfo7.1→HTMLと正規テンプレートの静的変換で管理。原サイト全機能や例の実行を維持する負荷は課さない。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/SCORE_ASSESSMENT.json",
+              "sha256": "2c9e1b61b667bcff9c58f3932d09a190cad590c0504cec7383f8ebe7b3efcb51"
+            }
+          ]
         },
         "reuse": {
-          "value": null,
-          "reason": "採用前調査中。試作・根拠に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "既存GNU系の固定入力/章節DOM/共通フッター/原文導線方式を再利用可能。新規共有実装の変更なし。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-m4/v1-4-21/SCORE_ASSESSMENT.json",
+              "sha256": "2c9e1b61b667bcff9c58f3932d09a190cad590c0504cec7383f8ebe7b3efcb51"
+            }
+          ]
         }
       },
-      "decision": "固定1.4.21を予備調査候補とする。6条件/試作/採点/選定照合未完のため採用済みとはしない。",
-      "resumeCondition": "GNU M41.4.21固定配布物/再生成HTML/18節・6070語・15preの第1〜3章案を再利用。1.4.21日本語資料追加調査、権利履行の別パス照合、正規テンプレート代表変換・可読性試作、採点と別パス選定照合から再開。6条件未完のためscreening、正式app/operation未作成。GNU tar1.35第1〜2章は本番公開・公開後確認完了。",
+      "decision": "6条件、追加価値3/実用性4、加重74点と別パスの根拠照合により候補採用可能。正式operation/全訳/公開は未実施。",
+      "resumeCondition": "GNU M41.4.21候補eligible74点。固定入力・具体的許諾履行設計・通常テンプレート試作・別パス選定照合を再利用し、現行公開commit32cbf393から作業場所を分離、正規作成器で正式gnu-m4 app/operationを作成。全18節を5・7・6ページの3バッチで定本化・独立翻訳・別パス全文レビューし、編集可能ソースキット/対象検証/統合Pages公開へ進める。まず第1章5節から。",
       "nextCheckAt": null,
-      "selectionReview": null
+      "selectionReview": {
+        "status": "passed",
+        "inputHash": "0ca8dd046e97ce46b8d7cb0e59c9a15469aa32628cbbd10123403d498c90e0e5",
+        "evidence": [
+          {
+            "path": "docs/notes/document-import/gnu-m4/v1-4-21/SELECTION_REVIEW.json",
+            "sha256": "b2c2439ffaaa06f2434a7b0fd3e33ece3fe12b9f7c3fcdc3901133ff89cbe8a0"
+          }
+        ]
+      }
     },
     {
       "id": "gnu-bc",
