@@ -1,0 +1,51 @@
+<div class="subsection-level-extent" id="extract-dir">
+
+<h4 class="subsection" id="Extracting-Files-that-are-Directories"><span>2.8.3 Extracting Files that are Directories</span></h4>
+<p>Extracting directories which are members of an archive is similar to
+extracting other files.  The main difference to be aware of is that if
+the extracted directory has the same name as any directory already in
+the working directory, then files in the extracted directory will be
+placed into the directory of the same name.  Likewise, if there are
+files in the pre-existing directory with the same names as the members
+which you extract, the files from the extracted archive will replace
+the files already in the working directory (and possible
+subdirectories).  This will happen regardless of whether or not the
+files in the working directory were more recent than those extracted
+(there exist, however, special options that alter this behavior
+see <a class="pxref" href="#Writing">Changing How <code class="command">tar</code> Writes Files</a>).
+</p>
+<p>However, if a file was stored with a directory name as part of its file
+name, and that directory does not exist under the working directory when
+the file is extracted, <code class="command">tar</code> will create the directory.
+</p>
+<p>We can demonstrate how to use <samp class="option">--extract</samp> to extract a directory
+file with an example.  Change to the <samp class="file">practice</samp> directory if you
+weren’t there, and remove the files <samp class="file">folk</samp> and <samp class="file">jazz</samp>.  Then,
+go back to the parent directory and extract the archive
+<samp class="file">music.tar</samp>.  You may either extract the entire archive, or you may
+extract only the files you just deleted.  To extract the entire archive,
+don’t give any file names as arguments after the archive name
+<samp class="file">music.tar</samp>.  To extract only the files you deleted, use the
+following command:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -xvf music.tar practice/folk practice/jazz</kbd>
+practice/folk
+practice/jazz
+</pre></div>
+<p>If you were to specify two <samp class="option">--verbose</samp> (<samp class="option">-v</samp>) options, <code class="command">tar</code>
+would have displayed more detail about the extracted files, as shown
+in the example below:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -xvvf music.tar practice/folk practice/jazz</kbd>
+-rw-r--r-- me/user          28 1996-10-18 16:31 practice/jazz
+-rw-r--r-- me/user          20 1996-09-23 16:44 practice/folk
+</pre></div>
+<p>Because you created the directory with <samp class="file">practice</samp> as part of the
+file names of each of the files by archiving the <samp class="file">practice</samp>
+directory as <samp class="file">practice</samp>, you must give <samp class="file">practice</samp> as part
+of the file names when you extract those files from the archive.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,153 @@
+<div class="unnumberedsubsec-level-extent" id="verbose-tutorial">
+
+<h4 class="unnumberedsubsec" id="The-_002d_002dverbose-Option"><span>The <samp class="option">--verbose</samp> Option</span></h4>
+<dl class="table">
+<dt><a id="index-verbose_002c-introduced"></a><span><samp class="option">--verbose</samp></span></dt>
+<dt><samp class="option">-v</samp></dt>
+<dd><p>Show the files being worked on as <code class="command">tar</code> is running.
+</p></dd>
+</dl>
+<p><samp class="option">--verbose</samp> (<samp class="option">-v</samp>) shows details about the results of running
+<code class="command">tar</code>.  This can be especially useful when the results might not be
+obvious.  For example, if you want to see the progress of <code class="command">tar</code> as
+it writes files into the archive, you can use the <samp class="option">--verbose</samp>
+option.  In the beginning, you may find it useful to use
+<samp class="option">--verbose</samp> at all times; when you are more accustomed to
+<code class="command">tar</code>, you will likely want to use it at certain times but not at
+others.  We will use <samp class="option">--verbose</samp> at times to help make something
+clear, and we will give many examples both using and not using
+<samp class="option">--verbose</samp> to show the differences.
+</p>
+<p>Each instance of <samp class="option">--verbose</samp> on the command line increases the
+verbosity level by one, so if you need more details on the output,
+specify it twice.
+</p>
+<p>When reading archives (<samp class="option">--list</samp>, <samp class="option">--extract</samp>,
+<samp class="option">--diff</samp>), <code class="command">tar</code> by default prints only the names of
+the members being extracted.  Using <samp class="option">--verbose</samp> will show a full,
+<code class="command">ls</code> style member listing.
+</p>
+<p>In contrast, when writing archives (<samp class="option">--create</samp>, <samp class="option">--append</samp>,
+<samp class="option">--update</samp>), <code class="command">tar</code> does not print file names by
+default.  So, a single <samp class="option">--verbose</samp> option shows the file names
+being added to the archive, while two <samp class="option">--verbose</samp> options
+enable the full listing.
+</p>
+<p>For example, to create an archive in verbose mode:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -cvf afiles.tar apple angst aspic</kbd>
+apple
+angst
+aspic
+</pre></div>
+<p>Creating the same archive with the verbosity level 2 could give:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -cvvf afiles.tar apple angst aspic</kbd>
+-rw-r--r-- gray/staff    62373 2006-06-09 12:06 apple
+-rw-r--r-- gray/staff    11481 2006-06-09 12:06 angst
+-rw-r--r-- gray/staff    23152 2006-06-09 12:06 aspic
+</pre></div>
+<p>This works equally well using short or long forms of options.  Using
+long forms, you would simply write out the mnemonic form of the option
+twice, like this:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --create --verbose --verbose ...</kbd>
+</pre></div>
+<p>Note that you must double the hyphens properly each time.
+</p>
+<p>Later in the tutorial, we will give examples using <samp class="option">--verbose --verbose</samp><!-- /@w -->.
+</p>
+<p>The <samp class="option">--verbose</samp> option also enables several <em class="dfn">warning
+messages</em>, that tar does not issue otherwise, such as the
+warning about record size being used (see <a class="pxref" href="#Blocking-Factor">The Blocking Factor of an Archive</a>), selecting
+the decompress program and the like.  If these are of no interest to
+you, you can suppress them using the <samp class="option">--warning</samp> option
+<em class="emph">after</em> <samp class="option">--verbose</samp>, e.g.:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -c -v --warning=no-verbose -f afiles.tar apple angst aspic</kbd>
+</pre></div>
+<p>See <a class="xref" href="#Warning-Classes">verbose</a>, for details.
+</p>
+<a class="anchor" id="verbose-member-listing"></a><p>The full output consists of six fields:
+</p>
+<ul class="itemize mark-bullet">
+<li>File type and permissions in symbolic form.
+These are displayed in the same format as the first column of
+<code class="command">ls -l</code> output (see <a data-manual="fileutils" href="fileutils.html#What-information-is-listed">Verbose listing</a> in <cite class="cite">GNU file utilities</cite>).
+
+</li><li>Owner name and group separated by a slash character.
+If these data are not available (for example, when listing a ‘<samp class="samp">v7</samp>’ format
+archive), numeric <abbr class="acronym">ID</abbr> values are printed instead.
+
+</li><li>Size of the file, in bytes.
+
+</li><li>File modification date in ISO 8601 format.
+
+</li><li>File modification time.
+
+</li><li>File name.
+If the name contains any special characters (white space, newlines,
+etc.) these are displayed in an unambiguous form using so called
+<em class="dfn">quoting style</em>.  For the detailed discussion of available styles
+and on how to use them, see <a class="ref" href="#quoting-styles">Quoting Member Names</a>.
+
+<p>Depending on the file type, the name can be followed by some
+additional information, described in the following table:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">-&gt; <var class="var">link-name</var></samp>’</dt>
+<dd><p>The file or archive member is a <em class="dfn">symbolic link</em> and
+<var class="var">link-name</var> is the name of file it links to.
+</p>
+</dd>
+<dt>‘<samp class="samp">link to <var class="var">link-name</var></samp>’</dt>
+<dd><p>The file or archive member is a <em class="dfn">hard link</em> and <var class="var">link-name</var> is
+the name of file it links to.
+</p>
+</dd>
+<dt>‘<samp class="samp">--Long Link--</samp>’</dt>
+<dd><p>The archive member is an old GNU format long link.  You will normally
+not encounter this.
+</p>
+</dd>
+<dt>‘<samp class="samp">--Long Name--</samp>’</dt>
+<dd><p>The archive member is an old GNU format long name.  You will normally
+not encounter this.
+</p>
+</dd>
+<dt>‘<samp class="samp">--Volume Header--</samp>’</dt>
+<dd><p>The archive member is a GNU <em class="dfn">volume header</em> (see <a class="pxref" href="#Tape-Files">Tape Files</a>).
+</p>
+</dd>
+<dt>‘<samp class="samp">--Continued at byte <var class="var">n</var>--</samp>’</dt>
+<dd><p>Encountered only at the beginning of a multi-volume archive
+(see <a class="pxref" href="#Using-Multiple-Tapes">Using Multiple Tapes</a>).  This archive member is a continuation
+from the previous volume. The number <var class="var">n</var> gives the offset where
+the original file was split.
+</p>
+</dd>
+<dt>‘<samp class="samp">unknown file type <var class="var">c</var></samp>’</dt>
+<dd><p>An archive member of unknown type. <var class="var">c</var> is the type character from
+the archive header.  If you encounter such a message, it means that
+either your archive contains proprietary member types <abbr class="acronym">GNU</abbr> <code class="command">tar</code> is not
+able to handle, or the archive is corrupted.
+</p></dd>
+</dl>
+</li></ul>
+<p>For example, here is an archive listing containing most of the special
+suffixes explained above:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">V--------- 0/0            1536 2006-06-09 13:07 MyVolume--Volume Header--
+-rw-r--r-- gray/staff   456783 2006-06-09 12:06 aspic--Continued at byte 32456--
+-rw-r--r-- gray/staff    62373 2006-06-09 12:06 apple
+lrwxrwxrwx gray/staff        0 2006-06-09 13:01 angst -&gt; apple
+-rw-r--r-- gray/staff    35793 2006-06-09 12:06 blues
+hrw-r--r-- gray/staff        0 2006-06-09 12:06 music link to blues
+</pre></div></div>
+<hr/>
+</div>

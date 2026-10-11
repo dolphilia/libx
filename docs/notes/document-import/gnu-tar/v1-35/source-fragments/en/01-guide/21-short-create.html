@@ -1,0 +1,68 @@
+<div class="subsection-level-extent" id="short-create">
+
+<h4 class="subsection" id="Short-Forms-with-create"><span>2.6.4 Short Forms with ‘<samp class="samp">create</samp>’</span></h4>
+<p>As we said before, the <samp class="option">--create</samp> (<samp class="option">-c</samp>) operation is one of the most
+basic uses of <code class="command">tar</code>, and you will use it countless times.
+Eventually, you will probably want to use abbreviated (or “short”)
+forms of options.  A full discussion of the three different forms that
+options can take appears in <a class="ref" href="#Styles">The Three Option Styles</a>; for now, here is what the
+previous example (including the <samp class="option">--verbose</samp> (<samp class="option">-v</samp>) option) looks like
+using short option forms:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -cvf collection.tar blues folk jazz</kbd>
+blues
+folk
+jazz
+</pre></div>
+<p>As you can see, the system responds the same no matter whether you use
+long or short option forms.
+</p>
+<p>One difference between using
+short and long option forms is that, although the exact placement of
+arguments following options is no more specific when using short forms,
+it is easier to become confused and make a mistake when using short
+forms.  For example, suppose you attempted the above example in the
+following way:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -cfv collection.tar blues folk jazz</kbd>
+</pre></div>
+<p>In this case, <code class="command">tar</code> will make an archive file called <samp class="file">v</samp>,
+containing the files <samp class="file">blues</samp>, <samp class="file">folk</samp>, and <samp class="file">jazz</samp>, because
+the ‘<samp class="samp">v</samp>’ is the closest “file name” to the <samp class="option">-f</samp> option, and
+is thus taken to be the chosen archive file name.  <code class="command">tar</code> will try
+to add a file called <samp class="file">collection.tar</samp> to the <samp class="file">v</samp> archive file;
+if the file <samp class="file">collection.tar</samp> did not already exist, <code class="command">tar</code> will
+report an error indicating that this file does not exist.  If the file
+<samp class="file">collection.tar</samp> does already exist (e.g., from a previous command
+you may have run), then <code class="command">tar</code> will add this file to the archive.
+Because the <samp class="option">-v</samp> option did not get registered, <code class="command">tar</code> will not
+run under ‘<samp class="samp">verbose</samp>’ mode, and will not report its progress.
+</p>
+<p>The end result is that you may be quite confused about what happened,
+and possibly overwrite a file.  To illustrate this further, we will show
+you how an example we showed previously would look using short forms.
+</p>
+<p>This example,
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --create folk blues --file=collection.tar jazz</kbd>
+</pre></div>
+<p>is confusing as it is.  It becomes even more so when using short forms:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -c folk blues -f collection.tar jazz</kbd>
+</pre></div>
+<p>It would be very easy to put the wrong string of characters
+immediately following the <samp class="option">-f</samp>, but doing that could sacrifice
+valuable data.
+</p>
+<p>For this reason, we recommend that you pay very careful attention to
+the order of options and placement of file and archive names,
+especially when using short option forms.  Not having the option name
+written out mnemonically can affect how well you remember which option
+does what, and therefore where different names have to be placed.
+</p>
+<hr/>
+</div>

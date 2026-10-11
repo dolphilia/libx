@@ -1,0 +1,56 @@
+<div class="subsection-level-extent" id="failing-commands">
+
+<h4 class="subsection" id="Commands-That-Will-Fail"><span>2.8.5 Commands That Will Fail</span></h4>
+<p>Here are some sample commands you might try which will not work, and why
+they won’t work.
+</p>
+<p>If you try to use this command,
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -xvf music.tar folk jazz</kbd>
+</pre></div>
+<p>you will get the following response:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">tar: folk: Not found in archive
+tar: jazz: Not found in archive
+</pre></div>
+<p>This is because these files were not originally <em class="emph">in</em> the parent
+directory <samp class="file">..</samp>, where the archive is located; they were in the
+<samp class="file">practice</samp> directory, and their file names reflect this:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -tvf music.tar</kbd>
+practice/blues
+practice/folk
+practice/jazz
+</pre></div>
+<p>Likewise, if you try to use this command,
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -tvf music.tar folk jazz</kbd>
+</pre></div>
+<p>you would get a similar response.  Members with those names are not in the
+archive.  You must use the correct member names, or wildcards, in order
+to extract the files from the archive.
+</p>
+<p>If you have forgotten the correct names of the files in the archive,
+use <kbd class="kbd">tar --list --verbose</kbd><!-- /@w --> to list them correctly.
+</p>
+<p>To extract the member named <samp class="file">practice/folk</samp>, you must specify
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --extract --file=music.tar practice/folk</kbd>
+</pre></div>
+<p>Notice also, that as explained above, the <samp class="file">practice</samp> directory
+will be created, if it didn’t already exist.  There are options that
+allow you to strip away a certain number of leading directory
+components (see <a class="pxref" href="#transform">Modifying File and Member Names</a>).  For example,
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --extract --file=music.tar --strip-components=1 folk</kbd>
+</pre></div>
+<p>will extract the file <samp class="file">folk</samp> into the current working directory.
+</p>
+<hr/>
+</div>

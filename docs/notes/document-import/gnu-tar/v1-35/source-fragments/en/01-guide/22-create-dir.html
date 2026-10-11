@@ -1,0 +1,71 @@
+<div class="subsection-level-extent" id="create-dir">
+
+<h4 class="subsection" id="Archiving-Directories"><span>2.6.5 Archiving Directories</span></h4>
+<a class="index-entry-id" id="index-Archiving-Directories"></a>
+<a class="index-entry-id" id="index-Directories_002c-Archiving"></a>
+<p>You can archive a directory by specifying its directory name as a
+file name argument to <code class="command">tar</code>.  The files in the directory will be
+archived relative to the working directory, and the directory will be
+re-created along with its contents when the archive is extracted.
+</p>
+<p>To archive a directory, first move to its superior directory.  If you
+have followed the previous instructions in this tutorial, you should
+type:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">cd ..</kbd>
+$
+</pre></div>
+<p>This will put you into the directory which contains <samp class="file">practice</samp>,
+i.e., your home directory.  Once in the superior directory, you can
+specify the subdirectory, <samp class="file">practice</samp>, as a file name argument.  To
+store <samp class="file">practice</samp> in the new archive file <samp class="file">music.tar</samp>, type:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --create --verbose --file=music.tar practice</kbd>
+</pre></div>
+<p><code class="command">tar</code> should output:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">practice/
+practice/blues
+practice/folk
+practice/jazz
+practice/collection.tar
+</pre></div>
+<p>Note that the archive thus created is not in the subdirectory
+<samp class="file">practice</samp>, but rather in the current working directory—the
+directory from which <code class="command">tar</code> was invoked.  Before trying to archive a
+directory from its superior directory, you should make sure you have
+write access to the superior directory itself, not only the directory
+you are trying archive with <code class="command">tar</code>.  For example, you will probably
+not be able to store your home directory in an archive by invoking
+<code class="command">tar</code> from the root directory; See <a class="xref" href="#absolute">Absolute File Names</a>.  (Note
+also that <samp class="file">collection.tar</samp>, the original archive file, has itself
+been archived.  <code class="command">tar</code> will accept any file as a file to be
+archived, regardless of its content.  When <samp class="file">music.tar</samp> is
+extracted, the archive file <samp class="file">collection.tar</samp> will be re-written
+into the file system).
+</p>
+<p>If you give <code class="command">tar</code> a command such as
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --create --file=foo.tar .</kbd>
+</pre></div>
+<p><code class="command">tar</code> will report ‘<samp class="samp">tar: ./foo.tar is the archive; not
+dumped</samp>’.  This happens because <code class="command">tar</code> creates the archive
+<samp class="file">foo.tar</samp> in the current directory before putting any files into
+it.  Then, when <code class="command">tar</code> attempts to add all the files in the
+directory <samp class="file">.</samp> to the archive, it notices that the file
+<samp class="file">./foo.tar</samp> is the same as the archive <samp class="file">foo.tar</samp>, and skips
+it.  (It makes no sense to put an archive into itself.)  <abbr class="acronym">GNU</abbr> <code class="command">tar</code>
+will continue in this case, and create the archive
+normally, except for the exclusion of that one file.  (<em class="emph">Please
+note:</em> Other implementations of <code class="command">tar</code> may not be so clever;
+they will enter an infinite loop when this happens, so you should not
+depend on this behavior unless you are certain you are running
+<abbr class="acronym">GNU</abbr> <code class="command">tar</code>.  In general, it is wise to always place the archive outside
+of the directory being dumped.)
+</p>
+<hr/>
+</div>

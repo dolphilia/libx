@@ -1,0 +1,36 @@
+<div class="unnumberedsubsec-level-extent" id="file-tutorial">
+
+<h4 class="unnumberedsubsec" id="The-_002d_002dfile-Option"><span>The <samp class="option">--file</samp> Option</span></h4>
+<dl class="table">
+<dt><a id="index-file_002c-tutorial"></a><span><samp class="option">--file=<var class="var">archive-name</var></samp></span></dt>
+<dt><samp class="option">-f <var class="var">archive-name</var></samp></dt>
+<dd><p>Specify the name of an archive file.
+</p></dd>
+</dl>
+<p>You can specify an argument for the <samp class="option">--file=<var class="var">archive-name</var></samp> (<samp class="option">-f <var class="var">archive-name</var></samp>) option whenever you
+use <code class="command">tar</code>; this option determines the name of the archive file
+that <code class="command">tar</code> will work on.
+</p>
+<a class="index-entry-id" id="index-TAPE"></a>
+<p>If you don’t specify this argument, then <code class="command">tar</code> will examine
+the environment variable <code class="env">TAPE</code>.  If it is set, its value will be
+used as the archive name.  Otherwise, <code class="command">tar</code> will use the
+default archive, determined at compile time. Usually it is
+standard output or some physical tape drive attached to your machine
+(you can verify what the default is by running <kbd class="kbd">tar
+--show-defaults</kbd>, see <a class="pxref" href="#defaults">Obtaining <abbr class="acronym">GNU</abbr> <code class="command">tar</code> default values</a>).  If there is no tape drive
+attached, or the default is not meaningful, then <code class="command">tar</code> will
+print an error message.  The error message might look roughly like one
+of the following:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">tar: can't open /dev/rmt8 : No such device or address
+tar: can't open /dev/rsmt0 : I/O error
+</pre></div>
+<p>To avoid confusion, we recommend that you always specify an archive file
+name by using <samp class="option">--file=<var class="var">archive-name</var></samp> (<samp class="option">-f <var class="var">archive-name</var></samp>) when writing your <code class="command">tar</code> commands.
+For more information on using the <samp class="option">--file=<var class="var">archive-name</var></samp> (<samp class="option">-f <var class="var">archive-name</var></samp>) option, see
+<a class="ref" href="#file">Choosing and Naming Archive Files</a>.
+</p>
+<hr/>
+</div>

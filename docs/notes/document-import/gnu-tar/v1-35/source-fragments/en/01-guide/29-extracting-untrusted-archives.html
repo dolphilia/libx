@@ -1,0 +1,22 @@
+<div class="subsection-level-extent" id="extracting-untrusted-archives">
+
+<h4 class="subsection" id="Extracting-Archives-from-Untrusted-Sources"><span>2.8.4 Extracting Archives from Untrusted Sources</span></h4>
+<p>Extracting files from archives can overwrite files that already exist.
+If you receive an archive from an untrusted source, you should make a
+new directory and extract into that directory, so that you don’t have
+to worry about the extraction overwriting one of your existing files.
+For example, if <samp class="file">untrusted.tar</samp> came from somewhere else on the
+Internet, and you don’t necessarily trust its contents, you can
+extract it as follows:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">mkdir newdir</kbd>
+$ <kbd class="kbd">cd newdir</kbd>
+$ <kbd class="kbd">tar -xvf ../untrusted.tar</kbd>
+</pre></div>
+<p>It is also a good practice to examine contents of the archive
+before extracting it, using <samp class="option">--list</samp> (<samp class="option">-t</samp>) option, possibly combined
+with <samp class="option">--verbose</samp> (<samp class="option">-v</samp>).
+</p>
+<hr/>
+</div>

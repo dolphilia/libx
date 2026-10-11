@@ -1,0 +1,48 @@
+<div class="subsection-level-extent" id="extracting-files">
+
+<h4 class="subsection" id="Extracting-Specific-Files"><span>2.8.2 Extracting Specific Files</span></h4>
+<p>To extract specific archive members, give their exact member names as
+arguments, as printed by <samp class="option">--list</samp> (<samp class="option">-t</samp>).  If you had
+mistakenly deleted one of the files you had placed in the archive
+<samp class="file">collection.tar</samp> earlier (say, <samp class="file">blues</samp>), you can extract it
+from the archive without changing the archive’s structure.  Its
+contents will be identical to the original file <samp class="file">blues</samp> that you
+deleted.
+</p>
+<p>First, make sure you are in the <samp class="file">practice</samp> directory, and list the
+files in the directory.  Now, delete the file, ‘<samp class="samp">blues</samp>’, and list
+the files in the directory again.
+</p>
+<p>You can now extract the member <samp class="file">blues</samp> from the archive file
+<samp class="file">collection.tar</samp> like this:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --extract --file=collection.tar blues</kbd>
+</pre></div>
+<p>If you list the files in the directory again, you will see that the file
+<samp class="file">blues</samp> has been restored, with its original permissions, data
+modification times, and owner.<a class="footnote" href="#FOOT1" id="DOCF1"><sup>1</sup></a>  (These parameters will be identical to those which
+the file had when you originally placed it in the archive; any changes
+you may have made before deleting the file from the file system,
+however, will <em class="emph">not</em> have been made to the archive member.)  The
+archive file, ‘<samp class="samp">collection.tar</samp>’, is the same as it was before you
+extracted ‘<samp class="samp">blues</samp>’.  You can confirm this by running <code class="command">tar</code> with
+<samp class="option">--list</samp> (<samp class="option">-t</samp>).
+</p>
+<p>Remember that as with other operations, specifying the exact member
+name is important (See <a class="xref" href="#failing-commands">Commands That Will Fail</a>, for more examples).
+</p>
+<p>You can extract a file to standard output by combining the above options
+with the <samp class="option">--to-stdout</samp> (<samp class="option">-O</samp>) option (see <a class="pxref" href="#Writing-to-Standard-Output">Writing to Standard Output</a>).
+</p>
+<p>If you give the <samp class="option">--verbose</samp> option, then <samp class="option">--extract</samp>
+will print the names of the archive members as it extracts them.
+</p>
+<hr/>
+<h5 class="footnote-body-heading"><a href="#DOCF1" id="FOOT1">(1)</a></h5><p>This is only accidentally
+true, but not in general.  Whereas modification times are always
+restored, in most cases, one has to be root for restoring the owner,
+and use a special option for restoring permissions.  Here, it just
+happens that the restoring user is also the owner of the archived
+members, and that the current <code class="code">umask</code> is compatible with original
+permissions.</p></div>
