@@ -1,7 +1,7 @@
 from pathlib import Path
 import json,hashlib,datetime
 from bs4 import BeautifulSoup
-R=Path.cwd();N=R/'docs/notes/document-import/gnu-patch/v2-8';E=Path(__file__).resolve().parent;Q=Path('/private/tmp/libx-gnu-patch-source-rebuild-981/workspace');W=Path('/private/tmp/libx-gnu-patch-formal-979');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();html=BeautifulSoup((N/'source/derived/manual.html').read_text(),'html.parser');notice=html.find(id='COPYING').parent;readme=' '.join((N/'SOURCE_OFFER_README.md').read_text().split())
+R=Path.cwd();N=R/'docs/notes/document-import/gnu-patch/v2-8';E=Path(__file__).resolve().parent;Q=Path('/private/tmp/libx-gnu-patch-source-rebuild-981-final2/workspace');W=Path('/private/tmp/libx-gnu-patch-formal-979');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();html=BeautifulSoup((N/'source/derived/manual.html').read_text(),'html.parser');notice=html.find(id='COPYING').parent;readme=' '.join((N/'SOURCE_OFFER_README.md').read_text().split())
 for p in notice.select('p'):assert ' '.join(p.get_text(' ',strip=True).split())in readme
 for name in ['SOURCE_OFFER_README.md','project.config.jsonc','rebuild.py','prepare-source-public.py','generate-canonical.py','translate-batch1.py','translate-batch2.py']:assert sha(N/name)==sha(Q/'docs/notes/document-import/gnu-patch/v2-8'/name),name
 assert sha(N/'project.config.jsonc')==sha(W/'apps/gnu-patch/src/config/project.config.jsonc')==sha(Q/'apps/gnu-patch/src/config/project.config.jsonc')

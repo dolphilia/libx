@@ -2,7 +2,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from urllib.parse import urlsplit,unquote
 import json,hashlib,datetime
-R=Path.cwd();N=R/'docs/notes/document-import/gnu-patch/v2-8';E=Path(__file__).resolve().parent;W=Path('/private/tmp/libx-gnu-patch-formal-979');Q=Path('/private/tmp/libx-gnu-patch-source-rebuild-981/workspace');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();prefix='/docs/gnu-patch/';rows=[];at=datetime.datetime.now(datetime.timezone.utc).isoformat()
+R=Path.cwd();N=R/'docs/notes/document-import/gnu-patch/v2-8';E=Path(__file__).resolve().parent;W=Path('/private/tmp/libx-gnu-patch-formal-979');Q=Path('/private/tmp/libx-gnu-patch-source-rebuild-981-final2/workspace');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();prefix='/docs/gnu-patch/';rows=[];at=datetime.datetime.now(datetime.timezone.utc).isoformat()
 def check(workspace):
  D=workspace/'apps/gnu-patch/dist';results=[];cache={}
  def soup(p):

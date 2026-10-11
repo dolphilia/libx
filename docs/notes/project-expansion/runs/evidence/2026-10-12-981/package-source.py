@@ -1,6 +1,6 @@
 from pathlib import Path
 import json,hashlib,shutil,subprocess,zipfile,stat,datetime
-R=Path('/Users/dolphilia/github/libx');W=Path('/private/tmp/libx-gnu-patch-formal-979');n=Path('docs/notes/document-import/gnu-patch/v2-8');N=R/n;A=W/'apps/gnu-patch';P=A/'public/source/v2-8';E=Path(__file__).resolve().parent;B=Path('/private/tmp/libx-gnu-patch-source-package-981');Q=Path('/private/tmp/libx-gnu-patch-source-rebuild-981');assert not B.exists()and not Q.exists();sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+R=Path('/Users/dolphilia/github/libx');W=Path('/private/tmp/libx-gnu-patch-formal-979');n=Path('docs/notes/document-import/gnu-patch/v2-8');N=R/n;A=W/'apps/gnu-patch';P=A/'public/source/v2-8';E=Path(__file__).resolve().parent;B=Path('/private/tmp/libx-gnu-patch-source-package-981-final2');Q=Path('/private/tmp/libx-gnu-patch-source-rebuild-981-final2');assert not B.exists()and not Q.exists();sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 review=json.loads((N/'REVIEW_MANIFEST.json').read_text());assert review['completedPages']==9
 for r in review['pages']:
  for role in ['source','canonical','translation']:assert sha(R/r[role]['path'])==r[role]['sha256']
@@ -32,5 +32,5 @@ with zipfile.ZipFile(P/'source.zip')as z:
  for i in z.infolist():p=Path(i.filename);assert not p.is_absolute()and'..'not in p.parts and not stat.S_ISLNK(i.external_attr>>16)
  for r in components['files']:assert hashlib.sha256(z.read(r['path'])).hexdigest()==r['sha256']
  z.extractall(Q)
-copy(P/'source.zip',Q/'workspace/apps/gnu-patch/public/source/v2-8/source.zip');copy(P/'source.zip',N/'source-offer.zip');copy(B/'SOURCE_COMPONENTS.json',N/'SOURCE_COMPONENTS.json')
+copy(P/'source.zip',N/'source-offer.zip');copy(B/'SOURCE_COMPONENTS.json',N/'SOURCE_COMPONENTS.json')
 proof={'status':'passed-source-package-member-hashes','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sha256':sha(P/'source.zip'),'bytes':(P/'source.zip').stat().st_size,'members':len(components['files'])+1,'preferredDocuments':18,'wholeMeaningReviews':9,'originalInputs':7,'allMemberHashesVerified':True,'safeExtraction':True,'selfZIP':False,'installedDependencies':False,'sourcePackage':str(B),'reconstructionWorkspace':str(Q/'workspace'),'publicPath':'/docs/gnu-patch/source/v2-8/source.zip','reconstruction':'pending'};(E/'SOURCE_OFFER.json').write_text(json.dumps(proof,ensure_ascii=False,indent=2)+'\n');print(proof)
