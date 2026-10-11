@@ -1,380 +1,359 @@
 ---
 title: "Awesome macOS Screensavers"
-description: "A curated collection of resources and projects focused on macOS Screensavers."
+description: "macOS screensavers with clocks, Apple-inspired designs, retro games, science-fiction effects, aquariums, and generative art."
 licenseSource: "github-agarrharr-awesome-macos-screensavers-readme-md"
 ---
 
 # Awesome macOS Screensavers
 
-A curated collection of resources and projects focused on macOS Screensavers.
+Explore macOS screensavers with clocks, Apple-inspired designs, retro games, science-fiction effects, aquariums, and generative art. Each entry describes its visual effect and links to the project and a preview image.
 
-## Table of Contents
-
-- [Clocks](#clocks)
-- [Apple Inspired](#apple-inspired)
-- [Retro](#retro)
-- [Sci-Fi](#sci-fi)
-- [Video Game](#video-game)
-- [Aquarium](#aquarium)
-- [Developer](#developer)
-- [Graphics](#graphics)
-- [Other](#other)
-- [Collections](#collections)
-
----
+Prices, free and open-source labels, product names, and feature descriptions reflect the source captured for this snapshot. An unmarked entry does not imply that it is free or closed source; current pricing and compatibility have not been checked.
 
 ## Clocks
 
 ### fliqlo
 
-> A flip clock screensaver.
+A flip clock screensaver.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fliqlo.png)](http://fliqlo.com/)
+[Project page](http://fliqlo.com/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fliqlo.png)
 
 ### Today
 
-> Time or date displayed in a similar way to On Kawara's "Today Series" paintings.
+Time or date displayed in a similar way to On Kawara's "Today Series" paintings.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/today.png)](http://www.gingerbeardman.com/today/)
+[Project page](http://www.gingerbeardman.com/today/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/today.png)
 
 ### Word Clock
 
-> A clock made of words. It switches between a circular and a paragraph layout.
+A clock made of words. It switches between a circular and a paragraph layout.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock.png)](https://www.simonheys.com/wordclock/)
+[Project page](https://www.simonheys.com/wordclock/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock.png)
 
 ### Fractal Clock
 
-> A clock that produces a fractal tree pattern around it as it moves.
+A clock that produces a fractal tree pattern around it as it moves.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fractalClock.png)](http://www.dqd.com/~mayoff/programs/FractalClock/)
+[Project page](http://www.dqd.com/~mayoff/programs/FractalClock/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fractalClock.png)
 
 ### Epoch Flip Clock
 
-> Unix Time (epoch) flip clock.
+Unix Time (epoch) flip clock.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/epochFlipClock.png)](https://github.com/chrstphrknwtn/epoch-flip-clock-screensaver/)
+[Project page](https://github.com/chrstphrknwtn/epoch-flip-clock-screensaver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/epochFlipClock.png)
 
 ### Grid Clock
 
-> Twelve hour time in words.
+Twelve hour time in words.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/gridClock.png)](https://github.com/chrstphrknwtn/grid-clock-screensaver/)
+[Project page](https://github.com/chrstphrknwtn/grid-clock-screensaver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/gridClock.png)
 
 ### Word Clock
 
-> A super simple word clock, like your computer is typing the time for you.
+A super simple word clock, like your computer is typing the time for you.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock2.gif)](https://github.com/chrstphrknwtn/word-clock-screensaver/)
+[Project page](https://github.com/chrstphrknwtn/word-clock-screensaver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock2.gif)
 
 ### Simple Clock
 
-> A simple clock screensaver with different analogue clock faces as skins.
+A simple clock screensaver with different analogue clock faces as skins.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/simpleClock.png)](https://github.com/Wandmalfarbe/Simple-Clock-Screensaver/)
+[Project page](https://github.com/Wandmalfarbe/Simple-Clock-Screensaver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/simpleClock.png)
 
 ### ColorClock
 
-> Displays a solid color corresponding to the current time.
+Displays a solid color corresponding to the current time.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/colorClockSaver.png)](https://github.com/edwardloveall/colorclocksaver)
+[Project page](https://github.com/edwardloveall/colorclocksaver) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/colorClockSaver.png)
 
 ### ScreenMazer
 
-> Continuously builds and then solves a maze, while displaying the current time.
+Continuously builds and then solves a maze, while displaying the current time.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screenMazer.png)](https://github.com/dado3212/screenmazer)
+[Project page](https://github.com/dado3212/screenmazer) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screenMazer.png)
 
 ### Evangelion Clock
 
-> A digital clock screensaver inspired by the graphical interfaces from Neon Genesis Evengelion.
+A digital clock screensaver inspired by the graphical interfaces from Neon Genesis Evengelion.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/evangelionClock.png)](https://github.com/Wandmalfarbe/evangelion-clock-screensaver/)
+[Project page](https://github.com/Wandmalfarbe/evangelion-clock-screensaver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/evangelionClock.png)
 
 ### Predator
 
-> A predator-inspired clock screensaver.
+A predator-inspired clock screensaver.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/predator.png)](https://github.com/vpeschenkov/Predator)
+[Project page](https://github.com/vpeschenkov/Predator) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/predator.png)
 
 ### Death Counter
 
-> A simple counter screensaver that counts down to your death.
+A simple counter screensaver that counts down to your death.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/deathcounter.png)](https://github.com/anhmv/DeathCounter)
+[Project page](https://github.com/anhmv/DeathCounter) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/deathcounter.png)
 
 ### MinimalClock
 
-> Simple and elegant screensaver for MacOS that displays the time.
+A simple screensaver for macOS that displays the time.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/MinimalClock.png)](https://github.com/mattiarossini/MinimalClock)
+[Project page](https://github.com/mattiarossini/MinimalClock) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/MinimalClock.png)
 
 ### MultiClock
 
-> Displays the time (and animations) using 24 individual clocks
+Displays the time (and animations) using 24 individual clocks
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/multiclock.png)](https://github.com/amiantos/multiclock)
+[Project page](https://github.com/amiantos/multiclock) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/multiclock.png)
 
 ### Flip Clock Screensaver
 
-> A flip clock screensaver that can automatically dim the screen.
+A flip clock screensaver that can automatically dim the screen.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/FlipClockScreensaver.jpg)](https://www.smart-app.dev/downloads/downloads.html)
+[Project page](https://www.smart-app.dev/downloads/downloads.html) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/FlipClockScreensaver.jpg)
 
 ### Digital Electric
 
-> A vintage screensaver inspired by old-fashioned alarm clocks.
+A vintage screensaver inspired by old-fashioned alarm clocks.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/digital-electric-screensaver.png)](https://quismi.com/digital-electric)
+[Project page](https://quismi.com/digital-electric) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/digital-electric-screensaver.png)
 
 ## Apple Inspired
 
 ### Aerial
 
-> Apple TV Aerial Screensaver for Mac.
+Apple TV Aerial Screensaver for Mac.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aerial.png)](https://github.com/JohnCoates/Aerial)
+[Project page](https://github.com/JohnCoates/Aerial) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aerial.png)
 
 ### Apple Watch
 
-> A screensaver that looks like an Apple Watch.
+A screensaver that looks like an Apple Watch.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/appleWatch.png)](http://www.rasmusnielsen.dk/applewatch/)
+[Project page](http://www.rasmusnielsen.dk/applewatch/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/appleWatch.png)
 
 ### Brooklyn
 
-> A screensaver inspired by Apple's Event on October 30, 2018
+A screensaver inspired by Apple's Event on October 30, 2018
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/brooklyn.png)](https://github.com/pedrommcarrasco/Brooklyn#readme)
+[Project page](https://github.com/pedrommcarrasco/Brooklyn#readme) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/brooklyn.png)
 
-Free
+Price: Free
 
 ### Start Now
 
-> Draw inspiration from great minds every time you wake up your Mac
+Draw inspiration from great minds every time you wake up your Mac
 
-[![](https://github.com/Ventuss-OvO/start-now-saver/raw/main/Resources/Now.png)](https://github.com/Ventuss-OvO/start-now-saver)
+[Project page](https://github.com/Ventuss-OvO/start-now-saver) · [Preview image](https://github.com/Ventuss-OvO/start-now-saver/raw/main/Resources/Now.png)
 
-## MusaicFM
+### MusaicFM
 
-> A screensaver inspired by the iTunes Artwork Screensaver for Spotify and Last.fm.
+A screensaver inspired by the iTunes Artwork Screensaver for Spotify and Last.fm.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/musaicFm.png)](https://github.com/docterd/MusaicFM)
+[Project page](https://github.com/docterd/MusaicFM) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/musaicFm.png)
 
-Free
+Price: Free
 
 ### iOS Lockscreen for macOS
 
-> A screensaver that looks like the lockscreen on iPhone and iPad.
+A screensaver that looks like the lockscreen on iPhone and iPad.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/iOSLockscreen.png)](http://littleendiangamestudios.com/project/ios-8-screen-saver/)
+[Project page](http://littleendiangamestudios.com/project/ios-8-screen-saver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/iOSLockscreen.png)
 
 ### October 30
 
-> Smoothly changes between 371 Apple logos from their 2018 iPad event.
+Smoothly changes between 371 Apple logos from their 2018 iPad event.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/october30.png)](https://github.com/lekevicius/october30)
+[Project page](https://github.com/lekevicius/october30) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/october30.png)
 
 ### Fruit
 
-> Animated vintage Apple logo
+Animated vintage Apple logo
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fruit.png)](https://github.com/ppamorim/fruit)
+[Project page](https://github.com/ppamorim/fruit) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fruit.png)
 
-Free
+Price: Free
 
 ### SwiftBubble
 
-> Recreation of the soap bubble screen saver from apple's promotional videos for the new MacBook 12"
+Recreation of the soap bubble screen saver from apple's promotional videos for the new MacBook 12"
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/swiftbubble.png)](https://github.com/nemesit/SwiftBubble)
+[Project page](https://github.com/nemesit/SwiftBubble) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/swiftbubble.png)
 
-Free (Open Source)
+Price: Free (Open Source)
 
 ## Retro
 
 ### PongSaver
 
-> PongSaver is an macOS screensaver/clock which keeps time by using the score of a game of Pong. The left side wins once an hour, and the right side wins once a minute.
+PongSaver is an macOS screensaver/clock which keeps time by using the score of a game of Pong. The left side wins once an hour, and the right side wins once a minute.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/pongSaver.png)](https://mikeash.com/software/pongsaver/)
+[Project page](https://mikeash.com/software/pongsaver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/pongSaver.png)
 
 ### Textify Me
 
-> This interactive screen saver turns everything in front of your camera into text.
+This interactive screen saver turns everything in front of your camera into text.
 
-$0.99
+Price: $0.99
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/textifyMe.png)](https://itunes.apple.com/us/app/textify-me/id470453599)
+[Project page](https://itunes.apple.com/us/app/textify-me/id470453599) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/textifyMe.png)
 
 ## Sci-Fi
 
 ### The Github Matrix Screensaver
 
-> The latest commits from GitHub visualized in a Matrix-style animation.
+The latest commits from GitHub visualized in a Matrix-style animation.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/githubMatrix.png)](https://github.com/winterbe/github-matrix-screensaver)
+[Project page](https://github.com/winterbe/github-matrix-screensaver) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/githubMatrix.png)
 
 ### StarWarsScroll
 
-> Recreates the opening titles of the first 6 Star Wars movies.
+Recreates the opening titles of the first 6 Star Wars movies.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/starWarsScroll.png)](http://download.cnet.com/StarWarsScroll-Screen-Saver/3000-2257_4-82580.html)
+[Project page](http://download.cnet.com/StarWarsScroll-Screen-Saver/3000-2257_4-82580.html) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/starWarsScroll.png)
 
 ### Matrix
 
-> One interpretation of The Matrix.
+One interpretation of The Matrix.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/matrix.png)](https://github.com/monroewilliams/MatrixDownload)
+[Project page](https://github.com/monroewilliams/MatrixDownload) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/matrix.png)
 
 ## Video Game
 
 ### SpeedS@ver
 
-> Plays videos of people completing speed runs of games.
+Plays videos of people completing speed runs of games.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/speedS@ver.png)](https://github.com/orta/SpeedS-ver)
+[Project page](https://github.com/orta/SpeedS-ver) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/speedS@ver.png)
 
 ## Aquarium
 
 ### Aquarium live lite
 
-> Video of aquariums.
+Video of aquariums.
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aquariumLive.png)](https://itunes.apple.com/us/app/aquarium-live-lite-relaxing/id462563503)
+[Project page](https://itunes.apple.com/us/app/aquarium-live-lite-relaxing/id462563503) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aquariumLive.png)
 
 ## Developer
 
 ### Developer Excuses
 
-> A macOS Screensaver which shows quotes from [http://developerexcuses.com](http://developerexcuses.com) (unofficial).
+A macOS Screensaver which shows quotes from [http://developerexcuses.com](http://developerexcuses.com) (unofficial).
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/developerExcuses.png)](https://github.com/kimar/DeveloperExcuses)
+[Project page](https://github.com/kimar/DeveloperExcuses) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/developerExcuses.png)
 
 ### MacOS Kernel Panic
 
-> Harmless screensaver that faithfully emulates the horrifying experience of a kernel panic.
+Emulates the experience of a kernel panic; the source describes it as harmless.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosKernelPanic.png)](http://doomlaser.com/kernel-panic-screensaver/)
+[Project page](http://doomlaser.com/kernel-panic-screensaver/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosKernelPanic.png)
 
 ### Windows Kernel Panic
 
-> Blue Screen of Death (BSOD) screensaver for Mac.
+Blue Screen of Death (BSOD) screensaver for Mac.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/kernelPanic.png)](https://github.com/dessibelle/Blue-Screen-Saver)
+[Project page](https://github.com/dessibelle/Blue-Screen-Saver) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/kernelPanic.png)
 
 ### octoscreen
 
-> An OS X screensaver with octicons
+An OS X screensaver with octicons
 
-Free (Open Source)
+Price: Free (Open Source)
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/octoscreen.png)](https://github.com/orderedlist/octoscreen)
+[Project page](https://github.com/orderedlist/octoscreen) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/octoscreen.png)
 
 ## Graphics
 
 ### Electric Sheep Infinite Evolving Artwork
 
-> Animations of evolving fractals.
+Animations of evolving fractals.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/electricSheep.png)](http://electricsheep.org/)
+[Project page](http://electricsheep.org/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/electricSheep.png)
 
 ### Screensson
 
-> Creates unique patterns on your display by randomly stacking vector stencils.
+Creates unique patterns on your display by randomly stacking vector stencils.
 
-Donationware
+Price: Donationware
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screensson.png)](http://www.siggieggertsson.com/Saver-Screensson)
+[Project page](http://www.siggieggertsson.com/Saver-Screensson) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screensson.png)
 
 ### Emoji Saver
 
-> Animates Apple, EmojiOne and Twitter Emojis in 7 different effects with many customizable settings.
+Animates Apple, EmojiOne and Twitter Emojis in 7 different effects with many customizable settings.
 
-Lite Version (Free) and Full Version ($3)
+Price: Lite Version (Free) and Full Version ($3)
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/emojiSaver.png)](https://www.emojisaver.eu/)
+[Project page](https://www.emojisaver.eu/) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/emojiSaver.png)
 
 ### Life Saver
 
-> Designer-friendly abstract visualization of Conway's Game of Life.
+Designer-friendly abstract visualization of Conway's Game of Life.
 
-Free (Open Source)
+Price: Free (Open Source)
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/lifesaver.png)](https://www.github.com/amiantos/lifesaver)
+[Project page](https://www.github.com/amiantos/lifesaver) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/lifesaver.png)
 
 ### ElectropaintOSX
 
-> Port of the mesmerizing Silicon Graphics screensaver
+A port of the Silicon Graphics screensaver.
 
-Free (Open Source)
+Price: Free (Open Source)
 
-[![image](https://user-images.githubusercontent.com/16557/134262935-72d6194d-97b2-4de3-9a44-79cf826cc114.png)](http://crimsonmagic.net/)
+[Project page](http://crimsonmagic.net/) · [Preview image](https://user-images.githubusercontent.com/16557/134262935-72d6194d-97b2-4de3-9a44-79cf826cc114.png)
 
 ### Ealain
 
-> Infinite and forever changing abstract art, generated by Stable Diffusion
+Infinite and forever changing abstract art, generated by Stable Diffusion
 
-Free (Open Source)
+Price: Free (Open Source)
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/ealain-examples.jpg)](https://www.github.com/amiantos/ealain)
+[Project page](https://www.github.com/amiantos/ealain) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/ealain-examples.jpg)
 
 ## Other
 
 ### Google Trends
 
-> Shows the latest hot searches for all regions or specific countries.
+Shows the latest hot searches for all regions or specific countries.
 
-Free
+Price: Free
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/googleTrends.png)](https://www.google.com/trends/hottrends/visualize?nrow=5&ncol=5)
+[Project page](https://www.google.com/trends/hottrends/visualize?nrow=5&ncol=5) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/googleTrends.png)
 
 ### Last Statement
 
-> Like the macOS "Word of the Day" screensaver, but instead of words and definitions, it's the names and last statements of people executed by the State of Texas.
+Like the macOS "Word of the Day" screensaver, but instead of words and definitions, it's the names and last statements of people executed by the State of Texas.
 
-Free (Open Source)
+Price: Free (Open Source)
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/last-statement.png)](https://www.github.com/amiantos/last-statement)
+[Project page](https://www.github.com/amiantos/last-statement) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/last-statement.png)
 
 ### macOS Live Screensaver
 
-> Plays live video streams from YouTube and HLS sources.
+Plays live video streams from YouTube and HLS sources.
 
-Free (Open Source)
+Price: Free (Open Source)
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosLiveScreensaver.png)](https://github.com/hauxir/macos-live-screensaver)
+[Project page](https://github.com/hauxir/macos-live-screensaver) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosLiveScreensaver.png)
 
 ## Collections
 
 ### Bjorn Johansson
 
-> Digital art in the form of screensavers by designer Bjorn Johansson.
+Digital art in the form of screensavers by designer Bjorn Johansson.
 
-Free (pay what you want)
+Price: Free (pay what you want)
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/johansson.png)](https://vsxop.com/work/screensavers)
-
----
-
-## License
-
-[![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Adam Garrett-Harris](https://twitter.com/agarrharr) has waived all copyright and related or neighboring rights to this work.
+[Project page](https://vsxop.com/work/screensavers) · [Preview image](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/johansson.png)

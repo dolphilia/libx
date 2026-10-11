@@ -1,380 +1,359 @@
 ---
 title: "Awesome macOS Screensavers"
-description: "macOS Screensaversを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "時計、Apple風のデザイン、レトロゲーム、SF、水槽、生成アートなどのmacOS用スクリーンセーバーを紹介。"
 licenseSource: "github-agarrharr-awesome-macos-screensavers-readme-md"
 ---
 
 # Awesome macOS Screensavers
 
-macOS Screensaversを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+時計、Apple風のデザイン、レトロゲーム、SF、水槽、生成アートなどのmacOS用スクリーンセーバーを紹介します。各作品の表示内容を説明し、作品のページとプレビュー画像へ案内します。
 
-## 目次
+料金、無料・オープンソースの表示、製品名、機能説明は、この版で取得した原文の記述です。無印の作品が無料または非公開ソースであることを意味しません。現在の料金や対応環境は確認していません。
 
-- [時計](#clocks)
-- [Apple に着想を得たもの](#apple-inspired)
-- [レトロ](#retro)
-- [SF](#sci-fi)
-- [ビデオゲーム](#video-game)
-- [水族館](#aquarium)
-- [開発者向け](#developer)
-- [グラフィックス](#graphics)
-- [その他](#other)
-- [コレクション](#collections)
-
----
-
-## 時計
+## 時計 <a id="clocks"></a>
 
 ### fliqlo
 
-> フリップ時計のスクリーンセーバーです。
+フリップ時計のスクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fliqlo.png)](http://fliqlo.com/)
+[作品のページ](http://fliqlo.com/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fliqlo.png)
 
 ### Today
 
-> 河原温の絵画「Today Series」のような方法で時刻や日付を表示します。
+河原温の絵画「Today Series」のような方法で時刻や日付を表示。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/today.png)](http://www.gingerbeardman.com/today/)
+[作品のページ](http://www.gingerbeardman.com/today/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/today.png)
 
 ### Word Clock
 
-> 単語で作られた時計です。円形レイアウトと段落レイアウトを切り替えます。
+単語で作られた時計。円形レイアウトと段落レイアウトを切り替える。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock.png)](https://www.simonheys.com/wordclock/)
+[作品のページ](https://www.simonheys.com/wordclock/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock.png)
 
 ### Fractal Clock
 
-> 動きながら周囲にフラクタルツリー模様を生成する時計です。
+動きながら周囲にフラクタルツリー模様を生成する時計。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fractalClock.png)](http://www.dqd.com/~mayoff/programs/FractalClock/)
+[作品のページ](http://www.dqd.com/~mayoff/programs/FractalClock/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fractalClock.png)
 
 ### Epoch Flip Clock
 
-> Unix 時間（Epoch）のフリップ時計です。
+Unix 時間（Epoch）のフリップ時計。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/epochFlipClock.png)](https://github.com/chrstphrknwtn/epoch-flip-clock-screensaver/)
+[作品のページ](https://github.com/chrstphrknwtn/epoch-flip-clock-screensaver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/epochFlipClock.png)
 
 ### Grid Clock
 
-> 12時間制の時刻を単語で表示します。
+12時間制の時刻を単語で表示。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/gridClock.png)](https://github.com/chrstphrknwtn/grid-clock-screensaver/)
+[作品のページ](https://github.com/chrstphrknwtn/grid-clock-screensaver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/gridClock.png)
 
 ### Word Clock
 
-> コンピューターが時刻を入力してくれているような、非常にシンプルな単語時計です。
+コンピューターが時刻を入力してくれているような、非常にシンプルな単語時計。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock2.gif)](https://github.com/chrstphrknwtn/word-clock-screensaver/)
+[作品のページ](https://github.com/chrstphrknwtn/word-clock-screensaver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/wordClock2.gif)
 
 ### Simple Clock
 
-> スキンとして異なるアナログ時計の文字盤を使えるシンプルな時計スクリーンセーバーです。
+スキンとして異なるアナログ時計の文字盤を使えるシンプルな時計スクリーンセーバー。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/simpleClock.png)](https://github.com/Wandmalfarbe/Simple-Clock-Screensaver/)
+[作品のページ](https://github.com/Wandmalfarbe/Simple-Clock-Screensaver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/simpleClock.png)
 
 ### ColorClock
 
-> 現在時刻に対応する単色を表示します。
+現在時刻に対応する単色を表示。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/colorClockSaver.png)](https://github.com/edwardloveall/colorclocksaver)
+[作品のページ](https://github.com/edwardloveall/colorclocksaver) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/colorClockSaver.png)
 
 ### ScreenMazer
 
-> 現在時刻を表示しながら、迷路を連続して作成し、解きます。
+現在時刻を表示しながら、迷路を連続して作成し、解く。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screenMazer.png)](https://github.com/dado3212/screenmazer)
+[作品のページ](https://github.com/dado3212/screenmazer) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screenMazer.png)
 
 ### Evangelion Clock
 
-> 『新世紀エヴァンゲリオン』のグラフィカルインターフェースに着想を得たデジタル時計スクリーンセーバーです。
+『新世紀エヴァンゲリオン』のグラフィカルインターフェースに着想を得たデジタル時計スクリーンセーバー。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/evangelionClock.png)](https://github.com/Wandmalfarbe/evangelion-clock-screensaver/)
+[作品のページ](https://github.com/Wandmalfarbe/evangelion-clock-screensaver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/evangelionClock.png)
 
 ### Predator
 
-> 『プレデター』に着想を得た時計スクリーンセーバーです。
+『プレデター』に着想を得た時計スクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/predator.png)](https://github.com/vpeschenkov/Predator)
+[作品のページ](https://github.com/vpeschenkov/Predator) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/predator.png)
 
 ### Death Counter
 
-> 死までの時間をカウントダウンするシンプルなカウンタースクリーンセーバーです。
+死までの時間をカウントダウンするシンプルなカウンタースクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/deathcounter.png)](https://github.com/anhmv/DeathCounter)
+[作品のページ](https://github.com/anhmv/DeathCounter) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/deathcounter.png)
 
 ### MinimalClock
 
-> 時刻を表示する、MacOS 用のシンプルで洗練されたスクリーンセーバーです。
+時刻を表示するシンプルなmacOS用スクリーンセーバー。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/MinimalClock.png)](https://github.com/mattiarossini/MinimalClock)
+[作品のページ](https://github.com/mattiarossini/MinimalClock) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/MinimalClock.png)
 
 ### MultiClock
 
-> 24個の時計を使って時刻とアニメーションを表示します。
+24個の時計を使って時刻とアニメーションを表示。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/multiclock.png)](https://github.com/amiantos/multiclock)
+[作品のページ](https://github.com/amiantos/multiclock) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/multiclock.png)
 
 ### Flip Clock Screensaver
 
-> 画面を自動的に暗くできるフリップ時計スクリーンセーバーです。
+画面を自動的に暗くできるフリップ時計スクリーンセーバー。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/FlipClockScreensaver.jpg)](https://www.smart-app.dev/downloads/downloads.html)
+[作品のページ](https://www.smart-app.dev/downloads/downloads.html) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/FlipClockScreensaver.jpg)
 
 ### Digital Electric
 
-> 昔ながらの目覚まし時計に着想を得たヴィンテージ風スクリーンセーバーです。
+昔ながらの目覚まし時計に着想を得たヴィンテージ風スクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/digital-electric-screensaver.png)](https://quismi.com/digital-electric)
+[作品のページ](https://quismi.com/digital-electric) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/digital-electric-screensaver.png)
 
-## Apple に着想を得たもの
+## Apple に着想を得たもの <a id="apple-inspired"></a>
 
 ### Aerial
 
-> Mac 用 Apple TV Aerial スクリーンセーバーです。
+Mac 用 Apple TV Aerial スクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aerial.png)](https://github.com/JohnCoates/Aerial)
+[作品のページ](https://github.com/JohnCoates/Aerial) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aerial.png)
 
 ### Apple Watch
 
-> Apple Watch のように見えるスクリーンセーバーです。
+Apple Watch のように見えるスクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/appleWatch.png)](http://www.rasmusnielsen.dk/applewatch/)
+[作品のページ](http://www.rasmusnielsen.dk/applewatch/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/appleWatch.png)
 
 ### Brooklyn
 
-> 2018年10月30日の Apple Event に着想を得たスクリーンセーバーです。
+2018年10月30日の Apple Event に着想を得たスクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/brooklyn.png)](https://github.com/pedrommcarrasco/Brooklyn#readme)
+[作品のページ](https://github.com/pedrommcarrasco/Brooklyn#readme) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/brooklyn.png)
 
-無料
+料金：無料
 
 ### Start Now
 
-> Mac を起こすたびに、偉大な人々から刺激を得られます。
+Macをスリープから復帰させるたびに、偉人たちから着想を得られるスクリーンセーバー。
 
-[![](https://github.com/Ventuss-OvO/start-now-saver/raw/main/Resources/Now.png)](https://github.com/Ventuss-OvO/start-now-saver)
+[作品のページ](https://github.com/Ventuss-OvO/start-now-saver) · [プレビュー画像](https://github.com/Ventuss-OvO/start-now-saver/raw/main/Resources/Now.png)
 
-## MusaicFM
+### MusaicFM
 
-> Spotify と Last.fm のための、iTunes Artwork Screensaver に着想を得たスクリーンセーバーです。
+Spotify と Last.fm のための、iTunes Artwork Screensaver に着想を得たスクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/musaicFm.png)](https://github.com/docterd/MusaicFM)
+[作品のページ](https://github.com/docterd/MusaicFM) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/musaicFm.png)
 
-無料
+料金：無料
 
 ### macOS 用 iOS Lockscreen
 
-> iPhone と iPad のロック画面のように見えるスクリーンセーバーです。
+iPhone と iPad のロック画面のように見えるスクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/iOSLockscreen.png)](http://littleendiangamestudios.com/project/ios-8-screen-saver/)
+[作品のページ](http://littleendiangamestudios.com/project/ios-8-screen-saver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/iOSLockscreen.png)
 
 ### October 30
 
-> 2018年の iPad Event で使われた371個の Apple ロゴを滑らかに切り替えます。
+2018年の iPad Event で使われた371個の Apple ロゴを滑らかに切り替える。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/october30.png)](https://github.com/lekevicius/october30)
+[作品のページ](https://github.com/lekevicius/october30) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/october30.png)
 
 ### Fruit
 
-> ヴィンテージ Apple ロゴのアニメーションです。
+ヴィンテージ Apple ロゴのアニメーション。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fruit.png)](https://github.com/ppamorim/fruit)
+[作品のページ](https://github.com/ppamorim/fruit) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/fruit.png)
 
-無料
+料金：無料
 
 ### SwiftBubble
 
-> 新しい MacBook 12インチの Apple プロモーション動画に登場した、シャボン玉スクリーンセーバーを再現します。
+新しい MacBook 12インチの Apple プロモーション動画に登場した、シャボン玉スクリーンセーバーを再現。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/swiftbubble.png)](https://github.com/nemesit/SwiftBubble)
+[作品のページ](https://github.com/nemesit/SwiftBubble) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/swiftbubble.png)
 
-無料（オープンソース）
+料金：無料（オープンソース）
 
-## レトロ
+## レトロ <a id="retro"></a>
 
 ### PongSaver
 
-> PongSaver は、Pong の得点で時刻を示す macOS 用スクリーンセーバー兼時計です。1時間に1回左側が勝ち、1分に1回右側が勝ちます。
+PongSaver は、Pong の得点で時刻を示す macOS 用スクリーンセーバー兼時計。1時間に1回左側が勝ち、1分に1回右側が勝つ。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/pongSaver.png)](https://mikeash.com/software/pongsaver/)
+[作品のページ](https://mikeash.com/software/pongsaver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/pongSaver.png)
 
 ### Textify Me
 
-> カメラの前にあるすべてのものを文字へ変換するインタラクティブなスクリーンセーバーです。
+カメラの前にあるすべてのものを文字へ変換するインタラクティブなスクリーンセーバー。
 
-$0.99
+料金：$0.99
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/textifyMe.png)](https://itunes.apple.com/us/app/textify-me/id470453599)
+[作品のページ](https://itunes.apple.com/us/app/textify-me/id470453599) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/textifyMe.png)
 
-## SF
+## SF <a id="sci-fi"></a>
 
 ### The Github Matrix Screensaver
 
-> GitHub の最新コミットを Matrix 風アニメーションで可視化します。
+GitHub の最新コミットを Matrix 風アニメーションで可視化。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/githubMatrix.png)](https://github.com/winterbe/github-matrix-screensaver)
+[作品のページ](https://github.com/winterbe/github-matrix-screensaver) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/githubMatrix.png)
 
 ### StarWarsScroll
 
-> 最初の6本の Star Wars 映画のオープニングタイトルを再現します。
+最初の6本の Star Wars 映画のオープニングタイトルを再現。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/starWarsScroll.png)](http://download.cnet.com/StarWarsScroll-Screen-Saver/3000-2257_4-82580.html)
+[作品のページ](http://download.cnet.com/StarWarsScroll-Screen-Saver/3000-2257_4-82580.html) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/starWarsScroll.png)
 
 ### Matrix
 
-> 『Matrix』の1つの解釈です。
+『Matrix』の1つの解釈。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/matrix.png)](https://github.com/monroewilliams/MatrixDownload)
+[作品のページ](https://github.com/monroewilliams/MatrixDownload) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/matrix.png)
 
-## ビデオゲーム
+## ビデオゲーム <a id="video-game"></a>
 
 ### SpeedS@ver
 
-> ゲームのスピードランを完走する人々の動画を再生します。
+ゲームのスピードランを完走する人々の動画を再生。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/speedS@ver.png)](https://github.com/orta/SpeedS-ver)
+[作品のページ](https://github.com/orta/SpeedS-ver) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/speedS@ver.png)
 
-## 水族館
+## 水槽 <a id="aquarium"></a> <a id="水族館"></a>
 
 ### Aquarium live lite
 
-> 水族館の動画です。
+水槽の映像。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aquariumLive.png)](https://itunes.apple.com/us/app/aquarium-live-lite-relaxing/id462563503)
+[作品のページ](https://itunes.apple.com/us/app/aquarium-live-lite-relaxing/id462563503) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/aquariumLive.png)
 
-## 開発者向け
+## 開発者向け <a id="developer"></a>
 
 ### Developer Excuses
 
-> [http://developerexcuses.com](http://developerexcuses.com) の言い訳を表示する非公式 macOS スクリーンセーバーです。
+[http://developerexcuses.com](http://developerexcuses.com) の言い訳を表示する非公式 macOS スクリーンセーバー。
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/developerExcuses.png)](https://github.com/kimar/DeveloperExcuses)
+[作品のページ](https://github.com/kimar/DeveloperExcuses) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/developerExcuses.png)
 
 ### MacOS Kernel Panic
 
-> 恐ろしい Kernel Panic の体験を忠実に再現する、無害なスクリーンセーバーです。
+カーネルパニックの体験を再現するスクリーンセーバー。原文では無害と説明。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosKernelPanic.png)](http://doomlaser.com/kernel-panic-screensaver/)
+[作品のページ](http://doomlaser.com/kernel-panic-screensaver/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosKernelPanic.png)
 
 ### Windows Kernel Panic
 
-> Mac 用の Blue Screen of Death（BSOD）スクリーンセーバーです。
+Mac 用の Blue Screen of Death（BSOD）スクリーンセーバー。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/kernelPanic.png)](https://github.com/dessibelle/Blue-Screen-Saver)
+[作品のページ](https://github.com/dessibelle/Blue-Screen-Saver) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/kernelPanic.png)
 
 ### octoscreen
 
-> Octicon を表示する OS X スクリーンセーバーです。
+Octicon を表示する OS X スクリーンセーバー。
 
-無料（オープンソース）
+料金：無料（オープンソース）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/octoscreen.png)](https://github.com/orderedlist/octoscreen)
+[作品のページ](https://github.com/orderedlist/octoscreen) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/octoscreen.png)
 
-## グラフィックス
+## グラフィックス <a id="graphics"></a>
 
 ### Electric Sheep Infinite Evolving Artwork
 
-> 進化するフラクタルのアニメーションです。
+進化するフラクタルのアニメーション。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/electricSheep.png)](http://electricsheep.org/)
+[作品のページ](http://electricsheep.org/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/electricSheep.png)
 
 ### Screensson
 
-> ベクターステンシルをランダムに重ね、ディスプレイに独自のパターンを作ります。
+ベクター図形の型をランダムに重ね、画面に独自の模様を作る。
 
-寄付ウェア
+料金：ドネーションウェア（寄付方式）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screensson.png)](http://www.siggieggertsson.com/Saver-Screensson)
+[作品のページ](http://www.siggieggertsson.com/Saver-Screensson) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/screensson.png)
 
 ### Emoji Saver
 
-> Apple、EmojiOne、Twitter の絵文字を、多数のカスタマイズ設定と7種類の効果でアニメーション表示します。
+Apple、EmojiOne、Twitter の絵文字を、多数のカスタマイズ設定と7種類の効果でアニメーション表示。
 
-Lite 版（無料）と Full 版（$3）
+料金：Lite 版（無料）と Full 版（$3）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/emojiSaver.png)](https://www.emojisaver.eu/)
+[作品のページ](https://www.emojisaver.eu/) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/emojiSaver.png)
 
 ### Life Saver
 
-> デザイナー向けに Conway のライフゲームを抽象的に可視化します。
+デザイナー向けに Conway のライフゲームを抽象的に可視化。
 
-無料（オープンソース）
+料金：無料（オープンソース）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/lifesaver.png)](https://www.github.com/amiantos/lifesaver)
+[作品のページ](https://www.github.com/amiantos/lifesaver) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/lifesaver.png)
 
 ### ElectropaintOSX
 
-> 魅惑的な Silicon Graphics スクリーンセーバーの移植版です。
+Silicon Graphicsのスクリーンセーバーの移植版。
 
-無料（オープンソース）
+料金：無料（オープンソース）
 
-[![画像](https://user-images.githubusercontent.com/16557/134262935-72d6194d-97b2-4de3-9a44-79cf826cc114.png)](http://crimsonmagic.net/)
+[作品のページ](http://crimsonmagic.net/) · [プレビュー画像](https://user-images.githubusercontent.com/16557/134262935-72d6194d-97b2-4de3-9a44-79cf826cc114.png)
 
 ### Ealain
 
-> Stable Diffusion が生成する、無限に変化し続ける抽象芸術です。
+Stable Diffusion が生成する、無限に変化し続ける抽象芸術。
 
-無料（オープンソース）
+料金：無料（オープンソース）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/ealain-examples.jpg)](https://www.github.com/amiantos/ealain)
+[作品のページ](https://www.github.com/amiantos/ealain) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/ealain-examples.jpg)
 
-## その他
+## その他 <a id="other"></a>
 
 ### Google Trends
 
-> 全地域または特定の国の最新急上昇検索を表示します。
+全地域または特定の国の最新急上昇検索を表示。
 
-無料
+料金：無料
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/googleTrends.png)](https://www.google.com/trends/hottrends/visualize?nrow=5&ncol=5)
+[作品のページ](https://www.google.com/trends/hottrends/visualize?nrow=5&ncol=5) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/googleTrends.png)
 
 ### Last Statement
 
-> macOS の「Word of the Day」スクリーンセーバーに似ていますが、単語と定義の代わりに、テキサス州によって処刑された人々の名前と最後の言葉を表示します。
+macOS の「Word of the Day」スクリーンセーバーに似ているが、単語と定義の代わりに、テキサス州によって処刑された人々の名前と最後の言葉を表示。
 
-無料（オープンソース）
+料金：無料（オープンソース）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/last-statement.png)](https://www.github.com/amiantos/last-statement)
+[作品のページ](https://www.github.com/amiantos/last-statement) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/last-statement.png)
 
 ### macOS Live Screensaver
 
-> YouTube と HLS ソースのライブ動画ストリームを再生します。
+YouTube と HLS ソースのライブ動画ストリームを再生。
 
-無料（オープンソース）
+料金：無料（オープンソース）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosLiveScreensaver.png)](https://github.com/hauxir/macos-live-screensaver)
+[作品のページ](https://github.com/hauxir/macos-live-screensaver) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/macosLiveScreensaver.png)
 
-## コレクション
+## コレクション <a id="collections"></a>
 
 ### Bjorn Johansson
 
-> デザイナー Bjorn Johansson による、スクリーンセーバー形式のデジタルアートです。
+デザイナー Bjorn Johansson による、スクリーンセーバー形式のデジタルアート。
 
-無料（希望額を支払えます）
+料金：無料（希望額を支払えます）
 
-[![](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/johansson.png)](https://vsxop.com/work/screensavers)
-
----
-
-## ライセンス
-
-[![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-法律で認められる範囲で、[Adam Garrett-Harris](https://twitter.com/agarrharr) はこの作品に関するすべての著作権および関連する権利または隣接する権利を放棄しています。
+[作品のページ](https://vsxop.com/work/screensavers) · [プレビュー画像](https://github.com/agarrharr/awesome-macos-screensavers/blob/525795009f75164d36c96650e7a979284515ef00/screenshots/johansson.png)
