@@ -6010,3 +6010,17 @@
 - 2026-10-06T13:17:59.851Z batch162-all675-input-units-initial-full-reads-complete-classification-next。219完了818残保留4。進捗a2ab61f6190ffdfc92a072189d6183e872021407fe924f6849a8a26f2774d2ed。次Cosmos SDK全675入力単位全文読了。次全unit分類、2非公式免責の出典再配置判定、旧ID/全2074参照/出典先行確認→EN編集→JA→3独立全文review→全検証。219完了818残保留4、まだ本文未変更。
 
 - 2026-10-06T13:18:41.900Z batch162-reader-disclaimer-body-consolidation-decided-classification-next。219完了818残保留4。進捗182156633d74f9f2b74c68f57ccc0f767d61bf61684f1de17632af3593c0b238。次Cosmos SDK全675入力全文読了。非公式注意は序文直後へ1段落集約、通常146list/32見出し階層保持。次全unit分類/旧HTML/全2074参照監査→EN定義復元→JA自然化→3独立全文review/全検証。219完了818残保留4。
+
+## 2026-10-11 バッチ162 — Cosmos SDK新版の編集・検証再開
+
+- 再開時: Git差分なし、mainはorigin/mainと同一。現行AGENTS.md、計画、INVENTORY、WORK_LOGと前回checkpoint `182156633d74f9f2b74c68f57ccc0f767d61bf61684f1de17632af3593c0b238` を確認。固定raw・旧英日hashが一致し、前回の675入力単位の読了証拠を再利用。旧レビュー状態は転記しない。
+- 対象: `v2026-08-23/github-cosmos-awesome-cosmos-readme-md`、systems英日1組。固定原文のCosmos SDK/Go/Gaia定義を序文へ復元、非公式注意を序文直後へ集約。31手動目次項目を除去し、本文32見出し・146資料・URL・数値・選定条件を保持。日本語のモジュール案内、signer、faucet、vanity、リレイヤー、DAO資産額、キャッシュ時間、鍵生成の3経路を修正。
+- 原文→英語、英語→日本語、日本語単独の別パスを実施。入力229/223/223単位と出力191単位ずつを対応記録へ保存。原文に説明のないリンクは推測で補わず、Templates/igniteの固定URL `https://github.com/cli` を保持。旧版は未編集・未レビューのまま。
+- 全2074本文のAST参照監査で対象slug付きfragment参照0。旧生成HTMLと比較して、削除した目次以外の本文見出しIDを英日とも全保持。CC0と固定READMEの出典設定を保持。
+- 全1037組・2074文書の固定入力から二度再生成、新版translation complete672/672、publish check672ページ、選択的統合ビルド（関連全7子を補完）、対象HTML2文書が合格。生成中に同時実行した初回translationは一時ENOENTで失敗し、生成完了後の再実行で合格。失敗ログも証拠に保存。
+- Astroローカルプレビューのみ使用。sandbox内listen EPERM後、127.0.0.1限定の起動を承認レビュー経由で再実行。英日PC/390pxの本文・出典・目次到達・横はみ出しなしを実ブラウザーで確認。言語切替、旧版同slugへの切替と新版復帰も確認。所有ブラウザータブとプレビューを終了。
+- 証拠: `evidence/batch162/VALIDATION.json`、ページ別判断記録とoverlay。状態content-reviewed、最終全件内容検査待ち。現時点のverifiedは219、残818（保留4）。別作業のproject-expansion差分は対象外。
+
+- 2026-10-11T06:11:25.873Z バッチ162最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**220/1037完了、817残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch162/COMPLETION.json。次バッチ163 EOSIO。commit/push待ち、外部公開なし。
+
+- 完了後監査: 対象1組1verified合格。全件検査後の入力・出力・検査実装は不変のため全1037組の合格証拠を再利用。ファイルサイズ検査は警告0/100MiB超過0、git diff --check合格。外部リンク報告は実質差分なしのため既存証拠を保持。
