@@ -3,9 +3,9 @@
   "id": "2026-10-12-976-gnu-m4-integration",
   "cycle": 976,
   "startedAt": "2026-10-11T16:18:00Z",
-  "endedAt": "2026-10-11T16:30:18.608Z",
+  "endedAt": "2026-10-11T16:35:53.812Z",
   "result": "partial",
-  "phase": "GNU M4 verified;scopedbb6f357560pushed;PagesPreview38155693824in progress",
+  "phase": "GNU M4 scoped01ada58f pushed; initial Preview format failure repaired; Preview38156062647 in progress",
   "model": {
     "configured": "gpt-6.1-sol",
     "runtime": null,
@@ -100,20 +100,60 @@
       "sha256": "54122408561fcd8cc2aa288428e5ca3e75edf9bc2d0c699e2aff3ef79c8ceb30"
     },
     {
-      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/PUBLICATION_ATTEMPT.json",
-      "sha256": "66cd480319fa85aa311c0d4c6989a83fc5bec087da62675bbfc802cbed589d41"
-    },
-    {
-      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/COMMIT_RESULT.json",
-      "sha256": "73a8aaa55560d2365536bd6960577dc4ba47bad29987ace5f76c81879117cc0f"
-    },
-    {
       "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/DISPATCH_PREVIEW.json",
       "sha256": "3aebc800bd9fd788b049eea18e4a1c2e50e124e2562370aaac6bb58fa2b4243e"
     },
     {
       "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/PREVIEW_STARTED_PROGRESS_FROZEN.json",
       "sha256": "85f4592639465ebcdfb0255ad6d1b44c8e599d8f815c624044027e9c0737318c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/PUBLICATION_ATTEMPT.json",
+      "sha256": "1ec8ac8d8a4ec9ecdcb05984f89fc95c7d97fee16bf48d3c8283c8c5060b5f4c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/COMMIT_RESULT.json",
+      "sha256": "13b7dba6c2cc9b7774dd42d32853f147f8026c91c06dea7b18fced8ede428c76"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/DISPATCH_PREVIEW_REPAIRED.json",
+      "sha256": "508947aa499ecc922c9d8d83043461cde7765d5ded23653346d73e4bdca02082"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/PREVIEW_FORMAT_REPAIR.json",
+      "sha256": "16dc960bb0aa372895f28e0e9a4d4d527a3143a2ce13abd548ed7172cee14358"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/COMMIT_RESULT_PRE_FORMAT_REPAIR.json",
+      "sha256": "73a8aaa55560d2365536bd6960577dc4ba47bad29987ace5f76c81879117cc0f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/CI_STATUS_PRE_FORMAT_REPAIR.json",
+      "sha256": "f5bc8262ae452e534953cd24d45a1394cf8e2b27f2b05094ff513557fc1a9d1e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/PUBLICATION_ATTEMPT_PRE_FORMAT_REPAIR.json",
+      "sha256": "66cd480319fa85aa311c0d4c6989a83fc5bec087da62675bbfc802cbed589d41"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/PREVIEW_FAILURE_STATIC.log",
+      "sha256": "3fbb8057f5fcf1d74973f747e5e83841d578f55b2a3b9ebc2036ca76f58521a6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/FORMAT_ALL_TARGET_REPAIRED.log",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/LINT_REPAIRED.log",
+      "sha256": "046b13de338bf1b034731d607093ee2fa6b5e34d311c14ded6f46b9a6300ea22"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/TYPECHECK_REPAIRED.log",
+      "sha256": "fca3f8b9db99b1ac7c3006c7250526817b4fd8cece74d6f398c0d6ca3fa6a264"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/REPAIRED_PREVIEW_PROGRESS_FROZEN.json",
+      "sha256": "4be6634831e73a7e98a7eac837dcb776e09a692537615a1e935580c624c7409a"
     }
   ],
   "checks": [
@@ -219,15 +259,19 @@
     "NoWorkers/schedules/subagents"
   ],
   "unresolved": [
-    "Specific Preview run38155693824 completion andartifact/HTTP/native/404",
-    "CASProduction andpostchecks"
+    "Specific repaired Preview run38156062647 and artifact/HTTP/native/404",
+    "CAS Production and postchecks",
+    "Save repaired checkpoint"
   ],
-  "nextAction": "GNU M4 verified/awaiting-release、公開用bb6f3575605b8d25726d60b0667b337ef2b5bc27をorigin照合済み。Pages Preview run38155693824 quality-check開始を確認。次は同一runをpollし、成功後artifact/原稿キット/全対象本文・リンク/HTTP/native/404を検証。直前本番32cbf393のCAS Production→公開後確認。新規候補選定や同条件でのCI再実行は行わない。",
-  "resumeCondition": "GNU M4 verified/awaiting-release、公開用bb6f3575605b8d25726d60b0667b337ef2b5bc27をorigin照合済み。Pages Preview run38155693824 quality-check開始を確認。次は同一runをpollし、成功後artifact/原稿キット/全対象本文・リンク/HTTP/native/404を検証。直前本番32cbf393のCAS Production→公開後確認。新規候補選定や同条件でのCI再実行は行わない。",
+  "nextAction": "GNU M4 verified/awaiting-release。Preview38155693824はtsconfig.json整形だけで静的検査失敗、デプロイskipped。JSON意味/37原稿/編集キット不変を照合し、GNU M4全体format・lint・typecheck合格。修正版01ada58f864af6a00bb6f73fccc0bd63dbea26d9をorigin照合済み、Pages Preview38156062647を開始。次はこの同一runの成功後artifact/全対象本文・キット・リンク/HTTP/native/404、CAS Production(expected32cbf393)と公開後確認。別作業main差分は含めない。",
+  "resumeCondition": "GNU M4 verified/awaiting-release。Preview38155693824はtsconfig.json整形だけで静的検査失敗、デプロイskipped。JSON意味/37原稿/編集キット不変を照合し、GNU M4全体format・lint・typecheck合格。修正版01ada58f864af6a00bb6f73fccc0bd63dbea26d9をorigin照合済み、Pages Preview38156062647を開始。次はこの同一runの成功後artifact/全対象本文・キット・リンク/HTTP/native/404、CAS Production(expected32cbf393)と公開後確認。別作業main差分は含めない。",
   "saveCheckpoint": {
-    "commit": "d1e0b59a22dbc4069e9d3bc6f8e36cf781ce5c19",
-    "branch": "codex/save-document-expansion-20261011",
-    "push": "origin verified by post-push ls-remote exact match",
-    "evidence": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/SAVE_INTEGRATION_RESULT.json"
+    "status": "repair-save-pending",
+    "prior": {
+      "commit": "d1e0b59a22dbc4069e9d3bc6f8e36cf781ce5c19",
+      "branch": "codex/save-document-expansion-20261011",
+      "push": "origin verified by post-push ls-remote exact match",
+      "evidence": "docs/notes/project-expansion/runs/evidence/2026-10-12-976/SAVE_INTEGRATION_RESULT.json"
+    }
   }
 }
