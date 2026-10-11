@@ -1,0 +1,65 @@
+<div class="gnu-sed-original-content" id="Joining-lines">
+<h3 class="section" id="Joining-lines-1"><span>7.1 行の結合</span></h3>
+<p>この節では、<code class="code">N</code>、<code class="code">D</code>、<code class="code">P</code>コマンドで複数行を処理し、<code class="code">b</code>と<code class="code">t</code>コマンドで分岐します。<a class="xref" href="#Multiline-techniques">複数行を扱う手法：D,G,H,N,Pによる複数行の処理</a>と<a class="ref" href="#Branching-and-flow-control">分岐とフロー制御</a>を参照してください。</p>
+<p>特定の行を結合します（たとえば、2行目と3行目を結合する場合）。</p>
+<div class="example">
+<pre class="example-preformatted">$ cat lines.txt
+hello
+hel
+lo
+hello
+
+$ sed '2{N;s/\n//;}' lines.txt
+hello
+hello
+hello
+</pre></div>
+<p>バックスラッシュで継続されている行を結合します。</p>
+<div class="example">
+<pre class="example-preformatted">$ cat 1.txt
+this \
+is \
+a \
+long \
+line
+and another \
+line
+
+$ sed -e ':x /\\$/ { N; s/\\\n//g ; bx }'  1.txt
+this is a long line
+and another line
+
+
+#TODO: The above requires gnu sed.
+#      non-gnu seds need newlines after ':' and 'b'
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>TODO: 上の例にはGNU sedが必要です。GNU以外のsedでは、コマンド「:」と「b」の後に改行が必要です。</p></div></div>
+<p>空白で始まる行を結合します（たとえば、SMTPヘッダー）。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ cat 2.txt
+Subject: Hello
+    World
+Content-Type: multipart/alternative;
+    boundary=94eb2c190cc6370f06054535da6a
+Date: Tue, 3 Jan 2017 19:41:16 +0000 (GMT)
+Authentication-Results: mx.gnu.org;
+       dkim=pass header.i=@gnu.org;
+       spf=pass
+Message-ID: &lt;abcdef@gnu.org&gt;
+From: John Doe &lt;jdoe@gnu.org&gt;
+To: Jane Smith &lt;jsmith@gnu.org&gt;
+
+$ sed -E ':a ; $!N ; s/\n\s+/ / ; ta ; P ; D' 2.txt
+Subject: Hello World
+Content-Type: multipart/alternative; boundary=94eb2c190cc6370f06054535da6a
+Date: Tue, 3 Jan 2017 19:41:16 +0000 (GMT)
+Authentication-Results: mx.gnu.org; dkim=pass header.i=@gnu.org; spf=pass
+Message-ID: &lt;abcdef@gnu.org&gt;
+From: John Doe &lt;jdoe@gnu.org&gt;
+To: Jane Smith &lt;jsmith@gnu.org&gt;
+
+# A portable (non-gnu) variation:
+#   sed -e :a -e '$!N;s/\n  */ /;ta' -e 'P;D'
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>移植性のある、GNU以外のsed向けの別の書き方を末尾に示しています。</p></div></div></div>
+<hr/>
+</div>
+

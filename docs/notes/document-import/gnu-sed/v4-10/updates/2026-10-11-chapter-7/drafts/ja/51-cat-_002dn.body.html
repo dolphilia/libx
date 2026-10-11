@@ -1,0 +1,62 @@
+<div class="gnu-sed-original-content" id="cat-_002dn">
+<h3 class="section" id="Numbering-Lines"><span>7.11 行番号の付加</span></h3>
+<p>このスクリプトは「<samp class="samp">cat -n</samp>」の代わりになります。実際、GNU <code class="command">cat</code>とまったく同じ形式で出力します。</p>
+<p>もちろん、これがまったく役に立たないのには2つの理由があります。まず、すでに誰かがCで実装しています。また、次のBourneシェルのスクリプトでも同じことができ、はるかに高速です。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">#! /bin/sh
+sed -e "=" $@ | sed -e '
+  s/^/      /
+  N
+  s/^ *\(......\)\n/\1  /
+'
+</pre></div></div>
+<p>これは<code class="command">sed</code>で行番号を出力し、<code class="code">N</code>で行を2行ずつまとめます。もちろん、このスクリプトから学べることは、下に示すスクリプトほど多くはありません。</p>
+<p>数値を増やすアルゴリズムは両方のバッファーを使うため、行はできるだけ早く出力し、その後破棄します。数値は、変化する桁を一方のバッファーへ、変わらない桁をもう一方へ入れるように分割します。変化する桁は、<code class="code">y</code>コマンドで一度に変更します。その後、次の行の行番号を組み立ててホールドスペースに格納し、次の反復で使います。</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+</pre><div class="group"><pre class="example-preformatted"># Prime the pump on the first line
+x
+/^$/ s/^.*$/1/
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>最初の行で準備をします。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Add the correct line number before the pattern
+G
+h
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>パターンの前に正しい行番号を追加します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Format it and print it
+s/^/      /
+s/^ *\(......\)\n/\1  /p
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>整形して出力します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Get the line number from hold space; add a zero
+# if we're going to add a digit on the next line
+g
+s/\n.*$//
+/^9*$/ s/^/0/
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>ホールドスペースから行番号を取得します。次の行で桁が増える場合は、0を追加します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># separate changing/unchanged digits with an x
+s/.9*$/x&amp;/
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>変化する桁と変わらない桁をxで区切ります。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># keep changing digits in hold space
+h
+s/^.*x//
+y/0123456789/1234567890/
+x
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>変化する桁をホールドスペースに保持します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># keep unchanged digits in pattern space
+s/x.*$//
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>変わらない桁をパターンスペースに保持します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># compose the new number, remove the newline implicitly added by G
+G
+s/\n//
+h
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>新しい数値を組み立て、Gによって暗黙に追加された改行を取り除きます。</p></div></div></div>
+<hr/>
+</div>
+

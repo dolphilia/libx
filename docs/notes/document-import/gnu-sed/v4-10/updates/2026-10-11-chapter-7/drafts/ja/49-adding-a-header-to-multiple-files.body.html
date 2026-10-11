@@ -1,0 +1,78 @@
+<div class="gnu-sed-original-content" id="Adding-a-header-to-multiple-files">
+<h3 class="section" id="Adding-a-header-to-multiple-files-1"><span>7.9 複数のファイルへのヘッダーの追加</span></h3>
+<p>GNU <code class="command">sed</code>を使うと、複数のファイルを一度に安全に変更できます。</p>
+<p class="exdent">ソースコードファイルの先頭に1行を追加します。</p>
+<div class="example">
+<pre class="example-preformatted">sed -i '1i/* Copyright (C) FOO BAR */' *.c
+</pre></div>
+<p class="exdent">テキストに「<samp class="samp">\n</samp>」を使えば、数行を追加することもできます。</p>
+<div class="example">
+<pre class="example-preformatted">sed -i '1i/*\n * Copyright (C) FOO BAR\n * Created by Jane Doe\n */' *.c
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>ヘッダーには、FOO BARの著作権表記と「作成者: Jane Doe」という行を追加します。</p></div></div>
+<p>別のファイルから複数行を追加するには、<code class="code">0rFILE</code>を使います。典型的な用途は、すべてのファイルにライセンス表記のヘッダーを追加することです。</p>
+<div class="example">
+<pre class="example-preformatted">## Create the header file:
+$ cat&lt;&lt;'EOF'&gt;LIC.TXT
+/*
+    Copyright (C) 1989-2021 FOO BAR
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 3, or (at your option)
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; If not, see &lt;https://www.gnu.org/licenses/&gt;.
+*/
+EOF
+
+## Add the file at the beginning of all source code files:
+$ sed -i '0rLIC.TXT' *.cpp *.h
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>ヘッダーファイルを作成します。ヘッダー内のライセンス表記の訳は次のとおりです。Copyright (C) 1989–2021 FOO BAR。このプログラムは自由ソフトウェアです。Free Software Foundationが公表するGNU General Public Licenseのバージョン3、または任意のそれ以降のバージョンの条件に従って、再配布または変更できます。このプログラムは役立つことを期待して配布されていますが、いかなる保証もありません。商品性や特定目的への適合性についての黙示の保証さえありません。詳しくはGNU General Public Licenseを参照してください。このプログラムとともにGNU General Public Licenseの写しを受け取っているはずです。そうでなければ、https://www.gnu.org/licenses/ を参照してください。 その後、このファイルをすべてのソースコードファイルの先頭へ追加します。</p></div></div>
+<p>スクリプトファイル（たとえば、<samp class="file">.sh</samp>、<samp class="file">.py</samp>、<samp class="file">.pl</samp>ファイル）では、通常、ライセンス表記は最初の行（シバン「<samp class="samp">#!</samp>」の行）の<em class="emph">後</em>に置きます。<code class="code">1rFILE</code>コマンドは、最初の行の<em class="emph">後</em>に<samp class="file">FILE</samp>を追加します。</p>
+<div class="example">
+<pre class="example-preformatted">## Create the header file:
+$ cat&lt;&lt;'EOF'&gt;LIC.TXT
+##
+## Copyright (C) 1989-2021 FOO BAR
+##
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 3, or (at your option)
+## any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program; If not, see &lt;https://www.gnu.org/licenses/&gt;.
+##
+##
+EOF
+
+## Add the file at the beginning of all source code files:
+$ sed -i '1rLIC.TXT' *.py *.sh
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>ヘッダーファイルを作成します。ヘッダー内のライセンス表記の訳は次のとおりです。Copyright (C) 1989–2021 FOO BAR。このプログラムは自由ソフトウェアです。Free Software Foundationが公表するGNU General Public Licenseのバージョン3、または任意のそれ以降のバージョンの条件に従って、再配布または変更できます。このプログラムは役立つことを期待して配布されていますが、いかなる保証もありません。商品性や特定目的への適合性についての黙示の保証さえありません。詳しくはGNU General Public Licenseを参照してください。このプログラムとともにGNU General Public Licenseの写しを受け取っているはずです。そうでなければ、https://www.gnu.org/licenses/ を参照してください。 その後、このファイルをすべてのソースコードファイルの先頭に追加する例を示します。</p></div></div>
+<p>上の<code class="command">sed</code>コマンドは、<code class="command">find</code>と組み合わせて全サブディレクトリ内のファイルを探し、<code class="command">xargs</code>で選択したファイルに追加のコマンドを実行し、<code class="command">grep</code>で著作権表記をすでに含むファイルを除外できます。</p>
+<div class="example">
+<pre class="example-preformatted">find \( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \) \
+    | xargs grep -Li copyright \
+    | xargs -r sed -i '0rLIC.TXT'
+</pre></div>
+<p class="exdent">または、スペースや改行を含むファイル名を扱う、少し安全性を高めた書き方もあります。</p>
+<div class="example">
+<pre class="example-preformatted">find \( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \) -print0 \
+    | xargs -0 grep -Z -Li copyright \
+    | xargs -0 -r sed -i '0rLIC.TXT'
+</pre></div>
+<p>注: <code class="code">r</code>コマンドで<code class="code">0</code>アドレスを使うには、GNU <code class="command">sed</code>のバージョン4.9以降が必要です。<a class="xref" href="#Zero-Address">ゼロアドレス</a>を参照してください。</p>
+<hr/>
+</div>
+

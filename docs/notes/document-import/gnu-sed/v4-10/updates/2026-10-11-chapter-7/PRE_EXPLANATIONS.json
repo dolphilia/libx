@@ -1,0 +1,598 @@
+{
+  "status": "saved-unreviewed",
+  "policy": "Executable examples and original output remain literal; adjacent Japanese translates source comments and help. Original option spellings are retained.",
+  "entries": [
+    {
+      "slug": "41-joining-lines",
+      "preIndex": 1,
+      "sourceText": "$ cat 1.txt\nthis \\\nis \\\na \\\nlong \\\nline\nand another \\\nline\n\n$ sed -e ':x /\\\\$/ { N; s/\\\\\\n//g ; bx }'  1.txt\nthis is a long line\nand another line\n\n\n#TODO: The above requires gnu sed.\n#      non-gnu seds need newlines after ':' and 'b'\n",
+      "sourceTextSHA256": "e50e52b9956fd6e998f15975d7284a11bc1257e15d4b76d2d125a4dfb8018f3d",
+      "Japanese": "TODO: 上の例にはGNU sedが必要です。GNU以外のsedでは、コマンド「:」と「b」の後に改行が必要です。",
+      "review": "pending"
+    },
+    {
+      "slug": "41-joining-lines",
+      "preIndex": 2,
+      "sourceText": "$ cat 2.txt\nSubject: Hello\n    World\nContent-Type: multipart/alternative;\n    boundary=94eb2c190cc6370f06054535da6a\nDate: Tue, 3 Jan 2017 19:41:16 +0000 (GMT)\nAuthentication-Results: mx.gnu.org;\n       dkim=pass header.i=@gnu.org;\n       spf=pass\nMessage-ID: <abcdef@gnu.org>\nFrom: John Doe <jdoe@gnu.org>\nTo: Jane Smith <jsmith@gnu.org>\n\n$ sed -E ':a ; $!N ; s/\\n\\s+/ / ; ta ; P ; D' 2.txt\nSubject: Hello World\nContent-Type: multipart/alternative; boundary=94eb2c190cc6370f06054535da6a\nDate: Tue, 3 Jan 2017 19:41:16 +0000 (GMT)\nAuthentication-Results: mx.gnu.org; dkim=pass header.i=@gnu.org; spf=pass\nMessage-ID: <abcdef@gnu.org>\nFrom: John Doe <jdoe@gnu.org>\nTo: Jane Smith <jsmith@gnu.org>\n\n# A portable (non-gnu) variation:\n#   sed -e :a -e '$!N;s/\\n  */ /;ta' -e 'P;D'\n",
+      "sourceTextSHA256": "76da0893b7e420ac49ad47998350135314ee6ed85b79010e6a7aab2217ca5987",
+      "Japanese": "移植性のある、GNU以外のsed向けの別の書き方を末尾に示しています。",
+      "review": "pending"
+    },
+    {
+      "slug": "42-centering-lines",
+      "preIndex": 1,
+      "sourceText": "# Put 80 spaces in the buffer\n1 {\n  x\n  s/^$/          /\n  s/^.*$/&&&&&&&&/\n  x\n}\n",
+      "sourceTextSHA256": "a3ab71bded55710fec15b54a1894e5e938bd286e5ea089e0c6e22f0d849657c5",
+      "Japanese": "バッファーに80個のスペースを入れます。",
+      "review": "pending"
+    },
+    {
+      "slug": "42-centering-lines",
+      "preIndex": 3,
+      "sourceText": "# delete leading and trailing spaces\ny/TAB/ /\ns/^ *//\ns/ *$//\n",
+      "sourceTextSHA256": "f32830586df1422a671ddc8a72c3ac8877594dabf79f2e28b48558c418339bef",
+      "Japanese": "先頭と末尾のスペースを削除します。",
+      "review": "pending"
+    },
+    {
+      "slug": "42-centering-lines",
+      "preIndex": 5,
+      "sourceText": "# add a newline and 80 spaces to end of line\nG\n",
+      "sourceTextSHA256": "d4465b1095ad89f269df06d3db581ae978a912734e09687051b4357483e9d364",
+      "Japanese": "行末に改行と80個のスペースを追加します。",
+      "review": "pending"
+    },
+    {
+      "slug": "42-centering-lines",
+      "preIndex": 7,
+      "sourceText": "# keep first 81 chars (80 + a newline)\ns/^\\(.\\{81\\}\\).*$/\\1/\n",
+      "sourceTextSHA256": "8429f39620db7cfe89c36078c1f84fb367deb9c53347a874572cdc332ddd5291",
+      "Japanese": "先頭の81文字（80文字と改行）を残します。",
+      "review": "pending"
+    },
+    {
+      "slug": "42-centering-lines",
+      "preIndex": 9,
+      "sourceText": "# \\2 matches half of the spaces, which are moved to the beginning\ns/^\\(.*\\)\\n\\(.*\\)\\2/\\2\\1/\n",
+      "sourceTextSHA256": "9b59b6035b7ec7f15bd87cd254bac9ba73a6e7cc288937a5cb841e71ebae06cb",
+      "Japanese": "\\2はスペースの半分にマッチし、それらのスペースを先頭へ移動します。",
+      "review": "pending"
+    },
+    {
+      "slug": "43-increment-a-number",
+      "preIndex": 1,
+      "sourceText": "# replace all trailing 9s by _ (any other character except digits, could\n# be used)\n:d\ns/9\\(_*\\)$/_\\1/\ntd\n",
+      "sourceTextSHA256": "ffceb67e2300c1cd9bbfb594f9518ceca72146671881359b7878868e6b55e93b",
+      "Japanese": "末尾に連続する9をすべて「_」に置き換えます（数字以外なら、ほかの文字でもかまいません）。",
+      "review": "pending"
+    },
+    {
+      "slug": "43-increment-a-number",
+      "preIndex": 3,
+      "sourceText": "# incr last digit only.  The first line adds a most-significant\n# digit of 1 if we have to add a digit.\n",
+      "sourceTextSHA256": "b2986586bb4a0adee0a0f24b60ccd04066736a23f24a37b2952df6b682db29ea",
+      "Japanese": "最後の数字だけを増やします。桁を追加する必要がある場合、最初の行が最上位の桁として1を追加します。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 0,
+      "sourceText": "#! /bin/sh\n# rename files to lower/upper case...\n#\n# usage:\n#    move-to-lower *\n#    move-to-upper *\n# or\n#    move-to-lower -R .\n#    move-to-upper -R .\n#\n",
+      "sourceTextSHA256": "b06457dd55c854cd15c8be6d3bcc196bfe8a0e25abf8100e21482b4078c5ccaa",
+      "Japanese": "ファイル名を小文字または大文字に変更します。使用例はmove-to-lower *、move-to-upper *です。または、-R .を指定して再帰的に処理します。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 2,
+      "sourceText": "help()\n{\n        cat << eof\nUsage: $0 [-n] [-r] [-h] files...\n",
+      "sourceTextSHA256": "fd090a9f81fe7d55629d3320e70d1db42832ed806e18cd345f1da17dd4577af5",
+      "Japanese": "使い方: $0 [-n] [-r] [-h] files...。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 4,
+      "sourceText": "-n      do nothing, only see what would be done\n-R      recursive (use find)\n-h      this message\nfiles   files to remap to lower case\n",
+      "sourceTextSHA256": "d603ed9d3cf28061a3edf71ceb0f552bb78a20c73356ab3a54085bb4858ebd8f",
+      "Japanese": "-n: 何も変更せず、実行される内容だけを確認します。-R: 再帰的に処理します（findを使用）。-h: このメッセージを表示します。files: 小文字に変換するファイルです。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 6,
+      "sourceText": "Examples:\n       $0 -n *        (see if everything is ok, then...)\n       $0 *\n",
+      "sourceTextSHA256": "db52272ce877408e29ab7daef332ba4cddb565691c6c52652f78d58d1363da2a",
+      "Japanese": "使用例: まず$0 -n *で問題がないか確認し、その後$0 *を実行します。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 14,
+      "sourceText": "if [ -z \"$1\" ]; then\n        echo Usage: $0 [-h] [-n] [-r] files...\n        exit 1\nfi\n",
+      "sourceTextSHA256": "8f4ec7ca4676599a4040df98564562c50d244f34d7c33a3f917660a929a08c57",
+      "Japanese": "引数がなければ「使い方: $0 [-h] [-n] [-r] files...」を表示し、終了ステータス1で終了します。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 20,
+      "sourceText": "# remove all trailing slashes\ns/\\/*$//\n",
+      "sourceTextSHA256": "e7736ad1872d5d93a73e7c04615d80e5d6627674c0f3b6d6f5f22b5a259c7d4e",
+      "Japanese": "末尾のスラッシュをすべて削除します。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 22,
+      "sourceText": "# add ./ if there is no path, only a filename\n/\\//! s/^/.\\//\n",
+      "sourceTextSHA256": "19762c7c40b11688631f982bc67518a71646ecb9afc95e31b75e15880a48b248",
+      "Japanese": "パスがなくファイル名だけの場合は、先頭に「./」を追加します。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 24,
+      "sourceText": "# save path+filename\nh\n",
+      "sourceTextSHA256": "9e9a63371c59c6dad3bdd3b700558a19f88ccbb5218e324e7c6079ffa20e2a10",
+      "Japanese": "パスとファイル名を保存します。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 26,
+      "sourceText": "# remove path\ns/.*\\///\n",
+      "sourceTextSHA256": "3d5d9b8c252d4a2754e41ee6293db6ecf71448f2189a39b67ed996d60aaeb03b",
+      "Japanese": "パスを取り除きます。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 28,
+      "sourceText": "# do conversion only on filename\ny/'$FROM'/'$TO'/\n",
+      "sourceTextSHA256": "c3a4133f76a0f6ad57c5cd2da40ca53cccf432bba0ffc35f5ca3e19b7e6e3395",
+      "Japanese": "変換はファイル名だけに行います。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 30,
+      "sourceText": "# now line contains original path+file, while\n# hold space contains the new filename\nx\n",
+      "sourceTextSHA256": "de315af378c4a1bfb72d425d33ef2ce2c8048744671138c6402e52fa096bf81a",
+      "Japanese": "現在、行には元のパスとファイル名が入り、ホールドスペースには新しいファイル名が入っています。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 32,
+      "sourceText": "# add converted file name to line, which now contains\n# path/file-name\\nconverted-file-name\nG\n",
+      "sourceTextSHA256": "28dda3988d5a37068bca39a8a5e0f8edf5d8280223ef95a66fe4211e4a660788",
+      "Japanese": "変換したファイル名を行に追加します。これで行の内容は「パス/ファイル名\\n変換したファイル名」になります。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 34,
+      "sourceText": "# check if converted file name is equal to original file name,\n# if it is, do not print anything\n/^.*\\/\\(.*\\)\\n\\1/b\n",
+      "sourceTextSHA256": "a763e54c6d134e4f4ec5c75791a2009ec78bc82d14c7fdce4dbd78f9558a5957",
+      "Japanese": "変換したファイル名が元のファイル名と同じかを調べ、同じなら何も出力しません。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 36,
+      "sourceText": "# escape special characters for the shell\ns/[\"$`\\\\]/\\\\&/g\n",
+      "sourceTextSHA256": "8e9af63015e0a15e7e2def669b9939658ae33a76c96cb11e596f78fe8b3af49e",
+      "Japanese": "シェルの特殊文字をエスケープします。",
+      "review": "pending"
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "preIndex": 38,
+      "sourceText": "# now, transform path/fromfile\\n, into\n# mv path/fromfile path/tofile and print it\ns/^\\(.*\\/\\)\\(.*\\)\\n\\(.*\\)$/mv \"\\1\\2\" \"\\1\\3\"/p\n",
+      "sourceTextSHA256": "39f446aac28c6efb79fc80fa6188667a01156792870b532cb119ebd02dac9516",
+      "Japanese": "「パス/変更前のファイル名\\n」を「mv パス/変更前のファイル名 パス/変更後のファイル名」に変換し、出力します。",
+      "review": "pending"
+    },
+    {
+      "slug": "45-print-bash-environment",
+      "preIndex": 3,
+      "sourceText": "# if no occurrence of ‘=()’ print and load next line\n/=()/! { p; b; }\n/ () $/! { p; b; }\n",
+      "sourceTextSHA256": "f96d1a609411110c25420698a2c43d355a19c67c27bba8e9c2e1771029b00d3e",
+      "Japanese": "「=()」がなければ、その行を出力して次の行を読み込みます。",
+      "review": "pending"
+    },
+    {
+      "slug": "45-print-bash-environment",
+      "preIndex": 5,
+      "sourceText": "# possible start of functions section\n# save the line in case this is a var like FOO=\"() \"\nh\n",
+      "sourceTextSHA256": "25e7406248faba3428a724d5e9b013e175acf0a27b4b19a6e27685e508920f24",
+      "Japanese": "関数セクションの開始候補です。FOO=\"() \"のような変数である可能性に備えて、その行を保存します。",
+      "review": "pending"
+    },
+    {
+      "slug": "45-print-bash-environment",
+      "preIndex": 7,
+      "sourceText": "# if the next line has a brace, we quit because\n# nothing comes after functions\nn\n/^{/ q\n",
+      "sourceTextSHA256": "d960d480f19c35ab584738416ad9e3f99a3aadde26210524d4902c0609d07db6",
+      "Japanese": "次の行に波括弧があれば終了します。関数の後には何も続かないためです。",
+      "review": "pending"
+    },
+    {
+      "slug": "45-print-bash-environment",
+      "preIndex": 9,
+      "sourceText": "# print the old line\nx; p\n",
+      "sourceTextSHA256": "283bc76ea892aa4f49594f87650ca01556c0a339ebceb6a13b87b85784a40bb6",
+      "Japanese": "前の行を出力します。",
+      "review": "pending"
+    },
+    {
+      "slug": "45-print-bash-environment",
+      "preIndex": 11,
+      "sourceText": "# work on the new line now\nx; bx\n'\n",
+      "sourceTextSHA256": "af75acfb9148fa5fc862723b91684e2958e9f556739964662e58659087105797",
+      "Japanese": "今度は新しい行を処理します。",
+      "review": "pending"
+    },
+    {
+      "slug": "46-reverse-chars-of-lines",
+      "preIndex": 1,
+      "sourceText": "# Reverse a line.  Begin embedding the line between two newlines\ns/^.*$/\\\n&\\\n/\n",
+      "sourceTextSHA256": "e45488e7cdb941fa9c4f1ea9df4dd0a635bd2575eed1cb8e40bd52903a3c2d09",
+      "Japanese": "行を逆順にします。まず、行を2つの改行で挟みます。",
+      "review": "pending"
+    },
+    {
+      "slug": "46-reverse-chars-of-lines",
+      "preIndex": 3,
+      "sourceText": "# Move first character at the end.  The regexp matches until\n# there are zero or one characters between the markers\ntx\n:x\ns/\\(\\n.\\)\\(.*\\)\\(.\\n\\)/\\3\\2\\1/\ntx\n",
+      "sourceTextSHA256": "56159ef8cc9e9a43eb22138598524b4526c849a60d4d5e41eb01d6381af516df",
+      "Japanese": "先頭の文字を末尾へ移動します。この正規表現は、目印の間の文字が0文字または1文字になるまでマッチします。",
+      "review": "pending"
+    },
+    {
+      "slug": "46-reverse-chars-of-lines",
+      "preIndex": 5,
+      "sourceText": "# Remove the newline markers\ns/\\n//g\n",
+      "sourceTextSHA256": "df23c275ab054b7c71441d50e2024cf0ab69655ffd215e9ce8fdc1ee3fc35d49",
+      "Japanese": "目印に使った改行を取り除きます。",
+      "review": "pending"
+    },
+    {
+      "slug": "48-line-length-adjustment",
+      "preIndex": 1,
+      "sourceText": "$ cat wrap40.sed\n# outer loop\n:x\n\n# Append a newline followed by the next input line to the pattern buffer\nN\n\n# Remove all newlines from the pattern buffer\ns/\\n/ /g\n\n\n# Inner loop\n:y\n\n# Add a newline after the first 40 characters\ns/(.{40,40})/\\1\\n/\n\n# If there is a newline in the pattern buffer\n# (i.e. the previous substitution added a newline)\n/\\n/ {\n    # There are newlines in the pattern buffer -\n    # print the content until the first newline.\n    P\n\n   # Remove the printed characters and the first newline\n   s/.*\\n//\n\n   # branch to label 'y' - repeat inner loop\n   by\n }\n\n# No newlines in the pattern buffer - Branch to label 'x' (outer loop)\n# and read the next input line\nbx\n",
+      "sourceTextSHA256": "f23e330a69e0a68de4a979cd590bf1c85996eba165b3117a8eabf60586419882",
+      "Japanese": "外側のループです。改行と次の入力行をパターンバッファーに追加し、その中のすべての改行を取り除きます。次に内側のループで、先頭の40文字の後に改行を追加します。パターンバッファーに改行があれば（つまり、直前の置換で改行が追加されたなら）、最初の改行までの内容を出力します。出力した文字と最初の改行を削除し、ラベルyへ分岐して内側のループを繰り返します。パターンバッファーに改行がなければ、ラベルx（外側のループ）へ分岐し、次の入力行を読み込みます。",
+      "review": "pending"
+    },
+    {
+      "slug": "49-adding-a-header-to-multiple-files",
+      "preIndex": 2,
+      "sourceText": "## Create the header file:\n$ cat<<'EOF'>LIC.TXT\n/*\n    Copyright (C) 1989-2021 FOO BAR\n\n    This program is free software; you can redistribute it and/or modify\n    it under the terms of the GNU General Public License as published by\n    the Free Software Foundation; either version 3, or (at your option)\n    any later version.\n\n    This program is distributed in the hope that it will be useful,\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n    GNU General Public License for more details.\n\n    You should have received a copy of the GNU General Public License\n    along with this program; If not, see <https://www.gnu.org/licenses/>.\n*/\nEOF\n\n## Add the file at the beginning of all source code files:\n$ sed -i '0rLIC.TXT' *.cpp *.h\n",
+      "sourceTextSHA256": "b7508569842d1ab1f3d1e3ca6b40f3fdb903114380d7b47376faf786df4175b7",
+      "Japanese": "ヘッダーファイルを作成します。ヘッダー内のライセンス表記の訳は次のとおりです。Copyright (C) 1989–2021 FOO BAR。このプログラムは自由ソフトウェアです。Free Software Foundationが公表するGNU General Public Licenseのバージョン3、または任意のそれ以降のバージョンの条件に従って、再配布または変更できます。このプログラムは役立つことを期待して配布されていますが、いかなる保証もありません。商品性や特定目的への適合性についての黙示の保証さえありません。詳しくはGNU General Public Licenseを参照してください。このプログラムとともにGNU General Public Licenseの写しを受け取っているはずです。そうでなければ、https://www.gnu.org/licenses/ を参照してください。 その後、このファイルをすべてのソースコードファイルの先頭へ追加します。",
+      "review": "pending"
+    },
+    {
+      "slug": "49-adding-a-header-to-multiple-files",
+      "preIndex": 3,
+      "sourceText": "## Create the header file:\n$ cat<<'EOF'>LIC.TXT\n##\n## Copyright (C) 1989-2021 FOO BAR\n##\n## This program is free software; you can redistribute it and/or modify\n## it under the terms of the GNU General Public License as published by\n## the Free Software Foundation; either version 3, or (at your option)\n## any later version.\n##\n## This program is distributed in the hope that it will be useful,\n## but WITHOUT ANY WARRANTY; without even the implied warranty of\n## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n## GNU General Public License for more details.\n##\n## You should have received a copy of the GNU General Public License\n## along with this program; If not, see <https://www.gnu.org/licenses/>.\n##\n##\nEOF\n\n## Add the file at the beginning of all source code files:\n$ sed -i '1rLIC.TXT' *.py *.sh\n",
+      "sourceTextSHA256": "a2e1e901329f12b23c8d9d57b8e1a5a6c7301150d7e6dbfffb19f2f2f14744cd",
+      "Japanese": "ヘッダーファイルを作成します。ヘッダー内のライセンス表記の訳は次のとおりです。Copyright (C) 1989–2021 FOO BAR。このプログラムは自由ソフトウェアです。Free Software Foundationが公表するGNU General Public Licenseのバージョン3、または任意のそれ以降のバージョンの条件に従って、再配布または変更できます。このプログラムは役立つことを期待して配布されていますが、いかなる保証もありません。商品性や特定目的への適合性についての黙示の保証さえありません。詳しくはGNU General Public Licenseを参照してください。このプログラムとともにGNU General Public Licenseの写しを受け取っているはずです。そうでなければ、https://www.gnu.org/licenses/ を参照してください。 その後、このファイルをすべてのソースコードファイルの先頭に追加する例を示します。",
+      "review": "pending"
+    },
+    {
+      "slug": "50-tac",
+      "preIndex": 0,
+      "sourceText": "#!/usr/bin/sed -nf\n\n# reverse all lines of input, i.e. first line became last, ...\n\n",
+      "sourceTextSHA256": "f25638e506ebe7f3e4f9cf69b7fe88ee424a5d048a4e8b3057f16c203580d7f2",
+      "Japanese": "入力のすべての行を逆順にします。つまり、最初の行が最後の行になります。",
+      "review": "pending"
+    },
+    {
+      "slug": "50-tac",
+      "preIndex": 1,
+      "sourceText": "# from the second line, the buffer (which contains all previous lines)\n# is *appended* to current line, so, the order will be reversed\n1! G\n",
+      "sourceTextSHA256": "401bf1bd61fe21b7fa12fbe97773838d0f0c995a4d69897a508f648ac74d717b",
+      "Japanese": "2行目からは、それまでのすべての行を含むバッファーを現在の行の後に追加するため、順序が逆になります。",
+      "review": "pending"
+    },
+    {
+      "slug": "50-tac",
+      "preIndex": 3,
+      "sourceText": "# on the last line we're done -- print everything\n$ p\n",
+      "sourceTextSHA256": "b87e228a0d6efc189d73923089d6efbaaf475b087955903e480220d16755f51c",
+      "Japanese": "最終行で処理を終え、すべてを出力します。",
+      "review": "pending"
+    },
+    {
+      "slug": "50-tac",
+      "preIndex": 5,
+      "sourceText": "# store everything on the buffer again\nh\n",
+      "sourceTextSHA256": "49ebcc52c96a20851264382def38407292394544b4089aa27e9c442a00118f6b",
+      "Japanese": "すべてを再びバッファーに格納します。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 2,
+      "sourceText": "# Prime the pump on the first line\nx\n/^$/ s/^.*$/1/\n",
+      "sourceTextSHA256": "cb3fe4c848b29686424edcb0fffb48b97dba9a21d02eee1ab0fdd086413b982d",
+      "Japanese": "最初の行で準備をします。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 4,
+      "sourceText": "# Add the correct line number before the pattern\nG\nh\n",
+      "sourceTextSHA256": "1e202d8d637c4b055e4d0887cf440e08084954b65c200d73232a2d9dae539728",
+      "Japanese": "パターンの前に正しい行番号を追加します。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 6,
+      "sourceText": "# Format it and print it\ns/^/      /\ns/^ *\\(......\\)\\n/\\1  /p\n",
+      "sourceTextSHA256": "f4ebe7d47bb405b6da1540edaabfc2b291c028c751f48e66be8f39fe557ce3da",
+      "Japanese": "整形して出力します。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 8,
+      "sourceText": "# Get the line number from hold space; add a zero\n# if we're going to add a digit on the next line\ng\ns/\\n.*$//\n/^9*$/ s/^/0/\n",
+      "sourceTextSHA256": "eb6701fccda2224ec0ad1effa8dbf29694121a07b59d37fc8e7e3f018d9ad64e",
+      "Japanese": "ホールドスペースから行番号を取得します。次の行で桁が増える場合は、0を追加します。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 10,
+      "sourceText": "# separate changing/unchanged digits with an x\ns/.9*$/x&/\n",
+      "sourceTextSHA256": "2313980744f738d50c88ca9999de259724dc53e3306c9dd9c2240246ac703812",
+      "Japanese": "変化する桁と変わらない桁をxで区切ります。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 12,
+      "sourceText": "# keep changing digits in hold space\nh\ns/^.*x//\ny/0123456789/1234567890/\nx\n",
+      "sourceTextSHA256": "c3d5c482165e014f62af081003cb36a97020b674d1e6864d10610d95e3de90ca",
+      "Japanese": "変化する桁をホールドスペースに保持します。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 14,
+      "sourceText": "# keep unchanged digits in pattern space\ns/x.*$//\n",
+      "sourceTextSHA256": "dba2e98e909ebea931f9656719ca75a522e42ad982f889c6f4062d2d31a11408",
+      "Japanese": "変わらない桁をパターンスペースに保持します。",
+      "review": "pending"
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "preIndex": 16,
+      "sourceText": "# compose the new number, remove the newline implicitly added by G\nG\ns/\\n//\nh\n",
+      "sourceTextSHA256": "e22acae226b079087d446e123b362a5a18552afde8fb907b3496237969fae013",
+      "Japanese": "新しい数値を組み立て、Gによって暗黙に追加された改行を取り除きます。",
+      "review": "pending"
+    },
+    {
+      "slug": "52-cat-_002db",
+      "preIndex": 3,
+      "sourceText": "# Same as cat -n from now\nx\n/^$/ s/^.*$/1/\nG\nh\ns/^/      /\ns/^ *\\(......\\)\\n/\\1  /p\nx\ns/\\n.*$//\n/^9*$/ s/^/0/\ns/.9*$/x&/\nh\ns/^.*x//\ny/0123456789/1234567890/\nx\ns/x.*$//\nG\ns/\\n//\nh\n",
+      "sourceTextSHA256": "ad74d843cfcbe3439005873ae5ee6a479442c1bff45e1f171f8c6639e16c36d9",
+      "Japanese": "ここからはcat -nと同じです。",
+      "review": "pending"
+    },
+    {
+      "slug": "53-wc-_002dc",
+      "preIndex": 1,
+      "sourceText": "# Add n+1 a's to hold space (+1 is for the newline)\ns/./a/g\nH\nx\ns/\\n/a/\n",
+      "sourceTextSHA256": "dd579b396bdeabb0d64e436638bd85a4bd2f72ee954fe185893e11ee18da81fd",
+      "Japanese": "n+1個のaをホールドスペースへ追加します（+1は改行の分です）。",
+      "review": "pending"
+    },
+    {
+      "slug": "53-wc-_002dc",
+      "preIndex": 3,
+      "sourceText": "# Do the carry.  The t's and b's are not necessary,\n# but they do speed up the thing\nt a\n: a;  s/aaaaaaaaaa/b/g; t b; b done\n: b;  s/bbbbbbbbbb/c/g; t c; b done\n: c;  s/cccccccccc/d/g; t d; b done\n: d;  s/dddddddddd/e/g; t e; b done\n: e;  s/eeeeeeeeee/f/g; t f; b done\n: f;  s/ffffffffff/g/g; t g; b done\n: g;  s/gggggggggg/h/g; t h; b done\n: h;  s/hhhhhhhhhh//g\n",
+      "sourceTextSHA256": "4153765003adf302cc8b7b226c8331013ddb071c2a82470c8cd50e734c87c35d",
+      "Japanese": "繰り上がりを処理します。tとbは必須ではありませんが、処理を高速化します。",
+      "review": "pending"
+    },
+    {
+      "slug": "53-wc-_002dc",
+      "preIndex": 6,
+      "sourceText": "\n\n# On the last line, convert back to decimal\n\n",
+      "sourceTextSHA256": "1770f8df79ffebd6aa2fd26a5bb5ba43194da9b11580edf774edd3f4a20c9f35",
+      "Japanese": "最終行で十進数へ戻します。",
+      "review": "pending"
+    },
+    {
+      "slug": "54-wc-_002dw",
+      "preIndex": 1,
+      "sourceText": "# Convert words to a's\ns/[ TAB][ TAB]*/ /g\ns/^/ /\ns/ [^ ][^ ]*/a /g\ns/ //g\n",
+      "sourceTextSHA256": "7c7acf9d97e06032fdb1a2b3629e12a9624eea7b64ce1b8eb0e4a070448fbed6",
+      "Japanese": "単語をaへ変換します。",
+      "review": "pending"
+    },
+    {
+      "slug": "54-wc-_002dw",
+      "preIndex": 3,
+      "sourceText": "# Append them to hold space\nH\nx\ns/\\n//\n",
+      "sourceTextSHA256": "cc3e09428a1992e330fb4ed5695da51e36f4187c3c9aecaba569f6d23d6aa255",
+      "Japanese": "それらをホールドスペースへ追加します。",
+      "review": "pending"
+    },
+    {
+      "slug": "54-wc-_002dw",
+      "preIndex": 5,
+      "sourceText": "# From here on it is the same as in wc -c.\n/aaaaaaaaaa/! bx;   s/aaaaaaaaaa/b/g\n/bbbbbbbbbb/! bx;   s/bbbbbbbbbb/c/g\n/cccccccccc/! bx;   s/cccccccccc/d/g\n/dddddddddd/! bx;   s/dddddddddd/e/g\n/eeeeeeeeee/! bx;   s/eeeeeeeeee/f/g\n/ffffffffff/! bx;   s/ffffffffff/g/g\n/gggggggggg/! bx;   s/gggggggggg/h/g\ns/hhhhhhhhhh//g\n:x\n$! { h; b; }\n:y\n/a/! s/[b-h]*/&0/\ns/aaaaaaaaa/9/\ns/aaaaaaaa/8/\ns/aaaaaaa/7/\ns/aaaaaa/6/\ns/aaaaa/5/\ns/aaaa/4/\ns/aaa/3/\ns/aa/2/\ns/a/1/\ny/bcdefgh/abcdefg/\n/[a-h]/ by\np\n",
+      "sourceTextSHA256": "246c5b46316f98af4936ef016f9eee1b1e2f0b6e0faacc68bad2b64c0b5c2c7c",
+      "Japanese": "ここからはwc -cと同じです。",
+      "review": "pending"
+    },
+    {
+      "slug": "58-uniq",
+      "preIndex": 2,
+      "sourceText": ":b\n# On the last line, print and exit\n$b\nN\n/^\\(.*\\)\\n\\1$/ {\n    # The two lines are identical.  Undo the effect of\n    # the n command.\n    g\n    bb\n}\n",
+      "sourceTextSHA256": "f49355929ebc9b76609feb77d257d32f6a84f9f92d32a70cc17ba71dfc4a8cb1",
+      "Japanese": "最終行では出力して終了します。2行が同じ場合は、nコマンドの効果を元に戻します。",
+      "review": "pending"
+    },
+    {
+      "slug": "58-uniq",
+      "preIndex": 4,
+      "sourceText": "# If the N command had added the last line, print and exit\n$b\n",
+      "sourceTextSHA256": "ee2bf8382d1e2c6676a5b2f5b3637222ade64b615417660b2557be624859a6c3",
+      "Japanese": "Nコマンドが最終行を追加した場合は、出力して終了します。",
+      "review": "pending"
+    },
+    {
+      "slug": "58-uniq",
+      "preIndex": 6,
+      "sourceText": "# The lines are different; print the first and go\n# back working on the second.\nP\nD\n",
+      "sourceTextSHA256": "e6f5157260b2f2aa390cc37181f858482632dddf6e0538e9312e05a7893699e5",
+      "Japanese": "行が異なる場合は、最初の行を出力し、2行目の処理へ戻ります。",
+      "review": "pending"
+    },
+    {
+      "slug": "59-uniq-_002dd",
+      "preIndex": 1,
+      "sourceText": "$b\nN\n/^\\(.*\\)\\n\\1$/ {\n    # Print the first of the duplicated lines\n    s/.*\\n//\n    p\n",
+      "sourceTextSHA256": "9ed1b1c7ba5b46d0cb40673bf3e5eb04a10355578a08c19672d12692ef498944",
+      "Japanese": "重複する行の最初の行を出力します。",
+      "review": "pending"
+    },
+    {
+      "slug": "59-uniq-_002dd",
+      "preIndex": 3,
+      "sourceText": "    # Loop until we get a different line\n    :b\n    $b\n    N\n    /^\\(.*\\)\\n\\1$/ {\n        s/.*\\n//\n        bb\n    }\n}\n",
+      "sourceTextSHA256": "7f46d5a34e9b4866ad5638ee44d76a8f8df813d052ce701484ad67bf94891470",
+      "Japanese": "異なる行が現れるまでループします。",
+      "review": "pending"
+    },
+    {
+      "slug": "59-uniq-_002dd",
+      "preIndex": 5,
+      "sourceText": "# The last line cannot be followed by duplicates\n$b\n",
+      "sourceTextSHA256": "eb42ad81a8ad8e0564b7ae30960c26fc66bb73e4a66fe66da7a3336a11e7df42",
+      "Japanese": "最終行の後に重複行が続くことはありません。",
+      "review": "pending"
+    },
+    {
+      "slug": "59-uniq-_002dd",
+      "preIndex": 7,
+      "sourceText": "# Found a different one.  Leave it alone in the pattern space\n# and go back to the top, hunting its duplicates\nD\n",
+      "sourceTextSHA256": "8bac9497a6e1c26014de7fb839273ce26fa78a0d3b780fcf739a4af5a24a8d42",
+      "Japanese": "異なる行が見つかりました。その行をパターンスペースに残し、先頭へ戻って重複行を探します。",
+      "review": "pending"
+    },
+    {
+      "slug": "60-uniq-_002du",
+      "preIndex": 1,
+      "sourceText": "# Search for a duplicate line --- until that, print what you find.\n$b\nN\n/^\\(.*\\)\\n\\1$/ ! {\n    P\n    D\n}\n",
+      "sourceTextSHA256": "0fe754e1927cf25f34755a602d6a1744e218533c278fc824ffbaf86505fbb43f",
+      "Japanese": "重複行を探し、それまでは見つけた行を出力します。",
+      "review": "pending"
+    },
+    {
+      "slug": "60-uniq-_002du",
+      "preIndex": 3,
+      "sourceText": ":c\n# Got two equal lines in pattern space.  At the\n# end of the file we simply exit\n$d\n",
+      "sourceTextSHA256": "0726bba98b019fe9a3490003e161b10132504546a8acecfe6b6b2f1ffa9e1be8",
+      "Japanese": "パターンスペースに同じ行が2行入りました。ファイルの終わりなら、そのまま終了します。",
+      "review": "pending"
+    },
+    {
+      "slug": "60-uniq-_002du",
+      "preIndex": 5,
+      "sourceText": "# Else, we keep reading lines with N until we\n# find a different one\ns/.*\\n//\nN\n/^\\(.*\\)\\n\\1$/ {\n    bc\n}\n",
+      "sourceTextSHA256": "c941903297fc4e9bb1d544599602b612baf97d5b73ed3fc3308df25d94cb8123",
+      "Japanese": "そうでなければ、異なる行が見つかるまでNで行を読み続けます。",
+      "review": "pending"
+    },
+    {
+      "slug": "60-uniq-_002du",
+      "preIndex": 7,
+      "sourceText": "# Remove the last instance of the duplicate line\n# and go back to the top\nD\n",
+      "sourceTextSHA256": "f8ff0a3d6511de54063c113ff25225f5026af93a9efa7beff169eb1277c4d19e",
+      "Japanese": "重複行の最後の1行を取り除き、先頭へ戻ります。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 1,
+      "sourceText": "# on empty lines, join with next\n# Note there is a star in the regexp\n:x\n/^\\n*$/ {\nN\nbx\n}\n",
+      "sourceTextSHA256": "331164a816a93f57b1b3788e255904a4af32cf3d001143606e21d6c651469648",
+      "Japanese": "空行なら次の行と結合します。正規表現にアスタリスクがあることに注意してください。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 3,
+      "sourceText": "# now, squeeze all '\\n', this can be also done by:\n# s/^\\(\\n\\)*/\\1/\ns/\\n*/\\\n/\n",
+      "sourceTextSHA256": "9f4665c3997aed1ec3371d4059993617a4ef18be0309ce6646e38f7a81b5bd15",
+      "Japanese": "すべての「\\n」を圧縮します。コメントに示すs/^\\(\\n\\)*/\\1/でも行えます。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 5,
+      "sourceText": "# delete all leading empty lines\n1,/^./{\n/./!d\n}\n",
+      "sourceTextSHA256": "2cffc242e82985ddfd78c04ca29ceaaa87e510d64c0786eccd6c663b41674cbf",
+      "Japanese": "先頭の空行をすべて削除します。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 7,
+      "sourceText": "# on an empty line we remove it and all the following\n# empty lines, but one\n:x\n/./!{\nN\ns/^\\n$//\ntx\n}\n",
+      "sourceTextSHA256": "6a722944fbfa4269cb2a7777c7e6d531b54d281b7ee84bfa1a347b56f157d365",
+      "Japanese": "空行では、その行と後続の空行を、1行だけ残して取り除きます。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 9,
+      "sourceText": "# delete all (leading) blanks\n/./!d\n",
+      "sourceTextSHA256": "2703c3b90de152f1df22b5ff338b4e1f4098bcdc9bcd1f54928c81cb18b61396",
+      "Japanese": "すべての先頭の空行を削除します。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 11,
+      "sourceText": "# get here: so there is a non empty\n:x\n# print it\np\n# get next\nn\n# got chars? print it again, etc...\n/./bx\n",
+      "sourceTextSHA256": "63a0f925f635fd4c4fdada12cb4a855e9bb7bfa69a98ce693669aff7e95f5cfb",
+      "Japanese": "ここに到達したということは、空でない行があります。それを出力し、次の行を取得します。文字があれば、それも出力する、という処理を繰り返します。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 13,
+      "sourceText": "# no, don't have chars: got an empty line\n:z\n# get next, if last line we finish here so no trailing\n# empty lines are written\nn\n# also empty? then ignore it, and get next... this will\n# remove ALL empty lines\n/./!bz\n",
+      "sourceTextSHA256": "054693a3c910a3218b2f5c1b8cd2a09dd0af25ddaa173c7a2d74c9068da46202",
+      "Japanese": "文字がなければ、空行が見つかったということです。次の行を取得します。最終行ならここで終了するため、末尾の空行は出力されません。次も空行なら無視し、さらに次の行を取得します。これによって、すべての空行を取り除きます。",
+      "review": "pending"
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "preIndex": 15,
+      "sourceText": "# all empty lines were deleted/ignored, but we have a non empty.  As\n# what we want to do is to squeeze, insert a blank line artificially\ni\\\n",
+      "sourceTextSHA256": "ed125243432f9b90db3f8cf469adb70225e466f124e66997460124856e57f712",
+      "Japanese": "すべての空行が削除または無視され、空でない行が見つかりました。目的は空行の圧縮なので、ここで空行を1行挿入します。",
+      "review": "pending"
+    },
+    {
+      "slug": "49-adding-a-header-to-multiple-files",
+      "preIndex": 1,
+      "sourceText": "sed -i '1i/*\\n * Copyright (C) FOO BAR\\n * Created by Jane Doe\\n */' *.c\n",
+      "sourceTextSHA256": "54ef9eb844e62ae539628285e74755ef6aa33abb6f9872ab8ba168f38d4cdc6d",
+      "Japanese": "ヘッダーには、FOO BARの著作権表記と「作成者: Jane Doe」という行を追加します。",
+      "review": "pending"
+    }
+  ]
+}
