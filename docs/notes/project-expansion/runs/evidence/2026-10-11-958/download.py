@@ -49,7 +49,7 @@ with (root/(role.upper()+'_DOWNLOAD.json')).open('x') as f:json.dump(out,f,inden
 print(json.dumps(out))
 
 logdata=download('https://api.github.com/repos/dolphilia/libx/actions/runs/'+str(run_id)+'/logs')
-logzip=pathlib.Path('/private/tmp/libx-gnu-sed-'+role+'-logs-953.zip');logzip.write_bytes(logdata)
+logzip=pathlib.Path('/private/tmp/libx-gnu-sed-'+role+'-logs-958.zip');logzip.write_bytes(logdata)
 with zipfile.ZipFile(logzip) as z:
  for name in z.namelist():
   if ('Deploy' in name or 'deploy' in name) and name.endswith('.txt'):
