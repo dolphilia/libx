@@ -1,0 +1,84 @@
+<div class="section-level-extent" id="History">
+
+<h3 class="section" id="Historical-references"><span>1.2 Historical references</span></h3>
+<a class="index-entry-id" id="index-history-of-m4"></a>
+<a class="index-entry-id" id="index-GNU-M4_002c-history-of"></a>
+<p>Macro languages were invented early in the history of computing.  In the
+1950s Alan Perlis suggested that the macro language be independent of the
+language being processed.  Techniques such as conditional and recursive
+macros, and using macros to define other macros, were described by Doug
+McIlroy of Bell Labs in “Macro Instruction Extensions of Compiler
+Languages”, <em class="emph">Communications of the ACM</em> 3, 4 (1960), 214–20,
+<a class="url" href="https://dl.acm.org/doi/10.1145/367177.367223">https://dl.acm.org/doi/10.1145/367177.367223</a>.
+</p>
+<p>An important precursor of <code class="code">m4</code> was GPM; see C. Strachey,
+“A general purpose macrogenerator”, <em class="emph">Computer Journal</em> 8, 3
+(1965), 225–41,
+<a class="url" href="https://academic.oup.com/comjnl/article/8/3/225/336044">https://academic.oup.com/comjnl/article/8/3/225/336044</a>.  GPM is
+also succinctly described in David Gries’s book <em class="emph">Compiler
+Construction for Digital Computers</em>, Wiley (1971).  Strachey was a
+brilliant programmer: GPM fit into 250 machine instructions!
+</p>
+<p>Inspired by GPM while visiting Strachey’s Lab in 1968, McIlroy wrote a
+model preprocessor in that fit into a page of Snobol 3 code, and McIlroy
+and Robert Morris developed a series of further models at Bell Labs.
+Andrew D. Hall followed up with M6, a general purpose macro processor
+used to port the Fortran source code of the Altran computer algebra
+system; see Hall’s “The M6 Macro Processor”, Computing Science
+Technical Report #2, Bell Labs (1972),
+<a class="url" href="http://cm.bell-labs.com/cm/cs/cstr/2.pdf">http://cm.bell-labs.com/cm/cs/cstr/2.pdf</a>.  M6’s source code
+consisted of about 600 Fortran statements.  Its name was the first of
+the <code class="code">m4</code> line.
+</p>
+<p>The Brian Kernighan and P.J. Plauger book <em class="emph">Software Tools</em>,
+Addison-Wesley (1976), describes and implements a Unix
+macro-processor language, which inspired Dennis Ritchie to write
+<code class="code">m3</code>, a macro processor for the AP-3 minicomputer.
+</p>
+<p>Kernighan and Ritchie then joined forces to develop the original
+<code class="code">m4</code>, described in “The M4 Macro Processor”, Bell Laboratories
+(1977), <a class="url" href="https://wolfram.schneider.org/bsd/7thEdManVol2/m4/m4.pdf">https://wolfram.schneider.org/bsd/7thEdManVol2/m4/m4.pdf</a>.
+It had only 21 builtin macros.
+</p>
+<p>While <code class="code">GPM</code> was more <em class="emph">pure</em>, <code class="code">m4</code> is meant to deal with
+the true intricacies of real life: macros can be recognized without
+being pre-announced, skipping whitespace or end-of-lines is easier,
+more constructs are builtin instead of derived, etc.
+</p>
+<p>Originally, the Kernighan and Plauger macro-processor, and then
+<code class="code">m3</code>, formed the engine for the Rational FORTRAN preprocessor,
+that is, the <code class="code">Ratfor</code> equivalent of <code class="code">cpp</code>.  Later, <code class="code">m4</code>
+was used as a front-end for <code class="code">Ratfor</code>, <code class="code">C</code> and <code class="code">Cobol</code>.
+</p>
+<p>René Seindal released his implementation of <code class="code">m4</code>, GNU
+<code class="code">m4</code>,
+in 1990, with the aim of removing the artificial limitations in many
+of the traditional <code class="code">m4</code> implementations, such as maximum line
+length, macro size, or number of macros.
+</p>
+<p>The late Professor A. Dain Samples described and implemented a further
+evolution in the form of <code class="code">M5</code>: “User’s Guide to the M5 Macro
+Language: 2nd edition”, Electronic Announcement on comp.compilers
+newsgroup (1992).
+</p>
+<p>François Pinard took over maintenance of GNU <code class="code">m4</code> in
+1992, until 1994 when he released GNU <code class="code">m4</code> 1.4, which was
+the stable release for 10 years.  It was at this time that GNU
+Autoconf decided to require GNU <code class="code">m4</code> as its underlying
+engine, since all other implementations of <code class="code">m4</code> had too many
+limitations.
+</p>
+<p>More recently, in 2004, Paul Eggert released 1.4.1 and 1.4.2 which
+addressed some long standing bugs in the venerable 1.4 release.  Then in
+2005, Gary V. Vaughan collected together the many patches to
+GNU <code class="code">m4</code> 1.4 that were floating around the net and
+released 1.4.3 and 1.4.4.  And in 2006, Eric Blake joined the team and
+prepared patches for the release of 1.4.5, with subsequent releases
+through intervening years, as recent as 1.4.20 in 2025.
+</p>
+<p>Meanwhile, development has continued on new features for <code class="code">m4</code>, such
+as dynamic module loading and additional builtins.  When complete,
+GNU <code class="code">m4</code> 2.0 will start a new series of releases.
+</p>
+<hr/>
+</div>

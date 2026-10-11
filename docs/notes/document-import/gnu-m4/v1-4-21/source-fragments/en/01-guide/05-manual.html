@@ -1,0 +1,77 @@
+<div class="section-level-extent" id="Manual">
+
+<h3 class="section" id="Using-this-manual"><span>1.4 Using this manual</span></h3>
+<a class="index-entry-id" id="index-examples_002c-understanding"></a>
+<p>This manual contains a number of examples of <code class="code">m4</code> input and output,
+and a simple notation is used to distinguish input, output and error
+messages from <code class="code">m4</code>.  Examples are set out from the normal text, and
+shown in a fixed width font, like this
+</p>
+<div class="example">
+<pre class="example-preformatted">This is an example of an example!
+</pre></div>
+<p>To distinguish input from output, all output from <code class="code">m4</code> is prefixed
+by the string ‘<samp class="samp">⇒</samp>’, and all error messages by the string
+‘<samp class="samp">error→</samp>’.  When showing how command line options affect matters,
+the command line is shown with a prompt ‘<samp class="samp">$ <kbd class="kbd">like this</kbd></samp>’,
+otherwise, you can assume that a simple <kbd class="kbd">m4</kbd> invocation will work.
+Thus:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ <kbd class="kbd">command line to invoke m4</kbd>
+Example of input line
+⇒Output line from m4
+error→and an error message
+</pre></div>
+<p>The sequence ‘<samp class="samp">^D</samp>’ in an example indicates the end of the input
+file.  The sequence ‘<samp class="samp"><kbd class="key">NL</kbd></samp>’ refers to the newline character.
+The majority of these examples are self-contained, and you can run them
+with similar results by invoking <kbd class="kbd">m4 -d</kbd>.  In fact, the testsuite
+that is bundled in the GNU M4 package consists of the examples
+in this document!  Some of the examples assume that your current
+directory is located where you unpacked the installation, so if you plan
+on following along, you may find it helpful to do this now:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ <kbd class="kbd">cd m4-1.4.21</kbd>
+</pre></div>
+<p>As each of the predefined macros in <code class="code">m4</code> is described, a prototype
+call of the macro will be shown, giving descriptive names to the
+arguments, e.g.,
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-example"><span class="category-def">Composite: </span><span><strong class="def-name">example</strong><var class="def-var-arguments">(<var class="var">string</var>, <span class="r">[</span><var class="var">count</var> = ‘<samp class="samp">1</samp>’<span class="r">]</span>,   <span class="r">[</span><var class="var">argument</var><span class="r">]</span>…)</var></span></dt>
+<dd><p>This is a sample prototype.  There is not really a macro named
+<code class="code">example</code>, but this documents that if there were, it would be a
+Composite macro, rather than a Builtin.  It requires at least one
+argument, <var class="var">string</var>.  Remember that in <code class="code">m4</code>, there must not be a
+space between the macro name and the opening parenthesis, unless it was
+intended to call the macro without any arguments.  The brackets around
+<var class="var">count</var> and <var class="var">argument</var> show that these arguments are optional.
+If <var class="var">count</var> is omitted, the macro behaves as if count were ‘<samp class="samp">1</samp>’,
+whereas if <var class="var">argument</var> is omitted, the macro behaves as if it were
+the empty string.  A blank argument is not the same as an omitted
+argument.  For example, ‘<samp class="samp">example(`a')</samp>’, ‘<samp class="samp">example(`a',`1')</samp>’,
+and ‘<samp class="samp">example(`a',`1',)</samp>’ would behave identically with <var class="var">count</var>
+set to ‘<samp class="samp">1</samp>’; while ‘<samp class="samp">example(`a',)</samp>’ and ‘<samp class="samp">example(`a',`')</samp>’
+would explicitly pass the empty string for <var class="var">count</var>.  The ellipses
+(‘<samp class="samp">…</samp>’) show that the macro processes additional arguments
+after <var class="var">argument</var>, rather than ignoring them.
+</p></dd></dl>
+<a class="index-entry-id" id="index-numbers"></a>
+<p>All macro arguments in <code class="code">m4</code> are strings, but some are given
+special interpretation, e.g., as numbers, file names, regular
+expressions, etc.  The documentation for each macro will state how the
+parameters are interpreted, and what happens if the argument cannot be
+parsed according to the desired interpretation.  Unless specified
+otherwise, a parameter specified to be a number is parsed as a decimal,
+even if the argument has leading zeros; and parsing the empty string as
+a number results in 0 rather than an error, although a warning will be
+issued.
+</p>
+<p>This document consistently writes and uses <em class="dfn">builtin</em>, without a
+hyphen, as if it were an English word.  This is how the <code class="code">builtin</code>
+primitive is spelled within <code class="code">m4</code>.
+</p>
+<hr/>
+</div>

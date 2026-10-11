@@ -1,0 +1,46 @@
+<div class="section-level-extent" id="Command-line-files">
+
+<h3 class="section" id="Specifying-input-files-on-the-command-line"><span>2.6 Specifying input files on the command line</span></h3>
+<a class="index-entry-id" id="index-command-line_002c-file-names-on-the"></a>
+<a class="index-entry-id" id="index-file-names_002c-on-the-command-line"></a>
+<p>The remaining arguments on the command line are taken to be input file
+names.  If no names are present, standard input is read.  A file
+name of <samp class="file">-</samp> is taken to mean standard input.  It is
+conventional, but not required, for input files to end in ‘<samp class="samp">.m4</samp>’.
+</p>
+<p>The input files are read in the sequence given.  Standard input can be
+read more than once, so the file name <samp class="file">-</samp> may appear multiple times
+on the command line; this makes a difference when input is from a
+terminal or other special file type.  It is an error if an input file
+ends in the middle of argument collection, a comment, or a quoted
+string.
+</p>
+<p>The options <samp class="option">--define</samp> (<samp class="option">-D</samp>), <samp class="option">--undefine</samp>
+(<samp class="option">-U</samp>), <samp class="option">--synclines</samp> (<samp class="option">-s</samp>), and <samp class="option">--trace</samp>
+(<samp class="option">-t</samp>) only take effect after processing input from any file
+names that occur earlier on the command line.  For example, assume the
+file <samp class="file">foo</samp> contains:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ <kbd class="kbd">cat foo</kbd>
+bar
+</pre></div>
+<p>The text ‘<samp class="samp">bar</samp>’ can then be redefined over multiple uses of
+<samp class="file">foo</samp>:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ <kbd class="kbd">m4 -Dbar=hello foo -Dbar=world foo</kbd>
+⇒hello
+⇒world
+</pre></div>
+<p>If none of the input files invoked <code class="code">m4exit</code> (see <a class="pxref" href="#M4exit">Exiting from <code class="code">m4</code></a>), the
+exit status of <code class="code">m4</code> will be 0 for success, 1 for general failure
+(such as problems with reading an input file), and 63 for version
+mismatch (see <a class="pxref" href="#Using-frozen-files">Using frozen files</a>).
+</p>
+<p>If you need to read a file whose name starts with a <samp class="file">-</samp>, you can
+specify it as ‘<samp class="samp">./-file</samp>’, or use <samp class="option">--</samp> to mark the end of
+options.
+</p>
+<hr/>
+</div>

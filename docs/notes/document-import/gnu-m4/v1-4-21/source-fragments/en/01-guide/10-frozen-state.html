@@ -1,0 +1,25 @@
+<div class="section-level-extent" id="Frozen-state">
+
+<h3 class="section" id="Command-line-options-for-frozen-state"><span>2.4 Command line options for frozen state</span></h3>
+<p>GNU <code class="code">m4</code> comes with a feature of freezing internal state
+(see <a class="pxref" href="#Frozen-files">Fast loading of frozen state</a>).  This can be used to speed up <code class="code">m4</code>
+execution when reusing a common initialization script.
+</p>
+<dl class="table">
+<dt><code class="code">-F <var class="var">file</var></code></dt>
+<dt><code class="code">--freeze-state=<var class="var">file</var></code></dt>
+<dd><p>Once execution is finished, write out the frozen state on the specified
+<var class="var">file</var>.  It is conventional, but not required, for <var class="var">file</var> to end
+in ‘<samp class="samp">.m4f</samp>’.
+</p>
+</dd>
+<dt><code class="code">-R <var class="var">file</var></code></dt>
+<dt><code class="code">--reload-state=<var class="var">file</var></code></dt>
+<dd><p>Before execution starts, recover the internal state from the specified
+frozen <var class="var">file</var>.  The options <samp class="option">-D</samp>, <samp class="option">-U</samp>, and
+<samp class="option">-t</samp> take effect after state is reloaded, but before the input
+files are read.
+</p></dd>
+</dl>
+<hr/>
+</div>
