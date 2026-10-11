@@ -1,57 +1,16 @@
 ---
 title: "Awesome AppImage"
-description: "A curated collection of resources and projects focused on AppImage."
+description: "AppImage discovery sites, execution, integration and update tools, application packaging tools, and developer resources."
 licenseSource: "github-AppImageCommunity-awesome-appimage-readme-md"
 ---
 
 # Awesome AppImage
 
-A curated collection of resources and projects focused on AppImage.
+Find AppImage catalogs and stores, tools for running, integrating and updating AppImages, and developer tools and resources for packaging applications written in different languages.
 
-## Contents
+The source describes [AppImage](https://appimage.org) as a community-based format for distributing applications to mainstream Linux distributions without a centralized store: one app, one file.
 
-- [AppImage discovery](#appimage-discovery)
-	- [App catalogs](#app-catalogs)
-	- [App stores](#app-stores)
-	- [App centers](#app-centers)
-	- [App scrapers](#app-scrapers)
-- [AppImage consumption tools](#appimage-consumption-tools)
-	- [Desktop integration](#desktop-integration)
-	- [Updaters](#updaters)
-	- [Sandboxes](#sandboxes)
-	- [Package managers](#package-managers)
-	- [Linux distributions](#linux-distributions)
-- [AppImage developer tools](#appimage-developer-tools)
-	- [Low-level tools](#low-level-tools)
-	- [Build systems](#build-systems)
-	- [Deployment tools for compiled applications](#deployment-tools-for-compiled-applications)
-	- [Deployment tools for Python applications](#deployment-tools-for-python-applications)
-	- [Deployment tools for Electron applications](#deployment-tools-for-electron-applications)
-	- [Deployment tools for Windows applications](#deployment-tools-for-windows-applications)
-	- [Deployment tools for Java applications](#deployment-tools-for-java-applications)
-	- [Deployment tools for .NET Core (Mono) applications](#deployment-tools-for-net-core-mono-applications)
-	- [Deployment tools for Flash applications](#deployment-tools-for-flash-applications)
-	- [Deployment tools for Rust applications](#deployment-tools-for-rust-applications)
-	- [Tools to convert from other package formats](#tools-to-convert-from-other-package-formats)
-	- [Metadata tools](#metadata-tools)
-	- [QC tools](#qc-tools)
-	- [Continuous integration](#continuous-integration)
-	- [Libraries](#libraries)
-	- [Templates](#templates)
-- [Resources](#resources)
-	- [Specs](#specs)
-	- [Documentation](#documentation)
-	- [Tutorials](#tutorials)
-	- [Articles](#articles)
-	- [Videos](#videos)
-	- [Books](#books)
-	- [Blogs](#blogs)
-	- [Courses](#courses)
-	- [Community](#community)
-	- [Miscellaneous](#miscellaneous)
-	- [Related](#related)
-	- [Other awesome lists](#other-awesome-lists)
-	- [Expired links](#expired-links)
+Features, supported environments, and experimental, deprecated or expired-link labels reflect this snapshot’s source. Current compatibility, maintenance and external-link availability have not been checked.
 
 ## AppImage discovery
 
@@ -94,7 +53,7 @@ A curated collection of resources and projects focused on AppImage.
 
 ### Updaters
 
-- [AppImageUpdate](https://github.com/AppImage/AppImageUpdate) - Official grapical application to update AppImages; command-line tool to update AppImages.
+- [AppImageUpdate](https://github.com/AppImage/AppImageUpdate) - Official graphical application to update AppImages; command-line tool to update AppImages.
 - [AppImageUpdater](https://github.com/antony-jr/AppImageUpdater) - Simple updater for humans written in C++ and Qt.
 - [appimage-update](https://github.com/AppImageCrafters/appimage-update) - AppImage Update implementation written in Go.
 - [appimage-updater](https://pypi.org/project/appimage-updater/) - AppImage Update implementation written in Python, distributed on PyPi.
@@ -117,7 +76,7 @@ __Note:__ The AppImage format is explicitly designed _not to need any package ma
 - [AppMan](https://github.com/ivan-hc/AppMan) - AppImage Manager that works like APT or Pacman.
 - [jewelrystore](https://rubygems.org/gems/jewelrystore) - Command line AppImage store made in ruby.
 - [ayy](https://github.com/lawl/ayy) - Package manager for AppImage. Single, static, dependency free binary. Written in Go.
-- [leap](https://github.com/lnxcz/leap) - Fast and simple AppImage manager. Written in Rust.
+- [leap](https://github.com/lnxcz/leap) - Simple AppImage manager. Written in Rust.
 - [Bread](https://github.com/pegvin/bread) - Download, update, remove, and run AppImages from GitHub on the command line, and integrate apps into the desktop.
 
 ### Linux distributions
@@ -159,7 +118,7 @@ Although the AppImage format was carefully designed not to need any special supp
 - [linuxdeploy-plugin-conda](https://github.com/linuxdeploy/linuxdeploy-plugin-conda) - Bundle Python into an AppDir using a source distribution, Conda, and linuxdeploy.
 - [Briefcase](https://briefcase.readthedocs.io/) - Convert Python project into a standalone native application, e.g., using AppImage.
 - [pycharm-appimage-support](https://gitlab.com/chezmurray/pycharm-appimage-support) - Deploy Python project as an AppImage directly from the PyCharm IDE.
-- [PyAppImage](https://github.com/srevinsaju/pyappimage) - Ultimately simple python-to-appimage bundler.
+- [PyAppImage](https://github.com/srevinsaju/pyappimage) - Simple Python-to-AppImage bundler.
 
 ### Deployment tools for Electron applications
 
@@ -171,7 +130,7 @@ Although the AppImage format was carefully designed not to need any special supp
 
 - [wine32-deploy](https://github.com/sudo-give-me-coffee/wine32-deploy) - Creates AppImages for 32-bit Windows applications that can run on 64-bit Linux systems without multilib installed.
 - [AppImage For WINE](https://github.com/Hackerl/Wine_Appimage) - WINE-based AppImages and LD_PRELOAD based patches to launch WINE from AppImages.
-- [ferion11/Wine_Appimage](https://github.com/ferion11/Wine_Appimage) - AppImage for WINE 32bits from PlayOnLinux, an run on no-multilib systems.
+- [ferion11/Wine_Appimage](https://github.com/ferion11/Wine_Appimage) - AppImage for WINE 32bits from PlayOnLinux, can run on no-multilib systems.
 - [GameImage](https://gitlab.com/formigoni/gameimage) - Is a way to package up games with either Wine or an Emulator into a portable AppImage that could be useful for the Steam Deck.
 
 ### Deployment tools for Java applications
@@ -246,7 +205,7 @@ Although the AppImage format was carefully designed not to need any special supp
 ### Specs
 
 - [AppImageSpec](https://github.com/AppImage/AppImageSpec) - Official specification for the AppImage format.
-- [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/) - Specification for the matadata used inside AppImages.
+- [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/) - Specification for the metadata used inside AppImages.
 
 ### Documentation
 
@@ -279,9 +238,7 @@ Although the AppImage format was carefully designed not to need any special supp
 
 - [Planet AppImage](https://appimage.gitlab.io/planet/) - Blog Aggregator covering all things AppImage.
 - [TheAssassin Blog](https://assassinate-you.net/tags/appimage/) - Blog covering AppImage related topics by TheAssassin.
-- [AppImage Crafters Blog](https://appimagecrafters.github.io/) - Blog about AppImage creation an usage by azubieta.
-
-### Courses
+- [AppImage Crafters Blog](https://appimagecrafters.github.io/) - Blog about AppImage creation and usage by azubieta.
 
 ### Community
 
@@ -294,7 +251,7 @@ Although the AppImage format was carefully designed not to need any special supp
 
 - [AppImage wiki](https://github.com/AppImage/AppImageKit/wiki) - Official AppImage wiki.
 - [AppImageZip](https://github.com/sagebind/appimagezip) - Experimental pure Rust implementation of the AppImage runtime that uses Zip as the backing file system image.
-- [help-wanted](https://github.com/search?q=user%3Aappimage+label%3Ahelp-wanted+state%3Aopen&type=Issues) - AppImage issues that the AppImage team would like your help with. A great way to get started contributing to the project.
+- [help-wanted](https://github.com/search?q=user%3Aappimage+label%3Ahelp-wanted+state%3Aopen&type=Issues) - AppImage issues that the AppImage team would like your help with.
 - [appdwarf](https://github.com/Phantop/appdwarf) - A tool to convert an AppDir or an existing AppImage file, either as a local file or from a URL, into a highly compressed portable image using dwarfs.
 
 ### Related
@@ -311,5 +268,5 @@ Although the AppImage format was carefully designed not to need any special supp
 - [App Outlet](https://app-outlet.github.io/) - Universal app store that works with AppImages, Flatpaks and Snaps.
 - [appimage2desktop](https://github.com/me1ting/appimage2desktop) - Creates a desktop file and an icon in the system for an AppImage, nothing else.
 - [AppImage-Integrator](https://github.com/w-j-r/AppImage-Integrator) - A simple program to integrate AppImages into the Linux desktop written in Qt6.
-- [Get AppImage](https://g.sreve/get-appimage/) - Collection of all AppImages in one website. Great search functionality.
+- [Get AppImage](https://g.sreve/get-appimage/) - Collection of all AppImages in one website. Search functionality.
 - [AppStream Generator](https://output.jsbin.com/qoqukof) - Very simple generator for AppStream MetaInfo files which application authors can use to add metadata (like descriptions, screenshots, links) to their AppImage.
