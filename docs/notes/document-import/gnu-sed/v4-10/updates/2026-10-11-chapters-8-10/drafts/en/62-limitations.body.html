@@ -1,0 +1,20 @@
+<div class="gnu-sed-original-content" id="Limitations">
+<h2 class="chapter" id="GNU-sed_0027s-Limitations-and-Non_002dlimitations"><span>8 GNU <code class="command">sed</code>’s Limitations and Non-limitations</span></h2>
+<a class="index-entry-id" id="index-GNU-extensions_002c-unlimited-line-length"></a>
+<a class="index-entry-id" id="index-Portability_002c-line-length-limitations"></a>
+<p>For those who want to write portable <code class="command">sed</code> scripts,
+be aware that some implementations have been known to
+limit line lengths (for the pattern and hold spaces)
+to be no more than 4000 bytes.
+The <small class="sc">POSIX</small> standard specifies that conforming <code class="command">sed</code>
+implementations shall support at least 8192 byte line lengths.
+GNU <code class="command">sed</code> has no built-in limit on line length;
+as long as it can <code class="code">malloc()</code> more (virtual) memory,
+you can feed or construct lines as long as you like.
+</p>
+<p>However, recursion is used to handle subpatterns and indefinite
+repetition.  This means that the available stack space may limit
+the size of the buffer that can be processed by certain patterns.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,448 @@
+{
+  "slug": "64-reporting-bugs",
+  "bodySHA256": "55a297d258974b8d2d56d7e4616fc53c4ab3d28a6eaf7d3c8bf645b7c6a24b7e",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧10 Reporting Bugs⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Reporting-Bugs-1\"><span>10 Reporting Bugs</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Email bug reports to ⟦0⟧bug-sed@gnu.org⟦1⟧. Also, please include the output of ‘⟦2⟧’ in the body of your report if at all possible.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"email\" href=\"mailto:bug-sed@gnu.org\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<samp class=\"samp\">sed --version</samp>"
+      },
+      "sourceHTML": "<p>Email bug reports to <a class=\"email\" href=\"mailto:bug-sed@gnu.org\">bug-sed@gnu.org</a>.\nAlso, please include the output of ‘<samp class=\"samp\">sed --version</samp>’ in the body\nof your report if at all possible.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Please do not send a bug report like this:",
+      "tokens": {},
+      "sourceHTML": "<p>Please do not send a bug report like this:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "If GNU ⟦0⟧ doesn’t configure your favorite package, take a few extra minutes to identify the specific problem and make a stand-alone test case. Unlike other programs such as C compilers, making such test cases for ⟦1⟧ is quite simple.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>If GNU <code class=\"command\">sed</code> doesn’t configure your favorite package, take a\nfew extra minutes to identify the specific problem and make a stand-alone\ntest case.  Unlike other programs such as C compilers, making such test\ncases for <code class=\"command\">sed</code> is quite simple.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "A stand-alone test case includes all the data necessary to perform the test, and the specific invocation of ⟦0⟧ that causes the problem. The smaller a stand-alone test case is, the better. A test case should not involve something as far removed from ⟦1⟧ as “try to configure frobme-1.3.4”. Yes, that is in principle enough information to look for the bug, but that is not a very practical prospect.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>A stand-alone test case includes all the data necessary to perform the\ntest, and the specific invocation of <code class=\"command\">sed</code> that causes the problem.\nThe smaller a stand-alone test case is, the better.  A test case should\nnot involve something as far removed from <code class=\"command\">sed</code> as “try to configure\nfrobme-1.3.4”.  Yes, that is in principle enough information to look\nfor the bug, but that is not a very practical prospect.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Here are a few commonly reported bugs that are not bugs.",
+      "tokens": {},
+      "sourceHTML": "<p>Here are a few commonly reported bugs that are not bugs.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Most versions of ⟦0⟧ exit without printing anything when the ⟦1⟧ command is issued on the last line of a file. GNU ⟦2⟧ prints pattern space before exiting unless of course the ⟦3⟧ command switch has been specified. This choice is by design.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">N</code>",
+        "⟦2⟧": "<code class=\"command\">sed</code>",
+        "⟦3⟧": "<code class=\"command\">-n</code>"
+      },
+      "sourceHTML": "<p>Most versions of <code class=\"command\">sed</code> exit without printing anything when\nthe <code class=\"command\">N</code> command is issued on the last line of a file.\nGNU <code class=\"command\">sed</code> prints pattern space before exiting unless of course\nthe <code class=\"command\">-n</code> command switch has been specified.  This choice is\nby design.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Default behavior (gnu extension, non-POSIX conforming):",
+      "tokens": {},
+      "sourceHTML": "<p>Default behavior (gnu extension, non-POSIX conforming):\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "To force POSIX-conforming behavior:",
+      "tokens": {},
+      "sourceHTML": "<p>To force POSIX-conforming behavior:\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "For example, the behavior of",
+      "tokens": {},
+      "sourceHTML": "<p>For example, the behavior of\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "would depend on whether foo has an even or an odd number of lines⟦0⟧⟦1⟧12⟦2⟧⟦3⟧. Or, when writing a script to read the next few lines following a pattern match, traditional implementations of ⟦4⟧ would force you to write something like",
+      "tokens": {
+        "⟦0⟧": "<a class=\"footnote\" href=\"#FOOT12\" id=\"DOCF12\">",
+        "⟦1⟧": "<sup>",
+        "⟦2⟧": "</sup>",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<code class=\"code\">sed</code>"
+      },
+      "sourceHTML": "<p>would depend on whether foo has an even or an odd number of\nlines<a class=\"footnote\" href=\"#FOOT12\" id=\"DOCF12\"><sup>12</sup></a>.  Or, when writing a script to read the\nnext few lines following a pattern match, traditional\nimplementations of <code class=\"code\">sed</code> would force you to write\nsomething like\n</p>"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "text": "instead of just",
+      "tokens": {},
+      "sourceHTML": "<p>instead of just\n</p>"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "text": "In any case, the simplest workaround is to use ⟦0⟧ in scripts that rely on the traditional behavior, or to set the ⟦1⟧ variable to a non-empty value.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">$d;N</code>",
+        "⟦1⟧": "<code class=\"code\">POSIXLY_CORRECT</code>"
+      },
+      "sourceHTML": "<p>In any case, the simplest workaround is to use <code class=\"code\">$d;N</code> in\nscripts that rely on the traditional behavior, or to set\nthe <code class=\"code\">POSIXLY_CORRECT</code> variable to a non-empty value.\n</p>"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "text": "⟦0⟧ uses the ⟦1⟧POSIX⟦2⟧ basic regular expression syntax. According to the standard, the meaning of some escape sequences is undefined in this syntax; notable in the case of ⟦3⟧ are ⟦4⟧, ⟦5⟧, ⟦6⟧, ⟦7⟧, ⟦8⟧, ⟦9⟧, ⟦10⟧, ⟦11⟧, ⟦12⟧, ⟦13⟧, and ⟦14⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<small class=\"sc\">",
+        "⟦2⟧": "</small>",
+        "⟦3⟧": "<code class=\"command\">sed</code>",
+        "⟦4⟧": "<code class=\"code\">\\|</code>",
+        "⟦5⟧": "<code class=\"code\">\\+</code>",
+        "⟦6⟧": "<code class=\"code\">\\?</code>",
+        "⟦7⟧": "<code class=\"code\">\\`</code>",
+        "⟦8⟧": "<code class=\"code\">\\'</code>",
+        "⟦9⟧": "<code class=\"code\">\\&lt;</code>",
+        "⟦10⟧": "<code class=\"code\">\\&gt;</code>",
+        "⟦11⟧": "<code class=\"code\">\\b</code>",
+        "⟦12⟧": "<code class=\"code\">\\B</code>",
+        "⟦13⟧": "<code class=\"code\">\\w</code>",
+        "⟦14⟧": "<code class=\"code\">\\W</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">sed</code> uses the <small class=\"sc\">POSIX</small> basic regular expression syntax.  According to\nthe standard, the meaning of some escape sequences is undefined in\nthis syntax;  notable in the case of <code class=\"command\">sed</code> are <code class=\"code\">\\|</code>,\n<code class=\"code\">\\+</code>, <code class=\"code\">\\?</code>, <code class=\"code\">\\`</code>, <code class=\"code\">\\'</code>, <code class=\"code\">\\&lt;</code>,\n<code class=\"code\">\\&gt;</code>, <code class=\"code\">\\b</code>, <code class=\"code\">\\B</code>, <code class=\"code\">\\w</code>, and <code class=\"code\">\\W</code>.\n</p>"
+    },
+    {
+      "index": 14,
+      "tag": "p",
+      "text": "As in all GNU programs that use ⟦0⟧POSIX⟦1⟧ basic regular expressions, ⟦2⟧ interprets these escape sequences as special characters. So, ⟦3⟧ matches one or more occurrences of ‘⟦4⟧’. ⟦5⟧ matches either ‘⟦6⟧’ or ‘⟦7⟧’.",
+      "tokens": {
+        "⟦0⟧": "<small class=\"sc\">",
+        "⟦1⟧": "</small>",
+        "⟦2⟧": "<code class=\"command\">sed</code>",
+        "⟦3⟧": "<code class=\"code\">x\\+</code>",
+        "⟦4⟧": "<samp class=\"samp\">x</samp>",
+        "⟦5⟧": "<code class=\"code\">abc\\|def</code>",
+        "⟦6⟧": "<samp class=\"samp\">abc</samp>",
+        "⟦7⟧": "<samp class=\"samp\">def</samp>"
+      },
+      "sourceHTML": "<p>As in all GNU programs that use <small class=\"sc\">POSIX</small> basic regular\nexpressions, <code class=\"command\">sed</code> interprets these escape sequences as special\ncharacters.  So, <code class=\"code\">x\\+</code> matches one or more occurrences of ‘<samp class=\"samp\">x</samp>’.\n<code class=\"code\">abc\\|def</code> matches either ‘<samp class=\"samp\">abc</samp>’ or ‘<samp class=\"samp\">def</samp>’.\n</p>"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "text": "This syntax may cause problems when running scripts written for other ⟦0⟧s. Some ⟦1⟧ programs have been written with the assumption that ⟦2⟧ and ⟦3⟧ match the literal characters ⟦4⟧ and ⟦5⟧. Such scripts must be modified by removing the spurious backslashes if they are to be used with modern implementations of ⟦6⟧, like GNU ⟦7⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>",
+        "⟦2⟧": "<code class=\"code\">\\|</code>",
+        "⟦3⟧": "<code class=\"code\">\\+</code>",
+        "⟦4⟧": "<code class=\"code\">|</code>",
+        "⟦5⟧": "<code class=\"code\">+</code>",
+        "⟦6⟧": "<code class=\"command\">sed</code>",
+        "⟦7⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>This syntax may cause problems when running scripts written for other\n<code class=\"command\">sed</code>s.  Some <code class=\"command\">sed</code> programs have been written with the\nassumption that <code class=\"code\">\\|</code> and <code class=\"code\">\\+</code> match the literal characters\n<code class=\"code\">|</code> and <code class=\"code\">+</code>.  Such scripts must be modified by removing the\nspurious backslashes if they are to be used with modern implementations\nof <code class=\"command\">sed</code>, like\nGNU <code class=\"command\">sed</code>.\n</p>"
+    },
+    {
+      "index": 16,
+      "tag": "p",
+      "text": "On the other hand, some scripts use s|abc\\|def||g to remove occurrences of ⟦0⟧either⟦1⟧ ⟦2⟧ or ⟦3⟧. While this worked until ⟦4⟧ 4.0.x, newer versions interpret this as removing the string ⟦5⟧. This is again undefined behavior according to POSIX, and this interpretation is arguably more robust: older ⟦6⟧s, for example, required that the regex matcher parsed ⟦7⟧ as ⟦8⟧ in the common case of escaping a slash, which is again undefined behavior; the new behavior avoids this, and this is good because the regex matcher is only partially under our control.",
+      "tokens": {
+        "⟦0⟧": "<em class=\"emph\">",
+        "⟦1⟧": "</em>",
+        "⟦2⟧": "<code class=\"code\">abc</code>",
+        "⟦3⟧": "<code class=\"code\">def</code>",
+        "⟦4⟧": "<code class=\"command\">sed</code>",
+        "⟦5⟧": "<code class=\"code\">abc|def</code>",
+        "⟦6⟧": "<code class=\"command\">sed</code>",
+        "⟦7⟧": "<code class=\"code\">\\/</code>",
+        "⟦8⟧": "<code class=\"code\">/</code>"
+      },
+      "sourceHTML": "<p>On the other hand, some scripts use s|abc\\|def||g to remove occurrences\nof <em class=\"emph\">either</em> <code class=\"code\">abc</code> or <code class=\"code\">def</code>.  While this worked until\n<code class=\"command\">sed</code> 4.0.x, newer versions interpret this as removing the\nstring <code class=\"code\">abc|def</code>.  This is again undefined behavior according to\nPOSIX, and this interpretation is arguably more robust: older\n<code class=\"command\">sed</code>s, for example, required that the regex matcher parsed\n<code class=\"code\">\\/</code> as <code class=\"code\">/</code> in the common case of escaping a slash, which is\nagain undefined behavior; the new behavior avoids this, and this is good\nbecause the regex matcher is only partially under our control.\n</p>"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "text": "In addition, this version of ⟦0⟧ supports several escape characters (some of which are multi-character) to insert non-printable characters in scripts (⟦1⟧, ⟦2⟧, ⟦3⟧, ⟦4⟧, ⟦5⟧, ⟦6⟧, ⟦7⟧, ⟦8⟧). These can cause similar problems with scripts written for other ⟦9⟧s.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">\\a</code>",
+        "⟦2⟧": "<code class=\"code\">\\c</code>",
+        "⟦3⟧": "<code class=\"code\">\\d</code>",
+        "⟦4⟧": "<code class=\"code\">\\o</code>",
+        "⟦5⟧": "<code class=\"code\">\\r</code>",
+        "⟦6⟧": "<code class=\"code\">\\t</code>",
+        "⟦7⟧": "<code class=\"code\">\\v</code>",
+        "⟦8⟧": "<code class=\"code\">\\x</code>",
+        "⟦9⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>In addition, this version of <code class=\"command\">sed</code> supports several escape characters\n(some of which are multi-character) to insert non-printable characters\nin scripts (<code class=\"code\">\\a</code>, <code class=\"code\">\\c</code>, <code class=\"code\">\\d</code>, <code class=\"code\">\\o</code>, <code class=\"code\">\\r</code>,\n<code class=\"code\">\\t</code>, <code class=\"code\">\\v</code>, <code class=\"code\">\\x</code>).  These can cause similar problems\nwith scripts written for other <code class=\"command\">sed</code>s.\n</p>"
+    },
+    {
+      "index": 18,
+      "tag": "p",
+      "text": "In short, ‘⟦0⟧’ will let you delete the contents of a read-only file, and in general the ⟦1⟧ option (see ⟦2⟧Invocation⟦3⟧) lets you clobber protected files. This is not a bug, but rather a consequence of how the Unix file system works.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">sed -i</samp>",
+        "⟦1⟧": "<samp class=\"option\">-i</samp>",
+        "⟦2⟧": "<a class=\"pxref\" href=\"#Invoking-sed\">",
+        "⟦3⟧": "</a>"
+      },
+      "sourceHTML": "<p>In short, ‘<samp class=\"samp\">sed -i</samp>’ will let you delete the contents of\na read-only file, and in general the <samp class=\"option\">-i</samp> option\n(see <a class=\"pxref\" href=\"#Invoking-sed\">Invocation</a>) lets you clobber\nprotected files.  This is not a bug, but rather a consequence\nof how the Unix file system works.\n</p>"
+    },
+    {
+      "index": 19,
+      "tag": "p",
+      "text": "The permissions on a file say what can happen to the data in that file, while the permissions on a directory say what can happen to the list of files in that directory. ‘⟦0⟧’ will not ever open for writing a file that is already on disk. Rather, it will work on a temporary file that is finally renamed to the original name: if you rename or delete files, you’re actually modifying the contents of the directory, so the operation depends on the permissions of the directory, not of the file. For this same reason, ⟦1⟧ does not let you use ⟦2⟧ on a writable file in a read-only directory, and will break hard or symbolic links when ⟦3⟧ is used on such a file.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">sed -i</samp>",
+        "⟦1⟧": "<code class=\"command\">sed</code>",
+        "⟦2⟧": "<samp class=\"option\">-i</samp>",
+        "⟦3⟧": "<samp class=\"option\">-i</samp>"
+      },
+      "sourceHTML": "<p>The permissions on a file say what can happen to the data\nin that file, while the permissions on a directory say what can\nhappen to the list of files in that directory.  ‘<samp class=\"samp\">sed -i</samp>’\nwill not ever open for writing  a file that is already on disk.\nRather, it will work on a temporary file that is finally renamed\nto the original name: if you rename or delete files, you’re actually\nmodifying the contents of the directory, so the operation depends on\nthe permissions of the directory, not of the file.  For this same\nreason, <code class=\"command\">sed</code> does not let you use <samp class=\"option\">-i</samp> on a writable file\nin a read-only directory, and will break hard or symbolic links when\n<samp class=\"option\">-i</samp> is used on such a file.\n</p>"
+    },
+    {
+      "index": 20,
+      "tag": "p",
+      "text": "There is no line 0. 0 is a special address that is only used to treat addresses like ⟦0⟧ as active when the script starts: if you write ⟦1⟧ and the first line includes the string ‘⟦2⟧’, then that match would be ignored because address ranges must span at least two lines (barring the end of the file); but what you probably wanted is to delete every line up to the first one including ‘⟦3⟧’, and this is obtained with ⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">0,/<var class=\"var\">RE</var>/</code>",
+        "⟦1⟧": "<code class=\"code\">1,/abc/d</code>",
+        "⟦2⟧": "<samp class=\"samp\">abc</samp>",
+        "⟦3⟧": "<samp class=\"samp\">abc</samp>",
+        "⟦4⟧": "<code class=\"code\">0,/abc/d</code>"
+      },
+      "sourceHTML": "<p>There is no line 0.  0 is a special address that is only used to treat\naddresses like <code class=\"code\">0,/<var class=\"var\">RE</var>/</code> as active when the script starts: if\nyou write <code class=\"code\">1,/abc/d</code> and the first line includes the string ‘<samp class=\"samp\">abc</samp>’,\nthen that match would be ignored because address ranges must span at least\ntwo lines (barring the end of the file); but what you probably wanted is\nto delete every line up to the first one including ‘<samp class=\"samp\">abc</samp>’, and this\nis obtained with <code class=\"code\">0,/abc/d</code>.\n</p>"
+    },
+    {
+      "index": 21,
+      "tag": "p",
+      "text": "You are encountering problems with locales. POSIX mandates that ⟦0⟧ uses the current locale’s collation order – in C parlance, that means using ⟦1⟧ instead of ⟦2⟧. Some locales have a case-insensitive collation order, others don’t.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">[a-z]</code>",
+        "⟦1⟧": "<code class=\"code\">strcoll(3)</code>",
+        "⟦2⟧": "<code class=\"code\">strcmp(3)</code>"
+      },
+      "sourceHTML": "<p>You are encountering problems with locales.  POSIX mandates that <code class=\"code\">[a-z]</code>\nuses the current locale’s collation order – in C parlance, that means using\n<code class=\"code\">strcoll(3)</code> instead of <code class=\"code\">strcmp(3)</code>.  Some locales have a\ncase-insensitive collation order, others don’t.\n</p>"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "text": "Another problem is that ⟦0⟧ tries to use collation symbols. This only happens if you are on the GNU system, using GNU libc’s regular expression matcher instead of compiling the one supplied with GNU sed. In a Danish locale, for example, the regular expression ⟦1⟧ matches the string ‘⟦2⟧’, because this is a single collating symbol that comes after ‘⟦3⟧’ and before ‘⟦4⟧’; ‘⟦5⟧’ behaves similarly in Spanish locales, or ‘⟦6⟧’ in Dutch locales.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">[a-z]</code>",
+        "⟦1⟧": "<code class=\"code\">^[a-z]$</code>",
+        "⟦2⟧": "<samp class=\"samp\">aa</samp>",
+        "⟦3⟧": "<samp class=\"samp\">a</samp>",
+        "⟦4⟧": "<samp class=\"samp\">b</samp>",
+        "⟦5⟧": "<samp class=\"samp\">ll</samp>",
+        "⟦6⟧": "<samp class=\"samp\">ij</samp>"
+      },
+      "sourceHTML": "<p>Another problem is that <code class=\"code\">[a-z]</code> tries to use collation symbols.\nThis only happens if you are on the GNU system, using\nGNU libc’s regular expression matcher instead of compiling the\none supplied with GNU sed.  In a Danish locale, for example,\nthe regular expression <code class=\"code\">^[a-z]$</code> matches the string ‘<samp class=\"samp\">aa</samp>’,\nbecause this is a single collating symbol that comes after ‘<samp class=\"samp\">a</samp>’\nand before ‘<samp class=\"samp\">b</samp>’; ‘<samp class=\"samp\">ll</samp>’ behaves similarly in Spanish\nlocales, or ‘<samp class=\"samp\">ij</samp>’ in Dutch locales.\n</p>"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "text": "To work around these problems, which may cause bugs in shell scripts, set the ⟦0⟧ and ⟦1⟧ environment variables to ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">LC_COLLATE</code>",
+        "⟦1⟧": "<code class=\"env\">LC_CTYPE</code>",
+        "⟦2⟧": "<samp class=\"samp\">C</samp>"
+      },
+      "sourceHTML": "<p>To work around these problems, which may cause bugs in shell scripts, set\nthe <code class=\"env\">LC_COLLATE</code> and <code class=\"env\">LC_CTYPE</code> environment variables to ‘<samp class=\"samp\">C</samp>’.\n</p>"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "text": "This happens if your input stream includes invalid multibyte sequences. ⟦0⟧POSIX⟦1⟧ mandates that such sequences are ⟦2⟧not⟦3⟧ matched by ‘⟦4⟧’, so that ‘⟦5⟧’ will not clear pattern space as you would expect. In fact, there is no way to clear sed’s buffers in the middle of the script in most multibyte locales (including UTF-8 locales). For this reason, GNU ⟦6⟧ provides a ⟦7⟧ command (for “zap”) as an extension.",
+      "tokens": {
+        "⟦0⟧": "<small class=\"sc\">",
+        "⟦1⟧": "</small>",
+        "⟦2⟧": "<em class=\"emph\">",
+        "⟦3⟧": "</em>",
+        "⟦4⟧": "<samp class=\"samp\">.</samp>",
+        "⟦5⟧": "<samp class=\"samp\">s/.*//</samp>",
+        "⟦6⟧": "<code class=\"command\">sed</code>",
+        "⟦7⟧": "<code class=\"code\">z</code>"
+      },
+      "sourceHTML": "<p>This happens if your input stream includes invalid multibyte\nsequences.  <small class=\"sc\">POSIX</small> mandates that such sequences\nare <em class=\"emph\">not</em> matched by ‘<samp class=\"samp\">.</samp>’, so that ‘<samp class=\"samp\">s/.*//</samp>’ will not clear\npattern space as you would expect.  In fact, there is no way to clear\nsed’s buffers in the middle of the script in most multibyte locales\n(including UTF-8 locales).  For this reason, GNU <code class=\"command\">sed</code> provides a <code class=\"code\">z</code>\ncommand (for “zap”) as an extension.\n</p>"
+    },
+    {
+      "index": 25,
+      "tag": "p",
+      "text": "To work around these problems, which may cause bugs in shell scripts, set the ⟦0⟧ and ⟦1⟧ environment variables to ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"env\">LC_COLLATE</code>",
+        "⟦1⟧": "<code class=\"env\">LC_CTYPE</code>",
+        "⟦2⟧": "<samp class=\"samp\">C</samp>"
+      },
+      "sourceHTML": "<p>To work around these problems, which may cause bugs in shell scripts, set\nthe <code class=\"env\">LC_COLLATE</code> and <code class=\"env\">LC_CTYPE</code> environment variables to ‘<samp class=\"samp\">C</samp>’.\n</p>"
+    },
+    {
+      "index": 26,
+      "tag": "h5",
+      "text": "⟦0⟧(12)⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<a href=\"#DOCF12\" id=\"FOOT12\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<h5 class=\"footnote-body-heading\"><a href=\"#DOCF12\" id=\"FOOT12\">(12)</a></h5>"
+    },
+    {
+      "index": 27,
+      "tag": "p",
+      "text": "which is the actual “bug” that prompted the change in behavior",
+      "tokens": {},
+      "sourceHTML": "<p>which is the actual “bug” that prompted the\nchange in behavior</p>"
+    },
+    {
+      "index": 28,
+      "tag": "dt",
+      "text": "⟦0⟧⟦1⟧ ⟦2⟧⟦3⟧⟦4⟧⟦5⟧ command on the last line⟦6⟧",
+      "tokens": {
+        "⟦0⟧": "<a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-N-command-on-the-last-line\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<a id=\"index-Portability_002c-N-command-on-the-last-line\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<span>",
+        "⟦5⟧": "<code class=\"code\">N</code>",
+        "⟦6⟧": "</span>"
+      },
+      "sourceHTML": "<dt><a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-N-command-on-the-last-line\"></a>\n<a id=\"index-Portability_002c-N-command-on-the-last-line\"></a><span><code class=\"code\">N</code> command on the last line</span></dt>"
+    },
+    {
+      "index": 29,
+      "tag": "dt",
+      "text": "⟦0⟧⟦1⟧ ⟦2⟧⟦3⟧⟦4⟧Regex syntax clashes (problems with backslashes)⟦5⟧",
+      "tokens": {
+        "⟦0⟧": "<a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-regex-syntax-clashes\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<a id=\"index-GNU-extensions_002c-to-basic-regular-expressions-5\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<span>",
+        "⟦5⟧": "</span>"
+      },
+      "sourceHTML": "<dt><a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-regex-syntax-clashes\"></a>\n<a id=\"index-GNU-extensions_002c-to-basic-regular-expressions-5\"></a><span>Regex syntax clashes (problems with backslashes)</span></dt>"
+    },
+    {
+      "index": 30,
+      "tag": "dt",
+      "text": "⟦0⟧⟦1⟧ ⟦2⟧⟦3⟧ ⟦4⟧⟦5⟧⟦6⟧⟦7⟧ clobbers read-only files⟦8⟧",
+      "tokens": {
+        "⟦0⟧": "<a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-in_002dplace-editing-1\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-in_002dplace-editing\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<a id=\"index-In_002dplace-editing\">",
+        "⟦5⟧": "</a>",
+        "⟦6⟧": "<span>",
+        "⟦7⟧": "<samp class=\"option\">-i</samp>",
+        "⟦8⟧": "</span>"
+      },
+      "sourceHTML": "<dt><a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-in_002dplace-editing-1\"></a>\n<a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-in_002dplace-editing\"></a>\n<a id=\"index-In_002dplace-editing\"></a><span><samp class=\"option\">-i</samp> clobbers read-only files</span></dt>"
+    },
+    {
+      "index": 31,
+      "tag": "dt",
+      "text": "⟦0⟧⟦1⟧ ⟦2⟧⟦3⟧ ⟦4⟧⟦5⟧⟦6⟧⟦7⟧ does not work (gives an error)⟦8⟧",
+      "tokens": {
+        "⟦0⟧": "<a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-0-address-1\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-0-address\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<a id=\"index-0-address\">",
+        "⟦5⟧": "</a>",
+        "⟦6⟧": "<span>",
+        "⟦7⟧": "<code class=\"code\">0a</code>",
+        "⟦8⟧": "</span>"
+      },
+      "sourceHTML": "<dt><a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-0-address-1\"></a>\n<a class=\"index-entry-id\" id=\"index-Non_002dbugs_002c-0-address\"></a>\n<a id=\"index-0-address\"></a><span><code class=\"code\">0a</code> does not work (gives an error)</span></dt>"
+    },
+    {
+      "index": 32,
+      "tag": "dt",
+      "text": "⟦0⟧⟦1⟧⟦2⟧⟦3⟧ is case insensitive⟦4⟧",
+      "tokens": {
+        "⟦0⟧": "<a id=\"index-Non_002dbugs_002c-localization_002drelated\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<span>",
+        "⟦3⟧": "<code class=\"code\">[a-z]</code>",
+        "⟦4⟧": "</span>"
+      },
+      "sourceHTML": "<dt><a id=\"index-Non_002dbugs_002c-localization_002drelated\"></a><span><code class=\"code\">[a-z]</code> is case insensitive</span></dt>"
+    },
+    {
+      "index": 33,
+      "tag": "dt",
+      "text": "⟦0⟧⟦1⟧ ⟦2⟧⟦3⟧ ⟦4⟧⟦5⟧⟦6⟧⟦7⟧ does not clear pattern space⟦8⟧",
+      "tokens": {
+        "⟦0⟧": "<a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-emptying-pattern-space-1\">",
+        "⟦1⟧": "</a>",
+        "⟦2⟧": "<a class=\"index-entry-id\" id=\"index-Emptying-pattern-space-1\">",
+        "⟦3⟧": "</a>",
+        "⟦4⟧": "<a id=\"index-Non_002dbugs_002c-localization_002drelated-1\">",
+        "⟦5⟧": "</a>",
+        "⟦6⟧": "<span>",
+        "⟦7⟧": "<code class=\"code\">s/.*//</code>",
+        "⟦8⟧": "</span>"
+      },
+      "sourceHTML": "<dt><a class=\"index-entry-id\" id=\"index-GNU-extensions_002c-emptying-pattern-space-1\"></a>\n<a class=\"index-entry-id\" id=\"index-Emptying-pattern-space-1\"></a>\n<a id=\"index-Non_002dbugs_002c-localization_002drelated-1\"></a><span><code class=\"code\">s/.*//</code> does not clear pattern space</span></dt>"
+    },
+    {
+      "index": 34,
+      "tag": "i",
+      "text": "⟦0⟧⟦1⟧while building frobme-1.3.4⟦2⟧⟦3⟧",
+      "tokens": {
+        "⟦0⟧": "<i class=\"i\">",
+        "⟦1⟧": "<span class=\"r\">",
+        "⟦2⟧": "</span>",
+        "⟦3⟧": "</i>"
+      },
+      "sourceHTML": "<i class=\"i\"><i class=\"i\"><span class=\"r\">while building frobme-1.3.4</span></i></i>"
+    },
+    {
+      "index": 35,
+      "tag": "i",
+      "text": "⟦0⟧while building frobme-1.3.4⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span class=\"r\">",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<i class=\"i\"><span class=\"r\">while building frobme-1.3.4</span></i>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

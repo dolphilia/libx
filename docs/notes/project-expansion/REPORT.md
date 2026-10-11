@@ -3,7 +3,7 @@
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
 - 検証済み: 44件 / 今回の公開済み: 43件 / 公開待ち: 1件
-- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -57,6 +57,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-sed / v4-10 / update | verified | verified | 952:GNU sed第5章14英日/179単位・65定本・816原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜5章32英日を提供。次は着手済み953 GNU sed第6章7英日/56単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 952:GNU sed第5章14英日/179単位・65定本・816原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜5章32英日を提供。次は着手済み953 GNU sed第6章7英日/56単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
 | gnu-sed / v4-10 / update | verified | verified | GNU sed第6章7英日/56単位・79定本・900原稿キットの統合Pages公開後確認完了。第1〜6章39英日と原英語GFDLを提供。次は現行台帳の重大不具合・未完了工程を確認し、既存GNU sed第7章22節/102本文単位の翻訳済み・草稿全文レビュー済み本文を79定本基準で正式化し、出典/GFDL/context/リンク/sourcekit再現/ビルドを検証する。MsgPack許諾保留は復帰条件まで維持する。 GNU sed第6章7英日/56単位・79定本・900原稿キットの統合Pages公開後確認完了。第1〜6章39英日と原英語GFDLを提供。次は現行台帳の重大不具合・未完了工程を確認し、既存GNU sed第7章22節/102本文単位の翻訳済み・草稿全文レビュー済み本文を79定本基準で正式化し、出典/GFDL/context/リンク/sourcekit再現/ビルドを検証する。MsgPack許諾保留は復帰条件まで維持する。 |
 | gnu-sed / v4-10 / update | verified | verified | GNU sed第7章は22英日・123定本・1138原稿キット/独立25工程/597pre/10982参照/283HTTP検証済み。公開commit3ca14a79f（GNU原稿96+CI一覧取得修正1）をpush済み。Pages Preview run38122790596の完了・失敗箇所を確認し、成功ならdownload.py→artifact123/kit1138→全本文/pre/リンク→CSS/既存成果物比較→HTTP/404/代表画面、record-preview→ci.mjs production（expected976e3bb）→CAS/公開後確認→記録保存へ。最初のrun38122343355はENOBUFSで配信前失敗、1050204bytes全量取得修正済み。未完了検査を合格扱いしない。 GNU sed第7章は22英日・123定本・1138原稿キット/独立25工程/597pre/10982参照/283HTTP検証済み。公開commit3ca14a79f（GNU原稿96+CI一覧取得修正1）をpush済み。Pages Preview run38122790596の完了・失敗箇所を確認し、成功ならdownload.py→artifact123/kit1138→全本文/pre/リンク→CSS/既存成果物比較→HTTP/404/代表画面、record-preview→ci.mjs production（expected976e3bb）→CAS/公開後確認→記録保存へ。最初のrun38122343355はENOBUFSで配信前失敗、1050204bytes全量取得修正済み。未完了検査を合格扱いしない。 |
+| gnu-sed / v4-10 / update | source-locked | source-locked | GNU sed第8〜10章3節/47抽出単位（45本文+原文pre内の入れ子2単位）の日本語草稿と別パス全文意味レビューを保存。6preを原文保持、最初の例の説明・エラーに隣接訳1件、脚注12全文訳。正式原稿・出典/GFDL/履歴/context・リンク・sourcekit再現・ビルド/公開は未実施、配信除外。第7章Preview38122790596/Production公開後確認を優先し、完了後123定本を基準に正式化する。 GNU sed第8〜10章3節/47抽出単位（45本文+原文pre内の入れ子2単位）の日本語草稿と別パス全文意味レビューを保存。6preを原文保持、最初の例の説明・エラーに隣接訳1件、脚注12全文訳。正式原稿・出典/GFDL/履歴/context・リンク・sourcekit再現・ビルド/公開は未実施、配信除外。第7章Preview38122790596/Production公開後確認を優先し、完了後123定本を基準に正式化する。 |
 
 ## 登録済みの既存文書
 

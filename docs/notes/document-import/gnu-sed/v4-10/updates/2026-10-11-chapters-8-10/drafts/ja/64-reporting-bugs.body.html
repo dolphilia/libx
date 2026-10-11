@@ -1,0 +1,74 @@
+<div class="gnu-sed-original-content" id="Reporting-Bugs">
+<h2 class="chapter" id="Reporting-Bugs-1"><span>10 バグの報告</span></h2>
+<a class="index-entry-id" id="index-Bugs_002c-reporting"></a>
+<p>バグ報告は<a class="email" href="mailto:bug-sed@gnu.org">bug-sed@gnu.org</a>へメールで送ってください。また、可能であれば、報告の本文に「<samp class="samp">sed --version</samp>」の出力を含めてください。</p>
+<p>次のようなバグ報告は送らないでください。</p>
+<div class="example">
+<pre class="example-preformatted"><i class="i"><i class="i"><span class="r">while building frobme-1.3.4</span></i></i>
+$ configure
+error→ sed: file sedscr line 1: Unknown option to 's'
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>frobme-1.3.4のビルド中にconfigureを実行したところ、「sed: ファイルsedscrの1行目: sに対する不明なオプション」というエラーが出た、という報告例です。</p></div></div>
+<p>GNU <code class="command">sed</code>で使いたいパッケージをconfigureできない場合は、少し時間をかけて具体的な問題を特定し、単独で実行できるテストケースを作ってください。Cコンパイラーなどのプログラムとは異なり、<code class="command">sed</code>のこうしたテストケースを作るのはとても簡単です。</p>
+<p>単独で実行できるテストケースには、テストに必要なすべてのデータと、問題を起こす具体的な<code class="command">sed</code>の呼び出し方を含めます。テストケースは小さいほどよいものです。「frobme-1.3.4をconfigureしてみてください」のように、<code class="command">sed</code>から大きく離れたものを持ち込むべきではありません。確かに、原理的にはそれでもバグを探すための情報は足りますが、実際に調査するうえではあまり現実的ではありません。</p>
+<p>以下は、よく報告されますがバグではないものです。</p>
+<dl class="table">
+<dd><a class="anchor" id="N_005fcommand_005flast_005fline"></a></dd>
+<dt><a class="index-entry-id" id="index-Non_002dbugs_002c-N-command-on-the-last-line"></a> <a id="index-Portability_002c-N-command-on-the-last-line"></a><span>最終行の<code class="code">N</code>コマンド</span></dt>
+<dd>
+<p>ほとんどの版の<code class="command">sed</code>は、ファイルの最終行で<code class="command">N</code>コマンドを実行すると、何も出力せずに終了します。GNU <code class="command">sed</code>は、もちろん<code class="command">-n</code>オプションが指定されていないかぎり、終了前にパターンスペースを出力します。これは意図した設計です。</p>
+<p>既定の動作（GNU拡張で、POSIXには準拠しません）:</p><div class="example">
+<pre class="example-preformatted">$ seq 3 | sed N
+1
+2
+3
+</pre></div>
+<p>POSIXに準拠した動作にするには、次のようにします。</p><div class="example">
+<pre class="example-preformatted">$ seq 3 | sed --posix N
+1
+2
+</pre></div>
+<p>たとえば、次のコマンドの動作は、</p><div class="example">
+<pre class="example-preformatted">sed N foo bar
+</pre></div>
+<p>fooの行数が偶数か奇数かによって変わります<a class="footnote" href="#FOOT12" id="DOCF12"><sup>12</sup></a>。また、パターンにマッチした後の数行を読み込むスクリプトを書く場合、従来の<code class="code">sed</code>の実装では、次のように書かなければなりません。</p><div class="example">
+<pre class="example-preformatted">/foo/{ $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N }
+</pre></div>
+<p>次のように書くだけでは済みません。</p><div class="example">
+<pre class="example-preformatted">/foo/{ N;N;N;N;N;N;N;N;N; }
+</pre></div>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT-behavior_002c-N-command"></a>
+<p>いずれの場合も、最も簡単な回避策は、従来の動作に依存するスクリプトで<code class="code">$d;N</code>を使うか、<code class="code">POSIXLY_CORRECT</code>変数に空でない値を設定することです。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Non_002dbugs_002c-regex-syntax-clashes"></a> <a id="index-GNU-extensions_002c-to-basic-regular-expressions-5"></a><span>正規表現の構文の衝突（バックスラッシュに関する問題）</span></dt>
+<dd><p><code class="command">sed</code>は<small class="sc">POSIX</small>の基本正規表現の構文を使います。規格によると、この構文では一部のエスケープシーケンスの意味は未定義です。<code class="command">sed</code>で特に関係するのは、<code class="code">\|</code>、<code class="code">\+</code>、<code class="code">\?</code>、<code class="code">\`</code>、<code class="code">\'</code>、<code class="code">\&lt;</code>、<code class="code">\&gt;</code>、<code class="code">\b</code>、<code class="code">\B</code>、<code class="code">\w</code>、<code class="code">\W</code>です。</p>
+<p><small class="sc">POSIX</small>の基本正規表現を使う他のGNUプログラムと同様に、<code class="command">sed</code>はこれらのエスケープシーケンスを特殊文字として解釈します。そのため、<code class="code">x\+</code>は「<samp class="samp">x</samp>」の1回以上の出現にマッチします。<code class="code">abc\|def</code>は「<samp class="samp">abc</samp>」または「<samp class="samp">def</samp>」にマッチします。</p>
+<p>この構文は、他の<code class="command">sed</code>向けに書かれたスクリプトを実行する際に問題となることがあります。<code class="command">sed</code>のプログラムの中には、<code class="code">\|</code>と<code class="code">\+</code>が文字そのものの<code class="code">|</code>と<code class="code">+</code>にマッチすると仮定して書かれたものがあります。こうしたスクリプトをGNU <code class="command">sed</code>などの現代的な<code class="command">sed</code>の実装で使うには、余分なバックスラッシュを取り除く修正が必要です。</p>
+<p>一方、s|abc\|def||gを使って、<code class="code">abc</code>と<code class="code">def</code>の<em class="emph">どちらか</em>の出現を取り除くスクリプトもあります。これは<code class="command">sed</code> 4.0.xまでは動作しましたが、新しい版では文字列<code class="code">abc|def</code>を取り除くものとして解釈します。これもPOSIXでは未定義の動作であり、この解釈の方が堅牢だと考える余地があります。たとえば、以前の<code class="command">sed</code>では、スラッシュをエスケープするという一般的な場合に、正規表現のマッチャーが<code class="code">\/</code>を<code class="code">/</code>として解析する必要がありましたが、これも未定義の動作です。新しい動作ではそれを避けられます。正規表現のマッチャーを私たちが制御できるのは一部だけなので、これはよいことです。</p>
+<a class="index-entry-id" id="index-GNU-extensions_002c-special-escapes-1"></a>
+<p>さらに、この版の<code class="command">sed</code>は、スクリプトに表示できない文字を挿入するための複数のエスケープ文字をサポートしています（複数文字からなるものもあります）。<code class="code">\a</code>、<code class="code">\c</code>、<code class="code">\d</code>、<code class="code">\o</code>、<code class="code">\r</code>、<code class="code">\t</code>、<code class="code">\v</code>、<code class="code">\x</code>が該当します。これらは、他の<code class="command">sed</code>向けに書かれたスクリプトで同様の問題を起こすことがあります。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-in_002dplace-editing-1"></a> <a class="index-entry-id" id="index-Non_002dbugs_002c-in_002dplace-editing"></a> <a id="index-In_002dplace-editing"></a><span><samp class="option">-i</samp>が読み取り専用ファイルを上書きする</span></dt>
+<dd>
+<p>要するに、「<samp class="samp">sed -i</samp>」を使うと読み取り専用ファイルの内容を削除でき、一般に<samp class="option">-i</samp>オプション（<a class="pxref" href="#Invoking-sed">sedの実行</a>を参照）では保護されたファイルを上書きできます。これはバグではなく、Unixファイルシステムの仕組みによるものです。</p>
+<p>ファイルのアクセス許可は、そのファイルのデータに対してできる操作を定めます。一方、ディレクトリのアクセス許可は、その中にあるファイルの一覧に対してできる操作を定めます。「<samp class="samp">sed -i</samp>」は、ディスク上にある既存のファイルを書き込み用に開くことは決してありません。代わりに一時ファイルを操作し、最後に元の名前へ変更します。ファイルの名前を変更したり削除したりすることは、実際にはディレクトリの内容を変更することなので、その操作はファイルではなくディレクトリのアクセス許可に依存します。同じ理由で、<code class="command">sed</code>は、読み取り専用ディレクトリにある書き込み可能なファイルに<samp class="option">-i</samp>を使うことを認めず、そのようなファイルに<samp class="option">-i</samp>を使うとハードリンクやシンボリックリンクが切れます。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-0-address-1"></a> <a class="index-entry-id" id="index-Non_002dbugs_002c-0-address"></a> <a id="index-0-address"></a><span><code class="code">0a</code>が動作しない（エラーになる）</span></dt>
+<dd>
+<p>0行目は存在しません。0は特別なアドレスで、<code class="code">0,/<var class="var">RE</var>/</code>のようなアドレスをスクリプトの開始時から有効として扱うためにだけ使います。<code class="code">1,/abc/d</code>と書いて最初の行に文字列「<samp class="samp">abc</samp>」が含まれている場合、そのマッチは無視されます。アドレス範囲は少なくとも2行にわたる必要があるためです（ファイルの終わりは例外です）。しかし、おそらく意図したのは、最初に「<samp class="samp">abc</samp>」を含む行までのすべての行を削除することでしょう。それには<code class="code">0,/abc/d</code>を使います。</p>
+</dd>
+<dt><a id="index-Non_002dbugs_002c-localization_002drelated"></a><span><code class="code">[a-z]</code>が大文字と小文字を区別しない</span></dt>
+<dd>
+<p>これはロケールに関する問題です。POSIXは、<code class="code">[a-z]</code>が現在のロケールの照合順序を使うことを要求しています。Cの言葉でいえば、<code class="code">strcmp(3)</code>ではなく<code class="code">strcoll(3)</code>を使うということです。大文字と小文字を区別しない照合順序を持つロケールもあれば、そうでないものもあります。</p>
+<p>別の問題として、<code class="code">[a-z]</code>が照合要素を使おうとすることがあります。これはGNUシステム上で、GNU sedに付属するものをコンパイルする代わりに、GNU libcの正規表現マッチャーを使う場合にだけ起こります。たとえばデンマーク語ロケールでは、正規表現<code class="code">^[a-z]$</code>は文字列「<samp class="samp">aa</samp>」にマッチします。これは「<samp class="samp">a</samp>」の後、「<samp class="samp">b</samp>」の前に位置する単一の照合要素だからです。スペイン語ロケールの「<samp class="samp">ll</samp>」やオランダ語ロケールの「<samp class="samp">ij</samp>」でも同様の動作になります。</p>
+<p>シェルスクリプトのバグにつながることがあるこれらの問題を回避するには、環境変数<code class="env">LC_COLLATE</code>と<code class="env">LC_CTYPE</code>を「<samp class="samp">C</samp>」に設定してください。</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-emptying-pattern-space-1"></a> <a class="index-entry-id" id="index-Emptying-pattern-space-1"></a> <a id="index-Non_002dbugs_002c-localization_002drelated-1"></a><span><code class="code">s/.*//</code>でパターンスペースが空にならない</span></dt>
+<dd>
+<p>これは、入力ストリームに不正なマルチバイトシーケンスが含まれる場合に起こります。<small class="sc">POSIX</small>は、そのようなシーケンスが「<samp class="samp">.</samp>」にマッチ<em class="emph">しない</em>ことを要求しています。そのため、「<samp class="samp">s/.*//</samp>」で期待どおりにパターンスペースが空になりません。実際、ほとんどのマルチバイトロケール（UTF-8ロケールを含みます）では、スクリプトの途中でsedのバッファーを空にする方法はありません。このため、GNU <code class="command">sed</code>は拡張として<code class="code">z</code>（“zap”）コマンドを提供しています。</p>
+<p>シェルスクリプトのバグにつながることがあるこれらの問題を回避するには、環境変数<code class="env">LC_COLLATE</code>と<code class="env">LC_CTYPE</code>を「<samp class="samp">C</samp>」に設定してください。</p></dd>
+</dl>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF12" id="FOOT12">(12)</a></h5>
+<p>これが、動作の変更を促した実際の「バグ」です。</p>
+</div></div>
+
