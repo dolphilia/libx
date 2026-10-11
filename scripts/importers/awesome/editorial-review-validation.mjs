@@ -35,9 +35,9 @@ export function validatedAnchorAliasUnits(aliases, analysis, markdown, lang) {
       alias.reason &&
       alias.evidence &&
       typeof alias.id === 'string' &&
-      // 絵文字付き旧見出しのslugに残る先頭/末尾VS16とハイフンを許可する。
+      // 絵文字付き旧見出しのslugに残るVS16は、端またはハイフン間だけ許可する。
       // 空要素・見出し内の位置・証拠の検査は通常の別名と同じく維持する。
-      /^(?:\uFE0F-)?[\p{L}\p{N}_-]+(?:-\uFE0F)?$/u.test(alias.id) &&
+      /^(?:\uFE0F-)?[\p{L}\p{N}_-]+(?:-\uFE0F-[\p{L}\p{N}_-]+)*(?:-\uFE0F)?$/u.test(alias.id) &&
       alias.units?.length === 2 &&
       open?.type === 'html' &&
       close?.type === 'html' &&

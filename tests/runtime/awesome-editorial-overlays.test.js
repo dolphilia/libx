@@ -63,12 +63,17 @@ test('互換アンカーの構造例外は根拠のある空の見出し内別�
   );
 });
 
-test('旧絵文字slugの端のVS16はハイフン付きの空アンカーだけを許す', () => {
+test('旧絵文字slugのVS16は端またはハイフン間の空アンカーだけを許す', () => {
   for (const [id, accepted] of [
     ['\uFE0F-tools', true],
     ['\uFE0F-middlewares', true],
     ['fixed-wing--planes-\uFE0F', true],
     ['flight-control-\uFE0F', true],
+    ['\uFE0F-空調-\uFE0F-climate', true],
+    ['\uFE0F-地図位置情報-\uFE0F-mapslocation', true],
+    ['空調-\uFE0F-climate', true],
+    ['空調-\uFE0F\uFE0F-climate', false],
+    ['空調\uFE0F-climate', false],
     ['tools\uFE0F', false],
     ['tools-\uFE0F\uFE0F', false],
     ['-tools', true],
