@@ -16,7 +16,7 @@ with zipfile.ZipFile(source) as z:
  c=json.loads(z.read('SOURCE_COMPONENTS.json'));assert set(z.namelist())=={x['path'] for x in c['files']}|{'SOURCE_COMPONENTS.json'};assert len(z.namelist())==654
  for x in c['files']:assert hashlib.sha256(z.read(x['path'])).hexdigest()==x['sha256']
  assert not any(n.endswith('/source.zip') for n in z.namelist())
-out={'status':'passed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':sha,'files':len(m['files']),'allManifestFilesExact':True,'documents':37,'EnglishPages':19,'JapaneseGuides':18,'EnglishOnlyReferences':1,'gnuTarDeployedFiles':len([x for x in m['files'] if x['path'].startswith('docs/gnu-m4/')]),'preferredSourcesExact':preferred,'sourceOfferMembers':654,'sourceOfferSHA256':h(source)}
+out={'status':'passed','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':sha,'files':len(m['files']),'allManifestFilesExact':True,'documents':37,'EnglishPages':19,'JapaneseGuides':18,'EnglishOnlyReferences':1,'gnuM4DeployedFiles':len([x for x in m['files'] if x['path'].startswith('docs/gnu-m4/')]),'preferredSourcesExact':preferred,'sourceOfferMembers':654,'sourceOfferSHA256':h(source)}
 if role=='production':
  S=Path('/private/tmp/libx-gnu-m4-production-state-976');B=Path('/private/tmp/libx-gnu-m4-production-before-976');b=json.loads((S/'before.json').read_text());p=json.loads((S/'prepublish.json').read_text());a=json.loads((S/'after.json').read_text())
  assert b==json.loads((B/'before.json').read_text());assert b['deployment']['commit']=='32cbf39324f24ac653c25902315b25b72f30bf9d';assert b['deployment']==p['deployment'];assert a['deployment']['commit']==sha;assert a['deployment']['id']!=b['deployment']['id'];assert 'libx.dev' in a['domains']
