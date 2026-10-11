@@ -1,0 +1,225 @@
+{
+  "page": "01-guide/01-introduction.md",
+  "sourceSHA256": "e64ee91bc8dda26ecd7a4ddab32a132a0ca64e35d5d10377f927ed54b478dcf7",
+  "translationSHA256": "ef700a7ecdfb1e0f5856b928ec19011a10f05dfb14c8032b1a1a78a936a05bb9",
+  "status": "draft-not-reviewed",
+  "units": [
+    {
+      "index": 0,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "patch - apply a diff file to an original",
+      "translatedHTML": "patch — オリジナルファイルに差分ファイルを適用する",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "<b>patch</b> [<i>options</i>] [<i>originalfile</i>\n    [<i>patchfile</i>]]",
+      "translatedHTML": null,
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "but usually just",
+      "translatedHTML": "通常は、次の簡単な形式で使用します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "<b>patch -p</b><i>num</i> <b>&lt;</b><i>patchfile</i>",
+      "translatedHTML": null,
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "<b>patch</b> takes a patch file <i>patchfile</i> containing a\n    difference listing produced by the <b>diff</b> program and applies those\n    differences to one or more original files, producing patched versions.\n    Normally the patched versions are put in place of the originals. Backups can\n    be made; see the <b>-b</b> or <b>--backup</b> option. The names of the files\n    to be patched are usually taken from the patch file, but if there's just one\n    file to be patched it can be specified on the command line as\n    <i>originalfile</i>.",
+      "translatedHTML": "<code>patch</code>は、<code>diff</code>プログラムが生成した差分リストを含むパッチファイル<var>patchfile</var>を受け取り、その差分を1個または複数の元のファイルに適用して、変更後のファイルを生成します。通常、変更後のファイルは元のファイルと置き換わります。バックアップも作成できます。<code>-b</code>または<code>--backup</code>オプションを参照してください。変更するファイルの名前は通常パッチファイルから取得しますが、変更するファイルが1個だけなら、コマンドラインで<var>originalfile</var>として指定できます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Upon startup, patch attempts to determine the type of the diff\n    listing, unless overruled by a <b>-c</b> (<b>--context</b>), <b>-e</b>\n    (<b>--ed</b>), <b>-n</b> (<b>--normal</b>), or <b>-u</b> (<b>--unified</b>)\n    option. Context diffs (old-style, new-style, and unified) and normal diffs\n    are applied by the <b>patch</b> program itself, while <b>ed</b> diffs are\n    simply fed to the <b>ed</b>(1) editor via a pipe.",
+      "translatedHTML": "起動すると、<code>patch</code>は差分リストの形式を判別しようとします。ただし、<code>-c</code>（<code>--context</code>）、<code>-e</code>（<code>--ed</code>）、<code>-n</code>（<code>--normal</code>）、<code>-u</code>（<code>--unified</code>）のいずれかで形式を指定した場合は、その指定を優先します。コンテキスト差分（旧形式、新形式、unified形式）と通常形式の差分は<code>patch</code>自身が適用します。ed形式の差分は、パイプで<code>ed(1)</code>エディターに渡すだけです。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "<b>patch</b> tries to skip any leading garbage, apply the diff,\n    and then skip any trailing garbage. Thus you could feed an email message\n    containing a diff listing to <b>patch</b>, and it should work. If the entire\n    diff is indented by a consistent amount, if lines end in CRLF, or if a diff\n    is encapsulated one or more times by prepending \"<b>- </b>\" to\n    lines starting with \"<b>-</b>\" as specified by Internet RFC 934,\n    this is taken into account. After removing indenting or encapsulation, lines\n    beginning with <b>#</b> are ignored, as they are considered to be\n  comments.",
+      "translatedHTML": "<code>patch</code>は、差分の前にある不要なテキストを読み飛ばしてから差分を適用し、その後にある不要なテキストも読み飛ばそうとします。そのため、差分リストを含むメールのメッセージをそのまま<code>patch</code>に渡しても動作するはずです。差分全体が一定量インデントされている場合、行がCRLFで終わる場合、またはInternet RFC 934の規定に従い、<code>-</code>で始まる行に<code>- </code>を1回以上付けて差分がカプセル化されている場合は、それらを考慮します。インデントやカプセル化を取り除いた後、<code>#</code>で始まる行はコメントとみなして無視します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "With context diffs, and to a lesser extent with normal diffs,\n    <b>patch</b> can detect when the line numbers mentioned in the patch are\n    incorrect, and attempts to find the correct place to apply each hunk of the\n    patch. As a first guess, it takes the line number mentioned for the hunk,\n    plus or minus any offset used in applying the previous hunk. If that is not\n    the correct place, <b>patch</b> scans both forwards and backwards for a set\n    of lines matching the context given in the hunk. First <b>patch</b> looks\n    for a place where all lines of the context match. If no such place is found,\n    and it's a context diff, and the maximum fuzz factor is set to 1 or more,\n    then another scan takes place ignoring the first and last line of context.\n    If that fails, and the maximum fuzz factor is set to 2 or more, the first\n    two and last two lines of context are ignored, and another scan is made.\n    (The default maximum fuzz factor is 2.)",
+      "translatedHTML": "コンテキスト差分では、また適用できる範囲はそれより狭いものの通常形式の差分でも、<code>patch</code>はパッチに記された行番号の誤りを検出し、各ハンク（変更のまとまり）を適用する正しい位置を探そうとします。最初の候補位置は、ハンクに記された行番号に、直前のハンクを適用したときのオフセットを加減した位置です。その位置が正しくなければ、ハンクのコンテキストに一致する一連の行を前後に探します。まず、コンテキストのすべての行が一致する位置を探します。見つからず、かつコンテキスト差分で最大曖昧度（fuzz factor）が1以上なら、コンテキストの最初と最後の行を無視して再び探します。それでも見つからず、最大曖昧度が2以上なら、コンテキストの最初と最後の2行ずつを無視して再び探します。最大曖昧度の既定値は2です。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Hunks with less prefix context than suffix context (after applying\n    fuzz) must apply at the start of the file if their first line number\n    is 1. Hunks with more prefix context than suffix context (after\n    applying fuzz) must apply at the end of the file.",
+      "translatedHTML": "曖昧度を適用した後、前側のコンテキストが後側より少ないハンクは、先頭の行番号が1ならファイルの先頭に適用しなければなりません。前側のコンテキストが後側より多いハンクは、ファイルの末尾に適用しなければなりません。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "If <b>patch</b> cannot find a place to install that hunk of the\n    patch, it puts the hunk out to a reject file, which normally is the name of\n    the output file plus a <b>.rej</b> suffix, or <b>#</b> if <b>.rej</b> would\n    generate a file name that is too long (if even appending the single\n    character <b>#</b> makes the file name too long, then <b>#</b> replaces the\n    file name's last character).",
+      "translatedHTML": "ハンクを適用できる位置が見つからなければ、<code>patch</code>はそのハンクをrejectファイルに出力します。通常、その名前は出力ファイル名に<code>.rej</code>を付けたものです。<code>.rej</code>を付けると名前が長すぎる場合は、代わりに<code>#</code>を付けます。1文字の<code>#</code>を付けても長すぎる場合は、ファイル名の最後の文字を<code>#</code>に置き換えます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "The rejected hunk comes out in unified or context diff format. If\n    the input was a normal diff, many of the contexts are simply null. The line\n    numbers on the hunks in the reject file may be different than in the patch\n    file: they reflect the approximate location patch thinks the failed hunks\n    belong in the new file rather than the old one.",
+      "translatedHTML": "拒否されたハンクは、unified形式またはコンテキスト形式の差分として出力します。入力が通常形式の差分だった場合、多くのコンテキストは空になります。rejectファイル内のハンクの行番号は、パッチファイル内の行番号と異なることがあります。これは、適用に失敗したハンクが元のファイルではなく変更後のファイルのどのあたりに入ると<code>patch</code>が考えたかを示します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "As each hunk is completed, you are told if the hunk failed, and if\n    so which line (in the new file) <b>patch</b> thought the hunk should go on.\n    If the hunk is installed at a different line from the line number specified\n    in the diff, you are told the offset. A single large offset <i>may</i>\n    indicate that a hunk was installed in the wrong place. You are also told if\n    a fuzz factor was used to make the match, in which case you should also be\n    slightly suspicious. If the <b>--verbose</b> option is given, you are also\n    told about hunks that match exactly.",
+      "translatedHTML": "ハンクごとの処理が終わるたびに、失敗したかどうかを通知します。失敗した場合は、<code>patch</code>がそのハンクを挿入すべきだと考えた変更後のファイルの行番号も通知します。差分に指定された行番号とは別の行に適用した場合は、オフセットを通知します。1回でも大きなオフセットがあれば、ハンクを誤った場所に適用した可能性があります。一致させるために曖昧度を使用した場合も通知します。その場合も、少し疑ってみるべきです。<code>--verbose</code>オプションを指定すると、完全に一致したハンクについても通知します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 12,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "If no original file <i>origfile</i> is specified on the command\n    line, <b>patch</b> tries to figure out from the leading garbage what the\n    name of the file to edit is, using the following rules.",
+      "translatedHTML": "コマンドラインで元のファイル<var>origfile</var>を指定しなかった場合、<code>patch</code>は差分の前にあるテキストから、編集するファイル名を次の規則で推測します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "First, <b>patch</b> takes an ordered list of candidate file names\n    as follows:",
+      "translatedHTML": "まず、ファイル名の候補を次のように順序付きで収集します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 14,
+      "tag": "li",
+      "mode": "whole",
+      "originalHTML": "If the header is that of a context diff, <b>patch</b> takes the old and\n      new file names in the header. A name is ignored if it does not have enough\n      slashes to satisfy the <b>-p</b><i>num</i> or <b>--strip=</b><i>num</i>\n      option. The name <b>/dev/null</b> is also ignored.",
+      "translatedHTML": "コンテキスト差分のヘッダーであれば、ヘッダー内の変更前と変更後のファイル名を取得します。<code>-p num</code>または<code>--strip=num</code>オプションで必要とされる数のスラッシュがない名前は無視します。<code>/dev/null</code>という名前も無視します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 15,
+      "tag": "li",
+      "mode": "whole",
+      "originalHTML": "If there is an <b>Index:</b> line in the leading garbage and if either the\n      old and new names are both absent or if <b>patch</b> is conforming to\n      POSIX, <b>patch</b> takes the name in the <b>Index:</b> line.",
+      "translatedHTML": "差分の前に<code>Index:</code>行があり、変更前と変更後の名前がどちらも存在しない場合、または<code>patch</code>がPOSIXに準拠している場合は、<code>Index:</code>行にある名前を取得します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 16,
+      "tag": "li",
+      "mode": "whole",
+      "originalHTML": "For the purpose of the following rules, the candidate file names are\n      considered to be in the order (old, new, index), regardless of the order\n      that they appear in the header.",
+      "translatedHTML": "以下の規則では、ヘッダー内の出現順序にかかわらず、候補のファイル名を（変更前、変更後、index）の順序で扱います。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Then <b>patch</b> selects a file name from the candidate list as\n    follows:",
+      "translatedHTML": "次に、候補のリストからファイル名を次のように選びます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 18,
+      "tag": "li",
+      "mode": "whole",
+      "originalHTML": "If some of the named files exist, <b>patch</b> selects the first name if\n      conforming to POSIX, and the best name otherwise.",
+      "translatedHTML": "候補のうち存在するファイルがあれば、POSIXに準拠している場合は最初の名前を、それ以外の場合は最適な名前を選びます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 19,
+      "tag": "li",
+      "mode": "whole",
+      "originalHTML": "If <b>patch</b> is not ignoring RCS, ClearCase, Perforce, and SCCS (see\n      the <b>-g </b><i>num</i> or <b>--get=</b><i>num</i> option), and no\n      named files exist but an RCS, ClearCase, Perforce, or SCCS master is\n      found, <b>patch</b> selects the first named file with an RCS, ClearCase,\n      Perforce, or SCCS master.",
+      "translatedHTML": "RCS、ClearCase、Perforce、SCCSを無視しておらず（<code>-g num</code>または<code>--get=num</code>を参照）、候補のファイルはどれも存在しないものの、RCS、ClearCase、Perforce、SCCSのマスターが見つかった場合は、そのようなマスターがある最初の候補名を選びます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 20,
+      "tag": "li",
+      "mode": "whole",
+      "originalHTML": "If no named files exist, no RCS, ClearCase, Perforce, or SCCS master was\n      found, some names are given, <b>patch</b> is not conforming to POSIX, and\n      the patch appears to create a file, <b>patch</b> selects the best name\n      requiring the creation of the fewest directories.",
+      "translatedHTML": "候補のファイルがどれも存在せず、RCS、ClearCase、Perforce、SCCSのマスターも見つからず、名前の候補はあり、<code>patch</code>がPOSIXに準拠しておらず、かつパッチがファイルを作成するものと考えられる場合は、必要なディレクトリの新規作成数が最も少ない最適な名前を選びます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 21,
+      "tag": "li",
+      "mode": "whole",
+      "originalHTML": "If no file name results from the above heuristics, you are asked for the\n      name of the file to patch, and <b>patch</b> selects that name.",
+      "translatedHTML": "以上の経験則でファイル名が決まらなければ、パッチを適用するファイル名をユーザーに尋ね、入力された名前を選びます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 22,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "To determine the <i>best</i> of a nonempty list of file names,\n    <b>patch</b> first takes all the names with the fewest path name components;\n    of those, it then takes all the names with the shortest basename; of those,\n    it then takes all the shortest names; finally, it takes the first remaining\n    name.",
+      "translatedHTML": "空でない候補リストから最適な名前を決めるには、まずパス名の構成要素が最も少ない名前をすべて選びます。その中からベース名が最も短いものをすべて選び、さらにその中から名前全体が最も短いものをすべて選びます。最後に、残った名前のうち最初のものを選びます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 23,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Additionally, if the leading garbage contains a <b>Prereq:</b>\n    line, <b>patch</b> takes the first word from the prerequisites line\n    (normally a version number) and checks the original file to see if that word\n    can be found. If not, <b>patch</b> asks for confirmation before\n  proceeding.",
+      "translatedHTML": "また、差分の前に<code>Prereq:</code>行があれば、<code>patch</code>はその前提条件の行の最初の単語（通常はバージョン番号）を取得し、元のファイルにその単語が含まれているか調べます。見つからなければ、処理を続ける前に確認を求めます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 24,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "The upshot of all this is that you should be able to run something\n    like the following shell command:",
+      "translatedHTML": "このため、次のようなシェルコマンドを実行すれば、",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 25,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "and patch a file in the <b>blurfl</b> directory directly from a\n    patch that is read from standard input.",
+      "translatedHTML": "標準入力から読み込んだパッチを使い、<code>blurfl</code>ディレクトリ内のファイルへ直接パッチを適用できるはずです。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 26,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "If the patch file contains more than one patch, <b>patch</b> tries\n    to apply each of them as if they came from separate patch files. This means,\n    among other things, that it is assumed that the name of the file to patch\n    must be determined for each diff listing, and that the garbage before each\n    diff listing contains interesting things such as file names and revision\n    level, as mentioned previously.",
+      "translatedHTML": "パッチファイルに複数のパッチが含まれている場合、<code>patch</code>はそれぞれが別々のパッチファイルから来たかのように適用しようとします。したがって、特に、差分リストごとに対象のファイル名を判定する必要があると想定します。また、先に述べたように、各差分リストの前にあるテキストには、ファイル名やリビジョンレベルなどの有用な情報が含まれていると想定します。",
+      "status": "draft-not-reviewed"
+    }
+  ],
+  "extra": null
+}
