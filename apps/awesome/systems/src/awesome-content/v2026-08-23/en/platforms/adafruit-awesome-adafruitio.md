@@ -1,23 +1,16 @@
 ---
 title: "Awesome Adafruit IO"
-description: "A curated collection of resources and projects focused on Adafruit IO."
+description: "Guides, HTTP and MQTT APIs, client libraries, hardware, community support, and project resources for Adafruit IO."
 licenseSource: "github-adafruit-awesome-adafruitio-readme-md"
 ---
 
 # Awesome Adafruit IO
 
-A curated collection of resources and projects focused on Adafruit IO.
+Adafruit IO connects devices to the internet so that projects can be monitored and controlled remotely. Find introductory guides, HTTP and MQTT API documentation, client libraries, compatible boards, community support, news, and project videos.
 
-## Contents
+The source describes [Adafruit IO](https://io.adafruit.com) as allowing users to connect a device using a programming language of their choice and manage their own stored data. It states that all stored data can be downloaded at any time and will never be sold or given to another company.
 
-- [Guides](#guides)
-- [Community](#community)
-- [Code](#code)
-- [Hardware](#hardware)
-- [Newsletter](#newsletter)
-- [News](#news)
-- [Social](#social)
-- [Events](#events)
+Service descriptions, platform names, newsletter frequency, support availability, and event schedules below reflect the source captured for this snapshot; their current status has not been checked.
 
 ## Guides
 
@@ -31,7 +24,7 @@ A curated collection of resources and projects focused on Adafruit IO.
 - [Adafruit IO Discord channel #help-with-adafruit-io](https://discord.gg/EAeBY6x) - 24/7 chat and support for Adafruit IO.
 - [Adafruit IO Forums](https://forums.adafruit.com/viewforum.php?f=56) - The Adafruit support forum on Adafruit IO.
 
-## Code
+## APIs and Libraries <a id="code"></a>
 
 - [Adafruit IO HTTP API Documentation](https://io.adafruit.com/api/docs/#adafruit-io-http-api) - Adafruit IO HTTP API provides access to your Adafruit IO data from any programming language or environment which can speak HTTP.
 - [Adafruit IO MQTT API Documentation](https://io.adafruit.com/api/docs/mqtt.html#adafruit-io-mqtt-api) - Adafruit MQTT API provides access to your Adafruit IO data from any MQTT Client.
@@ -45,14 +38,13 @@ A curated collection of resources and projects focused on Adafruit IO.
 
 ## Hardware
 
-Adafruit IO is compatible with _any_ hardware which can communicate over HTTP or MQTT.
+Adafruit IO is compatible with any hardware which can communicate over HTTP or MQTT.
 
 - [Adafruit-Produced Boards](https://www.adafruit.com/iot) - Where to buy Adafruit IO compatible boards produced by Adafruit.
 
-
 ## Newsletter
 
-- [Adafruit IoT Newsletter](https://www.adafruitdaily.com/) - A monthly newsletter on the Internet-of-Things, a spam-free list.
+- [Adafruit IoT Newsletter](https://www.adafruitdaily.com/) - A monthly Internet of Things newsletter, described by the source as spam-free.
 - [Archives of all newsletters](https://blog.adafruit.com/tag/iot-monthly) - List of every newsletter published.
 
 ## News
@@ -60,7 +52,7 @@ Adafruit IO is compatible with _any_ hardware which can communicate over HTTP or
 - [Adafruit IO on Hackaday](https://hackaday.com/tag/adafruit-io/) - Hackaday posts related to Adafruit IO.
 - [Adafruit IO on Hackster.io](https://blog.hackster.io/search?q=adafruit_io) - Hackster posts related to Adafruit IO.
 
-## Social
+## Blogs and Social Media <a id="social"></a>
 
 - [Adafruit IO Development Blog](https://io.adafruit.com/blog/) - Adafruit IO News and Release Notes, straight from the source.
 - [#AdafruitIO tagged on Twitter, latest](https://twitter.com/search?f=tweets&vertical=default&q=%23AdafruitIO&src=tyah) - Twitter posts tagged Adafruit IO.
@@ -72,18 +64,7 @@ Adafruit IO is compatible with _any_ hardware which can communicate over HTTP or
 - [Adafruit IO tagged on Reddit](https://www.reddit.com/search?q=adafruit%20io&t=year) - Reddit posts relating to Adafruit IO.
 - [Adafruit IO on Instructables](https://www.instructables.com/howto/circuitpython) - How-tos, guides, and more, using Adafruit IO on Autodesk's Instructables.
 
-
 ## Events
 
 - [Weekly Adafruit Show-and-tell, Wednesday 7:30pm ET on Google+ Hangouts](https://plus.google.com/+adafruit) - The weekly Adafruit Show-and-tell program often has Adafruit IO-related projects on display.
-- [ASK AN ENGINEER, Wednesday 8pm ET on YouTube LIVE](https://www.youtube.com/adafruit/live) - The longest running YouTube live show about electronics, information often on during an "Adafruit IO Update" segment. New compatible hardware during "New New New" segment.
-
-## Contribute
-
-Contributions and suggestions are always welcome! Please make pull requests to modify Awesome AdafruitIO.
-
-## License
-
-[![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, the authors have waived all copyright and related or neighbouring rights to this work.
+- [ASK AN ENGINEER, Wednesday 8pm ET on YouTube LIVE](https://www.youtube.com/adafruit/live) - Described by the source as the longest-running YouTube live show about electronics. The "Adafruit IO Update" segment often covers related information, and "New New New" introduces new compatible hardware.
