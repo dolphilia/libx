@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "batch": 197,
+  "at": "2026-10-11T18:15:38.334Z",
+  "stage": "classified",
+  "complete": false,
+  "preparationHash": "823f2697e40cf24991e8952e85c7a6d9468932683e604b50700164a2748db414",
+  "checks": [
+    {
+      "command": "node /tmp/aws-check-draft.mjs",
+      "exitCode": 0,
+      "listItems": 684,
+      "starLabels": 280,
+      "proofHash": "4a5f35866f2087e4567f2fc4a3ccd8a55297355751dfa890084177efa1c9236b",
+      "scope": "機械的リスト項目/リンク順/スター数下限の保全のみ。意味・自然さ・英日対照を保証しない。"
+    },
+    {
+      "command": "pnpm awesome:validate-editorial --snapshot=v2026-08-23 --source=github-donnemartin-awesome-aws-readme-md",
+      "exitCode": 0,
+      "result": "Awesome editorial validation: OK (672 pairs, 252 verified; 未レビューを完了扱いにしない)",
+      "actualScope": "--sourceはこのCLIでは未対応で無視されたため新版672組を検査。252は新版verified件数、全版合計254。"
+    },
+    {
+      "check": "hash all published 2074 documents against corpusHash",
+      "passed": true,
+      "changed": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "progress": {
+    "inventoried": 778,
+    "classified": 1,
+    "editedEn": 0,
+    "translatedJa": 0,
+    "contentReviewed": 0,
+    "verified": 254,
+    "blocked": 3,
+    "needsDecision": 1,
+    "stale": 0
+  },
+  "publishedBodiesChanged": false,
+  "unresolved": [
+    "共通出典の通知保全・生成・実表示確認",
+    "英語ドラフト別パス再読/確定",
+    "日本語全文改訂",
+    "全入力→英日出力の単位対応表",
+    "原文→英語→日本語別パス全内容レビュー",
+    "再生成/翻訳/ビルド/HTML/PC-mobile実表示",
+    "verified確定とcommit/push"
+  ],
+  "next": "batch197 AWSの出典通知保全・英語ドラフト確定・JA全文改訂から継続",
+  "commitPush": {
+    "status": "pending",
+    "branch": "codex/awesome-editorial-20261011"
+  },
+  "externalPublish": false
+}
