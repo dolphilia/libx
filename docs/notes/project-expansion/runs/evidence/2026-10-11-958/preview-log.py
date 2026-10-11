@@ -21,6 +21,7 @@ logdata=download('https://api.github.com/repos/dolphilia/libx/actions/runs/'+str
 import io,re
 with zipfile.ZipFile(io.BytesIO(logdata)) as z:
  for name in z.namelist():
-  if 'Deploy Preview to Cloudflare Pages' in name and name.endswith('.txt'):
-   data=z.read(name).decode('utf-8');urls=sorted(set(re.findall(r'https://[a-z0-9-]+\.libx\.pages\.dev',data)));assert urls
-   (root/'PREVIEW_DEPLOY_LOG.txt').write_text(data);print(json.dumps({'log':name,'urls':urls}))
+  if ('Deploy' in name or 'deploy' in name) and name.endswith('.txt'):
+   data=z.read(name).decode('utf-8');urls=sorted(set(re.findall(r'https://[a-z0-9-]+\.libx\.pages\.dev',data)))
+   if not urls:continue
+   (root/(role.upper()+'_DEPLOY_LOG.txt')).write_text(data);print(json.dumps({'log':name,'urls':urls}))
