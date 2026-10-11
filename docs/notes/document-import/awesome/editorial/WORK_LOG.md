@@ -6050,3 +6050,5 @@
 - 2026-10-11T06:59:57.333Z バッチ166 Mastodon新版。固定raw117/旧英日112単位を全読、編集後98単位/83資料/14見出しを別パス照合。13手動目次/ロゴ除去、定義と公式URL復元。opinionated/自動生成/readline/一般ラベルを改善し数値と全条件保持。translated-jaまで保存、再生成/検査/実表示は未完了。
 
 - 2026-10-11T07:06:34.180Z バッチ166最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**224/1037完了、813残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch166/COMPLETION.json。次バッチ167 Bitcoin。commit/push待ち、外部公開なし。
+
+- 2026-10-11T07:07:14.178Z バッチ166対象40ファイルを 4298a75e9617a7575173056a6bd1b20131230ecc にコミットし origin/codex/awesome-editorial-20261011 へpush成功。全1037組2回再生成、publish/check672、翻訳672、7子アプリfresh build、対象HTML2文書と全参照/出典/目次、英日PC/mobile4状態と8画像・目次移動・言語/版切替、全1037組台帳検査、対象verified後1組検査に合格。83資料/13分類/全URL保持、固定原文の定義復元、opinionated/自動生成一覧/Redirector係り受け等修正。容量警告0/超過0、空白検査合格。224/1037完了、813残（inventoried809・blocked3・needs-decision1）。次バッチ167 Bitcoin新版 github-igorbarinov-awesome-bitcoin-readme-md。Mastodon旧版は独立未処理。台帳push記録を後続コミットとして送信。配信workflow対象外の編集ブランチで外部公開なし、所有プレビュー/ブラウザー終了、他案件変更保持。
