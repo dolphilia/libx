@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-11T22:13:40.859Z",
+  "batch": 204,
+  "reason": "実ブラウザー390pxでJAデバイスパス連結が837pxへはみ出すのを検出。読点後に空白を追加して改行機会を作る。パス/順序/意味/URL/コード不変。",
+  "beforeHash": "ced9eb1aaeef5a035d5a182c992358c03f71e224edc61cb79f3dfb7a56bd129b",
+  "afterHash": "978829e42a602e3ef47dafeb27f16f8b9ed37ee13e840aa4c70e98a72308f7bf",
+  "changes": [
+    {
+      "unit": "u000194",
+      "beforeHash": "ac0d539126d064dc10ac27069964c3f99d2939f2925ced4f0a181cbe33a57302",
+      "afterHash": "ee69867aa42f98947c5339143b6656b5e4931094e7aea0dfaa59115adb3af256",
+      "before": "* /devを使用：devicesコントロールグループを利用。原文では、次のデバイスノードがコンテナ内にデフォルトで作成されるとされる。また、Dockerイメージはnodevでマウントされるため、イメージ内にあらかじめデバイスノードがあっても、コンテナ内のプロセスがそれを使ってカーネルと通信することはできないと説明されている：/dev/console、/dev/null、/dev/zero、/dev/full、/dev/tty*、/dev/urandom、/dev/random、/dev/fuse。",
+      "after": "* /devを使用：devicesコントロールグループを利用。原文では、次のデバイスノードがコンテナ内にデフォルトで作成されるとされる。また、Dockerイメージはnodevでマウントされるため、イメージ内にあらかじめデバイスノードがあっても、コンテナ内のプロセスがそれを使ってカーネルと通信することはできないと説明されている：/dev/console、 /dev/null、 /dev/zero、 /dev/full、 /dev/tty*、 /dev/urandom、 /dev/random、 /dev/fuse。"
+    },
+    {
+      "unit": "u000195",
+      "beforeHash": "86660b73863ecd2174f8c763b46f80314d701cabe3de956ed8cdf496d3accc1c",
+      "afterHash": "624cec688a026b11056c7c208bd6f372fe7679ca788a78f49e5fd56a70d79c8a",
+      "before": "* rootが必要な呼び出し：capabilitiesを利用し、特にcap_sys_adminに注意。原文がDockerで使われるものとして挙げるのは、chown、dac_override、fowner、kill、setgid、setuid、setpcap、net_bind_service、net_raw、sys_chroot、mknod、setfcap、audit_write。原文にはDockerが除去するcapabilitiesの一覧もあり、ここでは両一覧の重複も含めて原記載を保持する。除去するものの一覧と説明は次のとおり。  \n  CAP_SETPCAP — プロセスのcapabilitiesを変更。  \n  CAP_SYS_MODULE — カーネルモジュールを挿入・除去。  \n  CAP_SYS_RAWIO — カーネルメモリを変更。  \n  CAP_SYS_PACCT — プロセスアカウンティングを設定。  \n  CAP_SYS_NICE — プロセスの優先度を変更。  \n  CAP_SYS_RESOURCE — リソース制限を上書き。  \n  CAP_SYS_TIME — システムクロックを変更。  \n  CAP_SYS_TTY_CONFIG — ttyデバイスを設定。  \n  CAP_AUDIT_WRITE — 監査ログへ書き込み。  \n  CAP_AUDIT_CONTROL — 監査サブシステムを設定。  \n  CAP_MAC_OVERRIDE — カーネルのMACポリシーを無視。  \n  CAP_MAC_ADMIN — MACの構成を設定。  \n  CAP_SYSLOG — カーネルのprintkの動作を変更。  \n  CAP_NET_ADMIN — ネットワークを設定。  \n  CAP_SYS_ADMIN — 広範な、包括的な権限。  \n  /procと/sysについて、原文は読み取り専用（ro）での再マウント、cap_sys_adminの除去、SELinuxやAppArmorなどのセキュリティモジュールの利用を挙げる。これらのファイルシステムの一部は名前空間に対応している。Dockerが読み取り専用でマウントするものとして、/sys、/proc/sys、/proc/sysrq-trigger、/proc/irq、/proc/busを挙げている。  \n  コピーオンライトのファイルシステム：原文では、Dockerコンテナは基盤となるファイルシステムイメージを共有し、書き込みはコンテナ固有のファイルシステムへ行われると説明されている。同じ基盤イメージへ書き込んでも、一方のコンテナが他方の変更を見ることはなく、イメージの内容を変更して他のコンテナ内のプロセスへ影響させることもできない。",
+      "after": "* rootが必要な呼び出し：capabilitiesを利用し、特にcap_sys_adminに注意。原文がDockerで使われるものとして挙げるのは、chown、dac_override、fowner、kill、setgid、setuid、setpcap、net_bind_service、net_raw、sys_chroot、mknod、setfcap、audit_write。原文にはDockerが除去するcapabilitiesの一覧もあり、ここでは両一覧の重複も含めて原記載を保持する。除去するものの一覧と説明は次のとおり。  \n  CAP_SETPCAP — プロセスのcapabilitiesを変更。  \n  CAP_SYS_MODULE — カーネルモジュールを挿入・除去。  \n  CAP_SYS_RAWIO — カーネルメモリを変更。  \n  CAP_SYS_PACCT — プロセスアカウンティングを設定。  \n  CAP_SYS_NICE — プロセスの優先度を変更。  \n  CAP_SYS_RESOURCE — リソース制限を上書き。  \n  CAP_SYS_TIME — システムクロックを変更。  \n  CAP_SYS_TTY_CONFIG — ttyデバイスを設定。  \n  CAP_AUDIT_WRITE — 監査ログへ書き込み。  \n  CAP_AUDIT_CONTROL — 監査サブシステムを設定。  \n  CAP_MAC_OVERRIDE — カーネルのMACポリシーを無視。  \n  CAP_MAC_ADMIN — MACの構成を設定。  \n  CAP_SYSLOG — カーネルのprintkの動作を変更。  \n  CAP_NET_ADMIN — ネットワークを設定。  \n  CAP_SYS_ADMIN — 広範な、包括的な権限。  \n  /procと/sysについて、原文は読み取り専用（ro）での再マウント、cap_sys_adminの除去、SELinuxやAppArmorなどのセキュリティモジュールの利用を挙げる。これらのファイルシステムの一部は名前空間に対応している。Dockerが読み取り専用でマウントするものとして、 /sys、 /proc/sys、 /proc/sysrq-trigger、 /proc/irq、 /proc/busを挙げている。  \n  コピーオンライトのファイルシステム：原文では、Dockerコンテナは基盤となるファイルシステムイメージを共有し、書き込みはコンテナ固有のファイルシステムへ行われると説明されている。同じ基盤イメージへ書き込んでも、一方のコンテナが他方の変更を見ることはなく、イメージの内容を変更して他のコンテナ内のプロセスへ影響させることもできない。"
+    },
+    {
+      "unit": "u000215",
+      "beforeHash": "06dcdcd7eacc81147338c7c3fc4d18e394aee6ef46febd84bc87b4b628d24bcb",
+      "afterHash": "72dc42c77b96c36ff7492b4a71d2e2381bbfc05a57aad930713c2c3b9bb8369d",
+      "before": "- /proc/sys、/proc/sysrq-trigger、/proc/irq、/proc/bus",
+      "after": "- /proc/sys、 /proc/sysrq-trigger、 /proc/irq、 /proc/bus"
+    }
+  ],
+  "separatePassReviewed": true,
+  "renderingReverified": true,
+  "reviewReceipt": "7ab263 新旧3単位の全文を省略なし別パス再読。パス/権限/数値/否定/コピーオンライト全文を保持。",
+  "reviewedAt": "2026-10-11T22:14:02.285Z",
+  "renderingReceipt": "390px再検証: client/inner/scrollWidth390、目次17/旧ID38全移動、修正パス一覧画面を再保存・目視確認。"
+}

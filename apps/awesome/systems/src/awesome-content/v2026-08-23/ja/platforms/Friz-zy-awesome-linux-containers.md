@@ -1,311 +1,243 @@
 ---
-title: "Awesome Linux Containers"
-description: "Linux Containersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
-licenseSource: "github-Friz-zy-awesome-linux-containers-readme-md"
+title: Awesome Linux Containers
+description: Linuxコンテナの仕様、実行基盤、ランタイム、イメージ操作、セキュリティの資料と、隔離やカーネル機構のメモ。
+licenseSource: github-Friz-zy-awesome-linux-containers-readme-md
 ---
+# Awesome Linux Containers<a id="目次"></a><a id="作者について"></a><a id="about-the-author"></a>
 
-# Awesome Linux Containers
+Linuxコンテナの仕様、クラウド基盤、OS、ランタイム、サンドボックス、イメージ操作ツール、ダッシュボード、セキュリティ資料を探すためのリストです。隔離、権限、コンテナが利用するカーネル機構についてのメモも含みます。
 
-Linux Containersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+以下の名称、対応状況、セキュリティ上の説明、評価は固定原文に基づく当時の記述です。現在の提供状況や安全性を確認・保証するものではありません。
 
-## 目次
+## 基盤団体 <a id="基盤技術"></a> <a id="foundations"></a>
 
-* [作者について](#About-the-Author)
-* [基盤技術](#foundations)
-* [仕様](#specifications)
-* [クラウド](#clouds)
-* [オペレーティングシステム](#operating-systems)
-* [ハイパーバイザー](#hypervisors)
-* [コンテナ](#containers)
-* [サンドボックス](#sandboxes)
-* [部分アクセス](#partial-access)
-* [ファイルシステム](#filesystem)
-* [ダッシュボード](#dashboard)
-* [ベストプラクティス](#best-practices)
-* [セキュリティ](#security)
-  - [ツール](#tools)
-  - [リンク](#links)
-  - [セキュリティ問題のレベル](#levels-of-security-problems)
-  - [セキュリティ技術](#technologies-for-security)
-* [その他の情報源](#another-information-sources)
+* [Open Container Initiative](https://www.opencontainers.org/) - Linux Foundationの下に設けられる、軽量でオープンなガバナンス体制。コンテナ形式とランタイムに関するオープンな業界標準の策定を目的とする。
 
-<a id="about-the-author"></a>
-## 作者について
+* [Cloud Native Computing Foundation](https://cncf.io/) - 技術的な価値とエンドユーザーの価値を基準に、インターネット規模のコンピューティングを踏まえた共通コンテナ技術の策定・普及を進める財団。
 
-こんにちは、皆さん！私の名前はフィリップです。2012年から、私は高負荷分散システムやサービス、セキュリティ、監視、継続的なデプロイメントおよびリリース管理（DevOps分野）に関わってきました。
+* [Cloud Foundry Foundation](https://www.cloudfoundry.org/foundation/) - 原文の紹介文は「クラウドは私たちの鋳造所」。
 
-私の趣味の一つは、DevOpsソリューションの開発およびオープンソースコミュニティへの貢献です。私の知識や経験を共有することで、自分自身および他の人々の時間を節約し、協力と学びの文化を育てようとしています。
+## 仕様 <a id="specifications"></a>
 
-私は、プーチンと緊密な関係を持つ独裁者ルカシェンコの抑圧的体制に対する[抗議活動](https://en.wikipedia.org/wiki/2020%E2%80%932021_Belarusian_protests)に参加したため、故郷ベラルーシを離れざるを得ませんでした。それ以来、他国で一から生活を築いています。
+* [Open Container Specifications](https://github.com/opencontainers/specs) - Open Container Initiativeの仕様を策定するプロジェクト。原文では策定作業が進行中とされている。
 
-もし、あなたのプロジェクトを強化するために、熟練したDevOpsリーダーやアーキテクトを探しているなら、私はあなたに [LinkedIn](https://www.linkedin.com/in/filipp-frizzy-289a0360/) でつながっていただけます。また、 [GitHub](https://github.com/Friz-zy/) での私の貴重な貢献をぜひご確認ください。一緒に協力し、素晴らしいソリューションを一緒に創りましょう :)
+* [App Container basics](https://github.com/coreos/rkt/blob/master/Documentation/app-container.md) - コンテナ内でのアプリケーション実行について、イメージ形式、ランタイム環境、探索プロトコルを定めるオープン仕様appcの基本。
 
-<a id="foundations"></a>
-## 基盤技術
+* [Systemd Container Interface](https://wiki.freedesktop.org/www/Software/systemd/ContainerInterface/) - Linuxの基本構成要素を提供するsystemdのコンテナ向けインターフェース。systemdのシステム・サービスマネージャーはPID 1として動作し、システムの残りを起動する。原文はコンテナ実装でこれらのインターフェースをサポートすることを勧めている。
 
-* [OPEN CONTAINER INITIATIVE](https://www.opencontainers.org/)
-オープンコンテナイニシアティブは、Linuxフンドエーションの下で設立される軽量かつオープンな統治構造であり、コンテナフォーマットおよびランタイムに関するオープンな業界標準の創出を目的としている。
-* [Cloud Native Computing Foundation](https://cncf.io/)
-クラウドネイティブコンピューティングファウンデーションは、技術的価値と最終ユーザーの価値に基づき、インターネット規模のコンピューティングにインスパイアされた、新しい共通コンテナ技術の創出と普及を担う。
-* [Cloud Foundry Foundation](https://www.cloudfoundry.org/foundation/)
-クラウドは私たちの工場である。
+* [Nulecule Specification](https://github.com/projectatomic/atomicapp/tree/master/docs/spec) - 複雑なマルチコンテナアプリケーションとサービスをパッケージ化するパターン・モデル。依存関係すべてと、構築・デプロイ・監視・稼働中の管理に必要なオーケストレーションメタデータをコンテナイメージ内で参照する。
 
-<a id="specifications"></a>
-## 仕様
+* [Oracle microcontainer manifesto](https://blogs.oracle.com/developers/the-microcontainer-manifesto) - 新しいコンテナ形式ではなく、セキュリティと安定性を高めるための特定のコンテナ構築手法。
 
-* [Open Container Specifications](https://github.com/opencontainers/specs)
-このプロジェクトはオープンコンテナイニシアティブの仕様書を書く場である。これは進行中のプロジェクトである。
-* [App Container basics](https://github.com/coreos/rkt/blob/master/Documentation/app-container.md)
-アプリケーションコンテナ（appc）は、アプリケーションをコンテナ内で実行する際のいくつかの側面を定義するオープン仕様である：イメージフォーマット、ランタイム環境、および発見プロトコル。
-* [Systemd Container Interface](https://wiki.freedesktop.org/www/Software/systemd/ContainerInterface/)
-SystemdはLinuxシステムの基本的な構成要素を提供するツールセットであり、システムとサービスマネージャーとしてPID 1を実行し、システムの残りの部分を開始する。コンテナソリューションを開発する際には、以下のインターフェースをサポートすることを検討してください。
-* [Nulecule Specification](https://github.com/projectatomic/atomicapp/tree/master/docs/spec)
-Nuleculeは、複雑なマルチコンテナアプリケーションやサービスのパッケージングパターンとモデルを定義し、そのすべての依存関係を含む、コンテナイメージにオーケストレーションメタデータを記録することで、構築、デプロイ、監視、およびアクティブな運用管理を可能にする。
-* [Oracle microcontainer manifesto](https://blogs.oracle.com/developers/the-microcontainer-manifesto)
-これは新しいコンテナフォーマットではなく、単にセキュリティと安定性の観点からより良い構築方法を提供する特定のコンテナ構築手法である。
-* [Cloud Native Application Bundle Specification](https://github.com/deislabs/cnab-spec)
-分散アプリケーションのバンドル、インストール、管理を行うためのパッケージフォーマット仕様であり、設計上クラウドに依存しないものである。
+* [Cloud Native Application Bundle Specification](https://github.com/deislabs/cnab-spec) - 設計上クラウドに依存しない分散アプリケーションを、バンドル・インストール・管理するためのパッケージ形式の仕様。
 
-<a id="clouds"></a>
-## クラウド
+## クラウド <a id="clouds"></a>
 
-* [Amazon EC2 Container Service ](https://aws.amazon.com/ecs/)
-Dockerコンテナをサポートし、Amazon EC2インスタンスの管理されたクラスタ上でアプリケーションを簡単に実行できるコンテナ管理サービス。
-* [Google Cloud Platform](https://cloud.google.com/container-engine/)
-Google Cloud Platform上でKubernetesを活用したDockerコンテ連携。Google Container Engineは、宣言されたニーズに基づき、仮想マシンの管理されたクラスタ上でコンテナを積極的にスケジュールする。
-* [Jelastic](http://jelastic.com/)
-DevOps向けの共同クラウドソリューションによる無制限のPaaSおよびコンテナベースのIaaS。
-* [Joyent](https://www.joyent.com/)
-今日のリアルタイムWebおよびモバイルアプリケーションに求められる高性能なコンテナネイティブインフラ。
-* [Kubernetes](http://kubernetes.io/)
-Linuxコンテナのクラスタを1つのシステムとして管理することで、開発を加速し、運用を簡素化する。
-* [Mesosphere](https://mesosphere.com/)
-MesosphereデータセンターOS（DCOS）は、データセンターまたはクラウド内のすべてのマシンをカバーする新しいタイプのオペレーティングシステムであり、共有リソース上でアプリケーション、サービス、ビッグデータインフラを高柔軟性かつ高スケーラブルにデプロイできる。
-* [OpenShift Origin](https://www.openshift.org/)
-OpenShift Originは、継続的なアプリケーション開発およびマルチテナントデプロイに最適化された [Kubernetes](http://kubernetes.io/)の配布版であり、Kubernetesの上に開発者および運用中心のツールを追加することで、迅速なアプリケーション開発、簡単なデプロイとスケーリング、および小中規模チームの長期的なライフサイクルメンテナンスを可能にする。
-* [Warden](https://github.com/cloudfoundry/warden)
-隔離された、一時的な、リソース制御された環境を管理する。クラウドファウンデリ―のオープンプラットフォームアスアサービスプロジェクトの一部。
-* [Virtuozzo](https://virtuozzo.com)
-Virtuozzoコンテナに基づいたプラットフォームで、公開またはプライベートクラウド内の任意のベアメタルまたは仮想サーバー上に簡単に実行可能であり、内部ITおよび開発プロセスを自動化・最適化・加速する。
-* [Rancher](http://rancher.com/)
-Rancherは、生産環境でのコンテナのデプロイと管理を行うための完全なオープンソースプラットフォームであり、Kubernetes、Mesos、Docker Swarmの商業的にサポートされた配布版を含んでおり、あらゆるインフラ上でコンテナ化アプリケーションを簡単に実行できる。
-* [Docker Swarm](https://docs.docker.com/engine/swarm/)
-Docker SwarmはDockerのネイティブなクラスタリングである。
-* [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/)
-Azure Container Serviceは、Azure向けに特に最適化された、人気のあるオープンソースツールおよび技術の構成を提供します。
-* [CIAO](https://ciao-project.github.io/)
- Intel Clear Linux OS向けのクラウド統合型高度なオーケストレータ。
-* [Alibaba Cloud Container Service](https://www.alibabacloud.com/fr/product/container-service)
-Container Serviceは、DockerおよびKubernetesを使用してコンテナ化アプリケーションのライフサイクルを管理できる、高性能かつスケーラブルなコンテナアプリケーション管理サービスです。
-* [Nomad](https://www.nomadproject.io/)
- HashiCorp Nomadは、Linux、Windows、Macでアプリケーションとサービスをスケジュールする1つのバイナリです。これは、仮想化、コンテナ化、スタンドアローンアプリケーションをスケジュールするためのオープンソーススケジューラであり、宣言型のジョブファイルを使用します。
+* [Amazon EC2 Container Service](https://aws.amazon.com/ecs/) - Dockerコンテナに対応し、管理されたAmazon EC2インスタンスのクラスタでアプリケーションを実行できるコンテナ管理サービス。
 
-<a id="operating-systems"></a>
-## オペレーティングシステム
+* [Google Cloud Platform](https://cloud.google.com/container-engine/) - Kubernetesを基盤として、Google Cloud PlatformでDockerコンテナを実行。Google Container Engineは宣言された要件に基づき、管理された仮想マシンのクラスタへコンテナをスケジュールする。
 
-* [CoreOs](https://coreos.com/)
-クラスタデプロイメントに最適化された軽量Linuxオペレーティングシステムで、自動化、セキュリティ、スケーラビリティを提供し、最も重要なアプリケーションをサポートします。
-* [RancherOS](http://rancher.com/rancher-os/)
-RancherOSは、すべてのOSをDockerコンテナとして実行する、非常に小さなLinuxディストリビューションです。
-* [Project Atomic](http://www.projectatomic.io/)
-Project Atomicは、Linux Docker Kubernetes (LDK) アプリケーションスタックの最適なプラットフォームを提供します。変更不可能なインフラストラクチャを使用して、コンテナ化アプリケーションのデプロイとスケーリングを行います。
-* [Snappy Ubuntu Core](https://www.ubuntu.com/cloud/snappy)
-Ubuntu Coreは、大規模なクラウドコンテナデプロイメントに最適なシステムで、世界の最も人気のあるコンテナプラットフォームにトランザクショナルアップデートを提供します。
-* [ResinOS](https://resinos.io/)
-コンテナに特化したホストOSで、信頼性が高く、実際の運用環境で検証されています。
-* [Photon](https://github.com/vmware/photon)
-Photon OSは、VMwareプラットフォームに最適化された、最小限のLinuxコンテナホストです。Photonは、仮想環境におけるコンテナ化およびLinuxアプリケーションの実行を促進するための協働を促進する目的で設計されています。
-* [Clear Linux Project](https://clearlinux.org)
-Intelアーキテクチャ向けのClear Linuxプロジェクトは、さまざまなクラウド用途に構築されたディストリビューションです。
-* [CargOS](https://cargos.io/)
-CargOSは、Dockerホスト向けの新しい軽量かつオープンソースのプラットフォームで、スピード、管理性、セキュリティを目標としています。リリースは64ビットIntel/AMDCPU向けに構築されています。
-* [OSv](http://osv.io/)
-OSvは、クラウド向けに設計されたオープンソิースオペレーティングシステムです。基本から構築され、簡単なデプロイと管理が可能であり、優れたパフォーマンスを実現します。
-* [HypriotOS](http://blog.hypriot.com/about/)
-Dockerを実行するため最適化された、Debianベースの軽量Linuxオペレーティングシステムで、Raspberry Pi上でDockerを使うことを非常に簡単に行えます。
-* [MCL](https://mcl.host)
-MCL (*Minimal Container Linux*) は、コンテナを実行するために特別に設計された、ゼロから構築された最小限のLinuxOSです。サイズは約50MBで、数秒以内に起動します。現在はDockerの実行に最適化されています。
+* [Jelastic](http://jelastic.com/) - DevOps向けの統合クラウドソリューションとして提供される、制限のないPaaSとコンテナベースのIaaS。
 
-<a id="hypervisors"></a>
-## ハイパーバイザー
+* [Joyent](https://www.joyent.com/) - 負荷の厳しいリアルタイムWeb・モバイルアプリケーション向けの、高性能なコンテナネイティブのインフラ。
 
-* [Docker](https://github.com/veggiemonk/awesome-docker#cloud-infrastructure)
-開発者およびシステム管理者向けの分散アプリケーション向けのオープンプラットフォーム。**標準的な事実**。
-* [LXD](https://github.com/lxc/lxd)
-LXCコンテナを管理するためのデーモンで、REST APIを提供します。
-* [OpenVZ](https://openvz.org/)
-OpenVZはLinux向けのコンテナベースの仮想化です。OpenVZは1つの物理サーバー上で複数の安全で分離されたLinuxコンテナ（VPSまたはVEと呼ばれる）を作成し、サーバーの利用効率を高め、アプリケーションの衝突を防ぎます。
-* [MultiDocker](https://github.com/marty90/multidocker)
-各ユーザーが独立したコンテナに分離された、安全なマルチユーザーDockerマシンを作成します。
-* [Lithos](https://github.com/tailhook/lithos/)
-Lithosは、サービスを実行するためのプロセス監視ツールおよびコンテナ化ツールです。システムの初期化としてではなく、コンテナオーケストレーションを構築するための基本的なツールとして設計されています。
-* [containerd](https://containerd.io/)
-コンテナランタイムで、イメージの転送・ストレージからコンテナの実行、監視、ネットワークまでを完全に管理できるもの。
+* [Kubernetes](http://kubernetes.io/) - Linuxコンテナのクラスタを一つのシステムとして管理し、開発を加速して運用を簡素化。
 
-<a id="containers"></a>
-## コンテナ
+* [Mesosphere](https://mesosphere.com/) - データセンターやクラウド内の全マシンにまたがるDatacenter Operating System（DCOS）。共有リソース上へアプリケーション、サービス、ビッグデータ基盤を柔軟かつ高い拡張性でデプロイ。
 
-* [runc](https://github.com/opencontainers/runc)
-runcは、OCS仕様に従ってコンテナを生成・実行するためのCLIツール。
-* [Bocker](https://github.com/p8952/bocker)
-Dockerは約100行のbashで実装されたもの。
-* [Rocket](https://github.com/coreos/rkt)
-rkt（「rock-it」と発音）はLinux上でアプリケーションコンテナを実行するためのCLIツール。rktは組み立て可能で、安全かつ高速に設計されている。AppC仕様に基づいている。
-* [LXC](https://github.com/lxc/lxc)
-LXCは、よく知られたツール、テンプレート、ライブラリおよび言語バインディングのセット。非常に低レベルであり、非常に柔軟で、上流のカーネルがサポートしているほぼすべてのコンテナ機能をカバーしている。
-* [Vagga](https://github.com/tailhook/vagga)
-Vaggaは、VagrantおよびDockerにインスパイアされた、完全にユーザースペースに配置されたコンテナエンジンで、開発環境に特化している。
-* [libct](https://github.com/xemul/libct)
-Libctは、コンテナ管理用のライブラリで、フロントエンドプログラムがコンテナのライフサイクル全体を管理するための便利なAPIを提供する。
-* [libvirt](https://libvirt.org/drvlxc.html)
-近年のLinux（およびその他のOS）の仮想化機能にインタラクションするための大きなツールキット。
-* [systemd-nspawn](https://wiki.archlinux.org/index.php/Systemd-nspawn)
-デバッグ、テスト、ビルド用に名前空間コンテナを生成する。[systemd](https://wiki.freedesktop.org/www/Software/systemd/)の一部。
-* [porto](https://github.com/yandex/porto)
-Portoの主な目標は、cgroups、名前空間、マウント、ネットワークなど、複数のLinuxカーネルメカニズムを安全かつ便利にインターフェース化すること。
-* [udocker](https://github.com/indigo-dc/udocker)
-root権限なしで、バッチまたはインタラクティブシステム上でシンプルなコンテナを実行するための基本的なユーザツール。
-* [Let Me Contain That For You](https://github.com/google/lmctfy)
-LMCTFYは、Googleのコンテナスタックのオープンソース版で、Linuxアプリケーションコンテナを提供する。
-* [cc-oci-runtime](https://github.com/01org/cc-oci-runtime)
-Intel Clear LinuxのOCI（Open Containers Initiative）互換ランタイム。
-* [railcar](https://github.com/oracle/railcar)
-Railcarは、Open Containers Initiativeのランタイム仕様をRustで実装したもの。runcの参照実装に似ているが、Rustで完全に実装されており、メモリ安全を確保し、ガベージコレクタや複数スレッドのオーバーヘッドを必要としない。
-* [Kata Containers](https://katacontainers.io/)
-Kata Containersは、非常に軽量な仮想マシンを構築する新しいオープンソースプロジェクトで、コンテナ生態系にスムーズに統合される。
-* [plash](https://github.com/ihucos/plash/)
-軽量かつrootなしのコンテナ。
-* [runv](https://github.com/hyperhq/runv)
-仮想化ベース（KVM、Xen、QEMU）のOCIランタイム。セキュリティは隔離によって実現される。
-* [podman](https://github.com/containers/libpod)
-コンテナライフサイクの完全な管理。
-* [firecracker](https://github.com/firecracker-microvm/firecracker)
-Firecrackerは、軽量な仮想マシン（microVM）でワークロードを実行し、ハードウェア仮想化技術によるセキュリティと隔離性と、コンテナのスピードと柔軟性を組み合わせる。
-* [sysbox](https://github.com/nestybox/sysbox)
-Sysboxは、「runc」と同様に、安全（rootなし）なコンテナやポッドを作成し、マイクロサービスだけでなく、VMで実行されるほとんどのワークロード（例：systemd、Docker、Kubernetes）をスムーズに実行する。
-* [youki](https://github.com/containers/youki)
-Rustで書かれたコンテナランタイム
-* [footloose](https://github.com/weaveworks/footloose)
-仮想マシンに見えるコンテナ
+* [OpenShift Origin](https://www.openshift.org/) - 継続的なアプリケーション開発とマルチテナントでのデプロイに最適化された[Kubernetes](http://kubernetes.io/)ディストリビューション。開発者・運用者向けのツールを加え、大小のチームによる迅速な開発、容易なデプロイとスケーリング、長期的なライフサイクル保守を支援。
 
-<a id="sandboxes"></a>
-## サンドボックス
+* [Warden](https://github.com/cloudfoundry/warden) - 隔離され、一時的で、リソースを制御した環境を管理。オープンなPaaSプロジェクトCloud Foundryの一部。
 
-* [Firejail](https://l3net.wordpress.com/projects/firejail/)
-FirejailはSUIDサンドボックスプログラムであり、Linux名前空間、seccomp-bpfおよびLinux機能を用いて信頼できないアプリケーションの実行環境を制限することで、セキュリティの侵害リスクを低減する
-* [NsJail](https://github.com/google/nsjail)
-NsJailはLinux向けのプロセス分離ツールであり、Linuxカーネルの名前空間、リソース制御、およびseccomp-bpfシステムコールフィルタサブシステムを活用している
-* [Subuser](https://github.com/subuser-security/subuser)
-DockerでLinuxデスクトップを安全に
-* [Snappy](https://wiki.ubuntu.com/SecurityTeam/Specifications/SnappyConfinement)
-Snappy Ubuntu Coreは、トランザクションアップデートを採用した新しいUbuntuのバージョンであり、今日のUbuntuと同じライブラリを備えた最小サーバーイメージだが、アプリケーションはよりシンプルなメカニズムで提供されている
-* [xdg-app](https://wiki.gnome.org/Projects/SandboxedApps)
-xdg-appはLinux上でサンドボックスされたデスクトップアプリケーションを構築・配布・実行するためのシステム
-* [Bubblewrap](https://github.com/projectatomic/bubblewrap)
-root権限なしでLinux名前空間を使ってアプリケーションを実行できる。setuidバイナリによりユーザー名前空間が提供される
-* [singularity](https://github.com/singularityware/singularity)
-Linux用のユニバーサルアプリケーションコンテナ
-* [Lxroot](https://github.com/parke/lxroot)
-Lxrootは、chrootおよび/またはDockerの非rootユーザー向けの柔軟で軽量かつ安全な代替ツール
+* [Virtuozzo](https://virtuozzo.com) - Virtuozzoコンテナを基盤とし、パブリック・プライベートクラウドのベアメタルサーバーや仮想サーバーで実行できるプラットフォーム。社内IT・開発プロセスを自動化・最適化・高速化。
 
-<a id="partial-access"></a>
-## 部分アクセス
+* [Rancher](http://rancher.com/) - 本番環境でのコンテナのデプロイと管理を行う、機能を一通り備えたオープンソースプラットフォーム。Kubernetes、Mesos、Docker Swarmの商用サポート付きディストリビューションを含み、さまざまなインフラでコンテナ化アプリケーションを実行。
 
-* [nsenter](http://man7.org/linux/man-pages/man1/nsenter.1.html)
-他のプロセスの名前空間を使ってプログラムを実行。util-linuxの一部
-* [ip-netns](http://man7.org/linux/man-pages/man8/ip-netns.8.html)
-プロセスネットワーク名前空間の管理。iproute2の一部
-* [unshare](http://man7.org/linux/man-pages/man1/unshare.1.html)
-親プロセスと未共有の一部の名前空間を使ってプログラムを実行。util-linuxの一部
-* [python-nsenter](https://github.com/zalando/python-nsenter)
-このPythonパッケージは、"setns"システムコールを実行することで、Linuxカーネルの名前空間（マウント、IPC、ネット、PID、ユーザー、UTS）にアクセスできる
-* [butter](https://pypi.python.org/pypi/butter)
-asyncio対応のPythonライブラリで、低レベルのLinux機能（inotify、fanotify、timerfd、signalfd、eventfd、コンテナ）にインターフェースを提供
-* [pyspaces](https://github.com/Friz-zy/pyspaces)
-glibcを介してLinux名前空間と連携する、純粋Pythonによるもの
-* [CRIU](https://criu.org/Main_Page)
-ユーザー空間でのチェックポイント/復元はLinuxオペレーティングシステム向けのソフトウェアツールであり、このツールを使うことで、実行中のアプリケーション（またはその一部）を一時停止し、ハードディスクにファイルとしてチェックポイントを保存できる。CRIUはDockerおよびLXCと統合され、コンテナのライブ移動を実現している
-* [Moby](https://github.com/moby/moby)
-Dockerが開発したコンテナソフトウェアのための「積み木セット」のようなツールコンポーネント
+* [Docker Swarm](https://docs.docker.com/engine/swarm/) - Dockerに組み込まれたクラスタリング機能。
 
-<a id="filesystem"></a>
-## ファイルシステム
+* [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/) - 広く使われるオープンソースのツール・技術の構成をAzure向けに最適化するサービス。
 
-* [container-diff](https://github.com/GoogleCloudPlatform/container-diff)
-コンテナイメージの分析および比較を行うツール
-* [buildah](https://github.com/projectatomic/buildah)
-OCIコンテナイメージの構築を支援するツール
-* [skopeo](https://github.com/projectatomic/skopeo)
-リモートイメージレジストリと連携して、情報やイメージの取得、コンテンツの署名を行う
-* [img](https://github.com/jessfraz/img)
-スタンドアローン型であり、デーモンなし、権限なしのDockerfileおよびOCI互換のコンテナイメージビルダー
-* [dgr](https://github.com/blablacar/dgr)
-構成の規約に基づいて、アプリケーションコンテナイメージ（ACI）およびアプリケーションコンテナポッド（POD）を構築・設定するためのコマンドラインツール
-* [Whaler](https://github.com/P3GLEG/Whaler)
-Whalerは、Dockerイメージをその生成したDockerfileに逆エンジニアリングするためのツールである
-* [dive](https://github.com/wagoodman/dive)
-Dockerイメージ内の各レイヤーを探索するツール
-* [go-containerregistry](https://github.com/google/go-containerregistry)
-コンテナレジストリとの作業を行うためのGoライブラリおよびCLIツール
-* [kaniko](https://github.com/GoogleContainerTools/kaniko)
-Kanikoは、Dockerfile内に存在するコンテナイメージを構築するためのツールで、コンテナまたはKubernetesクラスタ内で実行可能
-* [umoci](https://umo.ci/)
-UmociはOCIコンテナイメージを操作するツールであり、基本的なビルドツールとして使用可能
-* [docker pushrm](https://github.com/christian-korneck/docker-pushrm)
-現在のディレクトリにあるREADME.mdファイルをコンテナレジストリにプッシュできるDocker CLIプラグイン。Docker Hub、Quay、Harborに対応。
+* [CIAO](https://ciao-project.github.io/) - Intel Clear Linux OS向けのCloud Integrated Advanced Orchestrator。
 
+* [Alibaba Cloud Container Service](https://www.alibabacloud.com/fr/product/container-service) - DockerとKubernetesによるコンテナ化アプリケーションのライフサイクル管理に対応する、高性能で拡張性の高いコンテナアプリケーション管理サービス。
 
-<a id="dashboard"></a>
-## ダッシュボード
+* [Nomad](https://www.nomadproject.io/) - HashiCorp Nomadは、Linux、Windows、Macでアプリケーションやサービスをスケジュールする、単一バイナリのオープンソーススケジューラー。宣言的なジョブファイルで、仮想化・コンテナ化されたアプリケーションと単体のアプリケーションをスケジュール。
 
-* [LXC-Web-Panel](https://lxc-webpanel.github.io/)
-UbuntuでのLXC用のウェブパネル
-* [Liman](https://github.com/salihciftci/liman)
-基本的なDocker監視用ウェブアプリケーション
-* [portainer](https://github.com/portainer/portainer)
-軽量なDocker管理UI
-* [swarmpit](https://github.com/swarmpit/swarmpit)
-モバイル対応の軽量Docker Swarm管理UI
+## オペレーティングシステム <a id="operating-systems"></a>
 
-<a id="best-practices"></a>
-## ベストプラクティス
+* [CoreOS](https://coreos.com/) - クラスタへのデプロイ向けに設計された軽量Linux OS。重要なアプリケーションに自動化、セキュリティ、拡張性を提供。
 
-* [The Twelve-Factor App](https://12factor.net/)
-12ファクターアプリは、ソフトウェアアセンブリアプリケーションを構築するための手法である
-* [Container Best Practices](http://docs.projectatomic.io/container-best-practices/)
-Project Atomicによるコンテナベースアプリケーションのアーキテクチャ、作成、管理に関するドキュメンテーションを共同で行うプロジェクト
+* [RancherOS](http://rancher.com/rancher-os/) - OS全体をDockerコンテナとして実行する、小さなLinuxディストリビューション。
 
-<a id="security"></a>
-## セキュリティ
+* [Project Atomic](http://www.projectatomic.io/) - Linux Docker Kubernetes（LDK）アプリケーションスタック向けのプラットフォーム。変更しないインフラを用いて、コンテナ化アプリケーションをデプロイ・スケール。
 
-<a id="tools"></a>
-### ツール
+* [Snappy Ubuntu Core](https://www.ubuntu.com/cloud/snappy) - 大規模なクラウドのコンテナデプロイ向けのシステム。原文が「世界で最も好まれるコンテナプラットフォーム」と評する環境へ、トランザクション更新を提供。
 
-* [Docker bench security](https://github.com/docker/docker-bench-security)
-Dockerベンチセキュリティは、生産環境でのDockerコンテナデプロイに必要な数十のベストプラクティスをチェックするスクリプトである
-* [CoreOS Clair](https://coreos.com/blog/vulnerability-analysis-for-containers/)
-あなたのコンテナに対するオープンソースの脆弱性分析
-* [bane](https://github.com/jfrazelle/bane)
-Dockerコンテナ用のカスタムAppArmorプロファイル生成ツール
-* [OpenSCAP](https://github.com/OpenSCAP/container-compliance)
-OpenSCAPエコシステムは、管理者および審査者にセキュリティベースラインの評価、測定および実行を支援する複数のツールを提供する
-* [drydock](https://github.com/zuBux/drydock)
-Drydockは、編集可能な監査テンプレートを使用し、Dockerデーモン設定とコンテナのセキュリティを柔軟に評価する方法を提供する
-* [trireme](https://www.aporeto.com/trireme/)
-DockerおよびKubernetes向けのセグメンテーションによるセキュリティ
-* [goss](https://github.com/aelsabbahy/goss)
-サーバーのテスト／検証を迅速かつ簡単に行う
-* [sockguard](https://github.com/buildkite/sockguard)
-docker.sockに対するプロキシで、アクセス制御と分離された権限を強制する
-* [gvisor](https://github.com/google/gvisor)
-gVisorはGo言語で書かれたユーザースペースのカーネルで、Linuxシステムの大部分を実装している。Open Container Initiative（OCI）のランタイムであるrunscを含み、アプリケーションとホストカーネルの間で分離境界を提供する。runscランタイムはDockerおよびKubernetesと統合されており、サンドボックス化されたコンテナを簡単に実行できる。
-* [docker-explorer](https://github.com/google/docker-explorer/)
-オフラインのDocker取得を調査するためのツール
-* [oci-seccomp-bpf-hook](https://github.com/containers/oci-seccomp-bpf-hook)
-OCIのホックで、システムコールをトレースし、seccompプロファイルを生成する
+* [ResinOS](https://resinos.io/) - コンテナ向けに調整されたホストOS。原文では、信頼性を重視して設計され、本番運用で実証されていると紹介される。
 
-<a id="links"></a>
-### リンク
+* [Photon](https://github.com/vmware/photon) - 小さなフットプリントを目指し、VMwareプラットフォーム向けに調整された最小構成のLinuxコンテナホスト。仮想化環境でコンテナ化アプリケーションやLinuxアプリケーションを動かすための協力を呼びかけるプロジェクト。
+
+* [Clear Linux Project](https://clearlinux.org) - Intelアーキテクチャ向けに、さまざまなクラウド用途を想定して構築されたディストリビューション。
+
+* [CargOS](https://cargos.io/) - 速度、管理のしやすさ、セキュリティを目指す、Dockerホスト向けの軽量なオープンソースプラットフォーム。64ビットIntel/AMD CPU向けのリリース。
+
+* [OSv](http://osv.io/) - クラウド向けに設計されたオープンソースOS。容易なデプロイ・管理と優れた性能を目指して、一から構築。
+
+* [HypriotOS](http://blog.hypriot.com/about/) - Dockerの実行に最適化された、最小構成のDebianベースOS。Raspberry PiでDockerを容易に利用。
+
+* [MCL](https://mcl.host) - コンテナ実行専用に一から構築された、最小構成のLinux OS（Minimal Container Linux）。約50MBで数秒以内に起動し、原文時点ではDocker実行に最適化。
+
+## ハイパーバイザー <a id="hypervisors"></a>
+
+* [Docker](https://github.com/veggiemonk/awesome-docker#cloud-infrastructure) - 開発者・システム管理者向けの、分散アプリケーションのためのオープンプラットフォーム。原文では「事実上の標準」と評されている。
+
+* [LXD](https://github.com/lxc/lxd) - liblxcを基盤とするデーモン。LXCコンテナを管理するREST APIを提供。
+
+* [OpenVZ](https://openvz.org/) - Linux向けのコンテナベースの仮想化。物理サーバー一台に、安全で隔離された複数のLinuxコンテナ（VEやVPSとも呼ばれる）を作成し、サーバー利用効率を高め、アプリケーション同士の競合を防止。
+
+* [MultiDocker](https://github.com/marty90/multidocker) - 各ユーザーを独立したコンテナへ分離する、安全なマルチユーザーDockerマシンを作成。
+
+* [Lithos](https://github.com/tailhook/lithos/) - サービス実行用のプロセススーパーバイザーとコンテナ化ツール。システムのinitとしてではなく、コンテナオーケストレーションを構築するための基礎ツールを目指す。
+
+* [containerd](https://containerd.io/) - イメージの転送・保存から、コンテナの実行・監視・ネットワークまで、ライフサイクル全体を管理できるコンテナランタイム。
+
+## コンテナ <a id="containers"></a>
+
+* [runc](https://github.com/opencontainers/runc) - 原文がOCS仕様と呼ぶ仕様に従い、コンテナを生成・実行するCLIツール。
+
+* [Bocker](https://github.com/p8952/bocker) - 約100行のBashで実装したDocker。
+
+* [Rocket](https://github.com/coreos/rkt) - rkt（発音は「rock-it」）は、Linuxでアプリケーションコンテナを実行するCLI。組み合わせやすさ、安全性、速度を目指し、AppC仕様を基盤に設計。
+
+* [LXC](https://github.com/lxc/lxc) - ツール、テンプレート、ライブラリ、言語バインディングの一式。低レベルで柔軟性が高く、上流カーネルがサポートするコンテナ機能のほぼすべてをカバー。
+
+* [Vagga](https://github.com/tailhook/vagga) - VagrantとDockerに着想を得た、完全にユーザー空間で動作するコンテナエンジン。開発環境に特化。
+
+* [libct](https://github.com/xemul/libct) - フロントエンドのプログラムから、コンテナのライフサイクル全体を操作するAPIを提供するコンテナ管理ライブラリ。
+
+* [libvirt](https://libvirt.org/drvlxc.html) - 比較的新しいバージョンのLinuxや他のOSが持つ仮想化機能を操作する、大規模なツールキット。
+
+* [systemd-nspawn](https://wiki.archlinux.org/index.php/Systemd-nspawn) - デバッグ、テスト、ビルド用に名前空間で隔離したコンテナを生成。[systemd](https://wiki.freedesktop.org/www/Software/systemd/)の一部。
+
+* [porto](https://github.com/yandex/porto) - cgroups、名前空間、マウント、ネットワークなどのLinuxカーネル機構を、便利で信頼性のあるインターフェースから利用することを目指すツール。
+
+* [udocker](https://github.com/indigo-dc/udocker) - root権限なしで、バッチ処理環境や対話的な環境において単純なコンテナを実行するための基本的なユーザーツール。
+
+* [Let Me Contain That For You](https://github.com/google/lmctfy) - Googleのコンテナスタックのオープンソース版LMCTFY。Linuxアプリケーションコンテナを提供。
+
+* [cc-oci-runtime](https://github.com/01org/cc-oci-runtime) - Intel Clear LinuxのOCI（Open Containers Initiative）互換ランタイム。
+
+* [railcar](https://github.com/oracle/railcar) - Open Container Initiativeのランタイム仕様をRustで実装。参照実装runcに似ているが、すべてRustで書くことで、ガベージコレクターや複数スレッドのオーバーヘッドを必要とせずにメモリ安全性を確保。
+
+* [Kata Containers](https://katacontainers.io/) - コンテナのエコシステムへシームレスに組み込める、非常に軽量な仮想マシンを構築するオープンソースプロジェクト。
+
+* [plash](https://github.com/ihucos/plash/) - 軽量でroot権限を必要としないコンテナ。
+
+* [runv](https://github.com/hyperhq/runv) - ハイパーバイザー（KVM、Xen、QEMU）を基盤とするOCIランタイム。隔離によるセキュリティ。
+
+* [podman](https://github.com/containers/libpod) - コンテナのライフサイクル全体を管理。
+
+* [firecracker](https://github.com/firecracker-microvm/firecracker) - ハードウェア仮想化によるセキュリティと隔離性を、コンテナの速度・柔軟性と組み合わせた軽量仮想マシンmicroVMでワークロードを実行。
+
+* [sysbox](https://github.com/nestybox/sysbox) - 安全でroot権限を必要としないコンテナ・Podを作る「runc」。マイクロサービスに加え、VMで動作する大半のワークロード（systemd、Docker、Kubernetesなど）もシームレスに実行。
+
+* [youki](https://github.com/containers/youki) - Rustで書かれたコンテナランタイム。
+
+* [footloose](https://github.com/weaveworks/footloose) - 仮想マシンのように見えるコンテナ。
+
+## サンドボックス <a id="sandboxes"></a>
+
+* [Firejail](https://l3net.wordpress.com/projects/firejail/) - Linux名前空間、seccomp-bpf、Linux capabilitiesを使い、信頼できないアプリケーションの実行環境を制限してセキュリティ侵害のリスクを減らすSUIDサンドボックスプログラム。
+
+* [NsJail](https://github.com/google/nsjail) - Linuxカーネルの名前空間、リソース制御、seccomp-bpfによるシステムコールのフィルタリングを使うプロセス隔離ツール。
+
+* [Subuser](https://github.com/subuser-security/subuser) - Dockerを使ってLinuxデスクトップを保護。
+
+* [Snappy](https://wiki.ubuntu.com/SecurityTeam/Specifications/SnappyConfinement) - Snappy Ubuntu Coreは、トランザクション更新に対応したUbuntuの形態。原文当時のUbuntuと同じライブラリを持つ最小サーバーイメージを使い、より単純な仕組みでアプリケーションを提供。
+
+* [xdg-app](https://wiki.gnome.org/Projects/SandboxedApps) - Linux上でサンドボックス化したデスクトップアプリケーションを構築・配布・実行するシステム。
+
+* [Bubblewrap](https://github.com/projectatomic/bubblewrap) - root権限なしでLinux名前空間を使ってアプリケーションをサンドボックス内で実行。setuidバイナリでユーザー名前空間を提供。
+
+* [singularity](https://github.com/singularityware/singularity) - Linux向けの汎用アプリケーションコンテナ。
+
+* [Lxroot](https://github.com/parke/lxroot) - Linuxの非rootユーザー向けに、chrootやDockerの代替となる、柔軟で軽量、より安全なツール。
+
+## 名前空間などへの部分アクセス <a id="部分アクセス"></a> <a id="partial-access"></a>
+
+* [nsenter](http://man7.org/linux/man-pages/man1/nsenter.1.html) - 他のプロセスの名前空間でプログラムを実行。util-linuxの一部。
+
+* [ip-netns](http://man7.org/linux/man-pages/man8/ip-netns.8.html) - プロセスのネットワーク名前空間を管理。iproute2の一部。
+
+* [unshare](http://man7.org/linux/man-pages/man1/unshare.1.html) - 一部の名前空間を親プロセスと共有せずにプログラムを実行。util-linuxの一部。
+
+* [python-nsenter](https://github.com/zalando/python-nsenter) - setnsシステムコールでLinuxカーネルの名前空間（マウント、IPC、ネットワーク、PID、ユーザー、UTS）に入るPythonパッケージ。
+
+* [butter](https://pypi.python.org/pypi/butter) - 低レベルのLinux機能（inotify、fanotify、timerfd、signalfd、eventfd、コンテナ）を操作する、asyncio対応のPythonライブラリ。
+
+* [pyspaces](https://github.com/Friz-zy/pyspaces) - glibcを通してLinux名前空間を扱う、純粋なPythonによる実装。
+
+* [CRIU](https://criu.org/Main_Page) - 実行中のアプリケーションやその一部を凍結し、ファイル群としてハードディスクへチェックポイント保存できるLinux向けツールCheckpoint/Restore In Userspace。DockerやLXCと統合してコンテナのライブマイグレーションを実現。
+
+* [Moby](https://github.com/moby/moby) - Dockerが作成した、コンテナソフトウェア向けのツール部品を組み合わせる「レゴセット」。
+
+## ファイルシステム・イメージ <a id="ファイルシステム"></a> <a id="filesystem"></a>
+
+* [container-diff](https://github.com/GoogleCloudPlatform/container-diff) - コンテナイメージを分析・比較するツール。
+
+* [buildah](https://github.com/projectatomic/buildah) - OCIコンテナイメージの構築を支援するツール。
+
+* [skopeo](https://github.com/projectatomic/skopeo) - リモートのイメージレジストリから情報・イメージを取得し、コンテンツへ署名。
+
+* [img](https://github.com/jessfraz/img) - 単独で動作し、デーモンや特権を必要としない、Dockerfile・OCI互換のコンテナイメージビルダー。
+
+* [dgr](https://github.com/blablacar/dgr) - 「設定より規約」に基づき、App Container Images（ACI）とApp Container Pods（POD）の構築や実行時の設定を行うコマンドラインツール。
+
+* [Whaler](https://github.com/P3GLEG/Whaler) - Dockerイメージをリバースエンジニアリングし、それを生成したDockerfileを復元するためのツール。
+
+* [dive](https://github.com/wagoodman/dive) - Dockerイメージの各レイヤーを調べるツール。
+
+* [go-containerregistry](https://github.com/google/go-containerregistry) - コンテナレジストリを操作するGoライブラリとCLI群。
+
+* [kaniko](https://github.com/GoogleContainerTools/kaniko) - コンテナ内やKubernetesクラスタ内で、Dockerfileからコンテナイメージを構築するツール。
+
+* [umoci](https://umo.ci/) - OCIコンテナイメージを操作するツール。初歩的なビルドツールとしても利用可能。
+
+* [docker pushrm](https://github.com/christian-korneck/docker-pushrm) - 現在のディレクトリのREADME.mdをコンテナレジストリへpushするDocker CLIプラグイン。Docker Hub、Quay、Harborに対応。
+
+## ダッシュボード <a id="dashboard"></a>
+
+* [LXC-Web-Panel](https://lxc-webpanel.github.io/) - Ubuntu上のLXC向けWebパネル。
+
+* [Liman](https://github.com/salihciftci/liman) - 基本的なDocker監視Webアプリケーション。
+
+* [portainer](https://github.com/portainer/portainer) - 軽量なDocker管理UI。
+
+* [swarmpit](https://github.com/swarmpit/swarmpit) - モバイルでも使いやすい、軽量なDocker Swarm管理UI。
+
+## ベストプラクティス <a id="best-practices"></a>
+
+* [The Twelve-Factor App](https://12factor.net/) - SaaS（Software as a Service）アプリケーションを構築するための方法論。
+
+* [Container Best Practices](http://docs.projectatomic.io/container-best-practices/) - Project Atomicによる、コンテナベースのアプリケーションのアーキテクチャ、作成、管理を文書化する共同プロジェクト。
+
+## セキュリティ <a id="security"></a>
+
+### ツール <a id="tools"></a>
+
+* [Docker bench security](https://github.com/docker/docker-bench-security) - 本番環境へのDockerコンテナのデプロイに関する、一般的なベストプラクティス数十項目を調べるスクリプト。
+* [CoreOS Clair](https://coreos.com/blog/vulnerability-analysis-for-containers/) - コンテナ向けのオープンソースの脆弱性分析。
+* [bane](https://github.com/jfrazelle/bane) - Dockerコンテナ用のカスタムAppArmorプロファイル生成ツール。
+* [OpenSCAP](https://github.com/OpenSCAP/container-compliance) - 管理者・監査者による、セキュリティ基準の評価・測定・適用を支援する複数のツール。
+* [drydock](https://github.com/zuBux/drydock) - 編集可能な監査テンプレートを使い、Dockerデーモンの設定とコンテナのセキュリティを柔軟に評価。
+* [trireme](https://www.aporeto.com/trireme/) - DockerとKubernetes向けの、セグメンテーションによるセキュリティ。
+* [goss](https://github.com/aelsabbahy/goss) - サーバーのテスト・検証を迅速かつ容易に行うツール。
+* [sockguard](https://github.com/buildkite/sockguard) - アクセス制御と権限の分離を強制する、docker.sockのプロキシ。
+* [gvisor](https://github.com/google/gvisor) - Goで書かれ、Linuxシステムのインターフェースの相当部分を実装するユーザー空間カーネル。アプリケーションとホストカーネルの間に隔離境界を設けるOCIランタイムrunscを含む。runscはDockerとKubernetesに統合され、サンドボックス化したコンテナを実行。
+* [docker-explorer](https://github.com/google/docker-explorer/) - オフラインで取得したDockerデータのフォレンジック調査を支援するツール。
+* [oci-seccomp-bpf-hook](https://github.com/containers/oci-seccomp-bpf-hook) - システムコールをトレースし、seccompプロファイルを生成するOCIフック。
+
+### リンク <a id="links"></a>
 * [CIS Security Benchmarks](https://benchmarks.cisecurity.org/about/)
 * [Are Docker containers really secure?](https://opensource.com/business/14/7/docker-security-selinux)
 * [Bringing new security features to Docker](https://opensource.com/business/14/9/security-for-docker)
@@ -327,101 +259,79 @@ OCIのホックで、システムコールをトレースし、seccompプロフ�
 * [When to use-Docker alternatives rkt and LXD](http://searchitoperations.techtarget.com/tip/When-to-use-Docker-alternatives-rkt-and-LXD)
 * [The container is a lie](https://platform.sh/blog/2020/the-container-is-a-lie/)
 
-<a id="levels-of-security-problems"></a>
-### セキュリティ問題のレベル
+### セキュリティ問題のレベル <a id="levels-of-security-problems"></a>
 
-1) リアルなアプリケーション
+1) 通常のアプリケーション（固定原文のメモ）
 
-* always untrusted -> know it
-* suid bit -> mount with nosuid
-* limit available syscall -> seccomp-bpf, grsec
-* leak to another container (bug in namespaces, filesystem) -> user namespaces with different uid inside for each container: 1000 in container - 14293 and 15398 outside; security modules like selinux or apparmor
+* アプリケーションは常に信頼できないものとして扱う。そのことを意識する。
+* SUIDビット：nosuidでマウント。
+* 利用できるシステムコールをseccomp-bpfやgrsecで制限。
+* 名前空間やファイルシステムのバグによる他のコンテナへの漏出：ユーザー名前空間を使い、各コンテナで外部のUIDを変える。たとえば、コンテナ内のUID 1000を外部の14293や15398へ対応付ける。SELinuxやAppArmorなどのセキュリティモジュールを利用。
 
-2) cron、sshなどのシステムサービス
+2) cronやsshなどのシステムサービス
 
-* run as root -> isolate via bastion host or vm
-* using /dev -> "devices" control group
-The following device nodes are created in the container by default.
-The Docker images are also mounted with nodev, which means that even if a device node was pre-created in the image, it could not be used by processes within the container to talk to the kernel.
-/dev/console,/dev/null,/dev/zero,/dev/full,/dev/tty*,/dev/urandom,/dev/random,/dev/fuse
-* root calls -> capabilities (cap_sys_admin warning!)
-Here is the current list of capabilities that Docker uses: chown, dac_override, fowner, kill, setgid, setuid, setpcap, net_bind_service, net_raw, sys_chroot, mknod, setfcap, and audit_write.
-Docker removes several of these capabilities including the following:
-CAP_SETPCAP 	Modify process capabilities
-CAP_SYS_MODULE 	Insert/Remove kernel modules
-CAP_SYS_RAWIO 	Modify Kernel Memory
-CAP_SYS_PACCT 	Configure process accounting
-CAP_SYS_NICE 	Modify Priority of processes
-CAP_SYS_RESOURCE 	Override Resource Limits
-CAP_SYS_TIME 	Modify the system clock
-CAP_SYS_TTY_CONFIG 	Configure tty devices
-CAP_AUDIT_WRITE 	Write the audit log
-CAP_AUDIT_CONTROL 	Configure Audit Subsystem
-CAP_MAC_OVERRIDE 	Ignore Kernel MAC Policy
-CAP_MAC_ADMIN 	Configure MAC Configuration
-CAP_SYSLOG 	Modify Kernel printk behavior
-CAP_NET_ADMIN 	Configure the network
-CAP_SYS_ADMIN 	Catch all
-uses /proc, /sys -> remount ro, drop cap_sys_admin; security modules like selinux or apparmor; some part of this fs are "namespace-aware"
-Docker mounts these file systems into the container as "read-only" mount points.
-. /sys
-. /proc/sys
-. /proc/sysrq-trigger
-. /proc/irq
-. /proc/bus
-Copy-on-write file systems
-Docker uses copy-on-write file systems. This means containers can use the same file system image as the base for the container. When a container writes content to the image, it gets written to a container specific file system. This prevents one container from seeing the changes of another container even if they wrote to the same file system image. Just as important, one container can not change the image content to effect the processes in another container.
-* uid 0 -> user namespaces, uid 0 mappet to random uid outside
+* rootとして実行：踏み台ホストやVMで隔離。
+* /devを使用：devicesコントロールグループを利用。原文では、次のデバイスノードがコンテナ内にデフォルトで作成されるとされる。また、Dockerイメージはnodevでマウントされるため、イメージ内にあらかじめデバイスノードがあっても、コンテナ内のプロセスがそれを使ってカーネルと通信することはできないと説明されている：/dev/console、 /dev/null、 /dev/zero、 /dev/full、 /dev/tty*、 /dev/urandom、 /dev/random、 /dev/fuse。
+* rootが必要な呼び出し：capabilitiesを利用し、特にcap_sys_adminに注意。原文がDockerで使われるものとして挙げるのは、chown、dac_override、fowner、kill、setgid、setuid、setpcap、net_bind_service、net_raw、sys_chroot、mknod、setfcap、audit_write。原文にはDockerが除去するcapabilitiesの一覧もあり、ここでは両一覧の重複も含めて原記載を保持する。除去するものの一覧と説明は次のとおり。  
+  CAP_SETPCAP — プロセスのcapabilitiesを変更。  
+  CAP_SYS_MODULE — カーネルモジュールを挿入・除去。  
+  CAP_SYS_RAWIO — カーネルメモリを変更。  
+  CAP_SYS_PACCT — プロセスアカウンティングを設定。  
+  CAP_SYS_NICE — プロセスの優先度を変更。  
+  CAP_SYS_RESOURCE — リソース制限を上書き。  
+  CAP_SYS_TIME — システムクロックを変更。  
+  CAP_SYS_TTY_CONFIG — ttyデバイスを設定。  
+  CAP_AUDIT_WRITE — 監査ログへ書き込み。  
+  CAP_AUDIT_CONTROL — 監査サブシステムを設定。  
+  CAP_MAC_OVERRIDE — カーネルのMACポリシーを無視。  
+  CAP_MAC_ADMIN — MACの構成を設定。  
+  CAP_SYSLOG — カーネルのprintkの動作を変更。  
+  CAP_NET_ADMIN — ネットワークを設定。  
+  CAP_SYS_ADMIN — 広範な、包括的な権限。  
+  /procと/sysについて、原文は読み取り専用（ro）での再マウント、cap_sys_adminの除去、SELinuxやAppArmorなどのセキュリティモジュールの利用を挙げる。これらのファイルシステムの一部は名前空間に対応している。Dockerが読み取り専用でマウントするものとして、 /sys、 /proc/sys、 /proc/sysrq-trigger、 /proc/irq、 /proc/busを挙げている。  
+  コピーオンライトのファイルシステム：原文では、Dockerコンテナは基盤となるファイルシステムイメージを共有し、書き込みはコンテナ固有のファイルシステムへ行われると説明されている。同じ基盤イメージへ書き込んでも、一方のコンテナが他方の変更を見ることはなく、イメージの内容を変更して他のコンテナ内のプロセスへ影響させることもできない。
+* UID 0：ユーザー名前空間で、UID 0を外部のランダムなUIDへ対応付ける。
 
-3) デバイス、ネットワーク、ファイルシステムなどのシステムサービス
+3) デバイス・ネットワーク・ファイルシステムのシステムサービス
 
-* root -> more of services should work on host outside; isolate sensitive functions, run as non-privileged context
-* full privileges -> isolate on kernel level
+* root：より多くのサービスをコンテナ外のホストで動かす。慎重な扱いを要する機能を隔離し、非特権のコンテキストで実行。
+* 完全な権限：カーネルレベルで隔離。
 
-4) カーネルドライバー、ネットワークスタック、セキュリティポリシー
+4) カーネルドライバー・ネットワークスタック・セキュリティポリシー
 
-* absolute privileges -> run it in separate vm
+* 絶対的な権限：別のVMで実行。
 
-5) 一般的なもの、変更不可能なインフラ
+5) イミュータブルインフラなどの一般的な手法
 
-* container is ro
-* write to small separate rw nosuid part
+* コンテナを読み取り専用（ro）にする。
+* 書き込み先を、小さく分離された、nosuidでマウントする読み書き可能（rw）な領域に限定。
 
-[src](http://www.slideshare.net/jpetazzo/docker-linux-containers-lxc-and-security)
-[src](https://opensource.com/business/14/9/security-for-docker)
+[出典：Docker, Linux Containers (LXC), and security](http://www.slideshare.net/jpetazzo/docker-linux-containers-lxc-and-security)
+[出典：Bringing new security features to Docker](https://opensource.com/business/14/9/security-for-docker)
 
-<a id="technologies-for-security"></a>
-### セキュリティ技術
+### セキュリティ技術 <a id="technologies-for-security"></a>
 
-状況は改善されている。たとえば、ほとんどの現代のコンテナ技術は、Linuxが内蔵しているセキュリティツールを活用できる。これらのツールには、
-[AppArmor](http://wiki.apparmor.net/index.php/Main_Page), [SELinux](http://selinuxproject.org/page/Main_Page) および [Seccomp](http://man7.org/linux/man-pages/man2/seccomp.2.html) ポリシー;
-[Grsecurity](https://grsecurity.net/);
-[Control groups (cgroups)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Resource_Management_Guide/ch01.html);
-[Kernel namespaces](http://man7.org/linux/man-pages/man7/namespaces.7.html)
-[src](http://www.itworld.com/article/2920349/security/for-containers-security-is-problem-1.html)
+原文は、Linux組み込みのセキュリティツールによる改善を説明し、[AppArmor](http://wiki.apparmor.net/index.php/Main_Page)、[SELinux](http://selinuxproject.org/page/Main_Page)、[Seccomp](http://man7.org/linux/man-pages/man2/seccomp.2.html)のポリシー、[Grsecurity](https://grsecurity.net/)、[コントロールグループ（cgroups）](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Resource_Management_Guide/ch01.html)、[カーネル名前空間](http://man7.org/linux/man-pages/man7/namespaces.7.html)を挙げています。原文当時のコンテナ技術の多くで、これらを利用できると説明されています。[出典：For containers, security is problem #1](http://www.itworld.com/article/2920349/security/for-containers-security-is-problem-1.html)。
 
-もちろん、あなたはseccompを導入していますが、コンテナ内でselinuxを使用することはできません。なぜなら、ポリシーがネームスペースごとに設定されていないからです（?? lxcは各コンテナに対してapparmoreを使用しています...）
-[sVirt](http://selinuxproject.org/page/SVirt) - selinux for kvm
-[src](https://mjg59.dreamwidth.org/33170.html)
+原文では、seccompを導入しても、SELinuxのポリシーが名前空間ごとに設定されないため、コンテナ内でSELinuxは使えないとされています。一方で、LXCは各コンテナにAppArmorを使うのではないかという疑問も添えられています。また、[sVirt](http://selinuxproject.org/page/SVirt)をKVM向けのSELinuxとして挙げています。[出典：Linux Container Security](https://mjg59.dreamwidth.org/33170.html)。
 
-Major kernel subsystems are not namespaced like:
+原文が名前空間で分離されないものとして挙げる主要なカーネルサブシステムは次のとおりです。
+
 - SELinux
 - Cgroups
-- file systems under /sys
-- /proc/sys, /proc/sysrq-trigger, /proc/irq, /proc/bus
+- /sys以下のファイルシステム
+- /proc/sys、 /proc/sysrq-trigger、 /proc/irq、 /proc/bus
 
-Devices are not namespaced:
+デバイスや構成要素についても、次のものは名前空間で分離されないと記されています。
+
 - /dev/mem
-- /dev/sd* file system devices
-- kernel modules
+- /dev/sd*のファイルシステムデバイス
+- カーネルモジュール
 
-もし、これらのいずれかを特権プロセスとして通信したり攻撃できれば、システムを完全に制御できるのです。
-[src](https://opensource.com/business/14/7/docker-security-selinux)
+原文は、特権プロセスからこれらのいずれかと通信したり攻撃したりできる場合、システムを制御できてしまうと警告しています。[出典：Are Docker containers really secure?](https://opensource.com/business/14/7/docker-security-selinux)。
 
-<a id="another-information-sources"></a>
-## その他の情報源
+## その他の情報源 <a id="another-information-sources"></a>
 
-* [sysdig-container-ecosystem](https://github.com/draios/sysdig-container-ecosystem)
-コンテナやマイクロサービス周りの素晴らしい新しい技術のエコシステムは、少なくとも少し過剰に感じられる。私たちは、それらを少しでも助けられるかもしれないと考えた。ようこそ、コンテナエコシステムプロジェクトへ。
-* [doger.io](http://doger.io/)
-このページは、Linux上でコンテナの仕組みについての詳細を記録しようとするものである。これは、プログラム開発者がコンテナを実装したり、自らのコードにコンテナのような機能を導入するためのものにとどまらず、システム管理者やユーザーが、コンテナが内部でどのように動作しているかを理解するためのものでもある。
+* [sysdig-container-ecosystem](https://github.com/draios/sysdig-container-ecosystem) - コンテナやマイクロサービスを巡って登場する多くの技術を、読者が把握できるよう支援するContainer Ecosystem Project。
+
+* [doger.io](http://doger.io/) - Linuxコンテナの仕組みを詳しく記録する資料。コンテナや同様の機能を実装するプログラマーに加え、内部の動作を理解したいシステム管理者やユーザーも対象。
