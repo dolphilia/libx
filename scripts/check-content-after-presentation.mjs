@@ -27,9 +27,16 @@ const manifest = JSON.parse(fs.readFileSync(relative));
 fs.mkdirSync(path.join(root, '.tmp'), { recursive: true });
 const temporary = fs.mkdtempSync(path.join(root, '.tmp/presentation-content-'));
 try {
-  const tracked = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' })
-    .split('\0')
-    .filter(Boolean);
+  // Repository path lists can exceed child_process's default output buffer.
+  const trackedList = path.join(temporary, 'tracked-files');
+  const descriptor = fs.openSync(trackedList, 'w');
+  try {
+    execFileSync('git', ['ls-files', '-z'], { stdio: ['ignore', descriptor, 'pipe'] });
+  } finally {
+    fs.closeSync(descriptor);
+  }
+  const tracked = fs.readFileSync(trackedList, 'utf8').split('\0').filter(Boolean);
+  fs.rmSync(trackedList);
   // Include the newly staged implementation as well as the existing frozen packet.
   for (const file of tracked) {
     const target = path.join(temporary, file);
