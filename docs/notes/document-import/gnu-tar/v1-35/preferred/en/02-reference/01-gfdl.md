@@ -10,13 +10,7 @@ documentContext: [{"kind": "source", "html": "<section><h3>Libx GNU tar 1.35 Int
 <div class="center">Version 1.3, 3 November 2008
 </div>
 <div class="display">
-<pre class="display-preformatted">Copyright © 2000–2002, 2007–2008, 2022 Free Software
-Foundation, Inc.
-<a class="uref" href="https://fsf.org/">https://fsf.org/</a>
-
-Everyone is permitted to copy and distribute verbatim copies
-of this license document, but changing it is not allowed.
-</pre></div>
+<pre class="display-preformatted">Copyright © 2000–2002, 2007–2008, 2022 Free Software&#10;Foundation, Inc.&#10;<a class="uref" href="https://fsf.org/">https://fsf.org/</a>&#10;&#10;Everyone is permitted to copy and distribute verbatim copies&#10;of this license document, but changing it is not allowed.&#10;</pre></div>
 <ol class="enumerate" start="0">
 <li> PREAMBLE
 
@@ -443,22 +437,12 @@ the License in the document and put the following copyright and
 license notices just after the title page:
 </p>
 <div class="example smallexample">
-<div class="group"><pre class="example-preformatted">  Copyright (C)  <var class="var">year</var>  <var class="var">your name</var>.
-  Permission is granted to copy, distribute and/or modify this document
-  under the terms of the GNU Free Documentation License, Version 1.3
-  or any later version published by the Free Software Foundation;
-  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
-  Texts.  A copy of the license is included in the section entitled ``GNU
-  Free Documentation License''.
-</pre></div></div>
+<div class="group"><pre class="example-preformatted">  Copyright (C)  <var class="var">year</var>  <var class="var">your name</var>.&#10;  Permission is granted to copy, distribute and/or modify this document&#10;  under the terms of the GNU Free Documentation License, Version 1.3&#10;  or any later version published by the Free Software Foundation;&#10;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover&#10;  Texts.  A copy of the license is included in the section entitled ``GNU&#10;  Free Documentation License''.&#10;</pre></div></div>
 <p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
 replace the “with…Texts.” line with this:
 </p>
 <div class="example smallexample">
-<div class="group"><pre class="example-preformatted">    with the Invariant Sections being <var class="var">list their titles</var>, with
-    the Front-Cover Texts being <var class="var">list</var>, and with the Back-Cover Texts
-    being <var class="var">list</var>.
-</pre></div></div>
+<div class="group"><pre class="example-preformatted">    with the Invariant Sections being <var class="var">list their titles</var>, with&#10;    the Front-Cover Texts being <var class="var">list</var>, and with the Back-Cover Texts&#10;    being <var class="var">list</var>.&#10;</pre></div></div>
 <p>If you have Invariant Sections without Cover Texts, or some other
 combination of the three, merge those two alternatives to suit the
 situation.

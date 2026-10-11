@@ -1,7 +1,7 @@
 from pathlib import Path
 from bs4 import BeautifulSoup
-import json,re,hashlib,ast
-N=Path(__file__).resolve().parent;P=N/'preferred';G=json.loads((N/'CANONICAL_GENERATION.json').read_text());W=Path('/private/tmp/libx-gnu-tar-formal-964')
+import sys,json,re,hashlib,ast
+N=Path(__file__).resolve().parent;P=N/'preferred';G=json.loads((N/'CANONICAL_GENERATION.json').read_text());W=Path(sys.argv[1] if len(sys.argv)>1 else '/private/tmp/libx-gnu-tar-formal-964')
 # Inline markup is reused from each English paragraph through numbered placeholders.
 T=[[
 '{0}には、対象のファイル群やアーカイブに対して行う処理を指定・定義する、さまざまな引数を渡せます。{1}の主な引数は、操作とオプションの2種類に分かれます。',

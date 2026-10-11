@@ -1,7 +1,7 @@
 from pathlib import Path
 from bs4 import BeautifulSoup
-import json,re,hashlib
-N=Path(__file__).resolve().parent;P=N/'preferred';G=json.loads((N/'CANONICAL_GENERATION.json').read_text());W=Path('/private/tmp/libx-gnu-tar-formal-964');code=lambda s:'<code class="command">'+s+'</code>'
+import sys,json,re,hashlib
+N=Path(__file__).resolve().parent;P=N/'preferred';G=json.loads((N/'CANONICAL_GENERATION.json').read_text());W=Path(sys.argv[1] if len(sys.argv)>1 else '/private/tmp/libx-gnu-tar-formal-964');code=lambda s:'<code class="command">'+s+'</code>'
 T=[
 ['GNU <code class="command">tar</code>は、多くのファイルをひとまとめにした<em class="dfn">アーカイブ</em>を作成し、操作します。大量のデータを整理し、体系的に管理するための手段を提供するプログラムです。「tar」という名前はもともと「Tape ARchive」に由来しますが、アーカイブをテープに保存する必要はありません。実際、現在では通常テープには保存しません。'],
 ['この章の前半では、本書に繰り返し登場するさまざまな用語を紹介します。また、GNU <code class="command">tar</code>とその文書の開発に携わった人々や、バグ報告・意見の送付先についても説明します。',
