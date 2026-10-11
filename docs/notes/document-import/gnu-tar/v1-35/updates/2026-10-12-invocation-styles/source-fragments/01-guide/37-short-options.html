@@ -1,0 +1,51 @@
+<div class="subsection-level-extent" id="Short-Options">
+
+<h4 class="subsection" id="Short-Option-Style"><span>3.3.2 Short Option Style</span></h4>
+<a class="index-entry-id" id="index-short-options"></a>
+<a class="index-entry-id" id="index-options_002c-short-style"></a>
+<a class="index-entry-id" id="index-options_002c-traditional"></a>
+<p>Most options also have a <em class="dfn">short option</em> name.  Short options start with
+a single dash, and are followed by a single character, e.g., <samp class="option">-t</samp>
+(which is equivalent to <samp class="option">--list</samp>).  The forms are absolutely
+identical in function; they are interchangeable.
+</p>
+<p>The short option names are faster to type than long option names.
+</p>
+<a class="index-entry-id" id="index-arguments-to-short-options"></a>
+<a class="index-entry-id" id="index-short-options-with-mandatory-arguments"></a>
+<p>Short options which require arguments take their arguments immediately
+following the option, usually separated by white space.  It is also
+possible to stick the argument right after the short option name, using
+no intervening space.  For example, you might write <samp class="option">-f archive.tar</samp><!-- /@w --> or <samp class="option">-farchive.tar</samp> instead of using
+<samp class="option">--file=archive.tar</samp>.  Both <samp class="option">--file=<var class="var">archive-name</var></samp> and
+<samp class="option">-f <var class="var">archive-name</var></samp><!-- /@w --> denote the option which indicates a
+specific archive, here named <samp class="file">archive.tar</samp>.
+</p>
+<a class="index-entry-id" id="index-optional-arguments-to-short-options"></a>
+<a class="index-entry-id" id="index-short-options-with-optional-arguments"></a>
+<p>Short options which take optional arguments take their arguments
+immediately following the option letter, <em class="emph">without any intervening
+white space characters</em>.
+</p>
+<p>Short options’ letters may be clumped together, but you are not
+required to do this (as compared to old options; see below).  When
+short options are clumped as a set, use one (single) dash for them
+all, e.g., ‘<samp class="samp"><code class="command">tar</code> -cvf</samp>’<!-- /@w -->.  Only the last option in
+such a set is allowed to have an argument<a class="footnote" href="#FOOT3" id="DOCF3"><sup>3</sup></a>.
+</p>
+<p>When the options are separated, the argument for each option which requires
+an argument directly follows that option, as is usual for Unix programs.
+For example:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar -c -v -b 20 -f /dev/rmt0</kbd>
+</pre></div>
+<p>If you reorder short options’ locations, be sure to move any arguments
+that belong to them.  If you do not move the arguments properly, you may
+end up overwriting files.
+</p>
+<hr/>
+<h5 class="footnote-body-heading"><a href="#DOCF3" id="FOOT3">(3)</a></h5><p>Clustering many
+options, the last of which has an argument, is a rather opaque way to
+write options.  Some wonder if <abbr class="acronym">GNU</abbr> <code class="code">getopt</code> should not
+even be made helpful enough for considering such usages as invalid.</p></div>
