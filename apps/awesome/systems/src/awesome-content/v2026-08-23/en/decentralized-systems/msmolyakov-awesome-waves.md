@@ -1,48 +1,15 @@
 ---
 title: "Awesome Waves"
-description: "A curated collection of resources and projects focused on Waves."
+description: "Waves dApp development: Ride learning materials, wallets, explorers, test networks, client libraries, projects, and developer communities."
+toc:
+  minLevel: 2
+  maxLevel: 4
 licenseSource: "github-msmolyakov-awesome-waves-readme-md"
 ---
 
 # Awesome Waves
 
-A curated collection of resources and projects focused on Waves.
-
-## Contents
-
-- [Official](#official)
-- [Learn](#learn)
-- [Articles](#articles)
-- [Products](#products)
-  - [Wallet](#wallet)
-  - [Explorer](#explorer)
-  - [Other](#other)
-- [Playground](#playground)
-  - [Testnet](#testnet)
-  - [Stagenet](#stagenet)
-  - [Docker images](#docker-images)
-- [Frameworks and tools](#frameworks-and-tools)
-  - [The Ride programming language](#the-ride-programming-language)
-  - [Client libraries](#client-libraries)
-  - [Blockchain utils](#blockchain-utils)
-  - [Other tools](#other-tools)
-- [Built on Waves](#built-on-waves)
-  - [Catalogs](#catalogs)
-  - [Games](#games)
-  - [Projects](#projects)
-- [Community](#community)
-  - [International](#international)
-  - [Africa](#africa)
-  - [Dutch](#dutch)
-  - [French](#french)
-  - [Greek](#greek)
-  - [Hindi](#hindi)
-  - [Japanese](#japanese)
-  - [Philippine](#philippine)
-  - [Portuguese](#portuguese)
-  - [Russian](#russian)
-  - [Spanish](#spanish)
-  - [Turkish](#turkish)
+[Waves](https://wavesprotocol.org/) is an open-source blockchain platform and development toolset for Web 3.0 applications and decentralized solutions. This list covers Ride learning materials, wallets and explorers, Testnet and Stagenet, client libraries, tools, projects built on Waves, and developer communities.
 
 ## Official
 
@@ -53,19 +20,19 @@ A curated collection of resources and projects focused on Waves.
 
 ## Learn
 
-- [Ride introduction](https://github.com/wavesplatform/ride-introduction) - Shortest and simplest explanation of Ride.\
+- [Ride introduction](https://github.com/wavesplatform/ride-introduction) - A short introduction to Ride.\
 Available in other languages: [French](https://medium.com/@crashartifacts/introduction-%C3%A0-ride-ad6c413f98ee).
 - [Mastering Web3 with Waves](https://stepik.org/course/54415) - The dApps programming online course on Stepik.\
-Available in other languages: [Deutsch](https://stepik.org/course/56101), [Dutch](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/stepik.org/course/56120), [French](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/stepik.org/course/55963), [Greek](https://stepik.org/course/56168), [Hindi](https://stepik.org/course/56024), [Japanese](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/stepik.org/course/56157), [Portuguese](https://stepik.org/course/56162), [Russian](https://stepik.org/course/56401), [Spanish](https://stepik.org/course/56010), [Turkish](https://stepik.org/course/56131).
+Available in other languages: [Deutsch](https://stepik.org/course/56101), [Dutch](https://stepik.org/course/56120), [French](https://stepik.org/course/55963), [Greek](https://stepik.org/course/56168), [Hindi](https://stepik.org/course/56024), [Japanese](https://stepik.org/course/56157), [Portuguese](https://stepik.org/course/56162), [Russian](https://stepik.org/course/56401), [Spanish](https://stepik.org/course/56010), [Turkish](https://stepik.org/course/56131).
 - [Mastering Web3 with Waves (on Medium)](https://medium.com/mastering-web3-with-waves) - All materials of the Stepik course as articles on Medium.\
-Available in other languages: [Deutcsh](https://medium.com/web3withwavesde), [Dutch](https://medium.com/leer-web3-0-met-waves), [French](https://medium.com/ma%C3%AEtriser-le-web-3-0-avec-waves), [Hindi](https://link.medium.com/D6jo2gBtw5), [Portuguese](https://medium.com/dominando-web-3-0-com-waves), [Spanish](https://medium.com/dominando-web3-0-con-waves).
+Available in other languages: [Deutsch](https://medium.com/web3withwavesde), [Dutch](https://medium.com/leer-web3-0-met-waves), [French](https://medium.com/ma%C3%AEtriser-le-web-3-0-avec-waves), [Hindi](https://link.medium.com/D6jo2gBtw5), [Portuguese](https://medium.com/dominando-web-3-0-com-waves), [Spanish](https://medium.com/dominando-web3-0-con-waves).
 - [Ride Cheat Sheet PNG](https://www.signature-chain.com/web3-pdf/cheat-sheet.png) - Quick overview of important Ride key points.\
 Available in other format: [PDF](https://www.signature-chain.com/web3-pdf/cheat-sheet.pdf) - [PSD](https://www.signature-chain.com/web3-pdf/cheat-sheet.psd) ([Font](https://fonts.google.com/specimen/Open+Sans)).\
 Available in other languages: [PNG French](https://www.signature-chain.com/web3-pdf/cheat-sheet_FR.png) - [PDF French](https://www.signature-chain.com/web3-pdf/cheat-sheet_FR.pdf).
 
 ## Articles
 
-- [How to Build, Deploy and Test a Waves Ride dApp](https://medium.com/wavesprotocol/how-to-build-deploy-and-test-a-waves-ride-dapp-785311f58c2) - How to write simple decentralized appication(dApp) and run it on Waves node. ([ru](https://habr.com/ru/company/waves/blog/459773/))
+- [How to Build, Deploy and Test a Waves Ride dApp](https://medium.com/wavesprotocol/how-to-build-deploy-and-test-a-waves-ride-dapp-785311f58c2) - How to write a simple decentralized application (dApp) and run it on a Waves node. ([ru](https://habr.com/ru/company/waves/blog/459773/))
 - [How to: Waves dApps — DAO. Example using Ride-language for smart contracts](https://medium.com/@alexpupyshev/how-to-waves-dapps-dao-example-using-ride-language-for-smart-contracts-3b0ca55e48a8) - How to create the simple DAO dApp for voting and collective investing in projects. ([ru](https://habr.com/ru/post/447808/))
 - [How to: Waves dApps — Prediction Markets example with Ride-language. Part 1](https://medium.com/@alexpupyshev/how-to-waves-dapps-prediction-markets-example-with-ride-language-part-1-27b642f2fd0d) - How to create the simple Prediction Market dApp (like Augur or Gnosis) to create new markets, trade shares and win if the prediction will come true.
 - [Simple voting on the Waves blockchain](https://docs.wavesprotocol.org/en/smart-contracts/simple-voting-on-the-waves-blockchain.html) - The head of the HOA (homeowners association) asks the tenants of the building: "Dear residents, do you agree with the construction of the kids' playground in the yard of your building?". Objective: implement such voting among tenants on the Waves blockchain.
@@ -99,11 +66,11 @@ Available in other languages: [PNG French](https://www.signature-chain.com/web3-
 
 ### Other
 
-- [WavesLabs](https://waveslabs.com/) - An initiative to support talented developers and promising startups focused on building the decentralised technologies that will form the backbone to Web 3.0.
+- [WavesLabs](https://waveslabs.com/) - An initiative supporting developers and startups building decentralised technologies for Web 3.0.
 - [Node](https://github.com/wavesplatform/Waves) - Waves Node repository on GitHub.
 - [GRPC Server](https://grpc.wavesnodes.com:6870) - Public GRPC interface for Mainnet.
 - [Go Node](https://github.com/wavesplatform/gowaves) - Go libraries and tools for Waves blockchain, alternative implementation of Node (work in progress).
-- [Waves Data Service](https://api.wavesplatform.com/v0/docs/#/) - Official data service. Simple and convenient way to get data from Waves blockchain.
+- [Waves Data Service](https://api.wavesplatform.com/v0/docs/#/) - Official service for retrieving data from the Waves blockchain.
 - [Waves Oracles](https://oracles.wavesexplorer.com/) - Catalog of Oracles.
 - [Token Rating](https://tokenrating.wavesexplorer.com) - Provides a means to rate and aggregate the opinions of the entire Waves community about tokens (projects) issued on the Waves platform.
 - [WavesCap](https://wavescap.com/) - CoinMarketCap for Waves assets.
@@ -113,7 +80,7 @@ Available in other languages: [PNG French](https://www.signature-chain.com/web3-
 
 ### Testnet
 
-Testnet is stable network and has fully copied configurations and nodes version from mainnet, but allows to earn free Waves tokens to test something what you need.
+The fixed README describes Testnet as a stable network with the same configuration and node version as Mainnet. Free Waves tokens are available for testing.
 
 - [Explorer](https://wavesexplorer.com/testnet) - Official testnet explorer. It has a [faucet](https://wavesexplorer.com/testnet/faucet) for getting a few free Waves tokens.
 - [Node API](https://nodes-testnet.wavesnodes.com/) - API of testnet nodes.
@@ -121,7 +88,7 @@ Testnet is stable network and has fully copied configurations and nodes version 
 
 ### Stagenet
 
-Stagenet is unstable network to test release candidates of the official Waves products before shipping these to the Mainnet and Testnet. But you can also to earn free Waves tokens to test something what you need. For example, a compatibility of your service or DApp with an upcoming releases.
+Stagenet is an unstable network for testing release candidates of official Waves products before deployment to Mainnet and Testnet. Free Waves tokens are available for testing, including compatibility of your service or dApp with upcoming releases.
 
 - [Explorer](https://wavesexplorer.com/stagenet) - Official explorer. It has a [faucet](https://wavesexplorer.com/stagenet/faucet) for getting a few free Waves tokens.
 - [Node API](https://nodes-stagenet.wavesnodes.com/) - Swagger REST API of Waves Node.
@@ -131,7 +98,7 @@ Stagenet is unstable network to test release candidates of the official Waves pr
 
 - [WavesNode](https://hub.docker.com/r/wavesplatform/wavesnode) - Docker Image for Waves Platform node. Supports any official or custom networks.
 - [K8s by loxal](https://hub.docker.com/r/loxal/waves-node) - The container was built in order to run as a fire-and-forget `StatefulSet` in a Kubernetes cluster.
-- [waves-private-node](https://hub.docker.com/r/wavesplatform/waves-private-node) - Private local Waves Node. The easiest way to run your own isolated node to develop smart contracts and any experiments.
+- [waves-private-node](https://hub.docker.com/r/wavesplatform/waves-private-node) - Private local Waves Node. Run an isolated node for smart-contract development and experiments.
 - [explorer](https://hub.docker.com/r/wavesplatform/explorer) - Waves Explorer for your node.
 
 ## Frameworks and tools
@@ -184,7 +151,7 @@ Stagenet is unstable network to test release candidates of the official Waves pr
 
 ### Other tools
 - [sh-Ride-brush](https://github.com/msmolyakov/sh-Ride-brush) - SyntaxHighlighter brush for the Ride language.
-- [Ride for Pygments](https://github.com/pygments/pygments/blob/master/pygments/lexers/ride.py) - The [Pygments](https://github.com/pygments/pygments) highlighter oficially supports the Ride out of the box.
+- [Ride for Pygments](https://github.com/pygments/pygments/blob/master/pygments/lexers/ride.py) - The [Pygments](https://github.com/pygments/pygments) highlighter officially supports the Ride out of the box.
 
 ## Built on Waves
 
@@ -194,21 +161,21 @@ Stagenet is unstable network to test release candidates of the official Waves pr
 - [dAppOcean](https://www.dappocean.io/) - Ecosystem of decentralized applications based on the Waves blockchain.
 
 ### Games
-- [NyanCat: The Crypto Race](https://nyancat.io/) - Build your own Nyan Cat collection, race against other players and get your reward in weekly Leaderboards with the prize fund up to $2000!
+- [NyanCat: The Crypto Race](https://nyancat.io/) - Collect Nyan Cats and race other players. The fixed README describes weekly leaderboards with a prize fund of up to $2000.
 - [Shadow Era](http://www.shadowera.com/) - Shadow Era is a free to play online collectible trading card game for iOS, Android, PC and Mac.
 - [Coin Flip](https://www.coin-flip.io/) - Choose the coin side, make a bet and see if you are lucky.
 - [Dice Roller](https://www.dice-roller.io/) - Choose the dice sides, make a bet and see if you are lucky.
-- [Ride On Waves](https://www.waves-rider.io/) - You can choose how many WAVES you want to bet. This is the game with a floating bet from 0.5 and up to 6 WAVES.
+- [Ride On Waves](https://www.waves-rider.io/) - A game with adjustable bets, described in the fixed README as ranging from 0.5 to 6 WAVES.
 
 ### Projects
 
 - [Neutrino](https://github.com/ventuary-lab/neutrino-contract) - An algorithmic price-stable cryptocurrency protocol collateralized by WAVES token.
 - [Billy](https://iambilly.app) - A motivation tool for teams. Billy offers a product to create an atmosphere of cooperation, focus the company on the core values, and incentivize sharing by creating an in-team economy.
 - [Ventuary-DAO](https://alpha.ventuary.space/) - Sandbox dedicated to filtering dApp ideas and stimulating the Waves community to take part in Web 3.0 adoption.
-- [Tokenomica](https://tokenomica.com/) - Security Tokens Issuance Platform. Create and trade digital assets with ease and confidence.
+- [Tokenomica](https://tokenomica.com/) - Security Tokens Issuance Platform. Create and trade digital assets.
 - [LIGA](https://ligatokens.io/) - A platform with tokenized sport events, enabling you to deal with real-time rates and to trade your personal predictions with others.
 - [WaveFlow](https://waveflow.xyz/) - Allows you to create new or use existing exchangers that provide a constant supply and demand for certain traded pairs. Algorithmic pricing is used to ensure consistency of supply and demand - the more popular the token is, the higher its price is set. Each exchanger is a dApp written in Ride ([example of trading bot](https://github.com/vlzhr/waveflow-trading-bot)).
-- [Lombardini](https://lombardini.io/) - Borrow WBTC for WAVES instantly.
+- [Lombardini](https://lombardini.io/) - Borrow WBTC against WAVES; described in the fixed README as instant.
 - [Blockchain Cars](http://blockchaincars.io/) - Transport as a Service.
 - [WavesAffi](https://github.com/bettexproject/WavesAffi) - Decentralized affiliate program on Waves blockchain.
 - [One Million Pixel Waves](https://www.onemillionpixelwaves.com/) - Smart Contract powered website entirely running on the Waves blockchain where anyone can own a piece of the blockchain and immortalize it with an image and a link.
@@ -224,7 +191,7 @@ Stagenet is unstable network to test release candidates of the official Waves pr
 - [Discord](https://discordapp.com/invite/cnFmDyA) - Official Discord.
 - [Waves Community Portal](https://wavescommunity.com/) - Official portal features some of the tools and projects that make up Waves ecosystem.
 - [Waves Community Forum](https://forum.wavesplatform.com/) - Official forum.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/wavesplatform) - The best place to ask your tech questions. Use tags `wavesplatform` and `ride`.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/wavesplatform) - A place to ask technical questions. Use tags `wavesplatform` and `ride`.
 
 ### Africa
 
@@ -232,53 +199,45 @@ Stagenet is unstable network to test release candidates of the official Waves pr
 
 ### Dutch
 
-- [Telegram](https://t.me/wavesdappsnl) - Telegram-chat voor ontwikkelaars dApps.
+- [Telegram](https://t.me/wavesdappsnl) - Telegram chat for dApp developers.
 
 ### French
 
-- [Telegram](https://t.me/wavesdappsFR) - Chat Telegram pour les développeurs dApps.
-- [Dev France on Youtube](https://www.youtube.com/channel/UC2DS9ktTKWGW3NHHV2Ja3_A) - Une chaîne dédiée à l'apprentissage du développement d'applications décentralisées (dApp) sur la Blockchain Waves.
+- [Telegram](https://t.me/wavesdappsFR) - Telegram chat for dApp developers.
+- [Dev France on Youtube](https://www.youtube.com/channel/UC2DS9ktTKWGW3NHHV2Ja3_A) - A channel for learning to develop decentralized applications (dApps) on the Waves blockchain.
 - [Dev France on Facebook](https://www.facebook.com/wavesfr)
 - [Dev France on Twitter](https://twitter.com/WavesDevFr)
 
 ### Greek
 
-- [Telegram](https://t.me/wavesdappsgr) - Telegram κοινότητα για προγραμματιστές dApps.
+- [Telegram](https://t.me/wavesdappsgr) - Telegram community for dApp developers.
 
 ### Hindi
 
-- [Telegram](https://t.me/wavesdappsid) - सॉफ्टवेयर डेवलपर्स के लिए टेलीग्राम चैट.
+- [Telegram](https://t.me/wavesdappsid) - Telegram chat for software developers.
 
 ### Japanese
 
-- [Telegram](https://t.me/wavesjapandevs) - DApps開発者のためのTelegramチャット.
+- [Telegram](https://t.me/wavesjapandevs) - Telegram chat for dApp developers.
 
 ### Philippine
 
-- [Telegram](https://t.me/wavesDevPh) - Telegram Waves Developers Philippines.
+- [Telegram](https://t.me/wavesDevPh) - Telegram for Waves developers in the Philippines.
 
 ### Portuguese
 
-- [Telegram - WavesBrasil](https://t.me/WavesBrasil) - Chat de Telegram para a Comunidade da Waves.
-- [Telegram - Waves Dev Jedi 🇧🇷 🇵🇹](https://t.me/joinchat/DtIEA0mI2HvmVbyBBodOew) - Chat de Telegram para desenvolvedores dApps.
-- [Telegram - Waves Portugal](https://t.me/WavesPortugal) - Chat da Comunidade Portuguesa da Waves.
+- [Telegram - WavesBrasil](https://t.me/WavesBrasil) - Telegram chat for the Waves community.
+- [Telegram - Waves Dev Jedi (Brazil / Portugal)](https://t.me/joinchat/DtIEA0mI2HvmVbyBBodOew) - Telegram chat for dApp developers.
+- [Telegram - Waves Portugal](https://t.me/WavesPortugal) - Telegram chat for the Portuguese Waves community.
 
 ### Russian
 
-- [Telegram](https://t.me/tradisys_russia) - Telegram чат для разработчиков dApps.
+- [Telegram](https://t.me/tradisys_russia) - Telegram chat for dApp developers.
 
 ### Spanish
 
-- [Telegram](https://t.me/wavesdappsES) - Telegram chat para desarrolladores de dApps.
+- [Telegram](https://t.me/wavesdappsES) - Telegram chat for dApp developers.
 
 ### Turkish
 
-- [Telegram](https://t.me/wavesdappstu) - Yazılım geliştiriciler için Telegram sohbet.
-
-## Contribute
-
-Contributions welcome!
-
-If you have found some great things or want to fix something, feel free to send a Pull Request. Read the [contribution guidelines](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/CONTRIBUTING.md) first.
-
-I'll be glad your suggestions!
+- [Telegram](https://t.me/wavesdappstu) - Telegram chat for software developers.
