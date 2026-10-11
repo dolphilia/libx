@@ -1,0 +1,36 @@
+<div class="gnu-sed-original-content" id="uniq-_002dd">
+<h3 class="section" id="Print-Duplicated-Lines-of-Input"><span>7.19 Print Duplicated Lines of Input</span></h3>
+<p>This script prints only duplicated lines, like ‘<samp class="samp">uniq -d</samp>’.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+</pre><div class="group"><pre class="example-preformatted">$b
+N
+/^\(.*\)\n\1$/ {
+    # Print the first of the duplicated lines
+    s/.*\n//
+    p
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">    # Loop until we get a different line
+    :b
+    $b
+    N
+    /^\(.*\)\n\1$/ {
+        s/.*\n//
+        bb
+    }
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># The last line cannot be followed by duplicates
+$b
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Found a different one.  Leave it alone in the pattern space
+# and go back to the top, hunting its duplicates
+D
+</pre></div></div>
+<hr/>
+</div>

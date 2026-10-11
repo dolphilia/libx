@@ -1,0 +1,37 @@
+<div class="gnu-sed-original-content" id="uniq-_002du">
+<h3 class="section" id="Remove-All-Duplicated-Lines"><span>7.20 Remove All Duplicated Lines</span></h3>
+<p>This script prints only unique lines, like ‘<samp class="samp">uniq -u</samp>’.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+</pre><div class="group"><pre class="example-preformatted"># Search for a duplicate line --- until that, print what you find.
+$b
+N
+/^\(.*\)\n\1$/ ! {
+    P
+    D
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">:c
+# Got two equal lines in pattern space.  At the
+# end of the file we simply exit
+$d
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Else, we keep reading lines with <code class="code">N</code> until we
+# find a different one
+s/.*\n//
+N
+/^\(.*\)\n\1$/ {
+    bc
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Remove the last instance of the duplicate line
+# and go back to the top
+D
+</pre></div></div>
+<hr/>
+</div>

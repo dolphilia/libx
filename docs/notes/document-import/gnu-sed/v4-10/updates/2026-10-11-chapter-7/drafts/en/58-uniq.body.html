@@ -1,0 +1,36 @@
+<div class="gnu-sed-original-content" id="uniq">
+<h3 class="section" id="Make-Duplicate-Lines-Unique"><span>7.18 Make Duplicate Lines Unique</span></h3>
+<p>This is an example of the art of using the <code class="code">N</code>, <code class="code">P</code>
+and <code class="code">D</code> commands, probably the most difficult to master.
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">#!/usr/bin/sed -f
+h
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">:b
+# On the last line, print and exit
+$b
+N
+/^\(.*\)\n\1$/ {
+    # The two lines are identical.  Undo the effect of
+    # the n command.
+    g
+    bb
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># If the <code class="code">N</code> command had added the last line, print and exit
+$b
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># The lines are different; print the first and go
+# back working on the second.
+P
+D
+</pre></div></div>
+<p>As you can see, we maintain a 2-line window using <code class="code">P</code> and <code class="code">D</code>.
+This technique is often used in advanced <code class="command">sed</code> scripts.
+</p>
+<hr/>
+</div>

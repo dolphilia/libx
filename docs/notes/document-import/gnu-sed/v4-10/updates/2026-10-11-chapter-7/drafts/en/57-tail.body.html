@@ -1,0 +1,54 @@
+<div class="gnu-sed-original-content" id="tail">
+<h3 class="section" id="Printing-the-Last-Lines"><span>7.17 Printing the Last Lines</span></h3>
+<p>Printing the last <var class="var">n</var> lines rather than the first is more complex
+but indeed possible.  <var class="var">n</var> is encoded in the second line, before
+the bang character.
+</p>
+<p>This script is similar to the <code class="command">tac</code> script in that it keeps the
+final output in the hold space and prints it at the end:
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+</pre><div class="group"><pre class="example-preformatted">1! {; H; g; }
+1,10 !s/[^\n]*\n//
+$p
+h
+</pre></div></div>
+<p>Mainly, the scripts keeps a window of 10 lines and slides it
+by adding a line and deleting the oldest (the substitution command
+on the second line works like a <code class="code">D</code> command but does not
+restart the loop).
+</p>
+<p>The “sliding window” technique is a very powerful way to write
+efficient and complex <code class="command">sed</code> scripts, because commands like
+<code class="code">P</code> would require a lot of work if implemented manually.
+</p>
+<p>To introduce the technique, which is fully demonstrated in the
+rest of this chapter and is based on the <code class="code">N</code>, <code class="code">P</code>
+and <code class="code">D</code> commands, here is an implementation of <code class="command">tail</code>
+using a simple “sliding window.”
+</p>
+<p>This looks complicated but in fact the working is the same as
+the last script: after we have kicked in the appropriate number
+of lines, however, we stop using the hold space to keep inter-line
+state, and instead use <code class="code">N</code> and <code class="code">D</code> to slide pattern
+space by one line:
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+</pre><div class="group"><pre class="example-preformatted">1h
+2,10 {; H; g; }
+$q
+1,9d
+N
+D
+</pre></div></div>
+<p>Note how the first, second and fourth line are inactive after
+the first ten lines of input.  After that, all the script does
+is: exiting on the last line of input, appending the next input
+line to pattern space, and removing the first line.
+</p>
+<hr/>
+</div>

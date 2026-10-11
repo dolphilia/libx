@@ -1,0 +1,41 @@
+<div class="gnu-sed-original-content" id="Centering-lines">
+<h3 class="section" id="Centering-Lines"><span>7.2 Centering Lines</span></h3>
+<p>This script centers all lines of a file on a 80 columns width.
+To change that width, the number in <code class="code">\{…\}</code> must be
+replaced, and the number of added spaces also must be changed.
+</p>
+<p>Note how the buffer commands are used to separate parts in
+the regular expressions to be matched—this is a common
+technique.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+</pre><div class="group"><pre class="example-preformatted"># Put 80 spaces in the buffer
+1 {
+  x
+  s/^$/          /
+  s/^.*$/&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;/
+  x
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># delete leading and trailing spaces
+y/<kbd class="kbd"><kbd class="key">TAB</kbd></kbd>/ /
+s/^ *//
+s/ *$//
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># add a newline and 80 spaces to end of line
+G
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># keep first 81 chars (80 + a newline)
+s/^\(.\{81\}\).*$/\1/
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># \2 matches half of the spaces, which are moved to the beginning
+s/^\(.*\)\n\(.*\)\2/\2\1/
+</pre></div></div>
+<hr/>
+</div>

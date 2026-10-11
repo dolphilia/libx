@@ -1,0 +1,84 @@
+{
+  "slug": "57-tail",
+  "bodySHA256": "a04e45acd9d588e849b9644c28863e394baa56ca4ec2459504e67c0d61c3dea8",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧7.17 Printing the Last Lines⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Printing-the-Last-Lines\"><span>7.17 Printing the Last Lines</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Printing the last ⟦0⟧ lines rather than the first is more complex but indeed possible. ⟦1⟧ is encoded in the second line, before the bang character.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">n</var>",
+        "⟦1⟧": "<var class=\"var\">n</var>"
+      },
+      "sourceHTML": "<p>Printing the last <var class=\"var\">n</var> lines rather than the first is more complex\nbut indeed possible.  <var class=\"var\">n</var> is encoded in the second line, before\nthe bang character.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "This script is similar to the ⟦0⟧ script in that it keeps the final output in the hold space and prints it at the end:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">tac</code>"
+      },
+      "sourceHTML": "<p>This script is similar to the <code class=\"command\">tac</code> script in that it keeps the\nfinal output in the hold space and prints it at the end:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Mainly, the scripts keeps a window of 10 lines and slides it by adding a line and deleting the oldest (the substitution command on the second line works like a ⟦0⟧ command but does not restart the loop).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">D</code>"
+      },
+      "sourceHTML": "<p>Mainly, the scripts keeps a window of 10 lines and slides it\nby adding a line and deleting the oldest (the substitution command\non the second line works like a <code class=\"code\">D</code> command but does not\nrestart the loop).\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "The “sliding window” technique is a very powerful way to write efficient and complex ⟦0⟧ scripts, because commands like ⟦1⟧ would require a lot of work if implemented manually.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">sed</code>",
+        "⟦1⟧": "<code class=\"code\">P</code>"
+      },
+      "sourceHTML": "<p>The “sliding window” technique is a very powerful way to write\nefficient and complex <code class=\"command\">sed</code> scripts, because commands like\n<code class=\"code\">P</code> would require a lot of work if implemented manually.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "To introduce the technique, which is fully demonstrated in the rest of this chapter and is based on the ⟦0⟧, ⟦1⟧ and ⟦2⟧ commands, here is an implementation of ⟦3⟧ using a simple “sliding window.”",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<code class=\"code\">P</code>",
+        "⟦2⟧": "<code class=\"code\">D</code>",
+        "⟦3⟧": "<code class=\"command\">tail</code>"
+      },
+      "sourceHTML": "<p>To introduce the technique, which is fully demonstrated in the\nrest of this chapter and is based on the <code class=\"code\">N</code>, <code class=\"code\">P</code>\nand <code class=\"code\">D</code> commands, here is an implementation of <code class=\"command\">tail</code>\nusing a simple “sliding window.”\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "This looks complicated but in fact the working is the same as the last script: after we have kicked in the appropriate number of lines, however, we stop using the hold space to keep inter-line state, and instead use ⟦0⟧ and ⟦1⟧ to slide pattern space by one line:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<code class=\"code\">D</code>"
+      },
+      "sourceHTML": "<p>This looks complicated but in fact the working is the same as\nthe last script: after we have kicked in the appropriate number\nof lines, however, we stop using the hold space to keep inter-line\nstate, and instead use <code class=\"code\">N</code> and <code class=\"code\">D</code> to slide pattern\nspace by one line:\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Note how the first, second and fourth line are inactive after the first ten lines of input. After that, all the script does is: exiting on the last line of input, appending the next input line to pattern space, and removing the first line.",
+      "tokens": {},
+      "sourceHTML": "<p>Note how the first, second and fourth line are inactive after\nthe first ten lines of input.  After that, all the script does\nis: exiting on the last line of input, appending the next input\nline to pattern space, and removing the first line.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

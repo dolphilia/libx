@@ -1,0 +1,89 @@
+<div class="gnu-sed-original-content" id="cat-_002ds">
+<h3 class="section" id="Squeezing-Blank-Lines"><span>7.21 Squeezing Blank Lines</span></h3>
+<p>As a final example, here are three scripts, of increasing complexity
+and speed, that implement the same function as ‘<samp class="samp">cat -s</samp>’, that is
+squeezing blank lines.
+</p>
+<p>The first leaves a blank line at the beginning and end if there are
+some already.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+</pre><div class="group"><pre class="example-preformatted"># on empty lines, join with next
+# Note there is a star in the regexp
+:x
+/^\n*$/ {
+N
+bx
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># now, squeeze all '\n', this can be also done by:
+# s/^\(\n\)*/\1/
+s/\n*/\
+/
+</pre></div></div>
+<p>This one is a bit more complex and removes all empty lines
+at the beginning.  It does leave a single blank line at end
+if one was there.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+</pre><div class="group"><pre class="example-preformatted"># delete all leading empty lines
+1,/^./{
+/./!d
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># on an empty line we remove it and all the following
+# empty lines, but one
+:x
+/./!{
+N
+s/^\n$//
+tx
+}
+</pre></div></div>
+<p>This removes leading and trailing blank lines.  It is also the
+fastest.  Note that loops are completely done with <code class="code">n</code> and
+<code class="code">b</code>, without relying on <code class="command">sed</code> to restart the
+script automatically at the end of a line.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+</pre><div class="group"><pre class="example-preformatted"># delete all (leading) blanks
+/./!d
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># get here: so there is a non empty
+:x
+# print it
+p
+# get next
+n
+# got chars? print it again, etc...
+/./bx
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># no, don't have chars: got an empty line
+:z
+# get next, if last line we finish here so no trailing
+# empty lines are written
+n
+# also empty? then ignore it, and get next... this will
+# remove ALL empty lines
+/./!bz
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># all empty lines were deleted/ignored, but we have a non empty.  As
+# what we want to do is to squeeze, insert a blank line artificially
+i\
+</pre></div><pre class="example-preformatted">
+
+bx
+</pre></div>
+<hr/>
+</div>
