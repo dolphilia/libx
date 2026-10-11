@@ -1,124 +1,90 @@
 ---
-title: "Awesome Heroku"
-description: "Herokuを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
-licenseSource: "github-ianstormtaylor-awesome-heroku-readme-md"
+title: Awesome Heroku
+description: Herokuのデプロイ、設計、データベース、スケーリング、会社の歴史、移行先を扱う固定原文の資料。
+licenseSource: github-ianstormtaylor-awesome-heroku-readme-md
+documentContext:
+  - kind: source
+    html: >-
+      <p>このリストは<a
+      href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>で提供されています。法律で認められる範囲で、<a
+      href="http://ianstormtaylor.com">Ian Storm
+      Taylor</a>はこの作品に関するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
 ---
+# Awesome Heroku<a id="-ライセンス"></a>
 
-# Awesome Heroku
+Herokuのデプロイと設計のガイド、開発・データベースの資料、スケーリング用ツール、会社の歴史、移行先の候補を探せます。製品名、ベータ版の表記、サービスの説明は固定原文当時の記載です。
 
-Herokuを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+## 分析 <a id="-分析"></a>
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/analytics.png" /> 分析
+- ツール: [Metabase](http://www.metabase.com/docs/v0.13.3/operations-guide/running-metabase-on-heroku.html) — Herokuへ直接デプロイできるベータ版アプリ。固定原文の説明では「Metadata」と表記。
 
-Heroku の分析ツールです。
+## アーキテクチャ <a id="-アーキテクチャ"></a>
 
-- `tool` [Metabase](http://www.metabase.com/docs/v0.13.3/operations-guide/running-metabase-on-heroku.html) — Heroku に直接デプロイできるアプリとして提供される、Metabase のベータ版です。
+- 記事: [Exploring Microservices Architecure on Heroku](http://blog.codeship.com/exploring-microservices-architecture-on-heroku/) — マイクロサービスに必要な多くのツールをHerokuが不要にする理由を解説。
+- 記事: [Heroku and SOA](https://www.rdegges.com/2014/heroku-and-soa/) — Herokuがサービス指向アーキテクチャに適する理由を解説。
+- 記事: [Split Frontend from Backend on Heroku with npm and NodeJS](https://medium.com/@spygi/scalable-cost-effective-web-architectures-for-heroku-eb8f1f55a4b6) — npmとNodeJSを使い、マイクロサービスのウェブアプリをHerokuへデプロイする実践ガイド。
 
+## ブログ <a id="-ブログ"></a>
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/architecture.png" /> アーキテクチャ
+- ブログ: [Heroku Blog](https://blog.heroku.com) — Herokuの公式ブログ。
 
-Heroku プロジェクトを設計する方法です。
+## デプロイ <a id="-デプロイ"></a>
 
-- `article` [Heroku のマイクロサービスアーキテクチャを探る](http://blog.codeship.com/exploring-microservices-architecture-on-heroku/) — マイクロサービスを扱う際に考慮すべき多くのツールを Heroku が不要にする理由を解説します。
-- `article` [Heroku と SOA](https://www.rdegges.com/2014/heroku-and-soa/) — Heroku がプロジェクトのサービス指向アーキテクチャ構築に最適な理由を論じます。
-- `article` [npm と NodeJS を使って Heroku 上でフロントエンドをバックエンドから分離する](https://medium.com/@spygi/scalable-cost-effective-web-architectures-for-heroku-eb8f1f55a4b6) - npm と NodeJS を使い、マイクロサービス Web アプリケーションを Heroku へデプロイする実践ガイドです。
+- 公式資料: [Preboot](https://devcenter.heroku.com/articles/preboot) — Prebootによる無停止デプロイの方法と、正しく実現する際の難しさを解説。
+- 記事: [Automating our Heroku deployments from Jenkins](https://www.paulfurley.com/automating-heroku-deployments-from-jenkins/) — メンテナンスモード、本番データベースのステージングへのコピー、ステージングでのマイグレーションなど、デプロイ手順の自動化を解説。
+- 質問と回答: [How do you ignore files when deploying to Heroku?](http://stackoverflow.com/questions/12523435/how-do-i-ignore-folders-and-files-when-pushing-to-heroku-with-a-rails-app) — `.gitignore`のような機能を使い、デプロイ時にファイルを除外する方法への回答。
+- 記事: [Six Tips for Mastering your Procfile](https://medium.com/@adam_41691/six-tips-for-mastering-your-procfile-64ea1207b779) — Herokuプロセスの実行方法を改善するヒント。
+- 記事: [Deploying Django to Heroku With Docker](https://testdriven.io/blog/deploying-django-to-heroku-with-docker/) — Heroku Container Runtime経由で、Dockerを使ってDjangoアプリをデプロイする方法を解説。
 
+## 開発 <a id="-開発"></a>
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/blogs.png" /> ブログ
+- 公式資料: [Managing Multiple Environments for an App](https://devcenter.heroku.com/articles/multiple-environments) — アプリの各環境を構成するさまざまな要素の管理方法を学ぶ入門資料。
 
-Heroku について頻繁に、または専門的に書いているインターネット上のブログです。
+## ドメイン <a id="-ドメイン"></a>
 
-- `blog` [Heroku ブログ](https://blog.heroku.com) — Heroku の公式ブログです。
+- 記事: [Configuring CloudFlare DNS for a Heroku app](http://www.higherorderheroku.com/articles/cloudflare-dns-heroku/) — CloudFlareをDNSプロバイダーとして使う手順。
+- 記事: [Hosting multiple Heroku apps on a single domain](https://pilot.co/blog/hosting-multiple-heroku-apps-on-a-single-domain/) — 複数のHerokuアプリケーションで同じドメインを共有する方法を解説。
+- 質問と回答: [How do you host multiple Heroku apps on a single domain?](http://stackoverflow.com/questions/19119164/multiple-heroku-apps-on-a-single-domain) — サブドメインではなく異なるパスで複数のHerokuアプリを配信する方法について、複数の回答があるStack Overflowの質問。
 
+## 全般 <a id="-全般"></a>
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/deployment.png" /> デプロイ
+- 書籍: [The Heroku Hacker's Guide](http://www.theherokuhackersguide.com/) — Herokuプロジェクトの保守とスケーリングの基礎を扱う電子書籍。
+- 書籍: [Heroku Cookbook](http://www.amazon.com/Heroku-Cookbook-Mike-Coutermarsh/dp/1782177949) — Heroku上の本番ウェブアプリケーションを管理・スケーリングするための段階的なレシピ。
 
-Heroku へのデプロイに役立つリソースです。
+## 会社と開発文化 <a id="-メタ情報"></a>
 
-- `official` [Preboot](https://devcenter.heroku.com/articles/preboot) — 正しく実現するのが難しいゼロダウンタイムデプロイを「Preboot」機能で有効にする方法を解説します。
-- `article` [Jenkins から Heroku デプロイを自動化する](https://www.paulfurley.com/automating-heroku-deployments-from-jenkins/) — メンテナンスモードの有効化、本番データベースからステージングへのコピー、ステージングに対するマイグレーションなど、デプロイの一部を自動化する方法を解説します。
-- `question` [Heroku へデプロイするときファイルを無視するには？](http://stackoverflow.com/questions/12523435/how-do-i-ignore-folders-and-files-when-pushing-to-heroku-with-a-rails-app) — `.gitignore` のような機能に関する一般的な質問への回答です。
-- `article` [Procfile を使いこなす6つのヒント](https://medium.com/@adam_41691/six-tips-for-mastering-your-procfile-64ea1207b779) — Heroku プロセスの実行方法を改善します。
-- `article` [Docker で Django を Heroku へデプロイする](https://testdriven.io/blog/deploying-django-to-heroku-with-docker/) — Heroku Container Runtime 経由で、Docker を使った Django アプリを Heroku へデプロイする方法を紹介します。
+- 公式資料: [The big kickoff](https://blog.heroku.com/archives/2007/10/30/the_big_kickoff) — Heroku最初のブログ記事。
+- 記事: [Heroku isn't for idiots](https://www.rdegges.com/2012/heroku-isnt-for-idiots/) — Herokuの利点と、サイドプロジェクト以外にも適する理由を解説。
+- 記事: [My Heroku values](https://brandur.org/heroku-values) — [Brandur Leach](https://twitter.com/brandur)がHerokuを退職した際にまとめた、在職中の学び。
+- 講演: [Buildpack Adventure](http://buildpack-adventure.herokuapp.com/) — HerokuのBuildpackと、それを使ってオープンソースコミュニティが作っているものを紹介するスライド。
 
+## Postgres <a id="-postgres"></a>
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/development.png" /> 開発
+[Heroku Postgres](https://www.heroku.com/postgres)の資料です。
 
-- `official` [アプリの複数環境を管理する](https://devcenter.heroku.com/articles/multiple-environments) — 各環境のさまざまな要素の管理方法を考えるための優れた入門です。
+- 公式資料: [Heroku Postgres](https://www.heroku.com/postgres) — Heroku Postgresの概要を説明するページ。
+- プラグイン: [heroku-buildpack-pgbouncer](https://github.com/heroku/heroku-buildpack-pgbouncer) — [`stunnel`](https://www.stunnel.org/index.html)と[`pgbouncer`](https://wiki.postgresql.org/wiki/PgBouncer)を使ったトランザクションプーリングにより、接続上限への到達を避けるBuildpack。
 
+## Redis <a id="-redis"></a>
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/domains.png" /> ドメイン
+[Heroku Redis](https://elements.heroku.com/addons/heroku-redis)の案内です。
 
-Heroku で独自ドメイン名を使うためのヒントです。
+## スケーリング <a id="-スケーリング"></a>
 
-- `article` [Heroku アプリ向けに Cloudflare DNS を設定する](http://www.higherorderheroku.com/articles/cloudflare-dns-heroku/) — Cloudflare を DNS プロバイダーとして使う手順です。
-- `article` [単一ドメインで複数の Heroku アプリをホストする](https://pilot.co/blog/hosting-multiple-heroku-apps-on-a-single-domain/) — 複数の Heroku アプリケーションで同じドメインを共有する方法を説明します。
-- `question` [単一ドメインで複数の Heroku アプリをホストするには？](http://stackoverflow.com/questions/19119164/multiple-heroku-apps-on-a-single-domain) — サブドメインではなく異なるパスから複数の Heroku アプリを配信する一般的な質問に、複数の回答が寄せられた Stack Overflow の質問です。
+- ツール: [HireFire](https://www.hirefire.io/) — 負荷に応じてHerokuのdynoを自動的に増減するSaaSツール。
 
+## セキュリティ <a id="-セキュリティ"></a>
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/general.png" /> 全般
+- 記事: [Set up CloudFlare's free SSL on Heroku](https://robots.thoughtbot.com/set-up-cloudflare-free-ssl-on-heroku) — Cloudflare経由で無料SSLを設定する手順。固定原文当時の記載。
 
-Heroku に関する多様な内容を扱う一般リソースです。
+## Toolbelt <a id="-toolbelt"></a>
 
-- `book` [The Heroku Hacker's Guide](http://www.theherokuhackersguide.com/) — Heroku 上のプロジェクトを保守・拡張するための基本を幅広く扱う電子書籍です。
-- `book` [Heroku Cookbook](http://www.amazon.com/Heroku-Cookbook-Mike-Coutermarsh/dp/1782177949) — Heroku 上の実用的な本番 Web アプリケーションを管理・拡張する際の課題を解決する、段階的なレシピです。
+[Heroku Toolbelt](https://toolbelt.heroku.com/)の資料です。
 
+- 公式資料: [Toolbeltのダウンロード](https://toolbelt.heroku.com/) — Heroku Toolbeltのダウンロードページ。
+- プラグイン: [heroku-accounts](https://github.com/ddollar/heroku-accounts) — コマンドラインから複数のアカウントを同時に操作。
+- プラグイン: [heroku-pg-extras](https://github.com/heroku/heroku-pg-extras) — Postgresのキャッシュヒット率、外れ値クエリ、未使用インデックス、テーブルサイズなどを分析するToolbeltプラグイン。
 
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/meta.png" /> メタ情報
+## Herokuからの移行 <a id="-さようなら"></a>
 
-会社自体に関する情報です。
-
-- `official` [大きなキックオフ](https://blog.heroku.com/archives/2007/10/30/the_big_kickoff) — Heroku で最初のブログ記事です。
-- `article` [Heroku は愚か者のためのものではない](https://www.rdegges.com/2012/heroku-isnt-for-idiots/) — Heroku の利点と、単なるサイドプロジェクト向けではない理由を説明します。
-- `article` [私の Heroku の価値観](https://brandur.org/heroku-values) — [Brandur Leach](https://twitter.com/brandur) が Heroku を離れた際にまとめた、優れた一連の学びです。
-- `talk` [Buildpack Adventure](http://buildpack-adventure.herokuapp.com/) — Heroku の Buildpack と、オープンソースコミュニティがそれを使って作っているものに関する素晴らしいスライドショーです。
-
-
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/postgres.png" /> Postgres
-
-[Heroku Postgres](https://www.heroku.com/postgres) に関するものです。
-
-- `official` [Heroku Postgres](https://www.heroku.com/postgres) — 概要を説明するランディングページです。
-- `plugin` [heroku-buildpack-pgbouncer](https://github.com/heroku/heroku-buildpack-pgbouncer) — [`stunnel`](https://www.stunnel.org/index.html) と [`pgbouncer`](https://wiki.postgresql.org/wiki/PgBouncer) を使った Transaction Pooling を可能にし、接続上限への到達を避ける Buildpack です。
-
-
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/redis.png" /> Redis
-
-[Heroku Redis](https://elements.heroku.com/addons/heroku-redis) に関するものです。
-
-
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/scaling.png" /> スケーリング
-
-Heroku プロジェクトのスケーリングに役立つリソースです。
-
-- `tool` [HireFire](https://www.hirefire.io/) — 負荷に応じて Heroku Dyno を自動的に増減する SaaS ツールです。
-
-
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/security.png" /> セキュリティ
-
-Heroku アプリケーションを保護する方法です。
-
-- `article` [Heroku で Cloudflare の無料 SSL を設定する](https://robots.thoughtbot.com/set-up-cloudflare-free-ssl-on-heroku) — Cloudflare 経由で無料 SSL を設定する正確な手順を案内します。
-
-
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/toolbelt.png" /> Toolbelt
-
-[Heroku Toolbelt](https://toolbelt.heroku.com/) の便利なリソースです。
-
-- `official` [Toolbelt のダウンロード](https://toolbelt.heroku.com/) — Heroku Toolbelt のダウンロード先です。
-- `plugin` [heroku-accounts](https://github.com/ddollar/heroku-accounts) — コマンドラインから複数のアカウントを同時に簡単に扱えます。
-- `plugin` [heroku-pg-extras](https://github.com/heroku/heroku-pg-extras) — Postgres を扱うための便利な機能を追加する Toolbelt プラグインです。キャッシュヒット率、外れ値クエリ、未使用インデックス、テーブルサイズなどを分析できます。
-
-
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/goodbye.png" /> さようなら…
-
-何らかの理由で Heroku から移行すると決めた場合に確認するものです。
-
-- `tool` [dokku](http://dokku.viewdocs.io/dokku/) — 自分でホストする Docker ベースの Heroku 互換プラットフォームです。
-
-
-## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/license.png" /> ライセンス
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-法律で認められる範囲で、[Ian Storm Taylor](http://ianstormtaylor.com) はこの作品に関するすべての著作権および関連する権利または隣接する権利を放棄しています。
+- ツール: [dokku](http://dokku.viewdocs.io/dokku/) — 自分でホストする、DockerベースのHeroku互換プラットフォーム。
