@@ -6046,3 +6046,7 @@
 - 2026-10-11T06:55:40.508Z バッチ165最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**223/1037完了、814残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch165/COMPLETION.json。次バッチ166 Mastodon。commit/push待ち、外部公開なし。
 
 - 2026-10-11T06:56:40.455Z バッチ165対象38ファイルを 4169e57d94ce80aa08ff5d1fec5e29a2c4d7cad8 にコミットし origin/codex/awesome-editorial-20261011 へpush成功。全1037組2回再生成、publish/check672、翻訳672、7子アプリfresh build、対象HTML2文書と参照/出典/目次、英日PC/mobile4状態と8画像・H4目次移動・言語/版切替、全1037組台帳検査、対象verified後1組検査に合格。容量警告0/超過0、空白検査合格。223/1037完了、814残（inventoried810・blocked3・needs-decision1）。次バッチ166 Mastodon新版 github-hyperupcall-awesome-mastodon-readme-md。Golem旧版は独立未処理。台帳push記録を後続コミットとして送信。配信workflow対象外の編集ブランチで外部公開なし、所有プレビュー/ブラウザー終了、他案件変更保持。
+
+- 2026-10-11T06:59:57.333Z バッチ166 Mastodon新版。固定raw117/旧英日112単位を全読、編集後98単位/83資料/14見出しを別パス照合。13手動目次/ロゴ除去、定義と公式URL復元。opinionated/自動生成/readline/一般ラベルを改善し数値と全条件保持。translated-jaまで保存、再生成/検査/実表示は未完了。
+
+- 2026-10-11T07:06:34.180Z バッチ166最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**224/1037完了、813残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch166/COMPLETION.json。次バッチ167 Bitcoin。commit/push待ち、外部公開なし。

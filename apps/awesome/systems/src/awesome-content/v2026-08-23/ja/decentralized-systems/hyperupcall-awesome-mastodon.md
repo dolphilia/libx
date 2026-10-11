@@ -1,43 +1,27 @@
 ---
 title: "Awesome Mastodon"
-description: "Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Mastodonのクライアント、インスタンス一覧、アカウント用ツール、ライブラリ、ホスティング、ガイド、ボット。"
 licenseSource: "github-hyperupcall-awesome-mastodon-readme-md"
 ---
 
 # Awesome Mastodon
 
-Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
-
-## 目次  
-
-- [公式](#official)
-- [インスタンス](#instances)
-- [統計](#statistics)
-- [人物](#people)
-- [ツール](#tools)
-- [デスクトップクライアント](#desktop-clients)
-- [モバイルクライアント](#mobile-clients)
-- [ライブラリ](#libraries)
-- [サーバー](#servers)
-- [ガイド](#guides)
-- [ホスティング](#hosting)
-- [類似プロジェクト](#similar-projects)
-- [ボット](#bots)
+[Mastodon](https://joinmastodon.org/)はフリーでオープンソースの分散型マイクロブログネットワークです。インスタンス一覧、統計やアカウント一覧、デスクトップ・モバイルクライアント、アカウント用ツール、ライブラリ、ホスティング、ガイド、類似プラットフォーム、ボットを探せます。
 
 ## 公式
 
-- [GitHub Repository](https://github.com/tootsuite/mastodon/)
-- [Documentation & Help Center](https://docs.joinmastodon.org/)
-- [API Documentation](https://docs.joinmastodon.org/client/intro/)
+- [GitHubリポジトリ](https://github.com/tootsuite/mastodon/)
+- [ドキュメントとヘルプセンター](https://docs.joinmastodon.org/)
+- [APIドキュメント](https://docs.joinmastodon.org/client/intro/)
 
 ## インスタンス
 
-- [Official Instance List](https://joinmastodon.org/servers) - Mastodonインスタンスの公式リスト。
-- [mastodonservers.net Instance List](https://mastodonservers.net/) - Mastodonインスタンスのより大きなリスト。
-- [instances.social Instance List](https://instances.social/list/) - Mastodonインスタンスを自動生成したリスト。
-- [mastodon.social](https://mastodon.social/about/) - 333,000人以上のアクティブユーザーと150万人の登録ユーザーを持つ最大のMastodonサーバー。
-- [EU Server](https://social.network.europa.eu/about/) - EU機関の公式サーバー。
-- [Vivaldi Social](https://social.vivaldi.net/about/) - VivaldiがホストするMastodonソーシャル。
+- [公式インスタンス一覧](https://joinmastodon.org/servers) - Mastodonインスタンスの公式リスト。
+- [mastodonservers.netのインスタンス一覧](https://mastodonservers.net/) - より多くのMastodonインスタンスを掲載する一覧。
+- [instances.socialのインスタンス一覧](https://instances.social/list/) - 自動生成されたMastodonインスタンスの一覧。
+- [mastodon.social](https://mastodon.social/about/) - 固定した上流READMEでは、アクティブユーザー33万3,000人超、登録ユーザー150万人を擁する最大のMastodonサーバーと紹介。
+- [EUサーバー](https://social.network.europa.eu/about/) - EU機関の公式サーバー。
+- [Vivaldi Social](https://social.vivaldi.net/about/) - VivaldiがホストするMastodonサーバー。
 - [Journa.host](https://journa.host/about/) - ジャーナリスト向けMastodonサーバー。
 - [Newsie](https://newsie.social/about/) - ジャーナリスト向けのもう一つのMastodonサーバー。
 - [Bots in Space](https://botsin.space/about/) - ボットアカウント向けMastodonサーバー。
@@ -46,43 +30,43 @@ Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 
 - [The Federation](https://the-federation.info/) - Fediverseのプロトコル、ユーザー、ノードに関する統計。
 - [FediDB](https://fedidb.org/network/) - Fediverseネットワーク統計。
-- [FediBuzz](https://fedi.buzz/) - Fediverse全体のトレンドを観察します。
-- [Fediverse Graph Visualization](https://www.comeetie.fr/galerie/mapstodon/) - 完全なFediverse全体のグラフ可視化。
-- [MastoInstance.Info](https://mastoinstance.info/) - インスタンスのメタデータを表示し、連合グラフを探索します。
+- [FediBuzz](https://fedi.buzz/) - Fediverse全体のトレンドを観察。
+- [Fediverseのグラフ可視化](https://www.comeetie.fr/galerie/mapstodon/) - Fediverseをグラフで可視化。
+- [MastoInstance.Info](https://mastoinstance.info/) - インスタンスのメタデータ表示と、連合ネットワークのグラフ探索。
 - [fediverse.party](https://fediverse.party/) - 人気のFediverseプロジェクトとプロトコルに関する詳細情報。
 
 ## 人物
 
-- [Academics On Mastodon](https://github.com/nathanlesage/academics-on-mastodon/) - 分野／グループ／領域別のMastodon上の研究者Markdownリスト。
-- [Spreadsheet of Popular accounts](https://docs.google.com/spreadsheets/d/1cpUKkoT1MUn8_xM4usiERn-IdEuh0hXfBrwbbThwGiI/edit#gid=1111869705/) - Fediverseで最も人気のあるMastodonアカウントのGoogleスプレッドシート。
-- [Spreadsheet of Journalist accounts](https://docs.google.com/spreadsheets/d/13No4yxY-oFrN8PigC2jBWXreFCHWwVRTftwP6HcREtA/edit#gid=1320898902/) - FediverseのさまざまなジャーナリストのGoogleスプレッドシート。
+- [Academics On Mastodon](https://github.com/nathanlesage/academics-on-mastodon/) - Mastodon上の研究者を分野・グループ・領域別に整理したMarkdown形式の一覧。
+- [人気アカウントのスプレッドシート](https://docs.google.com/spreadsheets/d/1cpUKkoT1MUn8_xM4usiERn-IdEuh0hXfBrwbbThwGiI/edit#gid=1111869705/) - Fediverseで人気のあるMastodonアカウントを集めたGoogleスプレッドシート。
+- [ジャーナリストのアカウント一覧](https://docs.google.com/spreadsheets/d/13No4yxY-oFrN8PigC2jBWXreFCHWwVRTftwP6HcREtA/edit#gid=1320898902/) - Fediverseのさまざまなジャーナリストのアカウントを集めたGoogleスプレッドシート。
 - [Politici op Mastodon](https://www.politici-op-mastodon.nl) - Mastodon上のオランダの政治家と政党をすべて掲載するウェブサイト。
 
 ## ツール
 
-- [Toot Scheduler](https://scheduler.mastodon.tools/) - 後で「toot」するためにtootを予約します。
-- [Mastodon List Manager](https://www.mastodonlistmanager.org/main/) - 選択したMastodonユーザーのリストを作成、管理、フィルター、検索します。
-- [Mastodon Toot Bookmarklet](https://rknightuk.github.io/mastodon-toot-bookmarklet/) - 現在のページをtootするブックマークレット。
-- [Mastodon - Simplified Federation!](https://addons.mozilla.org/firefox/addon/mastodon-simplified-federation/) - リモートのフォロー／インタラクションボタンのクリックを、自分のインスタンスへリダイレクトします。
-- [Mastodon Link](https://github.com/masrly/mastodon-link/) - プロフィールにMastodonアイコンリンクを追加し、他インスタンスの人をフォローしやすくします。
-- [Mastodon Redirector](https://github.com/bramus/mastodon-redirector/) - プロフィールページに、他インスタンスからプロフィールを表示するボタンを追加します。
+- [Toot Scheduler](https://scheduler.mastodon.tools/) - トゥート（投稿）を予約。
+- [Mastodon List Manager](https://www.mastodonlistmanager.org/main/) - 選択したMastodonユーザーのリストを作成・管理・絞り込み・検索。
+- [Mastodon Toot Bookmarklet](https://rknightuk.github.io/mastodon-toot-bookmarklet/) - 閲覧中のページをトゥートするブックマークレット。
+- [Mastodon - Simplified Federation!](https://addons.mozilla.org/firefox/addon/mastodon-simplified-federation/) - 他のインスタンスにあるフォロー・反応ボタンをクリックした際、自分のインスタンスへリダイレクト。
+- [Mastodon Link](https://github.com/masrly/mastodon-link/) - プロフィールにMastodonアイコンへのリンクを追加し、他のインスタンスの人をフォローしやすくするツール。
+- [Mastodon Redirector](https://github.com/bramus/mastodon-redirector/) - プロフィールページに、他のインスタンスのプロフィールを表示するボタンを追加。
 - [mastotool](https://github.com/muesli/mastotool/) - Mastodonアカウントを操作するコマンドラインツールのコレクション。
-- [Mastodon Widgets](https://github.com/splitbrain/mastodon-widget) - Mastodonプロフィール、タイムライン、フォロー・共有ボタンを任意のウェブサイトへ埋め込むJavaScript Web Components。自動補完するインスタンスセレクターを提供します。
+- [Mastodon Widgets](https://github.com/splitbrain/mastodon-widget) - Mastodonプロフィール、タイムライン、フォロー・共有ボタンを任意のウェブサイトへ埋め込むJavaScript Web Components。自動補完付きのインスタンス選択機能も提供。
 - [StreetPass](https://streetpass.social/) - ウェブ閲覧中にMastodonプロフィールへのリンクを見つけるFirefox／Chrome／Safari向けブラウザー拡張機能。
-- [threadcat](https://codeberg.org/blinry/threadcat) - MastodonスレッドをMarkdownブログ記事へ変換します。
+- [threadcat](https://codeberg.org/blinry/threadcat) - MastodonのスレッドをMarkdown形式のブログ記事へ変換。
 
 ## デスクトップクライアント
 
-- [Official Client List](https://joinmastodon.org/apps/) - Mastodonクライアントの公式リスト。
+- [公式クライアント一覧](https://joinmastodon.org/apps/) - Mastodonクライアントの公式リスト。
 - [Elk](https://github.com/elk-zone/elk/) - 軽快なMastodonウェブクライアント。
-- [Brutaldon](https://gitlab.com/brutaldon/brutaldon/) - Mastodon用ブルータリストウェブインターフェース。
-- [phanpy](https://github.com/cheeaun/phanpy) - ミニマルで意見を持つMastodonウェブクライアント。
-- [Planiverse](https://git.mulligrubs.me/planiverse/) - Mastodon向けのミニマルなJavaScriptなしウェブクライアント。
-- [Official Client](https://github.com/mastodon/mastodon-android/) - 公式Androidクライアント。
+- [Brutaldon](https://gitlab.com/brutaldon/brutaldon/) - ブルータリズム様式のMastodon用ウェブインターフェース。
+- [phanpy](https://github.com/cheeaun/phanpy) - ミニマルで独自の設計方針を持つMastodonウェブクライアント。
+- [Planiverse](https://git.mulligrubs.me/planiverse/) - JavaScriptを使わない、ミニマルなMastodonウェブクライアント。
+- [公式クライアント](https://github.com/mastodon/mastodon-android/) - 公式Androidクライアント。
 - [Whalebird](https://whalebird.social/en/desktop/contents/) - ElectronベースのMastodonクライアント。
-- [toot](https://github.com/ihabunek/toot/) - PythonによるMastodon CLI & TUI。
-- [Tokodon](https://apps.kde.org/tokodon/) - KDEが作成したMastodonクライアント。
-- [hellclient](https://hell.limitedideas.org) - Goで書かれたMastodon CLI readlineクライアント。
+- [toot](https://github.com/ihabunek/toot/) - Python製のMastodon用CLI・TUI。
+- [Tokodon](https://apps.kde.org/tokodon/) - KDEによるMastodonクライアント。
+- [hellclient](https://hell.limitedideas.org) - readlineを使うGo製のMastodon用CLIクライアント。
 
 ## モバイルクライアント
 
@@ -95,15 +79,15 @@ Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 
 ## ライブラリ
 
-- [Official Library List](https://docs.joinmastodon.org/client/libraries/) - Mastodonクライアントライブラリの公式リスト。
+- [公式ライブラリ一覧](https://docs.joinmastodon.org/client/libraries/) - Mastodonクライアントライブラリの公式リスト。
 - [masto.js](https://github.com/neet/masto.js) - JavaScript向けMastodonクライアント。
-- [go-mastodon](https://github.com/mattn/go-mastodon) - golang向けMastodonクライアント。
+- [go-mastodon](https://github.com/mattn/go-mastodon) - Go向けMastodonクライアント。
 
 ## サーバー
 
-- [Glitch Edition](https://glitch-soc.github.io/docs/) - ローカル投稿、toot書式設定、改善された設定、より細かな制御を備えるMastodonフォーク。
-- [Hometown](https://github.com/hometown-fork/hometown/) - ローカル投稿、フォローリスト、カスタマイズ可能な最大toot長を備えるMastodonフォーク。
-- [ecko](https://github.com/magicstone-dev/ecko/) - ローカル投稿、toot書式設定、より細かな制御を備えるMastodonフォーク。
+- [Glitch Edition](https://glitch-soc.github.io/docs/) - ローカル投稿、トゥートの書式設定、設定機能の改善、より細かな制御を備えたMastodonのフォーク。
+- [Hometown](https://github.com/hometown-fork/hometown/) - ローカル投稿、フォローリスト、投稿の最大文字数のカスタマイズに対応したMastodonのフォーク。
+- [ecko](https://github.com/magicstone-dev/ecko/) - ローカル投稿、トゥートの書式設定、より細かな制御を備えたMastodonのフォーク。
 
 ## ガイド
 
@@ -113,17 +97,17 @@ Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 
 ## ホスティング
 
-- [Official Hosting Documentation](https://docs.joinmastodon.org/user/run-your-own) - ホスティングプロバイダーの紹介とリストを含む公式ページ。
-- [Masto.host](https://masto.host) - 完全管理型Mastodonホスティング。
+- [公式ホスティング資料](https://docs.joinmastodon.org/user/run-your-own) - ホスティングプロバイダーの紹介とリストを含む公式ページ。
+- [Masto.host](https://masto.host) - フルマネージドMastodonホスティング。
 - [toot.io](https://toot.io/mastodon_hosting.html) - ACM、Microsoft Dynamicsなどが利用する管理型Mastodonホスティング。
-- [Cloudplane](https://cloudplane.org) - オープンソースアプリ向けの完全管理型ホスティング。
-- [elestio](https://elest.io/open-source/mastodon) - 完全管理型Mastodonホスティング。
+- [Cloudplane](https://cloudplane.org) - オープンソースアプリ向けのフルマネージドホスティング。
+- [elestio](https://elest.io/open-source/mastodon) - フルマネージドMastodonホスティング。
 
 ## 類似プロジェクト
 
 - [aether](https://getaether.net) - ピアツーピアの一時的な公開コミュニケーション。
 - [Pleroma](https://pleroma.social/) - 軽量なマイクロブログプラットフォーム。
-- [GNU social](https://gnusocial.rocks/) - 最古のマイクロブログプラットフォーム。
+- [GNU social](https://gnusocial.rocks/) - 固定した上流READMEでは、最古のマイクロブログプラットフォームと紹介。
 - [Microblog.pub](https://microblog.pub/) - 単一ユーザー向け軽量マイクロブログプラットフォーム。
 - [Hubzilla](https://zotlabs.org/page/hubzilla/hubzilla-project/) - ファイル、連絡先、イベントの共有を備えるブログ／ソーシャルネットワークプラットフォーム。
 - [Friendica](https://friendi.ca/) - ソーシャルネットワークプラットフォーム。
@@ -132,16 +116,16 @@ Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリス�
 - [Plume](https://joinplu.me/) - ブログプラットフォーム。
 - [WriteFreely](https://writefreely.org/) - ブログプラットフォーム。
 - [PixelFed](https://pixelfed.org/) - 写真共有プラットフォーム。
-- [Misskey Hub](https://misskey-hub.net/en/) - 惑星間マイクロブログプラットフォーム。
+- [Misskey Hub](https://misskey-hub.net/en/) - 「惑星間」を掲げるマイクロブログプラットフォーム。
 - [Lemmy](https://join-lemmy.org/) - リンク集約プラットフォーム。
 - [Kbin](https://kbin.social) - リンク集約プラットフォーム。
 
 ## ボット
 
-- [feed2toot](https://gitlab.com/chaica/feed2toot) - RSSフィードを自動解析して新規投稿を特定し、Mastodonへ投稿します（Python）。
-- [aerialbot](https://github.com/doersino/aerialbot) - 世界のランダムな場所のジオタグ付き航空画像で応答します。
-- [rust-trending](https://github.com/pbzweihander/rust-trending) - トレンドのRustリポジトリをMastodonへ投稿します（TrendingGithubから着想）。
-- [@TrendingBot@mastodon.social](https://mastodon.social/@TrendingBot) - Mastodonでトレンドになっているものを表示します。
-- [News Bot](https://botsin.space/@newsbot) - TwitterアカウントをMastodonにミラーします（ClojureScript）。ソースは[GitHub](https://github.com/yogthos/mastodon-bot)で利用可能です。
-- [@HackerNewsBot@mastodon.social](https://mastodon.social/@HackerNewsBot) - 100超のupvoteを持つHacker News投稿を投稿します。
+- [feed2toot](https://gitlab.com/chaica/feed2toot) - RSSフィードを自動解析し、新しい記事を見つけてMastodonへ投稿するPython製ボット。
+- [aerialbot](https://github.com/doersino/aerialbot) - 世界の任意の場所をランダムに選び、その場所のジオタグ付き航空画像で応答。
+- [rust-trending](https://github.com/pbzweihander/rust-trending) - 話題のRustリポジトリをMastodonへ投稿（TrendingGithubから着想）。
+- [@TrendingBot@mastodon.social](https://mastodon.social/@TrendingBot) - Mastodonで話題になっているものを表示。
+- [News Bot](https://botsin.space/@newsbot) - Twitterアカウントの投稿をMastodonへ複製するClojureScript製ボット。ソースは[GitHub](https://github.com/yogthos/mastodon-bot)で公開。
+- [@HackerNewsBot@mastodon.social](https://mastodon.social/@HackerNewsBot) - 賛成票が100票を超えたHacker Newsの記事を投稿。
 - [@launchradar@mastodon.cloud](https://mastodon.cloud/@launchradar) - 宇宙飛行、天文学、天体物理学に関するニュース。
