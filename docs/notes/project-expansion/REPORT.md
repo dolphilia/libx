@@ -132,3 +132,5 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 詳細なサイクル結果、モデル設定と実モデルの確認可否、証拠、未実施項目、外部公開・定期実行の許可範囲は `runs/` を参照。
 
 第6章公開用976e3bbd6・検証保存e76c47d71・第7章配信除外草稿保存794dc74aeはorigin push済み。Preview38118472504は統合ビルド実行中。本番は未実施。最新CI→Preview成果物→CAS本番→公開後確認から継続する。第7章は英語22草稿のみ、日本語・内容レビューは0。
+
+保存区切り: 05206d29d を codex/save-document-expansion-20261011 へpushし、origin HEAD一致を確認。公開用976e3bbd6は別ブランチに保持。
