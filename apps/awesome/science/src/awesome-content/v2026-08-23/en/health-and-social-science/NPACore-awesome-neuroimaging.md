@@ -1,37 +1,14 @@
 ---
 title: "Awesome Neuroimaging"
-description: "A curated collection of resources and projects focused on Neuroimaging."
+description: "MR-focused brain imaging tools for acquisition, quality control, preprocessing, modeling, automation, and data resources."
 licenseSource: "github-NPACore-awesome-neuroimaging-readme-md"
+toc:
+  maxLevel: 4
 ---
 
 # Awesome Neuroimaging
 
-A curated collection of resources and projects focused on Neuroimaging.
-
-## Contents
-
-- [Viewers](#viewers)
-- [Acquisition](#acquisition)
-  - [MR](#mr)
-- [Quality Assurance and Checking](#quality-assurance-and-checking)
-- [Pipelines](#pipelines)
-  - [Suites](#suites)
-  - [BOLD](#bold)
-  - [DSI](#dsi)
-  - [Structural](#structural)
-- [Raw Data](#raw-data)
-- [Provenance and Automation](#provenance-and-automation) 
-- [Imaging Tools](#imaging-tools)
-  - [Skullstripping](#skullstripping)
-  - [Warping](#warping)
-  - [Manipulation](#manipulation)
-  - [Modeling](#modeling)
-- [Libraries](#libraries)
-- [Resources](#resources)
-  - [Blogs, Books, and Docs](#blogs-books-and-docs)
-  - [Boards And Chats](#boards-and-chats)
-  - [Datasets Repositories](#datasets-repositories)
-
+Tools and resources for exploring, organizing, and analyzing brain images and recordings, with a focus on magnetic resonance (MR). The list covers acquisition, quality control, preprocessing, image manipulation and modeling, provenance and automation, libraries, learning materials, and datasets. Descriptions, prices, versions, and dataset figures reflect the fixed source snapshot.
 
 ## Viewers
 - [AFNI](https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/afniandafni/gui_guide/main_toc.html) - Volumetric viewer from the AFNI suit. GUI's aesthetic defined by the '90s era Motif toolkit.
@@ -53,15 +30,14 @@ A curated collection of resources and projects focused on Neuroimaging.
 - [XNAT](https://www.xnat.org/) - An extensible open-source imaging informatics software platform dedicated to imaging-based research.
   - [DAX](https://github.com/VUIIS/dax) - Distributed Automation for XNAT: use containerization w/YAML defined input/output.
 - [LORIS](https://mcin.ca/technology/loris/) - LORIS (Longitudinal Online Research and Imaging System) is web-based data and project management software for neuroimaging research studies.
-- [brainlife.io](https://brainlife.io) - Open-source, free and secure reproducible neuroscience analysis platform.
+- [brainlife.io](https://brainlife.io) - Open-source, free reproducible neuroscience analysis platform, described by the source as secure.
 - [cbrain](https://mcin.ca/technology/cbrain/) - CBRAIN is web-based software that allows neuroimaging researchers to perform computationally intensive analyses on data by connecting them to High-Performance Computing (HPC).
-- 💲[Flywheel](https://flywheel.io) - A cloud-based imaging research data platform for data capture, curating, automation, and machine learning.
-- 💲[QMENTA](https://qmenta.com) - The all in one imaging platform for your clinical trial.
+- [Flywheel](https://flywheel.io) (Paid) - A cloud-based imaging research data platform for data capture, curating, automation, and machine learning.
+- [QMENTA](https://qmenta.com) (Paid) - The all in one imaging platform for your clinical trial.
 
 #### Motion
-- [FIRMM](https://firmm.readthedocs.io) - Real-time motion monitoring for fMRI, diffusion, and navigated T1/T2 image acquisition. 
+- [FIRMM](https://firmm.readthedocs.io) - Real-time motion monitoring for fMRI, diffusion, and navigated T1/T2 image acquisition.
 - [`Dimon`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/Dimon.html) - Monitor real-time acquisition of DICOM image files with AFNI.
-
 
 ## Quality Assurance and Checking
 
@@ -78,13 +54,10 @@ Preprocessing workflows.
 ### Suites
 Software packages for multiple modalities, often offering a graphical user interface.
 
-
 - [AFNI](https://afni.nimh.nih.gov/) - Analysis of Functional NeuroImages is a leading software suite of C, Python, R programs and shell scripts primarily developed for the analysis and display of multiple MRI modalities.
 - [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) - A comprehensive library of analysis tools for FMRI, MRI and diffusion brain imaging data.
 - [SPM](https://www.fil.ion.ucl.ac.uk/spm/) - Statistical Parametric Mapping refers to the construction and assessment of spatially extended statistical processes used to test hypotheses about functional imaging data.
 - [Qu|Nex](https://qunex.yale.edu/) - The Quantitative Neuroimaging Environment & Toolbox (QuNex) is an open-source software suite that collectively supports an extensible framework for data organization, preprocessing, quality assurance, and analyses across neuroimaging modalities.
-
-
 
 ### BOLD
 
@@ -106,7 +79,6 @@ Software packages for multiple modalities, often offering a graphical user inter
 - [Freesurfer](https://freesurfer.net/) - An open source neuroimaging toolkit for processing, analyzing, and visualizing human brain MR images.
 - [CIVET](https://mcin.ca/technology/civet/) - An image processing pipeline for fully automated volumetric, corticometric, and morphometric analysis of human brain imaging data.
 
-
 ## Raw Data
 
 Dealing with DICOM and k-space images
@@ -125,7 +97,7 @@ Dealing with DICOM and k-space images
 
 - [make](https://www.frontiersin.org/articles/10.3389/fninf.2016.00002/full) - follow script recipes defined in `Makefile`.
 - [datalad](https://github.com/datalad/datalad) - Keep code, data, containers under control with git and git-annex. Esp `datalad run --input=... --output=...`.
-- [`3dNotes`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNotes.html) - A program to add, delete and show notes for AFNI datasets. 
+- [`3dNotes`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNotes.html) - A program to add, delete and show notes for AFNI datasets.
 
 - [`niinote`](https://github.com/lncd/lncdtools/blob/master/niinote) - Add AFNI nifti XML history to header to run and record any command. Part of [lncdtools](https://github.com/lncd/lncdtools/).
 
@@ -147,7 +119,6 @@ Software to read, write, and manipulate volumetric and/or surface data.
 ### Warping
 Spatial normalization
 
-
 - [ANTs](http://stnava.github.io/ANTs/) - Advanced Normalization Tools includes probabilistic tissue segmentation and machine learning methods based on expert labeled data to order to maximize reliability and consistency of multiple modality image segmentation.
 
 - [3dQwarp](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dQwarp.html) - OpenMP parallelized [AFNI](https://afni.nimh.nih.gov/) tool to compute a nonlinearly warped version of source dataset to match a base dataset.
@@ -165,12 +136,9 @@ Tools for doing math on matrix values
 - [fslmaths](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#:~:text=a%20combined%20image.-,fslmaths,--%20simple%20but%20powerful) - Simple but powerful program to allow mathematical manipulation of images. From FSL.
 - [fscalc](https://www.freesurfer.net/pub/dist/freesurfer/dev_binaries/centos6_x86_64/fscalc.fsl) - Freesurfer wrapper of fslmaths.
 
-
-
 ### Modeling
 
 #### HRF
-
 
 - [3dDeconvolve](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDeconvolve.html) -  [AFNI](https://afni.nimh.nih.gov/) - Program to calculate the deconvolution of a measurement 3D+time dataset with a specified input stimulus time series.  This program can also perform multiple linear regression using multiple input stimulus time series.
 
@@ -201,7 +169,6 @@ Tools for doing math on matrix values
 
 ### MATLAB
 
-
 - [SPM](https://www.fil.ion.ucl.ac.uk/spm/) - Statistical Parametric Mapping refers to the construction and assessment of spatially extended statistical processes used to test hypotheses about functional imaging data.
 - [`imtool3D_td`](https://github.com/tanguyduval/imtool3D_td) - 3D Image Viewer with ROI tools for Matlab (NIFTI viewer, Manual segmentation).
 
@@ -224,7 +191,7 @@ Tools for doing math on matrix values
 
 - [openneuro](https://openneuro.org/) - A free and open platform for validating and sharing BIDS-compliant MRI, PET, MEG, EEG, and iEEG data.
 - [NDA](https://nda.nih.gov/) - National Institute of Mental Health Data Archive (NDA) makes available human subjects data collected from hundreds of research projects across many scientific domains.
-- [NITRC](https://www.nitrc.org/) - NeuroImaging Tools & Resources Collaboratory library of neuroinformatics software and data. 
+- [NITRC](https://www.nitrc.org/) - NeuroImaging Tools & Resources Collaboratory library of neuroinformatics software and data.
 
 #### Big datasets
 
@@ -233,7 +200,3 @@ Tools for doing math on matrix values
 - [NCANDA](http://www.ncanda.org/) - National Consortium on Alcohol and Neurodevelopment in Adolescence (4000+ MR visits).
 - [PNC](https://www.med.upenn.edu/bbl/philadelphianeurodevelopmentalcohort.html) -  A population-based sample of over 9500 individuals from the greater Philadelphia area, ages 8-21 years who received medical care at the CHOP network.
 - [ENIGMA](https://enigma.ini.usc.edu/) - The Enhancing Neuro Imaging Genetics through Meta Analysis Consortium contains 50 working group's imaging and genomics data.
-
-## Contributing
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/NPACore/awesome-neuroimaging/blob/e0e905de1f098f32b1493d1deeead0110664ef96/contributing.md) first.
