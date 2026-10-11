@@ -6058,3 +6058,5 @@
 - 2026-10-11T07:24:21.377Z バッチ167初回ビルド後の旧HTML比較でJA C++自然IDがcライブラリ-1からcライブラリ--1へ変化したことを検出。空アンカー直前の空白25か所を除去し互換IDを回復する修正を保存。可視文字/URL/項目/条件は不変、関連検査とHTML/表示を再確認中。旧版Bitcoinは未収録、版メニューは統合ナビゲーション（365件）へ正常遷移することを統合プレビューで確認。
 
 - 2026-10-11T07:28:43.071Z バッチ167最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**225/1037完了、812残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch167/COMPLETION.json。次バッチ168 Non-Financial Blockchain。commit/push待ち、外部公開なし。
+
+- 2026-10-11T07:29:45.802Z バッチ167対象40ファイルを 36e717377cbb68f49b9e2ad1a29b9ceffb8e788b にコミットし origin/codex/awesome-editorial-20261011 へpush成功。全1037組2回再生成、publish/check672、翻訳672、7子アプリ有効ビルド証拠（初回全7、空アンカー修正後systems再ビルド・他6入力不変証拠再利用）、対象HTML2文書と全参照/出典/目次、英日PC/mobile4状態と8画像・目次移動・言語切替・版メニューから旧版統合ナビ365件への遷移、空アンカー修正後JA4画像とC++/Java/Scala再確認、全1037組台帳検査、対象verified後1組検査に合格。155資料/25分類/全主付随URL保持。AES256/日2回/否定/暗号識別子/Java・Scala/RPC等訂正、CC0・Igor権利放棄・BlockchainU・Awesome着想元を出典へ集約。25JA別名と旧自然ID維持。容量警告0/超過0、空白検査合格。225/1037完了、812残（inventoried808・blocked3・needs-decision1）。次バッチ168 Non-Financial Blockchain新版 github-machinomy-awesome-non-financial-blockchain-readme-md。Bitcoinは新版のみ収録。台帳push記録を後続コミットとして送信。配信workflow対象外の編集ブランチで外部公開なし、所有プレビュー/ブラウザー終了、他案件変更保持。
