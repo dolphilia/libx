@@ -1,0 +1,430 @@
+﻿2026-10-07T02:20:29.5076260Z Current runner version: '2.337.0'
+2026-10-07T02:20:29.5106560Z ##[group]Runner Image Provisioner
+2026-10-07T02:20:29.5108560Z Hosted Compute Agent
+2026-10-07T02:20:29.5110140Z Version: 20260828.587
+2026-10-07T02:20:29.5112000Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-07T02:20:29.5113410Z Build Date: 2026-08-28T16:44:25Z
+2026-10-07T02:20:29.5114940Z Worker ID: {7a28859c-4669-4f37-92e7-009d44a9ba9a}
+2026-10-07T02:20:29.5116360Z Azure Region: westus
+2026-10-07T02:20:29.5117380Z ##[endgroup]
+2026-10-07T02:20:29.5121080Z ##[group]Operating System
+2026-10-07T02:20:29.5122520Z macOS
+2026-10-07T02:20:29.5123520Z 26.6.2
+2026-10-07T02:20:29.5143040Z 25G83
+2026-10-07T02:20:29.5143580Z ##[endgroup]
+2026-10-07T02:20:29.5144010Z ##[group]Runner Image
+2026-10-07T02:20:29.5144500Z Image: macos-26-arm64
+2026-10-07T02:20:29.5144950Z Version: 20260907.0351.1
+2026-10-07T02:20:29.5145900Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20260907.0351/images/macos/macos-26-arm64-Readme.md
+2026-10-07T02:20:29.5147010Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20260907.0351
+2026-10-07T02:20:29.5147720Z ##[endgroup]
+2026-10-07T02:20:29.5148750Z ##[group]GITHUB_TOKEN Permissions
+2026-10-07T02:20:29.5150850Z Actions: read
+2026-10-07T02:20:29.5151300Z Contents: read
+2026-10-07T02:20:29.5151800Z Deployments: write
+2026-10-07T02:20:29.5152220Z Metadata: read
+2026-10-07T02:20:29.5152660Z ##[endgroup]
+2026-10-07T02:20:29.5155360Z Secret source: Actions
+2026-10-07T02:20:29.5156040Z Cache mode: write
+2026-10-07T02:20:29.5156540Z Prepare workflow directory
+2026-10-07T02:20:29.5763770Z Prepare all required actions
+2026-10-07T02:20:29.5801100Z Getting action download info
+2026-10-07T02:20:29.8489040Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-07T02:20:30.6754720Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+2026-10-07T02:20:31.7733930Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+2026-10-07T02:20:31.9288440Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2026-10-07T02:20:33.1398360Z Complete job name: deploy-preview
+2026-10-07T02:20:33.2282200Z ##[group]Run actions/checkout@v6
+2026-10-07T02:20:33.2285690Z with:
+2026-10-07T02:20:33.2287190Z   repository: dolphilia/libx
+2026-10-07T02:20:33.2292190Z   token: ***
+2026-10-07T02:20:33.2292650Z   ssh-strict: true
+2026-10-07T02:20:33.2293790Z   ssh-user: git
+2026-10-07T02:20:33.2294380Z   persist-credentials: true
+2026-10-07T02:20:33.2295690Z   clean: true
+2026-10-07T02:20:33.2297060Z   sparse-checkout-cone-mode: true
+2026-10-07T02:20:33.2297610Z   fetch-depth: 1
+2026-10-07T02:20:33.2298020Z   fetch-tags: false
+2026-10-07T02:20:33.2298390Z   show-progress: true
+2026-10-07T02:20:33.2298920Z   lfs: false
+2026-10-07T02:20:33.2299330Z   submodules: false
+2026-10-07T02:20:33.2299760Z   set-safe-directory: true
+2026-10-07T02:20:33.2301180Z   allow-unsafe-pr-checkout: false
+2026-10-07T02:20:33.2302720Z env:
+2026-10-07T02:20:33.2303170Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-07T02:20:33.2303600Z ##[endgroup]
+2026-10-07T02:20:33.9787910Z Syncing repository: dolphilia/libx
+2026-10-07T02:20:33.9789900Z ##[group]Getting Git version info
+2026-10-07T02:20:33.9790420Z Working directory is '/Users/runner/work/libx/libx'
+2026-10-07T02:20:33.9791330Z [command]/opt/homebrew/bin/git version
+2026-10-07T02:20:34.0582470Z git version 2.55.0
+2026-10-07T02:20:34.0601820Z ##[endgroup]
+2026-10-07T02:20:34.0614590Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/629b6bc9-44b3-4746-af0a-1d4ff63ade01/.gitconfig'
+2026-10-07T02:20:34.0628410Z Temporarily overriding HOME='/Users/runner/work/_temp/629b6bc9-44b3-4746-af0a-1d4ff63ade01' before making global git config changes
+2026-10-07T02:20:34.0630580Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-07T02:20:34.0634940Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/libx/libx
+2026-10-07T02:20:34.0784000Z Deleting the contents of '/Users/runner/work/libx/libx'
+2026-10-07T02:20:34.0786560Z ##[group]Determining repository object format
+2026-10-07T02:20:34.0788330Z ##[endgroup]
+2026-10-07T02:20:34.0790120Z ##[group]Initializing the repository
+2026-10-07T02:20:34.0791850Z [command]/opt/homebrew/bin/git init /Users/runner/work/libx/libx
+2026-10-07T02:20:34.1073380Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-07T02:20:34.1076000Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-07T02:20:34.1076830Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-07T02:20:34.1077340Z hint: call:
+2026-10-07T02:20:34.1077670Z hint:
+2026-10-07T02:20:34.1078030Z hint: 	git config --global init.defaultBranch <name>
+2026-10-07T02:20:34.1078430Z hint:
+2026-10-07T02:20:34.1079040Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-07T02:20:34.1079840Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-07T02:20:34.1080420Z hint:
+2026-10-07T02:20:34.1080720Z hint: 	git branch -m <name>
+2026-10-07T02:20:34.1081070Z hint:
+2026-10-07T02:20:34.1081580Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-07T02:20:34.1082340Z Initialized empty Git repository in /Users/runner/work/libx/libx/.git/
+2026-10-07T02:20:34.1083630Z [command]/opt/homebrew/bin/git remote add origin https://github.com/dolphilia/libx
+2026-10-07T02:20:34.1193560Z ##[endgroup]
+2026-10-07T02:20:34.1194190Z ##[group]Disabling automatic garbage collection
+2026-10-07T02:20:34.1196940Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-07T02:20:34.1296890Z ##[endgroup]
+2026-10-07T02:20:34.1299630Z ##[group]Setting up auth
+2026-10-07T02:20:34.1302090Z Removing SSH command configuration
+2026-10-07T02:20:34.1305250Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-07T02:20:34.1408070Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-07T02:20:34.2984170Z Removing HTTP extra header
+2026-10-07T02:20:34.2991440Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-07T02:20:34.3110280Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-07T02:20:34.4976920Z Removing includeIf entries pointing to credentials config files
+2026-10-07T02:20:34.5056560Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-07T02:20:34.5230400Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-07T02:20:34.6438040Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-07T02:20:34.6583300Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/libx/libx/.git.path /Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:20:34.6745360Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:20:34.6906130Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:20:34.7042490Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:20:34.7140880Z ##[endgroup]
+2026-10-07T02:20:34.7156690Z ##[group]Fetching the repository
+2026-10-07T02:20:34.7159280Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6bba352afd5582a6d69816ebd2fbe106c0eef0e9:refs/remotes/origin/codex/expand-gnu-sed-chapter5-20261007
+2026-10-07T02:20:48.3656890Z From https://github.com/dolphilia/libx
+2026-10-07T02:20:48.3666690Z  * [new ref]         6bba352afd5582a6d69816ebd2fbe106c0eef0e9 -> origin/codex/expand-gnu-sed-chapter5-20261007
+2026-10-07T02:20:48.3873920Z [command]/opt/homebrew/bin/git branch --list --remote origin/codex/expand-gnu-sed-chapter5-20261007
+2026-10-07T02:20:48.4197830Z   origin/codex/expand-gnu-sed-chapter5-20261007
+2026-10-07T02:20:48.4207140Z [command]/opt/homebrew/bin/git rev-parse refs/remotes/origin/codex/expand-gnu-sed-chapter5-20261007
+2026-10-07T02:20:48.4290570Z 6bba352afd5582a6d69816ebd2fbe106c0eef0e9
+2026-10-07T02:20:48.4302270Z ##[endgroup]
+2026-10-07T02:20:48.4304020Z ##[group]Determining the checkout info
+2026-10-07T02:20:48.4305630Z ##[endgroup]
+2026-10-07T02:20:48.4306660Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-07T02:20:48.4549270Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-07T02:20:48.4843370Z ##[group]Checking out the ref
+2026-10-07T02:20:48.4863730Z [command]/opt/homebrew/bin/git checkout --progress --force -B codex/expand-gnu-sed-chapter5-20261007 refs/remotes/origin/codex/expand-gnu-sed-chapter5-20261007
+2026-10-07T02:20:49.6227900Z Updating files:  15% (2033/13118)
+2026-10-07T02:20:49.6703450Z Updating files:  16% (2099/13118)
+2026-10-07T02:20:49.7384630Z Updating files:  17% (2231/13118)
+2026-10-07T02:20:49.8003650Z Updating files:  18% (2362/13118)
+2026-10-07T02:20:49.8665050Z Updating files:  19% (2493/13118)
+2026-10-07T02:20:50.4364050Z Updating files:  20% (2624/13118)
+2026-10-07T02:20:50.4913580Z Updating files:  21% (2755/13118)
+2026-10-07T02:20:50.5387480Z Updating files:  22% (2886/13118)
+2026-10-07T02:20:50.5729580Z Updating files:  22% (3011/13118)
+2026-10-07T02:20:50.7495880Z Updating files:  23% (3018/13118)
+2026-10-07T02:20:50.7947340Z Updating files:  24% (3149/13118)
+2026-10-07T02:20:51.0724210Z Updating files:  25% (3280/13118)
+2026-10-07T02:20:51.2172400Z Updating files:  26% (3411/13118)
+2026-10-07T02:20:51.5539680Z Updating files:  27% (3542/13118)
+2026-10-07T02:20:51.5904690Z Updating files:  27% (3611/13118)
+2026-10-07T02:20:51.7236260Z Updating files:  28% (3674/13118)
+2026-10-07T02:20:51.7728200Z Updating files:  29% (3805/13118)
+2026-10-07T02:20:51.8169670Z Updating files:  30% (3936/13118)
+2026-10-07T02:20:51.8446010Z Updating files:  31% (4067/13118)
+2026-10-07T02:20:51.9038860Z Updating files:  32% (4198/13118)
+2026-10-07T02:20:52.0017510Z Updating files:  33% (4329/13118)
+2026-10-07T02:20:52.0403310Z Updating files:  34% (4461/13118)
+2026-10-07T02:20:52.0939260Z Updating files:  35% (4592/13118)
+2026-10-07T02:20:52.1959160Z Updating files:  36% (4723/13118)
+2026-10-07T02:20:52.2598230Z Updating files:  37% (4854/13118)
+2026-10-07T02:20:52.3323830Z Updating files:  38% (4985/13118)
+2026-10-07T02:20:52.5553550Z Updating files:  39% (5117/13118)
+2026-10-07T02:20:52.5974410Z Updating files:  39% (5149/13118)
+2026-10-07T02:20:52.6276870Z Updating files:  40% (5248/13118)
+2026-10-07T02:20:52.6897700Z Updating files:  41% (5379/13118)
+2026-10-07T02:20:52.7391780Z Updating files:  42% (5510/13118)
+2026-10-07T02:20:52.7690850Z Updating files:  43% (5641/13118)
+2026-10-07T02:20:52.8139060Z Updating files:  44% (5772/13118)
+2026-10-07T02:20:52.9118790Z Updating files:  45% (5904/13118)
+2026-10-07T02:20:52.9781790Z Updating files:  46% (6035/13118)
+2026-10-07T02:20:53.0268360Z Updating files:  47% (6166/13118)
+2026-10-07T02:20:53.0874560Z Updating files:  48% (6297/13118)
+2026-10-07T02:20:53.1873840Z Updating files:  49% (6428/13118)
+2026-10-07T02:20:53.2361550Z Updating files:  50% (6559/13118)
+2026-10-07T02:20:53.2817880Z Updating files:  51% (6691/13118)
+2026-10-07T02:20:53.3317190Z Updating files:  52% (6822/13118)
+2026-10-07T02:20:53.3606600Z Updating files:  53% (6953/13118)
+2026-10-07T02:20:53.4197650Z Updating files:  54% (7084/13118)
+2026-10-07T02:20:53.4537320Z Updating files:  55% (7215/13118)
+2026-10-07T02:20:53.5008190Z Updating files:  56% (7347/13118)
+2026-10-07T02:20:53.5317280Z Updating files:  57% (7478/13118)
+2026-10-07T02:20:53.5525680Z Updating files:  58% (7609/13118)
+2026-10-07T02:20:53.5873920Z Updating files:  58% (7623/13118)
+2026-10-07T02:20:53.6238250Z Updating files:  59% (7740/13118)
+2026-10-07T02:20:53.6655510Z Updating files:  60% (7871/13118)
+2026-10-07T02:20:53.7606540Z Updating files:  61% (8002/13118)
+2026-10-07T02:20:53.8347720Z Updating files:  62% (8134/13118)
+2026-10-07T02:20:53.8855420Z Updating files:  63% (8265/13118)
+2026-10-07T02:20:53.9385990Z Updating files:  64% (8396/13118)
+2026-10-07T02:20:53.9907780Z Updating files:  65% (8527/13118)
+2026-10-07T02:20:54.0285690Z Updating files:  66% (8658/13118)
+2026-10-07T02:20:54.0826910Z Updating files:  67% (8790/13118)
+2026-10-07T02:20:54.1322870Z Updating files:  68% (8921/13118)
+2026-10-07T02:20:54.1858410Z Updating files:  69% (9052/13118)
+2026-10-07T02:20:54.2278960Z Updating files:  70% (9183/13118)
+2026-10-07T02:20:54.2617200Z Updating files:  71% (9314/13118)
+2026-10-07T02:20:54.3023770Z Updating files:  72% (9445/13118)
+2026-10-07T02:20:54.3484890Z Updating files:  73% (9577/13118)
+2026-10-07T02:20:54.3897430Z Updating files:  74% (9708/13118)
+2026-10-07T02:20:54.4214680Z Updating files:  75% (9839/13118)
+2026-10-07T02:20:54.4648760Z Updating files:  76% (9970/13118)
+2026-10-07T02:20:54.4958670Z Updating files:  77% (10101/13118)
+2026-10-07T02:20:54.5417980Z Updating files:  78% (10233/13118)
+2026-10-07T02:20:54.5716500Z Updating files:  78% (10354/13118)
+2026-10-07T02:20:54.6276240Z Updating files:  79% (10364/13118)
+2026-10-07T02:20:54.7112630Z Updating files:  80% (10495/13118)
+2026-10-07T02:20:54.7495050Z Updating files:  81% (10626/13118)
+2026-10-07T02:20:54.7844280Z Updating files:  82% (10757/13118)
+2026-10-07T02:20:54.8403500Z Updating files:  83% (10888/13118)
+2026-10-07T02:20:54.8659980Z Updating files:  84% (11020/13118)
+2026-10-07T02:20:54.8969060Z Updating files:  85% (11151/13118)
+2026-10-07T02:20:54.9645010Z Updating files:  86% (11282/13118)
+2026-10-07T02:20:54.9972330Z Updating files:  87% (11413/13118)
+2026-10-07T02:20:55.0890090Z Updating files:  88% (11544/13118)
+2026-10-07T02:20:55.1238040Z Updating files:  89% (11676/13118)
+2026-10-07T02:20:55.1880830Z Updating files:  90% (11807/13118)
+2026-10-07T02:20:55.2607020Z Updating files:  91% (11938/13118)
+2026-10-07T02:20:55.3036990Z Updating files:  92% (12069/13118)
+2026-10-07T02:20:55.3467320Z Updating files:  93% (12200/13118)
+2026-10-07T02:20:55.3801060Z Updating files:  94% (12331/13118)
+2026-10-07T02:20:55.4096760Z Updating files:  95% (12463/13118)
+2026-10-07T02:20:55.4405670Z Updating files:  96% (12594/13118)
+2026-10-07T02:20:55.4702400Z Updating files:  97% (12725/13118)
+2026-10-07T02:20:55.4982210Z Updating files:  98% (12856/13118)
+2026-10-07T02:20:55.5214850Z Updating files:  99% (12987/13118)
+2026-10-07T02:20:55.5216510Z Updating files: 100% (13118/13118)
+2026-10-07T02:20:55.5218430Z Updating files: 100% (13118/13118), done.
+2026-10-07T02:20:55.5557970Z Switched to a new branch 'codex/expand-gnu-sed-chapter5-20261007'
+2026-10-07T02:20:55.5564630Z branch 'codex/expand-gnu-sed-chapter5-20261007' set up to track 'origin/codex/expand-gnu-sed-chapter5-20261007'.
+2026-10-07T02:20:55.5679570Z ##[endgroup]
+2026-10-07T02:20:55.6210400Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-07T02:20:55.6462310Z 6bba352afd5582a6d69816ebd2fbe106c0eef0e9
+2026-10-07T02:20:55.7087950Z ##[group]Run pnpm/action-setup@v4
+2026-10-07T02:20:55.7088900Z with:
+2026-10-07T02:20:55.7089340Z   dest: ~/setup-pnpm
+2026-10-07T02:20:55.7089980Z   run_install: null
+2026-10-07T02:20:55.7091300Z   cache: false
+2026-10-07T02:20:55.7091800Z   cache_dependency_path: pnpm-lock.yaml
+2026-10-07T02:20:55.7092740Z   package_json_file: package.json
+2026-10-07T02:20:55.7093310Z   standalone: false
+2026-10-07T02:20:55.7093970Z env:
+2026-10-07T02:20:55.7094460Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-07T02:20:55.7095210Z ##[endgroup]
+2026-10-07T02:20:56.0467570Z ##[group]Running self-installer...
+2026-10-07T02:20:56.6090770Z (node:1412) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-07T02:20:56.6093180Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-07T02:20:56.9670070Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-10-07T02:20:56.9786670Z Packages: +1
+2026-10-07T02:20:56.9787530Z +
+2026-10-07T02:20:58.0574150Z Progress: resolved 1, reused 0, downloaded 1, added 0
+2026-10-07T02:20:58.6082160Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-10-07T02:20:58.6562200Z 
+2026-10-07T02:20:58.6563100Z dependencies:
+2026-10-07T02:20:58.6563770Z + pnpm 10.10.0 (12.9.1 is available)
+2026-10-07T02:20:58.6564090Z 
+2026-10-07T02:20:58.6702320Z Done in 2.3s
+2026-10-07T02:20:58.6994720Z ##[endgroup]
+2026-10-07T02:20:58.6995770Z Installation Completed!
+2026-10-07T02:20:58.7344390Z ##[group]Run actions/setup-node@v6
+2026-10-07T02:20:58.7344660Z with:
+2026-10-07T02:20:58.7344820Z   node-version: 20
+2026-10-07T02:20:58.7345020Z   cache: pnpm
+2026-10-07T02:20:58.7345220Z   check-latest: false
+2026-10-07T02:20:58.7347720Z   token: ***
+2026-10-07T02:20:58.7347910Z   package-manager-cache: true
+2026-10-07T02:20:58.7348120Z env:
+2026-10-07T02:20:58.7348360Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-07T02:20:58.7348720Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-07T02:20:58.7349060Z ##[endgroup]
+2026-10-07T02:20:58.9184870Z Attempting to download 20...
+2026-10-07T02:20:59.9563210Z Acquiring 20.20.2 - arm64 from https://github.com/actions/node-versions/releases/download/20.20.2-23521894959/node-20.20.2-darwin-arm64.tar.gz
+2026-10-07T02:21:00.6234200Z Extracting ...
+2026-10-07T02:21:00.6422190Z [command]/usr/bin/tar xz --strip 1 -C /Users/runner/work/_temp/296523d6-c073-496c-8275-1dc0888ef519 -f /Users/runner/work/_temp/821a1aa8-a42c-4648-a2f0-6c59baa5833c
+2026-10-07T02:21:02.0247410Z Adding to the cache ...
+2026-10-07T02:21:05.2556620Z ##[group]Environment details
+2026-10-07T02:21:05.8643890Z node: v20.20.2
+2026-10-07T02:21:05.8644630Z npm: 10.8.2
+2026-10-07T02:21:05.8645010Z yarn: 1.22.22
+2026-10-07T02:21:05.8646210Z ##[endgroup]
+2026-10-07T02:21:05.8689640Z [command]/Users/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2026-10-07T02:21:06.3373850Z /Users/runner/setup-pnpm/node_modules/.bin/store/v10
+2026-10-07T02:21:06.5069820Z Cache hit for: node-cache-macOS-arm64-pnpm-cba8e8edbdf75c52f8481f4337b44fc864755116a6083e97fe793ac5afe85e5e
+2026-10-07T02:21:07.6933120Z Received 134217728 of 180097780 (74.5%), 115.6 MBs/sec
+2026-10-07T02:21:08.2720430Z Received 180097780 of 180097780 (100.0%), 101.8 MBs/sec
+2026-10-07T02:21:08.2726530Z Cache Size: ~172 MB (180097780 B)
+2026-10-07T02:21:08.2902050Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/ec064a2c-3e5c-4ad9-be79-e55954030be1/cache.tzst -P -C /Users/runner/work/libx/libx --delay-directory-restore --use-compress-program unzstd
+2026-10-07T02:21:15.2599880Z Cache restored successfully
+2026-10-07T02:21:15.2653990Z Cache restored from key: node-cache-macOS-arm64-pnpm-cba8e8edbdf75c52f8481f4337b44fc864755116a6083e97fe793ac5afe85e5e
+2026-10-07T02:21:15.3187100Z ##[group]Run pnpm install --frozen-lockfile
+2026-10-07T02:21:15.3187640Z [36;1mpnpm install --frozen-lockfile[0m
+2026-10-07T02:21:15.3853890Z shell: /bin/bash -e {0}
+2026-10-07T02:21:15.3854190Z env:
+2026-10-07T02:21:15.3854540Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-07T02:21:15.3855010Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-07T02:21:15.3856250Z ##[endgroup]
+2026-10-07T02:21:16.1817580Z Scope: all 51 workspace projects
+2026-10-07T02:21:16.2469440Z Lockfile is up to date, resolution step is skipped
+2026-10-07T02:21:16.3162440Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-10-07T02:21:16.4017280Z Packages: +755
+2026-10-07T02:21:16.4124210Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-10-07T02:21:17.3187600Z Progress: resolved 755, reused 750, downloaded 0, added 75
+2026-10-07T02:21:18.3227770Z Progress: resolved 755, reused 750, downloaded 0, added 280
+2026-10-07T02:21:19.3211260Z Progress: resolved 755, reused 750, downloaded 0, added 546
+2026-10-07T02:21:20.3270290Z Progress: resolved 755, reused 750, downloaded 0, added 683
+2026-10-07T02:21:20.8604210Z Progress: resolved 755, reused 750, downloaded 0, added 755, done
+2026-10-07T02:21:21.3587780Z 
+2026-10-07T02:21:21.3589230Z dependencies:
+2026-10-07T02:21:21.3589620Z + ajv 8.17.1
+2026-10-07T02:21:21.3590280Z + ajv-formats 3.0.1
+2026-10-07T02:21:21.3590690Z + glob 11.0.2
+2026-10-07T02:21:21.3591060Z + gray-matter 4.0.3
+2026-10-07T02:21:21.3591230Z 
+2026-10-07T02:21:21.3591440Z devDependencies:
+2026-10-07T02:21:21.3591930Z + @astrojs/starlight 0.34.8
+2026-10-07T02:21:21.3592420Z + @types/node 20.19.25
+2026-10-07T02:21:21.3593080Z + @typescript-eslint/eslint-plugin 6.21.0
+2026-10-07T02:21:21.3595250Z + @typescript-eslint/parser 6.21.0
+2026-10-07T02:21:21.3595850Z + astro 5.7.12
+2026-10-07T02:21:21.3597940Z + astro-eslint-parser 0.16.3
+2026-10-07T02:21:21.3598470Z + chrome-launcher 1.2.1
+2026-10-07T02:21:21.3599000Z + eslint 8.57.1
+2026-10-07T02:21:21.3599480Z + eslint-config-prettier 9.1.2
+2026-10-07T02:21:21.3600070Z + eslint-plugin-astro 0.29.1
+2026-10-07T02:21:21.3600830Z + lighthouse 12.8.2
+2026-10-07T02:21:21.3605720Z + parse5 7.3.0
+2026-10-07T02:21:21.3607880Z + prettier 3.5.3
+2026-10-07T02:21:21.3608460Z + prettier-plugin-astro 0.14.1
+2026-10-07T02:21:21.3609030Z + remark-gfm 4.0.1
+2026-10-07T02:21:21.3609420Z + remark-mdx 3.1.0
+2026-10-07T02:21:21.3609770Z + remark-parse 11.0.0
+2026-10-07T02:21:21.3610170Z + typescript 5.8.3
+2026-10-07T02:21:21.3610900Z + unified 11.0.5
+2026-10-07T02:21:21.3611340Z + unist-util-visit 5.0.0
+2026-10-07T02:21:21.3611720Z + wrangler 4.60.0
+2026-10-07T02:21:21.3611990Z 
+2026-10-07T02:21:21.3616280Z ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2026-10-07T02:21:21.3617170Z │                                                                              │
+2026-10-07T02:21:21.3618040Z │   Ignored build scripts: esbuild, sharp, workerd.                            │
+2026-10-07T02:21:21.3618870Z │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2026-10-07T02:21:21.3619590Z │   to run scripts.                                                            │
+2026-10-07T02:21:21.3620400Z │                                                                              │
+2026-10-07T02:21:21.3621170Z ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-10-07T02:21:21.3621510Z 
+2026-10-07T02:21:21.4721740Z Done in 5.8s using pnpm v10.10.0
+2026-10-07T02:21:21.4901200Z ##[group]Run actions/download-artifact@v4
+2026-10-07T02:21:21.4901620Z with:
+2026-10-07T02:21:21.4901880Z   artifact-ids: 11457221343
+2026-10-07T02:21:21.4902060Z   merge-multiple: true
+2026-10-07T02:21:21.4902350Z   path: .tmp/verified-deployment
+2026-10-07T02:21:21.4902670Z   repository: dolphilia/libx
+2026-10-07T02:21:21.4903020Z   run-id: 37559889476
+2026-10-07T02:21:21.4903180Z env:
+2026-10-07T02:21:21.4903450Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-07T02:21:21.4903850Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-07T02:21:21.4904110Z ##[endgroup]
+2026-10-07T02:21:21.7103730Z Downloading artifacts by ID
+2026-10-07T02:21:21.7239350Z (node:1701) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-07T02:21:21.7246910Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-07T02:21:21.8345680Z Found 1 artifact(s)
+2026-10-07T02:21:21.8346750Z Preparing to download the following artifacts:
+2026-10-07T02:21:21.8348150Z - verified-deployment-6bba352afd5582a6d69816ebd2fbe106c0eef0e9-1 (ID: 11457221343, Size: 199767633, Expected Digest: sha256:1375d70ff01bd0b83fc369c0b07a5eea30415aca4c72901c52b0956bb555edb4)
+2026-10-07T02:21:21.9474140Z Redirecting to blob download url: https://productionresultssa18.blob.core.windows.net/actions-results/49737bc5-d60a-43fd-9983-b1c402f6588f/workflow-job-run-62848a5a-78a2-53e0-92c2-ff906a58fd06/artifacts/57f675a9f5af127dabc0048d80e8134a429f10d8be28b9e5f90085dbabf97787.zip
+2026-10-07T02:21:21.9476060Z Starting download of artifact to: /Users/runner/work/libx/libx/.tmp/verified-deployment
+2026-10-07T02:21:22.0982540Z (node:1701) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-10-07T02:21:26.3174750Z SHA256 digest of downloaded artifact is 1375d70ff01bd0b83fc369c0b07a5eea30415aca4c72901c52b0956bb555edb4
+2026-10-07T02:21:26.3175800Z Artifact download completed successfully.
+2026-10-07T02:21:26.3176690Z Total of 1 artifact(s) downloaded
+2026-10-07T02:21:26.3186300Z Download artifact has finished successfully
+2026-10-07T02:21:26.3402510Z ##[group]Run node scripts/deployment-artifact.js --verify --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
+2026-10-07T02:21:26.3403370Z [36;1mnode scripts/deployment-artifact.js --verify --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"[0m
+2026-10-07T02:21:26.3404050Z [36;1mnode scripts/check-deployment-assets.js .tmp/verified-deployment/dist[0m
+2026-10-07T02:21:26.6016860Z shell: /bin/bash -e {0}
+2026-10-07T02:21:26.6017180Z env:
+2026-10-07T02:21:26.6017420Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-07T02:21:26.6017790Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-07T02:21:26.6018170Z   BUILD_COMMIT: 6bba352afd5582a6d69816ebd2fbe106c0eef0e9
+2026-10-07T02:21:26.6018560Z ##[endgroup]
+2026-10-07T02:21:27.5341150Z 公開成果物: 6101ファイル、commit=6bba352afd5582a6d69816ebd2fbe106c0eef0e9、照合OK
+2026-10-07T02:21:28.1530340Z デプロイ成果物: /Users/runner/work/libx/libx/.tmp/verified-deployment/dist
+2026-10-07T02:21:28.1532160Z ファイル数: 6101 / 20000 (警告 12000, 停止 18000)
+2026-10-07T02:21:28.1532890Z 合計容量: 451.21 MiB
+2026-10-07T02:21:28.1533540Z 最大ファイル: docs/gnu-diffutils/source/v3-12/source.zip (16.08 MiB)
+2026-10-07T02:21:28.1535480Z 拡張子別: .html=4110, .md=976, .js=349, .json=160, .txt=96, .svg=47, .css=42, .rst=42, (none)=37, .png=35, .c=34, .texi=27, .cpp=26, .woff2=20, .zip=17, .gz=9, .info=8, .xml=7, .in=6, .rs=6, .am=5, .1=5, .jpg=5, .3=5, .toml=4, .ac=3, .xz=3, .py=3, .mk=2, .sha256=2, .h=2, .plist=2, .note=1, .lz=1, .x=1, .bat=1, .ico=1, .lock=1
+2026-10-07T02:21:28.1600700Z ##[group]Run pnpm exec wrangler pages deploy .tmp/verified-deployment/dist --project-name libx --branch="$DEPLOY_BRANCH" --commit-hash="$BUILD_COMMIT" --commit-dirty=false
+2026-10-07T02:21:28.1601830Z [36;1mpnpm exec wrangler pages deploy .tmp/verified-deployment/dist --project-name libx --branch="$DEPLOY_BRANCH" --commit-hash="$BUILD_COMMIT" --commit-dirty=false[0m
+2026-10-07T02:21:28.1638040Z shell: /bin/bash -e {0}
+2026-10-07T02:21:28.1638270Z env:
+2026-10-07T02:21:28.1638470Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-07T02:21:28.1638780Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-07T02:21:28.1639080Z   DEPLOY_BRANCH: gnu-sed-chapter5-20261007
+2026-10-07T02:21:28.1639390Z   BUILD_COMMIT: 6bba352afd5582a6d69816ebd2fbe106c0eef0e9
+2026-10-07T02:21:28.1640250Z   CLOUDFLARE_API_TOKEN: ***
+2026-10-07T02:21:28.1640640Z   CLOUDFLARE_ACCOUNT_ID: ***
+2026-10-07T02:21:28.1640900Z ##[endgroup]
+2026-10-07T02:21:29.6358040Z 
+2026-10-07T02:21:29.6362430Z  ⛅️ wrangler 4.60.0 (update available 4.148.0)
+2026-10-07T02:21:29.6364750Z ──────────────────────────────────────────────
+2026-10-07T02:21:35.3659470Z Uploading... (5901/6101)
+2026-10-07T02:21:36.7163820Z Uploading... (5967/6101)
+2026-10-07T02:21:37.2411840Z Uploading... (6034/6101)
+2026-10-07T02:21:39.5016540Z Uploading... (6101/6101)
+2026-10-07T02:21:39.5027970Z ✨ Success! Uploaded 200 files (5901 already uploaded) (4.81 sec)
+2026-10-07T02:21:39.5030480Z 
+2026-10-07T02:21:41.5067280Z 🌎 Deploying...
+2026-10-07T02:21:45.3540000Z ✨ Deployment complete! Take a peek over at https://f1b76766.libx.pages.dev
+2026-10-07T02:21:45.3543170Z ✨ Deployment alias URL: https://gnu-sed-chapter5-20261007.libx.pages.dev
+2026-10-07T02:21:45.4300240Z Post job cleanup.
+2026-10-07T02:21:45.6361090Z Cache hit occurred on the primary key node-cache-macOS-arm64-pnpm-cba8e8edbdf75c52f8481f4337b44fc864755116a6083e97fe793ac5afe85e5e, not saving cache.
+2026-10-07T02:21:45.6445750Z Post job cleanup.
+2026-10-07T02:21:45.8404780Z Pruning is unnecessary.
+2026-10-07T02:21:45.8501510Z Post job cleanup.
+2026-10-07T02:21:46.0096440Z [command]/opt/homebrew/bin/git version
+2026-10-07T02:21:46.0331940Z git version 2.55.0
+2026-10-07T02:21:46.0364490Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/a2e8cb6b-d62d-468f-9d6c-ea7bff60d225/.gitconfig'
+2026-10-07T02:21:46.0388810Z Temporarily overriding HOME='/Users/runner/work/_temp/a2e8cb6b-d62d-468f-9d6c-ea7bff60d225' before making global git config changes
+2026-10-07T02:21:46.0390050Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-07T02:21:46.0396560Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/libx/libx
+2026-10-07T02:21:46.0619720Z Removing SSH command configuration
+2026-10-07T02:21:46.0620570Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-07T02:21:46.0861700Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-07T02:21:46.3403280Z Removing HTTP extra header
+2026-10-07T02:21:46.3411590Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-07T02:21:46.3567110Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-07T02:21:46.5213650Z Removing includeIf entries pointing to credentials config files
+2026-10-07T02:21:46.5225160Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-07T02:21:46.5299480Z includeif.gitdir:/Users/runner/work/libx/libx/.git.path
+2026-10-07T02:21:46.5300230Z includeif.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path
+2026-10-07T02:21:46.5300840Z includeif.gitdir:/github/workspace/.git.path
+2026-10-07T02:21:46.5302750Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-07T02:21:46.5315000Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/libx/libx/.git.path
+2026-10-07T02:21:46.5391150Z /Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.5400670Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/libx/libx/.git.path /Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.5502290Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path
+2026-10-07T02:21:46.5583440Z /Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.5590020Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.5674870Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-07T02:21:46.5747980Z /github/runner_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.5758690Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.5841860Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-07T02:21:46.5950840Z /github/runner_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.5960880Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config
+2026-10-07T02:21:46.6046290Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-07T02:21:46.7692000Z Removing credentials config '/Users/runner/work/_temp/git-credentials-f7d7292a-385b-4f05-a645-208fa501b9f6.config'
+2026-10-07T02:21:46.7848430Z Cleaning up orphan processes
+2026-10-07T02:21:47.1850340Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4, pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
