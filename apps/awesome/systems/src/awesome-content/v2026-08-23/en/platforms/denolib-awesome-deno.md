@@ -1,61 +1,14 @@
 ---
 title: "Awesome Deno"
-description: "A curated collection of resources and projects focused on Deno."
+description: "Deno modules, development tools, deployment integrations, application examples, documentation, talks, and multilingual resources."
 licenseSource: "github-denolib-awesome-deno-readme-md"
 ---
 
 # Awesome Deno
 
-A curated collection of resources and projects focused on Deno.
+Deno is a JavaScript and TypeScript runtime built in Rust and using V8. Explore modules, development tools, deployment integrations, application examples, documentation, articles, talks, and resources in several languages.
 
-## Contents
-
-- [Docs](#docs)
-  - [Official Docs](#official-docs)
-  - [External Docs](#external-docs)
-- [Modules](#modules)
-  - [Automation](#automation)
-  - [CLI utils](#cli-utils)
-  - [Cloud APIs](#cloud-apis)
-  - [Database](#database)
-  - [Editor framework](#editor-framework)
-  - [Frontend framework](#frontend-framework)
-  - [Game engine](#game-engine)
-  - [Logging](#logging)
-  - [Machine Learning](#machine-learning)
-  - [Mail](#mail)
-  - [Markdown](#markdown)
-  - [Math](#math)
-  - [Static site generator](#static-site-generator)
-  - [String utils](#string-utils)
-  - [Social Platform APIs](#social-platform-apis)
-  - [Template engine](#template-engine)
-  - [Testing](#testing)
-  - [Utils](#utils)
-  - [Web framework](#web-framework)
-  - [WebSocket](#websocket)
-  - [Web utils](#web-utils)
-  - [Webview](#webview)
-  - [XML](#xml)
-- [Registries](#registries)
-- [Showcases](#showcases)
-- [Tools](#tools)
-- [Integrations](#integrations)
-- [Articles](#articles)
-- [Blogs/Newsletters](#blogsnewsletters)
-- [Presentations](#presentations)
-- [Resources](#resources)
-  - [Books](#books)
-- [Resources in Other Languages](#resources-in-other-languages)
-  - [Chinese](#chinese)
-  - [Hebrew](#hebrew)
-  - [Indonesian](#indonesian)
-  - [Italian](#italian)
-  - [Japanese](#japanese)
-  - [Russian](#russian)
-  - [Spanish](#spanish)
-  - [Darija (Arabe marocain)](#darija)
-  - [Kurdish (Central)](#kurdish-central)
+Project status, compatibility, and registry descriptions reflect the fixed source snapshot; current maintenance and availability have not been checked.
 
 ## Docs
 
@@ -73,21 +26,21 @@ A curated collection of resources and projects focused on Deno.
 ## Modules
 
 ### Automation
-- [swissknife](https://github.com/fakoua/SwissKnife) - SwissKnife - Deno Swiss Knife tools for Windows.
+- [swissknife](https://github.com/fakoua/SwissKnife) - SwissKnife tools for Windows, using Deno.
 - [zuke](https://github.com/zuke-build/zuke) - Code-first, strongly-typed build automation system where builds are defined as TypeScript classes.
 
 ### CLI utils
-- [cac](https://github.com/cacjs/cac) - Simple yet powerful framework for building command-line apps.
+- [cac](https://github.com/cacjs/cac) - Framework for building command-line apps.
 - [charmd](https://github.com/littletof/charmd) - A simple, extendable markdown renderer for your terminal.
 - [cli-spinner](https://github.com/ameerthehacker/deno-cli-spinners) - Show spinners in the terminal while running long tasks.
-- [cliffy](https://github.com/c4spar/cliffy) - The complete solution for building interactive command-line tools.
+- [cliffy](https://github.com/c4spar/cliffy) - Tools for building interactive command-line interfaces.
 - [clite](https://github.com/jersou/clite-parser) - Automatic CLI generation from a class.
 - [commit-sage-cli](https://github.com/AhmedOsman101/commit-sage-cli) - Generates Conventional Commit messages with AI based on Git repository changes.
 - [tui](https://github.com/Im-Beast/deno_tui) - Module which allows easy creation of Terminal User Interfaces.
-- [yargs](https://github.com/yargs/yargs) - The modern, pirate-themed successor to optimist.
+- [yargs](https://github.com/yargs/yargs) - Successor to optimist, with a pirate theme.
 
 ### Cloud APIs
-- [aws-api](https://aws-api.deno.dev/) - From-scratch Typescript AWS API client built for Deno.
+- [aws-api](https://aws-api.deno.dev/) - TypeScript AWS API client built from scratch for Deno.
 
 ### Database
 - [@iuioiua/redis](https://jsr.io/@iuioiua/redis) - Fast, lightweight Redis client built upon the Web Streams API.
@@ -104,15 +57,15 @@ A curated collection of resources and projects focused on Deno.
 
 ### Editor framework
 
-- [Denops](https://github.com/vim-denops/denops.vim) - 🐜 An ecosystem to write Vim/Neovim plugins with Deno.
+- [Denops](https://github.com/vim-denops/denops.vim) - An ecosystem to write Vim/Neovim plugins with Deno.
 
 ### Frontend framework
-- [fresh](https://github.com/denoland/fresh) - The next-gen web framework.
+- [fresh](https://github.com/denoland/fresh) - Web framework.
 - [packup](https://github.com/kt3k/packup) - Zero-config web application packager for Deno.
-- [ultra](https://github.com/exhibitionist-digital/ultra) - 💎 Modern Streaming React Framework in Deno.
+- [ultra](https://github.com/exhibitionist-digital/ultra) - Streaming React framework in Deno.
 
 ### Game engine
-- [caviar](https://github.com/load1n9/caviar) - ⚡ Blazing fast, modern, Game Engine powered by WebGPU for Deno and the browser
+- [caviar](https://github.com/load1n9/caviar) - Game engine powered by WebGPU for Deno and the browser.
 - [sdl2](https://github.com/littledivy/deno_sdl2) - SDL2 module for Deno
 
 ### Image
@@ -125,7 +78,7 @@ A curated collection of resources and projects focused on Deno.
 ### Machine learning
 - [appraisal](https://github.com/retraigo/appraisal) - Feature extraction and conversion.
 - [classy-lala](https://github.com/retraigo/la-classy) - Single-layer perceptrons for supervised learning tasks.
-- [netsaur](https://github.com/denosaurs/netsaur) - Powerful machine learning, accelerated by WebGPU
+- [netsaur](https://github.com/denosaurs/netsaur) - Machine learning accelerated by WebGPU.
 
 ### Mail
 - [deno-smtp](https://github.com/manyuanrong/deno-smtp) - A smtp mail sender for deno.
@@ -138,10 +91,10 @@ A curated collection of resources and projects focused on Deno.
 
 ### Static site generator
 - [lume](https://github.com/lumeland/lume) - A static site generator similar to Jekyll or Eleventy with support for multiple file formats.
-- [pagic](https://github.com/xcatliu/pagic) - The easiest way to generate static html page from markdown, built with Deno.
+- [pagic](https://github.com/xcatliu/pagic) - Generate static HTML pages from Markdown, using Deno.
 
 ### String utils
-- [written](https://github.com/vixalien/written) - A provides a set of utilities for manipulating text, with a focus on providing typographic tools rather than pure string manipulation.
+- [written](https://github.com/vixalien/written) - Text utilities focused on typography rather than pure string manipulation.
 
 ### Social Platform APIs
 - [discordeno](https://github.com/discordeno/discordeno) - Discord API library for Deno
@@ -156,11 +109,11 @@ A curated collection of resources and projects focused on Deno.
 
 ### Testing
 - [deno-puppeteer](https://github.com/lucacasonato/deno-puppeteer) - A library which provides a high-level API to control Chromium or Chrome over the DevTools Protocol.
-- [qunitx](https://github.com/izelnakri/qunitx) - Zero dependency, fully customizable, mature, universal test API that can run interchangably in node.js, Deno & browser, using default runtime test runners.
+- [qunitx](https://github.com/izelnakri/qunitx) - Zero dependency, fully customizable, mature, universal test API that can run interchangeably in node.js, Deno & browser, using default runtime test runners.
 - [rhum](https://github.com/drashland/rhum) - A lightweight testing framework for Deno.
 - [superdeno](https://github.com/cmorten/superdeno) - Super-agent driven library for testing Deno HTTP servers.
 - [superoak](https://github.com/cmorten/superoak) - HTTP assertions for Oak made easy via SuperDeno.
-- [tepi](https://deno.land/x/tepi) - A .http Test Runner
+- [tepi](https://deno.land/x/tepi) - A .http test runner.
 - [unexpected](https://github.com/unexpectedjs/unexpected) - Extensible BDD assertion toolkit.
 
 ### Utils
@@ -170,7 +123,7 @@ A curated collection of resources and projects focused on Deno.
 - [croner](https://github.com/Hexagon/croner) - Cron library with advanced scheduling features, well-documented API, and zero dependencies.
 - [csv-pipe](https://github.com/martsinlabs/csv-pipe) - Typed, zero-dependency CSV parser and encoder for every runtime.
 - [deno-config](https://github.com/yooneskh/deno-unified-config) - Utility to streamline deno app configuration management through cli, .env and json files
-- [deno_kv_fs](https://github.com/hviana/deno_kv_fs) Deno KV file system, compatible with Deno deploy. Makes use of Web Streams API.
+- [deno_kv_fs](https://github.com/hviana/deno_kv_fs) - Deno KV file system compatible with Deno Deploy, using the Web Streams API.
 - [denon](https://github.com/denosaurs/denon/blob/master/mod.ts) - A file watcher with a for-await generator.
 - [dinoenv](https://deno.land/x/dinoenv) - tiny library to manage environment variables with deno.
 - [durationjs](https://github.com/retraigo/duration.js) - Get formatted time duration from a timestamp or a human-readable string.
@@ -180,12 +133,12 @@ A curated collection of resources and projects focused on Deno.
 - [fastest-validator](https://github.com/icebob/fastest-validator) - Schema validator for all javascript platforms
 - [fortuna](https://github.com/retraigo/fortuna) - Weighted gacha system.
 - [garn-validator](https://github.com/jupegarnica/garn-validator) - Create validations with ease.
-- [locale-kit](https://deno.land/x/localekit) ([GitHub](https://github.com/locale-kit/locale-kit)) - A internationalisation/localisation/translation (i18n/l10n/t9n) library with a wrapper for Fresh and support for plurals and dynamic replacement.
+- [locale-kit](https://deno.land/x/localekit) ([GitHub](https://github.com/locale-kit/locale-kit)) - An internationalisation/localisation/translation (i18n/l10n/t9n) library with a wrapper for Fresh and support for plurals and dynamic replacement.
 - [optionals](https://github.com/OliverBrotchie/optionals) - Rust-like error handling and options with exhaustive pattern matching.
 - [PLS](https://github.com/xorgram/pls) - Use 2 lines to persist localStorage in any database, including, but not limited to, MongoDB, PostgreSQL and Redis.
 - [qrcode](https://github.com/denorg/qrcode) - QR code image generator for Deno.
-- [rubico](https://github.com/a-synchronous/rubico) - 🏞 [a]synchronous function composition; it just works.
-- [solc](https://github.com/deno-web3/solc) - 💎 Solidity bindings for Deno.
+- [rubico](https://github.com/a-synchronous/rubico) - Asynchronous and synchronous function composition.
+- [solc](https://github.com/deno-web3/solc) - Solidity bindings for Deno.
 - [switcher4deno](https://github.com/switcherapi/switcher-client-deno) - Feature Flag Deno SDK client for Switcher-API.
 - [wu-diff-js](https://github.com/bokuweb/wu-diff-js) - A diff library to compute differences between two slices using wu(the O(NP)) algorithm.
 
@@ -196,11 +149,11 @@ A curated collection of resources and projects focused on Deno.
 ### Web framework
 - [alosaur](https://github.com/alosaur/alosaur) - Alosaur - Deno web framework with many ES Decorators.
 - [aqua](https://github.com/predetermined/aqua) - A minimal and fast web framework for Deno.
-- [danet](https://github.com/Savory/Danet) - A Savory web framework for Deno heavily inspired by [Nest.js](https://nestjs.com).
+- [danet](https://github.com/Savory/Danet) - Web framework for Deno heavily inspired by [Nest.js](https://nestjs.com).
 - [drash](https://github.com/drashland/drash) - A REST microframework for Deno's HTTP server with zero dependencies.
-- [faster](https://github.com/hviana/faster) - A fast and optimized middleware server with a set of useful middlwares.
+- [faster](https://github.com/hviana/faster) - A fast and optimized middleware server with a set of useful middlewares.
 - [faster_react](https://github.com/hviana/faster_react) - Full Stack web framework with React + Faster. Fully compatible with Deno Deploy.
-- [hono](https://github.com/honojs/hono) - Ultrafast web framework for Cloudflare Workers, Deno, and Bun. Fast, but not only fast.
+- [hono](https://github.com/honojs/hono) - Web framework for Cloudflare Workers, Deno, and Bun.
 - [oak](https://github.com/oakserver/oak) - A middleware framework for Deno's net server.
   - [oak-http-proxy](https://github.com/cmorten/oak-http-proxy) - Proxy middleware for Deno Oak HTTP servers.
   - [oak-routing-ctrl](https://github.com/Thesephi/oak-routing-ctrl) - TypeScript Decorators for easy scaffolding API services with the oak framework.
@@ -208,7 +161,7 @@ A curated collection of resources and projects focused on Deno.
   - [opine-http-proxy](https://github.com/cmorten/opine-http-proxy) - Proxy middleware for Deno Opine HTTP servers.
 
 ### WebSocket
-- [dropper](https://github.com/denyncrawford/dropper-deno) - Custom event-based WebSockets framework for building real-time apps on Deno 🦕
+- [dropper](https://github.com/denyncrawford/dropper-deno) - Custom event-based WebSockets framework for building real-time apps on Deno.
 - [wocket](https://github.com/drashland/wocket) - A WebSocket library for Deno.
 
 ### Web utils
@@ -233,14 +186,14 @@ A curated collection of resources and projects focused on Deno.
 ## Registries
 
 - [deno.land/x/](https://deno.land/x/) - The official 3rd party module registry.
-- [nest.land](https://nest.land) - An immutable, blockchain powered Deno package registry. 🥚
+- [nest.land](https://nest.land) - An immutable, blockchain-powered Deno package registry.
 
 ## Showcases
 
 - [Chobble Tickets](https://github.com/chobbledotcom/tickets) - Open source ticket sales system with encrypted attendee data and Stripe, Square, or SumUp payments.
 - [Deno Rest](https://github.com/Prolifode/deno_rest) - A Boilerplate for deno RESTful apis.
 - [Edrys](https://github.com/edrys-org/edrys) - Remote Teaching Software
-- [GitHub Profile Trophy](https://github.com/ryo-ma/github-profile-trophy) - 🏆 Add dynamically generated GitHub Trophy on your readme
+- [GitHub Profile Trophy](https://github.com/ryo-ma/github-profile-trophy) - Add dynamically generated GitHub trophies to a README.
 - [ShopSavvy Deno Deploy](https://github.com/shopsavvy/deno-deploy-shopsavvy) - Deno Deploy router with Hono for product search, real-time pricing, and price history.
 - [The Official Showcase](https://deno.land/showcase) - The official showcase of Deno.
 
@@ -255,14 +208,14 @@ A curated collection of resources and projects focused on Deno.
 - [denopendabot](https://github.com/apps/denopendabot) - Dependabot for Deno projects.
 - [denopkg](https://github.com/egoist-labs/denopkg.com) - An easier way to use code from GitHub in your Deno project.
 - [Deno Dig](https://github.com/theGEBIRGE/DenoDig) - A tool for extracting application code and npm packages from stand-alone Deno executables.
-- [deno_docker](https://github.com/denoland/deno_docker) - Latest dockerfiles and images for Deno - alpine, centos, debian, ubuntu.
+- [deno_docker](https://github.com/denoland/deno_docker) - Dockerfiles and images for Deno: Alpine, CentOS, Debian, and Ubuntu.
 - [dmm](https://github.com/drashland/dmm) - Lightweight Deno Module Manager
 - [dnt](https://github.com/denoland/dnt) - Deno to npm package build tool.
 - [dpm](https://github.com/dpmland/dpm) - Deno Package Manager, a NPM | Yarn Experience for Deno
 - dvm
   - [asdf-community/asdf-deno](https://github.com/asdf-community/asdf-deno) - Deno plugin for [asdf](https://asdf-vm.com/)
   - [justjavac/dvm](https://github.com/justjavac/dvm) - Deno Version Manager: manage multiple active Deno versions.
-  - [axetroy/dvm](https://github.com/axetroy/dvm) - Version manger for Deno without runtime dependencies.
+  - [axetroy/dvm](https://github.com/axetroy/dvm) - Version manager for Deno without runtime dependencies.
   - [ghosind/dvm](https://github.com/ghosind/dvm) - A lightweight Deno Version Manager for Linux/MacOS.
 - [entype](https://github.com/bcheidemann/entype) - A CLI tool used to generate type definitions for serialised data, currently supporting JSON to Rust and TypeScript.
 - [kopo-cli](https://github.com/littletof/kopo-cli) - A Deno registry browser in the terminal.
@@ -283,7 +236,7 @@ A curated collection of resources and projects focused on Deno.
 
 ## Blogs/Newsletters
 - [Deno Blog](https://deno.com/blog) - The official blog of the Deno Company.
-- [Deno News](https://deno.news) - A newsletter of Deno articles, news and cool projects.
+- [Deno News](https://deno.news) - A newsletter of Deno articles, news, and projects.
 
 ## Articles
 
@@ -370,14 +323,14 @@ A curated collection of resources and projects focused on Deno.
 
 ### Spanish
 
-- [Hola Deno! . 🦕](https://medium.com/javascript-espa%C3%B1ol/hola-deno-f31f9f6f2c84)
+- [Hola Deno!](https://medium.com/javascript-espa%C3%B1ol/hola-deno-f31f9f6f2c84)
 - [Así puedes crear tu primera API REST con Deno](https://medium.com/@mpampols/as%C3%AD-puedes-crear-tu-primera-api-rest-con-deno-a9094ee5c0b2)
-- [Primeros pasos con Deno 🦕 El sucesor de NodeJS desarrollado con Rust y TypeScript](https://medium.com/@manurua/primeros-pasos-con-deno-el-nuevo-nodejs-desarrollado-con-rust-y-typescript-b9ac14f7d0c7)
+- [Primeros pasos con Deno: El sucesor de NodeJS desarrollado con Rust y TypeScript](https://medium.com/@manurua/primeros-pasos-con-deno-el-nuevo-nodejs-desarrollado-con-rust-y-typescript-b9ac14f7d0c7)
 - [Primer vistazo con deno](https://dev.to/buttercubz/first-look-with-deno-spanish-30dh)
 
 ### Darija
 
-- [A first look at Deno | BlaBlaConf 2021 🇲🇦](https://www.youtube.com/watch?v=Y_etUvzAa4s)
+- [A first look at Deno | BlaBlaConf 2021](https://www.youtube.com/watch?v=Y_etUvzAa4s)
 
 ### Kurdish (Central)
 
