@@ -1,0 +1,88 @@
+{
+  "status": "scored-not-selected",
+  "at": "2026-10-11T09:52:52.824Z",
+  "weightedTotal": 74,
+  "minimum": 60,
+  "scores": {
+    "additionalValue": {
+      "value": 3,
+      "reason": "既存日本語manpageを尊重し、固定1.35完全Introduction/Tutorialを英日対応・例付きで読む追加価値を評価。同版全文日本語訳の不在は断定しない。",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/JAPANESE_RESEARCH.json",
+          "sha256": "93016fcaaecd10167995e81a9e9122d9ca8a2313348ebec31abd1e9f89f5ace1"
+        },
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+          "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "作成・一覧・展開の主要操作、練習用ディレクトリと信頼できないアーカイブへの注意を一続きで読める。原説明を技術保証せず、例は静的文字列で提供する。",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+          "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+        },
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NATIVE.json",
+          "sha256": "54a1c7397da626cb4eee55170ab8de04b13cfd745d8c5a5b240e1084342e5485"
+        }
+      ]
+    },
+    "quality": {
+      "value": 4,
+      "reason": "固定原文の章構成・44例を保ち、正規テンプレート試作の8ルート・114参照で可読性を確認。正式全訳の品質合格とは区別する。",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_RENDERED.json",
+          "sha256": "68bf2d84fc260147c37b40af2ce7a2af129e4561a59f882c6cca24012498a937"
+        },
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NATIVE.json",
+          "sha256": "54a1c7397da626cb4eee55170ab8de04b13cfd745d8c5a5b240e1084342e5485"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 4,
+      "reason": "固定版の静的2章と原典参照に限定し、同一原文の再翻訳・元サイト機能再現を要求しない。章節抽出を再生成可能な形で試作済み。",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/trial/generate-trial.py",
+          "sha256": "8328605849301b082e51afb79104bd46d2b4d983f9b2f91cfd8b21b9aa51b000"
+        },
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_GENERATION.json",
+          "sha256": "703c8a774f971910f3cfcbb1a0ecf417c7a62b074623690ed2c38dbe6ff45b43"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 4,
+      "reason": "既存正規テンプレート・出典フッター・Texinfo静的変換方式を利用できる。本文抽出はGNU tar用だがバッチ処理と検査方式は他GNU文書に共通。",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/trial/generate-trial.py",
+          "sha256": "8328605849301b082e51afb79104bd46d2b4d983f9b2f91cfd8b21b9aa51b000"
+        },
+        {
+          "path": "docs/notes/document-import/gnu-tar/v1-35/trial/check-trial.py",
+          "sha256": "0f42a2fc4a3334519f06eca5134d6a7434ce9237ca1f76e72dacc601602f1ba7"
+        }
+      ]
+    }
+  },
+  "rights": "unknown: original notice identifies invariant GPL; fixed generated manual has no corresponding appendix. Same-archive COPYING is preserved as a declared supplement; text-preservation trial alone does not establish original section identity.",
+  "remaining": "One explicit rights fulfillment assessment and separate selection review; do not register eligible/selected before this.",
+  "primaryRecheck": {
+    "urls": [
+      "https://www.gnu.org/licenses/fdl-howto.html",
+      "https://www.gnu.org/licenses/fdl-1.3-standalone.html",
+      "https://www.gnu.org/software/tar/manual/tar.html"
+    ],
+    "result": "Official search supports invariant-text preservation and tar notice; full web fetches timed out. Fixed archive fdl.texi sections1,4 and whole COPYING inspected directly. No new permission obtained."
+  }
+}

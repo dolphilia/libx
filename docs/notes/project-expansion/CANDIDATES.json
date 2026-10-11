@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 207,
+  "revision": 210,
   "candidates": [
     {
       "id": "ninja",
@@ -8881,23 +8881,19 @@
           "date": "2026-10-11T09:12:52.236Z"
         }
       ],
-      "state": "screening",
+      "state": "eligible",
       "conditions": {
         "rights": {
-          "status": "unknown",
-          "reason": "原tar.texiはGFDL1.3+、不変節GNU General Public License、Front/Back-Cover Textsを明示。原通知・タイトル/著者/変更履歴と全英語GFDL・未変更COPYINGのGPL全文を提供する設計を別パス確認するまでunknown。",
+          "status": "pass",
+          "reason": "固定原文の全通知・不変節/表紙文言宣言を保持し、同配布物の未変更COPYINGを明示的なGPL補足として全文提供する履行設計を別パス確認。原文にない付録の完全性は採用条件にせず、既存原文を一切変更せず提供。正式版では配布物/通知の最終検証を必須とする。",
           "evidence": [
             {
-              "path": "docs/notes/document-import/gnu-tar/v1-35/RIGHTS_DESIGN.json",
-              "sha256": "a5c7d495d8972a42da43bfbb5ea8221584d815ffc1c5bd651ec67f18f4a9d501"
+              "path": "docs/notes/document-import/gnu-tar/v1-35/RIGHTS_ASSESSMENT.json",
+              "sha256": "d4984008ccb41dfe974d4b4aa09c643de34732170bd3c6de8eeaa10cfc69b928"
             },
             {
-              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/project.config.jsonc",
-              "sha256": "7ae22134ce69c19ee406260643594db148d58eee97296dd0e7659c8e9df0a787"
-            },
-            {
-              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NATIVE.json",
-              "sha256": "54a1c7397da626cb4eee55170ab8de04b13cfd745d8c5a5b240e1084342e5485"
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NOTICE_PRESERVATION.json",
+              "sha256": "f224e7c55571b47c3f869b7eade665f1955de63a42a9ca7135e349b4d92036b7"
             }
           ]
         },
@@ -9006,35 +9002,89 @@
       },
       "scores": {
         "additionalValue": {
-          "value": null,
-          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
-          "evidence": []
+          "value": 3,
+          "reason": "既存日本語manpageを尊重し、固定1.35完全Introduction/Tutorialを英日対応・例付きで読む追加価値を評価。同版全文日本語訳の不在は断定しない。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/JAPANESE_RESEARCH.json",
+              "sha256": "93016fcaaecd10167995e81a9e9122d9ca8a2313348ebec31abd1e9f89f5ace1"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            }
+          ]
         },
         "practicality": {
-          "value": null,
-          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "作成・一覧・展開の主要操作、練習用ディレクトリと信頼できないアーカイブへの注意を一続きで読める。原説明を技術保証せず、例は静的文字列で提供する。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NATIVE.json",
+              "sha256": "54a1c7397da626cb4eee55170ab8de04b13cfd745d8c5a5b240e1084342e5485"
+            }
+          ]
         },
         "quality": {
-          "value": null,
-          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "固定原文の章構成・44例を保ち、正規テンプレート試作の8ルート・114参照で可読性を確認。正式全訳の品質合格とは区別する。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_RENDERED.json",
+              "sha256": "68bf2d84fc260147c37b40af2ce7a2af129e4561a59f882c6cca24012498a937"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NATIVE.json",
+              "sha256": "54a1c7397da626cb4eee55170ab8de04b13cfd745d8c5a5b240e1084342e5485"
+            }
+          ]
         },
         "maintenance": {
-          "value": null,
-          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "固定版の静的2章と原典参照に限定し、同一原文の再翻訳・元サイト機能再現を要求しない。章節抽出を再生成可能な形で試作済み。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/generate-trial.py",
+              "sha256": "8328605849301b082e51afb79104bd46d2b4d983f9b2f91cfd8b21b9aa51b000"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_GENERATION.json",
+              "sha256": "703c8a774f971910f3cfcbb1a0ecf417c7a62b074623690ed2c38dbe6ff45b43"
+            }
+          ]
         },
         "reuse": {
-          "value": null,
-          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
-          "evidence": []
+          "value": 4,
+          "reason": "既存正規テンプレート・出典フッター・Texinfo静的変換方式を利用できる。本文抽出はGNU tar用だがバッチ処理と検査方式は他GNU文書に共通。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/generate-trial.py",
+              "sha256": "8328605849301b082e51afb79104bd46d2b4d983f9b2f91cfd8b21b9aa51b000"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/check-trial.py",
+              "sha256": "0f42a2fc4a3334519f06eca5134d6a7434ce9237ca1f76e72dacc601602f1ba7"
+            }
+          ]
         }
       },
-      "decision": "予備調査候補として登録。固定原稿は取得したが6条件・採点・選定照合未完のためeligible/selectedではない。",
-      "resumeCondition": "GNU sed第8〜10章Production38128794487の品質検査が進行中。完了後artifact/CAS/公開後確認を優先。GNU tarは正規作成器の配信除外試作3ページ/8ルートbuild/44pre/114参照/代表nativeを再利用し、不変GPL補足の履行判断を別パスで確定後、採点・選定照合へ進む。正式アプリ/operation・全文日本語訳は未作成。",
+      "decision": "6条件と74/100点を別パス照合済み。固定1.35完全第1〜2章を正式採用可能とする。正規作成器の正式アプリ/operationはGNU sed公開後確認後に開始。",
+      "resumeCondition": "GNU sed第8〜10章Production成功済み。成果物取得/CAS/公開後HTTP確認を完了後、GNU tar1.35 eligibleの固定24入力・試作・74点/選定照合を再利用して正規作成器で正式作業を開始し、第1章から定本化・全文翻訳レビューへ進む。",
       "nextCheckAt": null,
-      "selectionReview": null
+      "selectionReview": {
+        "inputHash": "e22c143de10d638f6f1f1ee3b6bd72b7ca17fd4b2d964c11ccd21507fabac18a",
+        "status": "passed",
+        "evidence": [
+          {
+            "path": "docs/notes/document-import/gnu-tar/v1-35/SELECTION_REVIEW.json",
+            "sha256": "58f863f0b451c257ed009f6293db988788ea57c446726aec038067feacda59e1"
+          }
+        ]
+      }
     }
   ]
 }
