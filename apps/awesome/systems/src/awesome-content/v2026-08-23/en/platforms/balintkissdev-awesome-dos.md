@@ -1,24 +1,19 @@
 ---
 title: "Awesome DOS"
-description: "A curated collection of resources and projects focused on DOS."
+description: "DOS compilers, programming tutorials, books and videos, operating-system and game source code, and sound-card emulators."
 licenseSource: "github-balintkissdev-awesome-dos-readme-md"
+toc:
+  minLevel: 2
+  maxLevel: 4
 ---
 
 # Awesome DOS
 
-A curated collection of resources and projects focused on DOS.
+Compilers, programming tutorials, free and paid books, videos, source code for DOS systems and games, and sound-card emulators for DOS retro-programming.
 
-## Contents
+The source describes DOS as a family of operating systems for x86 PCs, including IBM PC DOS and MS-DOS, popular in the 1980s and early 1990s.
 
-- [Development tools](#development-tools)
-- [Tutorials and programming resources](#tutorials-and-programming-resources)
-- [Books](#books)
-- [Videos](#videos)
-- [Source code](#source-code)
-  - [Open source DOS operating systems](#open-source-dos-operating-systems)
-  - [Open source DOS libraries](#open-source-dos-libraries)
-  - [Open source DOS games](#open-source-dos-games)
-- [Drivers and emulators](#drivers-and-emulators)
+Version, maintenance, availability and compatibility statements reflect this snapshot’s source; current conditions have not been checked.
 
 ## Development tools
 
@@ -28,7 +23,7 @@ A curated collection of resources and projects focused on DOS.
 - [Insight](https://www.bttr-software.de/products/insight/) - Very small debugger for real-mode DOS programs with Borland's Turbo like UI. Features an i80486 disassembler, and i8086 assembler.
 - [Open Watcom](https://web.archive.org/web/20220627162043/http://www.openwatcom.org/) - Formerly commercial C/C++ development environment for 16- and 32-bit DOS and
   Windows. The current official version is 1.9. A GitHub fork is also available. Used for Doom I-II, Warcraft I-II, Duke Nukem 3D, Full Throttle, Dark Forces and Retro City Rampage.
-  - The [documentation](https://web.archive.org/web/20220630162351/http://www.openwatcom.org/doc.php) is very valuable in order to understand working with both version 1.9 and the V2 fork.
+  - The [documentation](https://web.archive.org/web/20220630162351/http://www.openwatcom.org/doc.php) covers working with both version 1.9 and the V2 fork.
   - [Arch Wiki page](https://wiki.archlinux.org/index.php/Open_Watcom)
 - [Open Watcom V2](https://github.com/open-watcom/open-watcom-v2) - GitHub fork which is actively maintained and is
   ported to 64-bit Windows and Linux.
@@ -124,12 +119,12 @@ A curated collection of resources and projects focused on DOS.
 #### PC Speaker
 
 - [Making some noise with the PC speaker! - by Mark Feldman](https://web.archive.org/web/20150302161648/http://heim.ifi.uio.no/~inf3150/grupper/1/pcspeaker.html) - Very short tutorial on using the PIT for generating PC speaker frequency.
-- [Frequencies of Musical Notes](https://web.archive.org/web/20201129091353/https://pages.mtu.edu/~suits/notefreqs.html) - Freqency table usable to parameterize the PC speaker.
+- [Frequencies of Musical Notes](https://web.archive.org/web/20201129091353/https://pages.mtu.edu/~suits/notefreqs.html) - Frequency table usable to parameterize the PC speaker.
 - [Sound Programming with PC Speaker - Chapter 23 of A to Z of C](https://web.archive.org/web/20171115162742/http://guideme.itgo.com/atozofc/ch23.pdf) - PC speaker programming chapter of the "A to Z of C" book with source code.
 
 #### AdLib/OPL2
 
-- [Yamaha YM3812 (OPL2) sound chip Wikipedia article](https://en.wikipedia.org/wiki/Yamaha_YM3812) - Best starting point to learn about the OPL2 sound chip besides 8-bit guy's YouTube video.
+- [Yamaha YM3812 (OPL2) sound chip Wikipedia article](https://en.wikipedia.org/wiki/Yamaha_YM3812) - An introduction to the OPL2 sound chip alongside 8-bit guy's YouTube video.
 - [The Ad Lib Music Synthesizer Card Programming Guide - by Tero Töttö](https://web.archive.org/web/20200427145810/http://www.vgmpf.com/Wiki/images/4/48/AdLib_-_Programming_Guide.pdf) - Reference of OPL2 operations and registers.
 
 #### Sound Blaster/OPL3
@@ -163,7 +158,7 @@ A curated collection of resources and projects focused on DOS.
 
 - [Why DOS Was (and Is) a Thing - FreeDOS](https://www.youtube.com/watch?v=3E5Hog5OnIM) - Historical talk starting from Unix, going through CPM, DOS 1.x, DOS 2.x, DOS 3.x, DOS 4.x, DOS 6.x, Windows 3.1, Windows 95 and ending with FreeDOS.
 - [CGA Graphics - Not as bad as you thought! - by 8-bit Guy](https://www.youtube.com/watch?v=niKblgZupOc) - History and technical details about IBM's CGA system. Also describes 4-color RGBI and 16-color Composite modes.
-- [How Oldschool Sound/Music worked - by 8-bit Guy](https://www.youtube.com/watch?v=q_3d1x2VPxk) - Video about PC speaker, FM synthesizers in NES and Commodore 64, Yamaha OPL chip in AdLib and Sound Blaster sound cards, PCM samples and MOD music.
+- [How Oldschool Sound/Music worked - by 8-bit Guy](https://www.youtube.com/watch?v=q_3d1x2VPxk) - The source describes this video as covering PC speaker, FM synthesizers in NES and Commodore 64, Yamaha OPL chip in AdLib and Sound Blaster sound cards, PCM samples and MOD music.
 - [Let's Code - MS DOS - by root42](https://www.youtube.com/playlist?list=PLGJnX2KGgaw2L7Uv5NThlL48G9y4rJx1X) - DOS programming tutorial series including VGA, SoundBlaster and VGA Mode X.
 - [LGR - Evolution of PC Audio - As Told by Secret of Monkey Island](https://www.youtube.com/watch?v=a324ykKV-7Y) - Comparison of playing the intro theme of Secret of Monkey Island through PC speaker, IBM PCjr/Tandy, AdLib, Game Blaster, Roland LAPC-1/MT-32, Gravis Ultrasound, Roland SCC-1 MIDI, SB16 Waveblaster/AWE32 and CD quality digital audio.
 - [Porting Retro City Rampage to MS-DOS: From PS4 to 1.44MB Floppy](https://www.youtube.com/watch?v=kSKeWH4TY9Y) - GDC talk. Brian Provinciano's presentation on porting Retro City Rampage from PlayStation 4 to DOS. Topics include optimization, using interrupts, timing, PC speaker sound, joystick, memory management and fixed-point math.
@@ -177,7 +172,7 @@ A curated collection of resources and projects focused on DOS.
 ### Open source DOS operating systems
 
 - [MS-DOS](https://github.com/microsoft/MS-DOS) - GitHub repository of the original source code for MS-DOS v1.25, v2.0 and v4.0, open-sourced by Microsoft.
-- [FreeDOS](https://www.freedos.org/) - FreeDOS is an open source DOS-compatible operating system that you can use to play classic DOS games, run legacy business software, or develop embedded systems. Any program that works on MS-DOS should also run on FreeDOS.
+- [FreeDOS](https://www.freedos.org/) - FreeDOS is an open source DOS-compatible operating system that you can use to play classic DOS games, run legacy business software, or develop embedded systems. The source states that any program that works on MS-DOS should also run on FreeDOS.
 
 ### Open source DOS libraries
 
@@ -191,21 +186,21 @@ A curated collection of resources and projects focused on DOS.
 
 #### Homebrew games with source code
 
-List of all homebrew DOS games: http://www.doshaven.eu
+Homebrew DOS game list: http://www.doshaven.eu
 
-- [DOS Defender](https://github.com/skeeto/dosdefender-ld31) - Christopher Wellons's x86 real mode DOS Asteroids clone created as an entry for Lundum Dare #31.
+- [DOS Defender](https://github.com/skeeto/dosdefender-ld31) - Christopher Wellons's x86 real mode DOS Asteroids clone created as an entry for Ludum Dare #31.
 - [Dungeons of Noudar](https://github.com/TheFakeMontyOnTheRun/dungeons-of-noudar) - First-person 2.5D dungeon-crawler on protected mode. Written in C++, includes software rendering, fixed point math, test coverage and sound (PC speaker, Adlib, OPL2LPT).
 - [Emeritus Pong](https://sourceforge.net/projects/empong/) - Pong clone for DOS, Windows and Linux. Uses PC speaker for sound on DOS.
 - [Floppy Bird](https://github.com/icebreaker/floppybird) - Flappy Bird clone written in 16 bit assembly. Not a DOS program, but a PC-Booter application instead (although it's also possible to build a COM executable for DOS).
 - [George M. Tzoumas's collection of MS-DOS games and utilities](http://web.archive.org/web/20191225101138/http://cgi.di.uoa.gr/~geotz/dos/) - Turbo Pascal with few games in C and C++. Games include Nibbles, Connect Four, Ms Pacman clone and two arcade/platform games. One of them (ra2) was written using Allegro. Utilities are all written in Turbo Pascal, these include game system routines, file and disk utilities and terminate-and-stay-resident programs (TSR).
 - [Gold Mine Run!](https://www.usebox.net/jjm/gold-mine-run/) - Platformer written in C using DJGPP.
-- [Gridfighter 3D](https://porta2note.itch.io/gridfighter-3d) - '80s style arcade shooter written in Quickbasic. Also the very first known DOS game that supports Oculus Rift VR headset.
+- [Gridfighter 3D](https://porta2note.itch.io/gridfighter-3d) - '80s style arcade shooter written in Quickbasic. The source identifies it as the first known DOS game to support an Oculus Rift VR headset.
   - [GitHub repository](https://github.com/porta2note/gridfighter3d)
 - [Hangman](https://sourceforge.net/projects/hangman-dos/) - Hangman clone written in Basic. Runs on at least 80286 processors and uses EGA graphics.
 - [Magenta's Maze](https://archive.org/details/MAGSMAZE) - 3D maze game using CGA graphics with algebra as theme.
   - [Source code download link](http://www.doshaven.eu/downloads/537)
 - [Mario](http://www.wieringsoftware.nl/mario/index.html) - Super Mario Bros clone written in Turbo Pascal.
-- [NetHack](https://github.com/NetHack/NetHack) - Descendant of the original [NetHack](https://en.wikipedia.org/wiki/NetHack) rougelike game first released in 1987 available on multiple platforms.
+- [NetHack](https://github.com/NetHack/NetHack) - Descendant of the original [NetHack](https://en.wikipedia.org/wiki/NetHack) roguelike game first released in 1987 available on multiple platforms.
 - [Piskworks](https://github.com/berk76/piskworks) - Gomoku clone written in C. Works on DOS, ZX Spectrum, ZX81, ZX80, APPLE1, AS400 and Windows.
 - [Plutonium Caverns](https://github.com/jani-nykanen/plutonium-caverns) - Overhead puzzle game written in C. Web version uses [DOSBox ported to Emscripten](https://github.com/dreamlayers/em-dosbox) to embed DOSBox into HTML5. However, the original executable is also downloadable and buildable with Open Watcom.
 - [Ptakovina](https://github.com/berk76/tetris) - Tetris clone written in C. Runs on DOS, Unix/Linux, ZX Spectrum and Windows.
@@ -224,14 +219,14 @@ List of all homebrew DOS games: http://www.doshaven.eu
 
 #### Commercial games with published source code
 
-- [Abuse](https://web.archive.org/web/20190801083909/https://www.classicdosgames.com/game/Abuse.html) - Sci-fi side-scrolling platform game. Regarded as an innovative cult classic by most people. Supports SVGA mode up to 1280x1024 resolution. Written in C, the architecture includes a Lisp-scripting engine.
+- [Abuse](https://web.archive.org/web/20190801083909/https://www.classicdosgames.com/game/Abuse.html) - Sci-fi side-scrolling platform game. Supports SVGA mode up to 1280x1024 resolution. Written in C, the architecture includes a Lisp-scripting engine.
   - [Source code download link](https://web.archive.org/web/20160402141350/http://www.classicdosgames.com/files/source/abuse_pd.tgz)
 - [Beneath a Steel Sky](https://web.archive.org/web/20200721064209/https://www.classicdosgames.com/game/Beneath_a_Steel_Sky.html) - Point-and-click adventure game set in a dystopian future. Written in assembly.
   - [Source code download link](https://web.archive.org/web/20200721083621/https://www.classicdosgames.com/files/source/sky-source.zip)
-- [Catacomb](https://github.com/CatacombGames/Catacomb) - 2D top-down shooter developed by Softdisk (later becoming id Software). Supports EGA and CGA graphics. Written in Turbo Pascal and assembly.
-- [Catacomb 3D](https://github.com/CatacombGames/Catacomb3D) - First-person shooter in fantasy setting developed by Softdisk (later becoming id Software). Features pseudo-3D graphics with raycasting technique. Supports EGA graphics. Written in C and assembly. Compiled with Borland C++ 3.1.
+- [Catacomb](https://github.com/CatacombGames/Catacomb) - 2D top-down shooter with its developer listed by the source as Softdisk (later becoming id Software). Supports EGA and CGA graphics. Written in Turbo Pascal and assembly.
+- [Catacomb 3D](https://github.com/CatacombGames/Catacomb3D) - First-person shooter in fantasy setting with its developer listed by the source as Softdisk (later becoming id Software). Features pseudo-3D graphics with raycasting technique. Supports EGA graphics. Written in C and assembly. Compiled with Borland C++ 3.1.
 - [Commander Keen in Keen Dreams](https://github.com/keendreams/keen) - Side-scrolling platform game developed by id Software. Keen Dreams is the Commander Keen game created between Keen 3 and Keen 4 (often considered "Keen 3.5"), but was not widely released. Written in C and assembly.
-- [Descent](https://github.com/videogamepreservation/descent) - First sci-fi FPS/space shooter to feature entirely true 3D graphics. Written in C and assembly.
+- [Descent](https://github.com/videogamepreservation/descent) - Described by the source as the first sci-fi FPS/space shooter to feature entirely true 3D graphics. Written in C and assembly.
 - [Descent II](https://github.com/videogamepreservation/descent2) - Sequel to Descent. Written in C and assembly.
 - [Doom](https://github.com/id-Software/DOOM) - Sci-fi FPS developed by id Software where you fight demons from hell on Mars. The DOS-specific code for Doom could not be published because of a dependency to the licensed DMX sound library, hence why it's cleaned up and only the Linux source is there. However, the Heretic and Hexen projects contain the original DOS code in a way where DMX-related code is removed.
 - [Duke Nukem 3D](https://web.archive.org/web/20190304015745/https://www.classicdosgames.com/game/Duke_Nukem_3D.html) - FPS developed by Apogee featuring the iconic character Duke Nukem. Written in C. Compiled with Watcom C/C++ 10.0.
@@ -239,7 +234,7 @@ List of all homebrew DOS games: http://www.doshaven.eu
 - [Heretic](https://github.com/OpenSourcedGames/Heretic) - Dark fantasy FPS running on id Software's Doom engine.
 - [Hexen: Beyond Heretic](https://github.com/OpenSourcedGames/Hexen) - Indirect sequel to Heretic.
   - Original [SourceForge link](https://sourceforge.net/projects/heretic/files/) for Heretic/Hexen.
-- [Hovertank 3D](https://github.com/FlatRockSoft/Hovertank3D) - FPS developed by id Software. Features pseudo-3D graphics with raycasting technique, before Catacomb 3D and Wolfeinstein 3D. Written in C and assembly.
+- [Hovertank 3D](https://github.com/FlatRockSoft/Hovertank3D) - FPS developed by id Software. Features pseudo-3D graphics with raycasting technique, before Catacomb 3D and Wolfenstein 3D. Written in C and assembly.
 - [Quake](https://github.com/id-Software/Quake) - FPS developed by id Software set in a fully 3D world. Written in C. Compiled with DJGPP for DOS.
   - [Quake Engine Code Review series](https://fabiensanglard.net/quakeSource/index.php) - Code analysis by Fabien Sanglard.
 - [Rise of the Triad: Dark War](https://github.com/videogamepreservation/rott) - FPS developed by Apogee. It was developed as a follow-up to Wolfenstein 3D, but was altered and became a standalone game instead. Uses a heavily modified Wolfenstein 3D engine. Written in C.

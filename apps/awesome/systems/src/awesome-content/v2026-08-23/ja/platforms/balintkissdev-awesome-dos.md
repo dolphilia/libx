@@ -1,34 +1,29 @@
 ---
 title: "Awesome DOS"
-description: "DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "DOSのコンパイラー、プログラミング資料、書籍・動画、OSとゲームのソースコード、サウンドカードエミュレーター。"
 licenseSource: "github-balintkissdev-awesome-dos-readme-md"
+toc:
+  minLevel: 2
+  maxLevel: 4
 ---
 
 # Awesome DOS
 
-DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+DOSでのレトロプログラミングに使うコンパイラー、チュートリアル、無料・有料の書籍、動画、OSやゲームのソースコード、サウンドカードエミュレーターを探せます。
 
-## 目次
+原文ではDOSを、IBM PC DOSやMS-DOSなど、1980年代から1990年代初頭に普及したx86 PC向けOSの系統と説明しています。
 
-- [開発ツール](#development-tools)
-- [チュートリアルとプログラミング資料](#tutorials-and-programming-resources)
-- [書籍](#books)
-- [動画](#videos)
-- [ソースコード](#source-code)
-  - [オープンソースの DOS オペレーティングシステム](#open-source-dos-operating-systems)
-  - [オープンソースの DOS ライブラリ](#open-source-dos-libraries)
-  - [オープンソースの DOS ゲーム](#open-source-dos-games)
-- [ドライバーとエミュレーター](#drivers-and-emulators)
+バージョン、保守状況、入手可能性、互換性の記述はこの版の原文に基づきます。現在の状況は確認していません。
 
 ## 開発ツール
 
-- [bcc - Bruce's C Compiler](https://gitlab.com/FreeDOS/devel/bcc) - tiny/small メモリーモデル用の 8086 アセンブラーを生成する、シンプルな C コンパイラー。
+- [bcc - Bruce's C Compiler](https://gitlab.com/FreeDOS/devel/bcc) - tiny/small メモリーモデル用の8086アセンブリーコードを生成する、シンプルな C コンパイラー。
 - [DJGPP](http://www.delorie.com/djgpp/) - Intel 80386 向けの DJ Delorie による完全な32ビット C/C++ 開発環境。Quake で使用されました。
 - [GCC IA-16 toolchain](https://gitlab.com/tkchia/build-ia16/-/releases) - DJGPP の16ビット版に相当する GCC ベースのツールチェーン。16ビット（8086〜80286、別名 IA-16）DOS アプリケーションを開発でき、現在は TK Chia が保守しています。
 - [Insight](https://www.bttr-software.de/products/insight/) - Borland Turbo 風 UI を備えた、リアルモード DOS プログラム向けの非常に小さなデバッガー。i80486 ディスアセンブラーと i8086 アセンブラーを搭載。
 - [Open Watcom](https://web.archive.org/web/20220627162043/http://www.openwatcom.org/) - 以前は商用だった16・32ビット DOS および
   Windows 向け C/C++ 開発環境。現在の公式版は1.9で、GitHub フォークもあります。Doom I-II、Warcraft I-II、Duke Nukem 3D、Full Throttle、Dark Forces、Retro City Rampage で使用されました。
-  - [ドキュメント](https://web.archive.org/web/20220630162351/http://www.openwatcom.org/doc.php)は、バージョン1.9とV2フォークの両方を扱ううえで非常に有用です。
+  - [ドキュメント](https://web.archive.org/web/20220630162351/http://www.openwatcom.org/doc.php)は、バージョン1.9とV2フォークの両方の使い方を扱う。
   - [Arch Wiki ページ](https://wiki.archlinux.org/index.php/Open_Watcom)
 - [Open Watcom V2](https://github.com/open-watcom/open-watcom-v2) - 活発に保守され、64ビット Windows と Linux に移植された GitHub フォーク。
 - [Turbo C 2.01](http://www.doshaven.eu/wp-content/uploads/2014/08/tc201.zip) - Borland が1987年に初公開した C IDE とコンパイラー。
@@ -81,13 +76,13 @@ DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 
 ### DOS API
 
-- [Digital Mars による bios.h ヘッダードキュメント](https://digitalmars.com/rtl/bios.html) - BIOS 操作へ直接アクセスするルーチン（ディスク、キーボード、プリンター、時刻、メモリー、シリアル、割り込み）の API ドキュメント。
+- [Digital Mars による bios.h ヘッダードキュメント](https://digitalmars.com/rtl/bios.html) - BIOS 操作へ直接アクセスするルーチン（ディスク、BIOSキーボード、プリンター、時刻、メモリー、シリアル、割り込み）の API ドキュメント。
 - Digital Mars による dos.h ヘッダードキュメント [パート1](https://digitalmars.com/rtl/dos.html) [パート2](https://digitalmars.com/rtl/dos2.html) - DOS オペレーティングシステム自体と連携する関数の API ドキュメント。
 
 ### 割り込み
 
 - [Ralph Brown's Interrupt List - HTML 版](https://web.archive.org/web/20201111162212/http://www.ctyme.com/rbrown.htm) - 既知の文書化済み・未文書化割り込み呼び出しを網羅し、検索、カテゴリー、割り込み番号から参照できます。
-  - [Ralph Brown の Web サイト](https://web.archive.org/web/20201108093425/http://www.cs.cmu.edu/~ralf/files.html)
+  - [Ralph Brownのサイトにある原文ZIPファイル](https://web.archive.org/web/20201108093425/http://www.cs.cmu.edu/~ralf/files.html)
 
 ### メモリー
 
@@ -127,14 +122,14 @@ DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 
 #### AdLib/OPL2
 
-- [Yamaha YM3812 (OPL2) サウンドチップの Wikipedia 記事](https://en.wikipedia.org/wiki/Yamaha_YM3812) - 8-bit Guy の YouTube 動画と並ぶ、OPL2 サウンドチップを学ぶ最初の資料。
+- [Yamaha YM3812 (OPL2) サウンドチップの Wikipedia 記事](https://en.wikipedia.org/wiki/Yamaha_YM3812) - 8-bit GuyのYouTube動画と並ぶ、OPL2サウンドチップの入門資料。
 - [Tero Töttö による The Ad Lib Music Synthesizer Card Programming Guide](https://web.archive.org/web/20200427145810/http://www.vgmpf.com/Wiki/images/4/48/AdLib_-_Programming_Guide.pdf) - OPL2 の操作とレジスターのリファレンス。
 
 #### Sound Blaster/OPL3
 
 - [Programmer's Guide to the Yamaha YMF 262/OPL3 FM Music Synthesizer](https://web.archive.org/web/20200509082459/http://www.fit.vutbr.cz/~arnost/opl/opl3.html) - リバースエンジニアリングによる OPL3 リファレンス。
 - [Ethan Brodsky による Sound Blaster 16 Programming Document 3.5](https://web.archive.org/web/20201130110457/http://homepages.cae.wisc.edu/~brodskye/sb16doc/sb16doc.html) - デジタル音声の録音と再生に使う Sound Blaster 16 DSP CT1341 チップのプログラミング。
-  - [GameDev.net アーカイブ](https://web.archive.org/web/20180507161514/http://archive.gamedev.net/archive/reference/articles/article444.html)
+  - [GameDev.netアーカイブのバージョン3.4](https://web.archive.org/web/20180507161514/http://archive.gamedev.net/archive/reference/articles/article444.html)
 - [Soundblaster Programming Information v0.90](https://web.archive.org/web/20191020222313/http://www.intel-assembler.it/portale/5/soundblaster-programming-information/sb-reference-for-programming-sound.asp) - Sound Blaster のモデルとレジスター一覧。
 
 ### その他
@@ -152,16 +147,16 @@ DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 
 ### 有料
 
-- [Tricks of the Game-Programming Gurus - Andre Lamothe、John Ratcliff、Denise Tyler](https://www.amazon.com/Tricks-Game-Programming-Gurus-Andre-Lamothe/dp/0672305070/) - DOS ゲーム開発を始めるための包括的な書籍。キーボード、マウス、ジョイスティック入力、2D・3D VGA、レイキャスター、サウンドと音楽、ゲームアルゴリズム、割り込みサービスルーチン（ISR）、タイマー、AI、シリアルポートとヌルモデムによるネットワーク対戦、ツール、視差スクロール、最適化を扱います。
+- [Tricks of the Game-Programming Gurus - Andre Lamothe、John Ratcliff、Denise Tyler](https://www.amazon.com/Tricks-Game-Programming-Gurus-Andre-Lamothe/dp/0672305070/) - DOS ゲーム開発を始めるための包括的な書籍。キーボード、マウス、ジョイスティックの入力処理、2D・3D VGAグラフィックスの作成、レイキャスティングによる描画、サウンドと音楽、ゲームアルゴリズム、割り込みサービスルーチン（ISR）、タイマー、AI、シリアルポートとヌルモデムによるネットワーク対戦、ツール、視差スクロール、最適化を扱います。
   - ライセンス上、貸出形式で利用できるオンライン図書館の電子書籍：[Open Library](https://openlibrary.org/books/OL1124792M/Tricks_of_the_game-programming_gurus)、[Internet Archive](https://archive.org/details/tricksofgameprog0000unse/page/n5/mode/2up)
 - [More Tricks of the Game Programming Gurus - Greg Anderson](https://www.amazon.com/More-Tricks-Game-Programming-Gurus-Cd-Rom/dp/0672306972) - _Tricks of the Game Programming Gurus_ の続編。SVGA、Binary Space Partition（BSP）、UI、ボクセルグラフィックス、リアル／プロテクトモードのメモリー管理、高度なサウンド、デバッグ、最適化を扱います。
   - ライセンス上、貸出形式で利用できるオンライン図書館の電子書籍：[Open Library](https://openlibrary.org/works/OL19501825W/More_tricks_of_the_game-programming_gurus)、[Internet Archive](https://archive.org/details/moretricksofgame0000unse/page/n7/mode/2up)
 
 ## 動画
 
-- [Why DOS Was (and Is) a Thing - FreeDOS](https://www.youtube.com/watch?v=3E5Hog5OnIM) - Unix から始まり、CPM、DOS 1.x〜6.x、Windows 3.1、Windows 95 を経て FreeDOS に至る歴史講演。
+- [Why DOS Was (and Is) a Thing - FreeDOS](https://www.youtube.com/watch?v=3E5Hog5OnIM) - Unix から始まり、CPM、DOS 1.x、DOS 2.x、DOS 3.x、DOS 4.x、DOS 6.x、Windows 3.1、Windows 95 を経て FreeDOS に至る歴史講演。
 - [CGA Graphics - Not as bad as you thought! - 8-bit Guy](https://www.youtube.com/watch?v=niKblgZupOc) - IBM CGA システムの歴史と技術詳細。4色 RGBI と16色 Composite モードも解説。
-- [How Oldschool Sound/Music worked - 8-bit Guy](https://www.youtube.com/watch?v=q_3d1x2VPxk) - PC Speaker、NES と Commodore 64 の FM シンセサイザー、AdLib と Sound Blaster の Yamaha OPL、PCM サンプル、MOD 音楽を扱う動画。
+- [How Oldschool Sound/Music worked - 8-bit Guy](https://www.youtube.com/watch?v=q_3d1x2VPxk) - 原文の説明では、PC Speaker、NESとCommodore 64のFMシンセサイザー、AdLib と Sound Blaster の Yamaha OPL、PCM サンプル、MOD 音楽を扱う動画。
 - [Let's Code - MS DOS - root42](https://www.youtube.com/playlist?list=PLGJnX2KGgaw2L7Uv5NThlL48G9y4rJx1X) - VGA、SoundBlaster、VGA Mode X を含む DOS プログラミングシリーズ。
 - [LGR - Evolution of PC Audio - As Told by Secret of Monkey Island](https://www.youtube.com/watch?v=a324ykKV-7Y) - Secret of Monkey Island の導入曲を PC Speaker、IBM PCjr/Tandy、AdLib、Game Blaster、Roland LAPC-1/MT-32、Gravis Ultrasound、Roland SCC-1 MIDI、SB16 Waveblaster/AWE32、CD品質デジタル音声で再生して比較。
 - [Porting Retro City Rampage to MS-DOS: From PS4 to 1.44MB Floppy](https://www.youtube.com/watch?v=kSKeWH4TY9Y) - Retro City Rampage を PlayStation 4 から DOS へ移植した Brian Provinciano の GDC 講演。最適化、割り込み、タイミング、PC Speaker、ジョイスティック、メモリー管理、固定小数点演算を扱います。
@@ -175,7 +170,7 @@ DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 ### オープンソースの DOS オペレーティングシステム
 
 - [MS-DOS](https://github.com/microsoft/MS-DOS) - Microsoft がオープンソース化した MS-DOS v1.25、v2.0、v4.0 のオリジナルソースコードリポジトリ。
-- [FreeDOS](https://www.freedos.org/) - 古典的 DOS ゲーム、旧式業務ソフト、組み込みシステム開発に使えるオープンソースの DOS 互換 OS。MS-DOS で動くプログラムは FreeDOS でも動作するはずです。
+- [FreeDOS](https://www.freedos.org/) - 古典的 DOS ゲーム、旧式業務ソフト、組み込みシステム開発に使えるオープンソースの DOS 互換 OS。MS-DOSで動くプログラムはFreeDOSでも動作するはずだと原文は述べている。
 
 ### オープンソースの DOS ライブラリ
 
@@ -187,17 +182,17 @@ DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストで�
 
 ### オープンソースの DOS ゲーム
 
-#### ソースコード付き Homebrew ゲーム
+#### ソースコード付きの自作ゲーム <a id="ソースコード付き-homebrew-ゲーム"></a>
 
-Homebrew DOS ゲームの全リスト：http://www.doshaven.eu
+自作DOSゲームの一覧：http://www.doshaven.eu
 
 - [DOS Defender](https://github.com/skeeto/dosdefender-ld31) - Christopher Wellons が Ludum Dare #31 向けに作成した x86 リアルモード DOS の Asteroids クローン。
-- [Dungeons of Noudar](https://github.com/TheFakeMontyOnTheRun/dungeons-of-noudar) - プロテクトモードの一人称2.5Dダンジョンクローラー。C++製で、ソフトウェアレンダリング、固定小数点演算、テスト、サウンド（PC Speaker、Adlib、OPL2LPT）を搭載。
+- [Dungeons of Noudar](https://github.com/TheFakeMontyOnTheRun/dungeons-of-noudar) - プロテクトモードの一人称2.5Dダンジョンクローラー。C++製で、ソフトウェアレンダリング、固定小数点演算、テストカバレッジ、サウンド（PC Speaker、Adlib、OPL2LPT）を搭載。
 - [Emeritus Pong](https://sourceforge.net/projects/empong/) - DOS、Windows、Linux 向け Pong クローン。DOS では PC Speaker を使用。
 - [Floppy Bird](https://github.com/icebreaker/floppybird) - 16ビットアセンブリー製 Flappy Bird クローン。DOS プログラムではなく PC-Booter アプリですが、DOS 用 COM 実行ファイルもビルドできます。
-- [George M. Tzoumas の MS-DOS ゲーム・ユーティリティ集](http://web.archive.org/web/20191225101138/http://cgi.di.uoa.gr/~geotz/dos/) - 主に Turbo Pascal、一部 C/C++ 製。Nibbles、Connect Four、Ms Pacman クローン、アーケード／プラットフォームゲーム2作を収録し、ra2 は Allegro 製。ユーティリティは Turbo Pascal 製で、ゲームシステムルーチン、ファイル／ディスク、TSR を含みます。
+- [George M. Tzoumas の MS-DOS ゲーム・ユーティリティ集](http://web.archive.org/web/20191225101138/http://cgi.di.uoa.gr/~geotz/dos/) - 主に Turbo Pascal、一部 C/C++ 製。Nibbles、Connect Four、Ms Pacman クローン、アーケード／プラットフォームゲーム2作を収録し、ra2 は Allegro 製。ユーティリティはすべてTurbo Pascal製で、ゲームシステムルーチン、ファイル／ディスク用ユーティリティ、常駐プログラム（TSR）を含む。
 - [Gold Mine Run!](https://www.usebox.net/jjm/gold-mine-run/) - DJGPP を使って C で書かれたプラットフォーマー。
-- [Gridfighter 3D](https://porta2note.itch.io/gridfighter-3d) - QuickBasic 製の1980年代風アーケードシューティング。Oculus Rift VR に対応した最初の既知の DOS ゲームでもあります。
+- [Gridfighter 3D](https://porta2note.itch.io/gridfighter-3d) - QuickBasic 製の1980年代風アーケードシューティング。原文では、Oculus Rift VRヘッドセットに対応した最初の既知のDOSゲームとされる。
   - [GitHub リポジトリ](https://github.com/porta2note/gridfighter3d)
 - [Hangman](https://sourceforge.net/projects/hangman-dos/) - BASIC 製ハングマンクローン。80286以上で動作し EGA を使用。
 - [Magenta's Maze](https://archive.org/details/MAGSMAZE) - 代数学を題材にした CGA グラフィックスの3D迷路ゲーム。
@@ -214,34 +209,34 @@ Homebrew DOS ゲームの全リスト：http://www.doshaven.eu
 - [x86 pong](https://github.com/spacerace/x86-pong) - C 製テキストモード Pong クローン。PC-Booter と DOS の両方で動作。
 - [zmiy](https://sourceforge.net/projects/zmiy/) - C 製テキストモード Snake クローン。8086 DOS で動作。
 
-#### ソースコード付き Freeware ゲーム
+#### ソースコード付きの無料配布ゲーム <a id="ソースコード付き-freeware-ゲーム"></a>
 
 - [Cyberdogs](https://web.archive.org/web/20190222022411/https://www.classicdosgames.com/game/Cyberdogs.html) - 傭兵として資金を稼ぐ見下ろし型2Dシューティング。Turbo Pascal 製で2人プレイ対応。
   - [ソースコードのダウンロード](https://web.archive.org/web/20180120123425/https://www.classicdosgames.com/files/source/dogs_src.zip)
-  - [C-Dogs](https://en.wikipedia.org/wiki/C-Dogs) - Cyberdogs の続編。原作者 Ronny Wester はオリジナル C-Dogs のサイトを保守していませんが、[cdogs-sdl](https://congusbongus.itch.io/cdogs-sdl)など複数の移植版があります。
+  - [C-Dogs](https://en.wikipedia.org/wiki/C-Dogs) - Cyberdogs の続編。原文によると、原作者Ronny WesterはオリジナルC-Dogsのサイトを保守していないが、[cdogs-sdl](https://congusbongus.itch.io/cdogs-sdl)など複数の移植版がある。
 
 #### ソースコードが公開された商用ゲーム
 
-- [Abuse](https://web.archive.org/web/20190801083909/https://www.classicdosgames.com/game/Abuse.html) - SF 横スクロールプラットフォームゲーム。革新的なカルトクラシックとされ、最大1280x1024の SVGA に対応。C 製で Lisp スクリプトエンジンを内蔵。
+- [Abuse](https://web.archive.org/web/20190801083909/https://www.classicdosgames.com/game/Abuse.html) - SF 横スクロールプラットフォームゲーム。最大1280x1024の SVGA に対応。C 製で Lisp スクリプトエンジンを内蔵。
   - [ソースコードのダウンロード](https://web.archive.org/web/20160402141350/http://www.classicdosgames.com/files/source/abuse_pd.tgz)
 - [Beneath a Steel Sky](https://web.archive.org/web/20200721064209/https://www.classicdosgames.com/game/Beneath_a_Steel_Sky.html) - ディストピアの未来を舞台にしたポイント＆クリック式アドベンチャー。アセンブリー製。
   - [ソースコードのダウンロード](https://web.archive.org/web/20200721083621/https://www.classicdosgames.com/files/source/sky-source.zip)
-- [Catacomb](https://github.com/CatacombGames/Catacomb) - Softdisk（後の id Software）が開発した見下ろし型2Dシューティング。EGA/CGA 対応で Turbo Pascal とアセンブリー製。
-- [Catacomb 3D](https://github.com/CatacombGames/Catacomb3D) - Softdisk（後の id Software）によるファンタジー一人称シューティング。レイキャスティングによる疑似3D、EGA に対応。C とアセンブリー製で Borland C++ 3.1 を使用。
+- [Catacomb](https://github.com/CatacombGames/Catacomb) - 開発元を原文ではSoftdisk（後のid Software）とする見下ろし型2Dシューティング。EGA/CGA 対応で Turbo Pascal とアセンブリー製。
+- [Catacomb 3D](https://github.com/CatacombGames/Catacomb3D) - 開発元を原文ではSoftdisk（後のid Software）とするファンタジー一人称シューティング。レイキャスティングによる疑似3D、EGA に対応。C とアセンブリー製で Borland C++ 3.1 を使用。
 - [Commander Keen in Keen Dreams](https://github.com/keendreams/keen) - id Software 開発の横スクロールプラットフォームゲーム。Keen 3 と Keen 4 の間に作られた（「Keen 3.5」とも呼ばれる）ものの広く公開されなかった作品。C とアセンブリー製。
-- [Descent](https://github.com/videogamepreservation/descent) - 完全な真の3Dグラフィックスを初めて採用した SF FPS／宇宙シューティング。C とアセンブリー製。
+- [Descent](https://github.com/videogamepreservation/descent) - 原文では、全体に真の3Dグラフィックスを初めて採用したSF FPS／宇宙シューティングとされる。C とアセンブリー製。
 - [Descent II](https://github.com/videogamepreservation/descent2) - Descent の続編。C とアセンブリー製。
 - [Doom](https://github.com/id-Software/DOOM) - 火星で地獄の悪魔と戦う id Software 製 SF FPS。ライセンスされた DMX サウンドライブラリへの依存により DOS 固有コードは公開できず、整理された Linux ソースのみがあります。Heretic と Hexen には DMX 関連コードを除去したオリジナル DOS コードが含まれます。
 - [Duke Nukem 3D](https://web.archive.org/web/20190304015745/https://www.classicdosgames.com/game/Duke_Nukem_3D.html) - 象徴的な Duke Nukem を主役とする Apogee 製 FPS。C 製で Watcom C/C++ 10.0 を使用。
   - [ソースコードのダウンロード](https://web.archive.org/web/20160403223736/http://www.classicdosgames.com/files/source/duke3dsource.zip)
 - [Heretic](https://github.com/OpenSourcedGames/Heretic) - id Software の Doom エンジンで動くダークファンタジー FPS。
 - [Hexen: Beyond Heretic](https://github.com/OpenSourcedGames/Hexen) - Heretic の間接的続編。
-  - Heretic/Hexen のオリジナル [SourceForge リンク](https://sourceforge.net/projects/heretic/files/)heretic/hexenのため
+  - Heretic/Hexenの元の[SourceForgeリンク](https://sourceforge.net/projects/heretic/files/)
 - [Hovertank 3D](https://github.com/FlatRockSoft/Hovertank3D) - id Software が Catacomb 3D と Wolfenstein 3D より前に開発した FPS。レイキャスティングによる疑似3D。C とアセンブリー製。
 - [Quake](https://github.com/id-Software/Quake) - 完全な3D世界を舞台にした id Software 製 FPS。C で書かれ、DOS 用には DJGPP でコンパイル。
   - [Quake Engine Code Review シリーズ](https://fabiensanglard.net/quakeSource/index.php) - Fabien Sanglard によるコード分析。
 - [Rise of the Triad: Dark War](https://github.com/videogamepreservation/rott) - Apogee 製 FPS。Wolfenstein 3D の後継として開発された後、独立作品へ変更。大幅に改変した Wolfenstein 3D エンジンを使用し、C 製。
-- [Sopwith](https://web.archive.org/web/20200131222432/http://davidlclark.com/page/sopwith) - David L. Clark が1984年に制作した横スクロールシューティング。Sopwith 複葉機を操縦し、敵機などを避けながら敵の建物を爆撃します。
+- [Sopwith](https://web.archive.org/web/20200131222432/http://davidlclark.com/page/sopwith) - David L. Clark が1984年に制作した横スクロールシューティング。Sopwith 複葉機を操縦し、敵機からの攻撃やさまざまな障害物を避けながら敵の建物の爆撃を試みるゲーム。
   - [MaiZure's Projects - Decoded: Sopwith](https://web.archive.org/web/20201211175311/https://www.maizure.org/projects/decoded-sopwith/) - MaiZure によるコード分析。
 - [Wolfenstein 3D](https://github.com/id-Software/wolf3d) - ナチス・ドイツの Castle Wolfenstein 刑務所を舞台にした id Software 製 FPS。レイキャスティングによる疑似3D。C とアセンブリー製。
 
