@@ -1,206 +1,185 @@
 ---
 title: "Awesome Digital Humanities"
-description: "Digital Humanitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "人文学の定量的・計算的研究に役立つソフトウェアと資料。"
 licenseSource: "github-dh-tech-awesome-digital-humanities-readme-md"
 ---
 
 # Awesome Digital Humanities
 
-Digital Humanitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+定量的・計算的な方法を用いる人文学の研究者向けのソフトウェアと資料。文献管理、コーパス、データ分析と注釈付け、研究機関、出版、学習教材、可視化を扱う。機能、利用条件、規模、保守状況、安全性に関する説明は、出典情報から参照できる固定原文の時点に基づく。
 
-## 目次
+## 文献・資料管理<a id="bibliography-and-sources-management"></a>
 
-- [Bibliography and Sources Management](#bibliography-and-sources-management)
-- [Corpus linguistics](#corpus-linguistics)
-- [Data Collection](#data-collection)
-- [Data Analysis](#data-analysis)
-- [Data Extraction and Conversion](#data-extraction-and-conversion)
-- [Data Annotation](#data-annotation)
-- [DH Centers](#dh-centers)
-- [Document Management and Processing](#document-management-and-processing)
-- [Journals](#journals)
-- [Organizations and Research Infrastructures](#organizations-and-research-infrastructures)
-- [Other Resources](#other-resources)
-- [Platforms](#platforms)
-- [Publishing](#publishing)
-- [Tool Building and Rapid Prototyping](#tool-building-and-rapid-prototyping)
-- [Twitter](#twitter)
-- [User Guides and Training Materials](#user-guides-and-training-materials)
-- [Visualization](#visualization)
-- [Zotero Groups](#zotero-groups)
+- [JabRef](https://www.jabref.org/) - オープンソースの文献・参考文献管理ソフトウェア。
+- [Tropy](https://tropy.org/) - 研究用写真の管理ツール。
+- [Zotero](https://www.zotero.org/) - 研究資料の収集、整理、引用、共有を支援する、無料で使いやすいツール。
 
-## 文献・資料管理
+## コーパス言語学<a id="corpus-linguistics"></a>
 
-- [JabRef](https://www.jabref.org/) - Open source bibliography reference manager.
-- [Tropy](https://tropy.org/) - Research Photo Management.
-- [Zotero](https://www.zotero.org/) - Free, easy-to-use tool to help you collect, organize, cite, and share research.
+- [AntConc](https://www.laurenceanthony.net/software/antconc/) - コンコーダンスの作成とテキスト分析に使う、無料のコーパス分析ツールキット。
+- [CorpusExplorer v2.0](http://www.CorpusExplorer.de) - コーパス言語学やテキスト・データマイニングに取り組む人向けのソフトウェア。45種類以上の対話的な可視化を使いやすい画面に統合し、テキストの取得、クリーニング、タグ付けなどの日常的な作業を完全に自動化する。シンプルな画面は大学での授業にも適しており、利用者や学生が短時間で実質的な成果を得られるよう支援する。XML、CSV、JSON、Rなど多くの標準形式に対応し、すべての機能を自作プログラムに組み込める独自のソフトウェア開発キット（SDK）も提供する。
+- [TXM](https://txm.gitpages.huma-num.fr/textometrie/en/) - オープンソースのテクストメトリー（計量的テキスト分析）ソフトウェアの開発成果を集め、Unicode、XML、TEI、自然言語処理ツール、CQP、Rなどの既存のコーパス技術と連携するモジュール式プラットフォームTXMを構築するプロジェクト。
 
-## コーパス言語学
+## データ収集<a id="data-collection"></a>
 
-- [AntConc](https://www.laurenceanthony.net/software/antconc/) - A freeware corpus analysis toolkit for concordancing and text analysis.
-- [CorpusExplorer v2.0](http://www.CorpusExplorer.de) - Software for corpus linguists and text/data mining enthusiasts. The CorpusExplorer combines over 45 interactive visualizations under an user-friendly interface. Routine tasks such as text acquisition, cleaning or tagging are completely automated. The simple interface supports the use in university teaching and leads the users/students to fast and substantial results. The CorpusExplorer is open for many standards (XML, CSV, JSON, R, etc.) and also offers its own software development kit (SDK), which allows you to integrate all functions into your own programs.
-- [TXM](https://txm.gitpages.huma-num.fr/textometrie/en/) - The project brings together open-source Textometry software developments to set up a modular platform called TXM, in synergy with existing corpus technologies (Unicode, XML, TEI, NLP tools, CQP, R).
+- [Data Commons](https://datacommons.org/) - [幅広い情報源](https://docs.datacommons.org/datasets/)のデータを統一されたデータベースに集約し、利用しやすく有用なものにする。
+- [OpenArchive](https://open-archive.org/) - 利用者の身元を保護しながら、モバイル端末のメディアを簡単に保存・共有し、より広く届けるためのツール。
+- [Open EU Data Portal](https://data.europa.eu/euodp/en/data/) - 欧州連合のオープンデータ。
+- [Social Feed Manager](https://gwu-libraries.github.io/sfm-ui/) - Twitter、Tumblr、Flickr、Sina Weiboからソーシャルメディアのデータやウェブ資料を収集するオープンソースのソフトウェア。
+- [Trafilatura](https://trafilatura.readthedocs.io/) - ウェブ上のテキストとメタデータを収集するオープンソースのソフトウェア。クロール、スクレイピング、抽出、複数形式での出力に対応し、Python、R、コマンドラインから利用できる。
+- [Transkribus](https://transkribus.eu/) - 手書き文字認識の最先端研究を活用し、文字起こし、共同作業、共有を行うためのツール。
+- [Textgrid](https://textgrid.de/) - 人文学の研究過程全体、特にデジタル学術校訂を支援するオープンソースのツールとサービス。
+- [webrecorder.io](https://webrecorder.io/) - 誰でも無料でウェブページを保存できるウェブアーカイブサービス。
 
-## データ収集
+## データ分析<a id="data-analysis"></a>
 
-- [Data Commons](https://datacommons.org/) - Aggregates data from a [wide range of sources](https://docs.datacommons.org/datasets/) into a unified database to make it more accessible and useful.
-- [OpenArchive](https://open-archive.org/) - Making it easy to store, share, and amplify your mobile media while protecting your identity.
-- [Open EU Data Portal](https://data.europa.eu/euodp/en/data/) - European Union open data.
-- [Social Feed Manager](https://gwu-libraries.github.io/sfm-ui/) - Open source software that harvests social media data and web resources from Twitter, Tumblr, Flickr, and Sina Weibo.
-- [Trafilatura](https://trafilatura.readthedocs.io/) - Open source software to gather text and metadata on the Web: Crawling, scraping, extraction, output in multiple formats. Usable with Python, R and on the command-line.
-- [Transkribus](https://transkribus.eu/) - Transcribe. Collaborate. Share and benefit from cutting edge research in Handwritten Text Recognition!
-- [Textgrid](https://textgrid.de/) - Open source tools and services support humanistic scholars during the entire process of research, especially in digital scholarly editing.
-- [webrecorder.io](https://webrecorder.io/) - Web archiving service anyone can use for free to save web pages.
+- [Allmaps](https://allmaps.org/) - IIIF地図の収集・整理、地理参照情報の付与、探索を行う。
+- [Breve](http://hdlab.stanford.edu/breve/) - 表形式のデータを可視化・編集する。
+- [Data Pen](http://hdlab.stanford.edu/data-pen/) - 人文学の研究者が多次元の歴史データにアクセスし、探索・操作するためのフレームワーク。
+- [DocFetcher](http://docfetcher.sourceforge.net/) - オープンソースのデスクトップ検索アプリケーション。
+- [IntellyWeave](https://github.com/vericle/intellyweave) - 人文学研究向けのオープンソースプラットフォーム。AIによる実体抽出（人物、組織、場所、日付、出来事）、文書コレクション全体の意味検索、歴史的出来事の地理空間可視化、厳選された30以上の国際的な情報源を用いるアーカイブ調査エージェントを備える。
+- [Leipzig Corpus Miner (LCM)](https://ilcm.informatik.uni-leipzig.de/) - 構造化・非構造化データを分析する統合研究環境を、サービスとしてソフトウェアを提供するSaaS構成で開発するプロジェクト。テキストマイニングを用いた大量のテキストデータ（例えば300万件のニュース記事）の定量評価と、社会科学やデジタル・ヒューマニティーズにおけるデータ駆動型研究設計の再現性に関する要件に対応する。
+- [Lexos](http://lexos.wheatoncollege.edu) - テキスト分析用のオンラインツール。
+- [Mallet](https://mimno.github.io/Mallet/) - 統計的自然言語処理、文書分類、クラスタリング、トピックモデル、情報抽出など、テキストへの機械学習の応用に使うJavaベースのパッケージ。
+- [Open Semantic Search](https://www.opensemanticsearch.org/) - 独自の検索エンジン、大規模文書コレクションの探索、メディア監視、テキスト解析、文書分析、テキストマイニングのための自由ソフトウェア。オープンソースの企業向け検索基盤Apache SolrまたはElasticsearchと、Linked Data、Semantic Web、Linked Open Dataを統合するための公開標準に基づく。
+- [renoir](https://github.com/MichailSemoglou/renoir) - 美術史を通じて計算による色彩理論を教えるためのPythonパッケージ。WikiArtから特定の画家の作品を抽出・分析し、配色の抽出、色の調和の検出、デジタル・ヒューマニティーズ教育向けの段階的に学べる17本のJupyterノートブックを提供する。
+- [Stylo](https://github.com/computationalstylistics/stylo) - 文体計量分析用のRパッケージ。
+- [TinEye](https://tineye.com/) - 画像全体またはその一部から検索し、同じ画像が掲載されているウェブ上の場所を見つける。
+- [Voyant](https://voyant-tools.org/) - デジタルテキストを読解・分析するための環境。
+- [YouTube Metadata](https://mattw.io/youtube-metadata/) - 動画とその投稿者、再生リストとその作成者、またはチャンネルについて個別の詳細情報を取得する。
 
-## データ分析
+## データ抽出と変換<a id="data-extraction-and-conversion"></a>
 
-- [Allmaps](https://allmaps.org/) - Curating, georeferencing and exploring for IIIF maps.
-- [Breve](http://hdlab.stanford.edu/breve/) - Visualize and edit tabular data.
-- [Data Pen](http://hdlab.stanford.edu/data-pen/) - Framework for humanities researchers to access, explore, and manipulate multidimensional historical data.
-- [DocFetcher](http://docfetcher.sourceforge.net/) - Open Source desktop search application.
-- [IntellyWeave](https://github.com/vericle/intellyweave) - Open-source platform for humanities research featuring AI-powered entity extraction (persons, organizations, locations, dates, events), semantic search across document collections, geospatial visualization for historical events, and archive research agents with 30+ curated international sources.
-- [Leipzig Corpus Miner (LCM)](https://ilcm.informatik.uni-leipzig.de/) - The LCM project pursues the development of an integrated research environment for the analysis of structured and unstructured data in a 'Software as a Service' architecture (SaaS). The research environment addresses requirements for the quantitative evaluation of large amounts of text data (e.g. 3 million news articles) using text mining methods and requirements for the reproducibility of data-driven research designs in the social sciences and the digital humanities.
-- [Lexos](http://lexos.wheatoncollege.edu) - Online tool for text analysis.
-- [Mallet](https://mimno.github.io/Mallet/) - Java-based package for statistical natural language processing, document classification, clustering, topic modeling, information extraction, and other machine learning applications to text.
-- [Open Semantic Search](https://www.opensemanticsearch.org/) - Free Software for your own Search Engine, Explorer for Discovery of large document collections, Media Monitoring, Text Analytics, Document Analysis & Text Mining platform based on Apache Solr or Elasticsearch open-source enterprise-search and Open Standards for Linked Data, Semantic Web & Linked Open Data integration.
-- [renoir](https://github.com/MichailSemoglou/renoir) - Python package for teaching computational color theory through art history. Extracts and analyzes artist-specific works from WikiArt with color palette extraction, harmony detection, and 17 progressive Jupyter notebooks for digital humanities education.
-- [Stylo](https://github.com/computationalstylistics/stylo) - R package for stylometric analyses.
-- [TinEye](https://tineye.com/) - Search by image or image section and find where that image appears online.
-- [Voyant](https://voyant-tools.org/) - Reading and analysis environment for digital texts.
-- [YouTube Metadata](https://mattw.io/youtube-metadata/) - It grabs singular details about a video and its uploader, playlist and its creator, or channel.
+- [ImageMagick](https://imagemagick.org/) - 画像変換ツール。
+- [MuPDF](https://mupdf.com/) - PDFの閲覧・変換ツール。
+- [OCRmyPDF](https://github.com/jbarlow83/OCRmyPDF) - 光学文字認識（OCR）用のツールキット。
+- [Poppler](https://poppler.freedesktop.org/) - PDF用ツールキット。
+- [QPDF](http://qpdf.sourceforge.net/) - PDF用ツールキット。
 
-## データ抽出と変換
+## データへの注釈付け<a id="data-annotation"></a><a id="データアノテーション"></a>
 
-- [ImageMagick](https://imagemagick.org/) - Image conversion tool.
-- [MuPDF](https://mupdf.com/) - PDF viewer and converter.
-- [OCRmyPDF](https://github.com/jbarlow83/OCRmyPDF) - OCR toolkit.
-- [Poppler](https://poppler.freedesktop.org/) - PDF toolkit.
-- [QPDF](http://qpdf.sourceforge.net/) - PDF toolkit.
+- [Annotation Studio](https://annotation-studio.org/) - MITのHyperStudioが開発した、ウェブ上で共同して注釈を付けるためのツール群。
+- [CATMA](https://catma.de/) - コンピューターを使ったテキストへのマークアップと分析。
+- [Glycerine](https://glycerine.io/) - IIIF画像への注釈付けツール群と一連の作業工程を提供する。研究者、キュレーター、学生が複数のリポジトリにまたがるプロジェクトで共同作業し、研究成果を公開できる。
+- [Recogito](https://recogito.pelagios.org/) - 画像とテキストへの意味情報の注釈付け。
 
-## データアノテーション
+## DHセンター<a id="dh-centers"></a><a id="dh-センター"></a>
 
-- [Annotation Studio](https://annotation-studio.org/) - Suite of tools for collaborative web-based annotation, developed by MIT's HyperStudio.
-- [CATMA](https://catma.de/) - Computer Assisted Text Markup and Analysis.
-- [Glycerine](https://glycerine.io/) - Provides a suite of IIIF image annotation tools and end-to-end workflows for researchers, curators and students to collaborate on projects across repositories and publish research ouputs.
-- [Recogito](https://recogito.pelagios.org/) - Semantic Annotation for images and texts.
+- [ACDH-DH](https://www.oeaw.ac.at/acdh/) - オーストリアのデジタル・ヒューマニティーズ研究センター。
+- [CDH Princeton](https://cdh.princeton.edu/) - Princeton Universityのデジタル・ヒューマニティーズ研究センター。
+- [DHCenter UNIL-EPFL](https://dhcenter-unil-epfl.com/) - 2018年に設立された学際的な研究プラットフォーム。機関の枠を超えてデジタル・ヒューマニティーズの研究者を結び付ける。
+- [Digital Humanities Bern](https://www.dh.unibe.ch/) - デジタルなテキスト・画像分析、デジタル校訂、デジタル手法が人文学に及ぼす影響の考察という文脈で、さまざまな主題を探究する。
+- [Digital Humanities Lab - Universität Basel](https://dhlab.philhist.unibas.ch/en/) - University of Baselの学際的な研究機関。
+- [HDLab](http://hdlab.stanford.edu/) - Stanford Universityの研究室Humanities + Design。
+- [Humanités numériques Unversity of Geneva](https://www.unige.ch/lettres/humanites-numeriques/) - 人文学に固有の方法や課題に即して、あらゆる人間科学でデジタル技術を利用する方法を教えることを目指す講座。
+- [Ladhul dhCenter](http://www.dhlausanne.ch/) - Université de Lausanneのデジタル文化・人文学研究室。
+- [Luxembourg Centre for Contemporary and Digital History](https://www.c2dh.uni.lu/) - 歴史研究と教育のための新しいデジタル手法・ツールを研究する。
+- [Roy Rosenzweig Center for History and New Media](https://rrchnm.org/) - Zoteroをはじめとする、歴史研究者向けのオープンソースソフトウェアを開発するセンター。
 
-## DH センター
+## 文書管理と処理<a id="document-management-and-processing"></a>
 
-- [ACDH-DH](https://www.oeaw.ac.at/acdh/) - Austrian Centre for Digital Humanities.
-- [CDH Princeton](https://cdh.princeton.edu/) - Center for Digital Humanities at Princeton University.
-- [DHCenter UNIL-EPFL](https://dhcenter-unil-epfl.com/) - Founded in 2018, this interdisciplinary research platform connects digital humanities researchers across institutions.
-- [Digital Humanities Bern](https://www.dh.unibe.ch/) - It explores different topics, in the context of digital text and image analysis, digital edition, and reflection on the impact of digital methods on the humanities.
-- [Digital Humanities Lab - Universität Basel](https://dhlab.philhist.unibas.ch/en/) - An interdisciplinary institution of the University of Basel.
-- [HDLab](http://hdlab.stanford.edu/) - Humanities + Design a Research Lab at Stanford University.
-- [Humanités numériques Unversity of Geneva](https://www.unige.ch/lettres/humanites-numeriques/) - The aim of the Chair is to teach the use of digital technology to all human sciences, according to the methods and issues specific to the Humanities.
-- [Ladhul dhCenter](http://www.dhlausanne.ch/) - Laboratoire de cultures et humanités digitales de l'Université de Lausanne.
-- [Luxembourg Centre for Contemporary and Digital History](https://www.c2dh.uni.lu/) - Research on new digital methods and tools for historical research and teaching.
-- [Roy Rosenzweig Center for History and New Media](https://rrchnm.org/) - Creators of Zotero and other amazing open-source software tools for historians.
+- [Giles Ecosystem](https://diging.atlassian.net/wiki/spaces/GECO/overview) - Apache Kafkaに基づく分散システム。利用者が文書をアップロードし、テキストや画像を抽出できる。アップロードされた画像に自動でOCRを実行し、PDFファイルから画像と埋め込みテキストを抽出する。処理負荷の増加に応じて容易に規模を拡張できる。
 
-## 文書管理と処理
+## 学術誌<a id="journals"></a><a id="ジャーナル"></a>
 
-- [Giles Ecosystem](https://diging.atlassian.net/wiki/spaces/GECO/overview) - A distributed system based on Apache Kafka that allows users to upload documents for text and image extraction. It automatically performs OCR on uploaded images and extracts images and embedded texts from pdf files. The system can be easily scaled to accommodate higher workloads.
+- [Computational Humanities Research](https://www.cambridge.org/core/journals/computational-humanities-research) - Cambridge University Pressが刊行する、査読付きのオープンアクセス学術誌。2024年創刊。
+- [Current Research in Digital History](http://crdh.rrchnm.org/) - George Mason UniversityのRoy Rosenzweig Center for History and New Mediaが年1回刊行する、査読付きのオープンアクセス学術誌。
+- [Journal of Cultural Analytics](https://culturalanalytics.org/) - 文化的な作品・資料を計算的手法で研究する、査読付きのオープンアクセス学術誌。主に人文学と計算人文学を対象とする。2016～2025年はMcGillが刊行し、2026年からはPrinceton UniversityのCenter for Digital Humanitiesが刊行している。
 
-## ジャーナル
+## 組織と研究インフラ<a id="organizations-and-research-infrastructures"></a>
 
-- [Computational Humanities Research](https://www.cambridge.org/core/journals/computational-humanities-research) - Open access, peer-reviewed journal published by Cambridge University Press; founded in 2024.
-- [Current Research in Digital History](http://crdh.rrchnm.org/) - Annual open-access, peer-reviewed publication of the Roy Rosenzweig Center for History and New Media at George Mason University.
-- [Journal of Cultural Analytics](https://culturalanalytics.org/) - Open-access, peer-reviewed publication for the computational study of cultural artifacts with a primary in the humanities and computational humanities. Published by McGill from 2016-2025; since 2026, published by the Center for Digital Humanities at Princeton University.
+- [ACH](http://ach.org/) - Association for Computers and the Humanities（ACH）は、デジタル・ヒューマニティーズの主要な学術団体。学会、出版、普及活動を通じて研究を支援・発信し、活発な専門家コミュニティを育てる。
+- [ADHO](http://adho.org/) - Alliance of Digital Humanities Organizations（ADHO）は、芸術・人文学の全分野でデジタル研究と教育を推進・支援する。コミュニティに根差した助言を行い、優れた研究、出版、共同作業、研修を支える。
+- [CHAIN](https://mith.umd.edu/chain/) - 人文学・芸術分野の研究基盤とネットワークの連合体、Coalition of Humanities and Arts Infrastructures and Networks。
+- [CHCI](https://chcinetwork.org/) - 人文学研究センター・研究機関の連合体、Consortium of Humanities Centers and Institutes。原文時点で、南北アメリカ、ヨーロッパ、アフリカ、アジア、環太平洋地域の250を超える組織が加盟する。加盟機関には、規模の大小を問わず大学やカレッジの人文学研究センター、コミュニティカレッジ、独立した学術団体、研究図書館、その他の高等研究機関が含まれる。
+- [centerNet](http://dhcenternet.org/) - デジタル・ヒューマニティーズ研究センターの国際的なネットワーク。
+- [CLARIN](https://www.clarin.eu/) - 名称はCommon Language Resources and Technology Infrastructureの略。ヨーロッパ内外のあらゆるデジタル言語資源とツールに、シングルサインオンのオンライン環境からアクセスできるようにし、人文学・社会科学の研究者を支援するという構想から始まった研究基盤。
+- [DARIAH](https://www.dariah.eu/) - Digital Research Infrastructure for the Arts and Humanities（DARIAH）は、芸術・人文学全体でデジタル技術を用いた研究と教育を強化・支援することを目指す。加盟国の人、専門知識、情報、知識、コンテンツ、手法、ツール、技術を結ぶネットワーク。ICTに基づく研究実践を支える基盤を開発・保守・運用し、研究者がその基盤を使ってデジタル資源を構築・分析・解釈できるよう支援する。
+- [DHCH](https://dh-ch.ch/) - スイスにおけるデジタル・ヒューマニティーズの学際的研究。
+- [Digital History Network Switzerland](https://www.digitalhistorynetwork.ch/) - スイスの大学などの学術機関や、美術館・図書館・文書館・博物館（GLAM）で活動するデジタル歴史研究者のネットワーク。比較的活発なメーリングリストを持つ。
+- [Digital Humanities Now](http://digitalhumanitiesnow.org/) - オープンなウェブ上で非公式に発表されたデジタル・ヒューマニティーズの研究や資料を取り上げ、広く届ける実験的な編集出版物。
+- [European Holocaust Research Infrastructure (EHRI)](https://www.ehri-project.eu/) - EHRI Portalは、所蔵場所を問わずホロコースト関連史料の情報にオンラインでアクセスできるようにする。また、ホロコースト研究のデジタル化を進める革新的なツールも推進する。
+- [European Research Infrastructure for Heritage Science (E-RIHS)](http://www.e-rihs.eu/) - 文化遺産の解釈、保存、記録、管理に関する研究を支援する。
+- [GO::DH](http://www.globaloutlookdh.org/) - Global Outlook::Digital Humanities（GO::DH）は、高所得・中所得・低所得の経済圏でデジタル芸術、人文学、文化遺産に関わる研究者や学生の間にある、意思疎通や共同作業の障壁を取り除くことを目指す。
 
-## 組織と研究インフラ
+## その他の資料<a id="other-resources"></a><a id="その他のリソース"></a>
 
-- [ACH](http://ach.org/) - Association for Computers and the Humanities (ACH) is a major professional society for the digital humanities. We support and disseminate research and cultivate a vibrant professional community through conferences, publications, and outreach activities.
-- [ADHO](http://adho.org/) - The Alliance of Digital Humanities Organizations (ADHO) promotes and supports digital research and teaching across all arts and humanities disciplines, acting as a community-based advisory force, and supporting excellence in research, publication, collaboration and training.
-- [CHAIN](https://mith.umd.edu/chain/) - Coalition of Humanities and Arts Infrastructures and Networks.
-- [CHCI](https://chcinetwork.org/) - Consortium of Humanities Centers and Institutes. Currently it has a membership of more than 250 organizations in the Americas, Europe, Africa, Asia, and Pacific Rim. Our members include humanities centers at small, medium, and large colleges and universities, community colleges, independent scholarly societies, research libraries, and other institutes of advanced study.
-- [centerNet](http://dhcenternet.org/) - An international network of digital humanities centers.
-- [CLARIN](https://www.clarin.eu/) - Stands for "Common Language Resources and Technology Infrastructure". It is a research infrastructure that was initiated from the vision that all digital language resources and tools from all over Europe and beyond are accessible through a single sign-on online environment for the support of researchers in the humanities and social sciences.
-- [DARIAH](https://www.dariah.eu/) - The Digital Research Infrastructure for the Arts and Humanities (DARIAH) aims to enhance and support digitally-enabled research and teaching across the arts and humanities. DARIAH is a network of people, expertise, information, knowledge, content, methods, tools and technologies from its member countries. It develops, maintains and operates an infrastructure in support of ICT-based research practices and sustains researchers in using them to build, analyse and interpret digital resources.
-- [DHCH](https://dh-ch.ch/) - Interdisciplinary research in the digital humanities in Switzerland.
-- [Digital History Network Switzerland](https://www.digitalhistorynetwork.ch/) - Network of digital historians in academia and GLAM institutions in Switzerland with a fairly active mailing list.
-- [Digital Humanities Now](http://digitalhumanitiesnow.org/) - An experimental, edited publication that highlights and distributes informally published digital humanities scholarship and resources from the open web.
-- [European Holocaust Research Infrastructure (EHRI)](https://www.ehri-project.eu/) - The EHRI Portal enables online access to information about Holocaust sources, no matter where they are located. It also promotes innovative tools that advance the digital transformation of Holocaust research.
-- [European Research Infrastructure for Heritage Science (E-RIHS)](http://www.e-rihs.eu/) - It supports research on heritage interpretation, preservation, documentation and management.
-- [GO::DH](http://www.globaloutlookdh.org/) - The purpose of Global Outlook::Digital Humanities (GO::DH) is to help break down barriers that hinder communication and collaboration among researchers and students of the Digital Arts, Humanities, and Cultural Heritage sectors in high, mid, and low income economies.
+- [Awesome Digital History](https://github.com/maehr/awesome-digital-history) - デジタル歴史学に関する優れた資料などを集めた一覧。
+- [Awesome IIIF](https://github.com/IIIF/awesome-iiif) - International Image Interoperability Framework（IIIF）に関する優れた資料を集めた一覧。
+- [Awesome OCR](https://github.com/kba/awesome-ocr) - 光学文字認識（OCR）に関するソフトウェア、ライブラリ、文献へのリンク集。
+- [Awesome Scientific Writing](https://github.com/writing-resources/awesome-scientific-writing) - LaTeXの枠を超えるためのツール、デモ、資料を集めた一覧。
+- [Awesome Web Archiving](https://github.com/iipc/awesome-web-archiving) - ウェブをアーカイブするための資料。
+- [Carolina Digital Humanities Initiative Tools Page](http://digitalhumanities.unc.edu/resources/tools/) - デジタル・ヒューマニティーズの研究者に役立つプラットフォーム、プラグイン、読み物などを紹介する。
+- [DH Toychest](http://dhresourcesforprojectbuilding.pbworks.com/w/page/69244319/Digital%20Humanities%20Tools) - 研究者、教員、学生がデジタル・ヒューマニティーズの実践に取り組むためのガイド、ツール、資料。[Alan Liu](http://liu.english.ucsb.edu/)（University of California, Santa Barbara）が編纂する。
+- [Digital Textuality Resource Pages](http://digitaltextuality.pbworks.com/w/page/68178062/Digital%20Textuality%20Resource%20Pages) - Alan LiuのToyChestに着想を得て、University of Texas at DallasのKimberly Knightと学生たちが、テキスト制作、可視化、静止画像、音声、動画・アニメーション用のツールをまとめた資料集。学生によるツールのレビューも含む。
+- [Duke University's DH Tools catalog](https://digitalhumanities.duke.edu/tools) - Duke Universityが支援するツールや、同大学のデジタルプロジェクトで使用したツールの一覧。DH専用のツールと、人文学研究に効果的に転用できるツールの両方を含む。
+- [FID Romanistik](https://www.fid-romanistik.de/forschungsdaten/suche-nach-forschungsdaten/fid-internetressourcen/tools/) - デジタル・ヒューマニティーズのためのツールと資料を集めた、ドイツ語の一覧。
+- [GLAMS Workbench](https://glam-workbench.net/) - 美術館・図書館・文書館・博物館（GLAM分野）のデータを扱うためのツール、チュートリアル、事例、工夫を集めたもの。主な対象はオーストラリアとニュージーランドで、原文では新しいコレクションも継続して追加されていると説明されている。
+- [Social Sciences & Humanities Open Marketplace](https://marketplace.sshopencloud.eu/) - 社会科学・人文学の研究コミュニティ向けの資料を集約し、利用の文脈を添える検索ポータル。ツール、サービス、学習教材、データセット、出版物、作業手順を扱う。
+- [TAPoR 3](http://tapor.ca/home) - 高度なテキスト分析と検索に使うツールへの入口。DiRT（Digital Research Tools）ディレクトリを統合するために再設計された。
+- [Taxonomy of Digital Research Activities in the Humanities (TaDiRAH)](https://tadirah.info/) - デジタル・ヒューマニティーズ関連情報を整理し、見つけやすくすることを目指す、コミュニティ主導のサイトやプロジェクト向けに開発された分類体系。特にツール、手法、プロジェクト、読み物の情報を収集する取り組みでの活用が想定されている。
 
-## その他のリソース
+## プラットフォーム<a id="platforms"></a>
 
-- [Awesome Digital History](https://github.com/maehr/awesome-digital-history) - A curated list of awesome things related to digital history.
-- [Awesome IIIF](https://github.com/IIIF/awesome-iiif) - A curated list of awesome resources related to the International Image Interoperability Framework (IIIF).
-- [Awesome OCR](https://github.com/kba/awesome-ocr) - This list contains links to great software tools and libraries and literature related to Optical Character Recognition (OCR).
-- [Awesome Scientific Writing](https://github.com/writing-resources/awesome-scientific-writing) - A curated list of awesome tools, demos and resources to go beyond LaTeX.
-- [Awesome Web Archiving](https://github.com/iipc/awesome-web-archiving) - Resources to archive the web.
-- [Carolina Digital Humanities Initiative Tools Page](http://digitalhumanities.unc.edu/resources/tools/) - It provides a range of platforms, plug-ins, readings, and other items that might be of use for DH researchers.
-- [DH Toychest](http://dhresourcesforprojectbuilding.pbworks.com/w/page/69244319/Digital%20Humanities%20Tools) - Guides, tools, and other resources for practical work in the digital humanities by researchers, teachers, and students. Curated by [Alan Liu](http://liu.english.ucsb.edu/), University of California, Santa Barbara.
-- [Digital Textuality Resource Pages](http://digitaltextuality.pbworks.com/w/page/68178062/Digital%20Textuality%20Resource%20Pages) - Inspired by Alan Liu's ToyChest, Kimberly Knight and her students at U. Texas (Dallas) keep in this repository a list of tools for text production, visualization, still image work, sound work, and video and animation; includes some student reviews of tools.
-- [Duke University's DH Tools catalog](https://digitalhumanities.duke.edu/tools) - This list includes tools that Duke supports and tools that have been used by Duke digital projects. Some of the tools are made specifically for DH and others that can be re-purposed quite effectively for Humanities research.
-- [FID Romanistik](https://www.fid-romanistik.de/forschungsdaten/suche-nach-forschungsdaten/fid-internetressourcen/tools/) - Curated list of tools and resources for digital humanists in German.
-- [GLAMS Workbench](https://glam-workbench.net/) - A collection of tools, tutorials, examples, and hacks to help you work with data from galleries, libraries, archives, and museums (the GLAM sector). The primary focus is Australia and New Zealand, but new collections are being added all the time.
-- [Social Sciences & Humanities Open Marketplace](https://marketplace.sshopencloud.eu/) - A discovery portal which pools and contextualises resources for Social Sciences and Humanities research communities: tools, services, training materials, datasets, publications and workflows.
-- [TAPoR 3](http://tapor.ca/home) - TAPoR is a gateway to the tools used in sophisticated text analysis and retrieval. It was redesigned in order to integrate the DiRT (Digital Research Tools) directory.
-- [Taxonomy of Digital Research Activities in the Humanities (TaDiRAH)](https://tadirah.info/) - This taxonomy has been developed for use by community-driven sites and projects that aim to structure information relevant to digital humanities and make it more easily discoverable. The taxonomy is expected to be particularly useful to endeavors aiming to collect information on digital humanities tools, methods, projects, or readings.
+- [DHSlack](https://github.com/amandavisconti/DHslack/blob/master/CodeOfConduct.md) - デジタル・ヒューマニティーズの研究者向けSlackチャンネル。
+- [HSS Digital](https://hssonline.org/page/digitalprojects) - 科学史におけるデジタル研究の取り組み。
+- [Perspectives on History](https://www.historians.org/community-careers/digital-history-resources/) - American Historical Associationのニュース誌。
+- [wethink.hypotheses.org](https://wethink.hypotheses.org/) - デジタル歴史学の共同研究。
+- [Wikipedia](https://en.wikipedia.org/wiki/Digital_history) - デジタル歴史学とは、デジタルメディアを利用して歴史分析、成果の提示、研究を進めること。
 
-## プラットフォーム
+## 出版<a id="publishing"></a>
 
-- [DHSlack](https://github.com/amandavisconti/DHslack/blob/master/CodeOfConduct.md) - Slack channels for digital humanities scholars.
-- [HSS Digital](https://hssonline.org/page/digitalprojects) - Digital scholarship in the history of science initiative.
-- [Perspectives on History](https://www.historians.org/community-careers/digital-history-resources/) - The newsmagazine of the American Historical Association.
-- [wethink.hypotheses.org](https://wethink.hypotheses.org/) - Collaborative Digital History.
-- [Wikipedia](https://en.wikipedia.org/wiki/Digital_history) - Digital history is the use of digital media to further historical analysis, presentation, and research.
+- [CollectionBuilder](https://collectionbuilder.github.io/) - メタデータと現代的な静的ウェブ技術に基づいて、デジタルコレクションや展示のウェブサイトを作成するオープンソースツール。
+- [Manifold](https://manifoldapp.org/) - 学術出版と、共同・交流型の読書のためのプラットフォーム。
+- [Omeka](https://omeka.org/) - デジタルコレクションの共有や、メディアを豊富に使ったオンライン展示の作成に使うオープンソースのウェブ出版プラットフォーム。
+- [Wax](https://minicomp.github.io/wax/) - IIIFを使った最小限の展示を作成するための、Jekyllベースのフレームワーク。
 
-## 出版
+## ツール開発と迅速な試作<a id="tool-building-and-rapid-prototyping"></a><a id="ツール開発と高速プロトタイピング"></a>
 
-- [CollectionBuilder](https://collectionbuilder.github.io/) - Open source tool for creating digital collection and exhibition websites based on metadata and powered by modern static web technology.
-- [Manifold](https://manifoldapp.org/) - Scholarly publishing and collaborative and social reading platform.
-- [Omeka](https://omeka.org/) - Open-source web publishing platform for sharing digital collections and creating media-rich online exhibits.
-- [Wax](https://minicomp.github.io/wax/) - Jekyll based framework for minimal exhibitions with IIIF.
-
-## ツール開発と高速プロトタイピング
-
-- [JupyterHub Workspace](https://github.com/maltevogl/jupyterworkspace) - The JupyterHub Workspace aims to be a collaborative programming and code-sharing platform. It provides access to browser-based Jupyter Notebooks, which integrate code with explanatory text, and are already used as a new publishing form. Data can be shared using the Nextcloud backend. A single sign-on mechanism simplifies access. By sharing useful code snippets among users, a growing examples collection further lowers the entrance barrier to programming for new DH members.
+- [JupyterHub Workspace](https://github.com/maltevogl/jupyterworkspace) - 共同でのプログラミングとコード共有を目指すプラットフォーム。コードと説明文を組み合わせるブラウザー上のJupyterノートブックを利用でき、ノートブックは新しい出版形式としても使われている。Nextcloudをバックエンドに用いてデータを共有でき、シングルサインオンでアクセスを簡略化する。利用者同士で便利なコード断片を共有し、事例集を増やすことで、DHに新しく参加する人のプログラミングへの敷居を下げる。
 
 ## Twitter
 
-- [Digital History by @moritzmaehr](https://twitter.com/moritzmaehr/lists/digital-history) - List of Digital History people by Moritz Mähr.
-- [Digital Humanities by @GrandjeanMartin](https://twitter.com/GrandjeanMartin/lists/digital-humanities) - List of Digital Humanities people by Martin Grandjean.
-- [Digital Humanities by @normanlippert](https://twitter.com/normanlippert/lists/digital-humanities) - List of Digital Humanities people by Norman Lippert.
-- [Digital Humanities by @wpippich](https://twitter.com/i/lists/907641704949436416) - List of Digital Humanities people by Waltraud von Pippich.
-- [Digital Humanities Women by @amandafrench](https://twitter.com/i/lists/81258446) - List of Digital Humanities women by Amanda French.
+- [Digital History by @moritzmaehr](https://twitter.com/moritzmaehr/lists/digital-history) - Moritz Mährが作成した、デジタル歴史学に関わる人々のリスト。
+- [Digital Humanities by @GrandjeanMartin](https://twitter.com/GrandjeanMartin/lists/digital-humanities) - Martin Grandjeanが作成した、デジタル・ヒューマニティーズに関わる人々のリスト。
+- [Digital Humanities by @normanlippert](https://twitter.com/normanlippert/lists/digital-humanities) - Norman Lippertが作成した、デジタル・ヒューマニティーズに関わる人々のリスト。
+- [Digital Humanities by @wpippich](https://twitter.com/i/lists/907641704949436416) - Waltraud von Pippichが作成した、デジタル・ヒューマニティーズに関わる人々のリスト。
+- [Digital Humanities Women by @amandafrench](https://twitter.com/i/lists/81258446) - Amanda Frenchが作成した、デジタル・ヒューマニティーズに関わる女性たちのリスト。
 
-## ユーザーガイドとトレーニング教材
+## 利用ガイドと学習教材<a id="user-guides-and-training-materials"></a><a id="ユーザーガイドとトレーニング教材"></a>
 
-- [#dariahTeach](https://teach.dariah.eu/) - An open-source, multilingual, community-driven platform for high-quality teaching and training materials for the digital arts and humanities.
-- [DARIAH-CAMPUS](https://campus.dariah.eu/) - A discovery framework and hosting platform for DARIAH learning resources.
-- [DH Tools for Beginners](https://medium.com/dh-tools-for-beginners) - A collection of tutorials about DH tools aiming at digital humanities researchers.
-- [Digital Editions Course](https://www.prisms.digital/training/) - The course covers the the whole process of creating a digital edition, from selecting a text right through to publication.
-- [Digital Humanities Literacy Guidebook](https://cmu-lib.github.io/dhlg/topics/) - Overview on the field of Digital History and Digital Humanities.
-- [Digital Humanities Theories and Practice](https://ltagliaferri.github.io/dh-rutgers-2022/) - Balancing practical guidance on tools and methodologies with modes for entering into the research of participants, the course will foster experimentation with and critical exploration of digital scholarship coupled with humanistic inquiry.
-- [forText](https://fortext.net) - Collection of german tutorials for the interpretation and visualization of literature.
-- [Framework for Information Literacy for Higher Education](http://www.ala.org/acrl/standards/ilframework) - How to teach digital literacy.
-- [Humanities Data Analysis](https://www.humanitiesdataanalysis.org/) - A practical guide to data-intensive humanities research using the Python programming language.
-- [Intro Cultural Analytics](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html) - Analyze cultural artifacts with Python.
-- [Introduction to Digital Humanities (DH101)](https://asandersgarcia.humspace.ucla.edu/courses/dh101f18/) - Collection of resources/online coursebook based on the _Introduction to Digital Humanities (DH101)_ course at [UCLA](http://www.ucla.edu/).
-- [Jupyter Notebooks for Digital Humanities](https://github.com/quinnanya/dh-jupyter/blob/master/README.md) - A diverse range of Jupyter notebooks, comprising research materials, course content, Python tutorials, and specific analysis tools.
-- [Missing Semester](https://missing.csail.mit.edu/) - Useful tools that are not taught in class.
-- [New Languages for NLP](https://new-languages-for-nlp.github.io/course-materials/intro.html) - Learn how to annotate linguistic data and train statistical language models using cutting-edge natural language processing (NLP) tools.
-- [PARTHENOS Training](https://training.parthenos-project.eu/) - The PARTHENOS cluster of humanities research infrastructure projects has devised a series of training modules and resources for those who want to learn more about research infrastructures in the Digital Humanities. Contains material about research infrastructures, research data, existing digital collections of use to researchers, guides to ontologies and a catalogue of webinars and training material.
-- [The Programming Historian](https://programminghistorian.org/) - Novice-friendly, peer-reviewed tutorials that help humanists learn a wide range of digital tools, techniques, and workflows to facilitate research and teaching.
+- [#dariahTeach](https://teach.dariah.eu/) - デジタル芸術と人文学の質の高い教育・研修教材を提供する、オープンソースで多言語対応のコミュニティ主導のプラットフォーム。
+- [DARIAH-CAMPUS](https://campus.dariah.eu/) - DARIAHの学習資料を見つけるための仕組みと、資料を公開するためのプラットフォーム。
+- [DH Tools for Beginners](https://medium.com/dh-tools-for-beginners) - デジタル・ヒューマニティーズの研究者向けに、DHツールのチュートリアルを集めたもの。
+- [Digital Editions Course](https://www.prisms.digital/training/) - テキストの選定から公開まで、デジタル校訂版を作成する全過程を扱う講座。
+- [Digital Humanities Literacy Guidebook](https://cmu-lib.github.io/dhlg/topics/) - デジタル歴史学とデジタル・ヒューマニティーズの分野を概観するガイド。
+- [Digital Humanities Theories and Practice](https://ltagliaferri.github.io/dh-rutgers-2022/) - ツールや方法論の実践的な指導と、受講者自身の研究に取り入れる方法を両立させる講座。人文学的な探究とともに、デジタル研究を試し、批判的に検討することを促す。
+- [forText](https://fortext.net) - 文学の解釈と可視化に関するドイツ語のチュートリアル集。
+- [Framework for Information Literacy for Higher Education](http://www.ala.org/acrl/standards/ilframework) - デジタルリテラシーを教える方法。
+- [Humanities Data Analysis](https://www.humanitiesdataanalysis.org/) - Pythonを使って、データを多く扱う人文学研究を行うための実践的なガイド。
+- [Intro Cultural Analytics](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html) - Pythonによる文化的な作品・資料の分析。
+- [Introduction to Digital Humanities (DH101)](https://asandersgarcia.humspace.ucla.edu/courses/dh101f18/) - [UCLA](http://www.ucla.edu/)の講座_Introduction to Digital Humanities (DH101)_に基づく資料集・オンライン教科書。
+- [Jupyter Notebooks for Digital Humanities](https://github.com/quinnanya/dh-jupyter/blob/master/README.md) - 研究資料、授業内容、Pythonのチュートリアル、個別の分析ツールなど、多様なJupyterノートブックを収録する。
+- [Missing Semester](https://missing.csail.mit.edu/) - 授業では教わらない便利なツール。
+- [New Languages for NLP](https://new-languages-for-nlp.github.io/course-materials/intro.html) - 先端的な自然言語処理（NLP）ツールを使い、言語データへの注釈付けと統計的言語モデルの学習を行う方法を学ぶ。
+- [PARTHENOS Training](https://training.parthenos-project.eu/) - 人文学の研究基盤プロジェクト群PARTHENOSが、デジタル・ヒューマニティーズの研究基盤を詳しく学びたい人向けに作成した研修モジュールと資料。研究基盤、研究データ、研究者が利用できる既存のデジタルコレクション、オントロジーのガイド、ウェビナーと研修教材のカタログを含む。
+- [The Programming Historian](https://programminghistorian.org/) - 研究と教育に役立つ幅広いデジタルツール、技法、作業手順を人文学研究者が学べる、初心者向けの査読付きチュートリアル。
 
-## 可視化
+## 可視化<a id="visualization"></a>
 
-- [Bertin.js](https://github.com/neocarto/bertin) - JavaScript library for visualizing geospatial data and make thematic maps for the web.
-- [DARIAH-DE Geo-Browser](https://geobrowser.de.dariah.eu/) - Create visualizations with geotagges data.
-- [Gephi](https://gephi.org/) - Leading visualization and exploration software for all kinds of graphs and networks.
-- [Khartis](https://www.sciencespo.fr/cartographie/khartis/en/) - A tool for easy creation of thematic maps in 3 steps from CSV data.
-- [Palladio](https://hdlab.stanford.edu/palladio/) - Visualize complex historical data with ease.
-- [RAWGraphs](https://rawgraphs.io/) - Open source, web-based tool for the visualization of complex data.
-- [StorylineJS](http://storyline.knightlab.com/) - Tell the story behind the numbers.
-- [StorymapJS](https://storymap.knightlab.com/) - Maps that tell stories.
-- [TimelineJS](https://timeline.knightlab.com/) - Easy-to-make, beautiful timelines.
-- [Vistorian.online](https://vistorian.github.io/) - Interactive Visualizations for Dynamic and Multivariate Networks.
+- [Bertin.js](https://github.com/neocarto/bertin) - 地理空間データを可視化し、ウェブ用の主題図を作成するJavaScriptライブラリ。
+- [DARIAH-DE Geo-Browser](https://geobrowser.de.dariah.eu/) - 位置情報を付与したデータを可視化する。
+- [Gephi](https://gephi.org/) - さまざまなグラフやネットワークを可視化・探索する主要なソフトウェア。
+- [Khartis](https://www.sciencespo.fr/cartographie/khartis/en/) - CSVデータから3段階の操作で簡単に主題図を作成するツール。
+- [Palladio](https://hdlab.stanford.edu/palladio/) - 複雑な歴史データを簡単に可視化する。
+- [RAWGraphs](https://rawgraphs.io/) - 複雑なデータを可視化する、オープンソースのウェブツール。
+- [StorylineJS](http://storyline.knightlab.com/) - 数値の背後にある物語を伝える。
+- [StorymapJS](https://storymap.knightlab.com/) - 物語を伝える地図を作成する。
+- [TimelineJS](https://timeline.knightlab.com/) - 見栄えのよい年表を簡単に作成する。
+- [Vistorian.online](https://vistorian.github.io/) - 動的なネットワークや、多変量のネットワークの対話的な可視化。
 
-## Zotero グループ
+## Zoteroグループ<a id="zotero-groups"></a><a id="zotero-グループ"></a>
 
-- [Cultural AI](https://www.zotero.org/groups/2782799/cultural_ai) - A collaborative bibliography on the intersection of cultural heritage and artificial intelligence.
-- [DH Unibe](https://www.zotero.org/groups/2386895/dh_unibe) - A collaborative bibliography on Digital Humanities from the University of Bern.
-- [Doing Digital Humanities - A DARIAH Bibliography](https://www.zotero.org/groups/113737/doing_digital_humanities_-_a_dariah_bibliography) - A comprehensive bibliography on Digital Humanities methods and practices.
+- [Cultural AI](https://www.zotero.org/groups/2782799/cultural_ai) - 文化遺産と人工知能が交わる分野の文献を共同でまとめたもの。
+- [DH Unibe](https://www.zotero.org/groups/2386895/dh_unibe) - University of Bernによる、デジタル・ヒューマニティーズの文献を共同でまとめたもの。
+- [Doing Digital Humanities - A DARIAH Bibliography](https://www.zotero.org/groups/113737/doing_digital_humanities_-_a_dariah_bibliography) - デジタル・ヒューマニティーズの手法と実践に関する包括的な文献一覧。

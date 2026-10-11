@@ -1,33 +1,12 @@
 ---
 title: "Awesome Digital Humanities"
-description: "A curated collection of resources and projects focused on Digital Humanities."
+description: "Software and resources for quantitative and computational research in the humanities."
 licenseSource: "github-dh-tech-awesome-digital-humanities-readme-md"
 ---
 
 # Awesome Digital Humanities
 
-A curated collection of resources and projects focused on Digital Humanities.
-
-## Contents
-
-- [Bibliography and Sources Management](#bibliography-and-sources-management)
-- [Corpus linguistics](#corpus-linguistics)
-- [Data Collection](#data-collection)
-- [Data Analysis](#data-analysis)
-- [Data Extraction and Conversion](#data-extraction-and-conversion)
-- [Data Annotation](#data-annotation)
-- [DH Centers](#dh-centers)
-- [Document Management and Processing](#document-management-and-processing)
-- [Journals](#journals)
-- [Organizations and Research Infrastructures](#organizations-and-research-infrastructures)
-- [Other Resources](#other-resources)
-- [Platforms](#platforms)
-- [Publishing](#publishing)
-- [Tool Building and Rapid Prototyping](#tool-building-and-rapid-prototyping)
-- [Twitter](#twitter)
-- [User Guides and Training Materials](#user-guides-and-training-materials)
-- [Visualization](#visualization)
-- [Zotero Groups](#zotero-groups)
+Software and resources for humanities scholars using quantitative or computational methods. This collection covers bibliography management, corpora, data analysis and annotation, research institutions, publishing, training, and visualization. Descriptions of features, availability, scale, maintenance, and security reflect the fixed source snapshot linked in the source information.
 
 ## Bibliography and Sources Management
 
@@ -38,7 +17,7 @@ A curated collection of resources and projects focused on Digital Humanities.
 ## Corpus linguistics
 
 - [AntConc](https://www.laurenceanthony.net/software/antconc/) - A freeware corpus analysis toolkit for concordancing and text analysis.
-- [CorpusExplorer v2.0](http://www.CorpusExplorer.de) - Software for corpus linguists and text/data mining enthusiasts. The CorpusExplorer combines over 45 interactive visualizations under an user-friendly interface. Routine tasks such as text acquisition, cleaning or tagging are completely automated. The simple interface supports the use in university teaching and leads the users/students to fast and substantial results. The CorpusExplorer is open for many standards (XML, CSV, JSON, R, etc.) and also offers its own software development kit (SDK), which allows you to integrate all functions into your own programs.
+- [CorpusExplorer v2.0](http://www.CorpusExplorer.de) - Software for corpus linguists and text/data mining enthusiasts. The CorpusExplorer combines over 45 interactive visualizations under a user-friendly interface. Routine tasks such as text acquisition, cleaning or tagging are completely automated. The simple interface supports the use in university teaching and leads the users/students to fast and substantial results. The CorpusExplorer is open for many standards (XML, CSV, JSON, R, etc.) and also offers its own software development kit (SDK), which allows you to integrate all functions into your own programs.
 - [TXM](https://txm.gitpages.huma-num.fr/textometrie/en/) - The project brings together open-source Textometry software developments to set up a modular platform called TXM, in synergy with existing corpus technologies (Unicode, XML, TEI, NLP tools, CQP, R).
 
 ## Data Collection
@@ -81,7 +60,7 @@ A curated collection of resources and projects focused on Digital Humanities.
 
 - [Annotation Studio](https://annotation-studio.org/) - Suite of tools for collaborative web-based annotation, developed by MIT's HyperStudio.
 - [CATMA](https://catma.de/) - Computer Assisted Text Markup and Analysis.
-- [Glycerine](https://glycerine.io/) - Provides a suite of IIIF image annotation tools and end-to-end workflows for researchers, curators and students to collaborate on projects across repositories and publish research ouputs.
+- [Glycerine](https://glycerine.io/) - Provides a suite of IIIF image annotation tools and end-to-end workflows for researchers, curators and students to collaborate on projects across repositories and publish research outputs.
 - [Recogito](https://recogito.pelagios.org/) - Semantic Annotation for images and texts.
 
 ## DH Centers
@@ -105,7 +84,7 @@ A curated collection of resources and projects focused on Digital Humanities.
 
 - [Computational Humanities Research](https://www.cambridge.org/core/journals/computational-humanities-research) - Open access, peer-reviewed journal published by Cambridge University Press; founded in 2024.
 - [Current Research in Digital History](http://crdh.rrchnm.org/) - Annual open-access, peer-reviewed publication of the Roy Rosenzweig Center for History and New Media at George Mason University.
-- [Journal of Cultural Analytics](https://culturalanalytics.org/) - Open-access, peer-reviewed publication for the computational study of cultural artifacts with a primary in the humanities and computational humanities. Published by McGill from 2016-2025; since 2026, published by the Center for Digital Humanities at Princeton University.
+- [Journal of Cultural Analytics](https://culturalanalytics.org/) - Open-access, peer-reviewed publication for the computational study of cultural artifacts with a primary focus in the humanities and computational humanities. Published by McGill from 2016-2025; since 2026, published by the Center for Digital Humanities at Princeton University.
 
 ## Organizations and Research Infrastructures
 
@@ -172,7 +151,7 @@ A curated collection of resources and projects focused on Digital Humanities.
 - [#dariahTeach](https://teach.dariah.eu/) - An open-source, multilingual, community-driven platform for high-quality teaching and training materials for the digital arts and humanities.
 - [DARIAH-CAMPUS](https://campus.dariah.eu/) - A discovery framework and hosting platform for DARIAH learning resources.
 - [DH Tools for Beginners](https://medium.com/dh-tools-for-beginners) - A collection of tutorials about DH tools aiming at digital humanities researchers.
-- [Digital Editions Course](https://www.prisms.digital/training/) - The course covers the the whole process of creating a digital edition, from selecting a text right through to publication.
+- [Digital Editions Course](https://www.prisms.digital/training/) - The course covers the whole process of creating a digital edition, from selecting a text right through to publication.
 - [Digital Humanities Literacy Guidebook](https://cmu-lib.github.io/dhlg/topics/) - Overview on the field of Digital History and Digital Humanities.
 - [Digital Humanities Theories and Practice](https://ltagliaferri.github.io/dh-rutgers-2022/) - Balancing practical guidance on tools and methodologies with modes for entering into the research of participants, the course will foster experimentation with and critical exploration of digital scholarship coupled with humanistic inquiry.
 - [forText](https://fortext.net) - Collection of german tutorials for the interpretation and visualization of literature.
@@ -189,7 +168,7 @@ A curated collection of resources and projects focused on Digital Humanities.
 ## Visualization
 
 - [Bertin.js](https://github.com/neocarto/bertin) - JavaScript library for visualizing geospatial data and make thematic maps for the web.
-- [DARIAH-DE Geo-Browser](https://geobrowser.de.dariah.eu/) - Create visualizations with geotagges data.
+- [DARIAH-DE Geo-Browser](https://geobrowser.de.dariah.eu/) - Create visualizations with geotagged data.
 - [Gephi](https://gephi.org/) - Leading visualization and exploration software for all kinds of graphs and networks.
 - [Khartis](https://www.sciencespo.fr/cartographie/khartis/en/) - A tool for easy creation of thematic maps in 3 steps from CSV data.
 - [Palladio](https://hdlab.stanford.edu/palladio/) - Visualize complex historical data with ease.
