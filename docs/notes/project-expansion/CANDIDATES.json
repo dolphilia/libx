@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 205,
+  "revision": 206,
   "candidates": [
     {
       "id": "ninja",
@@ -8866,6 +8866,135 @@
           }
         ]
       }
+    },
+    {
+      "id": "gnu-tar",
+      "officialUrl": "https://www.gnu.org/software/tar/",
+      "repository": null,
+      "version": "1.35",
+      "scope": "GNU tar1.35完全第1章Introduction+第2章Tutorial、参照脚注1、原通知/全英語GFDL/未変更GPL参照。",
+      "field": "file-archiving",
+      "discovery": [
+        {
+          "route": "Official GNU manual search→official fixed archive→Texinfo7.1 full HTML",
+          "reference": "https://www.gnu.org/software/tar/manual/",
+          "date": "2026-10-11T09:12:52.236Z"
+        }
+      ],
+      "state": "screening",
+      "conditions": {
+        "rights": {
+          "status": "unknown",
+          "reason": "原tar.texiはGFDL1.3+、不変節GNU General Public License、Front/Back-Cover Textsを明示。原通知・タイトル/著者/変更履歴と全英語GFDL・未変更COPYINGのGPL全文を提供する設計を別パス確認するまでunknown。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            }
+          ]
+        },
+        "boundary": {
+          "status": "pass",
+          "reason": "完全第1章Introductionと第2章Tutorial（原見出し30、44pre、参照脚注1）と通知/全英語GFDL/不変GPL参照を候補範囲とする。第3〜10章/他付録/索引は固定全文へ案内。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            }
+          ]
+        },
+        "fixedInput": {
+          "status": "pass",
+          "reason": "公式ftp.gnu.org配布物tar1.35をSHA14d55e32…に固定。原稿・Info・許諾等22memberを正規ファイルだけ安全抽出、配布物と生成HTMLの全24入力を保存。署名検証済みとはしない。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/ACQUISITION.json",
+              "sha256": "b1d1a4521cf5a3b2d16b04ce151c3e69f5cdea8a80c8e2735603002b41318033"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SOURCE_MANIFEST.json",
+              "sha256": "c951411e65e42e835fdd33e5b8cb7f7294a8748cc5b61e21323b675374142a22"
+            }
+          ]
+        },
+        "selfContained": {
+          "status": "unknown",
+          "reason": "採用前の固定原稿確認・提供方式の試作・別パス選定照合が未完。未確認をpassと扱わない。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            }
+          ]
+        },
+        "conversion": {
+          "status": "unknown",
+          "reason": "固定Texinfo7.1/DISTRIBから全文HTML2回SHA一致。通常Astroテンプレートで本文/44pre/脚注/定義・主要導線の代表試作は未実施。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            }
+          ]
+        },
+        "workload": {
+          "status": "unknown",
+          "reason": "完全2章はナビ込み8121語、約30意味節。実本文範囲・章境界を保全し、3000〜6000語程度のバッチへ分ける案。試作後に確定。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
+              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            }
+          ]
+        }
+      },
+      "japaneseResearch": {
+        "status": "partial",
+        "queries": [
+          "GNU tar 1.35 マニュアル 日本語",
+          "site.gnu.org software tar manual Japanese translation",
+          "GNU tar 日本語 マニュアル GNUjdoc",
+          "site.linuxjm.osdn.jp tar1.35"
+        ],
+        "checkedAt": "2026-10-11T09:12:52.236Z",
+        "evidence": [
+          {
+            "path": "docs/notes/document-import/gnu-tar/v1-35/JAPANESE_RESEARCH.json",
+            "sha256": "93016fcaaecd10167995e81a9e9122d9ca8a2313348ebec31abd1e9f89f5ace1"
+          }
+        ]
+      },
+      "scores": {
+        "additionalValue": {
+          "value": null,
+          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
+          "evidence": []
+        },
+        "practicality": {
+          "value": null,
+          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
+          "evidence": []
+        },
+        "quality": {
+          "value": null,
+          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
+          "evidence": []
+        },
+        "maintenance": {
+          "value": null,
+          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
+          "evidence": []
+        },
+        "reuse": {
+          "value": null,
+          "reason": "採用前調査中。原資料と代表試作に基づく採点は未完。",
+          "evidence": []
+        }
+      },
+      "decision": "予備調査候補として登録。固定原稿は取得したが6条件・採点・選定照合未完のためeligible/selectedではない。",
+      "resumeCondition": "GNU sed第8〜10章Preview38126703525→Production/公開後確認を優先。GNU tarは固定1.35/原資料24入力を再利用し、原許諾の不変GPL・表紙文言を含む履行設計、正規テンプレートの代表変換/可読性試験、採点と別パス選定照合を行う。現時点screening、アプリ/operation未作成・配信対象外。",
+      "nextCheckAt": null,
+      "selectionReview": null
     }
   ]
 }
