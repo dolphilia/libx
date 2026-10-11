@@ -1,27 +1,20 @@
 ---
-title: "Awesome Cloudflare"
-description: "A curated collection of resources and projects focused on Cloudflare."
-licenseSource: "github-irazasyed-awesome-cloudflare-readme-md"
+title: Awesome Cloudflare
+description: >-
+  Cloudflare DNS tools, developer resources, Apps integrations, Workers
+  references and recipes, community links, and service information.
+licenseSource: github-irazasyed-awesome-cloudflare-readme-md
+documentContext:
+  - kind: source
+    html: >-
+      <p>To the extent possible under law, <a
+      href="https://github.com/irazasyed">Irfaq Syed</a> has waived all
+      copyright and related or neighboring rights to this work.</p><p>Cloudflare
+      is a registered trademark of Cloudflare, Inc.</p>
 ---
+# Awesome Cloudflare<a id="contents"></a><a id="contribute"></a><a id="license"></a>
 
-# Awesome Cloudflare
-
-A curated collection of resources and projects focused on Cloudflare.
-
-## Contents
-
-- [Community](#community)
-- [Blog](#blog)
-- [DNS](#dns)
-- [Developers](#developers)
-- [Apps](#apps)
-  - [Open Source](#open-source)
-- [Workers](#workers)
-  - [Reference](#reference)
-  - [Tools](#tools)
-  - [Recipes](#recipes)
-  - [AI](#ai)
-- [Other](#other)
+[Cloudflare](https://www.cloudflare.com) provides CDN, DDoS mitigation, Internet security, and distributed DNS services, acting as a reverse proxy between visitors and a website’s hosting provider. Find DNS tools, developer resources, Apps integrations, Workers references and recipes, community links, and service information. Product names, capabilities, and availability reflect the fixed source.
 
 ## Community
 
@@ -56,12 +49,12 @@ A curated collection of resources and projects focused on Cloudflare.
 - [Dynamic DNS Python](https://github.com/adrienbrignon/cloudflare-ddns) - Dynamic DNS updater in python.
 - [Multi-Provider DDNS Script](https://github.com/phuslu/ddns) - Multiple providers ddns script without dependencies.
 - [Argo Tunnel Client](https://github.com/cloudflare/cloudflared) - CLI client for Argo tunnel, a tunneling daemon that proxies any local webserver through the Cloudflare network.
-- [Upper](https://github.com/ostark/upper) - Speeds up craft dramatically using a cache proxy in front of your webserver.
+- [Upper](https://github.com/ostark/upper) - Uses a caching proxy in front of your web server to speed up craft dramatically, as described in the source.
 - [Cloud Buster](https://github.com/SageHack/cloud-buster) - A comprehensive pentest tool that checks sites for origin IP leaks.
 - [CLI Tool](https://github.com/danielpigott/cloudflare-cli) - CLI tool for interacting with Cloudflare.
 - [Detector](https://github.com/k4m4/cloudflare-detect) - Detect whether a site is running behind Cloudflare.
 - [Scrape](https://github.com/Anorov/cloudflare-scrape) - Python module to bypass anti-bot page.
-- [CloudFlair](https://github.com/christophetd/CloudFlair) - Tool to find origin servers of websites protected by CloudFlare who are publicly exposed.
+- [CloudFlair](https://github.com/christophetd/CloudFlair) - Find publicly exposed origin servers of websites protected by Cloudflare.
 
 ## Developers
 
@@ -74,7 +67,7 @@ A curated collection of resources and projects focused on Cloudflare.
 
 ## Apps
 
-> [Cloudflare Apps](https://www.cloudflare.com/apps/developers) lets you ship your tool or service to millions of sites. Any Cloudflare customer can preview & install your code on their site in seconds.
+The source describes [Cloudflare Apps](https://www.cloudflare.com/apps/developers) as a way to distribute tools or services to millions of sites, with any Cloudflare customer able to preview and install code on their site in seconds.
 
 - [Apps Directory](https://www.cloudflare.com/apps)
 - [Documentation](https://www.cloudflare.com/apps/developer/docs/getting-started)
@@ -89,7 +82,7 @@ A curated collection of resources and projects focused on Cloudflare.
 
 ## Workers
 
-> [Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers) provides a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.
+[Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers) provides a serverless execution environment for creating new applications or extending existing ones without configuring or maintaining infrastructure.
 
 ### Reference
 
@@ -120,13 +113,13 @@ A curated collection of resources and projects focused on Cloudflare.
 - [Redirect](https://github.com/cloudflare/worker-template-redirect) - Examples of sending single and bulk redirects from a Worker script.
 - [Img-Color](https://github.com/xtuc/img-color-worker) - Retrieve the dominant color of a png or jpeg image.
 - [Binast](https://github.com/xtuc/binast-cf-worker-template) - Serve binast via a worker.
-- [Pwnage Protection](https://github.com/detroitenglish/pw-pwnage-cfworker) - Secure password scoring and user pwnage protection api - [Usage](https://community.cloudflare.com/t/estimate-strength-of-users-new-password-input-with-zxcvbn-and-query-haveibeenpwned-for-matches-against-known-hacked-accounts/26378).
+- [Pwnage Protection](https://github.com/detroitenglish/pw-pwnage-cfworker) - Secure password scoring and user protection against password compromise - [Usage](https://community.cloudflare.com/t/estimate-strength-of-users-new-password-input-with-zxcvbn-and-query-haveibeenpwned-for-matches-against-known-hacked-accounts/26378).
 - [Cache Purger Proxy](https://gist.github.com/vdbelt/20f116236d2ebffa92f131e679c0551a) - Proxies purge cache requests - [Usage](https://community.cloudflare.com/t/worker-recipe-cache-purge-proxy/29978).
 - [URL Router](https://github.com/berstend/service-worker-router) - Fast url router - [Usage](https://community.cloudflare.com/t/open-source-fast-url-router-for-workers-js-typescript/33406).
 - [Edge Proxy](https://github.com/DigitalOptimizationGroup/cloudflare-edge-proxy) - Enable A/B testing, canary releasing, gatekeeping, and SEO A/B/N testing.
 - [Blue / Green Deployments](https://github.com/DigitalOptimizationGroup/blue-green-cloudflare-workers) - Working example of blue / green deployments with canary releasing.
 - [Preact PWA](https://github.com/DigitalOptimizationGroup/cloudflare-worker-preact-pwa) - Preact progressive web app.
-- [CURL Interceptor](https://github.com/Gaafar/curl-worker) - Intercepts requests from `curl` command and returns something different.
+- [CURL Interceptor](https://github.com/Gaafar/curl-worker) - Intercept requests from the `curl` command and return a different response.
 - [Worker with built-in Router](https://github.com/anderly/cloudflare-worker-routing) - Allows you to separate your worker logic into different functions and/or controllers.
 - [Connecting to Google Storage](https://community.cloudflare.com/t/connecting-to-google-storage/32350) - Pull files from Google's cloud storage.
 - [CSRF Protection](https://gist.github.com/simonerni/3501b8de6320ac37398d08d9d2d08561) - Protect any origin from CSRF by verifying origin/referer headers.
@@ -147,30 +140,17 @@ A curated collection of resources and projects focused on Cloudflare.
 - [Geographic Routing and Load Balancer](https://community.cloudflare.com/t/geographic-routing-and-load-balancing-with-cloudflare-workers/21900) - Geographic routing and load balancing with workers.
 - [UTM Tag Stripper](https://community.cloudflare.com/t/strip-utm-query-string/47941) - Strip UTM tags in query string.
 - [Short URL Redirector](https://community.cloudflare.com/t/short-url-using-workers/39877) - Redirect short links.
-- [Repo Hunt](https://github.com/signalnerve/repo-hunt) - Find cool open-source projects daily.
+- [Repo Hunt](https://github.com/signalnerve/repo-hunt) - Find open-source projects daily, as described in the source.
 - [Performance Optimized Workers](https://github.com/pmeenan/cf-workers) - Collection of worker scripts, generally focused on performance optimizations.
 - [Google reCAPTCHA verification](https://github.com/HR/recaptcha-worker) - Handle the server-side verification of your reCAPTCHA form.
-- [Cloudflare Workers Starter Kit](https://github.com/kriasoft/cloudflare-starter-kit) -  - TypeScript template \w multiple CF Workers, `*.env` files, and local testing.
+- [Cloudflare Workers Starter Kit](https://github.com/kriasoft/cloudflare-starter-kit) - TypeScript template with multiple CF Workers, `*.env` files, and local testing.
 
 ### AI
 
-- [Moltworker](https://github.com/cloudflare/moltworker) - Run Moltbot (formely Clawdbot) on Cloudflare Workers.
+- [Moltworker](https://github.com/cloudflare/moltworker) - Run Moltbot (formerly Clawdbot) on Cloudflare Workers.
 
 ## Other
 
 - [Support](https://support.cloudflare.com)
 - [System Status](https://www.cloudflarestatus.com)
 - [Network Map](https://www.cloudflare.com/network)
-
-## Contribute
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/irazasyed/awesome-cloudflare/blob/8e40024c2063cc87c35fcde453a7f119b1dd2613/contributing.md) first.
-
-## License
-
-[![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0)
-
-To the extent possible under law, [Irfaq Syed](https://github.com/irazasyed) has waived all copyright and
-related or neighboring rights to this work.
-
-> Cloudflare is a registered trademark of Cloudflare, Inc.
