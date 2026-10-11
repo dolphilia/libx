@@ -1,45 +1,15 @@
 ---
 title: "Awesome EOSIO"
-description: "A curated collection of resources and projects focused on EOSIO."
+description: "EOSIO learning resources, wallets, development libraries, tools, block producers, community resources, and decentralized applications."
 licenseSource: "github-DanailMinchev-awesome-eosio-readme-md"
+toc:
+  minLevel: 2
+  maxLevel: 4
 ---
 
 # Awesome EOSIO
 
-A curated collection of resources and projects focused on EOSIO.
-
-## Contents
-
-- [Official](#official)
-- [Learn](#learn)
-  - [Websites](#websites)
-  - [Books](#books)
-  - [Interactive learning, labs](#interactive-learning-labs)
-  - [Courses, workshops, webinars, videos and others](#courses-workshops-webinars-videos-and-others)
-- [Tools](#tools)
-  - [Wallets and Toolkits](#wallets-and-toolkits)
-  - [Account services](#account-services)
-  - [Block explorers, Voting portals](#block-explorers-voting-portals)
-  - [General](#general)
-- [Block Producers](#block-producers)
-- [Developers](#developers)
-  - [Environment](#environment)
-  - [Testnets](#testnets)
-  - [Libraries and Frameworks](#libraries-and-frameworks)
-  - [Developer Tools](#developer-tools)
-  - [Code examples](#code-examples)
-  - [Block Producer tools](#block-producer-tools)
-  - [Other in Developers](#other-in-developers)
-- [Community](#community)
-  - [Blogs](#blogs)
-  - [YouTube Channels](#youtube-channels)
-  - [Forums](#forums)
-- [EOSIO Ecosystem](#eosio-ecosystem)
-- [DApps](#dapps)
-  - [DApp directories](#dapp-directories)
-  - [Leasing platforms](#leasing-platforms)
-  - [Games](#games)
-  - [Other in DApps](#other-in-dapps)
+EOSIO is an open-source platform for building decentralized applications with smart contracts. Find learning resources, wallets, development libraries and tools, block producer resources, community links, and applications.
 
 ## Official
 
@@ -64,7 +34,7 @@ EOSIO learning resources.
 
 ### Books
 
-- [Learn EOS Development](https://learneos.dev/) - The up-to-date, in-depth, complete guide to dapps on the EOS blockchain.
+- [Learn EOS Development](https://learneos.dev/) - An in-depth guide to dapps on the EOS blockchain.
 
 ### Interactive learning, labs
 
@@ -303,7 +273,7 @@ All about development on EOSIO platform.
 
 - [EOS Nation](https://www.youtube.com/channel/UCXgAY9DyooykrubRXw3xK1g) - EOS Hot Sauce, ENF, tech, and community content.
 - [Helios](https://www.youtube.com/c/HeliosEOSIO) - Dedicated to growing EOS, interviews and spotlights.
-- [EOS Go](https://www.youtube.com/c/EOSGo) - ESO Go community meetings, podcasts, live streams. News and discussions.
+- [EOS Go](https://www.youtube.com/c/EOSGo) - EOS Go community meetings, podcasts, live streams. News and discussions.
 - [Investing with a difference](https://www.youtube.com/channel/UC6SxkB3kM4uNs_yIU0Lqo_w) - EOSIO ecosystem overview, news and market discussions.
 - [nsjames](https://www.youtube.com/user/grandmoren1) - Scatter related content.
 - [Crypto Dunker](https://www.youtube.com/user/clamantfever) - Crypto Dunker channel. EOSIO DApps related content and news.
