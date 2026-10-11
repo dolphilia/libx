@@ -2,8 +2,8 @@
 
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
-- 検証済み: 42件 / 今回の公開済み: 42件 / 公開待ち: 0件
-- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 検証済み: 43件 / 今回の公開済み: 42件 / 公開待ち: 1件
+- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -55,7 +55,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-diffutils / v3-12 / update | verified | verified | 948:GNU Diffutils第16〜18章13英日/62単位・219定本・1649原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。概要と第1〜18章109英日を提供。次は着手済み950 GNU sed第4章の実本番基準統合検証・正式登録・限定公開へ。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 948:GNU Diffutils第16〜18章13英日/62単位・219定本・1649原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。概要と第1〜18章109英日を提供。次は着手済み950 GNU sed第4章の実本番基準統合検証・正式登録・限定公開へ。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
 | gnu-sed / v4-10 / update | verified | verified | 950:GNU sed第4章6英日/49単位・37定本・662原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜4章18英日を提供。次は着手済み951 GNU sed第5章14英日/179単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 950:GNU sed第4章6英日/49単位・37定本・662原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜4章18英日を提供。次は着手済み951 GNU sed第5章14英日/179単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
 | gnu-sed / v4-10 / update | verified | verified | 952:GNU sed第5章14英日/179単位・65定本・816原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜5章32英日を提供。次は着手済み953 GNU sed第6章7英日/56単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 952:GNU sed第5章14英日/179単位・65定本・816原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜5章32英日を提供。次は着手済み953 GNU sed第6章7英日/56単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
-| gnu-sed / v4-10 / update | source-locked | source-locked | GNU sed第5章は本番6d2ceff6/run38116896890で公開後確認完了。次は第6章7英日/56単位のレビュー済み草稿を/private/tmp/libx-sed-chapter6-formal-953で正式化する。65定本SHA一致・固定依存install済み。LIBX_UPDATE_WORKSPACEを同workspaceへ設定しapply-update.py→prepare-context.py→953/bind-formal.pyで14原稿と既存65本文保全を対応付け、原稿キット・独立20工程再生成・対象build/リンク/表示/統合検査へ。未実施工程はpendingを維持し、検証後は限定push・Preview/Production/公開後確認まで進める。 第5章公開条件は充足済み。現行原稿と保存レビューSHAを照合し、失効範囲のみ戻る。GNU sed第5章は本番6d2ceff6/run38116896890で公開後確認完了。次は第6章7英日/56単位のレビュー済み草稿を/private/tmp/libx-sed-chapter6-formal-953で正式化する。65定本SHA一致・固定依存install済み。LIBX_UPDATE_WORKSPACEを同workspaceへ設定しapply-update.py→prepare-context.py→953/bind-formal.pyで14原稿と既存65本文保全を対応付け、原稿キット・独立20工程再生成・対象build/リンク/表示/統合検査へ。未実施工程はpendingを維持し、検証後は限定push・Preview/Production/公開後確認まで進める。 |
+| gnu-sed / v4-10 / update | verified | verified | GNU sed第6章36ファイルの限定commit 976e3bbd6fb2ac92f4991ccc27478ba2a24b9ea7 をpush済み。preview run38118472504のartifact・HTTP・404・代表操作を確認し、直前本番6bba352をCAS条件に公開後確認と記録保存まで進める。 GNU sed第6章36ファイルの限定commit 976e3bbd6fb2ac92f4991ccc27478ba2a24b9ea7 をpush済み。preview run38118472504のartifact・HTTP・404・代表操作を確認し、直前本番6bba352をCAS条件に公開後確認と記録保存まで進める。 |
 
 ## 登録済みの既存文書
 
@@ -83,7 +83,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-make | v4-4-1 | 未実施 | 885:固定GNU Make4.4.1/edition0.77の第1〜3章15英日/別パス全文review15、英語原文16・未翻訳GFDL1。限定226feca26統合Pages本番、全artifact/差分全HTTP/代表表示・語切替・検索・出典/source/404合格。755編集用ZIP/31原稿/独立再構築884根拠を保持。公開証拠885 PUBLICATION_RESULT。 |
 | commonmark | v0-31-2 | 未実施 | 891:固定CommonMark0.31.2第1〜4章14英日/別パス全文review14/227静的対照例、全文原文652例。限定8e2a6d55b統合Pages本番、全artifact/差分全HTTP/代表検索・目次・語切替・静的例・フッター/source/404合格。583編集用ZIP/28原稿/独立再構築890根拠を保持。公開証拠891 PUBLICATION_RESULT。 |
 | pcre2 | v10-49 | 未実施 | 896:固定PCRE2 10.49の5完全manpage英日／別パス全文review5／51pre各言語、固定110原資料・101HTMLと2text参照。限定faae5fa043で統合Pages本番、全artifact・新規/変更HTTP・代表検索/目次/語切替/フッター/source/404合格。821編集用ZIP/10原稿/独立再構築895根拠を保持。公開証拠896 PUBLICATION_RESULT。 |
-| gnu-sed | v4-10 | 未実施 | 952:GNU sed第5章14英日/179単位・65定本・816原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。第1〜5章32英日を提供。次は着手済み953 GNU sed第6章7英日/56単位のレビュー済み草稿を正式化する。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
+| gnu-sed | v4-10 | 未実施 | GNU sed第6章7英日/56単位・脚注8全文を正式化。79定本・900ファイル原稿キット・独立20工程・84対象routes・5318参照・195ローカルHTTP・代表操作が合格。直前本番6bba352を基準に36appfilesだけをcommit/pushし、Pages Preview→CAS Production→公開後確認と記録保存へ進める。 |
 | gnu-grep | v3-12 | 未実施 | 942:第5〜6章3英日/21単位追加、全27英日/55定本/762kitを限定24382f21dで統合Pages本番公開・公開後確認。公開HTTP/404/CAS/対訳・全原GFDL合格、未説明差分0。 |
 | gnu-diffutils | v3-12 | 未実施 | 948:GNU Diffutils第16〜18章13英日/62単位・219定本・1649原稿キットを統合Pagesで公開し、実artifact/HTTP/404/CAS/代表表示まで確認完了。概要と第1〜18章109英日を提供。次は着手済み950 GNU sed第4章の実本番基準統合検証・正式登録・限定公開へ。重大不具合・着手済み・既存更新を優先し、MsgPack利用条件の保留は復帰条件まで維持する。 |
 | gnu-findutils | v4-11-0 | 未実施 | 921:GNU findutils4.11.0Top+完全第1〜2章26英日/全文review26・372単位、31pre/146VAR/2tables/完全脚注1、53編集原稿/19原入力/773再生成ZIPを限定f4075feで統合Pages公開・公開後確認。全artifact・対象HTTP・代表検索/日英/版/原典/404合格。917–920有効証拠再利用。 |
@@ -129,14 +129,3 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 ## 実行記録
 
 詳細なサイクル結果、モデル設定と実モデルの確認可否、証拠、未実施項目、外部公開・定期実行の許可範囲は `runs/` を参照。
-
-
-## 2026-10-11 公開再開バッチ
-
-GNU sed 4.10第5章14組の原文・日本語訳（179単位）を、既存の有効な全文レビューと再生成証拠を再利用して公開した。公開コミットは`6bba352afd5582a6d69816ebd2fbe106c0eef0e9`、公開用push先は`origin/codex/expand-gnu-sed-chapter5-20261007`（成功済み）。本番run38116896890・配信6d2ceff6は成功し、原稿65件・キット816項目・固定URL275件・独自ドメイン275件・404・代表導線・CAS/rollbackを確認。独自ドメイン19HTMLはメール保護52件とHTTPS化8件だけで、未説明差分0。現在は第1〜5章32組を提供する。
-
-再開記録は`6b5f90ccf5692a563b7d3d5a389170e9823a921f`として`origin/codex/save-document-expansion-20261011`へpush成功。保存用ブランチは配信対象外。公開後記録も同ブランチへ保存し、別作業のAwesome・ユーザー差分を含めない。共有checkoutの対象記録は保存用ブランチへ複製して保持する。
-
-次の再開位置は第6章7組・56単位の正式化。`/private/tmp/libx-sed-chapter6-formal-953`に65定本一致・固定依存を復元した。14追加原稿、注記、配布キット、独立20工程再生成、ビルド・リンク・表示・統合・公開は未実施。草稿の別パス全文レビューを再利用し、未実施工程を合格へ繰り上げない。MsgPackの利用条件保留は維持。
-
-公開後記録の保存コミット`24b1f476968b79c8b1df9aa404272adca59d873f`を`origin/codex/save-document-expansion-20261011`へpush成功。台帳・runに保存結果を登録し、保存結果自体を含む最終コミットはGit履歴と応答へ記録する。共有mainの対象記録は同ブランチへ全量保存済みとし、別作業保護のため共有checkoutではコミットしていない。
