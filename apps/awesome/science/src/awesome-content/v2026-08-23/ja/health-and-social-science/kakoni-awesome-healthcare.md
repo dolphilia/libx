@@ -1,249 +1,385 @@
 ---
 title: "Awesome Health"
-description: "Healthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "電子記録、医用画像、相互運用、研究、医療物流を扱うオープンソースの医療ソフトウェア・規格・資料。"
 licenseSource: "github-kakoni-awesome-healthcare-readme-md"
 ---
 
 # Awesome Health
 
-Healthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+電子記録、医用画像、相互運用、研究、医療物流などを扱う、オープンソースの医療ソフトウェア・ライブラリ・ツール・資料をまとめています。医療施設、医療従事者、開発者、政策の専門家、研究者向けのリストです。説明と評価は固定原文の時点のもので、原文では全リンクについてプロジェクトの活動状況と有用性を確認したとしています。
 
-## 目次
+## <a id="ehr"></a>電子健康記録（EHR）
 
-- [EHR](#ehr)
-- [Scribe](#scribe)
-- [Specifications](#specifications)
-- [Nursing](#nursing)
-- [Imaging](#imaging)
-- [Dental](#dental)
-- [Laboratory](#laboratory)
-- [Libraries](#libraries)
-- [Frameworks](#frameworks)
-- [Applications](#applications)
-- [Personal Health Record](#phr)
-- [Telemedicine](#telemedicine)
-- [Integration](#integration)
-- [Research](#research)
-- [Hardware](#hardware)
-- [Bioinformatics](#bioinformatics)
-- [Books](#books)
-- [Data](#data)
-- [Datasets](#datasets)
-- [Design](#design)
-- [Enterprise Master Patient Index](#empi)
-- [Machine Learning](#machine-learning)
-- [Compliance](#compliance)
-- [Asset Management](#asset-management)
-- [Logistics](#logistics)
+* [Akello](https://akello.io) - メンタルヘルス分野の統合基盤。
 
-### EHR
-  * [Akello](https://akello.io) - Integrated Mental Health Infrastructure
-  * [Bahmni](https://www.bahmni.org) - Electronic Medical Record and hospital system.
-  * [Cottage Med](https://cottagemed.org/p/26/Download-Cottage-Med) - Electronic Medical Record software designed by physicians.
-  * [GNU Health](https://www.gnuhealth.org) - Electronic Medical Record, Hospital Management, and Health Information System.
-  * [GNUmed](https://www.gnumed.de/documentation/) - Electronic Medical Record software.
-  * [EHRBase](https://ehrbase.org) OpenEHR Clinical Data Repository.
-  * [EHRServer](https://github.com/ppazos/cabolabs-ehrserver) - CaboLabs EHRServer.
-  * [ERPNext](https://github.com/frappe/erpnext) - Modules that help manage patients, appointments, consultations, lab tests, and billing.
-  * [FreeMedForms EMR](https://freemedforms.com/fr/start) - Electronic Medical Record software.
-  * [HospitalRun](https://hospitalrun.io) - Helps provide the most modern Hospital Information System possible to the least resourced environments.
-  * [HOSxP](https://hosxp.net/wordpress/) - Thai Hospital Information System that aims to ease the healthcare workflow of health centers and central hospitals.
-  * [LibreHealth EHR](https://librehealth.io/projects/lh-ehr/) - Clinically-focused Electronic Health Record System.
-  * [MedinTux](https://medintux.org/) - French Medical Practice Management System.
-  * [Medplum](https://github.com/medplum/medplum) - Developer platform that enables flexible and rapid development of healthcare apps.
-  * [Odoo Medical](https://github.com/OCA/vertical-medical) - Universal Health and Hospital Information System.
-  * [OpenClinic](https://github.com/jact/openclinic) - Medical Records System.
-  * [OpenEMR](https://www.open-emr.org) - Electronic Health Records and Medical Practice Management application.
-  * [OpenEyes](https://openeyes.apperta.org) - Electronic Medical Record application for ophthalmology.
-  * [Open Hospital](https://sourceforge.net/projects/openhospital/) - Electronic Medical Record software for underprivileged rural hospitals.
-  * [openMAXIMS](https://github.com/IMS-MAXIMS/openMAXIMS) - Full Patient Administration System designed for the NHS.
-  * [OpenMRS](https://openmrs.org) - Enterprise Electronic Medical Record System platform.
-  * [OSCAR EMR](https://bitbucket.org/oscaremr/oscar) - OSCAR McMaster Project.
-  * [Ottehr](https://github.com/masslight/ottehr) - Modular, Production-Ready, Open-Source EHR
-  * [Ozone HIS](https://www.ozone-his.com) - The entreprise-grade integrated health information system built with OpenMRS 3
-  * [Ripple](https://www.ripple.foundation) -  NHS-funded, community led initiative working towards an integrated Digital Care Record Platform.
+* [Bahmni](https://www.bahmni.org) - 電子カルテと病院システム。
 
-### 診療記録作成
-  * [OpenScribe](https://github.com/sammargolis/OpenScribe) - Open source, local-first medical scribe platform for recording clinical encounters, transcribing audio, and generating structured draft clinical notes.
+* [Cottage Med](https://cottagemed.org/p/26/Download-Cottage-Med) - 医師が設計した電子カルテソフトウェア。
 
-### 仕様
-  * [Continuity of Care Document](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7) - Continuity of Care Document specifications
-  * [DICOM Standards Browser](https://dicom.innolitics.com/ciods) - Provides an effective way to learn the DICOM standard and inspect DICOM attributes.
-  * [FHIR](https://www.hl7.org/fhir/) - Fast Health Interoperability Resources.
-  * [HL7 Version 2](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=185) - Specifications for all versions of HL7v2
-  * [OHDSI OMOP Common Data Model](https://www.ohdsi.org/data-standardization/) - Standardized data model for many healthcare concepts, awesome Github presence including scripts for many major relational databases.
-  * [OpenEHR](https://www.openehr.org) - Open specification upon which software can be built.
-  * [Open mHealth](https://www.openmhealth.org) - Open Standard For Mobile Health Data.
-  * [SMART on FHIR](https://docs.smarthealthit.org/) - Open standards based technology platform.
+* [GNU Health](https://www.gnuhealth.org) - 電子カルテ、病院管理、医療情報システム。
 
-### 看護
-  * [open-eObs](https://openeobs.github.io/) - Observation and clinical assessment platform that offers a real-time view of all patients across a ward.
+* [GNUmed](https://www.gnumed.de/documentation/) - 電子カルテソフトウェア。
 
-### 画像診断
-  * [3D Slicer](https://www.slicer.org) - Cross-platform application for analyzing, visualizing and understanding medical image data.
-  * [Cornerstone](https://github.com/cornerstonejs/cornerstone) - Open source project with a goal to deliver a complete web based medical imaging platform.
-  * [dcm4che](https://www.dcm4che.org/) - Clinical Image and Object Management.
-  * [Dicoogle](https://github.com/bioinformatics-ua/dicoogle) - Dicoogle is an extensible, platform-independent and open-source PACS
-  * [Drishti](https://github.com/nci/drishti/wiki) - Tomography and electron-microscopy data visualizer for both scientists and lay people.
-  * [DICOMcloud](https://github.com/DICOMcloud/DICOMcloud) - A standalone DICOMweb server with RESTful implementation of the DICOMweb/WADO services.
-  * [DICOM Server](https://github.com/microsoft/dicom-server) - OSS Implementation of DICOMweb standard.
-  * [DICOM Web Viewer](https://ivmartel.github.io/dwv/) - JavaScript/HTML5-based DICOM viewer with standard tools and a focus on supporting various screen sizes.
-  * [Fiji](https://imagej.net/software/fiji/) - Open-source platform for biological-image analysis.
-  * [Horos](https://horosproject.org) - Medical image viewer.
-  * [InVesalius](https://invesalius.github.io) - Open source software for reconstruction of computed tomography and magnetic ressonance images.
-  * [ITK](https://itk.org/) - Toolkit used for the development of image segmentation and image registration programs with leading-edge algorithms in 2 and 3 dimensions.
-  * [ITK-SNAP](http://www.itksnap.org/pmwiki/pmwiki.php) - Interactive software for 3 dimensional image navigation, annotation, and automatic segmentation with an emphasis on user-friendliness.
-  * [LibreHealth Radiology](https://librehealth.io/projects/lh-radiology/) - Customized version of LibreHealth Toolkit with additional tools for radiology and imaging professionals.
-  * [Kaapana](https://github.com/kaapana/kaapana) - Open source toolkit for state of the art platform provisioning in the field of medical data analysis.
-  * [Kheops](https://kheops.online) - Open source platform for sharing medical images
-  * [OHIF](https://github.com/OHIF/Viewers) - OHIF zero-footprint DICOM viewer and oncology specific Lesion Tracker.
-  * [Omero](https://github.com/ome/openmicroscopy) - open source client/server system written in Java for visualizing, managing, and annotating microscope images and metadata
-  * [OpenREM](https://openrem.org/) - Radiation Exposure Monitoring for physicists.
-  * [OpenSlide](https://github.com/openslide/openslide) - is a C library for reading whole slide image files.
-  * [Orthanc](https://www.orthanc-server.com) - Lightweight DICOM server for healthcare and medical research.
-  * [Papaya](https://github.com/rii-mango/Papaya) - Pure JavaScript medical research image viewer.
-  * [Slim](https://github.com/ImagingDataCommons/slim) - Interoperable web viewer and annotation tool for computational pathology.
-  * [Viv](https://github.com/hms-dbmi/viv) - multiscale visualization of high-resolution multiplexed bioimaging data on the web.
-  * [VTK](https://vtk.org) - 3 dimensional visualization toolkit supporting a variety of algorithms and modeling techniques.
+* [EHRBase](https://ehrbase.org) - OpenEHRの臨床データリポジトリ。
 
-### 歯科
-  * [Open Dental](https://www.opendental.com) - Dental Practice Management Software.
-  * [OpenMolar](https://openmolar.com/) - Dental Practice Management Software. 
+* [EHRServer](https://github.com/ppazos/cabolabs-ehrserver) - CaboLabsのEHRServer。
 
-### 検査室
-  * [OpenELIS](https://openelis-global.org) - Laboratory Information System for Global Health.
-  * [SENAITE](https://www.senaite.com) - Laboratory Information Management System.
+* [ERPNext](https://github.com/frappe/erpnext) - 患者、予約、診察、臨床検査、請求の管理を支援するモジュール。
 
-### フレームワーク
-  * [API Server](https://github.com/smart-on-fhir/api-server) - FHIR Server to support patient- and clinician-facing apps.
-  * [Blaze](https://github.com/samply/blaze) - A FHIR Store with internal, fast CQL Evaluation Engine
-  * [CareKit](https://github.com/carekit-apple/CareKit/) - Open source software framework for creating apps that help people better understand and manage their health.
-  * [Clinical Meteor project](https://github.com/clinical-meteor) - Meteor for FDA, HIPAA, and HL7 compliant applications.
-  * [Clinical Quality Language](https://github.com/cqframework/clinical_quality_language) - Clinical Quality Language is a HL7 standard for the expression of clinical knowledge.
-  * [CyclOps](https://github.com/VectorInstitute/cyclops) - Framework for healthcare ML implementation.
-  * [FHIRBase](https://fhirbase.github.io) - Storage based on the FHIR Standard.
-  * [FHIR Proxy](https://github.com/microsoft/fhir-proxy) - secure application that acts as an intermediary in the transfer of FHIR data to and from Azure API.
-  * [FHIR Works on AWS](https://github.com/awslabs/fhir-works-on-aws-deployment) - FHIR Works on AWS deployment.
-  * [FHIR Server for Azure](https://github.com/Microsoft/fhir-server) - A .NET Core implementation of the FHIR standard.
-  * [Inferno](https://inferno-framework.github.io) - providing testing tools for the FHIR
-  * [Intervention Engine FHIR Server](https://github.com/intervention-engine/fhir) - Generic FHIR server implementation in GoLang.
-  * [LinuxForHealth FHIR Server](https://github.com/LinuxForHealth/FHIR) - Modular Java implementation of version 4 of the HL7 FHIR specification.
-  * [Medblocks UI](https://github.com/medblocks/medblocks-ui) - Web Components for rapid development of openEHR and FHIR systems.
-  * [Opal](https://opal.openhealthcare.org.uk/) - Framework for building clinical applications.
-  * [ResearchKit](https://github.com/ResearchKit/ResearchKit) - Software framework that makes it easy to create apps for medical research or for other research projects.
-  * [Spark](https://github.com/FirelyTeam/spark) - Public domain FHIR server developed in C#.
-  * [Sushi](https://github.com/FHIR/sushi) - a reference implementation command-line interpreter/compiler for FHIR
-  * [Swift-SMART](https://github.com/smart-on-fhir/Swift-SMART) - Swift SMART on FHIR framework for iOS and OS X.
+* [FreeMedForms EMR](https://freemedforms.com/fr/start) - 電子カルテソフトウェア。
 
-### ライブラリ
-  * [Android FHIR SDK](https://github.com/google/android-fhir) - The Android FHIR SDK 
-  * [Archie](https://github.com/openehr/archie) - OpenEHR Library written in Java.
-  * [Asymmetrik FHIR API Server](https://github.com/bluehalo/node-fhir-server-core) - A secure REST implementation for the HL7 FHIR Specification.
-  * [Datamol](https://github.com/datamol-io/datamol) - Molecular Manipulation Made Easy. A light Python wrapper build on top of RDKit.
-  * [DCMTK](https://dicom.offis.de/dcmtk.php.en) - DICOM Toolkit.
-  * [dicom](https://github.com/suyashkumar/dicom) - High Performance DICOM Medical Image Parser in GoLang.
-  * [ehrapy](https://github.com/theislab/ehrapy/) - Electronic Health Record analysis in Python.
-  * [Evil-DICOM](https://github.com/rexcardan/Evil-DICOM) - C# DICOM Library.
-  * [Fellow Oak DICOM](https://github.com/fo-dicom/fo-dicom) - DICOM for .NET, .NET Core, Universal Windows, Android, iOS, Mono, and Unity.
-  * [FHIRKit Client](https://github.com/Vermonster/fhir-kit-client) - Node FHIR client library.
-  * [FHIRModels](https://github.com/apple/FHIRModels) - FHIRModels is a Swift library for FHIR resource data models.
-  * [FHIR .NET API](https://github.com/FirelyTeam/firely-net-sdk) - The official .NET API for HL7 FHIR.
-  * [fhir.js](https://github.com/FHIR/fhir.js) - JavaScript client for FHIR.
-  * [FHIR protocol buffers](https://github.com/google/fhir) - A Google implementation of protocol buffers for FHIR.
-  * [Graphir](https://github.com/microsoft/graphir) - GraphQL interface over FHIR API
-  * [HAPI FHIR](https://github.com/hapifhir/hapi-fhir) - Java API for HL7 FHIR Clients and Servers.
-  * [Hearth](https://github.com/jembi/hearth) - A fast FHIR-compliant server focused on longitudinal data stores.
-  * [Health data standards](https://github.com/projectcypress/health-data-standards) - Ruby library for generating and consuming various healthcare related formats. These include HITSP C32, QRDA Category I, and QRDA Category III.
-  * [Hermes](https://github.com/wardle/hermes) - a SNOMED CT terminology server.
-  * [Metriport](https://github.com/metriport/metriport) - Open-source universal API for healthcare data.
-  * [MITK](https://www.mitk.org/wiki/The_Medical_Imaging_Interaction_Toolkit_(MITK)) - The Medical Imaging Interaction Toolkit.
-  * [nhs-numbers](https://github.com/uk-fci/nhs-number) - Python package to provide utilities for NHS Numbers, including validity checks, normalisation, and generation.
-  * [Node HL7](https://github.com/MatthewVita/node-hl7-complete) - Node module that is bridged with the Java Hapi HL7 library.
-  * [Node-hl7-parser](https://github.com/RedoxEngine/redox-hl7-v2) - Open source version of Redox's HL7 v2 to schema-fied JSON parser.
-  * [php-fhir](https://github.com/dcarbone/php-fhir) - Tools for creating PHP classes from the HL7 FHIR Specification.
-  * [pynetdicom](https://github.com/pydicom/pynetdicom) - A Python implementation of the DICOM networking protocol.
-  * [Python HL7](https://github.com/johnpaulett/python-hl7) - Simple library for parsing messages of HL7 version 2.x into Python objects.
-  * [Python SMART on FHIR client](https://github.com/smart-on-fhir/client-py) - Flexible Python client for FHIR servers supporting the SMART on FHIR protocol.
-  * [Python 835 Parser](https://github.com/keironstoddart/edi-835-parser) - A simple-to-use Python interface to EDI 835 Health Care Claim Payment and Remittance Advice files.
-  * [Ruby FHIR](https://github.com/fhir-crucible/fhir_client) - FHIR client implementation in Ruby.
-  * [Ruby HL7](https://github.com/segfault/ruby-hl7) - Ruby HL7 library.
-  * [Rust FHIR](https://github.com/itsbalamurali/rust-fhir) - Rust SDK for HL7 FHIR
-  * [Scanpy](https://scanpy.readthedocs.io/) - Single-cell RNA-seq analysis library in Python.
-  * [TorchXRayVision](https://github.com/mlmed/torchxrayvision) - A library for chest X-ray datasets and models. Including pre-trained models.
+* [HospitalRun](https://hospitalrun.io) - 資源が特に乏しい環境へ、可能な限り先進的な病院情報システムを提供することを目指すソフトウェア。
 
-### アプリケーション
-  * [Intervention Engine](https://github.com/intervention-engine/ie) - Provides a web-application for data-driven team huddles.
-  * [SMART Pediatric Growth Chart](https://github.com/smart-on-fhir/growth-chart-app) - Pediatric growth charts.
-  * [Simple](https://github.com/simpledotorg/) - For clinicians to track patients with high blood pressure.
+* [HOSxP](https://hosxp.net/wordpress/) - 保健センターや中央病院の医療業務を円滑にすることを目指す、タイの病院情報システム。
 
-### PHR
-  * [Fasten Health](https://github.com/fastenhealth/fasten-onprem) - open-source, self-hosted, personal/family electronic medical record aggregator
-  * [Tidepool](https://github.com/tidepool-org) - Data platform to reduce the burden of Type 1 Diabetes.
-  * [HealthLocker](https://github.com/healthlocker/healthlocker) - Elixir-based personal health record.
+* [LibreHealth EHR](https://librehealth.io/projects/lh-ehr/) - 臨床に重点を置いた電子健康記録システム。
 
-### 遠隔医療
-   * [Healthcare worker at home](https://hcw-at-home.com) - ​ Open Source Telehealth software 
+* [MedinTux](https://medintux.org/) - フランスの診療業務管理システム。
 
-### 研究
-  * [i2b2](https://www.i2b2.org) - Research data warehouse.
-  * [LabKey Server](https://www.labkey.com/products-services/labkey-server/) - Platform for Translational Research.
+* [Medplum](https://github.com/medplum/medplum) - 医療アプリを柔軟かつ迅速に開発するための開発者向けプラットフォーム。
 
-### 統合
-  * [FHIR Converter](https://github.com/microsoft/FHIR-Converter) - an open source project that enables conversion of health data from legacy formats to FHIR.
-  * [Google HCLS Data Harmonization](https://github.com/GoogleCloudPlatform/healthcare-data-harmonization) - an engine that converts data of one structure to another
-  * [NextGen Connect Integration Engine](https://github.com/nextgenhealthcare/connect) - The swiss army knife of healthcare integration.
-  * [Open eHealth Integration Platform](https://github.com/oehf/ipf) - An extension of the Apache Camel routing and mediation engine
-  * [OpenHIM](http://openhim.org/) - Health information mediator.
-  * [OpenWearables](https://github.com/the-momentum/open-wearables) - Self-hosted platform to unify wearable health data through one AI-ready API.
-  * [Zato](https://zato.io/en/industry/healthcare/index.html) - A Python-based ESB and integration platform for healthcare interoperability, automation and orchestration.
+* [Odoo Medical](https://github.com/OCA/vertical-medical) - 汎用の医療・病院情報システム。
 
-### ハードウェア
-  * [Gluco](https://github.com/nebulabio/gluco) - Glucometer.
-  * [Murgen](https://hackaday.io/project/9281-murgen-open-source-ultrasound-imaging) - Ultrasound imaging development kit.
-  * [OpenAPS](https://openaps.org/) - The Open Artificial Pancreas System project is an open and transparent effort to make safe and effective basic Artificial Pancreas System.
+* [OpenClinic](https://github.com/jact/openclinic) - 診療記録システム。
 
-### バイオインフォマティクス
-  * [ADAM](https://github.com/bigdatagenomics/adam) - Genomics analysis platform.
-  * [Bcbio](https://github.com/bcbio/bcbio-nextgen) - Validated, scalable, community developed variant calling, RNA-seq and small RNA analysis.
-  * [FlashDeconv](https://github.com/cafferychen777/flashdeconv) - High-performance spatial transcriptomics deconvolution for cell type mapping in tissue samples.
-  * [Galaxy](https://galaxyproject.org/) - Open web-based platform for data intensive biomedical research.
-  * [Wregex](https://ehubio.ehu.eus/wregex/) - Amino acid motif searching software with optional Position-Specific Scoring Matrix.
+* [OpenEMR](https://www.open-emr.org) - 電子健康記録と診療業務管理のアプリケーション。
 
-### 書籍
-  * [Inspired EHRs](https://github.com/goinvo/EHR) - Ideas, designs, and techniques for designing an Electronic Health Record (EHR).
+* [OpenEyes](https://openeyes.apperta.org) - 眼科向けの電子カルテアプリケーション。
 
-### データ
-  * [Atlas BI Library](https://github.com/atlas-bi/Library) The unified report library.
-  * [Caisis](http://www.caisis.org/) - Oncology research software with a Patient Data Management System.
-  * [Cedar](https://github.com/mitre/cedar) - Open source tool for testing the strength of Electronic Clinical Quality Measure.
-  * [cTAKES](https://ctakes.apache.org/) - Natural Language Processing System for extraction of information from Electronic Medical Record clinical free-text.
-  * [EDS_NLP](https://github.com/aphp/edsnlp) - provides a set of spaCy components to extract information from clinical notes written in French
-  * [eds-scikit](https://github.com/aphp/eds-scikit) - a tool to assist data scientists working on the AP-HP's Clinical Data Warehouse. It is specifically targeted for OMOP-standardized data. 
-  * [IHRIS](https://www.ihris.org/toolkit-new/) - Health Information System for management of human resources for health.
-  * [OpenSAFELY](https://www.opensafely.org) - Secure analytics platform for Electronic Health Records in the NHS.
-  * [Snow Owl](https://github.com/b2ihealthcare/snow-owl) - Highly scalable, open source terminology server with revision-control capabilities and collaborative authoring platform features. 
-  * [Synthea Patient Generator](https://github.com/synthetichealth/synthea) - Synthetic patient generator that models the medical history of synthetic patients.
+* [Open Hospital](https://sourceforge.net/projects/openhospital/) - 恵まれない地域の農村病院向け電子カルテソフトウェア。
 
-### データsets
-  * [Medical Data for Machine Learning](https://github.com/beamandrew/medical-data) - Curated list of medical data for machine learning.
+* [openMAXIMS](https://github.com/IMS-MAXIMS/openMAXIMS) - NHS向けに設計された総合患者管理システム。
 
-### デザイン
-  * [Determinants of Health](https://github.com/goinvo/HealthDeterminants) - Determinants of Health Visualization.
-  * [Health Icons](https://github.com/resolvetosavelives/healthicons) - A collection of open source icons for public health projects.
+* [OpenMRS](https://openmrs.org) - エンタープライズ向け電子カルテシステムのプラットフォーム。
 
-### EMPI
-  * [MEDIC Client Registry RI](https://github.com/MohawkMEDIC/client-registry) - The Mohawk College MARC-HI/MEDIC Client Registry EMPI Implementation.
-  
-### 機械学習
-  * [Healthcare.ai](https://healthcare.ai) - Python and R tools for healthcare machine learning.
-  * [MedicalGPT](https://github.com/shibing624/MedicalGPT/blob/main/README_EN.md) - Training Your Own Medical GPT Model with ChatGPT Training Pipeline.
-  * [MONAI](https://github.com/Project-MONAI/MONAI) - AI Toolkit for Healthcare Imaging.
-  * [PyHealth](https://github.com/sunlabuiuc/PyHealth) - A Deep Learning Python Toolkit for Healthcare Application.
+* [OSCAR EMR](https://bitbucket.org/oscaremr/oscar) - OSCAR McMasterプロジェクト。
 
-### 資産管理
-  * [Tapirx](https://github.com/virtalabs/tapirx) - Networked medical device discovery and identification.
+* [Ottehr](https://github.com/masslight/ottehr) - モジュール式のオープンソースEHR。原文では本番運用に対応すると紹介。
 
-### 物流
-  * [ID3C](https://github.com/seattleflu/id3c) - Data logistics system enabling real-time genomic epidemiology.
-  * [OpenBoxes](https://github.com/openboxes/openboxes) - an Open Source Inventory and Supply Chain Management System.
-  * [OpenLMIS](https://openlmis.org) - Open source, web-based, electronic logistics management information system (LMIS) software, purpose-built to manage health commodity supply chains.
+* [Ozone HIS](https://www.ozone-his.com) - OpenMRS 3を基盤とする、エンタープライズ向け統合医療情報システム。
+
+* [Ripple](https://www.ripple.foundation) - NHSの資金支援を受け、統合デジタル診療記録プラットフォームを目指すコミュニティ主導の取り組み。
+
+## <a id="scribe"></a>診療記録作成
+
+* [OpenScribe](https://github.com/sammargolis/OpenScribe) - 診療場面の記録、音声の文字起こし、構造化された診療記録の下書き生成を行う、ローカル処理優先のオープンソース診療記録作成プラットフォーム。
+
+## <a id="specifications"></a>仕様
+
+* [Continuity of Care Document](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7) - Continuity of Care Documentの仕様。
+
+* [DICOM Standards Browser](https://dicom.innolitics.com/ciods) - DICOM規格の学習と属性の確認を支援するブラウザー。
+
+* [FHIR](https://www.hl7.org/fhir/) - Fast Health Interoperability Resources。
+
+* [HL7 Version 2](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=185) - HL7v2の全バージョンの仕様。
+
+* [OHDSI OMOP Common Data Model](https://www.ohdsi.org/data-standardization/) - 多様な医療概念のための標準化データモデル。主要なリレーショナルデータベース向けスクリプトなど、GitHub上の資料も充実。
+
+* [OpenEHR](https://www.openehr.org) - ソフトウェアを構築する基盤となるオープンな仕様。
+
+* [Open mHealth](https://www.openmhealth.org) - モバイルヘルスデータのオープンな標準。
+
+* [SMART on FHIR](https://docs.smarthealthit.org/) - オープンな標準に基づく技術プラットフォーム。
+
+## <a id="nursing"></a>看護
+
+* [open-eObs](https://openeobs.github.io/) - 病棟の全患者の状態をリアルタイムに把握できる、観察・臨床評価プラットフォーム。
+
+## <a id="imaging"></a>画像診断
+
+* [3D Slicer](https://www.slicer.org) - 医用画像データの解析・可視化・理解を支援するクロスプラットフォームアプリケーション。
+
+* [Cornerstone](https://github.com/cornerstonejs/cornerstone) - 包括的なWebベースの医用画像プラットフォームの提供を目指すオープンソースプロジェクト。
+
+* [dcm4che](https://www.dcm4che.org/) - 臨床画像とオブジェクトの管理。
+
+* [Dicoogle](https://github.com/bioinformatics-ua/dicoogle) - 拡張可能でプラットフォームに依存しない、オープンソースのPACS。
+
+* [Drishti](https://github.com/nci/drishti/wiki) - 研究者と一般利用者の両方を対象とする、断層撮影・電子顕微鏡データの可視化ツール。
+
+* [DICOMcloud](https://github.com/DICOMcloud/DICOMcloud) - DICOMweb/WADOサービスをRESTfulに実装した、単体で動作するDICOMwebサーバー。
+
+* [DICOM Server](https://github.com/microsoft/dicom-server) - DICOMweb標準のオープンソース実装。
+
+* [DICOM Web Viewer](https://ivmartel.github.io/dwv/) - 標準的なツールを備え、多様な画面サイズへの対応を重視したJavaScript/HTML5ベースのDICOMビューアー。
+
+* [Fiji](https://imagej.net/software/fiji/) - 生物画像解析のためのオープンソースプラットフォーム。
+
+* [Horos](https://horosproject.org) - 医用画像ビューアー。
+
+* [InVesalius](https://invesalius.github.io) - CT画像とMRI画像の再構成を行うオープンソースソフトウェア。
+
+* [ITK](https://itk.org/) - 2次元・3次元の先進的なアルゴリズムを用いた画像のセグメンテーションと位置合わせのプログラムを開発するためのツールキット。
+
+* [ITK-SNAP](http://www.itksnap.org/pmwiki/pmwiki.php) - 使いやすさを重視した、3次元画像の閲覧、注釈、自動セグメンテーションのための対話型ソフトウェア。
+
+* [LibreHealth Radiology](https://librehealth.io/projects/lh-radiology/) - 放射線医学・画像診断の専門家向けツールを追加したLibreHealth Toolkitのカスタマイズ版。
+
+* [Kaapana](https://github.com/kaapana/kaapana) - 医療データ解析分野で先進的なプラットフォームを構築・提供するためのオープンソースツールキット。
+
+* [Kheops](https://kheops.online) - 医用画像を共有するためのオープンソースプラットフォーム。
+
+* [OHIF](https://github.com/OHIF/Viewers) - 端末へのインストールを必要としないDICOMビューアーと、腫瘍学に特化した病変追跡ツール。
+
+* [Omero](https://github.com/ome/openmicroscopy) - 顕微鏡画像とメタデータの可視化・管理・注釈のための、Java製オープンソースクライアント／サーバーシステム。
+
+* [OpenREM](https://openrem.org/) - 物理学者向けの放射線被ばくモニタリング。
+
+* [OpenSlide](https://github.com/openslide/openslide) - 病理などの全スライド画像ファイルを読み込むCライブラリ。
+
+* [Orthanc](https://www.orthanc-server.com) - 医療・医学研究向けの軽量DICOMサーバー。
+
+* [Papaya](https://github.com/rii-mango/Papaya) - 純粋なJavaScriptで実装された医学研究用画像ビューアー。
+
+* [Slim](https://github.com/ImagingDataCommons/slim) - 計算病理学向けの、相互運用可能なWebビューアーと注釈ツール。
+
+* [Viv](https://github.com/hms-dbmi/viv) - 高解像度で多重化された生物画像データを、Web上で複数のスケールにわたって可視化するツール。
+
+* [VTK](https://vtk.org) - 多様なアルゴリズムとモデリング手法に対応する3次元可視化ツールキット。
+
+## <a id="dental"></a>歯科
+
+* [Open Dental](https://www.opendental.com) - 歯科診療業務管理ソフトウェア。
+
+* [OpenMolar](https://openmolar.com/) - 歯科診療業務管理ソフトウェア。
+
+## <a id="laboratory"></a>検査室
+
+* [OpenELIS](https://openelis-global.org) - グローバルヘルス向けの臨床検査情報システム。
+
+* [SENAITE](https://www.senaite.com) - 検査室情報管理システム。
+
+## <a id="frameworks"></a>フレームワーク
+
+* [API Server](https://github.com/smart-on-fhir/api-server) - 患者向け・臨床医向けアプリを支援するFHIRサーバー。
+
+* [Blaze](https://github.com/samply/blaze) - 高速なCQL評価エンジンを内蔵したFHIRストア。
+
+* [CareKit](https://github.com/carekit-apple/CareKit/) - 健康状態の理解と管理を支援するアプリを作成するための、オープンソースソフトウェアフレームワーク。
+
+* [Clinical Meteor project](https://github.com/clinical-meteor) - 原文でFDA・HIPAA・HL7に適合するアプリ向けと紹介されているMeteor。
+
+* [Clinical Quality Language](https://github.com/cqframework/clinical_quality_language) - 臨床知識を表現するためのHL7標準。
+
+* [CyclOps](https://github.com/VectorInstitute/cyclops) - 医療分野の機械学習を実装するためのフレームワーク。
+
+* [FHIRBase](https://fhirbase.github.io) - FHIR標準に基づくストレージ。
+
+* [FHIR Proxy](https://github.com/microsoft/fhir-proxy) - Azure APIとのFHIRデータ送受信を仲介するアプリケーション。原文では安全性を備えたものとして紹介。
+
+* [FHIR Works on AWS](https://github.com/awslabs/fhir-works-on-aws-deployment) - FHIR Works on AWSのデプロイ構成。
+
+* [FHIR Server for Azure](https://github.com/Microsoft/fhir-server) - FHIR標準の.NET Core実装。
+
+* [Inferno](https://inferno-framework.github.io) - FHIRのテストツール。
+
+* [Intervention Engine FHIR Server](https://github.com/intervention-engine/fhir) - Go言語による汎用FHIRサーバー実装。
+
+* [LinuxForHealth FHIR Server](https://github.com/LinuxForHealth/FHIR) - HL7 FHIR仕様のバージョン4を実装した、モジュール式のJavaサーバー。
+
+* [Medblocks UI](https://github.com/medblocks/medblocks-ui) - openEHR・FHIRシステムを迅速に開発するためのWeb Components。
+
+* [Opal](https://opal.openhealthcare.org.uk/) - 臨床アプリケーションを構築するためのフレームワーク。
+
+* [ResearchKit](https://github.com/ResearchKit/ResearchKit) - 医学研究やその他の研究プロジェクト向けアプリを容易に作成できるソフトウェアフレームワーク。
+
+* [Spark](https://github.com/FirelyTeam/spark) - C#で開発されたパブリックドメインのFHIRサーバー。
+
+* [Sushi](https://github.com/FHIR/sushi) - FHIRの参照実装となるコマンドラインインタープリター／コンパイラー。
+
+* [Swift-SMART](https://github.com/smart-on-fhir/Swift-SMART) - iOS・OS X向けのSwift製SMART on FHIRフレームワーク。
+
+## <a id="libraries"></a>ライブラリ
+
+* [Android FHIR SDK](https://github.com/google/android-fhir) - Android向けのFHIR SDK。
+
+* [Archie](https://github.com/openehr/archie) - Javaで書かれたOpenEHRライブラリ。
+
+* [Asymmetrik FHIR API Server](https://github.com/bluehalo/node-fhir-server-core) - HL7 FHIR仕様のREST実装。原文では安全性を備えたものとして紹介。
+
+* [Datamol](https://github.com/datamol-io/datamol) - 分子の操作を容易にする、RDKitを基盤とした軽量Pythonラッパー。
+
+* [DCMTK](https://dicom.offis.de/dcmtk.php.en) - DICOMツールキット。
+
+* [dicom](https://github.com/suyashkumar/dicom) - Go言語で書かれた高性能なDICOM医用画像パーサー。
+
+* [ehrapy](https://github.com/theislab/ehrapy/) - Pythonによる電子健康記録の解析。
+
+* [Evil-DICOM](https://github.com/rexcardan/Evil-DICOM) - C#のDICOMライブラリ。
+
+* [Fellow Oak DICOM](https://github.com/fo-dicom/fo-dicom) - .NET、.NET Core、Universal Windows、Android、iOS、Mono、Unity向けのDICOM。
+
+* [FHIRKit Client](https://github.com/Vermonster/fhir-kit-client) - Node向けのFHIRクライアントライブラリ。
+
+* [FHIRModels](https://github.com/apple/FHIRModels) - FHIRリソースのデータモデルを扱うSwiftライブラリ。
+
+* [FHIR .NET API](https://github.com/FirelyTeam/firely-net-sdk) - HL7 FHIRの公式.NET API。
+
+* [fhir.js](https://github.com/FHIR/fhir.js) - JavaScript向けのFHIRクライアント。
+
+* [FHIR protocol buffers](https://github.com/google/fhir) - GoogleによるFHIR向けプロトコルバッファーの実装。
+
+* [Graphir](https://github.com/microsoft/graphir) - FHIR API上に構築されたGraphQLインターフェース。
+
+* [HAPI FHIR](https://github.com/hapifhir/hapi-fhir) - HL7 FHIRのクライアントとサーバーのためのJava API。
+
+* [Hearth](https://github.com/jembi/hearth) - 経時的なデータストアに重点を置いた、高速なFHIR準拠サーバー。
+
+* [Health data standards](https://github.com/projectcypress/health-data-standards) - HITSP C32、QRDA Category I、QRDA Category IIIなど、多様な医療関連形式の生成・読み込みを行うRubyライブラリ。
+
+* [Hermes](https://github.com/wardle/hermes) - SNOMED CTの用語サーバー。
+
+* [Metriport](https://github.com/metriport/metriport) - 医療データ用の汎用オープンソースAPI。
+
+* [MITK](https://www.mitk.org/wiki/The_Medical_Imaging_Interaction_Toolkit_(MITK)) - 医用画像の対話的操作のためのツールキット（Medical Imaging Interaction Toolkit）。
+
+* [nhs-numbers](https://github.com/uk-fci/nhs-number) - 妥当性検査、正規化、生成など、NHS番号のためのユーティリティーを提供するPythonパッケージ。
+
+* [Node HL7](https://github.com/MatthewVita/node-hl7-complete) - JavaのHapi HL7ライブラリと連携するNodeモジュール。
+
+* [Node-hl7-parser](https://github.com/RedoxEngine/redox-hl7-v2) - RedoxのHL7 v2をスキーマ付きJSONへ変換するパーサーのオープンソース版。
+
+* [php-fhir](https://github.com/dcarbone/php-fhir) - HL7 FHIR仕様からPHPクラスを作成するためのツール。
+
+* [pynetdicom](https://github.com/pydicom/pynetdicom) - DICOMネットワークプロトコルのPython実装。
+
+* [Python HL7](https://github.com/johnpaulett/python-hl7) - HL7バージョン2.xのメッセージをPythonオブジェクトへ解析するシンプルなライブラリ。
+
+* [Python SMART on FHIR client](https://github.com/smart-on-fhir/client-py) - SMART on FHIRプロトコルに対応するFHIRサーバー向けの柔軟なPythonクライアント。
+
+* [Python 835 Parser](https://github.com/keironstoddart/edi-835-parser) - EDI 835の医療費請求の支払い・送金通知ファイルを扱う、使いやすいPythonインターフェース。
+
+* [Ruby FHIR](https://github.com/fhir-crucible/fhir_client) - RubyによるFHIRクライアント実装。
+
+* [Ruby HL7](https://github.com/segfault/ruby-hl7) - RubyのHL7ライブラリ。
+
+* [Rust FHIR](https://github.com/itsbalamurali/rust-fhir) - HL7 FHIR向けのRust SDK。
+
+* [Scanpy](https://scanpy.readthedocs.io/) - Pythonの単一細胞RNA-seq解析ライブラリ。
+
+* [TorchXRayVision](https://github.com/mlmed/torchxrayvision) - 学習済みモデルを含む、胸部X線のデータセットとモデルのライブラリ。
+
+## <a id="applications"></a>アプリケーション
+
+* [Intervention Engine](https://github.com/intervention-engine/ie) - データに基づくチームの短時間ミーティングを支援するWebアプリケーション。
+
+* [SMART Pediatric Growth Chart](https://github.com/smart-on-fhir/growth-chart-app) - 小児の成長曲線。
+
+* [Simple](https://github.com/simpledotorg/) - 臨床医が高血圧患者を継続的に把握するためのアプリケーション。
+
+## <a id="phr"></a>個人健康記録（PHR）
+
+* [Fasten Health](https://github.com/fastenhealth/fasten-onprem) - 個人・家族の電子カルテを集約する、セルフホスト型のオープンソースソフトウェア。
+
+* [Tidepool](https://github.com/tidepool-org) - 1型糖尿病の負担軽減を目指すデータプラットフォーム。
+
+* [HealthLocker](https://github.com/healthlocker/healthlocker) - Elixirを基盤とする個人健康記録。
+
+## <a id="telemedicine"></a>遠隔医療
+
+* [Healthcare worker at home](https://hcw-at-home.com) - オープンソースの遠隔医療ソフトウェア。
+
+## <a id="research"></a>研究
+
+* [i2b2](https://www.i2b2.org) - 研究用データウェアハウス。
+
+* [LabKey Server](https://www.labkey.com/products-services/labkey-server/) - トランスレーショナルリサーチのためのプラットフォーム。
+
+## <a id="integration"></a>統合
+
+* [FHIR Converter](https://github.com/microsoft/FHIR-Converter) - 従来形式の医療データをFHIRへ変換するオープンソースプロジェクト。
+
+* [Google HCLS Data Harmonization](https://github.com/GoogleCloudPlatform/healthcare-data-harmonization) - ある構造のデータを別の構造へ変換するエンジン。
+
+* [NextGen Connect Integration Engine](https://github.com/nextgenhealthcare/connect) - 医療システムの統合に幅広く使えるツール。
+
+* [Open eHealth Integration Platform](https://github.com/oehf/ipf) - Apache Camelのルーティング・メディエーションエンジンの拡張。
+
+* [OpenHIM](http://openhim.org/) - 医療情報の仲介システム。
+
+* [OpenWearables](https://github.com/the-momentum/open-wearables) - ウェアラブル機器の健康データを、AIで利用できる単一APIに統合するセルフホスト型プラットフォーム。
+
+* [Zato](https://zato.io/en/industry/healthcare/index.html) - 医療分野の相互運用、自動化、オーケストレーションのためのPythonベースのESB・統合プラットフォーム。
+
+## <a id="hardware"></a>ハードウェア
+
+* [Gluco](https://github.com/nebulabio/gluco) - 血糖測定器。
+
+* [Murgen](https://hackaday.io/project/9281-murgen-open-source-ultrasound-imaging) - 超音波画像の開発キット。
+
+* [OpenAPS](https://openaps.org/) - 安全で効果的な基本的人工膵臓システムの実現を目指す、オープンで透明性のある取り組みとして原文で紹介されているプロジェクト。
+
+## <a id="bioinformatics"></a>バイオインフォマティクス
+
+* [ADAM](https://github.com/bigdatagenomics/adam) - ゲノミクス解析プラットフォーム。
+
+* [Bcbio](https://github.com/bcbio/bcbio-nextgen) - バリアント検出、RNA-seq、small RNA（低分子RNA）解析を行う、コミュニティ開発の拡張性あるソフトウェア。原文では検証済みと紹介。
+
+* [FlashDeconv](https://github.com/cafferychen777/flashdeconv) - 組織試料中の細胞種をマッピングするための、高性能な空間トランスクリプトミクスのデコンボリューション。
+
+* [Galaxy](https://galaxyproject.org/) - 大量のデータを扱う生物医学研究のための、オープンなWebベースのプラットフォーム。
+
+* [Wregex](https://ehubio.ehu.eus/wregex/) - 位置特異的スコア行列をオプションで利用できる、アミノ酸モチーフ検索ソフトウェア。
+
+## <a id="books"></a>書籍
+
+* [Inspired EHRs](https://github.com/goinvo/EHR) - 電子健康記録（EHR）を設計するためのアイデア、設計、技法。
+
+## <a id="data"></a>データ
+
+* [Atlas BI Library](https://github.com/atlas-bi/Library) - 統合レポートライブラリ。
+
+* [Caisis](http://www.caisis.org/) - 患者データ管理システムを備えた腫瘍学研究ソフトウェア。
+
+* [Cedar](https://github.com/mitre/cedar) - 電子的な臨床品質指標の堅牢性をテストするオープンソースツール。
+
+* [cTAKES](https://ctakes.apache.org/) - 電子カルテの自由記述の診療テキストから情報を抽出する自然言語処理システム。
+
+* [EDS_NLP](https://github.com/aphp/edsnlp) - フランス語の診療記録から情報を抽出するspaCyコンポーネント群。
+
+* [eds-scikit](https://github.com/aphp/eds-scikit) - AP-HPの臨床データウェアハウスを扱うデータサイエンティストを支援するツール。特にOMOPで標準化されたデータを対象とする。
+
+* [IHRIS](https://www.ihris.org/toolkit-new/) - 保健医療人材を管理するための医療情報システム。
+
+* [OpenSAFELY](https://www.opensafely.org) - NHSの電子健康記録を扱う解析プラットフォーム。原文では安全性を備えたものとして紹介。
+
+* [Snow Owl](https://github.com/b2ihealthcare/snow-owl) - 変更履歴管理と共同編集プラットフォームの機能を備えた、拡張性の高いオープンソース用語サーバー。
+
+* [Synthea Patient Generator](https://github.com/synthetichealth/synthea) - 合成患者の病歴をモデル化する、合成患者生成ツール。
+
+## <a id="datasets"></a><a id="データsets"></a>データセット
+
+* [Medical Data for Machine Learning](https://github.com/beamandrew/medical-data) - 機械学習のための医療データのリスト。
+
+## <a id="design"></a>デザイン
+
+* [Determinants of Health](https://github.com/goinvo/HealthDeterminants) - 健康の決定要因の可視化。
+
+* [Health Icons](https://github.com/resolvetosavelives/healthicons) - 公衆衛生プロジェクト向けのオープンソースアイコン集。
+
+## <a id="empi"></a>患者ID統合（EMPI）
+
+* [MEDIC Client Registry RI](https://github.com/MohawkMEDIC/client-registry) - Mohawk CollegeのMARC-HI/MEDIC Client RegistryによるEMPI実装。
+
+## <a id="machine-learning"></a>機械学習
+
+* [Healthcare.ai](https://healthcare.ai) - 医療分野の機械学習のためのPython・Rツール。
+
+* [MedicalGPT](https://github.com/shibing624/MedicalGPT/blob/main/README_EN.md) - ChatGPTの学習パイプラインを用いて独自の医療GPTモデルを学習するためのツール。
+
+* [MONAI](https://github.com/Project-MONAI/MONAI) - 医用画像向けのAIツールキット。
+
+* [PyHealth](https://github.com/sunlabuiuc/PyHealth) - 医療アプリケーションのための深層学習用Pythonツールキット。
+
+## <a id="asset-management"></a>資産管理
+
+* [Tapirx](https://github.com/virtalabs/tapirx) - ネットワーク接続された医療機器の検出と識別。
+
+## <a id="logistics"></a>物流
+
+* [ID3C](https://github.com/seattleflu/id3c) - リアルタイムのゲノム疫学を可能にするデータ物流システム。
+
+* [OpenBoxes](https://github.com/openboxes/openboxes) - オープンソースの在庫・サプライチェーン管理システム。
+
+* [OpenLMIS](https://openlmis.org) - 医療用品のサプライチェーン管理に特化した、Webベースのオープンソース電子物流管理情報システム（LMIS）。
