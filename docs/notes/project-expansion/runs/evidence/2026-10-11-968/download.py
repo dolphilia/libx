@@ -16,7 +16,14 @@ def download(url):
   assert e.code==302;u=e.headers['Location']
  p=urllib.parse.urlsplit(u)
  assert p.scheme=='https' and (p.hostname.endswith('.blob.core.windows.net') or p.hostname.endswith('.actions.githubusercontent.com'))
- with urllib.request.urlopen(u,timeout=60) as r:return r.read()
+ with urllib.request.urlopen(u,timeout=60) as r:
+  chunks=[];total=0;reported=0
+  while True:
+   chunk=r.read(1024*1024)
+   if not chunk:break
+   chunks.append(chunk);total+=len(chunk)
+   if total-reported>=25*1024*1024:print(json.dumps({'downloadedBytes':total}),flush=True);reported=total
+  return b''.join(chunks)
 run=api('actions/runs/'+str(run_id));assert run['head_sha']==sha and run['conclusion']=='success'
 jobs=api('actions/runs/'+str(run_id)+'/jobs')['jobs'];assert next(j for j in jobs if j['name']=='deploy-'+role)['conclusion']=='success'
 artifacts=api('actions/runs/'+str(run_id)+'/artifacts')['artifacts']
