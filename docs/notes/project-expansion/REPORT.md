@@ -139,6 +139,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-m4 | 1.4.21 | selected | 現行枠・GNU tar公開後確認完了を照合し、正規作成器でGNU M41.4.21正式作業を隔離開始。18英日ガイド/1英語参照。 GNU M41.4.21候補eligible74点。固定入力・具体的許諾履行設計・通常テンプレート試作・別パス選定照合を再利用し、現行公開commit32cbf393から作業場所を分離、正規作成器で正式gnu-m4 app/operationを作成。全18節を5・7・6ページの3バッチで定本化・独立翻訳・別パス全文レビューし、編集可能ソースキット/対象検証/統合Pages公開へ進める。まず第1章5節から。 |
 | gnu-bc | 1.08.2 | deferred | 既存の現行日本語資料が主要機能を広く網羅しており、提案範囲は実質的に重複する。Libxの英日切替・検索・固定原文配布だけでは現段階で追加価値3/5を説明できないため採用しない。実用性・読みやすさを否定せず、原文の不備や再現工数を理由にしない。 JMと実質的に重ならない公式範囲・版差分、またはLibxでの具体的な追加価値3/5以上を示す根拠が得られた時のみ再評価する。 |
 | gnu-patch | 2.8 | selected | 70点・既存枠と選定証拠を照合し、正規作成器で隔離した正式GNU patch2.8/全14見出し9英日ガイドの作業を開始。 GNU patch2.8は6条件・加重70点のeligible。現行公開commit01ada58f864af6a00bb6f73fccc0bd63dbea26d9から正式作業場所を分離し、正規作成器でgnu-patch app/operationを登録。固定patch.man全14見出しを9意味単位へ定本化し、5+4単位の2バッチで独立翻訳・別パス全文レビューする。空pre/空字体タグだけを文字列保全付きで整理し、許諾3段落/全著作権/原著者/編集注記/原文とNEWS導線を維持。原稿配布キット・再生成・対象/統合検証後にPages Preview/Productionと公開後確認へ進める。 |
+| gnu-libtool | 2.6.2 | qualifying | 固定原文取得と10ガイド/脚注1–4の候補範囲を調査済み。試作・日本語資料比較・採点・別パス選定照合は未完了。selected/新規作業/公開対象へ登録しない。 Reuse fixed2.6.2 inputs;finish Japanese tutorial comparison, build small regular-template trial, evaluate rights/boundary/self-contained/conversion/workload andscores once, thenindependentadoption review. |
 
 ## 実行記録
 
