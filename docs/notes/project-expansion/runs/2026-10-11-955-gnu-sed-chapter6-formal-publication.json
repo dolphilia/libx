@@ -3,7 +3,7 @@
   "id": "2026-10-11-955-gnu-sed-chapter6-formal-publication",
   "cycle": 955,
   "startedAt": "2026-10-11T06:25:32.625788+00:00",
-  "endedAt": "2026-10-11T06:34:47.137Z",
+  "endedAt": "2026-10-11T06:53:38.137Z",
   "result": "partial",
   "phase": "GNU sed chapter6 formal verification and scoped publication",
   "model": {
@@ -123,6 +123,14 @@
     {
       "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-953/PREVIEW_PROGRESS_FROZEN.json",
       "sha256": "f9f71ebebdd8554eb7babddac398a15c687c52a9a5c8d84fa59f8bebfa50e3df"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-953/CI_WAIT_HANDOFF.json",
+      "sha256": "c7ae468e36439ed09d383638488883349bd8d16e83a489f1128933f05ac8fd4d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-07-953/SAVE_VERIFIED_RESULT.json",
+      "sha256": "ce9516794e1eead561bc94206bbca13031bb1fcdfc4aad0e81e1437ef401743f"
     }
   ],
   "operationIds": [
@@ -237,12 +245,13 @@
     "Independent install first failed under network sandbox; network-enabled frozen install and20-step replay passed. Scope and schema assertions were corrected before publication; no failed check is counted as passed."
   ],
   "unresolved": [
-    "preview artifact/HTTP/native/404",
-    "Production CAS/postchecks and save"
+    "Preview CI and artifact/HTTP/native/404",
+    "Production CAS/postchecks",
+    "Chapter7 translation and review"
   ],
   "changedHistoricalRuns": [],
-  "nextAction": "GNU sed第6章36ファイルの限定commit 976e3bbd6fb2ac92f4991ccc27478ba2a24b9ea7 をpush済み。preview run38118472504のartifact・HTTP・404・代表操作を確認し、直前本番6bba352をCAS条件に公開後確認と記録保存まで進める。",
-  "resumeCondition": "GNU sed第6章36ファイルの限定commit 976e3bbd6fb2ac92f4991ccc27478ba2a24b9ea7 をpush済み。preview run38118472504のartifact・HTTP・404・代表操作を確認し、直前本番6bba352をCAS条件に公開後確認と記録保存まで進める。",
+  "nextAction": "第6章Preview run38118472504/commit976e3bbd6の最新CI状態を確認。成功後953/download.py→validate-artifacts.py→artifact-documents-from-canonical.py→build-public-scope.py→比較/HTTP/404/ブラウザー確認→record-preview.mjs→ci.mjs production（expected6bba352）→record-stage.mjs production→公開後確認と保存。CI待機中は配信除外の956第7章22節/102本文単位・説明コメント129行とhelp文字列の翻訳を進められる。",
+  "resumeCondition": "第6章Preview run38118472504/commit976e3bbd6の最新CI状態を確認。成功後953/download.py→validate-artifacts.py→artifact-documents-from-canonical.py→build-public-scope.py→比較/HTTP/404/ブラウザー確認→record-preview.mjs→ci.mjs production（expected6bba352）→record-stage.mjs production→公開後確認と保存。CI待機中は配信除外の956第7章22節/102本文単位・説明コメント129行とhelp文字列の翻訳を進められる。",
   "tools": [
     "existing generators",
     "independent frozen replay",
