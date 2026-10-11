@@ -6038,3 +6038,5 @@
 - 2026-10-11T06:34:37.893Z バッチ164 Stacks新版。固定raw171/旧EN166/旧JA166単位を全読、編集後全137単位/109資料/27見出しを別パス照合。26手動目次/ロゴ/投稿案内除去、歴史的な主題定義と3URL復元。stacking/API/契約/書籍の日本語を改善、書籍CC BY-SAと全条件保持。translated-jaまで保存、再生成/検査/実表示は未完了。
 
 - 2026-10-11T06:41:12.341Z バッチ164最終全件内容検査1037組合格。対象2文書以外の2072本文hash不変を確認しverifiedへ確定。**222/1037完了、815残（保留4）**。検証後本文・検査実装は不変。完了証拠: evidence/batch164/COMPLETION.json。次バッチ165 Golem。commit/push待ち、外部公開なし。
+
+- 2026-10-11T06:42:19.111Z バッチ164対象38ファイルを 5426907ec2f7be4bf43dabdc5c13cff6527c99d8 にコミットし origin/codex/awesome-editorial-20261011 へpush成功。verified確定後の対象検査1組合格、index容量警告0/超過0、差分空白検査合格。台帳push記録を後続コミットとして送信。222/1037 verified、815残（inventoried811・blocked3・needs-decision1）。次バッチ165 Golem新版 github-golemfactory-awesome-golem-readme-md。Stacks旧版の完了は未計上。配信workflow対象外の編集ブランチで外部公開なし。所有プレビュー/ブラウザーは終了、他案件変更は保持。
