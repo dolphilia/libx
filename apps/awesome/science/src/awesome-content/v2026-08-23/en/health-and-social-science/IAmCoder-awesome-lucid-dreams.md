@@ -1,31 +1,12 @@
 ---
 title: "Awesome Lucid Dreams"
-description: "A curated collection of resources and projects focused on Lucid Dreams."
+description: "Lucid dreaming tools, devices, communities, apps, research, books, media, mindfulness exercises, and reality checks."
 licenseSource: "github-IAmCoder-awesome-lucid-dreams-readme-md"
 ---
 
 # Awesome Lucid Dreams
 
-A curated collection of resources and projects focused on Lucid Dreams.
-
-## Contents
-
-- [Open-Source Projects](#open-source-projects)
-- [Lucid Dreaming Devices](#lucid-dreaming-devices)
-- [Forums](#forums)
-- [Discord Servers](#discord-servers)
-- [YouTube Channels](#youtube-channels)
-- [Podcasts](#podcasts)
-- [Meetups](#meetups)
-- [Magazines](#magazines)
-- [Games](#games)
-- [Apps](#apps)
-- [Research Studies](#research-studies)
-- [Books](#books)
-- [Movies](#movies)
-- [Mindfulness Exercises](#mindfulness-exercises)
-- [Audio Programs](#audio-programs)
-- [Reality Checks](#reality-checks)
+A [lucid dream](https://en.wikipedia.org/wiki/Lucid_dream) is a dream in which the dreamer realizes they are dreaming; the source describes the capacity for lucid dreaming as a trainable cognitive skill within oneirology, a subfield of psychology. This list covers open-source tools, devices, communities, videos, podcasts, meetups, magazines, games, apps, research, books, movies, mindfulness exercises, audio programs, and reality checks. Research summaries, effects, training outcomes, features, and availability are described as stated in the fixed source snapshot linked in the source information.
 
 ## Open-Source Projects
 
@@ -58,7 +39,7 @@ A curated collection of resources and projects focused on Lucid Dreams.
 
 ## YouTube Channels
 
-- [Lucid Dream Portal](https://www.youtube.com/channel/UCJaUAmw7TCFXBwAULWZwslA) - Easy to follow tutorials and expert advice from one of the world's leading lucid dreaming teachers. 
+- [Lucid Dream Portal](https://www.youtube.com/channel/UCJaUAmw7TCFXBwAULWZwslA) - Easy to follow tutorials and expert advice from one of the world's leading lucid dreaming teachers.
 - [TIGER123](https://www.youtube.com/@TIGERTIGER123TIGER) - Dives into techniques for inducing lucid dreams, exploring dream symbolism, and enhancing dream control, with a mix of tutorials, personal experiences, and insights from the latest dream research.
 - [Tipharot](https://www.youtube.com/channel/UCcwEgS97oUAcBR1rgKj4E0A) - All about lucid dreaming and similar subjects.
 - [Skyfall Blind Dreamer](https://www.youtube.com/channel/UCjPuiCWSbszlo_men2bPMpA) - Interacts with creators in the field of lucid dreaming and provides quality information to get people on the right path to a solid and sustainable lucidity practice.
@@ -93,23 +74,23 @@ A curated collection of resources and projects focused on Lucid Dreams.
 ### iOS
 
 - [Lucid-Dash](https://apps.apple.com/us/app/lucid-dash/id1614385345) - Dream journal, AI image generation, lucid dreaming courses, reality checks.
-- [DreamWell](https://apps.apple.com/us/app/dreamwell-lucid-dreaming/id1560429014) - Dream journal, notifications, and lucid dreaming and mindfulness courses. 
-- [Mind Awake](https://apps.apple.com/us/app/mind-awake/id1374074148) - The guided course in this app offers a dynamic, mindful approach to lucid dreaming. 
+- [DreamWell](https://apps.apple.com/us/app/dreamwell-lucid-dreaming/id1560429014) - Dream journal, notifications, and lucid dreaming and mindfulness courses.
+- [Mind Awake](https://apps.apple.com/us/app/mind-awake/id1374074148) - The guided course in this app offers a dynamic, mindful approach to lucid dreaming.
 - [Shape](https://apps.apple.com/us/app/shape-lucid-dreaming/id1577026266) - Learn to lucid dream in 30 days with the ultimate lucid dreaming coach.
 - [Lucidity](https://apps.apple.com/us/app/lucidity-lucid-dreaming/id1121048340) - Learn to Lucid Dream + Journal.
 
 ## Research Studies
 
-- [Lucid Dreaming Verified by Volitional Communication During REM Sleep (LaBerge, S., et al. 1981)](https://pubmed.ncbi.nlm.nih.gov/24171230/) - Provided the first physiological verification of lucid dreaming using pre-agreed eye movement signals during REM sleep.
-- [Induction of Lucid Dreams: A Systematic Review of Evidence (Stumbrys, T., et al. 2012)](https://www.sciencedirect.com/science/article/pii/S1053810012001614) - Reviewed various lucid dream induction techniques, finding MILD, WBTB, and external stimuli (light & sound cues) to be the most effective.
-- [Neural Correlates of Dream Lucidity (Dresler et al., 2012)](https://academic.oup.com/sleep/article/35/7/1017/2558845) - fMRI and EEG research identified increased prefrontal cortex activity during lucid dreams, linking metacognition to lucidity.
-- [Metacognitive Mechanisms Underlying Lucid Dreaming (Filevich, E., Dresler, M., et al. 2015)](https://www.jneurosci.org/content/35/3/1082) - Showed that lucid dreamers exhibit superior metacognitive abilities in wakefulness, particularly in self-awareness and cognitive control.
-- [The Cognitive Neuroscience of Lucid Dreaming (Baird, B., et al. 2018)](https://dreslerlab.org/wp-content/uploads/2019/03/baird-motarolim-dresler_lucid-dreaming.pdf) - Reviewed neuroscientific literature on lucid dreaming, suggesting links between lucid dreaming and real-world cognitive benefits.
-- [Targeted Lucidity Reactivation During REM Sleep Using Real-Time Sleep Spindles Detection (Carr, M., et al. 2020)](https://journals.ub.uni-heidelberg.de/index.php/IJoDR/article/download/100797/102654/274840) - Developed an open-source iOS/watchOS application to perform targeted lucidity reactivation, facilitating the testing of this method in various settings.
-- [Real-Time Dialogue Between Experimenters and Dreamers During REM Sleep (Konkoly, K. R., et al. 2021)](https://www.cell.com/current-biology/fulltext/S0960-9822%2821%2900059-2) - Demonstrated that real-time communication with lucid dreamers is possible via eye movements and facial muscle signals.
-- [Two-Way Communication in Lucid REM Sleep Dreaming (Baird, B., LaBerge, S., et al. 2021)](https://pubmed.ncbi.nlm.nih.gov/33879421/) - investigated the feasibility of establishing real-time, bidirectional communication with individuals during lucid REM sleep.
-- [Highly effective verified lucid dream induction using combined cognitive-sensory training and wearable EEG: a multi-centre study (Carr, M., et al. 2024)](https://www.biorxiv.org/content/10.1101/2024.06.21.600133v1.abstract) - Demonstrated that combining SSILD-based cognitive training with targeted lucidity reactivation (TLR) and multimodal sensory cues during REM sleep, facilitated by wearable EEG technology, can effectively induce lucid dreams in a laboratory environment.
-- [Provoking lucid dreams at home with sensory cues paired with pre-sleep cognitive training (Whitmore, N., et al. 2024)](https://www.sciencedirect.com/science/article/abs/pii/S1053810024001260) - Found that targeted lucidity reactivation (TLR) significantly increased the frequency of lucid dreams among participants, demonstrating that TLR can be effectively implemented with minimal technical requirements outside of a laboratory setting.
+- [Lucid Dreaming Verified by Volitional Communication During REM Sleep (LaBerge, S., et al. 1981)](https://pubmed.ncbi.nlm.nih.gov/24171230/) - Source summary: Provided the first physiological verification of lucid dreaming using pre-agreed eye movement signals during REM sleep.
+- [Induction of Lucid Dreams: A Systematic Review of Evidence (Stumbrys, T., et al. 2012)](https://www.sciencedirect.com/science/article/pii/S1053810012001614) - Source summary: Reviewed various lucid dream induction techniques, finding MILD, WBTB, and external stimuli (light & sound cues) to be the most effective.
+- [Neural Correlates of Dream Lucidity (Dresler et al., 2012)](https://academic.oup.com/sleep/article/35/7/1017/2558845) - Source summary: fMRI and EEG research identified increased prefrontal cortex activity during lucid dreams, linking metacognition to lucidity.
+- [Metacognitive Mechanisms Underlying Lucid Dreaming (Filevich, E., Dresler, M., et al. 2015)](https://www.jneurosci.org/content/35/3/1082) - Source summary: Showed that lucid dreamers exhibit superior metacognitive abilities in wakefulness, particularly in self-awareness and cognitive control.
+- [The Cognitive Neuroscience of Lucid Dreaming (Baird, B., et al. 2018)](https://dreslerlab.org/wp-content/uploads/2019/03/baird-motarolim-dresler_lucid-dreaming.pdf) - Source summary: Reviewed neuroscientific literature on lucid dreaming, suggesting links between lucid dreaming and real-world cognitive benefits.
+- [Targeted Lucidity Reactivation During REM Sleep Using Real-Time Sleep Spindles Detection (Carr, M., et al. 2020)](https://journals.ub.uni-heidelberg.de/index.php/IJoDR/article/download/100797/102654/274840) - Source summary: Developed an open-source iOS/watchOS application to perform targeted lucidity reactivation, facilitating the testing of this method in various settings.
+- [Real-Time Dialogue Between Experimenters and Dreamers During REM Sleep (Konkoly, K. R., et al. 2021)](https://www.cell.com/current-biology/fulltext/S0960-9822%2821%2900059-2) - Source summary: Demonstrated that real-time communication with lucid dreamers is possible via eye movements and facial muscle signals.
+- [Two-Way Communication in Lucid REM Sleep Dreaming (Baird, B., LaBerge, S., et al. 2021)](https://pubmed.ncbi.nlm.nih.gov/33879421/) - Source summary: investigated the feasibility of establishing real-time, bidirectional communication with individuals during lucid REM sleep.
+- [Highly effective verified lucid dream induction using combined cognitive-sensory training and wearable EEG: a multi-centre study (Carr, M., et al. 2024)](https://www.biorxiv.org/content/10.1101/2024.06.21.600133v1.abstract) - Source summary: Demonstrated that combining SSILD-based cognitive training with targeted lucidity reactivation (TLR) and multimodal sensory cues during REM sleep, facilitated by wearable EEG technology, can effectively induce lucid dreams in a laboratory environment.
+- [Provoking lucid dreams at home with sensory cues paired with pre-sleep cognitive training (Whitmore, N., et al. 2024)](https://www.sciencedirect.com/science/article/abs/pii/S1053810024001260) - Source summary: Found that targeted lucidity reactivation (TLR) significantly increased the frequency of lucid dreams among participants, demonstrating that TLR can be effectively implemented with minimal technical requirements outside of a laboratory setting.
 
 ## Books
 
@@ -117,10 +98,10 @@ A curated collection of resources and projects focused on Lucid Dreams.
 - [Lucid Dreaming: A Concise Guide to Awakening in Your Dreams and in Your Life by Stephen LaBerge](https://www.amazon.com/Lucid-Dreaming-Concise-Awakening-Dreams/dp/159179675X) - Distilled from his more than 20 years of pioneering research at Stanford University and the Lucidity Institute, including many new and updated techniques and discoveries.
 - [Lucid Dreaming: Gateway to the Inner Self by Robert Waggoner](https://www.amazon.com/Lucid-Dreaming-Gateway-Inner-Self/dp/193049114X) - Proposes 5 stages of lucid dreaming and guides readers through them, offering advice for those who have never experienced the lucid dream state and suggestions for how experienced lucid dreamers can advance to a new level.
 - [Are You Dreaming?: Exploring Lucid Dreams: A Comprehensive Guide by Daniel Love](https://www.amazon.com/Are-You-Dreaming-Exploring-Comprehensive/dp/0957497709) - In this comprehensive and modern guide to lucid dreaming, you will be guided on a unique journey through the fascinating exploration of your mind. Just about everything you could possibly need to know about lucid dreaming.
-- [A Field Guide to Lucid Dreaming: Mastering the Art of Oneironautics by Dylan Tuccillo](https://www.amazon.com/Field-Guide-Lucid-Dreaming-Oneironautics/dp/0761177396/) - This lively dream guide shows step-by-step how to become lucid, and then what to do once awake in the dream world.  
+- [A Field Guide to Lucid Dreaming: Mastering the Art of Oneironautics by Dylan Tuccillo](https://www.amazon.com/Field-Guide-Lucid-Dreaming-Oneironautics/dp/0761177396/) - This lively dream guide shows step-by-step how to become lucid, and then what to do once awake in the dream world.
 - [Learn to Lucid Dream: Powerful Techniques for Awakening Creativity and Consciousness by Kristen LaMarca](https://www.amazon.com/Learn-Lucid-Dream-Techniques-Consciousness/dp/1641523824) - This methodical introduction teaches you both the science and spirituality of dreaming. You will practice developing dream awareness and apply the discoveries you make while sleeping towards improving your waking hours.
 - [Far Journeys by Robert A. Monroe](https://www.amazon.com/Far-Journeys-Trilogy-Robert-Monroe/dp/0385231822) - Parapsychological odyssey that reflects a decade of research into the psychic realm beyond the known dimensions of physical reality.
-- [The Tibetan Yogas of Dream and Sleep by Tenzin Wangyal Rinpoche](https://www.amazon.com/Tibetan-Yogas-Dream-Sleep/dp/1559391014/) - The ultimate goal of Tibetan dream yoga is the recognition of the nature of mind or enlightenment itself. The practice of dream yoga is a powerful tool of awakening, used for hundreds of years by the great masters of the Tibetan traditions. 
+- [The Tibetan Yogas of Dream and Sleep by Tenzin Wangyal Rinpoche](https://www.amazon.com/Tibetan-Yogas-Dream-Sleep/dp/1559391014/) - The ultimate goal of Tibetan dream yoga is the recognition of the nature of mind or enlightenment itself. The practice of dream yoga is a powerful tool of awakening, used for hundreds of years by the great masters of the Tibetan traditions.
 - [Dream Yoga and the Practice of Natural Light by Chogyal Namkhai Norbu](https://www.amazon.com/Dream-Yoga-Practice-Natural-Light/dp/1559391618) - Instructions for developing clarity within the sleep and dream states. Goes beyond the practices of lucid dreaming by presenting methods for guiding dream states that are part of a broader system for enhancing self-awareness.
 
 ## Movies
@@ -131,10 +112,9 @@ A curated collection of resources and projects focused on Lucid Dreams.
 - [Paprika](https://www.imdb.com/title/tt0851578/) - Reality and the dream world are on a collision course after a device that can record dreams and allows therapists to enter their patients' dreams is stolen from a psychiatric research facility.
 - [Inception](https://www.imdb.com/title/tt1375666/) - A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.
 
-
 ## Mindfulness Exercises
 
-- [UC San Diego Center for Mindfulness](https://cih.ucsd.edu/mindfulness/guided-audio-video) - Guided exercises on mental noting, awareness of breath, and body scan. 
+- [UC San Diego Center for Mindfulness](https://cih.ucsd.edu/mindfulness/guided-audio-video) - Guided exercises on mental noting, awareness of breath, and body scan.
 - [UCLA Mindful Awareness Research Center](https://www.uclahealth.org/marc/mindful-meditations) - Guided exercises on breath, sound, and body awareness.
 - [The Free Mindfulness Project](https://www.freemindfulness.org/download) - Guided exercises on breath, sound, body awareness and self guided exercises.
 - [AudioDharma](https://www.audiodharma.org/series/1/talk/1835/) - Guided exercises on giving attention and appreciating awareness of the moment.
@@ -146,10 +126,10 @@ A curated collection of resources and projects focused on Lucid Dreams.
 
 ## Reality Checks
 
-Reality checks are tests that are performed to check if you are dreaming. 
+Reality checks are tests that are performed to check if you are dreaming.
 
 - Finger Through Hand - Push your index finger through the palm of the other hand.
 - How Did I Get Here - Recall the steps that got you to your current location.
 - Nose Pinch - Squeeze your nose closed with your index finger and thumb and try to take a breath.
 - Finger Counting - Look closely at your hands for any unusual patterns and count your fingers.
-- Levitation - Imagine what it would feel like to fly around in your surroundings and visualize yourself doing so; after enough daydreaming you will at least have a dream in which you can fly.
+- Levitation - Imagine what it would feel like to fly around in your surroundings and visualize yourself doing so; the source states that, after enough daydreaming, you will at least have a dream in which you can fly.
