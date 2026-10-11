@@ -1,61 +1,32 @@
 ---
 title: "Awesome Stacks"
-description: "Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Stacksのウォレット、Webアプリ、DeFiとスタッキング、Clarityコントラクトと開発ツール、クライアントライブラリ、学習資料。"
 licenseSource: "github-friedger-awesome-stacks-chain-readme-md"
 ---
 
 # Awesome Stacks
 
-Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
-
-## 目次
-
-- [アプリ](#apps)
-  - [ウォレット](#wallets)
-  - [Stacks Webアプリケーション](#stacks-web-applications)
-  - [ブロックチェーン命名システム](#blockchain-name-system)
-  - [DeFi](#defi)
-  - [ゲーム](#games)
-  - [スタッキングアプリ](#stacking-apps)
-- [Clarityリソース](#clarity-resources)
-  - [開発者ツール](#developer-tools)
-  - [コントラクト例](#example-contracts)
-  - [ライブラリとプロトコル](#libraries--protocols)
-  - [コントラクト](#contracts)
-  - [非代替性トークン](#non-fungible-tokens)
-  - [代替性トークン](#fungible-tokens)
-  - [スタッキング](#stacking)
-- [アプリ開発](#app-development)
-  - [クライアントライブラリ](#client-libraries)
-  - [CLI](#cli)
-  - [インデックス・クエリーAPI](#indexing-and-querying-apis)
-- [学習リソース](#learning-resources)
-  - [ドキュメント](#documentation)
-  - [動画](#videos)
-  - [文書チュートリアル](#written-tutorials)
-  - [書籍](#books)
-  - [コース](#courses)
-- [コミュニティ](#community)
+固定原文では、[Stacks](https://www.stacks.co/what-is-stacks)をBitcoinにアンカーするレイヤー1ブロックチェーンと説明し、アプリケーション、[Clarity](https://clarity-lang.org/)によるスマートコントラクト、デジタル資産を扱えるとしています。[Proof of Transfer（PoX）](https://docs.stacks.co/stacks-101/proof-of-transfer)でStacksの状態をBitcoinに紐付け、Bitcoinの基本的なコンセンサスの仕組みを変えずに、そのセキュリティとファイナリティを利用するという説明です。ウォレット、Webアプリ、DeFiとスタッキングのサービス、Clarityコントラクトと開発ツール、クライアントライブラリ、学習資料を紹介します。
 
 ## アプリ
 
 ### ウォレット
 
 - [Asigna](https://asigna.io) - Bitcoin、Ordinals、BRC20、Stacks向けマルチシグウォレット。
-- [Leather Wallet](https://leather.io/) - BitcoinとStacks Webアプリケーションへ接続するオープンソースウォレット。モバイルにも対応する。
-- [OKX Web3 Wallet](https://web3.okx.com/download) - Stacksもサポートするマルチチェーンウォレット。
+- [Leather Wallet](https://leather.io/) - BitcoinとStacks Webアプリケーションへ接続するオープンソースウォレット。モバイルにも対応。
+- [OKX Web3 Wallet](https://web3.okx.com/download) - Stacksにも対応したマルチチェーンウォレット。
 - [Xverse Wallet](https://www.xverse.app) - Bitcoin、STX、スタッキングを管理するモバイルウォレットアプリケーションとブラウザー拡張（部分的にオープンソース）。
-- [WalletConnect](https://docs.reown.com/advanced/multichain/rpc-reference/stacks-rpc) - Wallet Connect（Reown）をStacksとともに利用する方法のドキュメント。
+- [WalletConnect](https://docs.reown.com/advanced/multichain/rpc-reference/stacks-rpc) - Wallet Connect（Reown）をStacksで利用する方法のドキュメント。
 
 ### Stacks Webアプリケーション
 
 - [Hiro Explorer](https://explorer.hiro.so/?chain=mainnet) - Stacksブロックチェーン上の取引を確認するアプリケーション。
 - [STXER](https://stxer.xyz/) - Stacks取引向けのエクスプローラー、デバッガー、シミュレーター。
 - [Send Many](https://sendstx.com) - 一回の取引でSTXなどのトークンを多数の受取人へ送るアプリケーション。
-- [Speed Spend](https://speed-spend.org) - テストネット上で動作するClarity実験のスイート（[ソース](https://github.com/friedger/speed-spend)）。
-- [Blocksurvey](https://blocksurvey.io) - データ所有権とプライバシーに焦点を置くAI駆動の調査プラットフォーム。
+- [Speed Spend](https://speed-spend.org) - テストネット上で動作するClarityの実験集（[ソースコード](https://github.com/friedger/speed-spend)）。
+- [Blocksurvey](https://blocksurvey.io) - データ所有権とプライバシーを重視した、AI活用型のアンケートプラットフォーム。
 - [AIBTC](https://aibtc.com/) - 測定可能なタスクに取り組むAIエージェントの協調ネットワーク。
-- [FatStx](https://fatstx.github.io/) - たとえば税申告に使える年間取引ビューアー。
+- [FatStx](https://fatstx.github.io/) - 税務申告などに利用できる年間取引ビューアー。
 
 ### ブロックチェーン命名システム
 
@@ -66,14 +37,14 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 ### DeFi
 
 - [Bitflow](https://www.bitflow.finance/) - 分散型取引所。
-- [Velar](https://www.velar.co/) - 主要なBitcoin L2上でのスワップ、取引、資産立ち上げ。
+- [Velar](https://www.velar.co/) - 主要なBitcoin L2上でのスワップ、取引、資産の発行。
 - [Zest Protocol](https://www.zestprotocol.com/) - BitcoinとStacks上の分散型借入・貸付。
-- [FakFun](https://fak.fun) - Bitcoin上に構築されたミームコインの交換、立ち上げ、ラッピング用プラットフォーム。
+- [FakFun](https://fak.fun) - Bitcoin上に構築されたミームコインの交換、発行、ラッピング用プラットフォーム。
 - [Alex Lab](https://app.alexlab.co) - DeFi向けサービスプラットフォーム。
 - [Arkadiko Protocol](https://arkadiko.finance) - 自己返済型ローンに基づくステーブルコイン（USDA）。
 - [Granite](https://granite.world/) - Bitcoinを担保に借りるための、ノンカストディアルで安全かつ分散型のBitcoin流動性プロトコル。
 - [BSD](https://www.bsd.money/) - 過剰担保型貸付モデルでBitcoinに裏付けられた合成デジタルドル。
-- [USDh](https://app.hermetica.fi) - ショート無期限先物ポジションと機関級カストディアンを用いる、Bitcoin裏付けの利回り付き合成ドル。
+- [USDh](https://app.hermetica.fi) - ショート無期限先物ポジションと機関投資家向け水準のカストディアンを用いる、Bitcoin裏付けの利回り付き合成ドル。
 - [STXTools](https://stxtools.io/) - Stacks上のDeFi向けチャート、取引、価格アラート。
 - [Stacks Pulse](https://www.stackspulse.com/) - Stacks DeFiのリアルタイム・オンチェーン統計。
 - [Signal21](https://signal21.io/) - Bitcoin L1、L2、Dapps向けオンチェーン分析。
@@ -88,11 +59,11 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 ### スタッキングアプリ
 
 - [Stacking on Leather](https://app.leather.io/stacking) - Stacksトークンを直接またはプールでスタックするアプリ。
-- [Fast pool](https://fastpool.org/) - 信頼を最小化したスタッキングプール。
+- [Fast pool](https://fastpool.org/) - 第三者を信頼する必要性を抑えたスタッキングプール。
 - [PlanBetter pool](https://planbetter.com/) - Bitcoin報酬付きスタッキングプール。
 - [Xverse pool](https://pool.xverse.app/) - Xverseモバイルアプリに組み込まれたスタッキングプール。
-- [Stacking DAO](https://www.stackingdao.com/) - Stacks上の流動的スタッキング。
-- [Lisa](https://app.lisalab.io) - リベースを使うStacks上の流動的スタッキング。
+- [Stacking DAO](https://www.stackingdao.com/) - Stacks上のリキッドスタッキング。
+- [Lisa](https://app.lisalab.io) - リベースを利用するStacks上のリキッドスタッキング。
 - [Stacking Tracker](https://stacking-tracker.com) - スタッキングと履歴データの概要（[ソースコード](https://github.com/StackingDAO/stacking-tracker)）。
 
 ## Clarityリソース
@@ -108,9 +79,9 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 
 ### コントラクト例
 
-- [Source of Clarity](https://source-of-clarity.com) - 一部コメント付きでメインネットにデプロイされたすべてのClarityコントラクトの一覧。
+- [Source of Clarity](https://source-of-clarity.com) - メインネットにデプロイされた全Clarityコントラクトを、一部へのコメントとともに掲載した一覧。
 - [Example Contracts](https://github.com/hirosystems/clarity-examples) - 独自のコントラクトを書く出発点となるサンプルスマートコントラクト集。
-- [Audited Example Smart Contracts](https://github.com/clarity-lang/book/tree/main/projects) - セキュリティ監査済みの別のスマートコントラクト例コレクション。
+- [Audited Example Smart Contracts](https://github.com/clarity-lang/book/tree/main/projects) - もう一つのスマートコントラクト例集。セキュリティ監査済み。
 
 ### ライブラリとプロトコル
 
@@ -121,17 +92,17 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 
 ### コントラクト
 
-- [CityCoin](https://github.com/citycoins/citycoin) - STX転送を使い比例確率で新しいコインをミントするPoX liteの実装。
+- [CityCoin](https://github.com/citycoins/citycoin) - STXの送金に比例する確率で新しいコインをミントする、PoX liteの実装。
 - [SWAPR](https://github.com/psq/swapr) - Stacks 2.0およびClarity上のUniswap風実装。
-- [FLEXR](https://github.com/psq/flexr) - Stacks向けのAmpleforth解釈。
-- [ClarityDAO](https://github.com/friedger/clarity-dao) - ClarityにおけるMoloch DAOの変換実装。
+- [FLEXR](https://github.com/psq/flexr) - Ampleforthの仕組みをStacks向けに実装したもの。
+- [ClarityDAO](https://github.com/friedger/clarity-dao) - Moloch DAOをClarityへ移植した実装。
 - [NFT Marketplace](https://github.com/friedger/clarity-marketplace/blob/master/contracts/market.clar) - 取引可能な資産のマーケットプレイス用Clarityスマートコントラクト。
 - [StackStarter](https://github.com/MarvinJanssen/stackstarter/blob/master/contracts/stackstarter.clar) - クラウドファンディング向けClarityスマートコントラクト。
 - [Lightning Swaps](https://github.com/radicleart/clarity-rstack/blob/master/contracts/lightning-swaps-v1.clar) - Lightning Networkを使う不正防止スワップ。
-- [Election Voting](https://github.com/elbaruni/clarity-election/blob/master/contracts/election.clar) - Clarityを用いる候補者向け基本投票。
-- [DualX](https://github.com/westridgeblockchain/dualX) - 取引のためのDeFiエコシステムを実装するClarityコントラクト集。
+- [Election Voting](https://github.com/elbaruni/clarity-election/blob/master/contracts/election.clar) - Clarityを使って候補者へ投票する基本的な仕組み。
+- [DualX](https://github.com/westridgeblockchain/dualX) - 取引所向けのDeFiエコシステムを実装するClarityコントラクト集。
 - [ExecutorDAO](https://github.com/MarvinJanssen/executor-dao) - スマートコントラクトへDAO機能を組み込むClarityフレームワーク。
-- [Digital Will](https://github.com/LoRdSoban/Cryptonomers) - 条件付き資金移転。
+- [Digital Will](https://github.com/LoRdSoban/Cryptonomers) - 条件付きの資金移転。
 - [MultiSafe](https://github.com/Trust-Machines/multisafe) - Stacks（STX）とBitcoin（BTC）を管理する共有暗号資産保管庫。
 - [Charisma](https://github.com/pointblankdev/dungeon-master) - Stacksブロックチェーン上でコミュニティが運営するミームコインDAO。
 
@@ -153,21 +124,21 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 
 ### クライアントライブラリ
 
-- [Stacks.js](https://github.com/stx-labs/stacks.js) - Stacksブロックチェーンと対話するJavaScriptライブラリのモノレポ。
-- [stacks.rs](https://github.com/52/stacks.rs) - Stacksブロックチェーンと対話するRustツールキット。
-- [stacks.py](https://github.com/rohitverma007/stackspy) - Stacksブロックチェーンと対話するPythonライブラリ。
-- [go-stacks](https://github.com/cbadawi/go-stacks) - stacksブロックチェーンと対話するGolang SDK。
-- [x402 Stacks](https://www.x402stacks.xyz) - Stacksブロックチェーン上に支払いゲート付きAPIを構築するプロトコルとSDK。
+- [Stacks.js](https://github.com/stx-labs/stacks.js) - Stacksブロックチェーンを操作するJavaScriptライブラリのモノレポ。
+- [stacks.rs](https://github.com/52/stacks.rs) - Stacksブロックチェーンを操作するRustツールキット。
+- [stacks.py](https://github.com/rohitverma007/stackspy) - Stacksブロックチェーンを操作するPythonライブラリ。
+- [go-stacks](https://github.com/cbadawi/go-stacks) - Stacksブロックチェーンを操作するGo SDK。
+- [x402 Stacks](https://www.x402stacks.xyz) - Stacksブロックチェーン上に支払いを利用条件とするAPIを構築するプロトコルとSDK。
 - [Stacks Connect](https://github.com/stx-labs/connect) - アプリをStacksアカウントへ接続するライブラリ。
 - [Sign-In With Stacks](https://github.com/pradel/sign-in-with-stacks/) - Sign-In with Stacksメッセージを作成・検証するライブラリ。
 
 ### CLI
 
-- [@stacks/cli](https://github.com/stx-labs/stacks.js/tree/main/packages/cli) - 認証、ストレージ、取引と対話するためのコマンドラインインターフェース。
+- [@stacks/cli](https://github.com/stx-labs/stacks.js/tree/main/packages/cli) - 認証、ストレージ、トランザクションの操作用コマンドラインインターフェース。
 
 ### インデックス・クエリーAPI
 
-- [Stacks API](https://www.hiro.so/stacks-api) - ブロックチェーンと直接対話し、情報照会、取引ブロードキャスト、Stacks上でのプロジェクト拡張を行うホスト型API。
+- [Stacks API](https://www.hiro.so/stacks-api) - ブロックチェーンを直接操作し、情報照会、トランザクションの配信、Stacks上でのプロジェクト拡張を行うホスト型API。
 - [Quicknode](https://www.quicknode.com/chains/stx) - Quicknodeを使いStacksへ素早く簡単に接続するためのホスト型エンドポイント。
 - [Self-Hosted Render](https://github.com/stacksfoundation/render-stacks) - Render上でStacksノードをセルフホストするワンクリックデプロイツール。
 - [Self-Hosted Digital Ocean](https://marketplace.digitalocean.com/apps/stacks-blockchain) - Stacksノードを実行するDigital Ocean droplet。
@@ -178,9 +149,9 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 
 ### ドキュメント
 
-- [Official Stacks documentation](https://docs.stacks.co/) - Clarityの学習とStacksアプリ開発のためのドキュメントおよび開発者チュートリアル。
-- [Hiro documentation](https://docs.hiro.so/) - 開発者に焦点を当てたドキュメント。
-- [Stacks 101](https://stacks101.com) - コミュニティがキュレーションするSTX知識。
+- [Stacks公式ドキュメント](https://docs.stacks.co/) - Clarityの学習とStacksアプリ開発のためのドキュメントおよび開発者チュートリアル。
+- [Hiroのドキュメント](https://docs.hiro.so/) - 開発者向けドキュメント。
+- [Stacks 101](https://stacks101.com) - コミュニティがまとめたSTXに関する知識集。
 
 ### 動画
 
@@ -188,15 +159,15 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 - [Developer Registry 101](https://www.crowdcast.io/e/clarity-program) - Clarityスマートコントラクトをゼロから構築する方法を学ぶ。
 - [How Clarity Prevents Common Smart Contract Vulnerabilities](https://www.youtube.com/watch?v=VYXhrwPsBws) - Clarityのセキュリティ原則の説明。
 - [Proof of Transfer Whitepaper Reading with Muneeb Ali](https://www.youtube.com/watch?v=NY_eUrIcWOY&t=3s) - 著者によるProof of Transfer（PoX）ホワイトペーパーの概要。
-- [Web3 for Bitcoin](https://www.crowdcast.io/e/web3-for-bitcoin/) - Stacks、その解決する問題、Bitcoinへのスマートコントラクト機能の導入、構築の始め方の概要。
-- [Why Build on Stacks](https://www.youtube.com/watch?v=WaTMCremGwE) - Web3開発者が他のブロックチェーンプロトコルよりStacks上で構築したいと思う理由の概要。
+- [Web3 for Bitcoin](https://www.crowdcast.io/e/web3-for-bitcoin/) - Stacksの概要、解決する課題、Bitcoinにスマートコントラクト機能をもたらす仕組み、開発の始め方。
+- [Why Build on Stacks](https://www.youtube.com/watch?v=WaTMCremGwE) - Web3開発者が他のブロックチェーンプロトコルよりもStacksを選ぶ理由を解説。
 
 ### 文書チュートリアル
 
-- [Bitcoin Primer](https://docs.stacks.co/tutorials/bitcoin-primer/introduction) - Bitcoin上でフルスタックDappsを構築する入門。
+- [Bitcoin Primer](https://docs.stacks.co/tutorials/bitcoin-primer/introduction) - Bitcoin上でフルスタックDAppを構築するための入門資料。
 - [Understanding Stacks Post Conditions](https://dev.to/stacks/understanding-stacks-post-conditions-e65) - StacksのPost Conditionsを理解し利用するガイド。
 - [Test-Driven Stacks Development with Clarinet](https://dev.to/stacks/test-driven-stacks-development-with-clarinet-2e4i) - ClarinetをテストとTDDに活用する方法を示すチュートリアル。
-- [Build a DEX with Stacks](https://www.pointer.gg/tutorials/build-a-dex-with-stacks/56abb3a4-05c1-4608-b096-f82189e9f759) - フルスタック分散型取引所の構築を通じたStacks利用の詳細な導入。
+- [Build a DEX with Stacks](https://www.pointer.gg/tutorials/build-a-dex-with-stacks/56abb3a4-05c1-4608-b096-f82189e9f759) - フルスタックの分散型取引所を構築しながらStacksの利用方法を詳しく学ぶ教材。
 - [Build a Stacks app with Remix](https://micro-stacks.dev/guides/with-remix) - Remix JSフレームワークとMicro-Stacksを使い、サーバーサイドレンダリングされたStacksアプリを作る方法。
 - [Build a Stacks app with Next.js](https://micro-stacks.dev/guides/with-nextjs) - 上記Remixチュートリアルに似た、Next.jsとMicro-Stacksを使うチュートリアル。
 - [Creating a Voting Contract](https://www.clearness.dev/01-voting-clarity-smart-contract/01-getting-started) - Clarityを使いシンプルな投票スマートコントラクトを作る方法を示す複数部構成のシリーズ。
@@ -206,20 +177,16 @@ Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリスト�
 
 ### 書籍
 
-- [Clarity of Mind](https://book.clarity-lang.org/) - 予測可能で生産的なスマートコントラクトを書く。 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- [Clarity of Mind](https://book.clarity-lang.org/) - 動作を予測できる実用的なスマートコントラクトを書くための書籍。 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ### コース
 
-- [Clarity Universe](https://clarity-lang.org/universe) - 自習コースまたは6週間の指導付きコホートとして提供される、包括的なClarity開発コース。
+- [Clarity Universe](https://clarity-lang.org/universe) - 自習形式、または指導付きで6週間のグループ受講形式から選べる、Clarity開発の総合コース。
 
 ## コミュニティ
 
 - [Discord](https://discord.gg/zrvWsQC) - StacksエコシステムのDiscord。
 - [Twitter](https://twitter.com/stacks) - StacksエコシステムのTwitter。
 - [YouTube](https://www.youtube.com/c/Blockstack) - StacksエコシステムのYouTube。
-- [Official Stacks Forum](https://forum.stacks.org/) - Stacksコミュニティフォーラム。
-- [r/stacks](https://www.reddit.com/r/stacks) - Stacksのsubreddit。
-
-## 貢献
-
-このリストへのコミュニティ貢献を歓迎します。貢献する前に[貢献ガイドライン](https://github.com/friedger/awesome-stacks-chain/blob/fd4cbc5fa6116652e62b3b29ecf2f266e447e090/contributing.md)をお読みください。
+- [Stacks公式フォーラム](https://forum.stacks.org/) - Stacksコミュニティフォーラム。
+- [r/stacks](https://www.reddit.com/r/stacks) - Reddit上のStacksコミュニティ。
