@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": 206,
+  "revision": 207,
   "candidates": [
     {
       "id": "ninja",
@@ -8888,8 +8888,16 @@
           "reason": "原tar.texiはGFDL1.3+、不変節GNU General Public License、Front/Back-Cover Textsを明示。原通知・タイトル/著者/変更履歴と全英語GFDL・未変更COPYINGのGPL全文を提供する設計を別パス確認するまでunknown。",
           "evidence": [
             {
-              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
-              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+              "path": "docs/notes/document-import/gnu-tar/v1-35/RIGHTS_DESIGN.json",
+              "sha256": "a5c7d495d8972a42da43bfbb5ea8221584d815ffc1c5bd651ec67f18f4a9d501"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/project.config.jsonc",
+              "sha256": "7ae22134ce69c19ee406260643594db148d58eee97296dd0e7659c8e9df0a787"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NATIVE.json",
+              "sha256": "54a1c7397da626cb4eee55170ab8de04b13cfd745d8c5a5b240e1084342e5485"
             }
           ]
         },
@@ -8918,32 +8926,64 @@
           ]
         },
         "selfContained": {
-          "status": "unknown",
-          "reason": "採用前の固定原稿確認・提供方式の試作・別パス選定照合が未完。未確認をpassと扱わない。",
+          "status": "pass",
+          "reason": "完全Introduction+Tutorialの原範囲を維持。原1.1がチュートリアルは後続章を読まず理解できると説明し、Unix操作前提・後続範囲を明記。参照脚注1を全文追加し、後続章は固定原文で参照可能。",
           "evidence": [
             {
               "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
               "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_RENDERED.json",
+              "sha256": "68bf2d84fc260147c37b40af2ce7a2af129e4561a59f882c6cca24012498a937"
             }
           ]
         },
         "conversion": {
-          "status": "unknown",
-          "reason": "固定Texinfo7.1/DISTRIBから全文HTML2回SHA一致。通常Astroテンプレートで本文/44pre/脚注/定義・主要導線の代表試作は未実施。",
+          "status": "pass",
+          "reason": "正規テンプレート/作成器を使った隔離ローカル試作3ページを8ルートbuild。完全英文2章の44pre・本文がrawとrenderで保全、114参照検査、重複ID0。日本語代表節/英語長文コード/固定原文導線をnative確認。正式版・全文訳レビューとは区別。",
           "evidence": [
             {
-              "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
-              "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_GENERATION.json",
+              "sha256": "703c8a774f971910f3cfcbb1a0ecf417c7a62b074623690ed2c38dbe6ff45b43"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_RENDERED.json",
+              "sha256": "68bf2d84fc260147c37b40af2ce7a2af129e4561a59f882c6cca24012498a937"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_NATIVE.json",
+              "sha256": "54a1c7397da626cb4eee55170ab8de04b13cfd745d8c5a5b240e1084342e5485"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/BUILD_FINAL.log",
+              "sha256": "5593e78474ea16e260b86b98deb7e9b8bbf4c169633ba398992c56441b01a7f5"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/generate-trial.py",
+              "sha256": "8328605849301b082e51afb79104bd46d2b4d983f9b2f91cfd8b21b9aa51b000"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/check-trial.py",
+              "sha256": "0f42a2fc4a3334519f06eca5134d6a7434ce9237ca1f76e72dacc601602f1ba7"
             }
           ]
         },
         "workload": {
-          "status": "unknown",
-          "reason": "完全2章はナビ込み8121語、約30意味節。実本文範囲・章境界を保全し、3000〜6000語程度のバッチへ分ける案。試作後に確定。",
+          "status": "pass",
+          "reason": "元HTMLの章/節境界から静的本文を再生成し、44preを一括保全できる。全2章ナビ込み8121語を意味節を保つ2〜3バッチに分ける方式で管理可能。元サイト機能の再現は不要。",
           "evidence": [
             {
               "path": "docs/notes/document-import/gnu-tar/v1-35/SCOPE_INVENTORY.json",
               "sha256": "fb271afcb393665126b39a04572dd4cf55d037fb96b3f74a8b235c1326fc83c1"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_GENERATION.json",
+              "sha256": "703c8a774f971910f3cfcbb1a0ecf417c7a62b074623690ed2c38dbe6ff45b43"
+            },
+            {
+              "path": "docs/notes/document-import/gnu-tar/v1-35/trial/TRIAL_RENDERED.json",
+              "sha256": "68bf2d84fc260147c37b40af2ce7a2af129e4561a59f882c6cca24012498a937"
             }
           ]
         }
@@ -8992,7 +9032,7 @@
         }
       },
       "decision": "予備調査候補として登録。固定原稿は取得したが6条件・採点・選定照合未完のためeligible/selectedではない。",
-      "resumeCondition": "GNU sed第8〜10章Preview38126703525→Production/公開後確認を優先。GNU tarは固定1.35/原資料24入力を再利用し、原許諾の不変GPL・表紙文言を含む履行設計、正規テンプレートの代表変換/可読性試験、採点と別パス選定照合を行う。現時点screening、アプリ/operation未作成・配信対象外。",
+      "resumeCondition": "GNU sed第8〜10章Production38128794487の品質検査が進行中。完了後artifact/CAS/公開後確認を優先。GNU tarは正規作成器の配信除外試作3ページ/8ルートbuild/44pre/114参照/代表nativeを再利用し、不変GPL補足の履行判断を別パスで確定後、採点・選定照合へ進む。正式アプリ/operation・全文日本語訳は未作成。",
       "nextCheckAt": null,
       "selectionReview": null
     }
