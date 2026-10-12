@@ -2,9 +2,9 @@
 
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
-- 検証済み: 50件 / 今回の公開済み: 50件 / 公開待ち: 0件
-- 作業中: 1件（新規1件） / 長期保留作業: 0件 / 候補保留: 2件
-- eligible待機: 0件 / 新規着手: 停止
+- 検証済み: 51件 / 今回の公開済み: 50件 / 公開待ち: 1件
+- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 2件
+- eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
 - 台帳・実ファイル照合: 合格
@@ -63,7 +63,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-patch / v2-8 / new | verified | verified | GNU patch2.8固定patch.man全14節の9英日ガイド・18原稿・509member編集キットについて、統合Pages公開後確認を完了。次は現行OPERATIONSと案件別台帳を再照合し、重大不具合・着手済み案件と既存修正/更新を優先する。着手可能な上位工程がなければ既存候補から未評価候補を補充し、追加価値・実用性と原文条件を確認する。GNU bc1.08.2追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 GNU patch2.8固定patch.man全14節の9英日ガイド・18原稿・509member編集キットについて、統合Pages公開後確認を完了。次は現行OPERATIONSと案件別台帳を再照合し、重大不具合・着手済み案件と既存修正/更新を優先する。着手可能な上位工程がなければ既存候補から未評価候補を補充し、追加価値・実用性と原文条件を確認する。GNU bc1.08.2追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
 | gnu-tar / v1-35 / update | verified | verified | GNU tar1.35の3–3.3.4を8英日ガイド追加し、全39英日ガイド・80原稿・788member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 GNU tar1.35の3–3.3.4を8英日ガイド追加し、全39英日ガイド・80原稿・788member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
 | gnu-tar / v1-35 / update | verified | verified | GNU tar1.35の3.4–3.4.4を5英日ガイド追加し、全44英日ガイド・90原稿・843member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 GNU tar1.35の3.4–3.4.4を5英日ガイド追加し、全44英日ガイド・90原稿・843member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
-| gnu-libtool / v2-6-2 / new | content-reviewed | content-reviewed | GNU Libtool2.6.2第2〜3章10英日ガイドの内容レビュー済み本文は不変。524member編集キットから21原稿/20固定入力/10レビュー/26ルートを独立再構築し、全本文/通知/GFDL/572参照/ZIP再生成と実downloadのSHA一致、80配信ファイルHTTP/404、代表native英日/390px表示・原典参照を確認済み。次は最新Production=d9339d5a（確認時）と公開成果物6627ファイルを再照合し、新規Libtoolだけ選択統合、全他出力/landing/client pruning/構造/検索/HTTP/404を確認する。対象root登録・verified台帳→限定公開commit/push→統合Pages Preview/Production→公開後確認を続行。root配信app未登録、保存ブランチのみで公開未実施。 GNU Libtool2.6.2第2〜3章10英日ガイドの内容レビュー済み本文は不変。524member編集キットから21原稿/20固定入力/10レビュー/26ルートを独立再構築し、全本文/通知/GFDL/572参照/ZIP再生成と実downloadのSHA一致、80配信ファイルHTTP/404、代表native英日/390px表示・原典参照を確認済み。次は最新Production=d9339d5a（確認時）と公開成果物6627ファイルを再照合し、新規Libtoolだけ選択統合、全他出力/landing/client pruning/構造/検索/HTTP/404を確認する。対象root登録・verified台帳→限定公開commit/push→統合Pages Preview/Production→公開後確認を続行。root配信app未登録、保存ブランチのみで公開未実施。 |
+| gnu-libtool / v2-6-2 / new | verified | verified | GNU Libtoolverified/awaiting-release、公開用134c41464481667fdaf1238905fff4ffc5dc8e9aをorigin照合済み。Pages Preview run38189325185のin_progressを確認。次は同一runをpollし、成功後artifact/524member原稿キット/全21本文・リンク・通知/配信JS/HTTP/native/404を検証。直前本番d9339d5aのCAS Production→公開後確認。新規候補選定や同条件でのCI再実行は行わない。 GNU Libtoolverified/awaiting-release、公開用134c41464481667fdaf1238905fff4ffc5dc8e9aをorigin照合済み。Pages Preview run38189325185のin_progressを確認。次は同一runをpollし、成功後artifact/524member原稿キット/全21本文・リンク・通知/配信JS/HTTP/native/404を検証。直前本番d9339d5aのCAS Production→公開後確認。新規候補選定や同条件でのCI再実行は行わない。 |
 
 ## 登録済みの既存文書
 
@@ -101,6 +101,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-tar | v1-35 | 未実施 | GNU tar1.35の3.4–3.4.4を5英日ガイド追加し、全44英日ガイド・90原稿・843member編集キットの統合Pages公開後確認を完了。次は現行OPERATIONS/案件別台帳を再照合し、重大不具合・着手済み案件・既存更新を優先する。上位未完了工程がなければ既存候補の未評価候補を確認する。GNU bc追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
 | gnu-m4 | v1-4-21 | 未実施 | GNU M4 1.4.21第1〜3章18英日ガイドと英語GFDL参照1ページ、37定本・654member編集キットの統合Pages公開後確認完了。次は現行台帳の重大不具合・未完了工程を照合し、GNU bc1.08.2全文の追加価値2/5保留を維持し、GNU patchの既存diffutilsとの重複・追加価値を照合、必要なら不足候補を補充して次案件の採用・固定原文取得へ進む。MsgPack許諾保留は新証拠または2026-11-01まで維持する。 |
 | gnu-patch | v2-8 | 未実施 | GNU patch2.8固定patch.man全14節の9英日ガイド・18原稿・509member編集キットについて、統合Pages公開後確認を完了。次は現行OPERATIONSと案件別台帳を再照合し、重大不具合・着手済み案件と既存修正/更新を優先する。着手可能な上位工程がなければ既存候補から未評価候補を補充し、追加価値・実用性と原文条件を確認する。GNU bc1.08.2追加価値2/5とMsgPack許諾保留は新証拠がない限り維持する。 |
+| gnu-libtool | v2-6-2 | 未実施 | GNU Libtoolverified/awaiting-release、公開用134c41464481667fdaf1238905fff4ffc5dc8e9aをorigin照合済み。Pages Preview run38189325185のin_progressを確認。次は同一runをpollし、成功後artifact/524member原稿キット/全21本文・リンク・通知/配信JS/HTTP/native/404を検証。直前本番d9339d5aのCAS Production→公開後確認。新規候補選定や同条件でのCI再実行は行わない。 |
 
 ## 候補
 
