@@ -1,0 +1,9 @@
+from pathlib import Path
+import shutil,json,hashlib,datetime
+R=Path('/Users/dolphilia/github/libx');N=R/'docs/notes/document-import/gnu-libtool/v2-6-2';W=Path('/private/tmp/libx-gnu-libtool-998');A=W/'apps/gnu-libtool';T=N/'workspace-snapshot';sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();files=[];sources=[]
+for p in sorted(A.rglob('*')):
+ r=p.relative_to(A)
+ if any(x in ['node_modules','dist','.astro']for x in r.parts)or p.is_symlink()or not p.is_file():continue
+ if r.parts[:2]==('public','source'):sources.append({'path':str(r),'sha256':sha(p),'bytes':p.stat().st_size});continue
+ t=T/'apps/gnu-libtool'/r;t.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,t);files.append({'path':str(t.relative_to(T)),'sha256':sha(t),'bytes':t.stat().st_size})
+t=T/'pnpm-lock.yaml';shutil.copyfile(W/'pnpm-lock.yaml',t);files.append({'path':'pnpm-lock.yaml','sha256':sha(t),'bytes':t.stat().st_size});out={'status':'saved-content-reviewed-sourcekit-local-verified-formal-workspace','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'baseCommit':'d9339d5a67c732681efc007d50fa05847c448795','workspace':str(W),'excludedFromDeployment':True,'files':files,'reconstructedSourceFiles':sources,'sourceReconstruction':'generate.py copies fixed manual/archive; rebuild.py copies21preferred to edited/ and SOURCE_OFFER_README.md to SOURCE_README.md; current source-offer.zip retained separately and deterministically restored from sourcekit inventory in standalone package. Source inputs and ZIP preserved outside duplicate app snapshot.','excludes':['node_modules','dist','.astro','symlinks'],'limits':'Actual independent524member kit replay verified in999. Latest integrated/public deployment checks remain pending.'};(T/'MANIFEST.json').write_text(json.dumps(out,indent=2)+'\n');print('Saved',len(files),'workspace files;',len(sources),'reconstructable source outputs')

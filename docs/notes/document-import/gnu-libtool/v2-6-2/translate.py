@@ -1,7 +1,7 @@
 from pathlib import Path
 from bs4 import BeautifulSoup,NavigableString
-import json,re,copy,hashlib,shutil
-N=Path(__file__).resolve().parent;A=Path('/private/tmp/libx-gnu-libtool-998/apps/gnu-libtool');data=json.loads((N/'TRANSLATION_DATA.json').read_text());units=json.loads((N/'TRANSLATION_UNITS.json').read_text());gen=json.loads((N/'CANONICAL_GENERATION.json').read_text());h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+import json,re,copy,hashlib,shutil,os
+N=Path(__file__).resolve().parent;A=Path(os.environ.get('LIBX_WORKSPACE','/private/tmp/libx-gnu-libtool-998'))/'apps/gnu-libtool';data=json.loads((N/'TRANSLATION_DATA.json').read_text());units=json.loads((N/'TRANSLATION_UNITS.json').read_text());gen=json.loads((N/'CANONICAL_GENERATION.json').read_text());h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 titles=['2 Libtoolの考え方','3 libtoolを使う','3.1 オブジェクトファイルの作成','3.2 ライブラリのリンク','3.3 実行可能ファイルのリンク','3.3.1 未インストールのプログラムのラッパー実行形式','3.4 実行可能ファイルのデバッグ','3.5 ライブラリのインストール','3.6 実行可能ファイルのインストール','3.7 静的ライブラリのリンク']
 notes={
 'Using-libtool':['この例は、デモのテストを生成物を残す指定で実行し、保存されたディレクトリを demo/ へコピーします。'],
