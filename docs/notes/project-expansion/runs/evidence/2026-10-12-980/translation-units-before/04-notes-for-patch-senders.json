@@ -1,0 +1,105 @@
+{
+  "page": "01-guide/04-notes-for-patch-senders.md",
+  "sourceSHA256": "fdfc2f6741e964a3e09e9801ddbebad4332fcdb2509a55a8abdca9d365f90c45",
+  "translationSHA256": "2c3108e388a01e16be0862079b91929d4e63a24a987bea2288cfd3383a174683",
+  "status": "draft-not-reviewed",
+  "units": [
+    {
+      "index": 0,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "There are several things you should bear in mind if you are going\n    to be sending out patches.",
+      "translatedHTML": "パッチを送る場合は、いくつか心に留めておくべきことがあります。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Create your patch systematically. When using a version control\n    system this should be easy; for example, with Git you can use <b>git\n    diff</b>. Otherwise, a good method is the command\n    <b>diff -Naur </b><i>old new</i> where <i>old</i> and\n    <i>new</i> identify the old and new directories. The names <i>old</i> and\n    <i>new</i> should not contain any slashes.",
+      "translatedHTML": "パッチは一貫した手順で作成してください。バージョン管理システムを使用していれば、これは簡単なはずです。たとえばGitでは<code>git diff</code>を使用できます。それ以外の場合は、<code>diff -Naur old new</code>がよい方法です。<var>old</var>と<var>new</var>は、それぞれ変更前と変更後のディレクトリを表します。これらの名前にスラッシュを含めてはいけません。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "If the patch should communicate file timestamps as well as file\n    contents, its <b>diff</b> commands' headers should have dates and times in\n    Universal Time using traditional Unix format, so that patch recipients can\n    use the <b>-Z</b> or <b>--set-utc</b> option. Here is an example command to\n    generate such headers, using Bourne shell syntax:",
+      "translatedHTML": "ファイルの内容だけでなくタイムスタンプも伝える場合は、<code>diff</code>の出力ヘッダーに、従来のUnix形式を使った世界時の日付と時刻を含めるべきです。そうすれば、受け手は<code>-Z</code>または<code>--set-utc</code>を使用できます。次は、そのようなヘッダーを生成するコマンドの例です。Bourneシェルの構文を使用しています。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Tell your recipients how to apply the patch by telling them which\n    directory to <b>cd</b> to, and which <b>patch</b> options to use. The option\n    string <b>-Np1</b> is recommended. Test your procedure by pretending to be a\n    recipient and applying your patch to a copy of the original files.",
+      "translatedHTML": "受け手がどのディレクトリへ<code>cd</code>し、<code>patch</code>にどのオプションを指定すればよいかを伝えて、パッチの適用方法を説明してください。オプションは<code>-Np1</code>を推奨します。自分を受け手とみなし、元のファイルのコピーへパッチを適用して、手順を試してください。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "You can save people a lot of grief by keeping a\n    <b>patchlevel.h</b> file which is patched to increment the patch level as\n    the first diff in the patch file you send out. If you put a <b>Prereq:</b>\n    line in with the patch, it won't let them apply patches out of order without\n    some warning.",
+      "translatedHTML": "<code>patchlevel.h</code>ファイルを用意し、送るパッチファイルの最初の差分でパッチレベルを増やすようにすれば、多くの人の苦労を減らせます。パッチに<code>Prereq:</code>行を入れておけば、順序を間違えて適用しようとしたときに、何の警告もなく適用されることを防げます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "You can create a file by sending out a diff that compares\n    <b>/dev/null</b> or an empty file dated the Epoch (1970-01-01 00:00:00 UTC)\n    to the file you want to create. This only works if the file you want to\n    create doesn't exist already in the target directory. Conversely, you can\n    remove a file by sending out a context diff that compares the file to be\n    deleted with an empty file dated the Epoch. The file will be removed unless\n    <b>patch</b> is conforming to POSIX and the <b>-E</b> or\n    <b>--remove-empty-files</b> option is not given. An easy way to generate\n    patches that create and remove files is to use GNU <b>diff</b>'s <b>-N</b>\n    or <b>--new-file</b> option.",
+      "translatedHTML": "<code>/dev/null</code>、またはエポック（1970-01-01 00:00:00 UTC）の時刻を持つ空ファイルと、作成したいファイルを比較する差分を送れば、ファイルを新規作成できます。これは、対象ディレクトリにそのファイルがまだ存在しない場合にだけ機能します。逆に、削除したいファイルとエポックの時刻を持つ空ファイルを比較するコンテキスト差分を送れば、そのファイルを削除できます。ただし、<code>patch</code>がPOSIXに準拠していて、<code>-E</code>または<code>--remove-empty-files</code>を指定しない場合は削除しません。ファイルを作成・削除するパッチを簡単に生成するには、GNU <code>diff</code>の<code>-N</code>または<code>--new-file</code>を使用します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "If the recipient is supposed to use the <b>-p</b><i>N</i> option,\n    do not send output that looks like this:",
+      "translatedHTML": "受け手が<code>-pN</code>を使用する場合、次のような出力を送ってはいけません。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "because the two file names have different numbers of slashes, and\n    different versions of <b>patch</b> interpret the file names differently. To\n    avoid confusion, send output that looks like this instead:",
+      "translatedHTML": "2つのファイル名でスラッシュの数が異なり、<code>patch</code>のバージョンによってファイル名の解釈が異なるためです。混乱を避けるには、代わりに次のような出力を送ってください。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Avoid sending patches that compare backup file names like\n    <b>README.orig</b>, since this might confuse <b>patch</b> into patching a\n    backup file instead of the real file. Instead, send patches that compare the\n    same base file names in different directories, e.g. <b>old/README</b> and\n    <b>new/README</b>.",
+      "translatedHTML": "<code>README.orig</code>のようなバックアップファイル名を比較するパッチは避けてください。<code>patch</code>が本来のファイルではなくバックアップへパッチを適用してしまうおそれがあるためです。代わりに、<code>old/README</code>と<code>new/README</code>のように、別々のディレクトリにある同じベース名のファイルを比較するパッチを送ってください。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Take care not to send out reversed patches, since it makes people\n    wonder whether they already applied the patch.",
+      "translatedHTML": "反転したパッチを送らないように注意してください。受け手が、すでにそのパッチを適用したのではないかと迷ってしまうためです。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Try not to have your patch modify derived files (e.g. the file\n    <b>configure</b> where there is a line <b>configure: configure.ac</b> in\n    your makefile), since the recipient should be able to regenerate the derived\n    files anyway. If you must send diffs of derived files, generate the diffs\n    using UTC, have the recipients apply the patch with the <b>-Z</b> or\n    <b>--set-utc</b> option, and have them remove any unpatched files that\n    depend on patched files (e.g. with <b>make clean</b>).",
+      "translatedHTML": "パッチでは派生ファイルを変更しないようにしてください。たとえば、makefileに<code>configure: configure.ac</code>という行がある場合の<code>configure</code>が該当します。受け手自身が派生ファイルを再生成できるはずだからです。派生ファイルの差分を送る必要がある場合は、UTCを使って差分を生成し、受け手には<code>-Z</code>または<code>--set-utc</code>を指定して適用してもらってください。また、パッチを適用したファイルに依存する未変更のファイルを、すべて（たとえば<code>make clean</code>で）削除してもらってください。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 11,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "While you may be able to get away with putting 582 diff listings\n    into one file, it may be wiser to group related patches into separate files\n    in case something goes haywire.",
+      "translatedHTML": "582個の差分リストを1つのファイルにまとめても済むかもしれませんが、問題が起きた場合に備え、関連するパッチごとにファイルを分ける方が賢明でしょう。",
+      "status": "draft-not-reviewed"
+    }
+  ],
+  "extra": null
+}

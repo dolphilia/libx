@@ -1,0 +1,28 @@
+<div class="gnu-sed-original-content" id="tac">
+<h3 class="section" id="Reverse-Lines-of-Files"><span>7.10 Reverse Lines of Files</span></h3>
+<p>This one begins a series of totally useless (yet interesting)
+scripts emulating various Unix commands.  This, in particular,
+is a <code class="command">tac</code> workalike.
+</p>
+<p>Note that on implementations other than GNU <code class="command">sed</code>
+this script might easily overflow internal buffers.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+# reverse all lines of input, i.e. first line became last, ...
+
+</pre><div class="group"><pre class="example-preformatted"># from the second line, the buffer (which contains all previous lines)
+# is *appended* to current line, so, the order will be reversed
+1! G
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># on the last line we're done -- print everything
+$ p
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># store everything on the buffer again
+h
+</pre></div></div>
+<hr/>
+</div>

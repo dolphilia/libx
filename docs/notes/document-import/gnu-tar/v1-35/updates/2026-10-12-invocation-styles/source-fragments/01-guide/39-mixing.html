@@ -1,0 +1,67 @@
+<div class="subsection-level-extent" id="Mixing">
+
+<h4 class="subsection" id="Mixing-Option-Styles"><span>3.3.4 Mixing Option Styles</span></h4>
+<a class="index-entry-id" id="index-options_002c-mixing-different-styles"></a>
+<p>All three styles may be intermixed in a single <code class="command">tar</code> command,
+so long as the rules for each style are fully
+respected<a class="footnote" href="#FOOT4" id="DOCF4"><sup>4</sup></a>.  Old style options and either of the modern styles of
+options may be mixed within a single <code class="command">tar</code> command.  However,
+old style options must be introduced as the first arguments only,
+following the rule for old options (old options must appear directly
+after the <code class="command">tar</code> command and some white space).  Modern options
+may be given only after all arguments to the old options have been
+collected.  If this rule is not respected, a modern option might be
+falsely interpreted as the value of the argument to one of the old
+style options.
+</p>
+<p>For example, all the following commands are wholly equivalent, and
+illustrate the many combinations and orderings of option styles.
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted"><kbd class="kbd">tar --create --file=archive.tar</kbd>
+<kbd class="kbd">tar --create -f archive.tar</kbd>
+<kbd class="kbd">tar --create -farchive.tar</kbd>
+<kbd class="kbd">tar --file=archive.tar --create</kbd>
+<kbd class="kbd">tar --file=archive.tar -c</kbd>
+<kbd class="kbd">tar -c --file=archive.tar</kbd>
+<kbd class="kbd">tar -c -f archive.tar</kbd>
+<kbd class="kbd">tar -c -farchive.tar</kbd>
+<kbd class="kbd">tar -cf archive.tar</kbd>
+<kbd class="kbd">tar -cfarchive.tar</kbd>
+<kbd class="kbd">tar -f archive.tar --create</kbd>
+<kbd class="kbd">tar -f archive.tar -c</kbd>
+<kbd class="kbd">tar -farchive.tar --create</kbd>
+<kbd class="kbd">tar -farchive.tar -c</kbd>
+<kbd class="kbd">tar c --file=archive.tar</kbd>
+<kbd class="kbd">tar c -f archive.tar</kbd>
+<kbd class="kbd">tar c -farchive.tar</kbd>
+<kbd class="kbd">tar cf archive.tar</kbd>
+<kbd class="kbd">tar f archive.tar --create</kbd>
+<kbd class="kbd">tar f archive.tar -c</kbd>
+<kbd class="kbd">tar fc archive.tar</kbd>
+</pre></div>
+<p>On the other hand, the following commands are <em class="emph">not</em> equivalent to
+the previous set:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted"><kbd class="kbd">tar -f -c archive.tar</kbd>
+<kbd class="kbd">tar -fc archive.tar</kbd>
+<kbd class="kbd">tar -fcarchive.tar</kbd>
+<kbd class="kbd">tar -farchive.tarc</kbd>
+<kbd class="kbd">tar cfarchive.tar</kbd>
+</pre></div>
+<p>These last examples mean something completely different from what the
+user intended (judging based on the example in the previous set which
+uses long options, whose intent is therefore very clear).  The first
+four specify that the <code class="command">tar</code> archive would be a file named
+<samp class="option">-c</samp>, ‘<samp class="samp">c</samp>’, ‘<samp class="samp">carchive.tar</samp>’ or ‘<samp class="samp">archive.tarc</samp>’,
+respectively.  The first two examples also specify a single non-option,
+<var class="var">name</var> argument having the value ‘<samp class="samp">archive.tar</samp>’.  The last
+example contains only old style option letters (repeating option
+‘<samp class="samp">c</samp>’ twice), not all of which are meaningful (eg., ‘<samp class="samp">.</samp>’,
+‘<samp class="samp">h</samp>’, or ‘<samp class="samp">i</samp>’), with no argument value.
+</p>
+<hr/>
+<h5 class="footnote-body-heading"><a href="#DOCF4" id="FOOT4">(4)</a></h5><p>Before <abbr class="acronym">GNU</abbr> <code class="command">tar</code> version 1.11.6,
+a bug prevented intermixing old style options with long options in
+some cases.</p></div>

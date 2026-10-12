@@ -1,0 +1,57 @@
+{
+  "page": "01-guide/05-diagnostics-and-caveats.md",
+  "sourceSHA256": "b3dc3017432efb7252dd2e23e4c8051e5458d525f0a7fc5a171fe09ba19bbd19",
+  "translationSHA256": "ba7002927fd711624c9709bc3247bc27c75142ac03c5b1c437e458b40e4c01fa",
+  "status": "draft-not-reviewed",
+  "units": [
+    {
+      "index": 0,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Diagnostics generally indicate that <b>patch</b> couldn't parse\n    your patch file.",
+      "translatedHTML": "診断メッセージは一般に、<code>patch</code>がパッチファイルを解析できなかったことを示します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "If the <b>--verbose</b> option is given, the message <b>Hmm...</b>\n    indicates that there is unprocessed text in the patch file and that\n    <b>patch</b> is attempting to intuit whether there is a patch in that text\n    and, if so, what kind of patch it is.",
+      "translatedHTML": "<code>--verbose</code>を指定した場合、<code>Hmm...</code>というメッセージは、パッチファイル内に未処理のテキストがあり、そこにパッチが含まれているか、含まれているならどの形式かを<code>patch</code>が推測しようとしていることを示します。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "<b>patch</b>'s exit status is 0 if all hunks are applied\n    successfully, 1 if some hunks cannot be applied or there were merge\n    conflicts, and 2 if there is more serious trouble. When applying a set of\n    patches in a loop it behooves you to check this exit status so you don't\n    apply a later patch to a partially patched file.",
+      "translatedHTML": "<code>patch</code>の終了ステータスは、すべてのハンクを適用できた場合は0、一部のハンクを適用できなかった場合やマージの競合があった場合は1、より重大な問題があった場合は2です。一連のパッチをループで適用する際は、この終了ステータスを調べるべきです。そうすれば、適用が途中で終わったファイルに次のパッチを適用することを防げます。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "Context diffs cannot reliably represent the creation or deletion\n    of empty files, empty directories, or special files such as symbolic links.\n    Nor can they represent changes to file metadata like ownership, permissions,\n    or whether one file is a hard link to another. If changes like these are\n    also required, separate instructions (e.g. a shell script) to accomplish\n    them should accompany the patch.",
+      "translatedHTML": "コンテキスト差分では、空ファイル、空ディレクトリ、シンボリックリンクなどの特殊ファイルの作成や削除を確実には表現できません。また、所有者、アクセス許可、あるファイルが別のファイルへのハードリンクかどうかなど、ファイルのメタデータの変更も表現できません。このような変更も必要な場合は、それを行うための別の指示（シェルスクリプトなど）をパッチに添えるべきです。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "<b>patch</b> cannot tell if the line numbers are off in an\n    <b>ed</b> script, and can detect bad line numbers in a normal diff only when\n    it finds a change or deletion. A context diff using fuzz factor 3 may have\n    the same problem. You should probably do a context diff in these cases to\n    see if the changes made sense. Of course, compiling without errors is a\n    pretty good indication that the patch worked, but not always.",
+      "translatedHTML": "<code>patch</code>は、edスクリプトの行番号がずれていても判定できません。通常形式の差分でも、変更または削除が見つかったときにしか不正な行番号を検出できません。曖昧度3のコンテキスト差分でも、同じ問題が起こり得ます。このような場合は、おそらくコンテキスト差分を取り、変更が妥当かを確認するべきでしょう。もちろん、エラーなくコンパイルできることは、パッチが正しく適用された有力な目安ですが、必ずそうとは限りません。",
+      "status": "draft-not-reviewed"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "mode": "whole",
+      "originalHTML": "<b>patch</b> usually produces the correct results, even when it\n    has to do a lot of guessing. However, the results are guaranteed to be\n    correct only when the patch is applied to exactly the same version of the\n    file that the patch was generated from.",
+      "translatedHTML": "<code>patch</code>は、多くの推測が必要な場合でも通常は正しい結果を出します。ただし、正しい結果が保証されるのは、パッチの生成に使ったものとまったく同じバージョンのファイルへ適用する場合だけです。",
+      "status": "draft-not-reviewed"
+    }
+  ],
+  "extra": null
+}

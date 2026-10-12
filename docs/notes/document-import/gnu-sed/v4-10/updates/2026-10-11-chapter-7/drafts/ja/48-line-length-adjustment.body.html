@@ -1,0 +1,60 @@
+<div class="gnu-sed-original-content" id="Line-length-adjustment">
+<h3 class="section" id="Line-length-adjustment-1"><span>7.8 行の長さの調整</span></h3>
+<p>この節では、<code class="code">N</code>と<code class="code">P</code>コマンドで行を読み書きし、<code class="code">b</code>コマンドで分岐します。<a class="xref" href="#Multiline-techniques">複数行を扱う手法：D,G,H,N,Pによる複数行の処理</a>と<a class="ref" href="#Branching-and-flow-control">分岐とフロー制御</a>を参照してください。</p>
+<p>この（やや作為的な）例では、次の入力ファイルのテキストを整形し、行を折り返します。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ cat two-cities-mix.txt
+It was the best of times, it was
+the worst of times, it
+was the age of
+wisdom,
+it
+was
+the age
+of foolishness,
+</pre></div></div>
+<p class="exdent">次のsedプログラムは、行を40文字で折り返します。</p><div class="example">
+<div class="group"><pre class="example-preformatted">$ cat wrap40.sed
+# outer loop
+:x
+
+# Append a newline followed by the next input line to the pattern buffer
+N
+
+# Remove all newlines from the pattern buffer
+s/\n/ /g
+
+
+# Inner loop
+:y
+
+# Add a newline after the first 40 characters
+s/(.{40,40})/\1\n/
+
+# If there is a newline in the pattern buffer
+# (i.e. the previous substitution added a newline)
+/\n/ {
+    # There are newlines in the pattern buffer -
+    # print the content until the first newline.
+    P
+
+   # Remove the printed characters and the first newline
+   s/.*\n//
+
+   # branch to label 'y' - repeat inner loop
+   by
+ }
+
+# No newlines in the pattern buffer - Branch to label 'x' (outer loop)
+# and read the next input line
+bx
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>外側のループです。改行と次の入力行をパターンバッファーに追加し、その中のすべての改行を取り除きます。次に内側のループで、先頭の40文字の後に改行を追加します。パターンバッファーに改行があれば（つまり、直前の置換で改行が追加されたなら）、最初の改行までの内容を出力します。出力した文字と最初の改行を削除し、ラベルyへ分岐して内側のループを繰り返します。パターンバッファーに改行がなければ、ラベルx（外側のループ）へ分岐し、次の入力行を読み込みます。</p></div></div></div>
+<p class="exdent">折り返した出力は次のとおりです。</p><div class="example">
+<div class="group"><pre class="example-preformatted">$ sed -E -f wrap40.sed two-cities-mix.txt
+It was the best of times, it was the wor
+st of times, it was the age of wisdom, i
+t was the age of foolishness,
+</pre></div></div>
+<hr/>
+</div>
+

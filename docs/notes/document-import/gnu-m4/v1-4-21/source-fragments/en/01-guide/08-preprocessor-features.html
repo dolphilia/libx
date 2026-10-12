@@ -1,0 +1,94 @@
+<div class="section-level-extent" id="Preprocessor-features">
+
+<h3 class="section" id="Command-line-options-for-preprocessor-features"><span>2.2 Command line options for preprocessor features</span></h3>
+<a class="index-entry-id" id="index-macro-definitions_002c-on-the-command-line"></a>
+<a class="index-entry-id" id="index-command-line_002c-macro-definitions-on-the"></a>
+<a class="index-entry-id" id="index-preprocessor-features"></a>
+<p>Several options allow <code class="code">m4</code> to behave more like a preprocessor.
+Macro definitions and deletions can be made on the command line, the
+search path can be altered, and the output file can track where the
+input came from.  These features occur with the following options:
+</p>
+<dl class="table">
+<dt><code class="code">-D <var class="var">name</var><span class="r">[</span>=<var class="var">value</var><span class="r">]</span></code></dt>
+<dt><code class="code">--define=<var class="var">name</var><span class="r">[</span>=<var class="var">value</var><span class="r">]</span></code></dt>
+<dd><p>This enters <var class="var">name</var> into the symbol table.  If ‘<samp class="samp">=<var class="var">value</var></samp>’ is
+missing, the value is taken to be the empty string.  The <var class="var">value</var> can
+be any string, and the macro can be defined to take arguments, just as
+if it was defined from within the input.  This option may be given more
+than once; order with respect to file names is significant, and
+redefining the same <var class="var">name</var> loses the previous value.
+</p>
+</dd>
+<dt><code class="code">-I <var class="var">directory</var></code></dt>
+<dt><code class="code">--include=<var class="var">directory</var></code></dt>
+<dd><p>Make <code class="code">m4</code> search <var class="var">directory</var> for included files that are not
+found in the current working directory.  See <a class="xref" href="#Search-Path">Searching for include files</a>, for more
+details.  This option may be given more than once.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-location_002c-input"></a>
+<a class="index-entry-id" id="index-input-location"></a>
+<a id="index-synchronization-lines"></a><span><code class="code">-s</code></span></dt>
+<dt><code class="code">--synclines</code></dt>
+<dd><p>Generate synchronization lines, for use by the C preprocessor or other
+similar tools.  Order is significant with respect to file names.  This
+option is useful, for example, when <code class="code">m4</code> is used as a
+front end to a compiler.  Source file name and line number information
+is conveyed by directives of the form ‘<samp class="samp">#line <var class="var">linenum</var>
+"<var class="var">file</var>"</samp>’, which are inserted as needed into the middle of the
+output.  Such directives mean that the following line originated or was
+expanded from the contents of input file <var class="var">file</var> at line
+<var class="var">linenum</var>.  The ‘<samp class="samp">"<var class="var">file</var>"</samp>’ part is often omitted when
+the file name did not change from the previous directive.
+</p>
+<p>Synchronization directives are always given on complete lines by
+themselves.  When a synchronization discrepancy occurs in the middle of
+an output line, the associated synchronization directive is delayed
+until the next newline that does not occur in the middle of a quoted
+string or comment.
+</p>
+<div class="example">
+<pre class="example-preformatted">define(`twoline', `1
+2')
+⇒#line 2 "stdin"
+⇒
+changecom(`/*', `*/')
+⇒
+define(`comment', `/*1
+2*/')
+⇒#line 5
+⇒
+dnl no line
+hello
+⇒#line 7
+⇒hello
+twoline
+⇒1
+⇒#line 8
+⇒2
+comment
+⇒/*1
+⇒2*/
+one comment `two
+three'
+⇒#line 10
+⇒one /*1
+⇒2*/ two
+⇒three
+goodbye
+⇒#line 12
+⇒goodbye
+</pre></div>
+</dd>
+<dt><code class="code">-U <var class="var">name</var></code></dt>
+<dt><code class="code">--undefine=<var class="var">name</var></code></dt>
+<dd><p>This deletes any predefined meaning <var class="var">name</var> might have.  Obviously,
+only predefined macros can be deleted in this way.  This option may be
+given more than once; undefining a <var class="var">name</var> that does not have a
+definition is silently ignored.  Order is significant with respect to
+file names.
+</p></dd>
+</dl>
+<hr/>
+</div>

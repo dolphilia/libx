@@ -1,0 +1,165 @@
+{
+  "slug": "47-text-search-across-multiple-lines",
+  "bodySHA256": "cb8a0093d9162d69ece4fbfc3cc488af15f65cb1017a795fb41dcb788445a78d",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧7.7 Text search across multiple lines⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Text-search-across-multiple-lines-1\"><span>7.7 Text search across multiple lines</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "This section uses ⟦0⟧ and ⟦1⟧ commands to search for consecutive words spanning multiple lines. See ⟦2⟧Multiline techniques - using D,G,H,N,P to process multiple lines⟦3⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">N</code>",
+        "⟦1⟧": "<code class=\"code\">D</code>",
+        "⟦2⟧": "<a class=\"xref\" href=\"#Multiline-techniques\">",
+        "⟦3⟧": "</a>"
+      },
+      "sourceHTML": "<p>This section uses <code class=\"code\">N</code> and <code class=\"code\">D</code> commands to search for\nconsecutive words spanning multiple lines. See <a class=\"xref\" href=\"#Multiline-techniques\">Multiline techniques - using D,G,H,N,P to process multiple lines</a>.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "These examples deal with finding doubled occurrences of words in a document.",
+      "tokens": {},
+      "sourceHTML": "<p>These examples deal with finding doubled occurrences of words in a document.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Finding doubled words in a single line is easy using GNU ⟦0⟧ and similarly with GNU ⟦1⟧:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>Finding doubled words in a single line is easy using GNU <code class=\"command\">grep</code>\nand similarly with GNU <code class=\"command\">sed</code>:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "When the doubled word span two lines the above regular expression will not find them as ⟦0⟧ and ⟦1⟧ operate line-by-line.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">grep</code>",
+        "⟦1⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>When the doubled word span two lines the above regular expression\nwill not find them as <code class=\"command\">grep</code> and <code class=\"command\">sed</code> operate line-by-line.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "By using ⟦0⟧ and ⟦1⟧ commands, ⟦2⟧ can apply regular expressions on multiple lines (that is, multiple lines are stored in the pattern space, and the regular expression works on it):",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">N</code>",
+        "⟦1⟧": "<code class=\"command\">D</code>",
+        "⟦2⟧": "<code class=\"command\">sed</code>"
+      },
+      "sourceHTML": "<p>By using <code class=\"command\">N</code> and <code class=\"command\">D</code> commands, <code class=\"command\">sed</code> can apply\nregular expressions on multiple lines (that is, multiple lines are stored\nin the pattern space, and the regular expression works on it):\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "See the GNU ⟦0⟧ manual for an alternative solution using ⟦1⟧ and ⟦2⟧ at ⟦3⟧https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">coreutils</code>",
+        "⟦1⟧": "<code class=\"command\">tr -s</code>",
+        "⟦2⟧": "<code class=\"command\">uniq</code>",
+        "⟦3⟧": "<a class=\"url\" href=\"https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html\">",
+        "⟦4⟧": "</a>"
+      },
+      "sourceHTML": "<p>See the GNU <code class=\"command\">coreutils</code> manual for an alternative solution using\n<code class=\"command\">tr -s</code> and <code class=\"command\">uniq</code> at\n<a class=\"url\" href=\"https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html\">https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html</a>.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "li",
+      "text": "The regular expression ‘⟦0⟧’ searches for word-boundary (‘⟦1⟧’), followed by one-or-more word-characters (‘⟦2⟧’), followed by whitespace (‘⟦3⟧’). See ⟦4⟧regular expression extensions⟦5⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\b\\w+\\s+</samp>",
+        "⟦1⟧": "<samp class=\"samp\">\\b</samp>",
+        "⟦2⟧": "<samp class=\"samp\">\\w+</samp>",
+        "⟦3⟧": "<samp class=\"samp\">\\s+</samp>",
+        "⟦4⟧": "<a class=\"xref\" href=\"#regexp-extensions\">",
+        "⟦5⟧": "</a>"
+      },
+      "sourceHTML": "<li>The regular expression ‘<samp class=\"samp\">\\b\\w+\\s+</samp>’ searches for word-boundary (‘<samp class=\"samp\">\\b</samp>’),\nfollowed by one-or-more word-characters (‘<samp class=\"samp\">\\w+</samp>’), followed by whitespace\n(‘<samp class=\"samp\">\\s+</samp>’). See <a class=\"xref\" href=\"#regexp-extensions\">regular expression extensions</a>.\n\n</li>"
+    },
+    {
+      "index": 8,
+      "tag": "li",
+      "text": "Adding parentheses around the ‘⟦0⟧’ expression creates a subexpression. The regular expression pattern ‘⟦1⟧’ defines a subexpression (in the parentheses) followed by a back-reference, separated by whitespace. A successful match means the ⟦2⟧ was repeated twice in succession. See ⟦3⟧Back-references and Subexpressions⟦4⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">(\\w+)</samp>",
+        "⟦1⟧": "<samp class=\"samp\">(PATTERN)\\s+\\1</samp>",
+        "⟦2⟧": "<var class=\"var\">PATTERN</var>",
+        "⟦3⟧": "<a class=\"xref\" href=\"#Back_002dreferences-and-Subexpressions\">",
+        "⟦4⟧": "</a>"
+      },
+      "sourceHTML": "<li>Adding parentheses around the ‘<samp class=\"samp\">(\\w+)</samp>’ expression creates a subexpression.\nThe regular expression pattern ‘<samp class=\"samp\">(PATTERN)\\s+\\1</samp>’ defines a subexpression\n(in the parentheses) followed by a back-reference, separated by whitespace.\nA successful match means the <var class=\"var\">PATTERN</var> was repeated twice in succession.\nSee <a class=\"xref\" href=\"#Back_002dreferences-and-Subexpressions\">Back-references and Subexpressions</a>.\n\n</li>"
+    },
+    {
+      "index": 9,
+      "tag": "li",
+      "text": "The word-boundery expression (‘⟦0⟧’) at both ends ensures partial words are not matched (e.g. ‘⟦1⟧’ is not a desired match).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\b</samp>",
+        "⟦1⟧": "<samp class=\"samp\">the then</samp>"
+      },
+      "sourceHTML": "<li>The word-boundery expression (‘<samp class=\"samp\">\\b</samp>’) at both ends ensures partial\nwords are not matched (e.g. ‘<samp class=\"samp\">the then</samp>’ is not a desired match).\n\n</li>"
+    },
+    {
+      "index": 10,
+      "tag": "li",
+      "text": "The ⟦0⟧ option enables extended regular expression syntax, alleviating the need to add backslashes before the parenthesis. See ⟦1⟧Overview of extended regular expression syntax⟦2⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-E</samp>",
+        "⟦1⟧": "<a class=\"xref\" href=\"#ERE-syntax\">",
+        "⟦2⟧": "</a>"
+      },
+      "sourceHTML": "<li>The <samp class=\"option\">-E</samp> option enables extended regular expression syntax, alleviating\nthe need to add backslashes before the parenthesis. See <a class=\"xref\" href=\"#ERE-syntax\">Overview of extended regular expression syntax</a>.\n\n</li>"
+    },
+    {
+      "index": 11,
+      "tag": "li",
+      "text": "The ⟦0⟧ command appends the next line to the pattern space (thus ensuring it contains two consecutive lines in every cycle).",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">N</code>"
+      },
+      "sourceHTML": "<li>The <code class=\"command\">N</code> command appends the next line to the pattern space\n(thus ensuring it contains two consecutive lines in every cycle).\n\n</li>"
+    },
+    {
+      "index": 12,
+      "tag": "li",
+      "text": "The regular expression uses ‘⟦0⟧’ for word separator which matches both spaces and newlines.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\s+</samp>"
+      },
+      "sourceHTML": "<li>The regular expression uses ‘<samp class=\"samp\">\\s+</samp>’ for word separator which matches\nboth spaces and newlines.\n\n</li>"
+    },
+    {
+      "index": 13,
+      "tag": "li",
+      "text": "The regular expression matches, the entire pattern space is printed with ⟦0⟧. No lines are printed by default due to the ⟦1⟧ option.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">p</code>",
+        "⟦1⟧": "<samp class=\"option\">-n</samp>"
+      },
+      "sourceHTML": "<li>The regular expression matches, the entire pattern space is printed\nwith <code class=\"command\">p</code>. No lines are printed by default due to the <samp class=\"option\">-n</samp> option.\n\n</li>"
+    },
+    {
+      "index": 14,
+      "tag": "li",
+      "text": "The ⟦0⟧ removes the first line from the pattern space (up until the first newline), readying it for the next cycle.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">D</code>"
+      },
+      "sourceHTML": "<li>The <code class=\"command\">D</code> removes the first line from the pattern space (up until the\nfirst newline), readying it for the next cycle.\n</li>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

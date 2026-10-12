@@ -1,0 +1,71 @@
+<div class="section-level-extent" id="Static-libraries">
+
+<h3 class="section" id="Linking-static-libraries"><span>3.7 Linking static libraries</span></h3>
+<a class="index-entry-id" id="index-static-linking"></a>
+<a class="index-entry-id" id="index-convenience-libraries"></a>
+<p>Why return to <code class="command">ar</code> and <code class="command">ranlib</code> silliness when you’ve had a
+taste of libtool?  Well, sometimes it is desirable to create a static
+archive that can never be shared.  The most frequent case is when you
+have a set of object files that you use to build several different
+libraries.  You can create a “convenience library” out of those
+objects, and link against that with the other libraries, instead of
+listing all the object files every time.
+</p>
+<p>If you just want to link this convenience library into programs, then
+you could just ignore libtool entirely, and use the old <code class="command">ar</code> and
+<code class="command">ranlib</code> commands (or the corresponding GNU Automake
+‘<samp class="samp">_LIBRARIES</samp>’ rules).  You can even install a convenience library
+using GNU Libtool, though you probably don’t want to and hence GNU
+Automake doesn’t allow you to do so.
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">libtool --mode=install ./install-sh -c libhello.a \
+                /local/lib/libhello.a</kbd>
+./install-sh -c libhello.a /local/lib/libhello.a
+ranlib /local/lib/libhello.a
+burger$
+</pre></div>
+<p>Using libtool for static library installation protects your library from
+being accidentally stripped (if the installer used the <samp class="option">-s</samp> flag),
+as well as automatically running the correct <code class="command">ranlib</code> command.
+</p>
+<p>But libtool libraries are more than just collections of object files:
+they can also carry library dependency information, which old archives
+do not.  If you want to create a libtool static convenience library, you
+can omit the <samp class="option">-rpath</samp> flag and use <samp class="option">-static</samp> to indicate that
+you’re only interested in a static library.  When you link a program
+with such a library, libtool will actually link all object files and
+dependency libraries into the program.
+</p>
+<p>If you omit both <samp class="option">-rpath</samp> and <samp class="option">-static</samp>, libtool will create a
+convenience library that can be used to create other libtool
+libraries, even shared ones.  Just like in the static case, the library
+behaves as an alias to a set of object files and dependency libraries,
+but in this case the object files are suitable for inclusion in shared
+libraries.  But be careful not to link a single convenience library,
+directly or indirectly, into a single program or library, otherwise you
+may get errors about symbol redefinitions.
+</p>
+<p>The key is remembering that a convenience library contains PIC
+objects, and can be linked where a list of PIC objects makes sense;
+i.e. into a shared library.  A static convenience library contains
+non-PIC objects, so can be linked into an old static library, or
+a program.
+</p>
+<p>When GNU Automake is used, you should use <code class="code">noinst_LTLIBRARIES</code>
+instead of <code class="code">lib_LTLIBRARIES</code> for convenience libraries, so that
+the <samp class="option">-rpath</samp> option is not passed when they are linked.
+</p>
+<p>As a rule of thumb, link a libtool convenience library into at most one
+libtool library, and never into a program, and link libtool static
+convenience libraries only into programs, and only if you need to carry
+library dependency information to the user of the static convenience
+library.
+</p>
+<a class="index-entry-id" id="index-standalone-binaries"></a>
+<p>Another common situation where static linking is desirable is in
+creating a standalone binary.  Use libtool to do the linking and add the
+<samp class="option">-all-static</samp> flag.
+</p>
+<hr/>
+</div>

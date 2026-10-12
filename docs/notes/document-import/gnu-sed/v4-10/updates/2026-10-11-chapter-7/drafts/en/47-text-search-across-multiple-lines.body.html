@@ -1,0 +1,86 @@
+<div class="gnu-sed-original-content" id="Text-search-across-multiple-lines">
+<h3 class="section" id="Text-search-across-multiple-lines-1"><span>7.7 Text search across multiple lines</span></h3>
+<p>This section uses <code class="code">N</code> and <code class="code">D</code> commands to search for
+consecutive words spanning multiple lines. See <a class="xref" href="#Multiline-techniques">Multiline techniques - using D,G,H,N,P to process multiple lines</a>.
+</p>
+<p>These examples deal with finding doubled occurrences of words in a document.
+</p>
+<p>Finding doubled words in a single line is easy using GNU <code class="command">grep</code>
+and similarly with GNU <code class="command">sed</code>:
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ cat two-cities-dup1.txt
+It was the best of times,
+it was the worst of times,
+it was the the age of wisdom,
+it was the age of foolishness,
+
+$ grep -E '\b(\w+)\s+\1\b' two-cities-dup1.txt
+it was the the age of wisdom,
+
+$ grep -n -E '\b(\w+)\s+\1\b' two-cities-dup1.txt
+3:it was the the age of wisdom,
+
+$ sed -En '/\b(\w+)\s+\1\b/p' two-cities-dup1.txt
+it was the the age of wisdom,
+
+$ sed -En '/\b(\w+)\s+\1\b/{=;p}' two-cities-dup1.txt
+3
+it was the the age of wisdom,
+</pre></div></div>
+<ul class="itemize mark-bullet">
+<li>The regular expression ‘<samp class="samp">\b\w+\s+</samp>’ searches for word-boundary (‘<samp class="samp">\b</samp>’),
+followed by one-or-more word-characters (‘<samp class="samp">\w+</samp>’), followed by whitespace
+(‘<samp class="samp">\s+</samp>’). See <a class="xref" href="#regexp-extensions">regular expression extensions</a>.
+
+</li><li>Adding parentheses around the ‘<samp class="samp">(\w+)</samp>’ expression creates a subexpression.
+The regular expression pattern ‘<samp class="samp">(PATTERN)\s+\1</samp>’ defines a subexpression
+(in the parentheses) followed by a back-reference, separated by whitespace.
+A successful match means the <var class="var">PATTERN</var> was repeated twice in succession.
+See <a class="xref" href="#Back_002dreferences-and-Subexpressions">Back-references and Subexpressions</a>.
+
+</li><li>The word-boundery expression (‘<samp class="samp">\b</samp>’) at both ends ensures partial
+words are not matched (e.g. ‘<samp class="samp">the then</samp>’ is not a desired match).
+
+</li><li>The <samp class="option">-E</samp> option enables extended regular expression syntax, alleviating
+the need to add backslashes before the parenthesis. See <a class="xref" href="#ERE-syntax">Overview of extended regular expression syntax</a>.
+
+</li></ul>
+<p>When the doubled word span two lines the above regular expression
+will not find them as <code class="command">grep</code> and <code class="command">sed</code> operate line-by-line.
+</p>
+<p>By using <code class="command">N</code> and <code class="command">D</code> commands, <code class="command">sed</code> can apply
+regular expressions on multiple lines (that is, multiple lines are stored
+in the pattern space, and the regular expression works on it):
+</p>
+<div class="example">
+<pre class="example-preformatted">$ cat two-cities-dup2.txt
+It was the best of times, it was the
+worst of times, it was the
+the age of wisdom,
+it was the age of foolishness,
+
+$ sed -En '{N; /\b(\w+)\s+\1\b/{=;p} ; D}'  two-cities-dup2.txt
+3
+worst of times, it was the
+the age of wisdom,
+</pre></div>
+<ul class="itemize mark-bullet">
+<li>The <code class="command">N</code> command appends the next line to the pattern space
+(thus ensuring it contains two consecutive lines in every cycle).
+
+</li><li>The regular expression uses ‘<samp class="samp">\s+</samp>’ for word separator which matches
+both spaces and newlines.
+
+</li><li>The regular expression matches, the entire pattern space is printed
+with <code class="command">p</code>. No lines are printed by default due to the <samp class="option">-n</samp> option.
+
+</li><li>The <code class="command">D</code> removes the first line from the pattern space (up until the
+first newline), readying it for the next cycle.
+</li></ul>
+<p>See the GNU <code class="command">coreutils</code> manual for an alternative solution using
+<code class="command">tr -s</code> and <code class="command">uniq</code> at
+<a class="url" href="https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html">https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html</a>.
+</p>
+<hr/>
+</div>

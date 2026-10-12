@@ -1,0 +1,26 @@
+<div class="section-level-extent" id="Quoted-strings">
+
+<h3 class="section" id="Quoting-input-to-m4"><span>3.2 Quoting input to <code class="code">m4</code></span></h3>
+<a class="index-entry-id" id="index-quoted-string"></a>
+<a class="index-entry-id" id="index-string_002c-quoted"></a>
+<p>A quoted string is a sequence of characters surrounded by quote
+strings, defaulting to
+‘<samp class="samp">`</samp>’ and ‘<samp class="samp">'</samp>’, where the nested begin and end quotes within the
+string are balanced.  The value of a string token is the text, with one
+level of quotes stripped off.  Thus
+</p>
+<div class="example">
+<pre class="example-preformatted">`'
+⇒
+</pre></div>
+<p>is the empty string, and double-quoting turns into single-quoting.
+</p>
+<div class="example">
+<pre class="example-preformatted">``quoted''
+⇒`quoted'
+</pre></div>
+<p>The quote characters can be changed at any time, using the builtin macro
+<code class="code">changequote</code>.  See <a class="xref" href="#Changequote">Changing the quote characters</a>, for more information.
+</p>
+<hr/>
+</div>

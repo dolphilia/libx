@@ -1,0 +1,58 @@
+<div class="chapter-level-extent" id="Invoking-m4">
+
+<h2 class="chapter" id="Invoking-m4-1"><span>2 Invoking <code class="code">m4</code></span></h2>
+<a class="index-entry-id" id="index-command-line"></a>
+<a class="index-entry-id" id="index-invoking-m4"></a>
+<p>The format of the <code class="code">m4</code> command is:
+</p>
+<div class="example">
+<pre class="example-preformatted"><code class="code">m4</code> <span class="r">[</span><var class="var">option</var>...<span class="r">]</span> <span class="r">[</span><var class="var">file</var>...<span class="r">]</span>
+</pre></div>
+<a class="index-entry-id" id="index-command-line_002c-options"></a>
+<a class="index-entry-id" id="index-options_002c-command-line"></a>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT"></a>
+<p>All options begin with ‘<samp class="samp">-</samp>’, or if long option names are used, with
+‘<samp class="samp">--</samp>’.  A long option name need not be written completely, any
+unambiguous prefix is sufficient.  POSIX requires <code class="code">m4</code> to
+recognize arguments intermixed with files, even when
+<code class="env">POSIXLY_CORRECT</code> is set in the environment.  Most options take
+effect at startup regardless of their position, but some are documented
+below as taking effect after any files that occurred earlier in the
+command line.  The argument <samp class="option">--</samp> is a marker to denote the end of
+options.
+</p>
+<p>With short options, options that do not take arguments may be combined
+into a single command line argument with subsequent options, options
+with mandatory arguments may be provided either as a single command line
+argument or as two arguments, and options with optional arguments must
+be provided as a single argument.  In other words,
+<kbd class="kbd">m4 -QPDfoo -d a -df</kbd> is equivalent to
+<kbd class="kbd">m4 -Q -P -D foo -d -df -- ./a</kbd>, although the latter form is
+considered canonical.
+</p>
+<p>With long options, options with mandatory arguments may be provided with
+an equal sign (‘<samp class="samp">=</samp>’) in a single argument, or as two arguments, and
+options with optional arguments must be provided as a single argument.
+In other words, <kbd class="kbd">m4 --def foo --debug a</kbd> is equivalent to
+<kbd class="kbd">m4 --define=foo --debug= -- ./a</kbd>, although the latter form is
+considered canonical (not to mention more robust, in case a future
+version of <code class="code">m4</code> introduces an option named <samp class="option">--default</samp>).
+</p>
+<p><code class="code">m4</code> understands the following options, grouped by functionality.
+</p>
+<ul class="mini-toc">
+<li><a accesskey="1" href="#Operation-modes">Command line options for operation modes</a></li>
+<li><a accesskey="2" href="#Preprocessor-features">Command line options for preprocessor features</a></li>
+<li><a accesskey="3" href="#Limits-control">Command line options for limits control</a></li>
+<li><a accesskey="4" href="#Frozen-state">Command line options for frozen state</a></li>
+<li><a accesskey="5" href="#Debugging-options">Command line options for debugging</a></li>
+<li><a accesskey="6" href="#Command-line-files">Specifying input files on the command line</a></li>
+</ul>
+<hr/>
+
+
+
+
+
+
+</div>

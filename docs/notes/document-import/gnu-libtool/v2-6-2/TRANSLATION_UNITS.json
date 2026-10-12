@@ -1,0 +1,639 @@
+[
+  {
+    "id": "Libtool-paradigm:0",
+    "nodeId": "Libtool-paradigm",
+    "tag": "p",
+    "html": "At first, libtool was designed to support an arbitrary number of library\nobject types.  After libtool was ported to more platforms, a new\nparadigm gradually developed for describing the relationship between\nlibraries and programs.\n",
+    "text": "At first, libtool was designed to support an arbitrary number of library\nobject types.  After libtool was ported to more platforms, a new\nparadigm gradually developed for describing the relationship between\nlibraries and programs."
+  },
+  {
+    "id": "Libtool-paradigm:1",
+    "nodeId": "Libtool-paradigm",
+    "tag": "p",
+    "html": "In summary, “libraries are programs with multiple entry points, and\nmore formally defined interfaces.”\n",
+    "text": "In summary, “libraries are programs with multiple entry points, and\nmore formally defined interfaces.”"
+  },
+  {
+    "id": "Libtool-paradigm:2",
+    "nodeId": "Libtool-paradigm",
+    "tag": "p",
+    "html": "The best way to introduce the libtool paradigm is to contrast it with\nthe paradigm of existing library systems, with examples from each.  It\nis a new way of thinking, so it may take a little time to absorb, but\nwhen you understand it, the world becomes simpler.\n",
+    "text": "The best way to introduce the libtool paradigm is to contrast it with\nthe paradigm of existing library systems, with examples from each.  It\nis a new way of thinking, so it may take a little time to absorb, but\nwhen you understand it, the world becomes simpler."
+  },
+  {
+    "id": "Using-libtool:0",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "It makes little sense to talk about using libtool in your own packages\nuntil you have seen how it makes your life simpler.  The examples in\nthis chapter introduce the main features of libtool by comparing the\nstandard library building procedure to libtool’s operation on two\ndifferent platforms:\n",
+    "text": "It makes little sense to talk about using libtool in your own packages\nuntil you have seen how it makes your life simpler.  The examples in\nthis chapter introduce the main features of libtool by comparing the\nstandard library building procedure to libtool’s operation on two\ndifferent platforms:"
+  },
+  {
+    "id": "Using-libtool:1",
+    "nodeId": "Using-libtool",
+    "tag": "dt",
+    "html": "‘<samp class=\"samp\">a23</samp>’",
+    "text": "‘ a23 ’"
+  },
+  {
+    "id": "Using-libtool:3",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "An Ultrix 4.2 platform with only static libraries.\n",
+    "text": "An Ultrix 4.2 platform with only static libraries."
+  },
+  {
+    "id": "Using-libtool:4",
+    "nodeId": "Using-libtool",
+    "tag": "dt",
+    "html": "‘<samp class=\"samp\">burger</samp>’",
+    "text": "‘ burger ’"
+  },
+  {
+    "id": "Using-libtool:6",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "A NetBSD/i386 1.2 platform with shared libraries.\n",
+    "text": "A NetBSD/i386 1.2 platform with shared libraries."
+  },
+  {
+    "id": "Using-libtool:7",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "Source files for the following examples are taken from the Autotest file\n<samp class=\"file\">tests/demo.at</samp>.  The files can be extracted by running a demo test and\npreserving the artifacts:\n",
+    "text": "Source files for the following examples are taken from the Autotest file tests/demo.at .  The files can be extracted by running a demo test and\npreserving the artifacts:"
+  },
+  {
+    "id": "Using-libtool:8",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "You can follow these examples on your own platform, using the preconfigured\nlibtool script that was installed with libtool (see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Configuring\">Configuring libtool</a>).  Assume\nthat we are building a library, <samp class=\"file\">libhello</samp>, out of the files <samp class=\"file\">foo.c</samp>\nand <samp class=\"file\">hello.c</samp>.\n",
+    "text": "You can follow these examples on your own platform, using the preconfigured\nlibtool script that was installed with libtool (see Configuring libtool ).  Assume\nthat we are building a library, libhello , out of the files foo.c and hello.c ."
+  },
+  {
+    "id": "Using-libtool:9",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "Note that the <samp class=\"file\">foo.c</samp> source file uses the <code class=\"code\">cos</code> math library\nfunction, which is usually found in the standalone math library, and not\nthe C library (see <a data-manual=\"libc\" href=\"https://www.gnu.org/software/libc/manual/html_mono/libc.html#Trig-Functions\">Trigonometric Functions</a> in <cite class=\"cite\">The GNU C Library Reference Manual</cite>).  So, we need to add <samp class=\"option\">-lm</samp> to\nthe end of the link line whenever we link <samp class=\"file\">foo.lo</samp> into an\nexecutable or a library (see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Inter_002dlibrary-dependencies\">Inter-library dependencies</a>).\n",
+    "text": "Note that the foo.c source file uses the cos math library\nfunction, which is usually found in the standalone math library, and not\nthe C library (see Trigonometric Functions in The GNU C Library Reference Manual ).  So, we need to add -lm to\nthe end of the link line whenever we link foo.lo into an\nexecutable or a library (see Inter-library dependencies )."
+  },
+  {
+    "id": "Using-libtool:10",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "The same rule applies whenever you use functions that don’t appear in\nthe standard C library… you need to add the appropriate\n<samp class=\"option\">-l<var class=\"var\">name</var></samp> flag to the end of the link line when you link\nagainst those objects.\n",
+    "text": "The same rule applies whenever you use functions that don’t appear in\nthe standard C library… you need to add the appropriate -l name flag to the end of the link line when you link\nagainst those objects."
+  },
+  {
+    "id": "Using-libtool:11",
+    "nodeId": "Using-libtool",
+    "tag": "p",
+    "html": "After we have built that library, we want to create a program by linking\n<samp class=\"file\">main.o</samp> against <samp class=\"file\">libhello</samp>.\n",
+    "text": "After we have built that library, we want to create a program by linking main.o against libhello ."
+  },
+  {
+    "id": "Creating-object-files:0",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "To create an object file from a source file, the compiler is invoked\nwith the <samp class=\"option\">-c</samp> flag (and any other desired flags):\n",
+    "text": "To create an object file from a source file, the compiler is invoked\nwith the -c flag (and any other desired flags):"
+  },
+  {
+    "id": "Creating-object-files:1",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "The above compiler command produces an object file, usually named\n<samp class=\"file\">main.o</samp>, from the source file <samp class=\"file\">main.c</samp>.\n",
+    "text": "The above compiler command produces an object file, usually named main.o , from the source file main.c ."
+  },
+  {
+    "id": "Creating-object-files:2",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "For most library systems, creating object files that become part of a\nstatic library is as simple as creating object files that are linked to\nform an executable:\n",
+    "text": "For most library systems, creating object files that become part of a\nstatic library is as simple as creating object files that are linked to\nform an executable:"
+  },
+  {
+    "id": "Creating-object-files:3",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "Shared libraries, however, may only be built from\n<em class=\"dfn\">position-independent code</em> (PIC).  So, special flags must be passed\nto the compiler to tell it to generate PIC rather than the standard\nposition-dependent code.\n",
+    "text": "Shared libraries, however, may only be built from position-independent code (PIC).  So, special flags must be passed\nto the compiler to tell it to generate PIC rather than the standard\nposition-dependent code."
+  },
+  {
+    "id": "Creating-object-files:4",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "Since this is a library implementation detail, libtool hides the\ncomplexity of PIC compiler flags and uses separate library object files\n(the PIC one lives in the <samp class=\"file\">.libs</samp> subdirectory and the\nstatic one lives in the current directory).  On systems without shared\nlibraries, the PIC library object files are not created, whereas on\nsystems where all code is PIC, such as AIX, the static ones are not\ncreated.\n",
+    "text": "Since this is a library implementation detail, libtool hides the\ncomplexity of PIC compiler flags and uses separate library object files\n(the PIC one lives in the .libs subdirectory and the\nstatic one lives in the current directory).  On systems without shared\nlibraries, the PIC library object files are not created, whereas on\nsystems where all code is PIC, such as AIX, the static ones are not\ncreated."
+  },
+  {
+    "id": "Creating-object-files:5",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "To create library object files for <samp class=\"file\">foo.c</samp> and <samp class=\"file\">hello.c</samp>,\nsimply invoke libtool with the standard compilation command as\narguments (see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Compile-mode\">Compile mode</a>):\n",
+    "text": "To create library object files for foo.c and hello.c ,\nsimply invoke libtool with the standard compilation command as\narguments (see Compile mode ):"
+  },
+  {
+    "id": "Creating-object-files:6",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "Note that libtool silently creates an additional control file on each\n‘<samp class=\"samp\">compile</samp>’ invocation.  The <samp class=\"file\">.lo</samp> file is the libtool object,\nwhich Libtool uses to determine what object file may be built into a\nshared library.  On ‘<samp class=\"samp\">a23</samp>’, only static libraries are supported so\nthe library objects look like this:\n",
+    "text": "Note that libtool silently creates an additional control file on each\n‘ compile ’ invocation.  The .lo file is the libtool object,\nwhich Libtool uses to determine what object file may be built into a\nshared library.  On ‘ a23 ’, only static libraries are supported so\nthe library objects look like this:"
+  },
+  {
+    "id": "Creating-object-files:7",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "On shared library systems, libtool automatically generates an\nadditional PIC object by inserting the appropriate PIC generation\nflags into the compilation command:\n",
+    "text": "On shared library systems, libtool automatically generates an\nadditional PIC object by inserting the appropriate PIC generation\nflags into the compilation command:"
+  },
+  {
+    "id": "Creating-object-files:8",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "Note that Libtool automatically created the <samp class=\"file\">.libs</samp> directory\nupon its first execution, where PIC library object files will be stored.\n",
+    "text": "Note that Libtool automatically created the .libs directory\nupon its first execution, where PIC library object files will be stored."
+  },
+  {
+    "id": "Creating-object-files:9",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "Since ‘<samp class=\"samp\">burger</samp>’ supports shared libraries, and requires PIC\nobjects to build them, Libtool has compiled a PIC object and\nmade a note of it in the libtool object:\n",
+    "text": "Since ‘ burger ’ supports shared libraries, and requires PIC\nobjects to build them, Libtool has compiled a PIC object and\nmade a note of it in the libtool object:"
+  },
+  {
+    "id": "Creating-object-files:10",
+    "nodeId": "Creating-object-files",
+    "tag": "p",
+    "html": "Notice the second run of GCC has its output discarded.  This is\ndone so the compiler warnings aren’t annoyingly duplicated.  If you\nneed to see both sets of warnings (you might have conditional code\ninside ‘<samp class=\"samp\">#ifdef PIC</samp>’ for example), you can turn off suppression by\npassing the <samp class=\"option\">-no-suppress</samp> option to libtool’s compile mode:\n",
+    "text": "Notice the second run of GCC has its output discarded.  This is\ndone so the compiler warnings aren’t annoyingly duplicated.  If you\nneed to see both sets of warnings (you might have conditional code\ninside ‘ #ifdef PIC ’ for example), you can turn off suppression by\npassing the -no-suppress option to libtool’s compile mode:"
+  },
+  {
+    "id": "Linking-libraries:0",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Without libtool, the programmer would invoke the <code class=\"command\">ar</code> command to\ncreate a static library:\n",
+    "text": "Without libtool, the programmer would invoke the ar command to\ncreate a static library:"
+  },
+  {
+    "id": "Linking-libraries:1",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "But of course, that would be too simple, so many systems require that\nyou run the <code class=\"code\">ranlib</code> command on the resulting library in order to\ngenerate a symbol table:\n",
+    "text": "But of course, that would be too simple, so many systems require that\nyou run the ranlib command on the resulting library in order to\ngenerate a symbol table:"
+  },
+  {
+    "id": "Linking-libraries:2",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "It seems more natural to use the C compiler for this task, given\nlibtool’s “libraries are programs” approach.  So, on platforms without\nshared libraries, libtool simply acts as a wrapper for the system\n<code class=\"command\">ar</code> (and possibly <code class=\"code\">ranlib</code>) commands.\n",
+    "text": "It seems more natural to use the C compiler for this task, given\nlibtool’s “libraries are programs” approach.  So, on platforms without\nshared libraries, libtool simply acts as a wrapper for the system ar (and possibly ranlib ) commands."
+  },
+  {
+    "id": "Linking-libraries:3",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Again, the libtool control file name (<samp class=\"file\">.la</samp> suffix) differs from\nthe standard library name (<samp class=\"file\">.a</samp> suffix).  The arguments to\nlibtool are the same ones you would use to produce an executable named\n<samp class=\"file\">libhello.la</samp> with your compiler (see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Link-mode\">Link mode</a>):\n",
+    "text": "Again, the libtool control file name ( .la suffix) differs from\nthe standard library name ( .a suffix).  The arguments to\nlibtool are the same ones you would use to produce an executable named libhello.la with your compiler (see Link mode ):"
+  },
+  {
+    "id": "Linking-libraries:4",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Aha!  Libtool caught a common error… trying to build a library\nfrom standard objects instead of special <samp class=\"file\">.lo</samp> object files.  This\ndoesn’t matter so much for static libraries, but on shared library\nsystems, it is of great importance.  (Note that you may replace\n<samp class=\"file\">libhello.la</samp> with <samp class=\"file\">libhello.a</samp> in which case libtool won’t\nissue the warning any more.  But although this method works, this is\nnot intended to be used because it makes you lose the benefits of\nusing Libtool.)\n",
+    "text": "Aha!  Libtool caught a common error… trying to build a library\nfrom standard objects instead of special .lo object files.  This\ndoesn’t matter so much for static libraries, but on shared library\nsystems, it is of great importance.  (Note that you may replace libhello.la with libhello.a in which case libtool won’t\nissue the warning any more.  But although this method works, this is\nnot intended to be used because it makes you lose the benefits of\nusing Libtool.)"
+  },
+  {
+    "id": "Linking-libraries:5",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "So, let’s try again, this time with the library object files.  Remember\nalso that we need to add <samp class=\"option\">-lm</samp> to the link command line because\n<samp class=\"file\">foo.c</samp> uses the <code class=\"code\">cos</code> math library function (see <a class=\"pxref\" href=\"/docs/gnu-libtool/v2-6-2/en/01-guide/02-using-libtool/#Using-libtool\">Using libtool</a>).\n",
+    "text": "So, let’s try again, this time with the library object files.  Remember\nalso that we need to add -lm to the link command line because foo.c uses the cos math library function (see Using libtool )."
+  },
+  {
+    "id": "Linking-libraries:6",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Another complication in building shared libraries is that we need to\nspecify the path to the directory where they will (eventually) be\ninstalled (in this case, <samp class=\"file\">/usr/local/lib</samp>)<a class=\"footnote\" href=\"#FOOT1\" id=\"DOCF1\"><sup>1</sup></a>:\n",
+    "text": "Another complication in building shared libraries is that we need to\nspecify the path to the directory where they will (eventually) be\ninstalled (in this case, /usr/local/lib ) 1 :"
+  },
+  {
+    "id": "Linking-libraries:7",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Now, let’s try the same trick on the shared library platform:\n",
+    "text": "Now, let’s try the same trick on the shared library platform:"
+  },
+  {
+    "id": "Linking-libraries:8",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Now that’s significantly cooler… Libtool just ran an obscure\n<code class=\"command\">ld</code> command to create a shared library, as well as the static\nlibrary.\n",
+    "text": "Now that’s significantly cooler… Libtool just ran an obscure ld command to create a shared library, as well as the static\nlibrary."
+  },
+  {
+    "id": "Linking-libraries:9",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Note how libtool creates extra files in the <samp class=\"file\">.libs</samp>\nsubdirectory, rather than the current directory.  This feature makes\nit easier to clean up the build directory, and helps ensure\nother programs fail horribly if you accidentally forget to use libtool\nwhen you should.\n",
+    "text": "Note how libtool creates extra files in the .libs subdirectory, rather than the current directory.  This feature makes\nit easier to clean up the build directory, and helps ensure\nother programs fail horribly if you accidentally forget to use libtool\nwhen you should."
+  },
+  {
+    "id": "Linking-libraries:10",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "Again, you should look at the <samp class=\"file\">.la</samp> file to see what Libtool\nstores in it.  You will see Libtool uses this file to remember the\ndestination directory for the library (the argument to <samp class=\"option\">-rpath</samp>)\nas well as the dependency on the math library (‘<samp class=\"samp\">-lm</samp>’).\n",
+    "text": "Again, you should look at the .la file to see what Libtool\nstores in it.  You will see Libtool uses this file to remember the\ndestination directory for the library (the argument to -rpath )\nas well as the dependency on the math library (‘ -lm ’)."
+  },
+  {
+    "id": "Linking-libraries:11",
+    "nodeId": "Linking-libraries",
+    "tag": "p",
+    "html": "If you don’t\nspecify an <code class=\"code\">rpath</code>, then libtool builds a libtool convenience\narchive, not a shared library (see <a class=\"pxref\" href=\"/docs/gnu-libtool/v2-6-2/en/01-guide/10-static-libraries/#Static-libraries\">Linking static libraries</a>).",
+    "text": "If you don’t\nspecify an rpath , then libtool builds a libtool convenience\narchive, not a shared library (see Linking static libraries )."
+  },
+  {
+    "id": "Linking-executables:0",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "If you choose at this point to <em class=\"dfn\">install</em> the library (put it in a\npermanent location) before linking executables against it, then you\ndon’t need to use libtool to do the linking.  Simply use the appropriate\n<samp class=\"option\">-L</samp> and <samp class=\"option\">-l</samp> flags to specify the library’s location.\n",
+    "text": "If you choose at this point to install the library (put it in a\npermanent location) before linking executables against it, then you\ndon’t need to use libtool to do the linking.  Simply use the appropriate -L and -l flags to specify the library’s location."
+  },
+  {
+    "id": "Linking-executables:1",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Some system linkers insist on encoding the full directory name of each\nshared library in the resulting executable.  Libtool has to work around\nthis misfeature by special magic to ensure that only permanent directory\nnames are put into installed executables.\n",
+    "text": "Some system linkers insist on encoding the full directory name of each\nshared library in the resulting executable.  Libtool has to work around\nthis misfeature by special magic to ensure that only permanent directory\nnames are put into installed executables."
+  },
+  {
+    "id": "Linking-executables:2",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "The importance of this bug must not be overlooked: it won’t cause\nprograms to crash in obvious ways.  It creates a security hole,\nand possibly even worse, if you are modifying the library source code\nafter you have installed the package, you will change the behaviour of\nthe installed programs!\n",
+    "text": "The importance of this bug must not be overlooked: it won’t cause\nprograms to crash in obvious ways.  It creates a security hole,\nand possibly even worse, if you are modifying the library source code\nafter you have installed the package, you will change the behaviour of\nthe installed programs!"
+  },
+  {
+    "id": "Linking-executables:3",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "So, if you want to link programs against the library before you install\nit, you must use libtool to do the linking.\n",
+    "text": "So, if you want to link programs against the library before you install\nit, you must use libtool to do the linking."
+  },
+  {
+    "id": "Linking-executables:4",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Here’s the old way of linking against an uninstalled library:\n",
+    "text": "Here’s the old way of linking against an uninstalled library:"
+  },
+  {
+    "id": "Linking-executables:5",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Libtool’s way is almost the same<a class=\"footnote\" href=\"#FOOT2\" id=\"DOCF2\"><sup>2</sup></a>\n(see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Link-mode\">Link mode</a>):\n",
+    "text": "Libtool’s way is almost the same 2 (see Link mode ):"
+  },
+  {
+    "id": "Linking-executables:6",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "That looks too simple to be true.  All libtool did was transform\n<samp class=\"file\">libhello.la</samp> to <samp class=\"file\">./.libs/libhello.a</samp>, but remember\nthat ‘<samp class=\"samp\">a23</samp>’ has no shared libraries.  Notice Libtool also\nremembered <samp class=\"file\">libhello.la</samp> depends on <samp class=\"option\">-lm</samp>, so even\nthough we didn’t specify <samp class=\"option\">-lm</samp> on the libtool command\nline<a class=\"footnote\" href=\"#FOOT3\" id=\"DOCF3\"><sup>3</sup></a> Libtool has added it to the <code class=\"command\">gcc</code> link line for us.\n",
+    "text": "That looks too simple to be true.  All libtool did was transform libhello.la to ./.libs/libhello.a , but remember\nthat ‘ a23 ’ has no shared libraries.  Notice Libtool also\nremembered libhello.la depends on -lm , so even\nthough we didn’t specify -lm on the libtool command\nline 3 Libtool has added it to the gcc link line for us."
+  },
+  {
+    "id": "Linking-executables:7",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "On ‘<samp class=\"samp\">burger</samp>’ Libtool links against the uninstalled shared library:\n",
+    "text": "On ‘ burger ’ Libtool links against the uninstalled shared library:"
+  },
+  {
+    "id": "Linking-executables:8",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Now assume <samp class=\"file\">libhello.la</samp> had already been installed, and you want\nto link a new program with it.  You could figure out where it lives by\nyourself, then run:\n",
+    "text": "Now assume libhello.la had already been installed, and you want\nto link a new program with it.  You could figure out where it lives by\nyourself, then run:"
+  },
+  {
+    "id": "Linking-executables:9",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "However, unless <samp class=\"file\">/usr/local/lib</samp> is in the standard library search\npath, you won’t be able to run <code class=\"code\">test</code>.  If instead you use libtool\nto link the already-installed libtool library, it will do The Right\nThing (TM) for you:\n",
+    "text": "However, unless /usr/local/lib is in the standard library search\npath, you won’t be able to run test .  If instead you use libtool\nto link the already-installed libtool library, it will do The Right\nThing (TM) for you:"
+  },
+  {
+    "id": "Linking-executables:10",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Note that libtool added the necessary run-time path flag, as well as\n<samp class=\"option\">-lm</samp>, the library libhello.la depended upon.  Nice, huh?\n",
+    "text": "Note that libtool added the necessary run-time path flag, as well as -lm , the library libhello.la depended upon.  Nice, huh?"
+  },
+  {
+    "id": "Linking-executables:11",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Notice the executable, <code class=\"code\">hell</code>, was actually created in the\n<samp class=\"file\">.libs</samp> subdirectory.  Then, a wrapper script (or, on\ncertain platforms, a wrapper executable see <a class=\"pxref\" href=\"/docs/gnu-libtool/v2-6-2/en/01-guide/06-wrapper-executables/#Wrapper-executables\">Wrapper executables for uninstalled programs</a>) was\ncreated in the current directory.\n",
+    "text": "Notice the executable, hell , was actually created in the .libs subdirectory.  Then, a wrapper script (or, on\ncertain platforms, a wrapper executable see Wrapper executables for uninstalled programs ) was\ncreated in the current directory."
+  },
+  {
+    "id": "Linking-executables:12",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Since libtool created a wrapper script, you should use libtool to\ninstall it and debug it too.  However, since the program does not depend\non any uninstalled libtool library, it is probably usable even without\nthe wrapper script.\n",
+    "text": "Since libtool created a wrapper script, you should use libtool to\ninstall it and debug it too.  However, since the program does not depend\non any uninstalled libtool library, it is probably usable even without\nthe wrapper script."
+  },
+  {
+    "id": "Linking-executables:13",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "On NetBSD 1.2, libtool encodes the installation directory of\n<samp class=\"file\">libhello</samp>, by using the ‘<samp class=\"samp\">-R/usr/local/lib</samp>’ compiler flag.\nThen, the wrapper script guarantees the executable finds the\ncorrect shared library (the one in <samp class=\"file\">./.libs</samp>) so it\ncan be properly installed.\n",
+    "text": "On NetBSD 1.2, libtool encodes the installation directory of libhello , by using the ‘ -R/usr/local/lib ’ compiler flag.\nThen, the wrapper script guarantees the executable finds the\ncorrect shared library (the one in ./.libs ) so it\ncan be properly installed."
+  },
+  {
+    "id": "Linking-executables:14",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Let’s compare the two different programs:\n",
+    "text": "Let’s compare the two different programs:"
+  },
+  {
+    "id": "Linking-executables:15",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "The wrapper script takes significantly longer to execute, but at least\nthe results are correct, even though the shared library hasn’t been\ninstalled yet.\n",
+    "text": "The wrapper script takes significantly longer to execute, but at least\nthe results are correct, even though the shared library hasn’t been\ninstalled yet."
+  },
+  {
+    "id": "Linking-executables:16",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "So, what about all the space savings that shared libraries are supposed\nto yield?\n",
+    "text": "So, what about all the space savings that shared libraries are supposed\nto yield?"
+  },
+  {
+    "id": "Linking-executables:17",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Well, that sucks.  Maybe I should just scrap this project and take up\nbasket weaving.\n",
+    "text": "Well, that sucks.  Maybe I should just scrap this project and take up\nbasket weaving."
+  },
+  {
+    "id": "Linking-executables:18",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "Actually, it just proves an important point: shared libraries incur\noverhead because of their (relative) complexity.  In this situation, the\nprice of being dynamic is eight kilobytes, and the payoff is about four\nkilobytes.  So, having a shared <samp class=\"file\">libhello</samp> won’t be an advantage\nuntil we link it against at least a few more programs.\n",
+    "text": "Actually, it just proves an important point: shared libraries incur\noverhead because of their (relative) complexity.  In this situation, the\nprice of being dynamic is eight kilobytes, and the payoff is about four\nkilobytes.  So, having a shared libhello won’t be an advantage\nuntil we link it against at least a few more programs."
+  },
+  {
+    "id": "Linking-executables:19",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "However, you should avoid using\n<samp class=\"option\">-L</samp> or <samp class=\"option\">-l</samp> flags to link against an uninstalled libtool\nlibrary.  Just specify the relative path to the <samp class=\"file\">.la</samp> file, such as\n<samp class=\"file\">../intl/libintl.la</samp>.  This is a design decision to eliminate any\nambiguity when linking against uninstalled shared libraries.",
+    "text": "However, you should avoid using -L or -l flags to link against an uninstalled libtool\nlibrary.  Just specify the relative path to the .la file, such as ../intl/libintl.la .  This is a design decision to eliminate any\nambiguity when linking against uninstalled shared libraries."
+  },
+  {
+    "id": "Linking-executables:20",
+    "nodeId": "Linking-executables",
+    "tag": "p",
+    "html": "And why should we? <samp class=\"file\">main.o</samp> doesn’t directly depend on <samp class=\"option\">-lm</samp>\nafter all.\n",
+    "text": "And why should we? main.o doesn’t directly depend on -lm after all."
+  },
+  {
+    "id": "Wrapper-executables:0",
+    "nodeId": "Wrapper-executables",
+    "tag": "p",
+    "html": "Some platforms, notably those hosted on Windows such as Cygwin\nand MinGW, use a wrapper executable rather than a wrapper script\nto ensure proper operation of uninstalled programs linked by libtool\nagainst uninstalled shared libraries. The wrapper executable thus\nperforms the same function as the wrapper script used on other\nplatforms, but allows to satisfy the <code class=\"command\">make</code> rules for the\nprogram, whose name ends in <code class=\"code\">$(EXEEXT)</code>. The actual program\nexecutable is created below <samp class=\"file\">.libs</samp>, and its name will end\nin <code class=\"code\">$(EXEEXT)</code> and may or may not contain an <code class=\"code\">lt-</code> prefix.\nThis wrapper executable sets various environment values so that the\nprogram executable may locate its (uninstalled) shared libraries,\nand then launches the program executable.\n",
+    "text": "Some platforms, notably those hosted on Windows such as Cygwin\nand MinGW, use a wrapper executable rather than a wrapper script\nto ensure proper operation of uninstalled programs linked by libtool\nagainst uninstalled shared libraries. The wrapper executable thus\nperforms the same function as the wrapper script used on other\nplatforms, but allows to satisfy the make rules for the\nprogram, whose name ends in $(EXEEXT) . The actual program\nexecutable is created below .libs , and its name will end\nin $(EXEEXT) and may or may not contain an lt- prefix.\nThis wrapper executable sets various environment values so that the\nprogram executable may locate its (uninstalled) shared libraries,\nand then launches the program executable."
+  },
+  {
+    "id": "Wrapper-executables:1",
+    "nodeId": "Wrapper-executables",
+    "tag": "p",
+    "html": "The wrapper executable provides a debug mode, enabled by passing the\ncommand-line option <code class=\"code\">--lt-debug</code> (see below). When executing in\ndebug mode, diagnostic information will be printed to <code class=\"code\">stderr</code>\nbefore the program executable is launched.\n",
+    "text": "The wrapper executable provides a debug mode, enabled by passing the\ncommand-line option --lt-debug (see below). When executing in\ndebug mode, diagnostic information will be printed to stderr before the program executable is launched."
+  },
+  {
+    "id": "Wrapper-executables:2",
+    "nodeId": "Wrapper-executables",
+    "tag": "p",
+    "html": "Finally, the wrapper executable supports a number of command line\noptions that may be useful when debugging the operation of the wrapper\nsystem. All of these options begin with <code class=\"code\">--lt-</code>, and if present\nthey and their arguments will be removed from the argument list passed\non to the program executable.  Therefore, the program executable may not\nemploy command line options that begin with <code class=\"code\">--lt-</code>. (In fact, the\nwrapper executable will detect any command line options that begin with\n<code class=\"code\">--lt-</code> and abort with an error message if the option is not\nrecognized.) If this presents a problem, please contact the Libtool\nteam at the Libtool bug reporting address <a class=\"email\" href=\"mailto:bug-libtool@gnu.org\">bug-libtool@gnu.org</a>.\n",
+    "text": "Finally, the wrapper executable supports a number of command line\noptions that may be useful when debugging the operation of the wrapper\nsystem. All of these options begin with --lt- , and if present\nthey and their arguments will be removed from the argument list passed\non to the program executable.  Therefore, the program executable may not\nemploy command line options that begin with --lt- . (In fact, the\nwrapper executable will detect any command line options that begin with --lt- and abort with an error message if the option is not\nrecognized.) If this presents a problem, please contact the Libtool\nteam at the Libtool bug reporting address bug-libtool@gnu.org ."
+  },
+  {
+    "id": "Wrapper-executables:3",
+    "nodeId": "Wrapper-executables",
+    "tag": "p",
+    "html": "These command line options include:\n",
+    "text": "These command line options include:"
+  },
+  {
+    "id": "Wrapper-executables:4",
+    "nodeId": "Wrapper-executables",
+    "tag": "dt",
+    "html": "<samp class=\"option\">--lt-dump-script</samp>",
+    "text": "--lt-dump-script"
+  },
+  {
+    "id": "Wrapper-executables:6",
+    "nodeId": "Wrapper-executables",
+    "tag": "p",
+    "html": "Causes the wrapper to print a copy of the wrapper <em class=\"emph\">script</em>\nto <code class=\"code\">stdout</code>, and exit.\n",
+    "text": "Causes the wrapper to print a copy of the wrapper script to stdout , and exit."
+  },
+  {
+    "id": "Wrapper-executables:7",
+    "nodeId": "Wrapper-executables",
+    "tag": "dt",
+    "html": "<samp class=\"option\">--lt-debug</samp>",
+    "text": "--lt-debug"
+  },
+  {
+    "id": "Wrapper-executables:9",
+    "nodeId": "Wrapper-executables",
+    "tag": "p",
+    "html": "Causes the wrapper to print diagnostic information to <code class=\"code\">stdout</code>,\nbefore launching the program executable.\n",
+    "text": "Causes the wrapper to print diagnostic information to stdout ,\nbefore launching the program executable."
+  },
+  {
+    "id": "Wrapper-executables:10",
+    "nodeId": "Wrapper-executables",
+    "tag": "p",
+    "html": "For consistency, both the wrapper <em class=\"emph\">script</em> and the wrapper\n<em class=\"emph\">executable</em> support these options.\n",
+    "text": "For consistency, both the wrapper script and the wrapper executable support these options."
+  },
+  {
+    "id": "Debugging-executables:0",
+    "nodeId": "Debugging-executables",
+    "tag": "p",
+    "html": "If <samp class=\"file\">hell</samp> was a complicated program, you would certainly want to\ntest and debug it before installing it on your system.  In the above\nsection, you saw how the libtool wrapper script makes it possible to run\nthe program directly, but unfortunately, this mechanism interferes with\nthe debugger:\n",
+    "text": "If hell was a complicated program, you would certainly want to\ntest and debug it before installing it on your system.  In the above\nsection, you saw how the libtool wrapper script makes it possible to run\nthe program directly, but unfortunately, this mechanism interferes with\nthe debugger:"
+  },
+  {
+    "id": "Debugging-executables:1",
+    "nodeId": "Debugging-executables",
+    "tag": "p",
+    "html": "Sad.  It doesn’t work because GDB doesn’t know where the executable\nlives.  So, let’s try again, by invoking GDB directly on the executable:\n",
+    "text": "Sad.  It doesn’t work because GDB doesn’t know where the executable\nlives.  So, let’s try again, by invoking GDB directly on the executable:"
+  },
+  {
+    "id": "Debugging-executables:2",
+    "nodeId": "Debugging-executables",
+    "tag": "p",
+    "html": "Argh.  Now GDB complains because it cannot find the shared library that\n<samp class=\"file\">hell</samp> is linked against.  So, we must use libtool to\nproperly set the library path and run the debugger.  Fortunately, we can\nforget all about the <samp class=\"file\">.libs</samp> directory, and just run it on\nthe executable wrapper (see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Execute-mode\">Execute mode</a>):\n",
+    "text": "Argh.  Now GDB complains because it cannot find the shared library that hell is linked against.  So, we must use libtool to\nproperly set the library path and run the debugger.  Fortunately, we can\nforget all about the .libs directory, and just run it on\nthe executable wrapper (see Execute mode ):"
+  },
+  {
+    "id": "Installing-libraries:0",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Installing libraries on a non-libtool system is quite\nstraightforward… just copy them into place:<a class=\"footnote\" href=\"#FOOT4\" id=\"DOCF4\"><sup>4</sup></a>\n",
+    "text": "Installing libraries on a non-libtool system is quite\nstraightforward… just copy them into place: 4"
+  },
+  {
+    "id": "Installing-libraries:1",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Oops, don’t forget the <code class=\"command\">ranlib</code> command:\n",
+    "text": "Oops, don’t forget the ranlib command:"
+  },
+  {
+    "id": "Installing-libraries:2",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Libtool installation is quite simple, as well.  Just use the\n<code class=\"command\">install</code> or <code class=\"command\">cp</code> command that you normally would\n(see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Install-mode\">Install mode</a>):\n",
+    "text": "Libtool installation is quite simple, as well.  Just use the install or cp command that you normally would\n(see Install mode ):"
+  },
+  {
+    "id": "Installing-libraries:3",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Note that the libtool library <samp class=\"file\">libhello.la</samp> is also installed, to\nhelp libtool with uninstallation (see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Uninstall-mode\">Uninstall mode</a>) and linking\n(see <a class=\"pxref\" href=\"/docs/gnu-libtool/v2-6-2/en/01-guide/05-linking-executables/#Linking-executables\">Linking executables</a>) and to help programs with dlopening\n(see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Dlopened-modules\">Dlopened modules</a>).\n",
+    "text": "Note that the libtool library libhello.la is also installed, to\nhelp libtool with uninstallation (see Uninstall mode ) and linking\n(see Linking executables ) and to help programs with dlopening\n(see Dlopened modules )."
+  },
+  {
+    "id": "Installing-libraries:4",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Here is the shared library example:\n",
+    "text": "Here is the shared library example:"
+  },
+  {
+    "id": "Installing-libraries:5",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "It is safe to specify the <samp class=\"option\">-s</samp> (strip symbols) flag if you use a\nBSD-compatible install program when installing libraries.\nLibtool will either ignore the <samp class=\"option\">-s</samp> flag, or will run a program\nthat will strip only debugging and compiler symbols from the library.\n",
+    "text": "It is safe to specify the -s (strip symbols) flag if you use a\nBSD-compatible install program when installing libraries.\nLibtool will either ignore the -s flag, or will run a program\nthat will strip only debugging and compiler symbols from the library."
+  },
+  {
+    "id": "Installing-libraries:6",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Once the libraries have been put in place, there may be some additional\nconfiguration that you need to do before using them.  First, you must\nmake sure that where the library is installed actually agrees with the\n<samp class=\"option\">-rpath</samp> flag you used to build it.\n",
+    "text": "Once the libraries have been put in place, there may be some additional\nconfiguration that you need to do before using them.  First, you must\nmake sure that where the library is installed actually agrees with the -rpath flag you used to build it."
+  },
+  {
+    "id": "Installing-libraries:7",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Then, running ‘<samp class=\"samp\">libtool -n finish <var class=\"var\">libdir</var></samp>’ can give you\nfurther hints on what to do (see <a class=\"pxref\" href=\"/docs/gnu-libtool/source/v2-6-2/manual.html#Finish-mode\">Finish mode</a>):\n",
+    "text": "Then, running ‘ libtool -n finish libdir ’ can give you\nfurther hints on what to do (see Finish mode ):"
+  },
+  {
+    "id": "Installing-libraries:8",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "After you have completed these steps, you can go on to begin using the\ninstalled libraries.  You may also install any executables that depend\non libraries you created.\n",
+    "text": "After you have completed these steps, you can go on to begin using the\ninstalled libraries.  You may also install any executables that depend\non libraries you created."
+  },
+  {
+    "id": "Installing-libraries:9",
+    "nodeId": "Installing-libraries",
+    "tag": "p",
+    "html": "Don’t\nstrip static libraries though, or they will be unusable.",
+    "text": "Don’t\nstrip static libraries though, or they will be unusable."
+  },
+  {
+    "id": "Installing-executables:0",
+    "nodeId": "Installing-executables",
+    "tag": "p",
+    "html": "If you used libtool to link any executables against uninstalled libtool\nlibraries (see <a class=\"pxref\" href=\"/docs/gnu-libtool/v2-6-2/en/01-guide/05-linking-executables/#Linking-executables\">Linking executables</a>), you need to use libtool to\ninstall the executables after the libraries have been installed\n(see <a class=\"pxref\" href=\"/docs/gnu-libtool/v2-6-2/en/01-guide/08-installing-libraries/#Installing-libraries\">Installing libraries</a>).\n",
+    "text": "If you used libtool to link any executables against uninstalled libtool\nlibraries (see Linking executables ), you need to use libtool to\ninstall the executables after the libraries have been installed\n(see Installing libraries )."
+  },
+  {
+    "id": "Installing-executables:1",
+    "nodeId": "Installing-executables",
+    "tag": "p",
+    "html": "So, for our Ultrix example, we would run:\n",
+    "text": "So, for our Ultrix example, we would run:"
+  },
+  {
+    "id": "Installing-executables:2",
+    "nodeId": "Installing-executables",
+    "tag": "p",
+    "html": "On shared library systems that require wrapper scripts, libtool just\nignores the wrapper script and installs the correct binary:\n",
+    "text": "On shared library systems that require wrapper scripts, libtool just\nignores the wrapper script and installs the correct binary:"
+  },
+  {
+    "id": "Static-libraries:0",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "Why return to <code class=\"command\">ar</code> and <code class=\"command\">ranlib</code> silliness when you’ve had a\ntaste of libtool?  Well, sometimes it is desirable to create a static\narchive that can never be shared.  The most frequent case is when you\nhave a set of object files that you use to build several different\nlibraries.  You can create a “convenience library” out of those\nobjects, and link against that with the other libraries, instead of\nlisting all the object files every time.\n",
+    "text": "Why return to ar and ranlib silliness when you’ve had a\ntaste of libtool?  Well, sometimes it is desirable to create a static\narchive that can never be shared.  The most frequent case is when you\nhave a set of object files that you use to build several different\nlibraries.  You can create a “convenience library” out of those\nobjects, and link against that with the other libraries, instead of\nlisting all the object files every time."
+  },
+  {
+    "id": "Static-libraries:1",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "If you just want to link this convenience library into programs, then\nyou could just ignore libtool entirely, and use the old <code class=\"command\">ar</code> and\n<code class=\"command\">ranlib</code> commands (or the corresponding GNU Automake\n‘<samp class=\"samp\">_LIBRARIES</samp>’ rules).  You can even install a convenience library\nusing GNU Libtool, though you probably don’t want to and hence GNU\nAutomake doesn’t allow you to do so.\n",
+    "text": "If you just want to link this convenience library into programs, then\nyou could just ignore libtool entirely, and use the old ar and ranlib commands (or the corresponding GNU Automake\n‘ _LIBRARIES ’ rules).  You can even install a convenience library\nusing GNU Libtool, though you probably don’t want to and hence GNU\nAutomake doesn’t allow you to do so."
+  },
+  {
+    "id": "Static-libraries:2",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "Using libtool for static library installation protects your library from\nbeing accidentally stripped (if the installer used the <samp class=\"option\">-s</samp> flag),\nas well as automatically running the correct <code class=\"command\">ranlib</code> command.\n",
+    "text": "Using libtool for static library installation protects your library from\nbeing accidentally stripped (if the installer used the -s flag),\nas well as automatically running the correct ranlib command."
+  },
+  {
+    "id": "Static-libraries:3",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "But libtool libraries are more than just collections of object files:\nthey can also carry library dependency information, which old archives\ndo not.  If you want to create a libtool static convenience library, you\ncan omit the <samp class=\"option\">-rpath</samp> flag and use <samp class=\"option\">-static</samp> to indicate that\nyou’re only interested in a static library.  When you link a program\nwith such a library, libtool will actually link all object files and\ndependency libraries into the program.\n",
+    "text": "But libtool libraries are more than just collections of object files:\nthey can also carry library dependency information, which old archives\ndo not.  If you want to create a libtool static convenience library, you\ncan omit the -rpath flag and use -static to indicate that\nyou’re only interested in a static library.  When you link a program\nwith such a library, libtool will actually link all object files and\ndependency libraries into the program."
+  },
+  {
+    "id": "Static-libraries:4",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "If you omit both <samp class=\"option\">-rpath</samp> and <samp class=\"option\">-static</samp>, libtool will create a\nconvenience library that can be used to create other libtool\nlibraries, even shared ones.  Just like in the static case, the library\nbehaves as an alias to a set of object files and dependency libraries,\nbut in this case the object files are suitable for inclusion in shared\nlibraries.  But be careful not to link a single convenience library,\ndirectly or indirectly, into a single program or library, otherwise you\nmay get errors about symbol redefinitions.\n",
+    "text": "If you omit both -rpath and -static , libtool will create a\nconvenience library that can be used to create other libtool\nlibraries, even shared ones.  Just like in the static case, the library\nbehaves as an alias to a set of object files and dependency libraries,\nbut in this case the object files are suitable for inclusion in shared\nlibraries.  But be careful not to link a single convenience library,\ndirectly or indirectly, into a single program or library, otherwise you\nmay get errors about symbol redefinitions."
+  },
+  {
+    "id": "Static-libraries:5",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "The key is remembering that a convenience library contains PIC\nobjects, and can be linked where a list of PIC objects makes sense;\ni.e. into a shared library.  A static convenience library contains\nnon-PIC objects, so can be linked into an old static library, or\na program.\n",
+    "text": "The key is remembering that a convenience library contains PIC\nobjects, and can be linked where a list of PIC objects makes sense;\ni.e. into a shared library.  A static convenience library contains\nnon-PIC objects, so can be linked into an old static library, or\na program."
+  },
+  {
+    "id": "Static-libraries:6",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "When GNU Automake is used, you should use <code class=\"code\">noinst_LTLIBRARIES</code>\ninstead of <code class=\"code\">lib_LTLIBRARIES</code> for convenience libraries, so that\nthe <samp class=\"option\">-rpath</samp> option is not passed when they are linked.\n",
+    "text": "When GNU Automake is used, you should use noinst_LTLIBRARIES instead of lib_LTLIBRARIES for convenience libraries, so that\nthe -rpath option is not passed when they are linked."
+  },
+  {
+    "id": "Static-libraries:7",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "As a rule of thumb, link a libtool convenience library into at most one\nlibtool library, and never into a program, and link libtool static\nconvenience libraries only into programs, and only if you need to carry\nlibrary dependency information to the user of the static convenience\nlibrary.\n",
+    "text": "As a rule of thumb, link a libtool convenience library into at most one\nlibtool library, and never into a program, and link libtool static\nconvenience libraries only into programs, and only if you need to carry\nlibrary dependency information to the user of the static convenience\nlibrary."
+  },
+  {
+    "id": "Static-libraries:8",
+    "nodeId": "Static-libraries",
+    "tag": "p",
+    "html": "Another common situation where static linking is desirable is in\ncreating a standalone binary.  Use libtool to do the linking and add the\n<samp class=\"option\">-all-static</samp> flag.\n",
+    "text": "Another common situation where static linking is desirable is in\ncreating a standalone binary.  Use libtool to do the linking and add the -all-static flag."
+  }
+]

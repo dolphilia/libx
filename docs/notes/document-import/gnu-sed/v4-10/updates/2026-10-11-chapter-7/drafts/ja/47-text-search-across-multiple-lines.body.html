@@ -1,0 +1,47 @@
+<div class="gnu-sed-original-content" id="Text-search-across-multiple-lines">
+<h3 class="section" id="Text-search-across-multiple-lines-1"><span>7.7 複数行にまたがるテキストの検索</span></h3>
+<p>この節では、<code class="code">N</code>と<code class="code">D</code>コマンドを使って、複数行にまたがる連続した単語を検索します。<a class="xref" href="#Multiline-techniques">複数行を扱う手法：D,G,H,N,Pによる複数行の処理</a>を参照してください。</p>
+<p>ここでは、文書内で同じ単語が続けて2回現れる箇所を探す例を扱います。</p>
+<p>1行の中で重複する単語は、GNU <code class="command">grep</code>で簡単に見つけられます。GNU <code class="command">sed</code>でも同様です。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">$ cat two-cities-dup1.txt
+It was the best of times,
+it was the worst of times,
+it was the the age of wisdom,
+it was the age of foolishness,
+
+$ grep -E '\b(\w+)\s+\1\b' two-cities-dup1.txt
+it was the the age of wisdom,
+
+$ grep -n -E '\b(\w+)\s+\1\b' two-cities-dup1.txt
+3:it was the the age of wisdom,
+
+$ sed -En '/\b(\w+)\s+\1\b/p' two-cities-dup1.txt
+it was the the age of wisdom,
+
+$ sed -En '/\b(\w+)\s+\1\b/{=;p}' two-cities-dup1.txt
+3
+it was the the age of wisdom,
+</pre></div></div>
+<ul class="itemize mark-bullet">
+<li>正規表現「<samp class="samp">\b\w+\s+</samp>」は、単語境界（「<samp class="samp">\b</samp>」）、1文字以上の単語構成文字（「<samp class="samp">\w+</samp>」）、空白（「<samp class="samp">\s+</samp>」）の順に並ぶ箇所を検索します。<a class="xref" href="#regexp-extensions">正規表現の拡張</a>を参照してください。</li><li>「<samp class="samp">(\w+)</samp>」を丸括弧で囲むと、部分式になります。正規表現パターン「<samp class="samp">(PATTERN)\s+\1</samp>」は、丸括弧内の部分式の後に、空白を挟んで後方参照が続く形を定義します。マッチした場合は、<var class="var">PATTERN</var>が連続して2回現れたことを意味します。<a class="xref" href="#Back_002dreferences-and-Subexpressions">後方参照と部分式</a>を参照してください。</li><li>両端にある単語境界の式（「<samp class="samp">\b</samp>」）によって、単語の一部にはマッチしなくなります（たとえば、「<samp class="samp">the then</samp>」へのマッチは意図したものではありません）。</li><li><samp class="option">-E</samp>オプションは拡張正規表現の構文を有効にし、丸括弧の前にバックスラッシュを付ける必要をなくします。<a class="xref" href="#ERE-syntax">拡張正規表現の構文の概要</a>を参照してください。</li></ul>
+<p>重複する単語が2行にまたがる場合、上の正規表現では見つかりません。<code class="command">grep</code>と<code class="command">sed</code>は1行ずつ処理するためです。</p>
+<p><code class="command">N</code>と<code class="command">D</code>コマンドを使えば、<code class="command">sed</code>で複数行に正規表現を適用できます（つまり、複数行をパターンスペースに格納し、それに対して正規表現を適用します）。</p>
+<div class="example">
+<pre class="example-preformatted">$ cat two-cities-dup2.txt
+It was the best of times, it was the
+worst of times, it was the
+the age of wisdom,
+it was the age of foolishness,
+
+$ sed -En '{N; /\b(\w+)\s+\1\b/{=;p} ; D}'  two-cities-dup2.txt
+3
+worst of times, it was the
+the age of wisdom,
+</pre></div>
+<ul class="itemize mark-bullet">
+<li><code class="command">N</code>コマンドは、次の行をパターンスペースに追加します（これにより、各サイクルで連続する2行がパターンスペースに含まれます）。</li><li>この正規表現では、単語の区切りに「<samp class="samp">\s+</samp>」を使います。これはスペースにも改行にもマッチします。</li><li>正規表現にマッチしたら、<code class="command">p</code>でパターンスペース全体を出力します。<samp class="option">-n</samp>オプションがあるため、既定では行は出力されません。</li><li><code class="command">D</code>は、パターンスペースから最初の行を削除し（最初の改行までを取り除き）、次のサイクルに備えます。</li></ul>
+<p><code class="command">tr -s</code>と<code class="command">uniq</code>を使う別の解法については、GNU <code class="command">coreutils</code>マニュアルの<a class="url" href="https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html">https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html</a>を参照してください。</p>
+<hr/>
+</div>
+

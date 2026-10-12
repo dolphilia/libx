@@ -1,0 +1,25 @@
+<div class="section-level-extent" id="Installing-executables">
+
+<h3 class="section" id="Installing-executables-1"><span>3.6 Installing executables</span></h3>
+<p>If you used libtool to link any executables against uninstalled libtool
+libraries (see <a class="pxref" href="#Linking-executables">Linking executables</a>), you need to use libtool to
+install the executables after the libraries have been installed
+(see <a class="pxref" href="#Installing-libraries">Installing libraries</a>).
+</p>
+<p>So, for our Ultrix example, we would run:
+</p>
+<div class="example">
+<pre class="example-preformatted">a23# libtool --mode=install install -c hell /usr/local/bin/hell
+install -c hell /usr/local/bin/hell
+a23#
+</pre></div>
+<p>On shared library systems that require wrapper scripts, libtool just
+ignores the wrapper script and installs the correct binary:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger# libtool --mode=install install -c hell /usr/local/bin/hell
+install -c .libs/hell /usr/local/bin/hell
+burger#
+</pre></div>
+<hr/>
+</div>

@@ -1,0 +1,39 @@
+<div class="gnu-sed-original-content" id="Reverse-chars-of-lines">
+<h3 class="section" id="Reverse-Characters-of-Lines"><span>7.6 行内の文字の逆順化</span></h3>
+<p>このスクリプトは、行内の文字の並びを逆にするために使えます。1度に2文字を移動する手法なので、より直感的な実装よりも高速です。</p>
+<p>ラベル定義の前にある<code class="code">tx</code>コマンドに注目してください。<code class="code">t</code>コマンドが検査するフラグをリセットするため、この処理が必要になることがよくあります。</p>
+<p>想像力のある読者なら、このスクリプトの用途を思いつくでしょう。たとえば、<code class="command">banner</code>の出力を逆にする用途があります。<a class="footnote" href="#FOOT10" id="DOCF10"><sup>10</sup></a></p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+/../! b
+
+</pre><div class="group"><pre class="example-preformatted"># Reverse a line.  Begin embedding the line between two newlines
+s/^.*$/\
+&amp;\
+/
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>行を逆順にします。まず、行を2つの改行で挟みます。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Move first character at the end.  The regexp matches until
+# there are zero or one characters between the markers
+tx
+:x
+s/\(\n.\)\(.*\)\(.\n\)/\3\2\1/
+tx
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>先頭の文字を末尾へ移動します。この正規表現は、目印の間の文字が0文字または1文字になるまでマッチします。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Remove the newline markers
+s/\n//g
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>目印に使った改行を取り除きます。</p></div></div></div>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF10" id="FOOT10">(10)</a></h5>
+<p>これには、bannerの出力を空白で埋める別のスクリプトが必要です。たとえば、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">#! /bin/sh
+
+banner -w $1 $2 $3 $4 |
+  sed -e :a -e '/^.\{0,'$1'\}$/ { s/$/ /; ba; }' |
+  ~/sedscripts/reverseline.sed
+</pre></div>
+</div></div>
+

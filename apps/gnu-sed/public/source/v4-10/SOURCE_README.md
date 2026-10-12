@@ -1,9 +1,9 @@
-# Libx GNU sed 4.10 User Guide — Chapters 1–5
-# Libx GNU sed 4.10 利用ガイド — 第1〜5章
+# Libx GNU sed 4.10 User Guide — Chapters 1–10
+# Libx GNU sed 4.10 利用ガイド — 第1〜10章
 
-GNU sed 4.10の第1〜5章全文を32ページの英語原文と独立・非公式の日本語訳で提供します。参照脚注7件を収録し、残りの章・索引は固定した原英語マニュアル、Texinfo、Infoで参照できます。原著GNU sedプログラムや掲載コマンド例は実行せず、静的なテキストとして提供します。
+GNU sed 4.10の第1〜10章全文を64ページの英語原文と独立・非公式の日本語訳で提供します。参照脚注12件と原英語GFDL参照ページを収録し、索引は固定した原英語マニュアル、Texinfo、Infoで参照できます。原著GNU sedプログラムや掲載コマンド例は実行せず、静的なテキストとして提供します。
 
-The complete adopted chapters 1–5 are provided in 32 English pages and an independent, unofficial Japanese translation. All seven referenced footnotes are included. Remaining chapters and indexes are available in the fixed complete English manual and original Texinfo/Info. The original GNU sed program and examples are not run.
+The complete adopted chapters 1–10 are provided in 64 English pages and an independent, unofficial Japanese translation. All twelve referenced footnotes and an original English GFDL reference page are included. Indexes are available in the fixed complete English manual and original Texinfo/Info. The original GNU sed program and examples are not run.
 
 ## 原著と利用条件 / Original and terms
 
@@ -11,7 +11,7 @@ The complete adopted chapters 1–5 are provided in 32 English pages and an inde
 - Original authors: Ken Pizzini, Paolo Bonzini, Jim Meyering, Assaf Gordon. Original publisher: Free Software Foundation.
 - Copyright © 1998–2026 Free Software Foundation, Inc.
 - Permission is granted to copy, distribute and/or modify the original document under the GNU Free Documentation License, Version 1.3 or any later version, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts.
-- Modified title: Libx GNU sed 4.10 User Guide — Chapters 1–5 / Libx GNU sed 4.10 利用ガイド — 第1〜5章. Modification author and publisher: Libx; modified 7 October 2026.
+- Modified title: Libx GNU sed 4.10 User Guide — Chapters 1–10 / Libx GNU sed 4.10 利用ガイド — 第1〜10章. Modification author and publisher: Libx; modified 11 October 2026.
 - Copyright © 2026 Libx, for editing and independent Japanese translation. The modified documentation is available under the same GFDL 1.3-or-later conditions. No new Invariant Sections or Cover Texts are added.
 - 原著の著作権・許諾・著作者・履歴・原英語GFDL全文を保持します。ライセンスそのものの日本語訳は提供していません。原著ソース配布物のGPL等の通知は、未変更の配布物と原稿内に保持します。共有Libxファイルには、その既存の通知・条件が適用されます。
 
@@ -35,7 +35,7 @@ Original source: [GNU sed](https://www.gnu.org/software/sed/), [official manual]
 
 `edited/en/01-guide/`と`edited/ja/01-guide/`には、サイトが使用する英語・日本語のMarkdown原稿があり、`edited/en/02-reference/01-gfdl.md`には原英語GFDL参照ページがあります。同じ原稿とその優先編集入力を`source.zip`へまとめています。Markdown内のHTMLはテキストエディターで編集可能です。改行・タブの数値文字参照は、例の空白と変数の斜体を保持するためのものです。
 
-The kit contains the original Texinfo/Info/notices/archive, the full generated English manual, all 65 editable Markdown documents, translation units and independent Japanese translation JSON, conversion helpers, and the app/shared files required to rebuild. It excludes installed dependencies, generated build output, and a recursive copy of `source.zip`. `SOURCE_COMPONENTS.json` lists the members and their SHA256 values.
+The kit contains the original Texinfo/Info/notices/archive, the full generated English manual, all 129 editable Markdown documents, translation units and independent Japanese translation JSON, conversion helpers, and the app/shared files required to rebuild. It excludes installed dependencies, generated build output, and a recursive copy of `source.zip`. `SOURCE_COMPONENTS.json` lists the members and their SHA256 values.
 
 ## 再生成 / Regeneration
 
@@ -57,6 +57,21 @@ python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/ex
 python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/render-drafts.py
 python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/apply-update.py
 python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/prepare-context.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/prepare-drafts.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/extract-units.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/render-drafts.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/apply-update.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/prepare-context.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapter-7/prepare-drafts.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapter-7/extract-units.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapter-7/render-drafts.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapter-7/apply-update.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapter-7/prepare-context.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapters-8-10/prepare-drafts.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapters-8-10/extract-units.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapters-8-10/render-drafts.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapters-8-10/apply-update.py
+python3 docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapters-8-10/prepare-context.py
 pnpm --filter=apps-gnu-sed build
 ```
 
@@ -79,3 +94,19 @@ Original: GNU sed, a stream editor; version 4.10; document revision 20 April 202
 7 October 2026: Libx added complete Chapter5 as14 paired pages, including whole footnotes6 and7 and36 static code/output blocks. Previously published Chapters1–4 and their modification history remain unchanged. The site now supplies32English+32Japanese guides and1 original English GFDL reference.
 
 第5章の日本語編集入力は `workspace/docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/translations/*-ja.json` です。14組・179翻訳単位・36コードブロックを別パスで全文レビューした草稿へ対応付けています。原文のTODO・表記・例は静的な原文として保持し、詳しい情報は固定した原典全文へのリンクで補います。
+
+7 October 2026: Libx added complete Chapter6 as7 paired pages, including whole footnote8 and11 static code/output blocks. Previously published Chapters1–5 and their modification history remain unchanged. The site now supplies39English+39Japanese guides and1 original English GFDL reference.
+
+第6章の日本語編集入力は `workspace/docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/translations/*-ja.json` です。7組・56翻訳単位・11コードブロックを別パスで全文レビューした草稿へ対応付けています。原文のTODOと英語コメントを含む例は静的な原文として保持します。
+
+11 October 2026: Libx added complete Chapter7 as22 paired pages, including whole footnotes9,10 and11 and180 literal static code/output blocks. Previously published Chapters1–6 and their modification history remain unchanged. The site now supplies61English+61Japanese guides and1 original English GFDL reference.
+
+第7章の日本語優先編集入力は `workspace/docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapter-7/translations/*-ja.json` です。コード内コメント・ヘルプ・ライセンス例74か所の隣接訳は同ディレクトリの `PRE_EXPLANATIONS.json` で編集します。22組・102本文単位と完全な脚注9〜11を別パスの全文意味レビューへ対応付けています。実行可能なコード・出力は英語コメントも含め原文どおり保持し、日本語の説明を隣に表示します。ヘルプ中の-rと実装中の-R、原文コメントのnと実コードのNなど、原文の表記は黙って変更せず保持します。詳しくは固定原典を参照してください。
+
+Preferred chapter7 Japanese prose is in its `translations/*-ja.json`; adjacent Japanese translations of74 code-comment/help/example-license blocks are in `PRE_EXPLANATIONS.json`. All22 paired bodies,102 prose units,180 literal code/output blocks and complete footnotes9–11 are bound to separate whole meaning reviews. Executable code and output, including original English comments, remain literal. Original spelling discrepancies such as -r in help versus -R in code, or n in a source comment versus N in code, are retained; consult the fixed complete original.
+
+11 October 2026: Libx added complete Chapters8–10 as3 paired pages, including complete footnote12 and6 literal static code/output blocks. Previously published Chapters1–7 and their modification history remain unchanged. The site now supplies64English+64Japanese guides and1 original English GFDL reference.
+
+第8〜10章の日本語優先編集入力は `workspace/docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-11-chapters-8-10/translations/*-ja.json`、例中の説明と診断メッセージの隣接訳は同ディレクトリの `PRE_EXPLANATIONS.json` です。3組・45本文単位と原文pre内の2抽出単位（合計47単位）・脚注12全文を別パスの全文意味レビューへ対応付けます。6コードブロックは原文どおり保持し、例中の斜体説明と診断メッセージを隣接する日本語訳で補います。
+
+Preferred chapters8–10 Japanese prose is in its `translations/*-ja.json`; one adjacent translation of example explanation and diagnostic is in `PRE_EXPLANATIONS.json`. All3 paired bodies,47 extracted units (45 prose and2 nested original pre descriptions),6 literal code/output blocks and complete footnote12 are bound to the separate whole meaning review. Original examples and legacy resource links remain static source material; consult the fixed complete original for details.

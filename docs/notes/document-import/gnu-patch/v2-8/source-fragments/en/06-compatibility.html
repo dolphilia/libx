@@ -1,0 +1,44 @@
+<section class="gnu-patch-unit"><section class="Sh">
+<h1 class="Sh" id="COMPATIBILITY_ISSUES"><a class="permalink" href="#COMPATIBILITY_ISSUES">COMPATIBILITY
+  ISSUES</a></h1>
+<p class="Pp">The POSIX standard specifies behavior that differs from GNU
+    <b>patch</b>.</p>
+<div class="Bd-indent">
+<ul class="Bl-bullet">
+<li>In POSIX <b>patch</b> when <b>-b</b> is not used, backups are not made
+      even when there is a mismatch. In GNU <b>patch</b>, this behavior is
+      enabled with the <b>--no-backup-if-mismatch</b> option, or by conforming
+      to POSIX with the <b>--posix</b> option or by setting the
+      <b>POSIXLY_CORRECT</b> environment variable.</li>
+<li>When intuiting the name of the file to be patched from the patch header,
+      <b>patch</b> uses a complicated method that is optionally
+      POSIX-conforming. The method is equivalent to POSIX if the file names in
+      the context diff header and the <b>Index:</b> line are all identical after
+      prefix-stripping. Your patch is normally compatible if each header's file
+      names all contain the same number of slashes.</li>
+<li>Limit yourself to the following options when sending instructions meant to
+      be executed by anyone running GNU <b>patch</b> or a <b>patch</b> that
+      conforms to POSIX. Spaces are optional in the following list.
+    <p class="Pp"></p>
+<pre>
+<br/>
+<b>-b</b>
+<b>-c</b>
+<b>-d</b><i> dir</i>
+<b>-D</b><i> define</i>
+<b>-e</b>
+<b>-i</b><i> patchfile</i>
+<b>-l</b>
+<b>-n</b>
+<b>-N</b>
+<b>-o</b><i> outfile</i>
+<b>-p</b><i> num</i>
+<b>-R</b>
+<b>-r</b><i> rejectfile</i>
+<b>-u</b>
+<br/>
+    </pre>
+</li>
+</ul>
+</div>
+</section></section>

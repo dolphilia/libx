@@ -1,0 +1,2367 @@
+{
+  "schemaVersion": 1,
+  "version": "4.10",
+  "manualGeneratedSHA256": "d28c964015a9e11c76ace31197304a0490a524de622495bff13bace3e1c4b5da",
+  "sourceChapterOrderCoverageExact": true,
+  "guidePages": 64,
+  "referenceEnglishOnly": [
+    "02-reference/01-gfdl.md"
+  ],
+  "originalPre": 303,
+  "footnotes": 12,
+  "items": [
+    {
+      "slug": "01-introduction",
+      "sourceNode": "Introduction",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Introduction-1",
+          "text": "1 Introduction"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "1 Introduction sed is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline). While in some ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient. But it is sed’s ability to filter text in a pipeline which particularly distinguishes it from other types of editors.",
+      "id": "01-guide/01-introduction.md",
+      "titleEN": "Introduction",
+      "canonical": "canonical/en/01-guide/01-introduction.md",
+      "canonicalSHA256": "033962015f40fffc5a84d14c3d23ff07596d6ace7868bc507086848e9c5e2e68",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/01-introduction.md",
+      "translationSHA256": "193ffc7cc426f3c1ffd08b432bf5c6ca11deeb4266afb828a2700f7d9e9dd717",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/01-introduction.md",
+          "sha256": "033962015f40fffc5a84d14c3d23ff07596d6ace7868bc507086848e9c5e2e68"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/01-introduction.md",
+          "sha256": "193ffc7cc426f3c1ffd08b432bf5c6ca11deeb4266afb828a2700f7d9e9dd717"
+        }
+      ]
+    },
+    {
+      "slug": "02-overview",
+      "sourceNode": "Overview",
+      "sourcePre": [
+        "sed SCRIPT INPUTFILE...\n",
+        "sed 's/hello/world/g' input.txt > output.txt\n",
+        "sed 's/hello/world/g' input.txt > output.txt\nsed 's/hello/world/g' < input.txt > output.txt\ncat input.txt | sed 's/hello/world/g' - > output.txt\n",
+        "sed -i 's/hello/world/' file.txt\n",
+        "sed -n '45p' file.txt\n",
+        "sed -n  '1p ; $p' one.txt two.txt three.txt\n",
+        "sed 's/hello/world/' input.txt > output.txt\n\nsed -e 's/hello/world/' input.txt > output.txt\nsed --expression='s/hello/world/' input.txt > output.txt\n\necho 's/hello/world/' > myscript.sed\nsed -f myscript.sed input.txt > output.txt\nsed --file=myscript.sed input.txt > output.txt\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Running-sed",
+          "text": "2 Running sed"
+        },
+        {
+          "depth": 3,
+          "slug": "Overview-1",
+          "text": "2.1 Overview"
+        }
+      ],
+      "footnotes": [],
+      "pre": 7,
+      "sourceText": "2 Running sed This chapter covers how to run sed. Details of sed scripts and individual sed commands are discussed in the next chapter. 2.1 Overview Normally sed is invoked like this: sed SCRIPT INPUTFILE... For example, to change every ‘hello’ to ‘world’ in the file input.txt: sed 's/hello/world/g' input.txt > output.txt Without the ‘g’ (global) modifier, sed affects only the first instance per line. If you do not specify INPUTFILE, or if INPUTFILE is -, sed filters the contents of the standard input. The following commands are equivalent: sed 's/hello/world/g' input.txt > output.txt sed 's/hello/world/g' < input.txt > output.txt cat input.txt | sed 's/hello/world/g' - > output.txt sed writes output to standard output. Use -i to edit files in-place instead of printing to standard output. See also the W and s///w commands for writing output to other files. The following command modifies file.txt and does not produce any output: sed -i 's/hello/world/' file.txt By default sed prints all processed input (except input that has been modified/deleted by commands such as d). Use -n to suppress output, and the p command to print specific lines. The following command prints only line 45 of the input file: sed -n '45p' file.txt sed treats multiple input files as one long stream. The following example prints the first line of the first file (one.txt) and the last line of the last file (three.txt). Use -s to reverse this behavior. sed -n '1p ; $p' one.txt two.txt three.txt Without -e or -f options, sed uses the first non-option parameter as the script, and the following non-option parameters as input files. If -e or -f options are used to specify a script, all non-option parameters are taken as input files. Options -e and -f can be combined, and can appear multiple times (in which case the final effective script will be concatenation of all the individual scripts). The following examples are equivalent: sed 's/hello/world/' input.txt > output.txt sed -e 's/hello/world/' input.txt > output.txt sed --expression='s/hello/world/' input.txt > output.txt echo 's/hello/world/' > myscript.sed sed -f myscript.sed input.txt > output.txt sed --file=myscript.sed input.txt > output.txt",
+      "id": "01-guide/02-overview.md",
+      "titleEN": "Running sed: Overview",
+      "canonical": "canonical/en/01-guide/02-overview.md",
+      "canonicalSHA256": "ee11fbf65a5bca4b59377dfcd7cae035debe4075b2263a76ced0af4214c8a730",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/02-overview.md",
+      "translationSHA256": "b6569f96e6a3fc02baf9a90be59ea58a65e964d8951049a275ac85d565ddb496",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/02-overview.md",
+          "sha256": "ee11fbf65a5bca4b59377dfcd7cae035debe4075b2263a76ced0af4214c8a730"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/02-overview.md",
+          "sha256": "b6569f96e6a3fc02baf9a90be59ea58a65e964d8951049a275ac85d565ddb496"
+        }
+      ]
+    },
+    {
+      "slug": "03-command-line-options",
+      "sourceNode": "Command_002dLine-Options",
+      "sourcePre": [
+        "sed OPTIONS... [SCRIPT] [INPUTFILE...]\n",
+        "$ echo 1 | sed '\\%1%s21232'\n3\n\n$ echo 1 | sed --debug '\\%1%s21232'\nSED PROGRAM:\n  /1/ s/1/3/\nINPUT:   'STDIN' line 1\nPATTERN: 1\nCOMMAND: /1/ s/1/3/\nPATTERN: 3\nEND-OF-CYCLE:\n3\n",
+        "# WRONG USAGE: 'FILE' will be truncated.\nsed -ni 's/foo/bar/' FILE\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Command_002dLine-Options-1",
+          "text": "2.2 Command-Line Options"
+        }
+      ],
+      "footnotes": [
+        "FOOT1",
+        "FOOT2"
+      ],
+      "pre": 3,
+      "sourceText": "2.2 Command-Line Options The full format for invoking sed is: sed OPTIONS... [SCRIPT] [INPUTFILE...] sed may be invoked with the following command-line options: --version Print out the version of sed that is being run and a copyright notice, then exit. --help Print a usage message briefly summarizing these command-line options and the bug-reporting address, then exit. -n --quiet --silent By default, sed prints out the pattern space at the end of each cycle through the script (see How sed works). These options disable this automatic printing, and sed only produces output when explicitly told to via the p command. --debug Print the input sed program in canonical form, and annotate program execution. $ echo 1 | sed '\\%1%s21232' 3 $ echo 1 | sed --debug '\\%1%s21232' SED PROGRAM: /1/ s/1/3/ INPUT: 'STDIN' line 1 PATTERN: 1 COMMAND: /1/ s/1/3/ PATTERN: 3 END-OF-CYCLE: 3 -e script --expression=script Add the commands in script to the set of commands to be run while processing the input. -f script-file --file=script-file Add the commands contained in the file script-file to the set of commands to be run while processing the input. -i[SUFFIX] --in-place[=SUFFIX] This option specifies that files are to be edited in-place. GNU sed does this by creating a temporary file and sending output to this file rather than to the standard output.1. This option implies -s. When the end of the file is reached, the temporary file is renamed to the output file’s original name. The extension, if supplied, is used to modify the name of the old file before renaming the temporary file, thereby making a backup copy2). This rule is followed: if the extension doesn’t contain a *, then it is appended to the end of the current filename as a suffix; if the extension does contain one or more * characters, then each asterisk is replaced with the current filename. This allows you to add a prefix to the backup file, instead of (or in addition to) a suffix, or even to place backup copies of the original files into another directory (provided the directory already exists). If no extension is supplied, the original file is overwritten without making a backup. Because -i takes an optional argument, it should not be followed by other short options: sed -Ei '...' FILE Same as -E -i with no backup suffix - FILE will be edited in-place without creating a backup. sed -iE '...' FILE This is equivalent to --in-place=E, creating FILEE as backup of FILE Be cautious of using -n with -i: the former disables automatic printing of lines and the latter changes the file in-place without a backup. Used carelessly (and without an explicit p command), the output file will be empty: # WRONG USAGE: 'FILE' will be truncated. sed -ni 's/foo/bar/' FILE -l N --line-length=N Specify the default line-wrap length for the l command. A length of 0 (zero) means to never wrap long lines. If not specified, it is taken to be 70. --posix GNU sed includes several extensions to POSIX sed. In order to simplify writing portable scripts, this option disables all the extensions that this manual documents, including additional commands. Most of the extensions accept sed programs that are outside the syntax mandated by POSIX, but some of them (such as the behavior of the N command described in Reporting Bugs) actually violate the standard. If you want to disable only the latter kind of extension, you can set the POSIXLY_CORRECT variable to a non-empty value. -b --binary This option is available on every platform, but is only effective where the operating system makes a distinction between text files and binary files. When such a distinction is made—as is the case for MS-DOS, Windows, Cygwin—text files are composed of lines separated by a carriage return and a line feed character, and sed does not see the ending CR. When this option is specified, sed will open input files in binary mode, thus not requesting this special processing and considering lines to end at a line feed. --follow-symlinks This option is available only on platforms that support symbolic links and has an effect only if option -i is specified. In this case, if the file that is specified on the command line is a symbolic link, sed will follow the link and edit the ultimate destination of the link. The default behavior is to break the symbolic link, so that the link destination will not be modified. -E -r --regexp-extended Use extended regular expressions rather than basic regular expressions. Extended regexps are those that egrep accepts; they can be clearer because they usually have fewer backslashes. Historically this was a GNU extension, but the -E extension has since been added to the POSIX standard (http://austingroupbugs.net/view.php?id=528), so use -E for portability. GNU sed has accepted -E as an undocumented option for years, and *BSD seds have accepted -E for years as well, but scripts that use -E might not port to other older systems. See Extended regular expressions. -s --separate By default, sed will consider the files specified on the command line as a single continuous long stream. This GNU sed extension allows the user to consider them as separate files: range addresses (such as ‘/abc/,/def/’) are not allowed to span several files, line numbers are relative to the start of each file, $ refers to the last line of each file, and files invoked from the R commands are rewound at the start of each file. --sandbox In sandbox mode, e/w/r commands are rejected - programs containing them will be aborted without being run. Sandbox mode ensures sed operates only on the input files designated on the command line, and cannot run external programs. -u --unbuffered Buffer both input and output as minimally as practical. (This is particularly useful if the input is coming from the likes of ‘tail -f’, and you wish to see the transformed output as soon as possible.) -z --null-data --zero-terminated Treat the input as a set of lines, each terminated by a zero byte (the ASCII ‘NUL’ character) instead of a newline. This option can be used with commands like ‘sort -z’ and ‘find -print0’ to process arbitrary file names. If no -e, -f, --expression, or --file options are given on the command-line, then the first non-option argument on the command line is taken to be the script to be executed. If any command-line parameters remain after processing the above, these parameters are interpreted as the names of input files to be processed. A file name of ‘-’ refers to the standard input stream. The standard input will be processed if no file names are specified. (1)This applies to commands such as =, a, c, i, l, p. You can still write to the standard output by using the w or W commands together with the /dev/stdout special file(2)Note that GNU sed creates the backup file whether or not any output is actually changed.",
+      "id": "01-guide/03-command-line-options.md",
+      "titleEN": "Command-Line Options",
+      "canonical": "canonical/en/01-guide/03-command-line-options.md",
+      "canonicalSHA256": "0f6843ee8c6761cedf4c8298f88fa082804743673eb7fcce12b5600cfd8c67e7",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/03-command-line-options.md",
+      "translationSHA256": "dd7f3441b5261188f7219429b6e8892fc3a07516cd5bafb4f5b7d7186a419bf7",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/03-command-line-options.md",
+          "sha256": "0f6843ee8c6761cedf4c8298f88fa082804743673eb7fcce12b5600cfd8c67e7"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/03-command-line-options.md",
+          "sha256": "dd7f3441b5261188f7219429b6e8892fc3a07516cd5bafb4f5b7d7186a419bf7"
+        }
+      ]
+    },
+    {
+      "slug": "04-exit-status",
+      "sourceNode": "Exit-status",
+      "sourcePre": [
+        "$ echo | sed 'Q42' ; echo $?\n42\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Exit-status-1",
+          "text": "2.3 Exit status"
+        }
+      ],
+      "footnotes": [],
+      "pre": 1,
+      "sourceText": "2.3 Exit status An exit status of zero indicates success, and a nonzero value indicates failure. GNU sed returns the following exit status error values: 0 Successful completion. 1 Invalid command, invalid syntax, invalid regular expression or a GNU sed extension command used with --posix. 2 One or more of the input file specified on the command line could not be opened (e.g. if a file is not found, or read permission is denied). Processing continued with other files. 4 An I/O error, or a serious processing error during runtime, GNU sed aborted immediately. Additionally, the commands q and Q can be used to terminate sed with a custom exit code value (this is a GNU sed extension): $ echo | sed 'Q42' ; echo $? 42",
+      "id": "01-guide/04-exit-status.md",
+      "titleEN": "Exit Status",
+      "canonical": "canonical/en/01-guide/04-exit-status.md",
+      "canonicalSHA256": "f1e189f87cc3af7bc70008e1489b34d4ecdb6fd967dc56e0e67c41edf3f4551e",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/04-exit-status.md",
+      "translationSHA256": "67875183842685dca1bce11f18d93048763490999600fb02a2fa77a8fd2c1387",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/04-exit-status.md",
+          "sha256": "f1e189f87cc3af7bc70008e1489b34d4ecdb6fd967dc56e0e67c41edf3f4551e"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/04-exit-status.md",
+          "sha256": "67875183842685dca1bce11f18d93048763490999600fb02a2fa77a8fd2c1387"
+        }
+      ]
+    },
+    {
+      "slug": "05-script-overview",
+      "sourceNode": "sed-script-overview",
+      "sourcePre": [
+        "[addr]X[options]\n",
+        "sed '30,35d' input.txt > output.txt\n",
+        "sed '/^foo/q42' input.txt > output.txt\n",
+        "sed '/^foo/d ; s/hello/world/g' input.txt > output.txt\n\nsed -e '/^foo/d' -e 's/hello/world/g' input.txt > output.txt\n\necho '/^foo/d' > script.sed\necho 's/hello/world/g' >> script.sed\nsed -f script.sed input.txt > output.txt\n\necho 's/hello/world/g' > script2.sed\nsed -e '/^foo/d' -f script2.sed input.txt > output.txt\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "sed-scripts-1",
+          "text": "3 sed scripts"
+        },
+        {
+          "depth": 3,
+          "slug": "sed-script-overview-1",
+          "text": "3.1 sed script overview"
+        }
+      ],
+      "footnotes": [],
+      "pre": 4,
+      "sourceText": "3 sed scripts 3.1 sed script overview A sed program consists of one or more sed commands, passed in by one or more of the -e, -f, --expression, and --file options, or the first non-option argument if zero of these options are used. This document will refer to “the” sed script; this is understood to mean the in-order concatenation of all of the scripts and script-files passed in. See Overview. sed commands follow this syntax: [addr]X[options] X is a single-letter sed command. [addr] is an optional line address. If [addr] is specified, the command X will be executed only on the matched lines. [addr] can be a single line number, a regular expression, or a range of lines (see Addresses: selecting lines). Additional [options] are used for some sed commands. The following example deletes lines 30 to 35 in the input. 30,35 is an address range. d is the delete command: sed '30,35d' input.txt > output.txt The following example prints all input until a line starting with the string ‘foo’ is found. If such line is found, sed will terminate with exit status 42. If such line was not found (and no other error occurred), sed will exit with status 0. /^foo/ is a regular-expression address. q is the quit command. 42 is the command option. sed '/^foo/q42' input.txt > output.txt Commands within a script or script-file can be separated by semicolons (;) or newlines (ASCII 10). Multiple scripts can be specified with -e or -f options. The following examples are all equivalent. They perform two sed operations: deleting any lines matching the regular expression /^foo/, and replacing all occurrences of the string ‘hello’ with ‘world’: sed '/^foo/d ; s/hello/world/g' input.txt > output.txt sed -e '/^foo/d' -e 's/hello/world/g' input.txt > output.txt echo '/^foo/d' > script.sed echo 's/hello/world/g' >> script.sed sed -f script.sed input.txt > output.txt echo 's/hello/world/g' > script2.sed sed -e '/^foo/d' -f script2.sed input.txt > output.txt Commands a, c, e, i, r, R, w, W, due to their syntax, cannot be followed by semicolons working as command separators and thus should be terminated with newlines or be placed at the end of a script or script-file. Commands can also be preceded with optional non-significant whitespace characters. See Multiple commands syntax.",
+      "id": "01-guide/05-script-overview.md",
+      "titleEN": "sed Script Overview",
+      "canonical": "canonical/en/01-guide/05-script-overview.md",
+      "canonicalSHA256": "0feeeeb5aec50be938aaeee73c3931e0dbb6afbccc80c22368da4b02dbfda573",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/05-script-overview.md",
+      "translationSHA256": "a2f740604bf1379ed04a92d4cdb52d38ee7dd1e31de49d606b3caf72f2a5c20b",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/05-script-overview.md",
+          "sha256": "0feeeeb5aec50be938aaeee73c3931e0dbb6afbccc80c22368da4b02dbfda573"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/05-script-overview.md",
+          "sha256": "a2f740604bf1379ed04a92d4cdb52d38ee7dd1e31de49d606b3caf72f2a5c20b"
+        }
+      ]
+    },
+    {
+      "slug": "06-command-summary",
+      "sourceNode": "sed-commands-list",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "sed-commands-summary",
+          "text": "3.2 sed commands summary"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "3.2 sed commands summary The following commands are supported in GNU sed. Some are standard POSIX commands, while other are GNU extensions. Details and examples for each command are in the following sections. (Mnemonics) are shown in parentheses. a\\ text Append text after a line. a text Append text after a line (alternative syntax). b label Branch unconditionally to label. The label may be omitted, in which case the next cycle is started. c\\ text Replace (change) lines with text. c text Replace (change) lines with text (alternative syntax). d Delete the pattern space; immediately start next cycle. D If pattern space contains newlines, delete text in the pattern space up to the first newline, and restart cycle with the resultant pattern space, without reading a new line of input. If pattern space contains no newline, start a normal new cycle as if the d command was issued. e Executes the command that is found in pattern space and replaces the pattern space with the output; a trailing newline is suppressed. e command Executes command and sends its output to the output stream. The command can run across multiple lines, all but the last ending with a back-slash. F (filename) Print the file name of the current input file (with a trailing newline). g Replace the contents of the pattern space with the contents of the hold space. G Append a newline to the contents of the pattern space, and then append the contents of the hold space to that of the pattern space. h (hold) Replace the contents of the hold space with the contents of the pattern space. H Append a newline to the contents of the hold space, and then append the contents of the pattern space to that of the hold space. i\\ text insert text before a line. i text insert text before a line (alternative syntax). l Print the pattern space in an unambiguous form. n (next) If auto-print is not disabled, print the pattern space, then, regardless, replace the pattern space with the next line of input. If there is no more input then sed exits without processing any more commands. N Add a newline to the pattern space, then append the next line of input to the pattern space. If there is no more input then sed exits without processing any more commands. p Print the pattern space. P Print the pattern space, up to the first <newline>. q[exit-code] (quit) Exit sed without processing any more commands or input. Q[exit-code] (quit) This command is the same as q, but will not print the contents of pattern space. Like q, it provides the ability to return an exit code to the caller. r filename Reads file filename. R filename Queue a line of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. s/regexp/replacement/[flags] (substitute) Match the regular-expression against the content of the pattern space. If found, replace matched string with replacement. t label (test) Branch to label only if there has been a successful substitution since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started. T label (test) Branch to label only if there have been no successful substitutions since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started. v [version] (version) This command does nothing, but makes sed fail if GNU sed extensions are not supported, or if the requested version is not available. w filename Write the pattern space to filename. W filename Write to the given filename the portion of the pattern space up to the first newline x Exchange the contents of the hold and pattern spaces. y/src/dst/ Transliterate any characters in the pattern space which match any of the source-chars with the corresponding character in dest-chars. z (zap) This command empties the content of pattern space. # A comment, until the next newline. { cmd ; cmd ... } Group several commands together. = Print the current input line number (with a trailing newline). : label Specify the location of label for branch commands (b, t, T).",
+      "id": "01-guide/06-command-summary.md",
+      "titleEN": "sed Commands Summary",
+      "canonical": "canonical/en/01-guide/06-command-summary.md",
+      "canonicalSHA256": "a7b16a52a8a111c362c451f29ae4c308d776477b38418567f71120775f221ccf",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/06-command-summary.md",
+      "translationSHA256": "3dd1736e182095100471a36c18caf4aa0c16cea4d7ab2e1c4d52140a29942bef",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/06-command-summary.md",
+          "sha256": "a7b16a52a8a111c362c451f29ae4c308d776477b38418567f71120775f221ccf"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/06-command-summary.md",
+          "sha256": "3dd1736e182095100471a36c18caf4aa0c16cea4d7ab2e1c4d52140a29942bef"
+        }
+      ]
+    },
+    {
+      "slug": "07-substitution",
+      "sourceNode": "The-_0022s_0022-Command",
+      "sourcePre": [
+        "s/\\(b\\?\\)-/x\\u\\1/g\n",
+        "s/\\(b\\?\\)-/\\u\\1x/g\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "The-s-Command",
+          "text": "3.3 The s Command"
+        }
+      ],
+      "footnotes": [
+        "FOOT3"
+      ],
+      "pre": 2,
+      "sourceText": "3.3 The s Command The s command (as in substitute) is probably the most important in sed and has a lot of different options. The syntax of the s command is ‘s/regexp/replacement/flags’. Its basic concept is simple: the s command attempts to match the pattern space against the supplied regular expression regexp; if the match is successful, then that portion of the pattern space which was matched is replaced with replacement. For details about regexp syntax see Regular Expression Addresses. The replacement can contain \\n (n being a number from 1 to 9, inclusive) references, which refer to the portion of the match which is contained between the nth \\( and its matching \\). Also, the replacement can contain unescaped & characters which reference the whole matched portion of the pattern space. The / characters may be uniformly replaced by any other single character within any given s command. The / character (or whatever other character is used in its stead) can appear in the regexp or replacement only if it is preceded by a \\ character. Finally, as a GNU sed extension, you can include a special sequence made of a backslash and one of the letters L, l, U, u, or E. The meaning is as follows: \\L Turn the replacement to lowercase until a \\U or \\E is found, \\l Turn the next character to lowercase, \\U Turn the replacement to uppercase until a \\L or \\E is found, \\u Turn the next character to uppercase, \\E Stop case conversion started by \\L or \\U. When the g flag is being used, case conversion does not propagate from one occurrence of the regular expression to another. For example, when the following command is executed with ‘a-b-’ in pattern space: s/\\(b\\?\\)-/x\\u\\1/g the output is ‘axxB’. When replacing the first ‘-’, the ‘\\u’ sequence only affects the empty replacement of ‘\\1’. It does not affect the x character that is added to pattern space when replacing b- with xB. On the other hand, \\l and \\u do affect the remainder of the replacement text if they are followed by an empty substitution. With ‘a-b-’ in pattern space, the following command: s/\\(b\\?\\)-/\\u\\1x/g will replace ‘-’ with ‘X’ (uppercase) and ‘b-’ with ‘Bx’. If this behavior is undesirable, you can prevent it by adding a ‘\\E’ sequence—after ‘\\1’ in this case. To include a literal \\, &, or newline in the final replacement, be sure to precede the desired \\, &, or newline in the replacement with a \\. The s command can be followed by zero or more of the following flags: g Apply the replacement to all matches to the regexp, not just the first. number Only replace the numberth match of the regexp. interaction in s command Note: the POSIX standard does not specify what should happen when you mix the g and number modifiers, and currently there is no widely agreed upon meaning across sed implementations. For GNU sed, the interaction is defined to be: ignore matches before the numberth, and then match and replace all matches from the numberth on. p If the substitution was made, then print the new pattern space. Note: when both the p and e options are specified, the relative ordering of the two produces very different results. In general, ep (evaluate then print) is what you want, but operating the other way round can be useful for debugging. For this reason, the current version of GNU sed interprets specially the presence of p options both before and after e, printing the pattern space before and after evaluation, while in general flags for the s command show their effect just once. This behavior, although documented, might change in future versions. w filename If the substitution was made, then write out the result to the named file. As a GNU sed extension, two special values of filename are supported: /dev/stderr, which writes the result to the standard error, and /dev/stdout, which writes to the standard output.3 e This command allows one to pipe input from a shell command into pattern space. If a substitution was made, the command that is found in pattern space is executed and pattern space is replaced with its output. A trailing newline is suppressed; results are undefined if the command to be executed contains a NUL character. This is a GNU sed extension. I i The I modifier to regular-expression matching is a GNU extension which makes sed match regexp in a case-insensitive manner. M m The M modifier to regular-expression matching is a GNU sed extension which directs GNU sed to match the regular expression in multi-line mode. The modifier causes ^ and $ to match respectively (in addition to the normal behavior) the empty string after a newline, and the empty string before a newline. There are special character sequences (\\` and \\') which always match the beginning or the end of the buffer. In addition, the period character does not match a new-line character in multi-line mode. (3)This is equivalent to p unless the -i option is being used.",
+      "id": "01-guide/07-substitution.md",
+      "titleEN": "The s Command",
+      "canonical": "canonical/en/01-guide/07-substitution.md",
+      "canonicalSHA256": "546f4e0c4b5360da7238318127e2176761ed1129cfaf1fb3947d06850ca78a0b",
+      "batch": 1,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/07-substitution.md",
+      "translationSHA256": "3a353761cbd1f80f95cbce3fb1da35b2eb9d8eec6c2efa17524051a68e616e01",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/07-substitution.md",
+          "sha256": "546f4e0c4b5360da7238318127e2176761ed1129cfaf1fb3947d06850ca78a0b"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/07-substitution.md",
+          "sha256": "3a353761cbd1f80f95cbce3fb1da35b2eb9d8eec6c2efa17524051a68e616e01"
+        }
+      ]
+    },
+    {
+      "slug": "08-often-used-commands",
+      "sourceNode": "Common-Commands",
+      "sourcePre": [
+        "$ seq 3 | sed 2q\n1\n2\n",
+        "$ seq 3 | sed 2d\n1\n3\n",
+        "$ seq 3 | sed -n 2p\n2\n",
+        "$ seq 6 | sed 'n;n;s/./x/'\n1\n2\nx\n4\n5\nx\n",
+        "$ seq 6 | sed '0~3s/./x/'\n1\n2\nx\n4\n5\nx\n",
+        "$ seq 3 | sed -n '2{s/2/X/ ; p}'\nX\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Often_002dUsed-Commands",
+          "text": "3.4 Often-Used Commands"
+        }
+      ],
+      "footnotes": [],
+      "pre": 6,
+      "sourceText": "3.4 Often-Used Commands If you use sed at all, you will quite likely want to know these commands. # [No addresses allowed.] The # character begins a comment; the comment continues until the next newline. If you are concerned about portability, be aware that some implementations of sed (which are not POSIX conforming) may only support a single one-line comment, and then only when the very first character of the script is a #. Warning: if the first two characters of the sed script are #n, then the -n (no-autoprint) option is forced. If you want to put a comment in the first line of your script and that comment begins with the letter ‘n’ and you do not want this behavior, then be sure to either use a capital ‘N’, or place at least one space before the ‘n’. q [exit-code] Exit sed without processing any more commands or input. Example: stop after printing the second line: $ seq 3 | sed 2q 1 2 This command accepts only one address. Note that the current pattern space is printed if auto-print is not disabled with the -n options. The ability to return an exit code from the sed script is a GNU sed extension. See also the GNU sed extension Q command which quits silently without printing the current pattern space. d Delete the pattern space; immediately start next cycle. Example: delete the second input line: $ seq 3 | sed 2d 1 3 p Print out the pattern space (to the standard output). This command is usually only used in conjunction with the -n command-line option. Example: print only the second input line: $ seq 3 | sed -n 2p 2 n If auto-print is not disabled, print the pattern space, then, regardless, replace the pattern space with the next line of input. If there is no more input then sed exits without processing any more commands. This command is useful to skip lines (e.g. process every Nth line). Example: perform substitution on every 3rd line (i.e. two n commands skip two lines): $ seq 6 | sed 'n;n;s/./x/' 1 2 x 4 5 x GNU sed provides an extension address syntax of first~step to achieve the same result: $ seq 6 | sed '0~3s/./x/' 1 2 x 4 5 x { commands } A group of commands may be enclosed between { and } characters. This is particularly useful when you want a group of commands to be triggered by a single address (or address-range) match. Example: perform substitution then print the second input line: $ seq 3 | sed -n '2{s/2/X/ ; p}' X",
+      "id": "01-guide/08-often-used-commands.md",
+      "titleEN": "Often-Used Commands",
+      "canonical": "canonical/en/01-guide/08-often-used-commands.md",
+      "canonicalSHA256": "33355a10daeea463d10486872d5ea69fba52e97786110026e8c12e3f1e4f5a53",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/08-often-used-commands.md",
+      "translationSHA256": "b28e00bcb719b9d18d1908ce6dd8b22ca48c75ba8dcb0e23782d436483938502",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/08-often-used-commands.md",
+          "sha256": "33355a10daeea463d10486872d5ea69fba52e97786110026e8c12e3f1e4f5a53"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/08-often-used-commands.md",
+          "sha256": "b28e00bcb719b9d18d1908ce6dd8b22ca48c75ba8dcb0e23782d436483938502"
+        }
+      ]
+    },
+    {
+      "slug": "09-less-frequent-commands",
+      "sourceNode": "Other-Commands",
+      "sourcePre": [
+        "$ echo hello world | sed 'y/abcdefghij/0123456789/'\n74llo worl3\n",
+        "$ seq 3 | sed '2a hello'\n1\n2\nhello\n3\n",
+        "$ seq 3 | sed '2a\\\nhello'\n-|1\n-|2\n-|hello\n-|3\n",
+        "$ seq 3 | sed '2a\\\nhello\\\nworld\n3s/./X/'\n-|1\n-|2\n-|hello\n-|world\n-|X\n",
+        "$ seq 3 | sed -e '2a\\' -e hello\n1\n2\nhello\n3\n\n$ sed -e '2a\\' -e \"$VAR\"\n",
+        "$ seq 3 | sed '2i hello'\n1\nhello\n2\n3\n",
+        "$ seq 3 | sed '2i\\\nhello'\n-|1\n-|hello\n-|2\n-|3\n",
+        "$ seq 3 | sed '2i\\\nhello\\\nworld\ns/./X/'\n-|X\n-|hello\n-|world\n-|X\n-|X\n",
+        "$ seq 3 | sed -e '2i\\' -e hello\n1\nhello\n2\n3\n\n$ sed -e '2i\\' -e \"$VAR\"\n",
+        "$ seq 10 | sed '2,9c hello'\n1\nhello\n10\n",
+        "$ seq 5 | sed '2,4c\\\nhello\\\nworld'\n-|1\n-|hello\n-|world\n-|5\n",
+        "$ seq 3 | sed '2c\\\nhello\ns/./X/'\n-|X\n-|hello\n-|X\n",
+        "$ seq 3 | sed -e '2c\\' -e hello\n1\nhello\n3\n\n$ sed -e '2c\\' -e \"$VAR\"\n",
+        "$ printf '%s\\n' aaa bbb ccc | sed =\n1\naaa\n2\nbbb\n3\nccc\n",
+        "$ seq 3 | sed '2r/etc/hostname'\n1\n2\nfencepost.gnu.org\n3\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Less-Frequently_002dUsed-Commands",
+          "text": "3.5 Less Frequently-Used Commands"
+        }
+      ],
+      "footnotes": [
+        "FOOT4"
+      ],
+      "pre": 15,
+      "sourceText": "3.5 Less Frequently-Used Commands Though perhaps less frequently used than those in the previous section, some very small yet useful sed scripts can be built with these commands. y/source-chars/dest-chars/ Transliterate any characters in the pattern space which match any of the source-chars with the corresponding character in dest-chars. Example: transliterate ‘a-j’ into ‘0-9’: $ echo hello world | sed 'y/abcdefghij/0123456789/' 74llo worl3 (The / characters may be uniformly replaced by any other single character within any given y command.) Instances of the / (or whatever other character is used in its stead), \\, or newlines can appear in the source-chars or dest-chars lists, provide that each instance is escaped by a \\. The source-chars and dest-chars lists must contain the same number of characters (after de-escaping). See the tr command from GNU coreutils for similar functionality. a text Appending text after a line. This is a GNU extension to the standard a command - see below for details. Example: Add ‘hello’ after the second line: $ seq 3 | sed '2a hello' 1 2 hello 3 Leading whitespace after the a command is ignored. The text to add is read until the end of the line. a\\ text Appending text after a line. Example: Add ‘hello’ after the second line (-| indicates printed output lines): $ seq 3 | sed '2a\\ hello' -|1 -|2 -|hello -|3 The a command queues the lines of text which follow this command (each but the last ending with a \\, which are removed from the output) to be output at the end of the current cycle, or when the next input line is read. As a GNU extension, this command accepts two addresses. Escape sequences in text are processed, so you should use \\\\ in text to print a single backslash. The commands resume after the last line without a backslash (\\) - ‘world’ in the following example: $ seq 3 | sed '2a\\ hello\\ world 3s/./X/' -|1 -|2 -|hello -|world -|X As a GNU extension, the a command and text can be separated into two -e parameters, enabling easier scripting: $ seq 3 | sed -e '2a\\' -e hello 1 2 hello 3 $ sed -e '2a\\' -e \"$VAR\" i text insert text before a line. This is a GNU extension to the standard i command - see below for details. Example: Insert ‘hello’ before the second line: $ seq 3 | sed '2i hello' 1 hello 2 3 Leading whitespace after the i command is ignored. The text to add is read until the end of the line. i\\ text Immediately output the lines of text which follow this command. Example: Insert ‘hello’ before the second line (-| indicates printed output lines): $ seq 3 | sed '2i\\ hello' -|1 -|hello -|2 -|3 As a GNU extension, this command accepts two addresses. Escape sequences in text are processed, so you should use \\\\ in text to print a single backslash. The commands resume after the last line without a backslash (\\) - ‘world’ in the following example: $ seq 3 | sed '2i\\ hello\\ world s/./X/' -|X -|hello -|world -|X -|X As a GNU extension, the i command and text can be separated into two -e parameters, enabling easier scripting: $ seq 3 | sed -e '2i\\' -e hello 1 hello 2 3 $ sed -e '2i\\' -e \"$VAR\" c text Replaces the line(s) with text. This is a GNU extension to the standard c command - see below for details. Example: Replace the 2nd to 9th lines with the word ‘hello’: $ seq 10 | sed '2,9c hello' 1 hello 10 Leading whitespace after the c command is ignored. The text to add is read until the end of the line. c\\ text Delete the lines matching the address or address-range, and output the lines of text which follow this command. Example: Replace 2nd to 4th lines with the words ‘hello’ and ‘world’ (-| indicates printed output lines): $ seq 5 | sed '2,4c\\ hello\\ world' -|1 -|hello -|world -|5 If no addresses are given, each line is replaced. A new cycle is started after this command is done, since the pattern space will have been deleted. In the following example, the c starts a new cycle and the substitution command is not performed on the replaced text: $ seq 3 | sed '2c\\ hello s/./X/' -|X -|hello -|X As a GNU extension, the c command and text can be separated into two -e parameters, enabling easier scripting: $ seq 3 | sed -e '2c\\' -e hello 1 hello 3 $ sed -e '2c\\' -e \"$VAR\" = Print out the current input line number (with a trailing newline). $ printf '%s\\n' aaa bbb ccc | sed = 1 aaa 2 bbb 3 ccc As a GNU extension, this command accepts two addresses. l n Print the pattern space in an unambiguous form: non-printable characters (and the \\ character) are printed in C-style escaped form; long lines are split, with a trailing \\ character to indicate the split; the end of each line is marked with a $. n specifies the desired line-wrap length; a length of 0 (zero) means to never wrap long lines. If omitted, the default as specified on the command line is used. The n parameter is a GNU sed extension. r filename Reads file filename. Example: $ seq 3 | sed '2r/etc/hostname' 1 2 fencepost.gnu.org 3 Queue the contents of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. Note that if filename cannot be read, it is treated as if it were an empty file, without any error indication. As a GNU sed extension, the special value /dev/stdin is supported for the file name, which reads the contents of the standard input. As a GNU extension, this command accepts two addresses. The file will then be reread and inserted on each of the addressed lines. As a GNU sed extension, the r command accepts a zero address, inserting a file before the first line of the input see Adding a header to multiple files. w filename Write the pattern space to filename. As a GNU sed extension, two special values of filename are supported: /dev/stderr, which writes the result to the standard error, and /dev/stdout, which writes to the standard output.4 The file will be created (or truncated) before the first input line is read; all w commands (including instances of the w flag on successful s commands) which refer to the same filename are output without closing and reopening the file. D If pattern space contains no newline, start a normal new cycle as if the d command was issued. Otherwise, delete text in the pattern space up to the first newline, and restart cycle with the resultant pattern space, without reading a new line of input. N Add a newline to the pattern space, then append the next line of input to the pattern space. If there is no more input then sed exits without processing any more commands. When -z is used, a zero byte (the ascii ‘NUL’ character) is added between the lines (instead of a new line). By default sed does not terminate if there is no ’next’ input line. This is a GNU extension which can be disabled with --posix. See N command on the last line. P Print out the portion of the pattern space up to the first newline. h Replace the contents of the hold space with the contents of the pattern space. H Append a newline to the contents of the hold space, and then append the contents of the pattern space to that of the hold space. g Replace the contents of the pattern space with the contents of the hold space. G Append a newline to the contents of the pattern space, and then append the contents of the hold space to that of the pattern space. x Exchange the contents of the hold and pattern spaces. (4)This is equivalent to p unless the -i option is being used.",
+      "id": "01-guide/09-less-frequent-commands.md",
+      "titleEN": "Less Frequently-Used Commands",
+      "canonical": "canonical/en/01-guide/09-less-frequent-commands.md",
+      "canonicalSHA256": "1a982a04db8728f41c2df1be5ac6de1c7dd4f89d17610855503129cec78071fa",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/09-less-frequent-commands.md",
+      "translationSHA256": "18ae30cd39c70c477ba61bc9b9fa2957faebc58b26fad233afd3d00540617998",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/09-less-frequent-commands.md",
+          "sha256": "1a982a04db8728f41c2df1be5ac6de1c7dd4f89d17610855503129cec78071fa"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/09-less-frequent-commands.md",
+          "sha256": "18ae30cd39c70c477ba61bc9b9fa2957faebc58b26fad233afd3d00540617998"
+        }
+      ]
+    },
+    {
+      "slug": "10-guru-commands",
+      "sourceNode": "Programming-Commands",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Commands-for-sed-gurus",
+          "text": "3.6 Commands for sed gurus"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "3.6 Commands for sed gurus In most cases, use of these commands indicates that you are probably better off programming in something like awk or Perl. But occasionally one is committed to sticking with sed, and these commands can enable one to write quite convoluted scripts. : label [No addresses allowed.] Specify the location of label for branch commands. In all other respects, a no-op. b label Unconditionally branch to label. The label may be omitted, in which case the next cycle is started. t label Branch to label only if there has been a successful substitution since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started.",
+      "id": "01-guide/10-guru-commands.md",
+      "titleEN": "Commands for sed Gurus",
+      "canonical": "canonical/en/01-guide/10-guru-commands.md",
+      "canonicalSHA256": "140d2d1f6a8b84220cecb8d5bef8ac7e55c62007be5548857e398f11fe18856c",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/10-guru-commands.md",
+      "translationSHA256": "b2a0b127d3f93ae50cac09ce543833df7b2c08f6127bf3f4dbfc0c034d311ff4",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/10-guru-commands.md",
+          "sha256": "140d2d1f6a8b84220cecb8d5bef8ac7e55c62007be5548857e398f11fe18856c"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/10-guru-commands.md",
+          "sha256": "b2a0b127d3f93ae50cac09ce543833df7b2c08f6127bf3f4dbfc0c034d311ff4"
+        }
+      ]
+    },
+    {
+      "slug": "11-gnu-commands",
+      "sourceNode": "Extended-Commands",
+      "sourcePre": [
+        ":eat\n$d       Quit silently on the last line\nN        Read another line, silently\ng        Overwrite pattern space each time to save memory\nb eat\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Commands-Specific-to-GNU-sed",
+          "text": "3.7 Commands Specific to GNU sed"
+        }
+      ],
+      "footnotes": [],
+      "pre": 1,
+      "sourceText": "3.7 Commands Specific to GNU sed These commands are specific to GNU sed, so you must use them with care and only when you are sure that hindering portability is not evil. They allow you to check for GNU sed extensions or to do tasks that are required quite often, yet are unsupported by standard seds. e [command] This command allows one to pipe input from a shell command into pattern space. Without parameters, the e command executes the command that is found in pattern space and replaces the pattern space with the output; a trailing newline is suppressed. If a parameter is specified, instead, the e command interprets it as a command and sends its output to the output stream. The command can run across multiple lines, all but the last ending with a back-slash. In both cases, the results are undefined if the command to be executed contains a NUL character. Note that, unlike the r command, the output of the command will be printed immediately; the r command instead delays the output to the end of the current cycle. F Print out the file name of the current input file (with a trailing newline). Q [exit-code] This command accepts only one address. This command is the same as q, but will not print the contents of pattern space. Like q, it provides the ability to return an exit code to the caller. This command can be useful because the only alternative ways to accomplish this apparently trivial function are to use the -n option (which can unnecessarily complicate your script) or resorting to the following snippet, which wastes time by reading the whole file without any visible effect: :eat $d Quit silently on the last line N Read another line, silently g Overwrite pattern space each time to save memory b eat R filename Queue a line of filename to be read and inserted into the output stream at the end of the current cycle, or when the next input line is read. Note that if filename cannot be read, or if its end is reached, no line is appended, without any error indication. As with the r command, the special value /dev/stdin is supported for the file name, which reads a line from the standard input. T label Branch to label only if there have been no successful substitutions since the last input line was read or conditional branch was taken. The label may be omitted, in which case the next cycle is started. v version This command does nothing, but makes sed fail if GNU sed extensions are not supported, simply because other versions of sed do not implement it. In addition, you can specify the version of sed that your script requires, such as 4.0.5. The default is 4.0 because that is the first version that implemented this command. This command enables all GNU extensions even if POSIXLY_CORRECT is set in the environment. W filename Write to the given filename the portion of the pattern space up to the first newline. Everything said under the w command about file handling holds here too. z This command empties the content of pattern space. It is usually the same as ‘s/.*//’, but is more efficient and works in the presence of invalid multibyte sequences in the input stream. POSIX mandates that such sequences are not matched by ‘.’, so that there is no portable way to clear sed’s buffers in the middle of the script in most multibyte locales (including UTF-8 locales).",
+      "id": "01-guide/11-gnu-commands.md",
+      "titleEN": "Commands Specific to GNU sed",
+      "canonical": "canonical/en/01-guide/11-gnu-commands.md",
+      "canonicalSHA256": "28456ebb911c1d750af7cb0239a688c9c9c295412b193c8d8071220d6d9e0db4",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/11-gnu-commands.md",
+      "translationSHA256": "de20c1c85c26b9fc6df2ada6df673454f8eeebe3db9b12623dc9ace2e258d69e",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/11-gnu-commands.md",
+          "sha256": "28456ebb911c1d750af7cb0239a688c9c9c295412b193c8d8071220d6d9e0db4"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/11-gnu-commands.md",
+          "sha256": "de20c1c85c26b9fc6df2ada6df673454f8eeebe3db9b12623dc9ace2e258d69e"
+        }
+      ]
+    },
+    {
+      "slug": "12-multiple-commands",
+      "sourceNode": "Multiple-commands-syntax",
+      "sourcePre": [
+        "$ seq 6 | sed '1d\n3d\n5d'\n2\n4\n6\n\n$ seq 6 | sed -e 1d -e 3d -e 5d\n2\n4\n6\n",
+        "$ seq 6 | sed '1d;3d;5d'\n2\n4\n6\n",
+        "$ seq 4 | sed '{1d;3d}'\n2\n4\n\n$ seq 6 | sed '{1d;3d};5d'\n2\n4\n6\n",
+        "$ seq 3 | sed '/1/b x ; s/^/=/ ; :x ; 3d'\n1\n=2\n\n$ seq 3 | sed -e '/1/bx' -e 's/^/=/' -e ':x' -e '3d'\n1\n=2\n",
+        "$ seq 2 | sed '1aHello ; 2d'\n1\nHello ; 2d\n2\n",
+        "$ seq 2 | sed -e 1aHello -e 2d\n1\nHello\n\n$ seq 2 | sed '1aHello\n2d'\n1\nHello\n",
+        "$ seq 2 | sed '1a\\\nHello\n2d'\n1\nHello\n",
+        "$ seq 3 | sed '# this is a comment ; 2d'\n1\n2\n3\n\n\n$ seq 3 | sed '# this is a comment\n2d'\n1\n3\n",
+        "$ seq 2 | sed '1w hello.txt ; 2d'\n1\n2\n\n$ ls -log\ntotal 4\n-rw-rw-r-- 1 2 Jan 23 23:03 hello.txt ; 2d\n\n$ cat 'hello.txt ; 2d'\n1\n",
+        "$ echo x | sed '1rhello.txt ; N'\nx\n",
+        "$ echo a | sed '1e touch foo#bar'\na\n\n$ ls -1\nfoo#bar\n\n$ echo a | sed '1e touch foo ; s/a/b/'\nsh: 1: s/a/b/: not found\na\n",
+        "$ echo a | sed 's/a/b/w1.txt#foo'\nb\n\n$ ls -1\n1.txt#foo\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Multiple-commands-syntax-1",
+          "text": "3.8 Multiple commands syntax"
+        }
+      ],
+      "footnotes": [],
+      "pre": 12,
+      "sourceText": "3.8 Multiple commands syntax There are several methods to specify multiple commands in a sed program. Using newlines is most natural when running a sed script from a file (using the -f option). On the command line, all sed commands may be separated by newlines. Alternatively, you may specify each command as an argument to an -e option: $ seq 6 | sed '1d 3d 5d' 2 4 6 $ seq 6 | sed -e 1d -e 3d -e 5d 2 4 6 A semicolon (‘;’) may be used to separate most simple commands: $ seq 6 | sed '1d;3d;5d' 2 4 6 The {,},b,t,T,: commands can be separated with a semicolon (this is a non-portable GNU sed extension). $ seq 4 | sed '{1d;3d}' 2 4 $ seq 6 | sed '{1d;3d};5d' 2 4 6 Labels used in b,t,T,: commands are read until a semicolon. Leading and trailing whitespace is ignored. In the examples below the label is ‘x’. The first example works with GNU sed. The second is a portable equivalent. For more information about branching and labels see Branching and Flow Control. $ seq 3 | sed '/1/b x ; s/^/=/ ; :x ; 3d' 1 =2 $ seq 3 | sed -e '/1/bx' -e 's/^/=/' -e ':x' -e '3d' 1 =2 3.8.1 Commands Requiring a newline The following commands cannot be separated by a semicolon and require a newline: a,c,i (append/change/insert) All characters following a,c,i commands are taken as the text to append/change/insert. Using a semicolon leads to undesirable results: $ seq 2 | sed '1aHello ; 2d' 1 Hello ; 2d 2 Separate the commands using -e or a newline: $ seq 2 | sed -e 1aHello -e 2d 1 Hello $ seq 2 | sed '1aHello 2d' 1 Hello Note that specifying the text to add (‘Hello’) immediately after a,c,i is itself a GNU sed extension. A portable, POSIX-compliant alternative is: $ seq 2 | sed '1a\\ Hello 2d' 1 Hello # (comment) All characters following ‘#’ until the next newline are ignored. $ seq 3 | sed '# this is a comment ; 2d' 1 2 3 $ seq 3 | sed '# this is a comment 2d' 1 3 r,R,w,W (reading and writing files) The r,R,w,W commands parse the filename until end of the line. If whitespace, comments or semicolons are found, they will be included in the filename, leading to unexpected results: $ seq 2 | sed '1w hello.txt ; 2d' 1 2 $ ls -log total 4 -rw-rw-r-- 1 2 Jan 23 23:03 hello.txt ; 2d $ cat 'hello.txt ; 2d' 1 Note that sed silently ignores read/write errors in r,R,w,W commands (such as missing files). In the following example, sed tries to read a file named ‘hello.txt ; N’. The file is missing, and the error is silently ignored: $ echo x | sed '1rhello.txt ; N' x e (command execution) Any characters following the e command until the end of the line will be sent to the shell. If whitespace, comments or semicolons are found, they will be included in the shell command, leading to unexpected results: $ echo a | sed '1e touch foo#bar' a $ ls -1 foo#bar $ echo a | sed '1e touch foo ; s/a/b/' sh: 1: s/a/b/: not found a s///[we] (substitute with e or w flags) In a substitution command, the w flag writes the substitution result to a file, and the e flag executes the substitution result as a shell command. As with the r/R/w/W/e commands, these must be terminated with a newline. If whitespace, comments or semicolons are found, they will be included in the shell command or filename, leading to unexpected results: $ echo a | sed 's/a/b/w1.txt#foo' b $ ls -1 1.txt#foo",
+      "id": "01-guide/12-multiple-commands.md",
+      "titleEN": "Multiple Commands Syntax",
+      "canonical": "canonical/en/01-guide/12-multiple-commands.md",
+      "canonicalSHA256": "c65559e66ebf2b61d59414defe23c44caee78a607160517587965690c0ac7198",
+      "batch": 2,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "translationCanonical": "canonical/ja/01-guide/12-multiple-commands.md",
+      "translationSHA256": "7411369442e72ff4a2835064a588544a46a58c4c23cbbb09cfcca40e44321036",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/12-multiple-commands.md",
+          "sha256": "c65559e66ebf2b61d59414defe23c44caee78a607160517587965690c0ac7198"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/12-multiple-commands.md",
+          "sha256": "7411369442e72ff4a2835064a588544a46a58c4c23cbbb09cfcca40e44321036"
+        }
+      ]
+    },
+    {
+      "slug": "13-sed-addresses",
+      "sourceNode": "sed-addresses",
+      "heading": "4 Addresses: selecting lines",
+      "pre": 0,
+      "footnotes": [],
+      "bodySHA256": "803856c6bc557bbd2892d0cf8c9c162f5d1d1691512eabcd00e240e84d1b3601",
+      "id": "01-guide/13-sed-addresses.md",
+      "originalChapterScope": "4",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/drafts/en/13-sed-addresses.body.html",
+        "sha256": "803856c6bc557bbd2892d0cf8c9c162f5d1d1691512eabcd00e240e84d1b3601"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/13-sed-addresses.md",
+          "sha256": "1ed66656ef2ad08fa1a5549cdf7ff2d7e49d830223010b0a3078db0804f99b92"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/13-sed-addresses.md",
+          "sha256": "c1d5bca52208ef4f3239de0dd229a8ced3290dd45a67fcfe7d023b6bc9532bfa"
+        }
+      ]
+    },
+    {
+      "slug": "14-addresses-overview",
+      "sourceNode": "Addresses-overview",
+      "heading": "4.1 Addresses overview",
+      "pre": 6,
+      "footnotes": [],
+      "bodySHA256": "6f97341cc7f992de723ec4bfacc30debb24db8bc34fdfc09184ca4491fdee307",
+      "id": "01-guide/14-addresses-overview.md",
+      "originalChapterScope": "4",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/drafts/en/14-addresses-overview.body.html",
+        "sha256": "6f97341cc7f992de723ec4bfacc30debb24db8bc34fdfc09184ca4491fdee307"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/14-addresses-overview.md",
+          "sha256": "49d3f8166b766b459faa30f2536fa2cf6c14f3458dd820a52e1f75d352508422"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/14-addresses-overview.md",
+          "sha256": "964a345e2651e45326a62fc7d295f37ec0bf5905fa78aef3809ba65d06452cd4"
+        }
+      ]
+    },
+    {
+      "slug": "15-numeric-addresses",
+      "sourceNode": "Numeric-Addresses",
+      "heading": "4.2 Selecting lines by numbers",
+      "pre": 1,
+      "footnotes": [],
+      "bodySHA256": "50138dff7ee79f2e0b38b2208ba91e11007e9da8e5e641f8519e89224b0c2e18",
+      "id": "01-guide/15-numeric-addresses.md",
+      "originalChapterScope": "4",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/drafts/en/15-numeric-addresses.body.html",
+        "sha256": "50138dff7ee79f2e0b38b2208ba91e11007e9da8e5e641f8519e89224b0c2e18"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/15-numeric-addresses.md",
+          "sha256": "0cbacabbfb6323d72a32fad130b5107ef21d343c3f097fec0443e0b52b28def8"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/15-numeric-addresses.md",
+          "sha256": "e2979c2d7ebd069a6e3fbf54ebf473cf2f79b50fe4855539e64c209e2552f479"
+        }
+      ]
+    },
+    {
+      "slug": "16-regexp-addresses",
+      "sourceNode": "Regexp-Addresses",
+      "heading": "4.3 selecting lines by text matching",
+      "pre": 6,
+      "footnotes": [
+        "FOOT5"
+      ],
+      "bodySHA256": "b7b1653a24af3d1d95e2ef87b824700d5af5eca340f43dbce1bf56ac03abdb8c",
+      "id": "01-guide/16-regexp-addresses.md",
+      "originalChapterScope": "4",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/drafts/en/16-regexp-addresses.body.html",
+        "sha256": "b7b1653a24af3d1d95e2ef87b824700d5af5eca340f43dbce1bf56ac03abdb8c"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/16-regexp-addresses.md",
+          "sha256": "9c29ffc784288a4e6cc8cfda32f33c0532eee61920f03463c6568ad4dad3ed01"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/16-regexp-addresses.md",
+          "sha256": "0028b6bf774d0557af768d1bb92b989d5fd66be614dfbfa86aa129a9bd3d62b2"
+        }
+      ]
+    },
+    {
+      "slug": "17-range-addresses",
+      "sourceNode": "Range-Addresses",
+      "heading": "4.4 Range Addresses",
+      "pre": 6,
+      "footnotes": [],
+      "bodySHA256": "c00aa2fb40dee52f1e825bfcee4fb76a573cfb05e3c0e455de7b49ad55a80bdc",
+      "id": "01-guide/17-range-addresses.md",
+      "originalChapterScope": "4",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/drafts/en/17-range-addresses.body.html",
+        "sha256": "c00aa2fb40dee52f1e825bfcee4fb76a573cfb05e3c0e455de7b49ad55a80bdc"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/17-range-addresses.md",
+          "sha256": "354251cdb6dd1b510bd0fbf800b538d46df99d16849490522df9fac0554d411c"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/17-range-addresses.md",
+          "sha256": "0c1ecf8aecde48ab0279bce85f1910b28a0550511a177fc38de9c76e2a03db05"
+        }
+      ]
+    },
+    {
+      "slug": "18-zero-address",
+      "sourceNode": "Zero-Address",
+      "heading": "4.5 Zero Address",
+      "pre": 0,
+      "footnotes": [],
+      "bodySHA256": "26730a343764e737a0e5b343cbefd937e73b31802abcf4efd5e1bb255e1f5fde",
+      "id": "01-guide/18-zero-address.md",
+      "originalChapterScope": "4",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-4/drafts/en/18-zero-address.body.html",
+        "sha256": "26730a343764e737a0e5b343cbefd937e73b31802abcf4efd5e1bb255e1f5fde"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/18-zero-address.md",
+          "sha256": "ab7eda4db81f765efbbdc39f94d90d6e39d0cd77130c26d560a9cf9555020a65"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/18-zero-address.md",
+          "sha256": "aaddc313c93e20906a73523b2caa79f5b3d00a1709c0c986466f870142c8d235"
+        }
+      ]
+    },
+    {
+      "slug": "19-sed-regular-expressions",
+      "sourceNode": "sed-regular-expressions",
+      "heading": "5 Regular Expressions: selecting text",
+      "pre": 0,
+      "footnotes": [],
+      "bodySHA256": "f212f7f0d5774ea1fde42ab42333eb2474260ecc46e877dcd853aa97a283990b",
+      "id": "01-guide/19-sed-regular-expressions.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/19-sed-regular-expressions.body.html",
+        "sha256": "f212f7f0d5774ea1fde42ab42333eb2474260ecc46e877dcd853aa97a283990b"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/19-sed-regular-expressions.md",
+          "sha256": "06465f6685aa6bfa0c26db526ba20ea9577a52961bf1894d0bd14a482c464479"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/19-sed-regular-expressions.md",
+          "sha256": "6ed1acb1faab9a4f8a895d75041f29d5f4aff301449c9406ff17629083a82f17"
+        }
+      ]
+    },
+    {
+      "slug": "20-regular-expressions-overview",
+      "sourceNode": "Regular-Expressions-Overview",
+      "heading": "5.1 Overview of regular expression in sed",
+      "pre": 3,
+      "footnotes": [],
+      "bodySHA256": "5a407d97761a0d0c2a38c8c86f9083e860e7d80f7ef36876dd0cb24993a8a9e8",
+      "id": "01-guide/20-regular-expressions-overview.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/20-regular-expressions-overview.body.html",
+        "sha256": "5a407d97761a0d0c2a38c8c86f9083e860e7d80f7ef36876dd0cb24993a8a9e8"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/20-regular-expressions-overview.md",
+          "sha256": "4a8cbedb274e3a8fff0b2ee40d90839e5633a768b0d76a8a2600e901d83a3e80"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/20-regular-expressions-overview.md",
+          "sha256": "79fee47e38c2c65b821b8d2f97f13a6bc6ec9e7c842f2779b9a10d95a6f24cbe"
+        }
+      ]
+    },
+    {
+      "slug": "21-bre-vs-ere",
+      "sourceNode": "BRE-vs-ERE",
+      "heading": "5.2 Basic (BRE) and extended (ERE) regular expression",
+      "pre": 4,
+      "footnotes": [],
+      "bodySHA256": "e8cf73ca1353d751811faba6804e08836329e03dda779a33a5a8d9959563e6b9",
+      "id": "01-guide/21-bre-vs-ere.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/21-bre-vs-ere.body.html",
+        "sha256": "e8cf73ca1353d751811faba6804e08836329e03dda779a33a5a8d9959563e6b9"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/21-bre-vs-ere.md",
+          "sha256": "b2efe37f9347dc450bb9414a2750c71f4dbd7655b1a433d01db4bc41551aae43"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/21-bre-vs-ere.md",
+          "sha256": "c13745f96944af69759d34550a01c6a6d7e211fa9c084357669f2925bb6d9a27"
+        }
+      ]
+    },
+    {
+      "slug": "22-bre-syntax",
+      "sourceNode": "BRE-syntax",
+      "heading": "5.3 Overview of basic regular expression syntax",
+      "pre": 0,
+      "footnotes": [],
+      "bodySHA256": "64a6b3032f493e80306e11d0480ffe1d4ab90c2ff779dcb5db3d1c12f2f2d98a",
+      "id": "01-guide/22-bre-syntax.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/22-bre-syntax.body.html",
+        "sha256": "64a6b3032f493e80306e11d0480ffe1d4ab90c2ff779dcb5db3d1c12f2f2d98a"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/22-bre-syntax.md",
+          "sha256": "4ae7068a296447e43772cf47a4468f043e2599eaaaa1e42d5757dbade0e6f239"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/22-bre-syntax.md",
+          "sha256": "1c1fd538956887de08d3892ee2c0c54e799bef83727e5b413fa59f42f247bcfd"
+        }
+      ]
+    },
+    {
+      "slug": "23-ere-syntax",
+      "sourceNode": "ERE-syntax",
+      "heading": "5.4 Overview of extended regular expression syntax",
+      "pre": 0,
+      "footnotes": [],
+      "bodySHA256": "fa15400bfc6d169410abefe680476e6435091d073308f95fe864c262c0b63ac1",
+      "id": "01-guide/23-ere-syntax.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/23-ere-syntax.body.html",
+        "sha256": "fa15400bfc6d169410abefe680476e6435091d073308f95fe864c262c0b63ac1"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/23-ere-syntax.md",
+          "sha256": "ee6a9175e8d607c978d69826f7c80789a6bc8c62c387a76dd7636625233b405f"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/23-ere-syntax.md",
+          "sha256": "5db92a0e0432e1090ee2e51c0367539bd5be4b117f5da14dd54dadbe4d9451ee"
+        }
+      ]
+    },
+    {
+      "slug": "24-character-classes-and-bracket-expressions",
+      "sourceNode": "Character-Classes-and-Bracket-Expressions",
+      "heading": "5.5 Character Classes and Bracket Expressions",
+      "pre": 3,
+      "footnotes": [],
+      "bodySHA256": "f79ce86f8a3880c3277926555e607e87e02b8f8007dac9f68c9c1707b2f67a68",
+      "id": "01-guide/24-character-classes-and-bracket-expressions.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/24-character-classes-and-bracket-expressions.body.html",
+        "sha256": "f79ce86f8a3880c3277926555e607e87e02b8f8007dac9f68c9c1707b2f67a68"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/24-character-classes-and-bracket-expressions.md",
+          "sha256": "c327b096100281a96b2dbe6a7562398e26d09e787d3cf875fde3e0be15d694a8"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/24-character-classes-and-bracket-expressions.md",
+          "sha256": "7d512b5cc7fd57822da9ce2f5001fe81d21bad9f99a2f96b180fbf6805678ce6"
+        }
+      ]
+    },
+    {
+      "slug": "25-regexp-extensions",
+      "sourceNode": "regexp-extensions",
+      "heading": "5.6 regular expression extensions",
+      "pre": 9,
+      "footnotes": [],
+      "bodySHA256": "89eb6cd1621d9a188ffa6898c478ee3383fe5a56330f84baef179abccee58108",
+      "id": "01-guide/25-regexp-extensions.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/25-regexp-extensions.body.html",
+        "sha256": "89eb6cd1621d9a188ffa6898c478ee3383fe5a56330f84baef179abccee58108"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/25-regexp-extensions.md",
+          "sha256": "64ba7c61098a4ccc57ba99d3c18c5d5e3e1d11eb140a7fdab9aaef4341779108"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/25-regexp-extensions.md",
+          "sha256": "d1a5f361e3a710ec79ac08e631e5854837a731691b8bc120ce1f3e4821fffd8d"
+        }
+      ]
+    },
+    {
+      "slug": "26-back_002dreferences-and-subexpressions",
+      "sourceNode": "Back_002dreferences-and-Subexpressions",
+      "heading": "5.7 Back-references and Subexpressions",
+      "pre": 3,
+      "footnotes": [],
+      "bodySHA256": "42ffeeeb4fa3415ef8e30554ba7f5cac54075206efb308a34e1954ce172d7fb4",
+      "id": "01-guide/26-back_002dreferences-and-subexpressions.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/26-back_002dreferences-and-subexpressions.body.html",
+        "sha256": "42ffeeeb4fa3415ef8e30554ba7f5cac54075206efb308a34e1954ce172d7fb4"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/26-back_002dreferences-and-subexpressions.md",
+          "sha256": "6a3c17061cb7837043859155a1f3bba91abb1dd3ca01a5a3aa513cbfb9b9efa0"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/26-back_002dreferences-and-subexpressions.md",
+          "sha256": "74dd2812a39de89cb6a87ca18ae0f1b22ee589e29588a3360fe4bbaa5758757a"
+        }
+      ]
+    },
+    {
+      "slug": "27-escapes",
+      "sourceNode": "Escapes",
+      "heading": "5.8 Escape Sequences - specifying special characters",
+      "pre": 0,
+      "footnotes": [
+        "FOOT6"
+      ],
+      "bodySHA256": "a26146db52adccbff2688544a8a2f636b11f7b7d3428b00208444c8043404015",
+      "id": "01-guide/27-escapes.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/27-escapes.body.html",
+        "sha256": "a26146db52adccbff2688544a8a2f636b11f7b7d3428b00208444c8043404015"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/27-escapes.md",
+          "sha256": "3ebc9871dfcda3574ef54af95364913a5afe981d4780e1cfc3847682de1428da"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/27-escapes.md",
+          "sha256": "9ea1e2f929d1b6f3aac4b5cf573f561b652ce7b84a3ab8e93d2759ab599bcde5"
+        }
+      ]
+    },
+    {
+      "slug": "28-escaping-precedence",
+      "sourceNode": "Escaping-Precedence",
+      "heading": "5.8.1 Escaping Precedence",
+      "pre": 3,
+      "footnotes": [],
+      "bodySHA256": "08397da914d77c454cf884eae51326224c681c6a82d04fbfe7893bb0857e1c5a",
+      "id": "01-guide/28-escaping-precedence.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/28-escaping-precedence.body.html",
+        "sha256": "08397da914d77c454cf884eae51326224c681c6a82d04fbfe7893bb0857e1c5a"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/28-escaping-precedence.md",
+          "sha256": "16e80d32b5bd3e008c3ba0c38b37f461df919be16eafe6b187dc7b1ebf812371"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/28-escaping-precedence.md",
+          "sha256": "09fc54a5ba006873c091d8dbcad589e3b5ea93320a2dc069d3babb743e48f391"
+        }
+      ]
+    },
+    {
+      "slug": "29-locale-considerations",
+      "sourceNode": "Locale-Considerations",
+      "heading": "5.9 Multibyte characters and Locale Considerations",
+      "pre": 2,
+      "footnotes": [
+        "FOOT7"
+      ],
+      "bodySHA256": "b1e433d4bb142386907f023c0f34146ae67db33a0b4d2d9eed8cf928501b873d",
+      "id": "01-guide/29-locale-considerations.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/29-locale-considerations.body.html",
+        "sha256": "b1e433d4bb142386907f023c0f34146ae67db33a0b4d2d9eed8cf928501b873d"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/29-locale-considerations.md",
+          "sha256": "bdbade3048fa0928a1f353daa44b974a1b9875a681de68d3c0730c78955137ff"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/29-locale-considerations.md",
+          "sha256": "00a30aa6f15d494476adff72fadc25410066df40ebdd884d2e75293e8bc459e2"
+        }
+      ]
+    },
+    {
+      "slug": "30-invalid-multibyte-characters",
+      "sourceNode": "Invalid-multibyte-characters",
+      "heading": "5.9.1 Invalid multibyte characters",
+      "pre": 6,
+      "footnotes": [],
+      "bodySHA256": "d588d07cbaae67e2ad59baab71db12f47607f8f8f67d323aa416eb199e88ad8b",
+      "id": "01-guide/30-invalid-multibyte-characters.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/30-invalid-multibyte-characters.body.html",
+        "sha256": "d588d07cbaae67e2ad59baab71db12f47607f8f8f67d323aa416eb199e88ad8b"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/30-invalid-multibyte-characters.md",
+          "sha256": "ed433d60d4c31d8443c40a74e0f2c6f0f16ce1f528f05b06b44f48581792c935"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/30-invalid-multibyte-characters.md",
+          "sha256": "d03007ea20addd6f9ff20d92356330e26d21bb4d8753e031e2cebe089875428a"
+        }
+      ]
+    },
+    {
+      "slug": "31-upper_002flower-case-conversion",
+      "sourceNode": "Upper_002fLower-case-conversion",
+      "heading": "5.9.2 Upper/Lower case conversion",
+      "pre": 1,
+      "footnotes": [],
+      "bodySHA256": "71b1a6621e22494368fa1ccf25481fdc1e5a91fdb91d07bdb3eb65a3de9a6bf2",
+      "id": "01-guide/31-upper_002flower-case-conversion.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/31-upper_002flower-case-conversion.body.html",
+        "sha256": "71b1a6621e22494368fa1ccf25481fdc1e5a91fdb91d07bdb3eb65a3de9a6bf2"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/31-upper_002flower-case-conversion.md",
+          "sha256": "424ffc660298abec1ff96736c87a6e581b72a312a81dc6682db12ab5fedfd87e"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/31-upper_002flower-case-conversion.md",
+          "sha256": "7768c2356ca058aae1c30513fefd36fca31353951587ee22c6e5fb530326df20"
+        }
+      ]
+    },
+    {
+      "slug": "32-multibyte-regexp-character-classes",
+      "sourceNode": "Multibyte-regexp-character-classes",
+      "heading": "5.9.3 Multibyte regexp character classes",
+      "pre": 2,
+      "footnotes": [],
+      "bodySHA256": "8e958aa1b6ef3682faef9a234cd6e9daccd7ee546f96e8260876221d02670e1d",
+      "id": "01-guide/32-multibyte-regexp-character-classes.md",
+      "originalChapterScope": "5",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/drafts/en/32-multibyte-regexp-character-classes.body.html",
+        "sha256": "8e958aa1b6ef3682faef9a234cd6e9daccd7ee546f96e8260876221d02670e1d"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/32-multibyte-regexp-character-classes.md",
+          "sha256": "cf958f2afd3a3070d3136533c79e610c04ab19bf40c8ddffcb80686e09b5befc"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/32-multibyte-regexp-character-classes.md",
+          "sha256": "a43ad03300e977e9c9fdad8959752a94f27cfb563bed91cb19447646c64b74ac"
+        }
+      ]
+    },
+    {
+      "slug": "33-advanced-sed",
+      "sourceNode": "advanced-sed",
+      "heading": "6 Advanced sed : cycles and buffers",
+      "pre": 0,
+      "footnotes": [],
+      "bodySHA256": "d2fd24a55bbdf96240965aa9a0a59984fa1aaf69342b7fb4021e02b8e40c8c1a",
+      "id": "01-guide/33-advanced-sed.md",
+      "originalChapterScope": "6",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/drafts/en/33-advanced-sed.body.html",
+        "sha256": "d2fd24a55bbdf96240965aa9a0a59984fa1aaf69342b7fb4021e02b8e40c8c1a"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/33-advanced-sed.md",
+          "sha256": "6fea6505f4a8680feb164fca4396c2c0318d5eb372e153e49c23ba86f8f865c9"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/33-advanced-sed.md",
+          "sha256": "f02bde9eaecf42e1c3f43f979befa259e39c3aacad833f9c045ab8789ac39d30"
+        }
+      ]
+    },
+    {
+      "slug": "34-execution-cycle",
+      "sourceNode": "Execution-Cycle",
+      "heading": "6.1 How sed Works",
+      "pre": 0,
+      "footnotes": [
+        "FOOT8"
+      ],
+      "bodySHA256": "e935cf0e6edb0e26453d7cded6c9851f4dcb5adbbc8fd23aa4e8ba40d6f6a921",
+      "id": "01-guide/34-execution-cycle.md",
+      "originalChapterScope": "6",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/drafts/en/34-execution-cycle.body.html",
+        "sha256": "e935cf0e6edb0e26453d7cded6c9851f4dcb5adbbc8fd23aa4e8ba40d6f6a921"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/34-execution-cycle.md",
+          "sha256": "15b91f7ac877d7c39358f4b55719cd2ea0464fcbd45a0375aec942d87e18602f"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/34-execution-cycle.md",
+          "sha256": "a8a25410c266e3eeb966756cf4cecd8ed73401de1d9061c367432eb75f15cd03"
+        }
+      ]
+    },
+    {
+      "slug": "35-hold-and-pattern-buffers",
+      "sourceNode": "Hold-and-Pattern-Buffers",
+      "heading": "6.2 Hold and Pattern Buffers",
+      "pre": 0,
+      "footnotes": [],
+      "bodySHA256": "6db2d482158e200d5ea1c52676d26bb76acce4ed180945d5583d951acb4c36c1",
+      "id": "01-guide/35-hold-and-pattern-buffers.md",
+      "originalChapterScope": "6",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/drafts/en/35-hold-and-pattern-buffers.body.html",
+        "sha256": "6db2d482158e200d5ea1c52676d26bb76acce4ed180945d5583d951acb4c36c1"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/35-hold-and-pattern-buffers.md",
+          "sha256": "5cc9e26c7cebe6df667e49b76cf0d6df450a57dc944845df1fc8b289716a9ea4"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/35-hold-and-pattern-buffers.md",
+          "sha256": "fb2fbe3bfecac343714c8dedb87a20aac821fb8a7f57d82525a0232de9965ab4"
+        }
+      ]
+    },
+    {
+      "slug": "36-multiline-techniques",
+      "sourceNode": "Multiline-techniques",
+      "heading": "6.3 Multiline techniques - using D,G,H,N,P to process multiple lines",
+      "pre": 3,
+      "footnotes": [],
+      "bodySHA256": "6f0ed924474ea1654b30e711e6351e5e83631af1095246554d5d31049bf7dae7",
+      "id": "01-guide/36-multiline-techniques.md",
+      "originalChapterScope": "6",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/drafts/en/36-multiline-techniques.body.html",
+        "sha256": "6f0ed924474ea1654b30e711e6351e5e83631af1095246554d5d31049bf7dae7"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/36-multiline-techniques.md",
+          "sha256": "b1f783901f4053bc1d1a8b8fe250e3367b10a002d569305e3b20a0b31fd43ae0"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/36-multiline-techniques.md",
+          "sha256": "2f851718167c10b0fd0c5e7f7d2e8183470dc0d555ff7bcc02e38d17f7f9f2de"
+        }
+      ]
+    },
+    {
+      "slug": "37-branching-and-flow-control",
+      "sourceNode": "Branching-and-flow-control",
+      "heading": "6.4 Branching and Flow Control",
+      "pre": 1,
+      "footnotes": [],
+      "bodySHA256": "62024313d5940acf11dfad5e0bbcb6a1572a8c8baca387f2e2b9fc016acb68c4",
+      "id": "01-guide/37-branching-and-flow-control.md",
+      "originalChapterScope": "6",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/drafts/en/37-branching-and-flow-control.body.html",
+        "sha256": "62024313d5940acf11dfad5e0bbcb6a1572a8c8baca387f2e2b9fc016acb68c4"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/37-branching-and-flow-control.md",
+          "sha256": "ca3f9b012522e3bdb3eb27ccc113c9660bd20c69e12d024987aeb1055a68d894"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/37-branching-and-flow-control.md",
+          "sha256": "21a1708eeaf7ed9fe77991f3812012291f8ebe9f607d8ade5457ddb413c91ea3"
+        }
+      ]
+    },
+    {
+      "slug": "38-branching-and-cycles",
+      "sourceNode": "Branching-and-Cycles",
+      "heading": "6.4.1 Branching and Cycles",
+      "pre": 4,
+      "footnotes": [],
+      "bodySHA256": "32b96d5bdfbdee1215b904ea797273da72d9a4346e80f9c2b8632c8931fb8f15",
+      "id": "01-guide/38-branching-and-cycles.md",
+      "originalChapterScope": "6",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/drafts/en/38-branching-and-cycles.body.html",
+        "sha256": "32b96d5bdfbdee1215b904ea797273da72d9a4346e80f9c2b8632c8931fb8f15"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/38-branching-and-cycles.md",
+          "sha256": "626441f4709f2512271f77e2d67c9c381fde4e1c9a8ed992ae706cac87f20d9b"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/38-branching-and-cycles.md",
+          "sha256": "c339e16e0f8c84db4f0ae6311770f3b6260b95a1283753856d4fdfca85125efe"
+        }
+      ]
+    },
+    {
+      "slug": "39-branching-example_003a-joining-lines",
+      "sourceNode": "Branching-example_003a-joining-lines",
+      "heading": "6.4.2 Branching example: joining lines",
+      "pre": 3,
+      "footnotes": [],
+      "bodySHA256": "4c9f82eed61c30c96683817a2f2626f8bf8129826361b32a2083648cdcbc4e5e",
+      "id": "01-guide/39-branching-example_003a-joining-lines.md",
+      "originalChapterScope": "6",
+      "sourceBody": {
+        "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/drafts/en/39-branching-example_003a-joining-lines.body.html",
+        "sha256": "4c9f82eed61c30c96683817a2f2626f8bf8129826361b32a2083648cdcbc4e5e"
+      },
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/39-branching-example_003a-joining-lines.md",
+          "sha256": "b782e298f50cbfe52894d0b23280acb5b1298fe4aaf4e1fa32fab98ad3928ecc"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/39-branching-example_003a-joining-lines.md",
+          "sha256": "843cffeb856e0358128f867f29a08398bcfaf146e51164c6e6f761e72481fed2"
+        }
+      ]
+    },
+    {
+      "slug": "40-examples",
+      "sourceNode": "Examples",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Some-Sample-Scripts",
+          "text": "7 Some Sample Scripts"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "7 Some Sample Scripts Here are some sed scripts to guide you in the art of mastering sed.",
+      "id": "01-guide/40-examples.md",
+      "titleEN": "Some Sample Scripts",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/40-examples.md",
+      "canonicalSHA256": "6ba9c3b20839bb7e4f3c39fd333b25c2f39a089db283492ad75736960405f4a8",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/40-examples.md",
+      "translationSHA256": "4a1776ff55ec0a77c4469baf26d403a18b2802d8a199ecc01f3a4a0d30896152",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/40-examples.md",
+          "sha256": "6ba9c3b20839bb7e4f3c39fd333b25c2f39a089db283492ad75736960405f4a8"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/40-examples.md",
+          "sha256": "4a1776ff55ec0a77c4469baf26d403a18b2802d8a199ecc01f3a4a0d30896152"
+        }
+      ]
+    },
+    {
+      "slug": "41-joining-lines",
+      "sourceNode": "Joining-lines",
+      "sourcePre": [
+        "$ cat lines.txt\nhello\nhel\nlo\nhello\n\n$ sed '2{N;s/\\n//;}' lines.txt\nhello\nhello\nhello\n",
+        "$ cat 1.txt\nthis \\\nis \\\na \\\nlong \\\nline\nand another \\\nline\n\n$ sed -e ':x /\\\\$/ { N; s/\\\\\\n//g ; bx }'  1.txt\nthis is a long line\nand another line\n\n\n#TODO: The above requires gnu sed.\n#      non-gnu seds need newlines after ':' and 'b'\n",
+        "$ cat 2.txt\nSubject: Hello\n    World\nContent-Type: multipart/alternative;\n    boundary=94eb2c190cc6370f06054535da6a\nDate: Tue, 3 Jan 2017 19:41:16 +0000 (GMT)\nAuthentication-Results: mx.gnu.org;\n       dkim=pass header.i=@gnu.org;\n       spf=pass\nMessage-ID: <abcdef@gnu.org>\nFrom: John Doe <jdoe@gnu.org>\nTo: Jane Smith <jsmith@gnu.org>\n\n$ sed -E ':a ; $!N ; s/\\n\\s+/ / ; ta ; P ; D' 2.txt\nSubject: Hello World\nContent-Type: multipart/alternative; boundary=94eb2c190cc6370f06054535da6a\nDate: Tue, 3 Jan 2017 19:41:16 +0000 (GMT)\nAuthentication-Results: mx.gnu.org; dkim=pass header.i=@gnu.org; spf=pass\nMessage-ID: <abcdef@gnu.org>\nFrom: John Doe <jdoe@gnu.org>\nTo: Jane Smith <jsmith@gnu.org>\n\n# A portable (non-gnu) variation:\n#   sed -e :a -e '$!N;s/\\n  */ /;ta' -e 'P;D'\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Joining-lines-1",
+          "text": "7.1 Joining lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 3,
+      "sourceText": "7.1 Joining lines This section uses N, D and P commands to process multiple lines, and the b and t commands for branching. See Multiline techniques - using D,G,H,N,P to process multiple lines and Branching and Flow Control. Join specific lines (e.g. if lines 2 and 3 need to be joined): $ cat lines.txt hello hel lo hello $ sed '2{N;s/\\n//;}' lines.txt hello hello hello Join backslash-continued lines: $ cat 1.txt this \\ is \\ a \\ long \\ line and another \\ line $ sed -e ':x /\\\\$/ { N; s/\\\\\\n//g ; bx }' 1.txt this is a long line and another line #TODO: The above requires gnu sed. # non-gnu seds need newlines after ':' and 'b' Join lines that start with whitespace (e.g SMTP headers): $ cat 2.txt Subject: Hello World Content-Type: multipart/alternative; boundary=94eb2c190cc6370f06054535da6a Date: Tue, 3 Jan 2017 19:41:16 +0000 (GMT) Authentication-Results: mx.gnu.org; dkim=pass header.i=@gnu.org; spf=pass Message-ID: <abcdef@gnu.org> From: John Doe <jdoe@gnu.org> To: Jane Smith <jsmith@gnu.org> $ sed -E ':a ; $!N ; s/\\n\\s+/ / ; ta ; P ; D' 2.txt Subject: Hello World Content-Type: multipart/alternative; boundary=94eb2c190cc6370f06054535da6a Date: Tue, 3 Jan 2017 19:41:16 +0000 (GMT) Authentication-Results: mx.gnu.org; dkim=pass header.i=@gnu.org; spf=pass Message-ID: <abcdef@gnu.org> From: John Doe <jdoe@gnu.org> To: Jane Smith <jsmith@gnu.org> # A portable (non-gnu) variation: # sed -e :a -e '$!N;s/\\n */ /;ta' -e 'P;D'",
+      "id": "01-guide/41-joining-lines.md",
+      "titleEN": "Joining lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/41-joining-lines.md",
+      "canonicalSHA256": "ae6c4af353be1989294e7797a7612e79717d87611e2fda31e1dd7c6e2507af41",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/41-joining-lines.md",
+      "translationSHA256": "c430ad2544c877b2425f2f5f2646759fbd4723cdc38f80b0178db2fc1497bfe4",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/41-joining-lines.md",
+          "sha256": "ae6c4af353be1989294e7797a7612e79717d87611e2fda31e1dd7c6e2507af41"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/41-joining-lines.md",
+          "sha256": "c430ad2544c877b2425f2f5f2646759fbd4723cdc38f80b0178db2fc1497bfe4"
+        }
+      ]
+    },
+    {
+      "slug": "42-centering-lines",
+      "sourceNode": "Centering-lines",
+      "sourcePre": [
+        "#!/usr/bin/sed -f\n\n",
+        "# Put 80 spaces in the buffer\n1 {\n  x\n  s/^$/          /\n  s/^.*$/&&&&&&&&/\n  x\n}\n",
+        "\n\n",
+        "# delete leading and trailing spaces\ny/TAB/ /\ns/^ *//\ns/ *$//\n",
+        "\n\n",
+        "# add a newline and 80 spaces to end of line\nG\n",
+        "\n\n",
+        "# keep first 81 chars (80 + a newline)\ns/^\\(.\\{81\\}\\).*$/\\1/\n",
+        "\n\n",
+        "# \\2 matches half of the spaces, which are moved to the beginning\ns/^\\(.*\\)\\n\\(.*\\)\\2/\\2\\1/\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Centering-Lines",
+          "text": "7.2 Centering Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 10,
+      "sourceText": "7.2 Centering Lines This script centers all lines of a file on a 80 columns width. To change that width, the number in \\{…\\} must be replaced, and the number of added spaces also must be changed. Note how the buffer commands are used to separate parts in the regular expressions to be matched—this is a common technique. #!/usr/bin/sed -f # Put 80 spaces in the buffer 1 { x s/^$/ / s/^.*$/&&&&&&&&/ x } # delete leading and trailing spaces y/TAB/ / s/^ *// s/ *$// # add a newline and 80 spaces to end of line G # keep first 81 chars (80 + a newline) s/^\\(.\\{81\\}\\).*$/\\1/ # \\2 matches half of the spaces, which are moved to the beginning s/^\\(.*\\)\\n\\(.*\\)\\2/\\2\\1/",
+      "id": "01-guide/42-centering-lines.md",
+      "titleEN": "Centering Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/42-centering-lines.md",
+      "canonicalSHA256": "1456c8b4210c947b74536c64a106b8a7c448c496011bd5a1a9cf329e04eb9968",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/42-centering-lines.md",
+      "translationSHA256": "37de36d9840719da8e68aa5a1f8775f8e8089c60efc17a49cda60914bb9a5624",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/42-centering-lines.md",
+          "sha256": "1456c8b4210c947b74536c64a106b8a7c448c496011bd5a1a9cf329e04eb9968"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/42-centering-lines.md",
+          "sha256": "37de36d9840719da8e68aa5a1f8775f8e8089c60efc17a49cda60914bb9a5624"
+        }
+      ]
+    },
+    {
+      "slug": "43-increment-a-number",
+      "sourceNode": "Increment-a-number",
+      "sourcePre": [
+        "#!/usr/bin/sed -f\n\n/[^0-9]/ d\n\n",
+        "# replace all trailing 9s by _ (any other character except digits, could\n# be used)\n:d\ns/9\\(_*\\)$/_\\1/\ntd\n",
+        "\n\n",
+        "# incr last digit only.  The first line adds a most-significant\n# digit of 1 if we have to add a digit.\n",
+        "\n\n",
+        "s/^\\(_*\\)$/1\\1/; tn\ns/8\\(_*\\)$/9\\1/; tn\ns/7\\(_*\\)$/8\\1/; tn\ns/6\\(_*\\)$/7\\1/; tn\ns/5\\(_*\\)$/6\\1/; tn\ns/4\\(_*\\)$/5\\1/; tn\ns/3\\(_*\\)$/4\\1/; tn\ns/2\\(_*\\)$/3\\1/; tn\ns/1\\(_*\\)$/2\\1/; tn\ns/0\\(_*\\)$/1\\1/; tn\n",
+        "\n\n",
+        ":n\ny/_/0/\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Increment-a-Number",
+          "text": "7.3 Increment a Number"
+        }
+      ],
+      "footnotes": [
+        "FOOT9"
+      ],
+      "pre": 8,
+      "sourceText": "7.3 Increment a Number This script is one of a few that demonstrate how to do arithmetic in sed. This is indeed possible,9 but must be done manually. To increment one number you just add 1 to last digit, replacing it by the following digit. There is one exception: when the digit is a nine the previous digits must be also incremented until you don’t have a nine. This solution by Bruno Haible is very clever and smart because it uses a single buffer; if you don’t have this limitation, the algorithm used in Numbering lines, is faster. It works by replacing trailing nines with an underscore, then using multiple s commands to increment the last digit, and then again substituting underscores with zeros. #!/usr/bin/sed -f /[^0-9]/ d # replace all trailing 9s by _ (any other character except digits, could # be used) :d s/9\\(_*\\)$/_\\1/ td # incr last digit only. The first line adds a most-significant # digit of 1 if we have to add a digit. s/^\\(_*\\)$/1\\1/; tn s/8\\(_*\\)$/9\\1/; tn s/7\\(_*\\)$/8\\1/; tn s/6\\(_*\\)$/7\\1/; tn s/5\\(_*\\)$/6\\1/; tn s/4\\(_*\\)$/5\\1/; tn s/3\\(_*\\)$/4\\1/; tn s/2\\(_*\\)$/3\\1/; tn s/1\\(_*\\)$/2\\1/; tn s/0\\(_*\\)$/1\\1/; tn :n y/_/0/ (9) sed guru Greg Ubben wrote an implementation of the dc RPN calculator! It is distributed together with sed.",
+      "id": "01-guide/43-increment-a-number.md",
+      "titleEN": "Increment a Number",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/43-increment-a-number.md",
+      "canonicalSHA256": "0d270a8d002b7724b97b0a9c794cdacdc221c5ab120050159c929dfe097a85a3",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/43-increment-a-number.md",
+      "translationSHA256": "b509cce36ef18a9c64c99616846f8d64cfd7fd380ee2d2eda041dc9b92f5ff73",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/43-increment-a-number.md",
+          "sha256": "0d270a8d002b7724b97b0a9c794cdacdc221c5ab120050159c929dfe097a85a3"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/43-increment-a-number.md",
+          "sha256": "b509cce36ef18a9c64c99616846f8d64cfd7fd380ee2d2eda041dc9b92f5ff73"
+        }
+      ]
+    },
+    {
+      "slug": "44-rename-files-to-lower-case",
+      "sourceNode": "Rename-files-to-lower-case",
+      "sourcePre": [
+        "#! /bin/sh\n# rename files to lower/upper case...\n#\n# usage:\n#    move-to-lower *\n#    move-to-upper *\n# or\n#    move-to-lower -R .\n#    move-to-upper -R .\n#\n",
+        "\n\n",
+        "help()\n{\n        cat << eof\nUsage: $0 [-n] [-r] [-h] files...\n",
+        "\n\n",
+        "-n      do nothing, only see what would be done\n-R      recursive (use find)\n-h      this message\nfiles   files to remap to lower case\n",
+        "\n\n",
+        "Examples:\n       $0 -n *        (see if everything is ok, then...)\n       $0 *\n",
+        "\n\n       $0 -R .\n\n",
+        "eof\n}\n",
+        "\n\n",
+        "apply_cmd='sh'\nfinder='echo \"$@\" | tr \" \" \"\\n\"'\nfiles_only=\n",
+        "\n\n",
+        "while :\ndo\n    case \"$1\" in\n        -n) apply_cmd='cat' ;;\n        -R) finder='find \"$@\" -type f';;\n        -h) help ; exit 1 ;;\n        *) break ;;\n    esac\n    shift\ndone\n",
+        "\n\n",
+        "if [ -z \"$1\" ]; then\n        echo Usage: $0 [-h] [-n] [-r] files...\n        exit 1\nfi\n",
+        "\n\n",
+        "LOWER='abcdefghijklmnopqrstuvwxyz'\nUPPER='ABCDEFGHIJKLMNOPQRSTUVWXYZ'\n",
+        "\n\n",
+        "case `basename $0` in\n        *upper*) TO=$UPPER; FROM=$LOWER ;;\n        *)       FROM=$UPPER; TO=$LOWER ;;\nesac\n",
+        "\n\neval $finder | sed -n '\n\n",
+        "# remove all trailing slashes\ns/\\/*$//\n",
+        "\n\n",
+        "# add ./ if there is no path, only a filename\n/\\//! s/^/.\\//\n",
+        "\n\n",
+        "# save path+filename\nh\n",
+        "\n\n",
+        "# remove path\ns/.*\\///\n",
+        "\n\n",
+        "# do conversion only on filename\ny/'$FROM'/'$TO'/\n",
+        "\n\n",
+        "# now line contains original path+file, while\n# hold space contains the new filename\nx\n",
+        "\n\n",
+        "# add converted file name to line, which now contains\n# path/file-name\\nconverted-file-name\nG\n",
+        "\n\n",
+        "# check if converted file name is equal to original file name,\n# if it is, do not print anything\n/^.*\\/\\(.*\\)\\n\\1/b\n",
+        "\n\n",
+        "# escape special characters for the shell\ns/[\"$`\\\\]/\\\\&/g\n",
+        "\n\n",
+        "# now, transform path/fromfile\\n, into\n# mv path/fromfile path/tofile and print it\ns/^\\(.*\\/\\)\\(.*\\)\\n\\(.*\\)$/mv \"\\1\\2\" \"\\1\\3\"/p\n",
+        "\n\n' | $apply_cmd\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Rename-Files-to-Lower-Case",
+          "text": "7.4 Rename Files to Lower Case"
+        }
+      ],
+      "footnotes": [],
+      "pre": 40,
+      "sourceText": "7.4 Rename Files to Lower Case This is a pretty strange use of sed. We transform text, and transform it to be shell commands, then just feed them to shell. Don’t worry, even worse hacks are done when using sed; I have seen a script converting the output of date into a bc program! The main body of this is the sed script, which remaps the name from lower to upper (or vice-versa) and even checks out if the remapped name is the same as the original name. Note how the script is parameterized using shell variables and proper quoting. #! /bin/sh # rename files to lower/upper case... # # usage: # move-to-lower * # move-to-upper * # or # move-to-lower -R . # move-to-upper -R . # help() { cat << eof Usage: $0 [-n] [-r] [-h] files... -n do nothing, only see what would be done -R recursive (use find) -h this message files files to remap to lower case Examples: $0 -n * (see if everything is ok, then...) $0 * $0 -R . eof } apply_cmd='sh' finder='echo \"$@\" | tr \" \" \"\\n\"' files_only= while : do case \"$1\" in -n) apply_cmd='cat' ;; -R) finder='find \"$@\" -type f';; -h) help ; exit 1 ;; *) break ;; esac shift done if [ -z \"$1\" ]; then echo Usage: $0 [-h] [-n] [-r] files... exit 1 fi LOWER='abcdefghijklmnopqrstuvwxyz' UPPER='ABCDEFGHIJKLMNOPQRSTUVWXYZ' case `basename $0` in *upper*) TO=$UPPER; FROM=$LOWER ;; *) FROM=$UPPER; TO=$LOWER ;; esac eval $finder | sed -n ' # remove all trailing slashes s/\\/*$// # add ./ if there is no path, only a filename /\\//! s/^/.\\// # save path+filename h # remove path s/.*\\/// # do conversion only on filename y/'$FROM'/'$TO'/ # now line contains original path+file, while # hold space contains the new filename x # add converted file name to line, which now contains # path/file-name\\nconverted-file-name G # check if converted file name is equal to original file name, # if it is, do not print anything /^.*\\/\\(.*\\)\\n\\1/b # escape special characters for the shell s/[\"$`\\\\]/\\\\&/g # now, transform path/fromfile\\n, into # mv path/fromfile path/tofile and print it s/^\\(.*\\/\\)\\(.*\\)\\n\\(.*\\)$/mv \"\\1\\2\" \"\\1\\3\"/p ' | $apply_cmd",
+      "id": "01-guide/44-rename-files-to-lower-case.md",
+      "titleEN": "Rename Files to Lower Case",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/44-rename-files-to-lower-case.md",
+      "canonicalSHA256": "e26156fbd954809fd47336b38ed545f079a7695423d3772fc3f37a563e559b0b",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/44-rename-files-to-lower-case.md",
+      "translationSHA256": "c4fe306a244d4efdfb5468e914682d4c791fa1640216a896f7b03efd4263a8e1",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/44-rename-files-to-lower-case.md",
+          "sha256": "e26156fbd954809fd47336b38ed545f079a7695423d3772fc3f37a563e559b0b"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/44-rename-files-to-lower-case.md",
+          "sha256": "c4fe306a244d4efdfb5468e914682d4c791fa1640216a896f7b03efd4263a8e1"
+        }
+      ]
+    },
+    {
+      "slug": "45-print-bash-environment",
+      "sourceNode": "Print-bash-environment",
+      "sourcePre": [
+        "#!/bin/sh\n\n",
+        "set | sed -n '\n:x\n",
+        "\n\n",
+        "# if no occurrence of ‘=()’ print and load next line\n/=()/! { p; b; }\n/ () $/! { p; b; }\n",
+        "\n\n",
+        "# possible start of functions section\n# save the line in case this is a var like FOO=\"() \"\nh\n",
+        "\n\n",
+        "# if the next line has a brace, we quit because\n# nothing comes after functions\nn\n/^{/ q\n",
+        "\n\n",
+        "# print the old line\nx; p\n",
+        "\n\n",
+        "# work on the new line now\nx; bx\n'\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Print-bash-Environment",
+          "text": "7.5 Print bash Environment"
+        }
+      ],
+      "footnotes": [],
+      "pre": 12,
+      "sourceText": "7.5 Print bash Environment This script strips the definition of the shell functions from the output of the set Bourne-shell command. #!/bin/sh set | sed -n ' :x # if no occurrence of ‘=()’ print and load next line /=()/! { p; b; } / () $/! { p; b; } # possible start of functions section # save the line in case this is a var like FOO=\"() \" h # if the next line has a brace, we quit because # nothing comes after functions n /^{/ q # print the old line x; p # work on the new line now x; bx '",
+      "id": "01-guide/45-print-bash-environment.md",
+      "titleEN": "Print bash Environment",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/45-print-bash-environment.md",
+      "canonicalSHA256": "fee57e726bf461cc8e1c985cf3c786d2dfd4f1aa681df29bd6586c0784c8bc5c",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/45-print-bash-environment.md",
+      "translationSHA256": "151c046ea523b8862ba9d1d8c6fd4afd1bd095f62e552c5cd694578bb1aace31",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/45-print-bash-environment.md",
+          "sha256": "fee57e726bf461cc8e1c985cf3c786d2dfd4f1aa681df29bd6586c0784c8bc5c"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/45-print-bash-environment.md",
+          "sha256": "151c046ea523b8862ba9d1d8c6fd4afd1bd095f62e552c5cd694578bb1aace31"
+        }
+      ]
+    },
+    {
+      "slug": "46-reverse-chars-of-lines",
+      "sourceNode": "Reverse-chars-of-lines",
+      "sourcePre": [
+        "#!/usr/bin/sed -f\n\n/../! b\n\n",
+        "# Reverse a line.  Begin embedding the line between two newlines\ns/^.*$/\\\n&\\\n/\n",
+        "\n\n",
+        "# Move first character at the end.  The regexp matches until\n# there are zero or one characters between the markers\ntx\n:x\ns/\\(\\n.\\)\\(.*\\)\\(.\\n\\)/\\3\\2\\1/\ntx\n",
+        "\n\n",
+        "# Remove the newline markers\ns/\\n//g\n",
+        "#! /bin/sh\n\nbanner -w $1 $2 $3 $4 |\n  sed -e :a -e '/^.\\{0,'$1'\\}$/ { s/$/ /; ba; }' |\n  ~/sedscripts/reverseline.sed\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Reverse-Characters-of-Lines",
+          "text": "7.6 Reverse Characters of Lines"
+        }
+      ],
+      "footnotes": [
+        "FOOT10"
+      ],
+      "pre": 7,
+      "sourceText": "7.6 Reverse Characters of Lines This script can be used to reverse the position of characters in lines. The technique moves two characters at a time, hence it is faster than more intuitive implementations. Note the tx command before the definition of the label. This is often needed to reset the flag that is tested by the t command. Imaginative readers will find uses for this script. An example is reversing the output of banner.10 #!/usr/bin/sed -f /../! b # Reverse a line. Begin embedding the line between two newlines s/^.*$/\\ &\\ / # Move first character at the end. The regexp matches until # there are zero or one characters between the markers tx :x s/\\(\\n.\\)\\(.*\\)\\(.\\n\\)/\\3\\2\\1/ tx # Remove the newline markers s/\\n//g (10) This requires another script to pad the output of banner; for example #! /bin/sh banner -w $1 $2 $3 $4 | sed -e :a -e '/^.\\{0,'$1'\\}$/ { s/$/ /; ba; }' | ~/sedscripts/reverseline.sed",
+      "id": "01-guide/46-reverse-chars-of-lines.md",
+      "titleEN": "Reverse Characters of Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/46-reverse-chars-of-lines.md",
+      "canonicalSHA256": "d4697b0c211d752651a3af7517f6633ec1c5f7fb6d5cc5849578610a36feab2c",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/46-reverse-chars-of-lines.md",
+      "translationSHA256": "6424b5641fa8c878e9fa778bd314def4c4bf9775688666015b46edd65b6fb515",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/46-reverse-chars-of-lines.md",
+          "sha256": "d4697b0c211d752651a3af7517f6633ec1c5f7fb6d5cc5849578610a36feab2c"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/46-reverse-chars-of-lines.md",
+          "sha256": "6424b5641fa8c878e9fa778bd314def4c4bf9775688666015b46edd65b6fb515"
+        }
+      ]
+    },
+    {
+      "slug": "47-text-search-across-multiple-lines",
+      "sourceNode": "Text-search-across-multiple-lines",
+      "sourcePre": [
+        "$ cat two-cities-dup1.txt\nIt was the best of times,\nit was the worst of times,\nit was the the age of wisdom,\nit was the age of foolishness,\n\n$ grep -E '\\b(\\w+)\\s+\\1\\b' two-cities-dup1.txt\nit was the the age of wisdom,\n\n$ grep -n -E '\\b(\\w+)\\s+\\1\\b' two-cities-dup1.txt\n3:it was the the age of wisdom,\n\n$ sed -En '/\\b(\\w+)\\s+\\1\\b/p' two-cities-dup1.txt\nit was the the age of wisdom,\n\n$ sed -En '/\\b(\\w+)\\s+\\1\\b/{=;p}' two-cities-dup1.txt\n3\nit was the the age of wisdom,\n",
+        "$ cat two-cities-dup2.txt\nIt was the best of times, it was the\nworst of times, it was the\nthe age of wisdom,\nit was the age of foolishness,\n\n$ sed -En '{N; /\\b(\\w+)\\s+\\1\\b/{=;p} ; D}'  two-cities-dup2.txt\n3\nworst of times, it was the\nthe age of wisdom,\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Text-search-across-multiple-lines-1",
+          "text": "7.7 Text search across multiple lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 2,
+      "sourceText": "7.7 Text search across multiple lines This section uses N and D commands to search for consecutive words spanning multiple lines. See Multiline techniques - using D,G,H,N,P to process multiple lines. These examples deal with finding doubled occurrences of words in a document. Finding doubled words in a single line is easy using GNU grep and similarly with GNU sed: $ cat two-cities-dup1.txt It was the best of times, it was the worst of times, it was the the age of wisdom, it was the age of foolishness, $ grep -E '\\b(\\w+)\\s+\\1\\b' two-cities-dup1.txt it was the the age of wisdom, $ grep -n -E '\\b(\\w+)\\s+\\1\\b' two-cities-dup1.txt 3:it was the the age of wisdom, $ sed -En '/\\b(\\w+)\\s+\\1\\b/p' two-cities-dup1.txt it was the the age of wisdom, $ sed -En '/\\b(\\w+)\\s+\\1\\b/{=;p}' two-cities-dup1.txt 3 it was the the age of wisdom, The regular expression ‘\\b\\w+\\s+’ searches for word-boundary (‘\\b’), followed by one-or-more word-characters (‘\\w+’), followed by whitespace (‘\\s+’). See regular expression extensions. Adding parentheses around the ‘(\\w+)’ expression creates a subexpression. The regular expression pattern ‘(PATTERN)\\s+\\1’ defines a subexpression (in the parentheses) followed by a back-reference, separated by whitespace. A successful match means the PATTERN was repeated twice in succession. See Back-references and Subexpressions. The word-boundery expression (‘\\b’) at both ends ensures partial words are not matched (e.g. ‘the then’ is not a desired match). The -E option enables extended regular expression syntax, alleviating the need to add backslashes before the parenthesis. See Overview of extended regular expression syntax. When the doubled word span two lines the above regular expression will not find them as grep and sed operate line-by-line. By using N and D commands, sed can apply regular expressions on multiple lines (that is, multiple lines are stored in the pattern space, and the regular expression works on it): $ cat two-cities-dup2.txt It was the best of times, it was the worst of times, it was the the age of wisdom, it was the age of foolishness, $ sed -En '{N; /\\b(\\w+)\\s+\\1\\b/{=;p} ; D}' two-cities-dup2.txt 3 worst of times, it was the the age of wisdom, The N command appends the next line to the pattern space (thus ensuring it contains two consecutive lines in every cycle). The regular expression uses ‘\\s+’ for word separator which matches both spaces and newlines. The regular expression matches, the entire pattern space is printed with p. No lines are printed by default due to the -n option. The D removes the first line from the pattern space (up until the first newline), readying it for the next cycle. See the GNU coreutils manual for an alternative solution using tr -s and uniq at https://gnu.org/s/coreutils/manual/html_node/Squeezing-and-deleting.html.",
+      "id": "01-guide/47-text-search-across-multiple-lines.md",
+      "titleEN": "Text search across multiple lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/47-text-search-across-multiple-lines.md",
+      "canonicalSHA256": "30b6564f532e822549b796dd8b5e34057fb38d1ce1c49e0442be057860a19e44",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/47-text-search-across-multiple-lines.md",
+      "translationSHA256": "6eed105f26c64db29da83fd0681c0a1044c8f9e1a60ad64897a3c0f7d2c33175",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/47-text-search-across-multiple-lines.md",
+          "sha256": "30b6564f532e822549b796dd8b5e34057fb38d1ce1c49e0442be057860a19e44"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/47-text-search-across-multiple-lines.md",
+          "sha256": "6eed105f26c64db29da83fd0681c0a1044c8f9e1a60ad64897a3c0f7d2c33175"
+        }
+      ]
+    },
+    {
+      "slug": "48-line-length-adjustment",
+      "sourceNode": "Line-length-adjustment",
+      "sourcePre": [
+        "$ cat two-cities-mix.txt\nIt was the best of times, it was\nthe worst of times, it\nwas the age of\nwisdom,\nit\nwas\nthe age\nof foolishness,\n",
+        "$ cat wrap40.sed\n# outer loop\n:x\n\n# Append a newline followed by the next input line to the pattern buffer\nN\n\n# Remove all newlines from the pattern buffer\ns/\\n/ /g\n\n\n# Inner loop\n:y\n\n# Add a newline after the first 40 characters\ns/(.{40,40})/\\1\\n/\n\n# If there is a newline in the pattern buffer\n# (i.e. the previous substitution added a newline)\n/\\n/ {\n    # There are newlines in the pattern buffer -\n    # print the content until the first newline.\n    P\n\n   # Remove the printed characters and the first newline\n   s/.*\\n//\n\n   # branch to label 'y' - repeat inner loop\n   by\n }\n\n# No newlines in the pattern buffer - Branch to label 'x' (outer loop)\n# and read the next input line\nbx\n",
+        "$ sed -E -f wrap40.sed two-cities-mix.txt\nIt was the best of times, it was the wor\nst of times, it was the age of wisdom, i\nt was the age of foolishness,\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Line-length-adjustment-1",
+          "text": "7.8 Line length adjustment"
+        }
+      ],
+      "footnotes": [],
+      "pre": 3,
+      "sourceText": "7.8 Line length adjustment This section uses N and P commands to read and write lines, and the b command for branching. See Multiline techniques - using D,G,H,N,P to process multiple lines and Branching and Flow Control. This (somewhat contrived) example deal with formatting and wrapping lines of text of the following input file: $ cat two-cities-mix.txt It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, The following sed program wraps lines at 40 characters: $ cat wrap40.sed # outer loop :x # Append a newline followed by the next input line to the pattern buffer N # Remove all newlines from the pattern buffer s/\\n/ /g # Inner loop :y # Add a newline after the first 40 characters s/(.{40,40})/\\1\\n/ # If there is a newline in the pattern buffer # (i.e. the previous substitution added a newline) /\\n/ { # There are newlines in the pattern buffer - # print the content until the first newline. P # Remove the printed characters and the first newline s/.*\\n// # branch to label 'y' - repeat inner loop by } # No newlines in the pattern buffer - Branch to label 'x' (outer loop) # and read the next input line bx The wrapped output: $ sed -E -f wrap40.sed two-cities-mix.txt It was the best of times, it was the wor st of times, it was the age of wisdom, i t was the age of foolishness,",
+      "id": "01-guide/48-line-length-adjustment.md",
+      "titleEN": "Line length adjustment",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/48-line-length-adjustment.md",
+      "canonicalSHA256": "7467e08ab1a84d75b33e16c2fef06d09ee20ba5cceccf5715c0551d4a7a1401a",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/48-line-length-adjustment.md",
+      "translationSHA256": "6c3ea916925cfe5c8cd773ea79d4d1d20515e5a6c664eecd501e9c804cb75eda",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/48-line-length-adjustment.md",
+          "sha256": "7467e08ab1a84d75b33e16c2fef06d09ee20ba5cceccf5715c0551d4a7a1401a"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/48-line-length-adjustment.md",
+          "sha256": "6c3ea916925cfe5c8cd773ea79d4d1d20515e5a6c664eecd501e9c804cb75eda"
+        }
+      ]
+    },
+    {
+      "slug": "49-adding-a-header-to-multiple-files",
+      "sourceNode": "Adding-a-header-to-multiple-files",
+      "sourcePre": [
+        "sed -i '1i/* Copyright (C) FOO BAR */' *.c\n",
+        "sed -i '1i/*\\n * Copyright (C) FOO BAR\\n * Created by Jane Doe\\n */' *.c\n",
+        "## Create the header file:\n$ cat<<'EOF'>LIC.TXT\n/*\n    Copyright (C) 1989-2021 FOO BAR\n\n    This program is free software; you can redistribute it and/or modify\n    it under the terms of the GNU General Public License as published by\n    the Free Software Foundation; either version 3, or (at your option)\n    any later version.\n\n    This program is distributed in the hope that it will be useful,\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n    GNU General Public License for more details.\n\n    You should have received a copy of the GNU General Public License\n    along with this program; If not, see <https://www.gnu.org/licenses/>.\n*/\nEOF\n\n## Add the file at the beginning of all source code files:\n$ sed -i '0rLIC.TXT' *.cpp *.h\n",
+        "## Create the header file:\n$ cat<<'EOF'>LIC.TXT\n##\n## Copyright (C) 1989-2021 FOO BAR\n##\n## This program is free software; you can redistribute it and/or modify\n## it under the terms of the GNU General Public License as published by\n## the Free Software Foundation; either version 3, or (at your option)\n## any later version.\n##\n## This program is distributed in the hope that it will be useful,\n## but WITHOUT ANY WARRANTY; without even the implied warranty of\n## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n## GNU General Public License for more details.\n##\n## You should have received a copy of the GNU General Public License\n## along with this program; If not, see <https://www.gnu.org/licenses/>.\n##\n##\nEOF\n\n## Add the file at the beginning of all source code files:\n$ sed -i '1rLIC.TXT' *.py *.sh\n",
+        "find \\( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \\) \\\n    | xargs grep -Li copyright \\\n    | xargs -r sed -i '0rLIC.TXT'\n",
+        "find \\( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \\) -print0 \\\n    | xargs -0 grep -Z -Li copyright \\\n    | xargs -0 -r sed -i '0rLIC.TXT'\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Adding-a-header-to-multiple-files-1",
+          "text": "7.9 Adding a header to multiple files"
+        }
+      ],
+      "footnotes": [],
+      "pre": 6,
+      "sourceText": "7.9 Adding a header to multiple files GNU sed can be used to safely modify multiple files at once. Add a single line to the beginning of source code files: sed -i '1i/* Copyright (C) FOO BAR */' *.c Adding a few lines is possible using ‘\\n’ in the text: sed -i '1i/*\\n * Copyright (C) FOO BAR\\n * Created by Jane Doe\\n */' *.c To add multiple lines from another file, use 0rFILE. A typical use case is adding a license notice header to all files: ## Create the header file: $ cat<<'EOF'>LIC.TXT /* Copyright (C) 1989-2021 FOO BAR This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; If not, see <https://www.gnu.org/licenses/>. */ EOF ## Add the file at the beginning of all source code files: $ sed -i '0rLIC.TXT' *.cpp *.h With script files (e.g. .sh,.py,.pl files) the license notice typically appears after the first line (the ’shebang’ ‘#!’ line). The 1rFILE command will add FILE after the first line: ## Create the header file: $ cat<<'EOF'>LIC.TXT ## ## Copyright (C) 1989-2021 FOO BAR ## ## This program is free software; you can redistribute it and/or modify ## it under the terms of the GNU General Public License as published by ## the Free Software Foundation; either version 3, or (at your option) ## any later version. ## ## This program is distributed in the hope that it will be useful, ## but WITHOUT ANY WARRANTY; without even the implied warranty of ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the ## GNU General Public License for more details. ## ## You should have received a copy of the GNU General Public License ## along with this program; If not, see <https://www.gnu.org/licenses/>. ## ## EOF ## Add the file at the beginning of all source code files: $ sed -i '1rLIC.TXT' *.py *.sh The above sed commands can be combined with find to locate files in all subdirectories, xargs to run additional commands on selected files and grep to filter out files that already contain a copyright notice: find \\( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \\) \\ | xargs grep -Li copyright \\ | xargs -r sed -i '0rLIC.TXT' Or a slightly safe version (handling files with spaces and newlines): find \\( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \\) -print0 \\ | xargs -0 grep -Z -Li copyright \\ | xargs -0 -r sed -i '0rLIC.TXT' Note: using the 0 address with r command requires GNU sed version 4.9 or later. See Zero Address.",
+      "id": "01-guide/49-adding-a-header-to-multiple-files.md",
+      "titleEN": "Adding a header to multiple files",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/49-adding-a-header-to-multiple-files.md",
+      "canonicalSHA256": "9d6983a9adfc32f5a10f2b60834941aad7c22846172a39dd4369deeb7ce877c0",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/49-adding-a-header-to-multiple-files.md",
+      "translationSHA256": "0857f29fa9f499bcf530d5e50fcfaf54279e5dfdc519c5cfa821a425e712c6fe",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/49-adding-a-header-to-multiple-files.md",
+          "sha256": "9d6983a9adfc32f5a10f2b60834941aad7c22846172a39dd4369deeb7ce877c0"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/49-adding-a-header-to-multiple-files.md",
+          "sha256": "0857f29fa9f499bcf530d5e50fcfaf54279e5dfdc519c5cfa821a425e712c6fe"
+        }
+      ]
+    },
+    {
+      "slug": "50-tac",
+      "sourceNode": "tac",
+      "sourcePre": [
+        "#!/usr/bin/sed -nf\n\n# reverse all lines of input, i.e. first line became last, ...\n\n",
+        "# from the second line, the buffer (which contains all previous lines)\n# is *appended* to current line, so, the order will be reversed\n1! G\n",
+        "\n\n",
+        "# on the last line we're done -- print everything\n$ p\n",
+        "\n\n",
+        "# store everything on the buffer again\nh\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Reverse-Lines-of-Files",
+          "text": "7.10 Reverse Lines of Files"
+        }
+      ],
+      "footnotes": [],
+      "pre": 6,
+      "sourceText": "7.10 Reverse Lines of Files This one begins a series of totally useless (yet interesting) scripts emulating various Unix commands. This, in particular, is a tac workalike. Note that on implementations other than GNU sed this script might easily overflow internal buffers. #!/usr/bin/sed -nf # reverse all lines of input, i.e. first line became last, ... # from the second line, the buffer (which contains all previous lines) # is *appended* to current line, so, the order will be reversed 1! G # on the last line we're done -- print everything $ p # store everything on the buffer again h",
+      "id": "01-guide/50-tac.md",
+      "titleEN": "Reverse Lines of Files",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/50-tac.md",
+      "canonicalSHA256": "2e5a0bc665d0f741e98fa8fabe1ce2cdb81c42e9a78a98b17f5352a08673b20b",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/50-tac.md",
+      "translationSHA256": "e14ddc2a6f3983daac17ed0dc7e87a40810f891008d5ff86d845726b67676010",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/50-tac.md",
+          "sha256": "2e5a0bc665d0f741e98fa8fabe1ce2cdb81c42e9a78a98b17f5352a08673b20b"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/50-tac.md",
+          "sha256": "e14ddc2a6f3983daac17ed0dc7e87a40810f891008d5ff86d845726b67676010"
+        }
+      ]
+    },
+    {
+      "slug": "51-cat-_002dn",
+      "sourceNode": "cat-_002dn",
+      "sourcePre": [
+        "#! /bin/sh\nsed -e \"=\" $@ | sed -e '\n  s/^/      /\n  N\n  s/^ *\\(......\\)\\n/\\1  /\n'\n",
+        "#!/usr/bin/sed -nf\n\n",
+        "# Prime the pump on the first line\nx\n/^$/ s/^.*$/1/\n",
+        "\n\n",
+        "# Add the correct line number before the pattern\nG\nh\n",
+        "\n\n",
+        "# Format it and print it\ns/^/      /\ns/^ *\\(......\\)\\n/\\1  /p\n",
+        "\n\n",
+        "# Get the line number from hold space; add a zero\n# if we're going to add a digit on the next line\ng\ns/\\n.*$//\n/^9*$/ s/^/0/\n",
+        "\n\n",
+        "# separate changing/unchanged digits with an x\ns/.9*$/x&/\n",
+        "\n\n",
+        "# keep changing digits in hold space\nh\ns/^.*x//\ny/0123456789/1234567890/\nx\n",
+        "\n\n",
+        "# keep unchanged digits in pattern space\ns/x.*$//\n",
+        "\n\n",
+        "# compose the new number, remove the newline implicitly added by G\nG\ns/\\n//\nh\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Numbering-Lines",
+          "text": "7.11 Numbering Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 17,
+      "sourceText": "7.11 Numbering Lines This script replaces ‘cat -n’; in fact it formats its output exactly like GNU cat does. Of course this is completely useless and for two reasons: first, because somebody else did it in C, second, because the following Bourne-shell script could be used for the same purpose and would be much faster: #! /bin/sh sed -e \"=\" $@ | sed -e ' s/^/ / N s/^ *\\(......\\)\\n/\\1 / ' It uses sed to print the line number, then groups lines two by two using N. Of course, this script does not teach as much as the one presented below. The algorithm used for incrementing uses both buffers, so the line is printed as soon as possible and then discarded. The number is split so that changing digits go in a buffer and unchanged ones go in the other; the changed digits are modified in a single step (using a y command). The line number for the next line is then composed and stored in the hold space, to be used in the next iteration. #!/usr/bin/sed -nf # Prime the pump on the first line x /^$/ s/^.*$/1/ # Add the correct line number before the pattern G h # Format it and print it s/^/ / s/^ *\\(......\\)\\n/\\1 /p # Get the line number from hold space; add a zero # if we're going to add a digit on the next line g s/\\n.*$// /^9*$/ s/^/0/ # separate changing/unchanged digits with an x s/.9*$/x&/ # keep changing digits in hold space h s/^.*x// y/0123456789/1234567890/ x # keep unchanged digits in pattern space s/x.*$// # compose the new number, remove the newline implicitly added by G G s/\\n// h",
+      "id": "01-guide/51-cat-_002dn.md",
+      "titleEN": "Numbering Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/51-cat-_002dn.md",
+      "canonicalSHA256": "6831705d60445449c9c66c327ef466126f46529d560abec26dc272804c1affb4",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/51-cat-_002dn.md",
+      "translationSHA256": "605808f49bff2502351499d81a48b094a246f3da727cf7a8a4ea81c783dbf285",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/51-cat-_002dn.md",
+          "sha256": "6831705d60445449c9c66c327ef466126f46529d560abec26dc272804c1affb4"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/51-cat-_002dn.md",
+          "sha256": "605808f49bff2502351499d81a48b094a246f3da727cf7a8a4ea81c783dbf285"
+        }
+      ]
+    },
+    {
+      "slug": "52-cat-_002db",
+      "sourceNode": "cat-_002db",
+      "sourcePre": [
+        "#!/usr/bin/sed -nf\n\n",
+        "/^$/ {\n  p\n  b\n}\n",
+        "\n\n",
+        "# Same as cat -n from now\nx\n/^$/ s/^.*$/1/\nG\nh\ns/^/      /\ns/^ *\\(......\\)\\n/\\1  /p\nx\ns/\\n.*$//\n/^9*$/ s/^/0/\ns/.9*$/x&/\nh\ns/^.*x//\ny/0123456789/1234567890/\nx\ns/x.*$//\nG\ns/\\n//\nh\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Numbering-Non_002dblank-Lines",
+          "text": "7.12 Numbering Non-blank Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 4,
+      "sourceText": "7.12 Numbering Non-blank Lines Emulating ‘cat -b’ is almost the same as ‘cat -n’—we only have to select which lines are to be numbered and which are not. The part that is common to this script and the previous one is not commented to show how important it is to comment sed scripts properly... #!/usr/bin/sed -nf /^$/ { p b } # Same as cat -n from now x /^$/ s/^.*$/1/ G h s/^/ / s/^ *\\(......\\)\\n/\\1 /p x s/\\n.*$// /^9*$/ s/^/0/ s/.9*$/x&/ h s/^.*x// y/0123456789/1234567890/ x s/x.*$// G s/\\n// h",
+      "id": "01-guide/52-cat-_002db.md",
+      "titleEN": "Numbering Non-blank Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/52-cat-_002db.md",
+      "canonicalSHA256": "24ad9023f416a2c1816e5319a7d1f6c644de1910dd44700b750fa449ead8760d",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/52-cat-_002db.md",
+      "translationSHA256": "0d1bdb0bd20271f8e9edb2e81322e7452fce2bb6b2c339cf91a27fa3ea526048",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/52-cat-_002db.md",
+          "sha256": "24ad9023f416a2c1816e5319a7d1f6c644de1910dd44700b750fa449ead8760d"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/52-cat-_002db.md",
+          "sha256": "0d1bdb0bd20271f8e9edb2e81322e7452fce2bb6b2c339cf91a27fa3ea526048"
+        }
+      ]
+    },
+    {
+      "slug": "53-wc-_002dc",
+      "sourceNode": "wc-_002dc",
+      "sourcePre": [
+        "#!/usr/bin/sed -nf\n\n",
+        "# Add n+1 a's to hold space (+1 is for the newline)\ns/./a/g\nH\nx\ns/\\n/a/\n",
+        "\n\n",
+        "# Do the carry.  The t's and b's are not necessary,\n# but they do speed up the thing\nt a\n: a;  s/aaaaaaaaaa/b/g; t b; b done\n: b;  s/bbbbbbbbbb/c/g; t c; b done\n: c;  s/cccccccccc/d/g; t d; b done\n: d;  s/dddddddddd/e/g; t e; b done\n: e;  s/eeeeeeeeee/f/g; t f; b done\n: f;  s/ffffffffff/g/g; t g; b done\n: g;  s/gggggggggg/h/g; t h; b done\n: h;  s/hhhhhhhhhh//g\n",
+        "\n\n",
+        ": done\n$! {\n  h\n  b\n}\n",
+        "\n\n# On the last line, convert back to decimal\n\n",
+        ": loop\n/a/! s/[b-h]*/&0/\ns/aaaaaaaaa/9/\ns/aaaaaaaa/8/\ns/aaaaaaa/7/\ns/aaaaaa/6/\ns/aaaaa/5/\ns/aaaa/4/\ns/aaa/3/\ns/aa/2/\ns/a/1/\n",
+        "\n\n",
+        ": next\ny/bcdefgh/abcdefg/\n/[a-h]/ b loop\np\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Counting-Characters",
+          "text": "7.13 Counting Characters"
+        }
+      ],
+      "footnotes": [
+        "FOOT11"
+      ],
+      "pre": 10,
+      "sourceText": "7.13 Counting Characters This script shows another way to do arithmetic with sed. In this case we have to add possibly large numbers, so implementing this by successive increments would not be feasible (and possibly even more complicated to contrive than this script). The approach is to map numbers to letters, kind of an abacus implemented with sed. ‘a’s are units, ‘b’s are tens and so on: we simply add the number of characters on the current line as units, and then propagate the carry to tens, hundreds, and so on. As usual, running totals are kept in hold space. On the last line, we convert the abacus form back to decimal. For the sake of variety, this is done with a loop rather than with some 80 s commands11: first we convert units, removing ‘a’s from the number; then we rotate letters so that tens become ‘a’s, and so on until no more letters remain. #!/usr/bin/sed -nf # Add n+1 a's to hold space (+1 is for the newline) s/./a/g H x s/\\n/a/ # Do the carry. The t's and b's are not necessary, # but they do speed up the thing t a : a; s/aaaaaaaaaa/b/g; t b; b done : b; s/bbbbbbbbbb/c/g; t c; b done : c; s/cccccccccc/d/g; t d; b done : d; s/dddddddddd/e/g; t e; b done : e; s/eeeeeeeeee/f/g; t f; b done : f; s/ffffffffff/g/g; t g; b done : g; s/gggggggggg/h/g; t h; b done : h; s/hhhhhhhhhh//g : done $! { h b } # On the last line, convert back to decimal : loop /a/! s/[b-h]*/&0/ s/aaaaaaaaa/9/ s/aaaaaaaa/8/ s/aaaaaaa/7/ s/aaaaaa/6/ s/aaaaa/5/ s/aaaa/4/ s/aaa/3/ s/aa/2/ s/a/1/ : next y/bcdefgh/abcdefg/ /[a-h]/ b loop p (11) Some implementations have a limit of 199 commands per script",
+      "id": "01-guide/53-wc-_002dc.md",
+      "titleEN": "Counting Characters",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/53-wc-_002dc.md",
+      "canonicalSHA256": "73cbc7f014202d19d384c954563c3bac400c9b2cfb9903e359086a4241d74ed7",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/53-wc-_002dc.md",
+      "translationSHA256": "cf368fffe42a107f6b42575c864bb6ee0ad835cec61821e66c6b97c522b5edfe",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/53-wc-_002dc.md",
+          "sha256": "73cbc7f014202d19d384c954563c3bac400c9b2cfb9903e359086a4241d74ed7"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/53-wc-_002dc.md",
+          "sha256": "cf368fffe42a107f6b42575c864bb6ee0ad835cec61821e66c6b97c522b5edfe"
+        }
+      ]
+    },
+    {
+      "slug": "54-wc-_002dw",
+      "sourceNode": "wc-_002dw",
+      "sourcePre": [
+        "#!/usr/bin/sed -nf\n\n",
+        "# Convert words to a's\ns/[ TAB][ TAB]*/ /g\ns/^/ /\ns/ [^ ][^ ]*/a /g\ns/ //g\n",
+        "\n\n",
+        "# Append them to hold space\nH\nx\ns/\\n//\n",
+        "\n\n",
+        "# From here on it is the same as in wc -c.\n/aaaaaaaaaa/! bx;   s/aaaaaaaaaa/b/g\n/bbbbbbbbbb/! bx;   s/bbbbbbbbbb/c/g\n/cccccccccc/! bx;   s/cccccccccc/d/g\n/dddddddddd/! bx;   s/dddddddddd/e/g\n/eeeeeeeeee/! bx;   s/eeeeeeeeee/f/g\n/ffffffffff/! bx;   s/ffffffffff/g/g\n/gggggggggg/! bx;   s/gggggggggg/h/g\ns/hhhhhhhhhh//g\n:x\n$! { h; b; }\n:y\n/a/! s/[b-h]*/&0/\ns/aaaaaaaaa/9/\ns/aaaaaaaa/8/\ns/aaaaaaa/7/\ns/aaaaaa/6/\ns/aaaaa/5/\ns/aaaa/4/\ns/aaa/3/\ns/aa/2/\ns/a/1/\ny/bcdefgh/abcdefg/\n/[a-h]/ by\np\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Counting-Words",
+          "text": "7.14 Counting Words"
+        }
+      ],
+      "footnotes": [],
+      "pre": 6,
+      "sourceText": "7.14 Counting Words This script is almost the same as the previous one, once each of the words on the line is converted to a single ‘a’ (in the previous script each letter was changed to an ‘a’). It is interesting that real wc programs have optimized loops for ‘wc -c’, so they are much slower at counting words rather than characters. This script’s bottleneck, instead, is arithmetic, and hence the word-counting one is faster (it has to manage smaller numbers). Again, the common parts are not commented to show the importance of commenting sed scripts. #!/usr/bin/sed -nf # Convert words to a's s/[ TAB][ TAB]*/ /g s/^/ / s/ [^ ][^ ]*/a /g s/ //g # Append them to hold space H x s/\\n// # From here on it is the same as in wc -c. /aaaaaaaaaa/! bx; s/aaaaaaaaaa/b/g /bbbbbbbbbb/! bx; s/bbbbbbbbbb/c/g /cccccccccc/! bx; s/cccccccccc/d/g /dddddddddd/! bx; s/dddddddddd/e/g /eeeeeeeeee/! bx; s/eeeeeeeeee/f/g /ffffffffff/! bx; s/ffffffffff/g/g /gggggggggg/! bx; s/gggggggggg/h/g s/hhhhhhhhhh//g :x $! { h; b; } :y /a/! s/[b-h]*/&0/ s/aaaaaaaaa/9/ s/aaaaaaaa/8/ s/aaaaaaa/7/ s/aaaaaa/6/ s/aaaaa/5/ s/aaaa/4/ s/aaa/3/ s/aa/2/ s/a/1/ y/bcdefgh/abcdefg/ /[a-h]/ by p",
+      "id": "01-guide/54-wc-_002dw.md",
+      "titleEN": "Counting Words",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/54-wc-_002dw.md",
+      "canonicalSHA256": "e3d7562d5df4969600b08efb9ce24809b58fcb119f3a9d99d4e8dba1b79d45e2",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/54-wc-_002dw.md",
+      "translationSHA256": "bc1b99aa897a8061c53311ca8f72cddb4264df6ca4cfa718a59e125b620c9b8e",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/54-wc-_002dw.md",
+          "sha256": "e3d7562d5df4969600b08efb9ce24809b58fcb119f3a9d99d4e8dba1b79d45e2"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/54-wc-_002dw.md",
+          "sha256": "bc1b99aa897a8061c53311ca8f72cddb4264df6ca4cfa718a59e125b620c9b8e"
+        }
+      ]
+    },
+    {
+      "slug": "55-wc-_002dl",
+      "sourceNode": "wc-_002dl",
+      "sourcePre": [
+        "#!/usr/bin/sed -nf\n$=\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Counting-Lines",
+          "text": "7.15 Counting Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 1,
+      "sourceText": "7.15 Counting Lines No strange things are done now, because sed gives us ‘wc -l’ functionality for free!!! Look: #!/usr/bin/sed -nf $=",
+      "id": "01-guide/55-wc-_002dl.md",
+      "titleEN": "Counting Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/55-wc-_002dl.md",
+      "canonicalSHA256": "45fcef21a71c8e164934f8596d3106f2d1daba539cbf6bf04d72b935812d4232",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/55-wc-_002dl.md",
+      "translationSHA256": "c1354f7512eaff381788948b26a47e254427162884b71eb6dbc04f26608e505f",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/55-wc-_002dl.md",
+          "sha256": "45fcef21a71c8e164934f8596d3106f2d1daba539cbf6bf04d72b935812d4232"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/55-wc-_002dl.md",
+          "sha256": "c1354f7512eaff381788948b26a47e254427162884b71eb6dbc04f26608e505f"
+        }
+      ]
+    },
+    {
+      "slug": "56-head",
+      "sourceNode": "head",
+      "sourcePre": [
+        "#!/usr/bin/sed -f\n10q\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Printing-the-First-Lines",
+          "text": "7.16 Printing the First Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 1,
+      "sourceText": "7.16 Printing the First Lines This script is probably the simplest useful sed script. It displays the first 10 lines of input; the number of displayed lines is right before the q command. #!/usr/bin/sed -f 10q",
+      "id": "01-guide/56-head.md",
+      "titleEN": "Printing the First Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/56-head.md",
+      "canonicalSHA256": "c301de51b116c9760e123d3483ec525bfc12cf8b2a5f2902ac5bea95a584d313",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/56-head.md",
+      "translationSHA256": "d5f36d7b4f8e6046f0566fcc7367ab1d14d6a8e1f0877cf914fd91c3d6d3537e",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/56-head.md",
+          "sha256": "c301de51b116c9760e123d3483ec525bfc12cf8b2a5f2902ac5bea95a584d313"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/56-head.md",
+          "sha256": "d5f36d7b4f8e6046f0566fcc7367ab1d14d6a8e1f0877cf914fd91c3d6d3537e"
+        }
+      ]
+    },
+    {
+      "slug": "57-tail",
+      "sourceNode": "tail",
+      "sourcePre": [
+        "#!/usr/bin/sed -nf\n\n",
+        "1! {; H; g; }\n1,10 !s/[^\\n]*\\n//\n$p\nh\n",
+        "#!/usr/bin/sed -f\n\n",
+        "1h\n2,10 {; H; g; }\n$q\n1,9d\nN\nD\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Printing-the-Last-Lines",
+          "text": "7.17 Printing the Last Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 4,
+      "sourceText": "7.17 Printing the Last Lines Printing the last n lines rather than the first is more complex but indeed possible. n is encoded in the second line, before the bang character. This script is similar to the tac script in that it keeps the final output in the hold space and prints it at the end: #!/usr/bin/sed -nf 1! {; H; g; } 1,10 !s/[^\\n]*\\n// $p h Mainly, the scripts keeps a window of 10 lines and slides it by adding a line and deleting the oldest (the substitution command on the second line works like a D command but does not restart the loop). The “sliding window” technique is a very powerful way to write efficient and complex sed scripts, because commands like P would require a lot of work if implemented manually. To introduce the technique, which is fully demonstrated in the rest of this chapter and is based on the N, P and D commands, here is an implementation of tail using a simple “sliding window.” This looks complicated but in fact the working is the same as the last script: after we have kicked in the appropriate number of lines, however, we stop using the hold space to keep inter-line state, and instead use N and D to slide pattern space by one line: #!/usr/bin/sed -f 1h 2,10 {; H; g; } $q 1,9d N D Note how the first, second and fourth line are inactive after the first ten lines of input. After that, all the script does is: exiting on the last line of input, appending the next input line to pattern space, and removing the first line.",
+      "id": "01-guide/57-tail.md",
+      "titleEN": "Printing the Last Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/57-tail.md",
+      "canonicalSHA256": "6f06be41df2d1fafcdeae443de367b3bb54ee3ff17f86ef9c859875a41dcdc41",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/57-tail.md",
+      "translationSHA256": "bbda57c08005ebb977f72eb6c5912b7232450ab33d6b8d14bf88ca7c37ecef4f",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/57-tail.md",
+          "sha256": "6f06be41df2d1fafcdeae443de367b3bb54ee3ff17f86ef9c859875a41dcdc41"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/57-tail.md",
+          "sha256": "bbda57c08005ebb977f72eb6c5912b7232450ab33d6b8d14bf88ca7c37ecef4f"
+        }
+      ]
+    },
+    {
+      "slug": "58-uniq",
+      "sourceNode": "uniq",
+      "sourcePre": [
+        "#!/usr/bin/sed -f\nh\n",
+        "\n\n",
+        ":b\n# On the last line, print and exit\n$b\nN\n/^\\(.*\\)\\n\\1$/ {\n    # The two lines are identical.  Undo the effect of\n    # the n command.\n    g\n    bb\n}\n",
+        "\n\n",
+        "# If the N command had added the last line, print and exit\n$b\n",
+        "\n\n",
+        "# The lines are different; print the first and go\n# back working on the second.\nP\nD\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Make-Duplicate-Lines-Unique",
+          "text": "7.18 Make Duplicate Lines Unique"
+        }
+      ],
+      "footnotes": [],
+      "pre": 7,
+      "sourceText": "7.18 Make Duplicate Lines Unique This is an example of the art of using the N, P and D commands, probably the most difficult to master. #!/usr/bin/sed -f h :b # On the last line, print and exit $b N /^\\(.*\\)\\n\\1$/ { # The two lines are identical. Undo the effect of # the n command. g bb } # If the N command had added the last line, print and exit $b # The lines are different; print the first and go # back working on the second. P D As you can see, we maintain a 2-line window using P and D. This technique is often used in advanced sed scripts.",
+      "id": "01-guide/58-uniq.md",
+      "titleEN": "Make Duplicate Lines Unique",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/58-uniq.md",
+      "canonicalSHA256": "43165ea06d5cfae54b346ac5becc68a817ddb66ca9e1a2f1a5fbd8b9276393a8",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/58-uniq.md",
+      "translationSHA256": "e9038db301c41f2b9120c6071f327b47ce6da953831f8e5b413c441a88989377",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/58-uniq.md",
+          "sha256": "43165ea06d5cfae54b346ac5becc68a817ddb66ca9e1a2f1a5fbd8b9276393a8"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/58-uniq.md",
+          "sha256": "e9038db301c41f2b9120c6071f327b47ce6da953831f8e5b413c441a88989377"
+        }
+      ]
+    },
+    {
+      "slug": "59-uniq-_002dd",
+      "sourceNode": "uniq-_002dd",
+      "sourcePre": [
+        "#!/usr/bin/sed -nf\n\n",
+        "$b\nN\n/^\\(.*\\)\\n\\1$/ {\n    # Print the first of the duplicated lines\n    s/.*\\n//\n    p\n",
+        "\n\n",
+        "    # Loop until we get a different line\n    :b\n    $b\n    N\n    /^\\(.*\\)\\n\\1$/ {\n        s/.*\\n//\n        bb\n    }\n}\n",
+        "\n\n",
+        "# The last line cannot be followed by duplicates\n$b\n",
+        "\n\n",
+        "# Found a different one.  Leave it alone in the pattern space\n# and go back to the top, hunting its duplicates\nD\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Print-Duplicated-Lines-of-Input",
+          "text": "7.19 Print Duplicated Lines of Input"
+        }
+      ],
+      "footnotes": [],
+      "pre": 8,
+      "sourceText": "7.19 Print Duplicated Lines of Input This script prints only duplicated lines, like ‘uniq -d’. #!/usr/bin/sed -nf $b N /^\\(.*\\)\\n\\1$/ { # Print the first of the duplicated lines s/.*\\n// p # Loop until we get a different line :b $b N /^\\(.*\\)\\n\\1$/ { s/.*\\n// bb } } # The last line cannot be followed by duplicates $b # Found a different one. Leave it alone in the pattern space # and go back to the top, hunting its duplicates D",
+      "id": "01-guide/59-uniq-_002dd.md",
+      "titleEN": "Print Duplicated Lines of Input",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/59-uniq-_002dd.md",
+      "canonicalSHA256": "a3a07f7d2a7eb7cb6de18981e7c54e0e332f3b6000c44a598fd129b4df314285",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/59-uniq-_002dd.md",
+      "translationSHA256": "98adee2336df43f9e781ebd20a5b81a518d99a933852fb58a10672ddb494d5c1",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/59-uniq-_002dd.md",
+          "sha256": "a3a07f7d2a7eb7cb6de18981e7c54e0e332f3b6000c44a598fd129b4df314285"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/59-uniq-_002dd.md",
+          "sha256": "98adee2336df43f9e781ebd20a5b81a518d99a933852fb58a10672ddb494d5c1"
+        }
+      ]
+    },
+    {
+      "slug": "60-uniq-_002du",
+      "sourceNode": "uniq-_002du",
+      "sourcePre": [
+        "#!/usr/bin/sed -f\n\n",
+        "# Search for a duplicate line --- until that, print what you find.\n$b\nN\n/^\\(.*\\)\\n\\1$/ ! {\n    P\n    D\n}\n",
+        "\n\n",
+        ":c\n# Got two equal lines in pattern space.  At the\n# end of the file we simply exit\n$d\n",
+        "\n\n",
+        "# Else, we keep reading lines with N until we\n# find a different one\ns/.*\\n//\nN\n/^\\(.*\\)\\n\\1$/ {\n    bc\n}\n",
+        "\n\n",
+        "# Remove the last instance of the duplicate line\n# and go back to the top\nD\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Remove-All-Duplicated-Lines",
+          "text": "7.20 Remove All Duplicated Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 8,
+      "sourceText": "7.20 Remove All Duplicated Lines This script prints only unique lines, like ‘uniq -u’. #!/usr/bin/sed -f # Search for a duplicate line --- until that, print what you find. $b N /^\\(.*\\)\\n\\1$/ ! { P D } :c # Got two equal lines in pattern space. At the # end of the file we simply exit $d # Else, we keep reading lines with N until we # find a different one s/.*\\n// N /^\\(.*\\)\\n\\1$/ { bc } # Remove the last instance of the duplicate line # and go back to the top D",
+      "id": "01-guide/60-uniq-_002du.md",
+      "titleEN": "Remove All Duplicated Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/60-uniq-_002du.md",
+      "canonicalSHA256": "5af996c22745b2d0bacd2ad268f4c1506566783526b6ef3a9631a7eb9d8a1cc0",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/60-uniq-_002du.md",
+      "translationSHA256": "8820bb13f6030c329d915df760cf11ba9fdc35de481dd191f66da1df3b5cfd9c",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/60-uniq-_002du.md",
+          "sha256": "5af996c22745b2d0bacd2ad268f4c1506566783526b6ef3a9631a7eb9d8a1cc0"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/60-uniq-_002du.md",
+          "sha256": "8820bb13f6030c329d915df760cf11ba9fdc35de481dd191f66da1df3b5cfd9c"
+        }
+      ]
+    },
+    {
+      "slug": "61-cat-_002ds",
+      "sourceNode": "cat-_002ds",
+      "sourcePre": [
+        "#!/usr/bin/sed -f\n\n",
+        "# on empty lines, join with next\n# Note there is a star in the regexp\n:x\n/^\\n*$/ {\nN\nbx\n}\n",
+        "\n\n",
+        "# now, squeeze all '\\n', this can be also done by:\n# s/^\\(\\n\\)*/\\1/\ns/\\n*/\\\n/\n",
+        "#!/usr/bin/sed -f\n\n",
+        "# delete all leading empty lines\n1,/^./{\n/./!d\n}\n",
+        "\n\n",
+        "# on an empty line we remove it and all the following\n# empty lines, but one\n:x\n/./!{\nN\ns/^\\n$//\ntx\n}\n",
+        "#!/usr/bin/sed -nf\n\n",
+        "# delete all (leading) blanks\n/./!d\n",
+        "\n\n",
+        "# get here: so there is a non empty\n:x\n# print it\np\n# get next\nn\n# got chars? print it again, etc...\n/./bx\n",
+        "\n\n",
+        "# no, don't have chars: got an empty line\n:z\n# get next, if last line we finish here so no trailing\n# empty lines are written\nn\n# also empty? then ignore it, and get next... this will\n# remove ALL empty lines\n/./!bz\n",
+        "\n\n",
+        "# all empty lines were deleted/ignored, but we have a non empty.  As\n# what we want to do is to squeeze, insert a blank line artificially\ni\\\n",
+        "\n\nbx\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 3,
+          "slug": "Squeezing-Blank-Lines",
+          "text": "7.21 Squeezing Blank Lines"
+        }
+      ],
+      "footnotes": [],
+      "pre": 17,
+      "sourceText": "7.21 Squeezing Blank Lines As a final example, here are three scripts, of increasing complexity and speed, that implement the same function as ‘cat -s’, that is squeezing blank lines. The first leaves a blank line at the beginning and end if there are some already. #!/usr/bin/sed -f # on empty lines, join with next # Note there is a star in the regexp :x /^\\n*$/ { N bx } # now, squeeze all '\\n', this can be also done by: # s/^\\(\\n\\)*/\\1/ s/\\n*/\\ / This one is a bit more complex and removes all empty lines at the beginning. It does leave a single blank line at end if one was there. #!/usr/bin/sed -f # delete all leading empty lines 1,/^./{ /./!d } # on an empty line we remove it and all the following # empty lines, but one :x /./!{ N s/^\\n$// tx } This removes leading and trailing blank lines. It is also the fastest. Note that loops are completely done with n and b, without relying on sed to restart the script automatically at the end of a line. #!/usr/bin/sed -nf # delete all (leading) blanks /./!d # get here: so there is a non empty :x # print it p # get next n # got chars? print it again, etc... /./bx # no, don't have chars: got an empty line :z # get next, if last line we finish here so no trailing # empty lines are written n # also empty? then ignore it, and get next... this will # remove ALL empty lines /./!bz # all empty lines were deleted/ignored, but we have a non empty. As # what we want to do is to squeeze, insert a blank line artificially i\\ bx",
+      "id": "01-guide/61-cat-_002ds.md",
+      "titleEN": "Squeezing Blank Lines",
+      "canonical": "updates/2026-10-11-chapter-7/canonical/en/01-guide/61-cat-_002ds.md",
+      "canonicalSHA256": "ed3b375ab46d20c83c35aae7c25707539b2cf63d20f18f4b4e13f61aae7a86ea",
+      "translationCanonical": "updates/2026-10-11-chapter-7/canonical/ja/01-guide/61-cat-_002ds.md",
+      "translationSHA256": "08b7631759aa5f27e656d7edf608448995c26be5ed5c419fa70da34cb10f49df",
+      "batch": 7,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/61-cat-_002ds.md",
+          "sha256": "ed3b375ab46d20c83c35aae7c25707539b2cf63d20f18f4b4e13f61aae7a86ea"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/61-cat-_002ds.md",
+          "sha256": "08b7631759aa5f27e656d7edf608448995c26be5ed5c419fa70da34cb10f49df"
+        }
+      ]
+    },
+    {
+      "slug": "62-limitations",
+      "sourceNode": "Limitations",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "GNU-sed_0027s-Limitations-and-Non_002dlimitations",
+          "text": "8 GNU sed ’s Limitations and Non-limitations"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "8 GNU sed’s Limitations and Non-limitations For those who want to write portable sed scripts, be aware that some implementations have been known to limit line lengths (for the pattern and hold spaces) to be no more than 4000 bytes. The POSIX standard specifies that conforming sed implementations shall support at least 8192 byte line lengths. GNU sed has no built-in limit on line length; as long as it can malloc() more (virtual) memory, you can feed or construct lines as long as you like. However, recursion is used to handle subpatterns and indefinite repetition. This means that the available stack space may limit the size of the buffer that can be processed by certain patterns.",
+      "id": "01-guide/62-limitations.md",
+      "titleEN": "GNU sed ’s Limitations and Non-limitations",
+      "canonical": "updates/2026-10-11-chapters-8-10/canonical/en/01-guide/62-limitations.md",
+      "canonicalSHA256": "29cae9d648204394ae8ed9079524a5ec249647f1c13bf6ba82aa2d3024882773",
+      "translationCanonical": "updates/2026-10-11-chapters-8-10/canonical/ja/01-guide/62-limitations.md",
+      "translationSHA256": "33b749c57cd6c41a668229fa1fd55ce6ebdcf99d0dcb6bc5a039951ab42902a8",
+      "batch": 8,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/62-limitations.md",
+          "sha256": "29cae9d648204394ae8ed9079524a5ec249647f1c13bf6ba82aa2d3024882773"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/62-limitations.md",
+          "sha256": "33b749c57cd6c41a668229fa1fd55ce6ebdcf99d0dcb6bc5a039951ab42902a8"
+        }
+      ]
+    },
+    {
+      "slug": "63-other-resources",
+      "sourceNode": "Other-Resources",
+      "sourcePre": [],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Other-Resources-for-Learning-About-sed",
+          "text": "9 Other Resources for Learning About sed"
+        }
+      ],
+      "footnotes": [],
+      "pre": 0,
+      "sourceText": "9 Other Resources for Learning About sed For up to date information about GNU sed please visit https://www.gnu.org/software/sed/. Send general questions and suggestions to sed-devel@gnu.org. Visit the mailing list archives for past discussions at https://lists.gnu.org/archive/html/sed-devel/. The following resources provide information about sed (both GNU sed and other variations). Note these not maintained by GNU sed developers. sed $HOME: http://sed.sf.net sed FAQ: http://sed.sf.net/sedfaq.html seder’s grabbag: http://sed.sf.net/grabbag The sed-users mailing list maintained by Sven Guckes: http://groups.yahoo.com/group/sed-users/ (note this is not the GNU sed mailing list).",
+      "id": "01-guide/63-other-resources.md",
+      "titleEN": "Other Resources for Learning About sed",
+      "canonical": "updates/2026-10-11-chapters-8-10/canonical/en/01-guide/63-other-resources.md",
+      "canonicalSHA256": "d6e9d5a8412837d0b2033b67df336165db1c3d96e2bda6e38dfbfdc40c8fac52",
+      "translationCanonical": "updates/2026-10-11-chapters-8-10/canonical/ja/01-guide/63-other-resources.md",
+      "translationSHA256": "aa88c010866ff9ecacb66b5ed32f56245bb1801097b3134bc7d51abdfc63b862",
+      "batch": 8,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/63-other-resources.md",
+          "sha256": "d6e9d5a8412837d0b2033b67df336165db1c3d96e2bda6e38dfbfdc40c8fac52"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/63-other-resources.md",
+          "sha256": "aa88c010866ff9ecacb66b5ed32f56245bb1801097b3134bc7d51abdfc63b862"
+        }
+      ]
+    },
+    {
+      "slug": "64-reporting-bugs",
+      "sourceNode": "Reporting-Bugs",
+      "sourcePre": [
+        "while building frobme-1.3.4\n$ configure\nerror→ sed: file sedscr line 1: Unknown option to 's'\n",
+        "$ seq 3 | sed N\n1\n2\n3\n",
+        "$ seq 3 | sed --posix N\n1\n2\n",
+        "sed N foo bar\n",
+        "/foo/{ $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N }\n",
+        "/foo/{ N;N;N;N;N;N;N;N;N; }\n"
+      ],
+      "sourceHeadings": [
+        {
+          "depth": 2,
+          "slug": "Reporting-Bugs-1",
+          "text": "10 Reporting Bugs"
+        }
+      ],
+      "footnotes": [
+        "FOOT12"
+      ],
+      "pre": 6,
+      "sourceText": "10 Reporting Bugs Email bug reports to bug-sed@gnu.org. Also, please include the output of ‘sed --version’ in the body of your report if at all possible. Please do not send a bug report like this: while building frobme-1.3.4 $ configure error→ sed: file sedscr line 1: Unknown option to 's' If GNU sed doesn’t configure your favorite package, take a few extra minutes to identify the specific problem and make a stand-alone test case. Unlike other programs such as C compilers, making such test cases for sed is quite simple. A stand-alone test case includes all the data necessary to perform the test, and the specific invocation of sed that causes the problem. The smaller a stand-alone test case is, the better. A test case should not involve something as far removed from sed as “try to configure frobme-1.3.4”. Yes, that is in principle enough information to look for the bug, but that is not a very practical prospect. Here are a few commonly reported bugs that are not bugs. N command on the last line Most versions of sed exit without printing anything when the N command is issued on the last line of a file. GNU sed prints pattern space before exiting unless of course the -n command switch has been specified. This choice is by design. Default behavior (gnu extension, non-POSIX conforming): $ seq 3 | sed N 1 2 3 To force POSIX-conforming behavior: $ seq 3 | sed --posix N 1 2 For example, the behavior of sed N foo bar would depend on whether foo has an even or an odd number of lines12. Or, when writing a script to read the next few lines following a pattern match, traditional implementations of sed would force you to write something like /foo/{ $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N } instead of just /foo/{ N;N;N;N;N;N;N;N;N; } In any case, the simplest workaround is to use $d;N in scripts that rely on the traditional behavior, or to set the POSIXLY_CORRECT variable to a non-empty value. Regex syntax clashes (problems with backslashes) sed uses the POSIX basic regular expression syntax. According to the standard, the meaning of some escape sequences is undefined in this syntax; notable in the case of sed are \\|, \\+, \\?, \\`, \\', \\<, \\>, \\b, \\B, \\w, and \\W. As in all GNU programs that use POSIX basic regular expressions, sed interprets these escape sequences as special characters. So, x\\+ matches one or more occurrences of ‘x’. abc\\|def matches either ‘abc’ or ‘def’. This syntax may cause problems when running scripts written for other seds. Some sed programs have been written with the assumption that \\| and \\+ match the literal characters | and +. Such scripts must be modified by removing the spurious backslashes if they are to be used with modern implementations of sed, like GNU sed. On the other hand, some scripts use s|abc\\|def||g to remove occurrences of either abc or def. While this worked until sed 4.0.x, newer versions interpret this as removing the string abc|def. This is again undefined behavior according to POSIX, and this interpretation is arguably more robust: older seds, for example, required that the regex matcher parsed \\/ as / in the common case of escaping a slash, which is again undefined behavior; the new behavior avoids this, and this is good because the regex matcher is only partially under our control. In addition, this version of sed supports several escape characters (some of which are multi-character) to insert non-printable characters in scripts (\\a, \\c, \\d, \\o, \\r, \\t, \\v, \\x). These can cause similar problems with scripts written for other seds. -i clobbers read-only files In short, ‘sed -i’ will let you delete the contents of a read-only file, and in general the -i option (see Invocation) lets you clobber protected files. This is not a bug, but rather a consequence of how the Unix file system works. The permissions on a file say what can happen to the data in that file, while the permissions on a directory say what can happen to the list of files in that directory. ‘sed -i’ will not ever open for writing a file that is already on disk. Rather, it will work on a temporary file that is finally renamed to the original name: if you rename or delete files, you’re actually modifying the contents of the directory, so the operation depends on the permissions of the directory, not of the file. For this same reason, sed does not let you use -i on a writable file in a read-only directory, and will break hard or symbolic links when -i is used on such a file. 0a does not work (gives an error) There is no line 0. 0 is a special address that is only used to treat addresses like 0,/RE/ as active when the script starts: if you write 1,/abc/d and the first line includes the string ‘abc’, then that match would be ignored because address ranges must span at least two lines (barring the end of the file); but what you probably wanted is to delete every line up to the first one including ‘abc’, and this is obtained with 0,/abc/d. [a-z] is case insensitive You are encountering problems with locales. POSIX mandates that [a-z] uses the current locale’s collation order – in C parlance, that means using strcoll(3) instead of strcmp(3). Some locales have a case-insensitive collation order, others don’t. Another problem is that [a-z] tries to use collation symbols. This only happens if you are on the GNU system, using GNU libc’s regular expression matcher instead of compiling the one supplied with GNU sed. In a Danish locale, for example, the regular expression ^[a-z]$ matches the string ‘aa’, because this is a single collating symbol that comes after ‘a’ and before ‘b’; ‘ll’ behaves similarly in Spanish locales, or ‘ij’ in Dutch locales. To work around these problems, which may cause bugs in shell scripts, set the LC_COLLATE and LC_CTYPE environment variables to ‘C’. s/.*// does not clear pattern space This happens if your input stream includes invalid multibyte sequences. POSIX mandates that such sequences are not matched by ‘.’, so that ‘s/.*//’ will not clear pattern space as you would expect. In fact, there is no way to clear sed’s buffers in the middle of the script in most multibyte locales (including UTF-8 locales). For this reason, GNU sed provides a z command (for “zap”) as an extension. To work around these problems, which may cause bugs in shell scripts, set the LC_COLLATE and LC_CTYPE environment variables to ‘C’. (12) which is the actual “bug” that prompted the change in behavior",
+      "id": "01-guide/64-reporting-bugs.md",
+      "titleEN": "Reporting Bugs",
+      "canonical": "updates/2026-10-11-chapters-8-10/canonical/en/01-guide/64-reporting-bugs.md",
+      "canonicalSHA256": "d6a40eb38b9f60e6ba8ce04da91b74425650fe8aab3bf0a7a3698329b363dc48",
+      "translationCanonical": "updates/2026-10-11-chapters-8-10/canonical/ja/01-guide/64-reporting-bugs.md",
+      "translationSHA256": "bff2234f11e93d74d75ff9de8a600874697d0661f9fddf93c9745e5f379fa60d",
+      "batch": 8,
+      "translation": "saved",
+      "meaningReview": "passed",
+      "outputs": [
+        {
+          "language": "en",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/en/01-guide/64-reporting-bugs.md",
+          "sha256": "d6a40eb38b9f60e6ba8ce04da91b74425650fe8aab3bf0a7a3698329b363dc48"
+        },
+        {
+          "language": "ja",
+          "path": "apps/gnu-sed/src/content/docs/v4-10/ja/01-guide/64-reporting-bugs.md",
+          "sha256": "bff2234f11e93d74d75ff9de8a600874697d0661f9fddf93c9745e5f379fa60d"
+        }
+      ]
+    }
+  ],
+  "meaningReview": "64passed/0pending (61previous+3chapters8–10 whole reviews)",
+  "Japanese": "64saved/0pending",
+  "JapanesePre": {
+    "originalLiteralPre": 303,
+    "newAdjacentTranslations": 1,
+    "previousAdjacentTranslations": 74
+  },
+  "inheritedContentMap": {
+    "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-5/CONTENT_MAP.json",
+    "sha256": "28e97b03d83981521767c7c618d5f0482f429064fc98bb5f44ce3d9107ae0339"
+  },
+  "updateReview": {
+    "path": "docs/notes/document-import/gnu-sed/v4-10/updates/2026-10-07-chapter-6/REVIEW_MANIFEST.json",
+    "sha256": "cb097d0b96b54ed6206288d61d011d6ca04cc48c758fadd379f21cdd9343899d"
+  },
+  "fixedScope": "Complete chapters1–10 and12footnotes; indexes through fixed originals",
+  "outputBindingsWorkspace": "/private/tmp/libx-sed-chapters8-10-formal-962",
+  "mapRole": "Compiled operational mapping, not a regeneration input; immutable formal kit CONTENT_MAP retained"
+}

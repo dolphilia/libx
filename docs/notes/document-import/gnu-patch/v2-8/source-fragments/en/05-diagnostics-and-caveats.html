@@ -1,0 +1,32 @@
+<section class="gnu-patch-unit"><section class="Sh">
+<h1 class="Sh" id="DIAGNOSTICS"><a class="permalink" href="#DIAGNOSTICS">DIAGNOSTICS</a></h1>
+<p class="Pp">Diagnostics generally indicate that <b>patch</b> couldn't parse
+    your patch file.</p>
+<p class="Pp">If the <b>--verbose</b> option is given, the message <b>Hmm...</b>
+    indicates that there is unprocessed text in the patch file and that
+    <b>patch</b> is attempting to intuit whether there is a patch in that text
+    and, if so, what kind of patch it is.</p>
+<p class="Pp"><b>patch</b>'s exit status is 0 if all hunks are applied
+    successfully, 1 if some hunks cannot be applied or there were merge
+    conflicts, and 2 if there is more serious trouble. When applying a set of
+    patches in a loop it behooves you to check this exit status so you don't
+    apply a later patch to a partially patched file.</p>
+</section><section class="Sh">
+<h1 class="Sh" id="CAVEATS"><a class="permalink" href="#CAVEATS">CAVEATS</a></h1>
+<p class="Pp">Context diffs cannot reliably represent the creation or deletion
+    of empty files, empty directories, or special files such as symbolic links.
+    Nor can they represent changes to file metadata like ownership, permissions,
+    or whether one file is a hard link to another. If changes like these are
+    also required, separate instructions (e.g. a shell script) to accomplish
+    them should accompany the patch.</p>
+<p class="Pp"><b>patch</b> cannot tell if the line numbers are off in an
+    <b>ed</b> script, and can detect bad line numbers in a normal diff only when
+    it finds a change or deletion. A context diff using fuzz factor 3 may have
+    the same problem. You should probably do a context diff in these cases to
+    see if the changes made sense. Of course, compiling without errors is a
+    pretty good indication that the patch worked, but not always.</p>
+<p class="Pp"><b>patch</b> usually produces the correct results, even when it
+    has to do a lot of guessing. However, the results are guaranteed to be
+    correct only when the patch is applied to exactly the same version of the
+    file that the patch was generated from.</p>
+</section></section>

@@ -1,0 +1,81 @@
+<div class="section-level-extent" id="Operation-modes">
+
+<h3 class="section" id="Command-line-options-for-operation-modes"><span>2.1 Command line options for operation modes</span></h3>
+<p>Several options control the overall operation of <code class="code">m4</code>:
+</p>
+<dl class="table">
+<dt><code class="code">--help</code></dt>
+<dd><p>Print a help summary on standard output, then immediately exit
+<code class="code">m4</code> without reading any input files or performing any other
+actions.
+</p>
+</dd>
+<dt><code class="code">--version</code></dt>
+<dd><p>Print the version number of the program on standard output, then
+immediately exit <code class="code">m4</code> without reading any input files or
+performing any other actions.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-fatal-errors"></a>
+<a id="index-errors_002c-fatal"></a><span><code class="code">-E</code></span></dt>
+<dt><code class="code">--fatal-warnings</code></dt>
+<dd><p>Controls the effect of warnings.  If unspecified, then execution
+continues and exit status is unaffected when a warning is printed.  If
+specified exactly once, warnings become fatal; when one is issued,
+execution continues, but the exit status will be non-zero.  If specified
+multiple times, then execution halts with non-zero status the first time
+a warning is issued.  The introduction of behavior levels is new to M4
+1.4.9; for behavior consistent with earlier versions, you should specify
+<samp class="option">-E</samp> twice.
+</p>
+</dd>
+<dt><code class="code">-i</code></dt>
+<dt><code class="code">--interactive</code></dt>
+<dt><code class="code">-e</code></dt>
+<dd><p>Makes this invocation of <code class="code">m4</code> interactive.  This means that all
+output will be unbuffered, and interrupts will be ignored.  The
+spelling <samp class="option">-e</samp> exists for compatibility with other <code class="code">m4</code>
+implementations, and issues a warning because it may be withdrawn in a
+future version of GNU M4.
+</p>
+</dd>
+<dt><code class="code">-P</code></dt>
+<dt><code class="code">--prefix-builtins</code></dt>
+<dd><p>Internally modify <em class="emph">all</em> builtin macro names so they all start with
+the prefix ‘<samp class="samp">m4_</samp>’.  For example, using this option, one should write
+‘<samp class="samp">m4_define</samp>’ instead of ‘<samp class="samp">define</samp>’, and ‘<samp class="samp">m4___file__</samp>’
+instead of ‘<samp class="samp">__file__</samp>’.  This option has no effect if <samp class="option">-R</samp>
+is also specified.
+</p>
+</dd>
+<dt><code class="code">-Q</code></dt>
+<dt><code class="code">--quiet</code></dt>
+<dt><code class="code">--silent</code></dt>
+<dd><p>Suppress warnings, such as missing or superfluous arguments in macro
+calls, or treating the empty string as zero.
+</p>
+</dd>
+<dt><code class="code">--warn-macro-sequence<span class="r">[</span>=<var class="var">regexp</var><span class="r">]</span></code></dt>
+<dd><p>Issue a warning if the regular expression <var class="var">regexp</var> has a non-empty
+match in any macro definition (either by <code class="code">define</code> or
+<code class="code">pushdef</code>).  Empty matches are ignored; therefore, supplying the
+empty string as <var class="var">regexp</var> disables any warning.  If the optional
+<var class="var">regexp</var> is not supplied, then the default regular expression is
+‘<samp class="samp">\$\({[^}]*}\|[0-9][0-9]+\)</samp>’ (a literal ‘<samp class="samp">$</samp>’ followed by
+multiple digits or by an open brace), since these sequences will
+change semantics in the default operation of GNU M4 2.0 (due
+to a change in how more than 9 arguments in a macro definition will be
+handled, see <a class="pxref" href="#Arguments">Arguments to macros</a>).  Providing an alternate regular
+expression can provide a useful reverse lookup feature of finding
+where a macro is defined to have a given definition.
+</p>
+</dd>
+<dt><code class="code">-W <var class="var">regexp</var></code></dt>
+<dt><code class="code">--word-regexp=<var class="var">regexp</var></code></dt>
+<dd><p>Use <var class="var">regexp</var> as an alternative syntax for macro names.  This
+experimental option will not be present in all GNU <code class="code">m4</code>
+implementations (see <a class="pxref" href="#Changeword">Changing the lexical structure of words</a>).
+</p></dd>
+</dl>
+<hr/>
+</div>

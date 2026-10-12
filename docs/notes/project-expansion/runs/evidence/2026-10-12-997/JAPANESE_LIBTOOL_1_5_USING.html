@@ -1,0 +1,659 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on June, 15 2005 by texi2html 1.70 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Libtool: 3. libtoolを使用する</title>
+
+<meta name="description" content="GNU Libtool: 3. libtoolを使用する">
+<meta name="keywords" content="GNU Libtool: 3. libtoolを使用する">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.70">
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="libtool-ja_2.html#SEC6" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_4.html#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_15.html#SEC86" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<hr size="2">
+<a name="NOD8"></a>
+<a name="SEC7"></a>
+<h1 class="chapter"> 3. libtoolを使用する </h1>
+
+<p>libtoolが人生をより単純にする方法が分かるまで，独自のパッケージで
+libtoolを使用することを話す意味はありません．この章の例は，標準的なラ
+イブラリのビルド処理と，libtoolの処理を，二つの異なるプラットフォーム
+で比較することで，主な特徴を紹介します．
+
+</p><dl compact="compact">
+<dt>`<samp> a23</samp>'</dt>
+<dd><p>スタティックライブラリのみのUltrix 4.2プラットフォーム．
+
+</p></dd>
+<dt>`<samp> burger</samp>'</dt>
+<dd><p>共有ライブラリを持つ，NetBSD/i386 1.2プラットフォーム．
+</p></dd>
+</dl>
+
+<p>独自のプラットフォームの例をこれに続けることが可能で，それは，libtool 
+でインストールされた，前もってコンフィグレーションされているlibtoolス
+クリプトを使用します(see section <a href="libtool-ja_5.html#SEC26">libtoolのコンフィグレーション</a>)．
+
+</p><p>以下の例のソースファイルは，libtool配布物の`<tt>demo</tt>'サブディレクトリ
+から持ってきています．ファイル`<tt>foo.c</tt>'と`<tt>hello.c</tt>'からライブラ
+リ`<tt>libhello</tt>'をビルドしていると仮定してください．
+
+</p><p>`<tt>foo.c</tt>'ソースファイルが<code>cos</code>数学ライブラリ関数を使用していて，
+それは通常，Cライブラリではなく単独の数学ライブラリで見つかることに注
+意してください(see <a href="../libc/Trig-Functions.html">(libc)Trig Functions</a> section `Trigonometric Functions' in <cite>The GNU C Library Reference Manual</cite>)．そのため，`<tt>foo.o</tt>'や
+`<tt>foo.lo</tt>' を実行形式やライブラリにリンクするときは，常にリンク行の
+最後に<kbd>-lm</kbd> を加える必要があります(see section <a href="libtool-ja_8.html#SEC39">ライブラリ内部の依存性</a>)．
+
+</p><p>同じ規則は，標準Cライブラリに無い関数を使用するとき，常に当てはまりま
+す&hellip;これらのオブジェクトに対しリンクするときは，適切な
+<kbd>-l<var>name</var></kbd>フラグをリンク行の終りに加える必要があります．
+
+</p><p>ライブラリをビルドした後，`<tt>libhello</tt>'に対して`<tt>main.o</tt>'をリンク
+することでプログラムを作成したいと思います．
+
+</p><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#SEC8">3.1 オブジェクトファイルの作成</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Compiling object files for libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC9">3.2 ライブラリのリンク</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Creating libraries from object files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC10">3.3 実行形式のリンク</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Linking object files against libtool libraries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC11">3.4 実行形式のデバッグ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Running GDB on libtool-generated programs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC12">3.5 ライブラリのインストール</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Making libraries available to users.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC13">3.6 実行形式のインストール</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Making programs available to users.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC14">3.7 スタティックライブラリとのリンク</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            When shared libraries are not wanted.
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD9"></a>
+<a name="SEC8"></a>
+<h2 class="section"> 3.1 オブジェクトファイルの作成 </h2>
+
+<p>ソースファイルからオブジェクトファイルを作成するため，コンパイラは`-c'
+フラグ(とその他の必要なあらゆるフラグ)とともに呼び出されます．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>gcc -g -O -c main.c</kbd>
+burger$
+</pre></td></tr></table>
+<p>上記のコンパイラコマンドは，ソースファイル`<tt>main.c</tt>'からオブジェク
+トファイル`<tt>main.o</tt>'を生成します．
+
+</p><p>ほとんどのライブラリシステムでは，スタティックライブラリの一部となるオ
+ブジェクトファイルを作成することは，実行可能な形式にリンクされるオブジェ
+クトファイルを作成することと同じくらい単純です．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>gcc -g -O -c foo.c</kbd>
+burger$ <kbd>gcc -g -O -c hello.c</kbd>
+burger$
+</pre></td></tr></table>
+<a name="IDX6"></a>
+<a name="IDX7"></a>
+<p>しかし，共有ライブラリは<em>position-independent code</em> (PIC)のみから
+ビルドされます．そのため，標準のposition-dependent codeではなくPICを生
+成するようコンパイラに伝えるため，特定のフラグを渡す必要があります．
+
+</p><a name="IDX8"></a>
+<a name="IDX9"></a>
+<a name="IDX10"></a>
+<p>これがライブラリ実装の詳細なので，libtoolは個別の(`<samp>.o</samp>'の代わりに
+`<samp>.lo</samp>'で終わる)ライブラリオブジェクトファイルを用いて，複雑なPICコ
+ンパイラフラグを隠蔽します．共有ライブラリが無い(または，特定のPICフラ
+グが無い)システムでは，これらのライブラリオブジェクトファイルは&quot;標準
+の&quot;オブジェクトファイルと同じです．
+
+</p><p>`<tt>foo.c</tt>'と`<tt>hello.c</tt>'に対するライブラリオブジェクトファイルを作
+成するため，単純に標準のコンパイルコマンドを引数として，libtoolを呼び
+出してください(see section <a href="libtool-ja_4.html#SEC16">コンパイルモード</a>)．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a23$ <kbd>libtool --mode=compile gcc -g -O -c foo.c</kbd>
+gcc -g -O -c foo.c
+echo timestamp &gt; foo.lo
+a23$ <kbd>libtool --mode=compile gcc -g -O -c hello.c</kbd>
+gcc -g -O -c hello.c
+echo timestamp &gt; hello.lo
+a23$
+</pre></td></tr></table>
+<p>それぞれの呼び出しで，libtoolが二つのファイルを作成することに注意して
+ください．`<samp>.lo</samp>'ファイルはライブラリオブジェクトで，それは共有ライ
+ブラリにビルドされ，`<samp>.o</samp>'ファイルは標準的なオブジェクトファイルで
+す．`<samp>a23</samp>'では，スタティックライブラリのみサポートされているので，
+ライブラリオブジェクトはタイムスタンプのみです．
+
+</p><p>共有ライブラリのあるシステムでは，ライブラリオブジェクトと標準オブジェ
+クトが異なるように，libtoolはPIC生成フラグをコンパイルコマンドに自動的
+に挿入します．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>libtool --mode=compile gcc -g -O -c foo.c</kbd>
+gcc -g -O -c -fPIC -DPIC foo.c
+mv -f foo.o foo.lo
+gcc -g -O -c foo.c &gt;/dev/null 2&gt;&amp;1
+burger$ <kbd>libtool --mode=compile gcc -g -O -c hello.c</kbd>
+gcc -g -O -c -fPIC -DPIC hello.c
+mv -f hello.o hello.lo
+gcc -g -O -c hello.c &gt;/dev/null 2&gt;&amp;1
+burger$
+</pre></td></tr></table>
+<p>二番目に実行されるGCCがその出力を破棄していることに注意してください．
+これは，コンパイラの警告がうるさく重複しないために行われます．
+
+</p><hr size="6">
+<a name="NOD10"></a>
+<a name="SEC9"></a>
+<h2 class="section"> 3.2 ライブラリのリンク </h2>
+
+<p>libtoolを用いない場合，スタティックライブラリを作成するため，プログラ
+マは<code>ar</code>コマンドを呼び出していました．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>ar cru libhello.a hello.o foo.o</kbd>
+burger$
+</pre></td></tr></table>
+<a name="IDX11"></a>
+<p>しかしもちろん，それだけではあまりに単純すぎて，多くのシステムでは(そ
+れ以上のカルマや何かを与えるため)結果として生成されたライブラリ上で，
+<code>ranlib</code>コマンドを実行する必要があります．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>ranlib libhello.a</kbd>
+burger$
+</pre></td></tr></table>
+<p>libtoolの&quot;ライブラリはプログラム&quot;というアプローチであるといるこの作
+業に対して，Cコンパイラを使用することはより自然に感じられます．その
+ため，共有ライブラリが無いプラットフォームでは，libtoolは単純にシステ
+ムの<code>ar</code>(そして可能なら<code>ranlib</code>)コマンドのラッパーとして動作
+します．
+
+</p><a name="IDX12"></a>
+<a name="IDX13"></a>
+<p>また，libtoolのライブラリ名は，標準の名前(`<samp>.a</samp>'接尾子の代わりに
+`<samp>.la</samp>'接尾子を持ちます)とは異なります．libtoolの引数は，コンパイラで
+`<tt>libhello.la</tt>'という名の実行形式を生成するために使用したのと同じも
+のです(see section <a href="libtool-ja_4.html#SEC17">リンクモード</a>)．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a23$ <kbd>libtool --mode=link gcc -g -O -o libhello.la foo.o hello.o</kbd>
+libtool: cannot build libtool library `libhello.la' from non-libtool \
+                objects
+a23$
+</pre></td></tr></table>
+<p>あぁ！libtoolは通常のエラーを得てしまいましたた&hellip;ライブラリオブジェ
+クトの代わりに，標準のオブジェクトからライブラリをビルドしています．こ
+れはスタティックライブラリでは問題ありませんが，共有ライブラリシステム
+では非常に重要です．
+
+</p><p>そのため，今回はライブラリオブジェクトファイルを用いて，もう一度試して
+みましょう．`<tt>foo.c</tt>'が<code>cos</code>数学ライブラリを使用しているので，
+コマンドラインに<kbd>-lm</kbd>を加える必要があることも忘れないでください
+(see section <a href="#SEC7">libtoolを使用する</a>)．
+
+</p><p>共有ライブラリをビルドするその他の複雑なことは，(最終的に)インストール
+されるディレクトリパス(この場合は，`<tt>/usr/local/lib</tt>')
+<a name="DOCF1" href="libtool-ja_fot.html#FOOT1">(1)</a>を指定する必要があることです．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a23$ <kbd>libtool --mode=link gcc -g -O -o libhello.la foo.lo hello.lo \
+                -rpath /usr/local/lib -lm</kbd>
+mkdir .libs
+ar cru .libs/libhello.a foo.o hello.o
+ranlib .libs/libhello.a
+creating libhello.la
+a23$
+</pre></td></tr></table>
+<p>さて，共有ライブラリのプラットフォーム上で同じトリックを試してみましょ
+う．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>libtool --mode=link gcc -g -O -o libhello.la foo.lo hello.lo \
+                -rpath /usr/local/lib -lm</kbd>
+mkdir .libs
+ld -Bshareable -o .libs/libhello.so.0.0 foo.lo hello.lo -lm
+ar cru .libs/libhello.a foo.o hello.o
+ranlib .libs/libhello.a
+creating libhello.la
+burger$
+</pre></td></tr></table>
+<p>さてそれはかなり賢いです&hellip;libtoolは共有ライブラリを作成するため，
+スタティックライブラリと同様に，曖昧な<code>ld</code>コマンドを実行しただけ
+です．
+
+</p><a name="IDX14"></a>
+<p>libtoolが，現在のディレクトリではなく，`<tt>.libs</tt>'サブディレ
+クトリに余分なファイルを作成することに注意してください．この機能は，ビ
+ルドディレクトリをきれいにするのをより簡単にするためと，たまたま
+libtoolの使用を忘れていて他のプログラムを実行するとき，確実に手ひどく
+失敗するので役に立ちます．
+
+</p><hr size="6">
+<a name="NOD11"></a>
+<a name="SEC10"></a>
+<h2 class="section"> 3.3 実行形式のリンク </h2>
+
+<p>ライブラリを実行形式とリンクする前に，<em>インストール</em>する(恒久的な
+場所にそれを配置する)場所を選択した場合，リンクするためにlibtoolを使用
+する必要はありません．ライブラリの位置を指定するため，単純に適切な
+`<samp>-L</samp>'と`<samp>-l</samp>'フラグを使用してください．
+
+</p><a name="IDX15"></a>
+<p>システムのリンカによっては，結果として生じる実行形式に，共有ライブラリ
+の完全なディレクトリ名の符号化を強要するものもあります．libtoolは，恒
+久的なディレクトリ名のみをインストールされた実行形式に書き込むことを確
+実にするため，特別な魔法でこの設計ミスに関して動作する必要があります．
+
+</p><a name="IDX16"></a>
+<a name="IDX17"></a>
+<p>このバグの重要性は見落としてはなりません．それによるプログラムの暴走は
+明白ではありません．それはセキュリティホールを作成し，さらに悪いことに
+は，パッケージのインストール後にライブラリソースコードを編集した場合，
+インストールされたプログラムの動作を変更してしまうでしょう！
+
+</p><p>そのため，インストールする前にライブラリとプログラムをリンクさせたい場
+合，リンクするためにlibtoolを使用する必要があります．
+
+</p><a name="IDX18"></a>
+<p>インストールされていないライブラリとリンクする古い方法は，以下のように
+なります．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>gcc -g -O -o hell.old main.o libhello.a -lm</kbd>
+burger$
+</pre></td></tr></table>
+<p>libtoolの方法は，ほとんど同じです<a name="DOCF2" href="libtool-ja_fot.html#FOOT2">(2)</a>(see section <a href="libtool-ja_4.html#SEC17">リンクモード</a>)．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a23$ <kbd>libtool --mode=link gcc -g -O -o hell main.o libhello.la -lm</kbd>
+gcc -g -O -o hell main.o ./.libs/libhello.a -lm
+a23$
+</pre></td></tr></table>
+<p>真実としてはあまりに単純に見えます．libtoolが行うことは，
+`<tt>libhello.la</tt>'を`<tt>./.libs/libhello.a</tt>'に変換することが
+すべてですが，`<samp>a23</samp>'には共有ライブラリがないことを忘れないでくださ
+い．
+
+</p><p>`<samp>burger</samp>'では，状況が異なります．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>libtool --mode=link gcc -g -O -o hell main.o libhello.la -lm</kbd>
+gcc -g -O -o .libs/hell main.o -L./.libs -R/usr/local/lib -lhello -lm
+creating hell
+burger$
+</pre></td></tr></table>
+<a name="IDX19"></a>
+
+<p>さて，`<tt>libhello.la</tt>'が既にインストールされていると仮定し，新しいプ
+ログラムをそれとリンクしたいとします．自分でそれがある場所を探し，以下
+を実行します．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>gcc -g -O -o test test.o -L/usr/local/lib -lhello</kbd>
+</pre></td></tr></table>
+<p>しかし，`<tt>/usr/local/lib</tt>'が標準のライブラリ検索パスに無い場合，
+<code>test</code>を実行することはできません．しかし，既にインストールされて
+いるlibtoolライブラリとリンクするためlibtoolを使用する場合，それは The
+Right Thing (TM) (正解)となります．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>libtool --mode=link gcc -g -O -o test test.o /usr/local/lib/libhello.la</kbd>
+gcc -g -O -o .libs/test test.o -Wl,--rpath
+-Wl,/usr/local/lib /usr/local/lib/libhello.a -lm
+creating test
+burger$
+</pre></td></tr></table>
+<p>libtoolが，ライブラリlibhello.laが依存している`<samp>-lm</samp>'同様，必要なラ
+ンタイムパスフラグを追加していることに注意してください．いいですね，ふっ
+ふ？
+
+</p><p>libtoolがラッパースクリプトを作成したので，インストールとデバッグにも
+libtoolを使用したほうがいいでしょう．しかし，プログラムはインストール
+されていないlibtoolライブラリには全く依存しないので，ラッパースクリプ
+トを用いない場合でもおそらく有用でしょう．この場合は，ラッパースクリプ
+トの作成を避けるため，おそらくより賢くlibtoolを作成できたでしょうが，
+これは読者の演習として残しておきます．
+
+</p>
+<a name="IDX20"></a>
+<a name="IDX21"></a>
+<p>実行形式<code>hell</code>は，実際には`<tt>.libs</tt>'サブディレクトリに
+作成されることに注意してください．そして，ラッパースクリプトは現在のディ
+レクトリに作成されます．
+
+</p><p>NetBSD 1.2では，libtoolは`<samp>-R/usr/local/lib</samp>'コンパイラフラグを使用
+して，`<tt>libhello</tt>'のディレクトリのインストールを符号化します．そし
+て，ラッパースクリプトは，正しくインストールされるまで実行形式が正しい
+(`<tt>./.libs</tt>'にある)共有ライブラリを見つけることを保証しま
+す．
+
+</p><p>二つの異なるプログラムを比較してみましょう．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>time ./hell.old</kbd>
+Welcome to GNU Hell!
+** This is not GNU Hello.  There is no built-in mail reader. **
+        0.21 real         0.02 user         0.08 sys
+burger$ <kbd>time ./hell</kbd>
+Welcome to GNU Hell!
+** This is not GNU Hello.  There is no built-in mail reader. **
+        0.63 real         0.09 user         0.59 sys
+burger$
+</pre></td></tr></table>
+<p>ラッパースクリプトは実行にかなり時間がかかりますが，共有ライブラリがイ
+ンストールされていなくても，少なくとも結果は正しくなります．
+
+</p><p>そのため，共有ライブラリがもたらした，全体的なスペース削減ははどうなっ
+ているのでしょう？
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>ls -l hell.old libhello.a</kbd>
+-rwxr-xr-x  1 gord  gord  15481 Nov 14 12:11 hell.old
+-rw-r--r--  1 gord  gord   4274 Nov 13 18:02 libhello.a
+burger$ <kbd>ls -l .libs/hell .libs/libhello.*</kbd>
+-rwxr-xr-x  1 gord  gord  11647 Nov 14 12:10 .libs/hell
+-rw-r--r--  1 gord  gord   4274 Nov 13 18:44 .libs/libhello.a
+-rwxr-xr-x  1 gord  gord  12205 Nov 13 18:44 .libs/libhello.so.0.0
+burger$
+</pre></td></tr></table>
+<p>うーん，だめだなあ<a name="DOCF3" href="libtool-ja_fot.html#FOOT3">(3)</a>．おそらく，
+私はこのプロジェクトを破壊し，作成中のゆりかごを取り上げたほうがいいで
+しょう．
+
+</p><p>実際，それは重要なことを証明しています．共有ライブラリには，それが(関
+連する)複雑さのため，オーバーへッドをがあります．この状況では，ダイナ
+ミックの価値は8キロバイトで，報酬は約4キロバイトです．そのため，少なく
+とも二，三個以上のプログラムとリンクするまで，共有される
+`<tt>libhello</tt>'を維持することは利点になりません．
+
+</p><hr size="6">
+<a name="NOD12"></a>
+<a name="SEC11"></a>
+<h2 class="section"> 3.4 実行形式のデバッグ </h2>
+
+<p>`<tt>hell</tt>'が複雑なプログラムの場合，システムにインストールする前にそ
+れのテストとデバッグを間違いなく行いたいでしょう．上記のセクションで，
+libtoolラッパースクリプトが，プログラムを直接実行することを可能にする
+方法を見ましたが，残念ながら，このメカニズムはデバッガの邪魔になります．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>gdb hell</kbd>
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type &quot;show copying&quot; to see the conditions.
+There is no warranty for GDB; type &quot;show warranty&quot; for details.
+GDB 4.16 (i386-unknown-netbsd), (C) 1996 Free Software Foundation, Inc.
+
+&quot;hell&quot;: not in executable format: File format not recognized
+
+(gdb) <kbd>quit</kbd>
+burger$
+</pre></td></tr></table>
+<p>残念です．GDBは実行形式がある場所が分からないので動作しません．そのた
+め，もう一度実行形式でGDBを呼び出してみてください．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>gdb .libs/hell</kbd>
+trick:/home/src/libtool/demo$ gdb .libs/hell
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type &quot;show copying&quot; to see the conditions.
+There is no warranty for GDB; type &quot;show warranty&quot; for details.
+GDB 4.16 (i386-unknown-netbsd), (C) 1996 Free Software Foundation, Inc.
+(gdb) <kbd>break main</kbd>
+Breakpoint 1 at 0x8048547: file main.c, line 29.
+(gdb) <kbd>run</kbd>
+Starting program: /home/src/libtool/demo/.libs/hell
+/home/src/libtool/demo/.libs/hell: can't load library 'libhello.so.2'
+
+Program exited with code 020.
+(gdb) <kbd>quit</kbd>
+burger$
+</pre></td></tr></table>
+<p>あぁ．さて，GDBは，`<tt>hell</tt>'がリンクしている共有ライブラリを見つける
+ことができないため文句を言いました．そのため，正しいライブラリパスを設
+定してデバッガを実行するために，libtoolを使う必要があります．幸い，
+`<tt>.libs</tt>'ディレクトリを完全に忘れて，そのままの実行形式の
+ラッパーで実行可能です(see section <a href="libtool-ja_4.html#SEC18">実行モード</a>)．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>libtool --mode=execute gdb hell</kbd>
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type &quot;show copying&quot; to see the conditions.
+There is no warranty for GDB; type &quot;show warranty&quot; for details.
+GDB 4.16 (i386-unknown-netbsd), (C) 1996 Free Software Foundation, Inc.
+(gdb) <kbd>break main</kbd>
+Breakpoint 1 at 0x8048547: file main.c, line 29.
+(gdb) <kbd>run</kbd>
+Starting program: /home/src/libtool/demo/.libs/hell
+
+Breakpoint 1, main (argc=1, argv=0xbffffc40) at main.c:29
+29	  printf (&quot;Welcome to GNU Hell!\n&quot;);
+(gdb) <kbd>quit</kbd>
+The program is running.  Quit anyway (and kill it)? (y or n) <kbd>y</kbd>
+burger$
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD13"></a>
+<a name="SEC12"></a>
+<h2 class="section"> 3.5 ライブラリのインストール </h2>
+
+<p>libtoolが無いシステムでライブラリをインストールすることは，全く簡単で
+す&hellip; それらをその場所にコピーするだけです．<a name="DOCF4" href="libtool-ja_fot.html#FOOT4">(4)</a>
+
+</p><a name="IDX22"></a>
+<table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>su</kbd>
+Password: <kbd>********</kbd>
+burger# <kbd>cp libhello.a /usr/local/lib/libhello.a</kbd>
+burger#
+</pre></td></tr></table>
+<p>おっと，<code>ranlib</code>コマンドを忘れないでください．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger# <kbd>ranlib /usr/local/lib/libhello.a</kbd>
+burger#
+</pre></td></tr></table>
+<a name="IDX23"></a>
+<p>libtoolのインストールは，同様に全く単純です．通常使用する，
+<code>install</code>や<code>cp</code>コマンドをそのまま使用してください
+(see section <a href="libtool-ja_4.html#SEC19">インストールモード</a>)．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a23# <kbd>libtool --mode=install cp libhello.la /usr/local/lib/libhello.la</kbd>
+cp libhello.la /usr/local/lib/libhello.la
+cp .libs/libhello.a /usr/local/lib/libhello.a
+ranlib /usr/local/lib/libhello.a
+a23#
+</pre></td></tr></table>
+<p>アンインストールでlibtoolを助け(see section <a href="libtool-ja_4.html#SEC21">アンインストールモード</a>)，リンクし
+(see section <a href="#SEC10">実行形式のリンク</a>)，dlopenでプログラムを助ける
+(see section <a href="libtool-ja_9.html#SEC40">dlopenモジュール</a>)ため，libtoolのライブラリ`<tt>libhello.la</tt>'
+もインストールされることに注意してください．
+
+</p><p>共有ライブラリの例は，以下のようになります．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger# <kbd>libtool --mode=install install -c libhello.la /usr/local/lib/libhello.la</kbd>
+install -c .libs/libhello.so.0.0 /usr/local/lib/libhello.so.0.0
+install -c libhello.la /usr/local/lib/libhello.la
+install -c .libs/libhello.a /usr/local/lib/libhello.a
+ranlib /usr/local/lib/libhello.a
+burger#
+</pre></td></tr></table>
+<a name="IDX24"></a>
+<a name="IDX25"></a>
+<p>ライブラリインストール時にBSD互換のinstallプログラムを使用する場合，
+`<samp>-s</samp>'(シンボルのstrip)フラグを指定すると安全です．libtoolは
+`<samp>-s</samp>' フラグを無視する，またはライブラリからデバッグとコンパイラシ
+ンボルのみをstripするプログラムを実行します．
+
+</p><p>ライブラリを一度配置すると，使用する前に必要な追加のコンフィグレーショ
+ンを行います．最初に，ビルド時に使用した`<samp>-rpath</samp>'フラグと同じ場所
+に，ライブラリが実際にインストールされていることを確かめる必要がありま
+す．
+
+</p><a name="IDX26"></a>
+<a name="IDX27"></a>
+<a name="IDX28"></a>
+<p>そして，`<samp>libtool -n --mode=finish <var>libdir</var></samp>'を実行すると，行う
+ことのヒントが与えられるはずです(see section <a href="libtool-ja_4.html#SEC20">フィニッシュモード</a>)．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger# <kbd>libtool -n --mode=finish /usr/local/lib</kbd>
+PATH=&quot;$PATH:/sbin&quot; ldconfig -m /usr/local/lib
+-----------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+To link against installed libraries in a given directory, LIBDIR,
+you must use the `-LLIBDIR' flag during linking.
+
+ You will also need to do one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-RLIBDIR' linker flag
+
+See any operating system documentation about shared libraries for
+more information, such as the ld and ld.so manual pages.
+-----------------------------------------------------------------
+burger#
+</pre></td></tr></table>
+<p>これらのステップを完了した後，インストールされたライブラリの使用開始が
+可能になります．作成されたライブラリに依存する実行形式もインストールで
+きます．
+
+</p><hr size="6">
+<a name="NOD14"></a>
+<a name="SEC13"></a>
+<h2 class="section"> 3.6 実行形式のインストール </h2>
+
+<p>インストールされていないlibtoolライブラリに対して，実行形式をリンクす
+るためにlibtoolを使用した場合(see section <a href="#SEC10">実行形式のリンク</a>)，ライブラリ
+をインストールした後に実行形式をインストールするため，libtoolを使用す
+る必要があります．
+
+</p><p>それでは，Ultrixの例を対象に，以下のように実行します．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a23# libtool install -c hell /usr/local/bin/hell
+install -c hell /usr/local/bin/hell
+a23#
+</pre></td></tr></table>
+<p>共有ライブラリシステムでは，libtoolはラッパースクリプトを無視し，正し
+いバイナリをインストールします．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger# libtool install -c hell /usr/local/bin/hell
+install -c .libs/hell /usr/local/bin/hell
+burger#
+</pre></td></tr></table>
+<hr size="6">
+<a name="NOD15"></a>
+<a name="SEC14"></a>
+<h2 class="section"> 3.7 スタティックライブラリとのリンク </h2>
+
+<p>libtoolの旨味を知って，<code>ar</code>と<code>ranlib</code>の愚かさへなぜ戻るので
+しょう？さて，決して共有されるはずがないスタティックアーカイブをつくる
+ことが望ましいときもあります．最もよくある状況として，複数の異なるプロ
+グラムをビルドするために使用する，オブジェクトファイルの集まりを持って
+いるときがあります．個々のプログラムに対し，すべてのオブジェクトファイ
+ルをリストアップする代わりに，それらのオブジェクトから&quot;コンビニエンス
+ライブラリ&quot;を作成し，ライブラリとプログラムをリンクすることが可能です．
+この技術は，他のディレクトリのライブラリへのリンクをサポートするので，
+他のディレクトリのソースからビルドされるオブジェクトファイルをリンクす
+るサポートが欠けている，GNU automakeを補うためによく使用されます．この
+制限は，リリース1.4までのGNU automakeに当てはまります．より新しいリリー
+スは，他のディレクトリのソースをサポートするでしょう．
+
+</p><p>このコンビニエンスライブラリとプログラムをリンクしたいだけの場合，完全
+にlibtoolを無視し，古い<code>ar</code>と<code>ranlib</code>コマンド(や，対応する
+GNU automake `<samp>_LIBRARIES</samp>'規則)が使用可能です．(おそらく使用したく
+はないでしょうが)libtoolを使用して，コンビニエンスライブラリをインストー
+ルすることさえ可能です．
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">burger$ <kbd>libtool --mode=install ./install-sh -c libhello.a /local/lib/libhello.a</kbd>
+./install-sh -c libhello.a /local/lib/libhello.a
+ranlib /local/lib/libhello.a
+burger$
+</pre></td></tr></table>
+<p>スタティックライブラリのインストールにlibtoolを使用すると，ライブラリ
+が(`<samp>-s</samp>'フラグを使用したインストーラの場合のように)偶然stripされる
+ことから守り，自動的に実行される正しい<code>ranlib</code>コマンドと同様にな
+ります．
+
+</p><p>しかし，libtoolライブラリは単にオブジェクトファイルの集合以上です．そ
+れらは古いアーカイブにはない，ライブラリの依存情報も伝えることが可能で
+す．libtoolのスタティックなコンビニエンスライブラリを作成したい場合，
+スタティックライブラリのみに興味があることを示すため，`<samp>-rpath</samp>'フ
+ラグを省略し`<samp>-static</samp>'を使用することができます．そのようなスタティッ
+クライブラリとリンクするとき，libtoolは実際にすべてのオブジェクトファ
+イルと依存するライブラリをプログラムにリンクします．
+
+</p><p>`<samp>-rpath</samp>'と`<samp>-static</samp>'の両方を省略した場合，libtoolは，他の
+libtoolライブラリで，共有ライブラリの作成にすら使用可能なlibtoolのコン
+ビニエンスライブラリを作成します．スタティックな場合のように，ライブラ
+リは一組のオブジェクトファイルと依存するライブラリの別名として動作しま
+すが，この場合，オブジェクトファイルは共有ライブラリに含まれるほうが適
+しています．しかし，直接または間接的に，単一のプログラムやライブラリに
+単一のコンビニエンスライブラリをリンクしないように注意して下さい．さも
+なければ，シンボル再定義に関するエラーを得るでしょう．
+
+</p><p>GNU automakeを使用するとき，`<samp>-rpath</samp>'オプションがリンク時に渡され
+ないように，コンビニエンスライブラリに対する<code>lib_LTLIBRARIES</code>の代
+わりに<code>noinst_LTLIBRARIES</code>を使用した方が良いでしょう．
+
+</p><p>経験的に，最大一つのlibtoolライブラリにlibtoolのコンビニエンスライブラ
+リをリンクし，プログラムにはリンクしないようにしてください，そして，
+libtoolのコンビニエンススタティックライブラリを一つのプログラムにのみ
+リンクし，それは，ライブラリ依存情報をコンビニエンススタティックライブ
+ラリのユーザに伝えることが必要な場合のみにしてください．
+
+</p><a name="IDX29"></a>
+<p>スタティックなリンクが適している，その他の一般的な状況は，独立したバイ
+ナリを作成するときです．リンクにlibtoolを使用し，`<samp>-all-static</samp>'フ
+ラグを加えてください．
+
+</p><hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC7" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_4.html#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_15.html#SEC86" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="libtool-ja_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>Akihiro Sagawa</em> on <em>June, 15 2005</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html 1.70</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

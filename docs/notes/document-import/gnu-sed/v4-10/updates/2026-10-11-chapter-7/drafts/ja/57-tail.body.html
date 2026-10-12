@@ -1,0 +1,30 @@
+<div class="gnu-sed-original-content" id="tail">
+<h3 class="section" id="Printing-the-Last-Lines"><span>7.17 最後の数行の出力</span></h3>
+<p>先頭の行ではなく、末尾の<var class="var">n</var>行を出力するのは、より複雑ですが可能です。<var class="var">n</var>は、2行目の感嘆符の前に記述されています。</p>
+<p>このスクリプトは、最終的な出力をホールドスペースに保持して最後に出力する点で、<code class="command">tac</code>のスクリプトに似ています。</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+</pre><div class="group"><pre class="example-preformatted">1! {; H; g; }
+1,10 !s/[^\n]*\n//
+$p
+h
+</pre></div></div>
+<p>主な動作は、10行分の窓を保持し、行を追加して最も古い行を削除することで、その窓をずらすものです（2行目の置換コマンドは、<code class="code">D</code>コマンドのように動作しますが、ループは再開しません）。</p>
+<p>この「スライディングウィンドウ」の手法は、効率的で複雑な<code class="command">sed</code>スクリプトを書くための、とても強力な方法です。<code class="code">P</code>のようなコマンドの動作を手作業で実装するには、多くの作業が必要になるためです。</p>
+<p><code class="code">N</code>、<code class="code">P</code>、<code class="code">D</code>コマンドに基づくこの手法は、この章の残りの部分で詳しく示します。導入として、単純な「スライディングウィンドウ」を使う<code class="command">tail</code>の実装を示します。</p>
+<p>複雑に見えますが、実際の動作は前のスクリプトと同じです。ただし、適切な行数を取り込んだ後は、行をまたぐ状態の保持にホールドスペースを使うのをやめ、代わりに<code class="code">N</code>と<code class="code">D</code>でパターンスペースを1行ずつずらします。</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+</pre><div class="group"><pre class="example-preformatted">1h
+2,10 {; H; g; }
+$q
+1,9d
+N
+D
+</pre></div></div>
+<p>入力の最初の10行を過ぎると、スクリプトの1、2、4行目が働かなくなることに注目してください。その後の動作は、入力の最終行で終了し、次の入力行をパターンスペースへ追加して、最初の行を削除するだけです。</p>
+<hr/>
+</div>
+

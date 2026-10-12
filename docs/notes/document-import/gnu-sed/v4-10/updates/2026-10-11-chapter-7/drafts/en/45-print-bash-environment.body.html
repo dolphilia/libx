@@ -1,0 +1,38 @@
+<div class="gnu-sed-original-content" id="Print-bash-environment">
+<h3 class="section" id="Print-bash-Environment"><span>7.5 Print <code class="command">bash</code> Environment</span></h3>
+<p>This script strips the definition of the shell functions
+from the output of the <code class="command">set</code> Bourne-shell command.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/bin/sh
+
+</pre><div class="group"><pre class="example-preformatted">set | sed -n '
+:x
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># if no occurrence of ‘<samp class="samp">=()</samp>’ print and load next line
+/=()/! { p; b; }
+/ () $/! { p; b; }
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># possible start of functions section
+# save the line in case this is a var like FOO="() "
+h
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># if the next line has a brace, we quit because
+# nothing comes after functions
+n
+/^{/ q
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># print the old line
+x; p
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># work on the new line now
+x; bx
+'
+</pre></div></div>
+<hr/>
+</div>

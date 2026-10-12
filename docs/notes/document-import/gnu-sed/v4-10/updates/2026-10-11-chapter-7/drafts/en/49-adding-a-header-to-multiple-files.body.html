@@ -1,0 +1,93 @@
+<div class="gnu-sed-original-content" id="Adding-a-header-to-multiple-files">
+<h3 class="section" id="Adding-a-header-to-multiple-files-1"><span>7.9 Adding a header to multiple files</span></h3>
+<p>GNU <code class="command">sed</code> can be used to safely modify multiple files at once.
+</p>
+<p class="exdent">Add a single line to the beginning of source code files:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -i '1i/* Copyright (C) FOO BAR */' *.c
+</pre></div>
+<p class="exdent">Adding a few lines is possible using ‘<samp class="samp">\n</samp>’ in the text:
+</p>
+<div class="example">
+<pre class="example-preformatted">sed -i '1i/*\n * Copyright (C) FOO BAR\n * Created by Jane Doe\n */' *.c
+</pre></div>
+<p>To add multiple lines from another file, use <code class="code">0rFILE</code>.
+A typical use case is adding a license notice header to all files:
+</p>
+<div class="example">
+<pre class="example-preformatted">## Create the header file:
+$ cat&lt;&lt;'EOF'&gt;LIC.TXT
+/*
+    Copyright (C) 1989-2021 FOO BAR
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 3, or (at your option)
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; If not, see &lt;https://www.gnu.org/licenses/&gt;.
+*/
+EOF
+
+## Add the file at the beginning of all source code files:
+$ sed -i '0rLIC.TXT' *.cpp *.h
+</pre></div>
+<p>With script files (e.g. <samp class="file">.sh</samp>,<samp class="file">.py</samp>,<samp class="file">.pl</samp> files)
+the license notice typically appears <em class="emph">after</em> the first line (the
+’shebang’ ‘<samp class="samp">#!</samp>’ line). The <code class="code">1rFILE</code> command will add <samp class="file">FILE</samp>
+<em class="emph">after</em> the first line:
+</p>
+<div class="example">
+<pre class="example-preformatted">## Create the header file:
+$ cat&lt;&lt;'EOF'&gt;LIC.TXT
+##
+## Copyright (C) 1989-2021 FOO BAR
+##
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 3, or (at your option)
+## any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program; If not, see &lt;https://www.gnu.org/licenses/&gt;.
+##
+##
+EOF
+
+## Add the file at the beginning of all source code files:
+$ sed -i '1rLIC.TXT' *.py *.sh
+</pre></div>
+<p>The above <code class="command">sed</code> commands can be combined with <code class="command">find</code>
+to locate files in all subdirectories, <code class="command">xargs</code> to run additional
+commands on selected files and <code class="command">grep</code> to filter out files that already
+contain a copyright notice:
+</p>
+<div class="example">
+<pre class="example-preformatted">find \( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \) \
+    | xargs grep -Li copyright \
+    | xargs -r sed -i '0rLIC.TXT'
+</pre></div>
+<p class="exdent">Or a slightly safe version (handling files with spaces and newlines):
+</p>
+<div class="example">
+<pre class="example-preformatted">find \( -iname '*.cpp' -o -iname '*.c' -o -iname '*.h' \) -print0 \
+    | xargs -0 grep -Z -Li copyright \
+    | xargs -0 -r sed -i '0rLIC.TXT'
+</pre></div>
+<p>Note: using the <code class="code">0</code> address with <code class="code">r</code> command requires GNU <code class="command">sed</code>
+version 4.9 or later. See <a class="xref" href="#Zero-Address">Zero Address</a>.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,190 @@
+<div class="gnu-sed-original-content" id="Reporting-Bugs">
+<h2 class="chapter" id="Reporting-Bugs-1"><span>10 Reporting Bugs</span></h2>
+<a class="index-entry-id" id="index-Bugs_002c-reporting"></a>
+<p>Email bug reports to <a class="email" href="mailto:bug-sed@gnu.org">bug-sed@gnu.org</a>.
+Also, please include the output of ‘<samp class="samp">sed --version</samp>’ in the body
+of your report if at all possible.
+</p>
+<p>Please do not send a bug report like this:
+</p>
+<div class="example">
+<pre class="example-preformatted"><i class="i"><i class="i"><span class="r">while building frobme-1.3.4</span></i></i>
+$ configure
+error→ sed: file sedscr line 1: Unknown option to 's'
+</pre></div>
+<p>If GNU <code class="command">sed</code> doesn’t configure your favorite package, take a
+few extra minutes to identify the specific problem and make a stand-alone
+test case.  Unlike other programs such as C compilers, making such test
+cases for <code class="command">sed</code> is quite simple.
+</p>
+<p>A stand-alone test case includes all the data necessary to perform the
+test, and the specific invocation of <code class="command">sed</code> that causes the problem.
+The smaller a stand-alone test case is, the better.  A test case should
+not involve something as far removed from <code class="command">sed</code> as “try to configure
+frobme-1.3.4”.  Yes, that is in principle enough information to look
+for the bug, but that is not a very practical prospect.
+</p>
+<p>Here are a few commonly reported bugs that are not bugs.
+</p>
+<dl class="table">
+<dd><a class="anchor" id="N_005fcommand_005flast_005fline"></a></dd>
+<dt><a class="index-entry-id" id="index-Non_002dbugs_002c-N-command-on-the-last-line"></a>
+<a id="index-Portability_002c-N-command-on-the-last-line"></a><span><code class="code">N</code> command on the last line</span></dt>
+<dd>
+<p>Most versions of <code class="command">sed</code> exit without printing anything when
+the <code class="command">N</code> command is issued on the last line of a file.
+GNU <code class="command">sed</code> prints pattern space before exiting unless of course
+the <code class="command">-n</code> command switch has been specified.  This choice is
+by design.
+</p>
+<p>Default behavior (gnu extension, non-POSIX conforming):
+</p><div class="example">
+<pre class="example-preformatted">$ seq 3 | sed N
+1
+2
+3
+</pre></div>
+<p>To force POSIX-conforming behavior:
+</p><div class="example">
+<pre class="example-preformatted">$ seq 3 | sed --posix N
+1
+2
+</pre></div>
+<p>For example, the behavior of
+</p><div class="example">
+<pre class="example-preformatted">sed N foo bar
+</pre></div>
+<p>would depend on whether foo has an even or an odd number of
+lines<a class="footnote" href="#FOOT12" id="DOCF12"><sup>12</sup></a>.  Or, when writing a script to read the
+next few lines following a pattern match, traditional
+implementations of <code class="code">sed</code> would force you to write
+something like
+</p><div class="example">
+<pre class="example-preformatted">/foo/{ $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N; $!N }
+</pre></div>
+<p>instead of just
+</p><div class="example">
+<pre class="example-preformatted">/foo/{ N;N;N;N;N;N;N;N;N; }
+</pre></div>
+<a class="index-entry-id" id="index-POSIXLY_005fCORRECT-behavior_002c-N-command"></a>
+<p>In any case, the simplest workaround is to use <code class="code">$d;N</code> in
+scripts that rely on the traditional behavior, or to set
+the <code class="code">POSIXLY_CORRECT</code> variable to a non-empty value.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-Non_002dbugs_002c-regex-syntax-clashes"></a>
+<a id="index-GNU-extensions_002c-to-basic-regular-expressions-5"></a><span>Regex syntax clashes (problems with backslashes)</span></dt>
+<dd><p><code class="command">sed</code> uses the <small class="sc">POSIX</small> basic regular expression syntax.  According to
+the standard, the meaning of some escape sequences is undefined in
+this syntax;  notable in the case of <code class="command">sed</code> are <code class="code">\|</code>,
+<code class="code">\+</code>, <code class="code">\?</code>, <code class="code">\`</code>, <code class="code">\'</code>, <code class="code">\&lt;</code>,
+<code class="code">\&gt;</code>, <code class="code">\b</code>, <code class="code">\B</code>, <code class="code">\w</code>, and <code class="code">\W</code>.
+</p>
+<p>As in all GNU programs that use <small class="sc">POSIX</small> basic regular
+expressions, <code class="command">sed</code> interprets these escape sequences as special
+characters.  So, <code class="code">x\+</code> matches one or more occurrences of ‘<samp class="samp">x</samp>’.
+<code class="code">abc\|def</code> matches either ‘<samp class="samp">abc</samp>’ or ‘<samp class="samp">def</samp>’.
+</p>
+<p>This syntax may cause problems when running scripts written for other
+<code class="command">sed</code>s.  Some <code class="command">sed</code> programs have been written with the
+assumption that <code class="code">\|</code> and <code class="code">\+</code> match the literal characters
+<code class="code">|</code> and <code class="code">+</code>.  Such scripts must be modified by removing the
+spurious backslashes if they are to be used with modern implementations
+of <code class="command">sed</code>, like
+GNU <code class="command">sed</code>.
+</p>
+<p>On the other hand, some scripts use s|abc\|def||g to remove occurrences
+of <em class="emph">either</em> <code class="code">abc</code> or <code class="code">def</code>.  While this worked until
+<code class="command">sed</code> 4.0.x, newer versions interpret this as removing the
+string <code class="code">abc|def</code>.  This is again undefined behavior according to
+POSIX, and this interpretation is arguably more robust: older
+<code class="command">sed</code>s, for example, required that the regex matcher parsed
+<code class="code">\/</code> as <code class="code">/</code> in the common case of escaping a slash, which is
+again undefined behavior; the new behavior avoids this, and this is good
+because the regex matcher is only partially under our control.
+</p>
+<a class="index-entry-id" id="index-GNU-extensions_002c-special-escapes-1"></a>
+<p>In addition, this version of <code class="command">sed</code> supports several escape characters
+(some of which are multi-character) to insert non-printable characters
+in scripts (<code class="code">\a</code>, <code class="code">\c</code>, <code class="code">\d</code>, <code class="code">\o</code>, <code class="code">\r</code>,
+<code class="code">\t</code>, <code class="code">\v</code>, <code class="code">\x</code>).  These can cause similar problems
+with scripts written for other <code class="command">sed</code>s.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-in_002dplace-editing-1"></a>
+<a class="index-entry-id" id="index-Non_002dbugs_002c-in_002dplace-editing"></a>
+<a id="index-In_002dplace-editing"></a><span><samp class="option">-i</samp> clobbers read-only files</span></dt>
+<dd>
+<p>In short, ‘<samp class="samp">sed -i</samp>’ will let you delete the contents of
+a read-only file, and in general the <samp class="option">-i</samp> option
+(see <a class="pxref" href="#Invoking-sed">Invocation</a>) lets you clobber
+protected files.  This is not a bug, but rather a consequence
+of how the Unix file system works.
+</p>
+<p>The permissions on a file say what can happen to the data
+in that file, while the permissions on a directory say what can
+happen to the list of files in that directory.  ‘<samp class="samp">sed -i</samp>’
+will not ever open for writing  a file that is already on disk.
+Rather, it will work on a temporary file that is finally renamed
+to the original name: if you rename or delete files, you’re actually
+modifying the contents of the directory, so the operation depends on
+the permissions of the directory, not of the file.  For this same
+reason, <code class="command">sed</code> does not let you use <samp class="option">-i</samp> on a writable file
+in a read-only directory, and will break hard or symbolic links when
+<samp class="option">-i</samp> is used on such a file.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-0-address-1"></a>
+<a class="index-entry-id" id="index-Non_002dbugs_002c-0-address"></a>
+<a id="index-0-address"></a><span><code class="code">0a</code> does not work (gives an error)</span></dt>
+<dd>
+<p>There is no line 0.  0 is a special address that is only used to treat
+addresses like <code class="code">0,/<var class="var">RE</var>/</code> as active when the script starts: if
+you write <code class="code">1,/abc/d</code> and the first line includes the string ‘<samp class="samp">abc</samp>’,
+then that match would be ignored because address ranges must span at least
+two lines (barring the end of the file); but what you probably wanted is
+to delete every line up to the first one including ‘<samp class="samp">abc</samp>’, and this
+is obtained with <code class="code">0,/abc/d</code>.
+</p>
+</dd>
+<dt><a id="index-Non_002dbugs_002c-localization_002drelated"></a><span><code class="code">[a-z]</code> is case insensitive</span></dt>
+<dd>
+<p>You are encountering problems with locales.  POSIX mandates that <code class="code">[a-z]</code>
+uses the current locale’s collation order – in C parlance, that means using
+<code class="code">strcoll(3)</code> instead of <code class="code">strcmp(3)</code>.  Some locales have a
+case-insensitive collation order, others don’t.
+</p>
+<p>Another problem is that <code class="code">[a-z]</code> tries to use collation symbols.
+This only happens if you are on the GNU system, using
+GNU libc’s regular expression matcher instead of compiling the
+one supplied with GNU sed.  In a Danish locale, for example,
+the regular expression <code class="code">^[a-z]$</code> matches the string ‘<samp class="samp">aa</samp>’,
+because this is a single collating symbol that comes after ‘<samp class="samp">a</samp>’
+and before ‘<samp class="samp">b</samp>’; ‘<samp class="samp">ll</samp>’ behaves similarly in Spanish
+locales, or ‘<samp class="samp">ij</samp>’ in Dutch locales.
+</p>
+<p>To work around these problems, which may cause bugs in shell scripts, set
+the <code class="env">LC_COLLATE</code> and <code class="env">LC_CTYPE</code> environment variables to ‘<samp class="samp">C</samp>’.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-GNU-extensions_002c-emptying-pattern-space-1"></a>
+<a class="index-entry-id" id="index-Emptying-pattern-space-1"></a>
+<a id="index-Non_002dbugs_002c-localization_002drelated-1"></a><span><code class="code">s/.*//</code> does not clear pattern space</span></dt>
+<dd>
+<p>This happens if your input stream includes invalid multibyte
+sequences.  <small class="sc">POSIX</small> mandates that such sequences
+are <em class="emph">not</em> matched by ‘<samp class="samp">.</samp>’, so that ‘<samp class="samp">s/.*//</samp>’ will not clear
+pattern space as you would expect.  In fact, there is no way to clear
+sed’s buffers in the middle of the script in most multibyte locales
+(including UTF-8 locales).  For this reason, GNU <code class="command">sed</code> provides a <code class="code">z</code>
+command (for “zap”) as an extension.
+</p>
+<p>To work around these problems, which may cause bugs in shell scripts, set
+the <code class="env">LC_COLLATE</code> and <code class="env">LC_CTYPE</code> environment variables to ‘<samp class="samp">C</samp>’.
+</p></dd>
+</dl>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF12" id="FOOT12">(12)</a></h5>
+<p>which is the actual “bug” that prompted the
+change in behavior</p>
+</div></div>

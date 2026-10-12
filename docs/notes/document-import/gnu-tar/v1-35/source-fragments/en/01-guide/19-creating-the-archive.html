@@ -1,0 +1,84 @@
+<div class="subsection-level-extent" id="Creating-the-archive">
+
+<h4 class="subsection" id="Creating-the-Archive"><span>2.6.2 Creating the Archive</span></h4>
+<a class="index-entry-id" id="index-create_002c-introduced"></a>
+<p>To place the files <samp class="file">blues</samp>, <samp class="file">folk</samp>, and <samp class="file">jazz</samp> into an
+archive named <samp class="file">collection.tar</samp>, use the following command:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --create --file=collection.tar blues folk jazz</kbd>
+</pre></div>
+<p>The order of the arguments is not very important, <em class="emph">when using long
+option forms</em>, however you should always remember to use option as the
+first argument to tar.   For example, the following is wrong:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar blues -c folk -f collection.tar jazz</kbd>
+tar: -c: Invalid blocking factor
+Try 'tar --help' or 'tar --usage' for more information.
+</pre></div>
+<p>The error message is produced because <code class="command">tar</code> always treats its
+first argument as an option (or cluster of options), even if it does
+not start with dash.  This is <em class="dfn">traditional</em> or <em class="dfn">old option</em>
+style, called so because all implementations of <code class="command">tar</code> have
+used it since the very inception of the tar archiver in 1970s.  This
+option style will be explained later (see <a class="pxref" href="#Old-Options">Old Option Style</a>), for now
+just remember to always place option as the first argument.
+</p>
+<p>That being said, you could issue the following command:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --create folk blues --file=collection.tar jazz</kbd>
+</pre></div>
+<p>However, you can see that this order is harder to understand; this is
+why we will list the arguments in the order that makes the commands
+easiest to understand (and we encourage you to do the same when you use
+<code class="command">tar</code>, to avoid errors).
+</p>
+<p>Note that the sequence
+<samp class="option">--file=collection.tar</samp> is considered to be <em class="emph">one</em> argument.
+If you substituted any other string of characters for
+<kbd class="kbd">collection.tar</kbd>,  then that string would become the name of the
+archive file you create.
+</p>
+<p>The order of the options becomes more important when you begin to use
+short forms.  With short forms, if you type commands in the wrong order
+(even if you type them correctly in all other ways), you may end up with
+results you don’t expect.  For this reason, it is a good idea to get
+into the habit of typing options in the order that makes inherent sense.
+See <a class="xref" href="#short-create">Short Forms with ‘<samp class="samp">create</samp>’</a>, for more information on this.
+</p>
+<p>In this example, you type the command as shown above: <samp class="option">--create</samp>
+is the operation which creates the new archive
+(<samp class="file">collection.tar</samp>), and <samp class="option">--file</samp> is the option which lets
+you give it the name you chose.  The files, <samp class="file">blues</samp>, <samp class="file">folk</samp>,
+and <samp class="file">jazz</samp>, are now members of the archive, <samp class="file">collection.tar</samp>
+(they are <em class="dfn">file name arguments</em> to the <samp class="option">--create</samp> operation.
+See <a class="xref" href="#Choosing">Choosing Files and Names for <code class="command">tar</code></a>, for the detailed discussion on these.) Now that they are
+in the archive, they are called <em class="emph">archive members</em>, not files.
+(see <a class="pxref" href="#Definitions">members</a>).
+</p>
+<p>When you create an archive, you <em class="emph">must</em> specify which files you
+want placed in the archive.  If you do not specify any archive
+members, <abbr class="acronym">GNU</abbr> <code class="command">tar</code> will complain.
+</p>
+<p>If you now list the contents of the working directory (<code class="command">ls</code>), you will
+find the archive file listed as well as the files you saw previously:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">blues   folk   jazz   collection.tar
+</pre></div>
+<p>Creating the archive ‘<samp class="samp">collection.tar</samp>’ did not destroy the copies of
+the files in the directory.
+</p>
+<p>Keep in mind that if you don’t indicate an operation, <code class="command">tar</code> will not
+run and will prompt you for one.  If you don’t name any files, <code class="command">tar</code>
+will complain.  You must have write access to the working directory,
+or else you will not be able to create an archive in that directory.
+</p>
+<p><em class="emph">Caution</em>: Do not attempt to use <samp class="option">--create</samp> (<samp class="option">-c</samp>) to add files to
+an existing archive; it will delete the archive and write a new one.
+Use <samp class="option">--append</samp> (<samp class="option">-r</samp>) instead.  See <a class="xref" href="#append">How to Add Files to Existing Archives: <samp class="option">--append</samp></a>.
+</p>
+<hr/>
+</div>

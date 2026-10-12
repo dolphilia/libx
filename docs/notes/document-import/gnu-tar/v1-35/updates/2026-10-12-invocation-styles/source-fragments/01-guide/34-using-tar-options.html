@@ -1,0 +1,50 @@
+<div class="section-level-extent" id="using-tar-options">
+
+<h3 class="section" id="Using-tar-Options"><span>3.2 Using <code class="command">tar</code> Options</span></h3>
+<p><abbr class="acronym">GNU</abbr> <code class="command">tar</code> has a total of eight operating modes which
+allow you to perform a variety of tasks.  You are required to choose
+one operating mode each time you employ the <code class="command">tar</code> program by
+specifying one, and only one operation as an argument to the
+<code class="command">tar</code> command (the corresponding options may be found
+at <a class="ref" href="#frequent-operations">The Three Most Frequently Used Operations</a> and <a class="ref" href="#Operations">The Five Advanced <code class="command">tar</code> Operations</a>).  Depending on
+circumstances, you may also wish to customize how the chosen operating
+mode behaves.  For example, you may wish to change the way the output
+looks, or the format of the files that you wish to archive may require
+you to do something special in order to make the archive look right.
+</p>
+<p>You can customize and control <code class="command">tar</code>’s performance by running
+<code class="command">tar</code> with one or more options (such as <samp class="option">--verbose</samp>
+(<samp class="option">-v</samp>), which we used in the tutorial).  As we said in the
+tutorial, <em class="dfn">options</em> are arguments to <code class="command">tar</code> which are (as
+their name suggests) optional. Depending on the operating mode, you
+may specify one or more options. Different options will have different
+effects, but in general they all change details of the operation, such
+as archive format, archive name, or level of user interaction.  Some
+options make sense with all operating modes, while others are
+meaningful only with particular modes. You will likely use some
+options frequently, while you will only use others infrequently, or
+not at all.  (A full list of options is available in see <a class="pxref" href="#All-Options">All <code class="command">tar</code> Options</a>.)
+</p>
+<a class="index-entry-id" id="index-TAR_005fOPTIONS_002c-environment-variable"></a>
+<a class="anchor" id="TAR_005fOPTIONS"></a><p>The <code class="env">TAR_OPTIONS</code> environment variable specifies default options to
+be placed in front of any explicit options.  For example, if
+<code class="code">TAR_OPTIONS</code> is ‘<samp class="samp">-v --unlink-first</samp>’, <code class="command">tar</code> behaves as
+if the two options <samp class="option">-v</samp> and <samp class="option">--unlink-first</samp> had been
+specified before any explicit options.  Option specifications are
+separated by whitespace.  A backslash escapes the next character, so it
+can be used to specify an option containing whitespace or a backslash.
+</p>
+<p>Note that <code class="command">tar</code> options are case sensitive.  For example, the
+options <samp class="option">-T</samp> and <samp class="option">-t</samp> are different; the first requires an
+argument for stating the name of a file providing a list of <var class="var">name</var>s,
+while the second does not require an argument and is another way to
+write <samp class="option">--list</samp> (<samp class="option">-t</samp>).
+</p>
+<p>In addition to the eight operations, there are many options to
+<code class="command">tar</code>, and three different styles for writing both: long (mnemonic)
+form, short form, and old style.  These styles are discussed below.
+Both the options and the operations can be written in any of these three
+styles.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,65 @@
+<div class="chapter-level-extent" id="Using-libtool">
+
+<h2 class="chapter" id="Using-libtool-1"><span>3 Using libtool</span></h2>
+<a class="index-entry-id" id="index-examples-of-using-libtool"></a>
+<a class="index-entry-id" id="index-libtool-examples"></a>
+<p>It makes little sense to talk about using libtool in your own packages
+until you have seen how it makes your life simpler.  The examples in
+this chapter introduce the main features of libtool by comparing the
+standard library building procedure to libtool’s operation on two
+different platforms:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">a23</samp>’</dt>
+<dd><p>An Ultrix 4.2 platform with only static libraries.
+</p>
+</dd>
+<dt>‘<samp class="samp">burger</samp>’</dt>
+<dd><p>A NetBSD/i386 1.2 platform with shared libraries.
+</p></dd>
+</dl>
+<p>Source files for the following examples are taken from the Autotest file
+<samp class="file">tests/demo.at</samp>.  The files can be extracted by running a demo test and
+preserving the artifacts:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ make check TESTSUITEFLAGS="-d -k 'preloaded static library'"
+burger$ cp -r tests/testsuite.dir/027 demo/
+</pre></div>
+<p>You can follow these examples on your own platform, using the preconfigured
+libtool script that was installed with libtool (see <a class="pxref" href="#Configuring">Configuring libtool</a>).  Assume
+that we are building a library, <samp class="file">libhello</samp>, out of the files <samp class="file">foo.c</samp>
+and <samp class="file">hello.c</samp>.
+</p>
+<p>Note that the <samp class="file">foo.c</samp> source file uses the <code class="code">cos</code> math library
+function, which is usually found in the standalone math library, and not
+the C library (see <a data-manual="libc" href="https://www.gnu.org/software/libc/manual/html_mono/libc.html#Trig-Functions">Trigonometric Functions</a> in <cite class="cite">The GNU C Library Reference Manual</cite>).  So, we need to add <samp class="option">-lm</samp> to
+the end of the link line whenever we link <samp class="file">foo.lo</samp> into an
+executable or a library (see <a class="pxref" href="#Inter_002dlibrary-dependencies">Inter-library dependencies</a>).
+</p>
+<p>The same rule applies whenever you use functions that don’t appear in
+the standard C library… you need to add the appropriate
+<samp class="option">-l<var class="var">name</var></samp> flag to the end of the link line when you link
+against those objects.
+</p>
+<p>After we have built that library, we want to create a program by linking
+<samp class="file">main.o</samp> against <samp class="file">libhello</samp>.
+</p>
+<ul class="mini-toc">
+<li><a accesskey="1" href="#Creating-object-files">Creating object files</a></li>
+<li><a accesskey="2" href="#Linking-libraries">Linking libraries</a></li>
+<li><a accesskey="3" href="#Linking-executables">Linking executables</a></li>
+<li><a accesskey="4" href="#Debugging-executables">Debugging executables</a></li>
+<li><a accesskey="5" href="#Installing-libraries">Installing libraries</a></li>
+<li><a accesskey="6" href="#Installing-executables">Installing executables</a></li>
+<li><a accesskey="7" href="#Static-libraries">Linking static libraries</a></li>
+</ul>
+<hr/>
+
+
+
+
+
+
+
+</div>

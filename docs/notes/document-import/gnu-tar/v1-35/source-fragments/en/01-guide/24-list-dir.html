@@ -1,0 +1,28 @@
+<div class="unnumberedsubsec-level-extent" id="list-dir">
+
+<h4 class="unnumberedsubsec" id="Listing-the-Contents-of-a-Stored-Directory"><span>Listing the Contents of a Stored Directory</span></h4>
+<p>To get information about the contents of an archived directory,
+use the directory name as a file name argument in conjunction with
+<samp class="option">--list</samp> (<samp class="option">-t</samp>).  To find out file attributes, include the
+<samp class="option">--verbose</samp> (<samp class="option">-v</samp>) option.
+</p>
+<p>For example, to find out about files in the directory <samp class="file">practice</samp>, in
+the archive file <samp class="file">music.tar</samp>, type:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --list --verbose --file=music.tar practice</kbd>
+</pre></div>
+<p><code class="command">tar</code> responds:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">drwxrwxrwx myself/user       0 1990-05-31 21:49 practice/
+-rw-r--r-- myself/user      42 1990-05-21 13:29 practice/blues
+-rw-r--r-- myself/user      62 1990-05-23 10:55 practice/folk
+-rw-r--r-- myself/user      40 1990-05-21 13:30 practice/jazz
+-rw-r--r-- myself/user   10240 1990-05-31 21:49 practice/collection.tar
+</pre></div>
+<p>When you use a directory name as a file name argument, <code class="command">tar</code> acts on
+all the files (including sub-directories) in that directory.
+</p>
+<hr/>
+</div>

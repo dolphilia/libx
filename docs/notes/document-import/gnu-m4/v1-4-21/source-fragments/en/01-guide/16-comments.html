@@ -1,0 +1,26 @@
+<div class="section-level-extent" id="Comments">
+
+<h3 class="section" id="Comments-in-m4-input"><span>3.3 Comments in <code class="code">m4</code> input</span></h3>
+<a class="index-entry-id" id="index-comments"></a>
+<p>Comments in <code class="code">m4</code> are normally delimited by the characters ‘<samp class="samp">#</samp>’
+and newline.  All characters between the comment delimiters are ignored,
+but the entire comment (including the delimiters) is passed through to
+the output—comments are <em class="emph">not</em> discarded by <code class="code">m4</code>.
+</p>
+<p>Comments cannot be nested, so the first newline after a ‘<samp class="samp">#</samp>’ ends
+the comment.  The commenting effect of the begin-comment string
+can be inhibited by quoting it.
+</p>
+<div class="example">
+<pre class="example-preformatted">$ <kbd class="kbd">m4</kbd>
+`quoted text' # `commented text'
+⇒quoted text # `commented text'
+`quoting inhibits' `#' `comments'
+⇒quoting inhibits # comments
+</pre></div>
+<p>The comment delimiters can be changed to any string at any time, using
+the builtin macro <code class="code">changecom</code>.  See <a class="xref" href="#Changecom">Changing the comment delimiters</a>, for more
+information.
+</p>
+<hr/>
+</div>

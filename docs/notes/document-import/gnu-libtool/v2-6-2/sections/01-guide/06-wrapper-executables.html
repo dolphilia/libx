@@ -1,0 +1,53 @@
+<div class="subsection-level-extent" id="Wrapper-executables">
+
+<h4 class="subsection" id="Wrapper-executables-for-uninstalled-programs"><span>3.3.1 Wrapper executables for uninstalled programs</span></h4>
+<a class="index-entry-id" id="index-wrapper-executables-for-uninstalled-programs"></a>
+<a class="index-entry-id" id="index-program-wrapper-executables"></a>
+<p>Some platforms, notably those hosted on Windows such as Cygwin
+and MinGW, use a wrapper executable rather than a wrapper script
+to ensure proper operation of uninstalled programs linked by libtool
+against uninstalled shared libraries. The wrapper executable thus
+performs the same function as the wrapper script used on other
+platforms, but allows to satisfy the <code class="command">make</code> rules for the
+program, whose name ends in <code class="code">$(EXEEXT)</code>. The actual program
+executable is created below <samp class="file">.libs</samp>, and its name will end
+in <code class="code">$(EXEEXT)</code> and may or may not contain an <code class="code">lt-</code> prefix.
+This wrapper executable sets various environment values so that the
+program executable may locate its (uninstalled) shared libraries,
+and then launches the program executable.
+</p>
+<p>The wrapper executable provides a debug mode, enabled by passing the
+command-line option <code class="code">--lt-debug</code> (see below). When executing in
+debug mode, diagnostic information will be printed to <code class="code">stderr</code>
+before the program executable is launched.
+</p>
+<p>Finally, the wrapper executable supports a number of command line
+options that may be useful when debugging the operation of the wrapper
+system. All of these options begin with <code class="code">--lt-</code>, and if present
+they and their arguments will be removed from the argument list passed
+on to the program executable.  Therefore, the program executable may not
+employ command line options that begin with <code class="code">--lt-</code>. (In fact, the
+wrapper executable will detect any command line options that begin with
+<code class="code">--lt-</code> and abort with an error message if the option is not
+recognized.) If this presents a problem, please contact the Libtool
+team at the Libtool bug reporting address <a class="email" href="mailto:bug-libtool@gnu.org">bug-libtool@gnu.org</a>.
+</p>
+<p>These command line options include:
+</p>
+<dl class="table">
+<dt><samp class="option">--lt-dump-script</samp></dt>
+<dd><p>Causes the wrapper to print a copy of the wrapper <em class="emph">script</em>
+to <code class="code">stdout</code>, and exit.
+</p>
+</dd>
+<dt><samp class="option">--lt-debug</samp></dt>
+<dd><p>Causes the wrapper to print diagnostic information to <code class="code">stdout</code>,
+before launching the program executable.
+</p>
+</dd>
+</dl>
+<p>For consistency, both the wrapper <em class="emph">script</em> and the wrapper
+<em class="emph">executable</em> support these options.
+</p>
+<hr/>
+</div>

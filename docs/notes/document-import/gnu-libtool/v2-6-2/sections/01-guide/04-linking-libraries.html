@@ -1,0 +1,101 @@
+<div class="section-level-extent" id="Linking-libraries">
+
+<h3 class="section" id="Linking-libraries-1"><span>3.2 Linking libraries</span></h3>
+<a class="index-entry-id" id="index-ar"></a>
+<p>Without libtool, the programmer would invoke the <code class="command">ar</code> command to
+create a static library:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">ar cr libhello.a hello.o foo.o</kbd>
+burger$
+</pre></div>
+<a class="index-entry-id" id="index-ranlib"></a>
+<p>But of course, that would be too simple, so many systems require that
+you run the <code class="code">ranlib</code> command on the resulting library in order to
+generate a symbol table:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">ranlib libhello.a</kbd>
+burger$
+</pre></div>
+<p>It seems more natural to use the C compiler for this task, given
+libtool’s “libraries are programs” approach.  So, on platforms without
+shared libraries, libtool simply acts as a wrapper for the system
+<code class="command">ar</code> (and possibly <code class="code">ranlib</code>) commands.
+</p>
+<a class="index-entry-id" id="index-libtool-libraries"></a>
+<a class="index-entry-id" id="index-_002ela-files"></a>
+<p>Again, the libtool control file name (<samp class="file">.la</samp> suffix) differs from
+the standard library name (<samp class="file">.a</samp> suffix).  The arguments to
+libtool are the same ones you would use to produce an executable named
+<samp class="file">libhello.la</samp> with your compiler (see <a class="pxref" href="#Link-mode">Link mode</a>):
+</p>
+<div class="example">
+<pre class="example-preformatted">a23$ <kbd class="kbd">libtool --mode=link gcc -g -O -o libhello.la foo.o hello.o</kbd>
+*** Warning: Linking the shared library libhello.la against the
+*** non-libtool objects foo.o hello.o is not portable!
+ar cr .libs/libhello.a
+ranlib .libs/libhello.a
+creating libhello.la
+(cd .libs &amp;&amp; rm -f libhello.la &amp;&amp; ln -s ../libhello.la libhello.la)
+a23$
+</pre></div>
+<p>Aha!  Libtool caught a common error… trying to build a library
+from standard objects instead of special <samp class="file">.lo</samp> object files.  This
+doesn’t matter so much for static libraries, but on shared library
+systems, it is of great importance.  (Note that you may replace
+<samp class="file">libhello.la</samp> with <samp class="file">libhello.a</samp> in which case libtool won’t
+issue the warning any more.  But although this method works, this is
+not intended to be used because it makes you lose the benefits of
+using Libtool.)
+</p>
+<p>So, let’s try again, this time with the library object files.  Remember
+also that we need to add <samp class="option">-lm</samp> to the link command line because
+<samp class="file">foo.c</samp> uses the <code class="code">cos</code> math library function (see <a class="pxref" href="#Using-libtool">Using libtool</a>).
+</p>
+<p>Another complication in building shared libraries is that we need to
+specify the path to the directory where they will (eventually) be
+installed (in this case, <samp class="file">/usr/local/lib</samp>)<a class="footnote" href="#FOOT1" id="DOCF1"><sup>1</sup></a>:
+</p>
+<div class="example">
+<pre class="example-preformatted">a23$ <kbd class="kbd">libtool --mode=link gcc -g -O -o libhello.la foo.lo hello.lo \
+                -rpath /usr/local/lib -lm</kbd>
+ar cr .libs/libhello.a foo.o hello.o
+ranlib .libs/libhello.a
+creating libhello.la
+(cd .libs &amp;&amp; rm -f libhello.la &amp;&amp; ln -s ../libhello.la libhello.la)
+a23$
+</pre></div>
+<p>Now, let’s try the same trick on the shared library platform:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">libtool --mode=link gcc -g -O -o libhello.la foo.lo hello.lo \
+                -rpath /usr/local/lib -lm</kbd>
+rm -fr  .libs/libhello.a .libs/libhello.la
+ld -Bshareable -o .libs/libhello.so.0.0 .libs/foo.o .libs/hello.o -lm
+ar cr .libs/libhello.a foo.o hello.o
+ranlib .libs/libhello.a
+creating libhello.la
+(cd .libs &amp;&amp; rm -f libhello.la &amp;&amp; ln -s ../libhello.la libhello.la)
+burger$
+</pre></div>
+<p>Now that’s significantly cooler… Libtool just ran an obscure
+<code class="command">ld</code> command to create a shared library, as well as the static
+library.
+</p>
+<a class="index-entry-id" id="index-_002elibs-subdirectory"></a>
+<p>Note how libtool creates extra files in the <samp class="file">.libs</samp>
+subdirectory, rather than the current directory.  This feature makes
+it easier to clean up the build directory, and helps ensure
+other programs fail horribly if you accidentally forget to use libtool
+when you should.
+</p>
+<p>Again, you should look at the <samp class="file">.la</samp> file to see what Libtool
+stores in it.  You will see Libtool uses this file to remember the
+destination directory for the library (the argument to <samp class="option">-rpath</samp>)
+as well as the dependency on the math library (‘<samp class="samp">-lm</samp>’).
+</p>
+<hr/>
+<h5 class="footnote-body-heading"><a href="#DOCF1" id="FOOT1">(1)</a></h5><p>If you don’t
+specify an <code class="code">rpath</code>, then libtool builds a libtool convenience
+archive, not a shared library (see <a class="pxref" href="#Static-libraries">Linking static libraries</a>).</p></div>

@@ -1,0 +1,9 @@
+<div class="gnu-sed-original-content" id="Limitations">
+<h2 class="chapter" id="GNU-sed_0027s-Limitations-and-Non_002dlimitations"><span>8 GNU <code class="command">sed</code> の制限がある点とない点</span></h2>
+<a class="index-entry-id" id="index-GNU-extensions_002c-unlimited-line-length"></a>
+<a class="index-entry-id" id="index-Portability_002c-line-length-limitations"></a>
+<p>移植性のある<code class="command">sed</code>スクリプトを書きたい場合は、実装によっては行の長さ（パターンスペースとホールドスペース）が4000バイト以下に制限されていることがある点に注意してください。<small class="sc">POSIX</small>規格は、準拠する<code class="command">sed</code>実装が少なくとも8192バイトの行を扱えることを要求しています。GNU <code class="command">sed</code>には、行の長さに組み込みの上限はありません。より多くの（仮想）メモリーを<code class="code">malloc()</code>で確保できるかぎり、好きな長さの行を入力したり作ったりできます。</p>
+<p>ただし、部分パターンと回数を定めない繰り返しの処理には再帰を使います。そのため、パターンによっては、利用できるスタック領域が処理可能なバッファーの大きさを制限することがあります。</p>
+<hr/>
+</div>
+

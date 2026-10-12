@@ -1,0 +1,59 @@
+<div class="gnu-sed-original-content" id="wc-_002dw">
+<h3 class="section" id="Counting-Words"><span>7.14 Counting Words</span></h3>
+<p>This script is almost the same as the previous one, once each
+of the words on the line is converted to a single ‘<samp class="samp">a</samp>’
+(in the previous script each letter was changed to an ‘<samp class="samp">a</samp>’).
+</p>
+<p>It is interesting that real <code class="command">wc</code> programs have optimized
+loops for ‘<samp class="samp">wc -c</samp>’, so they are much slower at counting
+words rather than characters.  This script’s bottleneck,
+instead, is arithmetic, and hence the word-counting one
+is faster (it has to manage smaller numbers).
+</p>
+<p>Again, the common parts are not commented to show the importance
+of commenting <code class="command">sed</code> scripts.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+</pre><div class="group"><pre class="example-preformatted"># Convert words to a's
+s/[ <kbd class="kbd"><kbd class="key">TAB</kbd></kbd>][ <kbd class="kbd"><kbd class="key">TAB</kbd></kbd>]*/ /g
+s/^/ /
+s/ [^ ][^ ]*/a /g
+s/ //g
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Append them to hold space
+H
+x
+s/\n//
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># From here on it is the same as in wc -c.
+/aaaaaaaaaa/! bx;   s/aaaaaaaaaa/b/g
+/bbbbbbbbbb/! bx;   s/bbbbbbbbbb/c/g
+/cccccccccc/! bx;   s/cccccccccc/d/g
+/dddddddddd/! bx;   s/dddddddddd/e/g
+/eeeeeeeeee/! bx;   s/eeeeeeeeee/f/g
+/ffffffffff/! bx;   s/ffffffffff/g/g
+/gggggggggg/! bx;   s/gggggggggg/h/g
+s/hhhhhhhhhh//g
+:x
+$! { h; b; }
+:y
+/a/! s/[b-h]*/&amp;0/
+s/aaaaaaaaa/9/
+s/aaaaaaaa/8/
+s/aaaaaaa/7/
+s/aaaaaa/6/
+s/aaaaa/5/
+s/aaaa/4/
+s/aaa/3/
+s/aa/2/
+s/a/1/
+y/bcdefgh/abcdefg/
+/[a-h]/ by
+p
+</pre></div></div>
+<hr/>
+</div>

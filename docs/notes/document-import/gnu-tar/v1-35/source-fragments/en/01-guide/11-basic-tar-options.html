@@ -1,0 +1,75 @@
+<div class="section-level-extent" id="basic-tar-options">
+
+<h3 class="section" id="Basic-tar-Operations-and-Options"><span>2.3 Basic <code class="command">tar</code> Operations and Options</span></h3>
+<p><code class="command">tar</code> can take a wide variety of arguments which specify and define
+the actions it will have on the particular set of files or the archive.
+The main types of arguments to <code class="command">tar</code> fall into one of two classes:
+operations, and options.
+</p>
+<p>Some arguments fall into a class called <em class="dfn">operations</em>; exactly one of
+these is both allowed and required for any instance of using <code class="command">tar</code>;
+you may <em class="emph">not</em> specify more than one.  People sometimes speak of
+<em class="dfn">operating modes</em>.  You are in a particular operating mode when you
+have specified the operation which specifies it; there are eight
+operations in total, and thus there are eight operating modes.
+</p>
+<p>The other arguments fall into the class known as <em class="dfn">options</em>.  You are
+not required to specify any options, and you are allowed to specify more
+than one at a time (depending on the way you are using <code class="command">tar</code> at
+that time).  Some options are used so frequently, and are so useful for
+helping you type commands more carefully that they are effectively
+“required”.  We will discuss them in this chapter.
+</p>
+<p>You can write most of the <code class="command">tar</code> operations and options in any
+of three forms: long (mnemonic) form, short form, and old style.  Some
+of the operations and options have no short or “old” forms; however,
+the operations and options which we will cover in this tutorial have
+corresponding abbreviations.  We will indicate those abbreviations
+appropriately to get you used to seeing them.  Note, that the “old
+style” option forms exist in <abbr class="acronym">GNU</abbr> <code class="command">tar</code> for compatibility with Unix
+<code class="command">tar</code>.  In this book we present a full discussion of this way
+of writing options and operations (see <a class="pxref" href="#Old-Options">Old Option Style</a>), and we discuss
+the other two styles of writing options (See <a class="xref" href="#Long-Options">Long Option Style</a>, and
+see <a class="pxref" href="#Short-Options">Short Option Style</a>).
+</p>
+<p>In the examples and in the text of this tutorial, we usually use the
+long forms of operations and options; but the “short” forms produce
+the same result and can make typing long <code class="command">tar</code> commands easier.
+For example, instead of typing
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted"><kbd class="kbd">tar --create --verbose --file=afiles.tar apple angst aspic</kbd>
+</pre></div>
+<p>you can type
+</p><div class="example smallexample">
+<pre class="example-preformatted"><kbd class="kbd">tar -c -v -f afiles.tar apple angst aspic</kbd>
+</pre></div>
+<p>or even
+</p><div class="example smallexample">
+<pre class="example-preformatted"><kbd class="kbd">tar -cvf afiles.tar apple angst aspic</kbd>
+</pre></div>
+<p>For more information on option syntax, see <a class="ref" href="#Advanced-tar">Advanced <abbr class="acronym">GNU</abbr> <code class="command">tar</code> Operations</a>.  In
+discussions in the text, when we name an option by its long form, we
+also give the corresponding short option in parentheses.
+</p>
+<p>The term, “option”, can be confusing at times, since “operations”
+are often lumped in with the actual, <em class="emph">optional</em> “options” in certain
+general class statements.  For example, we just talked about “short and
+long forms of options and operations”.  However, experienced <code class="command">tar</code>
+users often refer to these by shorthand terms such as, “short and long
+options”.  This term assumes that the “operations” are included, also.
+Context will help you determine which definition of “options” to use.
+</p>
+<p>Similarly, the term “command” can be confusing, as it is often used in
+two different ways.  People sometimes refer to <code class="command">tar</code> “commands”.
+A <code class="command">tar</code> <em class="dfn">command</em> is the entire command line of user input
+which tells <code class="command">tar</code> what to do — including the operation, options,
+and any arguments (file names, pipes, other commands, etc.).  However,
+you will also sometimes hear the term “the <code class="command">tar</code> command”.  When
+the word “command” is used specifically like this, a person is usually
+referring to the <code class="command">tar</code> <em class="emph">operation</em>, not the whole line.
+Again, use context to figure out which of the meanings the speaker
+intends.
+</p>
+<hr/>
+</div>

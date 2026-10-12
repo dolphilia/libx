@@ -1,0 +1,77 @@
+<div class="gnu-sed-original-content" id="wc-_002dc">
+<h3 class="section" id="Counting-Characters"><span>7.13 Counting Characters</span></h3>
+<p>This script shows another way to do arithmetic with <code class="command">sed</code>.
+In this case we have to add possibly large numbers, so implementing
+this by successive increments would not be feasible (and possibly
+even more complicated to contrive than this script).
+</p>
+<p>The approach is to map numbers to letters, kind of an abacus
+implemented with <code class="command">sed</code>.  ‘<samp class="samp">a</samp>’s are units, ‘<samp class="samp">b</samp>’s are
+tens and so on: we simply add the number of characters
+on the current line as units, and then propagate the carry
+to tens, hundreds, and so on.
+</p>
+<p>As usual, running totals are kept in hold space.
+</p>
+<p>On the last line, we convert the abacus form back to decimal.
+For the sake of variety, this is done with a loop rather than
+with some 80 <code class="code">s</code> commands<a class="footnote" href="#FOOT11" id="DOCF11"><sup>11</sup></a>: first we
+convert units, removing ‘<samp class="samp">a</samp>’s from the number; then we
+rotate letters so that tens become ‘<samp class="samp">a</samp>’s, and so on
+until no more letters remain.
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -nf
+
+</pre><div class="group"><pre class="example-preformatted"># Add n+1 a's to hold space (+1 is for the newline)
+s/./a/g
+H
+x
+s/\n/a/
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Do the carry.  The t's and b's are not necessary,
+# but they do speed up the thing
+t a
+: a;  s/aaaaaaaaaa/b/g; t b; b done
+: b;  s/bbbbbbbbbb/c/g; t c; b done
+: c;  s/cccccccccc/d/g; t d; b done
+: d;  s/dddddddddd/e/g; t e; b done
+: e;  s/eeeeeeeeee/f/g; t f; b done
+: f;  s/ffffffffff/g/g; t g; b done
+: g;  s/gggggggggg/h/g; t h; b done
+: h;  s/hhhhhhhhhh//g
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">: done
+$! {
+  h
+  b
+}
+</pre></div><pre class="example-preformatted">
+
+# On the last line, convert back to decimal
+
+</pre><div class="group"><pre class="example-preformatted">: loop
+/a/! s/[b-h]*/&amp;0/
+s/aaaaaaaaa/9/
+s/aaaaaaaa/8/
+s/aaaaaaa/7/
+s/aaaaaa/6/
+s/aaaaa/5/
+s/aaaa/4/
+s/aaa/3/
+s/aa/2/
+s/a/1/
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">: next
+y/bcdefgh/abcdefg/
+/[a-h]/ b loop
+p
+</pre></div></div>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF11" id="FOOT11">(11)</a></h5>
+<p>Some implementations
+have a limit of 199 commands per script</p>
+</div></div>

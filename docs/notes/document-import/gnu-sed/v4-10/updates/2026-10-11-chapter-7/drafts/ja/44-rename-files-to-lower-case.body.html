@@ -1,0 +1,124 @@
+<div class="gnu-sed-original-content" id="Rename-files-to-lower-case">
+<h3 class="section" id="Rename-Files-to-Lower-Case"><span>7.4 ファイル名を小文字に変更する</span></h3>
+<p>これは<code class="command">sed</code>のかなり変わった使い方です。テキストを変換してシェルコマンドにし、それをそのままシェルへ渡します。でも心配はいりません。<code class="command">sed</code>では、さらに奇抜なことも行われています。私が見た例には、<code class="command">date</code>の出力を<code class="command">bc</code>のプログラムへ変換するスクリプトもありました。</p>
+<p>この処理の中心は、名前を小文字から大文字へ（またはその逆へ）変換し、変換後の名前が元の名前と同じかどうかも確認する<code class="command">sed</code>スクリプトです。シェル変数と適切な引用を使って、スクリプトをどのようにパラメーター化しているかに注目してください。</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">#! /bin/sh
+# rename files to lower/upper case...
+#
+# usage:
+#    move-to-lower *
+#    move-to-upper *
+# or
+#    move-to-lower -R .
+#    move-to-upper -R .
+#
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>ファイル名を小文字または大文字に変更します。使用例はmove-to-lower *、move-to-upper *です。または、-R .を指定して再帰的に処理します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">help()
+{
+        cat &lt;&lt; eof
+Usage: $0 [-n] [-r] [-h] files...
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>使い方: $0 [-n] [-r] [-h] files...。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">-n      do nothing, only see what would be done
+-R      recursive (use find)
+-h      this message
+files   files to remap to lower case
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>-n: 何も変更せず、実行される内容だけを確認します。-R: 再帰的に処理します（findを使用）。-h: このメッセージを表示します。files: 小文字に変換するファイルです。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">Examples:
+       $0 -n *        (see if everything is ok, then...)
+       $0 *
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>使用例: まず$0 -n *で問題がないか確認し、その後$0 *を実行します。</p></div></div><pre class="example-preformatted">
+
+       $0 -R .
+
+</pre><div class="group"><pre class="example-preformatted">eof
+}
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">apply_cmd='sh'
+finder='echo "$@" | tr " " "\n"'
+files_only=
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">while :
+do
+    case "$1" in
+        -n) apply_cmd='cat' ;;
+        -R) finder='find "$@" -type f';;
+        -h) help ; exit 1 ;;
+        *) break ;;
+    esac
+    shift
+done
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">if [ -z "$1" ]; then
+        echo Usage: $0 [-h] [-n] [-r] files...
+        exit 1
+fi
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>引数がなければ「使い方: $0 [-h] [-n] [-r] files...」を表示し、終了ステータス1で終了します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">LOWER='abcdefghijklmnopqrstuvwxyz'
+UPPER='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">case `basename $0` in
+        *upper*) TO=$UPPER; FROM=$LOWER ;;
+        *)       FROM=$UPPER; TO=$LOWER ;;
+esac
+</pre></div><pre class="example-preformatted">
+
+eval $finder | sed -n '
+
+</pre><div class="group"><pre class="example-preformatted"># remove all trailing slashes
+s/\/*$//
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>末尾のスラッシュをすべて削除します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># add ./ if there is no path, only a filename
+/\//! s/^/.\//
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>パスがなくファイル名だけの場合は、先頭に「./」を追加します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># save path+filename
+h
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>パスとファイル名を保存します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># remove path
+s/.*\///
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>パスを取り除きます。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># do conversion only on filename
+y/'$FROM'/'$TO'/
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>変換はファイル名だけに行います。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># now line contains original path+file, while
+# hold space contains the new filename
+x
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>現在、行には元のパスとファイル名が入り、ホールドスペースには新しいファイル名が入っています。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># add converted file name to line, which now contains
+# path/file-name\nconverted-file-name
+G
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>変換したファイル名を行に追加します。これで行の内容は「パス/ファイル名\n変換したファイル名」になります。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># check if converted file name is equal to original file name,
+# if it is, do not print anything
+/^.*\/\(.*\)\n\1/b
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>変換したファイル名が元のファイル名と同じかを調べ、同じなら何も出力しません。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># escape special characters for the shell
+s/["$`\\]/\\&amp;/g
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>シェルの特殊文字をエスケープします。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># now, transform path/fromfile\n, into
+# mv path/fromfile path/tofile and print it
+s/^\(.*\/\)\(.*\)\n\(.*\)$/mv "\1\2" "\1\3"/p
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>「パス/変更前のファイル名\n」を「mv パス/変更前のファイル名 パス/変更後のファイル名」に変換し、出力します。</p></div></div><pre class="example-preformatted">
+
+' | $apply_cmd
+</pre></div>
+<hr/>
+</div>
+

@@ -1,0 +1,176 @@
+<div class="section-level-extent" id="Input-processing">
+
+<h3 class="section" id="How-m4-copies-input-to-output"><span>3.5 How <code class="code">m4</code> copies input to output</span></h3>
+<p>As <code class="code">m4</code> reads the input token by token, it will copy each token
+directly to the output immediately.
+</p>
+<p>The exception is when it finds a word with a macro definition.  In that
+case <code class="code">m4</code> will calculate the macro’s expansion, possibly reading
+more input to get the arguments.  It then inserts the expansion in front
+of the remaining input.  In other words, the resulting text from a macro
+call will be read and parsed into tokens again.
+</p>
+<p><code class="code">m4</code> expands a macro as soon as possible.  If it finds a macro call
+when collecting the arguments to another, it will expand the second call
+first.  This process continues until there are no more macro calls to
+expand and all the input has been consumed.
+</p>
+<p>For a running example, examine how <code class="code">m4</code> handles this input:
+</p>
+<div class="example">
+<pre class="example-preformatted">format(`Result is %d', eval(`2**15'))
+</pre></div>
+<p>First, <code class="code">m4</code> sees that the token ‘<samp class="samp">format</samp>’ is a macro name, so
+it collects the tokens ‘<samp class="samp">(</samp>’, ‘<samp class="samp">`Result is %d'</samp>’, ‘<samp class="samp">,</samp>’,
+and ‘<samp class="samp"> <!-- /@w --></samp>’, before encountering another potential macro.  Sure
+enough, ‘<samp class="samp">eval</samp>’ is a macro name, so the nested argument collection
+picks up ‘<samp class="samp">(</samp>’, ‘<samp class="samp">`2**15'</samp>’, and ‘<samp class="samp">)</samp>’, invoking the eval macro
+with the lone argument of ‘<samp class="samp">2**15</samp>’.  The expansion of
+‘<samp class="samp">eval(2**15)</samp>’ is ‘<samp class="samp">32768</samp>’, which is then rescanned as the five
+tokens ‘<samp class="samp">3</samp>’, ‘<samp class="samp">2</samp>’, ‘<samp class="samp">7</samp>’, ‘<samp class="samp">6</samp>’, and ‘<samp class="samp">8</samp>’; and
+combined with the next ‘<samp class="samp">)</samp>’, the format macro now has all its
+arguments, as if the user had typed:
+</p>
+<div class="example">
+<pre class="example-preformatted">format(`Result is %d', 32768)
+</pre></div>
+<p>The format macro expands to ‘<samp class="samp">Result is 32768</samp>’, and we have another
+round of scanning for the tokens ‘<samp class="samp">Result</samp>’, ‘<samp class="samp"> <!-- /@w --></samp>’,
+‘<samp class="samp">is</samp>’, ‘<samp class="samp"> <!-- /@w --></samp>’, ‘<samp class="samp">3</samp>’, ‘<samp class="samp">2</samp>’, ‘<samp class="samp">7</samp>’, ‘<samp class="samp">6</samp>’, and
+‘<samp class="samp">8</samp>’.  None of these are macros, so the final output is
+</p>
+<div class="example">
+<pre class="example-preformatted">⇒Result is 32768
+</pre></div>
+<p>As a more complicated example, we will contrast an actual code
+example from the Gnulib project<a class="footnote" href="#FOOT1" id="DOCF1"><sup>1</sup></a>,
+showing both a buggy approach and the desired results.  The user desires
+to output a shell assignment statement that takes its argument and turns
+it into a shell variable by converting it to uppercase and prepending a
+prefix.  The original attempt looks like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">changequote([,])dnl
+define([gl_STRING_MODULE_INDICATOR],
+  [
+    dnl comment
+    GNULIB_]translit([$1],[a-z],[A-Z])[=1
+  ])dnl
+  gl_STRING_MODULE_INDICATOR([strcase])
+⇒  <!-- /@w -->
+⇒        GNULIB_strcase=1
+⇒  <!-- /@w -->
+</pre></div>
+<p>Oops – the argument did not get capitalized.  And although the manual
+is not able to easily show it, both lines that appear empty actually
+contain two trailing spaces.  By stepping through the parse, it is easy
+to see what happened.  First, <code class="code">m4</code> sees the token
+‘<samp class="samp">changequote</samp>’, which it recognizes as a macro, followed by
+‘<samp class="samp">(</samp>’, ‘<samp class="samp">[</samp>’, ‘<samp class="samp">,</samp>’, ‘<samp class="samp">]</samp>’, and ‘<samp class="samp">)</samp>’ to form the
+argument list.  The macro expands to the empty string, but changes the
+quoting characters to something more useful for generating shell code
+(unbalanced ‘<samp class="samp">`</samp>’ and ‘<samp class="samp">'</samp>’ appear all the time in shell scripts,
+but unbalanced ‘<samp class="samp">[]</samp>’ tend to be rare).  Also in the first line,
+<code class="code">m4</code> sees the token ‘<samp class="samp">dnl</samp>’, which it recognizes as a builtin
+macro that consumes the rest of the line, resulting in no output for
+that line.
+</p>
+<p>The second line starts a macro definition.  <code class="code">m4</code> sees the token
+‘<samp class="samp">define</samp>’, which it recognizes as a macro, followed by a ‘<samp class="samp">(</samp>’,
+‘<samp class="samp">[gl_STRING_MODULE_INDICATOR]</samp>’, and ‘<samp class="samp">,</samp>’.  Because an unquoted
+comma was encountered, the first argument is known to be the expansion
+of the single-quoted string token, or ‘<samp class="samp">gl_STRING_MODULE_INDICATOR</samp>’.
+Next, <code class="code">m4</code> sees ‘<samp class="samp"><kbd class="key">NL</kbd></samp>’, ‘<samp class="samp"> </samp>’, and ‘<samp class="samp"> </samp>’, but this
+whitespace is discarded as part of argument collection.  Then comes a
+rather lengthy single-quoted string token, ‘<samp class="samp">[<kbd class="key">NL</kbd>    dnl
+comment<kbd class="key">NL</kbd>    GNULIB_]</samp>’.  This is followed by the token
+‘<samp class="samp">translit</samp>’, which <code class="code">m4</code> recognizes as a macro name, so a nested
+macro expansion has started.
+</p>
+<p>The arguments to the <code class="code">translit</code> are found by the tokens ‘<samp class="samp">(</samp>’,
+‘<samp class="samp">[$1]</samp>’, ‘<samp class="samp">,</samp>’, ‘<samp class="samp">[a-z]</samp>’, ‘<samp class="samp">,</samp>’, ‘<samp class="samp">[A-Z]</samp>’, and finally
+‘<samp class="samp">)</samp>’.  All three string arguments are expanded (or in other words,
+the quotes are stripped), and since neither ‘<samp class="samp">$</samp>’ nor ‘<samp class="samp">1</samp>’ need
+capitalization, the result of the macro is ‘<samp class="samp">$1</samp>’.  This expansion is
+rescanned, resulting in the two literal characters ‘<samp class="samp">$</samp>’ and
+‘<samp class="samp">1</samp>’.
+</p>
+<p>Scanning of the outer macro resumes, and picks up with
+‘<samp class="samp">[=1<kbd class="key">NL</kbd>  ]</samp>’, and finally ‘<samp class="samp">)</samp>’.  The collected pieces of
+expanded text are concatenated, with the end result that the macro
+‘<samp class="samp">gl_STRING_MODULE_INDICATOR</samp>’ is now defined to be the sequence
+‘<samp class="samp"><kbd class="key">NL</kbd>    dnl comment<kbd class="key">NL</kbd>    GNULIB_$1=1<kbd class="key">NL</kbd>  </samp>’.
+Once again, ‘<samp class="samp">dnl</samp>’ is recognized and avoids a newline in the output.
+</p>
+<p>The final line is then parsed, beginning with ‘<samp class="samp"> </samp>’ and ‘<samp class="samp"> </samp>’
+that are output literally.  Then ‘<samp class="samp">gl_STRING_MODULE_INDICATOR</samp>’ is
+recognized as a macro name, with an argument list of ‘<samp class="samp">(</samp>’,
+‘<samp class="samp">[strcase]</samp>’, and ‘<samp class="samp">)</samp>’.  Since the definition of the macro
+contains the sequence ‘<samp class="samp">$1</samp>’, that sequence is replaced with the
+argument ‘<samp class="samp">strcase</samp>’ prior to starting the rescan.  The rescan sees
+‘<samp class="samp"><kbd class="key">NL</kbd></samp>’ and four spaces, which are output literally, then
+‘<samp class="samp">dnl</samp>’, which discards the text ‘<samp class="samp"> comment<kbd class="key">NL</kbd></samp>’.  Next
+comes four more spaces, also output literally, and the token
+‘<samp class="samp">GNULIB_strcase</samp>’, which resulted from the earlier parameter
+substitution.  Since that is not a macro name, it is output literally,
+followed by the literal tokens ‘<samp class="samp">=</samp>’, ‘<samp class="samp">1</samp>’, ‘<samp class="samp"><kbd class="key">NL</kbd></samp>’, and
+two more spaces.  Finally, the original ‘<samp class="samp"><kbd class="key">NL</kbd></samp>’ seen after the
+macro invocation is scanned and output literally.
+</p>
+<p>Now for a corrected approach.  This rearranges the use of newlines and
+whitespace so that less whitespace is output (which, although harmless
+to shell scripts, can be visually unappealing), and fixes the quoting
+issues so that the capitalization occurs when the macro
+‘<samp class="samp">gl_STRING_MODULE_INDICATOR</samp>’ is invoked, rather then when it is
+defined.  It also adds another layer of quoting to the first argument of
+<code class="code">translit</code>, to ensure that the output will be rescanned as a string
+rather than a potential uppercase macro name needing further expansion.
+</p>
+<div class="example">
+<pre class="example-preformatted">changequote([,])dnl
+define([gl_STRING_MODULE_INDICATOR],
+  [dnl comment
+  GNULIB_[]translit([[$1]], [a-z], [A-Z])=1dnl
+])dnl
+  gl_STRING_MODULE_INDICATOR([strcase])
+⇒    GNULIB_STRCASE=1
+</pre></div>
+<p>The parsing of the first line is unchanged.  The second line sees the
+name of the macro to define, then sees the discarded ‘<samp class="samp"><kbd class="key">NL</kbd></samp>’
+and two spaces, as before.  But this time, the next token is
+‘<samp class="samp">[dnl comment<kbd class="key">NL</kbd>  GNULIB_[]translit([[$1]], [a-z],
+[A-Z])=1dnl<kbd class="key">NL</kbd>]</samp>’, which includes nested quotes, followed by
+‘<samp class="samp">)</samp>’ to end the macro definition and ‘<samp class="samp">dnl</samp>’ to skip the
+newline.  No early expansion of <code class="code">translit</code> occurs, so the entire
+string becomes the definition of the macro.
+</p>
+<p>The final line is then parsed, beginning with two spaces that are
+output literally, and an invocation of
+<code class="code">gl_STRING_MODULE_INDICATOR</code> with the argument ‘<samp class="samp">strcase</samp>’.
+Again, the ‘<samp class="samp">$1</samp>’ in the macro definition is substituted prior to
+rescanning.  Rescanning first encounters ‘<samp class="samp">dnl</samp>’, and discards
+‘<samp class="samp"> comment<kbd class="key">NL</kbd></samp>’.  Then two spaces are output literally.  Next
+comes the token ‘<samp class="samp">GNULIB_</samp>’, but that is not a macro, so it is
+output literally.  The token ‘<samp class="samp">[]</samp>’ is an empty string, so it does
+not affect output.  Then the token ‘<samp class="samp">translit</samp>’ is encountered.
+</p>
+<p>This time, the arguments to <code class="code">translit</code> are parsed as ‘<samp class="samp">(</samp>’,
+‘<samp class="samp">[[strcase]]</samp>’, ‘<samp class="samp">,</samp>’, ‘<samp class="samp"> </samp>’, ‘<samp class="samp">[a-z]</samp>’, ‘<samp class="samp">,</samp>’, ‘<samp class="samp"> </samp>’,
+‘<samp class="samp">[A-Z]</samp>’, and ‘<samp class="samp">)</samp>’.  The two spaces are discarded, and the
+translit results in the desired result ‘<samp class="samp">[STRCASE]</samp>’.  This is
+rescanned, but since it is a string, the quotes are stripped and the
+only output is a literal ‘<samp class="samp">STRCASE</samp>’.
+Then the scanner sees ‘<samp class="samp">=</samp>’ and ‘<samp class="samp">1</samp>’, which are output
+literally, followed by ‘<samp class="samp">dnl</samp>’ which discards the rest of the
+definition of <code class="code">gl_STRING_MODULE_INDICATOR</code>.  The newline at the
+end of output is the literal ‘<samp class="samp"><kbd class="key">NL</kbd></samp>’ that appeared after the
+invocation of the macro.
+</p>
+<p>The order in which <code class="code">m4</code> expands the macros can be further explored
+using the trace facilities of GNU <code class="code">m4</code> (see <a class="pxref" href="#Trace">Tracing macro calls</a>).
+</p>
+<hr/>
+<h5 class="footnote-body-heading"><a href="#DOCF1" id="FOOT1">(1)</a></h5><p>Derived from a patch in
+<a class="uref" href="https://lists.gnu.org/archive/html/bug-gnulib/2007-01/msg00389.html">https://lists.gnu.org/archive/html/bug-gnulib/2007-01/msg00389.html</a>,
+and a followup patch in
+<a class="uref" href="https://lists.gnu.org/archive/html/bug-gnulib/2007-02/msg00000.html">https://lists.gnu.org/archive/html/bug-gnulib/2007-02/msg00000.html</a></p></div>

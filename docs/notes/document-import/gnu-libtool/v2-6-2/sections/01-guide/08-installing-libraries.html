@@ -1,0 +1,95 @@
+<div class="section-level-extent" id="Installing-libraries">
+
+<h3 class="section" id="Installing-libraries-1"><span>3.5 Installing libraries</span></h3>
+<a class="index-entry-id" id="index-strip"></a>
+<p>Installing libraries on a non-libtool system is quite
+straightforward… just copy them into place:<a class="footnote" href="#FOOT4" id="DOCF4"><sup>4</sup></a>
+</p>
+<a class="index-entry-id" id="index-su"></a>
+<div class="example">
+<pre class="example-preformatted">burger$ <kbd class="kbd">su</kbd>
+Password: <kbd class="kbd">********</kbd>
+burger# <kbd class="kbd">cp libhello.a /usr/local/lib/libhello.a</kbd>
+burger#
+</pre></div>
+<p>Oops, don’t forget the <code class="command">ranlib</code> command:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger# <kbd class="kbd">ranlib /usr/local/lib/libhello.a</kbd>
+burger#
+</pre></div>
+<a class="index-entry-id" id="index-install"></a>
+<p>Libtool installation is quite simple, as well.  Just use the
+<code class="command">install</code> or <code class="command">cp</code> command that you normally would
+(see <a class="pxref" href="#Install-mode">Install mode</a>):
+</p>
+<div class="example">
+<pre class="example-preformatted">a23# <kbd class="kbd">libtool --mode=install cp libhello.la /usr/local/lib/libhello.la</kbd>
+cp libhello.la /usr/local/lib/libhello.la
+cp .libs/libhello.a /usr/local/lib/libhello.a
+ranlib /usr/local/lib/libhello.a
+a23#
+</pre></div>
+<p>Note that the libtool library <samp class="file">libhello.la</samp> is also installed, to
+help libtool with uninstallation (see <a class="pxref" href="#Uninstall-mode">Uninstall mode</a>) and linking
+(see <a class="pxref" href="#Linking-executables">Linking executables</a>) and to help programs with dlopening
+(see <a class="pxref" href="#Dlopened-modules">Dlopened modules</a>).
+</p>
+<p>Here is the shared library example:
+</p>
+<div class="example">
+<pre class="example-preformatted">burger# <kbd class="kbd">libtool --mode=install install -c libhello.la \
+                /usr/local/lib/libhello.la</kbd>
+install -c .libs/libhello.so.0.0 /usr/local/lib/libhello.so.0.0
+install -c libhello.la /usr/local/lib/libhello.la
+install -c .libs/libhello.a /usr/local/lib/libhello.a
+ranlib /usr/local/lib/libhello.a
+burger#
+</pre></div>
+<a class="index-entry-id" id="index-stripping-libraries"></a>
+<a class="index-entry-id" id="index-libraries_002c-stripping"></a>
+<p>It is safe to specify the <samp class="option">-s</samp> (strip symbols) flag if you use a
+BSD-compatible install program when installing libraries.
+Libtool will either ignore the <samp class="option">-s</samp> flag, or will run a program
+that will strip only debugging and compiler symbols from the library.
+</p>
+<p>Once the libraries have been put in place, there may be some additional
+configuration that you need to do before using them.  First, you must
+make sure that where the library is installed actually agrees with the
+<samp class="option">-rpath</samp> flag you used to build it.
+</p>
+<a class="index-entry-id" id="index-postinstallation"></a>
+<a class="index-entry-id" id="index-installation_002c-finishing"></a>
+<a class="index-entry-id" id="index-libraries_002c-finishing-installation"></a>
+<p>Then, running ‘<samp class="samp">libtool -n finish <var class="var">libdir</var></samp>’ can give you
+further hints on what to do (see <a class="pxref" href="#Finish-mode">Finish mode</a>):
+</p>
+<div class="example">
+<pre class="example-preformatted">burger# <kbd class="kbd">libtool -n finish /usr/local/lib</kbd>
+PATH="$PATH:/sbin" ldconfig -m /usr/local/lib
+-----------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+To link against installed libraries in a given directory, LIBDIR,
+you must use the '-LLIBDIR' flag during linking.
+
+ You will also need to do one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-RLIBDIR' linker flag
+
+See any operating system documentation about shared libraries for
+more information, such as the ld and ld.so manual pages.
+-----------------------------------------------------------------
+burger#
+</pre></div>
+<p>After you have completed these steps, you can go on to begin using the
+installed libraries.  You may also install any executables that depend
+on libraries you created.
+</p>
+<hr/>
+<h5 class="footnote-body-heading"><a href="#DOCF4" id="FOOT4">(4)</a></h5><p>Don’t
+strip static libraries though, or they will be unusable.</p></div>

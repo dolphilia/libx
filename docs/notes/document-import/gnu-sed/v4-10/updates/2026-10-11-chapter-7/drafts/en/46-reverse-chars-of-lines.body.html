@@ -1,0 +1,48 @@
+<div class="gnu-sed-original-content" id="Reverse-chars-of-lines">
+<h3 class="section" id="Reverse-Characters-of-Lines"><span>7.6 Reverse Characters of Lines</span></h3>
+<p>This script can be used to reverse the position of characters
+in lines.  The technique moves two characters at a time, hence
+it is faster than more intuitive implementations.
+</p>
+<p>Note the <code class="code">tx</code> command before the definition of the label.
+This is often needed to reset the flag that is tested by
+the <code class="code">t</code> command.
+</p>
+<p>Imaginative readers will find uses for this script.  An example
+is reversing the output of <code class="command">banner</code>.<a class="footnote" href="#FOOT10" id="DOCF10"><sup>10</sup></a>
+</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+/../! b
+
+</pre><div class="group"><pre class="example-preformatted"># Reverse a line.  Begin embedding the line between two newlines
+s/^.*$/\
+&amp;\
+/
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Move first character at the end.  The regexp matches until
+# there are zero or one characters between the markers
+tx
+:x
+s/\(\n.\)\(.*\)\(.\n\)/\3\2\1/
+tx
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># Remove the newline markers
+s/\n//g
+</pre></div></div>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF10" id="FOOT10">(10)</a></h5>
+<p>This requires
+another script to pad the output of banner; for example
+</p>
+<div class="example">
+<pre class="example-preformatted">#! /bin/sh
+
+banner -w $1 $2 $3 $4 |
+  sed -e :a -e '/^.\{0,'$1'\}$/ { s/$/ /; ba; }' |
+  ~/sedscripts/reverseline.sed
+</pre></div>
+</div></div>

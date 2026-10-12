@@ -1,0 +1,41 @@
+<div class="gnu-sed-original-content" id="Increment-a-number">
+<h3 class="section" id="Increment-a-Number"><span>7.3 数値のインクリメント</span></h3>
+<p>このスクリプトは、<code class="command">sed</code>で算術演算を行う方法を示す数少ない例の1つです。実際に可能ですが、<a class="footnote" href="#FOOT9" id="DOCF9"><sup>9</sup></a>手作業で処理しなければなりません。</p>
+<p>数値を1増やすには、最後の桁に1を足し、次の数字に置き換えます。ただし例外があります。その桁が9なら、9でない桁に達するまで、その前の桁も繰り上げる必要があります。</p>
+<p>Bruno Haibleによるこの解法は、1つのバッファーだけを使う、とても巧妙なものです。この制約がなければ、<a class="ref" href="#cat-_002dn">行番号の付加</a>で使うアルゴリズムのほうが高速です。末尾に続く9をアンダースコアに置き換え、複数の<code class="code">s</code>コマンドで最後の桁を1増やし、その後アンダースコアを0へ置き換えます。</p>
+<div class="example">
+<pre class="example-preformatted">#!/usr/bin/sed -f
+
+/[^0-9]/ d
+
+</pre><div class="group"><pre class="example-preformatted"># replace all trailing 9s by _ (any other character except digits, could
+# be used)
+:d
+s/9\(_*\)$/_\1/
+td
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>末尾に連続する9をすべて「_」に置き換えます（数字以外なら、ほかの文字でもかまいません）。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted"># incr last digit only.  The first line adds a most-significant
+# digit of 1 if we have to add a digit.
+</pre><div class="translated-code-explanation"><strong>コード内の説明（日本語訳）</strong><p>最後の数字だけを増やします。桁を追加する必要がある場合、最初の行が最上位の桁として1を追加します。</p></div></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">s/^\(_*\)$/1\1/; tn
+s/8\(_*\)$/9\1/; tn
+s/7\(_*\)$/8\1/; tn
+s/6\(_*\)$/7\1/; tn
+s/5\(_*\)$/6\1/; tn
+s/4\(_*\)$/5\1/; tn
+s/3\(_*\)$/4\1/; tn
+s/2\(_*\)$/3\1/; tn
+s/1\(_*\)$/2\1/; tn
+s/0\(_*\)$/1\1/; tn
+</pre></div><pre class="example-preformatted">
+
+</pre><div class="group"><pre class="example-preformatted">:n
+y/_/0/
+</pre></div></div>
+<hr/>
+<div class="gnu-source-footnote"><h5 class="footnote-body-heading"><a href="#DOCF9" id="FOOT9">(9)</a></h5>
+<p><code class="command">sed</code>の達人Greg Ubbenは、<code class="command">dc</code> <small class="sc">RPN</small>電卓の実装を書きました。この実装はsedとともに配布されています。</p>
+</div></div>
+

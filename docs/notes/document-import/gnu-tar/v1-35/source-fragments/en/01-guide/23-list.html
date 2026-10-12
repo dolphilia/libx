@@ -1,0 +1,134 @@
+<div class="section-level-extent" id="list">
+
+<h3 class="section" id="How-to-List-Archives"><span>2.7 How to List Archives</span></h3>
+<a class="index-entry-id" id="index-list"></a>
+<p>Frequently, you will find yourself wanting to determine exactly what a
+particular archive contains.  You can use the <samp class="option">--list</samp>
+(<samp class="option">-t</samp>) operation to get the member names as they currently
+appear in the archive, as well as various attributes of the files at
+the time they were archived.  For example, assuming <samp class="file">practice</samp> is
+your working directory, you can examine the archive
+<samp class="file">collection.tar</samp> that you created in the last section with the
+command,
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --list --file=collection.tar</kbd>
+</pre></div>
+<p>The output of <code class="command">tar</code> would then be:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">blues
+folk
+jazz
+</pre></div>
+<p>Be sure to use a <samp class="option">--file=<var class="var">archive-name</var></samp> (<samp class="option">-f
+<var class="var">archive-name</var></samp>) option just as with <samp class="option">--create</samp>
+(<samp class="option">-c</samp>) to specify the name of the archive.
+</p>
+<a class="index-entry-id" id="index-File-name-arguments_002c-using-_002d_002dlist-with"></a>
+<a class="index-entry-id" id="index-list_002c-using-with-file-name-arguments"></a>
+<p>You can specify one or more individual member names as arguments when
+using ‘<samp class="samp">list</samp>’.  In this case, <code class="command">tar</code> will only list the
+names of members you identify.  For example, <kbd class="kbd">tar --list --file=collection.tar folk</kbd><!-- /@w --> would only print <samp class="file">folk</samp>:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --list --file=collection.tar folk</kbd>
+folk
+</pre></div>
+<a class="index-entry-id" id="index-list_002c-using-with-_002d_002dverbose"></a>
+<a class="index-entry-id" id="index-verbose_002c-using-with-_002d_002dlist"></a>
+<p>If you use the <samp class="option">--verbose</samp> (<samp class="option">-v</samp>) option with
+<samp class="option">--list</samp>, then <code class="command">tar</code> will print out a listing
+reminiscent of ‘<samp class="samp">ls -l</samp>’<!-- /@w -->, showing owner, file size, and so
+forth.  This output is described in detail in <a class="ref" href="#verbose-member-listing">verbose member listing</a>.
+</p>
+<p>If you had used <samp class="option">--verbose</samp> (<samp class="option">-v</samp>) mode, the example
+above would look like:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --list --verbose --file=collection.tar folk</kbd>
+-rw-r--r-- myself/user      62 1990-05-23 10:55 folk
+</pre></div>
+<a class="index-entry-id" id="index-listing-member-and-file-names"></a>
+<a class="anchor" id="listing-member-and-file-names"></a><p>It is important to notice that the output of <kbd class="kbd">tar --list
+--verbose</kbd> does not necessarily match that produced by <kbd class="kbd">tar
+--create --verbose</kbd> while creating the archive.  It is because
+<abbr class="acronym">GNU</abbr> <code class="command">tar</code>, unless told explicitly not to do so, removes some directory
+prefixes from file names before storing them in the archive
+(See <a class="xref" href="#absolute">Absolute File Names</a>, for more information).  In other
+words, in verbose mode <abbr class="acronym">GNU</abbr> <code class="command">tar</code> shows <em class="dfn">file names</em> when creating
+an archive and <em class="dfn">member names</em> when listing it.  Consider this
+example, run from your home directory:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">$ <kbd class="kbd">tar --create --verbose --file practice.tar ~/practice</kbd>
+tar: Removing leading '/' from member names
+/home/myself/practice/
+/home/myself/practice/blues
+/home/myself/practice/folk
+/home/myself/practice/jazz
+/home/myself/practice/collection.tar
+$ <kbd class="kbd">tar --list --file practice.tar</kbd>
+home/myself/practice/
+home/myself/practice/blues
+home/myself/practice/folk
+home/myself/practice/jazz
+home/myself/practice/collection.tar
+</pre></div></div>
+<a class="index-entry-id" id="index-show_002dstored_002dnames"></a>
+<p>This default behavior can sometimes be inconvenient.  You can force
+<abbr class="acronym">GNU</abbr> <code class="command">tar</code> show member names when creating archive by supplying
+<samp class="option">--show-stored-names</samp> option.
+</p>
+<dl class="table">
+<dt><samp class="option">--show-stored-names</samp></dt>
+<dd><p>Print member (as opposed to <em class="emph">file</em>) names when creating the archive.
+</p></dd>
+</dl>
+<p>With this option, both commands produce the same output:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">$ <kbd class="kbd">tar --create --verbose --show-stored-names \
+           --file practice.tar ~/practice</kbd>
+tar: Removing leading '/' from member names
+home/myself/practice/
+home/myself/practice/blues
+home/myself/practice/folk
+home/myself/practice/jazz
+home/myself/practice/collection.tar
+$ <kbd class="kbd">tar --list --file practice.tar</kbd>
+home/myself/practice/
+home/myself/practice/blues
+home/myself/practice/folk
+home/myself/practice/jazz
+home/myself/practice/collection.tar
+</pre></div></div>
+<p>Since <code class="command">tar</code> preserves file names, those you wish to list must be
+specified as they appear in the archive (i.e., relative to the
+directory from which the archive was created).  Continuing the example
+above:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">$ <kbd class="kbd">tar --list --file=practice.tar folk</kbd>
+tar: folk: Not found in archive
+tar: Exiting with failure status due to previous errors
+</pre></div></div>
+<p>the error message is produced because there is no member named
+<samp class="file">folk</samp>, only one named <samp class="file">home/myself/folk</samp>.
+</p>
+<p>If you are not sure of the exact file name, use <em class="dfn">globbing
+patterns</em>, for example:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">$ <kbd class="kbd">tar --list --file=practice.tar --wildcards '*/folk'</kbd>
+home/myself/practice/folk
+</pre></div>
+<p>See <a class="xref" href="#wildcards">Wildcards Patterns and Matching</a>, for a detailed discussion of globbing patterns and related
+<code class="command">tar</code> command line options.
+</p>
+<ul class="mini-toc">
+<li><a accesskey="1" href="#list-dir">Listing the Contents of a Stored Directory</a></li>
+</ul>
+<hr/>
+
+</div>
